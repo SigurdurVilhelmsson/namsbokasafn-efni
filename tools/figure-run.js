@@ -2437,6 +2437,23 @@ export function summarise(result) {
           by(isRecomposableTextless)
         ))
   );
+  // 🔴 AND THE ONES IT DECLINES, IN BOTH MODES. A textless figure with an embedded raster on a
+  // mapped `.svg` row is refused (`isRecomposableTextless`: its text may be inside the bitmap),
+  // and it would otherwise appear in no list at all — indistinguishable from a chapter that has
+  // none. A later read-layer change that learns to see raster text turns exactly these into work.
+  lines.push(
+    ...nameList(
+      'textless with an embedded raster, NOT recomposed (its text may be inside the image) — its existing copy keeps serving',
+      by(
+        (f) =>
+          f.outcome === 'copied-textless' &&
+          f.imageXObjects > 0 &&
+          f.mapping &&
+          f.mapping.status === 'mapped' &&
+          path.extname(f.mapping.outputName || '') === '.svg'
+      )
+    )
+  );
   // 🔴 THE COPIED FIGURES' OWN NUMBERS, BECAUSE THE ACCEPTANCE CRITERION IS ABOUT THEM AND A
   // BUCKET NAME CANNOT CARRY IT: "no figure lands in copied-* while carrying
   // formTextXObjects > 0 AND chars === 0" is a read-layer regression check, and reading it off

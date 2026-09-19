@@ -1111,6 +1111,10 @@ describe('a textless figure is recomposed from its source artwork (§C159)', () 
     expect(spawn.outDirsFor('compose')).toEqual(['FIG_TEXTLESS']); // the control recomposed
     expect(fs.readFileSync(translatedCopy, 'utf-8')).toBe('<svg id="icelandic-table"/>');
     expect(result.verdict.ok).toBe(true);
+    // …and the refusal is NAMED, or the declined figure is invisible in the report.
+    expect(summarise(result)).toMatch(
+      /embedded raster, NOT recomposed[^\n]*\(1\):\n\s+FIG_RASTER\n/
+    );
   });
 
   it('a compose refusal fails the run and leaves the old copy serving', async () => {
