@@ -72,8 +72,9 @@ export const SHORT_LABEL_MAX = 4;
  * Each entry is a word Icelandic actually writes in a formula slot — a unit
  * (`mol` → mól), a substance or object (`ice`, `iron`, `eggs`), or descriptive
  * prose (`avg`, `fast`, `then`). Everything a chemist reads as a *symbol*
- * subscript — `cell surr sys vap fus sub rxn con dep eff ele frz tet rev` — is
- * absent on purpose and must stay absent.
+ * subscript — `cell surr sys vap fus sub con dep eff ele frz tet rev` — is
+ * absent on purpose and must stay absent. (`rxn` was in this list until [USER]
+ * reversed it for that one label on 2026-09-19; see its entry below.)
  *
  * ⚠️ `red` is here for the COLOUR: its 13 corpus firings are all
  * `2HgO(s, rauður)`, red mercuric oxide. It is NOT the `E_red` reduction
@@ -117,6 +118,10 @@ export const LOCALIZABLE_SHORT_LABELS = new Set([
   'with',
   'fast',
   'slow',
+  // [USER] 2026-09-19: `ΔH°rxn` renders `ΔH°hvarf`. Reverses the 2026-09-04
+  // ruling for THIS label only, after ch05's re-render turned published `hvarf`
+  // (07-10 vintage) into `rxn`. The other symbol subscripts above stay English.
+  'rxn',
 ]);
 
 /**

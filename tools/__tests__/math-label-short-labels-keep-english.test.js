@@ -40,9 +40,13 @@ describe('short math labels keep English unless allow-listed', () => {
   });
 
   it('covers every short token the ruling named', () => {
-    for (const t of ['cell', 'surr', 'sys', 'vap', 'fus', 'sub', 'rxn', 'con', 'dep', 'rev']) {
+    for (const t of ['cell', 'surr', 'sys', 'vap', 'fus', 'sub', 'con', 'dep', 'rev']) {
       expect(resolveLabel(t, { overlay: { [t]: 'ÞÝTT' } }).value, `overlay for ${t}`).toBe(t);
     }
+  });
+
+  it('rxn is the one ruled exception — [USER] 2026-09-19: ΔH°rxn renders hvarf', () => {
+    expect(resolveLabel('rxn', { overlay: { rxn: 'hvarf' } }).value).toBe('hvarf');
   });
 
   it('the glossary cannot reach a short label either — the overlay is not the only route', () => {
@@ -111,5 +115,6 @@ describe('over the real chemistry overlay', () => {
     // "everything renders English" would satisfy it trivially.
     expect(localized.length).toBeGreaterThan(0);
     expect(localized).toContain('mol');
+    expect(localized).toContain('rxn');
   });
 });
