@@ -29,6 +29,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_02_HeatMeas",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_HeatMeas-caption"
       },
@@ -56,6 +57,7 @@
       "type": "figure",
       "id": "CNX_Chem_05_02_Calorim",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_Calorim-caption"
       },
@@ -77,6 +79,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_02_Calorim2",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_Calorim2-caption"
       },
@@ -119,6 +122,7 @@
       "type": "figure",
       "id": "CNX_Chem_05_02_HeatTrans2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_HeatTrans2-caption"
       },
@@ -515,6 +519,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_02_HandWarmer",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_HandWarmer-caption"
       },
@@ -626,6 +631,7 @@
       "type": "figure",
       "id": "CNX_Chem_05_02_IcePack",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_IcePack-caption"
       },
@@ -652,6 +658,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_02_BombCalor",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_BombCalor-caption"
       },
@@ -799,6 +806,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_02_FoodLabel",
+      "title": null,
       "caption": {
         "segmentId": "m68726:caption:CNX_Chem_05_02_FoodLabel-caption"
       },

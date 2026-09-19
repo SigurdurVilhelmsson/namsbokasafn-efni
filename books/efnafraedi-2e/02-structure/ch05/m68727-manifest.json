@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68727",
-  "extractedAt": "2026-08-31T19:08:38.495Z",
+  "extractedAt": "2026-09-19T08:38:59.556Z",
   "sourceHash": "bf5ace8e8e4dcd3f",
   "segmentCount": 364,
   "segmentIds": [
@@ -724,5 +724,33 @@
       "fs-idp165577648",
       "fs-idp167491136"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chemical thermodynamics",
+    "term-00002": "internal energy (U)",
+    "term-00003": "first law of thermodynamics",
+    "term-00004": "expansion work",
+    "term-00005": "state function",
+    "term-00006": "enthalpy (H)",
+    "term-00007": "enthalpy change (ΔH)",
+    "term-00008": "standard state",
+    "term-00009": "Standard enthalpy of combustion",
+    "term-00010": "hydrocarbons",
+    "term-00011": "biofuel",
+    "term-00012": "standard enthalpy of formation ΔHf°",
+    "term-00013": "Hess’s law",
+    "term-00014": "Hess’s law",
+    "fs-idp102379584": "chemical thermodynamics",
+    "fs-idp102380512": "enthalpy (H)",
+    "fs-idp102382096": "enthalpy change (ΔH)",
+    "fs-idp102383600": "expansion work (pressure-volume work)",
+    "fs-idp102384368": "first law of thermodynamics",
+    "fs-idp102385264": "Hess’s law",
+    "fs-idp102386192": "hydrocarbon",
+    "fs-idp102386960": "internal energy (U)",
+    "fs-idp102388352": "standard enthalpy of combustion (ΔHc°)",
+    "fs-idp102391904": "standard enthalpy of formation (ΔHf°)",
+    "fs-idp102395520": "standard state",
+    "fs-idp102396512": "state function"
   }
 }

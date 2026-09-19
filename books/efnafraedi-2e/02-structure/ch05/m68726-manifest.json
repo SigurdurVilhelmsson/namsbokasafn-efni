@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68726",
-  "extractedAt": "2026-08-31T19:08:38.297Z",
+  "extractedAt": "2026-09-19T08:38:59.432Z",
   "sourceHash": "d92091e8fdb9cab6",
   "segmentCount": 178,
   "segmentIds": [
@@ -318,5 +318,20 @@
       "fs-idm31992064",
       "fs-idm18398304"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "calorimetry",
+    "term-00002": "system",
+    "term-00003": "surroundings",
+    "term-00004": "calorimeter",
+    "term-00005": "bomb calorimeter",
+    "term-00006": "nutritional calorie (Calorie)",
+    "term-00007": "Atwater system",
+    "fs-idm56360448": "bomb calorimeter",
+    "fs-idm56359488": "calorimeter",
+    "fs-idm56358720": "calorimetry",
+    "fs-idm56357952": "nutritional calorie (Calorie)",
+    "fs-idp41853040": "surroundings",
+    "fs-idp41853808": "system"
   }
 }
