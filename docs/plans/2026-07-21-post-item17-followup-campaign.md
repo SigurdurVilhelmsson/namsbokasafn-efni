@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-09-19, late (§C159 BUILT, RUN AND RE-RENDERED on `feat/c159-textless-recompose` · 0 ISK · NEXT = the PR, then the next chapter)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **merge the §C159 branch** (PR; merge and deploy are [USER]'s). **Then the next chemistry chapter** (ch07), per item 5 of the brief in the block below: `--glossary-only` + that chapter's own subset, `chapter-term-check`, (a)+(b) to [USER], then figures, which now include textless recomposition automatically.
+### ⏭ SINGLE NEXT ACTION — **#491 MERGED (`f9c3ae4b2`); §C162 ruled "keep print size for now". Deploy is [USER]'s. Then the next chemistry chapter** (ch07), per item 5 of the brief in the block below: `--glossary-only` + that chapter's own subset, `chapter-term-check`, (a)+(b) to [USER], then figures, which now include textless recomposition automatically.
 
 - **§C159 done, 0 ISK:** 31 textless figures in chemistry ch03/04/06 were recomposed from source and published over their Cowork copies. mt-preview ch03/04/06 and faithful ch03 were re-rendered. The details, the raster exclusion that the first live run forced (ibuprofenmass), and the by-eye check are in §C159.
 - **New, logged, not started:** §C161 (comment-annotation icons on 3 figures; [CODE]) · §C162 (pipeline figures display at ~0.48× the English JPG's width; **needs a [USER] display decision**) · §C158 ③ (`test_figrings.py` can no longer print `ALL PASS`: its corpus sweep hangs on Econfig, so the driver prerequisite is now "no FAIL through section 7's control line, plus section 8").
@@ -6366,6 +6366,7 @@ The pre-semester campaign's **Phase 5** (fold-in) plus a long low-severity tail.
 - **§C162 · pipeline-composed figures display at about HALF the size of the English JPG on the reader site** — **[USER] decision, then [CODE] or vefur CSS** — **P3** — _logged 2026-09-19 from the §C159 check._
   - **Measured:** a composed `_IS.svg` declares the artwork's print size in `pt` (e.g. `117pt`, 156 px). vefur's `article.cnx-module figure img` is `max-width:100%; height:auto` with no width, and the rendered `<img>` carries none, so it shows at natural size. The median ratio to the OpenStax JPG's pixel width is **0.48, over all 73 translated figures and all 32 textless ones alike.** The Cowork copies declared `width="1300"` and filled the column, so §C159 makes the 31 recomposed figures visibly **smaller**, to match the translated figures around them.
   - **Question for [USER]:** should figures display at their print size (today's pipeline), at the English JPG's size, or at column width? It is a display decision, so nothing was changed. The candidate fixes are a declared px size in the composer, a width in the render, or vefur CSS (cross-repo).
+  - ⚖️ **[USER] RULED 2026-09-19: KEEP PRINT SIZE FOR NOW.** No change to the composer, the render or vefur CSS. The phrase "for now" leaves it open to revisit, so this item stays open as a deferred display decision, not a defect. #491 merged on that basis (`f9c3ae4b2`).
 
 
 ## ⚒️ Post-run manual-fix ledger — anomalies deliberately NOT wired into the re-MT
