@@ -261,4 +261,45 @@ describe('the resolved glossary a book actually gets', () => {
     // so an unstamped term silently leaves English in published math.
     expect(byEn.get('Celsius')?.status).toBe('approved');
   });
+
+  it('carries vok for resonance even when Íðorðabankinn ties it in chemistry (§C164)', () => {
+    // 🔴 The prod failure, reproduced: two imported chemistry concepts for
+    // `resonance` with different Icelandic made a REAL tie, and 051's house
+    // concept joined it instead of ending it. Measured 2026-09-19: the export
+    // gained resonance structure/form/hybrid and Lewis structure but NOT
+    // resonance, with the tie count unchanged.
+    for (const is of ['samsvörun', 'hermun']) {
+      const cid = db
+        .prepare(
+          `INSERT INTO concept (domain, collection) VALUES ('chemistry', 'idordabanki') RETURNING id`
+        )
+        .get().id;
+      db.prepare(
+        `INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,?)`
+      ).run(cid, 'en', 'resonance', 1, 'idordabanki');
+      db.prepare(
+        `INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,?)`
+      ).run(cid, 'is', is, 1, 'idordabanki');
+    }
+    migration.up(db);
+    const bookId = db
+      .prepare(
+        `INSERT INTO registered_books (slug, title_is, registered_by) VALUES (?,?,?) RETURNING id`
+      )
+      .get('efnafraedi-2e-tie', 'Efnafræði', 't').id;
+    for (const [i, d] of BOOK_DOMAIN_PRIORITY['efnafraedi-2e'].entries()) {
+      db.prepare(`INSERT INTO book_domain_priority (book_id, domain, position) VALUES (?,?,?)`).run(
+        bookId,
+        d,
+        i + 1
+      );
+    }
+    const { buildResolvedGlossary } = require('../lib/resolvedGlossary');
+    const payload = buildResolvedGlossary(db, 'efnafraedi-2e-tie', {
+      census: { strings: ['resonance'], filesRead: 1, root: '/x' },
+    });
+    const t = payload.terms.find((x) => x.english === 'resonance');
+    expect(t?.icelandic).toBe('vok');
+    expect(payload.stats.ties).toBe(0);
+  });
 });

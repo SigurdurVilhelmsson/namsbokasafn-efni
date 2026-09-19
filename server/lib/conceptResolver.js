@@ -16,6 +16,8 @@
  * singleton — that keeps this module testable and free of ambient state.
  */
 
+const { HOUSE_STYLE_SOURCE } = require('./houseStyleTerms');
+
 /**
  * Fold one English string to the key `book_term_preference`'s PRIMARY KEY
  * actually collides on.
@@ -128,7 +130,7 @@ function prepareLookupStatements(db) {
         WHERE t.lang = 'en' AND t.text = ?`
     ),
     merge: db.prepare('SELECT merged_into FROM concept WHERE id = ?'),
-    concept: db.prepare('SELECT id, domain FROM concept WHERE id = ?'),
+    concept: db.prepare('SELECT id, domain, collection FROM concept WHERE id = ?'),
     terms: db.prepare(
       `SELECT id AS term_id, text, rank
          FROM concept_term
@@ -286,6 +288,7 @@ function lookupCandidates(db, english, stmts) {
     byId.set(id, {
       conceptId: c.id,
       domain: c.domain,
+      collection: c.collection,
       isTerms: termsStmt.all(id).map((r) => ({ termId: r.term_id, text: r.text, rank: r.rank })),
     });
   }
@@ -375,6 +378,7 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
       domain: c.domain,
       position: scope.positionOf.get(c.domain),
       reason: 'head-form',
+      houseStyle: c.collection === HOUSE_STYLE_SOURCE,
     });
   }
 
@@ -594,6 +598,31 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   // including the two that agreed. Resolving to the majority form would be
   // guessing, which parent spec §6 step 5 forbids in as many words.
   const texts = new Set(atBest.map((c) => c.text));
+
+  // §C164 (2026-09-19) — A HOUSE-STYLE CONCEPT ENDS A REAL TIE AT ITS OWN
+  // POSITION. It is a [USER] ruling minted precisely to remove a choice
+  // (houseStyleTerms.js), so it must not merely JOIN the tie it exists to
+  // settle. Measured on prod: `resonance` already tied between imported
+  // chemistry concepts; 051's `resonance → vok` became a third tied candidate
+  // and the export silently dropped the headword. ⚠️ Scoped to atBest only — a
+  // house concept filed in a lower-priority domain does NOT jump the queue; the
+  // domain order has its own owner. Two house concepts cannot tie here, since
+  // houseStyleTerms.test.js forbids an English head form being claimed twice.
+  // A book/chapter preference still overrides it (applyPreference runs last).
+  const house = atBest.filter((c) => c.houseStyle);
+  if (texts.size > 1 && house.length === 1) {
+    return applyPreference({
+      winner: asWinner(house[0]),
+      reason: 'house-style',
+      nominalTie: [],
+      tied: [],
+      outOfScope,
+      integrity: codes,
+      unscoped: false,
+      alsoInScope: alsoFrom(new Set([house[0].conceptId])),
+    });
+  }
+
   if (texts.size === 1) {
     // D2: a NOMINAL tie. Both candidates answer with the identical string, so
     // nothing is guessed — but the duplicate concepts are reported so an editor
