@@ -212,6 +212,18 @@ grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | s
 # every module must read arm: "no-glossary"
 ```
 
+> **AMENDED 2026-09-19 (chemistry ch05) — ONE BOUNDED EXCEPTION: `--glossary-only "enthalpy,enthalpy change"`.**
+> A paid probe of `m68727` with `--no-glossary` rendered *enthalpy* as `varmaorka` / `varmi` / `entalpía`: 40 of 86
+> enthalpy segments were `varm-` only. With the two-term subset, 86 of 86 were `vermi`. [USER] chose the subset for ch05.
+> Record, and why only a measured mirror case qualifies:
+> [`docs/decisions/2026-09-19-enthalpy-glossary-subset-exception.md`](../decisions/2026-09-19-enthalpy-glossary-subset-exception.md).
+> On a chunk without either headword nothing is sent, so the wire is identical to `--no-glossary`. ▶ **The arm check
+> above therefore accepts `arm: "glossary-only"` as well as `"no-glossary"`.** A bare `"glossary"` is still wrong.
+> ⚠️ **Whether the subset is the standing arm for later chemistry chapters is [USER]'s call and the register's to
+> record.** ch07, ch10 and ch16 carry 37, 38 and 27 `enthalpy` occurrences, so ask before buying them.
+> ⚠️ **Never pass `--force` chapter-wide to redo one module** — use `--module` (below). ch05's probe module would
+> otherwise have been bought a third time.
+
 ⚠️ **AND `--dry-run` WITHOUT `--force` IS USELESS — it reports `To translate: 0` and prices
 nothing**, because `mtRunDecision` skips on file existence. The pre-flight is the `--dry-run --force`
 form above; it costs **0 ISK**, exiting before `createClient()` is ever constructed.
