@@ -1017,3 +1017,13 @@ describe('TRACKS is genuinely frozen', () => {
     expect(TRACKS).toEqual(['mt-preview', 'faithful']);
   });
 });
+
+describe('§C160 — chemistry mt-preview ch04 has no math cross-stage drop', () => {
+  // A PREMISE PIN on the prepared corpus: K2 found 381 <m:math> injected against 375
+  // rendered — 6 equations in 4 bare-math "Svar:" notes — and no test ran K2 on ch04,
+  // so CI could not see it. Red means a rendered ch04 page is missing math again.
+  it('K2 passes on chemistry mt-preview ch4', async () => {
+    const r = await runCheck(K2, ctxFor(4));
+    expect([r.verdict, r.findings]).toEqual([VERDICT.PASS, []]);
+  });
+});

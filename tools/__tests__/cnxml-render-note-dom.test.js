@@ -117,3 +117,36 @@ describe('renderNote — table inside a para (F1b leak fix)', () => {
     expect(html).not.toMatch(/<colspec\b/);
   });
 });
+
+describe('renderNote — bare <m:math> children (§C160: chemistry ch04 "Svar:" boxes rendered EMPTY)', () => {
+  // The shape of chemistry m68709:fs-idp79691824 — an answer note whose body is bare
+  // math separated by <newline/>, with no <para>. `math` is inline content, so the
+  // block seam ignored it: the <aside> and its <h4> rendered and all 3 equations were
+  // dropped, silently, on a live page. 4 notes / 6 equations, all chemistry ch04.
+  const M = (x) => `<m:math><m:mrow><m:mi>${x}</m:mi></m:mrow></m:math>`;
+  const svar = `<note id="N"><title>Svar:</title>${M('AAA')}<newline/>${M('BBB')}<newline/>${M('CCC')}</note>`;
+
+  it('renders every bare equation in the note', () => {
+    const html = renderNoteContent(svar);
+    const aside = html.slice(
+      html.indexOf('id="N"'),
+      html.indexOf('</aside>', html.indexOf('id="N"'))
+    );
+    expect((aside.match(/<mjx-container\b/g) || []).length).toBe(3);
+  });
+
+  it('keeps them in source order, after the title', () => {
+    const html = renderNoteContent(svar);
+    const at = (s) => html.indexOf(s);
+    expect([at('Svar:') < at('AAA'), at('AAA') < at('BBB'), at('BBB') < at('CCC')]).toEqual([
+      true,
+      true,
+      true,
+    ]);
+  });
+
+  it('still renders a note whose math sits inside a <para> exactly once (control)', () => {
+    const html = renderNoteContent(`<note id="N"><para id="p">x ${M('DDD')} y</para></note>`);
+    expect((html.match(/<mjx-container\b/g) || []).length).toBe(1);
+  });
+});

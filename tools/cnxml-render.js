@@ -37,7 +37,7 @@ import {
   TAG_ATTR_SPAN,
   firstDirectChildTitle,
 } from './lib/cnxml-parser.js';
-import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
+import { parseCnxmlFragment, serializeCnxmlFragment, CNXML_NS } from './lib/cnxml-dom.js';
 // The figure-review sidecar is keyed on the ENGLISH image basename, but this
 // file's only input is 03-translated/ — cnxml-inject's OUTPUT — where the src
 // has already been swapped to the translated variant. Reusing inject's OWN
@@ -1562,6 +1562,47 @@ function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
   return out;
 }
 
+/**
+ * §C160 — give each bare top-level `<m:math>` in a note body its own `<para>`.
+ *
+ * Chemistry ch04's "Svar:" answer notes (m68709, m68710) hold their answer as bare math
+ * separated by `<newline/>`, with no `<para>`: 4 notes, 6 equations. `math` is inline
+ * content, so `renderBlockChildrenInOrder` — which dispatches block children and whose
+ * loud seam deliberately ignores inline tags — dropped every one of them, silently, and
+ * the page showed an empty answer box. Wrapping here renders each through `renderPara`
+ * as its own line, which is the source's layout; the `<newline/>` that separated them
+ * would otherwise be an undispatched block, so a separator that follows bare math goes.
+ *
+ * A render-time wrap, never a content change: the CNXML on disk is untouched. A note
+ * with no bare math is returned unchanged, byte for byte.
+ * @param {string} content note body without its <title>
+ * @returns {string}
+ */
+function wrapBareMathInParas(content) {
+  if (!/<m:math\b/.test(content)) return content;
+  const { doc, root } = parseCnxmlFragment(content);
+  let wrapped = false;
+  let lastWasBareMath = false;
+  for (const child of Array.from(root.childNodes)) {
+    if (child.nodeType !== 1) continue;
+    if (child.localName === 'math') {
+      const para = doc.createElementNS(CNXML_NS, 'para');
+      root.replaceChild(para, child);
+      para.appendChild(child);
+      wrapped = true;
+      lastWasBareMath = true;
+    } else if (child.localName === 'newline' && lastWasBareMath) {
+      root.removeChild(child);
+    } else {
+      lastWasBareMath = false;
+    }
+  }
+  if (!wrapped) return content;
+  return Array.from(root.childNodes)
+    .map((n) => serializeCnxmlFragment(n))
+    .join('');
+}
+
 function renderNote(note, context, extraClass = '') {
   const lines = [];
   const id = note.id || null;
@@ -1591,7 +1632,9 @@ function renderNote(note, context, extraClass = '') {
   // order via the DOM seam. Standalone <media> not wrapped in a <figure> — e.g.
   // the "Check Your Learning" answer image — is handled because the walk visits
   // it as its own block child (figures render their own media, so no double-count).
-  const contentWithoutTitle = note.content.replace(/<title>[\s\S]*?<\/title>/, '');
+  const contentWithoutTitle = wrapBareMathInParas(
+    note.content.replace(/<title>[\s\S]*?<\/title>/, '')
+  );
   const blocks = renderBlockChildrenInOrder(contentWithoutTitle, context, {
     para: renderPara,
     figure: renderFigure,
