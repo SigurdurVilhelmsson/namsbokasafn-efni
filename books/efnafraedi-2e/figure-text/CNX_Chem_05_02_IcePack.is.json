@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_02_IcePack",
+ "renderHash": "1f4486f747baeec5",
+ "composedHash": "1f4486f747baeec5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "INSTANT": "STRAX",
+  "SINGLE USE ONLY": "AÐEINS TIL EINNOTA",
+  "ammonium nitrate": "ammóníumnítrat",
+  "Inner bag of water": "Innri poki með vatni"
+ },
+ "mtAlternatives": {
+  "INSTANT": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "STRAX"
+  },
+  "SINGLE USE ONLY": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "AÐEINS TIL EINNOTA"
+  },
+  "Inner bag of water": {
+   "kept": "joined",
+   "other": "Innri vatnspoki",
+   "reason": "disagree",
+   "mt": "Innri poki með vatni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

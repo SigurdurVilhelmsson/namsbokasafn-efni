@@ -1,0 +1,54 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_02_Calorim2",
+ "renderHash": "38079917e5ad2e27",
+ "composedHash": "38079917e5ad2e27",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Precision|thermometer": "Nákvæmnishitamælir",
+  "Motorized|stirrer": "Vélknúinn hrærari",
+  "Stirrer": "Hrærari",
+  "Insulating cover": "Einangrandi lok",
+  "Insulating support ring": "Einangrandi stuðningshringur",
+  "Metal inner vessel": "Innra málmílát",
+  "Thermometer": "Hitamælir",
+  "Metal outer vessel": "Ytra málmílát"
+ },
+ "mtAlternatives": {
+  "Stirrer": {
+   "kept": "joined",
+   "other": "Hræripinni",
+   "reason": "disagree",
+   "mt": "Hrærari"
+  },
+  "Insulating cover": {
+   "kept": "joined",
+   "other": "Einangrunarhlíf",
+   "reason": "disagree",
+   "mt": "Einangrandi lok"
+  },
+  "Insulating support ring": {
+   "kept": "joined",
+   "other": "Einangrandi burðarhringur",
+   "reason": "disagree",
+   "mt": "Einangrandi stuðningshringur"
+  },
+  "Metal inner vessel": {
+   "kept": "joined",
+   "other": "Innra ílát úr málmi",
+   "reason": "disagree",
+   "mt": "Innra málmílát"
+  },
+  "Metal outer vessel": {
+   "kept": "joined",
+   "other": "Ytra hylki úr málmi",
+   "reason": "disagree",
+   "mt": "Ytra málmílát"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

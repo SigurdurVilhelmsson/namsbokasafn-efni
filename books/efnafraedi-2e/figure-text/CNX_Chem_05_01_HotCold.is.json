@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_01_HotCold",
+ "renderHash": "b37f3408cdedc064",
+ "composedHash": "b37f3408cdedc064",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Hot water": "Heitt vatn",
+  "Cold water": "Kalt vatn"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_03_AlgalFuel2",
+ "renderHash": "d73c294409cac747",
+ "composedHash": "d73c294409cac747",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Jet fuel|Gasoline|Diesel": "Þotueldsneyti Bensín Dísilolía",
+  "Process|and purify": "Vinna og hreinsa",
+  "Grow": "Rækta",
+  "Harvest": "Uppskera",
+  "Extract": "Vinna úr"
+ },
+ "mtAlternatives": {
+  "Grow": {
+   "kept": "joined",
+   "other": "Vöxtur",
+   "reason": "disagree",
+   "mt": "Rækta"
+  },
+  "Extract": {
+   "kept": "joined",
+   "other": "Útdráttur",
+   "reason": "disagree",
+   "mt": "Vinna úr"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}
