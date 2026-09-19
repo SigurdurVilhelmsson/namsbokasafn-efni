@@ -1,5 +1,5 @@
 <!-- SEG:m68735:title:auto-1 -->
-Reglubundnar breytingar á eiginleikum frumefna
+Lotubundnar breytingar á eiginleikum frumefna
 
 <!-- SEG:m68735:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

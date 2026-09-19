@@ -1,5 +1,5 @@
 <!-- SEG:m68734:title:auto-1 -->
-Rafeindaskipan atóma (rafeindaskipanir)
+Rafeindabygging atóma (rafeindaskipan)
 
 <!-- SEG:m68734:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

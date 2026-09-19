@@ -1,5 +1,5 @@
 <!-- SEG:m68733:title:auto-1 -->
-Þróun skammtafræðinnar
+Þróun skammtakenningarinnar
 
 <!-- SEG:m68733:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:
