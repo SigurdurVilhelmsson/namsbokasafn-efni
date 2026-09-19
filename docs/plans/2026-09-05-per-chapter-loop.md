@@ -188,6 +188,30 @@ chapter**: 255 of 342 segment files differ from what today's extractor produces.
 
 ---
 
+## Step 1b — the PRE-BUY term scan (free, and it decides what Step 2 buys)
+
+```bash
+node tools/chapter-term-check.js --book <slug> --chapter <N> --pre-buy        # 0 ISK
+```
+
+⚖️ **[USER] RULED 2026-09-19: a 2–3,000 ISK re-MT per chapter is not sustainable when the issue
+is a few term replacements.** ch05 (enthalpy), ch06 (subshell) and ch07 (electronegativity,
+resonance, Lewis structure) each paid for a re-buy because the terms were found AFTER the buy.
+▶ **Settle the chapter's subset here, before any money moves.**
+
+It reads the chapter's English only, so it runs before the buy and costs nothing. It prints
+**(a)** frequent terms with **no glossary row** — the book's own `[[term:…]]` key terms first —
+**(b)** frequent terms that have one, as `--glossary-only` candidates, and **(c)** the short math
+labels. 🔴 **(a) is the case the post-buy check structurally cannot see (§C164)**: with no row,
+ch07's *resonance* came back as COVALENCE in 15 of 24 segments, a section title among them.
+A term in (a) that matters needs a **house-style ruling** (`server/lib/houseStyleTerms.js`, which
+migration 051 asserts on boot) → **deploy → export tick → then buy**, because `--glossary-only`
+refuses a headword the committed glossary does not carry.
+⚠️ **Every row is a QUESTION, not a finding** — the model renders most chemistry correctly
+unprompted (§C73). One-word fragments of longer candidates are hidden unless `--all-fragments`.
+
+---
+
 ## Step 2 — re-MT the text
 
 ```bash

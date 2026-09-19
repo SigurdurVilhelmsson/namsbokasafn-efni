@@ -25,6 +25,7 @@ import { parseSegmentsMap } from './lib/seg-markers.cjs';
 import { loadGlossary } from './api-translate.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { loadMathLabelResolver } from './lib/math-label-substitute.js';
+import { chapterTermCandidates } from './lib/chapter-term-plan.js';
 import {
   glossaryCoverage,
   findSuppressedShortLabels,
@@ -46,10 +47,18 @@ function help() {
 Usage:
   node tools/chapter-term-check.js --book <slug> --chapter <N> [options]
 
+Modes:
+  (default)           AFTER the buy: compares this chapter's English with its Icelandic.
+  --pre-buy           BEFORE the buy: reads the English only, so it needs no MT output.
+                      Ranks the terms the MT will have to render and says which already
+                      have an approved Icelandic — including FREQUENT TERMS WITH NO ROW,
+                      which the default mode structurally cannot see (§C164).
+
 Options:
   --min-segments <n>  Segments a term needs before it can be a candidate (default 5)
   --threshold <x>     Coverage below which a term is a candidate (default 0.5)
   --top <n>           Candidates to print (default 20; 0 = all)
+  --all-fragments     Pre-buy: also show one-word pieces of longer candidates
   --json              Print the full result as JSON
   -h, --help          Show this help`);
 }
@@ -94,6 +103,8 @@ function main() {
     { name: 'threshold', flags: ['--threshold'], type: 'number', default: 0.5 },
     { name: 'top', flags: ['--top'], type: 'number', default: 20 },
     { name: 'json', flags: ['--json'], type: 'boolean', default: false },
+    { name: 'preBuy', flags: ['--pre-buy'], type: 'boolean', default: false },
+    { name: 'allFragments', flags: ['--all-fragments'], type: 'boolean', default: false },
   ]);
   if (args.help) {
     help();
@@ -110,20 +121,31 @@ function main() {
   const ch = chapterDirName(args.chapter);
   const mtDir = path.join(bookDir, '02-mt-output', ch);
   const en = readChapterSegments(path.join(bookDir, '02-for-mt', ch), EN_FILE);
-  const is = readChapterSegments(mtDir, IS_FILE);
-  if (en.size === 0 || is.size === 0) {
+  // ⚠️ Pre-buy runs BEFORE any purchase, so there is no Icelandic to read and demanding
+  // it would make the mode useless exactly when it is needed. English alone is required.
+  const is = args.preBuy ? new Map() : readChapterSegments(mtDir, IS_FILE);
+  if (en.size === 0 || (!args.preBuy && is.size === 0)) {
     console.error(`Error: no segments for ${args.book} ${ch} (EN ${en.size}, IS ${is.size})`);
     return;
   }
 
   const glossary = loadGlossary(path.join(bookDir, 'glossary'), bookToDomain(args.book));
-  const coverage = glossaryCoverage({
-    en,
-    is,
-    terms: glossary?.terms ?? [],
-    minSegments: args.minSegments,
-    threshold: args.threshold,
-  });
+  const plan = args.preBuy
+    ? chapterTermCandidates({
+        en,
+        terms: glossary?.terms ?? [],
+        minSegments: args.minSegments,
+      })
+    : [];
+  const coverage = args.preBuy
+    ? []
+    : glossaryCoverage({
+        en,
+        is,
+        terms: glossary?.terms ?? [],
+        minSegments: args.minSegments,
+        threshold: args.threshold,
+      });
   const candidates = coverage.filter((r) => r.candidate);
 
   const sourceDir = path.join(bookDir, '01-source', ch);
@@ -132,46 +154,101 @@ function main() {
     ? findSuppressedShortLabels(chapterMathTokens(sourceDir), { overlay, glossaryMap })
     : [];
 
-  const arms = mtArms(mtDir);
+  const arms = args.preBuy ? {} : mtArms(mtDir);
   if (args.json) {
-    console.log(JSON.stringify({ book: args.book, chapter: ch, arms, coverage, labels }, null, 2));
+    console.log(
+      JSON.stringify({ book: args.book, chapter: ch, arms, coverage, plan, labels }, null, 2)
+    );
     process.exitCode = 0;
     return;
   }
 
-  const pct = (x) => `${Math.round(x * 100)}%`;
-  console.log(`chapter-term-check — ${args.book} ${ch}`);
-  console.log(
-    `MT arm(s): ${
-      Object.entries(arms)
-        .map(([a, n]) => `${a} ×${n}`)
-        .join(', ') || 'none recorded'
-    }  ·  segments EN ${en.size} / IS ${is.size}`
-  );
-  console.log(
-    `\n(a) glossary subset candidates — ${candidates.length} of ${coverage.length} terms seen ` +
-      `(≥ ${args.minSegments} segments, coverage < ${pct(args.threshold)})`
-  );
-  console.log(
-    '    low coverage = a mirror case (subset candidate) OR a glossary entry the MT rightly overrides'
-  );
-  const shown = args.top > 0 ? candidates.slice(0, args.top) : candidates;
-  for (const r of shown) {
-    const used = r.collisions
-      .map((c) => `${c.targetWord} (${c.sourceWord}) ×${c.count}`)
-      .join(', ');
+  if (args.preBuy) {
+    // Fragments of longer candidates are hidden by default (`structure` inside `Lewis
+    // structure`); --all-fragments shows them, because hiding is a judgement too.
+    const visible = plan.filter((r) => args.allFragments || !r.subsumed);
+    // 🔴 THE BOOK'S OWN KEY TERMS FIRST. A `[[term:…]]` marker is the book declaring "this
+    // is a term", so it is the shortest, highest-value list to rule on — ch07's `resonance`
+    // was one. Frequency ranks within each group.
+    const keyTermFirst = (rows) =>
+      [...rows].sort(
+        (a, b) => Number(b.fromKeyTerm) - Number(a.fromKeyTerm) || b.segments - a.segments
+      );
+    const noRow = keyTermFirst(visible.filter((r) => !r.hasRow));
+    const withRow = visible.filter((r) => r.hasRow);
+    const hidden = plan.length - visible.length;
+    const top = (rows) => (args.top > 0 ? rows.slice(0, args.top) : rows);
+    console.log(`chapter-term-plan (PRE-BUY) — ${args.book} ${ch}  ·  ${en.size} EN segments`);
     console.log(
-      `  ${r.sourceWord} → ${r.targetWord}  [stem ${r.stem}]  ${r.covered + r.kept}/${r.total}` +
-        (r.kept ? ` (${r.kept} kept verbatim)` : '') +
-        `\n      also present: ${used || '—'}\n      e.g. ${r.uncovered.join('  ')}`
+      `\n(a) frequent terms with NO glossary row — ${noRow.length} of ${visible.length} ` +
+        `(≥ ${args.minSegments} segments` +
+        `${hidden ? `; ${hidden} fragment(s) of longer terms hidden, --all-fragments shows them` : ''})`
+    );
+    console.log(
+      '    the MT has nothing to anchor these; a ruling before the buy costs 0 ISK, after it costs a re-buy'
+    );
+    for (const r of top(noRow)) {
+      console.log(
+        `  ${r.term}  ${r.segments} segs${r.fromKeyTerm ? "  [the book's own key term]" : ''}`
+      );
+    }
+    if (args.top > 0 && noRow.length > args.top)
+      console.log(`  … ${noRow.length - args.top} more (--top 0)`);
+
+    console.log(
+      `\n(b) frequent terms that HAVE a row — ${withRow.length}; subset candidates for --glossary-only`
+    );
+    for (const r of top(withRow)) {
+      console.log(
+        `  ${r.term} → ${r.icelandic}  ${r.segments} segs${r.fromKeyTerm ? "  [the book's own key term]" : ''}`
+      );
+    }
+    if (args.top > 0 && withRow.length > args.top)
+      console.log(`  … ${withRow.length - args.top} more (--top 0)`);
+    console.log(
+      '\n  ⚠️ Every row is a QUESTION, not a finding: the model renders most chemistry correctly ' +
+        'unprompted.\n  → take (a) to [USER] for a house-style ruling, and pick (b) into the ' +
+        "chapter's --glossary-only subset."
     );
   }
-  if (shown.length < candidates.length)
-    console.log(`  … ${candidates.length - shown.length} more (--top 0)`);
 
+  const pct = (x) => `${Math.round(x * 100)}%`;
+  if (!args.preBuy) {
+    console.log(`chapter-term-check — ${args.book} ${ch}`);
+    console.log(
+      `MT arm(s): ${
+        Object.entries(arms)
+          .map(([a, n]) => `${a} ×${n}`)
+          .join(', ') || 'none recorded'
+      }  ·  segments EN ${en.size} / IS ${is.size}`
+    );
+    console.log(
+      `\n(a) glossary subset candidates — ${candidates.length} of ${coverage.length} terms seen ` +
+        `(≥ ${args.minSegments} segments, coverage < ${pct(args.threshold)})`
+    );
+    console.log(
+      '    low coverage = a mirror case (subset candidate) OR a glossary entry the MT rightly overrides'
+    );
+    const shown = args.top > 0 ? candidates.slice(0, args.top) : candidates;
+    for (const r of shown) {
+      const used = r.collisions
+        .map((c) => `${c.targetWord} (${c.sourceWord}) ×${c.count}`)
+        .join(', ');
+      console.log(
+        `  ${r.sourceWord} → ${r.targetWord}  [stem ${r.stem}]  ${r.covered + r.kept}/${r.total}` +
+          (r.kept ? ` (${r.kept} kept verbatim)` : '') +
+          `\n      also present: ${used || '—'}\n      e.g. ${r.uncovered.join('  ')}`
+      );
+    }
+    if (shown.length < candidates.length)
+      console.log(`  … ${candidates.length - shown.length} more (--top 0)`);
+  }
+
+  // The short-label check reads `01-source`, so it is equally valid before a buy: it is
+  // printed in BOTH modes, lettered (b) after the buy and (c) before it.
   const open = labels.filter((l) => !l.ruled);
   console.log(
-    `\n(b) short math labels kept English though a map translates them — ${open.length} unruled, ` +
+    `\n(${args.preBuy ? 'c' : 'b'}) short math labels kept English though a map translates them — ${open.length} unruled, ` +
       `${labels.length - open.length} already ruled`
   );
   for (const l of labels) {
