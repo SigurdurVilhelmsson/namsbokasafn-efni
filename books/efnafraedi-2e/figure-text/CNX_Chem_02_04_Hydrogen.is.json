@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_04_Hydrogen",
+ "renderHash": "f898574bf499996a",
+ "composedHash": "f898574bf499996a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "One H atom": "Eitt H-atóm",
+  "Two H atoms": "Tvö H-atóm",
+  "One H2 molecule": "Ein H2-sameind",
+  "Two H2 molecules": "Tvær H2-sameindir"
+ },
+ "mtAlternatives": {
+  "One H atom": {
+   "kept": "joined",
+   "other": "Eitt H atóm",
+   "reason": "disagree",
+   "mt": "Eitt H-atóm"
+  },
+  "Two H atoms": {
+   "kept": "joined",
+   "other": "Tvö H atóm",
+   "reason": "disagree",
+   "mt": "Tvö H-atóm"
+  },
+  "Two H2 molecules": {
+   "kept": "joined",
+   "other": "Tvær H2 sameindir",
+   "reason": "disagree",
+   "mt": "Tvær H2-sameindir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

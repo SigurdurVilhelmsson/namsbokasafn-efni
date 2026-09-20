@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_06_NaCation",
+ "renderHash": "ca7ef82ae457918a",
+ "composedHash": "ca7ef82ae457918a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Na atom": "Na atóm",
+  "Na+ ion": "Na+ jón",
+  "Nucleus|(11 protons,|12 neutrons)": "Kjarni (11 róteindir, 12 nifteindir)",
+  "11 electrons": "11 rafeindir",
+  "10 electrons": "10 rafeindir"
+ },
+ "mtAlternatives": {
+  "Na atom": {
+   "kept": "joined",
+   "other": "Natríumatóm",
+   "reason": "disagree",
+   "mt": "Na atóm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

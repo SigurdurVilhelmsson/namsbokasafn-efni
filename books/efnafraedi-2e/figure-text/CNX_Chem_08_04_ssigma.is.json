@@ -1,0 +1,35 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_04_ssigma",
+ "renderHash": "1dcf612fa6bac6d5",
+ "composedHash": "1dcf612fa6bac6d5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Atomic orbitals": "Atómsvigrúm",
+  "Combine|atomic orbitals": "Sameina atómsvigrúm",
+  "Molecular orbitals": "Sameindasvigrúm",
+  "Antibonding|orbital, σs": "Andtengisvigrúm, σs",
+  "Bonding|orbital, σs": "Tengisvigrúm, σs",
+  "Subtract": "Draga frá",
+  "Add": "Leggja saman"
+ },
+ "mtAlternatives": {
+  "Antibonding|orbital, σs": {
+   "kept": "joined",
+   "other": "Andbindandi svigrúm, σs",
+   "reason": "disagree",
+   "mt": "Andtengisvigrúm, σs"
+  },
+  "Add": {
+   "kept": "joined",
+   "other": "Bæta við",
+   "reason": "disagree",
+   "mt": "Leggja saman"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

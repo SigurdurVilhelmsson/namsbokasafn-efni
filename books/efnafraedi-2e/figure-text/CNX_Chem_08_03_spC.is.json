@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_03_spC",
+ "renderHash": "d88f66f64dce5ddb",
+ "composedHash": "d88f66f64dce5ddb",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Unhybridized|p orbital": "Óblendingað p-svigrúm",
+  "Second|unhybridized|p orbital": "Annað óblendingað p-svigrúm"
+ },
+ "mtAlternatives": {
+  "Unhybridized|p orbital": {
+   "kept": "joined",
+   "other": "Óblendað p-svigrúm",
+   "reason": "disagree",
+   "mt": "Óblendingað p-svigrúm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

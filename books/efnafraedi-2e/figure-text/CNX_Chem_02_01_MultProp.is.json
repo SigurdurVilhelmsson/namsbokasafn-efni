@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_01_MultProp",
+ "renderHash": "e1c2d32cf02af6c9",
+ "composedHash": "e1c2d32cf02af6c9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Chlorine atom": "Klóratóm",
+  "Copper atom": "Koparfrumeind"
+ },
+ "mtAlternatives": {
+  "Copper atom": {
+   "kept": "joined",
+   "other": "Koparatóm",
+   "reason": "disagree",
+   "mt": "Koparfrumeind"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

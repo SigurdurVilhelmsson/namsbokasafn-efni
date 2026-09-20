@@ -1,0 +1,37 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_CO2Diag",
+ "renderHash": "3e4101661e01fde2",
+ "composedHash": "3e4101661e01fde2",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Orbitals in an isolated C atom": "Svigrúm í einangruðu C atómi",
+  "Orbitals in the sp hybridized C in CO2": "Svigrúm í sp-blönduðu C í CO2",
+  "Hybridization": "Blending"
+ },
+ "mtAlternatives": {
+  "Orbitals in an isolated C atom": {
+   "kept": "joined",
+   "other": "Svigrúm í einangruðu C-atómi",
+   "reason": "disagree",
+   "mt": "Svigrúm í einangruðu C atómi"
+  },
+  "Orbitals in the sp hybridized C in CO2": {
+   "kept": "joined",
+   "other": "Svigrúm í sp-tvinnblönduðu C í CO2",
+   "reason": "disagree",
+   "mt": "Svigrúm í sp-blönduðu C í CO2"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Blendingur",
+   "reason": "disagree",
+   "mt": "Blending"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

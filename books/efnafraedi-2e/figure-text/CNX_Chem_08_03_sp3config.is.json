@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_03_sp3config",
+ "renderHash": "62f5cbc1921ad8d0",
+ "composedHash": "62f5cbc1921ad8d0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Orbitals in an isolated C atom": "Svigrúm í einangruðu C-atómi",
+  "Orbitals in the sp2 hybridized C atom in C2H4": "Svigrúm í sp2-blendnuðu C-atómi í C2H4",
+  "Hybridization": "Blending",
+  "Unhybridized": "Óblendnað"
+ },
+ "mtAlternatives": {
+  "Orbitals in the sp2 hybridized C atom in C2H4": {
+   "kept": "joined",
+   "other": "Svigrúm í sp2-blendnu C-atómi í C2H4",
+   "reason": "disagree",
+   "mt": "Svigrúm í sp2-blendnuðu C-atómi í C2H4"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Blendingur",
+   "reason": "disagree",
+   "mt": "Blending"
+  },
+  "Unhybridized": {
+   "kept": "joined",
+   "other": "Óblendingaður",
+   "reason": "disagree",
+   "mt": "Óblendnað"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

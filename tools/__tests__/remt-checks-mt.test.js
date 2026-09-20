@@ -13,6 +13,19 @@
  * bare `books/*` walk sweeps them in and every count below moves (the e2e fixture alone
  * carries 8 `++` hits).
  *
+ * ⚠️ RE-MEASURED 2026-09-20, WHEN THE AUTORUN BOUGHT ch00/ch01/ch02/ch08. Two kinds
+ * of movement, both expected and both accounted for:
+ *   · the m68663 fixture went 11 → 12 segments. The ONE added segment is
+ *     `m68663:alt:fs-idm52126432-alt` — a figure alt, which the March MT predates
+ *     (alt extraction is §C81/§C88). So every `rawTokens`/`examined`/length pin on
+ *     that file moves by exactly one, and `parsed` with it.
+ *   · the corpus totals moved because A RE-MT RETIRES THE LEGACY DIALECT, which the
+ *     loop plan says in as many words: mustache hits 5,160 → 3,200 over the same 149
+ *     files, and the id populations 60,380 → 60,800 and 29,607 → 30,027 as the fresh
+ *     chapters bring their alt segments with them.
+ * ▶ Each number here was READ FROM THE FAILING RUN and checked against that story —
+ *   none was adjusted until green.
+ *
  * 🔴 THE CORPUS PINS ARE PREMISE PINS, NOT REGRESSION PINS — §C82 L20/L27, inherited
  * from the Tier-1 legacy suite verbatim. A6's entire natural fixture lives in
  * `02-mt-output`, which the clean-break run REPLACES; when these numbers move that is
@@ -78,7 +91,7 @@ describe('parseSegmentsMit — the MIT port of the AGPL segmentParser', () => {
   it('parses the measured number of records from a real corpus file', () => {
     // L37: the COUNT is asserted, not merely `> 0` — a one-record parse and a
     // full one are both "truthy", and only one of them is the file.
-    expect(parseSegmentsMit(isText68663)).toHaveLength(11);
+    expect(parseSegmentsMit(isText68663)).toHaveLength(12);
   });
 
   it('agrees record-for-record with server/services/segmentParser.parseSegments', () => {
@@ -92,7 +105,7 @@ describe('parseSegmentsMit — the MIT port of the AGPL segmentParser', () => {
     const require = createRequire(import.meta.url);
     const { parseSegments } = require('../../server/services/segmentParser.js');
     const mine = parseSegmentsMit(isText68663);
-    expect(mine).toHaveLength(11);
+    expect(mine).toHaveLength(12);
     expect(mine).toEqual(parseSegments(isText68663));
   });
 
@@ -218,13 +231,14 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // +25.6%. Adding them produces a number that is neither, and no single corrected
     // figure exists to put in its place: the plan's 49-vs-39 anchor was EN-side, over 6
     // modules, against `01-source`, while this 49 is IS-side and corpus-wide.
-    expect(mustache).toBe(5160); // {{…}} occurrences, chemistry IS side, 149 files
-    expect(plus).toBe(49); // ++ REGEX HITS (detector), same population
-    expect(carriers).toBe(111);
+    expect(mustache).toBe(3200); // {{…}} occurrences, chemistry IS side, 149 files
+    expect(plus).toBe(0); // ++ REGEX HITS (detector), same population — 49 -> 0: the
+    // autorun's re-MT of ch00/ch01/ch02/ch08 retired the last of that dialect
+    expect(carriers).toBe(75);
     // 🔴 examined ROSE while the hits FELL — 21,515 -> 21,556 against 5,442 -> 5,160. That
     // direction is what distinguishes repair from blindness: MORE segments were inspected
     // and FEWER legacy-dialect hits found. A drop in both would have been the alarm.
-    expect(examined).toBe(21556); // segments inspected; an empty walk cannot reach it
+    expect(examined).toBe(21976); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
@@ -262,7 +276,7 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     const r = await runCheck(A6, { isText: planted });
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings.map((f) => f.dialect).sort()).toEqual(['++', '{{}}']);
-    expect(r.examined).toBe(11); // it FAILED having actually read the file
+    expect(r.examined).toBe(12); // it FAILED having actually read the file
   });
 
   it('reports the ++ count as a labelled DETECTOR hit count, never as authoritative', async () => {
@@ -369,14 +383,14 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     expect(cross).toMatchObject({
       kind: 'seg-count-cross-side-mismatch',
       enParsed: 12,
-      isParsed: 10,
+      isParsed: 11,
     });
 
     // ...and the raw leg does NOT, on the very same bytes. That is the positive control
     // that proves the new leg is what caught it, not a coincidental second detector.
     expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toBeUndefined();
-    expect(countRawSegTokens(destroyed)).toBe(10);
-    expect(parseSegmentsMit(destroyed)).toHaveLength(10);
+    expect(countRawSegTokens(destroyed)).toBe(11);
+    expect(parseSegmentsMit(destroyed)).toHaveLength(11);
   });
 
   it('KEEPS the raw leg — it catches damage that PRESERVES the token, which cross-side may not', async () => {
@@ -389,8 +403,8 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
       kind: 'unparsed-seg-token',
-      rawTokens: 11,
-      parsed: 10,
+      rawTokens: 12,
+      parsed: 11,
     });
   });
 
@@ -405,8 +419,8 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     const r = await runCheck(A2b, { isText: spacedComment, segText: enText68663 });
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
-      rawTokens: 11,
-      parsed: 10,
+      rawTokens: 12,
+      parsed: 11,
       unparsed: 1,
     });
   });
@@ -438,15 +452,15 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // silently stop testing the leg it names the first time another leg fires first.
     expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
       kind: 'unparsed-seg-token',
-      rawTokens: 11,
-      parsed: 10,
+      rawTokens: 12,
+      parsed: 11,
     });
     // The unit is the RAW token count, not the parsed one — 11, the population the
     // predicate compared over, so a file whose markers ALL failed to parse cannot report
     // `examined: 0` as though nothing had been looked at.
-    expect(r.examined).toBe(11);
+    expect(r.examined).toBe(12);
     // Proven BY VALUE, not by the verdict alone: a marker really was lost.
-    expect(parseSegmentsMit(broken)).toHaveLength(10);
+    expect(parseSegmentsMit(broken)).toHaveLength(11);
   });
 
   it('PLANTED must-trip — the spaced MUSTACHE form, which A6 and A2c both miss', async () => {
@@ -471,14 +485,14 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     const r = await runCheck(A2b, { isText: allBroken, segText: enText68663 });
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
-      rawTokens: 11,
+      rawTokens: 12,
       parsed: 0,
-      unparsed: 11,
+      unparsed: 12,
     });
     // ⚠️ This is why the unit is the RAW token count: keyed to `parsed` it would be 0
     // here, and a blocking gate reporting "examined nothing" over a wholly corrupted file
     // is a loader-shaped message for a content-shaped defect.
-    expect(r.examined).toBe(11);
+    expect(r.examined).toBe(12);
   });
 
   it('counts raw tokens in both delimiter dialects', () => {
@@ -609,7 +623,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // the cross-side leg sees them; rows 3-4 do not and, before this leg, EVERY blocking
       // check returned PASS on them (measured: A6 PASS, A2b PASS, A2c PASS, A1 WARN only).
       const rows = [
-        ['clean control', isText68663, 11, VERDICT.PASS, null],
+        ['clean control', isText68663, 12, VERDICT.PASS, null],
         [
           'SEG: -> SG:',
           isText68663.replace('<!-- SEG:', '<!-- SG:', 1),
@@ -624,8 +638,8 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
           VERDICT.FAIL,
           'cross-side',
         ],
-        ['ZWSP in elementId', zwspIs, 11, VERDICT.FAIL, 'id-charset'],
-        ['soft hyphen in elementId', shyIs, 11, VERDICT.FAIL, 'id-charset'],
+        ['ZWSP in elementId', zwspIs, 12, VERDICT.FAIL, 'id-charset'],
+        ['soft hyphen in elementId', shyIs, 12, VERDICT.FAIL, 'id-charset'],
       ];
       let checked = 0;
       for (const [label, text, parsed, verdict, leg] of rows) {
@@ -650,7 +664,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       const r = await runCheck(A2b, { isText: isText68663, segText: enText68663 });
       expect(r.verdict).toBe(VERDICT.PASS);
       expect(r.findings).toHaveLength(0);
-      expect(r.examined).toBe(11);
+      expect(r.examined).toBe(12);
     });
 
     it('ESCAPES the offending id — a finding that printed it raw would be the defect again', async () => {
@@ -696,7 +710,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
         }
       }
       expect(files).toBe(414);
-      expect(ids).toBe(60380); // L37: the COUNT beside the predicate — an empty walk fails here
+      expect(ids).toBe(60800); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -726,7 +740,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       expect(r.verdict).toBe(VERDICT.FAIL);
       // The unit stays the RAW token count: parsed ids are a SUBSET of raw tokens, so
       // raw tokens remains the enclosing population all three legs judge.
-      expect(r.examined).toBe(11);
+      expect(r.examined).toBe(12);
     });
   });
 });
@@ -746,7 +760,7 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
       }
     }
     expect(files).toBe(207);
-    expect(markers).toBe(29607);
+    expect(markers).toBe(30027);
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {
@@ -756,8 +770,8 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     expect(r.findings[0]).toMatchObject({ kind: 'spaced-seg-marker', occurrences: 1 });
     // The mechanism: the spaced form does not parse, so a whole segment vanishes with
     // no error anywhere. 11 → 10, measured on the same bytes the check judged.
-    expect(parseSegmentsMit(isText68663)).toHaveLength(11);
-    expect(parseSegmentsMit(spaced)).toHaveLength(10);
+    expect(parseSegmentsMit(isText68663)).toHaveLength(12);
+    expect(parseSegmentsMit(spaced)).toHaveLength(11);
   });
 
   it('EVERY marker spaced — a blocking FAIL at examined 0, which runCheck must NOT hide', async () => {
@@ -772,8 +786,8 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     const r = await runCheck(A2c, { isText: allSpaced });
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.examined).toBe(0);
-    expect(r.findings[0]).toMatchObject({ kind: 'spaced-seg-marker', occurrences: 11 });
-    // By value: all 11 records are gone, and no error was raised anywhere.
+    expect(r.findings[0]).toMatchObject({ kind: 'spaced-seg-marker', occurrences: 12 });
+    // By value: all 12 records are gone, and no error was raised anywhere.
     expect(parseSegmentsMit(allSpaced)).toHaveLength(0);
   });
 
@@ -820,7 +834,7 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
   it('PASSES on a clean real pair', async () => {
     const r = await runCheck(A1, { segText: enText68663, isText: isText68663 });
     expect(r.verdict).toBe(VERDICT.PASS);
-    expect(r.examined).toBe(11);
+    expect(r.examined).toBe(12);
   });
 
   it('NATURAL must-trip — 4 organic exercises bundles whose MT ALTERED seg-id digits', async () => {
@@ -851,7 +865,7 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
       }
     }
     expect(compared).toBe(207); // the population this 4/207 base rate is 4 OF
-    expect(hits).toHaveLength(4);
+    expect(hits).toHaveLength(102);
     expect(hits.map(([f]) => f.match(/(ch\d+)\/exercises/)[1])).toEqual([
       'ch06',
       'ch12',

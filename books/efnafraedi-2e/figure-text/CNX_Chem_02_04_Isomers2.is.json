@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_04_Isomers2",
+ "renderHash": "8a29789eb3faaf7a",
+ "composedHash": "8a29789eb3faaf7a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "(+)-Carvone": "(+)-Karvón",
+  "(–)-Carvone": "(–)-Karvón"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

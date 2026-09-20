@@ -30,6 +30,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_05_Mendeleev",
+      "title": null,
       "caption": {
         "segmentId": "m68695:caption:CNX_Chem_02_05_Mendeleev-caption"
       },
@@ -51,6 +52,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_05_PerTable1",
+      "title": null,
       "caption": {
         "segmentId": "m68695:caption:CNX_Chem_02_05_PerTable1-caption"
       },
@@ -82,6 +84,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_05_PerTable2",
+      "title": null,
       "caption": {
         "segmentId": "m68695:caption:CNX_Chem_02_05_PerTable2-caption"
       },

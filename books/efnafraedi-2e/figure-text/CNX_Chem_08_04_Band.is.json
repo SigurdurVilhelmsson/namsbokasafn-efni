@@ -1,0 +1,34 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_04_Band",
+ "renderHash": "977fd96c4b7607fd",
+ "composedHash": "977fd96c4b7607fd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Band gap": "Orkubil",
+  "Conduction": "Leiðni",
+  "Valence": "Gilgildisborði",
+  "Insulator": "Einangrari",
+  "Semiconductor": "Hálfleiðari",
+  "Conductor": "Leiðari"
+ },
+ "mtAlternatives": {
+  "Valence": {
+   "kept": "joined",
+   "other": "Valence",
+   "reason": "disagree",
+   "mt": "Gilgildisborði"
+  },
+  "Conductor": {
+   "kept": "joined",
+   "other": "Hljómsveitarstjóri",
+   "reason": "disagree",
+   "mt": "Leiðari"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

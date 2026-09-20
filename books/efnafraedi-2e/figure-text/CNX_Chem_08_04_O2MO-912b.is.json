@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_04_O2MO-912b",
+ "renderHash": "ef7b886007976265",
+ "composedHash": "ef7b886007976265",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Atomic orbitals": "Atómsvigrúm",
+  "Molecular orbitals": "Sameindasvigrúm"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

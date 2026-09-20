@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_01_O2bonds_img",
+ "renderHash": "5552a92ed05d92c3",
+ "composedHash": "5552a92ed05d92c3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "s orbital": "s-svigrúm",
+  "σ bond": "σ-tengi",
+  "p orbital": "p-svigrúm",
+  "π bond": "π-tengi"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

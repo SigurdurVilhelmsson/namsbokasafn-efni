@@ -1,200 +1,237 @@
 <!-- SEG:m68747:title:auto-1 -->
-Sameindasvigrúmakenningin
+Sámeindasvigrúmskenningin
 
 <!-- SEG:m68747:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68747:abstract-item:abstract-item-1 -->
-Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sameindasvigrúm út frá frumeindasvigrúmum
+Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sámeindasvigrúm út frá atómsvigrúmum
 
 <!-- SEG:m68747:abstract-item:abstract-item-2 -->
-Lýst eiginleikum bindandi og andbindandi sameindasvigrúma
+Lýst eiginleikum bindandi og andbindandi sámeindasvigrúma
 
 <!-- SEG:m68747:abstract-item:abstract-item-3 -->
-Reiknað tengiraðir út frá rafeindaskipan sameinda
+Reiknað tengiraðir út frá rafeindaskipan sámeinda
 
 <!-- SEG:m68747:abstract-item:abstract-item-4 -->
-Skrifað rafeindaskipan sameinda fyrir tvíatóma sameindir úr fyrstu og annarri lotu
+Skrifað rafeindaskipan sámeinda fyrir tvíatóma sámeindir úr fyrstu og annarri lotu
 
 <!-- SEG:m68747:abstract-item:abstract-item-5 -->
-Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sameindanna
+Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sámeindanna
 
 <!-- SEG:m68747:para:fs-idm108621792 -->
-Fyrir næstum allar samgildar sameindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sameindar og komist nálægt því að spá fyrir um tengihorn. Ein mikilvægasta sameindin sem við þekkjum, súrefnissameindin O[[sub:2]], skapar þó vandamál hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:
+Fyrir næstum allar samgildar sámeindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sámeindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sámeindin sem við þekkjum, súrefnissámeindin O[[sub:2]], vandamáli hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:
+
+<!-- SEG:m68747:alt:fs-idm39755904-alt -->
+Lewis-mynd er sýnd. Hún er samsett úr tveimur súrefnisatómum, hvort með tvö stök rafeindapör, sem eru tengd saman með tvítengi.
 
 <!-- SEG:m68747:para:fs-idm179265392 -->
-Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hver súrefnisfrumeind hefur átta rafeindir í kringum sig. Þessi mynd er hins vegar í ósamræmi við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það því saman milli póla segulsins og ögrar þyngdaraflinu, eins og sýnt er í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður {{term}}meðsegulmagn{{/term}} og kemur fram í sameindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig getum við útskýrt þetta misræmi?
+Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hvert súrefnisatóm hefur átta rafeindir í kringum sig. Þessi mynd er þó í andstöðu við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það saman milli póla segulsins og ögrar þyngdaraflinu, eins og í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður [[term:hjásegulmagn|term-00001]] og kemur fram í sámeindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig útskýrum við þetta misræmi?
 
 <!-- SEG:m68747:para:fs-idm140344208 -->
-Segulnæmi mælir kraftinn sem efni verður fyrir í segulsviði. Þegar við berum saman þyngd sýnis við þyngdina sem mæld er í segulsviði ([[xref:CNX_Chem_08_04_Gouy]]), munu meðseglandi sýni sem dragast að seglinum virðast þyngri vegna kraftsins sem segulsviðið beitir. Við getum reiknað út fjölda óparaðra rafeinda út frá þyngdaraukningunni.
+Segulnæmi mælir kraftinn sem efni verður fyrir í segulsviði. Þegar við berum saman þyngd sýnis við þyngdina sem mæld er í segulsviði ([[xref:CNX_Chem_08_04_Gouy]]), munu hjásegulmögnuð sýni sem dragast að seglinum virðast þyngri vegna kraftsins sem segulsviðið beitir. Við getum reiknað út fjölda óparaðra rafeinda út frá þyngdaraukningunni.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Gouy-caption -->
-{{term}}Gouy{{/term}}-vog ber saman massa sýnis í segulsviði við massann þegar slökkt er á rafseglinum til að ákvarða fjölda óparaðra rafeinda í sýni.
+[[term:Gouy|term-00002]]-vog ber saman massa sýnis í segulsviði við massann þegar slökkt er á rafseglinum til að ákvarða fjölda óparaðra rafeinda í sýni.
+
+<!-- SEG:m68747:alt:fs-idm166075136-alt -->
+Myndin sýnir stand sem styður tvo hluti sem haldið er í jafnvægi með láréttri slá. Hægra megin styður sláin skál sem heldur tveimur lóðum. Vinstra megin er lína fest við tilraunaglas merkt „Sýnisglas“. Tilraunaglasið hefur verið látið síga niður í rýmið merkt „Segulsvið“, á milli tveggja mannvirkja merkt „Rafseglar“.
 
 <!-- SEG:m68747:para:fs-idm167869376 -->
-Tilraunir sýna að hver O[[sub:2]] sameind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja ópöruðu rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sameinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru {{term}}mótseglandi{{/term}} og hrinda segulsviði veiklega frá sér. Meðseglandi og mótseglandi efni virka ekki sem varanlegir seglar. Aðeins í nærveru ytra segulsviðs sýna þau aðdrátt eða fráhrindingu.
+Tilraunir sýna að hver O[[sub:2]] sámeind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja óparaðra rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sámeinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru [[term:mótsegulmögnuð|term-00003]] og hrinda segulsviði veiklega frá sér. Hjásegulmögnuð og mótsegulmögnuð efni virka ekki sem varanlegir seglar. Aðeins í viðurvist ytra segulsviðs sýna þau aðdrátt eða fráhrindingu.
 
 <!-- SEG:m68747:para:fs-idm182773888 -->
-Horfðu á þetta [[link:stutta myndband|http://openstax.org/l/16diamagnetic]] til að sjá nokkrar sýnikennslur á meðseglandi og mótseglandi hegðun.
+Horfðu á þetta [[link:stutta myndband|http://openstax.org/l/16diamagnetic]] til að sjá nokkrar sýnikennslur á hjásegulmagnaðri og mótsegulmagnaðri hegðun.
 
 <!-- SEG:m68747:para:fs-idm112096224 -->
-Sameindasvigrúmakenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til meðsegulmagns súrefnissameindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sameindum, svo sem frávik frá áttureglunni og flóknari sameindum með flóknari tengjum (sem er utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sameind og líklegri staðsetningu þessara rafeinda. Ólíkt gildistengjakenningunni, sem notar blendingssvigrúm sem eru bundin við eina ákveðna frumeind, notar MO-kenningin samsetningu frumeindasvigrúma til að fá sameindasvigrúm sem eru [[i:dreifð]] yfir alla sameindina í stað þess að vera staðbundin á einstökum frumeindum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur hálfleiðarar og enn önnur einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði þessara tveggja tengjakenninga sem fylla hvor aðra upp. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sameinda.
-
-<!-- SEG:m68747:entry:auto-15 -->
-Samanburður á tengjakenningum
-
-<!-- SEG:m68747:entry:auto-16 -->
-Gildistengjakenningin
+Sámeindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissámeindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sámeindum, svo sem brot á áttureglunni og flóknari sámeindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sámeind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sámeindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sámeindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sámeinda.
 
 <!-- SEG:m68747:entry:auto-17 -->
-Sameindasvigrúmakenningin
+Samanburður á tengjakenningum
 
 <!-- SEG:m68747:entry:auto-18 -->
-lítur á efnatengi sem staðbundin milli eins frumeindapars
+Gildisrafeindatengjakenningin
 
 <!-- SEG:m68747:entry:auto-19 -->
-lítur á rafeindir sem dreifðar um alla sameindina
+Sámeindasvigrúmskenningin
 
 <!-- SEG:m68747:entry:auto-20 -->
-býr til efnatengi úr skörun frumeindasvigrúma ([[i:s, p, d]]...) og blendingssvigrúma ([[i:sp, sp]][[sup:2]], [[i:sp]][[sup:3]]...)
+lítur á tengi sem staðbundin milli eins atómapars
 
 <!-- SEG:m68747:entry:auto-21 -->
-sameinar frumeindasvigrúm til að mynda sameindasvigrúm (σ, σ*, π, π*)
+lítur á rafeindir sem óstaðbundnar um alla sámeindina
 
 <!-- SEG:m68747:entry:auto-22 -->
-myndar σ- eða π-tengi
+býr til tengi úr skörun atómsvigrúma ([[i:s, p, d]]…) og blendingssvigrúma ([[i:sp, sp]][[sup:2]], [[i:sp]][[sup:3]]…)
 
 <!-- SEG:m68747:entry:auto-23 -->
-býr til bindandi og andbindandi víxlverkanir eftir því hvaða svigrúm eru fyllt
+sameinar atómsvigrúm til að mynda sámeindasvigrúm (σ, σ*, π, π*)
 
 <!-- SEG:m68747:entry:auto-24 -->
-spáir fyrir um lögun sameindar út frá fjölda svæða með rafeindaþéttleika
+myndar σ- eða π-tengi
 
 <!-- SEG:m68747:entry:auto-25 -->
-spáir fyrir um skipan rafeinda í sameindum
+býr til bindandi og andbindandi víxlverkanir eftir því hvaða svigrúm eru fyllt
 
 <!-- SEG:m68747:entry:auto-26 -->
-þarfnast margra mynda til að lýsa vokmyndum
+spáir fyrir um lögun sámeindar út frá fjölda svæða með rafeindaþéttleika
+
+<!-- SEG:m68747:entry:auto-27 -->
+spáir fyrir um fyrirkomulag rafeinda í sámeindum
+
+<!-- SEG:m68747:entry:auto-28 -->
+þarf margar byggingar til að lýsa voki
+
 
 <!-- SEG:m68747:para:fs-idm11457392 -->
-{{term}}Sameindasvigrúmakenningin{{/term}} lýsir dreifingu rafeinda í sameindum á svipaðan hátt og dreifingu rafeinda í frumeindum er lýst með frumeindasvigrúmum. Með því að nota skammtafræði er hegðun rafeindar í sameind enn lýst með bylgjufalli, [[i:Ψ]], hliðstætt hegðuninni í frumeind. Rétt eins og rafeindir í kringum stakar frumeindir, eru rafeindir í kringum frumeindir í sameindum takmarkaðar við stök (skömmtuð) orkugildi. Svæðið í rúminu þar sem líklegt er að finna gildisrafeind í sameind er kallað {{term}}sameindasvigrúm ([[i:Ψ]][[sup:2]]){{/term}}. Eins og frumeindasvigrúm er sameindasvigrúm fullt þegar það inniheldur tvær rafeindir með gagnstæðan spuna.
+[[term:Samesvagrúmskenningin|term-00004]] lýsir dreifingu rafeinda í sameindum á svipaðan hátt og dreifingu rafeinda í atómum er lýst með atómsvigrúmum. Með skammtafræði er hegðun rafeindar í sameind enn lýst með bylgjufalli, [[i:Ψ]], hliðstætt hegðun í atómi. Rétt eins og rafeindir í kringum einangruð atóm eru rafeindir í kringum atóm í sameindum takmarkaðar við stakar (skammtaðar) orkur. Svæðið í rúminu þar sem líklegt er að finna gildisrafeind í sameind er kallað [[term:samesvigrúm ([[i:Ψ]][[sup:2]])|term-00005]]. Eins og atómsvigrúm er samesvigrúm fullt þegar það inniheldur tvær rafeindir með gagnstæðan spuna.
 
 <!-- SEG:m68747:para:fs-idm112433808 -->
-Við munum skoða sameindasvigrúm í sameindum sem samanstanda af tveimur eins atómum (til dæmis H[[sub:2]] eða Cl[[sub:2]]). Slíkar sameindir eru kallaðar {{term}}samkjarna tvíatóma sameindir{{/term}}. Í þessum tvíatóma sameindum koma fyrir nokkrar gerðir sameindasvigrúma.
+Við munum skoða samesvigrúm í sameindum sem samanstanda af tveimur eins atómum (H[[sub:2]] eða Cl[[sub:2]], til dæmis). Slíkar sameindir eru kallaðar [[term:samkjarna tvíatóma sameindir|term-00006]]. Í þessum tvíatóma sameindum koma fyrir nokkrar gerðir samesvigrúma.
 
 <!-- SEG:m68747:para:fs-idm141141248 -->
-Stærðfræðilega ferlið við að sameina frumeindasvigrúm til að mynda sameindasvigrúm er kallað {{term}}línuleg samantekt frumeindasvigrúma (LCAO){{/term}}. Bylgjufallið lýsir bylgjueiginleikum rafeindar. Sameindasvigrúm eru samantektir af bylgjuföllum frumeindasvigrúma. Samsetning bylgna getur leitt til uppbyggjandi víxlverkunar, þar sem bylgjutoppar raðast saman við bylgjutoppa, eða eyðandi víxlverkunar, þar sem bylgjutoppar raðast saman við bylgjudali ([[xref:CNX_Chem_08_04_waveadd]]). Í svigrúmum eru bylgjurnar þrívíðar og þær sameinast með bylgjum í fasa sem mynda svæði með meiri líkum á rafeindaþéttleika og bylgjum úr fasa sem mynda nóður, eða svæði án rafeindaþéttleika.
+Stærðfræðilega ferlið við að sameina atómsvigrúm til að mynda samesvigrúm er kallað [[term:línuleg samsetning atómsvigrúma (LCAO)|term-00007]]. Bylgjufallið lýsir bylgjueiginleikum rafeindar. Samesvigrúm eru samsetningar bylgjufalla atómsvigrúma. Samsetning bylgna getur leitt til uppbyggjandi víxlverkunar, þar sem toppar raðast upp við toppa, eða eyðileggjandi víxlverkunar, þar sem toppar raðast upp við dali ([[xref:CNX_Chem_08_04_waveadd]]). Í svigrúmum eru bylgjurnar þrívíddar og þær sameinast með bylgjum í fasa sem mynda svæði með meiri líkum á rafeindaþéttleika og bylgjum úr fasa sem mynda hnúta, eða svæði án rafeindaþéttleika.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_waveadd-caption -->
-(a) Þegar bylgjur í fasa sameinast myndar uppbyggjandi víxlverkun bylgju með meiri útslagi. (b) Þegar bylgjur úr fasa sameinast myndar eyðandi víxlverkun bylgju með minna (eða ekkert) útslag.
+(a) Þegar bylgjur í fasa sameinast myndar uppbyggjandi víxlverkun bylgju með meiri útslagi. (b) Þegar bylgjur úr fasa sameinast myndar eyðileggjandi víxlverkun bylgju með minna (eða ekkert) útslag.
+
+<!-- SEG:m68747:alt:fs-idm181597760-alt -->
+Sýnd eru tvö skýringarmyndapör merkt „a“ og „b“. Skýringarmynd a sýnir tvær eins bylgjur með tvo toppa og tvo dali. Þær eru teiknaðar hvor ofan á annarri með plúsmerki á milli og jafnaðarmerki til hægri. Hægra megin við jafnaðarmerkið er mun hærri bylgja með sama fjölda dala og toppa. Skýringarmynd b sýnir tvær bylgjur með tvo toppa og tvo dali, en þær eru spegilmyndir hvor af annarri snúnar um láréttan ás. Þær eru teiknaðar hvor ofan á annarri með plúsmerki á milli og jafnaðarmerki til hægri. Hægra megin við jafnaðarmerkið er flöt lína.
 
 <!-- SEG:m68747:para:fs-idm153714976 -->
-Það eru tvær gerðir sameindasvigrúma sem geta myndast úr skörun tveggja [[i:s]]-frumeindasvigrúma á aðlægum atómum. Þessar tvær gerðir eru sýndar á [[xref:CNX_Chem_08_04_ssigma]]. Samsetning í fasa myndar lægra orku {{term}}σ[[sub:[[i:s]]]] sameindasvigrúm{{/term}} (lesið sem „sigma-s“) þar sem mestur hluti rafeindaþéttleikans er beint á milli kjarnanna. Álagning úr fasa (sem einnig má hugsa sér sem frádrátt bylgjufallanna) myndar hærra orku {{term}}[[MATH:1]] sameindasvigrúm{{/term}} (lesið sem „sigma-s-stjarna“) þar sem nóða er á milli kjarnanna. Stjarnan táknar að svigrúmið er andbindandi svigrúm. Rafeindir í σ[[i:[[sub:s]]]]-svigrúmi dragast að báðum kjörnum samtímis og eru stöðugri (hafa lægri orku) en þær væru í einangruðum atómum. Með því að bæta rafeindum í þessi svigrúm myndast kraftur sem heldur kjörnunum tveimur saman, svo við köllum þessi svigrúm {{term}}bindandi svigrúm{{/term}}. Rafeindir í [[MATH:2]]-svigrúmum eru staðsettar fjarri svæðinu milli kjarnanna tveggja. Aðdráttarkrafturinn milli kjarnanna og þessara rafeinda togar kjarnana tvo í sundur. Þess vegna eru þessi svigrúm kölluð {{term}}andbindandi svigrúm{{/term}}. Rafeindir fylla fyrst bindandi svigrúmið með lægri orku áður en þær fylla andbindandi svigrúmið með hærri orku, rétt eins og þær fylla frumeindasvigrúm með lægri orku áður en þær fylla frumeindasvigrúm með hærri orku.
+Það eru tvær gerðir samesvigrúma sem geta myndast úr skörun tveggja atóm-[[i:s]]-svigrúma á aðlægum atómum. Þessar tvær gerðir eru sýndar á [[xref:CNX_Chem_08_04_ssigma]]. Samsetningin í fasa myndar lægra orku [[term:σ[[sub:[[i:s]]]] samesvigrúm|term-00008]] (lesið sem „sigma-s“) þar sem mestur hluti rafeindaþéttleikans er beint á milli kjarnanna. Samlagningin úr fasa (sem einnig má hugsa sér sem frádrátt bylgjufallanna) myndar hærra orku [[term:[[MATH:1]] samesvigrúm|term-00009]] (lesið sem „sigma-s-stjarna“) þar sem hnútur er á milli kjarnanna. Stjarnan táknar að svigrúmið er andbindandi svigrúm. Rafeindir í σ[[i:[[sub:s]]]]-svigrúmi laðast að báðum kjörnunum samtímis og eru stöðugri (hafa lægri orku) en þær væru í einangruðum atómum. Með því að bæta rafeindum við þessi svigrúm myndast kraftur sem heldur kjörnunum tveimur saman, þannig að við köllum þessi svigrúm [[term:bindandi svigrúm|term-00010]]. Rafeindir í [[MATH:2]]-svigrúmum eru staðsettar langt frá svæðinu milli kjarnanna tveggja. Aðdráttarkrafturinn milli kjarnanna og þessara rafeinda togar kjarnana tvo í sundur. Þess vegna eru þessi svigrúm kölluð [[term:andbindandi svigrúm|term-00011]]. Rafeindir fylla fyrst bindandi svigrúmið með lægri orku áður en þær fylla andbindandi svigrúmið með hærri orku, rétt eins og þær fylla atómsvigrúm með lægri orku áður en þær fylla atómsvigrúm með hærri orku.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_ssigma-caption -->
-Sigma (σ) og sigma-stjörnu (σ*) sameindasvigrúm myndast við samsetningu tveggja [[i:s]]-frumeindasvigrúma. Punktarnir (·) gefa til kynna staðsetningu kjarna.
+Sigma (σ) og sigma-stjörnu (σ*) samesvigrúm myndast við samsetningu tveggja [[i:s]] atómsvigrúma. Punktarnir (·) gefa til kynna staðsetningu kjarna.
+
+<!-- SEG:m68747:alt:fs-idm78961584-alt -->
+Sýnd er skýringarmynd sem sýnir lóðrétta ör sem vísar upp og er vinstra megin við alla aðra hluta skýringarmyndarinnar og er merkt „E“. Strax hægra megin við miðpunkt örvarinnar eru tveir hringir, hvor merktur með plúsmerki, bókstafnum S og orðunum „Atómsvigrúm“. Á eftir þeim kemur hægri ör sem vísar á sömu tvo hringina merkta með plúsmerkjum, en þeir snertast nú og eru merktir „Sameina atómsvigrúm“. Tvær hægri örvar leiða að síðasta hluta skýringarmyndarinnar, önnur vísar upp og hin niður. Efri örin er merkt „Draga frá“ og vísar á tvo aflanga sporöskjulaga hringi merkta með plúsmerkjum og orðunum „Andbindandi svigrúm sigma neðanskrift s ofanskrift stjarna“. Neðri örin er merkt „Leggja saman“ og vísar á aflangan sporöskjulaga hring með tveimur plúsmerkjum sem er merktur „Bindandi svigrúm sigma neðanskrift s“. Fyrirsögnin yfir síðasta hluta skýringarmyndarinnar eru orðin „Samesvigrúm“.
 
 <!-- SEG:m68747:para:fs-idm201921312 -->
-Þú getur horft á [[link:animations|http://openstax.org/l/16molecorbital]] sem sýna útreiknuð frumeindasvigrúm sameinast og mynda ýmis sameindasvigrúm á vefsíðunni Orbitron.
+Þú getur horft á [[link:animations|http://openstax.org/l/16molecorbital]] sem sýna útreiknuð atómsvigrúm sameinast og mynda ýmis samesvigrúm á vefsíðunni Orbitron.
 
 <!-- SEG:m68747:para:fs-idm148257600 -->
-Í [[i:p]]-svigrúmum myndar bylgjufallið tvo bauga með gagnstæðum fösum, hliðstætt því hvernig tvívíð bylgja hefur bæði hluta fyrir ofan og neðan meðaltal. Við gefum til kynna fasana með því að skyggja svigrúmsbaugana með mismunandi litum. Þegar svigrúmsbaugar með sama fasa skarast eykur uppbyggjandi bylgjuvíxlverkun rafeindaþéttleikann. Þegar svæði með gagnstæðum fasa skarast minnkar eyðandi bylgjuvíxlverkun rafeindaþéttleikann og myndar nóður. Þegar [[i:p]]-svigrúm skarast enda í enda mynda þau σ- og σ*-svigrúm ([[xref:CNX_Chem_08_04_pMOsigma]]). Ef tvö atóm eru staðsett meðfram [[i:x]]-ásnum í kartesísku hnitakerfi skarast [[i:p[[sub:x]]]]-svigrúmin tvö enda í enda og mynda σ[[i:[[sub:px]]]] (bindandi) og [[MATH:3]] (andbindandi) (lesið sem „sigma-p-x“ og „sigma-p-x-stjarna“). Rétt eins og með skörun [[i:s]]-svigrúma gefur stjarnan til kynna svigrúmið með nóðu milli kjarnanna, sem er hærra orku, andbindandi svigrúm.
+Í [[i:p]]-svigrúmum gefur bylgjufallið af sér tvo blaðhluta með gagnstæðum fasa, á svipaðan hátt og tvívíð bylgja hefur bæði hluta fyrir ofan og neðan meðaltalið. Við táknum fasana með því að skyggja blaðhluta svigrúmanna með mismunandi litum. Þegar blaðhlutar svigrúma með sama fasa skarast eykur uppbyggjandi bylgjuvíxlverkun rafeindaþéttleikann. Þegar svæði með gagnstæðum fasa skarast minnkar eyðandi bylgjuvíxlverkun rafeindaþéttleikann og myndar hnúta. Þegar [[i:p]]-svigrúm skarast enda á enda mynda þau σ- og σ*-svigrúm ([[xref:CNX_Chem_08_04_pMOsigma]]). Ef tvö atóm eru staðsett meðfram [[i:x]]-ásnum í kartesísku hnitakerfi skarast tvö [[i:p[[sub:x]]]]-svigrúm enda á enda og mynda σ[[i:[[sub:px]]]] (bindandi) og [[MATH:3]] (andbindandi) (lesið sem „sigma-p-x“ og „sigma-p-x stjarna“). Rétt eins og með skörun [[i:s]]-svigrúma gefur stjarnan til kynna svigrúm með hnút á milli kjarnanna, sem er orkuhærra, andbindandi svigrúm.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOsigma-caption -->
-Samsetning bylgjufalla tveggja [[i:p]]-frumeindasvigrúma meðfram millikjarnaásnum myndar tvö sameindasvigrúm, σ[[i:[[sub:p]]]] og [[MATH:4]]
+Samsetning bylgjufalla tveggja [[i:p]]-atómvigrúma meðfram ásnum milli kjarnanna myndar tvö sameindasvigrúm, σ[[i:[[sub:p]]]] og [[MATH:4]]
+
+<!-- SEG:m68747:alt:fs-idm189517056-alt -->
+Sýndar eru tvær láréttar raðir af skýringarmyndum. Efri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við samrunna skýringarmynd af svigrúmi. Samrunna skýringarmyndin hefur mun stærri sporöskjulaga mynd í miðjunni og mun minni sporöskjulaga svigrúm á jaðrinum. Hún er merkt „sigma neðanskrift p x“. Neðri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við skipta skýringarmynd af svigrúmi. Skipta skýringarmyndin hefur mun stærri sporöskjulaga mynd á ytri endunum og mun minni sporöskjulaga svigrúm á innri brúnum. Hún er merkt „sigma neðanskrift p x ofanskrift stjarna“.
 
 <!-- SEG:m68747:para:fs-idm175046592 -->
-Hlið við hlið skörun tveggja [[i:p]]-svigrúma myndar {{term}}pí (π) bindandi sameindasvigrúm{{/term}} og {{term}}π* andbindandi sameindasvigrúm{{/term}}, eins og sýnt er á [[xref:CNX_Chem_08_04_pMOpi]]. Í girðitengiskenningunni lýsum við π-tengjum þannig að þau innihaldi nóðuflöt sem inniheldur millikjarnaásinn og er hornréttur á bauga [[i:p]]-svigrúmanna, með rafeindaþéttleika beggja vegna nóðunnar. Í sameindasvigrúmskenningunni lýsum við π-svigrúminu með sama formi og π-tengi er til staðar þegar þetta svigrúm inniheldur rafeindir. Rafeindir í þessu svigrúmi víxlverka við báða kjarna og hjálpa til við að halda atómunum tveimur saman, sem gerir það að bindandi svigrúmi. Fyrir samsetningu úr fasa myndast tveir nóðufletir, annar meðfram millikjarnaásnum og hinn hornréttur á milli kjarnanna.
+Skörun tveggja [[i:p]]-svigrúma hlið við hlið gefur af sér [[term:pí (π) bindandi sameindasvigrúm|term-00012]] og [[term:π* andbindandi sameindasvigrúm|term-00013]], eins og sýnt er í [[xref:CNX_Chem_08_04_pMOpi]]. Í gildisrafeindatengslakenningunni lýsum við π-tengjum þannig að þau innihaldi hnútplan sem inniheldur ásinn milli kjarnanna og er hornrétt á blaðhluta [[i:p]]-svigrúmanna, með rafeindaþéttleika beggja vegna við hnútinn. Í sameindasvigrúmakenningunni lýsum við π-svigrúminu með þessu sama formi og π-tengi er til staðar þegar þetta svigrúm inniheldur rafeindir. Rafeindir í þessu svigrúmi víxlverka við báða kjarnana og hjálpa til við að halda atómunum tveimur saman, sem gerir það að bindandi svigrúmi. Fyrir samsetningu með gagnstæðum fasa myndast tvö hnútplön, annað meðfram ásnum milli kjarnanna og hitt hornrétt á milli kjarnanna.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOpi-caption -->
-Hlið við hlið skörun tveggja [[i:p]]-svigrúma leiðir til myndunar tveggja π-sameindasvigrúma. Samsetning svigrúma úr fasa leiðir til andbindandi sameindasvigrúms með tveimur nóðum. Önnur inniheldur millikjarnaásinn og hin er hornrétt á ásinn. Samsetning svigrúma í fasa leiðir til bindandi svigrúms. Það er nóða (blá) sem inniheldur millikjarnaásinn með tveimur baugum svigrúmsins staðsettum fyrir ofan og neðan þessa nóðu.
+Skörun tveggja [[i:p]]-svigrúma hlið við hlið leiðir til myndunar tveggja π-sameindasvigrúma. Samsetning svigrúma með gagnstæðum fasa leiðir til andbindandi sameindasvigrúms með tveimur hnútum. Annar inniheldur ásinn milli kjarnanna og hinn er hornréttur á ásinn. Samsetning svigrúma með sama fasa leiðir til bindandi svigrúms. Það er hnútur (blár) sem inniheldur ásinn milli kjarnanna með tveimur blaðhlutum svigrúmsins staðsettum fyrir ofan og neðan þennan hnút.
+
+<!-- SEG:m68747:alt:fs-idm151833152-alt -->
+Sýndar eru tvær láréttar raðir af skýringarmyndum. Bæði efri og neðri skýringarmyndirnar byrja á tveimur lóðréttum hnetulaga svigrúmum með plúsmerki á milli, fylgt eftir með ör til hægri. Efri skýringarmyndin sýnir sömu lóðréttu hnetulaga svigrúmin beygja sig örlítið frá hvoru öðru og aðskilin með punktalínu. Hún er merkt „pí neðanskrift p ofanskrift stjarna“. Neðri skýringarmyndin sýnir lárétta skörun svigrúmanna tveggja og er merkt „pí neðanskrift p“.
 
 <!-- SEG:m68747:para:fs-idm130124992 -->
-Í sameindasvigrúmum tvíatóma sameinda hefur hver frumeind einnig tvö sett af [[i:p]]-svigrúmum sem liggja hlið við hlið ([[i:p[[sub:y]]]] og [[i:p[[sub:z]]]]), þannig að þessi fjögur frumeindasvigrúm sameinast í pörum og mynda tvö π-svigrúm og tvö π*-svigrúm. π[[i:[[sub:py]]]] og [[MATH:5]] svigrúmin eru hornrétt á π[[i:[[sub:pz]]]] og [[MATH:6]] svigrúmin. Fyrir utan stefnu þeirra eru π[[i:[[sub:py]]]] og π[[i:[[sub:pz]]]] svigrúmin eins og hafa sömu orku; þau eru {{term}}úrkynjuð svigrúm{{/term}}. [[MATH:7]] og [[MATH:8]] andbindandi svigrúmin eru einnig úrkynjuð og eins fyrir utan stefnu þeirra. Alls myndast sex sameindasvigrúm úr samsetningu sex atóm[[i:p]]-svigrúma í tveimur frumeindum: σ[[i:[[sub:px]]]] og [[MATH:9]] π[[i:[[sub:py]]]] og [[MATH:10]] π[[i:[[sub:pz]]]] og [[MATH:11]]
+Í sameindasvigrúmum tvíatóma sameinda hefur hvert atóm einnig tvö sett af [[i:p]]-svigrúmum sem eru stillt upp hlið við hlið ([[i:p[[sub:y]]]] og [[i:p[[sub:z]]]]), þannig að þessi fjögur atómsvigrúm sameinast í pörum til að mynda tvö π-svigrúm og tvö π*-svigrúm. π[[i:[[sub:py]]]] og [[MATH:5]] svigrúmin eru hornrétt á π[[i:[[sub:pz]]]] og [[MATH:6]] svigrúmin. Fyrir utan afstöðu sína eru π[[i:[[sub:py]]]] og π[[i:[[sub:pz]]]] svigrúmin eins og hafa sömu orku; þau eru [[term:úrkynjuð svigrúm|term-00014]]. [[MATH:7]] og [[MATH:8]] andbindandi svigrúmin eru einnig úrkynjuð og eins fyrir utan afstöðu sína. Alls myndast sex sameindasvigrúm úr samsetningu sex atóm-[[i:p]]-svigrúma í tveimur atómum: σ[[i:[[sub:px]]]] og [[MATH:9]] π[[i:[[sub:py]]]] og [[MATH:10]] π[[i:[[sub:pz]]]] og [[MATH:11]]
 
 <!-- SEG:m68747:example-title:fs-idm91199824-title -->
 Sameindasvigrúm
 
 <!-- SEG:m68747:para:fs-idp38389696 -->
-Spáðu fyrir um hvaða gerð sameindasvigrúms (ef einhver) myndi myndast við að leggja saman bylgjuföllin þannig að hvert par svigrúma sem sýnt er skarist. Svigrúmin hafa öll svipaða orku.
+Spáðu fyrir um hvaða gerð sameindasvigrúms (ef einhver) myndi myndast við að leggja saman bylgjuföllin þannig að hvert par svigrúma sem sýnt er skarast. Svigrúmin eru öll með svipaða orku.
 
 <!-- SEG:m68747:para-title:fs-idp85051376-title -->
 Lausn
 
 <!-- SEG:m68747:para:fs-idp85051376 -->
-(a) er samsetning í fasa sem leiðir til σ[[sub:3[[i:p]]]] svigrúms
+(a) er samsetning með sama fasa, sem leiðir til σ[[sub:3[[i:p]]]]-svigrúms
 
 <!-- SEG:m68747:para:fs-idp7458640 -->
-(b) mun ekki leiða til nýs svigrúms vegna þess að íhluturinn í fasa (neðst) og íhluturinn úr fasa (efst) núllast út. Aðeins svigrúm með rétta röðun geta sameinast.
+(b) mun ekki leiða til nýs svigrúms vegna þess að hluti með sama fasa (neðst) og hluti með gagnstæðum fasa (efst) núllast út. Aðeins svigrúm með rétta uppröðun geta sameinast.
 
 <!-- SEG:m68747:para:fs-idm98679312 -->
-(c) er samsetning úr fasa sem leiðir til [[MATH:12]] svigrúms.
+(c) er samsetning með gagnstæðum fasa, sem leiðir til [[MATH:12]]-svigrúms.
 
 <!-- SEG:m68747:para-title:fs-idm173173712-title -->
-Spyrðu sjálfan þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68747:para:fs-idm173173712 -->
-Merktu sameindasvigrúmið sem sýnt er sem [[i:σ]] eða π, bindandi eða andbindandi og tilgreindu hvar nóðan er.
+Merktu sameindasvigrúmið sem sýnt er sem [[i:σ]] eða π, bindandi eða andbindandi og gefðu til kynna hvar hnúturinn er.
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
-Svigrúmið er staðsett meðfram ásnum milli kjarnanna, þannig að það er σ-svigrúm. Það er nóða sem sker ásinn milli kjarnanna í tvennt, þannig að það er andbindandi svigrúm.[[BR]]
+Svigrúmið er staðsett meðfram ásnum milli kjarnanna, svo það er σ-svigrúm. Það er hnútur sem sker ásinn milli kjarnanna í tvennt, svo það er andbindandi svigrúm.[[BR]]
+
+<!-- SEG:m68747:alt:fs-idm110513152-alt -->
+Þrjár skýringarmyndir eru sýndar og merktar „a“, „b“ og „c“. Mynd a sýnir tvö lárétt hnetulaga svigrúm hlið við hlið. Þau eru merkt „3 p neðanskrift x og 3 p neðanskrift x“. Mynd b sýnir eitt lóðrétt og eitt lárétt hnetulaga svigrúm sem eru hornrétt hvort á annað. Þau eru merkt „3 p neðanskrift x og 3 p neðanskrift y“. Mynd c sýnir tvö lóðrétt hnetulaga svigrúm hlið við hlið og merkt „3 p neðanskrift y og 3 p neðanskrift y“.
+
+<!-- SEG:m68747:alt:fs-idm135406128-alt -->
+Tvö svigrúm eru sýnd liggjandi enda við enda. Hvort um sig hefur eina stækkaða og eina litla hlið. Litlu hliðarnar snúa hvor að annarri.
 
 <!-- SEG:m68747:note-title:fs-idm210552112-title -->
 Svar:
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
-Svigrúmið er staðsett meðfram ásnum milli kjarnanna, þannig að það er σ-svigrúm. Það er nóða sem sker ásinn milli kjarnanna í tvennt, þannig að það er andbindandi svigrúm.[[BR]]
+Svigrúmið er staðsett meðfram ásnum milli kjarnanna, þannig að það er σ-svigrúm. Það er hnútyfirborð sem sker ásinn milli kjarnanna í tvennt, þannig að það er andbindandi svigrúm.[[BR]]
+
+<!-- SEG:m68747:alt:fs-idm152931472-alt -->
+Tvö svigrúm eru sýnd liggjandi enda við enda. Hvort um sig hefur eina stækkaða og eina litla hlið. Litlu hliðarnar snúa hvor að annarri og eru aðskildar með lóðréttri punktalínu.
 
 <!-- SEG:m68747:note-title:fs-idm43986688-title -->
 Walter Kohn: Nóbelsverðlaunahafi
 
 <!-- SEG:m68747:para:fs-idm150138816 -->
-Walter {{term}}Kohn{{/term}} ([[xref:CNX_Chem_08_04_Kohn]]) er kennilegur eðlisfræðingur sem rannsakar rafeindabyggingu fastra efna. Vinna hans sameinar lögmál skammtafræðinnar og háþróaða stærðfræðitækni. Þessi tækni, sem kallast þéttnifellafræði, gerir kleift að reikna út eiginleika sameindasvigrúma, þar á meðal lögun þeirra og orku. Kohn og stærðfræðingurinn John Pople hlutu Nóbelsverðlaunin í efnafræði árið 1998 fyrir framlag sitt til skilnings okkar á rafeindabyggingu. Kohn lagði einnig mikið af mörkum til eðlisfræði hálfleiðara.
+Walter [[term:Kohn|term-00015]] ([[xref:CNX_Chem_08_04_Kohn]]) er fræðilegur eðlisfræðingur sem rannsakar rafeindabyggingu fastra efna. Verk hans sameina lögmál skammtafræðinnar og háþróaða stærðfræðitækni. Þessi tækni, sem kallast þéttnifellafræði, gerir kleift að reikna út eiginleika sameindasvigrúma, þar á meðal lögun þeirra og orku. Kohn og stærðfræðingurinn John Pople hlutu Nóbelsverðlaunin í efnafræði árið 1998 fyrir framlag sitt til skilnings okkar á rafeindabyggingu. Kohn lagði einnig mikið af mörkum til eðlisfræði hálfleiðara.
 
 <!-- SEG:m68747:para:fs-idm51386912 -->
-Ævisaga Kohns hefur verið merkileg utan sviðs eðlisefnafræðinnar líka. Hann fæddist í Austurríki og í seinni heimsstyrjöldinni var hann hluti af Kindertransport-áætluninni sem bjargaði 10.000 börnum frá stjórn nasista. Sumarstörf hans fólu í sér að finna gullnámur í Kanada og hjálpa Polaroid að útskýra hvernig skyndifilma þeirra virkaði. Dr. Kohn lést árið 2016, 93 ára að aldri.
+Ævisaga Kohns hefur einnig verið merkileg utan sviðs eðlisefnafræðinnar. Hann fæddist í Austurríki og í seinni heimsstyrjöldinni var hann hluti af Kindertransport-áætluninni sem bjargaði 10.000 börnum frá stjórn nasista. Sumarstörf hans fólu í sér að finna gullnámur í Kanada og hjálpa Polaroid að útskýra hvernig skyndifilman þeirra virkaði. Dr. Kohn lést árið 2016, 93 ára að aldri.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Kohn-caption -->
 Walter Kohn þróaði aðferðir til að lýsa sameindasvigrúmum. (heimild: mynd með leyfi Walter Kohn)
 
+<!-- SEG:m68747:alt:fs-idm136311776-alt -->
+Ljósmynd af Walter Kohn er sýnd.
+
 <!-- SEG:m68747:note-title:fs-idm152886256-title -->
-Tölvuefnafræði í lyfjahönnun
+Reikniefnafræði í lyfjahönnun
 
 <!-- SEG:m68747:para:fs-idp11259136 -->
-Þótt lýsingarnar á tengjum sem fjallað er um í þessum kafla feli í sér mörg fræðileg hugtök, hafa þær einnig mörg hagnýt notagildi í raunveruleikanum. Til dæmis er lyfjahönnun mikilvægt svið sem notar skilning okkar á efnatengjum til að þróa lyf. Þetta þverfaglega fræðasvið notar líffræði (skilning á sjúkdómum og hvernig þeir virka) til að bera kennsl á ákveðin skotmörk, svo sem bindiset sem tekur þátt í sjúkdómsferli. Með því að móta byggingu bindisetisins og hugsanlegra lyfja geta tölvuefnafræðingar spáð fyrir um hvaða byggingar geta passað saman og hversu vel þær bindast (sjá [[xref:CNX_Chem_08_04_HIVProteas]]). Hægt er að fækka þúsundum hugsanlegra kandídata niður í nokkra af þeim efnilegustu. Þessar kandídat-sameindir eru síðan vandlega prófaðar til að ákvarða aukaverkanir, hversu vel þær geta flust um líkamann og aðra þætti. Tugir mikilvægra nýrra lyfja hafa verið uppgötvaðir með hjálp tölvuefnafræði og ný rannsóknarverkefni eru í gangi.
+Þó að lýsingarnar á tengjum sem lýst er í þessum kafla feli í sér mörg fræðileg hugtök, hafa þær einnig mörg hagnýt notagildi í raunveruleikanum. Til dæmis er lyfjahönnun mikilvægt svið sem notar skilning okkar á efnatengjum til að þróa lyf. Þetta þverfaglega rannsóknarsvið notar líffræði (skilning á sjúkdómum og hvernig þeir virka) til að bera kennsl á ákveðin skotmörk, svo sem bindiset sem tekur þátt í sjúkdómsferli. Með því að móta byggingu bindisetisins og hugsanlegra lyfja geta reikniefnafræðingar spáð fyrir um hvaða byggingar geta passað saman og hversu vel þær bindast (sjá [[xref:CNX_Chem_08_04_HIVProteas]]). Hægt er að fækka þúsundum hugsanlegra kandídata niður í nokkra af þeim efnilegustu. Þessar kandídat-sameindir eru síðan vandlega prófaðar til að ákvarða aukaverkanir, hversu vel þær geta flust um líkamann og aðra þætti. Tugir mikilvægra nýrra lyfja hafa verið uppgötvaðir með hjálp reikniefnafræði og ný rannsóknarverkefni eru í gangi.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_HIVProteas-caption -->
-Sameindin sem sýnd er, HIV-1 próteasi, er mikilvægt skotmark fyrir lyfjarannsóknir. Með því að hanna sameindir sem bindast þessu próteini geta vísindamenn dregið verulega úr framgangi sjúkdómsins.
+Sameindin sem sýnd er, HIV-1 próteasi, er mikilvægt skotmark fyrir lyfjarannsóknir. Með því að hanna sameindir sem bindast þessu próteini geta vísindamenn hamlað framgangi sjúkdómsins verulega.
+
+<!-- SEG:m68747:alt:fs-idm42063808-alt -->
+Skýringarmynd af sameind er sýnd. Myndin sýnir flækju af borðalíkum, samtvinnuðum, bleikum og grænum hlykkjóttum línum með flóknu kúlu-og-prikalíkani í miðjunni.
 
 <!-- SEG:m68747:title:fs-idm108525232-title -->
 Orkumyndir sameindasvigrúma
 
 <!-- SEG:m68747:para:fs-idm109157200 -->
-Afstæð orkustig frumeinda- og sameindasvigrúma eru venjulega sýnd á {{term}}orkumynd sameindasvigrúma{{/term}} ([[xref:CNX_Chem_08_04_FillMo]]). Fyrir tvíatóma sameind eru frumeindasvigrúm einnar frumeindar sýnd vinstra megin og hinnar frumeindarinnar hægra megin. Hver lárétt lína táknar eitt svigrúm sem getur haldið tveimur rafeindum. Sameindasvigrúmin sem myndast við samsetningu frumeindasvigrúmanna eru sýnd í miðjunni. Brotnar línur sýna hvaða frumeindasvigrúm sameinast til að mynda sameindasvigrúmin. Fyrir hvert par frumeindasvigrúma sem sameinast myndast eitt lægra orku (bindandi) sameindasvigrúm og eitt hærra orku (andbindandi) svigrúm. Þannig getum við séð að samsetning sex 2[[i:p]] frumeindasvigrúma leiðir til þriggja bindandi svigrúma (eitt σ og tvö π) og þriggja andbindandi svigrúma (eitt σ* og tvö π*).
+Hlutfallsleg orkustig atóm- og sameindasvigrúma eru venjulega sýnd á [[term:orkumynd sameindasvigrúma|term-00016]] ([[xref:CNX_Chem_08_04_FillMo]]). Fyrir tvíatóma sameind eru atómsvigrúm eins atóms sýnd vinstra megin og hins atómsins hægra megin. Hver lárétt lína táknar eitt svigrúm sem getur haldið tveimur rafeindum. Sameindasvigrúmin sem myndast við samsetningu atómsvigrúmanna eru sýnd í miðjunni. Punktalínur sýna hvaða atómsvigrúm sameinast til að mynda sameindasvigrúmin. Fyrir hvert par atómsvigrúma sem sameinast myndast eitt lægra orku (bindandi) sameindasvigrúm og eitt hærra orku (andbindandi) svigrúm. Þannig getum við séð að samsetning sex 2[[i:p]] atómsvigrúma leiðir til þriggja bindandi svigrúma (eitt σ og tvö π) og þriggja andbindandi svigrúma (eitt σ* og tvö π*).
 
 <!-- SEG:m68747:para:fs-idm63353616 -->
-Við spáum fyrir um dreifingu rafeinda í þessum sameindasvigrúmum með því að fylla svigrúmin á sama hátt og við fyllum atómsvigrúm, samkvæmt Aufbau-lögmálinu. Svigrúm með lægri orku fyllast fyrst, rafeindir dreifast á milli orkulíkra svigrúma áður en þær parast og hvert svigrúm getur rúmað að hámarki tvær rafeindir með gagnstæðum spuna ([[xref:CNX_Chem_08_04_FillMo]]). Rétt eins og við skrifum rafeindaskipanir fyrir atóm getum við skrifað rafeindaskipan sameindar með því að telja upp svigrúmin með hávísum sem gefa til kynna fjölda rafeinda sem eru til staðar. Til skýringar setjum við sviga utan um sameindasvigrúm með sömu orku. Í þessu tilviki hefur hvert svigrúm mismunandi orku, þannig að svigar aðskilja hvert svigrúm. Þannig myndum við búast við að tvíatóma sameind eða jón sem inniheldur sjö rafeindir (svo sem [[MATH:13]]) hefði rafeindaskipan sameindarinnar [[MATH:14]]. Algengt er að sleppa innri rafeindum úr skýringarmyndum og skipunum sameindasvigrúma og hafa aðeins girðirafeindirnar með.
+Við spáum fyrir um dreifingu rafeinda í þessum sameindasvigrúmum með því að fylla svigrúmin á sama hátt og við fyllum atómsvigrúm, samkvæmt Aufbau-reglunni. Lægri orkusvigrúm fyllast fyrst, rafeindir dreifast á milli úrkynjaðra svigrúma áður en þær parast og hvert svigrúm getur haldið að hámarki tveimur rafeindum með gagnstæðum spuna ([[xref:CNX_Chem_08_04_FillMo]]). Rétt eins og við skrifum rafeindaskipan fyrir atóm, getum við skrifað sameindarrafeindaskipan með því að telja upp svigrúmin með hávísum sem gefa til kynna fjölda rafeinda sem eru til staðar. Til skýrleika setjum við sviga utan um sameindasvigrúm með sömu orku. Í þessu tilviki er hvert svigrúm á mismunandi orku, þannig að svigar aðskilja hvert svigrúm. Þannig myndum við búast við að tvíatóma sameind eða jón sem inniheldur sjö rafeindir (svo sem [[MATH:13]]) hefði sameindarrafeindaskipanina [[MATH:14]]. Algengt er að sleppa kjarnarafeindum úr orkumyndum og skipan sameindasvigrúma og hafa aðeins gildisrafeindirnar með.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_FillMo-caption -->
-Þetta er skýringarmynd sameindasvigrúma fyrir einsleitu tvíatóma sameindina [[MATH:15]], sem sýnir aðeins sameindasvigrúm girðihvolfsins. Sameindasvigrúmin eru fyllt á sama hátt og atómsvigrúm, með Aufbau-lögmálinu og reglu Hunds.
+Þetta er orkumynd sameindasvigrúma fyrir einsleita tvíatóma [[MATH:15]] sem sýnir aðeins sameindasvigrúm gildisskeljarinnar. Sameindasvigrúmin eru fyllt á sama hátt og atómsvigrúm, með Aufbau-reglunni og reglu Hunds.
+
+<!-- SEG:m68747:alt:fs-idm17917232-alt -->
+Sýnd er skýringarmynd með lóðréttri ör sem vísar upp meðfram vinstri hliðinni og er merkt „E“. Neðst í miðju skýringarmyndarinnar er lárétt lína merkt „sigma með lágstaf 2 s“ sem hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður. Þessi lína er tengd til hægri og vinstri með uppvísandi, punktalínum við tvær aðrar láréttar línur, hvor um sig merkt „2 s“. Línan til vinstri hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður, á meðan línan til hægri hefur eina hálfa ör sem vísar upp teiknaða á sig. Þessar tvær línur eru tengdar með uppvísandi punktalínum við aðra línu í miðju skýringarmyndarinnar, en hærra uppi en sú fyrsta. Hún er merkt „sigma með lágstaf 2 s og hástaf stjörnu“. Þessi lárétta lína hefur eina uppvísandi lóðrétta hálfa ör teiknaða á sig. Vinstri og hægri hliðar skýringarmyndarinnar hafa fyrirsagnir sem segja „Atómsvigrúm“, á meðan fyrirsögnin í miðjunni segir „Sameindasvigrúm“.
 
 <!-- SEG:m68747:title:fs-idm72263472-title -->
-Tengigráða
+Tengisstig
 
 <!-- SEG:m68747:para:fs-idp47682464 -->
-Fyllt skýringarmynd sameindasvigrúma sýnir fjölda rafeinda í bæði bindandi og andbindandi sameindasvigrúmum. Nettó framlag rafeindanna til tengistyrks sameindar er ákvarðað með því að finna {{term}}tengigráðuna{{/term}} sem fæst þegar rafeindirnar fylla sameindasvigrúmin.
+Fyllta sameindasvigrúmsmyndin sýnir fjölda rafeinda í bæði bindandi og andbindandi sameindasvigrúmum. Nettó-framlag rafeindanna til tengisstyrks sameindar er ákvarðað með því að finna [[term:tengisstig|term-00017]] sem verður til við fyllingu sameindasvigrúma með rafeindum.
 
 <!-- SEG:m68747:para:fs-idm84042704 -->
-Þegar Lewis-myndir eru notaðar til að lýsa dreifingu rafeinda í sameindum skilgreinum við tengigráðu sem fjölda bindandi rafeindapara milli tveggja atóma. Þannig hefur eintengi tengigráðu 1, tvítengi hefur tengigráðu 2 og þrítengi hefur tengigráðu 3. Við skilgreinum tengigráðu öðruvísi þegar við notum lýsingu sameindasvigrúma á dreifingu rafeinda, en niðurstaðan er yfirleitt sú sama. MO-aðferðin er nákvæmari og getur höndlað tilfelli þar sem Lewis-mynda aðferðin bregst, en báðar aðferðirnar lýsa sama fyrirbærinu.
+Þegar Lewis-myndir eru notaðar til að lýsa dreifingu rafeinda í sameindum skilgreinum við tengisstig sem fjölda bindandi rafeindapara milli tveggja atóma. Þannig hefur eintengi tengisstig 1, tvítengi hefur tengisstig 2 og þrítengi hefur tengisstig 3. Við skilgreinum tengisstig öðruvísi þegar við notum sameindasvigrúmslýsingu á dreifingu rafeinda, en tengisstigið sem fæst er yfirleitt það sama. Sameindasvigrúmsaðferðin er nákvæmari og getur höndlað tilfelli þar sem Lewis-myndaaðferðin bregst, en báðar aðferðirnar lýsa sama fyrirbærinu.
 
 <!-- SEG:m68747:para:fs-idm72448704 -->
-Í líkani sameindasvigrúma stuðlar rafeind að bindandi víxlverkun ef hún er í bindandi svigrúmi og hún stuðlar að andbindandi víxlverkun ef hún er í andbindandi svigrúmi. Tengigráðan er reiknuð með því að draga óstöðugleikavaldandi (andbindandi) rafeindir frá stöðugleikavaldandi (bindandi) rafeindum. Þar sem efnatengi samanstendur af tveimur rafeindum deilum við með tveimur til að fá tengigráðuna. Við getum ákvarðað tengigráðu með eftirfarandi jöfnu:
+Í sameindasvigrúmslíkaninu stuðlar rafeind að bindandi víxlverkun ef hún er í bindandi svigrúmi og hún stuðlar að andbindandi víxlverkun ef hún er í andbindandi svigrúmi. Tengisstigið er reiknað með því að draga óstöðugleikavaldandi (andbindandi) rafeindir frá stöðugleikavaldandi (bindandi) rafeindum. Þar sem tengi samanstendur af tveimur rafeindum deilum við með tveimur til að fá tengisstigið. Við getum ákvarðað tengisstig með eftirfarandi jöfnu:
 
 <!-- SEG:m68747:para:fs-idm8964432 -->
-Tengigráða samgilds tengis er vísbending um styrk þess; efnatengi milli tveggja tiltekinna atóma verður sterkara eftir því sem tengigráðan eykst ([[docref:m68744#fs-idp43355056]]). Ef dreifing rafeinda í sameindasvigrúmum milli tveggja atóma er þannig að tengigráða efnatengisins yrði núll, myndast ekki stöðugt efnatengi. Næst skoðum við nokkur sértæk dæmi um MO-skýringarmyndir og tengigráður.
+Stig samgilds tengis er vísbending um styrk þess; tengi milli tveggja tiltekinna atóma verður sterkara eftir því sem tengisstigið hækkar ([[docref:m68744#fs-idp43355056]]). Ef dreifing rafeinda í sameindasvigrúmum milli tveggja atóma er þannig að tengið sem myndast myndi hafa tengisstig núll, myndast ekki stöðugt tengi. Næst skoðum við nokkur dæmi um sameindasvigrúmsmyndir og tengisstig.
 
 <!-- SEG:m68747:title:fs-idm174688448-title -->
-Tengsl í tvíatóma sameindum
+Tengi í tvíatóma sameindum
 
 <!-- SEG:m68747:title:fs-idm131917488-title -->
 Tvíatóma sameindir annarrar lotu
@@ -203,242 +240,262 @@ Tvíatóma sameindir annarrar lotu
 Átta mögulegar einsleitar tvíatóma sameindir gætu myndast úr atómum annarrar lotu lotukerfisins: Li[[sub:2]], Be[[sub:2]], B[[sub:2]], C[[sub:2]], N[[sub:2]], O[[sub:2]], F[[sub:2]] og Ne[[sub:2]]. Hins vegar getum við spáð því að Be[[sub:2]]-sameindin og Ne[[sub:2]]-sameindin yrðu ekki stöðugar. Við getum séð þetta með því að skoða rafeindaskipanir sameindanna ([[xref:fs-idp20943328]]).
 
 <!-- SEG:m68747:para:fs-idm159509520 -->
-Við spáum fyrir um rafeindaskipanir girðisameindasvigrúma á sama hátt og við spáum fyrir um rafeindaskipanir atóma. Girðirafeindum er úthlutað á girðisameindasvigrúm með lægstu mögulegu orku. Í samræmi við reglu Hunds, þegar tvö eða fleiri orkulík sameindasvigrúm eru til staðar, fyllast þau hvert fyrir sig með einni rafeind áður en rafeindir parast.
+Við spáum fyrir um rafeindaskipanir gildis-sameindasvigrúma alveg eins og við spáum fyrir um rafeindaskipanir atóma. Gildisrafeindum er úthlutað á gildis-sameindasvigrúm með lægstu mögulegu orku. Í samræmi við reglu Hunds, þegar tvö eða fleiri úrkynjuð sameindasvigrúm eru til staðar, fylla rafeindir hvert svigrúm af þeirri gerð staklega áður en pörun rafeinda á sér stað.
 
 <!-- SEG:m68747:para:fs-idm130710736 -->
-Eins og við sáum í girðitengjafræðinni eru σ-tengi almennt stöðugri en π-tengi sem myndast úr orkulíkum atómsvigrúmum. Á sama hátt, í sameindasvigrúmafræðinni, eru σ-svigrúm yfirleitt stöðugri en π-svigrúm. Þetta er þó ekki alltaf raunin. MO-svigrúmin fyrir girðisvigrúm annarrar lotu eru sýnd á [[xref:CNX_Chem_08_04_X2MOs]]. Þegar við skoðum sameindasvigrúm Ne[[sub:2]] sjáum við að röðin er í samræmi við almennu skýringarmyndina sem sýnd var í fyrri hlutanum. Hins vegar, fyrir atóm með þrjár eða færri rafeindir í [[i:p]]-svigrúmunum (Li til N) sjáum við annað mynstur, þar sem σ[[i:[[sub:p]]]]-svigrúmið er orkuhærra en π[[i:[[sub:p]]]]-settið. Hægt er að fá skýringarmynd sameindasvigrúma fyrir einsleita tvíatóma jón með því að bæta við eða draga frá rafeindir úr skýringarmynd hlutlausu sameindarinnar.
+Eins og við sáum í gildistengjafræði eru σ-tengi almennt stöðugri en π-tengi sem myndast úr úrkynjuðum atómsvigrúmum. Á sama hátt, í sameindasvigrúmsfræði, eru σ-svigrúm yfirleitt stöðugri en π-svigrúm. Þetta er þó ekki alltaf raunin. Sameindasvigrúmin fyrir gildissvigrúm annarrar lotu eru sýnd í [[xref:CNX_Chem_08_04_X2MOs]]. Þegar við skoðum Ne[[sub:2]]-sameindasvigrúm sjáum við að röðin er í samræmi við almennu myndina sem sýnd var í fyrri hlutanum. Hins vegar, fyrir atóm með þrjár eða færri rafeindir í [[i:p]]-svigrúmunum (Li til N) sjáum við annað mynstur, þar sem σ[[i:[[sub:p]]]]-svigrúmið er hærra í orku en π[[i:[[sub:p]]]]-settið. Fáðu sameindasvigrúmsmynd fyrir einsleita tvíatóma jón með því að bæta við eða draga frá rafeindir úr myndinni fyrir hlutlausu sameindina.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_X2MOs-caption -->
-Þetta sýnir MO-skýringarmyndir fyrir hverja einsleita tvíatóma sameind í annarri lotu. Orka svigrúmanna minnkar yfir lotuna eftir því sem virk kjarnhleðsla eykst og atómradíus minnkar. Milli N[[sub:2]] og O[[sub:2]] breytist röð svigrúmanna.
+Þetta sýnir sameindasvigrúmsmyndir fyrir hverja einsleita tvíatóma sameind í annarri lotu. Orka svigrúmanna minnkar yfir lotuna eftir því sem virk kjarnhleðsla eykst og atómradíus minnkar. Milli N[[sub:2]] og O[[sub:2]] breytist röð svigrúmanna.
+
+<!-- SEG:m68747:alt:fs-idm110589568-alt -->
+Sýnt er línurit þar sem y-ásinn er merktur „E“ og birtist sem lóðrétt ör sem vísar upp. Efst á línuritinu stendur „L i með neðanskrift 2“, „B e með neðanskrift 2“, „B með neðanskrift 2“, „C með neðanskrift 2“, „N með neðanskrift 2“, „O með neðanskrift 2“, „F með neðanskrift 2“ og „Ne með neðanskrift 2“. Beint fyrir neðan hvert þessara frumefnaheita er stök bleik lína og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar eftir því sem hún færist frá vinstri til hægri á línuritinu. Þessi lína er merkt „sigma með neðanskrift 2 p x með ofanskrift stjörnu“. Beint fyrir neðan hverja þessara lína er sett af tveimur bleikum línum og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar eftir því sem hún færist frá vinstri til hægri á línuritinu. Hún er stöðugt lægri en fyrsta línan. Þessi lína er merkt „pi með neðanskrift 2 p y með ofanskrift stjörnu“ og „pi með neðanskrift 2 p z með ofanskrift stjörnu“. Beint fyrir neðan hverja þessara tvöföldu lína er stök bleik lína og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar eftir því sem hún færist frá vinstri til hægri á línuritinu. Hún tekur áberandi dýfu við merkinguna „O með neðanskrift 2“. Þessi lína er merkt „sigma með neðanskrift 2 p x“. Beint fyrir neðan hverja þessara lína er sett af tveimur bleikum línum og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar mjög lítið eftir því sem hún færist frá vinstri til hægri á línuritinu. Hún er stöðugt lægri en þriðja línan þar til hún nær punktinum sem merktur er „O með neðanskrift 2“. Þessi lína er merkt „pi með neðanskrift 2 p y“ og „pi með neðanskrift 2 p z“. Beint fyrir neðan hverja þessara lína er stök blá lína og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar eftir því sem hún færist frá vinstri til hægri á línuritinu. Þessi lína er merkt „sigma með neðanskrift 2 s með ofanskrift stjörnu“. Að lokum, beint fyrir neðan hverja þessara lína er stök blá lína og allar línurnar eru tengdar saman með brotalínu til að mynda heildarlínu sem lækkar eftir því sem hún færist frá vinstri til hægri á línuritinu. Þessi lína er merkt „sigma með neðanskrift 2 s“.
 
 <!-- SEG:m68747:para:fs-idm170513216 -->
-Þessi breyting á röð svigrúma á sér stað vegna fyrirbæris sem kallast {{term}}s-p blöndun{{/term}}. s-p blöndun skapar ekki ný svigrúm; hún hefur aðeins áhrif á orku þeirra sameindasvigrúma sem fyrir eru. σ[[sub:s]]-bylgjufallið sameinast stærðfræðilega við σ[[sub:p]]-bylgjufallið, með þeim afleiðingum að σ[[sub:s]]-svigrúmið verður stöðugra og σ[[sub:p]]-svigrúmið verður óstöðugra ([[xref:CNX_Chem_08_04_spmix]]). Á sama hátt verða andbindandi svigrúmin einnig fyrir s-p blöndun, þar sem σ[[sub:s*]] verður stöðugra og σ[[sub:p*]] verður óstöðugra.<!-- SEG:m68747:caption:CNX_Chem_08_04_spmix-caption -->
-Án blöndunar kemur mynstrið fyrir sameindasvigrúm fram eins og búist var við, þar sem σ[[sub:p]]-svigrúmið er lægra í orku en π[[sub:p]]-svigrúmin. Þegar s-p blöndun á sér stað færast svigrúmin til eins og sýnt er, þar sem σ[[sub:p]]-svigrúmið er hærra í orku en π[[sub:p]]-svigrúmin.
+Þessi víxlun á röð svigrúma verður vegna fyrirbæris sem kallast [[term:s-p blöndun|term-00018]]. s-p blöndun býr ekki til ný svigrúm; hún hefur aðeins áhrif á orku þeirra sameindasvigrúma sem fyrir eru. Bylgjufall σ[[sub:s]] sameinast stærðfræðilega bylgjufalli σ[[sub:p]] með þeim afleiðingum að σ[[sub:s]]-svigrúmið verður stöðugra og σ[[sub:p]]-svigrúmið verður óstöðugra ([[xref:CNX_Chem_08_04_spmix]]). Á sama hátt verður einnig s-p blöndun í andbindandi svigrúmum þar sem σ[[sub:s*]] verður stöðugra og σ[[sub:p*]] verður óstöðugra.
+
+<!-- SEG:m68747:caption:CNX_Chem_08_04_spmix-caption -->
+Án blöndunar er mynstur sameindasvigrúma eins og við er að búast, þar sem σ[[sub:p]]-svigrúmið er lægra í orku en π[[sub:p]]-svigrúmin. Þegar s-p blöndun á sér stað hliðrast svigrúmin eins og sýnt er, þar sem σ[[sub:p]]-svigrúmið er hærra í orku en π[[sub:p]]-svigrúmin.
+
+<!-- SEG:m68747:alt:fs-idm173324128-alt -->
+Myndrit er sýnt. Neðst til vinstri á myndritinu er lárétt lína sem er tengd til hægri og vinstri með uppvísandi, punktalínum við tvær aðrar láréttar línur. Þessar tvær línur eru tengdar með uppvísandi punktalínum við aðra línu í miðju myndritsins en hærra uppi en sú fyrsta. Á hvorri neðri miðlínunni er lóðrétt ör sem vísar niður. Fyrir ofan þessa byggingu er lárétt lína sem er tengd til hægri og vinstri með uppvísandi, punktalínum við tvö sett af þremur láréttum línum og þessar tvær línur eru tengdar með uppvísandi punktalínum við aðra línu í miðju myndritsins, en hærra uppi en sú fyrsta. Á milli láréttu línanna í þessari byggingu eru tvö pör af láréttum línum sem eru fyrir ofan fyrstu línuna en fyrir neðan þá seinni og tengdar með punktalínum við hliðarlínurnar. Neðri og efri miðlínurnar hafa hvor um sig uppvísandi lóðrétta ör. Þessar tvær byggingar eru endurteiknaðar hægra megin á myndritinu, en í þetta sinn eru miðlínur neðri byggingarinnar færðar niður miðað við hliðarlínurnar. Miðlínur efri hluta byggingarinnar hafa hliðrast upp á við miðað við hliðarlínurnar. Þessi bygging sýnir einnig neðri línuna birtast fyrir ofan settið af tveimur línum.
 
 <!-- SEG:m68747:para:fs-idm134586720 -->
-s-p blöndun á sér stað þegar [[i:s]]- og [[i:p]]-svigrúm hafa svipaða orku. Orkumunurinn á milli 2[[i:s]]- og 2[[i:p]]-svigrúma í O, F og Ne er meiri en í Li, Be, B, C og N. Vegna þessa sýna O[[sub:2]], F[[sub:2]] og Ne[[sub:2]] hverfandi s-p blöndun (ekki nægjanlega til að breyta orkuröðuninni) og sameindasvigrúmsmyndir þeirra fylgja venjulegu mynstri, eins og sýnt er í [[xref:CNX_Chem_08_04_X2MOs]]. Allar aðrar tvíatóma sameindir í lotu 2 hafa s-p blöndun, sem leiðir til þess mynsturs þar sem σ[[sub:p]]-svigrúmið hækkar yfir π[[sub:p]]-settið.
+s-p blöndun á sér stað þegar [[i:s]]- og [[i:p]]-svigrúm hafa svipaða orku. Orkumunurinn á milli 2[[i:s]]- og 2[[i:p]]-svigrúma í O, F og Ne er meiri en í Li, Be, B, C og N. Vegna þessa sýna O[[sub:2]], F[[sub:2]] og Ne[[sub:2]] hverfandi s-p blöndun (ekki nægjanlega til að breyta orkuröðinni) og sameindasvigrúmsmyndir þeirra fylgja venjulegu mynstri, eins og sýnt er í [[xref:CNX_Chem_08_04_X2MOs]]. Allar aðrar tvíatóma sameindir í lotu 2 hafa s-p blöndun, sem leiðir til þess mynsturs þar sem σ[[sub:p]]-svigrúmið hækkar yfir π[[sub:p]]-settið.
 
 <!-- SEG:m68747:para:fs-idm113653568 -->
-Með því að nota sameindasvigrúmsmyndirnar sem sýndar eru í [[xref:CNX_Chem_08_04_X2MOs]] getum við bætt við rafeindunum og ákvarðað rafeindaskipan sameindarinnar og tengigráðu fyrir hverja tvíatóma sameind. Eins og sýnt er í [[xref:fs-idp20943328]] myndu Be[[sub:2]]- og Ne[[sub:2]]-sameindir hafa tengigráðu 0 og þessar sameindir eru ekki til.
-
-<!-- SEG:m68747:entry:auto-76 -->
-Rafeindaskipan og tengigráða fyrir sameindasvigrúm í einsleitum tvíatóma sameindum frumefna í lotu tvö
-
-<!-- SEG:m68747:entry:auto-77 -->
-Sameind
-
-<!-- SEG:m68747:entry:auto-78 -->
-Rafeindaskipan
-
-<!-- SEG:m68747:entry:auto-79 -->
-Tengigráða
-
-<!-- SEG:m68747:entry:auto-80 -->
-Li[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-81 -->
-[[MATH:16]]
-
-<!-- SEG:m68747:entry:auto-82 -->
-1
-
-<!-- SEG:m68747:entry:auto-83 -->
-Be[[sub:2]] (óstöðugt)
-
-<!-- SEG:m68747:entry:auto-84 -->
-[[MATH:17]]
-
-<!-- SEG:m68747:entry:auto-85 -->
-0
-
-<!-- SEG:m68747:entry:auto-86 -->
-B[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-87 -->
-[[MATH:18]]
-
-<!-- SEG:m68747:entry:auto-88 -->
-1
-
-<!-- SEG:m68747:entry:auto-89 -->
-C[[sub:2]]
+Með því að nota sameindasvigrúmsmyndirnar sem sýndar eru í [[xref:CNX_Chem_08_04_X2MOs]] getum við bætt við rafeindunum og ákvarðað rafeindaskipan sameindarinnar og tengisröð fyrir hverja tvíatóma sameindanna. Eins og sýnt er í [[xref:fs-idp20943328]] myndu Be[[sub:2]]- og Ne[[sub:2]]-sameindir hafa tengisröðina 0 og þessar sameindir eru ekki til.
 
 <!-- SEG:m68747:entry:auto-90 -->
-[[MATH:19]]
+Rafeindaskipan og tengisröð fyrir sameindasvigrúm í eins kjarna tvíatóma sameindum frumefna í lotu tvö
 
 <!-- SEG:m68747:entry:auto-91 -->
-2
+Sameind
 
 <!-- SEG:m68747:entry:auto-92 -->
-N[[sub:2]]
+Rafeindaskipan
 
 <!-- SEG:m68747:entry:auto-93 -->
-[[MATH:20]]
+Tengisröð
 
 <!-- SEG:m68747:entry:auto-94 -->
-3
+Li[[sub:2]]
 
 <!-- SEG:m68747:entry:auto-95 -->
-O[[sub:2]]
+[[MATH:16]]
 
 <!-- SEG:m68747:entry:auto-96 -->
-[[MATH:21]]
-
-<!-- SEG:m68747:entry:auto-97 -->
-2
-
-<!-- SEG:m68747:entry:auto-98 -->
-F[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-99 -->
-[[MATH:22]]
-
-<!-- SEG:m68747:entry:auto-100 -->
 1
 
+<!-- SEG:m68747:entry:auto-97 -->
+Be[[sub:2]] (óstöðug)
+
+<!-- SEG:m68747:entry:auto-98 -->
+[[MATH:17]]
+
+<!-- SEG:m68747:entry:auto-99 -->
+0
+
+<!-- SEG:m68747:entry:auto-100 -->
+B[[sub:2]]
+
 <!-- SEG:m68747:entry:auto-101 -->
-Ne[[sub:2]] (óstöðugt)
+[[MATH:18]]
 
 <!-- SEG:m68747:entry:auto-102 -->
-[[MATH:23]]
+1
 
 <!-- SEG:m68747:entry:auto-103 -->
+C[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-104 -->
+[[MATH:19]]
+
+<!-- SEG:m68747:entry:auto-105 -->
+2
+
+<!-- SEG:m68747:entry:auto-106 -->
+N[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-107 -->
+[[MATH:20]]
+
+<!-- SEG:m68747:entry:auto-108 -->
+3
+
+<!-- SEG:m68747:entry:auto-109 -->
+O[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-110 -->
+[[MATH:21]]
+
+<!-- SEG:m68747:entry:auto-111 -->
+2
+
+<!-- SEG:m68747:entry:auto-112 -->
+F[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-113 -->
+[[MATH:22]]
+
+<!-- SEG:m68747:entry:auto-114 -->
+1
+
+<!-- SEG:m68747:entry:auto-115 -->
+Ne[[sub:2]] (óstöðugt)
+
+<!-- SEG:m68747:entry:auto-116 -->
+[[MATH:23]]
+
+<!-- SEG:m68747:entry:auto-117 -->
 0
 
 <!-- SEG:m68747:para:fs-idm113916160 -->
-Samruni tveggja litíumatóma til að mynda litíumsameind, Li[[sub:2]], er sambærilegur við myndun H[[sub:2]], en frumeindasvigrúmin sem taka þátt eru girðitala 2[[i:s]]-svigrúmin. Hvert tveggja litíumatóma hefur eina girðirafeind. Þess vegna höfum við tvær girðirafeindir tiltækar fyrir σ[[sub:2[[i:s]]]]-bindandi sameindasvigrúmið. Þar sem báðar girðirafeindirnar væru í bindandi svigrúmi myndum við spá því að Li[[sub:2]]-sameindin væri stöðug. Sameindin er í raun til staðar í umtalsverðum styrk í litíumgufu við hitastig nálægt suðumarki frumefnisins. Allar aðrar sameindir í [[xref:fs-idp20943328]] með tengigráðu hærri en núll eru einnig þekktar.
+Samruni tveggja litíumatóma til að mynda litíumsameind, Li[[sub:2]], er hliðstæður myndun H[[sub:2]], en atómsvigrúmin sem um ræðir eru gildis-2[[i:s]] svigrúmin. Hvort tveggja litíumatómanna hefur eina gildisrafeind. Þess vegna höfum við tvær gildisrafeindir tiltækar fyrir σ[[sub:2[[i:s]]]] bindandi sameindasvigrúmið. Þar sem báðar gildisrafeindirnar væru í bindandi svigrúmi myndum við spá því að Li[[sub:2]]-sameindin væri stöðug. Sameindin er í raun til staðar í umtalsverðum styrk í litíumgufu við hitastig nálægt suðumarki frumefnisins. Allar aðrar sameindir í [[xref:fs-idp20943328]] með tengistig hærra en núll eru einnig þekktar.
 
 <!-- SEG:m68747:para:fs-idm151745104 -->
-O[[sub:2]]-sameindin hefur nægar rafeindir til að hálffylla [[MATH:24]]-stigið. Við búumst við því að rafeindirnar tvær sem skipa þessi tvö úrkynjuðu svigrúm séu óparaðar og þessi rafeindaskipan sameindarinnar fyrir O[[sub:2]] er í samræmi við þá staðreynd að súrefnissameindin hefur tvær óparaðar rafeindir ([[xref:CNX_Chem_08_04_O2MO]]). Tilvist tveggja óparaðra rafeinda hefur reynst erfitt að útskýra með Lewis myndum, en sameindasvigrúmakenningin útskýrir það nokkuð vel. Reyndar veita ópöruðu rafeindir súrefnissameindarinnar sterkan stuðning við sameindasvigrúmakenninguna.
+O[[sub:2]]-sameindin hefur nægar rafeindir til að hálffylla [[MATH:24]] stigið. Við búumst við því að rafeindirnar tvær sem skipa þessi tvö úrkynjuðu svigrúm séu óparaðar og þessi sameindarafeindaskipan fyrir O[[sub:2]] er í samræmi við þá staðreynd að súrefnissameindin hefur tvær óparaðar rafeindir ([[xref:CNX_Chem_08_04_O2MO]]). Tilvist tveggja óparaðra rafeinda hefur reynst erfitt að útskýra með Lewis-myndum, en sameindasvigrúmskenningin útskýrir hana nokkuð vel. Reyndar eru ópöruðu rafeindir súrefnissameindarinnar sterkur stuðningur við sameindasvigrúmskenninguna.
 
 <!-- SEG:m68747:note-title:fs-idp89531968-title -->
-Borðalíkan
+Bandafræði
 
 <!-- SEG:m68747:para:fs-idm82290832 -->
-Þegar tvö eins frumeindasvigrúm á mismunandi atómum sameinast verða til tvö sameindasvigrúm (sjá [[xref:CNX_Chem_08_04_ssigma]]). Bindandi svigrúmið er lægra í orku en upprunalegu frumeindasvigrúmin vegna þess að frumeindasvigrúmin eru í fasa í sameindasvigrúminu. Andbindandi svigrúmið er hærra í orku en upprunalegu frumeindasvigrúmin vegna þess að frumeindasvigrúmin eru úr fasa.
+Þegar tvö eins atómsvigrúm á mismunandi atómum sameinast verða til tvö sameindasvigrúm (sjá [[xref:CNX_Chem_08_04_ssigma]]). Bindandi svigrúmið er lægra í orku en upprunalegu atómsvigrúmin vegna þess að atómsvigrúmin eru í fasa í sameindasvigrúminu. Andbindandi svigrúmið er hærra í orku en upprunalegu atómsvigrúmin vegna þess að atómsvigrúmin eru úr fasa.
 
 <!-- SEG:m68747:para:fs-idm4324976 -->
-Í föstu efni gerist eitthvað svipað, en á mun stærri skala. Mundu að jafnvel í litlu sýni er gríðarlegur fjöldi frumeinda (yfirleitt > 10[[sup:23]] frumeindir), og þar af leiðandi gríðarlegur fjöldi atómsvigrúma sem geta sameinast í sameindasvigrúm. Þegar [[i:N]] gildisatómsvigrúm, öll með sömu orku og hvert með eina (1) rafeind, eru sameinuð, myndast [[i:N]]/2 (fyllt) bindandi svigrúm og [[i:N]]/2 (tóm) andbindandi svigrúm. Hvert bindandi svigrúm mun sýna orkulækkun þar sem atómsvigrúmin eru [[i:að mestu]] í fasa, en hvert bindandi svigrúm verður örlítið frábrugðið og hefur örlítið mismunandi orku. Andbindandi svigrúmin munu sýna orkuaukningu þar sem atómsvigrúmin eru [[i:að mestu]] úr fasa, en hvert andbindandi svigrúm verður einnig örlítið frábrugðið og hefur örlítið mismunandi orku. Leyfð orkuþrep fyrir öll bindandi svigrúmin eru svo nálægt hvert öðru að þau mynda band, sem kallast gildisband. Á sama hátt eru öll andbindandi svigrúmin mjög nálægt hvert öðru og mynda band, sem kallast leiðnibil. [[xref:CNX_Chem_08_04_Band]] sýnir böndin fyrir þrjá mikilvæga flokka efna: einangrara, hálfleiðara og leiðara.
+Í föstu efni gerist svipað, en í mun stærri mæli. Mundu að jafnvel í litlu sýni er gríðarlegur fjöldi atóma (venjulega > 10[[sup:23]] atóm) og þar af leiðandi gríðarlegur fjöldi atómsvigrúma sem hægt er að sameina í sameindasvigrúm. Þegar [[i:N]] gildisatómsvigrúm, öll með sömu orku og hvert með eina (1) rafeind, eru sameinuð, verða til [[i:N]]/2 (fyllt) bindandi svigrúm og [[i:N]]/2 (tóm) andbindandi svigrúm. Hvert bindandi svigrúm mun sýna orkulækkun þar sem atómsvigrúmin eru [[i:að mestu]] í fasa, en hvert bindandi svigrúm verður aðeins öðruvísi og hefur örlítið mismunandi orku. Andbindandi svigrúmin munu sýna orkuaukningu þar sem atómsvigrúmin eru [[i:að mestu]] úr fasa, en hvert andbindandi svigrúm verður einnig aðeins öðruvísi og hefur örlítið mismunandi orku. Leyfileg orkustig fyrir öll bindandi svigrúmin eru svo nálægt hvort öðru að þau mynda band, sem kallast gildisband. Sömuleiðis eru öll andbindandi svigrúmin mjög nálægt hvort öðru og mynda band, sem kallast leiðnibil. [[xref:CNX_Chem_08_04_Band]] sýnir böndin fyrir þrjá mikilvæga flokka efna: einangrara, hálfleiðara og leiðara.
 
 <!-- SEG:m68747:para:fs-idp22163776 -->
-Til að leiða rafmagn verða rafeindir að færast úr fyllta gildisbandinu yfir í tóma leiðnibilið þar sem þær geta hreyfst um allt fasta efnið. Stærð orkubilsins, eða orkumunurinn milli topps gildisbandsins og botns leiðnibilsins, ákvarðar hversu auðvelt er að færa rafeindir milli bandanna. Aðeins lítið magn af orku þarf í leiðara vegna þess að orkubilið er mjög lítið. Þennan litla orkumun er „auðvelt“ að yfirstíga, svo þeir eru góðir rafleiðarar. Í einangrara er orkubilið svo „stórt“ að mjög fáar rafeindir færast yfir í leiðnibilið; þar af leiðandi eru einangrarar lélegir rafleiðarar. Hálfleiðarar leiða rafmagn þegar „hóflegt“ magn af orku er veitt til að færa rafeindir úr gildisbandinu og yfir í leiðnibilið. Hálfleiðarar, eins og kísill, finnast í mörgum raftækjum.
+Til að leiða rafmagn verða rafeindir að færast úr fyllta gildisbandinu yfir í tóma leiðnibilið þar sem þær geta hreyfst um allt fasta efnið. Stærð bandbilsins, eða orkumunurinn á milli topps gildisbandsins og botns leiðnibiliðsins, ákvarðar hversu auðvelt er að færa rafeindir á milli bandanna. Aðeins lítið magn af orku þarf í leiðara vegna þess að bandbilið er mjög lítið. Þennan litla orkumun er „auðvelt“ að yfirstíga, þannig að þeir eru góðir rafleiðarar. Í einangrara er bandbilið svo „stórt“ að mjög fáar rafeindir færast yfir í leiðnibilið; þar af leiðandi eru einangrarar lélegir rafleiðarar. Hálfleiðarar leiða rafmagn þegar „hóflegt“ magn af orku er veitt til að færa rafeindir úr gildisbandinu og yfir í leiðnibilið. Hálfleiðarar, eins og kísill, finnast í mörgum raftækjum.
 
 <!-- SEG:m68747:para:fs-idm16313536 -->
-Hálfleiðarar eru notaðir í tækjum eins og tölvum, snjallsímum og sólarsellum. Sólarsellur framleiða rafmagn þegar ljós veitir orkuna til að færa rafeindir úr gildisbandinu. Rafmagnið sem myndast má síðan nota til að knýja ljós eða verkfæri, eða það má geyma til síðari nota með því að hlaða rafhlöðu. Í desember 2014 var hægt að breyta allt að 46% af orku sólarljóss í rafmagn með sólarsellum.
+Hálfleiðarar eru notaðir í tækjum eins og tölvum, snjallsímum og sólarsellum. Sólarsellur framleiða rafmagn þegar ljós veitir orkuna til að færa rafeindir úr gildisbandinu. Rafmagnið sem myndast má síðan nota til að knýja ljós eða verkfæri, eða það má geyma til síðari nota með því að hlaða rafhlöðu. Í desember 2014 var hægt að breyta allt að 46% af orku sólarljóssins í rafmagn með sólarsellum.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Band-caption -->
-Sameindasvigrúm í föstum efnum eru svo þétt saman að þeim er lýst sem böndum. Gildisbandið er lægra í orku og leiðnibilið er hærra í orku. Gerð fasta efnisins ræðst af stærð „orkubilsins“ milli gildis- og leiðnibandanna. Aðeins mjög lítið magn af orku þarf til að færa rafeindir úr gildisbandinu yfir í leiðnibilið í leiðara, og því leiða þeir rafmagn vel. Í einangrara er orkubilið stórt, þannig að mjög fáar rafeindir hreyfast, og þeir eru lélegir rafleiðarar. Hálfleiðarar eru mitt á milli: þeir leiða rafmagn betur en einangrarar, en ekki eins vel og leiðarar.
+Sameindasvigrúm í föstum efnum eru svo þétt saman að þeim er lýst sem böndum. Gildisbandið er lægra í orku og leiðnibilið er hærra í orku. Gerð fasta efnisins ræðst af stærð „bandbilsins“ á milli gildis- og leiðnibilanna. Aðeins mjög lítið magn af orku þarf til að færa rafeindir úr gildisbandinu yfir í leiðnibilið í leiðara og því leiða þeir rafmagn vel. Í einangrara er bandbilið stórt, þannig að mjög fáar rafeindir hreyfast og þeir eru lélegir rafleiðarar. Hálfleiðarar eru mitt á milli: þeir leiða rafmagn betur en einangrarar, en ekki eins vel og leiðarar.
+
+<!-- SEG:m68747:alt:fs-idp263742416-alt -->
+Þessi mynd sýnir þrjú skýringarit. Það fyrsta er merkt „Einangrari“ og samanstendur af tveimur kössum. „Leiðniborðinn“ er fyrir ofan og „gildisborðinn“ er fyrir neðan. Stórt bil merkt með 4 strikalínum inniheldur tvíhöfða ör. Annar hausinn vísar í átt að „leiðniborðanum“ og hinn í átt að „gildisborðanum“. Örin er merkt „Orkubil“. Annað skýringarmyndin er svipuð þeirri fyrstu, en orkubilið er um helmingi minna. Þessi skýringarmynd er merkt „Hálfleiðari“. Þriðja skýringarmyndin er svipuð hinum tveimur, en orkubilið er um fimmtungur af því sem er á „Hálfleiðara“ skýringarmyndinni. Þessi skýringarmynd er merkt „Leiðari“.
 
 <!-- SEG:m68747:example-title:fs-idm85103616-title -->
-Skýringarmyndir sameindasvigrúma, tengigráða og fjöldi óparaðra rafeinda
+Sameindasvigrúmsmyndir, tengiraðir og fjöldi óparaðra rafeinda
 
 <!-- SEG:m68747:para:fs-idp23720752 -->
-Teiknaðu skýringarmynd sameindasvigrúma fyrir súrefnissameindina, O[[sub:2]]. Út frá þessari mynd, reiknaðu tengigráðuna fyrir O[[sub:2]]. Hvernig skýrir þessi mynd fússegulmagn O[[sub:2]]?
+Teiknaðu sameindasvigrúmsmynd fyrir súrefnissameindina, O[[sub:2]]. Reiknaðu út frá þessari mynd tengiröðina fyrir O[[sub:2]]. Hvernig skýrir þessi mynd fersviðsegulmagn O[[sub:2]]?
 
 <!-- SEG:m68747:para-title:fs-idm92673360-title -->
 Lausn
 
 <!-- SEG:m68747:para:fs-idm92673360 -->
-Við teiknum orkumynd sameindasvigrúma svipaða þeirri sem sýnd er í [[xref:CNX_Chem_08_04_X2MOs]]. Hver súrefnisfrumeind leggur til sex rafeindir, þannig að myndin lítur út eins og sýnt er í [[xref:CNX_Chem_08_04_O2MO]].
+Við teiknum orkumynd sameindasvigrúms svipaða þeirri sem sýnd er í [[xref:CNX_Chem_08_04_X2MOs]]. Hvert súrefnisatóm leggur til sex rafeindir, þannig að myndin lítur út eins og sýnt er í [[xref:CNX_Chem_08_04_O2MO]].
 
 <!-- SEG:m68747:para:fs-idp49533696 -->
-Við reiknum tengigráðuna sem
+Við reiknum tengiröðina sem
 
 <!-- SEG:m68747:para:fs-idm102792656 -->
-Fússegulmagn súrefnis er útskýrt með tilvist tveggja óparaðra rafeinda í (π[[sub:2[[i:py]]]], π[[sub:2[[i:pz]]]])* sameindasvigrúmunum.
+Fersviðsegulmagn súrefnis skýrist af tilvist tveggja óparaðra rafeinda í (π[[sub:2[[i:py]]]], π[[sub:2[[i:pz]]]])* sameindasvigrúmunum.
 
 <!-- SEG:m68747:para-title:fs-idm78530944-title -->
 Skoðaðu þekkingu þína
 
 <!-- SEG:m68747:para:fs-idm78530944 -->
-Meginhluti lofts er N[[sub:2]]. Spáðu fyrir um tengigráðu þess og hvort það sé mótseglandi eða fússeglandi út frá skýringarmynd sameindasvigrúma N[[sub:2]].
+Meginhluti lofts er N[[sub:2]]. Spáðu fyrir um tengiröð þess og hvort það sé þversviðsegulmagnað eða fersviðsegulmagnað út frá sameindasvigrúmsmynd N[[sub:2]].
 
 <!-- SEG:m68747:para:fs-idm171143328 -->
-N[[sub:2]] hefur tengigráðu 3 og er mótseglandi.
+N[[sub:2]] hefur tengiröðina 3 og er þversviðsegulmagnað.
 
 <!-- SEG:m68747:note-title:fs-idm165020816-title -->
 Svar:
 
 <!-- SEG:m68747:para:fs-idm171143328 -->
-N[[sub:2]] hefur tengigráðu 3 og er mótseglandi.
+N[[sub:2]] hefur tengiröðina 3 og er þversviðsegulmagnað.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_O2MO-caption -->
-Orkumynd sameindasvigrúma fyrir O[[sub:2]] spáir fyrir um tvær óparaðar rafeindir.
+Orkumynd sameindasvigrúms fyrir O[[sub:2]] spáir fyrir um tvær óparaðar rafeindir.
+
+<!-- SEG:m68747:alt:fs-idm156437120-alt -->
+Sýnd er skýringarmynd með lóðréttri ör sem vísar upp meðfram vinstri hliðinni og er merkt „E“. Neðst í miðju skýringarmyndarinnar er lárétt lína merkt „sigma neðanskrift 2 s“ sem hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður. Þessi lína er tengd til hægri og vinstri með uppvísandi, punktalínum við tvær aðrar láréttar línur, hvor um sig merkt „2 s“ og með tveimur lóðréttum hálfum örvum teiknuðum á þær, önnur vísar upp og hin niður. Þessar tvær línur eru tengdar með uppvísandi punktalínum við aðra línu í miðju skýringarmyndarinnar, en lengra upp frá þeirri fyrstu og merkt „sigma neðanskrift 2 s yfirskrift stjarna“. Þessi lárétta lína hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður. Lengra upp í miðju skýringarmyndarinnar er lárétt lína merkt „sigma neðanskrift 2 p neðanskrift x“, sem liggur fyrir neðan tvær láréttar línur, hlið við hlið, og merktar „pi neðanskrift 2 p neðanskrift y“ og „pi neðanskrift 2 p neðanskrift z“. Bæði neðri og efri línurnar eru tengdar til hægri og vinstri með uppvísandi, punktalínum við þrjár aðrar láréttar línur, hvor um sig merkt „2 p“, á hvorri hlið. Þessi línusett innihalda hvert um sig þrjár uppvísandi og eina niðurvísandi hálfa ör. Þau eru tengd með uppvísandi punktalínum við aðra staka línu og síðan par af tvöföldum línum í miðju skýringarmyndarinnar, en lengra upp frá neðri línunum. Þær eru merktar „sigma neðanskrift 2 p neðanskrift x yfirskrift stjarna“, „pi neðanskrift 2 p neðanskrift y yfirskrift stjarna“ og „pi neðanskrift 2 p neðanskrift z yfirskrift stjarna“, í sömu röð. Neðri af þessum tveimur miðlægu, láréttu línum innihalda hvor um sig eina uppvísandi hálfa ör. Vinstri og hægri hliðar skýringarmyndarinnar hafa fyrirsagnir sem segja „Atómsvigrúm“, en miðfyrirsögnin segir „Sameindasvigrúm“.
 
 <!-- SEG:m68747:example-title:fs-idm114393376-title -->
-Spár um jónir með skýringarmyndum sameindasvigrúma
+Spár um jónir með sameindasvigrúmsmyndum
 
 <!-- SEG:m68747:para:fs-idp178692512 -->
-Gefðu upp rafeindaskipan sameindasvigrúma fyrir gildisrafeindirnar í [[MATH:25]] Verður þessi jón stöðug?
+Sýndu uppsetningu sameindasvigrúma fyrir gildisrafeindirnar í [[MATH:25]] Verður þessi jón stöðug?
 
 <!-- SEG:m68747:para-title:fs-idm77202544-title -->
 Lausn
 
 <!-- SEG:m68747:para:fs-idm77202544 -->
-Þegar við skoðum viðeigandi skýringarmynd sameindasvigrúma sjáum við að π-svigrúmin eru lægri í orku en σ[[i:[[sub:p]]]]-svigrúmið. Gildisrafeindaskipan fyrir C[[sub:2]] er [[MATH:26]] Með því að bæta við tveimur rafeindum til viðbótar til að mynda [[MATH:27]] anjónina fáum við gildisrafeindaskipanina [[MATH:28]] Þar sem þetta hefur sex fleiri bindandi rafeindir en andbindandi, verður tengigráðan 3 og jónin ætti að vera stöðug.
+Þegar við skoðum viðeigandi sameindasvigrúmsmynd sjáum við að π-svigrúmin eru lægri í orku en σ[[i:[[sub:p]]]]-svigrúmið. Gildisrafeindauppsetningin fyrir C[[sub:2]] er [[MATH:26]] Með því að bæta við tveimur rafeindum til viðbótar til að mynda [[MATH:27]] anjónina fáum við gildisrafeindauppsetninguna [[MATH:28]] Þar sem þetta hefur sex fleiri bindandi rafeindir en andbindandi verður tengiröðin 3 og jónin ætti að vera stöðug.
 
 <!-- SEG:m68747:para-title:fs-idm105620480-title -->
 Skoðaðu þekkingu þína
 
 <!-- SEG:m68747:para:fs-idm105620480 -->
-Hversu margar óparaðar rafeindir væru til staðar á [[MATH:29]] jón? Væri hún fússeglandi eða mótseglandi?
+Hversu margar óparaðar rafeindir væru til staðar á [[MATH:29]] jón? Væri hún fersviðsegulmögnuð eða þversviðsegulmögnuð?
 
 <!-- SEG:m68747:para:fs-idm171067584 -->
-tvær, meðseglandi
+tvær, fersviðsegulmögnuð
 
 <!-- SEG:m68747:note-title:fs-idm41078336-title -->
 Svar:
 
 <!-- SEG:m68747:para:fs-idm171067584 -->
-tvær, meðseglandi
+tvær, fersviðsegulmögnuð
 
 <!-- SEG:m68747:para:fs-idm82029920 -->
-Gerð sameindasvigrúmsrita fyrir sameindir með fleiri en tvær frumeindir byggir á sömu grunnhugmyndum og tvíatóma dæmin sem hér eru sýnd. Hins vegar, með fleiri frumeindum, þarf tölvur til að reikna út hvernig frumeindasvigrúmin sameinast. Sjá [[link:three-dimensional drawings|http://openstax.org/l/16orbitaldiag]] af sameindasvigrúmum fyrir C[[sub:6]]H[[sub:6]].
+Að búa til sameindasvigrúmsmyndir fyrir sameindir með fleiri en tveimur atómum byggir á sömu grunnhugmyndum og tvíatóma dæmin sem hér eru kynnt. Hins vegar, með fleiri atómum, þarf tölvur til að reikna út hvernig atómsvigrúmin sameinast. Sjá [[link:three-dimensional drawings|http://openstax.org/l/16orbitaldiag]] af sameindasvigrúmum fyrir C[[sub:6]]H[[sub:6]].
 
 <!-- SEG:m68747:para:fs-idm182437472 -->
-Vetnissameind (H[[sub:2]]) myndast úr tveimur vetnisfrumeindum. Þegar frumeindasvigrúm frumeindanna tveggja sameinast, setjast rafeindirnar í sameindasvigrúm með lægstu orku, σ[[sub:1[[i:s]]]] bindandi svigrúmið. Vetnissameind, H[[sub:2]], myndast auðveldlega vegna þess að orka H[[sub:2]] sameindar er lægri en orka tveggja H frumeinda. σ[[sub:1[[i:s]]]] svigrúmið sem inniheldur báðar rafeindirnar er lægra í orku en hvort tveggja 1[[i:s]] frumeindasvigrúmanna.
+Tvívetnissameind (H[[sub:2]]) myndast úr tveimur vetnisatómum. Þegar atómsvigrúm atómanna tveggja sameinast fara rafeindirnar í sameindasvigrúmið með lægstu orkuna, σ[[sub:1[[i:s]]]] bindandi svigrúmið. Tvívetnissameind, H[[sub:2]], myndast auðveldlega vegna þess að orka H[[sub:2]]-sameindar er lægri en orka tveggja H-atóma. σ[[sub:1[[i:s]]]] svigrúmið sem inniheldur báðar rafeindirnar er lægra í orku en hvort tveggja 1[[i:s]] atómsvigrúmanna.
 
 <!-- SEG:m68747:para:fs-idm108439328 -->
-Sameindasvigrúm getur haldið tveimur rafeindum, þannig að báðar rafeindirnar í H[[sub:2]] sameindinni eru í σ[[sub:1[[i:s]]]] bindandi svigrúminu; rafeindaskipanin er [[MATH:30]]. Við táknum þessa skipan með orkuriti sameindasvigrúma ([[xref:CNX_Chem_08_04_H2MO]]) þar sem ein ör sem vísar upp táknar eina rafeind í svigrúmi, og tvær örvar (sem vísa upp og niður) tákna tvær rafeindir með gagnstæðan spuna.
+Sameindasvigrúm getur haldið tveimur rafeindum, þannig að báðar rafeindirnar í H[[sub:2]]-sameindinni eru í σ[[sub:1[[i:s]]]] bindandi svigrúminu; rafeindaskipanin er [[MATH:30]] Við táknum þessa skipan með orkuriti sameindasvigrúma ([[xref:CNX_Chem_08_04_H2MO]]) þar sem ein ör sem vísar upp táknar eina rafeind í svigrúmi og tvær örvar (sem vísa upp og niður) tákna tvær rafeindir með gagnstæðan spuna.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_H2MO-caption -->
-Orkurit sameindasvigrúma spáir því að H[[sub:2]] verði stöðug sameind með lægri orku en aðskildar frumeindir.
+Orkurit sameindasvigrúma spáir því að H[[sub:2]] verði stöðug sameind með lægri orku en aðskilin atóm.
+
+<!-- SEG:m68747:alt:fs-idm45698032-alt -->
+Myndin sýnir skýringarmynd með lóðréttri ör sem vísar upp meðfram vinstri hliðinni og er merkt „E“. Neðst í miðju skýringarmyndarinnar er lárétt lína merkt „sigma með neðanskrift 1s“ sem hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður. Þessi lína er tengd til hægri og vinstri með punktalínum sem vísa upp að tveimur öðrum láréttum línum, hvor um sig merkt „1s“ og hvor um sig með einni lóðréttri hálfri ör sem vísar upp teiknaðri á sig. Þessar tvær línur eru tengdar með punktalínum sem vísa upp að annarri línu í miðju skýringarmyndarinnar, en lengra upp frá þeirri fyrstu, og merkt „sigma með neðanskrift 1s og yfirskrift stjörnu“. Vinstri og hægri hlið skýringarmyndarinnar eru með fyrirsögnum sem segja „Atómsvigrúm“, en miðfyrirsögnin segir „Sameindasvigrúm“. Neðst til vinstri og hægri er merkt „H“ en miðjan er merkt „H með neðanskrift 2“.
 
 <!-- SEG:m68747:para:fs-idm43412080 -->
-Vetnissameind inniheldur tvær bindandi rafeindir og engar andbindandi rafeindir svo við höfum
+Tvísúrefnissameind inniheldur tvær bindandi rafeindir og engar andbindandi rafeindir svo við höfum
 
 <!-- SEG:m68747:para:fs-idm130556608 -->
-Vegna þess að tengigráðan fyrir H–H efnatengið er jöfn 1, er efnatengið eintengi.
+Vegna þess að tengistigið fyrir H–H tengið er jafnt og 1, er tengið eintengi.
 
 <!-- SEG:m68747:para:fs-idm142555728 -->
-Helíumfrumeind hefur tvær rafeindir, sem báðar eru í 1[[i:s]] svigrúmi hennar. Tvær helíumfrumeindir sameinast ekki til að mynda tvíhelíumsameind, He[[sub:2]], með fjórum rafeindum, vegna þess að stöðgandi áhrif tveggja rafeinda í lægri orku bindandi svigrúminu yrðu vegin upp á móti óstöðgandi áhrifum tveggja rafeinda í hærri orku andbindandi sameindasvigrúminu. Við myndum skrifa hina ímynduðu rafeindaskipan He[[sub:2]] sem [[MATH:31]] eins og í [[xref:CNX_Chem_08_04_He2MO]]. Hrein orkubreyting yrði núll, svo það er enginn drifkraftur fyrir helíumfrumeindir til að mynda tvíatóma sameindina. Í raun er helíum til sem stakar frumeindir frekar en sem tvíatóma sameindir. Tengigráðan í ímyndaðri tvíhelíumsameind væri núll.
+Helíumatóm hefur tvær rafeindir, sem báðar eru í 1[[i:s]] svigrúmi þess. Tvö helíumatóm sameinast ekki og mynda tvíhelíumsameind, He[[sub:2]], með fjórum rafeindum, vegna þess að stöðugleikaáhrif tveggja rafeinda í lægra orku bindandi svigrúminu yrðu vegin upp á móti óstöðugleikaáhrifum tveggja rafeinda í hærra orku andbindandi sameindasvigrúminu. Við myndum skrifa hina tilgátulegu rafeindaskipan He[[sub:2]] sem [[MATH:31]] eins og í [[xref:CNX_Chem_08_04_He2MO]]. Hrein orkubreyting yrði núll, svo það er enginn drifkraftur fyrir helíumatóm til að mynda tvíatóma sameindina. Reyndar er helíum til sem stök atóm frekar en sem tvíatóma sameindir. Tengistigið í tilgátulegri tvíhelíumsameind væri núll.
 
 <!-- SEG:m68747:para:fs-idm166378064 -->
-Tengigráða upp á núll gefur til kynna að ekkert efnatengi myndist milli tveggja frumeinda.
+Tengistig núll gefur til kynna að ekkert tengi myndist á milli tveggja atóma.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_He2MO-caption -->
-Orkurit sameindasvigrúma spáir því að He[[sub:2]] verði ekki stöðug sameind, þar sem hún hefur jafnmargar bindandi og andbindandi rafeindir.
+Orkumynd sameindasvigrúms spáir því að He[[sub:2]] verði ekki stöðug sameind, þar sem hún hefur jafnmargar bindandi og andbindandi rafeindir.
+
+<!-- SEG:m68747:alt:fs-idm8319568-alt -->
+Myndin sýnir skýringarmynd með lóðréttri ör sem vísar upp meðfram vinstri hliðinni og er merkt „E“. Neðst í miðju skýringarmyndarinnar er lárétt lína merkt „sigma með neðanskrift 1s“ sem hefur tvær lóðréttar hálfar örvar teiknaðar á sig, önnur vísar upp og hin niður. Þessi lína er tengd til hægri og vinstri með punktalínum sem vísa upp að tveimur öðrum láréttum línum, hvor um sig merkt „1s“ og hvor um sig með einni lóðréttri hálfri ör sem vísar upp og einni sem vísar niður teiknaðri á sig. Þessar tvær línur eru tengdar með punktalínum sem vísa upp að annarri línu í miðju skýringarmyndarinnar, en lengra upp frá þeirri fyrstu, og merkt „sigma með neðanskrift 1s og yfirskrift stjörnu“. Á þessari línu er ein lóðrétt ör sem vísar upp og ein sem vísar niður. Vinstri og hægri hlið skýringarmyndarinnar eru með fyrirsögnum sem segja „Atómsvigrúm“, en miðfyrirsögnin segir „Sameindasvigrúm“. Neðst til vinstri og hægri er merkt „He“, en miðjan er merkt „He með neðanskrift 2“.
 
 <!-- SEG:m68747:title:fs-idp114974944-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68747:para:fs-idm157944352 -->
-Sameindasvigrúmakenningin (MO-kenningin) lýsir hegðun rafeinda í sameind með tilliti til samsetninga bylgjufalla frumeinda. Sameindasvigrúmin sem myndast geta náð yfir allar frumeindir í sameindinni. Bindandi sameindasvigrúm myndast við samfasa samsetningar bylgjufalla frumeinda og rafeindir í þessum svigrúmum stöðga sameind. Andbindandi sameindasvigrúm verða til vegna úrfasa samsetninga bylgjufalla frumeinda og rafeindir í þessum svigrúmum gera sameind óstöðugri. Sameindasvigrúm sem eru staðsett meðfram milli kjarna ás eru kölluð σ MO. Þau geta myndast úr [[i:s]] svigrúmum eða úr [[i:p]] svigrúmum sem snúa enda á enda. Sameindasvigrúm sem myndast úr [[i:p]] svigrúmum sem snúa hlið við hlið hafa rafeindaþéttleika á gagnstæðum hliðum milli kjarna ássins og eru kölluð π svigrúm.
+Sameindasvigrúmskenningin (MO) lýsir hegðun rafeinda í sameind með tilliti til samsetninga atómbylgjufalla. Sameindasvigrúmin sem myndast geta náð yfir öll atómin í sameindinni. Bindandi sameindasvigrúm myndast við samfasa samsetningar atómbylgjufalla og rafeindir í þessum svigrúmum koma á stöðugleika í sameind. Andbindandi sameindasvigrúm myndast við úrfasa samsetningar atómbylgjufalla og rafeindir í þessum svigrúmum gera sameind óstöðugri. Sameindasvigrúm sem eru staðsett meðfram kjarnaás eru kölluð σ MO. Þau geta myndast úr [[i:s]] svigrúmum eða úr [[i:p]] svigrúmum sem snúa enda á móti enda. Sameindasvigrúm sem myndast úr [[i:p]] svigrúmum sem snúa hlið við hlið hafa rafeindaþéttleika á gagnstæðum hliðum kjarnaássins og eru kölluð π svigrúm.
 
 <!-- SEG:m68747:para:fs-idm113162704 -->
-Við getum lýst rafeindabyggingu tvíatóma sameinda með því að beita sameindasvigrúmakenningunni á gildisrafeindir frumeindanna. Rafeindir fylla sameindasvigrúm eftir sömu reglum og gilda um fyllingu frumeindasvigrúma; regla Hunds og Aufbau-reglan segja okkur að lægri orkusvigrúm fyllist fyrst, rafeindir dreifist áður en þær parast og hvert svigrúm getur haldið að hámarki tveimur rafeindum með gagnstæðan spuna. Efni með óparaðar rafeindir eru meðseglandi og dragast að segulsviði, en þau með allar paraðar rafeindir eru andseglandi og hrindast frá segulsviði. Að spá rétt fyrir um segulmagnaða eiginleika sameinda er kostur sameindasvigrúmakenningarinnar yfir Lewis myndir og gildistengjakenninguna.
+Við getum lýst rafeindabyggingu tvíatóma sameinda með því að beita sameindasvigrúmskenningunni á gildisrafeindir atómanna. Rafeindir fylla sameindasvigrúm samkvæmt sömu reglum og gilda um fyllingu atómsvigrúma; regla Hunds og Aufbau-reglan segja okkur að lægri orkusvigrúm fyllist fyrst, rafeindir dreifist áður en þær parast og hvert svigrúm getur rúmað að hámarki tvær rafeindir með gagnstæðum spuna. Efni með óparaðar rafeindir eru fersegulmögnuð og dragast að segulsviði, en þau sem hafa allar rafeindir paraðar eru andsegulmögnuð og hrindast frá segulsviði. Að spá rétt fyrir um segulmagn eiginleika sameinda er kostur sameindasvigrúmskenningarinnar fram yfir Lewis-myndir og gildistengjakenninguna.
 
 <!-- SEG:m68747:title:fs-idm136319184-title -->
 Lykiljafna
 
-<!-- SEG:m68747:entry:auto-146 -->
+<!-- SEG:m68747:entry:auto-164 -->
 [[MATH:32]]
 
 <!-- SEG:m68747:title:fs-idm158963280-title -->
-Efnafræðiæfingar í lok kafla
+Efnafræði - Æfingar í lok kafla
 
 <!-- SEG:m68747:problem:fs-idm52005904 -->
-Teiknaðu upp dreifingu rafeindaþéttleika í bindandi og andbindandi sameindasvigrúmum sem myndast úr tveimur [[i:s]] svigrúmum og úr tveimur [[i:p]] svigrúmum.
+Teiknaðu dreifingu rafeindaþéttleika í bindandi og andbindandi sameindasvigrúmum sem myndast úr tveimur [[i:s]] svigrúmum og úr tveimur [[i:p]] svigrúmum.
 
 <!-- SEG:m68747:problem:fs-idm131857600 -->
 Hvernig er eftirfarandi svipað og hvernig er það ólíkt?
@@ -447,16 +504,16 @@ Hvernig er eftirfarandi svipað og hvernig er það ólíkt?
 (a) σ sameindasvigrúm og π sameindasvigrúm
 
 <!-- SEG:m68747:problem:fs-idm142106032 -->
-(b) [[i:ψ]] fyrir frumeindasvigrúm og [[i:ψ]] fyrir sameindasvigrúm
+(b) [[i:ψ]] fyrir atómsvigrúm og [[i:ψ]] fyrir sameindasvigrúm
 
 <!-- SEG:m68747:problem:fs-idm72819696 -->
 (c) bindandi svigrúm og andbindandi svigrúm
 
 <!-- SEG:m68747:solution:fs-idm101918992 -->
-(a) Líkindi: Hvort tveggja eru bindandi svigrúm sem geta innihaldið að hámarki tvær rafeindir. Mismunur: σ-svigrúm eru samsetningar frumeindasvigrúma enda á enda, en π-svigrúm myndast við hliðstæða skörun svigrúma. (b) Líkindi: Hvort tveggja eru skammtafræðileg fyrirbæri sem tákna líkurnar á að finna rafeindina í kringum frumeindina eða sameindina. Mismunur: [[i:ψ]] fyrir frumeindasvigrúm lýsir hegðun aðeins einnar rafeindar í einu miðað við frumeindina. Fyrir sameind táknar [[i:ψ]] stærðfræðilega samsetningu frumeindasvigrúma. (c) Líkindi: Hvort tveggja eru svigrúm sem geta innihaldið tvær rafeindir. Mismunur: Bindandi svigrúm leiða til þess að tvær eða fleiri frumeindir haldast saman. Andbindandi svigrúm hafa þau áhrif að óstöðugleika er valdið í öllum efnatengjum sem hafa myndast.
+(a) Líkindi: Hvort tveggja eru bindandi svigrúm sem geta innihaldið að hámarki tvær rafeindir. Munur: σ-svigrúm eru samsetningar atómsvigrúma enda á enda, en π-svigrúm myndast við hliðstæða skörun svigrúma. (b) Líkindi: Hvort tveggja eru skammtafræðileg fyrirbæri sem tákna líkurnar á að finna rafeindina í kringum atómið eða sameindina. Munur: [[i:ψ]] fyrir atómsvigrúm lýsir hegðun aðeins einnar rafeindar í einu miðað við atómið. Fyrir sameind táknar [[i:ψ]] stærðfræðilega samsetningu atómsvigrúma. (c) Líkindi: Hvort tveggja eru svigrúm sem geta innihaldið tvær rafeindir. Munur: Bindandi svigrúm leiða til þess að tvö eða fleiri atóm haldast saman. Andbindandi svigrúm hafa þau áhrif að þau veikja öll tengi sem hafa myndast.
 
 <!-- SEG:m68747:problem:fs-idm140245904 -->
-Ef sameindasvigrúm eru búin til með því að sameina fimm frumeindasvigrúm frá frumeind A og fimm frumeindasvigrúm frá frumeind B, hversu mörg sameindasvigrúm munu myndast?
+Ef sameindasvigrúm eru mynduð með því að sameina fimm atómsvigrúm frá atómi A og fimm atómsvigrúm frá atómi B, hversu mörg sameindasvigrúm myndast?
 
 <!-- SEG:m68747:problem:fs-idm5146672 -->
 Getur sameind með oddatölu rafeinda nokkurn tíma verið diamagnetic? Útskýrðu hvers vegna eða hvers vegna ekki.
@@ -468,22 +525,22 @@ Oddatala rafeinda getur aldrei verið pöruð, óháð fyrirkomulagi sameindasvi
 Getur sameind með sléttri tölu rafeinda nokkurn tíma verið paramagnetic? Útskýrðu hvers vegna eða hvers vegna ekki.
 
 <!-- SEG:m68747:problem:fs-idm84729040 -->
-Af hverju hafa bindandi sameindasvigrúm lægri orku en upprunalegu frumeindasvigrúmin?
+Af hverju hafa bindandi sameindasvigrúm lægri orku en upprunalegu atómsvigrúmin?
 
 <!-- SEG:m68747:solution:fs-idm50841888 -->
-Bindandi svigrúm hafa rafeindaþéttleika í nálægð við fleiri en einn kjarna. Víxlverkunin milli bindandi jákvætt hlaðinna kjarna og neikvætt hlaðinna rafeinda kemur stöðugleika á kerfið.
+Bindandi svigrúm hafa rafeindaþéttleika í nálægð við fleiri en einn kjarna. Vxlverkunin milli bindandi jákvætt hlaðinna kjarna og neikvætt hlaðinna rafeinda kemur stöðugleika á kerfið.
 
 <!-- SEG:m68747:problem:fs-idm250808016 -->
-Reiknaðu tengigráðu fyrir jón með þessari stillingu:[[BR]] [[MATH:33]]
+Reiknaðu tengistigið fyrir jón með þessari uppsetningu:[[BR]] [[MATH:33]]
 
 <!-- SEG:m68747:problem:fs-idm141640192 -->
-Útskýrðu hvers vegna rafeind í bindandi sameindasvigrúmi í H[[sub:2]] sameindinni hefur lægri orku en rafeind í 1[[i:s]] frumeindasvigrúmi hvorrar aðskildu vetnisfrumeindarinnar sem er.
+Útskýrðu hvers vegna rafeind í bindandi sameindasvigrúmi í H[[sub:2]]-sameindinni hefur lægri orku en rafeind í 1[[i:s]] atómsvigrúmi hvors aðskilda vetnisatómsins um sig.
 
 <!-- SEG:m68747:solution:fs-idm175049680 -->
 Pörun tveggja bindandi rafeinda lækkar orku kerfisins miðað við orku ótengdu rafeindanna.
 
 <!-- SEG:m68747:problem:fs-idm79850784 -->
-Spáðu fyrir um gildisrafeindastillingar sameindasvigrúma fyrir eftirfarandi og tilgreindu hvort þær verði stöðugar eða óstöðugar jónir.
+Spáðu fyrir um gildisrafeindaskipan sameindasvigrúma fyrir eftirfarandi og tilgreindu hvort þær verði stöðugar eða óstöðugar jónir.
 
 <!-- SEG:m68747:problem:fs-idp106074208 -->
 (a) [[MATH:34]]
@@ -510,7 +567,7 @@ Spáðu fyrir um gildisrafeindastillingar sameindasvigrúma fyrir eftirfarandi o
 (h) [[MATH:41]]
 
 <!-- SEG:m68747:problem:fs-idm73750816 -->
-Ákvarðaðu tengigráðu hvers meðlims í eftirfarandi hópum og ákvarðaðu hvaða meðlimur hvers hóps er spáð af sameindasvigrúmslíkaninu að hafi sterkasta efnatengið.
+Ákvarðaðu tengistig hvers meðlims í eftirfarandi hópum og ákvarðaðu hvaða meðlimur hvers hóps er spáð að hafi sterkasta tengið samkvæmt sameindasvigrúmslíkaninu.
 
 <!-- SEG:m68747:problem:fs-idm46580704 -->
 (a) H[[sub:2]], [[MATH:42]] [[MATH:43]]
@@ -528,13 +585,13 @@ Spáðu fyrir um gildisrafeindastillingar sameindasvigrúma fyrir eftirfarandi o
 (e) N[[sub:2]], [[MATH:49]] [[MATH:50]]
 
 <!-- SEG:m68747:solution:fs-idp7180048 -->
-(a) H[[sub:2]] tengigráða = 1, [[MATH:51]] tengigráða = 0,5, [[MATH:52]] tengigráða = 0,5, sterkasta efnatengið er H[[sub:2]]; (b) O[[sub:2]] tengigráða = 2, [[MATH:53]] tengigráða = 3; [[MATH:54]] tengigráða = 1, sterkasta efnatengið er [[MATH:55]] (c) Li[[sub:2]] tengigráða = 1, [[MATH:56]] tengigráða = 0,5, Be[[sub:2]] tengigráða = 0, sterkasta efnatengið er [[MATH:57]];(d) F[[sub:2]] tengigráða = 1, [[MATH:58]] tengigráða = 1,5, [[MATH:59]] tengigráða = 0,5, sterkasta efnatengið er [[MATH:60]] (e) N[[sub:2]] tengigráða = 3, [[MATH:61]] tengigráða = 2,5, [[MATH:62]] tengigráða = 2,5, sterkasta efnatengið er N[[sub:2]]
+(a) H[[sub:2]] tengistig = 1, [[MATH:51]] tengistig = 0,5, [[MATH:52]] tengistig = 0,5, sterkasta tengið er H[[sub:2]]; (b) O[[sub:2]] tengistig = 2, [[MATH:53]] tengistig = 3; [[MATH:54]] tengistig = 1, sterkasta tengið er [[MATH:55]] (c) Li[[sub:2]] tengistig = 1, [[MATH:56]] tengistig = 0,5, Be[[sub:2]] tengistig = 0, sterkasta tengið er [[MATH:57]];(d) F[[sub:2]] tengistig = 1, [[MATH:58]] tengistig = 1,5, [[MATH:59]] tengistig = 0,5, sterkasta tengið er [[MATH:60]] (e) N[[sub:2]] tengistig = 3, [[MATH:61]] tengistig = 2,5, [[MATH:62]] tengistig = 2,5, sterkasta tengið er N[[sub:2]]
 
 <!-- SEG:m68747:problem:fs-idm136087312 -->
-Fyrir fyrstu jónunarorku N[[sub:2]] sameindar, úr hvaða sameindasvigrúmi er rafeindin fjarlægð?
+Fyrir fyrstu jónunarorku N[[sub:2]]-sameindar, úr hvaða sameindasvigrúmi er rafeindin fjarlægð?
 
 <!-- SEG:m68747:problem:fs-idm148431744 -->
-Berðu saman frumeinda- og sameindasvigrúmsmyndir til að bera kennsl á þann meðlim hvers eftirfarandi para sem hefur hæstu fyrstu jónunarorkuna (best bundnu rafeindina) í gasfasa:
+Berðu saman atóm- og sameindasvigrúmsmyndir til að bera kennsl á þann meðlim hvers eftirfarandi para sem hefur hæstu fyrstu jónunarorkuna (fastbundnustu rafeindina) í gasfasa:
 
 <!-- SEG:m68747:problem:fs-idm62835952 -->
 (a) H og H[[sub:2]]
@@ -555,19 +612,19 @@ Berðu saman frumeinda- og sameindasvigrúmsmyndir til að bera kennsl á þann 
 (a) H[[sub:2]]; (b) N[[sub:2]]; (c) O; (d) C[[sub:2]]; (e) B[[sub:2]]
 
 <!-- SEG:m68747:problem:fs-idm70863072 -->
-Fyrir hvaða tvíatóma sameindir með frumeindum úr sömu lotu 2 er spáð að þær séu meðseglandi?
+Hvaða tvíatóma sameindir með eins atómum í lotu 2 eru taldar vera ferssegulmagnaðar?
 
 <!-- SEG:m68747:problem:fs-idm111685776 -->
-Vinur þinn segir þér að 2[[i:s]] svigrúmið fyrir flúor byrji á mun lægri orku en 2[[i:s]] svigrúmið fyrir litíum, þannig að σ[[sub:2[[i:s]]]] sameindasvigrúmið sem myndast í F[[sub:2]] sé stöðugra en í Li[[sub:2]]. Ertu sammála?
+Vinur þinn segir þér að 2[[i:s]] svigrúm flúors byrji á mun lægri orku en 2[[i:s]] svigrúm litíums, þannig að σ[[sub:2[[i:s]]]] sameindasvigrúmið sem myndast í F[[sub:2]] sé stöðugra en í Li[[sub:2]]. Ertu sammála?
 
 <!-- SEG:m68747:solution:fs-idm149192752 -->
-Já, flúor er minni frumeind en Li, þannig að rafeindir í 2[[i:s]] svigrúminu eru nær kjarnanum og stöðugri.
+Já, flúor er minna atóm en Li, þannig að atóm í 2[[i:s]] svigrúminu eru nær kjarnanum og stöðugri.
 
 <!-- SEG:m68747:problem:fs-idm110121168 -->
-Satt eða ósatt: Bór inniheldur 2[[i:s]][[sup:2]]2[[i:p]][[sup:1]] girðirafeindir, þannig að aðeins eitt [[i:p]] svigrúm þarf til að mynda sameindasvigrúm.
+Satt eða ósatt: Bór inniheldur 2[[i:s]][[sup:2]]2[[i:p]][[sup:1]] gildisrafeindir, þannig að aðeins eitt [[i:p]] svigrúm þarf til að mynda sameindasvigrými.
 
 <!-- SEG:m68747:problem:fs-idm153039552 -->
-Hvaða hleðslu þyrfti F[[sub:2]] að hafa til að mynda jón með tengigráðu 2?
+Hvaða hleðslu þyrfti F[[sub:2]] að hafa til að mynda jón með tengitöluna 2?
 
 <!-- SEG:m68747:solution:fs-idm46527040 -->
 2+
@@ -576,13 +633,13 @@ Hvaða hleðslu þyrfti F[[sub:2]] að hafa til að mynda jón með tengigráðu
 Spáðu fyrir um hvort MO-myndin fyrir S[[sub:2]] myndi sýna s-p blöndun eða ekki.
 
 <!-- SEG:m68747:problem:fs-idm113788912 -->
-Útskýrðu hvers vegna [[MATH:63]] er mótseglandi, á meðan [[MATH:64]], sem hefur sama fjölda girðirafeinda, er meðseglandi.
+Útskýrðu hvers vegna [[MATH:63]] er þversegulmagnað, á meðan [[MATH:64]], sem hefur sama fjölda gildisrafeinda, er ferssegulmagnað.
 
 <!-- SEG:m68747:solution:fs-idm119081680 -->
 N[[sub:2]] hefur s-p blöndun, þannig að π svigrúmin eru þau síðustu sem fyllast í [[MATH:65]]. O[[sub:2]] hefur ekki s-p blöndun, þannig að σ[[i:[[sub:p]]]] svigrúmið fyllist á undan π svigrúmunum.
 
 <!-- SEG:m68747:problem:fs-idm166052672 -->
-Notaðu MO-myndirnar til að spá fyrir um tengigráðu fyrir sterkara efnatengið í hverju pari:
+Notaðu MO-myndirnar til að spá fyrir um tengitölu sterkara tengisins í hverju pari:
 
 <!-- SEG:m68747:problem:fs-idm180545744 -->
 (a) B[[sub:2]] eða [[MATH:66]]
@@ -603,89 +660,91 @@ andbindandi svigrúm
 sameindasvigrúm staðsett utan svæðisins milli tveggja kjarna; rafeindir í andbindandi svigrúmi gera sameindina óstöðuga
 
 <!-- SEG:m68747:glossary-term:fs-idm57102096-term -->
-tengigráða
+tengitala
 
 <!-- SEG:m68747:glossary-def:fs-idm57102096-def -->
-fjöldi rafeindapara milli tveggja frumeinda; hana má finna út frá fjölda efnatengja í Lewis mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur
+fjöldi rafeindapara milli tveggja atóma; hana má finna út frá fjölda tengja í Lewis-mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur
 
 <!-- SEG:m68747:glossary-term:fs-idm133686144-term -->
 bindandi svigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm133686144-def -->
-sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi stöðga sameind
+sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi gera sameindina stöðuga
 
 <!-- SEG:m68747:glossary-term:fs-idm167738656-term -->
-úrkynjuð svigrúm
+Samorkusvigrými
 
 <!-- SEG:m68747:glossary-def:fs-idm167738656-def -->
 svigrúm sem hafa sömu orku
 
 <!-- SEG:m68747:glossary-term:fs-idm83103936-term -->
-mótseglun
+þversegulmögnun
 
 <!-- SEG:m68747:glossary-def:fs-idm83103936-def -->
 fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir
 
 <!-- SEG:m68747:glossary-term:fs-idm165896720-term -->
-tvíatóma sameind með frumeindum úr sömu lotu
+tvíatóma sameind með eins atómum
 
 <!-- SEG:m68747:glossary-def:fs-idm165896720-def -->
-sameind sem samanstendur af tveimur eins frumeindum
+sameind sem samanstendur af tveimur eins atómum
 
 <!-- SEG:m68747:glossary-term:fs-idm41528352-term -->
-línuleg samantekt frumeindasvigrúma<!-- SEG:m68747:glossary-def:fs-idm41528352-def -->
-aðferð til að sameina frumeindasvigrúm til að búa til sameindasvigrúm
+línuleg samantekt atómsvigrýma
+
+<!-- SEG:m68747:glossary-def:fs-idm41528352-def -->
+aðferð til að sameina atómsvigrými til að búa til sameindasvigrými
 
 <!-- SEG:m68747:glossary-term:fs-idm131261760-term -->
 sameindasvigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm131261760-def -->
-rými þar sem miklar líkur eru á að finna rafeind í sameind
+rúmsvæði þar sem miklar líkur eru á að finna rafeind í sameind
 
 <!-- SEG:m68747:glossary-term:fs-idm132723600-term -->
-sameindasvigrúmarit
+sameindasvigrúmsmynd
 
 <!-- SEG:m68747:glossary-def:fs-idm132723600-def -->
-sjónræn framsetning á afstæðum orkustigum sameindasvigrúma
+sjónræn framsetning á afstæðum orkustigum sameindasvigrýma
 
 <!-- SEG:m68747:glossary-term:fs-idm249965088-term -->
-sameindasvigrúmakenningin
+sameindasvigrúmskenningin
 
 <!-- SEG:m68747:glossary-def:fs-idm249965088-def -->
-líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla frumeinda
+líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla atóma
 
 <!-- SEG:m68747:glossary-term:fs-idm100788960-term -->
-hliðarsegulmagn
+ferssegulmögnun
 
 <!-- SEG:m68747:glossary-def:fs-idm100788960-def -->
 fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar
 
 <!-- SEG:m68747:glossary-term:fs-idm100344544-term -->
-π-tengisvigrúm
+π-bindandi svigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm100344544-def -->
-sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum kjarnaássins
+sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum tengiássins
 
 <!-- SEG:m68747:glossary-term:fs-idm18620192-term -->
-π*-andbindandi svigrúm
+π*-bindandi svigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm18620192-def -->
-andbindandi sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma í andfasa, þar sem rafeindaþéttleikinn er beggja vegna kjarnaássins og nóða er á milli kjarnanna
+andbindandi sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma úr fasa, þar sem rafeindaþéttleikinn er báðum megin við tengiásinn og það er núllpunktur milli kjarnanna
 
 <!-- SEG:m68747:glossary-term:fs-idm41960016-term -->
-σ-tengisvigrúm
+σ-bindandi svigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm41960016-def -->
-sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram tengiásnum
+sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram ás tengisins
 
 <!-- SEG:m68747:glossary-term:fs-idm169269152-term -->
-σ*-andbindandi svigrúm
+σ*-bindandi svigrúm
 
 <!-- SEG:m68747:glossary-def:fs-idm169269152-def -->
-andbindandi sameindasvigrúm sem myndast við skörun frumeindasvigrúma í andfasa meðfram tengiásnum, sem myndar nóðu á milli kjarnanna
+andbindandi sameindasvigrúm sem myndast við skörun atómsvigrúma í andfasa meðfram ás tengisins og myndar nódu milli kjarnanna
 
 <!-- SEG:m68747:glossary-term:fs-idp5821920-term -->
-s-p blöndun
+s-p-blöndun
 
 <!-- SEG:m68747:glossary-def:fs-idp5821920-def -->
-breyting sem veldur því að σ[[i:[[sub:p]]]] svigrúm verða óstöðugri en π[[i:[[sub:p]]]] svigrúm vegna blöndunar [[i:s]]- og [[i:p]]-byggðra sameindasvigrúma með svipaða orku.
+breyting sem veldur því að σ[[i:[[sub:p]]]]-svigrúm verða óstöðugri en π[[i:[[sub:p]]]]-svigrúm vegna blöndunar [[i:s]]- og [[i:p]]-byggðra sameindasvigrúma með svipaða orku.

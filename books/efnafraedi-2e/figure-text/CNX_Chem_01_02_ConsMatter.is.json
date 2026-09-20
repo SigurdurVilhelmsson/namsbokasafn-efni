@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_02_ConsMatter",
+ "renderHash": "cc00a19499a6dce9",
+ "composedHash": "cc00a19499a6dce9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Pre-|beer": "For-bjór",
+  "Sugar": "Sykur",
+  "Ethanol": "Etanól",
+  "Carbonation": "Kolsýring",
+  "Beer": "Bjór",
+  "Sheets of Pb and PbO2|and H2SO4": "Blöð af Pb og PbO2 og H2SO4",
+  "PbSO4 and H2O": "PbSO4 og H2O"
+ },
+ "mtAlternatives": {
+  "Pre-|beer": {
+   "kept": "joined",
+   "other": "Forbjór",
+   "reason": "disagree",
+   "mt": "For-bjór"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

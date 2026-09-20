@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_spDiag",
+ "renderHash": "42fc4d2c26068d0e",
+ "composedHash": "42fc4d2c26068d0e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Orbitals in an isolated Be atom": "Svigrúm í einangruðu Be-atómi",
+  "Orbitals in the sp hybridized Be in BeCl2": "Svigrúm í sp-blendnu Be í BeCl2",
+  "Hybridization": "Blending",
+  "Unhybridized": "Óblendin"
+ },
+ "mtAlternatives": {
+  "Orbitals in an isolated Be atom": {
+   "kept": "joined",
+   "other": "Svigrúm í einangraðri Be frumeind",
+   "reason": "disagree",
+   "mt": "Svigrúm í einangruðu Be-atómi"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Tegundablöndun",
+   "reason": "disagree",
+   "mt": "Blending"
+  },
+  "Unhybridized": {
+   "kept": "joined",
+   "other": "Óblendingaður",
+   "reason": "disagree",
+   "mt": "Óblendin"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

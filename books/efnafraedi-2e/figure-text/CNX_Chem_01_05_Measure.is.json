@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_Measure",
+ "renderHash": "0d37857b790627f5",
+ "composedHash": "0d37857b790627f5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Make reading|here": "Lestu hér"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

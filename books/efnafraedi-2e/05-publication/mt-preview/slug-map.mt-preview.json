@@ -3,6 +3,36 @@
   "track": "mt-preview",
   "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed. SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into one directory, so a consumer must read each track's map separately and reconcile them itself; a `to` here can also be superseded at the destination by the reader site's own overlay pruning.",
   "renames": {
+    "chapters/01/1-2-efnishamur-og-flokkun-efnis.html": {
+      "to": "chapters/01/1-2-astandsform-og-flokkun-efnis.html",
+      "moduleId": "m68667",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/01/1-5-ovissa-i-maelingum-hittni-og-nakvaemni.html": {
+      "to": "chapters/01/1-5-maeliovissa-nakvaemni-og-genkvaemni.html",
+      "moduleId": "m68690",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/01/1-6-staerdfraedileg-medferd-nidurstadna-maelinga.html": {
+      "to": "chapters/01/1-6-staerdfraedileg-medferd-maelinidurstadna.html",
+      "moduleId": "m68683",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/02/2-3-bygging-atoms-og-taknmal.html": {
+      "to": "chapters/02/2-3-atombygging-og-taknmal.html",
+      "moduleId": "m68692",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/02/2-6-jona-og-sameindaefnasambond.html": {
+      "to": "chapters/02/2-6-jona-og-sameindasambond.html",
+      "moduleId": "m68696",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/02/2-7-nafnakerfi-efna.html": {
+      "to": "chapters/02/2-7-nafnakerfi-efnafraedinnar.html",
+      "moduleId": "m68698",
+      "recordedAt": "2026-09-20"
+    },
     "chapters/03/3-2-akvordun-reynslu-og-sameindaformula.html": {
       "to": "chapters/03/3-2-akvordun-reynsluformula-og-sameindaformula.html",
       "moduleId": "m68702",
@@ -27,6 +57,26 @@
       "to": "chapters/06/6-2-likan-bohrs.html",
       "moduleId": "m68732",
       "recordedAt": "2026-09-19"
+    },
+    "chapters/08/8-1-kenning-um-gildistengi.html": {
+      "to": "chapters/08/8-1-gildisrafeindatengjakenningin.html",
+      "moduleId": "m68744",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-2-blendingssvigrum-frumeinda.html": {
+      "to": "chapters/08/8-2-blendingssvigrum-atoma.html",
+      "moduleId": "m68745",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-3-fjolfold-tengi.html": {
+      "to": "chapters/08/8-3-margfold-tengi.html",
+      "moduleId": "m68746",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-4-sameindasvigrumakenningin.html": {
+      "to": "chapters/08/8-4-sameindasvigrumskenningin.html",
+      "moduleId": "m68747",
+      "recordedAt": "2026-09-20"
     },
     "chapters/10/10-5-fast-astand-efnis.html": {
       "to": "chapters/10/10-5-fastur-efnishamur.html",

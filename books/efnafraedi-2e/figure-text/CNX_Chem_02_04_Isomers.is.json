@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_04_Isomers",
+ "renderHash": "7a196f64a171b441",
+ "composedHash": "7a196f64a171b441",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Acetic acid": "Ediksýra",
+  "Methyl formate": "Metýlformat"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

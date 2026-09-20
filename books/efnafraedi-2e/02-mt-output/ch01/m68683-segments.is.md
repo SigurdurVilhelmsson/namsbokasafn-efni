@@ -1,41 +1,41 @@
 <!-- SEG:m68683:title:auto-1 -->
-Stærðfræðileg meðferð á niðurstöðum mælinga
+Stærðfræðileg meðferð mæliniðurstaðna
 
 <!-- SEG:m68683:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:
 
 <!-- SEG:m68683:abstract-item:abstract-item-1 -->
-Útskýrt aðferð einingagreiningar (þáttamerkingar) við stærðfræðilega útreikninga sem fela í sér stærðir
+Útskýrt víddagreiningu (einingabreytingu) sem aðferð við stærðfræðilega útreikninga á stærðum
 
 <!-- SEG:m68683:abstract-item:abstract-item-2 -->
-Notað einingagreiningu til að framkvæma einingabreytingar fyrir tiltekinn eiginleika og útreikninga sem fela í sér tvo eða fleiri eiginleika
+Notað víddagreiningu til að framkvæma einingabreytingar fyrir tiltekinn eiginleika og útreikninga sem fela í sér tvo eða fleiri eiginleika
 
 <!-- SEG:m68683:para:fs-idm319461744 -->
-Það er oft þannig að stærðina sem áhugi er á er ekki auðvelt (eða jafnvel mögulegt) að mæla beint, heldur verður að reikna hana út frá öðrum beint mældum eiginleikum og viðeigandi stærðfræðilegum samböndum. Tökum sem dæmi mælingu á meðalhraða íþróttamanns sem hleypur spretti. Þetta er venjulega gert með því að mæla *tímann* sem það tekur íþróttamanninn að hlaupa frá ráslínu að marklínu og *vegalengdina* milli þessara tveggja lína og reikna síðan út *hraða* út frá jöfnunni sem tengir þessa þrjá eiginleika:
+Oft er það svo að stærð sem vekur áhuga er ekki auðvelt (eða jafnvel mögulegt) að mæla beint, heldur verður að reikna hana út frá öðrum beint mældum eiginleikum og viðeigandi stærðfræðilegum samböndum. Tökum sem dæmi mælingu á meðalhraða spretthlaupara. Þetta er yfirleitt gert með því að mæla [[i:tímann]] sem það tekur hlauparann að hlaupa frá ráslínu að marklínu og [[i:vegalengdina]] milli þessara tveggja lína og reikna síðan út [[i:hraðann]] með jöfnunni sem tengir þessa þrjá eiginleika:
 
 <!-- SEG:m68683:para:fs-idm350487392 -->
-Sprettari á Ólympíugæðum getur hlaupið 100 m á um það bil 10 s, sem samsvarar meðalhraða upp á
+Spretthlaupari á Ólympíuleikastigi getur hlaupið 100 m á um það bil 10 s, sem samsvarar meðalhraða upp á
 
 <!-- SEG:m68683:para:fs-idm308822992 -->
-(Fyrir þennan og næsta útreikning, gerðu ráð fyrir að núllin aftast séu markverðir stafir.) Athugaðu að þessi einfalda reikningsaðgerð felur í sér að deila tölum hverrar mældrar stærðar til að fá tölu reiknuðu stærðarinnar (100/10 = 10) *og sömuleiðis* að deila einingum hverrar mældrar stærðar til að fá einingu reiknuðu stærðarinnar (m/s = m/s). Íhugaðu nú að nota þetta sama samband til að spá fyrir um þann tíma sem það tekur mann sem hleypur á þessum hraða að fara 25 m vegalengd. Sama samband milli þessara þriggja eiginleika er notað, en í þessu tilfelli eru stærðirnar tvær sem gefnar eru hraði (10 m/s) og vegalengd (25 m). Til að fá þann eiginleika sem leitað er að, tíma, verður að endurraða jöfnunni á viðeigandi hátt:
+(Í þessum og næsta útreikningi skaltu gera ráð fyrir að núllin aftast séu markverðir stafir.) Athugaðu að þessi einfaldi reikningur felur í sér að deila tölum hvers mælds magns til að fá tölu reiknaðs magns (100/10 = 10) [[i:og sömuleiðis]] deila einingum hvers mælds magns til að fá einingu reiknaðs magns (m/s = m/s). Íhugaðu nú að nota þetta sama samband til að spá fyrir um þann tíma sem það tekur mann sem hleypur á þessum hraða að fara 25 m vegalengd. Sama samband milli þessara þriggja eiginleika er notað, en í þessu tilfelli eru tvær uppgefnar stærðir hraði (10 m/s) og vegalengd (25 m). Til að fá út þann eiginleika sem leitað er að, tíma, verður að endurraða jöfnunni á viðeigandi hátt:
 
 <!-- SEG:m68683:para:fs-idm24572080 -->
-Þá er hægt að reikna tímann sem:
+Tímann má þá reikna út sem:
 
 <!-- SEG:m68683:para:fs-idm316688784 -->
-Aftur fylgdi reikningsaðgerð á tölunum (25/10 = 2,5) sams konar reikningsaðgerð á einingunum (m/(m/s) = s) til að fá tölu og einingu niðurstöðunnar, 2,5 s. Athugaðu að, rétt eins og með tölur, þegar einingu er deilt með sams konar einingu (í þessu tilfelli, m/m), er niðurstaðan „1“ — eða, eins og almennt er orðað, einingarnar „styttast út“.
+Enn og aftur fylgdi reikningur með tölum (25/10 = 2,5) samsvarandi reikningi með einingum (m/(m/s) = s) til að fá tölu og einingu niðurstöðunnar, 2,5 s. Athugaðu að, rétt eins og með tölur, þegar einingu er deilt með sams konar einingu (í þessu tilfelli, m/m), er niðurstaðan „1“ – eða, eins og almennt er orðað, einingarnar „stytta sig út“.
 
 <!-- SEG:m68683:para:fs-idp44099792 -->
-Þessir útreikningar eru dæmi um fjölhæfa stærðfræðilega aðferð sem kallast __einingagreining__ (eða __þáttamerkingaraðferðin__). Einingagreining byggir á þessari forsendu: *einingar stærða verða að lúta sömu stærðfræðilegu aðgerðum og tilheyrandi tölur þeirra*. Þessa aðferð má beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir.
+Þessir útreikningar eru dæmi um fjölhæfa stærðfræðilega aðferð sem kallast [[term:víddagreining|term-00001]] (eða [[term:einingabreytingaraðferð|term-00002]]). Víddagreining byggir á þessari forsendu: [[i:einingar stærða verða að lúta sömu stærðfræðilegu aðgerðum og tilheyrandi tölur þeirra]]. Þessa aðferð má beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir.
 
 <!-- SEG:m68683:title:fs-idm285086480-title -->
-Umreikningsstuðlar og einingagreining
+Umreikningsstuðlar og víddagreining
 
 <!-- SEG:m68683:para:fs-idm273312256 -->
-Hlutfall tveggja jafngildra stærða sem gefnar eru upp með mismunandi mælieiningum má nota sem __umreikningsstuðul fyrir einingar__. Til dæmis eru lengdirnar 2,54 cm og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út umreikningsstuðul fyrir einingar úr hlutfallinu,
+Hlutfall tveggja jafngildra stærða sem gefnar eru upp með mismunandi mælieiningum má nota sem [[term:umreikningsstuðul fyrir einingar|term-00003]]. Til dæmis eru lengdirnar 2,54 cm og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út umreikningsstuðul fyrir einingar úr hlutfallinu,
 
 <!-- SEG:m68683:para:fs-idm205801120 -->
-Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í [#fs-idm222237232].
+Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í [[xref:fs-idm222237232]].
 
 <!-- SEG:m68683:entry:auto-14 -->
 Algengir umreikningsstuðlar
@@ -65,16 +65,16 @@ Massi
 1 qt = 0,94635 L
 
 <!-- SEG:m68683:entry:auto-23 -->
-1 lb = 453,59 g [footnote: Strangt til tekið eru únsa og pund einingar fyrir þyngd, *W* (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, *W* = *mg*). Umreikningssamböndin í þessari töflu eru almennt notuð til að jafna massa og þyngd með því að gera ráð fyrir nafnvirði fyrir *g* á yfirborði jarðar.]
+1 lb = 453,59 g [[fn:Strangt til tekið eru únsa og pund einingar fyrir þyngd, [[i:W]] (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, [[i:W]] = [[i:mg]]). Umreikningssamböndin í þessari töflu eru almennt notuð til að jafna massa og þyngd með því að gera ráð fyrir nafnvirði fyrir [[i:g]] á yfirborði jarðar.|foot-00001]]
 
 <!-- SEG:m68683:entry:auto-24 -->
 1 km = 0,62137 mílur
 
 <!-- SEG:m68683:entry:auto-25 -->
-1 ft^3^ = 28,317 L
+1 ft[[sup:3]] = 28,317 L
 
 <!-- SEG:m68683:entry:auto-26 -->
-1 (avoirdupois) oz = 28,349 g
+1 (avoirdupois) únsa = 28,349 g
 
 <!-- SEG:m68683:entry:auto-27 -->
 1 míla = 1609,3 m
@@ -83,25 +83,25 @@ Massi
 1 msk = 14,787 ml
 
 <!-- SEG:m68683:entry:auto-29 -->
-1 (troy) oz = 31,103 g
+1 (troy) únsa = 31,103 g
 
 <!-- SEG:m68683:para:fs-idm221472400 -->
-Þegar stærð (eins og vegalengd í tommum) er margfölduð með viðeigandi umreikningsstuðli fyrir einingar er stærðinni breytt í jafngilt gildi með öðrum einingum (eins og vegalengd í sentímetrum). Til dæmis má breyta lóðréttu stökki körfuboltamanns upp á 34 tommur í sentímetra með því að:
+Þegar stærð (eins og vegalengd í tommum) er margfölduð með viðeigandi umreikningsstuðli fyrir einingar er stærðinni breytt í jafngilt gildi með öðrum einingum (eins og vegalengd í sentímetrum). Til dæmis má breyta 34 tommu lóðréttu stökki körfuboltamanns í sentímetra með því að:
 
 <!-- SEG:m68683:para:fs-idm291646272 -->
-Þar sem þessi einfalda reikningsaðgerð felur í sér *stærðir* krefst forsenda einingagreiningar þess að við margföldum bæði *tölur og einingar*. Tölur þessara tveggja stærða eru margfaldaðar til að gefa tölu myndefnisstærðarinnar, 86, en einingarnar eru margfaldaðar til að gefa [[MATH:1]]. Rétt eins og með tölur er hlutfall sams konar eininga einnig tölulega jafnt og einn, [[MATH:2]] og einingamargfeldið einfaldast því í *cm*. (Þegar sams konar einingar deilast og gefa þáttinn 1 er sagt að þær „styttist út“.) Einingagreiningu má nota til að staðfesta rétta beitingu umreikningsstuðla fyrir einingar eins og sýnt er í eftirfarandi dæmi.
+Þar sem þessi einfaldi reikningur felur í sér [[i:stærðir]] krefst forsenda víddagreiningar þess að við margföldum bæði [[i:tölur og einingar]]. Tölur þessara tveggja stærða eru margfaldaðar til að fá tölu margfeldisstærðarinnar, 86, en einingarnar eru margfaldaðar til að fá [[MATH:1]]. Rétt eins og með tölur er hlutfall eins eininga einnig tölulega jafnt og einn, [[MATH:2]] og einingamargfeldið einfaldast því í [[i:cm]]. (Þegar eins einingar deilast og gefa stuðulinn 1 er sagt að þær „stytti sig út“.) Víddagreiningu má nota til að staðfesta rétta beitingu umreikningsstuðla fyrir einingar eins og sýnt er í eftirfarandi dæmi.
 
 <!-- SEG:m68683:example-title:fs-idm150235328-title -->
 Notkun umreikningsstuðuls fyrir einingar
 
 <!-- SEG:m68683:para:fs-idp22709840 -->
-Massi keppnisfrisbídisks er 125 g. Breyttu massa hans í únsur með því að nota umreikningsstuðul fyrir einingar sem er leiddur út frá sambandinu 1 oz = 28,349 g ([#fs-idm222237232]).
+Massi keppnisfrisbídisks er 125 g. Umreiknaðu massa hans í únsur með því að nota umreikningsstuðul fyrir einingar sem er fenginn úr sambandinu 1 únsa = 28,349 g ([[xref:fs-idm222237232]]).
 
 <!-- SEG:m68683:para-title:fs-idm290807904-title -->
 Lausn
 
 <!-- SEG:m68683:para:fs-idm290807904 -->
-Miðað við umreikningsstuðulinn má leiða út massann í únsum með jöfnu svipaðri þeirri sem notuð er til að breyta lengd úr tommum í sentímetra.
+Miðað við umreikningsstuðulinn má finna massann í únsum með jöfnu sem svipar til þeirrar sem notuð er til að breyta lengd úr tommum í sentímetra.
 
 <!-- SEG:m68683:para:fs-idm300877280 -->
 Umreikningsstuðulinn má tákna sem:
@@ -110,7 +110,7 @@ Umreikningsstuðulinn má tákna sem:
 Rétti umreikningsstuðullinn er hlutfallið sem styttir út eininguna grömm og skilur eftir únsur.
 
 <!-- SEG:m68683:para-title:fs-idm224226288-title -->
-Kannaðu þekkingu þína
+Spyrðu þig
 
 <!-- SEG:m68683:para:fs-idm224226288 -->
 Umreiknaðu rúmmálið 9,345 qt í lítra.
@@ -125,10 +125,10 @@ Svar:
 8,844 L
 
 <!-- SEG:m68683:para:fs-idm262838208 -->
-Til viðbótar við einfaldar einingaumreikningar er hægt að nota þáttagreiningu til að leysa flóknari verkefni sem fela í sér útreikninga. Burtséð frá smáatriðum er grundvallaraðferðin sú sama – allir *þættir* sem koma við sögu í útreikningnum verða að vera rétt uppstilltir til að tryggja að *merkingar* þeirra (einingar) styttist út og/eða sameinist á viðeigandi hátt til að gefa æskilega einingu í niðurstöðunni. Eftir því sem þú heldur áfram í efnafræðináminu muntu fá mörg tækifæri til að beita þessari aðferð.
+Fyrir utan einfaldar einingabreytingar er hægt að nota þáttagreiningaraðferðina til að leysa flóknari verkefni sem fela í sér útreikninga. Burtséð frá smáatriðum er grundvallaraðferðin sú sama – allir [[i:þættir]] sem koma við sögu í útreikningnum verða að vera rétt stilltir upp til að tryggja að [[i:einingar]] þeirra styttist út og/eða sameinist á viðeigandi hátt til að gefa þá einingu sem óskað er eftir í niðurstöðunni. Eftir því sem þú heldur áfram í efnafræðináminu muntu rekast á mörg tækifæri til að beita þessari aðferð.
 
 <!-- SEG:m68683:example-title:fs-idm305814320-title -->
-Útreikningur stærða út frá mælingarniðurstöðum og þekktum stærðfræðilegum samböndum
+Útreikningur á stærðum út frá mæliniðurstöðum og þekktum stærðfræðilegum tengslum
 
 <!-- SEG:m68683:para:fs-idm280005808 -->
 Hver er eðlismassi algengs frostlagar í einingunni g/ml? 4,00 qt sýni af frostlöginum vegur 9,26 lb.
@@ -137,46 +137,46 @@ Hver er eðlismassi algengs frostlagar í einingunni g/ml? 4,00 qt sýni af fros
 Lausn
 
 <!-- SEG:m68683:para:fs-idp14199296 -->
-Þar sem [[MATH:3]] þurfum við að deila massanum í grömmum með rúmmálinu í millilítrum. Almennt gildir: fjöldi eininga B = fjöldi eininga A [[MATH:4]] umreikningsstuðull. Nauðsynlegir umreikningsstuðlar eru gefnir í [#fs-idm222237232]: 1 lb = 453,59 g; 1 L = 1,0567 qt; 1 L = 1.000 ml. Hægt er að umreikna massa úr pundum í grömm á eftirfarandi hátt:
+Þar sem [[MATH:3]] þurfum við að deila massanum í grömmum með rúmmálinu í millilítrum. Almennt gildir: fjöldi eininga af B = fjöldi eininga af A [[MATH:4]] umreikningsstuðull. Nauðsynlegir umreikningsstuðlar eru gefnir í [[xref:fs-idm222237232]]: 1 lb = 453,59 g; 1 L = 1,0567 qt; 1 L = 1.000 ml. Hægt er að breyta massa úr pundum í grömm á eftirfarandi hátt:
 
 <!-- SEG:m68683:para:fs-idm244171104 -->
-Rúmmál má umreikna úr kvörtum í millilítra í tveimur skrefum:
+Rúmmáli má breyta úr kvörtum í millilítra í tveimur skrefum:
 
 <!-- SEG:m68683:para:fs-idm301215296 -->
 Þá,
 
 <!-- SEG:m68683:para:fs-idm292167648 -->
-Einnig væri hægt að setja útreikninginn upp þannig að þrír umreikningsstuðlar séu notaðir í röð á eftirfarandi hátt:
+Einnig væri hægt að setja útreikninginn upp á þann hátt að þrír umreikningsstuðlar séu notaðir í röð á eftirfarandi hátt:
 
 <!-- SEG:m68683:para-title:fs-idm219351440-title -->
-Kannaðu þekkingu þína
+Spyrðu þig
 
 <!-- SEG:m68683:para:fs-idm219351440 -->
 Hvert er rúmmálið í lítrum af 1,000 oz, að því gefnu að 1 L = 1,0567 qt og 1 qt = 32 oz (nákvæmlega)?
 
 <!-- SEG:m68683:para:fs-idm292695264 -->
-2,957 × 10^−2^ L
+2,957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:item:fs-idm287602768-item-1 -->
-*Umreikna kvört í lítra.* [[MATH:5]]
+[[i:Umreikna kvört í lítra.]] [[MATH:5]]
 
 <!-- SEG:m68683:item:fs-idm287602768-item-2 -->
-*Umreikna lítra í millilítra.* [[MATH:6]]
+[[i:Umreikna lítra í millilítra.]] [[MATH:6]]
 
 <!-- SEG:m68683:note-title:fs-idm207792224-title -->
 Svar:
 
 <!-- SEG:m68683:para:fs-idm292695264 -->
-2,957 × 10^−2^ L
+2,957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:example-title:fs-idm306560960-title -->
-Útreikningur stærða út frá mælingarniðurstöðum og þekktum stærðfræðilegum samböndum
+Útreikningur á stærðum út frá mæliniðurstöðum og þekktum stærðfræðilegum tengslum
 
 <!-- SEG:m68683:para:fs-idm338996800 -->
-Á leiðinni frá Philadelphia til Atlanta, um 1250 km vegalengd, notar 2014 Lamborghini Aventador Roadster 213 L af bensíni.
+Á leiðinni frá Fíladelfíu til Atlanta, um 1250 km vegalengd, notar 2014 Lamborghini Aventador Roadster 213 L af bensíni.
 
 <!-- SEG:m68683:para:fs-idm127359616 -->
-(a) Hver var (meðal)eyðsla Roadster-bílsins í þessari ferð, mæld í mílum á galloni?
+(a) Hver var (meðal)eldsneytiseyðsla Roadster-bílsins, í mílum á gallon, í þessari ferð?
 
 <!-- SEG:m68683:para:fs-idm315428528 -->
 (b) Ef bensín kostar 3,80 $ á gallonið, hver var eldsneytiskostnaðurinn fyrir þessa ferð?
@@ -185,28 +185,28 @@ Svar:
 Lausn
 
 <!-- SEG:m68683:para:fs-idm327742336 -->
-(a) Fyrst er vegalengdin umreiknuð úr kílómetrum í mílur:
+(a) Fyrst er vegalengdinni breytt úr kílómetrum í mílur:
 
 <!-- SEG:m68683:para:fs-idm142282576 -->
-og síðan er rúmmálið umreiknað úr lítrum í gallon:
+og síðan er rúmmálinu breytt úr lítrum í gallon:
 
 <!-- SEG:m68683:para:fs-idp1583872 -->
 Loks,
 
 <!-- SEG:m68683:para:fs-idm311190128 -->
-Einnig væri hægt að setja útreikninginn upp þannig að allir umreikningsstuðlarnir séu notaðir í röð, á eftirfarandi hátt:
+Einnig væri hægt að setja útreikninginn upp á þann hátt að allir umreikningsstuðlarnir séu notaðir í röð, á eftirfarandi hátt:
 
 <!-- SEG:m68683:para:fs-idm268939440 -->
 (b) Með því að nota áður útreiknað rúmmál í gallonum finnum við:
 
 <!-- SEG:m68683:para-title:fs-idm125734208-title -->
-Kannaðu þekkingu þína
+Spyrðu þig
 
 <!-- SEG:m68683:para:fs-idm125734208 -->
 Toyota Prius Hybrid notar 59,7 L af bensíni til að aka frá San Francisco til Seattle, 1300 km vegalengd (tvær markverðar tölur).
 
 <!-- SEG:m68683:para:fs-idm247721312 -->
-(a) Hver var (meðal)eyðsla Prius-bílsins í þessari ferð, mæld í mílum á galloni?
+(a) Hver var (meðal)eldsneytiseyðsla Prius-bílsins, í mílum á gallon, í þessari ferð?
 
 <!-- SEG:m68683:para:fs-idm292238912 -->
 (b) Ef bensín kostar 3,90 $ á gallonið, hver var eldsneytiskostnaðurinn fyrir þessa ferð?
@@ -221,49 +221,52 @@ Svar:
 (a) 51 mpg; (b) 62 $
 
 <!-- SEG:m68683:title:fs-idm206910464-title -->
-Umreikningur hitaeininga
+Umreikningur á hitaeiningum
 
 <!-- SEG:m68683:para:fs-idm262720192 -->
-Við notum orðið __hitastig__ til að vísa til þess hversu heitt eða kalt efni er. Ein leið til að mæla breytingu á hitastigi er að nýta þá staðreynd að flest efni þenjast út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra lækkar. Vökvinn í venjulegum glerhitamæli breytir rúmmáli sínu þegar hitastigið breytist og hægt er að nota stöðu yfirborðs innilokaða vökvans á prentuðum kvarða sem mælikvarða á hitastig.
+Við notum orðið [[term:hiti|term-00004]] til að vísa til þess hversu heitt eða kalt efni er. Ein leið til að mæla hitabreytingu er að nýta þá staðreynd að flest efni þenjast út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra lækkar. Vökvinn í venjulegum glerhitamæli breytir rúmmáli sínu þegar hitastigið breytist og hægt er að nota stöðu yfirborðs innilokaða vökvans á prentuðum kvarða sem mælikvarða á hita.
 
 <!-- SEG:m68683:para:fs-idm308860096 -->
-Hitakvarðar eru skilgreindir miðað við valin viðmiðunarhitastig: Tvö af þeim algengustu eru frostmark og suðumark vatns við tiltekinn loftþrýsting. Á Celsíuskvarðanum er 0 °C skilgreint sem frostmark vatns og 100 °C sem suðumark vatns. Bilinu milli þessara tveggja hitastiga er skipt í 100 jöfn bil sem við köllum gráður. Á __Fahrenheit__-kvarðanum er frostmark vatns skilgreint sem 32 °F og suðumarkið sem 212 °F. Bilinu milli þessara tveggja punkta á Fahrenheit-hitamæli er skipt í 180 jafna hluta (gráður).
+Hitakvarðar eru skilgreindir miðað við valin viðmiðunarhitastig: Tvö af þeim algengustu eru frostmark og suðumark vatns við tiltekinn loftþrýsting. Á Celsíuskvarðanum er 0 °C skilgreint sem frostmark vatns og 100 °C sem suðumark vatns. Bilinu milli þessara tveggja hitastiga er skipt í 100 jöfn bil sem við köllum gráður. Á [[term:Fahrenheit|term-00005]]-kvarðanum er frostmark vatns skilgreint sem 32 °F og suðumarkið sem 212 °F. Bilinu milli þessara tveggja punkta á Fahrenheit-hitamæli er skipt í 180 jafna hluta (gráður).
 
 <!-- SEG:m68683:para:fs-idm288396336 -->
-Að skilgreina Celsíus- og Fahrenheit-hitakvarðana eins og lýst er í fyrri málsgrein leiðir til aðeins flóknara sambands milli hitastigsgilda á þessum tveimur kvörðum en fyrir mismunandi mælieiningar fyrir aðra eiginleika. Flestar mælieiningar fyrir tiltekinn eiginleika eru í beinu hlutfalli hver við aðra (y = mx). Ef við notum kunnuglegar lengdareiningar sem dæmi:
+Að skilgreina Celsíus- og Fahrenheit-hitakvarðana eins og lýst er í fyrri málsgrein leiðir til aðeins flóknara sambands milli hitastigsgilda á þessum tveimur kvörðum en fyrir mismunandi mælieiningar annarra eiginleika. Flestar mælieiningar fyrir tiltekinn eiginleika eru í beinu hlutfalli hver við aðra (y = mx). Ef við notum kunnuglegar lengdareiningar sem dæmi:
 
 <!-- SEG:m68683:para:fs-idm161552768 -->
-þar sem y = lengd í fetum, x = lengd í tommum og hlutfallfastinn, m, er umreikningsstuðullinn. Celsíus- og Fahrenheit-hitakvarðarnir deila hins vegar ekki sameiginlegum núllpunkti og því er sambandið milli þessara tveggja kvarða línulegt frekar en í beinu hlutfalli (y = mx + b). Þar af leiðandi krefst það meira en einfaldrar margföldunar með umreikningsstuðli, m, að breyta hitastigi af öðrum þessara kvarða yfir á hinn; það verður einnig að taka tillit til mismunar á núllpunktum kvarðanna (b).
+þar sem y = lengd í fetum, x = lengd í tommum og hlutfallsvakinn, m, er umreikningsstuðullinn. Celsíus- og Fahrenheit-hitakvarðarnir deila hins vegar ekki sameiginlegum núllpunkti og því er sambandið milli þessara tveggja kvarða línulegt frekar en hlutfallstengt (y = mx + b). Þar af leiðandi krefst umreikningur hitastigs af öðrum þessara kvarða yfir á hinn meira en einfaldrar margföldunar með umreikningsstuðli, m; það verður einnig að taka tillit til mismunar á núllpunktum kvarðanna (b).
 
 <!-- SEG:m68683:para:fs-idm292928800 -->
-Línulega jöfnan sem tengir saman Celsíus- og Fahrenheit-hitastig er auðveldlega leidd út frá þeim tveimur hitastigum sem notuð eru til að skilgreina hvorn kvarða. Ef við táknum Celsíus-hitastigið sem *x* og Fahrenheit-hitastigið sem *y*, er hallatalan, *m*, reiknuð út sem:
+Línulega jöfnan sem tengir Celsíus- og Fahrenheit-hitastig er auðveldlega leidd út frá þeim tveimur hitastigum sem notuð eru til að skilgreina hvorn kvarða. Ef við táknum Celsíus-hitastigið sem [[i:x]] og Fahrenheit-hitastigið sem [[i:y]], er hallatalan, [[i:m]], reiknuð út sem:
 
 <!-- SEG:m68683:para:fs-idm206340880 -->
-Skurðpunktur jöfnunnar við *y*-ás, *b*, er síðan reiknaður út með því að nota annaðhvort jafngildu hitastigsparanna, (100 °C, 212 °F) eða (0 °C, 32 °F), sem:
+Skurðpunktur jöfnunnar við [[i:y]]-ás, [[i:b]], er síðan reiknaður út með því að nota annaðhvort jafngildu hitastigsparanna, (100 °C, 212 °F) eða (0 °C, 32 °F), sem:
 
 <!-- SEG:m68683:para:fs-idm218561008 -->
-Jafnan sem tengir saman hitastigskvarðana (*T*) er þá:
+Jafnan sem tengir hitakvarðana ([[i:T]]) er þá:
 
 <!-- SEG:m68683:para:fs-idm208304512 -->
 Stytt útgáfa af þessari jöfnu sem sleppir mælieiningunum er:
 
 <!-- SEG:m68683:para:fs-idm356038704 -->
-Umröðun þessarar jöfnu gefur formið sem er gagnlegt til að breyta úr Fahrenheit í Celsíus:
+Endurröðun þessarar jöfnu gefur formið sem er gagnlegt til að umreikna úr Fahrenheit í Celsíus:
 
 <!-- SEG:m68683:para:fs-idm131802496 -->
-Eins og fyrr var nefnt í þessum kafla er SI-eining hitastigs kelvin (K). Ólíkt Celsíus- og Fahrenheit-kvörðunum er kelvinkvarðinn algildur hitakvarði þar sem 0 (núll) K samsvarar lægsta hitastigi sem fræðilega er hægt að ná. Þar sem kelvinhitakvarðinn er algildur er gráðumerki ekki notað í skammstöfun einingarinnar, K. Uppgötvun á sambandi milli rúmmáls og hitastigs gass snemma á 19. öld gaf til kynna að rúmmál gass yrði núll við −273,15 °C. Árið 1848 lagði breski eðlisfræðingurinn William Thompson, sem síðar tók sér titilinn Kelvin lávarður, til algildan hitakvarða byggðan á þessu hugtaki (nánari umfjöllun um þetta efni er að finna í kaflanum um gös í þessari bók).
+Eins og fyrr var nefnt í þessum kafla er SI-eining hitastigs kelvin (K). Ólíkt Celsíus- og Fahrenheit-kvörðunum er kelvinkvarðinn alger hitakvarði þar sem 0 (núll) K samsvarar lægsta hitastigi sem fræðilega er hægt að ná. Þar sem kelvinhitakvarðinn er alger er gráðumerki ekki innifalið í einingaskammstöfuninni, K. Uppgötvun á sambandi milli rúmmáls og hitastigs gass snemma á 19. öld gaf til kynna að rúmmál gass yrði núll við −273,15 °C. Árið 1848 lagði breski eðlisfræðingurinn William Thompson, sem síðar tók sér titilinn Kelvin lávarður, til algeran hitakvarða byggðan á þessu hugtaki (nánari umfjöllun um þetta efni er að finna í kafla þessa texta um lofttegundir).
 
 <!-- SEG:m68683:para:fs-idm309875456 -->
-Frostmark vatns á þessum kvarða er 273,15 K og suðumark þess er 373,15 K. Takið eftir að tölulegur munur á þessum tveimur viðmiðunarhitastigum er 100, sá sami og fyrir Celsíuskvarðann, og því mun línulega sambandið milli þessara tveggja hitakvarða sýna hallatölu [[MATH:7]]. Með sömu nálgun eru jöfnurnar til að breyta á milli kelvin- og Celsíus-hitakvarðanna leiddar út sem:
+Frostmark vatns á þessum kvarða er 273,15 K og suðumark þess er 373,15 K. Takið eftir að tölulegur munur á þessum tveimur viðmiðunarhitastigum er 100, sá sami og fyrir Celsíuskvarðann, og því mun línulega sambandið milli þessara tveggja hitakvarða sýna hallatölu upp á [[MATH:7]]. Með sömu nálgun eru jöfnurnar til að umreikna milli kelvin- og Celsíus-hitakvarðanna leiddar út sem:
 
 <!-- SEG:m68683:para:fs-idm288599552 -->
-Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo hún er ekki nákvæm. [#CNX_Chem_01_06_TempScales] sýnir sambandið milli þriggja hitakvarðanna.
+Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo hún er ekki nákvæm. [[xref:CNX_Chem_01_06_TempScales]] sýnir sambandið milli þriggja hitakvarðanna.
 
 <!-- SEG:m68683:caption:CNX_Chem_01_06_TempScales-caption -->
 Fahrenheit-, Celsíus- og kelvinhitakvarðarnir eru bornir saman.
 
+<!-- SEG:m68683:alt:fs-idm249665120-alt -->
+Sýndur er hitamælir fyrir Fahrenheit-, Celsíus- og kelvinkvarðana. Á Fahrenheit-kvarðanum er suðumark vatns 212 gráður en frostmark vatns er 32 gráður. Því eru 180 Fahrenheit-gráður milli suðumarks og frostmarks vatns. Á Celsíuskvarðanum er suðumark vatns 100 gráður en frostmark vatns er 0 gráður. Því eru 100 Celsíusgráður milli suðumarks og frostmarks vatns. Á kelvinkvarðanum er suðumark vatns 373,15 K en frostmark vatns er 273,15 K. 233,15 K er jafnt og neikvæðar 40 gráður á Celsíus, sem er einnig jafnt og neikvæðar 40 gráður á Fahrenheit.
+
 <!-- SEG:m68683:para:fs-idm296725200 -->
-Þrátt fyrir að kelvin- (algildi) hitakvarðinn sé opinber SI-hitakvarðinn er Celsíus almennt notaður í mörgu vísindalegu samhengi og er kvarðinn sem valinn er í óvísindalegu samhengi á næstum öllum svæðum heimsins. Mjög fá lönd (Bandaríkin og yfirráðasvæði þeirra, Bahamaeyjar, Belís, Cayman-eyjar og Palá) nota enn Fahrenheit fyrir veður, læknisfræði og matreiðslu.
+Þrátt fyrir að kelvin- (alger) hitakvarðinn sé opinber SI-hitakvarðinn er Celsíus almennt notaður í mörgu vísindalegu samhengi og er valinn kvarði fyrir óvísindalegt samhengi á næstum öllum svæðum heimsins. Mjög fá lönd (Bandaríkin og yfirráðasvæði þeirra, Bahamaeyjar, Belís, Cayman-eyjar og Palá) nota enn Fahrenheit fyrir veður, læknisfræði og matreiðslu.
 
 <!-- SEG:m68683:example-title:fs-idm75569040-title -->
 Umreikningur úr Celsíus
@@ -275,7 +278,7 @@ Venjulegur líkamshiti hefur almennt verið viðurkenndur sem 37,0 °C (þó han
 Lausn
 
 <!-- SEG:m68683:para-title:fs-idp16310096-title -->
-Kannaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68683:para:fs-idp16310096 -->
 Umreiknaðu 80,92 °C í K og °F.
@@ -299,10 +302,10 @@ Umreikningur úr Fahrenheit
 Lausn
 
 <!-- SEG:m68683:para-title:fs-idm296519728-title -->
-Kannaðu þekkingu þína
+Prófaðu þekkingu þína
 
 <!-- SEG:m68683:para:fs-idm296519728 -->
-Umreiknaðu 50 °F í °C og K.
+Umbreyttu 50 °F í °C og K.
 
 <!-- SEG:m68683:para:fs-idm296391568 -->
 10 °C, 280 K
@@ -317,21 +320,21 @@ Svar:
 Lykilhugtök og samantekt
 
 <!-- SEG:m68683:para:fs-idm126307616 -->
-Mælingar eru gerðar með ýmsum einingum. Það er oft gagnlegt eða nauðsynlegt að breyta mældri stærð úr einni einingu í aðra. Þessar umbreytingar eru gerðar með umreikningsstuðlum fyrir einingar, sem eru fengnir með einfaldri beitingu stærðfræðilegrar aðferðar sem kallast einingagreining. Þessi aðferð er einnig notuð til að reikna út stærðir sem leitað er að með því að nota mældar stærðir og viðeigandi stærðfræðileg tengsl.
+Mælingar eru gerðar með ýmsum einingum. Það er oft gagnlegt eða nauðsynlegt að breyta mældu magni úr einni einingu í aðra. Þessar umbreytingar eru gerðar með því að nota umreikningsstuðla eininga, sem eru fengnir með einfaldri beitingu stærðfræðilegrar aðferðar sem kallast þáttamerkingaraðferð eða víddagreining. Þessi aðferð er einnig notuð til að reikna út eftirsótt magn með því að nota mæld magn og viðeigandi stærðfræðileg tengsl.
 
 <!-- SEG:m68683:title:fs-idm299998176-title -->
-Lykiljafna
-
-<!-- SEG:m68683:entry:auto-109 -->
-[[MATH:8]]
+Lykiljöfnur
 
 <!-- SEG:m68683:entry:auto-110 -->
-[[MATH:9]]
+[[MATH:8]]
 
 <!-- SEG:m68683:entry:auto-111 -->
-[[MATH:10]]
+[[MATH:9]]
 
 <!-- SEG:m68683:entry:auto-112 -->
+[[MATH:10]]
+
+<!-- SEG:m68683:entry:auto-113 -->
 [[MATH:11]]
 
 <!-- SEG:m68683:title:fs-idm321708320-title -->
@@ -341,10 +344,10 @@ Efnafræði – Æfingar í lok kafla
 Skrifaðu umreikningsstuðla (sem hlutföll) fyrir fjölda:
 
 <!-- SEG:m68683:problem:fs-idm279869696 -->
-(a) jarda í 1 metra
+(a) yarda í 1 metra
 
 <!-- SEG:m68683:problem:fs-idm84945616 -->
-(b) lítra í 1 „liquid quart“
+(b) lítra í 1 vökvakvarti
 
 <!-- SEG:m68683:problem:fs-idp63976464 -->
 (c) punda í 1 kílógrammi
@@ -365,40 +368,40 @@ Skrifaðu umreikningsstuðla (sem hlutföll) fyrir fjölda:
 (c) gramma í 1 únsu
 
 <!-- SEG:m68683:problem:fs-idm310365264 -->
-Á miðanum á gosflösku er rúmmálið gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar upplýsingar til að leiða út umreikningsstuðul milli enskra og metrakerfiseininga. Hversu marga markverða stafi getur þú réttlætt í umreikningsstuðlinum þínum?
+Á miðanum á gosflösku er rúmmálið gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar upplýsingar til að leiða út umreikningsstuðul milli enskra og metrakerfiseininga. Hversu margar markverðar tölur getur þú réttlætt í umreikningsstuðlinum þínum?
 
 <!-- SEG:m68683:solution:fs-idm205490112 -->
-[[MATH:15]][[BR]] Aðeins tveir markverðir stafir eru réttlætanlegir.
+[[MATH:15]][[BR]] Aðeins tvær markverðar tölur eru réttlætanlegar.
 
 <!-- SEG:m68683:problem:fs-idm29733712 -->
-Á miðanum á morgunkornspakka er massi morgunkornsins gefinn upp í tveimur einingum: 978 grömm og 34,5 oz. Notaðu þessar upplýsingar til að finna umreikningsstuðul milli enskra og metrakerfiseininga. Hversu marga markverða stafi getur þú réttlætt í umreikningsstuðlinum þínum?
+Á miðanum á morgunkornspakka er massi morgunkornsins gefinn upp í tveimur einingum: 978 grömm og 34,5 oz. Notaðu þessar upplýsingar til að finna umreikningsstuðul milli enskra og metrakerfiseininga. Hversu margar markverðar tölur getur þú réttlætt í umreikningsstuðlinum þínum?
 
 <!-- SEG:m68683:problem:fs-idm292728304 -->
-Fótbolti er spilaður með kringlóttum bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á milli 14 og 16 únsur. Hverjar eru þessar forskriftir í einingum sentímetra og gramma?
+Fótbolti er spilaður með hringlaga bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á milli 14 og 16 oz. Hverjar eru þessar forskriftir í einingum sentímetra og gramma?
 
 <!-- SEG:m68683:solution:fs-idm184575152 -->
 68–71 cm; 400–450 g
 
 <!-- SEG:m68683:problem:fs-idm205705360 -->
-Körfubolti kvenna hefur ummál á milli 28,5 og 29,0 tommur og hámarksþyngd 20 únsur (tveir markverðir stafir). Hverjar eru þessar forskriftir í einingum sentímetra og gramma?
+Körfubolti kvenna hefur ummál á milli 28,5 og 29,0 tommur og hámarksþyngd 20 únsur (tvær markverðar tölur). Hverjar eru þessar forskriftir í einingum sentímetra og gramma?
 
 <!-- SEG:m68683:problem:fs-idm210994400 -->
-Hversu margir millilítrar af gosi eru í 12,0 únsu dós?
+Hversu margir millilítrar af gosi eru í 12,0 oz dós?
 
 <!-- SEG:m68683:solution:fs-idm208576112 -->
 355 ml
 
 <!-- SEG:m68683:problem:fs-idp25376512 -->
-Ein olíutunna er nákvæmlega 42 gallon. Hversu margir lítrar af olíu eru í tunnu?
+Olíutunna er nákvæmlega 42 gallon. Hversu margir lítrar af olíu eru í tunnu?
 
 <!-- SEG:m68683:problem:fs-idm127485184 -->
-Þvermál rauðrar blóðfrumu er um 3 [[MATH:16]] 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
+Þvermál rauðrar blóðfrumu er um 3 [[MATH:16]] 10[[sup:−4]] tommur. Hvert er þvermál hennar í sentímetrum?
 
 <!-- SEG:m68683:solution:fs-idp32913072 -->
-8 [[MATH:17]] 10^−4^ cm
+8 [[MATH:17]] 10[[sup:−4]] cm
 
 <!-- SEG:m68683:problem:fs-idm227698368 -->
-Fjarlægðin milli miðja tveggja súrefnisfrumeinda í súrefnissameind er 1,21 [[MATH:18]] 10^−8^ cm. Hver er þessi fjarlægð í tommum?
+Fjarlægðin milli miðja tveggja súrefnisatóma í súrefnissameind er 1,21 [[MATH:18]] 10[[sup:−8]] cm. Hver er þessi fjarlægð í tommum?
 
 <!-- SEG:m68683:problem:fs-idm294701072 -->
 Er 197 punda lyftingamaður nógu léttur til að keppa í flokki sem er takmarkaður við þá sem vega 90 kg eða minna?
@@ -407,19 +410,19 @@ Er 197 punda lyftingamaður nógu léttur til að keppa í flokki sem er takmark
 já; þyngd = 89,4 kg
 
 <!-- SEG:m68683:problem:fs-idm335136096 -->
-Mjög góður 197 punda lyftingamaður lyfti 192 kg í hreyfingu sem kallast jafnhending. Hver var massi þyngdarinnar sem lyft var í pundum?
+Mjög góður 197 punda lyftingamaður lyfti 192 kg í hreyfingu sem kallast jafnhöttun. Hver var massi þyngdarinnar sem lyft var í pundum?
 
 <!-- SEG:m68683:problem:fs-idm289987648 -->
 Margar læknisfræðilegar rannsóknarstofuprófanir eru gerðar með 5,0 μL af blóðsermi. Hvert er þetta rúmmál í millilítrum?
 
 <!-- SEG:m68683:solution:fs-idm137236672 -->
-5,0 [[MATH:19]] 10^−3^ ml
+5,0 [[MATH:19]] 10[[sup:−3]] ml
 
 <!-- SEG:m68683:problem:fs-idm392857904 -->
 Ef aspiríntöflu inniheldur 325 mg af aspiríni, hversu mörg grömm af aspiríni inniheldur hún?
 
 <!-- SEG:m68683:problem:fs-idm103945312 -->
-Notaðu staðalform (veldisvísanotkun) til að tákna eftirfarandi stærðir með SI-grunneiningum í [m68674#fs-idm81346144]:
+Notaðu staðalform (veldisvísanotkun) til að tjá eftirfarandi magn með SI-grunneiningum í [[docref:m68674#fs-idm81346144]]:
 
 <!-- SEG:m68683:problem:fs-idm287857616 -->
 (a) 0,13 g
@@ -449,10 +452,10 @@ Notaðu staðalform (veldisvísanotkun) til að tákna eftirfarandi stærðir me
 (i) 0,15 mK
 
 <!-- SEG:m68683:solution:fs-idm211581456 -->
-(a) 1,3 [[MATH:20]] 10^−4^ kg; (b) 2,32 [[MATH:21]] 10^8^ kg; (c) 5,23 [[MATH:22]] 10^−12^ m; (d) 8,63 [[MATH:23]] 10^−5^ kg; (e) 3,76 [[MATH:24]] 10^−1^ m; (f) 5,4 [[MATH:25]] 10^−5^ m; (g) 1 [[MATH:26]] 10^12^ s; (h) 2,7 [[MATH:27]] 10^−11^ s; (i) 1,5 [[MATH:28]] 10^−4^ K
+(a) 1,3 [[MATH:20]] 10[[sup:−4]] kg; (b) 2,32 [[MATH:21]] 10[[sup:8]] kg; (c) 5,23 [[MATH:22]] 10[[sup:−12]] m; (d) 8,63 [[MATH:23]] 10[[sup:−5]] kg; (e) 3,76 [[MATH:24]] 10[[sup:−1]] m; (f) 5,4 [[MATH:25]] 10[[sup:−5]] m; (g) 1 [[MATH:26]] 10[[sup:12]] s; (h) 2,7 [[MATH:27]] 10[[sup:−11]] s; (i) 1,5 [[MATH:28]] 10[[sup:−4]] K
 
 <!-- SEG:m68683:problem:fs-idm308818096 -->
-Ljúktu við eftirfarandi umreikninga milli SI-eininga.
+Ljúktu við eftirfarandi umreikninga á milli SI-eininga.
 
 <!-- SEG:m68683:problem:fs-idm215457056 -->
 (a) 612 g = ________ mg
@@ -491,13 +494,13 @@ Bensín er selt í lítrum í mörgum löndum. Hversu marga lítra þarf til að
 Mjólk er seld í lítrum í mörgum löndum. Hvert er rúmmál nákvæmlega 1/2 gallona af mjólk í lítrum?
 
 <!-- SEG:m68683:problem:fs-idm247416224 -->
-Eitt „long ton“ er skilgreint sem nákvæmlega 2240 lb. Hver er þessi massi í kílógrömmum?
+Langt tonn er skilgreint sem nákvæmlega 2240 lb. Hver er þessi massi í kílógrömmum?
 
 <!-- SEG:m68683:solution:fs-idp176467360 -->
-1,0160 [[MATH:29]] 10^3^ kg
+1,0160 [[MATH:29]] 10[[sup:3]] kg
 
 <!-- SEG:m68683:problem:fs-idm142857008 -->
-Framkvæmdu umreikninginn sem tilgreindur er í hverjum af eftirfarandi liðum:
+Umreiknið eins og tilgreint er í eftirfarandi:
 
 <!-- SEG:m68683:problem:fs-idm128192960 -->
 (a) heimsmet karla í langstökki, 29 fet 4¼ tommur, í metra
@@ -506,13 +509,13 @@ Framkvæmdu umreikninginn sem tilgreindur er í hverjum af eftirfarandi liðum:
 (b) mesta dýpi hafsins, um 6,5 mílur, í kílómetra
 
 <!-- SEG:m68683:problem:fs-idp1437328 -->
-(c) flatarmál Oregon-fylkis, 96.981 mílur^2^, í ferkílómetra
+(c) flatarmál Oregon-fylkis, 96.981 mílur[[sup:2]], í ferkílómetra
 
 <!-- SEG:m68683:problem:fs-idm124542480 -->
 (d) rúmmál 1 gills (nákvæmlega 4 oz) í millilítra
 
 <!-- SEG:m68683:problem:fs-idm210560384 -->
-(e) áætlað rúmmál hafsins, 330.000.000 mílur^3^, í rúmkílómetra.
+(e) áætlað rúmmál hafsins, 330.000.000 mílur[[sup:3]], í rúmkílómetra.
 
 <!-- SEG:m68683:problem:fs-idm216546816 -->
 (f) massa 3525 punda bíls í kílógrömm
@@ -521,7 +524,7 @@ Framkvæmdu umreikninginn sem tilgreindur er í hverjum af eftirfarandi liðum:
 (g) massa 2,3 oz eggs í grömm
 
 <!-- SEG:m68683:problem:fs-idp10390400 -->
-Framkvæmdu umreikninginn sem tilgreindur er í hverjum af eftirfarandi liðum:
+Umreiknið eins og tilgreint er í eftirfarandi:
 
 <!-- SEG:m68683:problem:fs-idm367197520 -->
 (a) lengd fótboltavallar, 120 m (þrír markverðir stafir), í fet
@@ -530,43 +533,43 @@ Framkvæmdu umreikninginn sem tilgreindur er í hverjum af eftirfarandi liðum:
 (b) hæð Kilimanjaro-fjalls, 19.565 fet, hæsta fjalls Afríku, í kílómetra
 
 <!-- SEG:m68683:problem:fs-idm307271088 -->
-(c) flatarmál 8,5 × 11 tommu blaðs í cm^2^
+(c) flatarmál 8,5 × 11 tommu pappírsarkar í cm[[sup:2]]
 
 <!-- SEG:m68683:problem:fs-idm127105888 -->
-(d) slagrými bílvélar, 161 tommur^3^, í lítra
+(d) slagrými bílvélar, 161 tommur[[sup:3]], í lítra
 
 <!-- SEG:m68683:problem:fs-idm218455584 -->
-(e) áætlaðan massa andrúmsloftsins, 5,6 × 10^15^ tonn, í kílógrömm
+(e) áætlaðan massa lofthjúpsins, 5,6 × 10[[sup:15]] tonn, í kílógrömm
 
 <!-- SEG:m68683:problem:fs-idm98022832 -->
-(f) massa einnar skeppu af rúgi, 32,0 lb, í kílógrömm
+(f) massa bushel-skeppu af rúgi, 32,0 pund, í kílógrömm
 
 <!-- SEG:m68683:problem:fs-idm162390144 -->
 (g) massa 5,00 greina aspiríntöflu í milligrömm (1 grein = 0,00229 oz)
 
 <!-- SEG:m68683:solution:fs-idm134479920 -->
-(a) 394 fet; (b) 5,9634 km; (c) 6,0 [[MATH:30]] 10^2^; (d) 2,64 l; (e) 5,1 [[MATH:31]] 10^18^ kg; (f) 14,5 kg; (g) 324 mg
+(a) 394 fet; (b) 5,9634 km; (c) 6,0 [[MATH:30]] 10[[sup:2]]; (d) 2,64 L; (e) 5,1 [[MATH:31]] 10[[sup:18]] kg; (f) 14,5 kg; (g) 324 mg
 
 <!-- SEG:m68683:problem:fs-idm142862320 -->
-Á mörgum efnafræðiráðstefnum hefur verið haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 [[MATH:32]] 10^−10^ m)
+Á mörgum efnafræðiráðstefnum hefur verið haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 [[MATH:32]] 10[[sup:−10]] m)
 
 <!-- SEG:m68683:problem:fs-idm142857600 -->
-50 trilljón angstroma hlaup efnafræðings (sjá [#fs-idm219388000]) væri 10.900 álna hlaup fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1 [[MATH:33]] 10^−8^ cm)
+50 trilljón angstroma hlaup efnafræðings (sjá [[xref:fs-idm219388000]]) væri 10.900 álna hlaup fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1 [[MATH:33]] 10[[sup:−8]] cm)
 
 <!-- SEG:m68683:solution:fs-idp194388912 -->
 0,46 m; 1,5 fet/alin
 
 <!-- SEG:m68683:problem:fs-idp31641040 -->
-Bensíntankur ákveðins lúxusbifreiðar tekur 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er 0,8206 g/mL, ákvarðaðu massa eldsneytisins í fullum tanki í kílógrömmum og pundum.
+Bensíntankur ákveðins lúxusbíls tekur 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er 0,8206 g/ml, ákvarðið þá massa eldsneytisins í kílógrömmum og pundum í fullum tanki.
 
 <!-- SEG:m68683:problem:fs-idm178696096 -->
-Kennari er að undirbúa tilraun og þarf 225 g af fosfórsýru. Eina ílátið sem er til taks er 150 ml keiluflaska. Er hún nógu stór til að rúma sýruna, en eðlismassi hennar er 1,83 g/mL?
+Kennari er að undirbúa tilraun og þarf 225 g af fosfórsýru. Eina ílátið sem er laust er 150 ml Erlenmeyer-flaska. Er hún nógu stór til að rúma sýruna, en eðlismassi hennar er 1,83 g/ml?
 
 <!-- SEG:m68683:solution:fs-idm126197920 -->
 Já, rúmmál sýrunnar er 123 ml.
 
 <!-- SEG:m68683:problem:fs-idp43402000 -->
-Til að undirbúa sig fyrir tíma á rannsóknarstofu þarf aðstoðarmaður nemanda 125 g af efnasambandi. Flaska sem inniheldur 1/4 pund er fáanleg. Hafði nemandinn nóg af efnasambandinu?
+Til að undirbúa sig fyrir rannsóknarstofutíma þarf aðstoðarmaður nemanda 125 g af efnasambandi. Flaska sem inniheldur 1/4 pund er fáanleg. Hafði nemandinn nóg af efnasambandinu?
 
 <!-- SEG:m68683:problem:fs-idm155316144 -->
 Efnafræðinemi er 159 cm á hæð og vegur 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
@@ -575,58 +578,58 @@ Efnafræðinemi er 159 cm á hæð og vegur 45,8 kg. Hver er hæð hennar í tom
 62,6 tommur (um 5 fet 3 tommur) og 101 pund
 
 <!-- SEG:m68683:problem:fs-idp31182736 -->
-Í nýlegum Grand Prix-kappakstri lauk sigurvegarinn keppni með meðalhraða upp á 229,8 km/klst. Hver var hraði hans í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
+Í nýlegum Grand Prix-kappakstri lauk sigurvegarinn keppni með 229,8 km/klst. meðalhraða. Hver var hraði hans í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
 <!-- SEG:m68683:problem:fs-idp33104064 -->
 Leysið þessi dæmi um timburstærðir.
 
 <!-- SEG:m68683:problem:fs-idm124373120 -->
-(a) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum þarf að breyta stærðum „tveir sinnum fjórir“ timburs í metrakerfiseiningar. Stærðirnar þykkt [[MATH:34]] breidd [[MATH:35]] lengd eru 1,50 tommur [[MATH:36]] 3,50 tommur [[MATH:37]] 8,00 fet í Bandaríkjunum. Hverjar eru stærðirnar í cm [[MATH:38]] cm [[MATH:39]] m?
+(a) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum þarf að breyta stærðum „tveir á fjóra“ timburs í metrakerfiseiningar. Stærðirnar þykkt [[MATH:34]] breidd [[MATH:35]] lengd eru 1,50 tommur [[MATH:36]] 3,50 tommur [[MATH:37]] 8,00 fet í Bandaríkjunum. Hverjar eru stærðirnar í cm [[MATH:38]] cm [[MATH:39]] m?
 
 <!-- SEG:m68683:problem:fs-idm97712544 -->
-(b) Þetta timbur er hægt að nota sem lóðrétta stoðbita, sem venjulega eru settir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
+(b) Þetta timbur er hægt að nota sem lóðrétta stoðbita, sem eru venjulega settir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 
 <!-- SEG:m68683:solution:fs-idm182624144 -->
 (a) 3,81 cm [[MATH:40]] 8,89 cm [[MATH:41]] 2,44 m; (b) 40,6 cm
 
 <!-- SEG:m68683:problem:fs-idm262562384 -->
-Kvikasilfursinnihald í læk var talið vera yfir lágmarki sem talið er öruggt – 1 hluti á milljarð (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68 hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í 15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? [[MATH:42]]
+Talið var að kvikasilfursinnihald í læk væri yfir lágmarksmörkum sem talin eru örugg – 1 hluti á milljarð (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68 hlutar á milljarð. Hversu mikið magn kvikasilfurs í grömmum var í 15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? [[MATH:42]]
 
 <!-- SEG:m68683:problem:fs-idm121592912 -->
-Reiknaðu eðlismassa áls ef 27,6 cm^3^ hefur massa upp á 74,6 g.
+Reiknaðu eðlismassa áls ef 27,6 cm[[sup:3]] hefur massann 74,6 g.
 
 <!-- SEG:m68683:solution:fs-idm209433984 -->
-2,70 g/cm^3^
+2,70 g/cm[[sup:3]]
 
 <!-- SEG:m68683:problem:fs-idp63994848 -->
-Osmín er eitt af eðlisþyngstu frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur rúmmál upp á 0,121 cm^3^?
+Osmín er eitt af eðlisþyngstu frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur rúmmálið 0,121 cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm62194528 -->
-Reiknið þessa massa.
+Reiknaðu þessa massa.
 
 <!-- SEG:m68683:problem:fs-idp56604960 -->
-(a) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939 g/cm^3^?
+(a) Hver er massi 6,00 cm[[sup:3]] af kvikasilfri, eðlismassi = 13,5939 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm84745936 -->
-(b) Hver er massi 25,0 ml af oktani, eðlismassi = 0,702 g/cm^3^?
+(b) Hver er massi 25,0 ml af oktani, eðlismassi = 0,702 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:solution:fs-idp10159024 -->
 (a) 81,6 g; (b) 17,6 g
 
 <!-- SEG:m68683:problem:fs-idp9154400 -->
-Reiknið þessa massa.
+Reiknaðu þessa massa.
 
 <!-- SEG:m68683:problem:fs-idm277853776 -->
-(a) Hver er massi 4,00 cm^3^ af natríni, eðlismassi = 0,97 g/cm^3^?
+(a) Hver er massi 4,00 cm[[sup:3]] af natríni, eðlismassi = 0,97 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm304880 -->
 (b) Hver er massi 125 ml af klórgasi, eðlismassi = 3,16 g/L?
 
 <!-- SEG:m68683:problem:fs-idm84747360 -->
-Reiknið þessi rúmmál.
+Reiknaðu þessi rúmmál.
 
 <!-- SEG:m68683:problem:fs-idm290040480 -->
-(a) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
+(a) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm307942992 -->
 (b) Hvert er rúmmál 3,28 g af vetnisgasi, eðlismassi = 0,089 g/L?
@@ -635,34 +638,34 @@ Reiknið þessi rúmmál.
 (a) 5,1 ml; (b) 37 L
 
 <!-- SEG:m68683:problem:fs-idm26116816 -->
-Reiknið þessi rúmmál.
+Reiknaðu þessi rúmmál.
 
 <!-- SEG:m68683:problem:fs-idm26116432 -->
-(a) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
+(a) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm198676560 -->
-(b) Hvert er rúmmál 39,657 g af brómi, eðlismassi = 2,928 g/cm^3^?
+(b) Hvert er rúmmál 39,657 g af brómi, eðlismassi = 2,928 g/cm[[sup:3]]?
 
 <!-- SEG:m68683:problem:fs-idm127944384 -->
-Breytið suðuhitastigi gulls, 2966 °C, í Fahrenheit-gráður og kelvin.
+Umbreyttu suðumarki gulls, 2966 °C, í Fahrenheit-gráður og kelvin.
 
 <!-- SEG:m68683:solution:fs-idm24577456 -->
 5371 °F, 3239 K
 
 <!-- SEG:m68683:problem:fs-idm291579696 -->
-Breytið hitastigi sjóðandi heits vatns, 54 °C, í Fahrenheit-gráður og kelvin.
+Umbreyttu hitastigi sjóðandi heits vatns, 54 °C, í Fahrenheit-gráður og kelvin.
 
 <!-- SEG:m68683:problem:fs-idm205295648 -->
-Breytið hitastigi kaldasta svæðisins í frysti, −10 °F, í Selsíusgráður og kelvin.
+Umbreyttu hitastigi kaldasta svæðisins í frysti, −10 °F, í Celsíusgráður og kelvin.
 
 <!-- SEG:m68683:solution:fs-idm143339312 -->
 −23 °C, 250 K
 
 <!-- SEG:m68683:problem:fs-idm218028096 -->
-Breytið hitastigi þurrís, −77 °C, í Fahrenheit-gráður og kelvin.
+Umbreyttu hitastigi þurrís, −77 °C, í Fahrenheit-gráður og kelvin.
 
 <!-- SEG:m68683:problem:fs-idm247413504 -->
-Breytið suðuhitastigi fljótandi ammóníaks, −28,1 °F, í Selsíusgráður og kelvin.
+Umbreyttu suðumarki fljótandi ammóníaks, −28,1 °F, í Celsíusgráður og kelvin.
 
 <!-- SEG:m68683:solution:fs-idp51877792 -->
 −33,4 °C, 239,8 K
@@ -671,16 +674,16 @@ Breytið suðuhitastigi fljótandi ammóníaks, −28,1 °F, í Selsíusgráður
 Á merkimiða á úðabrúsa með sótthreinsiefni er varað við því að hita brúsann yfir 130 °F. Hvert er samsvarandi hitastig á Celsíus- og kelvinkvarða?
 
 <!-- SEG:m68683:problem:fs-idm239024480 -->
-Veðrið í Evrópu var óvenjuhlýtt sumarið 1995. Í sjónvarpsfréttum var sagt frá hitastigi allt að 45 °C. Hvert var hitastigið á Fahrenheit-kvarða?
+Veðrið í Evrópu var óvenjuhlýtt sumarið 1995. Í sjónvarpsfréttum var greint frá hitastigi allt að 45 °C. Hvert var hitastigið á Fahrenheit-kvarðanum?
 
 <!-- SEG:m68683:solution:fs-idm367616944 -->
 113 °F
 
 <!-- SEG:m68683:glossary-term:fs-idm216300016-term -->
-einingagreining
+víddagreining
 
 <!-- SEG:m68683:glossary-def:fs-idm216300016-def -->
-(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir
+(einnig, þáttunar- og merkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir
 
 <!-- SEG:m68683:glossary-term:fs-idm207141104-term -->
 Fahrenheit
@@ -692,10 +695,10 @@ hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvar�
 hitastig
 
 <!-- SEG:m68683:glossary-def:fs-idm327357936-def -->
-ástandseiginleiki sem táknar hversu heitt eða kalt efni er
+ástandseiginleiki sem táknar hita eða kulda efnis
 
 <!-- SEG:m68683:glossary-term:fs-idm307214528-term -->
-breytistuðull eininga
+umreikningsstuðull eininga
 
 <!-- SEG:m68683:glossary-def:fs-idm307214528-def -->
 hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra

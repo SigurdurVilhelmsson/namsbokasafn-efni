@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_03_AtomSym",
+ "renderHash": "3f5f41a99184a870",
+ "composedHash": "3f5f41a99184a870",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Charge": "Hleðsla",
+  "Mass number": "Massatala",
+  "Atomic number|(often omitted)": "Sætistala (oft sleppt)"
+ },
+ "mtAlternatives": {
+  "Charge": {
+   "kept": "joined",
+   "other": "Gjald",
+   "reason": "disagree",
+   "mt": "Hleðsla"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

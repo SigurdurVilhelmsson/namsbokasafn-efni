@@ -1,0 +1,55 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_02_Millikan",
+ "renderHash": "6cc7ef1bdc8302bc",
+ "composedHash": "6cc7ef1bdc8302bc",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Oil drop": "Olíudropi",
+  "Charge in|coulombs (C)": "Hleðsla í kúlombum (C)",
+  "Oil atomizer": "Olíuúðari",
+  "Oil sprayed|in fine droplets": "Olíu úðað í fína dropa",
+  "X-ray to produce|charge on droplets": "Röntgengeislar til að mynda hleðslu á dropum",
+  "Pinhole": "Nálargat",
+  "Electrically charged|brass plate": "Rafhlaðin messingplata",
+  "Charged oil droplet|under observation": "Stakur hlaðinn olíudropi til athugunar",
+  "Telescopic|eyepiece": "Sjónaukaauggler"
+ },
+ "mtAlternatives": {
+  "Oil sprayed|in fine droplets": {
+   "kept": "joined",
+   "other": "Olíu úðað í fínum dropum",
+   "reason": "disagree",
+   "mt": "Olíu úðað í fína dropa"
+  },
+  "X-ray to produce|charge on droplets": {
+   "kept": "joined",
+   "other": "Röntgengeislar notaðir til að hlaða dropa",
+   "reason": "disagree",
+   "mt": "Röntgengeislar til að mynda hleðslu á dropum"
+  },
+  "Pinhole": {
+   "kept": "joined",
+   "other": "Gat",
+   "reason": "disagree",
+   "mt": "Nálargat"
+  },
+  "Charged oil droplet|under observation": {
+   "kept": "joined",
+   "other": "Hlaðinn olíudropi í athugun",
+   "reason": "disagree",
+   "mt": "Stakur hlaðinn olíudropi til athugunar"
+  },
+  "Telescopic|eyepiece": {
+   "kept": "joined",
+   "other": "Sjónaukagler",
+   "reason": "disagree",
+   "mt": "Sjónaukaauggler"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

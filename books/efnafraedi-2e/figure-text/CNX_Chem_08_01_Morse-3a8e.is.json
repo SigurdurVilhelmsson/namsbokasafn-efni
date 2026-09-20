@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_01_Morse-3a8e",
+ "renderHash": "2cb88d928a754941",
+ "composedHash": "2cb88d928a754941",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "(H—H bond length)": "(H–H tengslengd)",
+  "Sufficiently far apart|to have no interaction": "Nógu langt í sundur til að hafa engin víxlhrif",
+  "Atoms begin to interact|as they move closer together": "Atóm byrja að víxlverka þegar þau færast nær hvort öðru",
+  "Optimum distance to|achieve lowest overall|energy of system": "Besta fjarlægðin til að ná lægstu heildarorku kerfisins",
+  "Internuclear distance (pm)": "Fjarlægð milli kjarna (pm)",
+  "Energy (J)": "Orka (J)"
+ },
+ "mtAlternatives": {
+  "Sufficiently far apart|to have no interaction": {
+   "kept": "joined",
+   "other": "Nógu langt í burtu til að hafa engin samskipti",
+   "reason": "disagree",
+   "mt": "Nógu langt í sundur til að hafa engin víxlhrif"
+  },
+  "Atoms begin to interact|as they move closer together": {
+   "kept": "joined",
+   "other": "Atóm byrja að víxlverka þegar þau færast nær hvert öðru",
+   "reason": "disagree",
+   "mt": "Atóm byrja að víxlverka þegar þau færast nær hvort öðru"
+  },
+  "Optimum distance to|achieve lowest overall|energy of system": {
+   "kept": "joined",
+   "other": "Besta fjarlægð til að ná lægstu heildarorku kerfisins",
+   "reason": "disagree",
+   "mt": "Besta fjarlægðin til að ná lægstu heildarorku kerfisins"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

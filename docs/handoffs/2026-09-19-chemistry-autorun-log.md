@@ -14,5 +14,83 @@ is the record of what each chapter surfaced.
 
 ---
 
-_No chapter has been run yet. The run starts only on [USER]'s go, after Section 1 of the review is
-answered and the resulting house-style rulings are deployed and exported._
+**Run started 2026-09-20**, after [USER] merged #494/#495/#496, deployed and exported. Verified on
+`main` before the first buy: all 25 ruled headwords are in `glossary-unified.json` with the ruled
+Icelandic (1,736 terms, ties 336 → 333). The two exceptions are the known §C166 pair
+(`degree Celsius` / `degree centigrade`), which the export's census structurally cannot see.
+
+## ch00 — the preface · ~108 ISK
+
+- **Bought:** 1 module, `glossary-only` (standing `enthalpy` pair; neither word occurs, so the wire
+  was effectively glossary-free). Estimated 156, billed ~108.
+- **Figures:** none (0 enumerated).
+- ⚠️ **Inject SKIPPED the module first time: 69 "untranslated-EN residue" segments.** Checked all
+  69 by value — they are the **contributor list**: "Mark Blaser, Shasta College" and 67 more of the
+  same shape, plus one byline. The MT is right to return a name verbatim, so the residue is a false
+  positive of a guard that cannot tell a name from a miss. Re-injected with `--allow-incomplete`;
+  the module writes `[INCOMPLETE] [PERFECT fidelity]`.
+  ▶ **Not a fundamental problem and not re-purchasable** — no buy would change it. It is the shape a
+  future contributor-list chapter will hit again.
+- **Rendered:** `0-1-formali.html` (13,814 B), h1 *Formáli*, contributor names preserved, 0 raw `[[`
+  markers. `generate-index --track mt-preview` re-run. Manifest `green: true`, 0 unexplained.
+
+## ch01 — 7 modules · ~1,388 ISK text + ~105 ISK figures
+
+- **Bought:** 8 units, 0 held, 0 failed. Subset `enthalpy, enthalpy change, Celsius`; `ether` (18)
+  and `cell` (12) withheld as wrong-sense (all `ether` hits here are *together* / *whether*).
+- **Figures:** 36 enumerated — 24 translated, 10 copied-photo, 2 copied-textless.
+  ⚠️ **One figure timed out** (`CNX_Chem_01_03_PeriodicPU`: `translate-blocks.mjs exited null`,
+  ETIMEDOUT). Nothing was persisted, so it stayed eligible; **one retry bought and published it**
+  (~2,255 chars). That is [USER]'s 2026-09-06 rule — a detected sporadic defect is retried, not
+  coded around. The driver now retries once automatically and logs it.
+- **Inject:** 7/7 COMPLETE, manifest `green: true`, 0 unexplained.
+- **Render:** 3 pages renamed by the re-MT → rows written to
+  [`2026-09-20-vefur-chemistry-autorun-redirects.md`](./2026-09-20-vefur-chemistry-autorun-redirects.md).
+  `generate-index --track mt-preview` re-run.
+- **Checks:** 0 raw `[[` markers in the chapter's **HTML**.
+  ⚠️ **A first census said 2 — both were bytes inside JPEGs** (`[[H:` in `…DailyChem.jpg`,
+  `[[Y:` in `…Alchemist.jpg`). The census needs `--include='*.html'`; the driver now has it, with
+  a comment. Same carve-out the ch06 run recorded.
+- 📋 **Logged, pre-existing, NOT from this buy:** `source-roundtrip-check` reports one `textDiff`
+  in **m68674** (`#fs-idp222999216`, the kilogram paragraph). The check injects a module's OWN
+  ENGLISH and never reads the MT, so it is independent of any purchase and is equally true on
+  `main`. ⚠️ The report truncates both sides at 70 characters, so the differing part is not
+  visible in its output — diagnosing it needs a direct comparison, not the report.
+
+## ch02 — 8 modules · ~1,753 ISK text + ~54 ISK figures
+
+- **First chapter run end-to-end by the driver** (`run-chapter.sh`), which halts on any stop
+  condition rather than pushing through. Nothing halted.
+- **Bought:** subset `enthalpy, enthalpy change, group, carbonate, hydroxide`. `group → flokkur` is
+  correct here (periodic-table columns, 47 segments) and is withheld from ch20, where it means a
+  functional group. `ether` (28) and `hole` (14) withheld — every hit is *together*/*whether* and
+  *whole*.
+- **Figures:** 47 enumerated — 21 translated, 2 photos, 23 textless recomposed, 1 unresolved (no
+  vector artwork; stays English). 32 published, no failed-mt.
+- **Inject:** manifest `green: true`, 0 unexplained, 130 perfect.
+- **Render:** 3 pages renamed → rows appended to the vefur redirect handoff.
+- **Checks:** 0 raw `[[` in HTML; roundtrip missing = added = 28, **0 deltas outside the known
+  `meaning#` renames**.
+
+## ch08 — 5 modules · ~1,355 + 610 ISK text + ~31 ISK figures
+
+Subset: `enthalpy pair, hybridization, hybrid orbital, bonding orbital, Lewis, Lewis structure,
+resonance` (`ether` withheld). **The driver HALTED here, twice, and both halts were right.**
+
+- **Figures:** 72 enumerated — 25 translated, 45 textless recomposed, 2 photos; 55 published.
+- 🔴 **m68747 FAILED inject: "1 marker survived — a `[[term:` was not converted".** This is ⑰'s
+  KNOWN set, which CLAUDE.md names by module: m68700 (ch03), m68733 (ch06), **m68747 (ch08)**,
+  m68844 (ch19). Remedy applied as documented: `--module m68747 --no-annotate-en` → COMPLETE,
+  PERFECT fidelity. ⚠️ **ch19 will hit the same thing at m68844.**
+- ⚠️ **m68745 came back with 5 segments of ENGLISH PROSE** (3 figure captions + 2 paragraphs).
+  Sporadic non-translation. One per-module retry (~431 ISK) translated **5 of 5**. That is [USER]'s
+  2026-09-06 rule working exactly as written.
+- 📋 **m68744 `para:fs-idp92007424` — the π-bond definition — came back ENGLISH TWICE** (a second
+  paid attempt, ~179 ISK, reproduced it). **It is NOT sporadic and it is NOT systematic:** a census
+  over all 9 bought chapters (**8,080 segments**) finds **13** identical EN/IS prose-shaped
+  segments, and **12 of the 13 are chemical-formula answer lists that are correctly identical**
+  ("(a) CaS; (b) (NH₄)₂SO₄…"). This paragraph is the only true one. Injected with
+  `--allow-incomplete`; **an editor translates that one paragraph** in the segment editor.
+  ▶ The census is the reason this was not escalated as fundamental: 1 in 8,080 needs no re-purchase.
+- **Render:** 4 page renames → redirect rows appended. Manifest `green: true`, 0 unexplained,
+  0 raw `[[` in HTML, roundtrip 0 deltas outside `meaning#`.

@@ -32,6 +32,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_01_02_StatesMatt",
+      "title": null,
       "caption": {
         "segmentId": "m68667:caption:CNX_Chem_01_02_StatesMatt-caption"
       },
@@ -54,6 +55,7 @@
       "type": "figure",
       "id": "CNX_Chem_01_02_Plasma",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68667:caption:CNX_Chem_01_02_Plasma-caption"
       },
@@ -103,6 +105,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_01_02_ConsMatter",
+      "title": null,
       "caption": {
         "segmentId": "m68667:caption:CNX_Chem_01_02_ConsMatter-caption"
       },
@@ -149,6 +152,7 @@
           "type": "figure",
           "id": "CNX_Chem_01_02_decomp",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_decomp-caption"
           },
@@ -194,6 +198,7 @@
           "type": "figure",
           "id": "CNX_Chem_01_02_Mixtures",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_Mixtures-caption"
           },
@@ -215,6 +220,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_02_MattType",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_MattType-caption"
           },
@@ -713,6 +719,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_02_GoldAtoms",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_GoldAtoms-caption"
           },
@@ -739,6 +746,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_02_Cellulose",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_Cellulose-caption"
           },
@@ -765,6 +773,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_02_Molecules",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_Molecules-caption"
           },
@@ -807,6 +816,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_01_Electrolys",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_01_Electrolys-caption"
           },
@@ -824,6 +834,7 @@
           "type": "figure",
           "id": "CNX_Chem_01_01_FuelCell",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_01_FuelCell-caption"
           },
@@ -856,6 +867,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_02_CellPhone",
+          "title": null,
           "caption": {
             "segmentId": "m68667:caption:CNX_Chem_01_02_CellPhone-caption"
           },

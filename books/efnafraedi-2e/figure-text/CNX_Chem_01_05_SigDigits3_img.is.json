@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_SigDigits3_img",
+ "renderHash": "39865beda80a5d17",
+ "composedHash": "39865beda80a5d17",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Significant figures: clearly result of measurement": "Markverðir stafir: greinilega niðurstaða mælingar",
+  "These zeros could be significant (measured), or they could be placeholders": "Þessi núll gætu verið markverð (mæld) eða þau gætu verið staðgildi"
+ },
+ "mtAlternatives": {
+  "These zeros could be significant (measured), or they could be placeholders": {
+   "kept": "joined",
+   "other": "Þessi núll gætu verið markverð (mæld) eða þau gætu verið staðgenglar.",
+   "reason": "disagree",
+   "mt": "Þessi núll gætu verið markverð (mæld) eða þau gætu verið staðgildi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

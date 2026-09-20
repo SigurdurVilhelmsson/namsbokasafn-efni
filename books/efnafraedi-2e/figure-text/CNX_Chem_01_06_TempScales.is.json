@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_06_TempScales",
+ "renderHash": "dd0f4c58de1033fd",
+ "composedHash": "dd0f4c58de1033fd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Fahrenheit": "Fahrenheit",
+  "Boiling|point|of water": "Suðumark vatns",
+  "Freezing|point|of water": "Frostmark vatns",
+  "180 Fahrenheit|degrees": "180 Fahrenheit-gráður",
+  "Celsius": "Selsíus",
+  "100 Celsius|degrees": "100 selsíusgráður",
+  "Kelvin": "Kelvin",
+  "100 kelvins": "100 kelvin"
+ },
+ "mtAlternatives": {
+  "100 Celsius|degrees": {
+   "kept": "joined",
+   "other": "100 Selsíusgráður",
+   "reason": "disagree",
+   "mt": "100 selsíusgráður"
+  },
+  "100 kelvins": {
+   "kept": "joined",
+   "other": "100 kelvín",
+   "reason": "disagree",
+   "mt": "100 kelvin"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

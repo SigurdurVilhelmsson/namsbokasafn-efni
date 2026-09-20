@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19T20:51:27.730Z",
+  "generated": "2026-09-20T12:21:49.088Z",
   "termCount": 763,
   "entries": [
     {
@@ -34,6 +34,17 @@
       "sectionTitle": "Lotubundnir eiginleikar",
       "sectionSlug": "18-1-lotubundnir-eiginleikar",
       "termId": "fs-idm2235360"
+    },
+    {
+      "termIs": "aðalfrumefni",
+      "termEn": "representative element",
+      "termFull": "aðalfrumefni (e. representative element)",
+      "definition": "(einnig höfuðflokkafrumefni) frumefni í dálkum 1, 2 og 12–18",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm334010160"
     },
     {
       "termIs": "aðalskammtatala (n)",
@@ -100,6 +111,17 @@
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp55090448"
+    },
+    {
+      "termIs": "afrúning",
+      "termEn": "rounding",
+      "termFull": "afrúning (e. rounding)",
+      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í mælingunum sem notaðar eru í útreikningnum",
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp68905696"
     },
     {
       "termIs": "afturkræft efnahvarf",
@@ -179,13 +201,13 @@
       "termId": "fs-idm27965808"
     },
     {
-      "termIs": "alfa-eind (α-eind)",
+      "termIs": "alfa-ögn (α-ögn)",
       "termEn": "alpha particle (α particle)",
-      "termFull": "alfa-eind (α-eind) (e. alpha particle (α particle))",
-      "definition": "jákvætt hlaðin eind sem samanstendur af tveimur róteindum og tveimur nifteindum",
+      "termFull": "alfa-ögn (α-ögn) (e. alpha particle (α particle))",
+      "definition": "jákvætt hlaðin ögn sem samanstendur af tveimur róteindum og tveimur nifteindum",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idm10811088"
     },
@@ -334,13 +356,13 @@
     },
     {
       "termIs": "andbindandi svigrúm",
-      "termEn": "antibonding orbital",
-      "termFull": "andbindandi svigrúm (e. antibonding orbital)",
+      "termEn": null,
+      "termFull": "andbindandi svigrúm",
       "definition": "sameindasvigrúm staðsett utan svæðisins milli tveggja kjarna; rafeindir í andbindandi svigrúmi gera sameindina óstöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm143725728"
     },
     {
@@ -358,11 +380,11 @@
       "termIs": "anjón",
       "termEn": "anion",
       "termFull": "anjón (e. anion)",
-      "definition": "neikvætt hlaðin frumeind eða sameind (inniheldur fleiri rafeindir en róteindir)",
+      "definition": "neikvætt hlaðið atóm eða sameind (inniheldur fleiri rafeindir en róteindir)",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idm68508272"
     },
     {
@@ -410,25 +432,47 @@
       "termId": "fs-idm187159584"
     },
     {
+      "termIs": "atóm",
+      "termEn": "atom",
+      "termFull": "atóm (e. atom)",
+      "definition": "minnsta ögn frumefnis sem getur tekið þátt í efnasambandi",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "termId": "fs-idm8143856"
+    },
+    {
+      "termIs": "Atómkenning Daltons",
+      "termEn": "dalton’s atomic theory",
+      "termFull": "Atómkenning Daltons (e. dalton’s atomic theory)",
+      "definition": "sett af fullyrðingum sem staðfestu grundvallareiginleika atóma",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idp110829184"
+    },
+    {
       "termIs": "atómmassaeining (amu)",
       "termEn": "atomic mass unit (amu)",
       "termFull": "atómmassaeining (amu) (e. atomic mass unit (amu))",
-      "definition": "(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining jöfn 112 af massa 12C frumeindar",
+      "definition": "(einnig, sameinuð atómmassaeining, u, eða Dalton, Da) massaeining sem jafngildir 112 af massa 12C atóms",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idm20897872"
     },
     {
       "termIs": "atómmassi",
       "termEn": "atomic mass",
       "termFull": "atómmassi (e. atomic mass)",
-      "definition": "meðalmassi frumeinda frumefnis, gefinn upp í amu",
+      "definition": "meðalmassi atóma frumefnis, gefinn upp í amu",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp230158528"
     },
     {
@@ -730,13 +774,13 @@
     },
     {
       "termIs": "bindandi svigrúm",
-      "termEn": "bonding orbital",
-      "termFull": "bindandi svigrúm (e. bonding orbital)",
-      "definition": "sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi stöðga sameind",
+      "termEn": null,
+      "termFull": "bindandi svigrúm",
+      "definition": "sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi gera sameindina stöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm133686144"
     },
     {
@@ -784,6 +828,17 @@
       "termId": "fs-idm122363760"
     },
     {
+      "termIs": "blanda",
+      "termEn": "mixture",
+      "termFull": "blanda (e. mixture)",
+      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "termId": "fs-idm5111888"
+    },
+    {
       "termIs": "blandanlegur",
       "termEn": "miscible",
       "termFull": "blandanlegur (e. miscible)",
@@ -795,25 +850,14 @@
       "termId": "fs-idp83966400"
     },
     {
-      "termIs": "blending",
-      "termEn": "hybridization",
-      "termFull": "blending (e. hybridization)",
-      "definition": "líkan sem lýsir breytingum á frumeindasvigrúmum frumeindar þegar hún myndar samgilt efnasamband",
-      "chapter": 8,
-      "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
-      "termId": "fs-idm29433408"
-    },
-    {
-      "termIs": "blendingurssvigrúm",
+      "termIs": "blendingssvigrúm",
       "termEn": "hybrid orbital",
-      "termFull": "blendingurssvigrúm (e. hybrid orbital)",
-      "definition": "svigrúm sem myndast við samruna frumeindasvigrúma á miðfrumeind",
+      "termFull": "blendingssvigrúm (e. hybrid orbital)",
+      "definition": "svigrúm sem myndast við samruna atómsvigrúma á miðatómi",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idp102362976"
     },
     {
@@ -916,17 +960,6 @@
       "termId": "fs-idm119810368"
     },
     {
-      "termIs": "breytistuðull eininga",
-      "termEn": "unit conversion factor",
-      "termFull": "breytistuðull eininga (e. unit conversion factor)",
-      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
-      "chapter": 1,
-      "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
-      "termId": "fs-idm307214528"
-    },
-    {
       "termIs": "brunagreining",
       "termEn": "combustion analysis",
       "termFull": "brunagreining (e. combustion analysis)",
@@ -1018,7 +1051,7 @@
       "termIs": "byggingarformúla",
       "termEn": "structural formula",
       "termFull": "byggingarformúla (e. structural formula)",
-      "definition": "sýnir frumeindirnar í sameind og hvernig þær eru tengdar",
+      "definition": "sýnir atómin í sameind og hvernig þau eru tengd",
       "chapter": 2,
       "section": "2.4",
       "sectionTitle": "Efnaformúlur",
@@ -1026,10 +1059,10 @@
       "termId": "fs-idm163422864"
     },
     {
-      "termIs": "byggingarhverfa",
+      "termIs": "byggingarisómera",
       "termEn": "structural isomer",
-      "termFull": "byggingarhverfa (e. structural isomer)",
-      "definition": "eitt af tveimur efnum sem hafa sömu sameindaformúlu en mismunandi eðlis- og efnaeiginleika vegna þess að frumeindir þeirra eru tengdar á mismunandi hátt",
+      "termFull": "byggingarisómera (e. structural isomer)",
+      "definition": "annað tveggja efna sem hafa sömu sameindaformúlu en mismunandi eðlis- og efnafræðilega eiginleika vegna þess að atóm þeirra eru tengd á mismunandi hátt",
       "chapter": 2,
       "section": "2.4",
       "sectionTitle": "Efnaformúlur",
@@ -1068,6 +1101,17 @@
       "sectionTitle": "Rafsegulorka",
       "sectionSlug": "6-1-rafsegulorka",
       "termId": "fs-idp70511136"
+    },
+    {
+      "termIs": "Celsíus (°C)",
+      "termEn": "celsius (°c)",
+      "termFull": "Celsíus (°C) (e. celsius (°c))",
+      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm285658848"
     },
     {
       "termIs": "cis-afstaða",
@@ -1117,11 +1161,11 @@
       "termIs": "Dalton (Da)",
       "termEn": null,
       "termFull": "Dalton (Da)",
-      "definition": "önnur eining jafngild atómmassaeiningunni",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idm103888640"
     },
     {
@@ -1224,17 +1268,6 @@
       "termId": "fs-idm147403536"
     },
     {
-      "termIs": "efnablanda",
-      "termEn": "mixture",
-      "termFull": "efnablanda (e. mixture)",
-      "definition": "efni sem hægt er að skilja í sundur í efnisþætti sína með eðlisfræðilegum aðferðum",
-      "chapter": 1,
-      "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
-      "termId": "fs-idm5111888"
-    },
-    {
       "termIs": "efnabreyting",
       "termEn": "chemical change",
       "termFull": "efnabreyting (e. chemical change)",
@@ -1246,10 +1279,21 @@
       "termId": "fs-idp392534800"
     },
     {
+      "termIs": "efnaeiginleiki",
+      "termEn": "chemical property",
+      "termFull": "efnaeiginleiki (e. chemical property)",
+      "definition": "hegðun sem tengist breytingu á einni tegund efnis í aðra",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idm88320752"
+    },
+    {
       "termIs": "efnafræði",
       "termEn": "chemistry",
       "termFull": "efnafræði (e. chemistry)",
-      "definition": "rannsókn á samsetningu, eiginleikum og víxlverkunum efnis",
+      "definition": "fræðigrein um samsetningu, eiginleika og víxlverkun efnis",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -1266,17 +1310,6 @@
       "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
       "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
       "termId": "fs-idp238031216"
-    },
-    {
-      "termIs": "efnafræðilegur eiginleiki",
-      "termEn": "chemical property",
-      "termFull": "efnafræðilegur eiginleiki (e. chemical property)",
-      "definition": "hegðun sem tengist breytingu einnar tegundar efnis í aðra",
-      "chapter": 1,
-      "section": "1.3",
-      "sectionTitle": "Eðlis- og efnaeiginleikar",
-      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
-      "termId": "fs-idm88320752"
     },
     {
       "termIs": "efnahvarfsrit",
@@ -1329,19 +1362,19 @@
       "definition": "hreint efni sem hægt er að sundra í tvö eða fleiri frumefni",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm115227296"
     },
     {
       "termIs": "efnatákn",
       "termEn": "chemical symbol",
       "termFull": "efnatákn (e. chemical symbol)",
-      "definition": "eins, tveggja eða þriggja stafa skammstöfun sem notuð er til að tákna frumefni eða frumeindir þess",
+      "definition": "eins, tveggja eða þriggja stafa skammstöfun sem notuð er til að tákna frumefni eða atóm þess",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idm109251440"
     },
     {
@@ -1359,11 +1392,11 @@
       "termIs": "efni",
       "termEn": "matter",
       "termFull": "efni (e. matter)",
-      "definition": "allt sem tekur rúm og hefur massa",
+      "definition": "allt sem tekur pláss og hefur massa",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm23865104"
     },
     {
@@ -1389,6 +1422,17 @@
       "termId": "fs-idp31727024"
     },
     {
+      "termIs": "einatóma jón",
+      "termEn": "monatomic ion",
+      "termFull": "einatóma jón (e. monatomic ion)",
+      "definition": "jón samsett úr einu atómi",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "termId": "fs-idp136404896"
+    },
+    {
       "termIs": "einfalt tengi",
       "termEn": "single bond",
       "termFull": "einfalt tengi (e. single bond)",
@@ -1398,17 +1442,6 @@
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
       "termId": "fs-idp177199648"
-    },
-    {
-      "termIs": "einfrumeinda jón",
-      "termEn": "monatomic ion",
-      "termFull": "einfrumeinda jón (e. monatomic ion)",
-      "definition": "jón samsett úr einni frumeind",
-      "chapter": 2,
-      "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
-      "termId": "fs-idp136404896"
     },
     {
       "termIs": "einföld teningslaga bygging",
@@ -1455,17 +1488,6 @@
       "termId": "fs-idm331555696"
     },
     {
-      "termIs": "einingagreining",
-      "termEn": "dimensional analysis",
-      "termFull": "einingagreining (e. dimensional analysis)",
-      "definition": "(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir",
-      "chapter": 1,
-      "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
-      "termId": "fs-idm216300016"
-    },
-    {
       "termIs": "einnota rafhlaða",
       "termEn": "primary cell",
       "termFull": "einnota rafhlaða (e. primary cell)",
@@ -1505,8 +1527,8 @@
       "definition": "(einnig, lausn) samsetning efna með efnasamsetningu sem er einsleit í gegn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm25215648"
     },
     {
@@ -1626,8 +1648,8 @@
       "definition": "hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
       "termId": "fs-idm207141104"
     },
     {
@@ -1656,11 +1678,11 @@
       "termIs": "fast efni",
       "termEn": "solid",
       "termFull": "fast efni (e. solid)",
-      "definition": "efnishamur sem er stjarfur, hefur ákveðna lögun og nokkuð fast rúmmál",
+      "definition": "ástönd efnis sem er stíft, hefur ákveðið form og nokkuð fast rúmmál",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm10806528"
     },
     {
@@ -1684,6 +1706,17 @@
       "sectionTitle": "Sameindabygging og skautun",
       "sectionSlug": "7-6-sameindabygging-og-skautun",
       "termId": "fs-idp51917808"
+    },
+    {
+      "termIs": "ferssegulmögnun",
+      "termEn": null,
+      "termFull": "ferssegulmögnun",
+      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm100788960"
     },
     {
       "termIs": "fjórða hliðarmálmaröðin",
@@ -1711,11 +1744,11 @@
       "termIs": "fjölfrumeinda jón",
       "termEn": "polyatomic ion",
       "termFull": "fjölfrumeinda jón (e. polyatomic ion)",
-      "definition": "jón samsett úr fleiri en einni frumeind",
+      "definition": "jón samsett úr fleiri en einu atómi",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp93746160"
     },
     {
@@ -1865,34 +1898,12 @@
       "termIs": "frumefni",
       "termEn": "element",
       "termFull": "frumefni (e. element)",
-      "definition": "efni sem samanstendur af einni tegund frumeindar; efni sem ekki er hægt að sundra með efnabreytingu",
+      "definition": "efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnabreytingu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6667232"
-    },
-    {
-      "termIs": "frumeind",
-      "termEn": "atom",
-      "termFull": "frumeind (e. atom)",
-      "definition": "minnsta eind frumefnis sem getur tekið þátt í efnasambandi",
-      "chapter": 1,
-      "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
-      "termId": "fs-idm8143856"
-    },
-    {
-      "termIs": "frumeindakenning Daltons",
-      "termEn": "dalton’s atomic theory",
-      "termFull": "frumeindakenning Daltons (e. dalton’s atomic theory)",
-      "definition": "sett af setningum sem settu fram grundvallareiginleika frumeinda",
-      "chapter": 2,
-      "section": "2.1",
-      "sectionTitle": "Fyrstu hugmyndir í frumeindakenningunni",
-      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
-      "termId": "fs-idp110829184"
     },
     {
       "termIs": "frumhvarf",
@@ -1986,11 +1997,11 @@
       "termIs": "gas",
       "termEn": null,
       "termFull": "gas",
-      "definition": "efnishamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
+      "definition": "hamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37203312"
     },
     {
@@ -2151,11 +2162,11 @@
       "termIs": "gildistengiskenningin",
       "termEn": "valence bond theory",
       "termFull": "gildistengiskenningin (e. valence bond theory)",
-      "definition": "lýsing á efnatengjum sem felur í sér að frumeindasvigrúm skarast til að mynda σ- eða π-tengi, þar sem rafeindapörum er deilt",
+      "definition": "lýsing á tengjum sem felur í sér að atómsvigrúm skarast og mynda σ- eða π-tengi, þar sem rafeindapörum er deilt",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp81645184"
     },
     {
@@ -2242,8 +2253,8 @@
       "definition": "(einnig kölluð einingarhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 × 10−19 C",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp226765840"
     },
     {
@@ -2525,11 +2536,11 @@
       "termIs": "hitastig",
       "termEn": "temperature",
       "termFull": "hitastig (e. temperature)",
-      "definition": "ástandseiginleiki sem táknar hversu heitt eða kalt efni er",
+      "definition": "ástandseiginleiki sem táknar hita eða kulda efnis",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
       "termId": "fs-idm327357936"
     },
     {
@@ -2542,17 +2553,6 @@
       "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp31728864"
-    },
-    {
-      "termIs": "hittni",
-      "termEn": "accuracy",
-      "termFull": "hittni (e. accuracy)",
-      "definition": "hversu vel mæling fellur að réttu gildi",
-      "chapter": 1,
-      "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp330245120"
     },
     {
       "termIs": "hjúpun",
@@ -2580,23 +2580,12 @@
       "termIs": "hliðarmálmur",
       "termEn": "transition metal",
       "termFull": "hliðarmálmur (e. transition metal)",
-      "definition": "frumefni í flokkum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og hnitsetningarefnafræði)",
+      "definition": "frumefni í flokkum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og samhæfingarefnafræði)",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
       "sectionSlug": "2-5-lotukerfid",
       "termId": "fs-idm231758480"
-    },
-    {
-      "termIs": "hliðarsegulmagn",
-      "termEn": "paramagnetism",
-      "termFull": "hliðarsegulmagn (e. paramagnetism)",
-      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm100788960"
     },
     {
       "termIs": "hliðlæg teningslaga grindareining",
@@ -2676,6 +2665,17 @@
       "termId": "fs-idm36067216"
     },
     {
+      "termIs": "hnútur",
+      "termEn": "node",
+      "termFull": "hnútur (e. node)",
+      "definition": "plan sem aðskilur mismunandi bleðla svigrúma, þar sem líkurnar á að finna rafeind eru núll",
+      "chapter": 8,
+      "section": "8.1",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "termId": "fs-idp123920528"
+    },
+    {
       "termIs": "hraðafasti (k)",
       "termEn": "rate constant (k)",
       "termFull": "hraðafasti (k) (e. rate constant (k))",
@@ -2723,11 +2723,11 @@
       "termIs": "hreint efni",
       "termEn": "pure substance",
       "termFull": "hreint efni (e. pure substance)",
-      "definition": "einsleitt efni sem hefur fasta efnasamsetningu",
+      "definition": "einsleitt efni sem hefur fasta samsetningu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37107584"
     },
     {
@@ -2852,17 +2852,6 @@
       "termId": "fs-idp216879616"
     },
     {
-      "termIs": "hverfur",
-      "termEn": "isomers",
-      "termFull": "hverfur (e. isomers)",
-      "definition": "efnasambönd með sömu efnaformúlu en mismunandi byggingu",
-      "chapter": 2,
-      "section": "2.4",
-      "sectionTitle": "Efnaformúlur",
-      "sectionSlug": "2-4-efnaformulur",
-      "termId": "fs-idp55104"
-    },
-    {
       "termIs": "hvolf",
       "termEn": null,
       "termFull": "hvolf",
@@ -2943,23 +2932,12 @@
       "termIs": "höfuðflokkafrumefni",
       "termEn": "main-group element",
       "termFull": "höfuðflokkafrumefni (e. main-group element)",
-      "definition": "(einnig aðalflokkafrumefni) frumefni í flokkum 1, 2 og 13–18",
+      "definition": "(einnig aðalfrumefni) frumefni í flokkum 1, 2 og 13–18",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
       "sectionSlug": "2-5-lotukerfid",
       "termId": "fs-idm316504400"
-    },
-    {
-      "termIs": "höfuðflokkafrumefni",
-      "termEn": "representative element",
-      "termFull": "höfuðflokkafrumefni (e. representative element)",
-      "definition": "frumefni í flokkum 1, 2 og 12–18",
-      "chapter": 2,
-      "section": "2.5",
-      "sectionTitle": "Lotukerfið",
-      "sectionSlug": "2-5-lotukerfid",
-      "termId": "fs-idm334010160"
     },
     {
       "termIs": "innilokunarkerfi",
@@ -2987,7 +2965,7 @@
       "termIs": "innri hliðarmálmur",
       "termEn": "inner transition metal",
       "termFull": "innri hliðarmálmur (e. inner transition metal)",
-      "definition": "(einnig lantaníð eða aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrri röðinni, einnig kallað lantaníð, eða ef í seinni röðinni, einnig kallað aktiníð",
+      "definition": "(einnig lantaníð eða aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrstu röðinni, einnig kallað lantaníð, eða ef í annarri röðinni, einnig kallað aktiníð",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
@@ -3037,6 +3015,17 @@
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
       "sectionSlug": "6-5-lotubundnar-breytingar-a-eiginleikum-frumefna",
       "termId": "fs-idp94243488"
+    },
+    {
+      "termIs": "ísómerur",
+      "termEn": "isomers",
+      "termFull": "ísómerur (e. isomers)",
+      "definition": "efnasambönd með sömu efnaformúlu en mismunandi byggingu",
+      "chapter": 2,
+      "section": "2.4",
+      "sectionTitle": "Efnaformúlur",
+      "sectionSlug": "2-4-efnaformulur",
+      "termId": "fs-idp55104"
     },
     {
       "termIs": "jafngerður",
@@ -3152,11 +3141,11 @@
       "termIs": "jón",
       "termEn": "ion",
       "termFull": "jón (e. ion)",
-      "definition": "rafhlaðin frumeind eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)",
+      "definition": "rafhlaðið atóm eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp277782656"
     },
     {
@@ -3171,14 +3160,14 @@
       "termId": "fs-idp1071840"
     },
     {
-      "termIs": "jónaefni",
+      "termIs": "jónaefnasamband",
       "termEn": "ionic compound",
-      "termFull": "jónaefni (e. ionic compound)",
-      "definition": "efnasamband samsett úr katjónum og anjónum í hlutföllum sem gefa rafhlutlaust efni",
+      "termFull": "jónaefnasamband (e. ionic compound)",
+      "definition": "efnasamband samsett úr katjónum og anjónum sem sameinast í hlutföllum og gefa rafhlutlaust efni",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp182712496"
     },
     {
@@ -3207,11 +3196,11 @@
       "termIs": "jónatengi",
       "termEn": "ionic bond",
       "termFull": "jónatengi (e. ionic bond)",
-      "definition": "rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefni",
+      "definition": "rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefnasambandi",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp160949776"
     },
     {
@@ -3361,11 +3350,11 @@
       "termIs": "katjón",
       "termEn": "cation",
       "termFull": "katjón (e. cation)",
-      "definition": "jákvætt hlaðin frumeind eða sameind (inniheldur færri rafeindir en róteindir)",
+      "definition": "jákvætt hlaðið atóm eða sameind (inniheldur færri rafeindir en róteindir)",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp1800912"
     },
     {
@@ -3405,7 +3394,7 @@
       "termIs": "kelvin (K)",
       "termEn": null,
       "termFull": "kelvin (K)",
-      "definition": "SI-eining hitastigs; 273,15 K = 0 °C",
+      "definition": "SI-grunneining hitastigs; 273,15 K = 0 °C",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -3416,7 +3405,7 @@
       "termIs": "kenning",
       "termEn": "theory",
       "termFull": "kenning (e. theory)",
-      "definition": "vel rökstudd, yfirgripsmikil og prófanleg skýring á tilteknum þætti náttúrunnar",
+      "definition": "vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -3471,7 +3460,7 @@
       "termIs": "kílógramm (kg)",
       "termEn": "kilogram (kg)",
       "termFull": "kílógramm (kg) (e. kilogram (kg))",
-      "definition": "staðlaða SI-einingin fyrir massa",
+      "definition": "staðlaða SI-grunneiningin fyrir massa",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -3614,10 +3603,10 @@
       "termIs": "kjarni",
       "termEn": "nucleus",
       "termFull": "kjarni (e. nucleus)",
-      "definition": "massamikil, jákvætt hlaðin miðja frumeindar sem samanstendur af róteindum og nifteindum",
+      "definition": "massamikil, jákvætt hlaðin miðja atóms sem samanstendur af róteindum og nifteindum",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idp130134704"
     },
@@ -3911,7 +3900,7 @@
       "termIs": "lengd",
       "termEn": "length",
       "termFull": "lengd (e. length)",
-      "definition": "mælikvarði á eina vídd hlutar",
+      "definition": "mæling á einni vídd hlutar",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4106,14 +4095,14 @@
       "termId": "fs-idp35872064"
     },
     {
-      "termIs": "línuleg samantekt frumeindasvigrúma",
-      "termEn": "linear combination of atomic orbitals",
-      "termFull": "línuleg samantekt frumeindasvigrúma (e. linear combination of atomic orbitals)",
-      "definition": "aðferð til að sameina frumeindasvigrúm til að búa til sameindasvigrúm",
+      "termIs": "línuleg samantekt atómsvigrýma",
+      "termEn": null,
+      "termFull": "línuleg samantekt atómsvigrýma",
+      "definition": "aðferð til að sameina atómsvigrými til að búa til sameindasvigrými",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm41528352"
     },
     {
@@ -4205,21 +4194,10 @@
       "termId": "fs-idm418320336"
     },
     {
-      "termIs": "lota",
-      "termEn": "series",
-      "termFull": "lota (e. series)",
-      "definition": "lóðrétt röð í lotukerfinu",
-      "chapter": 2,
-      "section": "2.5",
-      "sectionTitle": "Lotukerfið",
-      "sectionSlug": "2-5-lotukerfid",
-      "termId": "fs-idm430389008"
-    },
-    {
-      "termIs": "lotukerfið",
+      "termIs": "lotukerfi",
       "termEn": "periodic table",
-      "termFull": "lotukerfið (e. periodic table)",
-      "definition": "tafla yfir frumefnin sem staðsetur frumefni með svipaða efnafræðilega eiginleika nálægt hvert öðru",
+      "termFull": "lotukerfi (e. periodic table)",
+      "definition": "tafla yfir frumefnin sem setur frumefni með svipaða efnafræðilega eiginleika nálægt hvort öðru",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
@@ -4227,9 +4205,9 @@
       "termId": "fs-idm227073184"
     },
     {
-      "termIs": "lotulögmálið",
+      "termIs": "lotulögmál",
       "termEn": "periodic law",
-      "termFull": "lotulögmálið (e. periodic law)",
+      "termFull": "lotulögmál (e. periodic law)",
       "definition": "eiginleikar frumefnanna eru lotubundin föll af sætistölum þeirra.",
       "chapter": 2,
       "section": "2.5",
@@ -4252,7 +4230,7 @@
       "termIs": "lögmál",
       "termEn": "law",
       "termFull": "lögmál (e. law)",
-      "definition": "staðhæfing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
+      "definition": "yfirlýsing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -4370,47 +4348,47 @@
       "termId": "fs-idp141116656"
     },
     {
-      "termIs": "lögmálið um föst efnahlutföll",
-      "termEn": "law of constant composition",
-      "termFull": "lögmálið um föst efnahlutföll (e. law of constant composition)",
-      "definition": "(einnig, lögmálið um ákveðin hlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefni í sömu hlutföllum miðað við massa",
-      "chapter": 2,
-      "section": "2.1",
-      "sectionTitle": "Fyrstu hugmyndir í frumeindakenningunni",
-      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
-      "termId": "fs-idm56716560"
-    },
-    {
-      "termIs": "lögmálið um föst efnahlutföll",
+      "termIs": "lögmál um ákveðin hlutföll",
       "termEn": "law of definite proportions",
-      "termFull": "lögmálið um föst efnahlutföll (e. law of definite proportions)",
-      "definition": "(einnig, lögmálið um ákveðin hlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefni í sömu hlutföllum miðað við massa",
+      "termFull": "lögmál um ákveðin hlutföll (e. law of definite proportions)",
+      "definition": "(einnig, lögmál um föst massahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu massahlutföllum",
       "chapter": 2,
       "section": "2.1",
-      "sectionTitle": "Fyrstu hugmyndir í frumeindakenningunni",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
       "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
       "termId": "fs-idp76336256"
     },
     {
-      "termIs": "lögmálið um margfeldnishlutföll",
-      "termEn": "law of multiple proportions",
-      "termFull": "lögmálið um margfeldnishlutföll (e. law of multiple proportions)",
-      "definition": "þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af öðru frumefninu hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna",
+      "termIs": "lögmál um föst massahlutföll",
+      "termEn": "law of constant composition",
+      "termFull": "lögmál um föst massahlutföll (e. law of constant composition)",
+      "definition": "(einnig, lögmál um ákveðin hlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu massahlutföllum",
       "chapter": 2,
       "section": "2.1",
-      "sectionTitle": "Fyrstu hugmyndir í frumeindakenningunni",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
+      "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
+      "termId": "fs-idm56716560"
+    },
+    {
+      "termIs": "lögmál um margföld massahlutföll",
+      "termEn": "law of multiple proportions",
+      "termFull": "lögmál um margföld massahlutföll (e. law of multiple proportions)",
+      "definition": "þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna",
+      "chapter": 2,
+      "section": "2.1",
+      "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
       "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
       "termId": "fs-idp47442976"
     },
     {
-      "termIs": "lögmálið um varðveislu efnis",
+      "termIs": "lögmál um varðveislu efnis",
       "termEn": "law of conservation of matter",
-      "termFull": "lögmálið um varðveislu efnis (e. law of conservation of matter)",
-      "definition": "þegar efni breytist úr einni tegund í aðra eða breytir um form, verður engin greinanleg breyting á heildarmagni efnis sem er til staðar",
+      "termFull": "lögmál um varðveislu efnis (e. law of conservation of matter)",
+      "definition": "þegar efni breytist úr einni gerð í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idp19511536"
     },
     {
@@ -4425,9 +4403,9 @@
       "termId": "fs-idp188325600"
     },
     {
-      "termIs": "magnbundinn eiginleiki",
+      "termIs": "magnháður eiginleiki",
       "termEn": "extensive property",
-      "termFull": "magnbundinn eiginleiki (e. extensive property)",
+      "termFull": "magnháður eiginleiki (e. extensive property)",
       "definition": "eiginleiki efnis sem fer eftir magni efnisins",
       "chapter": 1,
       "section": "1.3",
@@ -4458,6 +4436,17 @@
       "termId": "fs-idp127462672"
     },
     {
+      "termIs": "magnóháður eiginleiki",
+      "termEn": "intensive property",
+      "termFull": "magnóháður eiginleiki (e. intensive property)",
+      "definition": "eiginleiki efnis sem er óháður magni efnisins",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idp42386976"
+    },
+    {
       "termIs": "markmassi",
       "termEn": "critical mass",
       "termFull": "markmassi (e. critical mass)",
@@ -4480,14 +4469,14 @@
       "termId": "fs-idm66977664"
     },
     {
-      "termIs": "markverðir stafir",
+      "termIs": "marktækir stafir",
       "termEn": "significant figures",
-      "termFull": "markverðir stafir (e. significant figures)",
-      "definition": "(einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn síðasti óvissi tölustafurinn",
+      "termFull": "marktækir stafir (e. significant figures)",
+      "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp3346000"
     },
     {
@@ -4527,11 +4516,11 @@
       "termIs": "massatala (A)",
       "termEn": "mass number (a)",
       "termFull": "massatala (A) (e. mass number (a))",
-      "definition": "summa fjölda nifteinda og róteinda í kjarna frumeindar",
+      "definition": "samtala fjölda nifteinda og róteinda í kjarna atóms",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp22869776"
     },
     {
@@ -4549,11 +4538,11 @@
       "termIs": "massi",
       "termEn": "mass",
       "termFull": "massi (e. mass)",
-      "definition": "grunneiginleiki sem gefur til kynna magn efnis",
+      "definition": "grundvallareiginleiki sem gefur til kynna efnismagn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm23882384"
     },
     {
@@ -4593,7 +4582,7 @@
       "termIs": "málmleysingi",
       "termEn": "nonmetal",
       "termFull": "málmleysingi (e. nonmetal)",
-      "definition": "frumefni sem virðist daufleitt, lélegur leiðari hita og rafmagns",
+      "definition": "frumefni sem virðist daufleitt, lélegur hita- og rafleiðari",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
@@ -4604,7 +4593,7 @@
       "termIs": "málmur",
       "termEn": "metal",
       "termFull": "málmur (e. metal)",
-      "definition": "frumefni sem er glansandi, sveigjanlegt, góður leiðari hita og rafmagns",
+      "definition": "frumefni sem er glansandi, þjált, góður hita- og rafleiðari",
       "chapter": 2,
       "section": "2.5",
       "sectionTitle": "Lotukerfið",
@@ -4670,7 +4659,7 @@
       "termIs": "metri (m)",
       "termEn": "meter (m)",
       "termFull": "metri (m) (e. meter (m))",
-      "definition": "staðlaða metra- og SI-einingin fyrir lengd; 1 m = um það bil 1,094 yardar",
+      "definition": "staðlaða metra- og SI-grunneiningin fyrir lengd; 1 m = u.þ.b. 1,094 yardar",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4766,10 +4755,10 @@
       "termId": "fs-idp48690544"
     },
     {
-      "termIs": "millilítri (ml)",
+      "termIs": "millilítri (mL)",
       "termEn": "milliliter (ml)",
-      "termFull": "millilítri (ml) (e. milliliter (ml))",
-      "definition": "1/1.000 úr lítra; jafnt og 1 cm3",
+      "termFull": "millilítri (mL) (e. milliliter (ml))",
+      "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4824,11 +4813,11 @@
       "termIs": "misleit efnablanda",
       "termEn": "heterogeneous mixture",
       "termFull": "misleit efnablanda (e. heterogeneous mixture)",
-      "definition": "samsetning efna með efnasamsetningu sem er breytileg frá einum stað til annars",
+      "definition": "samsetning efna með efnasamsetningu sem er breytileg frá einum punkti til annars",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idp85033264"
     },
     {
@@ -4942,17 +4931,6 @@
       "termId": "fs-idm26669728"
     },
     {
-      "termIs": "mótseglun",
-      "termEn": "diamagnetism",
-      "termFull": "mótseglun (e. diamagnetism)",
-      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm83103936"
-    },
-    {
       "termIs": "myndefni",
       "termEn": "product",
       "termFull": "myndefni (e. product)",
@@ -4993,30 +4971,30 @@
       "chapter": 2,
       "section": "2.7",
       "sectionTitle": "Nafnakerfi efnafræðinnar",
-      "sectionSlug": "2-7-nafnakerfi-efna",
+      "sectionSlug": "2-7-nafnakerfi-efnafraedinnar",
       "termId": "fs-idp282227200"
     },
     {
       "termIs": "nákvæm tala",
       "termEn": "exact number",
       "termFull": "nákvæm tala (e. exact number)",
-      "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
+      "definition": "tala fengin með talningu eða skilgreiningu",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp17670352"
     },
     {
       "termIs": "nákvæmni",
-      "termEn": "precision",
-      "termFull": "nákvæmni (e. precision)",
-      "definition": "hversu vel mæling samsvarar sömu mælingu þegar hún er endurtekin",
+      "termEn": "accuracy",
+      "termFull": "nákvæmni (e. accuracy)",
+      "definition": "hversu nálægt mæling er réttu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp28800512"
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp330245120"
     },
     {
       "termIs": "Nernst-jafna",
@@ -5047,7 +5025,7 @@
       "definition": "óhlaðin öreind staðsett í kjarnanum",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idp100350096"
     },
@@ -5083,17 +5061,6 @@
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
       "sectionSlug": "18-9-tilvist-framleidsla-og-efnasambond-surefnis",
       "termId": "fs-idp53118608"
-    },
-    {
-      "termIs": "nóða",
-      "termEn": "node",
-      "termFull": "nóða (e. node)",
-      "definition": "plan sem aðskilur mismunandi bleðla svigrúma, þar sem líkurnar á að finna rafeind eru núll",
-      "chapter": 8,
-      "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
-      "termId": "fs-idp123920528"
     },
     {
       "termIs": "næringarkaloría (kaloría)",
@@ -5213,7 +5180,7 @@
       "chapter": 2,
       "section": "2.7",
       "sectionTitle": "Nafnakerfi efnafræðinnar",
-      "sectionSlug": "2-7-nafnakerfi-efna",
+      "sectionSlug": "2-7-nafnakerfi-efnafraedinnar",
       "termId": "fs-idp282228224"
     },
     {
@@ -5264,11 +5231,11 @@
       "termIs": "oxýanjón",
       "termEn": "oxyanion",
       "termFull": "oxýanjón (e. oxyanion)",
-      "definition": "fjölfrumeinda anjón samsett úr miðjufrumeind sem er tengd við súrefnisfrumeindir",
+      "definition": "fjölfrumeinda anjón samsett úr miðjuatómi sem er tengt við súrefnisatóm",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp484916992"
     },
     {
@@ -5292,17 +5259,6 @@
       "sectionTitle": "Leysni",
       "sectionSlug": "11-3-leysni",
       "termId": "fs-idp30466624"
-    },
-    {
-      "termIs": "óháður eiginleiki",
-      "termEn": "intensive property",
-      "termFull": "óháður eiginleiki (e. intensive property)",
-      "definition": "eiginleiki efnis sem er óháður magni efnisins",
-      "chapter": 1,
-      "section": "1.3",
-      "sectionTitle": "Eðlis- og efnaeiginleikar",
-      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
-      "termId": "fs-idp42386976"
     },
     {
       "termIs": "ójónandi geislun",
@@ -5410,8 +5366,8 @@
       "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp96606928"
     },
     {
@@ -5481,25 +5437,25 @@
       "termId": "fs-idp121441888"
     },
     {
-      "termIs": "pí tengi (π tengi)",
+      "termIs": "pí-tengi (π-tengi)",
       "termEn": "pi bond (π bond)",
-      "termFull": "pí tengi (π tengi) (e. pi bond (π bond))",
-      "definition": "samgilt tengi sem myndast við hlið við hlið skörun frumeindasvigrúma; rafeindaþéttleikinn finnst á gagnstæðum hliðum tengiássins",
+      "termFull": "pí-tengi (π-tengi) (e. pi bond (π bond))",
+      "definition": "samgilt tengi sem myndast við hliðstæða skörun atómsvigrúma; rafeindaþéttleikann er að finna á gagnstæðum hliðum kjarnaássins",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp94790208"
     },
     {
       "termIs": "plasma",
       "termEn": null,
       "termFull": "plasma",
-      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhladdra frumeinda og/eða sameinda",
+      "definition": "gaskennt ástand efnis sem inniheldur mikinn fjölda rafhlöðinna atóma og/eða sameinda",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37314320"
     },
     {
@@ -5583,10 +5539,10 @@
       "termIs": "rafeind",
       "termEn": "electron",
       "termFull": "rafeind (e. electron)",
-      "definition": "neikvætt hlaðin öreind með tiltölulega lítinn massa sem er staðsett fyrir utan kjarnann",
+      "definition": "neikvætt hlaðin öreind með tiltölulega lítinn massa staðsett utan kjarnans",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idp27115648"
     },
@@ -5759,7 +5715,7 @@
       "termIs": "reynsluformúla",
       "termEn": "empirical formula",
       "termFull": "reynsluformúla (e. empirical formula)",
-      "definition": "formúla sem sýnir samsetningu efnasambands gefna sem einfaldasta heiltöluhlutfall frumeinda",
+      "definition": "formúla sem sýnir samsetningu efnasambands gefna sem einfaldasta heiltöluhlutfall atóma",
       "chapter": 2,
       "section": "2.4",
       "sectionTitle": "Efnaformúlur",
@@ -5770,10 +5726,10 @@
       "termIs": "róteind",
       "termEn": "proton",
       "termFull": "róteind (e. proton)",
-      "definition": "jákvætt hlaðin öreind staðsett í kjarnanum",
+      "definition": "jákvætt hlaðin öreind í frumeindakjarnanum",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idp21637408"
     },
@@ -5811,10 +5767,10 @@
       "termId": "fs-idm12811536"
     },
     {
-      "termIs": "rúmhverfur",
+      "termIs": "rúmísómerur",
       "termEn": "spatial isomers",
-      "termFull": "rúmhverfur (e. spatial isomers)",
-      "definition": "efnasambönd þar sem afstæð afstaða frumeindanna í rúmi er mismunandi",
+      "termFull": "rúmísómerur (e. spatial isomers)",
+      "definition": "efnasambönd þar sem afstæð afstaða atómanna í rúmi er mismunandi",
       "chapter": 2,
       "section": "2.4",
       "sectionTitle": "Efnaformúlur",
@@ -5866,6 +5822,17 @@
       "termId": "fs-idm227540096"
     },
     {
+      "termIs": "röð",
+      "termEn": "series",
+      "termFull": "röð (e. series)",
+      "definition": "(einnig lota) lárétt röð í lotukerfinu",
+      "chapter": 2,
+      "section": "2.5",
+      "sectionTitle": "Lotukerfið",
+      "sectionSlug": "2-5-lotukerfid",
+      "termId": "fs-idm430389008"
+    },
+    {
       "termIs": "röntgenkristallafræði",
       "termEn": "x-ray crystallography",
       "termFull": "röntgenkristallafræði (e. x-ray crystallography)",
@@ -5877,14 +5844,14 @@
       "termId": "fs-idm40748576"
     },
     {
-      "termIs": "s-p blöndun",
-      "termEn": "s-p mixing",
-      "termFull": "s-p blöndun (e. s-p mixing)",
-      "definition": "breyting sem veldur því að σp svigrúm verða óstöðugri en πp svigrúm vegna blöndunar s- og p-byggðra sameindasvigrúma með svipaða orku.",
+      "termIs": "s-p-blöndun",
+      "termEn": null,
+      "termFull": "s-p-blöndun",
+      "definition": "breyting sem veldur því að σp-svigrúm verða óstöðugri en πp-svigrúm vegna blöndunar s- og p-byggðra sameindasvigrúma með svipaða orku.",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idp5821920"
     },
     {
@@ -5924,11 +5891,11 @@
       "termIs": "sameind",
       "termEn": "molecule",
       "termFull": "sameind (e. molecule)",
-      "definition": "safn tveggja eða fleiri frumeinda af sama eða mismunandi frumefnum sem tengjast með efnatengjum",
+      "definition": "bundið safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6673632"
     },
     {
@@ -5946,23 +5913,12 @@
       "termIs": "sameindaefnasamband",
       "termEn": "molecular compound",
       "termFull": "sameindaefnasamband (e. molecular compound)",
-      "definition": "(einnig sameindaefni) samsett úr sameindum sem myndaðar eru af frumeindum tveggja eða fleiri mismunandi frumefna",
+      "definition": "(einnig, samgilt efnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp93864192"
-    },
-    {
-      "termIs": "sameindaefni",
-      "termEn": "covalent compound",
-      "termFull": "sameindaefni (e. covalent compound)",
-      "definition": "(einnig sameindaefnasamband) samsett úr sameindum sem myndaðar eru af frumeindum tveggja eða fleiri mismunandi frumefna",
-      "chapter": 2,
-      "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
-      "termId": "fs-idp184530720"
     },
     {
       "termIs": "sameindafast efni",
@@ -5979,7 +5935,7 @@
       "termIs": "sameindaformúla",
       "termEn": "molecular formula",
       "termFull": "sameindaformúla (e. molecular formula)",
-      "definition": "formúla sem gefur til kynna samsetningu sameindar efnasambands og gefur upp raunverulegan fjölda frumeinda hvers frumefnis í sameind efnasambandsins.",
+      "definition": "formúla sem gefur til kynna samsetningu sameindar efnasambands og gefur raunverulegan fjölda atóma hvers frumefnis í sameind efnasambandsins.",
       "chapter": 2,
       "section": "2.4",
       "sectionTitle": "Efnaformúlur",
@@ -5999,35 +5955,35 @@
     },
     {
       "termIs": "sameindasvigrúm",
-      "termEn": "molecular orbital",
-      "termFull": "sameindasvigrúm (e. molecular orbital)",
-      "definition": "rými þar sem miklar líkur eru á að finna rafeind í sameind",
+      "termEn": null,
+      "termFull": "sameindasvigrúm",
+      "definition": "rúmsvæði þar sem miklar líkur eru á að finna rafeind í sameind",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm131261760"
     },
     {
-      "termIs": "sameindasvigrúmakenningin",
-      "termEn": "molecular orbital theory",
-      "termFull": "sameindasvigrúmakenningin (e. molecular orbital theory)",
-      "definition": "líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla frumeinda",
+      "termIs": "sameindasvigrúmskenningin",
+      "termEn": null,
+      "termFull": "sameindasvigrúmskenningin",
+      "definition": "líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla atóma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm249965088"
     },
     {
-      "termIs": "sameindasvigrúmarit",
-      "termEn": "molecular orbital diagram",
-      "termFull": "sameindasvigrúmarit (e. molecular orbital diagram)",
-      "definition": "sjónræn framsetning á afstæðum orkustigum sameindasvigrúma",
+      "termIs": "sameindasvigrúmsmynd",
+      "termEn": null,
+      "termFull": "sameindasvigrúmsmynd",
+      "definition": "sjónræn framsetning á afstæðum orkustigum sameindasvigrýma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm132723600"
     },
     {
@@ -6045,11 +6001,11 @@
       "termIs": "sameinuð atómmassaeining (u)",
       "termEn": "unified atomic mass unit (u)",
       "termFull": "sameinuð atómmassaeining (u) (e. unified atomic mass unit (u))",
-      "definition": "önnur eining jafngild atómmassaeiningunni",
+      "definition": "önnur eining sem jafngildir atómmassaeiningu",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idm284976"
     },
     {
@@ -6075,6 +6031,17 @@
       "termId": "fs-idm57959600"
     },
     {
+      "termIs": "samgilt efnasamband",
+      "termEn": "covalent compound",
+      "termFull": "samgilt efnasamband (e. covalent compound)",
+      "definition": "(einnig, sameindaefnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
+      "chapter": 2,
+      "section": "2.6",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "termId": "fs-idp184530720"
+    },
+    {
       "termIs": "samgilt netfast efni",
       "termEn": "covalent network solid",
       "termFull": "samgilt netfast efni (e. covalent network solid)",
@@ -6089,11 +6056,11 @@
       "termIs": "samgilt tengi",
       "termEn": "covalent bond",
       "termFull": "samgilt tengi (e. covalent bond)",
-      "definition": "aðdráttarkraftur milli kjarna frumeinda í sameind og rafeindapara milli frumeindanna",
+      "definition": "aðdráttarkraftur milli kjarna atóma í sameind og rafeindapara milli atómanna",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
-      "sectionSlug": "2-6-jona-og-sameindaefnasambond",
+      "sectionTitle": "Jóna- og sameindasambönd",
+      "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp97231552"
     },
     {
@@ -6163,13 +6130,24 @@
       "termId": "fs-idp41345504"
     },
     {
+      "termIs": "Samorkusvigrými",
+      "termEn": null,
+      "termFull": "Samorkusvigrými",
+      "definition": "svigrúm sem hafa sömu orku",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm167738656"
+    },
+    {
       "termIs": "samsætur",
       "termEn": "isotopes",
       "termFull": "samsætur (e. isotopes)",
-      "definition": "frumeindir sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda",
+      "definition": "atóm sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda",
       "chapter": 2,
       "section": "2.2",
-      "sectionTitle": "Þróun frumeindakenningarinnar",
+      "sectionTitle": "Þróun atómkenningarinnar",
       "sectionSlug": "2-2-throun-atomkenningarinnar",
       "termId": "fs-idm25241664"
     },
@@ -6210,23 +6188,12 @@
       "termIs": "sekúnda (s)",
       "termEn": "second (s)",
       "termFull": "sekúnda (s) (e. second (s))",
-      "definition": "SI-eining tímans",
+      "definition": "SI-grunneining tíma",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
       "sectionSlug": "1-4-maelingar",
       "termId": "fs-idm310839680"
-    },
-    {
-      "termIs": "Selsíus (°C)",
-      "termEn": "celsius (°c)",
-      "termFull": "Selsíus (°C) (e. celsius (°c))",
-      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum skala",
-      "chapter": 1,
-      "section": "1.4",
-      "sectionTitle": "Mælingar",
-      "sectionSlug": "1-4-maelingar",
-      "termId": "fs-idm285658848"
     },
     {
       "termIs": "sexhyrnd þéttpökkun (HCP)",
@@ -6251,14 +6218,14 @@
       "termId": "fs-idm23328032"
     },
     {
-      "termIs": "sigma tengi (σ tengi)",
+      "termIs": "sigma-tengi (σ-tengi)",
       "termEn": "sigma bond (σ bond)",
-      "termFull": "sigma tengi (σ tengi) (e. sigma bond (σ bond))",
-      "definition": "samgilt tengi sem myndast við skörun frumeindasvigrúma meðfram tengiásnum",
+      "termFull": "sigma-tengi (σ-tengi) (e. sigma bond (σ bond))",
+      "definition": "samgilt tengi sem myndast við skörun atómsvigrúma meðfram kjarnaásnum",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp36919168"
     },
     {
@@ -6430,23 +6397,12 @@
       "termIs": "skörun",
       "termEn": "overlap",
       "termFull": "skörun (e. overlap)",
-      "definition": "samvist svigrúma frá tveimur mismunandi frumeindum sem deila sama svæði í rúminu, sem leiðir til myndunar á samgildu tengi",
+      "definition": "samvist svigrúma frá tveimur mismunandi atómum sem deila sama svæði í rúmi, sem leiðir til myndunar samgilds tengis",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp42480608"
-    },
-    {
-      "termIs": "sléttun",
-      "termEn": "rounding",
-      "termFull": "sléttun (e. rounding)",
-      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í mælingunum sem notaðar eru í útreikningnum",
-      "chapter": 1,
-      "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp68905696"
     },
     {
       "termIs": "smáástand",
@@ -6460,9 +6416,9 @@
       "termId": "fs-idm228328464"
     },
     {
-      "termIs": "smásæja sviðið",
+      "termIs": "smásætt svið",
       "termEn": "microscopic domain",
-      "termFull": "smásæja sviðið (e. microscopic domain)",
+      "termFull": "smásætt svið (e. microscopic domain)",
       "definition": "svið hluta sem eru allt of litlir til að vera skynjaðir beint",
       "chapter": 1,
       "section": "1.1",
@@ -6471,58 +6427,58 @@
       "termId": "fs-idm121167952"
     },
     {
-      "termIs": "sp-blendingurssvigrúm",
+      "termIs": "sp-blendingssvigrúm",
       "termEn": "sp hybrid orbital",
-      "termFull": "sp-blendingurssvigrúm (e. sp hybrid orbital)",
-      "definition": "eitt af tveimur svigrúmum með línulegri fyrirkomulagi sem myndast við samruna eins s- og eins p-svigrúms",
+      "termFull": "sp-blendingssvigrúm (e. sp hybrid orbital)",
+      "definition": "eitt af tveimur svigrúmum í línulegri uppröðun sem myndast við samruna eins s-svigrúms og eins p-svigrúms",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm71427776"
     },
     {
-      "termIs": "sp2-blendingurssvigrúm",
+      "termIs": "sp2-blendingssvigrúm",
       "termEn": "sp2 hybrid orbital",
-      "termFull": "sp2-blendingurssvigrúm (e. sp2 hybrid orbital)",
-      "definition": "eitt af þremur svigrúmum með þríhyrningslaga flötu fyrirkomulagi sem myndast við samruna eins s- og tveggja p-svigrúma",
+      "termFull": "sp2-blendingssvigrúm (e. sp2 hybrid orbital)",
+      "definition": "eitt af þremur svigrúmum í þríhyrndri uppröðun sem myndast við samruna eins s-svigrúms og tveggja p-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm48701168"
     },
     {
-      "termIs": "sp3-blendingurssvigrúm",
+      "termIs": "sp3-blendingssvigrúm",
       "termEn": "sp3 hybrid orbital",
-      "termFull": "sp3-blendingurssvigrúm (e. sp3 hybrid orbital)",
-      "definition": "eitt af fjórum svigrúmum með ferflötungsfyrirkomulagi sem myndast við samruna eins s- og þriggja p-svigrúma",
+      "termFull": "sp3-blendingssvigrúm (e. sp3 hybrid orbital)",
+      "definition": "eitt af fjórum svigrúmum í fjórflötungs uppröðun sem myndast við samruna eins s-svigrúms og þriggja p-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idp88964992"
     },
     {
-      "termIs": "sp3d-blendingurssvigrúm",
+      "termIs": "sp3d-blendingssvigrúm",
       "termEn": "sp3d hybrid orbital",
-      "termFull": "sp3d-blendingurssvigrúm (e. sp3d hybrid orbital)",
-      "definition": "eitt af fimm svigrúmum með þríhyrningslaga tvípýramídafyrirkomulagi sem myndast við samruna eins s-, þriggja p- og eins d-svigrúms",
+      "termFull": "sp3d-blendingssvigrúm (e. sp3d hybrid orbital)",
+      "definition": "eitt af fimm svigrúmum í þríhyrndri tvípíramída uppröðun sem myndast við samruna eins s-svigrúms, þriggja p-svigrúma og eins d-svigrúms",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm16838896"
     },
     {
-      "termIs": "sp3d2-blendingurssvigrúm",
+      "termIs": "sp3d2-blendingssvigrúm",
       "termEn": "sp3d2 hybrid orbital",
-      "termFull": "sp3d2-blendingurssvigrúm (e. sp3d2 hybrid orbital)",
-      "definition": "eitt af sex svigrúmum með áttflötungsfyrirkomulagi sem myndast við samruna eins s-, þriggja p- og tveggja d-svigrúma",
+      "termFull": "sp3d2-blendingssvigrúm (e. sp3d2 hybrid orbital)",
+      "definition": "eitt af sex svigrúmum í áttflötungs uppröðun sem myndast við samruna eins s-svigrúms, þriggja p-svigrúma og tveggja d-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm47317072"
     },
     {
@@ -6790,9 +6746,9 @@
       "termId": "fs-idm144682752"
     },
     {
-      "termIs": "stórsæja sviðið",
+      "termIs": "stórsætt svið",
       "termEn": "macroscopic domain",
-      "termFull": "stórsæja sviðið (e. macroscopic domain)",
+      "termFull": "stórsætt svið (e. macroscopic domain)",
       "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu manna",
       "chapter": 1,
       "section": "1.1",
@@ -7043,6 +6999,17 @@
       "termId": "fs-idm164804608"
     },
     {
+      "termIs": "svigrúmablöndun",
+      "termEn": "hybridization",
+      "termFull": "svigrúmablöndun (e. hybridization)",
+      "definition": "líkan sem lýsir breytingum á atómsvigrúmum atóms þegar það myndar samgilt efnasamband",
+      "chapter": 8,
+      "section": "8.2",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
+      "termId": "fs-idm29433408"
+    },
+    {
       "termIs": "sýra",
       "termEn": "acid",
       "termFull": "sýra (e. acid)",
@@ -7112,11 +7079,11 @@
       "termIs": "sætistala (Z)",
       "termEn": "atomic number (z)",
       "termFull": "sætistala (Z) (e. atomic number (z))",
-      "definition": "fjöldi róteinda í kjarna frumeindar",
+      "definition": "fjöldi róteinda í kjarna atóms",
       "chapter": 2,
       "section": "2.3",
-      "sectionTitle": "Frumeindabygging og táknmál",
-      "sectionSlug": "2-3-bygging-atoms-og-taknmal",
+      "sectionTitle": "Atómbygging og táknmál",
+      "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp42201168"
     },
     {
@@ -7145,7 +7112,7 @@
       "termIs": "táknrænt svið",
       "termEn": "symbolic domain",
       "termFull": "táknrænt svið (e. symbolic domain)",
-      "definition": "sérhæft tungumál sem notað er til að tákna þætti á stórsæjum og smásæjum sviðum, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
+      "definition": "sérhæft tungumál sem notað er til að tákna þætti stórsæja og smásæja sviðsins, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -7173,17 +7140,6 @@
       "sectionTitle": "Sameindabygging og skautun",
       "sectionSlug": "7-6-sameindabygging-og-skautun",
       "termId": "fs-idp64874768"
-    },
-    {
-      "termIs": "tengigráða",
-      "termEn": "bond order",
-      "termFull": "tengigráða (e. bond order)",
-      "definition": "fjöldi rafeindapara milli tveggja frumeinda; hana má finna út frá fjölda efnatengja í Lewis mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm57102096"
     },
     {
       "termIs": "tengihorn",
@@ -7219,6 +7175,17 @@
       "termId": "fs-idp10319376"
     },
     {
+      "termIs": "tengitala",
+      "termEn": null,
+      "termFull": "tengitala",
+      "definition": "fjöldi rafeindapara milli tveggja atóma; hana má finna út frá fjölda tengja í Lewis-mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm57102096"
+    },
+    {
       "termIs": "tengslaísómera",
       "termEn": "linkage isomer",
       "termFull": "tengslaísómera (e. linkage isomer)",
@@ -7244,7 +7211,7 @@
       "termIs": "tilgáta",
       "termEn": "hypothesis",
       "termFull": "tilgáta (e. hypothesis)",
-      "definition": "bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
+      "definition": "bráðabirgðaútskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -7329,14 +7296,14 @@
       "termId": "fs-idp75431424"
     },
     {
-      "termIs": "tvíatóma sameind með frumeindum úr sömu lotu",
-      "termEn": "homonuclear diatomic molecule",
-      "termFull": "tvíatóma sameind með frumeindum úr sömu lotu (e. homonuclear diatomic molecule)",
-      "definition": "sameind sem samanstendur af tveimur eins frumeindum",
+      "termIs": "tvíatóma sameind með eins atómum",
+      "termEn": null,
+      "termFull": "tvíatóma sameind með eins atómum",
+      "definition": "sameind sem samanstendur af tveimur eins atómum",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm165896720"
     },
     {
@@ -7351,6 +7318,17 @@
       "termId": "fs-idp106317328"
     },
     {
+      "termIs": "tvíefnasamband",
+      "termEn": "binary compound",
+      "termFull": "tvíefnasamband (e. binary compound)",
+      "definition": "efnasamband sem inniheldur tvö mismunandi frumefni.",
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efnafræðinnar",
+      "sectionSlug": "2-7-nafnakerfi-efnafraedinnar",
+      "termId": "fs-idp282226176"
+    },
+    {
       "termIs": "tvígæfur",
       "termEn": "amphiphilic",
       "termFull": "tvígæfur (e. amphiphilic)",
@@ -7360,28 +7338,6 @@
       "sectionTitle": "Svif",
       "sectionSlug": "11-5-svif",
       "termId": "fs-idm237171488"
-    },
-    {
-      "termIs": "tvíliða efnasamband",
-      "termEn": "binary compound",
-      "termFull": "tvíliða efnasamband (e. binary compound)",
-      "definition": "efnasamband sem inniheldur tvö mismunandi frumefni.",
-      "chapter": 2,
-      "section": "2.7",
-      "sectionTitle": "Nafnakerfi efnafræðinnar",
-      "sectionSlug": "2-7-nafnakerfi-efna",
-      "termId": "fs-idp282226176"
-    },
-    {
-      "termIs": "tvíliða sýra",
-      "termEn": "binary acid",
-      "termFull": "tvíliða sýra (e. binary acid)",
-      "definition": "efnasamband sem inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
-      "chapter": 2,
-      "section": "2.7",
-      "sectionTitle": "Nafnakerfi efnafræðinnar",
-      "sectionSlug": "2-7-nafnakerfi-efna",
-      "termId": "fs-idp282291040"
     },
     {
       "termIs": "tvísameinda efnahvarf",
@@ -7415,6 +7371,17 @@
       "sectionTitle": "Sameindabygging og skautun",
       "sectionSlug": "7-6-sameindabygging-og-skautun",
       "termId": "fs-idp60998304"
+    },
+    {
+      "termIs": "tvísýra",
+      "termEn": "binary acid",
+      "termFull": "tvísýra (e. binary acid)",
+      "definition": "efnasamband sem inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
+      "chapter": 2,
+      "section": "2.7",
+      "sectionTitle": "Nafnakerfi efnafræðinnar",
+      "sectionSlug": "2-7-nafnakerfi-efnafraedinnar",
+      "termId": "fs-idp282291040"
     },
     {
       "termIs": "tvítannar ligandi",
@@ -7516,6 +7483,17 @@
       "termId": "fs-idm223971840"
     },
     {
+      "termIs": "umreikningsstuðull eininga",
+      "termEn": "unit conversion factor",
+      "termFull": "umreikningsstuðull eininga (e. unit conversion factor)",
+      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "termId": "fs-idm307214528"
+    },
+    {
       "termIs": "undirhvolf",
       "termEn": null,
       "termFull": "undirhvolf",
@@ -7602,17 +7580,6 @@
       "sectionTitle": "Þróun skammtakenningarinnar",
       "sectionSlug": "6-3-throun-skammtakenningarinnar",
       "termId": "fs-idm442273488"
-    },
-    {
-      "termIs": "úrkynjuð svigrúm",
-      "termEn": "degenerate orbitals",
-      "termFull": "úrkynjuð svigrúm (e. degenerate orbitals)",
-      "definition": "svigrúm sem hafa sömu orku",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm167738656"
     },
     {
       "termIs": "útfeldi",
@@ -7778,6 +7745,17 @@
       "sectionTitle": "Rafkleyfar",
       "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idp4277680"
+    },
+    {
+      "termIs": "verkleg nákvæmni",
+      "termEn": "precision",
+      "termFull": "verkleg nákvæmni (e. precision)",
+      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp28800512"
     },
     {
       "termIs": "vermi (H)",
@@ -7956,6 +7934,17 @@
       "termId": "fs-idp13398640"
     },
     {
+      "termIs": "víddagreining",
+      "termEn": "dimensional analysis",
+      "termFull": "víddagreining (e. dimensional analysis)",
+      "definition": "(einnig, þáttunar- og merkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "termId": "fs-idm216300016"
+    },
+    {
       "termIs": "vísindaleg aðferð",
       "termEn": "scientific method",
       "termFull": "vísindaleg aðferð (e. scientific method)",
@@ -8047,11 +8036,11 @@
       "termIs": "vökvi",
       "termEn": "liquid",
       "termFull": "vökvi (e. liquid)",
-      "definition": "efnishamur sem hefur ákveðið rúmmál en óákveðna lögun",
+      "definition": "hamur efnis sem hefur ákveðið rúmmál en óákveðna lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idp9074576"
     },
     {
@@ -8264,6 +8253,17 @@
       "termId": "fs-idm146567360"
     },
     {
+      "termIs": "þversegulmögnun",
+      "termEn": null,
+      "termFull": "þversegulmögnun",
+      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm83103936"
+    },
+    {
       "termIs": "þverúran",
       "termEn": "transuranium element",
       "termFull": "þverúran (e. transuranium element)",
@@ -8278,11 +8278,11 @@
       "termIs": "þyngd",
       "termEn": "weight",
       "termFull": "þyngd (e. weight)",
-      "definition": "kraftur sem þyngdarafl beitir á hlut",
+      "definition": "kraftur sem þyngdaraflið beitir á hlut",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6297360"
     },
     {
@@ -8352,47 +8352,47 @@
       "termId": "fs-idp157417744"
     },
     {
-      "termIs": "π-tengisvigrúm",
-      "termEn": "π bonding orbital",
-      "termFull": "π-tengisvigrúm (e. π bonding orbital)",
-      "definition": "sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum kjarnaássins",
+      "termIs": "π-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "π-bindandi svigrúm",
+      "definition": "sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum tengiássins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm100344544"
     },
     {
-      "termIs": "π*-andbindandi svigrúm",
-      "termEn": "π* bonding orbital",
-      "termFull": "π*-andbindandi svigrúm (e. π* bonding orbital)",
-      "definition": "andbindandi sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma í andfasa, þar sem rafeindaþéttleikinn er beggja vegna kjarnaássins og nóða er á milli kjarnanna",
+      "termIs": "π*-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "π*-bindandi svigrúm",
+      "definition": "andbindandi sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma úr fasa, þar sem rafeindaþéttleikinn er báðum megin við tengiásinn og það er núllpunktur milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm18620192"
     },
     {
-      "termIs": "σ-tengisvigrúm",
-      "termEn": "σ bonding orbital",
-      "termFull": "σ-tengisvigrúm (e. σ bonding orbital)",
-      "definition": "sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram tengiásnum",
+      "termIs": "σ-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "σ-bindandi svigrúm",
+      "definition": "sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram ás tengisins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm41960016"
     },
     {
-      "termIs": "σ*-andbindandi svigrúm",
-      "termEn": "σ* bonding orbital",
-      "termFull": "σ*-andbindandi svigrúm (e. σ* bonding orbital)",
-      "definition": "andbindandi sameindasvigrúm sem myndast við skörun frumeindasvigrúma í andfasa meðfram tengiásnum, sem myndar nóðu á milli kjarnanna",
+      "termIs": "σ*-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "σ*-bindandi svigrúm",
+      "definition": "andbindandi sameindasvigrúm sem myndast við skörun atómsvigrúma í andfasa meðfram ás tengisins og myndar nódu milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm169269152"
     }
   ]

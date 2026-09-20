@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_02_AtomModels",
+ "renderHash": "b8369735cfd70560",
+ "composedHash": "b8369735cfd70560",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Positively charged|matter": "Jákvætt hlaðið efni",
+  "Electron": "Rafeind"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

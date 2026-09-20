@@ -25,6 +25,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_03_AtomSize",
+      "title": null,
       "caption": {
         "segmentId": "m68692:caption:CNX_Chem_02_03_AtomSize-caption"
       },
@@ -316,6 +317,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_03_Iodine",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68692:caption:CNX_Chem_02_03_Iodine-caption"
       },
@@ -347,6 +349,7 @@
           "type": "figure",
           "id": "CNX_Chem_02_03_SiSymbol",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68692:caption:CNX_Chem_02_03_SiSymbol-caption"
           },
@@ -816,6 +819,7 @@
           "type": "figure",
           "id": "CNX_Chem_02_03_AtomSym",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68692:caption:CNX_Chem_02_03_AtomSym-caption"
           },
@@ -2077,6 +2081,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_02_03_MassSpec",
+          "title": null,
           "caption": {
             "segmentId": "m68692:caption:CNX_Chem_02_03_MassSpec-caption"
           },

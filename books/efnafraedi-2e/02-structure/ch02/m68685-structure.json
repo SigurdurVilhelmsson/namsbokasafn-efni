@@ -59,6 +59,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_01_Dalton1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton1-caption"
       },
@@ -76,6 +77,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_01_Dalton2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton2-caption"
       },
@@ -93,6 +95,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_01_Dalton3",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton3-caption"
       },
@@ -349,6 +352,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_01_MultProp",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68685:caption:CNX_Chem_02_01_MultProp-caption"
       },

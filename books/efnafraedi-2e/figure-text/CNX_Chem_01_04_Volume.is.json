@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_04_Volume",
+ "renderHash": "37feac3449a3a66e",
+ "composedHash": "37feac3449a3a66e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1 cubic centimeter|= 1 milliliter": "1 rúmsentimetri = 1 millilítri",
+  "1.8 cm|Dime": "1,8 cm tíkall"
+ },
+ "mtAlternatives": {
+  "1.8 cm|Dime": {
+   "kept": "joined",
+   "other": "1,8 sm tíeyringur",
+   "reason": "disagree",
+   "mt": "1,8 cm tíkall"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

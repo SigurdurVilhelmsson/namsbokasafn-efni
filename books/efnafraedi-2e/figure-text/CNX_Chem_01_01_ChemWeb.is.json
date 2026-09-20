@@ -1,0 +1,64 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_ChemWeb",
+ "renderHash": "7af0ebaaa307f138",
+ "composedHash": "7af0ebaaa307f138",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Food Science": "Matvælafræði",
+  "Agriculture": "Landbúnaður",
+  "Geochemistry": "Jarðefnafræði",
+  "Mathematics": "Stærðfræði",
+  "Chemical Engineering": "Efnaverkfræði",
+  "Computer Science": "Tölvunarfræði",
+  "Materials Science": "Efnisvísindi",
+  "Biology": "Líffræði",
+  "Physics": "Eðlisfræði",
+  "Medicine": "Læknisfræði",
+  "Toxicology": "Eiturefnafræði",
+  "Chemistry": "Efnafræði",
+  "Geology|Earth Sciences": "Jarðvísindi",
+  "Nuclear|Chemistry": "Kjarnaefnafræði",
+  "Chemical|Physics": "Efnaeðlisfræði",
+  "Biochemistry|Molecular Biology": "Lífefnafræði og sameindalíffræði",
+  "Environmental|Science": "Umhverfisfræði",
+  "Nanoscience|Nanotechnology": "Nanovísindi og nanótækni"
+ },
+ "mtAlternatives": {
+  "Materials Science": {
+   "kept": "joined",
+   "other": "Efnisfæði",
+   "reason": "disagree",
+   "mt": "Efnisvísindi"
+  },
+  "Geology|Earth Sciences": {
+   "kept": "joined",
+   "other": "Jarðfræði Jarðvísindi",
+   "reason": "disagree",
+   "mt": "Jarðvísindi"
+  },
+  "Nuclear|Chemistry": {
+   "kept": "joined",
+   "other": "Kjarnakemía",
+   "reason": "disagree",
+   "mt": "Kjarnaefnafræði"
+  },
+  "Chemical|Physics": {
+   "kept": "joined",
+   "other": "Eðlisefnafræði",
+   "reason": "disagree",
+   "mt": "Efnaeðlisfræði"
+  },
+  "Nanoscience|Nanotechnology": {
+   "kept": "joined",
+   "other": "Nanovísindi Nanótækni",
+   "reason": "disagree",
+   "mt": "Nanovísindi og nanótækni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 18
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_03_MassSpec",
+ "renderHash": "f7cfdc712c3c27c0",
+ "composedHash": "f7cfdc712c3c27c0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Sample|enters|here": "Sýni fer inn hér",
+  "Heater vaporizes|sample": "Hitari gufar upp sýni",
+  "Electron beam|source": "Rafeindageislagjafi",
+  "Ions accelerated": "Jónum er hraðað",
+  "Magnetic field|deflects lightest|ions most": "Segulsvið sveigir léttustu jónirnar mest",
+  "Detector": "Nemi",
+  "Magnet": "Segull",
+  "Mass-to-charge ratio": "Hlutfall massa og hleðslu",
+  "Relative abundance (%)": "Hlutfallslegt magn (%)"
+ },
+ "mtAlternatives": {
+  "Sample|enters|here": {
+   "kept": "joined",
+   "other": "Sýnishorn kemur hér",
+   "reason": "disagree",
+   "mt": "Sýni fer inn hér"
+  },
+  "Ions accelerated": {
+   "kept": "joined",
+   "other": "Jónir hraðar",
+   "reason": "disagree",
+   "mt": "Jónum er hraðað"
+  },
+  "Magnetic field|deflects lightest|ions most": {
+   "kept": "joined",
+   "other": "Segulsvið sveigir léttustu jónirnar mest frá",
+   "reason": "disagree",
+   "mt": "Segulsvið sveigir léttustu jónirnar mest"
+  },
+  "Detector": {
+   "kept": "joined",
+   "other": "Skynjari",
+   "reason": "disagree",
+   "mt": "Nemi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

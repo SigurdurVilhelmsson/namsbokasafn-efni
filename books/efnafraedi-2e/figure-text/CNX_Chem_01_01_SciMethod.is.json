@@ -1,0 +1,78 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_SciMethod",
+ "renderHash": "801ce9c76371d09c",
+ "composedHash": "801ce9c76371d09c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Observation|and|curiosity": "Athugun og forvitni",
+  "Form|hypothesis;|make|prediction": "Mynda tilgátu; setja fram spá",
+  "Perform|experiment;|make more|observations": "Framkvæma tilraun; gera fleiri athuganir",
+  "Contributes|to body of|knowledge": "Stuðlar að þekkingarforða",
+  "Observation|becomes|law": "Athugun verður að lögmáli",
+  "Hypothesis|becomes|theory": "Tilgáta verður að kenningu",
+  "Much additional|testing yields|constant|observations": "Miklar viðbótarprófanir gefa stöðugar athuganir",
+  "Further testing|does not support|hypothesis": "Frekari prófanir styðja ekki tilgátu",
+  "Results|are consistent with|prediction": "Niðurstöður eru í samræmi við spá",
+  "Much additional|testing supports|hypothesis": "Miklar viðbótarprófanir styðja tilgátu",
+  "Next ...": "Næst ...",
+  "prediction": "spá",
+  "not consistent with": "ekki í samræmi við",
+  "Results": "Niðurstöður"
+ },
+ "mtAlternatives": {
+  "Form|hypothesis;|make|prediction": {
+   "kept": "joined",
+   "other": "Setja fram tilgátu; spá fyrir um niðurstöðu",
+   "reason": "disagree",
+   "mt": "Mynda tilgátu; setja fram spá"
+  },
+  "Perform|experiment;|make more|observations": {
+   "kept": "joined",
+   "other": "Framkvæmdu tilraun; gerðu fleiri athuganir",
+   "reason": "disagree",
+   "mt": "Framkvæma tilraun; gera fleiri athuganir"
+  },
+  "Contributes|to body of|knowledge": {
+   "kept": "joined",
+   "other": "Stuðlar að þekkingarsköpun",
+   "reason": "disagree",
+   "mt": "Stuðlar að þekkingarforða"
+  },
+  "Much additional|testing yields|constant|observations": {
+   "kept": "joined",
+   "other": "Margar viðbótarprófanir skila stöðugum athugunum",
+   "reason": "disagree",
+   "mt": "Miklar viðbótarprófanir gefa stöðugar athuganir"
+  },
+  "Further testing|does not support|hypothesis": {
+   "kept": "joined",
+   "other": "Frekari prófanir styðja ekki tilgátuna",
+   "reason": "disagree",
+   "mt": "Frekari prófanir styðja ekki tilgátu"
+  },
+  "Much additional|testing supports|hypothesis": {
+   "kept": "joined",
+   "other": "Fjölmargar viðbótarprófanir styðja tilgátuna",
+   "reason": "disagree",
+   "mt": "Miklar viðbótarprófanir styðja tilgátu"
+  },
+  "prediction": {
+   "kept": "joined",
+   "other": "Spá",
+   "reason": "disagree",
+   "mt": "spá"
+  },
+  "not consistent with": {
+   "kept": "joined",
+   "other": "samræmist ekki",
+   "reason": "disagree",
+   "mt": "ekki í samræmi við"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 14
+ }
+}

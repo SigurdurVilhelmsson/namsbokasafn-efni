@@ -642,6 +642,7 @@
               "type": "figure",
               "id": "CNX_Chem_01_04_MYdCmIn",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68674:caption:CNX_Chem_01_04_MYdCmIn-caption"
               },
@@ -675,6 +676,7 @@
               "type": "figure",
               "id": "CNX_Chem_01_04_Kilogram",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68674:caption:CNX_Chem_01_04_Kilogram-caption"
               },
@@ -766,6 +768,7 @@
               "type": "figure",
               "id": "CNX_Chem_01_04_Volume",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68674:caption:CNX_Chem_01_04_Volume-caption"
               },

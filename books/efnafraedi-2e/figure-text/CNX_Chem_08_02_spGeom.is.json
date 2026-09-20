@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_spGeom",
+ "renderHash": "23e2e1c6de14b750",
+ "composedHash": "23e2e1c6de14b750",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Hybridization": "Blendingur",
+  "Gives a linear|arrangement": "Myndar línulega uppröðun"
+ },
+ "mtAlternatives": {
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Tegundablöndun",
+   "reason": "disagree",
+   "mt": "Blendingur"
+  },
+  "Gives a linear|arrangement": {
+   "kept": "joined",
+   "other": "Gefur línulega uppröðun",
+   "reason": "disagree",
+   "mt": "Myndar línulega uppröðun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

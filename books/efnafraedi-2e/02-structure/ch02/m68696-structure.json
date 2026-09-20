@@ -25,6 +25,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_06_NaCation",
+      "title": null,
       "caption": {
         "segmentId": "m68696:caption:CNX_Chem_02_06_NaCation-caption"
       },
@@ -56,6 +57,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_06_IonCharges",
+      "title": null,
       "caption": {
         "segmentId": "m68696:caption:CNX_Chem_02_06_IonCharges-caption"
       },
@@ -972,6 +974,7 @@
           "type": "figure",
           "id": "CNX_Chem_02_06_NaClMolten",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68696:caption:CNX_Chem_02_06_NaClMolten-caption"
           },
@@ -1062,6 +1065,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_06_Sapphire",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68696:caption:CNX_Chem_02_06_Sapphire-caption"
       },

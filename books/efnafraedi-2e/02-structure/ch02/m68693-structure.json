@@ -30,6 +30,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_MethaneRep",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_MethaneRep-caption"
       },
@@ -52,6 +53,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_Sulfur",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_Sulfur-caption"
       },
@@ -74,6 +76,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_Hydrogen",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_Hydrogen-caption"
       },
@@ -96,6 +99,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_TiO2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption"
       },
@@ -117,6 +121,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_04_Benzene",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_Benzene-caption"
       },
@@ -139,6 +144,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_AceticAcid",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_AceticAcid-caption"
       },
@@ -252,6 +258,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_04_PaulaHammond",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_PaulaHammond-caption"
       },
@@ -279,6 +286,7 @@
       "type": "figure",
       "id": "CNX_Chem_02_04_Isomers",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_Isomers-caption"
       },
@@ -300,6 +308,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_02_04_Isomers2",
+      "title": null,
       "caption": {
         "segmentId": "m68693:caption:CNX_Chem_02_04_Isomers2-caption"
       },

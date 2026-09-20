@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_05_PerTable2",
+ "renderHash": "9135c275a7eb6be8",
+ "composedHash": "9135c275a7eb6be8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Group": "Hópur",
+  "Noble": "Aðalsmaður",
+  "gases": "gös",
+  "Halogens": "Halógenar",
+  "Chalcogens": "Kalkógen",
+  "Pnictogens": "Niturefni",
+  "Alkaline": "Alkalískt",
+  "earth": "jörð",
+  "metals": "málmar",
+  "Alkali": "Alkalí",
+  "Lanthanides": "Lantaníðar",
+  "Transition|metals": "Hliðarmálmar",
+  "Main group elements": "Aðalflokkar frumefna",
+  "Actinides": "Aktaníð",
+  "Periodic Table of the Elements": "Lotukerfi frumefnanna"
+ },
+ "mtJoined": {
+  "status": "split-failed",
+  "labels": 15,
+  "lines": 12
+ }
+}

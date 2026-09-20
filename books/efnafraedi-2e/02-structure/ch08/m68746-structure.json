@@ -43,6 +43,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_03_sp3config",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68746:caption:CNX_Chem_08_03_sp3config-caption"
       },
@@ -60,6 +61,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_03_C2H4orbit",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68746:caption:CNX_Chem_08_03_C2H4orbit-caption"
       },
@@ -87,6 +89,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_03_spC",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68746:caption:CNX_Chem_08_03_spC-caption"
       },
@@ -104,6 +107,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_03_C2H2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68746:caption:CNX_Chem_08_03_C2H2-caption"
       },
@@ -131,6 +135,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_03_C6H6",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption"
       },

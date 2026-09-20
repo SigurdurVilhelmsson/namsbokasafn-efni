@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_02_CathodeRay",
+ "renderHash": "57fe5da38ef9c1e9",
+ "composedHash": "57fe5da38ef9c1e9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cathode ray": "Katódageisli",
+  "Charged|plates": "Hlaðnar plötur",
+  "Magnets": "Seglar",
+  "High|voltage": "Háspenna",
+  "Cathode (–)": "Katóna (–)",
+  "Anode (+)": "Anóða (+)",
+  "Battery": "Rafhlaða",
+  "Scale on|outside|of glass": "Kvarði utan á glerinu"
+ },
+ "mtAlternatives": {
+  "Cathode ray": {
+   "kept": "joined",
+   "other": "Bakskautsgeisli",
+   "reason": "disagree",
+   "mt": "Katódageisli"
+  },
+  "Cathode (–)": {
+   "kept": "joined",
+   "other": "Bakskaut (–)",
+   "reason": "disagree",
+   "mt": "Katóna (–)"
+  },
+  "Scale on|outside|of glass": {
+   "kept": "joined",
+   "other": "Kalkútfelling utan á gleri",
+   "reason": "disagree",
+   "mt": "Kvarði utan á glerinu"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

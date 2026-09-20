@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_04_CylRebar",
+ "renderHash": "7b4fec8cb519155e",
+ "composedHash": "7b4fec8cb519155e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Rebar mass|= 69.658 g": "Massi steypustyrktarjárns = 69,658 g",
+  "“Final” volume|= 22.4 mL": "„Loka“ rúmmál = 22,4 ml",
+  "“Initial” volume|= 13.5 mL": "„Upphafs“ rúmmál = 13,5 ml"
+ },
+ "mtAlternatives": {
+  "“Final” volume|= 22.4 mL": {
+   "kept": "joined",
+   "other": "„Lokarúmmál“ = 22,4 ml",
+   "reason": "disagree",
+   "mt": "„Loka“ rúmmál = 22,4 ml"
+  },
+  "“Initial” volume|= 13.5 mL": {
+   "kept": "joined",
+   "other": "„Upphafsrúmmál“ = 13,5 ml",
+   "reason": "disagree",
+   "mt": "„Upphafs“ rúmmál = 13,5 ml"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

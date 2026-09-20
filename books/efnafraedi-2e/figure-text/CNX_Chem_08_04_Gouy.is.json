@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_04_Gouy",
+ "renderHash": "6f2135ce9a786a64",
+ "composedHash": "6f2135ce9a786a64",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Electromagnets": "Rafseglar",
+  "Sample": "Sýnishorn",
+  "Magnetic|field": "Segulsvið"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

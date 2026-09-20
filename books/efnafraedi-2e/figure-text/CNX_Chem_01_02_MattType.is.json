@@ -1,0 +1,57 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_02_MattType",
+ "renderHash": "12ac7b3fdfa33f1c",
+ "composedHash": "12ac7b3fdfa33f1c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Matter": "Efni",
+  "Mixture": "Blanda",
+  "Is it uniform|throughout?": "Er það einsleitt í gegn?",
+  "Does it have constant|properties and composition?": "Er það með stöðuga eiginleika og samsetningu?",
+  "Can it be simplified|chemically?": "Er hægt að einfalda það efnafræðilega?",
+  "Pure substance": "Hreint efni",
+  "Heterogeneous": "Misleit",
+  "Homogeneous": "Einsleit",
+  "Element": "Frumefni",
+  "Compound": "Efnasamband",
+  "Yes": "Já"
+ },
+ "mtAlternatives": {
+  "Matter": {
+   "kept": "joined",
+   "other": "Málefni",
+   "reason": "disagree",
+   "mt": "Efni"
+  },
+  "Does it have constant|properties and composition?": {
+   "kept": "joined",
+   "other": "Hefur það fasta eiginleika og samsetningu?",
+   "reason": "disagree",
+   "mt": "Er það með stöðuga eiginleika og samsetningu?"
+  },
+  "Heterogeneous": {
+   "kept": "joined",
+   "other": "Misleitur",
+   "reason": "disagree",
+   "mt": "Misleit"
+  },
+  "Homogeneous": {
+   "kept": "joined",
+   "other": "Einsleitur",
+   "reason": "disagree",
+   "mt": "Einsleit"
+  },
+  "Element": {
+   "kept": "joined",
+   "other": "Þáttur",
+   "reason": "disagree",
+   "mt": "Frumefni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

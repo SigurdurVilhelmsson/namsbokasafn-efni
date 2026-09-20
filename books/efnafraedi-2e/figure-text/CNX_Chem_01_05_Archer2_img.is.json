@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_Archer2_img",
+ "renderHash": "cc8056062d6e4508",
+ "composedHash": "cc8056062d6e4508",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Archer W": "Bogamaður W",
+  "Archer X": "Bogamaður X",
+  "Archer Y": "Bogamaður Y",
+  "Archer Z": "Bogamaður Z"
+ },
+ "mtAlternatives": {
+  "Archer W": {
+   "kept": "joined",
+   "other": "Archer W",
+   "reason": "disagree",
+   "mt": "Bogamaður W"
+  },
+  "Archer X": {
+   "kept": "joined",
+   "other": "Archer X",
+   "reason": "disagree",
+   "mt": "Bogamaður X"
+  },
+  "Archer Y": {
+   "kept": "joined",
+   "other": "Bogmaður Y",
+   "reason": "disagree",
+   "mt": "Bogamaður Y"
+  },
+  "Archer Z": {
+   "kept": "joined",
+   "other": "Archer Z",
+   "reason": "disagree",
+   "mt": "Bogamaður Z"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}
