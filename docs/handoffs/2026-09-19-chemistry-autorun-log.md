@@ -33,3 +33,26 @@ Icelandic (1,736 terms, ties 336 → 333). The two exceptions are the known §C1
   future contributor-list chapter will hit again.
 - **Rendered:** `0-1-formali.html` (13,814 B), h1 *Formáli*, contributor names preserved, 0 raw `[[`
   markers. `generate-index --track mt-preview` re-run. Manifest `green: true`, 0 unexplained.
+
+## ch01 — 7 modules · ~1,388 ISK text + ~105 ISK figures
+
+- **Bought:** 8 units, 0 held, 0 failed. Subset `enthalpy, enthalpy change, Celsius`; `ether` (18)
+  and `cell` (12) withheld as wrong-sense (all `ether` hits here are *together* / *whether*).
+- **Figures:** 36 enumerated — 24 translated, 10 copied-photo, 2 copied-textless.
+  ⚠️ **One figure timed out** (`CNX_Chem_01_03_PeriodicPU`: `translate-blocks.mjs exited null`,
+  ETIMEDOUT). Nothing was persisted, so it stayed eligible; **one retry bought and published it**
+  (~2,255 chars). That is [USER]'s 2026-09-06 rule — a detected sporadic defect is retried, not
+  coded around. The driver now retries once automatically and logs it.
+- **Inject:** 7/7 COMPLETE, manifest `green: true`, 0 unexplained.
+- **Render:** 3 pages renamed by the re-MT → rows written to
+  [`2026-09-20-vefur-chemistry-autorun-redirects.md`](./2026-09-20-vefur-chemistry-autorun-redirects.md).
+  `generate-index --track mt-preview` re-run.
+- **Checks:** 0 raw `[[` markers in the chapter's **HTML**.
+  ⚠️ **A first census said 2 — both were bytes inside JPEGs** (`[[H:` in `…DailyChem.jpg`,
+  `[[Y:` in `…Alchemist.jpg`). The census needs `--include='*.html'`; the driver now has it, with
+  a comment. Same carve-out the ch06 run recorded.
+- 📋 **Logged, pre-existing, NOT from this buy:** `source-roundtrip-check` reports one `textDiff`
+  in **m68674** (`#fs-idp222999216`, the kilogram paragraph). The check injects a module's OWN
+  ENGLISH and never reads the MT, so it is independent of any purchase and is equally true on
+  `main`. ⚠️ The report truncates both sides at 70 characters, so the differing part is not
+  visible in its output — diagnosing it needs a direct comparison, not the report.

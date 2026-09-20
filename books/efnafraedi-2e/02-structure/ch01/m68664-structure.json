@@ -38,6 +38,7 @@
       "type": "figure",
       "id": "CNX_Chem_01_01_Alchemist",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68664:caption:CNX_Chem_01_01_Alchemist-caption"
       },
@@ -73,6 +74,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_01_ChemWeb",
+          "title": null,
           "caption": {
             "segmentId": "m68664:caption:CNX_Chem_01_01_ChemWeb-caption"
           },
@@ -115,6 +117,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_01_SciMethod",
+          "title": null,
           "caption": {
             "segmentId": "m68664:caption:CNX_Chem_01_01_SciMethod-caption"
           },
@@ -172,6 +175,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_01_01_WaterDom",
+          "title": null,
           "caption": {
             "segmentId": "m68664:caption:CNX_Chem_01_01_WaterDom-caption"
           },

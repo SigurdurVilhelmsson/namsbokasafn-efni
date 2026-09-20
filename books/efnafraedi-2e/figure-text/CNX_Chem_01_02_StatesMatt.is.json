@@ -1,0 +1,34 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_02_StatesMatt",
+ "renderHash": "240fce3755c0d63f",
+ "composedHash": "240fce3755c0d63f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Has fixed shape and volume": "Hefur fast form og rúmmál",
+  "Takes shape of container|Forms horizontal surface|Has fixed volume": "Tekur sér lögun íláts Myndar lárétt yfirborð Hefur fast rúmmál",
+  "Expands to fill container": "Þenst út og fyllir ílát",
+  "Gas": "Gas",
+  "Solid": "Fast efni",
+  "Liquid": "Vökvi"
+ },
+ "mtAlternatives": {
+  "Expands to fill container": {
+   "kept": "joined",
+   "other": "Þenst út til að fylla ílátið",
+   "reason": "disagree",
+   "mt": "Þenst út og fyllir ílát"
+  },
+  "Solid": {
+   "kept": "joined",
+   "other": "Traust",
+   "reason": "disagree",
+   "mt": "Fast efni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

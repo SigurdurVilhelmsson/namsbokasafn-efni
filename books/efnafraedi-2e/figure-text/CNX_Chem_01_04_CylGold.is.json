@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_04_CylGold",
+ "renderHash": "0a511b3a1e1abaf8",
+ "composedHash": "0a511b3a1e1abaf8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Mass|= 51.842 g": "Massi = 51,842 g",
+  "“Final” volume|= 19.8 mL": "„Loka“ rúmmál = 19,8 ml",
+  "“Initial” volume|= 17.1 mL": "„Upphafs“ rúmmál = 17,1 ml"
+ },
+ "mtAlternatives": {
+  "“Final” volume|= 19.8 mL": {
+   "kept": "joined",
+   "other": "„Lokarúmmál“ = 19,8 ml",
+   "reason": "disagree",
+   "mt": "„Loka“ rúmmál = 19,8 ml"
+  },
+  "“Initial” volume|= 17.1 mL": {
+   "kept": "joined",
+   "other": "„Upphafsrúmmál“ = 17,1 ml",
+   "reason": "disagree",
+   "mt": "„Upphafs“ rúmmál = 17,1 ml"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

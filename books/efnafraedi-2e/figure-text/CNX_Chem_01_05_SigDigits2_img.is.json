@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_SigDigits2_img",
+ "renderHash": "2492bd26c4275717",
+ "composedHash": "2492bd26c4275717",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "First nonzero figure on the left": "Fyrsti tölustafurinn til vinstri sem er ekki núll",
+  "Five significant figures: all figures|are measured including the two zeros": "Fimm markverðir stafir: allir stafir eru mældir, þar með talin núllin tvö",
+  "Six significant figures": "Sex markverðir stafir"
+ },
+ "mtAlternatives": {
+  "First nonzero figure on the left": {
+   "kept": "joined",
+   "other": "Fyrsta talan vinstra megin sem er ekki núll",
+   "reason": "disagree",
+   "mt": "Fyrsti tölustafurinn til vinstri sem er ekki núll"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

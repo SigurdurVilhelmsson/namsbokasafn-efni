@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_04_MYdCmIn",
+ "renderHash": "66bd2a4c9013503b",
+ "composedHash": "66bd2a4c9013503b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1 meter|(a)": "1 metri (a)",
+  "1 yard": "1 jardi",
+  "1 centimeter": "1 sentimetri",
+  "1 inch": "1 tomma",
+  "1 m = 1.094 yd = 39.36 inches": "1 m = 1,094 jardi = 39,36 tommur"
+ },
+ "mtAlternatives": {
+  "1 m = 1.094 yd = 39.36 inches": {
+   "kept": "joined",
+   "other": "1 m = 1,094 yd = 39,36 tommur",
+   "reason": "disagree",
+   "mt": "1 m = 1,094 jardi = 39,36 tommur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

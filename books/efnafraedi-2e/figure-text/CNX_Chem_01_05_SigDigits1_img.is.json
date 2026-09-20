@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_SigDigits1_img",
+ "renderHash": "539b1169d44c66a1",
+ "composedHash": "539b1169d44c66a1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "First nonzero figure on the left": "Fyrsta markverða talan frá vinstri",
+  "Four significant figures": "Fjórir markverðir stafir",
+  "Three significant figures: note that|the zero is to the right of the decimal point|and therefore a significant figure": "Þrír markverðir stafir: athugið að núllið er hægra megin við kommu og er því markverður stafur"
+ },
+ "mtAlternatives": {
+  "First nonzero figure on the left": {
+   "kept": "joined",
+   "other": "Fyrsta talan sem ekki er núll frá vinstri",
+   "reason": "disagree",
+   "mt": "Fyrsta markverða talan frá vinstri"
+  },
+  "Three significant figures: note that|the zero is to the right of the decimal point|and therefore a significant figure": {
+   "kept": "joined",
+   "other": "Þrjár markverðar tölur: athugið að núllið er hægra megin við kommu og er því markverð tala",
+   "reason": "disagree",
+   "mt": "Þrír markverðir stafir: athugið að núllið er hægra megin við kommu og er því markverður stafur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -25,6 +25,7 @@
       "type": "figure",
       "id": "CNX_Chem_01_03_PhysChange",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68670:caption:CNX_Chem_01_03_PhysChange-caption"
       },
@@ -47,6 +48,7 @@
       "type": "figure",
       "id": "CNX_Chem_01_03_Rust",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68670:caption:CNX_Chem_01_03_Rust-caption"
       },
@@ -69,6 +71,7 @@
       "type": "figure",
       "id": "CNX_Chem_01_03_ChemChange",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68670:caption:CNX_Chem_01_03_ChemChange-caption"
       },
@@ -111,6 +114,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_01_03_HazDiamond",
+      "title": null,
       "caption": {
         "segmentId": "m68670:caption:CNX_Chem_01_03_HazDiamond-caption"
       },
@@ -137,6 +141,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_01_03_PeriodicPU",
+      "title": null,
       "caption": {
         "segmentId": "m68670:caption:CNX_Chem_01_03_PeriodicPU-caption"
       },

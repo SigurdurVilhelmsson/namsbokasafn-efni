@@ -1,0 +1,67 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_03_HazDiamond",
+ "renderHash": "5c75a4e038d10c12",
+ "composedHash": "5c75a4e038d10c12",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Flash points:|4 Below 73 °F|3 Below 100 °F|2 Above 100 °F not exceeding 200 °F|1 Above 200 °F|0 Will not burn": "Blossamark: 4 Undir 23 °C 3 Undir 38 °C 2 Yfir 38 °C en ekki yfir 93 °C 1 Yfir 93 °C 0 Brennur ekki",
+  "Reactivity": "Hvarfgirni",
+  "4 May detonate|3 Shock and heat may detonate|2 Violent chemical change|1 Unstable if heated|0 Stable": "4 Getur sprungið 3 Hætta á sprengingu við högg og hita 2 Ör efnahvarf 1 Óstöðugt við hitun 0 Stöðugt",
+  "Specific": "Sérstök",
+  "hazard": "hætta",
+  "OX|ACID|ALK|COR|W": "OX ACID ALK COR W",
+  "Oxidizer|Acid|Alkali|Corrosive|Use no water|Radioactive": "Oxunarefni Sýra Basi Ætandi Notið ekki vatn Geislavirkt",
+  "Health": "Heilsa",
+  "4 Deadly|3 Extreme danger|2 Hazardous|1 Slightly hazardous|0 Normal material": "4 Lífshættulegt 3 Mikil hætta 2 Hættulegt 1 Lítilsháttar hætta 0 Venjulegt efni",
+  "Fire hazard": "Eldhætta"
+ },
+ "mtAlternatives": {
+  "Flash points:|4 Below 73 °F|3 Below 100 °F|2 Above 100 °F not exceeding 200 °F|1 Above 200 °F|0 Will not burn": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Blossamark: 4 Undir 23 °C 3 Undir 38 °C 2 Yfir 38 °C en ekki yfir 93 °C 1 Yfir 93 °C 0 Brennur ekki"
+  },
+  "4 May detonate|3 Shock and heat may detonate|2 Violent chemical change|1 Unstable if heated|0 Stable": {
+   "kept": "joined",
+   "other": "4 Getur sprungið\n3 Gæti sprungið við högg og hita\n2 Ör efnahvarf\n1 Óstöðugt við hitun\n0 Stöðugt",
+   "reason": "disagree",
+   "mt": "4 Getur sprungið 3 Hætta á sprengingu við högg og hita 2 Ör efnahvarf 1 Óstöðugt við hitun 0 Stöðugt"
+  },
+  "Specific": {
+   "kept": "joined",
+   "other": "Sérstakt",
+   "reason": "disagree",
+   "mt": "Sérstök"
+  },
+  "hazard": {
+   "kept": "joined",
+   "other": "Hætta",
+   "reason": "disagree",
+   "mt": "hætta"
+  },
+  "OX|ACID|ALK|COR|W": {
+   "kept": "joined",
+   "other": "OX SÝRA BASI TÆR V",
+   "reason": "disagree",
+   "mt": "OX ACID ALK COR W"
+  },
+  "Oxidizer|Acid|Alkali|Corrosive|Use no water|Radioactive": {
+   "kept": "joined",
+   "other": "Oxunarefni Sýra Basi Ætandi Ekki nota vatn Geislavirkt",
+   "reason": "disagree",
+   "mt": "Oxunarefni Sýra Basi Ætandi Notið ekki vatn Geislavirkt"
+  },
+  "4 Deadly|3 Extreme danger|2 Hazardous|1 Slightly hazardous|0 Normal material": {
+   "kept": "joined",
+   "other": "4 Banvænt 3 Mikil hætta 2 Hættulegt 1 Lítilsháttar hætta 0 Venjulegt efni",
+   "reason": "disagree",
+   "mt": "4 Lífshættulegt 3 Mikil hætta 2 Hættulegt 1 Lítilsháttar hætta 0 Venjulegt efni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_FuelCell",
+ "renderHash": "a1b4657c1710ced7",
+ "composedHash": "a1b4657c1710ced7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Hydrogen": "Vetni",
+  "Unused|hydrogen": "Ónotað vetni",
+  "Oxygen": "Súrefni",
+  "Water": "Vatn",
+  "Cathode": "Bakskaut",
+  "Proton|exchange|membrane": "Rófskiptihimna",
+  "Anode": "Forskaut",
+  "Electric power": "Rafmagn"
+ },
+ "mtAlternatives": {
+  "Cathode": {
+   "kept": "joined",
+   "other": "Katóða",
+   "reason": "disagree",
+   "mt": "Bakskaut"
+  },
+  "Proton|exchange|membrane": {
+   "kept": "joined",
+   "other": "Rófueindaskiptahimna",
+   "reason": "disagree",
+   "mt": "Rófskiptihimna"
+  },
+  "Anode": {
+   "kept": "joined",
+   "other": "Anóða",
+   "reason": "disagree",
+   "mt": "Forskaut"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_SigDigits4_img",
+ "renderHash": "992b6b1d8f87be4c",
+ "composedHash": "992b6b1d8f87be4c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Ten thousandths place|Thousandths place: least precise": "Tíþúsundshlutastaða Þúsundshlutastaða: minnst nákvæmt",
+  "Round to thousandths": "Námunda að þúsundustu",
+  "Round to ones": "Námunda að einum",
+  "Answer is 65 g": "Svarið er 65 g"
+ },
+ "mtJoined": {
+  "status": "split-failed",
+  "labels": 4,
+  "lines": 5
+ }
+}

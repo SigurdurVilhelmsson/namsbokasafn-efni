@@ -3,6 +3,21 @@
   "track": "mt-preview",
   "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed. SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into one directory, so a consumer must read each track's map separately and reconcile them itself; a `to` here can also be superseded at the destination by the reader site's own overlay pruning.",
   "renames": {
+    "chapters/01/1-2-efnishamur-og-flokkun-efnis.html": {
+      "to": "chapters/01/1-2-astandsform-og-flokkun-efnis.html",
+      "moduleId": "m68667",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/01/1-5-ovissa-i-maelingum-hittni-og-nakvaemni.html": {
+      "to": "chapters/01/1-5-maeliovissa-nakvaemni-og-genkvaemni.html",
+      "moduleId": "m68690",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/01/1-6-staerdfraedileg-medferd-nidurstadna-maelinga.html": {
+      "to": "chapters/01/1-6-staerdfraedileg-medferd-maelinidurstadna.html",
+      "moduleId": "m68683",
+      "recordedAt": "2026-09-20"
+    },
     "chapters/03/3-2-akvordun-reynslu-og-sameindaformula.html": {
       "to": "chapters/03/3-2-akvordun-reynsluformula-og-sameindaformula.html",
       "moduleId": "m68702",

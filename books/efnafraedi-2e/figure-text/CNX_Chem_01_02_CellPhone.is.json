@@ -1,0 +1,60 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_02_CellPhone",
+ "renderHash": "a14ff1a4681d3e35",
+ "composedHash": "a14ff1a4681d3e35",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Lithium combined with other|metals such as cobalt, iron,|copper": "Litíum ásamt öðrum málmum eins og kóbalti, járni, kopar",
+  "Battery components": "Rafhlöðuíhlutir",
+  "Polymers such as ABS|and/or metals such as|aluminum, iron, magnesium": "Fjölliður eins og ABS og/eða málmar eins og ál, járn, magnesíum",
+  "Case components": "Hlífaríhlutir",
+  "Silicon, common metals|(copper, tin, gold), uncommon|elements (yttrium, gadolinium)": "Kísill, algengir málmar (kopar, tin, gull), óalgeng frumefni (yttríum, gadólíníum)",
+  "Processor components": "Örgjörvaíhlutir",
+  "Silicon oxide (glass)|strengthened by addition of|aluminum, sodium, potassium": "Kísiloxíð (gler) styrkt með viðbættu áli, natríum, kalíum",
+  "Screen components": "Skjáíhlutir"
+ },
+ "mtAlternatives": {
+  "Battery components": {
+   "kept": "joined",
+   "other": "Íhlutir rafhlöðu",
+   "reason": "disagree",
+   "mt": "Rafhlöðuíhlutir"
+  },
+  "Case components": {
+   "kept": "joined",
+   "other": "Hlutar máls",
+   "reason": "disagree",
+   "mt": "Hlífaríhlutir"
+  },
+  "Silicon, common metals|(copper, tin, gold), uncommon|elements (yttrium, gadolinium)": {
+   "kept": "joined",
+   "other": "Kísill, algengir málmar (kopar, tin, gull), sjaldgæf frumefni (yttríum, gadólíníum)",
+   "reason": "disagree",
+   "mt": "Kísill, algengir málmar (kopar, tin, gull), óalgeng frumefni (yttríum, gadólíníum)"
+  },
+  "Processor components": {
+   "kept": "joined",
+   "other": "Íhlutir örgjörva",
+   "reason": "disagree",
+   "mt": "Örgjörvaíhlutir"
+  },
+  "Silicon oxide (glass)|strengthened by addition of|aluminum, sodium, potassium": {
+   "kept": "joined",
+   "other": "Kísiloxíð (gler) styrkt með íblöndun áls, natríums, kalíums",
+   "reason": "disagree",
+   "mt": "Kísiloxíð (gler) styrkt með viðbættu áli, natríum, kalíum"
+  },
+  "Screen components": {
+   "kept": "joined",
+   "other": "Skjáhlutar",
+   "reason": "disagree",
+   "mt": "Skjáíhlutir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

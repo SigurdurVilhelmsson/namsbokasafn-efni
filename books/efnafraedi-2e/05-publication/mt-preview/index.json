@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T09:48:38.452Z",
+  "generated": "2026-09-20T11:16:15.984Z",
   "termCount": 763,
   "entries": [
     {
@@ -100,6 +100,17 @@
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp55090448"
+    },
+    {
+      "termIs": "afrúning",
+      "termEn": "rounding",
+      "termFull": "afrúning (e. rounding)",
+      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í mælingunum sem notaðar eru í útreikningnum",
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp68905696"
     },
     {
       "termIs": "afturkræft efnahvarf",
@@ -408,6 +419,17 @@
       "sectionTitle": "Árekstrakenningin",
       "sectionSlug": "12-5-arekstrakenningin",
       "termId": "fs-idm187159584"
+    },
+    {
+      "termIs": "atóm",
+      "termEn": "atom",
+      "termFull": "atóm (e. atom)",
+      "definition": "minnsta ögn frumefnis sem getur tekið þátt í efnasambandi",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "termId": "fs-idm8143856"
     },
     {
       "termIs": "atómmassaeining (amu)",
@@ -784,6 +806,17 @@
       "termId": "fs-idm122363760"
     },
     {
+      "termIs": "blanda",
+      "termEn": "mixture",
+      "termFull": "blanda (e. mixture)",
+      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "termId": "fs-idm5111888"
+    },
+    {
       "termIs": "blandanlegur",
       "termEn": "miscible",
       "termFull": "blandanlegur (e. miscible)",
@@ -914,17 +947,6 @@
       "sectionTitle": "Frjáls orka",
       "sectionSlug": "16-4-frjals-orka",
       "termId": "fs-idm119810368"
-    },
-    {
-      "termIs": "breytistuðull eininga",
-      "termEn": "unit conversion factor",
-      "termFull": "breytistuðull eininga (e. unit conversion factor)",
-      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
-      "chapter": 1,
-      "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
-      "termId": "fs-idm307214528"
     },
     {
       "termIs": "brunagreining",
@@ -1068,6 +1090,17 @@
       "sectionTitle": "Rafsegulorka",
       "sectionSlug": "6-1-rafsegulorka",
       "termId": "fs-idp70511136"
+    },
+    {
+      "termIs": "Celsíus (°C)",
+      "termEn": "celsius (°c)",
+      "termFull": "Celsíus (°C) (e. celsius (°c))",
+      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða",
+      "chapter": 1,
+      "section": "1.4",
+      "sectionTitle": "Mælingar",
+      "sectionSlug": "1-4-maelingar",
+      "termId": "fs-idm285658848"
     },
     {
       "termIs": "cis-afstaða",
@@ -1224,17 +1257,6 @@
       "termId": "fs-idm147403536"
     },
     {
-      "termIs": "efnablanda",
-      "termEn": "mixture",
-      "termFull": "efnablanda (e. mixture)",
-      "definition": "efni sem hægt er að skilja í sundur í efnisþætti sína með eðlisfræðilegum aðferðum",
-      "chapter": 1,
-      "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
-      "termId": "fs-idm5111888"
-    },
-    {
       "termIs": "efnabreyting",
       "termEn": "chemical change",
       "termFull": "efnabreyting (e. chemical change)",
@@ -1246,10 +1268,21 @@
       "termId": "fs-idp392534800"
     },
     {
+      "termIs": "efnaeiginleiki",
+      "termEn": "chemical property",
+      "termFull": "efnaeiginleiki (e. chemical property)",
+      "definition": "hegðun sem tengist breytingu á einni tegund efnis í aðra",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idm88320752"
+    },
+    {
       "termIs": "efnafræði",
       "termEn": "chemistry",
       "termFull": "efnafræði (e. chemistry)",
-      "definition": "rannsókn á samsetningu, eiginleikum og víxlverkunum efnis",
+      "definition": "fræðigrein um samsetningu, eiginleika og víxlverkun efnis",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -1266,17 +1299,6 @@
       "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
       "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
       "termId": "fs-idp238031216"
-    },
-    {
-      "termIs": "efnafræðilegur eiginleiki",
-      "termEn": "chemical property",
-      "termFull": "efnafræðilegur eiginleiki (e. chemical property)",
-      "definition": "hegðun sem tengist breytingu einnar tegundar efnis í aðra",
-      "chapter": 1,
-      "section": "1.3",
-      "sectionTitle": "Eðlis- og efnaeiginleikar",
-      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
-      "termId": "fs-idm88320752"
     },
     {
       "termIs": "efnahvarfsrit",
@@ -1329,8 +1351,8 @@
       "definition": "hreint efni sem hægt er að sundra í tvö eða fleiri frumefni",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm115227296"
     },
     {
@@ -1359,11 +1381,11 @@
       "termIs": "efni",
       "termEn": "matter",
       "termFull": "efni (e. matter)",
-      "definition": "allt sem tekur rúm og hefur massa",
+      "definition": "allt sem tekur pláss og hefur massa",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm23865104"
     },
     {
@@ -1455,17 +1477,6 @@
       "termId": "fs-idm331555696"
     },
     {
-      "termIs": "einingagreining",
-      "termEn": "dimensional analysis",
-      "termFull": "einingagreining (e. dimensional analysis)",
-      "definition": "(einnig þáttamerkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir",
-      "chapter": 1,
-      "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
-      "termId": "fs-idm216300016"
-    },
-    {
       "termIs": "einnota rafhlaða",
       "termEn": "primary cell",
       "termFull": "einnota rafhlaða (e. primary cell)",
@@ -1505,8 +1516,8 @@
       "definition": "(einnig, lausn) samsetning efna með efnasamsetningu sem er einsleit í gegn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm25215648"
     },
     {
@@ -1626,8 +1637,8 @@
       "definition": "hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
       "termId": "fs-idm207141104"
     },
     {
@@ -1656,11 +1667,11 @@
       "termIs": "fast efni",
       "termEn": "solid",
       "termFull": "fast efni (e. solid)",
-      "definition": "efnishamur sem er stjarfur, hefur ákveðna lögun og nokkuð fast rúmmál",
+      "definition": "ástönd efnis sem er stíft, hefur ákveðið form og nokkuð fast rúmmál",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm10806528"
     },
     {
@@ -1865,23 +1876,12 @@
       "termIs": "frumefni",
       "termEn": "element",
       "termFull": "frumefni (e. element)",
-      "definition": "efni sem samanstendur af einni tegund frumeindar; efni sem ekki er hægt að sundra með efnabreytingu",
+      "definition": "efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnabreytingu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6667232"
-    },
-    {
-      "termIs": "frumeind",
-      "termEn": "atom",
-      "termFull": "frumeind (e. atom)",
-      "definition": "minnsta eind frumefnis sem getur tekið þátt í efnasambandi",
-      "chapter": 1,
-      "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
-      "termId": "fs-idm8143856"
     },
     {
       "termIs": "frumeindakenning Daltons",
@@ -1986,11 +1986,11 @@
       "termIs": "gas",
       "termEn": null,
       "termFull": "gas",
-      "definition": "efnishamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
+      "definition": "hamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37203312"
     },
     {
@@ -2525,11 +2525,11 @@
       "termIs": "hitastig",
       "termEn": "temperature",
       "termFull": "hitastig (e. temperature)",
-      "definition": "ástandseiginleiki sem táknar hversu heitt eða kalt efni er",
+      "definition": "ástandseiginleiki sem táknar hita eða kulda efnis",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-nidurstadna-maelinga",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
       "termId": "fs-idm327357936"
     },
     {
@@ -2542,17 +2542,6 @@
       "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp31728864"
-    },
-    {
-      "termIs": "hittni",
-      "termEn": "accuracy",
-      "termFull": "hittni (e. accuracy)",
-      "definition": "hversu vel mæling fellur að réttu gildi",
-      "chapter": 1,
-      "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp330245120"
     },
     {
       "termIs": "hjúpun",
@@ -2723,11 +2712,11 @@
       "termIs": "hreint efni",
       "termEn": "pure substance",
       "termFull": "hreint efni (e. pure substance)",
-      "definition": "einsleitt efni sem hefur fasta efnasamsetningu",
+      "definition": "einsleitt efni sem hefur fasta samsetningu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37107584"
     },
     {
@@ -3405,7 +3394,7 @@
       "termIs": "kelvin (K)",
       "termEn": null,
       "termFull": "kelvin (K)",
-      "definition": "SI-eining hitastigs; 273,15 K = 0 °C",
+      "definition": "SI-grunneining hitastigs; 273,15 K = 0 °C",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -3416,7 +3405,7 @@
       "termIs": "kenning",
       "termEn": "theory",
       "termFull": "kenning (e. theory)",
-      "definition": "vel rökstudd, yfirgripsmikil og prófanleg skýring á tilteknum þætti náttúrunnar",
+      "definition": "vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -3471,7 +3460,7 @@
       "termIs": "kílógramm (kg)",
       "termEn": "kilogram (kg)",
       "termFull": "kílógramm (kg) (e. kilogram (kg))",
-      "definition": "staðlaða SI-einingin fyrir massa",
+      "definition": "staðlaða SI-grunneiningin fyrir massa",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -3911,7 +3900,7 @@
       "termIs": "lengd",
       "termEn": "length",
       "termFull": "lengd (e. length)",
-      "definition": "mælikvarði á eina vídd hlutar",
+      "definition": "mæling á einni vídd hlutar",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4252,7 +4241,7 @@
       "termIs": "lögmál",
       "termEn": "law",
       "termFull": "lögmál (e. law)",
-      "definition": "staðhæfing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
+      "definition": "yfirlýsing sem tekur saman fjölda tilraunaathugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -4370,6 +4359,17 @@
       "termId": "fs-idp141116656"
     },
     {
+      "termIs": "lögmál um varðveislu efnis",
+      "termEn": "law of conservation of matter",
+      "termFull": "lögmál um varðveislu efnis (e. law of conservation of matter)",
+      "definition": "þegar efni breytist úr einni gerð í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
+      "chapter": 1,
+      "section": "1.2",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "termId": "fs-idp19511536"
+    },
+    {
       "termIs": "lögmálið um föst efnahlutföll",
       "termEn": "law of constant composition",
       "termFull": "lögmálið um föst efnahlutföll (e. law of constant composition)",
@@ -4403,17 +4403,6 @@
       "termId": "fs-idp47442976"
     },
     {
-      "termIs": "lögmálið um varðveislu efnis",
-      "termEn": "law of conservation of matter",
-      "termFull": "lögmálið um varðveislu efnis (e. law of conservation of matter)",
-      "definition": "þegar efni breytist úr einni tegund í aðra eða breytir um form, verður engin greinanleg breyting á heildarmagni efnis sem er til staðar",
-      "chapter": 1,
-      "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
-      "termId": "fs-idp19511536"
-    },
-    {
       "termIs": "magnbundin greining",
       "termEn": "quantitative analysis",
       "termFull": "magnbundin greining (e. quantitative analysis)",
@@ -4425,9 +4414,9 @@
       "termId": "fs-idp188325600"
     },
     {
-      "termIs": "magnbundinn eiginleiki",
+      "termIs": "magnháður eiginleiki",
       "termEn": "extensive property",
-      "termFull": "magnbundinn eiginleiki (e. extensive property)",
+      "termFull": "magnháður eiginleiki (e. extensive property)",
       "definition": "eiginleiki efnis sem fer eftir magni efnisins",
       "chapter": 1,
       "section": "1.3",
@@ -4458,6 +4447,17 @@
       "termId": "fs-idp127462672"
     },
     {
+      "termIs": "magnóháður eiginleiki",
+      "termEn": "intensive property",
+      "termFull": "magnóháður eiginleiki (e. intensive property)",
+      "definition": "eiginleiki efnis sem er óháður magni efnisins",
+      "chapter": 1,
+      "section": "1.3",
+      "sectionTitle": "Eðlis- og efnaeiginleikar",
+      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
+      "termId": "fs-idp42386976"
+    },
+    {
       "termIs": "markmassi",
       "termEn": "critical mass",
       "termFull": "markmassi (e. critical mass)",
@@ -4480,14 +4480,14 @@
       "termId": "fs-idm66977664"
     },
     {
-      "termIs": "markverðir stafir",
+      "termIs": "marktækir stafir",
       "termEn": "significant figures",
-      "termFull": "markverðir stafir (e. significant figures)",
-      "definition": "(einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn síðasti óvissi tölustafurinn",
+      "termFull": "marktækir stafir (e. significant figures)",
+      "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp3346000"
     },
     {
@@ -4549,11 +4549,11 @@
       "termIs": "massi",
       "termEn": "mass",
       "termFull": "massi (e. mass)",
-      "definition": "grunneiginleiki sem gefur til kynna magn efnis",
+      "definition": "grundvallareiginleiki sem gefur til kynna efnismagn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm23882384"
     },
     {
@@ -4670,7 +4670,7 @@
       "termIs": "metri (m)",
       "termEn": "meter (m)",
       "termFull": "metri (m) (e. meter (m))",
-      "definition": "staðlaða metra- og SI-einingin fyrir lengd; 1 m = um það bil 1,094 yardar",
+      "definition": "staðlaða metra- og SI-grunneiningin fyrir lengd; 1 m = u.þ.b. 1,094 yardar",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4766,10 +4766,10 @@
       "termId": "fs-idp48690544"
     },
     {
-      "termIs": "millilítri (ml)",
+      "termIs": "millilítri (mL)",
       "termEn": "milliliter (ml)",
-      "termFull": "millilítri (ml) (e. milliliter (ml))",
-      "definition": "1/1.000 úr lítra; jafnt og 1 cm3",
+      "termFull": "millilítri (mL) (e. milliliter (ml))",
+      "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
@@ -4824,11 +4824,11 @@
       "termIs": "misleit efnablanda",
       "termEn": "heterogeneous mixture",
       "termFull": "misleit efnablanda (e. heterogeneous mixture)",
-      "definition": "samsetning efna með efnasamsetningu sem er breytileg frá einum stað til annars",
+      "definition": "samsetning efna með efnasamsetningu sem er breytileg frá einum punkti til annars",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idp85033264"
     },
     {
@@ -5000,23 +5000,23 @@
       "termIs": "nákvæm tala",
       "termEn": "exact number",
       "termFull": "nákvæm tala (e. exact number)",
-      "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
+      "definition": "tala fengin með talningu eða skilgreiningu",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp17670352"
     },
     {
       "termIs": "nákvæmni",
-      "termEn": "precision",
-      "termFull": "nákvæmni (e. precision)",
-      "definition": "hversu vel mæling samsvarar sömu mælingu þegar hún er endurtekin",
+      "termEn": "accuracy",
+      "termFull": "nákvæmni (e. accuracy)",
+      "definition": "hversu nálægt mæling er réttu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp28800512"
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp330245120"
     },
     {
       "termIs": "Nernst-jafna",
@@ -5294,17 +5294,6 @@
       "termId": "fs-idp30466624"
     },
     {
-      "termIs": "óháður eiginleiki",
-      "termEn": "intensive property",
-      "termFull": "óháður eiginleiki (e. intensive property)",
-      "definition": "eiginleiki efnis sem er óháður magni efnisins",
-      "chapter": 1,
-      "section": "1.3",
-      "sectionTitle": "Eðlis- og efnaeiginleikar",
-      "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
-      "termId": "fs-idp42386976"
-    },
-    {
       "termIs": "ójónandi geislun",
       "termEn": "nonionizing radiation",
       "termFull": "ójónandi geislun (e. nonionizing radiation)",
@@ -5410,8 +5399,8 @@
       "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp96606928"
     },
     {
@@ -5495,11 +5484,11 @@
       "termIs": "plasma",
       "termEn": null,
       "termFull": "plasma",
-      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhladdra frumeinda og/eða sameinda",
+      "definition": "gaskennt ástand efnis sem inniheldur mikinn fjölda rafhlöðinna atóma og/eða sameinda",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37314320"
     },
     {
@@ -5924,11 +5913,11 @@
       "termIs": "sameind",
       "termEn": "molecule",
       "termFull": "sameind (e. molecule)",
-      "definition": "safn tveggja eða fleiri frumeinda af sama eða mismunandi frumefnum sem tengjast með efnatengjum",
+      "definition": "bundið safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6673632"
     },
     {
@@ -6210,23 +6199,12 @@
       "termIs": "sekúnda (s)",
       "termEn": "second (s)",
       "termFull": "sekúnda (s) (e. second (s))",
-      "definition": "SI-eining tímans",
+      "definition": "SI-grunneining tíma",
       "chapter": 1,
       "section": "1.4",
       "sectionTitle": "Mælingar",
       "sectionSlug": "1-4-maelingar",
       "termId": "fs-idm310839680"
-    },
-    {
-      "termIs": "Selsíus (°C)",
-      "termEn": "celsius (°c)",
-      "termFull": "Selsíus (°C) (e. celsius (°c))",
-      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum skala",
-      "chapter": 1,
-      "section": "1.4",
-      "sectionTitle": "Mælingar",
-      "sectionSlug": "1-4-maelingar",
-      "termId": "fs-idm285658848"
     },
     {
       "termIs": "sexhyrnd þéttpökkun (HCP)",
@@ -6438,17 +6416,6 @@
       "termId": "fs-idp42480608"
     },
     {
-      "termIs": "sléttun",
-      "termEn": "rounding",
-      "termFull": "sléttun (e. rounding)",
-      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í mælingunum sem notaðar eru í útreikningnum",
-      "chapter": 1,
-      "section": "1.5",
-      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
-      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
-      "termId": "fs-idp68905696"
-    },
-    {
       "termIs": "smáástand",
       "termEn": "microstate",
       "termFull": "smáástand (e. microstate)",
@@ -6460,9 +6427,9 @@
       "termId": "fs-idm228328464"
     },
     {
-      "termIs": "smásæja sviðið",
+      "termIs": "smásætt svið",
       "termEn": "microscopic domain",
-      "termFull": "smásæja sviðið (e. microscopic domain)",
+      "termFull": "smásætt svið (e. microscopic domain)",
       "definition": "svið hluta sem eru allt of litlir til að vera skynjaðir beint",
       "chapter": 1,
       "section": "1.1",
@@ -6790,9 +6757,9 @@
       "termId": "fs-idm144682752"
     },
     {
-      "termIs": "stórsæja sviðið",
+      "termIs": "stórsætt svið",
       "termEn": "macroscopic domain",
-      "termFull": "stórsæja sviðið (e. macroscopic domain)",
+      "termFull": "stórsætt svið (e. macroscopic domain)",
       "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu manna",
       "chapter": 1,
       "section": "1.1",
@@ -7145,7 +7112,7 @@
       "termIs": "táknrænt svið",
       "termEn": "symbolic domain",
       "termFull": "táknrænt svið (e. symbolic domain)",
-      "definition": "sérhæft tungumál sem notað er til að tákna þætti á stórsæjum og smásæjum sviðum, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
+      "definition": "sérhæft tungumál sem notað er til að tákna þætti stórsæja og smásæja sviðsins, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -7244,7 +7211,7 @@
       "termIs": "tilgáta",
       "termEn": "hypothesis",
       "termFull": "tilgáta (e. hypothesis)",
-      "definition": "bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
+      "definition": "bráðabirgðaútskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
       "chapter": 1,
       "section": "1.1",
       "sectionTitle": "Efnafræði í samhengi",
@@ -7516,6 +7483,17 @@
       "termId": "fs-idm223971840"
     },
     {
+      "termIs": "umreikningsstuðull eininga",
+      "termEn": "unit conversion factor",
+      "termFull": "umreikningsstuðull eininga (e. unit conversion factor)",
+      "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "termId": "fs-idm307214528"
+    },
+    {
       "termIs": "undirhvolf",
       "termEn": null,
       "termFull": "undirhvolf",
@@ -7780,6 +7758,17 @@
       "termId": "fs-idp4277680"
     },
     {
+      "termIs": "verkleg nákvæmni",
+      "termEn": "precision",
+      "termFull": "verkleg nákvæmni (e. precision)",
+      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
+      "chapter": 1,
+      "section": "1.5",
+      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
+      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "termId": "fs-idp28800512"
+    },
+    {
       "termIs": "vermi (H)",
       "termEn": "enthalpy (h)",
       "termFull": "vermi (H) (e. enthalpy (h))",
@@ -7956,6 +7945,17 @@
       "termId": "fs-idp13398640"
     },
     {
+      "termIs": "víddagreining",
+      "termEn": "dimensional analysis",
+      "termFull": "víddagreining (e. dimensional analysis)",
+      "definition": "(einnig, þáttunar- og merkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
+      "chapter": 1,
+      "section": "1.6",
+      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "termId": "fs-idm216300016"
+    },
+    {
       "termIs": "vísindaleg aðferð",
       "termEn": "scientific method",
       "termFull": "vísindaleg aðferð (e. scientific method)",
@@ -8047,11 +8047,11 @@
       "termIs": "vökvi",
       "termEn": "liquid",
       "termFull": "vökvi (e. liquid)",
-      "definition": "efnishamur sem hefur ákveðið rúmmál en óákveðna lögun",
+      "definition": "hamur efnis sem hefur ákveðið rúmmál en óákveðna lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idp9074576"
     },
     {
@@ -8278,11 +8278,11 @@
       "termIs": "þyngd",
       "termEn": "weight",
       "termFull": "þyngd (e. weight)",
-      "definition": "kraftur sem þyngdarafl beitir á hlut",
+      "definition": "kraftur sem þyngdaraflið beitir á hlut",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Efnishamir og flokkun efnis",
-      "sectionSlug": "1-2-efnishamur-og-flokkun-efnis",
+      "sectionTitle": "Ástandsform og flokkun efnis",
+      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6297360"
     },
     {

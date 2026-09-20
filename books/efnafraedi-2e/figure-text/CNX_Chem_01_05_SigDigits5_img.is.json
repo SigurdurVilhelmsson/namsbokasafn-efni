@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_SigDigits5_img",
+ "renderHash": "3708031694182929",
+ "composedHash": "3708031694182929",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Captive": "Fangi",
+  "Trailing": "Eftirbátur",
+  "Leading": "Leiðtogi"
+ },
+ "mtAlternatives": {
+  "Trailing": {
+   "kept": "joined",
+   "other": "Að draga",
+   "reason": "disagree",
+   "mt": "Eftirbátur"
+  },
+  "Leading": {
+   "kept": "joined",
+   "other": "Leiðandi",
+   "reason": "disagree",
+   "mt": "Leiðtogi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

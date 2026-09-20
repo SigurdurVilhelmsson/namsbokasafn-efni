@@ -1,0 +1,37 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_05_Archery",
+ "renderHash": "39cfaee779ac8a4d",
+ "composedHash": "39cfaee779ac8a4d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Accurate|and precise": "Nákvæmt og skilgreint",
+  "Precise,|not accurate": "Skilgreint, ekki nákvæmt",
+  "Not accurate,|not precise": "Ekki nákvæmt, ekki skilgreint"
+ },
+ "mtAlternatives": {
+  "Accurate|and precise": {
+   "kept": "joined",
+   "other": "Nákvæmt og skilmerkilegt",
+   "reason": "disagree",
+   "mt": "Nákvæmt og skilgreint"
+  },
+  "Precise,|not accurate": {
+   "kept": "joined",
+   "other": "Nákvæmt, ekki rétt",
+   "reason": "disagree",
+   "mt": "Skilgreint, ekki nákvæmt"
+  },
+  "Not accurate,|not precise": {
+   "kept": "joined",
+   "other": "Ekki nákvæmt, ekki ítarlegt",
+   "reason": "disagree",
+   "mt": "Ekki nákvæmt, ekki skilgreint"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}
