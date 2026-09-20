@@ -2,6 +2,18 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of **2026-09-20 (THE CHEMISTRY AUTORUN IS UNDER WAY — 4 of 17 chapters bought and prepared, ~5,400 ISK, PR #497 open)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **ch09, then ch10…ch21 in order**, with the driver's stop rules. ⚠️ **A PreToolUse hook added 2026-09-20 (`.claude/hooks/guard-paid-mt.mjs`) asks before every paid run, so the run is attended until [USER] clears that path.** Merge of #497 and the vefur redirect rows are [USER]'s.
+
+⚖️ **[USER] 2026-09-20: budget approved for the remaining 17 chemistry chapters** (~25,000–34,000 ISK text + ~25–40 ISK figures each), to run autonomously, stopping only on a **fundamental problem — one that would force a re-purchase later**.
+- **Owners:** the pre-buy review [`docs/handoffs/2026-09-19-chemistry-pre-buy-review.md`](../handoffs/2026-09-19-chemistry-pre-buy-review.md) (Section 3 = the curated per-chapter subsets; the stop conditions) and the running log [`docs/handoffs/2026-09-19-chemistry-autorun-log.md`](../handoffs/2026-09-19-chemistry-autorun-log.md) (small problems, one section per chapter). Status stays here.
+- ✅ **Done: ch00 (~108), ch01 (~1,493), ch02 (~1,807), ch08 (~1,996).** All four: manifest `green: true` with 0 unexplained, 0 raw `[[` in HTML, roundtrip deltas confined to `meaning#` renames. **10 page renames → redirect rows** in [`docs/handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md`](../handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md), which must land in vefur BEFORE the next chemistry sync.
+- 🔴 **§C167's pre-buy scan is now load-bearing and it paid immediately:** ch08's three rulings were made before a króna moved, and the per-chapter subsets are **curated for SENSE** — measured, ch01's 27 `ether` hits are all *together*/*whether*, ch02's `hole` is all *whole*, ch10's `cell` is 118× *unit cell* where `ker` would be wrong.
+- ⚠️ **Recurring states, now handled without stopping:** a figure MT timeout (nothing persisted → one retry) · a module returning English prose (one paid per-module retry; ch08 m68745 went 5/5) · **⑰'s four named modules refusing inject (`--no-annotate-en`); ch19 will hit m68844.**
+- 📋 **Logged, for editors:** ch08 `m68744:para:fs-idp92007424` (the π-bond definition) returns English on two paid attempts. A census of **all 8,080 bought segments** found 13 identical prose-shaped segments, **12 of them chemical-formula answers that are correctly identical** — so one paragraph, not a class, and no re-purchase.
+- ⏹ Readers see none of it until [USER]'s sync.
+
 ## ⏩ RESUME — state as of **2026-09-19, night (CHEMISTRY ch07 PREPARED on `content/chemistry-ch07-m68740`, UNPUSHED · ~3,390 ISK all in · NEXT = the PR, then the PRE-BUY TERM SCAN)** (supersedes every block below)
 
 ### ⏭ SINGLE NEXT ACTION — **Push `content/chemistry-ch07-m68740`, read CI by name against `main`, [USER] merges.** No deploy is needed (no `server/` change) and **no vefur redirect row** (0 renames). Then the next [CODE] item: **the pre-buy term scan**, before ch08 is bought.
