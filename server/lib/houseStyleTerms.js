@@ -121,6 +121,38 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       'shorter vokblendingur.',
   }),
   Object.freeze({
+    en: Object.freeze(['hybridization', 'orbital hybridization']),
+    is: 'svigrúmablöndun',
+    ruled: '2026-09-19 [USER]',
+    why:
+      "Found by the PRE-BUY scan on chemistry ch08 (76 segments, the book's own key term, no " +
+      'row). The unprompted March MT splits it: blending ~80 tokens against blöndun ~39, with ' +
+      'the control that antibonding is unanimous at andbindandi — so the split is a real ' +
+      'disagreement, not noise. [USER] ruled svigrúmablöndun for this context; it occurs in the ' +
+      'committed MT, so it is a form the model produces. ⚠️ Deliberately a DIFFERENT stem from ' +
+      'hybrid orbital below: the process and the object are two concepts, as Celsius and degree ' +
+      'Celsius are.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['hybrid orbital']),
+    is: 'blendingssvigrúm',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'The OBJECT, ruled separately from the process above. The MT already writes ' +
+      'blendingssvigrúm (81 tokens in committed chemistry MT), so this pins a choice it ' +
+      'already makes rather than forcing a new form.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['bonding orbital']),
+    is: 'bindandi svigrúm',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'Chemistry ch08, 25 segments, key term, no row. The MT splits bindandi svigrúm ~37 ' +
+      'against tengisvigrúm ~6. [USER] ruled the majority, which also pairs with the ' +
+      'unanimous andbindandi for antibonding — and antibonding therefore needs NO entry, ' +
+      'per the rule that a row is for a choice the model cannot make on its own.',
+  }),
+  Object.freeze({
     en: Object.freeze(['Lewis structure']),
     is: 'Lewis-mynd',
     ruled: '2026-09-19 [USER]',

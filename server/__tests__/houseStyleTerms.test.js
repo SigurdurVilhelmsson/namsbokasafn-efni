@@ -63,6 +63,14 @@ describe('the ruling itself', () => {
     expect(byEn.get('Celsius')).toBe('Celsíus');
     expect(byEn.get('degree Celsius')).toBe('stig á Celsíus');
     expect(byEn.get('degree centigrade')).toBe('stig á Celsíus');
+    // §C164's family, and ch08's, pinned to VALUES for the same reason as Celsius above.
+    expect(byEn.get('resonance')).toBe('vok');
+    expect(byEn.get('resonance hybrid')).toBe('vokblendingur');
+    expect(byEn.get('Lewis structure')).toBe('Lewis-mynd');
+    // ⚠️ The process and the object are deliberately DIFFERENT stems ([USER] 2026-09-19).
+    expect(byEn.get('hybridization')).toBe('svigrúmablöndun');
+    expect(byEn.get('hybrid orbital')).toBe('blendingssvigrúm');
+    expect(byEn.get('bonding orbital')).toBe('bindandi svigrúm');
   });
 
   it('keeps the NAME and the UNIT PHRASE as separate concepts', () => {
