@@ -420,7 +420,11 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       module: 'm68662',
       residueAllowlist: allowFor('efnafraedi-2e'),
     });
-    expect(r.findings.filter((f) => f.kind === 'en-residue')).toHaveLength(76);
+    // ⚠️ 76 → 69, RE-MEASURED 2026-09-20: the autorun re-bought ch00, and the fresh MT
+    // translated 7 of the 76. What remains is the CONTRIBUTOR LIST — "Mark Blaser, Shasta
+    // College" and 68 more — which the MT is right to return verbatim, so this pin should
+    // be expected to sit near 69 rather than to fall to 0.
+    expect(r.findings.filter((f) => f.kind === 'en-residue')).toHaveLength(69);
   });
 
   it('premise pin — 31 of the 197 pairs are exercises bundles A5 must skip', () => {
@@ -442,7 +446,7 @@ describe('A5 — untranslated-EN residue, two stages', () => {
 
   // ⚠️ THIS PIN SHRINKS WITH EVERY CHAPTER BOUGHT, and at 0 it is vacuous — the planted
   // fixtures in this file become stage 2's only evidence. Re-measure, do not delete.
-  it('premise pin — stage 2 finds 6 long residues in 2 run-target modules', () => {
+  it('premise pin — stage 2 finds 5 long residues in 3 run-target modules', () => {
     const hits = [];
     let pairs = 0;
     for (const b of BOOKS) {
@@ -462,7 +466,9 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       }
     }
     expect(pairs).toBe(197); // control
-    expect(hits).toHaveLength(7);
+    // ⚠️ 7 → 5, RE-MEASURED 2026-09-20: the autorun's ch08 retry translated m68745's five
+    // English prose segments (5 of 5), leaving m68744's one stubborn π-bond paragraph.
+    expect(hits).toHaveLength(5);
     // 🔴 RE-PINNED 2026-09-05 — m00037 RE-ENTERED this set (it had LEFT it at eeac7731,
     // when an earlier re-translation made it Icelandic). This is the §C121 re-MT's one
     // paid-for casualty, NOT a regression in the check: `m00037:para:para-00003` came back
@@ -472,7 +478,12 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     // third purchase is waste. The cause is English appositive redundancy that Icelandic
     // collapses: *conformational isomers* and *conformers* are both `stellingarhverfur`.
     // The route is the segment editor, never a hand-edit of 02-mt-output. → §C121/§C122.
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68662']);
+    // ⚠️ RE-MEASURED 2026-09-20: m68662 LEFT this set (the autorun re-bought ch00 and its
+    // long residues are now the contributor list, which is short) and m68744 ENTERED it —
+    // chemistry ch08's π-bond definition, which came back ENGLISH on two paid attempts.
+    // ▶ That is the SAME deterministic shape as m00037 above, in the other book: a second
+    // purchase reproduced it exactly, so a third is waste and the route is the editor.
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68744']);
   });
 });
 
