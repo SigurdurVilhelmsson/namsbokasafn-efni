@@ -33,11 +33,15 @@ function addConcept(db, domain, en, isTerms) {
 describe('lookupCandidates', () => {
   it('returns one candidate per matching concept, is-terms sorted by rank', () => {
     const { db } = freshMigratedDb();
-    const { termIds } = addConcept(db, 'biology', 'cell', [
+    // ⚠️ THE FIXTURE WORD MUST BE ONE MIGRATION 051 NEVER SEEDS. This said 'cell'
+    // until 2026-09-20, when [USER] ruled `cell → ker` for chemistry ch17; 051 then
+    // seeded a real `cell` concept into every database and these counts went +1 —
+    // green locally, red in CI. `vacuole` is not a house-style term.
+    const { termIds } = addConcept(db, 'biology', 'vacuole', [
       ['fruma', 1],
       ['sella', 2],
     ]);
-    const { candidates, integrity } = lookupCandidates(db, 'cell');
+    const { candidates, integrity } = lookupCandidates(db, 'vacuole');
     expect(candidates).toHaveLength(1);
     expect(candidates[0].domain).toBe('biology');
     expect(candidates[0].isTerms.map((t) => t.text)).toEqual(['fruma', 'sella']);
@@ -52,9 +56,9 @@ describe('lookupCandidates', () => {
 
   it('returns BOTH concepts when one English string has two senses', () => {
     const { db } = freshMigratedDb();
-    addConcept(db, 'biology', 'cell', [['fruma', 1]]);
-    addConcept(db, 'physics', 'cell', [['rafhlad', 1]]);
-    expect(lookupCandidates(db, 'cell').candidates).toHaveLength(2);
+    addConcept(db, 'biology', 'vacuole', [['safabola', 1]]);
+    addConcept(db, 'physics', 'vacuole', [['tomarum', 1]]);
+    expect(lookupCandidates(db, 'vacuole').candidates).toHaveLength(2);
     db.close();
   });
 
