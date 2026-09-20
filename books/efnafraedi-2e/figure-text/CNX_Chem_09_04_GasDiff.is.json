@@ -1,0 +1,59 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_04_GasDiff",
+ "renderHash": "ce7bc11dacab899f",
+ "composedHash": "ce7bc11dacab899f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "High pressure|feed tube": "Háþrýstiaðveitulögn",
+  "Porous barrier": "Gleyp himna",
+  "Higher speed 235UF6|diffuses through barrier ": "Hraðfara 235UF6 smýgur hraðar í gegnum himnuna",
+  "faster than 238UF6": "en 238UF6",
+  "Depleted 238UF6": "Snautt 238UF6",
+  "Enriched 235UF6": "Auðgað 235UF6",
+  "uranium |hexafluoride |(UF6) ": "úranhexaflúoríð (UF6)"
+ },
+ "mtAlternatives": {
+  "High pressure|feed tube": {
+   "kept": "joined",
+   "other": "Háþrýstiaðveitlurör",
+   "reason": "disagree",
+   "mt": "Háþrýstiaðveitulögn"
+  },
+  "Porous barrier": {
+   "kept": "joined",
+   "other": "Gljúp hindrun",
+   "reason": "disagree",
+   "mt": "Gleyp himna"
+  },
+  "Higher speed 235UF6|diffuses through barrier ": {
+   "kept": "joined",
+   "other": "Hraðfara 235UF6 smýgur gegnum himnu",
+   "reason": "disagree",
+   "mt": "Hraðfara 235UF6 smýgur hraðar í gegnum himnuna"
+  },
+  "faster than 238UF6": {
+   "kept": "joined",
+   "other": "hraðar en 238UF6",
+   "reason": "disagree",
+   "mt": "en 238UF6"
+  },
+  "Depleted 238UF6": {
+   "kept": "joined",
+   "other": "Rýrt 238UF6",
+   "reason": "disagree",
+   "mt": "Snautt 238UF6"
+  },
+  "uranium |hexafluoride |(UF6) ": {
+   "kept": "joined",
+   "other": "Úranhexaflúoríð (UF6)",
+   "reason": "disagree",
+   "mt": "úranhexaflúoríð (UF6)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

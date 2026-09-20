@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T12:21:47.289Z",
+  "generatedAt": "2026-09-20T18:10:26.367Z",
   "summary": {
     "modulesWithResidue": 2,
     "exactResidues": 70,
-    "ratioWarnings": 66,
+    "ratioWarnings": 70,
     "toleratedResidues": 4
   },
   "modules": {
@@ -322,6 +322,14 @@
     "m68750": {
       "exact": [],
       "warnings": [
+        {
+          "segmentId": "m68750:entry:auto-24",
+          "ratio": 0.71
+        },
+        {
+          "segmentId": "m68750:entry:auto-33",
+          "ratio": 0.75
+        },
         {
           "segmentId": "m68750:solution:fs-idm21108080",
           "ratio": 0.8
@@ -653,6 +661,20 @@
         "m68744:para:fs-idp92007424"
       ],
       "warnings": [],
+      "tolerated": []
+    },
+    "m68752": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68752:entry:auto-246",
+          "ratio": 0.75
+        },
+        {
+          "segmentId": "m68752:entry:auto-247",
+          "ratio": 0.8
+        }
+      ],
       "tolerated": []
     }
   }

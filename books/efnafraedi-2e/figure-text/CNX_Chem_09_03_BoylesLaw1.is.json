@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_03_BoylesLaw1",
+ "renderHash": "d8944064f40e107e",
+ "composedHash": "d8944064f40e107e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "P (psi)": "P (psi)",
+  "1/P (psi–1)": "1/P (psi–1)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

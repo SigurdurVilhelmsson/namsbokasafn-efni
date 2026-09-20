@@ -8,18 +8,41 @@
 > *"I approve an unattended run to finish the machine translation for efnafraedi-2e in a new session."*
 > — [USER], 2026-09-20
 
-**Scope: `efnafraedi-2e` only** — ch09 … ch21, and the appendices only if [USER] says so (they were
-not named). ch00, ch01, ch02, ch03–ch07 and ch08 are already bought and prepared.
+**Scope: `efnafraedi-2e` only** — ch09 … ch21, **plus the appendices: [USER] added them to scope on
+2026-09-20** when asked (they were not named in the original authorisation, so they were put as a
+question rather than assumed). ch00, ch01, ch02, ch03–ch07 and ch08 are already bought and prepared.
 **Budget: ~27,400 ISK at list price** for the remaining text (~20,000–20,500 billed at the observed
 0.68–0.75×), plus 30–100 ISK of figures per chapter, plus a per-module retry (180–610 ISK) when one
 is needed. **The loop still ends at PREPARED — no session runs a sync.**
 
-## 🔴 Before the first buy: the paid-MT hook
+## 🔴 CORRECTED 2026-09-20 — the paid-MT hook DOES NOT GATE THIS DRIVER, and nobody had to clear it
 
-`.claude/hooks/guard-paid-mt.mjs` (added 2026-09-20) returns `permissionDecision: "ask"` for every
-`api-translate` run, which an unattended session cannot answer. **[USER] must clear that path for
-this book before the run starts** — narrowly, ideally `efnafraedi-2e` only. If the hook still asks,
-the run stalls at chapter 9 and nothing is lost.
+This section used to read: *"`.claude/hooks/guard-paid-mt.mjs` returns `permissionDecision: "ask"`
+for every `api-translate` run, which an unattended session cannot answer. **[USER] must clear that
+path for this book before the run starts**. If the hook still asks, the run stalls at chapter 9 and
+nothing is lost."*
+
+**Measured, both command shapes, before ch09 was bought — the premise is false.** The hook is wired
+in `.claude/settings.json` behind a shell `case` matching the **tool-call payload string** for
+`*api-translate*`. The documented command is `bash scripts/chemistry-autorun-chapter.sh 9 "…"`,
+which contains no such substring, so the case never matches and the guard never runs.
+`api-translate` is invoked as a **child process inside the script**, and a PreToolUse hook fires on
+Bash **tool calls**, not on grandchildren.
+
+- Direct form (`node tools/api-translate.js …`) → the guard fires, usefully: it reported
+  *"8 of 8 segment file(s) in ch09 predate the extractor"*, which the pre-run re-extraction then
+  discharged to *"0 of 8"*.
+- Driver form → passes straight through, ungated.
+
+▶ **So the run needed no clearing, and ch09 proceeded on [USER]'s written authorisation alone.**
+⚠️ **But the spend guard does not cover the command it was written for.** Do not treat a driver run
+as confirmed-by-hook. That gap belongs to the session that owns `.claude/hooks/` (untracked, another
+session's uncommitted work — **never `git add` it**); it is recorded here, not fixed here.
+
+▶ **The general lesson, which is the durable half:** a guard's *existence* is not its *coverage*.
+This one was written, tested against the shape it was written for, documented as blocking — and was
+inert against the only invocation anyone was going to use. Pair every guard with a test of the
+command line people will actually type.
 
 ## The command per chapter
 
@@ -41,6 +64,13 @@ all *together*/*whether*, ch02's `hole` is all *whole*, and ch10's `cell` is 118
 
 ```bash
 bash scripts/chemistry-autorun-chapter.sh 9  "enthalpy,enthalpy change,torr"
+# ch10 carries the ONE key term the pre-buy scan flagged across all 13 chapters:
+# `hydrogen bonding` (21 segments, no glossary row). ⚖️ [USER] ruled 2026-09-20: NO glossary
+# action. §C73's unprompted control settles it — the existing MT already renders it `vetnistengi`
+# (×23) with correct Icelandic inflection (vetnistengja / -tengjum / -tengið / -tengin), 47 hits,
+# zero English residue, and `hydrogen bonds` already has an approved chemistry row. The driver
+# HALTS on an unruled flag now, so the ruling is passed in explicitly rather than ignored silently:
+AUTORUN_RULED_TERMS="hydrogen bonding" \
 bash scripts/chemistry-autorun-chapter.sh 10 "enthalpy,enthalpy change,hole,dispersion force,Lewis structure,Lewis"
 bash scripts/chemistry-autorun-chapter.sh 11 "enthalpy,enthalpy change,torr,carbonate,hydroxide,alcohol"
 bash scripts/chemistry-autorun-chapter.sh 12 "enthalpy,enthalpy change,elementary reaction,reaction mechanism,reaction order"
@@ -53,7 +83,15 @@ bash scripts/chemistry-autorun-chapter.sh 18 "enthalpy,enthalpy change,Lewis,gro
 bash scripts/chemistry-autorun-chapter.sh 19 "enthalpy,enthalpy change,group,central metal,carbonate,hydroxide,Lewis"
 bash scripts/chemistry-autorun-chapter.sh 20 "enthalpy,enthalpy change,ether,alcohol,Lewis,Lewis structure,carboxylic acid,ketone,carbonyl group,hybridization,resonance,resonance structure"
 bash scripts/chemistry-autorun-chapter.sh 21 "enthalpy,enthalpy change,radioactive decay,chain reaction"
+# Added to scope by [USER] 2026-09-20. 13 modules, 162,668 chars, ~1,627 ISK at list.
+# ⚠️ The driver could NOT have run this before 2026-09-20: `printf 'ch%02d' appendices` yields
+# `ch00`, so every verification step would have checked the PREFACE and reported green. Fixed.
+bash scripts/chemistry-autorun-chapter.sh appendices "enthalpy,enthalpy change"
 ```
+
+**Measured prices at `13b38eaa3` (dry-run, list):** ch09 2175 · ch10 2772 · ch11 1813 · ch12 2188 ·
+ch13 1287 · ch14 2129 · ch15 1357 · ch16 1237 · ch17 1399 · ch18 3132 · ch19 2052 · ch20 2099 ·
+ch21 2114 · appendices 1627 = **27,381 ISK**. ch09 billed **0.79×** its estimate.
 
 ⚠️ **Re-derive rather than trust this block** if a chapter's English has moved: the driver runs
 `--pre-buy` itself and prints any key term with no row in 20+ segments. **A new such term is a STOP**

@@ -8,25 +8,28 @@ Gasþrýstingur
 Tengsl þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið
 
 <!-- SEG:m68748:abstract-item:abstract-item-3 -->
-Hlutfallaefnafræði gasefna, efnablandna og efnahvarfa
+Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa
 
 <!-- SEG:m68748:abstract-item:abstract-item-4 -->
-Útstreymi og sveim gasa
+Útstreymi og flæði lofttegunda
 
 <!-- SEG:m68748:abstract-item:abstract-item-5 -->
-Hreyfi-sameindakenningin
+Hreyfiorkukenningin
 
 <!-- SEG:m68748:abstract-item:abstract-item-6 -->
-Frávik frá hegðun kjörgass
+Ókjörgashegðun
 
 <!-- SEG:m68748:caption:CNX_Chem_09_00_HotAirBall-caption -->
-Heita loftið inni í þessum loftbelgjum er eðlisléttara en kaldara loftið í kring. Þetta myndar uppdrifskraft sem fær belgina til að stíga þegar festilínur þeirra eru losaðar. (heimild: breytt útgáfa af verki eftir Anthony Quintano)
+Heita loftið inni í þessum blöðrum er með minni eðlismassa en kalda loftið í kring. Þetta leiðir til flotkrafts sem veldur því að blöðrurnar rísa þegar festingar þeirra eru losaðar. (heimild: breyting á verki eftir Anthony Quintano)
+
+<!-- SEG:m68748:alt:fs-idm132595392-alt -->
+Ljósmynd sýnir um tuttugu litríka loftbelgi á mismunandi stigum uppblásturs. Sumir eru loftlausir á meðan aðrir eru uppblásnir. Þrír belgjanna eru á lofti og sjást á móti heiðbláum himni.
 
 <!-- SEG:m68748:para:fs-idm58981280 -->
-Við erum umlukin gashafi — lofthjúpnum — og margir eiginleikar gasa eru okkur kunnuglegir úr daglegu lífi. Upphituð gös þenjast út, sem getur fengið loftbelg til að stíga ([#CNX_Chem_09_00_HotAirBall]) eða valdið því að hjólbarði springur ef reiðhjól er skilið eftir í sólinni á heitum degi.
+Við erum umkringd gashafi – andrúmsloftinu – og margir eiginleikar lofttegunda eru okkur kunnuglegir úr daglegu lífi. Upphitaðar lofttegundir þenjast út, sem getur fengið loftbelg til að rísa ([[xref:CNX_Chem_09_00_HotAirBall]]) eða valdið því að það springur á hjólbarða sem skilinn er eftir í sólinni á heitum degi.
 
 <!-- SEG:m68748:para:fs-idm145175104 -->
-Gös hafa gegnt mikilvægu hlutverki í þróun efnafræðinnar. Á sautjándu og átjándu öld rannsökuðu margir vísindamenn hegðun gasa og lögðu grunninn að fyrstu stærðfræðilegu lýsingunum á hegðun efnis.
+Lofttegundir hafa gegnt mikilvægu hlutverki í þróun efnafræðinnar. Á sautjándu og átjándu öld rannsökuðu margir vísindamenn hegðun lofttegunda og lögðu fram fyrstu stærðfræðilegu lýsingarnar á hegðun efnis.
 
 <!-- SEG:m68748:para:fs-idm154865680 -->
-Í þessum kafla munum við skoða tengslin milli hitastigs, þrýstings, magns og rúmmáls gasa. Við munum kanna einfalt fræðilegt líkan og nota það til að greina hegðun gasa í tilraunum. Niðurstöður þessara greininga munu sýna okkur takmarkanir kenningarinnar og hvernig megi bæta hana.
+Í þessum kafla munum við skoða tengslin milli hitastigs, þrýstings, magns og rúmmáls lofttegunda. Við munum skoða einfalt fræðilegt líkan og nota það til að greina tilraunahegðun lofttegunda. Niðurstöður þessara greininga munu sýna okkur takmarkanir kenningarinnar og hvernig megi bæta hana.

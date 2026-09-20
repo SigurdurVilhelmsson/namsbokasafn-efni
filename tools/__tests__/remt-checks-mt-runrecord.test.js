@@ -82,7 +82,7 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
   // ⚠️ A PREMISE PIN, NOT A REGRESSION PIN. It is EXPECTED to go red the moment the
   // clean-break run writes its first sidecar. When it does, that is the corpus moving
   // — update the numbers in the commit that observes it, do not delete the test.
-  it('208 sidecars across the two kept books, 208 with a tool, 67 with a run record', () => {
+  it('209 sidecars across the two kept books, 209 with a tool, 75 with a run record', () => {
     const found = [];
     const walk = (p) => {
       for (const e of fs.readdirSync(p, { withFileTypes: true })) {
@@ -99,30 +99,36 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
     }
     // The SPLIT, not just the total: a glob that swept in a third book would otherwise
     // still satisfy a bare `toBe(208)` by coincidence.
-    expect(byBook).toEqual({ 'efnafraedi-2e': 158, 'lifraen-efnafraedi': 50 });
-    expect(found).toHaveLength(208);
+    expect(byBook).toEqual({ 'efnafraedi-2e': 159, 'lifraen-efnafraedi': 50 });
+    expect(found).toHaveLength(209);
 
     // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 208
     // is NOT the population every other number in this suite family uses. The sibling
     // suite counts `*-segments.is.md` with `chapter-metadata-*` DELIBERATELY EXCLUDED
     // (chemistry 149, organic 48); this walk counts SIDECARS and excludes nothing, so it
-    // is 197 module sidecars PLUS 11 chapter-metadata ones. Both numbers are right and
+    // is 197 module sidecars PLUS 12 chapter-metadata ones. Both numbers are right and
     // they reconcile exactly — but a reader comparing 208 against 207 without this note
     // is comparing populations, which is this repo's commonest error. Asserted rather
     // than merely commented, so the reconciliation stays checkable.
     const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
-    expect(metadata).toHaveLength(11);
+    expect(metadata).toHaveLength(12);
+    // ⚠️ UNCHANGED AT 197 WHILE THE TOTAL ROSE, AND THAT ASYMMETRY IS THE EVIDENCE, NOT AN
+    // ODDITY: buying ch09 (2026-09-20) OVERWROTE seven module sidecars it already had and
+    // ADDED the one `chapter-metadata` sidecar it lacked. A buy that had also added modules
+    // would have moved this line too, so a reader who sees only the total move can check
+    // here which of the two happened.
     expect(found.length - metadata.length).toBe(197); // 149 chemistry + 48 organic modules
 
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
-    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(208);
-    // ⚠️ 67 AND 67 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
+    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(209);
+    // ⚠️ 75 AND 75 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
     // written v2 to the kept books; `docx-import` and `backfill-provenance` write v2
     // WITHOUT a run (see the docstring below). Keep these as TWO assertions.
-    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(67);
-    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(67);
+    // 67 -> 75 is ch09's eight units (seven modules + chapter-metadata) turning v2-with-a-run.
+    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(75);
+    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(75);
   });
 });
 

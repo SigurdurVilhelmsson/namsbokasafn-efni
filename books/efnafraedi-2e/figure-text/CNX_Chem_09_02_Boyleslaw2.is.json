@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_02_Boyleslaw2",
+ "renderHash": "d355d6ed8f801bc8",
+ "composedHash": "d355d6ed8f801bc8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Volume": "Rúmmál",
+  "Pressure": "Þrýstingur"
+ },
+ "mtAlternatives": {
+  "Volume": {
+   "kept": "joined",
+   "other": "Hljóðstyrkur",
+   "reason": "disagree",
+   "mt": "Rúmmál"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

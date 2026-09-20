@@ -1,0 +1,60 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_02_Exercise25_img",
+ "renderHash": "2e78272f9d68c005",
+ "composedHash": "2e78272f9d68c005",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Pressure": "Þrýstingur",
+  "Volume": "Rúmmál",
+  "constant n & T": "fasti n & T",
+  "Temperature": "Hitastig",
+  "constant n & P": "fasti n & P",
+  "Temperature|(c)": "Hitastig (c)",
+  "constant n & V": "fasti n & V",
+  "Volume|(d)": "Rúmmál (d)"
+ },
+ "mtAlternatives": {
+  "Volume": {
+   "kept": "joined",
+   "other": "Hljóðstyrkur",
+   "reason": "disagree",
+   "mt": "Rúmmál"
+  },
+  "Temperature": {
+   "kept": "joined",
+   "other": "Hiti",
+   "reason": "disagree",
+   "mt": "Hitastig"
+  },
+  "constant n & P": {
+   "kept": "joined",
+   "other": "fast n & P",
+   "reason": "disagree",
+   "mt": "fasti n & P"
+  },
+  "Temperature|(c)": {
+   "kept": "joined",
+   "other": "Hiti (c)",
+   "reason": "disagree",
+   "mt": "Hitastig (c)"
+  },
+  "constant n & V": {
+   "kept": "joined",
+   "other": "fasti n & s",
+   "reason": "disagree",
+   "mt": "fasti n & V"
+  },
+  "Volume|(d)": {
+   "kept": "joined",
+   "other": "Bindi (d)",
+   "reason": "disagree",
+   "mt": "Rúmmál (d)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

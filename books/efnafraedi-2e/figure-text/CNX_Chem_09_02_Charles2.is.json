@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_02_Charles2",
+ "renderHash": "da32877292d341ab",
+ "composedHash": "da32877292d341ab",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Temperature (K)": "Hiti (K)",
+  "Volume (L)": "Rúmmál (L)",
+  "Temperature (oC)": "Hiti (°C)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

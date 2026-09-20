@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T12:21:49.088Z",
+  "generated": "2026-09-20T18:10:51.887Z",
   "termCount": 763,
   "entries": [
     {
@@ -284,8 +284,8 @@
       "definition": "hitastig þar sem rúmmál gass yrði núll samkvæmt lögmáli Charles.",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idp80443824"
     },
     {
@@ -2269,17 +2269,6 @@
       "termId": "fs-idm93994416"
     },
     {
-      "termIs": "gufunarþrýstingur vatns",
-      "termEn": "vapor pressure of water",
-      "termFull": "gufunarþrýstingur vatns (e. vapor pressure of water)",
-      "definition": "þrýstingur sem vatnsgufa í jafnvægi við fljótandi vatn í lokuðu íláti beitir við tiltekið hitastig",
-      "chapter": 9,
-      "section": "9.3",
-      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
-      "termId": "fs-idp57901520"
-    },
-    {
       "termIs": "gufuþrýstingur",
       "termEn": "vapor pressure",
       "termFull": "gufuþrýstingur (e. vapor pressure)",
@@ -2289,6 +2278,17 @@
       "sectionTitle": "Fasabreytingar",
       "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm195421616"
+    },
+    {
+      "termIs": "gufuþrýstingur vatns",
+      "termEn": "vapor pressure of water",
+      "termFull": "gufuþrýstingur vatns (e. vapor pressure of water)",
+      "definition": "þrýstingur sem vatnsgufa beitir í jafnvægi við fljótandi vatn í lokuðu íláti við tiltekið hitastig",
+      "chapter": 9,
+      "section": "9.3",
+      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
+      "termId": "fs-idp57901520"
     },
     {
       "termIs": "Haber-ferlið",
@@ -2646,11 +2646,11 @@
       "termIs": "hlutþrýstingur",
       "termEn": "partial pressure",
       "termFull": "hlutþrýstingur (e. partial pressure)",
-      "definition": "þrýstingur sem stakt gas í efnablöndu beitir",
+      "definition": "þrýstingur sem einstakt gas í blöndu beitir",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp104769888"
     },
     {
@@ -2742,17 +2742,6 @@
       "termId": "fs-idm47184144"
     },
     {
-      "termIs": "hreyfifræðikenning sameinda",
-      "termEn": "kinetic molecular theory",
-      "termFull": "hreyfifræðikenning sameinda (e. kinetic molecular theory)",
-      "definition": "kenning sem byggir á einföldum meginreglum og forsendum sem útskýrir hegðun kjörgass á skilvirkan hátt",
-      "chapter": 9,
-      "section": "9.5",
-      "sectionTitle": "Hreyfiorkukenningin",
-      "sectionSlug": "9-5-hreyfiorkukenningin",
-      "termId": "fs-idm198763536"
-    },
-    {
       "termIs": "hreyfiorka",
       "termEn": "kinetic energy",
       "termFull": "hreyfiorka (e. kinetic energy)",
@@ -2762,6 +2751,17 @@
       "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25509680"
+    },
+    {
+      "termIs": "hreyfiorkukenning",
+      "termEn": "kinetic molecular theory",
+      "termFull": "hreyfiorkukenning (e. kinetic molecular theory)",
+      "definition": "kenning sem byggir á einföldum lögmálum og forsendum sem útskýrir á áhrifaríkan hátt hegðun kjörlofttegunda",
+      "chapter": 9,
+      "section": "9.5",
+      "sectionTitle": "Hreyfi-sameindakenningin",
+      "sectionSlug": "9-5-hreyfi-sameindakenningin",
+      "termId": "fs-idm198763536"
     },
     {
       "termIs": "hvarfefni",
@@ -3617,8 +3617,8 @@
       "definition": "tilbúið gas sem eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm161542192"
     },
     {
@@ -3628,19 +3628,19 @@
       "definition": "fasti fenginn úr kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm78852976"
     },
     {
-      "termIs": "kjörgasjafnan",
+      "termIs": "kjörgaslögmálið",
       "termEn": "ideal gas law",
-      "termFull": "kjörgasjafnan (e. ideal gas law)",
-      "definition": "samband milli þrýstings, rúmmáls, efnismagns og hitastigs gass við aðstæður sem eru leiddar út frá samsetningu einföldu gaslögmálanna",
+      "termFull": "kjörgaslögmálið (e. ideal gas law)",
+      "definition": "samband milli þrýstings, rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með samsetningu einföldu gaslögmálanna",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm111878496"
     },
     {
@@ -4241,11 +4241,11 @@
       "termIs": "lögmál Amontons",
       "termEn": "amontons’s law",
       "termFull": "lögmál Amontons (e. amontons’s law)",
-      "definition": "(einnig, lögmál Gay-Lussacs) þrýstingur á gefnum fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar rúmmáli er haldið föstu",
+      "definition": "(einnig lögmál Gay-Lussac) þrýstingur ákveðins mólfjölda gass er í beinu hlutfalli við kelvinhitastig þess þegar rúmmáli er haldið föstu",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idp77543648"
     },
     {
@@ -4255,53 +4255,42 @@
       "definition": "rúmmál gass við fast hitastig og þrýsting er í hlutfalli við fjölda gassameinda",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm85214288"
     },
     {
       "termIs": "lögmál Boyles",
       "termEn": "boyle’s law",
       "termFull": "lögmál Boyles (e. boyle’s law)",
-      "definition": "rúmmál gefins fjölda móla af gasi sem haldið er við fast hitastig er í öfugu hlutfalli við þrýstinginn sem það er mælt við",
+      "definition": "rúmmál ákveðins mólfjölda gass sem haldið er við fast hitastig er í öfugu hlutfalli við þrýstinginn sem það er mælt við",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm51295520"
     },
     {
       "termIs": "lögmál Charles",
       "termEn": "charles’s law",
       "termFull": "lögmál Charles (e. charles’s law)",
-      "definition": "rúmmál gefins fjölda móla af gasi er í beinu hlutfalli við kelvinhitastig þess þegar þrýstingi er haldið föstum",
+      "definition": "rúmmál ákveðins mólfjölda gass er í beinu hlutfalli við kelvinhitastig þess þegar þrýstingi er haldið föstum",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm100735488"
     },
     {
       "termIs": "Lögmál Daltons um hlutþrýsting",
       "termEn": "dalton’s law of partial pressures",
       "termFull": "Lögmál Daltons um hlutþrýsting (e. dalton’s law of partial pressures)",
-      "definition": "heildarþrýstingur efnablöndu kjörgasa er jafn summu hlutþrýstings íhlutagasanna",
+      "definition": "heildarþrýstingur blöndu af kjörgösum er jafn summu hlutþrýstings íhlutagasanna",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp142977184"
-    },
-    {
-      "termIs": "Lögmál Grahams um útstreymi",
-      "termEn": "graham’s law of effusion",
-      "termFull": "Lögmál Grahams um útstreymi (e. graham’s law of effusion)",
-      "definition": "sveimhraði og útstreymishraði gasa eru í öfugu hlutfalli við kvaðratrótina af sameindamassa þeirra",
-      "chapter": 9,
-      "section": "9.4",
-      "sectionTitle": "Útstreymi og sveim gasa",
-      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
-      "termId": "fs-idp257364480"
     },
     {
       "termIs": "Lögmál Henrys",
@@ -4615,11 +4604,11 @@
       "termIs": "meðalferningsrótarhraði (urms)",
       "termEn": "root mean square speed (urms)",
       "termFull": "meðalferningsrótarhraði (urms) (e. root mean square speed (urms))",
-      "definition": "mælikvarði á meðalhraða fyrir hóp einda, reiknaður sem kvaðratrótin af meðaltali hraðans í öðru veldi",
+      "definition": "mælikvarði á meðalhraða fyrir hóp agna, reiknaður sem kvaðratrótin af meðaltali hraðans í öðru veldi",
       "chapter": 9,
       "section": "9.5",
-      "sectionTitle": "Hreyfiorkukenningin",
-      "sectionSlug": "9-5-hreyfiorkukenningin",
+      "sectionTitle": "Hreyfi-sameindakenningin",
+      "sectionSlug": "9-5-hreyfi-sameindakenningin",
       "termId": "fs-idm271276336"
     },
     {
@@ -4629,8 +4618,8 @@
       "definition": "meðalvegalengd sem sameind ferðast á milli árekstra",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og sveim gasa",
-      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
+      "sectionTitle": "Útstreymi og flæði lofttegunda",
+      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
       "termId": "fs-idp132026496"
     },
     {
@@ -4898,14 +4887,14 @@
       "termId": "fs-idp3051616"
     },
     {
-      "termIs": "mólhlutfall (X)",
+      "termIs": "mólbrot (X)",
       "termEn": "mole fraction (x)",
-      "termFull": "mólhlutfall (X) (e. mole fraction (x))",
-      "definition": "styrkleikaeining skilgreind sem hlutfall mólmagns íhlutar í efnablöndu og heildarfjölda móla allra íhluta efnablöndunnar",
+      "termFull": "mólbrot (X) (e. mole fraction (x))",
+      "definition": "styrkleikaeining skilgreind sem hlutfall mólmagns íhlutar í blöndu og heildarfjölda móla allra íhluta blöndunnar",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp1132336"
     },
     {
@@ -6155,11 +6144,11 @@
       "termIs": "samþjöppunarstuðull (Z)",
       "termEn": "compressibility factor (z)",
       "termFull": "samþjöppunarstuðull (Z) (e. compressibility factor (z))",
-      "definition": "hlutfallið milli mælds mólrúmmáls gass úr tilraun og mólrúmmáls þess eins og það er reiknað út frá kjörgasjöfnunni",
+      "definition": "hlutfallið milli mælda mólrúmmáls gass og mólrúmmáls þess eins og það er reiknað út frá kjörgasjöfnunni",
       "chapter": 9,
       "section": "9.6",
-      "sectionTitle": "Frávik frá kjörgaseiginleikum",
-      "sectionSlug": "9-6-fravik-fra-kjorgaseiginleikum",
+      "sectionTitle": "Hegðun raungass",
+      "sectionSlug": "9-6-hegdun-raungass",
       "termId": "fs-idp3716528"
     },
     {
@@ -6504,14 +6493,14 @@
       "termId": "fs-idm137493808"
     },
     {
-      "termIs": "staðalaðstæður fyrir hitastig og þrýsting (STP)",
+      "termIs": "staðalaðstæður hitastigs og þrýstings (STP)",
       "termEn": "standard conditions of temperature and pressure (stp)",
-      "termFull": "staðalaðstæður fyrir hitastig og þrýsting (STP) (e. standard conditions of temperature and pressure (stp))",
+      "termFull": "staðalaðstæður hitastigs og þrýstings (STP) (e. standard conditions of temperature and pressure (stp))",
       "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm158190720"
     },
     {
@@ -6551,11 +6540,11 @@
       "termIs": "staðalmólrúmmál",
       "termEn": "standard molar volume",
       "termFull": "staðalmólrúmmál (e. standard molar volume)",
-      "definition": "rúmmál 1 móls af gasi við STP, um það bil 22,4 L fyrir lofttegundir sem hegða sér eins og kjörgas",
+      "definition": "rúmmál 1 móls af gasi við staðalaðstæður (STP), um það bil 22,4 L fyrir lofttegundir sem hegða sér eins og kjörgas",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
       "termId": "fs-idm62647600"
     },
     {
@@ -6969,22 +6958,22 @@
       "termIs": "sveim",
       "termEn": "diffusion",
       "termFull": "sveim (e. diffusion)",
-      "definition": "hreyfing frumeindar eða sameindar frá svæði með tiltölulega háan styrk yfir á svæði með tiltölulega lágan styrk (fjallað um í þessum kafla með tilliti til gastegunda, en á við um efni í hvaða fasa sem er)",
+      "definition": "flutningur atóms eða sameindar frá svæði með tiltölulega háum styrk yfir á svæði með tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til efna á gasfasa, en á við um efni á hvaða fasa sem er)",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og sveim gasa",
-      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
+      "sectionTitle": "Útstreymi og flæði lofttegunda",
+      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
       "termId": "fs-idp133388272"
     },
     {
       "termIs": "sveimhraði",
       "termEn": "rate of diffusion",
       "termFull": "sveimhraði (e. rate of diffusion)",
-      "definition": "magn gass sem sveimar um tiltekið svæði á tilteknum tíma",
+      "definition": "magn lofttegundar sem sveimar í gegnum tiltekið svæði á tilteknum tíma",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og sveim gasa",
-      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
+      "sectionTitle": "Útstreymi og flæði lofttegunda",
+      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
       "termId": "fs-idp43914864"
     },
     {
@@ -7607,12 +7596,23 @@
       "termIs": "útstreymi",
       "termEn": "effusion",
       "termFull": "útstreymi (e. effusion)",
-      "definition": "flutningur gasfrumeinda eða -sameinda úr íláti yfir í lofttæmi í gegnum mjög lítil op",
+      "definition": "flutningur atóma eða sameinda á gasfasa úr íláti út í lofttæmi í gegnum mjög lítil op",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og sveim gasa",
-      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
+      "sectionTitle": "Útstreymi og flæði lofttegunda",
+      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
       "termId": "fs-idp39360864"
+    },
+    {
+      "termIs": "útstreymislögmál Grahams",
+      "termEn": "graham’s law of effusion",
+      "termFull": "útstreymislögmál Grahams (e. graham’s law of effusion)",
+      "definition": "sveim- og útstreymishraði lofttegunda er í öfugu hlutfalli við kvaðratrót mólmassa þeirra",
+      "chapter": 9,
+      "section": "9.4",
+      "sectionTitle": "Útstreymi og flæði lofttegunda",
+      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "termId": "fs-idp257364480"
     },
     {
       "termIs": "útvermið ferli",
@@ -7640,11 +7640,11 @@
       "termIs": "van der Waals-jafna",
       "termEn": "van der waals equation",
       "termFull": "van der Waals-jafna (e. van der waals equation)",
-      "definition": "breytt útgáfa af kjörgasjöfnunni sem inniheldur viðbótarliði til að taka tillit til hegðunar raungass",
+      "definition": "breytt útgáfa af kjörgasjöfnunni sem inniheldur viðbótarliði til að taka tillit til hegðunar sem víkur frá kjörgashegðun",
       "chapter": 9,
       "section": "9.6",
-      "sectionTitle": "Frávik frá kjörgaseiginleikum",
-      "sectionSlug": "9-6-fravik-fra-kjorgaseiginleikum",
+      "sectionTitle": "Hegðun raungass",
+      "sectionSlug": "9-6-hegdun-raungass",
       "termId": "fs-idm15517248"
     },
     {
@@ -8212,7 +8212,7 @@
       "termIs": "þrýstimælir",
       "termEn": "manometer",
       "termFull": "þrýstimælir (e. manometer)",
-      "definition": "tæki sem notað er til að mæla þrýsting gass sem er innilokað í íláti",
+      "definition": "tæki sem notað er til að mæla þrýsting á gasi sem er lokað inni í íláti",
       "chapter": 9,
       "section": "9.1",
       "sectionTitle": "Gasþrýstingur",

@@ -3458,5 +3458,20 @@
     "originalImage": "CNX_Chem_08_04_Band",
     "outputName": "CNX_Chem_08_04_Band_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_09_02_Charles2",
+    "outputName": "CNX_Chem_09_02_Charles2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_09_02_Exercise25_img",
+    "outputName": "CNX_Chem_09_02_Exercise25_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_09_03_WaterVapor2",
+    "outputName": "CNX_Chem_09_03_WaterVapor2_IS.svg",
+    "extension": ".svg"
   }
 ]

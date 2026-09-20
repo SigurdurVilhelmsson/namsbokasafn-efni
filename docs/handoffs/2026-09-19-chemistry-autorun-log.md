@@ -94,3 +94,62 @@ resonance` (`ether` withheld). **The driver HALTED here, twice, and both halts w
   ▶ The census is the reason this was not escalated as fundamental: 1 in 8,080 needs no re-purchase.
 - **Render:** 4 page renames → redirect rows appended. Manifest `green: true`, 0 unexplained,
   0 raw `[[` in HTML, roundtrip 0 deltas outside `meaning#`.
+
+## ch09 — 8 modules · ~1,709 + 176 ISK text + ~24 ISK figures
+
+Subset: `enthalpy, enthalpy change, torr`. Arm confirmed `glossary-only`.
+**This was the autorun DRIVER's first live execution ever** — batch A (ch00/01/02/08) finished at
+12:16 and `scripts/chemistry-autorun-chapter.sh` was written at 14:03 — and it surfaced two driver
+defects before it surfaced anything about the chapter. Both are recorded under "the driver" below.
+
+- **Text:** 8/8 translated, 0 failed, 170,944 chars (~1,709 ISK). The dry run priced it at 217,519
+  chars / 2,175 ISK, so billed **0.79×** the estimate.
+- **Figures:** 49 enumerated — 16 translated, 3 copied-textless, 30 unresolved. `VERDICT ok`.
+  2,361 billable characters (~24 ISK). The 30 unresolved are the artwork-delivery hole the tool
+  itself classes as *not a failure* (figure register ①).
+- 🔴 **m68754 was HELD BACK at buy time on `sup +4`, then REFUSED by inject, and the driver
+  STOPPED.** All three were right, and the chain is worth stating because the class is new:
+  OpenStax's figure `alt` spells formulas out for screen readers — *"Depleted superscript 238 U F
+  subscript 6"* — and the MT promoted the word *superscript* into a real `[[sup:238]]` marker
+  (×4) while leaving *subscript* as the Icelandic word. **An `alt` is an ATTRIBUTE and cannot
+  carry `<sup>` markup**, so the injector could not resolve them and refused the module rather
+  than writing it. No raw `[[` ever reached a page; step 7's page scan never had to be the last
+  line of defence.
+  - **Census before escalating:** those 4 markers are the ONLY bracket markers in ANY `alt`
+    segment across the whole chemistry MT corpus — 9 bought chapters, no precedent. So it is
+    *detected* and *sporadic*, which is [USER]'s 2026-09-06 retry condition.
+  - **One paid retry (~176 ISK) cleared it**: sup delta `+4 → 0`, module-wide EN 22 → IS 22,
+    0 segments differing. Non-deterministic, as the rule assumes. Inject then went 7/7 COMPLETE.
+- **Inject:** 7/7 COMPLETE, manifest `green: true`, 0 unexplained, 130 perfect.
+- **Render:** 5 pages renamed → 5 rows in the vefur redirect handoff. Page count 12 → 12.
+- **Checks:** 0 raw `[[` in HTML **with a live positive control** (the MT file still carries 24);
+  roundtrip missing = added = 20, **0 deltas outside the known `meaning#` renames**, and 0
+  ATTR/TEXT diffs.
+- **Premise pins bumped, each against its story, 0 new reds:** sidecars 208 → 209 and run records
+  67 → 75 (ch09's 8 units); mustache 3,200 → 2,988 and carriers 75 → 69 (dialect retirement);
+  ids 60,800 → 60,849, markers 30,027 → 30,076 and examined 21,976 → 22,025 — **all three the
+  same +49**, which equals ch09's figure count exactly (the March MT carried 0 `alt` segments in
+  all 7 modules). Four censuses, one delta: a prediction met rather than a number copied off a
+  red run.
+
+### The driver — two defects, both found on its first run, both fixed
+
+🔴 **D1 — step 2's pre-buy reader crashed and the run walked into the PAID buy.**
+`require()` on a bare relative path resolves as a MODULE NAME, not a file, so it threw
+`MODULE_NOT_FOUND`. The script is `set -uo pipefail` **without** `-e`, so it printed a stack trace
+and carried straight on to step 3. **A crashed check and a passing check left indistinguishable log
+evidence** — CLAUDE.md's *"an absence is not an answer"*, reached through a shell idiom.
+Cost this time: **0**, only because the same scan had already been run by hand for all 14 units.
+Fixed three ways, because one was not enough: read the path AS a path; let a failed read exit
+non-zero where a `halt` can see it; and make the documented STOP actually halt (it only *printed*).
+A term [USER] has already ruled is passed in `AUTORUN_RULED_TERMS` and does not halt.
+
+🔴 **D2 — `CH=appendices` silently became `ch00` for every VERIFICATION step.**
+Measured: `printf 'ch%02d' appendices` writes *"invalid number"* to **stderr** and still prints
+**`ch00`** to stdout. The buy would have been correct — `--chapter "$CH"` passes the raw string and
+`cnxml-inject`, `cnxml-render` and `figure-run` all handle `appendices` via `chapterDir`'s `-1`
+sentinel — but `CHD` drives the MT-arm glob, the SKIPPED/PROSE triage, the residue read and the
+roundtrip check, and `PAGES` drives the raw-`[[` scan. **All of them would have run against the
+preface and reported green on a unit nobody touched.** [USER] added the appendices to scope on
+2026-09-20, so this was one run from firing. `source-roundtrip-check.js` was separately confirmed
+to accept `appendices` (13 modules reported), so the fix is only in the driver.

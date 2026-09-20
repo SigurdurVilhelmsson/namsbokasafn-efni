@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_03_GlobalWarming-b740",
+ "renderHash": "0ab1340961aa4e52",
+ "composedHash": "0ab1340961aa4e52",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Atmosphere": "Andrúmsloft",
+  "Infrared radiation": "Innrauð geislun",
+  "Sun": "Sól"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

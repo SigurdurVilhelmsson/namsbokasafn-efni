@@ -1,0 +1,61 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_04_KMT2",
+ "renderHash": "a53c36d482750427",
+ "composedHash": "a53c36d482750427",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HEAT": "HITI",
+  "Amonton's law": "Lögmál Amontons",
+  "Boyle’s law": "Lögmál Boyles",
+  "Avogadro’s law": "Lögmál Avogadros",
+  "Volume decreased|Wall area decreased|= Increased pressure": "Rúmmál minnkað Veggsvæði minnkað = Aukinn þrýstingur",
+  "Container pressure constant|More gas molecules added|= Increased volume": "Þrýstingur í íláti stöðugur Fleiri gassameindum bætt við = Aukið rúmmál",
+  "Temperature increased|Volume constant|= Increased pressure": "Hitastig aukið Rúmmál stöðugt = Aukinn þrýstingur",
+  "Baseline": "Grunnlína",
+  "Volume decreased": "Rúmmál minnkað",
+  "Increased gas": "Aukið gas"
+ },
+ "mtAlternatives": {
+  "HEAT": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "HITI"
+  },
+  "Volume decreased|Wall area decreased|= Increased pressure": {
+   "kept": "joined",
+   "other": "Rúmmál minnkað Veggflatarmál minnkað = Aukinn þrýstingur",
+   "reason": "disagree",
+   "mt": "Rúmmál minnkað Veggsvæði minnkað = Aukinn þrýstingur"
+  },
+  "Container pressure constant|More gas molecules added|= Increased volume": {
+   "kept": "joined",
+   "other": "Stöðugur þrýstingur í íláti Fleiri gassameindum bætt við = Aukið rúmmál",
+   "reason": "disagree",
+   "mt": "Þrýstingur í íláti stöðugur Fleiri gassameindum bætt við = Aukið rúmmál"
+  },
+  "Temperature increased|Volume constant|= Increased pressure": {
+   "kept": "joined",
+   "other": "Hiti jókst Rúmmál óbreytt = Aukinn þrýstingur",
+   "reason": "disagree",
+   "mt": "Hitastig aukið Rúmmál stöðugt = Aukinn þrýstingur"
+  },
+  "Volume decreased": {
+   "kept": "joined",
+   "other": "Hljóðstyrkur lækkaður",
+   "reason": "disagree",
+   "mt": "Rúmmál minnkað"
+  },
+  "Increased gas": {
+   "kept": "joined",
+   "other": "Aukinn vindgangur",
+   "reason": "disagree",
+   "mt": "Aukið gas"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

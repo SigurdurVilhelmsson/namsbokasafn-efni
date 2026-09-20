@@ -33,3 +33,18 @@ _The live URLs are the `from` side; the re-MT retitled each section._
 | `chapters/08/8-2-blendingssvigrum-frumeinda.html` | `chapters/08/8-2-blendingssvigrum-atoma.html` | m68745 |
 | `chapters/08/8-3-fjolfold-tengi.html` | `chapters/08/8-3-margfold-tengi.html` | m68746 |
 | `chapters/08/8-4-sameindasvigrumakenningin.html` | `chapters/08/8-4-sameindasvigrumskenningin.html` | m68747 |
+
+## ch09 — 5 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/09/9-2-samband-thrystings-rummals-efnismagns-og-hitastigs.html` | `chapters/09/9-2-samband-thrystings-rummals-magns-og-hitastigs.html` | m68751 |
+| `chapters/09/9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og.html` | `chapters/09/9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og.html` | m68752 |
+| `chapters/09/9-4-utstreymi-og-sveim-gasa.html` | `chapters/09/9-4-utstreymi-og-flaedi-lofttegunda.html` | m68754 |
+| `chapters/09/9-5-hreyfiorkukenningin.html` | `chapters/09/9-5-hreyfi-sameindakenningin.html` | m68758 |
+| `chapters/09/9-6-fravik-fra-kjorgaseiginleikum.html` | `chapters/09/9-6-hegdun-raungass.html` | m68759 |
+
+_Two independent instruments agree on this set: five `Pruned superseded page` lines from the render,
+and five new rows in `05-publication/mt-preview/slug-map.mt-preview.json` carrying the same
+`moduleId`s. The page count is unchanged at 12, which is the control against a render that empties
+the directory instead of renaming within it._
