@@ -11,6 +11,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3'); // only for the bare-connection pragma check below
 const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { HOUSE_STYLE_SOURCE } = require('../lib/houseStyleTerms');
 const { importConcepts } = require('../scripts/import-concepts');
 const { countImportedConcepts, countImportedTerms } = require('../lib/houseStyleTerms');
 
@@ -48,11 +49,16 @@ describe('importConcepts', () => {
       db,
       payload([{ id: 321691, words: [w('EN', 'cell'), w('IS', 'rafhlað')] }], 'EDLISFR')
     );
+    // ⚠️ IMPORTED concepts only, for the same reason as the count above: since
+    // 2026-09-20 migration 051 seeds a house-style `cell → ker` (chemistry ch17),
+    // so a bare count of concepts carrying the English `cell` is 3 on every
+    // database and no longer means "what these two imports produced".
     const n = db
       .prepare(
-        "SELECT COUNT(DISTINCT concept_id) n FROM concept_term WHERE lang='en' AND text='cell'"
+        'SELECT COUNT(DISTINCT t.concept_id) n FROM concept_term t JOIN concept c ' +
+          "ON c.id = t.concept_id WHERE t.lang='en' AND t.text='cell' AND c.collection IS NOT ?"
       )
-      .get().n;
+      .get(HOUSE_STYLE_SOURCE).n;
     expect(n).toBe(2);
   });
 

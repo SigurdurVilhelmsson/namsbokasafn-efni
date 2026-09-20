@@ -684,6 +684,15 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     // check: a drop in compiles with NO drop in issues would mean the exemption
     // was skipping work it should have done.
     //
+    // ⚠️ 54 → 56 ON 2026-09-20, RE-MEASURED AND ACCOUNTED FOR, not adjusted until
+    // green. [USER] ruled `cell → ker` for chemistry ch17 (its English says `cell`
+    // 189 times), so migration 051 now seeds a `cell` concept that is in scope for
+    // efnafraedi-2e. This fixture contains EXACTLY 2 occurrences of the word —
+    // "The cell membrane regulates transport." and "ATP powers the reaction inside
+    // the cell." — and each costs one winner compile: +2, the whole delta.
+    // ▶ Those two sentences are also why that row travels in ch17's subset ONLY:
+    // outside electrochemistry, `cell` is a biological cell and `ker` is wrong.
+    //
     // ⚠️ WHAT THIS TEST IS FOR SURVIVED THE RISE. C24 exists because compiles
     // scaled with CORPUS SIZE (642 on this fixture pre-swap, ~28,903 in
     // production). 56 scales with MATCH COUNT: neither loadEnglishEntries nor
@@ -691,7 +700,7 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     // per-translation compile remains. A regression that reintroduced one
     // would land far above 56 on a 304-string fixture — which is exactly what
     // the calibration test below still guards.
-    expect(compiles).toBe(54);
+    expect(compiles).toBe(56);
   });
 
   it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
