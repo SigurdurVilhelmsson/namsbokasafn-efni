@@ -67,7 +67,12 @@ bash scripts/chemistry-autorun-chapter.sh 21 "enthalpy,enthalpy change,radioacti
    These must reach vefur **before** the next chemistry sync.
 3. **Log what it surfaced** → [`2026-09-19-chemistry-autorun-log.md`](./2026-09-19-chemistry-autorun-log.md),
    one section per chapter: what was bought, what it cost, what an editor must fix.
-4. **Commit** the chapter (`books/` + docs), one commit per chapter. **PR every 4–5 chapters**;
+4. **Bump the provenance premise pin** in `tools/__tests__/remt-checks-mt-runrecord.test.js`:
+   every chapter bought adds its module sidecars plus one `chapter-metadata` one, and turns them
+   into v2-with-a-run-record. **Re-measure and bump in the commit that buys the chapter** — it is a
+   premise pin, and leaving it turns CI red on the next PR. (Batch A moved it 205 → 208 sidecars and
+   43 → 67 run records.)
+5. **Commit** the chapter (`books/` + docs), one commit per chapter. **PR every 4–5 chapters**;
    [USER] merges. No deploy is needed — this is content only.
 
 ## What is already known to happen, and is NOT a stop
