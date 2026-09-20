@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_04_AOtype_img",
+ "renderHash": "676728a2cdfe5cab",
+ "composedHash": "676728a2cdfe5cab",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "3px and 3px": "3px og 3px",
+  "3px and 3py": "3px og 3py",
+  "3py and 3py": "3py og 3py"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

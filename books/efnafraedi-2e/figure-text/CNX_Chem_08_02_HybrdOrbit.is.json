@@ -1,0 +1,66 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_HybrdOrbit",
+ "renderHash": "568201d78c66e896",
+ "composedHash": "568201d78c66e896",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Arrangement": "Fyrirkomulag",
+  "Regions of|Electron|Density": "Svæði rafeindaþéttleika",
+  "linear": "línulegt",
+  "trigonal planar": "þríhyrningsflatneskja",
+  "tetrahedral": "ferflötungur",
+  "trigonal|bipyramidal": "tvípýramídi með þríhyrningsgrunnflöt",
+  "octahedral": "áttflötungur",
+  "Hybridization": "Blendingun"
+ },
+ "mtAlternatives": {
+  "Regions of|Electron|Density": {
+   "kept": "joined",
+   "other": "Rafeindaþéttnisvæði",
+   "reason": "disagree",
+   "mt": "Svæði rafeindaþéttleika"
+  },
+  "linear": {
+   "kept": "joined",
+   "other": "línuleg",
+   "reason": "disagree",
+   "mt": "línulegt"
+  },
+  "trigonal planar": {
+   "kept": "joined",
+   "other": "Þríhyrningsflatningur",
+   "reason": "disagree",
+   "mt": "þríhyrningsflatneskja"
+  },
+  "tetrahedral": {
+   "kept": "joined",
+   "other": "fjórflötungs-",
+   "reason": "disagree",
+   "mt": "ferflötungur"
+  },
+  "trigonal|bipyramidal": {
+   "kept": "joined",
+   "other": "Þríhyrnd tvípýramídalaga",
+   "reason": "disagree",
+   "mt": "tvípýramídi með þríhyrningsgrunnflöt"
+  },
+  "octahedral": {
+   "kept": "joined",
+   "other": "áttflötungs-",
+   "reason": "disagree",
+   "mt": "áttflötungur"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Tegundablöndun",
+   "reason": "disagree",
+   "mt": "Blendingun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

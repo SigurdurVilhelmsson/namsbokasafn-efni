@@ -51,6 +51,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_Gouy",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_Gouy-caption"
       },
@@ -222,6 +223,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_08_04_waveadd",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_waveadd-caption"
       },
@@ -244,6 +246,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_ssigma",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_ssigma-caption"
       },
@@ -279,6 +282,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_pMOsigma",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_pMOsigma-caption"
       },
@@ -301,6 +305,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_pMOpi",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_pMOpi-caption"
       },
@@ -434,6 +439,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_Kohn",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_Kohn-caption"
       },
@@ -467,6 +473,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_04_HIVProteas",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68747:caption:CNX_Chem_08_04_HIVProteas-caption"
       },
@@ -502,6 +509,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_08_04_FillMo",
+          "title": null,
           "caption": {
             "segmentId": "m68747:caption:CNX_Chem_08_04_FillMo-caption"
           },
@@ -575,6 +583,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_08_04_H2MO",
+          "title": null,
           "caption": {
             "segmentId": "m68747:caption:CNX_Chem_08_04_H2MO-caption"
           },
@@ -621,6 +630,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_08_04_He2MO",
+          "title": null,
           "caption": {
             "segmentId": "m68747:caption:CNX_Chem_08_04_He2MO-caption"
           },
@@ -661,6 +671,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_08_04_X2MOs",
+              "title": null,
               "caption": {
                 "segmentId": "m68747:caption:CNX_Chem_08_04_X2MOs-caption"
               },
@@ -682,6 +693,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_08_04_spmix",
+              "title": null,
               "caption": {
                 "segmentId": "m68747:caption:CNX_Chem_08_04_spmix-caption"
               },
@@ -969,6 +981,7 @@
               "type": "figure",
               "id": "CNX_Chem_08_04_Band",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68747:caption:CNX_Chem_08_04_Band-caption"
               },
@@ -1052,6 +1065,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_08_04_O2MO",
+              "title": null,
               "caption": {
                 "segmentId": "m68747:caption:CNX_Chem_08_04_O2MO-caption"
               },

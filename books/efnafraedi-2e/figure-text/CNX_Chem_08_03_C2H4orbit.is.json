@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_03_C2H4orbit",
+ "renderHash": "78a25741241b3d4b",
+ "composedHash": "78a25741241b3d4b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "One π bond": "Eitt π-tengi",
+  "σ bonds": "σ-tengi",
+  "σ bond": "σ-tengi"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_01_bondtype_img",
+ "renderHash": "010d181f50ce57db",
+ "composedHash": "010d181f50ce57db",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "One σ bond|No π bonds": "Eitt σ-tengi Ekkert π-tengi",
+  "One σ bond|One π bond": "Eitt σ-tengi Eitt π-tengi",
+  "One σ bond|Two π bonds": "Eitt σ-tengi Tvö π-tengi"
+ },
+ "mtAlternatives": {
+  "One σ bond|No π bonds": {
+   "kept": "joined",
+   "other": "Eitt σ-tengi Engin π-tengi",
+   "reason": "disagree",
+   "mt": "Eitt σ-tengi Ekkert π-tengi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

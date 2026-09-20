@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T11:50:49.600Z",
+  "generated": "2026-09-20T12:21:49.088Z",
   "termCount": 763,
   "entries": [
     {
@@ -356,13 +356,13 @@
     },
     {
       "termIs": "andbindandi svigrúm",
-      "termEn": "antibonding orbital",
-      "termFull": "andbindandi svigrúm (e. antibonding orbital)",
+      "termEn": null,
+      "termFull": "andbindandi svigrúm",
       "definition": "sameindasvigrúm staðsett utan svæðisins milli tveggja kjarna; rafeindir í andbindandi svigrúmi gera sameindina óstöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm143725728"
     },
     {
@@ -774,13 +774,13 @@
     },
     {
       "termIs": "bindandi svigrúm",
-      "termEn": "bonding orbital",
-      "termFull": "bindandi svigrúm (e. bonding orbital)",
-      "definition": "sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi stöðga sameind",
+      "termEn": null,
+      "termFull": "bindandi svigrúm",
+      "definition": "sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi gera sameindina stöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm133686144"
     },
     {
@@ -850,25 +850,14 @@
       "termId": "fs-idp83966400"
     },
     {
-      "termIs": "blending",
-      "termEn": "hybridization",
-      "termFull": "blending (e. hybridization)",
-      "definition": "líkan sem lýsir breytingum á frumeindasvigrúmum frumeindar þegar hún myndar samgilt efnasamband",
-      "chapter": 8,
-      "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
-      "termId": "fs-idm29433408"
-    },
-    {
-      "termIs": "blendingurssvigrúm",
+      "termIs": "blendingssvigrúm",
       "termEn": "hybrid orbital",
-      "termFull": "blendingurssvigrúm (e. hybrid orbital)",
-      "definition": "svigrúm sem myndast við samruna frumeindasvigrúma á miðfrumeind",
+      "termFull": "blendingssvigrúm (e. hybrid orbital)",
+      "definition": "svigrúm sem myndast við samruna atómsvigrúma á miðatómi",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idp102362976"
     },
     {
@@ -1719,6 +1708,17 @@
       "termId": "fs-idp51917808"
     },
     {
+      "termIs": "ferssegulmögnun",
+      "termEn": null,
+      "termFull": "ferssegulmögnun",
+      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm100788960"
+    },
+    {
       "termIs": "fjórða hliðarmálmaröðin",
       "termEn": "fourth transition series",
       "termFull": "fjórða hliðarmálmaröðin (e. fourth transition series)",
@@ -2162,11 +2162,11 @@
       "termIs": "gildistengiskenningin",
       "termEn": "valence bond theory",
       "termFull": "gildistengiskenningin (e. valence bond theory)",
-      "definition": "lýsing á efnatengjum sem felur í sér að frumeindasvigrúm skarast til að mynda σ- eða π-tengi, þar sem rafeindapörum er deilt",
+      "definition": "lýsing á tengjum sem felur í sér að atómsvigrúm skarast og mynda σ- eða π-tengi, þar sem rafeindapörum er deilt",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp81645184"
     },
     {
@@ -2588,17 +2588,6 @@
       "termId": "fs-idm231758480"
     },
     {
-      "termIs": "hliðarsegulmagn",
-      "termEn": "paramagnetism",
-      "termFull": "hliðarsegulmagn (e. paramagnetism)",
-      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm100788960"
-    },
-    {
       "termIs": "hliðlæg teningslaga grindareining",
       "termEn": "face-centered cubic unit cell",
       "termFull": "hliðlæg teningslaga grindareining (e. face-centered cubic unit cell)",
@@ -2674,6 +2663,17 @@
       "sectionTitle": "Rafsegulorka",
       "sectionSlug": "6-1-rafsegulorka",
       "termId": "fs-idm36067216"
+    },
+    {
+      "termIs": "hnútur",
+      "termEn": "node",
+      "termFull": "hnútur (e. node)",
+      "definition": "plan sem aðskilur mismunandi bleðla svigrúma, þar sem líkurnar á að finna rafeind eru núll",
+      "chapter": 8,
+      "section": "8.1",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "termId": "fs-idp123920528"
     },
     {
       "termIs": "hraðafasti (k)",
@@ -4095,14 +4095,14 @@
       "termId": "fs-idp35872064"
     },
     {
-      "termIs": "línuleg samantekt frumeindasvigrúma",
-      "termEn": "linear combination of atomic orbitals",
-      "termFull": "línuleg samantekt frumeindasvigrúma (e. linear combination of atomic orbitals)",
-      "definition": "aðferð til að sameina frumeindasvigrúm til að búa til sameindasvigrúm",
+      "termIs": "línuleg samantekt atómsvigrýma",
+      "termEn": null,
+      "termFull": "línuleg samantekt atómsvigrýma",
+      "definition": "aðferð til að sameina atómsvigrými til að búa til sameindasvigrými",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm41528352"
     },
     {
@@ -4931,17 +4931,6 @@
       "termId": "fs-idm26669728"
     },
     {
-      "termIs": "mótseglun",
-      "termEn": "diamagnetism",
-      "termFull": "mótseglun (e. diamagnetism)",
-      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm83103936"
-    },
-    {
       "termIs": "myndefni",
       "termEn": "product",
       "termFull": "myndefni (e. product)",
@@ -5072,17 +5061,6 @@
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
       "sectionSlug": "18-9-tilvist-framleidsla-og-efnasambond-surefnis",
       "termId": "fs-idp53118608"
-    },
-    {
-      "termIs": "nóða",
-      "termEn": "node",
-      "termFull": "nóða (e. node)",
-      "definition": "plan sem aðskilur mismunandi bleðla svigrúma, þar sem líkurnar á að finna rafeind eru núll",
-      "chapter": 8,
-      "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
-      "termId": "fs-idp123920528"
     },
     {
       "termIs": "næringarkaloría (kaloría)",
@@ -5459,14 +5437,14 @@
       "termId": "fs-idp121441888"
     },
     {
-      "termIs": "pí tengi (π tengi)",
+      "termIs": "pí-tengi (π-tengi)",
       "termEn": "pi bond (π bond)",
-      "termFull": "pí tengi (π tengi) (e. pi bond (π bond))",
-      "definition": "samgilt tengi sem myndast við hlið við hlið skörun frumeindasvigrúma; rafeindaþéttleikinn finnst á gagnstæðum hliðum tengiássins",
+      "termFull": "pí-tengi (π-tengi) (e. pi bond (π bond))",
+      "definition": "samgilt tengi sem myndast við hliðstæða skörun atómsvigrúma; rafeindaþéttleikann er að finna á gagnstæðum hliðum kjarnaássins",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp94790208"
     },
     {
@@ -5866,14 +5844,14 @@
       "termId": "fs-idm40748576"
     },
     {
-      "termIs": "s-p blöndun",
-      "termEn": "s-p mixing",
-      "termFull": "s-p blöndun (e. s-p mixing)",
-      "definition": "breyting sem veldur því að σp svigrúm verða óstöðugri en πp svigrúm vegna blöndunar s- og p-byggðra sameindasvigrúma með svipaða orku.",
+      "termIs": "s-p-blöndun",
+      "termEn": null,
+      "termFull": "s-p-blöndun",
+      "definition": "breyting sem veldur því að σp-svigrúm verða óstöðugri en πp-svigrúm vegna blöndunar s- og p-byggðra sameindasvigrúma með svipaða orku.",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idp5821920"
     },
     {
@@ -5977,35 +5955,35 @@
     },
     {
       "termIs": "sameindasvigrúm",
-      "termEn": "molecular orbital",
-      "termFull": "sameindasvigrúm (e. molecular orbital)",
-      "definition": "rými þar sem miklar líkur eru á að finna rafeind í sameind",
+      "termEn": null,
+      "termFull": "sameindasvigrúm",
+      "definition": "rúmsvæði þar sem miklar líkur eru á að finna rafeind í sameind",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm131261760"
     },
     {
-      "termIs": "sameindasvigrúmakenningin",
-      "termEn": "molecular orbital theory",
-      "termFull": "sameindasvigrúmakenningin (e. molecular orbital theory)",
-      "definition": "líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla frumeinda",
+      "termIs": "sameindasvigrúmskenningin",
+      "termEn": null,
+      "termFull": "sameindasvigrúmskenningin",
+      "definition": "líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla atóma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm249965088"
     },
     {
-      "termIs": "sameindasvigrúmarit",
-      "termEn": "molecular orbital diagram",
-      "termFull": "sameindasvigrúmarit (e. molecular orbital diagram)",
-      "definition": "sjónræn framsetning á afstæðum orkustigum sameindasvigrúma",
+      "termIs": "sameindasvigrúmsmynd",
+      "termEn": null,
+      "termFull": "sameindasvigrúmsmynd",
+      "definition": "sjónræn framsetning á afstæðum orkustigum sameindasvigrýma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm132723600"
     },
     {
@@ -6152,6 +6130,17 @@
       "termId": "fs-idp41345504"
     },
     {
+      "termIs": "Samorkusvigrými",
+      "termEn": null,
+      "termFull": "Samorkusvigrými",
+      "definition": "svigrúm sem hafa sömu orku",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm167738656"
+    },
+    {
       "termIs": "samsætur",
       "termEn": "isotopes",
       "termFull": "samsætur (e. isotopes)",
@@ -6229,14 +6218,14 @@
       "termId": "fs-idm23328032"
     },
     {
-      "termIs": "sigma tengi (σ tengi)",
+      "termIs": "sigma-tengi (σ-tengi)",
       "termEn": "sigma bond (σ bond)",
-      "termFull": "sigma tengi (σ tengi) (e. sigma bond (σ bond))",
-      "definition": "samgilt tengi sem myndast við skörun frumeindasvigrúma meðfram tengiásnum",
+      "termFull": "sigma-tengi (σ-tengi) (e. sigma bond (σ bond))",
+      "definition": "samgilt tengi sem myndast við skörun atómsvigrúma meðfram kjarnaásnum",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp36919168"
     },
     {
@@ -6408,11 +6397,11 @@
       "termIs": "skörun",
       "termEn": "overlap",
       "termFull": "skörun (e. overlap)",
-      "definition": "samvist svigrúma frá tveimur mismunandi frumeindum sem deila sama svæði í rúminu, sem leiðir til myndunar á samgildu tengi",
+      "definition": "samvist svigrúma frá tveimur mismunandi atómum sem deila sama svæði í rúmi, sem leiðir til myndunar samgilds tengis",
       "chapter": 8,
       "section": "8.1",
-      "sectionTitle": "Kenning um gildistengi",
-      "sectionSlug": "8-1-kenning-um-gildistengi",
+      "sectionTitle": "Gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp42480608"
     },
     {
@@ -6438,58 +6427,58 @@
       "termId": "fs-idm121167952"
     },
     {
-      "termIs": "sp-blendingurssvigrúm",
+      "termIs": "sp-blendingssvigrúm",
       "termEn": "sp hybrid orbital",
-      "termFull": "sp-blendingurssvigrúm (e. sp hybrid orbital)",
-      "definition": "eitt af tveimur svigrúmum með línulegri fyrirkomulagi sem myndast við samruna eins s- og eins p-svigrúms",
+      "termFull": "sp-blendingssvigrúm (e. sp hybrid orbital)",
+      "definition": "eitt af tveimur svigrúmum í línulegri uppröðun sem myndast við samruna eins s-svigrúms og eins p-svigrúms",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm71427776"
     },
     {
-      "termIs": "sp2-blendingurssvigrúm",
+      "termIs": "sp2-blendingssvigrúm",
       "termEn": "sp2 hybrid orbital",
-      "termFull": "sp2-blendingurssvigrúm (e. sp2 hybrid orbital)",
-      "definition": "eitt af þremur svigrúmum með þríhyrningslaga flötu fyrirkomulagi sem myndast við samruna eins s- og tveggja p-svigrúma",
+      "termFull": "sp2-blendingssvigrúm (e. sp2 hybrid orbital)",
+      "definition": "eitt af þremur svigrúmum í þríhyrndri uppröðun sem myndast við samruna eins s-svigrúms og tveggja p-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm48701168"
     },
     {
-      "termIs": "sp3-blendingurssvigrúm",
+      "termIs": "sp3-blendingssvigrúm",
       "termEn": "sp3 hybrid orbital",
-      "termFull": "sp3-blendingurssvigrúm (e. sp3 hybrid orbital)",
-      "definition": "eitt af fjórum svigrúmum með ferflötungsfyrirkomulagi sem myndast við samruna eins s- og þriggja p-svigrúma",
+      "termFull": "sp3-blendingssvigrúm (e. sp3 hybrid orbital)",
+      "definition": "eitt af fjórum svigrúmum í fjórflötungs uppröðun sem myndast við samruna eins s-svigrúms og þriggja p-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idp88964992"
     },
     {
-      "termIs": "sp3d-blendingurssvigrúm",
+      "termIs": "sp3d-blendingssvigrúm",
       "termEn": "sp3d hybrid orbital",
-      "termFull": "sp3d-blendingurssvigrúm (e. sp3d hybrid orbital)",
-      "definition": "eitt af fimm svigrúmum með þríhyrningslaga tvípýramídafyrirkomulagi sem myndast við samruna eins s-, þriggja p- og eins d-svigrúms",
+      "termFull": "sp3d-blendingssvigrúm (e. sp3d hybrid orbital)",
+      "definition": "eitt af fimm svigrúmum í þríhyrndri tvípíramída uppröðun sem myndast við samruna eins s-svigrúms, þriggja p-svigrúma og eins d-svigrúms",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm16838896"
     },
     {
-      "termIs": "sp3d2-blendingurssvigrúm",
+      "termIs": "sp3d2-blendingssvigrúm",
       "termEn": "sp3d2 hybrid orbital",
-      "termFull": "sp3d2-blendingurssvigrúm (e. sp3d2 hybrid orbital)",
-      "definition": "eitt af sex svigrúmum með áttflötungsfyrirkomulagi sem myndast við samruna eins s-, þriggja p- og tveggja d-svigrúma",
+      "termFull": "sp3d2-blendingssvigrúm (e. sp3d2 hybrid orbital)",
+      "definition": "eitt af sex svigrúmum í áttflötungs uppröðun sem myndast við samruna eins s-svigrúms, þriggja p-svigrúma og tveggja d-svigrúma",
       "chapter": 8,
       "section": "8.2",
-      "sectionTitle": "Blendingssvigrúm frumeinda",
-      "sectionSlug": "8-2-blendingssvigrum-frumeinda",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
       "termId": "fs-idm47317072"
     },
     {
@@ -7010,6 +6999,17 @@
       "termId": "fs-idm164804608"
     },
     {
+      "termIs": "svigrúmablöndun",
+      "termEn": "hybridization",
+      "termFull": "svigrúmablöndun (e. hybridization)",
+      "definition": "líkan sem lýsir breytingum á atómsvigrúmum atóms þegar það myndar samgilt efnasamband",
+      "chapter": 8,
+      "section": "8.2",
+      "sectionTitle": "Blendingssvigrúm atóma",
+      "sectionSlug": "8-2-blendingssvigrum-atoma",
+      "termId": "fs-idm29433408"
+    },
+    {
       "termIs": "sýra",
       "termEn": "acid",
       "termFull": "sýra (e. acid)",
@@ -7142,17 +7142,6 @@
       "termId": "fs-idp64874768"
     },
     {
-      "termIs": "tengigráða",
-      "termEn": "bond order",
-      "termFull": "tengigráða (e. bond order)",
-      "definition": "fjöldi rafeindapara milli tveggja frumeinda; hana má finna út frá fjölda efnatengja í Lewis mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm57102096"
-    },
-    {
       "termIs": "tengihorn",
       "termEn": "bond angle",
       "termFull": "tengihorn (e. bond angle)",
@@ -7184,6 +7173,17 @@
       "sectionTitle": "Styrkur jóna- og samgildra tengja",
       "sectionSlug": "7-5-styrkur-jona-og-samgildra-tengja",
       "termId": "fs-idp10319376"
+    },
+    {
+      "termIs": "tengitala",
+      "termEn": null,
+      "termFull": "tengitala",
+      "definition": "fjöldi rafeindapara milli tveggja atóma; hana má finna út frá fjölda tengja í Lewis-mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm57102096"
     },
     {
       "termIs": "tengslaísómera",
@@ -7296,14 +7296,14 @@
       "termId": "fs-idp75431424"
     },
     {
-      "termIs": "tvíatóma sameind með frumeindum úr sömu lotu",
-      "termEn": "homonuclear diatomic molecule",
-      "termFull": "tvíatóma sameind með frumeindum úr sömu lotu (e. homonuclear diatomic molecule)",
-      "definition": "sameind sem samanstendur af tveimur eins frumeindum",
+      "termIs": "tvíatóma sameind með eins atómum",
+      "termEn": null,
+      "termFull": "tvíatóma sameind með eins atómum",
+      "definition": "sameind sem samanstendur af tveimur eins atómum",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm165896720"
     },
     {
@@ -7580,17 +7580,6 @@
       "sectionTitle": "Þróun skammtakenningarinnar",
       "sectionSlug": "6-3-throun-skammtakenningarinnar",
       "termId": "fs-idm442273488"
-    },
-    {
-      "termIs": "úrkynjuð svigrúm",
-      "termEn": "degenerate orbitals",
-      "termFull": "úrkynjuð svigrúm (e. degenerate orbitals)",
-      "definition": "svigrúm sem hafa sömu orku",
-      "chapter": 8,
-      "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
-      "termId": "fs-idm167738656"
     },
     {
       "termIs": "útfeldi",
@@ -8264,6 +8253,17 @@
       "termId": "fs-idm146567360"
     },
     {
+      "termIs": "þversegulmögnun",
+      "termEn": null,
+      "termFull": "þversegulmögnun",
+      "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir",
+      "chapter": 8,
+      "section": "8.4",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "termId": "fs-idm83103936"
+    },
+    {
       "termIs": "þverúran",
       "termEn": "transuranium element",
       "termFull": "þverúran (e. transuranium element)",
@@ -8352,47 +8352,47 @@
       "termId": "fs-idp157417744"
     },
     {
-      "termIs": "π-tengisvigrúm",
-      "termEn": "π bonding orbital",
-      "termFull": "π-tengisvigrúm (e. π bonding orbital)",
-      "definition": "sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum kjarnaássins",
+      "termIs": "π-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "π-bindandi svigrúm",
+      "definition": "sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum tengiássins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm100344544"
     },
     {
-      "termIs": "π*-andbindandi svigrúm",
-      "termEn": "π* bonding orbital",
-      "termFull": "π*-andbindandi svigrúm (e. π* bonding orbital)",
-      "definition": "andbindandi sameindasvigrúm sem myndast við hliðstæða skörun frumeindasvigrúma í andfasa, þar sem rafeindaþéttleikinn er beggja vegna kjarnaássins og nóða er á milli kjarnanna",
+      "termIs": "π*-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "π*-bindandi svigrúm",
+      "definition": "andbindandi sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma úr fasa, þar sem rafeindaþéttleikinn er báðum megin við tengiásinn og það er núllpunktur milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm18620192"
     },
     {
-      "termIs": "σ-tengisvigrúm",
-      "termEn": "σ bonding orbital",
-      "termFull": "σ-tengisvigrúm (e. σ bonding orbital)",
-      "definition": "sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram tengiásnum",
+      "termIs": "σ-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "σ-bindandi svigrúm",
+      "definition": "sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram ás tengisins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm41960016"
     },
     {
-      "termIs": "σ*-andbindandi svigrúm",
-      "termEn": "σ* bonding orbital",
-      "termFull": "σ*-andbindandi svigrúm (e. σ* bonding orbital)",
-      "definition": "andbindandi sameindasvigrúm sem myndast við skörun frumeindasvigrúma í andfasa meðfram tengiásnum, sem myndar nóðu á milli kjarnanna",
+      "termIs": "σ*-bindandi svigrúm",
+      "termEn": null,
+      "termFull": "σ*-bindandi svigrúm",
+      "definition": "andbindandi sameindasvigrúm sem myndast við skörun atómsvigrúma í andfasa meðfram ás tengisins og myndar nódu milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sameindasvigrúmakenningin",
-      "sectionSlug": "8-4-sameindasvigrumakenningin",
+      "sectionTitle": "Sámeindasvigrúmskenningin",
+      "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm169269152"
     }
   ]

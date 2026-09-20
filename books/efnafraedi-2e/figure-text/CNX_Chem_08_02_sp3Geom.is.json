@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_sp3Geom",
+ "renderHash": "9b6d48a867b3df89",
+ "composedHash": "9b6d48a867b3df89",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Gives a tetrahedral|arrangement": "Gefur fjórflötungsfyrirkomulag",
+  "Hybridization": "Blendingur"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

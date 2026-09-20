@@ -40,6 +40,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_01_Morse",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68744:caption:CNX_Chem_08_01_Morse-caption"
       },
@@ -528,6 +529,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_01_overlap",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68744:caption:CNX_Chem_08_01_overlap-caption"
       },
@@ -550,6 +552,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_01_sigma",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68744:caption:CNX_Chem_08_01_sigma-caption"
       },
@@ -572,6 +575,7 @@
       "type": "figure",
       "id": "CNX_Chem_08_01_pi",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68744:caption:CNX_Chem_08_01_pi-caption"
       },

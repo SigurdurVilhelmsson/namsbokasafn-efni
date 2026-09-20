@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_sp3Diag",
+ "renderHash": "bcfa41937161e675",
+ "composedHash": "bcfa41937161e675",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Orbitals in an isolated C atom": "Svigrúm í einangruðu C-atómi",
+  "Orbitals in the sp3 hybridized C atom in CH4": "Svigrúm í sp3-blönduðu C-atómi í CH4",
+  "Hybridization": "Blending"
+ },
+ "mtAlternatives": {
+  "Orbitals in the sp3 hybridized C atom in CH4": {
+   "kept": "joined",
+   "other": "Svigrúm í sp3-blendnu C-atóminu í CH4",
+   "reason": "disagree",
+   "mt": "Svigrúm í sp3-blönduðu C-atómi í CH4"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Blendingur",
+   "reason": "disagree",
+   "mt": "Blending"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

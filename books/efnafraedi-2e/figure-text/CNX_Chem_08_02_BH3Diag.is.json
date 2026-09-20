@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_02_BH3Diag",
+ "renderHash": "077e07e78340b442",
+ "composedHash": "077e07e78340b442",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Orbitals in an isolated B atom": "Sviðrúm í einangruðu B-atómi",
+  "Orbitals in the sp2 hybridized B atom in BH3": "Sviðrúm í sp2-blendnuðu B-atómi í BH3",
+  "Hybridization": "Blending",
+  "Unhybridized": "Óblendnað"
+ },
+ "mtAlternatives": {
+  "Orbitals in an isolated B atom": {
+   "kept": "joined",
+   "other": "Svigrúm í einangraðri B-frumeind",
+   "reason": "disagree",
+   "mt": "Sviðrúm í einangruðu B-atómi"
+  },
+  "Orbitals in the sp2 hybridized B atom in BH3": {
+   "kept": "joined",
+   "other": "Svigrúm í sp2-blendinguðu B-atómi í BH3",
+   "reason": "disagree",
+   "mt": "Sviðrúm í sp2-blendnuðu B-atómi í BH3"
+  },
+  "Hybridization": {
+   "kept": "joined",
+   "other": "Blendingur",
+   "reason": "disagree",
+   "mt": "Blending"
+  },
+  "Unhybridized": {
+   "kept": "joined",
+   "other": "Óblendingur",
+   "reason": "disagree",
+   "mt": "Óblendnað"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

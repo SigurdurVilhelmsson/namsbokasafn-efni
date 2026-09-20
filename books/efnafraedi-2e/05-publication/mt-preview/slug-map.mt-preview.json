@@ -58,6 +58,26 @@
       "moduleId": "m68732",
       "recordedAt": "2026-09-19"
     },
+    "chapters/08/8-1-kenning-um-gildistengi.html": {
+      "to": "chapters/08/8-1-gildisrafeindatengjakenningin.html",
+      "moduleId": "m68744",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-2-blendingssvigrum-frumeinda.html": {
+      "to": "chapters/08/8-2-blendingssvigrum-atoma.html",
+      "moduleId": "m68745",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-3-fjolfold-tengi.html": {
+      "to": "chapters/08/8-3-margfold-tengi.html",
+      "moduleId": "m68746",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/08/8-4-sameindasvigrumakenningin.html": {
+      "to": "chapters/08/8-4-sameindasvigrumskenningin.html",
+      "moduleId": "m68747",
+      "recordedAt": "2026-09-20"
+    },
     "chapters/10/10-5-fast-astand-efnis.html": {
       "to": "chapters/10/10-5-fastur-efnishamur.html",
       "moduleId": "m68770",

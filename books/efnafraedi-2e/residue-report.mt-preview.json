@@ -1,10 +1,10 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T11:50:47.746Z",
+  "generatedAt": "2026-09-20T12:21:47.289Z",
   "summary": {
-    "modulesWithResidue": 1,
-    "exactResidues": 69,
+    "modulesWithResidue": 2,
+    "exactResidues": 70,
     "ratioWarnings": 66,
     "toleratedResidues": 4
   },
@@ -646,6 +646,13 @@
           "ratio": 0.75
         }
       ],
+      "tolerated": []
+    },
+    "m68744": {
+      "exact": [
+        "m68744:para:fs-idp92007424"
+      ],
+      "warnings": [],
       "tolerated": []
     }
   }

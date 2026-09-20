@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_03_Acetonitri_img",
+ "renderHash": "7f63502d8446ff94",
+ "composedHash": "7f63502d8446ff94",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "dipole moment": "tvískautsvægi"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

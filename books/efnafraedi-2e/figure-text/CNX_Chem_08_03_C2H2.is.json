@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_08_03_C2H2",
+ "renderHash": "a0caa1a76eb279e9",
+ "composedHash": "a0caa1a76eb279e9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Second π bond": "Annað π-tengi",
+  "One π bond": "Eitt π-tengi",
+  "σ bond": "σ-tengi"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -24,3 +24,12 @@ _The live URLs are the `from` side; the re-MT retitled each section._
 | `chapters/02/2-3-bygging-atoms-og-taknmal.html` | `chapters/02/2-3-atombygging-og-taknmal.html` | m68692 |
 | `chapters/02/2-6-jona-og-sameindaefnasambond.html` | `chapters/02/2-6-jona-og-sameindasambond.html` | m68696 |
 | `chapters/02/2-7-nafnakerfi-efna.html` | `chapters/02/2-7-nafnakerfi-efnafraedinnar.html` | m68698 |
+
+## ch08 — 4 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/08/8-1-kenning-um-gildistengi.html` | `chapters/08/8-1-gildisrafeindatengjakenningin.html` | m68744 |
+| `chapters/08/8-2-blendingssvigrum-frumeinda.html` | `chapters/08/8-2-blendingssvigrum-atoma.html` | m68745 |
+| `chapters/08/8-3-fjolfold-tengi.html` | `chapters/08/8-3-margfold-tengi.html` | m68746 |
+| `chapters/08/8-4-sameindasvigrumakenningin.html` | `chapters/08/8-4-sameindasvigrumskenningin.html` | m68747 |

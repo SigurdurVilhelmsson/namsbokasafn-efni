@@ -71,3 +71,26 @@ Icelandic (1,736 terms, ties 336 → 333). The two exceptions are the known §C1
 - **Render:** 3 pages renamed → rows appended to the vefur redirect handoff.
 - **Checks:** 0 raw `[[` in HTML; roundtrip missing = added = 28, **0 deltas outside the known
   `meaning#` renames**.
+
+## ch08 — 5 modules · ~1,355 + 610 ISK text + ~31 ISK figures
+
+Subset: `enthalpy pair, hybridization, hybrid orbital, bonding orbital, Lewis, Lewis structure,
+resonance` (`ether` withheld). **The driver HALTED here, twice, and both halts were right.**
+
+- **Figures:** 72 enumerated — 25 translated, 45 textless recomposed, 2 photos; 55 published.
+- 🔴 **m68747 FAILED inject: "1 marker survived — a `[[term:` was not converted".** This is ⑰'s
+  KNOWN set, which CLAUDE.md names by module: m68700 (ch03), m68733 (ch06), **m68747 (ch08)**,
+  m68844 (ch19). Remedy applied as documented: `--module m68747 --no-annotate-en` → COMPLETE,
+  PERFECT fidelity. ⚠️ **ch19 will hit the same thing at m68844.**
+- ⚠️ **m68745 came back with 5 segments of ENGLISH PROSE** (3 figure captions + 2 paragraphs).
+  Sporadic non-translation. One per-module retry (~431 ISK) translated **5 of 5**. That is [USER]'s
+  2026-09-06 rule working exactly as written.
+- 📋 **m68744 `para:fs-idp92007424` — the π-bond definition — came back ENGLISH TWICE** (a second
+  paid attempt, ~179 ISK, reproduced it). **It is NOT sporadic and it is NOT systematic:** a census
+  over all 9 bought chapters (**8,080 segments**) finds **13** identical EN/IS prose-shaped
+  segments, and **12 of the 13 are chemical-formula answer lists that are correctly identical**
+  ("(a) CaS; (b) (NH₄)₂SO₄…"). This paragraph is the only true one. Injected with
+  `--allow-incomplete`; **an editor translates that one paragraph** in the segment editor.
+  ▶ The census is the reason this was not escalated as fundamental: 1 in 8,080 needs no re-purchase.
+- **Render:** 4 page renames → redirect rows appended. Manifest `green: true`, 0 unexplained,
+  0 raw `[[` in HTML, roundtrip 0 deltas outside `meaning#`.
