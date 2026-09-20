@@ -303,10 +303,22 @@ PAGES="books/efnafraedi-2e/05-publication/mt-preview/chapters/$PAGESUF"
 # executing anything, and an EMPTY page directory would have scored as clean.
 PAGECOUNT=$(ls "$PAGES"/*.html 2>/dev/null | wc -l)
 [ "$PAGECOUNT" -eq 0 ] && halt "no HTML pages in $PAGES — a zero raw-marker count there would be meaningless"
-CONTROL=$(grep -claE '\[\[[A-Za-z][A-Za-z0-9_]*:' books/efnafraedi-2e/02-mt-output/"$CHD"/*-segments.is.md 2>/dev/null | head -1)
-[ "${CONTROL:-0}" -eq 0 ] && halt "the raw-marker detector's POSITIVE CONTROL found no markers in the MT source — the detector is not proven to work here"
+# 🔴 THE CONTROL ITSELF WAS BROKEN UNTIL 2026-09-20, AND IT FAILED OPEN WHILE THE LOG
+# CLAIMED IT HAD FIRED. It read `grep -claE`: -l overrides -c, so CONTROL was set to a
+# FILENAME, `[ "<filename>" -eq 0 ]` errored with "integer expected", and an erroring test
+# exits NON-ZERO — so the `&& halt` never ran. Meanwhile the say line below printed
+# "(control fired: ...)" unconditionally. Measured on ch11: the run printed a bash error to
+# stderr, printed the reassurance anyway, and scored DONE=ok.
+# > This is the v1 defect in a new costume - v1 printed the reassurance without executing
+# anything; v3 executed something broken and still printed the reassurance. A CONTROL THAT
+# CANNOT FAIL IS NOT A CONTROL, and a hardcoded "control fired" is a lie the log tells you.
+# Now: -c only, summed across every file (`-c` prints "file:count" for multiple files and a
+# bare count for one, so $NF is right in both shapes), and the count is REPORTED, not asserted.
+CONTROL=$(grep -caE '\[\[[A-Za-z][A-Za-z0-9_]*:' books/efnafraedi-2e/02-mt-output/"$CHD"/*-segments.is.md 2>/dev/null | awk -F: '{s+=$NF} END{print s+0}')
+case "$CONTROL" in ''|*[!0-9]*) halt "the raw-marker POSITIVE CONTROL did not produce a number (got: '$CONTROL') - the control is broken, so a clean result below would be meaningless";; esac
+[ "$CONTROL" -eq 0 ] && halt "the raw-marker detector's POSITIVE CONTROL found no markers in the MT source — the detector is not proven to work here"
 RAW=$(grep -rlaE '\[\[[A-Za-z][A-Za-z0-9_]*:' --include='*.html' "$PAGES" 2>/dev/null | wc -l)
-say "raw [[ markers in $PAGECOUNT pages: $RAW (control fired: the MT source carries them)"
+say "raw [[ markers in $PAGECOUNT pages: $RAW (positive control: $CONTROL marker(s) in this chapter's MT source)"
 [ "$RAW" -gt 0 ] && halt "a raw bracket marker reached a page"
 
 # 🔴 GATE ON THE TOOL'S OWN VERDICT, NOT ON A COUNT OF THE LINES IT CHOSE TO PRINT.
