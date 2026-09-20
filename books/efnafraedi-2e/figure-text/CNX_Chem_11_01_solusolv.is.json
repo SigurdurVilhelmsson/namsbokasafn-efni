@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_01_solusolv",
+ "renderHash": "6c7bec1a05758268",
+ "composedHash": "6c7bec1a05758268",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Step 1": "Skref 1",
+  "Step 2": "Skref 2",
+  "Step 3": "Skref 3",
+  "Direct|formation|of solution": "Bein myndun lausnar",
+  "Solvent": "Leysir",
+  "Solute": "Uppleysingur",
+  "Expanded solvent": "Þaninn leysir",
+  "Expanded solute": "Þaninn uppleysingur"
+ },
+ "mtAlternatives": {
+  "Expanded solvent": {
+   "kept": "joined",
+   "other": "Útþaninn leysir",
+   "reason": "disagree",
+   "mt": "Þaninn leysir"
+  },
+  "Expanded solute": {
+   "kept": "joined",
+   "other": "Útvíkkað uppleyst efni",
+   "reason": "disagree",
+   "mt": "Þaninn uppleysingur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_ionpair",
+ "renderHash": "4a3bba8ecf0cc220",
+ "composedHash": "4a3bba8ecf0cc220",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Ion pair": "Jónapar"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

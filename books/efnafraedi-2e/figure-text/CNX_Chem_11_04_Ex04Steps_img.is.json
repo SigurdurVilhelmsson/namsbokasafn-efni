@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_Ex04Steps_img",
+ "renderHash": "bd41a41444820630",
+ "composedHash": "bd41a41444820630",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Molality|of solution": "Mólalstyrkur lausnar",
+  "Change in|freezing point": "Breyting á frostmarki",
+  "New|freezing point": "Nýtt frostmark"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

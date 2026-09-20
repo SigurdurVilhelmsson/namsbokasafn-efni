@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_03_gasdissolv",
+ "renderHash": "b3facf1ad023c61e",
+ "composedHash": "b3facf1ad023c61e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "methane": "metan",
+  "oxygen": "súrefni",
+  "carbon|monoxide": "kolmónoxíð",
+  "nitrogen": "köfnunarefni",
+  "helium": "helín",
+  "Temperature (°C)": "Hitastig (°C)",
+  "Solubility (10–3 mol L–1)": "Leysni (10–3 mól L–1)"
+ },
+ "mtAlternatives": {
+  "methane": {
+   "kept": "joined",
+   "other": "Metan",
+   "reason": "disagree",
+   "mt": "metan"
+  },
+  "carbon|monoxide": {
+   "kept": "joined",
+   "other": "kolsýringur",
+   "reason": "disagree",
+   "mt": "kolmónoxíð"
+  },
+  "helium": {
+   "kept": "joined",
+   "other": "helíum",
+   "reason": "disagree",
+   "mt": "helín"
+  },
+  "Temperature (°C)": {
+   "kept": "joined",
+   "other": "Hiti (°C)",
+   "reason": "disagree",
+   "mt": "Hitastig (°C)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_03_solubility",
+ "renderHash": "0185bf8257b07279",
+ "composedHash": "0185bf8257b07279",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Sugar|(C12H22O11)": "Sykur (C12H22O11)",
+  "KNO3": "KNO3",
+  "NaNO3": "NaNO3",
+  "NaBr": "NaBr",
+  "KBr": "KBr",
+  "KCl": "KCl",
+  "NaCl": "NaCl",
+  "Temperature (°C)": "Hitastig (°C)",
+  "Solubility (g solute per 100 g H2O)": "Leysni (g af uppleystu efni í 100 g af H2O)"
+ },
+ "mtAlternatives": {
+  "Temperature (°C)": {
+   "kept": "joined",
+   "other": "Hiti (°C)",
+   "reason": "disagree",
+   "mt": "Hitastig (°C)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_05_emulsoil",
+ "renderHash": "a3670b7e710975b5",
+ "composedHash": "a3670b7e710975b5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Solvated cation": "Leyst katjón",
+  "Ionic end": "Jónaendi",
+  "Hydrocarbon tail": "Kolvetnishali",
+  "Drop of oil": "Olíudropi"
+ },
+ "mtAlternatives": {
+  "Hydrocarbon tail": {
+   "kept": "joined",
+   "other": "Kolefniskeðja",
+   "reason": "disagree",
+   "mt": "Kolvetnishali"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

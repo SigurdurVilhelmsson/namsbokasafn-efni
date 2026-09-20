@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_Ex09Steps_img",
+ "renderHash": "d431a422297ac73d",
+ "composedHash": "d431a422297ac73d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Mass of|NaCl": "Massi NaCl",
+  "Moles of|ions": "Mól jóna",
+  "Moles of|NaCl": "Mól NaCl",
+  "Molality of|solution": "Mólalstyrkur lausnar",
+  "Change in|freezing|point": "Breyting á frostmarki",
+  "New|freezing|point": "Nýtt frostmark"
+ },
+ "mtAlternatives": {
+  "Moles of|NaCl": {
+   "kept": "joined",
+   "other": "Mól af NaCl",
+   "reason": "disagree",
+   "mt": "Mól NaCl"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

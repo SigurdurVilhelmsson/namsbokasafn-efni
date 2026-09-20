@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_phasediag",
+ "renderHash": "604a13743f27b0cd",
+ "composedHash": "604a13743f27b0cd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Pressure": "Þrýstingur",
+  "1 atm": "1 loftþrýstingur",
+  "Boiling|point|of solution": "Suðumark lausnar",
+  "Boiling|point of|pure solvent": "Suðumark hreins leysis",
+  "Gas": "Gas",
+  "Liquid": "Vökvi",
+  "Solid": "Fast efni",
+  "Freezing|point of|pure solvent": "Frostmark hreins leysis",
+  "Freezing|point|of solution": "Frostmark lausnar",
+  "Temperature": "Hitastig"
+ },
+ "mtAlternatives": {
+  "Solid": {
+   "kept": "joined",
+   "other": "Traust",
+   "reason": "disagree",
+   "mt": "Fast efni"
+  },
+  "Temperature": {
+   "kept": "joined",
+   "other": "Hiti",
+   "reason": "disagree",
+   "mt": "Hitastig"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

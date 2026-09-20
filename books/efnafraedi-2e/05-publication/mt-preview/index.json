@@ -1,16 +1,16 @@
 {
-  "generated": "2026-09-20T18:57:54.035Z",
+  "generated": "2026-09-20T20:56:02.462Z",
   "termCount": 763,
   "entries": [
     {
       "termIs": "aðaleiginleiki",
       "termEn": "colligative property",
       "termFull": "aðaleiginleiki (e. colligative property)",
-      "definition": "eiginleiki lausnar sem fer eingöngu eftir styrk uppleystrar efnisagnar",
+      "definition": "eiginleiki lausnar sem fer aðeins eftir styrk uppleystrar efnisagna",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp188858528"
     },
     {
@@ -831,7 +831,7 @@
       "termIs": "blandanlegur",
       "termEn": "miscible",
       "termFull": "blandanlegur (e. miscible)",
-      "definition": "gagnkvæmt leysanlegur í öllum hlutföllum; á venjulega við um efni í vökvaformi",
+      "definition": "gagnkvæmt leysanlegur í öllum hlutföllum; vísar venjulega til fljótandi efna",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -856,8 +856,8 @@
       "definition": "rof rauðra blóðkorna vegna uppsöfnunar á of miklu vatni með osmósu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141100816"
     },
     {
@@ -1180,14 +1180,14 @@
       "termId": "fs-idp69591216"
     },
     {
-      "termIs": "dreifður fasi",
+      "termIs": "dreififasi",
       "termEn": "dispersed phase",
-      "termFull": "dreifður fasi (e. dispersed phase)",
-      "definition": "efni sem er til staðar sem tiltölulega stórar eindir fasts efnis eða vökva í svifi",
+      "termFull": "dreififasi (e. dispersed phase)",
+      "definition": "efni sem er til staðar sem tiltölulega stórar fastar eða fljótandi agnir í kollóíði",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm117651760"
     },
     {
@@ -1205,11 +1205,11 @@
       "termIs": "dreifimiðill",
       "termEn": "dispersion medium",
       "termFull": "dreifimiðill (e. dispersion medium)",
-      "definition": "fast efni, vökvi eða gas þar sem svifeindum er dreift",
+      "definition": "fast efni, vökvi eða gas þar sem kollóíðögnum er dreift",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm203045728"
     },
     {
@@ -1799,22 +1799,22 @@
       "termIs": "fleyti",
       "termEn": "emulsion",
       "termFull": "fleyti (e. emulsion)",
-      "definition": "svif myndað úr óblandanlegum vökvum",
+      "definition": "kollóíð myndað úr óblandanlegum vökvum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm96998512"
     },
     {
       "termIs": "fleytiefni",
       "termEn": "emulsifying agent",
       "termFull": "fleytiefni (e. emulsifying agent)",
-      "definition": "tvígæft efni sem notað er til að stöðga eindir sumra fleyta",
+      "definition": "tvígæft efni sem notað er til að koma á stöðugleika í ögnum sumra fleyta",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idp52912"
     },
     {
@@ -1901,19 +1901,19 @@
       "definition": "lækkun á frostmarki vökva með því að bæta við uppleystu efni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141097600"
     },
     {
       "termIs": "frostmarkslækkunarfasti",
       "termEn": "freezing point depression constant",
       "termFull": "frostmarkslækkunarfasti (e. freezing point depression constant)",
-      "definition": "(einnig, kríóskópískur fasti) hlutfallfasti í jöfnunni sem tengir frostmarkslækkun við mólalstyrk uppleysts efnis",
+      "definition": "(einnig, frostmarkslækkunarfasti) hlutfallfasti í jöfnunni sem tengir frostmarkslækkun við mólalstyrk uppleysts efnis",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141099136"
     },
     {
@@ -1948,6 +1948,17 @@
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
       "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idp173597120"
+    },
+    {
+      "termIs": "frumuskrepp",
+      "termEn": "crenation",
+      "termFull": "frumuskrepp (e. crenation)",
+      "definition": "ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með osmósu",
+      "chapter": 11,
+      "section": "11.4",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "termId": "fs-idp141096064"
     },
     {
       "termIs": "fræðilegar heimtur",
@@ -2140,11 +2151,11 @@
       "termIs": "gel",
       "termEn": null,
       "termFull": "gel",
-      "definition": "svifdreifing vökva í föstu efni",
+      "definition": "kollóíðdreifa vökva í föstu efni",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm167483808"
     },
     {
@@ -2338,11 +2349,11 @@
       "termIs": "hálfgegndræp himna",
       "termEn": "semipermeable membrane",
       "termFull": "hálfgegndræp himna (e. semipermeable membrane)",
-      "definition": "himna sem hleypir ákveðnum jónum eða sameindum sértækt í gegn",
+      "definition": "himna sem hleypir ákveðnum jónum eða sameindum í gegn",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp11032848"
     },
     {
@@ -2407,8 +2418,8 @@
       "definition": "af meiri osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141102352"
     },
     {
@@ -2586,6 +2597,17 @@
       "sectionTitle": "Lotukerfið",
       "sectionSlug": "2-5-lotukerfid",
       "termId": "fs-idm231758480"
+    },
+    {
+      "termIs": "hlutablandanlegur",
+      "termEn": "partially miscible",
+      "termFull": "hlutablandanlegur (e. partially miscible)",
+      "definition": "af miðlungs gagnkvæmum leysni; vísar venjulega til fljótandi efna",
+      "chapter": 11,
+      "section": "11.3",
+      "sectionTitle": "Leysni",
+      "sectionSlug": "11-3-leysni",
+      "termId": "fs-idp7162656"
     },
     {
       "termIs": "hlutfallsleg líffræðileg virkni (RBE)",
@@ -3089,8 +3111,8 @@
       "definition": "af jöfnum osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141106960"
     },
     {
@@ -3155,8 +3177,8 @@
       "definition": "rafstöðuaðdráttur milli jónar og skautaðrar sameindar",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
       "termId": "fs-idp1071840"
     },
     {
@@ -3185,11 +3207,11 @@
       "termIs": "jónapar",
       "termEn": "ion pair",
       "termFull": "jónapar (e. ion pair)",
-      "definition": "leysihjúpað anjóna-/katjónapar sem haldið er saman af miðlungssterkum rafstöðukrafti",
+      "definition": "leysiefnabundið anjóna-/katjónapar sem haldið er saman af meðalsterkum rafstöðukrafti",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141105424"
     },
     {
@@ -3647,7 +3669,7 @@
       "termIs": "kjörlausn",
       "termEn": "ideal solution",
       "termFull": "kjörlausn (e. ideal solution)",
-      "definition": "lausn sem myndast án þess að orkubreyting fylgi",
+      "definition": "lausn sem myndast án meðfylgjandi orkubreytingar",
       "chapter": 11,
       "section": "11.1",
       "sectionTitle": "Upplausnarferlið",
@@ -3664,17 +3686,6 @@
       "sectionTitle": "Umskipting og kjarnorka",
       "sectionSlug": "21-4-umskipting-og-kjarnorka",
       "termId": "fs-idm208194016"
-    },
-    {
-      "termIs": "klofnun",
-      "termEn": "dissociation",
-      "termFull": "klofnun (e. dissociation)",
-      "definition": "eðlisfræðilegt ferli sem fylgir upplausn jónaefnis þar sem jónir efnasambandsins verða leysishjúpaðar og dreifast um lausnina",
-      "chapter": 11,
-      "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
-      "termId": "fs-idm32680960"
     },
     {
       "termIs": "klofnunarfasti",
@@ -3730,6 +3741,17 @@
       "sectionTitle": "Geislavirk hrörnun",
       "sectionSlug": "21-3-geislavirk-hrornun",
       "termId": "fs-idp10803760"
+    },
+    {
+      "termIs": "kollóíð",
+      "termEn": "colloid",
+      "termFull": "kollóíð (e. colloid)",
+      "definition": "(einnig, kollóíðdreifa) blanda þar sem tiltölulega stórum föstum eða fljótandi ögnum er dreift jafnt um gas, vökva eða fast efni",
+      "chapter": 11,
+      "section": "11.5",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
+      "termId": "fs-idm164804608"
     },
     {
       "termIs": "kolvetni",
@@ -3853,17 +3875,6 @@
       "termId": "fs-idm108395328"
     },
     {
-      "termIs": "lausn",
-      "termEn": "suspension",
-      "termFull": "lausn (e. suspension)",
-      "definition": "misleit efnablanda þar sem tiltölulega stórir efnisþættir eru tímabundið dreifðir en falla til botns með tímanum",
-      "chapter": 11,
-      "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
-      "termId": "fs-idm380612256"
-    },
-    {
       "termIs": "lágspunaflóki",
       "termEn": "low-spin complex",
       "termFull": "lágspunaflóki (e. low-spin complex)",
@@ -3881,8 +3892,8 @@
       "definition": "af minni osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141103888"
     },
     {
@@ -3996,6 +4007,17 @@
       "termId": "fs-idp67579088"
     },
     {
+      "termIs": "leysing",
+      "termEn": "solvation",
+      "termFull": "leysing (e. solvation)",
+      "definition": "útvermið ferli þar sem millikraftar milli uppleysta efnisins og leysisins í lausn myndast",
+      "chapter": 11,
+      "section": "11.1",
+      "sectionTitle": "Upplausnarferlið",
+      "sectionSlug": "11-1-upplausnarferlid",
+      "termId": "fs-idm91470352"
+    },
+    {
       "termIs": "leysir",
       "termEn": "solvent",
       "termFull": "leysir (e. solvent)",
@@ -4010,7 +4032,7 @@
       "termIs": "leysni",
       "termEn": "solubility",
       "termFull": "leysni (e. solubility)",
-      "definition": "að hve miklu leyti leysið efni getur leyst upp í vatni eða öðrum leysi",
+      "definition": "að hve miklu leyti uppleyst efni má leysa upp í vatni eða öðrum leysi",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -4307,7 +4329,7 @@
       "termIs": "Lögmál Henrys",
       "termEn": "henry’s law",
       "termFull": "Lögmál Henrys (e. henry’s law)",
-      "definition": "hlutfallslegt samband milli styrks uppleysts gass í lausn og hlutþrýstings gassins sem er í snertingu við lausnina",
+      "definition": "hlutfallslegt samband milli styrks uppleystrar lofttegundar í lausn og hlutþrýstings lofttegundarinnar í snertingu við lausnina",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -4343,8 +4365,8 @@
       "definition": "sambandið milli gufuþrýstings lausnar og gufuþrýstings og styrks íhluta hennar",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141116656"
     },
     {
@@ -4557,6 +4579,17 @@
       "termId": "fs-idp78258880"
     },
     {
+      "termIs": "málmblanda",
+      "termEn": "alloy",
+      "termFull": "málmblanda (e. alloy)",
+      "definition": "föst blanda málmefnis og eins eða fleiri viðbótarefna",
+      "chapter": 11,
+      "section": "11.1",
+      "sectionTitle": "Upplausnarferlið",
+      "sectionSlug": "11-1-upplausnarferlid",
+      "termId": "fs-idm104294208"
+    },
+    {
       "termIs": "málmiðja",
       "termEn": "central metal",
       "termFull": "málmiðja (e. central metal)",
@@ -4645,17 +4678,6 @@
       "termId": "fs-idp11569888"
     },
     {
-      "termIs": "melmi",
-      "termEn": "alloy",
-      "termFull": "melmi (e. alloy)",
-      "definition": "föst efnablanda málms og eins eða fleiri viðbótarfrumefna",
-      "chapter": 11,
-      "section": "11.1",
-      "sectionTitle": "Upplausnarferlið",
-      "sectionSlug": "11-1-upplausnarferlid",
-      "termId": "fs-idm104294208"
-    },
-    {
       "termIs": "metri (m)",
       "termEn": "meter (m)",
       "termFull": "metri (m) (e. meter (m))",
@@ -4681,7 +4703,7 @@
       "termIs": "mettaður",
       "termEn": "saturated",
       "termFull": "mettaður (e. saturated)",
-      "definition": "með styrk sem er jafn leysni; inniheldur hámarksstyrk leysis efnis sem mögulegur er við tiltekið hitastig og þrýsting",
+      "definition": "af styrk sem er jafn leysni; inniheldur hámarksstyrk uppleysts efnis sem mögulegur er fyrir tiltekið hitastig og þrýsting",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -4868,11 +4890,11 @@
       "termIs": "mólalstyrkur (m)",
       "termEn": "molality (m)",
       "termFull": "mólalstyrkur (m) (e. molality (m))",
-      "definition": "styrkleikaeining skilgreind sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum",
+      "definition": "styrkleikaeining sem er skilgreind sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141108496"
     },
     {
@@ -5099,22 +5121,22 @@
       "termIs": "osmósa",
       "termEn": "osmosis",
       "termFull": "osmósa (e. osmosis)",
-      "definition": "dreifing leysisameinda í gegnum hálfgegndræpa himnu",
+      "definition": "flæði leysisameinda í gegnum hálfgegndræpa himnu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141112944"
     },
     {
       "termIs": "osmósuþrýstingur (Π)",
       "termEn": "osmotic pressure (π)",
       "termFull": "osmósuþrýstingur (Π) (e. osmotic pressure (π))",
-      "definition": "mótþrýstingur sem þarf til að koma í veg fyrir heildarflutning leysisameinda í gegnum hálfgegndræpa himnu",
+      "definition": "mótþrýstingur sem þarf til að koma í veg fyrir magnflutning leysisameinda í gegnum hálfgegndræpa himnu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp141114480"
     },
     {
@@ -5231,7 +5253,7 @@
       "termIs": "óblandanlegur",
       "termEn": "immiscible",
       "termFull": "óblandanlegur (e. immiscible)",
-      "definition": "með hverfandi gagnkvæman leysni; á venjulega við um efni í vökvaformi",
+      "definition": "af hverfandi gagnkvæmum leysni; vísar venjulega til fljótandi efna",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -5264,23 +5286,12 @@
       "termIs": "ómettaður",
       "termEn": "unsaturated",
       "termFull": "ómettaður (e. unsaturated)",
-      "definition": "með styrk sem er minni en leysni",
+      "definition": "af styrk sem er minni en leysni",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
       "sectionSlug": "11-3-leysni",
       "termId": "fs-idm39109968"
-    },
-    {
-      "termIs": "órafkleyft efni",
-      "termEn": "nonelectrolyte",
-      "termFull": "órafkleyft efni (e. nonelectrolyte)",
-      "definition": "efni sem myndar ekki jónir þegar það er leyst upp í vatni",
-      "chapter": 11,
-      "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
-      "termId": "fs-idp10683312"
     },
     {
       "termIs": "óreiða (S)",
@@ -5613,15 +5624,26 @@
       "termId": "fs-idm117181824"
     },
     {
-      "termIs": "rafkleyfi",
+      "termIs": "raflausn",
       "termEn": "electrolyte",
-      "termFull": "rafkleyfi (e. electrolyte)",
+      "termFull": "raflausn (e. electrolyte)",
       "definition": "efni sem myndar jónir þegar það er leyst upp í vatni",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
       "termId": "fs-idm10926960"
+    },
+    {
+      "termIs": "raflausnarleysi",
+      "termEn": "nonelectrolyte",
+      "termFull": "raflausnarleysi (e. nonelectrolyte)",
+      "definition": "efni sem myndar ekki jónir þegar það er leyst upp í vatni",
+      "chapter": 11,
+      "section": "11.2",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
+      "termId": "fs-idp10683312"
     },
     {
       "termIs": "rafsegulgeislun",
@@ -5699,6 +5721,17 @@
       "sectionTitle": "Efnaformúlur",
       "sectionSlug": "2-4-efnaformulur",
       "termId": "fs-idm164678176"
+    },
+    {
+      "termIs": "rof",
+      "termEn": "dissociation",
+      "termFull": "rof (e. dissociation)",
+      "definition": "eðlisfræðilegt ferli sem fylgir upplausn jónísks efnasambands þar sem jónir efnasambandsins leysast upp og dreifast um lausnina",
+      "chapter": 11,
+      "section": "11.2",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
+      "termId": "fs-idm32680960"
     },
     {
       "termIs": "róteind",
@@ -6273,17 +6306,6 @@
       "termId": "fs-idm42041824"
     },
     {
-      "termIs": "sjálfgengt ferli",
-      "termEn": "spontaneous process",
-      "termFull": "sjálfgengt ferli (e. spontaneous process)",
-      "definition": "eðlis- eða efnabreyting sem verður án orkuálagningar frá utanaðkomandi uppsprettu",
-      "chapter": 11,
-      "section": "11.1",
-      "sectionTitle": "Upplausnarferlið",
-      "sectionSlug": "11-1-upplausnarferlid",
-      "termId": "fs-idm55870880"
-    },
-    {
       "termIs": "sjálfjónun",
       "termEn": "autoionization",
       "termFull": "sjálfjónun (e. autoionization)",
@@ -6293,6 +6315,17 @@
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
       "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
       "termId": "fs-idp12573120"
+    },
+    {
+      "termIs": "sjálfkrafa ferli",
+      "termEn": "spontaneous process",
+      "termFull": "sjálfkrafa ferli (e. spontaneous process)",
+      "definition": "eðlis- eða efnabreyting sem á sér stað án orku frá utanaðkomandi uppsprettu",
+      "chapter": 11,
+      "section": "11.1",
+      "sectionTitle": "Upplausnarferlið",
+      "sectionSlug": "11-1-upplausnarferlid",
+      "termId": "fs-idm55870880"
     },
     {
       "termIs": "sjálfsprottin breyting",
@@ -6370,17 +6403,6 @@
       "sectionTitle": "Kolvetni",
       "sectionSlug": "20-1-kolvetni",
       "termId": "fs-idp79627072"
-    },
-    {
-      "termIs": "skorpnun",
-      "termEn": "crenation",
-      "termFull": "skorpnun (e. crenation)",
-      "definition": "ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með osmósu",
-      "chapter": 11,
-      "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
-      "termId": "fs-idp141096064"
     },
     {
       "termIs": "skömmtun",
@@ -6636,6 +6658,17 @@
       "termId": "fs-idm24132624"
     },
     {
+      "termIs": "sterk raflausn",
+      "termEn": "strong electrolyte",
+      "termFull": "sterk raflausn (e. strong electrolyte)",
+      "definition": "efni sem rofnar eða jónast að fullu þegar það er leyst upp í vatni",
+      "chapter": 11,
+      "section": "11.2",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
+      "termId": "fs-idm7742384"
+    },
+    {
       "termIs": "sterk sýra",
       "termEn": "strong acid",
       "termFull": "sterk sýra (e. strong acid)",
@@ -6678,17 +6711,6 @@
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp67581392"
-    },
-    {
-      "termIs": "sterkur rafkleyfi",
-      "termEn": "strong electrolyte",
-      "termFull": "sterkur rafkleyfi (e. strong electrolyte)",
-      "definition": "efni sem klofnar eða jónast að fullu þegar það er leyst upp í vatni",
-      "chapter": 11,
-      "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
-      "termId": "fs-idm7742384"
     },
     {
       "termIs": "stig efnahvarfs",
@@ -6873,19 +6895,19 @@
       "definition": "hækkun á suðumarki vökva með því að bæta við uppleystu efni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp188855296"
     },
     {
       "termIs": "suðumarkshækkunarfasti",
       "termEn": "boiling point elevation constant",
       "termFull": "suðumarkshækkunarfasti (e. boiling point elevation constant)",
-      "definition": "jafnvægisfastinn í jöfnunni sem tengir suðumarkshækkun við mólalstyrk uppleysts efnis; einnig þekktur sem suðumarksfasti",
+      "definition": "hlutfallsfastinn í jöfnunni sem tengir suðumarkshækkun við mólstyrk uppleysts efnis; einnig þekktur sem suðumarksfasti",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp188856832"
     },
     {
@@ -6977,15 +6999,15 @@
       "termId": "fs-idp43914864"
     },
     {
-      "termIs": "svif",
-      "termEn": "colloid",
-      "termFull": "svif (e. colloid)",
-      "definition": "(einnig, svifdreifing) efnablanda þar sem tiltölulega stórum eindum fasts efnis eða vökva er dreift jafnt um gas, vökva eða fast efni",
+      "termIs": "sviflausn",
+      "termEn": "suspension",
+      "termFull": "sviflausn (e. suspension)",
+      "definition": "misblönduð blanda þar sem tiltölulega stórum íhlutaögnum er dreift tímabundið en þær setjast til með tímanum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
-      "termId": "fs-idm164804608"
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
+      "termId": "fs-idm380612256"
     },
     {
       "termIs": "svigrúmablöndun",
@@ -7321,11 +7343,11 @@
       "termIs": "tvígæfur",
       "termEn": "amphiphilic",
       "termFull": "tvígæfur (e. amphiphilic)",
-      "definition": "sameindir sem hafa bæði vatnsfælinn (óskautaðan) og vatnssækinn (skautaðan) hluta",
+      "definition": "sameindir sem búa yfir bæði vatnsfælnum (óskautuðum) og vatnssæknum (skautuðum) hlutum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm237171488"
     },
     {
@@ -7428,14 +7450,14 @@
       "termId": "fs-idm124847888"
     },
     {
-      "termIs": "Tyndall-hrif",
+      "termIs": "Tyndall-áhrif",
       "termEn": "tyndall effect",
-      "termFull": "Tyndall-hrif (e. tyndall effect)",
-      "definition": "dreifing sýnilegs ljóss með svifdreifingu",
+      "termFull": "Tyndall-áhrif (e. tyndall effect)",
+      "definition": "dreifing sýnilegs ljóss með kollóíðdreifu",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Svif",
-      "sectionSlug": "11-5-svif",
+      "sectionTitle": "Kollóíðar",
+      "sectionSlug": "11-5-kolloidar",
       "termId": "fs-idm171842784"
     },
     {
@@ -7525,17 +7547,6 @@
       "sectionTitle": "Hvarfhraði efnahvarfa",
       "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp24984224"
-    },
-    {
-      "termIs": "upplausn",
-      "termEn": "solvation",
-      "termFull": "upplausn (e. solvation)",
-      "definition": "útvermið ferli þar sem millisameindakraftar myndast milli leysta efnisins og leysisins í lausn",
-      "chapter": 11,
-      "section": "11.1",
-      "sectionTitle": "Upplausnarferlið",
-      "sectionSlug": "11-1-upplausnarferlid",
-      "termId": "fs-idm91470352"
     },
     {
       "termIs": "uppleyst",
@@ -7662,11 +7673,11 @@
       "termIs": "van't Hoff-stuðull (i)",
       "termEn": "van’t hoff factor (i)",
       "termFull": "van't Hoff-stuðull (i) (e. van’t hoff factor (i))",
-      "definition": "hlutfallið milli mólfjölda agna í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni",
+      "definition": "hlutfall mólfjölda agna í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Samþynningareiginleikar",
-      "sectionSlug": "11-4-samthynningareiginleikar",
+      "sectionTitle": "Sameiginlegir eiginleikar",
+      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
       "termId": "fs-idp11034384"
     },
     {
@@ -7703,6 +7714,17 @@
       "termId": "fs-idm26450752"
     },
     {
+      "termIs": "veik raflausn",
+      "termEn": "weak electrolyte",
+      "termFull": "veik raflausn (e. weak electrolyte)",
+      "definition": "efni sem jónast aðeins að hluta þegar það er leyst upp í vatni",
+      "chapter": 11,
+      "section": "11.2",
+      "sectionTitle": "Rafleiðar",
+      "sectionSlug": "11-2-rafleidar",
+      "termId": "fs-idp4277680"
+    },
+    {
       "termIs": "veik sýra",
       "termEn": "weak acid",
       "termFull": "veik sýra (e. weak acid)",
@@ -7734,17 +7756,6 @@
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idm4237408"
-    },
-    {
-      "termIs": "veikur rafkleyfi",
-      "termEn": "weak electrolyte",
-      "termFull": "veikur rafkleyfi (e. weak electrolyte)",
-      "definition": "efni sem jónast aðeins að hluta til þegar það er leyst upp í vatni",
-      "chapter": 11,
-      "section": "11.2",
-      "sectionTitle": "Rafkleyfar",
-      "sectionSlug": "11-2-rafkleyfar",
-      "termId": "fs-idp4277680"
     },
     {
       "termIs": "verkleg nákvæmni",
@@ -8069,7 +8080,7 @@
       "termIs": "yfirmettaður",
       "termEn": "supersaturated",
       "termFull": "yfirmettaður (e. supersaturated)",
-      "definition": "með styrk sem fer yfir leysni; ójafnvægisástand",
+      "definition": "af styrk sem fer yfir leysni; ójafnvægisástand",
       "chapter": 11,
       "section": "11.3",
       "sectionTitle": "Leysni",
@@ -8328,17 +8339,6 @@
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
       "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm163687904"
-    },
-    {
-      "termIs": "örlítið blandanlegur",
-      "termEn": "partially miscible",
-      "termFull": "örlítið blandanlegur (e. partially miscible)",
-      "definition": "með miðlungs gagnkvæman leysni; á venjulega við um efni í vökvaformi",
-      "chapter": 11,
-      "section": "11.3",
-      "sectionTitle": "Leysni",
-      "sectionSlug": "11-3-leysni",
-      "termId": "fs-idp7162656"
     },
     {
       "termIs": "örvað ástand",

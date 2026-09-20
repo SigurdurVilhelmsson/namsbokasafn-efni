@@ -67,3 +67,24 @@ chain** and rewrote the older entry's target to the current file. ▶ **Filing o
 renames would have left `10-5-fast-astand-efnis.html` pointing at a page that no longer exists** —
 and vefur does ONE lookup with no transitive walk (CLAUDE.md § Prune-on-rename), so it would have
 404'd. **Diff the slug map before and after; do not transcribe the render log.**
+
+## ch11 — 3 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/11/11-2-rafkleyfar.html` | `chapters/11/11-2-rafleidar.html` | m68781 |
+| `chapters/11/11-4-samthynningareiginleikar.html` | `chapters/11/11-4-sameiginlegir-eiginleikar.html` | m68783 |
+| `chapters/11/11-5-svif.html` | `chapters/11/11-5-kolloidar.html` | m68784 |
+
+_Both instruments agree at 3: three `Pruned superseded page` lines in the render log, and a
+before/after diff of `slug-map.mt-preview.json` showing **added=3, changed=0, removed=0** (27 → 30
+rows). **The diff is the instrument that matters** — ch10 had six rows against five pruned lines
+because a chain collapsed and rewrote an OLDER entry the log never mentioned. This chapter had no
+collapse, but that was established by diffing, not by trusting the count to match._
+
+⚠️ **FOR AN EDITOR, NOT A BLOCKER — `11-4` is a terminology regression in the section title.**
+The MT retitled *colligative properties* from `samthynningareiginleikar` to
+`sameiginlegir eiginleikar`, which reads as "shared/common properties" and loses the technical
+sense (colligative = depending on the NUMBER of solute particles, not their identity). The old
+slug was closer. The page slug follows the title, so fixing the title in the editor will rename
+the page again and produce a further redirect row.

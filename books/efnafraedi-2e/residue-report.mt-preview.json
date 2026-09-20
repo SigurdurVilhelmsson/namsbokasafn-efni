@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T18:57:50.925Z",
+  "generatedAt": "2026-09-20T20:55:58.168Z",
   "summary": {
     "modulesWithResidue": 2,
     "exactResidues": 70,
-    "ratioWarnings": 71,
+    "ratioWarnings": 73,
     "toleratedResidues": 4
   },
   "modules": {
@@ -682,6 +682,26 @@
       "warnings": [
         {
           "segmentId": "m68770:entry:auto-51",
+          "ratio": 0.75
+        }
+      ],
+      "tolerated": []
+    },
+    "m68778": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68778:problem:fs-idm96983392",
+          "ratio": 0.75
+        }
+      ],
+      "tolerated": []
+    },
+    "m68782": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68782:problem:fs-idp43686960",
           "ratio": 0.75
         }
       ],

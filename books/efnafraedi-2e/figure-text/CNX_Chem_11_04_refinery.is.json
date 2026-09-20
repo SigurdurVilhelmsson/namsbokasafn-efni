@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_refinery",
+ "renderHash": "e0bd792ecd746552",
+ "composedHash": "e0bd792ecd746552",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Heated|crude oil": "Upphituð hráolía",
+  "Refinery gas": "Hreinsunarstöðvargas",
+  "Small molecules:|- Low boiling point|- Very volatile|- Flows easily|- Ignites easily": "Litlar sameindir: - Lágt suðumark - Mjög rokgjarnt - Flæðir auðveldlega - Kviknar auðveldlega í",
+  "Large molecules:|- High boiling point|- Not very volatile|- Does not flow easily|- Does not ignite easily": "Stórar sameindir: - Hátt suðumark - Ekki mjög rokgjarnt - Flæðir ekki auðveldlega - Kviknar ekki auðveldlega í",
+  "gasoline": "bensín",
+  "naptha": "nafta",
+  "kerosene": "steinolía",
+  "diesel oil": "dísilolía",
+  "fuel oil": "brennsluolía",
+  "Residue": "Leifar"
+ },
+ "mtAlternatives": {
+  "Large molecules:|- High boiling point|- Not very volatile|- Does not flow easily|- Does not ignite easily": {
+   "kept": "joined",
+   "other": "Stórar sameindir: - Hátt suðumark - Lítið rokgjarnar - Flæða ekki auðveldlega - Kviknar ekki auðveldlega í þeim",
+   "reason": "disagree",
+   "mt": "Stórar sameindir: - Hátt suðumark - Ekki mjög rokgjarnt - Flæðir ekki auðveldlega - Kviknar ekki auðveldlega í"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_05_oilspill",
+ "renderHash": "b4498156fdb25a6b",
+ "composedHash": "b4498156fdb25a6b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Oil slick": "Olíubrák"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

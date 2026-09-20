@@ -207,3 +207,126 @@ intermediate copy, not the installed one.** The installed form is `FLAGS=$(node 
 the audited one was `X=$(cmd 2>&1 >file); X=$(cat file)`, **which discards the exit status**.
 ▶ *Concurrence is not corroboration when everyone inherited the same artifact* — verified by
 running the installed gate against a missing file and a malformed one: both halt.
+
+### 📋 Logged for [USER], surfaced by ch10's push — COMPOSED FIGURE WEIGHT
+
+GitHub warned on `CNX_Chem_10_01_KMTPhases1_IS.svg` at **53.5 MB** (its recommended maximum is
+50 MB; the **hard** limit is 100 MB, so nothing is blocked today — measured: 11 figures over
+20 MB, 2 over 50 MB, **0 over 90 MB**).
+
+**Measured, and the ratio is the point:** the `01-source` artwork is a **0.2 MB JPG**; the composed
+`_IS.svg` is **53 MB** — about **250×**. It carries **0 embedded rasters**, so this is not a
+resolution bug: it is a genuine vector rendering of a particle diagram, thousands of circles
+becoming thousands of paths. Vector wins on quality and loses badly on bytes for this figure class.
+
+⚠️ **PRE-EXISTING, NOT INTRODUCED BY ch10** — chemistry ch03 already carries a 23.8 MB
+`exocytosis` figure from an earlier buy, so already-prepared chapters have this too.
+
+▶ **Why it needs [USER], not a session decision: the cost falls on the READER.** A student on a
+phone downloads 53 MB for one figure. That is a delivery/display trade-off of the same family as
+§C162 (pipeline figures displaying at ~0.48× the English JPG's width), and the options differ in
+kind — rasterise the worst offenders at publication, keep vector and accept the weight, or serve a
+raster with the vector as a click-through.
+⚠️ **Each figure is stored TWICE** (`media/` and the publication copy), so the repo cost is double
+the number above. `.git` is 4.5 GB, which CLAUDE.md already records as an accepted cost.
+**Not a stop. The autorun continues.**
+
+## ch11 — 7 units · the first run KILLED MID-BUY, and what that cost to learn
+
+**The first ch11 run died at 19:05 with its parent session, mid-`m68782`.** Not OOM: `dmesg`
+carries **0** `killed process` / `out of memory` lines, and the box had 7.7 GB available. The
+buy is **atomic per module** — `m68782` wrote nothing, so the tree held 3 re-bought modules
+(`m68776`, `m68778`, `m68781`, ~393 ISK, 39,262 chars) and 3 still on the March/June MT.
+
+▶ **Resumed per-module rather than by re-running the driver.** The driver's buy is
+unconditionally `--force`, so a plain re-run would have re-bought all 7 units at ~1,813 ISK,
+of which ~393 ISK was already paid. Four `--module … --force --glossary-only "$SUBSET"` buys
+priced at **~1,420 ISK** (33,182 + 81,837 + 26,925 + 55 = 141,999 chars), and
+181,261 − 39,262 = 141,999 confirms the whole-chapter and per-module estimates agree.
+⚠️ **A bare non-`--force` run is NOT the resume**: `mtRunDecision` skips on FILE EXISTENCE, and
+the three unbought modules all *have* files — the March ones. It would have skipped all six.
+**Hand-repair check first (CLAUDE.md): `git log` on the three `.is.md` files shows only
+`feat(pipeline)` commits — no hand repairs to lose.**
+
+### 🔴 The gate that was not on the resume path — fixed in `f1c6b1e00`
+
+**`AUTORUN_SKIP_BUY=1` bypassed the MT-arm check.** The ALL-not-ANY arm check — hardened by the
+v3 adversarial audit precisely to catch a partial buy — lived inside the `else` of the buy step.
+So the resume path, **the one you reach for BECAUSE a buy has already gone wrong**, never reached
+it. On this exact tree a SKIP_BUY resume would have spent the figure money, then injected,
+rendered and indexed 3 modules of March full-glossary MT under `DONE=ok`, every other gate
+silent — the prose triage cannot see them, because a segment absent from the old MT is skipped
+by its own equality test.
+
+**Verified against the live partial state, before the buy destroyed it:**
+
+| chapter | arm | verdict |
+|---|---|---|
+| ch11 | 3 of 6 | 🔴 STOP, exit 3 |
+| ch09 | 8 of 8 | pass |
+| ch10 | 8 of 8 | pass |
+| ch12 | 0 of 8 | 🔴 STOP |
+
+▶ **A halting gate proves nothing without the passing half** — `3 of 6 → HALT` alone is equally
+consistent with a gate that always halts. ▶ **And the control was PERISHABLE**: the partial state
+that proves the gate works is destroyed by the buy that repairs it, so the fix had to come first.
+▶ **The durable shape: a gate's SCOPE is a separate property from its LOGIC.** This one's logic
+had already survived a five-lens adversarial audit; its scope had not been asked about at all.
+Same shape as the paid-MT hook recorded above — written, tested against the form it was written
+for, documented as blocking, inert against the only command anyone would type.
+
+⚠️ **Detach long paid runs.** Relaunched under `setsid nohup … &` so a session death cannot take
+the buy with it, judged by a terminal `EXIT=`/`ALLDONE` marker in the log rather than by any
+wrapper's exit code.
+
+### ch11 outcome — `DONE=ok`
+
+- **Text:** 7 units. Billed **110,456 chars (~1,104 ISK)** on the resume against a 1,420 estimate
+  (**0.78x**, in line with ch09's 0.79x), plus ~393 ISK list for the three the killed run had
+  already bought. Chapter ~**1,497 ISK** against the 1,813 list estimate.
+- **Figures:** 46 enumerated — 20 translated, 11 photo, 9 textless, 6 unresolved; **21 published**;
+  3,357 billable characters (~34 ISK). `VERDICT ok`.
+- **Inject:** 6 modules COMPLETE, manifest `green=true`, 0 unexplained, 130 perfect.
+- **Render:** 3 pages renamed → 3 redirect rows (added=3, changed=0, removed=0; no chain collapse).
+- **Checks:** 0 raw `[[` in 11 pages; roundtrip 5 modules differ, non-`meaning#` listed 0,
+  ATTR/TEXT/BUILD rows 0.
+
+### 🔴 The free-checks POSITIVE CONTROL was broken, failed open, and the log said it had fired
+
+The run printed `scripts/chemistry-autorun-chapter.sh: line 307: [: books/…/m68778-segments.is.md:
+integer expected` **and scored `DONE=ok` anyway.**
+
+`grep -claE` passes both `-c` and `-l`; **`-l` wins**, so `CONTROL` was a FILENAME.
+`[ "<filename>" -eq 0 ]` errors *and exits non-zero*, so the `&& halt` never ran — and the next
+line printed `(control fired: the MT source carries them)` **unconditionally**.
+
+▶ **This is the v1 defect in a new costume.** v1 printed the reassurance without executing
+anything; v3 executed something broken and printed it anyway. **A control that cannot fail is not
+a control, and a hardcoded "control fired" is a lie the log tells you.** Fixed in `dbfb1873b`,
+verified four ways — positive (ch11 = 293, equal to the hand-sum), negative (marker-free dir
+halts), the old form (returns a filename, halt never fires), and **the detector itself**: 11 clean
+pages → 0 flagged, plant ONE marker → 1 flagged. That last one is what retroactively rescues the
+greens: re-checked under a working control, **ch09 (328), ch10 (277) and ch11 (293) all have a
+non-zero control, pages present, and zero markers leaked. All three stand.**
+
+### ⚠️ `remt-checks-mt-gating.test.js` has been RED since the re-extract, and nothing bumped it
+
+ch09 and ch10 both bumped `remt-checks-mt.test.js` and `remt-checks-mt-runrecord.test.js`; the
+re-extract commit `13b38eaa3` touched **no** test file, and **no commit has ever bumped the gating
+file**. So its premise pins have been measuring a corpus that moved three commits ago.
+
+🔴 **AND THE A2b BLOCKING RED IS NOT A DEFECT — IT IS THE RE-EXTRACTION, AND IT SELF-HEALS.**
+A2b (`every marker-like token actually parses`) reports `FAIL` on 78 pairs with
+`seg-count-cross-side-mismatch`, `enParsed > isParsed`. Measured per chapter:
+
+| | A2b |
+|---|---|
+| every BOUGHT chapter ch00–ch11 | **80 pairs, 0 fail** |
+| every unbought chapter ch12–ch21 + appendices | fails |
+
+`13b38eaa3` regenerated the **EN** side of ch09–ch21 with the current extractor — which emits
+figure alts, container titles and captions the March MT predates — while ch12–ch21's **IS** side
+is still that older MT. ▶ **ch11's buy strictly IMPROVED this**: ch11 would have been failing like
+ch12 before it was re-bought, and the count falls by one chapter's worth on every buy, reaching
+zero when the appendices are bought. **Do not "fix" this by relaxing A2b; it is reporting the
+truth about a deliberately mixed corpus.**

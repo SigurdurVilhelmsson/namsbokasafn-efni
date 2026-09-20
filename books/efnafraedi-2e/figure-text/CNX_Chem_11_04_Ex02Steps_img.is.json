@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_Ex02Steps_img",
+ "renderHash": "a37468d41de75253",
+ "composedHash": "a37468d41de75253",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Molality|of solution": "Mólalstyrkur lausnar",
+  "Change in|boiling point": "Breyting á suðumarki",
+  "New|boiling point": "Nýtt suðumark"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}
