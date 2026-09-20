@@ -148,9 +148,9 @@ describe('buildResolvedGlossary', () => {
   });
 
   it('emits a NOMINAL tie once and counts it', () => {
-    concept('chemistry', 'cell', ['hola']);
-    concept('chemistry', 'cell', ['hola']); // same position, identical head form
-    const out = build(['cell']);
+    concept('chemistry', 'vacuole', ['hola']);
+    concept('chemistry', 'vacuole', ['hola']); // same position, identical head form
+    const out = build(['vacuole']);
     expect(out.terms).toHaveLength(1);
     expect(out.terms[0].icelandic).toBe('hola');
     expect(out.stats.nominalTies).toBe(1);

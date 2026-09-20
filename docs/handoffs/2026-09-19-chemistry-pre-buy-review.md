@@ -83,30 +83,30 @@ Key terms with **no glossary row** appearing in **20+ segments**. A wrong or inc
 |---|---|---|---|
 | ch08 | ~~hybridization~~ | 76 | ✅ **svigrúmablöndun** — ruled 2026-09-19 |
 | ch08 | ~~hybrid orbitals~~ | 56 | ✅ **blendingssvigrúm** — ruled 2026-09-19 |
-| ch09 | **torr** | 55 | |
-| ch18 | **hydroxide** | 55 | |
-| ch02 | **group** | 42 | |
-| ch20 | **alcohol** | 42 | |
-| ch18 | **carbonates** | 40 | |
-| ch21 | **radioactive decay** | 39 | |
-| ch17 | **galvanic cell** | 36 | |
-| ch10 | **holes** | 34 | |
-| ch18 | **representative metals** | 34 | |
-| ch12 | **elementary reaction** | 32 | |
-| ch14 | **pOH** | 32 | |
-| ch15 | **Lewis** | 29 | |
-| ch19 | **central metal** | 29 | |
-| ch20 | **ether** | 29 | |
-| ch10 | **dispersion forces** | 28 | |
-| ch16 | **microstates** | 28 | |
-| ch20 | **carboxylic acid** | 26 | |
+| ch09 | **torr** | 55 | torr |
+| ch18 | **hydroxide** | 55 | hýdroxíð |
+| ch02 | **group** | 42 | flokkur |
+| ch20 | **alcohol** | 42 | alkóhól |
+| ch18 | **carbonates** | 40 | karbónöt (plural) |
+| ch21 | **radioactive decay** | 39 | geislasundrun |
+| ch17 | **galvanic cell** | 36 | galvaníker (galvanic = galvaní) (cell in this context should be ker) |
+| ch10 | **holes** | 34 | hol (same singular and plural) |
+| ch18 | **representative metals** | 34 | aðalflokkamálmar |
+| ch12 | **elementary reaction** | 32 | grunnhvarf |
+| ch14 | **pOH** | 32 | pOH |
+| ch15 | **Lewis** | 29 | Lewis |
+| ch19 | **central metal** | 29 | miðjumálmur |
+| ch20 | **ether** | 29 | eter |
+| ch10 | **dispersion forces** | 28 | fráhrindikraftar |
+| ch16 | **microstates** | 28 | örástand |
+| ch20 | **carboxylic acid** | 26 | karboxýlsýra |
 | ch08 | ~~bonding orbital~~ | 25 | ✅ **bindandi svigrúm** — ruled 2026-09-19 |
-| ch20 | **ketone** | 23 | |
-| ch12 | **reaction mechanism** | 22 | |
-| ch20 | **carbonyl group** | 22 | |
-| ch21 | **chain reaction** | 22 | |
-| ch10 | **hydrogen bonding** | 21 | |
-| ch12 | **reaction orders** | 21 | |
+| ch20 | **ketone** | 23 | ketón |
+| ch12 | **reaction mechanism** | 22 | hvarfgangur |
+| ch20 | **carbonyl group** | 22 | karbónýlhópur |
+| ch21 | **chain reaction** | 22 | keðjuhvörf |
+| ch10 | **hydrogen bonding** | 21 | vetnistengi |
+| ch12 | **reaction orders** | 21 | stig efnahvarfs |
 
 ## Section 2 — the rest (126), default: leave them
 
@@ -128,3 +128,31 @@ Key terms with no row in 5–19 segments. **Default: no ruling.** After each cha
 - **ch19** — donor atoms (13) · optical isomers (11) · coordination sphere (7) · polydentate ligand (7) · low-spin complexes (6) · strong-field ligands (6) · chelate (5) · high-spin complexes (5) · weak-field ligands (5)
 - **ch20** — organic compounds (19) · esters (18) · IUPAC (17) · substituent (16) · alkyl group (12) · aromatic hydrocarbon (8) · skeletal structure (8) · saturated hydrocarbon (6) · addition reaction (5)
 - **ch21** — fusion (18) · curie (8) · daughter nuclide (8) · parent nuclide (8) · radiation therapy (8) · RBE (7) · nuclear chemistry (6) · radiometric dating (6) · transuranium elements (6) · containment system (5)
+
+## Section 3 — the subset each chapter will be bought with
+
+Computed from where each ruled term actually appears (≥ 5 segments), then **curated for sense**. Every chapter also carries the standing `enthalpy` / `enthalpy change` pair.
+
+🔴 **Three headwords are substrings of ordinary English words, measured:** in ch01 all 27 `ether` hits are *together* / *whether*; in ch02 all `hole` hits are *whole*; in ch10 `cell` is 118× **unit cell** (already `grindareining`), where *ker* would be wrong. Sending a sense-bound row into the wrong chapter is exactly what forces a re-buy, so these are allow-listed by chapter rather than by presence.
+
+| Chapter | `--glossary-only` subset |
+|---|---|
+| **ch00** | _standing pair only_ |
+| **ch01** | Celsius <br>_withheld: ether (18, wrong sense here); cell (12, wrong sense here)_ |
+| **ch02** | group, carbonate, hydroxide <br>_withheld: ether (28, wrong sense here); hole (14, wrong sense here)_ |
+| **ch08** | hybridization, hybrid orbital, Lewis, Lewis structure, bonding orbital, resonance <br>_withheld: ether (26, wrong sense here)_ |
+| **ch09** | torr <br>_withheld: hole (10, wrong sense here); ether (9, wrong sense here)_ |
+| **ch10** | hole, dispersion force, enthalpy, Lewis structure, Lewis <br>_withheld: cell (81, wrong sense here); ether (61, wrong sense here); group (17, wrong sense here)_ |
+| **ch11** | torr, carbonate, hydroxide, alcohol <br>_withheld: ether (13, wrong sense here); cell (9, wrong sense here); group (5, wrong sense here)_ |
+| **ch12** | elementary reaction, reaction mechanism, reaction order <br>_withheld: ether (9, wrong sense here); cell (6, wrong sense here)_ |
+| **ch13** | group, carbonate |
+| **ch14** | hydroxide, pOH, group, carbonate, electronegativity <br>_withheld: ether (6, wrong sense here)_ |
+| **ch15** | Lewis, hydroxide, carbonate, group, Lewis structure |
+| **ch16** | microstate, enthalpy <br>_withheld: ether (6, wrong sense here)_ |
+| **ch17** | cell, cell potential, galvanic cell, hydroxide <br>_withheld: ether (9, wrong sense here)_ |
+| **ch18** | Lewis, group, Lewis structure, hydroxide, carbonate, representative metal, resonance, hybridization, electronegativity, resonance form <br>_withheld: ether (22, wrong sense here); cell (17, wrong sense here)_ |
+| **ch19** | group, central metal, carbonate, hydroxide, Lewis <br>_withheld: ether (10, wrong sense here); cell (7, wrong sense here)_ |
+| **ch20** | ether, alcohol, Lewis, Lewis structure, carboxylic acid, ketone, carbonyl group, hybridization, resonance, resonance structure <br>_withheld: group (133, wrong sense here); cell (8, wrong sense here)_ |
+| **ch21** | radioactive decay, chain reaction <br>_withheld: ether (13, wrong sense here); cell (12, wrong sense here); hole (5, wrong sense here)_ |
+
+The run re-derives this table per chapter with `--pre-buy` before buying, so a chapter whose English moved gets the current answer rather than this snapshot.
