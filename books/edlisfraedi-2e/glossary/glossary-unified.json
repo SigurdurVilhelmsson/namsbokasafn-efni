@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-06T10:00:01.650Z",
+  "generated": "2026-09-20T09:43:07.206Z",
   "book": "edlisfraedi-2e",
   "stats": {
-    "total": 424,
-    "approved": 424,
+    "total": 425,
+    "approved": 425,
     "ties": 167,
     "nominalTies": 18,
     "outOfScopeOnly": 132,
@@ -1890,6 +1890,16 @@
       "domain": "earth-science",
       "position": 4,
       "conceptId": 43986,
+      "alternatives": []
+    },
+    {
+      "english": "hole",
+      "icelandic": "hol",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 5,
+      "conceptId": 70208,
       "alternatives": []
     },
     {

@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-19T20:44:49.436Z",
+  "generated": "2026-09-20T09:43:08.779Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1710,
-    "approved": 1710,
-    "ties": 336,
-    "nominalTies": 101,
-    "outOfScopeOnly": 1512,
+    "total": 1736,
+    "approved": 1736,
+    "ties": 333,
+    "nominalTies": 103,
+    "outOfScopeOnly": 1506,
     "censusStrings": 108414
   },
   "terms": [
@@ -325,6 +325,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1993,
+      "alternatives": []
+    },
+    {
+      "english": "Lewis",
+      "icelandic": "Lewis",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70212,
       "alternatives": []
     },
     {
@@ -1155,6 +1165,16 @@
       "alternatives": [
         "efnaspeki"
       ]
+    },
+    {
+      "english": "alcohol",
+      "icelandic": "alkóhól",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70202,
+      "alternatives": []
     },
     {
       "english": "aldehyde",
@@ -2822,6 +2842,16 @@
       ]
     },
     {
+      "english": "bonding orbital",
+      "icelandic": "bindandi svigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70198,
+      "alternatives": []
+    },
+    {
       "english": "bone marrow",
       "icelandic": "beinmergur",
       "status": "approved",
@@ -3263,6 +3293,36 @@
       ]
     },
     {
+      "english": "carbonate",
+      "icelandic": "karbónat",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70203,
+      "alternatives": []
+    },
+    {
+      "english": "carbonyl group",
+      "icelandic": "karbónýlhópur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70220,
+      "alternatives": []
+    },
+    {
+      "english": "carboxylic acid",
+      "icelandic": "karboxýlsýra",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70217,
+      "alternatives": []
+    },
+    {
       "english": "cardiac cycle",
       "icelandic": "hjartaumferð",
       "status": "approved",
@@ -3402,6 +3462,16 @@
       "alternatives": []
     },
     {
+      "english": "cell",
+      "icelandic": "ker",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70206,
+      "alternatives": []
+    },
+    {
       "english": "cell division",
       "icelandic": "frumuskipting",
       "status": "approved",
@@ -3460,6 +3530,16 @@
       ]
     },
     {
+      "english": "central metal",
+      "icelandic": "miðjumálmur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70213,
+      "alternatives": []
+    },
+    {
       "english": "centrifuge",
       "icelandic": "skilvinda",
       "status": "approved",
@@ -3467,6 +3547,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5072,
+      "alternatives": []
+    },
+    {
+      "english": "chain reaction",
+      "icelandic": "keðjuhvarf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70221,
       "alternatives": []
     },
     {
@@ -5607,6 +5697,16 @@
       "alternatives": []
     },
     {
+      "english": "dispersion force",
+      "icelandic": "dreifikraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70215,
+      "alternatives": []
+    },
+    {
       "english": "dissociation",
       "icelandic": "klofnun",
       "status": "approved",
@@ -6294,6 +6394,16 @@
       "alternatives": []
     },
     {
+      "english": "elementary reaction",
+      "icelandic": "grunnhvarf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70210,
+      "alternatives": []
+    },
+    {
       "english": "elimination",
       "icelandic": "brottnám",
       "status": "approved",
@@ -6680,6 +6790,16 @@
       "alternatives": [
         "áætla"
       ]
+    },
+    {
+      "english": "ether",
+      "icelandic": "eter",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70214,
+      "alternatives": []
     },
     {
       "english": "ethylene",
@@ -7587,6 +7707,16 @@
       "alternatives": []
     },
     {
+      "english": "galvanic cell",
+      "icelandic": "galvaníker",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70205,
+      "alternatives": []
+    },
+    {
       "english": "galvanization",
       "icelandic": "sinkhúðun",
       "status": "approved",
@@ -8025,6 +8155,16 @@
       "alternatives": []
     },
     {
+      "english": "group",
+      "icelandic": "flokkur",
+      "status": "approved",
+      "reason": "house-style",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70201,
+      "alternatives": []
+    },
+    {
       "english": "growth",
       "icelandic": "vöxtur",
       "status": "approved",
@@ -8331,6 +8471,16 @@
       "alternatives": []
     },
     {
+      "english": "hole",
+      "icelandic": "hol",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70208,
+      "alternatives": []
+    },
+    {
       "english": "homogeneous",
       "icelandic": "einsleitur",
       "status": "approved",
@@ -8402,6 +8552,26 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 270,
+      "alternatives": []
+    },
+    {
+      "english": "hybrid orbital",
+      "icelandic": "blendingssvigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70197,
+      "alternatives": []
+    },
+    {
+      "english": "hybridization",
+      "icelandic": "svigrúmablöndun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70196,
       "alternatives": []
     },
     {
@@ -8562,6 +8732,16 @@
       "alternatives": [
         "súluþrýstingur"
       ]
+    },
+    {
+      "english": "hydroxide",
+      "icelandic": "hýdroxíð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70200,
+      "alternatives": []
     },
     {
       "english": "hyperbola",
@@ -9513,6 +9693,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 3651,
+      "alternatives": []
+    },
+    {
+      "english": "ketone",
+      "icelandic": "ketón",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70218,
       "alternatives": []
     },
     {
@@ -10869,6 +11059,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 3461,
+      "alternatives": []
+    },
+    {
+      "english": "microstate",
+      "icelandic": "örástand",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70216,
       "alternatives": []
     },
     {
@@ -12337,6 +12537,16 @@
       "alternatives": [
         "pH"
       ]
+    },
+    {
+      "english": "pOH",
+      "icelandic": "pOH",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70211,
+      "alternatives": []
     },
     {
       "english": "pairing",
@@ -13913,6 +14123,16 @@
       "alternatives": []
     },
     {
+      "english": "radioactive decay",
+      "icelandic": "geislasundrun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70204,
+      "alternatives": []
+    },
+    {
       "english": "radioactive isotope",
       "icelandic": "geislavirk samsæta",
       "status": "approved",
@@ -14050,6 +14270,26 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4818,
+      "alternatives": []
+    },
+    {
+      "english": "reaction mechanism",
+      "icelandic": "hvarfgangur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70219,
+      "alternatives": []
+    },
+    {
+      "english": "reaction order",
+      "icelandic": "stig efnahvarfs",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70222,
       "alternatives": []
     },
     {
@@ -14341,6 +14581,16 @@
       "alternatives": [
         "afritun"
       ]
+    },
+    {
+      "english": "representative metal",
+      "icelandic": "aðalflokkamálmur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70209,
+      "alternatives": []
     },
     {
       "english": "repulsion",
@@ -17022,6 +17272,16 @@
       "domain": "biology",
       "position": 3,
       "conceptId": 55415,
+      "alternatives": []
+    },
+    {
+      "english": "torr",
+      "icelandic": "torr",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70199,
       "alternatives": []
     },
     {
