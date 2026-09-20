@@ -330,3 +330,49 @@ is still that older MT. ▶ **ch11's buy strictly IMPROVED this**: ch11 would ha
 ch12 before it was re-bought, and the count falls by one chapter's worth on every buy, reaching
 zero when the appendices are bought. **Do not "fix" this by relaxing A2b; it is reporting the
 truth about a deliberately mixed corpus.**
+
+### Premise pins after ch11 — bumped, and the floor that is deliberately left red
+
+**Bumped (clean ch11 arithmetic, each checked against its story before touching it):**
+
+| pin | was → is | why |
+|---|---|---|
+| sidecars | 210 → 211 | ch11's `chapter-metadata` sidecar, which it lacked |
+| byBook `efnafraedi-2e` | 160 → 161 | same one |
+| `chapter-metadata` sidecars | 13 → 14 | same one |
+| modules-minus-metadata | 197 → **197** | UNCHANGED, and that asymmetry is the evidence: the buy overwrote module sidecars and added one metadata sidecar |
+| run records / v2 | 83 → 90 | ch11's 7 units |
+| mustache (chemistry IS) | 2,772 → 2,620 | the re-MT retires that chapter's share of the legacy dialect |
+| carriers | 65 → 60 | five of ch11's six modules carried it |
+| `examined` | 22,107 → 22,153 | **+46** |
+| A2b ids | 60,931 → 60,977 | **+46** |
+| A2c markers | 30,158 → 30,204 | **+46** |
+
+🔑 **THE +46 IS A CROSS-CHECK, NOT A NUMBER I ACCEPTED.** `figure-run` independently enumerated
+**46** figures in ch11, and all three counts moved by exactly that. Third chapter, same law:
+ch09 +49, ch10 +82, ch11 +46, each equal to its own figure count — because the March MT predates
+alt extraction, so those modules carried zero.
+
+**Fixed, and it was red on `main`, not ours:** A2b's four-row damage table expected the m68663
+fixture's damaged rows to parse **10**. Measured: base **12**, one-marker-damaged **11**, and
+`books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.is.md` is **unchanged vs `origin/main`**.
+Batch A bumped the BASE pin 11 → 12 and left the two damaged rows at 10. Now 11.
+
+🔴 **LEFT RED ON PURPOSE — 5 tests, all one cause, and bumping them would be wrong.**
+
+| file | failing | cause |
+|---|---|---|
+| `remt-checks-mt.test.js` | A2b BASE RATE · A1 NATURAL must-trip | re-extraction |
+| `remt-checks-mt-gating.test.js` | 3 (m68791, m68823, base-rate split) | re-extraction; **never bumped by any commit** |
+
+All five measure the corpus's **un-bought remainder**, which shrinks with every chapter. Bumping
+them now means re-bumping them 11 more times, and each bumped value would encode a state that is
+false by the next buy. **They go green when the appendices are bought.** ▶ **This is a floor to
+DIFF AGAINST BY NAME, not to paper over** — a sixth failure, or a different name, is a real
+regression.
+
+⚖️ **A decision for [USER], not a session call:** A2b and the gating checks are BLOCKING. The
+alternative to leaving them red is to scope their premise to pairs whose MT was bought against
+the current extraction (`schemaVersion: 2`), which would make them meaningful again today —
+**but it narrows a blocking gate's population, and this repo's rules say that is not a thing to
+do quietly.**
