@@ -1,5 +1,5 @@
 <!-- SEG:m68739:title:auto-1 -->
-Lewis-tákn og Lewis-formúlur
+Lewis-tákn og Lewis-myndir
 
 <!-- SEG:m68739:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

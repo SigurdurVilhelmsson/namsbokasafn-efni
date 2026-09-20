@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19T13:36:04.418Z",
+  "generated": "2026-09-19T20:51:27.730Z",
   "termCount": 763,
   "entries": [
     {
@@ -556,7 +556,7 @@
       "termIs": "ásstaða",
       "termEn": "axial position",
       "termFull": "ásstaða (e. axial position)",
-      "definition": "staðsetning í þríhyrndri tvípýramídalögun þar sem önnur frumeind er í 180° horni og miðbaugstöðurnar eru í 90° horni",
+      "definition": "staðsetning í þríhyrndri tvípýramídalaga rúmfræði þar sem annað atóm er í 180° horni og miðbaugstaðsetningarnar eru í 90° horni",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -589,7 +589,7 @@
       "termIs": "áttflötungur",
       "termEn": "octahedral",
       "termFull": "áttflötungur (e. octahedral)",
-      "definition": "lögun þar sem sex ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrívíddarlögun myndast með fjórum hópum sem mynda ferning og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan ferningsplanið",
+      "definition": "lögun þar sem sex ytri hópar eru staðsettir í kringum miðjuatóm þannig að þrívíddarlögun myndast með fjórum hópum sem mynda ferning og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan ferningsplanið",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -597,10 +597,10 @@
       "termId": "fs-idp80913744"
     },
     {
-      "termIs": "áttureglan",
+      "termIs": "átturegla",
       "termEn": "octet rule",
-      "termFull": "áttureglan (e. octet rule)",
-      "definition": "viðmiðunarregla sem segir að aðalhópsfrumeindir myndi byggingar þar sem átta gildisrafeindir hafa víxlverkun við hvern kjarna, þar sem tengirafeindir teljast hafa víxlverkun við báðar frumeindirnar sem tengjast með tenginu",
+      "termFull": "átturegla (e. octet rule)",
+      "definition": "regla sem segir að aðalflokka frumeindir myndi byggingar þar sem átta gildisrafeindir víxlverka við hvern kjarna, þar sem tengirafeindir eru taldar víxlverka við báðar frumeindirnar sem tengjast með tenginu",
       "chapter": 7,
       "section": "7.3",
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
@@ -839,10 +839,10 @@
       "termId": "fs-idm106622864"
     },
     {
-      "termIs": "Born-Haber-hringur",
+      "termIs": "Born-Haber-hringferli",
       "termEn": "born-haber cycle",
-      "termFull": "Born-Haber-hringur (e. born-haber cycle)",
-      "definition": "varmefnafræðilegur hringur sem tengir saman hin ýmsu orkuþrep sem eiga sér stað við myndun jónaefnis í föstu formi úr viðeigandi frumefnum",
+      "termFull": "Born-Haber-hringferli (e. born-haber cycle)",
+      "definition": "efnavarmafræðilegt hringferli sem tengir saman hin ýmsu orkuþrep sem eiga sér stað við myndun jónaefnis í föstu formi úr viðeigandi frumefnum",
       "chapter": 7,
       "section": "7.5",
       "sectionTitle": "Styrkur jóna- og samgildra tengja",
@@ -1002,6 +1002,17 @@
       "sectionTitle": "Megindleg efnagreining",
       "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp237960512"
+    },
+    {
+      "termIs": "bygging sameindar",
+      "termEn": "molecular structure",
+      "termFull": "bygging sameindar (e. molecular structure)",
+      "definition": "bygging sem felur aðeins í sér staðsetningu atóma í sameindinni",
+      "chapter": 7,
+      "section": "7.6",
+      "sectionTitle": "Sameindabygging og skautun",
+      "sectionSlug": "7-6-sameindabygging-og-skautun",
+      "termId": "fs-idp108813632"
     },
     {
       "termIs": "byggingarformúla",
@@ -1378,6 +1389,17 @@
       "termId": "fs-idp31727024"
     },
     {
+      "termIs": "einfalt tengi",
+      "termEn": "single bond",
+      "termFull": "einfalt tengi (e. single bond)",
+      "definition": "tengi þar sem einu rafeindapari er deilt á milli tveggja frumeinda",
+      "chapter": 7,
+      "section": "7.3",
+      "sectionTitle": "Lewis-tákn og Lewis-myndir",
+      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
+      "termId": "fs-idp177199648"
+    },
+    {
       "termIs": "einfrumeinda jón",
       "termEn": "monatomic ion",
       "termFull": "einfrumeinda jón (e. monatomic ion)",
@@ -1521,17 +1543,6 @@
       "termId": "fs-idp8060128"
     },
     {
-      "termIs": "eintengi",
-      "termEn": "single bond",
-      "termFull": "eintengi (e. single bond)",
-      "definition": "efnatengi þar sem einu rafeindapari er deilt á milli tveggja frumeinda",
-      "chapter": 7,
-      "section": "7.3",
-      "sectionTitle": "Lewis-tákn og Lewis-myndir",
-      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
-      "termId": "fs-idp177199648"
-    },
-    {
       "termIs": "einvirk sýra",
       "termEn": "monoprotic acid",
       "termFull": "einvirk sýra (e. monoprotic acid)",
@@ -1667,7 +1678,7 @@
       "termIs": "ferflötungur",
       "termEn": "tetrahedral",
       "termFull": "ferflötungur (e. tetrahedral)",
-      "definition": "lögun þar sem fjórir ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrívíddarlögun myndast með fjórum hornum og 109,5° hornum milli hvers pars og miðfrumeindarinnar",
+      "definition": "lögun þar sem fjórir ytri hópar eru staðsettir í kringum miðjuatóm þannig að þrívíddarlögun myndast með fjórum hornum og 109,5° hornum milli hvers pars og miðjuatómsins",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -1783,17 +1794,6 @@
       "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
       "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp50657904"
-    },
-    {
-      "termIs": "formleg hleðsla",
-      "termEn": "formal charge",
-      "termFull": "formleg hleðsla (e. formal charge)",
-      "definition": "hleðsla sem frumeind myndi hafa ef tekin er tala gildisrafeinda á hlutlausri frumeind og frá henni dregnar óbindandi rafeindir og fjöldi tengja (helmingur bindirafeinda)",
-      "chapter": 7,
-      "section": "7.4",
-      "sectionTitle": "Formlegar hleðslur og vokmyndir",
-      "sectionSlug": "7-4-formlegar-hledslur-og-vokmyndir",
-      "termId": "fs-idp10384768"
     },
     {
       "termIs": "formúlumassi",
@@ -2126,6 +2126,17 @@
       "termId": "fs-idp52735024"
     },
     {
+      "termIs": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
+      "termEn": "valence shell electron-pair repulsion theory (vsepr)",
+      "termFull": "gildisrafeindaparafráhrindingarkenningin (VSEPR) (e. valence shell electron-pair repulsion theory (vsepr))",
+      "definition": "kenning sem notuð er til að spá fyrir um tengihorn í sameind með því að staðsetja svæði með háan rafeindaþéttleika eins langt frá hvort öðru og mögulegt er til að lágmarka rafstöðufráhrindingu",
+      "chapter": 7,
+      "section": "7.6",
+      "sectionTitle": "Sameindabygging og skautun",
+      "sectionSlug": "7-6-sameindabygging-og-skautun",
+      "termId": "fs-idp27828880"
+    },
+    {
       "termIs": "gildisrafeindir",
       "termEn": "valence electrons",
       "termFull": "gildisrafeindir (e. valence electrons)",
@@ -2212,17 +2223,6 @@
       "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
       "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp173597120"
-    },
-    {
-      "termIs": "grindarorka (ΔHgrind)",
-      "termEn": "lattice energy (δhlattice)",
-      "termFull": "grindarorka (ΔHgrind) (e. lattice energy (δhlattice))",
-      "definition": "orka sem þarf til að aðskilja eitt mól af jónaefni í föstu formi í jónir þess á gasfasa",
-      "chapter": 7,
-      "section": "7.5",
-      "sectionTitle": "Styrkur jóna- og samgildra tengja",
-      "sectionSlug": "7-5-styrkur-jona-og-samgildra-tengja",
-      "termId": "fs-idp29295648"
     },
     {
       "termIs": "grunnástand",
@@ -2566,6 +2566,17 @@
       "termId": "fs-idp8939856"
     },
     {
+      "termIs": "hleðsla",
+      "termEn": "formal charge",
+      "termFull": "hleðsla (e. formal charge)",
+      "definition": "hleðsla sem atóm myndi fá með því að taka fjölda gildisrafeinda á hlutlausu atómi og draga frá rafeindir sem ekki eru í tengi og fjölda tengja (helmingur rafeinda í tengi)",
+      "chapter": 7,
+      "section": "7.4",
+      "sectionTitle": "Formlegar hleðslur og vokmyndir",
+      "sectionSlug": "7-4-formlegar-hledslur-og-vokmyndir",
+      "termId": "fs-idp10384768"
+    },
+    {
       "termIs": "hliðarmálmur",
       "termEn": "transition metal",
       "termFull": "hliðarmálmur (e. transition metal)",
@@ -2723,7 +2734,7 @@
       "termIs": "hreint samgilt tengi",
       "termEn": "pure covalent bond",
       "termFull": "hreint samgilt tengi (e. pure covalent bond)",
-      "definition": "(einnig, óskautað samgilt tengi) samgilt tengi milli frumeinda með sömu rafneikvæðni",
+      "definition": "(einnig, óskautað samgilt tengi) samgilt tengi milli atóma með sömu rafdrægni",
       "chapter": 7,
       "section": "7.2",
       "sectionTitle": "Samgild tengi",
@@ -3207,7 +3218,7 @@
       "termIs": "jónatengi",
       "termEn": "ionic bond",
       "termFull": "jónatengi (e. ionic bond)",
-      "definition": "sterkur rafstöðukraftur sem laðar saman katjónir og anjónir í jónaefni",
+      "definition": "sterkur rafstöðukraftur sem togar saman katjónir og anjónir í jónaefnasambandi",
       "chapter": 7,
       "section": "7.1",
       "sectionTitle": "Jónatengi",
@@ -3411,17 +3422,6 @@
       "sectionTitle": "Efnafræði í samhengi",
       "sectionSlug": "1-1-efnafraedi-i-samhengi",
       "termId": "fs-idm134113488"
-    },
-    {
-      "termIs": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)",
-      "termEn": "valence shell electron-pair repulsion theory (vsepr)",
-      "termFull": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR) (e. valence shell electron-pair repulsion theory (vsepr))",
-      "definition": "kenning sem notuð er til að spá fyrir um efnatengishorn í sameind með því að staðsetja svæði með háum rafeindaþéttleika eins langt frá hvort öðru og mögulegt er til að lágmarka rafstöðufráhrindingu",
-      "chapter": 7,
-      "section": "7.6",
-      "sectionTitle": "Sameindabygging og skautun",
-      "sectionSlug": "7-6-sameindabygging-og-skautun",
-      "termId": "fs-idp27828880"
     },
     {
       "termIs": "kerfi",
@@ -3787,6 +3787,17 @@
       "termId": "fs-idm99275552"
     },
     {
+      "termIs": "kristalsgrindarorka (ΔHgrindar)",
+      "termEn": "lattice energy (δhlattice)",
+      "termFull": "kristalsgrindarorka (ΔHgrindar) (e. lattice energy (δhlattice))",
+      "definition": "orka sem þarf til að aðskilja eitt mól af jónaefni í föstu formi í jónir þess á gasfasa",
+      "chapter": 7,
+      "section": "7.5",
+      "sectionTitle": "Styrkur jóna- og samgildra tengja",
+      "sectionSlug": "7-5-styrkur-jona-og-samgildra-tengja",
+      "termId": "fs-idp29295648"
+    },
+    {
       "termIs": "kúrý (Ci)",
       "termEn": "curie (ci)",
       "termFull": "kúrý (Ci) (e. curie (ci))",
@@ -3908,17 +3919,6 @@
       "termId": "fs-idp28932848"
     },
     {
-      "termIs": "Lewis mynd",
-      "termEn": "lewis structure",
-      "termFull": "Lewis mynd (e. lewis structure)",
-      "definition": "mynd sem sýnir rafeindapör og tengipör rafeinda í sameind eða jón",
-      "chapter": 7,
-      "section": "7.3",
-      "sectionTitle": "Lewis-tákn og Lewis-myndir",
-      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
-      "termId": "fs-idm67089472"
-    },
-    {
       "termIs": "Lewis-basi",
       "termEn": "lewis base",
       "termFull": "Lewis-basi (e. lewis base)",
@@ -3928,6 +3928,17 @@
       "sectionTitle": "Lewis-sýrur og -basar",
       "sectionSlug": "15-2-lewis-syrur-og-basar",
       "termId": "fs-idp29842512"
+    },
+    {
+      "termIs": "Lewis-bygging",
+      "termEn": "lewis structure",
+      "termFull": "Lewis-bygging (e. lewis structure)",
+      "definition": "skýringarmynd sem sýnir stök rafeindapör og tengipör rafeinda í sameind eða jón",
+      "chapter": 7,
+      "section": "7.3",
+      "sectionTitle": "Lewis-tákn og Lewis-myndir",
+      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
+      "termId": "fs-idm67089472"
     },
     {
       "termIs": "Lewis-sýra",
@@ -3966,7 +3977,7 @@
       "termIs": "Lewis-tákn",
       "termEn": "lewis symbol",
       "termFull": "Lewis-tákn (e. lewis symbol)",
-      "definition": "tákn fyrir frumefni eða einfrumeindar jón sem notar punkt til að tákna hverja gildisrafeind í frumefninu eða jóninni",
+      "definition": "tákn fyrir frumefni eða einatóma jón sem notar punkt til að tákna hverja gildisrafeind í frumefninu eða jóninni",
       "chapter": 7,
       "section": "7.3",
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
@@ -4084,6 +4095,17 @@
       "termId": "fs-idm13416416"
     },
     {
+      "termIs": "línuleg",
+      "termEn": "linear",
+      "termFull": "línuleg (e. linear)",
+      "definition": "lögun þar sem tveir ytri hópar eru staðsettir á gagnstæðum hliðum miðjuatóms",
+      "chapter": 7,
+      "section": "7.6",
+      "sectionTitle": "Sameindabygging og skautun",
+      "sectionSlug": "7-6-sameindabygging-og-skautun",
+      "termId": "fs-idp35872064"
+    },
+    {
       "termIs": "línuleg samantekt frumeindasvigrúma",
       "termEn": "linear combination of atomic orbitals",
       "termFull": "línuleg samantekt frumeindasvigrúma (e. linear combination of atomic orbitals)",
@@ -4093,17 +4115,6 @@
       "sectionTitle": "Sameindasvigrúmakenningin",
       "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm41528352"
-    },
-    {
-      "termIs": "línulegur",
-      "termEn": "linear",
-      "termFull": "línulegur (e. linear)",
-      "definition": "lögun þar sem tveir ytri hópar eru staðsettir á gagnstæðum hliðum miðfrumeindar",
-      "chapter": 7,
-      "section": "7.6",
-      "sectionTitle": "Sameindabygging og skautun",
-      "sectionSlug": "7-6-sameindabygging-og-skautun",
-      "termId": "fs-idp35872064"
     },
     {
       "termIs": "línuróf",
@@ -4692,7 +4703,7 @@
       "termIs": "miðbaugstaða",
       "termEn": "equatorial position",
       "termFull": "miðbaugstaða (e. equatorial position)",
-      "definition": "ein af þremur stöðum í þríhyrndri tvípýramídalögun með 120° horn á milli þeirra; ásstöðurnar eru staðsettar í 90° horni",
+      "definition": "ein af þremur stöðum í þríhyrndri tvípýramídalaga rúmfræði með 120° horn á milli þeirra; ásstöðurnar eru staðsettar í 90° horni",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -5096,10 +5107,10 @@
       "termId": "fs-idm56357952"
     },
     {
-      "termIs": "ofurgild sameind",
+      "termIs": "ofgild sameind",
       "termEn": "hypervalent molecule",
-      "termFull": "ofurgild sameind (e. hypervalent molecule)",
-      "definition": "sameind sem inniheldur að minnsta kosti eitt aðalflokka frumefni sem hefur fleiri en átta rafeindir í ysta hvolfi sínu",
+      "termFull": "ofgild sameind (e. hypervalent molecule)",
+      "definition": "sameind sem inniheldur að minnsta kosti eitt aðalflokksfrumefni sem hefur fleiri en átta rafeindir í gildisskel sinni",
       "chapter": 7,
       "section": "7.3",
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
@@ -5371,6 +5382,17 @@
       "termId": "fs-idp51209936"
     },
     {
+      "termIs": "óvirkra para áhrif",
+      "termEn": "inert pair effect",
+      "termFull": "óvirkra para áhrif (e. inert pair effect)",
+      "definition": "hneigð þungra atóma til að mynda jónir þar sem gildis- s rafeindir þeirra tapast ekki",
+      "chapter": 7,
+      "section": "7.1",
+      "sectionTitle": "Jónatengi",
+      "sectionSlug": "7-1-jonatengi",
+      "termId": "fs-idm113628896"
+    },
+    {
       "termIs": "óvirkt raftroð",
       "termEn": "inert electrode",
       "termFull": "óvirkt raftroð (e. inert electrode)",
@@ -5547,6 +5569,17 @@
       "termId": "fs-idm65480336"
     },
     {
+      "termIs": "rafdrægni",
+      "termEn": "electronegativity",
+      "termFull": "rafdrægni (e. electronegativity)",
+      "definition": "hneigð atóms til að draga að sér rafeindir í tengi",
+      "chapter": 7,
+      "section": "7.2",
+      "sectionTitle": "Samgild tengi",
+      "sectionSlug": "7-2-samgild-tengi",
+      "termId": "fs-idp28641840"
+    },
+    {
       "termIs": "rafeind",
       "termEn": "electron",
       "termFull": "rafeind (e. electron)",
@@ -5567,17 +5600,6 @@
       "sectionTitle": "Geislavirk hrörnun",
       "sectionSlug": "21-3-geislavirk-hrornun",
       "termId": "fs-idm684928"
-    },
-    {
-      "termIs": "rafeindapar",
-      "termEn": "lone pair",
-      "termFull": "rafeindapar (e. lone pair)",
-      "definition": "tvær (par af) gildisrafeindum sem eru ekki notaðar til að mynda samgilt tengi",
-      "chapter": 7,
-      "section": "7.3",
-      "sectionTitle": "Lewis-tákn og Lewis-myndir",
-      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
-      "termId": "fs-idm44296912"
     },
     {
       "termIs": "rafeindaskipan",
@@ -5666,17 +5688,6 @@
       "sectionTitle": "Rafkleyfar",
       "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idm10926960"
-    },
-    {
-      "termIs": "rafneikvæðni",
-      "termEn": "electronegativity",
-      "termFull": "rafneikvæðni (e. electronegativity)",
-      "definition": "hneigð frumeindar til að draga að sér rafeindir í efnatengi",
-      "chapter": 7,
-      "section": "7.2",
-      "sectionTitle": "Samgild tengi",
-      "sectionSlug": "7-2-samgild-tengi",
-      "termId": "fs-idp28641840"
     },
     {
       "termIs": "rafsegulgeislun",
@@ -5770,7 +5781,7 @@
       "termIs": "rúmfræði rafeindapara",
       "termEn": "electron-pair geometry",
       "termFull": "rúmfræði rafeindapara (e. electron-pair geometry)",
-      "definition": "fyrirkomulag allra svæða rafeindaþéttleika (efnatengi, ein pör eða ópöruð rafeind) umhverfis miðfrumeind",
+      "definition": "fyrirkomulag allra svæða rafeindaþéttleika (tengja, einna rafeindapara eða óparaðra rafeinda) í kringum miðjuatóm",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -5924,23 +5935,12 @@
       "termIs": "sameindabygging",
       "termEn": "molecular structure",
       "termFull": "sameindabygging (e. molecular structure)",
-      "definition": "röðun frumeinda í sameind eða jón",
+      "definition": "skipan atóma í sameind eða jón",
       "chapter": 7,
       "section": "7.4",
       "sectionTitle": "Formlegar hleðslur og vokmyndir",
       "sectionSlug": "7-4-formlegar-hledslur-og-vokmyndir",
       "termId": "fs-idp31379776"
-    },
-    {
-      "termIs": "sameindabygging",
-      "termEn": "molecular structure",
-      "termFull": "sameindabygging (e. molecular structure)",
-      "definition": "bygging sem felur aðeins í sér staðsetningu frumeindanna í sameindinni",
-      "chapter": 7,
-      "section": "7.6",
-      "sectionTitle": "Sameindabygging og skautun",
-      "sectionSlug": "7-6-sameindabygging-og-skautun",
-      "termId": "fs-idp108813632"
     },
     {
       "termIs": "sameindaefnasamband",
@@ -6100,7 +6100,7 @@
       "termIs": "samgilt tengi",
       "termEn": "covalent bond",
       "termFull": "samgilt tengi (e. covalent bond)",
-      "definition": "efnatengi sem myndast þegar rafeindum er deilt milli frumeinda",
+      "definition": "tengi sem myndast þegar rafeindum er deilt milli atóma",
       "chapter": 7,
       "section": "7.2",
       "sectionTitle": "Samgild tengi",
@@ -6262,6 +6262,17 @@
       "termId": "fs-idp36919168"
     },
     {
+      "termIs": "sindurefni",
+      "termEn": "free radical",
+      "termFull": "sindurefni (e. free radical)",
+      "definition": "sameind sem inniheldur oddatölu rafeinda",
+      "chapter": 7,
+      "section": "7.3",
+      "sectionTitle": "Lewis-tákn og Lewis-myndir",
+      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
+      "termId": "fs-idm4719424"
+    },
+    {
       "termIs": "sílikat",
       "termEn": "silicate",
       "termFull": "sílikat (e. silicate)",
@@ -6353,7 +6364,7 @@
       "termIs": "skautað samgilt tengi",
       "termEn": "polar covalent bond",
       "termFull": "skautað samgilt tengi (e. polar covalent bond)",
-      "definition": "samgilt tengi milli frumeinda með mismunandi rafneikvæðni; samgilt tengi með jákvæðum enda og neikvæðum enda",
+      "definition": "samgilt tengi milli atóma með mismunandi rafdrægni; samgilt tengi með jákvæðum enda og neikvæðum enda",
       "chapter": 7,
       "section": "7.2",
       "sectionTitle": "Samgild tengi",
@@ -6658,15 +6669,15 @@
       "termId": "fs-idp198657264"
     },
     {
-      "termIs": "stakeind",
-      "termEn": "free radical",
-      "termFull": "stakeind (e. free radical)",
-      "definition": "sameind sem inniheldur oddatölu rafeinda",
+      "termIs": "stakt rafeindapar",
+      "termEn": "lone pair",
+      "termFull": "stakt rafeindapar (e. lone pair)",
+      "definition": "tvær (par af) gildisrafeindum sem eru ekki notaðar til að mynda samgilt tengi",
       "chapter": 7,
       "section": "7.3",
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
-      "termId": "fs-idm4719424"
+      "termId": "fs-idm44296912"
     },
     {
       "termIs": "stál",
@@ -7156,7 +7167,7 @@
       "termIs": "tengifjarlægð",
       "termEn": "bond distance",
       "termFull": "tengifjarlægð (e. bond distance)",
-      "definition": "(einnig, tengilengd) fjarlægð milli kjarna tveggja tengdra frumeinda",
+      "definition": "(einnig, tengilengd) fjarlægð milli kjarna tveggja tengdra atóma",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -7178,7 +7189,7 @@
       "termIs": "tengihorn",
       "termEn": "bond angle",
       "termFull": "tengihorn (e. bond angle)",
-      "definition": "horn milli tveggja samgildra tengja sem deila sameiginlegri frumeind",
+      "definition": "horn milli tveggja samgildra tengja sem deila sameiginlegu atómi",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -7189,7 +7200,7 @@
       "termIs": "tengilengd",
       "termEn": "bond length",
       "termFull": "tengilengd (e. bond length)",
-      "definition": "fjarlægð milli kjarna tveggja tengdra frumeinda þar sem lægstri stöðuorku er náð",
+      "definition": "fjarlægð milli kjarna tveggja tengdra atóma þar sem lægstu stöðuorku er náð",
       "chapter": 7,
       "section": "7.2",
       "sectionTitle": "Samgild tengi",
@@ -7197,10 +7208,10 @@
       "termId": "fs-idm4648560"
     },
     {
-      "termIs": "tengjaorka",
+      "termIs": "tengisorka",
       "termEn": "bond energy",
-      "termFull": "tengjaorka (e. bond energy)",
-      "definition": "(einnig, tengjaklofnunarorka) orka sem þarf til að rjúfa samgilt tengi í efni á gasfasa",
+      "termFull": "tengisorka (e. bond energy)",
+      "definition": "(einnig, tengisrofsorka) orka sem þarf til að rjúfa samgilt tengi í efni á gasfasa",
       "chapter": 7,
       "section": "7.5",
       "sectionTitle": "Styrkur jóna- og samgildra tengja",
@@ -7318,17 +7329,6 @@
       "termId": "fs-idp75431424"
     },
     {
-      "termIs": "Tregrafeindaparsáhrif",
-      "termEn": "inert pair effect",
-      "termFull": "Tregrafeindaparsáhrif (e. inert pair effect)",
-      "definition": "Hneigð þungra frumeinda til að mynda jónir þar sem girðitala s rafeinda þeirra tapast ekki",
-      "chapter": 7,
-      "section": "7.1",
-      "sectionTitle": "Jónatengi",
-      "sectionSlug": "7-1-jonatengi",
-      "termId": "fs-idm113628896"
-    },
-    {
       "termIs": "tvíatóma sameind með frumeindum úr sömu lotu",
       "termEn": "homonuclear diatomic molecule",
       "termFull": "tvíatóma sameind með frumeindum úr sömu lotu (e. homonuclear diatomic molecule)",
@@ -7398,7 +7398,7 @@
       "termIs": "tvískautsvægi",
       "termEn": "dipole moment",
       "termFull": "tvískautsvægi (e. dipole moment)",
-      "definition": "eiginleiki sameindar sem lýsir aðskilnaði hleðslu, ákvarðaður af summu einstakra tengivæga byggt á sameindabyggingunni",
+      "definition": "eiginleiki sameindar sem lýsir aðskilnaði hleðslu sem ákvarðast af summu einstakra tengivægja byggt á byggingu sameindarinnar",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -7406,10 +7406,10 @@
       "termId": "fs-idp12081312"
     },
     {
-      "termIs": "tvískautsvægi efnatengis",
+      "termIs": "tvískautsvægi tengis",
       "termEn": "bond dipole moment",
-      "termFull": "tvískautsvægi efnatengis (e. bond dipole moment)",
-      "definition": "aðskilnaður hleðslu í efnatengi sem fer eftir mismun á rafneikvæðni og tengifjarlægð, táknað með hluthleðslum eða vigri",
+      "termFull": "tvískautsvægi tengis (e. bond dipole moment)",
+      "definition": "aðskilnaður hleðslu í tengi sem fer eftir mismun á rafneikvæðni og tengifjarlægð, táknað með hlutahleðslum eða vigri",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
@@ -7989,10 +7989,10 @@
       "termId": "fs-idm11590896"
     },
     {
-      "termIs": "vokmynd",
+      "termIs": "vok",
       "termEn": "resonance",
-      "termFull": "vokmynd (e. resonance)",
-      "definition": "ástand þar sem ein Lewis mynd nægir ekki til að lýsa tengjum í sameind og meðaltal margra bygginga sést",
+      "termFull": "vok (e. resonance)",
+      "definition": "ástand þar sem ein Lewis-mynd nægir ekki til að lýsa tengjum í sameind og meðaltal margra mynda sést",
       "chapter": 7,
       "section": "7.4",
       "sectionTitle": "Formlegar hleðslur og vokmyndir",
@@ -8000,10 +8000,10 @@
       "termId": "fs-idp213363824"
     },
     {
-      "termIs": "vokmyndablendingur",
+      "termIs": "vokblendingur",
       "termEn": "resonance hybrid",
-      "termFull": "vokmyndablendingur (e. resonance hybrid)",
-      "definition": "meðaltal þeirra vokmynda sem sýndar eru með einstökum Lewis myndum",
+      "termFull": "vokblendingur (e. resonance hybrid)",
+      "definition": "meðaltal vokmynda sem sýndar eru með einstökum Lewis-myndum",
       "chapter": 7,
       "section": "7.4",
       "sectionTitle": "Formlegar hleðslur og vokmyndir",
@@ -8014,7 +8014,7 @@
       "termIs": "vokmyndir",
       "termEn": "resonance forms",
       "termFull": "vokmyndir (e. resonance forms)",
-      "definition": "tvær eða fleiri Lewis myndir sem hafa sömu röðun frumeinda en mismunandi röðun rafeinda",
+      "definition": "tvær eða fleiri Lewis-myndir sem hafa sömu skipan atóma en mismunandi skipan rafeinda",
       "chapter": 7,
       "section": "7.4",
       "sectionTitle": "Formlegar hleðslur og vokmyndir",
@@ -8121,6 +8121,17 @@
       "termId": "fs-idm193371200"
     },
     {
+      "termIs": "þrefalt tengi",
+      "termEn": "triple bond",
+      "termFull": "þrefalt tengi (e. triple bond)",
+      "definition": "tengi þar sem þremur rafeindapörum er deilt á milli tveggja frumeinda",
+      "chapter": 7,
+      "section": "7.3",
+      "sectionTitle": "Lewis-tákn og Lewis-myndir",
+      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
+      "termId": "fs-idm68093504"
+    },
+    {
       "termIs": "þrepaskipt jónun",
       "termEn": "stepwise ionization",
       "termFull": "þrepaskipt jónun (e. stepwise ionization)",
@@ -8154,26 +8165,26 @@
       "termId": "fs-idp90512720"
     },
     {
-      "termIs": "þríhyrndur tvípýramídi",
-      "termEn": "trigonal bipyramidal",
-      "termFull": "þríhyrndur tvípýramídi (e. trigonal bipyramidal)",
-      "definition": "lögun þar sem fimm ytri hópar eru staðsettir umhverfis miðfrumeind þannig að þrír mynda flatan þríhyrning með 120° hornum milli hvers pars og miðfrumeindarinnar, og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan þríhyrningsplanið",
-      "chapter": 7,
-      "section": "7.6",
-      "sectionTitle": "Sameindabygging og skautun",
-      "sectionSlug": "7-6-sameindabygging-og-skautun",
-      "termId": "fs-idp124673792"
-    },
-    {
-      "termIs": "þríhyrningslaga flatt",
+      "termIs": "þríhyrndur planur",
       "termEn": "trigonal planar",
-      "termFull": "þríhyrningslaga flatt (e. trigonal planar)",
-      "definition": "lögun þar sem þrír ytri hópar raðast í flatan þríhyrning í kringum miðjufrumeind með 120° horn á milli hvers pars og miðjufrumeindarinnar",
+      "termFull": "þríhyrndur planur (e. trigonal planar)",
+      "definition": "lögun þar sem þrír ytri hópar eru staðsettir í flötum þríhyrningi í kringum miðjuatóm með 120° hornum milli hvers pars og miðjuatómsins",
       "chapter": 7,
       "section": "7.6",
       "sectionTitle": "Sameindabygging og skautun",
       "sectionSlug": "7-6-sameindabygging-og-skautun",
       "termId": "fs-idp36467056"
+    },
+    {
+      "termIs": "þríhyrndur tvípýramídi",
+      "termEn": "trigonal bipyramidal",
+      "termFull": "þríhyrndur tvípýramídi (e. trigonal bipyramidal)",
+      "definition": "lögun þar sem fimm ytri hópar eru staðsettir í kringum miðjuatóm þannig að þrír mynda flatan þríhyrning með 120° hornum milli hvers pars og miðjuatómsins, og hinir tveir mynda toppa tveggja pýramída, einn fyrir ofan og einn fyrir neðan þríhyrningsplanið",
+      "chapter": 7,
+      "section": "7.6",
+      "sectionTitle": "Sameindabygging og skautun",
+      "sectionSlug": "7-6-sameindabygging-og-skautun",
+      "termId": "fs-idp124673792"
     },
     {
       "termIs": "þrípunktur",
@@ -8196,17 +8207,6 @@
       "sectionTitle": "Hvarfgangar efnahvarfa",
       "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
       "termId": "fs-idp251542624"
-    },
-    {
-      "termIs": "þrítengi",
-      "termEn": "triple bond",
-      "termFull": "þrítengi (e. triple bond)",
-      "definition": "efnatengi þar sem þremur rafeindapörum er deilt á milli tveggja frumeinda",
-      "chapter": 7,
-      "section": "7.3",
-      "sectionTitle": "Lewis-tákn og Lewis-myndir",
-      "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
-      "termId": "fs-idm68093504"
     },
     {
       "termIs": "þrívirk sýra",

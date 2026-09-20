@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-19T13:37:03.810Z",
+  "generated": "2026-09-19T21:05:54.246Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-19T13:37:03.810Z",
+      "generated": "2026-09-19T21:05:54.246Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 129,
-        "withDiscrepancies": 20,
-        "totalDiscrepancies": 33,
+        "perfect": 130,
+        "withDiscrepancies": 19,
+        "totalDiscrepancies": 31,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 16,
+        "deferredLosses": 14,
         "benignArtifacts": 17,
         "green": true
       },
@@ -65,26 +65,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/> in source (zero content)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68741",
-          "chapter": "ch07",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic H in 'lattice energy (ΔH_lattice)' dropped (ΔHgrind plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
-            },
-            {
-              "tag": "sub",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "RC1 glossary <term> lost <sub>: grindarorka (ΔH_lattice)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },

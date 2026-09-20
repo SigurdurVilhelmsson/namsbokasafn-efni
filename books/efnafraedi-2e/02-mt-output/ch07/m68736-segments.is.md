@@ -8,10 +8,10 @@ Jónatengi
 Samgild tengi
 
 <!-- SEG:m68736:abstract-item:abstract-item-3 -->
-Lewis-tákn og -formúlur
+Lewis-tákn og Lewis-myndir
 
 <!-- SEG:m68736:abstract-item:abstract-item-4 -->
-Formlegar hleðslur og samómun
+Formlegar hleðslur og vokmyndir
 
 <!-- SEG:m68736:abstract-item:abstract-item-5 -->
 Styrkur jóna- og samgildra tengja
