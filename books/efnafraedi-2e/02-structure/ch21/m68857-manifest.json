@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68857",
-  "extractedAt": "2026-08-31T19:08:46.060Z",
+  "extractedAt": "2026-09-20T17:25:23.146Z",
   "sourceHash": "20bde1208b7682d9",
   "segmentCount": 47,
   "segmentIds": [
@@ -107,5 +107,18 @@
       "fs-idp11200000",
       "fs-idp96492688"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "radioactive tracer",
+    "term-00002": "radioactive label",
+    "term-00003": "Radiation therapy",
+    "term-00004": "external beam radiation therapy",
+    "term-00005": "internal radiation therapy (brachytherapy)",
+    "term-00006": "chemotherapy",
+    "fs-idp80557904": "chemotherapy",
+    "fs-idp44456896": "external beam radiation therapy",
+    "fs-idp166135008": "internal radiation therapy",
+    "fs-idp18406528": "radiation therapy",
+    "fs-idp81777184": "radioactive tracer"
   }
 }

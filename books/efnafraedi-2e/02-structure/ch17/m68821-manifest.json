@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68821",
-  "extractedAt": "2026-08-31T19:08:44.410Z",
+  "extractedAt": "2026-09-20T17:25:21.197Z",
   "sourceHash": "990645483d507b52",
   "segmentCount": 100,
   "segmentIds": [
@@ -229,5 +229,9 @@
       "fs-idp210820912",
       "fs-idp48847296"
     ]
+  },
+  "termEnglish": {
+    "fs-idp85536816": "electrode potential (EX)",
+    "fs-idp62148528": "half cell"
   }
 }

@@ -362,6 +362,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_02_Sugars",
+          "title": null,
           "caption": {
             "segmentId": "m68847:caption:CNX_Chem_20_02_Sugars-caption"
           },
@@ -379,6 +380,7 @@
           "type": "figure",
           "id": "CNX_Chem_20_02_Diabetes",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68847:caption:CNX_Chem_20_02_Diabetes-caption"
           },

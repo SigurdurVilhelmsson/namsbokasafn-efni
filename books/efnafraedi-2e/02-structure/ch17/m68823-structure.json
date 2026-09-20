@@ -60,6 +60,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_17_03_SHE",
+      "title": null,
       "caption": {
         "segmentId": "m68823:caption:CNX_Chem_17_03_SHE-caption"
       },
@@ -107,6 +108,7 @@
       "type": "figure",
       "id": "CNX_Chem_17_03_GalvanCu",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68823:caption:CNX_Chem_17_03_GalvanCu-caption"
       },

@@ -371,6 +371,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_03_liquidgas",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_liquidgas-caption"
           },
@@ -413,6 +414,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_03_DaltonLaw1",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_DaltonLaw1-caption"
           },
@@ -646,6 +648,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_03_WaterVapor",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_WaterVapor-caption"
           },
@@ -668,6 +671,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_03_WaterVapor2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_WaterVapor2-caption"
           },
@@ -1347,6 +1351,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_03_Ammonia",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_Ammonia-caption"
           },
@@ -1596,6 +1601,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_03_GlobalWarming",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_GlobalWarming-caption"
           },
@@ -1612,6 +1618,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_03_GlobalWarming2",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_GlobalWarming2-caption"
           },
@@ -1663,6 +1670,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_03_SusanSolom",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68752:caption:CNX_Chem_09_03_SusanSolom-caption"
           },

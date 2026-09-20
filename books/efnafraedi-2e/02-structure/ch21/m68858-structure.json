@@ -27,6 +27,7 @@
       "type": "figure",
       "id": "CNX_Chem_21_06_Damage1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68858:caption:CNX_Chem_21_06_Damage1-caption"
       },
@@ -57,6 +58,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_06_IonRadSpec",
+          "title": null,
           "caption": {
             "segmentId": "m68858:caption:CNX_Chem_21_06_IonRadSpec-caption"
           },
@@ -97,6 +99,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_06_Damage2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68858:caption:CNX_Chem_21_06_Damage2-caption"
           },
@@ -132,6 +135,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_21_06_Penetrate",
+              "title": null,
               "caption": {
                 "segmentId": "m68858:caption:CNX_Chem_21_06_Penetrate-caption"
               },
@@ -169,6 +173,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_21_06_RadonExpos",
+              "title": null,
               "caption": {
                 "segmentId": "m68858:caption:CNX_Chem_21_06_RadonExpos-caption"
               },
@@ -204,6 +209,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_06_Monitors",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68858:caption:CNX_Chem_21_06_Monitors-caption"
           },
@@ -235,6 +241,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_06_Exposure1",
+          "title": null,
           "caption": {
             "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure1-caption"
           },
@@ -565,6 +572,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_06_Exposure2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure2-caption"
           },

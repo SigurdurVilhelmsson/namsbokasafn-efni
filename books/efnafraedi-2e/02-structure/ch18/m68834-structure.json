@@ -89,6 +89,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_06_Cave",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68834:caption:CNX_Chem_18_06_Cave-caption"
       },
@@ -136,6 +137,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_06_CarbonCO2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68834:caption:CNX_Chem_18_06_CarbonCO2-caption"
       },

@@ -29,6 +29,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_09_04_Diffusion",
+      "title": null,
       "caption": {
         "segmentId": "m68754:caption:CNX_Chem_09_04_Diffusion-caption"
       },
@@ -65,6 +66,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_09_04_DiffEff",
+      "title": null,
       "caption": {
         "segmentId": "m68754:caption:CNX_Chem_09_04_DiffEff-caption"
       },
@@ -102,6 +104,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_04_Effusion2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68754:caption:CNX_Chem_09_04_Effusion2-caption"
       },
@@ -393,6 +396,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_09_04_GasDiff",
+      "title": null,
       "caption": {
         "segmentId": "m68754:caption:CNX_Chem_09_04_GasDiff-caption"
       },

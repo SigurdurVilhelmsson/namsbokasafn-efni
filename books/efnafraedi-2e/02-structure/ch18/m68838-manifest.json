@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68838",
-  "extractedAt": "2026-08-31T19:08:45.039Z",
+  "extractedAt": "2026-09-20T17:25:21.898Z",
   "sourceHash": "9eee45db0d4a7968",
   "segmentCount": 38,
   "segmentIds": [
@@ -91,5 +91,9 @@
       "fs-idm120146304",
       "fs-idm130394160"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Frasch process",
+    "fs-idm172534880": "Frasch process"
   }
 }

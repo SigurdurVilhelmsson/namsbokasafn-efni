@@ -33,6 +33,7 @@
       "type": "figure",
       "id": "CNX_Chem_21_03_Reaction1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68854:caption:CNX_Chem_21_03_Reaction1-caption"
       },
@@ -77,6 +78,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_03_Radiation",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68854:caption:CNX_Chem_21_03_Radiation-caption"
           },
@@ -173,6 +175,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_03_RadioDecay",
+          "title": null,
           "caption": {
             "segmentId": "m68854:caption:CNX_Chem_21_03_RadioDecay-caption"
           },
@@ -211,6 +214,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_03_PETScan",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68854:caption:CNX_Chem_21_03_PETScan-caption"
           },
@@ -243,6 +247,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_03_DecayS",
+          "title": null,
           "caption": {
             "segmentId": "m68854:caption:CNX_Chem_21_03_DecayS-caption"
           },
@@ -280,6 +285,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_03_HalfLife",
+          "title": null,
           "caption": {
             "segmentId": "m68854:caption:CNX_Chem_21_03_HalfLife-caption"
           },
@@ -675,6 +681,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_21_03_CarbonDate",
+              "title": null,
               "caption": {
                 "segmentId": "m68854:caption:CNX_Chem_21_03_CarbonDate-caption"
               },
@@ -795,6 +802,7 @@
               "type": "figure",
               "id": "CNX_Chem_21_03_DSScrolls",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68854:caption:CNX_Chem_21_03_DSScrolls-caption"
               },

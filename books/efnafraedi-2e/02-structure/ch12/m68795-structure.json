@@ -30,6 +30,7 @@
       "type": "figure",
       "id": "CNX_Chem_12_07_CatReCoDig",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68795:caption:CNX_Chem_12_07_CatReCoDig-caption"
       },
@@ -226,6 +227,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_12_07_Molina",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_Molina-caption"
           },
@@ -264,6 +266,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_07_Gluc6PhoDe",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_Gluc6PhoDe-caption"
           },
@@ -280,6 +283,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_12_07_HMPShuntPa",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_HMPShuntPa-caption"
           },
@@ -348,6 +352,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_07_HetCats",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_HetCats-caption"
           },
@@ -396,6 +401,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_07_CatConvert",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_CatConvert-caption"
           },
@@ -580,6 +586,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_07_Enzyme",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68795:caption:CNX_Chem_12_07_Enzyme-caption"
           },

@@ -26,6 +26,7 @@
       "type": "figure",
       "id": "CNX_Chem_16_03_Carnot",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68817:caption:CNX_Chem_16_03_Carnot-caption"
       },
@@ -101,6 +102,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_02_Microstates",
+          "title": null,
           "caption": {
             "segmentId": "m68817:caption:CNX_Chem_16_02_Microstates-caption"
           },
@@ -143,6 +145,7 @@
           "type": "figure",
           "id": "CNX_Chem_16_03_Energy",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68817:caption:CNX_Chem_16_03_Energy-caption"
           },
@@ -250,6 +253,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_03_Entropies",
+          "title": null,
           "caption": {
             "segmentId": "m68817:caption:CNX_Chem_16_03_Entropies-caption"
           },
@@ -276,6 +280,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_02_EntGraph",
+          "title": null,
           "caption": {
             "segmentId": "m68817:caption:CNX_Chem_16_02_EntGraph-caption"
           },

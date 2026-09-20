@@ -42,6 +42,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_06_ZvsPgraph",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68759:caption:CNX_Chem_09_06_ZvsPgraph-caption"
       },
@@ -73,6 +74,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_09_06_RealGas2",
+      "title": null,
       "caption": {
         "segmentId": "m68759:caption:CNX_Chem_09_06_RealGas2-caption"
       },

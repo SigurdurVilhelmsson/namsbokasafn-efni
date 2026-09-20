@@ -97,6 +97,7 @@
           "type": "figure",
           "id": "CNX_Chem_20_03_COgeom_img",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68848:caption:CNX_Chem_20_03_COgeom_img-caption"
           },
@@ -283,6 +284,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_03_CarboxEst1_img",
+          "title": null,
           "caption": {
             "segmentId": "m68848:caption:CNX_Chem_20_03_CarboxEst1_img-caption"
           },
@@ -397,6 +399,7 @@
           "type": "figure",
           "id": "CNX_Chem_20_03_strawberry",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68848:caption:CNX_Chem_20_03_strawberry-caption"
           },

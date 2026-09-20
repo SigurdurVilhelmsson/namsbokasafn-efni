@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68837",
-  "extractedAt": "2026-08-31T19:08:45.027Z",
+  "extractedAt": "2026-09-20T17:25:21.886Z",
   "sourceHash": "a454fba13e8a001d",
   "segmentCount": 248,
   "segmentIds": [
@@ -478,5 +478,35 @@
       "fs-idp158287200",
       "fs-idp91787280"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "photosynthesis",
+    "term-00002": "ozone",
+    "term-00007": "base anhydrides",
+    "term-00008": "chlor-alkali process",
+    "term-00003": "oxides",
+    "term-00004": "peroxides",
+    "term-00005": "superoxides",
+    "term-00006": "hydroxides",
+    "term-00009": "sulfites",
+    "term-00010": "hydrogen sulfites",
+    "term-00011": "sulfates",
+    "term-00012": "hydrogen sulfates",
+    "term-00013": "Ostwald process",
+    "term-00014": "Nitrates",
+    "fs-idm62001152": "base anhydride",
+    "fs-idm5139056": "chlor-alkali process",
+    "fs-idm172459680": "hydrogen sulfate",
+    "fs-idm9967920": "hydrogen sulfite",
+    "fs-idm30899088": "hydroxide",
+    "fs-idp53118608": "nitrate",
+    "fs-idm29287616": "Ostwald process",
+    "fs-idp211809712": "oxide",
+    "fs-idp51209936": "ozone",
+    "fs-idp16504016": "peroxide",
+    "fs-idp54272512": "photosynthesis",
+    "fs-idp28656816": "sulfate",
+    "fs-idm7360848": "sulfite",
+    "fs-idp57744816": "superoxide"
   }
 }

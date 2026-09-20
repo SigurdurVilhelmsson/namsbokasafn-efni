@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68826",
-  "extractedAt": "2026-08-31T19:08:44.549Z",
+  "extractedAt": "2026-09-20T17:25:21.360Z",
   "sourceHash": "f2ecab9e371167c9",
   "segmentCount": 48,
   "segmentIds": [
@@ -106,5 +106,16 @@
       "fs-idm148527888",
       "fs-idp84837104"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Corrosion",
+    "term-00002": "galvanization",
+    "term-00003": "cathodic protection",
+    "term-00004": "sacrificial anodes",
+    "fs-idp84325552": "cathodic protection",
+    "fs-idm126591232": "corrosion",
+    "fs-idm145050816": "galvanization",
+    "fs-idm153016624": "sacrificial anode",
+    "fs-idm218315856": "salt bridge"
   }
 }

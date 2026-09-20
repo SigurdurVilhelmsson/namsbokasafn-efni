@@ -54,6 +54,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_02_AcidDissol",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68787:caption:CNX_Chem_12_02_AcidDissol-caption"
           },
@@ -136,6 +137,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_02_NYSStatue",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68787:caption:CNX_Chem_12_02_NYSStatue-caption"
           },

@@ -76,6 +76,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_03_Structures",
+          "title": null,
           "caption": {
             "segmentId": "m68831:caption:CNX_Chem_18_03_Structures-caption"
           },
@@ -98,6 +99,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_03_BIcosahed",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68831:caption:CNX_Chem_18_03_BIcosahed-caption"
           },
@@ -181,6 +183,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_03_SiPurif",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68831:caption:CNX_Chem_18_03_SiPurif-caption"
           },
@@ -341,6 +344,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_02_Glass",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68831:caption:CNX_Chem_18_02_Glass-caption"
               },
@@ -367,6 +371,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_18_02_Boricacid_img",
+              "title": null,
               "caption": {
                 "segmentId": "m68831:caption:CNX_Chem_18_02_Boricacid_img-caption"
               },
@@ -393,6 +398,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_18_03_BorateAnio",
+              "title": null,
               "caption": {
                 "segmentId": "m68831:caption:CNX_Chem_18_03_BorateAnio-caption"
               },
@@ -420,6 +426,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_03_CO2vsSiO2",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68831:caption:CNX_Chem_18_03_CO2vsSiO2-caption"
               },

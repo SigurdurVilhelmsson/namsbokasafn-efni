@@ -29,6 +29,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_17_08_Daniell",
+      "title": null,
       "caption": {
         "segmentId": "m68825:caption:CNX_Chem_17_08_Daniell-caption"
       },
@@ -108,6 +109,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_05_DryCell",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_DryCell-caption"
           },
@@ -153,6 +155,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_05_AlkalineBat",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_AlkalineBat-caption"
           },
@@ -208,6 +211,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_17_05_NiCd",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_NiCd-caption"
           },
@@ -252,6 +256,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_17_05_LiIon",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_LiIon-caption"
           },
@@ -297,6 +302,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_05_Lead",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_Lead-caption"
           },
@@ -342,6 +348,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_17_05_FuelCell",
+          "title": null,
           "caption": {
             "segmentId": "m68825:caption:CNX_Chem_17_05_FuelCell-caption"
           },

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68840",
-  "extractedAt": "2026-08-31T19:08:45.078Z",
+  "extractedAt": "2026-09-20T17:25:21.937Z",
   "sourceHash": "eb5b02905e22bdcc",
   "segmentCount": 52,
   "segmentIds": [
@@ -100,5 +100,10 @@
       "fs-idm27001296",
       "fs-idp109754128"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Bartlett",
+    "fs-idm39818672": "halide",
+    "fs-idm15345952": "interhalogen"
   }
 }

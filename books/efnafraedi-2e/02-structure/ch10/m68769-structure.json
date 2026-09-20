@@ -26,6 +26,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_04_PhaseDi",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68769:caption:CNX_Chem_10_04_PhaseDi-caption"
       },
@@ -48,6 +49,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_04_H2OPhasDi2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68769:caption:CNX_Chem_10_04_H2OPhasDi2-caption"
       },
@@ -80,6 +82,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_04_FreezeDry",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68769:caption:CNX_Chem_10_04_FreezeDry-caption"
       },
@@ -102,6 +105,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_04_IceMelt",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68769:caption:CNX_Chem_10_04_IceMelt-caption"
       },
@@ -212,6 +216,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_04_CO2phasdi",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68769:caption:CNX_Chem_10_04_CO2phasdi-caption"
       },
@@ -520,6 +525,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_04_CritFluid",
+          "title": null,
           "caption": {
             "segmentId": "m68769:caption:CNX_Chem_10_04_CritFluid-caption"
           },
@@ -633,6 +639,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_04_SupCritCof",
+          "title": null,
           "caption": {
             "segmentId": "m68769:caption:CNX_Chem_10_04_SupCritCof-caption"
           },

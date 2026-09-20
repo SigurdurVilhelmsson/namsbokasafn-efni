@@ -259,6 +259,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_14_02_phscale",
+      "title": null,
       "caption": {
         "segmentId": "m68804:caption:CNX_Chem_14_02_phscale-caption"
       },
@@ -455,6 +456,7 @@
       "type": "figure",
       "id": "CNX_Chem_14_02_AcidRain",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68804:caption:CNX_Chem_14_02_AcidRain-caption"
       },
@@ -550,6 +552,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_14_02_pHMeter",
+      "title": null,
       "caption": {
         "segmentId": "m68804:caption:CNX_Chem_14_02_pHMeter-caption"
       },
@@ -571,6 +574,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_14_02_indicator",
+      "title": null,
       "caption": {
         "segmentId": "m68804:caption:CNX_Chem_14_02_indicator-caption"
       },

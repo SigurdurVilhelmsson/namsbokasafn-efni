@@ -28,6 +28,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_Colors",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_Colors-caption"
       },
@@ -50,6 +51,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_BondType",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_BondType-caption"
       },
@@ -72,6 +74,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_CN",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_CN-caption"
       },
@@ -94,6 +97,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_en",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_en-caption"
       },
@@ -116,6 +120,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_heme",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_heme-caption"
       },
@@ -138,6 +143,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_Gly",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_Gly-caption"
       },
@@ -696,6 +702,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_02_structures",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_structures-caption"
           },
@@ -1002,6 +1009,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_02_oct",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_oct-caption"
           },
@@ -1024,6 +1032,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_02_4geom",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_4geom-caption"
           },
@@ -1057,6 +1066,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_02_cistrans",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_cistrans-caption"
           },
@@ -1131,6 +1141,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_02_transplatin",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_transplatin-caption"
           },
@@ -1153,6 +1164,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_02_enant",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_enant-caption"
           },
@@ -1174,6 +1186,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_02_Coen2Cl2",
+          "title": null,
           "caption": {
             "segmentId": "m68843:caption:CNX_Chem_19_02_Coen2Cl2-caption"
           },
@@ -1218,6 +1231,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_19_02_ChlorBlue",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption"
       },
@@ -1250,6 +1264,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_19_02_Cat",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_Cat-caption"
       },
@@ -1293,6 +1308,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_CatConvert",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_CatConvert-caption"
       },
@@ -1310,6 +1326,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_chmprofile",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_chmprofile-caption"
       },
@@ -1337,6 +1354,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_heme2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_heme2-caption"
       },
@@ -1359,6 +1377,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_EDTA",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_EDTA-caption"
       },
@@ -1381,6 +1400,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_BalEnt",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_BalEnt-caption"
       },
@@ -1451,6 +1471,7 @@
       "type": "figure",
       "id": "CNX_Chem_19_02_DMSA",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68843:caption:CNX_Chem_19_02_DMSA-caption"
       },

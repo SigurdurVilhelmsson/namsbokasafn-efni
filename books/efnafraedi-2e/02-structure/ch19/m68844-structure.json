@@ -50,6 +50,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_03_Dorbital",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_Dorbital-caption"
           },
@@ -77,6 +78,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_03_CFSE",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_CFSE-caption"
           },
@@ -123,6 +125,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_03_Lowhigh",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_Lowhigh-caption"
           },
@@ -295,6 +298,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_03_TetCube",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_TetCube-caption"
           },
@@ -371,6 +375,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_03_Lightper",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_Lightper-caption"
           },
@@ -459,6 +464,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_03_ColorAq",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_ColorAq-caption"
           },
@@ -481,6 +487,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_03_Feabs",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_Feabs-caption"
           },
@@ -521,6 +528,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_03_Cu",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68844:caption:CNX_Chem_19_03_Cu-caption"
           },

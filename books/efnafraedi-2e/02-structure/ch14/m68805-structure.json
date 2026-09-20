@@ -35,6 +35,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_03_strong",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_strong-caption"
           },
@@ -315,6 +316,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_14_03_strengths",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_strengths-caption"
           },
@@ -331,6 +333,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_14_03_Corresp",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_Corresp-caption"
           },
@@ -556,6 +559,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_03_Vinegar",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_Vinegar-caption"
           },
@@ -872,6 +876,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_03_AntSting",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_AntSting-caption"
           },
@@ -1102,6 +1107,7 @@
               "type": "figure",
               "id": "CNX_Chem_14_03_AcidpH",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68805:caption:CNX_Chem_14_03_AcidpH-caption"
               },
@@ -1165,6 +1171,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_03_Oxyacid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68805:caption:CNX_Chem_14_03_Oxyacid-caption"
           },

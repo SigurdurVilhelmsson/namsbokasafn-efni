@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68858",
-  "extractedAt": "2026-08-31T19:08:46.079Z",
+  "extractedAt": "2026-09-20T17:25:23.185Z",
   "sourceHash": "e4c84e6195ef8ce1",
   "segmentCount": 167,
   "segmentIds": [
@@ -255,5 +255,34 @@
       "fs-idp6038480",
       "fs-idp110761408"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nonionizing radiation",
+    "term-00002": "ionizing radiation",
+    "term-00003": "Geiger counter",
+    "term-00004": "scintillation counter",
+    "term-00005": "Radiation dosimeters",
+    "term-00006": "becquerel (Bq)",
+    "term-00007": "curie (Ci)",
+    "term-00008": "millicurie (mCi)",
+    "term-00009": "gray (Gy)",
+    "term-00010": "radiation absorbed dose (rad)",
+    "term-00011": "sievert (Sv)",
+    "term-00012": "roentgen equivalent for man (rem)",
+    "term-00013": "RBE",
+    "term-00014": "relative biological effectiveness",
+    "fs-idp13479088": "becquerel (Bq)",
+    "fs-idp40157072": "curie (Ci)",
+    "fs-idp77369424": "Geiger counter",
+    "fs-idp165471824": "gray (Gy)",
+    "fs-idp72050384": "ionizing radiation",
+    "fs-idp48690544": "millicurie (mCi)",
+    "fs-idp8726208": "nonionizing radiation",
+    "fs-idp38524656": "radiation absorbed dose (rad)",
+    "fs-idp82617008": "radiation dosimeter",
+    "fs-idp165863168": "relative biological effectiveness (RBE)",
+    "fs-idp225092016": "roentgen equivalent man (rem)",
+    "fs-idp18328912": "scintillation counter",
+    "fs-idp13997168": "sievert (Sv)"
   }
 }

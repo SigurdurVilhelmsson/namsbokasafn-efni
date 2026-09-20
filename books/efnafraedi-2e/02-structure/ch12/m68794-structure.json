@@ -190,6 +190,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_06_BimoElRe",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68794:caption:CNX_Chem_12_06_BimoElRe-caption"
           },
@@ -264,6 +265,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_06_Cattle",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68794:caption:CNX_Chem_12_06_Cattle-caption"
           },

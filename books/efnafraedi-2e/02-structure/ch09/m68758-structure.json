@@ -106,6 +106,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_04_KMT2",
+          "title": null,
           "caption": {
             "segmentId": "m68758:caption:CNX_Chem_09_04_KMT2-caption"
           },
@@ -144,6 +145,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_05_MolSpeed1",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed1-caption"
           },
@@ -300,6 +302,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_05_MolSpeed2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed2-caption"
           },
@@ -322,6 +325,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_05_MolSpeed3",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed3-caption"
           },

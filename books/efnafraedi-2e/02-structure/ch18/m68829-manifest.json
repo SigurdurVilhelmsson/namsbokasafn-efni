@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68829",
-  "extractedAt": "2026-08-31T19:08:44.758Z",
+  "extractedAt": "2026-09-20T17:25:21.613Z",
   "sourceHash": "8ca9a8451628ff1d",
   "segmentCount": 138,
   "segmentIds": [
@@ -238,5 +238,23 @@
       "fs-idp21711600",
       "fs-idp78136496"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "representative elements",
+    "term-00002": "representative metals",
+    "term-00003": "metalloid",
+    "term-00004": "metals",
+    "term-00005": "passivation",
+    "term-00006": "alkaline earth metals",
+    "term-00007": "Allotropes",
+    "term-00008": "Bismuth",
+    "fs-idp143563616": "alkaline earth metal",
+    "fs-idp21380496": "allotropes",
+    "fs-idp97640000": "bismuth",
+    "fs-idp133033792": "metal (representative)",
+    "fs-idp36212736": "metalloid",
+    "fs-idp8939856": "passivation",
+    "fs-idp110103392": "representative element",
+    "fs-idm2235360": "representative metal"
   }
 }

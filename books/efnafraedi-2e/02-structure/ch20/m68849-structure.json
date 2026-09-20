@@ -43,6 +43,7 @@
       "type": "figure",
       "id": "CNX_Chem_20_04_pyridine_img",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_pyridine_img-caption"
       },
@@ -90,6 +91,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_20_04_DNA",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_DNA-caption"
       },
@@ -183,6 +185,7 @@
       "type": "figure",
       "id": "CNX_Chem_20_04_poppies",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_poppies-caption"
       },
@@ -267,6 +270,7 @@
       "type": "figure",
       "id": "CNX_Chem_20_04_peptide",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_peptide-caption"
       },
@@ -284,6 +288,7 @@
       "type": "figure",
       "id": "CNX_Chem_20_04_PhenylH_img",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_PhenylH_img-caption"
       },
@@ -332,6 +337,7 @@
       "type": "figure",
       "id": "CNX_Chem_20_04_kevlar1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_kevlar1-caption"
       },
@@ -348,6 +354,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_20_04_kevpoly",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_kevpoly-caption"
       },
@@ -364,6 +371,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_20_04_kevlar2",
+      "title": null,
       "caption": {
         "segmentId": "m68849:caption:CNX_Chem_20_04_kevlar2-caption"
       },

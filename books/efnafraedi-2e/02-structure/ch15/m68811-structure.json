@@ -48,6 +48,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_15_01_AgCl",
+          "title": null,
           "caption": {
             "segmentId": "m68811:caption:CNX_Chem_15_01_AgCl-caption"
           },
@@ -561,6 +562,7 @@
           "type": "figure",
           "id": "CNX_Chem_15_01_OilPaints",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68811:caption:CNX_Chem_15_01_OilPaints-caption"
           },
@@ -714,6 +716,7 @@
           "type": "figure",
           "id": "CNX_Chem_15_01_BariumXray",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68811:caption:CNX_Chem_15_01_BariumXray-caption"
           },
@@ -1025,6 +1028,7 @@
           "type": "figure",
           "id": "CNX_Chem_15_01_Blood",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68811:caption:CNX_Chem_15_01_Blood-caption"
           },
@@ -1176,6 +1180,7 @@
           "type": "figure",
           "id": "CNX_Chem_15_01_Wastewater",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68811:caption:CNX_Chem_15_01_Wastewater-caption"
           },

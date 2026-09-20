@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68835",
-  "extractedAt": "2026-08-31T19:08:44.943Z",
+  "extractedAt": "2026-09-20T17:25:21.792Z",
   "sourceHash": "edb54c4343562cef",
   "segmentCount": 83,
   "segmentIds": [
@@ -167,5 +167,9 @@
       "fs-idp114244272",
       "fs-idp52331728"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nitrogen fixation",
+    "fs-idp203631920": "nitrogen fixation"
   }
 }

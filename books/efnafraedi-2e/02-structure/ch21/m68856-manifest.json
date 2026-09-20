@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68856",
-  "extractedAt": "2026-08-31T19:08:46.044Z",
+  "extractedAt": "2026-09-20T17:25:23.132Z",
   "sourceHash": "eb7ca93de392034a",
   "segmentCount": 191,
   "segmentIds": [
@@ -307,5 +307,44 @@
       "fs-idm189160608",
       "fs-idm234493952"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Nuclear transmutation",
+    "term-00002": "transmutation",
+    "term-00003": "particle accelerators",
+    "term-00004": "transuranium elements",
+    "term-00012": "nuclear reactor",
+    "term-00005": "fission",
+    "term-00006": "chain reaction",
+    "term-00007": "fissile",
+    "term-00008": "fissionable",
+    "term-00009": "critical mass",
+    "term-00010": "subcritical mass",
+    "term-00011": "supercritical mass",
+    "term-00013": "Nuclear fuel",
+    "term-00014": "nuclear moderator",
+    "term-00015": "reactor coolant",
+    "term-00016": "control rods",
+    "term-00017": "containment system",
+    "term-00018": "fusion",
+    "term-00019": "fusion reactor",
+    "fs-idm128080144": "chain reaction",
+    "fs-idm220735792": "containment system",
+    "fs-idm206270992": "control rod",
+    "fs-idm1727408": "critical mass",
+    "fs-idm208194016": "fissile (or fissionable)",
+    "fs-idm195851664": "fission",
+    "fs-idm135521664": "fusion",
+    "fs-idp7149200": "fusion reactor",
+    "fs-idm227895952": "nuclear fuel",
+    "fs-idm204101584": "nuclear moderator",
+    "fs-idm39349824": "nuclear reactor",
+    "fs-idm74066144": "nuclear transmutation",
+    "fs-idm66620880": "particle accelerator",
+    "fs-idm187262736": "reactor coolant",
+    "fs-idm151497488": "subcritical mass",
+    "fs-idm27779984": "supercritical mass",
+    "fs-idm223971840": "transmutation reaction",
+    "fs-idm188168144": "transuranium element"
   }
 }

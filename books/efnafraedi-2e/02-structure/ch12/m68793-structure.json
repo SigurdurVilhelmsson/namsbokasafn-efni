@@ -100,6 +100,7 @@
       "type": "figure",
       "id": "CNX_Chem_12_05_COandO2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68793:caption:CNX_Chem_12_05_COandO2-caption"
       },
@@ -156,6 +157,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_05_RCooDgm",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68793:caption:CNX_Chem_12_05_RCooDgm-caption"
           },
@@ -203,6 +205,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_05_SuccessR",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68793:caption:CNX_Chem_12_05_SuccessR-caption"
           },
@@ -557,6 +560,7 @@
           "type": "figure",
           "id": "CNX_Chem_12_05_ArrhPlot",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68793:caption:CNX_Chem_12_05_ArrhPlot-caption"
           },

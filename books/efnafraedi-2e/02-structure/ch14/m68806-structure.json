@@ -507,6 +507,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_04_hydronium",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68806:caption:CNX_Chem_14_04_hydronium-caption"
           },

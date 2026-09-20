@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68834",
-  "extractedAt": "2026-08-31T19:08:44.921Z",
+  "extractedAt": "2026-09-20T17:25:21.771Z",
   "sourceHash": "3ac071edace0db3b",
   "segmentCount": 38,
   "segmentIds": [
@@ -114,5 +114,13 @@
       "fs-idp143233600",
       "fs-idp118505152"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "carbonates",
+    "term-00002": "hydrogen carbonates",
+    "term-00003": "bicarbonate anion",
+    "fs-idm122363760": "bicarbonate anion",
+    "fs-idm4412224": "carbonate",
+    "fs-idm108042736": "hydrogen carbonate"
   }
 }

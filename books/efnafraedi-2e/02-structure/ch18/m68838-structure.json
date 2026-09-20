@@ -24,6 +24,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_10_Volcano",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68838:caption:CNX_Chem_18_10_Volcano-caption"
       },
@@ -46,6 +47,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_10_FrachMine",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68838:caption:CNX_Chem_18_10_FrachMine-caption"
       },

@@ -24,6 +24,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_09_02_Ballooning",
+      "title": null,
       "caption": {
         "segmentId": "m68751:caption:CNX_Chem_09_02_Ballooning-caption"
       },
@@ -54,6 +55,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_01_Amontons1",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_01_Amontons1-caption"
           },
@@ -75,6 +77,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_02_Amontons2",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_Amontons2-caption"
           },
@@ -222,6 +225,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_02_Charles2",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_Charles2-caption"
           },
@@ -414,6 +418,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_03_BoylesLaw1",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_03_BoylesLaw1-caption"
           },
@@ -446,6 +451,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_02_Boyleslaw2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_Boyleslaw2-caption"
           },
@@ -609,6 +615,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_02_BoylesLaw4",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_BoylesLaw4-caption"
           },
@@ -896,6 +903,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_02_Scuba",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_Scuba-caption"
           },
@@ -934,6 +942,7 @@
           "type": "figure",
           "id": "CNX_Chem_09_02_GreatBarri",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_GreatBarri-caption"
           },
@@ -966,6 +975,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_09_02_HENH3O2",
+          "title": null,
           "caption": {
             "segmentId": "m68751:caption:CNX_Chem_09_02_HENH3O2-caption"
           },

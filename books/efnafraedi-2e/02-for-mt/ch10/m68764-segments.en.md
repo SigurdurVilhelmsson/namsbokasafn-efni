@@ -284,7 +284,7 @@ Rank the motor oils in order of increasing viscosity, and explain your reasoning
 An image of four graduated cylinders sitting on a table labeled “Oil viscosity ( S A E )” is shown. The left-hand cylinder, labeled “20,” is mostly filled with light tan liquid and a metal ball is drawn in the lower fifth of the cylinder, but not on the bottom. The second cylinder, labeled “30,” is mostly filled with light brown liquid and a metal ball is drawn about three-fourths of the way down cylinder. The third cylinder, labeled “40,” is mostly filled with medium brown liquid and a metal ball is drawn halfway down the cylinder. The right-hand cylinder, labeled “50,” is mostly filled with brown liquid and a metal ball is drawn near the top of the liquid in the cylinder.
 
 <!-- SEG:m68764:problem:fs-idm164104512 -->
-Although steel is denser than water, a steel needle or paper clip placed carefully lengthwise on the surface of still water can be made to float. Explain at a molecular level how this is possible.[[BR]] [[MEDIA:1]] (credit: Cory Zanker)
+Although steel is denser than water, a steel needle or paper clip placed carefully lengthwise on the surface of still water can be made to float. Explain at a molecular level how this is possible.[[BR]] [[MEDIA:1]]
 
 <!-- SEG:m68764:alt:fs-idm208311120-alt -->
 A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.

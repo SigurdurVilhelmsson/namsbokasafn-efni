@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68832",
-  "extractedAt": "2026-08-31T19:08:44.867Z",
+  "extractedAt": "2026-09-20T17:25:21.723Z",
   "sourceHash": "059e0f2ab732e9d7",
   "segmentCount": 93,
   "segmentIds": [
@@ -165,5 +165,15 @@
       "fs-idm158014192",
       "fs-idm161057120"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "acid anhydrides",
+    "term-00002": "disproportionation reactions",
+    "term-00003": "Smalley",
+    "term-00004": "Fuller",
+    "term-00005": "Geim",
+    "term-00006": "Novoselov",
+    "fs-idm223944896": "acid anhydride",
+    "fs-idm60186560": "disproportionation reaction"
   }
 }
