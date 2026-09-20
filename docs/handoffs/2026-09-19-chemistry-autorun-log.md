@@ -14,5 +14,22 @@ is the record of what each chapter surfaced.
 
 ---
 
-_No chapter has been run yet. The run starts only on [USER]'s go, after Section 1 of the review is
-answered and the resulting house-style rulings are deployed and exported._
+**Run started 2026-09-20**, after [USER] merged #494/#495/#496, deployed and exported. Verified on
+`main` before the first buy: all 25 ruled headwords are in `glossary-unified.json` with the ruled
+Icelandic (1,736 terms, ties 336 → 333). The two exceptions are the known §C166 pair
+(`degree Celsius` / `degree centigrade`), which the export's census structurally cannot see.
+
+## ch00 — the preface · ~108 ISK
+
+- **Bought:** 1 module, `glossary-only` (standing `enthalpy` pair; neither word occurs, so the wire
+  was effectively glossary-free). Estimated 156, billed ~108.
+- **Figures:** none (0 enumerated).
+- ⚠️ **Inject SKIPPED the module first time: 69 "untranslated-EN residue" segments.** Checked all
+  69 by value — they are the **contributor list**: "Mark Blaser, Shasta College" and 67 more of the
+  same shape, plus one byline. The MT is right to return a name verbatim, so the residue is a false
+  positive of a guard that cannot tell a name from a miss. Re-injected with `--allow-incomplete`;
+  the module writes `[INCOMPLETE] [PERFECT fidelity]`.
+  ▶ **Not a fundamental problem and not re-purchasable** — no buy would change it. It is the shape a
+  future contributor-list chapter will hit again.
+- **Rendered:** `0-1-formali.html` (13,814 B), h1 *Formáli*, contributor names preserved, 0 raw `[[`
+  markers. `generate-index --track mt-preview` re-run. Manifest `green: true`, 0 unexplained.
