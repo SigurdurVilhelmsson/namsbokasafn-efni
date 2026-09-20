@@ -1,0 +1,45 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_CubUntCll",
+ "renderHash": "6e21d18d6109ecf5",
+ "composedHash": "6e21d18d6109ecf5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cubic unit cells": "Kúbískar einingarsellur",
+  "Lattice point locations": "Staðsetningar grindarpunkta",
+  "Simple cubic": "Einföld kúbísk",
+  "Body-centered cubic": "Miðjusett kúbísk",
+  "Face-centered cubic": "Flötasett kúbísk"
+ },
+ "mtAlternatives": {
+  "Cubic unit cells": {
+   "kept": "joined",
+   "other": "Kúbískir einingarfrumur",
+   "reason": "disagree",
+   "mt": "Kúbískar einingarsellur"
+  },
+  "Simple cubic": {
+   "kept": "joined",
+   "other": "Einfaldur teningsgrindur",
+   "reason": "disagree",
+   "mt": "Einföld kúbísk"
+  },
+  "Body-centered cubic": {
+   "kept": "joined",
+   "other": "Rúmmiðjaður teningslaga",
+   "reason": "disagree",
+   "mt": "Miðjusett kúbísk"
+  },
+  "Face-centered cubic": {
+   "kept": "joined",
+   "other": "Flötungsmiðjaður teningsgrindur",
+   "reason": "disagree",
+   "mt": "Flötasett kúbísk"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

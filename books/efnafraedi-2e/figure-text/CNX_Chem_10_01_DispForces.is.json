@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_01_DispForces",
+ "renderHash": "f3eba9ab815d2696",
+ "composedHash": "f3eba9ab815d2696",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Unequal distribution|of electrons": "Ójöfn dreifing rafeinda",
+  "Attractive force": "Aðdráttarkraftur",
+  "Temporary dipoles": "Tímabundin tvískaut"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

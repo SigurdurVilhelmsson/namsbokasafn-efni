@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_02_Question4_img",
+ "renderHash": "61b37d87d9951e1b",
+ "composedHash": "61b37d87d9951e1b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Compound": "Efnasamband",
+  "Molecule": "Sameind",
+  "Surface Tension|(mN/m)": "Yfirborðsspenna (mN/m)",
+  "Viscosity|(mPa s)": "Seigja (mPa s)",
+  "diethyl ether|C2H5OC2H5": "díetýleter C2H5OC2H5",
+  "acetone|CH3COCH3": "asetón CH3COCH3",
+  "ethanol|C2H5OH": "etanól C2H5OH",
+  "ethylene glycol|CH2(OH)CH2(OH)": "etýlen glýkól CH2(OH)CH2(OH)"
+ },
+ "mtAlternatives": {
+  "diethyl ether|C2H5OC2H5": {
+   "kept": "joined",
+   "other": "Díetýleter C2H5OC2H5",
+   "reason": "disagree",
+   "mt": "díetýleter C2H5OC2H5"
+  },
+  "ethanol|C2H5OH": {
+   "kept": "joined",
+   "other": "Etanól C2H5OH",
+   "reason": "disagree",
+   "mt": "etanól C2H5OH"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

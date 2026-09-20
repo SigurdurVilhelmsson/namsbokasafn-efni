@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_Graphene",
+ "renderHash": "21df80e1e2afb9b3",
+ "composedHash": "21df80e1e2afb9b3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Nanotube": "Nanórör",
+  "Graphene sheet": "Grafenþynna",
+  "Stacked sheets": "Staflaðar þynnur",
+  "Buckyball": "Buckyball"
+ },
+ "mtAlternatives": {
+  "Stacked sheets": {
+   "kept": "joined",
+   "other": "Staflaðar arkir",
+   "reason": "disagree",
+   "mt": "Staflaðar þynnur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

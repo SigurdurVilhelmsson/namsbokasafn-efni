@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_ConDec",
+ "renderHash": "f36ab285729967f7",
+ "composedHash": "f36ab285729967f7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Maxima and minima reinforce": "Hágildi og lággildi styrkjast",
+  "Constructive interface": "Jákvæð víxlverkun",
+  "Destructive interface": "Neikvæð víxlverkun",
+  "Maxima and minima cancel": "Hágildi og lággildi eyðast"
+ },
+ "mtAlternatives": {
+  "Maxima and minima reinforce": {
+   "kept": "joined",
+   "other": "Hágildi og lággildi styrkja",
+   "reason": "disagree",
+   "mt": "Hágildi og lággildi styrkjast"
+  },
+  "Constructive interface": {
+   "kept": "joined",
+   "other": "Uppbyggilegt viðmót",
+   "reason": "disagree",
+   "mt": "Jákvæð víxlverkun"
+  },
+  "Destructive interface": {
+   "kept": "joined",
+   "other": "Eyðileggjandi viðmót",
+   "reason": "disagree",
+   "mt": "Neikvæð víxlverkun"
+  },
+  "Maxima and minima cancel": {
+   "kept": "joined",
+   "other": "Hágildi og lágildi vega hvort annað upp",
+   "reason": "disagree",
+   "mt": "Hágildi og lággildi eyðast"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

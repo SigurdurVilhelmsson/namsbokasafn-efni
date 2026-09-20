@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_01_IntravInter",
+ "renderHash": "e43e9e66e260756d",
+ "composedHash": "e43e9e66e260756d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Intramolecular force|(strong)": "Innansameindakraftur (sterkur)",
+  "Intermolecular force|(weak)": "Millisameindakraftur (veikur)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

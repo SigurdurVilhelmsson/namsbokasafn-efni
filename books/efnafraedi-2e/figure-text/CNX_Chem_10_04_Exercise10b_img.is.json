@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_Exercise10b_img",
+ "renderHash": "ddfa59128783c3c1",
+ "composedHash": "ddfa59128783c3c1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Graphite": "Grafít",
+  "Temperature (K)": "Hitastig (K)",
+  "Pressure (Pa)": "Þrýstingur (Pa)"
+ },
+ "mtAlternatives": {
+  "Temperature (K)": {
+   "kept": "joined",
+   "other": "Hiti (K)",
+   "reason": "disagree",
+   "mt": "Hitastig (K)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

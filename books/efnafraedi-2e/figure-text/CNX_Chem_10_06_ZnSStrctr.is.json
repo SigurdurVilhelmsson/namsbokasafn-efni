@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_ZnSStrctr",
+ "renderHash": "014a8d33c0bee754",
+ "composedHash": "014a8d33c0bee754",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ZnS face-centered unit cell": "Flötungsmiðjuð einingarfruma ZnS"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

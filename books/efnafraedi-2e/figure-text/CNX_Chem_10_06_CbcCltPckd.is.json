@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_CbcCltPckd",
+ "renderHash": "ddf338847bd2aed1",
+ "composedHash": "ddf338847bd2aed1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Side view": "Hliðarsýn",
+  "Top view": "Sýn ofan frá",
+  "Cubic closest packed structure": "Kúbísk þéttpökkuð bygging",
+  "Rotated view": "Snúin sýn"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

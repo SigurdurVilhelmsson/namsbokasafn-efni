@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_07_CaF2Strctr",
+ "renderHash": "57a2679c2ad9c548",
+ "composedHash": "57a2679c2ad9c548",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CaF2 face-centered unit cell": "CaF2 flatarmálmiðjuð einingarfruma"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

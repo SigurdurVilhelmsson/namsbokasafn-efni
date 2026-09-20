@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T18:10:51.887Z",
+  "generated": "2026-09-20T18:57:54.035Z",
   "termCount": 763,
   "entries": [
     {
@@ -58,26 +58,15 @@
       "termId": "fs-idm140352128"
     },
     {
-      "termIs": "aðdráttarkraftur milli tvískauta",
-      "termEn": "dipole-dipole attraction",
-      "termFull": "aðdráttarkraftur milli tvískauta (e. dipole-dipole attraction)",
-      "definition": "millisameinda aðdráttarkraftur milli tveggja varanlegra tvískauta",
+      "termIs": "aðdráttarkraftur milli sameinda",
+      "termEn": "intermolecular force",
+      "termFull": "aðdráttarkraftur milli sameinda (e. intermolecular force)",
+      "definition": "ósamgildur aðdráttarkraftur milli atóma, sameinda og/eða jóna",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
-      "termId": "fs-idp127496336"
-    },
-    {
-      "termIs": "aðfengið tvískaut",
-      "termEn": "induced dipole",
-      "termFull": "aðfengið tvískaut (e. induced dipole)",
-      "definition": "tímabundið tvískaut sem myndast þegar rafeindir frumeindar eða sameindar afmyndast af augnablikstvískauti nágrannafrumeindar eða -sameindar",
-      "chapter": 10,
-      "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
-      "termId": "fs-idm31438528"
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
+      "termId": "fs-idm66585952"
     },
     {
       "termIs": "aðferð upphafshraða",
@@ -89,6 +78,17 @@
       "sectionTitle": "Hraðajöfnur",
       "sectionSlug": "12-3-hradajofnur",
       "termId": "fs-idm176826832"
+    },
+    {
+      "termIs": "aðloðunarkraftur",
+      "termEn": "adhesive force",
+      "termFull": "aðloðunarkraftur (e. adhesive force)",
+      "definition": "aðdráttarkraftur milli sameinda með mismunandi efnafræðilega eiginleika",
+      "chapter": 10,
+      "section": "10.2",
+      "sectionTitle": "Eiginleikar vökva",
+      "sectionSlug": "10-2-eiginleikar-vokva",
+      "termId": "fs-idm87859280"
     },
     {
       "termIs": "afoxari",
@@ -509,14 +509,14 @@
       "termId": "fs-idp70925872"
     },
     {
-      "termIs": "augnablikstvískaut",
+      "termIs": "augnablikstvískautur",
       "termEn": "instantaneous dipole",
-      "termFull": "augnablikstvískaut (e. instantaneous dipole)",
-      "definition": "tímabundið tvískaut sem verður til í stutta stund þegar rafeindum frumeindar eða sameindar er dreift ósamhverft",
+      "termFull": "augnablikstvískautur (e. instantaneous dipole)",
+      "definition": "tímabundið tvískaut sem verður til í stutta stund þegar rafeindum atóms eða sameindar er dreift ósamhverft",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
       "termId": "fs-idp127211536"
     },
     {
@@ -531,15 +531,15 @@
       "termId": "fs-idm176142304"
     },
     {
-      "termIs": "autt rými",
-      "termEn": "vacancy",
-      "termFull": "autt rými (e. vacancy)",
-      "definition": "galli sem verður þegar staða sem ætti að innihalda frumeind eða jón er auð",
+      "termIs": "aukinn tvískautur",
+      "termEn": "induced dipole",
+      "termFull": "aukinn tvískautur (e. induced dipole)",
+      "definition": "tímabundinn tvískautur sem myndast þegar rafeindir atóms eða sameindar afmyndast vegna augnablikstvískauts nágrannaatóms eða -sameindar",
       "chapter": 10,
-      "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
-      "termId": "fs-idm37032656"
+      "section": "10.1",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
+      "termId": "fs-idm31438528"
     },
     {
       "termIs": "Avogadrosartala (NA)",
@@ -619,14 +619,14 @@
       "termId": "fs-idp102396512"
     },
     {
-      "termIs": "áttflötungsgat",
+      "termIs": "áttflötungshol",
       "termEn": "octahedral hole",
-      "termFull": "áttflötungsgat (e. octahedral hole)",
-      "definition": "opið rými í kristal í miðju sex einda sem staðsettar eru á hornum áttflötungs",
+      "termFull": "áttflötungshol (e. octahedral hole)",
+      "definition": "opið rými í kristal í miðju sex agna sem staðsettar eru á hornum áttflötungs",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm28944640"
     },
     {
@@ -760,17 +760,6 @@
       "sectionTitle": "Kjarnajöfnur",
       "sectionSlug": "21-2-kjarnajofnur",
       "termId": "fs-idp335278976"
-    },
-    {
-      "termIs": "beyging",
-      "termEn": "diffraction",
-      "termFull": "beyging (e. diffraction)",
-      "definition": "stefnubreyting rafsegulgeislunar sem verður þegar hún rekst á efnislega hindrun af viðeigandi stærð",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp160423360"
     },
     {
       "termIs": "bindandi svigrúm",
@@ -916,14 +905,14 @@
       "termId": "fs-idp42336592"
     },
     {
-      "termIs": "Bragg-jafnan",
+      "termIs": "Bragg-jafna",
       "termEn": "bragg equation",
-      "termFull": "Bragg-jafnan (e. bragg equation)",
-      "definition": "jafna sem tengir hornin sem röntgengeislar beygjast undir af völdum frumeinda í kristal",
+      "termFull": "Bragg-jafna (e. bragg equation)",
+      "definition": "jafna sem tengir hornin sem röntgengeislar sveigjast á af atómum innan kristals",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idp168577936"
     },
     {
@@ -938,14 +927,14 @@
       "termId": "fs-idp15489472"
     },
     {
-      "termIs": "bráðnun",
+      "termIs": "Bráðnun",
       "termEn": "melting",
-      "termFull": "bráðnun (e. melting)",
-      "definition": "breyting úr föstu ástandi í vökvaástand",
+      "termFull": "Bráðnun (e. melting)",
+      "definition": "breyting úr föstu formi í fljótandi form",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm69563216"
     },
     {
@@ -993,14 +982,14 @@
       "termId": "fs-idm246107488"
     },
     {
-      "termIs": "bræðslumark",
+      "termIs": "Bræðslumark",
       "termEn": "melting point",
-      "termFull": "bræðslumark (e. melting point)",
+      "termFull": "Bræðslumark (e. melting point)",
       "definition": "hitastig þar sem fasti og fljótandi fasi efnis eru í jafnvægi; sjá einnig frostmark",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm143011312"
     },
     {
@@ -1131,8 +1120,8 @@
       "definition": "stærðfræðilegt samband milli hitastigs, gufuþrýstings og gufunarvermis efnis",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idp13200944"
     },
     {
@@ -1202,6 +1191,17 @@
       "termId": "fs-idm117651760"
     },
     {
+      "termIs": "dreifikraftur",
+      "termEn": "dispersion force",
+      "termFull": "dreifikraftur (e. dispersion force)",
+      "definition": "(einnig London-dreifikraftur) aðdráttarkraftur milli tveggja ört sveiflukenndra, tímabundinna tvískauta; hefur aðeins þýðingu þegar agnir eru mjög nálægt hvor annarri",
+      "chapter": 10,
+      "section": "10.1",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
+      "termId": "fs-idm16566240"
+    },
+    {
       "termIs": "dreifimiðill",
       "termEn": "dispersion medium",
       "termFull": "dreifimiðill (e. dispersion medium)",
@@ -1211,17 +1211,6 @@
       "sectionTitle": "Svif",
       "sectionSlug": "11-5-svif",
       "termId": "fs-idm203045728"
-    },
-    {
-      "termIs": "dreifingarkraftur",
-      "termEn": "dispersion force",
-      "termFull": "dreifingarkraftur (e. dispersion force)",
-      "definition": "(einnig, London-dreifingarkraftur) aðdráttarkraftur milli tveggja ört sveiflukenndra, tímabundinna tvískauta; hefur aðeins þýðingu þegar eindir eru mjög nálægt hvor annarri",
-      "chapter": 10,
-      "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
-      "termId": "fs-idm16566240"
     },
     {
       "termIs": "eðalgas",
@@ -1266,6 +1255,17 @@
       "sectionTitle": "Mælingar",
       "sectionSlug": "1-4-maelingar",
       "termId": "fs-idm147403536"
+    },
+    {
+      "termIs": "Eðlissuðumark",
+      "termEn": "normal boiling point",
+      "termFull": "Eðlissuðumark (e. normal boiling point)",
+      "definition": "hitastig þar sem gufuþrýstingur vökva jafngildir 1 atm (760 torr)",
+      "chapter": 10,
+      "section": "10.3",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
+      "termId": "fs-idm205028976"
     },
     {
       "termIs": "efnabreyting",
@@ -1444,25 +1444,25 @@
       "termId": "fs-idp177199648"
     },
     {
-      "termIs": "einföld teningslaga bygging",
+      "termIs": "einföld rúmfrumubygging",
       "termEn": "simple cubic structure",
-      "termFull": "einföld teningslaga bygging (e. simple cubic structure)",
-      "definition": "kristalbygging með teningslaga grindareiningu með grindarpunkta aðeins á hornunum",
+      "termFull": "einföld rúmfrumubygging (e. simple cubic structure)",
+      "definition": "kristalbygging með rúmfrumueiningu með grindarpunktum aðeins á hornunum",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm47773456"
     },
     {
-      "termIs": "einföld teningslaga grindareining",
+      "termIs": "einföld rúmfrumueining",
       "termEn": "simple cubic unit cell",
-      "termFull": "einföld teningslaga grindareining (e. simple cubic unit cell)",
-      "definition": "(einnig, frumstæð teningslaga grindareining) grindareining í einfaldri teningslaga byggingu",
+      "termFull": "einföld rúmfrumueining (e. simple cubic unit cell)",
+      "definition": "(einnig, frumstæð rúmfrumueining) eining í einfaldri rúmfrumubyggingu",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idp179472016"
     },
     {
@@ -1664,14 +1664,14 @@
       "termId": "fs-idp41925664"
     },
     {
-      "termIs": "fasarit",
+      "termIs": "fasa-línurit",
       "termEn": "phase diagram",
-      "termFull": "fasarit (e. phase diagram)",
-      "definition": "þrýstings-hitastigsrit sem sýnir við hvaða aðstæður fasar efnis geta verið til",
+      "termFull": "fasa-línurit (e. phase diagram)",
+      "definition": "þrýstings- og hitastigsrit sem sýnir við hvaða aðstæður fasar efnis geta verið til staðar",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasarit",
-      "sectionSlug": "10-4-fasarit",
+      "sectionTitle": "Fasamyndir",
+      "sectionSlug": "10-4-fasamyndir",
       "termId": "fs-idm186055200"
     },
     {
@@ -1686,14 +1686,14 @@
       "termId": "fs-idm10806528"
     },
     {
-      "termIs": "ferflötungsgat",
+      "termIs": "ferflötungshol",
       "termEn": "tetrahedral hole",
-      "termFull": "ferflötungsgat (e. tetrahedral hole)",
-      "definition": "ferflötungsrými sem myndað er af fjórum frumeindum eða jónum í kristal",
+      "termFull": "ferflötungshol (e. tetrahedral hole)",
+      "definition": "ferflötungsrými myndað af fjórum atómum eða jónum í kristal",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm116347536"
     },
     {
@@ -1772,6 +1772,28 @@
       "sectionTitle": "Girðiefnafræði hliðarmálma",
       "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
       "termId": "fs-idp158869120"
+    },
+    {
+      "termIs": "flatarmálfyllt rúmfrumuefni (FCC)",
+      "termEn": "face-centered cubic (fcc) solid",
+      "termFull": "flatarmálfyllt rúmfrumuefni (FCC) (e. face-centered cubic (fcc) solid)",
+      "definition": "kristalbygging sem samanstendur af rúmfrumueiningu með grindarpunktum á hornum og í miðju hvers flata",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp20057136"
+    },
+    {
+      "termIs": "flatarmálfyllt rúmfrumueining",
+      "termEn": "face-centered cubic unit cell",
+      "termFull": "flatarmálfyllt rúmfrumueining (e. face-centered cubic unit cell)",
+      "definition": "einfaldasta endurtekna eining flatarmálfyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju hvers flata",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp82357824"
     },
     {
       "termIs": "fleyti",
@@ -1862,14 +1884,14 @@
       "termId": "fs-idm172534880"
     },
     {
-      "termIs": "frostmark",
+      "termIs": "Frostmark",
       "termEn": "freezing point",
-      "termFull": "frostmark (e. freezing point)",
+      "termFull": "Frostmark (e. freezing point)",
       "definition": "hitastig þar sem fasti og fljótandi fasi efnis eru í jafnvægi; sjá einnig bræðslumark",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idp5444368"
     },
     {
@@ -1915,6 +1937,17 @@
       "sectionTitle": "Hvarfgangar efnahvarfa",
       "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
       "termId": "fs-idp36862592"
+    },
+    {
+      "termIs": "frumueining",
+      "termEn": "unit cell",
+      "termFull": "frumueining (e. unit cell)",
+      "definition": "minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp173597120"
     },
     {
       "termIs": "fræðilegar heimtur",
@@ -2003,17 +2036,6 @@
       "sectionTitle": "Ástandsform og flokkun efnis",
       "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm37203312"
-    },
-    {
-      "termIs": "gat",
-      "termEn": "hole",
-      "termFull": "gat (e. hole)",
-      "definition": "(einnig, millirými) rými milli frumeinda í kristal",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp33871280"
     },
     {
       "termIs": "Geiger-teljari",
@@ -2181,17 +2203,6 @@
       "termId": "fs-idm163589328"
     },
     {
-      "termIs": "girðitala",
-      "termEn": "coordination number",
-      "termFull": "girðitala (e. coordination number)",
-      "definition": "fjöldi frumeinda sem eru næst tiltekinni frumeind í kristal eða miðlægri málmfrumeind í flóka",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp29496752"
-    },
-    {
       "termIs": "gjafafrumeind",
       "termEn": "donor atom",
       "termFull": "gjafafrumeind (e. donor atom)",
@@ -2225,17 +2236,6 @@
       "termId": "fs-idp17888704"
     },
     {
-      "termIs": "grindareining",
-      "termEn": "unit cell",
-      "termFull": "grindareining (e. unit cell)",
-      "definition": "minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp173597120"
-    },
-    {
       "termIs": "grunnástand",
       "termEn": "ground state",
       "termFull": "grunnástand (e. ground state)",
@@ -2258,25 +2258,25 @@
       "termId": "fs-idp226765840"
     },
     {
-      "termIs": "gufun",
+      "termIs": "Gufun",
       "termEn": "vaporization",
-      "termFull": "gufun (e. vaporization)",
-      "definition": "breyting úr vökvaástandi í gasástand",
+      "termFull": "Gufun (e. vaporization)",
+      "definition": "breyting úr vökvafasa í gasfasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm93994416"
     },
     {
-      "termIs": "gufuþrýstingur",
+      "termIs": "Gufuþrýstingur",
       "termEn": "vapor pressure",
-      "termFull": "gufuþrýstingur (e. vapor pressure)",
-      "definition": "(einnig jafnvægisgufuþrýstingur) þrýstingur sem gufa í jafnvægi við fast efni eða vökva beitir við tiltekið hitastig",
+      "termFull": "Gufuþrýstingur (e. vapor pressure)",
+      "definition": "(einnig, jafnvægisgufuþrýstingur) þrýstingur sem gufa í jafnvægi við fast efni eða vökva beitir við gefið hitastig",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm195421616"
     },
     {
@@ -2382,7 +2382,7 @@
       "termIs": "hárpípukraftur",
       "termEn": "capillary action",
       "termFull": "hárpípukraftur (e. capillary action)",
-      "definition": "flæði vökva innan gljúps efnis vegna aðdráttar vökvasameinda að yfirborði efnisins og að öðrum vökvasameindum",
+      "definition": "flæði vökva innan gljúps efnis vegna aðdráttar vökvasameindanna að yfirborði efnisins og að öðrum vökvasameindum",
       "chapter": 10,
       "section": "10.2",
       "sectionTitle": "Eiginleikar vökva",
@@ -2588,28 +2588,6 @@
       "termId": "fs-idm231758480"
     },
     {
-      "termIs": "hliðlæg teningslaga grindareining",
-      "termEn": "face-centered cubic unit cell",
-      "termFull": "hliðlæg teningslaga grindareining (e. face-centered cubic unit cell)",
-      "definition": "einfaldasta endurtekningareining hliðlægs teningslaga kristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju hvers flata",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp82357824"
-    },
-    {
-      "termIs": "hliðlægt teningslaga (FCC) fast efni",
-      "termEn": "face-centered cubic (fcc) solid",
-      "termFull": "hliðlægt teningslaga (FCC) fast efni (e. face-centered cubic (fcc) solid)",
-      "definition": "kristalbygging sem samanstendur af teningslaga grindareiningu með grindarpunkta á hornum og í miðju hvers flata",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp20057136"
-    },
-    {
       "termIs": "hlutfallsleg líffræðileg virkni (RBE)",
       "termEn": "relative biological effectiveness (rbe)",
       "termFull": "hlutfallsleg líffræðileg virkni (RBE) (e. relative biological effectiveness (rbe))",
@@ -2654,6 +2632,17 @@
       "termId": "fs-idp104769888"
     },
     {
+      "termIs": "hnitsetningartala",
+      "termEn": "coordination number",
+      "termFull": "hnitsetningartala (e. coordination number)",
+      "definition": "fjöldi atóma sem eru næst tilteknu atómi í kristal eða miðlægu málmatómi í flóka",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp29496752"
+    },
+    {
       "termIs": "hnútur",
       "termEn": "node",
       "termFull": "hnútur (e. node)",
@@ -2674,6 +2663,17 @@
       "sectionTitle": "Gildisrafeindatengjakenningin",
       "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp123920528"
+    },
+    {
+      "termIs": "hol",
+      "termEn": "hole",
+      "termFull": "hol (e. hole)",
+      "definition": "(einnig, millirými) rými milli atóma innan kristals",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp33871280"
     },
     {
       "termIs": "hraðafasti (k)",
@@ -2762,6 +2762,17 @@
       "sectionTitle": "Hreyfi-sameindakenningin",
       "sectionSlug": "9-5-hreyfi-sameindakenningin",
       "termId": "fs-idm198763536"
+    },
+    {
+      "termIs": "Hrimun",
+      "termEn": "deposition",
+      "termFull": "Hrimun (e. deposition)",
+      "definition": "breyting úr gasfasa beint í fastan fasa",
+      "chapter": 10,
+      "section": "10.3",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
+      "termId": "fs-idm7778192"
     },
     {
       "termIs": "hvarfefni",
@@ -3028,17 +3039,6 @@
       "termId": "fs-idp55104"
     },
     {
-      "termIs": "jafngerður",
-      "termEn": "isomorphous",
-      "termFull": "jafngerður (e. isomorphous)",
-      "definition": "með sömu kristalbyggingu",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp75734960"
-    },
-    {
       "termIs": "jafngildisjafna massa og orku",
       "termEn": "mass-energy equivalence equation",
       "termFull": "jafngildisjafna massa og orku (e. mass-energy equivalence equation)",
@@ -3218,11 +3218,11 @@
       "termIs": "jónískt fast efni",
       "termEn": "ionic solid",
       "termFull": "jónískt fast efni (e. ionic solid)",
-      "definition": "fast efni sem samanstendur af jákvæðum og neikvæðum jónum sem haldið er saman með sterkum rafstöðukröftum",
+      "definition": "fast efni sem samanstendur af jákvæðum og neikvæðum jónum sem haldast saman með sterkum rafstöðu aðdráttarkröftum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idm37301360"
     },
     {
@@ -3743,14 +3743,14 @@
       "termId": "fs-idp102386192"
     },
     {
-      "termIs": "kristalkennt fastefni",
+      "termIs": "kristallað fast efni",
       "termEn": "crystalline solid",
-      "termFull": "kristalkennt fastefni (e. crystalline solid)",
-      "definition": "fast efni þar sem eindirnar eru raðaðar í ákveðið endurtekið mynstur",
+      "termFull": "kristallað fast efni (e. crystalline solid)",
+      "definition": "fast efni þar sem agnirnar eru raðaðar í ákveðið endurtekið mynstur",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idp141680624"
     },
     {
@@ -3798,14 +3798,14 @@
       "termId": "fs-idp40157072"
     },
     {
-      "termIs": "kvikt jafnvægi",
+      "termIs": "Kvikjafnvægi",
       "termEn": "dynamic equilibrium",
-      "termFull": "kvikt jafnvægi (e. dynamic equilibrium)",
+      "termFull": "Kvikjafnvægi (e. dynamic equilibrium)",
       "definition": "ástand kerfis þar sem gagnvirk ferli eiga sér stað á jöfnum hraða",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm101715056"
     },
     {
@@ -4139,6 +4139,17 @@
       "termId": "fs-idm118911936"
     },
     {
+      "termIs": "ljósbrot",
+      "termEn": "diffraction",
+      "termFull": "ljósbrot (e. diffraction)",
+      "definition": "stefnubreyting rafsegulgeislunar sem verður þegar hún rekst á efnislega hindrun af viðeigandi stærð",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp160423360"
+    },
+    {
       "termIs": "ljóseind",
       "termEn": "photon",
       "termFull": "ljóseind (e. photon)",
@@ -4450,11 +4461,11 @@
       "termIs": "markpunktur",
       "termEn": "critical point",
       "termFull": "markpunktur (e. critical point)",
-      "definition": "hitastig og þrýstingur þar sem ekki er hægt að þétta gas í vökva",
+      "definition": "hiti og þrýstingur þar sem ekki er lengur hægt að þétta gas í vökva",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasarit",
-      "sectionSlug": "10-4-fasarit",
+      "sectionTitle": "Fasamyndir",
+      "sectionSlug": "10-4-fasamyndir",
       "termId": "fs-idm66977664"
     },
     {
@@ -4560,11 +4571,11 @@
       "termIs": "málmkennt fast efni",
       "termEn": "metallic solid",
       "termFull": "málmkennt fast efni (e. metallic solid)",
-      "definition": "fast efni sem samanstendur af málmfrumeindum",
+      "definition": "fast efni sem samanstendur af málmatómum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idm21108640"
     },
     {
@@ -4689,26 +4700,26 @@
       "termId": "fs-idp113684160"
     },
     {
-      "termIs": "miðlæg teningslaga grindareining",
-      "termEn": "body-centered cubic unit cell",
-      "termFull": "miðlæg teningslaga grindareining (e. body-centered cubic unit cell)",
-      "definition": "einfaldasta endurtekningareining miðlægs teningslaga kristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju teningsins",
+      "termIs": "miðjufyllt rúmfrumuefni (BCC)",
+      "termEn": "body-centered cubic (bcc) solid",
+      "termFull": "miðjufyllt rúmfrumuefni (BCC) (e. body-centered cubic (bcc) solid)",
+      "definition": "kristalbygging sem hefur rúmfrumueiningu með grindarpunktum á hornum og í miðju frumunnar",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp178458288"
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp190835184"
     },
     {
-      "termIs": "miðlægt teningslaga (BCC) fast efni",
-      "termEn": "body-centered cubic (bcc) solid",
-      "termFull": "miðlægt teningslaga (BCC) fast efni (e. body-centered cubic (bcc) solid)",
-      "definition": "kristalbygging sem hefur teningslaga grindareiningu með grindarpunkta á hornum og í miðju einingarinnar",
+      "termIs": "miðjufyllt rúmfrumueining",
+      "termEn": "body-centered cubic unit cell",
+      "termFull": "miðjufyllt rúmfrumueining (e. body-centered cubic unit cell)",
+      "definition": "einfaldasta endurtekna eining miðjufyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju teningsins",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp190835184"
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp178458288"
     },
     {
       "termIs": "milliefni",
@@ -4758,23 +4769,12 @@
       "termIs": "millirými",
       "termEn": "interstitial sites",
       "termFull": "millirými (e. interstitial sites)",
-      "definition": "rými milli reglulegra staða einda í fylkingu frumeinda eða jóna",
+      "definition": "rými milli venjulegra agnastaða í hvaða fylki atóma eða jóna sem er",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idm134621184"
-    },
-    {
-      "termIs": "millisameindakraftur",
-      "termEn": "intermolecular force",
-      "termFull": "millisameindakraftur (e. intermolecular force)",
-      "definition": "ósamgildur aðdráttarkraftur milli frumeinda, sameinda og/eða jóna",
-      "chapter": 10,
-      "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
-      "termId": "fs-idm66585952"
     },
     {
       "termIs": "milljarðshlutar (ppb)",
@@ -4931,14 +4931,14 @@
       "termId": "fs-idp145224064"
     },
     {
-      "termIs": "myndlaust fastefni",
+      "termIs": "myndlaust fast efni",
       "termEn": "amorphous solid",
-      "termFull": "myndlaust fastefni (e. amorphous solid)",
-      "definition": "(einnig ókristallað fast efni) fast efni þar sem eindirnar hafa ekki skipulagða innri byggingu",
+      "termFull": "myndlaust fast efni (e. amorphous solid)",
+      "definition": "(einnig, ókristallað fast efni) fast efni þar sem agnirnar skortir skipulagða innri byggingu",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idm63193280"
     },
     {
@@ -5083,17 +5083,6 @@
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
       "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm24131568"
-    },
-    {
-      "termIs": "ofurmarksvökvi",
-      "termEn": "supercritical fluid",
-      "termFull": "ofurmarksvökvi (e. supercritical fluid)",
-      "definition": "efni við hærra hitastig og þrýsting en markpunkt þess; sýnir eiginleika sem eru mitt á milli eiginleika gas- og vökvaástands",
-      "chapter": 10,
-      "section": "10.4",
-      "sectionTitle": "Fasarit",
-      "sectionSlug": "10-4-fasarit",
-      "termId": "fs-idm208980304"
     },
     {
       "termIs": "orka",
@@ -5723,6 +5712,17 @@
       "termId": "fs-idp21637408"
     },
     {
+      "termIs": "rúmfrumupökkun (CCP)",
+      "termEn": "cubic closest packing (ccp)",
+      "termFull": "rúmfrumupökkun (CCP) (e. cubic closest packing (ccp))",
+      "definition": "kristalbygging þar sem lögum af þéttpökkuðum atómum eða jónum er staflað sem röð af þremur lögum sem skiptast á með mismunandi afstæðu (ABC)",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp56136784"
+    },
+    {
       "termIs": "rúmfræði rafeindapara",
       "termEn": "electron-pair geometry",
       "termFull": "rúmfræði rafeindapara (e. electron-pair geometry)",
@@ -5748,11 +5748,11 @@
       "termIs": "rúmgrind",
       "termEn": "space lattice",
       "termFull": "rúmgrind (e. space lattice)",
-      "definition": "allir punktar í kristal sem hafa eins umhverfi",
+      "definition": "allir punktar innan kristals sem hafa eins umhverfi",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm12811536"
     },
     {
@@ -5825,11 +5825,11 @@
       "termIs": "röntgenkristallafræði",
       "termEn": "x-ray crystallography",
       "termFull": "röntgenkristallafræði (e. x-ray crystallography)",
-      "definition": "tilraunatækni til að ákvarða fjarlægðir milli frumeinda í kristal með því að mæla hornin sem röntgengeislar beygjast undir þegar þeir fara í gegnum kristallinn",
+      "definition": "tilraunatækni til að ákvarða fjarlægðir milli atóma í kristal með því að mæla hornin sem röntgengeislar sveigjast á þegar þeir fara í gegnum kristalinn",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm40748576"
     },
     {
@@ -5888,6 +5888,17 @@
       "termId": "fs-idm6673632"
     },
     {
+      "termIs": "sameinda fast efni",
+      "termEn": "molecular solid",
+      "termFull": "sameinda fast efni (e. molecular solid)",
+      "definition": "fast efni sem samanstendur af hlutlausum sameindum sem haldast saman með aðdráttarkröftum milli sameinda",
+      "chapter": 10,
+      "section": "10.5",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
+      "termId": "fs-idp66006736"
+    },
+    {
       "termIs": "sameindabygging",
       "termEn": "molecular structure",
       "termFull": "sameindabygging (e. molecular structure)",
@@ -5908,17 +5919,6 @@
       "sectionTitle": "Jóna- og sameindasambönd",
       "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp93864192"
-    },
-    {
-      "termIs": "sameindafast efni",
-      "termEn": "molecular solid",
-      "termFull": "sameindafast efni (e. molecular solid)",
-      "definition": "fast efni sem samanstendur af hlutlausum sameindum sem haldið er saman með aðdráttarkröftum millisameindakrafta",
-      "chapter": 10,
-      "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
-      "termId": "fs-idp66006736"
     },
     {
       "termIs": "sameindaformúla",
@@ -6031,14 +6031,14 @@
       "termId": "fs-idp184530720"
     },
     {
-      "termIs": "samgilt netfast efni",
+      "termIs": "samgilt net fast efni",
       "termEn": "covalent network solid",
-      "termFull": "samgilt netfast efni (e. covalent network solid)",
-      "definition": "fast efni þar sem eindunum er haldið saman með samgildum tengjum",
+      "termFull": "samgilt net fast efni (e. covalent network solid)",
+      "definition": "fast efni þar sem agnirnar haldast saman með samgildum tengjum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fastur efnishamur",
-      "sectionSlug": "10-5-fastur-efnishamur",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
       "termId": "fs-idp42521392"
     },
     {
@@ -6084,6 +6084,17 @@
       "sectionTitle": "Útfelling og upplausn",
       "sectionSlug": "15-1-utfelling-og-upplausn",
       "termId": "fs-idp3050576"
+    },
+    {
+      "termIs": "samkristallaður",
+      "termEn": "isomorphous",
+      "termFull": "samkristallaður (e. isomorphous)",
+      "definition": "með sömu kristalbyggingu",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp75734960"
     },
     {
       "termIs": "samloðunarkraftur",
@@ -6185,14 +6196,14 @@
       "termId": "fs-idm310839680"
     },
     {
-      "termIs": "sexhyrnd þéttpökkun (HCP)",
+      "termIs": "sexstrendingspökkun (HCP)",
       "termEn": "hexagonal closest packing (hcp)",
-      "termFull": "sexhyrnd þéttpökkun (HCP) (e. hexagonal closest packing (hcp))",
-      "definition": "kristalbygging þar sem þéttpökkuðum lögum frumeinda eða jóna er staflað sem röð tveggja laga á víxl með mismunandi afstöðu (AB)",
+      "termFull": "sexstrendingspökkun (HCP) (e. hexagonal closest packing (hcp))",
+      "definition": "kristalbygging þar sem þéttpökkuðum lögum af atómum eða jónum er staflað sem röð af tveimur lögum sem skiptast á með mismunandi afstæðu (AB)",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idp81517488"
     },
     {
@@ -6328,6 +6339,17 @@
       "termId": "fs-idp45896864"
     },
     {
+      "termIs": "skautanleiki",
+      "termEn": "polarizability",
+      "termFull": "skautanleiki (e. polarizability)",
+      "definition": "mælikvarði á getu hleðslu til að afmynda hleðsludreifingu sameindar (rafeindaský)",
+      "chapter": 10,
+      "section": "10.1",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
+      "termId": "fs-idp128571888"
+    },
+    {
       "termIs": "skautuð sameind",
       "termEn": "polar molecule",
       "termFull": "skautuð sameind (e. polar molecule)",
@@ -6337,17 +6359,6 @@
       "sectionTitle": "Sameindabygging og skautun",
       "sectionSlug": "7-6-sameindabygging-og-skautun",
       "termId": "fs-idp57075984"
-    },
-    {
-      "termIs": "skautunarhæfni",
-      "termEn": "polarizability",
-      "termFull": "skautunarhæfni (e. polarizability)",
-      "definition": "mælikvarði á getu hleðslu til að afmynda hleðsludreifingu sameindar (rafeindaský)",
-      "chapter": 10,
-      "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
-      "termId": "fs-idp128571888"
     },
     {
       "termIs": "skiptihvarf",
@@ -6592,17 +6603,6 @@
       "termId": "fs-idm4867824"
     },
     {
-      "termIs": "staðalsuðumark",
-      "termEn": "normal boiling point",
-      "termFull": "staðalsuðumark (e. normal boiling point)",
-      "definition": "hitastig þar sem gufuþrýstingur vökva jafngildir 1 atm (760 torr)",
-      "chapter": 10,
-      "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
-      "termId": "fs-idm205028976"
-    },
-    {
       "termIs": "staðalvetnisraftroð (SHE)",
       "termEn": "standard hydrogen electrode (she)",
       "termFull": "staðalvetnisraftroð (SHE) (e. standard hydrogen electrode (she))",
@@ -6724,14 +6724,14 @@
       "termId": "fs-idm206270992"
     },
     {
-      "termIs": "storknun",
+      "termIs": "Storknun",
       "termEn": "freezing",
-      "termFull": "storknun (e. freezing)",
-      "definition": "breyting úr vökvaástandi í fast ástand",
+      "termFull": "Storknun (e. freezing)",
+      "definition": "breyting úr vökvafasa í fastan fasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm144682752"
     },
     {
@@ -6856,14 +6856,14 @@
       "termId": "fs-idp25515184"
     },
     {
-      "termIs": "suðumark",
+      "termIs": "Suðumark",
       "termEn": "boiling point",
-      "termFull": "suðumark (e. boiling point)",
+      "termFull": "Suðumark (e. boiling point)",
       "definition": "hitastig þar sem gufuþrýstingur vökva jafngildir þrýstingi gassins fyrir ofan hann",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm193814624"
     },
     {
@@ -7186,17 +7186,6 @@
       "termId": "fs-idp63930000"
     },
     {
-      "termIs": "teningslaga þéttpökkun (CCP)",
-      "termEn": "cubic closest packing (ccp)",
-      "termFull": "teningslaga þéttpökkun (CCP) (e. cubic closest packing (ccp))",
-      "definition": "kristalbygging þar sem flötum þéttpakkaðra frumeinda eða jóna er staflað sem röð þriggja laga á víxl með mismunandi afstöðu (ABC)",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
-      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
-      "termId": "fs-idp56136784"
-    },
-    {
       "termIs": "tilgáta",
       "termEn": "hypothesis",
       "termFull": "tilgáta (e. hypothesis)",
@@ -7274,6 +7263,17 @@
       "termId": "fs-idm23965520"
     },
     {
+      "termIs": "tóm",
+      "termEn": "vacancy",
+      "termFull": "tóm (e. vacancy)",
+      "definition": "galli sem verður þegar staða sem ætti að innihalda atóm eða jón er tóm",
+      "chapter": 10,
+      "section": "10.5",
+      "sectionTitle": "Fast efni",
+      "sectionSlug": "10-5-fast-efni",
+      "termId": "fs-idm37032656"
+    },
+    {
       "termIs": "trans-afstaða",
       "termEn": "trans configuration",
       "termFull": "trans-afstaða (e. trans configuration)",
@@ -7338,6 +7338,17 @@
       "sectionTitle": "Hvarfgangar efnahvarfa",
       "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
       "termId": "fs-idp131244384"
+    },
+    {
+      "termIs": "tvískauts-tvískauts aðdráttarkraftur",
+      "termEn": "dipole-dipole attraction",
+      "termFull": "tvískauts-tvískauts aðdráttarkraftur (e. dipole-dipole attraction)",
+      "definition": "aðdráttarkraftur milli tveggja varanlegra tvískauta",
+      "chapter": 10,
+      "section": "10.1",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
+      "termId": "fs-idp127496336"
     },
     {
       "termIs": "tvískautsvægi",
@@ -7582,17 +7593,6 @@
       "termId": "fs-idp55089136"
     },
     {
-      "termIs": "útfelling",
-      "termEn": "deposition",
-      "termFull": "útfelling (e. deposition)",
-      "definition": "breyting úr gasástandi beint í fast ástand",
-      "chapter": 10,
-      "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
-      "termId": "fs-idm7778192"
-    },
-    {
       "termIs": "útstreymi",
       "termEn": "effusion",
       "termFull": "útstreymi (e. effusion)",
@@ -7651,11 +7651,11 @@
       "termIs": "van der Waals-kraftur",
       "termEn": "van der waals force",
       "termFull": "van der Waals-kraftur (e. van der waals force)",
-      "definition": "aðdráttar- eða fráhrindikraftur milli sameinda, þar með taldir kraftar milli tvískauta, kraftar milli tvískauts og aðfengins tvískauts og London-dreifingarkraftar; nær ekki yfir krafta vegna samgildra tengja eða jónatengja, eða aðdráttarkrafta milli jóna og sameinda",
+      "definition": "aðdráttar- eða fráhrindikraftur milli sameinda, þar á meðal tvískaut-tvískaut, tvískaut-örvað tvískaut og London-dreifikraftar; nær ekki yfir krafta vegna samgildra eða jónatengja, eða aðdráttarkrafta milli jóna og sameinda",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
       "termId": "fs-idm134093104"
     },
     {
@@ -7827,11 +7827,11 @@
       "termIs": "vetnistengi",
       "termEn": "hydrogen bonding",
       "termFull": "vetnistengi (e. hydrogen bonding)",
-      "definition": "kemur fram þegar einstaklega sterkir tvískautar dragast hvor að öðrum; tengi sem er til staðar þegar vetni er tengt einu af þremur rafneikvæðustu frumefnunum: F, O eða N",
+      "definition": "myndast þegar sérstaklega sterkir tvískautar dragast hvor að öðrum; tengi sem er til staðar þegar vetni er tengt einu af þremur rafneikvæðustu frumefnunum: F, O eða N",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Aðdráttarkraftar milli sameinda",
-      "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
+      "sectionTitle": "Millikraftar",
+      "sectionSlug": "10-1-millikraftar",
       "termId": "fs-idp18243872"
     },
     {
@@ -7844,17 +7844,6 @@
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd vetnis",
       "sectionSlug": "18-5-tilvist-framleidsla-og-efnasambond-vetnis",
       "termId": "fs-idm8608880"
-    },
-    {
-      "termIs": "viðloðunarkraftur",
-      "termEn": "adhesive force",
-      "termFull": "viðloðunarkraftur (e. adhesive force)",
-      "definition": "aðdráttarkraftur milli sameinda með mismunandi efnafræðilega eiginleika",
-      "chapter": 10,
-      "section": "10.2",
-      "sectionTitle": "Eiginleikar vökva",
-      "sectionSlug": "10-2-eiginleikar-vokva",
-      "termId": "fs-idm87859280"
     },
     {
       "termIs": "vigur",
@@ -8055,6 +8044,17 @@
       "termId": "fs-idm79392464"
     },
     {
+      "termIs": "yfirmarks-vökvi",
+      "termEn": "supercritical fluid",
+      "termFull": "yfirmarks-vökvi (e. supercritical fluid)",
+      "definition": "efni við hita og þrýsting sem er hærri en markpunktur þess; sýnir eiginleika sem eru mitt á milli eiginleika gas- og vökvafasa",
+      "chapter": 10,
+      "section": "10.4",
+      "sectionTitle": "Fasamyndir",
+      "sectionSlug": "10-4-fasamyndir",
+      "termId": "fs-idm208980304"
+    },
+    {
       "termIs": "yfirmarksstærð",
       "termEn": "supercritical mass",
       "termFull": "yfirmarksstærð (e. supercritical mass)",
@@ -8099,14 +8099,14 @@
       "termId": "fs-idp102383600"
     },
     {
-      "termIs": "þétting",
+      "termIs": "Þétting",
       "termEn": "condensation",
-      "termFull": "þétting (e. condensation)",
-      "definition": "breyting úr gasástandi í vökvaástand",
+      "termFull": "Þétting (e. condensation)",
+      "definition": "breyting úr gasfasa í vökvafasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm193371200"
     },
     {
@@ -8179,11 +8179,11 @@
       "termIs": "þrípunktur",
       "termEn": "triple point",
       "termFull": "þrípunktur (e. triple point)",
-      "definition": "hitastig og þrýstingur þar sem þrír fasar efnis eru í jafnvægi",
+      "definition": "hiti og þrýstingur þar sem þrír fasar efnis eru í jafnvægi",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasarit",
-      "sectionSlug": "10-4-fasarit",
+      "sectionTitle": "Fasamyndir",
+      "sectionSlug": "10-4-fasamyndir",
       "termId": "fs-idm153679600"
     },
     {
@@ -8242,14 +8242,14 @@
       "termId": "fs-idm175851472"
     },
     {
-      "termIs": "þurrgufun",
+      "termIs": "Þurrgufun",
       "termEn": "sublimation",
-      "termFull": "þurrgufun (e. sublimation)",
-      "definition": "breyting úr föstu ástandi beint í gasástand",
+      "termFull": "Þurrgufun (e. sublimation)",
+      "definition": "breyting úr föstu formi beint í gasform",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Fasabreytingar",
-      "sectionSlug": "10-3-fasabreytingar",
+      "sectionTitle": "Hamskipti",
+      "sectionSlug": "10-3-hamskipti",
       "termId": "fs-idm146567360"
     },
     {

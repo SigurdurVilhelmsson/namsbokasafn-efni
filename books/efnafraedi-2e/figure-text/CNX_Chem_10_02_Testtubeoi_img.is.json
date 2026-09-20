@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_02_Testtubeoi_img",
+ "renderHash": "e66eef11b48b6f1d",
+ "composedHash": "e66eef11b48b6f1d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Oil viscosity (SAE)": "Olíuseigja (SAE)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

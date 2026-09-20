@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_Carbon",
+ "renderHash": "5966440c06a56a9e",
+ "composedHash": "5966440c06a56a9e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "graphite": "grafít",
+  "Graphite surface": "Yfirborð grafíts",
+  "1.4 × 10–10 m|Distance between|center of atoms": "1,4 × 10–10 m Fjarlægð milli miðju atóma",
+  "diamond": "demantur"
+ },
+ "mtAlternatives": {
+  "Graphite surface": {
+   "kept": "joined",
+   "other": "Grafítyfirborð",
+   "reason": "disagree",
+   "mt": "Yfirborð grafíts"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

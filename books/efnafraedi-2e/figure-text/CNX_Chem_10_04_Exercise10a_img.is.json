@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_Exercise10a_img",
+ "renderHash": "5c4949216ad912c9",
+ "composedHash": "5c4949216ad912c9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Carbon|(liquid)": "Kolefni (vökvi)",
+  "Carbon|vapor|(gas)": "Kolefnisgufa (gas)",
+  "Temperature (K)": "Hitastig (K)",
+  "Pressure (Pa)": "Þrýstingur (Pa)"
+ },
+ "mtAlternatives": {
+  "Temperature (K)": {
+   "kept": "joined",
+   "other": "Hiti (K)",
+   "reason": "disagree",
+   "mt": "Hitastig (K)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

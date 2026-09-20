@@ -103,10 +103,35 @@
       "moduleId": "m68759",
       "recordedAt": "2026-09-20"
     },
+    "chapters/10/10-1-addrattarkraftar-milli-sameinda.html": {
+      "to": "chapters/10/10-1-millikraftar.html",
+      "moduleId": "m68761",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/10/10-3-fasabreytingar.html": {
+      "to": "chapters/10/10-3-hamskipti.html",
+      "moduleId": "m68768",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/10/10-4-fasarit.html": {
+      "to": "chapters/10/10-4-fasamyndir.html",
+      "moduleId": "m68769",
+      "recordedAt": "2026-09-20"
+    },
     "chapters/10/10-5-fast-astand-efnis.html": {
-      "to": "chapters/10/10-5-fastur-efnishamur.html",
+      "to": "chapters/10/10-5-fast-efni.html",
       "moduleId": "m68770",
-      "recordedAt": "2026-08-18"
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/10/10-5-fastur-efnishamur.html": {
+      "to": "chapters/10/10-5-fast-efni.html",
+      "moduleId": "m68770",
+      "recordedAt": "2026-09-20"
+    },
+    "chapters/10/10-6-grindargerdir-i-kristalkenndum-fastefnum.html": {
+      "to": "chapters/10/10-6-grindarformgerdir-i-kristolludum-fostum-efnum.html",
+      "moduleId": "m68773",
+      "recordedAt": "2026-09-20"
     },
     "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html": {
       "to": "chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html",

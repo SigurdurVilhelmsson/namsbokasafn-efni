@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T18:10:26.367Z",
+  "generatedAt": "2026-09-20T18:57:50.925Z",
   "summary": {
     "modulesWithResidue": 2,
     "exactResidues": 70,
-    "ratioWarnings": 70,
+    "ratioWarnings": 71,
     "toleratedResidues": 4
   },
   "modules": {
@@ -673,6 +673,16 @@
         {
           "segmentId": "m68752:entry:auto-247",
           "ratio": 0.8
+        }
+      ],
+      "tolerated": []
+    },
+    "m68770": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68770:entry:auto-51",
+          "ratio": 0.75
         }
       ],
       "tolerated": []

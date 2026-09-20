@@ -3473,5 +3473,40 @@
     "originalImage": "CNX_Chem_09_03_WaterVapor2",
     "outputName": "CNX_Chem_09_03_WaterVapor2_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_03_VapPress3",
+    "outputName": "CNX_Chem_10_03_VapPress3_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_03_HeatCurve",
+    "outputName": "CNX_Chem_10_03_HeatCurve_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_Ex06answer_img",
+    "outputName": "CNX_Chem_10_04_Ex06answer_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_Exercise10b_img",
+    "outputName": "CNX_Chem_10_04_Exercise10b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_Exercise10c_img",
+    "outputName": "CNX_Chem_10_04_Exercise10c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_TypesSol",
+    "outputName": "CNX_Chem_10_05_TypesSol_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_ConDec",
+    "outputName": "CNX_Chem_10_06_ConDec_IS.svg",
+    "extension": ".svg"
   }
 ]

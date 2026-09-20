@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_02_CapRise",
+ "renderHash": "e676e7b27e823732",
+ "composedHash": "e676e7b27e823732",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Capillary tubes": "Háræðarör",
+  "Capillary|attraction": "Háræðaaðdráttur",
+  "Capillary|repulsion": "Háræðafráhrinding",
+  "water": "vatn",
+  "mercury": "kvikasilfur"
+ },
+ "mtAlternatives": {
+  "Capillary|attraction": {
+   "kept": "joined",
+   "other": "Hárpípukraftur",
+   "reason": "disagree",
+   "mt": "Háræðaaðdráttur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

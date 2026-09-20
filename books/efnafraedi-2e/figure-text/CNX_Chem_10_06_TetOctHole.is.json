@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_TetOctHole",
+ "renderHash": "1a0ad3bc8f8f0cbc",
+ "composedHash": "1a0ad3bc8f8f0cbc",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Tetrahedral holes": "Fjórfletningsholur",
+  "Octahedral holes": "Áttfletningsholur"
+ },
+ "mtAlternatives": {
+  "Octahedral holes": {
+   "kept": "joined",
+   "other": "Áttflötungsbil",
+   "reason": "disagree",
+   "mt": "Áttfletningsholur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

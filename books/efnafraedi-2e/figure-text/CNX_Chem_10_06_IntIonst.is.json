@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_IntIonst",
+ "renderHash": "49c56244d3dba8fb",
+ "composedHash": "49c56244d3dba8fb",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cubic hole": "Teningshola",
+  "Octahedral hole": "Áttflötungshola",
+  "Cation radius is about 22.5 to|41.4% of the anion radius": "Radíus katjónar er um 22,5 til 41,4% af radíus anjónar",
+  "Cation radius is about 41.4 to|73.2% of the anion radius": "Radíus katjónar er um 41,4 til 73,2% af radíus anjónar",
+  "Cation radius is about 73.2 to|100% of the anion radius": "Radíus katjónar er um 73,2 til 100% af radíus anjónar",
+  "Tetrahedral hole": "Fjórflötungshola"
+ },
+ "mtAlternatives": {
+  "Cubic hole": {
+   "kept": "joined",
+   "other": "Teningslaga hola",
+   "reason": "disagree",
+   "mt": "Teningshola"
+  },
+  "Octahedral hole": {
+   "kept": "joined",
+   "other": "Áttflötungsbil",
+   "reason": "disagree",
+   "mt": "Áttflötungshola"
+  },
+  "Tetrahedral hole": {
+   "kept": "joined",
+   "other": "Fjórfletningshol",
+   "reason": "disagree",
+   "mt": "Fjórflötungshola"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

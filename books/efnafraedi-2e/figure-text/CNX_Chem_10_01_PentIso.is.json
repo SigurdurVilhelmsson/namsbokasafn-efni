@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_01_PentIso",
+ "renderHash": "909540925dd1f0cb",
+ "composedHash": "909540925dd1f0cb",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Large contact area,|strong attraction": "Stór snertiflötur, sterkur aðdráttarkraftur",
+  "n-pentane|boiling point: 36 °C": "Suðumark n-pentans: 36 °C",
+  "Less surface area,|less attraction": "Minni snertiflötur, minni aðdráttarkraftur",
+  "isopentane|boiling point: 27 °C": "Suðumark ísópentans: 27 °C",
+  "Small contact area,|weakest attraction": "Lítill snertiflötur, veikasti aðdráttarkrafturinn",
+  "neopentane|boiling point: 9.5 °C": "Suðumark neópentans: 9,5 °C"
+ },
+ "mtAlternatives": {
+  "Large contact area,|strong attraction": {
+   "kept": "joined",
+   "other": "Stórt snertiflötur, mikið aðdráttarafl",
+   "reason": "disagree",
+   "mt": "Stór snertiflötur, sterkur aðdráttarkraftur"
+  },
+  "Less surface area,|less attraction": {
+   "kept": "joined",
+   "other": "Minna yfirborð, minna aðdráttarafl",
+   "reason": "disagree",
+   "mt": "Minni snertiflötur, minni aðdráttarkraftur"
+  },
+  "Small contact area,|weakest attraction": {
+   "kept": "joined",
+   "other": "Lítið snertiflötur, veikasti aðdráttarkraftur",
+   "reason": "disagree",
+   "mt": "Lítill snertiflötur, veikasti aðdráttarkrafturinn"
+  },
+  "neopentane|boiling point: 9.5 °C": {
+   "kept": "joined",
+   "other": "Suðumark neopentans: 9,5 °C",
+   "reason": "disagree",
+   "mt": "Suðumark neópentans: 9,5 °C"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

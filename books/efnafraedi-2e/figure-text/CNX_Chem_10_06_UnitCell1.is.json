@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_UnitCell1",
+ "renderHash": "738c039689edae99",
+ "composedHash": "738c039689edae99",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Unit cell": "Einingarfruma",
+  "Lattice points": "Grindarpunktar"
+ },
+ "mtAlternatives": {
+  "Unit cell": {
+   "kept": "joined",
+   "other": "Einingarsella",
+   "reason": "disagree",
+   "mt": "Einingarfruma"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

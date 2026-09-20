@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_Exercise10c_img",
+ "renderHash": "bb722840218fde01",
+ "composedHash": "bb722840218fde01",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Diamond": "Demantur",
+  "Temperature (K)": "Hiti (K)",
+  "Pressure (Pa)": "Þrýstingur (Pa)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

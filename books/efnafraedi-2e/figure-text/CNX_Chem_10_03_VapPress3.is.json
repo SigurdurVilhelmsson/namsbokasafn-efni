@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_03_VapPress3",
+ "renderHash": "8f067acda1f00b3b",
+ "composedHash": "8f067acda1f00b3b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Number of molecules": "Fjöldi sameinda",
+  "Kinetic energy": "Hreyfiorka",
+  "Minimum KE |needed to escape": "Lágmarkshreyfiorka sem þarf til að sleppa",
+  "Low T": "Lágt hitastig",
+  "High T": "Hátt hitastig"
+ },
+ "mtAlternatives": {
+  "Minimum KE |needed to escape": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Lágmarkshreyfiorka sem þarf til að sleppa"
+  },
+  "Low T": {
+   "kept": "joined",
+   "other": "Lágt T",
+   "reason": "disagree",
+   "mt": "Lágt hitastig"
+  },
+  "High T": {
+   "kept": "joined",
+   "other": "Hár testósterónstyrkur",
+   "reason": "disagree",
+   "mt": "Hátt hitastig"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_07_XRyDiff2",
+ "renderHash": "be78b1efe8f19fcc",
+ "composedHash": "be78b1efe8f19fcc",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Imaging surface": "Myndflötur",
+  "Crystalline|material": "Kristallað efni",
+  "Collimator to|focus beam": "Geislasafnari til að beina geisla",
+  "X-ray diffraction": "Röntgengreining",
+  "X-ray diffraction pattern": "Röntgengreiningarmynstur",
+  "X-ray beam": "Röntgengeisli",
+  "Diffracted x-rays": "Beygðir röntgengeislar",
+  "X-ray source": "Röntgengeislagjafi"
+ },
+ "mtAlternatives": {
+  "Collimator to|focus beam": {
+   "kept": "joined",
+   "other": "Geislaskerma til að skerpa geisla",
+   "reason": "disagree",
+   "mt": "Geislasafnari til að beina geisla"
+  },
+  "Diffracted x-rays": {
+   "kept": "joined",
+   "other": "Ljósbrotin röntgengeislun",
+   "reason": "disagree",
+   "mt": "Beygðir röntgengeislar"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

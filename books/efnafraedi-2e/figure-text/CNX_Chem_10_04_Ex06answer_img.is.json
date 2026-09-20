@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_Ex06answer_img",
+ "renderHash": "34629af2a856cdd1",
+ "composedHash": "34629af2a856cdd1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "65 atm": "65 loftþrýstingseiningar",
+  "Full": "Fullt",
+  "Empty": "Tómt",
+  "Amount released": "Magn sem var sleppt"
+ },
+ "mtAlternatives": {
+  "65 atm": {
+   "kept": "joined",
+   "other": "65 loftþ",
+   "reason": "disagree",
+   "mt": "65 loftþrýstingseiningar"
+  },
+  "Amount released": {
+   "kept": "joined",
+   "other": "Upphæð sem hefur verið leyst úr höftum",
+   "reason": "disagree",
+   "mt": "Magn sem var sleppt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

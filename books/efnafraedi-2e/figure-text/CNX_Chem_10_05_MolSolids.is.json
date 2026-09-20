@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_MolSolids",
+ "renderHash": "3d56b1d957558cb8",
+ "composedHash": "3d56b1d957558cb8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "carbon dioxide": "koltvísýringur",
+  "iodine": "joð"
+ },
+ "mtAlternatives": {
+  "carbon dioxide": {
+   "kept": "joined",
+   "other": "Koltvísýringur",
+   "reason": "disagree",
+   "mt": "koltvísýringur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_ClstPckng2",
+ "renderHash": "4e361f7121142eb4",
+ "composedHash": "4e361f7121142eb4",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Hexagonal closest|packed": "Sexstrend þéttpökkuð",
+  "Cubic closest|packed": "Kúbísk þéttpökkuð",
+  "Layer C": "Lag C",
+  "Layer B": "Lag B",
+  "Layer A": "Lag A"
+ },
+ "mtAlternatives": {
+  "Cubic closest|packed": {
+   "kept": "joined",
+   "other": "Kúbísk þéttpökkun",
+   "reason": "disagree",
+   "mt": "Kúbísk þéttpökkuð"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

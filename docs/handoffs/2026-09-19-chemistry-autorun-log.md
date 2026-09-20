@@ -153,3 +153,57 @@ roundtrip check, and `PAGES` drives the raw-`[[` scan. **All of them would have 
 preface and reported green on a unit nobody touched.** [USER] added the appendices to scope on
 2026-09-20, so this was one run from firing. `source-roundtrip-check.js` was separately confirmed
 to accept `appendices` (13 modules reported), so the fix is only in the driver.
+
+## ch10 — 8 modules · ~2,252 + 587 ISK text + ~56 ISK figures
+
+Subset: `enthalpy, enthalpy change, hole, dispersion force, Lewis structure, Lewis`, with
+`AUTORUN_RULED_TERMS="hydrogen bonding"` ([USER]'s 2026-09-20 ruling, passed explicitly so the
+new pre-buy halt waives it by name rather than ignoring it silently). Arm 8 of 8 `glossary-only`.
+
+**`DONE=ok` — the first end-to-end run of the driver, and it SELF-HEALED without intervention.**
+
+- **Text:** 8/8, 225,218 chars (~2,252 ISK) — dry run priced it at 2,772, so billed **0.81×**.
+- **Figures:** 82 enumerated — 40 translated, 3 photo, 10 textless, 29 unresolved; 44 published;
+  5,564 billable characters (~56 ISK).
+- ⚠️ **m68773 HELD BACK on `1 id-reattach mismatch`, a DIFFERENT class from ch09's.** The MT
+  invented five extra `[[term:]]` markers in one paragraph (`expected 3, got 8`), so B4-D11's
+  count-guard refused to reattach ids onto them and **left that segment in English** —
+  `m68773:para:fs-idp1330336`, 1,018 characters of prose. Inject then SKIPPED the module.
+  ▶ **The driver's own English-prose triage caught it and did the one paid retry ([USER]
+  2026-09-06, ~587 ISK), and the module went COMPLETE.** Verified by value afterwards: the
+  segment is no longer identical to its English.
+- **Inject:** 7/7 COMPLETE, 0 skipped, 0 failed; manifest `green: true`, 0 unexplained, 130 perfect.
+  Manifest mtime checked against this run's inject log — it is this run's green, not a stale one.
+- **Render:** 5 pages renamed → **6** redirect rows (see the chain-collapse note in the redirect
+  handoff). Page count 12 → 12.
+- **Checks:** 0 raw `[[` in 12 pages with the control fired; roundtrip 24 = 24, 0 outside
+  `meaning#`.
+- **Premise pins:** sidecars 209 → 210, run records 75 → 83 (ch10's 8 units); mustache 2,988 →
+  2,772, carriers 69 → 65; ids/markers/examined **all +82**, which equals ch10's figure count
+  exactly. **Second chapter, same law** — the delta is the chapter's figure count, because the
+  March MT carried no `alt` segments at all. 0 new reds.
+
+### The driver — v3, after an adversarial audit
+
+Five independent lenses over the v1 script, each finding adversarially verified: **38 findings
+survived, 11 were refuted.** v3 fixes the blocking and serious ones. Nearly all were ONE SHAPE —
+*a step that did not run, reporting a reassuring null*:
+
+| fix | what it was |
+|---|---|
+| inject exit code + **manifest freshness** | `translation-errors.json` is BOOK-level and inject writes it last, so an inject that died wholesale left the PREVIOUS chapter's `green: true` in place and the run printed `DONE=ok` over a re-render of the old vintage |
+| buy must **prove** it was held back | every non-zero buy exit was asserted to be the benign held-back case; a buy killed mid-chapter (this box OOM-killed four paid runs on 2026-09-12) left most modules on the March MT, and the prose triage **cannot see them** (a segment absent from the old MT is skipped by its own equality test) so they fell through to `--allow-incomplete` — untranslated English injected and rendered |
+| arm check **ALL, not ANY** | a set-union over the directory passed as soon as ONE module carried the right arm |
+| re-sweep FAILED after a retry | the retry re-injected into the SAME log the FAILED sweep had already read, so SKIPPED → retry → FAILED escaped the halt entirely |
+| figure verdict | `FIG=$?` was captured and never read, and the bucket regex named 6 of 11 outcomes — omitting `failed-compose`, `failed-publish`, `failed-sidecar` |
+| roundtrip gates on the tool's own verdict | it counted PRINTED lines, which the tool CAPS per module, and never read ATTR/TEXT/BUILD FAILED |
+| the raw-marker control **executes** | v1 printed "(control: the MT file has them)" without running anything, and an empty page directory scored as clean |
+| `--retried` sentinels cleared per run | a re-run silently forwent the retry it was entitled to |
+| `AUTORUN_SKIP_BUY=1` | the buy is unconditionally `--force`, so every resume re-bought the whole chapter (~1,700–3,100 ISK to repair one module) |
+| octal + `appendices` | `printf 'ch%02d' 08` is an octal error and `appendices` yields `ch00` |
+
+⚠️ **Five of the 38 said the pre-buy gate still fails open. It does not — they audited an
+intermediate copy, not the installed one.** The installed form is `FLAGS=$(node …) || halt`;
+the audited one was `X=$(cmd 2>&1 >file); X=$(cat file)`, **which discards the exit status**.
+▶ *Concurrence is not corroboration when everyone inherited the same artifact* — verified by
+running the installed gate against a missing file and a malformed one: both halt.

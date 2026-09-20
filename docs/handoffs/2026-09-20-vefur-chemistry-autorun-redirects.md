@@ -48,3 +48,22 @@ _Two independent instruments agree on this set: five `Pruned superseded page` li
 and five new rows in `05-publication/mt-preview/slug-map.mt-preview.json` carrying the same
 `moduleId`s. The page count is unchanged at 12, which is the control against a render that empties
 the directory instead of renaming within it._
+
+## ch10 — 6 rows (5 renames + 1 chain collapse)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/10/10-1-addrattarkraftar-milli-sameinda.html` | `chapters/10/10-1-millikraftar.html` | m68761 |
+| `chapters/10/10-3-fasabreytingar.html` | `chapters/10/10-3-hamskipti.html` | m68768 |
+| `chapters/10/10-4-fasarit.html` | `chapters/10/10-4-fasamyndir.html` | m68769 |
+| `chapters/10/10-5-fastur-efnishamur.html` | `chapters/10/10-5-fast-efni.html` | m68770 |
+| `chapters/10/10-5-fast-astand-efnis.html` | `chapters/10/10-5-fast-efni.html` | m68770 |
+| `chapters/10/10-6-grindargerdir-i-kristalkenndum-fastefnum.html` | `chapters/10/10-6-grindarformgerdir-i-kristolludum-fostum-efnum.html` | m68773 |
+
+🔴 **SIX ROWS AGAINST FIVE `Pruned superseded page` LINES, AND THE SIXTH IS THE ONE THAT WOULD HAVE
+BEEN MISSED.** `10-5-fast-astand-efnis.html` was already in the slug map, pointing at
+`10-5-fastur-efnishamur.html`; this render renamed *that* page again, so the map **collapsed the
+chain** and rewrote the older entry's target to the current file. ▶ **Filing only the render's new
+renames would have left `10-5-fast-astand-efnis.html` pointing at a page that no longer exists** —
+and vefur does ONE lookup with no transitive walk (CLAUDE.md § Prune-on-rename), so it would have
+404'd. **Diff the slug map before and after; do not transcribe the render log.**
