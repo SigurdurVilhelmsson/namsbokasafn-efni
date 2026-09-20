@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_02_GoldFoil3",
+ "renderHash": "248e3a30dbb44729",
+ "composedHash": "248e3a30dbb44729",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "A very small number|of α particles are|significantly deflected": "Afar fáar α-agnir beygja verulega frá",
+  "A few α|particles are|slightly deflected": "Nokkrar α-agnir beygja lítillega frá",
+  "Nucleus of|gold atom": "Kjarni gullatóms",
+  "Most α|particles|are not|deflected": "Flestar α-agnir beygja ekki frá",
+  "Gold foil": "Gullþynna",
+  "Enlarged cross-section": "Stækkuð þversniðsmynd"
+ },
+ "mtAlternatives": {
+  "A very small number|of α particles are|significantly deflected": {
+   "kept": "joined",
+   "other": "Mjög lítill fjöldi α-agna sveigir verulega af leið",
+   "reason": "disagree",
+   "mt": "Afar fáar α-agnir beygja verulega frá"
+  },
+  "A few α|particles are|slightly deflected": {
+   "kept": "joined",
+   "other": "Nokkrar α-agnir sveigja lítillega frá",
+   "reason": "disagree",
+   "mt": "Nokkrar α-agnir beygja lítillega frá"
+  },
+  "Most α|particles|are not|deflected": {
+   "kept": "joined",
+   "other": "Flestar α-agnir sveigja ekki frá",
+   "reason": "disagree",
+   "mt": "Flestar α-agnir beygja ekki frá"
+  },
+  "Enlarged cross-section": {
+   "kept": "joined",
+   "other": "Stækkað þversnið",
+   "reason": "disagree",
+   "mt": "Stækkuð þversniðsmynd"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

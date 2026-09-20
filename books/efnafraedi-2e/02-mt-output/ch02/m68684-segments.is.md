@@ -2,13 +2,13 @@
 Inngangur
 
 <!-- SEG:m68684:abstract-item:abstract-item-1 -->
-Fyrstu hugmyndir í frumeindakenningunni
+Fyrstu hugmyndir í atómkenningunni
 
 <!-- SEG:m68684:abstract-item:abstract-item-2 -->
-Þróun frumeindakenningarinnar
+Þróun atómkenningarinnar
 
 <!-- SEG:m68684:abstract-item:abstract-item-3 -->
-Bygging frumeinda og táknmál
+Bygging atóms og táknmál
 
 <!-- SEG:m68684:abstract-item:abstract-item-4 -->
 Efnaformúlur
@@ -17,16 +17,19 @@ Efnaformúlur
 Lotukerfið
 
 <!-- SEG:m68684:abstract-item:abstract-item-6 -->
-Jónaefnasambönd og sameindaefnasambönd
+Jónaefni og sameindaefni
 
 <!-- SEG:m68684:abstract-item:abstract-item-7 -->
 Nafnakerfi efna
 
 <!-- SEG:m68684:caption:CNX_Chem_02_00_Biomarkers-caption -->
-Greining á sameindum í útöndunarlofti getur veitt verðmætar upplýsingar sem leiða til snemmgreiningar á sjúkdómum eða greiningar á umhverfisváhrifum af völdum skaðlegra efna. (heimild: breytt útgáfa af verki eftir Paul Flowers)
+Greining á sameindum í útöndunarlofti getur veitt verðmætar upplýsingar sem leiða til snemmgreiningar sjúkdóma eða greiningar á umhverfisváhrifum af völdum skaðlegra efna. (heimild: breyting á verki eftir Paul Flowers)
+
+<!-- SEG:m68684:alt:fs-idm221482352-alt -->
+Sýnd er manneskja sem blæs í rör sem er tengt við plastpoka. Á tölvuskjá eru gögn sem sýna „Massagreining á andardrætti“. Ör frá plastpokanum bendir á mynd af mismunandi sameindasamböndum sem eru í útöndunarlofti manneskjunnar.
 
 <!-- SEG:m68684:para:fs-idm172551024 -->
-Lungnasjúkdómar og lungnakrabbamein eru meðal skæðustu sjúkdóma heims, meðal annars vegna þess hve seint þeir greinast. Flestar skimunaraðferðir sem ekki eru ífarandi eru ekki áreiðanlegar og sjúklingar veigra sér oft við nákvæmari aðferðum vegna óþæginda eða hugsanlegrar hættu sem þeim fylgir. En hvað ef hægt væri að fá nákvæma greiningu með einföldu öndunarprófi?
+Lungnasjúkdómar og lungnakrabbamein eru meðal skæðustu sjúkdóma heims, að hluta til vegna seinkunar á greiningu. Flestar skimunaraðferðir án inngrips eru ekki áreiðanlegar og sjúklingar veigra sér oft við nákvæmari aðferðum vegna óþæginda við aðgerðirnar eða vegna hugsanlegrar hættu sem þær valda. En hvað ef hægt væri að greina þig nákvæmlega með einföldu öndunarprófi?
 
 <!-- SEG:m68684:para:eip-557 -->
-Snemmgreining á lífmerkjum, efnum sem gefa til kynna sjúkdóm eða lífeðlisfræðilegt ástand lífveru, gæti gert greiningu og meðferð mögulega áður en ástand verður alvarlegt eða óafturkræft. Nýlegar rannsóknir hafa sýnt að útöndunarloft getur innihaldið sameindir sem geta verið lífmerki fyrir nýleg umhverfisváhrif af völdum mengunarefna eða fyrir sjúkleg ástand, allt frá astma til lungnakrabbameins. Vísindamenn vinna að því að þróa „fingraför“ lífmerkja sem hægt væri að nota til að greina tiltekinn sjúkdóm út frá magni og auðkennum ákveðinna sameinda í útöndunarlofti sjúklings. Á rannsóknarstofu Sangeetu Bhatia við MIT notaði teymi hennar efni sem hvarfast sérstaklega inni í sjúkum lungnavef; myndefni efnahvarfanna verða til staðar sem lífmerki sem hægt er að greina með massagreiningu (greiningaraðferð sem fjallað er um síðar í kaflanum). Hugsanleg notkun myndi gera sjúklingum með snemmkomin einkenni kleift að anda að sér eða innbyrða „skynjaraefni“ og anda svo mínútum síðar í greiningartæki til sjúkdómsgreiningar. Svipaðar rannsóknir vísindamanna á borð við Lauru López-Sánchez hafa leitt af sér svipaðar aðferðir fyrir lungnakrabbamein. Grundvallarhugtak sem liggur að baki þessu markmiði er auðkenni sameindar, sem ræðst af fjölda og gerð frumeinda sem hún inniheldur og hvernig þær eru tengdar saman með efnatengjum. Í þessum kafla verður fjallað um nokkrar af grundvallarreglum efnafræðinnar sem tengjast samsetningu efnis, þar á meðal þær sem eru lykilatriði í hugtakinu um auðkenni sameinda.
+Snemmgreining á lífmerkjum, efnum sem gefa til kynna sjúkdóm eða lífeðlisfræðilegt ástand lífveru, gæti gert greiningu og meðferð mögulega áður en ástand verður alvarlegt eða óafturkræft. Nýlegar rannsóknir hafa sýnt að útöndunarloft þitt getur innihaldið sameindir sem geta verið lífmerki fyrir nýleg váhrif af umhverfismengun eða fyrir sjúkleg ástand, allt frá astma til lungnakrabbameins. Vísindamenn vinna að því að þróa „fingraför“ lífmerkja sem hægt væri að nota til að greina tiltekinn sjúkdóm út frá magni og auðkennum tiltekinna sameinda í útöndunarlofti sjúklings. Á rannsóknarstofu Sangeetu Bhatia við MIT notaði teymi efni sem hvarfast sérstaklega inni í sjúkum lungnavef; afurðir hvarfanna verða til staðar sem lífmerki sem hægt er að bera kennsl á með massagreiningu (greiningaraðferð sem fjallað er um síðar í kaflanum). Hugsanleg notkun myndi gera sjúklingum með snemmkomin einkenni kleift að anda að sér eða innbyrða „skynjaraefni“ og, mínútum síðar, anda í skynjara til greiningar. Svipaðar rannsóknir vísindamanna á borð við Lauru López-Sánchez hafa skilað svipuðum ferlum fyrir lungnakrabbamein. Grundvallarhugtak sem liggur að baki þessu markmiði er auðkenni sameindar, sem ræðst af fjölda og tegundum atóma sem hún inniheldur og hvernig þau eru tengd saman. Í þessum kafla verður lýst nokkrum af grundvallarreglum efnafræðinnar sem tengjast samsetningu efnis, þar á meðal þeim sem eru miðlægar í hugtakinu um auðkenni sameinda.

@@ -16,3 +16,11 @@ redirect-then-sync the only ordering with no 404 window (CLAUDE.md § Prune-on-r
 | `chapters/01/1-6-staerdfraedileg-medferd-nidurstadna-maelinga.html` | `chapters/01/1-6-staerdfraedileg-medferd-maelinidurstadna.html` | m68683 |
 
 _The live URLs are the `from` side; the re-MT retitled each section._
+
+## ch02 — 3 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/02/2-3-bygging-atoms-og-taknmal.html` | `chapters/02/2-3-atombygging-og-taknmal.html` | m68692 |
+| `chapters/02/2-6-jona-og-sameindaefnasambond.html` | `chapters/02/2-6-jona-og-sameindasambond.html` | m68696 |
+| `chapters/02/2-7-nafnakerfi-efna.html` | `chapters/02/2-7-nafnakerfi-efnafraedinnar.html` | m68698 |

@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_06_IonCharges",
+ "renderHash": "6fb3d4c956d298e5",
+ "composedHash": "6fb3d4c956d298e5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "Periodic Table of the Elements": "Lotukerfi frumefnanna"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

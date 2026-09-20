@@ -56,3 +56,18 @@ Icelandic (1,736 terms, ties 336 → 333). The two exceptions are the known §C1
   ENGLISH and never reads the MT, so it is independent of any purchase and is equally true on
   `main`. ⚠️ The report truncates both sides at 70 characters, so the differing part is not
   visible in its output — diagnosing it needs a direct comparison, not the report.
+
+## ch02 — 8 modules · ~1,753 ISK text + ~54 ISK figures
+
+- **First chapter run end-to-end by the driver** (`run-chapter.sh`), which halts on any stop
+  condition rather than pushing through. Nothing halted.
+- **Bought:** subset `enthalpy, enthalpy change, group, carbonate, hydroxide`. `group → flokkur` is
+  correct here (periodic-table columns, 47 segments) and is withheld from ch20, where it means a
+  functional group. `ether` (28) and `hole` (14) withheld — every hit is *together*/*whether* and
+  *whole*.
+- **Figures:** 47 enumerated — 21 translated, 2 photos, 23 textless recomposed, 1 unresolved (no
+  vector artwork; stays English). 32 published, no failed-mt.
+- **Inject:** manifest `green: true`, 0 unexplained, 130 perfect.
+- **Render:** 3 pages renamed → rows appended to the vefur redirect handoff.
+- **Checks:** 0 raw `[[` in HTML; roundtrip missing = added = 28, **0 deltas outside the known
+  `meaning#` renames**.

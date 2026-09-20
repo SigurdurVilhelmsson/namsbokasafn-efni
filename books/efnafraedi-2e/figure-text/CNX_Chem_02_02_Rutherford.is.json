@@ -1,0 +1,48 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_02_02_Rutherford",
+ "renderHash": "53dfed8da4dcd474",
+ "composedHash": "53dfed8da4dcd474",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Beam of": "Geisli af",
+  "α particles": "α-ögnum",
+  "Radium source of α particles": "Radíumuppspretta α-agna",
+  "Luminescent screen|to detect scattered": "Ljómandi skjár til að greina dreifðar agnir",
+  "Thin gold|foil": "Þunn gullþynna",
+  "A very small number|of α particles|are significantly|deflected": "Mjög fáar α-agnir sveigja verulega frá",
+  "A few α|particles are|slightly deflected": "Nokkrar α-agnir sveigja örlítið frá",
+  "Most α particles|pass straight|through foil": "Flestar α-agnir fara beint í gegnum þynnuna"
+ },
+ "mtAlternatives": {
+  "α particles": {
+   "kept": "joined",
+   "other": "α-agnir",
+   "reason": "disagree",
+   "mt": "α-ögnum"
+  },
+  "Radium source of α particles": {
+   "kept": "joined",
+   "other": "Radíumgjafi α-agna",
+   "reason": "disagree",
+   "mt": "Radíumuppspretta α-agna"
+  },
+  "Luminescent screen|to detect scattered": {
+   "kept": "joined",
+   "other": "Ljómandi skjár til að greina dreifingu",
+   "reason": "disagree",
+   "mt": "Ljómandi skjár til að greina dreifðar agnir"
+  },
+  "A few α|particles are|slightly deflected": {
+   "kept": "joined",
+   "other": "Nokkrar α-agnir sveigja örlítið af leið",
+   "reason": "disagree",
+   "mt": "Nokkrar α-agnir sveigja örlítið frá"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}
