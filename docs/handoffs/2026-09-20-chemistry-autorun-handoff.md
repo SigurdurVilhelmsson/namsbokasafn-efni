@@ -72,8 +72,23 @@ bash scripts/chemistry-autorun-chapter.sh 21 "enthalpy,enthalpy change,radioacti
    into v2-with-a-run-record. **Re-measure and bump in the commit that buys the chapter** — it is a
    premise pin, and leaving it turns CI red on the next PR. (Batch A moved it 205 → 208 sidecars and
    43 → 67 run records.)
-5. **Commit** the chapter (`books/` + docs), one commit per chapter. **PR every 4–5 chapters**;
+5. **Re-measure the corpus premise pins** the buy moved, in `tools/__tests__/remt-checks-mt.test.js`
+   and `remt-checks-mt-gating.test.js`. Batch A moved these for documented reasons: a re-MT
+   **retires the legacy dialect** (mustache 5,160 → 3,200, `++` 49 → 0, carriers 111 → 75) and a
+   fresh buy **adds figure `alt` segments** the March MT predates (the m68663 fixture 11 → 12, so
+   every count over it moves by one). **Read each number from the failing run and check it against
+   that story — never adjust until green.** Regenerate a render golden only when its **tag skeleton
+   is identical** (a text-only diff); ch03's m68699 and ch04's m68710 are `main`'s known reds and
+   must NOT be regenerated.
+6. **Commit** the chapter (`books/` + docs), one commit per chapter. **PR every 4–5 chapters**;
    [USER] merges. No deploy is needed — this is content only.
+
+🔴 **`git add` BY PATH, NEVER `-A` ON A DIRECTORY.** Measured 2026-09-20: `git add -A tools docs`
+swept another session's uncommitted hook tests into a PR and onto `main`; their hooks are untracked,
+so they fail at COLLECTION on CI. **And the usual CI check cannot see that** — a file-level
+collection failure has no `> test name`, so a failing-NAMES diff shows nothing while the count looks
+unchanged. ▶ **Compare `Test Files N failed` as well as the names**, and `git status --porcelain`
+before every commit.
 
 ## What is already known to happen, and is NOT a stop
 
