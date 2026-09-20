@@ -131,15 +131,25 @@ else
       halt "buy exited $BUY with no HELD BACK line — the buy did not complete (see $S/$CHD.buy.log)"
     fi
   fi
-  # 🔴 THE ARM CHECK MUST BE **ALL**, NOT **ANY**. A set-union over the directory passes as
-  # soon as ONE module carries the right arm, so a partial buy — the exact OOM case above —
-  # reads as clean while most of the chapter is still the previous full-glossary MT.
-  ARM_TOTAL=$(ls books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
-  ARM_OK=$(grep -al '"arm": *"glossary-only"' books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
-  say "arm: $ARM_OK of $ARM_TOTAL provenance files are glossary-only"
-  [ "$ARM_TOTAL" -eq 0 ] && halt "no provenance files in $CHD — the buy wrote nothing"
-  [ "$ARM_OK" -ne "$ARM_TOTAL" ] && halt "wrong MT arm: only $ARM_OK of $ARM_TOTAL modules are glossary-only (a partial buy)"
 fi
+
+# 🔴 THE ARM CHECK RUNS ON **BOTH** PATHS, AND UNTIL 2026-09-20 IT DID NOT. It lived inside
+# the `else` above, so `AUTORUN_SKIP_BUY=1` walked straight past it — the resume path, i.e.
+# the one you reach for precisely BECAUSE a buy has already gone wrong. Measured on ch11,
+# whose buy died mid-`m68782` when its session died: 3 of 6 modules carried the new arm, and
+# a SKIP_BUY resume would have injected, rendered and indexed the other 3 from the March
+# full-glossary MT, under `DONE=ok`, with every other gate silent.
+# ▶ A GATE THAT GUARDS ONLY THE PATH THAT WAS ALREADY HEALTHY IS NOT A GATE. It is the same
+# shape as the paid-MT hook that was inert against the only command anyone would type.
+# 🔴 AND IT MUST BE **ALL**, NOT **ANY**. A set-union over the directory passes as soon as
+# ONE module carries the right arm, so a partial buy reads as clean while most of the
+# chapter is still the previous full-glossary MT.
+# ⚠️ `grep -a` is load-bearing — see CLAUDE.md on NUL bytes silencing a census.
+ARM_TOTAL=$(ls books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
+ARM_OK=$(grep -al '"arm": *"glossary-only"' books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
+say "arm: $ARM_OK of $ARM_TOTAL provenance files are glossary-only"
+[ "$ARM_TOTAL" -eq 0 ] && halt "no provenance files in $CHD — the buy wrote nothing"
+[ "$ARM_OK" -ne "$ARM_TOTAL" ] && halt "wrong MT arm: only $ARM_OK of $ARM_TOTAL modules are glossary-only (a partial buy)"
 
 say "--- 4 figures"
 node tools/figure-run.js --book efnafraedi-2e --chapter "$CH" > "$S/$CHD.fig.log" 2>&1
