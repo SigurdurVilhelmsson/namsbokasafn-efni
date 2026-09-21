@@ -384,6 +384,43 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       'writes kolmónoxíð 25 times. [USER] chose the produced form over the tví-/ein- pairing with ' +
       'carbon dioxide → koltvíoxíð. Multiword, so it cannot substring-collide.',
   }),
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 2026-09-21, second batch — the remaining audit questions [USER] answered.
+  // Only TWO of the nine needed an entry; four were already stored correctly
+  // (porous → gropinn, complementary color → fyllingarlitur, square planar →
+  // ferningslaga flatt, decay → sundrun) and three are HELD off the wire
+  // (substituted → committee; fissionable/fissile; radioactive material).
+  // Record: docs/decisions/2026-09-21-chemistry-terminology-rulings.md.
+  // ─────────────────────────────────────────────────────────────────────────
+  Object.freeze({
+    en: Object.freeze(['submerged']),
+    is: 'á kafi',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch17 (6, all figure alt) and ch18 (4). The approved row was `í kafi` in domain BIOLOGY — a ' +
+      'different preposition. §C73 is unusually clean here: the ruled `á kafi` appears 9 times in ' +
+      "the book's committed MT and the approved `í kafi` appears ZERO, so the incumbent is the " +
+      'untested form. ⚠️ The model also reaches for `dýft í` (14) for "immersed in"; the row ' +
+      'overrides that only where the English says "submerged".',
+  }),
+  Object.freeze({
+    en: Object.freeze(['trigonal planar']),
+    is: 'þríhyrnt flatt',
+    ruled: '2026-09-21 [USER]',
+    why:
+      '🔴 THE ONLY ENTRY IN THIS FILE THAT OVERRIDES A FORM THE MODEL ALREADY PRODUCES, AND IT IS ' +
+      'RECORDED THAT WAY ON PURPOSE. The incumbent `þríhyrningslaga flatt` is ALREADY a chemistry ' +
+      'row and the MT writes `þríhyrningslaga` 36 times; the ruled `þríhyrnt flatt` appears 0 ' +
+      "times. That is §C73's second test failing on the RULING rather than on the incumbent — " +
+      '[USER] ruled it deliberately, as with `radioactive decay → geislasundrun` on 2026-09-20. ' +
+      '⚠️ MECHANISM DIFFERS FROM EVERY ENTRY ABOVE: the incumbent is in the SAME domain, so this ' +
+      "does not win by domain priority. It wins by §C164's tie-break in " +
+      '`conceptResolver.resolveCandidates` — among candidates at the best position, if the texts ' +
+      'differ and exactly one is house-style, the house one wins. ⚠️ Reaches ch18/19/20 (14 EN ' +
+      'occurrences) for free; ch07 and ch08 are already bought and hold 43 more, which is an ' +
+      'editor substitution or a re-buy, not something this row repairs.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */
