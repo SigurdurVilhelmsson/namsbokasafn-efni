@@ -8,25 +8,25 @@ Helmingunartími nokkurra geislavirkra samsæta
 Samsæta
 
 <!-- SEG:m68871:entry:auto-4 -->
-Helmingunartími {{fn}}y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur{{/fn}}
+Helmingunartími [[fn:y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur|fs-idp94055520]]
 
 <!-- SEG:m68871:entry:auto-5 -->
-Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = sjálfgeng kjarnaklofnun{{/fn}}
+Tegund geislunar [[fn:[[i:E.C.]] = rafeindahremming, [[i:S.F.]] = sjálfklofnun|fs-idp208188688]]
 
 <!-- SEG:m68871:entry:auto-6 -->
 Samsæta
 
 <!-- SEG:m68871:entry:auto-7 -->
-Helmingunartími {{fn}}y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur{{/fn}}
+Helmingunartími [[fn:y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur|fs-idp6707392]]
 
 <!-- SEG:m68871:entry:auto-8 -->
-Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = sjálfgeng kjarnaklofnun{{/fn}}
+Tegund geislunar [[fn:[[i:E.C.]] = rafeindahremming, [[i:S.F.]] = sjálfklofnun|fs-idp119558320]]
 
 <!-- SEG:m68871:entry:auto-9 -->
 [[MATH:1]]
 
 <!-- SEG:m68871:entry:auto-10 -->
-5730 y
+5730 ár
 
 <!-- SEG:m68871:entry:auto-11 -->
 [[MATH:2]]
@@ -116,7 +116,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:23]]
 
 <!-- SEG:m68871:entry:auto-40 -->
-1,27 [[MATH:24]] 10[[sup:9]] y
+1,27 [[MATH:24]] 10[[sup:9]] ár
 
 <!-- SEG:m68871:entry:auto-41 -->
 [[MATH:25]]
@@ -152,7 +152,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:33]]
 
 <!-- SEG:m68871:entry:auto-52 -->
-2,6 [[MATH:34]] 10[[sup:6]] y
+2,6 [[MATH:34]] 10[[sup:6]] ár
 
 <!-- SEG:m68871:entry:auto-53 -->
 [[MATH:35]]
@@ -170,7 +170,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:38]]
 
 <!-- SEG:m68871:entry:auto-58 -->
-5,27 y
+5,27 ár
 
 <!-- SEG:m68871:entry:auto-59 -->
 [[MATH:39]]
@@ -188,7 +188,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:42]]
 
 <!-- SEG:m68871:entry:auto-64 -->
-4,7 [[MATH:43]] 10[[sup:10]] y
+4,7 [[MATH:43]] 10[[sup:10]] ár
 
 <!-- SEG:m68871:entry:auto-65 -->
 [[MATH:44]]
@@ -206,7 +206,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:47]]
 
 <!-- SEG:m68871:entry:auto-70 -->
-29 y
+29 ár
 
 <!-- SEG:m68871:entry:auto-71 -->
 [[MATH:48]]
@@ -224,7 +224,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:51]]
 
 <!-- SEG:m68871:entry:auto-76 -->
-5,1 [[MATH:52]] 10[[sup:15]] y
+5,1 [[MATH:52]] 10[[sup:15]] ár
 
 <!-- SEG:m68871:entry:auto-77 -->
 [[MATH:53]]
@@ -242,7 +242,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:56]]
 
 <!-- SEG:m68871:entry:auto-82 -->
-8,040 d
+8,040 d.
 
 <!-- SEG:m68871:entry:auto-83 -->
 [[MATH:57]]
@@ -350,7 +350,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:83]]
 
 <!-- SEG:m68871:entry:auto-118 -->
-6,243 d
+6,243 d.
 
 <!-- SEG:m68871:entry:auto-119 -->
 [[MATH:84]]
@@ -359,7 +359,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:85]]
 
 <!-- SEG:m68871:entry:auto-121 -->
-27 d
+27 d.
 
 <!-- SEG:m68871:entry:auto-122 -->
 [[MATH:86]]
@@ -377,7 +377,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:90]]
 
 <!-- SEG:m68871:entry:auto-127 -->
-162,8 d
+162,8 d.
 
 <!-- SEG:m68871:entry:auto-128 -->
 [[MATH:91]]
@@ -413,7 +413,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:100]]
 
 <!-- SEG:m68871:entry:auto-139 -->
-20,47 d
+20,47 d.
 
 <!-- SEG:m68871:entry:auto-140 -->
 [[MATH:101]]
@@ -458,7 +458,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:111]]
 
 <!-- SEG:m68871:entry:auto-154 -->
-2,3 d
+2,3 d.
 
 <!-- SEG:m68871:entry:auto-155 -->
 [[MATH:112]]
@@ -476,7 +476,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:115]]
 
 <!-- SEG:m68871:entry:auto-160 -->
-2,407 [[MATH:116]] 10[[sup:4]] á
+2,407 [[MATH:116]] 10[[sup:4]] ár
 
 <!-- SEG:m68871:entry:auto-161 -->
 [[MATH:117]]
@@ -494,7 +494,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:120]]
 
 <!-- SEG:m68871:entry:auto-166 -->
-6,54 [[MATH:121]] 10[[sup:3]] á
+6,54 [[MATH:121]] 10[[sup:3]] ár
 
 <!-- SEG:m68871:entry:auto-167 -->
 [[MATH:122]]
@@ -512,7 +512,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:125]]
 
 <!-- SEG:m68871:entry:auto-172 -->
-14,4 á
+14,4 ár
 
 <!-- SEG:m68871:entry:auto-173 -->
 [[MATH:126]]
@@ -530,7 +530,7 @@ Tegund útblásturs {{fn}}{{i}}E.C.{{/i}} = rafeindahremming, {{i}}S.F.{{/i}} = 
 [[MATH:129]]
 
 <!-- SEG:m68871:entry:auto-178 -->
-432,2 á
+432,2 ár
 
 <!-- SEG:m68871:entry:auto-179 -->
 [[MATH:130]]

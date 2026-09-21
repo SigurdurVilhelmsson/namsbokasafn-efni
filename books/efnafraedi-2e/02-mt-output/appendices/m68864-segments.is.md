@@ -1,14 +1,14 @@
 <!-- SEG:m68864:title:auto-1 -->
-Efnasamsetning verslunarsýra og -basa
+Samsetning algengra sýra og basa
 
 <!-- SEG:m68864:entry:auto-2 -->
-Efnasamsetning verslunarsýra og -basa
+Samsetning algengra sýra og basa
 
 <!-- SEG:m68864:entry:auto-3 -->
-Sýra eða basi {{fn}}Sýrur og basar eru fáanlegir í verslunum sem vatnslausnir. Þessi tafla sýnir eiginleika (eðlismassa og styrk) algengra sýru- og basalausna. Nafngildi eru gefin upp í þeim tilvikum þar sem framleiðandi gefur upp bil fyrir styrk og eðlismassa.{{/fn}}
+Sýra eða basi [[fn:Sýrur og basar eru fáanlegir í verslunum sem vatnslausnir. Þessi tafla sýnir eiginleika (eðlismassa og styrk) algengra sýru- og basalausna. Nafngildi eru gefin upp í tilvikum þar sem framleiðandi gefur upp bil fyrir styrk og eðlismassa.|fs-idm38171904]]
 
 <!-- SEG:m68864:entry:auto-4 -->
-Eðlismassi (g/ml) {{fn}}Þessi dálkur inniheldur gögn um eðlisþyngd. Í þessari töflu er eðlisþyngd hlutfall eðlismassa efnis og eðlismassa hreins vatns við sömu aðstæður. Eðlisþyngd er oft tilgreind á merkimiðum í verslunum.{{/fn}}
+Eðlismassi (g/ml) [[fn:Þessi dálkur inniheldur gögn um eðlisþyngd. Í þessari töflu er eðlisþyngd hlutfall eðlismassa efnis og eðlismassa hreins vatns við sömu aðstæður. Eðlisþyngd er oft tilgreind á umbúðum.|fs-idp90181920]]
 
 <!-- SEG:m68864:entry:auto-5 -->
 Massaprósenta
@@ -17,7 +17,7 @@ Massaprósenta
 Mólstyrkur
 
 <!-- SEG:m68864:entry:auto-7 -->
-ediksýra, ísedik
+Ísedikssýra
 
 <!-- SEG:m68864:entry:auto-8 -->
 1,05
@@ -29,7 +29,7 @@ ediksýra, ísedik
 17,4
 
 <!-- SEG:m68864:entry:auto-11 -->
-vatnslausn ammóníaks {{fn}}Þessi lausn er stundum kölluð „ammóníumhýdroxíð“ þótt það hugtak sé ekki efnafræðilega rétt.{{/fn}}
+Vatnslausn ammóníaks [[fn:Þessi lausn er stundum kölluð „ammóníumhýdroxíð“ þótt það hugtak sé ekki efnafræðilega rétt.|fs-idp11725888]]
 
 <!-- SEG:m68864:entry:auto-12 -->
 0,90
@@ -41,7 +41,7 @@ vatnslausn ammóníaks {{fn}}Þessi lausn er stundum kölluð „ammóníumhýdr
 14,8
 
 <!-- SEG:m68864:entry:auto-15 -->
-saltsýra
+Saltsýra
 
 <!-- SEG:m68864:entry:auto-16 -->
 1,18
@@ -53,7 +53,7 @@ saltsýra
 11,6
 
 <!-- SEG:m68864:entry:auto-19 -->
-salpéturssýra
+Saltpéturssýra
 
 <!-- SEG:m68864:entry:auto-20 -->
 1,42
@@ -65,7 +65,7 @@ salpéturssýra
 16,0
 
 <!-- SEG:m68864:entry:auto-23 -->
-perklórsýra
+Perklórsýra
 
 <!-- SEG:m68864:entry:auto-24 -->
 1,67
@@ -77,7 +77,7 @@ perklórsýra
 11,65
 
 <!-- SEG:m68864:entry:auto-27 -->
-fosfórsýra
+Fosfórsýra
 
 <!-- SEG:m68864:entry:auto-28 -->
 1,70
@@ -89,7 +89,7 @@ fosfórsýra
 14,7
 
 <!-- SEG:m68864:entry:auto-31 -->
-natríumhýdroxíð
+Natríumhýdroxíð
 
 <!-- SEG:m68864:entry:auto-32 -->
 1,53
@@ -101,7 +101,7 @@ natríumhýdroxíð
 19,1
 
 <!-- SEG:m68864:entry:auto-35 -->
-brennisteinssýra
+Brennisteinssýra
 
 <!-- SEG:m68864:entry:auto-36 -->
 1,84

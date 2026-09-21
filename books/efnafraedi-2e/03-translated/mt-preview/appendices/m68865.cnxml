@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
-<title>Staðalvarmafræðilegir eiginleikar fyrir valin efni</title>
+<title>Staðlaðir varmafræðilegir eiginleikar fyrir valin efni</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68865</md:content-id>
-  <md:title>Staðalvarmafræðilegir eiginleikar fyrir valin efni</md:title>
+  <md:title>Staðlaðir varmafræðilegir eiginleikar fyrir valin efni</md:title>
   <md:abstract/>
   <md:uuid>667adccf-f900-4d86-a13d-409c014086ea</md:uuid>
 </metadata>
@@ -15,7 +15,7 @@
 <colspec colnum="4" colname="c4"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c4">Staðalvarmafræðilegir eiginleikar fyrir valin efni</entry>
+<entry namest="c1" nameend="c4">Staðlaðir varmafræðilegir eiginleikar fyrir valin efni</entry>
 </row>
 <row valign="middle">
 <entry align="left">Efni</entry>
@@ -85,7 +85,7 @@
 <entry align="left">239,32</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">antimon</entry>
+<entry align="left" namest="c1" nameend="c4">antímon</entry>
 </row>
 <row valign="middle">
 <entry align="left">Sb(<emphasis effect="italics">s</emphasis>)</entry>
@@ -386,7 +386,7 @@
 <entry align="left">198,7</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">kadmín</entry>
+<entry align="left" namest="c1" nameend="c4">kadmíum</entry>
 </row>
 <row valign="middle">
 <entry align="left">Cd(<emphasis effect="italics">s</emphasis>)</entry>
@@ -433,7 +433,7 @@
 <entry align="left">64,9</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">kalsín</entry>
+<entry align="left" namest="c1" nameend="c4">kalsíum</entry>
 </row>
 <row valign="middle">
 <entry align="left">Ca(<emphasis effect="italics">s</emphasis>)</entry>
@@ -704,7 +704,7 @@
 
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">sesín</entry>
+<entry align="left" namest="c1" nameend="c4">Sesín</entry>
 </row>
 <row valign="middle">
 <entry align="left">Cs<sup>+</sup>(<emphasis effect="italics">aq</emphasis>)</entry>
@@ -938,7 +938,7 @@
 <entry align="left">—</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">Flúor</entry>
+<entry align="left" namest="c1" nameend="c4">flúor</entry>
 </row>
 <row valign="middle">
 <entry align="left">F<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
@@ -973,7 +973,7 @@
 <entry align="left">173,8</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">Vetni</entry>
+<entry align="left" namest="c1" nameend="c4">vetni</entry>
 </row>
 <row valign="middle">
 <entry align="left">H<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
@@ -1214,7 +1214,7 @@
 <entry align="left">Fe(OH)<sub>2</sub>(<emphasis effect="italics">s</emphasis>)</entry>
 <entry align="left">–569,0</entry>
 <entry align="left">–486,5</entry>
-<entry align="left">88</entry>
+<entry align="left">88.</entry>
 </row>
 <row valign="middle">
 <entry align="left">Fe(OH)<sub>3</sub>(<emphasis effect="italics">s)</emphasis></entry>
@@ -1246,7 +1246,7 @@
 <row valign="middle">
 <entry align="left">Pb(<emphasis effect="italics">g</emphasis>)</entry>
 <entry align="left">195,2</entry>
-<entry align="left">162</entry>
+<entry align="left">162.</entry>
 <entry align="left">175,4</entry>
 </row>
 
@@ -1348,7 +1348,7 @@
 </row>
 
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">magnesín</entry>
+<entry align="left" namest="c1" nameend="c4">magnesíum</entry>
 </row>
 
 
@@ -1517,7 +1517,7 @@
 
 
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">nitur</entry>
+<entry align="left" namest="c1" nameend="c4">köfnunarefni</entry>
 </row>
 <row valign="middle">
 <entry align="left">N<sub>2</sub>(<emphasis effect="italics">g</emphasis>)</entry>
@@ -1795,7 +1795,7 @@
 <entry align="left">325,5</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">kalín</entry>
+<entry align="left" namest="c1" nameend="c4">kalíum</entry>
 </row>
 <row valign="middle">
 <entry align="left">K(<emphasis effect="italics">s</emphasis>)</entry>
@@ -1831,7 +1831,7 @@
 <entry align="left">82,6</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">rúbidín</entry>
+<entry align="left" namest="c1" nameend="c4">rúbidíum</entry>
 </row>
 
 <row valign="middle">
@@ -1899,13 +1899,13 @@
 <entry align="left">330,62</entry>
 </row>
 <row valign="middle">
-<entry align="left">SiC(<emphasis effect="italics">s, beta-kúbískur</emphasis>)</entry>
+<entry align="left">SiC(<emphasis effect="italics">s, beta cubic</emphasis>)</entry>
 <entry align="left">–73,22</entry>
 <entry align="left">–70,71</entry>
 <entry align="left">16,61</entry>
 </row>
 <row valign="middle">
-<entry align="left">SiC(<emphasis effect="italics">s, alfa-sexstrendur</emphasis>)</entry>
+<entry align="left">SiC(<emphasis effect="italics">s, alpha hexagonal</emphasis>)</entry>
 <entry align="left">–71,55</entry>
 <entry align="left">–69,04</entry>
 <entry align="left">16,48</entry>
@@ -1952,7 +1952,7 @@
 <entry align="left">144,0</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">natríum</entry>
+<entry align="left" namest="c1" nameend="c4">Natríum</entry>
 </row>
 <row valign="middle">
 <entry align="left">Na(<emphasis effect="italics">s</emphasis>)</entry>
@@ -1988,7 +1988,7 @@
 </row>
 
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">strontíum</entry>
+<entry align="left" namest="c1" nameend="c4">Strontíum</entry>
 </row>
 
 <row valign="middle">
@@ -1999,10 +1999,10 @@
 </row>
 
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">brennisteinn</entry>
+<entry align="left" namest="c1" nameend="c4">Brennisteinn</entry>
 </row>
 <row valign="middle">
-<entry align="left">S<sub>8</sub>(<emphasis effect="italics">s</emphasis>) (tígulflötóttur)</entry>
+<entry align="left">S<sub>8</sub>(<emphasis effect="italics">s</emphasis>) (tígullaga)</entry>
 <entry align="left">0</entry>
 <entry align="left">0</entry>
 <entry align="left">256,8</entry>
@@ -2145,7 +2145,7 @@
 <entry align="left">311,83</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">Tin</entry>
+<entry align="left" namest="c1" nameend="c4">tin</entry>
 </row>
 <row valign="middle">
 <entry align="left">Sn(<emphasis effect="italics">s</emphasis>)</entry>
@@ -2184,7 +2184,7 @@
 <entry align="left">365,8</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">Títan</entry>
+<entry align="left" namest="c1" nameend="c4">títan</entry>
 </row>
 <row valign="middle">
 <entry align="left">Ti(<emphasis effect="italics">s</emphasis>)</entry>
@@ -2291,7 +2291,7 @@
 <entry align="left">82,42</entry>
 </row>
 <row valign="middle">
-<entry align="left" namest="c1" nameend="c4">flókar</entry>
+<entry align="left" namest="c1" nameend="c4">fléttur</entry>
 </row>
 <row valign="middle">
 <entry align="left">[Co(NH<sub>3</sub>)<sub>4</sub>(NO<sub>2</sub>)<sub>2</sub>]NO<sub>3</sub>, <emphasis effect="italics">cis</emphasis></entry>

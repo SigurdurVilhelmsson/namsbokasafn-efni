@@ -839,3 +839,22 @@ one. **📋 For editors: `m68852` (6 segments) and `m68856` (1).**
 ✅ **Verified by value:** `geislasundrun` **43** and `sundrun` 141 — the 0-token deliberate ruling
 of 2026-09-20 took strongly and renamed a section URL. `keðjuhvar-` 25. `klofnanleg` 11 with
 `fissionable` correctly OFF the wire, so the chapter keeps the distinction it teaches.
+
+## appendices — 13 units · ~621 ISK text + ~29 ISK figures · `DONE=ok`, PREPARED
+
+**26-term subset** = audited 25 + `lone pair` (14 EN, `rafeindapar` **0** before → **6** after).
+`arm: 13 of 13 glossary-only`. Manifest `green=true unexplained=0`, 134 perfect, 0 skipped,
+149 checked. 13 pages, **0 raw `[[` against a 1,007-marker positive control**. **Untranslated
+prose: 0 of 97.** The single ATTR row is a source alt with a trailing space the round-trip trims —
+the same benign class as ch16/ch18/ch19.
+
+✅ **Driver defect D2 stayed fixed.** Every log line reads `[appendices]`, not `[ch00]`.
+`printf 'ch%02d' appendices` prints `ch00` while erroring to stderr, which would have pointed every
+VERIFICATION step at the preface and reported green on a unit nobody touched.
+
+⚠️ **The stray `m68865-segments(b).en.md`** the subset audit reported in this GENERATED directory is
+still present and was **measured inert**: it ends `(b).en.md`, so it does not match the
+`-segments.en.md` glob the MT enumerates (13 files match; it is not one of them). Not touched.
+
+🔴 **SIX redirect rows, though the render output sampled showed only four** — the slug-map
+before/after diff is the authority.

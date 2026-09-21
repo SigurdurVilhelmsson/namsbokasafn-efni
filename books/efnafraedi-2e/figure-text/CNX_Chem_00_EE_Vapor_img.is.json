@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_EE_Vapor_img",
+ "renderHash": "fcea0b45a075cb32",
+ "composedHash": "fcea0b45a075cb32",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Temperature (°C)": "Hiti (°C)",
+  "Vapor pressure (torr)": "Gufuþrýstingur (torr)",
+  "Vapor Pressure as a Function of Temperature": "Gufuþrýstingur sem fall af hita"
+ },
+ "mtAlternatives": {
+  "Vapor Pressure as a Function of Temperature": {
+   "kept": "joined",
+   "other": "Gufuþrýstingur sem fall af hitastigi",
+   "reason": "disagree",
+   "mt": "Gufuþrýstingur sem fall af hita"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

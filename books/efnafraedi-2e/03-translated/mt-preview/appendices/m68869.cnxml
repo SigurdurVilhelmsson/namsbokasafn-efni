@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
-<title>Myndunarfastar fyrir flókajónir</title>
+<title>Myndunarfastar fyrir samjónir</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68869</md:content-id>
-  <md:title>Myndunarfastar fyrir flókajónir</md:title>
+  <md:title>Myndunarfastar fyrir samjónir</md:title>
   <md:abstract/>
   <md:uuid>837210f4-02c3-4a18-a1a2-7d3c3477cb5b</md:uuid>
 </metadata>
@@ -14,11 +14,11 @@
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c2" align="center">Myndunarfastar fyrir flókajónir</entry>
+<entry namest="c1" nameend="c2" align="center">Myndunarfastar fyrir samjónir</entry>
 </row>
 <row valign="middle">
 <entry align="left">Jafnvægi</entry>
-<entry align="left"><emphasis effect="italics">K</emphasis><sub>m</sub></entry>
+<entry align="left"><emphasis effect="italics">K</emphasis><sub>f</sub></entry>
 </row>
 </thead>
 <tbody>

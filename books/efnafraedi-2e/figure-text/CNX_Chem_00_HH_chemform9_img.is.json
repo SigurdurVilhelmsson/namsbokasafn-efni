@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_HH_chemform9_img",
+ "renderHash": "3598390d615be657",
+ "composedHash": "3598390d615be657",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HSO3|–": "HSO3 –"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

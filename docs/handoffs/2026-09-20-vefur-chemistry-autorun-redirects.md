@@ -259,3 +259,16 @@ the page was literally named `kolvetni`, the word that meant both *hydrocarbon* 
 _Slug map 53 → 56: **added=3, changed=0, removed=0**._ ⚠️ **The first row is
 `radioactive decay → geislasundrun` reaching a section URL — a form the model had NEVER produced
 before the ruling.**
+
+## appendices — prepared 2026-09-21 (~650 ISK all in) — SIX rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/appendices/appendices-11-myndunarfastar-fyrir-flokajonir.html` | `chapters/appendices/appendices-11-myndunarfastar-fyrir-samjonir.html` | m68869 |
+| `chapters/appendices/appendices-12-stodlud-rafskautsspenna-halfkerfisspenna.html` | `chapters/appendices/appendices-12-stodurafspenna-halffrumuspennur.html` | m68870 |
+| `chapters/appendices/appendices-3-einingar-og-umreiknistudlar.html` | `chapters/appendices/appendices-3-einingar-og-umreikningsstudlar.html` | m68861 |
+| `chapters/appendices/appendices-4-grundvallarfastar-i-edlisfraedi.html` | `chapters/appendices/appendices-4-grundvallar-edlisfraedifastar.html` | m68862 |
+| `chapters/appendices/appendices-6-efnasamsetning-verslunarsyra-og-basa.html` | `chapters/appendices/appendices-6-samsetning-algengra-syra-og-basa.html` | m68864 |
+| `chapters/appendices/appendices-7-stadalvarmafraedilegir-eiginleikar-fyrir-valin.html` | `chapters/appendices/appendices-7-stadladir-varmafraedilegir-eiginleikar-fyrir-valin.html` | m68865 |
+
+_Slug map 56 → 62: **added=6, changed=0, removed=0**, from a before/after diff._ ⚠️ **The render output I sampled showed only FOUR of these** — the diff is what gives six. Never transcribe the render log.

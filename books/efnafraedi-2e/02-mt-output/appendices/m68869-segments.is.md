@@ -1,14 +1,14 @@
 <!-- SEG:m68869:title:auto-1 -->
-Myndunarfastar fyrir flókajónir
+Myndunarfastar fyrir samjónir
 
 <!-- SEG:m68869:entry:auto-2 -->
-Myndunarfastar fyrir flókajónir
+Myndunarfastar fyrir samjónir
 
 <!-- SEG:m68869:entry:auto-3 -->
 Jafnvægi
 
 <!-- SEG:m68869:entry:auto-4 -->
-{{i}}K{{/i}}[[sub:m]]
+[[i:K]][[sub:f]]
 
 <!-- SEG:m68869:entry:auto-5 -->
 [[MATH:1]]

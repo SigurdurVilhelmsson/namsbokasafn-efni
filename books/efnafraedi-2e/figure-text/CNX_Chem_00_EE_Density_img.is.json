@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_EE_Density_img",
+ "renderHash": "201a5340a7c51a88",
+ "composedHash": "201a5340a7c51a88",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Temperature (°C)": "Hiti (°C)",
+  "Density (kg/m3)": "Eðlismassi (kg/m3)",
+  "Density of Water as a Function of Temperature": "Eðlismassi vatns sem fall af hitastigi"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

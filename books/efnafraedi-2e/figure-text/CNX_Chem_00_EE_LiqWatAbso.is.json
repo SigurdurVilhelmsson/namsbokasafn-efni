@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_EE_LiqWatAbso",
+ "renderHash": "c86ae4873c01c7d0",
+ "composedHash": "c86ae4873c01c7d0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Wavelength": "Bylgjulengd",
+  "VIS": "VÍS",
+  "Near IR": "Nær-innrautt",
+  "Mid IR": "Mið-innrautt",
+  "Water Full-Range Spectral Absorption Curve": "Frásogskúrfa vatns yfir allt litrófið",
+  "Far IR": "Fjar-innrautt",
+  "EHF": "EHF",
+  "Absorption (1/m)": "Frásog (1/m)"
+ },
+ "mtAlternatives": {
+  "VIS": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "VÍS"
+  },
+  "Near IR": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Nær-innrautt"
+  },
+  "Mid IR": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Mið-innrautt"
+  },
+  "Water Full-Range Spectral Absorption Curve": {
+   "kept": "joined",
+   "other": "Gleypniferill vatns á öllu litrófssviðinu",
+   "reason": "disagree",
+   "mt": "Frásogskúrfa vatns yfir allt litrófið"
+  },
+  "Far IR": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Fjar-innrautt"
+  },
+  "Absorption (1/m)": {
+   "kept": "joined",
+   "other": "Gleypni (1/m)",
+   "reason": "disagree",
+   "mt": "Frásog (1/m)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}
