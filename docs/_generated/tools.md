@@ -28,6 +28,7 @@
 | `cnxml-fidelity-check` | Counts opening tags by element name in both source and translated CNXML |
 | `cnxml-linguistic-check` | checking whether the TEXT CONTENT was actually translated. Flags leaf-level |
 | `cnxml-render-fidelity-check` | CNXML at the INJECT stage). This tool validates the RENDER stage: the |
+| `compute-glossary-subset` | Compute a chapter's `--glossary-only` subset FROM MEASUREMENT. |
 | `docx-import` | Import human translations from Word (.docx) files into the pipeline. |
 | `download-source` | Downloads a tarball of the repository, extracts module CNXML files organized |
 | `exercise-assemble` | (item 9 / D3). The inject-stage counterpart for exercise content. |
@@ -74,6 +75,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*53 tools total (53 active, 0 deprecated)*
+*54 tools total (54 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
