@@ -180,3 +180,13 @@ show you this** — it printed only the three NEW renames and said nothing about
 | `chapters/14/14-6-jafnalausnir.html` | `chapters/14/14-6-studpudar.html` | m68808 |
 
 _Slug map 40 → 41: **added=4, changed=0, removed=3**. ch10 and ch15 produced no renames._
+
+## ch16 — prepared 2026-09-21 (the C171 fidelity unblock; no new MT was bought)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/16/16-1-sjalfsprotti.html` | `chapters/16/16-1-sjalfgengi.html` | m68816 |
+
+_Slug map 41 → 42: **added=1, changed=0, removed=0** — computed by diffing the map before and
+against `HEAD`, not transcribed from the render log. No chain collapsed and no row inverted, so
+this single row is the whole of ch16's redirect work._

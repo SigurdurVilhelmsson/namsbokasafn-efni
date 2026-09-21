@@ -273,6 +273,14 @@
       "class": "known-loss-deferred",
       "reason": "WS5 surfaced: <term> flatten — italic d + f dropped from 'd-block elements' / 'f-block elements' glossary terms (same RC1 inline-term family; content present, italic marker lost). Track B4 re-MT",
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+    },
+    {
+      "moduleId": "m68818",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "C171 empty-para gate: <para id='fs-idp113461024'><emphasis effect='italics'/></para> carries no text, so cnxml-extract's 'if (text)' gate emits no segment AND never pushes the para into 02-structure; inject rebuilds from the structure, so the para and its empty emphasis cannot be reconstructed. Zero reader impact (an empty italic in an empty para renders nothing); the LOSS is real and the GATE is the defect.",
+      "pointer": "C171 (docs/plans/2026-07-21-post-item17-followup-campaign.md)"
     }
   ]
 }

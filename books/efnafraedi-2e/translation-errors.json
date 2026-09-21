@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-21T10:29:46.804Z",
+  "generated": "2026-09-21T13:35:18.870Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-21T10:29:46.804Z",
+      "generated": "2026-09-21T13:35:18.870Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
@@ -12,10 +12,10 @@
         "perfect": 131,
         "withDiscrepancies": 18,
         "totalDiscrepancies": 31,
-        "unexplainedDiscrepancies": 1,
-        "deferredLosses": 14,
+        "unexplainedDiscrepancies": 0,
+        "deferredLosses": 15,
         "benignArtifacts": 16,
-        "green": false
+        "green": true
       },
       "modules": [
         {
@@ -159,7 +159,9 @@
             {
               "tag": "emphasis",
               "diff": -1,
-              "status": "unexplained"
+              "status": "known-loss-deferred",
+              "reason": "C171 empty-para gate: <para id='fs-idp113461024'><emphasis effect='italics'/></para> carries no text, so cnxml-extract's 'if (text)' gate emits no segment AND never pushes the para into 02-structure; inject rebuilds from the structure, so the para and its empty emphasis cannot be reconstructed. Zero reader impact (an empty italic in an empty para renders nothing); the LOSS is real and the GATE is the defect.",
+              "pointer": "C171 (docs/plans/2026-07-21-post-item17-followup-campaign.md)"
             },
             {
               "tag": "para",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T08:37:05.544Z",
+  "generated": "2026-09-21T13:39:01.953Z",
   "termCount": 763,
   "entries": [
     {
@@ -122,17 +122,6 @@
       "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
       "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
       "termId": "fs-idp68905696"
-    },
-    {
-      "termIs": "afturkræft ferli",
-      "termEn": "reversible process",
-      "termFull": "afturkræft ferli (e. reversible process)",
-      "definition": "ferli sem gerist svo hægt að það getur snúist við vegna óendanlega lítillar breytingar á aðstæðum; tilgátuhugsmíð sem aðeins er hægt að nálgast með raunverulegum ferlum",
-      "chapter": 16,
-      "section": "16.2",
-      "sectionTitle": "Óreiða",
-      "sectionSlug": "16-2-oreida",
-      "termId": "fs-idp48318480"
     },
     {
       "termIs": "afturkræft hvarf",
@@ -353,6 +342,17 @@
       "sectionTitle": "Kjarnajöfnur",
       "sectionSlug": "21-2-kjarnajofnur",
       "termId": "fs-idm54113552"
+    },
+    {
+      "termIs": "andhverfanlegt ferli",
+      "termEn": "reversible process",
+      "termFull": "andhverfanlegt ferli (e. reversible process)",
+      "definition": "ferli sem á sér stað svo hægt að það getur snúist við sem svar við óendanlega lítilli breytingu á aðstæðum; fræðilegt hugtak sem aðeins er hægt að nálgast með raunverulegum ferlum",
+      "chapter": 16,
+      "section": "16.2",
+      "sectionTitle": "Óreiða",
+      "sectionSlug": "16-2-oreida",
+      "termId": "fs-idp48318480"
     },
     {
       "termIs": "anjón",
@@ -916,9 +916,9 @@
       "termId": "fs-idm69563216"
     },
     {
-      "termIs": "Breyting á Gibbs fríorku (G)",
+      "termIs": "Breyting á frjálsri orku Gibbs (G)",
       "termEn": "gibbs free energy change (g)",
-      "termFull": "Breyting á Gibbs fríorku (G) (e. gibbs free energy change (g))",
+      "termFull": "Breyting á frjálsri orku Gibbs (G) (e. gibbs free energy change (g))",
       "definition": "varmafræðilegur eiginleiki skilgreindur út frá vermi og óreiðu kerfis; öll sjálfgeng ferli fela í sér lækkun á G",
       "chapter": 16,
       "section": "16.4",
@@ -5264,7 +5264,7 @@
       "termIs": "óreiða (S)",
       "termEn": "entropy (s)",
       "termFull": "óreiða (S) (e. entropy (s))",
-      "definition": "ástandsfall sem er mælikvarði á dreifingu efnis og/eða orku innan kerfis, ákvarðað af fjölda smáástanda kerfisins; oft lýst sem mælikvarða á óreglu kerfisins",
+      "definition": "ástandsfall sem er mælikvarði á dreifingu efnis og/eða orku innan kerfis, ákvarðað af fjölda örástanda kerfisins; oft lýst sem mælikvarða á óreglu kerfisins",
       "chapter": 16,
       "section": "16.2",
       "sectionTitle": "Óreiða",
@@ -5272,14 +5272,14 @@
       "termId": "fs-idm225836896"
     },
     {
-      "termIs": "ósjálfsprottið ferli",
+      "termIs": "ósjálfgengt ferli",
       "termEn": "nonspontaneous process",
-      "termFull": "ósjálfsprottið ferli (e. nonspontaneous process)",
-      "definition": "ferli sem krefst stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu",
+      "termFull": "ósjálfgengt ferli (e. nonspontaneous process)",
+      "definition": "ferli sem krefst stöðugs orkuinnleggs frá utanaðkomandi uppsprettu",
       "chapter": 16,
       "section": "16.1",
-      "sectionTitle": "Sjálfsprotti",
-      "sectionSlug": "16-1-sjalfsprotti",
+      "sectionTitle": "Sjálfgengi",
+      "sectionSlug": "16-1-sjalfgengi",
       "termId": "fs-idp119850016"
     },
     {
@@ -6284,6 +6284,17 @@
       "termId": "fs-idm42041824"
     },
     {
+      "termIs": "sjálfgeng breyting",
+      "termEn": "spontaneous change",
+      "termFull": "sjálfgeng breyting (e. spontaneous change)",
+      "definition": "ferli sem á sér stað án stöðugs orkuinnleggs frá utanaðkomandi uppsprettu",
+      "chapter": 16,
+      "section": "16.1",
+      "sectionTitle": "Sjálfgengi",
+      "sectionSlug": "16-1-sjalfgengi",
+      "termId": "fs-idm57405936"
+    },
+    {
       "termIs": "sjálfjónun",
       "termEn": "autoionization",
       "termFull": "sjálfjónun (e. autoionization)",
@@ -6304,17 +6315,6 @@
       "sectionTitle": "Upplausnarferlið",
       "sectionSlug": "11-1-upplausnarferlid",
       "termId": "fs-idm55870880"
-    },
-    {
-      "termIs": "sjálfsprottin breyting",
-      "termEn": "spontaneous change",
-      "termFull": "sjálfsprottin breyting (e. spontaneous change)",
-      "definition": "ferli sem á sér stað án stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu",
-      "chapter": 16,
-      "section": "16.1",
-      "sectionTitle": "Sjálfsprotti",
-      "sectionSlug": "16-1-sjalfsprotti",
-      "termId": "fs-idm57405936"
     },
     {
       "termIs": "skammtafræði",
@@ -6403,17 +6403,6 @@
       "sectionTitle": "Gildisrafeindatengjakenningin",
       "sectionSlug": "8-1-gildisrafeindatengjakenningin",
       "termId": "fs-idp42480608"
-    },
-    {
-      "termIs": "smáástand",
-      "termEn": "microstate",
-      "termFull": "smáástand (e. microstate)",
-      "definition": "möguleg uppsetning eða fyrirkomulag efnis og orku innan kerfis",
-      "chapter": 16,
-      "section": "16.2",
-      "sectionTitle": "Óreiða",
-      "sectionSlug": "16-2-oreida",
-      "termId": "fs-idm228328464"
     },
     {
       "termIs": "smásætt svið",
@@ -6526,6 +6515,17 @@
       "termId": "fs-idp102395520"
     },
     {
+      "termIs": "staðalbreyting á frjálsri orku (ΔG°)",
+      "termEn": "standard free energy change (δg°)",
+      "termFull": "staðalbreyting á frjálsri orku (ΔG°) (e. standard free energy change (δg°))",
+      "definition": "breyting á frjálsri orku fyrir ferli sem á sér stað við staðlaðar aðstæður (1 bar þrýstingur fyrir lofttegundir, 1 M styrkur fyrir lausnir)",
+      "chapter": 16,
+      "section": "16.4",
+      "sectionTitle": "Frjáls orka",
+      "sectionSlug": "16-4-frjals-orka",
+      "termId": "fs-idm119807952"
+    },
+    {
       "termIs": "staðalbrunavermi",
       "termEn": "standard enthalpy of combustion (ΔHc°)",
       "termFull": "staðalbrunavermi (e. standard enthalpy of combustion (ΔHc°))",
@@ -6559,6 +6559,17 @@
       "termId": "fs-idm62647600"
     },
     {
+      "termIs": "staðalmyndunarorka",
+      "termEn": "standard free energy of formation (ΔGf°)",
+      "termFull": "staðalmyndunarorka (e. standard free energy of formation (ΔGf°))",
+      "definition": "breyting á frjálsri orku sem fylgir myndun eins móls af efni úr frumefnum þess í staðalformi",
+      "chapter": 16,
+      "section": "16.4",
+      "sectionTitle": "Frjáls orka",
+      "sectionSlug": "16-4-frjals-orka",
+      "termId": "fs-idm119806032"
+    },
+    {
       "termIs": "staðalmyndunarvermi",
       "termEn": "standard enthalpy of formation (ΔHf°)",
       "termFull": "staðalmyndunarvermi (e. standard enthalpy of formation (ΔHf°))",
@@ -6573,7 +6584,7 @@
       "termIs": "staðalóreiða (S°)",
       "termEn": "standard entropy (s°)",
       "termFull": "staðalóreiða (S°) (e. standard entropy (s°))",
-      "definition": "óreiða fyrir eitt mól af efni við 1 bars þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K",
+      "definition": "óreiða fyrir eitt mól af efni við 1 bar þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K",
       "chapter": 16,
       "section": "16.3",
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
@@ -6584,7 +6595,7 @@
       "termIs": "staðalóreiðubreyting (ΔS°)",
       "termEn": "standard entropy change (δs°)",
       "termFull": "staðalóreiðubreyting (ΔS°) (e. standard entropy change (δs°))",
-      "definition": "óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðum",
+      "definition": "óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðugildum",
       "chapter": 16,
       "section": "16.3",
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
@@ -6810,28 +6821,6 @@
       "sectionTitle": "Rafsegulorka",
       "sectionSlug": "6-1-rafsegulorka",
       "termId": "fs-idm32505344"
-    },
-    {
-      "termIs": "Stöðluð breyting á frjálsri orku (ΔG°)",
-      "termEn": "standard free energy change (δg°)",
-      "termFull": "Stöðluð breyting á frjálsri orku (ΔG°) (e. standard free energy change (δg°))",
-      "definition": "Breyting á frjálsri orku fyrir ferli sem á sér stað við staðalaðstæður (1 bar þrýstingur fyrir gös, 1 M styrkur fyrir lausnir)",
-      "chapter": 16,
-      "section": "16.4",
-      "sectionTitle": "Frjáls orka",
-      "sectionSlug": "16-4-frjals-orka",
-      "termId": "fs-idm119807952"
-    },
-    {
-      "termIs": "Stöðluð myndunarorka frjáls (ΔGf°)",
-      "termEn": "standard free energy of formation (δgf°)",
-      "termFull": "Stöðluð myndunarorka frjáls (ΔGf°) (e. standard free energy of formation (δgf°))",
-      "definition": "Breyting á frjálsri orku sem fylgir myndun eins móls af efni úr frumefnum þess í stöðluðu ástandi",
-      "chapter": 16,
-      "section": "16.4",
-      "sectionTitle": "Frjáls orka",
-      "sectionSlug": "16-4-frjals-orka",
-      "termId": "fs-idm119806032"
     },
     {
       "termIs": "stöðugleikabelti",
@@ -8339,6 +8328,17 @@
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
       "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm163687904"
+    },
+    {
+      "termIs": "örástand",
+      "termEn": "microstate",
+      "termFull": "örástand (e. microstate)",
+      "definition": "möguleg uppsetning eða fyrirkomulag efnis og orku innan kerfis",
+      "chapter": 16,
+      "section": "16.2",
+      "sectionTitle": "Óreiða",
+      "sectionSlug": "16-2-oreida",
+      "termId": "fs-idm228328464"
     },
     {
       "termIs": "örvað ástand",
