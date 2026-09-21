@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_07_CsClStrctr",
+ "renderHash": "329039697d545b34",
+ "composedHash": "329039697d545b34",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Simple cubic structure": "Einföld teningsgrind"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

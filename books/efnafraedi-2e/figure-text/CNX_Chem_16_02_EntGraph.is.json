@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_16_02_EntGraph",
+ "renderHash": "2031637296259855",
+ "composedHash": "2031637296259855",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Kinetic energy": "Hreyfiorka",
+  "Fraction of molecules": "Hlutfall sameinda",
+  "Temperature (K)": "Hiti (K)",
+  "Entropy (S)": "Óreiða (S)",
+  "Solid": "Fast efni",
+  "Melting": "Bráðnun",
+  "Liquid": "Vökvi",
+  "Gas": "Gas",
+  "Boiling": "Suða"
+ },
+ "mtAlternatives": {
+  "Solid": {
+   "kept": "joined",
+   "other": "Traust",
+   "reason": "disagree",
+   "mt": "Fast efni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

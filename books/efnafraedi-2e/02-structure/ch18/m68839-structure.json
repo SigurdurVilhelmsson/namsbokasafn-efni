@@ -100,6 +100,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_11_Gases",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68839:caption:CNX_Chem_18_11_Gases-caption"
           },
@@ -306,6 +307,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_11_PercipHgI2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68839:caption:CNX_Chem_18_11_PercipHgI2-caption"
           },
@@ -328,6 +330,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_11_SaltMine",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68839:caption:CNX_Chem_18_11_SaltMine-caption"
           },
@@ -360,6 +363,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_11_IF3IF5IF7",
+          "title": null,
           "caption": {
             "segmentId": "m68839:caption:CNX_Chem_18_11_IF3IF5IF7-caption"
           },

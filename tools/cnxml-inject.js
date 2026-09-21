@@ -78,7 +78,7 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
-import { readAlt } from './lib/alt-segments.js';
+import { readAlt, stripAltMarkers } from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
 
 // =====================================================================
@@ -2232,7 +2232,31 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // pipeline-integration's no-emphasis round-trip on m68687, 5 alts counted twice).
   // ▶ Alt substitution must be BEST-EFFORT: translate when a translation exists,
   // silently leave the source alt alone when it does not.
-  const peekSeg = (segmentId) => (segmentId ? segments.get(segmentId) || null : null);
+  // 🔴 §C169 — A BRACKET MARKER IN AN `alt` IS INVENTED BY CONSTRUCTION, AND THE
+  // RULE BELONGS HERE, AT THE LOOKUP, NOT AT THE WRITERS. An `alt` is an XML
+  // ATTRIBUTE VALUE: markup cannot live there, so extraction can never emit a
+  // marker into an alt segment — measured 2026-09-20 over the whole committed
+  // corpus, **0 of 3,312 EN alt segments carry one**. So a marker on the IS side
+  // came from the MT, and unwrapping it to its visible content destroys nothing.
+  //
+  // ⚠️ THE PLACEMENT IS THE WHOLE POINT, AND IT WAS GOT WRONG TWICE FIRST.
+  // Fixing `readAlt` does nothing here: both figure-alt callers deliberately
+  // bypass it via `ctx.peekSeg` and say so ("DELIBERATELY NOT readAlt") because
+  // readAlt records a lookup MISS, which makes inject refuse a pre-§C81 vintage.
+  // Fixing `replaceMediaAlt` does nothing either: it is one of SEVEN sites that
+  // write an `alt="…"`, and this figure is served by `rewriteOpenTag` instead.
+  // ▶ Patching writers means maintaining an enumeration that rots; patching the
+  // single lookup they all share does not. Keyed on `:alt:` so nothing else moves.
+  //
+  // Live instance, chemistry ch12 m68791: OpenStax spells subscripts out in words
+  // in alt text because a screen reader reads it aloud ("C subscript 4 H
+  // subscript 6"); the MT rendered them as real markup, `C[[sub:4]]H[[sub:6]]`,
+  // and inject refused the module rather than publish a raw placeholder.
+  const peekSeg = (segmentId) => {
+    if (!segmentId) return null;
+    const value = segments.get(segmentId) || null;
+    return value && segmentId.includes(':alt:') ? stripAltMarkers(value) : value;
+  };
 
   const ctx = {
     figureCaptions,

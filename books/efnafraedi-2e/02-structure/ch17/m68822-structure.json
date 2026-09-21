@@ -25,6 +25,7 @@
       "type": "figure",
       "id": "CNX_Chem_17_02_CuAg",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68822:caption:CNX_Chem_17_02_CuAg-caption"
       },
@@ -62,6 +63,7 @@
       "type": "figure",
       "id": "CNX_Chem_17_02_Galvanicel",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68822:caption:CNX_Chem_17_02_Galvanicel-caption"
       },
@@ -148,6 +150,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_17_02_Oxidareduc",
+          "title": null,
           "caption": {
             "segmentId": "m68822:caption:CNX_Chem_17_02_Oxidareduc-caption"
           },

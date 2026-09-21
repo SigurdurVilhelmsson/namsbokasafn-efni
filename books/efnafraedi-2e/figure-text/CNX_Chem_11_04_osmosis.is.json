@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_osmosis",
+ "renderHash": "3fca09eb5d83469c",
+ "composedHash": "3fca09eb5d83469c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Pure solvent": "Hreinn leysir",
+  "Semipermeable|membrane": "Hálfgegndræp himna",
+  "Solution": "Lausn",
+  "Osmotic|pressure": "Osmósuþrýstingur"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

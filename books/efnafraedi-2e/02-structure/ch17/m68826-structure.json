@@ -50,6 +50,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_17_06_Statue",
+      "title": null,
       "caption": {
         "segmentId": "m68826:caption:CNX_Chem_17_06_Statue-caption"
       },
@@ -92,6 +93,7 @@
       "type": "figure",
       "id": "CNX_Chem_17_06_Rust",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68826:caption:CNX_Chem_17_06_Rust-caption"
       },
@@ -129,6 +131,7 @@
       "type": "figure",
       "id": "CNX_Chem_17_06_Protect",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68826:caption:CNX_Chem_17_06_Protect-caption"
       },

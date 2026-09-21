@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_16_03_Entropies",
+ "renderHash": "85a2dbafaa3d8ca4",
+ "composedHash": "85a2dbafaa3d8ca4",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Gas": "Gas",
+  "Crystalline solid": "Kristallað fast efni",
+  "Liquid": "Vökvi",
+  "Increasing entropy": "Aukinn óreiðuleiki"
+ },
+ "mtAlternatives": {
+  "Increasing entropy": {
+   "kept": "joined",
+   "other": "Vaxandi óreiða",
+   "reason": "disagree",
+   "mt": "Aukinn óreiðuleiki"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

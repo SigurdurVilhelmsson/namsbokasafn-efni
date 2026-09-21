@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_05_detrg",
+ "renderHash": "d622130b54f8ffdf",
+ "composedHash": "d622130b54f8ffdf",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "sodium lauryl sulfate (detergent)": "natríumlárýlsúlfat (hreinsiefni)",
+  "OSO3|–Na+": "OSO3 –Na+"
+ },
+ "mtAlternatives": {
+  "sodium lauryl sulfate (detergent)": {
+   "kept": "joined",
+   "other": "natríum lárýl súlfat (hreinsiefni)",
+   "reason": "disagree",
+   "mt": "natríumlárýlsúlfat (hreinsiefni)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

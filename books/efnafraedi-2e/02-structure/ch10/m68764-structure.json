@@ -26,6 +26,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_02_Viscosity",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_Viscosity-caption"
       },
@@ -250,6 +251,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_02_Droplet",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_Droplet-caption"
       },
@@ -425,6 +427,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_02_Strider",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_Strider-caption"
       },
@@ -452,6 +455,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_02_Meniscus",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_Meniscus-caption"
       },
@@ -473,6 +477,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_10_02_Wicking",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_Wicking-caption"
       },
@@ -499,6 +504,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_10_02_CapRise",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_CapRise-caption"
       },
@@ -614,6 +620,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_02_BloodDraw",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68764:caption:CNX_Chem_10_02_BloodDraw-caption"
       },
@@ -734,6 +741,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_02_Needlefloa",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68764:caption:CNX_Chem_10_02_Needlefloa-caption"
           },

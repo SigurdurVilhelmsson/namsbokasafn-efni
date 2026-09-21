@@ -1,0 +1,62 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_LabDistill",
+ "renderHash": "64101f2da6602ff0",
+ "composedHash": "64101f2da6602ff0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Stirrer speed control": "Hraðastýring hrærara",
+  "Heating bath|(oil/sand)": "Hitunarbað (olía/sandur)",
+  "Still pot": "Eimingarkolba",
+  "Still head": "Eimingarhaus",
+  "Boiling point|temperature": "Suðumarkshiti",
+  "Sample|mixture": "Sýnisblanda",
+  "Stirrer/heat plate": "Hræri/hitunarplata",
+  "Heat source": "Hitagjafi",
+  "Receiving|flask": "Söfnunarkolba",
+  "Still|receiver": "Eimingarílat"
+ },
+ "mtAlternatives": {
+  "Still pot": {
+   "kept": "joined",
+   "other": "Eimingartæki",
+   "reason": "disagree",
+   "mt": "Eimingarkolba"
+  },
+  "Still head": {
+   "kept": "joined",
+   "other": "Enn höfuð",
+   "reason": "disagree",
+   "mt": "Eimingarhaus"
+  },
+  "Boiling point|temperature": {
+   "kept": "joined",
+   "other": "Suðumarkshitastig",
+   "reason": "disagree",
+   "mt": "Suðumarkshiti"
+  },
+  "Stirrer/heat plate": {
+   "kept": "joined",
+   "other": "Hræri/hitaplatta",
+   "reason": "disagree",
+   "mt": "Hræri/hitunarplata"
+  },
+  "Receiving|flask": {
+   "kept": "joined",
+   "other": "Móttökuflaska",
+   "reason": "disagree",
+   "mt": "Söfnunarkolba"
+  },
+  "Still|receiver": {
+   "kept": "joined",
+   "other": "Ennþá viðtakandi",
+   "reason": "disagree",
+   "mt": "Eimingarílat"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

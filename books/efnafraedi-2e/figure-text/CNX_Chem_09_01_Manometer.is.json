@@ -1,0 +1,22 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_01_Manometer",
+ "renderHash": "3e922a175796e2f8",
+ "composedHash": "3e922a175796e2f8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Gas": "Gas",
+  "Closed end|Vacuum": "Lokað lofttæmi",
+  "Open end": "Opinn endi",
+  "Patm": "Patm",
+  "Pgas = hρg": "Pgas = h΅g",
+  "Pgas = Patm – hρg": "Pgas = Ploft – hρg",
+  "Pgas = Patm + hρg": "Pgas = Patm + hρg"
+ },
+ "mtJoined": {
+  "status": "split-failed",
+  "labels": 7,
+  "lines": 8
+ }
+}

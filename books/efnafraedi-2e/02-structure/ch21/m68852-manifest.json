@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68852",
-  "extractedAt": "2026-08-31T19:08:45.939Z",
+  "extractedAt": "2026-09-20T17:25:22.984Z",
   "sourceHash": "2395506ee583bc89",
   "segmentCount": 83,
   "segmentIds": [
@@ -199,5 +199,24 @@
       "fs-idp161138832",
       "fs-idp77230864"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nuclear reactions",
+    "term-00002": "Alpha particles",
+    "term-00003": "Beta particles",
+    "term-00004": "Positrons",
+    "term-00005": "antimatter",
+    "term-00006": "gamma rays (γ)",
+    "term-00007": "Curie",
+    "term-00008": "Rutherford",
+    "term-00009": "Chadwick",
+    "term-00010": "Segre",
+    "term-00011": "Perrier",
+    "fs-idm57603984": "alpha particle",
+    "fs-idm54113552": "antimatter",
+    "fs-idp335278976": "beta particle",
+    "fs-idm12021616": "gamma ray",
+    "fs-idm45950256": "nuclear reaction",
+    "fs-idp72108384": "positron (+10β or +10e)"
   }
 }

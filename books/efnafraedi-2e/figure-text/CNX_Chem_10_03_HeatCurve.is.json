@@ -1,0 +1,48 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_03_HeatCurve",
+ "renderHash": "5f38b30d4a36a76d",
+ "composedHash": "5f38b30d4a36a76d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Amount of heat added": "Magn viðbætts hita",
+  "Solid begins to melt": "Fast efni byrjar að bráðna",
+  "Liquid begins to boil": "Vökvi byrjar að sjóða",
+  "All liquid evaporated": "Allur vökvi gufaður upp",
+  "All solid melted": "Allt fast efni bráðnað",
+  "H2O(g) and H2O(l)": "H2O(g) og H2O(l)",
+  "H2O(s) and H2O(l)": "H2O(s) og H2O(l)",
+  "Temperature (°C)": "Hitastig (°C)"
+ },
+ "mtAlternatives": {
+  "Amount of heat added": {
+   "kept": "joined",
+   "other": "Viðbætt hitamagn",
+   "reason": "disagree",
+   "mt": "Magn viðbætts hita"
+  },
+  "All liquid evaporated": {
+   "kept": "joined",
+   "other": "Allur vökvi gufaði upp",
+   "reason": "disagree",
+   "mt": "Allur vökvi gufaður upp"
+  },
+  "All solid melted": {
+   "kept": "joined",
+   "other": "Allt fast efni bráðnaði",
+   "reason": "disagree",
+   "mt": "Allt fast efni bráðnað"
+  },
+  "Temperature (°C)": {
+   "kept": "joined",
+   "other": "Hiti (°C)",
+   "reason": "disagree",
+   "mt": "Hitastig (°C)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

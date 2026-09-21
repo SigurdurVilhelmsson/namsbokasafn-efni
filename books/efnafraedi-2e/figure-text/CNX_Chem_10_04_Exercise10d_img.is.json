@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_Exercise10d_img",
+ "renderHash": "59394e161f2fc73e",
+ "composedHash": "59394e161f2fc73e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Diamond": "Demantur",
+  "Temperature (K)": "Hiti (K)",
+  "Pressure (Pa)": "Þrýstingur (Pa)",
+  "Carbon|(liquid)": "Kolefni (vökvi)",
+  "Graphite": "Grafít",
+  "Carbon|vapor|(gas)": "Kolefnisgufa (gas)"
+ },
+ "mtAlternatives": {
+  "Carbon|(liquid)": {
+   "kept": "joined",
+   "other": "Kolefni (fljótandi)",
+   "reason": "disagree",
+   "mt": "Kolefni (vökvi)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_01_KMTPhases1",
+ "renderHash": "c9a7537d82c26fe2",
+ "composedHash": "c9a7537d82c26fe2",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Gas": "Gas",
+  "Crystalline solid": "Kristallað fast efni",
+  "Increasing KE (temperature)": "Aukin hreyfiorka (hiti)",
+  "Increasing IMF": "Aukning AGS",
+  "Liquid": "Vökvi"
+ },
+ "mtAlternatives": {
+  "Increasing KE (temperature)": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Aukin hreyfiorka (hiti)"
+  },
+  "Increasing IMF": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Aukning AGS"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

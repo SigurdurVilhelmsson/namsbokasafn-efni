@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_Ex07Steps_img",
+ "renderHash": "fb654d54f4fcdbcb",
+ "composedHash": "fb654d54f4fcdbcb",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Freezing|point of|solution": "Frostmark lausnar",
+  "Molal|concentration|of compound": "Mólalstyrkur efnasambands",
+  "Moles of|compound in|sample": "Mólfjöldi efnasambands í sýni",
+  "Molar|mass of|compound": "Mólmassi efnasambands"
+ },
+ "mtAlternatives": {
+  "Molal|concentration|of compound": {
+   "kept": "joined",
+   "other": "Mólstyrkur efnasambands",
+   "reason": "disagree",
+   "mt": "Mólalstyrkur efnasambands"
+  },
+  "Moles of|compound in|sample": {
+   "kept": "joined",
+   "other": "Mól efnasambands í sýni",
+   "reason": "disagree",
+   "mt": "Mólfjöldi efnasambands í sýni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -51,6 +51,7 @@
       "type": "figure",
       "id": "CNX_Chem_11_01_K2Cr2O7_1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68778:caption:CNX_Chem_11_01_K2Cr2O7_1-caption"
       },
@@ -340,6 +341,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_01_HeArsol",
+          "title": null,
           "caption": {
             "segmentId": "m68778:caption:CNX_Chem_11_01_HeArsol-caption"
           },
@@ -366,6 +368,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_01_solusolv",
+          "title": null,
           "caption": {
             "segmentId": "m68778:caption:CNX_Chem_11_01_solusolv-caption"
           },
@@ -393,6 +396,7 @@
           "type": "figure",
           "id": "CNX_Chem_11_01_Icepack",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68778:caption:CNX_Chem_11_01_Icepack-caption"
           },

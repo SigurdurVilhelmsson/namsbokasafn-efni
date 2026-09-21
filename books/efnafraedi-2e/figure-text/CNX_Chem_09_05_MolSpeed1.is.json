@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_05_MolSpeed1",
+ "renderHash": "9cd82d60f6f02cf8",
+ "composedHash": "9cd82d60f6f02cf8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Velocity v (m/s)": "Hraði v (m/s)",
+  "Number of molecules": "Fjöldi sameinda",
+  "urms": "urms"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

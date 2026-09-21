@@ -1,0 +1,19 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_01_Atmosphere",
+ "renderHash": "190a0be5880171ba",
+ "composedHash": "190a0be5880171ba",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Troposphere 0–12 km|(origin of most weather events)": "Veðrahvolf 0–12 km (uppruni flestra veðurfyrirbæra)",
+  "Stratosphere 12–50 km": "Heiðhvolf 12–50 km",
+  "Mesosphere 50–80 km": "Miðhvolf 50–80 km",
+  "Thermosphere 80–700 km": "Hitahvolf 80–700 km",
+  "Exosphere > 700 km": "Úthvolf > 700 km"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

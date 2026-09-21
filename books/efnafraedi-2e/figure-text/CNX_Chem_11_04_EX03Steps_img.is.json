@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_EX03Steps_img",
+ "renderHash": "e01e7ca16741bf4b",
+ "composedHash": "e01e7ca16741bf4b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Mass of|iodine": "Massi joðs",
+  "Moles of|iodine": "Mólfjöldi joðs",
+  "Molality|of solution": "Mólalstyrkur lausnar",
+  "Change in|boiling|point": "Suðumarksbreyting",
+  "New|boiling|point": "Nýtt suðumark"
+ },
+ "mtAlternatives": {
+  "Moles of|iodine": {
+   "kept": "joined",
+   "other": "Mól af joði",
+   "reason": "disagree",
+   "mt": "Mólfjöldi joðs"
+  },
+  "Change in|boiling|point": {
+   "kept": "joined",
+   "other": "Breyting á suðumarki",
+   "reason": "disagree",
+   "mt": "Suðumarksbreyting"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

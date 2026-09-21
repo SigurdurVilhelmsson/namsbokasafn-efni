@@ -17,6 +17,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_19_01_PeriodicEConfig",
+      "title": null,
       "caption": {
         "segmentId": "m68842:caption:CNX_Chem_19_01_PeriodicEConfig-caption"
       },
@@ -172,6 +173,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_19_01_Lanthanoid",
+      "title": null,
       "caption": {
         "segmentId": "m68842:caption:CNX_Chem_19_01_Lanthanoid-caption"
       },
@@ -228,6 +230,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_01_Oxistatra",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_Oxistatra-caption"
           },
@@ -340,6 +343,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_01_CuFeAu",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_CuFeAu-caption"
           },
@@ -413,6 +417,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_19_01_BlastFurn",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_BlastFurn-caption"
           },
@@ -460,6 +465,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_01_Steel",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_Steel-caption"
           },
@@ -546,6 +552,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_01_BlisterCu",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_BlisterCu-caption"
           },
@@ -594,6 +601,7 @@
           "type": "figure",
           "id": "CNX_Chem_19_01_Ag",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68842:caption:CNX_Chem_19_01_Ag-caption"
           },
@@ -1007,6 +1015,7 @@
               "type": "figure",
               "id": "CNX_Chem_19_01_ResTemp",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68842:caption:CNX_Chem_19_01_ResTemp-caption"
               },
@@ -1024,6 +1033,7 @@
               "type": "figure",
               "id": "CNX_Chem_19_01_Maglevtrai",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68842:caption:CNX_Chem_19_01_Maglevtrai-caption"
               },

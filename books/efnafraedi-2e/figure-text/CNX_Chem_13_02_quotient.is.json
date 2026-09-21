@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_13_02_quotient",
+ "renderHash": "bafc21c31c424b50",
+ "composedHash": "bafc21c31c424b50",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Equilibrium is reached": "Jafnvægi er náð",
+  "Time": "Tími",
+  "Concentration": "Styrkur",
+  "Reaction quotient": "Hvarfstuðull"
+ },
+ "mtAlternatives": {
+  "Concentration": {
+   "kept": "joined",
+   "other": "Einbeiting",
+   "reason": "disagree",
+   "mt": "Styrkur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

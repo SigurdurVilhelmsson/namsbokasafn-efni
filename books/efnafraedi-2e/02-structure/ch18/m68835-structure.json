@@ -49,6 +49,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_18_07_Nitrogen",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_Nitrogen-caption"
       },
@@ -81,6 +82,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_07_molecreso",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_molecreso-caption"
       },
@@ -118,6 +120,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_07_N2O2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_N2O2-caption"
       },
@@ -140,6 +143,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_07_molecreso2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_molecreso2-caption"
       },
@@ -161,6 +165,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_18_07_CuHNO32NO2",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_CuHNO32NO2-caption"
       },
@@ -188,6 +193,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_07_N2O4",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_N2O4-caption"
       },
@@ -220,6 +226,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_07_N2O5",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68835:caption:CNX_Chem_18_07_N2O5-caption"
       },

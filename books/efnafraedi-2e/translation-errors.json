@@ -1,20 +1,20 @@
 {
-  "generated": "2026-09-20T12:21:47.422Z",
+  "generated": "2026-09-21T13:35:18.870Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-20T12:21:47.422Z",
+      "generated": "2026-09-21T13:35:18.870Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 130,
-        "withDiscrepancies": 19,
+        "perfect": 131,
+        "withDiscrepancies": 18,
         "totalDiscrepancies": 31,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 14,
-        "benignArtifacts": 17,
+        "deferredLosses": 15,
+        "benignArtifacts": 16,
         "green": true
       },
       "modules": [
@@ -141,18 +141,6 @@
           ]
         },
         {
-          "moduleId": "m68805",
-          "chapter": "ch14",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": 1,
-              "status": "benign",
-              "reason": "benign over-wrap (Icelandic rephrase adds one italic span)"
-            }
-          ]
-        },
-        {
           "moduleId": "m68811",
           "chapter": "ch15",
           "discrepancies": [
@@ -168,6 +156,13 @@
           "moduleId": "m68818",
           "chapter": "ch16",
           "discrepancies": [
+            {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "known-loss-deferred",
+              "reason": "C171 empty-para gate: <para id='fs-idp113461024'><emphasis effect='italics'/></para> carries no text, so cnxml-extract's 'if (text)' gate emits no segment AND never pushes the para into 02-structure; inject rebuilds from the structure, so the para and its empty emphasis cannot be reconstructed. Zero reader impact (an empty italic in an empty para renders nothing); the LOSS is real and the GATE is the defect.",
+              "pointer": "C171 (docs/plans/2026-07-21-post-item17-followup-campaign.md)"
+            },
             {
               "tag": "para",
               "diff": -1,

@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_15_02_Answer24a_img",
+ "renderHash": "d55497e99475f904",
+ "composedHash": "d55497e99475f904",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HCl(g)": "HCl(g)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

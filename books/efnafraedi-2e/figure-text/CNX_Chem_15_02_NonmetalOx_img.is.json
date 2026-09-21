@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_15_02_NonmetalOx_img",
+ "renderHash": "8b606fcf40d5a175",
+ "composedHash": "8b606fcf40d5a175",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Acid-base|adduct": "Sýru-basa viðbótarefni",
+  "Lewis|base": "Lewis-basi",
+  "Lewis|acid": "Lewis-sýra"
+ },
+ "mtAlternatives": {
+  "Acid-base|adduct": {
+   "kept": "joined",
+   "other": "Sýru-basa aðdukt",
+   "reason": "disagree",
+   "mt": "Sýru-basa viðbótarefni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

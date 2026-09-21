@@ -1,0 +1,59 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_Enzyme",
+ "renderHash": "bc41c467d1a28d69",
+ "composedHash": "bc41c467d1a28d69",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Substrates": "Hvarfefni",
+  "Enzyme": "Ensím",
+  "(a) Lock-and-key model": "(a) Skráar- og lykilslíkan",
+  "(b) Induced fit model": "(b) Líkan um framkallaða aðlögun",
+  "Substrate|complex|formed": "Hvarfefnaflóki myndaður",
+  "Active|site|changes|to fit": "Hvarfseta breytist til að passa",
+  "Active|site is|proper |shape": "Hvarfseta er í réttu formi"
+ },
+ "mtAlternatives": {
+  "Substrates": {
+   "kept": "joined",
+   "other": "Undirlög",
+   "reason": "disagree",
+   "mt": "Hvarfefni"
+  },
+  "(a) Lock-and-key model": {
+   "kept": "joined",
+   "other": "(a) Lása- og lykilslíkan",
+   "reason": "disagree",
+   "mt": "(a) Skráar- og lykilslíkan"
+  },
+  "(b) Induced fit model": {
+   "kept": "joined",
+   "other": "(b) Framkallað sniðmát",
+   "reason": "disagree",
+   "mt": "(b) Líkan um framkallaða aðlögun"
+  },
+  "Substrate|complex|formed": {
+   "kept": "joined",
+   "other": "Hvarfefnasamstæða mynduð",
+   "reason": "disagree",
+   "mt": "Hvarfefnaflóki myndaður"
+  },
+  "Active|site|changes|to fit": {
+   "kept": "joined",
+   "other": "Virkur staður breytist til að passa",
+   "reason": "disagree",
+   "mt": "Hvarfseta breytist til að passa"
+  },
+  "Active|site is|proper |shape": {
+   "kept": "joined",
+   "other": "Virkur staður er í réttu formi",
+   "reason": "disagree",
+   "mt": "Hvarfseta er í réttu formi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

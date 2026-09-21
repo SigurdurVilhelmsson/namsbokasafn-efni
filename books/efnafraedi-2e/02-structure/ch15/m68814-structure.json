@@ -75,6 +75,7 @@
       "type": "figure",
       "id": "CNX_Chem_15_03_CoralReef",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68814:caption:CNX_Chem_15_03_CoralReef-caption"
       },
@@ -120,6 +121,7 @@
       "type": "figure",
       "id": "CNX_Chem_15_03_Apatite",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68814:caption:CNX_Chem_15_03_Apatite-caption"
       },
@@ -203,6 +205,7 @@
       "type": "figure",
       "id": "CNX_Chem_15_03_Toothpaste",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68814:caption:CNX_Chem_15_03_Toothpaste-caption"
       },

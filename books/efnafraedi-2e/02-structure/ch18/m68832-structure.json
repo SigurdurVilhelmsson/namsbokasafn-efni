@@ -38,6 +38,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_18_04_OxStNonmts",
+      "title": null,
       "caption": {
         "segmentId": "m68832:caption:CNX_Chem_18_04_OxStNonmts-caption"
       },
@@ -179,6 +180,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_04_Carbonform",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_Carbonform-caption"
           },
@@ -200,6 +202,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_04_unhyporbC",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_unhyporbC-caption"
           },
@@ -232,6 +235,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_04_Buckyball",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_Buckyball-caption"
           },
@@ -299,6 +303,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_04_Nanotube",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_Nanotube-caption"
           },
@@ -336,6 +341,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_04_Phosphorus",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_Phosphorus-caption"
           },
@@ -378,6 +384,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_04_Sulfrchain",
+          "title": null,
           "caption": {
             "segmentId": "m68832:caption:CNX_Chem_18_04_Sulfrchain-caption"
           },

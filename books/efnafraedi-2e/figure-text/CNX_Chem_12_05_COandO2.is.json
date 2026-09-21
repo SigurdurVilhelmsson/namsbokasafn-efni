@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_05_COandO2",
+ "renderHash": "b11bc836ad8d4968",
+ "composedHash": "b11bc836ad8d4968",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "No reaction": "Engin efnahvörf",
+  "More CO2 formation": "Meiri myndun CO2"
+ },
+ "mtAlternatives": {
+  "No reaction": {
+   "kept": "joined",
+   "other": "Engin viðbrögð",
+   "reason": "disagree",
+   "mt": "Engin efnahvörf"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

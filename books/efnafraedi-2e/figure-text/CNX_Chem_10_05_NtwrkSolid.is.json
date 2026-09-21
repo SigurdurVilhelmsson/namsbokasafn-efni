@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_NtwrkSolid",
+ "renderHash": "8ddf91bc847158ab",
+ "composedHash": "8ddf91bc847158ab",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "diamond": "demantur",
+  "silicon dioxide": "kísildíoxíð",
+  "silicon carbide": "kísilkarbíð",
+  "graphite": "grafít",
+  "carbon": "kolefni",
+  "silicon": "kísill",
+  "oxygen": "súrefni"
+ },
+ "mtAlternatives": {
+  "graphite": {
+   "kept": "joined",
+   "other": "Grafít",
+   "reason": "disagree",
+   "mt": "grafít"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

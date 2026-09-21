@@ -1,0 +1,19 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_01_NH3Decomp",
+ "renderHash": "c31d75f511082b36",
+ "composedHash": "c31d75f511082b36",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (s)": "Tími (s)",
+  "Concentration (M)": "Styrkur (M)",
+  "= slope = 9.70 × 10": "= hallatala = 9,70 × 10",
+  "= –slope = 1.94 × 10": "= –hallatala = 1,94 × 10",
+  "= slope = 2.91 × 10": "= hallatala = 2,91 × 10"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

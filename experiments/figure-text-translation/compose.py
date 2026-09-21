@@ -561,9 +561,20 @@ name = 'control.png' if CONTROL else 'translated.png'
 out.write_to_png(str(OUT / name))
 if SVG:
     from svgout import write_svg
+    from figweight import should_rasterise
     svg_name = ('control' if CONTROL else 'translated') + '.svg'
-    n = write_svg(OUT / 'artwork.svg', OUT / svg_name, ITEMS, H_PT)
-    print(f"wrote out/{svg_name}  ({n} bytes)")
+    # §C168 — the heavy tail is published from the PNG arm written just above,
+    # with the translated text still drawn as live <text> on top.
+    # ⚠️ `artwork.png`, NOT `translated.png`: the artwork is the TEXT-FREE render
+    # (strip-text.py removed the English before pdftocairo), so the labels stay
+    # live and selectable. Using translated.png would bake them into pixels and
+    # draw them twice.
+    _art_text = (OUT / 'artwork.svg').read_text(encoding='utf-8')
+    _raster, _metrics, _why = should_rasterise(_art_text)
+    n = write_svg(OUT / 'artwork.svg', OUT / svg_name, ITEMS, H_PT,
+                  raster_png=(OUT / 'artwork.png') if _raster else None)
+    print(f"wrote out/{svg_name}  ({n} bytes)  "
+          f"[{'RASTER' if _raster else 'vector'}: {_why}]")
 
 # THE VERDICT, IN A FILE. Everything below this line is stdout, and stdout is where the
 # ENGLISH KEPT warning has always gone - which is why a wrapper reading `returncode` and

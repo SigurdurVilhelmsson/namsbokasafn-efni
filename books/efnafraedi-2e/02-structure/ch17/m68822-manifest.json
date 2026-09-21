@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68822",
-  "extractedAt": "2026-08-31T19:08:44.440Z",
+  "extractedAt": "2026-09-20T17:25:21.237Z",
   "sourceHash": "738c5b8ecc4ae7ea",
   "segmentCount": 80,
   "segmentIds": [
@@ -172,5 +172,24 @@
       "fs-idm89705136",
       "fs-idm190362800"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "galvanic cells",
+    "term-00002": "voltaic cells",
+    "term-00003": "half-cells",
+    "term-00004": "anode",
+    "term-00005": "cathode",
+    "term-00006": "salt bridge",
+    "term-00007": "cell notations",
+    "term-00008": "cell schematics",
+    "term-00009": "inert electrode",
+    "term-00010": "active electrodes",
+    "fs-idp13398640": "active electrode",
+    "fs-idp4652784": "anode",
+    "fs-idm120688224": "cathode",
+    "fs-idm139905600": "cell notation (schematic)",
+    "fs-idm153779040": "cell potential (Ecell)",
+    "fs-idm159189392": "galvanic (voltaic) cell",
+    "fs-idm19899136": "inert electrode"
   }
 }

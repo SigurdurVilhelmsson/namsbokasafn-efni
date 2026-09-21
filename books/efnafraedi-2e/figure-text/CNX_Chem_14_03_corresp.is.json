@@ -1,0 +1,224 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_corresp",
+ "renderHash": "16d3c5cde15dc84d",
+ "composedHash": "16d3c5cde15dc84d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Acid": "Sýra",
+  "Base": "Basi",
+  "perchloric acid": "perklórsýra",
+  "sulfuric acid": "brennisteinssýra",
+  "hydrogen iodide": "vetnisjoðíð",
+  "hydrogen bromide": "vetnisbrómíð",
+  "hydrogen chloride": "vetnisklóríð",
+  "nitric acid": "saltpéturssýra",
+  "hydronium ion": "oxóníumjón",
+  "hydrogen sulfate ion": "vetnissúlfatjón",
+  "phosphoric acid": "fosfórsýra",
+  "hydrogen fluoride": "vetnisflúoríð",
+  "nitrous acid": "saltpéturssýrlingur",
+  "acetic acid": "edikssýra",
+  "carbonic acid": "kolsýra",
+  "hydrogen sulfide": "brennisteinsvetni",
+  "ammonium ion": "ammóníumjón",
+  "hydrogen cyanide": "vetnissýaníð",
+  "hydrogen carbonate ion": "bíkarbónatjón",
+  "water": "vatn",
+  "hydrogen sulfide ion": "vetnissúlfíðjón",
+  "ethanol": "etanól",
+  "ammonia": "ammóníak",
+  "hydrogen": "vetni",
+  "methane": "metan",
+  "HClO4": "HClO4",
+  "HBr": "HBr",
+  "HCl": "HCl",
+  "HNO3": "HNO3",
+  "HSO4|–": "HSO4 –",
+  "HNO2": "HNO2",
+  "HCN": "HCN",
+  "HCO3|–": "HCO3 –",
+  "Undergo|complete|acid|ionization|in water": "Gangast undir fullkomna sýrujónun í vatni",
+  "Do not|undergo|acid|ionization|in water": "Gangast ekki undir sýrujónun í vatni",
+  "perchlorate ion": "perklóratjón",
+  "iodide ion": "joðíðjón",
+  "bromide ion": "brómíðjón",
+  "chloride ion": "klóríðjón",
+  "nitrate ion": "nítratjón",
+  "sulfate ion": "súlfatjón",
+  "dihydrogen phosphate ion": "dívetnisfosfatjón",
+  "fluoride ion": "flúoríðjón",
+  "nitrite ion": "nítrítjón",
+  "acetate ion": "asetatjón",
+  "cyanide ion": "sýaníðjón",
+  "carbonate ion": "karbónatjón",
+  "hydroxide ion": "hýdroxíðjón",
+  "sulfide ion": "súlfíðjón",
+  "ethoxide ion": "etoxíðjón",
+  "amide ion": "amíðjón",
+  "hydride ion": "hýdríðjón",
+  "methide ion": "metíðjón",
+  "ClO4|–": "ClO4 –",
+  "Do not|undergo|base|ionization|in water": "Gangast ekki undir basajónun í vatni",
+  "Undergo|complete|base|ionization|in water": "Gangast undir fullkomna basajónun í vatni",
+  "Increasing acid strength": "Vaxandi sýrustyrkur",
+  "Increasing base strength": "Vaxandi basastyrkur"
+ },
+ "mtAlternatives": {
+  "Base": {
+   "kept": "joined",
+   "other": "Grunnur",
+   "reason": "disagree",
+   "mt": "Basi"
+  },
+  "perchloric acid": {
+   "kept": "joined",
+   "other": "Perklórsýra",
+   "reason": "disagree",
+   "mt": "perklórsýra"
+  },
+  "hydrogen bromide": {
+   "kept": "joined",
+   "other": "Vetnisbrómíð",
+   "reason": "disagree",
+   "mt": "vetnisbrómíð"
+  },
+  "hydronium ion": {
+   "kept": "joined",
+   "other": "Hýdróníumjón",
+   "reason": "disagree",
+   "mt": "oxóníumjón"
+  },
+  "hydrogen sulfate ion": {
+   "kept": "joined",
+   "other": "Vetnissúlfatjón",
+   "reason": "disagree",
+   "mt": "vetnissúlfatjón"
+  },
+  "phosphoric acid": {
+   "kept": "joined",
+   "other": "Fosfórsýra",
+   "reason": "disagree",
+   "mt": "fosfórsýra"
+  },
+  "hydrogen fluoride": {
+   "kept": "joined",
+   "other": "Vetnisflúoríð",
+   "reason": "disagree",
+   "mt": "vetnisflúoríð"
+  },
+  "nitrous acid": {
+   "kept": "joined",
+   "other": "Saltpéturssýrlingur",
+   "reason": "disagree",
+   "mt": "saltpéturssýrlingur"
+  },
+  "acetic acid": {
+   "kept": "joined",
+   "other": "ediksýra",
+   "reason": "disagree",
+   "mt": "edikssýra"
+  },
+  "hydrogen sulfide": {
+   "kept": "joined",
+   "other": "Brennisteinsvetni",
+   "reason": "disagree",
+   "mt": "brennisteinsvetni"
+  },
+  "ammonium ion": {
+   "kept": "joined",
+   "other": "ammoníumjón",
+   "reason": "disagree",
+   "mt": "ammóníumjón"
+  },
+  "hydrogen cyanide": {
+   "kept": "joined",
+   "other": "Vetnissýaníð",
+   "reason": "disagree",
+   "mt": "vetnissýaníð"
+  },
+  "hydrogen carbonate ion": {
+   "kept": "joined",
+   "other": "Vetniskarbónatjón",
+   "reason": "disagree",
+   "mt": "bíkarbónatjón"
+  },
+  "water": {
+   "kept": "joined",
+   "other": "Vatn",
+   "reason": "disagree",
+   "mt": "vatn"
+  },
+  "hydrogen sulfide ion": {
+   "kept": "joined",
+   "other": "Vetnissúlfíðjón",
+   "reason": "disagree",
+   "mt": "vetnissúlfíðjón"
+  },
+  "ammonia": {
+   "kept": "joined",
+   "other": "Ammóníak",
+   "reason": "disagree",
+   "mt": "ammóníak"
+  },
+  "Undergo|complete|acid|ionization|in water": {
+   "kept": "joined",
+   "other": "Gengst undir fullkomna sýrujónun í vatni",
+   "reason": "disagree",
+   "mt": "Gangast undir fullkomna sýrujónun í vatni"
+  },
+  "Do not|undergo|acid|ionization|in water": {
+   "kept": "joined",
+   "other": "Gengst ekki undir sýrujónun í vatni",
+   "reason": "disagree",
+   "mt": "Gangast ekki undir sýrujónun í vatni"
+  },
+  "perchlorate ion": {
+   "kept": "joined",
+   "other": "Perklóratjón",
+   "reason": "disagree",
+   "mt": "perklóratjón"
+  },
+  "dihydrogen phosphate ion": {
+   "kept": "joined",
+   "other": "Díhýdrógenfosfatjón",
+   "reason": "disagree",
+   "mt": "dívetnisfosfatjón"
+  },
+  "hydroxide ion": {
+   "kept": "joined",
+   "other": "Hýdroxíðjón",
+   "reason": "disagree",
+   "mt": "hýdroxíðjón"
+  },
+  "sulfide ion": {
+   "kept": "joined",
+   "other": "Súlfíðjón",
+   "reason": "disagree",
+   "mt": "súlfíðjón"
+  },
+  "Do not|undergo|base|ionization|in water": {
+   "kept": "joined",
+   "other": "Gengst ekki undir basajónun í vatni",
+   "reason": "disagree",
+   "mt": "Gangast ekki undir basajónun í vatni"
+  },
+  "Undergo|complete|base|ionization|in water": {
+   "kept": "joined",
+   "other": "Ganga í gegnum fullkomna basajónun í vatni",
+   "reason": "disagree",
+   "mt": "Gangast undir fullkomna basajónun í vatni"
+  },
+  "Increasing base strength": {
+   "kept": "joined",
+   "other": "Auka styrk basa",
+   "reason": "disagree",
+   "mt": "Vaxandi basastyrkur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 58
+ }
+}

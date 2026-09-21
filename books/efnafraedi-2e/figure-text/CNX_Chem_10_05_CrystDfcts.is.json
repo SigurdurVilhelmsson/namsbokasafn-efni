@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_CrystDfcts",
+ "renderHash": "2fef5827deefa980",
+ "composedHash": "2fef5827deefa980",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Vacancy": "Lausastaða",
+  "Substitution|impurity atom": "Skiptióhreinindaatóm",
+  "Interstitial|impurity": "Millirýmisóhreinindi"
+ },
+ "mtAlternatives": {
+  "Vacancy": {
+   "kept": "joined",
+   "other": "Laus staða",
+   "reason": "disagree",
+   "mt": "Lausastaða"
+  },
+  "Substitution|impurity atom": {
+   "kept": "joined",
+   "other": "Víxlatóm",
+   "reason": "disagree",
+   "mt": "Skiptióhreinindaatóm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

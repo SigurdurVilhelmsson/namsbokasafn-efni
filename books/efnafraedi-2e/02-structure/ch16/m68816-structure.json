@@ -30,6 +30,7 @@
       "type": "figure",
       "id": "CNX_Chem_16_01_decayrates",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68816:caption:CNX_Chem_16_01_decayrates-caption"
       },
@@ -62,6 +63,7 @@
       "type": "figure",
       "id": "CNX_Chem_16_01_carbon",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68816:caption:CNX_Chem_16_01_carbon-caption"
       },
@@ -112,6 +114,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_02_Gas",
+          "title": null,
           "caption": {
             "segmentId": "m68816:caption:CNX_Chem_16_02_Gas-caption"
           },
@@ -144,6 +147,7 @@
           "type": "figure",
           "id": "CNX_Chem_16_02_Temperature",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68816:caption:CNX_Chem_16_02_Temperature-caption"
           },
@@ -248,6 +252,7 @@
           "type": "figure",
           "id": "CNX_Chem_16_02_Process",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68816:caption:CNX_Chem_16_02_Process-caption"
           },

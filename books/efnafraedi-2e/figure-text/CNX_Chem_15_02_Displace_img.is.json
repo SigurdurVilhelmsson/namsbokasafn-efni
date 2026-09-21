@@ -1,0 +1,34 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_15_02_Displace_img",
+ "renderHash": "b622d522f31ae6a5",
+ "composedHash": "b622d522f31ae6a5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "New adduct": "Nýtt aðdukt",
+  "Acid": "Sýra",
+  "Acid-base|adduct": "Sýru-basa aðdukt",
+  "New acid": "Ný sýra",
+  "Base": "Basi",
+  "New base": "Nýr basi"
+ },
+ "mtAlternatives": {
+  "Base": {
+   "kept": "joined",
+   "other": "Grunnur",
+   "reason": "disagree",
+   "mt": "Basi"
+  },
+  "New base": {
+   "kept": "joined",
+   "other": "Nýr grunnur",
+   "reason": "disagree",
+   "mt": "Nýr basi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

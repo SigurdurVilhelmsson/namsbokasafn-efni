@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_06_buffer",
+ "renderHash": "30763872c180e11c",
+ "composedHash": "30763872c180e11c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Added mL of 0.10 M NaOH": "Bætt við mL af 0,10 M NaOH"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

@@ -298,6 +298,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_01_BandStable",
+          "title": null,
           "caption": {
             "segmentId": "m68851:caption:CNX_Chem_21_01_BandStable-caption"
           },
@@ -471,6 +472,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_01_BindEnergy",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68851:caption:CNX_Chem_21_01_BindEnergy-caption"
           },

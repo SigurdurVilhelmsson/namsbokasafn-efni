@@ -1,0 +1,39 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_CO2PhasDi",
+ "renderHash": "9cb6d891829c4c53",
+ "composedHash": "9cb6d891829c4c53",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "SCF": "SCF",
+  "Temperature (°C)": "Hitastig (°C)",
+  "Pressure (kPa)": "Þrýstingur (kPa)",
+  "Solid": "Fast efni",
+  "Liquid": "Vökvi",
+  "Gas": "Gas"
+ },
+ "mtAlternatives": {
+  "SCF": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "SCF"
+  },
+  "Temperature (°C)": {
+   "kept": "joined",
+   "other": "Hiti (°C)",
+   "reason": "disagree",
+   "mt": "Hitastig (°C)"
+  },
+  "Solid": {
+   "kept": "joined",
+   "other": "Traust",
+   "reason": "disagree",
+   "mt": "Fast efni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

@@ -50,6 +50,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_alkanes",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_alkanes-caption"
           },
@@ -71,6 +72,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_LineStruct1",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_LineStruct1-caption"
           },
@@ -825,6 +827,7 @@
           "type": "figure",
           "id": "CNX_Chem_20_01_butane_img",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_butane_img-caption"
           },
@@ -1093,6 +1096,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_alkyls",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_alkyls-caption"
           },
@@ -1142,6 +1146,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_FracDistil",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_FracDistil-caption"
           },
@@ -1215,6 +1220,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_Propene1",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_Propene1-caption"
           },
@@ -1267,6 +1273,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_Monomer",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_Monomer-caption"
           },
@@ -1283,6 +1290,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_20_01_Recycle",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_Recycle-caption"
           },
@@ -1342,6 +1350,7 @@
               "type": "figure",
               "id": "CNX_Chem_20_01_geoIsomers_img",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68846:caption:CNX_Chem_20_01_geoIsomers_img-caption"
               },
@@ -1631,6 +1640,7 @@
           "type": "figure",
           "id": "CNX_Chem_20_01_benzene",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68846:caption:CNX_Chem_20_01_benzene-caption"
           },

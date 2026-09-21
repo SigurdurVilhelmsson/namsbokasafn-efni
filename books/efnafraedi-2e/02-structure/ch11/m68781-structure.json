@@ -30,6 +30,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_11_02_electrolyt",
+      "title": null,
       "caption": {
         "segmentId": "m68781:caption:CNX_Chem_11_02_electrolyt-caption"
       },
@@ -61,6 +62,7 @@
           "type": "figure",
           "id": "CNX_Chem_11_02_waterions",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68781:caption:CNX_Chem_11_02_waterions-caption"
           },

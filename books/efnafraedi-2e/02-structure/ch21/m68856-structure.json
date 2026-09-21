@@ -77,6 +77,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_04_CERN",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_CERN-caption"
           },
@@ -463,6 +464,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_Fission1",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_Fission1-caption"
           },
@@ -484,6 +486,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_Fission2",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_Fission2-caption"
           },
@@ -523,6 +526,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_ChnReact1",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_ChnReact1-caption"
           },
@@ -545,6 +549,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_04_CritMass",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_CritMass-caption"
           },
@@ -566,6 +571,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_FissnBomb",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_FissnBomb-caption"
           },
@@ -596,6 +602,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_21_04_NuclearPwr",
+              "title": null,
               "caption": {
                 "segmentId": "m68856:caption:CNX_Chem_21_04_NuclearPwr-caption"
               },
@@ -693,6 +700,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_ControlRod",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_ControlRod-caption"
           },
@@ -816,6 +824,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_04_3MileIslnd",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_3MileIslnd-caption"
           },
@@ -832,6 +841,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_21_04_Fukushima",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_Fukushima-caption"
           },
@@ -923,6 +933,7 @@
           "type": "figure",
           "id": "CNX_Chem_21_04_Fusion",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68856:caption:CNX_Chem_21_04_Fusion-caption"
           },

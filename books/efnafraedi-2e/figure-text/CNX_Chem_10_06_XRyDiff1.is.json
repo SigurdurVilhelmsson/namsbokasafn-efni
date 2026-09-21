@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_XRyDiff1",
+ "renderHash": "96d5b3cffa68e677",
+ "composedHash": "96d5b3cffa68e677",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Incident|beam": "Aðfallandi geisli",
+  "Constructive interference": "Uppbyggileg víxlverkun",
+  "Destructive interference": "Eyðandi víxlverkun",
+  "Diffracted|beam": "Beygður geisli"
+ },
+ "mtAlternatives": {
+  "Constructive interference": {
+   "kept": "joined",
+   "other": "Jákvæð víxlverkun",
+   "reason": "disagree",
+   "mt": "Uppbyggileg víxlverkun"
+  },
+  "Destructive interference": {
+   "kept": "joined",
+   "other": "Eyðandi samliðun",
+   "reason": "disagree",
+   "mt": "Eyðandi víxlverkun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

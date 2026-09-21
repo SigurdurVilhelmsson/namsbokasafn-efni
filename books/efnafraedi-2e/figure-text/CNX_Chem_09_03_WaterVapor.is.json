@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_03_WaterVapor",
+ "renderHash": "3d87df44cf149f9b",
+ "composedHash": "3d87df44cf149f9b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Collection flask": "Söfnunarkolba",
+  "Reaction producing gas": "Efnahvarf sem myndar gas",
+  "Water": "Vatn",
+  "Collected gas": "Safnað gas"
+ },
+ "mtAlternatives": {
+  "Collection flask": {
+   "kept": "joined",
+   "other": "Söfnunarflaska",
+   "reason": "disagree",
+   "mt": "Söfnunarkolba"
+  },
+  "Reaction producing gas": {
+   "kept": "joined",
+   "other": "Hvarf sem myndar gas",
+   "reason": "disagree",
+   "mt": "Efnahvarf sem myndar gas"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

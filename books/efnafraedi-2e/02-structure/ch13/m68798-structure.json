@@ -148,6 +148,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_13_02_quotient",
+      "title": null,
       "caption": {
         "segmentId": "m68798:caption:CNX_Chem_13_02_quotient-caption"
       },
@@ -330,6 +331,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_13_02_mixtures",
+      "title": null,
       "caption": {
         "segmentId": "m68798:caption:CNX_Chem_13_02_mixtures-caption"
       },

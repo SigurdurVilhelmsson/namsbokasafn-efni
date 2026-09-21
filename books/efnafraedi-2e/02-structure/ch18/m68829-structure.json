@@ -39,6 +39,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_18_01_PeriodicPU3",
+      "title": null,
       "caption": {
         "segmentId": "m68829:caption:CNX_Chem_18_01_PeriodicPU3-caption"
       },
@@ -90,6 +91,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_LithiumRx",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_LithiumRx-caption"
           },
@@ -112,6 +114,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_AlkMetStor",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_AlkMetStor-caption"
           },
@@ -139,6 +142,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_NaFlame",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_NaFlame-caption"
           },
@@ -195,6 +199,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_CalciWater",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption"
           },
@@ -258,6 +263,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_ZincHCl",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_ZincHCl-caption"
           },
@@ -325,6 +331,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_18_01_MercuryRx",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_MercuryRx-caption"
           },
@@ -473,6 +480,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_01_TinChlorid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68829:caption:CNX_Chem_18_01_TinChlorid-caption"
           },

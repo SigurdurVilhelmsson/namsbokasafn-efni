@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_01_Barometer",
+ "renderHash": "3b346019c22a6c87",
+ "composedHash": "3b346019c22a6c87",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Atmospheric |pressure": "Loftþrýstingur",
+  "mercury": "kvikasilfur",
+  "water": "vatn",
+  "Vacuum": "tómarúm"
+ },
+ "mtAlternatives": {
+  "water": {
+   "kept": "joined",
+   "other": "Vatn",
+   "reason": "disagree",
+   "mt": "vatn"
+  },
+  "Vacuum": {
+   "kept": "joined",
+   "other": "Ryksuga",
+   "reason": "disagree",
+   "mt": "tómarúm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -694,7 +694,7 @@ function splitTopLevelId(inner) {
  * suspected: identical shape (prose `|` opaque-id), differing only in riding the
  * wire paired, and it translates.
  */
-const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref'];
+const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref', 'link'];
 
 /**
  * Types rewritten ONLY when the marker carries a top-level `|`.
@@ -704,8 +704,14 @@ const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref'];
  * document reference — `[[docref:m00164]]` — and sending it as prose would ask
  * the model to translate a module id. 103 such bare docrefs are live in the two
  * kept books, and their untranslated return is CORRECT behaviour.
+ *
+ * §C170 adds `link` on the same reasoning. A bare `[[link:https://…]]` would put
+ * a URL on the wire as prose; the piped form's first field is the LABEL, which is
+ * the word a reader clicks. Measured 2026-09-21 over both kept books: **147 link
+ * markers, 147 with a top-level `|`, 0 bare** — so this gate skips nothing today
+ * and exists to keep a future bare form safe.
  */
-const PAIRED_REQUIRES_ID = new Set(['docref']);
+const PAIRED_REQUIRES_ID = new Set(['docref', 'link']);
 
 /**
  * Per-type field name on a segment record — `term` -> `termIds`, and so on.
@@ -862,8 +868,17 @@ const WIRE_ONLY_PAIRED_TOKEN_RE = new RegExp(`\\[\\[/?(?:${PAIRED_WIRE_TYPES.joi
  * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
  * survive). The id never rides the wire; it is re-attached after MT by reattachIds().
  *
- * Covers `PAIRED_WIRE_TYPES` — term, fn and, since §C118 ⑯, docref. The name is
- * kept for its committed importers.
+ * Covers `PAIRED_WIRE_TYPES` — term, fn, docref (§C118 ⑯) and, since §C170, link.
+ * The name is kept for its committed importers.
+ *
+ * §C170: a `[[link:label|url]]` label is the word a reader clicks, and the model
+ * left 42 of them in English across 15 chapters (`video` x12, `site` x7, `link`
+ * x6, …). The worst shape was a DUPLICATED word, not a missing one — ch14 m68808
+ * translated *information* -> *upplýsingar* OUTSIDE the marker and left the label
+ * English, so the reader saw both.
+ * ⚠️ `xref` looks identical and is NOT: 1,578 of its 1,579 markers are BARE
+ * target ids (`CNX_Chem_01_01_Alchemist`). Adding it here would send those to be
+ * translated as prose. Pinned by `api-translate-link-roundtrip.test.js`.
  * @param {string} chunkText - a segment-file chunk (one or more whole SEG segments)
  * @returns {{ wireText: string, segments: Array<{segId:string, originalText:string,
  *   termIds:(string|null)[], fnIds:(string|null)[], docrefIds:(string|null)[]}> }}

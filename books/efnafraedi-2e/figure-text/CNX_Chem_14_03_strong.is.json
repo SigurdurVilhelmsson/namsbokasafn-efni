@@ -1,0 +1,67 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_strong",
+ "renderHash": "bb237d4d5e2694ac",
+ "composedHash": "bb237d4d5e2694ac",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "6 Strong Acids": "6 sterkar sýrur",
+  "6 Strong Bases": "6 sterkir basar",
+  "HClO4": "HClO4",
+  "HCl": "HCl",
+  "HBr": "HBr",
+  "HNO3": "HNO3",
+  "perchloric acid": "perklórsýra",
+  "hydrochloric acid": "saltsýra",
+  "hydrobromic acid": "vetnisbrómíðsýra",
+  "hydroiodic acid": "vetnisjoðíðsýra",
+  "nitric acid": "salpéturssýra",
+  "sulfuric acid": "brennisteinssýra",
+  "LiOH": "LiOH",
+  "NaOH": "NaOH",
+  "KOH": "KOH",
+  "lithium hydroxide": "litíumhýdroxíð",
+  "sodium hydroxide": "natríumhýdroxíð",
+  "potassium hydroxide": "kalíumhýdroxíð",
+  "calcium hydroxide": "kalsíumhýdroxíð",
+  "strontium hydroxide": "strontíumhýdroxíð",
+  "barium hydroxide": "baríumhýdroxíð"
+ },
+ "mtAlternatives": {
+  "perchloric acid": {
+   "kept": "joined",
+   "other": "Perklórsýra",
+   "reason": "disagree",
+   "mt": "perklórsýra"
+  },
+  "hydrochloric acid": {
+   "kept": "joined",
+   "other": "Saltsýra",
+   "reason": "disagree",
+   "mt": "saltsýra"
+  },
+  "hydroiodic acid": {
+   "kept": "joined",
+   "other": "Joðvetnissýra",
+   "reason": "disagree",
+   "mt": "vetnisjoðíðsýra"
+  },
+  "nitric acid": {
+   "kept": "joined",
+   "other": "saltpéturssýra",
+   "reason": "disagree",
+   "mt": "salpéturssýra"
+  },
+  "calcium hydroxide": {
+   "kept": "joined",
+   "other": "Kalsíumhýdroxíð",
+   "reason": "disagree",
+   "mt": "kalsíumhýdroxíð"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 21
+ }
+}

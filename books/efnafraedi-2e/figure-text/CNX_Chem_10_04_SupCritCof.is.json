@@ -1,0 +1,48 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_04_SupCritCof",
+ "renderHash": "d5debf0bf05ef830",
+ "composedHash": "d5debf0bf05ef830",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Supercritical CO2": "Yfirgagnrýnt CO2",
+  "Supercritical CO2 + caffeine": "Yfirgagnrýnt CO2 + koffín",
+  "Extraction|vessel": "Útdráttarílát",
+  "Decaffeinated|beans": "Koffínlausar baunir",
+  "Soaked|beans": "Bleyttar baunir",
+  "Water": "Vatn",
+  "Caffeine and|water": "Koffín og vatn",
+  "Absorption|vessel": "Ídælingarílát"
+ },
+ "mtAlternatives": {
+  "Supercritical CO2": {
+   "kept": "joined",
+   "other": "Yfirgufukoldíoxíð",
+   "reason": "disagree",
+   "mt": "Yfirgagnrýnt CO2"
+  },
+  "Supercritical CO2 + caffeine": {
+   "kept": "joined",
+   "other": "Yfirþrýstinn CO2 + koffín",
+   "reason": "disagree",
+   "mt": "Yfirgagnrýnt CO2 + koffín"
+  },
+  "Soaked|beans": {
+   "kept": "joined",
+   "other": "Baunir í bleyti",
+   "reason": "disagree",
+   "mt": "Bleyttar baunir"
+  },
+  "Absorption|vessel": {
+   "kept": "joined",
+   "other": "Ísogshylki",
+   "reason": "disagree",
+   "mt": "Ídælingarílát"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

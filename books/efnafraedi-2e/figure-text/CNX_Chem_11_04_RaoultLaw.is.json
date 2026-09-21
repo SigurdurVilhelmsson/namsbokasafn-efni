@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_RaoultLaw",
+ "renderHash": "ec25a371c1e9eb69",
+ "composedHash": "ec25a371c1e9eb69",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "(a) Pure water": "(a) Hreint vatn",
+  "(b) Aqueous solution": "(b) Vatnslausn"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

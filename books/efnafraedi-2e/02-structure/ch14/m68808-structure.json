@@ -25,6 +25,7 @@
       "type": "figure",
       "id": "CNX_Chem_14_06_compare",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68808:caption:CNX_Chem_14_06_compare-caption"
       },
@@ -65,6 +66,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_14_06_bufferchrt",
+          "title": null,
           "caption": {
             "segmentId": "m68808:caption:CNX_Chem_14_06_bufferchrt-caption"
           },
@@ -336,6 +338,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_06_exhaust",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68808:caption:CNX_Chem_14_06_exhaust-caption"
           },
@@ -391,6 +394,7 @@
           "type": "figure",
           "id": "CNX_Chem_14_06_buffer",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68808:caption:CNX_Chem_14_06_buffer-caption"
           },

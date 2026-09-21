@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68830",
-  "extractedAt": "2026-08-31T19:08:44.785Z",
+  "extractedAt": "2026-09-20T17:25:21.651Z",
   "sourceHash": "ab90cd29ac64b1cf",
   "segmentCount": 71,
   "segmentIds": [
@@ -163,5 +163,17 @@
       "fs-idp155164000",
       "fs-idp107853456"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Downs cell",
+    "term-00002": "Hall",
+    "term-00003": "Héroult",
+    "term-00004": "Hall–Héroult cell",
+    "term-00006": "Pidgeon process",
+    "term-00005": "chemical reduction",
+    "fs-idp238031216": "chemical reduction",
+    "fs-idp11434288": "Downs cell",
+    "fs-idp167269072": "Hall–Héroult cell",
+    "fs-idp121441888": "Pidgeon process"
   }
 }

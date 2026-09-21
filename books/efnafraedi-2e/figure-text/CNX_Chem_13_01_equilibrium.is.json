@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_13_01_equilibrium",
+ "renderHash": "caeeb12a021f5025",
+ "composedHash": "caeeb12a021f5025",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Equilibrium|achieved": "Jafnvægi náð",
+  "Time": "Tími",
+  "Concentration": "Styrkur",
+  "Rate": "Hraði",
+  "at equilibrium": "við jafnvægi",
+  "pre-equilibrium": "fyrir jafnvægi"
+ },
+ "mtAlternatives": {
+  "Concentration": {
+   "kept": "joined",
+   "other": "Einbeiting",
+   "reason": "disagree",
+   "mt": "Styrkur"
+  },
+  "Rate": {
+   "kept": "joined",
+   "other": "Gefa einkunn",
+   "reason": "disagree",
+   "mt": "Hraði"
+  },
+  "at equilibrium": {
+   "kept": "joined",
+   "other": "í jafnvægi",
+   "reason": "disagree",
+   "mt": "við jafnvægi"
+  },
+  "pre-equilibrium": {
+   "kept": "joined",
+   "other": "forjafnvægi",
+   "reason": "disagree",
+   "mt": "fyrir jafnvægi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

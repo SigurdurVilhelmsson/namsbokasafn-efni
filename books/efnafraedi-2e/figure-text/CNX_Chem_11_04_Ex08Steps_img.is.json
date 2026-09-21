@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_11_04_Ex08Steps_img",
+ "renderHash": "6935ab0307b6f5f8",
+ "composedHash": "6935ab0307b6f5f8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Osmotic|pressure": "Osmótískur þrýstingur",
+  "Moles of|hemoglobin|in sample": "Mól af blóðrauða í sýni",
+  "Molar|concentration": "Mólstyrkur",
+  "Molar|mass of|hemoglobin": "Mólmassi blóðrauða"
+ },
+ "mtAlternatives": {
+  "Osmotic|pressure": {
+   "kept": "joined",
+   "other": "Osmósuþrýstingur",
+   "reason": "disagree",
+   "mt": "Osmótískur þrýstingur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

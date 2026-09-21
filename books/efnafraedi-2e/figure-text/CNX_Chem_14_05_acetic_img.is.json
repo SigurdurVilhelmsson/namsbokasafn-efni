@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_05_acetic_img",
+ "renderHash": "4eb57d39cc67dd20",
+ "composedHash": "4eb57d39cc67dd20",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CH3COOH(aq)": "CH3COOH(aq)",
+  "CH3COO–(aq)": "CH3COO–(aq)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

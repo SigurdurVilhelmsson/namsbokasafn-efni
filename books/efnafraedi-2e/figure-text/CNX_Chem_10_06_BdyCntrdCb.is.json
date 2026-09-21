@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_BdyCntrdCb",
+ "renderHash": "5e817a5746932e85",
+ "composedHash": "5e817a5746932e85",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Body-centered cubic structure": "Miðjusett rúmsgrind"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

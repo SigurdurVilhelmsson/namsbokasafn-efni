@@ -98,6 +98,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_05_Electrolys",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68833:caption:CNX_Chem_18_05_Electrolys-caption"
               },
@@ -136,6 +137,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_05_IronHCl",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68833:caption:CNX_Chem_18_05_IronHCl-caption"
               },
@@ -207,6 +209,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_05_LiqHliqO",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68833:caption:CNX_Chem_18_05_LiqHliqO-caption"
           },
@@ -453,6 +456,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_18_05_Ammonia",
+              "title": null,
               "caption": {
                 "segmentId": "m68833:caption:CNX_Chem_18_05_Ammonia-caption"
               },

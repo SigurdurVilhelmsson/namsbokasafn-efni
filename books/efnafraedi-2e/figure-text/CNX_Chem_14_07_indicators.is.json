@@ -1,0 +1,102 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_07_indicators",
+ "renderHash": "271fd060614e74e7",
+ "composedHash": "271fd060614e74e7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Alizarin yellow R": "Alizaríngult R",
+  "* Trademark Ciba-Geigy": "* Vörumerki Ciba-Geigy",
+  "Thymolphthalein": "Týmólftalein",
+  "Phenolphthalein": "Fenólftalein",
+  "o-Cresolphthalein": "o-Kresólftalein",
+  "m-Nitrophenol": "m-Nítrófenól",
+  "Phenol red": "Fenólrautt",
+  "Bromthymol blue": "Brómtýmólblátt",
+  "Alizarin": "Alizarín",
+  "Bromcresol purple": "Brómkresólpurpuri",
+  "Eriochrome* Black T": "Eriochrome* svart T",
+  "Methyl red": "Metýlrautt",
+  "Bromcresol green": "Brómkresólgrænt",
+  "Methyl orange": "Metýlappelsínugult",
+  "Bromphenol blue": "Brómfenólblátt",
+  "2,4-Dinitrophenol": "2,4-Dínítrófenól",
+  "Erythrosin B": "Erýþrósín B",
+  "Thymol blue": "Týmólblátt",
+  "Cresol red": "Kresólrautt",
+  "Crystal violet": "Kristalfjólublátt"
+ },
+ "mtAlternatives": {
+  "Alizarin yellow R": {
+   "kept": "joined",
+   "other": "Alisaríngult R",
+   "reason": "disagree",
+   "mt": "Alizaríngult R"
+  },
+  "Phenolphthalein": {
+   "kept": "joined",
+   "other": "Fenólftalín",
+   "reason": "disagree",
+   "mt": "Fenólftalein"
+  },
+  "o-Cresolphthalein": {
+   "kept": "joined",
+   "other": "o-kresólftalein",
+   "reason": "disagree",
+   "mt": "o-Kresólftalein"
+  },
+  "Phenol red": {
+   "kept": "joined",
+   "other": "Fenólrauði",
+   "reason": "disagree",
+   "mt": "Fenólrautt"
+  },
+  "Bromthymol blue": {
+   "kept": "joined",
+   "other": "Brómþýmólblátt",
+   "reason": "disagree",
+   "mt": "Brómtýmólblátt"
+  },
+  "Alizarin": {
+   "kept": "joined",
+   "other": "Alizarin",
+   "reason": "disagree",
+   "mt": "Alizarín"
+  },
+  "Bromcresol purple": {
+   "kept": "joined",
+   "other": "Brómkresólfjólublátt",
+   "reason": "disagree",
+   "mt": "Brómkresólpurpuri"
+  },
+  "Methyl red": {
+   "kept": "joined",
+   "other": "Metýlrauði",
+   "reason": "disagree",
+   "mt": "Metýlrautt"
+  },
+  "2,4-Dinitrophenol": {
+   "kept": "joined",
+   "other": "2,4-dínítrófenól",
+   "reason": "disagree",
+   "mt": "2,4-Dínítrófenól"
+  },
+  "Erythrosin B": {
+   "kept": "joined",
+   "other": "Erythrosin B",
+   "reason": "disagree",
+   "mt": "Erýþrósín B"
+  },
+  "Cresol red": {
+   "kept": "joined",
+   "other": "Kresólrauði",
+   "reason": "disagree",
+   "mt": "Kresólrautt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 20
+ }
+}

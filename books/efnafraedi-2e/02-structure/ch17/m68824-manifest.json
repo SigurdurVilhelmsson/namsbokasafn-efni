@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68824",
-  "extractedAt": "2026-08-31T19:08:44.508Z",
+  "extractedAt": "2026-09-20T17:25:21.319Z",
   "sourceHash": "874f66e155e52c0a",
   "segmentCount": 109,
   "segmentIds": [
@@ -225,5 +225,12 @@
       "fs-idp39495232",
       "fs-idp39758576"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Nernst equation",
+    "term-00002": "concentration cell",
+    "fs-idp94537696": "concentration cell",
+    "fs-idp41925664": "Faraday’s constant (F)",
+    "fs-idp211566960": "Nernst equation"
   }
 }

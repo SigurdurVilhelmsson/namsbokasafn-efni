@@ -85,6 +85,7 @@
       "type": "figure",
       "id": "CNX_Chem_18_09_Ozone",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68837:caption:CNX_Chem_18_09_Ozone-caption"
       },
@@ -303,6 +304,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_Limelight",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_Limelight-caption"
               },
@@ -355,6 +357,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_Sunblock",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_Sunblock-caption"
               },
@@ -504,6 +507,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_ZnHydroxid",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_ZnHydroxid-caption"
               },
@@ -536,6 +540,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_CaOH2",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_CaOH2-caption"
               },
@@ -616,6 +621,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_Sulfrdiox",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_Sulfrdiox-caption"
               },
@@ -648,6 +654,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_Sulfrtriox",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_Sulfrtriox-caption"
               },
@@ -691,6 +698,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_09_Cl2OClO2",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68837:caption:CNX_Chem_18_09_Cl2OClO2-caption"
               },
@@ -742,6 +750,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_HNO3",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_HNO3-caption"
           },
@@ -872,6 +881,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_NitrosAcid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_NitrosAcid-caption"
           },
@@ -925,6 +935,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_Phosphate",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_Phosphate-caption"
           },
@@ -967,6 +978,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_PhosphAcid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_PhosphAcid-caption"
           },
@@ -1005,6 +1017,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_SulfrAcid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_SulfrAcid-caption"
           },
@@ -1367,6 +1380,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_ChloritIon",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_ChloritIon-caption"
           },
@@ -1399,6 +1413,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_ClO3Ion",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_ClO3Ion-caption"
           },
@@ -1431,6 +1446,7 @@
           "type": "figure",
           "id": "CNX_Chem_18_09_PerchloIon",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68837:caption:CNX_Chem_18_09_PerchloIon-caption"
           },

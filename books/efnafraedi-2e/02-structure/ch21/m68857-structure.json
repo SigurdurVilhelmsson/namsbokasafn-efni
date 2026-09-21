@@ -33,6 +33,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_21_05_Thallium",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_Thallium-caption"
       },
@@ -55,6 +56,7 @@
       "type": "figure",
       "id": "CNX_Chem_21_05_Tc-99",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_Tc-99-caption"
       },
@@ -77,6 +79,7 @@
       "type": "figure",
       "id": "CNX_Chem_21_05_RadTherapy",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_RadTherapy-caption"
       },
@@ -108,6 +111,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_21_05_Co60Decay",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_Co60Decay-caption"
       },
@@ -149,6 +153,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_21_05_UsesOfRad",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_UsesOfRad-caption"
       },
@@ -170,6 +175,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_21_05_SmokeAlarm",
+      "title": null,
       "caption": {
         "segmentId": "m68857:caption:CNX_Chem_21_05_SmokeAlarm-caption"
       },

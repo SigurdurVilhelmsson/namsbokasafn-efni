@@ -1,0 +1,51 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_CatConvert",
+ "renderHash": "9df5adc41dd6bc8c",
+ "composedHash": "9df5adc41dd6bc8c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Dirty |emissions": "Óhreinn útblástur",
+  "Additional oxygen|from air pump": "Viðbótarsúrefni úr loftdælu",
+  "Three-way reduction|catalyst": "Þrívegis hvati",
+  "Two-way oxidation catalyst": "Tvívegis oxunarhvati",
+  "Clean emissions": "Hreinn útblástur"
+ },
+ "mtAlternatives": {
+  "Dirty |emissions": {
+   "kept": "joined",
+   "other": "Óhrein losun",
+   "reason": "disagree",
+   "mt": "Óhreinn útblástur"
+  },
+  "Additional oxygen|from air pump": {
+   "kept": "joined",
+   "other": "Aukaloft frá loftdælu",
+   "reason": "disagree",
+   "mt": "Viðbótarsúrefni úr loftdælu"
+  },
+  "Three-way reduction|catalyst": {
+   "kept": "joined",
+   "other": "Þrívegis hvarfakútur",
+   "reason": "disagree",
+   "mt": "Þrívegis hvati"
+  },
+  "Two-way oxidation catalyst": {
+   "kept": "joined",
+   "other": "Tvíþátta oxunarhvati",
+   "reason": "disagree",
+   "mt": "Tvívegis oxunarhvati"
+  },
+  "Clean emissions": {
+   "kept": "joined",
+   "other": "Hrein losun",
+   "reason": "disagree",
+   "mt": "Hreinn útblástur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

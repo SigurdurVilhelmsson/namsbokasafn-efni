@@ -893,6 +893,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_04_Scenarios",
+          "title": null,
           "caption": {
             "segmentId": "m68819:caption:CNX_Chem_16_04_Scenarios-caption"
           },
@@ -1016,6 +1017,7 @@
           "type": "figure",
           "id": "CNX_Chem_16_05_TempSpont",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68819:caption:CNX_Chem_16_05_TempSpont-caption"
           },
@@ -1445,6 +1447,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_16_04_Gibbs",
+          "title": null,
           "caption": {
             "segmentId": "m68819:caption:CNX_Chem_16_04_Gibbs-caption"
           },

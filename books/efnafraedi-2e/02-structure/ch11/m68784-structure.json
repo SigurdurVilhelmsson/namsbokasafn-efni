@@ -24,6 +24,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_11_05_Colloid",
+      "title": null,
       "caption": {
         "segmentId": "m68784:caption:CNX_Chem_11_05_Colloid-caption"
       },
@@ -46,6 +47,7 @@
       "type": "figure",
       "id": "CNX_Chem_11_05_srchlight",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68784:caption:CNX_Chem_11_05_srchlight-caption"
       },
@@ -427,6 +429,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_05_soap",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_soap-caption"
           },
@@ -448,6 +451,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_05_detrg",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_detrg-caption"
           },
@@ -470,6 +474,7 @@
           "type": "figure",
           "id": "CNX_Chem_11_05_emulsoil",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_emulsoil-caption"
           },
@@ -507,6 +512,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_05_oilspill",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_oilspill-caption"
           },
@@ -561,6 +567,7 @@
           "type": "figure",
           "id": "CNX_Chem_11_05_FredCottre",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_FredCottre-caption"
           },
@@ -578,6 +585,7 @@
           "type": "figure",
           "id": "CNX_Chem_11_05_Cottrellp",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_Cottrellp-caption"
           },
@@ -610,6 +618,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_11_05_Gel",
+          "title": null,
           "caption": {
             "segmentId": "m68784:caption:CNX_Chem_11_05_Gel-caption"
           },

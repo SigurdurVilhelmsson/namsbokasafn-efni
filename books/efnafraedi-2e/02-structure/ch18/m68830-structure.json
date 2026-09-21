@@ -78,6 +78,7 @@
               "type": "figure",
               "id": "CNX_Chem_18_02_DownsCell",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68830:caption:CNX_Chem_18_02_DownsCell-caption"
               },
@@ -135,6 +136,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_18_02_HallHerCell",
+              "title": null,
               "caption": {
                 "segmentId": "m68830:caption:CNX_Chem_18_02_HallHerCell-caption"
               },

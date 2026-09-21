@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_06_RealGas2",
+ "renderHash": "032e6a105b3f2977",
+ "composedHash": "032e6a105b3f2977",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Ideal": "Tilvalið",
+  "Real": "Raunverulegt"
+ },
+ "mtAlternatives": {
+  "Real": {
+   "kept": "joined",
+   "other": "Konunglegur",
+   "reason": "disagree",
+   "mt": "Raunverulegt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_03_VapPress1",
+ "renderHash": "22f88314882c89c9",
+ "composedHash": "22f88314882c89c9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Liquid": "Vökvi",
+  "Vapor|pressure": "Gufuþrýstingur",
+  "Molecules|escape liquid’s|surface to form|vapor": "Sameindir sleppa frá yfirborði vökvans og mynda gufu",
+  "Equilibrium|reached, vapor|pressure|determined": "Jafnvægi næst, gufuþrýstingur ákvarðaður",
+  "quid": "ökvi",
+  "libriu": "afnvæ",
+  "ium": "vægi",
+  "cules": "meindir",
+  "les": "dir"
+ },
+ "mtAlternatives": {
+  "Molecules|escape liquid’s|surface to form|vapor": {
+   "kept": "joined",
+   "other": "Sameindir sleppa frá yfirborði vökva og mynda gufu",
+   "reason": "disagree",
+   "mt": "Sameindir sleppa frá yfirborði vökvans og mynda gufu"
+  },
+  "Equilibrium|reached, vapor|pressure|determined": {
+   "kept": "joined",
+   "other": "Jafnvægi náð, gufuþrýstingur ákvarðaður",
+   "reason": "disagree",
+   "mt": "Jafnvægi næst, gufuþrýstingur ákvarðaður"
+  },
+  "quid": {
+   "kept": "joined",
+   "other": "Hvað",
+   "reason": "disagree",
+   "mt": "ökvi"
+  },
+  "libriu": {
+   "kept": "joined",
+   "other": "bók",
+   "reason": "disagree",
+   "mt": "afnvæ"
+  },
+  "ium": {
+   "kept": "joined",
+   "other": "Ég er",
+   "reason": "disagree",
+   "mt": "vægi"
+  },
+  "cules": {
+   "kept": "joined",
+   "other": "Stuðningsmenn Barcelona",
+   "reason": "disagree",
+   "mt": "meindir"
+  },
+  "les": {
+   "kept": "joined",
+   "other": "þeir",
+   "reason": "disagree",
+   "mt": "dir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

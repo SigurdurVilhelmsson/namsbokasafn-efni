@@ -217,6 +217,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_13_01_SuperSat",
+          "title": null,
           "caption": {
             "segmentId": "m68799:caption:CNX_Chem_13_01_SuperSat-caption"
           },
@@ -341,6 +342,7 @@
           "type": "figure",
           "id": "CNX_Chem_13_03_catalyst",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68799:caption:CNX_Chem_13_03_catalyst-caption"
           },
@@ -403,6 +405,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_13_03_factory",
+          "title": null,
           "caption": {
             "segmentId": "m68799:caption:CNX_Chem_13_03_factory-caption"
           },

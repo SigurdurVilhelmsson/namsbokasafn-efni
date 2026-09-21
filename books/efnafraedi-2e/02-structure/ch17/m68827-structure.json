@@ -50,6 +50,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_07_NaCl",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68827:caption:CNX_Chem_17_07_NaCl-caption"
           },
@@ -93,6 +94,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_07_Water",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68827:caption:CNX_Chem_17_07_Water-caption"
           },
@@ -192,6 +194,7 @@
           "type": "figure",
           "id": "CNX_Chem_17_07_Electroplate",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68827:caption:CNX_Chem_17_07_Electroplate-caption"
           },

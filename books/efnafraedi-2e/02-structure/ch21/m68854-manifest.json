@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68854",
-  "extractedAt": "2026-08-31T19:08:46.006Z",
+  "extractedAt": "2026-09-20T17:25:23.080Z",
   "sourceHash": "d0ace3ad4dc6ea58",
   "segmentCount": 252,
   "segmentIds": [
@@ -500,5 +500,31 @@
       "fs-idm2719024",
       "fs-idp25531728"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "radioactive decay",
+    "term-00002": "parent nuclide",
+    "term-00003": "daughter nuclide",
+    "term-00004": "Alpha (α) decay",
+    "term-00005": "Beta (β) decay",
+    "term-00006": "Gamma emission (γ emission)",
+    "term-00007": "Positron emission (β+ decay",
+    "term-00008": "Electron capture",
+    "term-00009": "radioactive decay series",
+    "term-00010": "half-life",
+    "term-00012": "radiocarbon dating",
+    "term-00011": "radiometric dating",
+    "fs-idm27965808": "alpha (α) decay",
+    "fs-idp69613952": "beta (β) decay",
+    "fs-idp69591216": "daughter nuclide",
+    "fs-idm684928": "electron capture",
+    "fs-idm27366640": "gamma (γ) emission",
+    "fs-idp172569488": "half-life (t1/2)",
+    "fs-idp55578096": "parent nuclide",
+    "fs-idm24356480": "positron emission",
+    "fs-idp79161920": "radioactive decay",
+    "fs-idp172690976": "radioactive decay series",
+    "fs-idp10803760": "radiocarbon dating",
+    "fs-idp171940160": "radiometric dating"
   }
 }

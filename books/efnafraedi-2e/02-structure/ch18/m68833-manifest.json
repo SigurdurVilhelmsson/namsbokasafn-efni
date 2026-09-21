@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68833",
-  "extractedAt": "2026-08-31T19:08:44.902Z",
+  "extractedAt": "2026-09-20T17:25:21.755Z",
   "sourceHash": "849e090538a3eb6c",
   "segmentCount": 107,
   "segmentIds": [
@@ -237,5 +237,13 @@
       "fs-idm8593536",
       "fs-idp276731328"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "hydrogenation",
+    "term-00002": "Haber process",
+    "term-00003": "hydrogen halides",
+    "fs-idp50608080": "Haber process",
+    "fs-idp111298912": "hydrogen halide",
+    "fs-idm8608880": "hydrogenation"
   }
 }

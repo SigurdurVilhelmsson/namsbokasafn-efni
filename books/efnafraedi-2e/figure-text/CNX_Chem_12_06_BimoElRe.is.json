@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_06_BimoElRe",
+ "renderHash": "04cf2b7ab06c61a9",
+ "composedHash": "04cf2b7ab06c61a9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Transition state": "Umbreytingarástand"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

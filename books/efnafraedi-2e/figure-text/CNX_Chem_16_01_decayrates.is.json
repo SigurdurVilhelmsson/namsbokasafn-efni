@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_16_01_decayrates",
+ "renderHash": "ee15ad0946537caa",
+ "composedHash": "ee15ad0946537caa",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (days)": "Tími (dagar)",
+  "Amount of isotope remaining (%)": "Magn samsætu sem eftir er (%)"
+ },
+ "mtAlternatives": {
+  "Amount of isotope remaining (%)": {
+   "kept": "joined",
+   "other": "Magn samsætu sem er eftir (%)",
+   "reason": "disagree",
+   "mt": "Magn samsætu sem eftir er (%)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

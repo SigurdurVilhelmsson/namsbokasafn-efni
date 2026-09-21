@@ -26,6 +26,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_05_TypesSol",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68770:caption:CNX_Chem_10_05_TypesSol-caption"
       },
@@ -48,6 +49,7 @@
       "type": "figure",
       "id": "CNX_Chem_10_05_BoronOxide",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68770:caption:CNX_Chem_10_05_BoronOxide-caption"
       },
@@ -84,6 +86,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_05_IonicSolid",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_IonicSolid-caption"
           },
@@ -117,6 +120,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_05_Metallic",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_Metallic-caption"
           },
@@ -149,6 +153,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_05_NtwrkSolid",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_NtwrkSolid-caption"
           },
@@ -182,6 +187,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_05_MolSolids",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_MolSolids-caption"
           },
@@ -426,6 +432,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_05_Carbon",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_Carbon-caption"
           },
@@ -442,6 +449,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_05_Graphene",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_Graphene-caption"
           },
@@ -475,6 +483,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_05_CrystDfcts",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68770:caption:CNX_Chem_10_05_CrystDfcts-caption"
           },

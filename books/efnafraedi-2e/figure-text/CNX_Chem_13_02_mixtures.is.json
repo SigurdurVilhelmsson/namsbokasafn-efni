@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_13_02_mixtures",
+ "renderHash": "065de91dee132d95",
+ "composedHash": "065de91dee132d95",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Before reaction": "Fyrir hvarf",
+  "At equilibrium": "Við jafnvægi",
+  "Mixture 1": "Blanda 1",
+  "Concentration (M)": "Styrkur (M)",
+  "Mixture 2": "Blanda 2",
+  "Mixture 3": "Blanda 3"
+ },
+ "mtAlternatives": {
+  "At equilibrium": {
+   "kept": "joined",
+   "other": "Í jafnvægi",
+   "reason": "disagree",
+   "mt": "Við jafnvægi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

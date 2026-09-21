@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_strengths",
+ "renderHash": "b72741bf1fc66b8e",
+ "composedHash": "b72741bf1fc66b8e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Relative acid strength": "Hlutfallslegur sýrustyrkur",
+  "Relative conjugate base strength": "Hlutfallslegur styrkur samsvarandi basa",
+  "Stronger|acids": "Sterkari sýrur",
+  "Weaker|bases": "Veikari basar",
+  "Stronger|bases": "Sterkari basar",
+  "Weaker|acids": "Veikari sýrur",
+  "ClO–": "ClO–",
+  "HClO": "HClO",
+  "HCO3|–": "HCO3 –",
+  "HPO4": "HPO4",
+  "ClO2|–": "ClO2 –",
+  "HClO2": "HClO2"
+ },
+ "mtAlternatives": {
+  "Relative acid strength": {
+   "kept": "joined",
+   "other": "Afstæður sýrustyrkur",
+   "reason": "disagree",
+   "mt": "Hlutfallslegur sýrustyrkur"
+  },
+  "Relative conjugate base strength": {
+   "kept": "joined",
+   "other": "Afstæður styrkur samsvarandi basa",
+   "reason": "disagree",
+   "mt": "Hlutfallslegur styrkur samsvarandi basa"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 12
+ }
+}

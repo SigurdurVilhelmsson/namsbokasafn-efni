@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68823",
-  "extractedAt": "2026-08-31T19:08:44.480Z",
+  "extractedAt": "2026-09-20T17:25:21.285Z",
   "sourceHash": "09554e829c3eee23",
   "segmentCount": 153,
   "segmentIds": [
@@ -286,5 +286,15 @@
       "fs-idm175821376",
       "fs-idp17878176"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "cell potentials, Ecell",
+    "term-00002": "standard cell potential, E°cell",
+    "term-00003": "standard hydrogen electrode (SHE)",
+    "term-00004": "electrode potential (EX)",
+    "term-00005": "standard electrode potential, E°X",
+    "fs-idp227872832": "standard cell potential (Ecell°)",
+    "fs-idp198657264": "standard hydrogen electrode (SHE)",
+    "fs-idm4867824": "standard electrode potential ((EX°))"
   }
 }

@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_15_01_ICETable3_img",
+ "renderHash": "84b3632eb9e9eb1d",
+ "composedHash": "84b3632eb9e9eb1d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Initial concentration (M)": "Upphafsstyrkur (M)",
+  "Change (M)": "Breyting (M)",
+  "Equilibrium concentration (M)": "Jafnvægisstyrkur (M)",
+  "CdS (s)": "CdS (s)"
+ },
+ "mtAlternatives": {
+  "Change (M)": {
+   "kept": "joined",
+   "other": "Breyta (Kk)",
+   "reason": "disagree",
+   "mt": "Breyting (M)"
+  },
+  "CdS (s)": {
+   "kept": "joined",
+   "other": "CdS (f)",
+   "reason": "disagree",
+   "mt": "CdS (s)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_01_Geckos",
+ "renderHash": "8562ffb8882184c3",
+ "composedHash": "8562ffb8882184c3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Spatulae": "Spatúlur",
+  "Setae": "Burst"
+ },
+ "mtAlternatives": {
+  "Spatulae": {
+   "kept": "joined",
+   "other": "Spatlur",
+   "reason": "disagree",
+   "mt": "Spatúlur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

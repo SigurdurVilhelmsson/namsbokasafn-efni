@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_ICETable5_img",
+ "renderHash": "1ac3e9d8ee85dc74",
+ "composedHash": "1ac3e9d8ee85dc74",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Initial concentration (M)": "Upphafsstyrkur (M)",
+  "Change (M)": "Breyting (M)",
+  "Equilibrium |concentration (M)": "Jafnvægisstyrkur (M)",
+  "HSO4|–": "HSO4 –"
+ },
+ "mtAlternatives": {
+  "Change (M)": {
+   "kept": "joined",
+   "other": "Breyta (Karl)",
+   "reason": "disagree",
+   "mt": "Breyting (M)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

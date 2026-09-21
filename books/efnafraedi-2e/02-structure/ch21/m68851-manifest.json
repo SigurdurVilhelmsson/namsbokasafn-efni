@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68851",
-  "extractedAt": "2026-08-31T19:08:45.900Z",
+  "extractedAt": "2026-09-20T17:25:22.930Z",
   "sourceHash": "d0b59c18f7c107dc",
   "segmentCount": 165,
   "segmentIds": [
@@ -307,5 +307,33 @@
       "fs-idp28539744",
       "fs-idm26476112"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Nuclear chemistry",
+    "term-00002": "nuclide",
+    "term-00003": "nucleons",
+    "term-00004": "strong nuclear force",
+    "term-00005": "mass defect",
+    "term-00006": "nuclear binding energy",
+    "term-00007": "mass-energy equivalence equation",
+    "term-00008": "electron volts (eV)",
+    "term-00009": "band of stability",
+    "term-00010": "radioactivity",
+    "term-00011": "radioisotope",
+    "term-00012": "magic numbers",
+    "term-00013": "binding energy per nucleon",
+    "fs-idm88281984": "band of stability",
+    "fs-idp85639552": "binding energy per nucleon",
+    "fs-idm98883968": "electron volt (eV)",
+    "fs-idm146646496": "magic number",
+    "fs-idm49105504": "mass defect",
+    "fs-idp26221264": "mass-energy equivalence equation",
+    "fs-idm27477328": "nuclear binding energy",
+    "fs-idp125852496": "nuclear chemistry",
+    "fs-idm41591488": "nucleon",
+    "fs-idm80685920": "nuclide",
+    "fs-idp188698800": "radioactivity",
+    "fs-idm38468176": "radioisotope",
+    "fs-idp26284960": "strong nuclear force"
   }
 }

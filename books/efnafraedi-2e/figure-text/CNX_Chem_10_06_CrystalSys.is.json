@@ -1,0 +1,89 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_CrystalSys",
+ "renderHash": "5cacff0ca231bc5c",
+ "composedHash": "5cacff0ca231bc5c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "System/Axes/Angles": "Kerfi/ásar/horn",
+  "Cubic": "Kúbískt",
+  "Tetragonal": "Tetragónal",
+  "Rhombohedral": "Rombóhedral",
+  "Orthorhombic": "Ortorombískt",
+  "Triclinic": "Tríklínískt",
+  "Monoclinic": "Mónóklínískt",
+  "Hexagonal": "Hexagónal",
+  "Unit Cells": "Einingarfrumur",
+  "Simple": "Einfalt",
+  "Body-centered": "Miðjusett",
+  "Face-centered": "Flötungasett",
+  "Base-centered": "Grunnsett"
+ },
+ "mtAlternatives": {
+  "Cubic": {
+   "kept": "joined",
+   "other": "Rúm-",
+   "reason": "disagree",
+   "mt": "Kúbískt"
+  },
+  "Tetragonal": {
+   "kept": "joined",
+   "other": "Ferhyrndur",
+   "reason": "disagree",
+   "mt": "Tetragónal"
+  },
+  "Rhombohedral": {
+   "kept": "joined",
+   "other": "Rómbaður",
+   "reason": "disagree",
+   "mt": "Rombóhedral"
+  },
+  "Orthorhombic": {
+   "kept": "joined",
+   "other": "Rombískur",
+   "reason": "disagree",
+   "mt": "Ortorombískt"
+  },
+  "Triclinic": {
+   "kept": "joined",
+   "other": "Þríhalli",
+   "reason": "disagree",
+   "mt": "Tríklínískt"
+  },
+  "Monoclinic": {
+   "kept": "joined",
+   "other": "Einklínt",
+   "reason": "disagree",
+   "mt": "Mónóklínískt"
+  },
+  "Hexagonal": {
+   "kept": "joined",
+   "other": "Sexhyrndur",
+   "reason": "disagree",
+   "mt": "Hexagónal"
+  },
+  "Body-centered": {
+   "kept": "joined",
+   "other": "Rúmmiðjað",
+   "reason": "disagree",
+   "mt": "Miðjusett"
+  },
+  "Face-centered": {
+   "kept": "joined",
+   "other": "Flötungsmiðjaður",
+   "reason": "disagree",
+   "mt": "Flötungasett"
+  },
+  "Base-centered": {
+   "kept": "joined",
+   "other": "Grunnflatarmiðjaður",
+   "reason": "disagree",
+   "mt": "Grunnsett"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 13
+ }
+}

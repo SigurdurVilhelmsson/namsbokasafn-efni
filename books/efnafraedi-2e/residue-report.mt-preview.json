@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T12:21:47.289Z",
+  "generatedAt": "2026-09-21T13:35:18.571Z",
   "summary": {
-    "modulesWithResidue": 2,
-    "exactResidues": 70,
-    "ratioWarnings": 66,
+    "modulesWithResidue": 3,
+    "exactResidues": 74,
+    "ratioWarnings": 76,
     "toleratedResidues": 4
   },
   "modules": {
@@ -323,6 +323,14 @@
       "exact": [],
       "warnings": [
         {
+          "segmentId": "m68750:entry:auto-24",
+          "ratio": 0.71
+        },
+        {
+          "segmentId": "m68750:entry:auto-33",
+          "ratio": 0.75
+        },
+        {
           "segmentId": "m68750:solution:fs-idm21108080",
           "ratio": 0.8
         }
@@ -420,6 +428,10 @@
       "exact": [],
       "warnings": [
         {
+          "segmentId": "m68794:para:fs-idp38254032",
+          "ratio": 0.75
+        },
+        {
           "segmentId": "m68794:solution:fs-idm1295248",
           "ratio": 0.91
         }
@@ -427,8 +439,21 @@
       "tolerated": []
     },
     "m68798": {
-      "exact": [],
+      "exact": [
+        "m68798:para:fs-idp15495888",
+        "m68798:para:fs-idp22632784",
+        "m68798:para:fs-idp64674800",
+        "m68798:solution:fs-idp14871472"
+      ],
       "warnings": [
+        {
+          "segmentId": "m68798:para:fs-idp96400256",
+          "ratio": 0.71
+        },
+        {
+          "segmentId": "m68798:para:fs-idp251899984",
+          "ratio": 0.89
+        },
         {
           "segmentId": "m68798:solution:fs-idp62171456",
           "ratio": 0.8
@@ -653,6 +678,50 @@
         "m68744:para:fs-idp92007424"
       ],
       "warnings": [],
+      "tolerated": []
+    },
+    "m68752": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68752:entry:auto-246",
+          "ratio": 0.75
+        },
+        {
+          "segmentId": "m68752:entry:auto-247",
+          "ratio": 0.8
+        }
+      ],
+      "tolerated": []
+    },
+    "m68770": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68770:entry:auto-51",
+          "ratio": 0.75
+        }
+      ],
+      "tolerated": []
+    },
+    "m68778": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68778:problem:fs-idm96983392",
+          "ratio": 0.75
+        }
+      ],
+      "tolerated": []
+    },
+    "m68782": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68782:problem:fs-idp43686960",
+          "ratio": 0.75
+        }
+      ],
       "tolerated": []
     }
   }

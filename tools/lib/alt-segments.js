@@ -81,7 +81,104 @@ export function altElementIdFromSrc(src) {
  */
 export function readAlt(alt, getSeg) {
   if (!alt) return '';
-  if (typeof alt === 'string') return alt;
+  if (typeof alt === 'string') return stripAltMarkers(alt);
   const translated = alt.segmentId && getSeg ? getSeg(alt.segmentId) : null;
-  return translated || alt.text || '';
+  return stripAltMarkers(translated || alt.text || '');
+}
+
+/**
+ * Unwrap EVERY bracket marker in an alt value to its visible content.
+ *
+ * 🔴 AN `alt` IS AN XML ATTRIBUTE VALUE. MARKUP CANNOT LIVE THERE, so extraction
+ * can never emit a marker into an alt segment — measured 2026-09-20 across the
+ * whole committed corpus: **0 of 3,312 EN alt segments carry one**. A marker on
+ * the IS side is therefore INVENTED BY CONSTRUCTION, and unwrapping it to its
+ * content cannot destroy anything legitimate. That 0.000% base rate is the
+ * entire safety argument, and `alt-marker-unwrap.test.js` ASSERTS it rather
+ * than describing it: if extraction ever starts emitting a marker into an alt,
+ * that test goes red and this function becomes destructive.
+ *
+ * ⚠️ THIS IS ORTHOGONAL TO `unwrapInventedMarkers`, AND NEITHER SUBSUMES THE
+ * OTHER. That one decides by TYPE — it strips only types absent from
+ * `KNOWN_BRACKET_TYPES`, which is why it could not see this: the live instance
+ * was `[[sub:]]`, a wholly legitimate type invented in a position where NO type
+ * is legitimate. Type and position are independent rules.
+ *
+ * Found in chemistry ch12 m68791 (2026-09-20). OpenStax spells subscripts out
+ * in words in alt text because screen readers read it aloud — "C subscript 4 H
+ * subscript 6" — and the MT helpfully rendered them as real markup. Inject then
+ * REFUSED the module rather than write a raw `[[sub:4]]` onto a published page,
+ * which is the correct failure and is how this was caught at all.
+ *
+ * The scanner deliberately mirrors `unwrapInventedMarkers`' grammar, including
+ * its reason for advancing ONE character on a non-opener: the corpus carries
+ * literal square brackets abutting real markers (chemistry unit notation), so
+ * skipping two would step over a real opener.
+ *
+ * @param {string} text
+ * @returns {string} the same text with every bracket marker unwrapped
+ */
+export function stripAltMarkers(text) {
+  const s = String(text ?? '');
+  if (!s.includes('[[')) return s; // fast path: the overwhelming majority
+  let out = '';
+  let i = 0;
+  while (i < s.length) {
+    if (!s.startsWith('[[', i)) {
+      out += s[i];
+      i++;
+      continue;
+    }
+    let j = i + 2;
+    let type = '';
+    let sep = null;
+    while (j < s.length) {
+      if (s[j] === ':' || s[j] === '|') {
+        sep = s[j];
+        break;
+      }
+      if (s.startsWith(']]', j)) {
+        sep = ']]';
+        break;
+      }
+      if (s[j] === '[' || s[j] === ']' || /\s/.test(s[j])) break;
+      type += s[j];
+      j++;
+    }
+    if (sep === null || type === '') {
+      // Not an opener. Advance ONE so the scan re-anchors on an inner `[[`.
+      out += s[i];
+      i += 1;
+      continue;
+    }
+    if (type.startsWith('/')) {
+      // A closing token carries no content; emitting its name would put the
+      // marker's TYPE into the alt as prose, which is the §C67 damage shape.
+      i = j + (sep === ']]' ? 2 : 1);
+      if (sep !== ']]') {
+        const end = s.indexOf(']]', i);
+        i = end === -1 ? s.length : end + 2;
+      }
+      continue;
+    }
+    if (sep === ']]') {
+      // Bare `[[word]]`: the type token IS the intended word.
+      out += type;
+      i = j + 2;
+      continue;
+    }
+    const end = s.indexOf(']]', j);
+    if (end === -1) {
+      // Unterminated: not a marker. Advance one and re-anchor.
+      out += s[i];
+      i += 1;
+      continue;
+    }
+    const inner = s.slice(j + 1, end);
+    // `[[xref:label|target]]` — a reader sees the LABEL; the target is routing.
+    // `[[label|target]]` (sep `|`) — the type token is itself the label.
+    out += sep === '|' ? type : inner.split('|')[0];
+    i = end + 2;
+  }
+  return out;
 }

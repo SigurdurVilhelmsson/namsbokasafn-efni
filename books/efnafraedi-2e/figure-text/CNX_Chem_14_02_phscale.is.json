@@ -1,0 +1,77 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_02_phscale",
+ "renderHash": "476a5ef9405fec3d",
+ "composedHash": "476a5ef9405fec3d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "pOH": "pOH",
+  "Sample Solution": "Sýnislausn",
+  "1 M HCl": "1 M HCl",
+  "acidic": "súrt",
+  "neutral": "hlutlaust",
+  "basic": "basískt",
+  "gastric juice": "magasafi",
+  "bleach": "klór",
+  "lime juice|1 M CH3CO2H (vinegar)|stomach acid": "límónusafi 1 M CH3CO2H (edik) magasýra",
+  "wine": "vín",
+  "coffee": "kaffi",
+  "rain water": "regnvatn",
+  "pure water|blood": "hreint vatn blóð",
+  "ocean water": "sjór",
+  "baking soda": "matarsódi",
+  "orange juice": "appelsínusafi",
+  "Milk of Magnesia": "magnesíummjólk",
+  "household ammonia, NH3": "heimilisammoníak, NH3",
+  "1 M NaOH": "1 M NaOH"
+ },
+ "mtAlternatives": {
+  "Sample Solution": {
+   "kept": "joined",
+   "other": "Dæmi um lausn",
+   "reason": "disagree",
+   "mt": "Sýnislausn"
+  },
+  "acidic": {
+   "kept": "joined",
+   "other": "súr",
+   "reason": "disagree",
+   "mt": "súrt"
+  },
+  "neutral": {
+   "kept": "joined",
+   "other": "Hlutlaus",
+   "reason": "disagree",
+   "mt": "hlutlaust"
+  },
+  "basic": {
+   "kept": "joined",
+   "other": "grunn",
+   "reason": "disagree",
+   "mt": "basískt"
+  },
+  "rain water": {
+   "kept": "joined",
+   "other": "Regnvatn",
+   "reason": "disagree",
+   "mt": "regnvatn"
+  },
+  "ocean water": {
+   "kept": "joined",
+   "other": "Sjór",
+   "reason": "disagree",
+   "mt": "sjór"
+  },
+  "Milk of Magnesia": {
+   "kept": "joined",
+   "other": "Magnesíum-mjólk",
+   "reason": "disagree",
+   "mt": "magnesíummjólk"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 19
+ }
+}

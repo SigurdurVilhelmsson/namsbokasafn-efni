@@ -1,5 +1,23 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-06-30T11:51:10.722Z"
+  "generatedAt": "2026-09-21T08:29:42.652Z",
+  "run": {
+    "runRecordVersion": 1,
+    "chars": 12966,
+    "usage": 10446,
+    "estimatedIsk": 129.66,
+    "markersNormalized": 0,
+    "mismatchCount": 0,
+    "bracketDelta": {},
+    "unwrappedCount": 0,
+    "unwrappedByType": {},
+    "glossary": {
+      "arm": "glossary-only",
+      "contentHash": "4f29f60c341ddfcf10fb8b25355f597734a17879d7a03d7265ac2375a84cca68",
+      "termCount": 8,
+      "chunksWithGlossary": 1,
+      "chunksTotal": 1
+    }
+  }
 }

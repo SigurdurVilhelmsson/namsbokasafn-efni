@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_05_TypesSol",
+ "renderHash": "820baa97bd8310db",
+ "composedHash": "820baa97bd8310db",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Crystalline": "Kristallað",
+  "Amorphous": "Formlaust"
+ },
+ "mtAlternatives": {
+  "Crystalline": {
+   "kept": "joined",
+   "other": "Kristallaður",
+   "reason": "disagree",
+   "mt": "Kristallað"
+  },
+  "Amorphous": {
+   "kept": "joined",
+   "other": "Formlaus",
+   "reason": "disagree",
+   "mt": "Formlaust"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

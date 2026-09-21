@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68839",
-  "extractedAt": "2026-08-31T19:08:45.065Z",
+  "extractedAt": "2026-09-20T17:25:21.929Z",
   "sourceHash": "1a22727a4b2a8a94",
   "segmentCount": 117,
   "segmentIds": [
@@ -216,5 +216,9 @@
       "fs-idm132315280",
       "fs-idm102561472"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "halides",
+    "term-00002": "interhalogens"
   }
 }

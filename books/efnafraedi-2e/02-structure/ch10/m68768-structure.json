@@ -39,6 +39,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_03_VapPress1",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress1-caption"
           },
@@ -205,6 +206,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_03_VapPress3",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress3-caption"
           },
@@ -238,6 +240,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_03_VapPress2",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_VapPress2-caption"
           },
@@ -588,6 +591,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_03_Evap",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_Evap-caption"
           },
@@ -620,6 +624,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_03_MeltingIce",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_MeltingIce-caption"
           },
@@ -683,6 +688,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_03_Sublimtn",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_Sublimtn-caption"
           },
@@ -730,6 +736,7 @@
           "type": "figure",
           "id": "CNX_Chem_10_03_PhaseChng",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_PhaseChng-caption"
           },
@@ -777,6 +784,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_10_03_HeatCurve",
+          "title": null,
           "caption": {
             "segmentId": "m68768:caption:CNX_Chem_10_03_HeatCurve-caption"
           },

@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_09_03_DaltonLaw1-f981",
+ "renderHash": "652287f811024984",
+ "composedHash": "652287f811024984",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "300 kPa": "300 kPa",
+  "450 kPa": "450 kPa",
+  "Total pressure|combined": "Heildarþrýstingur samtals",
+  "1350 kPa": "1350 kPa",
+  "600 kPa": "600 kPa"
+ },
+ "mtAlternatives": {
+  "Total pressure|combined": {
+   "kept": "joined",
+   "other": "Heildarþrýstingur samanlagður",
+   "reason": "disagree",
+   "mt": "Heildarþrýstingur samtals"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

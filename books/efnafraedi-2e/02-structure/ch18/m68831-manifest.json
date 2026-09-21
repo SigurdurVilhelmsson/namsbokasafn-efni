@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68831",
-  "extractedAt": "2026-08-31T19:08:44.827Z",
+  "extractedAt": "2026-09-20T17:25:21.693Z",
   "sourceHash": "1222bd70d98db33b",
   "segmentCount": 155,
   "segmentIds": [
@@ -257,5 +257,15 @@
       "fs-idp128607136",
       "fs-idp29962656"
     ]
+  },
+  "termEnglish": {
+    "term-00002": "Borates",
+    "term-00003": "polymorphs",
+    "term-00004": "Silicates",
+    "term-00001": "amorphous",
+    "fs-idp50657904": "amorphous",
+    "fs-idp42336592": "borate",
+    "fs-idp20554272": "polymorph",
+    "fs-idp17081184": "silicate"
   }
 }

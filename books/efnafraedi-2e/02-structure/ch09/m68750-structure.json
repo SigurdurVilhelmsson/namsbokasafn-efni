@@ -27,6 +27,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Pressure1",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure1-caption"
       },
@@ -102,6 +103,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Pressure2",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure2-caption"
       },
@@ -403,6 +405,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Barometer",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Barometer-caption"
       },
@@ -509,6 +512,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Manometer",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Manometer-caption"
       },
@@ -774,6 +778,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Spygmo",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Spygmo-caption"
       },
@@ -822,6 +827,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_WeatherMap",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_WeatherMap-caption"
       },
@@ -839,6 +845,7 @@
       "type": "figure",
       "id": "CNX_Chem_09_01_Atmosphere",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68750:caption:CNX_Chem_09_01_Atmosphere-caption"
       },

@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_Exercise4b_img",
+ "renderHash": "60aa02dcde9102a3",
+ "composedHash": "60aa02dcde9102a3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "5|0|Extent of reaction": "5 0 Framvinda efnahvarfs",
+  "Energy (kJ)": "Orka (kJ)"
+ },
+ "mtAlternatives": {
+  "5|0|Extent of reaction": {
+   "kept": "joined",
+   "other": "5 0 Umfang hvarfs",
+   "reason": "disagree",
+   "mt": "5 0 Framvinda efnahvarfs"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

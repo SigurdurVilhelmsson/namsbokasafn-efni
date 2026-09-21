@@ -2,19 +2,62 @@
   "project": "namsbokasafn-efni",
   "description": "Icelandic OpenStax textbook translations",
   "permissions": {
-    "allow_read": ["**/*"],
-    "allow_write": [
-      ".claude/**",
-      "books/**/03-faithful-translation/**",
-      "books/**/04-localized-content/**",
-      "books/**/05-publication/**",
-      "logs/**",
-      "glossary/**"
+    "deny": [
+      "Edit(books/**/01-source/**)"
     ],
-    "never_write": [
-      "books/**/01-source/**",
-      "books/**/02-mt-output/**",
-      "books/**/tm/**"
+    "ask": [
+      "Edit(books/**/02-mt-output/**)",
+      "Edit(books/**/tm/**)",
+      "Bash(node tools/api-translate.js:*)",
+      "Bash(node tools/translate-chapter-titles.js:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "p=$(cat); case \"$p\" in *01-source*) printf \"%s\" \"$p\" | node \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/guard-01-source.mjs\";; esac",
+            "timeout": 10,
+            "statusMessage": "Checking 01-source guard..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "p=$(cat); case \"$p\" in *api-translate*|*translate-chapter-titles*) printf \"%s\" \"$p\" | node \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/guard-paid-mt.mjs\";; esac",
+            "timeout": 15,
+            "statusMessage": "Checking paid-MT guard..."
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/subagent-tree-check.mjs\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/subagent-tree-check.mjs\"",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   }
 }

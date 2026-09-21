@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68825",
-  "extractedAt": "2026-08-31T19:08:44.533Z",
+  "extractedAt": "2026-09-20T17:25:21.343Z",
   "sourceHash": "29f7071ff23a9f32",
   "segmentCount": 80,
   "segmentIds": [
@@ -161,5 +161,25 @@
       "fs-idm12033136",
       "fs-idm44558592"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "battery",
+    "term-00002": "primary cells",
+    "term-00003": "secondary cells",
+    "term-00004": "dry cell",
+    "term-00005": "Alkaline batteries",
+    "term-00006": "Nickel-cadmium",
+    "term-00007": "Lithium ion batteries",
+    "term-00008": "lead acid battery",
+    "term-00009": "fuel cell",
+    "fs-idm210620784": "alkaline battery",
+    "fs-idm170712416": "battery",
+    "fs-idm175851472": "dry cell",
+    "fs-idm127587472": "fuel cell",
+    "fs-idm106622864": "lead acid battery",
+    "fs-idm118911936": "lithium ion battery",
+    "fs-idm206318304": "nickel-cadmium battery",
+    "fs-idm278014928": "primary cell",
+    "fs-idp55952432": "secondary cell"
   }
 }

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_10_06_SimpleCub3",
+ "renderHash": "d64b29b555343a27",
+ "composedHash": "d64b29b555343a27",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Lattice points": "Grindarpunktar",
+  "Simple cubic lattice cell": "Einföld rúmsentreruð einingarfruma",
+  "8 corners": "8 horn"
+ },
+ "mtAlternatives": {
+  "Simple cubic lattice cell": {
+   "kept": "joined",
+   "other": "Einföld rúmmiðjuð einingarsella",
+   "reason": "disagree",
+   "mt": "Einföld rúmsentreruð einingarfruma"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_CatReCoDig",
+ "renderHash": "0ba1a0233890cf4d",
+ "composedHash": "0ba1a0233890cf4d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Energy": "Orka",
+  "Extent of reaction": "Hvarfstig",
+  "Reactants": "Hvarfefni",
+  "Products": "Myndefni"
+ },
+ "mtAlternatives": {
+  "Extent of reaction": {
+   "kept": "joined",
+   "other": "Hvarfjafnvægi",
+   "reason": "disagree",
+   "mt": "Hvarfstig"
+  },
+  "Products": {
+   "kept": "joined",
+   "other": "Vörur",
+   "reason": "disagree",
+   "mt": "Myndefni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}
