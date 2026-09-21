@@ -305,6 +305,85 @@ const HOUSE_STYLE_TERMS = Object.freeze([
     ruled: '2026-09-20 [USER]',
     why: 'ch12 (21 segments), key term, no row. Singular, which also matches reaction orders. The MT already writes stig efnahvarfs (26 tokens).',
   }),
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 2026-09-21 — six rows from the glossary-subset audit's 18 questions.
+  // Full record: docs/decisions/2026-09-21-chemistry-terminology-rulings.md.
+  //
+  // ⚠️ ALL SIX ALREADY HAVE AN APPROVED ROW, and every one of those rows sits
+  // in a NON-chemistry domain (five `physics`, one `biology`). They are NOT
+  // edited or deleted: a house-style concept is filed under `chemistry`, which
+  // is FIRST in BOOK_DOMAIN_PRIORITY for both books that ship, so it outranks
+  // them — the non-destructive route CLAUDE.md prescribes.
+  //
+  // §C73 control, measured 2026-09-21 over books/efnafraedi-2e/02-mt-output/
+  // **/*.is.md (case-insensitive substring, so inflected and compounded forms
+  // count). Every ruled form below is one the model ALREADY produces; in three
+  // cases the currently-approved form is one it has NEVER produced.
+  // ─────────────────────────────────────────────────────────────────────────
+  Object.freeze({
+    en: Object.freeze(['hydrocarbon']),
+    is: 'vetniskolefni',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'Resolves a genuine COLLISION, which is the case CLAUDE.md says a glossary row earns its ' +
+      'place on: ch20 calls two different things kolvetni — hydrocarbons (59, including the §20.1 ' +
+      'section title) AND carbohydrates (7, including the note title "Kolvetni og sykursýki"). ' +
+      'With carbohydrate → sykra, kolvetni is retired for both senses. The approved row was ' +
+      'vetniskol (domain physics) and the ruled form is a listed alternative. MT: vetniskolefni 3, ' +
+      'vetniskol 3, kolvetni 89 — so the ruled form is produced, not invented. ⚠️ 40 kolvetni ' +
+      'occurrences in five ALREADY-BOUGHT chapters are not repaired by this row; they are an ' +
+      'editor substitution or a targeted re-buy, and ch05 is mostly the CARBOHYDRATE sense.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['laser']),
+    is: 'leysir',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch21. The approved row was ljósleysir (domain physics), which appears 0 times in the ' +
+      "book's committed MT, while the model writes leysir 56 times unprompted and compounds it " +
+      'correctly (leysigeisla, leysiorka, leysiaðskilnaði — the leysi- stem 546). §C73: a form ' +
+      'the model never produces is untested, not better.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['steam']),
+    is: 'gufa',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch21, the reactor and power-plant sections. The approved row was vatnsgufa (physics), ' +
+      'which is water VAPOUR and would yield vatnsgufuketill for a steam generator. MT: gufa 97 ' +
+      'against vatnsgufa 21, and the model compounds it correctly (gufuketill, Gufuþrýstingurinn).',
+  }),
+  Object.freeze({
+    en: Object.freeze(['electronegative']),
+    is: 'rafneikvæður',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch18. Makes the PAIR consistent, which is why [USER] ruled it: the book already has ' +
+      'electronegativity → rafneikvæðni in the CHEMISTRY domain, while the singular adjective sat ' +
+      'at rafeindadrægur in PHYSICS. MT: rafneikvæð- 140 against rafeindadræg- 5. ⚠️ No substring ' +
+      'collision with the existing row — "electronegativity" does not contain "electronegative" ' +
+      '(…ativ+ity vs …ative).',
+  }),
+  Object.freeze({
+    en: Object.freeze(['phase transition']),
+    is: 'fasabreyting',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch16. A house-consistency ruling, not a defect — hamskipti (the approved row, physics) is ' +
+      'not wrong. MT: fasabreyting 17, hamskipti 4, fasaskipti 2, and ch10 (states of matter, ' +
+      'already re-bought) came out the same way. Sending hamskipti for ch16 alone would have made ' +
+      'ch16 the outlier. Multiword, so it cannot substring-collide.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['carbon monoxide']),
+    is: 'kolmónoxíð',
+    ruled: '2026-09-21 [USER]',
+    why:
+      'ch18. The approved row was koleinoxíð (domain BIOLOGY) with 0 tokens in the MT; the model ' +
+      'writes kolmónoxíð 25 times. [USER] chose the produced form over the tví-/ein- pairing with ' +
+      'carbon dioxide → koltvíoxíð. Multiword, so it cannot substring-collide.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */
