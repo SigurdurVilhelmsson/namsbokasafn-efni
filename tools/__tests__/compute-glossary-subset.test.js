@@ -62,6 +62,36 @@ const approved = () =>
  */
 const PRE_REBUY = '212df4acb';
 
+/**
+ * 🔴 CI CHECKS OUT SHALLOW, SO THIS PIN CANNOT RESOLVE THERE — MEASURED, and it
+ * turned this file red on the 2026-09-21 push while `npm test` was green locally
+ * (CI 11 failed files / 37 tests, local 10 / 27; the extra file was this one).
+ * `.github/workflows/test.yml` uses `actions/checkout@v7` with no `fetch-depth`,
+ * which defaults to depth 1, so `git show 212df4acb:…` cannot resolve.
+ *
+ * ▶ WORSE THAN A PLAIN FAILURE, AND THAT IS THE POINT: `atRev`/`readDirAtRev`
+ * caught the error and returned `''`, which turned "I cannot measure this" into
+ * "I measured an empty corpus". Every case then came back `ABSENT` — a verdict
+ * shaped exactly like a real one. An absence is not an answer.
+ *
+ * ⚠️ `tools/__tests__/remt-checks-glossary.test.js` had already hit this and
+ * documented the remedy in this same directory: COMMIT the fixture and use the
+ * blobs only to prove the committed copy has not drifted. That is the full fix
+ * here too, and it is NOT done — the equivalent fixture is ~1.5 MB across 123
+ * files (ch10 558 KB, ch12 501 KB, ch14 425 KB). Until it is, the control
+ * SKIPS where it cannot run rather than reporting a manufactured verdict.
+ * ⚠️ Deliberately NOT solved with `fetch-depth: 0` — that file measured `.git`
+ * at 4.2 GB and rejected it for the same reason.
+ */
+const revResolvable = (() => {
+  try {
+    execSync(`git cat-file -e ${PRE_REBUY}^{commit}`, { cwd: ROOT, stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+})();
+
 const atRev = (rel) => {
   try {
     return execSync(`git show ${PRE_REBUY}:${rel}`, {
@@ -113,8 +143,16 @@ describe('the control set — each case measured before the tool existed', () =>
     ['ch13', 'equilibrium', 'EXCLUDED:already-handled', 'the model says jafnvægi unprompted'],
   ];
   for (const [chd, term, want, why] of CASES) {
-    it(`${chd}: ${term} -> ${want} (${why})`, () => {
-      expect(verdict(run(chd), term)).toBe(want);
+    // `.skip` rather than a silent pass: a control that cannot reach its corpus
+    // must say so. The reason is in the revResolvable docstring above.
+    const t = revResolvable ? it : it.skip;
+    t(`${chd}: ${term} -> ${want} (${why})`, () => {
+      // POSITIVE CONTROL ON THE FIXTURE ITSELF. Without this, any future change
+      // that empties the corpus reproduces the exact defect this guard was added
+      // for — every term ABSENT, read as a verdict.
+      const r = run(chd);
+      expect(r.subset.length + r.excluded.length).toBeGreaterThan(0);
+      expect(verdict(r, term)).toBe(want);
     });
   }
 });
@@ -155,8 +193,16 @@ describe('the units the rules depend on', () => {
 });
 
 describe('non-vacuity — the walk must actually reach the corpus', () => {
-  it('ch16 yields a non-empty subset from a non-empty approved list', () => {
+  // 🔴 SPLIT BY WHAT EACH HALF DEPENDS ON. "cannot reach the corpus" and
+  // "reached the corpus and found nothing" are DIFFERENT FACTS, and only the
+  // second is a defect. The first half reads the WORKING TREE and therefore
+  // runs everywhere, including CI's shallow clone; the second reads the pinned
+  // revision and cannot. Skipping both would throw away a check CI can make.
+  it('the approved list is non-empty — needs no git, so it runs in CI too', () => {
     expect(approved().length).toBeGreaterThan(500);
+  });
+
+  (revResolvable ? it : it.skip)('ch16 yields a non-empty subset, and rules fired', () => {
     const r = run('ch16');
     expect(r.subset.length).toBeGreaterThan(0);
     expect(r.excluded.length).toBeGreaterThan(0); // rules fired
