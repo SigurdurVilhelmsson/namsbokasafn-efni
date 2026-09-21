@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_oxtoacid_img",
+ "renderHash": "c0afbbf6818c9e22",
+ "composedHash": "c0afbbf6818c9e22",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "alcohol": "alkóhól",
+  "aldehyde": "aldehýð",
+  "carboxylic acid": "karboxýlsýra"
+ },
+ "mtAlternatives": {
+  "alcohol": {
+   "kept": "joined",
+   "other": "áfengi",
+   "reason": "disagree",
+   "mt": "alkóhól"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

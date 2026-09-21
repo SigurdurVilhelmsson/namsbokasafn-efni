@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_oxidation_img",
+ "renderHash": "014b3f4fef5e0f9d",
+ "composedHash": "014b3f4fef5e0f9d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "alcohol": "alkóhól",
+  "carbonyl group": "karbónýlhópur",
+  "Oxidation": "oxun"
+ },
+ "mtAlternatives": {
+  "alcohol": {
+   "kept": "joined",
+   "other": "áfengi",
+   "reason": "disagree",
+   "mt": "alkóhól"
+  },
+  "Oxidation": {
+   "kept": "joined",
+   "other": "Oxun",
+   "reason": "disagree",
+   "mt": "oxun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

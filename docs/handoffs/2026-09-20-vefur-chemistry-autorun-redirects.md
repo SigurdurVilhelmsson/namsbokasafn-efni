@@ -226,3 +226,24 @@ _Slug map 45 → 48: **added=3, changed=0, removed=0**, from a before/after diff
 | `chapters/19/19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka.html` | `chapters/19/19-3-litrofs-og-seguleiginleikar-girdisambanda.html` | m68844 |
 
 _Slug map 48 → 50: **added=2, changed=0, removed=0**, from a before/after diff._
+
+## ch20 — prepared 2026-09-21 (~1,817 ISK all in) — 🔴 FOUR ROWS, AND ONE SUPERSEDES AN EARLIER ONE
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/20/20-1-kolvetni.html` | `chapters/20/20-1-vetniskolefni.html` | m68846 |
+| `chapters/20/20-2-alkohol-og-etrar.html` | `chapters/20/20-2-alkohol-og-eterar.html` | m68847 |
+| `chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html` | `chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html` | m68848 |
+| `chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html` | `chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html` | m68848 |
+
+🔴 **THE FOURTH ROW IS A CHAIN COLLAPSE AND IT SUPERSEDES A ROW ALREADY PUBLISHED ABOVE.** The
+"ch10 / ch12 / ch14 / ch15" section lists
+`20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html → 20-3-aldehyd-keton-karboxylsyrur-og-estrar.html`.
+**That target no longer exists** — this run renamed it again — so the slug map rewrote the older
+entry's `to` in place. ▶ **Use the fourth row above and DISCARD the earlier one.** The render log
+printed only THREE renames and said nothing about the rewrite; only the before/after diff
+(`50 → 53: added=3, changed=1, removed=0`) shows it. This is the documented ch10 hazard firing for
+real: transcribing the render log would have left a live URL pointing at a deleted page.
+
+⚠️ **The first row is the `hydrocarbon → vetniskolefni` ruling reaching the §20.1 section URL** —
+the page was literally named `kolvetni`, the word that meant both *hydrocarbon* and *carbohydrate*.

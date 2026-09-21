@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alkenes_img",
+ "renderHash": "c97c4092be29fed9",
+ "composedHash": "c97c4092be29fed9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethene|(ethylene)": "eten (etýlen)",
+  "propene|(propylene)": "própen (própýlen)",
+  "1-butene": "1-búten",
+  "2-butene": "2-búten"
+ },
+ "mtAlternatives": {
+  "ethene|(ethylene)": {
+   "kept": "joined",
+   "other": "Eten (etýlen)",
+   "reason": "disagree",
+   "mt": "eten (etýlen)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

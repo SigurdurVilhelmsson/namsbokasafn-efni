@@ -1,0 +1,37 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_LineStruct1",
+ "renderHash": "bc697c3e62e829db",
+ "composedHash": "bc697c3e62e829db",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Expanded formula": "Opin byggingarformúla",
+  "Condensed formula": "Þétt byggingarformúla",
+  "Skeletal structure": "Beinagrindarformúla"
+ },
+ "mtAlternatives": {
+  "Expanded formula": {
+   "kept": "joined",
+   "other": "Útvíkkuð formúla",
+   "reason": "disagree",
+   "mt": "Opin byggingarformúla"
+  },
+  "Condensed formula": {
+   "kept": "joined",
+   "other": "Samandregin formúla",
+   "reason": "disagree",
+   "mt": "Þétt byggingarformúla"
+  },
+  "Skeletal structure": {
+   "kept": "joined",
+   "other": "Beinabygging",
+   "reason": "disagree",
+   "mt": "Beinagrindarformúla"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

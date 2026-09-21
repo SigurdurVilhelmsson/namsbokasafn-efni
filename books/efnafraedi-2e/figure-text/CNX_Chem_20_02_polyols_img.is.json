@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_polyols_img",
+ "renderHash": "940165ea6e75a272",
+ "composedHash": "940165ea6e75a272",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1,2,3-propanetriol": "1,2,3-própanþríól",
+  "1,2-ethanediol": "1,2-etanþíól"
+ },
+ "mtAlternatives": {
+  "1,2,3-propanetriol": {
+   "kept": "joined",
+   "other": "1,2,3-própantríól",
+   "reason": "disagree",
+   "mt": "1,2,3-própanþríól"
+  },
+  "1,2-ethanediol": {
+   "kept": "joined",
+   "other": "1,2-etandíól",
+   "reason": "disagree",
+   "mt": "1,2-etanþíól"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

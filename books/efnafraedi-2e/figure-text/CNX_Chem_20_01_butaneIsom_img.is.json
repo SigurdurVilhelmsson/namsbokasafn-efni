@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_butaneIsom_img",
+ "renderHash": "e2099a50ff774c4c",
+ "composedHash": "e2099a50ff774c4c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "n-butane": "n-bútan",
+  "2-methylpropane": "2-metýlprópan"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

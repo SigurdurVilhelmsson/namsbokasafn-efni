@@ -775,3 +775,34 @@ any future ch19 inject** — the documented plain command does not reproduce it.
 
 **Roundtrip: 2 ATTR rows, both benign** — source alts ending in a trailing space that the
 round-trip trims, the same class as ch16's and ch18's.
+
+## ch20 — 6 units · ~1,784 ISK text + ~33 ISK figures · `DONE=ok`, PREPARED
+
+**17-term subset** = the audited 9 + eight. `arm: 6 of 6 glossary-only`. 5 modules COMPLETE,
+manifest `green=true unexplained=0`, 133 perfect. 9 pages, **0 raw `[[` against a 180-marker
+positive control**. **Roundtrip completely clean — 0 ATTR/TEXT/BUILD rows, 0 non-`meaning#`.**
+
+🔴 **THE LARGEST SUBSET GAP OF THE CAMPAIGN: a 9-term audited subset omitted SIX of ch20's own
+chapter-scoped rulings** — `alcohol`, `ether`, `carboxylic acid`, `ketone`, `carbonyl group`, and
+the newly-ruled `hydrocarbon`. Measured before adding:
+
+| term | EN | before | after |
+|---|---|---|---|
+| **hydrocarbon** | 105 | `vetniskolefni` **3**, `kolvetni` **45** | **85 / 0** |
+| ether | 70 | `eter` 28 | 46 |
+| carboxylic acid | 39 | `karboxýlsýr` 22 | 39 |
+| ketone | 33 | `ketón` 25 | 35 |
+| alcohol | 65 | `alkóhól` 53 | 64 |
+| carbonyl group | 29 | `karbónýlhóp` 26 | 29 |
+| carbohydrate | 7 | `sykra` 8 | 10 (+ `sykrur` 16) |
+
+✅ **`kolvetni` 45 → 0. The collision the whole terminology round was about is gone from ch20**, and
+`chapters/20/20-1-kolvetni.html` became `20-1-vetniskolefni.html` — the §20.1 section URL itself.
+
+⚠️ **`group` was deliberately NOT added**, though it is a chapter-scoped ruling the subset omits:
+its own justification says *"SEND IT IN ch02's SUBSET ONLY. In ch20 the same English word means a
+functional group … where hópur is right."* ▶ **A blanket "add every chapter-scoped ruling" would
+have shipped the wrong word here** — the check is per-term measurement, not a rule.
+
+🔴 **FOUR redirect rows, not the three the render log printed** — a chain collapse rewrote an
+earlier entry's target. See the redirects handoff; one previously-published row is superseded.

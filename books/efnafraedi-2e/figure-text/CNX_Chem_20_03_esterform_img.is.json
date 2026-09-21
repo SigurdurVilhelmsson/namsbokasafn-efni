@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_esterform_img",
+ "renderHash": "769b4baf86b01f06",
+ "composedHash": "769b4baf86b01f06",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HOCH2CH3": "HOCH2CH3",
+  "ethyl acetate": "etýlasetat",
+  "ethanol": "etanól",
+  "acetic acid": "ediksýra"
+ },
+ "mtAlternatives": {
+  "ethyl acetate": {
+   "kept": "joined",
+   "other": "Etýlasetat",
+   "reason": "disagree",
+   "mt": "etýlasetat"
+  },
+  "acetic acid": {
+   "kept": "joined",
+   "other": "Ediksýra",
+   "reason": "disagree",
+   "mt": "ediksýra"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

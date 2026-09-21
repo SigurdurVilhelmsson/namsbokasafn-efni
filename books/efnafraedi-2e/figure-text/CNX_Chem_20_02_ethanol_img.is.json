@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_ethanol_img",
+ "renderHash": "87a812d3269dfedd",
+ "composedHash": "87a812d3269dfedd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HOH": "HOH"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

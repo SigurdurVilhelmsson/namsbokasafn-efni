@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_amide1_img",
+ "renderHash": "a70cf6bf4f63b6ac",
+ "composedHash": "a70cf6bf4f63b6ac",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "acetamide": "asetamíð",
+  "hexanamide": "hexanamíð"
+ },
+ "mtAlternatives": {
+  "hexanamide": {
+   "kept": "joined",
+   "other": "Hexanamíð",
+   "reason": "disagree",
+   "mt": "hexanamíð"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

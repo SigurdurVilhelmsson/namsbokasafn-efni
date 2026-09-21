@@ -1,0 +1,93 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_FunctGroup_img",
+ "renderHash": "e8bc142302e0aeaf",
+ "composedHash": "e8bc142302e0aeaf",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Structure of Compound|and Functional Group (red)": "Bygging efnasambands og virks hóps (rautt)",
+  "Compound|Name ": "Heiti efnasambands",
+  "alcohol": "alkóhól",
+  "ether": "eter",
+  "aldehyde": "aldehýð",
+  "ketone": "ketón",
+  "carboxylic|acid": "karboxýlsýra",
+  "ester": "ester",
+  "amide": "amíð",
+  "amine": "amín",
+  "Name": "Heiti",
+  "Formula": "Formúla",
+  "Example ": "Dæmi",
+  "alkyne": "alkýn",
+  "alkene": "alken",
+  "CH3CHO": "CH3CHO",
+  "CH3COCH2CH3": "CH3COCH2CH3",
+  "CH3COOH": "CH3COOH",
+  "CH3CONH2": "CH3CONH2",
+  "ethanol": "etanól",
+  "ethyne": "etýn",
+  "ethene": "eten",
+  "diethyl ether": "díetýleter",
+  "ethanal": "etanal",
+  "methyl ethyl ketone": "metýletýlketón",
+  "acetic acid": "ediksýra",
+  "ethyl acetate": "etýlasetat",
+  "ethylamine": "etýlamín",
+  "acetamide": "asetamíð"
+ },
+ "mtAlternatives": {
+  "Compound|Name ": {
+   "kept": "joined",
+   "other": "Samsett nafn",
+   "reason": "disagree",
+   "mt": "Heiti efnasambands"
+  },
+  "alcohol": {
+   "kept": "joined",
+   "other": "áfengi",
+   "reason": "disagree",
+   "mt": "alkóhól"
+  },
+  "ester": {
+   "kept": "joined",
+   "other": "Ester",
+   "reason": "disagree",
+   "mt": "ester"
+  },
+  "Name": {
+   "kept": "joined",
+   "other": "Nafn",
+   "reason": "disagree",
+   "mt": "Heiti"
+  },
+  "alkyne": {
+   "kept": "joined",
+   "other": "alkín",
+   "reason": "disagree",
+   "mt": "alkýn"
+  },
+  "ethyne": {
+   "kept": "joined",
+   "other": "etín",
+   "reason": "disagree",
+   "mt": "etýn"
+  },
+  "ethanal": {
+   "kept": "joined",
+   "other": "Etanöl",
+   "reason": "disagree",
+   "mt": "etanal"
+  },
+  "ethyl acetate": {
+   "kept": "joined",
+   "other": "Etýlasetat",
+   "reason": "disagree",
+   "mt": "etýlasetat"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 29
+ }
+}

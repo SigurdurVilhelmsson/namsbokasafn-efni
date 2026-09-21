@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_amide2_img",
+ "renderHash": "a93d7d12a6dd9cab",
+ "composedHash": "a93d7d12a6dd9cab",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "amine": "amín",
+  "amide": "amíð",
+  "water": "vatn",
+  "carboxylic acid": "karboxýlsýra"
+ },
+ "mtAlternatives": {
+  "water": {
+   "kept": "joined",
+   "other": "Vatn",
+   "reason": "disagree",
+   "mt": "vatn"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

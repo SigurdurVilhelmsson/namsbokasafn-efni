@@ -1,0 +1,60 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_DNA",
+ "renderHash": "37469350fc474b07",
+ "composedHash": "37469350fc474b07",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Nitrogenous bases:": "Niturbasar:",
+  "Adenine|Thymine|Guanine|Cytosine": "Adenín Týmín Gúanín Cýtósín",
+  "Sugar-|phosphate|backbone": "Sykr-fosfat burðarás",
+  "Base pair": "Basapar",
+  "Thymine": "Týmín",
+  "Adenine": "Adenín",
+  "Hydrogen bonds": "Vetnistengi",
+  "Sugar-phosphate|backbone": "Sykr-fosfat burðarás",
+  "Bases": "Basar",
+  "Guanine": "Gúanín",
+  "Cytosine": "Cýtósín",
+  "Nitrogenous base": "Niturbasi",
+  "Sugar": "Sykra",
+  "Phosphate": "Fosfat"
+ },
+ "mtAlternatives": {
+  "Sugar-|phosphate|backbone": {
+   "kept": "joined",
+   "other": "Sykur-fosfat burðarás",
+   "reason": "disagree",
+   "mt": "Sykr-fosfat burðarás"
+  },
+  "Sugar-phosphate|backbone": {
+   "kept": "joined",
+   "other": "Sykur-fosfat burðarás",
+   "reason": "disagree",
+   "mt": "Sykr-fosfat burðarás"
+  },
+  "Bases": {
+   "kept": "joined",
+   "other": "Grunnatriði",
+   "reason": "disagree",
+   "mt": "Basar"
+  },
+  "Nitrogenous base": {
+   "kept": "joined",
+   "other": "Niturgrunnur",
+   "reason": "disagree",
+   "mt": "Niturbasi"
+  },
+  "Sugar": {
+   "kept": "joined",
+   "other": "Sykur",
+   "reason": "disagree",
+   "mt": "Sykra"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 14
+ }
+}

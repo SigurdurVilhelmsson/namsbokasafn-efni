@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alkanes",
+ "renderHash": "da3ac95efbbee61e",
+ "composedHash": "da3ac95efbbee61e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "methane|CH4": "metan CH4",
+  "ethane|CH3CH3 or C2H6": "etan CH3CH3 eða C2H6",
+  "pentane|CH3CH2CH2CH2CH3 or C5H12": "pentan CH3CH2CH2CH2CH3 eða C5H12"
+ },
+ "mtAlternatives": {
+  "methane|CH4": {
+   "kept": "joined",
+   "other": "Metan CH4",
+   "reason": "disagree",
+   "mt": "metan CH4"
+  },
+  "pentane|CH3CH2CH2CH2CH3 or C5H12": {
+   "kept": "joined",
+   "other": "Pentan CH3CH2CH2CH2CH3 eða C5H12",
+   "reason": "disagree",
+   "mt": "pentan CH3CH2CH2CH2CH3 eða C5H12"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

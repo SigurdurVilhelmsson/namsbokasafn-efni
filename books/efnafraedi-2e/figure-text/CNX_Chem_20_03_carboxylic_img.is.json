@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_carboxylic_img",
+ "renderHash": "0068986825b24f22",
+ "composedHash": "0068986825b24f22",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "propionic acid": "própíónsýra",
+  "proprionate ion": "própíónatjón",
+  "NaOH": "NaOH"
+ },
+ "mtAlternatives": {
+  "propionic acid": {
+   "kept": "joined",
+   "other": "Própíónsýra",
+   "reason": "disagree",
+   "mt": "própíónsýra"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

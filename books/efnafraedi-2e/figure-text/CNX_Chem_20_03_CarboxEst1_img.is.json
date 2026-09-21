@@ -1,0 +1,68 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_CarboxEst1_img",
+ "renderHash": "4a6656b3f9f2d2f3",
+ "composedHash": "4a6656b3f9f2d2f3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "OCH3": "OCH3",
+  "Rum|propyl isobutyrate": "Romm própýlísóbútýrat",
+  "Peach|benzyl acetate": "Ferskja bensýlasetat",
+  "Raspberry|iso-butyl formate": "Hindber ísóbútýlformat",
+  "Wintergreen|methyl salicylate": "Vetrargræna metýlsalisýlat",
+  "Apple|butyl acetate": "Epli bútýlasetat",
+  "Pineapple|ethyl butyrate": "Ananas etýlbútýrat",
+  "Orange|octyl acetate": "Appelsína oktýlasetat",
+  "Honey|methyl phenylacetate": "Hunang metýlfenýlasetat",
+  "Strawberry|ethyl methylphenylglycidate": "Jarðarber etýlmetýlfenýlglýsidat"
+ },
+ "mtAlternatives": {
+  "Rum|propyl isobutyrate": {
+   "kept": "joined",
+   "other": "Rúmprópýlísóbútýrat",
+   "reason": "disagree",
+   "mt": "Romm própýlísóbútýrat"
+  },
+  "Peach|benzyl acetate": {
+   "kept": "joined",
+   "other": "Ferskju bensýl asetat",
+   "reason": "disagree",
+   "mt": "Ferskja bensýlasetat"
+  },
+  "Raspberry|iso-butyl formate": {
+   "kept": "joined",
+   "other": "Hindberjaísóbútýlformat",
+   "reason": "disagree",
+   "mt": "Hindber ísóbútýlformat"
+  },
+  "Wintergreen|methyl salicylate": {
+   "kept": "joined",
+   "other": "Metýlsalisýlat úr vetrargrænu",
+   "reason": "disagree",
+   "mt": "Vetrargræna metýlsalisýlat"
+  },
+  "Apple|butyl acetate": {
+   "kept": "joined",
+   "other": "Eplabútýlasetat",
+   "reason": "disagree",
+   "mt": "Epli bútýlasetat"
+  },
+  "Orange|octyl acetate": {
+   "kept": "joined",
+   "other": "Appelsínuoktýlasetat",
+   "reason": "disagree",
+   "mt": "Appelsína oktýlasetat"
+  },
+  "Strawberry|ethyl methylphenylglycidate": {
+   "kept": "joined",
+   "other": "Etýlmetýlfenýlglýsídat með jarðarberjabragði",
+   "reason": "disagree",
+   "mt": "Jarðarber etýlmetýlfenýlglýsidat"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}

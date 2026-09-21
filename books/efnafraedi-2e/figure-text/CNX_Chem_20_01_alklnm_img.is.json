@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alklnm_img",
+ "renderHash": "dd68abca403d7194",
+ "composedHash": "dd68abca403d7194",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "3-ethylheptane": "3-etýlheptan",
+  "2,2,4-trimethylpentane": "2,2,4-trímetýlpentan",
+  "4-isopropylheptane": "4-ísóprópýlheptan"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

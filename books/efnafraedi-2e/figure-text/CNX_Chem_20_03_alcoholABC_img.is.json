@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_alcoholABC_img",
+ "renderHash": "bd135d553f1ea284",
+ "composedHash": "bd135d553f1ea284",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Compound C": "Efnasamband C",
+  "Compound A": "Efnasamband A",
+  "Compound B": "Efnasamband B"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

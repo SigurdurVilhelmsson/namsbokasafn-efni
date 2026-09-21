@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_ether_img",
+ "renderHash": "b402e5d7e5ee42e3",
+ "composedHash": "b402e5d7e5ee42e3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HOH": "HOH",
+  "diethyl ether": "díetýleter",
+  "ethanol": "etanól",
+  "sulfuric acid": "brennisteinssýra"
+ },
+ "mtAlternatives": {
+  "HOH": {
+   "kept": "joined",
+   "other": "Hjúskaparstaða",
+   "reason": "disagree",
+   "mt": "HOH"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

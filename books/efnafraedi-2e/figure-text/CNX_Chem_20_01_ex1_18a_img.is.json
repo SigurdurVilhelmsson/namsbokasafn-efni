@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_ex1_18a_img",
+ "renderHash": "dc048a0b040651fd",
+ "composedHash": "dc048a0b040651fd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CH3CHCH2CCH3": "CH3CHCH2CCH3"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

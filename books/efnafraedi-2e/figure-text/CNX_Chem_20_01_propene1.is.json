@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_propene1",
+ "renderHash": "2def91a206936c01",
+ "composedHash": "2def91a206936c01",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "propene": "própen",
+  "ethene": "eten",
+  "1-butene": "1-búten"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}
