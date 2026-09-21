@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Penetrate",
+ "renderHash": "ff2baca7f46a3d3c",
+ "composedHash": "ff2baca7f46a3d3c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Alpha": "Alfa",
+  "Beta": "Beta",
+  "Neutron": "Nifteind",
+  "Gamma": "Gamma",
+  "Paper": "Pappír",
+  "Metal": "Málmur",
+  "Water": "Vatn",
+  "Concrete": "Steinsteypa",
+  "Lead": "Blý"
+ },
+ "mtAlternatives": {
+  "Lead": {
+   "kept": "joined",
+   "other": "Aðal",
+   "reason": "disagree",
+   "mt": "Blý"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

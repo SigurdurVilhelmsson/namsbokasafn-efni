@@ -1,0 +1,69 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_RadonExpos",
+ "renderHash": "8458f9be15b27d81",
+ "composedHash": "8458f9be15b27d81",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "radon in": "radon í",
+  "Bedrock": "Berggrunni",
+  "radon in|well water": "radon í brunnvatni",
+  "radon in|ground water": "radon í grunnvatni",
+  "Fractured|bedrock": "Sprunginn berggrunnur",
+  "radium-226": "radíum-226",
+  "radium-222": "radíum-222",
+  "soil": "jörð",
+  "Alpha|particle": "Alfa-ögn",
+  "Inhalation of|radon decay|products": "Innöndun radon-hrörnunarafurða",
+  "Radiation|damage|to DNA": "Geislaskemmdir á DNA"
+ },
+ "mtAlternatives": {
+  "Bedrock": {
+   "kept": "joined",
+   "other": "Berggrunnur",
+   "reason": "disagree",
+   "mt": "Berggrunni"
+  },
+  "radon in|well water": {
+   "kept": "joined",
+   "other": "Radon í vatnsbóli",
+   "reason": "disagree",
+   "mt": "radon í brunnvatni"
+  },
+  "radon in|ground water": {
+   "kept": "joined",
+   "other": "Radon í grunnvatni",
+   "reason": "disagree",
+   "mt": "radon í grunnvatni"
+  },
+  "radium-222": {
+   "kept": "joined",
+   "other": "radín-222",
+   "reason": "disagree",
+   "mt": "radíum-222"
+  },
+  "soil": {
+   "kept": "joined",
+   "other": "Jarðvegur",
+   "reason": "disagree",
+   "mt": "jörð"
+  },
+  "Alpha|particle": {
+   "kept": "joined",
+   "other": "Alfaögn",
+   "reason": "disagree",
+   "mt": "Alfa-ögn"
+  },
+  "Inhalation of|radon decay|products": {
+   "kept": "joined",
+   "other": "Innöndun á afurðum radonsundrunar",
+   "reason": "disagree",
+   "mt": "Innöndun radon-hrörnunarafurða"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

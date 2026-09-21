@@ -1,0 +1,67 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Exposure2",
+ "renderHash": "db552e4132f3b6a2",
+ "composedHash": "db552e4132f3b6a2",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Annual nuclear worker|doses limit (NRC)|Whole body CT": "Árlegur hámarksskammtur fyrir starfsmenn í kjarnorkuverum (NRC) Tölvusneiðmynd af heilum líkama",
+  "Average US annual dose": "Meðalskammtur í Bandaríkjunum á ári",
+  "US avg. natural background dose": "Meðalgeislun frá náttúrulegum uppruna í Bandaríkjunum",
+  "Annual public dose|limit (NRC)|From your body": "Árleg geislamörk fyrir almenning (NRC) Frá líkamanum",
+  "Cosmic rays": "Geimgeislar",
+  "Chest X-rays": "Röntgenmyndir af brjóstkassa",
+  "Safe drinking water limit (EPA)": "Öryggismörk fyrir neysluvatn (EPA)",
+  "Trans-Atlantic flight": "Flug yfir Atlantshaf",
+  "Doses (millirems)": "Skammtar (millirem)",
+  "Radiation Doses and Regulatory Limits (in Millirems)": "Geislaskammtar og viðmiðunarmörk (í milliremum)",
+  "Dose limit |from NRC-licensed |activity": "Skammtamörk frá starfsemi með leyfi frá NRC",
+  "Radiation doses": "Geislaskammtar"
+ },
+ "mtAlternatives": {
+  "Annual nuclear worker|doses limit (NRC)|Whole body CT": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Árlegur hámarksskammtur fyrir starfsmenn í kjarnorkuverum (NRC) Tölvusneiðmynd af heilum líkama"
+  },
+  "Average US annual dose": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Meðalskammtur í Bandaríkjunum á ári"
+  },
+  "US avg. natural background dose": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Meðalgeislun frá náttúrulegum uppruna í Bandaríkjunum"
+  },
+  "Annual public dose|limit (NRC)|From your body": {
+   "kept": "joined",
+   "other": "Árleg skammtamörk fyrir almenning (NRC) Frá líkama þínum",
+   "reason": "disagree",
+   "mt": "Árleg geislamörk fyrir almenning (NRC) Frá líkamanum"
+  },
+  "Safe drinking water limit (EPA)": {
+   "kept": "joined",
+   "other": "Öryggismörk fyrir drykkjarvatn (EPA)",
+   "reason": "disagree",
+   "mt": "Öryggismörk fyrir neysluvatn (EPA)"
+  },
+  "Trans-Atlantic flight": {
+   "kept": "joined",
+   "other": "Flug yfir Atlantshafið",
+   "reason": "disagree",
+   "mt": "Flug yfir Atlantshaf"
+  },
+  "Dose limit |from NRC-licensed |activity": {
+   "kept": "joined",
+   "other": "Skammtamörk vegna starfsemi með leyfi frá NRC",
+   "reason": "disagree",
+   "mt": "Skammtamörk frá starfsemi með leyfi frá NRC"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 12
+ }
+}

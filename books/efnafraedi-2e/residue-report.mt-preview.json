@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-21T18:49:09.110Z",
+  "generatedAt": "2026-09-21T20:03:21.631Z",
   "summary": {
-    "modulesWithResidue": 3,
-    "exactResidues": 74,
-    "ratioWarnings": 76,
+    "modulesWithResidue": 6,
+    "exactResidues": 81,
+    "ratioWarnings": 75,
     "toleratedResidues": 4
   },
   "modules": {
@@ -630,19 +630,16 @@
       "warnings": [
         {
           "segmentId": "m68854:solution:fs-idm31409728",
-          "ratio": 0.78
+          "ratio": 0.7
         }
       ],
       "tolerated": []
     },
     "m68858": {
-      "exact": [],
-      "warnings": [
-        {
-          "segmentId": "m68858:glossary-term:fs-idp225092016-term",
-          "ratio": 1
-        }
+      "exact": [
+        "m68858:glossary-term:fs-idp225092016-term"
       ],
+      "warnings": [],
       "tolerated": []
     },
     "m68861": {
@@ -722,6 +719,24 @@
           "ratio": 0.75
         }
       ],
+      "tolerated": []
+    },
+    "m68852": {
+      "exact": [
+        "m68852:item:fs-idp258853168-item-1",
+        "m68852:para:fs-idm5999248",
+        "m68852:para:fs-idp10810528",
+        "m68852:para:fs-idp1433408",
+        "m68852:para:fs-idp183438528"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m68856": {
+      "exact": [
+        "m68856:para:fs-idm211204656"
+      ],
+      "warnings": [],
       "tolerated": []
     }
   }

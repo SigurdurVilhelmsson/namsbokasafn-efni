@@ -267,6 +267,21 @@
       "to": "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html",
       "moduleId": "m68848",
       "recordedAt": "2026-09-21"
+    },
+    "chapters/21/21-3-geislavirk-hrornun.html": {
+      "to": "chapters/21/21-3-geislasundrun.html",
+      "moduleId": "m68854",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/21/21-4-umskipting-og-kjarnorka.html": {
+      "to": "chapters/21/21-4-frumefnabreyting-og-kjarnorka.html",
+      "moduleId": "m68856",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/21/21-5-notkun-geislasamsaeta.html": {
+      "to": "chapters/21/21-5-notkun-geislasamsaetna.html",
+      "moduleId": "m68857",
+      "recordedAt": "2026-09-21"
     }
   }
 }

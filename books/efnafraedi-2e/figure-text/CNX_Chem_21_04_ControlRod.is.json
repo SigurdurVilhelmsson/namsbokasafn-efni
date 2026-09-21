@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_04_ControlRod",
+ "renderHash": "703c08f8bafa00ed",
+ "composedHash": "703c08f8bafa00ed",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Control rods": "Stjórnstangir",
+  "Steel pressure vessel": "Þrýstihylki úr stáli",
+  "Fuel rods": "Kjarnorkueldsneytisstaflar",
+  "Grid": "Tafla"
+ },
+ "mtAlternatives": {
+  "Control rods": {
+   "kept": "joined",
+   "other": "Stýristangir",
+   "reason": "disagree",
+   "mt": "Stjórnstangir"
+  },
+  "Fuel rods": {
+   "kept": "joined",
+   "other": "Eldsneytisstaflar",
+   "reason": "disagree",
+   "mt": "Kjarnorkueldsneytisstaflar"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

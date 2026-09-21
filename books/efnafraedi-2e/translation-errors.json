@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-21T18:49:09.230Z",
+  "generated": "2026-09-21T20:03:21.783Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-21T18:49:09.230Z",
+      "generated": "2026-09-21T20:03:21.783Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 133,
-        "withDiscrepancies": 16,
-        "totalDiscrepancies": 27,
+        "perfect": 134,
+        "withDiscrepancies": 15,
+        "totalDiscrepancies": 26,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 11,
+        "deferredLosses": 10,
         "benignArtifacts": 16,
         "green": true
       },
@@ -212,19 +212,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/> in source (zero content)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68854",
-          "chapter": "ch21",
-          "discrepancies": [
-            {
-              "tag": "link",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "cross-reference (xref/docref) dropped at inject",
-              "pointer": "inject xref/docref restore — Track B/C (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
             }
           ]
         }

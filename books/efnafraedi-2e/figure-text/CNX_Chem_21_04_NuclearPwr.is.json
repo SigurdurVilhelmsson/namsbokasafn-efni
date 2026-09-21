@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_04_NuclearPwr",
+ "renderHash": "130c38dc50621b24",
+ "composedHash": "130c38dc50621b24",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Core": "Kjarni",
+  "Pressurizer": "Þrýstijafnari",
+  "Turbine": "Hverfill",
+  "Steam|generators": "Gufugjafar",
+  "Walls|made of|concrete|and steel": "Veggir úr steinsteypu og stáli"
+ },
+ "mtAlternatives": {
+  "Turbine": {
+   "kept": "joined",
+   "other": "Túrbína",
+   "reason": "disagree",
+   "mt": "Hverfill"
+  },
+  "Walls|made of|concrete|and steel": {
+   "kept": "joined",
+   "other": "Veggir úr steypu og stáli",
+   "reason": "disagree",
+   "mt": "Veggir úr steinsteypu og stáli"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

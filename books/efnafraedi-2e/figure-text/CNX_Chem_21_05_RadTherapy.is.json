@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_05_RadTherapy",
+ "renderHash": "00ac619da0bde560",
+ "composedHash": "00ac619da0bde560",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Gamma rays": "Gammageislar",
+  "Target": "Mark",
+  "Radioactive|cobalt": "Geislavirkt kóbalt"
+ },
+ "mtAlternatives": {
+  "Target": {
+   "kept": "joined",
+   "other": "Markmið",
+   "reason": "disagree",
+   "mt": "Mark"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T18:49:10.515Z",
+  "generated": "2026-09-21T20:03:38.044Z",
   "termCount": 763,
   "entries": [
     {
@@ -135,17 +135,6 @@
       "termId": "fs-idp4379168"
     },
     {
-      "termIs": "agnahraðall",
-      "termEn": "particle accelerator",
-      "termFull": "agnahraðall (e. particle accelerator)",
-      "definition": "tæki sem notar raf- og segulsvið til að auka hreyfiorku kjarna sem notaðir eru í umbreytingarhvörfum",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm66620880"
-    },
-    {
       "termIs": "aktiníð",
       "termEn": "actinide",
       "termFull": "aktiníð (e. actinide)",
@@ -179,14 +168,14 @@
       "termId": "fs-idp49554496"
     },
     {
-      "termIs": "alfa (α) rotnun",
+      "termIs": "alfa (α) sundrun",
       "termEn": "alpha (α) decay",
-      "termFull": "alfa (α) rotnun (e. alpha (α) decay)",
-      "definition": "tap á alfaeind við geislavirka rotnun",
+      "termFull": "alfa (α) sundrun (e. alpha (α) decay)",
+      "definition": "tap á alfaögn við geislasundrun",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idm27965808"
     },
     {
@@ -204,7 +193,7 @@
       "termIs": "alfaeind",
       "termEn": "alpha particle",
       "termFull": "alfaeind (e. alpha particle)",
-      "definition": "(α eða 24He eða 24α) orkuríkur helíumkjarni; helíumfrumeind sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir",
+      "definition": "(Α eða 24He eða 24α) orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir",
       "chapter": 21,
       "section": "21.2",
       "sectionTitle": "Kjarnajöfnur",
@@ -336,7 +325,7 @@
       "termIs": "andefni",
       "termEn": "antimatter",
       "termFull": "andefni (e. antimatter)",
-      "definition": "eindir með sama massa en andstæða eiginleika (svo sem hleðslu) við venjulegar eindir",
+      "definition": "eindir með sama massa en gagnstæða eiginleika (svo sem hleðslu) og venjulegar eindir",
       "chapter": 21,
       "section": "21.2",
       "sectionTitle": "Kjarnajöfnur",
@@ -707,10 +696,10 @@
       "termId": "fs-idp39277120"
     },
     {
-      "termIs": "bekkerel (Bq)",
+      "termIs": "bekerel (Bq)",
       "termEn": "becquerel (bq)",
-      "termFull": "bekkerel (Bq) (e. becquerel (bq))",
-      "definition": "SI-eining fyrir hraða geislavirkrar hrörnunar; 1 Bq = 1 sundrun/s",
+      "termFull": "bekerel (Bq) (e. becquerel (bq))",
+      "definition": "SI-eining fyrir hraða geislasundrunar; 1 Bq = 1 sundrun/s",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -718,14 +707,14 @@
       "termId": "fs-idp13479088"
     },
     {
-      "termIs": "beta (β) rotnun",
+      "termIs": "beta (β) sundrun",
       "termEn": "beta (β) decay",
-      "termFull": "beta (β) rotnun (e. beta (β) decay)",
-      "definition": "niðurbrot nifteindar í róteind, sem helst í kjarnanum, og rafeind, sem er send frá sem beta-eind",
+      "termFull": "beta (β) sundrun (e. beta (β) decay)",
+      "definition": "sundrun nifteindar í róteind, sem helst í kjarnanum, og rafeind, sem losnar sem betaögn",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp69613952"
     },
     {
@@ -762,10 +751,10 @@
       "termId": "fs-idm101700576"
     },
     {
-      "termIs": "bindiorka á kjarnaeind",
+      "termIs": "bindingarorka á hverja kjarneind",
       "termEn": "binding energy per nucleon",
-      "termFull": "bindiorka á kjarnaeind (e. binding energy per nucleon)",
-      "definition": "heildarbindiorka kjarnans deilt með fjölda kjarnaeinda í kjarnanum",
+      "termFull": "bindingarorka á hverja kjarneind (e. binding energy per nucleon)",
+      "definition": "heildarbindingarorka kjarnans deilt með fjölda kjarneinda í kjarnanum",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -1139,11 +1128,11 @@
       "termIs": "dótturkjarnategund",
       "termEn": "daughter nuclide",
       "termFull": "dótturkjarnategund (e. daughter nuclide)",
-      "definition": "kjarnategund sem myndast við geislavirka rotnun annarrar kjarnategundar; getur verið stöðug eða rotnað frekar",
+      "definition": "kjarnategund sem myndast við geislasundrun annarrar kjarnategundar; getur verið stöðug eða sundrast frekar",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp69591216"
     },
     {
@@ -1387,6 +1376,17 @@
       "sectionTitle": "Jóna- og sameindasambönd",
       "sectionSlug": "2-6-jona-og-sameindasambond",
       "termId": "fs-idp136404896"
+    },
+    {
+      "termIs": "eindahraðall",
+      "termEn": "particle accelerator",
+      "termFull": "eindahraðall (e. particle accelerator)",
+      "definition": "tæki sem notar raf- og segulsvið til að auka hreyfiorku kjarna sem notaðir eru í frumefnabreytingarhvörfum",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm66620880"
     },
     {
       "termIs": "einfalt tengi",
@@ -1873,6 +1873,17 @@
       "termId": "fs-idp141099136"
     },
     {
+      "termIs": "frumefnabreytingarhvarf",
+      "termEn": "transmutation reaction",
+      "termFull": "frumefnabreytingarhvarf (e. transmutation reaction)",
+      "definition": "árekstur einnar tegundar kjarna við aðra kjarna eða nifteindir",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm223971840"
+    },
+    {
       "termIs": "frumefni",
       "termEn": "element",
       "termFull": "frumefni (e. element)",
@@ -1950,21 +1961,21 @@
       "termId": "fs-idm159189392"
     },
     {
-      "termIs": "gamma (γ) útblástur",
+      "termIs": "gamma (γ) losun",
       "termEn": "gamma (γ) emission",
-      "termFull": "gamma (γ) útblástur (e. gamma (γ) emission)",
-      "definition": "hrörnun örvaðs kirnis sem fylgir útsending gammageisla",
+      "termFull": "gamma (γ) losun (e. gamma (γ) emission)",
+      "definition": "sundrun örvaðrar kjarnategundar ásamt losun gammageisla",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idm27366640"
     },
     {
       "termIs": "gammageisli",
       "termEn": "gamma ray",
       "termFull": "gammageisli (e. gamma ray)",
-      "definition": "(γ eða 00γ) stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar",
+      "definition": "(Γ eða 00γ) stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar",
       "chapter": 21,
       "section": "21.2",
       "sectionTitle": "Kjarnajöfnur",
@@ -1983,10 +1994,10 @@
       "termId": "fs-idm37203312"
     },
     {
-      "termIs": "Geiger-teljari",
+      "termIs": "Geiger-nemi",
       "termEn": "geiger counter",
-      "termFull": "Geiger-teljari (e. geiger counter)",
-      "definition": "tæki sem greinir og mælir geislun með jónun sem myndast í Geiger-Müller-röri",
+      "termFull": "Geiger-nemi (e. geiger counter)",
+      "definition": "tæki sem nemur og mælir geislun með jónun sem myndast í Geiger-Müller-röri",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -1994,25 +2005,25 @@
       "termId": "fs-idp77369424"
     },
     {
-      "termIs": "geislaaldursgreining",
+      "termIs": "geislaaldursákvörðun",
       "termEn": "radiometric dating",
-      "termFull": "geislaaldursgreining (e. radiometric dating)",
-      "definition": "notkun geislasamsæta og eiginleika þeirra til að aldursgreina myndun hluta eins og fornleifa, áður lifandi lífvera eða jarðmyndana",
+      "termFull": "geislaaldursákvörðun (e. radiometric dating)",
+      "definition": "notkun geislasamsæta og eiginleika þeirra til að aldursákvarða myndun hluta eins og fornleifagripa, áður lifandi lífvera eða jarðmyndana",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp171940160"
     },
     {
       "termIs": "geislameðferð",
       "termEn": "radiation therapy",
       "termFull": "geislameðferð (e. radiation therapy)",
-      "definition": "notkun á orkuríkri geislun til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér",
+      "definition": "notkun háorkugeislunar til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsæta",
-      "sectionSlug": "21-5-notkun-geislasamsaeta",
+      "sectionTitle": "Notkun geislasamsætna",
+      "sectionSlug": "21-5-notkun-geislasamsaetna",
       "termId": "fs-idp18406528"
     },
     {
@@ -2038,32 +2049,32 @@
       "termId": "fs-idp82617008"
     },
     {
-      "termIs": "geislavirk hrörnun",
+      "termIs": "geislasundrun",
       "termEn": "radioactive decay",
-      "termFull": "geislavirk hrörnun (e. radioactive decay)",
-      "definition": "sjálfgeng hrörnun óstöðugs kirnis í annað kirni",
+      "termFull": "geislasundrun (e. radioactive decay)",
+      "definition": "sjálfkrafa sundrun óstöðugrar kjarnategundar í aðra kjarnategund",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp79161920"
     },
     {
-      "termIs": "geislavirk hrörnunarröð",
+      "termIs": "geislasundrunarröð",
       "termEn": "radioactive decay series",
-      "termFull": "geislavirk hrörnunarröð (e. radioactive decay series)",
-      "definition": "keðjur samfelldra sundrana (geislavirkra hrörnana) sem að lokum leiða til stöðugs lokaafurðar",
+      "termFull": "geislasundrunarröð (e. radioactive decay series)",
+      "definition": "keðjur af samfelldum sundrunum (geislasundrunum) sem að lokum leiða til stöðugrar lokaafurðar",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp172690976"
     },
     {
       "termIs": "geislavirkni",
       "termEn": "radioactivity",
       "termFull": "geislavirkni (e. radioactivity)",
-      "definition": "fyrirbæri sem óstöðug kjarnaeind sýnir þegar hún breytist sjálfgengt í stöðugri kjarnaeind; óstöðug kjarnaeind er sögð vera geislavirk",
+      "definition": "fyrirbæri sem óstöðug kjarneind sýnir þegar hún breytist sjálfkrafa í stöðugri kjarneind; óstöðug kjarneind er sögð vera geislavirk",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -2071,14 +2082,14 @@
       "termId": "fs-idp188698800"
     },
     {
-      "termIs": "geislavirkt snefilefni",
+      "termIs": "geislavirkt sporefni",
       "termEn": "radioactive tracer",
-      "termFull": "geislavirkt snefilefni (e. radioactive tracer)",
-      "definition": "(einnig, geislavirk merking) geislasamsæta sem er notuð til að fylgjast með eða rekja efni með því að vakta geislavirkan útblástur þess",
+      "termFull": "geislavirkt sporefni (e. radioactive tracer)",
+      "definition": "(einnig geislavirkur merkir) geislasamsæta sem notuð er til að rekja eða fylgjast með efni með því að fylgjast með geislavirkri losun þess",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsæta",
-      "sectionSlug": "21-5-notkun-geislasamsaeta",
+      "sectionTitle": "Notkun geislasamsætna",
+      "sectionSlug": "21-5-notkun-geislasamsaetna",
       "termId": "fs-idp81777184"
     },
     {
@@ -2195,7 +2206,7 @@
       "termIs": "gray (Gy)",
       "termEn": null,
       "termFull": "gray (Gy)",
-      "definition": "SI-eining til að mæla geislaskammt; 1 Gy = 1 J upptekið/kg vefjar",
+      "definition": "SI-eining til að mæla geislaskammt; 1 Gy = 1 J ísað/kg vefjar",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -2459,11 +2470,11 @@
       "termIs": "helmingunartími (t1/2)",
       "termEn": "half-life (t1/2)",
       "termFull": "helmingunartími (t1/2) (e. half-life (t1/2))",
-      "definition": "tíminn sem það tekur helming frumeinda í geislavirku sýni að hrörna",
+      "definition": "tími sem það tekur helming atóma í geislavirku sýni að sundrast",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp172569488"
     },
     {
@@ -2476,6 +2487,17 @@
       "sectionTitle": "Heildunarhraðalögmál",
       "sectionSlug": "12-4-heildunarhradalogmal",
       "termId": "fs-idm46849712"
+    },
+    {
+      "termIs": "hemilstöng",
+      "termEn": "control rod",
+      "termFull": "hemilstöng (e. control rod)",
+      "definition": "efni sem er sett inn í eldsneytissamstæðuna sem gleypir nifteindir og hægt er að hækka eða lækka til að stilla hraða kjarnaklofnunar",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm206270992"
     },
     {
       "termIs": "Henderson-Hasselbalch jafnan",
@@ -2577,6 +2599,17 @@
       "termId": "fs-idp10384768"
     },
     {
+      "termIs": "hleypimassi",
+      "termEn": "critical mass",
+      "termFull": "hleypimassi (e. critical mass)",
+      "definition": "magn klofnanlegs efnis sem viðheldur sjálfbæru keðjuhvarfi (kjarnaklofnun)",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm1727408"
+    },
+    {
       "termIs": "hliðarhópur",
       "termEn": "substituent",
       "termFull": "hliðarhópur (e. substituent)",
@@ -2610,10 +2643,10 @@
       "termId": "fs-idp7162656"
     },
     {
-      "termIs": "hlutfallsleg líffræðileg virkni (RBE)",
+      "termIs": "hlutfallsleg líffræðileg verkun (RBE)",
       "termEn": "relative biological effectiveness (rbe)",
-      "termFull": "hlutfallsleg líffræðileg virkni (RBE) (e. relative biological effectiveness (rbe))",
-      "definition": "mælikvarði á hlutfallslegan skaða sem geislun veldur",
+      "termFull": "hlutfallsleg líffræðileg verkun (RBE) (e. relative biological effectiveness (rbe))",
+      "definition": "mælikvarði á hlutfallslegan skaða af völdum geislunar",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -2957,19 +2990,19 @@
       "definition": "(einnig hlíf) þrískipt mannvirki úr efnum sem verndar ytra byrði kjarnaklofnunarofns og starfsfólk fyrir háum hita, þrýstingi og geislun inni í ofninum",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm220735792"
     },
     {
       "termIs": "innri geislameðferð",
       "termEn": "internal radiation therapy",
       "termFull": "innri geislameðferð (e. internal radiation therapy)",
-      "definition": "(einnig, inngeislun) geislun frá geislavirku efni sem sett er inn í líkamann til að drepa krabbameinsfrumur",
+      "definition": "(einnig nálameðferð) geislun frá geislavirku efni sem komið er fyrir í líkamanum til að drepa krabbameinsfrumur",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsæta",
-      "sectionSlug": "21-5-notkun-geislasamsaeta",
+      "sectionTitle": "Notkun geislasamsætna",
+      "sectionSlug": "21-5-notkun-geislasamsaetna",
       "termId": "fs-idp166135008"
     },
     {
@@ -3028,6 +3061,17 @@
       "termId": "fs-idp94243488"
     },
     {
+      "termIs": "ísaður geislaskammtur (rad)",
+      "termEn": "radiation absorbed dose (rad)",
+      "termFull": "ísaður geislaskammtur (rad) (e. radiation absorbed dose (rad))",
+      "definition": "SI-eining til að mæla geislaskammt, oft notuð í læknisfræðilegum tilgangi; 1 rad = 0,01 Gy",
+      "chapter": 21,
+      "section": "21.6",
+      "sectionTitle": "Líffræðileg áhrif geislunar",
+      "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
+      "termId": "fs-idp38524656"
+    },
+    {
       "termIs": "ísómerur",
       "termEn": "isomers",
       "termFull": "ísómerur (e. isomers)",
@@ -3042,7 +3086,7 @@
       "termIs": "jafngildisjafna massa og orku",
       "termEn": "mass-energy equivalence equation",
       "termFull": "jafngildisjafna massa og orku (e. mass-energy equivalence equation)",
-      "definition": "Jafna Alberts Einstein sem sýnir að massi og orka eru jafngild",
+      "definition": "samband Alberts Einsteins sem sýnir að massi og orka eru jafngild",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -3116,26 +3160,26 @@
       "termId": "fs-idp143563616"
     },
     {
-      "termIs": "jáeind (+10β eða +10e)",
+      "termIs": "jákvæðindalosun",
+      "termEn": "positron emission",
+      "termFull": "jákvæðindalosun (e. positron emission)",
+      "definition": "(einnig β+-sundrun) umbreyting róteindar í nifteind, sem verður eftir í kjarnanum, og jákvæðind, sem losnar",
+      "chapter": 21,
+      "section": "21.3",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
+      "termId": "fs-idm24356480"
+    },
+    {
+      "termIs": "jákvæðiseind eða",
       "termEn": "positron (+10β or +10e)",
-      "termFull": "jáeind (+10β eða +10e) (e. positron (+10β or +10e))",
-      "definition": "andeind rafeindarinnar; hún hefur sömu eiginleika og rafeind, fyrir utan að hafa andstæða (jákvæða) hleðslu",
+      "termFull": "jákvæðiseind eða (e. positron (+10β or +10e))",
+      "definition": "andeind rafeindarinnar; hún hefur sömu eiginleika og rafeind, fyrir utan að hafa gagnstæða (jákvæða) hleðslu",
       "chapter": 21,
       "section": "21.2",
       "sectionTitle": "Kjarnajöfnur",
       "sectionSlug": "21-2-kjarnajofnur",
       "termId": "fs-idp72108384"
-    },
-    {
-      "termIs": "jáeindarútgáfa",
-      "termEn": "positron emission",
-      "termFull": "jáeindarútgáfa (e. positron emission)",
-      "definition": "(einnig, β+ hrörnun) umbreyting róteindar í nifteind, sem helst í kjarnanum, og jáeind, sem er gefin út",
-      "chapter": 21,
-      "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
-      "termId": "fs-idm24356480"
     },
     {
       "termIs": "jón",
@@ -3174,7 +3218,7 @@
       "termIs": "jónandi geislun",
       "termEn": "ionizing radiation",
       "termFull": "jónandi geislun (e. ionizing radiation)",
-      "definition": "geislun sem getur valdið því að sameind missi rafeind og myndi jón",
+      "definition": "geislun sem getur valdið því að sameind missir rafeind og myndar jón",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -3358,14 +3402,14 @@
       "termId": "fs-idp1800912"
     },
     {
-      "termIs": "keðjuverkun",
+      "termIs": "keðjuhvarf",
       "termEn": "chain reaction",
-      "termFull": "keðjuverkun (e. chain reaction)",
-      "definition": "endurtekin kjarnaklofnun sem verður þegar nifteindir sem losna við klofnun rekast á önnur atóm",
+      "termFull": "keðjuhvarf (e. chain reaction)",
+      "definition": "endurtekin kjarnaklofnun sem verður þegar nifteindir sem losna við kjarnaklofnun rekast á önnur atóm",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm128080144"
     },
     {
@@ -3446,10 +3490,21 @@
       "termId": "fs-idm228140240"
     },
     {
+      "termIs": "kjarnabindingarorka",
+      "termEn": "nuclear binding energy",
+      "termFull": "kjarnabindingarorka (e. nuclear binding energy)",
+      "definition": "orka sem tapast þegar kjarneindir atóms bindast saman (eða orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir)",
+      "chapter": 21,
+      "section": "21.1",
+      "sectionTitle": "Gerð og stöðugleiki kjarna",
+      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
+      "termId": "fs-idm27477328"
+    },
+    {
       "termIs": "kjarnaefnafræði",
       "termEn": "nuclear chemistry",
       "termFull": "kjarnaefnafræði (e. nuclear chemistry)",
-      "definition": "fræðigrein sem fæst við rannsóknir á byggingu frumeindarkjarna og ferla sem breyta byggingu kjarna",
+      "definition": "fræðigrein sem fjallar um byggingu atómkjarna og ferla sem breyta byggingu kjarna",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -3457,26 +3512,37 @@
       "termId": "fs-idp125852496"
     },
     {
-      "termIs": "kjarnaeind",
-      "termEn": "nucleon",
-      "termFull": "kjarnaeind (e. nucleon)",
-      "definition": "samheiti yfir róteindir og nifteindir í kjarna",
-      "chapter": 21,
-      "section": "21.1",
-      "sectionTitle": "Gerð og stöðugleiki kjarna",
-      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
-      "termId": "fs-idm41591488"
-    },
-    {
       "termIs": "kjarnaeldsneyti",
       "termEn": "nuclear fuel",
       "termFull": "kjarnaeldsneyti (e. nuclear fuel)",
-      "definition": "klofnanleg samsæta sem er til staðar í nægilegu magni til að tryggja sjálfbæra keðjuverkun í kjarnaofni",
+      "definition": "kleyf samsæta sem er til staðar í nægilegu magni til að viðhalda sjálfbæru keðjuhvarfi í kjarnaofni",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm227895952"
+    },
+    {
+      "termIs": "kjarnafrumefnabreyting",
+      "termEn": "nuclear transmutation",
+      "termFull": "kjarnafrumefnabreyting (e. nuclear transmutation)",
+      "definition": "umbreyting einnar kjarnategundar í aðra kjarnategund",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm74066144"
+    },
+    {
+      "termIs": "kjarnahemilefni",
+      "termEn": "nuclear moderator",
+      "termFull": "kjarnahemilefni (e. nuclear moderator)",
+      "definition": "efni sem hægir á nifteindum niður í hraða sem er nógu lágur til að valda kjarnaklofnun",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idm204101584"
     },
     {
       "termIs": "kjarnahvarf",
@@ -3490,58 +3556,36 @@
       "termId": "fs-idm45950256"
     },
     {
-      "termIs": "kjarnahægir",
-      "termEn": "nuclear moderator",
-      "termFull": "kjarnahægir (e. nuclear moderator)",
-      "definition": "efni sem hægir á nifteindum niður í nægilega lágan hraða til að valda kjarnaklofnun",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm204101584"
-    },
-    {
       "termIs": "kjarnaklofnun",
       "termEn": "fission",
       "termFull": "kjarnaklofnun (e. fission)",
-      "definition": "klofnun þyngri kjarna í tvo eða fleiri léttari kjarna, yfirleitt samfara umbreytingu massa í mikið magn orku",
+      "definition": "klofnun þyngri kjarna í tvo eða fleiri léttari kjarna, sem venjulega fylgir umbreyting massa í mikið magn orku",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm195851664"
     },
     {
       "termIs": "kjarnaofn",
       "termEn": "nuclear reactor",
       "termFull": "kjarnaofn (e. nuclear reactor)",
-      "definition": "umhverfi sem framleiðir orku með kjarnaklofnun þar sem keðjuverkuninni er stjórnað og hún viðhaldið án sprengingar",
+      "definition": "umhverfi sem framleiðir orku með kjarnaklofnun þar sem keðjuhvarfinu er stjórnað og það viðhaldið án sprengingar",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm39349824"
-    },
-    {
-      "termIs": "kjarnasamrunaofn",
-      "termEn": "fusion reactor",
-      "termFull": "kjarnasamrunaofn (e. fusion reactor)",
-      "definition": "kjarnaofn þar sem samrunahvörfum léttra kjarna er stjórnað",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idp7149200"
     },
     {
       "termIs": "kjarnasamruni",
       "termEn": "fusion",
       "termFull": "kjarnasamruni (e. fusion)",
-      "definition": "samruni mjög léttra kjarna í þyngri kjarna, samfara umbreytingu massa í mikið magn orku",
+      "definition": "samruni mjög léttra kjarna í þyngri kjarna, sem fylgir umbreyting massa í mikið magn orku",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm135521664"
     },
     {
@@ -3556,26 +3600,15 @@
       "termId": "fs-idm80685920"
     },
     {
-      "termIs": "kjarnaumbreyting",
-      "termEn": "nuclear transmutation",
-      "termFull": "kjarnaumbreyting (e. nuclear transmutation)",
-      "definition": "umbreyting eins núklíðs í annað núklíð",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm74066144"
-    },
-    {
-      "termIs": "kjarnbindiorka",
-      "termEn": "nuclear binding energy",
-      "termFull": "kjarnbindiorka (e. nuclear binding energy)",
-      "definition": "orka sem tapast þegar kjarnaeindir frumeindar bindast saman (eða orkan sem þarf til að kljúfa kjarna í róteindir og nifteindir)",
+      "termIs": "kjarneind",
+      "termEn": "nucleon",
+      "termFull": "kjarneind (e. nucleon)",
+      "definition": "samheiti yfir róteindir og nifteindir í kjarna",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
       "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
-      "termId": "fs-idm27477328"
+      "termId": "fs-idm41591488"
     },
     {
       "termIs": "kjarni",
@@ -3639,8 +3672,8 @@
       "definition": "þegar efni er fært um að viðhalda kjarnaklofnunarhvarfi",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm208194016"
     },
     {
@@ -3677,14 +3710,14 @@
       "termId": "fs-idp51669120"
     },
     {
-      "termIs": "kolefnisaldursgreining",
+      "termIs": "kolefnisaldursákvörðun",
       "termEn": "radiocarbon dating",
-      "termFull": "kolefnisaldursgreining (e. radiocarbon dating)",
-      "definition": "mjög nákvæm aðferð til að aldursgreina 30.000–50.000 ára gamla hluti sem eitt sinn voru úr lifandi efni; framkvæmt með því að reikna hlutfall 614C : 612C í hlutnum á móti hlutfalli 614C : 612C í andrúmslofti nútímans",
+      "termFull": "kolefnisaldursákvörðun (e. radiocarbon dating)",
+      "definition": "mjög nákvæm aðferð til að aldursákvarða 30.000–50.000 ára gamla hluti sem eitt sinn voru lifandi efni; framkvæmt með því að reikna út hlutfall 614C : 612C í hlutnum á móti hlutfalli 614C : 612C í andrúmslofti nútímans",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp10803760"
     },
     {
@@ -3754,10 +3787,10 @@
       "termId": "fs-idm99275552"
     },
     {
-      "termIs": "kúrý (Ci)",
+      "termIs": "kúrí (Ci)",
       "termEn": "curie (ci)",
-      "termFull": "kúrý (Ci) (e. curie (ci))",
-      "definition": "stærri eining fyrir hraða geislavirkrar hrörnunar sem oft er notuð í læknisfræði; 1 Ci = 3,7 × 1010 sundranir/s",
+      "termFull": "kúrí (Ci) (e. curie (ci))",
+      "definition": "stærri eining fyrir hraða geislasundrunar sem oft er notuð í læknisfræði; 1 Ci = 3,7 × 1010 sundranir/s",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -3787,14 +3820,14 @@
       "termId": "fs-idm64841104"
     },
     {
-      "termIs": "kælivökvi ofns",
+      "termIs": "kæliefni kjarnaofns",
       "termEn": "reactor coolant",
-      "termFull": "kælivökvi ofns (e. reactor coolant)",
-      "definition": "búnaður sem notaður er til að flytja varma sem myndast við kjarnaklofnun í kjarnaofni yfir í ytri suðuketil og hverfil þar sem honum er breytt í rafmagn",
+      "termFull": "kæliefni kjarnaofns (e. reactor coolant)",
+      "definition": "búnaður sem notaður er til að flytja hitann sem myndast við kjarnaklofnun í kjarnaofni yfir í ytri suðuketil og hverfil þar sem honum er breytt í rafmagn",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm187262736"
     },
     {
@@ -3845,7 +3878,7 @@
       "termIs": "leifturteljari",
       "termEn": "scintillation counter",
       "termFull": "leifturteljari (e. scintillation counter)",
-      "definition": "tæki sem notar leifturefni—efni sem gefur frá sér ljós þegar það örvast af jónandi geislun—til að greina og mæla geislun",
+      "definition": "tæki sem notar leifturefni—efni sem gefur frá sér ljós þegar það örvast af jónandi geislun—til að nema og mæla geislun",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -4189,8 +4222,8 @@
       "definition": "svipað og innri geislameðferð, en efnafræðileg efni frekar en geislavirk efni eru sett inn í líkamann til að drepa krabbameinsfrumur",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsæta",
-      "sectionSlug": "21-5-notkun-geislasamsaeta",
+      "sectionTitle": "Notkun geislasamsætna",
+      "sectionSlug": "21-5-notkun-geislasamsaetna",
       "termId": "fs-idp80557904"
     },
     {
@@ -4414,17 +4447,6 @@
       "termId": "fs-idp42386976"
     },
     {
-      "termIs": "markmassi",
-      "termEn": "critical mass",
-      "termFull": "markmassi (e. critical mass)",
-      "definition": "magn klofnanlegs efnis sem viðheldur sjálfbærri keðjuverkun (kjarnaklofnunar)",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm1727408"
-    },
-    {
       "termIs": "markpunktur",
       "termEn": "critical point",
       "termFull": "markpunktur (e. critical point)",
@@ -4458,17 +4480,6 @@
       "termId": "fs-idm12309360"
     },
     {
-      "termIs": "massagalli",
-      "termEn": "mass defect",
-      "termFull": "massagalli (e. mass defect)",
-      "definition": "munur á massa frumeindar og samanlögðum massa undirfrumeinda hennar (eða massinn sem „tapast“ þegar kjarnaeindir koma saman til að mynda kjarna)",
-      "chapter": 21,
-      "section": "21.1",
-      "sectionTitle": "Gerð og stöðugleiki kjarna",
-      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
-      "termId": "fs-idm49105504"
-    },
-    {
       "termIs": "massaprósenta",
       "termEn": "mass percentage",
       "termFull": "massaprósenta (e. mass percentage)",
@@ -4478,6 +4489,17 @@
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
       "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
       "termId": "fs-idp13058656"
+    },
+    {
+      "termIs": "massarýrð",
+      "termEn": "mass defect",
+      "termFull": "massarýrð (e. mass defect)",
+      "definition": "munur á massa atóms og samanlögðum massa undiratómaeinda þess (eða massinn sem „tapast“ þegar kjarneindir koma saman og mynda kjarna)",
+      "chapter": 21,
+      "section": "21.1",
+      "sectionTitle": "Gerð og stöðugleiki kjarna",
+      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
+      "termId": "fs-idm49105504"
     },
     {
       "termIs": "massatala (A)",
@@ -4714,7 +4736,7 @@
       "termIs": "millikúrí (mCi)",
       "termEn": "millicurie (mci)",
       "termFull": "millikúrí (mCi) (e. millicurie (mci))",
-      "definition": "stærri eining fyrir hraða geislavirkrar hrörnunar sem oft er notuð í læknisfræði; 1 Ci = 3,7 × 1010 sundranir/s",
+      "definition": "stærri eining fyrir hraða geislasundrunar sem oft er notuð í læknisfræði; 1 Ci = 3,7 × 1010 sundranir/s",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -4799,14 +4821,14 @@
       "termId": "fs-idp102632368"
     },
     {
-      "termIs": "móðurkirni",
+      "termIs": "móðurkjarnategund",
       "termEn": "parent nuclide",
-      "termFull": "móðurkirni (e. parent nuclide)",
-      "definition": "óstöðugt kirni sem breytist sjálfkrafa í annað (dóttur)kirni",
+      "termFull": "móðurkjarnategund (e. parent nuclide)",
+      "definition": "óstöðug kjarnategund sem breytist sjálfkrafa í aðra (dóttur) kjarnategund",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idp55578096"
     },
     {
@@ -5209,7 +5231,7 @@
       "termIs": "ójónandi geislun",
       "termEn": "nonionizing radiation",
       "termFull": "ójónandi geislun (e. nonionizing radiation)",
-      "definition": "geislun sem eykur hreyfingu frumeinda og sameinda; hún jafngildir því að hita sýni, en er ekki nógu orkurík til að valda jónun sameinda",
+      "definition": "geislun sem eykur hreyfingu atóma og sameinda; hún jafngildir því að hita sýni, en er ekki nógu orkurík til að valda jónun sameinda",
       "chapter": 21,
       "section": "21.6",
       "sectionTitle": "Líffræðileg áhrif geislunar",
@@ -5492,15 +5514,26 @@
       "termId": "fs-idp27115648"
     },
     {
-      "termIs": "rafeindahremming",
+      "termIs": "rafeindarhremming",
       "termEn": "electron capture",
-      "termFull": "rafeindahremming (e. electron capture)",
-      "definition": "samruni innri rafeindar við róteind sem skilar nifteind innan kjarnans",
+      "termFull": "rafeindarhremming (e. electron capture)",
+      "definition": "samruni kjarnarafeindar og róteindar sem skilar nifteind innan kjarnans",
       "chapter": 21,
       "section": "21.3",
-      "sectionTitle": "Geislavirk hrörnun",
-      "sectionSlug": "21-3-geislavirk-hrornun",
+      "sectionTitle": "Geislasundrun",
+      "sectionSlug": "21-3-geislasundrun",
       "termId": "fs-idm684928"
+    },
+    {
+      "termIs": "rafeindarvolt (eV)",
+      "termEn": "electron volt (ev)",
+      "termFull": "rafeindarvolt (eV) (e. electron volt (ev))",
+      "definition": "mælieining fyrir kjarnabindingarorku, þar sem 1 eV jafngildir orkumagninu sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt",
+      "chapter": 21,
+      "section": "21.1",
+      "sectionTitle": "Gerð og stöðugleiki kjarna",
+      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
+      "termId": "fs-idm98883968"
     },
     {
       "termIs": "rafeindaskipan",
@@ -5523,17 +5556,6 @@
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
       "sectionSlug": "6-5-lotubundnar-breytingar-a-eiginleikum-frumefna",
       "termId": "fs-idm161962320"
-    },
-    {
-      "termIs": "rafeindavolt (eV)",
-      "termEn": "electron volt (ev)",
-      "termFull": "rafeindavolt (eV) (e. electron volt (ev))",
-      "definition": "mælieining fyrir bindiorku kjarna, þar sem 1 eV jafngildir orkunni sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt",
-      "chapter": 21,
-      "section": "21.1",
-      "sectionTitle": "Gerð og stöðugleiki kjarna",
-      "sectionSlug": "21-1-gerd-og-stodugleiki-kjarna",
-      "termId": "fs-idm98883968"
     },
     {
       "termIs": "rafeindaþéttleiki",
@@ -5657,17 +5679,6 @@
       "termId": "fs-idp3194736"
     },
     {
-      "termIs": "rem (roentgen equivalent man)",
-      "termEn": "roentgen equivalent man (rem)",
-      "termFull": "rem (roentgen equivalent man) (e. roentgen equivalent man (rem))",
-      "definition": "eining fyrir geislaskemmdir, oft notuð í læknisfræði; 100 rem = 1 Sv",
-      "chapter": 21,
-      "section": "21.6",
-      "sectionTitle": "Líffræðileg áhrif geislunar",
-      "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
-      "termId": "fs-idp225092016"
-    },
-    {
       "termIs": "reynsluformúla",
       "termEn": "empirical formula",
       "termFull": "reynsluformúla (e. empirical formula)",
@@ -5677,6 +5688,17 @@
       "sectionTitle": "Efnaformúlur",
       "sectionSlug": "2-4-efnaformulur",
       "termId": "fs-idm164678176"
+    },
+    {
+      "termIs": "roentgen equivalent man (rem)",
+      "termEn": null,
+      "termFull": "roentgen equivalent man (rem)",
+      "definition": "eining fyrir geislaskemmdir, oft notuð í læknisfræði; 100 rem = 1 Sv",
+      "chapter": 21,
+      "section": "21.6",
+      "sectionTitle": "Líffræðileg áhrif geislunar",
+      "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
+      "termId": "fs-idp225092016"
     },
     {
       "termIs": "rof",
@@ -6139,6 +6161,17 @@
       "sectionTitle": "Sámeindasvigrúmskenningin",
       "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm167738656"
+    },
+    {
+      "termIs": "samrunaofn",
+      "termEn": "fusion reactor",
+      "termFull": "samrunaofn (e. fusion reactor)",
+      "definition": "kjarnaofn þar sem stjórnað er samrunahvörfum léttra kjarna",
+      "chapter": 21,
+      "section": "21.4",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
+      "termId": "fs-idp7149200"
     },
     {
       "termIs": "samsætur",
@@ -6661,7 +6694,7 @@
       "termIs": "sterki kjarnakrafturinn",
       "termEn": "strong nuclear force",
       "termFull": "sterki kjarnakrafturinn (e. strong nuclear force)",
-      "definition": "aðdráttarkraftur milli kjarnaeinda sem heldur kjarna saman",
+      "definition": "aðdráttarkraftur milli kjarneinda sem heldur kjarna saman",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -6711,17 +6744,6 @@
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
       "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
       "termId": "fs-idp25650896"
-    },
-    {
-      "termIs": "stjórnstöng",
-      "termEn": "control rod",
-      "termFull": "stjórnstöng (e. control rod)",
-      "definition": "efni sem stungið er inn í eldsneytissamstæðuna sem gleypir nifteindir og hægt er að hækka eða lækka til að stilla hraða kjarnaklofnunarhvarfs",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm206270992"
     },
     {
       "termIs": "Storknun",
@@ -6815,7 +6837,7 @@
       "termIs": "stöðugleikabelti",
       "termEn": "band of stability",
       "termFull": "stöðugleikabelti (e. band of stability)",
-      "definition": "(einnig, stöðugleikasvæði eða stöðugleikadalur) svæði á línuriti fjölda róteinda á móti fjölda nifteinda sem inniheldur stöðuga (ekki geislavirka) kjarna",
+      "definition": "(einnig stöðugleikasvæði eða stöðugleikadalur) svæði á grafi yfir fjölda róteinda á móti fjölda nifteinda sem inniheldur stöðugar (ekki geislavirkar) kjarnategundir",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -7464,7 +7486,7 @@
       "termIs": "töfratala",
       "termEn": "magic number",
       "termFull": "töfratala (e. magic number)",
-      "definition": "kjarnar með ákveðnum fjölda kjarnaeinda sem eru innan stöðugleikabeltisins",
+      "definition": "kjarnar með ákveðnum fjölda kjarneinda sem eru innan stöðugleikabeltisins",
       "chapter": 21,
       "section": "21.1",
       "sectionTitle": "Gerð og stöðugleiki kjarna",
@@ -7481,17 +7503,6 @@
       "sectionTitle": "Varmamælingar",
       "sectionSlug": "5-2-varmamaelingar",
       "termId": "fs-idp41853040"
-    },
-    {
-      "termIs": "ummyndunarhvarf",
-      "termEn": "transmutation reaction",
-      "termFull": "ummyndunarhvarf (e. transmutation reaction)",
-      "definition": "skothríð á eina tegund kjarna með öðrum kjörnum eða nifteindum",
-      "chapter": 21,
-      "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
-      "termId": "fs-idm223971840"
     },
     {
       "termIs": "umreikningsstuðull eininga",
@@ -7519,11 +7530,11 @@
       "termIs": "undirmarksstærð",
       "termEn": "subcritical mass",
       "termFull": "undirmarksstærð (e. subcritical mass)",
-      "definition": "magn klofnanlegs efnis sem getur ekki viðhaldið keðjuverkun; minna en marksstærð",
+      "definition": "magn kleyfs efnis sem getur ekki viðhaldið keðjuhvarfi; minna en marksstærð",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm151497488"
     },
     {
@@ -7560,17 +7571,6 @@
       "termId": "fs-idm26667568"
     },
     {
-      "termIs": "upptekinn geislaskammtur (rad)",
-      "termEn": "radiation absorbed dose (rad)",
-      "termFull": "upptekinn geislaskammtur (rad) (e. radiation absorbed dose (rad))",
-      "definition": "SI-eining til að mæla geislaskammt, oft notuð í læknisfræðilegum tilgangi; 1 rad = 0,01 Gy",
-      "chapter": 21,
-      "section": "21.6",
-      "sectionTitle": "Líffræðileg áhrif geislunar",
-      "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
-      "termId": "fs-idp38524656"
-    },
-    {
       "termIs": "úrkynjuð svigrúm",
       "termEn": null,
       "termFull": "úrkynjuð svigrúm",
@@ -7591,6 +7591,17 @@
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp55089136"
+    },
+    {
+      "termIs": "útgeislun",
+      "termEn": "external beam radiation therapy",
+      "termFull": "útgeislun (e. external beam radiation therapy)",
+      "definition": "geislun sem gefin er með tæki utan líkamans",
+      "chapter": 21,
+      "section": "21.5",
+      "sectionTitle": "Notkun geislasamsætna",
+      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "termId": "fs-idp44456896"
     },
     {
       "termIs": "útstreymi",
@@ -8058,11 +8069,11 @@
       "termIs": "yfirmarksstærð",
       "termEn": "supercritical mass",
       "termFull": "yfirmarksstærð (e. supercritical mass)",
-      "definition": "magn efnis þar sem tíðni kjarnaklofnunar fer vaxandi",
+      "definition": "magn efnis þar sem kjarnaklofnunartíðni er vaxandi",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm27779984"
     },
     {
@@ -8075,17 +8086,6 @@
       "sectionTitle": "Leysni",
       "sectionSlug": "11-3-leysni",
       "termId": "fs-idp69776"
-    },
-    {
-      "termIs": "ytri geislameðferð",
-      "termEn": "external beam radiation therapy",
-      "termFull": "ytri geislameðferð (e. external beam radiation therapy)",
-      "definition": "geislun sem gefin er með tæki utan líkamans",
-      "chapter": 21,
-      "section": "21.5",
-      "sectionTitle": "Notkun geislasamsæta",
-      "sectionSlug": "21-5-notkun-geislasamsaeta",
-      "termId": "fs-idp44456896"
     },
     {
       "termIs": "þensluvinna (þrýstings-rúmmálsvinna)",
@@ -8270,8 +8270,8 @@
       "definition": "frumefni með sætistölu hærri en 92; þessi frumefni finnast ekki í náttúrunni",
       "chapter": 21,
       "section": "21.4",
-      "sectionTitle": "Umskipting og kjarnorka",
-      "sectionSlug": "21-4-umskipting-og-kjarnorka",
+      "sectionTitle": "Frumefnabreyting og kjarnorka",
+      "sectionSlug": "21-4-frumefnabreyting-og-kjarnorka",
       "termId": "fs-idm188168144"
     },
     {

@@ -1,137 +1,155 @@
 <!-- SEG:m68854:title:auto-1 -->
-Geislavirk hrörnun
+Geislasundrun
 
 <!-- SEG:m68854:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68854:abstract-item:abstract-item-1 -->
-Þekkt algengar gerðir geislavirkrar hrörnunar
+Þekkt algengar tegundir geislasundrunar
 
 <!-- SEG:m68854:abstract-item:abstract-item-2 -->
-Borið kennsl á algengar eindir og orku sem koma við sögu í kjarnahrörnunarhvörfum
+Þekkt algengar agnir og orku sem koma við sögu í kjarnasundrunarhvörfum
 
 <!-- SEG:m68854:abstract-item:abstract-item-3 -->
-Skrifað og stillt jöfnur fyrir kjarnahrörnun
+Skrifað og stillt jöfnur fyrir kjarnasundrun
 
 <!-- SEG:m68854:abstract-item:abstract-item-4 -->
-Reiknað hreyfifræðilega stika fyrir hrörnunarferli, þar á meðal helmingunartíma
+Reiknað hreyfistærðir fyrir sundrunarferli, þar á meðal helmingunartíma
 
 <!-- SEG:m68854:abstract-item:abstract-item-5 -->
-Lýst algengum aðferðum við aldursgreiningu með geislamælingum
+Lýst algengum aðferðum við geislavirka aldursákvörðun
 
 <!-- SEG:m68854:para:fs-idp102942608 -->
-Eftir að Becquerel uppgötvaði geislavirkni fyrir nokkra tilviljun hófu margir framúrskarandi vísindamenn að rannsaka þetta nýja og forvitnilega fyrirbæri. Meðal þeirra voru Marie Curie (fyrsta konan til að vinna Nóbelsverðlaun og eina manneskjan til að vinna tvenn Nóbelsverðlaun á ólíkum vísindasviðum – efnafræði og eðlisfræði), sem var fyrst til að búa til hugtakið „geislavirkni“, og Ernest Rutherford (frægur fyrir gullþynnutilraunina), sem rannsakaði og nefndi þrjár af algengustu gerðum geislunar. Í upphafi tuttugustu aldar voru mörg geislavirk efni uppgötvuð, eiginleikar geislunar rannsakaðir og mældir og traustur skilningur á geislun og kjarnahrörnun þróaður.
+Eftir að Becquerel uppgötvaði geislavirkni fyrir nokkra heppni hófu margir framúrskarandi vísindamenn að rannsaka þetta nýja og forvitnilega fyrirbæri. Meðal þeirra voru Marie Curie (fyrsta konan til að vinna Nóbelsverðlaun og eina manneskjan til að vinna tvenn Nóbelsverðlaun í ólíkum vísindagreinum – efnafræði og eðlisfræði), sem var fyrst til að nota hugtakið „geislavirkni“, og Ernest Rutherford (frægur fyrir tilraun sína með gullþynnu), sem rannsakaði og nefndi þrjár af algengustu tegundum geislunar. Í upphafi tuttugustu aldar voru mörg geislavirk efni uppgötvuð, eiginleikar geislunar voru rannsakaðir og magngreindir og traustur skilningur á geislun og kjarnasundrun var þróaður.
 
 <!-- SEG:m68854:para:fs-idp202642016 -->
-Sjálfgeng breyting óstöðugs núklíðs í annað er {{term}}geislavirk hrörnun{{/term}}. Óstöðuga núklíðið er kallað {{term}}móðurnúklíð{{/term}}; núklíðið sem verður til við hrörnunina er þekkt sem {{term}}dóttur núklíð{{/term}}. Dóttur núklíðið getur verið stöðugt eða það getur hrörnað sjálft. Geislunin sem myndast við geislavirka hrörnun er þannig að dóttur núklíðið liggur nær stöðugleikabeltinu en móðurnúklíðið, þannig að staðsetning núklíðs miðað við stöðugleikabeltið getur gefið vísbendingu um hvers konar hrörnun það mun gangast undir ([[xref:CNX_Chem_21_03_Reaction1]]).
+Sjálfsprottin breyting óstöðugrar kjarnategundar í aðra er [[term:geislasundrun|term-00001]]. Óstöðuga kjarnategundin er kölluð [[term:móðurkjarnategund|term-00002]]; kjarnategundin sem verður til við sundrunina er þekkt sem [[term:dótturkjarnategund|term-00003]]. Dótturkjarnategundin getur verið stöðug eða hún getur sundrast sjálf. Geislunin sem myndast við geislasundrun er þannig að dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin, þannig að staðsetning kjarnategundar miðað við stöðugleikabeltið getur gefið vísbendingu um hvers konar sundrun hún mun gangast undir ([[xref:CNX_Chem_21_03_Reaction1]]).
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Reaction1-caption -->
-Kjarni úrans-238 (móðurnúklíðið) gengst undir α-hrörnun og myndar þóríum-234 (dóttur núklíðið). Alfaeindin fjarlægir tvær róteindir (grænar) og tvær nifteindir (gráar) úr úran-238 kjarnanum.
+Kjarni úrans-238 (móðurkjarnategundin) gengst undir α-sundrun og myndar þórín-234 (dótturkjarnategundina). Alfaagnirnar fjarlægja tvær róteindir (grænar) og tvær nifteindir (gráar) úr úran-238 kjarnanum.
+
+<!-- SEG:m68854:alt:fs-idp2414480-alt -->
+Skýringarmynd sýnir tvær kúlur samsettar úr mörgum minni hvítum og grænum kúlum sem eru tengdar með hægri ör með annarri ör sem vísar niður. Vinstri kúlan, merkt „Móðurkjarni úran-238“, hefur tvær hvítar og tvær grænar kúlur sem eru nálægt hvor annarri og eru afmarkaðar með rauðu. Þessar tvær grænu og tvær hvítu kúlur eru sýndar nálægt oddinum á örinni sem vísar niður og eru merktar „alfaögn“. Hægri kúlan, merkt „Dótturkjarni radon-234“, lítur eins út og sú vinstri, en hefur pláss fyrir fjórar minni kúlur afmarkaðar með rauðri punktalínu.
 
 <!-- SEG:m68854:para:fs-idp131961680 -->
-Þrátt fyrir að geislavirk hrörnun kjarna sé of smá til að sjá með berum augum getum við óbeint skoðað geislavirka hrörnun í umhverfi sem kallast skýjahólf. Smelltu [[link:here|http://openstax.org/l/16cloudchamb]] til að fræðast um skýjahólf og sjá áhugaverða sýnikennslu á skýjahólfi frá Jefferson Lab.
+Þrátt fyrir að geislasundrun kjarna sé of smá til að sjá með berum augum, getum við óbeint skoðað geislasundrun í umhverfi sem kallast skýjahólf. Smelltu [[link:hér|http://openstax.org/l/16cloudchamb]] til að fræðast um skýjahólf og til að sjá áhugaverða sýnikennslu á skýjahólfi frá Jefferson Lab.
 
 <!-- SEG:m68854:title:fs-idp242071680-title -->
-Gerðir geislavirkrar hrörnunar
+Tegundir geislasundrunar
 
 <!-- SEG:m68854:para:fs-idp130339440 -->
-Tilraunir Ernest Rutherfords sem fólu í sér víxlverkun geislunar við segul- eða rafsvið ([[xref:CNX_Chem_21_03_Radiation]]) hjálpuðu honum að ákvarða að ein gerð geislunar samanstóð af jákvætt hlöðnum og tiltölulega massamiklum α-eindum; önnur gerð var samsett úr neikvætt hlöðnum og mun massaminni β-eindum; og sú þriðja voru óhlaðnar rafsegulbylgjur, γ-geislar. Við vitum nú að α-eindir eru orkumiklir helíumkjarnar, β-eindir eru orkumiklar rafeindir og γ-geislun samanstendur af orkumikilli rafsegulgeislun. Við flokkum mismunandi gerðir geislavirkrar hrörnunar eftir geisluninni sem myndast.
+Tilraunir Ernests Rutherfords sem fólu í sér víxlverkun geislunar við segul- eða rafsvið ([[xref:CNX_Chem_21_03_Radiation]]) hjálpuðu honum að ákvarða að ein tegund geislunar samanstóð af jákvætt hlöðnum og tiltölulega massamiklum α-ögnum; önnur tegund var samsett úr neikvætt hlöðnum og mun minni β-ögnum; og sú þriðja voru óhlaðnar rafsegulbylgjur, γ-geislar. Við vitum nú að α-agnir eru orkumiklir helínkjarnar, β-agnir eru orkumiklar rafeindir og γ-geislun samanstendur af orkumikilli rafsegulgeislun. Við flokkum mismunandi tegundir geislasundrunar eftir geisluninni sem myndast.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Radiation-caption -->
-Alfaeindir, sem dragast að neikvæðu plötunni og sveigjast tiltölulega lítið, hljóta að vera jákvætt hlaðnar og tiltölulega massamiklar. Betaeindir, sem dragast að jákvæðu plötunni og sveigjast tiltölulega mikið, hljóta að vera neikvætt hlaðnar og tiltölulega léttar. Gammageislar, sem verða ekki fyrir áhrifum af rafsviðinu, hljóta að vera óhlaðnir.
+Alfaagnir, sem dragast að neikvæðu plötunni og sveigjast tiltölulega lítið, hljóta að vera jákvætt hlaðnar og tiltölulega massamiklar. Betaagnir, sem dragast að jákvæðu plötunni og sveigjast tiltölulega mikið, hljóta að vera neikvætt hlaðnar og tiltölulega léttar. Gammageislar, sem verða ekki fyrir áhrifum af rafsviðinu, hljóta að vera óhlaðnir.
+
+<!-- SEG:m68854:alt:fs-idp137790304-alt -->
+Skýringarmynd er sýnd. Grár kassi vinstra megin á skýringarmyndinni merktur „Blýkubbur“ hefur holrúm í miðjunni þar sem sýni merkt „Geislavirkt efni“ er komið fyrir. Blár geisli kemur frá sýninu, út úr kubbinum og fer í gegnum tvær láréttar plötur sem eru merktar „Rafhlaðnar plötur“. Efri platan er merkt með plúsmerki en neðri platan er merkt með mínusmerki. Geislinn er sýndur brotna í þrjá geisla þegar hann fer á milli platnanna; í röð frá toppi til botns eru þeir rauðir, merktir „betageislar“, fjólubláir merktir „gammageislar“ og grænir merktir „alfageislar“. Geislarnir eru sýndir lenda á lóðréttri plötu merktri „Ljósmyndaplata“ hægra megin á skýringarmyndinni.
 
 <!-- SEG:m68854:para:fs-idm41800032 -->
-{{term}}Alfa (α) hrörnun{{/term}} er útblástur α-eindar úr kjarnanum. Til dæmis gengst pólóníum-210 undir α-hrörnun:
+[[term:Alfa (α) sundrun|term-00004]] er losun α-agnar úr kjarnanum. Til dæmis gengst pólon-210 undir α-sundrun:
 
 <!-- SEG:m68854:para:fs-idp202270256 -->
-Alfa-hrörnun á sér aðallega stað í þungum kjörnum (A > 200, Z > 83). Þar sem tap á α-eind gefur dóttur núklíð með massatölu sem er fjórum einingum minni og sætistölu sem er tveimur einingum minni en hjá móðurnúklíðinu, hefur dóttur núklíðið hærra n:p hlutfall en móðurnúklíðið. Ef móðurnúklíðið sem gengst undir α-hrörnun liggur fyrir neðan stöðugleikabeltið (sjá [[docref:m68851#CNX_Chem_21_01_BandStable]]), mun dóttur núklíðið liggja nær beltinu.
+Alfasundrun á sér aðallega stað í þungum kjörnum (A > 200, Z > 83). Vegna þess að tap á α-ögn gefur dótturkjarnategund með massatölu sem er fjórum einingum minni og sætistölu sem er tveimur einingum minni en móðurkjarnategundarinnar, hefur dótturkjarnategundin hærra n:p hlutfall en móðurkjarnategundin. Ef móðurkjarnategundin sem gengst undir α-sundrun liggur fyrir neðan stöðugleikabeltið (sjá [[docref:m68851#CNX_Chem_21_01_BandStable]]), mun dótturkjarnategundin liggja nær beltinu.
 
 <!-- SEG:m68854:para:fs-idm2875904 -->
-{{term}}Beta (β) hrörnun{{/term}} er útblástur rafeindar úr kjarna. Joð-131 er dæmi um núklíð sem gengst undir β-hrörnun:
+[[term:Beta (β) sundrun|term-00005]] er losun rafeindar úr kjarna. Joð-131 er dæmi um kjarnategund sem gengst undir β-sundrun:
 
 <!-- SEG:m68854:para:fs-idp100287120 -->
-Beta-hrörnun, sem má hugsa sér sem umbreytingu nifteindar í róteind og β-eind, sést í núklíðum með hátt n:p hlutfall. Beta-eindin (rafeindin) sem send er frá sér kemur úr atómkjarnanum og er ekki ein af rafeindunum sem umlykja kjarnann. Slíkir kjarnar liggja fyrir ofan stöðugleikabeltið. Útblástur rafeindar breytir ekki massatölu núklíðsins en eykur fjölda róteinda þess og fækkar nifteindum þess. Afleiðingin er sú að n:p hlutfallið lækkar og dóttur núklíðið liggur nær stöðugleikabeltinu en móðurnúklíðið gerði.
+Beta-sundrun, sem má hugsa sér sem umbreytingu nifteindar í róteind og β-ögn, sést í kjarnategundum með hátt n:p hlutfall. Beta-ögnin (rafeindin) sem gefin er út kemur frá atómkjarnanum og er ekki ein af rafeindunum sem umlykja kjarnann. Slíkir kjarnar liggja fyrir ofan stöðugleikabeltið. Útsending rafeindar breytir ekki massatölu kjarnategundarinnar en eykur fjölda róteinda hennar og fækkar nifteindum hennar. Þar af leiðandi lækkar n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði.
 
 <!-- SEG:m68854:para:fs-idp8043424 -->
-{{term}}Gammaútblástur (γ-útblástur){{/term}} sést þegar núklíð myndast í örvuðu ástandi og hrörnar síðan niður í grunnástand sitt með útblæstri γ-geisla, skammts af orkumikilli rafsegulgeislun. Tilvist kjarna í örvuðu ástandi er oft táknuð með stjörnu (*). Kóbalt-60 gefur frá sér γ-geislun og er notað í mörgum tilgangi, þar á meðal krabbameinsmeðferð:
+[[term:Gamma-útsending (γ-útsending)|term-00006]] sést þegar kjarnategund myndast í örvuðu ástandi og sundrast síðan niður í grunnástand sitt með útsendingu γ-geisla, skammts af háorku rafsegulgeislun. Tilvist kjarna í örvuðu ástandi er oft táknuð með stjörnu (*). Kóbalt-60 gefur frá sér γ-geislun og er notað í mörgum tilgangi, þar á meðal krabbameinsmeðferð:
 
 <!-- SEG:m68854:para:fs-idp50313008 -->
-Engin breyting verður á massatölu eða sætistölu við útblástur γ-geisla nema γ-útblásturinn fylgi einhverri annarri gerð hrörnunar.
+Engin breyting verður á massatölu eða sætistölu við útsendingu γ-geisla nema γ-útsendingin fylgi einhverri annarri gerð sundrunar.
 
 <!-- SEG:m68854:para:fs-idp18009856 -->
-{{term}}Jáeindarútblástur (β[[sup:+]] hrörnun{{/term}}) er útblástur jáeindar úr kjarnanum. Súrefni-15 er dæmi um núklíð sem gengst undir jáeindarútblástur:
+[[term:Jákvæðaeindaútsending (β[[sup:+]]-sundrun|term-00007]]) er útsending jákvæðaeindar úr kjarnanum. Súrefni-15 er dæmi um kjarnategund sem gengst undir jákvæðaeindaútsendingu:
 
 <!-- SEG:m68854:para:fs-idp125268336 -->
-Jáeindalosun sést hjá kjarnategundum þar sem hlutfall nifteinda og róteinda (n:p) er lágt. Þessar kjarnategundir liggja fyrir neðan stöðugleikabeltið. Jáeindahrörnun er umbreyting róteindar í nifteind með losun jáeindar. Hlutfall nifteinda og róteinda eykst og dótturkjarninn liggur nær stöðugleikabeltinu en móðurkjarninn gerði.
+Jákvæðaeindaútsending sést hjá kjarnategundum þar sem n:p hlutfallið er lágt. Þessar kjarnategundir liggja fyrir neðan stöðugleikabeltið. Jákvæðaeindasundrun er umbreyting róteindar í nifteind með útsendingu jákvæðaeindar. N:p hlutfallið eykst og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði.
 
 <!-- SEG:m68854:para:fs-idp123320528 -->
-{{term}}Rafeindahremming{{/term}} á sér stað þegar ein af innri rafeindum frumeindar er hremmd af kjarna frumeindarinnar. Til dæmis verður kalíum-40 fyrir rafeindahremmingu:
+[[term:Rafeindarhremming|term-00008]] á sér stað þegar ein af innri rafeindum atóms er hremmd af kjarna atómsins. Til dæmis gengst kalíum-40 undir rafeindarhremmingu:
 
 <!-- SEG:m68854:para:fs-idm42894208 -->
-Rafeindahremming á sér stað þegar rafeind úr innra hvolfi sameinast róteind og breytist í nifteind. Missir rafeindar úr innra hvolfi skilur eftir sig laust pláss sem fyllist af einni af ytri rafeindunum. Þegar ytri rafeindin fellur niður í lausa plássið losnar orka. Í flestum tilfellum er orkan sem losnar í formi röntgengeislunar. Líkt og jáeindalosun á rafeindahremming sér stað hjá „róteindaríkum“ kjörnum sem liggja fyrir neðan stöðugleikabeltið. Rafeindahremming hefur sömu áhrif á kjarnann og jáeindalosun: Sætistalan lækkar um einn og massatalan breytist ekki. Þetta eykur hlutfall nifteinda og róteinda og dótturkjarninn liggur nær stöðugleikabeltinu en móðurkjarninn gerði. Erfitt er að spá fyrir um hvort rafeindahremming eða jáeindalosun eigi sér stað. Valið ræðst fyrst og fremst af hraðafræðilegum þáttum og líklegra er að það ferli eigi sér stað sem krefst minni virkjunarorku.
+Rafeindarhremming á sér stað þegar rafeind úr innra hveli sameinast róteind og breytist í nifteind. Við tap á rafeind úr innra hveli myndast laust pláss sem ein af ytri rafeindunum fyllir. Þegar ytri rafeindin fellur niður í lausa plássið gefur hún frá sér orku. Í flestum tilfellum er orkan sem gefin er út í formi röntgengeisla. Eins og jákvæðaeindaútsending á rafeindarhremming sér stað fyrir „róteindaríka“ kjarna sem liggja fyrir neðan stöðugleikabeltið. Rafeindarhremming hefur sömu áhrif á kjarnann og jákvæðaeindaútsending: Sætistalan lækkar um einn og massatalan breytist ekki. Þetta eykur n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði. Erfitt er að spá fyrir um hvort rafeindarhremming eða jákvæðaeindaútsending eigi sér stað. Valið er fyrst og fremst vegna hreyfifræðilegra þátta, þar sem sú sem krefst minni virkjunarorku er líklegri til að eiga sér stað.
 
 <!-- SEG:m68854:para:fs-idp132245344 -->
-[[xref:CNX_Chem_21_03_RadioDecay]] tekur saman þessar tegundir hrörnunar, ásamt jöfnum þeirra og breytingum á sætis- og massatölum.
+[[xref:CNX_Chem_21_03_RadioDecay]] tekur saman þessar gerðir sundrunar, ásamt jöfnum þeirra og breytingum á sætis- og massatölum.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_RadioDecay-caption -->
-Þessi tafla tekur saman tegund, kjarnajöfnu, táknun og allar breytingar á massa- eða sætistölum fyrir ýmsar tegundir hrörnunar.
+Þessi tafla tekur saman gerð, kjarnajöfnu, framsetningu og allar breytingar á massa- eða sætistölum fyrir ýmsar gerðir sundrunar.
+
+<!-- SEG:m68854:alt:fs-idp47033488-alt -->
+Þessi tafla hefur fjóra dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Gerð“, „Kjarnajafna“, „Framsetning“ og „Breyting á massa-/sætistölum“. Undir dálkinum „Gerð“ er eftirfarandi: „Alfa-sundrun“, „Beta-sundrun“, „Gamma-sundrun“, „Jákvæðaeindaútsending“ og „Rafeindarhremming“. Undir dálkinum „Kjarnajafna“ eru nokkrar jöfnur. Hver byrjar á hávísi A yfir lágvísi Z X. Það er stórt bil og síðan eftirfarandi jöfnur: „hávísir 4 yfir lágvísi 2 He plús hávísir A mínus 4 yfir lágvísi Z mínus 2 Y“, „hávísir 0 yfir lágvísi mínus 1 e plús hávísir A yfir lágvísi Z plús 1 Y“, „hávísir 0 yfir lágvísi 0 lágstafur gamma plús hávísir A yfir lágvísi Z Y“, „hávísir 0 yfir lágvísi plús 1 e plús hávísir A yfir lágvísi Y mínus 1 Y“ og „hávísir 0 yfir lágvísi mínus 1 e plús hávísir A yfir lágvísi Y mínus 1 Y“. Undir dálkinum „Framsetning“ eru fimm skýringarmyndir. Sú fyrsta sýnir þyrpingu af grænum og hvítum kúlum. Hluti þyrpingarinnar sem inniheldur tvær hvítar og tvær grænar kúlur er útlínuteiknaður. Það er ör sem vísar til hægri að svipaðri þyrpingu og áður var lýst, en útlínuteiknaði hlutinn vantar. Frá örinni kvíslast önnur ör af og vísar niður. Litla þyrpingin með tveimur hvítum kúlum og tveimur grænum kúlum birtist við enda örvarinnar. Næsta skýringarmynd sýnir sömu þyrpingu af hvítum og grænum kúlum. Ein hvít kúla er útlínuteiknuð. Það er ör sem vísar til hægri að svipaðri þyrpingu, en hvíta kúlan vantar. Önnur ör kvíslast af aðalörinni og rauð kúla með mínusmerki birtist við endann. Næsta skýringarmynd sýnir sömu þyrpingu af hvítum og grænum kúlum. Öll kúlan er útlínuteiknuð og merkt „örvað kjarnaástand“. Það er ör sem vísar til hægri sem bendir á sömu þyrpingu. Engar kúlur vantar. Af aðalörinni er önnur ör sem vísar á fjólubláa hlykkjótta ör sem aftur vísar á lágstafinn gamma. Næsta skýringarmynd sýnir sömu þyrpingu af hvítum og grænum kúlum. Ein græn kúla er útlínuteiknuð. Það er ör sem vísar til hægri að svipaðri þyrpingu, en græna kúlan vantar. Önnur ör kvíslast af aðalörinni og rauð kúla með plúsmerki birtist við endann. Næsta skýringarmynd sýnir sömu þyrpingu af hvítum og grænum kúlum. Ein græn kúla er útlínuteiknuð. Það er ör sem vísar til hægri að svipaðri þyrpingu, en græna kúlan vantar. Tvær aðrar örvar kvíslast af aðalörinni. Sú fyrsta sýnir gullna kúlu með mínusmerki sem sameinast örinni sem vísar til hægri. Hin vísar á bláa hlykkjótta ör merkta „röntgengeisli“. Undir dálkinum „Breyting á massa-/sætistölum“ er eftirfarandi: „A: minnkar um 4, Z: minnkar um 2“, „A: óbreytt, Z: eykst um 1“, „A: óbreytt, Z: óbreytt“, „A: óbreytt, Z: óbreytt“, „A: óbreytt, Z: minnkar um 1“ og „A: óbreytt, Z: minnkar um 1“.
 
 <!-- SEG:m68854:note-title:fs-idp54313680-title -->
 PET-skönnun
 
 <!-- SEG:m68854:para:fs-idp214075136 -->
-Jáeindaskannar (PET-skannar) nota geislun til að greina og fylgjast með heilsufarsástandi og meta læknismeðferðir með því að sýna hvernig hlutar líkama sjúklings starfa ([[xref:CNX_Chem_21_03_PETScan]]). Til að framkvæma PET-skönnun er jáeindageislandi geislasamsæta framleidd í hringhraðli og síðan fest við efni sem er notað af þeim líkamshluta sem verið er að rannsaka. Þetta „merkta“ efnasamband, eða geislavirka snefilefni, er síðan sett inn í sjúklinginn (sprautað í æð eða andað að sér sem gasi) og hvernig vefurinn notar það sýnir hvernig það líffæri eða annað svæði líkamans starfar.
+Jákvæðaskannar (PET-skannar) nota geislun til að greina og fylgjast með heilsufarsástandi og læknismeðferðum með því að sýna hvernig hlutar líkama sjúklings starfa ([[xref:CNX_Chem_21_03_PETScan]]). Til að framkvæma PET-skönnun er jáeindageislandi samsæta framleidd í hringhraðli og síðan fest við efni sem er notað af þeim líkamshluta sem verið er að rannsaka. Þetta „merkta“ efnasamband, eða geislasporefni, er síðan sett í sjúklinginn (sprautað í æð eða andað að sér sem gasi) og hvernig vefurinn notar það sýnir hvernig það líffæri eða annað svæði líkamans starfar.
 
 <!-- SEG:m68854:para:fs-idp13254880 -->
-Til dæmis er F-18 framleitt með róteindaskothríð á [[sup:18]]O [[MATH:1]] og fellt inn í glúkósahliðstæðu sem kallast flúoródexýglúkósi (FDG). Hvernig líkaminn notar FDG veitir mikilvægar greiningarupplýsingar; til dæmis, þar sem krabbamein nota glúkósa öðruvísi en venjulegir vefir, getur FDG leitt krabbamein í ljós. [[sup:18]]F gefur frá sér jáeindir sem víxlverka við nærliggjandi rafeindir og framkalla gammageislun. Þessi orka er numin af skannanum og henni er breytt í nákvæma, þrívíða litmynd sem sýnir hvernig sá hluti líkama sjúklingsins starfar. Mismunandi styrkur gammageislunar framkallar mismunandi mikinn ljósstyrk og liti á myndinni, sem geislafræðingur getur síðan túlkað til að sjá hvað er á seyði. PET-skannanir geta greint hjartaskemmdir og hjartasjúkdóma, hjálpað til við að greina Alzheimer-sjúkdóm, sýnt hvaða hluti heilans verður fyrir áhrifum af flogaveiki, leitt í ljós krabbamein, sýnt á hvaða stigi það er og hversu mikið það hefur dreift sér og hvort meðferðir skili árangri. Ólíkt segulómun og röntgenmyndum, sem sýna aðeins hvernig eitthvað lítur út, er stóri kosturinn við PET-skannanir að þær sýna hvernig eitthvað starfar. PET-skannanir eru nú venjulega framkvæmdar í tengslum við tölvusneiðmyndatöku.
+Til dæmis er F-18 framleitt með róteindaskothríð á [[sup:18]]O [[MATH:1]] og fellt inn í glúkósahliðstæðu sem kallast flúdeoxyglúkósi (FDG). Hvernig líkaminn notar FDG veitir mikilvægar greiningarupplýsingar; til dæmis, þar sem krabbamein nota glúkósa öðruvísi en venjulegir vefir, getur FDG leitt krabbamein í ljós. [[sup:18]]F gefur frá sér jáeindir sem víxlverka við nærliggjandi rafeindir og framleiða gammageislun. Þessi orka er numin af skannanum og henni er breytt í nákvæma, þrívíða litmynd sem sýnir hvernig sá hluti líkama sjúklingsins starfar. Mismunandi styrkur gammageislunar framkallar mismunandi birtustig og liti á myndinni, sem geislafræðingur getur síðan túlkað til að sjá hvað er í gangi. PET-skannanir geta greint hjartaskemmdir og hjartasjúkdóma, hjálpað til við að greina Alzheimerssjúkdóm, sýnt hvaða hluti heilans er fyrir áhrifum af flogaveiki, leitt í ljós krabbamein, sýnt á hvaða stigi það er og hversu mikið það hefur dreift sér og hvort meðferðir séu árangursríkar. Ólíkt segulómun og röntgenmyndum, sem sýna aðeins hvernig eitthvað lítur út, er stóri kosturinn við PET-skannanir að þær sýna hvernig eitthvað virkar. PET-skannanir eru nú venjulega framkvæmdar í tengslum við tölvusneiðmyndatöku.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_PETScan-caption -->
-PET-skanni (a) notar geislun til að gefa mynd af því hvernig hluti af líkama sjúklings starfar. Skannanirnar sem hann framleiðir er hægt að nota til að mynda heilbrigðan heila (b) eða til að greina sjúkdóma eins og Alzheimer-sjúkdóm (c). (heimild a: breyting á verki eftir Jens Maus)
+PET-skanni (a) notar geislun til að gefa mynd af því hvernig hluti af líkama sjúklings virkar. Skannanirnar sem hann framleiðir er hægt að nota til að mynda heilbrigðan heila (b) eða til að greina sjúkdóma eins og Alzheimerssjúkdóm (c). (heimild a: breyting á verki eftir Jens Maus)
+
+<!-- SEG:m68854:alt:fs-idp142995312-alt -->
+Þrjár myndir eru sýndar og merktar „a“, „b“ og „c“. Mynd a sýnir tæki með hringlaga opi sem er tengt við rannsóknarbekk. Mynd b er læknisfræðileg skönnun af höfði manneskju og sýnir stóra gula og rauða bletti og minni bláa, græna og fjólubláa bletti. Mynd c sýnir einnig læknisfræðilega skönnun af höfði manneskju, en þessi mynd er að mestu leyti blá og fjólublá með mjög litlum rauðum og gulum blettum.
 
 <!-- SEG:m68854:title:fs-idp89067520-title -->
-Geislavirkar hrörnunarraðir
+Geislasundrunarraðir
 
 <!-- SEG:m68854:para:fs-idp54304864 -->
-Náttúrulega geislavirkar samsætur þyngstu frumefnanna falla í keðjur af samfelldum sundrunum, eða hrörnunum, og allar tegundirnar í einni keðju mynda geislavirka fjölskyldu, eða {{term}}geislavirka hrörnunarröð{{/term}}. Þrjár af þessum röðum innihalda flest náttúrulega geislavirku frumefnin í lotukerfinu. Þær eru úranröðin, aktiníðröðin og þórínröðin. Neptúnínröðin er fjórða röðin, sem er ekki lengur marktæk á jörðinni vegna stutts helmingunartíma þeirra tegunda sem í henni eru. Hver röð einkennist af móðurefni (fyrsta meðlim) sem hefur langan helmingunartíma og röð dótturkjarna sem að lokum leiða til stöðugrar lokaafurðar — það er að segja, kjarna á stöðugleikabeltinu ([[xref:CNX_Chem_21_03_DecayS]]). Í öllum þremur röðunum er lokaafurðin stöðug samsæta blýs. Neptúnínröðin, sem áður var talin enda með bismút-209, endar með þallíum-205.
+Náttúrulega geislavirkar samsætur þyngstu frumefnanna falla í keðjur af samfelldum sundrunum og allar tegundir í einni keðju mynda geislavirka fjölskyldu, eða [[term:geislasundrunarröð|term-00009]]. Þrjár af þessum röðum innihalda flest náttúrulega geislavirk frumefni lotukerfisins. Þetta eru úranröðin, aktiníðröðin og þórínröðin. Neptúnínröðin er fjórða röðin, sem er ekki lengur marktæk á jörðinni vegna stutts helmingunartíma þeirra tegunda sem hún inniheldur. Hver röð einkennist af móðurefni (fyrsta meðlim) sem hefur langan helmingunartíma og röð dótturkjarnategunda sem að lokum leiða til stöðugrar lokaafurðar – það er að segja kjarnategundar á stöðugleikabeltinu ([[xref:CNX_Chem_21_03_DecayS]]). Í öllum þremur röðunum er lokaafurðin stöðug samsæta blýs. Neptúnínröðin, sem áður var talin enda með bismút-209, endar með þallíum-205.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DecayS-caption -->
-Úran-238 gengst undir geislavirka hrörnunarröð sem samanstendur af 14 aðskildum skrefum áður en stöðugt blý-206 myndast. Þessi röð samanstendur af átta α-hrörnunum og sex β-hrörnunum.
+Úran-238 gengst undir geislasundrunarröð sem samanstendur af 14 aðskildum skrefum áður en stöðugt blý-206 myndast. Þessi röð samanstendur af átta α-sundrunum og sex β-sundrunum.
+
+<!-- SEG:m68854:alt:fs-idm36645216-alt -->
+Sýnt er línurit þar sem x-ásinn er merktur „Fjöldi nifteinda, opinn svigi, n, loka svigi“ og hefur gildi frá 122 til 148 í 2ja þrepum. Y-ásinn er merktur „Sætistala“ og hefur gildi frá 80 til 92 í 1s þrepum. Tvær gerðir af örvum eru notaðar á þessu línuriti til að tengja punktana. Grænar örvar eru merktar sem „alfasundrun“ en rauðar örvar eru merktar „betasundrun“. Frá punktinum „92, 146“ sem er merktur „hávísir 238, U,“ tengir græn ör þennan punkt við annan punkt „90, 144“ sem er merktur „hávísir 234, Th.“ Rauð ör tengir þetta við þriðja punktinn „91, 143“ sem er merktur „hávísir 234, Pa“ sem er tengdur við fjórða punktinn „92, 142“ með rauðri ör og sem er merktur „hávísir 234, U.“ Græn ör leiðir að næsta punkti, „90, 140“ sem er merktur „hávísir 230, Th“ og er tengdur með grænni ör við sjötta punktinn, „88, 138“ sem er merktur „hávísir 226, Ra“ sem er aftur tengdur með grænni ör við sjöunda punktinn „86, 136“ sem er merktur „hávísir 222, Ra.“ Áttundi punkturinn, við „84, 134“ er merktur „hávísir 218, Po“ og hefur grænar örvar sem leiða að honum og frá honum að níunda punktinum „82, 132“ sem er merktur „hávísir 214, Pb“ sem er tengdur með rauðri ör við tíunda punktinn, „83, 131“ sem er merktur „hávísir 214, Bi.“ Rauð ör leiðir að ellefta punktinum „84, 130“ sem er merktur „hávísir 214, Po“ og græn ör leiðir að tólfta punktinum „82, 128“ sem er merktur „hávísir 210, Pb.“ Rauð ör leiðir að þrettánda punktinum „83, 127“ sem er merktur „hávísir 210, Bi“ og rauð ör leiðir að fjórtánda punktinum „84, 126“ sem er merktur „hávísir 210, Po.“ Lokapunkturinn er merktur „82, 124“ og „hávísir 206, Pb.“
 
 <!-- SEG:m68854:title:fs-idp38328768-title -->
-Geislavirkir helmingunartímar
+Helmingunartími geislavirkra efna
 
 <!-- SEG:m68854:para:fs-idp135905344 -->
-Geislavirk hrörnun fylgir fyrsta stigs hraðafræði. Þar sem ítarlega hefur verið fjallað um fyrsta stigs efnahvörf í kaflanum um hraðafræði, munum við nú beita þeim hugtökum á kjarnahrörnunarhvörf. Hver geislavirk kjarnategund hefur einkennandi, fastan {{term}}helmingunartíma{{/term}} ([[i:t]][[sub:1/2]]), sem er sá tími sem það tekur helming frumeinda í sýni að hrörna. Helmingunartími samsætu gerir okkur kleift að ákvarða hversu lengi sýni af gagnlegri samsætu verður tiltækt og hversu lengi sýni af óæskilegri eða hættulegri samsætu þarf að geyma áður en það hrörnar niður í nægilega lágt geislunarstig til að vera ekki lengur vandamál.
+Geislasundrun fylgir fyrsta stigs efnahvörfum. Þar sem ítarlega hefur verið fjallað um fyrsta stigs efnahvörf í kaflanum um efnahvörf munum við nú beita þeim hugtökum á kjarnasundrunarhvörf. Hver geislavirk kjarnategund hefur einkennandi, fastan [[term:helmingunartíma|term-00010]] ([[i:t]][[sub:1/2]]), sem er sá tími sem það tekur helming atóma í sýni að sundrast. Helmingunartími samsætu gerir okkur kleift að ákvarða hversu lengi sýni af gagnlegri samsætu verður tiltækt og hversu lengi sýni af óæskilegri eða hættulegri samsætu þarf að geyma áður en það sundrast niður í nógu lágt geislunarstig til að vera ekki lengur vandamál.
 
 <!-- SEG:m68854:para:fs-idm89252176 -->
-Til dæmis hefur kóbalt-60, samsæta sem gefur frá sér gammageisla og er notuð til að meðhöndla krabbamein, helmingunartíma upp á 5,27 ár ([[xref:CNX_Chem_21_03_HalfLife]]). Í tiltekinni kóbalt-60 uppsprettu, þar sem helmingur [[MATH:2]] kjarnanna hrörnar á 5,27 ára fresti, helmingast bæði magn efnisins og styrkur geislunarinnar sem gefin er út á 5,27 ára fresti. (Athugið að fyrir tiltekið efni er styrkur geislunarinnar sem það framleiðir í beinu hlutfalli við hrörnunarhraða efnisins og magn þess.) Þetta er eins og við mátti búast fyrir ferli sem fylgir fyrsta stigs hraðafræði. Þess vegna þarf að skipta reglulega um kóbalt-60 uppsprettu sem notuð er við krabbameinsmeðferð til að hún haldi áfram að vera virk.
+Til dæmis hefur kóbalt-60, samsæta sem gefur frá sér gammageisla og er notuð til að meðhöndla krabbamein, helmingunartíma upp á 5,27 ár ([[xref:CNX_Chem_21_03_HalfLife]]). Í tiltekinni kóbalt-60 uppsprettu, þar sem helmingur [[MATH:2]] kjarnanna sundrast á 5,27 ára fresti, helmingast bæði magn efnisins og styrkur geislunarinnar sem gefin er út á 5,27 ára fresti. (Athugið að fyrir tiltekið efni er styrkur geislunar sem það framleiðir í beinu hlutfalli við sundrunarhraða efnisins og magn efnisins.) Þetta er eins og við er að búast fyrir ferli sem fylgir fyrsta stigs efnahvörfum. Því þarf að skipta reglulega um kóbalt-60 uppsprettu sem notuð er við krabbameinsmeðferð til að hún haldi áfram að vera virk.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_HalfLife-caption -->
 Fyrir kóbalt-60, sem hefur helmingunartíma upp á 5,27 ár, eru 50% eftir eftir 5,27 ár (einn helmingunartími), 25% eru eftir eftir 10,54 ár (tveir helmingunartímar), 12,5% eru eftir eftir 15,81 ár (þrír helmingunartímar) og svo framvegis.
 
+<!-- SEG:m68854:alt:fs-idm8344304-alt -->
+Sýnt er línurit með titlinum „Sundrun Co-60“, þar sem x-ásinn er merktur „Co-60 sem eftir er (prósent)“ og hefur gildi frá 0 til 100 í 25 þrepa millibili. Y-ásinn er merktur „Fjöldi helmingunartíma“ og hefur gildi frá 0 til 5 í 1 þrepa millibili. Fyrsti punkturinn, við „0, 100“, hefur hring fylltan með örsmáum doppum teiknaðan nálægt sér merktan „10 g“. Annar punkturinn, við „1, 50“, hefur minni hring fylltan með örsmáum doppum teiknaðan nálægt sér merktan „5 g“. Þriðji punkturinn, við „2, 25“, hefur lítinn hring fylltan með örsmáum doppum teiknaðan nálægt sér merktan „2,5 g“. Fjórði punkturinn, við „3, 12,5“, hefur mjög lítinn hring fylltan með örsmáum doppum teiknaðan nálægt sér merktan „1,25 g“. Síðasti punkturinn, við „4, 6,35“, hefur örlítinn hring fylltan með örsmáum doppum teiknaðan nálægt sér merktan „625 g“.
+
 <!-- SEG:m68854:para:fs-idm84262544 -->
-Þar sem kjarnahrörnun fylgir fyrsta stigs hraðafræði getum við aðlagað stærðfræðilegu samböndin sem notuð eru fyrir fyrsta stigs efnahvörf. Við setjum yfirleitt fjölda kjarna, [[i:N]], í stað styrks. Ef hraðinn er gefinn upp í kjarnahrörnunum á sekúndu, vísum við til hans sem virkni geislavirka sýnisins. Hraðinn fyrir geislavirka hrörnun er:
+Þar sem kjarnasundrun fylgir fyrsta stigs efnahvörfum getum við lagað stærðfræðileg sambönd sem notuð eru fyrir fyrsta stigs efnahvörf. Við setjum yfirleitt fjölda kjarna, [[i:N]], í stað styrks. Ef hraðinn er gefinn upp í kjarnasundrunum á sekúndu, vísum við til þess sem virkni geislavirka sýnisins. Hraðinn fyrir geislasundrun er:
 
 <!-- SEG:m68854:para:fs-idp16246080 -->
-hrörnunarhraði = [[i:λN]] þar sem [[i:λ]] = hrörnunarfasti fyrir viðkomandi geislasamsætu
+sundrunarhraði = [[i:λN]] þar sem [[i:λ]] = sundrunarstuðull fyrir tiltekna geislasamsætu
 
 <!-- SEG:m68854:para:fs-idm22877072 -->
-Hrörnunarfastinn, [[i:λ]], er það sama og hraðafasti sem fjallað var um í kaflanum um hraðafræði. Hægt er að tákna hrörnunarfastann með tilliti til helmingunartímans, [[i:t]][[sub:1/2]]:
+Sundrunarstuðullinn, [[i:λ]], er það sama og hraðastuðull sem fjallað var um í kaflanum um efnahvörf. Hægt er að tjá sundrunarstuðulinn með tilliti til helmingunartímans, [[i:t]][[sub:1/2]]:
 
 <!-- SEG:m68854:para:fs-idp20089360 -->
 Fyrsta stigs jöfnurnar sem tengja magn, [[i:N]], og tíma eru:
 
 <!-- SEG:m68854:para:fs-idp61393104 -->
-þar sem [[i:N]][[sub:0]] er upphaflegur fjöldi kjarna eða móla af samsætunni og [[i:N[[sub:t]]]] er fjöldi kjarna/móla sem eftir eru á tíma [[i:t]]. [[xref:fs-idp79391408]] notar þessa útreikninga til að finna hraða geislavirkrar hrörnunar fyrir tilteknar kjarnategundir.
+þar sem [[i:N]][[sub:0]] er upphaflegur fjöldi kjarna eða mól af samsætunni og [[i:N[[sub:t]]]] er fjöldi kjarna/móla sem eftir eru á tíma [[i:t]]. [[xref:fs-idp79391408]] beitir þessum útreikningum til að finna hraða geislasundrunar fyrir tilteknar kjarnategundir.
 
 <!-- SEG:m68854:example-title:fs-idp79391408-title -->
-Hraði geislavirkrar hrörnunar
+Hraði geislasundrunar
 
 <!-- SEG:m68854:para:fs-idm1797296 -->
-[[MATH:3]] hrörnar með helmingunartíma 5,27 ár og myndar [[MATH:4]]
+[[MATH:3]] sundrast með helmingunartíma upp á 5,27 ár og myndar [[MATH:4]]
 
 <!-- SEG:m68854:para:fs-idp30533728 -->
-(a) Hver er hrörnunarfastinn fyrir geislavirka sundrun kóbalt-60?
+(a) Hver er sundrunarstuðullinn fyrir geislasundrun kóbalt-60?
 
 <!-- SEG:m68854:para:fs-idp132429920 -->
 (b) Reiknaðu hlutfall sýnis af [[MATH:5]] samsætunni sem verður eftir eftir 15 ár.
@@ -143,22 +161,22 @@ Hraði geislavirkrar hrörnunar
 Lausn
 
 <!-- SEG:m68854:para:fs-idm68606544 -->
-(a) Gildi hraðafastans er gefið með:
+(a) Gildi hraðastuðulsins er gefið með:
 
 <!-- SEG:m68854:para:fs-idp141655056 -->
-(b) Hlutfall [[MATH:7]] sem er eftir á tíma [[i:t]] er gefið með [[MATH:8]] Með því að endurraða fyrsta stigs sambandinu [[i:N[[sub:t]]]] = [[i:N]][[sub:0]][[i:e]][[sup:–[[i:λt]]]] til að leysa fyrir þetta hlutfall fæst:
+(b) Hlutfall [[MATH:7]] sem er eftir eftir tíma [[i:t]] er gefið með [[MATH:8]] Með því að endurraða fyrsta stigs sambandinu [[i:N[[sub:t]]]] = [[i:N]][[sub:0]][[i:e]][[sup:–[[i:λt]]]] til að leysa fyrir þetta hlutfall fæst:
 
 <!-- SEG:m68854:para:fs-idm19598048 -->
-Hlutfall [[MATH:9]] sem verður eftir eftir 15,0 ár er 0,138. Eða með öðrum orðum, 13,8% af [[MATH:10]] sem upphaflega var til staðar verður eftir eftir 15 ár.
+Hlutfall [[MATH:9]] sem verður eftir eftir 15,0 ár er 0,138. Eða með öðrum orðum, 13,8% af [[MATH:10]] sem upphaflega var til staðar verða eftir eftir 15 ár.
 
 <!-- SEG:m68854:para:fs-idp82234704 -->
-(c) 2,00% af upprunalegu magni [[MATH:11]] er jafnt og 0,0200 [[MATH:12]] [[i:N]][[sub:0]]. Með því að setja þetta inn í jöfnuna fyrir tíma fyrir fyrsta stigs hraðafræði höfum við:
+(c) 2,00% af upprunalegu magni [[MATH:11]] er jafnt og 0,0200 [[MATH:12]] [[i:N]][[sub:0]]. Með því að setja þetta inn í jöfnuna fyrir tíma fyrir fyrsta stigs efnahvörf fáum við:
 
 <!-- SEG:m68854:para-title:fs-idp7893440-title -->
 Skoðaðu þekkingu þína
 
 <!-- SEG:m68854:para:fs-idp7893440 -->
-Radon-222, [[MATH:13]] hefur helmingunartíma 3,823 daga. Hversu langan tíma mun það taka fyrir sýni af radon-222 með massa 0,750 g að hrörna í önnur frumefni, þannig að aðeins 0,100 g af radon-222 sé eftir?
+Radon-222, [[MATH:13]] hefur helmingunartímann 3,823 daga. Hversu langan tíma tekur það fyrir sýni af radon-222 með massann 0,750 g að sundrast í önnur frumefni, þannig að aðeins 0,100 g af radon-222 verði eftir?
 
 <!-- SEG:m68854:para:fs-idp89371328 -->
 11,1 dagar
@@ -170,139 +188,142 @@ Svar:
 11,1 dagar
 
 <!-- SEG:m68854:para:fs-idp76857680 -->
-Þar sem hver kjarnategund hefur ákveðinn fjölda kjarnaagna, sérstakt jafnvægi milli fráhrindikrafta og aðdráttarkrafta og sinn eigin stöðugleika, er helmingunartími geislavirkra kjarnategunda mjög breytilegur. Til dæmis: helmingunartími [[MATH:14]] er 1,9 [[MATH:15]] 10[[sup:19]] ár; [[MATH:16]] er 24.000 ár; [[MATH:17]] er 3,82 dagar; og frumefni-111 (Rg fyrir roentgeníum) er 1,5 [[MATH:18]] 10[[sup:–3]] sekúndur. Helmingunartímar nokkurra geislasamsæta sem eru mikilvægar í læknisfræði eru sýndir í [[xref:fs-idp14399952]] og aðrar eru taldar upp í viðauka M.
-
-<!-- SEG:m68854:entry:auto-59 -->
-Helmingunartímar geislasamsæta sem eru mikilvægar í læknisfræði
-
-<!-- SEG:m68854:entry:auto-60 -->
-Tegund {{fn}}„m“ í Tc-99m stendur fyrir „metastable“ (hálfstöðugt), sem gefur til kynna að þetta sé óstöðugt, orkuríkt ástand Tc-99. Hálfstöðugar samsætur gefa frá sér γ-geislun til að losna við umframorku og verða (meira) stöðugar.{{/fn}}
-
-<!-- SEG:m68854:entry:auto-61 -->
-Hrörnunarháttur
-
-<!-- SEG:m68854:entry:auto-62 -->
-Helmingunartími
-
-<!-- SEG:m68854:entry:auto-63 -->
-Notkun
-
-<!-- SEG:m68854:entry:auto-64 -->
-F-18
+Þar sem hver kjarnategund hefur ákveðinn fjölda kjarneinda, ákveðið jafnvægi milli fráhrindikrafta og aðdráttarkrafta og sinn eigin stöðugleika, er helmingunartími geislavirkra kjarnategunda mjög mismunandi. Til dæmis: helmingunartími [[MATH:14]] er 1,9 [[MATH:15]] 10[[sup:19]] ár; [[MATH:16]] er 24.000 ár; [[MATH:17]] er 3,82 dagar; og frumefni-111 (Rg fyrir röntgeníum) er 1,5 [[MATH:18]] 10[[sup:–3]] sekúndur. Helmingunartími nokkurra geislavirkra samsætna sem eru mikilvægar í læknisfræði er sýndur í [[xref:fs-idp14399952]] og aðrar eru taldar upp í [[docref:viðauka M|m68871]].
 
 <!-- SEG:m68854:entry:auto-65 -->
-β[[sup:+]]-hrörnun
+Helmingunartími geislavirkra samsætna sem eru mikilvægar í læknisfræði
 
 <!-- SEG:m68854:entry:auto-66 -->
-110 mínútur
+Tegund [[fn:„m“ í Tc-99m stendur fyrir „metastable“ (örstöðugt), sem gefur til kynna að þetta sé óstöðugt, orkuríkt ástand Tc-99. Örstöðugar samsætur gefa frá sér γ-geislun til að losa sig við umframorku og verða (stöðugri).|fs-idm12349168]]
 
 <!-- SEG:m68854:entry:auto-67 -->
-PET-skannanir
+Sundrunarháttur
 
 <!-- SEG:m68854:entry:auto-68 -->
-Co-60
+Helmingunartími
 
 <!-- SEG:m68854:entry:auto-69 -->
-β-hrörnun, γ-hrörnun
+Notkun
 
 <!-- SEG:m68854:entry:auto-70 -->
-5,27 ár
+F-18
 
 <!-- SEG:m68854:entry:auto-71 -->
-krabbameinsmeðferð
+β[[sup:+]]-sundrun
 
 <!-- SEG:m68854:entry:auto-72 -->
-Tc-99m
+110 mínútur
 
 <!-- SEG:m68854:entry:auto-73 -->
-γ-hrörnun
+PET-skannanir
 
 <!-- SEG:m68854:entry:auto-74 -->
-8,01 klukkustundir
+Co-60
 
 <!-- SEG:m68854:entry:auto-75 -->
-skannanir á heila, lungum, hjarta, beinum
+β-sundrun, γ-sundrun
 
 <!-- SEG:m68854:entry:auto-76 -->
-I-131
+5,27 ár
 
 <!-- SEG:m68854:entry:auto-77 -->
-β-hrörnun
+krabbameinsmeðferð
 
 <!-- SEG:m68854:entry:auto-78 -->
-8,02 dagar
+Tc-99m
 
 <!-- SEG:m68854:entry:auto-79 -->
-skannanir og meðferð á skjaldkirtli
+γ-sundrun
 
 <!-- SEG:m68854:entry:auto-80 -->
-Tl-201
+8,01 klukkustundir
 
 <!-- SEG:m68854:entry:auto-81 -->
-rafeindahremming
+skannanir á heila, lungum, hjarta, beinum
 
 <!-- SEG:m68854:entry:auto-82 -->
-73 klukkustundir
+I-131
 
 <!-- SEG:m68854:entry:auto-83 -->
-skannanir á hjarta og slagæðum; álagspróf hjarta
+β-sundrun
+
+<!-- SEG:m68854:entry:auto-84 -->
+8,02 dagar
+
+<!-- SEG:m68854:entry:auto-85 -->
+skannanir og meðferð á skjaldkirtli
+
+<!-- SEG:m68854:entry:auto-86 -->
+Tl-201
+
+<!-- SEG:m68854:entry:auto-87 -->
+rafeindarhremming
+
+<!-- SEG:m68854:entry:auto-88 -->
+73 klukkustundir
+
+<!-- SEG:m68854:entry:auto-89 -->
+skannanir á hjarta og slagæðum; álagspróf á hjarta
 
 <!-- SEG:m68854:title:fs-idp25396560-title -->
-Geislamælingaaldursgreining
+Geislavirknialdursákvörðun
 
 <!-- SEG:m68854:title:fs-idm78225712-title -->
-Geislamælingaaldursgreining með kolefni-14
+Geislavirk aldursákvörðun með kolefni-14
 
 <!-- SEG:m68854:para:fs-idm42065648 -->
-Geislavirkni kolefnis-14 gefur aðferð til að aldursgreina hluti sem eitt sinn voru hluti af lifandi lífveru. Þessi aðferð geislamælingaaldursgreiningar, sem einnig er kölluð {{term}}kolefnisaldursgreining{{/term}} eða kolefni-14-aldursgreining, er nákvæm til að aldursgreina kolefnisinnihaldandi efni sem eru allt að um 30.000 ára gömul og getur gefið nokkuð nákvæmar dagsetningar fyrir allt að um 50.000 ára gamla hluti.
+Geislavirkni kolefnis-14 gefur aðferð til að aldursákvarða hluti sem voru hluti af lifandi lífveru. Þessi aðferð við geislavirknialdursákvörðun, sem einnig er kölluð [[term:kolefnisaldursgreining|term-00012]] eða kolefni-14-aldursákvörðun, er nákvæm til að aldursákvarða kolefnisinnihaldandi efni sem eru allt að um 30.000 ára gömul og getur gefið nokkuð nákvæmar dagsetningar fyrir allt að um 50.000 ára gömul efni.
 
 <!-- SEG:m68854:para:fs-idp34827216 -->
-Náttúrulegt kolefni samanstendur af þremur samsætum: [[MATH:19]], sem er um 99% af kolefninu á jörðinni; [[MATH:20]], um 1% af heildinni; og snefilmagni af [[MATH:21]]. Kolefni-14 myndast í efri lofthjúpnum við efnahvarf niturfrumeinda við nifteindir úr geimgeislum:
+Náttúrulegt kolefni samanstendur af þremur samsætum: [[MATH:19]], sem er um 99% af kolefninu á jörðinni; [[MATH:20]], um 1% af heildinni; og snefilmagni af [[MATH:21]]. Kolefni-14 myndast í efri lofthjúpnum við hvarf köfnunarefnisatóma við nifteindir úr geimgeislum:
 
 <!-- SEG:m68854:para:fs-idp25818480 -->
-Allar samsætur kolefnis hvarfast við súrefni og mynda CO[[sub:2]]-sameindir. Hlutfallið milli [[MATH:22]] og [[MATH:23]] fer eftir hlutfallinu milli [[MATH:24]] og [[MATH:25]] í andrúmsloftinu. Náttúrulegt magn [[MATH:26]] í andrúmsloftinu er um það bil einn hluti á billjón; þetta hefur almennt verið stöðugt í gegnum tíðina, eins og sést í gassýnum sem finnast föst í ís. Innlimun [[MATH:27]] og [[MATH:28]] í plöntur er fastur hluti af ljóstillífunarferlinu, sem þýðir að [[MATH:29]]-hlutfallið sem finnst í lifandi plöntu er það sama og [[MATH:30]]-hlutfallið í andrúmsloftinu. En þegar plantan deyr, hættir hún að binda kolefni með ljóstillífun. Þar sem [[MATH:31]] er stöðug samsæta og gengst ekki undir geislavirka hrörnun, breytist styrkur hennar í plöntunni ekki. Hins vegar hrörnar kolefni-14 með β-útblæstri með helmingunartíma upp á 5730 ár:
+Allar samsætur kolefnis hvarfast við súrefni og mynda CO[[sub:2]]-sameindir. Hlutfallið milli [[MATH:22]] og [[MATH:23]] fer eftir hlutfallinu milli [[MATH:24]] og [[MATH:25]] í andrúmsloftinu. Náttúrulegt magn [[MATH:26]] í andrúmsloftinu er um það bil einn hluti á billjón; þar til nýlega hefur þetta almennt verið stöðugt yfir tíma, eins og sést í gassýnum sem finnast föst í ís. Upptaka [[MATH:27]] og [[MATH:28]] í plöntum er fastur liður í ljóstillífunarferlinu, sem þýðir að [[MATH:29]]-hlutfallið sem finnst í lifandi plöntu er það sama og [[MATH:30]]-hlutfallið í andrúmsloftinu. En þegar plantan deyr, hættir hún að binda kolefni með ljóstillífun. Þar sem [[MATH:31]] er stöðug samsæta og gengst ekki undir geislasundrun, breytist styrkur hennar í plöntunni ekki. Hins vegar sundrast kolefni-14 með β-losun með helmingunartíma upp á 5730 ár:
 
 <!-- SEG:m68854:para:fs-idm11295264 -->
-Þannig minnkar [[MATH:32]]-hlutfallið smám saman eftir að plantan deyr. Minnkun hlutfallsins með tímanum gefur mælikvarða á þann tíma sem liðinn er frá dauða plöntunnar (eða annarrar lífveru sem át plöntuna). [[xref:CNX_Chem_21_03_CarbonDate]] sýnir þetta ferli myndrænt.
+Þannig minnkar [[MATH:32]]-hlutfallið smám saman eftir að plantan deyr. Lækkun hlutfallsins með tímanum gefur mælikvarða á þann tíma sem liðinn er frá dauða plöntunnar (eða annarrar lífveru sem át plöntuna). [[xref:CNX_Chem_21_03_CarbonDate]] sýnir þetta ferli myndrænt.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_CarbonDate-caption -->
-Ásamt stöðugu kolefni-12 er geislavirkt kolefni-14 tekið upp af plöntum og dýrum og helst í stöðugu magni innan þeirra á meðan þau eru á lífi. Eftir dauða hrörnar C-14 og C-14:C-12 hlutfallið í leifunum minnkar. Með því að bera þetta hlutfall saman við C-14:C-12 hlutfallið í lifandi lífverum getum við ákvarðað hversu langt er síðan lífveran lifði (og dó).
+Ásamt stöðugu kolefni-12 er geislavirkt kolefni-14 tekið upp af plöntum og dýrum og helst í stöðugu magni innan þeirra á meðan þau eru á lífi. Eftir dauða sundrast C-14 og C-14:C-12 hlutfallið í leifunum minnkar. Með því að bera þetta hlutfall saman við C-14:C-12 hlutfallið í lifandi lífverum getum við ákvarðað hversu langt er síðan lífveran lifði (og dó).
+
+<!-- SEG:m68854:alt:fs-idp78510352-alt -->
+Skýringarmynd sýnir kú sem stendur á jörðinni við hliðina á tré. Efst til vinstri á skýringarmyndinni, þar sem himinninn er sýndur, er ein hvít kúla sýnd og er tengd með ör sem vísar niður á við við stærri kúlu sem samanstendur af grænum og hvítum kúlum og er merkt „hávísir 14, lágvísir 7, N“. Þessi bygging er tengd við þrjár aðrar byggingar með ör sem vísar til hægri. Hver af þeim þremur sem hún vísar á samanstendur af grænum og hvítum kúlum og allar hafa þær örvar sem vísa frá þeim til jarðar. Sú fyrsta er merkt „Leifar, hávísir 14, lágvísir 6, C“, önnur er merkt „1 prósent, hávísir 13, lágvísir 6, C“ og sú síðasta er merkt „99 prósent, hávísir 12, lágvísir 6, C“. Tvær örvar sem vísa niður á við og renna saman í eina ör leiða frá kúnni og trénu til jarðar og eru merktar „lífvera deyr“ og „hávísir 14, lágvísir 6, C, sundrun hefst“. Ör sem vísar til hægri og er merkt að ofan sem „Sundrun“ og að neðan sem „Tími“ leiðir frá þessu að merkingu „hávísir 14, lágvísir 6, C, skástrik, hávísir 12, lágvísir 6, C, hlutfall minnkað“. Nálægt toppi trésins er ör sem vísar niður á við með merkingunni „hávísir 14, lágvísir 6, C, skástrik, hávísir 12, lágvísir 6, C, hlutfall er stöðugt í lifandi lífverum“ sem leiðir að síðustu neðri staðhæfingunni.
 
 <!-- SEG:m68854:para:fs-idm5880176 -->
-Til dæmis, þar sem helmingunartími [[MATH:33]] er 5730 ár, ef [[MATH:34]]-hlutfallið í viðarhlut sem finnst við fornleifauppgröft er helmingur af því sem það er í lifandi tré, bendir það til þess að viðarhluturinn sé 5730 ára gamall. Hægt er að fá mjög nákvæmar ákvarðanir á [[MATH:35]]-hlutföllum úr mjög litlum sýnum (allt niður í milligramm) með notkun massagreinis.
+Til dæmis, þar sem helmingunartími [[MATH:33]] er 5730 ár, ef [[MATH:34]] hlutfallið í viðarhlut sem finnst við fornleifauppgröft er helmingur af því sem það er í lifandi tré, bendir það til þess að viðarhluturinn sé 5730 ára gamall. Hægt er að fá mjög nákvæmar ákvarðanir á [[MATH:35]] hlutföllum úr mjög litlum sýnum (allt niður í milligramm) með notkun massagreinis.
 
 <!-- SEG:m68854:para:fs-idp134905456 -->
-Farðu á þessa [[link:vefsíðu|http://openstax.org/l/16phetradiom]] til að framkvæma hermun á geislamælingaaldursgreiningu.
+Farðu inn á þessa [[link:vefsíðu|http://openstax.org/l/16phetradiom]] til að framkvæma hermun á aldursákvörðun með geislavirkni.
 
 <!-- SEG:m68854:example-title:fs-idm12472048-title -->
-Kolefnisaldursgreining
+Aldursákvörðun með geislakoli
 
 <!-- SEG:m68854:para:fs-idm43395808 -->
-Örlítill pappírssnepill (unninn úr plöntuefni sem áður var lifandi) tekinn úr Dauðahafshandritunum hefur virkni upp á 10,8 sundranir á mínútu á hvert gramm af kolefni. Ef upphafleg C-14-virkni var 13,6 sundranir/mín/g af C, áætlaðu þá aldur Dauðahafshandritanna.
+Örlítill pappírssnepill (framleiddur úr plöntuefni sem áður var lifandi) tekinn úr Dauðahafshandritunum hefur virkni upp á 10,8 sundranir á mínútu á hvert gramm af kolefni. Ef upphafleg C-14 virkni var 13,6 sundranir/mín/g af C, áætlaðu þá aldur Dauðahafshandritanna.
 
 <!-- SEG:m68854:para-title:fs-idp4802464-title -->
 Lausn
 
 <!-- SEG:m68854:para:fs-idp4802464 -->
-Hrörnunarhraðinn (fjöldi sundrana/mínútu/gramm af kolefni) er í réttu hlutfalli við magn geislavirks C-14 sem eftir er í pappírnum, þannig að við getum sett hraðana inn í stað magnanna, [[i:N]], í sambandinu:
+Sundrunarhraðinn (fjöldi sundrana/mínútu/gramm af kolefni) er í réttu hlutfalli við magn geislavirks C-14 sem eftir er í pappírnum, þannig að við getum sett hraðana inn fyrir magnin, [[i:N]], í sambandinu:
 
 <!-- SEG:m68854:para:fs-idp12237584 -->
-þar sem neðra skriftið 0 táknar tímann þegar plönturnar voru skornar til að búa til pappírinn, og neðra skriftið [[i:t]] táknar núverandi tíma.
+þar sem lágvísirinn 0 táknar tímann þegar plönturnar voru skornar til að búa til pappírinn, og lágvísirinn [[i:t]] táknar núverandi tíma.
 
 <!-- SEG:m68854:para:fs-idm9913056 -->
-Hægt er að ákvarða hrörnunarfastann út frá helmingunartíma C-14, 5730 ár:
+Sundrunarstuðulinn er hægt að ákvarða út frá helmingunartíma C-14, 5730 ár:
 
 <!-- SEG:m68854:para:fs-idp40647344 -->
-Með því að setja inn og leysa fáum við:
+Með því að setja inn og leysa höfum við:
 
 <!-- SEG:m68854:para:fs-idp18759328 -->
 Þess vegna eru Dauðahafshandritin um það bil 1900 ára gömul ([[xref:CNX_Chem_21_03_DSScrolls]]).
 
 <!-- SEG:m68854:para-title:fs-idp79158784-title -->
-Spyrðu sjálfan þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68854:para:fs-idp79158784 -->
-Nákvæmari aldursgreiningar á valdatíðum forn-egypskra faraóa hafa nýlega verið gerðar með því að nota plöntur sem varðveittust í gröfum þeirra. Sýni af fræjum og plöntuefni úr gröf Tútankamons sýna C-14 hrörnunarhraða upp á 9,07 sundranir/mín/g af C. Hversu langt er síðan valdatíð Tútankamons lauk?
+Nákvæmari dagsetningar á valdatíðum forn-egypskra faraóa hafa nýlega verið ákvarðaðar með því að nota plöntur sem varðveittust í gröfum þeirra. Sýni af fræjum og plöntuefni úr gröf Tútankamons konungs hafa C-14 sundrunarhraða upp á 9,07 sundranir/mín/g af C. Hversu langt er síðan valdatíð Tút konungs lauk?
 
 <!-- SEG:m68854:para:fs-idp7472544 -->
 fyrir um 3350 árum, eða um það bil 1340 f.Kr.
@@ -314,17 +335,22 @@ Svar:
 fyrir um 3350 árum, eða um það bil 1340 f.Kr.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DSScrolls-caption -->
-Kolefnis-14 aldursgreining hefur sýnt að þessar síður úr Dauðahafshandritunum voru skrifaðar eða afritaðar á pappír sem gerður var úr plöntum sem dóu á milli 100 f.Kr. og 50 e.Kr.<!-- SEG:m68854:para:fs-idp143543968 -->
-Nokkrar marktækar, vel skrásettar breytingar hafa orðið á hlutfallinu [[MATH:36]]. Hittni einfaldrar beitingar þessarar tækni veltur á því að hlutfallið [[MATH:37]] í lifandi plöntu sé það sama nú og það var á fyrri tímum, en það á ekki alltaf við. Vegna sívaxandi uppsöfnunar CO[[sub:2]]-sameinda (að mestu leyti [[MATH:38]]) í andrúmsloftinu, sem stafar af bruna jarðefnaeldsneytis (þar sem nánast allt [[MATH:39]] er horfið), gæti hlutfall [[MATH:40]] í andrúmsloftinu verið að breytast. Þessi manngerða aukning á [[MATH:41]] í andrúmsloftinu veldur því að hlutfallið [[MATH:42]] minnkar, sem aftur hefur áhrif á hlutfallið í núlifandi lífverum á jörðinni. Sem betur fer getum við þó notað önnur gögn, svo sem aldursgreiningu trjáa með skoðun ársvaxtarhringja, til að reikna út leiðréttingarstuðla. Með þessum leiðréttingarstuðlum er hægt að ákvarða nákvæmar dagsetningar. Almennt séð virkar geislavirk aldursgreining aðeins í um 10 helmingunartíma; þess vegna eru takmörk kolefnis-14 aldursgreiningar um 57.000 ár.
+Aldursákvörðun með geislakoli hefur sýnt að þessar síður úr Dauðahafshandritunum voru skrifaðar eða afritaðar á pappír úr plöntum sem dóu á milli 100 f.Kr. og 50 e.Kr.
+
+<!-- SEG:m68854:alt:fs-idm64119536-alt -->
+Ljósmynd af sex síðum af tötralegum pappír þöktum skrift er sýnd.
+
+<!-- SEG:m68854:para:fs-idp143543968 -->
+Nokkrar marktækar, vel skrásettar breytingar hafa orðið á [[MATH:36]] hlutfallinu. Nákvæmni beinnar notkunar þessarar tækni veltur á því að [[MATH:37]] hlutfallið í lifandi plöntu sé það sama nú og það var á fyrri tímum, en það er ekki alltaf gilt. Vegna aukinnar uppsöfnunar CO[[sub:2]] sameinda (aðallega [[MATH:38]]) í andrúmsloftinu af völdum bruna jarðefnaeldsneytis (þar sem nánast allt [[MATH:39]] hefur sundrast), gæti hlutfall [[MATH:40]] í andrúmsloftinu verið að breytast. Þessi manngerða aukning á [[MATH:41]] í andrúmsloftinu veldur því að [[MATH:42]] hlutfallið minnkar, og það hefur aftur áhrif á hlutfallið í núlifandi lífverum á jörðinni. Sem betur fer getum við þó notað önnur gögn, svo sem aldursákvörðun trjáa með skoðun á árhringjum, til að reikna út leiðréttingarstuðla. Með þessum leiðréttingarstuðlum er hægt að ákvarða nákvæmar dagsetningar. Almennt séð virkar aldursákvörðun með geislavirkni aðeins í um 10 helmingunartíma; þess vegna eru takmörk fyrir aldursákvörðun með geislakoli um 57.000 ár.
 
 <!-- SEG:m68854:title:fs-idp103641152-title -->
-Geislavirk aldursgreining með öðrum kjarnategundum en kolefni-14
+Aldursákvörðun með geislavirkni með öðrum kjarnategundum en geislakoli
 
 <!-- SEG:m68854:para:fs-idp55701552 -->
-Geislavirk aldursgreining getur einnig notað aðrar geislavirkar kjarnategundir með lengri helmingunartíma til að aldursgreina eldri atburði. Til dæmis er hægt að nota úran-238 (sem hrörnar í nokkrum skrefum yfir í blý-206) til að ákvarða aldur bergs (og áætlaðan aldur elsta bergs á jörðinni). Þar sem U-238 hefur helmingunartíma upp á 4,5 milljarða ára tekur það þann tíma fyrir helming af upprunalegu U-238 að hrörna yfir í Pb-206. Í bergsýni sem inniheldur ekki umtalsvert magn af Pb-208, algengustu samsætu blýs, getum við gert ráð fyrir að blý hafi ekki verið til staðar þegar bergið myndaðist. Þess vegna getum við, með því að mæla og greina hlutfallið U-238:Pb-206, ákvarðað aldur bergsins. Þetta gerir ráð fyrir að allt blý-206 sem er til staðar hafi komið frá hrörnun úrans-238. Ef viðbótarblý-206 er til staðar, sem sést á tilvist annarra blýsamsæta í sýninu, er nauðsynlegt að gera leiðréttingu. Kalíum-argon aldursgreining notar svipaða aðferð. K-40 hrörnar með jáeindaútblæstri og rafeindahremmingu og myndar Ar-40 með helmingunartíma upp á 1,25 milljarða ára. Ef bergsýni er mulið og magn Ar-40 gass sem sleppur út er mælt, gefur ákvörðun á hlutfallinu Ar-40:K-40 aldur bergsins. Aðrar aðferðir, svo sem rúbidíum-strontíum aldursgreining (Rb-87 hrörnar yfir í Sr-87 með helmingunartíma upp á 48,8 milljarða ára), byggja á sömu lögmálum. Til að áætla neðri mörk aldurs jarðarinnar ákvarða vísindamenn aldur ýmissa bergtegunda og steinda og gera ráð fyrir að jörðin sé eldri en elstu bergtegundir og steindir í skorpu hennar. Árið 2014 voru elstu þekktu bergtegundirnar á jörðinni Jack Hills sirkonarnir frá Ástralíu, sem reyndust vera tæplega 4,4 milljarða ára gamlir samkvæmt úran-blý aldursgreiningu.
+Einnig er hægt að nota aðrar geislavirkar kjarnategundir með lengri helmingunartíma til aldursákvörðunar á eldri atburðum. Til dæmis er hægt að nota úran-238 (sem sundrast í nokkrum skrefum yfir í blý-206) til að ákvarða aldur bergs (og áætlaðan aldur elsta bergs á jörðinni). Þar sem helmingunartími U-238 er 4,5 milljarðar ára tekur það þann tíma fyrir helming af upprunalegu U-238 að sundrast yfir í Pb-206. Í bergsýni sem inniheldur ekki umtalsvert magn af Pb-208, algengustu samsætu blýs, getum við gert ráð fyrir að blý hafi ekki verið til staðar þegar bergið myndaðist. Þess vegna getum við, með því að mæla og greina hlutfallið U-238:Pb-206, ákvarðað aldur bergsins. Þetta gerir ráð fyrir að allt Pb-206 sem er til staðar hafi komið frá sundrun úrans-238. Ef viðbótar Pb-206 er til staðar, sem sést á tilvist annarra blýsamsæta í sýninu, er nauðsynlegt að gera leiðréttingu. Kalíum-argon aldursákvörðun notar svipaða aðferð. K-40 sundrast með jáeindageislun og rafeindarhremmingu og myndar Ar-40 með helmingunartíma upp á 1,25 milljarða ára. Ef bergsýni er mulið og magn Ar-40 gass sem sleppur út er mælt, gefur ákvörðun á hlutfallinu Ar-40:K-40 aldur bergsins. Aðrar aðferðir, svo sem rúbidíum-strontíum aldursákvörðun (Rb-87 sundrast yfir í Sr-87 með helmingunartíma upp á 48,8 milljarða ára), byggja á sömu meginreglu. Til að áætla neðri mörk aldurs jarðarinnar ákvarða vísindamenn aldur ýmissa bergtegunda og steinda og gera ráð fyrir að jörðin sé eldri en elstu bergtegundir og steindir í skorpu hennar. Árið 2014 voru elstu þekktu bergtegundir á jörðinni Jack Hills sirkonarnir frá Ástralíu, en aldur þeirra var ákvarðaður með úran-blý aldursákvörðun og reyndist vera tæplega 4,4 milljarðar ára.
 
 <!-- SEG:m68854:example-title:fs-idp133528864-title -->
-Geislavirk aldursgreining á bergi
+Geislavirk aldursákvörðun bergs
 
 <!-- SEG:m68854:para:fs-idm84298880 -->
 Storkuberg inniheldur 9,58 [[MATH:43]] 10[[sup:–5]] g af U-238 og 2,51 [[MATH:44]] 10[[sup:–5]] g af Pb-206, og mun, mun minna magn af Pb-208. Ákvarðaðu áætlaðan tíma sem bergið myndaðist á.
@@ -333,13 +359,13 @@ Storkuberg inniheldur 9,58 [[MATH:43]] 10[[sup:–5]] g af U-238 og 2,51 [[MATH:
 Lausn
 
 <!-- SEG:m68854:para:fs-idp15526736 -->
-Bergsýnið inniheldur mjög lítið af Pb-208, algengustu samsætu blýs, svo við getum óhætt gert ráð fyrir að allt Pb-206 í berginu hafi myndast við geislavirka hrörnun U-238. Þegar bergið myndaðist innihélt það allt það U-238 sem nú er í því, auk þess U-238 sem síðan hefur gengist undir geislavirka hrörnun.
+Bergsýnið inniheldur mjög lítið af Pb-208, algengustu samsætu blýs, svo við getum óhætt gert ráð fyrir að allt Pb-206 í berginu hafi myndast við geislasundrun U-238. Þegar bergið myndaðist innihélt það allt það U-238 sem nú er í því, auk þess U-238 sem síðan hefur gengist undir geislasundrun.
 
 <!-- SEG:m68854:para:fs-idp16405632 -->
 Magn U-238 sem nú er í berginu er:
 
 <!-- SEG:m68854:para:fs-idp25854368 -->
-Þar sem eitt mól af U-238 myndar eitt mól af Pb-206 við hrörnun, er magn U-238 sem hefur gengist undir geislavirka hrörnun síðan bergið myndaðist:
+Þar sem eitt mól af U-238 myndar eitt mól af Pb-206 við sundrun, er magn U-238 sem hefur gengist undir geislasundrun frá því bergið myndaðist:
 
 <!-- SEG:m68854:para:fs-idp142687024 -->
 Heildarmagn U-238 sem upphaflega var í berginu er því:
@@ -351,19 +377,19 @@ Tíminn sem liðinn er frá myndun bergsins er gefinn með:
 þar sem [[i:N]][[sub:0]] táknar upprunalegt magn U-238 og [[i:N[[sub:t]]]] táknar núverandi magn U-238.
 
 <!-- SEG:m68854:para:fs-idp178175456 -->
-U-238 hrörnar yfir í Pb-206 með helmingunartíma 4,5 [[MATH:45]] 10[[sup:9]] ár, svo hrörnunarfastinn [[i:λ]] er:
+U-238 sundrast yfir í Pb-206 með helmingunartíma 4,5 [[MATH:45]] 10[[sup:9]] ár, þannig að sundrunarstuðullinn [[i:λ]] er:
 
 <!-- SEG:m68854:para:fs-idp46289376 -->
-Með innsetningu og lausn fáum við:
+Með því að setja inn og leysa fáum við:
 
 <!-- SEG:m68854:para:fs-idp8533088 -->
 Þess vegna er bergið um það bil 1,7 milljarða ára gamalt.
 
 <!-- SEG:m68854:para-title:fs-idp219511184-title -->
-Kannaðu þekkingu þína
+Spyrðu þig
 
 <!-- SEG:m68854:para:fs-idp219511184 -->
-Bergsýni inniheldur 6,14 [[MATH:46]] 10[[sup:–4]] g af Rb-87 og 3,51 [[MATH:47]] 10[[sup:–5]] g af Sr-87. Reiknaðu aldur bergsins. (Helmingunartími β-hrörnunar Rb-87 er 4,7 [[MATH:48]] 10[[sup:10]] ár.)
+Bergsýni inniheldur 6,14 [[MATH:46]] 10[[sup:–4]] g af Rb-87 og 3,51 [[MATH:47]] 10[[sup:–5]] g af Sr-87. Reiknaðu aldur bergsins. (Helmingunartími β-sundrunar Rb-87 er 4,7 [[MATH:48]] 10[[sup:10]] ár.)
 
 <!-- SEG:m68854:para:fs-idm14245664 -->
 3,7 [[MATH:49]] 10[[sup:9]] ár
@@ -375,40 +401,40 @@ Svar:
 3,7 [[MATH:50]] 10[[sup:9]] ár
 
 <!-- SEG:m68854:para:fs-idm40273488 -->
-Nokkrar geislasamsætur hafa helmingunartíma og aðra eiginleika sem gera þær gagnlegar til að „aldursgreina“ uppruna hluta eins og fornleifagripa, áður lifandi lífvera eða jarðmyndana. Þetta ferli er kallað {{term}}geislamælingaaldursgreining{{/term}} og hefur leitt til margra byltingarkenndra vísindalegra uppgötvana um jarðsögu jarðar, þróun lífs og sögu mannlegrar siðmenningar. Við munum kanna nokkrar af algengustu gerðum geislavirkrar aldursgreiningar og hvernig tilteknar samsætur virka fyrir hverja gerð.
+Nokkrar geislasamsætur hafa helmingunartíma og aðra eiginleika sem gera þær gagnlegar til að „aldursákvarða“ uppruna hluta eins og fornleifa, áður lifandi lífvera eða jarðmyndana. Þetta ferli er kallað [[term:geislagreining|term-00011]] og hefur leitt til margra byltingarkenndra vísindalegra uppgötvana um jarðsögu jarðar, þróun lífs og sögu mannlegrar siðmenningar. Við munum kanna nokkrar af algengustu gerðum geislavirkrar aldursákvörðunar og hvernig tilteknar samsætur virka fyrir hverja gerð.
 
 <!-- SEG:m68854:title:fs-idm64039712-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68854:para:fs-idp119462816 -->
-Kjarnar með óstöðugt n:p hlutfall gangast undir sjálfgenga geislavirka hrörnun. Algengustu gerðir geislavirkni eru α-hrörnun, β-hrörnun, γ-útgeislun, jáeindarútgeislun og rafeindahremming. Kjarnahvörf fela einnig oft í sér γ-geisla og sumir kjarnar hrörna með rafeindahremmingu. Hver þessara hrörnunarhátta leiðir til myndunar nýs kjarna með stöðugra n:p hlutfalli. Sum efni gangast undir geislavirkar hrörnunarraðir og fara í gegnum margar hrörnanir áður en þau enda sem stöðug samsæta. Öll kjarnahrörnunarferli fylgja fyrsta stigs hvarfhraðafræði og hver geislasamsæta hefur sinn eigin einkennandi helmingunartíma, sem er sá tími sem það tekur fyrir helming atóma hennar að hrörna. Vegna mikils munar á stöðugleika milli kjarnategunda er mjög breitt svið helmingunartíma geislavirkra efna. Mörg þessara efna hafa fundið gagnleg not í læknisfræðilegri sjúkdómsgreiningu og meðferð, aldursgreiningu fornleifa- og jarðfræðilegra hluta og fleira.
+Kjarnar með óstöðugt n:p hlutfall gangast undir sjálfsprottna geislasundrun. Algengustu gerðir geislavirkni eru α-sundrun, β-sundrun, γ-geislun, jáeindageislun og rafeindarhremming. Kjarnahvörf fela einnig oft í sér γ-geisla og sumir kjarnar sundrast með rafeindarhremmingu. Hver þessara sundrunarhátta leiðir til myndunar nýs kjarna með stöðugra n:p hlutfalli. Sum efni gangast undir geislasundrunarraðir og fara í gegnum margar sundranir áður en þau enda sem stöðug samsæta. Öll kjarnasundrunarferli fylgja fyrsta stigs hvarfhraða og hver geislasamsæta hefur sinn eigin einkennandi helmingunartíma, þann tíma sem það tekur fyrir helming atóma hennar að sundrast. Vegna mikils munar á stöðugleika milli kjarnategunda er mjög breitt svið helmingunartíma geislavirkra efna. Mörg þessara efna hafa fundið gagnleg not í læknisfræðilegri greiningu og meðferð, aldursákvörðun fornleifa og jarðfræðilegra hluta og fleira.
 
 <!-- SEG:m68854:title:fs-idm2719024-title -->
-Lykiljafna
+Lykiljöfnur
 
-<!-- SEG:m68854:entry:auto-131 -->
-hrörnunarhraði = [[i:λN]]
+<!-- SEG:m68854:entry:auto-139 -->
+sundrunarhraði = [[i:λN]]
 
-<!-- SEG:m68854:entry:auto-132 -->
+<!-- SEG:m68854:entry:auto-140 -->
 [[MATH:51]]
 
 <!-- SEG:m68854:title:fs-idp25531728-title -->
-Efnafræði – Æfingar í lok kafla
+Efnafræði – verkefni í lok kafla
 
 <!-- SEG:m68854:problem:fs-idm10223552 -->
 Hverjar eru gerðir geislunar sem kjarnar geislavirkra frumefna gefa frá sér?
 
 <!-- SEG:m68854:solution:fs-idm33283872 -->
-α (helíumkjarnar), β (rafeindir), β[[sup:+]] (jáeindir) og η (nifteindir) geta losnað frá geislavirku frumefni, sem allar eru eindir; γ-geislar geta einnig losnað.
+α (helíumkjarnar), β (rafeindir), β[[sup:+]] (jáeindir) og η (nifteindir) geta losnað frá geislavirku frumefni, sem allar eru agnir; γ-geislar geta einnig losnað.
 
 <!-- SEG:m68854:problem:fs-idm2773856 -->
-Hvaða breytingar verða á sætistölu og massa kjarna við hverja af eftirfarandi hrörnunaratburðarásum?
+Hvaða breytingar verða á sætistölu og massa kjarna við eftirfarandi sundrunartilvik?
 
 <!-- SEG:m68854:problem:fs-idp137675104 -->
-(a) α-eind losnar
+(a) α-ögn losnar
 
 <!-- SEG:m68854:problem:fs-idp36662256 -->
-(b) β-eind losnar
+(b) β-ögn losnar
 
 <!-- SEG:m68854:problem:fs-idp5160032 -->
 (c) γ-geislun losnar
@@ -420,34 +446,34 @@ Hvaða breytingar verða á sætistölu og massa kjarna við hverja af eftirfara
 (e) rafeind er hremmd
 
 <!-- SEG:m68854:problem:fs-idp143657184 -->
-Hver er breytingin á kjarnanum sem verður vegna eftirfarandi hrörnunaratburðarása?
+Hver er breytingin á kjarnanum sem verður vegna eftirfarandi sundrunartilvika?
 
 <!-- SEG:m68854:problem:fs-idm43346352 -->
-(a) losun β-eindar
+(a) losun β-agnar
 
 <!-- SEG:m68854:problem:fs-idp177484800 -->
-(b) losun β[[sup:+]]-eindar
+(b) losun β[[sup:+]]-agnar
 
 <!-- SEG:m68854:problem:fs-idp122950864 -->
 (c) hremming rafeindar
 
 <!-- SEG:m68854:solution:fs-idm27170272 -->
-(a) umbreyting nifteindar í róteind: [[MATH:52]] (b) umbreyting róteindar í nifteind; jáeindin hefur sama massa og rafeind og jafn mikla jákvæða hleðslu og rafeindin hefur neikvæða hleðslu; þegar n:p hlutfall kjarna er of lágt, breytist róteind í nifteind með losun jáeindar: [[MATH:53]] (c) Í róteindarríkum kjarna getur innri atómrafeind verið gleypt. Í sinni einföldustu mynd breytir þetta róteind í nifteind: [[MATH:54]]
+(a) umbreyting nifteindar í róteind: [[MATH:52]] (b) umbreyting róteindar í nifteind; jáeindin hefur sama massa og rafeind og jafn mikla jákvæða hleðslu og rafeindin hefur neikvæða hleðslu; þegar n:p hlutfall kjarna er of lágt er róteind breytt í nifteind með losun jáeindar: [[MATH:53]] (c) Í róteindaríkum kjarna getur innri atómrafeind frásogast. Í sinni einföldustu mynd breytir þetta róteind í nifteind: [[MATH:54]]
 
 <!-- SEG:m68854:problem:fs-idp190856048 -->
-Margar kjarnategundir með sætistölu hærri en 83 hrörna með ferlum eins og rafeindaútgeislun. Útskýrðu þá athugun að losun frá þessum óstöðugu kjarnategundum inniheldur venjulega einnig α-eindir.
+Margar kjarnategundir með sætistölu hærri en 83 sundrast með ferlum eins og losun rafeinda. Útskýrðu þá athugun að losun frá þessum óstöðugu kjarnategundum inniheldur venjulega einnig α-agnir.
 
 <!-- SEG:m68854:problem:fs-idp26162912 -->
-Af hverju fylgir losun röntgengeisla rafeindahremmingu?
+Af hverju fylgir losun röntgengeisla rafeindarhremmingu?
 
 <!-- SEG:m68854:solution:fs-idp123519008 -->
-Rafeindin sem var dregin inn í kjarnann var líklegast á 1[[i:s]]-sviði. Þegar rafeind fellur af hærra orkustigi til að koma í hennar stað, losnar orkumunurinn á rafeindinni á tveimur orkustigum hennar sem röntgengeisli.
+Rafeindin sem dregin var inn í kjarnann fannst líklegast á 1[[i:s]]-sviði. Þegar rafeind fellur af hærra orkustigi til að koma í stað hennar losnar mismunurinn á orku staðgengilsrafeindarinnar á tveimur orkustigum hennar sem röntgengeisli.
 
 <!-- SEG:m68854:problem:fs-idp142495840 -->
-Útskýrðu, með vísan til [[docref:m68851#CNX_Chem_21_01_BandStable]], hvernig óstöðugar þungar kjarnategundir (sætistala > 83) geta brotnað niður til að mynda kjarnategundir með meiri stöðugleika (a) ef þær eru fyrir neðan stöðugleikabeltið og (b) ef þær eru fyrir ofan stöðugleikabeltið.
+Útskýrðu, með vísan til [[docref:m68851#CNX_Chem_21_01_BandStable]], hvernig óstöðugar þungar kjarnategundir (sætistala > 83) geta sundrast til að mynda kjarnategundir með meiri stöðugleika (a) ef þær eru fyrir neðan stöðugleikabeltið og (b) ef þær eru fyrir ofan stöðugleikabeltið.
 
 <!-- SEG:m68854:problem:fs-idp201795280 -->
-Hver eftirfarandi kjarna er líklegastur til að hrörna með jáeindarútgeislun? Útskýrðu val þitt.
+Hver af eftirfarandi kjörnum er líklegastur til að sundrast með losun jáeinda? Útskýrðu valið.
 
 <!-- SEG:m68854:problem:fs-idp34995296 -->
 (a) króm-53
@@ -459,10 +485,10 @@ Hver eftirfarandi kjarna er líklegastur til að hrörna með jáeindarútgeislu
 (c) járn-59
 
 <!-- SEG:m68854:solution:fs-idm8619408 -->
-Mangan-51 er líklegast til að hrörna með jáeindarútgeislun. N:p hlutfallið fyrir Cr-53 er [[MATH:55]] = 1,21; fyrir Mn-51 er það [[MATH:56]] = 1,04; fyrir Fe-59 er það [[MATH:57]] = 1,27. Jáeindarhrörnun á sér stað þegar n:p hlutfallið er lágt. Mn-51 hefur lægsta n:p hlutfallið og er því líklegast til að hrörna með jáeindarútgeislun. Að auki er [[MATH:58]] stöðug samsæta og [[MATH:59]] hrörnar með beta-útgeislun.
+Mangan-51 er líklegast til að sundrast með losun jáeinda. Hlutfallið n:p fyrir Cr-53 er [[MATH:55]] = 1,21; fyrir Mn-51 er það [[MATH:56]] = 1,04; fyrir Fe-59 er það [[MATH:57]] = 1,27. Sundrun með losun jáeinda á sér stað þegar hlutfallið n:p er lágt. Mn-51 hefur lægsta n:p hlutfallið og er því líklegast til að sundrast með losun jáeinda. Að auki er [[MATH:58]] stöðug samsæta og [[MATH:59]] sundrast með betasundrun.
 
 <!-- SEG:m68854:problem:fs-idp76332848 -->
-Eftirfarandi kjarnar liggja ekki í stöðugleikabeltinu. Hvernig má búast við að þeir hrörni? Útskýrðu svarið.
+Eftirfarandi kjarnar liggja ekki í stöðugleikabeltinu. Hvernig má búast við að þeir sundrist? Útskýrðu svarið.
 
 <!-- SEG:m68854:problem:fs-idp138950912 -->
 (a) [[MATH:60]]
@@ -480,7 +506,7 @@ Eftirfarandi kjarnar liggja ekki í stöðugleikabeltinu. Hvernig má búast vi�
 (e) [[MATH:64]]
 
 <!-- SEG:m68854:problem:fs-idm5650336 -->
-Eftirfarandi kjarnar liggja ekki á stöðugleikabeltinu. Hvernig má búast við að þeir hrörni?
+Eftirfarandi kjarnar liggja ekki í stöðugleikabeltinu. Hvernig má búast við að þeir sundrist?
 
 <!-- SEG:m68854:problem:fs-idp92587472 -->
 (a) [[MATH:65]]
@@ -498,10 +524,10 @@ Eftirfarandi kjarnar liggja ekki á stöðugleikabeltinu. Hvernig má búast vi�
 (e) [[MATH:69]]
 
 <!-- SEG:m68854:solution:fs-idm31409728 -->
-(a) jáeindarútblástur; (b) α-hrörnun; (c) jáeindarútblástur; (d) β-hrörnun; (e) α-hrörnun
+(a) losun jáeinda; (b) α-sundrun; (c) losun jáeinda; (d) β-sundrun; (e) α-sundrun
 
 <!-- SEG:m68854:problem:fs-idp10180544 -->
-Spáðu fyrir um með hvaða hætti (hvaða háttum) sjálfgengrar geislavirkrar hrörnunar eftirfarandi óstöðugar samsætur gætu hrörnað:
+Spáðu fyrir um með hvaða hætti (hvaða háttum) sjálfkrafa geislasundrunar eftirfarandi óstöðugar samsætur gætu farið fram:
 
 <!-- SEG:m68854:problem:fs-idm24027360 -->
 (a) [[MATH:70]]
@@ -525,49 +551,49 @@ Spáðu fyrir um með hvaða hætti (hvaða háttum) sjálfgengrar geislavirkrar
 (g) [[sup:237]]Pu
 
 <!-- SEG:m68854:problem:fs-idp176277168 -->
-Skrifaðu kjarnahvarf fyrir hvert skref í myndun [[MATH:74]] úr [[MATH:75]] sem verður með röð hrörnunarhvarfa sem fela í sér skrefbundinn útblástur α, β, β, α, α, α, α einda, í þeirri röð.
+Skrifaðu kjarnahvarf fyrir hvert skref í myndun [[MATH:74]] úr [[MATH:75]] sem verður með röð sundrunarhvarfa sem fela í sér losun á α, β, β, α, α, α, α ögnum, í þessari röð.
 
 <!-- SEG:m68854:solution:fs-idp187827136 -->
 [[MATH:76]] [[MATH:77]] [[MATH:78]] [[MATH:79]] [[MATH:80]] [[MATH:81]] [[MATH:82]]
 
 <!-- SEG:m68854:problem:fs-idp25125904 -->
-Skrifaðu kjarnahvarf fyrir hvert skref í myndun [[MATH:83]] úr [[MATH:84]] sem verður með röð hrörnunarhvarfa sem fela í sér skrefbundinn útblástur α, α, α, α, β, β, α einda, í þeirri röð.
+Skrifaðu kjarnahvarf fyrir hvert skref í myndun [[MATH:83]] úr [[MATH:84]] sem verður með röð sundrunarhvarfa sem fela í sér losun á α, α, α, α, β, β, α ögnum, í þessari röð.
 
 <!-- SEG:m68854:problem:fs-idm43525136 -->
 Skilgreindu hugtakið helmingunartími og sýndu það með dæmi.
 
 <!-- SEG:m68854:solution:fs-idp25513776 -->
-Helmingunartími er sá tími sem það tekur helming frumeinda í sýni að hrörna. Dæmi (svör geta verið mismunandi): Fyrir C-14 er helmingunartíminn 5770 ár. 10 g sýni af C-14 myndi innihalda 5 g af C-14 eftir 5770 ár; 0,20 g sýni af C-14 myndi innihalda 0,10 g eftir 5770 ár.
+Helmingunartími er sá tími sem það tekur helming atóma í sýni að sundrast. Dæmi (svör geta verið mismunandi): Fyrir C-14 er helmingunartíminn 5770 ár. 10 g sýni af C-14 myndi innihalda 5 g af C-14 eftir 5770 ár; 0,20 g sýni af C-14 myndi innihalda 0,10 g eftir 5770 ár.
 
 <!-- SEG:m68854:problem:fs-idm37225376 -->
 1,00 [[MATH:85]] 10[[sup:–6]] g sýni af nóbelíni, [[MATH:86]], hefur helmingunartíma upp á 55 sekúndur eftir að það myndast. Hvert er hlutfall [[MATH:87]] sem er eftir á eftirfarandi tímum?
 
 <!-- SEG:m68854:problem:fs-idp172348128 -->
-(a) 5,0 mínútum eftir að það myndast
+(a) 5,0 mín. eftir að það myndast
 
 <!-- SEG:m68854:problem:fs-idm38933040 -->
-(b) 1,0 klukkustund eftir að það myndast
+(b) 1,0 klst. eftir að það myndast
 
 <!-- SEG:m68854:problem:fs-idm3633744 -->
-[[sup:239]]Pu er aukaafurð kjarnorkuúrgangs með helmingunartíma upp á 24.000 ár. Hvaða brot af [[sup:239]]Pu sem er til staðar í dag verður til staðar eftir 1000 ár?
+[[sup:239]]Pu er aukaafurð úr kjarnorkuúrgangi með helmingunartíma upp á 24.000 ár. Hvaða brot af [[sup:239]]Pu sem er til staðar í dag verður til staðar eftir 1000 ár?
 
 <!-- SEG:m68854:solution:fs-idp213478640 -->
 [[MATH:88]] eða 97,3%
 
 <!-- SEG:m68854:problem:fs-idm33356592 -->
-Samsætan [[sup:208]]Tl gengst undir β-hrörnun með helmingunartíma upp á 3,1 mín.
+Samsætan [[sup:208]]Tl gengst undir β-sundrun með helmingunartíma upp á 3,1 mín.
 
 <!-- SEG:m68854:problem:fs-idp143445632 -->
-(a) Hvaða samsæta myndast við hrörnunina?
+(a) Hvaða samsæta myndast við sundrunina?
 
 <!-- SEG:m68854:problem:fs-idp78376656 -->
-(b) Hversu langan tíma tekur það fyrir 99,0% af sýni af hreinu [[sup:208]]Tl að hrörna?
+(b) Hversu langan tíma tekur það fyrir 99,0% af sýni af hreinu [[sup:208]]Tl að sundrast?
 
 <!-- SEG:m68854:problem:fs-idp211861968 -->
-(c) Hvaða hlutfall af sýni af hreinu [[sup:208]]Tl er óhrörnað eftir 1,0 klst.?
+(c) Hvaða hlutfall af sýni af hreinu [[sup:208]]Tl er ósundrað eftir 1,0 klst.?
 
 <!-- SEG:m68854:problem:fs-idm43874912 -->
-Ef 1,000 g af [[MATH:89]] myndar 0,0001 ml af gasinu [[MATH:90]] við staðalaðstæður (staðalhitastig og þrýsting) á 24 klst., hver er þá helmingunartími [[sup:226]]Ra í árum?
+Ef 1,000 g af [[MATH:89]] framleiðir 0,0001 ml af gasinu [[MATH:90]] við staðalaðstæður (staðalhitastig og -þrýsting) á 24 klst., hver er helmingunartími [[sup:226]]Ra í árum?
 
 <!-- SEG:m68854:solution:fs-idp2575712 -->
 2 [[MATH:91]] 10[[sup:3]] ár
@@ -576,7 +602,7 @@ Ef 1,000 g af [[MATH:89]] myndar 0,0001 ml af gasinu [[MATH:90]] við staðalað
 Samsætan [[MATH:92]] er ein af afar hættulegum tegundum í leifum frá kjarnorkuframleiðslu. Strontínið í 0,500 g sýni minnkar í 0,393 g á 10,0 árum. Reiknaðu helmingunartímann.
 
 <!-- SEG:m68854:problem:fs-idp219506992 -->
-Teknetín-99 er oft notað til að meta skemmdir á hjarta, lifur og lungum vegna þess að ákveðin teknetínsambönd frásogast af skemmdum vefjum. Það hefur helmingunartíma upp á 6,0 klst. Reiknaðu hraðafasta fyrir hrörnun [[MATH:93]].
+Teknetín-99 er oft notað til að meta skemmdir á hjarta, lifur og lungum vegna þess að ákveðin teknetínefnasambönd frásogast af skemmdum vefjum. Það hefur helmingunartíma upp á 6,0 klst. Reiknaðu sundrunarstuðulinn fyrir sundrun [[MATH:93]].
 
 <!-- SEG:m68854:solution:fs-idp35524320 -->
 0,12 klst.[[sup:–1]]
@@ -588,55 +614,55 @@ Hver er aldur múmíugerts prímatahúðs sem inniheldur 8,25% af upprunalegu ma
 Bergsýni reyndist innihalda 8,23 mg af rúbidín-87 og 0,47 mg af strontín-87.
 
 <!-- SEG:m68854:problem:fs-idm22718704 -->
-(a) Reiknaðu aldur bergsins ef helmingunartími rotnunar rúbidíns með β-útblæstri er 4,7 [[MATH:94]] 10[[sup:10]] ár.
+(a) Reiknaðu aldur bergsins ef helmingunartími sundrunar rúbidíns með β-losun er 4,7 [[MATH:94]] 10[[sup:10]] ár.
 
 <!-- SEG:m68854:problem:fs-idp75993408 -->
 (b) Ef eitthvað [[MATH:95]] var upphaflega til staðar í berginu, væri bergið þá yngra, eldra eða á sama aldri og aldurinn sem reiknaður var í (a)? Útskýrðu svarið.
 
 <!-- SEG:m68854:solution:fs-idp58704368 -->
-(a) 3,8 milljarðar ára; (b) Bergið væri yngra en aldurinn sem reiknaður var í hluta (a). Ef Sr var upphaflega í berginu myndi magnið sem myndaðist við geislavirka rotnun jafngilda núverandi magni að frádregnu upphaflegu magni. Þar sem þetta magn væri minna en magnið sem notað var til að reikna út aldur bergsins og aldurinn er í réttu hlutfalli við magn Sr, væri bergið yngra.
+(a) 3,8 milljarðar ára; (b) Bergið væri yngra en aldurinn sem reiknaður var út í hluta (a). Ef Sr var upphaflega í berginu myndi magnið sem myndaðist við geislasundrun jafngilda núverandi magni að frádregnu upphaflegu magni. Þar sem þetta magn væri minna en magnið sem notað var til að reikna út aldur bergsins og aldurinn er í réttu hlutfalli við magn Sr, væri bergið yngra.
 
 <!-- SEG:m68854:problem:fs-idp133778576 -->
-Rannsókn á rannsóknarstofu sýnir að sýni af úrangrýti inniheldur 5,37 mg af [[MATH:96]] og 2,52 mg af [[MATH:97]] Reiknaðu aldur grýtisins. Helmingunartími [[MATH:98]] er 4,5 [[MATH:99]] 10[[sup:9]] ár.
+Rannsóknarstofurannsókn sýnir að sýni af úrangrýti inniheldur 5,37 mg af [[MATH:96]] og 2,52 mg af [[MATH:97]] Reiknaðu aldur grýtisins. Helmingunartími [[MATH:98]] er 4,5 [[MATH:99]] 10[[sup:9]] ár.
 
 <!-- SEG:m68854:problem:fs-idp165416288 -->
-Plútóníum fannst í snefilmagni í náttúrulegum úranútfellingum af Glenn Seaborg og samstarfsmönnum hans árið 1941. Þeir lögðu til að uppruni þessa [[sup:239]]Pu væri fang nifteinda af [[sup:238]]U kjörnum. Hvers vegna er ólíklegt að þetta plútóníum hafi verið fast á þeim tíma sem sólkerfið myndaðist fyrir 4,7 [[MATH:100]] 10[[sup:9]] árum?
+Plútóníum fannst í snefilmagni í náttúrulegum úranútfellingum af Glenn Seaborg og félögum hans árið 1941. Þeir lögðu til að uppruni þessa [[sup:239]]Pu væri hremming nifteinda af [[sup:238]]U kjörnum. Hvers vegna er ólíklegt að þetta plútóníum hafi verið innilokað á þeim tíma þegar sólkerfið myndaðist fyrir 4,7 [[MATH:100]] 10[[sup:9]] árum?
 
 <!-- SEG:m68854:solution:fs-idp172871712 -->
 [[i:c]] = 0; Þetta sýnir að ekkert Pu-239 gæti hafa verið eftir frá myndun jarðar. Þar af leiðandi gæti plútóníumið sem nú er til staðar ekki hafa myndast með úraninu.
 
 <!-- SEG:m68854:problem:fs-idp217024288 -->
-[[MATH:101]] frumeind (massi = 7,0169 amu) rotnar í [[MATH:102]] frumeind (massi = 7,0160 amu) með rafeindahremmingu. Hversu mikil orka (í milljónum rafeindavolta, MeV) myndast við þetta efnahvarf?
+[[MATH:101]] atóm (massi = 7,0169 amu) sundrast í [[MATH:102]] atóm (massi = 7,0160 amu) með rafeindarhremmingu. Hversu mikil orka (í milljónum rafeindarvolta, MeV) myndast við þetta hvarf?
 
 <!-- SEG:m68854:problem:fs-idp71110896 -->
-[[MATH:103]] frumeind (massi = 8,0246 amu) rotnar í [[MATH:104]] frumeind (massi = 8,0053 amu) með tapi á β[[sup:+]] eind (massi = 0,00055 amu) eða með rafeindahremmingu. Hversu mikil orka (í milljónum rafeindavolta) myndast við þetta efnahvarf?
+[[MATH:103]] atóm (massi = 8,0246 amu) sundrast í [[MATH:104]] atóm (massi = 8,0053 amu) með tapi á β[[sup:+]] ögn (massi = 0,00055 amu) eða með rafeindarhremmingu. Hversu mikil orka (í milljónum rafeindarvolta) myndast við þetta hvarf?
 
 <!-- SEG:m68854:solution:fs-idp103673504 -->
 17,5 MeV
 
 <!-- SEG:m68854:problem:fs-idp131958896 -->
-Talið er að samsætur eins og [[sup:26]]Al (helmingunartími: 7,2 [[MATH:105]] 10[[sup:5]] ár) hafi verið til staðar í sólkerfinu okkar þegar það myndaðist, en hafi síðan rotnað og eru nú kallaðar útdauðar kjarnategundir.
+Samsætur eins og [[sup:26]]Al (helmingunartími: 7,2 [[MATH:105]] 10[[sup:5]] ár) eru taldar hafa verið til staðar í sólkerfinu okkar þegar það myndaðist, en hafa síðan sundrast og eru nú kallaðar útdauðar kjarnategundir.
 
 <!-- SEG:m68854:problem:fs-idp31169120 -->
-(a) [[sup:26]]Al rotnar með β[[sup:+]] útblæstri eða rafeindahremmingu. Skrifaðu jöfnurnar fyrir þessar tvær kjarnabreytingar.
+(a) [[sup:26]]Al sundrast með β[[sup:+]] losun eða rafeindarhremmingu. Skrifaðu jöfnurnar fyrir þessar tvær kjarnabreytingar.
 
 <!-- SEG:m68854:problem:fs-idp179184448 -->
-(b) Jörðin myndaðist fyrir um 4,7 [[MATH:106]] 10[[sup:9]] (4,7 milljörðum) árum. Hversu gömul var jörðin þegar 99,999999% af upprunalegu [[sup:26]]Al höfðu rotnað?
+(b) Jörðin myndaðist fyrir um 4,7 [[MATH:106]] 10[[sup:9]] (4,7 milljörðum) árum. Hversu gömul var jörðin þegar 99,999999% af [[sup:26]]Al sem upphaflega var til staðar hafði sundrast?
 
 <!-- SEG:m68854:problem:fs-idm28111776 -->
 Skrifaðu stillta jöfnu fyrir hvert eftirfarandi kjarnahvarfa:
 
 <!-- SEG:m68854:problem:fs-idm52915712 -->
-(a) bismút-212 rotnar í pólóníum-212
+(a) bismút-212 sundrast í pólóníum-212
 
 <!-- SEG:m68854:problem:fs-idp90956192 -->
-(b) beryllíum-8 og jáeind myndast við rotnun óstöðugs kjarna
+(b) beryllíum-8 og jáeind myndast við sundrun óstöðugs kjarna
 
 <!-- SEG:m68854:problem:fs-idp18279664 -->
-(c) neptúníum-239 myndast við efnahvarf úrans-238 við nifteind og breytist síðan sjálfkrafa í plútóníum-239
+(c) neptúníum-239 myndast úr hvarfi úrans-238 við nifteind og breytist síðan sjálfkrafa í plútóníum-239
 
 <!-- SEG:m68854:problem:fs-idp138334608 -->
-(d) strontíum-90 rotnar í yttríum-90
+(d) strontíum-90 sundrast í yttríum-90
 
 <!-- SEG:m68854:solution:fs-idp82217344 -->
 (a) [[MATH:107]] (b) [[MATH:108]] (c) [[MATH:109]] [[MATH:110]] (d) [[MATH:111]]
@@ -645,85 +671,85 @@ Skrifaðu stillta jöfnu fyrir hvert eftirfarandi kjarnahvarfa:
 Skrifaðu stillta jöfnu fyrir hvert eftirfarandi kjarnahvarfa:
 
 <!-- SEG:m68854:problem:fs-idp133484688 -->
-(a) kvikasilfur-180 rotnar í platínu-176
+(a) kvikasilfur-180 sundrast í platínu-176
 
 <!-- SEG:m68854:problem:fs-idp136801104 -->
-(b) sirkon-90 og rafeind myndast við rotnun óstöðugs kjarna
+(b) sirkon-90 og rafeind myndast við sundrun óstöðugs kjarna
 
 <!-- SEG:m68854:problem:fs-idp77337360 -->
-(c) þóríum-232 rotnar og myndar alfaeind og radíum-228 kjarna, sem rotnar í aktíníum-228 með betarotnun
+(c) þóríum-232 sundrast og myndar alfaögn og radíum-228 kjarna, sem sundrast í aktiníum-228 með betasundrun
 
 <!-- SEG:m68854:problem:fs-idm29267360 -->
-(d) neon-19 rotnar í flúor-19
+(d) neon-19 sundrast í flúor-19
 
 <!-- SEG:m68854:glossary-term:fs-idm27965808-term -->
-alfa (α) rotnun
+alfa (α) sundrun
 
 <!-- SEG:m68854:glossary-def:fs-idm27965808-def -->
-tap á alfaeind við geislavirka rotnun
+tap á alfaögn við geislasundrun
 
 <!-- SEG:m68854:glossary-term:fs-idp69613952-term -->
-beta (β) rotnun
+beta (β) sundrun
 
 <!-- SEG:m68854:glossary-def:fs-idp69613952-def -->
-niðurbrot nifteindar í róteind, sem helst í kjarnanum, og rafeind, sem er send frá sem beta-eind
+sundrun nifteindar í róteind, sem helst í kjarnanum, og rafeind, sem losnar sem betaögn
 
 <!-- SEG:m68854:glossary-term:fs-idp69591216-term -->
 dótturkjarnategund
 
 <!-- SEG:m68854:glossary-def:fs-idp69591216-def -->
-kjarnategund sem myndast við geislavirka rotnun annarrar kjarnategundar; getur verið stöðug eða rotnað frekar
+kjarnategund sem myndast við geislasundrun annarrar kjarnategundar; getur verið stöðug eða sundrast frekar
 
 <!-- SEG:m68854:glossary-term:fs-idm684928-term -->
-rafeindahremming
+rafeindarhremming
 
 <!-- SEG:m68854:glossary-def:fs-idm684928-def -->
-samruni innri rafeindar við róteind sem skilar nifteind innan kjarnans
+samruni kjarnarafeindar og róteindar sem skilar nifteind innan kjarnans
 
 <!-- SEG:m68854:glossary-term:fs-idm27366640-term -->
-gamma (γ) útblástur
+gamma (γ) losun
 
 <!-- SEG:m68854:glossary-def:fs-idm27366640-def -->
-hrörnun örvaðs kirnis sem fylgir útsending gammageisla
+sundrun örvaðrar kjarnategundar ásamt losun gammageisla
 
 <!-- SEG:m68854:glossary-term:fs-idp172569488-term -->
-helmingunartími (t1/2)
+helmingunartími ([[i:t]][[sub:1/2]])
 
 <!-- SEG:m68854:glossary-def:fs-idp172569488-def -->
-tíminn sem það tekur helming frumeinda í geislavirku sýni að hrörna
+tími sem það tekur helming atóma í geislavirku sýni að sundrast
 
 <!-- SEG:m68854:glossary-term:fs-idp55578096-term -->
-móðurkirni
+móðurkjarnategund
 
 <!-- SEG:m68854:glossary-def:fs-idp55578096-def -->
-óstöðugt kirni sem breytist sjálfkrafa í annað (dóttur)kirni
+óstöðug kjarnategund sem breytist sjálfkrafa í aðra (dóttur) kjarnategund
 
 <!-- SEG:m68854:glossary-term:fs-idm24356480-term -->
-jáeindarútgáfa
+jákvæðindalosun
 
 <!-- SEG:m68854:glossary-def:fs-idm24356480-def -->
-(einnig, β[[sup:+]] hrörnun) umbreyting róteindar í nifteind, sem helst í kjarnanum, og jáeind, sem er gefin út
+(einnig β[[sup:+]]-sundrun) umbreyting róteindar í nifteind, sem verður eftir í kjarnanum, og jákvæðind, sem losnar
 
 <!-- SEG:m68854:glossary-term:fs-idp79161920-term -->
-geislavirk hrörnun
+geislasundrun
 
 <!-- SEG:m68854:glossary-def:fs-idp79161920-def -->
-sjálfgeng hrörnun óstöðugs kirnis í annað kirni
+sjálfkrafa sundrun óstöðugrar kjarnategundar í aðra kjarnategund
 
 <!-- SEG:m68854:glossary-term:fs-idp172690976-term -->
-geislavirk hrörnunarröð
+geislasundrunarröð
 
 <!-- SEG:m68854:glossary-def:fs-idp172690976-def -->
-keðjur samfelldra sundrana (geislavirkra hrörnana) sem að lokum leiða til stöðugs lokaafurðar
+keðjur af samfelldum sundrunum (geislasundrunum) sem að lokum leiða til stöðugrar lokaafurðar
 
 <!-- SEG:m68854:glossary-term:fs-idp10803760-term -->
-kolefnisaldursgreining
+kolefnisaldursákvörðun
 
 <!-- SEG:m68854:glossary-def:fs-idp10803760-def -->
-mjög nákvæm aðferð til að aldursgreina 30.000–50.000 ára gamla hluti sem eitt sinn voru úr lifandi efni; framkvæmt með því að reikna hlutfall [[MATH:112]] í hlutnum á móti hlutfalli [[MATH:113]] í andrúmslofti nútímans
+mjög nákvæm aðferð til að aldursákvarða 30.000–50.000 ára gamla hluti sem eitt sinn voru lifandi efni; framkvæmt með því að reikna út hlutfall [[MATH:112]] í hlutnum á móti hlutfalli [[MATH:113]] í andrúmslofti nútímans
 
 <!-- SEG:m68854:glossary-term:fs-idp171940160-term -->
-geislaaldursgreining
+geislaaldursákvörðun
 
 <!-- SEG:m68854:glossary-def:fs-idp171940160-def -->
-notkun geislasamsæta og eiginleika þeirra til að aldursgreina myndun hluta eins og fornleifa, áður lifandi lífvera eða jarðmyndana
+notkun geislasamsæta og eiginleika þeirra til að aldursákvarða myndun hluta eins og fornleifagripa, áður lifandi lífvera eða jarðmyndana

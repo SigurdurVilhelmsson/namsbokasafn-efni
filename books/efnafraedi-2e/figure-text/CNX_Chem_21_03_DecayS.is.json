@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_03_DecayS",
+ "renderHash": "033842abd90ac2de",
+ "composedHash": "033842abd90ac2de",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Atomic number (Z)": "Sætistala (Z)",
+  "Number of neutrons (n)": "Fjöldi nifteinda (n)",
+  "α decay|β decay": "α-hrörnun β-hrörnun"
+ },
+ "mtAlternatives": {
+  "α decay|β decay": {
+   "kept": "joined",
+   "other": "Alfasundrun Betasundrun",
+   "reason": "disagree",
+   "mt": "α-hrörnun β-hrörnun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

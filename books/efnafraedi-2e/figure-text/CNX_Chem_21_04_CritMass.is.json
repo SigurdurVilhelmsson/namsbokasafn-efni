@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_04_CritMass",
+ "renderHash": "e19b3f5a50699733",
+ "composedHash": "e19b3f5a50699733",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Sub-critical mass": "Undirkrítískur massi",
+  "Critical mass": "Krítískur massi"
+ },
+ "mtAlternatives": {
+  "Sub-critical mass": {
+   "kept": "joined",
+   "other": "Undirkritískur massi",
+   "reason": "disagree",
+   "mt": "Undirkrítískur massi"
+  },
+  "Critical mass": {
+   "kept": "joined",
+   "other": "Markþröskuldur",
+   "reason": "disagree",
+   "mt": "Krítískur massi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

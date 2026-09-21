@@ -1,0 +1,53 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_03_CarbonDate",
+ "renderHash": "b4334ae999362209",
+ "composedHash": "b4334ae999362209",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ratio is constant|in living|organisms": "hlutfall er stöðugt í lifandi lífverum",
+  "Organism dies": "Lífvera deyr",
+  "Decay|begins": "Hrörnun hefst",
+  "Decay": "Hrörnun",
+  "Time": "Tími",
+  "Trace": "Leifar",
+  "ratio decreased": "hlutfall minnkað"
+ },
+ "mtAlternatives": {
+  "ratio is constant|in living|organisms": {
+   "kept": "joined",
+   "other": "hlutfallið er stöðugt í lifandi lífverum",
+   "reason": "disagree",
+   "mt": "hlutfall er stöðugt í lifandi lífverum"
+  },
+  "Decay|begins": {
+   "kept": "joined",
+   "other": "Rotnun hefst",
+   "reason": "disagree",
+   "mt": "Hrörnun hefst"
+  },
+  "Decay": {
+   "kept": "joined",
+   "other": "Rotnun",
+   "reason": "disagree",
+   "mt": "Hrörnun"
+  },
+  "Trace": {
+   "kept": "joined",
+   "other": "Rekja",
+   "reason": "disagree",
+   "mt": "Leifar"
+  },
+  "ratio decreased": {
+   "kept": "joined",
+   "other": "hlutfall lækkaði",
+   "reason": "disagree",
+   "mt": "hlutfall minnkað"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}
