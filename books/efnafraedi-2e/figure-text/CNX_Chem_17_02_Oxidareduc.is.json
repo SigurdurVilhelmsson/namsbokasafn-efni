@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_02_Oxidareduc",
+ "renderHash": "a67d7a6cad9ba9b7",
+ "composedHash": "a67d7a6cad9ba9b7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Mg anode": "Mg anóða",
+  "0.2 M FeCl3 and 0.3 M FeCl2": "0,2 M FeCl3 og 0,3 M FeCl2",
+  "0.1 M MgCl2": "0,1 M MgCl2",
+  "Pt cathode": "Pt katóða",
+  "Salt bridge": "Saltbrú",
+  "flow of electrons": "flæði rafeinda",
+  "external|circuit": "ytri rafrás"
+ },
+ "mtAlternatives": {
+  "Mg anode": {
+   "kept": "joined",
+   "other": "Mg-anóða",
+   "reason": "disagree",
+   "mt": "Mg anóða"
+  },
+  "Pt cathode": {
+   "kept": "joined",
+   "other": "Pt bakskaut",
+   "reason": "disagree",
+   "mt": "Pt katóða"
+  },
+  "flow of electrons": {
+   "kept": "joined",
+   "other": "Rafeindaflæði",
+   "reason": "disagree",
+   "mt": "flæði rafeinda"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

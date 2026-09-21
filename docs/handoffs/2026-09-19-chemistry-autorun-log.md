@@ -648,3 +648,65 @@ the original subtree — so any gate fix must be measured against ORGANIC, not o
 Inject → render → index all ran. `green: true`, `unexplained: 0`, `deferredLosses 14 → 15`
 (the +1 being the control that the entry was read), 0 raw `[[` in 10 pages against a 365-marker
 positive control, and **1 page rename → 1 redirect row**. Full account: register **C171**.
+
+## ch17 — 9 units · ~1,099 ISK text + ~33 ISK figures · `DONE=ok`, PREPARED
+
+**First chapter bought with an 18-term subset — the audited 14 plus four [USER]-ruled terms the
+audit had dropped or held.** Text 109,885 chars (**~1,099 ISK**, 0.79× the 1,399 estimate, in line
+with ch16's 0.76×). `arm: 9 of 9 provenance files are glossary-only`. Figures 20 enumerated,
+17 translated, 3 unresolved (artwork hole), VERDICT ok. Inject 8 modules COMPLETE, 132 perfect,
+manifest `green=true unexplained=0`. 13 pages, **0 raw `[[` against a 279-marker positive control**.
+
+### 🔴 THE AUDITED SUBSET DROPPED TWO TERMS [USER] HAD RULED, AND THE TOOL'S REASON DID NOT SURVIVE MEASUREMENT
+
+`cell` and `cell potential` were excluded as *already-handled*. Measured before the buy:
+
+| | EN in ch17 | committed (March) MT |
+|---|---|---|
+| `cell` | 379 | `ker` 268 · `rafhlað-` 98 — a 73/27 split, not uniform |
+| `cell potential` | 74 | `kerspenna` 29 — 39% coverage |
+
+⚠️ **And the control behind that exclusion is unsound: ch17's MT is stamped `2026-06-30` with NO
+`arm` recorded — the full-glossary era.** That is the audit's own defect ①, *rule 3 reads a
+glossary-ON output as an unprompted control*. ▶ **The clinching argument was internal to the
+rulings themselves:** `houseStyleTerms.js` records `galvanic cell → galvaníker` as *"ruled with the
+bare `cell` row below so the chapter is consistent"*, and the audited subset kept `galvanic cell`
+while dropping `cell` — which would put **`galvaníker` next to `rafhlaða` in one chapter**, the
+exact inconsistency the ruling exists to prevent. `porous` and `submerged` were the two the audit
+itself marked *"LEFT OFF pending your answer"*; [USER] answered both on 2026-09-21.
+
+### ✅ THE SUBSET TOOK — VERIFIED BY VALUE, NOT BY THE DRIVER'S VERDICT
+
+| | before (March MT) | after |
+|---|---|---|
+| `galvaníker` (m68822) | **0** | **21** |
+| `ker` (m68822) | 65 | 92 |
+| `kerspenna` (chapter) | 29 | 34 |
+| `gropin-` / `gljúp-` | — | **5 / 0** |
+| `á kafi` / `í kafi` | — | **11 / 0** |
+
+⚠️ **`rafhlöð-` remains at 68 and that is CORRECT, not drift** — ch17 is the batteries chapter and
+the English carries **116** `battery`/`batteries`. Reading those 68 as `cell` drift would be the
+wrong unit.
+
+### The one flagged roundtrip row was ALREADY OWNED
+
+`TEXT #fs-idp5636784 <para>` — the note heading *"Statue of Liberty: Changing Colors"*. It is
+**not new and not caused by this buy** (the check round-trips the module's own English, so it is
+MT-independent), and `fidelity-allowlist.json` already carries
+`{m68826, title, -1, known-loss-deferred}` for it with a pointer. Source has 4 `<title>`, injected
+has 3.
+- ▶ **Its pointer said "investigate note-title extraction/inject"; that investigation can now be
+  closed.** Extraction emits **only** `SEG:m68826:para:fs-idp5636784` and **no `para-title`
+  segment**, so the title text is folded into the para at EXTRACT and inject writes it as prose.
+  **Corpus-wide singleton: 1 `<para><title>` inside a `<note>` across both kept books.**
+
+### Figure notes (logged, none a failure)
+
+3 unresolved (artwork hole) · 2 carrying formula formatting the composer could not place ·
+5 with labels drawn at the floor that overhang · 2 with English-kept numbers drawn with a decimal
+comma. Each is named in `pipeline-output/autorun/ch17.fig.log`.
+
+**3 page renames → 3 redirect rows**, two of them caused by the terminology rulings themselves
+(`rafefnafrumur` → `galvaniker`, and `raftrods` → `rafskauts`). ⏹ Readers see none of it until
+[USER]'s sync.

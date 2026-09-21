@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_Lead",
+ "renderHash": "3520915a4db3d1fb",
+ "composedHash": "3520915a4db3d1fb",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Negative|terminal": "Mínusskaut",
+  "Cell divider": "Frumuskil",
+  "Positive electrode|(lead dioxide)": "Jákvætt rafskaut (blýdíoxíð)",
+  "Negative electrode|(lead)": "Neikvætt rafskaut (blý)",
+  "Dilute H2SO4": "Þynnt H2SO4",
+  "Positive|terminal": "Plússkaut",
+  "Protective|casing": "Hlífðarkassi"
+ },
+ "mtAlternatives": {
+  "Cell divider": {
+   "kept": "joined",
+   "other": "Reitaskiptir",
+   "reason": "disagree",
+   "mt": "Frumuskil"
+  },
+  "Positive|terminal": {
+   "kept": "joined",
+   "other": "Jákvætt tengi",
+   "reason": "disagree",
+   "mt": "Plússkaut"
+  },
+  "Protective|casing": {
+   "kept": "joined",
+   "other": "Hlífðarhulstur",
+   "reason": "disagree",
+   "mt": "Hlífðarkassi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

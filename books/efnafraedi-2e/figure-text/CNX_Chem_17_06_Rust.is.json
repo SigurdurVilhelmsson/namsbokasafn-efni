@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_06_Rust",
+ "renderHash": "e2e7e59a1e9f5b85",
+ "composedHash": "e2e7e59a1e9f5b85",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cathodic site": "Bakskautssvæði",
+  "Water": "Vatn",
+  "Paint layer": "Málningarlag",
+  "iron": "Járn",
+  "Anodic site": "Fórnarskautssvæði"
+ },
+ "mtAlternatives": {
+  "iron": {
+   "kept": "joined",
+   "other": "járn",
+   "reason": "disagree",
+   "mt": "Járn"
+  },
+  "Anodic site": {
+   "kept": "joined",
+   "other": "Anóðusvæði",
+   "reason": "disagree",
+   "mt": "Fórnarskautssvæði"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

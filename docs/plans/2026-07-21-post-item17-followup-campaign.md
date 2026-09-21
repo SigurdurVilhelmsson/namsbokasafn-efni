@@ -2,7 +2,37 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-21, afternoon (ch16 PREPARED — the C171 unblock, 0 ISK; the six [USER] terminology rulings APPLIED to the file the code reads. SIX UNITS LEFT: ch17 · ch18 · ch19 · ch20 · ch21 · appendices)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-21, evening (ch17 PREPARED ~1,132 ISK on `content/chemistry-ch17`; PR #498 MERGED and DEPLOYED, the eight rulings CONVERGED in the export. FIVE UNITS LEFT: ch18 · ch19 · ch20 · ch21 · appendices)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **ch18.** ⚠️ **Do NOT use its audited subset as written — see the held-terms table below; it is 27 terms and four of [USER]'s rulings belong in it.** Then ch19 … ch21, then the appendices. **The loop still ends at PREPARED — no session syncs.**
+
+✅ **THE DEPLOY CHAIN COMPLETED AND WAS VERIFIED ON THE FILE, NOT ON THE FACT THAT A SCRIPT RAN.** PR #498 merged as a **merge commit** (`fb1175b2b`, 2 parents — all 39 commits keep their SHAs, so every register citation still resolves), [USER] deployed and ran the exporter, then `git-backup.sh` pushed `auto-backup: 2026-09-21 16:30`. **All 8 ruled headwords now resolve correctly in the pulled export** — checked BY HEADWORD, not by string presence, because an earlier check on the Icelandic side produced two false positives. ⚠️ **`stats.total` stayed at 1,736 across the change, which is the control**: the house-style concepts REPLACE winners for headwords that already existed, so the count must not move.
+
+✅ **ch17 PREPARED — ~1,099 ISK text + ~33 ISK figures.** 9 units, `arm: 9 of 9 glossary-only`, figures 20 enumerated / 17 translated / 3 unresolved, inject 8 COMPLETE with `green=true unexplained=0 perfect=132`, **0 raw `[[` in 13 pages against a 279-marker positive control**, roundtrip clean apart from `meaning#` renames and one ALREADY-ALLOWLISTED title loss. **3 renames → 3 redirect rows** (slug map 42 → 45, added=3 changed=0 removed=0, from a before/after diff).
+
+🔴 **THE AUDITED SUBSET DROPPED TWO TERMS [USER] HAD RULED, AND FINDING IT BEFORE THE BUY IS THE WHOLE VALUE.** `cell` and `cell potential` were excluded by the tool as *already-handled*. Measured: `cell` 379 EN against `ker` 268 / `rafhlað-` 98 — **a 73/27 split, not uniform** — and `cell potential` 74 EN against `kerspenna` 29 (39%). ⚠️ **The control behind the exclusion is unsound: ch17's MT is stamped `2026-06-30` with NO `arm`, i.e. the full-glossary era — the audit's own defect ①.** ▶ **What settled it was internal to the rulings:** `houseStyleTerms.js` records `galvanic cell → galvaníker` as *"ruled with the bare `cell` row below so the chapter is consistent"*, and the audit kept `galvanic cell` while dropping `cell` — **which puts `galvaníker` next to `rafhlaða` in one chapter**, the exact inconsistency the ruling exists to prevent.
+- ✅ **It took, verified BY VALUE:** `galvaníker` in m68822 **0 → 21** · `ker` 65 → 92 · `gropin-/gljúp-` **5 / 0** · `á kafi`/`í kafi` **11 / 0**. ⚠️ **`rafhlöð-` stays at 68 and that is CORRECT** — ch17 is the batteries chapter and the English carries **116** `battery`/`batteries`. **Reading those as `cell` drift would be the wrong unit.**
+- ▶ **Two of the three page renames were caused by the rulings themselves** (`rafefnafrumur` → `galvaniker`, `raftrods` → `rafskauts`). **A terminology ruling on a chapter moves page slugs, so its redirect rows are not hygiene — they are how the ruling lands without breaking links.**
+
+🔴 **BEFORE EACH REMAINING BUY, DO THE TWO CHECKS ch17 NEEDED. The audited subsets were computed against the OLD glossary and with rulings still outstanding, so none of them is usable as written.**
+1. **Add back the terms the audit itself HELD, now that they are ruled** — it marked them *"LEFT OFF pending your answer"*:
+
+| unit | audited | ADD (now ruled) | still UNRULED / held |
+|---|---|---|---|
+| ch18 | 27 | `electronegative`, `amorphous`, `carbon monoxide`, `lone pair` | — |
+| ch19 | 39 | `complementary color` | **`plane`** unruled |
+| ch20 | 9 | `hydrocarbon`, `carbohydrate`, `carbohydrates` | **`substituted`** → committee |
+| ch21 | 34 | `laser`, `steam` | **`alpha particle`** unruled · `fissionable`/`fissile` held · `radioactive material` DROPPED (both forms acceptable, so no row) |
+| appendices | 25 | `lone pair` | — |
+
+2. **Cross-check that chapter's `houseStyleTerms.js` entries against the audited subset.** That is how `cell` was caught: an entry whose `why` names the chapter (*"SEND IT IN ch17's SUBSET ONLY"*) but which the subset omits is a dropped ruling, not a considered exclusion. ⚠️ **Do NOT take the tool's raw output instead** — recomputed for ch17 it returned **54** terms including `case`, `learning`, `result`, `function`, `object`, `time`, `summary`. Its output is a CANDIDATE, not a subset.
+
+📋 **ALREADY-BOUGHT REMEDIATION IS STILL ONE OPEN [USER] DECISION** — 40 `kolvetni` (ch04/05/10/11/12, and **ch05's 24 are the CARBOHYDRATE sense**, not hydrocarbon) + 43 `trigonal planar` (ch07 29 · ch08 14) + 12 `submerged` (ch01/04/05/11). Editor substitution versus targeted re-buy, for all of them together.
+
+⚠️ **A KNOWN LOSS GOT ITS DIAGNOSIS CLOSED en route.** `m68826`'s allowlist entry pointed at *"investigate note-title extraction/inject"*. Now measured: extraction emits **only** `SEG:m68826:para:fs-idp5636784` and **no `para-title` segment**, so a `<para><title>` inside a `<note>` is folded into the para at EXTRACT and inject writes it as prose (source 4 `<title>`, injected 3). **Corpus-wide singleton across both kept books.** The entry and its pointer stay; only the "investigate" is discharged.
+
+⏹ Readers see none of it until [USER]'s sync.
+## ⏩ RESUME — state as of **2026-09-21, afternoon (ch16 PREPARED — the C171 unblock, 0 ISK; the six [USER] terminology rulings APPLIED to the file the code reads. SIX UNITS LEFT: ch17 · ch18 · ch19 · ch20 · ch21 · appendices)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER] merges PR #498 and DEPLOYS. Nothing else happens first.** ⚖️ **[USER] 2026-09-21: *"push it and buy ch17 after the deploy"*** — so ch17 is DELIBERATELY NOT BOUGHT YET, and this is an ordering decision, not a delay. ▶ **Then, and only then: pull, confirm the glossary export actually moved, and buy ch17** — audited subset in [`docs/handoffs/2026-09-21-glossary-subset-audit.md`](../handoffs/2026-09-21-glossary-subset-audit.md), driver and traps in [`docs/handoffs/2026-09-20-chemistry-autorun-handoff.md`](../handoffs/2026-09-20-chemistry-autorun-handoff.md). Then ch18 … ch21, then the appendices. **The loop still ends at PREPARED — no session syncs.**
 

@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_08_Daniell",
+ "renderHash": "0327b716dd8aa15e",
+ "composedHash": "0327b716dd8aa15e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Zn anode": "Sink anóða",
+  "Porous|plug": "Gropin tappi",
+  "Flow of anions": "Flæði anjóna",
+  "flow of e–": "Flæði e–",
+  "Flow of cations": "Flæði katjóna",
+  "Cu cathode": "Kopar katóða"
+ },
+ "mtAlternatives": {
+  "Porous|plug": {
+   "kept": "joined",
+   "other": "Gropinn tappi",
+   "reason": "disagree",
+   "mt": "Gropin tappi"
+  },
+  "flow of e–": {
+   "kept": "joined",
+   "other": "flæði e–",
+   "reason": "disagree",
+   "mt": "Flæði e–"
+  },
+  "Cu cathode": {
+   "kept": "joined",
+   "other": "Cu bakskaut",
+   "reason": "disagree",
+   "mt": "Kopar katóða"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

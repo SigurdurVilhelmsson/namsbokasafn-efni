@@ -190,3 +190,19 @@ _Slug map 40 → 41: **added=4, changed=0, removed=3**. ch10 and ch15 produced n
 _Slug map 41 → 42: **added=1, changed=0, removed=0** — computed by diffing the map before and
 against `HEAD`, not transcribed from the render log. No chain collapsed and no row inverted, so
 this single row is the whole of ch16's redirect work._
+
+## ch17 — prepared 2026-09-21 (~1,132 ISK all in)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi.html` | `chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarfraedi.html` | m68821 |
+| `chapters/17/17-2-rafefnafrumur.html` | `chapters/17/17-2-galvaniker.html` | m68822 |
+| `chapters/17/17-3-raftrods-og-kerspenna.html` | `chapters/17/17-3-rafskauts-og-kerspenna.html` | m68823 |
+
+_Slug map 42 → 45: **added=3, changed=0, removed=0** — from a before/after diff against `HEAD`,
+not transcribed from the render log. No chain collapsed and no row inverted._
+
+⚠️ **The second row is the `galvanic cell → galvaníker` ruling reaching a reader-facing URL**
+(`rafefnafrumur` → `galvaniker`), and the third is `cell potential → kerspenna` doing the same.
+A terminology ruling on this chapter moves page slugs, so the redirect rows are not optional
+hygiene here — they are how the ruling lands without breaking links.

@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_FuelCell",
+ "renderHash": "98c908baabc9d52e",
+ "composedHash": "98c908baabc9d52e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cathode": "Bakskaut",
+  "Electrolyte": "Rafvaki",
+  "Anode": "Forskaut",
+  "Air in": "Loft inn",
+  "Fuel in": "Eldsneyti inn",
+  "Unused|gases|out": "Ónotaðar lofttegundir út",
+  "Excess|fuel": "Uframeldsneyti",
+  "Electric current": "Rafstraumur"
+ },
+ "mtAlternatives": {
+  "Electrolyte": {
+   "kept": "joined",
+   "other": "Saltvatnslausn",
+   "reason": "disagree",
+   "mt": "Rafvaki"
+  },
+  "Anode": {
+   "kept": "joined",
+   "other": "Anóða",
+   "reason": "disagree",
+   "mt": "Forskaut"
+  },
+  "Excess|fuel": {
+   "kept": "joined",
+   "other": "Umframeldsneyti",
+   "reason": "disagree",
+   "mt": "Uframeldsneyti"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}
