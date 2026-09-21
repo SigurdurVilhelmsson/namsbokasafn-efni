@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T07:52:08.723Z",
+  "generated": "2026-09-21T08:37:05.544Z",
   "termCount": 763,
   "entries": [
     {
@@ -309,28 +309,6 @@
       "sectionTitle": "Kolvetni",
       "sectionSlug": "20-1-kolvetni",
       "termId": "fs-idp70106672"
-    },
-    {
-      "termIs": "amfíprótísk",
-      "termEn": "amphiprotic",
-      "termFull": "amfíprótísk (e. amphiprotic)",
-      "definition": "efnatengund sem getur annaðhvort gefið frá sér eða tekið við róteind í Brønsted-Lowry sýru-basahvarfi",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp140545888"
-    },
-    {
-      "termIs": "amfóterísk",
-      "termEn": "amphoteric",
-      "termFull": "amfóterísk (e. amphoteric)",
-      "definition": "efnatengund sem getur virkað annaðhvort sem sýra eða basi",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp12571968"
     },
     {
       "termIs": "amíð",
@@ -677,7 +655,7 @@
       "termIs": "basajónun",
       "termEn": "base ionization",
       "termFull": "basajónun (e. base ionization)",
-      "definition": "hvarf sem felur í sér flutning róteindar úr vatni yfir í basa, sem gefur hýdroxíðjónir og samsvara sýru basans",
+      "definition": "hvarf sem felur í sér flutning róteindar frá vatni yfir í basa, sem myndar hýdroxíðjónir og samoka sýru basans",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -691,8 +669,8 @@
       "definition": "jafnvægisfasti fyrir basajónunarhvarf",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
-      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
+      "sectionTitle": "Afstæður styrkur sýra og basa",
+      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
       "termId": "fs-idp86060672"
     },
     {
@@ -993,9 +971,9 @@
       "termId": "fs-idm143011312"
     },
     {
-      "termIs": "Brønsted-Lowry basi",
+      "termIs": "Brønsted-Lowry-basi",
       "termEn": "brønsted-lowry base",
-      "termFull": "Brønsted-Lowry basi (e. brønsted-lowry base)",
+      "termFull": "Brønsted-Lowry-basi (e. brønsted-lowry base)",
       "definition": "róteindaþegi",
       "chapter": 14,
       "section": "14.1",
@@ -1004,9 +982,9 @@
       "termId": "fs-idp89677040"
     },
     {
-      "termIs": "Brønsted-Lowry sýra",
+      "termIs": "Brønsted-Lowry-sýra",
       "termEn": "brønsted-lowry acid",
-      "termFull": "Brønsted-Lowry sýra (e. brønsted-lowry acid)",
+      "termFull": "Brønsted-Lowry-sýra (e. brønsted-lowry acid)",
       "definition": "róteindagjafi",
       "chapter": 14,
       "section": "14.1",
@@ -1436,7 +1414,7 @@
       "termIs": "einföld rúmfrumubygging",
       "termEn": "simple cubic structure",
       "termFull": "einföld rúmfrumubygging (e. simple cubic structure)",
-      "definition": "kristalbygging með rúmfrumueiningu með grindarpunktum aðeins á hornunum",
+      "definition": "kristalbygging með rúmfrumugrindareiningu með grindarpunkta aðeins á hornunum",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -1444,10 +1422,10 @@
       "termId": "fs-idm47773456"
     },
     {
-      "termIs": "einföld rúmfrumueining",
+      "termIs": "einföld rúmfrumugrindareining",
       "termEn": "simple cubic unit cell",
-      "termFull": "einföld rúmfrumueining (e. simple cubic unit cell)",
-      "definition": "(einnig, frumstæð rúmfrumueining) eining í einfaldri rúmfrumubyggingu",
+      "termFull": "einföld rúmfrumugrindareining (e. simple cubic unit cell)",
+      "definition": "(einnig, frumstæð rúmfrumugrindareining) grindareining í einfaldri rúmfrumubyggingu",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -1486,17 +1464,6 @@
       "sectionTitle": "Rafhlöður og efnarafalar",
       "sectionSlug": "17-5-rafhlodur-og-efnarafalar",
       "termId": "fs-idm278014928"
-    },
-    {
-      "termIs": "einróteindasýra",
-      "termEn": "monoprotic acid",
-      "termFull": "einróteindasýra (e. monoprotic acid)",
-      "definition": "sýra sem inniheldur eina jónanlega vetnisfrumeind á hverja sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölróteindasýrur",
-      "sectionSlug": "14-5-fjolroteindasyrur",
-      "termId": "fs-idp98784944"
     },
     {
       "termIs": "einsameindahvarf",
@@ -1543,14 +1510,14 @@
       "termId": "fs-idp35066960"
     },
     {
-      "termIs": "einsleitur hviti",
+      "termIs": "einsleitur hvati",
       "termEn": "homogeneous catalyst",
-      "termFull": "einsleitur hviti (e. homogeneous catalyst)",
+      "termFull": "einsleitur hvati (e. homogeneous catalyst)",
       "definition": "hvati sem er í sama fasa og hvarfefnin",
       "chapter": 12,
       "section": "12.7",
-      "sectionTitle": "Hvörf",
-      "sectionSlug": "12-7-hvorf",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-7-hvotun",
       "termId": "fs-idm218392224"
     },
     {
@@ -1563,6 +1530,17 @@
       "sectionTitle": "Girðiefnafræði hliðarmálma",
       "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
       "termId": "fs-idp8060128"
+    },
+    {
+      "termIs": "einvirk sýra",
+      "termEn": "monoprotic acid",
+      "termFull": "einvirk sýra (e. monoprotic acid)",
+      "definition": "sýra sem inniheldur eina jónanlega vetnisfrumeind á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölvirkar sýrur",
+      "sectionSlug": "14-5-fjolvirkar-syrur",
+      "termId": "fs-idp98784944"
     },
     {
       "termIs": "endapunktur",
@@ -1766,7 +1744,7 @@
       "termIs": "flatarmálfyllt rúmfrumuefni (FCC)",
       "termEn": "face-centered cubic (fcc) solid",
       "termFull": "flatarmálfyllt rúmfrumuefni (FCC) (e. face-centered cubic (fcc) solid)",
-      "definition": "kristalbygging sem samanstendur af rúmfrumueiningu með grindarpunktum á hornum og í miðju hvers flata",
+      "definition": "kristalbygging sem samanstendur af rúmfrumugrindareiningu með grindarpunkta á hornum og í miðju hvers flata",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -1774,9 +1752,9 @@
       "termId": "fs-idp20057136"
     },
     {
-      "termIs": "flatarmálfyllt rúmfrumueining",
+      "termIs": "flatarmálfyllt rúmfrumugrindareining",
       "termEn": "face-centered cubic unit cell",
-      "termFull": "flatarmálfyllt rúmfrumueining (e. face-centered cubic unit cell)",
+      "termFull": "flatarmálfyllt rúmfrumugrindareining (e. face-centered cubic unit cell)",
       "definition": "einfaldasta endurtekna eining flatarmálfyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju hvers flata",
       "chapter": 10,
       "section": "10.6",
@@ -1915,17 +1893,6 @@
       "sectionTitle": "Ástandsform og flokkun efnis",
       "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
       "termId": "fs-idm6667232"
-    },
-    {
-      "termIs": "frumueining",
-      "termEn": "unit cell",
-      "termFull": "frumueining (e. unit cell)",
-      "definition": "minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina",
-      "chapter": 10,
-      "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
-      "termId": "fs-idp173597120"
     },
     {
       "termIs": "frumuskrepp",
@@ -2225,6 +2192,17 @@
       "termId": "fs-idp17888704"
     },
     {
+      "termIs": "grindareining",
+      "termEn": "unit cell",
+      "termFull": "grindareining (e. unit cell)",
+      "definition": "minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina",
+      "chapter": 10,
+      "section": "10.6",
+      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
+      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "termId": "fs-idp173597120"
+    },
+    {
       "termIs": "grunnástand",
       "termEn": "ground state",
       "termFull": "grunnástand (e. ground state)",
@@ -2481,11 +2459,11 @@
       "termIs": "Henderson-Hasselbalch jafnan",
       "termEn": "henderson-hasselbalch equation",
       "termFull": "Henderson-Hasselbalch jafnan (e. henderson-hasselbalch equation)",
-      "definition": "lógaritmísk útgáfa af jónunarfastastæðu sýru, sem er þægilega sniðin til að reikna út sýrustig (pH) jafnalausna",
+      "definition": "lógaritmísk útgáfa af jónunarfastajöfnu sýru, sem hentar vel til að reikna út sýrustig (pH) stuðpúðalausna",
       "chapter": 14,
       "section": "14.6",
-      "sectionTitle": "Jafnalausnir",
-      "sectionSlug": "14-6-jafnalausnir",
+      "sectionTitle": "Stuðpúðar",
+      "sectionSlug": "14-6-studpudar",
       "termId": "fs-idm71412016"
     },
     {
@@ -2679,7 +2657,7 @@
       "termIs": "hol",
       "termEn": "hole",
       "termFull": "hol (e. hole)",
-      "definition": "(einnig, millirými) rými milli atóma innan kristals",
+      "definition": "(einnig, millirými) bil á milli atóma innan kristals",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -3061,28 +3039,6 @@
       "termId": "fs-idp55104"
     },
     {
-      "termIs": "jafnalausn",
-      "termEn": "buffer",
-      "termFull": "jafnalausn (e. buffer)",
-      "definition": "blanda af umtalsverðu magni af veiku sýru-basa pari. Sýrustig (pH) jafnalausnar breytist lítið þegar litlu magni af sýru eða basa er bætt við",
-      "chapter": 14,
-      "section": "14.6",
-      "sectionTitle": "Jafnalausnir",
-      "sectionSlug": "14-6-jafnalausnir",
-      "termId": "fs-idp88495904"
-    },
-    {
-      "termIs": "jafnalausnargeta",
-      "termEn": "buffer capacity",
-      "termFull": "jafnalausnargeta (e. buffer capacity)",
-      "definition": "magn sýru eða basa sem hægt er að bæta við rúmmál jafnalausnar áður en sýrustig hennar breytist verulega (venjulega um eina pH-einingu)",
-      "chapter": 14,
-      "section": "14.6",
-      "sectionTitle": "Jafnalausnir",
-      "sectionSlug": "14-6-jafnalausnir",
-      "termId": "fs-idp88494848"
-    },
-    {
       "termIs": "jafngildisjafna massa og orku",
       "termEn": "mass-energy equivalence equation",
       "termFull": "jafngildisjafna massa og orku (e. mass-energy equivalence equation)",
@@ -3215,17 +3171,6 @@
       "termId": "fs-idp182712496"
     },
     {
-      "termIs": "jónamargfeldisfasti vatns (Kw)",
-      "termEn": "ion-product constant for water (kw)",
-      "termFull": "jónamargfeldisfasti vatns (Kw) (e. ion-product constant for water (kw))",
-      "definition": "jafnvægisfasti fyrir sjálfjónun vatns",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp9778624"
-    },
-    {
       "termIs": "jónandi geislun",
       "termEn": "ionizing radiation",
       "termFull": "jónandi geislun (e. ionizing radiation)",
@@ -3281,6 +3226,17 @@
       "termId": "fs-idm37301360"
     },
     {
+      "termIs": "jónmargfeldisfasti vatns (Kw)",
+      "termEn": "ion-product constant for water (kw)",
+      "termFull": "jónmargfeldisfasti vatns (Kw) (e. ion-product constant for water (kw))",
+      "definition": "jafnvægisfasti fyrir sjálfjónun vatns",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp9778624"
+    },
+    {
       "termIs": "jónunarísómera",
       "termEn": "ionization isomer",
       "termFull": "jónunarísómera (e. ionization isomer)",
@@ -3309,8 +3265,8 @@
       "definition": "hlutfall styrks jónaðrar sýru og upphafsstyrks sýru, gefið upp sem prósentutala",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
-      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
+      "sectionTitle": "Afstæður styrkur sýra og basa",
+      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
       "termId": "fs-idm94073376"
     },
     {
@@ -3331,8 +3287,8 @@
       "definition": "sú athugun að sýru-basastyrkur uppleystra efna í tilteknum leysi takmarkast við einkennandi sýru- og basaefni leysisins (í vatni, hýdróníum- og hýdroxíðjónir)",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
-      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
+      "sectionTitle": "Afstæður styrkur sýra og basa",
+      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
       "termId": "fs-idm94080720"
     },
     {
@@ -4073,10 +4029,10 @@
       "termId": "fs-idp279277792"
     },
     {
-      "termIs": "litabreytingabil",
+      "termIs": "litabreytingasvið",
       "termEn": "color-change interval",
-      "termFull": "litabreytingabil (e. color-change interval)",
-      "definition": "svið í pH-gildi þar sem litabreyting vísbendis sést",
+      "termFull": "litabreytingasvið (e. color-change interval)",
+      "definition": "svið í pH-gildi þar sem litabreyting litvísis sést",
       "chapter": 14,
       "section": "14.7",
       "sectionTitle": "Sýru-basa títranir",
@@ -4175,7 +4131,7 @@
       "termIs": "ljósbrot",
       "termEn": "diffraction",
       "termFull": "ljósbrot (e. diffraction)",
-      "definition": "stefnubreyting rafsegulgeislunar sem verður þegar hún rekst á efnislega hindrun af viðeigandi stærð",
+      "definition": "endurstefna rafsegulgeislunar sem verður þegar hún lendir á efnislegri hindrun af viðeigandi stærð",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -4736,7 +4692,7 @@
       "termIs": "miðjufyllt rúmfrumuefni (BCC)",
       "termEn": "body-centered cubic (bcc) solid",
       "termFull": "miðjufyllt rúmfrumuefni (BCC) (e. body-centered cubic (bcc) solid)",
-      "definition": "kristalbygging sem hefur rúmfrumueiningu með grindarpunktum á hornum og í miðju frumunnar",
+      "definition": "kristalbygging sem hefur rúmfrumugrindareiningu með grindarpunkta á hornum og í miðju frumunnar",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -4744,9 +4700,9 @@
       "termId": "fs-idp190835184"
     },
     {
-      "termIs": "miðjufyllt rúmfrumueining",
+      "termIs": "miðjufyllt rúmfrumugrindareining",
       "termEn": "body-centered cubic unit cell",
-      "termFull": "miðjufyllt rúmfrumueining (e. body-centered cubic unit cell)",
+      "termFull": "miðjufyllt rúmfrumugrindareining (e. body-centered cubic unit cell)",
       "definition": "einfaldasta endurtekna eining miðjufyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju teningsins",
       "chapter": 10,
       "section": "10.6",
@@ -4846,11 +4802,11 @@
       "termIs": "mismunandi hvatar",
       "termEn": "heterogeneous catalyst",
       "termFull": "mismunandi hvatar (e. heterogeneous catalyst)",
-      "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem efnahvarf getur átt sér stað",
+      "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað",
       "chapter": 12,
       "section": "12.7",
-      "sectionTitle": "Hvörf",
-      "sectionSlug": "12-7-hvorf",
+      "sectionTitle": "Hvötun",
+      "sectionSlug": "12-7-hvotun",
       "termId": "fs-idm228167568"
     },
     {
@@ -5201,8 +5157,8 @@
       "definition": "þrígilt efnasamband með sýrueiginleika, en sameindir þess innihalda miðlægt málmleysingjafrumeind sem er tengd einni eða fleiri O-frumeindum, þar sem að minnsta kosti ein þeirra er tengd jónanlegri H-frumeind",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
-      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
+      "sectionTitle": "Afstæður styrkur sýra og basa",
+      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
       "termId": "fs-idm94074528"
     },
     {
@@ -5767,10 +5723,10 @@
       "termId": "fs-idp21637408"
     },
     {
-      "termIs": "rúmfrumupökkun (CCP)",
+      "termIs": "rúmfrumuleg þéttpökkun (CCP)",
       "termEn": "cubic closest packing (ccp)",
-      "termFull": "rúmfrumupökkun (CCP) (e. cubic closest packing (ccp))",
-      "definition": "kristalbygging þar sem lögum af þéttpökkuðum atómum eða jónum er staflað sem röð af þremur lögum sem skiptast á með mismunandi afstæðu (ABC)",
+      "termFull": "rúmfrumuleg þéttpökkun (CCP) (e. cubic closest packing (ccp))",
+      "definition": "kristalbygging þar sem lög af þéttpökkuðum atómum eða jónum eru stöfluð sem röð þriggja víxllaga með mismunandi afstæðu (ABC)",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -6141,9 +6097,9 @@
       "termId": "fs-idp3050576"
     },
     {
-      "termIs": "samkristallaður",
+      "termIs": "samkristallað",
       "termEn": "isomorphous",
-      "termFull": "samkristallaður (e. isomorphous)",
+      "termFull": "samkristallað (e. isomorphous)",
       "definition": "með sömu kristalbyggingu",
       "chapter": 10,
       "section": "10.6",
@@ -6163,6 +6119,28 @@
       "termId": "fs-idm114308784"
     },
     {
+      "termIs": "samoka basi",
+      "termEn": "conjugate base",
+      "termFull": "samoka basi (e. conjugate base)",
+      "definition": "efni sem myndast þegar sýra missir róteind",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp41346656"
+    },
+    {
+      "termIs": "samoka sýra",
+      "termEn": "conjugate acid",
+      "termFull": "samoka sýra (e. conjugate acid)",
+      "definition": "efni sem myndast þegar basi tekur við róteind",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp41345504"
+    },
+    {
       "termIs": "Samorkusvigrými",
       "termEn": null,
       "termFull": "Samorkusvigrými",
@@ -6172,28 +6150,6 @@
       "sectionTitle": "Sámeindasvigrúmskenningin",
       "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm167738656"
-    },
-    {
-      "termIs": "samsvara basi",
-      "termEn": "conjugate base",
-      "termFull": "samsvara basi (e. conjugate base)",
-      "definition": "efni sem myndast þegar sýra missir róteind",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp41346656"
-    },
-    {
-      "termIs": "samsvara sýra",
-      "termEn": "conjugate acid",
-      "termFull": "samsvara sýra (e. conjugate acid)",
-      "definition": "efni sem myndast þegar basi fær róteind",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp41345504"
     },
     {
       "termIs": "samsætur",
@@ -6251,10 +6207,10 @@
       "termId": "fs-idm310839680"
     },
     {
-      "termIs": "sexstrendingspökkun (HCP)",
+      "termIs": "sexstrendingsleg þéttpökkun (HCP)",
       "termEn": "hexagonal closest packing (hcp)",
-      "termFull": "sexstrendingspökkun (HCP) (e. hexagonal closest packing (hcp))",
-      "definition": "kristalbygging þar sem þéttpökkuðum lögum af atómum eða jónum er staflað sem röð af tveimur lögum sem skiptast á með mismunandi afstæðu (AB)",
+      "termFull": "sexstrendingsleg þéttpökkun (HCP) (e. hexagonal closest packing (hcp))",
+      "definition": "kristalbygging þar sem þéttpökkuð lög af atómum eða jónum eru stöfluð sem röð tveggja víxllaga með mismunandi afstæðu (AB)",
       "chapter": 10,
       "section": "10.6",
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
@@ -6331,7 +6287,7 @@
       "termIs": "sjálfjónun",
       "termEn": "autoionization",
       "termFull": "sjálfjónun (e. autoionization)",
-      "definition": "hvarf milli eins efnatengunda sem gefur jónaafurðir; fyrir vatn felur þetta hvarf í sér flutning róteinda til að gefa hýdróníum- og hýdroxíðjónir",
+      "definition": "hvarf milli eins efnatengunda sem myndar jónískar afurðir; fyrir vatn felur þetta hvarf í sér flutning róteinda til að mynda hýdróníum- og hýdroxíðjónir",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -6790,6 +6746,28 @@
       "termId": "fs-idm41373200"
     },
     {
+      "termIs": "stuðpúðageta",
+      "termEn": "buffer capacity",
+      "termFull": "stuðpúðageta (e. buffer capacity)",
+      "definition": "magn sýru eða basa sem hægt er að bæta við rúmmál stuðpúðalausnar áður en sýrustig hennar breytist verulega (venjulega um eina pH-einingu)",
+      "chapter": 14,
+      "section": "14.6",
+      "sectionTitle": "Stuðpúðar",
+      "sectionSlug": "14-6-studpudar",
+      "termId": "fs-idp88494848"
+    },
+    {
+      "termIs": "stuðpúði",
+      "termEn": "buffer",
+      "termFull": "stuðpúði (e. buffer)",
+      "definition": "blanda af umtalsverðu magni af veiku sýru-basa pari. Sýrustig (pH) stuðpúða þolir breytingar þegar litlu magni af sýru eða basa er bætt við",
+      "chapter": 14,
+      "section": "14.6",
+      "sectionTitle": "Stuðpúðar",
+      "sectionSlug": "14-6-studpudar",
+      "termId": "fs-idp88495904"
+    },
+    {
       "termIs": "stuðull",
       "termEn": "coefficient",
       "termFull": "stuðull (e. coefficient)",
@@ -7043,10 +7021,10 @@
       "termId": "fs-idm54009824"
     },
     {
-      "termIs": "sýru-basa vísbendir",
+      "termIs": "sýru-basa litvísir",
       "termEn": "acid-base indicator",
-      "termFull": "sýru-basa vísbendir (e. acid-base indicator)",
-      "definition": "veik sýra eða basi þar sem sambasinn eða samsýran gefur lausninni annan lit; notað við sjónrænt mat á pH-gildi lausnar",
+      "termFull": "sýru-basa litvísir (e. acid-base indicator)",
+      "definition": "veik sýra eða basi þar sem samoki maki gefur lausninni annan lit; notað við sjónrænt mat á pH-gildi lausnar",
       "chapter": 14,
       "section": "14.7",
       "sectionTitle": "Sýru-basa títranir",
@@ -7068,7 +7046,7 @@
       "termIs": "sýrujónun",
       "termEn": "acid ionization",
       "termFull": "sýrujónun (e. acid ionization)",
-      "definition": "hvarf sem felur í sér flutning róteindar frá sýru yfir í vatn, sem gefur hýdróníumjónir og samsvara basa sýrunnar",
+      "definition": "hvarf sem felur í sér flutning róteindar frá sýru yfir í vatn, sem myndar hýdróníumjónir og samoka basa sýrunnar",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -7082,8 +7060,8 @@
       "definition": "jafnvægisfasti fyrir sýrujónunarhvarf",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
-      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
+      "sectionTitle": "Afstæður styrkur sýra og basa",
+      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
       "termId": "fs-idp86058640"
     },
     {
@@ -7318,6 +7296,17 @@
       "termId": "fs-idm165896720"
     },
     {
+      "termIs": "tvíeðla",
+      "termEn": "amphoteric",
+      "termFull": "tvíeðla (e. amphoteric)",
+      "definition": "efnatengund sem getur virkað annaðhvort sem sýra eða basi",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp12571968"
+    },
+    {
       "termIs": "tvíeðli bylgju og agnar",
       "termEn": "wave-particle duality",
       "termFull": "tvíeðli bylgju og agnar (e. wave-particle duality)",
@@ -7351,26 +7340,15 @@
       "termId": "fs-idm237171488"
     },
     {
-      "termIs": "tvíróteindabasi",
-      "termEn": "diprotic base",
-      "termFull": "tvíróteindabasi (e. diprotic base)",
-      "definition": "basi sem getur tekið við tveimur róteindum",
+      "termIs": "tvíprotneskur",
+      "termEn": "amphiprotic",
+      "termFull": "tvíprotneskur (e. amphiprotic)",
+      "definition": "efnatengund sem getur annaðhvort gefið frá sér eða tekið við róteind í Brønsted-Lowry-sýru-basahvarfi",
       "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölróteindasýrur",
-      "sectionSlug": "14-5-fjolroteindasyrur",
-      "termId": "fs-idm124847888"
-    },
-    {
-      "termIs": "tvíróteindasýra",
-      "termEn": "diprotic acid",
-      "termFull": "tvíróteindasýra (e. diprotic acid)",
-      "definition": "sýra sem inniheldur tvær jónanlegar vetnisfrumeindir á hverja sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölróteindasýrur",
-      "sectionSlug": "14-5-fjolroteindasyrur",
-      "termId": "fs-idp88439392"
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp140545888"
     },
     {
       "termIs": "tvísameindahvarf",
@@ -7448,6 +7426,28 @@
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
       "termId": "fs-idm42302272"
+    },
+    {
+      "termIs": "tvívirk sýra",
+      "termEn": "diprotic acid",
+      "termFull": "tvívirk sýra (e. diprotic acid)",
+      "definition": "sýra sem inniheldur tvær jónanlegar vetnisfrumeindir á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölvirkar sýrur",
+      "sectionSlug": "14-5-fjolvirkar-syrur",
+      "termId": "fs-idp88439392"
+    },
+    {
+      "termIs": "tvívirkur basi",
+      "termEn": "diprotic base",
+      "termFull": "tvívirkur basi (e. diprotic base)",
+      "definition": "basi sem getur tekið við tveimur róteindum",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölvirkar sýrur",
+      "sectionSlug": "14-5-fjolvirkar-syrur",
+      "termId": "fs-idm124847888"
     },
     {
       "termIs": "Tyndall-áhrif",
@@ -8135,11 +8135,11 @@
       "termIs": "þrepaskipt jónun",
       "termEn": "stepwise ionization",
       "termFull": "þrepaskipt jónun (e. stepwise ionization)",
-      "definition": "ferli þar sem fjölróteindasýra jónast með því að missa róteindir í áföngum",
+      "definition": "ferli þar sem fjölvirk sýra jónast með því að missa róteindir í röð",
       "chapter": 14,
       "section": "14.5",
-      "sectionTitle": "Fjölróteindasýrur",
-      "sectionSlug": "14-5-fjolroteindasyrur",
+      "sectionTitle": "Fjölvirkar sýrur",
+      "sectionSlug": "14-5-fjolvirkar-syrur",
       "termId": "fs-idm63142976"
     },
     {
@@ -8198,17 +8198,6 @@
       "termId": "fs-idm153679600"
     },
     {
-      "termIs": "þríróteindasýra",
-      "termEn": "triprotic acid",
-      "termFull": "þríróteindasýra (e. triprotic acid)",
-      "definition": "sýra sem inniheldur þrjár jónanlegar vetnisfrumeindir á hverja sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölróteindasýrur",
-      "sectionSlug": "14-5-fjolroteindasyrur",
-      "termId": "fs-idm25629392"
-    },
-    {
       "termIs": "þrísameindahvarf",
       "termEn": "termolecular reaction",
       "termFull": "þrísameindahvarf (e. termolecular reaction)",
@@ -8218,6 +8207,17 @@
       "sectionTitle": "Hvarfgangar",
       "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp251542624"
+    },
+    {
+      "termIs": "þrívirk sýra",
+      "termEn": "triprotic acid",
+      "termFull": "þrívirk sýra (e. triprotic acid)",
+      "definition": "sýra sem inniheldur þrjár jónanlegar vetnisfrumeindir á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölvirkar sýrur",
+      "sectionSlug": "14-5-fjolvirkar-syrur",
+      "termId": "fs-idm25629392"
     },
     {
       "termIs": "þrýstimælir",

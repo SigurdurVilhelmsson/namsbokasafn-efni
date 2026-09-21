@@ -535,3 +535,53 @@ measured hazard, every one excluding on suspicion because §C73's asymmetry says
 the wire is worse than a missing one. ⚠️ **It does NOT solve wrong-sense homographs** (`learning`,
 `case`, `row`, `box` survive its rules) — CLAUDE.md says only domain knowledge finds those — so its
 output is a CANDIDATE subset with evidence, to be audited before the paid buy.
+
+## Tier-A terminology re-buy — 2026-09-21 · 8 modules · ~2,375 ISK · [USER]-authorised
+
+[USER] ruled: **buffer = `stuðpúði`, buffer solution = `stuðpúðalausn`** — the official chemistry
+glossary, not the medical `jafni/jafnalausn`. The glossary **already said so**; the terms were
+simply absent from the chapters' `--glossary-only` subsets (§C170b).
+
+**Scope was decided by measurement, not by the instruction as phrased.** [USER] first said
+"tier A but hand-fix ch14's buffer". Measured: **`ch14/m68808` carries 97 of ch14's 98 buffer hits
+AND needs `conjugate acid`/`conjugate base`**, so it was being re-bought regardless and hand-fixing
+it would have been redundant. Put back as a choice; [USER] took full tier A.
+
+**Re-buy subsets were each chapter's ORIGINAL subset plus the target terms** — dropping the
+originals could have introduced fresh drift in the very modules being repaired.
+
+### Verified BY VALUE, before vs after, in the MT *and* the rendered HTML
+
+| fix | MT before (approved/rival) | MT after | rendered page |
+|---|---|---|---|
+| `unit cell` → grindareining | 0 / 109 | **119 / 0** | 129 across 4 pages, rivals **0** |
+| `buffer` → stuðpúði | 4 / 71 | **96 / 0** | `stuðpúð` 81, `jafnalausn` **0** |
+| `polyprotic acid` → fjölvirk sýra | 0 / 10 | **10 / 0** | `fjölvirk` 9, rival **0** |
+| `conjugate` → samoka (4 modules) | 0 / 5 | **75 / 0** | `samoka` 96, `samtengd` **0** |
+| `catalysis` → hvötun | 3 / 11 | 11 / 11 | title `12.7 Hvötun` |
+
+⚠️ **THE `11/11` IS NOT §C73 PARTIAL COMPLIANCE — IT IS A BLUNT INSTRUMENT, AND SAYING SO MATTERS.**
+The rival token `hvörf` is the ordinary Icelandic word for *reactions*, which a catalysis chapter
+uses constantly: *"flýta fyrir hvörfum"*, *"efnahvörf"*, *"hvötuð af"*. Every remaining occurrence
+is correct usage and the section title is now `Hvötun`. ▶ **8 of 8 took, not 7 with one partial.**
+A rival-count discriminator is only valid when the rival cannot also be a legitimate word.
+
+### ch15/m68814 — hand-fixed, not re-bought
+
+7 occurrences, all one noun. `jafnalausn` → `stuðpúðalausn` is a **prefix swap that preserves every
+ending**, both being `-lausn` feminine nouns, so the dative `jafnalausninni` became
+`stuðpúðalausninni` correctly. Verified 0 `jafnalausn` remaining, and 5 on the rendered page.
+**Git at `212df4acb` is the backup** — no `.bak` inside a tracked tree.
+
+### ⚠️ ch10's re-render HALTED on a term [USER] had already ruled, and that was the gate working
+
+`🔴 STOP: unruled key term(s) with no glossary row: hydrogen bonding(21)`. The 2026-09-20 ruling is
+**NO glossary action**, and the handoff says to pass it explicitly as
+`AUTORUN_RULED_TERMS="hydrogen bonding"` — which the re-render command omitted. Re-ran with it:
+`[ruled, ignored: hydrogen bonding]`, `DONE=ok`. ▶ **A ruling that lives only in a handoff must be
+re-supplied on every invocation; the gate cannot remember it.**
+
+### Pins: unmoved
+
+The re-buy re-translated existing modules without changing extraction or sidecar counts, so no
+premise pin moved. Floor stayed at the documented 2.

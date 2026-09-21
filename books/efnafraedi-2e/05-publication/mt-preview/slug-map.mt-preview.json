@@ -173,8 +173,8 @@
       "moduleId": "m68794",
       "recordedAt": "2026-09-21"
     },
-    "chapters/12/12-7-hvotun.html": {
-      "to": "chapters/12/12-7-hvorf.html",
+    "chapters/12/12-7-hvorf.html": {
+      "to": "chapters/12/12-7-hvotun.html",
       "moduleId": "m68795",
       "recordedAt": "2026-09-21"
     },
@@ -183,13 +183,18 @@
       "moduleId": "m68799",
       "recordedAt": "2026-09-21"
     },
-    "chapters/14/14-5-fjolvirkar-syrur.html": {
-      "to": "chapters/14/14-5-fjolroteindasyrur.html",
+    "chapters/14/14-3-hlutfallslegur-styrkur-syra-og-basa.html": {
+      "to": "chapters/14/14-3-afstaedur-styrkur-syra-og-basa.html",
+      "moduleId": "m68805",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/14/14-5-fjolroteindasyrur.html": {
+      "to": "chapters/14/14-5-fjolvirkar-syrur.html",
       "moduleId": "m68807",
       "recordedAt": "2026-09-21"
     },
-    "chapters/14/14-6-studpudar.html": {
-      "to": "chapters/14/14-6-jafnalausnir.html",
+    "chapters/14/14-6-jafnalausnir.html": {
+      "to": "chapters/14/14-6-studpudar.html",
       "moduleId": "m68808",
       "recordedAt": "2026-09-21"
     },

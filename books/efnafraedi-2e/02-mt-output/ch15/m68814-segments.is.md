@@ -86,7 +86,7 @@ Jöfnurnar fyrir upplausn álhýdroxíðs, myndun tvinnefnisjónarinnar og saman
 Aukin leysni í súrum lausnum
 
 <!-- SEG:m68814:para:fs-idm596288 -->
-Reiknaðu og berðu saman mólleysni fyrir álhýdroxíð, Al(OH)[[sub:3]], uppleyst í (a) hreinu vatni og (b) jafnalausn sem inniheldur 0,100 [[i:M]] ediksýru og 0,100 [[i:M]] natríumasetat.
+Reiknaðu og berðu saman mólleysni fyrir álhýdroxíð, Al(OH)[[sub:3]], uppleyst í (a) hreinu vatni og (b) stuðpúðalausn sem inniheldur 0,100 [[i:M]] ediksýru og 0,100 [[i:M]] natríumasetat.
 
 <!-- SEG:m68814:para-title:fs-idm450480-title -->
 Lausn
@@ -95,22 +95,22 @@ Lausn
 (a) Mólleysni álhýdroxíðs í vatni er reiknað með því aðeins að taka tillit til upplausnarjafnvægis eins og sýnt er í nokkrum fyrri dæmum:
 
 <!-- SEG:m68814:para:fs-idm324374096 -->
-(b) Styrkur hýdroxíðjónar í jafnalausninni er auðveldlega reiknaður með Henderson-Hasselbalch jöfnunni:
+(b) Styrkur hýdroxíðjónar í stuðpúðalausninni er auðveldlega reiknaður með Henderson-Hasselbalch jöfnunni:
 
 <!-- SEG:m68814:para:fs-idm378269776 -->
 Við þetta pH er styrkur hýdroxíðjónar
 
 <!-- SEG:m68814:para:fs-idm373349040 -->
-Leysni Al(OH)[[sub:3]] í þessari jafnalausn er síðan reiknuð út frá leysnimargfeldisjöfnu þess:
+Leysni Al(OH)[[sub:3]] í þessari stuðpúðalausn er síðan reiknuð út frá leysnimargfeldisjöfnu þess:
 
 <!-- SEG:m68814:para:fs-idm329760656 -->
-Í samanburði við hreint vatn er leysni álhýdroxíðs í þessari vægt súru jafnalausn um það bil tíu milljón sinnum meiri (þó enn tiltölulega lág).
+Í samanburði við hreint vatn er leysni álhýdroxíðs í þessari vægt súru stuðpúðalausn um það bil tíu milljón sinnum meiri (þó enn tiltölulega lág).
 
 <!-- SEG:m68814:para-title:fs-idm329760-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68814:para:fs-idm329760 -->
-Hver er leysni álhýdroxíðs í jafnalausn sem samanstendur af 0,100 [[i:M]] maurasýru og 0,100 [[i:M]] natríumformati?
+Hver er leysni álhýdroxíðs í stuðpúðalausn sem samanstendur af 0,100 [[i:M]] maurasýru og 0,100 [[i:M]] natríumformati?
 
 <!-- SEG:m68814:para:fs-idp15140704 -->
 0,1 [[i:M]]
@@ -221,10 +221,10 @@ Reiknaðu jafnvægisstyrk Fe[[sup:3+]] þegar 0,0888 mólum af K[[sub:3]][Fe(CN)
 Reiknaðu jafnvægisstyrk Co[[sup:2+]] þegar 0,010 mólum af [Co(NH[[sub:3]])[[sub:6]]](NO[[sub:3]])[[sub:2]] er bætt við lausn með 0,25 [[i:M]] NH[[sub:3]]. Gerðu ráð fyrir að rúmmálið sé 1,00 L.
 
 <!-- SEG:m68814:problem:fs-idm454560 -->
-Reiknaðu mólstyrksleysni Sn(OH)[[sub:2]] í jafnalausn sem inniheldur jafnan styrk af NH[[sub:3]] og [[MATH:24]]
+Reiknaðu mólstyrksleysni Sn(OH)[[sub:2]] í stuðpúðalausn sem inniheldur jafnan styrk af NH[[sub:3]] og [[MATH:24]]
 
 <!-- SEG:m68814:problem:fs-idp14751504 -->
-Reiknaðu mólstyrksleysni Al(OH)[[sub:3]] í jafnalausn með 0,100 [[i:M]] NH[[sub:3]] og 0,400 [[i:M]] [[MATH:25]]
+Reiknaðu mólstyrksleysni Al(OH)[[sub:3]] í stuðpúðalausn með 0,100 [[i:M]] NH[[sub:3]] og 0,400 [[i:M]] [[MATH:25]]
 
 <!-- SEG:m68814:solution:fs-idp14756144 -->
 [OH[[sup:−]]] = 4,5 [[MATH:26]] 10[[sup:−6]]; [Al[[sup:3+]]] = 2 [[MATH:27]] 10[[sup:–16]] (mólstyrksleysni)

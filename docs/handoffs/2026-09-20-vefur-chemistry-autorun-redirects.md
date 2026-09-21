@@ -145,3 +145,38 @@ is the right Icelandic is a chemistry-teacher call, not a pipeline one.
 | `chapters/15/15-3-tengd-jafnvaegi.html` | `chapters/15/15-3-tengt-jafnvaegi.html` | m68814 |
 
 _Both instruments agree at 1 (39 → 40, added=1, changed=0, removed=0)._
+
+## 🔴 RETRACTION — three rows published above are now INVERTED. Do not implement them.
+
+The tier-A terminology re-buy (2026-09-21) restored the house terms, and three pages **returned to
+the slugs they had before the re-MT drifted away from them**. The rows previously published in the
+ch12 and ch14 sections are therefore backwards:
+
+| ❌ published earlier — DO NOT USE | ✅ correct now |
+|---|---|
+| `12-7-hvotun.html` → `12-7-hvorf.html` | `12-7-hvorf.html` → `12-7-hvotun.html` |
+| `14-5-fjolvirkar-syrur.html` → `14-5-fjolroteindasyrur.html` | `14-5-fjolroteindasyrur.html` → `14-5-fjolvirkar-syrur.html` |
+| `14-6-studpudar.html` → `14-6-jafnalausnir.html` | `14-6-jafnalausnir.html` → `14-6-studpudar.html` |
+
+⚠️ **The practical risk is LOW but the record must not stand.** Vefur gates each entry on
+`exactSectionExists`, so a row whose target no longer exists is **inert** — an implemented stale row
+would not fire. But it points from a LIVE page to a DELETED one, which is the opposite of what a
+redirect is for, and nothing would flag it.
+
+🔴 **THE DURABLE LESSON, AND IT IS NOT THE CHAIN-COLLAPSE ONE: A RE-BUY CAN *INVERT* A RENAME, AND
+A REDIRECT ROW PUBLISHED FROM THE EARLIER RUN BECOMES WRONG.** The ch10 note above teaches that a
+chain collapses and an OLDER entry gets rewritten. This is different: the slug map **REMOVED** three
+rows outright and wrote their reverses, because the pages moved back. ▶ **And the render log cannot
+show you this** — it printed only the three NEW renames and said nothing about the three removals.
+**Only a before/after diff of the slug map sees a removal.**
+
+## ch10 / ch12 / ch14 / ch15 — tier-A terminology re-buy, 2026-09-21
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/12/12-7-hvorf.html` | `chapters/12/12-7-hvotun.html` | m68795 |
+| `chapters/14/14-3-hlutfallslegur-styrkur-syra-og-basa.html` | `chapters/14/14-3-afstaedur-styrkur-syra-og-basa.html` | m68805 |
+| `chapters/14/14-5-fjolroteindasyrur.html` | `chapters/14/14-5-fjolvirkar-syrur.html` | m68807 |
+| `chapters/14/14-6-jafnalausnir.html` | `chapters/14/14-6-studpudar.html` | m68808 |
+
+_Slug map 40 → 41: **added=4, changed=0, removed=3**. ch10 and ch15 produced no renames._
