@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_03_FECN6FEH2O_img",
+ "renderHash": "18c63863589548ad",
+ "composedHash": "18c63863589548ad",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "[FeF6]3–": "[FeF6]3–",
+  "Low spin, diamagnetic, P<Δoct": "Lágspuni, þvermósegulmagnað, P<Δoct",
+  "High spin, paramagnetic, P>Δoct": "Háspuni, hliðsegulmagnað, P>Δoct"
+ },
+ "mtAlternatives": {
+  "Low spin, diamagnetic, P<Δoct": {
+   "kept": "joined",
+   "other": "Lágspuni, diamagnetic, P<Δoct",
+   "reason": "disagree",
+   "mt": "Lágspuni, þvermósegulmagnað, P<Δoct"
+  },
+  "High spin, paramagnetic, P>Δoct": {
+   "kept": "joined",
+   "other": "Háspuna, fassækinn, P>Δoct",
+   "reason": "disagree",
+   "mt": "Háspuni, hliðsegulmagnað, P>Δoct"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

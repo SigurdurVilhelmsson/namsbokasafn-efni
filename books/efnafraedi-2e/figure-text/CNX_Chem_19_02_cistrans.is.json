@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_cistrans",
+ "renderHash": "59aaade340058053",
+ "composedHash": "59aaade340058053",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Violet, cis form": "Fjólublátt, cis-form",
+  "Green, trans form": "Grænt, trans-form"
+ },
+ "mtAlternatives": {
+  "Green, trans form": {
+   "kept": "joined",
+   "other": "Grænt, umbreytt form",
+   "reason": "disagree",
+   "mt": "Grænt, trans-form"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

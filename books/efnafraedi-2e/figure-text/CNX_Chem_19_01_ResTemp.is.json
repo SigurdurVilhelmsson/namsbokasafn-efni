@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_01_ResTemp",
+ "renderHash": "e1bfca2d38b66478",
+ "composedHash": "e1bfca2d38b66478",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Temperature (K)": "Hiti (K)",
+  "Resistance (ohms)": "Viðnám (ohm)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

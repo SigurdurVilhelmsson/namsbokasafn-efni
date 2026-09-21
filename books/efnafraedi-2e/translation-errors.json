@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-21T17:40:24.519Z",
+  "generated": "2026-09-21T18:10:27.307Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-21T17:40:24.519Z",
+      "generated": "2026-09-21T18:10:27.307Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 132,
-        "withDiscrepancies": 17,
-        "totalDiscrepancies": 29,
+        "perfect": 133,
+        "withDiscrepancies": 16,
+        "totalDiscrepancies": 27,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 13,
+        "deferredLosses": 11,
         "benignArtifacts": 16,
         "green": true
       },
@@ -182,19 +182,6 @@
               "status": "known-loss-deferred",
               "reason": "dropped note heading 'Statue of Liberty: Changing Colors'",
               "pointer": "note-title drop 'Statue of Liberty: Changing Colors' — investigate note-title extraction/inject (WS2 register)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68842",
-          "chapter": "ch19",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -2,
-              "status": "known-loss-deferred",
-              "reason": "WS5 surfaced: <term> flatten — italic d + f dropped from 'd-block elements' / 'f-block elements' glossary terms (same RC1 inline-term family; content present, italic marker lost). Track B4 re-MT",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },

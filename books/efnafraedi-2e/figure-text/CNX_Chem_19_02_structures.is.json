@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_structures",
+ "renderHash": "e3fe0698621ce8f3",
+ "composedHash": "e3fe0698621ce8f3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Pentagonal bipyramid": "Fimmhyrndur tvípíramídi",
+  "Square antiprism": "Ferhyrndur andstæðingur",
+  "Dodecahedral": "Tólfflötungur"
+ },
+ "mtAlternatives": {
+  "Square antiprism": {
+   "kept": "joined",
+   "other": "Ferningaandstæðingur",
+   "reason": "disagree",
+   "mt": "Ferhyrndur andstæðingur"
+  },
+  "Dodecahedral": {
+   "kept": "joined",
+   "other": "Tólfflötunga-",
+   "reason": "disagree",
+   "mt": "Tólfflötungur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_03_Lowhigh",
+ "renderHash": "7ace6f0d5e96f39d",
+ "composedHash": "7ace6f0d5e96f39d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "High spin,|small Δoct": "Hárspuni, lítið Δoct",
+  "Fe2+ no ligands": "Fe2+ engir bindlar",
+  "Low spin,|large Δoct": "Lágspuni, stórt Δoct"
+ },
+ "mtAlternatives": {
+  "High spin,|small Δoct": {
+   "kept": "joined",
+   "other": "Háspuni, lítið Δoct",
+   "reason": "disagree",
+   "mt": "Hárspuni, lítið Δoct"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

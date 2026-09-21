@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_03_Lightper",
+ "renderHash": "3621b980725e3d08",
+ "composedHash": "3621b980725e3d08",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "White light": "Hvítt ljós",
+  "Blue-appearing light": "Bláleitt ljós"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

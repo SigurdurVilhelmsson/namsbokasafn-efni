@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_Answer4e_img",
+ "renderHash": "0f8ed9dffe433bb9",
+ "composedHash": "0f8ed9dffe433bb9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "trans": "trans",
+  "cis": "cis"
+ },
+ "mtAlternatives": {
+  "trans": {
+   "kept": "joined",
+   "other": "Trans",
+   "reason": "disagree",
+   "mt": "trans"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

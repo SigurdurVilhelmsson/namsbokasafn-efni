@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_Coen2Cl2",
+ "renderHash": "50be0024178352f6",
+ "composedHash": "50be0024178352f6",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "cis form (optical isomers)": "cis-form (sjónhverfur)",
+  "trans form": "trans-form"
+ },
+ "mtAlternatives": {
+  "trans form": {
+   "kept": "joined",
+   "other": "umbreyta",
+   "reason": "disagree",
+   "mt": "trans-form"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

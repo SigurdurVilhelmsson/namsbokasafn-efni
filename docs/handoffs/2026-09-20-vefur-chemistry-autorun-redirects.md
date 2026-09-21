@@ -217,3 +217,12 @@ hygiene here — they are how the ruling lands without breaking links.
 
 _Slug map 45 → 48: **added=3, changed=0, removed=0**, from a before/after diff. The first row is the
 `representative metal → aðalflokkamálmur` ruling reaching a URL._
+
+## ch19 — prepared 2026-09-21 (~1,761 ISK all in)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og.html` | `chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna.html` | m68842 |
+| `chapters/19/19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka.html` | `chapters/19/19-3-litrofs-og-seguleiginleikar-girdisambanda.html` | m68844 |
+
+_Slug map 48 → 50: **added=2, changed=0, removed=0**, from a before/after diff._

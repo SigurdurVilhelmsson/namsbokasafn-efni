@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T17:40:27.233Z",
+  "generated": "2026-09-21T18:10:43.437Z",
   "termCount": 763,
   "entries": [
     {
@@ -157,14 +157,14 @@
       "termId": "fs-idm201164080"
     },
     {
-      "termIs": "aktiníðaþáttaröð",
+      "termIs": "aktiníðaröð",
       "termEn": "actinide series",
-      "termFull": "aktiníðaþáttaröð (e. actinide series)",
-      "definition": "(einnig, aktinóíðaþáttaröð) aktiníum og frumefnin í annarri röð eða f-blokkinni, sætistölur 89–103",
+      "termFull": "aktiníðaröð (e. actinide series)",
+      "definition": "(einnig, aktínóíðaröð) aktín og frumefnin í annarri röð eða f-blokkinni, sætistölur 89–103",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm98560816"
     },
     {
@@ -960,17 +960,6 @@
       "termId": "fs-idm54007136"
     },
     {
-      "termIs": "bræðsla",
-      "termEn": "smelting",
-      "termFull": "bræðsla (e. smelting)",
-      "definition": "ferli við að vinna hreinan málm úr bráðnu málmgrýti",
-      "chapter": 19,
-      "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
-      "termId": "fs-idm246107488"
-    },
-    {
       "termIs": "Bræðslumark",
       "termEn": "melting point",
       "termFull": "Bræðslumark (e. melting point)",
@@ -1095,7 +1084,7 @@
       "termIs": "cis-afstaða",
       "termEn": "cis configuration",
       "termFull": "cis-afstaða (e. cis configuration)",
-      "definition": "afstaða rúmísómeru þar sem tveir sambærilegir hópar eru á sömu hlið ímyndaðrar viðmiðunarlínu á sameindinni",
+      "definition": "afstaða rúmísómeru þar sem tveir svipaðir hópar eru sömu megin við ímyndaða viðmiðunarlínu á sameindinni",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -1117,11 +1106,11 @@
       "termIs": "d-blokkar frumefni",
       "termEn": "d-block element",
       "termFull": "d-blokkar frumefni (e. d-block element)",
-      "definition": "eitt af frumefnunum í hópum 3–11 með girðirafeindir í d svigrúmum",
+      "definition": "eitt af frumefnunum í flokkum 3–11 með gildisrafeindir á d-svigrúmum",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm163588304"
     },
     {
@@ -1379,13 +1368,13 @@
     },
     {
       "termIs": "eg svigrúm",
-      "termEn": "eg orbitals",
-      "termFull": "eg svigrúm (e. eg orbitals)",
-      "definition": "sett af tveimur d svigrúmum sem eru stillt á kartesísku ásana fyrir samhæfingarflóka; í áttflötungsflókum eru þau orkuhærri en t2g svigrúmin",
+      "termEn": null,
+      "termFull": "eg svigrúm",
+      "definition": "mengi tveggja d svigrúma sem eru stillt á kartesísku ásana fyrir girðisambönd; í áttflötungasamstæðum eru þau orkuhærri en t2g svigrúmin",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm148194896"
     },
     {
@@ -1532,10 +1521,10 @@
       "termId": "fs-idm218392224"
     },
     {
-      "termIs": "eintanna",
+      "termIs": "eintönna",
       "termEn": "monodentate",
-      "termFull": "eintanna (e. monodentate)",
-      "definition": "bindill sem tengist miðlægri málmjón með aðeins einu samgildu samræmingartengi",
+      "termFull": "eintönna (e. monodentate)",
+      "definition": "tengill sem tengist miðjumálmi með aðeins einu samgildu girðitengi",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -1601,11 +1590,11 @@
       "termIs": "f-blokkar frumefni",
       "termEn": "f-block element",
       "termFull": "f-blokkar frumefni (e. f-block element)",
-      "definition": "(einnig innri hliðarmálmur) eitt af frumefnunum með sætistölur 58–71 eða 90–103 sem hafa gildisrafeindir í f-svigrúmum; þau eru oft sýnd fyrir neðan lotukerfið",
+      "definition": "(einnig, innra hliðarfrumefni) eitt af frumefnunum með sætistölur 58–71 eða 90–103 sem hafa gildisrafeindir á f-svigrúmum; þau eru oft sýnd fyrir neðan lotukerfið",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm214063344"
     },
     {
@@ -1697,14 +1686,14 @@
       "termId": "fs-idm100788960"
     },
     {
-      "termIs": "fjórða hliðarmálmaröðin",
+      "termIs": "fjórða hliðarfrumefnaröð",
       "termEn": "fourth transition series",
-      "termFull": "fjórða hliðarmálmaröðin (e. fourth transition series)",
-      "definition": "hliðarmálmar í sjöundu lotu lotukerfisins (fjórða röð d-blokkarinnar), sætistölur 89 og 104–111",
+      "termFull": "fjórða hliðarfrumefnaröð (e. fourth transition series)",
+      "definition": "hliðarfrumefni í sjöundu lotu lotukerfisins (fjórða röð d-blokkarinnar), sætistölur 89 og 104–111",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm52768832"
     },
     {
@@ -1741,10 +1730,10 @@
       "termId": "fs-idp21380496"
     },
     {
-      "termIs": "fjöltanna bindill",
+      "termIs": "fjöltenntur tengill",
       "termEn": "polydentate ligand",
-      "termFull": "fjöltanna bindill (e. polydentate ligand)",
-      "definition": "bindill sem er tengdur miðlægri málmjón með tengjum frá tveimur eða fleiri gjafafrumeindum, nefndur með forskeytum sem tilgreina hversu margir gjafar eru til staðar (t.d. sextanna = sex samræmingartengi mynduð)",
+      "termFull": "fjöltenntur tengill (e. polydentate ligand)",
+      "definition": "tengill sem er tengdur við miðjumálmjón með tengjum frá tveimur eða fleiri gjafaatómum, nefndur með forskeytum sem tilgreina hversu margir gjafar eru til staðar (t.d. sextenntur = sex girðitengi mynduð)",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -1928,14 +1917,14 @@
       "termId": "fs-idp30967968"
     },
     {
-      "termIs": "fyrsta hliðarmálmaröðin",
+      "termIs": "fyrsta hliðarfrumefnaröð",
       "termEn": "first transition series",
-      "termFull": "fyrsta hliðarmálmaröðin (e. first transition series)",
-      "definition": "hliðarmálmar í fjórðu lotu lotukerfisins (fyrsta röð d-blokkarinnar), sætistölur 21–29",
+      "termFull": "fyrsta hliðarfrumefnaröð (e. first transition series)",
+      "definition": "hliðarfrumefni í fjórðu lotu lotukerfisins (fyrsta röð d-blokkarinnar), sætistölur 21–29",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm186870544"
     },
     {
@@ -2159,21 +2148,54 @@
       "termId": "fs-idp81645184"
     },
     {
+      "termIs": "girðihvolf",
+      "termEn": "coordination sphere",
+      "termFull": "girðihvolf (e. coordination sphere)",
+      "definition": "miðjumálmatóm eða -jón ásamt tengdum tenglum girðisambands",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp56324672"
+    },
+    {
       "termIs": "girðisamband",
       "termEn": "coordination compound",
       "termFull": "girðisamband (e. coordination compound)",
-      "definition": "stöðugt efnasamband þar sem miðlæga málmfrumeindin eða jónin virkar sem Lewis-sýra og tekur við einu eða fleiri rafeindapörum",
+      "definition": "stöðugt efnasamband þar sem miðjumálmatómið eða jónin virkar sem Lewis-sýra og þiggur eitt eða fleiri rafeindapör",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm163589328"
     },
     {
-      "termIs": "gjafafrumeind",
+      "termIs": "girðisamband",
+      "termEn": "coordination compound",
+      "termFull": "girðisamband (e. coordination compound)",
+      "definition": "efni sem samanstendur af atómum, sameindum eða jónum sem eru tengd við miðatóm með Lewis-sýru-basa-víxlverkun",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp246761680"
+    },
+    {
+      "termIs": "girðitala",
+      "termEn": "coordination number",
+      "termFull": "girðitala (e. coordination number)",
+      "definition": "fjöldi samgildra girðitengja við miðjumálmatómið í girðisambandi eða fjöldi næstu snertinga við atóm í kristalformi",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp55828544"
+    },
+    {
+      "termIs": "gjafaatóm",
       "termEn": "donor atom",
-      "termFull": "gjafafrumeind (e. donor atom)",
-      "definition": "atóm í liganda með stakt rafeindapar sem myndar samhæft samgilt tengi við málmiðju",
+      "termFull": "gjafaatóm (e. donor atom)",
+      "definition": "atóm í tengli með stakt rafeindapar sem myndar samgilt girðitengi við miðjumálm",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -2379,14 +2401,14 @@
       "termId": "fs-idm184465568"
     },
     {
-      "termIs": "háspunaflóki",
-      "termEn": "high-spin complex",
-      "termFull": "háspunaflóki (e. high-spin complex)",
-      "definition": "flóki þar sem rafeindirnar hámarka heildarspunann með því að setjast hver í sitt svigrúm áður en tvær rafeindir parast í lægri orkusvigrúmunum",
+      "termIs": "háspinnasamstæða",
+      "termEn": null,
+      "termFull": "háspinnasamstæða",
+      "definition": "samstæða þar sem rafeindir hámarka heildar rafeindaspuna með því að fylla öll svigrúm með einni rafeind áður en tvær rafeindir eru paraðar í lægri orkusvigrúmin",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm33844976"
     },
     {
@@ -2863,10 +2885,10 @@
       "termId": "fs-idp102379584"
     },
     {
-      "termIs": "hverfisómerur",
+      "termIs": "hverfiísómera",
       "termEn": "optical isomer",
-      "termFull": "hverfisómerur (e. optical isomer)",
-      "definition": "(einnig, andhverfur) sameind sem er óyfirleggjanleg spegilmynd með eins efna- og eðlisfræðilega eiginleika, nema þegar hún hvarfast við aðrar hverfisómerur",
+      "termFull": "hverfiísómera (e. optical isomer)",
+      "definition": "(einnig, andhverfa) sameind sem er ósamfellanleg spegilmynd með eins efna- og eðlisfræðilega eiginleika, nema þegar hún hvarfast við aðrar ljóshverfur",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -2905,39 +2927,6 @@
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
       "sectionSlug": "18-9-tilvist-framleidsla-og-efnasambond-surefnis",
       "termId": "fs-idm30899088"
-    },
-    {
-      "termIs": "hæfni- eða samhæfingartala",
-      "termEn": "coordination number",
-      "termFull": "hæfni- eða samhæfingartala (e. coordination number)",
-      "definition": "fjöldi samhæfðra samgildra tengja við málmiðjuatóm í komplex eða fjöldi nálægustu snertinga við atóm í kristalformi",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp55828544"
-    },
-    {
-      "termIs": "hæfnieinasamband",
-      "termEn": "coordination compound",
-      "termFull": "hæfnieinasamband (e. coordination compound)",
-      "definition": "efni sem samanstendur af atómum, sameindum eða jónum sem eru tengd við miðjuatóm með Lewis-sýru-basa víxlverkunum",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp246761680"
-    },
-    {
-      "termIs": "hæfnisvið",
-      "termEn": "coordination sphere",
-      "termFull": "hæfnisvið (e. coordination sphere)",
-      "definition": "málmiðjuatóm eða jón ásamt tengdum ligöndum í komplex",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp56324672"
     },
     {
       "termIs": "hæggas",
@@ -3251,7 +3240,7 @@
       "termIs": "jónunarísómera",
       "termEn": "ionization isomer",
       "termFull": "jónunarísómera (e. ionization isomer)",
-      "definition": "(eða samhæfingarísómera) ísómera þar sem anjónískum liganda er skipt út fyrir mótjónina í innra hæfnisviðinu",
+      "definition": "(eða girðisambandsísómera) ísómera þar sem anjónískum tengli er skipt út fyrir mótjónina í innra girðihvolfinu",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -3655,26 +3644,15 @@
       "termId": "fs-idm208194016"
     },
     {
-      "termIs": "klóefni",
+      "termIs": "kló",
       "termEn": "chelate",
-      "termFull": "klóefni (e. chelate)",
-      "definition": "komplex myndaður úr fjöltönnuðum liganda sem er tengdur við málmiðju",
+      "termFull": "kló (e. chelate)",
+      "definition": "girðisamband myndað úr fjöltönna tengli sem er tengdur við miðjumálm",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
       "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
       "termId": "fs-idp64634960"
-    },
-    {
-      "termIs": "klóligandi",
-      "termEn": "chelating ligand",
-      "termFull": "klóligandi (e. chelating ligand)",
-      "definition": "ligandi sem tengist málmiðjujón með tengjum frá tveimur eða fleiri gjafafrumeindum",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp51669120"
     },
     {
       "termIs": "klór-alkalíferli",
@@ -3686,6 +3664,17 @@
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
       "sectionSlug": "18-9-tilvist-framleidsla-og-efnasambond-surefnis",
       "termId": "fs-idm5139056"
+    },
+    {
+      "termIs": "klótengill",
+      "termEn": "chelating ligand",
+      "termFull": "klótengill (e. chelating ligand)",
+      "definition": "tengill sem tengist miðjumálmjón með tengjum frá tveimur eða fleiri gjafaatómum",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp51669120"
     },
     {
       "termIs": "kolefnisaldursgreining",
@@ -3732,28 +3721,6 @@
       "termId": "fs-idp141680624"
     },
     {
-      "termIs": "kristallsviðskenningin",
-      "termEn": "crystal field theory",
-      "termFull": "kristallsviðskenningin (e. crystal field theory)",
-      "definition": "líkan sem útskýrir orku svigrúma í hliðarmálmum með tilliti til rafstöðufræðilegrar víxlverkunar við tengla en tekur ekki til málm-tengil tenginga",
-      "chapter": 19,
-      "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
-      "termId": "fs-idm31354480"
-    },
-    {
-      "termIs": "kristallsviðsklofnun (Δoct)",
-      "termEn": "crystal field splitting (δoct)",
-      "termFull": "kristallsviðsklofnun (Δoct) (e. crystal field splitting (δoct))",
-      "definition": "orkumunur á milli t2g og eg setta eða t og e setta svigrúma",
-      "chapter": 19,
-      "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
-      "termId": "fs-idm99275552"
-    },
-    {
       "termIs": "kristalsgrindarorka (ΔHgrindar)",
       "termEn": "lattice energy (δhlattice)",
       "termFull": "kristalsgrindarorka (ΔHgrindar) (e. lattice energy (δhlattice))",
@@ -3763,6 +3730,28 @@
       "sectionTitle": "Styrkur jóna- og samgildra tengja",
       "sectionSlug": "7-5-styrkur-jona-og-samgildra-tengja",
       "termId": "fs-idp29295648"
+    },
+    {
+      "termIs": "kristalsviðskenning",
+      "termEn": null,
+      "termFull": "kristalsviðskenning",
+      "definition": "líkan sem útskýrir orku svigrúma í hliðarmálmum með tilliti til rafstöðueiginleika víxlverkana við tengla en tekur ekki tillit til málm-tengil tenginga",
+      "chapter": 19,
+      "section": "19.3",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
+      "termId": "fs-idm31354480"
+    },
+    {
+      "termIs": "kristalsviðsklofnun (Δoct)",
+      "termEn": null,
+      "termFull": "kristalsviðsklofnun (Δoct)",
+      "definition": "orkumunur á milli t2g og eg mengja eða t og e mengja svigrúma",
+      "chapter": 19,
+      "section": "19.3",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
+      "termId": "fs-idm99275552"
     },
     {
       "termIs": "kúrý (Ci)",
@@ -3820,25 +3809,25 @@
       "termId": "fs-idm380448704"
     },
     {
-      "termIs": "lanþaníðaröð",
+      "termIs": "lantaníðaröð",
       "termEn": "lanthanide series",
-      "termFull": "lanþaníðaröð (e. lanthanide series)",
-      "definition": "(einnig, lanþanóíðaröð) lanþan og frumefnin í fyrstu röð eða f-blokkinni, sætistölur 57–71",
+      "termFull": "lantaníðaröð (e. lanthanide series)",
+      "definition": "(einnig lantanóíðaröð) lantan og frumefnin í fyrstu röð f-blokkarinnar, sætistölur 57–71",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm108395328"
     },
     {
-      "termIs": "lágspunaflóki",
-      "termEn": "low-spin complex",
-      "termFull": "lágspunaflóki (e. low-spin complex)",
-      "definition": "flóki þar sem rafeindirnar lágmarka heildarspunann með því að parast í lægri orkusvigrúmunum áður en þær setjast í hærri orkusvigrúmin",
+      "termIs": "lágspinnasamstæða",
+      "termEn": null,
+      "termFull": "lágspinnasamstæða",
+      "definition": "samstæða þar sem rafeindir lágmarka heildar rafeindaspuna með því að parast í lægri orkusvigrúmum áður en þær fylla hærri orkusvigrúmin",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idp121047712"
     },
     {
@@ -4007,17 +3996,6 @@
       "termId": "fs-idp3053344"
     },
     {
-      "termIs": "ligandi",
-      "termEn": "ligand",
-      "termFull": "ligandi (e. ligand)",
-      "definition": "jón eða hlutlaus sameind sem er tengd við málmiðjujón í hæfnieinasambandi",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp279277792"
-    },
-    {
       "termIs": "litabreytingasvið",
       "termEn": "color-change interval",
       "termFull": "litabreytingasvið (e. color-change interval)",
@@ -4041,13 +4019,13 @@
     },
     {
       "termIs": "litrófsefnafræðileg röð",
-      "termEn": "spectrochemical series",
-      "termFull": "litrófsefnafræðileg röð (e. spectrochemical series)",
-      "definition": "röðun tengla eftir stærð kristalsviðsklofnunarinnar sem þeir valda",
+      "termEn": null,
+      "termFull": "litrófsefnafræðileg röð",
+      "definition": "röðun tengla eftir stærð kristalsviðsklofnunar sem þeir valda",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm145242928"
     },
     {
@@ -4546,15 +4524,15 @@
       "termId": "fs-idm104294208"
     },
     {
-      "termIs": "málmiðja",
-      "termEn": "central metal",
-      "termFull": "málmiðja (e. central metal)",
-      "definition": "jón eða atóm sem einn eða fleiri ligandar eru tengdir við með samhæfðum samgildum tengjum",
+      "termIs": "málmbræðsla",
+      "termEn": "smelting",
+      "termFull": "málmbræðsla (e. smelting)",
+      "definition": "ferli þar sem hreinn málmur er unninn úr bráðnu málmgrýti",
       "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp53705200"
+      "section": "19.1",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "termId": "fs-idm246107488"
     },
     {
       "termIs": "málmkennt fast efni",
@@ -4698,6 +4676,17 @@
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
       "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idp178458288"
+    },
+    {
+      "termIs": "miðjumálmur",
+      "termEn": "central metal",
+      "termFull": "miðjumálmur (e. central metal)",
+      "definition": "jón eða atóm sem einn eða fleiri tenglar eru tengdir við með samgildum girðitengjum",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp53705200"
     },
     {
       "termIs": "milli-halógen",
@@ -5058,8 +5047,8 @@
       "definition": "efni sem leiðir rafmagn án viðnáms",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm24131568"
     },
     {
@@ -5418,11 +5407,11 @@
       "termIs": "platínumálmar",
       "termEn": "platinum metals",
       "termFull": "platínumálmar (e. platinum metals)",
-      "definition": "hópur sex hliðarmálma sem samanstendur af rúþeni, osmíni, ródíni, iridíni, palladíni og platínu sem eiga það til að finnast í sömu steindum og sýna svipaða efnaeiginleika",
+      "definition": "hópur sex hliðarfrumefna sem samanstendur af rúþeni, osmíni, ródíni, iridíni, palladíni og platínu sem hafa tilhneigingu til að finnast í sömu steindum og sýna svipaða efnafræðilega eiginleika",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm194011232"
     },
     {
@@ -5471,13 +5460,13 @@
     },
     {
       "termIs": "pörunarorka (P)",
-      "termEn": "pairing energy (p)",
-      "termFull": "pörunarorka (P) (e. pairing energy (p))",
-      "definition": "orka sem þarf til að koma tveimur rafeindum með gagnstæðan spuna fyrir í einu svigrúmi",
+      "termEn": null,
+      "termFull": "pörunarorka (P)",
+      "definition": "orka sem þarf til að setja tvær rafeindir með gagnstæðan spuna í eitt svigrúm",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm65480336"
     },
     {
@@ -5745,17 +5734,6 @@
       "termId": "fs-idp86864304"
     },
     {
-      "termIs": "rúmfræðilegar hverfur",
-      "termEn": "geometric isomers",
-      "termFull": "rúmfræðilegar hverfur (e. geometric isomers)",
-      "definition": "hverfur sem eru ólíkar að því leyti hvernig frumeindirnar snúa í geimnum miðað við hvor aðra, sem leiðir til ólíkra eðlis- og efnaeiginleika",
-      "chapter": 19,
-      "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
-      "termId": "fs-idm132411312"
-    },
-    {
       "termIs": "rúmgrind",
       "termEn": "space lattice",
       "termFull": "rúmgrind (e. space lattice)",
@@ -5765,6 +5743,17 @@
       "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
       "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
       "termId": "fs-idm12811536"
+    },
+    {
+      "termIs": "rúmisómerur",
+      "termEn": null,
+      "termFull": "rúmisómerur",
+      "definition": "ísómerur sem eru ólíkar í því hvernig atóm raðast í rúmi miðað við hvert annað, sem leiðir til mismunandi eðlis- og efnafræðilegra eiginleika",
+      "chapter": 19,
+      "section": "19.3",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
+      "termId": "fs-idm132411312"
     },
     {
       "termIs": "rúmísómerur",
@@ -6273,14 +6262,14 @@
       "termId": "fs-idp13997168"
     },
     {
-      "termIs": "sjaldgæfur jarðmálmur",
+      "termIs": "sjaldgæft jarðfrumefni",
       "termEn": "rare earth element",
-      "termFull": "sjaldgæfur jarðmálmur (e. rare earth element)",
-      "definition": "safn 17 frumefna, þar á meðal lanþaníða, skandíns og yttríns, sem oft finnast saman og hafa svipaða efnaeiginleika, sem gerir aðskilnað erfiðan",
+      "termFull": "sjaldgæft jarðfrumefni (e. rare earth element)",
+      "definition": "safn 17 frumefna, þar á meðal lantaníða, skandíns og yttríns, sem oft koma fyrir saman og hafa svipaða efnafræðilega eiginleika, sem gerir aðskilnað erfiðan",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm42041824"
     },
     {
@@ -6639,11 +6628,11 @@
       "termIs": "stál",
       "termEn": "steel",
       "termFull": "stál (e. steel)",
-      "definition": "efni framleitt úr járni með því að fjarlægja óhreinindi úr járninu og bæta við efnum sem mynda melmi með eiginleika sem henta til sérstakra nota",
+      "definition": "efni úr járni sem er búið til með því að fjarlægja óhreinindi úr járninu og bæta við efnum sem mynda málmblöndur með eiginleika sem henta til sérstakra nota",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm24132624"
     },
     {
@@ -6681,13 +6670,13 @@
     },
     {
       "termIs": "sterksviðstengill",
-      "termEn": "strong-field ligand",
-      "termFull": "sterksviðstengill (e. strong-field ligand)",
-      "definition": "tengill sem veldur stærri kristalsviðsklofnun",
+      "termEn": null,
+      "termFull": "sterksviðstengill",
+      "definition": "tengill sem veldur meiri kristalsviðsklofnun",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm24403040"
     },
     {
@@ -7065,14 +7054,14 @@
       "termId": "fs-idp42201168"
     },
     {
-      "termIs": "t2g-svigrúm",
-      "termEn": "t2g orbitals",
-      "termFull": "t2g-svigrúm (e. t2g orbitals)",
-      "definition": "sett af þremur d-svigrúmum sem liggja á milli kartesískra ása fyrir samhæfingarflóka; í áttflötungsflókum eru þau lækkuð í orku miðað við eg-svigrúmin samkvæmt kristalsviðskenningunni (CFT)",
+      "termIs": "t2g svigrúm",
+      "termEn": null,
+      "termFull": "t2g svigrúm",
+      "definition": "mengi þriggja d svigrúma sem eru stillt á milli kartesísku ásanna fyrir girðisambönd; í áttflötungasamstæðum eru þau orkulægri en eg svigrúmin samkvæmt kristalsviðskenningunni",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idm104611088"
     },
     {
@@ -7131,6 +7120,17 @@
       "termId": "fs-idp51366688"
     },
     {
+      "termIs": "tengiísómera",
+      "termEn": "linkage isomer",
+      "termFull": "tengiísómera (e. linkage isomer)",
+      "definition": "girðisamband sem hefur tengil sem getur tengst hliðarmálmi á tvo mismunandi vegu (CN− á móti NC−)",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp63930000"
+    },
+    {
       "termIs": "tengilengd",
       "termEn": "bond length",
       "termFull": "tengilengd (e. bond length)",
@@ -7140,6 +7140,17 @@
       "sectionTitle": "Samgild tengi",
       "sectionSlug": "7-2-samgild-tengi",
       "termId": "fs-idm4648560"
+    },
+    {
+      "termIs": "tengill",
+      "termEn": "ligand",
+      "termFull": "tengill (e. ligand)",
+      "definition": "jón eða hlutlaus sameind sem er tengd við miðjumálmjón í girðisambandi",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp279277792"
     },
     {
       "termIs": "tengisorka",
@@ -7162,17 +7173,6 @@
       "sectionTitle": "Sámeindasvigrúmskenningin",
       "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm57102096"
-    },
-    {
-      "termIs": "tengslaísómera",
-      "termEn": "linkage isomer",
-      "termFull": "tengslaísómera (e. linkage isomer)",
-      "definition": "hæfnieinasamband sem býr yfir liganda sem getur tengst hliðarmálmi á tvo mismunandi vegu (CN− á móti NC−)",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp63930000"
     },
     {
       "termIs": "tilgáta",
@@ -7266,7 +7266,7 @@
       "termIs": "trans-afstaða",
       "termEn": "trans configuration",
       "termFull": "trans-afstaða (e. trans configuration)",
-      "definition": "afstaða rúmísómeru þar sem tveir svipaðir hópar eru á gagnstæðum hliðum ímyndaðrar viðmiðunarlínu á sameindinni",
+      "definition": "afstaða rúmhverfu þar sem tveir svipaðir hópar eru á gagnstæðum hliðum ímyndaðrar viðmiðunarlínu á sameindinni",
       "chapter": 19,
       "section": "19.2",
       "sectionTitle": "Girðiefnafræði hliðarmálma",
@@ -7395,17 +7395,6 @@
       "termId": "fs-idp282291040"
     },
     {
-      "termIs": "tvítannar ligandi",
-      "termEn": "bidentate ligand",
-      "termFull": "tvítannar ligandi (e. bidentate ligand)",
-      "definition": "ligandi sem tengist einni málmiðju með samhæfðum tengjum frá tveimur mismunandi atómum",
-      "chapter": 19,
-      "section": "19.2",
-      "sectionTitle": "Girðiefnafræði hliðarmálma",
-      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
-      "termId": "fs-idp65460624"
-    },
-    {
       "termIs": "tvítengi",
       "termEn": "double bond",
       "termFull": "tvítengi (e. double bond)",
@@ -7415,6 +7404,17 @@
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
       "termId": "fs-idm42302272"
+    },
+    {
+      "termIs": "tvítönna tengill",
+      "termEn": "bidentate ligand",
+      "termFull": "tvítönna tengill (e. bidentate ligand)",
+      "definition": "tengill sem tengist einum miðjumálmi með girðitengjum frá tveimur mismunandi atómum",
+      "chapter": 19,
+      "section": "19.2",
+      "sectionTitle": "Girðiefnafræði hliðarmálma",
+      "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
+      "termId": "fs-idp65460624"
     },
     {
       "termIs": "tvívirk sýra",
@@ -7726,13 +7726,13 @@
     },
     {
       "termIs": "veiksviðstengill",
-      "termEn": "weak-field ligand",
-      "termFull": "veiksviðstengill (e. weak-field ligand)",
+      "termEn": null,
+      "termFull": "veiksviðstengill",
       "definition": "tengill sem veldur lítilli kristalsviðsklofnun",
       "chapter": 19,
       "section": "19.3",
-      "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
-      "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
+      "sectionTitle": "Litrófs- og seguleiginleikar girðisambanda",
+      "sectionSlug": "19-3-litrofs-og-seguleiginleikar-girdisambanda",
       "termId": "fs-idp10927328"
     },
     {
@@ -8000,14 +8000,14 @@
       "termId": "fs-idp9239856"
     },
     {
-      "termIs": "votamálmvinnsla",
+      "termIs": "votvinnslumálmfræði",
       "termEn": "hydrometallurgy",
-      "termFull": "votamálmvinnsla (e. hydrometallurgy)",
-      "definition": "ferli þar sem málmur er aðskilinn frá efnablöndu með því að breyta honum fyrst í auðleystar jónir, draga jónirnar út og afoxa þær síðan til að fella út hreinan málm",
+      "termFull": "votvinnslumálmfræði (e. hydrometallurgy)",
+      "definition": "ferli þar sem málmur er aðskilinn frá blöndu með því að breyta honum fyrst í leysanlegar jónir, vinna jónirnar og síðan afoxa jónirnar til að fella út hreina málminn",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm281484512"
     },
     {
@@ -8132,14 +8132,14 @@
       "termId": "fs-idm63142976"
     },
     {
-      "termIs": "þriðja hliðarmálmaröðin",
+      "termIs": "þriðja hliðarfrumefnaröð",
       "termEn": "third transition series",
-      "termFull": "þriðja hliðarmálmaröðin (e. third transition series)",
-      "definition": "hliðarmálmar í sjöttu lotu lotukerfisins (þriðja röð d-blokkarinnar), sætistölur 57 og 72–79",
+      "termFull": "þriðja hliðarfrumefnaröð (e. third transition series)",
+      "definition": "hliðarfrumefni í sjöttu lotu lotukerfisins (þriðja röð d-blokkarinnar), sætistölur 57 og 72–79",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm42835168"
     },
     {
@@ -8319,14 +8319,14 @@
       "termId": "fs-idm26674336"
     },
     {
-      "termIs": "önnur hliðarmálmaröðin",
+      "termIs": "önnur hliðarfrumefnaröð",
       "termEn": "second transition series",
-      "termFull": "önnur hliðarmálmaröðin (e. second transition series)",
-      "definition": "hliðarmálmar í fimmtu lotu lotukerfisins (önnur röð d-blokkarinnar), sætistölur 39–47",
+      "termFull": "önnur hliðarfrumefnaröð (e. second transition series)",
+      "definition": "hliðarfrumefni í fimmtu lotu lotukerfisins (önnur röð d-blokkarinnar), sætistölur 39–47",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
       "termId": "fs-idm163687904"
     },
     {
