@@ -21,13 +21,19 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   computeSubset,
   countWordBoundary,
   icelandicStem,
+  stemPattern,
+  stripMarkerVocabulary,
+  controlQuality,
+  STANDING_TERMS,
   MIN_OCCURRENCES,
   ALREADY_HANDLED_COVERAGE,
+  STEM_NOISE_CEILING,
 } from '../compute-glossary-subset.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -40,17 +46,52 @@ const approved = () =>
     ).terms || []
   ).filter((t) => t.status === 'approved');
 
-const readDir = (kind, chd, ext) => {
-  const d = path.join(ROOT, 'books', BOOK, kind, chd);
-  if (!fs.existsSync(d)) return '';
-  let out = '';
-  for (const f of fs.readdirSync(d))
-    if (f.endsWith(ext)) out += fs.readFileSync(path.join(d, f), 'utf8');
-  return out;
+/**
+ * 🔴 THE CONTROL IS PINNED TO A GIT REVISION, AND IT HAS TO BE.
+ *
+ * These nine cases were measured on the corpus as it stood BEFORE the tier-A
+ * terminology re-buy — which is the repair they motivated. Reading the working
+ * tree instead makes five of them fail for the RIGHT reason: ch10/ch12/ch14 now
+ * contain grindareining, hvötun, samoka and stuðpúði, so rule 3 correctly reports
+ * "already handled" and the control evaporates.
+ *
+ * ▶ A control that its own fix destroys is not a control. `PRE_REBUY` is the last
+ * commit before `57b726f3f` (the tier-A re-buy), so the evidence stays fixed while
+ * the corpus moves on. Same lesson as the MT-arm gate, whose 3-of-6 partial state
+ * was destroyed by the buy that repaired it.
+ */
+const PRE_REBUY = '212df4acb';
+
+const atRev = (rel) => {
+  try {
+    return execSync(`git show ${PRE_REBUY}:${rel}`, {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } catch {
+    return '';
+  }
 };
+
+const readDirAtRev = (kind, chd, ext) => {
+  let names = [];
+  try {
+    names = execSync(`git ls-tree --name-only ${PRE_REBUY} books/${BOOK}/${kind}/${chd}/`, {
+      cwd: ROOT,
+      encoding: 'utf8',
+    })
+      .split('\n')
+      .filter((n) => n.endsWith(ext));
+  } catch {
+    return '';
+  }
+  return names.map((n) => atRev(n)).join('\n');
+};
+
 const run = (chd) =>
-  computeSubset(approved(), readDir('02-for-mt', chd, '.en.md'), {
-    mtText: readDir('02-mt-output', chd, '.is.md'),
+  computeSubset(approved(), readDirAtRev('02-for-mt', chd, '.en.md'), {
+    mtText: readDirAtRev('02-mt-output', chd, '.is.md'),
   });
 
 const verdict = (r, term) => {
@@ -89,10 +130,21 @@ describe('the units the rules depend on', () => {
     expect(countWordBoundary('together, whether, neither', 'ether')).toBe(0);
   });
 
-  it('stems Icelandic short enough to survive inflection', () => {
-    expect('orku'.startsWith(icelandicStem('orka'))).toBe(true);
-    expect('stuðpúðalausnar'.startsWith(icelandicStem('stuðpúði'))).toBe(true);
-    expect('hvötunar'.startsWith(icelandicStem('hvötun'))).toBe(true);
+  it('stems match THROUGH Icelandic sound alternations', () => {
+    // Each of these was measured as a miss by the 2026-09-21 audit.
+    const m = (is, form) => stemPattern(icelandicStem(is)).test(form);
+    expect(m('orka', 'orku')).toBe(true);
+    expect(m('jákvæður', 'jákvætt')).toBe(true); // ð -> t
+    expect(m('oxunartala', 'oxunartölu')).toBe(true); // u-umlaut at the tail
+    expect(m('efnablanda', 'efnablöndu')).toBe(true); // u-umlaut INSIDE the stem
+    expect(m('stuðpúði', 'stuðpúðalausninni')).toBe(true);
+  });
+
+  it('🔴 the stem floor stops `vermi` matching `verður` — it deleted a ruled term', () => {
+    const m = (is, form) => stemPattern(icelandicStem(is)).test(form);
+    expect(m('vermi', 'vermi')).toBe(true);
+    expect(m('vermi', 'verður')).toBe(false);
+    expect(m('vermi', 'veruleg')).toBe(false);
   });
 
   it('the thresholds are exported values, not prose', () => {
@@ -108,5 +160,127 @@ describe('non-vacuity — the walk must actually reach the corpus', () => {
     const r = run('ch16');
     expect(r.subset.length).toBeGreaterThan(0);
     expect(r.excluded.length).toBeGreaterThan(0); // rules fired
+  });
+});
+
+describe('the 2026-09-21 audit defects, each pinned by the measurement that found it', () => {
+  it('🔴 [[BR]] no longer counts as the element Br — and CASE is what does the work', () => {
+    // Measured: `Br` scored 22 in ch16 (20 were the line-break marker), 65 in
+    // ch20, and 10 in ch21 — a chapter with NO bromine at all.
+    // ⚠️ WRITING THIS TEST CORRECTED ITS OWN PREMISE. `[[BR]]` is UPPERCASE, so
+    // the case-sensitivity fix alone stops it matching `Br`; the old count was an
+    // artefact of counting case-INsensitively, not of the marker surviving.
+    const text = 'a[[BR]]b[[BR]]c Br is bromine';
+    expect(countWordBoundary(text, 'Br')).toBe(1); // case-sensitivity already excludes BR
+    expect(countWordBoundary(text.toLowerCase(), 'br')).toBeGreaterThan(1); // the old defect
+  });
+
+  it('marker stripping is what protects a LONG headword like `link`', () => {
+    // `link -> tengja` reached the appendices candidate list off 8 hits that were
+    // all `{{LINK:n}}` tokens in a stray legacy-format file. A long headword is
+    // matched case-INsensitively, so case cannot save it — only stripping can.
+    const text = 'see [[link:video|http://x]] and [[link:site|http://y]] here';
+    expect(countWordBoundary(text, 'link')).toBe(2); // the defect
+    expect(countWordBoundary(stripMarkerVocabulary(text), 'link')).toBe(0);
+  });
+
+  it('🔴 a short headword is counted CASE-SENSITIVELY, mirroring headwordAppearsIn', () => {
+    // `Po` scored 13 in the appendices and all 13 were `PO`, the phosphate group;
+    // `cd` scored 6 and all were `Cd`, cadmium.
+    expect(countWordBoundary('the PO group and PO again', 'Po')).toBe(0);
+    expect(countWordBoundary('Po is polonium', 'Po')).toBe(1);
+    // Above the short threshold the real matcher IS case-insensitive.
+    expect(countWordBoundary('Buffer and buffer', 'buffer')).toBe(2);
+  });
+
+  it('🔴 a stem matching far more than its term is NOISE, not evidence — it is kept and flagged', () => {
+    // `vermi` -> `ver` matched verður/verið 190x = 704% coverage, and deleted a
+    // RULED standing term from all seven subsets.
+    const approvedRows = [{ english: 'widget', icelandic: 'orka', status: 'approved' }];
+    const en = 'widget '.repeat(10);
+    const mt = 'orku '.repeat(60); // 600% coverage
+    const r = computeSubset(approvedRows, en, { mtText: mt });
+    expect(r.subset.some((x) => x.term === 'widget')).toBe(true);
+    expect(r.flags.some((f) => f.flag === 'stem-noise')).toBe(true);
+    expect(STEM_NOISE_CEILING).toBeGreaterThan(1);
+  });
+
+  it('🔴 the ruled standing arm survives every rule', () => {
+    // docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md (Accepted).
+    // The first cut dropped it from all seven subsets.
+    expect(STANDING_TERMS['efnafraedi-2e']).toEqual(['enthalpy', 'enthalpy change']);
+    const rows = [
+      { english: 'enthalpy', icelandic: 'vermi', status: 'approved' },
+      { english: 'enthalpy change', icelandic: 'vermibreyting', status: 'approved' },
+    ];
+    // An MT saturated with the approved form would normally exclude it as handled.
+    const r = computeSubset(rows, 'enthalpy '.repeat(30), {
+      mtText: 'vermi '.repeat(30),
+      standing: STANDING_TERMS['efnafraedi-2e'],
+    });
+    expect(r.subset.map((x) => x.term).sort()).toEqual(['enthalpy', 'enthalpy change']);
+    expect(r.standingAdded.length).toBeGreaterThan(0);
+  });
+
+  it('🔴 a schemaVersion-1 sidecar is FULL-GLOSSARY, so rule 3 is stamped unreliable', () => {
+    expect(controlQuality([{ schemaVersion: 1 }]).kind).toBe('full-glossary');
+    expect(
+      controlQuality([{ schemaVersion: 2, run: { glossary: { arm: 'glossary-only' } } }]).kind
+    ).toBe('restricted');
+    expect(controlQuality([]).kind).toBe('none');
+  });
+
+  it('shadowing is TOKEN-wise, so `galvanic cell` cannot shadow `Al`', () => {
+    // A bare substring test shadowed `Al` via g-AL-vanic and `Br` via salt BRidge.
+    const rows = [
+      { english: 'Al', icelandic: 'ál', status: 'approved' },
+      { english: 'galvanic cell', icelandic: 'rafhlaða', status: 'approved' },
+    ];
+    const r = computeSubset(rows, 'Al Al Al Al Al Al ' + 'galvanic cell '.repeat(10), {});
+    expect(r.excluded.some((x) => x.term === 'Al' && x.why === 'shadowed')).toBe(false);
+  });
+
+  it('shadowing scans MEASURED, so a rule-3 exclusion can still shadow', () => {
+    // ch17's `fuel` survived although `fuel cell` (21 of its 26 hits) was excluded
+    // at 90% already-handled, because rule 2 only saw the survivors.
+    const rows = [
+      { english: 'fuel', icelandic: 'eldsneyti', status: 'approved' },
+      { english: 'fuel cell', icelandic: 'efnarafal', status: 'approved' },
+    ];
+    const en = 'fuel '.repeat(5) + 'fuel cell '.repeat(20);
+    const r = computeSubset(rows, en, { mtText: 'efnarafal '.repeat(20) });
+    expect(r.excluded.some((x) => x.term === 'fuel' && x.why === 'shadowed')).toBe(true);
+  });
+});
+
+describe('the KNOWN LIMIT, pinned so it stays visible rather than becoming folklore', () => {
+  it('an IDENTITY map is exempt from rule 3 — its evidence is circular', () => {
+    const rows = [{ english: 'Lewis', icelandic: 'Lewis', status: 'approved' }];
+    const r = computeSubset(rows, 'Lewis '.repeat(10), { mtText: 'Lewis '.repeat(10) });
+    expect(r.subset.some((x) => x.term === 'Lewis')).toBe(true);
+    expect(r.flags.some((f) => f.flag === 'identity-map')).toBe(true);
+  });
+
+  it('a LISTED alternative that outscores the approved form is caught', () => {
+    const rows = [
+      { english: 'laser', icelandic: 'ljósleysir', status: 'approved', alternatives: ['leysir'] },
+    ];
+    const r = computeSubset(rows, 'laser '.repeat(10), { mtText: 'leysir '.repeat(20) });
+    expect(r.flags.some((f) => f.flag === 'competing-form')).toBe(true);
+  });
+
+  it('🔴 an INVENTED competing form is NOT caught — this is the documented limit', () => {
+    // ch16: `spontaneous -> sjálfgengur` scores >76% while sjálfsprott- 38 and
+    // sjálfkrafa 21 also run, and the title came back as *Sjálfsprotti*. Nothing
+    // in the data names the rival, so no rule here can see it.
+    // ▶ This test asserts the LIMIT, not a bug. It is what makes the human audit
+    // non-optional, and if it ever starts failing the tool has got BETTER.
+    const rows = [{ english: 'spontaneous', icelandic: 'sjálfgengur', status: 'approved' }];
+    const r = computeSubset(rows, 'spontaneous '.repeat(10), {
+      mtText: 'sjálfgeng '.repeat(8) + 'sjálfsprottinn '.repeat(30),
+    });
+    expect(r.excluded.some((x) => x.term === 'spontaneous' && x.why === 'already-handled')).toBe(
+      true
+    );
   });
 });
