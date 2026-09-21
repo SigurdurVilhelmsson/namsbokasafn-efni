@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-21T06:02:19.087Z",
+  "generatedAt": "2026-09-21T06:17:28.482Z",
   "summary": {
-    "modulesWithResidue": 2,
-    "exactResidues": 70,
-    "ratioWarnings": 74,
+    "modulesWithResidue": 3,
+    "exactResidues": 74,
+    "ratioWarnings": 76,
     "toleratedResidues": 4
   },
   "modules": {
@@ -439,8 +439,21 @@
       "tolerated": []
     },
     "m68798": {
-      "exact": [],
+      "exact": [
+        "m68798:para:fs-idp15495888",
+        "m68798:para:fs-idp22632784",
+        "m68798:para:fs-idp64674800",
+        "m68798:solution:fs-idp14871472"
+      ],
       "warnings": [
+        {
+          "segmentId": "m68798:para:fs-idp96400256",
+          "ratio": 0.71
+        },
+        {
+          "segmentId": "m68798:para:fs-idp251899984",
+          "ratio": 0.89
+        },
         {
           "segmentId": "m68798:solution:fs-idp62171456",
           "ratio": 0.8

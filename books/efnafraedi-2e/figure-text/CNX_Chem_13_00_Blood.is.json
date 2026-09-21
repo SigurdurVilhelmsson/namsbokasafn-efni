@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_13_00_Blood",
+ "renderHash": "708937a8cd86ad3b",
+ "composedHash": "708937a8cd86ad3b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CO2 + H2O              H2CO3                      HCO3|–": "CO2 + H2O              H2CO3                      HCO3 –"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

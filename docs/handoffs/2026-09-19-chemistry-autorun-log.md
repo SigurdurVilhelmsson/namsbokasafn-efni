@@ -435,3 +435,50 @@ elements in the output — exact 1:1, which is what proves the strip took the 4 
 **and nothing else**. A bare "0 markers left" would have been equally consistent with eating all 91.
 _(An earlier raw `grep` said 92; the parser attributes 91. A grep-vs-parse counting-unit artifact —
 CLAUDE.md § census it by parsing, and state the unit.)_
+
+## ch13 — 6 units · ~976 ISK text + ~15 ISK figures · `DONE=ok` after one figure retry
+
+- **Text:** 6 units, `Failed: 0`, **97,592 chars (~976 ISK)** against a 1,287 estimate (**0.76x**). Arm 6 of 6.
+- **Figures:** 14 enumerated. The first run hit `fig 1 failed-mt` on `CNX_Chem_13_01_equilibrium`
+  and the driver HALTED. **The retry cost 145 characters (~1.5 ISK)** and succeeded.
+- **Inject:** 4 COMPLETE + m68798 via `--allow-incomplete`, residue 4. Manifest `green=true`, 130 perfect.
+- **Render:** 1 rename → 1 redirect row. **Checks:** 0 raw `[[` in 10 pages, positive control 425.
+- **Pins:** sidecars 212 → 213, run records 99 → 105, metadata 15 → 16, modules-minus-metadata
+  **197 unchanged**; mustache 2,496 → 2,030; carriers 56 → 52; ids/markers/examined **all +14**.
+  🔑 **Fifth chapter, same law** — ch09 +49, ch10 +82, ch11 +46, ch12 +42, ch13 +14, each equal to
+  that chapter's own figure count.
+
+### ✅ m68798's 4 residue segments need NO editor action — they are detector false positives
+
+The handoff says to log an `--allow-incomplete` residue for an editor. **Measured first, per
+§ "a census before escalating", and the answer is: nothing to do.**
+
+- **3 of 4 are pure formula and are CORRECTLY identical** — `Δ[[i:n]] = (2) − (2) = 0`,
+  `[[i:K[[sub:P]]]] = [[i:K[[sub:c]]]]([[i:RT]])[[sup:Δ[[i:n]]]]`. There is no natural language in
+  them to translate. This is exactly the class ch08's m68744 sweep established (12 of 13 identical
+  prose-shaped segments were formula answers).
+- **The 4th is NOT identical — it was correctly LOCALISED.** `m68798:solution:fs-idp14871472`
+  converts every decimal point to an Icelandic comma: `1.6 → 1,6`, `50.2 → 50,2`, `5.31 → 5,31`,
+  `4.60 → 4,60`. The residue detector flagged it because the rest of the string is formula.
+
+▶ **So the detector's "untranslated" verdict is wrong on 4 of 4 here.** It is not a defect —
+the detector cannot know that a formula has nothing to translate — but **do not forward such a
+residue to an editor without reading it.** Reporting these four would have spent an editor's time
+on a segment that is already right.
+
+### ⚠️ The driver did NOT retry `failed-mt`, though the handoff says it does
+
+The handoff's "not a stop" table says *"a figure's MT times out, `failed-mt` … the driver retries
+once (~1–3 ISK)"*. It did not: `figure-run` returned `VERDICT needs a human` and exit 1, and the
+driver halted on that. **The handoff and the driver disagree and one of them is wrong** — logged,
+not fixed here. Halting is the safer of the two behaviours, and `translate-blocks.mjs`'s own error
+says the work is fully recoverable (*"NOTHING was persisted and no sidecar was minted — the figure
+stays eligible and the next run re-buys it (~1 ISK)"*), so a plain re-run is the whole remedy.
+
+### §C169 RECURS — this is a class, not an instance
+
+ch13's m68801 was HELD BACK on `bracket-marker delta sub +11`, the same shape as ch12's m68791.
+**Measured: 11 of 11 extra markers are inside `alt` segments, 0 in prose**, so the §C169 fix covers
+it whole. Two chapters, 4 then 11 occurrences — **the MT does this whenever an OpenStax alt spells
+a subscript out in words**, which is its house style for screen readers. Expect it in every
+remaining chapter.

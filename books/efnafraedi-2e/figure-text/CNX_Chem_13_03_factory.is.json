@@ -1,0 +1,54 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_13_03_factory",
+ "renderHash": "47f3191192182638",
+ "composedHash": "47f3191192182638",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Heat exchanger": "Varmaskiptir",
+  "Storage": "Geymsla",
+  "NH3 and|unreacted|N2, H2": "NH3 og óhvarfað N2, H2",
+  "Compressor": "Þjappa",
+  "Recycled|N2, H2": "Endurunnið N2, H2",
+  "feed gases": "aðfangaefni",
+  "Catalyst|chamber|400 to 500 °C": "Hvatahólf 400 til 500 °C",
+  "Catalyst": "Hvati",
+  "Condenser": "Þéttir",
+  "Cold water|in": "Kalt vatn inn",
+  "Refrigeration": "Kæling",
+  "Hot water|out": "Heitt vatn út",
+  "Heater": "Hitari",
+  "Preheated feed|gases": "Forhituð aðfangaefni"
+ },
+ "mtAlternatives": {
+  "feed gases": {
+   "kept": "joined",
+   "other": "innstreymisgas",
+   "reason": "disagree",
+   "mt": "aðfangaefni"
+  },
+  "Catalyst|chamber|400 to 500 °C": {
+   "kept": "joined",
+   "other": "Hvarfaklefi 400 til 500 °C",
+   "reason": "disagree",
+   "mt": "Hvatahólf 400 til 500 °C"
+  },
+  "Hot water|out": {
+   "kept": "joined",
+   "other": "Ekkert heitt vatn",
+   "reason": "disagree",
+   "mt": "Heitt vatn út"
+  },
+  "Preheated feed|gases": {
+   "kept": "joined",
+   "other": "Forhitaðar fæðigastegundir",
+   "reason": "disagree",
+   "mt": "Forhituð aðfangaefni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 14
+ }
+}

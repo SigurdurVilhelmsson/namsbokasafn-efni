@@ -82,7 +82,7 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
   // ⚠️ A PREMISE PIN, NOT A REGRESSION PIN. It is EXPECTED to go red the moment the
   // clean-break run writes its first sidecar. When it does, that is the corpus moving
   // — update the numbers in the commit that observes it, do not delete the test.
-  it('212 sidecars across the two kept books, 212 with a tool, 99 with a run record', () => {
+  it('213 sidecars across the two kept books, 213 with a tool, 105 with a run record', () => {
     const found = [];
     const walk = (p) => {
       for (const e of fs.readdirSync(p, { withFileTypes: true })) {
@@ -99,8 +99,8 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
     }
     // The SPLIT, not just the total: a glob that swept in a third book would otherwise
     // still satisfy a bare `toBe(208)` by coincidence.
-    expect(byBook).toEqual({ 'efnafraedi-2e': 162, 'lifraen-efnafraedi': 50 });
-    expect(found).toHaveLength(212);
+    expect(byBook).toEqual({ 'efnafraedi-2e': 163, 'lifraen-efnafraedi': 50 });
+    expect(found).toHaveLength(213);
 
     // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 208
     // is NOT the population every other number in this suite family uses. The sibling
@@ -111,7 +111,7 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
     // is comparing populations, which is this repo's commonest error. Asserted rather
     // than merely commented, so the reconciliation stays checkable.
     const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
-    expect(metadata).toHaveLength(15);
+    expect(metadata).toHaveLength(16);
     // ⚠️ UNCHANGED AT 197 WHILE THE TOTAL ROSE, AND THAT ASYMMETRY IS THE EVIDENCE, NOT AN
     // ODDITY: buying ch09 and ch10 (2026-09-20) OVERWROTE the module sidecars they already had
     // and ADDED the one `chapter-metadata` sidecar each lacked. A buy that had also added modules
@@ -122,15 +122,15 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
-    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(212);
-    // ⚠️ 99 AND 99 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
+    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(213);
+    // ⚠️ 105 AND 105 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
     // written v2 to the kept books; `docx-import` and `backfill-provenance` write v2
     // WITHOUT a run (see the docstring below). Keep these as TWO assertions.
-    // 67 -> 75 -> 83 -> 90 -> 99 is ch09..ch12's units (modules + chapter-metadata)
+    // 67 -> 75 -> 83 -> 90 -> 99 -> 105 is ch09..ch13's units (modules + chapter-metadata)
     // each turning v2-with-a-run. +8 per bought chapter is the law; check it against the
     // chapter's module count before bumping.
-    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(99);
-    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(99);
+    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(105);
+    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(105);
   });
 });
 

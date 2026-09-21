@@ -111,3 +111,12 @@ The superseded slug was `hvotun` — **`hvötun` is the correct word and the pre
 There is **no glossary row for `catalysis` or `catalyst`**, so this is the model unprompted —
 §C73's control — getting the running text right and the heading wrong. Fixing the title renames
 the page again and produces a further redirect row.
+
+## ch13 — 1 row
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/13/13-3-tilfaersla-jafnvaegis-logmal-le-chteliers.html` | `chapters/13/13-3-jafnvaegisbreytingar-logmal-le-chteliers.html` | m68799 |
+
+_Both instruments agree at 1: one `Pruned superseded page` line and a slug-map diff of added=1,
+changed=0, removed=0 (36 → 37)._

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T06:02:22.455Z",
+  "generated": "2026-09-21T06:17:32.788Z",
   "termCount": 763,
   "entries": [
     {
@@ -124,17 +124,6 @@
       "termId": "fs-idp68905696"
     },
     {
-      "termIs": "afturkræft efnahvarf",
-      "termEn": "reversible reaction",
-      "termFull": "afturkræft efnahvarf (e. reversible reaction)",
-      "definition": "efnahvarf sem getur gengið bæði sem framhvarf og bakhvarf við tilteknar aðstæður",
-      "chapter": 13,
-      "section": "13.1",
-      "sectionTitle": "Efnajafnvægi",
-      "sectionSlug": "13-1-efnajafnvaegi",
-      "termId": "fs-idp4379168"
-    },
-    {
       "termIs": "afturkræft ferli",
       "termEn": "reversible process",
       "termFull": "afturkræft ferli (e. reversible process)",
@@ -144,6 +133,17 @@
       "sectionTitle": "Óreiða",
       "sectionSlug": "16-2-oreida",
       "termId": "fs-idp48318480"
+    },
+    {
+      "termIs": "afturkræft hvarf",
+      "termEn": "reversible reaction",
+      "termFull": "afturkræft hvarf (e. reversible reaction)",
+      "definition": "efnahvarf sem getur gengið bæði í fram- og bakátt við gefnar aðstæður",
+      "chapter": 13,
+      "section": "13.1",
+      "sectionTitle": "Efnajafnvægi",
+      "sectionSlug": "13-1-efnajafnvaegi",
+      "termId": "fs-idp4379168"
     },
     {
       "termIs": "agnahraðall",
@@ -2841,6 +2841,17 @@
       "termId": "fs-idp172602144"
     },
     {
+      "termIs": "hvarfkvóti (Q)",
+      "termEn": "reaction quotient (q)",
+      "termFull": "hvarfkvóti (Q) (e. reaction quotient (q))",
+      "definition": "stærðfræðilegt fall sem lýsir hlutfallslegu magni hvarfefna og myndefna í hvarfblöndu; má gefa upp með styrk (Qc) eða þrýstingi (Qp)",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-jafnvaegisfastar",
+      "termId": "fs-idp74361936"
+    },
+    {
       "termIs": "hvarfrit",
       "termEn": "reaction diagram",
       "termFull": "hvarfrit (e. reaction diagram)",
@@ -2850,17 +2861,6 @@
       "sectionTitle": "Árekstrakenningin",
       "sectionSlug": "12-5-arekstrakenningin",
       "termId": "fs-idm355773584"
-    },
-    {
-      "termIs": "hvarfstuðull (Q)",
-      "termEn": "reaction quotient (q)",
-      "termFull": "hvarfstuðull (Q) (e. reaction quotient (q))",
-      "definition": "stærðfræðilegt fall sem lýsir hlutfallslegu magni hvarfefna og myndefna í efnablöndu; má gefa upp með styrkjum (Qc) eða þrýstingi (Qp)",
-      "chapter": 13,
-      "section": "13.2",
-      "sectionTitle": "Jafnvægisfastar",
-      "sectionSlug": "13-2-jafnvaegisfastar",
-      "termId": "fs-idp74361936"
     },
     {
       "termIs": "hvati",
@@ -3086,7 +3086,7 @@
       "termIs": "jafnvægi",
       "termEn": "equilibrium",
       "termFull": "jafnvægi (e. equilibrium)",
-      "definition": "ástand afturkræfs efnahvarfs þar sem framhvarf og bakhvarf eiga sér stað á sama hraða",
+      "definition": "ástand afturkræfs hvarfs þar sem fram- og bakferli eiga sér stað á jöfnum hraða",
       "chapter": 13,
       "section": "13.1",
       "sectionTitle": "Efnajafnvægi",
@@ -3097,7 +3097,7 @@
       "termIs": "jafnvægisfasti (K)",
       "termEn": "equilibrium constant (k)",
       "termFull": "jafnvægisfasti (K) (e. equilibrium constant (k))",
-      "definition": "gildi hvarfstuðuls fyrir kerfi í jafnvægi; má gefa upp með styrkjum (Kc) eða hlutþrýstingi (Kp)",
+      "definition": "gildi hvarfkvóta fyrir kerfi í jafnvægi; má gefa upp með styrk (Kc) eða hlutþrýstingi (Kp)",
       "chapter": 13,
       "section": "13.2",
       "sectionTitle": "Jafnvægisfastar",
@@ -4354,8 +4354,8 @@
       "definition": "jafnvægi sem verður fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og endurheimtir jafnvægi",
       "chapter": 13,
       "section": "13.3",
-      "sectionTitle": "Tilfærsla jafnvægis: Lögmál Le Châteliers",
-      "sectionSlug": "13-3-tilfaersla-jafnvaegis-logmal-le-chteliers",
+      "sectionTitle": "Jafnvægisbreytingar: Lögmál Le Châteliers",
+      "sectionSlug": "13-3-jafnvaegisbreytingar-logmal-le-chteliers",
       "termId": "fs-idp108249008"
     },
     {
@@ -4401,6 +4401,17 @@
       "sectionTitle": "Fyrstu hugmyndir í atómkenningunni",
       "sectionSlug": "2-1-fyrstu-hugmyndir-i-atomkenningunni",
       "termId": "fs-idp47442976"
+    },
+    {
+      "termIs": "lögmál um massaverkun",
+      "termEn": "law of mass action",
+      "termFull": "lögmál um massaverkun (e. law of mass action)",
+      "definition": "þegar afturkræft hvarf hefur náð jafnvægi við tiltekið hitastig helst hvarfkvótinn óbreyttur",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-jafnvaegisfastar",
+      "termId": "fs-idp89564720"
     },
     {
       "termIs": "lögmál um varðveislu efnis",
@@ -4544,17 +4555,6 @@
       "sectionTitle": "Atómbygging og táknmál",
       "sectionSlug": "2-3-atombygging-og-taknmal",
       "termId": "fs-idp22869776"
-    },
-    {
-      "termIs": "massavirknilögmálið",
-      "termEn": "law of mass action",
-      "termFull": "massavirknilögmálið (e. law of mass action)",
-      "definition": "þegar afturkræft efnahvarf hefur náð jafnvægi við ákveðið hitastig, helst hvarfstuðullinn óbreyttur",
-      "chapter": 13,
-      "section": "13.2",
-      "sectionTitle": "Jafnvægisfastar",
-      "sectionSlug": "13-2-jafnvaegisfastar",
-      "termId": "fs-idp89564720"
     },
     {
       "termIs": "massi",
@@ -4832,17 +4832,6 @@
       "termId": "fs-idp85033264"
     },
     {
-      "termIs": "misleitt jafnvægi",
-      "termEn": "heterogeneous equilibria",
-      "termFull": "misleitt jafnvægi (e. heterogeneous equilibria)",
-      "definition": "jafnvægi þar sem hvarfefni og myndefni eru í tveimur eða fleiri mismunandi fösum",
-      "chapter": 13,
-      "section": "13.2",
-      "sectionTitle": "Jafnvægisfastar",
-      "sectionSlug": "13-2-jafnvaegisfastar",
-      "termId": "fs-idp102632368"
-    },
-    {
       "termIs": "mismunandi hvatar",
       "termEn": "heterogeneous catalyst",
       "termFull": "mismunandi hvatar (e. heterogeneous catalyst)",
@@ -4852,6 +4841,17 @@
       "sectionTitle": "Hvörf",
       "sectionSlug": "12-7-hvorf",
       "termId": "fs-idm228167568"
+    },
+    {
+      "termIs": "mismunandi jafnvægi",
+      "termEn": "heterogeneous equilibria",
+      "termFull": "mismunandi jafnvægi (e. heterogeneous equilibria)",
+      "definition": "jafnvægi þar sem hvarfefni og myndefni eru í tveimur eða fleiri mismunandi fösum",
+      "chapter": 13,
+      "section": "13.2",
+      "sectionTitle": "Jafnvægisfastar",
+      "sectionSlug": "13-2-jafnvaegisfastar",
+      "termId": "fs-idp102632368"
     },
     {
       "termIs": "misvægishvarf",
