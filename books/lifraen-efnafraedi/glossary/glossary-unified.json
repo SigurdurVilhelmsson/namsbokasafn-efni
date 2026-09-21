@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-20T09:43:10.266Z",
+  "generated": "2026-09-21T16:28:13.174Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 270,
-    "approved": 270,
+    "total": 275,
+    "approved": 275,
     "ties": 4,
     "nominalTies": 1,
-    "outOfScopeOnly": 2579,
+    "outOfScopeOnly": 2574,
     "censusStrings": 84089
   },
   "terms": [
@@ -391,6 +391,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 70189,
+      "alternatives": []
+    },
+    {
+      "english": "carbon monoxide",
+      "icelandic": "kolmónoxíð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70228,
       "alternatives": []
     },
     {
@@ -927,6 +937,16 @@
       "alternatives": []
     },
     {
+      "english": "electronegative",
+      "icelandic": "rafneikvæður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70226,
+      "alternatives": []
+    },
+    {
       "english": "electronegativity",
       "icelandic": "rafneikvæðni",
       "status": "approved",
@@ -1265,6 +1285,16 @@
       "alternatives": []
     },
     {
+      "english": "hydrocarbon",
+      "icelandic": "vetniskolefni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70223,
+      "alternatives": []
+    },
+    {
       "english": "hydrogen bond",
       "icelandic": "vetnistengi",
       "status": "approved",
@@ -1482,6 +1512,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4812,
+      "alternatives": []
+    },
+    {
+      "english": "laser",
+      "icelandic": "leysir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70224,
       "alternatives": []
     },
     {
@@ -2522,6 +2562,16 @@
       "alternatives": [
         "stöðgva"
       ]
+    },
+    {
+      "english": "steam",
+      "icelandic": "gufa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70225,
+      "alternatives": []
     },
     {
       "english": "stereoisomer",
