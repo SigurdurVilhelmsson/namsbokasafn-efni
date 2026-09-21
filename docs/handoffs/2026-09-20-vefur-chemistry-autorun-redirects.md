@@ -206,3 +206,14 @@ not transcribed from the render log. No chain collapsed and no row inverted._
 (`rafefnafrumur` → `galvaniker`), and the third is `cell potential → kerspenna` doing the same.
 A terminology ruling on this chapter moves page slugs, so the redirect rows are not optional
 hygiene here — they are how the ruling lands without breaking links.
+
+## ch18 — prepared 2026-09-21 (~2,615 ISK all in)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/18/18-2-tilvist-og-framleidsla-daemigerdra-malma.html` | `chapters/18/18-2-tilvist-og-framleidsla-adalflokkamalma.html` | m68830 |
+| `chapters/18/18-3-uppbygging-og-almennir-eiginleikar-halfmalma.html` | `chapters/18/18-3-bygging-og-almennir-eiginleikar-malmunga.html` | m68831 |
+| `chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda.html` | `chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda.html` | m68840 |
+
+_Slug map 45 → 48: **added=3, changed=0, removed=0**, from a before/after diff. The first row is the
+`representative metal → aðalflokkamálmur` ruling reaching a URL._

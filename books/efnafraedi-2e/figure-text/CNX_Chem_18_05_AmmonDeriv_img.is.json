@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_05_AmmonDeriv_img",
+ "renderHash": "f57f9808fa6f455c",
+ "composedHash": "f57f9808fa6f455c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ammonia": "ammoníak",
+  "chloramine": "klóramín",
+  "hydrazine": "hýdrasín"
+ },
+ "mtAlternatives": {
+  "chloramine": {
+   "kept": "joined",
+   "other": "Klóramín",
+   "reason": "disagree",
+   "mt": "klóramín"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

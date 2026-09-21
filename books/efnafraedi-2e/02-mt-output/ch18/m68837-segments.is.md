@@ -2,79 +2,82 @@
 Tilvist, framleiðsla og efnasambönd súrefnis
 
 <!-- SEG:m68837:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68837:abstract-item:abstract-item-1 -->
 Lýst eiginleikum, framleiðslu og efnasamböndum súrefnis
 
 <!-- SEG:m68837:abstract-item:abstract-item-2 -->
-Lýst framleiðslu, eiginleikum og notkun nokkurra dæmigerðra málmoxíða, peroxíða og hýdroxíða
+Lýst framleiðslu, eiginleikum og notkun sumra dæmigerðra málmoxíða, peroxíða og hýdroxíða
 
 <!-- SEG:m68837:para:fs-idp152721184 -->
-Súrefni er algengasta frumefnið í jarðskorpunni. Yfirborð jarðar samanstendur af jarðskorpu, andrúmslofti og vatnshvolfi. Um 50% af massa jarðskorpunnar er súrefni (í efnasamböndum með öðrum frumefnum, aðallega kísli). Súrefni kemur fyrir sem O[[sub:2]] sameindir og, að takmörkuðu leyti, sem O[[sub:3]] (óson) sameindir í lofti. Það myndar um 20% af massa loftsins. Um 89% af massa vatns er bundið súrefni. Í efnasamböndum með kolefni, vetni og nitri er súrefni stór hluti plantna og dýra.
+Súrefni er algengasta frumefnið í jarðskorpunni. Yfirborð jarðar samanstendur af jarðskorpu, lofthjúpi og vatnshvolfi. Um 50% af massa jarðskorpunnar er súrefni (bundið öðrum frumefnum, aðallega kísli). Súrefni er til staðar sem O[[sub:2]]-sameindir og, í takmörkuðu magni, sem O[[sub:3]] (óson) sameindir í lofti. Það myndar um 20% af massa loftsins. Um 89% af massa vatns samanstendur af bundnu súrefni. Í sambandi við kolefni, vetni og köfnunarefni er súrefni stór hluti af plöntum og dýrum.
 
 <!-- SEG:m68837:para:fs-idp65251648 -->
-Súrefni er litlaust, lyktarlaust og bragðlaust gas við venjulegt hitastig. Það er örlítið þéttara en loft. Þrátt fyrir að það sé aðeins örlítið auðleyst í vatni (49 ml af gasi leysast upp í 1 l við staðalaðstæður) er leysni súrefnis mjög mikilvæg fyrir líf í vatni.
+Súrefni er litlaus, lyktarlaus og bragðlaus lofttegund við venjulegt hitastig. Það er örlítið eðlisþyngra en loft. Þrátt fyrir að það sé aðeins örlítið leysanlegt í vatni (49 ml af gasi leysast upp í 1 l við staðalaðstæður) er leysni súrefnis mjög mikilvæg fyrir líf í vatni.
 
 <!-- SEG:m68837:para:fs-idm27751680 -->
-Mest af því súrefni sem einangrað er í atvinnuskyni kemur úr lofti og afgangurinn úr rafgreiningu vatns. Aðskilnaður súrefnis frá lofti hefst með því að kæla og þjappa loftinu saman þar til það verður að vökva. Þegar fljótandi loft hitnar, aðskilst súrefni með hærra suðumarki sínu (90 K) frá nitri, sem hefur lægra suðumark (77 K). Hægt er að aðskilja aðra íhluti loftsins á sama tíma byggt á mismunandi suðumörkum þeirra.
+Mest af því súrefni sem er einangrað í atvinnuskyni kemur úr lofti og afgangurinn úr rafgreiningu vatns. Aðskilnaður súrefnis frá lofti hefst með því að kæla og þjappa loftinu þar til það verður að vökva. Þegar fljótandi loft hitnar aðskilst súrefni, með hærra suðumark sitt (90 K), frá köfnunarefni, sem hefur lægra suðumark (77 K). Hægt er að aðskilja aðra íhluti loftsins á sama tíma út frá mismunandi suðumarki þeirra.
 
 <!-- SEG:m68837:para:fs-idp51527296 -->
-Súrefni er nauðsynlegt í brunaferlum eins og bruna eldsneytis. Plöntur og dýr nota súrefni úr loftinu við öndun. Inngjöf súrefnisauðgaðs lofts er mikilvæg læknisfræðileg aðgerð þegar sjúklingur fær ófullnægjandi súrefni vegna losts, lungnabólgu eða annarra veikinda.
+Súrefni er nauðsynlegt í brunaferlum eins og bruna eldsneytis. Plöntur og dýr nota súrefnið úr loftinu við öndun. Gjafir á súrefnisauðguðu lofti eru mikilvæg læknismeðferð þegar sjúklingur fær ófullnægjandi súrefni vegna losts, lungnabólgu eða annarra veikinda.
 
 <!-- SEG:m68837:para:fs-idp11224512 -->
-Efnaiðnaðurinn notar súrefni til að oxa mörg efni. Verulegt magn af súrefni sem framleitt er í atvinnuskyni er mikilvægt við að fjarlægja kolefni úr járni við stálframleiðslu. Mikið magn af hreinu súrefni er einnig nauðsynlegt við málmsmíði og við skurð og suðu málma með súrefnis-vetnis- og súrefnis-asetýlen-kyndlum.
+Efnaiðnaðurinn notar súrefni til að oxa mörg efni. Mikið magn af súrefni sem framleitt er í atvinnuskyni er mikilvægt við að fjarlægja kolefni úr járni við stálframleiðslu. Mikið magn af hreinu súrefni er einnig nauðsynlegt við málmsmíði og við skurð og suðu málma með súrefnisvetnis- og súrefnisasetýlenlogsuðu.
 
 <!-- SEG:m68837:para:fs-idp113966704 -->
-Fljótandi súrefni er mikilvægt fyrir geimiðnaðinn. Það er oxari í eldflaugahreyflum. Það er einnig uppspretta súrefnisgass fyrir lífstuðning í geimnum.
+Fljótandi súrefni er mikilvægt fyrir geimiðnaðinn. Það er oxunarefni í eldflaugahreyflum. Það er einnig uppspretta loftkennds súrefnis fyrir lífstuðning í geimnum.
 
 <!-- SEG:m68837:para:fs-idp21114016 -->
-Eins og við vitum er súrefni mjög mikilvægt fyrir líf. Orkan sem þarf til að viðhalda eðlilegri líkamsstarfsemi hjá mönnum og öðrum lífverum kemur frá hægri oxun efnasambanda. Súrefni er endanlegi oxarinn í þessum efnahvörfum. Í mönnum fer súrefni úr lungunum yfir í blóðið þar sem það binst blóðrauða og myndar súrefnisblóðrauða. Í þessu formi flytur blóðið súrefnið til vefja þar sem það er flutt til frumna og notað sem efnafræðilegur oxari, sem gefur af sér koldíoxíð og vatn sem lokaafurðir. Blóðið ber koldíoxíðið um bláæðarnar til lungnanna þar sem blóðið losar koldíoxíðið og safnar nýjum súrefnisbirgðum. Melting og upptaka fæðu endurnýja efnin sem eyðast við oxun í líkamanum; orkan sem losnar er sú sama og ef fæðan brynni utan líkamans.
+Eins og við vitum er súrefni mjög mikilvægt fyrir líf. Orkan sem þarf til að viðhalda eðlilegri líkamsstarfsemi hjá mönnum og öðrum lífverum kemur frá hægri oxun efnasambanda. Súrefni er endanlegt oxunarefni í þessum efnahvörfum. Í mönnum fer súrefni úr lungunum yfir í blóðið þar sem það binst blóðrauða og myndar oxýhemóglóbín. Í þessu formi flytur blóðið súrefnið til vefja þar sem það er flutt til frumna og notað sem efnafræðilegt oxunarefni sem gefur af sér koltvíoxíð og vatn sem lokaafurðir. Blóðið ber koltvíoxíðið um bláæðarnar til lungnanna þar sem blóðið losar koltvíoxíðið og safnar nýjum súrefnisbirgðum. Melting og upptaka fæðu endurnýjar efnin sem eyðast við oxun í líkamanum; orkan sem losnar er sú sama og ef maturinn væri brenndur utan líkamans.
 
 <!-- SEG:m68837:para:fs-idm4087072 -->
-Grænar plöntur endurnýja stöðugt súrefnið í andrúmsloftinu með ferli sem kallast {{term}}ljóstillífun{{/term}}. Myndefni ljóstillífunar geta verið breytileg, en almennt breytir ferlið koldíoxíði og vatni í glúkósa (sykur) og súrefni með orku ljóssins:
+Grænar plöntur endurnýja stöðugt súrefnið í andrúmsloftinu með ferli sem kallast [[term:ljóstillífun|term-00001]]. Afurðir ljóstillífunar geta verið mismunandi en almennt breytir ferlið koltvíoxíði og vatni í glúkósa (sykur) og súrefni með orku ljóssins:
 
 <!-- SEG:m68837:para:fs-idp139331168 -->
-Þannig snýr súrefnið sem varð að koldíoxíði og vatni með efnaskiptaferlum í plöntum og dýrum aftur út í andrúmsloftið með ljóstillífun.
+Þannig skilar súrefnið, sem varð að koltvíoxíði og vatni með efnaskiptaferlum í plöntum og dýrum, aftur út í andrúmsloftið með ljóstillífun.
 
 <!-- SEG:m68837:para:fs-idm13883760 -->
-Þegar þurru súrefni er leitt á milli tveggja rafhlöðinna platna myndast {{term}}óson{{/term}} (O[[sub:3]], sýnt á [[xref:CNX_Chem_18_09_Ozone]]), sem er fjölmynd súrefnis með sérkennilega lykt. Myndun ósons úr súrefni er innvermið efnahvarf þar sem orkan kemur frá rafhleðslu, hita eða útfjólubláu ljósi:
+Þegar þurru súrefni er leitt á milli tveggja rafhlöðinna platna myndast [[term:óson|term-00002]] (O[[sub:3]], sýnt á [[xref:CNX_Chem_18_09_Ozone]]), sem er fjölgervingsmynd súrefnis með sérkennilega lykt. Myndun ósons úr súrefni er innvermið efnahvarf þar sem orkan kemur frá rafhleðslu, hita eða útfjólubláu ljósi:
 
 <!-- SEG:m68837:para:fs-idp152283536 -->
-Skarpa lyktin sem tengist neistandi rafbúnaði stafar að hluta til af ósoni.
+Skerandi lyktin sem tengist neistandi rafbúnaði stafar að hluta til af ósoni.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Ozone-caption -->
-Myndin sýnir beygðu ósonsameindina (O[[sub:3]]) og þær vokmyndir sem nauðsynlegar eru til að lýsa tengjum hennar.
+Myndin sýnir hina beygðu ósonsameind (O[[sub:3]]) og samgildisformurnar sem nauðsynlegar eru til að lýsa tengslum hennar.
+
+<!-- SEG:m68837:alt:fs-idp48097808-alt -->
+Kúlulíkan sýnir þrjú atóm merkt „O“ sem eru tengd saman í þríhyrningslaga formi. Tvær Lewis-myndir tengdar með tvíodda ör eru einnig sýndar. Á vinstri myndinni er súrefnisatóm með eitt rafeindapar tvítengt öðru súrefnisatómi með tvö rafeindapör til vinstri og eintengt súrefnisatómi með þrjú rafeindapör til hægri. Hægri myndin er spegilmynd af þeirri vinstri.
 
 <!-- SEG:m68837:para:fs-idp113935824 -->
-Óson myndast náttúrulega í efri lögum andrúmsloftsins fyrir tilstilli útfjólublás ljóss frá sólinni á súrefnið þar. Mest af ósoni í andrúmsloftinu er í heiðhvolfinu, lagi andrúmsloftsins sem nær frá um 10 til 50 kílómetra yfir yfirborði jarðar. Þetta óson virkar sem hindrun fyrir skaðlegu útfjólubláu ljósi frá sólinni með því að gleypa það í sig með niðurbrotsefnahvarfi:
+Óson myndast náttúrulega í efri lögum andrúmsloftsins vegna áhrifa útfjólublás ljóss frá sólinni á súrefnið þar. Mest af ósoni í andrúmsloftinu er í heiðhvolfinu, lagi andrúmsloftsins sem nær frá um 10 til 50 kílómetra yfir yfirborði jarðar. Þetta óson virkar sem hindrun fyrir skaðlegu útfjólubláu ljósi frá sólinni með því að gleypa það í sig með efnafræðilegu niðurbrotshvarfi:
 
 <!-- SEG:m68837:para:fs-idp7852816 -->
-Hvarfgjörnu súrefnisatómin sameinast aftur súrefnissameindum til að ljúka ósonhringrásinni. Tilvist ósons í heiðhvolfinu dregur úr tíðni húðkrabbameins og annarra skaðlegra áhrifa útfjólublárrar geislunar. Það hefur verið sýnt fram á með skýrum hætti að klórflúorkolefni, CFC (þekkt í viðskiptum sem Freon), sem voru til staðar sem drifefni í úðabrúsum og sem kælimiðlar, ollu eyðingu ósons í heiðhvolfinu. Þetta gerðist vegna þess að útfjólublátt ljós veldur einnig niðurbroti CFC-efna og framleiðir atómískt klór. Klóratómin hvarfast við ósonsameindir, sem leiðir til nettó-fjarlægingar O[[sub:3]] sameinda úr heiðhvolfinu. Þessu ferli er lýst ítarlega í umfjöllun okkar um efnahraðafræði. Á heimsvísu er unnið að því að draga úr magni CFC-efna sem notuð eru í atvinnuskyni og ósonlagið er þegar farið að minnka þar sem styrkur atómísks klórs í andrúmsloftinu minnkar. Þó að óson í heiðhvolfinu hjálpi til við að vernda okkur, er óson í veðrahvolfinu vandamál. Þetta óson er eitraður hluti af ljósefnamengun.
+Hvarfgjörnu súrefnisatómin sameinast aftur sameindasúrefni til að ljúka ósonhringrásinni. Tilvist ósons í heiðhvolfinu dregur úr tíðni húðkrabbameins og annarra skaðlegra áhrifa útfjólublárrar geislunar. Það hefur verið sýnt fram á með skýrum hætti að klórflúorkolefni, CFC (þekkt í viðskiptum sem Freon), sem voru til staðar sem drifefni í úðabrúsum og sem kælimiðlar, ollu eyðingu ósons í heiðhvolfinu. Þetta gerðist vegna þess að útfjólublátt ljós veldur því einnig að CFC brotnar niður og myndar klóratóm. Klóratómin hvarfast við ósonsameindir, sem leiðir til nettó brottnáms O[[sub:3]] sameinda úr heiðhvolfinu. Þetta ferli er kannað í smáatriðum í umfjöllun okkar um efnahvörf. Unnið er að því um allan heim að draga úr magni CFC sem notað er í viðskiptum og ósonlagið er þegar farið að minnka þar sem styrkur klóratóma í andrúmsloftinu minnkar. Á meðan óson í heiðhvolfinu hjálpar til við að vernda okkur, er óson í veðrahvolfinu vandamál. Þetta óson er eitraður hluti af ljósefnamengun.
 
 <!-- SEG:m68837:para:fs-idp147670496 -->
-Notkun ósons byggist á hvarfgirni þess við önnur efni. Það er hægt að nota sem bleikiefni fyrir olíur, vax, dúka og sterkju: Það oxar lituðu efnasamböndin í þessum efnum í litlaus efnasambönd. Það er valkostur við klór sem sótthreinsiefni fyrir vatn.
+Notkun ósons byggist á hvarfgirni þess við önnur efni. Það er hægt að nota sem bleikiefni fyrir olíur, vax, efni og sterkju: Það oxar lituðu efnasamböndin í þessum efnum í litlaus efnasambönd. Það er valkostur við klór sem sótthreinsiefni fyrir vatn.
 
 <!-- SEG:m68837:title:fs-idp24501056-title -->
-Efnahvörf
+Hvörf
 
 <!-- SEG:m68837:title:fs-idp17442128-title -->
-Efnahvörf við frumefni
+Hvörf við frumefni
 
 <!-- SEG:m68837:para:fs-idm69360784 -->
-Súrefni hvarfast beint við stofuhita eða hærra hitastig við öll önnur frumefni nema eðalgös, halógena og fáeina hliðarmálma í annarri og þriðju lotu með litla hvarfgirni (þá sem hafa hærri afoxunarspennu en kopar). Ryð er dæmi um efnahvarf súrefnis við járn. Hvarfgjarnari málmar mynda peroxíð eða súperoxíð. Minna hvarfgjarnir málmar og málmleysingjar mynda oxíð. Tvö dæmi um slík efnahvörf eru:
+Súrefni hvarfast beint við stofuhita eða við hækkað hitastig við öll önnur frumefni nema eðallofttegundir, halógena og fáeina hliðarmálma í annarri og þriðju lotu með litla hvarfgirni (þá sem hafa hærri afoxunarspennu en kopar). Ryð er dæmi um hvarf súrefnis við járn. Virkari málmar mynda peroxíð eða súperoxíð. Minna virkir málmar og málmleysingjar gefa oxíð. Tvö dæmi um þessi hvörf eru:
 
 <!-- SEG:m68837:para:fs-idp158351392 -->
-Oxíð halógena, að minnsta kosti eins eðalgass og málma með hærri afoxunarspennu en kopar myndast ekki við bein efnahvörf frumefnanna við súrefni.
+Oxíð halógena, að minnsta kosti einnar eðallofttegundar, og málma með hærri afoxunarspennu en kopar myndast ekki við bein áhrif frumefnanna við súrefni.
 
 <!-- SEG:m68837:title:fs-idp16810848-title -->
-Efnahvörf við efnasambönd
+Hvörf við efnasambönd
 
 <!-- SEG:m68837:para:fs-idp29605072 -->
-Frumefnið súrefni hvarfast einnig við sum efnasambönd. Ef hægt er að oxa eitthvert frumefnanna í tilteknu efnasambandi getur frekari oxun með súrefni átt sér stað. Til dæmis inniheldur brennisteinsvetni, H[[sub:2]]S, brennistein með oxunartöluna 2−. Þar sem brennisteinninn sýnir ekki hámarks oxunartölu sína myndum við búast við því að H[[sub:2]]S hvarfist við súrefni. Það gerir það og myndar vatn og brennisteinsdíoxíð. Efnahvarfið er:
+Frumefnið súrefni hvarfast einnig við sum efnasambönd. Ef hægt er að oxa eitthvert frumefnanna í tilteknu efnasambandi getur frekari oxun með súrefni átt sér stað. Til dæmis inniheldur brennisteinsvetni, H[[sub:2]]S, brennistein með oxunartöluna 2−. Vegna þess að brennisteinninn sýnir ekki hámarks oxunartölu sína, myndum við búast við að H[[sub:2]]S hvarfist við súrefni. Það gerir það og myndar vatn og brennisteinsdíoxíð. Hvarfið er:
 
 <!-- SEG:m68837:para:fs-idm10089904 -->
-Einnig er hægt að oxa oxíð eins og CO og P[[sub:4]]O[[sub:6]] sem innihalda frumefni með lægri oxunartölu. Hversu auðveldlega frumefnið súrefni tekur upp rafeindir endurspeglast í því hversu erfitt er að fjarlægja rafeindir úr súrefni í flestum oxíðum. Af frumefnunum getur aðeins hið mjög hvarfgjarna flúor oxað oxíð til að mynda súrefnisgas.
+Einnig er hægt að oxa oxíð eins og CO og P[[sub:4]]O[[sub:6]] sem innihalda frumefni með lægri oxunartölu. Auðveldleikinn sem frumefnið súrefni tekur upp rafeindir endurspeglast í erfiðleikunum við að fjarlægja rafeindir úr súrefni í flestum oxíðum. Af frumefnunum getur aðeins hið mjög hvarfgjarna flúor oxað oxíð til að mynda súrefnisgas.
 
 <!-- SEG:m68837:para:fs-idp69945600 -->
 Frumefnið súrefni er sterkt oxunarefni. Það hvarfast við flest önnur frumefni og mörg efnasambönd.
@@ -86,115 +89,127 @@ Oxíð, peroxíð og hýdroxíð
 Oxíð
 
 <!-- SEG:m68837:para:fs-idm7884928 -->
-Hægt er að framleiða oxíð flestra aðalflokkamálma með því að hita samsvarandi hýdroxíð (sem myndar oxíð og vatnsgufu) eða karbónöt (sem myndar oxíð og CO[[sub:2]]-gas). Jöfnur fyrir dæmi um efnahvörf eru:
+Hægt er að framleiða oxíð flestra aðalflokkamálma með því að hita samsvarandi hýdroxíð (sem myndar oxíð og vatnsgufu) eða karbónöt (sem myndar oxíð og CO[[sub:2]]-gas). Jöfnur fyrir dæmi um hvörf eru:
 
 <!-- SEG:m68837:para:fs-idp15533664 -->
-Sölt alkalímálma eru þó almennt mjög stöðug og brotna ekki auðveldlega niður við hitun. Oxíð alkalímálma verða til úr oxunar-afoxunarhvörfum sem myndast við hitun nítrata eða hýdroxíða með málmunum. Jöfnur fyrir dæmi um efnahvörf eru:
+Hins vegar eru sölt alkalímálma almennt mjög stöðug og brotna ekki auðveldlega niður við hitun. Oxíð alkalímálma myndast við oxunar-afoxunarhvörf sem verða við hitun nítrata eða hýdroxíða með málmunum. Jöfnur fyrir dæmi um hvörf eru:
 
 <!-- SEG:m68837:para:fs-idp19845744 -->
-Að undanskildu kvikasilfurs(II)oxíði er hægt að framleiða oxíð málma í hópum 2–15 með því að brenna samsvarandi málm í lofti. Þyngsta frumefni hvers hóps, það frumefni sem tregra rafeindaparaáhrifin eru mest áberandi fyrir, myndar oxíð þar sem oxunartala málmjónarinnar er tveimur lægri en oxunartala hópsins (tregra rafeindaparaáhrif). Þannig myndast Tl[[sub:2]]O, PbO og Bi[[sub:2]]O[[sub:3]] við bruna á tallíni, blýi og bismúti. Oxíð léttari frumefna hvers hóps sýna oxunartölu hópsins. Til dæmis myndast SnO[[sub:2]] við bruna á tini. Kvikasilfurs(II)oxíð, HgO, myndast hægt þegar kvikasilfur er hitað undir 500 °C; það brotnar niður við hærra hitastig.
+Að undanskildu kvikasilfurs(II)oxíði er hægt að framleiða oxíð málma í flokkum 2–15 með því að brenna samsvarandi málm í lofti. Þyngsti meðlimur hvers flokks, sá sem tregrafeindaparsáhrifin eru mest áberandi fyrir, myndar oxíð þar sem oxunartala málmjónarinnar er tveimur minni en oxunartala flokksins (tregrafeindaparsáhrif). Þannig myndast Tl[[sub:2]]O, PbO og Bi[[sub:2]]O[[sub:3]] við bruna á tallíni, blýi og bismúti, í sömu röð. Oxíð léttari meðlima hvers flokks sýna oxunartölu flokksins. Til dæmis myndast SnO[[sub:2]] við bruna á tini. Kvikasilfurs(II)oxíð, HgO, myndast hægt þegar kvikasilfur er hitað undir 500 °C; það brotnar niður við hærra hitastig.
 
 <!-- SEG:m68837:para:fs-idm27686864 -->
-Að brenna frumefni úr hópum 1 og 2 í lofti er ekki hentug leið til að mynda oxíð þessara frumefna. Þessir málmar eru nógu hvarfgjarnir til að bindast nitri í loftinu, þannig að þeir mynda blöndur af oxíðum og jónískum nítríðum. Nokkrir mynda einnig peroxíð eða súperoxíð þegar þeir eru hitaðir í lofti.
+Bruni á meðlimum flokka 1 og 2 í lofti er ekki hentug leið til að mynda oxíð þessara frumefna. Þessir málmar eru nógu hvarfgjarnir til að sameinast köfnunarefni í loftinu, þannig að þeir mynda blöndur af oxíðum og jónískum nítríðum. Nokkrir mynda einnig peroxíð eða súperoxíð þegar þeir eru hitaðir í lofti.
 
 <!-- SEG:m68837:para:fs-idp88647200 -->
-Jónísk oxíð innihalda öll oxíðjónina, sem er mjög öflugur vetnisjónaþegi. Að undanskildu hinu mjög torleysta áloxíði, Al[[sub:2]]O[[sub:3]], tins(IV), SnO[[sub:2]], og blýs(IV), PbO[[sub:2]], hvarfast oxíð aðalflokkamálma við sýrur og mynda sölt. Nokkrar jöfnur fyrir þessi efnahvörf eru:
+Jónísk oxíð innihalda öll oxíðjónina, sem er mjög öflugur vetnisjónaþegi. Að undanskildum mjög óleysanlegu áloxíði, Al[[sub:2]]O[[sub:3]], tin(IV), SnO[[sub:2]], og blý(IV), PbO[[sub:2]], hvarfast oxíð aðalflokkamálma við sýrur og mynda sölt. Nokkrar jöfnur fyrir þessi hvörf eru:
 
 <!-- SEG:m68837:para:fs-idm71724768 -->
-Oxíð málma í hópum 1 og 2 og tallíns(I)oxíð hvarfast við vatn og mynda hýdroxíð. Dæmi um slík efnahvörf eru:
+Oxíð málma í flokkum 1 og 2 og tallín(I)oxíð hvarfast við vatn og mynda hýdroxíð. Dæmi um slík hvörf eru:
 
 <!-- SEG:m68837:para:fs-idp12102384 -->
-Oxíð alkalímálma hafa lítið iðnaðargildi, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldmúrsteinum, deiglum, ofnafóðringum og varmaeinangrun – notkunarsvið sem krefjast efnafræðilegs og hitauppstreymislegs stöðugleika. Kalsíumoxíð, stundum kallað [[i:brennt kalk]] eða kalk á iðnaðarmarkaði, er mjög hvarfgjarnt og helstu not þess endurspegla hvarfgirni þess. Hreint kalsíumoxíð gefur frá sér ákaft hvítt ljós þegar það er hitað að háu hitastigi (eins og sýnt er á [[xref:CNX_Chem_18_09_Limelight]]). Kubbar úr kalsíumoxíði sem hitaðir voru með gaslogum voru sviðsljósin í leikhúsum áður en rafmagn varð aðgengilegt. Þetta er uppruni orðatiltækisins „að vera í sviðsljósinu“.
+Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrsteinum, deiglum, ofnafóðringum og varmaeinangrun – notkun sem krefst efna- og hitastöðugleika. Kalsíumoxíð, stundum kallað [[i:brennt kalk]] eða kalk á iðnaðarmarkaði, er mjög hvarfgjarnt og helstu not þess endurspegla hvarfgirni þess. Hreint kalsíumoxíð gefur frá sér ákaft hvítt ljós þegar það er hitað að háu hitastigi (eins og sýnt er á [[xref:CNX_Chem_18_09_Limelight]]). Kubbar úr kalsíumoxíði sem hitaðir voru með gaslogum voru sviðsljós í leikhúsum áður en rafmagn varð aðgengilegt. Þaðan er komið orðatiltækið „að vera í sviðsljósinu“.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Limelight-caption -->
 Kalsíumoxíð hefur margvísleg iðnaðarnot. Þegar það er hitað við hátt hitastig gefur það frá sér ákaft hvítt ljós.
 
+<!-- SEG:m68837:alt:fs-idp99950736-alt -->
+Skýringarmynd sýnir tvær slöngur merktar „Súrefni“ og „Vetni“ sem leiða að kveiktum brennara. Brennaranum er beint að föstum kubbi merktum „Kalsíumoxíð“ sem hvílir á rannsóknarstofubúnaði.
+
 <!-- SEG:m68837:para:fs-idm68622384 -->
-Kalsíumoxíð og kalsíumhýdroxíð eru ódýrir basar sem eru mikið notaðir í efnavinnslu, þótt flestar nytsamlegu afurðirnar sem unnar eru úr þeim innihaldi ekki kalsíum. Kalsíumoxíð, CaO, er búið til með því að hita kalsíumkarbónat, CaCO[[sub:3]], sem er víða og ódýrt fáanlegt sem kalksteinn eða ostruskeljar:
+Kalsíumoxíð og kalsíumhýdroxíð eru ódýrir basar sem eru mikið notaðir í efnavinnslu, þótt flest nytsamleg myndefni sem unnin eru úr þeim innihaldi ekki kalsíum. Kalsíumoxíð, CaO, er búið til með því að hita kalsíumkarbónat, CaCO[[sub:3]], sem er víða og ódýrt fáanlegt sem kalksteinn eða ostruskeljar:
 
 <!-- SEG:m68837:para:fs-idp49770160 -->
-Þrátt fyrir að þetta niðurbrotsefnahvarf sé afturkræft er hægt að ná 100% heimtum af CaO með því að láta CO[[sub:2]] sleppa út. Hægt er að útbúa kalsíumhýdroxíð með hinu kunnuglega sýru-basa efnahvarfi leysanlegs málmoxíðs við vatn:
+Þrátt fyrir að þetta niðurbrotshvarf sé afturkræft er hægt að ná 100% nýtni af CaO með því að leyfa CO[[sub:2]] að sleppa út. Hægt er að búa til kalsíumhýdroxíð með hinu þekkta sýru-basa hvarfi leysanlegs málmoxíðs við vatn:
 
 <!-- SEG:m68837:para:fs-idp440288 -->
 Bæði CaO og Ca(OH)[[sub:2]] eru gagnleg sem basar; þau þiggja róteindir og hlutleysa sýrur.
 
 <!-- SEG:m68837:para:fs-idp148730400 -->
-Áloxíð (Al[[sub:2]]O[[sub:3]]) kemur fyrir í náttúrunni sem steinefnið kórúnd, sem er mjög hart efni notað sem slípiefni til að mala og fægja. Kórúnd er mikilvægt í skartgripaiðnaði sem rúbín og safír. Litur rúbíns stafar af litlu magni af krómi; önnur óhreinindi valda þeim fjölbreyttu litum sem mögulegir eru í safírum. Gervirúbínar og -safírar eru nú framleiddir með því að bræða áloxíð (bræðslumark = 2050 °C) með litlu magni af öðrum oxíðum til að fá fram þá liti sem óskað er eftir og kæla bráðina þannig að stórir kristallar myndist. Rúbínleisarar nota gervirúbínkristalla.
+Áloxíð (Al[[sub:2]]O[[sub:3]]) kemur fyrir í náttúrunni sem steindin kórúnd, mjög hart efni sem notað er sem slípiefni til að slípa og fægja. Kórúnd er mikilvægt í skartgripagerð sem rúbín og safír. Litur rúbíns stafar af litlu magni af krómi; önnur óhreinindi valda þeim fjölbreyttu litum sem mögulegir eru fyrir safíra. Gervirúbínar og -safírar eru nú framleiddir með því að bræða áloxíð (bræðslumark = 2050 °C) með litlu magni af oxíðum til að fá fram þá liti sem óskað er eftir og kæla bráðina þannig að stórir kristallar myndist. Rúbínleisarar nota tilbúna rúbínkristalla.
 
 <!-- SEG:m68837:para:fs-idm78432624 -->
-Sinkoxíð, ZnO, var nytsamlegt hvítt litarefni í málningu; mengunarefni hafa þó tilhneigingu til að aflita efnasambandið. Efnasambandið er einnig mikilvægt við framleiðslu á bíldekkjum og öðrum gúmmívörum og við gerð lyfjaára. Til dæmis hjálpa sólarvarnir sem byggja á sinkoxíði, eins og sýnt er á [[xref:CNX_Chem_18_09_Sunblock]], að koma í veg fyrir sólbruna. Sinkoxíðið í þessum sólarvörnum er í formi mjög smárra korna sem kallast nanóagnir. Blýdíoxíð er hluti af hlöðnum blýgeymum. Blý(IV) hefur tilhneigingu til að breytast aftur í stöðugri blý(II)-jónina með því að taka upp tvær rafeindir, þannig að blýdíoxíð er öflugt oxunarefni.
+Sinkoxíð, ZnO, var nytsamlegt hvítt málningarlitarefni; mengunarefni hafa þó tilhneigingu til að aflita efnasambandið. Efnasambandið er einnig mikilvægt við framleiðslu á bíldekkjum og öðrum gúmmívörum og við gerð lækningasmyrsla. Til dæmis hjálpa sólarvarnir sem byggjast á sinkoxíði, eins og sýnt er á [[xref:CNX_Chem_18_09_Sunblock]], að koma í veg fyrir sólbruna. Sinkoxíðið í þessum sólarvörnum er í formi mjög smárra korna sem kallast nanóagnir. Blýdíoxíð er hluti af hlaðnum blýgeymum. Blý(IV) hefur tilhneigingu til að breytast aftur í stöðugri blý(II) jónina með því að taka upp tvær rafeindir, þannig að blýdíoxíð er öflugt oxunarefni.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sunblock-caption -->
-Sinkoxíð verndar óvarða húð gegn sólbruna. (Heimild: breyting á verki eftir „osseous“/Flickr)
+Sinkoxíð verndar óvarða húð gegn sólbruna. (heimild: breyting á verki eftir „osseous“/Flickr)
+
+<!-- SEG:m68837:alt:fs-idp37228448-alt -->
+Ljósmynd sýnir hönd manneskju þar sem hún ber hvítt krem á fótlegg sinn.
 
 <!-- SEG:m68837:title:fs-idm58982368-title -->
 Peroxíð og súperoxíð
 
 <!-- SEG:m68837:para:fs-idp65527104 -->
-Peroxíð og súperoxíð eru sterk oxunarefni og eru mikilvæg í efnaferlum. Vetnisperoxíð, H[[sub:2]]O[[sub:2]], sem er framleitt úr málmperoxíðum, er mikilvægt bleikiefni og sótthreinsiefni. Peroxíð og súperoxíð myndast þegar málmur eða málmoxíð úr flokkum 1 og 2 hvarfast við hreint súrefni við hækkað hitastig. Natríumperoxíð og peroxíð kalsíums, strontíums og baríums myndast við hitun samsvarandi málms eða málmoxíðs í hreinu súrefni:
+Peroxíð og súperoxíð eru sterk oxunarefni og eru mikilvæg í efnaferlum. Vetnisperoxíð, H[[sub:2]]O[[sub:2]], framleitt úr málmperoxíðum, er mikilvægt bleikiefni og sótthreinsiefni. Peroxíð og súperoxíð myndast þegar málmur eða málmoxíð úr flokkum 1 og 2 hvarfast við hreint súrefni við hækkað hitastig. Natríumperoxíð og peroxíð kalsíums, strontíums og baríums myndast við hitun samsvarandi málms eða málmoxíðs í hreinu súrefni:
 
 <!-- SEG:m68837:para:fs-idp38768608 -->
-Hægt er að framleiða peroxíð kalíums, rúbidíums og sesíums með því að hita málminn eða oxíð hans í vandlega stýrðu magni af súrefni:
+Hægt er að búa til peroxíð kalíums, rúbidíums og sesíums með því að hita málminn eða oxíð hans í vandlega stýrðu magni af súrefni:
 
 <!-- SEG:m68837:para:fs-idp37808960 -->
 Með umframmagni af súrefni myndast súperoxíðin KO[[sub:2]], RbO[[sub:2]] og CsO[[sub:2]]. Til dæmis:
 
 <!-- SEG:m68837:para:fs-idp94950736 -->
-Stöðugleiki peroxíða og súperoxíða alkalímálmanna eykst með aukinni stærð katjónarinnar.
+Stöðugleiki peroxíða og súperoxíða alkalímálma eykst eftir því sem stærð katjónarinnar eykst.
 
 <!-- SEG:m68837:title:fs-idm27693280-title -->
 Hýdroxíð
 
 <!-- SEG:m68837:para:fs-idm49602000 -->
-Hýdroxíð eru efnasambönd sem innihalda OH[[sup:−]]-jónina. Hægt er að framleiða þessi efnasambönd með tvenns konar efnahvörfum. Auðleyst málmhýdroxíð er hægt að framleiða með efnahvarfi málmsins eða málmoxíðsins við vatn. Torleyst málmhýdroxíð myndast þegar lausn af auðleystu salti málmsins er blandað saman við lausn sem inniheldur hýdroxíðjónir.
+Hýdroxíð eru efnasambönd sem innihalda OH[[sup:−]] jónina. Hægt er að búa til þessi efnasambönd með tvenns konar almennum efnahvörfum. Leysanleg málmhýdroxíð er hægt að framleiða með hvarfi málmsins eða málmoxíðsins við vatn. Óleysanleg málmhýdroxíð myndast þegar lausn af leysanlegu salti málmsins er blandað saman við lausn sem inniheldur hýdroxíðjónir.
 
 <!-- SEG:m68837:para:fs-idm36144688 -->
 Að undanskildu beryllíum og magnesíum hvarfast málmar úr flokkum 1 og 2 við vatn og mynda hýdroxíð og vetnisgas. Dæmi um slík efnahvörf eru:
 
 <!-- SEG:m68837:para:fs-idp83430112 -->
-Þessi efnahvörf geta þó verið ofsafengin og hættuleg; því er æskilegra að framleiða auðleyst málmhýdroxíð með efnahvarfi viðkomandi oxíðs við vatn:
+Þessi efnahvörf geta þó verið ofsafengin og hættuleg; því er æskilegra að framleiða leysanleg málmhýdroxíð með hvarfi viðkomandi oxíðs við vatn:
 
 <!-- SEG:m68837:para:fs-idm48473616 -->
-Flest málmoxíð eru {{term}}basaanhýdríð{{/term}}. Þetta er augljóst fyrir auðleystu oxíðin því þau mynda málmhýdroxíð. Flest önnur málmoxíð eru torleyst og mynda ekki hýdroxíð í vatni; þau eru samt sem áður basaanhýdríð því þau hvarfast við sýrur.
+Flest málmoxíð eru [[term:basaanhýdríð|term-00007]]. Þetta er augljóst fyrir leysanlegu oxíðin því þau mynda málmhýdroxíð. Flest önnur málmoxíð eru óleysanleg og mynda ekki hýdroxíð í vatni; þau eru samt sem áður basaanhýdríð því þau hvarfast við sýrur.
 
 <!-- SEG:m68837:para:fs-idm50382768 -->
-Hægt er að framleiða torleyst hýdroxíð beryllíums, magnesíums og annarra dæmigerðra málma með álagningu natríumhýdroxíðs við lausn af salti viðkomandi málms. Nettójónajöfnur fyrir efnahvörf sem fela í sér magnesíumsalt, álsalt og sinksalt eru:
+Hægt er að búa til óleysanleg hýdroxíð beryllíums, magnesíums og annarra aðalflokkamálma með því að bæta natríumhýdroxíði við lausn af salti viðkomandi málms. Nettójónajöfnur fyrir efnahvörf sem fela í sér magnesíumsalt, álsalt og sinksalt eru:
 
 <!-- SEG:m68837:para:fs-idp83761344 -->
-Forðast verður umframmagn af hýdroxíði við framleiðslu á ál-, gallíum-, sink- og tin(II)-hýdroxíðum, annars leysast hýdroxíðin upp og mynda samsvarandi flókajónir: [[MATH:1]] [[MATH:2]] [[MATH:3]] og [[MATH:4]] (sjá [[xref:CNX_Chem_18_09_ZnHydroxid]]). Mikilvægi þáttur flókajóna í þessum kafla er að þær myndast með Lewis-sýru-basa-efnahvarfi þar sem málmurinn er Lewis-sýran.
+Forðast verður ofgnótt hýdroxíðs við framleiðslu á ál-, gallíum-, sink- og tin(II)-hýdroxíðum, annars leysast hýdroxíðin upp og mynda samsvarandi kjarneindir: [[MATH:1]] [[MATH:2]] [[MATH:3]] og [[MATH:4]] (sjá [[xref:CNX_Chem_18_09_ZnHydroxid]]). Það sem skiptir máli varðandi kjarneindir í þessum kafla er að þær myndast við Lewis-sýru-basa hvarf þar sem málmurinn er Lewis-sýran.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ZnHydroxid-caption -->
-(a) Þegar lausnum af NaOH og Zn(NO[[sub:3]])[[sub:2]] er blandað saman myndast hvítt botnfall af Zn(OH)[[sub:2]]. (b) Álagning á umframmagni af NaOH leiðir til upplausnar botnfallsins. (Heimild: breyting á verki eftir Mark Ott)
+(a) Þegar lausnum af NaOH og Zn(NO[[sub:3]])[[sub:2]] er blandað saman myndast hvítt botnfall af Zn(OH)[[sub:2]]. (b) Viðbót á umframmagni af NaOH leiðir til þess að botnfallið leysist upp. (heimild: breyting á verki eftir Mark Ott)
+
+<!-- SEG:m68837:alt:fs-idm5652064-alt -->
+Þessi mynd sýnir tvær ljósmyndir. Fyrri myndin sýnir flösku merkta NaOH og tilraunaglas sem inniheldur vökva. Hvítt efni virðist vera í vökvanum. Seinni myndin er svipuð, en tilraunaglasið inniheldur nú aðeins tæran vökva.
 
 <!-- SEG:m68837:para:fs-idp107250736 -->
-Iðnaðurinn notar mikið magn af natríumhýdroxíði sem ódýran, sterkan basa. Natríumklóríð er upphafsefnið við framleiðslu á NaOH því NaCl er ódýrara upphafsefni en oxíðið. Natríumhýdroxíð er meðal 10 mest framleiddu efna í Bandaríkjunum og sú framleiðsla fór nær eingöngu fram með rafgreiningu á lausnum af natríumklóríði. Þetta ferli er kallað {{term}}klór-alkalíferlið{{/term}} og er aðalaðferðin til að framleiða klór.
+Iðnaðurinn notar mikið magn af natríumhýdroxíði sem ódýran, sterkan basa. Natríumklóríð er upphafsefnið fyrir framleiðslu á NaOH vegna þess að NaCl er ódýrara upphafsefni en oxíðið. Natríumhýdroxíð er eitt af 10 mest framleiddu efnum í Bandaríkjunum og framleiðslan fór nánast eingöngu fram með rafgreiningu á natríumklóríðlausnum. Þetta ferli er kallað [[term:klór-alkalíferlið|term-00008]] og er aðalaðferðin til að framleiða klór.
 
 <!-- SEG:m68837:para:fs-idp17934448 -->
-Natríumhýdroxíð er jónaefni og bráðnar án þess að brotna niður. Það er mjög auðleyst í vatni, gefur frá sér mikinn hita og myndar mjög basískar lausnir: 40 grömm af natríumhýdroxíði leysast upp í aðeins 60 grömmum af vatni við 25 °C. Natríumhýdroxíð er notað við framleiðslu annarra natríumsambanda og til að hlutleysa súrar lausnir við framleiðslu annarra efna eins og jarðolíuafurða og fjölliða.
+Natríumhýdroxíð er jónískt efnasamband og bráðnar án þess að brotna niður. Það er mjög leysanlegt í vatni, gefur frá sér mikið magn af hita og myndar mjög basískar lausnir: 40 grömm af natríumhýdroxíði leysast upp í aðeins 60 grömmum af vatni við 25 °C. Natríumhýdroxíð er notað við framleiðslu á öðrum natríumsamböndum og til að hlutleysa súrar lausnir við framleiðslu á öðrum efnum eins og jarðolíuefnum og fjölliðum.
 
 <!-- SEG:m68837:para:fs-idm33972064 -->
-Mörg not hýdroxíða felast í hlutleysingu sýra (eins og sýrubindandi lyfið sem sýnt er í [[xref:CNX_Chem_18_09_CaOH2]]) og í framleiðslu oxíða með hitasundrun. Vatnskennd lausn magnesíumhýdroxíðs er sýrubindandi lyfið Magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr efnahvarfi vatns við kalsíumoxíð sem framleitt er með sundrun kalksteins, CaCO[[sub:3]]), lágs kostnaðar og virkni er kalsíumhýdroxíð mikið notað í iðnaði þar sem þörf er á ódýrum, sterkum basa. Efnahvarf hýdroxíða við viðeigandi sýrur er einnig notað til að framleiða sölt.
+Mörg not hýdroxíða eru til hlutleysingar sýra (eins og sýrubindandi lyfið sem sýnt er í [[xref:CNX_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi vatns við kalsíumoxíð sem framleitt er með niðurbroti kalksteins, CaCO[[sub:3]]), lágs kostnaðar og virkni, er kalsíumhýdroxíð mikið notað í iðnaði þar sem þörf er á ódýrum, sterkum basa. Hvarf hýdroxíða við viðeigandi sýrur er einnig notað til að framleiða sölt.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_CaOH2-caption -->
-Kalsíumkarbónat, CaCO[[sub:3]], er hægt að neyta í formi sýrubindandi lyfs til að hlutleysa áhrif sýru í maganum. (Heimild: „Midnightcomm“/Wikimedia Commons)
+Kalsíumkarbónat, CaCO[[sub:3]], er hægt að neyta í formi sýrubindandi lyfs til að hlutleysa áhrif sýru í maganum. (heimild: „Midnightcomm“/Wikimedia Commons)
+
+<!-- SEG:m68837:alt:fs-idm29289888-alt -->
+Ljósmynd sýnir flösku sem liggur á hliðinni með orðunum „Sýrubindandi töflur“ skrifuðum á framhliðina. Fjöldi litríkra, fastra diska veltur út úr opi flöskunnar.
 
 <!-- SEG:m68837:note-title:fs-idp2234912-title -->
 Klór-alkalíferlið
 
 <!-- SEG:m68837:para:fs-idp34680416 -->
-Þrátt fyrir að þau séu efnafræðilega mjög ólík eru tengsl milli klórs og natríumhýdroxíðs vegna þess að til er mikilvægt rafefnafræðilegt ferli sem framleiðir þessi tvö efni samtímis. Ferlið, sem er þekkt sem klór-alkalíferlið, nýtir natríumklóríð sem finnst í stórum námum víða um heim. Þetta er rafefnafræðilegt ferli til að oxa klóríðjón í klór og mynda natríumhýdroxíð.
+Þrátt fyrir að þau séu efnafræðilega mjög ólík, eru tengsl milli klórs og natríumhýdroxíðs vegna þess að mikilvægt rafefnafræðilegt ferli framleiðir þessi tvö efni samtímis. Ferlið, sem er þekkt sem klór-alkalíferlið, nýtir natríumklóríð, sem finnst í stórum námum víða um heim. Þetta er rafefnafræðilegt ferli til að oxa klóríðjón í klór og mynda natríumhýdroxíð.
 
 <!-- SEG:m68837:para:fs-idp37058176 -->
-Með því að leiða jafnstraum í gegnum lausn af NaCl færast klóríðjónirnar að jákvæða raftroðinu þar sem oxun í klórgas á sér stað þegar jónin gefur frá sér rafeind til raftroðsins:
+Þegar jafnstraumur er leiddur í gegnum lausn af NaCl færast klóríðjónirnar að jákvæða rafskautinu þar sem oxun í klórgas á sér stað þegar jónin gefur frá sér rafeind til rafskautsins:
 
 <!-- SEG:m68837:para:fs-idm85311152 -->
-Rafeindirnar sem myndast fara í gegnum ytri rafrásina að neikvæða raftroðinu. Þrátt fyrir að jákvæðu natríumjónirnar færist í átt að þessu neikvæða raftroði myndast ekki málmkennt natríum vegna þess að of erfitt er að afoxa natríumjónir við þær aðstæður sem notaðar eru. (Munið að málmkennt natríum er nógu virkt til að hvarfast við vatn og myndi því, jafnvel þótt það myndaðist, strax hvarfast við vatn og mynda natríumjónir aftur.) Þess í stað taka vatnssameindir upp rafeindir frá raftroðinu og gangast undir afoxun til að mynda vetnisgas og hýdroxíðjónir:
+Rafeindirnar sem myndast fara í gegnum ytri rafrásina að neikvæða rafskautinu. Þrátt fyrir að jákvæðu natríumjónirnar færist í átt að þessu neikvæða rafskauti, myndast ekki málmkennt natríum vegna þess að það er of erfitt að afoxa natríumjónir við þær aðstæður sem notaðar eru. (Munið að málmkennt natríum er nógu hvarfgjarnt til að hvarfast við vatn og myndi því, jafnvel þótt það myndaðist, strax hvarfast við vatn og mynda aftur natríumjónir.) Þess í stað taka vatnssameindir upp rafeindir frá rafskautinu og gangast undir afoxun til að mynda vetnisgas og hýdroxíðjónir:
 
 <!-- SEG:m68837:para:fs-idm56502208 -->
-Heildarárangurinn er umbreyting vatnslausnar NaCl í vatnslausn af NaOH, Cl[[sub:2]]-gasi og H[[sub:2]]-gasi:
+Heildarniðurstaðan er umbreyting vatnslausnar af NaCl í vatnslausn af NaOH, Cl[[sub:2]]-gasi og H[[sub:2]]-gasi:
 
 <!-- SEG:m68837:para:fs-idp94807728 -->
-Efnasambönd hliðarhópa málma með súrefni falla í þrjá flokka: (1) {{term}}oxíð{{/term}}, sem innihalda oxíðjónir, O[[sup:2−]]; (2) {{term}}peroxíð{{/term}}, sem innihalda peroxíðjónir, [[MATH:5]] með súrefnis-súrefnis samgildu eintengi og mjög takmarkaðan fjölda {{term}}súperoxíða{{/term}}, sem innihalda súperoxíðjónir, [[MATH:6]] með súrefnis-súrefnis samgildum tengjum sem hafa tengigráðu [[MATH:7]] Auk þess eru til (3) {{term}}hýdroxíð{{/term}}, sem innihalda hýdroxíðjónir, OH[[sup:−]]. Allir hliðarhópa málmar mynda oxíð. Sumir málmar í hópi 2 mynda einnig peroxíð, MO[[sub:2]], og málmar í hópi 1 mynda einnig peroxíð, M[[sub:2]]O[[sub:2]], og súperoxíð, MO[[sub:2]].
+Efnasambönd aðalflokkamálma með súrefni falla í þrjá flokka: (1) [[term:oxíð|term-00003]], sem innihalda oxíðjónir, O[[sup:2−]]; (2) [[term:peroxíð|term-00004]], sem innihalda peroxíðjónir, [[MATH:5]] með súrefni-súrefni samgildu eintengi og mjög takmarkaðan fjölda [[term:súperoxíða|term-00005]], sem innihalda súperoxíðjónir, [[MATH:6]] með súrefni-súrefni samgildum tengjum sem hafa tengisröðina [[MATH:7]] Auk þess eru til (3) [[term:hýdroxíð|term-00006]], sem innihalda hýdroxíðjónir, OH[[sup:−]]. Allir aðalflokkamálmar mynda oxíð. Sumir málmar í flokki 2 mynda einnig peroxíð, MO[[sub:2]], og málmar í flokki 1 mynda einnig peroxíð, M[[sub:2]]O[[sub:2]], og súperoxíð, MO[[sub:2]].
 
 <!-- SEG:m68837:title:fs-idp162832832-title -->
 Súrefnissambönd málmleysingja
@@ -203,314 +218,349 @@ Súrefnissambönd málmleysingja
 Súrefnissambönd brennisteins
 
 <!-- SEG:m68837:para:fs-idm62637712 -->
-Tvö algengustu oxíð brennisteins eru brennisteinsdíoxíð, SO[[sub:2]], og brennisteinstríoxíð, SO[[sub:3]]. Lyktin af brennandi brennisteini kemur frá brennisteinsdíoxíði. Brennisteinsdíoxíð, sýnt í [[xref:CNX_Chem_18_09_Sulfrdiox]], finnst í eldfjallagösum og í andrúmsloftinu nálægt iðjuverum sem brenna eldsneyti sem inniheldur brennisteinssambönd.
+Tvö algengustu oxíð brennisteins eru brennisteinsdíoxíð, SO[[sub:2]], og brennisteinstríoxíð, SO[[sub:3]]. Lyktin af brennandi brennisteini kemur frá brennisteinsdíoxíði. Brennisteinsdíoxíð, sem sýnt er í [[xref:CNX_Chem_18_09_Sulfrdiox]], finnst í eldfjallagösum og í andrúmsloftinu nálægt iðjuverum sem brenna eldsneyti sem inniheldur brennisteinssambönd.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrdiox-caption -->
-Þessi mynd sýnir sameindabyggingu (til vinstri) og vokmyndir (til hægri) brennisteinsdíoxíðs.
+Þessi mynd sýnir sameindabyggingu (vinstri) og samhljómaform (hægri) brennisteinsdíoxíðs.
+
+<!-- SEG:m68837:alt:fs-idp19907360-alt -->
+Kúlu-og-prikalíkan sýnir gult atóm merkt „S“ sem er tengt rauðu atómi merktu „O“ á báðum hliðum. Sýndar eru tvær Lewis-myndir sem eru tengdar með tvíhöfða ör. Vinstri Lewis-myndin sýnir brennisteinsatóm með eitt rafeindapar sem er tvítengt vinstra megin við súrefnisatóm með tvö rafeindapör og eintengt hægra megin við súrefnisatóm með þrjú rafeindapör. Hægri Lewis-myndin er spegilmynd af myndinni vinstra megin.
 
 <!-- SEG:m68837:para:fs-idm30601216 -->
-Iðnaðarframleiðsla á brennisteinsdíoxíði fer fram annaðhvort með því að brenna brennisteini eða með því að glæða súlfíðgrýti eins og ZnS, FeS[[sub:2]] og Cu[[sub:2]]S í lofti. (Glæðing, sem myndar málmoxíðið, er fyrsta skrefið í aðskilnaði margra málma frá grýti sínu.) Þægileg aðferð til að framleiða brennisteinsdíoxíð á rannsóknarstofu er með verkun sterkrar sýru á annaðhvort súlfítsölt sem innihalda [[MATH:8]] jónina eða vetnissúlfítsölt sem innihalda [[MATH:9]] Brennisteinssýrlingur, H[[sub:2]]SO[[sub:3]], myndast fyrst en sundrast fljótt í brennisteinsdíoxíð og vatn. Brennisteinsdíoxíð myndast einnig þegar mörg afoxunarefni hvarfast við heita, þétta brennisteinssýru. Brennisteinstríoxíð myndast hægt þegar brennisteinsdíoxíð og súrefni eru hituð saman og efnahvarfið er útvermið:
+Brennisteinsdíoxíð er framleitt í iðnaði með því að brenna brennisteini eða rista súlfíðgrýti eins og ZnS, FeS[[sub:2]] og Cu[[sub:2]]S í lofti. (Ristun, sem myndar málmoxíðið, er fyrsta skrefið í aðskilnaði margra málma frá grýti þeirra.) Þægileg aðferð til að útbúa brennisteinsdíoxíð á rannsóknarstofu er með verkun sterkrar sýru á annaðhvort súlfítsölt sem innihalda [[MATH:8]] jónina eða vetnissúlfítsölt sem innihalda [[MATH:9]] Brennisteinssýrlingur, H[[sub:2]]SO[[sub:3]], myndast fyrst en brotnar fljótt niður í brennisteinsdíoxíð og vatn. Brennisteinsdíoxíð myndast einnig þegar mörg afoxunarefni hvarfast við heita, megna brennisteinssýru. Brennisteinstríoxíð myndast hægt þegar brennisteinsdíoxíð og súrefni eru hituð saman og hvarfið er útvermið:
 
 <!-- SEG:m68837:para:fs-idp54699968 -->
-Brennisteinsdíoxíð er gas við stofuhita og SO[[sub:2]] sameindin er bogin. Brennisteinstríoxíð bráðnar við 17 °C og sýður við 43 °C. Í gufufasa eru sameindir þess stakar SO[[sub:3]] einingar (sýndar í [[xref:CNX_Chem_18_09_Sulfrtriox]]), en í föstu formi er SO[[sub:3]] til í nokkrum fjölliðuformum.
+Brennisteinsdíoxíð er gas við stofuhita og SO[[sub:2]] sameindin er bogin. Brennisteinstríoxíð bráðnar við 17 °C og sýður við 43 °C. Í gufuformi eru sameindir þess stakar SO[[sub:3]] einingar (sýndar í [[xref:CNX_Chem_18_09_Sulfrtriox]]), en í föstu formi er SO[[sub:3]] til í nokkrum fjölliðuformum.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrtriox-caption -->
-Þessi mynd sýnir byggingu (efst) brennisteinstríoxíðs í gasfasa og vokmyndir þess (neðst).
+Þessi mynd sýnir byggingu (efst) brennisteinstríoxíðs í gasfasa og samgildisform þess (neðst).
+
+<!-- SEG:m68837:alt:fs-idp55786576-alt -->
+Kúlu-og-prikalíkan sýnir gult atóm merkt „S“ tengt þremur rauðum atómum merktum „O“. Þrjár Lewis-myndir eru sýndar tengdar með tvíhöfða örvum. Vinstri Lewis-myndin sýnir brennisteinsatóm sem er eintengt neðst til vinstri og hægri við súrefnisatóm með þremur rafeindapörum hvort. Brennisteinsatómið er einnig tvítengt fyrir ofan við súrefnisatóm með tveimur rafeindapörum. Mið- og hægri Lewis-myndirnar eru eins og sú vinstri, en sýna tvítengda súrefnið í neðri vinstri og neðri hægri stöðu, í sömu röð.
 
 <!-- SEG:m68837:para:fs-idm30148720 -->
-Brennisteinsoxíðin hvarfast sem Lewis-sýrur við mörg oxíð og hýdroxíð í Lewis-sýru-basa efnahvörfum, með myndun {{term}}súlfíta{{/term}} eða {{term}}vetnissúlfíta{{/term}}, og {{term}}súlfata{{/term}} eða {{term}}vetnissúlfata{{/term}}, í sömu röð.
+Brennisteinsoxíðin hvarfast sem Lewis-sýrur við mörg oxíð og hýdroxíð í Lewis-sýru-basa hvörfum, með myndun [[term:súlfíta|term-00009]] eða [[term:vetnissúlfíta|term-00010]], og [[term:súlfata|term-00011]] eða [[term:vetnissúlfata|term-00012]], í sömu röð.
 
 <!-- SEG:m68837:title:fs-idp152271648-title -->
-Súrefnissambönd halógena
+Súrefnisefnasambönd halógena
 
 <!-- SEG:m68837:para:fs-idm65795712 -->
-Halógenar hvarfast ekki beint við súrefni, en hægt er að framleiða tvíundar súrefnis-halógen efnasambönd með efnahvörfum halógena við súrefnisinnihaldandi efnasambönd. Súrefnissambönd með klór, brómi og joði eru oxíð vegna þess að súrefni er rafeindadrægara frumefnið í þessum efnasamböndum. Aftur á móti eru efnasambönd flúors með súrefni flúoríð vegna þess að flúor er rafeindadrægara frumefnið.<!-- SEG:m68837:para:fs-idp159291200 -->
-Sem flokkur eru oxíð afar hvarfgjörn og óstöðug og efnafræði þeirra hefur litla hagnýta þýðingu. Díklóroxíð, formlega kallað díklórmónoxíð, og klórdíoxíð, bæði sýnd á [[xref:CNX_Chem_18_09_Cl2OClO2]], eru einu efnasamböndin sem hafa viðskiptalega þýðingu. Þau eru mikilvæg sem bleikiefni (til notkunar með pappírsmassa og hveiti) og til vatnshreinsunar.
+Halógenarnir hvarfast ekki beint við súrefni, en það er hægt að útbúa tvíundar súrefnis-halógen efnasambönd með hvörfum halógenanna við súrefnisinnihaldandi efnasambönd. Súrefnisefnasambönd með klór, brómi og joði eru oxíð vegna þess að súrefni er rafneikvæðara frumefnið í þessum efnasamböndum. Á hinn bóginn eru flúorefnasambönd með súrefni flúoríð vegna þess að flúor er rafneikvæðara frumefnið.
+
+<!-- SEG:m68837:para:fs-idp159291200 -->
+Sem flokkur eru oxíðin afar hvarfgjörn og óstöðug og efnafræði þeirra hefur litla hagnýta þýðingu. Díklóroxíð, formlega kallað díklórmonoxíð, og klórdíoxíð, bæði sýnd í [[xref:CNX_Chem_18_09_Cl2OClO2]], eru einu efnasamböndin sem hafa viðskiptalegt mikilvægi. Þau eru mikilvæg sem bleikiefni (til notkunar með pappírsmassa og hveiti) og til vatnshreinsunar.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Cl2OClO2-caption -->
 Þessi mynd sýnir byggingu (a) Cl[[sub:2]]O og (b) ClO[[sub:2]] sameindanna.
 
+<!-- SEG:m68837:alt:fs-idm47776480-alt -->
+Tvö rúmfyllilíkön eru sýnd og merkt „a“ og „b“. Líkan a sýnir rautt atóm merkt „O“ tengt tveimur grænum atómum merktum „Cl“ í v-lögun. Líkan b sýnir grænt atóm merkt „Cl“ tengt tveimur rauðum atómum merktum „O“ í v-lögun.
+
 <!-- SEG:m68837:para:fs-idm14503248 -->
-Flestir málmleysingjar hvarfast við súrefni og mynda málmleysingjaoxíð. Ýmis oxíð geta myndast, allt eftir tiltækum oxunarástöndum frumefnisins. Flúor getur bundist súrefni og myndað flúoríð eins og OF[[sub:2]], þar sem súrefnið hefur oxunarástandið 2+.
+Flestir málmleysingjar hvarfast við súrefni og mynda málmleysingjaoxíð. Mismunandi oxíð geta myndast eftir því hvaða oxunarástönd eru í boði fyrir frumefnið. Flúor mun sameinast súrefni og mynda flúoríð eins og OF[[sub:2]], þar sem súrefnið hefur 2+ oxunarástand.
 
 <!-- SEG:m68837:title:fs-idm32501488-title -->
-Súrefnissýrur málmleysingja og sölt þeirra
+Oxsýrur málmleysingja og sölt þeirra
 
 <!-- SEG:m68837:para:fs-idm58060176 -->
-Málmleysingjaoxíð mynda sýrur þegar þau hvarfast við vatn; þetta eru sýruanhýdríð. Súrefnisanjónirnar sem myndast geta myndað sölt með ýmsum málmjónum.
+Oxíð málmleysingja mynda sýrur þegar þau hvarfast við vatn; þetta eru sýruanhýdríð. Oxanjónirnar sem myndast geta myndað sölt með ýmsum málmjónum.
 
 <!-- SEG:m68837:title:fs-idp206112720-title -->
-Súrefnissýrur köfnunarefnis og sölt þeirra
+Oxsýrur köfnunarefnis og sölt þeirra
 
 <!-- SEG:m68837:para:fs-idm61348288 -->
-Köfnunarefnispentaoxíð, N[[sub:2]]O[[sub:5]], og NO[[sub:2]] hvarfast við vatn og mynda saltpéturssýru, HNO[[sub:3]]. Gullgerðarmenn þekktu saltpéturssýru (sýnd á [[xref:CNX_Chem_18_09_HNO3]]) allt frá áttundu öld sem [[i:aqua fortis]] (sem þýðir „sterkt vatn“). Sýran var gagnleg við að skilja gull frá silfri því hún leysir upp silfur en ekki gull. Örlítið magn saltpéturssýru kemur fyrir í andrúmsloftinu eftir þrumuveður og sölt hennar eru víða í náttúrunni. Gríðarlegar námur af Chile-saltpétri, NaNO[[sub:3]], eru á eyðimerkursvæðinu nálægt landamærum Chile og Perú. Bengal-saltpétur, KNO[[sub:3]], finnst á Indlandi og í öðrum löndum Austurlanda fjær.
+Köfnunarefnispentoxíð, N[[sub:2]]O[[sub:5]], og NO[[sub:2]] hvarfast við vatn og mynda saltpéturssýru, HNO[[sub:3]]. Gullgerðarmenn, allt frá áttundu öld, þekktu saltpéturssýru (sýnd í [[xref:CNX_Chem_18_09_HNO3]]) sem [[i:aqua fortis]] (sem þýðir „sterkt vatn“). Sýran var gagnleg við aðskilnað gulls frá silfri vegna þess að hún leysir upp silfur en ekki gull. Leifar af saltpéturssýru koma fyrir í andrúmsloftinu eftir þrumuveður og sölt hennar eru víða í náttúrunni. Gríðarlegar birgðir af Chilesaltpétri, NaNO[[sub:3]], eru á eyðimerkursvæðinu nálægt landamærum Chile og Perú. Bengalsaltpétur, KNO[[sub:3]], finnst á Indlandi og í öðrum löndum Austurlanda fjær.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_HNO3-caption -->
-Þessi mynd sýnir sameindabyggingu (vinstri) saltpéturssýru, HNO[[sub:3]], og bergmálsform hennar (hægri).
+Þessi mynd sýnir sameindabyggingu (vinstri) saltpéturssýru, HNO[[sub:3]] og samgildisform hennar (hægri).
+
+<!-- SEG:m68837:alt:fs-idp86575744-alt -->
+Kúlulíkan sýnir blátt atóm merkt „N“ tengt á þremur hliðum við rauð atóm merkt „O“. Eitt af rauðu atómunum er tengt við hvítt atóm merkt „H“. Par af Lewis-myndum er sýnt tengt með tvíhöfða ör. Vinstri Lewis-myndin sýnir súrefnisatóm með tvö rafeindapör sem er eintengt vinstra megin við vetnisatóm og hægra megin við nituratóm. Nituratóm er síðan eintengt við súrefnisatóm með þremur rafeindapörum í efri stöðu og tvítengt við súrefnisatóm með tveimur rafeindapörum í neðri stöðu. Hægri Lewis-myndin er sú sama og sú vinstri, en tvítengda súrefnið er í efri stöðu og eintengda súrefnið er í neðri stöðu miðað við nituratóm.
 
 <!-- SEG:m68837:para:fs-idp180830096 -->
-Á rannsóknarstofu er hægt að framleiða saltpéturssýru með því að hita nítratsalt (eins og natríum- eða kalíumnítrat) með þéttri brennisteinssýru:
+Á rannsóknarstofu er hægt að framleiða saltpéturssýru með því að hita nítratsalt (eins og natríum- eða kalíumnítrat) með megnri brennisteinssýru:
 
 <!-- SEG:m68837:para:fs-idp16395920 -->
-{{term}}Ostwald-ferlið{{/term}} er iðnaðaraðferðin til að framleiða saltpéturssýru. Þetta ferli felur í sér oxun ammoníaks í köfnunarefnismónoxíð, NO; oxun köfnunarefnismónoxíðs í köfnunarefnisdíoxíð, NO[[sub:2]]; og frekari oxun og vötnun köfnunarefnisdíoxíðs til að mynda saltpéturssýru:
+[[term:Ostwald-ferlið|term-00013]] er iðnaðaraðferðin til að framleiða saltpéturssýru. Þetta ferli felur í sér oxun ammóníaks í nituroxíð, NO; oxun nituroxíðs í niturdíoxíð, NO[[sub:2]]; og frekari oxun og vötnun niturdíoxíðs til að mynda saltpéturssýru:
 
 <!-- SEG:m68837:para:fs-idp27580736 -->
 Eða
 
 <!-- SEG:m68837:para:fs-idm385968 -->
-Hrein saltpéturssýra er litlaus vökvi. Hún er þó oft gul eða brún á litinn vegna þess að NO[[sub:2]] myndast þegar sýran brotnar niður. Saltpéturssýra er stöðug í vatnslausn; lausnir sem innihalda 68% af sýrunni eru fáanlegar í verslunum sem þétt saltpéturssýra. Hún er bæði sterkt oxunarefni og sterk sýra.
+Hrein saltpéturssýra er litlaus vökvi. Hún er þó oft gul eða brún á litinn vegna þess að NO[[sub:2]] myndast þegar sýran brotnar niður. Saltpéturssýra er stöðug í vatnslausn; lausnir sem innihalda 68% af sýrunni eru fáanlegar í verslunum sem megn saltpéturssýra. Hún er bæði sterkur oxari og sterk sýra.
 
 <!-- SEG:m68837:para:fs-idp47264016 -->
-Virkni saltpéturssýru á málm framleiðir sjaldan H[[sub:2]] (með afoxun H[[sup:+]]) í meira en litlu magni. Þess í stað á sér stað afoxun köfnunarefnis. Myndefnin sem myndast fara eftir styrk sýrunnar, hvarfgirni málmsins og hitastigi. Venjulega myndast blanda af nítrötum, köfnunarefnisoxíðum og ýmsum afoxunarafurðum. Minna hvarfgjarnir málmar eins og kopar, silfur og blý afoxa þétta saltpéturssýru aðallega í köfnunarefnisdíoxíð. Hvarf þynntrar saltpéturssýru við kopar myndar NO. Í báðum tilvikum kristallast nítratsölt málmanna við uppgufun lausnanna sem myndast.
+Verkun saltpéturssýru á málm framleiðir sjaldan H[[sub:2]] (með afoxun H[[sup:+]]) í meira en litlu magni. Þess í stað á sér stað afoxun niturs. Myndefnin sem myndast fara eftir styrk sýrunnar, hvarfgirni málmsins og hitastigi. Venjulega myndast blanda af nítrötum, nituroxíðum og ýmsum afoxunarafurðum. Minna hvarfgjarnir málmar eins og kopar, silfur og blý afoxa megna saltpéturssýru aðallega í niturdíoxíð. Hvarf þynntrar saltpéturssýru við kopar myndar NO. Í báðum tilvikum kristallast nítratsölt málmanna við uppgufun lausnanna sem myndast.
 
 <!-- SEG:m68837:para:fs-idm58177632 -->
-Málmleysingjar, eins og brennisteinn, kolefni, joð og fosfór, oxast með þéttri saltpéturssýru í oxíð sín eða súrefnissýrur, með myndun NO[[sub:2]]:
+Málmleysingjar, eins og brennisteinn, kolefni, joð og fosfór, oxast með megnri saltpéturssýru í oxíð sín eða oxósýrur, með myndun NO[[sub:2]]:
 
 <!-- SEG:m68837:para:fs-idm7528336 -->
-Saltpéturssýra oxar mörg efnasambönd; til dæmis oxar þétt saltpéturssýra auðveldlega saltsýru í klór og klórdíoxíð. Blanda af einum hluta þéttrar saltpéturssýru og þremur hlutum þéttrar saltsýru (kölluð [[i:aqua regia]], sem þýðir kóngavatn) hvarfast kröftuglega við málma. Þessi blanda er sérstaklega gagnleg til að leysa upp gull, platínu og aðra málma sem erfiðara er að oxa en vetni. Einfölduð jafna til að tákna verkun [[i:aqua regia]] á gull er:
+Saltpéturssýra oxar mörg efnasambönd; til dæmis oxar megn saltpéturssýra auðveldlega saltsýru í klór og klórdíoxíð. Blanda af einum hluta megnrar saltpéturssýru og þremur hlutum megnrar saltsýru (kölluð [[i:kóngavatn]], sem þýðir konunglegt vatn) hvarfast kröftuglega við málma. Þessi blanda er sérstaklega gagnleg til að leysa upp gull, platínu og aðra málma sem er erfiðara að oxa en vetni. Einfölduð jafna til að tákna verkun [[i:kóngavatns]] á gull er:
 
 <!-- SEG:m68837:para:fs-idp621936 -->
-Þrátt fyrir að gull sé almennt lítið hvarfgjarnt geturðu horft á [[link:video|http://openstax.org/l/16gold]] af flókinni blöndu efnasambanda sem eru til staðar í [[i:aqua regia]] leysa það upp í lausn.
+Þótt gull sé almennt lítið hvarfgjarnt geturðu horft á [[link:myndband|http://openstax.org/l/16gold]] af flókinni blöndu efnasambanda sem eru til staðar í [[i:kóngavatni]] leysa það upp í lausn.
 
 <!-- SEG:m68837:para:fs-idm29734944 -->
-{{term}}Nítröt{{/term}}, sölt saltpéturssýru, myndast þegar málmar, oxíð, hýdroxíð eða karbónöt hvarfast við saltpéturssýru. Flest nítröt eru leysanleg í vatni; ein af mikilvægustu notkunum saltpéturssýru er einmitt að búa til leysanleg málmnítröt.
+[[term:Nítröt|term-00014]], sölt saltpéturssýru, myndast þegar málmar, oxíð, hýdroxíð eða karbónöt hvarfast við saltpéturssýru. Flest nítröt eru leysanleg í vatni; ein af mikilvægustu notum saltpéturssýru er einmitt að búa til leysanleg málmnítröt.
 
 <!-- SEG:m68837:para:fs-idp61633936 -->
-Saltpéturssýra er mikið notuð á rannsóknarstofum og í efnaiðnaði sem sterk sýra og sterkt oxunarefni. Hún er mikilvæg við framleiðslu á sprengiefnum, litarefnum, plasti og lyfjum. Sölt saltpéturssýru (nítröt) eru verðmæt sem áburður. Byssupúður er blanda af kalíumnítrati, brennisteini og viðarkolum.
+Saltpéturssýra er mikið notuð á rannsóknarstofum og í efnaiðnaði sem sterk sýra og sterkur oxari. Hún er mikilvæg við framleiðslu á sprengiefnum, litarefnum, plasti og lyfjum. Sölt saltpéturssýru (nítröt) eru verðmæt sem áburður. Byssupúður er blanda af kalíumnítrati, brennisteini og viðarkolum.
 
 <!-- SEG:m68837:para:fs-idm58939888 -->
 Hvarf N[[sub:2]]O[[sub:3]] við vatn gefur fölbláa lausn af saltpéturssýrlingi, HNO[[sub:2]]. Hins vegar er auðveldara að búa til HNO[[sub:2]] (sýnd á [[xref:CNX_Chem_18_09_NitrosAcid]]) með því að bæta sýru við nítrítlausn; saltpéturssýrlingur er veik sýra, þannig að nítrítjónin er basisk í vatnslausn:
 
 <!-- SEG:m68837:para:fs-idm29214096 -->
-Saltpéturssýrlingur er mjög óstöðugur og er aðeins til í lausn. Hann sundrast hægt við stofuhita (hratt við hitun) í saltpéturssýru og nituroxíð. Saltpéturssýrlingur er virkur oxari með sterkum afoxurum og sterkir oxarar oxa hann í saltpéturssýru.
+Saltpéturssýrlingur er mjög óstöðugur og er aðeins til í lausn. Hann óhlutfallaðist hægt við stofuhita (hratt þegar hann er hitaður) í saltpéturssýru og nituroxíð. Saltpéturssýrlingur er virkur oxari með sterkum afoxurum og sterkir oxarar oxa hann í saltpéturssýru.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_NitrosAcid-caption -->
-Þessi mynd sýnir sameindabyggingu saltpéturssýrlings, HNO[[sub:2]].
+Þessi mynd sýnir sameindabyggingu saltpéturssýrlingssýru, HNO[[sub:2]].
+
+<!-- SEG:m68837:alt:fs-idm53671040-alt -->
+Kúlulíkan sýnir blátt atóm merkt „N“ tengt á tveimur hliðum við rauð atóm merkt „O“. Eitt af rauðu atómunum er tengt við hvítt atóm merkt „H“.
 
 <!-- SEG:m68837:para:fs-idp79466448 -->
-Natríumnítrít, NaNO[[sub:2]], er aukefni í kjötvörum eins og pylsum og áleggi. Nítrítjónin hefur tvö hlutverk. Hún takmarkar vöxt baktería sem geta valdið matareitrun og hún lengir þann tíma sem kjötið heldur rauðum lit sínum. Notkun natríumnítríts í kjötvörur er umdeild vegna þess að saltpéturssýrlingur hvarfast við ákveðin lífræn efnasambönd og myndar flokk efnasambanda sem kallast nítrósamín. Nítrósamín valda krabbameini í tilraunadýrum. Þetta hefur orðið til þess að FDA hefur takmarkað magn NaNO[[sub:2]] í matvælum.
+Natríumnítrít, NaNO[[sub:2]], er aukefni í kjötvörur eins og pylsur og álegg. Nítrítjónin hefur tvö hlutverk. Hún takmarkar vöxt baktería sem geta valdið matareitrun og hún lengir þann tíma sem kjötið heldur rauða litnum sínum. Notkun natríumnítríts í kjötvörur er umdeild vegna þess að saltpéturssýrlingur hvarfast við ákveðin lífræn efnasambönd og myndar flokk efnasambanda sem kallast nítrósamín. Nítrósamín valda krabbameini í tilraunadýrum. Þetta hefur fengið Matvælastofnun Bandaríkjanna (FDA) til að takmarka magn NaNO[[sub:2]] í matvælum.
 
 <!-- SEG:m68837:para:fs-idp21205840 -->
-Nítrít eru mun stöðugri en sýran, en nítrít, líkt og nítröt, geta sprungið. Nítrít, líkt og nítröt, eru einnig leysanleg í vatni (AgNO[[sub:2]] er aðeins örlítið leysanlegt).
+Nítrítin eru mun stöðugri en sýran, en nítrít, eins og nítröt, geta sprungið. Nítrít, eins og nítröt, eru einnig leysanleg í vatni (AgNO[[sub:2]] er aðeins lítið leysanlegt).
 
 <!-- SEG:m68837:title:fs-idp21560544-title -->
 Oxósýrur og sölt fosfórs
 
 <!-- SEG:m68837:para:fs-idp99137072 -->
-Hrein ortófosfórsýra, H[[sub:3]]PO[[sub:4]] (sýnd á [[xref:CNX_Chem_18_09_Phosphate]]), myndar litlausa, vökvasækna kristalla sem bráðna við 42 °C. Algengt heiti þessa efnasambands er fosfórsýra og hún er fáanleg í verslunum sem seigfljótandi 82% lausn, þekkt sem sírópskennd fosfórsýra. Eitt notkunarsvið fosfórsýru er sem aukefni í mörgum gosdrykkjum.
+Hrein ortófosfórsýra, H[[sub:3]]PO[[sub:4]] (sýnd á [[xref:CNX_Chem_18_09_Phosphate]]), myndar litlausa, vatnsdræga kristalla sem bráðna við 42 °C. Algengt heiti þessa efnasambands er fosfórsýra og hún er fáanleg í verslunum sem seigfljótandi 82% lausn sem kallast sírópskennd fosfórsýra. Eitt notkunarsvið fosfórsýru er sem aukefni í marga gosdrykki.
 
 <!-- SEG:m68837:para:fs-idm47466240 -->
-Ein iðnaðaraðferð til að framleiða ortófosfórsýru er að meðhöndla kalsíumfosfatgrjót með þéttri brennisteinssýru:
+Ein iðnaðaraðferð til að framleiða ortófosfórsýru er að meðhöndla kalsíumfosfatgrjót með megnum brennisteinssýru:
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Phosphate-caption -->
-Ortófosfórsýra, H[[sub:3]]PO[[sub:4]], er litlaus þegar hún er hrein og hefur þessa sameindabyggingu (til vinstri) og Lewis-byggingu (til hægri).
+Ortófosfórsýra, H[[sub:3]]PO[[sub:4]], er litlaus þegar hún er hrein og hefur þessa sameindabyggingu (til vinstri) og Lewis-mynd (til hægri).
+
+<!-- SEG:m68837:alt:fs-idp207514928-alt -->
+Kúlulíkan sýnir appelsínugult atóm merkt „P“ sem er tengt á fjórum hliðum við rauð atóm merkt „O“. Þrjú af rauðu atómunum eru tengd við hvít atóm merkt „H“. Einnig er sýnd Lewis-mynd þar sem fosfóratóm er eintengt við fjögur súrefnisatóm, þar af þrjú með tvö rafeindapör og eitt með þrjú rafeindapör. Súrefnisatómin með tvö rafeindapör eru eintengd við vetnisatóm.
 
 <!-- SEG:m68837:para:fs-idm60228576 -->
-Þynning afurðanna með vatni, fylgt eftir með síun til að fjarlægja kalsíumsúlfat, gefur þynnta sýrulausn sem er menguð af kalsíumtvívetnisfosfati, Ca(H[[sub:2]]PO[[sub:4]])[[sub:2]], og öðrum efnasamböndum sem tengjast kalsíumfosfatgrjóti. Hægt er að framleiða hreina ortófosfórsýru með því að leysa P[[sub:4]]O[[sub:10]] upp í vatni.
+Þynning myndefnanna með vatni, fylgt eftir með síun til að fjarlægja kalsíumsúlfat, gefur þynnta sýrulausn sem er menguð af kalsíumtvívetnisfosfati, Ca(H[[sub:2]]PO[[sub:4]])[[sub:2]], og öðrum efnasamböndum sem tengjast kalsíumfosfatgrjóti. Hægt er að framleiða hreina ortófosfórsýru með því að leysa P[[sub:4]]O[[sub:10]] upp í vatni.
 
 <!-- SEG:m68837:para:fs-idp83768768 -->
-Hvarf vatns við P[[sub:4]]O[[sub:6]], PCl[[sub:3]], PBr[[sub:3]] eða PI[[sub:3]] myndar fosfórssýrling, H[[sub:3]]PO[[sub:3]] (sýndur á [[xref:CNX_Chem_18_09_PhosphAcid]]). Besta aðferðin til að framleiða hreinan fosfórssýrling er með vatnsrofi á fosfórtríklóríði:
+Verkun vatns á P[[sub:4]]O[[sub:6]], PCl[[sub:3]], PBr[[sub:3]] eða PI[[sub:3]] myndar fosfórssýrling, H[[sub:3]]PO[[sub:3]] (sýndur á [[xref:CNX_Chem_18_09_PhosphAcid]]). Besta aðferðin til að framleiða hreinan fosfórssýrling er með vatnsrofi á fosfórtríklóríði:
 
 <!-- SEG:m68837:para:fs-idp57027376 -->
-Með því að hita lausnina sem myndast er vetnisklóríðinu eytt út og vatnið gufar upp. Þegar nægilegt vatn hefur gufað upp myndast hvítir kristallar af fosfórssýrlingi við kælingu. Kristallarnir eru vökvasæknir, mjög leysanlegir í vatni og hafa hvítlaukslíka lykt. Fast efnið bráðnar við 70,1 °C og sundrast við um 200 °C með sundrun í fosfín og ortófosfórsýru:
+Með því að hita lausnina sem myndast er vetnisklóríðinu eytt út og vatn gufar upp. Þegar nægilegt vatn hefur gufað upp birtast hvítir kristallar af fosfórssýrlingi við kælingu. Kristallarnir eru vatnsdrægir, mjög vatnsleysanlegir og hafa lykt sem líkist hvítlaukslykt. Fast efnið bráðnar við 70,1 °C og sundrast við um 200 °C með óhverfisrofi í fosfín og ortófosfórsýru:
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_PhosphAcid-caption -->
-Í sameind fosfórssýrlings, H[[sub:3]]PO[[sub:3]], eru aðeins tvö vetnisatóm sem eru tengd súrefnisatómi sýr.
+Í sameind fosfórssýrlings, H[[sub:3]]PO[[sub:3]], eru aðeins tvö vetnisatóm tengd súrefnisatómi súr.
+
+<!-- SEG:m68837:alt:fs-idp206877648-alt -->
+Kúlulíkan sýnir appelsínugult atóm merkt „P“ sem er tengt á þremur hliðum við rauð atóm merkt „O“ og á hinni hliðinni við hvítt atóm merkt „H“. Tvö af rauðu atómunum eru tengd við hvít atóm merkt „H“. Einnig er sýnd Lewis-mynd þar sem fosfóratóm er eintengt við vetnisatóm og þrjú súrefnisatóm, þar af tvö með tvö rafeindapör og eintengi við vetnisatóm, og eitt með þrjú rafeindapör.
 
 <!-- SEG:m68837:para:fs-idm58353808 -->
-Fosfórssýrlingur myndar aðeins tvær raðir salta, sem innihalda tvívetnisfosfítjónina, [[MATH:10]], eða vetnisfosfatjónina, [[MATH:11]]. Ekki er hægt að skipta út þriðja vetnisatóminu þar sem það er ekki mjög súrt, enda er ekki auðvelt að jóna P-H tengið.
+Fosfórssýrlingur myndar aðeins tvær saltaraðir, sem innihalda annars vegar tvívetnisfosfítjónina, [[MATH:10]], eða vetnisfosfatjónina, [[MATH:11]]. Ekki er hægt að skipta út þriðja vetnisatóminu því það er ekki mjög súrt, þar sem ekki er auðvelt að jóna P-H tengið.
 
 <!-- SEG:m68837:title:fs-idm28426352-title -->
-Oxósýrur og sölt brennisteins
+Súrefnissýrur brennisteins og sölt
 
 <!-- SEG:m68837:para:fs-idm1538016 -->
-Framleiðsla brennisteinssýru, H[[sub:2]]SO[[sub:4]] (sýnd á [[xref:CNX_Chem_18_09_SulfrAcid]]), hefst með oxun brennisteins í brennisteinstríoxíð og síðan er tríoxíðinu breytt í brennisteinssýru. Hrein brennisteinssýra er litlaus, olíukenndur vökvi sem frýs við 10,5 °C. Hún rýkur við hitun vegna þess að sýran sundrast í vatn og brennisteinstríoxíð. Við hitun tapast meira brennisteinstríoxíð en vatn, þar til styrkur sýrunnar nær 98,33%. Sýra með þessum styrk sýður við 338 °C án frekari breytinga á styrk (lausn með fast suðumark) og er hin almenna þétta H[[sub:2]]SO[[sub:4]]. Magn brennisteinssýru sem notað er í iðnaði er meira en nokkurs annars framleidds efnasambands.
+Framleiðsla brennisteinssýru, H[[sub:2]]SO[[sub:4]] (sýnd á [[xref:CNX_Chem_18_09_SulfrAcid]]), hefst með oxun brennisteins í brennisteinstríoxíð og síðan er tríoxíðinu breytt í brennisteinssýru. Hrein brennisteinssýra er litlaus, olíukenndur vökvi sem frýs við 10,5 °C. Hún rýkur við hitun því sýran sundrast í vatn og brennisteinstríoxíð. Við hitun tapast meira brennisteinstríoxíð en vatn, þar til styrkur sýrunnar nær 98,33%. Sýra með þessum styrk sýður við 338 °C án frekari breytinga á styrk (lausn með fast suðumark) og er megn H[[sub:2]]SO[[sub:4]] sem fæst í verslunum. Magn brennisteinssýru sem notað er í iðnaði er meira en nokkurs annars framleidds efnasambands.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_SulfrAcid-caption -->
-Brennisteinssýra hefur fjórflötunga sameindabyggingu.
+Brennisteinssýra hefur ferflötunga sameindabyggingu.
+
+<!-- SEG:m68837:alt:fs-idm10377520-alt -->
+Kúlulíkan sýnir gult atóm merkt „S“ sem er tengt á fjórum hliðum við rauð atóm merkt „O“. Tvö af rauðu atómunum eru tengd við hvít atóm merkt „H“.
 
 <!-- SEG:m68837:para:fs-idp65301664 -->
-Hin mikla sækni þéttrar brennisteinssýru í vatn gerir hana að góðu þurrkefni. Hægt er að þurrka lofttegundir og óblandanlega vökva sem hvarfast ekki við sýruna með því að leiða þá í gegnum hana.
+Sterk sækni megnar brennisteinssýru í vatn gerir hana að góðu þurrkefni. Hægt er að þurrka lofttegundir og óblandanlega vökva sem hvarfast ekki við sýruna með því að leiða þá í gegnum hana.
 
 <!-- SEG:m68837:para:fs-idm32710656 -->
 Brennisteinssýra er sterk tvíróteindasýra sem jónast í tveimur þrepum. Í vatnslausn er fyrsta þrepið nánast fullkomið. Seinni jónunin er ekki nærri því eins fullkomin og [[MATH:12]] er meðalsterk sýra (um 25% jónuð í lausn af [[MATH:13]] salti: [[i:K]][[sub:a]] = 1,2 [[MATH:14]] 10[[sup:−2]]).
 
 <!-- SEG:m68837:para:fs-idm8078544 -->
-Þar sem brennisteinssýra er tvígild sýra myndar hún bæði súlföt, eins og Na[[sub:2]]SO[[sub:4]], og vetnissúlföt, eins og NaHSO[[sub:4]]. Flest súlföt eru vatnsleysanleg; hins vegar eru súlföt baríums, strontíums, kalsíums og blýs aðeins örlítið vatnsleysanleg.
+Þar sem brennisteinssýra er tvíróteindasýra myndar hún bæði súlföt, eins og Na[[sub:2]]SO[[sub:4]], og vetnissúlföt, eins og NaHSO[[sub:4]]. Flest súlföt eru leysanleg í vatni; hins vegar eru súlföt baríums, strontíums, kalsíums og blýs aðeins örlítið leysanleg í vatni.
 
 <!-- SEG:m68837:para:fs-idp20480 -->
-Meðal mikilvægra súlfata eru Na[[sub:2]]SO[[sub:4]]⋅10H[[sub:2]]O og Epsom-sölt, MgSO[[sub:4]]⋅7H[[sub:2]]O. Þar sem [[MATH:15]] jónin er sýra sýna vetnissúlföt, eins og NaHSO[[sub:4]], sýruhegðun og þetta efnasamband er aðalefnið í sumum hreinsiefnum fyrir heimili.
+Mikilvæg súlföt eru meðal annars Na[[sub:2]]SO[[sub:4]]⋅10H[[sub:2]]O og Epsom-sölt, MgSO[[sub:4]]⋅7H[[sub:2]]O. Þar sem [[MATH:15]] jónin er sýra sýna vetnissúlföt, eins og NaHSO[[sub:4]], sýrueiginleika og þetta efnasamband er aðalefnið í sumum hreinsiefnum fyrir heimili.
 
 <!-- SEG:m68837:para:fs-idp48096528 -->
-Heit, þétt brennisteinssýra er oxunarefni. Það fer eftir styrk hennar, hitastigi og styrk afoxunarefnisins, en brennisteinssýra oxar mörg efnasambönd og afoxast í leiðinni yfir í SO[[sub:2]], [[MATH:16]] [[MATH:17]] S, H[[sub:2]]S[[sub:,]] eða S[[sup:2−]].
+Heit, megn brennisteinssýra er oxari. Það fer eftir styrk hennar, hitastigi og styrk afoxarans, en brennisteinssýra oxar mörg efnasambönd og afoxast í leiðinni í SO[[sub:2]], [[MATH:16]] [[MATH:17]] S, H[[sub:2]]S[[sub:,]] eða S[[sup:2−]].
 
 <!-- SEG:m68837:para:fs-idm4279232 -->
-Brennisteinsdíoxíð leysist upp í vatni og myndar brennisteinssýrling, eins og við er að búast af oxíði málmleysingja. Brennisteinssýrlingur er óstöðugur og ekki er hægt að einangra vatnsfrían H[[sub:2]]SO[[sub:3]]. Við hitun á lausn brennisteinssýrlings losnar brennisteinsdíoxíð. Eins og aðrar tvígildar sýrur jónast brennisteinssýrlingur í tveimur skrefum: Vetnissúlfítjónin, [[MATH:18]] og súlfítjónin, [[MATH:19]] myndast. Brennisteinssýrlingur er meðalsterk sýra. Jónun er um 25% í fyrsta skrefi, en mun minni í öðru ([[i:K]][[sub:a1]] = 1,2 [[MATH:20]] 10[[sup:−2]] og [[i:K]][[sub:a2]] = 6,2 [[MATH:21]] 10[[sup:−8]]).
+Brennisteinsdíoxíð leysist upp í vatni og myndar lausn af brennisteinssýrlingi, eins og við er að búast af oxíði málmleysingja. Brennisteinssýrlingur er óstöðugur og ekki er hægt að einangra vatnsfrían H[[sub:2]]SO[[sub:3]]. Með því að hita lausn af brennisteinssýrlingi er brennisteinsdíoxíðið rekið út. Eins og aðrar tvíróteindasýrur jónast brennisteinssýrlingur í tveimur skrefum: Vetnissúlfítjónin, [[MATH:18]] og súlfítjónin, [[MATH:19]] myndast. Brennisteinssýrlingur er meðalsterk sýra. Jónun er um 25% í fyrsta þrepi, en mun minni í öðru ([[i:K]][[sub:a1]] = 1,2 [[MATH:20]] 10[[sup:−2]] og [[i:K]][[sub:a2]] = 6,2 [[MATH:21]] 10[[sup:−8]]).
 
 <!-- SEG:m68837:para:fs-idp145310240 -->
-Til að útbúa föst súlfít- og vetnissúlfítsölt er nauðsynlegt að bæta efnismagnsfræðilegu magni af basa við brennisteinssýrlingslausn og gufa síðan upp vatnið. Þessi sölt myndast einnig við hvarf SO[[sub:2]] við oxíð og hýdroxíð. Við hitun á föstu natríumvetnissúlfíti myndast natríumsúlfít, brennisteinsdíoxíð og vatn:
+Til að útbúa föst súlfít- og vetnissúlfítsölt er nauðsynlegt að bæta efnismagnsfræðilegu magni af basa í brennisteinssýrulausn og gufa síðan vatnið upp. Þessi sölt myndast einnig við hvarf SO[[sub:2]] við oxíð og hýdroxíð. Við hitun á föstu natríumvetnissúlfíti myndast natríumsúlfít, brennisteinsdíoxíð og vatn:
 
 <!-- SEG:m68837:para:fs-idp206115680 -->
-Sterk oxunarefni geta oxað brennisteinssýrling. Súrefni í loftinu oxar hann hægt yfir í hina stöðugri brennisteinssýru:
+Sterkir oxarar geta oxað brennisteinssýrling. Súrefni í loftinu oxar hann hægt í hina stöðugri brennisteinssýru:
 
 <!-- SEG:m68837:para:fs-idp83891616 -->
-Lausnir súlfíta eru einnig mjög næmar fyrir oxun í lofti og mynda þá súlföt. Þess vegna innihalda lausnir súlfíta alltaf súlföt eftir að hafa komist í snertingu við loft.
+Lausnir af súlfítum eru einnig mjög næmar fyrir oxun í lofti og mynda þá súlföt. Þess vegna innihalda lausnir af súlfítum alltaf súlföt eftir að hafa komist í snertingu við loft.
 
 <!-- SEG:m68837:title:fs-idp90916704-title -->
 Oxósýrur halógena og sölt þeirra
 
 <!-- SEG:m68837:para:fs-idm47315952 -->
-Efnasamböndin HXO, HXO[[sub:2]], HXO[[sub:3]] og HXO[[sub:4]], þar sem X táknar Cl, Br eða I, eru hýpóhalósýrur, halósýrur, halósýrur og perhalósýrur. Styrkur þessara sýra eykst frá hýpóhalósýrum, sem eru mjög veikar sýrur, yfir í perhalósýrur, sem eru mjög sterkar. [[xref:fs-idp152462192]] telur upp þekktar sýrur og þar sem þekkt er, eru pK[[sub:a]] gildi þeirra gefin innan sviga.
-
-<!-- SEG:m68837:entry:auto-123 -->
-Oxósýrur halógena
-
-<!-- SEG:m68837:entry:auto-124 -->
-Nafn
-
-<!-- SEG:m68837:entry:auto-125 -->
-Flúor
-
-<!-- SEG:m68837:entry:auto-126 -->
-Klór
-
-<!-- SEG:m68837:entry:auto-127 -->
-Bróm
-
-<!-- SEG:m68837:entry:auto-128 -->
-Joð
-
-<!-- SEG:m68837:entry:auto-129 -->
-hýpóhalósýra
-
-<!-- SEG:m68837:entry:auto-130 -->
-HOF
-
-<!-- SEG:m68837:entry:auto-131 -->
-HOCl (7,5)
-
-<!-- SEG:m68837:entry:auto-132 -->
-HOBr (8,7)
-
-<!-- SEG:m68837:entry:auto-133 -->
-HOI (11)
-
-<!-- SEG:m68837:entry:auto-134 -->
-halósýra
-
-<!-- SEG:m68837:entry:auto-135 -->
-HClO[[sub:2]] (2,0)
+Efnasamböndin HXO, HXO[[sub:2]], HXO[[sub:3]] og HXO[[sub:4]], þar sem X táknar Cl, Br eða I, eru hýpóhalógen-, halógen-, halógen- og perhalógensýrur, í sömu röð. Styrkur þessara sýra eykst frá hýpóhalógensýrum, sem eru mjög veikar sýrur, yfir í perhalógensýrur, sem eru mjög sterkar. [[xref:fs-idp152462192]] telur upp þekktar sýrur og þar sem þekkt er eru pK[[sub:a]] gildi þeirra gefin innan sviga.
 
 <!-- SEG:m68837:entry:auto-136 -->
-halínsýra
+Oxósýrur halógena
 
 <!-- SEG:m68837:entry:auto-137 -->
-HClO[[sub:3]]
+Nafn
 
 <!-- SEG:m68837:entry:auto-138 -->
-HBrO[[sub:3]]
+Flúor
 
 <!-- SEG:m68837:entry:auto-139 -->
-HIO[[sub:3]] (0,8)
+Klór
 
 <!-- SEG:m68837:entry:auto-140 -->
-perhalínsýra
+Bróm
 
 <!-- SEG:m68837:entry:auto-141 -->
-HClO[[sub:4]]
+Joð
 
 <!-- SEG:m68837:entry:auto-142 -->
-HBrO[[sub:4]]
+hýpóhalógen
 
 <!-- SEG:m68837:entry:auto-143 -->
-HIO[[sub:4]] (1,6)
+HOF
 
 <!-- SEG:m68837:entry:auto-144 -->
-paraperhalínsýra
+HOCl (7,5)
 
 <!-- SEG:m68837:entry:auto-145 -->
+HOBr (8,7)
+
+<!-- SEG:m68837:entry:auto-146 -->
+HOI (11)
+
+<!-- SEG:m68837:entry:auto-147 -->
+halógen
+
+<!-- SEG:m68837:entry:auto-148 -->
+HClO[[sub:2]] (2,0)
+
+<!-- SEG:m68837:entry:auto-149 -->
+halógen
+
+<!-- SEG:m68837:entry:auto-150 -->
+HClO[[sub:3]]
+
+<!-- SEG:m68837:entry:auto-151 -->
+HBrO[[sub:3]]
+
+<!-- SEG:m68837:entry:auto-152 -->
+HIO[[sub:3]] (0,8)
+
+<!-- SEG:m68837:entry:auto-153 -->
+perhalógen
+
+<!-- SEG:m68837:entry:auto-154 -->
+HClO[[sub:4]]
+
+<!-- SEG:m68837:entry:auto-155 -->
+HBrO[[sub:4]]
+
+<!-- SEG:m68837:entry:auto-156 -->
+HIO[[sub:4]] (1,6)
+
+<!-- SEG:m68837:entry:auto-157 -->
+paraperhalógen
+
+<!-- SEG:m68837:entry:auto-158 -->
 H[[sub:5]]IO[[sub:6]] (1,6)
 
 <!-- SEG:m68837:para:fs-idm58677424 -->
-Eina þekkta oxósýra flúors er hin mjög óstöðuga hýpóflúorsýra, HOF, sem er útbúin með hvarfi flúors á gasformi við ís:
+Eina þekkta oxósýra flúors er hin mjög óstöðuga hýpóflúorsýra, HOF, sem er útbúin með hvarfi flúorgass við ís:
 
 <!-- SEG:m68837:para:fs-idp21282672 -->
-Efnasambandið er mjög óstöðugt og brotnar niður yfir −40 °C. Þetta efnasamband jónast ekki í vatni og engin þekkt sölt eru til. Það er óvíst hvort nafnið hýpóflúorsýra sé jafnvel viðeigandi fyrir HOF; heppilegra nafn gæti verið vetnishýpóflúorít.
+Efnasambandið er mjög óstöðugt og brotnar niður yfir −40 °C. Þetta efnasamband jónast ekki í vatni og engin þekkt sölt eru til. Óvíst er hvort nafnið hýpóflúorsýra sé jafnvel viðeigandi fyrir HOF; viðeigandi nafn gæti verið vetnishýpóflúorít.
 
 <!-- SEG:m68837:para:fs-idm12187664 -->
-Hvörf klórs og bróms við vatn eru sambærileg við hvarf flúors við ís, en þessi hvörf ganga ekki til fulls og af verður blanda af halógeninu og viðkomandi hýpóhalósýrum og vetnishalíðsýrum. Aðrar en HOF eru hýpóhalósýrur aðeins til í lausn. Hýpóhalósýrurnar eru allar mjög veikar sýrur; þó er HOCl sterkari sýra en HOBr, sem aftur er sterkari en HOI.
+Hvörf klórs og bróms við vatn eru sambærileg við hvarf flúors við ís, en þessi hvörf ganga ekki til fulls og úr verða blöndur af halógeninu og viðkomandi hýpóhalógen- og vetnishalíðsýrum. Aðrar en HOF eru hýpóhalógensýrur aðeins til í lausn. Hýpóhalógensýrurnar eru allar mjög veikar sýrur; þó er HOCl sterkari sýra en HOBr, sem aftur er sterkari en HOI.
 
 <!-- SEG:m68837:para:fs-idm52966960 -->
-Þegar basa er bætt við lausnir af hýpóhalógenkenndum sýrum myndast lausnir af söltum sem innihalda basísku hýpóhalítjónirnar, OX[[sup:−]]. Hægt er að einangra þessi sölt sem föst efni. Öll hýpóhalít eru óstöðug með tilliti til óhóflegrar skiptingar í lausn, en hvarfið er hægt fyrir hýpóklórít. Hýpóbrómít og hýpójóðít óhóflega skiptast hratt, jafnvel í kulda:
+Með því að bæta basa við lausnir af hýpóhalógensýrum fást lausnir af söltum sem innihalda basísku hýpóhalítjónirnar, OX[[sup:−]]. Hægt er að einangra þessi sölt sem föst efni. Öll hýpóhalít eru óstöðug með tilliti til óhutfallsbreytingar í lausn, en hvarfið er hægt fyrir hýpóklórít. Hýpóbrómít og hýpójoðít óhutfallsbreytast hratt, jafnvel í kulda:
 
 <!-- SEG:m68837:para:fs-idp53552928 -->
-Natríumhýpóklórít er ódýrt bleikiefni (Clorox) og sýkladrepandi efni. Framleiðsla þess í atvinnuskyni felur í sér rafgreiningu á köldum, þynntum, vatnskenndum natríumklóríðlausnum við aðstæður þar sem klór og hýdroxíðjónir sem myndast geta hvarfast. Nettóhvarfið er:
+Natríumhýpóklórít er ódýrt bleikiefni (Clorox) og sýkladrepandi efni. Framleiðsla þess í iðnaði felur í sér rafgreiningu á köldum, þynntum, vatnslausnum af natríumklóríði við aðstæður þar sem klórinn og hýdroxíðjónin sem myndast geta hvarfast. Nettóhvarfið er:
 
 <!-- SEG:m68837:para:fs-idm9228176 -->
-Eina örugglega þekkta halógenkennda sýran er klórsýra, HClO[[sub:2]], sem fæst með hvarfi baríumklóríts við þynnta brennisteinssýru:
+Eina halógensýrlingurinn sem vitað er um með vissu er klórsýrlingur, HClO[[sub:2]], sem fæst með hvarfi baríumklóríts við þynnta brennisteinssýru:
 
 <!-- SEG:m68837:para:fs-idm3702800 -->
-Með því að sía óleysanlega baríumsúlfatið frá fæst lausn af HClO[[sub:2]]. Klórsýra er ekki stöðug; hún brotnar hægt niður í lausn og myndar klórdíoxíð, saltsýru og vatn. Klórsýra hvarfast við basa og myndar sölt sem innihalda klórítjónina (sýnd í [[xref:CNX_Chem_18_09_ChloritIon]]). Natríumklórít er mikið notað við bleikingu á pappír vegna þess að það er sterkt oxunarefni og skemmir ekki pappírinn.
+Þegar óleysanlega baríumsúlfatið er síað frá er eftir lausn af HClO[[sub:2]]. Klórsýrlingur er ekki stöðugur; hann brotnar hægt niður í lausn og myndar klórdíoxíð, saltsýru og vatn. Klórsýrlingur hvarfast við basa og myndar sölt sem innihalda klórítjónina (sýnd á [[xref:CNX_Chem_18_09_ChloritIon]]). Natríumklórít er mikið notað við bleikingu á pappír því það er sterkt oxunarefni og skemmir ekki pappírinn.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ChloritIon-caption -->
-Klórítjónir, [[MATH:22]], myndast þegar klórsýra hvarfast við basa.
+Klórítjónir, [[MATH:22]], myndast þegar klórsýrlingur hvarfast við basa.
+
+<!-- SEG:m68837:alt:fs-idm33972736-alt -->
+Sýnd eru þrjú líkön af sameindum, hvert um sig innan hornklofa og hvert með mínus sem hávísi fyrir utan hornklofana. Vinstri sameindin sýnir klóratóm með tvö svigrúm sem í eru rafeindapör. Klóratómið er með eintengi við tvö súrefnisatóm, sem öll eru í 109,5 gráðu horni hvert frá öðru. Miðjusameindin sýnir rúmfyllilíkan með grænu atómi merktu „Cl“ sem er tengt tveimur rauðum atómum merktum „O“. Hægri sameindin er Lewis-mynd af klóratómi með tvö rafeindapör, umkringt tveimur súrefnisatómum sitt hvoru megin, hvort með fjögur rafeindapör.
 
 <!-- SEG:m68837:para:fs-idp60019552 -->
-Klórsýra, HClO[[sub:3]], og brómsýra, HBrO[[sub:3]], eru aðeins stöðugar í lausn. Hvarf joðs við þétta saltpéturssýru myndar stöðuga hvíta joðsýru, HIO[[sub:3]]:
+Klórsýra, HClO[[sub:3]], og brómsýra, HBrO[[sub:3]], eru aðeins stöðugar í lausn. Hvarf joðs við megna saltpéturssýru myndar stöðuga hvíta joðsýru, HIO[[sub:3]]:
 
 <!-- SEG:m68837:para:fs-idm69933232 -->
-Hægt er að fá léttari halógenkenndu sýrurnar úr baríumsöltum þeirra með hvarfi við þynnta brennisteinssýru. Hvarfið er hliðstætt því sem notað er til að framleiða klórsýru. Allar halógenkenndu sýrurnar eru sterkar sýrur og mjög virk oxunarefni. Sýrurnar hvarfast við basa og mynda sölt sem innihalda klóratjónir (sýndar í [[xref:CNX_Chem_18_09_ClO3Ion]]). Önnur framleiðsluaðferð er rafefnafræðileg oxun á heitri lausn málmhalíðs til að mynda viðeigandi málmklóröt. Natríumklórat er illgresiseyðir; kalíumklórat er notað sem oxunarefni.
+Það er hægt að fá léttari halógensýrurnar úr baríumsöltum þeirra með hvarfi við þynnta brennisteinssýru. Hvarfið er hliðstætt því sem notað er til að búa til klórsýrling. Allar halógensýrurnar eru sterkar sýrur og mjög virk oxunarefni. Sýrurnar hvarfast við basa og mynda sölt sem innihalda klóratjónir (sýndar á [[xref:CNX_Chem_18_09_ClO3Ion]]). Önnur framleiðsluaðferð er rafefnafræðileg oxun á heitri lausn af málmhalíði til að mynda viðeigandi málmklóröt. Natríumklórat er illgresiseyðir; kalíumklórat er notað sem oxunarefni.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ClO3Ion-caption -->
-Klóratjónir, [[MATH:23]], myndast þegar halógenkenndar sýrur hvarfast við basa.
+Klóratjónir, [[MATH:23]], myndast þegar halógensýrur hvarfast við basa.
+
+<!-- SEG:m68837:alt:fs-idp90696608-alt -->
+Sýnd eru þrjú líkön af sameindum, hvert um sig innan hornklofa og með mínus sem hávísi fyrir utan hornklofana. Vinstri sameindin sýnir klóratóm með eitt svigrúm sem inniheldur eitt rafeindapar. Klóratómið er með eintengi við þrjú súrefnisatóm, sem öll eru staðsett með 109,5 gráðu horni hvert frá öðru. Miðjusameindin sýnir rúmfyllingarlíkan með grænu atómi merktu „Cl“ sem er tengt þremur rauðum atómum merktum „O“. Hægri sameindin er Lewis-mynd af klóratómi með einu rafeindapari, umkringdu þremur súrefnisatómum, hvert með fjórum rafeindapörum.
 
 <!-- SEG:m68837:para:fs-idm25050720 -->
 Perklórsýra, HClO[[sub:4]], myndast þegar perklórat, eins og kalíumperklórat, er meðhöndlað með brennisteinssýru við lækkaðan þrýsting. Hægt er að eima HClO[[sub:4]] úr blöndunni:
 
 <!-- SEG:m68837:para:fs-idp39285584 -->
-Þynntar vatnslausnir af perklórsýru eru nokkuð stöðugar við hita, en styrkur yfir 60% er óstöðugur og hættulegur. Perklórsýra og sölt hennar eru öflug oxunarefni, þar sem hið mjög rafneikvæða klór er stöðugra í lægra oxunarástandi en 7+. Alvarlegar sprengingar hafa orðið við upphitun á þéttum lausnum með efnum sem oxast auðveldlega. Hins vegar eru hvarf hennar sem oxunarefnis hæg þegar perklórsýra er köld og þynnt. Sýran er ein af sterkustu sýrum sem til eru. Flest sölt sem innihalda perklóratjónina (sýnd í [[xref:CNX_Chem_18_09_PerchloIon]]) eru leysanleg. Hægt er að framleiða þau með hvörfum basa við perklórsýru og, í atvinnuskyni, með rafgreiningu á heitum lausnum klóríða þeirra.
+Þynntar vatnslausnir af perklórsýru eru nokkuð stöðugar við hita, en lausnir með meiri styrk en 60% eru óstöðugar og hættulegar. Perklórsýra og sölt hennar eru öflug oxunarefni, þar sem hið mjög rafneikvæða klór er stöðugra á lægra oxunarstigi en 7+. Alvarlegar sprengingar hafa orðið við hitun á megnum lausnum með efnum sem oxast auðveldlega. Hins vegar eru hvarf hennar sem oxunarefnis hæg þegar perklórsýra er köld og þynnt. Sýran er ein af sterkustu sýrum sem til eru. Flest sölt sem innihalda perklóratjónina (sýnd í [[xref:CNX_Chem_18_09_PerchloIon]]) eru leysanleg. Hægt er að búa þau til með hvörfum basa við perklórsýru og, í atvinnuskyni, með rafgreiningu á heitum lausnum af klóríðum þeirra.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_PerchloIon-caption -->
-Perklóratjónir, [[MATH:24]], geta myndast þegar perklórsýra hvarfast við basa eða með rafgreiningu á heitum lausnum klóríða þeirra.
+Perklóratjónir, [[MATH:24]], geta myndast þegar perklórsýra hvarfast við basa eða með rafgreiningu á heitum lausnum af klóríðum þeirra.
+
+<!-- SEG:m68837:alt:fs-idm61257968-alt -->
+Sýnd eru tvö líkön af sameindum, bæði með mínus sem hávísi. Vinstri sameindin sýnir rúmfyllingarlíkan með grænu atómi merktu „Cl“ sem er tengt fjórum rauðum atómum merktum „O“. Hægri sameindin er Lewis-mynd af klóratómi umkringdu fjórum súrefnisatómum, hvert með fjórum rafeindapörum. Lewis-myndin er innan hornklofa og mínusmerkið sem hávísir birtist fyrir utan hornklofana.
 
 <!-- SEG:m68837:para:fs-idp110410496 -->
-Erfitt er að framleiða perbrómatsölt og bestu nýmyndanirnar sem nú eru til staðar fela í sér oxun brómata í basískri lausn með flúorgasi og síðan sýringu. Fá, ef nokkur, not eru fyrir þessa sýru eða sölt hennar í atvinnuskyni.
+Erfitt er að búa til perbrómatsölt og bestu aðferðirnar sem nú eru notaðar fela í sér oxun brómata í basískri lausn með flúorgasi og síðan sýringu. Fá, ef nokkur, not eru fyrir þessa sýru eða sölt hennar í atvinnuskyni.
 
 <!-- SEG:m68837:para:fs-idp182796160 -->
-Það eru til nokkrar mismunandi sýrur sem innihalda joð í 7+ oxunarástandi; þær eru meðal annars metaperjoðsýra, HIO[[sub:4]], og paraperjoðsýra, H[[sub:5]]IO[[sub:6]]. Þessar sýrur eru sterk oxunarefni og hvarfast við basa til að mynda viðeigandi sölt.
+Til eru nokkrar mismunandi sýrur sem innihalda joð á 7+ oxunarstiginu; þar á meðal eru metaperjoðsýra, HIO[[sub:4]], og paraperjoðsýra, H[[sub:5]]IO[[sub:6]]. Þessar sýrur eru sterk oxunarefni og hvarfast við basa til að mynda viðeigandi sölt.
 
 <!-- SEG:m68837:title:fs-idp158287200-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68837:para:fs-idp21127344 -->
-Súrefni er eitt af hvarfgjörnustu frumefnunum. Þessi hvarfgirni, ásamt gnægð þess, gerir efnafræði súrefnis mjög ríkulega og vel þekkta.
+Súrefni er eitt af hvarfgjörnustu frumefnunum. Þessi hvarfgirni, ásamt gnægð þess, gerir efnafræði súrefnis mjög fjölbreytta og vel þekkta.
 
 <!-- SEG:m68837:para:fs-idm28376624 -->
-Efnasambönd aðalflokkamálma með súrefni eru til í þremur flokkum (1) oxíð, (2) peroxíð og súperoxíð, og (3) hýdroxíð. Upphitun samsvarandi hýdroxíða, nítrata eða karbónata er algengasta aðferðin til að framleiða oxíð. Upphitun málmsins eða málmoxíðsins í súrefni getur leitt til myndunar peroxíða og súperoxíða. Leysanlegu oxíðin leysast upp í vatni og mynda lausnir af hýdroxíðum. Flest málmoxíð eru basa-anhýdríð og hvarfast við sýrur. Hýdroxíð aðalflokkamálma hvarfast við sýrur í sýru-basa hvörfum og mynda sölt og vatn. Hýdroxíðin hafa margvísleg not í atvinnuskyni.
+Efnasambönd aðalflokkamálma með súrefni eru í þremur flokkum: (1) oxíð, (2) peroxíð og súperoxíð og (3) hýdroxíð. Að hita samsvarandi hýdroxíð, nítröt eða karbónöt er algengasta aðferðin til að framleiða oxíð. Að hita málminn eða málmoxíðið í súrefni getur leitt til myndunar peroxíða og súperoxíða. Leysanlegu oxíðin leysast upp í vatni og mynda lausnir af hýdroxíðum. Flest málmoxíð eru basísk anhýdríð og hvarfast við sýrur. Hýdroxíð aðalflokkamálma hvarfast við sýrur í sýru-basa hvörfum og mynda sölt og vatn. Hýdroxíðin hafa margvísleg not í atvinnuskyni.
 
 <!-- SEG:m68837:para:fs-idm14417664 -->
-Allir málmleysingjar nema flúor mynda mörg oxíð. Næstum öll oxíð málmleysingja eru sýru-anhýdríð. Sýrustig oxósýra krefst þess að vetnisfrumeindirnar tengist súrefnisfrumeindunum í sameindinni frekar en hinni málmleysingjafrumeindinni. Almennt eykst styrkur oxósýrunnar með fjölda súrefnisfrumeinda sem eru tengdar málmleysingjafrumeindinni en ekki vetni.
+Allir málmleysingjar nema flúor mynda mörg oxíð. Næstum öll oxíð málmleysingja eru súr anhýdríð. Sýrustig oxósýra krefst þess að vetnisatómin tengist súrefnisatómum í sameindinni frekar en hinu málmleysingjaatóminu. Almennt eykst styrkur oxósýrunnar með fjölda súrefnisatóma sem eru tengd málmleysingjaatóminu en ekki vetni.
 
 <!-- SEG:m68837:title:fs-idp91787280-title -->
-Efnafræði - Æfingar í lok kafla
+Efnafræði – verkefni í lok kafla
 
 <!-- SEG:m68837:problem:fs-idp209794048 -->
-Spáðu fyrir um afurðina sem myndast við bruna fransíums í lofti.
+Spáðu fyrir um myndefnið sem myndast við bruna fransíns í lofti.
 
 <!-- SEG:m68837:solution:fs-idp83196560 -->
 FrO[[sub:2]]
 
 <!-- SEG:m68837:problem:fs-idp17846160 -->
-Lýstu með jöfnum hvarfi vatns við kalíum og við kalíumoxíð.
+Lýstu með jöfnum hvarfi vatns við kalín og við kalínoxíð.
 
 <!-- SEG:m68837:problem:fs-idp94885744 -->
-Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
+Skrifaðu stilltar efnajöfnur fyrir eftirfarandi hvörf:
 
 <!-- SEG:m68837:problem:fs-idm59899328 -->
 (a) sinkmálmur hitaður í straumi af súrefnisgasi
 
 <!-- SEG:m68837:problem:fs-idp42555456 -->
-(b) sinkkarbónat hitað þar til massatap stöðvast
+(b) sinkkarbónat hitað þar til massatap hættir
 
 <!-- SEG:m68837:problem:fs-idm7532576 -->
 (c) sinkkarbónati bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H
@@ -522,28 +572,28 @@ Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
 (a) [[MATH:25]] (b) [[MATH:26]] (c) [[MATH:27]] (d) [[MATH:28]]
 
 <!-- SEG:m68837:problem:fs-idp36790160 -->
-Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
+Skrifaðu stilltar efnajöfnur fyrir eftirfarandi hvörf:
 
 <!-- SEG:m68837:problem:fs-idp223600240 -->
-(a) kadmíum brennt í lofti
+(a) kadmín brennt í lofti
 
 <!-- SEG:m68837:problem:fs-idp61077712 -->
-(b) frumefninu kadmíum bætt við lausn af saltsýru
+(b) frumefninu kadmíni bætt við lausn af saltsýru
 
 <!-- SEG:m68837:problem:fs-idm14502784 -->
-(c) kadmíumhýdroxíði bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H
+(c) kadmínhýdroxíði bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H
 
 <!-- SEG:m68837:problem:fs-idm56934320 -->
-Sýnið fram á amfóterískt eðli álhýdroxíðs með því að vitna í viðeigandi jöfnur.
+Sýndu fram á tvíeðli álhýdroxíðs með því að vitna í viðeigandi jöfnur.
 
 <!-- SEG:m68837:solution:fs-idp55729344 -->
 [[MATH:29]] [[MATH:30]]
 
 <!-- SEG:m68837:problem:fs-idp26675200 -->
-Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
+Skrifaðu stilltar efnajöfnur fyrir eftirfarandi hvörf:
 
 <!-- SEG:m68837:problem:fs-idm49557184 -->
-(a) álmálmur brenndur í lofti
+(a) málmkennt ál brennt í lofti
 
 <!-- SEG:m68837:problem:fs-idp152655584 -->
 (b) frumefnið ál hitað í andrúmslofti klórs
@@ -552,10 +602,10 @@ Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
 (c) ál hitað í vetnisbrómíðgasi
 
 <!-- SEG:m68837:problem:fs-idp178175536 -->
-(d) álhýdroxíði bætt við lausn af saltpéturssýru
+(d) álhýdroxíði bætt við saltpéturssýrulausn
 
 <!-- SEG:m68837:problem:fs-idp158282896 -->
-Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
+Skrifaðu stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
 
 <!-- SEG:m68837:problem:fs-idm34078304 -->
 (a) natríumoxíði bætt í vatn
@@ -567,23 +617,25 @@ Skrifið stilltar efnajöfnur fyrir eftirfarandi efnahvörf:
 (c) áloxíði bætt við vatnslausn af HClO[[sub:4]]
 
 <!-- SEG:m68837:problem:fs-idm4135888 -->
-(d) lausn af natríumkarbónati bætt við lausn af baríumnítrati
+(d) natríumkarbónatlausn bætt við baríumnítratlausn
 
 <!-- SEG:m68837:problem:fs-idp117208864 -->
-(e) títanmálmur framleiddur úr hvarfi títantetraklóríðs við frumefnið natríum
+(e) títanmálmur framleiddur úr efnahvarfi títantetraklóríðs við frumefnið natríum
 
 <!-- SEG:m68837:solution:fs-idp16229280 -->
-(a) [[MATH:31]] (b) [[MATH:32]] (c) [[MATH:33]] (d) [[MATH:34]] (e) [[MATH:35]]<!-- SEG:m68837:problem:fs-idm62046832 -->
-Hvaða rúmmál af 0,250 [[i:M]] H[[sub:2]]SO[[sub:4]] lausn þarf til að hlutleysa lausn sem inniheldur 5,00 g af CaCO[[sub:3]]?
+(a) [[MATH:31]] (b) [[MATH:32]] (c) [[MATH:33]] (d) [[MATH:34]] (e) [[MATH:35]]
+
+<!-- SEG:m68837:problem:fs-idm62046832 -->
+Hversu mikið rúmmál af 0,250 [[i:M]] H[[sub:2]]SO[[sub:4]] lausn þarf til að hlutleysa lausn sem inniheldur 5,00 g af CaCO[[sub:3]]?
 
 <!-- SEG:m68837:problem:fs-idm31330912 -->
 Hvor sýran er sterkari, HClO[[sub:4]] eða HBrO[[sub:4]]? Hvers vegna?
 
 <!-- SEG:m68837:solution:fs-idp37760112 -->
-HClO[[sub:4]] er sterkari sýran því í röð oxósýra með svipaðar formúlur gildir að því hærri sem rafneikvæðni miðfrumeindarinnar er, því sterkara er aðdráttarafl miðfrumeindarinnar fyrir rafeindir súrefnisins/súrefnanna. Sterkara aðdráttarafl súrefnisrafeindarinnar leiðir til sterkara aðdráttarafls súrefnis fyrir rafeindirnar í O-H efnatenginu, sem gerir það að verkum að vetnið losnar auðveldar. Því veikara sem þetta efnatengi er, því sterkari er sýran.
+HClO[[sub:4]] er sterkari sýran því í röð oxósýra með svipaðar formúlur, því hærri sem rafneikvæðni miðatónsins er, því sterkara er aðdráttarafl miðatómsins fyrir rafeindir súrefnisins/súrefnanna. Sterkara aðdráttarafl súrefnisrafeindarinnar leiðir til sterkara aðdráttarafls súrefnis fyrir rafeindirnar í O-H tenginu, sem gerir það að verkum að vetnið losnar auðveldar. Því veikara sem þetta tengi er, því sterkari er sýran.
 
 <!-- SEG:m68837:problem:fs-idp89474640 -->
-Skrifaðu stillta efnajöfnu fyrir efnahvarf umframmagns af súrefni við hvert eftirfarandi efna. Mundu að súrefni er sterkt oxunarefni og hefur tilhneigingu til að oxa frumefni í hæstu oxunartölu þess.
+Skrifaðu stillta efnajöfnu fyrir efnahvarf umframmagns af súrefni við hvert eftirfarandi. Mundu að súrefni er sterkt oxunarefni og hefur tilhneigingu til að oxa frumefni í hæsta oxunarástand þess.
 
 <!-- SEG:m68837:problem:fs-idp107774560 -->
 (a) Mg
@@ -604,7 +656,7 @@ Skrifaðu stillta efnajöfnu fyrir efnahvarf umframmagns af súrefni við hvert 
 Hvor sýran er sterkari, H[[sub:2]]SO[[sub:4]] eða H[[sub:2]]SeO[[sub:4]]? Hvers vegna? Þú gætir viljað rifja upp kaflann um sýru-basa jafnvægi.
 
 <!-- SEG:m68837:solution:fs-idm27606144 -->
-Þar sem H[[sub:2]]SO[[sub:4]] og H[[sub:2]]SeO[[sub:4]] eru báðar oxósýrur og miðfrumeindir þeirra hafa báðar sömu oxunartölu, þá fer sýrustyrkurinn eftir hlutfallslegri rafneikvæðni miðfrumeindarinnar. Þar sem brennisteinn er rafneikvæðari en selen er H[[sub:2]]SO[[sub:4]] sterkari sýran.
+Þar sem H[[sub:2]]SO[[sub:4]] og H[[sub:2]]SeO[[sub:4]] eru báðar oxósýrur og miðatóm þeirra hafa bæði sama oxunartal, fer sýrustyrkurinn eftir hlutfallslegri rafneikvæðni miðatómsins. Þar sem brennisteinn er rafneikvæðari en selen, er H[[sub:2]]SO[[sub:4]] sterkari sýran.
 
 <!-- SEG:m68837:glossary-term:fs-idm62001152-term -->
 basaanhýdríð
@@ -652,7 +704,7 @@ iðnaðarferli sem notað er til að breyta ammóníaki í saltpéturssýru
 oxíð
 
 <!-- SEG:m68837:glossary-def:fs-idp211809712-def -->
-tvíeykisamband súrefnis við annað frumefni eða hóp, inniheldur yfirleitt O[[sup:2−]] jónir eða hópinn –O– eða =O
+tvíeykjasamband súrefnis við annað frumefni eða hóp, inniheldur venjulega O[[sup:2−]] jónir eða hópinn –O– eða =O
 
 <!-- SEG:m68837:glossary-term:fs-idp51209936-term -->
 óson
@@ -664,13 +716,13 @@ fjölmynd súrefnis; O[[sub:3]]
 peroxíð
 
 <!-- SEG:m68837:glossary-def:fs-idp16504016-def -->
-sameind sem inniheldur tvær súrefnisfrumeindir sem eru tengdar saman eða sem anjón, [[MATH:39]]
+sameind sem inniheldur tvö súrefnisatóm tengd saman eða sem anjón, [[MATH:39]]
 
 <!-- SEG:m68837:glossary-term:fs-idp54272512-term -->
 ljóstillífun
 
 <!-- SEG:m68837:glossary-def:fs-idp54272512-def -->
-ferli þar sem ljósorka ýtir undir efnahvarf vatns og koldíoxíðs til að mynda kolvetni og súrefni; þetta gerir ljóstillífandi lífverum kleift að geyma orku
+ferli þar sem ljósorka ýtir undir efnahvarf vatns og koltvíoxíðs til að mynda kolvetni og súrefni; þetta gerir ljóstillífandi lífverum kleift að geyma orku
 
 <!-- SEG:m68837:glossary-term:fs-idp28656816-term -->
 súlfat

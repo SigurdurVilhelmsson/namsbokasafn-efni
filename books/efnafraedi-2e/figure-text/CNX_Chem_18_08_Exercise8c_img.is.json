@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_08_Exercise8c_img",
+ "renderHash": "0c0d4e5a873fd0e8",
+ "composedHash": "0c0d4e5a873fd0e8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Octahedral": "Áttflötungs-"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

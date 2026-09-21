@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_08_Exercise8d_img",
+ "renderHash": "0ee5e53f9ad1ead9",
+ "composedHash": "0ee5e53f9ad1ead9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Tetrahedral": "Fjórfletnings-"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

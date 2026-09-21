@@ -1,0 +1,54 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_02_HallHerCell",
+ "renderHash": "4c2969b89bf55f02",
+ "composedHash": "4c2969b89bf55f02",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Al2O3 dissolved|in molten Na3AlF6": "Al2O3 uppleyst í bráðnu Na3AlF6",
+  "Bubbles of O2, CO,|and CO2": "Loftbólur af O2, CO og CO2",
+  "Molten aluminum": "Bráðið ál",
+  "Crust": "Skel",
+  "Steel shell": "Stálskel",
+  "Ceramic": "Keramik",
+  "HF and particulates|exhaust to filter plant": "HF og agnir fara í síuverksmiðju",
+  "Carbon|anode (+)": "Koleindaskaut (+)",
+  "Carbon cathode (−)": "Koleindabakskaut (−)"
+ },
+ "mtAlternatives": {
+  "Bubbles of O2, CO,|and CO2": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Loftbólur af O2, CO og CO2"
+  },
+  "Crust": {
+   "kept": "joined",
+   "other": "Skorpa",
+   "reason": "disagree",
+   "mt": "Skel"
+  },
+  "HF and particulates|exhaust to filter plant": {
+   "kept": "joined",
+   "other": "HF og agnir fara út í síuver",
+   "reason": "disagree",
+   "mt": "HF og agnir fara í síuverksmiðju"
+  },
+  "Carbon|anode (+)": {
+   "kept": "joined",
+   "other": "Kolefnisskaut (+)",
+   "reason": "disagree",
+   "mt": "Koleindaskaut (+)"
+  },
+  "Carbon cathode (−)": {
+   "kept": "joined",
+   "other": "Kolefniskatþóða (−)",
+   "reason": "disagree",
+   "mt": "Koleindabakskaut (−)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

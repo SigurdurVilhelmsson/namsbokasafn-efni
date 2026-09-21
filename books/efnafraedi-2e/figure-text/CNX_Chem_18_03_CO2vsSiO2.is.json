@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_03_CO2vsSiO2",
+ "renderHash": "7242853621967a85",
+ "composedHash": "7242853621967a85",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "silicon|oxygen": "kísill súrefni",
+  "SiO2": "SiO2",
+  "quartz": "kvars",
+  "dry ice": "þurrís"
+ },
+ "mtAlternatives": {
+  "silicon|oxygen": {
+   "kept": "joined",
+   "other": "kísilsúrefni",
+   "reason": "disagree",
+   "mt": "kísill súrefni"
+  },
+  "dry ice": {
+   "kept": "joined",
+   "other": "Þurrís",
+   "reason": "disagree",
+   "mt": "þurrís"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

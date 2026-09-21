@@ -2,64 +2,73 @@
 Tilvist, framleiðsla og eiginleikar fosfórs
 
 <!-- SEG:m68836:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68836:abstract-item:abstract-item-1 -->
 Lýst eiginleikum, framleiðslu og notkun fosfórs
 
 <!-- SEG:m68836:para:fs-idp52194704 -->
-Iðnaðarframleiðsla á fosfór fer fram með því að hita kalsíumfosfat, sem er unnið úr fosfatgrýti, með sandi og koxi:
+Iðnaðarframleiðsla á fosfór fer fram með því að hita kalsíumfosfat, sem er unnið úr fosfatbergi, með sandi og koxi:
 
 <!-- SEG:m68836:para:fs-idp5816832 -->
-Fosfórinn eimast út úr ofninum og er þéttur í fast efni eða brenndur til að mynda P[[sub:4]]O[[sub:10]]. Framleiðsla margra annarra fosfórsambanda hefst með P[[sub:4]]O[[sub:10]]. Sýrurnar og fosfötin eru gagnleg sem áburður og í efnaiðnaði. Önnur notkun er við framleiðslu á sérstökum melmum eins og ferrofosfór og fosfórbronsi. Fosfór er mikilvægur við framleiðslu skordýraeiturs, eldspýtna og sumra plastefna. Fosfór er virkur málmleysingi. Í efnasamböndum hefur fosfór venjulega oxunartölurnar 3−, 3+ og 5+. Fosfór sýnir oxunartölur sem eru óvenjulegar fyrir frumefni í flokki 15 í efnasamböndum sem innihalda fosfór-fosfór tengi; dæmi eru tvífosfórtetrahýdríð, H[[sub:2]]P-PH[[sub:2]], og tetrafosfórtrísúlfíð, P[[sub:4]]S[[sub:3]], sem sýnt er á [#CNX_Chem_18_08_P4S3].
+Fosfórinn eimast út úr ofninum og er þéttur í fast efni eða brenndur til að mynda P[[sub:4]]O[[sub:10]]. Framleiðsla margra annarra fosfórsambanda hefst með P[[sub:4]]O[[sub:10]]. Sýrurnar og fosfötin eru gagnleg sem áburður og í efnaiðnaði. Önnur notkun er við framleiðslu á sérstökum málmblöndum eins og ferrofosfór og fosfórbronsi. Fosfór er mikilvægur við framleiðslu skordýraeiturs, eldspýtna og sumra plastefna. Fosfór er virkur málmleysingi. Í efnasamböndum hefur fosfór venjulega oxunarástandið 3−, 3+ og 5+. Fosfór sýnir oxunartölur sem eru óvenjulegar fyrir frumefni í flokki 15 í efnasamböndum sem innihalda fosfór-fosfór tengi; dæmi eru tvífosfórtetrahýdríð, H[[sub:2]]P-PH[[sub:2]], og tetrafosfórtrísúlfíð, P[[sub:4]]S[[sub:3]], sem sýnt er á [[xref:CNX_Chem_18_08_P4S3]].
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4S3-caption -->
-P[[sub:4]]S[[sub:3]] er hluti af hausnum á kveikjanlegum eldspýtum.
+P[[sub:4]]S[[sub:3]] er hluti af hausnum á eldspýtum sem hægt er að kveikja á hvar sem er.
+
+<!-- SEG:m68836:alt:fs-idm5144976-alt -->
+Sýnt er kúlu-og-prikalíkan. Þrjú appelsínugul atóm merkt „P“ eru eintengd saman í þríhyrningsformi. Hvert „P“ er eintengt við gul atóm merkt „S“, sem hvert um sig er eintengt við eitt annað appelsínugult atóm merkt „P“.
 
 <!-- SEG:m68836:title:fs-idm31898272-title -->
 Súrefnissambönd fosfórs
 
 <!-- SEG:m68836:para:fs-idp85748768 -->
-Fosfór myndar tvö algeng oxíð, fosfór(III)oxíð (eða tetrafosfórhexaoxíð), P[[sub:4]]O[[sub:6]], og fosfór(V)oxíð (eða tetrafosfórdekaoxíð), P[[sub:4]]O[[sub:10]], sem bæði eru sýnd á [#CNX_Chem_18_08_P4O6P4O10]. Fosfór(III)oxíð er hvítt kristalkennt fastefni með hvítlaukskenndri lykt. Gufa þess er mjög eitruð. Það oxast hægt í lofti og kviknar í því þegar það er hitað í 70 °C og myndar P[[sub:4]]O[[sub:10]]. Fosfór(III)oxíð leysist hægt upp í köldu vatni og myndar fosfórsýrling, H[[sub:3]]PO[[sub:3]].
+Fosfór myndar tvö algeng oxíð, fosfór(III)oxíð (eða tetrafosfórhexaoxíð), P[[sub:4]]O[[sub:6]], og fosfór(V)oxíð (eða tetrafosfórdekaoxíð), P[[sub:4]]O[[sub:10]], sem bæði eru sýnd á [[xref:CNX_Chem_18_08_P4O6P4O10]]. Fosfór(III)oxíð er hvítt kristallað fast efni með hvítlaukskenndri lykt. Gufa þess er mjög eitruð. Það oxast hægt í lofti og kviknar í því þegar það er hitað í 70 °C og myndar P[[sub:4]]O[[sub:10]]. Fosfór(III)oxíð leysist hægt upp í köldu vatni og myndar fosfórsýrling, H[[sub:3]]PO[[sub:3]].
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4O6P4O10-caption -->
 Þessi mynd sýnir sameindabyggingu P[[sub:4]]O[[sub:6]] (vinstra megin) og P[[sub:4]]O[[sub:10]] (hægra megin).
 
+<!-- SEG:m68836:alt:fs-idp57250912-alt -->
+Sýnd eru tvö kúlu-og-prikalíkön. Í vinstra líkaninu eru þrjú appelsínugul atóm merkt „P“ eintengd við rauð atóm merkt „O“ í sexhliða hringbyggingu þar sem þau skiptast á. Hvert appelsínugula atómið er einnig eintengt við annað rautt atóm, sem aftur er eintengt við eitt appelsínugult atóm. Hægra líkanið sýnir þrjú appelsínugul atóm merkt „P“ eintengd við rauð atóm merkt „O“ í sexhliða hringbyggingu þar sem þau skiptast á. Hvert appelsínugula atómið er einnig eintengt við tvö önnur rauð atóm, annað í uppstöðu og hitt snýr út úr sameindinni. Rauðu atómin sem vísa upp eru eintengd við eitt appelsínugult atóm sem er eintengt við eitt loka rautt atóm.
+
 <!-- SEG:m68836:para:fs-idm7162480 -->
-Fosfór(V)oxíð, P[[sub:4]]O[[sub:10]], er hvítt duft sem er framleitt með því að brenna fosfór í umframmagni af súrefni. Myndunarvermi þess er mjög hátt (−2984 kJ) og það er nokkuð stöðugt og mjög lélegur oxari. Þegar P[[sub:4]]O[[sub:10]] er sleppt í vatn myndast hvæshljóð, varmi og ortófosfórsýra:
+Fosfór(V)oxíð, P[[sub:4]]O[[sub:10]], er hvítt duft sem er framleitt með því að brenna fosfór í umfram súrefni. Myndunarvermi þess er mjög hátt (−2984 kJ) og það er nokkuð stöðugt og mjög lélegur oxari. Þegar P[[sub:4]]O[[sub:10]] er sleppt í vatn myndast hvæshljóð, hiti og ortófosfórsýra:
 
 <!-- SEG:m68836:para:fs-idm64278832 -->
-Vegna mikillar sækni í vatn er fosfór(V)oxíð frábært þurrkefni fyrir gös og leysa og til að fjarlægja vatn úr mörgum efnasamböndum.
+Vegna mikillar sækni í vatn er fosfór(V)oxíð frábært þurrkefni fyrir lofttegundir og leysiefni og til að fjarlægja vatn úr mörgum efnasamböndum.
 
 <!-- SEG:m68836:title:fs-idm11573280-title -->
 Halógenasambönd fosfórs
 
 <!-- SEG:m68836:para:fs-idp70568512 -->
-Fosfór hvarfast beint við halógena og myndar tríhalíð, PX[[sub:3]], og pentahalíð, PX[[sub:5]]. Tríhalíðin eru mun stöðugri en samsvarandi niturtríhalíð; niturpentahalíð myndast ekki vegna vanhæfni niturs til að mynda fleiri en fjögur tengi.
+Fosfór hvarfast beint við halógena og myndar tríhalíð, PX[[sub:3]], og pentahalíð, PX[[sub:5]]. Tríhalíðin eru mun stöðugri en samsvarandi köfnunarefnistríhalíð; köfnunarefnispentahalíð myndast ekki vegna þess að köfnunarefni getur ekki myndað fleiri en fjögur tengi.
 
 <!-- SEG:m68836:para:fs-idp182518880 -->
-Klóríðin PCl[[sub:3]] og PCl[[sub:5]], sem bæði eru sýnd á [#CNX_Chem_18_08_PCl3PCl5], eru mikilvægustu halíð fosfórs. Fosfórtríklóríð er litlaus vökvi sem er framleiddur með því að leiða klór yfir bráðinn fosfór. Fosfórpentaklóríð er beinhvítt fast efni sem er framleitt með því að oxa tríklóríðið með umframmagni af klór. Pentaklóríðið þurrgufar þegar það er hitað og myndar jafnvægi við tríklóríðið og klór þegar það er hitað.
+Klóríðin PCl[[sub:3]] og PCl[[sub:5]], sem bæði eru sýnd á [[xref:CNX_Chem_18_08_PCl3PCl5]], eru mikilvægustu halíð fosfórs. Fosfórtríklóríð er litlaus vökvi sem er framleiddur með því að leiða klór yfir bráðinn fosfór. Fosfórpentaklóríð er beinhvítt fast efni sem er framleitt með því að oxa tríklóríðið með umfram klór. Pentaklóríðið þurrgufar þegar það er hitað og myndar jafnvægi við tríklóríðið og klór þegar það er hitað.
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_PCl3PCl5-caption -->
-Þessi mynd sýnir sameindabyggingu PCl[[sub:3]] (vinstra megin) og PCl[[sub:5]] (hægra megin) í gasfasa.
+Þessi mynd sýnir sameindabyggingu PCl[[sub:3]] (vinstra megin) og PCl[[sub:5]] (hægra megin) á gasfasa.
+
+<!-- SEG:m68836:alt:fs-idp189314192-alt -->
+Sýnd eru tvö kúlu-og-prikalíkön. Í vinstra líkaninu er appelsínugult atóm merkt „P“ eintengt við þrjú græn atóm merkt „Cl“. Hægra líkanið sýnir appelsínugult atóm merkt „P“ eintengt við fimm græn atóm merkt „Cl“.
 
 <!-- SEG:m68836:para:fs-idp21181152 -->
-Eins og flest önnur halíð málmleysingja hvarfast bæði fosfórklóríðin við umframmagn af vatni og gefa af sér vetnisklóríð og oxósýru: PCl[[sub:3]] gefur fosfórsýrling H[[sub:3]]PO[[sub:3]] og PCl[[sub:5]] gefur fosfórsýru, H[[sub:3]]PO[[sub:4]].
+Eins og flest önnur halíð málmleysingja hvarfast bæði fosfórklóríðin við umfram vatn og gefa af sér vetnisklóríð og oxósýru: PCl[[sub:3]] gefur af sér fosfórsýrling, H[[sub:3]]PO[[sub:3]], og PCl[[sub:5]] gefur af sér fosfórsýru, H[[sub:3]]PO[[sub:4]].
 
 <!-- SEG:m68836:para:fs-idm44217280 -->
-Pentahalíð fosfórs eru Lewis-sýrur vegna tómra {{i}}d{{/i}}-girðisvigrúma fosfórs. Þessi efnasambönd hvarfast auðveldlega við halíðjónir (Lewis-basa) og mynda anjónina [[MATH:1]] Þó að fosfórpentaflúoríð sé sameindaefnasamband í öllum fösum sýna röntgengeislarannsóknir að fast fosfórpentaklóríð er jónaefni, [[MATH:2]], eins og fosfórpentabrómíð, [[MATH:3]][Br[[sup:−]]], og fosfórpentajoðíð, [[MATH:4]][I[[sup:−]]].
+Pentahalíð fosfórs eru Lewis-sýrur vegna tómra [[i:d]]-gildissvigrúma fosfórs. Þessi efnasambönd hvarfast auðveldlega við halíðjónir (Lewis-basa) og mynda anjónina [[MATH:1]]. Þó að fosfórpentaflúoríð sé sameindaefnasamband í öllum ástandi sýna röntgenrannsóknir að fast fosfórpentaklóríð er jónískt efnasamband, [[MATH:2]], eins og fosfórpentabrómíð, [[MATH:3]][Br[[sup:−]]], og fosfórpentajoðíð, [[MATH:4]][I[[sup:−]]].
 
 <!-- SEG:m68836:title:fs-idp183301136-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68836:para:fs-idp219295376 -->
-Fosfór (hópur 15) hefur oftast oxunartölurnar 3− með virkum málmum og 3+ og 5+ með rafneikvæðari málmleysingjum. Halógenar og súrefni oxa fosfór. Oxíðin eru fosfór(V)oxíð, P[[sub:4]]O[[sub:10]], og fosfór(III)oxíð, P[[sub:4]]O[[sub:6]]. Tvær algengar aðferðir til að búa til ortófosfórsýru, H[[sub:3]]PO[[sub:4]], eru annaðhvort efnahvarf fosfats við brennisteinssýru eða efnahvarf vatns við fosfór(V)oxíð. Ortófosfórsýra er þríróteindasýra sem myndar þrjár gerðir af söltum.
+Fosfór (flokkur 15) hefur venjulega oxunartölurnar 3− með virkum málmum og 3+ og 5+ með rafneikvæðari málmleysingjum. Halógenar og súrefni oxa fosfór. Oxíðin eru fosfór(V)oxíð, P[[sub:4]]O[[sub:10]], og fosfór(III)oxíð, P[[sub:4]]O[[sub:6]]. Tvær algengar aðferðir til að búa til ortófosfórsýru, H[[sub:3]]PO[[sub:4]], eru annaðhvort hvarf fosfats við brennisteinssýru eða hvarf vatns við fosfór(V)oxíð. Ortófosfórsýra er þríróteindasýra sem myndar þrjár gerðir af söltum.
 
 <!-- SEG:m68836:title:fs-idp185176672-title -->
-Efnafræði – Verkefni í lok kafla
+Efnafræði – verkefni í lok kafla
 
 <!-- SEG:m68836:problem:fs-idm63439584 -->
-Skrifaðu Lewis mynd fyrir hvert eftirfarandi. Þú gætir viljað rifja upp kaflann um efnatengi og sameindalögun.
+Skrifaðu Lewis-mynd fyrir hvert eftirfarandi. Þú gætir viljað rifja upp kaflann um efnatengi og sameindarúmfræði.
 
 <!-- SEG:m68836:problem:fs-idp210380672 -->
 (a) PH[[sub:3]]
@@ -79,8 +88,23 @@ Skrifaðu Lewis mynd fyrir hvert eftirfarandi. Þú gætir viljað rifja upp kaf
 <!-- SEG:m68836:solution:fs-idm28792464 -->
 (a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]][[BR]] (c)[[BR]][[MEDIA:3]][[BR]] (d)[[BR]][[MEDIA:4]][[BR]] (e)[[BR]][[MEDIA:5]]
 
+<!-- SEG:m68836:alt:fs-idm55213168-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm með eitt rafeindapar sem er eintengt þremur vetnisatómum.
+
+<!-- SEG:m68836:alt:fs-idm1170240-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt fjórum vetnisatómum. Myndin er innan hornklofa og er með plús sem hávísi utan við hornklofana.
+
+<!-- SEG:m68836:alt:fs-idp56334352-alt -->
+Þessi Lewis-mynd sýnir tvö fosfóratóm, hvort með sitt rafeindapar, sem eru eintengd hvort öðru. Hvert fosfóratóm er einnig eintengt tveimur vetnisatómum.
+
+<!-- SEG:m68836:alt:fs-idm66638800-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt fjórum súrefnisatómum, hvert með þrjú rafeindapör. Myndin er innan hornklofa og er með 3 mínus sem hávísi utan við hornklofana.
+
+<!-- SEG:m68836:alt:fs-idm5269184-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt fimm flúoratómum, hvert með þrjú rafeindapör.
+
 <!-- SEG:m68836:problem:fs-idp227455632 -->
-Lýstu sameindabyggingu hverrar eftirfarandi sameindar eða jónar. Þú gætir viljað rifja upp kaflann um efnatengi og sameindalögun.
+Lýstu sameindabyggingu hverrar eftirfarandi sameindar eða jónar. Þú gætir viljað rifja upp kaflann um efnatengi og sameindarúmfræði.
 
 <!-- SEG:m68836:problem:fs-idp157002384 -->
 (a) PH[[sub:3]]
@@ -95,7 +119,7 @@ Lýstu sameindabyggingu hverrar eftirfarandi sameindar eða jónar. Þú gætir 
 (d) [[MATH:8]]
 
 <!-- SEG:m68836:problem:fs-idp93162752 -->
-Ljúktu við og stilltu hverja eftirfarandi efnajöfnu. (Í sumum tilfellum gæti verið fleiri en eitt rétt svar.)
+Ljúktu við og stilltu hverja af eftirfarandi efnajöfnum. (Í sumum tilfellum gæti verið fleiri en eitt rétt svar.)
 
 <!-- SEG:m68836:problem:fs-idp111486400 -->
 (a) [[MATH:9]]
@@ -119,10 +143,10 @@ Ljúktu við og stilltu hverja eftirfarandi efnajöfnu. (Í sumum tilfellum gæt
 (a) [[MATH:15]] (b) [[MATH:16]] (c) [[MATH:17]] (d) [[MATH:18]] eða [[MATH:19]] (e) [[MATH:20]] eða [[MATH:21]] (f) [[MATH:22]]
 
 <!-- SEG:m68836:problem:fs-idm66070064 -->
-Lýstu blendingssvigrúmum fosfórs í hverju eftirfarandi efnasambandi: P[[sub:4]]O[[sub:10]], P[[sub:4]]O[[sub:6]], PH[[sub:4]]I (jónaefni), PBr[[sub:3]], H[[sub:3]]PO[[sub:4]], H[[sub:3]]PO[[sub:3]], PH[[sub:3]] og P[[sub:2]]H[[sub:4]]. Þú gætir viljað rifja upp kaflann um flóknari kenningar um samgild tengi.
+Lýstu svigrúmablöndun fosfórs í hverju eftirfarandi efnasambandi: P[[sub:4]]O[[sub:10]], P[[sub:4]]O[[sub:6]], PH[[sub:4]]I (jónískt efnasamband), PBr[[sub:3]], H[[sub:3]]PO[[sub:4]], H[[sub:3]]PO[[sub:3]], PH[[sub:3]] og P[[sub:2]]H[[sub:4]]. Þú gætir viljað rifja upp kaflann um flóknari kenningar um samgild tengi.
 
 <!-- SEG:m68836:problem:fs-idp219284192 -->
-Hversu mikið rúmmál af 0,200 {{i}}M{{/i}} NaOH þarf til að hlutleysa lausnina sem myndast við að leysa 2,00 g af PCl[[sub:3]] í umframmagni af vatni? Athugaðu að þegar H[[sub:3]]PO[[sub:3]] er títrað við þessar aðstæður hvarfast aðeins ein róteind sýrusameindarinnar.
+Hversu mikið rúmmál af 0,200 [[i:M]] NaOH þarf til að hlutleysa lausnina sem myndast við að leysa 2,00 g af PCl[[sub:3]] í ofgnótt af vatni? Athugaðu að þegar H[[sub:3]]PO[[sub:3]] er títrað við þessar aðstæður hvarfast aðeins ein róteind sýrusameindarinnar.
 
 <!-- SEG:m68836:solution:fs-idp25603936 -->
 291 ml
@@ -131,16 +155,16 @@ Hversu mikið rúmmál af 0,200 {{i}}M{{/i}} NaOH þarf til að hlutleysa lausni
 Hversu mikið POCl[[sub:3]] getur myndast úr 25,0 g af PCl[[sub:5]] og viðeigandi magni af H[[sub:2]]O?
 
 <!-- SEG:m68836:problem:fs-idp2366736 -->
-Hversu mörg tonn af Ca[[sub:3]](PO[[sub:4]])[[sub:2]] þarf til að framleiða 5,0 tonn af fosfór ef heimtur eru 90%?
+Hversu mörg tonn af Ca[[sub:3]](PO[[sub:4]])[[sub:2]] þarf til að framleiða 5,0 tonn af fosfór ef nýtnin er 90%?
 
 <!-- SEG:m68836:solution:fs-idm45323824 -->
 28 tonn
 
 <!-- SEG:m68836:problem:fs-idp59081184 -->
-Skrifaðu jöfnur sem sýna þrepaskipta jónun fosfórssýru.
+Skrifaðu efnajöfnur sem sýna skref fyrir skref jónun fosfórsýru.
 
 <!-- SEG:m68836:problem:fs-idp69434528 -->
-Teiknaðu Lewis myndir og lýstu lögun eftirfarandi:
+Teiknaðu Lewis-myndir og lýstu rúmfræði eftirfarandi:
 
 <!-- SEG:m68836:problem:fs-idp201777712 -->
 (a) [[MATH:23]]
@@ -157,8 +181,20 @@ Teiknaðu Lewis myndir og lýstu lögun eftirfarandi:
 <!-- SEG:m68836:solution:fs-idp12097488 -->
 (a)[[BR]][[MEDIA:6]][[BR]] (b)[[BR]][[MEDIA:7]][[BR]] (c)[[BR]][[MEDIA:8]][[BR]] (d)[[BR]][[MEDIA:9]]
 
+<!-- SEG:m68836:alt:fs-idp215036560-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt fjórum flúoratómum, hvert með þremur rafeindapörum. Myndin er innan hornklofa og er með plús sem hávísi utan við hornklofana. Merkingin „Fjórflettingur“ er skrifuð undir myndina.
+
+<!-- SEG:m68836:alt:fs-idp42036672-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt fimm flúoratómum, hvert með þremur rafeindapörum. Merkingin „Þríhyrnd tvípýramídabygging“ er skrifuð undir myndina.
+
+<!-- SEG:m68836:alt:fs-idp41412448-alt -->
+Lewis-mynd sýnir fosfóratóm sem er eintengt sex flúoratómum, hvert með þremur rafeindapörum. Myndin er innan hornklofa og er með mínus sem hávísi utan við hornklofana. Merkingin „Áttflettingur“ er skrifuð undir myndina.
+
+<!-- SEG:m68836:alt:fs-idm23148096-alt -->
+Þessi Lewis-mynd sýnir fosfóratóm sem er eintengt þremur flúoratómum, hvert með þremur rafeindapörum. Fosfóratómið er einnig tvítengt súrefnisatómi með tveimur rafeindapörum. Merkingin „Fjórflettingur“ er skrifuð undir myndina.
+
 <!-- SEG:m68836:problem:fs-idp27849968 -->
-Af hverju myndar fosfórssýra aðeins tvær saltaraðir, þrátt fyrir að sameindin innihaldi þrjár vetnisfrumeindir?
+Af hverju myndar fosfórsýra aðeins tvær saltaraðir, þó að sameindin innihaldi þrjú vetnisatóm?
 
 <!-- SEG:m68836:problem:fs-idp219241728 -->
 Úthlutaðu oxunartölu til fosfórs í hverju eftirfarandi:
@@ -185,16 +221,16 @@ Af hverju myndar fosfórssýra aðeins tvær saltaraðir, þrátt fyrir að same
 (a) P = 3+; (b) P = 5+; (c) P = 3+; (d) P = 5+; (e) P = 3−; (f) P = 5+
 
 <!-- SEG:m68836:problem:fs-idp46924640 -->
-Fosfórsýra, ein af sýrunum sem notuð er í suma kóladrykki, er framleidd með efnahvarfi fosfór(V)-oxíðs, sem er súrt oxíð, við vatn. Fosfór(V)-oxíð er framleitt með bruna fosfórs.
+Fosfórsýra, ein af sýrunum sem notuð er í suma kóladrykki, er framleidd með hvarfi fosfór(V)oxíðs, sem er súrt oxíð, við vatn. Fosfór(V)oxíð er framleitt með bruna fosfórs.
 
 <!-- SEG:m68836:problem:fs-idm28349936 -->
-(a) Skrifaðu reynsluformúlu fosfór(V)-oxíðs.
+(a) Skrifaðu reynsluformúlu fosfór(V)oxíðs.
 
 <!-- SEG:m68836:problem:fs-idm64288464 -->
-(b) Hver er sameindaformúla fosfór(V)-oxíðs ef mólmassinn er um 280.
+(b) Hver er sameindaformúla fosfór(V)oxíðs ef mólmassinn er um 280?
 
 <!-- SEG:m68836:problem:fs-idp40764960 -->
-(c) Skrifaðu stilltar efnajöfnur fyrir framleiðslu fosfór(V)-oxíðs og fosfórsýru.
+(c) Skrifaðu stilltar efnajöfnur fyrir framleiðslu fosfór(V)oxíðs og fosfórsýru.
 
 <!-- SEG:m68836:problem:fs-idp1024 -->
-(d) Ákvarðaðu massa fosfórs sem þarf til að búa til 1,00 [[MATH:25]] 10[[sup:4]] kg af fosfórsýru, að því gefnu að heimtur séu 98,85%.
+(d) Ákvarðaðu massa fosfórs sem þarf til að búa til 1,00 [[MATH:25]] 10[[sup:4]] kg af fosfórsýru, að því gefnu að nýtnin sé 98,85%.
