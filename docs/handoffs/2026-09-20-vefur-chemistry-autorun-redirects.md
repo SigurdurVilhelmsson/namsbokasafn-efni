@@ -120,3 +120,20 @@ the page again and produces a further redirect row.
 
 _Both instruments agree at 1: one `Pruned superseded page` line and a slug-map diff of added=1,
 changed=0, removed=0 (36 → 37)._
+
+## ch14 — 2 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/14/14-5-fjolvirkar-syrur.html` | `chapters/14/14-5-fjolroteindasyrur.html` | m68807 |
+| `chapters/14/14-6-studpudar.html` | `chapters/14/14-6-jafnalausnir.html` | m68808 |
+
+_Both instruments agree at 2 (37 → 39, added=2, changed=0, removed=0)._
+
+⚖️ **`14-6` is a TERMINOLOGY SHIFT for [USER] to rule on, not a regression like `12-7`.** English is
+`Buffers`; the superseded slug was `studpudar` (*stuðpúðar*) and the new one is `jafnalausnir`.
+**Unlike §12.7's catalysis, the MT is internally CONSISTENT here** — `jafnalausn` appears 56x through
+the body, the key-term definition reads *"jafnalausn, eða buffer"*, and `Jafnalausnargeta (e. buffer
+capacity)` uses the house `(e. …)` convention correctly. **One residual `stuðpúðaþátta` remains in an
+exercise** and should be unified whichever way it is ruled. Which of *jafnalausn* / *stuðpúðalausn*
+is the right Icelandic is a chemistry-teacher call, not a pipeline one.

@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_05_ICETable1_img",
+ "renderHash": "b895e6eba8acf1d6",
+ "composedHash": "b895e6eba8acf1d6",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Initial concentration (M)": "Upphafsstyrkur (M)",
+  "Change (M) ": "Breyting (M)",
+  "Equilibrium constant (M)": "Jafnvægisfasti (M)",
+  "HCO3|–": "HCO3 –"
+ },
+ "mtAlternatives": {
+  "Change (M) ": {
+   "kept": "joined",
+   "other": "Breyta (Kk)",
+   "reason": "disagree",
+   "mt": "Breyting (M)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

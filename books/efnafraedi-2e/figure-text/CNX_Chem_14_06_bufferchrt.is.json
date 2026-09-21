@@ -1,0 +1,51 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_06_bufferchrt",
+ "renderHash": "fe37b4c4a5ce1057",
+ "composedHash": "fe37b4c4a5ce1057",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CH3COOH(aq)": "CH3COOH(aq)",
+  "CH3COO–(aq)": "CH3COO–(aq)",
+  "Buffer solution|after addition|of strong base": "Jafnalausn eftir viðbót á sterkum basa",
+  "Buffer solution|after addition|of strong acid": "Jafnalausn eftir viðbót á sterkri sýru",
+  "CH3COO–": "CH3COO–",
+  "CH3COOH": "CH3COOH",
+  "Add OH–": "Bæta við OH–",
+  "Add H3O+": "Bæta við H3O+",
+  "OH– added, equilibrium position shifts to the right": "OH– bætt við, jafnvægi færist til hægri",
+  "H3O+ added, equilibrium position shifts to the left": "H3O+ bætt við, jafnvægi færist til vinstri",
+  "Buffer solution|equimolar in|acid and base": "Jafnalausn með jafnmólstyrk sýru og basa"
+ },
+ "mtAlternatives": {
+  "Buffer solution|after addition|of strong base": {
+   "kept": "joined",
+   "other": "Jafnalausn eftir íblöndun á sterkum basa",
+   "reason": "disagree",
+   "mt": "Jafnalausn eftir viðbót á sterkum basa"
+  },
+  "Buffer solution|after addition|of strong acid": {
+   "kept": "joined",
+   "other": "Jafnalausn eftir íblöndun sterkrar sýru",
+   "reason": "disagree",
+   "mt": "Jafnalausn eftir viðbót á sterkri sýru"
+  },
+  "OH– added, equilibrium position shifts to the right": {
+   "kept": "joined",
+   "other": "OH– bætt við, jafnvægisstaða færist til hægri",
+   "reason": "disagree",
+   "mt": "OH– bætt við, jafnvægi færist til hægri"
+  },
+  "H3O+ added, equilibrium position shifts to the left": {
+   "kept": "joined",
+   "other": "H3O+ bætt við, jafnvægisstaða færist til vinstri",
+   "reason": "disagree",
+   "mt": "H3O+ bætt við, jafnvægi færist til vinstri"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

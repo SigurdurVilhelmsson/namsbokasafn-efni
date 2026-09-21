@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_07_titration2",
+ "renderHash": "2b6206c4e9c28cf1",
+ "composedHash": "2b6206c4e9c28cf1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Volume of 0.100 M NaOH added (mL)": "Rúmmál af 0,100 M NaOH sem bætt var við (ml)",
+  "Titration of weak acid CH3COOH": "Títrun á veikri sýru CH3COOH",
+  "Titration of strong acid HCl": "Títrun á sterkri sýru HCl",
+  "Phenolphthalein|pH range": "Sýrustigssvið fenólftalíns",
+  "Methyl orange|pH range": "Sýrustigssvið metýlappelsínuguls",
+  "Litmus pH range": "Sýrustigssvið lakkmúss",
+  "Equivalence|point pH, 8.72": "Jafngildispunktur pH, 8,72",
+  "Equivalence|point pH, 7.00": "Jafngildispunktur pH, 7,00"
+ },
+ "mtAlternatives": {
+  "Volume of 0.100 M NaOH added (mL)": {
+   "kept": "joined",
+   "other": "Rúmmál 0,100 M NaOH sem bætt var við (ml)",
+   "reason": "disagree",
+   "mt": "Rúmmál af 0,100 M NaOH sem bætt var við (ml)"
+  },
+  "Phenolphthalein|pH range": {
+   "kept": "joined",
+   "other": "pH-svið fenólftalíns",
+   "reason": "disagree",
+   "mt": "Sýrustigssvið fenólftalíns"
+  },
+  "Litmus pH range": {
+   "kept": "joined",
+   "other": "pH-svið lakkmúss",
+   "reason": "disagree",
+   "mt": "Sýrustigssvið lakkmúss"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

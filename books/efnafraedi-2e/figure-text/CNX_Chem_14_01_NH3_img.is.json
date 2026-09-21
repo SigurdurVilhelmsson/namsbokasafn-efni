@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_01_NH3_img",
+ "renderHash": "db11a1bbc7979e96",
+ "composedHash": "db11a1bbc7979e96",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Base": "Basi",
+  "Acid": "Sýra"
+ },
+ "mtAlternatives": {
+  "Base": {
+   "kept": "joined",
+   "other": "Grunnur",
+   "reason": "disagree",
+   "mt": "Basi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

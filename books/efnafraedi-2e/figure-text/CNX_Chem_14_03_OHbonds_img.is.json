@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_OHbonds_img",
+ "renderHash": "d589c765b6790aff",
+ "composedHash": "d589c765b6790aff",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Bond b": "Skuldabréf b",
+  "Bond a": "Skuldabréf a"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

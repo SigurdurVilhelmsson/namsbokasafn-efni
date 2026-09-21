@@ -1,0 +1,51 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_01_conjugate_img",
+ "renderHash": "ccac786fe6dced4f",
+ "composedHash": "ccac786fe6dced4f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Acid": "Sýra",
+  "Base": "Basi",
+  "Conjugate base": "Samoka basi",
+  "Conjugate acid": "Samoka sýra",
+  "Remove H+": "Fjarlægja H+",
+  "Conjugate acid-base pair": "Samoka sýru-basa par",
+  "H2O (acid)": "H2O (sýra)",
+  "OH– (conjugate base)": "OH– (samoka basi)",
+  "NH3 (base)": "NH3 (basi)",
+  "NH4|+ (conjugate acid)": "NH4 + (samoka sýra)",
+  "Add H+": "Bæta við H+"
+ },
+ "mtAlternatives": {
+  "Base": {
+   "kept": "joined",
+   "other": "Grunnur",
+   "reason": "disagree",
+   "mt": "Basi"
+  },
+  "Conjugate acid": {
+   "kept": "joined",
+   "other": "Samsýra",
+   "reason": "disagree",
+   "mt": "Samoka sýra"
+  },
+  "OH– (conjugate base)": {
+   "kept": "joined",
+   "other": "OH– (samsýra)",
+   "reason": "disagree",
+   "mt": "OH– (samoka basi)"
+  },
+  "NH4|+ (conjugate acid)": {
+   "kept": "joined",
+   "other": "NH4 + (samsýra)",
+   "reason": "disagree",
+   "mt": "NH4 + (samoka sýra)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

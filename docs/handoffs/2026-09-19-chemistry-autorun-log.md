@@ -482,3 +482,14 @@ ch13's m68801 was HELD BACK on `bracket-marker delta sub +11`, the same shape as
 it whole. Two chapters, 4 then 11 occurrences — **the MT does this whenever an OpenStax alt spells
 a subscript out in words**, which is its house style for screen readers. Expect it in every
 remaining chapter.
+
+## ch14 — 9 units · ~1,660 ISK text + ~66 ISK figures · `DONE=ok` first run, no stops
+
+- **Text:** 9 units, `Failed: 0`, **165,968 chars (~1,660 ISK)** vs a 2,129 estimate (**0.78x**). Arm 9 of 9.
+- **Figures:** 36 enumerated — 22 translated, 1 textless, **13 unresolved**. 6,573 billable chars.
+- **Inject:** 8 COMPLETE, manifest `green=true`, 0 unexplained, **131 perfect**. No held-back module,
+  no `--allow-incomplete`. **The first chapter this session to need no intervention at all.**
+- **Render:** 2 renames → 2 rows. **Checks:** 0 raw `[[` in 13 pages, positive control 507.
+- **Pins:** sidecars 213 → 214, run records 105 → 114, metadata 16 → 17, modules-minus-metadata
+  **197 unchanged**; mustache 2,030 → 1,592; carriers 52 → 45; ids/markers/examined **all +36**.
+  🔑 **Sixth chapter, same law** — 22+1+13 = 36 figures, and the delta is 36.

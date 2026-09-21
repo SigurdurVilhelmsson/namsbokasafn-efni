@@ -1,20 +1,20 @@
 {
-  "generated": "2026-09-21T06:17:28.713Z",
+  "generated": "2026-09-21T07:03:18.992Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-21T06:17:28.713Z",
+      "generated": "2026-09-21T07:03:18.992Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 130,
-        "withDiscrepancies": 19,
-        "totalDiscrepancies": 31,
+        "perfect": 131,
+        "withDiscrepancies": 18,
+        "totalDiscrepancies": 30,
         "unexplainedDiscrepancies": 0,
         "deferredLosses": 14,
-        "benignArtifacts": 17,
+        "benignArtifacts": 16,
         "green": true
       },
       "modules": [
@@ -137,18 +137,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/>; prior virkjun<sub>a</sub>rorka corruption resolved (absent in fresh)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68805",
-          "chapter": "ch14",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": 1,
-              "status": "benign",
-              "reason": "benign over-wrap (Icelandic rephrase adds one italic span)"
             }
           ]
         },

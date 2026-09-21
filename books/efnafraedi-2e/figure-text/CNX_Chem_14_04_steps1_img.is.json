@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_04_steps1_img",
+ "renderHash": "a87317521df24a4b",
+ "composedHash": "a87317521df24a4b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Determine the |direction of |change.": "Ákvarðaðu stefnu breytingarinnar.",
+  "Determine x and |the equilibrium |concentrations.": "Ákvarðaðu x og jafnvægisstyrkinn.",
+  "Solve for x and |the equilibrium |concentrations.": "Leystu fyrir x og jafnvægisstyrkinn.",
+  "Check the math.": "Farðu yfir útreikningana."
+ },
+ "mtAlternatives": {
+  "Solve for x and |the equilibrium |concentrations.": {
+   "kept": "joined",
+   "other": "Leysið fyrir x og jafnvægisstyrkinn.",
+   "reason": "disagree",
+   "mt": "Leystu fyrir x og jafnvægisstyrkinn."
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

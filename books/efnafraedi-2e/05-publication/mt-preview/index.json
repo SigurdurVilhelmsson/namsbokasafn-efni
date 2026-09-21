@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T06:17:32.788Z",
+  "generated": "2026-09-21T07:03:22.617Z",
   "termCount": 763,
   "entries": [
     {
@@ -314,7 +314,7 @@
       "termIs": "amfíprótísk",
       "termEn": "amphiprotic",
       "termFull": "amfíprótísk (e. amphiprotic)",
-      "definition": "efni sem getur annaðhvort gefið frá sér eða tekið við róteind í Brønsted-Lowry sýru-basa efnahvarfi",
+      "definition": "efnatengund sem getur annaðhvort gefið frá sér eða tekið við róteind í Brønsted-Lowry sýru-basahvarfi",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -325,7 +325,7 @@
       "termIs": "amfóterísk",
       "termEn": "amphoteric",
       "termFull": "amfóterísk (e. amphoteric)",
-      "definition": "efni sem getur virkað annaðhvort sem sýra eða basi",
+      "definition": "efnatengund sem getur virkað annaðhvort sem sýra eða basi",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -677,7 +677,7 @@
       "termIs": "basajónun",
       "termEn": "base ionization",
       "termFull": "basajónun (e. base ionization)",
-      "definition": "efnahvarf sem felur í sér flutning róteindar frá vatni yfir í basa, sem gefur hýdroxíðjónir og samoka sýru basans",
+      "definition": "hvarf sem felur í sér flutning róteindar úr vatni yfir í basa, sem gefur hýdroxíðjónir og samsvara sýru basans",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -707,9 +707,9 @@
       "termId": "fs-idm54008672"
     },
     {
-      "termIs": "basískur",
+      "termIs": "basísk",
       "termEn": "basic",
-      "termFull": "basískur (e. basic)",
+      "termFull": "basísk (e. basic)",
       "definition": "lausn þar sem [H3O+] &lt; [OH−]",
       "chapter": 14,
       "section": "14.2",
@@ -1488,6 +1488,17 @@
       "termId": "fs-idm278014928"
     },
     {
+      "termIs": "einróteindasýra",
+      "termEn": "monoprotic acid",
+      "termFull": "einróteindasýra (e. monoprotic acid)",
+      "definition": "sýra sem inniheldur eina jónanlega vetnisfrumeind á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölróteindasýrur",
+      "sectionSlug": "14-5-fjolroteindasyrur",
+      "termId": "fs-idp98784944"
+    },
+    {
       "termIs": "einsameindahvarf",
       "termEn": "unimolecular reaction",
       "termFull": "einsameindahvarf (e. unimolecular reaction)",
@@ -1552,17 +1563,6 @@
       "sectionTitle": "Girðiefnafræði hliðarmálma",
       "sectionSlug": "19-2-girdiefnafraedi-hlidarmalma",
       "termId": "fs-idp8060128"
-    },
-    {
-      "termIs": "einvirk sýra",
-      "termEn": "monoprotic acid",
-      "termFull": "einvirk sýra (e. monoprotic acid)",
-      "definition": "sýra sem inniheldur eina jónanlega vetnisfrumeind í hverri sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölvirkar sýrur",
-      "sectionSlug": "14-5-fjolvirkar-syrur",
-      "termId": "fs-idp98784944"
     },
     {
       "termIs": "endapunktur",
@@ -2478,14 +2478,14 @@
       "termId": "fs-idm46849712"
     },
     {
-      "termIs": "Henderson-Hasselbalch-jafnan",
+      "termIs": "Henderson-Hasselbalch jafnan",
       "termEn": "henderson-hasselbalch equation",
-      "termFull": "Henderson-Hasselbalch-jafnan (e. henderson-hasselbalch equation)",
-      "definition": "lógaritmísk útgáfa af jöfnu sýrujónunarfastans, sniðin á hentugan hátt til að reikna út pH stuðpúðalausna",
+      "termFull": "Henderson-Hasselbalch jafnan (e. henderson-hasselbalch equation)",
+      "definition": "lógaritmísk útgáfa af jónunarfastastæðu sýru, sem er þægilega sniðin til að reikna út sýrustig (pH) jafnalausna",
       "chapter": 14,
       "section": "14.6",
-      "sectionTitle": "Stuðpúðar",
-      "sectionSlug": "14-6-studpudar",
+      "sectionTitle": "Jafnalausnir",
+      "sectionSlug": "14-6-jafnalausnir",
       "termId": "fs-idm71412016"
     },
     {
@@ -3061,6 +3061,28 @@
       "termId": "fs-idp55104"
     },
     {
+      "termIs": "jafnalausn",
+      "termEn": "buffer",
+      "termFull": "jafnalausn (e. buffer)",
+      "definition": "blanda af umtalsverðu magni af veiku sýru-basa pari. Sýrustig (pH) jafnalausnar breytist lítið þegar litlu magni af sýru eða basa er bætt við",
+      "chapter": 14,
+      "section": "14.6",
+      "sectionTitle": "Jafnalausnir",
+      "sectionSlug": "14-6-jafnalausnir",
+      "termId": "fs-idp88495904"
+    },
+    {
+      "termIs": "jafnalausnargeta",
+      "termEn": "buffer capacity",
+      "termFull": "jafnalausnargeta (e. buffer capacity)",
+      "definition": "magn sýru eða basa sem hægt er að bæta við rúmmál jafnalausnar áður en sýrustig hennar breytist verulega (venjulega um eina pH-einingu)",
+      "chapter": 14,
+      "section": "14.6",
+      "sectionTitle": "Jafnalausnir",
+      "sectionSlug": "14-6-jafnalausnir",
+      "termId": "fs-idp88494848"
+    },
+    {
       "termIs": "jafngildisjafna massa og orku",
       "termEn": "mass-energy equivalence equation",
       "termFull": "jafngildisjafna massa og orku (e. mass-energy equivalence equation)",
@@ -3193,6 +3215,17 @@
       "termId": "fs-idp182712496"
     },
     {
+      "termIs": "jónamargfeldisfasti vatns (Kw)",
+      "termEn": "ion-product constant for water (kw)",
+      "termFull": "jónamargfeldisfasti vatns (Kw) (e. ion-product constant for water (kw))",
+      "definition": "jafnvægisfasti fyrir sjálfjónun vatns",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp9778624"
+    },
+    {
       "termIs": "jónandi geislun",
       "termEn": "ionizing radiation",
       "termFull": "jónandi geislun (e. ionizing radiation)",
@@ -3248,17 +3281,6 @@
       "termId": "fs-idm37301360"
     },
     {
-      "termIs": "jónmargfeldisfasti vatns (Kw)",
-      "termEn": "ion-product constant for water (kw)",
-      "termFull": "jónmargfeldisfasti vatns (Kw) (e. ion-product constant for water (kw))",
-      "definition": "jafnvægisfasti fyrir sjálfjónun vatns",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp9778624"
-    },
-    {
       "termIs": "jónunarísómera",
       "termEn": "ionization isomer",
       "termFull": "jónunarísómera (e. ionization isomer)",
@@ -3306,7 +3328,7 @@
       "termIs": "jöfnunaráhrif",
       "termEn": "leveling effect",
       "termFull": "jöfnunaráhrif (e. leveling effect)",
-      "definition": "sú athugun að sýru-basastyrkur uppleystra efna í tilteknum leysi takmarkast við styrk einkennandi sýru- og basaefnisagna leysisins (í vatni, hýdróníum- og hýdroxíðjónir, í sömu röð)",
+      "definition": "sú athugun að sýru-basastyrkur uppleystra efna í tilteknum leysi takmarkast við einkennandi sýru- og basaefni leysisins (í vatni, hýdróníum- og hýdroxíðjónir)",
       "chapter": 14,
       "section": "14.3",
       "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
@@ -4062,6 +4084,17 @@
       "termId": "fs-idp279277792"
     },
     {
+      "termIs": "litabreytingabil",
+      "termEn": "color-change interval",
+      "termFull": "litabreytingabil (e. color-change interval)",
+      "definition": "svið í pH-gildi þar sem litabreyting vísbendis sést",
+      "chapter": 14,
+      "section": "14.7",
+      "sectionTitle": "Sýru-basa títranir",
+      "sectionSlug": "14-7-syru-basa-titranir",
+      "termId": "fs-idp67177296"
+    },
+    {
       "termIs": "litrófsefnafræðileg röð",
       "termEn": "spectrochemical series",
       "termFull": "litrófsefnafræðileg röð (e. spectrochemical series)",
@@ -4071,17 +4104,6 @@
       "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
       "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
       "termId": "fs-idm145242928"
-    },
-    {
-      "termIs": "litskiptabil",
-      "termEn": "color-change interval",
-      "termFull": "litskiptabil (e. color-change interval)",
-      "definition": "það pH-svið þar sem litskipti litvísis eiga sér stað",
-      "chapter": 14,
-      "section": "14.7",
-      "sectionTitle": "Sýru-basa títranir",
-      "sectionSlug": "14-7-syru-basa-titranir",
-      "termId": "fs-idp67177296"
     },
     {
       "termIs": "lífrænt efnasamband",
@@ -5187,7 +5209,7 @@
       "termIs": "oxósýra",
       "termEn": "oxyacid",
       "termFull": "oxósýra (e. oxyacid)",
-      "definition": "þrískipt efnasamband með súra eiginleika, en sameindir þess innihalda miðlæga málmleysingjafrumeind sem er tengd einni eða fleiri O-frumeindum, þar sem að minnsta kosti ein þeirra er tengd jónanlegri H-frumeind",
+      "definition": "þrígilt efnasamband með sýrueiginleika, en sameindir þess innihalda miðlægt málmleysingjafrumeind sem er tengd einni eða fleiri O-frumeindum, þar sem að minnsta kosti ein þeirra er tengd jónanlegri H-frumeind",
       "chapter": 14,
       "section": "14.3",
       "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
@@ -5407,7 +5429,7 @@
       "termIs": "pH",
       "termEn": null,
       "termFull": "pH",
-      "definition": "lograkvarði yfir styrk oxóníumjóna í lausn",
+      "definition": "lógaritmískur mælikvarði á styrk oxóníumjóna í lausn",
       "chapter": 14,
       "section": "14.2",
       "sectionTitle": "pH og pOH",
@@ -5473,7 +5495,7 @@
       "termIs": "pOH",
       "termEn": null,
       "termFull": "pOH",
-      "definition": "lograkvarði yfir styrk hýdroxíðjóna í lausn",
+      "definition": "lógaritmískur mælikvarði á styrk hýdroxíðjóna í lausn",
       "chapter": 14,
       "section": "14.2",
       "sectionTitle": "pH og pOH",
@@ -6141,28 +6163,6 @@
       "termId": "fs-idm114308784"
     },
     {
-      "termIs": "samoka basi",
-      "termEn": "conjugate base",
-      "termFull": "samoka basi (e. conjugate base)",
-      "definition": "efni sem myndast þegar sýra missir róteind",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp41346656"
-    },
-    {
-      "termIs": "samoka sýra",
-      "termEn": "conjugate acid",
-      "termFull": "samoka sýra (e. conjugate acid)",
-      "definition": "efni sem myndast þegar basi tekur við róteind",
-      "chapter": 14,
-      "section": "14.1",
-      "sectionTitle": "Brønsted-Lowry sýrur og basar",
-      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
-      "termId": "fs-idp41345504"
-    },
-    {
       "termIs": "Samorkusvigrými",
       "termEn": null,
       "termFull": "Samorkusvigrými",
@@ -6172,6 +6172,28 @@
       "sectionTitle": "Sámeindasvigrúmskenningin",
       "sectionSlug": "8-4-sameindasvigrumskenningin",
       "termId": "fs-idm167738656"
+    },
+    {
+      "termIs": "samsvara basi",
+      "termEn": "conjugate base",
+      "termFull": "samsvara basi (e. conjugate base)",
+      "definition": "efni sem myndast þegar sýra missir róteind",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp41346656"
+    },
+    {
+      "termIs": "samsvara sýra",
+      "termEn": "conjugate acid",
+      "termFull": "samsvara sýra (e. conjugate acid)",
+      "definition": "efni sem myndast þegar basi fær róteind",
+      "chapter": 14,
+      "section": "14.1",
+      "sectionTitle": "Brønsted-Lowry sýrur og basar",
+      "sectionSlug": "14-1-brnsted-lowry-syrur-og-basar",
+      "termId": "fs-idp41345504"
     },
     {
       "termIs": "samsætur",
@@ -6309,7 +6331,7 @@
       "termIs": "sjálfjónun",
       "termEn": "autoionization",
       "termFull": "sjálfjónun (e. autoionization)",
-      "definition": "efnahvarf milli eins efna sem gefur jónísk myndefni; fyrir vatn felur þetta efnahvarf í sér flutning róteinda til að gefa hýdróníum- og hýdroxíðjónir",
+      "definition": "hvarf milli eins efnatengunda sem gefur jónaafurðir; fyrir vatn felur þetta hvarf í sér flutning róteinda til að gefa hýdróníum- og hýdroxíðjónir",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -6768,28 +6790,6 @@
       "termId": "fs-idm41373200"
     },
     {
-      "termIs": "stuðpúðageta",
-      "termEn": "buffer capacity",
-      "termFull": "stuðpúðageta (e. buffer capacity)",
-      "definition": "magn sýru eða basa sem hægt er að bæta við rúmmál stuðpúðalausnar áður en pH hennar breytist verulega (venjulega um eina pH-einingu)",
-      "chapter": 14,
-      "section": "14.6",
-      "sectionTitle": "Stuðpúðar",
-      "sectionSlug": "14-6-studpudar",
-      "termId": "fs-idp88494848"
-    },
-    {
-      "termIs": "stuðpúði",
-      "termEn": "buffer",
-      "termFull": "stuðpúði (e. buffer)",
-      "definition": "blanda af umtalsverðu magni af veiku sýru-basa pari. pH stuðpúða þolir breytingar þegar litlu magni af sýru eða basa er bætt við",
-      "chapter": 14,
-      "section": "14.6",
-      "sectionTitle": "Stuðpúðar",
-      "sectionSlug": "14-6-studpudar",
-      "termId": "fs-idp88495904"
-    },
-    {
       "termIs": "stuðull",
       "termEn": "coefficient",
       "termFull": "stuðull (e. coefficient)",
@@ -7043,10 +7043,10 @@
       "termId": "fs-idm54009824"
     },
     {
-      "termIs": "sýru-basa litvísir",
+      "termIs": "sýru-basa vísbendir",
       "termEn": "acid-base indicator",
-      "termFull": "sýru-basa litvísir (e. acid-base indicator)",
-      "definition": "veik sýra eða basi þar sem samoka parið gefur lausninni annan lit; notað við sjónrænt mat á pH lausnar",
+      "termFull": "sýru-basa vísbendir (e. acid-base indicator)",
+      "definition": "veik sýra eða basi þar sem sambasinn eða samsýran gefur lausninni annan lit; notað við sjónrænt mat á pH-gildi lausnar",
       "chapter": 14,
       "section": "14.7",
       "sectionTitle": "Sýru-basa títranir",
@@ -7068,7 +7068,7 @@
       "termIs": "sýrujónun",
       "termEn": "acid ionization",
       "termFull": "sýrujónun (e. acid ionization)",
-      "definition": "efnahvarf sem felur í sér flutning róteindar frá sýru yfir í vatn, sem gefur hýdróníumjónir og samoka basa sýrunnar",
+      "definition": "hvarf sem felur í sér flutning róteindar frá sýru yfir í vatn, sem gefur hýdróníumjónir og samsvara basa sýrunnar",
       "chapter": 14,
       "section": "14.1",
       "sectionTitle": "Brønsted-Lowry sýrur og basar",
@@ -7255,7 +7255,7 @@
       "termIs": "títrunarferill",
       "termEn": "titration curve",
       "termFull": "títrunarferill (e. titration curve)",
-      "definition": "graf yfir eiginleika sýnis (eins og pH) á móti rúmmáli títrants sem bætt er við",
+      "definition": "graf yfir einhvern eiginleika sýnis (svo sem pH) á móti rúmmáli títrunarefnis sem bætt er við",
       "chapter": 14,
       "section": "14.7",
       "sectionTitle": "Sýru-basa títranir",
@@ -7351,6 +7351,28 @@
       "termId": "fs-idm237171488"
     },
     {
+      "termIs": "tvíróteindabasi",
+      "termEn": "diprotic base",
+      "termFull": "tvíróteindabasi (e. diprotic base)",
+      "definition": "basi sem getur tekið við tveimur róteindum",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölróteindasýrur",
+      "sectionSlug": "14-5-fjolroteindasyrur",
+      "termId": "fs-idm124847888"
+    },
+    {
+      "termIs": "tvíróteindasýra",
+      "termEn": "diprotic acid",
+      "termFull": "tvíróteindasýra (e. diprotic acid)",
+      "definition": "sýra sem inniheldur tvær jónanlegar vetnisfrumeindir á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölróteindasýrur",
+      "sectionSlug": "14-5-fjolroteindasyrur",
+      "termId": "fs-idp88439392"
+    },
+    {
       "termIs": "tvísameindahvarf",
       "termEn": "bimolecular reaction",
       "termFull": "tvísameindahvarf (e. bimolecular reaction)",
@@ -7426,28 +7448,6 @@
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
       "termId": "fs-idm42302272"
-    },
-    {
-      "termIs": "tvívirk sýra",
-      "termEn": "diprotic acid",
-      "termFull": "tvívirk sýra (e. diprotic acid)",
-      "definition": "sýra sem inniheldur tvær jónanlegar vetnisfrumeindir í hverri sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölvirkar sýrur",
-      "sectionSlug": "14-5-fjolvirkar-syrur",
-      "termId": "fs-idp88439392"
-    },
-    {
-      "termIs": "tvívirkur basi",
-      "termEn": "diprotic base",
-      "termFull": "tvívirkur basi (e. diprotic base)",
-      "definition": "basi sem getur tekið við tveimur róteindum",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölvirkar sýrur",
-      "sectionSlug": "14-5-fjolvirkar-syrur",
-      "termId": "fs-idm124847888"
     },
     {
       "termIs": "Tyndall-áhrif",
@@ -8135,11 +8135,11 @@
       "termIs": "þrepaskipt jónun",
       "termEn": "stepwise ionization",
       "termFull": "þrepaskipt jónun (e. stepwise ionization)",
-      "definition": "ferli þar sem fjölvirk sýra jónast með því að missa róteindir í röð",
+      "definition": "ferli þar sem fjölróteindasýra jónast með því að missa róteindir í áföngum",
       "chapter": 14,
       "section": "14.5",
-      "sectionTitle": "Fjölvirkar sýrur",
-      "sectionSlug": "14-5-fjolvirkar-syrur",
+      "sectionTitle": "Fjölróteindasýrur",
+      "sectionSlug": "14-5-fjolroteindasyrur",
       "termId": "fs-idm63142976"
     },
     {
@@ -8198,6 +8198,17 @@
       "termId": "fs-idm153679600"
     },
     {
+      "termIs": "þríróteindasýra",
+      "termEn": "triprotic acid",
+      "termFull": "þríróteindasýra (e. triprotic acid)",
+      "definition": "sýra sem inniheldur þrjár jónanlegar vetnisfrumeindir á hverja sameind",
+      "chapter": 14,
+      "section": "14.5",
+      "sectionTitle": "Fjölróteindasýrur",
+      "sectionSlug": "14-5-fjolroteindasyrur",
+      "termId": "fs-idm25629392"
+    },
+    {
       "termIs": "þrísameindahvarf",
       "termEn": "termolecular reaction",
       "termFull": "þrísameindahvarf (e. termolecular reaction)",
@@ -8207,17 +8218,6 @@
       "sectionTitle": "Hvarfgangar",
       "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp251542624"
-    },
-    {
-      "termIs": "þrívirk sýra",
-      "termEn": "triprotic acid",
-      "termFull": "þrívirk sýra (e. triprotic acid)",
-      "definition": "sýra sem inniheldur þrjár jónanlegar vetnisfrumeindir í hverri sameind",
-      "chapter": 14,
-      "section": "14.5",
-      "sectionTitle": "Fjölvirkar sýrur",
-      "sectionSlug": "14-5-fjolvirkar-syrur",
-      "termId": "fs-idm25629392"
     },
     {
       "termIs": "þrýstimælir",

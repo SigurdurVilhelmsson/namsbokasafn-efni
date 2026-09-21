@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_14_03_AcidpH",
+ "renderHash": "368f3e14e156b405",
+ "composedHash": "368f3e14e156b405",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "SiH4": "SiH4",
+  "Neither acid|nor base": "Hvorki sýra né basi",
+  "Very weak base|Kb = 4 × 10–28": "Mjög veikur basi Kb = 4 × 10–28",
+  "Weak base|Kb = 1.8 × 10–5": "Veikur basi Kb = 1,8 × 10–5",
+  "Neutral": "Hlutlaus",
+  "Weak acid|Ka = 9.5 × 10–8": "Veik sýra Ka = 9,5 × 10–8",
+  "HCl": "HCl",
+  "Strong acid": "Sterk sýra",
+  "Weak acid|Ka = 6.8 × 10–4": "Veik sýra Ka = 6,8 × 10–4",
+  "Increasing acid strength": "Vaxandi sýrustyrkur",
+  "Increasing base strength": "Vaxandi basastyrkur"
+ },
+ "mtAlternatives": {
+  "Increasing base strength": {
+   "kept": "joined",
+   "other": "Auka styrk basa",
+   "reason": "disagree",
+   "mt": "Vaxandi basastyrkur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}
