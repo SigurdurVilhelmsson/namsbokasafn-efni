@@ -586,7 +586,7 @@ re-supplied on every invocation; the gate cannot remember it.**
 The re-buy re-translated existing modules without changing extraction or sidecar counts, so no
 premise pin moved. Floor stayed at the documented 2.
 
-## ch16 — 6 units · ~939 ISK text + ~14 ISK figures · `DONE=stopped`, NOT PREPARED
+## ch16 — 6 units · ~939 ISK text + ~14 ISK figures · `DONE=stopped` on the buy, **PREPARED 2026-09-21** (see the RESOLVED section at the end of this entry)
 
 **First chapter bought with an AUDITED subset** (`docs/handoffs/2026-09-21-glossary-subset-audit.md`):
 `enthalpy,enthalpy change,microstate,carbon dioxide,atom,spontaneous,spontaneity,free energy`.
@@ -621,3 +621,28 @@ carries nothing at all.
 
 **The paid MT and figures ARE committed** so the ~953 ISK is not at risk; **ch16 is NOT prepared** —
 render and index never ran.
+
+### ✅ RESOLVED 2026-09-21, 0 ISK — PREPARED. The ruling was not needed after all.
+
+The discrepancy was diagnosed to root cause instead of being classified by eye. It is **C171**:
+`cnxml-extract.js:2356`'s `if (text)` gate answers two questions with one condition — *"is there
+anything to translate?"* and *"is this para part of the document?"* — so a para that extracts empty
+is never pushed into `02-structure`, and inject rebuilds from `02-structure`.
+
+▶ **The choice was NOT benign-vs-stopped, which is why it needed no [USER] ruling.** A third option
+existed and the mechanism already supports it: `known-loss-deferred`, which turns the manifest green
+**while keeping the loss tracked**, because `classifyDiff` returns `unexplained` for such an entry
+with no `pointer`. `benign` would have asserted *"not a real loss"*; this is a real loss with zero
+reader impact.
+
+🔴 **AND THE CENSUS OVERTURNED THE OBVIOUS FIX.** Parsed (not regexed) over all six books'
+`01-source` — 1,192 modules, **15,469 top-level `<para>`** — this is a corpus-wide **singleton**.
+But the GATE is not: `lifraen-efnafraedi` holds **1,961** content-free paras of the same shape
+(`<link class="os-embed"/>`) which are equally absent from `02-structure` and **nevertheless reach
+the injected output intact** (4→4, 41→41, 3→3 on the 8 injected organic modules), because
+`buildExerciseDom` preserves `<exercise><problem>` wholesale. Fixing the gate would give those 1,961
+a **second** route into the output — the §C149 duplication shape, in a published book.
+
+Inject → render → index all ran. `green: true`, `unexplained: 0`, `deferredLosses 14 → 15`
+(the +1 being the control that the entry was read), 0 raw `[[` in 10 pages against a 365-marker
+positive control, and **1 page rename → 1 redirect row**. Full account: register **C171**.
