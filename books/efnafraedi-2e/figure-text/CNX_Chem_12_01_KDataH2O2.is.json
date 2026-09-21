@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_01_KDataH2O2",
+ "renderHash": "012e96ab26c189cf",
+ "composedHash": "012e96ab26c189cf",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (h)": "Tími (klst)",
+  "[H2O2] (mol L": "[H2O2] (mól L",
+  "Δ[H2O2] (mol L": "Δ[H2O2] (mól L",
+  "Rate of Decomposition,|(mol L": "Hraði niðurbrots, (mól L"
+ },
+ "mtAlternatives": {
+  "Time (h)": {
+   "kept": "joined",
+   "other": "Tími (klst.)",
+   "reason": "disagree",
+   "mt": "Tími (klst)"
+  },
+  "Rate of Decomposition,|(mol L": {
+   "kept": "joined",
+   "other": "Niðurbrotshraði, (mól L",
+   "reason": "disagree",
+   "mt": "Hraði niðurbrots, (mól L"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

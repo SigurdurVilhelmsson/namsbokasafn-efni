@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_05_SuccessR",
+ "renderHash": "53133e4e35cad293",
+ "composedHash": "53133e4e35cad293",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Lower|activation |energy, Ea": "Lægri virkjunarorka, Ea",
+  "Number of molecules": "Fjöldi sameinda",
+  "Kinetic energy": "Hreyfiorka",
+  "Higher |activation |energy, Ea": "Hærri virkjunarorka, Ea"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

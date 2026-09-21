@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_05_RCooDgm",
+ "renderHash": "b71058f90d850bb7",
+ "composedHash": "b71058f90d850bb7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Energy": "Orka",
+  "Extent of reaction": "Framvinda efnahvarfs",
+  "Transition state": "Umbreytingarástand"
+ },
+ "mtAlternatives": {
+  "Extent of reaction": {
+   "kept": "joined",
+   "other": "Hvarfjafnvægi",
+   "reason": "disagree",
+   "mt": "Framvinda efnahvarfs"
+  },
+  "Transition state": {
+   "kept": "joined",
+   "other": "Hvarfástand",
+   "reason": "disagree",
+   "mt": "Umbreytingarástand"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

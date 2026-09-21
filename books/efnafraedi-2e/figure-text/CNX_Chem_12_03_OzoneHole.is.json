@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_03_OzoneHole",
+ "renderHash": "03e8c2e08ff9d884",
+ "composedHash": "03e8c2e08ff9d884",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Total Ozone (Dobson units)": "Heildaróson (Dobson-einingar)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

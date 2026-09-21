@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_Exercise7b_img",
+ "renderHash": "fe6043c0b79fb8bf",
+ "composedHash": "fe6043c0b79fb8bf",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Extent of reaction": "Framvinda efnahvarfs",
+  "Energy (kJ)": "Orka (kJ)"
+ },
+ "mtAlternatives": {
+  "Extent of reaction": {
+   "kept": "joined",
+   "other": "Umfang viðbragða",
+   "reason": "disagree",
+   "mt": "Framvinda efnahvarfs"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

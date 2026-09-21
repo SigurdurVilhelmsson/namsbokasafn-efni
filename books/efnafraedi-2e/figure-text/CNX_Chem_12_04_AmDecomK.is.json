@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_04_AmDecomK",
+ "renderHash": "393904e3030d0a92",
+ "composedHash": "393904e3030d0a92",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (s)": "Tími (s)",
+  "Decomposition on SiO2": "Niðurbrot á SiO2",
+  "Decomposition on W": "Niðurbrot á W"
+ },
+ "mtAlternatives": {
+  "Decomposition on W": {
+   "kept": "joined",
+   "other": "Sundurliðun á W",
+   "reason": "disagree",
+   "mt": "Niðurbrot á W"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

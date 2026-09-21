@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_04_2OrdKin",
+ "renderHash": "af6498b2fa9fa96b",
+ "composedHash": "af6498b2fa9fa96b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (s)": "Tími (s)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

@@ -88,3 +88,26 @@ The MT retitled *colligative properties* from `samthynningareiginleikar` to
 sense (colligative = depending on the NUMBER of solute particles, not their identity). The old
 slug was closer. The page slug follows the title, so fixing the title in the editor will rename
 the page again and produce a further redirect row.
+
+## ch12 — 6 rows
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/12/12-1-hvarfhradi-efnahvarfa.html` | `chapters/12/12-1-hradi-efnahvarfa.html` | m68786 |
+| `chapters/12/12-2-thaettir-sem-hafa-ahrif-a-hvarfhrada.html` | `chapters/12/12-2-thaettir-sem-hafa-ahrif-a-efnahvarfshrada.html` | m68787 |
+| `chapters/12/12-3-hradajofnur.html` | `chapters/12/12-3-hradalogmal.html` | m68789 |
+| `chapters/12/12-4-heildud-hradalogmal.html` | `chapters/12/12-4-heildunarhradalogmal.html` | m68791 |
+| `chapters/12/12-6-hvarfgangar-efnahvarfa.html` | `chapters/12/12-6-hvarfgangar.html` | m68794 |
+| `chapters/12/12-7-hvotun.html` | `chapters/12/12-7-hvorf.html` | m68795 |
+
+_Both instruments agree at 6: six `Pruned superseded page` lines and a slug-map diff of
+**added=6, changed=0, removed=0** (30 → 36). No chain collapse this time — established by
+diffing, not by the counts happening to match._
+
+🔴 **FOR AN EDITOR — `12-7` IS A TITLE REGRESSION AND THE OLD SLUG WAS RIGHT.** The English
+section title is **`Catalysis`**; the re-MT rendered it **`Hvörf`**, which means *reactions*.
+The superseded slug was `hvotun` — **`hvötun` is the correct word and the previous MT had it.**
+▶ **Confined to the title: the body is correct**, using `hvati`/`hvata` (catalyst) 47 times.
+There is **no glossary row for `catalysis` or `catalyst`**, so this is the model unprompted —
+§C73's control — getting the running text right and the heading wrong. Fixing the title renames
+the page again and produces a further redirect row.

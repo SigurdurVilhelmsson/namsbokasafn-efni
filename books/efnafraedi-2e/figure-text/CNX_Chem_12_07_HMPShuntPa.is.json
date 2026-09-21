@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_HMPShuntPa",
+ "renderHash": "aa665c77771dea14",
+ "composedHash": "aa665c77771dea14",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Hexokinase": "Hexókínasi",
+  "Glucose": "Glúkósi",
+  "Glucose 6 phosphate": "Glúkósa-6-fosfat",
+  "6 phosphogluconate": "6-fosfóglúkónat",
+  "Glutathione|reductase": "Glútaþíon redúktasi",
+  "NADP+": "NADP+",
+  "NADPH": "NADPH",
+  "ADP": "ADP",
+  "ATP": "ATP",
+  "GSSG": "GSSG",
+  "GSH": "GSH"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

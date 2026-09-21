@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_04_CYL1_img",
+ "renderHash": "f2e4d3736839ad17",
+ "composedHash": "f2e4d3736839ad17",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (s)": "Tími (s)",
+  "ln[A] vs. Time": "ln[A] á móti tíma"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

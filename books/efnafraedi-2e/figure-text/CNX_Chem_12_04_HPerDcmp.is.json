@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_04_HPerDcmp",
+ "renderHash": "623cd35996554bbd",
+ "composedHash": "623cd35996554bbd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "sssss|(12 h)": "sssss (12 klst.)",
+  "sssss|(24 h)": "sssss (24 klst.)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

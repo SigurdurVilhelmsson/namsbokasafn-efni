@@ -1,11 +1,11 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-20T20:55:58.168Z",
+  "generatedAt": "2026-09-21T06:02:19.087Z",
   "summary": {
     "modulesWithResidue": 2,
     "exactResidues": 70,
-    "ratioWarnings": 73,
+    "ratioWarnings": 74,
     "toleratedResidues": 4
   },
   "modules": {
@@ -427,6 +427,10 @@
     "m68794": {
       "exact": [],
       "warnings": [
+        {
+          "segmentId": "m68794:para:fs-idp38254032",
+          "ratio": 0.75
+        },
         {
           "segmentId": "m68794:solution:fs-idm1295248",
           "ratio": 0.91

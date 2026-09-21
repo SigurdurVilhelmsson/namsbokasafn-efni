@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_04_FrstOKin",
+ "renderHash": "51396e8953a656e5",
+ "composedHash": "51396e8953a656e5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Time (h)": "Tími (klst.)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

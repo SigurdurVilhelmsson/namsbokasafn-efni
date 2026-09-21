@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_12_07_HetCats-230a",
+ "renderHash": "84d5d03adc343833",
+ "composedHash": "84d5d03adc343833",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Ethylene ": "Eten",
+  "Hydrogen": "Vetni",
+  "Ni surface": "Nikkel yfirborð",
+  "Ethylene absorbed on |surface breaking π bonds": "Eten frásogast á yfirborðið og rýfur π-tengi"
+ },
+ "mtAlternatives": {
+  "Ethylene ": {
+   "kept": "joined",
+   "other": "Etýlen",
+   "reason": "disagree",
+   "mt": "Eten"
+  },
+  "Ni surface": {
+   "kept": "joined",
+   "other": "Ekkert yfirborð",
+   "reason": "disagree",
+   "mt": "Nikkel yfirborð"
+  },
+  "Ethylene absorbed on |surface breaking π bonds": {
+   "kept": "joined",
+   "other": "Etýlen frásogast á yfirborði og rýfur π-tengi",
+   "reason": "disagree",
+   "mt": "Eten frásogast á yfirborðið og rýfur π-tengi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

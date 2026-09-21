@@ -376,3 +376,62 @@ alternative to leaving them red is to scope their premise to pairs whose MT was 
 the current extraction (`schemaVersion: 2`), which would make them meaningful again today —
 **but it narrows a blocking gate's population, and this repo's rules say that is not a thing to
 do quietly.**
+
+## ch12 — 9 units · ~1,641 ISK text + ~27 ISK figures · `DONE=ok` on the third attempt
+
+- **Text:** 9 units, `Failed: 0`, **164,144 chars (~1,641 ISK)** against a 2,188 estimate (**0.75x**).
+  Arm 9 of 9. One module HELD BACK at the buy on `bracket-marker delta sub +4` — which was the
+  real defect, not a held-back nuisance.
+- **Figures:** 42 enumerated (30 translated, 7 photo, 2 textless, 3 unresolved). ⚠️ **The two
+  re-runs spent 0 ISK** — `MT spawned for 0 figure(s), 0 billable characters`, 30 `skipped-current`
+  — which is the measured proof that a resume after a stop costs nothing on the figure leg.
+- **Inject:** 8 modules COMPLETE, manifest `green=true`, 0 unexplained, 130 perfect.
+- **Render:** 6 renames → 6 redirect rows (added=6, changed=0, removed=0).
+- **Checks:** 0 raw `[[` in 13 pages, **positive control 533** — the first run under the repaired
+  control, printing a real number instead of an unconditional claim.
+- **Pins:** sidecars 211 → 212, run records 90 → 99 (ch12's 9 units), metadata 14 → 15,
+  modules-minus-metadata **197 unchanged** again; mustache 2,620 → 2,496; carriers 60 → 56;
+  ids/markers/examined **all +42**. 🔑 **Fourth chapter, same law** — ch09 +49, ch10 +82,
+  ch11 +46, ch12 +42, each equal to that chapter's own figure count. Floor back to the
+  documented 2, same names.
+
+### 🔴 §C169 — THE MT INVENTED MARKUP INSIDE A FIGURE `alt`, AND THE FIX WAS PUT IN THE WRONG PLACE TWICE
+
+`m68791`'s alt came back as `C[[sub:4]]H[[sub:6]]`. **OpenStax spells subscripts out in words in
+alt text** — *"l n [ C subscript 4 H subscript 6 ]"* — because a screen reader reads it aloud; the
+model recognised the chemistry and rendered real markup. **An `alt` is an XML ATTRIBUTE VALUE**, so
+there was no element to convert the placeholder into, and inject **refused the module** rather than
+publish a raw `[[sub:4]]`. That refusal is the only reason this was caught.
+
+**The measurement that licenses the fix:** EN alt segments corpus-wide **3,312, carrying a bracket
+marker: 0**. IS: 761, carrying one: **1**. So a marker in an alt is **invented by construction**,
+and unwrapping it destroys nothing. A 0.000% false-positive base rate.
+
+⚠️ **`unwrapInventedMarkers` could not have caught this, and not by oversight.** It decides by
+**TYPE** — stripping only types absent from `KNOWN_BRACKET_TYPES`. This was `[[sub:]]`, a wholly
+legitimate type, invented in a position where **no** type is legitimate. **Type and position are
+independent rules; neither subsumes the other.**
+
+🔴 **WHERE THE RULE LIVES COST TWO FAILED ATTEMPTS, AND THAT IS THE DURABLE PART:**
+1. **`readAlt`** — the obvious choke point. **Did nothing.** Both figure-alt callers deliberately
+   bypass it via `ctx.peekSeg` and *say so in a comment* (*"DELIBERATELY NOT readAlt"*), because
+   readAlt records a lookup MISS that makes inject refuse a pre-§C81 vintage.
+2. **`replaceMediaAlt`** — traced, and still wrong. It is **one of SEVEN** sites writing an
+   `alt="…"`; this figure is served by `rewriteOpenTag`.
+3. ✅ **`peekSeg`** — defined **once** (`cnxml-inject.js:2235`) and handed to every consumer in
+   `ctx`. Keyed on `:alt:` so nothing else moves.
+▶ **Patching writers means maintaining an enumeration that rots; patching the lookup they share
+does not.** CLAUDE.md's "do not trust any enumeration — re-derive it", applied to a fix rather
+than to a census.
+
+⚠️ **AND THE TOOL HAD ALREADY SAID WHERE IT WAS.** `assertNoMarkerResidue` appends
+`describeMarkerResidue`, which prints each marker with its offset and surrounding text. A `grep`
+for the first line of the error hid four context lines that named the alt outright, and two rounds
+of theorising followed. **Read the whole error before reasoning about it.**
+
+**Verified BY VALUE with a conservation control:** the alt now reads `„ln [C4H6]“`; **0** `[[`
+anywhere in the module; and `[[sub:` **outside** alt segments = **87** against **87** `<sub>`
+elements in the output — exact 1:1, which is what proves the strip took the 4 invented markers
+**and nothing else**. A bare "0 markers left" would have been equally consistent with eating all 91.
+_(An earlier raw `grep` said 92; the parser attributes 91. A grep-vs-parse counting-unit artifact —
+CLAUDE.md § census it by parsing, and state the unit.)_

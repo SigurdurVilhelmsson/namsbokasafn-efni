@@ -3508,5 +3508,15 @@
     "originalImage": "CNX_Chem_10_06_ConDec",
     "outputName": "CNX_Chem_10_06_ConDec_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_HPerDcmp",
+    "outputName": "CNX_Chem_12_04_HPerDcmp_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_CatConvert",
+    "outputName": "CNX_Chem_12_07_CatConvert_IS.svg",
+    "extension": ".svg"
   }
 ]

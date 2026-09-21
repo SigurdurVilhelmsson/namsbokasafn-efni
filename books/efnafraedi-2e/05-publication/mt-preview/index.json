@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T20:56:02.462Z",
+  "generated": "2026-09-21T06:02:22.455Z",
   "termCount": 763,
   "entries": [
     {
@@ -72,11 +72,11 @@
       "termIs": "aðferð upphafshraða",
       "termEn": "method of initial rates",
       "termFull": "aðferð upphafshraða (e. method of initial rates)",
-      "definition": "algeng tilraunaaðferð til að ákvarða hraðajöfnur sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
+      "definition": "algeng tilraunaaðferð til að ákvarða hraðalögmál sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
       "chapter": 12,
       "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
+      "sectionTitle": "Hraðalögmál",
+      "sectionSlug": "12-3-hradalogmal",
       "termId": "fs-idm176826832"
     },
     {
@@ -421,10 +421,10 @@
       "termId": "fs-idp73021984"
     },
     {
-      "termIs": "Arrheniusar-jafna",
+      "termIs": "Arrheniusarjöfnun",
       "termEn": "arrhenius equation",
-      "termFull": "Arrheniusar-jafna (e. arrhenius equation)",
-      "definition": "stærðfræðilegt samband milli hraðafasta efnahvarfs, virkjunarorku og hitastigs",
+      "termFull": "Arrheniusarjöfnun (e. arrhenius equation)",
+      "definition": "stærðfræðilegt samband milli hraðafasta hvarfs, virkjunarorku og hitastigs",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -501,11 +501,11 @@
       "termIs": "augnablikshraði",
       "termEn": "instantaneous rate",
       "termFull": "augnablikshraði (e. instantaneous rate)",
-      "definition": "hraði efnahvarfs á hvaða augnabliki sem er, ákvarðaður af halla snertils við graf sem sýnir styrk sem fall af tíma",
+      "definition": "hraði efnahvarfs á hverju augnabliki, ákvarðaður af halla snertils við línurit sem sýnir styrk sem fall af tíma",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hvarfhraði efnahvarfa",
-      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
+      "sectionTitle": "Hraði efnahvarfa",
+      "sectionSlug": "12-1-hradi-efnahvarfa",
       "termId": "fs-idp70925872"
     },
     {
@@ -575,10 +575,10 @@
       "termId": "fs-id1170893631592"
     },
     {
-      "termIs": "árekstrakenningin",
+      "termIs": "árekstrakenning",
       "termEn": "collision theory",
-      "termFull": "árekstrakenningin (e. collision theory)",
-      "definition": "líkan sem leggur áherslu á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um hraðafræði efnahvarfa",
+      "termFull": "árekstrakenning (e. collision theory)",
+      "definition": "líkan sem leggur áherslu á orku og stefnu sameindaárekstra til að útskýra og spá fyrir um hvarfhraðafræði",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -1312,17 +1312,6 @@
       "termId": "fs-idp238031216"
     },
     {
-      "termIs": "efnahvarfsrit",
-      "termEn": "reaction diagram",
-      "termFull": "efnahvarfsrit (e. reaction diagram)",
-      "definition": "notað í hraðafræði efna til að sýna ýmsa eiginleika efnahvarfs",
-      "chapter": 12,
-      "section": "12.5",
-      "sectionTitle": "Árekstrakenningin",
-      "sectionSlug": "12-5-arekstrakenningin",
-      "termId": "fs-idm355773584"
-    },
-    {
       "termIs": "efnahvörfunarvarmafræði",
       "termEn": "thermochemistry",
       "termFull": "efnahvörfunarvarmafræði (e. thermochemistry)",
@@ -1499,14 +1488,14 @@
       "termId": "fs-idm278014928"
     },
     {
-      "termIs": "einsameinda efnahvarf",
+      "termIs": "einsameindahvarf",
       "termEn": "unimolecular reaction",
-      "termFull": "einsameinda efnahvarf (e. unimolecular reaction)",
-      "definition": "frumhvarf sem felur í sér eina hvarfefnaeind",
+      "termFull": "einsameindahvarf (e. unimolecular reaction)",
+      "definition": "grunnhvarf þar sem ein hvarfeind tekur þátt",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idm2926992"
     },
     {
@@ -1543,14 +1532,14 @@
       "termId": "fs-idp35066960"
     },
     {
-      "termIs": "einsleitur hvati",
+      "termIs": "einsleitur hviti",
       "termEn": "homogeneous catalyst",
-      "termFull": "einsleitur hvati (e. homogeneous catalyst)",
+      "termFull": "einsleitur hviti (e. homogeneous catalyst)",
       "definition": "hvati sem er í sama fasa og hvarfefnin",
       "chapter": 12,
       "section": "12.7",
-      "sectionTitle": "Hvötun",
-      "sectionSlug": "12-7-hvotun",
+      "sectionTitle": "Hvörf",
+      "sectionSlug": "12-7-hvorf",
       "termId": "fs-idm218392224"
     },
     {
@@ -1928,17 +1917,6 @@
       "termId": "fs-idm6667232"
     },
     {
-      "termIs": "frumhvarf",
-      "termEn": "elementary reaction",
-      "termFull": "frumhvarf (e. elementary reaction)",
-      "definition": "efnahvarf sem á sér stað í einu skrefi, nákvæmlega eins og sýnt er í efnajöfnu þess",
-      "chapter": 12,
-      "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
-      "termId": "fs-idp36862592"
-    },
-    {
       "termIs": "frumueining",
       "termEn": "unit cell",
       "termFull": "frumueining (e. unit cell)",
@@ -2269,6 +2247,17 @@
       "termId": "fs-idp226765840"
     },
     {
+      "termIs": "grunnhvarf",
+      "termEn": "elementary reaction",
+      "termFull": "grunnhvarf (e. elementary reaction)",
+      "definition": "hvarf sem á sér stað í einu skrefi, nákvæmlega eins og sýnt er í efnajöfnu þess",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
+      "termId": "fs-idp36862592"
+    },
+    {
       "termIs": "Gufun",
       "termEn": "vaporization",
       "termFull": "Gufun (e. vaporization)",
@@ -2429,8 +2418,8 @@
       "definition": "jafna sem tengir styrk hvarfefnis við liðinn tíma efnahvarfs",
       "chapter": 12,
       "section": "12.4",
-      "sectionTitle": "Heilduð hraðalögmál",
-      "sectionSlug": "12-4-heildud-hradalogmal",
+      "sectionTitle": "Heildunarhraðalögmál",
+      "sectionSlug": "12-4-heildunarhradalogmal",
       "termId": "fs-idm46847680"
     },
     {
@@ -2448,11 +2437,11 @@
       "termIs": "heildarstig efnahvarfs",
       "termEn": "overall reaction order",
       "termFull": "heildarstig efnahvarfs (e. overall reaction order)",
-      "definition": "summa stiga efnahvarfs fyrir hvert efni sem kemur fram í hraðajöfnunni",
+      "definition": "summa stiga efnahvarfs fyrir hvert efni sem kemur fram í hraðalögmálinu",
       "chapter": 12,
       "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
+      "sectionTitle": "Hraðalögmál",
+      "sectionSlug": "12-3-hradalogmal",
       "termId": "fs-idm276164832"
     },
     {
@@ -2481,11 +2470,11 @@
       "termIs": "helmingunartími efnahvarfs (tl/2)",
       "termEn": "half-life of a reaction (tl/2)",
       "termFull": "helmingunartími efnahvarfs (tl/2) (e. half-life of a reaction (tl/2))",
-      "definition": "tíminn sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast",
+      "definition": "tími sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast",
       "chapter": 12,
       "section": "12.4",
-      "sectionTitle": "Heilduð hraðalögmál",
-      "sectionSlug": "12-4-heildud-hradalogmal",
+      "sectionTitle": "Heildunarhraðalögmál",
+      "sectionSlug": "12-4-heildunarhradalogmal",
       "termId": "fs-idm46849712"
     },
     {
@@ -2698,14 +2687,25 @@
       "termId": "fs-idp33871280"
     },
     {
+      "termIs": "hraðaákvarðandi skref",
+      "termEn": "rate-determining step",
+      "termFull": "hraðaákvarðandi skref (e. rate-determining step)",
+      "definition": "(einnig, hraðatakmarkandi skref) hægasta grunnhvarfið í hvarfgangi; ákvarðar hraða heildarhvarfsins",
+      "chapter": 12,
+      "section": "12.6",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
+      "termId": "fs-idp105000160"
+    },
+    {
       "termIs": "hraðafasti (k)",
       "termEn": "rate constant (k)",
       "termFull": "hraðafasti (k) (e. rate constant (k))",
-      "definition": "hlutfallsfasti í hraðajöfnu",
+      "definition": "hlutfallsfasti í hraðalögmáli",
       "chapter": 12,
       "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
+      "sectionTitle": "Hraðalögmál",
+      "sectionSlug": "12-3-hradalogmal",
       "termId": "fs-idm185628880"
     },
     {
@@ -2715,31 +2715,20 @@
       "definition": "stærðfræðileg framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða þrýstingi hvarfefnis eða myndefnis á tímaeiningu",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hvarfhraði efnahvarfa",
-      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
+      "sectionTitle": "Hraði efnahvarfa",
+      "sectionSlug": "12-1-hradi-efnahvarfa",
       "termId": "fs-idp193131840"
     },
     {
-      "termIs": "hraðajafna",
+      "termIs": "hraðalögmál",
       "termEn": "rate law",
-      "termFull": "hraðajafna (e. rate law)",
-      "definition": "(einnig, hraðalögmál) (einnig, diffruð hraðalögmál) stærðfræðileg jafna sem sýnir háðni hvarfhraða á hraðafasta og styrk eins eða fleiri hvarfefna",
+      "termFull": "hraðalögmál (e. rate law)",
+      "definition": "(einnig, hraðajafna) (einnig, deildunarhraðalögmál) stærðfræðijafna sem sýnir hvernig hvarfhraði er háður hraðafasta og styrk eins eða fleiri hvarfefna",
       "chapter": 12,
       "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
+      "sectionTitle": "Hraðalögmál",
+      "sectionSlug": "12-3-hradalogmal",
       "termId": "fs-idm215968704"
-    },
-    {
-      "termIs": "hraðatakmarkandi skref",
-      "termEn": "rate-determining step",
-      "termFull": "hraðatakmarkandi skref (e. rate-determining step)",
-      "definition": "(einnig, hraðatakmarkandi skref) hægasta frumhvarfið í hvarfgangi; ákvarðar hraða heildarefnahvarfsins",
-      "chapter": 12,
-      "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
-      "termId": "fs-idp105000160"
     },
     {
       "termIs": "hreint efni",
@@ -2822,11 +2811,11 @@
       "termIs": "hvarfgangur",
       "termEn": "reaction mechanism",
       "termFull": "hvarfgangur (e. reaction mechanism)",
-      "definition": "skrefbundin röð frumhvarfa þar sem efnabreyting á sér stað",
+      "definition": "skrefbundin röð grunnhvarfa þar sem efnabreyting á sér stað",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp154473568"
     },
     {
@@ -2844,12 +2833,23 @@
       "termIs": "hvarfhraði",
       "termEn": "rate of reaction",
       "termFull": "hvarfhraði (e. rate of reaction)",
-      "definition": "mælikvarði á þann hraða sem efnahvarf á sér stað",
+      "definition": "mælikvarði á þann hraða sem efnahvarf á sér stað á",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hvarfhraði efnahvarfa",
-      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
+      "sectionTitle": "Hraði efnahvarfa",
+      "sectionSlug": "12-1-hradi-efnahvarfa",
       "termId": "fs-idp172602144"
+    },
+    {
+      "termIs": "hvarfrit",
+      "termEn": "reaction diagram",
+      "termFull": "hvarfrit (e. reaction diagram)",
+      "definition": "notað í hvarfhraðafræði til að sýna ýmsa eiginleika hvarfs",
+      "chapter": 12,
+      "section": "12.5",
+      "sectionTitle": "Árekstrakenningin",
+      "sectionSlug": "12-5-arekstrakenningin",
+      "termId": "fs-idm355773584"
     },
     {
       "termIs": "hvarfstuðull (Q)",
@@ -2866,11 +2866,11 @@
       "termIs": "hvati",
       "termEn": "catalyst",
       "termFull": "hvati (e. catalyst)",
-      "definition": "efni sem eykur hvarfhraða án þess að eyðast sjálft í efnahvarfinu",
+      "definition": "efni sem eykur hraða efnahvarfs án þess að eyðast sjálft í hvarfinu",
       "chapter": 12,
       "section": "12.2",
-      "sectionTitle": "Þættir sem hafa áhrif á hvarfhraða",
-      "sectionSlug": "12-2-thaettir-sem-hafa-ahrif-a-hvarfhrada",
+      "sectionTitle": "Þættir sem hafa áhrif á efnahvarfshraða",
+      "sectionSlug": "12-2-thaettir-sem-hafa-ahrif-a-efnahvarfshrada",
       "termId": "fs-idp102379584"
     },
     {
@@ -4670,11 +4670,11 @@
       "termIs": "meðalhraði",
       "termEn": "average rate",
       "termFull": "meðalhraði (e. average rate)",
-      "definition": "hraði efnahvarfs reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og tímabilsins sem breytingin átti sér stað yfir",
+      "definition": "hraði efnahvarfs reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og tímabilsins sem breytingin á sér stað yfir",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hvarfhraði efnahvarfa",
-      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
+      "sectionTitle": "Hraði efnahvarfa",
+      "sectionSlug": "12-1-hradi-efnahvarfa",
       "termId": "fs-idp11569888"
     },
     {
@@ -4750,8 +4750,8 @@
       "definition": "eindir sem myndast í einu skrefi hvarfgangs og eru notaðar í síðara skrefi",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp63453216"
     },
     {
@@ -4843,14 +4843,14 @@
       "termId": "fs-idp102632368"
     },
     {
-      "termIs": "misleitur hvati",
+      "termIs": "mismunandi hvatar",
       "termEn": "heterogeneous catalyst",
-      "termFull": "misleitur hvati (e. heterogeneous catalyst)",
+      "termFull": "mismunandi hvatar (e. heterogeneous catalyst)",
       "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem efnahvarf getur átt sér stað",
       "chapter": 12,
       "section": "12.7",
-      "sectionTitle": "Hvötun",
-      "sectionSlug": "12-7-hvotun",
+      "sectionTitle": "Hvörf",
+      "sectionSlug": "12-7-hvorf",
       "termId": "fs-idm228167568"
     },
     {
@@ -6012,11 +6012,11 @@
       "termIs": "sameindatala",
       "termEn": "molecularity",
       "termFull": "sameindatala (e. molecularity)",
-      "definition": "fjöldi hvarfefnaeinda sem taka þátt í frumhvarfi",
+      "definition": "fjöldi hvarfefnaeinda sem taka þátt í grunnhvarfi",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp7133520"
     },
     {
@@ -6716,11 +6716,11 @@
       "termIs": "stig efnahvarfs",
       "termEn": "reaction order",
       "termFull": "stig efnahvarfs (e. reaction order)",
-      "definition": "gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2, og svo framvegis)",
+      "definition": "gildi veldisvísis í hraðalögmáli (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2 og svo framvegis)",
       "chapter": 12,
       "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
+      "sectionTitle": "Hraðalögmál",
+      "sectionSlug": "12-3-hradalogmal",
       "termId": "fs-idm333854336"
     },
     {
@@ -7230,10 +7230,10 @@
       "termId": "fs-idp121959824"
     },
     {
-      "termIs": "tíðnistuðull (A)",
+      "termIs": "tíðniþáttur (A)",
       "termEn": "frequency factor (a)",
-      "termFull": "tíðnistuðull (A) (e. frequency factor (a))",
-      "definition": "hlutfallsfasti í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
+      "termFull": "tíðniþáttur (A) (e. frequency factor (a))",
+      "definition": "hlutfallsfasti í Arrheniusarjöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -7351,14 +7351,14 @@
       "termId": "fs-idm237171488"
     },
     {
-      "termIs": "tvísameinda efnahvarf",
+      "termIs": "tvísameindahvarf",
       "termEn": "bimolecular reaction",
-      "termFull": "tvísameinda efnahvarf (e. bimolecular reaction)",
-      "definition": "frumhvarf sem felur í sér tvær hvarfefnaeindir",
+      "termFull": "tvísameindahvarf (e. bimolecular reaction)",
+      "definition": "grunnhvarf sem felur í sér tvær hvarfefnaeindir",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp131244384"
     },
     {
@@ -7544,8 +7544,8 @@
       "definition": "augnablikshraði efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hvarfhraði efnahvarfa",
-      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
+      "sectionTitle": "Hraði efnahvarfa",
+      "sectionSlug": "12-1-hradi-efnahvarfa",
       "termId": "fs-idp24984224"
     },
     {
@@ -7893,7 +7893,7 @@
       "termIs": "virkjaður flóki",
       "termEn": "activated complex",
       "termFull": "virkjaður flóki (e. activated complex)",
-      "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefna sem myndast við efnahvarf",
+      "definition": "(einnig, umbreytingarástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -7904,7 +7904,7 @@
       "termIs": "virkjunarorka (Ea)",
       "termEn": "activation energy (ea)",
       "termFull": "virkjunarorka (Ea) (e. activation energy (ea))",
-      "definition": "lágmarksorka sem er nauðsynleg til að efnahvarf geti átt sér stað",
+      "definition": "lágmarksorka sem er nauðsynleg til þess að hvarf geti átt sér stað",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -8198,14 +8198,14 @@
       "termId": "fs-idm153679600"
     },
     {
-      "termIs": "þrísameinda efnahvarf",
+      "termIs": "þrísameindahvarf",
       "termEn": "termolecular reaction",
-      "termFull": "þrísameinda efnahvarf (e. termolecular reaction)",
-      "definition": "frumhvarf sem felur í sér þrjár hvarfefnaeindir",
+      "termFull": "þrísameindahvarf (e. termolecular reaction)",
+      "definition": "grunnhvarf þar sem þrjár hvarfeindir taka þátt",
       "chapter": 12,
       "section": "12.6",
-      "sectionTitle": "Hvarfgangar efnahvarfa",
-      "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
+      "sectionTitle": "Hvarfgangar",
+      "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp251542624"
     },
     {
