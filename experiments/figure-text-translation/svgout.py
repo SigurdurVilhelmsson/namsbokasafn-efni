@@ -50,9 +50,54 @@ def esc(t):
     return (t.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'))
 
 
-def write_svg(artwork_svg, out_path, items, page_h):
+_SVG_OPEN = __import__('re').compile(r'<svg\b[^>]*>', __import__('re').I)
+
+
+def raster_shell(artwork_svg_text, png_path):
+    """
+    §C168 — an SVG shell whose only artwork is ONE <image> of the rendered PNG.
+
+    🔴 THE TEXT IS STILL LIVE. This replaces the ARTWORK layer only; `write_svg`
+    then splices the same `<text>` elements on top, so the translated labels stay
+    selectable, searchable and re-editable. Register ⑩'s objection to raster-in-SVG
+    ("the translation is trapped in pixels") does not apply here — the sidecar
+    holds the translation and the vector master stays in media/.
+
+    ⚠️ The artwork is TEXT-FREE (`strip-text.py` strips it before pdftocairo), so
+    the raster cannot bake an English label into the picture.
+
+    ⚠️ The shell reuses the artwork's OWN opening <svg> tag verbatim, so width,
+    height, viewBox and any namespace it declares are preserved exactly. Inventing
+    a viewBox here would move every text item, because compose.py places them at
+    absolute coordinates in the artwork's units.
+    """
+    import base64
+    m = _SVG_OPEN.search(artwork_svg_text)
+    assert m, 'artwork svg has no <svg> open tag'
+    open_tag = m.group(0)
+    if 'xmlns:xlink' not in open_tag:
+        open_tag = open_tag[:-1] + ' xmlns:xlink="http://www.w3.org/1999/xlink">'
+    # Geometry comes from the viewBox when present; width/height may carry units.
+    vb = __import__('re').search(r'viewBox="([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)"', open_tag)
+    if vb:
+        x, y, w, h = (float(v) for v in vb.groups())
+    else:
+        wm = __import__('re').search(r'width="([\d.]+)', open_tag)
+        hm = __import__('re').search(r'height="([\d.]+)', open_tag)
+        assert wm and hm, 'artwork svg has neither viewBox nor numeric width/height'
+        x, y, w, h = 0.0, 0.0, float(wm.group(1)), float(hm.group(1))
+    b64 = base64.b64encode(Path(png_path).read_bytes()).decode('ascii')
+    img = (f'<image x="{x:.4f}" y="{y:.4f}" width="{w:.4f}" height="{h:.4f}" '
+           f'preserveAspectRatio="none" xlink:href="data:image/png;base64,{b64}"/>')
+    return f'{open_tag}{img}</svg>'
+
+
+def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
     art = Path(artwork_svg).read_text(encoding='utf-8')
     assert art.rstrip().endswith('</svg>'), 'unexpected artwork svg'
+    if raster_png is not None:
+        # §C168: publish the heavy tail from the PNG arm compose.py already writes.
+        art = raster_shell(art, raster_png)
 
     faces = []
     # A face is embedded only when some item uses it, iterated (F,F),(T,F),(F,T),(T,T): a
