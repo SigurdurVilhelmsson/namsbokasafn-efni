@@ -639,9 +639,11 @@ reader impact.
 `01-source` — 1,192 modules, **15,469 top-level `<para>`** — this is a corpus-wide **singleton**.
 But the GATE is not: `lifraen-efnafraedi` holds **1,961** content-free paras of the same shape
 (`<link class="os-embed"/>`) which are equally absent from `02-structure` and **nevertheless reach
-the injected output intact** (4→4, 41→41, 3→3 on the 8 injected organic modules), because
-`buildExerciseDom` preserves `<exercise><problem>` wholesale. Fixing the gate would give those 1,961
-a **second** route into the output — the §C149 duplication shape, in a published book.
+the injected output intact** (4→4, 41→41, 3→3 on the 8 injected organic modules). **The mechanism was
+read, not inferred:** `buildExerciseDom` slices the `<exercise>` out of `originalCnxml` and replaces
+only paras with BOTH an id and a segmentId, so a content-free para survives because it is never
+matched and never removed. ▶ The same element is thus reachable by **two** routes — the structure and
+the original subtree — so any gate fix must be measured against ORGANIC, not only chemistry.
 
 Inject → render → index all ran. `green: true`, `unexplained: 0`, `deferredLosses 14 → 15`
 (the +1 being the control that the entry was read), 0 raw `[[` in 10 pages against a 365-marker

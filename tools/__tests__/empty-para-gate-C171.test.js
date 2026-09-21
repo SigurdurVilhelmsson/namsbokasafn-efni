@@ -33,12 +33,20 @@ import { extractElements } from '../lib/cnxml-parser.js';
  *     shape — `<link class="os-embed" url="#exercise/…"/>` — and they are equally
  *     absent from `02-structure`. They nevertheless REACH the injected output
  *     intact (measured on the 8 injected organic modules: 4→4, 41→41, 3→3, 0 lost)
- *     because they sit inside `<exercise><problem>`, which `buildExerciseDom`
- *     preserves wholesale rather than rebuilding from segments.
- *   - ▶ So pushing content-free paras into the structure to rescue ONE chemistry
- *     para would hand `buildExerciseDom`'s 1,961 organic paras a SECOND route into
- *     the output — the §C149 duplication shape, in a published book, to fix
- *     something no reader can see.
+ *     because they sit inside `<exercise>`. 🔴 THE MECHANISM WAS READ, NOT
+ *     INFERRED, and reading it changed the finding: `buildExerciseDom` slices
+ *     the whole `<exercise>` out of `originalCnxml` with a regex, parses THAT,
+ *     and replaces only paras where `child.id && child.segmentId` are BOTH
+ *     truthy. So a content-free para survives because it is never MATCHED and
+ *     never REMOVED — not because anything preserves it deliberately.
+ *   - ▶ The same element is therefore reachable by TWO independent routes: the
+ *     structure, and the original-CNXML subtree. Any gate fix must be measured
+ *     against ORGANIC, not only chemistry. ⚠️ Whether it DUPLICATES depends on
+ *     how the inject-side mirror is written — `processContent` guards on
+ *     `segmentId` and would skip a para pushed with `segmentId: null`, while
+ *     `buildPara` would not. An earlier draft of this comment asserted the
+ *     duplication as automatic; that was inferred, not measured. The deferral
+ *     rests on the singleton count and the zero reader impact, not on it.
  * Reader impact of the deferral is zero: an empty `<emphasis/>` inside an empty
  * `<para>` renders nothing.
  */
