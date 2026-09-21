@@ -57,10 +57,34 @@ all of it the figure run; run it in the background and poll for the summary.
 
 ### The subsets, already curated for sense
 
-🔴 **Do not widen these.** They come from Section 3 of the pre-buy review, where a headword that is
-a substring of ordinary English is allow-listed per chapter: measured, ch01's 27 `ether` hits are
-all *together*/*whether*, ch02's `hole` is all *whole*, and ch10's `cell` is 118× **unit cell**
-(already `grindareining`), where `ker` would be wrong.
+🔴 **SUPERSEDED 2026-09-21 — DO NOT COPY THE SUBSETS BELOW. THEY ARE THE DEFECT, NOT THE GUIDE.**
+The instruction here used to read *"Do not widen these"*, and widening them is exactly what was
+needed. The curation allow-listed against substring false positives and in doing so **dropped
+approved terms the chapters needed**, after which the MT drifted away from house terminology:
+`buffer` → the model said *jafnalausn*, not **stuðpúði**; `catalysis` → *hvörf* (= reactions), not
+**hvötun**; `polyprotic acid` → *fjölróteindasýra*, not **fjölvirk sýra**; `conjugate` →
+*samtengd*, not **samoka**; `unit cell` → *einingarfruma* (67×) AND *einingarhólf* (10×), never
+**grindareining**.
+
+⚠️ **AND THE JUSTIFICATION BELOW CONTAINS A FALSE PREMISE.** It says ch10's `cell` is
+*"118× unit cell (already `grindareining`)"*. **ch10's MT contains ZERO `grindareining`.** The
+first half is right — `cell → ker` really would be wrong inside *unit cell* — but the remedy was
+to exclude the SHORT headword and include the MULTIWORD one, which cannot substring-collide. The
+curation excluded both. ▶ *The plan says X* is a hypothesis to execute, never a finding.
+
+✅ **USE `tools/compute-glossary-subset.js` INSTEAD** (`2c7677f26`), which derives a chapter's
+subset from measurement and reports its evidence:
+
+```bash
+node tools/compute-glossary-subset.js --book efnafraedi-2e --chapter <N> --explain
+```
+
+⚠️ **Its output is a CANDIDATE, not an answer.** It cannot see wrong-sense homographs — `learning`,
+`case`, `row`, `box` survive its rules — and CLAUDE.md says only domain knowledge finds those.
+**Audit the candidate before it reaches the paid wire**, and pass anything a human has ruled out
+with `--exclude`.
+
+The original curation, kept below as the historical record of what was bought for ch09–ch15:
 
 ```bash
 bash scripts/chemistry-autorun-chapter.sh 9  "enthalpy,enthalpy change,torr"
