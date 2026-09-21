@@ -73,3 +73,23 @@ chapter rather than by sense would apply the wrong word to the largest group.
 
 ▶ **Not yet applied.** The concept-model edits, the re-export, and the decision about the 40 bought
 occurrences (an editor's substitution versus a targeted re-buy) are the next session's first work.
+
+---
+
+## Addendum — `amorphous` confirmed, 2026-09-21
+
+[USER]: *"yes, myndlaus is right"*.
+
+✅ **The reading above was correct: the ruling chose the `myndlaus` family over `formlaus`, and
+`myndlaust` was simply the neuter as it appears in context.** The stored lemma `myndlaus` stays
+exactly as it is. **No concept-model change for this term** — the only action is that it now rides
+its chapter's wire, where the model currently writes `formlaus` 28 times against `myndlaus` once in
+the whole book.
+
+▶ So the count stands at **five concept-model changes** (hydrocarbon, laser, steam, electronegative,
+phase transition, carbon monoxide — six rows, five terms plus carbon monoxide) and **four terms that
+were already correct** and need only to be put on the wire: carbohydrate, carbohydrates, lone pair,
+amorphous.
+
+_(Appended, not edited — a decision file is append-only, so the original question and its answer both
+stay readable.)_
