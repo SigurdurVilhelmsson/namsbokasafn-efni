@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_15_02_BF3-LA_img",
+ "renderHash": "fe5ea9195b0de8d8",
+ "composedHash": "fe5ea9195b0de8d8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Acid-base|adduct": "Sýru-basa aðdukt",
+  "Lewis|base": "Lewis-basi",
+  "Lewis|acid": "Lewis-sýra"
+ },
+ "mtAlternatives": {
+  "Acid-base|adduct": {
+   "kept": "joined",
+   "other": "Sýru-basa viðbótarefni",
+   "reason": "disagree",
+   "mt": "Sýru-basa aðdukt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

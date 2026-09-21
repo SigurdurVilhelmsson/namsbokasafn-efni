@@ -231,28 +231,28 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // +25.6%. Adding them produces a number that is neither, and no single corrected
     // figure exists to put in its place: the plan's 49-vs-39 anchor was EN-side, over 6
     // modules, against `01-source`, while this 49 is IS-side and corpus-wide.
-    expect(mustache).toBe(1592); // {{…}} occurrences, chemistry IS side, 149 files
+    expect(mustache).toBe(1456); // {{…}} occurrences, chemistry IS side, 149 files
     // 3,200 -> 2,988 -> 2,772 is ch09's then ch10's re-MT (2026-09-20) retiring each chapter's share of the
     // legacy dialect. Same direction as ch00/ch01/ch02/ch08 before it; the count falls
     // once per chapter bought and reaches 0 when the clean break is complete.
     expect(plus).toBe(0); // ++ REGEX HITS (detector), same population — 49 -> 0: the
     // autorun's re-MT of ch00/ch01/ch02/ch08 retired the last of that dialect
-    // 75 -> 69 -> 65 -> 60 -> 56 -> 52 -> 45: ch09..ch14 each retiring their modules' share of the
+    // 75 -> 69 -> 65 -> 60 -> 56 -> 52 -> 45 -> 42: ch09..ch15 each retiring their modules' share of the
     // legacy dialect.
     // ⚠️ SIX, NOT SEVEN — a whole-chapter re-MT does not necessarily clear a whole chapter,
     // because a module that never carried a mustache marker was never a carrier to begin
     // with. Read this delta against `mustache` above, not against the chapter's module count.
-    expect(carriers).toBe(45);
+    expect(carriers).toBe(42);
     // 🔴 examined ROSE while the hits FELL — 22,025 -> 22,107 against 2,988 -> 2,772. That
     // direction is what distinguishes repair from blindness: MORE segments were inspected
     // and FEWER legacy-dialect hits found. A drop in both would have been the alarm.
     // The delta is the chapter's figure-`alt` segments: +49 for ch09, +82 for ch10, +46 for
-    // ch11, +42 for ch12, +14 for ch13, +36 for ch14 — each EQUAL to the figure count `figure-run` independently
+    // ch11, +42 for ch12, +14 for ch13, +36 for ch14, +32 for ch15 — each EQUAL to the figure count `figure-run` independently
     // enumerated (30+7+2+3 for ch12). The
     // SAME numbers that moved A2b's id count and A2c's marker count, and the same numbers
     // `figure-run` enumerated as that chapter's figures. Four censuses, one delta, every
     // time — which is why these bumps are predictions met, not numbers copied off a red run.
-    expect(examined).toBe(22245); // segments inspected; an empty walk cannot reach it
+    expect(examined).toBe(22277); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
@@ -732,7 +732,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // ch10. The March MT predates alt extraction, so those modules carried 0. A2c's marker
       // count and A6's `examined` move by the SAME number every time — that agreement across
       // three censuses plus figure-run is what makes each bump a prediction rather than a copy.
-      expect(ids).toBe(61069); // L37: the COUNT beside the predicate — an empty walk fails here
+      expect(ids).toBe(61101); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -785,7 +785,7 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     // 30,027 -> 30,076 -> 30,158 is the SAME +49 then +82 A2b's id count moved by — the figure-`alt`
     // segments. Two independent censuses agreeing on the delta is what makes either
     // number worth trusting; if only one had moved, that would be the alarm.
-    expect(markers).toBe(30296);
+    expect(markers).toBe(30328);
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {

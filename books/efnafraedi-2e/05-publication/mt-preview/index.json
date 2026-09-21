@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T07:03:22.617Z",
+  "generated": "2026-09-21T07:52:08.723Z",
   "termCount": 763,
   "entries": [
     {
@@ -776,7 +776,7 @@
       "termIs": "bindill",
       "termEn": "ligand",
       "termFull": "bindill (e. ligand)",
-      "definition": "sameind eða jón sem virkar sem Lewis-basi við myndun flókajónar; tengist miðjufrumeind flókans",
+      "definition": "sameind eða jón sem virkar sem Lewis-basi við myndun fléttujónar; tengist miðatómi fléttunnar",
       "chapter": 15,
       "section": "15.2",
       "sectionTitle": "Lewis-sýrur og -basar",
@@ -1807,6 +1807,17 @@
       "termId": "fs-idp52912"
     },
     {
+      "termIs": "fléttujón",
+      "termEn": "complex ion",
+      "termFull": "fléttujón (e. complex ion)",
+      "definition": "jón sem samanstendur af miðatómi sem umkringir sameindir eða jónir sem kallast bindlar með samhæfðum samgildum tengjum",
+      "chapter": 15,
+      "section": "15.2",
+      "sectionTitle": "Lewis-sýrur og -basar",
+      "sectionSlug": "15-2-lewis-syrur-og-basar",
+      "termId": "fs-idm90510160"
+    },
+    {
       "termIs": "flokkur",
       "termEn": "group",
       "termFull": "flokkur (e. group)",
@@ -1816,17 +1827,6 @@
       "sectionTitle": "Lotukerfið",
       "sectionSlug": "2-5-lotukerfid",
       "termId": "fs-idm20590592"
-    },
-    {
-      "termIs": "flókajón",
-      "termEn": "complex ion",
-      "termFull": "flókajón (e. complex ion)",
-      "definition": "jón sem samanstendur af miðjufrumeind sem umlykur sameindir eða jónir sem kallast bindlar með samhæfðum samgildum tengjum",
-      "chapter": 15,
-      "section": "15.2",
-      "sectionTitle": "Lewis-sýrur og -basar",
-      "sectionSlug": "15-2-lewis-syrur-og-basar",
-      "termId": "fs-idm90510160"
     },
     {
       "termIs": "formlaust efni",
@@ -3710,17 +3710,6 @@
       "termId": "fs-idm208194016"
     },
     {
-      "termIs": "klofnunarfasti",
-      "termEn": "dissociation constant",
-      "termFull": "klofnunarfasti (e. dissociation constant)",
-      "definition": "(Kd) jafnvægisfasti fyrir niðurbrot flókajónar í íhluti sína",
-      "chapter": 15,
-      "section": "15.2",
-      "sectionTitle": "Lewis-sýrur og -basar",
-      "sectionSlug": "15-2-lewis-syrur-og-basar",
-      "termId": "fs-idm25500528"
-    },
-    {
       "termIs": "klóefni",
       "termEn": "chelate",
       "termFull": "klóefni (e. chelate)",
@@ -3974,9 +3963,9 @@
       "termId": "fs-idp11302544"
     },
     {
-      "termIs": "Lewis-sýru-basa aðdukt",
+      "termIs": "Lewis-sýru-basa afleiða",
       "termEn": "lewis acid-base adduct",
-      "termFull": "Lewis-sýru-basa aðdukt (e. lewis acid-base adduct)",
+      "termFull": "Lewis-sýru-basa afleiða (e. lewis acid-base adduct)",
       "definition": "efnasamband eða jón sem inniheldur samhæft samgilt tengi milli Lewis-sýru og Lewis-basa",
       "chapter": 15,
       "section": "15.2",
@@ -4920,17 +4909,6 @@
       "termId": "fs-idp141108496"
     },
     {
-      "termIs": "mólarleysni",
-      "termEn": "molar solubility",
-      "termFull": "mólarleysni (e. molar solubility)",
-      "definition": "leysni efnasambands gefið upp í einingunni mól á lítra (mól/L)",
-      "chapter": 15,
-      "section": "15.1",
-      "sectionTitle": "Útfelling og upplausn",
-      "sectionSlug": "15-1-utfelling-og-upplausn",
-      "termId": "fs-idp3051616"
-    },
-    {
       "termIs": "mólbrot (X)",
       "termEn": "mole fraction (x)",
       "termFull": "mólbrot (X) (e. mole fraction (x))",
@@ -4940,6 +4918,17 @@
       "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
       "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp1132336"
+    },
+    {
+      "termIs": "mólleysni",
+      "termEn": "molar solubility",
+      "termFull": "mólleysni (e. molar solubility)",
+      "definition": "leysni efnasambands gefin upp í einingum mól á lítra (mól/L)",
+      "chapter": 15,
+      "section": "15.1",
+      "sectionTitle": "Útfelling og upplausn",
+      "sectionSlug": "15-1-utfelling-og-upplausn",
+      "termId": "fs-idp3051616"
     },
     {
       "termIs": "mólmassi",
@@ -4989,7 +4978,7 @@
       "termIs": "myndunarfasti",
       "termEn": "formation constant",
       "termFull": "myndunarfasti (e. formation constant)",
-      "definition": "(Kf) (einnig, stöðugleikafasti) jafnvægisfasti fyrir myndun flókajónar úr íhlutum sínum",
+      "definition": "(Kf) (einnig stöðugleikafasti) jafnvægisfasti fyrir myndun fléttujónar úr einingum sínum",
       "chapter": 15,
       "section": "15.2",
       "sectionTitle": "Lewis-sýrur og -basar",
@@ -5756,6 +5745,17 @@
       "termId": "fs-idm32680960"
     },
     {
+      "termIs": "rofstuðull",
+      "termEn": "dissociation constant",
+      "termFull": "rofstuðull (e. dissociation constant)",
+      "definition": "(Kd) jafnvægisfasti fyrir sundrun fléttujónar í einingar sínar",
+      "chapter": 15,
+      "section": "15.2",
+      "sectionTitle": "Lewis-sýrur og -basar",
+      "sectionSlug": "15-2-lewis-syrur-og-basar",
+      "termId": "fs-idm25500528"
+    },
+    {
       "termIs": "róteind",
       "termEn": "proton",
       "termFull": "róteind (e. proton)",
@@ -6122,7 +6122,7 @@
       "termIs": "samhæft samgilt tengi",
       "termEn": "coordinate covalent bond",
       "termFull": "samhæft samgilt tengi (e. coordinate covalent bond)",
-      "definition": "(einnig, gjafatengi) samgilt tengi þar sem báðar rafeindirnar komu frá sömu frumeindinni",
+      "definition": "(einnig gjafatengi) samgilt tengi þar sem báðar rafeindirnar koma frá sama atóminu",
       "chapter": 15,
       "section": "15.2",
       "sectionTitle": "Lewis-sýrur og -basar",
@@ -6130,10 +6130,10 @@
       "termId": "fs-idp1460096"
     },
     {
-      "termIs": "samjónahrif",
+      "termIs": "samjónaáhrif",
       "termEn": "common ion effect",
-      "termFull": "samjónahrif (e. common ion effect)",
-      "definition": "áhrif á jafnvægi þegar efni með jón sem er sameiginleg með uppleystu efnategundinni er bætt við lausnina; veldur minnkun á leysni jónaefnis, eða minnkun á jónun veikar sýru eða basa",
+      "termFull": "samjónaáhrif (e. common ion effect)",
+      "definition": "áhrif á jafnvægi þegar efni með jón sem er sameiginleg með uppleystu efnategundinni er bætt við lausnina; veldur minnkun á leysni jónaefnis eða minnkun á jónun veikrar sýru eða basa",
       "chapter": 15,
       "section": "15.1",
       "sectionTitle": "Útfelling og upplausn",
@@ -7134,11 +7134,11 @@
       "termIs": "tengd jafnvægi",
       "termEn": "coupled equilibria",
       "termFull": "tengd jafnvægi (e. coupled equilibria)",
-      "definition": "kerfi sem einkennist af samtímis jafnvægi tveggja eða fleiri efnahvarfa sem deila einu eða fleiri hvarfefnum eða myndefnum",
+      "definition": "kerfi sem einkennist af samtímis myndun tveggja eða fleiri jafnvægishvarfa sem deila einu eða fleiri hvarfefnum eða myndefnum",
       "chapter": 15,
       "section": "15.3",
-      "sectionTitle": "Tengd jafnvægi",
-      "sectionSlug": "15-3-tengd-jafnvaegi",
+      "sectionTitle": "Tengt jafnvægi",
+      "sectionSlug": "15-3-tengt-jafnvaegi",
       "termId": "fs-idp13121024"
     },
     {
@@ -7640,7 +7640,7 @@
       "termIs": "valbundin útfelling",
       "termEn": "selective precipitation",
       "termFull": "valbundin útfelling (e. selective precipitation)",
-      "definition": "ferli þar sem jónir eru aðskildar með því að nýta mismunandi leysni þeirra með tilteknu útfellingarhvarfefni",
+      "definition": "ferli þar sem jónir eru aðskildar með því að nýta mismun á leysni þeirra með tilteknu útfellingarefni",
       "chapter": 15,
       "section": "15.1",
       "sectionTitle": "Útfelling og upplausn",

@@ -493,3 +493,45 @@ remaining chapter.
 - **Pins:** sidecars 213 → 214, run records 105 → 114, metadata 16 → 17, modules-minus-metadata
   **197 unchanged**; mustache 2,030 → 1,592; carriers 52 → 45; ids/markers/examined **all +36**.
   🔑 **Sixth chapter, same law** — 22+1+13 = 36 figures, and the delta is 36.
+
+## ch15 — 5 units · ~1,053 ISK text + ~11 ISK figures · `DONE=ok`
+
+- **Text:** 5 units, `Failed: 0`, **105,341 chars (~1,053 ISK)** vs a 1,357 estimate (**0.78x**).
+  One module HELD BACK on `bracket-marker delta i +1`; inject completed anyway.
+- **Figures:** 32 enumerated — 15 translated, 8 textless, 9 unresolved.
+- **Inject:** 4 COMPLETE, manifest `green=true`, 131 perfect. **Render:** 1 rename → 1 row.
+- **Checks:** 0 raw `[[` in 9 pages, positive control 439.
+- **Pins:** sidecars 214 → 215, run records 114 → 119, metadata 17 → 18; mustache 1,592 → 1,456;
+  carriers 45 → 42; ids/markers/examined **all +32** = 15+8+9. 🔑 **Seventh chapter, same law.**
+
+### 🔴 §C170b — THE CURATED GLOSSARY SUBSETS WERE DROPPING TERMS THEIR CHAPTERS NEEDED
+
+Found by checking one ch14 page title, then censused. The autorun passes
+`--glossary-only "<subset>"`, and those subsets were hand-curated to dodge substring false
+positives. **They also excluded approved terms the chapter needed, and the model then drifted:**
+
+| chapter | approved term | what the MT produced |
+|---|---|---|
+| ch14 | `buffer` → **stuðpúði** | `jafnalausn` (53x against stuðpúði 5x) |
+| ch12 | `catalysis` → **hvötun** | `Hvörf` — which means *reactions* |
+| ch14 | `polyprotic acid` → **fjölvirk sýra** | `fjölróteindasýra` |
+| ch14 | `conjugate` → **samoka** | `samtengd` |
+| ch10 | `unit cell` → **grindareining** | `einingarfruma` (67x) AND `einingarhólf` (10x) |
+
+⚠️ **AND THE CURATION RESTED ON A PREMISE MEASUREMENT REFUTES.** The handoff excluded `cell` from
+ch10 saying *"118x unit cell (already `grindareining`)"*. ch10's MT carries **zero**
+`grindareining` and two invented competing terms instead. ▶ *The plan says X* is a hypothesis to
+execute, never a finding — this file's own § One source of truth says so, and it caught the
+controller too.
+
+⚠️ **TWO OF MY OWN REPORTS WERE WRONG THE SAME WAY.** I told [USER] that `catalysis` and `buffer`
+had **no glossary row**, querying `sourceWord`/`targetWord`. The fields are `english`/`icelandic`.
+**Second time this session I guessed key names instead of reading the data** — the provenance
+`arm` field (nested under `run.glossary`) was the first. ▶ **Print one record before filtering a
+corpus by field name.**
+
+✅ **Replaced by `tools/compute-glossary-subset.js` (`2c7677f26`)** — four rules, each keyed to a
+measured hazard, every one excluding on suspicion because §C73's asymmetry says a wrong term on
+the wire is worse than a missing one. ⚠️ **It does NOT solve wrong-sense homographs** (`learning`,
+`case`, `row`, `box` survive its rules) — CLAUDE.md says only domain knowledge finds those — so its
+output is a CANDIDATE subset with evidence, to be audited before the paid buy.

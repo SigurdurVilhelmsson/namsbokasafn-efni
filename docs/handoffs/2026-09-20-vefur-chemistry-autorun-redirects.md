@@ -137,3 +137,11 @@ the body, the key-term definition reads *"jafnalausn, eða buffer"*, and `Jafnal
 capacity)` uses the house `(e. …)` convention correctly. **One residual `stuðpúðaþátta` remains in an
 exercise** and should be unified whichever way it is ruled. Which of *jafnalausn* / *stuðpúðalausn*
 is the right Icelandic is a chemistry-teacher call, not a pipeline one.
+
+## ch15 — 1 row
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/15/15-3-tengd-jafnvaegi.html` | `chapters/15/15-3-tengt-jafnvaegi.html` | m68814 |
+
+_Both instruments agree at 1 (39 → 40, added=1, changed=0, removed=0)._
