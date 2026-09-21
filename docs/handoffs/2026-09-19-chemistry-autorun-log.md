@@ -585,3 +585,39 @@ re-supplied on every invocation; the gate cannot remember it.**
 
 The re-buy re-translated existing modules without changing extraction or sidecar counts, so no
 premise pin moved. Floor stayed at the documented 2.
+
+## ch16 — 6 units · ~939 ISK text + ~14 ISK figures · `DONE=stopped`, NOT PREPARED
+
+**First chapter bought with an AUDITED subset** (`docs/handoffs/2026-09-21-glossary-subset-audit.md`):
+`enthalpy,enthalpy change,microstate,carbon dioxide,atom,spontaneous,spontaneity,free energy`.
+Text 93,854 chars (**~939 ISK**, 0.76x the 1,237 estimate), arm 6 of 6. Figures 16 enumerated,
+6 translated, VERDICT ok. Inject 5 modules COMPLETE, 131 perfect.
+
+### 🔴 STOPPED on a red fidelity manifest — and the loss is an EMPTY ELEMENT
+
+`manifest green=false unexplained=1`. Diagnosed rather than pushed through, per the stop rules.
+
+`m68818` lost one `<emphasis>`: **77 in source, 76 injected**. The chain locates it exactly —
+- the MT is INNOCENT: `[[i:]]` markers are **74 in, 74 out**, so nothing was lost in translation;
+- every container context is intact (table 24/24, example 14/14, exercise 5/5, note 3/3, title 2/2);
+- the difference is one top-level `<para>`, and it is this, verbatim:
+
+```xml
+<para id="fs-idp113461024"><emphasis effect="italics"/></para>
+```
+
+**A self-closing, EMPTY emphasis inside an otherwise empty para. Text content: `''`.** The pipeline
+drops the empty para, and a reader loses nothing that could ever have been rendered.
+
+**Censused before calling it benign: exactly 1 occurrence in the whole chemistry book.** It is a
+singleton, not a class — which is also why no prior triage covers it.
+
+⚖️ **A [USER] ruling is wanted, not a session call**, because reclassifying it makes a BLOCKING gate
+green. The options are to add it to the benign-artifact triage (it is indistinguishable from the
+existing `benignArtifacts: 16`), or to leave ch16 stopped. ⚠️ **The same shape has bitten before**:
+§C82 records a self-closing `<title/>` across 5 organic containers, where treating "the element
+exists" as "the container owns its title" stranded a real heading. The difference is that this one
+carries nothing at all.
+
+**The paid MT and figures ARE committed** so the ~953 ISK is not at risk; **ch16 is NOT prepared** —
+render and index never ran.

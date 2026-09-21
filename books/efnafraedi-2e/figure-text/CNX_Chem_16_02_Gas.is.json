@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_16_02_Gas",
+ "renderHash": "0255b1ee37693352",
+ "composedHash": "0255b1ee37693352",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Spontaneous": "Sjálfkrafa",
+  "Nonspontaneous": "Ekki sjálfkrafa"
+ },
+ "mtAlternatives": {
+  "Spontaneous": {
+   "kept": "joined",
+   "other": "Sjálfsprottið",
+   "reason": "disagree",
+   "mt": "Sjálfkrafa"
+  },
+  "Nonspontaneous": {
+   "kept": "joined",
+   "other": "Ekki sjálfsprottið",
+   "reason": "disagree",
+   "mt": "Ekki sjálfkrafa"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}
