@@ -21,3 +21,23 @@ node pipeline-output/probes/segid-digit-rewrite.mjs   # expect: 6 -> 0 in the di
 
 ▶ **The population line is the control.** `pairs=207` must still print; a run that examines
 nothing would report "0 instances" and look like a successful repair.
+
+## The fix (2026-09-22) — strategy 3 in `repairSegTags`
+
+| file | what |
+|---|---|
+| `order-preservation.mjs` | **The gate on the whole approach.** Ordinal repair is only safe if the MT preserves marker order. Q1 — *do any pairs reorder their matched ids?* — is the question that would have killed it. Answer over 207 pairs: **0**. |
+| `order-preservation-2026-09-22.txt` | That run: 192 id sequences byte-identical, 198 count-equal, 6 corruptions all at identical ordinal positions on both sides. |
+| `verify-c174-fix.mjs` | The counterfactual: run the real `repairSegTags` over every committed pair. **6 changed and correctly repaired, 0 still broken, 201 untouched** — the 201 is the control proving the repair does not over-fire. |
+| `mutate-guards.sh` | Neuters each of the four guards in turn and requires the matching test to go RED. |
+
+🔴 **THE COUNTERFACTUAL IS NOT A REPAIR.** `repairSegTags` runs on freshly-returned MT
+output; the committed files were written before it existed. **The class is closed for future
+buys; the 6 ids on disk are unchanged**, and the two live chemistry ones still reach readers.
+
+⚠️ **`mutate-guards.sh` earned its place immediately.** Four guards, three fired — and the
+`no-reorder` one did **not**: its test passed with the guard deleted, because both ids in that
+fixture were *valid*, so the callback returned early and strategy 3 was never consulted. The
+replacement needs all three parts at once — two ids that swap, sharing a digit skeleton, plus a
+genuinely corrupted third. ▶ **A refusal test written before the feature exists passes for free;
+only mutation tells you whether it passes for the right reason.**

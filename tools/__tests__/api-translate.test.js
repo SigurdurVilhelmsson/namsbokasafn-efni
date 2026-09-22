@@ -388,14 +388,34 @@ describe('repairSegTags', () => {
     expect(repairSegTags(input, output)).toBe(output);
   });
 
-  it('REFUSES a REORDER — an unmatched id that exists elsewhere in the input', () => {
-    // Both ids are valid and present; the MT swapped their order. Position is
-    // then a lie, and repairing by it would attach each translation to the
-    // wrong element. This is the case the corpus measured 0 of, and the guard
-    // exists so a future 1 is refused rather than silently mis-repaired.
+  it('passes a pure REORDER through untouched (no tag is unmatched, so nothing is repaired)', () => {
+    // Both ids are valid, so the callback returns each one early and strategy 3
+    // is never consulted. ⚠️ This does NOT exercise the no-reorder guard — an
+    // earlier version of this file claimed it did, and mutation-testing proved
+    // it vacuous: the assertion held with the guard deleted. The test below is
+    // the one that exercises it.
     const input = '<!-- SEG:m1:para:a --> A\n<!-- SEG:m1:para:b --> B';
     const output = '<!-- SEG:m1:para:b --> B\n<!-- SEG:m1:para:a --> Á';
     expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('REFUSES the whole file when a REORDER accompanies a corruption', () => {
+    // 🔴 THE CASE THE no-reorder GUARD ACTUALLY EXISTS FOR, and it needs all
+    // three parts: two ids that SWAP (so position is a lie), sharing a digit
+    // skeleton with each other (so the skeleton guard cannot catch it first),
+    // plus one genuinely corrupted id that WOULD otherwise be repaired.
+    // Once order is untrustworthy anywhere in the file, ordinal repair is
+    // untrustworthy everywhere in it — hence refusing the file, not the tag.
+    // The corpus measured 0 reorders in 207 pairs; this guard is so a future
+    // first one is refused rather than silently mis-attached.
+    const input =
+      '<!-- SEG:m1:para:a1 --> A\n' + '<!-- SEG:m1:para:a2 --> B\n' + '<!-- SEG:m1:alt:x111 --> C';
+    const output =
+      '<!-- SEG:m1:para:a2 --> B\n' + '<!-- SEG:m1:para:a1 --> Á\n' + '<!-- SEG:m1:alt:x11 --> Cé';
+    // The corrupted `x11` is left alone precisely because the swap above it
+    // makes position meaningless.
+    expect(repairSegTags(input, output)).toContain('<!-- SEG:m1:alt:x11 --> Cé');
+    expect(repairSegTags(input, output)).not.toContain('m1:alt:x111');
   });
 
   it('REFUSES when the unmatched ids do not sit at the same positions', () => {

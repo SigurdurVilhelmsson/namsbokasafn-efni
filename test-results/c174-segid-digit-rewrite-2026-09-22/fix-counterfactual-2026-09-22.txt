@@ -1,0 +1,23 @@
+POPULATION (control): pairs=207
+  untouched by the repair: 201   <-- must be the vast majority, or the repair is over-firing
+  files the repair CHANGED: 6
+  files still carrying an unmatched id after repair: 0
+
+  books/efnafraedi-2e/02-mt-output/appendices/m68863-segments.is.md
+     unmatched before: 1  after: 0
+       m68863:alt:fs-idm36499968-alt  ->  m68863:alt:fs-idm364999968-alt
+  books/efnafraedi-2e/02-mt-output/ch11/m68783-segments.is.md
+     unmatched before: 1  after: 0
+       m68783:alt:fs-idp10522176-alt  ->  m68783:alt:fs-idp105222176-alt
+  books/lifraen-efnafraedi/02-mt-output/ch06/exercises-segments.is.md
+     unmatched before: 1  after: 0
+       06-99-OC-VC03:stem:353282-b0  ->  06-99-OC-VC03:stem:353278-b0
+  books/lifraen-efnafraedi/02-mt-output/ch12/exercises-segments.is.md
+     unmatched before: 1  after: 0
+       12-99-OC-AP33:stem:352253-b0  ->  12-99-OC-AP33:stem:352255-b0
+  books/lifraen-efnafraedi/02-mt-output/ch26/exercises-segments.is.md
+     unmatched before: 1  after: 0
+       26-99-OC-VC01:stem:3601-b0  ->  26-99-OC-VC01:stem:359601-b0
+  books/lifraen-efnafraedi/02-mt-output/ch29/exercises-segments.is.md
+     unmatched before: 1  after: 0
+       29-99-OC-MP08:stem:358157-b1  ->  29-99-OC-MP08:stem:358571-b1
