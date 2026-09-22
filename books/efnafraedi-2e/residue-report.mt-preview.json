@@ -1,10 +1,10 @@
 {
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
-  "generatedAt": "2026-09-21T20:03:21.631Z",
+  "generatedAt": "2026-09-21T20:29:06.272Z",
   "summary": {
-    "modulesWithResidue": 6,
-    "exactResidues": 81,
+    "modulesWithResidue": 9,
+    "exactResidues": 96,
     "ratioWarnings": 75,
     "toleratedResidues": 4
   },
@@ -661,13 +661,11 @@
       "tolerated": []
     },
     "m68865": {
-      "exact": [],
-      "warnings": [
-        {
-          "segmentId": "m68865:entry:auto-1160",
-          "ratio": 0.75
-        }
+      "exact": [
+        "m68865:entry:auto-1160",
+        "m68865:entry:auto-1164"
       ],
+      "warnings": [],
       "tolerated": []
     },
     "m68744": {
@@ -735,6 +733,41 @@
     "m68856": {
       "exact": [
         "m68856:para:fs-idm211204656"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m68862": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68862:entry:auto-20",
+          "ratio": 0.8
+        }
+      ],
+      "tolerated": []
+    },
+    "m68863": {
+      "exact": [
+        "m68863:entry:auto-104"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m68866": {
+      "exact": [
+        "m68866:entry:auto-105",
+        "m68866:entry:auto-12",
+        "m68866:entry:auto-20",
+        "m68866:entry:auto-24",
+        "m68866:entry:auto-28",
+        "m68866:entry:auto-48",
+        "m68866:entry:auto-52",
+        "m68866:entry:auto-61",
+        "m68866:entry:auto-66",
+        "m68866:entry:auto-85",
+        "m68866:entry:auto-91",
+        "m68866:entry:auto-99"
       ],
       "warnings": [],
       "tolerated": []

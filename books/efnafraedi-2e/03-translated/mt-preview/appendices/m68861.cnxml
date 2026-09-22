@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
-<title>Einingar og umreiknistuðlar</title>
+<title>Einingar og umreikningsstuðlar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68861</md:content-id>
-  <md:title>Einingar og umreiknistuðlar</md:title>
+  <md:title>Einingar og umreikningsstuðlar</md:title>
   <md:abstract/>
   <md:uuid>eeaf98f0-ce83-4e1c-ae20-dd05515645b4</md:uuid>
 </metadata>
@@ -19,7 +19,7 @@
 </thead>
 <tbody>
 <row valign="middle">
-<entry valign="middle" align="left">metri (m)</entry><entry align="left">= 39,37 tommur (in.)<newline/>= 1,094 jard (yd)</entry>
+<entry valign="middle" align="left">metri (m)</entry><entry align="left">= 39,37 tommur (in.)<newline/>= 1,094 stikur (yd)</entry>
 </row>
 <row valign="middle">
 <entry valign="middle" align="left">sentimetri (cm)</entry><entry valign="middle" align="left">= 0,01 m (nákvæmlega, skilgreining)</entry>
@@ -34,13 +34,13 @@
 <entry valign="middle" align="left">angström (Å)</entry><entry valign="middle" align="left">= 10<sup>–8</sup> cm (nákvæmlega, skilgreining)<newline/>= 10<sup>–10</sup> m (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">jard (yd)</entry><entry valign="middle" align="left">= 0,9144 m</entry>
+<entry valign="middle" align="left">stika (yd)</entry><entry valign="middle" align="left">= 0,9144 m</entry>
 </row>
 <row valign="middle">
 <entry valign="middle" align="left">tomma (in.)</entry><entry valign="middle" align="left">= 2,54 cm (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">míla (US)</entry><entry valign="middle" align="left">= 1,60934 km</entry>
+<entry valign="middle" align="left">míla (bandarísk)</entry><entry valign="middle" align="left">= 1,60934 km</entry>
 </row>
 </tbody>
 </tgroup>
@@ -56,7 +56,7 @@
 </thead>
 <tbody>
 <row valign="middle">
-<entry valign="middle" align="left">lítri (L)</entry><entry valign="middle" align="left">= 0,001 m<sup>3</sup> (nákvæmlega, skilgreining)<newline/>= 1000 cm<sup>3</sup> (nákvæmlega, skilgreining)<newline/>= 1,057 (US) kvart</entry>
+<entry valign="middle" align="left">lítri (L)</entry><entry valign="middle" align="left">= 0,001 m<sup>3</sup> (nákvæmlega, skilgreining)<newline/>= 1000 cm<sup>3</sup> (nákvæmlega, skilgreining)<newline/>= 1,057 (bandarísk) kvört</entry>
 </row>
 <row valign="middle">
 <entry valign="middle" align="left">millilítri (mL)</entry><entry valign="middle" align="left">= 0,001 L (nákvæmlega, skilgreining)<newline/>= 1 cm<sup>3</sup> (nákvæmlega, skilgreining)</entry>
@@ -65,13 +65,13 @@
 <entry valign="middle" align="left">míkrólítri <m:math><m:mrow><m:mtext>(μL)</m:mtext></m:mrow></m:math></entry><entry valign="middle" align="left">= 10<sup>–6</sup> L (nákvæmlega, skilgreining)<newline/>= 10<sup>–3</sup> cm<sup>3</sup> (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">vökvakvart (US)</entry><entry valign="middle" align="left">= 32 (US) vökvaúnsur (nákvæmlega, skilgreining)<newline/>= 0,25 (US) gallon (nákvæmlega, skilgreining)<newline/>= 0,9463 L</entry>
+<entry valign="middle" align="left">vökvakvart (bandarískt)</entry><entry valign="middle" align="left">= 32 (bandarískar) vökvaúnsur (nákvæmlega, skilgreining)<newline/>= 0,25 (bandarískt) gallon (nákvæmlega, skilgreining)<newline/>= 0,9463 L</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">þurrkvart</entry><entry valign="middle" align="left">= 1,1012 L</entry>
+<entry valign="middle" align="left">þurrefniskvart</entry><entry valign="middle" align="left">= 1,1012 L</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">rúmfet (US)</entry><entry valign="middle" align="left">= 28,316 L</entry>
+<entry valign="middle" align="left">rúmfet (bandarískt)</entry><entry valign="middle" align="left">= 28,316 L</entry>
 </row>
 </tbody>
 </tgroup>
@@ -91,15 +91,15 @@
 <entry valign="middle" align="left">= 0,001 kg (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">milligrömm (mg)</entry>
+<entry valign="middle" align="left">milligramm (mg)</entry>
 <entry valign="middle" align="left">= 0,001 g (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
 <entry valign="middle" align="left">kílógramm (kg)</entry>
-<entry valign="middle" align="left">= 1000 g (nákvæmlega, skilgreining)<newline/>= 2,205 lb <footnote id="foot-00001">Strangt til tekið eru únsa og pund þyngdareiningar, <emphasis effect="italics">W</emphasis> (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, <emphasis effect="italics">W</emphasis> = <emphasis effect="italics">mg</emphasis>). Umreikningstengslin í þessari töflu eru almennt notuð til að jafna massa og þyngd, að því gefnu að nafnvirði fyrir <emphasis effect="italics">g</emphasis> sé notað á yfirborði jarðar.</footnote></entry>
+<entry valign="middle" align="left">= 1000 g (nákvæmlega, skilgreining)<newline/>= 2,205 lb <footnote id="foot-00001">Strangt til tekið eru únsa og pund þyngdareiningar, <emphasis effect="italics">W</emphasis> (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, <emphasis effect="italics">W</emphasis> = <emphasis effect="italics">mg</emphasis>). Umreikningsjöfnurnar í þessari töflu eru almennt notaðar til að jafna massa og þyngd að gefnu nafnvirði fyrir <emphasis effect="italics">g</emphasis> á yfirborði jarðar.</footnote></entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">tonn (metrakerfis-)</entry>
+<entry valign="middle" align="left">tonn (metrakerfi)</entry>
 <entry valign="middle" align="left">= 1000 kg (nákvæmlega, skilgreining)<newline/>= 2204,62 lb</entry>
 </row>
 <row valign="middle">
@@ -116,7 +116,7 @@
 </row>
 <row valign="middle">
 <entry valign="middle" align="left">tonn (langt)</entry>
-<entry valign="middle" align="left">= 2240 lb (nákvæmlega, skilgreining)<newline/>= 1,016 metrakerfistonn</entry>
+<entry valign="middle" align="left">= 2240 lb (nákvæmlega, skilgreining)<newline/>= 1,016 tonn í metrakerfi</entry>
 </row>
 </tbody>
 </tgroup>
@@ -133,10 +133,10 @@
 <tbody>
 <row valign="middle">
 <entry align="left">4,184 júl (J)</entry>
-<entry align="left">= 1 varmefnafræðileg hitaeining (cal)</entry>
+<entry align="left">= 1 varmaefnafræðileg hitaeining (cal)</entry>
 </row>
 <row valign="middle">
-<entry align="left">1 varmefnafræðileg hitaeining (cal)</entry>
+<entry align="left">1 varmaefnafræðileg hitaeining (cal)</entry>
 <entry align="left">= 4,184 <m:math><m:mo>×</m:mo></m:math> 10<sup>7 </sup> erg</entry>
 </row>
 <row valign="middle">
@@ -148,7 +148,7 @@
 <entry align="left">= 1,60218 <m:math><m:mo>×</m:mo></m:math> 10<sup>−19</sup> J = 23,061 kcal mól<sup>−1</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">lítri⋅staðalloftþrýstingur</entry>
+<entry align="left">lítri⋅loftþrýstingur</entry>
 <entry align="left">= 24,217 cal = 101,325 J (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
@@ -156,8 +156,8 @@
 <entry align="left">= 1000 cal (nákvæmlega, skilgreining) = 4184 J</entry>
 </row>
 <row valign="middle">
-<entry align="left">bresk varmaeining (BTU)</entry>
-<entry align="left">= 1054,804 J <footnote id="fs-idp145095088">BTU er orkumagnið sem þarf til að hita eitt pund af vatni um eina gráðu á Fahrenheit. Þess vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir því hitastigi sem BTU er mælt við. 59 °F (15 °C) er mest notaða viðmiðunarhitastigið fyrir skilgreiningu á BTU í Bandaríkjunum. Við það hitastig er umreikningsstuðullinn sá sem gefinn er upp í þessari töflu.</footnote></entry>
+<entry align="left">Bresk varmaeining (BTU)</entry>
+<entry align="left">= 1054,804 J <footnote id="fs-idp145095088">BTU er orkumagnið sem þarf til að hita eitt pund af vatni um eina gráðu á Fahrenheit. Þess vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir hitastiginu sem BTU er mælt við. 59 °F (15 °C) er algengasta viðmiðunarhitastigið fyrir skilgreiningu á BTU í Bandaríkjunum. Við þetta hitastig er umreikningsstuðullinn sá sem gefinn er upp í þessari töflu.</footnote></entry>
 </row>
 </tbody>
 </tgroup>
@@ -181,7 +181,7 @@
 <entry valign="middle" align="left">= N m<sup>–2</sup> (nákvæmlega, skilgreining)<newline/>= kg m<sup>–1</sup> s<sup>–2</sup> (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">
-<entry valign="middle" align="left">staðalloftþrýstingur (atm)</entry>
+<entry valign="middle" align="left">loftþrýstingur (atm)</entry>
 <entry valign="middle" align="left">= 760 mm Hg (nákvæmlega, skilgreining)<newline/>= 760 torr (nákvæmlega, skilgreining)<newline/>= 101.325 N m<sup>–2</sup> (nákvæmlega, skilgreining)<newline/>= 101.325 Pa (nákvæmlega, skilgreining)</entry>
 </row>
 <row valign="middle">

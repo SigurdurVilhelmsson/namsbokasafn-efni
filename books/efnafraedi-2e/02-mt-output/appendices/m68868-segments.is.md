@@ -8,7 +8,7 @@ Leysnimargfeldi
 Efni
 
 <!-- SEG:m68868:entry:auto-4 -->
-{{i}}K{{/i}}[[sub:lm]] við 25 °C
+[[i:K]][[sub:sp]] við 25 °C
 
 <!-- SEG:m68868:entry:auto-5 -->
 ál
@@ -20,7 +20,7 @@ Al(OH)[[sub:3]]
 2 [[MATH:1]] 10[[sup:−32]]
 
 <!-- SEG:m68868:entry:auto-8 -->
-baríum
+barín
 
 <!-- SEG:m68868:entry:auto-9 -->
 BaCO[[sub:3]]
@@ -92,7 +92,7 @@ Bi[[sub:2]]S[[sub:3]]
 1 [[MATH:12]] 10[[sup:−97]]
 
 <!-- SEG:m68868:entry:auto-32 -->
-kadmíum
+kadmín
 
 <!-- SEG:m68868:entry:auto-33 -->
 Cd(OH)[[sub:2]]
@@ -113,7 +113,7 @@ CdCO[[sub:3]]
 5,2 [[MATH:15]] 10[[sup:−12]]
 
 <!-- SEG:m68868:entry:auto-39 -->
-kalsíum
+kalsín
 
 <!-- SEG:m68868:entry:auto-40 -->
 Ca(OH)[[sub:2]]
@@ -176,13 +176,13 @@ Co(OH)[[sub:2]]
 2,5 [[MATH:24]] 10[[sup:−16]]
 
 <!-- SEG:m68868:entry:auto-60 -->
-CoS({{i}}Α{{/i}})
+CoS([[i:α]])
 
 <!-- SEG:m68868:entry:auto-61 -->
 5 [[MATH:25]] 10[[sup:−22]]
 
 <!-- SEG:m68868:entry:auto-62 -->
-CoS({{i}}Β{{/i}})
+CoS([[i:β]])
 
 <!-- SEG:m68868:entry:auto-63 -->
 3 [[MATH:26]] 10[[sup:−26]]
@@ -341,7 +341,7 @@ Pb[[sub:3]](PO[[sub:4]])[[sub:2]]
 1 [[MATH:50]] 10[[sup:−54]]
 
 <!-- SEG:m68868:entry:auto-115 -->
-Magnesín
+Magnesíum
 
 <!-- SEG:m68868:entry:auto-116 -->
 Mg(OH)[[sub:2]]
@@ -353,7 +353,7 @@ Mg(OH)[[sub:2]]
 MgCO[[sub:3]]·3H[[sub:2]]O
 
 <!-- SEG:m68868:entry:auto-119 -->
-{{i}}u.þ.b.{{/i}} 1 [[MATH:52]] 10[[sup:−5]]
+[[i:ca]] 1 [[MATH:52]] 10[[sup:−5]]
 
 <!-- SEG:m68868:entry:auto-120 -->
 MgNH[[sub:4]]PO[[sub:4]]
@@ -395,7 +395,7 @@ MnS
 2,3 [[MATH:58]] 10[[sup:−13]]
 
 <!-- SEG:m68868:entry:auto-133 -->
-Kvikasilfur
+kvikasilfur
 
 <!-- SEG:m68868:entry:auto-134 -->
 Hg[[sub:2]]O·H[[sub:2]]O
@@ -452,7 +452,7 @@ HgS
 1,6 [[MATH:67]] 10[[sup:−54]]
 
 <!-- SEG:m68868:entry:auto-152 -->
-Nikkel
+nikkel
 
 <!-- SEG:m68868:entry:auto-153 -->
 Ni(OH)[[sub:2]]
@@ -467,19 +467,19 @@ NiCO[[sub:3]]
 1,4 [[MATH:69]] 10[[sup:−7]]
 
 <!-- SEG:m68868:entry:auto-157 -->
-NiS({{i}}α{{/i}})
+NiS([[i:α]])
 
 <!-- SEG:m68868:entry:auto-158 -->
 4 [[MATH:70]] 10[[sup:−20]]
 
 <!-- SEG:m68868:entry:auto-159 -->
-NiS({{i}}β{{/i}})
+NiS([[i:β]])
 
 <!-- SEG:m68868:entry:auto-160 -->
 1,3 [[MATH:71]] 10[[sup:−25]]
 
 <!-- SEG:m68868:entry:auto-161 -->
-Kalíum
+kalíum
 
 <!-- SEG:m68868:entry:auto-162 -->
 KClO[[sub:4]]
@@ -500,7 +500,7 @@ KHC[[sub:4]]H[[sub:4]]O[[sub:6]]
 3 [[MATH:74]] 10[[sup:−4]]
 
 <!-- SEG:m68868:entry:auto-168 -->
-Silfur
+silfur
 
 <!-- SEG:m68868:entry:auto-169 -->
 [[MATH:75]]
@@ -608,7 +608,7 @@ SrC[[sub:2]]O[[sub:4]]·H[[sub:2]]O
 4 [[MATH:92]] 10[[sup:−7]]
 
 <!-- SEG:m68868:entry:auto-204 -->
-þallíum
+þallín
 
 <!-- SEG:m68868:entry:auto-205 -->
 TlCl

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_EE_WaterpKw_img",
+ "renderHash": "271829a00d984a26",
+ "composedHash": "271829a00d984a26",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Temperature (°C)": "Hiti (°C)",
+  "pKw": "pKw",
+  "Water pKw as a Function of Temperature": "pKw vatns sem fall af hita"
+ },
+ "mtAlternatives": {
+  "Water pKw as a Function of Temperature": {
+   "kept": "joined",
+   "other": "pKw vatns sem fall af hitastigi",
+   "reason": "disagree",
+   "mt": "pKw vatns sem fall af hita"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

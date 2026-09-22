@@ -2,7 +2,45 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-21, evening (ch17 PREPARED ~1,132 ISK on `content/chemistry-ch17`; PR #498 MERGED and DEPLOYED, the eight rulings CONVERGED in the export. FIVE UNITS LEFT: ch18 · ch19 · ch20 · ch21 · appendices)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-21, night — 🎉 THE CHEMISTRY BOOK IS COMPLETE. All 149 modules PREPARED, `mt-preview` green with 0 skipped. ~10,328 ISK across the six final units** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **[USER] reviews and merges the five open branches, then decides the SYNC.** Nothing further is bought. The loop ended at PREPARED, as ruled. Branches: `content/chemistry-ch17` (PR **#499**) · `-ch18` · `-ch19` · `-ch20` · `-ch21` · `-appendices`, each stacked on the previous so the book-level manifest stays cumulative.
+
+✅ **BOOK-WIDE: `totalChecked 149 / 149 · skippedUntranslated 0 · unexplainedDiscrepancies 0 · perfect 134 · green: true`.** Every one of the 55 units bought in this session carries `arm: glossary-only` provenance — 9 + 14 + 5 + 6 + 8 + 13, checked per unit, never "9 of 9 on one chapter and assumed for the rest".
+
+| unit | ISK | subset | outcome |
+|---|---|---|---|
+| ch17 | ~1,132 | 18 (audited 14 + 4) | PREPARED · 3 redirect rows |
+| ch18 | ~2,615 | 34 (audited 27 + 7) | PREPARED · 3 rows |
+| ch19 | ~1,761 | 41 (audited 39 + 2) | stopped, resumed by hand · 2 rows |
+| ch20 | ~1,817 | 17 (audited 9 + 8) | PREPARED · **4 rows, one supersedes an earlier** |
+| ch21 | ~2,353 | 36 (audited 34 + 2) | PREPARED with logged residue · 3 rows |
+| appendices | ~650 | 26 (audited 25 + 1) | PREPARED · **6 rows** |
+
+🔴 **THE FINDING OF THE SESSION, AND IT REPEATED IN EVERY SINGLE UNIT: AN AUDITED SUBSET CAN DROP A TERM [USER] HAS RULED, AND THE TOOL'S REASON FOR DROPPING IT CAN BE UNSOUND.** Caught first on ch17 (`cell`, `cell potential`), then in all five remaining units. **The two checks, now mandatory before any buy:**
+1. **Add back the terms the audit itself marked *"LEFT OFF pending your answer"*** once ruled.
+2. **Cross-check that unit's `houseStyleTerms.js` entries against its subset** — an entry whose `why` names the chapter but which the subset omits is a *dropped ruling*, not a considered exclusion.
+- ▶ **ch20 was the extreme: a NINE-term audited subset omitted SIX of its own chapter-scoped rulings.** The decisive one was `hydrocarbon` — 105 EN occurrences, `vetniskolefni` **3**, `kolvetni` **45**. ✅ **After: `vetniskolefni` 85, `kolvetni` 0.** The collision the whole terminology round was about is gone, and `20-1-kolvetni.html` became `20-1-vetniskolefni.html` — the §20.1 section URL itself.
+- 🔴 **BUT THE CHECK IS PER-TERM MEASUREMENT, NEVER A RULE, AND TWO COUNTER-EXAMPLES PROVE IT.** `hydroxide` was omitted from ch18 (83 EN → `hýdroxíð` **83**, already 100%; its own justification says the row *pins* a choice the model makes). `group` was omitted from ch20 because its ruling says *"send it in ch02's subset ONLY — in ch20 the same English word means a FUNCTIONAL group, where hópur is right."* **A blanket "add every chapter-scoped ruling" would have shipped the wrong word.**
+
+🔴 **ch21 IS THE ONLY UNIT WITH UNTRANSLATED PROSE, AND CONTROLS ARE WHAT MAKE THAT A FINDING.** Census of segments whose Icelandic is byte-identical to the English (markers stripped, ≥5 alphabetic words, so chemical formulas and numeric answers — *correctly* identical — are excluded): **ch09 0 · ch16 0 · ch17 0 · ch18 0 · ch19 0 · ch20 0 · appendices 0 · ch21 11.** ch09 and ch16 were already accepted, so the zeros are a control, not an assumption.
+- A second paid attempt (~608 ISK) took m68856 **5 → 1** and left m68852 at **6**. Both returned `HELD BACK` on id-reattach mismatches of **6 and 1** — **counts that match the residue exactly**, so this is B4-D11's count guard declining to attach, not the model refusing to translate (§C136: *held back ≠ defect*).
+- ⏸ **7 segments remain English in 2 modules, written `[INCOMPLETE]` — a recorded state, not a silent one. Two paid attempts is the precedent before logging rather than re-buying.** 📋 **For editors: `m68852` (6), `m68856` (1).**
+
+⏹ **ch19 halted on superseded artwork and it was a KNOWN, PRE-RULED condition.** `CNX_Chem_19_01_BlastFurn` and `CNX_Chem_19_03_Pattern_img`, both verified by [USER] on 2026-09-08 and recorded in `supersededArtwork` — which is *why* they were refused. **REFUSED means nothing was composed and nothing published over them**, so the halt is conservative rather than describing a live risk; the remaining steps ran by hand at 0 ISK. ⚠️ Readers still see an earlier translated copy of `BlastFurn` — refusing does not retire it (§C140 ⑦).
+
+✅ **THE REGISTER PREDICTED A FAILURE BY NAME BEFORE IT HAPPENED.** Inject exited 1 on ch19 with a GREEN manifest: `m68844 FAILED — marker residue`. CLAUDE.md already said *"ch19 will hit m68844"*, and the driver carries `m68700|m68733|m68747|m68844` as ⑰'s known set. `--no-annotate-en` → COMPLETE, PERFECT. ⚠️ **That flag must be re-applied after any future ch19 inject.**
+
+🔴 **21 REDIRECT ROWS TOTAL, AND THE RENDER LOG UNDER-REPORTED TWICE.** ch20 needed **4 where the log printed 3** — a chain collapse rewrote an earlier entry's target, so **a row already published in the redirects handoff now points at a deleted page** and is superseded there. The appendices needed **6 where the sampled output showed 4**. ▶ **The slug-map before/after diff is the authority; never transcribe the render log.** All rows are in [`docs/handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md`](../handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md) and **must reach vefur BEFORE the next chemistry sync** — vefur gates each on `exactSectionExists`, so landing them early is the ordering with no 404 window.
+
+📋 **STILL OPEN, ALL [USER] DECISIONS — nothing here blocks a merge:**
+- **Already-bought remediation, still ONE decision:** 40 `kolvetni` (ch04/05/10/11/12 — **ch05's 24 are the CARBOHYDRATE sense**) + 43 `trigonal planar` (ch07 29 · ch08 14) + 12 `submerged` (ch01/04/05/11). Editor substitution or targeted re-buy.
+- **Three terms never ruled:** `alpha particle` (ch21), bare `plane` (ch19), and the book-wide bad rows (`gray → grei`, `valence → girðitala`, `addition → álagning`, `crystalline`, `chlorophyll`). All were held OFF the wire, so nothing shipped on an unruled term.
+- **Two raised and unclosed:** `fissionable`/`fissile` (held off; the MT keeps `klofnanleg` 18 / `kleyf` 7 apart unprompted, so the chapter keeps the distinction it teaches) and the `decay` family's internal consistency.
+- **`substituted`** → with the committee.
+
+⏹ Readers see none of it until [USER]'s sync, which is theirs to time against classroom use.
+## ⏩ RESUME — state as of **2026-09-21, evening (ch17 PREPARED ~1,132 ISK on `content/chemistry-ch17`; PR #498 MERGED and DEPLOYED, the eight rulings CONVERGED in the export. FIVE UNITS LEFT: ch18 · ch19 · ch20 · ch21 · appendices)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **ch18.** ⚠️ **Do NOT use its audited subset as written — see the held-terms table below; it is 27 terms and four of [USER]'s rulings belong in it.** Then ch19 … ch21, then the appendices. **The loop still ends at PREPARED — no session syncs.**
 

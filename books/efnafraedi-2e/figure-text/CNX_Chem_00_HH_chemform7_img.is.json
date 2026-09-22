@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_HH_chemform7_img",
+ "renderHash": "72dff5bcd6595342",
+ "composedHash": "72dff5bcd6595342",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "HPO4": "HPO4"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

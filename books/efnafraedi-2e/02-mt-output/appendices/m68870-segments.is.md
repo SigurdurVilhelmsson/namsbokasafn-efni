@@ -1,14 +1,14 @@
 <!-- SEG:m68870:title:auto-1 -->
-Stöðluð rafskautsspenna (hálfkerfisspenna)
+Stöðurafspenna (hálffrumuspennur)
 
 <!-- SEG:m68870:entry:auto-2 -->
-Stöðluð rafskautsspenna (hálfkerfisspenna)
+Stöðurafspenna (hálffrumuspennur)
 
 <!-- SEG:m68870:entry:auto-3 -->
 Hálfhvarf
 
 <!-- SEG:m68870:entry:auto-4 -->
-{{i}}E{{/i}}° (V)
+[[i:E]]° (V)
 
 <!-- SEG:m68870:entry:auto-5 -->
 [[MATH:1]]

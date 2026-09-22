@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
-<title>Stöðluð rafskautsspenna (hálfkerfisspenna)</title>
+<title>Stöðurafspenna (hálffrumuspennur)</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68870</md:content-id>
-  <md:title>Stöðluð rafskautsspenna (hálfkerfisspenna)</md:title>
+  <md:title>Stöðurafspenna (hálffrumuspennur)</md:title>
   <md:abstract/>
   <md:uuid>562b4d8d-bd3c-4837-9946-08d8be397584</md:uuid>
 </metadata>
@@ -14,7 +14,7 @@
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry namest="c1" nameend="c2" align="center">Stöðluð rafskautsspenna (hálfkerfisspenna)</entry>
+<entry namest="c1" nameend="c2" align="center">Stöðurafspenna (hálffrumuspennur)</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hálfhvarf</entry>

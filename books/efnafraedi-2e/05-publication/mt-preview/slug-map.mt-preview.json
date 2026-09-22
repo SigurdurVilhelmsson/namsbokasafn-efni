@@ -282,6 +282,36 @@
       "to": "chapters/21/21-5-notkun-geislasamsaetna.html",
       "moduleId": "m68857",
       "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-11-myndunarfastar-fyrir-flokajonir.html": {
+      "to": "chapters/appendices/appendices-11-myndunarfastar-fyrir-samjonir.html",
+      "moduleId": "m68869",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-12-stodlud-rafskautsspenna-halfkerfisspenna.html": {
+      "to": "chapters/appendices/appendices-12-stodurafspenna-halffrumuspennur.html",
+      "moduleId": "m68870",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-3-einingar-og-umreiknistudlar.html": {
+      "to": "chapters/appendices/appendices-3-einingar-og-umreikningsstudlar.html",
+      "moduleId": "m68861",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-4-grundvallarfastar-i-edlisfraedi.html": {
+      "to": "chapters/appendices/appendices-4-grundvallar-edlisfraedifastar.html",
+      "moduleId": "m68862",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-6-efnasamsetning-verslunarsyra-og-basa.html": {
+      "to": "chapters/appendices/appendices-6-samsetning-algengra-syra-og-basa.html",
+      "moduleId": "m68864",
+      "recordedAt": "2026-09-21"
+    },
+    "chapters/appendices/appendices-7-stadalvarmafraedilegir-eiginleikar-fyrir-valin.html": {
+      "to": "chapters/appendices/appendices-7-stadladir-varmafraedilegir-eiginleikar-fyrir-valin.html",
+      "moduleId": "m68865",
+      "recordedAt": "2026-09-21"
     }
   }
 }

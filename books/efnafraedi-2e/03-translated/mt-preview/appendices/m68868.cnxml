@@ -17,7 +17,7 @@
 </row>
 <row valign="middle">
 <entry align="left">Efni</entry>
-<entry align="left"><emphasis effect="italics">K</emphasis><sub>lm</sub> við 25 °C</entry>
+<entry align="left"><emphasis effect="italics">K</emphasis><sub>sp</sub> við 25 °C</entry>
 </row>
 </thead>
 <tbody>
@@ -29,7 +29,7 @@
 <entry align="left">2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−32</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">baríum</entry>
+<entry align="center" namest="c1" nameend="c2">barín</entry>
 </row>
 <row valign="middle">
 <entry align="left">BaCO<sub>3</sub></entry>
@@ -79,7 +79,7 @@
 <entry align="left">1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−97</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">kadmíum</entry>
+<entry align="center" namest="c1" nameend="c2">kadmín</entry>
 </row>
 <row valign="middle">
 <entry align="left">Cd(OH)<sub>2</sub></entry>
@@ -94,7 +94,7 @@
 <entry align="left">5,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−12</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">kalsíum</entry>
+<entry align="center" namest="c1" nameend="c2">kalsín</entry>
 </row>
 <row valign="middle">
 <entry align="left">Ca(OH)<sub>2</sub></entry>
@@ -139,11 +139,11 @@
 <entry align="left">2,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−16</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">CoS(<emphasis effect="italics">Α</emphasis>)</entry>
+<entry align="left">CoS(<emphasis effect="italics">α</emphasis>)</entry>
 <entry align="left">5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−22</sup></entry>
 </row>
 <row valign="middle">
-<entry align="left">CoS(<emphasis effect="italics">Β</emphasis>)</entry>
+<entry align="left">CoS(<emphasis effect="italics">β</emphasis>)</entry>
 <entry align="left">3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−26</sup></entry>
 </row>
 <row valign="middle">
@@ -252,7 +252,7 @@
 <entry align="left">1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−54</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">Magnesín</entry>
+<entry align="center" namest="c1" nameend="c2">Magnesíum</entry>
 </row>
 <row valign="middle">
 <entry align="left">Mg(OH)<sub>2</sub></entry>
@@ -260,7 +260,7 @@
 </row>
 <row valign="middle">
 <entry align="left">MgCO<sub>3</sub>·3H<sub>2</sub>O</entry>
-<entry align="left"><emphasis effect="italics">u.þ.b.</emphasis> 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></entry>
+<entry align="left"><emphasis effect="italics">ca</emphasis> 1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">MgNH<sub>4</sub>PO<sub>4</sub></entry>
@@ -290,7 +290,7 @@
 <entry align="left">2,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−13</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">Kvikasilfur</entry>
+<entry align="center" namest="c1" nameend="c2">kvikasilfur</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hg<sub>2</sub>O·H<sub>2</sub>O</entry>
@@ -329,7 +329,7 @@
 <entry align="left">1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−54</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">Nikkel</entry>
+<entry align="center" namest="c1" nameend="c2">nikkel</entry>
 </row>
 <row valign="middle">
 <entry align="left">Ni(OH)<sub>2</sub></entry>
@@ -348,7 +348,7 @@
 <entry align="left">1,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−25</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">Kalíum</entry>
+<entry align="center" namest="c1" nameend="c2">kalíum</entry>
 </row>
 <row valign="middle">
 <entry align="left">KClO<sub>4</sub></entry>
@@ -363,7 +363,7 @@
 <entry align="left">3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">Silfur</entry>
+<entry align="center" namest="c1" nameend="c2">silfur</entry>
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:mrow><m:msubsup><m:mn/><m:mn>2</m:mn><m:mn>1</m:mn></m:msubsup><m:mtext>A</m:mtext><m:msub><m:mtext>g</m:mtext><m:mtext>2</m:mtext></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mo>+</m:mo></m:msup><m:mo>+</m:mo><m:msup><m:mtext>OH</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
@@ -437,7 +437,7 @@
 <entry align="left">4 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
 </row>
 <row valign="middle">
-<entry align="center" namest="c1" nameend="c2">þallíum</entry>
+<entry align="center" namest="c1" nameend="c2">þallín</entry>
 </row>
 <row valign="middle">
 <entry align="left">TlCl</entry>

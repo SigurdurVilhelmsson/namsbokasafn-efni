@@ -1,8 +1,8 @@
 <!-- SEG:m68865:title:auto-1 -->
-Staðalvarmafræðilegir eiginleikar fyrir valin efni
+Staðlaðir varmafræðilegir eiginleikar fyrir valin efni
 
 <!-- SEG:m68865:entry:auto-2 -->
-Staðalvarmafræðilegir eiginleikar fyrir valin efni
+Staðlaðir varmafræðilegir eiginleikar fyrir valin efni
 
 <!-- SEG:m68865:entry:auto-3 -->
 Efni
@@ -128,7 +128,7 @@ Al[[sub:2]](SO[[sub:4]])[[sub:3]]([[i:s]])
 239,32
 
 <!-- SEG:m68865:entry:auto-44 -->
-antimon
+antímon
 
 <!-- SEG:m68865:entry:auto-45 -->
 Sb([[i:s]])
@@ -701,7 +701,7 @@ HBr([[i:g]])
 198,7
 
 <!-- SEG:m68865:entry:auto-235 -->
-kadmín
+kadmíum
 
 <!-- SEG:m68865:entry:auto-236 -->
 Cd([[i:s]])
@@ -788,7 +788,7 @@ CdS([[i:s]])
 64,9
 
 <!-- SEG:m68865:entry:auto-264 -->
-kalsín
+kalsíum
 
 <!-- SEG:m68865:entry:auto-265 -->
 Ca([[i:s]])
@@ -1310,7 +1310,7 @@ HCN([[i:g]])
 201,8
 
 <!-- SEG:m68865:entry:auto-438 -->
-sesín
+Sesín
 
 <!-- SEG:m68865:entry:auto-439 -->
 Cs[[sup:+]]([[i:aq]])
@@ -1613,7 +1613,9 @@ Co(NO[[sub:3]])[[sub:2]]([[i:s]])
 kopar
 
 <!-- SEG:m68865:entry:auto-539 -->
-Cu([[i:s]])<!-- SEG:m68865:entry:auto-540 -->
+Cu([[i:s]])
+
+<!-- SEG:m68865:entry:auto-540 -->
 0
 
 <!-- SEG:m68865:entry:auto-541 -->
@@ -1731,7 +1733,7 @@ Cu(NO[[sub:3]])[[sub:2]]([[i:s]])
 —
 
 <!-- SEG:m68865:entry:auto-579 -->
-Flúor
+flúor
 
 <!-- SEG:m68865:entry:auto-580 -->
 F[[sub:2]]([[i:g]])
@@ -1794,7 +1796,7 @@ HF([[i:g]])
 173,8
 
 <!-- SEG:m68865:entry:auto-600 -->
-Vetni
+vetni
 
 <!-- SEG:m68865:entry:auto-601 -->
 H[[sub:2]]([[i:g]])
@@ -2241,7 +2243,7 @@ Fe(OH)[[sub:2]]([[i:s]])
 –486,5
 
 <!-- SEG:m68865:entry:auto-749 -->
-88
+88.
 
 <!-- SEG:m68865:entry:auto-750 -->
 Fe(OH)[[sub:3]]([[i:s)]]
@@ -2301,7 +2303,7 @@ Pb([[i:g]])
 195,2
 
 <!-- SEG:m68865:entry:auto-769 -->
-162
+162.
 
 <!-- SEG:m68865:entry:auto-770 -->
 175,4
@@ -2490,7 +2492,7 @@ Li[[sub:2]]CO[[sub:3]]([[i:s]])
 90,17
 
 <!-- SEG:m68865:entry:auto-832 -->
-magnesín
+magnesíum
 
 <!-- SEG:m68865:entry:auto-833 -->
 Mg[[sup:2+]]([[i:aq]])
@@ -2760,7 +2762,7 @@ Ni[[sup:2+]]([[i:aq]])
 –159
 
 <!-- SEG:m68865:entry:auto-922 -->
-nitur
+köfnunarefni
 
 <!-- SEG:m68865:entry:auto-923 -->
 N[[sub:2]]([[i:g]])
@@ -3240,7 +3242,9 @@ H[[sub:3]]PO[[sub:4]]([[i:s]])
 H[[sub:3]]PO[[sub:4]][[i:(l]])
 
 <!-- SEG:m68865:entry:auto-1082 -->
-–1266,9<!-- SEG:m68865:entry:auto-1083 -->
+–1266,9
+
+<!-- SEG:m68865:entry:auto-1083 -->
 –1124,3
 
 <!-- SEG:m68865:entry:auto-1084 -->
@@ -3283,7 +3287,7 @@ POCl[[sub:3]]([[i:g]])
 325,5
 
 <!-- SEG:m68865:entry:auto-1097 -->
-kalín
+kalíum
 
 <!-- SEG:m68865:entry:auto-1098 -->
 K([[i:s]])
@@ -3346,7 +3350,7 @@ KCl([[i:s]])
 82,6
 
 <!-- SEG:m68865:entry:auto-1118 -->
-rúbidín
+rúbidíum
 
 <!-- SEG:m68865:entry:auto-1119 -->
 Rb[[sup:+]]([[i:aq]])
@@ -3472,7 +3476,7 @@ SiCl[[sub:4]]([[i:g]])
 330,62
 
 <!-- SEG:m68865:entry:auto-1160 -->
-SiC([[i:s, beta-kúbískur]])
+SiC([[i:s, beta cubic]])
 
 <!-- SEG:m68865:entry:auto-1161 -->
 –73,22
@@ -3484,7 +3488,7 @@ SiC([[i:s, beta-kúbískur]])
 16,61
 
 <!-- SEG:m68865:entry:auto-1164 -->
-SiC([[i:s, alfa-sexstrendur]])
+SiC([[i:s, alpha hexagonal]])
 
 <!-- SEG:m68865:entry:auto-1165 -->
 –71,55
@@ -3571,7 +3575,7 @@ Ag[[sub:2]]S([[i:s]])
 144,0
 
 <!-- SEG:m68865:entry:auto-1193 -->
-natríum
+Natríum
 
 <!-- SEG:m68865:entry:auto-1194 -->
 Na([[i:s]])
@@ -3634,7 +3638,7 @@ NaCl([[i:s]])
 72,1
 
 <!-- SEG:m68865:entry:auto-1214 -->
-strontíum
+Strontíum
 
 <!-- SEG:m68865:entry:auto-1215 -->
 Sr[[sup:2+]]([[i:aq]])
@@ -3649,10 +3653,10 @@ Sr[[sup:2+]]([[i:aq]])
 –32,6
 
 <!-- SEG:m68865:entry:auto-1219 -->
-brennisteinn
+Brennisteinn
 
 <!-- SEG:m68865:entry:auto-1220 -->
-S[[sub:8]]([[i:s]]) (tígulflötóttur)
+S[[sub:8]]([[i:s]]) (tígullaga)
 
 <!-- SEG:m68865:entry:auto-1221 -->
 0
@@ -3916,7 +3920,7 @@ SO[[sub:2]]Cl[[sub:2]](g)
 311,83
 
 <!-- SEG:m68865:entry:auto-1308 -->
-Tin
+tin
 
 <!-- SEG:m68865:entry:auto-1309 -->
 Sn([[i:s]])
@@ -3991,7 +3995,7 @@ SnCl[[sub:4]]([[i:g]])
 365,8
 
 <!-- SEG:m68865:entry:auto-1333 -->
-Títan
+títan
 
 <!-- SEG:m68865:entry:auto-1334 -->
 Ti([[i:s]])
@@ -4192,7 +4196,7 @@ ZnCO[[sub:3]]([[i:s]])
 82,42
 
 <!-- SEG:m68865:entry:auto-1400 -->
-flókar
+fléttur
 
 <!-- SEG:m68865:entry:auto-1401 -->
 [Co(NH[[sub:3]])[[sub:4]](NO[[sub:2]])[[sub:2]]]NO[[sub:3]], [[i:cis]]

@@ -1,5 +1,5 @@
 <!-- SEG:m68861:title:auto-1 -->
-Einingar og umreiknistuðlar
+Einingar og umreikningsstuðlar
 
 <!-- SEG:m68861:entry:auto-2 -->
 Lengdareiningar
@@ -8,7 +8,7 @@ Lengdareiningar
 metri (m)
 
 <!-- SEG:m68861:entry:auto-4 -->
-= 39,37 tommur (in.)[[BR]]= 1,094 jard (yd)
+= 39,37 tommur (in.)[[BR]]= 1,094 stikur (yd)
 
 <!-- SEG:m68861:entry:auto-5 -->
 sentimetri (cm)
@@ -35,7 +35,7 @@ angström (Å)
 = 10[[sup:–8]] cm (nákvæmlega, skilgreining)[[BR]]= 10[[sup:–10]] m (nákvæmlega, skilgreining)
 
 <!-- SEG:m68861:entry:auto-13 -->
-jard (yd)
+stika (yd)
 
 <!-- SEG:m68861:entry:auto-14 -->
 = 0,9144 m
@@ -47,7 +47,7 @@ tomma (in.)
 = 2,54 cm (nákvæmlega, skilgreining)
 
 <!-- SEG:m68861:entry:auto-17 -->
-míla (US)
+míla (bandarísk)
 
 <!-- SEG:m68861:entry:auto-18 -->
 = 1,60934 km
@@ -59,7 +59,7 @@ Rúmmálseiningar
 lítri (L)
 
 <!-- SEG:m68861:entry:auto-21 -->
-= 0,001 m[[sup:3]] (nákvæmlega, skilgreining)[[BR]]= 1000 cm[[sup:3]] (nákvæmlega, skilgreining)[[BR]]= 1,057 (US) kvart
+= 0,001 m[[sup:3]] (nákvæmlega, skilgreining)[[BR]]= 1000 cm[[sup:3]] (nákvæmlega, skilgreining)[[BR]]= 1,057 (bandarísk) kvört
 
 <!-- SEG:m68861:entry:auto-22 -->
 millilítri (mL)
@@ -74,19 +74,19 @@ míkrólítri [[MATH:1]]
 = 10[[sup:–6]] L (nákvæmlega, skilgreining)[[BR]]= 10[[sup:–3]] cm[[sup:3]] (nákvæmlega, skilgreining)
 
 <!-- SEG:m68861:entry:auto-26 -->
-vökvakvart (US)
+vökvakvart (bandarískt)
 
 <!-- SEG:m68861:entry:auto-27 -->
-= 32 (US) vökvaúnsur (nákvæmlega, skilgreining)[[BR]]= 0,25 (US) gallon (nákvæmlega, skilgreining)[[BR]]= 0,9463 L
+= 32 (bandarískar) vökvaúnsur (nákvæmlega, skilgreining)[[BR]]= 0,25 (bandarískt) gallon (nákvæmlega, skilgreining)[[BR]]= 0,9463 L
 
 <!-- SEG:m68861:entry:auto-28 -->
-þurrkvart
+þurrefniskvart
 
 <!-- SEG:m68861:entry:auto-29 -->
 = 1,1012 L
 
 <!-- SEG:m68861:entry:auto-30 -->
-rúmfet (US)
+rúmfet (bandarískt)
 
 <!-- SEG:m68861:entry:auto-31 -->
 = 28,316 L
@@ -101,7 +101,7 @@ gramm (g)
 = 0,001 kg (nákvæmlega, skilgreining)
 
 <!-- SEG:m68861:entry:auto-35 -->
-milligrömm (mg)
+milligramm (mg)
 
 <!-- SEG:m68861:entry:auto-36 -->
 = 0,001 g (nákvæmlega, skilgreining)
@@ -110,10 +110,10 @@ milligrömm (mg)
 kílógramm (kg)
 
 <!-- SEG:m68861:entry:auto-38 -->
-= 1000 g (nákvæmlega, skilgreining)[[BR]]= 2,205 lb {{fn}}Strangt til tekið eru únsa og pund þyngdareiningar, {{i}}W{{/i}} (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, {{i}}W{{/i}} = {{i}}mg{{/i}}). Umreikningstengslin í þessari töflu eru almennt notuð til að jafna massa og þyngd, að því gefnu að nafnvirði fyrir {{i}}g{{/i}} sé notað á yfirborði jarðar.{{/fn}}
+= 1000 g (nákvæmlega, skilgreining)[[BR]]= 2,205 lb [[fn:Strangt til tekið eru únsa og pund þyngdareiningar, [[i:W]] (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, [[i:W]] = [[i:mg]]). Umreikningsjöfnurnar í þessari töflu eru almennt notaðar til að jafna massa og þyngd að gefnu nafnvirði fyrir [[i:g]] á yfirborði jarðar.|foot-00001]]
 
 <!-- SEG:m68861:entry:auto-39 -->
-tonn (metrakerfis-)
+tonn (metrakerfi)
 
 <!-- SEG:m68861:entry:auto-40 -->
 = 1000 kg (nákvæmlega, skilgreining)[[BR]]= 2204,62 lb
@@ -140,7 +140,7 @@ tonn (stutt)
 tonn (langt)
 
 <!-- SEG:m68861:entry:auto-48 -->
-= 2240 lb (nákvæmlega, skilgreining)[[BR]]= 1,016 metrakerfistonn
+= 2240 lb (nákvæmlega, skilgreining)[[BR]]= 1,016 tonn í metrakerfi
 
 <!-- SEG:m68861:entry:auto-49 -->
 Orkueiningar
@@ -149,10 +149,10 @@ Orkueiningar
 4,184 júl (J)
 
 <!-- SEG:m68861:entry:auto-51 -->
-= 1 varmefnafræðileg hitaeining (cal)
+= 1 varmaefnafræðileg hitaeining (cal)
 
 <!-- SEG:m68861:entry:auto-52 -->
-1 varmefnafræðileg hitaeining (cal)
+1 varmaefnafræðileg hitaeining (cal)
 
 <!-- SEG:m68861:entry:auto-53 -->
 = 4,184 [[MATH:2]] 10[[sup:7 ]] erg
@@ -170,7 +170,7 @@ rafeindavolt (eV)
 = 1,60218 [[MATH:3]] 10[[sup:−19]] J = 23,061 kcal mól[[sup:−1]]
 
 <!-- SEG:m68861:entry:auto-58 -->
-lítri⋅staðalloftþrýstingur
+lítri⋅loftþrýstingur
 
 <!-- SEG:m68861:entry:auto-59 -->
 = 24,217 cal = 101,325 J (nákvæmlega, skilgreining)
@@ -182,10 +182,10 @@ næringarhitaeining (Cal)
 = 1000 cal (nákvæmlega, skilgreining) = 4184 J
 
 <!-- SEG:m68861:entry:auto-62 -->
-bresk varmaeining (BTU)
+Bresk varmaeining (BTU)
 
 <!-- SEG:m68861:entry:auto-63 -->
-= 1054,804 J {{fn}}BTU er orkumagnið sem þarf til að hita eitt pund af vatni um eina gráðu á Fahrenheit. Þess vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir því hitastigi sem BTU er mælt við. 59 °F (15 °C) er mest notaða viðmiðunarhitastigið fyrir skilgreiningu á BTU í Bandaríkjunum. Við það hitastig er umreikningsstuðullinn sá sem gefinn er upp í þessari töflu.{{/fn}}
+= 1054,804 J [[fn:BTU er orkumagnið sem þarf til að hita eitt pund af vatni um eina gráðu á Fahrenheit. Þess vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir hitastiginu sem BTU er mælt við. 59 °F (15 °C) er algengasta viðmiðunarhitastigið fyrir skilgreiningu á BTU í Bandaríkjunum. Við þetta hitastig er umreikningsstuðullinn sá sem gefinn er upp í þessari töflu.|fs-idp145095088]]
 
 <!-- SEG:m68861:entry:auto-64 -->
 Þrýstingseiningar
@@ -203,7 +203,7 @@ paskal (Pa)
 = N m[[sup:–2]] (nákvæmlega, skilgreining)[[BR]]= kg m[[sup:–1]] s[[sup:–2]] (nákvæmlega, skilgreining)
 
 <!-- SEG:m68861:entry:auto-69 -->
-staðalloftþrýstingur (atm)
+loftþrýstingur (atm)
 
 <!-- SEG:m68861:entry:auto-70 -->
 = 760 mm Hg (nákvæmlega, skilgreining)[[BR]]= 760 torr (nákvæmlega, skilgreining)[[BR]]= 101.325 N m[[sup:–2]] (nákvæmlega, skilgreining)[[BR]]= 101.325 Pa (nákvæmlega, skilgreining)

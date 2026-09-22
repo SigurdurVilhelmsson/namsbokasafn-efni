@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_HH_chemform1_img",
+ "renderHash": "a7cfe95558cc78b7",
+ "composedHash": "a7cfe95558cc78b7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "H2AsO4|–": "H2AsO4 –"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

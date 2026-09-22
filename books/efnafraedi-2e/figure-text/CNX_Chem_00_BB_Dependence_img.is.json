@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_00_BB_Dependence_img",
+ "renderHash": "d16716237cd5e71b",
+ "composedHash": "d16716237cd5e71b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Dependence of y on x": "Fylgni y við x"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

@@ -23,16 +23,16 @@
 <row valign="middle">
 <entry align="left">Samsæta</entry>
 <entry align="left">Helmingunartími <footnote id="fs-idp94055520">y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund útblásturs <footnote id="fs-idp208188688"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng kjarnaklofnun</footnote></entry>
+<entry align="left">Tegund geislunar <footnote id="fs-idp208188688"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfklofnun</footnote></entry>
 <entry align="left">Samsæta</entry>
 <entry align="left">Helmingunartími <footnote id="fs-idp6707392">y = ár, d = dagar, h = klukkustundir, m = mínútur, s = sekúndur</footnote></entry>
-<entry align="left">Tegund útblásturs <footnote id="fs-idp119558320"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfgeng kjarnaklofnun</footnote></entry>
+<entry align="left">Tegund geislunar <footnote id="fs-idp119558320"><emphasis effect="italics">E.C.</emphasis> = rafeindahremming, <emphasis effect="italics">S.F.</emphasis> = sjálfklofnun</footnote></entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext></m:math></entry>
-<entry align="left">5730 y</entry>
+<entry align="left">5730 ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>83</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math></entry>
 <entry align="left">5,01 d</entry>
@@ -72,7 +72,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>19</m:mn><m:mn>40</m:mn></m:msubsup><m:mtext>K</m:mtext></m:math></entry>
-<entry align="left">1,27 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> y</entry>
+<entry align="left">1,27 <m:math><m:mo>×</m:mo></m:math> 10<sup>9</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>β</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>84</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math></entry>
 <entry align="left">3,05 m</entry>
@@ -88,7 +88,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>26</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math></entry>
-<entry align="left">2,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> y</entry>
+<entry align="left">2,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>85</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>At</m:mtext></m:math></entry>
 <entry align="left">1,6 s</entry>
@@ -96,7 +96,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>27</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext></m:math></entry>
-<entry align="left">5,27 y</entry>
+<entry align="left">5,27 ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>86</m:mn></m:mrow><m:mn>220</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math></entry>
 <entry align="left">55,6 s</entry>
@@ -104,7 +104,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>37</m:mn><m:mn>87</m:mn></m:msubsup><m:mtext>Rb</m:mtext></m:math></entry>
-<entry align="left">4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> y</entry>
+<entry align="left">4,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>10</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math></entry>
 <entry align="left">3,82 d</entry>
@@ -112,7 +112,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>38</m:mn><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext></m:math></entry>
-<entry align="left">29 y</entry>
+<entry align="left">29 ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>224</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></entry>
 <entry align="left">3,66 d</entry>
@@ -120,7 +120,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>49</m:mn></m:mrow><m:mn>115</m:mn></m:msubsup><m:mtext>In</m:mtext></m:math></entry>
-<entry align="left">5,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>15</sup> y</entry>
+<entry align="left">5,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>15</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></entry>
 <entry align="left">1600 ár</entry>
@@ -128,7 +128,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>53</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>I</m:mtext></m:math></entry>
-<entry align="left">8,040 d</entry>
+<entry align="left">8,040 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></entry>
 <entry align="left">5,75 ár</entry>
@@ -176,10 +176,10 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>83</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math></entry>
-<entry align="left">6,243 d</entry>
+<entry align="left">6,243 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>91</m:mn></m:mrow><m:mn>233</m:mn></m:msubsup><m:mtext>Pa</m:mtext></m:math></entry>
-<entry align="left">27 d</entry>
+<entry align="left">27 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 </row>
 <row valign="middle">
@@ -187,7 +187,7 @@
 <entry align="left">1,59 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>96</m:mn></m:mrow><m:mn>242</m:mn></m:msubsup><m:mtext>Cm</m:mtext></m:math></entry>
-<entry align="left">162,8 d</entry>
+<entry align="left">162,8 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 </row>
 <row valign="middle">
@@ -203,7 +203,7 @@
 <entry align="left">7,03 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>99</m:mn></m:mrow><m:mn>253</m:mn></m:msubsup><m:mtext>Es</m:mtext></m:math></entry>
-<entry align="left">20,47 d</entry>
+<entry align="left">20,47 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 </row>
 <row valign="middle">
@@ -224,7 +224,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext></m:math></entry>
-<entry align="left">2,3 d</entry>
+<entry align="left">2,3 d.</entry>
 <entry align="left"><m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>101</m:mn><m:mn>256</m:mn></m:msubsup><m:mtext>Md</m:mtext></m:math></entry>
 <entry align="left">76 mín.</entry>
@@ -232,7 +232,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">2,407 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> á</entry>
+<entry align="left">2,407 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>102</m:mn><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext></m:math></entry>
 <entry align="left">55 s</entry>
@@ -240,7 +240,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">6,54 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> á</entry>
+<entry align="left">6,54 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>103</m:mn><m:mn>257</m:mn></m:msubsup><m:mtext>Lr</m:mtext></m:math></entry>
 <entry align="left">0,65 s</entry>
@@ -248,7 +248,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>94</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math></entry>
-<entry align="left">14,4 á</entry>
+<entry align="left">14,4 ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mspace width="0.2em"/><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>105</m:mn><m:mn>260</m:mn></m:msubsup><m:mtext>Ha</m:mtext></m:math></entry>
 <entry align="left">1,5 s</entry>
@@ -256,7 +256,7 @@
 </row>
 <row valign="middle">
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>95</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Am</m:mtext></m:math></entry>
-<entry align="left">432,2 á</entry>
+<entry align="left">432,2 ár</entry>
 <entry align="left"><m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 <entry align="left"><m:math><m:msubsup><m:mrow/><m:mn>106</m:mn><m:mn>263</m:mn></m:msubsup><m:mtext>Sg</m:mtext></m:math></entry>
 <entry align="left">0,8 s</entry>
