@@ -19,6 +19,10 @@ function escapeRegExp(str) {
 export function parseCnxmlDocument(cnxml) {
   const moduleId = extractModuleId(cnxml);
   const title = extractDocumentTitle(cnxml);
+  // §C126 — the SAME title in its markup-preserving shape. `title` stays plain
+  // text for the renderer's `escapeHtml` into the `<h1>`; `titleRaw` is what the
+  // extractor runs through `extractInlineText` so the wire carries markers.
+  const titleRaw = extractDocumentTitleRaw(cnxml);
   const metadata = extractMetadata(cnxml);
   const documentClass = extractDocumentClass(cnxml);
   const content = extractContent(cnxml);
@@ -26,6 +30,7 @@ export function parseCnxmlDocument(cnxml) {
   return {
     moduleId,
     title,
+    titleRaw,
     metadata,
     documentClass,
     rawContent: content,
@@ -43,14 +48,63 @@ export function extractModuleId(cnxml) {
 }
 
 /**
- * Extract document title from CNXML.
+ * The document-level `<title>`'s INNER CONTENT, markup and all.
+ *
+ * 🔴 §C126 BLOCKER #2 — THE PATTERN THIS REPLACES SUBSTITUTED RATHER THAN DROPPED.
+ * It was `/<document[^>]*>[\s\S]*?<title>([^<]+)<\/title>/`. `([^<]+)` is a run of
+ * non-`<`, so a title containing ANY child element failed to match AT THAT
+ * POSITION — and the lazy `[\s\S]*?` then walked on and returned a LATER,
+ * markup-free `<title>`: a section heading, an exercise block's *"Problems"*, or
+ * the literal fallback `'Untitled'`.
+ *
+ * ▶ **A POPULATED SLOT HOLDING THE WRONG TEXT IS WORSE THAN AN EMPTY ONE**: no
+ * coverage count can see it, because the slot is filled either way. Measured
+ * 2026-09-22 — organic **32 of 342 module titles carry markup and 32 of 32
+ * returned the wrong string**, a SATURATED rate and therefore a category; 3 fell
+ * through to `'Untitled'`. Chemistry is **0 of 149 and structurally so**, because
+ * OpenStax never puts markup in a chemistry module title — which is exactly why a
+ * chemistry-shaped corpus could not have caught it.
+ *
+ * ⚠️ THE `<document>` SPAN IS QUOTE-AWARE (§C115). A bare `>` is legal inside an
+ * attribute value, so `[^>]*` can truncate mid-attribute.
+ *
+ * @param {string} cnxml - Raw CNXML content
+ * @returns {string} the title's inner markup, or '' when there is no title
+ */
+export function extractDocumentTitleRaw(cnxml) {
+  const match = cnxml.match(
+    new RegExp(`<document${TAG_ATTR_SPAN}>[\\s\\S]*?<title>([\\s\\S]*?)</title>`)
+  );
+  return match ? match[1].trim() : '';
+}
+
+/**
+ * Extract document title from CNXML, as PLAIN TEXT.
+ *
+ * ⚠️ TWO SHAPES EXIST ON PURPOSE, AND COLLAPSING THEM IS HOW §C176 HAPPENED ONE
+ * FILE OVER. `cnxml-extract` wants the RAW inner so `extractInlineText` can turn
+ * it into the bracket markers the wire carries — the house pattern, already
+ * visible in 62 committed title segments. `cnxml-render` wants TEXT, because it
+ * does `escapeHtml(title)` into the `<h1>`; handing it markup would publish a
+ * literal `<emphasis>` to a reader, which is exactly §C176's damage shape.
+ * ▶ So this function's plain-text CONTRACT is unchanged. The bug fixed here is
+ * WHICH title it finds, not what it returns.
+ *
+ * ⚠️ KNOWN LIMITATION, stated rather than hidden: stripping markup renders
+ * organic's `sp³` as `sp3` in the `<h1>`. That is a loss of typography, not of
+ * identity, and it is a strict improvement on naming a DIFFERENT section. Giving
+ * the `<h1>` real markup is a render-side change with its own blast radius.
+ *
  * @param {string} cnxml - Raw CNXML content
  * @returns {string} Document title
  */
 export function extractDocumentTitle(cnxml) {
-  // Get the document-level title (not section titles)
-  const match = cnxml.match(/<document[^>]*>[\s\S]*?<title>([^<]+)<\/title>/);
-  return match ? match[1].trim() : 'Untitled';
+  const raw = extractDocumentTitleRaw(cnxml);
+  if (!raw) return 'Untitled';
+  // Unwrap child elements to their text. The leading `[a-zA-Z]` keeps a
+  // mathematical `<` in a title from being eaten as if it opened a tag.
+  const text = raw.replace(new RegExp(`</?[a-zA-Z][a-zA-Z0-9]*${TAG_ATTR_SPAN}>`, 'g'), '').trim();
+  return text || 'Untitled';
 }
 
 /**

@@ -853,8 +853,20 @@ function extractSegments(cnxml, options = {}) {
   }
 
   // Extract document title
-  const titleSegmentId = addSegment('title', doc.title);
-  structure.title = { segmentId: titleSegmentId, text: doc.title };
+  // 🔴 §C126 — RUN IT THROUGH `extractInlineText`, like every other piece of text.
+  // 32 of 342 organic module titles carry `<emphasis>`/`<sub>`/`<sup>`; sending
+  // the markup-stripped form would put `sp3` on the paid wire where the source
+  // means `sp³`. Marker-bearing titles are the established house shape — 62
+  // committed title segments already look like `Steric Effects in the
+  // S[[sub:N]]2 Reaction`.
+  // ⚠️ THIS REPLACES THE TEXT UNDER `auto-1` AND ADDS NO SEGMENT, so nothing
+  // renumbers (§C126's ordering meta-rule: the title is the first segment
+  // emitted). A fix that ADDED one would shift every later positional id.
+  const titleText = doc.titleRaw
+    ? extractInlineText(doc.titleRaw, mathMap, counters, inlineMediaMap, inlineTablesMap)
+    : doc.title;
+  const titleSegmentId = addSegment('title', titleText);
+  structure.title = { segmentId: titleSegmentId, text: titleText };
 
   // Extract abstract/learning objectives
   if (doc.metadata.abstract) {
