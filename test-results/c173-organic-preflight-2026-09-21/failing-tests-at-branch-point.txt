@@ -1,0 +1,30 @@
+tools/__tests__/bracket-delta-corpus.test.js > A3 acceptance — the widening catches what the 14-type module aggregate misses > m68791: a clean module stays clean — this is what makes the above mean anything
+tools/__tests__/bracket-delta-corpus.test.js > A3 acceptance — the widening catches what the 14-type module aggregate misses > m68823: the old instrument returns {} while MATH markers were lost
+tools/__tests__/bracket-delta-corpus.test.js > A3 acceptance — the widening catches what the 14-type module aggregate misses > the three other known-bad modules each gain a MATH loss the old instrument missed
+tools/__tests__/cnxml-inject-m68710-table-regression.test.js > m68710 container-table translation (OC-B regression, in-memory) > emits Icelandic table cells, not English source
+tools/__tests__/cnxml-render-golden.test.js > render golden baseline (byte-exact, MathJax-normalized) > m68699 (ch03) matches committed golden
+tools/__tests__/cnxml-render-golden.test.js > render golden baseline (byte-exact, MathJax-normalized) > m68710 (ch04) matches committed golden
+tools/__tests__/figure-run-free.test.js > prepare warnings reach the operator > prints a warning verbatim, naming the figure that produced it
+tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > prepares every figure under its own unstripped basename, in its own directory
+tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > resolves a hashed figure through its stripped name, in a SECOND resolver pass
+tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > still reports a hashed figure unresolved when neither name has artwork
+tools/__tests__/figure-run-free.test.js > the de-hash refuses a CONTESTED stem rather than guessing which figure owns it > de-hashes ch03 exactly as before — the guard refuses the contest, not the fallback
+tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > REFUSES a figure whose meta.json names a different figure
+tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > accepts a figure whose meta.json names it, and classifies it
+tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > files a prepare that exited non-zero as failed-prepare, not as text-less
+tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > runs the figure --figure DOES match (the control for the test above)
+tools/__tests__/pipeline-integration.test.js > cnxml-render > appendix render labels tables per-letter with per-module reset (R4-3)
+tools/__tests__/remt-checks-extract-alt.test.js > E5's `examined` unit — decided here, not inherited (§C82 L17) > 🔴 the plan's unit would have halted EXACTLY the modules E5 passes — not a random 8.1%
+tools/__tests__/remt-checks-glossary.test.js > G3 — function-word headwords (§C77) > 📌 FIRES ON EXACTLY THE TWO BENIGN HEADWORDS — the five harmful ones were removed 2026-08-31
+tools/__tests__/remt-checks-mt-gating.test.js > A3 — per-segment bracket-marker delta > premise pin — the base rate that refuses blocking, split by finding kind
+tools/__tests__/remt-checks-mt-gating.test.js > A3 — per-segment bracket-marker delta > the acceptance trio, re-measured against today’s tree > m68791 is the true negative — 380 segments, no delta
+tools/__tests__/remt-checks-mt-gating.test.js > A3 — per-segment bracket-marker delta > the acceptance trio, re-measured against today’s tree > 🔴 m68823 — the PROVEN false negative the §C69 widening exists to close
+tools/__tests__/remt-checks-mt-gating.test.js > A5 — untranslated-EN residue, two stages > premise pin — stage 2 finds 5 long residues in 3 run-target modules
+tools/__tests__/remt-checks-mt-runrecord.test.js > the premise: the corpus is v1 except the 67 units the paid runs bought > 215 sidecars across the two kept books, 215 with a tool, 119 with a run record
+tools/__tests__/remt-checks-mt.test.js > A1 — the EN and IS seg-id SETS are equal (ADVISORY) > NATURAL must-trip — 4 organic exercises bundles whose MT ALTERED seg-id digits
+tools/__tests__/remt-checks-mt.test.js > A2b — every marker-like token actually parses (BLOCKING) > BASE RATE — 0 mismatches over all 207 pairs, BOTH legs, so it can block
+tools/__tests__/remt-checks-mt.test.js > A2b — every marker-like token actually parses (BLOCKING) > leg `id-charset` — an id corrupted WITHOUT moving the count > PREMISE PIN — 0 violations over 60,380 ids in 414 files, which is what licences a BLOCK
+tools/__tests__/remt-checks-mt.test.js > A2c — no spaced `<!-- SEG: ` form (BLOCKING) > POSITIVE CONTROL — 0 spaced forms against 29,607 canonical markers over 207 files
+tools/__tests__/remt-checks-mt.test.js > A6 — zero legacy inline-marker dialects on the IS side (BLOCKING) > PREMISE PIN — chemistry: 5,160 mustache + 49 ++ hits over 111 of 149 files
+tools/__tests__/remt-sweep.test.js > the acceptance figures Plan B names, re-derived here with their denominators > A2a / A4 / A8 measure the 14 modules the paid run recorded, and SKIP the other 183
+tools/__tests__/remt-sweep.test.js > the over-bar advice names the stage that actually rewrites that tier > a tier-2 over-bar row is told to re-measure after the re-MT, not the extract
