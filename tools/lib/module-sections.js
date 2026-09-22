@@ -9,6 +9,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parseSegmentsMap } from './seg-markers.cjs';
+import { stripMarkupToText } from './alt-segments.js';
 
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 
@@ -245,9 +246,23 @@ export function buildModuleSections(book, chapter) {
     const structure = entry.data;
     const moduleId = structure.moduleId;
     const isIntro = structure.documentClass === 'introduction';
-    const titleEn = structure.title.text;
+    // 🔴 EVERY CONSUMER OF THESE THREE WANTS PLAIN TEXT — THE PAGE FILENAME, THE
+    // CHAPTER TOC LABEL, AND A CROSS-REFERENCE'S CLICKABLE TEXT. A module title
+    // segment is MARKER-FORM (`[[i:sp]][[sup:3]] Hybrid Orbitals…`) since §C177
+    // taught extraction to see a marked-up title, and `slugify` keeps only
+    // `[a-z0-9-]`, so the marker's TYPE NAME survives into the URL: measured,
+    // `ispsup3-hybrid-orbitals-and-the-structure-of`. ▶ Reader-visible, in the
+    // one place that is expensive to change later, because a URL that has been
+    // published has to be redirected rather than corrected.
+    //
+    // ⚠️ IT HAS NOT FIRED YET AND THAT IS TIMING, NOT SAFETY. Chemistry's 818
+    // committed IS title segments include 8 marker-bearing ones and ALL EIGHT are
+    // SECTION titles (`…-title`); this reads the DOCUMENT title (`auto-1`), of
+    // which 0 carry markers — so chemistry's published slugs are clean by
+    // accident of which slot the markers landed in, not by a guard.
+    const titleEn = stripMarkupToText(structure.title.text || '');
     const titleSegId = structure.title.segmentId;
-    const titleIs = segments.get(titleSegId) || titleEn;
+    const titleIs = stripMarkupToText(segments.get(titleSegId) || '') || titleEn;
 
     const sectionNum = isIntro ? '0' : String(sectionCounter++);
 

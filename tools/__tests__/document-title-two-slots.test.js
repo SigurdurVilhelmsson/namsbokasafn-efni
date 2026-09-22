@@ -23,6 +23,9 @@ import { readFileSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 import { roundTrip } from '../source-roundtrip-check.js';
 import { parseCnxmlDocument } from '../lib/cnxml-parser.js';
+import { extractSegments } from '../cnxml-extract.js';
+import { slugify } from '../lib/module-sections.js';
+import { stripMarkupToText } from '../lib/alt-segments.js';
 
 const SRC = (book) => join(import.meta.dirname, '..', '..', 'books', book, '01-source');
 
@@ -115,5 +118,74 @@ describe('§C126 ② — a module title carrying markup fills two slots, two way
       return mdTitle(out) !== mdTitle(m.src);
     });
     expect(changed).toEqual([]);
+  });
+});
+
+describe('§C177 — the THIRD consumer: the title becomes the page FILENAME', () => {
+  const organic = modules('lifraen-efnafraedi');
+  const marked = organic.filter((m) => /<[a-zA-Z]/.test(parseCnxmlDocument(m.src).titleRaw || ''));
+
+  // What extraction now emits as the module title — MARKER-FORM by design, so the
+  // paid wire and the injector can carry the markup. `buildModuleSections` reads
+  // exactly this string out of `02-structure` and hands it to `slugify`, which
+  // keeps only [a-z0-9-] — so a marker does not vanish, its TYPE NAME survives.
+  const titles = marked.map((m) => ({
+    id: `${m.unit}/${m.moduleId}`,
+    raw: extractSegments(m.src).structure.title.text,
+    plain: parseCnxmlDocument(m.src).title,
+  }));
+
+  it('POSITIVE CONTROL — the raw title really would poison the URL, or this guards nothing', () => {
+    // Compared by VALUE against the plain title, not by pattern: a "does it look
+    // like a marker name" regex fires on `Integration of…` and `Isomerism…` alike.
+    const poisoned = titles.filter((t) => slugify(t.raw) !== slugify(t.plain));
+    expect(poisoned.length).toBeGreaterThan(0);
+  });
+
+  it('THE GUARD — a stripped title slugs to exactly what the plain title slugs to', () => {
+    const wrong = titles
+      .filter((t) => slugify(stripMarkupToText(t.raw)) !== slugify(t.plain))
+      .map((t) => t.id);
+    expect(wrong).toEqual([]);
+  });
+
+  it('two worked examples, by VALUE — and the damage is not only the marker name', () => {
+    const m163 = titles.find((t) => t.id === 'ch01/m00163');
+    expect(slugify(m163.raw)).toBe('ispsup3-hybrid-orbitals-and-the-structure-of');
+    expect(slugify(stripMarkupToText(m163.raw))).toBe(
+      'sp3-hybrid-orbitals-and-the-structure-of-methane'
+    );
+
+    // ⚠️ THE SECOND FAILURE MODE, WHICH A "no marker name in the slug" TEST MISSES
+    // ENTIRELY: the marker text spends the 50-character budget, so the slug is cut
+    // in a different place and a real WORD is lost. `…-proton` against
+    // `…-proton-counting`. A URL can be wrong without looking wrong.
+    const m148 = titles.find((t) => t.id === 'ch13/m00148');
+    expect(slugify(m148.raw)).toBe('integration-of-sup1h-nmr-absorptions-proton');
+    expect(slugify(stripMarkupToText(m148.raw))).toBe(
+      'integration-of-1h-nmr-absorptions-proton-counting'
+    );
+  });
+
+  it('STRUCTURAL PIN — buildModuleSections applies the strip, stated as the weak test it is', () => {
+    // ⚠️ THIS IS A SOURCE PIN, NOT A BEHAVIOURAL TEST, AND THE REASON IS WORTH
+    // WRITING DOWN. `buildModuleSections` reads `title.text` out of committed
+    // `02-structure/*-structure.json`, and **0 of 491 committed structures carry a
+    // marker** — they were all written before extraction could see a marked-up
+    // title. So the production path has no input that would expose the defect, and
+    // a test calling it today would pass whether or not the strip is there: the
+    // vacuous green this repo keeps measuring.
+    //
+    // ▶ WHAT WOULD RETIRE THIS: re-extracting organic (free — `02-structure` and
+    // `02-for-mt` are GENERATED). The moment any committed structure carries a
+    // marker-form title, replace this with a call to `buildModuleSections` and
+    // assert the slug by value.
+    //
+    // The tokens pinned are the CALL SITES, not the identifier — the identifier
+    // also appears in the comment above them, and a pin that trips on its own
+    // documentation is a known failure here.
+    const src = readFileSync(join(import.meta.dirname, '..', 'lib', 'module-sections.js'), 'utf8');
+    expect(src).toContain("stripMarkupToText(structure.title.text || '')");
+    expect(src).toContain("stripMarkupToText(segments.get(titleSegId) || '')");
   });
 });
