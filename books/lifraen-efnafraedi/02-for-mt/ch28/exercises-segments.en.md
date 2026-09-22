@@ -25,6 +25,9 @@ Show how uracil can form strong hydrogen bonds to adenine.
 <!-- SEG:28-04-OC-P04:sol:358105-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-04-OC-P04:alt:sol-358105-m0 -->
+The figure shows two hydrogen bonding in the structure of adenine and uracil base pairs where the bases act as hydrogen bond donors and acceptors.
+
 <!-- SEG:28-04-OC-P05:stem:348288-b0 -->
 What RNA base sequence is complementary to the following DNA base sequence?
 
@@ -124,6 +127,9 @@ Propose a mechanism to account for cleavage of the [[i:β]]-cyanoethyl protectin
 <!-- SEG:28-07-OC-P12:sol:358107-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-07-OC-P12:alt:sol-358107-m0 -->
+E 2 reaction mechanism between beta cyanoethyl protecting group and ammonia. A downward arrow pointing from the lone airs of ammonia to H bonded with C H C N.
+
 <!-- SEG:28-99-OC-AP01:stem:348336-b0 -->
 Human brain natriuretic peptide (BNP) is a small peptide of 32 amino acids used in the treatment of congestive heart failure. How many nitrogen bases are present in the DNA that codes for BNP?
 
@@ -217,6 +223,9 @@ Valganciclovir, marketed as Valcyte, is an antiviral agent used for the treatmen
 <!-- SEG:28-99-OC-AP18:stimulus:b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-AP18:alt:stimulus-m0 -->
+The structure of Valganciclovir.
+
 <!-- SEG:28-99-OC-AP18:stem:354988-b0 -->
 What amino acid is produced by hydrolysis of the ester bond in valganciclovir?
 
@@ -238,11 +247,17 @@ The final step in DNA synthesis is deprotection by treatment with aqueous ammoni
 <!-- SEG:28-99-OC-MP01:stem:354974-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-MP01:alt:stem-354974-m0 -->
+Deprotection mechanism in two linked deoxynucleosides occurs at points 1 and 2 where cleavages occur. N H C O and O C O bonds are labeled 1 and 2, respectively.
+
 <!-- SEG:28-99-OC-MP02:stem:354976-b0 -->
 The final step in the metabolic degradation of uracil is the oxidation of malonic semialdehyde to give malonyl CoA. Propose a mechanism.
 
 <!-- SEG:28-99-OC-MP02:stem:354976-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:28-99-OC-MP02:alt:stem-354976-m0 -->
+The oxidation reaction of malonic semialdehyde gives malonyl-coenzyme A. Co A S H is involved and N A D plus gets converted to N A D H and H plus.
 
 <!-- SEG:28-99-OC-MP03:stem:354978-b0 -->
 One of the steps in the biosynthesis of a nucleotide called inosine monophosphate is the formation of aminoimidazole ribonucleotide from formylglycinamidine ribonucleotide. Propose a mechanism.
@@ -250,11 +265,17 @@ One of the steps in the biosynthesis of a nucleotide called inosine monophosphat
 <!-- SEG:28-99-OC-MP03:stem:354978-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-MP03:alt:stem-354978-m0 -->
+The formation of aminoimidazole ribonucleotide from formylglycinamide ribonucleotide. In the process, adenosine triphosphate is converted to adenosine diphosphate.
+
 <!-- SEG:28-99-OC-MP04:stem:354980-b0 -->
 One of the steps in the metabolic degradation of guanine is hydrolysis to give xanthine. Propose a mechanism.
 
 <!-- SEG:28-99-OC-MP04:stem:354980-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:28-99-OC-MP04:alt:stem-354980-m0 -->
+The hydrolysis reaction of guanine involves the formation of xanthine. In the process, ammonia is released.
 
 <!-- SEG:28-99-OC-MP05:stem:354982-b0 -->
 One of the steps in the biosynthesis of uridine monophosphate is the reaction of aspartate with carbamoyl phosphate to give carbamoyl aspartate followed by cyclization to form dihydroorotate. Propose mechanisms for both steps.
@@ -262,17 +283,29 @@ One of the steps in the biosynthesis of uridine monophosphate is the reaction of
 <!-- SEG:28-99-OC-MP05:stem:354982-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-MP05:alt:stem-354982-m0 -->
+The reaction of aspartate with carbamoyl phosphate gives carbamoyl aspartate with the removal of phosphate. It further undergoes cyclization to form dihydroorotate with the removal of a water molecule.
+
 <!-- SEG:28-99-OC-VC01:stimulus:b0 -->
 Identify the following bases, and tell whether each is found in DNA, RNA, or both:
 
 <!-- SEG:28-99-OC-VC01:stem:354966-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-VC01:alt:stem-354966-m0 -->
+The ball-and-stick model of Guanine. It is a purine base with two rings and one oxygen atom is attached to the five-membered ring.
+
 <!-- SEG:28-99-OC-VC01:stem:354967-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-VC01:alt:stem-354967-m0 -->
+The ball-and-stick model of Uracil. It is a pyrimidine base with one ring to which two oxygen atoms are attached.
+
 <!-- SEG:28-99-OC-VC01:stem:354968-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:28-99-OC-VC01:alt:stem-354968-m0 -->
+The ball-and-stick model of Cytosine. It is a pyrimidine base with one ring to which one oxygen atom is attached.
 
 <!-- SEG:28-99-OC-VC02:stem:354970-b0 -->
 Identify the following nucleotide, and tell how it is used:
@@ -280,9 +313,15 @@ Identify the following nucleotide, and tell how it is used:
 <!-- SEG:28-99-OC-VC02:stem:354970-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:28-99-OC-VC02:alt:stem-354970-m0 -->
+The ball-and-stick model of deoxythymidine monophosphate, a nucleotide. It consists of a phosphate group, pentose sugar deoxyribose and nucleobase thymine.
+
 <!-- SEG:28-99-OC-VC03:stem:354972-b0 -->
 Amine bases in nucleic acids can react with alkylating agents in typical S[[sub:N]]2 reactions. Look at the following electrostatic potential maps, and tell which is the better nucleophile, guanine or adenine. The reactive positions in each are indicated.
 
 <!-- SEG:28-99-OC-VC03:stem:354972-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:28-99-OC-VC03:alt:stem-354972-m0 -->
+The ball-and-stick model along with electrostatic potential maps of 9-methylguanine and 9-methyladenine. The reactive positions of 9-methylguanine and 9-methyladenine are N 7 and N 3, respectively.
 

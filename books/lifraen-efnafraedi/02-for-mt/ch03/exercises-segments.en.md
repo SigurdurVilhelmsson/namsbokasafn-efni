@@ -4,17 +4,26 @@ Use Table 3.1 to identify the functional groups in each of the following molecul
 <!-- SEG:03-01-OC-P01:stem:351544-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P01:alt:stem-351544-m0 -->
+The chemical structure of methionine which is an amino acid.
+
 <!-- SEG:03-01-OC-P01:sol:351544-b0 -->
 Sulfide, carboxylic acid, amine
 
 <!-- SEG:03-01-OC-P01:stem:351545-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P01:alt:stem-351545-m0 -->
+The chemical structure of ibuprofen which is a pain reliever.
+
 <!-- SEG:03-01-OC-P01:sol:351545-b0 -->
 Aromatic ring, carboxylic acid
 
 <!-- SEG:03-01-OC-P01:stem:351546-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-01-OC-P01:alt:stem-351546-m0 -->
+The chemical structure of capsaicin which is the pungent substance in chili peppers.
 
 <!-- SEG:03-01-OC-P01:sol:351546-b0 -->
 Ether, alcohol, aromatic ring, amide, C[[MEDIA:0]]C bond
@@ -28,11 +37,17 @@ Alcohol
 <!-- SEG:03-01-OC-P02:sol:357587-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P02:alt:sol-357587-m0 -->
+The chemical structure of methanol that has an alcohol functional group.
+
 <!-- SEG:03-01-OC-P02:stem:357588-b0 -->
 Aromatic ring
 
 <!-- SEG:03-01-OC-P02:sol:357588-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-01-OC-P02:alt:sol-357588-m0 -->
+The chemical structure of toluene that has an aromatic ring functional group.
 
 <!-- SEG:03-01-OC-P02:stem:357589-b0 -->
 Carboxylic acid
@@ -40,11 +55,17 @@ Carboxylic acid
 <!-- SEG:03-01-OC-P02:sol:357589-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P02:alt:sol-357589-m0 -->
+The chemical structure of acetic acid that has a carboxylic acid functional group.
+
 <!-- SEG:03-01-OC-P02:stem:357590-b0 -->
 Amine
 
 <!-- SEG:03-01-OC-P02:sol:357590-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-01-OC-P02:alt:sol-357590-m0 -->
+The chemical structure of methylamine that has an amine functional group.
 
 <!-- SEG:03-01-OC-P02:stem:357591-b0 -->
 Both ketone and amine
@@ -52,11 +73,17 @@ Both ketone and amine
 <!-- SEG:03-01-OC-P02:sol:357591-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P02:alt:sol-357591-m0 -->
+The chemical structure of methyl acetamide that has a carbonyl and an amino functional group.
+
 <!-- SEG:03-01-OC-P02:stem:357592-b0 -->
 Two double bonds
 
 <!-- SEG:03-01-OC-P02:sol:357592-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-01-OC-P02:alt:sol-357592-m0 -->
+The chemical structure of 1,3-butadiene that has two double bonds functional group.
 
 <!-- SEG:03-01-OC-P03:stem:357594-b0 -->
 Identify the functional groups in the following model of arecoline, a veterinary drug used to control worms in animals. Convert the drawing into a line-bond structure and a molecular formula (red = O, blue = N, black = C, gray = H).
@@ -64,14 +91,23 @@ Identify the functional groups in the following model of arecoline, a veterinary
 <!-- SEG:03-01-OC-P03:stem:357594-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-01-OC-P03:alt:stem-357594-m0 -->
+The ball and stick model of arecoline where grey, black, blue and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.
+
 <!-- SEG:03-01-OC-P03:sol:357594-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-01-OC-P03:alt:sol-357594-m0 -->
+The chemical structure of arecoline that has two functional groups, amine and a double bond.
 
 <!-- SEG:03-02-OC-P04:stem:357596-b0 -->
 Draw structures of the five isomers of C[[sub:6]]H[[sub:14]].
 
 <!-- SEG:03-02-OC-P04:sol:357596-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-02-OC-P04:alt:sol-357596-m0 -->
+The molecular structures of five isomers of hexane.
 
 <!-- SEG:03-02-OC-P05:stimulus:b0 -->
 Propose structures that meet the following descriptions:
@@ -82,17 +118,26 @@ Two isomeric esters with the formula C[[sub:5]]H[[sub:10]]O[[sub:2:]]
 <!-- SEG:03-02-OC-P05:sol:357600-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-02-OC-P05:alt:sol-357600-m0 -->
+The molecular structures of three isomeric esters of ethyl propionate.
+
 <!-- SEG:03-02-OC-P05:stem:357601-b0 -->
 Two isomeric nitriles with the formula C[[sub:4]]H[[sub:7]]N
 
 <!-- SEG:03-02-OC-P05:sol:357601-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-02-OC-P05:alt:sol-357601-m0 -->
+The molecular structures of two isomeric nitriles of butyronitrile are represented.
+
 <!-- SEG:03-02-OC-P05:stem:357602-b0 -->
 Two isomeric disulfides with the formula C[[sub:4]]H[[sub:10]]S[[sub:2]]
 
 <!-- SEG:03-02-OC-P05:sol:357602-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-02-OC-P05:alt:sol-357602-m0 -->
+The molecular structures of three isomeric disulfides of diethyl disulfide.
 
 <!-- SEG:03-02-OC-P06:stimulus:b0 -->
 How many isomers are there with the following descriptions?
@@ -121,26 +166,47 @@ Draw the eight 5-carbon alkyl groups (pentyl isomers).
 <!-- SEG:03-03-OC-P07:sol:357604-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P07:alt:sol-357604-m0 -->
+The molecular structures of eight pentyl isomers are represented.
+
 <!-- SEG:03-03-OC-P08:stimulus:b0 -->
 Identify the carbon atoms in the following molecules as primary, secondary, tertiary, or quaternary:
 
 <!-- SEG:03-03-OC-P08:stem:357608-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P08:alt:stem-357608-m0 -->
+The molecular structure of 2-methylpentane
+
 <!-- SEG:03-03-OC-P08:sol:357608-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-03-OC-P08:alt:sol-357608-m0 -->
+The molecular structure of 2-methylpentane featurings three primary carbons, two secondary carbons, and one tertiary carbon.
 
 <!-- SEG:03-03-OC-P08:stem:357609-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P08:alt:stem-357609-m0 -->
+The molecular structure of  3-ethyl-2-methylpentane is represented
+
 <!-- SEG:03-03-OC-P08:sol:357609-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-03-OC-P08:alt:sol-357609-m0 -->
+The molecular structure of 3-ethyl-2-methylpentane is represented featuring four primary carbons, two secondary carbons, and two tertiary carbons.
 
 <!-- SEG:03-03-OC-P08:stem:357610-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P08:alt:stem-357610-m0 -->
+The molecular structure of 2,2,4-trimethylpentane is represented
+
 <!-- SEG:03-03-OC-P08:sol:357610-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-03-OC-P08:alt:sol-357610-m0 -->
+The molecular structure of 2,2,4-trimethylpentane featuring five primary carbons, one secondary carbon, one tertiary carbon, and one quaternary carbon.
 
 <!-- SEG:03-03-OC-P09:stem:345874-b0 -->
 Identify the hydrogen atoms on the compounds shown in Problem 3-8 as primary, secondary, or tertiary.
@@ -157,11 +223,17 @@ An alkane with two tertiary carbons
 <!-- SEG:03-03-OC-P10:sol:357617-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P10:alt:sol-357617-m0 -->
+The molecular structure of  2,3-dimethylbutane with two tertiary carbons is  represented.
+
 <!-- SEG:03-03-OC-P10:stem:357618-b0 -->
 An alkane that contains an isopropyl group
 
 <!-- SEG:03-03-OC-P10:sol:357618-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-03-OC-P10:alt:sol-357618-m0 -->
+The molecular structure of 3-isopropylpentane is represented
 
 <!-- SEG:03-03-OC-P10:stem:357619-b0 -->
 An alkane that has one quaternary and one secondary carbon
@@ -169,11 +241,17 @@ An alkane that has one quaternary and one secondary carbon
 <!-- SEG:03-03-OC-P10:sol:357619-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-03-OC-P10:alt:sol-357619-m0 -->
+The molecular structure of 2,2-dimethylbutane that has one quaternary and one secondary carbon is presented.
+
 <!-- SEG:03-04-OC-P11:stimulus:b0 -->
 Give IUPAC names for the following compounds:
 
 <!-- SEG:03-04-OC-P11:stem:351766-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-04-OC-P11:alt:stem-351766-m0 -->
+The three isomers of C 5 H 12 are presented named pentane, 2-methylbutane, and 2,2-dimethylpropane.
 
 <!-- SEG:03-04-OC-P11:sol:351766-b0 -->
 Pentane, 2-methylbutane, 2,2-dimethylpropane
@@ -181,17 +259,26 @@ Pentane, 2-methylbutane, 2,2-dimethylpropane
 <!-- SEG:03-04-OC-P11:stem:351767-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-04-OC-P11:alt:stem-351767-m0 -->
+The molecular structure of 2,3-dimethylpentane featuring a five-carbon chain.
+
 <!-- SEG:03-04-OC-P11:sol:351767-b0 -->
 2,3-Dimethylpentane
 
 <!-- SEG:03-04-OC-P11:stem:351768-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-04-OC-P11:alt:stem-351768-m0 -->
+The molecular structure of 2,4-dimethylpentane featuring a five-carbon chain.
+
 <!-- SEG:03-04-OC-P11:sol:351768-b0 -->
 2,4-Dimethylpentane
 
 <!-- SEG:03-04-OC-P11:stem:351769-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-04-OC-P11:alt:stem-351769-m0 -->
+The molecular structure of 2,2,5-trimethylhexane featuring a six-carbon chain.
 
 <!-- SEG:03-04-OC-P11:sol:351769-b0 -->
 2,2,5-Trimethylhexane
@@ -205,11 +292,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:03-04-OC-P12:sol:357624-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-04-OC-P12:alt:sol-357624-m0 -->
+The molecular structure of 3,4-dimethylnonane is represented featuring a nine-carbon chain.
+
 <!-- SEG:03-04-OC-P12:stem:357625-b0 -->
 3-Ethyl-4,4-dimethylheptane
 
 <!-- SEG:03-04-OC-P12:sol:357625-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-04-OC-P12:alt:sol-357625-m0 -->
+The molecular structure of 3-ethyl-4,4-dimethylheptane featuring a seven carbon chain.
 
 <!-- SEG:03-04-OC-P12:stem:357626-b0 -->
 2,2-Dimethyl-4-propyloctane
@@ -217,11 +310,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:03-04-OC-P12:sol:357626-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-04-OC-P12:alt:sol-357626-m0 -->
+The molecular structure of 2,2-dimethyl-4-propyloctane featuring an eight-carbon chain.
+
 <!-- SEG:03-04-OC-P12:stem:357627-b0 -->
 2,2,4-Trimethylpentane
 
 <!-- SEG:03-04-OC-P12:sol:357627-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-04-OC-P12:alt:sol-357627-m0 -->
+The molecular structure of 2,2,4-trimethylpentane featuring a five-carbon chain.
 
 <!-- SEG:03-04-OC-P13:stem:345876-b0 -->
 Name the eight 5-carbon alkyl groups you drew in Problem 3-7.
@@ -235,14 +334,23 @@ Give the IUPAC name for the following hydrocarbon, and convert the drawing into 
 <!-- SEG:03-04-OC-P14:stem:360394-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-04-OC-P14:alt:stem-360394-m0 -->
+A ball and stick model of a hydrocarbon that includes a central methine group, which is bonded to a methyl group at the top.
+
 <!-- SEG:03-04-OC-P14:sol:360394-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-04-OC-P14:alt:sol-360394-m0 -->
+The skeletal structure of 3,3,4,5-tetramethylheptane featuring a seven-carbon chain.
 
 <!-- SEG:03-07-OC-P15:stem:360396-b0 -->
 Make a graph of potential energy versus angle of bond rotation for propane, and assign values to the energy maxima.
 
 <!-- SEG:03-07-OC-P15:sol:360396-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-07-OC-P15:alt:sol-360396-m0 -->
+A line graph of potential energy versus angle of rotation, for propane.
 
 <!-- SEG:03-07-OC-P16:stimulus:b0 -->
 Sight along the C2–C1 bond of 2-methylpropane (isobutane).
@@ -253,11 +361,17 @@ Draw a Newman projection of the most stable conformation.
 <!-- SEG:03-07-OC-P16:sol:357636-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-07-OC-P16:alt:sol-357636-m0 -->
+A Newman projection of the most stable conformation is represented.
+
 <!-- SEG:03-07-OC-P16:stem:357637-b0 -->
 Draw a Newman projection of the least stable conformation.
 
 <!-- SEG:03-07-OC-P16:sol:357637-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-07-OC-P16:alt:sol-357637-m0 -->
+A Newman projection of the least stable conformation is represented. It contains energy of 4 and 6 kilojoules per mol.
 
 <!-- SEG:03-07-OC-P16:stem:357638-b0 -->
 Make a graph of energy versus angle of rotation around the C2–C1 bond.
@@ -265,11 +379,17 @@ Make a graph of energy versus angle of rotation around the C2–C1 bond.
 <!-- SEG:03-07-OC-P16:sol:357638-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-07-OC-P16:alt:sol-357638-m0 -->
+A line graph of energy versus angle of rotation, around the C2 – C1 bond.
+
 <!-- SEG:03-07-OC-P16:stem:357639-b0 -->
 Assign relative values to the maxima and minima in your graph, given that an H ⟷ H eclipsing interaction costs 4.0 kJ/mol and an H ⟷ CH[[sub:3]] eclipsing interaction costs 6.0 kJ/mol.
 
 <!-- SEG:03-07-OC-P16:sol:357639-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-07-OC-P16:alt:sol-357639-m0 -->
+A line graph of energy versus angle of rotation, around the C2 – C1 bond.
 
 <!-- SEG:03-07-OC-P17:stem:357641-b0 -->
 Sight along the C2–C3 bond of 2,3-dimethylbutane, and draw a Newman projection of the most stable conformation.
@@ -277,14 +397,23 @@ Sight along the C2–C3 bond of 2,3-dimethylbutane, and draw a Newman projection
 <!-- SEG:03-07-OC-P17:sol:357641-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-07-OC-P17:alt:sol-357641-m0 -->
+A Newman projection of 2,3-dimethylbutane, the most stable conformation is represented.
+
 <!-- SEG:03-07-OC-P18:stem:357643-b0 -->
 Draw a Newman projection along the C2–C3 bond of the following conformation of 2,3-dimethylbutane, and calculate a total strain energy:
 
 <!-- SEG:03-07-OC-P18:stem:357643-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-07-OC-P18:alt:stem-357643-m0 -->
+A ball and stick model of 2,3-dimethylbutane featuring a four-carbon chain.
+
 <!-- SEG:03-07-OC-P18:sol:357643-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-07-OC-P18:alt:sol-357643-m0 -->
+A Newman projection of 2,3-dimethylbutane with a total energy of 11.4 kilojoules per mole is represented.
 
 <!-- SEG:03-99-OC-AP01:stimulus:b0 -->
 Locate and identify the functional groups in the following molecules.
@@ -292,20 +421,38 @@ Locate and identify the functional groups in the following molecules.
 <!-- SEG:03-99-OC-AP01:stem:351776-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP01:alt:stem-351776-m0 -->
+A benzene ring with C H 2 O H group on the C 1 and N H C H 3 group on the C 2 carbon is represented.
+
 <!-- SEG:03-99-OC-AP01:stem:351777-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP01:alt:stem-351777-m0 -->
+A six membered ring with a double bond and a carbonyl group is represented.
 
 <!-- SEG:03-99-OC-AP01:stem:351778-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP01:alt:stem-351778-m0 -->
+A benzene ring linked to an N H group linked to a C O C H 3 group is represented.
+
 <!-- SEG:03-99-OC-AP01:stem:351779-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP01:alt:stem-351779-m0 -->
+A C H 3 group linked to a C H connected to an amine group is shown. The C H is connected to a C O O H group.
 
 <!-- SEG:03-99-OC-AP01:stem:351780-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP01:alt:stem-351780-m0 -->
+Two six membered rings fused together is shown. Both the rings have double bond, carbonyl group and a C H 3 group.
+
 <!-- SEG:03-99-OC-AP01:stem:351781-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP01:alt:stem-351781-m0 -->
+Two C H 3 groups linked to a triple bond linked to a carbonyl linked to a chlorine group.
 
 <!-- SEG:03-99-OC-AP02:stimulus:b0 -->
 Propose structures that meet the following descriptions:
@@ -397,11 +544,20 @@ In each of the following sets, which structures represent the same compound and 
 <!-- SEG:03-99-OC-AP08:stem:357178-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP08:alt:stem-357178-m0 -->
+Three structures with alkane groups are represented. The structure that represent the same compound and different compounds have to be identified.
+
 <!-- SEG:03-99-OC-AP08:stem:357179-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP08:alt:stem-357179-m0 -->
+Three benzene rings with two O H group as substituents at different rings is shown.
+
 <!-- SEG:03-99-OC-AP08:stem:357180-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP08:alt:stem-357180-m0 -->
+Three compounds having a six membered ring is represented. There are O H groups as the substituent in these compounds.
 
 <!-- SEG:03-99-OC-AP09:stem:327904-b0 -->
 Seven constitutional isomers have the formula C[[sub:4]]H[[sub:10]]O. Draw as many as you can.
@@ -502,20 +658,38 @@ Give IUPAC names for the following compounds:
 <!-- SEG:03-99-OC-AP17:stem:357187-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP17:alt:stem-357187-m0 -->
+The compound is a five membered ring with a C H 3 group on the second position.
+
 <!-- SEG:03-99-OC-AP17:stem:357188-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP17:alt:stem-357188-m0 -->
+The given compound is a four membered ring. Two C H 3 groups are present on the third position.
 
 <!-- SEG:03-99-OC-AP17:stem:357189-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP17:alt:stem-357189-m0 -->
+The given compound is a six membered ring. A C H 3 group is present on C 2 and two C H 3 groups are present on C3.
+
 <!-- SEG:03-99-OC-AP17:stem:357190-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP17:alt:stem-357190-m0 -->
+The given compound is a seven membered ring with a C H 2 C H 3 on the third position and C H 3 on the sixth position.
 
 <!-- SEG:03-99-OC-AP17:stem:357191-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP17:alt:stem-357191-m0 -->
+The compound comprises seven carbon with a C H 3 on the C4 carbon and a C H 3 and C H 2 C H 3 on the C6 carbon.
+
 <!-- SEG:03-99-OC-AP17:stem:357192-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP17:alt:stem-357192-m0 -->
+A six membered ring with two C H 3 groups on C 2 carbon and two C H 3 groups on the C 3 carbon is shown.
 
 <!-- SEG:03-99-OC-AP18:stem:327968-b0 -->
 Name the five isomers of C[[sub:6]]H[[sub:14]].
@@ -580,20 +754,38 @@ For each of the following compounds, draw an isomer that has the same functional
 <!-- SEG:03-99-OC-AP27:stem:351559-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP27:alt:stem-351559-m0 -->
+A four membered ring with C H 3 on the C2 and Br group is represented.
+
 <!-- SEG:03-99-OC-AP27:stem:351560-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP27:alt:stem-351560-m0 -->
+A five membered ring with an O C H 3 group is represented.
 
 <!-- SEG:03-99-OC-AP27:stem:351561-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP27:alt:stem-351561-m0 -->
+A four membered carbon chain with a cyano group is represented.
+
 <!-- SEG:03-99-OC-AP27:stem:351562-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP27:alt:stem-351562-m0 -->
+A six membered ring with an O H group is represented.
 
 <!-- SEG:03-99-OC-AP27:stem:351563-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP27:alt:stem-351563-m0 -->
+A three membered ring with a C H O group is represented.
+
 <!-- SEG:03-99-OC-AP27:stem:351564-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP27:alt:stem-351564-m0 -->
+A benzene ring with a C H 2 C O O H group is represented.
 
 <!-- SEG:03-99-OC-AP28:stimulus:b0 -->
 Malic acid, C[[sub:4]]H[[sub:6]]O[[sub:5]], has been isolated from apples. Because this compound reacts with 2 molar equivalents of base, it is a dicarboxylic acid.
@@ -637,11 +829,17 @@ The cholesterol-lowering agents called [[i:statins]], such as simvastatin (Zocor
 <!-- SEG:03-99-OC-AP32:stem:351296-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP32:alt:stem-351296-m0 -->
+The chemical structures of simvastatin and pravastatin are represented.
+
 <!-- SEG:03-99-OC-AP33:stem:351298-b0 -->
 In the next chapter we’ll look at [[i:cycloalkanes]]—saturated cyclic hydrocarbons—and we’ll see that the molecules generally adopt puckered, nonplanar conformations. Cyclohexane, for instance, has a puckered shape like a lounge chair rather than a flat shape. Why?
 
 <!-- SEG:03-99-OC-AP33:stem:351298-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-AP33:alt:stem-351298-m0 -->
+The chemical structures of non-planar cyclohexane and planar cyclohexane is represented.
 
 <!-- SEG:03-99-OC-AP34:stem:351783-b0 -->
 We’ll see in the next chapter that there are two isomeric substances, both named 1,2-dimethylcyclohexane. Explain.
@@ -649,14 +847,23 @@ We’ll see in the next chapter that there are two isomeric substances, both nam
 <!-- SEG:03-99-OC-AP34:stem:351783-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-AP34:alt:stem-351783-m0 -->
+The chemical structure of 1,2-dimethylcyclohexane is represented.
+
 <!-- SEG:03-99-OC-VC01:stimulus:b0 -->
 Identify the functional groups in the following substances, and convert each drawing into a molecular formula (red = O, blue = N).
 
 <!-- SEG:03-99-OC-VC01:stem:351241-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-VC01:alt:stem-351241-m0 -->
+A ball and stick model of phenylalanine that includes a benzene ring.
+
 <!-- SEG:03-99-OC-VC01:stem:351242-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-VC01:alt:stem-351242-m0 -->
+A ball and stick model of lidocaine that includes an amide group.
 
 <!-- SEG:03-99-OC-VC02:stimulus:b0 -->
 Give IUPAC names for the following alkanes, and convert each drawing into a skeletal structure.
@@ -664,18 +871,33 @@ Give IUPAC names for the following alkanes, and convert each drawing into a skel
 <!-- SEG:03-99-OC-VC02:stem:351247-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-VC02:alt:stem-351247-m0 -->
+A ball and stick model of 3,3,5-trimethylheptane
+
 <!-- SEG:03-99-OC-VC02:stem:351248-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-VC02:alt:stem-351248-m0 -->
+A ball and stick model of 2-methyl-3-ethylpentane
 
 <!-- SEG:03-99-OC-VC02:stem:351249-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:03-99-OC-VC02:alt:stem-351249-m0 -->
+A ball and stick model of 2,4,4-trimethylpentane
+
 <!-- SEG:03-99-OC-VC02:stem:351250-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-VC02:alt:stem-351250-m0 -->
+A ball and stick model of 2-methyl-4-isopropylheptane
 
 <!-- SEG:03-99-OC-VC03:stem:351252-b0 -->
 Draw a Newman projection along the C2–C3 bond of the following conformation of 2-butanol.
 
 <!-- SEG:03-99-OC-VC03:stem:351252-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:03-99-OC-VC03:alt:stem-351252-m0 -->
+A ball and stick model of 2-butanol is represented. The grey, white and red spheres are carbon, white, and oxygen.
 

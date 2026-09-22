@@ -10,6 +10,9 @@ Two mass spectra are shown in Figure 12.9. One spectrum is that of 2-methyl-2-pe
 <!-- SEG:12-02-OC-P02:stem:360078-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-02-OC-P02:alt:stem-360078-m0 -->
+A mass spectrum with a base peak at m / z 41 and a molecular ion at m / z 84.
+
 <!-- SEG:12-02-OC-P02:sol:360078-b0 -->
 2-Methyl-2-pentene
 
@@ -18,6 +21,9 @@ Two mass spectra are shown in Figure 12.9. One spectrum is that of 2-methyl-2-pe
 
 <!-- SEG:12-02-OC-P02:stem:360079-b1 -->
 Mass spectra for Problem 12-2.
+
+<!-- SEG:12-02-OC-P02:alt:stem-360079-m0 -->
+A mass spectrum with a base peak at m / z 55 and a molecular ion at m / z 84.
 
 <!-- SEG:12-02-OC-P02:sol:360079-b0 -->
 2-Hexene
@@ -54,6 +60,9 @@ List the masses of the precursor ion and of several fragments you might expect t
 
 <!-- SEG:12-03-OC-P04:stem:628144-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-03-OC-P04:alt:stem-628144-m0 -->
+The ball and stick model of a compound with six carbons. Carbon, hydrogen, and oxygen are shown using gray, white and red spheres, respectively.
 
 <!-- SEG:12-03-OC-P04:sol:628144-b0 -->
 102 (M[[sup:+]]), 84 (dehydration), 87 (alpha cleavage), 59 (alpha cleavage)
@@ -154,6 +163,9 @@ The IR spectrum of phenylacetylene is shown in Figure 12.29. What absorption ban
 <!-- SEG:12-08-OC-P09:stem:356720-b2 -->
 The IR spectrum of phenylacetylene, Problem 12-9.
 
+<!-- SEG:12-08-OC-P09:alt:stem-356720-m0 -->
+An infrared spectrum with xignificant absorption bands near 3300 and 1500 inverse centimeters, and in the fingerprint region.
+
 <!-- SEG:12-08-OC-P09:sol:356720-b0 -->
 1450–1600 cm[[sup:−1]]: aromatic ring; 2100 cm[[sup:−1]]: C[[MEDIA:0]]C; 3300 cm[[sup:−1]]: C[[MEDIA:1]]C−H
 
@@ -163,17 +175,26 @@ Where might the following compounds have IR absorptions?
 <!-- SEG:12-08-OC-P10:stem:352779-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-08-OC-P10:alt:stem-352779-m0 -->
+Chemical structure of a cyclohexene with a C O O C H 3 substituent.
+
 <!-- SEG:12-08-OC-P10:sol:352779-b0 -->
 1715, 1640, 1250  cm[[sup:−1]]
 
 <!-- SEG:12-08-OC-P10:stem:352780-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-08-OC-P10:alt:stem-352780-m0 -->
+A five-carbon chain with a triple bond on C4 and a C H O group on C1.
+
 <!-- SEG:12-08-OC-P10:sol:352780-b0 -->
 1730, 2100, 3300 cm[[sup:−1]]
 
 <!-- SEG:12-08-OC-P10:stem:352781-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-08-OC-P10:alt:stem-352781-m0 -->
+A benzene ring with a C O O H  on C1 and C H 2 O H on C2.
 
 <!-- SEG:12-08-OC-P10:sol:352781-b0 -->
 1720, 2500–3100, 3400–3650 cm[[sup:−1]]
@@ -183,6 +204,9 @@ Where might the following compound have IR absorptions?
 
 <!-- SEG:12-08-OC-P11:stem:352191-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-08-OC-P11:alt:stem-352191-m0 -->
+A ball and stick model of a cyclopentane ring linked to methyl and acetate groups, and triple bonded to nitrogen. The red and blue spheres represent oxygen and nitrogen, respectively.
 
 <!-- SEG:12-08-OC-P11:sol:352191-b0 -->
 1690, 1650, 2230 cm[[sup:−1]]
@@ -250,6 +274,9 @@ An alcohol with M[[sup:+]] = 88 and fragments at [[i:m/z]] = 73, [[i:m/z]] = 70,
 <!-- SEG:12-99-OC-AP11:stem:356700-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP11:alt:stem-356700-m0 -->
+The mass spectrum of  2-methylpentane with a base peak at m / z 43 and highest m / z value peaks at 86 and 87.
+
 <!-- SEG:12-99-OC-AP12:stem:337631-b0 -->
 Assume that you are in a laboratory carrying out the catalytic hydrogenation of cyclohexene to cyclohexane. How could you use a mass spectrometer to determine when the reaction is finished?
 
@@ -259,11 +286,20 @@ What fragments might you expect in the mass spectra of the following compounds?
 <!-- SEG:12-99-OC-AP13:stem:352785-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP13:alt:stem-352785-m0 -->
+A chemical structure of 1-phenylbutan-1-one
+
 <!-- SEG:12-99-OC-AP13:stem:352786-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP13:alt:stem-352786-m0 -->
+A chemical structure of 1-ethylcyclohexan-1-ol
+
 <!-- SEG:12-99-OC-AP13:stem:352787-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP13:alt:stem-352787-m0 -->
+A chemical structure of N-cyclopentyl-N-methylamine
 
 <!-- SEG:12-99-OC-AP14:stem:337639-b0 -->
 How might you use IR spectroscopy to distinguish among the three isomers 1-butyne, 1,3-butadiene, and 2-butyne?
@@ -304,8 +340,14 @@ Two infrared spectra are shown. One is the spectrum of cyclohexane, and the othe
 <!-- SEG:12-99-OC-AP19:stem:356703-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP19:alt:stem-356703-m0 -->
+An infrared spectrum with significant absorption bands just below 3000 and just below 1500 inverse centimeters.
+
 <!-- SEG:12-99-OC-AP19:stem:356704-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP19:alt:stem-356704-m0 -->
+An infrared spectrum with significant absorption bands just above and below 3000 and just below 1500, around 1680, and just below 1500 inverse centimeters.
 
 <!-- SEG:12-99-OC-AP20:stimulus:b0 -->
 At what approximate positions might the following compounds show IR absorptions (ignore alkane absorptions)?
@@ -313,17 +355,32 @@ At what approximate positions might the following compounds show IR absorptions 
 <!-- SEG:12-99-OC-AP20:stem:447733-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP20:alt:stem-447733-m0 -->
+The structure of benzoic acid.
+
 <!-- SEG:12-99-OC-AP20:stem:447734-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP20:alt:stem-447734-m0 -->
+The structure of methyl benzoate.
 
 <!-- SEG:12-99-OC-AP20:stem:447735-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP20:alt:stem-447735-m0 -->
+The structure of 4-hydroxybenzonitrile
+
 <!-- SEG:12-99-OC-AP20:stem:447736-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP20:alt:stem-447736-m0 -->
+The structure of cyclohex-3-en-1-one
+
 <!-- SEG:12-99-OC-AP20:stem:447737-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP20:alt:stem-447737-m0 -->
+The structure of a methyl ester with a five-carbon alkyl chain and a ketone group at C4.
 
 <!-- SEG:12-99-OC-AP21:stimulus:b0 -->
 How would you use infrared spectroscopy to distinguish between the following pairs of constitutional isomers?
@@ -331,11 +388,20 @@ How would you use infrared spectroscopy to distinguish between the following pai
 <!-- SEG:12-99-OC-AP21:stem:352801-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP21:alt:stem-352801-m0 -->
+Chemical structures of 2-butyne and 1-butyne.
+
 <!-- SEG:12-99-OC-AP21:stem:352802-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP21:alt:stem-352802-m0 -->
+Chemical structures of pent-3-en-2-one and pent-4-en-2-one.
+
 <!-- SEG:12-99-OC-AP21:stem:352803-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP21:alt:stem-352803-m0 -->
+Chemical structures of an ether with a double bond and an alkyl aldehyde.
 
 <!-- SEG:12-99-OC-AP22:stimulus:b0 -->
 At what approximate positions might the following compounds show IR absorptions?
@@ -343,20 +409,38 @@ At what approximate positions might the following compounds show IR absorptions?
 <!-- SEG:12-99-OC-AP22:stem:352810-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP22:alt:stem-352810-m0 -->
+A nine-membered carbon chain with alkyne, methyl, and ketone groups.
+
 <!-- SEG:12-99-OC-AP22:stem:352811-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP22:alt:stem-352811-m0 -->
+Chemical structure of 4-methylpent-1-ene
 
 <!-- SEG:12-99-OC-AP22:stem:352812-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP22:alt:stem-352812-m0 -->
+Chemical structure of methyl butyrate
+
 <!-- SEG:12-99-OC-AP22:stem:352813-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP22:alt:stem-352813-m0 -->
+Chemical structure of methyl butyrate
 
 <!-- SEG:12-99-OC-AP22:stem:352814-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP22:alt:stem-352814-m0 -->
+Chemical structure of methyl phenyl ketone
+
 <!-- SEG:12-99-OC-AP22:stem:352815-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP22:alt:stem-352815-m0 -->
+Chemical structure of 3-hydroxybenzaldehyde
 
 <!-- SEG:12-99-OC-AP23:stem:337689-b0 -->
 Assume that you are carrying out the dehydration of 1-methylcyclohexanol to yield 1-methylcyclohexene. How could you use infrared spectroscopy to determine when the reaction is complete?
@@ -379,8 +463,14 @@ The mass spectrum [[b:(a)]] and the infrared spectrum [[b:(b)]] of an unknown hy
 <!-- SEG:12-99-OC-AP28:stem:356707-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP28:alt:stem-356707-m0 -->
+The mass spectrum of an unknown compound with a base peak at m / z 67 and other high abundance peaks at 27, 29, 39, 40, and 53.
+
 <!-- SEG:12-99-OC-AP28:stem:356708-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP28:alt:stem-356708-m0 -->
+An infrared spectrum with a sharp band at 3300, bands just below 3000, and a small band around 2150 inverse centimeters.
 
 <!-- SEG:12-99-OC-AP29:stimulus:b0 -->
 The mass spectrum [[b:(a)]] and the infrared spectrum [[b:(b)]] of another unknown hydrocarbon are shown. Propose as many structures as you can.
@@ -388,8 +478,14 @@ The mass spectrum [[b:(a)]] and the infrared spectrum [[b:(b)]] of another unkno
 <!-- SEG:12-99-OC-AP29:stem:359266-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP29:alt:stem-359266-m0 -->
+The mass spectrum of an unknown compound with a base peak at m / z 54 and highest m / z value peaks at 70 and 71 inverse centimeters.
+
 <!-- SEG:12-99-OC-AP29:stem:359267-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP29:alt:stem-359267-m0 -->
+An infrared spectrum with  bands just above and below 3000, and just below 1500 inverse centimeters.
 
 <!-- SEG:12-99-OC-AP30:stimulus:b0 -->
 Propose structures for compounds that meet the following descriptions:
@@ -406,17 +502,26 @@ A non-optically active compound C[[sub:5]]H[[sub:9]]N with an IR absorption at 2
 <!-- SEG:12-99-OC-AP31:stem:352817-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP31:alt:stem-352817-m0 -->
+The structures of 4-methyl-2-pentanone and 3-methylpentanal.
+
 <!-- SEG:12-99-OC-AP32:stem:352253-b0 -->
 Grignard reagents (alkylmagnesium halides) undergo a general and very useful reaction with ketones. Methylmagnesium bromide, for example, reacts with cyclohexanone to yield a product with the formula C[[sub:7]]H[[sub:14]]O. What is the structure of this product if it has an IR absorption at 3400 cm[[sup:–1]]?
 
 <!-- SEG:12-99-OC-AP32:stem:352253-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP32:alt:stem-352253-m0 -->
+Cyclohexanone reacts first with methyl magnesium bromide and then hydronium ion to form an unknown product represented by a question mark.
+
 <!-- SEG:12-99-OC-AP33:stem:352255-b0 -->
 Ketones undergo a reduction when treated with sodium borohydride, NaBH[[sub:4]]. What is the structure of the compound produced by reaction of 2-butanone with NaBH[[sub:4]] if it has an IR absorption at 3400 cm[[sup:–1]] and M[[sup:+]] = 74 in the mass spectrum?
 
 <!-- SEG:12-99-OC-AP33:stem:352255-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP33:alt:stem-352255-m0 -->
+2-butanone reacts first with sodium borohydride and then with hydronium ion to form an unknown product represented by a question mark.
 
 <!-- SEG:12-99-OC-AP34:stem:341861-b0 -->
 Nitriles, R–C[[MEDIA:0]]N, undergo a hydrolysis reaction when heated with aqueous acid. What is the structure of the compound produced by hydrolysis of propanenitrile, CH[[sub:3]]CH[[sub:2]]C[[MEDIA:1]]N, if it has IR absorptions from 2500–3100 cm[[sup:–1]] and at 1710 cm[[sup:–1]], and has M[[sup:+]] = 74?
@@ -427,11 +532,17 @@ The infrared spectrum of the compound with the following mass spectrum lacks any
 <!-- SEG:12-99-OC-AP35:stem:356714-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP35:alt:stem-356714-m0 -->
+The mass spectrum of  an uknown compound with a base peak at m / z 88 and a molecular ion at m / z 172.
+
 <!-- SEG:12-99-OC-AP36:stem:356716-b0 -->
 The infrared spectrum of the compound with the following mass spectrum has a medium-intensity peak at about 1650 cm[[sup:–1]]. There is also a C–H out-of-plane bending peak near 880 cm[[sup:–1]]. Propose a structure.
 
 <!-- SEG:12-99-OC-AP36:stem:356716-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-AP36:alt:stem-356716-m0 -->
+The mass spectrum of  an uknown compound with a base peak at m / z 56 and a molecular ion at 84. Other significant peaks occur at 41 and 69.
 
 <!-- SEG:12-99-OC-AP37:stem:356718-b0 -->
 The infrared spectrum of the compound with the following mass spectrum has strong absorbances at 1584, 1478, and 1446 cm[[sup:–1]]. Propose a structure.
@@ -439,17 +550,29 @@ The infrared spectrum of the compound with the following mass spectrum has stron
 <!-- SEG:12-99-OC-AP37:stem:356718-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-AP37:alt:stem-356718-m0 -->
+The mass spectrum of  an uknown compound with a base peak and molecular ion at m / z 112. A peak one-third the size occurs at 114.
+
 <!-- SEG:12-99-OC-VC01:stimulus:b0 -->
 Where in the IR spectrum would you expect each of the following molecules to absorb?
 
 <!-- SEG:12-99-OC-VC01:stem:352195-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-VC01:alt:stem-352195-m0 -->
+A ball and stick model of a six-membered ring connected to different groups. Carbon, hydrogen, oxygen, and nitrogen are shown as gray, white, red, and blue spheres, respectively.
+
 <!-- SEG:12-99-OC-VC01:stem:352196-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-VC01:alt:stem-352196-m0 -->
+A ball and stick model of a four-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.
+
 <!-- SEG:12-99-OC-VC01:stem:352197-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-VC01:alt:stem-352197-m0 -->
+A ball and stick model of a five-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.
 
 <!-- SEG:12-99-OC-VC02:stimulus:b0 -->
 Show the structures of the fragments you would expect in the mass spectra of the following molecules:
@@ -457,6 +580,12 @@ Show the structures of the fragments you would expect in the mass spectra of the
 <!-- SEG:12-99-OC-VC02:stem:352200-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:12-99-OC-VC02:alt:stem-352200-m0 -->
+A ball and stick model of a six-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.
+
 <!-- SEG:12-99-OC-VC02:stem:352201-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:12-99-OC-VC02:alt:stem-352201-m0 -->
+A ball and stick model of a cyclic four-carbon chain connected to a three-carbon chain and other alkyl groups. Gray, white and blue spheres denote carbon, hydrogen, and nitrogen, respectively.
 

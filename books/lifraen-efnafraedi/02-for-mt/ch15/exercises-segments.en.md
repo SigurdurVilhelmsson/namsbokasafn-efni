@@ -4,17 +4,26 @@ Tell whether the following compounds are ortho-, meta-, or para-disubstituted:
 <!-- SEG:15-01-OC-P01:stem:358604-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P01:alt:stem-358604-m0 -->
+In a benzene ring, C 1 and C 3 are bonded to a chlorine atom and a methyl group, respectively.
+
 <!-- SEG:15-01-OC-P01:sol:358604-b0 -->
 Meta
 
 <!-- SEG:15-01-OC-P01:stem:358605-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P01:alt:stem-358605-m0 -->
+In a benzene ring, C 1 is bonded to a nitro group. C 4 is bonded to a bromine atom.
+
 <!-- SEG:15-01-OC-P01:sol:358605-b0 -->
 Para
 
 <!-- SEG:15-01-OC-P01:stem:358606-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P01:alt:stem-358606-m0 -->
+In a benzene ring, C 1 is bonded to a sulfonic acid. C 2 is bonded to a hydroxyl group.
 
 <!-- SEG:15-01-OC-P01:sol:358606-b0 -->
 Ortho
@@ -25,11 +34,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:15-01-OC-P02:stem:358613-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P02:alt:stem-358613-m0 -->
+In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a chlorine atom, respectively.
+
 <!-- SEG:15-01-OC-P02:sol:358613-b0 -->
 [[i:m]]-Bromochlorobenzene
 
 <!-- SEG:15-01-OC-P02:stem:358614-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P02:alt:stem-358614-m0 -->
+In a benzene ring, C 1 is bonded to a 4-carbon chain, in which C 3 is bonded to a methyl group.
 
 <!-- SEG:15-01-OC-P02:sol:358614-b0 -->
 (3-Methylbutyl)benzene
@@ -37,11 +52,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:15-01-OC-P02:stem:358615-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P02:alt:stem-358615-m0 -->
+In a benzene ring, C 1 and C 4 are bonded to an amine group and a bromine atom, respectively.
+
 <!-- SEG:15-01-OC-P02:sol:358615-b0 -->
 [[i:p]]-Bromoaniline
 
 <!-- SEG:15-01-OC-P02:stem:358616-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P02:alt:stem-358616-m0 -->
+In a benzene ring, C 1 and C 4 are each bonded to a chlorine atom and C 2 is bonded to a methyl group.
 
 <!-- SEG:15-01-OC-P02:sol:358616-b0 -->
 2,5-Dichlorotoluene
@@ -49,11 +70,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:15-01-OC-P02:stem:358617-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P02:alt:stem-358617-m0 -->
+In a benzene ring, C 1 is bonded to a 2-carbon chain. C 2 and C 4 are each bonded to an N O 2 group.
+
 <!-- SEG:15-01-OC-P02:sol:358617-b0 -->
 1-Ethyl-2,4-dinitrobenzene
 
 <!-- SEG:15-01-OC-P02:stem:358618-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P02:alt:stem-358618-m0 -->
+In a benzene ring, C 1, C 2, C 3, and C 5 are each bonded to a methyl group.
 
 <!-- SEG:15-01-OC-P02:sol:358618-b0 -->
 1,2,3,5-Tetramethylbenzene
@@ -67,11 +94,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:15-01-OC-P03:sol:358623-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P03:alt:sol-358623-m0 -->
+In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a chlorine atom, respectively.
+
 <!-- SEG:15-01-OC-P03:stem:358624-b0 -->
 [[i:p]]-Bromotoluene
 
 <!-- SEG:15-01-OC-P03:sol:358624-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P03:alt:sol-358624-m0 -->
+In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a methyl group, respectively.
 
 <!-- SEG:15-01-OC-P03:stem:358625-b0 -->
 [[i:m]]-Chloroaniline
@@ -79,11 +112,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:15-01-OC-P03:sol:358625-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-01-OC-P03:alt:sol-358625-m0 -->
+In a benzene ring, C 1 and C 3 are bonded to an amine group and a chlorine atom, respectively.
+
 <!-- SEG:15-01-OC-P03:stem:358626-b0 -->
 1-Chloro-3,5-dimethylbenzene
 
 <!-- SEG:15-01-OC-P03:sol:358626-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-01-OC-P03:alt:sol-358626-m0 -->
+In a benzene ring, C 1 is bonded to a chlorine atom. C 3 and C 5 are each bonded to a methyl group.
 
 <!-- SEG:15-02-OC-P04:stem:358628-b0 -->
 Pyridine is a flat, hexagonal molecule with bond angles of 120°. It undergoes substitution rather than addition and generally behaves like benzene. Draw a picture of the [[i:π]] orbitals of pyridine to explain its properties. Check your answer by looking ahead to [[b:Section 15.5]].
@@ -91,17 +130,26 @@ Pyridine is a flat, hexagonal molecule with bond angles of 120°. It undergoes s
 <!-- SEG:15-02-OC-P04:stem:358628-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-02-OC-P04:alt:stem-358628-m0 -->
+Pyridine has a nitrogen atom in the first position and three alternate double bonds. Nitrogen carries a lone pair of electrons.
+
 <!-- SEG:15-02-OC-P04:sol:358628-b0 -->
 Pyridine has an aromatic sextet of electrons.
 
 <!-- SEG:15-02-OC-P04:sol:358628-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-02-OC-P04:alt:sol-358628-m0 -->
+Pyridine has three lobes around nitrogen. One lobe has an unpaired electron and one lobe has a lone pair of electrons. Upper lobe of each carbon has an unpaired electron.
+
 <!-- SEG:15-03-OC-P05:stem:358630-b0 -->
 To be aromatic, a molecule must have 4[[i:n]] + 2 [[i:π]] electrons and must have a planar, monocyclic system of conjugation. Cyclodecapentaene fulfills one of these criteria but not the other and has resisted all attempts at synthesis. Explain.
 
 <!-- SEG:15-03-OC-P05:stem:358630-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-03-OC-P05:alt:stem-358630-m0 -->
+The ball-and-stick model shows a ten-membered ring with five alternate double bonds. The gray and black spheres represent hydrogen and carbon atoms, respectively.
 
 <!-- SEG:15-03-OC-P05:sol:358630-b0 -->
 Cyclodecapentaene is not flat because of steric interactions.
@@ -118,6 +166,9 @@ Cyclooctatetraene readily reacts with potassium metal to form the stable cyclooc
 <!-- SEG:15-04-OC-P07:stem:358632-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-04-OC-P07:alt:stem-358632-m0 -->
+An 8-membered ring with four alternate double bonds reacts with two equivalents of potassium to form thje cyclooctatetraene dianion.
+
 <!-- SEG:15-04-OC-P07:sol:358632-b0 -->
 The cyclooctatetraenyl dianion is aromatic (ten [[i:π]] electrons) and flat.
 
@@ -127,14 +178,23 @@ The relative energy levels of the five [[i:π]] molecular orbitals of the cyclop
 <!-- SEG:15-04-OC-P08:sol:358634-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-04-OC-P08:alt:sol-358634-m0 -->
+The energy levels of the cyclopentadienyl cation show two unpaired electrons. That of the radical shows one unpaired electron, and the anion does not have any unpaired electrons.
+
 <!-- SEG:15-05-OC-P09:stem:358636-b0 -->
 Draw an orbital picture of furan to show how the molecule is aromatic.
 
 <!-- SEG:15-05-OC-P09:stem:358636-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-05-OC-P09:alt:stem-358636-m0 -->
+Furan has an oxygen atom at first position with two lone pairs of electrons. The ring has two alternate double bonds.
+
 <!-- SEG:15-05-OC-P09:sol:358636-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-05-OC-P09:alt:sol-358636-m0 -->
+The orbital representation of furan shows an oxygen atom with three lobes. Two of the lobes each carry a lone pair. Upper lobe of each carbon carries an unpaired electron.
 
 <!-- SEG:15-05-OC-P10:stem:358638-b0 -->
 Thiamin, or vitamin B[[sub:1]], contains a positively charged five-membered nitrogen–sulfur heterocycle called a [[i:thiazolium]] ring. Explain why the thiazolium ring is aromatic.
@@ -142,11 +202,17 @@ Thiamin, or vitamin B[[sub:1]], contains a positively charged five-membered nitr
 <!-- SEG:15-05-OC-P10:stem:358638-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-05-OC-P10:alt:stem-358638-m0 -->
+Vitamin B 1 contains a thiazolium ring in which C 2 is bonded to 2-carbon chain with terminal carbon bonded to hydroxyl group. N 3 of the ring is bonded to a C H 2 whch in turn is bonded to a 6-membered substituted ring.
+
 <!-- SEG:15-05-OC-P10:sol:358638-b0 -->
 The thiazolium ring has six [[i:π]] electrons.
 
 <!-- SEG:15-05-OC-P10:sol:358638-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-05-OC-P10:alt:sol-358638-m0 -->
+The orbital representation of thiazolium ring shows two lobes around sulfur each with a lone pair and upper lobes of the remaining atoms of the ring each with an unpaired electron.
 
 <!-- SEG:15-06-OC-P11:stem:358640-b0 -->
 Azulene, a beautiful blue hydrocarbon, is an isomer of naphthalene. Is azulene aromatic? Draw a second resonance form of azulene in addition to that shown.
@@ -154,17 +220,26 @@ Azulene, a beautiful blue hydrocarbon, is an isomer of naphthalene. Is azulene a
 <!-- SEG:15-06-OC-P11:stem:358640-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-06-OC-P11:alt:stem-358640-m0 -->
+Azulene has a seven-carbon ring with three double bonds fused to a cyclopentadiene ring.
+
 <!-- SEG:15-06-OC-P11:sol:358640-b0 -->
 Yes, it's aromatic.
 
 <!-- SEG:15-06-OC-P11:sol:358640-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-06-OC-P11:alt:sol-358640-m0 -->
+Two resonance structures of azulene, separated by a double-headed arrow.
+
 <!-- SEG:15-06-OC-P12:stem:358642-b0 -->
 How many electrons does each of the four nitrogen atoms in purine contribute to the aromatic [[i:π]] system?
 
 <!-- SEG:15-06-OC-P12:stem:358642-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-06-OC-P12:alt:stem-358642-m0 -->
+Purine has a five-membered ring fused to a six-membered ring. Each ring consists of two nitrogen atoms and two double bonds.
 
 <!-- SEG:15-06-OC-P12:sol:358642-b0 -->
 The three nitrogens in double bonds each contribute one; the remaining nitrogen contributes two.
@@ -175,20 +250,38 @@ Give IUPAC names for the following compounds:
 <!-- SEG:15-99-OC-AP01:stem:358661-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP01:alt:stem-358661-m0 -->
+In a benzene ring, C 1 is bonded to a 5-carbon chain, in which C 1 and C 4 are each bonded to a methyl group.
+
 <!-- SEG:15-99-OC-AP01:stem:358662-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP01:alt:stem-358662-m0 -->
+In a benzene ring, C 1 and C 3 are bonded to a carboxylic acid group and a bromine atom, respectively.
 
 <!-- SEG:15-99-OC-AP01:stem:358663-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP01:alt:stem-358663-m0 -->
+In a benzene ring, C 1 is bonded to a bromine atom and C3 and C5 to methyl groups.
+
 <!-- SEG:15-99-OC-AP01:stem:358664-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP01:alt:stem-358664-m0 -->
+In a benzene ring, C 1 is bonded to a bromine atom and C 2 is bonded to a 3-carbon chain.
 
 <!-- SEG:15-99-OC-AP01:stem:358665-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP01:alt:stem-358665-m0 -->
+In a benzene ring, C 1 is bonded to a fluorine atom and C2 and C4 are each bonded to a nitro group.
+
 <!-- SEG:15-99-OC-AP01:stem:358666-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP01:alt:stem-358666-m0 -->
+In a benzene ring, C 1 and C 4 are bonded to an amine group and a chlorine atom, respectively.
 
 <!-- SEG:15-99-OC-AP02:stimulus:b0 -->
 Draw structures corresponding to the following names:
@@ -253,11 +346,17 @@ Anthracene has four resonance structures, one of which is shown. Draw the other 
 <!-- SEG:15-99-OC-AP08:stem:358668-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP08:alt:stem-358668-m0 -->
+Anthracene has three benzene rings fused to one another in a straight line.
+
 <!-- SEG:15-99-OC-AP09:stem:358670-b0 -->
 Phenanthrene has five resonance structures, one of which is shown. Draw the other four.
 
 <!-- SEG:15-99-OC-AP09:stem:358670-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP09:alt:stem-358670-m0 -->
+Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..
 
 <!-- SEG:15-99-OC-AP10:stem:342850-b0 -->
 Look at the five resonance structures for phenanthrene (Problem 26), and predict which of its carbon–carbon bonds is shortest.
@@ -271,11 +370,17 @@ In 1932, A. A. Levine and A. G. Cole studied the ozonolysis of [[i:o]]-xylene an
 <!-- SEG:15-99-OC-AP11:stem:358672-b2 -->
 In what ratio would you expect the three products to be formed if [[i:o]]-xylene is a resonance hybrid of two structures? The actual ratio found was 3 parts glyoxal, 1 part 2,3-butanedione, and 2 parts pyruvaldehyde. What conclusions can you draw about the structure of [[i:o]]-xylene?
 
+<!-- SEG:15-99-OC-AP11:alt:stem-358672-m0 -->
+Benzene with methyl groups at C 1 and C 2 reacts with ozone in the presence of zinc to form glyoxal, 2,3-butanedione, and pyruvaldehyde.
+
 <!-- SEG:15-99-OC-AP12:stem:358674-b0 -->
 3-Chlorocyclopropene, on treatment with AgBF[[sub:4]], gives a precipitate of AgCl and a stable solution of a product that shows a single [[sup:1]]H NMR absorption at 11.04 [[i:δ]]. What is a likely structure for the product, and what is its relation to Hückel’s rule?
 
 <!-- SEG:15-99-OC-AP12:stem:358674-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP12:alt:stem-358674-m0 -->
+3-Chlorocyclopropene has a 3-carbon ring. C 1 is double bonded to C 2. C 3 is bonded to a chlorine atom and a hydrogen atom.
 
 <!-- SEG:15-99-OC-AP13:stem:339132-b0 -->
 Draw an energy diagram for the three molecular orbitals of the cyclopropenyl system (C[[sub:3]]H[[sub:3]]). How are these three molecular orbitals occupied in the cyclopropenyl anion, cation, and radical? Which of the three substances is aromatic according to Hückel’s rule?
@@ -286,11 +391,17 @@ Cyclopropanone is highly reactive because of its large amount of angle strain. M
 <!-- SEG:15-99-OC-AP14:stem:358676-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP14:alt:stem-358676-m0 -->
+Cyclopropanone has a 3-carbon ring. C 1 is a carbonyl group. Methylcyclopropenone has a cyclopropene ring. C 1 is a carbonyl group and C2 is bonded to a methyl group.
+
 <!-- SEG:15-99-OC-AP15:stem:358678-b0 -->
 Cycloheptatrienone is stable, but cyclopentadienone is so reactive that it can’t be isolated. Explain, taking the polarity of the carbonyl group into account.
 
 <!-- SEG:15-99-OC-AP15:stem:358678-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP15:alt:stem-358678-m0 -->
+Cycloheptatrienone has a 7-carbon ring with three alternate double bonds. C 1 is carbonyl group. Cyclopentadienone has a 5-carbon ring with two alternate double bonds. C 1 is carbonyl group.
 
 <!-- SEG:15-99-OC-AP16:stem:339138-b0 -->
 Which would you expect to be most stable, cyclononatetraenyl radical, cation, or anion? (Cyclononatetraene has a ring of nine carbons and four double bonds.)
@@ -304,11 +415,17 @@ Calicene, like azulene (Problem 17), has an unusually large dipole moment for a 
 <!-- SEG:15-99-OC-AP18:stem:358680-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP18:alt:stem-358680-m0 -->
+Calicene has a cyclopentadiene ring double bonded to a cyclopropene ring.
+
 <!-- SEG:15-99-OC-AP19:stem:358682-b0 -->
 Pentalene is a most elusive molecule that has been isolated only at liquid-nitrogen temperature. The pentalene dianion, however, is well known and quite stable. Explain.
 
 <!-- SEG:15-99-OC-AP19:stem:358682-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP19:alt:stem-358682-m0 -->
+Pentalene has two fused cyclopentadiene rings. Pentalene dianion structure is similar to pentalene, except that pentalene dianion is enclosed in square brackets with 2 minus charge.
 
 <!-- SEG:15-99-OC-AP20:stimulus:b0 -->
 Indole is an aromatic heterocycle that has a benzene ring fused to a pyrrole ring. Draw an orbital picture of indole.
@@ -322,11 +439,17 @@ What is the electronic relationship of indole to naphthalene?
 <!-- SEG:15-99-OC-AP20:stem:358686-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP20:alt:stem-358686-m0 -->
+Indole has a benzene ring fused to a 5-membered ring made of a nitrogen atom and four carbon atoms, in which the two carbons not fused to the benzene ring have a double bond between them.
+
 <!-- SEG:15-99-OC-AP21:stem:358688-b0 -->
 Ribavirin, an antiviral agent used against hepatitis C and viral pneumonia, contains a 1,2,4-triazole ring. Why is the ring aromatic?
 
 <!-- SEG:15-99-OC-AP21:stem:358688-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP21:alt:stem-358688-m0 -->
+Ribavirin has 1,2,4-triazole ring. N 1 is bonded to ribose ring. The carbon at position 3 is bonded to a carbonyl group, which itself is bonded to an amine.
 
 <!-- SEG:15-99-OC-AP22:stem:339152-b0 -->
 Compound [[b:A]], C[[sub:8]]H[[sub:10]], yields three substitution products, C[[sub:8]]H[[sub:9]]Br, on reaction with Br[[sub:2]]. Propose two possible structures for [[b:A]]. The [[sup:1]]H NMR spectrum of [[b:A]] shows a complex four-proton multiplet at 7.0 [[i:δ]] and a six-proton singlet at 2.30 [[i:δ]]. What is the structure of [[b:A]]?
@@ -364,17 +487,26 @@ On reaction with acid, 4-pyrone is protonated on the carbonyl-group oxygen to gi
 <!-- SEG:15-99-OC-AP25:stem:358690-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP25:alt:stem-358690-m0 -->
+4-Pyrone, when treated wuth acid is protonated at the carbonyl group, the oxygen of which now carries a positive charge.
+
 <!-- SEG:15-99-OC-AP26:stem:358692-b0 -->
 Bextra, a COX-2 inhibitor once used in the treatment of arthritis, contains an isoxazole ring. Why is the ring aromatic?
 
 <!-- SEG:15-99-OC-AP26:stem:358692-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP26:alt:stem-358692-m0 -->
+Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..
+
 <!-- SEG:15-99-OC-AP27:stem:358694-b0 -->
 [[i:N]]-Phenylsydnone, so-named because it was first studied at the University of Sydney, Australia, behaves like a typical aromatic molecule. Explain, using the Hückel 4[[i:n]] + 2 rule.
 
 <!-- SEG:15-99-OC-AP27:stem:358694-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP27:alt:stem-358694-m0 -->
+Two interconvertible structures of N-phenylsydnone. In both structures, the nitrogen atom bonded to the benzene ring has a positive charge.
 
 <!-- SEG:15-99-OC-AP28:stem:342858-b0 -->
 Show the relative energy levels of the seven [[i:π]] molecular orbitals of the cycloheptatrienyl system. Tell which of the seven orbitals are filled in the cation, radical, and anion, and account for the aromaticity of the cycloheptatrienyl cation.
@@ -394,6 +526,9 @@ IR absorption at 820 cm[[sup:–1]]
 <!-- SEG:15-99-OC-AP30:stem:358698-b2 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP30:alt:stem-358698-m0 -->
+The 1 H N M R spectrum of C 8 H 9 Br shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.6 (quartet), 7.1 (doublet), and 7.4 (doublet).
+
 <!-- SEG:15-99-OC-AP30:stem:358699-b0 -->
 C[[sub:9]]H[[sub:12]]
 
@@ -402,6 +537,9 @@ IR absorption at 750 cm[[sup:–1]]
 
 <!-- SEG:15-99-OC-AP30:stem:358699-b2 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP30:alt:stem-358699-m0 -->
+The 1 H N M R spectrum of C 9 H 12 shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.3 (singlet), 2.6 (quartet) and 7.1 (multiplet).
 
 <!-- SEG:15-99-OC-AP30:stem:358700-b0 -->
 C[[sub:11]]H[[sub:16]]
@@ -412,11 +550,17 @@ IR absorption at 820 cm[[sup:–1]]
 <!-- SEG:15-99-OC-AP30:stem:358700-b2 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP30:alt:stem-358700-m0 -->
+The 1 H N M R spectrum of C 11 H 6 shows peaks in parts per million at 0 (T M S), 1.3 (singlet), 2.3 (singlet), 7.0 (doublet), and 7.3 (doublet).
+
 <!-- SEG:15-99-OC-AP31:stem:358702-b0 -->
 Propose a structure for a molecule C[[sub:14]]H[[sub:12]] that has the following [[sup:1]]H NMR spectrum and has IR absorptions at 700, 740, and 890 cm[[sup:–1]]:
 
 <!-- SEG:15-99-OC-AP31:stem:358702-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP31:alt:stem-358702-m0 -->
+The 1 H N M R spectrum of C 14 H 12 shows peaks in parts per million at 0 (T M S), 5.4 (singlet), and 7.3 (singlet).
 
 <!-- SEG:15-99-OC-AP32:stem:358704-b0 -->
 The proton NMR spectrum for a compound with formula C[[sub:10]]H[[sub:12]]O[[sub:2]] is shown. The infrared spectrum has a strong band at 1711 cm[[sup:–1]]. The normal carbon-13 NMR spectral results are tabulated along with the DEPT-135 and DEPT-90 information. Draw the structure of this compound.
@@ -505,6 +649,9 @@ No peak
 <!-- SEG:15-99-OC-AP32:stem:358704-b28 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP32:alt:stem-358704-m0 -->
+The 1 H N M R spectrum of C 10 H 12 O 2 shows peaks in parts per million at 2.1 (singlet), 3.6 (singlet), 3.7 (singlet), 6.8 (doublet), and 7.1 (doublet).
+
 <!-- SEG:15-99-OC-AP33:stem:358706-b0 -->
 The proton NMR spectrum of a compound with formula C[[sub:6]]H[[sub:5]]NCl[[sub:2]] is shown. The normal carbon-13 and DEPT experimental results are tabulated. The infrared spectrum shows peaks at 3432 and 3313 cm[[sup:–1]] and a series of medium-sized peaks between 1618 and 1466 cm[[sup:–1]]. Draw the structure of this compound.
 
@@ -556,6 +703,9 @@ No peak
 <!-- SEG:15-99-OC-AP33:stem:358706-b16 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP33:alt:stem-358706-m0 -->
+The 1 H N M R spectrum of C 6 H 5 N C l 2 shows peaks in parts per million at 4.4 (broad), 6.6 (triplet), and 7.3 (doublet).
+
 <!-- SEG:15-99-OC-AP34:stem:339182-b0 -->
 Aromatic substitution reactions occur by addition of an electrophile such as Br[[sup:+]] to an aromatic ring to yield an allylic carbocation intermediate, followed by loss of H[[sup:+]]. Show the structure of the intermediate formed by reaction of benzene with Br[[sup:+]].
 
@@ -568,8 +718,14 @@ Look at the following aromatic anions and their linear counterparts, and draw al
 <!-- SEG:15-99-OC-AP36:stem:358711-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP36:alt:stem-358711-m0 -->
+To the left, cycloheptatriene ring with a positive charge at the single-bonded carbon. To the right, a seven-carbon chain with three alternate double bonds. C 7 carries a positive charge.
+
 <!-- SEG:15-99-OC-AP36:stem:358712-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP36:alt:stem-358712-m0 -->
+To the left, a five-membered ring comprising of a nitrogen anion and four carbons with double bonds between them. To the right, a 4-carbon chain with two alternate double bonds bonded to N-H minus.
 
 <!-- SEG:15-99-OC-AP37:stem:358708-b0 -->
 After the following reaction, the chemical shift of H[[sub:a]] moves downfield from 6.98 ppm to 7.30 ppm. Explain.
@@ -577,11 +733,17 @@ After the following reaction, the chemical shift of H[[sub:a]] moves downfield f
 <!-- SEG:15-99-OC-AP37:stem:358708-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-AP37:alt:stem-358708-m0 -->
+Benzene bonded to two methoxy and two ethyne chains. C 2 of each ethyne is bonded to position 3 of a pyridine ring where position 2 of that ring is bonded to another ethyne group. Palladium catalyzes a cyclization of this compound.
+
 <!-- SEG:15-99-OC-AP38:stem:358718-b0 -->
 The following compound is the product initially formed in a Claisen rearrangement, which we’ll see in Section 18.4. This product is not isolated, but tautomerizes to its enol form. Give the structure of the enol and provide an explanation as to why the enol tautomer is favored.
 
 <!-- SEG:15-99-OC-AP38:stem:358718-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-AP38:alt:stem-358718-m0 -->
+A reversible reaction shows cyclohexadiene with a carbonyl group at C1 and a 3-carbon chain with terminal double bond at C 2 forming unknown product(s), represented by a question mark.
 
 <!-- SEG:15-99-OC-AP39a:stimulus:b0 -->
 Compounds called azo dyes are the major source of artificial color in textiles and food. Part of the reason for their intense coloring is the conjugation from an electron-donating group through the diazo bridge (−N=N−) to an electron-withdrawing group on the other side. For the following azo dyes, draw a resonance form that shows how the electron-donating group is related to the electron-withdrawing group on the other side of the diazo bridge. Used curved arrows to show how the electrons are reorganized.
@@ -598,8 +760,14 @@ Give IUPAC names for the following substances (red = O, blue = N):
 <!-- SEG:15-99-OC-VC01:stem:358645-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-VC01:alt:stem-358645-m0 -->
+The ball-and-stick model of a molecule has a 6-membered ring with alternate double bonds. C 1 is bonded to hydroxyl. C 3 is bonded to an isopropyl group.
+
 <!-- SEG:15-99-OC-VC01:stem:358646-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-VC01:alt:stem-358646-m0 -->
+The ball-and-stick model of a molecule has a 6-membered ring with alternate double bonds. C 1 is bonded to a carboxylic acid group and C 2 to a nitro group.
 
 <!-- SEG:15-99-OC-VC02:stem:358648-b0 -->
 All-cis cyclodecapentaene is a stable molecule that shows a single absorption in its [[sup:1]]H NMR spectrum at 5.67 [[i:δ]]. Tell whether it is aromatic, and explain its NMR spectrum.
@@ -607,11 +775,17 @@ All-cis cyclodecapentaene is a stable molecule that shows a single absorption in
 <!-- SEG:15-99-OC-VC02:stem:358648-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-VC02:alt:stem-358648-m0 -->
+The ball-and-stick model of all-cis cyclodecapentaene has a 10-carbon ring with alternate double bonds.
+
 <!-- SEG:15-99-OC-VC03:stem:358650-b0 -->
 1,6-Methanonaphthalene has an interesting [[sup:1]]H NMR spectrum in which the eight hydrogens around the perimeter absorb at 6.9 to 7.3 [[i:δ]], while the two CH[[sub:2]] protons absorb at –0.5 [[i:δ]]. Tell whether it is aromatic, and explain its NMR spectrum.
 
 <!-- SEG:15-99-OC-VC03:stem:358650-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-VC03:alt:stem-358650-m0 -->
+The ball-and-stick model of 1,6-methanonaphthalene has a cycloheptatriene ring fused to a cycloheptadiene ring.
 
 <!-- SEG:15-99-OC-VC04:stem:358652-b0 -->
 The following molecular model is that of a carbocation. Draw two resonance structures for the carbocation, indicating the positions of the double bonds.
@@ -619,9 +793,15 @@ The following molecular model is that of a carbocation. Draw two resonance struc
 <!-- SEG:15-99-OC-VC04:stem:358652-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:15-99-OC-VC04:alt:stem-358652-m0 -->
+The ball-and-stick model of a cationic molecule has three six-membered rings fused together.
+
 <!-- SEG:15-99-OC-VC05:stem:358654-b0 -->
 Azulene, an isomer of naphthalene, has a remarkably large dipole moment for a hydrocarbon ([[i:μ]] = 1.0 D). Explain, using resonance structures.
 
 <!-- SEG:15-99-OC-VC05:stem:358654-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:15-99-OC-VC05:alt:stem-358654-m0 -->
+The ball-and-stick model with the electrostatic potential map of azulene. In the structure, a seven-membered ring is fused with a 5-membered ring.
 

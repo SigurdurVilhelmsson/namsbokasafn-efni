@@ -43,6 +43,9 @@ Does the reduction of acetoacetyl ACP in [[b:[[em:step 6|0]]]] occur on the Re f
 <!-- SEG:29-04-OC-P06:stem:358125-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-04-OC-P06:alt:stem-358125-m0 -->
+Acetoacetyl A C P reacts nicotinamide adenine dinucleotide phosphate hydride to form beta-hydroxybutyryl A C P and nicotinamide adenine dinucleotide phosphate cation.
+
 <!-- SEG:29-04-OC-P06:sol:358125-b0 -->
 The Si face
 
@@ -82,6 +85,9 @@ Is the pro-[[i:R]] or pro-[[i:S]] hydrogen removed from citrate during the dehyd
 <!-- SEG:29-07-OC-P12:stem:358127-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-07-OC-P12:alt:stem-358127-m0 -->
+Citrate undergoes a stereoselective dehydration to yield cis-aconitate as the product.
+
 <!-- SEG:29-07-OC-P12:sol:358127-b0 -->
 pro-[[i:R]]; anti geometry
 
@@ -108,6 +114,9 @@ From what amino acid is the following [[i:α]]-keto acid derived?
 
 <!-- SEG:29-09-OC-P16:stem:358129-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-09-OC-P16:alt:stem-358129-m0 -->
+A ball-and-stick model of alpha-keto acid anion. A four-carbon chain with carboxylate at C 1, a ketone group at C 2, and at a carbonyl linked to amine.
 
 <!-- SEG:29-09-OC-P16:sol:358129-b0 -->
 Asparagine
@@ -154,6 +163,9 @@ Lactate, a product of glucose catabolism in oxygen-starved muscles, can be conve
 <!-- SEG:29-99-OC-AP10:stem:358167-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP10:alt:stem-358167-m0 -->
+The structure of lactate anion, having a four-carbon chain with a carboxylate anion at C1 and a hydroxyl group at C2.
+
 <!-- SEG:29-99-OC-AP11:stem:349356-b0 -->
 Write the equation for the final step in the [[i:β]]-oxidation pathway of any fatty acid with an even number of carbon atoms.
 
@@ -163,11 +175,20 @@ Show the products of each of the following reactions:
 <!-- SEG:29-99-OC-AP12:stem:358171-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP12:alt:stem-358171-m0 -->
+Hexyl CoA reacts in the presence of Acyl  CoA dehydrogenase and favin adenine dinucleotide to form an unknown product represented as a question mark.
+
 <!-- SEG:29-99-OC-AP12:stem:358172-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP12:alt:stem-358172-m0 -->
+Product of (a) reacts with water in the presence of enoyl CoA hydratase to form an unknown product represented as a question mark.
+
 <!-- SEG:29-99-OC-AP12:stem:358173-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-AP12:alt:stem-358173-m0 -->
+Product of (b) reacts in the presence of beta-hydroxyacyl CoA dehydrogenase and  nicotinamide adenine dinucleotide cation  to form an unknown product shown as a question mark.
 
 <!-- SEG:29-99-OC-AP13:stem:349364-b0 -->
 Why aren’t the glycolysis and gluconeogenesis pathways the exact reverse of each other?
@@ -220,6 +241,9 @@ In step 2 of the citric acid cycle (Figure 29.14), [[i:cis]]-aconitate reacts wi
 <!-- SEG:29-99-OC-AP19:stem:358175-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP19:alt:stem-358175-m0 -->
+Cis-aconitate having a three-carbon chain and a double bond reacts with water to form (2 R,3 S)-Isocitrate. The double bond is replaced by single bond in the product.
+
 <!-- SEG:29-99-OC-AP20:stem:358177-b0 -->
 In glycerol metabolism, the oxidation of [[i:sn]]-glycerol 3-phosphate to give dihydroxyacetone phosphate is catalyzed by [[i:sn]]-glycerol-3-phosphate dehydrogenase, with NAD[[sup:+]] as cofactor. The reaction is stereospecific, occurring exclusively on the Re face of the nicotinamide ring.
 
@@ -229,11 +253,17 @@ In glycerol metabolism, the oxidation of [[i:sn]]-glycerol 3-phosphate to give d
 <!-- SEG:29-99-OC-AP20:stem:358177-b2 -->
 Which hydrogen in the NADH product comes from [[i:sn]]-glycerol 3-phosphate? Does it have pro-[[i:R]] or pro-[[i:S]] stereochemistry?
 
+<!-- SEG:29-99-OC-AP20:alt:stem-358177-m0 -->
+A reaction with nicotinamide adenine dinucleotide cation oxidizes sn-glycerol-3-phosphate to dihydroxyactone phosphate. Nicotinamide adenine dinucleotide cation converts to nicotinamide adenine dinucleotide hydride
+
 <!-- SEG:29-99-OC-AP21:stem:358179-b0 -->
 The primary fate of acetyl CoA under normal metabolic conditions is degradation in the citric acid cycle to yield CO[[sub:2]]. When the body is stressed by prolonged starvation, however, acetyl CoA is converted into compounds called [[i:ketone bodies]], which can be used by the brain as a temporary fuel. Fill in the missing information indicated by the four question marks in the following biochemical pathway for the synthesis of ketone bodies from acetyl CoA:
 
 <!-- SEG:29-99-OC-AP21:stem:358179-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-AP21:alt:stem-358179-m0 -->
+Acetyl CoA forms acetoacetyl CoA , which converts water to an unknown reagent and acetoacetate anion,  the acetoacetate anion reacts with unknown reagents to form ketone bodies acetone and 3-hydroxybutyrate.
 
 <!-- SEG:29-99-OC-AP22:stem:349394-b0 -->
 The initial reaction in Problem 29-52, conversion of two molecules of acetyl CoA to one molecule of acetoacetyl CoA, is a Claisen reaction. Assuming that there is a base present, show the mechanism of the reaction.
@@ -244,11 +274,17 @@ In step 6 of fatty-acid biosynthesis (Figure 29.6), acetoacetyl ACP is reduced s
 <!-- SEG:29-99-OC-AP23:stem:358181-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP23:alt:stem-358181-m0 -->
+Acetoacetyl A C P forms beta-hydroxybutyryl A C P via the reduction of nicotinamide adenine dinucleotide phosphate hydride to nicotinamide adenine dinucleotide phosphate cation.
+
 <!-- SEG:29-99-OC-AP24:stem:358183-b0 -->
 In step 7 of fatty-acid biosynthesis (Figure 29.6), dehydration of a [[i:β]]-hydroxy thioester occurs to give [[i:trans]]-crotonyl ACP. Is the dehydration a syn elimination or an anti elimination?
 
 <!-- SEG:29-99-OC-AP24:stem:358183-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-AP24:alt:stem-358183-m0 -->
+A beta hydroxy thioester is dehydrated to form trans-crotonyl A C P. The C-C single bond in the reactant converts to a double bond in the product.
 
 <!-- SEG:29-99-OC-AP25:stem:358185-b0 -->
 In step 8 of fatty-acid biosynthesis (Figure 29.6), reduction of [[i:trans]]-crotonyl ACP gives butyryl ACP. A hydride from NADPH adds to C3 of the crotonyl group from the Re face, and protonation on C2 occurs on the Si face. Is the reduction a syn addition or an anti addition?
@@ -256,11 +292,17 @@ In step 8 of fatty-acid biosynthesis (Figure 29.6), reduction of [[i:trans]]-cro
 <!-- SEG:29-99-OC-AP25:stem:358185-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-AP25:alt:stem-358185-m0 -->
+trans-Crotonyl ACP reacts to form butyryl A C P. The product has a four-carbon chain with carbonyl linked to S A C P.
+
 <!-- SEG:29-99-OC-MP01:stem:358569-b0 -->
 In the [[i:pentose phosphate]] pathway for degrading sugars, ribulose 5-phosphate is converted to ribose 5-phosphate. Propose a mechanism for the isomerization.
 
 <!-- SEG:29-99-OC-MP01:stem:358569-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-MP01:alt:stem-358569-m0 -->
+Ribulose-5-phosphate reacts to form ribose-5-phosphate. Both structures are presented in Fischer projection.
 
 <!-- SEG:29-99-OC-MP02:stem:358143-b0 -->
 Another step in the pentose phosphate pathway for degrading sugars (see Problem 29-21) is the conversion of ribose 5-phosphate to glyceraldehyde 3-phosphate. What kind of organic process is occurring? Propose a mechanism for the conversion.
@@ -268,11 +310,17 @@ Another step in the pentose phosphate pathway for degrading sugars (see Problem 
 <!-- SEG:29-99-OC-MP02:stem:358143-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-MP02:alt:stem-358143-m0 -->
+Ribose-5-phosphate reacts to form glyceraldehyde-3-phosphate and an aldehyde connected to a methylene linked to a phosphate group. Both structures are presented in Fischer projection.
+
 <!-- SEG:29-99-OC-MP03:stimulus:b0 -->
 One of the steps in the pentose phosphate pathway for glucose catabolism is the reaction of sedoheptulose 7-phosphate with glyceraldehyde 3-phosphate in the presence of a transaldolase to yield erythrose 4-phosphate and fructose 6-phosphate.
 
 <!-- SEG:29-99-OC-MP03:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-MP03:alt:stimulus-m0 -->
+Sedoheptulose-7-phosphate reacts with glyceraldehyde-3-phosphate to form erythrose-4-phosphate and fructose-6-phosphate. All the structures are presented in Fischer projection.
 
 <!-- SEG:29-99-OC-MP03:stem:358146-b0 -->
 The first part of the reaction is the formation of a protonated Schiff base of sedoheptulose 7-phosphate with a lysine residue in the enzyme followed by a retro-aldol cleavage to give an enamine plus erythrose 4-phosphate. Show the structure of the enamine and the mechanism by which it is formed.
@@ -285,6 +333,9 @@ One of the steps in the pentose phosphate pathway for glucose catabolism is the 
 
 <!-- SEG:29-99-OC-MP04:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-MP04:alt:stimulus-m0 -->
+Xylulose-5-phosphate reacts with ribose-5-phosphate to form glyceraldehyde-3-phosphate and sedoheptulose-7-phosphate. Both structures are presented in Fischer projection.
 
 <!-- SEG:29-99-OC-MP04:stem:358150-b0 -->
 The first part of the reaction is nucleophilic addition of thiamin diphosphate (TPP) ylide to xylulose 5-phosphate, followed by a retro-aldol cleavage to give glyceraldehyde 3-phosphate and a TPP-containing enamine. Show the structure of the enamine and the mechanism by which it is formed.
@@ -301,6 +352,9 @@ The amino acid tyrosine is biologically degraded by a series of steps that inclu
 <!-- SEG:29-99-OC-MP05:stem:358153-b2 -->
 The double-bond isomerization of maleoylacetoacetate to fumaroylacetoacetate is catalyzed by practically any nucleophile, [[b::]]Nu[[sup:–]]. Propose a mechanism.
 
+<!-- SEG:29-99-OC-MP05:alt:stem-358153-m0 -->
+Tyrosine is degraded to maleoylacetoacetate and then to fumaroylacetoacetate, and acetoacetate and fumarate with acetoacetate forming coenzyme A.
+
 <!-- SEG:29-99-OC-MP06:stem:349316-b0 -->
 Propose a mechanism for the conversion of fumaroylacetoacetate to fumarate plus acetoacetate (see Problem 29-25).
 
@@ -313,11 +367,17 @@ Design your own degradative pathway. You know the rules (organic mechanisms), an
 <!-- SEG:29-99-OC-MP08:stem:358571-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-MP08:alt:stem-358571-m0 -->
+Serine reacts in the presence of unknown reagents, represented as a question mark, to form acetyl Co A.
+
 <!-- SEG:29-99-OC-MP09:stem:358157-b0 -->
 The amino acid serine is biosynthesized by a route that involves reaction of 3-phosphohydroxypyruvate with glutamate to give 3-phosphoserine. Propose a mechanism.
 
 <!-- SEG:29-99-OC-MP09:stem:358157-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-MP09:alt:stem-358157-m0 -->
+3-Phosphohydroxypyruvate is converted to 3-phosphoserine via the deamination of glutamate   to alpha-ketoglutarate.
 
 <!-- SEG:29-99-OC-MP10:stem:358159-b0 -->
 The amino acid leucine is biosynthesized from [[i:α]]-ketoisocaproate, which is itself prepared from [[i:α]]-ketoisovalerate by a multistep route that involves ([[b:[[em:1|0]]]]) reaction with acetyl CoA, ([[b:[[em:2|1]]]]) hydrolysis, ([[b:[[em:3|2]]]]) dehydration, ([[b:[[em:4|3]]]]) hydration, ([[b:[[em:5|4]]]]) oxidation, and ([[b:[[em:6|5]]]]) decarboxylation. Show the steps in the transformation, and propose a mechanism for each.
@@ -325,11 +385,17 @@ The amino acid leucine is biosynthesized from [[i:α]]-ketoisocaproate, which is
 <!-- SEG:29-99-OC-MP10:stem:358159-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-MP10:alt:stem-358159-m0 -->
+Alpha-ketoisovalerate reacts to form alpha-ketoisocaproate via the conversion acetyl CoA, and  nicotinamide adenine dinucleotide cation  to H S CoA, carbon dioxide and nicotinamide adenine dinucleotide phosphate hydride.
+
 <!-- SEG:29-99-OC-MP11:stimulus:b0 -->
 The amino acid cysteine, C[[sub:3]]H[[sub:7]]NO[[sub:2]]S, is biosynthesized from a substance called cystathionine by a multistep pathway.
 
 <!-- SEG:29-99-OC-MP11:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-MP11:alt:stimulus-m0 -->
+Cystathionine reacts to form ammonium ion, an unknown product represented as a question mark and cysteine.
 
 <!-- SEG:29-99-OC-MP11:stem:358163-b0 -->
 The first step is a transamination. What is the product?
@@ -346,8 +412,14 @@ Identify the amino acid that is a catabolic precursor of each of the following [
 <!-- SEG:29-99-OC-VC01:stem:358132-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-VC01:alt:stem-358132-m0 -->
+A ball-and-stick model of a four-carbon chain with carboxylate anion at C 1, a carbonyl group at C 2 , and a methyl group at C 3.
+
 <!-- SEG:29-99-OC-VC01:stem:358133-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-VC01:alt:stem-358133-m0 -->
+A ball-and-stick model of a five-carbon chain with a carboxylate anion at C 1, carbonyl at C 2, sulfur at C4, and a methyl group attached to S5.
 
 <!-- SEG:29-99-OC-VC02:stem:358135-b0 -->
 Identify the following intermediate in the citric acid cycle, and tell whether it has [[i:R]] or [[i:S]] stereochemistry:
@@ -355,15 +427,24 @@ Identify the following intermediate in the citric acid cycle, and tell whether i
 <!-- SEG:29-99-OC-VC02:stem:358135-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-VC02:alt:stem-358135-m0 -->
+A ball-and-stick model of a four-carbon chain with two  carboxylate anions at C1 and C4, and a hydroxyl group at C2
+
 <!-- SEG:29-99-OC-VC03:stem:358137-b0 -->
 The following compound is an intermediate in the biosynthesis of one of the 20 common [[i:α]]-amino acids. Which one is it likely to be, and what kind of chemical change must take place to complete the biosynthesis?
 
 <!-- SEG:29-99-OC-VC03:stem:358137-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:29-99-OC-VC03:alt:stem-358137-m0 -->
+A ball-and-stick model of a seven-carbon chain, with two carboxylate anions at C 1 and C 7, and two amine groups C 2 and C 6.
+
 <!-- SEG:29-99-OC-VC04:stem:358139-b0 -->
 The following compound is an intermediate in the pentose phosphate pathway, an alternative route for glucose metabolism. Identify the sugar it is derived from.
 
 <!-- SEG:29-99-OC-VC04:stem:358139-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:29-99-OC-VC04:alt:stem-358139-m0 -->
+A ball-and-stick model of four-carbon chain with C 1 having an aldehyde group and  oxygen linked to phosphate group at C4.
 

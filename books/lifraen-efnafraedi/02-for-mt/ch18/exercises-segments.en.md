@@ -4,11 +4,17 @@ Name the following ethers:
 <!-- SEG:18-01-OC-P01:stem:361108-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-01-OC-P01:alt:stem-361108-m0 -->
+The structure of two isopropyl groups bonded to an oxygen atom in an ether linkage.
+
 <!-- SEG:18-01-OC-P01:sol:361108-b0 -->
 Diisopropyl ether
 
 <!-- SEG:18-01-OC-P01:stem:361109-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-01-OC-P01:alt:stem-361109-m0 -->
+The structure of cyclopentane with a propoxy (O C H 2 C H 2 C H 3) substituent.
 
 <!-- SEG:18-01-OC-P01:sol:361109-b0 -->
 Cyclopentyl propyl ether
@@ -16,11 +22,17 @@ Cyclopentyl propyl ether
 <!-- SEG:18-01-OC-P01:stem:361110-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-01-OC-P01:alt:stem-361110-m0 -->
+The structure of benzene with methoxy and bromine groups positioned para to one another.
+
 <!-- SEG:18-01-OC-P01:sol:361110-b0 -->
 [[i:p]]-Bromoanisole or 4-bromo-1-methoxybenzene
 
 <!-- SEG:18-01-OC-P01:stem:361111-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-01-OC-P01:alt:stem-361111-m0 -->
+The structure of cyclohexene with a methoxy substituent at one of the double-bonded carbons.
 
 <!-- SEG:18-01-OC-P01:sol:361111-b0 -->
 1-Methoxycyclohexene
@@ -28,11 +40,17 @@ Cyclopentyl propyl ether
 <!-- SEG:18-01-OC-P01:stem:361112-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-01-OC-P01:alt:stem-361112-m0 -->
+An ethyl group connected to an isobutyl group through an oxygen atom, forming an ether linkage.
+
 <!-- SEG:18-01-OC-P01:sol:361112-b0 -->
 Ethyl isobutyl ether
 
 <!-- SEG:18-01-OC-P01:stem:361113-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-01-OC-P01:alt:stem-361113-m0 -->
+An allyl group attached to a vinyl group through an oxygen atom, forming an ether linkage.
 
 <!-- SEG:18-01-OC-P01:sol:361113-b0 -->
 Allyl vinyl ether
@@ -75,6 +93,9 @@ Review the mechanism of oxymercuration shown in Figure 8.4, and then write the m
 
 <!-- SEG:18-02-OC-P04:sol:361115-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-02-OC-P04:alt:sol-361115-m0 -->
+The formed cyclic mercury trifluoroacetate adduct from 1-methylcyclopentene's reaction with mercury(II) trifluoroacetate is treated with sodium borohydride to produce the corresponding alcohol, replacing the mercury atom with hydrogen.
 
 <!-- SEG:18-02-OC-P05:stimulus:b0 -->
 How would you prepare the following ethers? Use whichever method you think is more appropriate, Williamson synthesis or the alkoxymercuration reaction.
@@ -124,14 +145,26 @@ Predict the products of the following reactions:
 <!-- SEG:18-03-OC-P07:stem:361118-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-03-OC-P07:alt:stem-361118-m0 -->
+2-methoxy-2-phenylpropane reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-03-OC-P07:sol:361118-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-03-OC-P07:alt:sol-361118-m0 -->
+2-bromo-2-phenylpropane reacts with methanol to form unknown product(s), depicted by a question mark.
 
 <!-- SEG:18-03-OC-P07:stem:361119-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-03-OC-P07:alt:stem-361119-m0 -->
+Two propyl groups are linked via ether linkage where methyl is linked to C 1. It reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-03-OC-P07:sol:361119-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-03-OC-P07:alt:sol-361119-m0 -->
+Structures of 2-butanol and 1-bromopropane separated by a plus sign.
 
 <!-- SEG:18-03-OC-P08:stem:343687-b0 -->
 Write the mechanism of the acid-induced cleavage of [[i:tert]]-butyl cyclohexyl ether to yield cyclohexanol and 2-methylpropene.
@@ -151,6 +184,9 @@ What product would you expect from reaction of [[i:trans]]-2-butene with [[i:m]]
 <!-- SEG:18-05-OC-P10:sol:361067-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-05-OC-P10:alt:sol-361067-m0 -->
+trans-2-Butene reacts with m C P B A to form trans-2,3-epoxybutane.
+
 <!-- SEG:18-05-OC-P11:stem:343693-b0 -->
 Reaction of [[i:cis]]-2-butene with [[i:m]]-chloroperoxybenzoic acid yields an epoxide different from that obtained by reaction of the trans isomer. Explain.
 
@@ -163,14 +199,26 @@ Predict the major product of each of the following reactions:
 <!-- SEG:18-06-OC-P12:stem:361122-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P12:alt:stem-361122-m0 -->
+3-Cyclohexyl-2,2-dimethyloxirane reacts with HCl in the presence of ether to form an unknown product(s), depicted by a question mark
+
 <!-- SEG:18-06-OC-P12:sol:361122-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P12:alt:sol-361122-m0 -->
+The structure of 2-chloro-1-cyclohexyl-2-methylpropan-1-ol.
 
 <!-- SEG:18-06-OC-P12:stem:361123-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P12:alt:stem-361123-m0 -->
+1-Oxaspiro[2.5]octane reacts with hydrochloric acid and an ether to form an unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-06-OC-P12:sol:361123-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P12:alt:sol-361123-m0 -->
+The structure of cyclohexane comprising chlorine atom and C H 2 O H group linked to the C 1 position of the ring.
 
 <!-- SEG:18-06-OC-P13:stimulus:b0 -->
 How would you prepare the following diols?
@@ -178,11 +226,17 @@ How would you prepare the following diols?
 <!-- SEG:18-06-OC-P13:stem:361126-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P13:alt:stem-361126-m0 -->
+A ball-and-stick model of a chair conformation of six-membered ring with two hydroxyl groups attached to C 1 and C 2. Methyl is bonded to C 1 at the right.
+
 <!-- SEG:18-06-OC-P13:sol:361126-b0 -->
 1-Methylcyclohexene + OsO[[sub:4]]; then NaHSO[[sub:3]]
 
 <!-- SEG:18-06-OC-P13:stem:361127-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P13:alt:stem-361127-m0 -->
+A ball-and-stick model of a chair conformation of a six-membered ring with neighboring carbons linked to two hydroxyl groups. A methyl group is bonded to C 1 at the bottom.
 
 <!-- SEG:18-06-OC-P13:sol:361127-b0 -->
 1-Methylcyclohexene + [[i:m]]-chloroperoxybenzoic acid, then H[[sub:3]]O[[sup:+]]
@@ -193,20 +247,38 @@ Predict the major product of the following reactions:
 <!-- SEG:18-06-OC-P14:stem:464273-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P14:alt:stem-464273-m0 -->
+2-Ethyl-2-methyloxirane reacts with sodium hydroxide in the presence of oxygen 18-labeled water to form an unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-06-OC-P14:sol:464273-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P14:alt:sol-464273-m0 -->
+A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 1 position has an asterisk.
 
 <!-- SEG:18-06-OC-P14:stem:464274-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P14:alt:stem-464274-m0 -->
+2-Ethyl-2-methyloxirane reacts with hydronium ion in which O is marked as 18 to form an unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-06-OC-P14:sol:464274-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P14:alt:sol-464274-m0 -->
+A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 2 position has an asterisk.
 
 <!-- SEG:18-06-OC-P14:stem:464275-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-06-OC-P14:alt:stem-464275-m0 -->
+Epoxide with dashed ethyl, wedged methyl on the left and dashed methyl, wedged hydrogen on the right reacts with phenyl magnesium bromide, then hydronium ion to form an unknown product.
+
 <!-- SEG:18-06-OC-P14:sol:464275-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-06-OC-P14:alt:sol-464275-m0 -->
+Structure of 3-methyl-2-phenylpentan-3-ol.
 
 <!-- SEG:18-07-OC-P15:stem:361069-b0 -->
 15-Crown-5 and 12-crown-4 ethers complex Na[[sup:+]] and Li[[sup:+]], respectively. Make models of these crown ethers, and compare the sizes of the cavities.
@@ -214,11 +286,17 @@ Predict the major product of the following reactions:
 <!-- SEG:18-07-OC-P15:sol:361069-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-07-OC-P15:alt:sol-361069-m0 -->
+Two crown ethers: 12-crown-4 is shown with an associated lithium cation, and 15-crown-5 is shown with an associated sodium cation.
+
 <!-- SEG:18-08-OC-P16:stimulus:b0 -->
 Name the following compounds:
 
 <!-- SEG:18-08-OC-P16:stem:361140-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-08-OC-P16:alt:stem-361140-m0 -->
+A four-carbon chain with S H one carbon from the end.
 
 <!-- SEG:18-08-OC-P16:sol:361140-b0 -->
 2-Butanethiol
@@ -226,11 +304,17 @@ Name the following compounds:
 <!-- SEG:18-08-OC-P16:stem:361141-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-08-OC-P16:alt:stem-361141-m0 -->
+A seven-carbon chain. Counting from the left, there are two methyl groups on the second carbon and one on the sixth, and an S H group on the fourth carbon.
+
 <!-- SEG:18-08-OC-P16:sol:361141-b0 -->
 2,2,6-Trimethyl-4-heptanethiol
 
 <!-- SEG:18-08-OC-P16:stem:361142-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-08-OC-P16:alt:stem-361142-m0 -->
+A five-membered ring with one double bond. There is an S H group one carbon from the end of the double bond.
 
 <!-- SEG:18-08-OC-P16:sol:361142-b0 -->
 2-Cyclopentene-1-thiol
@@ -238,17 +322,26 @@ Name the following compounds:
 <!-- SEG:18-08-OC-P16:stem:361143-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-08-OC-P16:alt:stem-361143-m0 -->
+A compound having an ethyl and isopropyl group bonded by a sulfur atom at the center.
+
 <!-- SEG:18-08-OC-P16:sol:361143-b0 -->
 Ethyl isopropyl sulfide
 
 <!-- SEG:18-08-OC-P16:stem:361144-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-08-OC-P16:alt:stem-361144-m0 -->
+A benzene ring with methylthio (S C H 3) groups attached to adjacent carbons.
+
 <!-- SEG:18-08-OC-P16:sol:361144-b0 -->
 [[i:o]]-Di(methylthio)benzene
 
 <!-- SEG:18-08-OC-P16:stem:361145-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-08-OC-P16:alt:stem-361145-m0 -->
+A cyclohexane ring with a carbonyl group and, two carbons away, an ethylthio (-S C H 2 C H 3) group.
 
 <!-- SEG:18-08-OC-P16:sol:361145-b0 -->
 3-(Ethylthio)cyclohexanone
@@ -258,6 +351,9 @@ Ethyl isopropyl sulfide
 
 <!-- SEG:18-08-OC-P17:stem:361147-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-08-OC-P17:alt:stem-361147-m0 -->
+The structures of methyl 2-butenoate and 2-butene-1-thiol, separated from one another by two reaction arrows.
 
 <!-- SEG:18-08-OC-P17:sol:361147-b0 -->
 [[b:(a)]] 1. LiAlH[[sub:4]]; 2. PBr[[sub:3]]; 3. [[MEDIA:0]]; 4. H[[sub:2]]O, NaOH
@@ -270,6 +366,9 @@ The [[sup:1]]H NMR spectrum shown is that of a cyclic ether with the formula C[[
 
 <!-- SEG:18-09-OC-P18:stem:361149-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-09-OC-P18:alt:stem-361149-m0 -->
+Proton N M R with shifts at 0 (TMS), 1.00 (triplet), 1.58 (multiplet), 2.48 and 2.73 (doublets), and 2.89 (multiplet). Relative areas are 3.00, 2.00, 1.00, 1.00, and 1.00 respectively.
 
 <!-- SEG:18-09-OC-P18:sol:361149-b0 -->
 1,2-Epoxybutane
@@ -298,29 +397,56 @@ Give IUPAC names for the following structures:
 <!-- SEG:18-99-OC-AP02:stem:464259-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP02:alt:stem-464259-m0 -->
+A sulfur atom connected to a cyclohexane group and an isopropyl group.
+
 <!-- SEG:18-99-OC-AP02:stem:464260-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP02:alt:stem-464260-m0 -->
+A benzene ring with O C H 3 substituents on two adjacent carbons.
 
 <!-- SEG:18-99-OC-AP02:stem:464261-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP02:alt:stem-464261-m0 -->
+A five-membered ring in which two adjacent carbons are also connected by a shared oxygen atom.
+
 <!-- SEG:18-99-OC-AP02:stem:464262-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP02:alt:stem-464262-m0 -->
+A five-membered ring in which one member is an oxygen. The ring is numbered starting at oxygen (1); there is a C H 3 on C 2.
 
 <!-- SEG:18-99-OC-AP02:stem:464263-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP02:alt:stem-464263-m0 -->
+An oxygen atom connected to an isopropyl group and a cyclopropyl group.
+
 <!-- SEG:18-99-OC-AP02:stem:464264-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP02:alt:stem-464264-m0 -->
+A benzene ring with an S H substituent and, on an adjacent carbon, a nitro group.
 
 <!-- SEG:18-99-OC-AP02:stem:464265-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP02:alt:stem-464265-m0 -->
+A sulfur with an isopropyl on the right, and a five-carbon chain on the left with methyl groups on (from left) third, fourth, and fifth carbons.
+
 <!-- SEG:18-99-OC-AP02:stem:464266-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP02:alt:stem-464266-m0 -->
+A central carbon with two methyl and two methoxy substituents.
+
 <!-- SEG:18-99-OC-AP02:stem:464267-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP02:alt:stem-464267-m0 -->
+A cyclohexane in which one carbon is substituted with two S C H 3 groups.
 
 <!-- SEG:18-99-OC-AP03:stimulus:b0 -->
 How would you prepare the following ethers?
@@ -328,20 +454,38 @@ How would you prepare the following ethers?
 <!-- SEG:18-99-OC-AP03:stem:361242-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP03:alt:stem-361242-m0 -->
+A central oxygen connected to a benzene ring and an ethyl group.
+
 <!-- SEG:18-99-OC-AP03:stem:361243-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP03:alt:stem-361243-m0 -->
+A central oxygen connected to a benzene ring and an isopropyl group.
 
 <!-- SEG:18-99-OC-AP03:stem:361244-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP03:alt:stem-361244-m0 -->
+An oxirane drawn with oxygen on top, wedge hydrogen and dash methyl on left, and wedge methyl and dash hydrogen on right.
+
 <!-- SEG:18-99-OC-AP03:stem:361245-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP03:alt:stem-361245-m0 -->
+A central oxygen connected to a cyclopentane ring and a t-butyl group.
 
 <!-- SEG:18-99-OC-AP03:stem:361246-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP03:alt:stem-361246-m0 -->
+A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge hydrogen and dash methoxy.
+
 <!-- SEG:18-99-OC-AP03:stem:361247-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP03:alt:stem-361247-m0 -->
+A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge deuterium and dash hydrogen.
 
 <!-- SEG:18-99-OC-AP04:stimulus:b0 -->
 How would you prepare the following compounds from 1-phenylethanol?
@@ -367,20 +511,35 @@ Treatment of [[i:trans]]-2-chlorocyclohexanol with NaOH yields 1,2-epoxycyclohex
 <!-- SEG:18-99-OC-AP06:stem:361249-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP06:alt:stem-361249-m0 -->
+Reactions alter trans-2-chlorocyclohexanol to 1,2-epoxycyclohexane and cis-2-chlorocyclohexanol isomer to cyclohexanone, each utilizing sodium hydroxide and water.
+
 <!-- SEG:18-99-OC-AP07:stimulus:b0 -->
 Predict the products of the following ether cleavage reactions:
 
 <!-- SEG:18-99-OC-AP07:stem:361254-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP07:alt:stem-361254-m0 -->
+Cyclohexyl ethyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-99-OC-AP07:stem:361255-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP07:alt:stem-361255-m0 -->
+T-butyl phenyl ether reacts with trifluoroacetic acid to produce unknown product(s), depicted by a question mark.
 
 <!-- SEG:18-99-OC-AP07:stem:361256-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP07:alt:stem-361256-m0 -->
+Ethyl vinyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-99-OC-AP07:stem:361257-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP07:alt:stem-361257-m0 -->
+Ethyl neopentyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.
 
 <!-- SEG:18-99-OC-AP08:stimulus:b0 -->
 How would you carry out the following transformations? More than one step may be required.
@@ -388,17 +547,32 @@ How would you carry out the following transformations? More than one step may be
 <!-- SEG:18-99-OC-AP08:stem:361263-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP08:alt:stem-361263-m0 -->
+Cyclohexene reacts with unknown reagent(s) to produce cyclohexyl ethyl ether.
+
 <!-- SEG:18-99-OC-AP08:stem:361264-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP08:alt:stem-361264-m0 -->
+Cis-1-methoxy-4-methylcyclohexane reacts with unknown reagent(s) to produce trans-1-bromo-4-methylcyclohexane.
 
 <!-- SEG:18-99-OC-AP08:stem:361265-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP08:alt:stem-361265-m0 -->
+4-t-butylcyclohexene reacts with unknown reagent(s) to produce cyclohexane with (counterclockwise) wedge hydroxide on C 1, dash hydroxide on C 2, wedge t-butyl on C 4.
+
 <!-- SEG:18-99-OC-AP08:stem:361266-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP08:alt:stem-361266-m0 -->
+1-hexyne is converted into hexyl methyl ether in the presence of an unknown reactant(s), depicted by a question mark.
+
 <!-- SEG:18-99-OC-AP08:stem:361267-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP08:alt:stem-361267-m0 -->
+1-hexyne is converted into 2-methoxyhexane in the presence of an unknown reactant(s), depicted by a question mark.
 
 <!-- SEG:18-99-OC-AP09:stem:343853-b0 -->
 What product would you expect from cleavage of tetrahydrofuran with HI?
@@ -418,6 +592,9 @@ Imagine that you have treated (2[[i:R]],3[[i:R]])-2,3-epoxy-3-methylpentane with
 <!-- SEG:18-99-OC-AP13:stimulus:b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP13:alt:stimulus-m0 -->
+The structure of 2,3-epoxy-3-methylpentane shows a 3-membered ring with oxygen and two carbon atoms, one bonded to hydrogen and methyl, the other to methyl and ethyl groups.
+
 <!-- SEG:18-99-OC-AP13:stem:361272-b0 -->
 Draw the epoxide, showing stereochemistry.
 
@@ -435,6 +612,9 @@ Epoxides are reduced by treatment with lithium aluminum hydride to yield alcohol
 
 <!-- SEG:18-99-OC-AP14:stem:361277-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP14:alt:stem-361277-m0 -->
+Cyclohexene oxide reacts with lithium aluminum hydride in ether, then hydronium, to form cyclohexanol.
 
 <!-- SEG:18-99-OC-AP15:stem:347157-b0 -->
 Show the structure and stereochemistry of the alcohol that would result if 1,2-epoxycyclohexane were reduced with lithium aluminum deuteride, LiAlD[[sub:4]] (Problem 18-51).
@@ -454,6 +634,9 @@ Anethole, C[[sub:10]]H[[sub:12]]O, a major constituent of the oil of anise, has 
 <!-- SEG:18-99-OC-AP17:stem:361279-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP17:alt:stem-361279-m0 -->
+Proton N M R with shifts at 1.84 (doublet), 3.76 (singlet), 6.09 and 6.36 (multiplets), 6.82 and 7.23 (doublets). Relative areas are 3.00, 3.00, 1.00, 1.00, 2.00, 2.00 respectively.
+
 <!-- SEG:18-99-OC-AP18:stimulus:b0 -->
 Propose structures for compounds that have the following [[sup:1]]H NMR spectra:
 
@@ -463,11 +646,17 @@ C[[sub:5]]H[[sub:12]]S (An –SH proton absorbs near 1.6 [[i:δ.]])
 <!-- SEG:18-99-OC-AP18:stem:361283-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP18:alt:stem-361283-m0 -->
+Proton N M R with shifts at 0 (T M S), 0.99 (triplet), 1.34 (singlet), and 1.61 (quartet). Relative areas are 1.00, 2.00, and 1.00 respectively.
+
 <!-- SEG:18-99-OC-AP18:stem:361284-b0 -->
 C[[sub:9]]H[[sub:11]]BrO
 
 <!-- SEG:18-99-OC-AP18:stem:361284-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-AP18:alt:stem-361284-m0 -->
+Proton N M R with shifts at 2.31 (pentet), 3.58 (triplet), 4.08 (triplet) 6.90 and 7.25 (multiplets). Relative areas are 1.00, 1.00, 1.00, 1.50, and 1.00 respectively.
 
 <!-- SEG:18-99-OC-AP18:stem:361285-b0 -->
 C[[sub:5]]H[[sub:12]]O[[sub:2]]
@@ -475,20 +664,35 @@ C[[sub:5]]H[[sub:12]]O[[sub:2]]
 <!-- SEG:18-99-OC-AP18:stem:361285-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-AP18:alt:stem-361285-m0 -->
+Proton N M R with shifts at 0 (T M S), 1.30 and 3.15 (singlets). Relative areas are 3.97 and 4.09 respectively.
+
 <!-- SEG:18-99-OC-GP01:stimulus:b0 -->
 Predict the products of the following reactions:
 
 <!-- SEG:18-99-OC-GP01:stem:361290-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP01:alt:stem-361290-m0 -->
+Isobutyl phenyl ether reacts with hydrogen bromide to form an unknown product(s) depicted by a question mark.
+
 <!-- SEG:18-99-OC-GP01:stem:361291-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-GP01:alt:stem-361291-m0 -->
+1-bromo-4-methylpentane reacts with thiourea, then sodium hydroxide and water to form an unknown product(s), depicted by a question mark.
 
 <!-- SEG:18-99-OC-GP01:stem:361292-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP01:alt:stem-361292-m0 -->
+Cyclopentanethiol reacts in the presence of bromine to form an unknown product(s), depicted by a question mark.
+
 <!-- SEG:18-99-OC-GP01:stem:361293-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-GP01:alt:stem-361293-m0 -->
+Cyclohexene with ethanethiol on C 4 reacts with hydrogen peroxide and water, to form an unknown product(s), depicted by a question mark.
 
 <!-- SEG:18-99-OC-GP02:stem:347161-b0 -->
 How would you synthesize anethole (Problem 18-54) from phenol?
@@ -508,11 +712,17 @@ Safrole, a substance isolated from oil of sassafras, is used as a perfumery agen
 <!-- SEG:18-99-OC-GP05:stem:361295-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP05:alt:stem-361295-m0 -->
+The structure of safrole is a benzene ring with C 1 connected to C 2 by O C H 2 O, and with an allyl group on C 4.
+
 <!-- SEG:18-99-OC-GP06:stem:361297-b0 -->
 Grignard reagents react with oxetane, a four-membered cyclic ether, to yield primary alcohols, but the reaction is much slower than the corresponding reaction with ethylene oxide. Suggest a reason for the difference in reactivity between oxetane and ethylene oxide.
 
 <!-- SEG:18-99-OC-GP06:stem:361297-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-GP06:alt:stem-361297-m0 -->
+Oxetane (four-membered ring incorporating one oxygen) reacts with R Mg X, then hydronium, to produce R C H 2 C H 2 C H 2 O H.
 
 <!-- SEG:18-99-OC-GP07:stem:343915-b0 -->
 The [[i:Zeisel method]] is an old analytical procedure for determining the number of methoxyl groups in a compound. A weighed amount of the compound is heated with concentrated HI, ether cleavage occurs, and the iodomethane product is distilled off and passed into an alcohol solution of AgNO[[sub:3]], where it reacts to form a precipitate of silver iodide. The AgI is then collected and weighed, and the percentage of methoxyl groups in the sample is thereby determined. For example, 1.06 g of vanillin, the material responsible for the characteristic odor of vanilla, yields 1.60 g of AgI. If vanillin has a molecular weight of 152, how many methoxyl groups does it contain?
@@ -529,11 +739,17 @@ How would you prepare [[i:o]]-hydroxyphenylacetaldehyde from phenol? More than o
 <!-- SEG:18-99-OC-GP10:stem:361299-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP10:alt:stem-361299-m0 -->
+O-Hydroxyphenylacetaldehyde has a structure in which a benzene ring has hydroxyl on one carbon, and C H 2 C H O on an adjacent carbon.
+
 <!-- SEG:18-99-OC-GP11:stem:361301-b0 -->
 Identify the reagents [[b:a]]–[[b:e]] in the following scheme:
 
 <!-- SEG:18-99-OC-GP11:stem:361301-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-GP11:alt:stem-361301-m0 -->
+Cyclohexanone is transformed into 1-methylcyclohexanol by reagent a; b and c convert 1-methylcyclohexanol to 1-methylcyclohexene and 1-methyl-1-methoxycyclohexane respectively. D converts 1-methylcyclohexene into 1,2-epoxy-1-methylcyclohexane, which is converted by e into (1S,2S)-1-methylcyclohexan-1,2-diol.
 
 <!-- SEG:18-99-OC-GP12:stimulus:b0 -->
 Propose structures for compounds that have the following [[sup:1]]H NMR spectra:
@@ -544,11 +760,17 @@ C[[sub:4]]H[[sub:10]]O[[sub:2]]
 <!-- SEG:18-99-OC-GP12:stem:361304-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP12:alt:stem-361304-m0 -->
+Proton N M R with shifts at 0 (T M S), 1.27 (doublet), 3.31 (singlet), and 4.57 (quartet). Relative areas are 3.00, 6.00, and 1.00 respectively.
+
 <!-- SEG:18-99-OC-GP12:stem:361305-b0 -->
 C[[sub:9]]H[[sub:10]]O
 
 <!-- SEG:18-99-OC-GP12:stem:361305-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-GP12:alt:stem-361305-m0 -->
+Proton N M R with shifts at 3.71 (singlet), 5.17 (doublet), 6.08 (doublet) 7.10 (multiplet), 7.25 (triplet), and 7.55 (multiplet). Relative areas are 3.00, 1.00, 1.00, 1.00, 2.00, 2.00 respectively.
 
 <!-- SEG:18-99-OC-GP13:stem:361307-b0 -->
 We saw in [[b:Section 17.4]] that ketones react with NaBH[[sub:4]] to yield alcohols. We’ll also see in [[b:Section 22.3]] that ketones react with Br[[sub:2]] to yield [[i:α]]-bromo ketones. Perhaps surprisingly, treatment with NaBH[[sub:4]] of the [[i:α]]-bromo ketone from acetophenone yields an epoxide rather than a bromo alcohol. Show the structure of the epoxide, and explain its formation.
@@ -556,14 +778,23 @@ We saw in [[b:Section 17.4]] that ketones react with NaBH[[sub:4]] to yield alco
 <!-- SEG:18-99-OC-GP13:stem:361307-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-GP13:alt:stem-361307-m0 -->
+Acetophenone reacts with bromine to yield alpha-bromo acetophenone; subsequent treatment with sodium borohydride results in an epoxide with unknown structure.
+
 <!-- SEG:18-99-OC-MP01:stimulus:b0 -->
 Predict the product(s) and provide the mechanism for each of the following reactions.
 
 <!-- SEG:18-99-OC-MP01:stem:361174-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP01:alt:stem-361174-m0 -->
+2-Ethoxypropane reacts with hydrogen iodide (H I) to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP01:stem:361175-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP01:alt:stem-361175-m0 -->
+Ethoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.
 
 <!-- SEG:18-99-OC-MP02:stimulus:b0 -->
 Predict the product(s) and provide the mechanism for each of the following reactions.
@@ -571,8 +802,14 @@ Predict the product(s) and provide the mechanism for each of the following react
 <!-- SEG:18-99-OC-MP02:stem:361178-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP02:alt:stem-361178-m0 -->
+Tert-butyl ethyl ether reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP02:stem:361179-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP02:alt:stem-361179-m0 -->
+Tert-butoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.
 
 <!-- SEG:18-99-OC-MP03:stimulus:b0 -->
 Predict the product(s) and provide the mechanism for each of the following two-step processes.
@@ -580,8 +817,14 @@ Predict the product(s) and provide the mechanism for each of the following two-s
 <!-- SEG:18-99-OC-MP03:stem:361182-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP03:alt:stem-361182-m0 -->
+1-propanol reacts with sodium hydride, then 1-bromopropane to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP03:stem:361183-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP03:alt:stem-361183-m0 -->
+Cyclopentanol reacts with sodium hydride, then methyl p-toluenesulfonate to form unknown product(s), depicted with a question mark.
 
 <!-- SEG:18-99-OC-MP04:stem:361185-b0 -->
 The alkoxymercuration of alkenes involves the formation of an organomercury intermediate (I), which is reduced with NaBH[[sub:4]] to give an ether product. Predict the ether product and provide the mechanism for the following reaction.
@@ -589,14 +832,23 @@ The alkoxymercuration of alkenes involves the formation of an organomercury inte
 <!-- SEG:18-99-OC-MP04:stem:361185-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP04:alt:stem-361185-m0 -->
+Ethylidenecyclopentane reacts with mercury(II) trifluoroacetate and ethanol to create an intermediate (I), followed by reaction with sodium borohydride to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP05:stimulus:b0 -->
 Predict the product(s) and provide the mechanism for the following reactions:
 
 <!-- SEG:18-99-OC-MP05:stem:361188-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP05:alt:stem-361188-m0 -->
+1,2-Epoxy-2-methylcyclohexane reacts with methylmagnesium bromide, then hydronium ion to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP05:stem:361189-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP05:alt:stem-361189-m0 -->
+(2S)-ethyloxirane reacts with hydrogen bromide and ether to form an unknown product.
 
 <!-- SEG:18-99-OC-MP06:stimulus:b0 -->
 Predict the product(s) and provide the mechanism for each of the following reactions.
@@ -604,8 +856,14 @@ Predict the product(s) and provide the mechanism for each of the following react
 <!-- SEG:18-99-OC-MP06:stem:361192-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP06:alt:stem-361192-m0 -->
+1,2-Epoxy-2-methylcyclohexane reacts with hydrogen bromide in the presence of ether to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP06:stem:361193-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP06:alt:stem-361193-m0 -->
+Ethylene oxide with one carbon in common with a cyclohexane and a methyl on the other carbon (R configuration) reacts with hydronium to form unknown product(s).
 
 <!-- SEG:18-99-OC-MP07:stem:464283-b0 -->
 In the formation of the prepolymer used to make epoxy resins, two equivalents of phenol react with epichlorohydrin in the presence of a base. Show the product and mechanism when two moles of phenol react with epichlorohydrin.
@@ -613,11 +871,17 @@ In the formation of the prepolymer used to make epoxy resins, two equivalents of
 <!-- SEG:18-99-OC-MP07:stem:464283-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP07:alt:stem-464283-m0 -->
+A chemical reaction between two equivalents of phenol and epichlorohydrin with sodium hydroxide and water leads to form an unknown product(s), depicted with a question mark.
+
 <!-- SEG:18-99-OC-MP08:stem:361197-b0 -->
 Ethers undergo an acid-catalyzed cleavage reaction when treated with the Lewis acid BBr[[sub:3]] at room temperature. Propose a mechanism for the reaction.
 
 <!-- SEG:18-99-OC-MP08:stem:361197-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP08:alt:stem-361197-m0 -->
+Anisole reacts with boron tribromide, then water to form phenol and methyl bromide.
 
 <!-- SEG:18-99-OC-MP09:stem:361199-b0 -->
 Treatment of 1,1-diphenyl-1,2-epoxyethane with aqueous acid yields diphenyl acetaldehyde as the major product. Propose a mechanism for the reaction.
@@ -625,11 +889,17 @@ Treatment of 1,1-diphenyl-1,2-epoxyethane with aqueous acid yields diphenyl acet
 <!-- SEG:18-99-OC-MP09:stem:361199-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP09:alt:stem-361199-m0 -->
+An epoxide ring bonded to two phenyl groups at C 2 reacts with hydronium ion to form an aldehyde product in which C 2 is bonded with two phenyl groups.
+
 <!-- SEG:18-99-OC-MP10:stimulus:b0 -->
 Fluoxetine, a heavily prescribed antidepressant marketed under the name Prozac, can be prepared by a route that begins with reaction between a phenol and an alkyl chloride.
 
 <!-- SEG:18-99-OC-MP10:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP10:alt:stimulus-m0 -->
+4-trifluoromethylphenol reacts with an alkyl chloride with phenyl and amine groups in potassium hydroxide and D M S O to produce fluoxetine through a series of steps.
 
 <!-- SEG:18-99-OC-MP10:stem:361202-b0 -->
 The rate of the reaction depends on both phenol and alkyl halide. Is this an S[[sub:N]]1 or an S[[sub:N]]2 reaction? Show the mechanism.
@@ -643,6 +913,9 @@ When 2-methyl-2,5-pentanediol is treated with sulfuric acid, dehydration occurs 
 <!-- SEG:18-99-OC-MP11:stem:361205-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP11:alt:stem-361205-m0 -->
+The structure of 2,2-dimethyltetrahydrofuran. It comprises a five-membered ring incorporating one oxygen, connected to two methyl groups at C2.
+
 <!-- SEG:18-99-OC-MP12:stem:343773-b0 -->
 Methyl aryl ethers, such as anisole, are cleaved to iodomethane and a phenoxide ion by treatment with LiI in hot DMF. Propose a mechanism for this reaction.
 
@@ -652,11 +925,17 @@ The herbicide acifluorfen can be prepared by a route that begins with reaction b
 <!-- SEG:18-99-OC-MP13:stem:361207-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP13:alt:stem-361207-m0 -->
+A substituted phenol and sutstituted aryl fluoride react in potassium hydride and dimethyl sulfoxide to yield acifluorfen through a series of steps.
+
 <!-- SEG:18-99-OC-MP14:stimulus:b0 -->
 Aldehydes and ketones undergo acid-catalyzed reaction with alcohols to yield [[i:hemiacetals]], from aldehydes or ketals with ketones compounds that have one alcohol-like oxygen and one ether-like oxygen bonded to the same carbon. Further reaction of a hemiacetal with alcohol then yields an [[i:acetal,]] a compound that has two ether-like oxygens bonded to the same carbon.
 
 <!-- SEG:18-99-OC-MP14:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-MP14:alt:stimulus-m0 -->
+A carbonyl and R O H react in acid catalyst to produce a hemiacetal; further reaction produces an acetal and water.
 
 <!-- SEG:18-99-OC-MP14:stem:361214-b0 -->
 Show the structures of the hemiketal and ketal you would obtain by reaction of cyclohexanone with ethanol.
@@ -670,17 +949,29 @@ Propose a mechanism to account for the following transformation. What two kinds 
 <!-- SEG:18-99-OC-MP15:stem:361217-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-MP15:alt:stem-361217-m0 -->
+Two reactants, including a substituted benzene and maleic anhydride, undergo a heat-induced reaction to form a fused cyclohexene-cyclopentane compound with distinct molecular arrangements.
+
 <!-- SEG:18-99-OC-VC01:stimulus:b0 -->
 Give IUPAC names for the following compounds (red = O; reddish brown = Br; yellow = S):
 
 <!-- SEG:18-99-OC-VC01:stem:361163-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-VC01:alt:stem-361163-m0 -->
+The ball-and-stick model of the compound in which a six-membered ring is bonded with an ethyl group via an ether linkage.
+
 <!-- SEG:18-99-OC-VC01:stem:361164-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-VC01:alt:stem-361164-m0 -->
+The ball-and-stick model of the compound in which a six-membered cyclic ring is bonded with an epoxide ring. It has an alkene structure with a carbonyl group.
+
 <!-- SEG:18-99-OC-VC01:stem:361165-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-VC01:alt:stem-361165-m0 -->
+The ball-and-stick model of the compound in which a five-membered cyclic ring is bonded with an ethyl group to which a thiol group is bonded.
 
 <!-- SEG:18-99-OC-VC02:stem:361167-b0 -->
 Show the product, including stereochemistry, that would result from reaction of the following epoxide with HBr:
@@ -688,11 +979,17 @@ Show the product, including stereochemistry, that would result from reaction of 
 <!-- SEG:18-99-OC-VC02:stem:361167-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-VC02:alt:stem-361167-m0 -->
+A ball-and-stick model with a benzene ring linked to an epoxide ring which is connected to hydrogen and two methyl groups on both sides.
+
 <!-- SEG:18-99-OC-VC03:stem:361169-b0 -->
 Show the product, including stereochemistry, of the following reaction:
 
 <!-- SEG:18-99-OC-VC03:stem:361169-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18-99-OC-VC03:alt:stem-361169-m0 -->
+The ball-and-stick model of the reactant having a six-membered ring fused with an epoxide ring reacts with methyl magnesium bromide, ether, and hydronium ion. The product is unknown.
 
 <!-- SEG:18-99-OC-VC04:stem:361171-b0 -->
 Treatment of the following alkene with a peroxyacid yields an epoxide different from that obtained by reaction with aqueous Br[[sub:2]] followed by base treatment. Propose structures for the two epoxides, and explain the result.
@@ -700,11 +997,17 @@ Treatment of the following alkene with a peroxyacid yields an epoxide different 
 <!-- SEG:18-99-OC-VC04:stem:361171-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18-99-OC-VC04:alt:stem-361171-m0 -->
+The ball-and-stick model of cyclopentene ring with double bond at C 1, methyl groups on C 4, and a chain of two methylene groups connecting C 3 and C 5.
+
 <!-- SEG:18a-04-OC-P01:stem:361151-b0 -->
 Judging from the following electrostatic potential maps, which kind of carbonyl compound has the more electrophilic carbonyl carbon atom, a ketone or an acid chloride? Which has the more nucleophilic carbonyl oxygen atom? Explain.
 
 <!-- SEG:18a-04-OC-P01:stem:361151-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:18a-04-OC-P01:alt:stem-361151-m0 -->
+The ball-and-stick model in electrostatic potential maps of acetone (ketone) and acetyl chloride (acid chloride). An arrow points toward the carbon atom that is bonded with oxygen.
 
 <!-- SEG:18a-04-OC-P01:sol:361151-b0 -->
 Acetyl chloride is more electrophilic than acetone.
@@ -715,8 +1018,14 @@ Predict the product formed by nucleophilic addition of cyanide ion (CN[[sup:–]
 <!-- SEG:18a-04-OC-P02:stem:361153-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:18a-04-OC-P02:alt:stem-361153-m0 -->
+Acetone reacts with cyanide ion in the first step and hydronium ion in the second step to form an unknown product(s), depicted by a question mark.
+
 <!-- SEG:18a-04-OC-P02:sol:361153-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18a-04-OC-P02:alt:sol-361153-m0 -->
+Acetone reacts with cyanide to form an intermediate. This reacts with hydronium ion to form a product in which carbon is linked to hydroxyl, cyano, wedged, and dashed methyl groups.
 
 <!-- SEG:18a-04-OC-P03:stimulus:b0 -->
 Identify each of the following reactions as a nucleophilic addition, nucleophilic acyl substitution, an [[i:α]] substitution, or a carbonyl condensation:
@@ -724,17 +1033,26 @@ Identify each of the following reactions as a nucleophilic addition, nucleophili
 <!-- SEG:18a-04-OC-P03:stem:361157-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18a-04-OC-P03:alt:stem-361157-m0 -->
+Acetyl chloride reacts with ammonia to yield acetamide via nucleophilic acyl substitution.
+
 <!-- SEG:18a-04-OC-P03:sol:361157-b0 -->
 Nucleophilic acyl substitution
 
 <!-- SEG:18a-04-OC-P03:stem:361158-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:18a-04-OC-P03:alt:stem-361158-m0 -->
+Acetaldehyde reacts with hydroxylamine to yield acetaldoxime via nucleophilic addition.
+
 <!-- SEG:18a-04-OC-P03:sol:361158-b0 -->
 Nucleophilic addition
 
 <!-- SEG:18a-04-OC-P03:stem:361159-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:18a-04-OC-P03:alt:stem-361159-m0 -->
+Two molecules of cyclopentanone react with sodium hydroxide to yield a product in which a cyclopentanol ring is bonded with a cyclopentanone ring via carbonyl condensation.
 
 <!-- SEG:18a-04-OC-P03:sol:361159-b0 -->
 Carbonyl condensation

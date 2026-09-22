@@ -4,11 +4,17 @@ Name the following compounds:
 <!-- SEG:24-01-OC-P01:stem:361550-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P01:alt:stem-361550-m0 -->
+The condensed structural formula C H 3 N H C H 2 C H 3.
+
 <!-- SEG:24-01-OC-P01:sol:361550-b0 -->
 [[i:N]]-Methylethylamine
 
 <!-- SEG:24-01-OC-P01:stem:361551-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P01:alt:stem-361551-m0 -->
+A central nitrogen bonded to three cyclohexane rings.
 
 <!-- SEG:24-01-OC-P01:sol:361551-b0 -->
 Tricyclohexylamine
@@ -16,11 +22,17 @@ Tricyclohexylamine
 <!-- SEG:24-01-OC-P01:stem:361552-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P01:alt:stem-361552-m0 -->
+A central nitrogen bonded to methyl, ethyl, and cyclohexyl groups.
+
 <!-- SEG:24-01-OC-P01:sol:361552-b0 -->
 [[i:N]]-Ethyl-[[i:N]]-methylcyclohexylamine
 
 <!-- SEG:24-01-OC-P01:stem:361553-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P01:alt:stem-361553-m0 -->
+A five-membered ring, one member of which is nitrogen. There is a methyl group also attached to the nitrogen.
 
 <!-- SEG:24-01-OC-P01:sol:361553-b0 -->
 [[i:N]]-Methylpyrrolidine
@@ -28,11 +40,17 @@ Tricyclohexylamine
 <!-- SEG:24-01-OC-P01:stem:361554-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P01:alt:stem-361554-m0 -->
+A nitrogen bonded to one hydrogen and two isopropyl groups.
+
 <!-- SEG:24-01-OC-P01:sol:361554-b0 -->
 Diisopropylamine
 
 <!-- SEG:24-01-OC-P01:stem:361555-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P01:alt:stem-361555-m0 -->
+A three-carbon chain with, counting from the left, amine groups on the first and third carbon. There is also a methyl group on the third carbon.
 
 <!-- SEG:24-01-OC-P01:sol:361555-b0 -->
 1,3-Butanediamine
@@ -46,11 +64,17 @@ Triisopropylamine
 <!-- SEG:24-01-OC-P02:sol:361562-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P02:alt:sol-361562-m0 -->
+The structure of triisopropyl amine. It comprises three isopropyl groups linked to a nitrogen atom.
+
 <!-- SEG:24-01-OC-P02:stem:361563-b0 -->
 Triallylamine
 
 <!-- SEG:24-01-OC-P02:sol:361563-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P02:alt:sol-361563-m0 -->
+The structure of triallylamine. It has a nitrogen connected to three groups with structural formula C H 2 C H C H 2 (double bond between second and third carbons).
 
 <!-- SEG:24-01-OC-P02:stem:361564-b0 -->
 [[i:N]]-Methylaniline
@@ -58,11 +82,17 @@ Triallylamine
 <!-- SEG:24-01-OC-P02:sol:361564-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P02:alt:sol-361564-m0 -->
+The structure of N-methylaniline. It comprises a benzene ring with an N H group linked to a methyl group.
+
 <!-- SEG:24-01-OC-P02:stem:361565-b0 -->
 [[i:N]]-Ethyl-[[i:N]]-methylcyclopentylamine
 
 <!-- SEG:24-01-OC-P02:sol:361565-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P02:alt:sol-361565-m0 -->
+The structure of N-ethyl-N-methylcyclopentylamine. It comprises nitrogen with ethyl, methyl, and cyclopentyl substituents.
 
 <!-- SEG:24-01-OC-P02:stem:361566-b0 -->
 [[i:N]]-Isopropylcyclohexylamine
@@ -70,11 +100,17 @@ Triallylamine
 <!-- SEG:24-01-OC-P02:sol:361566-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P02:alt:sol-361566-m0 -->
+The structure of N-isopropylcyclohexylamine. It comprises cyclohexane linked to an N H linked to a C H group further connected to two methyl groups at C 1.
+
 <!-- SEG:24-01-OC-P02:stem:361567-b0 -->
 [[i:N]]-Ethylpyrrole
 
 <!-- SEG:24-01-OC-P02:sol:361567-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P02:alt:sol-361567-m0 -->
+A five-membered ring, one member of which is nitrogen. There are double bonds at C 2 and C 4, and nitrogen has an additional ethyl substituent.
 
 <!-- SEG:24-01-OC-P03:stimulus:b0 -->
 Draw structures for the following heterocyclic amines:
@@ -85,11 +121,17 @@ Draw structures for the following heterocyclic amines:
 <!-- SEG:24-01-OC-P03:sol:361572-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P03:alt:sol-361572-m0 -->
+A benzene ring fused to another five-membered ring, one member of which is nitrogen. There is a double bond between non-fusion carbon atoms. Benzene has a methoxy substituent.
+
 <!-- SEG:24-01-OC-P03:stem:361573-b0 -->
 1,3-Dimethylpyrrole
 
 <!-- SEG:24-01-OC-P03:sol:361573-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P03:alt:sol-361573-m0 -->
+A five-membered ring, one member of which is nitrogen. There are double bonds at C 2 and C 4, methyl at C 3, and nitrogen has an additional methyl substituent.
 
 <!-- SEG:24-01-OC-P03:stem:361574-b0 -->
 4-([[i:N]],[[i:N]]-Dimethylamino)pyridine
@@ -97,11 +139,17 @@ Draw structures for the following heterocyclic amines:
 <!-- SEG:24-01-OC-P03:sol:361574-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-01-OC-P03:alt:sol-361574-m0 -->
+A six-membered ring, one member of which is nitrogen, with alternating single and double bonds. Opposite the nitrogen is the substituent N with two methyl groups.
+
 <!-- SEG:24-01-OC-P03:stem:361575-b0 -->
 5-aminopyrimidine
 
 <!-- SEG:24-01-OC-P03:sol:361575-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-01-OC-P03:alt:sol-361575-m0 -->
+A six-membered ring, two members of which are nitrogen, with one carbon between them. There are alternating single and double bonds. C 5 has an amino substituent.
 
 <!-- SEG:24-03-OC-P04:stimulus:b0 -->
 Which compound in each of the following pairs is more basic?
@@ -196,8 +244,14 @@ Show two methods for the synthesis of dopamine, a neurotransmitter involved in r
 <!-- SEG:24-06-OC-P10:stem:361577-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-06-OC-P10:alt:stem-361577-m0 -->
+The ball-and-stick model of dopamine. It comprises benzene ring with hydroxyl groups on C 1 and C 2, and C 4 has two methylene groups linked to an amine group.
+
 <!-- SEG:24-06-OC-P10:sol:361577-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-06-OC-P10:alt:sol-361577-m0 -->
+4-(2-Bromoethyl)benzene-1,2-diol reacts with ammonia or 4-(bromomethyl)benzene-1,2-diol reacts with sodium cyanide, then lithium aluminum hydride.
 
 <!-- SEG:24-06-OC-P11:stimulus:b0 -->
 How might the following amines be prepared using reductive amination reactions? Show all precursors if more than one is possible.
@@ -205,17 +259,26 @@ How might the following amines be prepared using reductive amination reactions? 
 <!-- SEG:24-06-OC-P11:stem:361581-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-06-OC-P11:alt:stem-361581-m0 -->
+The structure of N-ethylpropan-2-amine.
+
 <!-- SEG:24-06-OC-P11:sol:361581-b0 -->
 Ethylamine + acetone, or isopropylamine + acetaldehyde
 
 <!-- SEG:24-06-OC-P11:stem:361582-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-06-OC-P11:alt:stem-361582-m0 -->
+The structure of N-ethylaniline.
+
 <!-- SEG:24-06-OC-P11:sol:361582-b0 -->
 Aniline + acetaldehyde
 
 <!-- SEG:24-06-OC-P11:stem:361583-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-06-OC-P11:alt:stem-361583-m0 -->
+The structure of N-methylcyclopentanamine.
 
 <!-- SEG:24-06-OC-P11:sol:361583-b0 -->
 Cyclopentylamine + formaldehyde, or methylamine + cyclopentanone
@@ -226,8 +289,14 @@ How could you prepare the following amine using a reductive amination reaction?
 <!-- SEG:24-06-OC-P12:stem:361585-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-06-OC-P12:alt:stem-361585-m0 -->
+The ball-and-stick model of a benzene ring with methyl on C 1, and C 3 linked to a methylene. This is connected to nitrogen with two methyl groups.
+
 <!-- SEG:24-06-OC-P12:sol:361585-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-06-OC-P12:alt:sol-361585-m0 -->
+A benzene ring with aldehyde group on C 1 and methyl on C 3 reacts with dimethylamine in the presence of sodium borohydride. The product is not mentioned.
 
 <!-- SEG:24-06-OC-P13:stimulus:b0 -->
 How would you prepare the following amines, using both Hofmann and Curtius rearrangements on a carboxylic acid derivative?
@@ -235,11 +304,17 @@ How would you prepare the following amines, using both Hofmann and Curtius rearr
 <!-- SEG:24-06-OC-P13:stem:361588-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-06-OC-P13:alt:stem-361588-m0 -->
+The structure of a four-carbon chain with an amino group on C 1 and two methyl groups on C 3.
+
 <!-- SEG:24-06-OC-P13:sol:361588-b0 -->
 4,4-Dimethylpentanamide or 4,4-dimethylpentanoyl azide
 
 <!-- SEG:24-06-OC-P13:stem:361589-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-06-OC-P13:alt:stem-361589-m0 -->
+The structure of the benzene ring with an amino group on C 1 and a methyl group on C 4.
 
 <!-- SEG:24-06-OC-P13:sol:361589-b0 -->
 [[i:p]]-Methylbenzamide or [[i:p]]-methylbenzoyl azide
@@ -250,11 +325,17 @@ What products would you expect from Hofmann elimination of the following amines?
 <!-- SEG:24-07-OC-P14:stem:361594-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-07-OC-P14:alt:stem-361594-m0 -->
+The structure of an eight-carbon chain with an amino group on C 4 position.
+
 <!-- SEG:24-07-OC-P14:sol:361594-b0 -->
 3-Octene and 4-octene
 
 <!-- SEG:24-07-OC-P14:stem:361595-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-07-OC-P14:alt:stem-361595-m0 -->
+The structure of cyclohexane with amino group on C 1 position.
 
 <!-- SEG:24-07-OC-P14:sol:361595-b0 -->
 Cyclohexene
@@ -262,11 +343,17 @@ Cyclohexene
 <!-- SEG:24-07-OC-P14:stem:361596-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-07-OC-P14:alt:stem-361596-m0 -->
+The structure of a seven-carbon chain with an amino group on C 4 position.
+
 <!-- SEG:24-07-OC-P14:sol:361596-b0 -->
 3-Heptene
 
 <!-- SEG:24-07-OC-P14:stem:361597-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-07-OC-P14:alt:stem-361597-m0 -->
+The structure of cyclohexyl ethyl amine.
 
 <!-- SEG:24-07-OC-P14:sol:361597-b0 -->
 Ethylene and cyclohexene
@@ -277,6 +364,9 @@ What product would you expect from Hofmann elimination of a heterocyclic amine s
 <!-- SEG:24-07-OC-P15:stem:361599-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-07-OC-P15:alt:stem-361599-m0 -->
+The ball-and-stick model of piperidine, a six-membered, single-bonded ring, one member of which is nitrogen with a hydrogen.
+
 <!-- SEG:24-07-OC-P15:sol:361599-b0 -->
 H[[sub:2]]C[[MEDIA:0]]CHCH[[sub:2]]CH[[sub:2]]CH[[sub:2]]N(CH[[sub:3]])[[sub:2]]
 
@@ -285,6 +375,9 @@ Propose a synthesis of the drug sulfathiazole from benzene and any necessary ami
 
 <!-- SEG:24-08-OC-P16:stem:361601-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-08-OC-P16:alt:stem-361601-m0 -->
+The structure of sulfathiazole, which is aniline connected to a sulfonyl to an N H to a cyclopentadiene with nitrogen and sulfur atoms.
 
 <!-- SEG:24-08-OC-P16:sol:361601-b0 -->
 1. HNO[[sub:3]], H[[sub:2]]SO[[sub:4]]; 2. H[[sub:2]]/PtO[[sub:2]]; 3. (CH[[sub:3]]CO)[[sub:2]]O; 4. HOSO[[sub:2]]Cl; 5. aminothiazole; 6. H[[sub:2]]O, NaOH
@@ -361,6 +454,9 @@ Draw an orbital picture of thiazole. Assume that both the nitrogen and sulfur at
 <!-- SEG:24-09-OC-P20:sol:361603-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-09-OC-P20:alt:sol-361603-m0 -->
+Orbital diagram of thiazole involving nitrogen, sulfur, and three hydrogens, all s p 2 hybridized. N and S carry lone pairs of electrons; six total electrons in the pi system.
+
 <!-- SEG:24-09-OC-P21:stem:347569-b0 -->
 What is the percent protonation of the imidazole nitrogen atom in histidine at a physiological pH of 7.3 [[b:(Section 24.5)]]?
 
@@ -373,11 +469,17 @@ Electrophilic aromatic substitution reactions of pyridine normally occur at C3. 
 <!-- SEG:24-09-OC-P22:sol:361605-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-09-OC-P22:alt:sol-361605-m0 -->
+The attack of electrophile at C 2, C 3, and C 4 of pyridine. Mechanisms showing attack at C 2 and C 4 are labeled unfavorable.
+
 <!-- SEG:24-09-OC-P23:stem:361607-b0 -->
 Which nitrogen atom in the hallucinogenic indole alkaloid [[i:N]],[[i:N]]-dimethyltryptamine is more basic? Explain.
 
 <!-- SEG:24-09-OC-P23:stem:361607-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-09-OC-P23:alt:stem-361607-m0 -->
+The ball-and-stick model in the electrostatic potential map of N, N-dimethyltryptamine. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.
 
 <!-- SEG:24-09-OC-P23:sol:361607-b0 -->
 The side-chain nitrogen is more basic than the ring nitrogen.
@@ -391,11 +493,17 @@ Reaction at C2 is disfavored because the aromaticity of the benzene ring is lost
 <!-- SEG:24-09-OC-P24:sol:361609-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-09-OC-P24:alt:sol-361609-m0 -->
+Structure of indole with arrows showing C 3 attacking electrophile. Resulting resonance structures show loss of aromaticity due to 8 electrons in pi system.
+
 <!-- SEG:24-10-OC-P25:stem:347577-b0 -->
 Compound [[b:A]], C[[sub:6]]H[[sub:12]]O, has an IR absorption at 1715 cm[[sup:–1]] and gives compound [[b:B]], C[[sub:6]]H[[sub:15]]N, when treated with ammonia and NaBH[[sub:4]]. The IR and [[sup:1]]H NMR spectra of [[b:B]] are shown. What are the structures of [[b:A]] and [[b:B]]?
 
 <!-- SEG:24-10-OC-P25:stem:347577-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-10-OC-P25:alt:stem-347577-m0 -->
+An illustration shows two parts. The first part shows infrared spectrum of compound B C6H15N wherein the horizontal axis shows wavenumbers in cm to the power minus one starting from 4000 on the left side to 500 on the right side at the interval of 500 cm to the power minus one; the vertical axis shows transmittance in percentage starting from 0 to 100 at the interval of 20 percent. A stretch is shown spread at wavenumber 3500 (60%) and at 3000 (0%). Spikes of different sizes are shown throughout the graph. The second part shows 1H NMR spectrum of compound B. The horizontal axis shows chemical shift (delta) from 10 on the left to 0 ppm on the right at the intervals of 1 delta. The vertical axis shows increasing intensity. The left of spectrum shows chemical shifts 0.88 0.98 and 2.59; relative area are 9.00 5.00. and 1.00. A short peak is shown at 2.6 delta. A medium peak is shown at 1 delta followed by a tall peak at 0.9 delta. A short peak labeled pink “TMS” is shown at 0 delta.
 
 <!-- SEG:24-10-OC-P25:sol:347577-b0 -->
 (CH[[sub:3]])[[sub:3]]CCOCH[[sub:3]] ​→ ​(CH[[sub:3]])[[sub:3]]CCH(NH[[sub:2]])CH[[sub:3]]
@@ -406,20 +514,38 @@ Name the following compounds:
 <!-- SEG:24-99-OC-AP01:stem:361674-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP01:alt:stem-361674-m0 -->
+A benzene ring with an amino substituent. There are two bromine substituents, one ortho and one para to the amino group.
+
 <!-- SEG:24-99-OC-AP01:stem:361675-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP01:alt:stem-361675-m0 -->
+A cyclopentane ring connected to C H 2 C H 2 N H 2.
 
 <!-- SEG:24-99-OC-AP01:stem:361676-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP01:alt:stem-361676-m0 -->
+A nitrogen atom with cyclopentyl and ethyl substituents.
+
 <!-- SEG:24-99-OC-AP01:stem:361677-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP01:alt:stem-361677-m0 -->
+A nitrogen atom with one cyclopentyl and two methyl substituents.
 
 <!-- SEG:24-99-OC-AP01:stem:361678-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP01:alt:stem-361678-m0 -->
+A five-membered ring incorporating one nitrogen. The nitrogen also has an n-propyl substituent.
+
 <!-- SEG:24-99-OC-AP01:stem:361679-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP01:alt:stem-361679-m0 -->
+The structure of a four-carbon chain in which one terminal carbon is part of a nitrile. The other terminal carbon has an amino substituent.
 
 <!-- SEG:24-99-OC-AP02:stimulus:b0 -->
 Draw structures corresponding to the following IUPAC names:
@@ -445,11 +571,20 @@ Classify each of the amine nitrogen atoms in the following substances as primary
 <!-- SEG:24-99-OC-AP03:stem:361683-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP03:alt:stem-361683-m0 -->
+A five-membered ring incorporating one nitrogen. The nitrogen also has a hydrogen.
+
 <!-- SEG:24-99-OC-AP03:stem:361684-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP03:alt:stem-361684-m0 -->
+An indole with the substituent C H 2 C H 2 N H C H 3 on C 3.
+
 <!-- SEG:24-99-OC-AP03:stem:361685-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP03:alt:stem-361685-m0 -->
+The structure of lysergic acid diethylamide, a polycyclic compound with several nitrogens.
 
 <!-- SEG:24-99-OC-AP04:stem:348987-b0 -->
 Although pyrrole is a much weaker base than most other amines, it is a much stronger acid (p[[i:K]][[sub:a]] ≈ 15 for the pyrrole versus 35 for diethylamine). The N–H hydrogen is readily abstracted by base to yield the pyrrole anion, C[[sub:4]]H[[sub:4]]N[[sup:–]]. Explain.
@@ -459,6 +594,9 @@ Histamine, whose release in the body triggers nasal secretions and constricted a
 
 <!-- SEG:24-99-OC-AP05:stem:361687-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP05:alt:stem-361687-m0 -->
+The structure of histamine, a five-membered ring incorporating two nitrogens with a carbon between them. There are two double bonds (one nitrogen has a hydrogen), and an ethylamine substituent.
 
 <!-- SEG:24-99-OC-AP06:stem:347673-b0 -->
 Account for the fact that [[i:p]]-nitroaniline (p[[i:K]][[sub:a]] = 1.0) is less basic than [[i:m]]-nitroaniline (p[[i:K]][[sub:a]] = 2.5) by a factor of 30. Draw resonance structures to support your argument. (The p[[i:K]][[sub:a]] values refer to the corresponding ammonium ions.)
@@ -550,6 +688,9 @@ How might a reductive amination be used to synthesize ephedrine, an amino alcoho
 <!-- SEG:24-99-OC-AP12:stem:361689-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP12:alt:stem-361689-m0 -->
+The structure of ephedrine. It has benzene ring connected to a C H with hydroxyl linked to another C H with methyl. This is connected to N-H linked to methyl.
+
 <!-- SEG:24-99-OC-AP13:stimulus:b0 -->
 How would you convert aniline into each of the following products?
 
@@ -610,11 +751,20 @@ What are the major products you would expect from Hofmann elimination of the fol
 <!-- SEG:24-99-OC-AP16:stem:361693-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP16:alt:stem-361693-m0 -->
+Structure of cyclopentyl methyl amine.
+
 <!-- SEG:24-99-OC-AP16:stem:361694-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP16:alt:stem-361694-m0 -->
+A nitrogen atom with three substituents: H, benzene ring, and n-hexane (attached by C 2).
+
 <!-- SEG:24-99-OC-AP16:stem:361695-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP16:alt:stem-361695-m0 -->
+The structure of a six-carbon chain with methyl on C 2 and amine on C 3 position.
 
 <!-- SEG:24-99-OC-AP17:stimulus:b0 -->
 How would you prepare the following compounds from toluene? A diazonio replacement reaction is needed in some instances.
@@ -622,11 +772,20 @@ How would you prepare the following compounds from toluene? A diazonio replaceme
 <!-- SEG:24-99-OC-AP17:stem:361699-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP17:alt:stem-361699-m0 -->
+The structure of benzene with methyl and amino substituents para to one another.
+
 <!-- SEG:24-99-OC-AP17:stem:361700-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP17:alt:stem-361700-m0 -->
+The structure of benzene with a methyl substituent and, para to that, a C H 2 N H 2 substituent.
+
 <!-- SEG:24-99-OC-AP17:stem:361701-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP17:alt:stem-361701-m0 -->
+The structure of benzene with C OO C H 3 on C 1 and iodine on C 3 position.
 
 <!-- SEG:24-99-OC-AP18:stimulus:b0 -->
 Predict the product(s) of the following reactions. If more than one product is formed, tell which is major.
@@ -634,20 +793,35 @@ Predict the product(s) of the following reactions. If more than one product is f
 <!-- SEG:24-99-OC-AP18:stem:361714-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP18:alt:stem-361714-m0 -->
+Decahydroquinoline reacts with excess methyl iodide to form unknown product A. This reacts with silver oxide and water to form unknown B, that further reacts with heat to form C.
+
 <!-- SEG:24-99-OC-AP18:stem:361715-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP18:alt:stem-361715-m0 -->
+Benzoyl chloride reacts with sodium azide to form unknown A. This reacts with heat to form unknown B. This reacts with water to form unknown C.
 
 <!-- SEG:24-99-OC-AP18:stem:361716-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP18:alt:stem-361716-m0 -->
+Isoindoline-1,3-dione reacts with potassium hydroxide to form unknown A. This reacts with (bromomethyl)benzene to form unknown B. This reacts with potassium hydroxide and water to form unknown C.
+
 <!-- SEG:24-99-OC-AP18:stem:361717-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP18:alt:stem-361717-m0 -->
+1,4-Dibromobutane reacts with one equivalent of methylamine in the presence of sodium hydroxide and water to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-AP19:stem:361719-b0 -->
 Phenacetin, a substance formerly used in over-the-counter headache remedies, has the formula C[[sub:10]]H[[sub:13]]NO[[sub:2]]. Phenacetin is neutral and does not dissolve in either acid or base. When warmed with aqueous NaOH, phenacetin yields an amine, C[[sub:8]]H[[sub:11]]NO, whose [[sup:1]]H NMR spectrum is shown. When heated with HI, the amine is cleaved to an aminophenol, C[[sub:6]]H[[sub:7]]NO. What is the structure of phenacetin, and what are the structures of the amine and the aminophenol?
 
 <!-- SEG:24-99-OC-AP19:stem:361719-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP19:alt:stem-361719-m0 -->
+Proton spectrum with signals at shift 1.34 (triplet), 3.40 (wide singlet), 3.93 (quartet), and 6.59 and 6.72 (doublets). Relative areas are 1.50, 1.00, 1.00, 1.00, and 1.00 respectively.
 
 <!-- SEG:24-99-OC-AP20:stimulus:b0 -->
 Propose structures for amines with the following [[sup:1]]H NMR spectra:
@@ -658,11 +832,17 @@ C[[sub:3]]H[[sub:9]]NO
 <!-- SEG:24-99-OC-AP20:stem:361723-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP20:alt:stem-361723-m0 -->
+Proton spectrum with signals at shift 1.68 (quintet), 2.69 (wide singlet), 2.88 (triplet), and 3.72 (triplet). Relative areas are 1.00, 1.50, 1.00, and 1.00 respectively.
+
 <!-- SEG:24-99-OC-AP20:stem:361724-b0 -->
 C[[sub:4]]H[[sub:11]]NO[[sub:2]]
 
 <!-- SEG:24-99-OC-AP20:stem:361724-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP20:alt:stem-361724-m0 -->
+Proton spectrum with signals at shift 1.28 (wide singlet), 2.78 (doublet), 3.39 (singlet), and 4.31 (triplet). Relative areas are 2.00, 2.oo, 6.00, and 1.00 respectively.
 
 <!-- SEG:24-99-OC-AP20:stem:361725-b0 -->
 C[[sub:8]]H[[sub:11]]N
@@ -670,8 +850,14 @@ C[[sub:8]]H[[sub:11]]N
 <!-- SEG:24-99-OC-AP20:stem:361725-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP20:alt:stem-361725-m0 -->
+Proton spectrum with signals at shift 1.05 (wide singlet), 2.7 (triplet), 2.95 (triplet), and 7.25 (multiplets). Relative areas are 2.06, 2.02, 2.04, and 4.93 respectively.
+
 <!-- SEG:24-99-OC-AP21:stem:448132-b0 -->
 Draw the structure of the amine that produced the [[sup:1]]H NMR spectrum shown. [[MEDIA:0]] This compound has a single strong peak in its IR spectrum at 3280 cm[[sup:–1]].
+
+<!-- SEG:24-99-OC-AP21:alt:stem-448132-m0 -->
+Proton spectrum with signals at approximate chemical shifts 0.9 (triplet), 1.4 (multiplet), 2 (broad singlet), and 2.55 (triplet) parts per million.
 
 <!-- SEG:24-99-OC-AP22:stem:361727-b0 -->
 Fill in the missing reagents [[b:a]]–[[b:e]] in the following scheme:
@@ -679,11 +865,17 @@ Fill in the missing reagents [[b:a]]–[[b:e]] in the following scheme:
 <!-- SEG:24-99-OC-AP22:stem:361727-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP22:alt:stem-361727-m0 -->
+Acetophenone reacts with a to form 1-phenylethanamine. This reacts with b and c to form styrene. This reacts with d to form 2-phenyloxirane. This reacts with e to form 2-(dimethylamino)-1-phenylethanol.
+
 <!-- SEG:24-99-OC-AP23:stem:361729-b0 -->
 Oxazole is a five-membered aromatic heterocycle. Would you expect oxazole to be more basic or less basic than pyrrole? Explain.
 
 <!-- SEG:24-99-OC-AP23:stem:361729-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP23:alt:stem-361729-m0 -->
+The structure of oxazole, a five membered ring with oxygen and nitrogen atoms separated by one carbon. There are double bonds between the adjacent carbons, and between carbon and nitrogen.
 
 <!-- SEG:24-99-OC-AP24:stem:361731-b0 -->
 Protonation of an amide using strong acid occurs on oxygen rather than on nitrogen. Suggest a reason for this behavior, taking resonance into account.
@@ -691,11 +883,17 @@ Protonation of an amide using strong acid occurs on oxygen rather than on nitrog
 <!-- SEG:24-99-OC-AP24:stem:361731-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP24:alt:stem-361731-m0 -->
+An amide undergoes a reversible reaction with sulfuric acid to produce a protonated product in which oxygen carries a positive charge.
+
 <!-- SEG:24-99-OC-AP25:stem:361733-b0 -->
 What is the structure of the compound with formula C[[sub:8]]H[[sub:11]]N that produced the following IR spectrum?
 
 <!-- SEG:24-99-OC-AP25:stem:361733-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP25:alt:stem-361733-m0 -->
+An I R spectrum with major peaks at wavenumbers 1500, 1600, just above and below 3000, and 3400 (single).
 
 <!-- SEG:24-99-OC-AP26:stem:361735-b0 -->
 Fill in the missing reagents [[b:a]]–[[b:d]] in the following synthesis of racemic methamphetamine from benzene.
@@ -703,17 +901,26 @@ Fill in the missing reagents [[b:a]]–[[b:d]] in the following synthesis of rac
 <!-- SEG:24-99-OC-AP26:stem:361735-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP26:alt:stem-361735-m0 -->
+Benzene reacts with a to produce allylbenzene. This reacts with b and c to produce 1-phenylpropan-2-one. This reacts with d to form (R, S)-methamphetamine.
+
 <!-- SEG:24-99-OC-AP27:stem:361737-b0 -->
 Cyclopentamine is an amphetamine-like central nervous system stimulant. Propose a synthesis of cyclopentamine from materials of five carbons or less.
 
 <!-- SEG:24-99-OC-AP27:stem:361737-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP27:alt:stem-361737-m0 -->
+The stucture of cyclopentamine. A nitrogen with H, methyl, and isopropyl substituents. There is also a cyclopentane on C 1 of the isopropyl group.
+
 <!-- SEG:24-99-OC-AP28:stimulus:b0 -->
 Tetracaine is a substance used as a spinal anesthetic.
 
 <!-- SEG:24-99-OC-AP28:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP28:alt:stimulus-m0 -->
+The structure of Tetracaine.
 
 <!-- SEG:24-99-OC-AP28:stem:361741-b0 -->
 How would you prepare tetracaine from the corresponding aniline derivative, ArNH[[sub:2]]?
@@ -730,6 +937,9 @@ Atropine, C[[sub:17]]H[[sub:23]]NO[[sub:3]], is a poisonous alkaloid isolated fr
 <!-- SEG:24-99-OC-AP29:stem:361745-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP29:alt:stem-361745-m0 -->
+The structure of tropidene, a bicyclic compound incorporating a nitrogen with a methyl substituent.
+
 <!-- SEG:24-99-OC-AP30:stem:354817-b0 -->
 Tropidene (Problem 24-75) can be converted by a series of steps into tropilidene (1,3,5-cycloheptatriene). How would you accomplish this conversion?
 
@@ -738,6 +948,9 @@ Propose a structure for the product with formula C[[sub:9]]H[[sub:17]]N that res
 
 <!-- SEG:24-99-OC-AP31:stem:361747-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP31:alt:stem-361747-m0 -->
+2-(2-Cyanoethyl)cyclohexanone reacts with hydrogen and platinum catalyst to form a product whose chemical formula is C 9 H 1 7 N.
 
 <!-- SEG:24-99-OC-AP32:stem:354821-b0 -->
 Coniine, C[[sub:8]]H[[sub:17]]N, is the toxic principle of the poison hemlock drunk by Socrates. When subjected to Hofmann elimination, coniine yields 5-([[i:N]],[[i:N]]-dimethylamino)-1-octene. If coniine is a secondary amine, what is its structure?
@@ -750,6 +963,9 @@ Tyramine is an alkaloid found, among other places, in mistletoe and ripe cheese.
 
 <!-- SEG:24-99-OC-AP34:stem:361749-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP34:alt:stem-361749-m0 -->
+The structure of tyramine. A benzene ring with a hydroxyl group on C 1 and two methylene connected to an amine group on C 4.
 
 <!-- SEG:24-99-OC-AP35:stimulus:b0 -->
 Reaction of anthranilic acid ([[i:o]]-aminobenzoic acid) with HNO[[sub:2]] and H[[sub:2]]SO[[sub:4]] yields a diazonium salt that can be treated with base to yield a neutral diazonium carboxylate.
@@ -766,6 +982,9 @@ Heating the diazonium carboxylate results in the formation of CO[[sub:2]], N[[su
 <!-- SEG:24-99-OC-AP35:stem:361753-b2 -->
 What is the structure of the intermediate, and what kind of reaction does it undergo with cyclopentadiene?
 
+<!-- SEG:24-99-OC-AP35:alt:stem-361753-m0 -->
+The structure of benzene fused to a six-membered ring. There is a double bond opposite the fusion and a one-carbon bridge between the carbons adjacent to the fusion points.
+
 <!-- SEG:24-99-OC-AP36:stem:361755-b0 -->
 Cyclooctatetraene was first synthesized in 1911 by a route that involved the following transformation:
 
@@ -774,6 +993,9 @@ Cyclooctatetraene was first synthesized in 1911 by a route that involved the fol
 
 <!-- SEG:24-99-OC-AP36:stem:361755-b2 -->
 How might you use the Hofmann elimination to accomplish this reaction? How would you finish the synthesis by converting cyclooctatriene into cyclooctatetraene?
+
+<!-- SEG:24-99-OC-AP36:alt:stem-361755-m0 -->
+9-Methyl-9-azabicyclo[3.3.1]non-2-ene is separated from 1,3,5-cyclooctatriene by an arrow.
 
 <!-- SEG:24-99-OC-AP37:stimulus:b0 -->
 Propose structures for compounds that show the following [[sup:1]]H NMR spectra.
@@ -784,11 +1006,17 @@ C[[sub:9]]H[[sub:13]]N
 <!-- SEG:24-99-OC-AP37:stem:361758-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP37:alt:stem-361758-m0 -->
+Proton spectrum with signals at shift 2.25 (singlet), 2.89 (singlet), 6.66 (doublet), and 7.03 (doublet). Relative areas are 1.50, 3.00, 1.00, and 1.00 respectively.
+
 <!-- SEG:24-99-OC-AP37:stem:361759-b0 -->
 C[[sub:15]]H[[sub:17]]N
 
 <!-- SEG:24-99-OC-AP37:stem:361759-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-AP37:alt:stem-361759-m0 -->
+Proton spectrum with signals at shift 1.14 (triplet), 3.40 (quartet), 4.47 (singlet), 6.65 (multiplet) and 7.16 and 7.24 (multiplets). Relative areas are 1.50, 1.00, 1.00, 1.50, 1.50, 2.00 respectively.
 
 <!-- SEG:24-99-OC-AP38:stem:361761-b0 -->
 4-Dimethylaminopyridine (DMAP) acts as a catalyst in acyl transfer reactions. DMAP’s catalytic activity stems from its nucleophilic character at the pyridine nitrogen, not the dimethylamino group. Explain this behavior, taking resonance into account.
@@ -796,14 +1024,23 @@ C[[sub:15]]H[[sub:17]]N
 <!-- SEG:24-99-OC-AP38:stem:361761-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-AP38:alt:stem-361761-m0 -->
+The structure of 4-dimethylaminopyridine. It has a pyridine ring linked to a nitrogen connected to two methyl groups.
+
 <!-- SEG:24-99-OC-MP01:stimulus:b0 -->
 Predict the product(s) and write the mechanism for each of the following reactions:
 
 <!-- SEG:24-99-OC-MP01:stem:361624-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP01:alt:stem-361624-m0 -->
+1-(Bromomethyl)-2-methylbenzene reacts with sodium phthalimide, then hydroxide ion and water to form an unknown product represented by a question mark.
+
 <!-- SEG:24-99-OC-MP01:stem:361625-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP01:alt:stem-361625-m0 -->
+1-Chloro-3-methylbutane reacts with sodium phthalimide, then hydroxide ion and water to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-MP02:stimulus:b0 -->
 Predict the product(s) and write the mechanism for each of the following reactions:
@@ -811,8 +1048,14 @@ Predict the product(s) and write the mechanism for each of the following reactio
 <!-- SEG:24-99-OC-MP02:stem:361628-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP02:alt:stem-361628-m0 -->
+2-Methyl-1-phenylpropan-1-one reacts with dimethylamine in the presence of sodium borohydride and ethanol to form an unknown product represented by a question mark.
+
 <!-- SEG:24-99-OC-MP02:stem:361629-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP02:alt:stem-361629-m0 -->
+(1 R,4 S)-Bicyclo[2.2.1]heptan-2-one reacts with pyrrolidine in the presence of sodium borohydride and ethanol to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-MP03:stimulus:b0 -->
 Predict the product(s) and write the mechanism for each of the following reactions:
@@ -820,14 +1063,26 @@ Predict the product(s) and write the mechanism for each of the following reactio
 <!-- SEG:24-99-OC-MP03:stem:361634-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP03:alt:stem-361634-m0 -->
+3-Methylbutanamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.
+
 <!-- SEG:24-99-OC-MP03:stem:361635-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP03:alt:stem-361635-m0 -->
+Cyclopentanecarboxamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-MP03:stem:361636-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP03:alt:stem-361636-m0 -->
+2-Methoxyacetamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.
+
 <!-- SEG:24-99-OC-MP03:stem:361637-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP03:alt:stem-361637-m0 -->
+2,3-Dihydro-1H-indene-2-carboxamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-MP04:stimulus:b0 -->
 Predict the product(s) and write the mechanism for each of the following reactions:
@@ -835,8 +1090,14 @@ Predict the product(s) and write the mechanism for each of the following reactio
 <!-- SEG:24-99-OC-MP04:stem:361640-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP04:alt:stem-361640-m0 -->
+Bicyclo[4.4.0]decane oriented with C O Cl at top fusion (wedge) and H at bottom fusion (dash) reacts with sodium azide, then water and heat, to form unknown product(s).
+
 <!-- SEG:24-99-OC-MP04:stem:361641-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP04:alt:stem-361641-m0 -->
+But-3-enoyl chloride reacts with sodium azide, then water and heat to form an unknown product represented by a question mark.
 
 <!-- SEG:24-99-OC-MP05:stem:347611-b0 -->
 The diazotization of aniline first involves the formation of NO[[sup:+]] (nitrosonium ion) by the dehydration of nitrous acid with sulfuric acid. The aniline nitrogen then acts as a nucleophile and eventually loses water. Propose a mechanism for the formation of the dizaonium salt of aniline using curved arrows to show all electron movement.
@@ -847,11 +1108,17 @@ Substituted pyrroles are often prepared by treatment of a 1,4-diketone with ammo
 <!-- SEG:24-99-OC-MP06:stem:361643-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP06:alt:stem-361643-m0 -->
+A 1,4-diketone reacts with ammonia to form a pyrrole with R and R dash as substituents and water is the second product.
+
 <!-- SEG:24-99-OC-MP07:stem:361645-b0 -->
 3,5-Dimethylisoxazole is prepared by reaction of 2,4-pentanedione with hydroxylamine. Propose a mechanism.
 
 <!-- SEG:24-99-OC-MP07:stem:361645-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP07:alt:stem-361645-m0 -->
+2, 4-Pentanedione reacts with hydroxylamine to produce 3, 5-dimethylisoxazole.
 
 <!-- SEG:24-99-OC-MP08:stem:347617-b0 -->
 One problem with reductive amination as a method of amine synthesis is that by-products are sometimes obtained. For example, reductive amination of benzaldehyde with methylamine leads to a mixture of [[i:N]]-methylbenzylamine and [[i:N]]-methyldibenzylamine. How do you suppose the tertiary amine by-product is formed? Propose a mechanism.
@@ -862,17 +1129,26 @@ Chlorophyll, heme, vitamin B[[sub:12]], and a host of other substances are biosy
 <!-- SEG:24-99-OC-MP09:stem:361647-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP09:alt:stem-361647-m0 -->
+Two molecules of enzyme-bound 5-aminolevulinate react to produce four intermediates. This further leads to the final product named Porphobilinogen (P B G).
+
 <!-- SEG:24-99-OC-MP10:stem:361649-b0 -->
 Choline, a component of the phospholipids in cell membranes, can be prepared by S[[sub:N]]2 reaction of trimethylamine with ethylene oxide. Show the structure of choline, and propose a mechanism for the reaction.
 
 <!-- SEG:24-99-OC-MP10:stem:361649-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP10:alt:stem-361649-m0 -->
+Trimethylamine reacts with ethylene oxide to produce choline, which has an unknown structure.
+
 <!-- SEG:24-99-OC-MP11:stimulus:b0 -->
 The antitumor antibiotic mitomycin C functions by forming cross-links in DNA chains.
 
 <!-- SEG:24-99-OC-MP11:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP11:alt:stimulus-m0 -->
+The removal of methanol from mitomycin C forms enamine. This reacts with two amine groups connected to deoxyribonucleic acid to form an intermediate. This reacts to form the final product.
 
 <!-- SEG:24-99-OC-MP11:stem:361653-b0 -->
 The first step is loss of methoxide and formation of an iminium ion intermediate that is deprotonated to give an enamine. Show the mechanism.
@@ -889,11 +1165,17 @@ The third step is loss of carbamate (NH[[sub:2]]CO[[sub:2]][[sup:–]]) and form
 <!-- SEG:24-99-OC-MP12:stem:361657-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP12:alt:stem-361657-m0 -->
+Aldehyde R C H O reacts with ammonium cyanide and water forming C with R, H, amino, and cyano substituents. Further reaction with hydronium and heat forms an alpha-amino acid.
+
 <!-- SEG:24-99-OC-MP13:stem:361659-b0 -->
 One of the reactions used in determining the sequence of nucleotides in a strand of DNA is reaction with hydrazine. Propose a mechanism for the following reaction, which occurs by an initial conjugate addition followed by internal amide formation.
 
 <!-- SEG:24-99-OC-MP13:stem:361659-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP13:alt:stem-361659-m0 -->
+A six-membered ring with two incorporated nitrogens, two carbonyls, and two methyl substituents reacts with hydrazine to form an amide.
 
 <!-- SEG:24-99-OC-MP14:stem:361661-b0 -->
 When an [[i:α]]-hydroxy amide is treated with Br[[sub:2]] in aqueous NaOH under Hofmann rearrangement conditions, loss of CO[[sub:2]] occurs and a chain-shortened aldehyde is formed. Propose a mechanism.
@@ -901,11 +1183,17 @@ When an [[i:α]]-hydroxy amide is treated with Br[[sub:2]] in aqueous NaOH under
 <!-- SEG:24-99-OC-MP14:stem:361661-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP14:alt:stem-361661-m0 -->
+2-Hydroxy-2-phenylacetamide reacts with bromine, sodium hydroxide and water to form benzaldehyde, carbon dioxide and ammonia.
+
 <!-- SEG:24-99-OC-MP15:stem:361663-b0 -->
 The following transformation involves a conjugate nucleophilic addition reaction ([[b:Section 19.13]]) followed by an intramolecular nucleophilic acyl substitution reaction ([[b:Section 21.2]]). Show the mechanism.
 
 <!-- SEG:24-99-OC-MP15:stem:361663-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP15:alt:stem-361663-m0 -->
+A carbonyl compound reacts with methylamine to form cyclopentanone with N C H 3 and methoxy group and methanol is the second product.
 
 <!-- SEG:24-99-OC-MP16:stem:361665-b0 -->
 Propose a mechanism for the following reaction:
@@ -913,11 +1201,17 @@ Propose a mechanism for the following reaction:
 <!-- SEG:24-99-OC-MP16:stem:361665-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-MP16:alt:stem-361665-m0 -->
+2-(Benzylamino)ethanol reacts with (Z)-methyl 4-bromobut-2-enoate in the presence of triethylamine and heat to form a product.
+
 <!-- SEG:24-99-OC-MP17:stem:361667-b0 -->
 One step in the biosynthesis of morphine is the reaction of dopamine with [[i:p]]-hydroxyphenylacetaldehyde to give ([[i:S]])-norcoclaurine. Assuming that the reaction is acid-catalyzed, propose a mechanism.
 
 <!-- SEG:24-99-OC-MP17:stem:361667-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-MP17:alt:stem-361667-m0 -->
+Dopamine reacts with p-hydroxyphenyl-acetaldehyde to yield (S)-norcoclaurine.
 
 <!-- SEG:24-99-OC-VC01:stimulus:b0 -->
 Name the following amines, and identify each as primary, secondary, or tertiary:
@@ -925,11 +1219,20 @@ Name the following amines, and identify each as primary, secondary, or tertiary:
 <!-- SEG:24-99-OC-VC01:stem:361613-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-VC01:alt:stem-361613-m0 -->
+A ball-and-stick model of nitrogen bonded to hydrogen, methyl, and isopropyl groups.
+
 <!-- SEG:24-99-OC-VC01:stem:361614-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-VC01:alt:stem-361614-m0 -->
+A ball-and-stick model of cyclopentane with methyl and N H 2 substituents on adjacent carbons.
+
 <!-- SEG:24-99-OC-VC01:stem:361615-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-VC01:alt:stem-361615-m0 -->
+A ball-and-stick model of nitrogen bonded to a benzene ring, hydrogen, and an isopropyl group
 
 <!-- SEG:24-99-OC-VC02:stem:361617-b0 -->
 The following compound contains three nitrogen atoms. Rank them in order of increasing basicity.
@@ -937,15 +1240,24 @@ The following compound contains three nitrogen atoms. Rank them in order of incr
 <!-- SEG:24-99-OC-VC02:stem:361617-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-VC02:alt:stem-361617-m0 -->
+A ball-and-stick model of a large molecule with different functional groups. Black, grey, red, and blue spheres represent carbon, hydrogen, oxygen, and nitrogen.
+
 <!-- SEG:24-99-OC-VC03:stem:361619-b0 -->
 Name the following amine, including [[i:R]],[[i:S]] stereochemistry, and draw the product of its reaction with excess iodomethane followed by heating with Ag[[sub:2]]O (Hofmann elimination). Is the stereochemistry of the alkene product [[i:Z]] or [[i:E]]? Explain.
 
 <!-- SEG:24-99-OC-VC03:stem:361619-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:24-99-OC-VC03:alt:stem-361619-m0 -->
+A ball-and-stick model of a three-carbon chain with benzene rings on C 1 and C 2, and an N H 2 group on C 1.
+
 <!-- SEG:24-99-OC-VC04:stem:361621-b0 -->
 Which nitrogen atom in the following compound is most basic? Explain.
 
 <!-- SEG:24-99-OC-VC04:stem:361621-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:24-99-OC-VC04:alt:stem-361621-m0 -->
+A ball-and-stick model of a large molecule with different functional groups. Black, grey, and blue spheres represent carbon, hydrogen, and nitrogen.
 

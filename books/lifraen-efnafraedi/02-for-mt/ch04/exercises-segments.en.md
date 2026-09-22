@@ -4,11 +4,17 @@ Give IUPAC names for the following cycloalkanes:
 <!-- SEG:04-01-OC-P01:stem:351872-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P01:alt:stem-351872-m0 -->
+In a 6-membered carbon ring, C1 and C4 are each bonded to a methyl group.
+
 <!-- SEG:04-01-OC-P01:sol:351872-b0 -->
 1,4-Dimethylcyclohexane
 
 <!-- SEG:04-01-OC-P01:stem:351873-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-01-OC-P01:alt:stem-351873-m0 -->
+In a 5-membered carbon ring, C1 and C3 are bonded to a methyl and a propyl group, respectively.
 
 <!-- SEG:04-01-OC-P01:sol:351873-b0 -->
 1-Methyl-3-propylcyclopentane
@@ -16,11 +22,17 @@ Give IUPAC names for the following cycloalkanes:
 <!-- SEG:04-01-OC-P01:stem:351874-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P01:alt:stem-351874-m0 -->
+A cyclobutane ring is bonded to C3 of a 5-carbon chain.
+
 <!-- SEG:04-01-OC-P01:sol:351874-b0 -->
 3-Cyclobutylpentane
 
 <!-- SEG:04-01-OC-P01:stem:351875-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-01-OC-P01:alt:stem-351875-m0 -->
+In a 10-membered carbon ring, C1 and C4 are bonded to a bromine atom and an ethyl group, respectively.
 
 <!-- SEG:04-01-OC-P01:sol:351875-b0 -->
 1-Bromo-4-ethylcyclodecane
@@ -28,11 +40,17 @@ Give IUPAC names for the following cycloalkanes:
 <!-- SEG:04-01-OC-P01:stem:351876-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P01:alt:stem-351876-m0 -->
+In a 6-membered carbon ring, C1 and C2 are bonded to a C H (C H 3) 2 group and a methyl group, respectively.
+
 <!-- SEG:04-01-OC-P01:sol:351876-b0 -->
 1-Isopropyl-2-methylcyclohexane
 
 <!-- SEG:04-01-OC-P01:stem:351877-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-01-OC-P01:alt:stem-351877-m0 -->
+In a 7-membered carbon ring, C1, C2, and C4 are bonded to a C (C H 3) 3 group, a methyl group, and a bromine atom, respectively.
 
 <!-- SEG:04-01-OC-P01:sol:351877-b0 -->
 4-Bromo-1-[[i:tert]]-butyl-2-methylcycloheptane
@@ -46,11 +64,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:04-01-OC-P02:sol:357648-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P02:alt:sol-357648-m0 -->
+In an 8-membered carbon ring, C1 is bonded to two methyl groups.
+
 <!-- SEG:04-01-OC-P02:stem:357649-b0 -->
 3-Cyclobutylhexane
 
 <!-- SEG:04-01-OC-P02:sol:357649-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-01-OC-P02:alt:sol-357649-m0 -->
+The C3 of a 6-carbon chain is bonded to a 4-membered carbon ring.
 
 <!-- SEG:04-01-OC-P02:stem:357650-b0 -->
 1,2-Dichlorocyclopentane
@@ -58,17 +82,26 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:04-01-OC-P02:sol:357650-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P02:alt:sol-357650-m0 -->
+In a 5-membered carbon ring, C1 and C2 are each bonded to a chlorine atom.
+
 <!-- SEG:04-01-OC-P02:stem:357651-b0 -->
 1,3-Dibromo-5-methylcyclohexane
 
 <!-- SEG:04-01-OC-P02:sol:357651-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-01-OC-P02:alt:sol-357651-m0 -->
+In a cyclohexane ring, C1 and C3 are each bonded to a bromine atom. C5 is bonded to a methyl group.
+
 <!-- SEG:04-01-OC-P03:stem:351064-b0 -->
 Name the following cycloalkane:
 
 <!-- SEG:04-01-OC-P03:stem:351064-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-01-OC-P03:alt:stem-351064-m0 -->
+A ball and stick model has a 5-carbon ring with C1 bonded to ethyl and C3 bonded to two methyl groups. Black and gray spheres represent carbon and hydrogen, respectively.
 
 <!-- SEG:04-01-OC-P03:sol:351064-b0 -->
 3-Ethyl-1,1-dimethylcyclopentane
@@ -79,11 +112,17 @@ Name the following substances, including the [[i:cis]]- or [[i:trans]]- prefix:
 <!-- SEG:04-02-OC-P04:stem:351067-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-02-OC-P04:alt:stem-351067-m0 -->
+In a cyclohexane ring, C1 is wedge bonded to chlorine and dash bonded to hydrogen. C4 is wedge bonded to hydrogen and dash bonded to methyl group.
+
 <!-- SEG:04-02-OC-P04:sol:351067-b0 -->
 [[i:trans]]-1-Chloro-4-methylcyclohexane
 
 <!-- SEG:04-02-OC-P04:stem:351068-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-02-OC-P04:alt:stem-351068-m0 -->
+In a cycloheptane ring, C1 is wedge bonded to ethyl and dash bonded to hydrogen. C3 is wedge bonded to methyl and dash bonded to hydrogen.
 
 <!-- SEG:04-02-OC-P04:sol:351068-b0 -->
 [[i:cis]]-1-Ethyl-3-methylcycloheptane
@@ -97,11 +136,17 @@ Draw the structures of the following molecules:
 <!-- SEG:04-02-OC-P05:sol:357655-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-02-OC-P05:alt:sol-357655-m0 -->
+In a cyclohexane ring, C1 is wedge bonded to bromine and dash bonded to hydrogen atom. C3 is wedge bonded to hydrogen atom and dash bonded to methyl group.
+
 <!-- SEG:04-02-OC-P05:stem:357656-b0 -->
 [[i:cis]]-1,2-Dimethylcyclobutane
 
 <!-- SEG:04-02-OC-P05:sol:357656-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-02-OC-P05:alt:sol-357656-m0 -->
+In a cyclobutane ring, C1 and C2 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms, respectively.
 
 <!-- SEG:04-02-OC-P05:stem:357657-b0 -->
 [[i:trans]]-1-[[i:tert]]-Butyl-2-ethylcyclohexane
@@ -109,11 +154,17 @@ Draw the structures of the following molecules:
 <!-- SEG:04-02-OC-P05:sol:357657-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-02-OC-P05:alt:sol-357657-m0 -->
+In a cyclohexane ring, C1 is wedge bonded to tertiary-butyl group and dash bonded to hydrogen atom. C2 is wedge bonded to hydrogen atom and dash bonded to ethyl group.
+
 <!-- SEG:04-02-OC-P06:stem:357218-b0 -->
 Prostaglandin F[[sub:2[[i:α]]]], a hormone that causes uterine contraction during childbirth, has the following structure. Are the two hydroxyl groups (–OH) on the cyclopentane ring cis or trans to each other? What about the two carbon chains attached to the ring?
 
 <!-- SEG:04-02-OC-P06:stem:357218-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-02-OC-P06:alt:stem-357218-m0 -->
+The wedge-dash structure of Prostaglandin F 2 alpha.
 
 <!-- SEG:04-02-OC-P06:sol:357218-b0 -->
 The two hydroxyl groups are cis. The two side chains are trans.
@@ -124,11 +175,17 @@ Name the following substances, including the [[i:cis]]- or [[i:trans]]- prefix (
 <!-- SEG:04-02-OC-P07:stem:351079-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-02-OC-P07:alt:stem-351079-m0 -->
+The ball and stick model of cis-1,2-dimethylcyclopentane,in which C1 and C2 are bonded to methyl groups. Black and gray spheres represent carbon and hydrogen, respectively.
+
 <!-- SEG:04-02-OC-P07:sol:351079-b0 -->
 [[i:cis]]-1,2-Dimethylcyclopentane
 
 <!-- SEG:04-02-OC-P07:stem:351080-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-02-OC-P07:alt:stem-351080-m0 -->
+The ball and stick model of cis-1-bromo-3-methylcyclobutane. C1 and C3 are bonded to bromine atom and methyl group, respectively. Black, red, and gray spheres represent carbon, bromine, and hydrogen, respectively.
 
 <!-- SEG:04-02-OC-P07:sol:351080-b0 -->
 [[i:cis]]-1-Bromo-3-methylcyclobutane
@@ -158,6 +215,12 @@ Two conformations of [[i:cis]]-1,3-dimethylcyclobutane are shown. What is the di
 [[b:(a)]][[MEDIA:0]]
 [[b:(b)]][[MEDIA:1]]
 
+<!-- SEG:04-04-OC-P11:alt:stem-351082-m0 -->
+The ball and stick model of cis 1,3-dimethylcyclobutane. C1 is bonded to methyl at the top right. C3 is bonded to another methyl on the left.
+
+<!-- SEG:04-04-OC-P11:alt:stem-351082-m1 -->
+The ball and stick model of cis 1,3-dimethylcyclobutane. C1 and C3 are each bonded to a methyl group at the bottom.
+
 <!-- SEG:04-04-OC-P11:sol:351082-b0 -->
 Conformation [[b:(a)]] is more stable because the methyl groups are farther apart.
 
@@ -167,17 +230,26 @@ Draw two different chair conformations of cyclohexanol (hydroxycyclohexane), sho
 <!-- SEG:04-06-OC-P12:sol:357659-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-06-OC-P12:alt:sol-357659-m0 -->
+Two chair conformations of cyclohexanol. In the first conformation, C1 is bonded to axial hydroxyl group. In the second conformation, C1 is bonded to equatorial hydroxyl group.
+
 <!-- SEG:04-06-OC-P13:stem:357661-b0 -->
 Draw two different chair conformations of [[i:trans]]-1,4-dimethylcyclohexane, and label all positions as axial or equatorial.
 
 <!-- SEG:04-06-OC-P13:sol:357661-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-06-OC-P13:alt:sol-357661-m0 -->
+Two chair conformations of trans-1,4-dimethylcyclohexane. In first conformation, C1 and C4 are each bonded to axial methyl. In second conformation, C1 and C4 are each bonded to equatorial methyl.
+
 <!-- SEG:04-06-OC-P14:stem:351088-b0 -->
 Identify each of the colored positions—red, blue, and green—as axial or equatorial. Then carry out a ring-flip, and show the new positions occupied by each color.
 
 <!-- SEG:04-06-OC-P14:stem:351088-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-06-OC-P14:alt:stem-351088-m0 -->
+Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C3, and C6 undergoes ring-flip to form model with all substituents, represented by white circles.
 
 <!-- SEG:04-06-OC-P14:sol:351088-b0 -->
 Before the ring-flip, red and blue are equatorial and green is axial. After the ring-flip, red and blue are axial and green is equatorial.
@@ -233,8 +305,14 @@ Identify each substituent in the following compound as axial or equatorial, and 
 <!-- SEG:04-08-OC-P19:stem:357663-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-08-OC-P19:alt:stem-357663-m0 -->
+Ball and stick model of substituted cyclohexane. C1 is bonded to green sphere. Black and gray spheres represent carbon and hydrogen, respectively.
+
 <!-- SEG:04-08-OC-P19:sol:357663-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-08-OC-P19:alt:sol-357663-m0 -->
+The less stable chair form of 1-chloro-2,4-dimethyl-cyclohexane featuring the C1 chlorine atom and C4 methyl group at axial positions, and the C2 methyl group at an equatorial position, respectively.
 
 <!-- SEG:04-09-OC-P20:stem:330714-b0 -->
 Which isomer is more stable, [[i:cis]]-decalin or [[i:trans]]-decalin (Figure 4.18)? Explain.
@@ -248,6 +326,9 @@ Look at the following structure of estrone, the primary sex hormone in females, 
 <!-- SEG:04-09-OC-P21:stem:351092-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-09-OC-P21:alt:stem-351092-m0 -->
+The wedge-dash and bond-line structures of estrone. In the bond-line structures, all rings except benzene are in chair conformations.
+
 <!-- SEG:04-09-OC-P21:sol:351092-b0 -->
 Both ring-fusions are trans.
 
@@ -260,17 +341,32 @@ Give IUPAC names for the following compounds.
 <!-- SEG:04-99-OC-AP02:stem:351883-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP02:alt:stem-351883-m0 -->
+In a 7-membered ring, C1 is bonded to a methyl group.
+
 <!-- SEG:04-99-OC-AP02:stem:351884-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP02:alt:stem-351884-m0 -->
+In a cyclopentane ring, C1 and C3 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms.
 
 <!-- SEG:04-99-OC-AP02:stem:351885-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP02:alt:stem-351885-m0 -->
+In a cyclohexane ring, C1 is dash bonded to methyl and wedge bonded to hydrogen atom. C2 is wedge bonded to methyl and dash bonded to hydrogen.
+
 <!-- SEG:04-99-OC-AP02:stem:351886-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP02:alt:stem-351886-m0 -->
+In a cyclobutane ring, C1 is wedge bonded to an isopropyl group. C2 is dash bonded to a methyl group.
+
 <!-- SEG:04-99-OC-AP02:stem:351887-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP02:alt:stem-351887-m0 -->
+In a cyclohexane ring, C1 is bonded to two methyl groups. C4 is bonded to a single methyl group.
 
 <!-- SEG:04-99-OC-AP03:stem:329039-b0 -->
 Draw a stereoisomer of [[i:trans]]-1,3-dimethylcyclobutane.
@@ -287,6 +383,9 @@ Tell whether the following pairs of compounds are identical, constitutional isom
 <!-- SEG:04-99-OC-AP04:stem:351120-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP04:alt:stem-351120-m0 -->
+Two structures of cyclopentane each with  chlorine atoms at first and third carbons. The relative position of the chlorine atoms are cis in both structures.
+
 <!-- SEG:04-99-OC-AP05:stem:329047-b0 -->
 Draw three isomers of [[i:trans]]-1,2-dichlorocyclobutane, and label them as either constitutional isomers or stereoisomers.
 
@@ -296,6 +395,9 @@ Identify each pair of relationships among the –OH groups in glucose (red–blu
 <!-- SEG:04-99-OC-AP06:stem:351122-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP06:alt:stem-351122-m0 -->
+The Haworth projection of glucose has a pyranose ring with its four carbons bonded to hydroxyl groups and one carbon is bonded to a hydroxymethyl group.
+
 <!-- SEG:04-99-OC-AP07:stem:329051-b0 -->
 Draw 1,3,5-trimethylcyclohexane using a hexagon to represent the ring. How many cis–trans stereoisomers are possible?
 
@@ -304,6 +406,9 @@ Hydrocortisone, a naturally occurring hormone produced in the adrenal glands, is
 
 <!-- SEG:04-99-OC-AP08:stem:351124-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP08:alt:stem-351124-m0 -->
+The chair conformation of hydrocortisone. The axial hydroxyl group bonded at C11 of the third ring is highlighted.
 
 <!-- SEG:04-99-OC-AP09:stem:329055-b0 -->
 A 1,2-cis disubstituted cyclohexane, such as [[i:cis]]-1,2-dichlorocyclohexane, must have one group axial and one group equatorial. Explain.
@@ -365,11 +470,17 @@ Galactose, a sugar related to glucose, contains a six-membered ring in which all
 <!-- SEG:04-99-OC-AP18:stem:351126-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP18:alt:stem-351126-m0 -->
+The wedge-dash structure of galactose.
+
 <!-- SEG:04-99-OC-AP19:stem:351128-b0 -->
 Draw the two chair conformations of menthol, and tell which is more stable.
 
 <!-- SEG:04-99-OC-AP19:stem:351128-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP19:alt:stem-351128-m0 -->
+The wedge-dash structure of menthol.
 
 <!-- SEG:04-99-OC-AP20:stem:346100-b0 -->
 There are four cis–trans isomers of menthol (Problem 4-45), including the one shown. Draw the other three.
@@ -398,11 +509,17 @@ Using molecular models as well as structural drawings, explain why [[i:trans]]-d
 <!-- SEG:04-99-OC-AP27:stem:357198-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP27:alt:stem-357198-m0 -->
+Trans-Decalin has two cyclohexane rings fused together. Cis-Bicyclo[4.1.0]heptane has a cyclohexane ring fused to a cyclopropane ring.
+
 <!-- SEG:04-99-OC-AP28:stimulus:b0 -->
 As mentioned in Problem 3-53, the statin drugs, such as simvastatin (Zocor), pravastatin (Pravachol), and atorvastatin (Lipitor) are the most widely prescribed drugs in the world.
 
 <!-- SEG:04-99-OC-AP28:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP28:alt:stimulus-m0 -->
+The structures of simvastatin (Zocor), pravastatin (Pravachol), and atorvastatin (Lipitor).
 
 <!-- SEG:04-99-OC-AP28:stem:351891-b0 -->
 Are the two indicated bonds on simvastatin cis or trans?
@@ -419,6 +536,9 @@ Why can’t the three indicated bonds on atorvastatin be identified as cis or tr
 <!-- SEG:04-99-OC-AP29:stem:351139-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP29:alt:stem-351139-m0 -->
+The structure of myo-inositol has a cyclohexane ring wedge bonded to four hydroxyl groups and dash bonded to two hydroxyl groups at different carbons.
+
 <!-- SEG:04-99-OC-AP30:stem:346047-b0 -->
 How many cis–trans stereoisomers of [[i:myo]]-inositol (Problem 4-55) are there? Draw the structure of the most stable isomer.
 
@@ -427,6 +547,9 @@ Julius Bredt, discoverer of the structure of camphor, proposed in 1935 that bicy
 
 <!-- SEG:04-99-OC-AP31:stem:351141-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP31:alt:stem-351141-m0 -->
+The structure of 1-norbornene, in which C1 forms a bridge with C4 through a methylene group. C1 is double bonded to C2.
 
 <!-- SEG:04-99-OC-AP32:stimulus:b0 -->
 Tell whether each of the following substituents on a steroid is axial or equatorial. (A substituent that is “up” is on the top side of the molecule as drawn, and a substituent that is “down” is on the bottom side.
@@ -443,11 +566,17 @@ Substituent down at C11
 <!-- SEG:04-99-OC-AP32:stem:351147-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP32:alt:stem-351147-m0 -->
+Chair conformation of the steroid ring system with three cyclohexane rings fused together and one cyclopentane ring. Hydrogen atom and  methyl groups are bonded to the top face of the ring junctions.
+
 <!-- SEG:04-99-OC-AP33:stem:351149-b0 -->
 Amantadine is an antiviral agent that is active against influenza type A infection. Draw a three-dimensional representation of amantadine, showing the chair cyclohexane rings.
 
 <!-- SEG:04-99-OC-AP33:stem:351149-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP33:alt:stem-351149-m0 -->
+The structure of Amantadine.
 
 <!-- SEG:04-99-OC-AP34:stem:351151-b0 -->
 There are two different isomers named [[i:trans]]-1,2-dimethylcyclopentane. Similarly, you have two different appendages called hands. What is the relationship between them? (We’ll explore this kind of isomerism in the next chapter.)
@@ -455,11 +584,17 @@ There are two different isomers named [[i:trans]]-1,2-dimethylcyclopentane. Simi
 <!-- SEG:04-99-OC-AP34:stem:351151-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP34:alt:stem-351151-m0 -->
+Two structures of two isomers, trans-1,2-dimethylcyclopentane. The position of one methyl group is different in both structures.
+
 <!-- SEG:04-99-OC-AP35:stem:360416-b0 -->
 Ketones react with alcohols to yield products called [[i:ketals.]] Why does the all-cis isomer of 4-[[i:tert]]-butyl-1,3-cyclohexanediol react readily with acetone and an acid catalyst to form a ketal, but other stereoisomers do not react? In formulating your answer, draw the more stable chair conformations of all four stereoisomers and the product ketal for each one.
 
 <!-- SEG:04-99-OC-AP35:stem:360416-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-AP35:alt:stem-360416-m0 -->
+In a reaction, 1R,3R,4S)-4-tertiary-butyl-1,3-cyclohexanediol reacts with acetone in the presence of acid catalyst to form an acetal (no change in stereochemistry) and water.
 
 <!-- SEG:04-99-OC-AP36:stem:351897-b0 -->
 Alcohols undergo an [[i:oxidation]] reaction to yield carbonyl compounds when treatment with CrO[[sub:3]]. For example, 2-[[i:tert]]-butylcyclohexanol gives 2-[[i:tert]]-butylcyclohexanone. If axial −OH groups are generally more reactive than their equatorial isomers, which do you think reacts faster, the cis isomer of 2-[[i:tert]]-butylcyclohexanol or the trans isomer? Explain.
@@ -467,14 +602,23 @@ Alcohols undergo an [[i:oxidation]] reaction to yield carbonyl compounds when tr
 <!-- SEG:04-99-OC-AP36:stem:351897-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-AP36:alt:stem-351897-m0 -->
+In a reaction, 2-tertiary-butylcyclohexanol reacts with C r O 3 to form 2-tert-butylcyclohexanone.
+
 <!-- SEG:04-99-OC-VC01:stimulus:b0 -->
 Name the following cycloalkanes:
 
 <!-- SEG:04-99-OC-VC01:stem:357195-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-VC01:alt:stem-357195-m0 -->
+The ball and stick model of cyclopentane. C1 is bonded to an equatorial ethyl group. C3 is bonded to an equatorial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.
+
 <!-- SEG:04-99-OC-VC01:stem:357196-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-VC01:alt:stem-357196-m0 -->
+The ball and stick model of cyclohexane. C1 is bonded to two methyl groups. C3 is bonded to an equilarial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.
 
 <!-- SEG:04-99-OC-VC02:stem:351098-b0 -->
 Name the following compound, identify each substituent as axial or equatorial, and tell whether the conformation shown is the more stable or less stable chair form (green = Cl):
@@ -482,11 +626,17 @@ Name the following compound, identify each substituent as axial or equatorial, a
 <!-- SEG:04-99-OC-VC02:stem:351098-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-VC02:alt:stem-351098-m0 -->
+The ball and stick model of substituted cyclohexane, represented by its chair conformation. C1 is bonded to an equatorial  chlorine atom (green sphere). C3 is bonded to an axial methyl group.
+
 <!-- SEG:04-99-OC-VC03:stem:351100-b0 -->
 A trisubstituted cyclohexane with three substituents—red, green, and blue—undergoes a ring-flip to its alternate chair conformation. Identify each substituent as axial or equatorial, and show the positions occupied by the three substituents in the ring-flipped form.
 
 <!-- SEG:04-99-OC-VC03:stem:351100-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-VC03:alt:stem-351100-m0 -->
+Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C2, and C5 undergoes ring-flip to form model with all substituents, represented by white circles.
 
 <!-- SEG:04-99-OC-VC04:stem:351102-b0 -->
 The following cyclohexane derivative has three substituents—red, green, and blue. Identify each substituent as axial or equatorial, and identify each pair of relationships (red–blue, red–green, and blue–green) as cis or trans.
@@ -494,9 +644,15 @@ The following cyclohexane derivative has three substituents—red, green, and bl
 <!-- SEG:04-99-OC-VC04:stem:351102-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:04-99-OC-VC04:alt:stem-351102-m0 -->
+The ball and stick model of cyclohexane. C1 is axially bonded to a green sphere. C2 and C5 are equatorially bonded to a blue sphere and a red sphere, respectively.
+
 <!-- SEG:04-99-OC-VC05:stem:351104-b0 -->
 Glucose exists in two forms having a 36:64 ratio at equilibrium. Draw a skeletal structure of each, describe the difference between them, and tell which of the two you think is more stable (red = O).
 
 <!-- SEG:04-99-OC-VC05:stem:351104-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:04-99-OC-VC05:alt:stem-351104-m0 -->
+The ball and stick models of alpha-glucose and beta-glucose. In alpha-glucose, C1 is bonded to an axial hydroxyl group (below the ring). In beta-glucose, C1 is bonded to an equatorial hydroxyl group (above the ring).
 
