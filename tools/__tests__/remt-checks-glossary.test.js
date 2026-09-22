@@ -386,12 +386,41 @@ describe('G3 — function-word headwords (§C77)', () => {
     // return of one turns this red, while the two that remain are the two this file's own
     // note below already classified as BENIGN — `minus → mínus`, `plus → plús`, same-sense,
     // reported only because G3 knows homography and not sense.
-    // Measured against the committed 02-mt-output, which is §C73's unprompted control:
-    // `mínus` ×3 and `plús` ×8 — the model produces both, and the render side resolves
-    // both correctly. **Deleting a correct term to turn a check green is the §C73 error in
-    // reverse, so they stay.** The removed ones fail that same test outright: `víddarmótun`
-    // (AM) ×0, `gagnlíkindahlutfall` (OR) ×0, `lófalægur` (is) ×0, `tomma` (in) ×2.
-    const BENIGN = ['minus', 'plus'];
+    // 🔴 EMPTIED 2026-09-22, AND *NOT* AS THE §C73 ERROR IN REVERSE — THE PARAGRAPH THIS
+    // REPLACES ARGUED THE OPPOSITE AND WAS SUPERSEDED BY A [USER] RULING.
+    //
+    // It read: "Measured against the committed 02-mt-output, which is §C73's unprompted
+    // control: `mínus` ×3 and `plús` ×8 — the model produces both, and the render side
+    // resolves both correctly. **Deleting a correct term to turn a check green is the §C73
+    // error in reverse, so they stay.**"
+    //
+    // ▶ [USER] RULED THEM DELETED ON 2026-09-05, ON THAT SAME §C73 CONTROL READ AT THE
+    // RIGHT DENOMINATOR. The earlier reading counted how often the Icelandic APPEARS; the
+    // ruling counted how often the English does. Chemistry carries **415** English `plus`
+    // against **9** unprompted *plús*, with **0** occurrences left untranslated — so the
+    // model is already choosing contextually (*og*, *auk*, a bare `+`) where a flat
+    // English→Icelandic map would force *plús* on all 415. A row that fires 415 times to
+    // agree with the model 9 times is not a benign row; it is a wrong-sense homograph that
+    // happened to be same-sense in the 9 places anyone had looked.
+    // ⚠️ **THE LESSON IS THE DENOMINATOR, NOT THE VERDICT**: ×3 and ×8 are counts of the
+    // OUTPUT, and an output count cannot tell you what the row would have DONE to the
+    // other 406. Project memory carried "[USER] KEPT them" for part of a day and corrected
+    // itself the same day; the register still records the two as contradicting, which is
+    // stale and is fixed in the same commit as this.
+    //
+    // The removal landed in prod's concept model and reached the committed export, which
+    // is what finally lets this pin be written — memory predicted exactly that: "two
+    // tier-0 glossary pins are RED on `main` waiting on exactly this."
+    // The other five fail §C73's test outright: `víddarmótun` (AM) ×0,
+    // `gagnlíkindahlutfall` (OR) ×0, `lófalægur` (is) ×0, `tomma` (in) ×2.
+    //
+    // ⚠️ WHAT THE EMPTY LIST COSTS, recorded rather than absorbed: `toEqual([])` still
+    // reddens if ANY function-word headword returns, which is the direction that matters.
+    // It can no longer redden in the other direction — "a known-benign entry disappeared"
+    // — because there is no longer a benign entry to lose. That second direction was this
+    // assertion's stated reason for being an exact set rather than a count, so half of its
+    // original purpose has expired with the corpus.
+    const BENIGN = [];
     const chem = await runCheck(G3, { glossary: live('efnafraedi-2e') });
     const org = await runCheck(G3, { glossary: live('lifraen-efnafraedi') });
     expect(chem.examined, 'examined 0 would make this meaningless').toBeGreaterThan(0); // control
