@@ -32,6 +32,7 @@ import {
 import {
   modulesWithSegments,
   mtOutputSegmentFiles,
+  withoutPreAltExerciseDrift,
   enCounterpart,
   REPO_ROOT,
 } from './helpers/remt-corpus.js';
@@ -236,13 +237,21 @@ describe('A3 — per-segment bracket-marker delta', () => {
     let deltaMods = 0;
     let unpairedMods = 0;
     let anyMods = 0;
+    let rawUnpairedMods = 0;
+    let rawAnyMods = 0;
     let pairs = 0;
     for (const b of BOOKS) {
       for (const isPath of mtOutputSegmentFiles(b)) {
         const enPath = enCounterpart(isPath);
         if (!enPath) continue;
         pairs++;
-        const f = A3.run({ segText: read(enPath), isText: read(isPath) }).findings;
+        // §C126 #3: pre-alt-type exercise drift is subtracted (see the note by the pins).
+        const isText = read(isPath);
+        const rawF = A3.run({ segText: read(enPath), isText }).findings;
+        if (rawF.some((x) => x.kind === 'unpaired-segment')) rawUnpairedMods++;
+        if (rawF.length) rawAnyMods++;
+        const { en } = withoutPreAltExerciseDrift(isPath, read(enPath), isText);
+        const f = A3.run({ segText: en, isText }).findings;
         if (f.some((x) => x.kind === 'marker-delta')) deltaMods++;
         if (f.some((x) => x.kind === 'unpaired-segment')) unpairedMods++;
         if (f.length) anyMods++;
@@ -284,6 +293,18 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // damage — the same four already had unpaired findings, which is why anyMods held at 24.
     // ▶ ch12's committed MT is stale under stable ids (6 of its 9 modules changed text);
     // re-buy it, do not inject it.
+    // 🔴 §C126 #3 (2026-09-22) — 27 MORE MODULES WOULD READ AS UNPAIRED, AND THEY ARE THIS
+    // BLOCK'S VINTAGE MISMATCH AGAIN. Organic's 31 exercise bundles gained 2,375 image-alt
+    // segments no committed exercise IS has seen (27, not 31, because the four A1 rename
+    // bundles were already unpaired). The pins below run on the view with that drift
+    // subtracted by predicate (`withoutPreAltExerciseDrift`) and reproduce the pre-§C126
+    // numbers EXACTLY — measured against a golden copy of the pre-change EN first, which
+    // gave 17/13/24 before these were trusted. `deltaMods` did not move even raw: an alt
+    // carries no marker, so a marker-conservation count cannot see one.
+    // ▶ THE RAW PAIR IS THE READOUT OF RE-MT OWED and falls by one per organic chapter
+    // bought (not ch03 or ch12 alone — all 31 exercise bundles predate the type).
+    expect(rawUnpairedMods).toBe(40);
+    expect(rawAnyMods).toBe(51);
     expect(deltaMods).toBe(17); //   8.6% of 197
     expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
     expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking

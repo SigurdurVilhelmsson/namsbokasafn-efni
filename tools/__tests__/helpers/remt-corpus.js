@@ -120,3 +120,38 @@ export function enCounterpart(isPath) {
     .replace('-segments.is.md', '-segments.en.md');
   return fs.existsSync(en) ? en : null;
 }
+
+/**
+ * §C126 #3 — set aside the EN `:alt:` segments of an exercises bundle whose committed IS
+ * PREDATES the alt type, so a premise pin can be read the way it read before the type
+ * existed.
+ *
+ * On 2026-09-22 organic's exercise bundles gained 2,375 image-alt segments, and every
+ * committed exercise IS file was bought before that. Each such pair is therefore a
+ * genuine EN/IS vintage gap — the same class as organic ch12's §C81 figure alts — that
+ * dissolves chapter by chapter as the exercises are bought again. Its size is a readout of
+ * how much re-MT is owed; it is not MT damage, and folding it into a pin would let damage
+ * hide inside it.
+ *
+ * 🔴 THE PREDICATE IS "THE IS CARRIES ZERO `:alt:` IDS", NEVER "THIS EN ALT IS MISSING FROM
+ * THE IS". The second would also set aside a real alt `SEG:` token the MT destroyed in a
+ * chapter bought AFTER the type existed — exactly the damage these checks are for. An IS
+ * with even one alt is post-type, so this returns its EN untouched and every missing alt
+ * stays visible.
+ *
+ * @param {string} isPath - the `02-mt-output` IS segment file path
+ * @param {string} enText - its `02-for-mt` EN counterpart's text
+ * @param {string} isText - the IS file's text
+ * @returns {{en: string, removed: string[]}} EN with the pre-type alt blocks removed, and their ids
+ */
+export function withoutPreAltExerciseDrift(isPath, enText, isText) {
+  const untouched = { en: enText, removed: [] };
+  if (!isPath.endsWith('exercises-segments.is.md')) return untouched;
+  if (/SEG:\S+:alt:/.test(isText)) return untouched; // post-type IS: nothing is drift
+  const removed = [];
+  const en = enText.replace(/<!-- SEG:(\S+:alt:\S+) -->\n[^\n]*\n\n/g, (_, id) => {
+    removed.push(id);
+    return '';
+  });
+  return { en, removed };
+}
