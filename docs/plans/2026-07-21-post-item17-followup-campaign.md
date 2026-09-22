@@ -2,7 +2,17 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-22 — ⏹ [USER] RULING: THE SUITE'S 30 REDS AND THE LIVE `alt`-ID DEFECT MUST BE FIXED BEFORE ANY FURTHER MT. Nothing more is bought until §C174 and §C175 are closed** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-22, afternoon — ✅ THE MT GATE IS DISCHARGED. §C174 and §C175 are CLOSED, the seven-PR stack is MERGED, `main` is GREEN IN CI for the first time since 2026-09-03, and [USER] has DEPLOYED. ⏹ THE SYNC IS HELD pending colleague confirmation** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **[USER] rules on §C173's fix set (① smallcaps · ② `<quote>` · ③ `extractDocumentTitle`), then organic's first chapter can be priced.** Nothing is bought until that ruling.
+
+⏹ **THE SYNC IS HELD BY [USER] 2026-09-22 — *"I will not sync until after confirming with our colleagues."*** ▶ **So readers still see none of the six chemistry units.** That is a deliberate hold, not an oversight, and it is consistent with the 2026-09-16 ruling that a sync is timed against classroom use. ⚠️ **The 21 redirect rows must reach vefur BEFORE that sync** — vefur gates each on `exactSectionExists`, so landing them early is the only ordering with no 404 window (`docs/handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md`).
+
+✅ **MERGED AND DEPLOYED.** Seven PRs — #499 ch17 · #505 ch18 · #506 ch19 · #507 ch20 · #508 ch21 · #509 appendices · #510 the organic pre-flight + remediation — all as **merge commits, never squashes**, so every branch SHA this register cites still resolves. [USER] deployed on prod the same day.
+- ✅ **`main` IS GREEN IN CI**: Tests · Lint · Security Audit · Validate all pass on `f59f73689`. **It had been RED BY DESIGN since 2026-09-03.** ⚠️ `Sync Content to Vefur` still fails and is **not** a result of this merge — it has failed on every run since 2026-06-16 and `gh secret list` is still empty, so `VEFUR_DEPLOY_TOKEN` was never created. First-time setup, not a rotation.
+- 🔴 **A STACKED-PR TRAP, MEASURED THE HARD WAY: `gh pr merge --delete-branch` CLOSES THE DEPENDENT PR RATHER THAN RETARGETING IT.** Used on #499, it closed #505. Nothing was lost — deleting a branch destroys the REF, not the commits, and ch17's commit was already on `main` — but recovery meant restoring the ref, reopening, and retargeting. ▶ **Retarget every dependent PR to the new base BEFORE merging its parent; branch cleanup is a separate final step.** ⚠️ **And `gh pr edit` is unusable in this repo** — it queries the deprecated `projectCards`, prints only a deprecation NOTICE and exits **1**, so an edit silently does not apply. `gh api --method PATCH` is the working path for both retargeting and body edits.
+
+⚠️ **THE CONTENT-BACKUP STRANDING SHOULD BE RESOLVED BY THAT DEPLOY** — `deploy.sh`'s `git pull --rebase` re-bases a stranded content commit cleanly. ▶ **But the deploy does NOT push, so releasing the commit is a separate step**, and `checks.content_backup` lags in BOTH directions: it is `ok: !stale` and nothing else, so it can read `degraded` for hours after a fix and `ok` while carrying a push-failure message. **Read what the check carries, not just what it concludes.**
 
 ### ⏭ SINGLE NEXT ACTION — **TWO [USER] DECISIONS: (a) how §C174's two LIVE pages get repaired on disk, and (b) whether `bracket-delta-corpus` is FROZEN or re-pinned.** No chapter of any book is bought until both are closed.
 
