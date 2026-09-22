@@ -4,24 +4,69 @@
 **Status of this document:** a starting brief. **It owns no status** — the active register's ⏩ RESUME
 does. Everything below is either a measurement taken on 2026-09-21 or a pointer.
 
-> 🔴 **CORRECTED 2026-09-21, later the same night — §2 BELOW NAMES *TWO* BLOCKERS AND THE
-> REGISTER ALREADY OWNED *FOUR*.** The pre-flight checklist is **§C126**'s ("THE RE-MT PRE-FLIGHT
-> CENSUS", 26 agents, adversarially verified) and it is the owner. It adds, both **organic-only**:
-> **#3 exercise `<img alt>` → segments (§C123)** — 2,375 strings / 288,603 chars across 1,961
-> exercise JSONs — and **#4 `table@summary`**, which wants a **[USER] RULING, not a fix** (19
-> organic). It also carries an **ordering meta-rule** about segment renumbering that decides the
-> SHAPE of the alt fix. ✅ **And it records one blocker organic does NOT have: its glossary is
-> clean** (249/249 `domain: chemistry`, all three shadows absent) — the glossary work is
-> chemistry-only, so §3 below should not be read as implying organic inherits it.
->
-> ⚠️ **§2(b) is also narrower than it reads.** A missing `fidelity-allowlist.json` is real, but
-> organic's manifest is red on **exactly one** discrepancy today, because the fidelity check only
-> runs on INJECTED modules and only 8 of 342 are. The workload that matters was measured for free
-> instead of guessed — see **§C173**.
->
-> ▶ **The blocker list, the fix set and every number are owned by the register. Read its newest
-> ⏩ RESUME and §C173 before §2 and §5 below.** Blocker **(a) is discharged** — the driver is
-> book-parameterised.
+## ⏩ START HERE — state as of **2026-09-22, evening**
+
+**§C173's fix set is SHIPPED AND MERGED, in both repos.** efni
+[#511](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/511) (`a598635de`) and vefur
+[#233](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur/pull/233) (`731199b17`), both as
+merge commits, all checks green. Nothing in the pipeline now blocks pricing organic's first chapter.
+
+| | was | now |
+|---|---|---|
+| ③ module title (§C177) | 29 of 32 organic titles **fabricated** from another element | fixed at extract, inject **and** the page filename |
+| ① smallcaps (§C178) | 110 flattened, **6 silently rendered italic** | `[[sc:]]` marker type, six sites + vefur CSS |
+| ② `<quote>` (§C179) | 3 of 4 lost the callout box; **the 4th lost its prose** | all 4 render as `<blockquote class="cnx-callout">` |
+| organic round-trip reds | 101 | **67** — at 0 ISK, before a chapter is priced |
+| blocker (a), §2 below | driver hardcoded `efnafraedi-2e` ×23 | ✅ **DISCHARGED** — book is a required, validated first argument |
+
+⚠️ **§2(a) BELOW IS HISTORICAL — READ IT AS THE RECORD OF A CLOSED BLOCKER, NOT A TASK.** §2(b) is
+still real but narrower than it reads: the fidelity check runs only on **INJECTED** modules, and the
+workload was measured for free rather than guessed (§C173, and now §C177–§C179 removed 34 of it).
+
+🔴 **THE BLOCKER LIST HAS ONE OWNER AND IT IS NOT THIS FILE — it is the register's §C126 census, and
+the register's newest ⏩ RESUME owns status.** This document owns no status verbs. §C126 carries two
+rows nobody has measured yet: **#3 exercise `<img alt>` → segments** (2,375 strings / 288,603 chars
+across 1,961 exercise JSONs, organic-only) and **#4 `table@summary`**, which wants a **[USER] RULING
+rather than a fix** (19 organic). ✅ And one blocker organic does **not** have: its glossary is clean
+(249/249 `domain: chemistry`), so §3's glossary work is chemistry-only.
+
+### The first five moves, all 0 ISK
+
+1. **Read the register's newest ⏩ RESUME**, then §C126 and §C173. Not this file's §2/§5 first.
+2. **Pick the unit and run the two free source-anchored checks** —
+   `node tools/source-roundtrip-check.js lifraen-efnafraedi <unit> --verbose` and
+   `node tools/render-oracle-check.js lifraen-efnafraedi <unit> --control`. The `--control` is not
+   optional: a clean result without it is indistinguishable from an instrument that sees nothing.
+   ⚠️ Only **ch03** is in OpenStax's manifest for organic, so the oracle cannot check other units.
+3. **Compute the glossary subset, then audit it** — `tools/compute-glossary-subset.js`, never a
+   hand-curated list. 🔴 **NO EXISTING AUDITED SUBSET IS USABLE AS WRITTEN**: they were computed
+   against the old glossary with rulings outstanding. Add back the terms the audit itself HELD, and
+   cross-check that unit's `server/lib/houseStyleTerms.js` entries against the subset — an entry
+   whose `why` names the chapter but which the subset omits is a **dropped ruling**, not a
+   considered exclusion. Then decide per term by measuring that chapter's own EN count against its
+   own MT rendering.
+4. **Prove any house-style ruling actually reached the wire** — a ruling is CODE, so it needs
+   deploy → boot → the 2-hourly cron export → **pull**, and you verify it by grepping the pulled
+   export for the ruled values. Never by the clock; buying early spends on the OLD glossary.
+5. **Re-extract, then `--dry-run` to price it.** `api-translate` reads the GENERATED `02-for-mt`, so
+   buying without re-extracting re-translates the old English and exits 0 — and §C177/§C178/§C179
+   all changed what extraction emits, so **every organic unit's `02-for-mt` is now stale**.
+
+▶ **Then buy text and figures as ONE unit** ([USER] ruling), in the foreground, and let the loop stop
+at PREPARED. **Only [USER] syncs**, timed against classroom use.
+
+### Carried forward, stated so nobody re-discovers them
+
+- ⏸ **`effect="italic"` (singular) is still flattened — 4 occurrences corpus-wide**, organic
+  ch00/m00001 ×2 and `edlisfraedi-2e` ×2. Mapping it trades a content loss for a fidelity diff.
+- ⏸ **`renderCnxmlToHtml` drops 6 of 63 paras in ch26/m00328**, unrelated to smallcaps, pre-existing.
+- ⏸ **The module `<h1>` still flattens markup** (`sp³` → `sp3`). Deferred **with its gate named**:
+  byte-diff all 149 chemistry renders before and after the swap.
+- ⏸ **The `<cite>` stand-in swap is PARTIAL** — four `<quote>` assertions remain in
+  `cnxml-render-item-blocks.test.js` and `cnxml-render-table-cell-blocks.test.js`. Safe only because
+  no corpus quote sits in an `<item>` or `<entry>` (measured).
+- ⏹ **The chemistry sync is still HELD by [USER]**, and the **21 redirect rows must reach vefur
+  BEFORE it** (`docs/handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md`).
 
 ---
 
@@ -52,7 +97,10 @@ PUBLIC*.
 
 ---
 
-## 2. 🔴 TWO PREREQUISITES THAT BLOCK A RUN, BOTH MEASURED 2026-09-21
+## 2. ⏸ HISTORICAL — the two prerequisites as measured 2026-09-21
+
+> **(a) is DISCHARGED** (the driver takes a required book argument) and **(b) is narrower than it
+> reads** — see ⏩ START HERE above. Kept verbatim as the record of what was found and why.
 
 ### (a) The autorun driver is NOT portable
 
