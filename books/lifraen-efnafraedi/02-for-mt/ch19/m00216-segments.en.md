@@ -1,5 +1,5 @@
 <!-- SEG:m00216:title:auto-1 -->
-MECHANISM
+Nucleophilic Addition of H[[sub:2]]O: Hydration
 
 <!-- SEG:m00216:para:para-00001 -->
 Aldehydes and ketones react with water to yield 1,1-diols, or [[i:geminal (gem)]] diols. The hydration reaction is reversible, and a gem diol can eliminate water to regenerate an aldehyde or ketone.
@@ -27,6 +27,9 @@ Under acidic conditions ([[xref:fig-00004]]b), the carbonyl oxygen atom is first
 
 <!-- SEG:m00216:para:para-00007 -->
 Note the key difference between the base-catalyzed and acid-catalyzed reactions. The base-catalyzed reaction takes place rapidly because water is converted into hydroxide ion, a much better [[i:nucleophile.]] The acid-catalyzed reaction takes place rapidly because the carbonyl compound is converted by protonation into a much better [[i:electrophile.]]
+
+<!-- SEG:m00216:figure-title:fig-00004-title -->
+MECHANISM
 
 <!-- SEG:m00216:caption:fig-00004-caption -->
 [[b:The mechanism for a nucleophilic addition reaction of aldehydes and ketones under both basic and acidic conditions.]] [[b:(a)]] Under basic conditions, a negatively charged nucleophile adds to the carbonyl group to give an alkoxide ion intermediate, which is subsequently protonated. [[b:(b)]] Under acidic conditions, protonation of the carbonyl group occurs first, followed by addition of a neutral nucleophile and subsequent deprotonation.

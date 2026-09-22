@@ -29,10 +29,10 @@ Stereochemical Rules for Sigmatropic Rearrangements
 Electron pairs (double bonds)
 
 <!-- SEG:m00347:entry:auto-11 -->
-Thermal reaction
+[[span:Thermal reaction|magenta-text]]
 
 <!-- SEG:m00347:entry:auto-12 -->
-Photochemical reaction
+[[span:Photochemical reaction|green-text]]
 
 <!-- SEG:m00347:entry:auto-13 -->
 Even number

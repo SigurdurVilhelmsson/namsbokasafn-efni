@@ -2,7 +2,7 @@
 Alcohols from Carbonyl Compounds: Reduction
 
 <!-- SEG:m00203:para:para-00001 -->
-The most general method for preparing alcohols, both in the laboratory and in living organisms, is by reduction of a carbonyl compound. Just as reduction of an alkene adds hydrogen to a [[MATH:1]] bond to give an alkane (), reduction of a carbonyl compound adds hydrogen to a [[MATH:2]] bond to give an alcohol. All kinds of carbonyl compounds can be reduced, including aldehydes, ketones, carboxylic acids, and esters.
+The most general method for preparing alcohols, both in the laboratory and in living organisms, is by reduction of a carbonyl compound. Just as reduction of an alkene adds hydrogen to a [[MATH:1]] bond to give an alkane ([[docref:m00094]]), reduction of a carbonyl compound adds hydrogen to a [[MATH:2]] bond to give an alcohol. All kinds of carbonyl compounds can be reduced, including aldehydes, ketones, carboxylic acids, and esters.
 
 <!-- SEG:m00203:alt:fig-00001-alt -->
 A carbonyl compound undergoes reduction to form an alcohol, where a bond to hydrogen is added to the carbonyl carbon.
@@ -65,13 +65,13 @@ Identifying a Reactant, Given the Product
 What carbonyl compounds would you reduce to obtain the following alcohols?
 
 <!-- SEG:m00203:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00203:para:para-00010 -->
 Identify the target alcohol as primary, secondary, or tertiary. A primary alcohol can be prepared by reduction of an aldehyde, an ester, or a carboxylic acid; a secondary alcohol can be prepared by reduction of a ketone; and a tertiary alcohol can’t be prepared by reduction.
 
 <!-- SEG:m00203:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00203:para:para-00011 -->
 [[b:(a)]] The target molecule is a secondary alcohol, which can be prepared only by reduction of a ketone. Either NaBH[[sub:4]] or LiAlH[[sub:4]] can be used.

@@ -25,7 +25,7 @@
       "class": null,
       "title": {
         "segmentId": "m00335:title:sect-00001-title",
-        "text": "Step 1 of [[xref:fig-00002]]: Addition of Thiamin Diphosphate"
+        "text": "Step [[span:1|magenta-text]] of [[xref:fig-00002]]: Addition of Thiamin Diphosphate"
       },
       "content": [
         {
@@ -51,6 +51,7 @@
               "type": "figure",
               "id": "fig-00001",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -65,6 +66,7 @@
               "type": "figure",
               "id": "fig-00002",
               "class": "mechanism-figure scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m00335:caption:fig-00002-caption"
               },
@@ -85,7 +87,7 @@
           "class": null,
           "title": {
             "segmentId": "m00335:title:sect-00003-title",
-            "text": "Step 2 of [[xref:fig-00002]]: Decarboxylation"
+            "text": "Step [[span:2|magenta-text]] of [[xref:fig-00002]]: Decarboxylation"
           },
           "content": [
             {
@@ -97,6 +99,7 @@
               "type": "figure",
               "id": "fig-00003",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -115,7 +118,7 @@
           "class": null,
           "title": {
             "segmentId": "m00335:title:sect-00004-title",
-            "text": "Step 3 of [[xref:fig-00002]]: Reaction with Lipoamide"
+            "text": "Step [[span:3|magenta-text]] of [[xref:fig-00002]]: Reaction with Lipoamide"
           },
           "content": [
             {
@@ -127,6 +130,7 @@
               "type": "figure",
               "id": "fig-00004",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -145,7 +149,7 @@
           "class": null,
           "title": {
             "segmentId": "m00335:title:sect-00005-title",
-            "text": "Step 4 of [[xref:fig-00002]]: Elimination of Thiamin Diphosphate"
+            "text": "Step [[span:4|magenta-text]] of [[xref:fig-00002]]: Elimination of Thiamin Diphosphate"
           },
           "content": [
             {
@@ -157,6 +161,7 @@
               "type": "figure",
               "id": "fig-00005",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -175,7 +180,7 @@
           "class": null,
           "title": {
             "segmentId": "m00335:title:sect-00006-title",
-            "text": "Step 5 of [[xref:fig-00002]]: Acyl Transfer"
+            "text": "Step [[span:5|magenta-text]] of [[xref:fig-00002]]: Acyl Transfer"
           },
           "content": [
             {
@@ -187,6 +192,7 @@
               "type": "figure",
               "id": "fig-00006",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {

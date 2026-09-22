@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00266",
-  "extractedAt": "2026-08-31T19:08:50.085Z",
+  "extractedAt": "2026-09-22T17:26:39.725Z",
   "sourceHash": "f3aa7489448aa6af",
   "segmentCount": 11,
   "segmentIds": [
@@ -49,5 +49,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "saponification",
+    "term-00002": "micelles"
   }
 }

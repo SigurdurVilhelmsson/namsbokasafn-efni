@@ -28,6 +28,9 @@ Part (a) is the space-filling model of citrate synthase. Part (b) is the ribbon 
 <!-- SEG:m00328:para:para-00003 -->
 As shown in [[xref:fig-00003]], the first step in the aldol reaction of acetyl CoA and oxaloacetate is generation of the enol of acetyl CoA. The side-chain carboxyl of an aspartate residue acts as base to abstract an acidic [[i:α]] proton, while at the same time the side-chain imidazole ring of a histidine donates H[[sup:+]] to the carbonyl oxygen. The enol thus produced then performs a nucleophilic addition to the ketone carbonyl group of oxaloacetate. The first histidine acts as a base to remove the –OH hydrogen from the enol, while a second histidine residue simultaneously donates a proton to the oxaloacetate carbonyl group, giving citryl CoA. Water then hydrolyzes the thiol ester group in citryl CoA in a nucleophilic acyl substitution reaction, releasing citrate and coenzyme A as the final products.
 
+<!-- SEG:m00328:figure-title:fig-00003-title -->
+MECHANISM
+
 <!-- SEG:m00328:caption:fig-00003-caption -->
 [[b:Mechanism of the addition of acetyl CoA to oxaloacetate to give ([[i:S]])-citryl CoA, catalyzed by citrate synthase]].
 
@@ -137,7 +140,7 @@ The coiled ribbon structure of citrate synthase. The structure has ribbons of gr
 Key Concepts and Summary
 
 <!-- SEG:m00328:para:para-00008 -->
-[[b:Proteins]] and [[b:peptides]] are large biomolecules made of [[b:[[i:α]]-amino acid residues]] linked together by amide, or peptide, bonds. Twenty amino acids are commonly found in proteins, and all except glycine have stereochemistry similar to that of L sugars. In neutral solution, amino acids exist as dipolar [[b:zwitterions]].
+[[b:Proteins]] and [[b:peptides]] are large biomolecules made of [[b:[[i:α]]-amino acid residues]] linked together by amide, or peptide, bonds. Twenty amino acids are commonly found in proteins, and all except glycine have stereochemistry similar to that of [[sc:L]] sugars. In neutral solution, amino acids exist as dipolar [[b:zwitterions]].
 
 <!-- SEG:m00328:para:para-00009 -->
 Amino acids can be synthesized in racemic form by several methods, including ammonolysis of an [[i:α]]-bromo acid, alkylation of diethyl acetamidomalonate, and reductive amination of an [[i:α]]-keto acid. Alternatively, an enantioselective synthesis of amino acids can be carried out using a chiral hydrogenation catalyst.
@@ -158,7 +161,7 @@ Proteins are classified as either globular or fibrous. [[b:Fibrous proteins]] su
 Summary of Reactions
 
 <!-- SEG:m00328:item:list-00002-item-1 -->
-Amino acid synthesis ()
+Amino acid synthesis ([[docref:m00320]])
 
 <!-- SEG:m00328:item:list-00003-item-1 -->
 From [[i:α]]-bromo acids[[BR]]
@@ -173,10 +176,10 @@ Reductive amination of an [[i:α]]-keto acid[[BR]]
 Enantioselective synthesis[[BR]]
 
 <!-- SEG:m00328:item:list-00002-item-2 -->
-Peptide sequencing by Edman degradation ()[[BR]]
+Peptide sequencing by Edman degradation ([[docref:m00323]])[[BR]]
 
 <!-- SEG:m00328:item:list-00002-item-3 -->
-Peptide synthesis ()
+Peptide synthesis ([[docref:m00324]])
 
 <!-- SEG:m00328:item:list-00004-item-1 -->
 Amine protection[[BR]]
@@ -209,19 +212,19 @@ An amino acid reacts with methanol and hydrochloric acid to form a methyl ester.
 Additional Problems
 
 <!-- SEG:m00328:para:para-00014 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00328:para:para-00020 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00328:para:para-00026 -->
-[[b:Amino Acid Structures and Chirality]]
+[[b:[[span:Amino Acid Structures and Chirality|red-text]]]]
 
 <!-- SEG:m00328:para:para-00034 -->
-[[b:Amino Acid Synthesis and Reactions]]
+[[b:[[span:Amino Acid Synthesis and Reactions|red-text]]]]
 
 <!-- SEG:m00328:para:para-00041 -->
-[[b:Peptides and Enzymes]]
+[[b:[[span:Peptides and Enzymes|red-text]]]]
 
 <!-- SEG:m00328:para:para-00050 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

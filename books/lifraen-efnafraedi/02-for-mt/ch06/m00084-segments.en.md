@@ -32,103 +32,103 @@ Bond
 [[i:D]] (kJ/mol)
 
 <!-- SEG:m00084:entry:auto-12 -->
-H―H
+H[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-13 -->
 436
 
 <!-- SEG:m00084:entry:auto-14 -->
-(CH[[sub:3]])[[sub:2]]CH―H
+(CH[[sub:3]])[[sub:2]]CH[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-15 -->
 410
 
 <!-- SEG:m00084:entry:auto-16 -->
-C[[sub:2]]H[[sub:5]]―CH[[sub:3]]
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-17 -->
 370
 
 <!-- SEG:m00084:entry:auto-18 -->
-H―F
+H[[span:―|magenta-text]][[span:F|green-text]]
 
 <!-- SEG:m00084:entry:auto-19 -->
 570
 
 <!-- SEG:m00084:entry:auto-20 -->
-(CH[[sub:3]])[[sub:2]]CH―Cl
+(CH[[sub:3]])[[sub:2]]CH[[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-21 -->
 354
 
 <!-- SEG:m00084:entry:auto-22 -->
-(CH[[sub:3]])[[sub:2]]CH―CH[[sub:3]]
+(CH[[sub:3]])[[sub:2]]CH[[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-23 -->
 369
 
 <!-- SEG:m00084:entry:auto-24 -->
-H―Cl
+H[[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-25 -->
 431
 
 <!-- SEG:m00084:entry:auto-26 -->
-(CH[[sub:3]])[[sub:2]]CH―Br
+(CH[[sub:3]])[[sub:2]]CH[[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-27 -->
 299
 
 <!-- SEG:m00084:entry:auto-28 -->
-(CH[[sub:3]])[[sub:3]]C―CH[[sub:3]]
+(CH[[sub:3]])[[sub:3]]C[[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-29 -->
 363
 
 <!-- SEG:m00084:entry:auto-30 -->
-H―Br
+H[[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-31 -->
 366
 
 <!-- SEG:m00084:entry:auto-32 -->
-(CH[[sub:3]])[[sub:3]]C―H
+(CH[[sub:3]])[[sub:3]]C[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-33 -->
 400
 
 <!-- SEG:m00084:entry:auto-34 -->
-H[[sub:2]]C═CH―CH[[sub:3]]
+H[[sub:2]]C═CH[[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-35 -->
 426
 
 <!-- SEG:m00084:entry:auto-36 -->
-H―I
+H[[span:―|magenta-text]][[span:I|green-text]]
 
 <!-- SEG:m00084:entry:auto-37 -->
 298
 
 <!-- SEG:m00084:entry:auto-38 -->
-(CH[[sub:3]])[[sub:3]]C―Cl
+(CH[[sub:3]])[[sub:3]]C[[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-39 -->
 352
 
 <!-- SEG:m00084:entry:auto-40 -->
-H[[sub:2]]C═CHCH[[sub:2]]―CH[[sub:3]]
+H[[sub:2]]C═CHCH[[sub:2]][[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-41 -->
 318
 
 <!-- SEG:m00084:entry:auto-42 -->
-Cl―Cl
+Cl[[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-43 -->
 242
 
 <!-- SEG:m00084:entry:auto-44 -->
-(CH[[sub:3]])[[sub:3]]C―Br
+(CH[[sub:3]])[[sub:3]]C[[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-45 -->
 293
@@ -140,13 +140,13 @@ H[[sub:2]]C═CH[[sub:2]]
 728
 
 <!-- SEG:m00084:entry:auto-48 -->
-Br―Br
+Br[[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-49 -->
 194
 
 <!-- SEG:m00084:entry:auto-50 -->
-(CH[[sub:3]])[[sub:3]]C―I
+(CH[[sub:3]])[[sub:3]]C[[span:―|magenta-text]][[span:I|green-text]]
 
 <!-- SEG:m00084:entry:auto-51 -->
 227
@@ -158,13 +158,13 @@ A benzene ring with a methyl group, highlighted in green, at C1.
 427
 
 <!-- SEG:m00084:entry:auto-54 -->
-I―I
+I[[span:―|magenta-text]][[span:I|green-text]]
 
 <!-- SEG:m00084:entry:auto-55 -->
 152
 
 <!-- SEG:m00084:entry:auto-56 -->
-H[[sub:2]]C═CH―H
+H[[sub:2]]C═CH[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-57 -->
 464
@@ -176,13 +176,13 @@ A benzene ring with a methylene group at C1. The methylene is further bonded to 
 325
 
 <!-- SEG:m00084:entry:auto-60 -->
-CH[[sub:3]]―H
+CH[[sub:3]][[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-61 -->
 439
 
 <!-- SEG:m00084:entry:auto-62 -->
-H[[sub:2]]C═CH―Cl
+H[[sub:2]]C═CH[[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-63 -->
 396
@@ -194,43 +194,43 @@ The structure of ethanal, with the aldehyde hydrogen highlighted in green.
 374
 
 <!-- SEG:m00084:entry:auto-66 -->
-CH[[sub:3]]―Cl
+CH[[sub:3]][[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-67 -->
 350
 
 <!-- SEG:m00084:entry:auto-68 -->
-H[[sub:2]]C═CHCH[[sub:2]]―H
+H[[sub:2]]C═CHCH[[sub:2]][[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-69 -->
 369
 
 <!-- SEG:m00084:entry:auto-70 -->
-HO―H
+HO[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-71 -->
 497
 
 <!-- SEG:m00084:entry:auto-72 -->
-CH[[sub:3]]―Br
+CH[[sub:3]][[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-73 -->
 294
 
 <!-- SEG:m00084:entry:auto-74 -->
-H[[sub:2]]C═CHCH[[sub:2]]―Cl
+H[[sub:2]]C═CHCH[[sub:2]][[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-75 -->
 298
 
 <!-- SEG:m00084:entry:auto-76 -->
-HO―OH
+HO[[span:―|magenta-text]][[span:OH|green-text]]
 
 <!-- SEG:m00084:entry:auto-77 -->
 211
 
 <!-- SEG:m00084:entry:auto-78 -->
-CH[[sub:3]]―I
+CH[[sub:3]][[span:―|magenta-text]][[span:I|green-text]]
 
 <!-- SEG:m00084:entry:auto-79 -->
 239
@@ -242,13 +242,13 @@ A benzene ring with a hydrogen atom, highlighted in green, bonded at C1.
 472
 
 <!-- SEG:m00084:entry:auto-82 -->
-CH[[sub:3]]O―H
+CH[[sub:3]]O[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-83 -->
 440
 
 <!-- SEG:m00084:entry:auto-84 -->
-CH[[sub:3]]―OH
+CH[[sub:3]][[span:―|magenta-text]][[span:OH|green-text]]
 
 <!-- SEG:m00084:entry:auto-85 -->
 385
@@ -260,13 +260,13 @@ A benzene ring with a single bonded chlorine atom, highlighted in green.
 400
 
 <!-- SEG:m00084:entry:auto-88 -->
-CH[[sub:3]]S―H
+CH[[sub:3]]S[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-89 -->
 366
 
 <!-- SEG:m00084:entry:auto-90 -->
-CH[[sub:3]]―NH[[sub:2]]
+CH[[sub:3]][[span:―|magenta-text]][[span:NH[[sub:2]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-91 -->
 386
@@ -278,13 +278,13 @@ A benzene ring with a methylene group at C1. The methylene is further bonded to 
 375
 
 <!-- SEG:m00084:entry:auto-94 -->
-C[[sub:2]]H[[sub:5]]O―H
+C[[sub:2]]H[[sub:5]]O[[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-95 -->
 441
 
 <!-- SEG:m00084:entry:auto-96 -->
-C[[sub:2]]H[[sub:5]]―H
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-97 -->
 421
@@ -302,7 +302,7 @@ The structure of acetone, with one methyl group highlighted in green.
 352
 
 <!-- SEG:m00084:entry:auto-102 -->
-C[[sub:2]]H[[sub:5]]―Cl
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:Cl|green-text]]
 
 <!-- SEG:m00084:entry:auto-103 -->
 352
@@ -314,13 +314,13 @@ A benzene ring with a bromine atom, highlighted in green, at C1.
 336
 
 <!-- SEG:m00084:entry:auto-106 -->
-CH[[sub:3]]CH[[sub:2]]O―CH[[sub:3]]
+CH[[sub:3]]CH[[sub:2]]O[[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-107 -->
 355
 
 <!-- SEG:m00084:entry:auto-108 -->
-C[[sub:2]]H[[sub:5]]―Br
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:Br|green-text]]
 
 <!-- SEG:m00084:entry:auto-109 -->
 293
@@ -332,37 +332,37 @@ A benzene ring with a hydroxyl group, highlighted in green, at C1.
 464
 
 <!-- SEG:m00084:entry:auto-112 -->
-NH[[sub:2]]―H
+NH[[sub:2]][[span:―|magenta-text]][[span:H|green-text]]
 
 <!-- SEG:m00084:entry:auto-113 -->
 450
 
 <!-- SEG:m00084:entry:auto-114 -->
-C[[sub:2]]H[[sub:5]]―I
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:I|green-text]]
 
 <!-- SEG:m00084:entry:auto-115 -->
 233
 
 <!-- SEG:m00084:entry:auto-116 -->
-[[MATH:1]]―[[MATH:2]]
+[[MATH:1]][[span:―|magenta-text]][[MATH:2]]
 
 <!-- SEG:m00084:entry:auto-117 -->
 558
 
 <!-- SEG:m00084:entry:auto-118 -->
-H―CN
+H[[span:―|magenta-text]][[span:CN|green-text]]
 
 <!-- SEG:m00084:entry:auto-119 -->
 528
 
 <!-- SEG:m00084:entry:auto-120 -->
-C[[sub:2]]H[[sub:5]]―OH
+C[[sub:2]]H[[sub:5]][[span:―|magenta-text]][[span:OH|green-text]]
 
 <!-- SEG:m00084:entry:auto-121 -->
 391
 
 <!-- SEG:m00084:entry:auto-122 -->
-CH[[sub:3]]―CH[[sub:3]]
+CH[[sub:3]][[span:―|magenta-text]][[span:CH[[sub:3]]|green-text]]
 
 <!-- SEG:m00084:entry:auto-123 -->
 377

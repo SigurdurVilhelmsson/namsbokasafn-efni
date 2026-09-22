@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00148",
-  "extractedAt": "2026-08-31T19:08:48.359Z",
+  "extractedAt": "2026-09-22T17:26:37.416Z",
   "sourceHash": "bec42ff4704628bf",
   "segmentCount": 7,
   "segmentIds": [
@@ -42,5 +42,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "integrating"
   }
 }

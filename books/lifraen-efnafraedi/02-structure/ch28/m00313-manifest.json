@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00313",
-  "extractedAt": "2026-08-31T19:08:50.192Z",
+  "extractedAt": "2026-09-22T17:26:39.874Z",
   "sourceHash": "99682e4f76da9268",
   "segmentCount": 13,
   "segmentIds": [
@@ -50,5 +50,15 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Messenger RNA (mRNA)",
+    "term-00002": "Ribosomal RNA (rRNA)",
+    "term-00003": "Transfer RNA (tRNA)",
+    "term-00004": "Small RNAs",
+    "term-00005": "genes",
+    "term-00006": "transcription",
+    "term-00007": "sense strand",
+    "term-00008": "antisense strand"
   }
 }

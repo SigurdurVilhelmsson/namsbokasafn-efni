@@ -1,13 +1,14 @@
 {
   "version": 1,
   "moduleId": "m00131",
-  "extractedAt": "2026-08-31T19:08:48.076Z",
+  "extractedAt": "2026-09-22T17:26:37.086Z",
   "sourceHash": "32a4585b550fdd34",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00131:title:auto-1",
     "m00131:title:sect-00001-title",
     "m00131:para:para-00001",
+    "m00131:figure-title:fig-00001-title",
     "m00131:caption:fig-00001-caption",
     "m00131:alt:fig-00001-alt",
     "m00131:para:para-00002",
@@ -53,5 +54,9 @@
       "sect-00001",
       "sect-00002"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "E1 reaction",
+    "term-00002": "E1cB reaction"
   }
 }

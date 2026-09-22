@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00168",
-  "extractedAt": "2026-08-31T19:08:46.537Z",
+  "extractedAt": "2026-09-22T17:26:35.502Z",
   "sourceHash": "7e3d6580fc9821c4",
   "segmentCount": 10,
   "segmentIds": [
@@ -42,5 +42,10 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Molecular orbital (MO) theory",
+    "term-00002": "bonding MO",
+    "term-00003": "antibonding MO"
   }
 }

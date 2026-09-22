@@ -2,7 +2,7 @@
 Steroids
 
 <!-- SEG:m00270:para:para-00001 -->
-In addition to fats, phospholipids, eicosanoids, and terpenoids, the lipid extracts of plants and animals also contain [[term:steroids|term-00001]], molecules that are derived from the triterpenoid lanosterol ([[docref:m00269#fig-00001]]) and whose structures are based on a tetracyclic ring system. The four rings are designated A, B, C, and D, beginning at the lower left. The three 6-membered rings (A, B, and C) adopt chair conformations but are prevented by their rigid geometry from undergoing the usual cyclohexane ring-flips ().
+In addition to fats, phospholipids, eicosanoids, and terpenoids, the lipid extracts of plants and animals also contain [[term:steroids|term-00001]], molecules that are derived from the triterpenoid lanosterol ([[docref:m00269#fig-00001]]) and whose structures are based on a tetracyclic ring system. The four rings are designated A, B, C, and D, beginning at the lower left. The three 6-membered rings (A, B, and C) adopt chair conformations but are prevented by their rigid geometry from undergoing the usual cyclohexane ring-flips ([[docref:m00045]]).
 
 <!-- SEG:m00270:alt:fig-00001-alt -->
 The structure and ball-and-stick model of steroid in which R equals various side chains. It comprises three cyclohexane labeled A, B, and C fused together to another cyclopentane labeled D.

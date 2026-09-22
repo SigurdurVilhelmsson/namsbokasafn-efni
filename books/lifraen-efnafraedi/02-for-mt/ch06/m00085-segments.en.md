@@ -8,7 +8,7 @@ For a reaction to take place, reactant molecules must collide and reorganization
 A reaction mechanism shows ethene attacking hydrogen bromide to form a carbocation, which is attacked by a bromide ion to form ethyl bromide.
 
 <!-- SEG:m00085:para:para-00002 -->
-As the reaction proceeds, ethylene and HBr approach each other, the ethylene [[i:π]] bond and the H−Br bond break, a new C−H bond forms in step [[b:1]] and a new C−Br bond forms in step [[b:2]].
+As the reaction proceeds, ethylene and HBr approach each other, the ethylene [[i:π]] bond and the H−Br bond break, a new C−H bond forms in step [[b:[[span:1|magenta-text]]]] and a new C−Br bond forms in step [[b:[[span:2|magenta-text]]]].
 
 <!-- SEG:m00085:para:para-00003 -->
 To depict graphically the energy changes that occur during a reaction, chemists use energy diagrams, such as that in [[xref:fig-00002]]. The vertical axis of the diagram represents the total energy of all reactants, and the horizontal axis, called the [[term:reaction coordinate|term-00001]], represents the progress of the reaction from beginning to end. Let’s see how the addition of HBr to ethylene can be described in an energy diagram.

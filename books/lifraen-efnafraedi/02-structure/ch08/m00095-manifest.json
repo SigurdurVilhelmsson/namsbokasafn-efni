@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00095",
-  "extractedAt": "2026-08-31T19:08:47.739Z",
+  "extractedAt": "2026-09-22T17:26:36.602Z",
   "sourceHash": "f22fb393d508c519",
   "segmentCount": 18,
   "segmentIds": [
@@ -62,5 +62,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "oxidation",
+    "term-00002": "epoxide",
+    "term-00003": "oxirane",
+    "term-00004": "glycol",
+    "term-00005": "hydroxylation"
   }
 }

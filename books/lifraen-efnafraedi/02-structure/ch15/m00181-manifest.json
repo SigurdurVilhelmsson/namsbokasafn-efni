@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00181",
-  "extractedAt": "2026-08-31T19:08:48.597Z",
+  "extractedAt": "2026-09-22T17:26:37.719Z",
   "sourceHash": "540f94000e0c6ac2",
   "segmentCount": 37,
   "segmentIds": [
@@ -81,5 +81,13 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "arenes",
+    "term-00002": "phenyl",
+    "term-00003": "benzyl",
+    "term-00004": "ortho (o)",
+    "term-00005": "meta (m)",
+    "term-00006": "para (p)"
   }
 }

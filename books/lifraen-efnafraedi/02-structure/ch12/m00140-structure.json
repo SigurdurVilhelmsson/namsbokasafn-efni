@@ -27,6 +27,7 @@
     {
       "type": "figure",
       "id": "fig-00001",
+      "title": null,
       "caption": {
         "segmentId": "m00140:caption:fig-00001-caption"
       },
@@ -48,6 +49,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

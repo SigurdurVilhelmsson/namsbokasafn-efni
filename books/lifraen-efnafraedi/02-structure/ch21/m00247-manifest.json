@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00247",
-  "extractedAt": "2026-08-31T19:08:49.438Z",
+  "extractedAt": "2026-09-22T17:26:38.763Z",
   "sourceHash": "6e74bb1596f04a4c",
   "segmentCount": 38,
   "segmentIds": [
@@ -85,5 +85,9 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chain-growth polymers",
+    "term-00002": "step-growth polymers"
   }
 }

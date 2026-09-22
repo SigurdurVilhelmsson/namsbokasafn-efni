@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00106",
-  "extractedAt": "2026-08-31T19:08:47.866Z",
+  "extractedAt": "2026-09-22T17:26:36.757Z",
   "sourceHash": "7e764569fe2ad474",
-  "segmentCount": 19,
+  "segmentCount": 20,
   "segmentIds": [
     "m00106:title:auto-1",
     "m00106:para:para-00001",
@@ -13,6 +13,7 @@
     "m00106:para:para-00003",
     "m00106:alt:fig-00002-alt",
     "m00106:para:para-00004",
+    "m00106:figure-title:fig-00003-title",
     "m00106:caption:fig-00003-caption",
     "m00106:alt:fig-00003-alt",
     "m00106:para:para-00005",
@@ -68,5 +69,9 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "enol",
+    "term-00002": "tautomers"
   }
 }

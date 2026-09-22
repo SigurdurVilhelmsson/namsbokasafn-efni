@@ -74,7 +74,12 @@ describe('loadChapterTermEnglish — against the real corpus', () => {
   });
 
   it('reports key-absent for an un-re-extracted chapter, and offers no map for it', () => {
-    const { byModule, state } = loadChapterTermEnglish('lifraen-efnafraedi', 'ch11');
+    // 🔴 MOVED 2026-09-22 — this used organic ch11, and the whole-book organic re-extract
+    // gave ch11 term English (8 `ok` + 5 `empty`), so the premise died with the vintage it
+    // described. liffraedi-2e is withheld from the pipeline and its manifests predate the
+    // `termEnglish` key (0 of 11), so it is the stable home for this shape. If it is ever
+    // re-extracted this goes red for the same reason — move it again, do not delete it.
+    const { byModule, state } = loadChapterTermEnglish('liffraedi-2e', 'ch03');
     const states = [...state.values()];
     expect(states.length).toBeGreaterThan(0); // control: the chapter was found
     expect(states.every((s) => s === 'key-absent')).toBe(true);

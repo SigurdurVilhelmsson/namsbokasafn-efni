@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00286",
-  "extractedAt": "2026-08-31T19:08:49.633Z",
+  "extractedAt": "2026-09-22T17:26:39.067Z",
   "sourceHash": "cc5d7f911c769c65",
   "segmentCount": 18,
   "segmentIds": [
@@ -60,5 +60,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Stork enamine reaction"
   }
 }

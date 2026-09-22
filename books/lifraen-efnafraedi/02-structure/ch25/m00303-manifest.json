@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00303",
-  "extractedAt": "2026-08-31T19:08:49.847Z",
+  "extractedAt": "2026-09-22T17:26:39.410Z",
   "sourceHash": "94d39db2b6bb64b6",
   "segmentCount": 27,
   "segmentIds": [
@@ -74,5 +74,14 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "pyranose",
+    "term-00002": "anomers",
+    "term-00003": "anomeric center",
+    "term-00004": "α anomer",
+    "term-00005": "β anomer",
+    "term-00006": "furanose",
+    "term-00007": "mutarotation"
   }
 }

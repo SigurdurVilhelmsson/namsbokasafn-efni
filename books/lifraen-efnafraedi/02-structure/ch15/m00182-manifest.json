@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00182",
-  "extractedAt": "2026-08-31T19:08:48.605Z",
+  "extractedAt": "2026-09-22T17:26:37.726Z",
   "sourceHash": "4ca0b4e8fffb772f",
   "segmentCount": 19,
   "segmentIds": [
@@ -66,5 +66,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "degenerate"
   }
 }

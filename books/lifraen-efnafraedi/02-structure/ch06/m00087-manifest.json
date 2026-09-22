@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00087",
-  "extractedAt": "2026-08-31T19:08:47.454Z",
+  "extractedAt": "2026-09-22T17:26:36.283Z",
   "sourceHash": "20098afbc37f2dd7",
   "segmentCount": 79,
   "segmentIds": [
@@ -159,5 +159,9 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "enzymes",
+    "term-00002": "active site"
   }
 }

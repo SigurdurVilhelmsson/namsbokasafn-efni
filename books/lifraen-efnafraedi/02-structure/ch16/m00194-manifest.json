@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00194",
-  "extractedAt": "2026-08-31T19:08:48.761Z",
+  "extractedAt": "2026-09-22T17:26:37.894Z",
   "sourceHash": "c93b8ef5d0f84120",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m00194:title:auto-1",
     "m00194:para:para-00001",
@@ -13,6 +13,7 @@
     "m00194:para:para-00003",
     "m00194:alt:fig-00003-alt",
     "m00194:para:para-00004",
+    "m00194:figure-title:fig-00004-title",
     "m00194:caption:fig-00004-caption",
     "m00194:alt:fig-00004-alt",
     "m00194:para:para-00005",
@@ -54,5 +55,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Nucleophilic aromatic substitution"
   }
 }

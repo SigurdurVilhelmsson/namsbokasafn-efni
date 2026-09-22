@@ -1,5 +1,5 @@
 <!-- SEG:m00163:title:auto-1 -->
-Untitled
+[[i:sp]][[sup:3]] Hybrid Orbitals and the Structure of Methane
 
 <!-- SEG:m00163:para:para-00001 -->
 The bonding in the hydrogen molecule is fairly straightforward, but the situation is more complicated in organic molecules with tetravalent carbon atoms. Take methane, CH[[sub:4]], for instance. As we’ve seen, carbon has four valence electrons (2[[i:s]][[sup:2]] 2[[i:p]][[sup:2]]) and forms four bonds. Because carbon uses two kinds of orbitals for bonding, 2[[i:s]] and 2[[i:p,]] we might expect methane to have two kinds of C–H bonds. In fact, though, all four C–H bonds in methane are identical and are spatially oriented toward the corners of a regular tetrahedron, as shown previously in [[docref:m00161#fig-00001]]. How can we explain this?
@@ -8,7 +8,7 @@ The bonding in the hydrogen molecule is fairly straightforward, but the situatio
 An answer was provided in 1931 by Linus Pauling, who showed mathematically how an [[i:s]] orbital and three [[i:p]] orbitals on an atom can combine, or [[i:hybridize,]] to form four equivalent atomic orbitals with tetrahedral orientation. Shown in [[xref:fig-00001]], these tetrahedrally oriented orbitals are called [[term:[[i:sp]][[sup:3]] hybrid orbitals|term-00001]]. Note that the superscript 3 in the name [[i:sp]][[sup:3]] tells how many of each type of atomic orbital combine to form the hybrid, not how many electrons occupy it.
 
 <!-- SEG:m00163:caption:fig-00001-caption -->
-[[b:Four [[i:sp]][[sup:3]] hybrid orbitals, oriented toward the corners of a regular tetrahedron, are formed by the combination of an [[i:s]] orbital and three [[i:p]] orbitals (red/blue)]]. The [[i:sp]][[sup:3]] hybrids have two lobes and are unsymmetrical about the nucleus, giving them a directionality and allowing them to form strong bonds to other atoms.
+[[b:[[span:Four [[i:sp]][[sup:3]] hybrid orbitals|green-text]], oriented toward the corners of a regular tetrahedron, are formed by the combination of an [[span:[[i:s]] orbital|magenta-text]] and three [[i:p]] orbitals [[span:(red|magenta-text]]/[[span:blue)|cyan-text]]]]. The [[i:sp]][[sup:3]] hybrids have two lobes and are unsymmetrical about the nucleus, giving them a directionality and allowing them to form strong bonds to other atoms.
 
 <!-- SEG:m00163:alt:fig-00001-alt -->
 The 2s orbital with 2px, 2py, and 2pz orbitals undergoes hybridization to form four s p 3 orbitals oriented tetrahedrally.

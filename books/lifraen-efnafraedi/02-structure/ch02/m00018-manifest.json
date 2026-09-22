@@ -1,18 +1,21 @@
 {
   "version": 1,
   "moduleId": "m00018",
-  "extractedAt": "2026-08-31T19:08:46.653Z",
+  "extractedAt": "2026-09-22T17:26:35.606Z",
   "sourceHash": "b0a8573c3dbd84c0",
-  "segmentCount": 15,
+  "segmentCount": 18,
   "segmentIds": [
     "m00018:title:auto-1",
     "m00018:para:para-00001",
+    "m00018:figure-title:fig-00001-title",
     "m00018:caption:fig-00001-caption",
     "m00018:alt:fig-00001-alt",
     "m00018:para:para-00002",
+    "m00018:figure-title:fig-00002-title",
     "m00018:caption:fig-00002-caption",
     "m00018:alt:fig-00002-alt",
     "m00018:para:para-00003",
+    "m00018:figure-title:fig-00003-title",
     "m00018:caption:fig-00003-caption",
     "m00018:alt:fig-00003-alt",
     "m00018:para:para-00004",
@@ -55,5 +58,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "polar covalent bonds",
+    "term-00002": "electronegativity (EN)",
+    "term-00004": "electrostatic potential maps",
+    "term-00003": "inductive effect"
   }
 }

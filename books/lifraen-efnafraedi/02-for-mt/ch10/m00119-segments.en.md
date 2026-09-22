@@ -50,7 +50,7 @@ The reaction of para-methylbenzeneboronic acid and ortho-chloro-benzonitrile in 
 Shown in a simplified form in [[xref:fig-00009]], the mechanism of the Suzuki–Miyaura reaction involves initial reaction of the aromatic halide with the palladium catalyst to form an organopalladium intermediate, followed by reaction of that intermediate with the aromatic boronic acid. The resultant diorganopalladium complex then decomposes to the coupled biaryl product plus regenerated catalyst.
 
 <!-- SEG:m00119:caption:fig-00009-caption -->
-[[b:Mechanism of the Suzuki–Miyaura coupling reaction of an aromatic boronic acid with an aromatic halide to give a biaryl.]] The reaction takes place by ([[b:1]]) reaction of the aromatic halide, ArX, with the catalyst to form an organopalladium intermediate, followed by ([[b:2]]) reaction with the aromatic boronic acid. ([[b:3]]) Subsequent decomposition of the diarylpalladium intermediate gives the biaryl product.
+[[b:Mechanism of the Suzuki–Miyaura coupling reaction of an aromatic boronic acid with an aromatic halide to give a biaryl.]] The reaction takes place by ([[b:[[span:1|magenta-text]]]]) reaction of the aromatic halide, ArX, with the catalyst to form an organopalladium intermediate, followed by ([[b:[[span:2|magenta-text]]]]) reaction with the aromatic boronic acid. ([[b:[[span:3|magenta-text]]]]) Subsequent decomposition of the diarylpalladium intermediate gives the biaryl product.
 
 <!-- SEG:m00119:alt:fig-00009-alt -->
 Via a three-step cyclic reaction, an aromatic halide reacts with catalyst, forming an organopalladium intermediate, which reacts with aromatic boronic acid, yielding diarylpalladium intermediate. Decomposition produces a biaryl product.

@@ -17,7 +17,7 @@ Because inductive effects operate through [[i:σ]] bonds and are dependent on di
 The p K a values of 3-chloro (4.52), 2-chloro (4.05), and 1-chloro (2.86) acetic acids are compared. A horizontal arrow indicates increasing acid strength from 3-chloro to 1-chloroacetic acid.
 
 <!-- SEG:m00233:para:para-00004 -->
-Substituent effects on acidity are also found in substituted benzoic acids. We said during the discussion of electrophilic aromatic substitution in that substituents on the aromatic ring strongly affect reactivity. Aromatic rings with electron-donating groups are activated toward further electrophilic substitution, and aromatic rings with electron-withdrawing groups are deactivated. Exactly the same effects can be observed on the acidity of substituted benzoic acids ([[xref:table-00001]]).
+Substituent effects on acidity are also found in substituted benzoic acids. We said during the discussion of electrophilic aromatic substitution in [[docref:m00192]] that substituents on the aromatic ring strongly affect reactivity. Aromatic rings with electron-donating groups are activated toward further electrophilic substitution, and aromatic rings with electron-withdrawing groups are deactivated. Exactly the same effects can be observed on the acidity of substituted benzoic acids ([[xref:table-00001]]).
 
 <!-- SEG:m00233:table-title:table-00001-title -->
 Substituent Effects on the Acidity of [[i:p]]-Substituted Benzoic Acids
@@ -26,7 +26,7 @@ Substituent Effects on the Acidity of [[i:p]]-Substituted Benzoic Acids
 The structure of substituted benzoic acid. The substituent Y is placed in the para position of the carboxylic acid group in the benzene ring.
 
 <!-- SEG:m00233:entry:auto-10 -->
-Y
+[[span:Y|green-text]]
 
 <!-- SEG:m00233:entry:auto-11 -->
 [[i:K]][[sub:a]] × 10[[sup:–5]]
@@ -38,7 +38,7 @@ p[[i:K]][[sub:a]]
 A vertical arrow represents the effect of substituents on the acidity of benzoic acid. The bottom part denotes weaker acids (activating groups), and the top part denotes stronger ones (deactivating).
 
 <!-- SEG:m00233:entry:auto-14 -->
-–NO[[sub:2]]
+[[span:–NO[[sub:2]]|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-15 -->
 39
@@ -47,10 +47,10 @@ A vertical arrow represents the effect of substituents on the acidity of benzoic
 3.41
 
 <!-- SEG:m00233:entry:auto-17 -->
-Deactivating groups
+[[span:Deactivating groups|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-18 -->
-–CN
+[[span:–CN|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-19 -->
 28
@@ -59,7 +59,7 @@ Deactivating groups
 3.55
 
 <!-- SEG:m00233:entry:auto-21 -->
-–CHO
+[[span:–CHO|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-22 -->
 18
@@ -68,7 +68,7 @@ Deactivating groups
 3.75
 
 <!-- SEG:m00233:entry:auto-24 -->
-–Br
+[[span:–Br|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-25 -->
 11
@@ -77,7 +77,7 @@ Deactivating groups
 3.96
 
 <!-- SEG:m00233:entry:auto-27 -->
-–Cl
+[[span:–Cl|magenta-text]]
 
 <!-- SEG:m00233:entry:auto-28 -->
 10
@@ -95,7 +95,7 @@ Deactivating groups
 4.19
 
 <!-- SEG:m00233:entry:auto-33 -->
-–CH[[sub:3]]
+[[span:–CH[[sub:3]]|cyan-text]]
 
 <!-- SEG:m00233:entry:auto-34 -->
 &#8199;4.3
@@ -104,10 +104,10 @@ Deactivating groups
 4.34
 
 <!-- SEG:m00233:entry:auto-36 -->
-Activating groups
+[[span:Activating groups|cyan-text]]
 
 <!-- SEG:m00233:entry:auto-37 -->
-–OCH[[sub:3]]
+[[span:–OCH[[sub:3]]|cyan-text]]
 
 <!-- SEG:m00233:entry:auto-38 -->
 &#8199;3.5
@@ -116,7 +116,7 @@ Activating groups
 4.46
 
 <!-- SEG:m00233:entry:auto-40 -->
-–OH
+[[span:–OH|cyan-text]]
 
 <!-- SEG:m00233:entry:auto-41 -->
 &#8199;3.3
@@ -143,13 +143,13 @@ Predicting the Effect of a Substituent on the Reactivity of an Aromatic Ring tow
 The p[[i:K]][[sub:a]] of [[i:p]]-(trifluoromethyl)benzoic acid is 3.6. Is the trifluoromethyl substituent an activating or deactivating group in electrophilic aromatic substitution?
 
 <!-- SEG:m00233:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00233:para:para-00008 -->
 Decide whether [[i:p]]-(trifluoromethyl)benzoic acid is stronger or weaker than benzoic acid. A substituent that strengthens the acid is a deactivating group because it withdraws electrons, and a substituent that weakens the acid is an activating group because it donates electrons.
 
 <!-- SEG:m00233:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00233:para:para-00009 -->
 A p[[i:K]][[sub:a]] of 3.6 means that [[i:p]]-(trifluoromethyl)benzoic acid is stronger than benzoic acid, whose p[[i:K]][[sub:a]] is 4.19. Thus, the trifluoromethyl substituent favors dissociation by helping stabilize the negative charge. Trifluoromethyl must therefore be an electron-withdrawing, deactivating group.

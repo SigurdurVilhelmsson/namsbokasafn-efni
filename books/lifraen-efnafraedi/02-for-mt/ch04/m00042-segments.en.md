@@ -26,16 +26,16 @@ Bar graph shows strain energies in cycloalkanes with strain energy in kilojoules
 The data in [[xref:fig-00002]] show that Baeyer’s theory is only partially correct. Cyclopropane and cyclobutane are indeed strained, just as predicted, but cyclopentane is more strained than predicted, and cyclohexane is strain-free. Cycloalkanes of intermediate size have only modest strain, and rings of 14 carbons or more are strain-free. Why is Baeyer’s theory wrong?
 
 <!-- SEG:m00042:para:para-00007 -->
-Baeyer’s theory is wrong for the simple reason that he assumed all cycloalkanes to be flat. In fact, as we’ll see in the next section, most cycloalkanes are not flat; instead, they adopt puckered three-dimensional conformations that allow bond angles to be nearly tetrahedral. As a result, angle strain occurs only in three- and four-membered rings, which have little flexibility. For most ring sizes, particularly the medium-ring (C[[sub:7]]–C[[sub:11]]) cycloalkanes, torsional strain caused by H&#8201;⟷&#8201;H eclipsing interactions at adjacent carbons () and steric strain caused by the repulsion between nonbonded atoms that approach too closely () are the most important factors. Thus, three kinds of strain contribute to the overall energy of a cycloalkane.
+Baeyer’s theory is wrong for the simple reason that he assumed all cycloalkanes to be flat. In fact, as we’ll see in the next section, most cycloalkanes are not flat; instead, they adopt puckered three-dimensional conformations that allow bond angles to be nearly tetrahedral. As a result, angle strain occurs only in three- and four-membered rings, which have little flexibility. For most ring sizes, particularly the medium-ring (C[[sub:7]]–C[[sub:11]]) cycloalkanes, torsional strain caused by H&#8201;⟷&#8201;H eclipsing interactions at adjacent carbons ([[docref:m00037]]) and steric strain caused by the repulsion between nonbonded atoms that approach too closely ([[docref:m00038]]) are the most important factors. Thus, three kinds of strain contribute to the overall energy of a cycloalkane.
 
 <!-- SEG:m00042:item:list-00001-item-1 -->
-[[b:Angle strain]]&#8212;the strain due to expansion or compression of bond angles
+[[b:[[span:Angle strain|magenta-text]]]]&#8212;the strain due to expansion or compression of bond angles
 
 <!-- SEG:m00042:item:list-00001-item-2 -->
-[[term:Torsional strain|term-00002]]&#8212;the strain due to eclipsing of bonds between neighboring atoms
+[[term:[[span:Torsional strain|green-text]]|term-00002]]&#8212;the strain due to eclipsing of bonds between neighboring atoms
 
 <!-- SEG:m00042:item:list-00001-item-3 -->
-[[term:Steric strain|term-00003]]&#8212;the strain due to repulsive interactions when atoms approach each other too closely
+[[term:[[span:Steric strain|cyan-text]]|term-00003]]&#8212;the strain due to repulsive interactions when atoms approach each other too closely
 
 <!-- SEG:m00042:title:sect-00001-title -->
 Problems

@@ -8,13 +8,13 @@ Many of the reactions we’ll be seeing in future chapters, including practicall
 Organic Acids
 
 <!-- SEG:m00027:para:para-00002 -->
-Organic acids are characterized by the presence of a positively polarized hydrogen atom (blue in electrostatic potential maps) and are of two main kinds: acids such as methanol and acetic acid that contain a hydrogen atom bonded to an electronegative oxygen atom (O–H) and those such as acetone () that contain a hydrogen atom bonded to a carbon atom next to a [[MATH:1]] bond ([[MATH:2]]).
+Organic acids are characterized by the presence of a positively polarized hydrogen atom (blue in electrostatic potential maps) and are of two main kinds: acids such as methanol and acetic acid that contain a hydrogen atom bonded to an electronegative oxygen atom (O–H) and those such as acetone ([[docref:m00022]]) that contain a hydrogen atom bonded to a carbon atom next to a [[MATH:1]] bond ([[MATH:2]]).
 
 <!-- SEG:m00027:alt:fig-00002-alt -->
 Electrostatic potential maps and wedge-dash structures of methanol, acetic acid, and acetone along with their respective p K a values, 15.54, 4.76, and 19.3.
 
 <!-- SEG:m00027:para:para-00003 -->
-Methanol contains an O–H bond and is a weak acid, while acetic acid also contains an O–H bond and is a somewhat stronger acid. In both cases, acidity is due to the fact that the conjugate base resulting from loss of H[[sup:+]] is stabilized by having its negative charge on a strongly electronegative oxygen atom. In addition, the conjugate base of acetic acid is stabilized by resonance ( and ).
+Methanol contains an O–H bond and is a weak acid, while acetic acid also contains an O–H bond and is a somewhat stronger acid. In both cases, acidity is due to the fact that the conjugate base resulting from loss of H[[sup:+]] is stabilized by having its negative charge on a strongly electronegative oxygen atom. In addition, the conjugate base of acetic acid is stabilized by resonance ([[docref:m00021]] and [[docref:m00022]]).
 
 <!-- SEG:m00027:alt:fig-00003-alt -->
 Two reactions show the formation of methoxide ion from methanol and two resonance structures of an acetate ion from acetic acid. In both reactions, a hydrogen ion is eliminated.
@@ -27,6 +27,9 @@ In a reaction, acetone loses a hydrogen ion to form two resonance structures of 
 
 <!-- SEG:m00027:para:para-00005 -->
 Electrostatic potential maps of the conjugate bases from methanol, acetic acid, and acetone are shown in [[xref:fig-00001]]. As you might expect, all three show a substantial amount of negative charge (red) on oxygen.
+
+<!-- SEG:m00027:figure-title:fig-00001-title -->
+Electrostatic potential maps of the conjugate bases of [[b:(a)]] methanol, [[b:(b)]] acetic acid, and [[b:(c)]] acetone.
 
 <!-- SEG:m00027:caption:fig-00001-caption -->
 The electronegative oxygen atoms stabilize the negative charge in all three.

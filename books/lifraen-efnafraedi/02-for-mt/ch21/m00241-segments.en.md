@@ -2,7 +2,7 @@
 Reactions of Carboxylic Acids
 
 <!-- SEG:m00241:para:para-00001 -->
-The direct nucleophilic acyl substitution of a carboxylic acid is difficult because –OH is a poor leaving group (). Thus, it’s usually necessary to enhance the reactivity of the acid, either by using a strong acid catalyst to protonate the carboxyl and make it a better acceptor or by converting the –OH into a better leaving group. Under the right circumstances, however, acid chlorides, anhydrides, esters, and amides can all be prepared from carboxylic acids by nucleophilic acyl substitution reactions.
+The direct nucleophilic acyl substitution of a carboxylic acid is difficult because –OH is a poor leaving group ([[docref:m00124]]). Thus, it’s usually necessary to enhance the reactivity of the acid, either by using a strong acid catalyst to protonate the carboxyl and make it a better acceptor or by converting the –OH into a better leaving group. Under the right circumstances, however, acid chlorides, anhydrides, esters, and amides can all be prepared from carboxylic acids by nucleophilic acyl substitution reactions.
 
 <!-- SEG:m00241:title:sect-00001-title -->
 Conversion of Carboxylic Acids into Acid Chlorides
@@ -14,7 +14,7 @@ In the laboratory, carboxylic acids are converted into acid chlorides by treatme
 2, 4, 6-Trimethylbenzoic acid reacts with thionyl chloride in chloroform (trichloromethane) forming 2, 4, 6-trimethylbenzolchloride (ninety percent), H C l, and sulfur dioxide.
 
 <!-- SEG:m00241:para:para-00003 -->
-This reaction occurs by a nucleophilic acyl substitution pathway in which the carboxylic acid is first converted into an acyl chlorosulfite intermediate, thereby replacing the –OH of the acid with a much better leaving group. The chlorosulfite then reacts with a nucleophilic chloride ion. You might recall from that an analogous chlorosulfite is involved in the reaction of an alcohol with SOCl[[sub:2]] to yield an alkyl chloride.
+This reaction occurs by a nucleophilic acyl substitution pathway in which the carboxylic acid is first converted into an acyl chlorosulfite intermediate, thereby replacing the –OH of the acid with a much better leaving group. The chlorosulfite then reacts with a nucleophilic chloride ion. You might recall from [[docref:m00205]] that an analogous chlorosulfite is involved in the reaction of an alcohol with SOCl[[sub:2]] to yield an alkyl chloride.
 
 <!-- SEG:m00241:alt:fig-00002-alt -->
 A carboxylic acid reacts with thionyl chloride giving an acid chloride and sulfur dioxide. A chlorosulfite (intermediate) is depicted in parentheses which is formed when chloride ion attacks carbonyl carbon.
@@ -32,7 +32,7 @@ The reaction shows the formation of acetic anhydride and water upom heating of t
 Conversion of Carboxylic Acids into Esters
 
 <!-- SEG:m00241:para:para-00005 -->
-Perhaps the most useful reaction of carboxylic acids is their conversion into esters. There are many methods for accomplishing this, including the S[[sub:N]]2 reaction of a carboxylate anion with a primary alkyl halide that we saw in .
+Perhaps the most useful reaction of carboxylic acids is their conversion into esters. There are many methods for accomplishing this, including the S[[sub:N]]2 reaction of a carboxylate anion with a primary alkyl halide that we saw in [[docref:m00124]].
 
 <!-- SEG:m00241:alt:fig-00004-alt -->
 A curly arrow S N 2 mechanism for the reaction of sodium butanoate and methyl iodide, giving methyl butanoate (ninety-seven percent) and sodium iodide.
@@ -45,6 +45,9 @@ The reversible reaction of benzoic acid with ethanol in the presence of an H C l
 
 <!-- SEG:m00241:para:para-00007 -->
 The mechanism of the Fischer esterification reaction is shown in [[xref:fig-00006]]. Carboxylic acids are not reactive enough to undergo nucleophilic addition directly, but their reactivity is greatly enhanced in the presence of a strong acid such as HCl or H[[sub:2]]SO[[sub:4]]. The mineral acid protonates the carbonyl-group oxygen atom, thereby giving the carboxylic acid a positive charge and rendering it much more reactive toward nucleophiles. Subsequent loss of water from the tetrahedral intermediate yields the ester product.
+
+<!-- SEG:m00241:figure-title:fig-00006-title -->
+MECHANISM
 
 <!-- SEG:m00241:caption:fig-00006-caption -->
 [[b:Mechanism of Fischer esterification.]] The reaction is an acid-catalyzed, nucleophilic acyl substitution of a carboxylic acid.
@@ -68,13 +71,13 @@ Synthesizing an Ester from an Acid
 How might you prepare the following ester using a Fischer esterification reaction?
 
 <!-- SEG:m00241:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00241:para:para-00011 -->
 Begin by identifying the two parts of the ester. The acyl part comes from the carboxylic acid and the –OR part comes from the alcohol. In this case, the target molecule is propyl [[i:o]]-bromobenzoate, so it can be prepared by treating [[i:o]]-bromobenzoic acid with 1-propanol.
 
 <!-- SEG:m00241:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00241:alt:fig-00008-alt -->
 The structure of an ester shows a benzene ring connected to a propoxy carbonyl group. A bromine is attached to the ortho position of the ring.
@@ -97,6 +100,9 @@ The structure shows two carbodiimides. The first structure is dicyclohexylcarbod
 <!-- SEG:m00241:para:para-00016 -->
 As shown in [[xref:fig-00011]], the acid first adds to a [[MATH:2]] double bond of DCC, and nucleophilic acyl substitution by amine then ensues. Alternatively, and depending on the reaction solvent, the reactive acyl intermediate might also react with a second equivalent of carboxylate ion to generate an acid anhydride that then reacts with the amine. The product from either pathway is the same.
 
+<!-- SEG:m00241:figure-title:fig-00011-title -->
+MECHANISM
+
 <!-- SEG:m00241:caption:fig-00011-caption -->
 [[b:Mechanism of amide formation by reaction of a carboxylic acid and an amine with dicyclohexylcarbodiimide (DCC).]]
 
@@ -113,7 +119,7 @@ The reaction shows the formation of a dipeptide from the two different amino aci
 Conversion of Carboxylic Acids into Alcohols
 
 <!-- SEG:m00241:para:para-00018 -->
-We said in that carboxylic acids are reduced by LiAlH[[sub:4]] to give primary alcohols, but we deferred a discussion of the reaction mechanism at that time. In fact, the reduction is a nucleophilic acyl substitution reaction in which –H replaces –OH to give an aldehyde that is further reduced by nucleophilic addition to produce a primary alcohol. The aldehyde intermediate is much more reactive than the starting acid, so it reacts instantly and is not isolated.
+We said in [[docref:m00203]] that carboxylic acids are reduced by LiAlH[[sub:4]] to give primary alcohols, but we deferred a discussion of the reaction mechanism at that time. In fact, the reduction is a nucleophilic acyl substitution reaction in which –H replaces –OH to give an aldehyde that is further reduced by nucleophilic addition to produce a primary alcohol. The aldehyde intermediate is much more reactive than the starting acid, so it reacts instantly and is not isolated.
 
 <!-- SEG:m00241:alt:fig-00013-alt -->
 The reaction shows the conversion of a carboxylic acid to a primary alcohol using lithium aluminum hydride. An aldehyde and an alkoxide ion, enclosed in parentheses, are formed as intermediates.
@@ -135,6 +141,9 @@ Biological Conversions of Carboxylic Acids
 
 <!-- SEG:m00241:para:para-00021 -->
 The direct conversion of a carboxylic acid to an acyl derivative by nucleophilic acyl substitution does not occur in biological chemistry. As in the laboratory, the acid must first be activated by converting the –OH into a better leaving group. This activation is often accomplished in living organisms by reaction of the acid with adenosine triphosphate (ATP) to give an acyl adenosyl phosphate, or [[i:acyl adenylate,]] a mixed anhydride combining a carboxylic acid and adenosine monophosphate (AMP, also known as adenylic acid). In the biosynthesis of fats, for example, a long-chain carboxylic acid reacts with ATP to give an acyl adenylate, followed by subsequent nucleophilic acyl substitution of a thiol group in coenzyme A to give the corresponding acyl CoA ([[xref:fig-00016]]).
+
+<!-- SEG:m00241:figure-title:fig-00016-title -->
+MECHANISM
 
 <!-- SEG:m00241:caption:fig-00016-caption -->
 [[b:In fatty-acid biosynthesis, a carboxylic acid is activated by reaction with ATP to give an acyl adenylate, which undergoes nucleophilic acyl substitution with the –SH group on coenzyme A.]] (ATP = adenosine triphosphate; AMP = adenosine monophosphate.)

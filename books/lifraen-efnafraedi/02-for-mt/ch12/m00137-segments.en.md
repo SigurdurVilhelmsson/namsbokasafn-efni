@@ -104,13 +104,13 @@ Identifying Fragmentation Patterns in a Mass Spectrum
 The mass spectrum of 2-methyl-3-pentanol is shown in [[xref:fig-00012]]. What fragments can you identify?
 
 <!-- SEG:m00137:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00137:para:para-00014 -->
 Calculate the mass of the molecular ion, and identify the functional groups in the molecule. Then write the fragmentation processes you might expect, and compare the masses of the resultant fragments with the peaks present in the spectrum.
 
 <!-- SEG:m00137:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00137:para:para-00015 -->
 2-Methyl-3-pentanol, an open-chain alcohol, has M[[sup:+]] = 102 and might be expected to fragment by [[i:α]] cleavage and by dehydration. These processes would lead to fragment ions of [[i:m]]/[[i:z]] = 84, 73, and 59. Of the three expected fragments, dehydration is not observed (no [[i:m]]/[[i:z]] = 84 peak), but both [[i:α]] cleavages take place ([[i:m]]/[[i:z]] = 73, 59).

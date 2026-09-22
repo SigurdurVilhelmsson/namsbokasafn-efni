@@ -32,7 +32,7 @@ Melting point (°C)
 Structure
 
 <!-- SEG:m00265:entry:auto-12 -->
-[[b:[[i:Saturated]]]]
+[[b:[[i:[[span:Saturated|magenta-text]]]]]]
 
 <!-- SEG:m00265:entry:auto-13 -->
 Lauric
@@ -95,7 +95,7 @@ Arachidic
 CH[[sub:3]](CH[[sub:2]])[[sub:18]]CO[[sub:2]]H
 
 <!-- SEG:m00265:entry:auto-33 -->
-[[b:[[i:Unsaturated]]]]
+[[b:[[i:[[span:Unsaturated|cyan-text]]]]]]
 
 <!-- SEG:m00265:entry:auto-34 -->
 Palmitoleic
@@ -188,7 +188,7 @@ C[[sub:18]] oleic
 C[[sub:18]] linoleic
 
 <!-- SEG:m00265:entry:auto-64 -->
-[[b:[[i:Animal fat]]]]
+[[b:[[i:[[span:Animal fat|magenta-text]]]]]]
 
 <!-- SEG:m00265:entry:auto-65 -->
 Lard
@@ -275,7 +275,7 @@ Whale blubber
 10
 
 <!-- SEG:m00265:entry:auto-93 -->
-[[b:[[i:Vegetable oil]]]]
+[[b:[[i:[[span:Vegetable oil|cyan-text]]]]]]
 
 <!-- SEG:m00265:entry:auto-94 -->
 Coconut

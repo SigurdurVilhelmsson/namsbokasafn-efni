@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -46,6 +47,7 @@
           "type": "figure",
           "id": "fig-00003",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -65,6 +67,10 @@
           "type": "figure",
           "id": "fig-00001",
           "class": "scaled-down",
+          "title": {
+            "segmentId": "m00028:figure-title:fig-00001-title",
+            "text": "The reaction of boron trifluoride, a Lewis acid, with dimethyl ether, a Lewis base."
+          },
           "caption": {
             "segmentId": "m00028:caption:fig-00001-caption"
           },
@@ -91,6 +97,7 @@
           "type": "figure",
           "id": "fig-00004",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -121,6 +128,7 @@
           "type": "figure",
           "id": "fig-00005",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -140,6 +148,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -159,6 +168,7 @@
           "type": "figure",
           "id": "fig-00007",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -188,7 +198,7 @@
               "segmentId": "m00028:para:para-00010",
               "title": {
                 "segmentId": "m00028:para-title:para-00010-title",
-                "text": "Strategy"
+                "text": "[[span:Strategy|red-text]]"
               }
             },
             {
@@ -197,7 +207,7 @@
               "segmentId": "m00028:para:para-00011",
               "title": {
                 "segmentId": "m00028:para-title:para-00011-title",
-                "text": "Solution"
+                "text": "[[span:Solution|cyan-text]]"
               }
             }
           ]
@@ -206,6 +216,7 @@
           "type": "figure",
           "id": "fig-00008",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

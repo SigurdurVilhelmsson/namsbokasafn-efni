@@ -23,7 +23,7 @@ Functional groups present
 Carbon–hydrogen framework
 
 <!-- SEG:m00177:entry:auto-9 -->
-[[b:UV spectroscopy]]
+[[b:[[span:UV spectroscopy|magenta-text]]]]
 
 <!-- SEG:m00177:entry:auto-10 -->
 [[b:Conjugated [[i:π]] electron systems]]
@@ -38,7 +38,7 @@ The ultraviolet region of the electromagnetic spectrum extends from the short-wa
 The electromagnetic spectrum shows regions (left to right) as follows: X-rays, vacuum ultraviolet, ultraviolet, visible, near-infrared, and infrared. Lambda values of each are mentioned. Energy increases from right to left.
 
 <!-- SEG:m00177:para:para-00003 -->
-We saw in that when an organic molecule is irradiated with electromagnetic energy, the radiation either passes through the sample or is absorbed, depending on its energy. With IR irradiation, the energy absorbed corresponds to the amount needed to increase molecular vibrations. With UV radiation, the energy absorbed corresponds to the amount needed to promote an electron from a lower-energy orbital to a higher-energy one in a conjugated molecule. The conjugated diene 1,3-butadiene, for instance, has four [[i:π]] molecular orbitals, as shown previously in [[docref:m00171#fig-00007]]. The two lower-energy, bonding MOs are occupied in the ground state, and the two higher-energy, antibonding MOs are unoccupied.
+We saw in [[docref:m00139]] that when an organic molecule is irradiated with electromagnetic energy, the radiation either passes through the sample or is absorbed, depending on its energy. With IR irradiation, the energy absorbed corresponds to the amount needed to increase molecular vibrations. With UV radiation, the energy absorbed corresponds to the amount needed to promote an electron from a lower-energy orbital to a higher-energy one in a conjugated molecule. The conjugated diene 1,3-butadiene, for instance, has four [[i:π]] molecular orbitals, as shown previously in [[docref:m00171#fig-00007]]. The two lower-energy, bonding MOs are occupied in the ground state, and the two higher-energy, antibonding MOs are unoccupied.
 
 <!-- SEG:m00177:para:para-00004 -->
 On irradiation with ultraviolet light ([[i:hυ]]), 1,3-butadiene absorbs energy and a [[i:π]] electron is promoted from the [[term:highest occupied molecular orbital (HOMO)|term-00002]] to the [[term:lowest unoccupied molecular orbital (LUMO)|term-00003]]. Because the electron is promoted from a bonding [[i:π]] molecular orbital to an antibonding [[i:π]]* molecular orbital, we call this a [[i:π]] → [[i:π]]* excitation (read as “pi to pi star”). The energy gap between the HOMO and the LUMO of 1,3-butadiene is such that UV light of 217 nm wavelength is required to effect the [[i:π]] → [[i:π]]* electronic transition ([[xref:fig-00002]]).

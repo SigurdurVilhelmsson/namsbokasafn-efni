@@ -2,7 +2,7 @@
 Racemic Mixtures and the Resolution of Enantiomers
 
 <!-- SEG:m00057:para:para-00001 -->
-To end this discussion of stereoisomerism, let’s return for a last look at Pasteur’s pioneering work, described in . Pasteur took an optically inactive tartaric acid salt and found that he could crystallize from it two optically active forms having what we would now call 2[[i:R]],3[[i:R]] and 2[[i:S]],3[[i:S]] configurations. But what was the optically inactive form he started with? It couldn’t have been [[i:meso]]-tartaric acid, because [[i:meso]]-tartaric acid is a different chemical compound and can’t interconvert with the two chiral enantiomers without breaking and re-forming chemical bonds.
+To end this discussion of stereoisomerism, let’s return for a last look at Pasteur’s pioneering work, described in [[docref:m00053]]. Pasteur took an optically inactive tartaric acid salt and found that he could crystallize from it two optically active forms having what we would now call 2[[i:R]],3[[i:R]] and 2[[i:S]],3[[i:S]] configurations. But what was the optically inactive form he started with? It couldn’t have been [[i:meso]]-tartaric acid, because [[i:meso]]-tartaric acid is a different chemical compound and can’t interconvert with the two chiral enantiomers without breaking and re-forming chemical bonds.
 
 <!-- SEG:m00057:para:para-00002 -->
 The answer is that Pasteur started with a 50&#8201;:&#8201;50 mixture of the two chiral tartaric acid enantiomers. Such a mixture is called a [[term:racemate|term-00001]] ([[b:rass]]-uh-mate), or [[b:racemic mixture,]] and is denoted by either the symbol (±) or the prefix [[i:d,l]] to indicate an equal mixture of dextrorotatory and levorotatory forms. Racemates show no optical rotation because the (+) rotation from one enantiomer exactly cancels the (−) rotation from the other. Through good luck, Pasteur was able to separate, or resolve, racemic tartaric acid into its (+) and (−) enantiomers. Unfortunately, the fractional crystallization technique he used doesn’t work for most racemates, so other methods are needed.
@@ -41,7 +41,7 @@ Predicting the Chirality of a Reaction Product
 We’ll see in [[b:Section 21.3]] that carboxylic acids (RCO[[sub:2]]H) react with alcohols (R′OH) to form esters (RCO[[sub:2]]R′). Suppose that (±)-lactic acid reacts with CH[[sub:3]]OH to form the ester, methyl lactate. What stereochemistry would you expect the product(s) to have? What is the relationship of the products?
 
 <!-- SEG:m00057:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00057:para:para-00008 -->
 Reaction of a racemic acid with an achiral alcohol such as methanol yields a racemic mixture of mirror-image (enantiomeric) products.

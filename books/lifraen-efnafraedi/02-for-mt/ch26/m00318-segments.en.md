@@ -2,7 +2,7 @@
 Structures of Amino Acids
 
 <!-- SEG:m00318:para:para-00001 -->
-We saw in and that a carboxyl group is deprotonated and exists as the carboxylate anion at a physiological pH of 7.3, while an amino group is protonated and exists as the ammonium cation. Thus, amino acids exist in aqueous solution primarily in the form of a dipolar ion, or [[term:zwitterion|term-00001]] (from the German [[i:zwitter,]] meaning “hybrid”).
+We saw in [[docref:m00232]] and [[docref:m00293]] that a carboxyl group is deprotonated and exists as the carboxylate anion at a physiological pH of 7.3, while an amino group is protonated and exists as the ammonium cation. Thus, amino acids exist in aqueous solution primarily in the form of a dipolar ion, or [[term:zwitterion|term-00001]] (from the German [[i:zwitter,]] meaning “hybrid”).
 
 <!-- SEG:m00318:alt:fig-00001-alt -->
 A protonated alanine reacts with water reversibly to form a zwitterion and hydronium ion. The zwitterion further reacts with water reversibly to form an anion and hydronium ion.
@@ -44,7 +44,7 @@ p[[i:K]][[sub:a]] side chain
 p[[i:I]]
 
 <!-- SEG:m00318:entry:auto-16 -->
-[[b:Neutral Amino Acids]]
+[[b:[[span:Neutral Amino Acids|green-text]]]]
 
 <!-- SEG:m00318:entry:auto-17 -->
 Alanine
@@ -452,7 +452,7 @@ The structure of L-valine. It has a carbon linked to C-H linked to two methyl gr
 5.96
 
 <!-- SEG:m00318:entry:auto-152 -->
-[[b:Acidic Amino Acids]]
+[[b:[[span:Acidic Amino Acids|red-text]]]]
 
 <!-- SEG:m00318:entry:auto-153 -->
 Aspartic acid
@@ -509,7 +509,7 @@ The structure of L-glutamic acid. It has a carbon linked to two methylene groups
 3.22
 
 <!-- SEG:m00318:entry:auto-171 -->
-[[b:Basic Amino Acids]]
+[[b:[[span:Basic Amino Acids|cyan-text]]]]
 
 <!-- SEG:m00318:entry:auto-172 -->
 Arginine
@@ -602,7 +602,7 @@ In addition to the 20 amino acids commonly found in proteins, 2 others—selenoc
 The structure of five amino acids. Selenocysteine and pyrrolysine are at the top whereas gamma-aminobutyric acid, homocysteine, and thyroxine are at the bottom.
 
 <!-- SEG:m00318:para:para-00005 -->
-Except for glycine, H[[sub:2]]NCH[[sub:2]]CO[[sub:2]]H, the [[i:α]] carbons of amino acids are chirality centers. Two enantiomers of each are therefore possible, but nature uses only one to build proteins. In Fischer projections, naturally occurring amino acids are represented by placing the –CO[[sub:2]][[sup:–]] group at the top and pointing the side chain downwards, as if drawing a carbohydrate () and then placing the –NH[[sub:3]][[sup:+]] group on the left. Because of their stereochemical similarity to L sugars (), the naturally occurring [[i:α]]-amino acids are often referred to as L amino acids. The nonnaturally occurring enantiomers are called D amino acids.
+Except for glycine, H[[sub:2]]NCH[[sub:2]]CO[[sub:2]]H, the [[i:α]] carbons of amino acids are chirality centers. Two enantiomers of each are therefore possible, but nature uses only one to build proteins. In Fischer projections, naturally occurring amino acids are represented by placing the –CO[[sub:2]][[sup:–]] group at the top and pointing the side chain downwards, as if drawing a carbohydrate ([[docref:m00300]]) and then placing the –NH[[sub:3]][[sup:+]] group on the left. Because of their stereochemical similarity to [[sc:L]] sugars ([[docref:m00301]]), the naturally occurring [[i:α]]-amino acids are often referred to as [[sc:L]] amino acids. The nonnaturally occurring enantiomers are called [[sc:D]] amino acids.
 
 <!-- SEG:m00318:alt:fig-00005-alt -->
 The structure of four amino acids from left to right, L-Serine or (S)-Serine, L-Cysteine or (R)-Cysteine, L-Alanine or (S)-Alanine, and D-Alanine or (R)-Alanine. The last structure is enclosed inside parentheses.
@@ -611,7 +611,7 @@ The structure of four amino acids from left to right, L-Serine or (S)-Serine, L-
 The 20 common amino acids can be further classified as neutral, acidic, or basic, depending on the structure of their side chains. Fifteen of the twenty have neutral side chains, two (aspartic acid and glutamic acid) have an extra carboxylic acid function in their side chains, and three (lysine, arginine, and histidine) have basic amino groups in their side chains. Note that both cysteine (a thiol) and tyrosine (a phenol), although usually classified as neutral amino acids, nevertheless have weakly acidic side chains that can be deprotonated in a sufficiently basic solution.
 
 <!-- SEG:m00318:para:para-00007 -->
-At the physiological pH of 7.3, the side-chain carboxyl groups of aspartic acid and glutamic acid are deprotonated and the basic side-chain nitrogens of lysine and arginine are protonated. Histidine, however, which contains a heterocyclic imidazole ring in its side chain, is not quite basic enough to be protonated at pH 7.3. Note that only the pyridine-like, doubly bonded nitrogen in histidine is basic. The pyrrole-like singly bonded nitrogen is nonbasic because its lone pair of electrons is part of the six-[[i:π]]-electron aromatic imidazole ring ().
+At the physiological pH of 7.3, the side-chain carboxyl groups of aspartic acid and glutamic acid are deprotonated and the basic side-chain nitrogens of lysine and arginine are protonated. Histidine, however, which contains a heterocyclic imidazole ring in its side chain, is not quite basic enough to be protonated at pH 7.3. Note that only the pyridine-like, doubly bonded nitrogen in histidine is basic. The pyrrole-like singly bonded nitrogen is nonbasic because its lone pair of electrons is part of the six-[[i:π]]-electron aromatic imidazole ring ([[docref:m00297]]).
 
 <!-- SEG:m00318:alt:fig-00006-alt -->
 Ball-and-stick model with the electrostatic potential map and structure of histidine. Basic pyridine-like nitrogen, basic pyrrole-like nitrogen, and imidazole ring are labeled. Basic and nonbasic nitrogen are labeled in model.

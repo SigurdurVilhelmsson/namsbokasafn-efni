@@ -1,5 +1,5 @@
 <!-- SEG:m00123:title:auto-1 -->
-MECHANISM
+The S[[sub:N]]2 Reaction
 
 <!-- SEG:m00123:para:para-00001 -->
 In almost all chemical reactions, there is a direct relationship between the rate at which the reaction occurs and the concentrations of the reactants. When we measure this relationship, we measure the [[term:kinetics|term-00001]] of the reaction. For example, let’s look at the kinetics of a simple nucleophilic substitution—the reaction of CH[[sub:3]]Br with OH[[sup:–]] to yield CH[[sub:3]]OH plus Br[[sup:–]].
@@ -19,6 +19,9 @@ A mechanism that accounts for both the inversion of configuration and the second
 <!-- SEG:m00123:para:para-00005 -->
 The essential feature of the S[[sub:N]]2 mechanism is that it takes place in a single step, without intermediates, when the incoming nucleophile reacts with the alkyl halide or tosylate (the [[i:substrate]]) from a direction opposite the group that is displaced (the [[i:leaving group]]). As the nucleophile comes in on one side of the substrate and bonds to the carbon, the halide or tosylate departs from the other side, thereby inverting the stereochemical configuration. The process is shown in [[xref:fig-00002]] for the reaction of ([[i:S]])-2-bromobutane with HO[[sup:–]] to give ([[i:R]])-2-butanol.
 
+<!-- SEG:m00123:figure-title:fig-00002-title -->
+MECHANISM
+
 <!-- SEG:m00123:caption:fig-00002-caption -->
 [[b:The mechanism of the S[[sub:N]]2 reaction.]] The reaction takes place in a single step when the incoming nucleophile approaches from a direction 180° away from the leaving halide ion, thereby inverting the stereochemistry at carbon.
 
@@ -29,7 +32,7 @@ The figure shows a 2-step reaction. (S)-2-bromobutane undergoes a S N 2 mechanis
 As shown in [[xref:fig-00002]], the S[[sub:N]]2 reaction occurs when an electron pair on the nucleophile Nu[[b::]][[sup:–]] forces out the group X[[b::]][[sup:–]], which takes with it the electron pair from the former C–X bond. This occurs through a transition state in which the new Nu–C bond is partially formed at the same time that the old C–X bond is partially broken and in which the negative charge is shared by both the incoming nucleophile and the outgoing halide ion. The transition state for this inversion has the remaining three bonds to carbon in a planar arrangement ([[xref:fig-00003]]).
 
 <!-- SEG:m00123:caption:fig-00003-caption -->
-[[b:The transition state of an S[[sub:N]]2 reaction has a planar arrangement of the carbon atom and the remaining three groups.]] Electrostatic potential maps show that [[b:negative charge]] is delocalized in the transition state.
+[[b:The transition state of an S[[sub:N]]2 reaction has a planar arrangement of the carbon atom and the remaining three groups.]] Electrostatic potential maps show that [[b:[[span:negative charge|red-text]]]] is delocalized in the transition state.
 
 <!-- SEG:m00123:alt:fig-00003-alt -->
 The figure shows the S N 2 reaction along with their ball-and-stick model in electrostatic potential maps. Tertiary alkyl halide and substituted compound are tetrahedral, while transition state is planar.

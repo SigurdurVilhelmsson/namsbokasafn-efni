@@ -26,13 +26,13 @@ Predicting the Product of an Ether Cleavage Reaction
 Predict the products of the following reaction:
 
 <!-- SEG:m00250:para-title:para-00005-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00250:para:para-00005 -->
 Identify the substitution pattern of the two groups attached to oxygen—in this case a tertiary alkyl group and a primary alkyl group. Then recall the guidelines for ether cleavages. An ether with only primary and secondary alkyl groups usually undergoes cleavage by S[[sub:N]]2 attack of a nucleophile on the less hindered alkyl group, but an ether with a tertiary alkyl group usually undergoes cleavage by an S[[sub:N]]1 mechanism. In this case, an S[[sub:N]]1 cleavage of the tertiary C–O bond will occur, giving 1-propanol and a tertiary alkyl bromide. In addition, a competitive E1 reaction leading to alkene might occur.
 
 <!-- SEG:m00250:para-title:para-00006-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00250:alt:fig-00004-alt -->
 A tertiary butyl group is bonded to a propyl group via an ether linkage which reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.

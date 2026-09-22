@@ -1,17 +1,17 @@
 <!-- SEG:m00133:title:auto-1 -->
-Predicting the Product and Mechanism of Reactions
+A Summary of Reactivity: S[[sub:N]]1, S[[sub:N]]2, E1, E1cB, and E2
 
 <!-- SEG:m00133:para:para-00001 -->
 S[[sub:N]]1, S[[sub:N]]2, E1, E1cB, E2—how can you keep it all straight and predict what will happen in any given case? Will substitution or elimination occur? Will the reaction be bimolecular or unimolecular? There are no rigid answers to these questions, but it’s possible to recognize some trends and make some generalizations.
 
 <!-- SEG:m00133:item:list-00001-item-1 -->
-[[b:Primary alkyl halides]] S[[sub:N]]2 substitution occurs if a good nucleophile is used, E2 elimination occurs if a strong, sterically hindered base is used, and E1cB elimination occurs if the leaving group is two carbons away from a carbonyl group.
+[[b:[[span:Primary alkyl halides|cyan-text]]]] S[[sub:N]]2 substitution occurs if a good nucleophile is used, E2 elimination occurs if a strong, sterically hindered base is used, and E1cB elimination occurs if the leaving group is two carbons away from a carbonyl group.
 
 <!-- SEG:m00133:item:list-00001-item-2 -->
-[[b:Secondary alkyl halides]] S[[sub:N]]2 substitution occurs if a weakly basic nucleophile is used in a polar aprotic solvent, E2 elimination predominates if a strong base is used, and E1cB elimination takes place if the leaving group is two carbons away from a carbonyl group. Secondary allylic and benzylic alkyl halides can also undergo S[[sub:N]]1 and E1 reactions if a weakly basic nucleophile is used in a protic solvent.
+[[b:[[span:Secondary alkyl halides|green-text]]]] S[[sub:N]]2 substitution occurs if a weakly basic nucleophile is used in a polar aprotic solvent, E2 elimination predominates if a strong base is used, and E1cB elimination takes place if the leaving group is two carbons away from a carbonyl group. Secondary allylic and benzylic alkyl halides can also undergo S[[sub:N]]1 and E1 reactions if a weakly basic nucleophile is used in a protic solvent.
 
 <!-- SEG:m00133:item:list-00001-item-3 -->
-[[b:Tertiary alkyl halides]] E2 elimination occurs when a base is used, but S[[sub:N]]1 substitution and E1 elimination occur together under neutral conditions, such as in pure ethanol or water. E1cB elimination takes place if the leaving group is two carbons away from a carbonyl group.
+[[b:[[span:Tertiary alkyl halides|red-text]]]] E2 elimination occurs when a base is used, but S[[sub:N]]1 substitution and E1 elimination occur together under neutral conditions, such as in pure ethanol or water. E1cB elimination takes place if the leaving group is two carbons away from a carbonyl group.
 
 <!-- SEG:m00133:example-title:exam-00001-title -->
 Predicting the Product and Mechanism of Reactions
@@ -20,13 +20,13 @@ Predicting the Product and Mechanism of Reactions
 Tell whether each of the following reactions is likely to be S[[sub:N]]1, S[[sub:N]]2, E1, E1cB, or E2, and predict the product of each:
 
 <!-- SEG:m00133:para-title:para-00006-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00133:para:para-00006 -->
 Look carefully in each reaction at the structure of the substrate, the leaving group, the nucleophile, and the solvent. Then decide from the preceding summary which kind of reaction is likely to be favored.
 
 <!-- SEG:m00133:para-title:para-00007-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00133:para:para-00008 -->
 [[b:(a)]] A secondary, nonallylic substrate can undergo an S[[sub:N]]2 reaction with a good nucleophile in a polar aprotic solvent but will undergo an E2 reaction on treatment with a strong base in a protic solvent. In this case, E2 reaction is likely to predominate.
@@ -200,22 +200,22 @@ Summary of Reactions
 Nucleophilic substitutions
 
 <!-- SEG:m00133:item:list-00004-item-1 -->
-S[[sub:N]]1 reaction of 3°, allylic, and benzylic halides ( and )[[BR]]
+S[[sub:N]]1 reaction of 3°, allylic, and benzylic halides ([[docref:m00125]] and [[docref:m00126]])[[BR]]
 
 <!-- SEG:m00133:item:list-00004-item-2 -->
-S[[sub:N]]2 reaction of 1° and simple 2° halides ( and )[[BR]]
+S[[sub:N]]2 reaction of 1° and simple 2° halides ([[docref:m00123]] and [[docref:m00124]])[[BR]]
 
 <!-- SEG:m00133:item:list-00003-item-2 -->
 Eliminations
 
 <!-- SEG:m00133:item:list-00006-item-1 -->
-E1 reaction ()[[BR]]
+E1 reaction ([[docref:m00131]])[[BR]]
 
 <!-- SEG:m00133:item:list-00006-item-2 -->
-E1cB reaction ()[[BR]]
+E1cB reaction ([[docref:m00131]])[[BR]]
 
 <!-- SEG:m00133:item:list-00006-item-3 -->
-E2 reaction ()[[BR]]
+E2 reaction ([[docref:m00129]])[[BR]]
 
 <!-- SEG:m00133:alt:fig-00007-alt -->
 The S N 1 reaction of tertiary halide forms a carbocation intermediate, which further reacts with a nucleophile to yield a halide ion and a substitution product.
@@ -236,16 +236,16 @@ The E 2 reaction mechanism of bromoalkane with a base such as K O H forms an alk
 Additional Problems
 
 <!-- SEG:m00133:para:para-00033 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00133:para:para-00038 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00133:para:para-00053 -->
-[[b:Nucleophilic Substitution Reactions]]
+[[b:[[span:Nucleophilic Substitution Reactions|red-text]]]]
 
 <!-- SEG:m00133:para:para-00064 -->
-[[b:Elimination Reactions]]
+[[b:[[span:Elimination Reactions|red-text]]]]
 
 <!-- SEG:m00133:para:para-00070 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

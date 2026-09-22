@@ -10,6 +10,9 @@ A reaction shows an alkene reacting with a carbene to form a cyclopropane.
 <!-- SEG:m00097:para:para-00002 -->
 One of the simplest methods for generating a substituted carbene is by treatment of chloroform, CHCl[[sub:3]], with a strong base such as KOH. As shown in [[xref:fig-00002]], the loss of a proton from CHCl[[sub:3]] gives trichloromethanide anion, [[sup:−]]:CCl[[sub:3]], which spontaneously expels a Cl[[sup:−]] ion to yield dichlorocarbene, :CCl[[sub:2]].
 
+<!-- SEG:m00097:figure-title:fig-00002-title -->
+MECHANISM
+
 <!-- SEG:m00097:caption:fig-00002-caption -->
 [[b:Mechanism of the formation of dichlorocarbene by reaction of chloroform with strong base.]] Deprotonation of CHCl[[sub:3]] gives the trichloromethanide anion, [[MATH:2]], which spontaneously expels a Cl[[sup:–]] ion.
 
@@ -17,10 +20,10 @@ One of the simplest methods for generating a substituted carbene is by treatment
 A 2-step mechanism shows chloroform reacting with hydroxide ion to form trichloromethanide anion, which spontaneously decomposes to dichlorocarbene and chloride ion.
 
 <!-- SEG:m00097:para:para-00003 -->
-The carbon atom in dichlorocarbene is [[i:sp]][[sup:2]]-hybridized, with a vacant [[i:p]] orbital extending above and below the plane of the three atoms and with an unshared pair of electrons occupying the third [[i:sp]][[sup:2]] lobe. Note that this electronic description of dichlorocarbene is similar to that of a carbocation () with respect to both the [[i:sp]][[sup:2]] hybridization of carbon and the vacant [[i:p]] orbital. Electrostatic potential maps further illustrate the similarity ([[xref:fig-00003]]).
+The carbon atom in dichlorocarbene is [[i:sp]][[sup:2]]-hybridized, with a vacant [[i:p]] orbital extending above and below the plane of the three atoms and with an unshared pair of electrons occupying the third [[i:sp]][[sup:2]] lobe. Note that this electronic description of dichlorocarbene is similar to that of a carbocation ([[docref:m00071]]) with respect to both the [[i:sp]][[sup:2]] hybridization of carbon and the vacant [[i:p]] orbital. Electrostatic potential maps further illustrate the similarity ([[xref:fig-00003]]).
 
 <!-- SEG:m00097:caption:fig-00003-caption -->
-[[b:The structure of dichlorocarbene.]] Electrostatic potential maps show how [[b:the positive region]] coincides with the empty [[i:p]] orbital in both dichlorocarbene and a carbocation (CH[[sub:3]][[sup:+]]). The [[b:negative region]] in the dichlorocarbene map coincides with the lone-pair electrons.
+[[b:The structure of dichlorocarbene.]] Electrostatic potential maps show how [[span:[[b:the positive region]]|cyan-text]] coincides with the empty [[i:p]] orbital in both dichlorocarbene and a carbocation (CH[[sub:3]][[sup:+]]). The [[span:[[b:negative region]]|magenta-text]] in the dichlorocarbene map coincides with the lone-pair electrons.
 
 <!-- SEG:m00097:alt:fig-00003-alt -->
 The figure shows electrostatic potential maps and structures of dichlorocarbene and a carbocation (s p 2-hybridized). The vacant p orbital is labeled in each structure.

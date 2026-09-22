@@ -23,10 +23,10 @@ The energy difference between axial and equatorial conformations is due to steri
 The chair conformation, ball and stick, and space-filling models of axial methylcyclohexane with steric interference undergoes ring-flip to form equatorial conformation, ball and stick model, and space-filling model.
 
 <!-- SEG:m00046:para:para-00004 -->
-The 1,3-diaxial steric strain in substituted methylcyclohexane is already familiar—we saw it previously as the steric strain between methyl groups in gauche in . Gauche butane is less stable than anti butane by 3.8 kJ/mol (0.9 kcal/mol) because of steric interference between hydrogen atoms on the two methyl groups. Comparing a four-carbon fragment of axial methylcyclohexane with gauche butane shows that the steric interaction is the same in both ([[xref:fig-00003]]). Because axial methylcyclohexane has two such interactions, it has 2 × 3.8 = 7.6 kJ/mol of steric strain. Equatorial methylcyclohexane has no such interactions and is therefore more stable.
+The 1,3-diaxial steric strain in substituted methylcyclohexane is already familiar—we saw it previously as the steric strain between methyl groups in gauche in [[docref:m00038]]. Gauche butane is less stable than anti butane by 3.8 kJ/mol (0.9 kcal/mol) because of steric interference between hydrogen atoms on the two methyl groups. Comparing a four-carbon fragment of axial methylcyclohexane with gauche butane shows that the steric interaction is the same in both ([[xref:fig-00003]]). Because axial methylcyclohexane has two such interactions, it has 2 × 3.8 = 7.6 kJ/mol of steric strain. Equatorial methylcyclohexane has no such interactions and is therefore more stable.
 
 <!-- SEG:m00046:caption:fig-00003-caption -->
-[[b:The origin of 1,3-diaxial interactions in methylcyclohexane.]] The steric strain between [[b:an axial methyl group]] and [[b:an axial hydrogen atom]] three carbons away is identical to the steric strain in gauche butane. (To display clearly the diaxial interactions in methylcyclohexane, two of the equatorial hydrogens are not shown.)
+[[b:The origin of 1,3-diaxial interactions in methylcyclohexane.]] The steric strain between [[b:[[span:an axial methyl group|magenta-text]]]] and [[b:[[span:an axial hydrogen atom|magenta-text]]]] three carbons away is identical to the steric strain in gauche butane. (To display clearly the diaxial interactions in methylcyclohexane, two of the equatorial hydrogens are not shown.)
 
 <!-- SEG:m00046:alt:fig-00003-alt -->
 The structures and ball and stick models of gauche butane (3.8 kilojoules per mole strain) and axial methylcyclohexane (7.6 kilojoules per mole strain).
@@ -41,7 +41,7 @@ Steric Strain in Monosubstituted Cyclohexanes
 1,3-Diaxial strain
 
 <!-- SEG:m00046:entry:auto-15 -->
-Y
+[[span:Y|magenta-text]]
 
 <!-- SEG:m00046:entry:auto-16 -->
 (kJ/mol)

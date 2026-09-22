@@ -71,7 +71,7 @@ The most obvious property of carboxylic acids is implied by their name: carboxyl
 The reaction between carboxylic acid (water-insoluble) and sodium hydroxide in the presence of water to give a water-soluble sodium salt of carboxylic acid and water.
 
 <!-- SEG:m00231:para:para-00004 -->
-Like other Brønsted–Lowry acids discussed in , carboxylic acids dissociate slightly in dilute aqueous solution to give H[[sub:3]]O[[sup:+]] and the corresponding carboxylate anions, RCO[[sub:2]][[sup:–]]. The extent of dissociation is given by an acidity constant, [[i:K]][[sub:a]].
+Like other Brønsted–Lowry acids discussed in [[docref:m00024]], carboxylic acids dissociate slightly in dilute aqueous solution to give H[[sub:3]]O[[sup:+]] and the corresponding carboxylate anions, RCO[[sub:2]][[sup:–]]. The extent of dissociation is given by an acidity constant, [[i:K]][[sub:a]].
 
 <!-- SEG:m00231:alt:fig-00003-alt -->
 Reversible dissociation of a carboxylic acid in water gives carboxylate and hydronium ions. The expression for K a and relationship between K a and p K a are given.
@@ -173,7 +173,7 @@ Although much weaker than mineral acids, carboxylic acids are nevertheless much 
 A horizontal arrow indicates acid strength in increasing order, with p K a values mentioned: ethanol (16), phenol (9.89), acetic acid (4.76), and hydrochloric acid (-7).
 
 <!-- SEG:m00231:para:para-00007 -->
-Why are carboxylic acids so much more acidic than alcohols, even though both contain –OH groups? An alcohol dissociates to give an alkoxide ion, in which the negative charge is localized on a single electronegative atom. A carboxylic acid, however, gives a carboxylate ion, in which the negative charge is delocalized over two equivalent oxygen atoms ([[xref:fig-00005]]). In resonance terms (), a carboxylate ion is a stabilized resonance hybrid of two equivalent structures. Since a carboxylate ion is more stable than an alkoxide ion, it is lower in energy and more favored in the dissociation equilibrium.
+Why are carboxylic acids so much more acidic than alcohols, even though both contain –OH groups? An alcohol dissociates to give an alkoxide ion, in which the negative charge is localized on a single electronegative atom. A carboxylic acid, however, gives a carboxylate ion, in which the negative charge is delocalized over two equivalent oxygen atoms ([[xref:fig-00005]]). In resonance terms ([[docref:m00021]]), a carboxylate ion is a stabilized resonance hybrid of two equivalent structures. Since a carboxylate ion is more stable than an alkoxide ion, it is lower in energy and more favored in the dissociation equilibrium.
 
 <!-- SEG:m00231:caption:fig-00005-caption -->
 [[b:An alkoxide ion has its charge localized on one oxygen atom and is less stable, while a carboxylate ion has the charge spread equally over both oxygens and is therefore more stable.]]

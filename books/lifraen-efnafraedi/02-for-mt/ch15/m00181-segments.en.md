@@ -98,7 +98,7 @@ The ortho, meta, para system of nomenclature is also useful when discussing reac
 A benzene bonded to X with ortho, meta, and para positions labeled. To the right, toluene reacts with molecular bromine and F e B r 3 to form para-bromotoluene.
 
 <!-- SEG:m00181:para:para-00008 -->
-As with cycloalkanes (), benzenes with more than two substituents are named by choosing a point of attachment as carbon 1 and numbering the substituents on the ring so that the second substituent has as low a number as possible. If ambiguity still exists, number so that the third or fourth substituent has as low a number as possible, until a point of difference is found. The substituents are listed alphabetically when writing the name.
+As with cycloalkanes ([[docref:m00040]]), benzenes with more than two substituents are named by choosing a point of attachment as carbon 1 and numbering the substituents on the ring so that the second substituent has as low a number as possible. If ambiguity still exists, number so that the third or fourth substituent has as low a number as possible, until a point of difference is found. The substituents are listed alphabetically when writing the name.
 
 <!-- SEG:m00181:alt:fig-00006-alt -->
 The structures of 4-bromo-1,2-dimethylbenzene, 2,5-dimethylphenol and 2,4,6-trinitrotoluene (T N T).

@@ -5,10 +5,10 @@ A Summary of Rules for Pericyclic Reactions
 How can you keep straight all the rules about pericyclic reactions? The summary in [[docref:m00344#table-00001]], [[docref:m00346#table-00001]], and [[docref:m00347#table-00001]] can be distilled into a mnemonic phrase that provides an easy way to predict the stereochemical outcome of any pericyclic reaction:
 
 <!-- SEG:m00349:para:para-00002 -->
-[[em:The Electrons Circle Around ([[b:TECA]])|centered-text]]
+[[em:The Electrons Circle Around ([[b:[[span:TECA|magenta-text]]]])|centered-text]]
 
 <!-- SEG:m00349:para:para-00003 -->
-[[em:[[b:T]]|centered-text]]hermal reactions with an [[b:[[i:E]]]]ven number of electron[[BR]]pairs are [[b:[[i:C]]]]onrotatory or [[b:[[i:A]]]]ntarafacial.
+[[em:[[b:[[span:T|magenta-text]]]]|centered-text]]hermal reactions with an [[b:[[i:[[span:E|magenta-text]]]]]]ven number of electron[[BR]]pairs are [[b:[[i:[[span:C|magenta-text]]]]]]onrotatory or [[b:[[i:[[span:A|magenta-text]]]]]]ntarafacial.
 
 <!-- SEG:m00349:para:para-00004 -->
 A change either from thermal to photochemical or from an even to an odd number of electron pairs changes the outcome from conrotatory/antarafacial to disrotatory/suprafacial. A change from both thermal and even to photochemical and odd causes no change because two negatives make a positive.
@@ -23,10 +23,10 @@ Stereochemical Rules for Pericyclic Reactions
 Electronic state
 
 <!-- SEG:m00349:entry:auto-9 -->
-Electron pairs
+[[span:Electron pairs|magenta-text]]
 
 <!-- SEG:m00349:entry:auto-10 -->
-Stereochemistry
+[[span:Stereochemistry|green-text]]
 
 <!-- SEG:m00349:entry:auto-11 -->
 [[b:Ground state (thermal)]]
@@ -53,7 +53,7 @@ Problems
 Vitamin D, the Sunshine Vitamin
 
 <!-- SEG:m00349:para:para-00007 -->
-Vitamin D, discovered in 1918, is a general name for two related compounds, [[b:cholecalciferol]] (vitamin D[[sub:3]]) and [[b:ergocalciferol]] (vitamin D[[sub:2]]). Both are derived from steroids () and differ only in the nature of the hydrocarbon side chain attached to the five-membered ring. Cholecalciferol comes primarily from dairy products and fish; ergocalciferol comes from some vegetables.
+Vitamin D, discovered in 1918, is a general name for two related compounds, [[b:cholecalciferol]] (vitamin D[[sub:3]]) and [[b:ergocalciferol]] (vitamin D[[sub:2]]). Both are derived from steroids ([[docref:m00270]]) and differ only in the nature of the hydrocarbon side chain attached to the five-membered ring. Cholecalciferol comes primarily from dairy products and fish; ergocalciferol comes from some vegetables.
 
 <!-- SEG:m00349:caption:fig-00001-caption -->
 Here are the sunbathers, again, with their chemical work complete. (credit: “Tanning” by Meraj Chhaya/Flickr, CC BY 2.0)
@@ -134,25 +134,25 @@ A [[b:pericyclic reaction]] takes place in a single step through a cyclic transi
 [[b:Sigmatropic rearrangements]] involve the migration of a [[i:σ]]-bonded group across a [[i:π]] electron system. For example, Claisen rearrangement of an allylic vinylic ether yields an unsaturated carbonyl compound, and Cope rearrangement of a 1,5-hexadiene yields an isomeric 1,5-hexadiene. Sigmatropic rearrangements can occur with either suprafacial or antarafacial stereochemistry; the selection rules for a given case are the same as those for cycloaddition reactions.
 
 <!-- SEG:m00349:para:para-00016 -->
-The stereochemistry of any pericyclic reaction can be predicted by counting the total number of electron pairs (bonds) involved in bond reorganization and then applying the mnemonic “[[b:T]]he [[b:E]]lectrons [[b:C]]ircle [[b:A]]round.” That is, [[b:thermal]] (ground-state) reactions involving an even number of electron pairs occur with either conrotatory or antarafacial stereochemistry. Exactly the opposite rules apply to [[b:photochemical]] (excited-state) reactions.
+The stereochemistry of any pericyclic reaction can be predicted by counting the total number of electron pairs (bonds) involved in bond reorganization and then applying the mnemonic “[[b:[[span:T|magenta-text]]]]he [[b:[[span:E|magenta-text]]]]lectrons [[b:[[span:C|magenta-text]]]]ircle [[b:[[span:A|magenta-text]]]]round.” That is, [[b:thermal]] (ground-state) reactions involving an even number of electron pairs occur with either conrotatory or antarafacial stereochemistry. Exactly the opposite rules apply to [[b:photochemical]] (excited-state) reactions.
 
 <!-- SEG:m00349:title:sect-00005-title -->
 Additional Problems
 
 <!-- SEG:m00349:para:para-00017 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00349:para:para-00020 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00349:para:para-00026 -->
-[[b:Electrocyclic Reactions]]
+[[b:[[span:Electrocyclic Reactions|red-text]]]]
 
 <!-- SEG:m00349:para:para-00034 -->
-[[b:Cycloaddition Reactions]]
+[[b:[[span:Cycloaddition Reactions|red-text]]]]
 
 <!-- SEG:m00349:para:para-00038 -->
-[[b:Sigmatropic Rearrangements]]
+[[b:[[span:Sigmatropic Rearrangements|red-text]]]]
 
 <!-- SEG:m00349:para:para-00044 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

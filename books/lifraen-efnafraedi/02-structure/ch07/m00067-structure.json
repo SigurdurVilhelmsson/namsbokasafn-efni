@@ -2,7 +2,7 @@
   "moduleId": "m00067",
   "title": {
     "segmentId": "m00067:title:auto-1",
-    "text": "Problems"
+    "text": "Alkene Stereochemistry and the [[i:E]],[[i:Z]] Designation"
   },
   "documentClass": null,
   "metadata": {
@@ -43,6 +43,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -62,6 +63,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -81,6 +83,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -110,7 +113,7 @@
           "segmentId": "m00067:para:para-00010",
           "title": {
             "segmentId": "m00067:para-title:para-00010-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -119,7 +122,7 @@
           "segmentId": "m00067:para:para-00011",
           "title": {
             "segmentId": "m00067:para-title:para-00011-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -128,6 +131,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -142,6 +146,7 @@
       "type": "figure",
       "id": "fig-00005",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

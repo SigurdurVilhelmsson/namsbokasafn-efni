@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00191",
-  "extractedAt": "2026-08-31T19:08:48.742Z",
+  "extractedAt": "2026-09-22T17:26:37.877Z",
   "sourceHash": "6828901c1e0b0ce0",
-  "segmentCount": 34,
+  "segmentCount": 35,
   "segmentIds": [
     "m00191:title:auto-1",
     "m00191:para:para-00001",
+    "m00191:figure-title:fig-00001-title",
     "m00191:caption:fig-00001-caption",
     "m00191:alt:fig-00001-alt",
     "m00191:para:para-00002",
@@ -83,5 +84,13 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkylation",
+    "term-00002": "Friedel–Crafts reaction",
+    "term-00003": "AlCl3-assisted",
+    "term-00004": "acylated",
+    "term-00005": "acyl group",
+    "term-00006": "acylation"
   }
 }

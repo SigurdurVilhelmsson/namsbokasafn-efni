@@ -23,7 +23,7 @@ Primary alcohols are oxidized to carboxylic acids by heating with KMnO[[sub:4]] 
 1-decanol reacts with chromium trioxide, hydronium ion and acetone to form decanoic acid with 93 percent yield.
 
 <!-- SEG:m00206:para:para-00004 -->
-All these oxidations occur by a mechanism that is closely related to the E2 reaction (). In the Dess–Martin oxidation, for instance, the first step involves a substitution reaction between the alcohol and the I(V) reagent to form a new periodinane intermediate, followed by expulsion of reduced I(III) as the leaving group. Similarly, when a Cr(VI) reagent, such as CrO[[sub:3]], is the oxidant, reaction with the alcohol gives a chromate intermediate followed by expulsion of a reduced Cr(VI) species.
+All these oxidations occur by a mechanism that is closely related to the E2 reaction ([[docref:m00129]]). In the Dess–Martin oxidation, for instance, the first step involves a substitution reaction between the alcohol and the I(V) reagent to form a new periodinane intermediate, followed by expulsion of reduced I(III) as the leaving group. Similarly, when a Cr(VI) reagent, such as CrO[[sub:3]], is the oxidant, reaction with the alcohol gives a chromate intermediate followed by expulsion of a reduced Cr(VI) species.
 
 <!-- SEG:m00206:alt:fig-00005-alt -->
 A primary alcohol reacts with Dess-Martin periodinane to form periodinane intermediate. This reacts to form an aldehyde.

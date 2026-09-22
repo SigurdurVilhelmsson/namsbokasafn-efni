@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00222",
-  "extractedAt": "2026-08-31T19:08:49.211Z",
+  "extractedAt": "2026-09-22T17:26:38.403Z",
   "sourceHash": "6ebff4a4da26f957",
   "segmentCount": 20,
   "segmentIds": [
@@ -70,5 +70,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Wittig reaction",
+    "term-00003": "phosphorane",
+    "term-00002": "ylide"
   }
 }

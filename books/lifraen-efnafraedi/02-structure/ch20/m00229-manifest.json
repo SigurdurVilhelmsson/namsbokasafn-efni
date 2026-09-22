@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00229",
-  "extractedAt": "2026-08-31T19:08:49.292Z",
+  "extractedAt": "2026-09-22T17:26:38.549Z",
   "sourceHash": "88d58f425af2dc4f",
   "segmentCount": 10,
   "segmentIds": [
@@ -46,5 +46,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Carboxylic acids, RCO2H"
   }
 }

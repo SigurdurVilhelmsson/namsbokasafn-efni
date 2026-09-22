@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00150",
-  "extractedAt": "2026-08-31T19:08:48.368Z",
+  "extractedAt": "2026-09-22T17:26:37.428Z",
   "sourceHash": "fd4c45400d059c6f",
   "segmentCount": 12,
   "segmentIds": [
@@ -52,5 +52,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "homotopic",
+    "term-00002": "enantiotopic",
+    "term-00003": "diastereotopic"
   }
 }

@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00110",
-  "extractedAt": "2026-08-31T19:08:47.874Z",
+  "extractedAt": "2026-09-22T17:26:36.773Z",
   "sourceHash": "d60855cd0676db6a",
-  "segmentCount": 13,
+  "segmentCount": 14,
   "segmentIds": [
     "m00110:title:auto-1",
     "m00110:para:para-00001",
     "m00110:alt:fig-00001-alt",
     "m00110:para:para-00002",
+    "m00110:figure-title:fig-00002-title",
     "m00110:caption:fig-00002-caption",
     "m00110:alt:fig-00002-alt",
     "m00110:para:para-00003",
@@ -53,5 +54,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkylation"
   }
 }

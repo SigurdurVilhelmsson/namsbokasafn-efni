@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00312",
-  "extractedAt": "2026-08-31T19:08:50.189Z",
+  "extractedAt": "2026-09-22T17:26:39.870Z",
   "sourceHash": "88603e9174d3a5fd",
   "segmentCount": 8,
   "segmentIds": [
@@ -40,5 +40,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "replication"
   }
 }

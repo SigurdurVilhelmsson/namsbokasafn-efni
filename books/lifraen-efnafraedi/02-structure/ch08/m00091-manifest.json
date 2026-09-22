@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00091",
-  "extractedAt": "2026-08-31T19:08:47.719Z",
+  "extractedAt": "2026-09-22T17:26:36.585Z",
   "sourceHash": "753536e199d9ba78",
-  "segmentCount": 12,
+  "segmentCount": 13,
   "segmentIds": [
     "m00091:title:auto-1",
     "m00091:para:para-00001",
     "m00091:alt:fig-00001-alt",
     "m00091:para:para-00002",
+    "m00091:figure-title:fig-00002-title",
     "m00091:caption:fig-00002-caption",
     "m00091:alt:fig-00002-alt",
     "m00091:para:para-00003",
@@ -51,5 +52,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "halohydrin"
   }
 }

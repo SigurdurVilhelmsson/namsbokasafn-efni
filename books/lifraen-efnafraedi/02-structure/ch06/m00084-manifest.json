@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00084",
-  "extractedAt": "2026-08-31T19:08:47.433Z",
+  "extractedAt": "2026-09-22T17:26:36.266Z",
   "sourceHash": "808f8ce79585d8fb",
   "segmentCount": 126,
   "segmentIds": [
@@ -163,5 +163,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "bond dissociation energy (D)"
   }
 }

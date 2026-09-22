@@ -35,10 +35,10 @@ In practice, superconducting magnets that produce enormously powerful fields up 
 The NMR Behavior of Some Common Nuclei
 
 <!-- SEG:m00144:entry:auto-13 -->
-Magnetic nuclei
+[[span:Magnetic nuclei|magenta-text]]
 
 <!-- SEG:m00144:entry:auto-14 -->
-Nonmagnetic nuclei
+[[span:Nonmagnetic nuclei|cyan-text]]
 
 <!-- SEG:m00144:entry:auto-15 -->
 [[sup:1]]H

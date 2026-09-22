@@ -5,13 +5,16 @@ Phenols and Their Uses
 The outbreak of World War I provided a stimulus for the industrial preparation of large amounts of synthetic phenol, which was needed as a raw material to manufacture the explosive, picric acid (2,4,6-trinitrophenol). Today, approximately 132 million tons of phenol is manufactured worldwide each year for use in such products as Bakelite resin and adhesives for binding plywood.
 
 <!-- SEG:m00208:para:para-00002 -->
-Phenol was manufactured for many years by the Dow process, in which chlorobenzene reacts with NaOH at high temperature and pressure (). Now, however, an alternative synthesis uses isopropylbenzene, commonly called [[i:cumene]]. Cumene reacts with air at high temperature by benzylic oxidation through a radical mechanism to form cumene hydroperoxide, which is converted into phenol and acetone by treatment with acid. This is a particularly efficient process because two valuable chemicals are prepared at the same time.
+Phenol was manufactured for many years by the Dow process, in which chlorobenzene reacts with NaOH at high temperature and pressure ([[docref:m00195]]). Now, however, an alternative synthesis uses isopropylbenzene, commonly called [[i:cumene]]. Cumene reacts with air at high temperature by benzylic oxidation through a radical mechanism to form cumene hydroperoxide, which is converted into phenol and acetone by treatment with acid. This is a particularly efficient process because two valuable chemicals are prepared at the same time.
 
 <!-- SEG:m00208:alt:fig-00001-alt -->
 Cumene (isopropyl benzene) reacts with oxygen and heat to form cumene hydroperoxide. This reacts with hydronium ion to form phenol and acetone.
 
 <!-- SEG:m00208:para:para-00003 -->
 As shown in [[xref:fig-00002]], the reaction occurs by protonation of oxygen followed by shift of the phenyl group from carbon to oxygen with simultaneous loss of water. Replacement of the water then yields an intermediate called a [[i:hemiacetal]]—a compound that contains one –OR group and one –OH group bonded to the same carbon atom—which breaks down to phenol and acetone.
+
+<!-- SEG:m00208:figure-title:fig-00002-title -->
+MECHANISM
 
 <!-- SEG:m00208:caption:fig-00002-caption -->
 [[b:Mechanism for the formation of phenol by acid-catalyzed rearrangement of cumene hydroperoxide]].

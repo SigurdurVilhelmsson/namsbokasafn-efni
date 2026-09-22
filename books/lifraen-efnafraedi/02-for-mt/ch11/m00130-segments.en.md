@@ -2,7 +2,7 @@
 The E2 Reaction and Cyclohexane Conformation
 
 <!-- SEG:m00130:para:para-00001 -->
-Anti periplanar geometry for E2 reactions is particularly important in cyclohexane rings, where chair geometry forces a rigid relationship between the substituents on neighboring carbon atoms (). The anti periplanar requirement for E2 reactions overrides Zaitsev’s rule and can be met in cyclohexanes only if the hydrogen and the leaving group are trans diaxial ([[xref:fig-00001]]). If either the leaving group or the hydrogen is equatorial, E2 elimination can’t occur.
+Anti periplanar geometry for E2 reactions is particularly important in cyclohexane rings, where chair geometry forces a rigid relationship between the substituents on neighboring carbon atoms ([[docref:m00047]]). The anti periplanar requirement for E2 reactions overrides Zaitsev’s rule and can be met in cyclohexanes only if the hydrogen and the leaving group are trans diaxial ([[xref:fig-00001]]). If either the leaving group or the hydrogen is equatorial, E2 elimination can’t occur.
 
 <!-- SEG:m00130:caption:fig-00001-caption -->
 [[b:The geometric requirement for an E2 reaction in a substituted cyclohexane.]] The leaving group and the hydrogen must both be axial for anti periplanar elimination to occur.

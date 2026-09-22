@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00093",
-  "extractedAt": "2026-08-31T19:08:47.728Z",
+  "extractedAt": "2026-09-22T17:26:36.593Z",
   "sourceHash": "4d5effc8fced360c",
   "segmentCount": 29,
   "segmentIds": [
@@ -79,5 +79,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "hydroboration",
+    "term-00002": "syn stereochemistry"
   }
 }

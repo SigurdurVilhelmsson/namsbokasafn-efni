@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00161",
-  "extractedAt": "2026-08-31T19:08:46.511Z",
+  "extractedAt": "2026-09-22T17:26:35.483Z",
   "sourceHash": "e623d9e7296e69bc",
   "segmentCount": 29,
   "segmentIds": [
@@ -75,5 +75,17 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "valence shell",
+    "term-00002": "ionic bond",
+    "term-00003": "covalent bond",
+    "term-00004": "molecule",
+    "term-00005": "Lewis structures",
+    "term-00006": "electron-dot structures",
+    "term-00007": "Kekulé structures",
+    "term-00008": "line-bond structures",
+    "term-00009": "lone-pair electrons",
+    "term-00010": "nonbonding electrons"
   }
 }

@@ -2,7 +2,7 @@
 Preparing Alkyl Halides from Alkenes: Allylic Bromination
 
 <!-- SEG:m00115:para:para-00001 -->
-We’ve already seen several methods for preparing alkyl halides from alkenes, including the reactions of HX and X[[sub:2]] with alkenes in electrophilic addition reactions ( and ). The hydrogen halides HCl, HBr, and HI react with alkenes by a polar mechanism to give the product of Markovnikov addition. Bromine and chlorine undergo anti addition through halonium ion intermediates to give 1,2-dihalogenated products.
+We’ve already seen several methods for preparing alkyl halides from alkenes, including the reactions of HX and X[[sub:2]] with alkenes in electrophilic addition reactions ([[docref:m00069]] and [[docref:m00090]]). The hydrogen halides HCl, HBr, and HI react with alkenes by a polar mechanism to give the product of Markovnikov addition. Bromine and chlorine undergo anti addition through halonium ion intermediates to give 1,2-dihalogenated products.
 
 <!-- SEG:m00115:alt:fig-00001-alt -->
 Two reactions of an alkene. Alkene and HX give a halogenated product (X is Cl, Br, or I). Alkene and X2 give a dihalogenated product (X is Cl or Br).
@@ -17,7 +17,7 @@ The reaction of cyclohexene in the presence of N-bromosuccinimide, light, and ca
 This allylic bromination with NBS is analogous to the alkane chlorination reaction discussed in the previous section and occurs by a radical chain-reaction pathway ([[xref:fig-00003]]). As in alkane halogenation, a Br[[b:·]] radical abstracts an allylic hydrogen atom, forming an allylic radical plus HBr. The HBr then reacts with NBS to form Br[[sub:2]], which in turn reacts with the allylic radical to yield the brominated product and a Br[[b:·]] radical that cycles back into the first step and carries on the chain.
 
 <!-- SEG:m00115:caption:fig-00003-caption -->
-[[b:Mechanism of allylic bromination of an alkene with NBS.]] The process is a radical chain reaction in which ([[b:1]]) a Br[[b:·]] radical abstracts an allylic hydrogen atom of the alkene and gives an allylic radical plus HBr. ([[b:2]]) The HBr then reacts with NBS to form Br[[sub:2]], which ([[b:3]]) reacts with the allylic radical to yield the bromoalkene product and a Br[[b:·]] radical that continues the chain.
+[[b:Mechanism of allylic bromination of an alkene with NBS.]] The process is a radical chain reaction in which ([[b:[[span:1|magenta-text]]]]) a Br[[b:·]] radical abstracts an allylic hydrogen atom of the alkene and gives an allylic radical plus HBr. ([[b:[[span:2|magenta-text]]]]) The HBr then reacts with NBS to form Br[[sub:2]], which ([[b:[[span:3|magenta-text]]]]) reacts with the allylic radical to yield the bromoalkene product and a Br[[b:·]] radical that continues the chain.
 
 <!-- SEG:m00115:alt:fig-00003-alt -->
 The mechanism of allylic bromination of an alkene with N B S involving three steps. Bromoalkene and a Br radical are the final products.

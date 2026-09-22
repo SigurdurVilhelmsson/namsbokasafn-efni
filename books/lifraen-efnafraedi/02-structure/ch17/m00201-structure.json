@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00201:caption:fig-00001-caption"
       },
@@ -44,6 +45,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -63,6 +65,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -345,6 +348,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -364,6 +368,7 @@
       "type": "figure",
       "id": "fig-00005",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -383,6 +388,7 @@
       "type": "figure",
       "id": "fig-00006",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -402,6 +408,7 @@
       "type": "figure",
       "id": "fig-00007",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -421,6 +428,7 @@
       "type": "figure",
       "id": "fig-00008",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00201:caption:fig-00008-caption"
       },
@@ -442,6 +450,7 @@
       "type": "figure",
       "id": "fig-00009",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -471,7 +480,7 @@
           "segmentId": "m00201:para:para-00014",
           "title": {
             "segmentId": "m00201:para-title:para-00014-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -480,7 +489,7 @@
           "segmentId": "m00201:para:para-00015",
           "title": {
             "segmentId": "m00201:para-title:para-00015-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -489,6 +498,7 @@
       "type": "figure",
       "id": "fig-00010",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

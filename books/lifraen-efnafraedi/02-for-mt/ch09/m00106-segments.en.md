@@ -2,7 +2,7 @@
 Hydration of Alkynes
 
 <!-- SEG:m00106:para:para-00001 -->
-Like alkenes ( and ), alkynes can be hydrated by either of two methods. Direct addition of water catalyzed by mercury(II) ion yields the Markovnikov product, and indirect addition of water by a hydroboration–oxidation sequence yields the non-Markovnikov product.
+Like alkenes ([[docref:m00092]] and [[docref:m00093]]), alkynes can be hydrated by either of two methods. Direct addition of water catalyzed by mercury(II) ion yields the Markovnikov product, and indirect addition of water by a hydroboration–oxidation sequence yields the non-Markovnikov product.
 
 <!-- SEG:m00106:title:sect-00001-title -->
 Mercury(II)-Catalyzed Hydration of Alkynes
@@ -20,7 +20,10 @@ Interestingly, the actual product isolated from alkyne hydration is not a vinyli
 Two reversible structures separated by a double headed arrow. The first structure is a less favored enol tautomer. The second structure is a more favored keto tautomer.
 
 <!-- SEG:m00106:para:para-00004 -->
-As shown in [[xref:fig-00003]], the mechanism of the mercury(II)-catalyzed alkyne hydration reaction is analogous to the oxymercuration reaction of alkenes (). Electrophilic addition of mercury(II) ion to the alkyne gives a vinylic cation, which reacts with water and loses a proton to yield a mercury-containing enol intermediate. In contrast with alkene oxymercuration, however, no treatment with NaBH[[sub:4]] is necessary to remove the mercury. The acidic reaction conditions alone are sufficient to effect replacement of mercury by hydrogen. Tautomerization then gives the ketone.
+As shown in [[xref:fig-00003]], the mechanism of the mercury(II)-catalyzed alkyne hydration reaction is analogous to the oxymercuration reaction of alkenes ([[docref:m00092]]). Electrophilic addition of mercury(II) ion to the alkyne gives a vinylic cation, which reacts with water and loses a proton to yield a mercury-containing enol intermediate. In contrast with alkene oxymercuration, however, no treatment with NaBH[[sub:4]] is necessary to remove the mercury. The acidic reaction conditions alone are sufficient to effect replacement of mercury by hydrogen. Tautomerization then gives the ketone.
+
+<!-- SEG:m00106:figure-title:fig-00003-title -->
+MECHANISM
 
 <!-- SEG:m00106:caption:fig-00003-caption -->
 [[b:Mechanism of the mercury(II)-catalyzed hydration of an alkyne to yield a ketone.]] The reaction occurs through initial formation of an intermediate enol, which tautomerizes to the ketone.

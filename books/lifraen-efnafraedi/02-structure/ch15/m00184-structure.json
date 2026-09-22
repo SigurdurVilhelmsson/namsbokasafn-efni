@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -62,6 +63,7 @@
     {
       "type": "figure",
       "id": "fig-00002",
+      "title": null,
       "caption": {
         "segmentId": "m00184:caption:fig-00002-caption"
       },
@@ -87,6 +89,7 @@
     {
       "type": "figure",
       "id": "fig-00003",
+      "title": null,
       "caption": {
         "segmentId": "m00184:caption:fig-00003-caption"
       },

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00107",
-  "extractedAt": "2026-08-31T19:08:47.868Z",
+  "extractedAt": "2026-09-22T17:26:36.761Z",
   "sourceHash": "625c81b3cbfee03b",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00107:title:auto-1",
     "m00107:para:para-00001",
@@ -15,6 +15,7 @@
     "m00107:para:para-00004",
     "m00107:alt:fig-00004-alt",
     "m00107:para:para-00005",
+    "m00107:figure-title:fig-00005-title",
     "m00107:caption:fig-00005-caption",
     "m00107:alt:fig-00005-alt",
     "m00107:para:para-00006",
@@ -53,5 +54,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lindlar catalyst"
   }
 }

@@ -2,7 +2,7 @@
 Amino Acids and the Henderson–Hasselbalch Equation: Isoelectric Points
 
 <!-- SEG:m00319:para:para-00001 -->
-According to the Henderson–Hasselbalch equation ( and ), if we know both the pH of a solution and the p[[i:K]][[sub:a]] of an acid HA, we can calculate the ratio of [A[[sup:–]]] to [HA] in the solution. Furthermore, when pH = p[[i:K]][[sub:a]], the two forms A[[sup:–]] and HA are present in equal amounts because log 1 = 0.
+According to the Henderson–Hasselbalch equation ([[docref:m00232]] and [[docref:m00293]]), if we know both the pH of a solution and the p[[i:K]][[sub:a]] of an acid HA, we can calculate the ratio of [A[[sup:–]]] to [HA] in the solution. Furthermore, when pH = p[[i:K]][[sub:a]], the two forms A[[sup:–]] and HA are present in equal amounts because log 1 = 0.
 
 <!-- SEG:m00319:para:para-00002 -->
 To apply the Henderson–Hasselbalch equation to an amino acid, let’s find out what species are present in a 1.00 M solution of alanine at pH = 9.00. According to [[docref:m00318#table-00001]], protonated alanine [[[sup:+]]H[[sub:3]]NCH(CH[[sub:3]])CO[[sub:2]]H] has p[[i:K]][[sub:a1]] = 2.34 and neutral zwitterionic alanine [[[sup:+]]H[[sub:3]]NCH(CH[[sub:3]])CO[[sub:2]][[sup:–]]] has p[[i:K]][[sub:a2]] = 9.69:

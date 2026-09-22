@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00137",
-  "extractedAt": "2026-08-31T19:08:48.195Z",
+  "extractedAt": "2026-09-22T17:26:37.233Z",
   "sourceHash": "c4f3ee34408b9d35",
   "segmentCount": 43,
   "segmentIds": [
@@ -97,5 +97,8 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "McLafferty rearrangement"
   }
 }

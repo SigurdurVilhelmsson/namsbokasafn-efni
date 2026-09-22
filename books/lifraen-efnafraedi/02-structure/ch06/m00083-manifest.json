@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00083",
-  "extractedAt": "2026-08-31T19:08:47.429Z",
+  "extractedAt": "2026-09-22T17:26:36.258Z",
   "sourceHash": "d03eb6ecac09443b",
   "segmentCount": 37,
   "segmentIds": [
@@ -99,5 +99,15 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Gibbs free-energy change (ΔG)",
+    "term-00002": "exergonic",
+    "term-00003": "endergonic",
+    "term-00004": "enthalpy change (ΔH)",
+    "term-00005": "heat of reaction",
+    "term-00006": "exothermic",
+    "term-00007": "endothermic",
+    "term-00008": "entropy change (ΔS)"
   }
 }

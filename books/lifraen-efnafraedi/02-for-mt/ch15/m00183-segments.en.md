@@ -1,14 +1,14 @@
 <!-- SEG:m00183:title:auto-1 -->
-Problems
+Aromaticity and the Hückel 4[[i:n]] + 2 Rule
 
 <!-- SEG:m00183:item:list-00002-item-1 -->
-[[b:Cyclobutadiene]] has four [[i:π]] electrons and is antiaromatic. As indicated by the electrostatic potential map, the [[i:π]] electrons are localized in two double bonds rather than delocalized around the ring.[[BR]] [[BR]] Cyclobutadiene is highly reactive and shows none of the properties associated with aromaticity. In fact, it was not even prepared until 1965, when Rowland Pettit at the University of Texas was able to make it at low temperature. Even at –78 °C, however, cyclobutadiene is so reactive that it dimerizes by a Diels–Alder reaction. One molecule behaves as a diene and the other as a dienophile.[[BR]]
+[[b:[[span:Cyclobutadiene|cyan-text]]]] has four [[i:π]] electrons and is antiaromatic. As indicated by the electrostatic potential map, the [[i:π]] electrons are localized in two double bonds rather than delocalized around the ring.[[BR]] [[BR]] Cyclobutadiene is highly reactive and shows none of the properties associated with aromaticity. In fact, it was not even prepared until 1965, when Rowland Pettit at the University of Texas was able to make it at low temperature. Even at –78 °C, however, cyclobutadiene is so reactive that it dimerizes by a Diels–Alder reaction. One molecule behaves as a diene and the other as a dienophile.[[BR]]
 
 <!-- SEG:m00183:item:list-00002-item-2 -->
-[[b:Benzene]] has six [[i:π]] electrons (4[[i:n]] + 2 = 6 when [[i:n]] = 1) and is aromatic.[[BR]]
+[[b:[[span:Benzene|cyan-text]]]] has six [[i:π]] electrons (4[[i:n]] + 2 = 6 when [[i:n]] = 1) and is aromatic.[[BR]]
 
 <!-- SEG:m00183:item:list-00002-item-3 -->
-[[b:Cyclooctatetraene]] has eight [[i:π]] electrons, but when it was first prepared in 1911 by the German chemist Richard Willstätter, it was found not to be particularly stable. In fact, its [[i:π]] electrons are localized into four double bonds rather than delocalized around the ring, and the molecule is tub-shaped rather than planar. It has no cyclic conjugation because neighboring [[i:p]] orbitals don’t have the necessary parallel alignment for overlap, and it resembles an open-chain polyene in its reactivity.[[BR]]
+[[b:[[span:Cyclooctatetraene|cyan-text]]]] has eight [[i:π]] electrons, but when it was first prepared in 1911 by the German chemist Richard Willstätter, it was found not to be particularly stable. In fact, its [[i:π]] electrons are localized into four double bonds rather than delocalized around the ring, and the molecule is tub-shaped rather than planar. It has no cyclic conjugation because neighboring [[i:p]] orbitals don’t have the necessary parallel alignment for overlap, and it resembles an open-chain polyene in its reactivity.[[BR]]
 
 <!-- SEG:m00183:para:para-00001 -->
 Let’s list what we’ve said thus far about benzene and, by extension, about other benzene-like aromatic molecules.

@@ -11,7 +11,7 @@ Stronger acids have their equilibria toward the right and thus have larger acidi
 Acid strengths are normally expressed using p[[i:K]][[sub:a]] values rather than [[i:K]][[sub:a]] values, where the [[term:p[[i:K]][[sub:a]]|term-00002]] is the negative common logarithm of the [[i:K]][[sub:a]]:
 
 <!-- SEG:m00025:para:para-00004 -->
-A stronger acid (larger [[i:K]][[sub:a]]) has a smaller p[[i:K]][[sub:a]], and a weaker acid (smaller [[i:K]][[sub:a]]) has a larger p[[i:K]][[sub:a]]. [[xref:table-00001]] lists the p[[i:K]][[sub:a]]’s of some common acids in order of their strength, and a more comprehensive table is given in .
+A stronger acid (larger [[i:K]][[sub:a]]) has a smaller p[[i:K]][[sub:a]], and a weaker acid (smaller [[i:K]][[sub:a]]) has a larger p[[i:K]][[sub:a]]. [[xref:table-00001]] lists the p[[i:K]][[sub:a]]’s of some common acids in order of their strength, and a more comprehensive table is given in [[docref:m00030]].
 
 <!-- SEG:m00025:para:para-00005 -->
 Notice that the p[[i:K]][[sub:a]] value shown in [[xref:table-00001]] for water is 15.74, which results from the following calculation. Because water is both the acid and the solvent, the equilibrium expression is
@@ -44,7 +44,7 @@ Name
 An arrow points downward; top is blue and labeled weaker acid, bottom is red and labeled stronger acid.
 
 <!-- SEG:m00025:entry:auto-16 -->
-CH[[sub:3]]CH[[sub:2]]OH
+CH[[sub:3]]CH[[sub:2]]O[[span:H|magenta-text]]
 
 <!-- SEG:m00025:entry:auto-17 -->
 Ethanol
@@ -62,7 +62,7 @@ Ethoxide ion
 An arrow points upward; top is red and labeled stronger base, bottom is blue and labeled weaker base.
 
 <!-- SEG:m00025:entry:auto-22 -->
-H[[sub:2]]O
+[[span:H[[sub:2]]|magenta-text]]O
 
 <!-- SEG:m00025:entry:auto-23 -->
 Water
@@ -77,7 +77,7 @@ HO[[sup:–]]
 Hydroxide ion
 
 <!-- SEG:m00025:entry:auto-27 -->
-HCN
+[[span:H|magenta-text]]CN
 
 <!-- SEG:m00025:entry:auto-28 -->
 Hydrocyanic acid
@@ -92,7 +92,7 @@ CN[[sup:–]]
 Cyanide ion
 
 <!-- SEG:m00025:entry:auto-32 -->
-H[[sub:2]]PO[[sub:4]][[sup:–]]
+[[span:H[[sub:2]]|magenta-text]]PO[[sub:4]][[sup:–]]
 
 <!-- SEG:m00025:entry:auto-33 -->
 Dihydrogen phosphate ion
@@ -107,7 +107,7 @@ HPO[[sub:4]][[sup:2–]]
 Hydrogen phosphate ion
 
 <!-- SEG:m00025:entry:auto-37 -->
-CH[[sub:3]]CO[[sub:2]]H
+CH[[sub:3]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00025:entry:auto-38 -->
 Acetic acid
@@ -122,7 +122,7 @@ CH[[sub:3]]CO[[sub:2]][[sup:–]]
 Acetate ion
 
 <!-- SEG:m00025:entry:auto-42 -->
-H[[sub:3]]PO[[sub:4]]
+[[span:H[[sub:3]]|magenta-text]]PO[[sub:4]]
 
 <!-- SEG:m00025:entry:auto-43 -->
 Phosphoric acid
@@ -137,7 +137,7 @@ H[[sub:2]]PO[[sub:4]][[sup:–]]
 Dihydrogen phosphate ion
 
 <!-- SEG:m00025:entry:auto-47 -->
-HNO[[sub:3]]
+[[span:H|magenta-text]]NO[[sub:3]]
 
 <!-- SEG:m00025:entry:auto-48 -->
 Nitric acid
@@ -152,7 +152,7 @@ NO[[sub:3]][[sup:–]]
 Nitrate ion
 
 <!-- SEG:m00025:entry:auto-52 -->
-HCl
+[[span:H|magenta-text]]Cl
 
 <!-- SEG:m00025:entry:auto-53 -->
 Hydrochloric acid

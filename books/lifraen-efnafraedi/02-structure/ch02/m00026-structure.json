@@ -2,7 +2,7 @@
   "moduleId": "m00026",
   "title": {
     "segmentId": "m00026:title:auto-1",
-    "text": "Problems"
+    "text": "Predicting Acid–Base Reactions from p[[i:K]][[sub:a]] Values"
   },
   "documentClass": null,
   "metadata": {
@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -37,6 +38,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -66,7 +68,7 @@
           "segmentId": "m00026:para:para-00004",
           "title": {
             "segmentId": "m00026:para-title:para-00004-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -75,7 +77,7 @@
           "segmentId": "m00026:para:para-00005",
           "title": {
             "segmentId": "m00026:para-title:para-00005-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -84,6 +86,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -113,7 +116,7 @@
           "segmentId": "m00026:para:para-00007",
           "title": {
             "segmentId": "m00026:para-title:para-00007-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -122,7 +125,7 @@
           "segmentId": "m00026:para:para-00008",
           "title": {
             "segmentId": "m00026:para-title:para-00008-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]

@@ -2,7 +2,7 @@
 Alcohols from Carbonyl Compounds: Grignard Reaction
 
 <!-- SEG:m00204:para:para-00001 -->
-Grignard reagents (RMgX), prepared by reaction of organohalides with magnesium (), react with carbonyl compounds to yield alcohols in much the same way that hydride reducing agents do. Just as carbonyl reduction involves addition of a hydride ion nucleophile to the [[MATH:1]] bond, Grignard reaction involves addition of a carbanion nucleophile (R:[[sup:&#x2212;+]]MgX).
+Grignard reagents (RMgX), prepared by reaction of organohalides with magnesium ([[docref:m00118]]), react with carbonyl compounds to yield alcohols in much the same way that hydride reducing agents do. Just as carbonyl reduction involves addition of a hydride ion nucleophile to the [[MATH:1]] bond, Grignard reaction involves addition of a carbanion nucleophile (R:[[sup:&#x2212;+]]MgX).
 
 <!-- SEG:m00204:alt:fig-00001-alt -->
 R X reacts with magnesium to form Grignard reagent with formula R (delta negative) Mg (delta positive) X. Ketone reacts with Grignard, then hydronium to give alcohol with R.
@@ -35,7 +35,7 @@ Carboxylic acids do, however, react with Grignard reagents to give ketones if th
 A carboxylic acid reacts with tertiary butyl magnesium chloride and toluene to form an intermediate. This intermediate reacts with Turbo-Hauser base to form a ketone.
 
 <!-- SEG:m00204:para:para-00007 -->
-The Grignard reaction, although useful, does have limitations. One major problem is that a Grignard reagent can’t be prepared from an organohalide if other reactive functional groups are present in the same molecule. For example, a compound that is both an alkyl halide and a ketone can’t form a Grignard reagent because it would react with itself. Similarly, a compound that is both an alkyl halide and a carboxylic acid, alcohol, or amine can’t form a Grignard reagent because the acidic RCO[[sub:2]][[b:H]], RO[[b:H]], or RN[[b:H[[sub:2]]]] hydrogen present in the same molecule would react with the basic Grignard reagent as rapidly as it forms. In general, Grignard reagents can’t be prepared from alkyl halides that contain the following functional groups (FG):
+The Grignard reaction, although useful, does have limitations. One major problem is that a Grignard reagent can’t be prepared from an organohalide if other reactive functional groups are present in the same molecule. For example, a compound that is both an alkyl halide and a ketone can’t form a Grignard reagent because it would react with itself. Similarly, a compound that is both an alkyl halide and a carboxylic acid, alcohol, or amine can’t form a Grignard reagent because the acidic RCO[[sub:2]][[b:[[span:H|magenta-text]]]], RO[[b:[[span:H|magenta-text]]]], or RN[[b:[[span:H[[sub:2]]|magenta-text]]]] hydrogen present in the same molecule would react with the basic Grignard reagent as rapidly as it forms. In general, Grignard reagents can’t be prepared from alkyl halides that contain the following functional groups (FG):
 
 <!-- SEG:m00204:alt:fig-00006-alt -->
 A molecule connected to bromine and functional group. Grignard reagent is protonated by alcohol, amine, thiol, and carboxylic acid. It adds to aldehyde, ester, amide, nitrile, nitro and sulfonate group.
@@ -53,13 +53,13 @@ Using a Grignard Reaction to Synthesize an Alcohol
 How could you use the addition of a Grignard reagent to a ketone to synthesize 2-phenyl-2-butanol?
 
 <!-- SEG:m00204:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00204:para:para-00010 -->
 Draw the product, and identify the three groups bonded to the alcohol carbon atom. One of the three will have come from the Grignard reagent, and the remaining two will have come from the ketone.
 
 <!-- SEG:m00204:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00204:para:para-00011 -->
 2-Phenyl-2-butanol has a methyl group, an ethyl group, and a phenyl group (–C[[sub:6]]H[[sub:5]]) attached to the alcohol carbon atom. Thus, the possibilities are addition of ethylmagnesium bromide to acetophenone, addition of methylmagnesium bromide to propiophenone, and addition of phenylmagnesium bromide to 2-butanone.
@@ -74,13 +74,13 @@ Using a Grignard Reaction to Synthesize an Alcohol
 How could you use the reaction of a Grignard reagent with a carbonyl compound to synthesize 2-methyl-2-pentanol?
 
 <!-- SEG:m00204:para-title:para-00013-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00204:para:para-00013 -->
 Draw the product, and identify the three groups bonded to the alcohol carbon atom. If the three groups are all different, the starting carbonyl compound must be a ketone. If two of the three groups are identical, the starting carbonyl compound could be either a ketone or an ester.
 
 <!-- SEG:m00204:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00204:para:para-00014 -->
 In the present instance, the product is a tertiary alcohol with two methyl groups and one propyl group. Starting from a ketone, the possibilities are addition of methylmagnesium bromide to 2-pentanone and addition of propylmagnesium bromide to acetone.

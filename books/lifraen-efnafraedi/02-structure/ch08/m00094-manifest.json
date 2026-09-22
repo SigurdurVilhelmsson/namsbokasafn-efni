@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00094",
-  "extractedAt": "2026-08-31T19:08:47.734Z",
+  "extractedAt": "2026-09-22T17:26:36.598Z",
   "sourceHash": "124f9e0255b63adc",
-  "segmentCount": 21,
+  "segmentCount": 22,
   "segmentIds": [
     "m00094:title:auto-1",
     "m00094:para:para-00001",
@@ -13,6 +13,7 @@
     "m00094:para:para-00004",
     "m00094:alt:fig-00002-alt",
     "m00094:para:para-00005",
+    "m00094:figure-title:fig-00003-title",
     "m00094:caption:fig-00003-caption",
     "m00094:alt:fig-00003-alt",
     "m00094:para:para-00006",
@@ -64,5 +65,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "hydrogenated",
+    "term-00002": "reduction"
   }
 }

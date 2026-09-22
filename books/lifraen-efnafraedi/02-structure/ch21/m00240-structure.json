@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00240:caption:fig-00001-caption"
       },
@@ -39,6 +40,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -96,6 +98,7 @@
           "type": "figure",
           "id": "fig-00003",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -115,6 +118,7 @@
           "type": "figure",
           "id": "fig-00004",
           "class": "unnumbered",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -139,6 +143,7 @@
           "type": "figure",
           "id": "fig-00005",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00240:caption:fig-00005-caption"
           },
@@ -259,6 +264,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00240:caption:fig-00006-caption"
           },
@@ -290,7 +296,7 @@
               "segmentId": "m00240:para:para-00012",
               "title": {
                 "segmentId": "m00240:para-title:para-00012-title",
-                "text": "Strategy"
+                "text": "[[span:Strategy|red-text]]"
               }
             },
             {
@@ -298,7 +304,7 @@
               "id": "para-00013",
               "title": {
                 "segmentId": "m00240:para-title:para-00013-title",
-                "text": "Solution"
+                "text": "[[span:Solution|cyan-text]]"
               }
             }
           ]
@@ -307,6 +313,7 @@
           "type": "figure",
           "id": "fig-00007",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -321,6 +328,7 @@
           "type": "figure",
           "id": "fig-00008",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

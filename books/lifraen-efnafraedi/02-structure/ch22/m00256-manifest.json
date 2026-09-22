@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00256",
-  "extractedAt": "2026-08-31T19:08:49.505Z",
+  "extractedAt": "2026-09-22T17:26:38.877Z",
   "sourceHash": "6a7606901abe3758",
   "segmentCount": 7,
   "segmentIds": [
@@ -39,5 +39,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "α-substitution reaction"
   }
 }

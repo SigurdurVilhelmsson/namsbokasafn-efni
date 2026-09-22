@@ -74,10 +74,10 @@ Tyr
 Tyr
 
 <!-- SEG:m00314:entry:auto-26 -->
-Stop
+[[span:Stop|magenta-text]]
 
 <!-- SEG:m00314:entry:auto-27 -->
-Stop
+[[span:Stop|magenta-text]]
 
 <!-- SEG:m00314:entry:auto-28 -->
 G
@@ -89,7 +89,7 @@ Cys
 Cys
 
 <!-- SEG:m00314:entry:auto-31 -->
-Stop
+[[span:Stop|magenta-text]]
 
 <!-- SEG:m00314:entry:auto-32 -->
 Trp
@@ -311,7 +311,7 @@ What amino acid sequence is coded by the following segment of a DNA coding stran
 [[em:(5′) CTA-ACT-AGC-GGG-TCG-CCG (3′)|centered-text]]
 
 <!-- SEG:m00314:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00314:para:para-00007 -->
 The mRNA produced during translation is a copy of the DNA coding strand, with each T replaced by U. Thus, the mRNA has the sequence
@@ -323,7 +323,7 @@ The mRNA produced during translation is a copy of the DNA coding strand, with ea
 Each set of three bases forms a codon, whose meaning can be found in [[xref:table-00001]].
 
 <!-- SEG:m00314:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00314:para:para-00010 -->
 Leu-Thr-Ser-Gly-Ser-Pro.

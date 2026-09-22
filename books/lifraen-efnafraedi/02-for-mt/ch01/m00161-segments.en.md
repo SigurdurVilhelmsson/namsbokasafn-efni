@@ -47,16 +47,16 @@ Three different representations of N H 3. Central nitrogen shares a pair of elec
 Predicting the Number of Bonds Formed by Atoms in Molecules
 
 <!-- SEG:m00161:para:para-00010 -->
-How many hydrogen atoms does phosphorus bond to in forming phosphine, PH[[b:[[sub:?]]]]?
+How many hydrogen atoms does phosphorus bond to in forming phosphine, PH[[b:[[span:[[sub:?]]|magenta-text]]]]?
 
 <!-- SEG:m00161:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00161:para:para-00011 -->
 Identify the periodic group of phosphorus, and find from that how many electrons (bonds) are needed to make an octet.
 
 <!-- SEG:m00161:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00161:para:para-00012 -->
 Phosphorus is in group 5A of the periodic table and has five valence electrons. It thus needs to share three more electrons to make an octet and therefore bonds to three hydrogen atoms, giving PH[[sub:3]].
@@ -68,13 +68,13 @@ Drawing Electron-Dot and Line-Bond Structures
 Draw both electron-dot and line-bond structures for chloromethane, CH[[sub:3]]Cl.
 
 <!-- SEG:m00161:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00161:para:para-00014 -->
 Remember that a covalent bond—that is, a pair of shared electrons—is represented as a line between atoms.
 
 <!-- SEG:m00161:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00161:para:para-00015 -->
 Hydrogen has one valence electron, carbon has four valence electrons, and chlorine has seven valence electrons. Thus, chloromethane is represented as

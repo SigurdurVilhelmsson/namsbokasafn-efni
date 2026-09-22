@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00276",
-  "extractedAt": "2026-08-31T19:08:49.609Z",
+  "extractedAt": "2026-09-22T17:26:39.032Z",
   "sourceHash": "423c309faf9618d2",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m00276:title:auto-1",
     "m00276:para:para-00001",
+    "m00276:figure-title:fig-00001-title",
     "m00276:caption:fig-00001-caption",
     "m00276:alt:fig-00001-alt",
     "m00276:para:para-00002",
@@ -56,5 +57,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Carbonyl condensation reactions",
+    "term-00002": "aldol reaction"
   }
 }

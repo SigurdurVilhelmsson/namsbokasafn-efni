@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00177",
-  "extractedAt": "2026-08-31T19:08:48.501Z",
+  "extractedAt": "2026-09-22T17:26:37.596Z",
   "sourceHash": "6f3f403e2925f20a",
   "segmentCount": 28,
   "segmentIds": [
@@ -78,5 +78,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "ultraviolet (UV) spectroscopy",
+    "term-00002": "highest occupied molecular orbital (HOMO)",
+    "term-00003": "lowest unoccupied molecular orbital (LUMO)",
+    "term-00004": "molar absorptivity (ϵ)"
   }
 }

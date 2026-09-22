@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00166",
-  "extractedAt": "2026-08-31T19:08:46.532Z",
+  "extractedAt": "2026-09-22T17:26:35.498Z",
   "sourceHash": "8b14b8b031bad64a",
   "segmentCount": 48,
   "segmentIds": [
@@ -91,5 +91,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "sp hybrid"
   }
 }

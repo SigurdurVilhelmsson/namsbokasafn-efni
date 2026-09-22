@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00217",
-  "extractedAt": "2026-08-31T19:08:49.195Z",
+  "extractedAt": "2026-09-22T17:26:38.375Z",
   "sourceHash": "199dfcaeb61dd71b",
   "segmentCount": 7,
   "segmentIds": [
@@ -46,5 +46,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "cyanohydrins"
   }
 }

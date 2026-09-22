@@ -1,5 +1,5 @@
 <!-- SEG:m00126:title:auto-1 -->
-The Substrate
+Characteristics of the S[[sub:N]]1 Reaction
 
 <!-- SEG:m00126:para:para-00001 -->
 Just as the S[[sub:N]]2 reaction is strongly influenced by the structure of the substrate, the leaving group, the nucleophile, and the solvent, the S[[sub:N]]1 reaction is similarly influenced. Factors that lower ∆[[i:G]][[sup:‡]], either by lowering the energy level of the transition state or by raising the energy level of the ground state, favor faster S[[sub:N]]1 reactions. Conversely, factors that raise ∆[[i:G]][[sup:‡]], either by raising the energy level of the transition state or by lowering the energy level of the reactant, slow down the S[[sub:N]]1 reaction.
@@ -8,13 +8,13 @@ Just as the S[[sub:N]]2 reaction is strongly influenced by the structure of the 
 The Substrate
 
 <!-- SEG:m00126:para:para-00002 -->
-According to the Hammond postulate (), any factor that stabilizes a high-energy intermediate also stabilizes the transition state leading to that intermediate. Because the rate-limiting step in an S[[sub:N]]1 reaction is the spontaneous, unimolecular dissociation of the substrate to yield a carbocation, the reaction is favored whenever a stabilized carbocation intermediate is formed. The more stable the carbocation intermediate, the faster the S[[sub:N]]1 reaction.
+According to the Hammond postulate ([[docref:m00072]]), any factor that stabilizes a high-energy intermediate also stabilizes the transition state leading to that intermediate. Because the rate-limiting step in an S[[sub:N]]1 reaction is the spontaneous, unimolecular dissociation of the substrate to yield a carbocation, the reaction is favored whenever a stabilized carbocation intermediate is formed. The more stable the carbocation intermediate, the faster the S[[sub:N]]1 reaction.
 
 <!-- SEG:m00126:para:para-00003 -->
-We saw in that the stability order of alkyl carbocations is 3° > 2° > 1° > methyl. To this list we should also add the resonance-stabilized allyl and benzyl cations. Just as allylic radicals are unusually stable because the unpaired electron can be delocalized over an extended [[i:π]] orbital system (), so allylic and benzylic carbocations are unusually stable. (The word [[term:benzylic|term-00001]] means “next to an aromatic ring.”) As [[xref:fig-00001]] indicates, an allylic cation has two resonance forms. In one form, the double bond is on the “left”; in the other form it’s on the “right.” A benzylic cation has five resonance forms, all of which contribute to the overall resonance hybrid.
+We saw in [[docref:m00071]] that the stability order of alkyl carbocations is 3° > 2° > 1° > methyl. To this list we should also add the resonance-stabilized allyl and benzyl cations. Just as allylic radicals are unusually stable because the unpaired electron can be delocalized over an extended [[i:π]] orbital system ([[docref:m00116]]), so allylic and benzylic carbocations are unusually stable. (The word [[term:benzylic|term-00001]] means “next to an aromatic ring.”) As [[xref:fig-00001]] indicates, an allylic cation has two resonance forms. In one form, the double bond is on the “left”; in the other form it’s on the “right.” A benzylic cation has five resonance forms, all of which contribute to the overall resonance hybrid.
 
 <!-- SEG:m00126:caption:fig-00001-caption -->
-[[b:Resonance forms of allylic and benzylic carbocations.]] The positive charge is delocalized over the [[i:π]] system in both. [[b:Electron-poor atoms]] are indicated by blue arrows.
+[[b:Resonance forms of allylic and benzylic carbocations.]] The positive charge is delocalized over the [[i:π]] system in both. [[b:[[span:Electron-poor atoms|cyan-text]]]] are indicated by blue arrows.
 
 <!-- SEG:m00126:alt:fig-00001-alt -->
 Resonance forms and electrostatic potential maps of allyl carbocation and benzyl carbocation. Two resonance forms of allyl carbocation and five resonance forms of benzyl carbocation.
@@ -44,10 +44,13 @@ We said during the discussion of S[[sub:N]]2 reactivity that the best leaving gr
 Leaving group reactivity in increasing order: hydroxyl, chloride, bromide, iodide or T o S O ion (these are equivalent), and water.
 
 <!-- SEG:m00126:para:para-00009 -->
-Note that in the S[[sub:N]]1 reaction, which is often carried out under acidic conditions, neutral water is sometimes the leaving group. This occurs, for example, when an alkyl halide is prepared from a tertiary alcohol by reaction with HBr or HCl (). As shown in [[xref:fig-00005]], the alcohol is first protonated and then spontaneously loses H[[sub:2]]O to generate a carbocation, which reacts with halide ion to give the alkyl halide. Knowing that an S[[sub:N]]1 reaction is involved in the conversion of alcohols to alkyl halides explains why the reaction works well only for tertiary alcohols. Tertiary alcohols react fastest because they give the most stable carbocation intermediates.
+Note that in the S[[sub:N]]1 reaction, which is often carried out under acidic conditions, neutral water is sometimes the leaving group. This occurs, for example, when an alkyl halide is prepared from a tertiary alcohol by reaction with HBr or HCl ([[docref:m00117]]). As shown in [[xref:fig-00005]], the alcohol is first protonated and then spontaneously loses H[[sub:2]]O to generate a carbocation, which reacts with halide ion to give the alkyl halide. Knowing that an S[[sub:N]]1 reaction is involved in the conversion of alcohols to alkyl halides explains why the reaction works well only for tertiary alcohols. Tertiary alcohols react fastest because they give the most stable carbocation intermediates.
+
+<!-- SEG:m00126:figure-title:fig-00005-title -->
+MECHANISM
 
 <!-- SEG:m00126:caption:fig-00005-caption -->
-[[b:The mechanism of the S[[sub:N]]1 reaction of a tertiary alcohol with HBr to yield an alkyl halide.]] Neutral water is the leaving group (step [[b:2]]).
+[[b:The mechanism of the S[[sub:N]]1 reaction of a tertiary alcohol with HBr to yield an alkyl halide.]] Neutral water is the leaving group (step [[b:[[span:2|magenta-text]]]]).
 
 <!-- SEG:m00126:alt:fig-00005-alt -->
 Mechanism of S N 1 between t-butyl alcohol and H Br. Alcohol is protonated, water leaves to form carbocation, bromide quenches carbocation.
@@ -91,28 +94,28 @@ A Summary of S[[sub:N]]1 Reaction Characteristics
 <!-- SEG:m00126:para:para-00015 -->
 The effects on S[[sub:N]]1 reactions of the four variables—substrate, leaving group, nucleophile, and solvent—are summarized in the following statements:
 
-<!-- SEG:m00126:entry:auto-32 -->
+<!-- SEG:m00126:entry:auto-33 -->
 [[b:Substrate]]
 
-<!-- SEG:m00126:entry:auto-33 -->
+<!-- SEG:m00126:entry:auto-34 -->
 The best substrates yield the most stable carbocations. As a result, S[[sub:N]]1 reactions are best for tertiary, allylic, and benzylic halides.
 
-<!-- SEG:m00126:entry:auto-34 -->
-[[b:Leaving group]]
-
 <!-- SEG:m00126:entry:auto-35 -->
-Good leaving groups increase the reaction rate by lowering the energy level of the transition state for carbocation formation.
+[[span:[[b:Leaving group]]|red-text]]
 
 <!-- SEG:m00126:entry:auto-36 -->
-[[b:Nucleophile]]
+Good leaving groups increase the reaction rate by lowering the energy level of the transition state for carbocation formation.
 
 <!-- SEG:m00126:entry:auto-37 -->
-The nucleophile must be nonbasic to prevent a competitive elimination of HX (), but otherwise does not affect the reaction rate. Neutral nucleophiles work well.
+[[span:[[b:Nucleophile]]|cyan-text]]
 
 <!-- SEG:m00126:entry:auto-38 -->
-[[b:Solvent]]
+The nucleophile must be nonbasic to prevent a competitive elimination of HX ([[docref:m00128]]), but otherwise does not affect the reaction rate. Neutral nucleophiles work well.
 
 <!-- SEG:m00126:entry:auto-39 -->
+[[span:[[b:Solvent]]|green-text]]
+
+<!-- SEG:m00126:entry:auto-40 -->
 Polar solvents stabilize the carbocation intermediate by solvation, thereby increasing the reaction rate.
 
 <!-- SEG:m00126:example-title:exam-00001-title -->
@@ -122,13 +125,13 @@ Predicting the Mechanism of a Nucleophilic Substitution Reaction
 Predict whether each of the following substitution reactions is likely to be S[[sub:N]]1 or S[[sub:N]]2:
 
 <!-- SEG:m00126:para-title:para-00017-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00126:para:para-00017 -->
-Look at the substrate, leaving group, nucleophile, and solvent. Then decide from the summaries at the ends of and whether an S[[sub:N]]1 or an S[[sub:N]]2 reaction is favored. S[[sub:N]]1 reactions are favored by tertiary, allylic, or benzylic substrates, by good leaving groups, by nonbasic nucleophiles, and by protic solvents. S[[sub:N]]2 reactions are favored by primary substrates, by good leaving groups, by good nucleophiles, and by polar aprotic solvents.
+Look at the substrate, leaving group, nucleophile, and solvent. Then decide from the summaries at the ends of [[docref:m00124]] and [[docref:m00126]] whether an S[[sub:N]]1 or an S[[sub:N]]2 reaction is favored. S[[sub:N]]1 reactions are favored by tertiary, allylic, or benzylic substrates, by good leaving groups, by nonbasic nucleophiles, and by protic solvents. S[[sub:N]]2 reactions are favored by primary substrates, by good leaving groups, by good nucleophiles, and by polar aprotic solvents.
 
 <!-- SEG:m00126:para-title:para-00018-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00126:para:para-00019 -->
 [[b:(a)]] This is likely to be an S[[sub:N]]1 reaction because the substrate is secondary and benzylic, the nucleophile is weakly basic, and the solvent is protic.

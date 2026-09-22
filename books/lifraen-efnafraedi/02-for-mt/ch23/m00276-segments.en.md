@@ -4,6 +4,9 @@ Carbonyl Condensations: The Aldol Reaction
 <!-- SEG:m00276:para:para-00001 -->
 [[term:Carbonyl condensation reactions|term-00001]] take place between two carbonyl partners and involve a combination of nucleophilic addition and [[i:α]]-substitution steps. One partner is converted into an enolate-ion nucleophile and adds to the electrophilic carbonyl group of the second partner. In so doing, the nucleophilic partner undergoes an [[i:α]]-substitution reaction and the electrophilic partner undergoes a nucleophilic addition. The general mechanism of the process is shown in [[xref:fig-00001]].
 
+<!-- SEG:m00276:figure-title:fig-00001-title -->
+MECHANISM
+
 <!-- SEG:m00276:caption:fig-00001-caption -->
 [[b:The general mechanism of a carbonyl condensation reaction]]. One partner becomes a nucleophilic donor and adds to the second partner as an electrophilic acceptor. After protonation, the final product is a [[i:β]]-hydroxy carbonyl compound.
 
@@ -29,13 +32,13 @@ Predicting the Product of an Aldol Reaction
 What is the structure of the aldol product from propanal?
 
 <!-- SEG:m00276:para-title:para-00005-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00276:para:para-00005 -->
 An aldol reaction combines two molecules of reactant by forming a bond between the [[i:α]] carbon of one partner and the carbonyl carbon of the second partner. The product is a [[i:β]]-hydroxy aldehyde or ketone, meaning that the two oxygen atoms in the product have a 1,3 relationship.
 
 <!-- SEG:m00276:para-title:para-00006-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00276:alt:fig-00005-alt -->
 Two molecules of ethanaldehyde react with sodium hydroxide to yield beta-hydroxy aldehyde (3-hydroxy-2-methylpentanal). New bond formed between C 2 and C 3.

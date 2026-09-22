@@ -1,5 +1,5 @@
 <!-- SEG:m00090:title:auto-1 -->
-Problems
+Halogenation of Alkenes: Addition of X[[sub:2]]
 
 <!-- SEG:m00090:para:para-00001 -->
 Bromine and chlorine add rapidly to alkenes to yield 1,2-dihalides, a process called [[i:halogenation]]. For example, nearly 50 million tons of 1,2-dichloroethane (ethylene dichloride) are synthesized worldwide each year, much of it by addition of Cl[[sub:2]] to ethylene. The product is used both as a solvent and as starting material for the manufacture of poly(vinyl chloride), PVC, the third most widely synthesized polymer in the world after polyethelyne and polypropolyne. Fluorine is too reactive and difficult to control for most laboratory applications, and iodine does not react with most alkenes.

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00199",
-  "extractedAt": "2026-08-31T19:08:48.867Z",
+  "extractedAt": "2026-09-22T17:26:38.014Z",
   "sourceHash": "71b41f008e2f9675",
   "segmentCount": 13,
   "segmentIds": [
@@ -48,5 +48,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Alcohols",
+    "term-00002": "phenols"
   }
 }

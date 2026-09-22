@@ -11,7 +11,7 @@ Named after Robert Robinson, a British chemist and 1947 Nobel Prize winner, the 
 The Michael addition of 3-buten-2-one and ethyl acetoacetate in the presence of sodium ethoxide forming Michael product (intermediate). Further aldol reaction, in presence of sodium ethoxide, yields ethyl-2-methyl-4-oxocyclohex-2-enecarboxylate (annulation product).
 
 <!-- SEG:m00287:para:para-00003 -->
-The first step of the Robinson annulation is simply a Michael reaction. An enamine or an enolate ion from a [[i:β]]-keto ester or [[i:β]]-diketone effects a conjugate addition to an [[i:α]],[[i:β]]-unsaturated ketone, yielding a 1,5-diketone. But as we saw in , 1,5-diketones undergo intramolecular aldol condensation to yield cyclohexenones when treated with base. Thus, the final product contains a six-membered ring, and an annulation has been accomplished. One example of this occurs during a synthesis of the steroid hormone estrone ([[xref:fig-00002]]).
+The first step of the Robinson annulation is simply a Michael reaction. An enamine or an enolate ion from a [[i:β]]-keto ester or [[i:β]]-diketone effects a conjugate addition to an [[i:α]],[[i:β]]-unsaturated ketone, yielding a 1,5-diketone. But as we saw in [[docref:m00281]], 1,5-diketones undergo intramolecular aldol condensation to yield cyclohexenones when treated with base. Thus, the final product contains a six-membered ring, and an annulation has been accomplished. One example of this occurs during a synthesis of the steroid hormone estrone ([[xref:fig-00002]]).
 
 <!-- SEG:m00287:caption:fig-00002-caption -->
 [[b:Synthesis of the steroid hormone estrone using a Robinson annulation reaction]]. The nucleophilic donor is a [[i:β]]-diketone.

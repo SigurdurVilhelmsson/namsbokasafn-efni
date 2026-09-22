@@ -35,13 +35,13 @@ Two energy diagrams for one-step reactions. The first has low energy reactant an
 In an endergonic reaction ([[xref:fig-00002]]a), the energy level of the transition state is closer to that of the product than that of the reactant. Since the transition state is closer energetically to the product, we make the natural assumption that it’s also closer structurally. In other words, the transition state for an endergonic reaction step structurally resembles the product of that step. Conversely, the transition state for an exergonic reaction ([[xref:fig-00002]]b), is closer energetically, and thus structurally, to the reactant than to the product. We therefore say that the transition state for an exergonic reaction step structurally resembles the reactant for that step.
 
 <!-- SEG:m00072:para:para-00008 -->
-[[b:Hammond postulate:]][[BR]]The structure of a transition state resembles the structure of the nearest stable species. Transition states for endergonic steps structurally resemble products, and transition states for exergonic steps structurally resemble reactants.
+[[b:[[span:Hammond postulate:|magenta-text]]]][[BR]]The structure of a transition state resembles the structure of the nearest stable species. Transition states for endergonic steps structurally resemble products, and transition states for exergonic steps structurally resemble reactants.
 
 <!-- SEG:m00072:para:para-00010 -->
 How does the Hammond postulate apply to electrophilic addition reactions? The formation of a carbocation by protonation of an alkene is an endergonic step. Thus, the transition state for alkene protonation structurally resembles the carbocation intermediate, and any factor that stabilizes the carbocation will also stabilize the nearby transition state. Since increasing alkyl substitution stabilizes carbocations, it also stabilizes the transition states leading to those ions, thus resulting in a faster reaction. In other words, more stable carbocations form faster because their greater stability is reflected in the lower-energy transition state leading to them ([[xref:fig-00003]]).
 
 <!-- SEG:m00072:caption:fig-00003-caption -->
-[[b:Energy diagrams for carbocation formation]]. The more stable tertiary carbocation is formed faster [[b:(green curve)]] because its increased stability lowers the energy of the transition state leading to it.
+[[b:Energy diagrams for carbocation formation]]. The more stable tertiary carbocation is formed faster [[b:[[span:(green curve)|green-text]]]] because its increased stability lowers the energy of the transition state leading to it.
 
 <!-- SEG:m00072:alt:fig-00003-alt -->
 Energy diagram for reaction of 2-methyl-1-propene with two profiles; one has higher barrier, higher energy intermediate, is labeled slower, corresponds to primary carbocation. The other corresponds to tertiary carbocation.

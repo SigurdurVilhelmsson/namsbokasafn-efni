@@ -2,13 +2,16 @@
 Peptide Sequencing: The Edman Degradation
 
 <!-- SEG:m00323:para:para-00001 -->
-With the identities and relative amounts of amino acids known, a peptide can then be sequenced to find out in what order the amino acids are linked. Much peptide sequencing is now done by mass spectrometry, using either electrospray ionization (ESI) or matrix-assisted laser desorption ionization (MALDI) linked to a time-of-flight (TOF) mass analyzer, as described in . Also in common use is a chemical method of peptide sequencing called the [[term:Edman degradation|term-00001]].
+With the identities and relative amounts of amino acids known, a peptide can then be sequenced to find out in what order the amino acids are linked. Much peptide sequencing is now done by mass spectrometry, using either electrospray ionization (ESI) or matrix-assisted laser desorption ionization (MALDI) linked to a time-of-flight (TOF) mass analyzer, as described in [[docref:m00138]]. Also in common use is a chemical method of peptide sequencing called the [[term:Edman degradation|term-00001]].
 
 <!-- SEG:m00323:para:para-00002 -->
 The general idea of peptide sequencing by Edman degradation is to cleave one amino acid at a time from an end of the peptide chain. That terminal amino acid is then separated and identified, and the cleavage reactions are repeated on the chain-shortened peptide until the entire peptide sequence is known. Automated protein sequencers are available that allow as many as 50 repetitive sequencing cycles to be carried out before a buildup of unwanted by-products interferes with the results. So efficient are these instruments that sequence information can be obtained from as little as 1 to 5 picomoles of sample—less than 0.1 [[i:μ]]g.
 
 <!-- SEG:m00323:para:para-00003 -->
 As shown in [[xref:fig-00001]], Edman degradation involves treatment of a peptide with phenyl isothiocyanate (PITC), [[MATH:1]], followed by reaction with trifluoroacetic acid. The first step attaches the PITC to the –NH[[sub:2]] group of the N-terminal amino acid, and the second step splits the N-terminal residue from the peptide chain, yielding an anilinothiazolinone (ATZ) derivative plus the chain-shortened peptide. Further acid-catalyzed rearrangement of the ATZ derivative with aqueous acid converts it into a phenylthiohydantoin (PTH), which is identified by comparison of its elution time with the known elution times of PTH derivatives of the 20 common amino acids. The chain-shortened peptide is then automatically resubmitted for another round of Edman degradation.
+
+<!-- SEG:m00323:figure-title:fig-00001-title -->
+MECHANISM
 
 <!-- SEG:m00323:caption:fig-00001-caption -->
 [[b:Mechanism of the Edman degradation for N-terminal analysis of peptides]].

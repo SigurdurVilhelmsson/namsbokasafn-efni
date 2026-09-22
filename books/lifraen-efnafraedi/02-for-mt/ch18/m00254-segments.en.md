@@ -47,7 +47,7 @@ Sulfides are the sulfur analogs of ethers just as thiols are the sulfur analogs 
 Structures of dimethyl sulfide (S with two methyl groups), methyl phenyl sulfide (S with methyl and phenyl group), and 3-(methylthio)cyclohexene (cyclohexene with S C H 3 at C 3).
 
 <!-- SEG:m00254:para:para-00008 -->
-Treatment of a thiol with a base, such as NaH, gives the corresponding [[term:thiolate ion|term-00004]] (RS[[sup:–]]), which undergoes reaction with a primary or secondary alkyl halide to give a sulfide. The reaction occurs by an S[[sub:N]]2 mechanism, analogous to the Williamson synthesis of ethers ().
+Treatment of a thiol with a base, such as NaH, gives the corresponding [[term:thiolate ion|term-00004]] (RS[[sup:–]]), which undergoes reaction with a primary or secondary alkyl halide to give a sulfide. The reaction occurs by an S[[sub:N]]2 mechanism, analogous to the Williamson synthesis of ethers ([[docref:m00249]]).
 
 <!-- SEG:m00254:alt:fig-00007-alt -->
 Sodium benzenethiolate reacts with iodomethane to form methyl phenyl sulfide (96 percent yield) and sodium iodide via attack of S minus on methyl C. Iodide leaves.
@@ -59,13 +59,13 @@ Despite their close structural similarity, sulfides and ethers differ substantia
 Dimethyl sulfide reacts with iodomethane in the presence of tetrahydrofuran to form trimethylsulfonium iodide. Sulfur and iodide in the product carry positive and negative charges, respectively.
 
 <!-- SEG:m00254:para:para-00010 -->
-The most common example of this process in living organisms is the reaction of the amino acid methionine with adenosine triphosphate (ATP; ) to give [[i:S]]-adenosylmethionine. The reaction is somewhat unusual in that the biological leaving group in this S[[sub:N]]2 process is the [[i:triphosphate]] ion rather than the more frequently seen diphosphate ion ().
+The most common example of this process in living organisms is the reaction of the amino acid methionine with adenosine triphosphate (ATP; [[docref:m00084]]) to give [[i:S]]-adenosylmethionine. The reaction is somewhat unusual in that the biological leaving group in this S[[sub:N]]2 process is the [[i:triphosphate]] ion rather than the more frequently seen diphosphate ion ([[docref:m00127]]).
 
 <!-- SEG:m00254:alt:fig-00009-alt -->
 Methionine and adenosine triphosphate (A T P) undergo an S N 2 process, forming triphosphate ion and S-adenosylmethionine.
 
 <!-- SEG:m00254:para:para-00011 -->
-Sulfonium ions are themselves useful alkylating agents because a nucleophile can attack one of the groups bonded to the positively charged sulfur, displacing a neutral sulfide as leaving group. We saw an example of this in ([[docref:m00127#fig-00003]]), in which [[i:S]]-adenosylmethionine transferred a methyl group to norepinephrine to give adrenaline.
+Sulfonium ions are themselves useful alkylating agents because a nucleophile can attack one of the groups bonded to the positively charged sulfur, displacing a neutral sulfide as leaving group. We saw an example of this in [[docref:m00127]] ([[docref:m00127#fig-00003]]), in which [[i:S]]-adenosylmethionine transferred a methyl group to norepinephrine to give adrenaline.
 
 <!-- SEG:m00254:para:para-00012 -->
 Another difference between sulfides and ethers is that sulfides are easily oxidized. Treatment of a sulfide with hydrogen peroxide, H[[sub:2]]O[[sub:2]], at room temperature yields the corresponding [[term:sulfoxide (R[[sub:2]]SO)|term-00006]], and further oxidation of the sulfoxide with a peroxyacid yields a [[term:sulfone (R[[sub:2]]SO[[sub:2]])|term-00007]].

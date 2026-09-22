@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00294",
-  "extractedAt": "2026-08-31T19:08:49.738Z",
+  "extractedAt": "2026-09-22T17:26:39.241Z",
   "sourceHash": "741fbb2b9843890b",
-  "segmentCount": 54,
+  "segmentCount": 56,
   "segmentIds": [
     "m00294:title:auto-1",
     "m00294:title:sect-00001-title",
@@ -26,6 +26,7 @@
     "m00294:para:para-00010",
     "m00294:alt:fig-00007-alt",
     "m00294:para:para-00011",
+    "m00294:figure-title:fig-00008-title",
     "m00294:caption:fig-00008-caption",
     "m00294:alt:fig-00008-alt",
     "m00294:para:para-00012",
@@ -44,6 +45,7 @@
     "m00294:para:para-00019",
     "m00294:alt:fig-00013-alt",
     "m00294:para:para-00020",
+    "m00294:figure-title:fig-00014-title",
     "m00294:caption:fig-00014-caption",
     "m00294:alt:fig-00014-alt",
     "m00294:para:para-00021",
@@ -128,5 +130,12 @@
       "sect-00007",
       "sect-00008"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Gabriel amine synthesis",
+    "term-00002": "imide",
+    "term-00003": "reductive amination",
+    "term-00004": "Hofmann rearrangement",
+    "term-00005": "Curtius rearrangement"
   }
 }

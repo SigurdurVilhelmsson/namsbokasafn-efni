@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -37,6 +38,10 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "mechanism-figure scaled-down",
+      "title": {
+        "segmentId": "m00282:figure-title:fig-00002-title",
+        "text": "MECHANISM"
+      },
       "caption": {
         "segmentId": "m00282:caption:fig-00002-caption"
       },
@@ -73,7 +78,7 @@
           "segmentId": "m00282:para:para-00005",
           "title": {
             "segmentId": "m00282:para-title:para-00005-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -81,7 +86,7 @@
           "id": "para-00006",
           "title": {
             "segmentId": "m00282:para-title:para-00006-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -90,6 +95,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

@@ -2,7 +2,7 @@
   "moduleId": "m00163",
   "title": {
     "segmentId": "m00163:title:auto-1",
-    "text": "Untitled"
+    "text": "[[i:sp]][[sup:3]] Hybrid Orbitals and the Structure of Methane"
   },
   "documentClass": null,
   "metadata": {
@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00163:caption:fig-00001-caption"
       },
@@ -54,6 +55,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00163:caption:fig-00002-caption"
       },

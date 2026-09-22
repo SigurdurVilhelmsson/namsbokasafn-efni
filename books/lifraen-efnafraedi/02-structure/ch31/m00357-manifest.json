@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00357",
-  "extractedAt": "2026-08-31T19:08:50.504Z",
+  "extractedAt": "2026-09-22T17:26:40.370Z",
   "sourceHash": "8d762ca6648a3bff",
   "segmentCount": 91,
   "segmentIds": [
@@ -164,5 +164,15 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "crystallites",
+    "term-00002": "melt transition temperature, Tm",
+    "term-00003": "glass transition temperature, Tg",
+    "term-00004": "Thermoplastics",
+    "term-00005": "Plasticizers",
+    "term-00006": "Fibers",
+    "term-00007": "Elastomers",
+    "term-00008": "Thermosetting resins"
   }
 }

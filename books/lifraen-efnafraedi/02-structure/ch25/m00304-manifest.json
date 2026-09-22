@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00304",
-  "extractedAt": "2026-08-31T19:08:49.854Z",
+  "extractedAt": "2026-09-22T17:26:39.419Z",
   "sourceHash": "23b9031e873c5e55",
   "segmentCount": 57,
   "segmentIds": [
@@ -126,5 +126,16 @@
       "sect-00011",
       "sect-00012"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "glycoside",
+    "term-00002": "Koenigs–Knorr reaction",
+    "term-00003": "alditol",
+    "term-00004": "aldonic acids",
+    "term-00005": "reducing sugars",
+    "term-00006": "aldaric acid",
+    "term-00007": "uronic acid",
+    "term-00008": "Kiliani–Fischer synthesis",
+    "term-00009": "Wohl degradation"
   }
 }

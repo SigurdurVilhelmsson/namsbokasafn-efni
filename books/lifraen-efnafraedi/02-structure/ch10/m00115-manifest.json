@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00115",
-  "extractedAt": "2026-08-31T19:08:47.955Z",
+  "extractedAt": "2026-09-22T17:26:36.906Z",
   "sourceHash": "ecf77a9841de4f59",
   "segmentCount": 12,
   "segmentIds": [
@@ -47,5 +47,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "allylic"
   }
 }

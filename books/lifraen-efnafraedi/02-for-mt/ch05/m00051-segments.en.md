@@ -53,13 +53,13 @@ Drawing the Three-Dimensional Structure of a Chiral Molecule
 Draw the structure of a chiral alcohol.
 
 <!-- SEG:m00051:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00051:para:para-00010 -->
 An alcohol is a compound that contains the −OH functional group. To make an alcohol chiral, we need to have four different groups bonded to a single carbon atom, say −H, −OH, −CH[[sub:3]], and −CH[[sub:2]]CH[[sub:3]].
 
 <!-- SEG:m00051:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00051:para:para-00011 -->
 [[MEDIA:1]]

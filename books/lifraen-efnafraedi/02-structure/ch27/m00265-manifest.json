@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00265",
-  "extractedAt": "2026-08-31T19:08:50.083Z",
+  "extractedAt": "2026-09-22T17:26:39.720Z",
   "sourceHash": "8eaa9444a87df18b",
   "segmentCount": 128,
   "segmentIds": [
@@ -179,5 +179,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Waxes",
+    "term-00002": "triacylglycerols",
+    "term-00003": "fatty acids",
+    "term-00004": "polyunsaturated fatty acids",
+    "term-00005": "omega-3 fatty acid"
   }
 }

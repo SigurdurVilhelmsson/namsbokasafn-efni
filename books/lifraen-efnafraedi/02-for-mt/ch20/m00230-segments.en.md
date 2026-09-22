@@ -38,7 +38,7 @@ Name
 Acyl group
 
 <!-- SEG:m00230:entry:auto-14 -->
-HCO[[sub:2]]H
+HCO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-15 -->
 Formic
@@ -47,7 +47,7 @@ Formic
 Formyl
 
 <!-- SEG:m00230:entry:auto-17 -->
-CH[[sub:3]]CO[[sub:2]]H
+CH[[sub:3]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-18 -->
 Acetic
@@ -56,7 +56,7 @@ Acetic
 Acetyl
 
 <!-- SEG:m00230:entry:auto-20 -->
-CH[[sub:3]]CH[[sub:2]]CO[[sub:2]]H
+CH[[sub:3]]CH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-21 -->
 Propionic
@@ -65,7 +65,7 @@ Propionic
 Propionyl
 
 <!-- SEG:m00230:entry:auto-23 -->
-CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]]H
+CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-24 -->
 Butyric
@@ -74,7 +74,7 @@ Butyric
 Butyryl
 
 <!-- SEG:m00230:entry:auto-26 -->
-HO[[sub:2]]CCO[[sub:2]]H
+HO[[sub:2]]CCO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-27 -->
 Oxalic
@@ -83,7 +83,7 @@ Oxalic
 Oxalyl
 
 <!-- SEG:m00230:entry:auto-29 -->
-HO[[sub:2]]CCH[[sub:2]]CO[[sub:2]]H
+HO[[sub:2]]CCH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-30 -->
 Malonic
@@ -92,7 +92,7 @@ Malonic
 Malonyl
 
 <!-- SEG:m00230:entry:auto-32 -->
-HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CO[[sub:2]]H
+HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-33 -->
 Succinic
@@ -101,7 +101,7 @@ Succinic
 Succinyl
 
 <!-- SEG:m00230:entry:auto-35 -->
-HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]]H
+HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-36 -->
 Glutaric
@@ -110,7 +110,7 @@ Glutaric
 Glutaryl
 
 <!-- SEG:m00230:entry:auto-38 -->
-HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]]H
+HO[[sub:2]]CCH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-39 -->
 Adipic
@@ -119,7 +119,7 @@ Adipic
 Adipoyl
 
 <!-- SEG:m00230:entry:auto-41 -->
-H[[sub:2]]C═CHCO[[sub:2]]H
+H[[sub:2]]C═CHCO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-42 -->
 Acrylic
@@ -128,7 +128,7 @@ Acrylic
 Acryloyl
 
 <!-- SEG:m00230:entry:auto-44 -->
-HO[[sub:2]]CCH═CHCO[[sub:2]]H
+HO[[sub:2]]CCH═CHCO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-45 -->
 Maleic (cis) Fumaric (trans)
@@ -137,7 +137,7 @@ Maleic (cis) Fumaric (trans)
 Maleoyl Fumaroyl
 
 <!-- SEG:m00230:entry:auto-47 -->
-HOCH[[sub:2]]CO[[sub:2]]H
+HOCH[[sub:2]]CO[[sub:2]][[span:H|magenta-text]]
 
 <!-- SEG:m00230:entry:auto-48 -->
 Glycolic

@@ -2,7 +2,7 @@
 Acidity of Alpha Hydrogen Atoms: Enolate Ion Formation
 
 <!-- SEG:m00261:para:para-00001 -->
-As noted in , a hydrogen on the [[i:α]] position of a carbonyl compound is weakly acidic and can be removed by a strong base to yield an enolate ion. In comparing acetone (p[[i:K]][[sub:a]] = 19.3) with ethane (p[[i:K]][[sub:a]] ≈ 60), for instance, the presence of a neighboring carbonyl group increases the acidity of the ketone over the alkane by a factor of 10[[sup:40]].
+As noted in [[docref:m00257]], a hydrogen on the [[i:α]] position of a carbonyl compound is weakly acidic and can be removed by a strong base to yield an enolate ion. In comparing acetone (p[[i:K]][[sub:a]] = 19.3) with ethane (p[[i:K]][[sub:a]] ≈ 60), for instance, the presence of a neighboring carbonyl group increases the acidity of the ketone over the alkane by a factor of 10[[sup:40]].
 
 <!-- SEG:m00261:alt:fig-00001-alt -->
 A wedge-dash structure of acetone with labeled p K a value equal to 19.3 and ethane with labeled p K a value of approximately 60.
@@ -80,7 +80,7 @@ Structure of a 1,3-diester functional group. Condensed formula is C H 3 O bonded
 Alcohol
 
 <!-- SEG:m00261:entry:auto-28 -->
-CH[[sub:3]]OH
+CH[[sub:3]]O[[span:H|magenta-text]]
 
 <!-- SEG:m00261:entry:auto-29 -->
 16
@@ -152,7 +152,7 @@ A structure of N, N dimethyl acetamide with condensed formula, C H 3 bonded to C
 Dialkylamine
 
 <!-- SEG:m00261:entry:auto-52 -->
-HN([[i:i]]-C[[sub:3]]H[[sub:7]])[[sub:2]]
+[[span:H|magenta-text]]N([[i:i]]-C[[sub:3]]H[[sub:7]])[[sub:2]]
 
 <!-- SEG:m00261:entry:auto-53 -->
 36
@@ -170,13 +170,13 @@ Identifying the Acidic Hydrogens in a Compound
 Identify the most acidic hydrogens in each of the following compounds, and rank the compounds in order of increasing acidity:
 
 <!-- SEG:m00261:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00261:para:para-00011 -->
 Hydrogens on carbon next to a carbonyl group are acidic. In general, a [[i:β]]-dicarbonyl compound is most acidic, a ketone or aldehyde is next most acidic, and a carboxylic acid derivative is least acidic. Remember that alcohols, phenols, and carboxylic acids are also acidic because of their –OH hydrogens.
 
 <!-- SEG:m00261:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00261:para:para-00012 -->
 The acidity order is ([[b:a]]) > ([[b:c]]) > ([[b:b]]). Acidic hydrogens are shown in red.

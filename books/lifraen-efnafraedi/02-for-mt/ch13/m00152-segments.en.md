@@ -1,8 +1,8 @@
 <!-- SEG:m00152:title:auto-1 -->
-Problems
+Uses of [[sup:1]]H NMR Spectroscopy
 
 <!-- SEG:m00152:para:para-00001 -->
-NMR is used to help identify the product of nearly every reaction run in the laboratory. For example, we said in that hydroboration–oxidation of alkenes occurs with non-Markovnikov regiochemistry to yield the less highly substituted alcohol. With the help of NMR, we can now prove this statement.
+NMR is used to help identify the product of nearly every reaction run in the laboratory. For example, we said in [[docref:m00093]] that hydroboration–oxidation of alkenes occurs with non-Markovnikov regiochemistry to yield the less highly substituted alcohol. With the help of NMR, we can now prove this statement.
 
 <!-- SEG:m00152:para:para-00002 -->
 Does hydroboration–oxidation of methylenecyclohexane yield cyclohexylmethanol or 1-methylcyclohexanol?

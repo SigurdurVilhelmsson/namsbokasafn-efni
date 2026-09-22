@@ -5,7 +5,7 @@ Reactions of Epoxides: Ring-Opening
 Acid-Catalyzed Epoxide Opening
 
 <!-- SEG:m00252:para:para-00001 -->
-Epoxides are cleaved by treatment with acid just as other ethers are, but under much milder conditions because of ring strain. As we saw in , dilute aqueous acid at room temperature is sufficient for facilitating the hydrolysis of epoxides to give 1,2-diols, also called [[i:vicinal glycols.]] (The word [[i:vicinal]] means “adjacent,” and a [[i:glycol]] is a diol.) The epoxide cleavage takes place by S[[sub:N]]2-like backside attack of a nucleophile on the protonated epoxide, giving a trans-1,2-diol as product.
+Epoxides are cleaved by treatment with acid just as other ethers are, but under much milder conditions because of ring strain. As we saw in [[docref:m00095]], dilute aqueous acid at room temperature is sufficient for facilitating the hydrolysis of epoxides to give 1,2-diols, also called [[i:vicinal glycols.]] (The word [[i:vicinal]] means “adjacent,” and a [[i:glycol]] is a diol.) The epoxide cleavage takes place by S[[sub:N]]2-like backside attack of a nucleophile on the protonated epoxide, giving a trans-1,2-diol as product.
 
 <!-- SEG:m00252:alt:fig-00001-alt -->
 Two reactions are shown: 1,2-epoxycyclohexane becomes trans-1,2-cyclohexanediol (86 percent yield) via intermediates, and cyclohexene reacts with bromine to yield trans-1,2-dibromocyclohexane.
@@ -41,13 +41,13 @@ Predicting the Product of Epoxide Ring-Opening
 Predict the major product of the following reaction:
 
 <!-- SEG:m00252:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00252:para:para-00007 -->
 Identify the substitution pattern of the two epoxide carbon atoms. In this case, one carbon is secondary and one is primary. Then recall the guidelines for epoxide cleavages. An epoxide with only primary and secondary carbons usually undergoes cleavage by S[[sub:N]]2-like attack of a nucleophile on the less hindered carbon, but an epoxide with a tertiary carbon atom usually undergoes cleavage by backside attack on the more hindered carbon. In this case, an S[[sub:N]]2 cleavage of the primary C–O epoxide bond will occur.
 
 <!-- SEG:m00252:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00252:alt:fig-00005-alt -->
 Cyclohexyloxirane reacts with hydrochloric acid and ether to form an unknown product(s), depicted by a question mark.
@@ -62,7 +62,7 @@ Problems
 Base-Catalyzed Epoxide Opening
 
 <!-- SEG:m00252:para:para-00011 -->
-Unlike other ethers, epoxide rings can be cleaved by bases and nucleophiles as well as by acid. Although an ether oxygen is normally a poor leaving group in an S[[sub:N]]2 reaction (), the strain of the three-membered ring causes epoxides to react with hydroxide ion at elevated temperatures.
+Unlike other ethers, epoxide rings can be cleaved by bases and nucleophiles as well as by acid. Although an ether oxygen is normally a poor leaving group in an S[[sub:N]]2 reaction ([[docref:m00124]]), the strain of the three-membered ring causes epoxides to react with hydroxide ion at elevated temperatures.
 
 <!-- SEG:m00252:alt:fig-00007-alt -->
 Methylenecyclohexane oxide reacts with hydroxyl ion to form an intermediate that yields 1-hydroxymethylcyclohexanol (70 percent yield) and hydroxide.

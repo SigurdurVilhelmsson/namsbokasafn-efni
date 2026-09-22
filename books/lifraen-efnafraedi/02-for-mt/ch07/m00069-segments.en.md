@@ -2,7 +2,10 @@
 Electrophilic Addition Reactions of Alkenes
 
 <!-- SEG:m00069:para:para-00001 -->
-Before beginning a detailed discussion of alkene reactions, let’s review briefly some conclusions from the previous chapter. We said in that alkenes behave as nucleophiles (Lewis bases) in polar reactions, donating a pair of electrons from their electron-rich [[MATH:1]] bond to an electrophile (Lewis acid). For example, reaction of 2-methylpropene with HBr yields 2-bromo-2-methylpropane. A careful study of this and similar reactions by the British chemist Christopher Ingold and others in the 1930s led to the generally accepted mechanism shown in [[xref:fig-00001]] for an [[term:electrophilic addition reaction|term-00001]].
+Before beginning a detailed discussion of alkene reactions, let’s review briefly some conclusions from the previous chapter. We said in [[docref:m00082]] that alkenes behave as nucleophiles (Lewis bases) in polar reactions, donating a pair of electrons from their electron-rich [[MATH:1]] bond to an electrophile (Lewis acid). For example, reaction of 2-methylpropene with HBr yields 2-bromo-2-methylpropane. A careful study of this and similar reactions by the British chemist Christopher Ingold and others in the 1930s led to the generally accepted mechanism shown in [[xref:fig-00001]] for an [[term:electrophilic addition reaction|term-00001]].
+
+<!-- SEG:m00069:figure-title:fig-00001-title -->
+MECHANISM
 
 <!-- SEG:m00069:caption:fig-00001-caption -->
 [[b:Mechanism of the electrophilic addition of HBr to 2-methylpropene]]. The reaction occurs in two steps, protonation and bromide addition, and involves a carbocation intermediate.
@@ -38,7 +41,7 @@ This is a good place to mention that the equations for organic reactions are som
 Alternatively, we might write the same reaction in a format to emphasize that 2-methylpropene is the reactant whose chemistry is of greater interest. The second reactant, HCl, is placed above the reaction arrow together with notes about solvent and reaction conditions.
 
 <!-- SEG:m00069:para:para-00007 -->
-In describing a biological process, the reaction is almost always written to show only the structures of the primary reactant and product, while abbreviating the structures of various biological “reagents” and by-products with a curved arrow that intersects the straight reaction arrow. As discussed in , the reaction of glucose with ATP to give glucose 6-phosphate plus ADP would then be written as
+In describing a biological process, the reaction is almost always written to show only the structures of the primary reactant and product, while abbreviating the structures of various biological “reagents” and by-products with a curved arrow that intersects the straight reaction arrow. As discussed in [[docref:m00087]], the reaction of glucose with ATP to give glucose 6-phosphate plus ADP would then be written as
 
 <!-- SEG:m00069:alt:fig-00004-alt -->
 A reaction shows 2-methylpropene plus H Cl forming  2-chloro-2-methylpropane. Ether (labeled solvent) appears above the reaction arrow and 25 degrees Celsius appears below the reaction arrow.

@@ -1,5 +1,5 @@
 <!-- SEG:m00155:title:auto-1 -->
-Problems
+DEPT [[sup:13]]C NMR Spectroscopy
 
 <!-- SEG:m00155:para:para-00001 -->
 Numerous techniques developed in recent years have made it possible to obtain enormous amounts of information from [[sup:13]]C NMR spectra. Among these techniques is one called [[term:[[i:DEPT–NMR]]|term-00001]], for [[i:distortionless enhancement by polarization transfer,]] which makes it possible to distinguish between signals due to CH[[sub:3]], CH[[sub:2]], CH, and quaternary carbons. That is, the number of hydrogens attached to each carbon in a molecule can be determined.
@@ -35,16 +35,16 @@ DEPT-90: 31.7 [[i:δ]];
 DEPT-135: positive peak at 19.0 [[i:δ]], negative peak at 69.5 [[i:δ]].
 
 <!-- SEG:m00155:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00155:para:para-00008 -->
-As noted in , it usually helps with compounds of known formula but unknown structure to calculate the compound’s degree of unsaturation. In the present instance, a formula of C[[sub:4]]H[[sub:10]]O corresponds to a saturated, open-chain molecule.
+As noted in [[docref:m00064]], it usually helps with compounds of known formula but unknown structure to calculate the compound’s degree of unsaturation. In the present instance, a formula of C[[sub:4]]H[[sub:10]]O corresponds to a saturated, open-chain molecule.
 
 <!-- SEG:m00155:para:para-00009 -->
 To gain information from the [[sup:13]]C data, let’s begin by noting that the unknown alcohol has four carbon atoms, yet has only three NMR absorptions, which implies that two of the carbons must be equivalent. Looking at chemical shifts, two of the absorptions are in the typical alkane region (19.0 and 31.7 [[i:δ]]), while one is in the region of a carbon bonded to an electronegative atom (69.5 [[i:δ]])—oxygen in this instance. The DEPT-90 spectrum tells us that the alkyl carbon at 31.7 [[i:δ]] is tertiary (CH); the DEPT-135 spectrum tells us that the alkyl carbon at 19.0 [[i:δ]] is a methyl (CH[[sub:3]]) and that the carbon bonded to oxygen (69.5 [[i:δ]]) is secondary (CH[[sub:2]]). The two equivalent carbons are probably both methyls bonded to the same tertiary carbon, (CH[[sub:3]])[[sub:2]]CH–. We can now put the pieces together to propose a structure: 2-methyl-1-propanol.
 
 <!-- SEG:m00155:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00155:alt:fig-00003-alt -->
 Structure of 2-methyl-1-propanol with shift values of 69.5 (C 1), 31.7 (C 2), and 19.0 (C 3 and methyl).

@@ -8,7 +8,7 @@ Before seeing how electrophilic aromatic substitutions occur, let’s briefly re
 A reaction mechanism shows alkene reacting with hydrogen chloride to form a carbocation intermediate, which further forms an addition product.
 
 <!-- SEG:m00189:para:para-00002 -->
-An electrophilic aromatic substitution reaction begins in a similar way, but there are a number of differences. One difference is that aromatic rings are less reactive toward electrophiles than alkenes. For example, Br[[sub:2]] in CH[[sub:2]]Cl[[sub:2]] solution reacts instantly with most alkenes but does not react with benzene at room temperature. For bromination of benzene to take place, a catalyst such as FeBr[[sub:3]] is needed. The catalyst makes the Br[[sub:2]] molecule more electrophilic by polarizing it to give a [[MATH:1]] species that reacts as if it were Br[[sup:+]]. The polarized Br[[sub:2]] molecule then reacts with the nucleophilic benzene ring to yield a nonaromatic carbocation intermediate that is doubly allylic () and has three resonance forms.
+An electrophilic aromatic substitution reaction begins in a similar way, but there are a number of differences. One difference is that aromatic rings are less reactive toward electrophiles than alkenes. For example, Br[[sub:2]] in CH[[sub:2]]Cl[[sub:2]] solution reacts instantly with most alkenes but does not react with benzene at room temperature. For bromination of benzene to take place, a catalyst such as FeBr[[sub:3]] is needed. The catalyst makes the Br[[sub:2]] molecule more electrophilic by polarizing it to give a [[MATH:1]] species that reacts as if it were Br[[sup:+]]. The polarized Br[[sub:2]] molecule then reacts with the nucleophilic benzene ring to yield a nonaromatic carbocation intermediate that is doubly allylic ([[docref:m00126]]) and has three resonance forms.
 
 <!-- SEG:m00189:alt:fig-00002-alt -->
 Benzene reacts with B r plus F e B r 4 minus (obtained from bromine and iron tribromide) to form three resonance structures of a cyclic carbocation.
@@ -23,7 +23,10 @@ Although more stable than a typical alkyl carbocation because of resonance, the 
 The energy diagram shows curves for the reactions of and electrophile with benzene and with an alkene. The carbocation intermediate formed with benzene is loweer in energy than that from the alkene.
 
 <!-- SEG:m00189:para:para-00004 -->
-Another difference between alkene addition and aromatic substitution occurs after the carbocation intermediate has formed. Instead of adding Br[[sup:–]] to give an addition product, the carbocation intermediate loses H[[sup:+]] from the bromine-bearing carbon to give a substitution product. Note that this loss of H[[sup:+]] is similar to what occurs in the second step of an E1 reaction (). The net effect of reaction of Br[[sub:2]] with benzene is the substitution of H[[sup:+]] by Br[[sup:+]] by the overall mechanism shown in [[xref:fig-00004]].
+Another difference between alkene addition and aromatic substitution occurs after the carbocation intermediate has formed. Instead of adding Br[[sup:–]] to give an addition product, the carbocation intermediate loses H[[sup:+]] from the bromine-bearing carbon to give a substitution product. Note that this loss of H[[sup:+]] is similar to what occurs in the second step of an E1 reaction ([[docref:m00131]]). The net effect of reaction of Br[[sub:2]] with benzene is the substitution of H[[sup:+]] by Br[[sup:+]] by the overall mechanism shown in [[xref:fig-00004]].
+
+<!-- SEG:m00189:figure-title:fig-00004-title -->
+MECHANISM
 
 <!-- SEG:m00189:caption:fig-00004-caption -->
 [[b:The mechanism for the electrophilic bromination of benzene]]. The reaction occurs in two steps and involves a resonance-stabilized carbocation intermediate.

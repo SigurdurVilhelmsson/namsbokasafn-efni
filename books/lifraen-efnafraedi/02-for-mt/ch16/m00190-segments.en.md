@@ -44,7 +44,7 @@ Aromatic Nitration
 Aromatic rings are nitrated by reaction with a mixture of concentrated nitric and sulfuric acids. The electrophile is the nitronium ion, NO[[sub:2]][[sup:+]], which is formed from HNO[[sub:3]] by protonation and loss of water. The nitronium ion reacts with benzene to yield a carbocation intermediate, and loss of H[[sup:+]] from this intermediate gives the neutral substitution product, nitrobenzene ([[xref:fig-00006]]).
 
 <!-- SEG:m00190:caption:fig-00006-caption -->
-[[b:The mechanism for electrophilic nitration of an aromatic ring]]. An electrostatic potential map of the reactive electrophile [[MATH:1]] shows that the [[b:nitrogen atom is most positive.]]
+[[b:The mechanism for electrophilic nitration of an aromatic ring]]. An electrostatic potential map of the reactive electrophile [[MATH:1]] shows that the [[b:[[span:nitrogen atom is most positive.|cyan-text]]]]
 
 <!-- SEG:m00190:alt:fig-00006-alt -->
 Nitric and sulfuric acids react to form water and nitronium ion. The latter reacts with benzene to form nitrobenzene and water. Ball-and-stick model in electrostatic potential map of nitronium ion is depicted.
@@ -62,7 +62,7 @@ Aromatic Sulfonation
 Aromatic rings can be sulfonated by reaction with so-called fuming sulfuric acid, a mixture of H[[sub:2]]SO[[sub:4]] and SO[[sub:3]]. The reactive electrophile is either [[MATH:2]] or neutral SO[[sub:3]], depending on reaction conditions, and substitution occurs by the same two-step mechanism seen previously for bromination and nitration ([[xref:fig-00008]]). Note, however, that the sulfonation reaction is readily reversible. It can occur either forward or backward, depending on the reaction conditions. Sulfonation is favored in strong acid, but desulfonation is favored in hot, dilute aqueous acid.
 
 <!-- SEG:m00190:caption:fig-00008-caption -->
-[[b:The mechanism for electrophilic sulfonation of an aromatic ring]]. An electrostatic potential map of the reactive electrophile [[MATH:3]] shows that [[b:sulfur and hydrogen are the most positive atoms]].
+[[b:The mechanism for electrophilic sulfonation of an aromatic ring]]. An electrostatic potential map of the reactive electrophile [[MATH:3]] shows that [[b:[[span:sulfur and hydrogen are the most positive atoms|cyan-text]]]].
 
 <!-- SEG:m00190:alt:fig-00008-alt -->
 A three-step reversible reaction shows benzene reacting with intermediate formed from sulfur trioxide and sulfuric acid to form benzenesulfonic acid. Ball-and-stick model in electrostatic potential map of intermediate is depicted.
@@ -84,6 +84,9 @@ Para-hydroxyphenylacetate reacts with molecular oxygen in the presence of para-h
 
 <!-- SEG:m00190:para:para-00012 -->
 By analogy with other electrophilic aromatic substitutions, you might expect that an electrophilic oxygen species acting as an “OH[[sup:+]] equivalent” is needed for the hydroxylation reaction. That is just what happens, with the electrophilic oxygen arising by protonation of FAD hydroperoxide, RO–OH ([[xref:fig-00011]]); that is, [[MATH:4]]. The FAD hydroperoxide itself is formed by reaction of FADH[[sub:2]] with O[[sub:2]].
+
+<!-- SEG:m00190:figure-title:fig-00011-title -->
+MECHANISM
 
 <!-- SEG:m00190:caption:fig-00011-caption -->
 [[b:Mechanism for the electrophilic hydroxylation of [[i:p]]-hydroxyphenylacetate, by reaction with FAD hydroperoxide]]. The hydroxylating species is an “OH[[sup:+]] equivalent” that arises by protonation of FAD hydroperoxide, RO–OH + H[[sup:+]] → ROH + OH[[sup:+]]. The FAD hydroperoxide itself is formed by reaction of FADH[[sub:2]] with O[[sub:2]].

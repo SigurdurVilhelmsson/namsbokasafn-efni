@@ -1,13 +1,14 @@
 {
   "version": 1,
   "moduleId": "m00336",
-  "extractedAt": "2026-08-31T19:08:50.301Z",
+  "extractedAt": "2026-09-22T17:26:40.036Z",
   "sourceHash": "ab778cdc17d73528",
-  "segmentCount": 30,
+  "segmentCount": 31,
   "segmentIds": [
     "m00336:title:auto-1",
     "m00336:para:para-00001",
     "m00336:para:para-00002",
+    "m00336:figure-title:fig-00001-title",
     "m00336:caption:fig-00001-caption",
     "m00336:alt:fig-00001-alt",
     "m00336:title:sect-00001-title",
@@ -83,5 +84,8 @@
       "sect-00008",
       "sect-00009"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "citric acid cycle"
   }
 }

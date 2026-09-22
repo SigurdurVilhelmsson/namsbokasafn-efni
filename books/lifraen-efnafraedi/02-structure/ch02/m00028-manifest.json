@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00028",
-  "extractedAt": "2026-08-31T19:08:46.705Z",
+  "extractedAt": "2026-09-22T17:26:35.650Z",
   "sourceHash": "1ed54d053ed38314",
-  "segmentCount": 27,
+  "segmentCount": 28,
   "segmentIds": [
     "m00028:title:auto-1",
     "m00028:para:para-00001",
@@ -12,6 +12,7 @@
     "m00028:para:para-00002",
     "m00028:alt:fig-00003-alt",
     "m00028:para:para-00003",
+    "m00028:figure-title:fig-00001-title",
     "m00028:caption:fig-00001-caption",
     "m00028:alt:fig-00001-alt",
     "m00028:para:para-00004",
@@ -74,5 +75,9 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lewis acid",
+    "term-00002": "Lewis base"
   }
 }

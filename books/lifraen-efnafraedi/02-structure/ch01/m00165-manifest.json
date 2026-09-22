@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00165",
-  "extractedAt": "2026-08-31T19:08:46.527Z",
+  "extractedAt": "2026-09-22T17:26:35.494Z",
   "sourceHash": "3318c966918e33ee",
   "segmentCount": 19,
   "segmentIds": [
@@ -64,5 +64,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "sp2 hybrid orbitals",
+    "term-00002": "pi (π) bond"
   }
 }

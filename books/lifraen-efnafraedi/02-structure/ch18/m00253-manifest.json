@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00253",
-  "extractedAt": "2026-08-31T19:08:49.054Z",
+  "extractedAt": "2026-09-22T17:26:38.203Z",
   "sourceHash": "a2225bad289f0a37",
   "segmentCount": 8,
   "segmentIds": [
@@ -44,5 +44,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Crown ethers"
   }
 }

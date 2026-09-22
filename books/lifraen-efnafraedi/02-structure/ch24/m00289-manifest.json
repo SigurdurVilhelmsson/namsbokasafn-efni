@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00289",
-  "extractedAt": "2026-08-31T19:08:49.708Z",
+  "extractedAt": "2026-09-22T17:26:39.199Z",
   "sourceHash": "df9f2099549875a2",
   "segmentCount": 18,
   "segmentIds": [
@@ -62,5 +62,14 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkylamines",
+    "term-00002": "arylamines",
+    "term-00003": "primary (RNH2)",
+    "term-00004": "secondary (R2NH)",
+    "term-00005": "tertiary (R3N)",
+    "term-00006": "quaternary ammonium salts",
+    "term-00007": "Heterocyclic amines"
   }
 }

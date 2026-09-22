@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00238",
-  "extractedAt": "2026-08-31T19:08:49.397Z",
+  "extractedAt": "2026-09-22T17:26:38.715Z",
   "sourceHash": "ec388621dbcc5a23",
   "segmentCount": 8,
   "segmentIds": [
@@ -41,5 +41,14 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "carboxylic acid derivatives",
+    "term-00002": "acid halides",
+    "term-00003": "acid anhydrides",
+    "term-00004": "esters",
+    "term-00005": "amides",
+    "term-00006": "thioesters",
+    "term-00007": "acyl phosphates"
   }
 }

@@ -1,17 +1,19 @@
 {
   "version": 1,
   "moduleId": "m00337",
-  "extractedAt": "2026-08-31T19:08:50.304Z",
+  "extractedAt": "2026-09-22T17:26:40.040Z",
   "sourceHash": "55017644ae7db289",
-  "segmentCount": 35,
+  "segmentCount": 37,
   "segmentIds": [
     "m00337:title:auto-1",
     "m00337:para:para-00001",
     "m00337:para:para-00002",
     "m00337:alt:fig-00001-alt",
     "m00337:para:para-00003",
+    "m00337:figure-title:fig-00002-title",
     "m00337:caption:fig-00002-caption",
     "m00337:alt:fig-00002-alt",
+    "m00337:figure-title:fig-00003-title",
     "m00337:caption:fig-00003-caption",
     "m00337:alt:fig-00003-alt",
     "m00337:title:sect-00001-title",
@@ -88,5 +90,8 @@
       "sect-00008",
       "sect-00009"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "gluconeogenesis"
   }
 }

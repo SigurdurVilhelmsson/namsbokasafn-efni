@@ -10,6 +10,9 @@ Propiophenone reacts with hydrazine and potassium hydroxide to yield propylbenze
 <!-- SEG:m00220:para:para-00002 -->
 As shown in [[xref:fig-00002]], the Wolff–Kishner reaction involves formation of a [[i:hydrazone]] intermediate, [[MATH:2]], followed by base-catalyzed double-bond migration, loss of N[[sub:2]] gas to give a carbanion, and protonation to give the alkane product. The double-bond migration takes place when a base removes one of the weakly acidic NH protons in step 2 to generate a hydrazone anion, which has an allylic resonance structure that places the double bond between nitrogens and the negative charge on carbon. Reprotonation then occurs on carbon to generate the double-bond rearrangement product. The next step—loss of nitrogen and formation of an alkyl anion—is driven by the large thermodynamic stability of the N[[sub:2]] molecule.
 
+<!-- SEG:m00220:figure-title:fig-00002-title -->
+MECHANISM
+
 <!-- SEG:m00220:caption:fig-00002-caption -->
 [[b:Mechanism for the Wolff–Kishner reduction of an aldehyde or ketone to yield an alkane.]]
 
@@ -17,7 +20,7 @@ As shown in [[xref:fig-00002]], the Wolff–Kishner reaction involves formation 
 Reaction mechanism of ketone or aldehyde with hydrazine to yield an alkane through five steps: formation of hydrazone, deprotonation (and resonance), protonation, deprotonation and loss of nitrogen, protonation.
 
 <!-- SEG:m00220:para:para-00003 -->
-Note that the Wolff–Kishner reduction accomplishes the same overall transformation as the catalytic hydrogenation of an acylbenzene to yield an alkylbenzene (). The Wolff–Kishner reduction is more general and more useful than catalytic hydrogenation, however, because it works well with both alkyl and aryl ketones.
+Note that the Wolff–Kishner reduction accomplishes the same overall transformation as the catalytic hydrogenation of an acylbenzene to yield an alkylbenzene ([[docref:m00198]]). The Wolff–Kishner reduction is more general and more useful than catalytic hydrogenation, however, because it works well with both alkyl and aryl ketones.
 
 <!-- SEG:m00220:title:sect-00001-title -->
 Problems

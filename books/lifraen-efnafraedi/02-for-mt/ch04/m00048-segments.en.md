@@ -11,7 +11,7 @@ The bond-line structure of decalin featuring two fused cyclohexane rings. All ca
 Decalin consists of two cyclohexane rings joined to share two carbon atoms (the [[i:bridgehead]] carbons, C1 and C6) and a common bond. Decalin can exist in either of two isomeric forms, depending on whether the rings are trans fused or cis fused. In [[i:cis]]-decalin, the hydrogen atoms at the bridgehead carbons are on the same side of the rings; in [[i:trans]]-decalin, the bridgehead hydrogens are on opposite sides. [[xref:fig-00002]] shows how both compounds can be represented using chair cyclohexane conformations. Note that the two decalin isomers are not interconvertible by ring-flips or other rotations. They are cis–trans stereoisomers and have the same relationship to each other that [[i:cis]]- and [[i:trans]]-1,2-dimethylcyclohexane have.
 
 <!-- SEG:m00048:caption:fig-00002-caption -->
-[[b:Representations of [[i:cis]]- and [[i:trans]]-decalin.]] [[b:Hydrogen atoms]] at the bridgehead carbons are on the same face of the rings in the cis isomer but on opposite faces in the trans isomer.
+[[b:Representations of [[i:cis]]- and [[i:trans]]-decalin.]] [[b:[[span:Hydrogen atoms|magenta-text]]]] at the bridgehead carbons are on the same face of the rings in the cis isomer but on opposite faces in the trans isomer.
 
 <!-- SEG:m00048:alt:fig-00002-alt -->
 The wedge-dash structure, chair conformations, and ball and stick models of cis-decalin and trans-decalin.
@@ -29,7 +29,7 @@ Another common ring system is the norbornane, or bicyclo[2.2.1]heptane, structur
 The bond-line structure and ball and stick model of norbornane (bicyclo[2.2.1]heptane). In norbornane, 1-carbon bridge, 2-carbon bridge, and bridgehead carbons are highlighted.
 
 <!-- SEG:m00048:para:para-00005 -->
-Norbornane has a conformationally locked boat cyclohexane ring () in which carbons 1 and 4 are joined by an additional CH[[sub:2]] group. In drawing this structure, a break in the rear bond indicates that the vertical bond crosses in front of it. Making a molecular model is particularly helpful when trying to see the three-dimensionality of norbornane.
+Norbornane has a conformationally locked boat cyclohexane ring ([[docref:m00044]]) in which carbons 1 and 4 are joined by an additional CH[[sub:2]] group. In drawing this structure, a break in the rear bond indicates that the vertical bond crosses in front of it. Making a molecular model is particularly helpful when trying to see the three-dimensionality of norbornane.
 
 <!-- SEG:m00048:para:para-00006 -->
 Substituted norbornanes, such as camphor, are found widely in nature, and many have been important historically in developing organic structural theories.
@@ -143,16 +143,16 @@ Chair cyclohexanes are conformationally mobile and can undergo a [[b:ring-flip]]
 Additional Problems
 
 <!-- SEG:m00048:para:para-00065 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00048:para:para-00025 -->
-[[b:Cycloalkane Isomers]]
+[[b:[[span:Cycloalkane Isomers|red-text]]]]
 
 <!-- SEG:m00048:para:para-00033 -->
-[[b:Cycloalkane Conformation and Stability]]
+[[b:[[span:Cycloalkane Conformation and Stability|red-text]]]]
 
 <!-- SEG:m00048:para:para-00042 -->
-[[b:Cyclohexane Conformational Analysis]]
+[[b:[[span:Cyclohexane Conformational Analysis|red-text]]]]
 
 <!-- SEG:m00048:para:para-00052 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

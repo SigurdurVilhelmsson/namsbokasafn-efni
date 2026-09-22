@@ -276,7 +276,15 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // never 141 modules that lost segments, but 141 whose EN side had gained segments their
     // committed IS had never seen. The 13 that remain are almost entirely organic ch12,
     // whose MT is still 2026-08-12 against a 2026-09-01 extract (§C174/§C175).
-    expect(deltaMods).toBe(13); //   6.6% of 197
+    // ✅ RE-PINNED 2026-09-22 (organic whole-book re-extract): deltaMods 13 -> 17, the other
+    // two UNCHANGED. Measured per module against a golden copy of the pre-extract EN, which
+    // reproduced all three old pins exactly (13/13/24) before it was trusted. The +4 are
+    // organic ch12 m00136 m00137 m00139 m00142: their NEW English carries [[span:]] markers
+    // (2/2/2/8) from §C118's span fix, which their 2026-08-12 IS never saw. VINTAGE, not MT
+    // damage — the same four already had unpaired findings, which is why anyMods held at 24.
+    // ▶ ch12's committed MT is stale under stable ids (6 of its 9 modules changed text);
+    // re-buy it, do not inject it.
+    expect(deltaMods).toBe(17); //   8.6% of 197
     expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
     expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking
     // Global Constraints rule 4 needs ≤ ~5%. ⚠️ THE MARGIN HAS NARROWED BY AN ORDER OF

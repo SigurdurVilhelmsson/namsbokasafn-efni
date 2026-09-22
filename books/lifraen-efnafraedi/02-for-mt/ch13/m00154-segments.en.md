@@ -1,5 +1,5 @@
 <!-- SEG:m00154:title:auto-1 -->
-Problems
+Characteristics of [[sup:13]]C NMR Spectroscopy
 
 <!-- SEG:m00154:para:para-00001 -->
 At its simplest, [[sup:13]]C NMR makes it possible to count the number of different carbon atoms in a molecule. Look at the [[sup:13]]C NMR spectra of methyl acetate and 1-pentanol shown previously in [[docref:m00145#fig-00001]]b and [[docref:m00153#fig-00001]]b. In each case, a single sharp resonance line is observed for each different carbon atom.
@@ -26,7 +26,7 @@ Another trend is that [[i:sp]][[sup:3]]-hybridized carbons generally absorb from
 Carbon-13 N M R spectra of 2-butanone (peaks at 9, 32, 38, 208) and para-bromoacetophenone (peaks at 26, 129, 131, 134, 137, and 195).
 
 <!-- SEG:m00154:para:para-00005 -->
-The [[sup:13]]C NMR spectrum of [[i:para]]-bromoacetophenone is interesting in several ways. Note particularly that only six carbon absorptions are observed, even though the molecule contains eight carbons. [[i:para]]-bromoacetophenone has a symmetry plane that makes ring carbons 4 and 4′, and ring carbons 5 and 5′ equivalent. (Remember from that aromatic rings have two resonance forms.) Thus, the six ring carbons show only four absorptions in the range 128 to 137 [[i:δ]].
+The [[sup:13]]C NMR spectrum of [[i:para]]-bromoacetophenone is interesting in several ways. Note particularly that only six carbon absorptions are observed, even though the molecule contains eight carbons. [[i:para]]-bromoacetophenone has a symmetry plane that makes ring carbons 4 and 4′, and ring carbons 5 and 5′ equivalent. (Remember from [[docref:m00021]] that aromatic rings have two resonance forms.) Thus, the six ring carbons show only four absorptions in the range 128 to 137 [[i:δ]].
 
 <!-- SEG:m00154:alt:fig-00003-alt -->
 The structure and ball-and-stick model of para-bromoacetophenone. The carbon atoms in the structure are labeled from right to left with methyl as C 1.
@@ -41,13 +41,13 @@ Predicting Chemical Shifts in [[sup:13]]C NMR Spectra
 At what approximate positions would you expect ethyl acrylate, H[[sub:2]]C═CHCO[[sub:2]]CH[[sub:2]]CH[[sub:3]], to show [[sup:13]]C NMR absorptions?
 
 <!-- SEG:m00154:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00154:para:para-00008 -->
 Identify the distinct carbons in the molecule, and note whether each is alkyl, vinylic, aromatic, or in a carbonyl group. Then predict where each absorbs, using [[xref:fig-00001]] as necessary.
 
 <!-- SEG:m00154:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00154:para:para-00009 -->
 Ethyl acrylate has five chemically distinct carbons: two different C=C, one C=O, one O–C, and one alkyl C. From [[xref:fig-00001]], the likely absorptions are

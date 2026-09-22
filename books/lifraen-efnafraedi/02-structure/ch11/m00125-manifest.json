@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00125",
-  "extractedAt": "2026-08-31T19:08:48.060Z",
+  "extractedAt": "2026-09-22T17:26:37.064Z",
   "sourceHash": "58568702a310cbee",
-  "segmentCount": 20,
+  "segmentCount": 21,
   "segmentIds": [
     "m00125:title:auto-1",
     "m00125:para:para-00001",
@@ -11,6 +11,7 @@
     "m00125:para:para-00002",
     "m00125:para:para-00003",
     "m00125:para:para-00004",
+    "m00125:figure-title:fig-00002-title",
     "m00125:caption:fig-00002-caption",
     "m00125:alt:fig-00002-alt",
     "m00125:para:para-00005",
@@ -66,5 +67,13 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "SN1 reaction",
+    "term-00002": "unimolecular",
+    "term-00003": "first-order reaction",
+    "term-00004": "rate-limiting step",
+    "term-00006": "rate-determining step",
+    "term-00005": "ion pairs"
   }
 }

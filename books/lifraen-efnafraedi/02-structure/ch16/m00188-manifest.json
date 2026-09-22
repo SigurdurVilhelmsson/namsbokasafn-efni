@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00188",
-  "extractedAt": "2026-08-31T19:08:48.712Z",
+  "extractedAt": "2026-09-22T17:26:37.852Z",
   "sourceHash": "d7f875d15cac1c12",
   "segmentCount": 9,
   "segmentIds": [
@@ -42,5 +42,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "electrophilic aromatic substitution"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00175",
-  "extractedAt": "2026-08-31T19:08:48.493Z",
+  "extractedAt": "2026-09-22T17:26:37.588Z",
   "sourceHash": "c31f4f07bf4b1443",
   "segmentCount": 34,
   "segmentIds": [
@@ -88,5 +88,12 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "dienophile",
+    "term-00002": "stereospecific",
+    "term-00003": "endo",
+    "term-00004": "exo",
+    "term-00005": "s-cis conformation"
   }
 }

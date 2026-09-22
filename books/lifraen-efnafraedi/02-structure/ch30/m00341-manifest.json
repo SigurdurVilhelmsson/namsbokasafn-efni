@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00341",
-  "extractedAt": "2026-08-31T19:08:50.383Z",
+  "extractedAt": "2026-09-22T17:26:40.165Z",
   "sourceHash": "9b0c291fe1f5dc26",
   "segmentCount": 11,
   "segmentIds": [
@@ -47,5 +47,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "symmetry-allowed",
+    "term-00002": "symmetry-disallowed",
+    "term-00003": "frontier orbitals",
+    "term-00004": "highest occupied molecular orbital (HOMO)",
+    "term-00005": "lowest unoccupied molecular orbital (LUMO)"
   }
 }

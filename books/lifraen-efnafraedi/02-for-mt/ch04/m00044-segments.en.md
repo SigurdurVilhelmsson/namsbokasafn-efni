@@ -26,13 +26,13 @@ The chair conformation of cyclohexane can be drawn in three steps.
 Three steps to draw chair conformation of cyclohexane. Dots depict the locations where two adjacent carbon atoms are fused together.
 
 <!-- SEG:m00044:para:para-00005 -->
-[[b:STEP 1]] [[BR]]Draw two parallel lines, slanted downward and slightly offset from each other. This means that four of the cyclohexane carbons lie in a plane.
+[[b:[[span:STEP 1|red-text]]]] [[BR]]Draw two parallel lines, slanted downward and slightly offset from each other. This means that four of the cyclohexane carbons lie in a plane.
 
 <!-- SEG:m00044:para:para-00006 -->
-[[b:STEP 2]] [[BR]]Place the topmost carbon atom above and to the right of the plane of the other four, and connect the bonds.
+[[b:[[span:STEP 2|red-text]]]] [[BR]]Place the topmost carbon atom above and to the right of the plane of the other four, and connect the bonds.
 
 <!-- SEG:m00044:para:para-00007 -->
-[[b:STEP 3]] [[BR]]Place the bottommost carbon atom below and to the left of the plane of the middle four, and connect the bonds. Note that the bonds to the bottommost carbon atom are parallel to the bonds to the topmost carbon.
+[[b:[[span:STEP 3|red-text]]]] [[BR]]Place the bottommost carbon atom below and to the left of the plane of the middle four, and connect the bonds. Note that the bonds to the bottommost carbon atom are parallel to the bonds to the topmost carbon.
 
 <!-- SEG:m00044:para:para-00008 -->
 When viewing cyclohexane, it’s helpful to remember that the lower bond is in front and the upper bond is in back. If this convention isn’t defined, it can appear that the reverse is true. For clarity, all cyclohexane rings drawn in this book will have the front (lower) bond heavily shaded to indicate nearness to the viewer.

@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00258",
-  "extractedAt": "2026-08-31T19:08:49.517Z",
+  "extractedAt": "2026-09-22T17:26:38.891Z",
   "sourceHash": "14d067fec90da8cc",
-  "segmentCount": 6,
+  "segmentCount": 7,
   "segmentIds": [
     "m00258:title:auto-1",
     "m00258:para:para-00001",
     "m00258:alt:fig-00001-alt",
     "m00258:para:para-00002",
+    "m00258:figure-title:fig-00002-title",
     "m00258:caption:fig-00002-caption",
     "m00258:alt:fig-00002-alt"
   ],
@@ -40,5 +41,6 @@
     "note": [],
     "equation": [],
     "section": []
-  }
+  },
+  "termEnglish": {}
 }

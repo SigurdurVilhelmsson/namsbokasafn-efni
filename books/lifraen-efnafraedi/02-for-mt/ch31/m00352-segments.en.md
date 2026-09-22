@@ -2,7 +2,7 @@
 Stereochemistry of Polymerization: Ziegler–Natta Catalysts
 
 <!-- SEG:m00352:para:para-00001 -->
-Although we didn’t point it out when discussing chain-growth polymers in , the polymerization of a substituted vinyl monomer can lead to a polymer with numerous chirality centers in its chain. Propylene, for example, might polymerize with any of the three stereochemical outcomes shown in [[xref:fig-00001]]. A polymer with all methyl groups on the same side of the zigzag backbone is called [[term:isotactic|term-00001]], one in which the methyl groups alternate regularly on opposite sides of the backbone is called [[term:syndiotactic|term-00002]], and one with its methyl groups randomly oriented is called [[term:atactic|term-00003]].
+Although we didn’t point it out when discussing chain-growth polymers in [[docref:m00098]], the polymerization of a substituted vinyl monomer can lead to a polymer with numerous chirality centers in its chain. Propylene, for example, might polymerize with any of the three stereochemical outcomes shown in [[xref:fig-00001]]. A polymer with all methyl groups on the same side of the zigzag backbone is called [[term:isotactic|term-00001]], one in which the methyl groups alternate regularly on opposite sides of the backbone is called [[term:syndiotactic|term-00002]], and one with its methyl groups randomly oriented is called [[term:atactic|term-00003]].
 
 <!-- SEG:m00352:caption:fig-00001-caption -->
 [[b:Isotactic, syndiotactic, and atactic forms of polypropylene.]]

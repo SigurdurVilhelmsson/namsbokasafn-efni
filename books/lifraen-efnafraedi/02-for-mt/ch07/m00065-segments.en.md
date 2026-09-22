@@ -2,22 +2,22 @@
 Naming Alkenes
 
 <!-- SEG:m00065:para:para-00001 -->
-Alkenes are named using a series of rules similar to those for alkanes (), with the suffix [[i:-ene]] used instead of [[i:-ane]] to identify the functional group. There are three steps to this process.
+Alkenes are named using a series of rules similar to those for alkanes ([[docref:m00035]]), with the suffix [[i:-ene]] used instead of [[i:-ane]] to identify the functional group. There are three steps to this process.
 
 <!-- SEG:m00065:para:para-00002 -->
-[[b:STEP 1]] [[BR]][[b:Name the parent hydrocarbon.]] Find the longest carbon chain containing the double bond, and name the compound accordingly, using the suffix [[i:-ene:]]
+[[b:[[span:STEP 1|red-text]]]] [[BR]][[b:Name the parent hydrocarbon.]] Find the longest carbon chain containing the double bond, and name the compound accordingly, using the suffix [[i:-ene:]]
 
 <!-- SEG:m00065:alt:fig-00001-alt -->
 Two structures of 2-ethylpent-1-ene highlighted differently to justify that the molecule is named as a pentene, not a hexane, since the double bond is not contained in the six-carbon chain.
 
 <!-- SEG:m00065:para:para-00003 -->
-[[b:STEP 2]] [[BR]][[b:Number the carbon atoms in the chain.]] Begin at the end nearer the double bond or, if the double bond is equidistant from the two ends, begin at the end nearer the first branch point. This rule ensures that the double-bond carbons receive the lowest possible numbers.
+[[b:[[span:STEP 2|red-text]]]] [[BR]][[b:Number the carbon atoms in the chain.]] Begin at the end nearer the double bond or, if the double bond is equidistant from the two ends, begin at the end nearer the first branch point. This rule ensures that the double-bond carbons receive the lowest possible numbers.
 
 <!-- SEG:m00065:alt:fig-00002-alt -->
 The first structure has a 6-carbon chain with a double bond between C2-C3. The second compound has a 6-carbon chain with methyl group at C2 and double bond between C3-C4.
 
 <!-- SEG:m00065:para:para-00004 -->
-[[b:STEP 3]] [[BR]][[b:Write the full name.]] Number the substituents according to their positions in the chain, and list them alphabetically. Indicate the position of the double bond by giving the number of the first alkene carbon and placing that number directly before the parent name. If more than one double bond is present, indicate the position of each and use one of the suffixes [[i:-diene, -triene,]] and so on.
+[[b:[[span:STEP 3|red-text]]]] [[BR]][[b:Write the full name.]] Number the substituents according to their positions in the chain, and list them alphabetically. Indicate the position of the double bond by giving the number of the first alkene carbon and placing that number directly before the parent name. If more than one double bond is present, indicate the position of each and use one of the suffixes [[i:-diene, -triene,]] and so on.
 
 <!-- SEG:m00065:alt:fig-00003-alt -->
 The structures of 2-hexene, 2-methyl-3-hexene, 2-ethyl-1-pentene, and 2-methyl-1 3-butadiene. The carbon atoms are numbered in all structures.

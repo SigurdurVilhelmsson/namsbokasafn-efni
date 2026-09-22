@@ -8,7 +8,7 @@ Although the cis–trans interconversion of alkene isomers does not occur sponta
 A reaction shows trans-but-2-ene and cis-but-2-ene interconvert in acid catalyst to reach a 76 to 24 percent ratio.
 
 <!-- SEG:m00068:para:para-00002 -->
-Cis alkenes are less stable than their trans isomers because of steric strain between the two larger substituents on the same side of the double bond. This is the same kind of steric interference that we saw previously in the axial conformation of methylcyclohexane ().
+Cis alkenes are less stable than their trans isomers because of steric strain between the two larger substituents on the same side of the double bond. This is the same kind of steric interference that we saw previously in the axial conformation of methylcyclohexane ([[docref:m00046]]).
 
 <!-- SEG:m00068:alt:fig-00002-alt -->
 The space-filling models of cis-2-butene and trans-2-butene. The gray and white spheres represent carbon and hydrogen atoms, respectively. Steric strain is shown between methyl groups in cis-2-butene.

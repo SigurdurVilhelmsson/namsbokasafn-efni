@@ -28,6 +28,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00066:caption:fig-00001-caption"
       },
@@ -53,6 +54,7 @@
     {
       "type": "figure",
       "id": "fig-00002",
+      "title": null,
       "caption": {
         "segmentId": "m00066:caption:fig-00002-caption"
       },
@@ -74,6 +76,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00066:caption:fig-00003-caption"
       },

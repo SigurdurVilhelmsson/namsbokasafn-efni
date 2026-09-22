@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00212",
-  "extractedAt": "2026-08-31T19:08:49.180Z",
+  "extractedAt": "2026-09-22T17:26:38.353Z",
   "sourceHash": "73f7d2c419e2ced1",
   "segmentCount": 34,
   "segmentIds": [
@@ -81,5 +81,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "acyl (a-sil) group"
   }
 }

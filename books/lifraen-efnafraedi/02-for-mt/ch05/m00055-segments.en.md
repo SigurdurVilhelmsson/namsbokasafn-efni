@@ -32,40 +32,40 @@ Enantiomer
 Diastereomer
 
 <!-- SEG:m00055:entry:auto-12 -->
-2[[i:R]],3[[i:R]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-13 -->
-2[[i:S]],3[[i:S]]
+2[[i:[[span:S|cyan-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:entry:auto-14 -->
-2[[i:R]],3[[i:S]] and 2[[i:S]],3[[i:R]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:S|cyan-text]]]] and 2[[i:[[span:S|cyan-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-15 -->
-2[[i:S]],3[[i:S]]
+2[[i:[[span:S|cyan-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:entry:auto-16 -->
-2[[i:R]],3[[i:R]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-17 -->
-2[[i:R]],3[[i:S]] and 2[[i:S]],3[[i:R]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:S|cyan-text]]]] and 2[[i:[[span:S|cyan-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-18 -->
-2[[i:R]],3[[i:S]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:entry:auto-19 -->
-2[[i:S]],3[[i:R]]
+2[[i:[[span:S|cyan-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-20 -->
-2[[i:R]],3[[i:R]] and 2[[i:S]],3[[i:S]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:R|magenta-text]]]] and 2[[i:[[span:S|cyan-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:entry:auto-21 -->
-2[[i:S]],3[[i:R]]
+2[[i:[[span:S|cyan-text]]]],3[[i:[[span:R|magenta-text]]]]
 
 <!-- SEG:m00055:entry:auto-22 -->
-2[[i:R]],3[[i:S]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:entry:auto-23 -->
-2[[i:R]],3[[i:R]] and 2[[i:S]],3[[i:S]]
+2[[i:[[span:R|magenta-text]]]],3[[i:[[span:R|magenta-text]]]] and 2[[i:[[span:S|cyan-text]]]],3[[i:[[span:S|cyan-text]]]]
 
 <!-- SEG:m00055:para:para-00005 -->
 In the special case where two diastereomers differ at only one chirality center but are the same at all others, we say that the compounds are [[term:epimers|term-00002]]. Cholestanol and coprostanol, for instance, are both found in human feces, and both have nine chirality centers. Eight of the nine are identical, but the one at C5 is different. Thus, cholestanol and coprostanol are [[i:epimeric]] at C5.

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00267",
-  "extractedAt": "2026-08-31T19:08:50.088Z",
+  "extractedAt": "2026-09-22T17:26:39.727Z",
   "sourceHash": "ed941217e6857abc",
   "segmentCount": 10,
   "segmentIds": [
@@ -44,5 +44,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "phospholipids",
+    "term-00002": "lipid bilayer"
   }
 }

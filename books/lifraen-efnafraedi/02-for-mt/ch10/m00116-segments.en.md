@@ -11,13 +11,13 @@ To see why an allylic radical is so stable, look at the orbital picture in [[xre
 The orbital picture of three s p 2 orbitals, a ball and stick model, and two resonance structures of an allyl radical.
 
 <!-- SEG:m00116:para:para-00002 -->
-Because the allyl radical is electronically symmetrical, it has two resonance forms—one with the unpaired electron on the left and the double bond on the right and another with the unpaired electron on the right and the double bond on the left. Neither structure is correct by itself; the true structure of the allyl radical is a resonance hybrid of the two. (You might want to review to to brush up on resonance.) As noted in , the greater the number of resonance forms, the greater the stability of a compound, because bonding electrons are attracted to more nuclei. An allyl radical, with two resonance forms, is therefore more stable than a typical alkyl radical, which has only a single structure.
+Because the allyl radical is electronically symmetrical, it has two resonance forms—one with the unpaired electron on the left and the double bond on the right and another with the unpaired electron on the right and the double bond on the left. Neither structure is correct by itself; the true structure of the allyl radical is a resonance hybrid of the two. (You might want to review [[docref:m00021]] to [[docref:m00023]] to brush up on resonance.) As noted in [[docref:m00022]], the greater the number of resonance forms, the greater the stability of a compound, because bonding electrons are attracted to more nuclei. An allyl radical, with two resonance forms, is therefore more stable than a typical alkyl radical, which has only a single structure.
 
 <!-- SEG:m00116:para:para-00003 -->
 In molecular orbital terms, the stability of the allyl radical is due to the fact that the unpaired electron is [[term:delocalized|term-00001]], or spread out, over an extended [[i:π]]-orbital network rather than localized at only one site, as shown by the computer-generated MO in [[xref:fig-00001]]. This delocalization is particularly apparent in the so-called spin-density surface in [[xref:fig-00002]], which shows the calculated location of the unpaired electron. The two terminal carbons share the unpaired electron equally.
 
 <!-- SEG:m00116:caption:fig-00002-caption -->
-[[b:The spin density surface of the allyl radical locates the position of the unpaired electron and shows that it is equally shared between the two terminal carbons.]]
+[[b:The spin density surface of the allyl radical locates the position of the [[span:unpaired electron|cyan-text]] and shows that it is equally shared between the two terminal carbons.]]
 
 <!-- SEG:m00116:alt:fig-00002-alt -->
 The allyl radical's electrostatic potential map with a ball and stick model. Arrows point towards C1 and C3.
@@ -41,13 +41,13 @@ Predicting the Product of an Allylic Bromination Reaction
 What products would you expect from the reaction of 4,4-dimethylcyclohexene with NBS?
 
 <!-- SEG:m00116:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00116:para:para-00007 -->
 Draw the alkene reactant, and identify the allylic positions. In this case, there are two different allylic positions; we’ll label them [[b:A]] and [[b:B]]. Now abstract an allylic hydrogen from each position to generate the two corresponding allylic radicals. Each of the two allylic radicals can add a Br atom at either end ([[b:A]] or [[b:A′]]; [[b:B]] or [[b:B′]]), to give a mixture of up to four products. Draw and name the products. In the present instance, the “two” products from reaction at position [[b:B]] are identical, so only three products are formed in this reaction.
 
 <!-- SEG:m00116:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00116:alt:fig-00005-alt -->
 4,4-dimethylcyclohexene reacts with N B S to form several products. Abstraction of hydrogen from C3 forms 3-bromo-4,4-dimethylcyclohexene and 6-bromo-3,3-dimethylcyclohexene, while abstraction of hydrogen from C6 forms 3-bromo-5,5-dimethylcyclohexene.

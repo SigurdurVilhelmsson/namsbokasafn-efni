@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00310",
-  "extractedAt": "2026-08-31T19:08:50.182Z",
+  "extractedAt": "2026-09-22T17:26:39.860Z",
   "sourceHash": "1bd391688f55b795",
   "segmentCount": 11,
   "segmentIds": [
@@ -50,5 +50,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nucleotides",
+    "term-00002": "nucleoside",
+    "term-00003": "3′ end",
+    "term-00004": "5′ end"
   }
 }

@@ -8,7 +8,7 @@ It often happens, particularly during the synthesis of complex molecules, that o
 3-bromopropan-1-ol (hydroxy hydrogen labeled acidic) does not react with magnesium and ether to form (3-hydroxypropyl)magnesium bromide.
 
 <!-- SEG:m00207:para:para-00002 -->
-When this kind of incompatibility arises, it’s sometimes possible to circumvent the problem by [[i:protecting]] the interfering functional group. Protection involves three steps: ([[b:1]]) introducing a [[term:protecting group|term-00001]] to block the interfering function, ([[b:2]]) carrying out the desired reaction, and ([[b:3]]) removing the protecting group.
+When this kind of incompatibility arises, it’s sometimes possible to circumvent the problem by [[i:protecting]] the interfering functional group. Protection involves three steps: ([[b:[[span:1|magenta-text]]]]) introducing a [[term:protecting group|term-00001]] to block the interfering function, ([[b:[[span:2|magenta-text]]]]) carrying out the desired reaction, and ([[b:[[span:3|magenta-text]]]]) removing the protecting group.
 
 <!-- SEG:m00207:para:para-00003 -->
 One of the more common methods of alcohol protection involves reaction with a chlorotrialkylsilane, Cl–SiR[[sub:3]], to yield a trialkylsilyl ether, R′–O–SiR[[sub:3]]. (Chloro[[i:-tert]]-butyldimethylsilane), usually abbreviated either TBS or TBDMS is often used, as is chlorotrimethylsilane (TMS), and the reaction is carried out in the presence of a base, such as triethylamine, to help form the alkoxide anion from the alcohol and to remove the HCl by-product from the reaction.

@@ -2,10 +2,10 @@
 Polar Reactions
 
 <!-- SEG:m00080:para:para-00001 -->
-Polar reactions occur because of the electrical attraction between positively polarized and negatively polarized centers on functional groups in molecules. To see how these reactions take place, let’s first recall the discussion of polar covalent bonds in and then look more deeply into the effects of bond polarity on organic molecules.
+Polar reactions occur because of the electrical attraction between positively polarized and negatively polarized centers on functional groups in molecules. To see how these reactions take place, let’s first recall the discussion of polar covalent bonds in [[docref:m00018]] and then look more deeply into the effects of bond polarity on organic molecules.
 
 <!-- SEG:m00080:para:para-00002 -->
-Most organic compounds are electrically neutral; they have no net charge, either positive or negative. We saw in , however, that certain bonds within a molecule, particularly the bonds in functional groups, are polar. Bond polarity is a consequence of an unsymmetrical electron distribution in a bond and is due to the difference in electronegativity of the bonded atoms.
+Most organic compounds are electrically neutral; they have no net charge, either positive or negative. We saw in [[docref:m00018]], however, that certain bonds within a molecule, particularly the bonds in functional groups, are polar. Bond polarity is a consequence of an unsymmetrical electron distribution in a bond and is due to the difference in electronegativity of the bonded atoms.
 
 <!-- SEG:m00080:para:para-00003 -->
 Elements such as oxygen, nitrogen, fluorine, and chlorine are more electronegative than carbon, so a carbon atom bonded to one of these atoms has a partial positive charge ([[i:δ]]+). Metals are less electronegative than carbon, so a carbon atom bonded to a metal has a partial negative charge ([[i:δ]]−). Electrostatic potential maps of chloromethane and methyllithium illustrate these charge distributions, showing that the carbon atom in chloromethane is electron-poor (blue) while the carbon in methyllithium is electron-rich (red).
@@ -89,7 +89,7 @@ First structure shows carbon (partial positive charge) bonded to sulfur (partial
 What does functional-group polarity mean with respect to chemical reactivity? Because unlike charges attract, the fundamental characteristic of all polar organic reactions is that electron-rich sites react with electron-poor sites. Bonds are made when an electron-rich atom donates a pair of electrons to an electron-poor atom, and bonds are broken when one atom leaves with both electrons from the former bond.
 
 <!-- SEG:m00080:para:para-00008 -->
-As we saw in , the movement of an electron pair during a polar reaction is indicated using a curved, full-headed arrow to show where electrons move when reactant bonds are broken and product bonds are formed during the reaction.
+As we saw in [[docref:m00028]], the movement of an electron pair during a polar reaction is indicated using a curved, full-headed arrow to show where electrons move when reactant bonds are broken and product bonds are formed during the reaction.
 
 <!-- SEG:m00080:alt:fig-00004-alt -->
 Full arrow points from lone pair on nucleophile species B (negative, electron-rich) to electrophile species A (positive, electron-poor) to form species A B with single bond.
@@ -98,7 +98,7 @@ Full arrow points from lone pair on nucleophile species B (negative, electron-ri
 In referring to the electron-rich and electron-poor species involved in polar reactions, chemists use the words [[i:nucleophile]] and [[i:electrophile]]. A [[term:nucleophile|term-00002]] is a substance that is “nucleus-loving.” (Remember that a nucleus is positively charged.) A nucleophile has a negatively polarized, electron-rich atom and can form a bond by donating a pair of electrons to a positively polarized, electron-poor atom. Nucleophiles can be either neutral or negatively charged; ammonia, water, hydroxide ion, and chloride ion are examples. An [[term:electrophile|term-00003]], by contrast, is “electron-loving.” An electrophile has a positively polarized, electron-poor atom and can form a bond by accepting a pair of electrons from a nucleophile. Electrophiles can be either neutral or positively charged. Acids (H[[sup:+]] donors), alkyl halides, and carbonyl compounds are examples ([[xref:fig-00005]]).
 
 <!-- SEG:m00080:caption:fig-00005-caption -->
-[[b:Some nucleophiles and electrophiles.]] Electrostatic potential maps identify the nucleophilic [[b:(negative)]] and electrophilic [[b:(positive)]] atoms.
+[[b:Some nucleophiles and electrophiles.]] Electrostatic potential maps identify the nucleophilic [[b:[[span:(negative)|magenta-text]]]] and electrophilic [[b:[[span:(positive)|cyan-text]]]] atoms.
 
 <!-- SEG:m00080:alt:fig-00005-alt -->
 Electrostatic potential maps of nucleophiles ammonia, water, hydroxide ion, and chloride ion, and electrophiles hydronium ion, methyl bromide, and a carbonyl group.
@@ -107,7 +107,7 @@ Electrostatic potential maps of nucleophiles ammonia, water, hydroxide ion, and 
 Note that neutral compounds can often react either as nucleophiles or as electrophiles, depending on the circumstances. After all, if a compound is neutral yet has an electron-[[i:rich]] nucleophilic site, it must also have a corresponding electron-[[i:poor]] electrophilic site. Water, for instance, acts as an electrophile when it donates H[[sup:+]] but acts as a nucleophile when it donates a nonbonding pair of electrons. Similarly, a carbonyl compound acts as an electrophile when it reacts at its positively polarized carbon atom, yet acts as a nucleophile when it reacts at its negatively polarized oxygen atom.
 
 <!-- SEG:m00080:para:para-00011 -->
-If the definitions of nucleophiles and electrophiles sound similar to those given in for Lewis acids and Lewis bases, that’s because there is indeed a correlation. Lewis bases are electron donors and behave as nucleophiles, whereas Lewis acids are electron acceptors and behave as electrophiles. Thus, much of organic chemistry is explainable in terms of acid–base reactions. The main difference is that the words [[i:acid]] and [[i:base]] are used broadly in all fields of chemistry, while the words [[i:nucleophile]] and [[i:electrophile]] are used primarily in organic chemistry when carbon bonding is involved.
+If the definitions of nucleophiles and electrophiles sound similar to those given in [[docref:m00028]] for Lewis acids and Lewis bases, that’s because there is indeed a correlation. Lewis bases are electron donors and behave as nucleophiles, whereas Lewis acids are electron acceptors and behave as electrophiles. Thus, much of organic chemistry is explainable in terms of acid–base reactions. The main difference is that the words [[i:acid]] and [[i:base]] are used broadly in all fields of chemistry, while the words [[i:nucleophile]] and [[i:electrophile]] are used primarily in organic chemistry when carbon bonding is involved.
 
 <!-- SEG:m00080:example-title:exam-00001-title -->
 Identifying Electrophiles and Nucleophiles
@@ -119,13 +119,13 @@ Which of the following species is likely to behave as a nucleophile and which as
 [[b:(a)]] NO[[sub:2]][[sup:+]] [[b:(b)]] CN[[sup:−]] [[b:(c)]] CH[[sub:3]]NH[[sub:2]] [[b:(d)]] (CH[[sub:3]])[[sub:3]]S[[sup:+]]
 
 <!-- SEG:m00080:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00080:para:para-00014 -->
 A nucleophile has an electron-rich site, either because it is negatively charged or because it has a functional group containing an atom that has a lone pair of electrons. An electrophile has an electron-poor site, either because it is positively charged or because it has a functional group containing an atom that is positively polarized.
 
 <!-- SEG:m00080:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00080:para:para-00016 -->
 [[b:(a)]] NO[[sub:2]][[sup:+]] (nitronium ion) is likely to be an electrophile because it is positively charged.

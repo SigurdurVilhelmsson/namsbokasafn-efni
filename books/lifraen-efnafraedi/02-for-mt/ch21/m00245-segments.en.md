@@ -11,7 +11,7 @@ The first structure shows a protein segment. The second structure shows benzylpe
 Preparation of Amides
 
 <!-- SEG:m00245:para:para-00002 -->
-Amides are usually prepared by reaction of an amine with an acid chloride (). Ammonia, monosubstituted amines, and disubstituted amines all undergo the reaction.
+Amides are usually prepared by reaction of an amine with an acid chloride ([[docref:m00242]]). Ammonia, monosubstituted amines, and disubstituted amines all undergo the reaction.
 
 <!-- SEG:m00245:alt:fig-00002-alt -->
 A flowchart shows the preparation of amides from acid chloride using ammonia, monosubstituted, and disubstituted amines. R group is single-bonded to carbonyl carbon in all structures.
@@ -68,13 +68,13 @@ Synthesizing an Amine from an Amide
 How could you prepare [[i:N]]-ethylaniline by reduction of an amide with LiAlH[[sub:4]]?
 
 <!-- SEG:m00245:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00245:para:para-00010 -->
 Reduction of an amide with LiAlH[[sub:4]] yields an amine. To find the starting material for synthesis of [[i:N]]-ethylaniline, look for a CH[[sub:2]] position next to the nitrogen atom and replace that CH[[sub:2]] by [[MATH:2]]. In this case, the amide is [[i:N]]-phenylacetamide.
 
 <!-- SEG:m00245:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00245:alt:fig-00009-alt -->
 The structure of N-ethylaniline, a derivative of aniline where an ethyl group replaces one of the hydrogen atoms of the amine.

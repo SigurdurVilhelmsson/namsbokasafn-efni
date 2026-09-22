@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -37,6 +38,10 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "mechanism-figure scaled-down",
+      "title": {
+        "segmentId": "m00284:figure-title:fig-00002-title",
+        "text": "MECHANISM"
+      },
       "caption": {
         "segmentId": "m00284:caption:fig-00002-caption"
       },
@@ -58,6 +63,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

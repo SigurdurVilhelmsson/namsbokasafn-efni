@@ -1,5 +1,5 @@
 <!-- SEG:m00147:title:auto-1 -->
-Problems
+Chemical Shifts in [[sup:1]]H NMR Spectroscopy
 
 <!-- SEG:m00147:para:para-00001 -->
 As mentioned previously, differences in chemical shifts are caused by the small local magnetic field of electrons surrounding different nuclei. Nuclei that are more strongly shielded by electrons require a higher applied field to bring them into resonance so they absorb on the right side of the NMR chart. Nuclei that are less strongly shielded need a lower applied field for resonance so they absorb on the left of the NMR chart.
@@ -29,7 +29,7 @@ Chemical shift ([[i:δ]])
 Reference
 
 <!-- SEG:m00147:entry:auto-11 -->
-Si(CH[[sub:3]])[[sub:4]]
+Si(C[[span:H[[sub:3]]|magenta-text]])[[sub:4]]
 
 <!-- SEG:m00147:entry:auto-12 -->
 0
@@ -38,7 +38,7 @@ Si(CH[[sub:3]])[[sub:4]]
 Alkyl (primary)
 
 <!-- SEG:m00147:entry:auto-14 -->
-—CH[[sub:3]]
+—C[[span:H[[sub:3]]|magenta-text]]
 
 <!-- SEG:m00147:entry:auto-15 -->
 0.7–1.3
@@ -47,7 +47,7 @@ Alkyl (primary)
 Alkyl (secondary)
 
 <!-- SEG:m00147:entry:auto-17 -->
-—CH[[sub:2]]—
+—C[[span:H[[sub:2]]|magenta-text]]—
 
 <!-- SEG:m00147:entry:auto-18 -->
 1.2–1.6
@@ -83,7 +83,7 @@ A carbonyl group with an open single bond is bonded to a methyl group, in which 
 Aromatic methyl
 
 <!-- SEG:m00147:entry:auto-29 -->
-Ar—CH[[sub:3]]
+Ar—C[[span:H[[sub:3]]|magenta-text]]
 
 <!-- SEG:m00147:entry:auto-30 -->
 2.4–2.7
@@ -137,7 +137,7 @@ A carbon with two open bonds is double bonded to another carbon that has an open
 Aryl
 
 <!-- SEG:m00147:entry:auto-47 -->
-Ar—H
+Ar—[[span:H|magenta-text]]
 
 <!-- SEG:m00147:entry:auto-48 -->
 6.5–8.0
@@ -167,13 +167,13 @@ Predicting Chemical Shifts in [[sup:1]]H NMR Spectra
 Methyl 2,2-dimethylpropanoate (CH[[sub:3]])[[sub:3]]CCO[[sub:2]]CH[[sub:3]] has two peaks in its [[sup:1]]H NMR spectrum. What are their approximate chemical shifts?
 
 <!-- SEG:m00147:para-title:para-00005-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00147:para:para-00005 -->
 Identify the types of hydrogens in the molecule, and note whether each is alkyl, vinylic, or next to an electronegative atom. Then predict where each absorbs, using [[xref:table-00002]] if necessary.
 
 <!-- SEG:m00147:para-title:para-00006-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00147:para:para-00006 -->
 The –OCH[[sub:3]] protons absorb around 3.5 to 4.0 [[i:δ]] because they are on carbon bonded to oxygen. The (CH[[sub:3]])[[sub:3]]C– protons absorb near 1.0 [[i:δ]] because they are typical alkane-like protons.

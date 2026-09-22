@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00041",
-  "extractedAt": "2026-08-31T19:08:47.070Z",
+  "extractedAt": "2026-09-22T17:26:35.901Z",
   "sourceHash": "abb93cce2f91562c",
   "segmentCount": 21,
   "segmentIds": [
@@ -65,5 +65,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "stereoisomers",
+    "term-00002": "cis–trans isomers"
   }
 }

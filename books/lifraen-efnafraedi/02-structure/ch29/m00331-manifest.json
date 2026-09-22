@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00331",
-  "extractedAt": "2026-08-31T19:08:50.283Z",
+  "extractedAt": "2026-09-22T17:26:40.014Z",
   "sourceHash": "2b9263a8453dfce4",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00331:title:auto-1",
     "m00331:para:para-00001",
+    "m00331:figure-title:fig-00001-title",
     "m00331:caption:fig-00001-caption",
     "m00331:alt:fig-00001-alt",
     "m00331:title:sect-00003-title",
@@ -52,5 +53,6 @@
       "sect-00001",
       "sect-00002"
     ]
-  }
+  },
+  "termEnglish": {}
 }

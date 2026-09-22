@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00211",
-  "extractedAt": "2026-08-31T19:08:49.169Z",
+  "extractedAt": "2026-09-22T17:26:38.340Z",
   "sourceHash": "6340cc0ae26856a6",
   "segmentCount": 8,
   "segmentIds": [
@@ -44,5 +44,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Aldehydes (RCHO)",
+    "term-00002": "ketones (R2CO)"
   }
 }

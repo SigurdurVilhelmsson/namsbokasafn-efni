@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00061",
-  "extractedAt": "2026-08-31T19:08:47.287Z",
+  "extractedAt": "2026-09-22T17:26:36.095Z",
   "sourceHash": "1d7a51c0b572b978",
   "segmentCount": 60,
   "segmentIds": [
@@ -154,5 +154,8 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chiral environment"
   }
 }

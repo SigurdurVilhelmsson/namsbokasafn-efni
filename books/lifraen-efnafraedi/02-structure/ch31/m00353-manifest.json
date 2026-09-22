@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00353",
-  "extractedAt": "2026-08-31T19:08:50.488Z",
+  "extractedAt": "2026-09-22T17:26:40.344Z",
   "sourceHash": "5763471fd92cc972",
   "segmentCount": 40,
   "segmentIds": [
@@ -80,5 +80,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "homopolymers",
+    "term-00002": "Copolymers",
+    "term-00003": "Block copolymers",
+    "term-00004": "graft copolymers"
   }
 }

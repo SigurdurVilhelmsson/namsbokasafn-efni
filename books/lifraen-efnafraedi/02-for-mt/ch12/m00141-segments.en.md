@@ -296,13 +296,13 @@ Distinguishing Isomeric Compounds by IR Spectroscopy
 Acetone (CH[[sub:3]]COCH[[sub:3]]) and 2-propen-1-ol ([[MATH:15]]) are isomers. How could you distinguish them by IR spectroscopy?
 
 <!-- SEG:m00141:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00141:para:para-00011 -->
 Identify the functional groups in each molecule, and refer to [[xref:table-00001]].
 
 <!-- SEG:m00141:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00141:para:para-00012 -->
 Acetone has a strong C=O absorption at 1715 cm[[sup:–1]], while 2-propen-1-ol has an –OH absorption at 3500 cm[[sup:–1]] and a C=C absorption at 1660 cm[[sup:–1]].

@@ -22,6 +22,7 @@
     {
       "type": "figure",
       "id": "fig-00001",
+      "title": null,
       "caption": {
         "segmentId": "m00037:caption:fig-00001-caption"
       },
@@ -47,6 +48,7 @@
     {
       "type": "figure",
       "id": "fig-00002",
+      "title": null,
       "caption": {
         "segmentId": "m00037:caption:fig-00002-caption"
       },
@@ -68,6 +70,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -87,6 +90,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00037:caption:fig-00004-caption"
       },

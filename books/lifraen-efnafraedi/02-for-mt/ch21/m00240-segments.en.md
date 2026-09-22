@@ -17,7 +17,7 @@ The difference in behavior between aldehydes/ketones and carboxylic acid derivat
 The first structure shows carboxylic acid derivative with a leaving group Y attached to the carbonyl carbon. The second structure shows an aldehyde and the third structure shows a ketone. In both cases, the group attached to the carbonyl carbon does not leave.
 
 <!-- SEG:m00240:para:para-00003 -->
-The net effect of the addition/elimination sequence is a substitution of the nucleophile for the –Y group that was originally bonded to the acyl carbon. Thus, the overall reaction is superficially similar to the kind of nucleophilic substitution that occurs during an S[[sub:N]]2 reaction (), but the mechanisms of the two reactions are completely different. An S[[sub:N]]2 reaction occurs in a single step by backside displacement of the leaving group, while a nucleophilic acyl substitution takes place in two steps and involves a tetrahedral intermediate.
+The net effect of the addition/elimination sequence is a substitution of the nucleophile for the –Y group that was originally bonded to the acyl carbon. Thus, the overall reaction is superficially similar to the kind of nucleophilic substitution that occurs during an S[[sub:N]]2 reaction ([[docref:m00124]]), but the mechanisms of the two reactions are completely different. An S[[sub:N]]2 reaction occurs in a single step by backside displacement of the leaving group, while a nucleophilic acyl substitution takes place in two steps and involves a tetrahedral intermediate.
 
 <!-- SEG:m00240:title:sect-00001-title -->
 Problems
@@ -41,7 +41,7 @@ Electronically, we find that strongly polarized acyl compounds react more readil
 The electrostatic potential map along with structure compares the reactivity of amide, ester, thioester, acid anhydride, and acid chloride. The horizontal arrow depicts increasing reactivity from left to right.
 
 <!-- SEG:m00240:para:para-00008 -->
-The way in which various substituents affect the polarization of a carbonyl group is similar to the way they affect the reactivity of an aromatic ring toward electrophilic substitution (). A chlorine substituent, for example, inductively withdraws electrons from an acyl group in the same way that it withdraws electrons from and thus deactivates an aromatic ring. Similarly, amino, methoxyl, and methylthio substituents donate electrons to acyl groups by resonance in the same way that they donate electrons to, and thus activate, aromatic rings.
+The way in which various substituents affect the polarization of a carbonyl group is similar to the way they affect the reactivity of an aromatic ring toward electrophilic substitution ([[docref:m00192]]). A chlorine substituent, for example, inductively withdraws electrons from an acyl group in the same way that it withdraws electrons from and thus deactivates an aromatic ring. Similarly, amino, methoxyl, and methylthio substituents donate electrons to acyl groups by resonance in the same way that they donate electrons to, and thus activate, aromatic rings.
 
 <!-- SEG:m00240:para:para-00009 -->
 As a consequence of these reactivity differences, it’s usually possible to convert a more reactive acid derivative into a less reactive one. Acid chlorides, for instance, can be directly converted into anhydrides, thioesters, esters, and amides, but amides can’t be directly converted into esters, thioesters, anhydrides, or acid chlorides. Remembering the reactivity order is therefore a way to keep track of a large number of reactions ([[xref:fig-00005]]). Another consequence, as noted previously, is that only acyl phosphates, thioesters, esters, and amides are commonly found in nature. Acid halides and acid anhydrides react so rapidly with water that they can’t exist for long in living organisms.
@@ -98,13 +98,13 @@ Predicting the Product of a Nucleophilic Acyl Substitution Reaction
 Predict the product of the following nucleophilic acyl substitution reaction of benzoyl chloride with 2-propanol:
 
 <!-- SEG:m00240:para-title:para-00012-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00240:para:para-00012 -->
 A nucleophilic acyl substitution reaction involves the substitution of a nucleophile for a leaving group in a carboxylic acid derivative. Identify the leaving group (Cl[[sup:–]] in the case of an acid chloride) and the nucleophile (an alcohol in this case), and replace one by the other. The product is isopropyl benzoate.
 
 <!-- SEG:m00240:para-title:para-00013-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00240:alt:fig-00007-alt -->
 Benzoyl chloride reacts with 2-propanol giving an unknown product, depicted by a question mark.

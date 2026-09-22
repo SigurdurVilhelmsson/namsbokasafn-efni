@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -46,6 +47,7 @@
           "type": "figure",
           "id": "fig-00002",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -65,6 +67,10 @@
           "type": "figure",
           "id": "fig-00003",
           "class": "mechanism-figure scaled-down",
+          "title": {
+            "segmentId": "m00338:figure-title:fig-00003-title",
+            "text": "MECHANISM"
+          },
           "caption": {
             "segmentId": "m00338:caption:fig-00003-caption"
           },
@@ -83,7 +89,7 @@
           "class": null,
           "title": {
             "segmentId": "m00338:title:sect-00002-title",
-            "text": "Step 1 of [[xref:fig-00003]]: Transimination"
+            "text": "Step [[span:1|magenta-text]] of [[xref:fig-00003]]: Transimination"
           },
           "content": [
             {
@@ -95,6 +101,7 @@
               "type": "figure",
               "id": "fig-00004",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -113,7 +120,7 @@
           "class": null,
           "title": {
             "segmentId": "m00338:title:sect-00003-title",
-            "text": "Steps 2–4 of [[xref:fig-00003]]: Tautomerization and Hydrolysis"
+            "text": "Steps [[span:2|magenta-text]]–[[span:4|magenta-text]] of [[xref:fig-00003]]: Tautomerization and Hydrolysis"
           },
           "content": [
             {
@@ -130,6 +137,7 @@
               "type": "figure",
               "id": "fig-00005",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -162,6 +170,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

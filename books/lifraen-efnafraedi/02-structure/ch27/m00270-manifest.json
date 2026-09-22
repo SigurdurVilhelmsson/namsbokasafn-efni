@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00270",
-  "extractedAt": "2026-08-31T19:08:50.099Z",
+  "extractedAt": "2026-09-22T17:26:39.741Z",
   "sourceHash": "c63ee82d055da20e",
   "segmentCount": 24,
   "segmentIds": [
@@ -71,5 +71,15 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "steroids",
+    "term-00002": "hormones",
+    "term-00006": "mineralocorticoids",
+    "term-00007": "glucocorticoids",
+    "term-00008": "Anabolic steroids",
+    "term-00003": "androgens",
+    "term-00004": "estrogens",
+    "term-00005": "progestin"
   }
 }

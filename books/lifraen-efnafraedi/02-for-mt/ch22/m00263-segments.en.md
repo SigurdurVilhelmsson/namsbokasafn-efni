@@ -8,7 +8,7 @@ Perhaps the most useful reaction of enolate ions is their alkylation by treatmen
 A carbonyl compound reacts with a base to form an enolate ion which undergoes an S N 2 reaction with R 3 C X to form a carbonyl compound with an R 3 C group attached.
 
 <!-- SEG:m00263:para:para-00002 -->
-Alkylation reactions are subject to the same constraints that affect all S[[sub:N]]2 reactions (). Thus, the leaving group X in the alkylating agent R−X can be chloride, bromide, or iodide. The alkyl group R should be primary or methyl, and preferably should be allylic or benzylic. Secondary halides react poorly, and tertiary halides don’t react at all because a competing E2 elimination of HX occurs instead. Vinylic and aryl halides are also unreactive because a backside approach is sterically prevented.
+Alkylation reactions are subject to the same constraints that affect all S[[sub:N]]2 reactions ([[docref:m00124]]). Thus, the leaving group X in the alkylating agent R−X can be chloride, bromide, or iodide. The alkyl group R should be primary or methyl, and preferably should be allylic or benzylic. Secondary halides react poorly, and tertiary halides don’t react at all because a competing E2 elimination of HX occurs instead. Vinylic and aryl halides are also unreactive because a backside approach is sterically prevented.
 
 <!-- SEG:m00263:alt:fig-00002-alt -->
 Comparative rate of reaction of R-X molecules with an enolate. For X, fastest to slowest is tosylate, iodide, bromide, and chloride. For R, fastest to slowest is allylic and benzylic, then primary alkyl and then secondary alkyl.
@@ -65,13 +65,13 @@ Using Malonic Ester Synthesis to Prepare a Carboxylic Acid
 How would you prepare heptanoic acid using a malonic ester synthesis?
 
 <!-- SEG:m00263:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00263:para:para-00011 -->
 A malonic ester synthesis converts an alkyl halide into a carboxylic acid having two more carbons. Thus, a seven-carbon acid chain must be derived from the five-carbon alkyl halide 1-bromopentane.
 
 <!-- SEG:m00263:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00263:alt:fig-00010-alt -->
 1-Bromopentane and diethyl malonate react with sodium ethoxide in the first step and on heating with acid in the second step to yield 1-heptanoic acid.
@@ -113,7 +113,7 @@ Using Acetoacetic Ester Synthesis to Prepare a Ketone
 How would you prepare 2-pentanone by an acetoacetic ester synthesis?
 
 <!-- SEG:m00263:para-title:para-00021-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00263:para:para-00021 -->
 An acetoacetic ester synthesis yields a methyl ketone by adding three carbons to an alkyl halide.
@@ -122,7 +122,7 @@ An acetoacetic ester synthesis yields a methyl ketone by adding three carbons to
 Thus, the acetoacetic ester synthesis of 2-pentanone must involve reaction of bromoethane.
 
 <!-- SEG:m00263:para-title:para-00023-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00263:alt:fig-00015-alt -->
 A structure in which R group is bonded to C H 2 that is bonded to carbonyl bonded to C H 3. The three carbon atoms are from acetoacetic ester.
@@ -161,13 +161,13 @@ Using an Alkylation Reaction to Prepare a Substituted Ester
 How might you use an alkylation reaction to prepare ethyl 1-methylcyclohexanecarboxylate?
 
 <!-- SEG:m00263:para-title:para-00031-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00263:para:para-00031 -->
 An alkylation reaction is used to introduce a methyl or primary alkyl group onto the [[i:α]] position of a ketone, ester, or nitrile by S[[sub:N]]2 reaction of an enolate ion with an alkyl halide. Thus, we need to look at the target molecule and identify any methyl or primary alkyl groups attached to an [[i:α]] carbon. In the present instance, the target has an [[i:α]] methyl group, which might be introduced by alkylation of an ester enolate ion with iodomethane.
 
 <!-- SEG:m00263:para-title:para-00032-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00263:alt:fig-00018-alt -->
 The structure of ethyl 1-methylcyclohexanecarboxylate in which both C O 2 E t and C H 3 groups are bonded to C 1 of cyclohexane.
@@ -182,7 +182,7 @@ Problems
 Biological Alkylations
 
 <!-- SEG:m00263:para:para-00034 -->
-Alkylations are rare but not unknown in biological chemistry. One example occurs during biosynthesis of the antibiotic indolmycin from indolylpyruvate when a base abstracts an acidic hydrogen from an [[i:α]] position and the resultant enolate ion carries out an S[[sub:N]]2 alkylation reaction on the methyl group of [[i:S]]-adenosylmethionine (SAM; ). Although it’s convenient to speak of “enolate ion” intermediates in biological pathways, it’s unlikely that they exist for long in an aqueous cellular environment. Rather, proton removal and alkylation probably occur at essentially the same time ([[xref:fig-00020]]).
+Alkylations are rare but not unknown in biological chemistry. One example occurs during biosynthesis of the antibiotic indolmycin from indolylpyruvate when a base abstracts an acidic hydrogen from an [[i:α]] position and the resultant enolate ion carries out an S[[sub:N]]2 alkylation reaction on the methyl group of [[i:S]]-adenosylmethionine (SAM; [[docref:m00127]]). Although it’s convenient to speak of “enolate ion” intermediates in biological pathways, it’s unlikely that they exist for long in an aqueous cellular environment. Rather, proton removal and alkylation probably occur at essentially the same time ([[xref:fig-00020]]).
 
 <!-- SEG:m00263:caption:fig-00020-caption -->
 [[b:The biosynthesis of indolmycin from indolylpyruvate]] occurs through a pathway that includes an alkylation reaction of a short-lived enolate ion intermediate.
@@ -257,19 +257,19 @@ Alpha hydrogen atoms of carbonyl compounds are weakly acidic and can be removed 
 Summary of Reactions
 
 <!-- SEG:m00263:item:list-00002-item-1 -->
-Aldehyde/ketone halogenation ()[[BR]]
+Aldehyde/ketone halogenation ([[docref:m00259]])[[BR]]
 
 <!-- SEG:m00263:item:list-00002-item-2 -->
-Hell–Volhard–Zelinskii bromination of acids ()[[BR]]
+Hell–Volhard–Zelinskii bromination of acids ([[docref:m00260]])[[BR]]
 
 <!-- SEG:m00263:item:list-00002-item-3 -->
-Dehydrobromination of [[i:α]]-bromo ketones ()[[BR]]
+Dehydrobromination of [[i:α]]-bromo ketones ([[docref:m00259]])[[BR]]
 
 <!-- SEG:m00263:item:list-00002-item-4 -->
-Haloform reaction ()[[BR]]
+Haloform reaction ([[docref:m00262]])[[BR]]
 
 <!-- SEG:m00263:item:list-00002-item-5 -->
-Alkylation of enolate ions ()
+Alkylation of enolate ions ([[docref:m00263]])
 
 <!-- SEG:m00263:item:list-00003-item-1 -->
 Malonic ester synthesis[[BR]]
@@ -317,16 +317,16 @@ A nitrile reacts with L D A in T H F in the first step and alkyl halide in the s
 Additional Problems
 
 <!-- SEG:m00263:para:para-00041 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00263:para:para-00045 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00263:para:para-00063 -->
-[[b:Acidity of Carbonyl Compounds]]
+[[b:[[span:Acidity of Carbonyl Compounds|red-text]]]]
 
 <!-- SEG:m00263:para:para-00069 -->
-[[b:[[i:α]]-Substitution Reactions]]
+[[b:[[span:[[i:α]]-Substitution Reactions|red-text]]]]
 
 <!-- SEG:m00263:para:para-00078 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00342",
-  "extractedAt": "2026-08-31T19:08:50.388Z",
+  "extractedAt": "2026-09-22T17:26:40.173Z",
   "sourceHash": "d05d7aa751f57406",
   "segmentCount": 16,
   "segmentIds": [
@@ -55,5 +55,10 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "electrocyclic reaction",
+    "term-00002": "disrotatory",
+    "term-00003": "conrotatory"
   }
 }

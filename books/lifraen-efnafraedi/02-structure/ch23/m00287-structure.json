@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -41,6 +42,7 @@
     {
       "type": "figure",
       "id": "fig-00002",
+      "title": null,
       "caption": {
         "segmentId": "m00287:caption:fig-00002-caption"
       },

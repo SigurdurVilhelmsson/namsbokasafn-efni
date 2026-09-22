@@ -7,6 +7,9 @@ The E1 Reaction
 <!-- SEG:m00131:para:para-00001 -->
 Just as the E2 reaction is analogous to the S[[sub:N]]2 reaction, the S[[sub:N]]1 reaction has a close analog called the [[term:E1 reaction|term-00001]] (for elimination, unimolecular). The E1 reaction can be formulated as shown in [[xref:fig-00001]], with the elimination of HCl from 2-chloro-2-methylpropane.
 
+<!-- SEG:m00131:figure-title:fig-00001-title -->
+MECHANISM
+
 <!-- SEG:m00131:caption:fig-00001-caption -->
 [[b:Mechanism of the E1 reaction.]] Two steps are involved, the first of which is rate-limiting, and a carbocation intermediate is present.
 
@@ -26,7 +29,7 @@ Much evidence has been obtained in support of the E1 mechanism. For example, E1 
 A final piece of evidence involves the stereochemistry of elimination. Unlike the E2 reaction, where anti periplanar geometry is required, there is no geometric requirement on the E1 reaction because the halide and the hydrogen are lost in separate steps. We might therefore expect to obtain the more stable (Zaitsev’s rule) product from E1 reaction, which is just what we find. To return to a familiar example, menthyl chloride loses HCl under E1 conditions in a polar solvent to give a mixture of alkenes in which the Zaitsev product, 3-menthene, predominates ([[xref:fig-00003]]).
 
 <!-- SEG:m00131:caption:fig-00003-caption -->
-[[b:Elimination reactions of menthyl chloride.]] E2 conditions ([[b:1]], strong base in 100% ethanol) lead to 2-menthene through an anti periplanar elimination, whereas E1 conditions ([[b:2]], dilute base in 80% aqueous ethanol) lead to a mixture of 2-menthene and 3-menthene.
+[[b:Elimination reactions of menthyl chloride.]] E2 conditions ([[b:[[span:1|magenta-text]]]], strong base in 100% ethanol) lead to 2-menthene through an anti periplanar elimination, whereas E1 conditions ([[b:[[span:2|magenta-text]]]], dilute base in 80% aqueous ethanol) lead to a mixture of 2-menthene and 3-menthene.
 
 <!-- SEG:m00131:alt:fig-00003-alt -->
 The figure shows the elimination reactions of menthyl chloride. Under E2 conditions, the reactant forms 2-menthene (100%). Under E1 conditions, the reactant forms 2-menthene (32%) and 3-menthene (68%).

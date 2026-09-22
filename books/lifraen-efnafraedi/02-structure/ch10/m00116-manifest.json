@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00116",
-  "extractedAt": "2026-08-31T19:08:47.958Z",
+  "extractedAt": "2026-09-22T17:26:36.910Z",
   "sourceHash": "1beb9a46b87374ad",
   "segmentCount": 19,
   "segmentIds": [
@@ -62,5 +62,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "delocalized"
   }
 }

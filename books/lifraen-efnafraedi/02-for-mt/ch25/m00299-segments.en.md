@@ -2,7 +2,7 @@
 Classification of Carbohydrates
 
 <!-- SEG:m00299:para:para-00001 -->
-Carbohydrates are generally classified as either simple or complex. [[term:Simple sugars|term-00001]], or [[term:monosaccharides|term-00002]], are carbohydrates like glucose and fructose that can’t be converted into smaller sugars by hydrolysis. [[term:Complex carbohydrates|term-00003]] are made of two or more simple sugars linked together by acetal bonds (). Sucrose (table sugar), for instance, consists of one glucose linked to one fructose. Similarly, cellulose is made up of several thousand glucose units linked together. Enzyme-catalyzed hydrolysis of a complex carbohydrate breaks it down into its constituent monosaccharides.
+Carbohydrates are generally classified as either simple or complex. [[term:Simple sugars|term-00001]], or [[term:monosaccharides|term-00002]], are carbohydrates like glucose and fructose that can’t be converted into smaller sugars by hydrolysis. [[term:Complex carbohydrates|term-00003]] are made of two or more simple sugars linked together by acetal bonds ([[docref:m00221]]). Sucrose (table sugar), for instance, consists of one glucose linked to one fructose. Similarly, cellulose is made up of several thousand glucose units linked together. Enzyme-catalyzed hydrolysis of a complex carbohydrate breaks it down into its constituent monosaccharides.
 
 <!-- SEG:m00299:alt:fig-00001-alt -->
 Enzyme-catalyzed hydrolysis decomposes sucrose (a disaccharide) into glucose and fructose. Similarly, cellulose (a polysaccharide) decomposes into approximately three thousand glucose units.

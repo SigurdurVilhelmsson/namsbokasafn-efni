@@ -29,7 +29,7 @@ The onset of coronary heart disease is directly correlated with blood cholestero
 Cutaway diagram of a blood vessel showing a smooth interior, labeled normal artery. Another cutaway diagram in which vessel is partially obstructed with a yellowish substance, labeled narrowing of artery.
 
 <!-- SEG:m00339:para:para-00006 -->
-We saw in and that all steroids, including cholesterol, are biosynthesized from the triterpenoid lanosterol, which in turn comes from acetyl CoA through isopentenyl diphosphate. If you knew all the mechanisms for all the chemical steps in cholesterol biosynthesis, you might be able to devise a drug that would block one of those steps, thereby short-circuiting the biosynthetic process and controlling the amount of cholesterol produced.
+We saw in [[docref:m00269]] and [[docref:m00271]] that all steroids, including cholesterol, are biosynthesized from the triterpenoid lanosterol, which in turn comes from acetyl CoA through isopentenyl diphosphate. If you knew all the mechanisms for all the chemical steps in cholesterol biosynthesis, you might be able to devise a drug that would block one of those steps, thereby short-circuiting the biosynthetic process and controlling the amount of cholesterol produced.
 
 <!-- SEG:m00339:para:para-00007 -->
 But we do know those mechanisms! Look back at the pathway for the biosynthesis of isopentenyl diphosphate from acetyl CoA, shown in [[docref:m00269#fig-00004]]. It turns out that the rate-limiting step in the pathway is the reduction of 3-hydroxy-3-methylglutaryl CoA (abbreviated HMG-CoA) to mevalonate, brought about by the enzyme HMG-CoA reductase. If that enzyme could be stopped from functioning, cholesterol biosynthesis would also be stopped.
@@ -101,16 +101,16 @@ Biomolecules are synthesized as well as degraded, but the pathways for anabolism
 Additional Problems
 
 <!-- SEG:m00339:para:para-00016 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00339:para:para-00021 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00339:para:para-00033 -->
-[[b:Enzymes and Coenzymes]]
+[[b:[[span:Enzymes and Coenzymes|red-text]]]]
 
 <!-- SEG:m00339:para:para-00044 -->
-[[b:Metabolism]]
+[[b:[[span:Metabolism|red-text]]]]
 
 <!-- SEG:m00339:para:para-00054 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,5 +1,5 @@
 <!-- SEG:m00148:title:auto-1 -->
-Problems
+Integration of [[sup:1]]H NMR Absorptions: Proton Counting
 
 <!-- SEG:m00148:para:para-00001 -->
 Look at the [[sup:1]]H NMR spectrum of methyl 2,2-dimethylpropanoate in [[xref:fig-00001]]. There are two peaks, corresponding to the two kinds of protons, but the peaks aren’t the same size. The peak at 1.2 [[i:δ,]] due to the (CH[[sub:3]])[[sub:3]]C– protons, is larger than the peak at 3.7 [[i:δ,]] due to the –OCH[[sub:3]] protons.

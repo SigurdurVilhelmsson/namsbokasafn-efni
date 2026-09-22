@@ -5,7 +5,7 @@ Oxidation of Aromatic Compounds
 Oxidation of Alkyl Side Chains
 
 <!-- SEG:m00196:para:para-00001 -->
-Despite its unsaturation, the benzene ring is inert to strong oxidizing agents such as KMnO[[sub:4]], which will cleave alkene carbon–carbon bonds (). It turns out, however, that the presence of the aromatic ring has a dramatic effect on the reactivity of alkyl side chains. These side chains react rapidly with oxidizing agents and are converted into carboxyl groups, –CO[[sub:2]]H.The net effect is conversion of an alkylbenzene into a benzoic acid, [[MATH:1]]. Butylbenzene is oxidized by aqueous KMnO[[sub:4]] to give benzoic acid, for instance.
+Despite its unsaturation, the benzene ring is inert to strong oxidizing agents such as KMnO[[sub:4]], which will cleave alkene carbon–carbon bonds ([[docref:m00096]]). It turns out, however, that the presence of the aromatic ring has a dramatic effect on the reactivity of alkyl side chains. These side chains react rapidly with oxidizing agents and are converted into carboxyl groups, –CO[[sub:2]]H.The net effect is conversion of an alkylbenzene into a benzoic acid, [[MATH:1]]. Butylbenzene is oxidized by aqueous KMnO[[sub:4]] to give benzoic acid, for instance.
 
 <!-- SEG:m00196:alt:fig-00001-alt -->
 Butylbenzene reacts with potassium permanganate in the presence of water to form benzoic acid in 85 percent yield.
@@ -41,7 +41,7 @@ Side-chain bromination at the benzylic position occurs when an alkylbenzene is t
 In C C l 4, propylbenzene reacts with N-bromosuccinimide in the presence of (P h C O 2) 2 to form (1-Bromopropyl)benzene in 97 percent yield and succinimide.
 
 <!-- SEG:m00196:para:para-00007 -->
-The mechanism of benzylic bromination is similar to that discussed in for allylic bromination of alkenes. Abstraction of a benzylic hydrogen atom first generates an intermediate benzylic radical, which then reacts with Br[[sub:2]] in step 2 to yield product and a [[MATH:2]] radical, which cycles back into the reaction to carry on the chain shown below as a summary. The Br[[sub:2]] needed for reaction with the benzylic radical is produced in step 3 by a concurrent reaction of HBr with NBS.
+The mechanism of benzylic bromination is similar to that discussed in [[docref:m00115]] for allylic bromination of alkenes. Abstraction of a benzylic hydrogen atom first generates an intermediate benzylic radical, which then reacts with Br[[sub:2]] in step 2 to yield product and a [[MATH:2]] radical, which cycles back into the reaction to carry on the chain shown below as a summary. The Br[[sub:2]] needed for reaction with the benzylic radical is produced in step 3 by a concurrent reaction of HBr with NBS.
 
 <!-- SEG:m00196:alt:fig-00006-alt -->
 Three-step reaction of a B r plus ion wih a benzene ring bearing a C H 2 R group, in the presence of N bromosuccinimide.
@@ -50,7 +50,7 @@ Three-step reaction of a B r plus ion wih a benzene ring bearing a C H 2 R group
 Reaction occurs exclusively at the benzylic position because the benzylic radical intermediate is stabilized by resonance. [[xref:fig-00007]] shows how the benzyl radical is stabilized by overlap of its [[i:p]] orbital with the ringed [[i:π]] electron system.
 
 <!-- SEG:m00196:caption:fig-00007-caption -->
-[[b:A resonance-stabilized benzylic radical]]. The spin-density surface shows that the [[b:unpaired electron]] is shared by the ortho and para carbons of the ring.
+[[b:A resonance-stabilized benzylic radical]]. The spin-density surface shows that the [[b:[[span:unpaired electron|cyan-text]]]] is shared by the ortho and para carbons of the ring.
 
 <!-- SEG:m00196:alt:fig-00007-alt -->
 Four benzylic radicals with double-headed arrows in-between. To the right, the ball-and-stick model with the electrostatic potential map of benzylic radical is depicted.

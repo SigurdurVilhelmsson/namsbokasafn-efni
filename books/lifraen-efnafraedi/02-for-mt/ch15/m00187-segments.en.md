@@ -5,10 +5,10 @@ Spectroscopy of Aromatic Compounds
 Infrared Spectroscopy
 
 <!-- SEG:m00187:para:para-00001 -->
-As we saw in the brief introduction to infrared spectroscopy (), aromatic rings show a characteristic C–H stretching absorption at 3030 cm[[sup:–1]] and a series of peaks in the 1450 to 1600 cm[[sup:–1]] range of the infrared spectrum. The aromatic C–H band at 3030 cm[[sup:–1]] generally has low intensity and occurs just to the left of a typical saturated C–H band.
+As we saw in the brief introduction to infrared spectroscopy ([[docref:m00142]]), aromatic rings show a characteristic C–H stretching absorption at 3030 cm[[sup:–1]] and a series of peaks in the 1450 to 1600 cm[[sup:–1]] range of the infrared spectrum. The aromatic C–H band at 3030 cm[[sup:–1]] generally has low intensity and occurs just to the left of a typical saturated C–H band.
 
 <!-- SEG:m00187:para:para-00002 -->
-As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:–1]] region because of the complex molecular motions of the ring itself. Two bands, one at 1500 cm[[sup:–1]] and one at 1600 cm[[sup:–1]], are usually the most intense. In addition, aromatic compounds show weak absorptions in the 1660 to 2000 cm[[sup:–1]] region and strong absorptions in the 690 to 900 cm[[sup:–1]] range due to C–H out-of-plane bending. The exact position of both sets of absorptions is diagnostic of the substitution pattern of the aromatic ring ([[docref:m00142#fig-00006]] in ).
+As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:–1]] region because of the complex molecular motions of the ring itself. Two bands, one at 1500 cm[[sup:–1]] and one at 1600 cm[[sup:–1]], are usually the most intense. In addition, aromatic compounds show weak absorptions in the 1660 to 2000 cm[[sup:–1]] region and strong absorptions in the 690 to 900 cm[[sup:–1]] range due to C–H out-of-plane bending. The exact position of both sets of absorptions is diagnostic of the substitution pattern of the aromatic ring ([[docref:m00142#fig-00006]] in [[docref:m00142]]).
 
 <!-- SEG:m00187:entry:auto-5 -->
 [[b:Monosubstituted:]]
@@ -17,7 +17,7 @@ As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:�
 690–710 cm[[sup:–1]]
 
 <!-- SEG:m00187:entry:auto-7 -->
-[[b:1,2,4-Trisubstituted:]]
+[[b:[[span:1,2,4-Trisubstituted:|yellow-text]]]]
 
 <!-- SEG:m00187:entry:auto-8 -->
 780–830 cm[[sup:–1]]
@@ -29,19 +29,19 @@ As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:�
 870–900 cm[[sup:–1]]
 
 <!-- SEG:m00187:entry:auto-11 -->
-[[b:[[i:o]]-Disubstituted:]]
+[[b:[[span:[[i:o]]-Disubstituted:|cyan-text]]]]
 
 <!-- SEG:m00187:entry:auto-12 -->
 735–770 cm[[sup:–1]]
 
 <!-- SEG:m00187:entry:auto-13 -->
-[[b:1,2,3-Trisubstituted:]]
+[[b:[[span:1,2,3-Trisubstituted:|magenta-text]]]]
 
 <!-- SEG:m00187:entry:auto-14 -->
 670–720 cm[[sup:–1]]
 
 <!-- SEG:m00187:entry:auto-15 -->
-[[b:[[i:m]]-Disubstituted:]]
+[[b:[[span:[[i:m]]-Disubstituted:|green-text]]]]
 
 <!-- SEG:m00187:entry:auto-16 -->
 690–710 cm[[sup:–1]]
@@ -59,7 +59,7 @@ As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:�
 660–700 cm[[sup:–1]]
 
 <!-- SEG:m00187:entry:auto-21 -->
-[[b:[[i:p]]-Disubstituted:]]
+[[b:[[span:[[i:p]]-Disubstituted:|red-text]]]]
 
 <!-- SEG:m00187:entry:auto-22 -->
 810–840 cm[[sup:–1]]
@@ -164,7 +164,7 @@ Like aspirin, both ibuprofen and naproxen are relatively simple aromatic compoun
 The structures of ibuprofen (Advil, Nuprin, Motrin are its brand names) and naproxen (Aleve, Naprosyn are its brand names).
 
 <!-- SEG:m00187:para:para-00016 -->
-Aspirin and other NSAIDs function by blocking the cyclooxygenase (COX) enzymes that carry out the body’s synthesis of prostaglandins ( and [[b:Section 27.4]]). There are two forms of the enzyme: COX-1, which carries out the normal physiological production of prostaglandins, and COX-2, which mediates the body’s response to arthritis and other inflammatory conditions. Unfortunately, both COX-1 and COX-2 enzymes are blocked by aspirin, ibuprofen, and other NSAIDs, thereby shutting down not only the response to inflammation but also various protective functions, including the control mechanism for production of acid in the stomach.
+Aspirin and other NSAIDs function by blocking the cyclooxygenase (COX) enzymes that carry out the body’s synthesis of prostaglandins ([[docref:m00099]] and [[b:Section 27.4]]). There are two forms of the enzyme: COX-1, which carries out the normal physiological production of prostaglandins, and COX-2, which mediates the body’s response to arthritis and other inflammatory conditions. Unfortunately, both COX-1 and COX-2 enzymes are blocked by aspirin, ibuprofen, and other NSAIDs, thereby shutting down not only the response to inflammation but also various protective functions, including the control mechanism for production of acid in the stomach.
 
 <!-- SEG:m00187:para:para-00017 -->
 Medicinal chemists have therefore devised a number of drugs that act as selective inhibitors of only the COX-2 enzyme. Inflammation is thereby controlled without blocking protective functions. Originally heralded as a breakthrough in arthritis treatment, the first generation of COX-2 inhibitors, including rofecoxib, (marketed as Vioxx), celecoxib, (marketed as Celebrex), and Valdecoxib (marketed as Bextra), turned out to cause potentially serious heart problems, particularly in elderly or compromised patients. As a result, all three Cox-2 inhibitors were removed from the U.S. and other markets. Further studies, however, concluded that in proper doses the Cox-2 inhibitors were little different from other NSAIDs, and Vioxx returned to the market in 2017 for topical treatment of osteoarthritis.
@@ -242,19 +242,19 @@ Aromatic compounds have 4[[i:n]] + 2 [[i:π]] electrons, which are delocalized o
 Additional Problems
 
 <!-- SEG:m00187:para:para-00023 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00187:para:para-00029 -->
-[[b:Naming Aromatic Compounds]]
+[[b:[[span:Naming Aromatic Compounds|red-text]]]]
 
 <!-- SEG:m00187:para:para-00035 -->
-[[b:Structure of Aromatic Compounds]]
+[[b:[[span:Structure of Aromatic Compounds|red-text]]]]
 
 <!-- SEG:m00187:para:para-00042 -->
-[[b:Aromaticity and Hückel’s Rule]]
+[[b:[[span:Aromaticity and Hückel’s Rule|red-text]]]]
 
 <!-- SEG:m00187:para:para-00053 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00187:para:para-00057 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00284",
-  "extractedAt": "2026-08-31T19:08:49.626Z",
+  "extractedAt": "2026-09-22T17:26:39.058Z",
   "sourceHash": "2d627c7b889fdfa3",
-  "segmentCount": 9,
+  "segmentCount": 10,
   "segmentIds": [
     "m00284:title:auto-1",
     "m00284:para:para-00001",
     "m00284:alt:fig-00001-alt",
     "m00284:para:para-00002",
+    "m00284:figure-title:fig-00002-title",
     "m00284:caption:fig-00002-caption",
     "m00284:alt:fig-00002-alt",
     "m00284:para:para-00003",
@@ -47,5 +48,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Dieckmann cyclization"
   }
 }

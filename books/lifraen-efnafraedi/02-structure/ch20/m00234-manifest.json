@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00234",
-  "extractedAt": "2026-08-31T19:08:49.323Z",
+  "extractedAt": "2026-09-22T17:26:38.591Z",
   "sourceHash": "d7e0a84a7ca74418",
   "segmentCount": 21,
   "segmentIds": [
@@ -68,5 +68,8 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "carboxylation"
   }
 }

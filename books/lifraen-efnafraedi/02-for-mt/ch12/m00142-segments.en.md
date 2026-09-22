@@ -140,13 +140,13 @@ Predicting IR Absorptions of Compounds
 Where might the following compounds have IR absorptions?
 
 <!-- SEG:m00142:para-title:para-00018-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00142:para:para-00018 -->
 Identify the functional groups in each molecule, and then check [[docref:m00141#table-00001]] to see where those groups absorb.
 
 <!-- SEG:m00142:para-title:para-00019-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00142:para:para-00019 -->
 [[b:(a)]] [[i:Absorptions:]] 3400 to 3650 cm[[sup:–1]] (O–H), 3020 to 3100 cm[[sup:–1]] (=C–H), 1640 to 1680 cm[[sup:–1]] ([[MATH:9]]). This molecule has an alcohol O–H group and an alkene double bond.
@@ -167,13 +167,13 @@ Identifying Functional Groups from an IR Spectrum
 The IR spectrum of an unknown compound is shown in [[xref:fig-00016]]. What functional groups does the compound contain?
 
 <!-- SEG:m00142:para-title:para-00022-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00142:para:para-00022 -->
 All IR spectra have many absorptions, but those useful for identifying specific functional groups are usually found in the region from 1500 cm[[sup:–1]] to 3300 cm[[sup:–1]]. Pay particular attention to the carbonyl region (1670 to 1780 cm[[sup:–1]]), the aromatic region (1660 to 2000 cm[[sup:–1]]), the triple-bond region (2000 to 2500 cm[[sup:–1]]), and the C–H region (2500 to 3500 cm[[sup:–1]]).
 
 <!-- SEG:m00142:para-title:para-00023-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00142:para:para-00023 -->
 The spectrum shows an intense absorption at 1725 cm[[sup:–1]] due to a carbonyl group (perhaps an aldehyde, –CHO), a series of weak absorptions from 1800 to 2000 cm[[sup:–1]] characteristic of aromatic compounds, and a C–H absorption near 3030 cm[[sup:–1]], also characteristic of aromatic compounds. In fact, the compound is phenylacetaldehyde.
@@ -284,13 +284,13 @@ Infrared spectroscopy involves the interaction of a molecule with [[b:electromag
 Additional Problems
 
 <!-- SEG:m00142:para:para-00035 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00142:para:para-00038 -->
-[[b:Mass Spectrometry]]
+[[b:[[span:Mass Spectrometry|red-text]]]]
 
 <!-- SEG:m00142:para:para-00052 -->
-[[b:Infrared Spectroscopy]]
+[[b:[[span:Infrared Spectroscopy|red-text]]]]
 
 <!-- SEG:m00142:para:para-00064 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

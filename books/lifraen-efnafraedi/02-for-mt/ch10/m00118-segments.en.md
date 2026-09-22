@@ -8,13 +8,13 @@ Alkyl halides, RX, react with magnesium metal in ether or tetrahydrofuran (THF) 
 The reaction of RX with magnesium in the presence of ether or THF forms R-Mg-X. R can be alkenyl, aryl, primary, secondary, or tertiary and X can be Cl, Br, or I.
 
 <!-- SEG:m00118:para:para-00002 -->
-As you might expect from the discussion of electronegativity and bond polarity in , the carbon–magnesium bond is polarized, making the carbon atom of Grignard reagents both nucleophilic and basic. An electrostatic potential map of methylmagnesium iodide, for instance, indicates the electron-rich (red) character of the carbon bonded to magnesium.
+As you might expect from the discussion of electronegativity and bond polarity in [[docref:m00080]], the carbon–magnesium bond is polarized, making the carbon atom of Grignard reagents both nucleophilic and basic. An electrostatic potential map of methylmagnesium iodide, for instance, indicates the electron-rich (red) character of the carbon bonded to magnesium.
 
 <!-- SEG:m00118:alt:fig-00002-alt -->
 Iodomethane reacts with magnesium and ether to form methylmagnesium iodide. The carbon in the product (structure and ball-and-stick model in the electrostatic potential map) is labeled basic and nucleophilic.
 
 <!-- SEG:m00118:para:para-00003 -->
-A Grignard reagent is formally the magnesium salt, R[[sub:3]]C[[sup:–+]]MgX, of a carbon acid, R[[sub:3]]C–H, and is thus a carbon anion, or [[term:carbanion|term-00003]]. But because hydrocarbons are such weak acids, with [[b:p[[i:K]][[sub:a]]]]’s in the range 44 to 60 (), carbon anions are very strong bases. Grignard reagents must therefore be protected from atmospheric moisture to prevent their being protonated and destroyed in acid–base reactions: R–Mg–X + H[[sub:2]]O → R–H + HO–Mg–X.
+A Grignard reagent is formally the magnesium salt, R[[sub:3]]C[[sup:–+]]MgX, of a carbon acid, R[[sub:3]]C–H, and is thus a carbon anion, or [[term:carbanion|term-00003]]. But because hydrocarbons are such weak acids, with [[b:p[[i:K]][[sub:a]]]]’s in the range 44 to 60 ([[docref:m00109]]), carbon anions are very strong bases. Grignard reagents must therefore be protected from atmospheric moisture to prevent their being protonated and destroyed in acid–base reactions: R–Mg–X + H[[sub:2]]O → R–H + HO–Mg–X.
 
 <!-- SEG:m00118:alt:fig-00003-alt -->
 1-bromohexane reacts with Mg in the presence of ether to form 1-hexylmagnesium bromide that further reacts with water to form hexane.

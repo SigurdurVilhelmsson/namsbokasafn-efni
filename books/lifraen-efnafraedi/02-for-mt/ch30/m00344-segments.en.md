@@ -20,10 +20,10 @@ Stereochemical Rules for Electrocyclic Reactions
 Electron pairs (double bonds)
 
 <!-- SEG:m00344:entry:auto-8 -->
-Thermal reaction
+[[span:Thermal reaction|magenta-text]]
 
 <!-- SEG:m00344:entry:auto-9 -->
-Photochemical reaction
+[[span:Photochemical reaction|green-text]]
 
 <!-- SEG:m00344:entry:auto-10 -->
 Even number

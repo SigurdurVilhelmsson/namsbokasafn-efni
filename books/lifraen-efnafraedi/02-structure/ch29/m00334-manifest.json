@@ -1,14 +1,16 @@
 {
   "version": 1,
   "moduleId": "m00334",
-  "extractedAt": "2026-08-31T19:08:50.295Z",
+  "extractedAt": "2026-09-22T17:26:40.028Z",
   "sourceHash": "4426fc7e0c202436",
-  "segmentCount": 40,
+  "segmentCount": 42,
   "segmentIds": [
     "m00334:title:auto-1",
     "m00334:para:para-00001",
+    "m00334:figure-title:fig-00001-title",
     "m00334:caption:fig-00001-caption",
     "m00334:alt:fig-00001-alt",
+    "m00334:figure-title:fig-00002-title",
     "m00334:caption:fig-00002-caption",
     "m00334:alt:fig-00002-alt",
     "m00334:title:sect-00001-title",
@@ -99,5 +101,9 @@
       "sect-00008",
       "sect-00009"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "glycolysis",
+    "term-00002": "Schiff base"
   }
 }

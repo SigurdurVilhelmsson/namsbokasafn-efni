@@ -5,13 +5,13 @@ Some Other Important Carbohydrates
 In addition to the common carbohydrates mentioned in previous sections, there are a variety of important carbohydrate-derived materials. Their structural resemblance to sugars is clear, but they aren’t simple aldoses or ketoses.
 
 <!-- SEG:m00308:para:para-00002 -->
-Deoxy sugars, as we saw in , have an oxygen atom “missing.” That is, an –OH group is replaced by an –H. The most common deoxy sugar is 2-deoxyribose, a monosaccharide found in DNA (deoxyribonucleic acid). Note that 2-deoxyribose exists in water solution as a complex equilibrium mixture of both furanose and pyranose forms.
+Deoxy sugars, as we saw in [[docref:m00305]], have an oxygen atom “missing.” That is, an –OH group is replaced by an –H. The most common deoxy sugar is 2-deoxyribose, a monosaccharide found in DNA (deoxyribonucleic acid). Note that 2-deoxyribose exists in water solution as a complex equilibrium mixture of both furanose and pyranose forms.
 
 <!-- SEG:m00308:alt:fig-00001-alt -->
 The Haworth projection of alpha-D-2-deoxyribopyranose having plus 35 percent beta anomer converts into its Fischer projection which then forms a Haworth projection of alpha-D-2-deoxyribofuranose having plus 12 percent beta anomer.
 
 <!-- SEG:m00308:para:para-00003 -->
-Amino sugars, such as D-glucosamine, have an –OH group replaced by an –NH[[sub:2]]. The [[i:N]]-acetyl amide derived from D-glucosamine is the monosaccharide unit from which chitin, the hard crust that protects insects and shellfish, is made. Still other amino sugars are found in antibiotics such as streptomycin and gentamicin.
+Amino sugars, such as [[sc:D]]-glucosamine, have an –OH group replaced by an –NH[[sub:2]]. The [[i:N]]-acetyl amide derived from [[sc:D]]-glucosamine is the monosaccharide unit from which chitin, the hard crust that protects insects and shellfish, is made. Still other amino sugars are found in antibiotics such as streptomycin and gentamicin.
 
 <!-- SEG:m00308:alt:fig-00002-alt -->
 The Haworth projection of beta-D-glucosamine and gentamicin (an antibiotic). Purpurosamine, 2-deoxystreptamine and garosamine in the structure of gentamicin are labelled.
@@ -62,13 +62,13 @@ Monosaccharide
 0.75
 
 <!-- SEG:m00308:entry:auto-22 -->
-[[b:Sucrose]]
+[[b:[[span:Sucrose|magenta-text]]]]
 
 <!-- SEG:m00308:entry:auto-23 -->
-[[b:Disaccharide]]
+[[b:[[span:Disaccharide|magenta-text]]]]
 
 <!-- SEG:m00308:entry:auto-24 -->
-[[b:1.00]]
+[[b:[[span:1.00|magenta-text]]]]
 
 <!-- SEG:m00308:entry:auto-25 -->
 Fructose
@@ -188,7 +188,7 @@ The structures of three synthetic sweeteners – saccharin, aspartame, and acesu
 [[docref:complex carbohydrate|m00299#term-00003]]
 
 <!-- SEG:m00308:item:list-00001-item-11 -->
-[[docref:D sugar|m00301#term-00001]]
+[[docref:[[sc:D]] sugar|m00301#term-00001]]
 
 <!-- SEG:m00308:item:list-00001-item-12 -->
 [[docref:deoxy sugar|m00305#term-00001]]
@@ -215,7 +215,7 @@ The structures of three synthetic sweeteners – saccharin, aspartame, and acesu
 [[docref:Koenigs–Knorr reaction|m00304#term-00002]]
 
 <!-- SEG:m00308:item:list-00001-item-20 -->
-[[docref:L sugar|m00301#term-00002]]
+[[docref:[[sc:L]] sugar|m00301#term-00002]]
 
 <!-- SEG:m00308:item:list-00001-item-21 -->
 [[docref:monosaccharide|m00299#term-00002]]
@@ -245,7 +245,7 @@ The structures of three synthetic sweeteners – saccharin, aspartame, and acesu
 Summary
 
 <!-- SEG:m00308:para:para-00007 -->
-Now that we’ve now seen all the common functional groups and reaction types, our focus has changed to looking at the major classes of biological molecules. [[b:Carbohydrates]] are polyhydroxy aldehydes and ketones. They are classified according to the number of carbon atoms and the kind of carbonyl group they contain. Glucose, for example, is an aldohexose, a six-carbon aldehydo sugar. [[b:Monosaccharides]] are further classified as either [[b:[[i:D]] sugars]] or [[b:[[i:L]] sugars]], depending on the stereochemistry of the chirality center farthest from the carbonyl group. Carbohydrate stereochemistry is frequently depicted using [[b:Fischer projections]], which represent a chirality center as the intersection of two crossed lines.
+Now that we’ve now seen all the common functional groups and reaction types, our focus has changed to looking at the major classes of biological molecules. [[b:Carbohydrates]] are polyhydroxy aldehydes and ketones. They are classified according to the number of carbon atoms and the kind of carbonyl group they contain. Glucose, for example, is an aldohexose, a six-carbon aldehydo sugar. [[b:Monosaccharides]] are further classified as either [[b:[[sc:D]] sugars]] or [[b:[[sc:L]] sugars]], depending on the stereochemistry of the chirality center farthest from the carbonyl group. Carbohydrate stereochemistry is frequently depicted using [[b:Fischer projections]], which represent a chirality center as the intersection of two crossed lines.
 
 <!-- SEG:m00308:para:para-00008 -->
 Monosaccharides normally exist as cyclic hemiacetals rather than as open-chain aldehydes or ketones. The hemiacetal linkage results from reaction of the carbonyl group with an –OH group three or four carbon atoms away. A five-membered cyclic hemiacetal is called a [[b:furanose]], and a six-membered cyclic hemiacetal is called a [[b:pyranose]]. Cyclization leads to the formation of a new chirality center called the [[b:anomeric center]] and the production of two diastereomeric hemiacetals called [[b:alpha ([[i:α]]) and beta ([[i:β]]) anomers]].
@@ -266,16 +266,16 @@ Nine reactions of aldoses. The products are ethers, esters, glycosides, alditols
 Additional Problems
 
 <!-- SEG:m00308:para:para-00011 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00308:para:para-00016 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00308:para:para-00023 -->
-[[b:Carbohydrate Structures]]
+[[b:[[span:Carbohydrate Structures|red-text]]]]
 
 <!-- SEG:m00308:para:para-00037 -->
-[[b:Carbohydrate Reactions]]
+[[b:[[span:Carbohydrate Reactions|red-text]]]]
 
 <!-- SEG:m00308:para:para-00044 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -2,10 +2,10 @@
 Preparation of Alcohols: A Review
 
 <!-- SEG:m00202:item:list-00001-item-1 -->
-Alcohols can be prepared by hydration of alkenes. Because the direct hydration of alkenes with aqueous acid is generally a poor reaction in the laboratory, two indirect methods are commonly used. Hydroboration–oxidation yields the syn, non-Markovnikov hydration product (), whereas oxymercuration–demercuration yields the Markovnikov hydration product ().[[BR]]
+Alcohols can be prepared by hydration of alkenes. Because the direct hydration of alkenes with aqueous acid is generally a poor reaction in the laboratory, two indirect methods are commonly used. Hydroboration–oxidation yields the syn, non-Markovnikov hydration product ([[docref:m00093]]), whereas oxymercuration–demercuration yields the Markovnikov hydration product ([[docref:m00092]]).[[BR]]
 
 <!-- SEG:m00202:item:list-00001-item-2 -->
-1,2-Diols can be prepared either by direct hydroxylation of an alkene with OsO[[sub:4]] followed by reduction with NaHSO[[sub:3]] or by acid-catalyzed hydrolysis of an epoxide (). The OsO[[sub:4]] reaction occurs with syn stereochemistry to give a cis diol, and epoxide opening occurs with anti stereochemistry to give a trans diol.[[BR]]
+1,2-Diols can be prepared either by direct hydroxylation of an alkene with OsO[[sub:4]] followed by reduction with NaHSO[[sub:3]] or by acid-catalyzed hydrolysis of an epoxide ([[docref:m00095]]). The OsO[[sub:4]] reaction occurs with syn stereochemistry to give a cis diol, and epoxide opening occurs with anti stereochemistry to give a trans diol.[[BR]]
 
 <!-- SEG:m00202:para:para-00001 -->
 Alcohols occupy a central position in organic chemistry. They can be prepared from many other kinds of compounds (alkenes, alkyl halides, ketones, esters, and aldehydes, among others), and they can be transformed into an equally wide assortment of compounds ([[xref:fig-00001]]).

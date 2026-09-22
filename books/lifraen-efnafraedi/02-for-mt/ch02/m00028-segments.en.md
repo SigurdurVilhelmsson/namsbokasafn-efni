@@ -19,14 +19,17 @@ A reaction shows Lewis acid (M g 2 positive) reacting with Lewis base (an organo
 <!-- SEG:m00028:para:para-00003 -->
 In the same way, compounds of group 3A elements, such as BF[[sub:3]] and AlCl[[sub:3]], are Lewis acids because they have unfilled valence orbitals and can accept electron pairs from Lewis bases, as shown in [[xref:fig-00001]]. Similarly, many transition-metal compounds, such as TiCl[[sub:4]], FeCl[[sub:3]], ZnCl[[sub:2]], and SnCl[[sub:4]], are Lewis acids.
 
+<!-- SEG:m00028:figure-title:fig-00001-title -->
+The reaction of boron trifluoride, a Lewis acid, with dimethyl ether, a Lewis base.
+
 <!-- SEG:m00028:caption:fig-00001-caption -->
-The Lewis acid accepts a pair of electrons, and the Lewis base donates a pair of nonbonding electrons. Note how the movement of electrons from the Lewis base to the Lewis acid is indicated by a curved arrow. Note also how, in electrostatic potential maps, [[b:the boron becomes more negative (red)]] after reaction because it has gained electrons and [[b:the oxygen atom becomes more positive (blue)]] because it has donated electrons.
+The Lewis acid accepts a pair of electrons, and the Lewis base donates a pair of nonbonding electrons. Note how the movement of electrons from the Lewis base to the Lewis acid is indicated by a curved arrow. Note also how, in electrostatic potential maps, [[b:[[span:the boron becomes more negative (red)|magenta-text]]]] after reaction because it has gained electrons and [[b:[[span:the oxygen atom becomes more positive (blue)|cyan-text]]]] because it has donated electrons.
 
 <!-- SEG:m00028:alt:fig-00001-alt -->
 A reversible reaction shows boron trifluoride (Lewis acid) reacting with dimethyl ether (Lewis base) to form an acid-base complex. Electrostatic potential maps of reactants and product are shown above.
 
 <!-- SEG:m00028:para:para-00004 -->
-Look closely at the acid–base reaction in [[xref:fig-00001]], and notice how it's shown. Dimethyl ether, the Lewis base, donates an electron pair to a vacant valence orbital of the boron atom in BF[[sub:3]], a Lewis acid. The direction of electron-pair flow from base to acid is shown using a curved arrow, just as the direction of electron flow from one resonance structure to another was shown using curved arrows in . We’ll use this curved-arrow notation throughout the remainder of this text to indicate electron flow during reactions, so get used to seeing it.
+Look closely at the acid–base reaction in [[xref:fig-00001]], and notice how it's shown. Dimethyl ether, the Lewis base, donates an electron pair to a vacant valence orbital of the boron atom in BF[[sub:3]], a Lewis acid. The direction of electron-pair flow from base to acid is shown using a curved arrow, just as the direction of electron flow from one resonance structure to another was shown using curved arrows in [[docref:m00022]]. We’ll use this curved-arrow notation throughout the remainder of this text to indicate electron flow during reactions, so get used to seeing it.
 
 <!-- SEG:m00028:para:para-00005 -->
 Some further examples of Lewis acids follow:
@@ -62,13 +65,13 @@ Using Curved Arrows to Show Electron Flow
 Using curved arrows, show how acetaldehyde, CH[[sub:3]]CHO, can act as a Lewis base.
 
 <!-- SEG:m00028:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00028:para:para-00010 -->
 A Lewis base donates an electron pair to a Lewis acid. We therefore need to locate the electron lone pairs on acetaldehyde and use a curved arrow to show the movement of a pair toward the H atom of the acid.
 
 <!-- SEG:m00028:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00028:para:para-00011 -->
 [[MEDIA:1]]

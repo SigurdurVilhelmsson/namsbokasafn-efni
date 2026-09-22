@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00029",
-  "extractedAt": "2026-08-31T19:08:46.718Z",
+  "extractedAt": "2026-09-22T17:26:35.658Z",
   "sourceHash": "17fbeea6d3eb13da",
   "segmentCount": 64,
   "segmentIds": [
@@ -159,5 +159,15 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00005": "intermolecular forces",
+    "term-00006": "van der Waals forces",
+    "term-00001": "noncovalent interactions",
+    "term-00007": "Dispersion forces",
+    "term-00002": "hydrogen bond",
+    "term-00003": "hydrophilic",
+    "term-00004": "hydrophobic",
+    "term-00008": "alkaloids"
   }
 }

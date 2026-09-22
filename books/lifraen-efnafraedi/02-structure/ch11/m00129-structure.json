@@ -18,6 +18,10 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "mechanism-figure scaled-down",
+      "title": {
+        "segmentId": "m00129:figure-title:fig-00001-title",
+        "text": "MECHANISM"
+      },
       "caption": {
         "segmentId": "m00129:caption:fig-00001-caption"
       },
@@ -44,6 +48,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -63,6 +68,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -81,6 +87,7 @@
     {
       "type": "figure",
       "id": "fig-00004",
+      "title": null,
       "caption": {
         "segmentId": "m00129:caption:fig-00004-caption"
       },
@@ -102,6 +109,7 @@
       "type": "figure",
       "id": "fig-00005",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -121,6 +129,7 @@
       "type": "figure",
       "id": "fig-00006",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -150,7 +159,7 @@
           "segmentId": "m00129:para:para-00009",
           "title": {
             "segmentId": "m00129:para-title:para-00009-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -159,7 +168,7 @@
           "segmentId": "m00129:para:para-00010",
           "title": {
             "segmentId": "m00129:para-title:para-00010-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -168,6 +177,7 @@
       "type": "figure",
       "id": "fig-00007",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

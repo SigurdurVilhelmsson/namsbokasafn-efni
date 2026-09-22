@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00269:caption:fig-00001-caption"
       },
@@ -44,6 +45,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -74,7 +76,7 @@
           "class": null,
           "title": {
             "segmentId": "m00269:title:sect-00002-title",
-            "text": "Step 1 of [[xref:fig-00004]]: Claisen Condensation"
+            "text": "Step [[span:1|magenta-text]] of [[xref:fig-00004]]: Claisen Condensation"
           },
           "content": [
             {
@@ -86,6 +88,7 @@
               "type": "figure",
               "id": "fig-00003",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -104,7 +107,7 @@
           "class": null,
           "title": {
             "segmentId": "m00269:title:sect-00003-title",
-            "text": "Step 2 of [[xref:fig-00004]]: Aldol Condensation"
+            "text": "Step [[span:2|magenta-text]] of [[xref:fig-00004]]: Aldol Condensation"
           },
           "content": [
             {
@@ -116,6 +119,10 @@
               "type": "figure",
               "id": "fig-00004",
               "class": "mechanism-figure scaled-down",
+              "title": {
+                "segmentId": "m00269:figure-title:fig-00004-title",
+                "text": "MECHANISM"
+              },
               "caption": {
                 "segmentId": "m00269:caption:fig-00004-caption"
               },
@@ -132,6 +139,7 @@
               "type": "figure",
               "id": "fig-00005",
               "class": "unnumbered",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -150,7 +158,7 @@
           "class": null,
           "title": {
             "segmentId": "m00269:title:sect-00004-title",
-            "text": "Step 3 of [[xref:fig-00004]]: Reduction"
+            "text": "Step [[span:3|magenta-text]] of [[xref:fig-00004]]: Reduction"
           },
           "content": [
             {
@@ -162,6 +170,7 @@
               "type": "figure",
               "id": "fig-00006",
               "class": "unnumbered",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -180,7 +189,7 @@
           "class": null,
           "title": {
             "segmentId": "m00269:title:sect-00005-title",
-            "text": "Step 4 of [[xref:fig-00004]]: Phosphorylation and Decarboxylation"
+            "text": "Step [[span:4|magenta-text]] of [[xref:fig-00004]]: Phosphorylation and Decarboxylation"
           },
           "content": [
             {
@@ -192,6 +201,7 @@
               "type": "figure",
               "id": "fig-00007",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -216,6 +226,7 @@
               "type": "figure",
               "id": "fig-00008",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -272,6 +283,7 @@
           "type": "figure",
           "id": "fig-00009",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00269:caption:fig-00009-caption"
           },
@@ -293,6 +305,7 @@
           "type": "figure",
           "id": "fig-00010",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -312,6 +325,7 @@
           "type": "figure",
           "id": "fig-00011",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00269:caption:fig-00011-caption"
           },
@@ -338,6 +352,7 @@
           "type": "figure",
           "id": "fig-00012",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00269:caption:fig-00012-caption"
           },
@@ -369,7 +384,7 @@
               "segmentId": "m00269:para:para-00019",
               "title": {
                 "segmentId": "m00269:para-title:para-00019-title",
-                "text": "Strategy"
+                "text": "[[span:Strategy|red-text]]"
               }
             },
             {
@@ -377,7 +392,7 @@
               "id": "para-00020",
               "title": {
                 "segmentId": "m00269:para-title:para-00020-title",
-                "text": "Solution"
+                "text": "[[span:Solution|cyan-text]]"
               }
             }
           ]
@@ -386,6 +401,7 @@
           "type": "figure",
           "id": "fig-00013",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -400,6 +416,7 @@
           "type": "figure",
           "id": "fig-00014",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

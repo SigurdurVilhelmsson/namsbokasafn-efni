@@ -20,7 +20,7 @@ Devising a Synthesis Route
 How would you synthesize [[i:cis]]-2-hexene from 1-pentyne and an alkyl halide? More than one step is needed.
 
 <!-- SEG:m00111:para-title:para-00006-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00111:para:para-00006 -->
 When undertaking any synthesis problem, you should look at the product, identify the functional groups it contains, and then ask yourself how those functional groups can be prepared. Always work retrosynthetically, one step at a time.
@@ -32,7 +32,7 @@ The product in this case is a cis-disubstituted alkene, so the first question is
 Next ask, “What is an immediate precursor of 2-hexyne?” We’ve seen that an internal alkyne can be prepared by alkylation of a terminal alkyne anion. In the present instance, we’re told to start with 1-pentyne and an alkyl halide. Thus, alkylation of the anion of 1-pentyne with iodomethane should yield 2-hexyne.
 
 <!-- SEG:m00111:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00111:para:para-00009 -->
 [[i:cis]]-2-Hexene can be synthesized from the given starting materials in three steps.
@@ -56,7 +56,7 @@ Devising a Synthesis Route
 How would you synthesize 2-bromopentane from acetylene and an alkyl halide? More than one step is needed.
 
 <!-- SEG:m00111:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00111:para:para-00011 -->
 Identify the functional group in the product (an alkyl bromide) and work the problem retrosynthetically. What is an immediate precursor of an alkyl bromide? Perhaps an alkene plus HBr. Of the two possibilities, Markovnikov addition of HBr to 1-pentene looks like a better choice than addition to 2-pentene because the latter reaction would give a mixture of isomers.
@@ -68,7 +68,7 @@ What is an immediate precursor of an alkene? Perhaps an alkyne, which could be r
 What is an immediate precursor of a terminal alkyne? Perhaps sodium acetylide and an alkyl halide.
 
 <!-- SEG:m00111:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00111:para:para-00015 -->
 The desired product can be synthesized in four steps from acetylene and 1-bromopropane.
@@ -95,7 +95,7 @@ Devising a Synthesis Route
 How would you synthesize 5-methyl-1-hexanol (5-methyl-1-hydroxyhexane) from acetylene and an alkyl halide?
 
 <!-- SEG:m00111:para-title:para-00017-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00111:para:para-00017 -->
 What is an immediate precursor of a primary alcohol? Perhaps a terminal alkene, which could be hydrated with non-Markovnikov regiochemistry by reaction with borane followed by oxidation with H[[sub:2]]O[[sub:2]].
@@ -107,7 +107,7 @@ What is an immediate precursor of a terminal alkene? Perhaps a terminal alkyne, 
 What is an immediate precursor of 5-methyl-1-hexyne? Perhaps acetylene and 1-bromo-3-methylbutane.
 
 <!-- SEG:m00111:para-title:para-00020-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00111:para:para-00020 -->
 The synthesis can be completed in four steps from acetylene and 1-bromo-3-methylbutane:
@@ -200,28 +200,28 @@ Summary of Reactions
 Preparation of alkynes
 
 <!-- SEG:m00111:item:list-00003-item-1 -->
-Dehydrohalogenation of vicinal dihalides ()[[BR]]
+Dehydrohalogenation of vicinal dihalides ([[docref:m00104]])[[BR]]
 
 <!-- SEG:m00111:item:list-00003-item-2 -->
-Alkylation of acetylide anions ()[[BR]]
+Alkylation of acetylide anions ([[docref:m00110]])[[BR]]
 
 <!-- SEG:m00111:item:list-00002-item-2 -->
 Reactions of alkynes
 
 <!-- SEG:m00111:item:list-00004-item-1 -->
-Addition of HCl and HBr ()[[BR]]
+Addition of HCl and HBr ([[docref:m00105]])[[BR]]
 
 <!-- SEG:m00111:item:list-00004-item-2 -->
-Addition of Cl[[sub:2]] and Br[[sub:2]] ()[[BR]]
+Addition of Cl[[sub:2]] and Br[[sub:2]] ([[docref:m00105]])[[BR]]
 
 <!-- SEG:m00111:item:list-00004-item-3 -->
-Hydration () (1) Mercuric sulfate catalyzed (2) Hydroboration–oxidation
+Hydration ([[docref:m00106]]) (1) Mercuric sulfate catalyzed (2) Hydroboration–oxidation
 
 <!-- SEG:m00111:item:list-00004-item-4 -->
-Reduction () (1) Catalytic hydrogenation (2) Lithium in liquid ammonia
+Reduction ([[docref:m00107]]) (1) Catalytic hydrogenation (2) Lithium in liquid ammonia
 
 <!-- SEG:m00111:item:list-00004-item-5 -->
-Conversion into acetylide anions ()[[BR]]
+Conversion into acetylide anions ([[docref:m00109]])[[BR]]
 
 <!-- SEG:m00111:para:para-00031 -->
 No stereochemistry is implied unless specifically indicated with wedged, solid, and dashed lines.
@@ -260,19 +260,19 @@ Alkyne reacts with sodium amide and ammonia to form sodium acetylide ion and amm
 Additional Problems
 
 <!-- SEG:m00111:para:para-00080 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00111:para:para-00081 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00111:para:para-00044 -->
-[[b:Naming Alkynes]]
+[[b:[[span:Naming Alkynes|red-text]]]]
 
 <!-- SEG:m00111:para:para-00048 -->
-[[b:Reactions of Alkynes]]
+[[b:[[span:Reactions of Alkynes|red-text]]]]
 
 <!-- SEG:m00111:para:para-00056 -->
-[[b:Organic Synthesis]]
+[[b:[[span:Organic Synthesis|red-text]]]]
 
 <!-- SEG:m00111:para:para-00067 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -14,7 +14,7 @@ A similar substitution reaction occurs with other strong bases. Treatment of bro
 Bromobenzene reacts with potassium amide in the presence of ammonia to form two aniline compounds. C 1 of both reactants and products are labeled with an asterisk.
 
 <!-- SEG:m00195:para:para-00003 -->
-Further mechanistic evidence comes from trapping experiments. When bromobenzene is treated with KNH[[sub:2]] in the presence of a conjugated diene, such as furan, a Diels–Alder reaction () occurs, implying that the symmetrical intermediate is a [[term:benzyne|term-00001]], formed by elimination of HBr from bromobenzene. Benzyne is too reactive to be isolated as a pure compound but, in the presence of water, addition occurs to give phenol. In the presence of a diene, Diels–Alder cycloaddition takes place.
+Further mechanistic evidence comes from trapping experiments. When bromobenzene is treated with KNH[[sub:2]] in the presence of a conjugated diene, such as furan, a Diels–Alder reaction ([[docref:m00174]]) occurs, implying that the symmetrical intermediate is a [[term:benzyne|term-00001]], formed by elimination of HBr from bromobenzene. Benzyne is too reactive to be isolated as a pure compound but, in the presence of water, addition occurs to give phenol. In the presence of a diene, Diels–Alder cycloaddition takes place.
 
 <!-- SEG:m00195:alt:fig-00003-alt -->
 On reaction with hydroxide ion, hydrigen chloride is eliminated from chlorobenzene to generate benzyne which on reaction with water to form phenol..

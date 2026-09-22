@@ -2,7 +2,7 @@
 Stability of Conjugated Dienes: Molecular Orbital Theory
 
 <!-- SEG:m00171:para:para-00001 -->
-Conjugated dienes can be prepared by some of the methods previously discussed for preparing alkenes (–). The base-induced elimination of HX from an allylic halide is one such reaction.
+Conjugated dienes can be prepared by some of the methods previously discussed for preparing alkenes ([[docref:m00128]]–[[docref:m00132]]). The base-induced elimination of HX from an allylic halide is one such reaction.
 
 <!-- SEG:m00171:alt:fig-00001-alt -->
 Cyclohexene reacts with N-bromosuccinimide in the presence of light, in carbon tetrachloride to form 3-bromocyclohexene, which reacts with potassium tert-butoxide and tert-butyl alcohol to form 76 percent of 1,3-cyclohexadiene.
@@ -20,7 +20,7 @@ One of the properties that distinguishes conjugated from nonconjugated dienes is
 The structures of 1,3-butadiene and butane with their C 2-C 3 single bonds labeled 147 and 153 picometers, respectively.
 
 <!-- SEG:m00171:para:para-00004 -->
-Another distinctive property of conjugated dienes is their unusual stability, as evidenced by their heats of hydrogenation ([[xref:table-00001]]). We saw in that monosubstituted alkenes, such as 1-butene, have [[MATH:1]] near –126 kJ/mol (–30.1 kcal/mol), whereas disubstituted alkenes, such as 2-methylpropene, have [[MATH:2]] near –119 kJ/mol (–28.4 kcal/mol), which is approximately 7 kJ/mol less negative. We concluded from these data that more highly substituted alkenes are more stable than less substituted ones. That is, more highly substituted alkenes release less heat on hydrogenation because they contain less energy to start with. A similar conclusion can be drawn for conjugated dienes.
+Another distinctive property of conjugated dienes is their unusual stability, as evidenced by their heats of hydrogenation ([[xref:table-00001]]). We saw in [[docref:m00068]] that monosubstituted alkenes, such as 1-butene, have [[MATH:1]] near –126 kJ/mol (–30.1 kcal/mol), whereas disubstituted alkenes, such as 2-methylpropene, have [[MATH:2]] near –119 kJ/mol (–28.4 kcal/mol), which is approximately 7 kJ/mol less negative. We concluded from these data that more highly substituted alkenes are more stable than less substituted ones. That is, more highly substituted alkenes release less heat on hydrogenation because they contain less energy to start with. A similar conclusion can be drawn for conjugated dienes.
 
 <!-- SEG:m00171:table-title:table-00001-title -->
 Heats of Hydrogenation for Some Alkenes and Dienes
@@ -107,13 +107,13 @@ Because a monosubstituted alkene has a [[MATH:3]] of approximately –126 kJ/mol
 The structures of 1,4-pentadiene and 1,3-butadiene with delta H degrees hydrogenation (difference in expected and observed) values equal to 1 and minus 16 kilojoules per mole, respectively.
 
 <!-- SEG:m00171:para:para-00006 -->
-What accounts for the stability of conjugated dienes? According to valence bond theory ( and ), their stability is due to orbital hybridization. Typical C–C single bonds, like those in alkanes, result from [[i:σ]] overlap of [[i:sp]][[sup:3]] orbitals on both carbons, but in a conjugated diene, the central C–C single bond results from [[i:σ]] overlap of [[i:sp]][[sup:2]] orbitals on both carbons. Because [[i:sp]][[sup:2]] orbitals have more [[i:s]] character (33% [[i:s]]) than [[i:sp]][[sup:3]] orbitals (25% [[i:s]]), the electrons in [[i:sp]][[sup:2]] orbitals are closer to the nucleus and the bonds they form are somewhat shorter and stronger. Thus, the “extra” stability of a conjugated diene results in part from the greater amount of [[i:s]] character in the orbitals forming the C–C single bond.
+What accounts for the stability of conjugated dienes? According to valence bond theory ([[docref:m00162]] and [[docref:m00165]]), their stability is due to orbital hybridization. Typical C–C single bonds, like those in alkanes, result from [[i:σ]] overlap of [[i:sp]][[sup:3]] orbitals on both carbons, but in a conjugated diene, the central C–C single bond results from [[i:σ]] overlap of [[i:sp]][[sup:2]] orbitals on both carbons. Because [[i:sp]][[sup:2]] orbitals have more [[i:s]] character (33% [[i:s]]) than [[i:sp]][[sup:3]] orbitals (25% [[i:s]]), the electrons in [[i:sp]][[sup:2]] orbitals are closer to the nucleus and the bonds they form are somewhat shorter and stronger. Thus, the “extra” stability of a conjugated diene results in part from the greater amount of [[i:s]] character in the orbitals forming the C–C single bond.
 
 <!-- SEG:m00171:alt:fig-00005-alt -->
 The structures of butane and 1,3-butadiene with single bonds formed by overlap of s p 3 orbitals and s p 2 orbitals, respectively.
 
 <!-- SEG:m00171:para:para-00007 -->
-According to molecular orbital theory (), the stability of conjugated dienes arises because of an interaction between the [[i:π]] orbitals of the two double bonds. To review briefly, when two [[i:p]] atomic orbitals combine to form a [[i:π]] bond, two [[i:π]] molecular orbitals (MOs) result. One is lower in energy than the starting [[i:p]] orbitals and is therefore bonding; the other is higher in energy, has a node between nuclei, and is antibonding. The two [[i:π]] electrons occupy the low-energy, bonding orbital, resulting in formation of a stable bond between atoms ([[xref:fig-00006]]).
+According to molecular orbital theory ([[docref:m00168]]), the stability of conjugated dienes arises because of an interaction between the [[i:π]] orbitals of the two double bonds. To review briefly, when two [[i:p]] atomic orbitals combine to form a [[i:π]] bond, two [[i:π]] molecular orbitals (MOs) result. One is lower in energy than the starting [[i:p]] orbitals and is therefore bonding; the other is higher in energy, has a node between nuclei, and is antibonding. The two [[i:π]] electrons occupy the low-energy, bonding orbital, resulting in formation of a stable bond between atoms ([[xref:fig-00006]]).
 
 <!-- SEG:m00171:caption:fig-00006-caption -->
 [[b:Two [[i:p]] orbitals combine to form two [[i:π]] molecular orbitals.]] Both electrons occupy the low-energy, bonding orbital, leading to a net lowering of energy and formation of a stable bond. The asterisk on [[MATH:7]] indicates an antibonding orbital.
@@ -137,7 +137,7 @@ The lowest-energy [[i:π]] molecular orbital (denoted [[i:ψ]][[sub:1]], Greek p
 Comparing the [[i:π]] molecular orbitals of 1,3-butadiene (two conjugated double bonds) with those of 1,4-pentadiene (two isolated double bonds) shows why the conjugated diene is more stable. In a conjugated diene, the lowest-energy [[i:π]] MO ([[i:ψ]][[sub:1]]) has a favorable bonding interaction between C2 and C3 that is absent in a nonconjugated diene. As a result, there is a certain amount of double-bond character to the C2–C3 single bond, making that bond both stronger and shorter than a typical single bond. Electrostatic potential maps show clearly the additional electron density in the central single bond ([[xref:fig-00008]]).
 
 <!-- SEG:m00171:caption:fig-00008-caption -->
-[[b:Electrostatic potential maps of 1,3-butadiene (conjugated) and 1,4-pentadiene (nonconjugated).]] Additional [[b:electron density]] is present in the central C−C bond of 1,3-butadiene, corresponding to partial double-bond character.
+[[b:Electrostatic potential maps of 1,3-butadiene (conjugated) and 1,4-pentadiene (nonconjugated).]] Additional [[b:[[span:electron density|magenta-text]]]] is present in the central C−C bond of 1,3-butadiene, corresponding to partial double-bond character.
 
 <!-- SEG:m00171:alt:fig-00008-alt -->
 The electrostatic potential maps and structural formulas of 1,3-butadiene (conjugated) and 1,4-pentadiene (nonconjugated). The single bond between C2-C3 in 1,3-butadiene is labeled partial double-bond character.

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00326",
-  "extractedAt": "2026-08-31T19:08:49.982Z",
+  "extractedAt": "2026-09-22T17:26:39.593Z",
   "sourceHash": "ba36b3610884070e",
   "segmentCount": 20,
   "segmentIds": [
@@ -56,5 +56,16 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Fibrous proteins",
+    "term-00002": "Globular proteins",
+    "term-00003": "primary structure",
+    "term-00004": "secondary structure",
+    "term-00005": "tertiary structure",
+    "term-00006": "quaternary structure",
+    "term-00007": "α helix",
+    "term-00008": "β-pleated sheet",
+    "term-00009": "denatured"
   }
 }

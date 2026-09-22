@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00092",
-  "extractedAt": "2026-08-31T19:08:47.723Z",
+  "extractedAt": "2026-09-22T17:26:36.588Z",
   "sourceHash": "c3c4dc688e50bb0d",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m00092:title:auto-1",
     "m00092:para:para-00001",
+    "m00092:figure-title:fig-00001-title",
     "m00092:caption:fig-00001-caption",
     "m00092:alt:fig-00001-alt",
     "m00092:para:para-00002",
@@ -55,5 +56,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "oxymercuration–demercuration"
   }
 }

@@ -20,7 +20,7 @@ Peroxyacids transfer an oxygen atom to the alkene with syn stereochemistry—bot
 A reaction mechanism shows alkene reacting with peroxyacid to form epoxide and acid.
 
 <!-- SEG:m00095:para:para-00005 -->
-Another method for the synthesis of epoxides involves the use of halohydrins, prepared by electrophilic addition of HO−X to alkenes (). When a halohydrin is treated with base, HX is eliminated and an epoxide is produced.
+Another method for the synthesis of epoxides involves the use of halohydrins, prepared by electrophilic addition of HO−X to alkenes ([[docref:m00091]]). When a halohydrin is treated with base, HX is eliminated and an epoxide is produced.
 
 <!-- SEG:m00095:alt:fig-00003-alt -->
 Cyclohexene reacts with chlorine in the presence of water to form trans-2-chloro-cyclohexanol, which reacts with aqueous sodium hydroxide to form 1,2-epoxycyclohexane (73 percent yield), water, and sodium chloride.
@@ -32,7 +32,7 @@ Epoxides undergo an acid-catalyzed ring-opening reaction with water (a hydrolysi
 An alkene undergoes epoxidation to form an epoxide, which reacts with hydronium ion to form a 1,2-diol product.
 
 <!-- SEG:m00095:para:para-00007 -->
-Acid-catalyzed epoxide opening begins with protonation of the epoxide to increase its reactivity, followed by nucleophilic addition of water. This nucleophilic addition is analogous to the final step of alkene bromination, in which a cyclic bromonium ion is opened by a nucleophile (). That is, a [[i:trans]]-1,2-diol results when an epoxycycloalkane is opened by aqueous acid, just as a [[i:trans]]-1,2-dibromide results when a cycloalkene is brominated. We’ll look at epoxide chemistry in more detail in [[b:Section 18.6]].
+Acid-catalyzed epoxide opening begins with protonation of the epoxide to increase its reactivity, followed by nucleophilic addition of water. This nucleophilic addition is analogous to the final step of alkene bromination, in which a cyclic bromonium ion is opened by a nucleophile ([[docref:m00090]]). That is, a [[i:trans]]-1,2-diol results when an epoxycycloalkane is opened by aqueous acid, just as a [[i:trans]]-1,2-dibromide results when a cycloalkene is brominated. We’ll look at epoxide chemistry in more detail in [[b:Section 18.6]].
 
 <!-- SEG:m00095:alt:fig-00005-alt -->
 A reaction mechanism shows 1,2-epoxycyclohexane reacting with hydronium ion and water to form trans-1,2-cyclohexanediol (86 percent yield). At the bottom, cyclohexene reacts with bromine to form trans-1,2-dibromocyclohexane.

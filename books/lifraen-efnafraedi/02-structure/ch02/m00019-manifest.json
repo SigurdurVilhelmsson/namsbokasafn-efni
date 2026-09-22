@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00019",
-  "extractedAt": "2026-08-31T19:08:46.664Z",
+  "extractedAt": "2026-09-22T17:26:35.615Z",
   "sourceHash": "1fa9abec2886ac23",
   "segmentCount": 47,
   "segmentIds": [
@@ -93,5 +93,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "dipole moment"
   }
 }

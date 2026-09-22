@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00241",
-  "extractedAt": "2026-08-31T19:08:49.422Z",
+  "extractedAt": "2026-09-22T17:26:38.740Z",
   "sourceHash": "391ce027c28f5d7b",
-  "segmentCount": 49,
+  "segmentCount": 52,
   "segmentIds": [
     "m00241:title:auto-1",
     "m00241:para:para-00001",
@@ -21,6 +21,7 @@
     "m00241:para:para-00006",
     "m00241:alt:fig-00005-alt",
     "m00241:para:para-00007",
+    "m00241:figure-title:fig-00006-title",
     "m00241:caption:fig-00006-caption",
     "m00241:alt:fig-00006-alt",
     "m00241:para:para-00008",
@@ -38,6 +39,7 @@
     "m00241:para:para-00015",
     "m00241:alt:fig-00010-alt",
     "m00241:para:para-00016",
+    "m00241:figure-title:fig-00011-title",
     "m00241:caption:fig-00011-caption",
     "m00241:alt:fig-00011-alt",
     "m00241:para:para-00017",
@@ -51,6 +53,7 @@
     "m00241:alt:fig-00015-alt",
     "m00241:title:sect-00007-title",
     "m00241:para:para-00021",
+    "m00241:figure-title:fig-00016-title",
     "m00241:caption:fig-00016-caption",
     "m00241:alt:fig-00016-alt",
     "m00241:para:para-00022"
@@ -112,5 +115,8 @@
       "sect-00006",
       "sect-00007"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Fischer esterification reaction"
   }
 }

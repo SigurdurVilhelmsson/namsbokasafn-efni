@@ -1,5 +1,5 @@
 <!-- SEG:m00124:title:auto-1 -->
-The Nucleophile
+Characteristics of the S[[sub:N]]2 Reaction
 
 <!-- SEG:m00124:para:para-00001 -->
 Now that we know how S[[sub:N]]2 reactions occur, we need to see how they can be used and what variables affect them. Some S[[sub:N]]2 reactions are fast, and some are slow; some take place in high yield and others in low yield. Understanding the factors involved can be of tremendous value. Let’s begin by recalling a few things about reaction rates in general.
@@ -47,7 +47,7 @@ Another variable that has a major effect on the S[[sub:N]]2 reaction is the natu
 R-Y reacts with negatively charged nucleophile to form neutral product and Y anion. In the second reaction, R-Y reacts with neutral nucleophile to form positively charged product and Y anion.
 
 <!-- SEG:m00124:para:para-00007 -->
-A wide array of substances can be prepared using nucleophilic substitution reactions. In fact, we’ve already seen examples in previous chapters. For instance, the reaction of an acetylide anion with an alkyl halide, discussed in , is an S[[sub:N]]2 reaction in which the acetylide nucleophile displaces a halide leaving group.
+A wide array of substances can be prepared using nucleophilic substitution reactions. In fact, we’ve already seen examples in previous chapters. For instance, the reaction of an acetylide anion with an alkyl halide, discussed in [[docref:m00110]], is an S[[sub:N]]2 reaction in which the acetylide nucleophile displaces a halide leaving group.
 
 <!-- SEG:m00124:alt:fig-00006-alt -->
 An S N 2 reaction between an acetylide anion and methyl bromide forms an alkyne and bromide ion.
@@ -59,7 +59,7 @@ An S N 2 reaction between an acetylide anion and methyl bromide forms an alkyne 
 Some S[[sub:N]]2 Reactions with Bromomethane
 
 <!-- SEG:m00124:entry:auto-21 -->
-[[b:Nu:[[sup:–]] + CH[[sub:3]]Br → CH[[sub:3]]Nu + Br[[sup:–]]]]
+[[b:[[span:Nu:[[sup:–]]|cyan-text]] + CH[[sub:3]][[span:Br|red-text]] → CH[[sub:3]][[span:Nu|cyan-text]] + [[span:Br[[sup:–]]|red-text]]]]
 
 <!-- SEG:m00124:entry:auto-22 -->
 [[b:Nucleophile]]
@@ -83,13 +83,13 @@ Some S[[sub:N]]2 Reactions with Bromomethane
 [[b:Name]]
 
 <!-- SEG:m00124:entry:auto-29 -->
-H[[sub:2]]O
+[[span:H[[sub:2]]O|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-30 -->
 Water
 
 <!-- SEG:m00124:entry:auto-31 -->
-CH[[sub:3]]OH[[sub:2]][[sup:+]]
+CH[[sub:3]][[span:OH[[sub:2]][[sup:+]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-32 -->
 Methylhydronium ion
@@ -98,13 +98,13 @@ Methylhydronium ion
 &#8199;&#8199;&#8199;&#8199;&#8199;1
 
 <!-- SEG:m00124:entry:auto-34 -->
-CH[[sub:3]]CO[[sub:2]][[sup:–]]
+[[span:CH[[sub:3]]CO[[sub:2]][[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-35 -->
 Acetate
 
 <!-- SEG:m00124:entry:auto-36 -->
-CH[[sub:3]]CO[[sub:2]]CH[[sub:3]]
+[[span:CH[[sub:3]]CO[[sub:2]]|cyan-text]]CH[[sub:3]]
 
 <!-- SEG:m00124:entry:auto-37 -->
 Methyl acetate
@@ -113,13 +113,13 @@ Methyl acetate
 &#8199;&#8199;&#8199;500
 
 <!-- SEG:m00124:entry:auto-39 -->
-NH[[sub:3]]
+[[span:NH[[sub:3]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-40 -->
 Ammonia
 
 <!-- SEG:m00124:entry:auto-41 -->
-CH[[sub:3]]NH[[sub:3]][[sup:+]]
+CH[[sub:3]][[span:NH[[sub:3]][[sup:+]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-42 -->
 Methylammonium ion
@@ -128,13 +128,13 @@ Methylammonium ion
 &#8199;&#8199;&#8199;700
 
 <!-- SEG:m00124:entry:auto-44 -->
-Cl[[sup:–]]
+[[span:Cl[[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-45 -->
 Chloride
 
 <!-- SEG:m00124:entry:auto-46 -->
-CH[[sub:3]]Cl
+CH[[sub:3]][[span:Cl|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-47 -->
 Chloromethane
@@ -143,13 +143,13 @@ Chloromethane
 &#8199;&#8199;1,000
 
 <!-- SEG:m00124:entry:auto-49 -->
-HO[[sup:–]]
+[[span:HO[[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-50 -->
 Hydroxide
 
 <!-- SEG:m00124:entry:auto-51 -->
-CH[[sub:3]]OH
+CH[[sub:3]][[span:OH|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-52 -->
 Methanol
@@ -158,13 +158,13 @@ Methanol
 &#8199;10,000
 
 <!-- SEG:m00124:entry:auto-54 -->
-CH[[sub:3]]O[[sup:–]]
+[[span:CH[[sub:3]]O[[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-55 -->
 Methoxide
 
 <!-- SEG:m00124:entry:auto-56 -->
-CH[[sub:3]]OCH[[sub:3]]
+CH[[sub:3]][[span:OCH[[sub:3]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-57 -->
 Dimethyl ether
@@ -173,13 +173,13 @@ Dimethyl ether
 &#8199;25,000
 
 <!-- SEG:m00124:entry:auto-59 -->
-I[[sup:–]]
+[[span:I[[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-60 -->
 Iodide
 
 <!-- SEG:m00124:entry:auto-61 -->
-CH[[sub:3]]I
+CH[[sub:3]][[span:I|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-62 -->
 Iodomethane
@@ -188,13 +188,13 @@ Iodomethane
 100,000
 
 <!-- SEG:m00124:entry:auto-64 -->
-[[sup:–]]CN
+[[span:[[sup:–]]CN|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-65 -->
 Cyanide
 
 <!-- SEG:m00124:entry:auto-66 -->
-CH[[sub:3]]CN
+CH[[sub:3]][[span:CN|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-67 -->
 Acetonitrile
@@ -203,13 +203,13 @@ Acetonitrile
 125,000
 
 <!-- SEG:m00124:entry:auto-69 -->
-HS[[sup:–]]
+[[span:HS[[sup:–]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-70 -->
 Hydrosulfide
 
 <!-- SEG:m00124:entry:auto-71 -->
-CH[[sub:3]]SH
+CH[[sub:3]][[span:SH|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-72 -->
 Methanethiol
@@ -236,13 +236,13 @@ Problems
 The Leaving Group
 
 <!-- SEG:m00124:para:para-00015 -->
-Still another variable that can affect the S[[sub:N]]2 reaction is the nature of the group displaced by the incoming nucleophile, the [[term:leaving group|term-00001]]. Because the leaving group is expelled with a negative charge in most S[[sub:N]]2 reactions, the best leaving groups are those that best stabilize the negative charge in the transition state. The greater the extent of charge stabilization by the leaving group, the lower the energy of the transition state and the more rapid the reaction. But as we saw in , the groups that best stabilize a negative charge are also the weakest bases. Thus, weak bases such as Cl[[sup:–]], Br[[sup:–]], and tosylate ion make good leaving groups, while strong bases such as OH[[sup:–]] and NH[[sub:2]][[sup:–]] make poor leaving groups.
+Still another variable that can affect the S[[sub:N]]2 reaction is the nature of the group displaced by the incoming nucleophile, the [[term:leaving group|term-00001]]. Because the leaving group is expelled with a negative charge in most S[[sub:N]]2 reactions, the best leaving groups are those that best stabilize the negative charge in the transition state. The greater the extent of charge stabilization by the leaving group, the lower the energy of the transition state and the more rapid the reaction. But as we saw in [[docref:m00025]], the groups that best stabilize a negative charge are also the weakest bases. Thus, weak bases such as Cl[[sup:–]], Br[[sup:–]], and tosylate ion make good leaving groups, while strong bases such as OH[[sup:–]] and NH[[sub:2]][[sup:–]] make poor leaving groups.
 
 <!-- SEG:m00124:alt:fig-00007-alt -->
 Leaving groups in increasing order of reactivity: hydroxyl ion, amino group, and O-R ion have very low reactivity, followed by fluoride, chloride, bromide, iodide, and T o s O ions.
 
 <!-- SEG:m00124:para:para-00016 -->
-It’s just as important to know which are poor leaving groups as to know which are good, and the preceding data clearly indicate that F[[sup:–]], HO[[sup:–]], RO[[sup:–]], and H[[sub:2]]N[[sup:–]] are not displaced by nucleophiles. In other words, alkyl fluorides, alcohols, ethers, and amines do not typically undergo S[[sub:N]]2 reactions. To carry out an S[[sub:N]]2 reaction with an alcohol, it’s necessary to convert the [[sup:–]]OH into a better leaving group. This, in fact, is just what happens when a primary or secondary alcohol is converted into either an alkyl chloride by reaction with SOCl[[sub:2]] or an alkyl bromide by reaction with PBr[[sub:3]] ().
+It’s just as important to know which are poor leaving groups as to know which are good, and the preceding data clearly indicate that F[[sup:–]], HO[[sup:–]], RO[[sup:–]], and H[[sub:2]]N[[sup:–]] are not displaced by nucleophiles. In other words, alkyl fluorides, alcohols, ethers, and amines do not typically undergo S[[sub:N]]2 reactions. To carry out an S[[sub:N]]2 reaction with an alcohol, it’s necessary to convert the [[sup:–]]OH into a better leaving group. This, in fact, is just what happens when a primary or secondary alcohol is converted into either an alkyl chloride by reaction with SOCl[[sub:2]] or an alkyl bromide by reaction with PBr[[sub:3]] ([[docref:m00117]]).
 
 <!-- SEG:m00124:alt:fig-00008-alt -->
 S N 2 reactions of primary or secondary alcohol with halide, where O H first reacts with S O Cl 2 or P Br 3. The products are alkyl halides.
@@ -254,7 +254,7 @@ Alternatively, an alcohol can be made more reactive toward nucleophilic substitu
 A reaction of a primary or secondary alcohol with para-toluenesulfonyl chloride in the presence of ether and pyridine yields a tosylate.
 
 <!-- SEG:m00124:para:para-00018 -->
-The one general exception to the rule that ethers don’t typically undergo S[[sub:N]]2 reactions pertains to epoxides, the three-membered cyclic ethers that we saw in . Because of the angle strain in their three-membered ring, epoxides are much more reactive than other ethers. They react with aqueous acid to give 1,2-diols, as we saw in , and they react readily with many other nucleophiles as well. Propene oxide, for instance, reacts with HCl to give 1-chloro-2-propanol by an S[[sub:N]]2 backside attack on the less hindered primary carbon atom. We’ll look at the process in more detail in [[b:Section 18.5]].
+The one general exception to the rule that ethers don’t typically undergo S[[sub:N]]2 reactions pertains to epoxides, the three-membered cyclic ethers that we saw in [[docref:m00095]]. Because of the angle strain in their three-membered ring, epoxides are much more reactive than other ethers. They react with aqueous acid to give 1,2-diols, as we saw in [[docref:m00095]], and they react readily with many other nucleophiles as well. Propene oxide, for instance, reacts with HCl to give 1-chloro-2-propanol by an S[[sub:N]]2 backside attack on the less hindered primary carbon atom. We’ll look at the process in more detail in [[b:Section 18.5]].
 
 <!-- SEG:m00124:alt:fig-00010-alt -->
 A reaction mechanism of propene oxide with hydrogen chloride produces a protonated epoxide intermediate, which reacts by S N 2 to form 1-chloro-2-propanol.
@@ -296,19 +296,19 @@ The effects on S[[sub:N]]2 reactions of the four variables—substrate structure
 Steric hindrance raises the energy of the S[[sub:N]]2 transition state, increasing ∆[[i:G]][[sup:‡]] and decreasing the reaction rate ([[xref:fig-00013]]a). As a result, S[[sub:N]]2 reactions are best for methyl and primary substrates. Secondary substrates react slowly, and tertiary substrates do not react by an S[[sub:N]]2 mechanism.
 
 <!-- SEG:m00124:entry:auto-100 -->
-[[b:Nucleophile]]
+[[span:[[b:Nucleophile]]|cyan-text]]
 
 <!-- SEG:m00124:entry:auto-101 -->
 Basic, negatively charged nucleophiles are less stable and have a higher ground-state energy than neutral ones, decreasing ∆[[i:G]][[sup:‡]] and increasing the S[[sub:N]]2 reaction rate ([[xref:fig-00013]]b).
 
 <!-- SEG:m00124:entry:auto-102 -->
-[[b:Leaving group]]
+[[span:[[b:Leaving group]]|red-text]]
 
 <!-- SEG:m00124:entry:auto-103 -->
 Good leaving groups (more stable anions) lower the energy of the transition state, decreasing ∆[[i:G]][[sup:‡]] and increasing the S[[sub:N]]2 reaction rate ([[xref:fig-00013]]c).
 
 <!-- SEG:m00124:entry:auto-104 -->
-[[b:Solvent]]
+[[span:[[b:Solvent]]|green-text]]
 
 <!-- SEG:m00124:entry:auto-105 -->
 Protic solvents solvate the nucleophile, thereby lowering its ground-state energy, increasing ∆[[i:G]][[sup:‡]], and decreasing the S[[sub:N]]2 reaction rate. Polar aprotic solvents surround the accompanying cation but not the nucleophilic anion, thereby raising the ground-state energy of the nucleophile, decreasing ∆[[i:G]][[sup:‡]], and increasing the reaction rate ([[xref:fig-00013]]d).
