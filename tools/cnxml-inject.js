@@ -78,7 +78,7 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
-import { readAlt, stripAltMarkers } from './lib/alt-segments.js';
+import { readAlt, stripAltMarkers, stripMarkupToText } from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
 
 // =====================================================================
@@ -2122,8 +2122,25 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   const lines = [];
   lines.push(`<document${documentAttrs}>`);
 
-  // Add title
-  const titleText = getSeg(structure.title?.segmentId) || structure.title?.text || 'Untitled';
+  // Add title.
+  //
+  // 🔴 THE DOCUMENT `<title>` TAKES INLINE MARKUP AND `<md:title>` BELOW DOES
+  // NOT — the two are written from the SAME string and must not be written the
+  // SAME WAY (§C126 ②). Organic's m00163 source is the proof, both slots in one
+  // file: `<title><emphasis effect="italics">sp</emphasis><sup>3</sup> Hybrid
+  // Orbitals…</title>` beside `<md:title>sp3 Hybrid Orbitals…</md:title>`.
+  // `getSeg` ends in `reverseInlineMarkup`, so it restores exactly that markup
+  // from the `[[i:]]`/`[[sup:]]` the wire carries — correct HERE.
+  //
+  // ⚠️ THE FALLBACK IS MARKER-FORM ENGLISH, NOT PLAIN TEXT, AND THAT CHANGED
+  // UNDER THIS FILE. Until §C126 ② `structure.title.text` was always plain (the
+  // extractor could not see a marked-up title at all), so publishing it raw was
+  // safe. It now carries `[[i:sp]][[sup:3]] …`, and a literal `[[` reaching a
+  // page is §C140 ㉟'s measured damage shape — so it is stripped, not published.
+  // A missing title segment already makes the module `complete: false`; this
+  // only decides what the refused artifact holds.
+  const injectedTitle = getSeg(structure.title?.segmentId);
+  const titleText = injectedTitle || stripMarkupToText(structure.title?.text || '') || 'Untitled';
   lines.push(`<title>${titleText}</title>`);
 
   // Add metadata (with translated abstract if present)
@@ -2162,8 +2179,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       }
     }
 
-    // Replace md:title with translated document title
-    const translatedTitle = getSeg(structure.title?.segmentId) || structure.title?.text;
+    // Replace md:title with the translated document title, AS TEXT.
+    //
+    // 🔴 MEASURED, AND THE NUMBER FLIPPED SIGN RATHER THAN GOING TO ZERO.
+    // `source-roundtrip-check lifraen-efnafraedi ch01` scored m00163
+    // `{"emphasis":"32->31","sup":"11->10"}` before §C126 ② — the title's markup
+    // LOST, because extraction never captured it. Writing the marked-up value
+    // into BOTH slots turned that into `32->33 / 11->12` — the same markup
+    // DUPLICATED into metadata. Neither is 0. Stripping here is what reaches 0,
+    // and m00166 (an `<emphasis>`-only title, `emphasis` alone in its delta)
+    // is the control that says the mechanism is the title and nothing else.
+    //
+    // ⚠️ Reuses `titleText` rather than calling `getSeg` a second time: the
+    // second call re-counted the same id in `segmentsRequested`/`segmentsFound`.
+    const translatedTitle = stripMarkupToText(titleText);
     if (translatedTitle) {
       translatedMetadata = translatedMetadata.replace(
         /<md:title>[^<]*<\/md:title>/,

@@ -224,3 +224,17 @@ const ALT_INLINE_TAG = new RegExp(`</?[a-zA-Z][a-zA-Z0-9]*(?:"[^"]*"|'[^']*'|[^>
 export function stripAltMarkers(text) {
   return unwrapBracketMarkers(text).replace(ALT_INLINE_TAG, '');
 }
+
+/**
+ * The SAME transform under a name that does not say "alt".
+ *
+ * §C126 ② needs it for `<md:title>`, which is mdml METADATA and text-only —
+ * OpenStax's own source is the proof: m00163 carries
+ * `<title><emphasis effect="italics">sp</emphasis><sup>3</sup> …</title>` beside
+ * `<md:title>sp3 …</md:title>`. Same words, one slot marked up and one not.
+ *
+ * ⚠️ AN ALIAS, NOT A COPY. A second implementation of one rule is how the two
+ * halves drift apart while both look right — the failure this repo keeps
+ * measuring. Same function object, so they cannot.
+ */
+export const stripMarkupToText = stripAltMarkers;
