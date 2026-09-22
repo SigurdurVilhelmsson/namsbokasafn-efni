@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00355",
-  "extractedAt": "2026-08-31T19:08:50.493Z",
+  "extractedAt": "2026-09-22T17:26:40.355Z",
   "sourceHash": "70b9b21c2cd8d4ee",
   "segmentCount": 13,
   "segmentIds": [
@@ -54,5 +54,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "olefin metathesis polymerization"
   }
 }

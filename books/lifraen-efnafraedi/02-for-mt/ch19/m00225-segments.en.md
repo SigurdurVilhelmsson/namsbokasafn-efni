@@ -110,7 +110,7 @@ Problems
 Nuclear Magnetic Resonance Spectroscopy
 
 <!-- SEG:m00225:para:para-00006 -->
-Aldehyde protons (RC[[b:H]]O) absorb near 10 [[i:δ]] in the [[sup:1]]H NMR spectrum and are very distinctive because no other absorptions occur in this region. The aldehyde proton shows spin–spin coupling with protons on the neighboring carbon, with coupling constant [[i:J]] ≈ 3 Hz. Acetaldehyde, for example, shows a quartet at 9.79 [[i:δ]] for the aldehyde proton, indicating that there are three protons neighboring the –CHO group ([[xref:fig-00002]]).
+Aldehyde protons (RC[[b:[[span:H|magenta-text]]]]O) absorb near 10 [[i:δ]] in the [[sup:1]]H NMR spectrum and are very distinctive because no other absorptions occur in this region. The aldehyde proton shows spin–spin coupling with protons on the neighboring carbon, with coupling constant [[i:J]] ≈ 3 Hz. Acetaldehyde, for example, shows a quartet at 9.79 [[i:δ]] for the aldehyde proton, indicating that there are three protons neighboring the –CHO group ([[xref:fig-00002]]).
 
 <!-- SEG:m00225:caption:fig-00002-caption -->
 [[b:[[sup:1]]H NMR spectrum of acetaldehyde.]] The absorption of the aldehyde proton appears at 9.79 [[i:δ]] and is split into a quartet.
@@ -131,7 +131,7 @@ Five structures display absorption values of carbons in aldehydes and ketones, w
 Mass Spectrometry
 
 <!-- SEG:m00225:para:para-00009 -->
-As discussed in , aliphatic aldehydes and ketones that have hydrogens on their gamma ([[i:γ]]) carbon atoms undergo a characteristic mass spectral cleavage called the [[term:McLafferty rearrangement|term-00001]]. A hydrogen atom is transferred from the [[i:γ]] carbon to the carbonyl oxygen, the bond between the [[i:α]] and [[i:β]] carbons is broken, and a neutral alkene fragment is produced. The charge remains with the oxygen-containing fragment.
+As discussed in [[docref:m00137]], aliphatic aldehydes and ketones that have hydrogens on their gamma ([[i:γ]]) carbon atoms undergo a characteristic mass spectral cleavage called the [[term:McLafferty rearrangement|term-00001]]. A hydrogen atom is transferred from the [[i:γ]] carbon to the carbonyl oxygen, the bond between the [[i:α]] and [[i:β]] carbons is broken, and a neutral alkene fragment is produced. The charge remains with the oxygen-containing fragment.
 
 <!-- SEG:m00225:alt:fig-00004-alt -->
 An aliphatic aldehyde or ketone undergoes Mclafferty rearrangement to form an alkene and a fragment containing oxygen, with bond migration occurring around a six-memberd ringlike framework.
@@ -263,55 +263,55 @@ IR spectroscopy is helpful for identifying aldehydes and ketones. Carbonyl group
 Summary of Reactions
 
 <!-- SEG:m00225:item:list-00002-item-1 -->
-Preparation of aldehydes ()
+Preparation of aldehydes ([[docref:m00213]])
 
 <!-- SEG:m00225:item:list-00003-item-1 -->
-Oxidation of primary alcohols ()[[BR]]
+Oxidation of primary alcohols ([[docref:m00206]])[[BR]]
 
 <!-- SEG:m00225:item:list-00003-item-2 -->
-Partial reduction of esters ()[[BR]]
+Partial reduction of esters ([[docref:m00213]])[[BR]]
 
 <!-- SEG:m00225:item:list-00002-item-2 -->
 Preparation of ketones
 
 <!-- SEG:m00225:item:list-00004-item-1 -->
-Oxidation of secondary alcohols ()[[BR]]
+Oxidation of secondary alcohols ([[docref:m00206]])[[BR]]
 
 <!-- SEG:m00225:item:list-00004-item-2 -->
-Diorganocopper reaction with acid chlorides ()[[BR]]
+Diorganocopper reaction with acid chlorides ([[docref:m00213]])[[BR]]
 
 <!-- SEG:m00225:item:list-00002-item-3 -->
-Oxidation of aldehydes ()[[BR]]
+Oxidation of aldehydes ([[docref:m00214]])[[BR]]
 
 <!-- SEG:m00225:item:list-00002-item-4 -->
 Nucleophilic addition reactions of aldehydes and ketones
 
 <!-- SEG:m00225:item:list-00005-item-1 -->
-Addition of hydride to give alcohols: reduction ()[[BR]]
+Addition of hydride to give alcohols: reduction ([[docref:m00218]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-2 -->
-Addition of Grignard reagents to give alcohols ()[[BR]]
+Addition of Grignard reagents to give alcohols ([[docref:m00218]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-3 -->
-Addition of HCN to give cyanohydrins ()[[BR]]
+Addition of HCN to give cyanohydrins ([[docref:m00217]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-4 -->
-Addition of primary amines to give imines ()[[BR]]
+Addition of primary amines to give imines ([[docref:m00219]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-5 -->
-Addition of secondary amines to give enamines ()[[BR]]
+Addition of secondary amines to give enamines ([[docref:m00219]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-6 -->
-Wolff–Kishner reaction to give alkanes ()[[BR]]
+Wolff–Kishner reaction to give alkanes ([[docref:m00220]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-7 -->
-Addition of alcohols to give acetals ()[[BR]]
+Addition of alcohols to give acetals ([[docref:m00221]])[[BR]]
 
 <!-- SEG:m00225:item:list-00005-item-8 -->
-Addition of phosphorus ylides to give alkenes: Wittig reaction ()[[BR]]
+Addition of phosphorus ylides to give alkenes: Wittig reaction ([[docref:m00222]])[[BR]]
 
 <!-- SEG:m00225:item:list-00002-item-5 -->
-Conjugate additions to [[i:α]],[[i:β]]-unsaturated aldehydes and ketones ()
+Conjugate additions to [[i:α]],[[i:β]]-unsaturated aldehydes and ketones ([[docref:m00224]])
 
 <!-- SEG:m00225:item:list-00006-item-1 -->
 Conjugate addition of amines[[BR]]
@@ -374,19 +374,19 @@ An alpha beta-unsaturated compound reacts with R dash 2 C u L i, ether and hydro
 Additional Problems
 
 <!-- SEG:m00225:para:para-00022 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00225:para:para-00026 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00225:para:para-00050 -->
-[[b:Naming Aldehydes and Ketones]]
+[[b:[[span:Naming Aldehydes and Ketones|red-text]]]]
 
 <!-- SEG:m00225:para:para-00055 -->
-[[b:Reactions of Aldehydes and Ketones]]
+[[b:[[span:Reactions of Aldehydes and Ketones|red-text]]]]
 
 <!-- SEG:m00225:para:para-00064 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00225:para:para-00071 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

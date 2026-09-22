@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00224",
-  "extractedAt": "2026-08-31T19:08:49.216Z",
+  "extractedAt": "2026-09-22T17:26:38.413Z",
   "sourceHash": "d8316d65cf398450",
   "segmentCount": 32,
   "segmentIds": [
@@ -89,5 +89,10 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "1,2-addition",
+    "term-00002": "conjugate addition",
+    "term-00003": "1,4-addition"
   }
 }

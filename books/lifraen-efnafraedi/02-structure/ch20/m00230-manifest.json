@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00230",
-  "extractedAt": "2026-08-31T19:08:49.302Z",
+  "extractedAt": "2026-09-22T17:26:38.563Z",
   "sourceHash": "e6f660fd3c2aff64",
   "segmentCount": 78,
   "segmentIds": [
@@ -126,5 +126,9 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "carboxyl group",
+    "term-00002": "nitriles"
   }
 }

@@ -2,7 +2,7 @@
 Meso Compounds
 
 <!-- SEG:m00056:para:para-00001 -->
-Let’s look at another example () of a compound with more than one chirality center: the tartaric acid used by Pasteur. The four stereoisomers can be drawn as follows:
+Let’s look at another example ([[docref:m00053]]) of a compound with more than one chirality center: the tartaric acid used by Pasteur. The four stereoisomers can be drawn as follows:
 
 <!-- SEG:m00056:alt:fig-00001-alt -->
 The mirror image of 2 R, 3 R tartaric acid is 2 S, 3 S and mirror image of 2 R, 3 S tartaric acid is 2 S, 3 R.
@@ -95,13 +95,13 @@ Distinguishing Chiral Compounds from Meso Compounds
 Does [[i:cis]]-1,2-dimethylcyclobutane have any chirality centers? Is it chiral?
 
 <!-- SEG:m00056:para-title:para-00006-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00056:para:para-00006 -->
 To see whether a chirality center is present, look for a carbon atom bonded to four different groups. To see whether the molecule is chiral, look for the presence or absence of a symmetry plane. Not all molecules with chirality centers are chiral overall&#8212;meso compounds are an exception.
 
 <!-- SEG:m00056:para-title:para-00007-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00056:para:para-00007 -->
 A look at the structure of [[i:cis]]-1,2-dimethylcyclobutane shows that both methyl-bearing ring carbons (C1 and C2) are chirality centers. Overall, though, the compound is achiral because there is a symmetry plane bisecting the ring between C1 and C2. Thus, the molecule is a meso compound.

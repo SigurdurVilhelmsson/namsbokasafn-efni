@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00221",
-  "extractedAt": "2026-08-31T19:08:49.207Z",
+  "extractedAt": "2026-09-22T17:26:38.397Z",
   "sourceHash": "e2ba2075b68f06cf",
-  "segmentCount": 22,
+  "segmentCount": 23,
   "segmentIds": [
     "m00221:title:auto-1",
     "m00221:para:para-00001",
@@ -11,6 +11,7 @@
     "m00221:para:para-00002",
     "m00221:alt:fig-00002-alt",
     "m00221:para:para-00003",
+    "m00221:figure-title:fig-00003-title",
     "m00221:caption:fig-00003-caption",
     "m00221:alt:fig-00003-alt",
     "m00221:para:para-00004",
@@ -68,5 +69,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "acetals, R2C(OR′)2",
+    "term-00002": "ketals",
+    "term-00003": "hemiacetal"
   }
 }

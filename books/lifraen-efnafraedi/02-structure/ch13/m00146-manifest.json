@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00146",
-  "extractedAt": "2026-08-31T19:08:48.353Z",
+  "extractedAt": "2026-09-22T17:26:37.407Z",
   "sourceHash": "5e0a3237778ae3be",
   "segmentCount": 10,
   "segmentIds": [
@@ -50,5 +50,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "downfield",
+    "term-00002": "upfield",
+    "term-00003": "chemical shift",
+    "term-00004": "delta (δ) scale"
   }
 }

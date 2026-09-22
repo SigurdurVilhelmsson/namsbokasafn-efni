@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00097",
-  "extractedAt": "2026-08-31T19:08:47.747Z",
+  "extractedAt": "2026-09-22T17:26:36.610Z",
   "sourceHash": "efee393a405f3d00",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00097:title:auto-1",
     "m00097:para:para-00001",
     "m00097:alt:fig-00001-alt",
     "m00097:para:para-00002",
+    "m00097:figure-title:fig-00002-title",
     "m00097:caption:fig-00002-caption",
     "m00097:alt:fig-00002-alt",
     "m00097:para:para-00003",
@@ -56,5 +57,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "carbene, R2C",
+    "term-00002": "stereospecific",
+    "term-00003": "Simmons–Smith reaction"
   }
 }

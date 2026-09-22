@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00318",
-  "extractedAt": "2026-08-31T19:08:49.950Z",
+  "extractedAt": "2026-09-22T17:26:39.560Z",
   "sourceHash": "4c2f0784e6149b1e",
   "segmentCount": 208,
   "segmentIds": [
@@ -252,5 +252,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "zwitterion",
+    "term-00002": "α-amino acids",
+    "term-00003": "side chain"
   }
 }

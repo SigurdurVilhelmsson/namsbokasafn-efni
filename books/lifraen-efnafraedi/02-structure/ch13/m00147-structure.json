@@ -2,7 +2,7 @@
   "moduleId": "m00147",
   "title": {
     "segmentId": "m00147:title:auto-1",
-    "text": "Problems"
+    "text": "Chemical Shifts in [[sup:1]]H NMR Spectroscopy"
   },
   "documentClass": null,
   "metadata": {
@@ -536,7 +536,7 @@
           "segmentId": "m00147:para:para-00005",
           "title": {
             "segmentId": "m00147:para-title:para-00005-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -545,7 +545,7 @@
           "segmentId": "m00147:para:para-00006",
           "title": {
             "segmentId": "m00147:para-title:para-00006-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]

@@ -13,6 +13,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "splash",
+      "title": null,
       "caption": {
         "segmentId": "m00031:caption:fig-00001-caption"
       },

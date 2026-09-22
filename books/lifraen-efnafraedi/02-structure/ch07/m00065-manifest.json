@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00065",
-  "extractedAt": "2026-08-31T19:08:47.569Z",
+  "extractedAt": "2026-09-22T17:26:36.414Z",
   "sourceHash": "41a0874b71996b0c",
   "segmentCount": 31,
   "segmentIds": [
@@ -81,5 +81,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "methylene group",
+    "term-00002": "vinyl group",
+    "term-00003": "allyl group"
   }
 }

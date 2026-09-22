@@ -2,7 +2,7 @@
   "moduleId": "m00152",
   "title": {
     "segmentId": "m00152:title:auto-1",
-    "text": "Problems"
+    "text": "Uses of [[sup:1]]H NMR Spectroscopy"
   },
   "documentClass": null,
   "metadata": {
@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -42,6 +43,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00152:caption:fig-00002-caption"
       },

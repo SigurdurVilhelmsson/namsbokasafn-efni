@@ -1,11 +1,11 @@
 <!-- SEG:m00156:title:auto-1 -->
-Problems
+Uses of [[sup:13]]C NMR Spectroscopy
 
 <!-- SEG:m00156:para:para-00001 -->
 The information derived from [[sup:13]]C NMR spectroscopy is extraordinarily useful for structure determination. Not only can we count the number of nonequivalent carbon atoms in a molecule, we can also get information about the electronic environment of each carbon and find how many protons are attached to each. As a result, we can address many structural questions that go unanswered by IR spectroscopy or mass spectrometry.
 
 <!-- SEG:m00156:para:para-00002 -->
-Here’s an example: how do we know that the E2 reaction of an alkyl halide follows Zaitsev’s rule ()? Does treatment of 1-chloro-1-methylcyclohexane with a strong base give predominantly the trisubstituted alkene 1-methylcyclohexene or the disubstituted alkene methylenecyclohexane?
+Here’s an example: how do we know that the E2 reaction of an alkyl halide follows Zaitsev’s rule ([[docref:m00128]])? Does treatment of 1-chloro-1-methylcyclohexane with a strong base give predominantly the trisubstituted alkene 1-methylcyclohexene or the disubstituted alkene methylenecyclohexane?
 
 <!-- SEG:m00156:alt:fig-00001-alt -->
 1-chloro-1-methylcyclohexane reacts with potassium hydroxide in the presence of ethanol to form 1-methylcyclohexane or methylenecyclohexene. A question mark indicates product uncertainty.
@@ -119,16 +119,16 @@ In [[sup:1]]H NMR spectra, the area under each absorption peak can be electronic
 Additional Problems
 
 <!-- SEG:m00156:para:para-00015 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00156:para:para-00021 -->
-[[b:Chemical Shifts and NMR Spectroscopy]]
+[[b:[[span:Chemical Shifts and NMR Spectroscopy|red-text]]]]
 
 <!-- SEG:m00156:para:para-00027 -->
-[[b:[[sup:1]]H NMR Spectroscopy]]
+[[b:[[span:[[sup:1]]H NMR Spectroscopy|red-text]]]]
 
 <!-- SEG:m00156:para:para-00040 -->
-[[b:[[sup:13]]C NMR Spectroscopy]]
+[[b:[[span:[[sup:13]]C NMR Spectroscopy|red-text]]]]
 
 <!-- SEG:m00156:para:para-00047 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

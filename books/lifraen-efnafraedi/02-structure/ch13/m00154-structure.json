@@ -2,7 +2,7 @@
   "moduleId": "m00154",
   "title": {
     "segmentId": "m00154:title:auto-1",
-    "text": "Problems"
+    "text": "Characteristics of [[sup:13]]C NMR Spectroscopy"
   },
   "documentClass": null,
   "metadata": {
@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00154:caption:fig-00001-caption"
       },
@@ -49,6 +50,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00154:caption:fig-00002-caption"
       },
@@ -70,6 +72,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -104,7 +107,7 @@
           "segmentId": "m00154:para:para-00008",
           "title": {
             "segmentId": "m00154:para-title:para-00008-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -113,7 +116,7 @@
           "segmentId": "m00154:para:para-00009",
           "title": {
             "segmentId": "m00154:para-title:para-00009-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         },
         {
@@ -127,6 +130,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

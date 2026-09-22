@@ -122,13 +122,13 @@ Predicting the Direction of a Dipole Moment
 Make a three-dimensional drawing of methylamine, CH[[sub:3]]NH[[sub:2]], and show the direction of its dipole moment ([[i:μ]] = 1.31).
 
 <!-- SEG:m00019:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00019:para:para-00008 -->
 Look for any lone-pair electrons, and identify any atom with an electronegativity substantially different from that of carbon. (Usually, this means O, N, F, Cl, or Br.) Electron density will be displaced in the general direction of the electronegative atoms and the lone pairs.
 
 <!-- SEG:m00019:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00019:para:para-00009 -->
 Methylamine contains an electronegative nitrogen atom with a lone pair of electrons. The dipole moment thus points generally from –CH[[sub:3]] toward the lone pair.

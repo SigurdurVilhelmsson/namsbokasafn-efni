@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -34,14 +35,21 @@
       "segmentId": "m00070:para:para-00002"
     },
     {
-      "type": "para",
-      "id": "para-00003",
-      "segmentId": "m00070:para:para-00003"
+      "type": "quote",
+      "id": "quote-00001",
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00070:para:para-00003"
+        }
+      ]
     },
     {
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -61,6 +69,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -77,9 +86,15 @@
       "segmentId": "m00070:para:para-00006"
     },
     {
-      "type": "para",
-      "id": "para-00007",
-      "segmentId": "m00070:para:para-00007"
+      "type": "quote",
+      "id": "quote-00002",
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00070:para:para-00007"
+        }
+      ]
     },
     {
       "type": "para",
@@ -90,6 +105,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -119,7 +135,7 @@
           "segmentId": "m00070:para:para-00011",
           "title": {
             "segmentId": "m00070:para-title:para-00011-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -128,7 +144,7 @@
           "segmentId": "m00070:para:para-00012",
           "title": {
             "segmentId": "m00070:para-title:para-00012-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -137,6 +153,7 @@
       "type": "figure",
       "id": "fig-00005",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -151,6 +168,7 @@
       "type": "figure",
       "id": "fig-00006",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -180,7 +198,7 @@
           "segmentId": "m00070:para:para-00014",
           "title": {
             "segmentId": "m00070:para-title:para-00014-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -189,7 +207,7 @@
           "segmentId": "m00070:para:para-00015",
           "title": {
             "segmentId": "m00070:para-title:para-00015-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -198,6 +216,7 @@
       "type": "figure",
       "id": "fig-00007",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -212,6 +231,7 @@
       "type": "figure",
       "id": "fig-00008",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

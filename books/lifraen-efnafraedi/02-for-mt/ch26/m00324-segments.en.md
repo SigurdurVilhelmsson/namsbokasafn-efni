@@ -2,16 +2,16 @@
 Peptide Synthesis
 
 <!-- SEG:m00324:para:para-00001 -->
-Once the structure of a peptide is known, its synthesis can be undertaken—perhaps to obtain a larger amount for biological evaluation. A simple amide might be formed by treating an amine and a carboxylic acid with a carbodiimide (either DCC or EDC; ), but peptide synthesis is a more difficult problem because many different amide bonds must be formed in a specific order, rather than at random.
+Once the structure of a peptide is known, its synthesis can be undertaken—perhaps to obtain a larger amount for biological evaluation. A simple amide might be formed by treating an amine and a carboxylic acid with a carbodiimide (either DCC or EDC; [[docref:m00241]]), but peptide synthesis is a more difficult problem because many different amide bonds must be formed in a specific order, rather than at random.
 
 <!-- SEG:m00324:para:para-00002 -->
-The solution to the specificity problem is protection (). If we want to couple alanine with leucine to synthesize Ala-Leu, for instance, we could protect the –NH[[sub:2]] group of alanine and the –CO[[sub:2]]H group of leucine to shield them from reacting, then form the desired Ala-Leu amide bond by reaction with EDC or DCC, and then remove the protecting groups.
+The solution to the specificity problem is protection ([[docref:m00207]]). If we want to couple alanine with leucine to synthesize Ala-Leu, for instance, we could protect the –NH[[sub:2]] group of alanine and the –CO[[sub:2]]H group of leucine to shield them from reacting, then form the desired Ala-Leu amide bond by reaction with EDC or DCC, and then remove the protecting groups.
 
 <!-- SEG:m00324:alt:fig-00001-alt -->
 The coupling of an N-protected L-alanine  and a carboxyl-protected L-leucine  ester with D C C, followed by deprotection of the protecting groups  provided the corresponding dipeptide  Ala-Leu
 
 <!-- SEG:m00324:para:para-00003 -->
-A number of different amino- and carboxyl-protecting groups have been devised, but only a few are used in peptide synthesis. Carboxyl groups are often protected simply by converting them into methyl or benzyl esters. Both groups are easily introduced by standard methods of ester formation () and are easily removed by mild hydrolysis with aqueous NaOH. Benzyl esters can also be cleaved by catalytic [[i:hydrogenolysis]] of the weak benzylic C–O bond ([[MATH:1]]).
+A number of different amino- and carboxyl-protecting groups have been devised, but only a few are used in peptide synthesis. Carboxyl groups are often protected simply by converting them into methyl or benzyl esters. Both groups are easily introduced by standard methods of ester formation ([[docref:m00244]]) and are easily removed by mild hydrolysis with aqueous NaOH. Benzyl esters can also be cleaved by catalytic [[i:hydrogenolysis]] of the weak benzylic C–O bond ([[MATH:1]]).
 
 <!-- SEG:m00324:alt:fig-00002-alt -->
 Carboxyl-protection of L-leucine with either methanol or benzyl alcohol,  catalyzed by hydrochloric acid, to form the corresponding  L- leucinate esters. Deprotection with sodium hydroxide or hydrogenation regenerates the free acid.

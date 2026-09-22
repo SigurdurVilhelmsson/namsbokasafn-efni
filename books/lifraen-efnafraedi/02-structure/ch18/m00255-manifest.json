@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00255",
-  "extractedAt": "2026-08-31T19:08:49.083Z",
+  "extractedAt": "2026-09-22T17:26:38.228Z",
   "sourceHash": "c27f5cd7650aca1e",
-  "segmentCount": 164,
+  "segmentCount": 167,
   "segmentIds": [
     "m00255:title:auto-1",
     "m00255:title:sect-00001-title",
@@ -136,6 +136,7 @@
     "m00255:alt:fig-00028-alt",
     "m00255:title:sect-00015-title",
     "m00255:para:para-00082",
+    "m00255:figure-title:fig-00029-title",
     "m00255:caption:fig-00029-caption",
     "m00255:alt:fig-00029-alt",
     "m00255:para:para-00079",
@@ -147,6 +148,7 @@
     "m00255:para:para-00083",
     "m00255:alt:fig-00030-alt",
     "m00255:para:para-00084",
+    "m00255:figure-title:fig-00031-title",
     "m00255:caption:fig-00031-caption",
     "m00255:alt:fig-00031-alt",
     "m00255:title:sect-00017-title",
@@ -161,6 +163,7 @@
     "m00255:para:para-00089",
     "m00255:alt:fig-00035-alt",
     "m00255:para:para-00090",
+    "m00255:figure-title:fig-00036-title",
     "m00255:caption:fig-00036-caption",
     "m00255:alt:fig-00036-alt",
     "m00255:para:para-00078",
@@ -314,5 +317,6 @@
       "sect-00019",
       "sect-00020"
     ]
-  }
+  },
+  "termEnglish": {}
 }

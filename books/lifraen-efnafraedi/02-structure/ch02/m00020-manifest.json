@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00020",
-  "extractedAt": "2026-08-31T19:08:46.670Z",
+  "extractedAt": "2026-09-22T17:26:35.620Z",
   "sourceHash": "55ef561fe7d78946",
   "segmentCount": 75,
   "segmentIds": [
@@ -117,5 +117,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "formal charge"
   }
 }

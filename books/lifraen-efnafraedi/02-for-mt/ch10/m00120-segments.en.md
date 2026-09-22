@@ -2,7 +2,7 @@
 Oxidation and Reduction in Organic Chemistry
 
 <!-- SEG:m00120:para:para-00001 -->
-We’ve pointed out on several occasions that some of the reactions discussed in this and earlier chapters are either oxidations or reductions. As noted in , an organic oxidation results in a loss of electron density by carbon, caused either by bond formation between carbon and a more electronegative atom (usually O, N, or a halogen) or by bond-breaking between carbon and a less electronegative atom (usually H). Conversely, an organic reduction results in a gain of electron density by carbon, caused either by bond formation between carbon and a less electronegative atom or by bond-breaking between carbon and a more electronegative atom ().
+We’ve pointed out on several occasions that some of the reactions discussed in this and earlier chapters are either oxidations or reductions. As noted in [[docref:m00095]], an organic oxidation results in a loss of electron density by carbon, caused either by bond formation between carbon and a more electronegative atom (usually O, N, or a halogen) or by bond-breaking between carbon and a less electronegative atom (usually H). Conversely, an organic reduction results in a gain of electron density by carbon, caused either by bond formation between carbon and a less electronegative atom or by bond-breaking between carbon and a more electronegative atom ([[docref:m00094]]).
 
 <!-- SEG:m00120:para:para-00002 -->
 [[MATH:1]]
@@ -38,13 +38,13 @@ Comparing Oxidation Levels
 Rank the following compounds in order of increasing oxidation level:
 
 <!-- SEG:m00120:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00120:para:para-00008 -->
 Compounds that have the same number of carbon atoms can be compared by adding the number of C−O, C−N, and C−X bonds in each and then subtracting the number of C−H bonds. The larger the resultant value, the higher the oxidation level.
 
 <!-- SEG:m00120:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00120:para:para-00009 -->
 The first compound (propene) has six C−H bonds, giving an oxidation level of −6; the second (2-propanol) has one C−O bond and seven C−H bonds, giving an oxidation level of −6; the third (acetone) has two C−O bonds and six C−H bonds, giving an oxidation level of −4; and the fourth (propane) has eight C−H bonds, giving an oxidation level of −8. Thus, the order of increasing oxidation level is
@@ -128,22 +128,22 @@ Summary of Reactions
 Preparation of alkyl halides
 
 <!-- SEG:m00120:item:list-00003-item-1 -->
-From alkenes by allylic bromination ()[[BR]]
+From alkenes by allylic bromination ([[docref:m00115]])[[BR]]
 
 <!-- SEG:m00120:item:list-00003-item-2 -->
-From alcohols () (1) Reaction with HX (2) Reaction of 1° and 2° alcohols with SOCl[[sub:2]] (3) Reaction of 1° and 2° alcohols with PBr[[sub:3]] (4) Reaction of 1° and 2° alcohols with HF–pyridine
+From alcohols ([[docref:m00117]]) (1) Reaction with HX (2) Reaction of 1° and 2° alcohols with SOCl[[sub:2]] (3) Reaction of 1° and 2° alcohols with PBr[[sub:3]] (4) Reaction of 1° and 2° alcohols with HF–pyridine
 
 <!-- SEG:m00120:item:list-00002-item-2 -->
 Reactions of alkyl halides
 
 <!-- SEG:m00120:item:list-00005-item-1 -->
-Formation of Grignard (organomagnesium) reagents ()[[BR]]
+Formation of Grignard (organomagnesium) reagents ([[docref:m00118]])[[BR]]
 
 <!-- SEG:m00120:item:list-00005-item-2 -->
-Formation of Gilman (diorganocopper) reagents ()[[BR]]
+Formation of Gilman (diorganocopper) reagents ([[docref:m00119]])[[BR]]
 
 <!-- SEG:m00120:item:list-00005-item-3 -->
-Organometallic coupling ()[[BR]] (1) Diorganocopper reaction (2) Palladium-catalyzed Suzuki–Miyaura reaction[[BR]]
+Organometallic coupling ([[docref:m00119]])[[BR]] (1) Diorganocopper reaction (2) Palladium-catalyzed Suzuki–Miyaura reaction[[BR]]
 
 <!-- SEG:m00120:para:para-00020 -->
 No stereochemistry is implied unless specifically indicated with wedged, solid, and dashed lines.
@@ -182,19 +182,19 @@ The reaction between phenylboronic acid and iodobenzene in the presence of Pd (P
 Additional Problems
 
 <!-- SEG:m00120:para:para-00025 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00120:para:para-00036 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00120:para:para-00037 -->
-[[b:Naming Alkyl Halides]]
+[[b:[[span:Naming Alkyl Halides|red-text]]]]
 
 <!-- SEG:m00120:para:para-00029 -->
-[[b:Synthesizing Alkyl Halides]]
+[[b:[[span:Synthesizing Alkyl Halides|red-text]]]]
 
 <!-- SEG:m00120:para:para-00025a -->
-[[b:Oxidation and Reduction]]
+[[b:[[span:Oxidation and Reduction|red-text]]]]
 
 <!-- SEG:m00120:para:para-00040 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

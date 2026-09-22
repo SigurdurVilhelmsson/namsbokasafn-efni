@@ -1,5 +1,5 @@
 <!-- SEG:m00101:title:auto-1 -->
-Problems
+Reaction Stereochemistry: Addition of H[[sub:2]]O to a Chiral Alkene
 
 <!-- SEG:m00101:para:para-00001 -->
 The reaction discussed in the previous section involves an addition to an achiral reactant and forms an optically inactive, racemic mixture of two enantiomeric products. What would happen, though, if we were to carry out the reaction on a single enantiomer of a chiral reactant? For example, what stereochemical result would be obtained from addition of H[[sub:2]]O to a chiral alkene, such as ([[i:R]])-4-methyl-1-hexene? The product of the reaction, 4-methyl-2-hexanol, has two chirality centers and so has four possible stereoisomers.
@@ -161,37 +161,37 @@ Summary of Reactions
 Addition reactions of alkenes
 
 <!-- SEG:m00101:item:list-00003-item-1 -->
-Addition of HCl, HBr, and HI ( and )[[BR]] Markovnikov regiochemistry occurs, with H adding to the less highly substituted alkene carbon and halogen adding to the more highly substituted carbon.[[BR]]
+Addition of HCl, HBr, and HI ([[docref:m00069]] and [[docref:m00070]])[[BR]] Markovnikov regiochemistry occurs, with H adding to the less highly substituted alkene carbon and halogen adding to the more highly substituted carbon.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-2 -->
-Addition of halogens Cl[[sub:2]] and Br[[sub:2]] ()[[BR]] Anti addition is observed through a halonium ion intermediate.[[BR]]
+Addition of halogens Cl[[sub:2]] and Br[[sub:2]] ([[docref:m00090]])[[BR]] Anti addition is observed through a halonium ion intermediate.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-3 -->
-Halohydrin formation ()[[BR]] Markovnikov regiochemistry and anti stereochemistry occur.[[BR]]
+Halohydrin formation ([[docref:m00091]])[[BR]] Markovnikov regiochemistry and anti stereochemistry occur.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-4 -->
-Addition of water by oxymercuration–demercuration ()[[BR]] Markovnikov regiochemistry occurs.[[BR]]
+Addition of water by oxymercuration–demercuration ([[docref:m00092]])[[BR]] Markovnikov regiochemistry occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-5 -->
-Addition of water by hydroboration–oxidation ()[[BR]] Non-Markovnikov syn addition occurs.[[BR]]
+Addition of water by hydroboration–oxidation ([[docref:m00093]])[[BR]] Non-Markovnikov syn addition occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-6 -->
-Catalytic hydrogenation ()[[BR]] Syn addition occurs.[[BR]]
+Catalytic hydrogenation ([[docref:m00094]])[[BR]] Syn addition occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-7 -->
-Epoxidation with a peroxyacid ()[[BR]] Syn addition occurs.[[BR]]
+Epoxidation with a peroxyacid ([[docref:m00095]])[[BR]] Syn addition occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-8 -->
-Hydroxylation with OsO[[sub:4]] ()[[BR]] Syn addition occurs.[[BR]]
+Hydroxylation with OsO[[sub:4]] ([[docref:m00095]])[[BR]] Syn addition occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00003-item-9 -->
-Addition of carbenes to yield cyclopropanes () (1) Dichlorocarbene addition (2) Simmons–Smith reaction
+Addition of carbenes to yield cyclopropanes ([[docref:m00097]]) (1) Dichlorocarbene addition (2) Simmons–Smith reaction
 
 <!-- SEG:m00101:item:list-00002-item-2 -->
-Hydroxylation by acid-catalyzed epoxide hydrolysis ()[[BR]] Anti stereochemistry occurs.[[BR]]
+Hydroxylation by acid-catalyzed epoxide hydrolysis ([[docref:m00095]])[[BR]] Anti stereochemistry occurs.[[BR]]
 
 <!-- SEG:m00101:item:list-00002-item-3 -->
-Oxidative cleavage of alkenes ()
+Oxidative cleavage of alkenes ([[docref:m00096]])
 
 <!-- SEG:m00101:item:list-00005-item-1 -->
 Reaction with ozone followed by zinc in acetic acid[[BR]]
@@ -200,10 +200,10 @@ Reaction with ozone followed by zinc in acetic acid[[BR]]
 Reaction with KMnO[[sub:4]] in acidic solution[[BR]]
 
 <!-- SEG:m00101:item:list-00002-item-4 -->
-Cleavage of 1,2-diols ()[[BR]]
+Cleavage of 1,2-diols ([[docref:m00096]])[[BR]]
 
 <!-- SEG:m00101:para:para-00021 -->
-[[b:No stereochemistry is implied unless specifically indicated with wedged, solid, and dashed lines.]]
+[[b:[[span:No stereochemistry is implied unless specifically indicated with wedged, solid, and dashed lines.|red-text]]]]
 
 <!-- SEG:m00101:alt:fig-00008-alt -->
 An alkene reacts with hydrogen halide in the presence of ether to form a product, in which C1 is bonded to a hydrogen to C2 and a halogen atom.
@@ -251,19 +251,19 @@ The figure shows 1,2-diol reacts with periodic acid in the presence of water to 
 Additional Problems
 
 <!-- SEG:m00101:para:para-00075 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00101:para:para-00076 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00101:para:para-00040 -->
-[[b:Reactions of Alkenes]]
+[[b:[[span:Reactions of Alkenes|red-text]]]]
 
 <!-- SEG:m00101:para:para-00049 -->
-[[b:Synthesis Using Alkenes]]
+[[b:[[span:Synthesis Using Alkenes|red-text]]]]
 
 <!-- SEG:m00101:para:para-00055 -->
-[[b:Polymers]]
+[[b:[[span:Polymers|red-text]]]]
 
 <!-- SEG:m00101:para:para-00059 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

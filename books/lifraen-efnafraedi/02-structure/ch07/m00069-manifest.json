@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00069",
-  "extractedAt": "2026-08-31T19:08:47.587Z",
+  "extractedAt": "2026-09-22T17:26:36.437Z",
   "sourceHash": "73679b5af7073924",
-  "segmentCount": 17,
+  "segmentCount": 18,
   "segmentIds": [
     "m00069:title:auto-1",
     "m00069:para:para-00001",
+    "m00069:figure-title:fig-00001-title",
     "m00069:caption:fig-00001-caption",
     "m00069:alt:fig-00001-alt",
     "m00069:para:para-00002",
@@ -57,5 +58,8 @@
     ],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "electrophilic addition reaction"
   }
 }

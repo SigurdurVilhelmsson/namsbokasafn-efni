@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00016",
-  "extractedAt": "2026-08-31T19:08:46.229Z",
+  "extractedAt": "2026-09-22T17:26:26.960Z",
   "sourceHash": "729b863d76054341",
   "segmentCount": 164,
   "segmentIds": [
@@ -216,5 +216,9 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "principal groups",
+    "term-00002": "subordinate groups"
   }
 }

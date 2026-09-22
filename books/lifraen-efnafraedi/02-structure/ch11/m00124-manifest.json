@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00124",
-  "extractedAt": "2026-08-31T19:08:48.056Z",
+  "extractedAt": "2026-09-22T17:26:37.059Z",
   "sourceHash": "fbc184bc04c9946a",
   "segmentCount": 107,
   "segmentIds": [
@@ -169,5 +169,9 @@
       "sect-00007",
       "sect-00008"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "leaving group",
+    "term-00002": "solvation"
   }
 }

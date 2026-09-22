@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00347",
-  "extractedAt": "2026-08-31T19:08:50.400Z",
+  "extractedAt": "2026-09-22T17:26:40.196Z",
   "sourceHash": "c34a3784a1c3461f",
   "segmentCount": 19,
   "segmentIds": [
@@ -57,5 +57,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "sigmatropic rearrangement"
   }
 }

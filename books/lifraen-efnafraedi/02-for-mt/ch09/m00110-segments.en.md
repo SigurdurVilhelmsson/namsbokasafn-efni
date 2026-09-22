@@ -10,6 +10,9 @@ The figure shows the reaction mechanism of an acetylide anion with methyl bromid
 <!-- SEG:m00110:para:para-00002 -->
 We won’t study the details of this substitution reaction until Chapter 11, but for now you can picture it as happening by the pathway shown in [[xref:fig-00002]]. The nucleophilic acetylide ion uses an electron pair to form a bond to the positively polarized, electrophilic carbon atom of bromomethane. As the new C−C bond forms, Br[[sup:−]] departs, taking with it the electron pair from the former C−Br bond and yielding propyne as product. We call such a reaction an [[term:alkylation|term-00001]] because a new alkyl group has become attached to the starting alkyne.
 
+<!-- SEG:m00110:figure-title:fig-00002-title -->
+MECHANISM
+
 <!-- SEG:m00110:caption:fig-00002-caption -->
 [[b:A mechanism for the alkylation reaction of acetylide anion with bromomethane to give propyne.]]
 

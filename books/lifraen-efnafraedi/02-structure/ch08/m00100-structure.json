@@ -2,7 +2,7 @@
   "moduleId": "m00100",
   "title": {
     "segmentId": "m00100:title:auto-1",
-    "text": "Untitled"
+    "text": "Reaction Stereochemistry: Addition of H[[sub:2]]O to an Achiral Alkene"
   },
   "documentClass": null,
   "metadata": {
@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -37,6 +38,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00100:caption:fig-00002-caption"
       },
@@ -63,6 +65,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -82,6 +85,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

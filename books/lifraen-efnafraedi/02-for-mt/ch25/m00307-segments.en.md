@@ -8,7 +8,7 @@ Polysaccharides and Their Synthesis
 Cellulose
 
 <!-- SEG:m00307:para:para-00002 -->
-Cellulose consists of several thousand D-glucose units linked by 1→4-[[i:β]]-glycoside bonds like those in cellobiose. Different cellulose molecules then interact to form a large aggregate structure held together by hydrogen bonds.
+Cellulose consists of several thousand [[sc:D]]-glucose units linked by 1→4-[[i:β]]-glycoside bonds like those in cellobiose. Different cellulose molecules then interact to form a large aggregate structure held together by hydrogen bonds.
 
 <!-- SEG:m00307:alt:fig-00001-alt -->
 The structure of cellulose, which is a beta-1,4-D-glucopyranoside polymer.
@@ -50,13 +50,13 @@ Polysaccharide Synthesis
 With numerous –OH groups of similar reactivity, polysaccharides are so structurally complex that their laboratory synthesis has long been a particularly difficult problem. Several methods have recently been devised, however, that have greatly simplified the problem. Among these approaches is the [[i:glycal assembly method]].
 
 <!-- SEG:m00307:para:para-00009 -->
-Easily prepared from the appropriate monosaccharide, a glycal is an unsaturated sugar with a C1–C2 double bond. To ready it for use in polysaccharide synthesis, the glycal is first protected at its primary –OH group by formation of a silyl ether () and at its two adjacent secondary –OH groups by formation of a cyclic carbonate ester. Then, the protected glycal is epoxidized.
+Easily prepared from the appropriate monosaccharide, a glycal is an unsaturated sugar with a C1–C2 double bond. To ready it for use in polysaccharide synthesis, the glycal is first protected at its primary –OH group by formation of a silyl ether ([[docref:m00207]]) and at its two adjacent secondary –OH groups by formation of a cyclic carbonate ester. Then, the protected glycal is epoxidized.
 
 <!-- SEG:m00307:alt:fig-00005-alt -->
 Primary alcohol of glycal is protected by forming silyl ether. Two adjacent secondary alcohols are protected by forming cyclic carbonate ester. Double bond of protected glycal is converted into epoxide.
 
 <!-- SEG:m00307:para:para-00010 -->
-Treatment of the protected glycal epoxide in the presence of ZnCl[[sub:2]] as a Lewis acid with a second glycal having a free –OH group causes acid-catalyzed opening of the epoxide ring by S[[sub:N]]2 backside attack () and yields a disaccharide. The disaccharide is itself a glycal, so it can be epoxidized and coupled again to yield a trisaccharide, and so on. Using the appropriate sugars at each step, a great variety of polysaccharides can be prepared. After these sugars are linked, the silyl ethers and cyclic carbonate protecting groups are removed by hydrolysis.
+Treatment of the protected glycal epoxide in the presence of ZnCl[[sub:2]] as a Lewis acid with a second glycal having a free –OH group causes acid-catalyzed opening of the epoxide ring by S[[sub:N]]2 backside attack ([[docref:m00253]]) and yields a disaccharide. The disaccharide is itself a glycal, so it can be epoxidized and coupled again to yield a trisaccharide, and so on. Using the appropriate sugars at each step, a great variety of polysaccharides can be prepared. After these sugars are linked, the silyl ethers and cyclic carbonate protecting groups are removed by hydrolysis.
 
 <!-- SEG:m00307:alt:fig-00006-alt -->
 Glycal epoxide when reacts with a second glycal having a free hydroxyl group with zinc chloride as a catalyst yields a disaccharide glycal.

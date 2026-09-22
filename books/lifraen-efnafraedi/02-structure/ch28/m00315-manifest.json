@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00315",
-  "extractedAt": "2026-08-31T19:08:50.199Z",
+  "extractedAt": "2026-09-22T17:26:39.884Z",
   "sourceHash": "f64b1e83938af7c9",
   "segmentCount": 16,
   "segmentIds": [
@@ -48,5 +48,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "restriction endonucleases",
+    "term-00002": "Sanger dideoxy method"
   }
 }

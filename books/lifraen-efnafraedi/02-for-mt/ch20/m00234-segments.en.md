@@ -2,10 +2,10 @@
 Preparing Carboxylic Acids
 
 <!-- SEG:m00234:item:list-00001-item-1 -->
-Oxidation of a substituted alkylbenzene with KMnO[[sub:4]] gives a substituted benzoic acid (). Both primary and secondary alkyl groups can be oxidized, but tertiary groups are not affected.[[BR]]
+Oxidation of a substituted alkylbenzene with KMnO[[sub:4]] gives a substituted benzoic acid ([[docref:m00196]]). Both primary and secondary alkyl groups can be oxidized, but tertiary groups are not affected.[[BR]]
 
 <!-- SEG:m00234:item:list-00001-item-2 -->
-Oxidation of a primary alcohol or an aldehyde yields a carboxylic acid ( and ). Primary alcohols are often oxidized with KMnO[[sub:4]], and aldehydes are similarly oxidized with alkaline KMnO[[sub:4]].[[BR]]
+Oxidation of a primary alcohol or an aldehyde yields a carboxylic acid ([[docref:m00206]] and [[docref:m00214]]). Primary alcohols are often oxidized with KMnO[[sub:4]], and aldehydes are similarly oxidized with alkaline KMnO[[sub:4]].[[BR]]
 
 <!-- SEG:m00234:para:para-00001 -->
 Let’s review briefly some of the methods for preparing carboxylic acids that we’ve seen in previous chapters.
@@ -47,13 +47,13 @@ Devising a Synthesis Route for a Carboxylic Acid
 How would you prepare phenylacetic acid (PhCH[[sub:2]]CO[[sub:2]]H) from benzyl bromide (PhCH[[sub:2]]Br)?
 
 <!-- SEG:m00234:para-title:para-00006-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00234:para:para-00006 -->
 We’ve seen two methods for preparing carboxylic acids from alkyl halides: (1) cyanide ion displacement followed by hydrolysis and (2) formation of a Grignard reagent followed by carboxylation. The first method involves an S[[sub:N]]2 reaction and is therefore limited to use with primary and some secondary alkyl halides. The second method involves formation of a Grignard reagent and is therefore limited to use with organic halides that have no acidic hydrogens or reactive functional groups elsewhere in the molecule. In the present instance, either method would work well.
 
 <!-- SEG:m00234:para-title:para-00007-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00234:alt:fig-00006-alt -->
 Preparation of phenylacetic acid from benzyl bromide using sodium cyanide substitution, followed by hydronium to convert nitrile to carboxyl, or via producing Grignard, reacting with carbon dioxide, then with hydronium.

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00185",
-  "extractedAt": "2026-08-31T19:08:48.616Z",
+  "extractedAt": "2026-09-22T17:26:37.739Z",
   "sourceHash": "5cd7cb6ae9b48e16",
   "segmentCount": 20,
   "segmentIds": [
@@ -62,5 +62,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "heterocycle"
   }
 }

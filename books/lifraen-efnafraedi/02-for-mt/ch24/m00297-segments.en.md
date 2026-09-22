@@ -2,7 +2,7 @@
 Heterocyclic Amines
 
 <!-- SEG:m00297:para:para-00001 -->
-As noted in in connection with a discussion of aromaticity, a cyclic organic compound that contains atoms of two or more elements in its ring is a called a [[i:heterocycle.]] Heterocyclic amines are particularly common, and many have important biological properties. Pyridoxal phosphate, a coenzyme; sildenafil (Viagra), a well-known pharmaceutical; and heme, the oxygen carrier in blood, are a few examples.
+As noted in [[docref:m00185]] in connection with a discussion of aromaticity, a cyclic organic compound that contains atoms of two or more elements in its ring is a called a [[i:heterocycle.]] Heterocyclic amines are particularly common, and many have important biological properties. Pyridoxal phosphate, a coenzyme; sildenafil (Viagra), a well-known pharmaceutical; and heme, the oxygen carrier in blood, are a few examples.
 
 <!-- SEG:m00297:alt:fig-00001-alt -->
 The structures of pyridoxal phosphate which is a coenzyme, sildenafil (Viagra), and heme. Heme has iron(2) connected to porphyrin.
@@ -20,13 +20,13 @@ Pyrrole, the simplest five-membered unsaturated heterocyclic amine, is obtained 
 Furan reacts with ammonia, water, and aluminum oxide at 400 degree Celsius to form pyrrole. The atoms in the ring are numbered.
 
 <!-- SEG:m00297:para:para-00004 -->
-Although pyrrole appears to be both an amine and a conjugated diene, its chemical properties are not consistent with either of these structural features. Unlike most other amines, pyrrole is not basic—the p[[i:K]][[sub:a]] of the pyrrolinium ion is 0.4; unlike most other conjugated dienes, pyrrole undergoes electrophilic substitution reactions rather than additions. The reason for both of these properties, as noted in , is that pyrrole has six [[i:π]] electrons and is aromatic. Each of the four carbons contributes one [[i:π]] electron, and the [[i:sp]][[sup:2]]-hybridized nitrogen contributes two more from its lone pair.
+Although pyrrole appears to be both an amine and a conjugated diene, its chemical properties are not consistent with either of these structural features. Unlike most other amines, pyrrole is not basic—the p[[i:K]][[sub:a]] of the pyrrolinium ion is 0.4; unlike most other conjugated dienes, pyrrole undergoes electrophilic substitution reactions rather than additions. The reason for both of these properties, as noted in [[docref:m00185]], is that pyrrole has six [[i:π]] electrons and is aromatic. Each of the four carbons contributes one [[i:π]] electron, and the [[i:sp]][[sup:2]]-hybridized nitrogen contributes two more from its lone pair.
 
 <!-- SEG:m00297:alt:fig-00003-alt -->
 The structure, orbital view, and space-filling model of pyrrole. The structure has cyclopentadiene bonded with N H group. Nitrogen is s p 2 hybridized carrying a set of lone pairs.
 
 <!-- SEG:m00297:para:para-00005 -->
-Because the nitrogen lone pair is a part of the aromatic sextet, protonation on nitrogen would destroy the aromaticity of the ring. The nitrogen atom in pyrrole is therefore less electron-rich, less basic, and less nucleophilic than the nitrogen in an aliphatic amine. By the same token, the carbon atoms of pyrrole are more electron-rich and more nucleophilic than typical double-bond carbons. The pyrrole ring is therefore reactive toward electrophiles in the same way as enamines (). Electrostatic potential maps show how the pyrrole nitrogen is electron-poor (less red) compared with the nitrogen in its saturated counterpart pyrrolidine, while the pyrrole carbon atoms are electron-rich (more red) compared with the carbons in 1,3-cyclopentadiene.
+Because the nitrogen lone pair is a part of the aromatic sextet, protonation on nitrogen would destroy the aromaticity of the ring. The nitrogen atom in pyrrole is therefore less electron-rich, less basic, and less nucleophilic than the nitrogen in an aliphatic amine. By the same token, the carbon atoms of pyrrole are more electron-rich and more nucleophilic than typical double-bond carbons. The pyrrole ring is therefore reactive toward electrophiles in the same way as enamines ([[docref:m00286]]). Electrostatic potential maps show how the pyrrole nitrogen is electron-poor (less red) compared with the nitrogen in its saturated counterpart pyrrolidine, while the pyrrole carbon atoms are electron-rich (more red) compared with the carbons in 1,3-cyclopentadiene.
 
 <!-- SEG:m00297:alt:fig-00004-alt -->
 The ball-and-stick model in electrostatic potential maps of pyrrole, pyrrolidine, and 1,3-cyclopentadiene. An arrow points toward the nitrogen atoms of pyrrole and pyrrolidine.
@@ -59,7 +59,7 @@ Problems
 Pyridine and Pyrimidine
 
 <!-- SEG:m00297:para:para-00011 -->
-Pyridine is the nitrogen-containing heterocyclic analog of benzene. Like benzene, pyridine is a flat, aromatic molecule, with bond angles of 120° and C–C bond lengths of 139 pm, intermediate between typical single and double bonds. The five carbon atoms and the [[i:sp]][[sup:2]]-hybridized nitrogen atom each contribute one [[i:π]] electron to the aromatic sextet, and the lone-pair electrons occupy an [[i:sp]][[sup:2]] orbital in the plane of the ring ().
+Pyridine is the nitrogen-containing heterocyclic analog of benzene. Like benzene, pyridine is a flat, aromatic molecule, with bond angles of 120° and C–C bond lengths of 139 pm, intermediate between typical single and double bonds. The five carbon atoms and the [[i:sp]][[sup:2]]-hybridized nitrogen atom each contribute one [[i:π]] electron to the aromatic sextet, and the lone-pair electrons occupy an [[i:sp]][[sup:2]] orbital in the plane of the ring ([[docref:m00185]]).
 
 <!-- SEG:m00297:para:para-00012 -->
 As shown previously in [[docref:m00291#table-00002]], pyridine (p[[i:K]][[sub:a]] = 5.25) is a stronger base than pyrrole but a weaker base than the alkylamines. The diminished basicity of pyridine compared with that of alkylamines is due to the fact that the lone-pair electrons on the pyridine nitrogen are in an [[i:sp]][[sup:2]] orbital, while those on an alkylamine nitrogen are in an [[i:sp]][[sup:3]] orbital. Because [[i:s]] orbitals have their maximum electron density at the nucleus but [[i:p]] orbitals have a node at the nucleus, electrons in an orbital with more [[i:s]] character are held more closely to the positively charged nucleus and are less available for bonding. As a result, the [[i:sp]][[sup:2]]-hybridized nitrogen atom (33% [[i:s]] character) in pyridine is less basic than the [[i:sp]][[sup:3]]-hybridized nitrogen in an alkylamine (25% [[i:s]] character).
@@ -92,7 +92,7 @@ Problems
 Polycyclic Heterocycles
 
 <!-- SEG:m00297:para:para-00017 -->
-As we saw in , quinoline, isoquinoline, indole, and purine are common polycyclic heterocycles. The first three contain both a benzene ring and a heterocyclic aromatic ring, while purine contains two heterocyclic rings joined together. All four ring systems occur commonly in nature, and many compounds with these rings have pronounced physiological activity. The quinoline alkaloid quinine, for instance, is widely used as an antimalarial drug; tryptophan is a common amino acid; and the purine adenine is a constituent of nucleic acids.
+As we saw in [[docref:m00186]], quinoline, isoquinoline, indole, and purine are common polycyclic heterocycles. The first three contain both a benzene ring and a heterocyclic aromatic ring, while purine contains two heterocyclic rings joined together. All four ring systems occur commonly in nature, and many compounds with these rings have pronounced physiological activity. The quinoline alkaloid quinine, for instance, is widely used as an antimalarial drug; tryptophan is a common amino acid; and the purine adenine is a constituent of nucleic acids.
 
 <!-- SEG:m00297:alt:fig-00012-alt -->
 The structures of quinoline, isoquinoline, indole, purine, quinine (antimalarial), tryptophan (amino acid), and adenine (D N A constituent). The atoms are numbered in quinoline, isoquinoline, indole, and purine.

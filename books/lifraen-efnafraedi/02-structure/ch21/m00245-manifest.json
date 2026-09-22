@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00245",
-  "extractedAt": "2026-08-31T19:08:49.434Z",
+  "extractedAt": "2026-09-22T17:26:38.756Z",
   "sourceHash": "e502a3a679817036",
   "segmentCount": 29,
   "segmentIds": [
@@ -83,5 +83,8 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "lactams"
   }
 }

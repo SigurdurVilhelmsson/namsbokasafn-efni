@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00195",
-  "extractedAt": "2026-08-31T19:08:48.764Z",
+  "extractedAt": "2026-09-22T17:26:37.897Z",
   "sourceHash": "834d39e9e89bb4ee",
   "segmentCount": 12,
   "segmentIds": [
@@ -51,5 +51,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "benzyne"
   }
 }

@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -82,6 +83,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00328:caption:fig-00002-caption"
       },
@@ -103,6 +105,10 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "mechanism-figure scaled-down",
+      "title": {
+        "segmentId": "m00328:figure-title:fig-00003-title",
+        "text": "MECHANISM"
+      },
       "caption": {
         "segmentId": "m00328:caption:fig-00003-caption"
       },
@@ -138,6 +144,7 @@
           "type": "figure",
           "id": "fig-00004",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00328:caption:fig-00004-caption"
           },
@@ -164,6 +171,7 @@
           "type": "figure",
           "id": "fig-00005",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00328:caption:fig-00005-caption"
           },
@@ -412,6 +420,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -426,6 +435,7 @@
           "type": "figure",
           "id": "fig-00007",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -440,6 +450,7 @@
           "type": "figure",
           "id": "fig-00008",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -454,6 +465,7 @@
           "type": "figure",
           "id": "fig-00009",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -468,6 +480,7 @@
           "type": "figure",
           "id": "fig-00010",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -482,6 +495,7 @@
           "type": "figure",
           "id": "fig-00011",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -496,6 +510,7 @@
           "type": "figure",
           "id": "fig-00012",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

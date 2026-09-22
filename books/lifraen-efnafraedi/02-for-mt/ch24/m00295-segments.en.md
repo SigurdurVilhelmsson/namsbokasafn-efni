@@ -5,7 +5,7 @@ Reactions of Amines
 Alkylation and Acylation
 
 <!-- SEG:m00295:para:para-00001 -->
-We’ve already studied the two most general reactions of amines—alkylation and acylation. As we saw earlier in this chapter, primary, secondary, and tertiary amines can be alkylated by reaction with a primary alkyl halide. Alkylations of primary and secondary amines are difficult to control and often give mixtures of products, but tertiary amines are cleanly alkylated to give quaternary ammonium salts. Primary and secondary (but not tertiary) amines can also be acylated by nucleophilic acyl substitution reaction with an acid chloride or an acid anhydride to yield an amide ( and ). Note that overacylation of the nitrogen does not occur because the amide product is much less nucleophilic and less reactive than the starting amine.
+We’ve already studied the two most general reactions of amines—alkylation and acylation. As we saw earlier in this chapter, primary, secondary, and tertiary amines can be alkylated by reaction with a primary alkyl halide. Alkylations of primary and secondary amines are difficult to control and often give mixtures of products, but tertiary amines are cleanly alkylated to give quaternary ammonium salts. Primary and secondary (but not tertiary) amines can also be acylated by nucleophilic acyl substitution reaction with an acid chloride or an acid anhydride to yield an amide ([[docref:m00242]] and [[docref:m00243]]). Note that overacylation of the nitrogen does not occur because the amide product is much less nucleophilic and less reactive than the starting amine.
 
 <!-- SEG:m00295:alt:fig-00001-alt -->
 Three reactions where an acyl chloride reacts with ammonia, primary amine, and secondary amine in the presence of pyridine solvent to form a primary, secondary, and tertiary amide respectively.
@@ -20,7 +20,7 @@ Like alcohols, amines can be converted into alkenes by an elimination reaction. 
 1-Methylpentylamine reacts with excess methyl iodide to form (1-methylpentyl)trimethyl-ammonium iodide. This reacts with silver oxide and water to form 1-hexene with 60 percent yield and trimethylamine on heating.
 
 <!-- SEG:m00295:para:para-00003 -->
-Silver oxide acts by exchanging iodide ion for hydroxide ion in the quaternary salt, thus providing the base necessary for elimination. The actual elimination step is an E2 reaction () in which hydroxide ion removes a proton while the positively charged nitrogen atom leaves.
+Silver oxide acts by exchanging iodide ion for hydroxide ion in the quaternary salt, thus providing the base necessary for elimination. The actual elimination step is an E2 reaction ([[docref:m00129]]) in which hydroxide ion removes a proton while the positively charged nitrogen atom leaves.
 
 <!-- SEG:m00295:alt:fig-00003-alt -->
 A quaternary ammonium salt reacts with hydroxide ion via an E 2 reaction to form an alkene, water and trimethylamine.
@@ -44,13 +44,13 @@ Predicting the Product of a Hofmann Elimination
 What product would you expect from Hofmann elimination of the following amine?
 
 <!-- SEG:m00295:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00295:para:para-00007 -->
 The Hofmann elimination is an E2 reaction that converts an amine into an alkene and occurs with non-Zaitsev regiochemistry to form the less highly substituted double bond. To predict the product, look at the reactant and identify the positions from which elimination might occur (the positions two carbons away from nitrogen). Then, carry out an elimination using the most accessible hydrogen. In the present instance, there are three possible positions from which elimination might occur—one primary, one secondary, and one tertiary. The primary position is the most accessible and leads to the least highly substituted alkene, ethylene.
 
 <!-- SEG:m00295:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00295:alt:fig-00006-alt -->
 Chemical structure of 1-cyclohexyl-N-ethyl-1-propanamine.

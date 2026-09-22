@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00048",
-  "extractedAt": "2026-08-31T19:08:47.127Z",
+  "extractedAt": "2026-09-22T17:26:35.937Z",
   "sourceHash": "10e8c48742a44df4",
   "segmentCount": 53,
   "segmentIds": [
@@ -144,5 +144,8 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "polycyclic molecule"
   }
 }

@@ -2,7 +2,7 @@
 Keto–Enol Tautomerism
 
 <!-- SEG:m00257:para:para-00001 -->
-A carbonyl compound with a hydrogen atom on its [[i:α]] carbon is in equilibrium with its corresponding [[term:enol|term-00001]] isomer (). This spontaneous interconversion between two isomers, usually with the change in position of a hydrogen, is called [[i:tautomerism,]] from the Greek [[i:tauto,]] meaning “the same,” and [[i:meros,]] meaning “part.” The individual keto and enol isomers are called [[term:tautomers|term-00002]].
+A carbonyl compound with a hydrogen atom on its [[i:α]] carbon is in equilibrium with its corresponding [[term:enol|term-00001]] isomer ([[docref:m00106]]). This spontaneous interconversion between two isomers, usually with the change in position of a hydrogen, is called [[i:tautomerism,]] from the Greek [[i:tauto,]] meaning “the same,” and [[i:meros,]] meaning “part.” The individual keto and enol isomers are called [[term:tautomers|term-00002]].
 
 <!-- SEG:m00257:alt:fig-00001-alt -->
 The electrostatic potential map with the ball-and-stick model of keto and enol tautomers of a carbonyl compound. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.
@@ -17,13 +17,16 @@ Most monocarbonyl compounds exist almost entirely in their keto form at equilibr
 Two keto enol tautomeric equations. Cyclohexanone and acetone both exist in the keto form with only 0.0000001% of the enol form being present.
 
 <!-- SEG:m00257:para:para-00004 -->
-Keto–enol tautomerism of carbonyl compounds is catalyzed by both acids and bases. Acid catalysis occurs by protonation of the carbonyl oxygen atom to give an intermediate cation that loses H[[sup:+]] from its [[i:α]] carbon to yield a neutral enol ([[xref:fig-00003]]a). This proton loss from the cation intermediate is similar to what occurs during an E1 reaction when a carbocation loses H[[sup:+]] to form an alkene ().
+Keto–enol tautomerism of carbonyl compounds is catalyzed by both acids and bases. Acid catalysis occurs by protonation of the carbonyl oxygen atom to give an intermediate cation that loses H[[sup:+]] from its [[i:α]] carbon to yield a neutral enol ([[xref:fig-00003]]a). This proton loss from the cation intermediate is similar to what occurs during an E1 reaction when a carbocation loses H[[sup:+]] to form an alkene ([[docref:m00131]]).
 
 <!-- SEG:m00257:para:para-00005 -->
 Base-catalyzed enol formation occurs because the presence of a carbonyl group makes the hydrogens on the [[i:α]] carbon weakly acidic. Thus, a carbonyl compound can act as an acid and donate one of its [[i:α]] hydrogens to a sufficiently strong base. The resultant resonance-stabilized anion, an [[term:enolate ion|term-00003]], is then protonated to yield a neutral compound. If protonation of the enolate ion takes place on the [[i:α]] carbon, the keto tautomer is regenerated and no net change occurs. If, however, protonation takes place on the oxygen atom, an enol tautomer is formed ([[xref:fig-00003]]b).
 
+<!-- SEG:m00257:figure-title:fig-00003-title -->
+MECHANISM
+
 <!-- SEG:m00257:caption:fig-00003-caption -->
-[[b:Mechanism of enol formation under both acid-catalyzed and base-catalyzed conditions.]] [[b:(a)]] Acid catalysis involves ([[b:1]]) initial protonation of the carbonyl oxygen followed by ([[b:2]]) removal of H[[sup:+]] from the [[i:α]] position. [[b:(b)]] Base catalysis involves ([[b:1]]) initial deprotonation of the [[i:α]] position to give an enolate ion, followed by ([[b:2]]) reprotonation on oxygen.
+[[b:Mechanism of enol formation under both acid-catalyzed and base-catalyzed conditions.]] [[b:(a)]] Acid catalysis involves ([[b:[[span:1|magenta-text]]]]) initial protonation of the carbonyl oxygen followed by ([[b:[[span:2|magenta-text]]]]) removal of H[[sup:+]] from the [[i:α]] position. [[b:(b)]] Base catalysis involves ([[b:[[span:1|magenta-text]]]]) initial deprotonation of the [[i:α]] position to give an enolate ion, followed by ([[b:[[span:2|magenta-text]]]]) reprotonation on oxygen.
 
 <!-- SEG:m00257:alt:fig-00003-alt -->
 Reaction mechanisms for keto enol tautomerism under acidic and basic conditions.

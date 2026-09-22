@@ -8,7 +8,10 @@ Esters, like aldehydes and ketones, are weakly acidic. When an ester with an [[i
 Two ethyl acetate molecules react with sodium ethoxide in ethanol followed by hydronium to produce ethyl acetoacetate, a beta-keto ester (seventy-five percent), and ethanol.
 
 <!-- SEG:m00282:para:para-00002 -->
-The mechanism of the Claisen condensation is similar to that of the aldol condensation and involves the nucleophilic addition of an ester enolate ion to the carbonyl group of a second ester molecule ([[xref:fig-00002]]). The only difference between the aldol condensation of an aldehyde or ketone and the Claisen condensation of an ester involves the fate of the initially formed tetrahedral intermediate. The tetrahedral intermediate in the aldol reaction is protonated to give an alcohol product—exactly the behavior previously seen for aldehydes and ketones (). The tetrahedral intermediate in the Claisen reaction, however, expels an alkoxide leaving group to yield an acyl substitution product—as previously seen for esters ().
+The mechanism of the Claisen condensation is similar to that of the aldol condensation and involves the nucleophilic addition of an ester enolate ion to the carbonyl group of a second ester molecule ([[xref:fig-00002]]). The only difference between the aldol condensation of an aldehyde or ketone and the Claisen condensation of an ester involves the fate of the initially formed tetrahedral intermediate. The tetrahedral intermediate in the aldol reaction is protonated to give an alcohol product—exactly the behavior previously seen for aldehydes and ketones ([[docref:m00215]]). The tetrahedral intermediate in the Claisen reaction, however, expels an alkoxide leaving group to yield an acyl substitution product—as previously seen for esters ([[docref:m00244]]).
+
+<!-- SEG:m00282:figure-title:fig-00002-title -->
+MECHANISM
 
 <!-- SEG:m00282:caption:fig-00002-caption -->
 [[b:Mechanism of the Claisen condensation reaction]].
@@ -26,13 +29,13 @@ Predicting the Product of a Claisen Condensation Reaction
 What product would you obtain from Claisen condensation of ethyl propanoate?
 
 <!-- SEG:m00282:para-title:para-00005-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00282:para:para-00005 -->
 The Claisen condensation of an ester results in loss of one molecule of alcohol and formation of a product in which an acyl group of one reactant bonds to the [[i:α]] carbon of the second reactant. The product is a [[i:β]]-keto ester.
 
 <!-- SEG:m00282:para-title:para-00006-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00282:alt:fig-00003-alt -->
 The Claisen condensation of two equivalents of ethyl propanoate with sodium ethoxide followed by hydronium yields ethyl-2-methyl-3-oxopentanoate (a beta-keto ester), and ethanol.

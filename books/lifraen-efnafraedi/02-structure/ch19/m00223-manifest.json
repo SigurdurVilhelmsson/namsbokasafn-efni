@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00223",
-  "extractedAt": "2026-08-31T19:08:49.213Z",
+  "extractedAt": "2026-09-22T17:26:38.406Z",
   "sourceHash": "43f50103c64fa022",
   "segmentCount": 10,
   "segmentIds": [
@@ -48,5 +48,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Cannizzaro reaction"
   }
 }

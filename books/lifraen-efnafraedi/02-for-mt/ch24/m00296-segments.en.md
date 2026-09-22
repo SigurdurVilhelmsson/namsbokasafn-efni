@@ -5,16 +5,16 @@ Reactions of Arylamines
 Electrophilic Aromatic Substitutions
 
 <!-- SEG:m00296:para:para-00001 -->
-An amino group is strongly activating and ortho- and para-directing in electrophilic aromatic substitution reactions (). This high reactivity of amino-substituted benzenes can be a drawback at times because it’s often difficult to prevent polysubstitution. Reaction of aniline with Br[[sub:2]], for instance, takes place rapidly and yields the 2,4,6-tribrominated product. The amino group is so strongly activating that it’s not possible to stop at the monobromo stage.
+An amino group is strongly activating and ortho- and para-directing in electrophilic aromatic substitution reactions ([[docref:m00192]]). This high reactivity of amino-substituted benzenes can be a drawback at times because it’s often difficult to prevent polysubstitution. Reaction of aniline with Br[[sub:2]], for instance, takes place rapidly and yields the 2,4,6-tribrominated product. The amino group is so strongly activating that it’s not possible to stop at the monobromo stage.
 
 <!-- SEG:m00296:alt:fig-00001-alt -->
 Aniline reacts with three equivalents of bromine and water to form 2,4,6-tribromoaniline with 100 percent yield.
 
 <!-- SEG:m00296:para:para-00002 -->
-Another drawback to the use of amino-substituted benzenes in electrophilic aromatic substitution reactions is that Friedel–Crafts reactions are not successful (). The amino group forms an acid–base complex with the AlCl[[sub:3]] catalyst, which prevents further reaction. Both drawbacks can be overcome, however, by carrying out electrophilic aromatic substitution reactions on the corresponding amide rather than on the free amine.
+Another drawback to the use of amino-substituted benzenes in electrophilic aromatic substitution reactions is that Friedel–Crafts reactions are not successful ([[docref:m00191]]). The amino group forms an acid–base complex with the AlCl[[sub:3]] catalyst, which prevents further reaction. Both drawbacks can be overcome, however, by carrying out electrophilic aromatic substitution reactions on the corresponding amide rather than on the free amine.
 
 <!-- SEG:m00296:para:para-00003 -->
-As we saw in , treatment of an amine with acetic anhydride yields the corresponding acetyl amide, or acetamide. Although still activating and ortho-, para-directing, amido substituents ([[MATH:1]]) are less strongly activating and less basic than amino groups because their nitrogen lone-pair electrons are delocalized by the neighboring carbonyl group. As a result, bromination of an [[i:N]]-arylamide occurs cleanly to give a monobromo product, and hydrolysis of the amide with aqueous base then gives the free amine. For example, [[i:p]]-toluidine (4-methylaniline) can be acetylated, brominated, and hydrolyzed to yield 2-bromo-4-methylaniline. None of the 2,6-dibrominated product is obtained.
+As we saw in [[docref:m00243]], treatment of an amine with acetic anhydride yields the corresponding acetyl amide, or acetamide. Although still activating and ortho-, para-directing, amido substituents ([[MATH:1]]) are less strongly activating and less basic than amino groups because their nitrogen lone-pair electrons are delocalized by the neighboring carbonyl group. As a result, bromination of an [[i:N]]-arylamide occurs cleanly to give a monobromo product, and hydrolysis of the amide with aqueous base then gives the free amine. For example, [[i:p]]-toluidine (4-methylaniline) can be acetylated, brominated, and hydrolyzed to yield 2-bromo-4-methylaniline. None of the 2,6-dibrominated product is obtained.
 
 <!-- SEG:m00296:alt:fig-00002-alt -->
 p-Toluidine reacts with acetic anhydride and pyridine to form N-(p-tolyl)acetamide. This reacts with bromine to form N-(2-bromo-4-methylphenyl)acetamide. This reacts with sodium hydroxide and water to form 2-bromo-4-methylaniline (79 percent yield).
@@ -53,7 +53,7 @@ Arenediazonium salts are useful because the diazonio group ([[MATH:3]]) can be r
 The arenediazonium salt reacts with H S O 4 minus and nucleophile to form a benzene substituted with a nucleophile and nitrogen as the product.
 
 <!-- SEG:m00296:para:para-00011 -->
-Many different nucleophiles—halide, hydride, cyanide, and hydroxide among others—react with arenediazonium salts, yielding many different kinds of substituted benzenes. The overall sequence of ([[b:1]]) nitration, ([[b:2]]) reduction, ([[b:3]]) diazotization, and ([[b:4]]) nucleophilic substitution is perhaps the single most versatile method of aromatic substitution.
+Many different nucleophiles—halide, hydride, cyanide, and hydroxide among others—react with arenediazonium salts, yielding many different kinds of substituted benzenes. The overall sequence of ([[b:[[span:1|magenta-text]]]]) nitration, ([[b:[[span:2|magenta-text]]]]) reduction, ([[b:[[span:3|magenta-text]]]]) diazotization, and ([[b:[[span:4|magenta-text]]]]) nucleophilic substitution is perhaps the single most versatile method of aromatic substitution.
 
 <!-- SEG:m00296:para:para-00012 -->
 Aryl chlorides and bromides are prepared by reaction of an arenediazonium salt with the corresponding copper(I) halide, CuX, a process called the [[term:Sandmeyer reaction|term-00001]]. Aryl iodides can be prepared by direct reaction with NaI without using a copper(I) salt. Yields generally fall between 60% and 80%.
@@ -92,7 +92,7 @@ Using Diazonium Replacement Reactions
 How would you prepare [[i:m]]-hydroxyacetophenone from benzene, using a diazonium replacement reaction in your scheme?
 
 <!-- SEG:m00296:para-title:para-00018-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00296:para:para-00018 -->
 As always, organic syntheses are planned by working retrosynthetically from the final product, one step at a time. First, identify the functional groups in the product and recall how those groups can be synthesized. [[i:m]]-Hydroxyacetophenone has an –OH group and a –COCH[[sub:3]] group in a meta relationship on a benzene ring. A hydroxyl group is generally introduced onto an aromatic ring by a four-step sequence of nitration, reduction, diazotization, and diazonio replacement. An acetyl group is introduced by a Friedel–Crafts acylation reaction.
@@ -101,7 +101,7 @@ As always, organic syntheses are planned by working retrosynthetically from the 
 Next, ask yourself what an immediate precursor of the target might be. Since an acetyl group is a meta director while a hydroxyl group is an ortho and para director, acetophenone might be a precursor of [[i:m]]-hydroxyacetophenone. Benzene, in turn, is a precursor of acetophenone.
 
 <!-- SEG:m00296:para-title:para-00020-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00296:alt:fig-00012-alt -->
 The structure of m-hydroxyacetophenone. It comprises a benzene ring with an acetyl group on C 1 and a hydroxyl group on C 3 position.
@@ -128,7 +128,7 @@ Diazonium coupling reactions are typical electrophilic aromatic substitutions in
 Benzenediazonium sulfate reacts with phenol to form an intermediate that reacts to form p-hydroxyazobenzene, orange crystals at 152 degree Celsius. The figure shows the electrostatic potential map of benzenediazonium sulfate.
 
 <!-- SEG:m00296:para:para-00024 -->
-Azo-coupled products are widely used as dyes for textiles because their extended conjugated [[i:π]] electron system causes them to absorb in the visible region of the electromagnetic spectrum (). [[i:p]]-(Dimethylamino)-azobenzene, for instance, is a bright yellow compound that was at one time used as a coloring agent in margarine.
+Azo-coupled products are widely used as dyes for textiles because their extended conjugated [[i:π]] electron system causes them to absorb in the visible region of the electromagnetic spectrum ([[docref:m00179]]). [[i:p]]-(Dimethylamino)-azobenzene, for instance, is a bright yellow compound that was at one time used as a coloring agent in margarine.
 
 <!-- SEG:m00296:alt:fig-00016-alt -->
 Benzenediazonium sulfate reacts with N,N-dimethylaniline to form p-(dimethylamino)azobenzene, yellow crystals with a melting point of 127 degree Celsius.

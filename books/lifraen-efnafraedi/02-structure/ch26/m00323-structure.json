@@ -28,6 +28,10 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "mechanism-figure scaled-down",
+      "title": {
+        "segmentId": "m00323:figure-title:fig-00001-title",
+        "text": "MECHANISM"
+      },
       "caption": {
         "segmentId": "m00323:caption:fig-00001-caption"
       },
@@ -54,6 +58,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

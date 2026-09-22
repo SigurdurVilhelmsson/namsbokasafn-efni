@@ -8,28 +8,28 @@ Electrophilic addition to a conjugated diene at or below room temperature normal
 In a reaction, 1,3-butadiene reacts with hydrogen bromide to yield 1,2 adduct and 1,4 adduct. At 0 and 40 degrees Celsius, the ratio of the two adducts is different.
 
 <!-- SEG:m00173:para:para-00002 -->
-To understand the effect of temperature on product distribution, let’s briefly review what we said in about rates and equilibria. Imagine a reaction that can give either or both of two products, [[b:B]] and [[b:C]].
+To understand the effect of temperature on product distribution, let’s briefly review what we said in [[docref:m00083]] about rates and equilibria. Imagine a reaction that can give either or both of two products, [[b:[[span:B|green-text]]]] and [[b:[[span:C|magenta-text]]]].
 
 <!-- SEG:m00173:alt:fig-00002-alt -->
 The figure shows reactant A forms product B and product C.
 
 <!-- SEG:m00173:para:para-00003 -->
-Let’s assume that [[b:B]] forms faster than [[b:C]] (in other words, [[MATH:1]]) but that [[b:C]] is more stable than [[b:B]] (in other words, [[MATH:2]]). An energy diagram for the two processes might look like that shown in [[xref:fig-00003]].
+Let’s assume that [[b:[[span:B|green-text]]]] forms faster than [[b:[[span:C|magenta-text]]]] (in other words, [[MATH:1]]) but that [[b:[[span:C|magenta-text]]]] is more stable than [[b:[[span:B|green-text]]]] (in other words, [[MATH:2]]). An energy diagram for the two processes might look like that shown in [[xref:fig-00003]].
 
 <!-- SEG:m00173:caption:fig-00003-caption -->
-[[b:An energy diagram for two competing reactions in which the less stable product B forms faster than the more stable product C.]]
+[[b:An energy diagram for two competing reactions in which the less stable product [[span:B|green-text]] forms faster than the more stable product [[span:C|magenta-text]].]]
 
 <!-- SEG:m00173:alt:fig-00003-alt -->
 The energy diagram shows the thermodynamic control curve forming a higher peak than the kinetic control curve. The x and y axes denotes reaction progress and energy, respectively.
 
 <!-- SEG:m00173:para:para-00004 -->
-Let’s first carry out the reaction at a lower temperature so that both processes are irreversible and no equilibrium is reached. Because [[b:B]] forms faster than [[b:C]], [[b:B]] is the major product. It doesn’t matter that [[b:C]] is more stable than [[b:B]], because the two are not in equilibrium. [[i:The product of an irreversible reaction depends only on relative rates, not on stability.]] Such reactions are said to be under [[term:kinetic control|term-00001]].
+Let’s first carry out the reaction at a lower temperature so that both processes are irreversible and no equilibrium is reached. Because [[b:[[span:B|green-text]]]] forms faster than [[b:[[span:C|magenta-text]]]], [[b:[[span:B|green-text]]]] is the major product. It doesn’t matter that [[b:[[span:C|magenta-text]]]] is more stable than [[b:[[span:B|green-text]]]], because the two are not in equilibrium. [[i:The product of an irreversible reaction depends only on relative rates, not on stability.]] Such reactions are said to be under [[term:kinetic control|term-00001]].
 
 <!-- SEG:m00173:alt:fig-00004-alt -->
 Reactant A forms products B and C in faster and slower reactions, respectively. The text next to the reaction generating product B reads Kinetic control (Lower temperature; irreversible).
 
 <!-- SEG:m00173:para:para-00005 -->
-Now let’s carry out the same reaction at some higher temperature so that both processes are readily reversible and an equilibrium is reached. Because [[b:C]] is more stable than [[b:B]], [[b:C]] is the major product obtained. It doesn’t matter that [[b:C]] forms more slowly than [[b:B]], because the two are in equilibrium. [[i:The product of a readily reversible reaction depends only on stability, not on relative rates.]] Such reactions are said to be under equilibrium control, or [[term:thermodynamic control|term-00002]].
+Now let’s carry out the same reaction at some higher temperature so that both processes are readily reversible and an equilibrium is reached. Because [[b:[[span:C|magenta-text]]]] is more stable than [[b:[[span:B|green-text]]]], [[b:[[span:C|magenta-text]]]] is the major product obtained. It doesn’t matter that [[b:[[span:C|magenta-text]]]] forms more slowly than [[b:[[span:B|green-text]]]], because the two are in equilibrium. [[i:The product of a readily reversible reaction depends only on stability, not on relative rates.]] Such reactions are said to be under equilibrium control, or [[term:thermodynamic control|term-00002]].
 
 <!-- SEG:m00173:alt:fig-00005-alt -->
 Reactant A yields two products, B and C in reversible reactions. The text next to the reaction generating product B readsThermodynamic control (Higher temperature; reversible).

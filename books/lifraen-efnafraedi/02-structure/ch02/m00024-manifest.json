@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00024",
-  "extractedAt": "2026-08-31T19:08:46.685Z",
+  "extractedAt": "2026-09-22T17:26:35.634Z",
   "sourceHash": "0a8ab859898b23b5",
   "segmentCount": 11,
   "segmentIds": [
@@ -48,5 +48,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Brønsted–Lowry acid",
+    "term-00002": "Brønsted–Lowry base",
+    "term-00003": "conjugate base",
+    "term-00004": "conjugate acid"
   }
 }

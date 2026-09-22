@@ -29,7 +29,7 @@ Two other important sigmatropic reactions are the [[b:Claisen rearrangement]] of
 An allylic aryl ether reacts to form o-allylphenol and an allylic vinylic ether reacts to form unsaturated ketone through Claisen rearrangement. 1,5-diene reacts to form isomeric 1,5-diene through Cope rearrangement.
 
 <!-- SEG:m00348:para:para-00005 -->
-Like the Diels–Alder reaction discussed in and , the Claisen rearrangement takes place in a single step through a pericyclic mechanism in which a reorganization of bonding electrons occurs in a six-membered, cyclic transition state. The 6-allyl-2,4-cyclohexadienone intermediate then isomerizes to [[i:o]]-allylphenol ([[xref:fig-00005]]).
+Like the Diels–Alder reaction discussed in [[docref:m00174]] and [[docref:m00175]], the Claisen rearrangement takes place in a single step through a pericyclic mechanism in which a reorganization of bonding electrons occurs in a six-membered, cyclic transition state. The 6-allyl-2,4-cyclohexadienone intermediate then isomerizes to [[i:o]]-allylphenol ([[xref:fig-00005]]).
 
 <!-- SEG:m00348:caption:fig-00005-caption -->
 [[b:Mechanism of Claisen rearrangement.]] C─O bond-breaking and C─C bond-making occur simultaneously.
@@ -47,7 +47,7 @@ The Cope rearrangement that converts a 1,5-diene to an isomeric 1,5-diene is som
 1,5-hexadien-3-ol reacts with K H to form deprotonated trans-1,5-hexadien-1-ol. This reacts with hydronium to form 5-hexenal.
 
 <!-- SEG:m00348:para:para-00009 -->
-Although biological examples of pericyclic reactions are relatively rare, a much-studied example occurs in bacteria during biosynthesis of the essential amino acid phenylalanine. Phenylalanine arises from the precursor chorismate through a Claisen rearrangement to prephenate, followed by decarboxylation to phenylpyruvate and reductive amination ([[xref:fig-00008]]). You might note that the reductive amination of phenylpyruvate is the exact reverse of the transamination process shown in [[docref:m00338#fig-00003]], by which amino acids are deaminated. In addition, the reductive amination of ketones is a standard method for preparing amines in the laboratory, as we saw in .
+Although biological examples of pericyclic reactions are relatively rare, a much-studied example occurs in bacteria during biosynthesis of the essential amino acid phenylalanine. Phenylalanine arises from the precursor chorismate through a Claisen rearrangement to prephenate, followed by decarboxylation to phenylpyruvate and reductive amination ([[xref:fig-00008]]). You might note that the reductive amination of phenylpyruvate is the exact reverse of the transamination process shown in [[docref:m00338#fig-00003]], by which amino acids are deaminated. In addition, the reductive amination of ketones is a standard method for preparing amines in the laboratory, as we saw in [[docref:m00294]].
 
 <!-- SEG:m00348:caption:fig-00007-caption -->
 [[b:Suprafacial [3,3] [[i:(a)]] Cope and [[b:(b)]] Claisen rearrangements.]]

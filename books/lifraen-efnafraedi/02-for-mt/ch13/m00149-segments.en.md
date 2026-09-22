@@ -1,5 +1,5 @@
 <!-- SEG:m00149:title:auto-1 -->
-Some Common Spin Multiplicities
+Spin–Spin Splitting in [[sup:1]]H NMR Spectra
 
 <!-- SEG:m00149:para:para-00001 -->
 In the [[sup:1]]H NMR spectra we’ve seen thus far, each different kind of proton in a molecule has given rise to a single peak. It often happens, though, that the absorption of a proton splits into multiple peaks, called a [[term:multiplet|term-00001]]. For example, in the [[sup:1]]H NMR spectrum of bromoethane shown in [[xref:fig-00001]], the –CH[[sub:2]]Br protons appear as four peaks (a [[i:quartet]]) centered at 3.42 [[i:δ]] and the –CH[[sub:3]] protons appear as three peaks (a [[i:triplet]]) centered at 1.68 [[i:δ]].
@@ -116,19 +116,19 @@ Septet
 Spin–spin splitting in [[sup:1]]H NMR can be summarized by three rules.
 
 <!-- SEG:m00149:para:para-00011 -->
-[[b:RULE 1]][[BR]][[b:Chemically equivalent protons don’t show spin–spin splitting.]] Equivalent protons may be on the same carbon or on different carbons, but their signals don’t split.
+[[b:[[span:RULE 1|red-text]]]][[BR]][[b:Chemically equivalent protons don’t show spin–spin splitting.]] Equivalent protons may be on the same carbon or on different carbons, but their signals don’t split.
 
 <!-- SEG:m00149:alt:fig-00004-alt -->
 A structure of chloromethane with text indicating all protons are chemically equivalent, no splitting. A structure of 1,2-dichloroethane with text indicating all protons are chemically equivalent, no splitting.
 
 <!-- SEG:m00149:para:para-00012 -->
-[[b:RULE 2]][[BR]][[b:The signal of a proton with [[i:n]] equivalent neighboring protons is split into a multiplet of [[i:n]]]] + [[b:1 peaks with coupling constant [[i:J]].]] Protons that are farther than two carbon atoms apart don’t usually couple, although they sometimes show weak coupling when they are separated by a [[i:π]] bond.
+[[b:[[span:RULE 2|red-text]]]][[BR]][[b:The signal of a proton with [[i:n]] equivalent neighboring protons is split into a multiplet of [[i:n]]]] + [[b:1 peaks with coupling constant [[i:J]].]] Protons that are farther than two carbon atoms apart don’t usually couple, although they sometimes show weak coupling when they are separated by a [[i:π]] bond.
 
 <!-- SEG:m00149:alt:fig-00005-alt -->
 First structure labeled splitting observed shows adjacent carbon atoms, each bonded to hydrogen. Second structure labeled splitting not usually observed has 3-carbon chain, hydrogens on non-adjacent carbons.
 
 <!-- SEG:m00149:para:para-00013 -->
-[[b:RULE 3]][[BR]][[b:Two groups of protons coupled to each other have the same coupling constant, [[i:J]].]]
+[[b:[[span:RULE 3|red-text]]]][[BR]][[b:Two groups of protons coupled to each other have the same coupling constant, [[i:J]].]]
 
 <!-- SEG:m00149:para:para-00014 -->
 The spectrum of [[i:para]]-methoxypropiophenone in [[xref:fig-00006]] further illustrates these three rules. The downfield absorptions at 6.91 and 7.93 [[i:δ]] are due to the four aromatic-ring protons. There are two kinds of aromatic protons, each of which gives a signal that is split into a doublet by its neighbor. The –OCH[[sub:3]] signal is unsplit and appears as a sharp singlet at 3.84 [[i:δ.]] The –CH[[sub:2]]– protons next to the carbonyl group appear at 2.93 [[i:δ]] in the region expected for protons on carbon next to an unsaturated center, and their signal is split into a quartet by coupling with the protons of the neighboring methyl group. The methyl protons appear as a triplet at 1.20 [[i:δ]] in the usual upfield region.
@@ -146,7 +146,7 @@ Assigning a Chemical Structure from a [[sup:1]]H NMR Spectrum
 Propose a structure for a compound, C[[sub:5]]H[[sub:12]]O, that fits the following [[sup:1]]H NMR data: 0.92 [[i:δ]] (3 H, triplet, [[i:J]] = 7 Hz), 1.20 [[i:δ]] (6 H, singlet), 1.50 [[i:δ]] (2 H, quartet, [[i:J]] = 7 Hz), 1.64 [[i:δ]] (1 H, broad singlet).
 
 <!-- SEG:m00149:para-title:para-00016-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00149:para:para-00016 -->
 It’s best to begin solving structural problems by calculating a molecule’s degree of unsaturation (we’ll see this again in Worked Example 13.4). In the present instance, a formula of C[[sub:5]]H[[sub:12]]O corresponds to a saturated, open-chain molecule, either an alcohol or an ether.
@@ -155,7 +155,7 @@ It’s best to begin solving structural problems by calculating a molecule’s d
 To interpret the NMR information, let’s look at each absorption individually. The three-proton absorption at 0.92 [[i:δ]] is due to a methyl group in an alkane-like environment, and the triplet-splitting pattern implies that the CH[[sub:3]] is next to a CH[[sub:2]]. Thus, our molecule contains an ethyl group, CH[[sub:3]]CH[[sub:2]]–. The six-proton singlet at 1.20 [[i:δ]] is due to two equivalent alkane-like methyl groups attached to a carbon with no hydrogens, (CH[[sub:3]])[[sub:2]]C, and the two-proton quartet at 1.50 [[i:δ]] is due to the CH[[sub:2]] of the ethyl group. All 5 carbons and 11 of the 12 hydrogens in the molecule are now accounted for. The remaining hydrogen, which appears as a broad one-proton singlet at 1.64 [[i:δ,]] is probably due to an OH group, since there is no other way to account for it. Putting the pieces together gives the structure: 2-methyl-2-butanol.
 
 <!-- SEG:m00149:para-title:para-00018-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00149:alt:fig-00007-alt -->
 Structure of 2-methyl-2-butanol with shifts for hydrogens on: C 1 and methyl (1.20), O H (1.64), C 3 (1.50), and C 4 (0.92).

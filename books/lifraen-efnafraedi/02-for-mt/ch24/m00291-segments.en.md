@@ -8,7 +8,7 @@ The chemistry of amines is dominated by the lone pair of electrons on nitrogen, 
 The ball-and-stick model in the electrostatic potential map of amine. A reaction shows an amine (a Lewis base) reacts with a Lewis acid to form a salt and anion A.
 
 <!-- SEG:m00291:para:para-00002 -->
-Amines are much stronger bases than alcohols and ethers, their oxygen-containing analogs. When an amine is dissolved in water, an equilibrium is established in which water acts as an acid and transfers a proton to the amine. Just as the acid strength of a carboxylic acid can be measured by defining an acidity constant [[i:K]][[sub:a]] (), the base strength of an amine can be measured by defining an analogous [[i:basicity constant K]][[sub:b]]. The larger the value of [[i:K]][[sub:b]] and the smaller the value of p[[i:K]][[sub:b]], the more favorable the proton-transfer equilibrium and the stronger the base.
+Amines are much stronger bases than alcohols and ethers, their oxygen-containing analogs. When an amine is dissolved in water, an equilibrium is established in which water acts as an acid and transfers a proton to the amine. Just as the acid strength of a carboxylic acid can be measured by defining an acidity constant [[i:K]][[sub:a]] ([[docref:m00025]]), the base strength of an amine can be measured by defining an analogous [[i:basicity constant K]][[sub:b]]. The larger the value of [[i:K]][[sub:b]] and the smaller the value of p[[i:K]][[sub:b]], the more favorable the proton-transfer equilibrium and the stronger the base.
 
 <!-- SEG:m00291:para:para-00003 -->
 For the reaction
@@ -32,13 +32,13 @@ and
 These equations say that the [[i:K]][[sub:b]] of an amine multiplied by the [[i:K]][[sub:a]] of the corresponding ammonium ion is equal to [[i:K]][[sub:w]], the ion-product constant for water (1.00 × 10[[sup:–1]][[sup:4]]). Thus, if we know [[i:K]][[sub:a]] for an ammonium ion, we also know [[i:K]][[sub:b]] for the corresponding amine base because [[i:K]][[sub:b]] = [[i:K]][[sub:w]]/[[i:K]][[sub:a]]. The more acidic the ammonium ion, the less tightly the proton is held and the weaker the corresponding base. That is, a weaker base has an ammonium ion with a smaller p[[i:K]][[sub:a]] and a stronger base has an ammonium ion with a larger p[[i:K]][[sub:a]].
 
 <!-- SEG:m00291:entry:auto-12 -->
-[[b:Weaker base]]
+[[b:[[span:Weaker base|cyan-text]]]]
 
 <!-- SEG:m00291:entry:auto-13 -->
 Smaller p[[i:K]][[sub:a]] for ammonium ion
 
 <!-- SEG:m00291:entry:auto-14 -->
-[[b:Stronger base]]
+[[b:[[span:Stronger base|magenta-text]]]]
 
 <!-- SEG:m00291:entry:auto-15 -->
 Larger p[[i:K]][[sub:a]] for ammonium ion
@@ -62,7 +62,7 @@ p[[i:K]][[sub:a]] of ammonium ion
 [[b:Ammonia]]
 
 <!-- SEG:m00291:entry:auto-22 -->
-NH[[sub:3]]
+[[span:NH[[sub:3]]|cyan-text]]
 
 <!-- SEG:m00291:entry:auto-23 -->
 9.26
@@ -74,7 +74,7 @@ NH[[sub:3]]
 Methylamine
 
 <!-- SEG:m00291:entry:auto-26 -->
-CH[[sub:3]]NH[[sub:2]]
+CH[[sub:3]][[span:NH[[sub:2]]|cyan-text]]
 
 <!-- SEG:m00291:entry:auto-27 -->
 10.64
@@ -83,7 +83,7 @@ CH[[sub:3]]NH[[sub:2]]
 Ethylamine
 
 <!-- SEG:m00291:entry:auto-29 -->
-CH[[sub:3]]CH[[sub:2]]NH[[sub:2]]
+CH[[sub:3]]CH[[sub:2]][[span:NH[[sub:2]]|cyan-text]]
 
 <!-- SEG:m00291:entry:auto-30 -->
 10.75
@@ -95,7 +95,7 @@ CH[[sub:3]]CH[[sub:2]]NH[[sub:2]]
 Diethylamine
 
 <!-- SEG:m00291:entry:auto-33 -->
-(CH[[sub:3]]CH[[sub:2]])[[sub:2]]NH
+(CH[[sub:3]]CH[[sub:2]])[[sub:2]][[span:NH|cyan-text]]
 
 <!-- SEG:m00291:entry:auto-34 -->
 10.98
@@ -116,7 +116,7 @@ The structure of pyrrolidine, a secondary amine. It is a five-membered ring, one
 Triethylamine
 
 <!-- SEG:m00291:entry:auto-40 -->
-(CH[[sub:3]]CH[[sub:2]])[[sub:3]]N
+(CH[[sub:3]]CH[[sub:2]])[[sub:3]][[span:N|cyan-text]]
 
 <!-- SEG:m00291:entry:auto-41 -->
 10.76
@@ -188,7 +188,7 @@ To purify amines, it’s often possible to take advantage of their basicity. For
 The separation process of amines. Amine and neutral compound is dissolved in ether. Acid dissolves the amine as the protonated salt. Sodium hydroxide and ether are added to obtain amine.
 
 <!-- SEG:m00291:para:para-00013 -->
-In addition to their behavior as bases, primary and secondary amines can also act as very weak acids because an N–H proton can be removed by a sufficiently strong base. We’ve seen, for example, how diisopropylamine (p[[i:K]][[sub:a]] ≈ 36) reacts with butyllithium to yield lithium diisopropylamide (LDA; ). Dialkylamine anions like LDA are very strong bases that are often used in laboratory organic chemistry for the generation of enolate ions from carbonyl compounds (). They are not, however, encountered in biological chemistry.
+In addition to their behavior as bases, primary and secondary amines can also act as very weak acids because an N–H proton can be removed by a sufficiently strong base. We’ve seen, for example, how diisopropylamine (p[[i:K]][[sub:a]] ≈ 36) reacts with butyllithium to yield lithium diisopropylamide (LDA; [[docref:m00261]]). Dialkylamine anions like LDA are very strong bases that are often used in laboratory organic chemistry for the generation of enolate ions from carbonyl compounds ([[docref:m00263]]). They are not, however, encountered in biological chemistry.
 
 <!-- SEG:m00291:alt:fig-00004-alt -->
 Butyllithium reacts with diisopropylamine in the presence of tetrahydrofuran solvent to form lithium diisopropylamide (L D A) and butane.

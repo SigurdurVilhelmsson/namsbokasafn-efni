@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00153",
-  "extractedAt": "2026-08-31T19:08:48.375Z",
+  "extractedAt": "2026-09-22T17:26:37.436Z",
   "sourceHash": "6db43e80904da9c8",
   "segmentCount": 9,
   "segmentIds": [
@@ -40,5 +40,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "FT–NMR"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00062",
-  "extractedAt": "2026-08-31T19:08:47.544Z",
+  "extractedAt": "2026-09-22T17:26:36.391Z",
   "sourceHash": "60e1b8468afb4777",
   "segmentCount": 6,
   "segmentIds": [
@@ -38,5 +38,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "alkene"
   }
 }

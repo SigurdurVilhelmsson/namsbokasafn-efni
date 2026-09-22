@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00162",
-  "extractedAt": "2026-08-31T19:08:46.514Z",
+  "extractedAt": "2026-09-22T17:26:35.486Z",
   "sourceHash": "b1da3f2e4d3c2d1e",
   "segmentCount": 13,
   "segmentIds": [
@@ -47,5 +47,11 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "valence bond (VB) theory",
+    "term-00002": "sigma (σ) bonds",
+    "term-00003": "bond strength",
+    "term-00004": "bond length"
   }
 }

@@ -2,13 +2,13 @@
 Cis–Trans Isomerism in Alkenes
 
 <!-- SEG:m00066:para:para-00001 -->
-We saw in the chapter on [[docref:Structure and Bonding|m00157]] that the carbon–carbon double bond can be described in two ways. In valence bond language (), the carbons are [[i:sp]][[sup:2]]-hybridized and have three equivalent hybrid orbitals that lie in a plane at angles of 120° to one another. The carbons form a [[i:σ]] bond by a head-on overlap of [[i:sp]][[sup:2]] orbitals and form a [[i:π]] bond by sideways overlap of unhybridized [[i:p]] orbitals oriented perpendicular to the [[i:sp]][[sup:2]] plane, as shown in [[docref:m00165#fig-00002]].
+We saw in the chapter on [[docref:Structure and Bonding|m00157]] that the carbon–carbon double bond can be described in two ways. In valence bond language ([[docref:m00165]]), the carbons are [[i:sp]][[sup:2]]-hybridized and have three equivalent hybrid orbitals that lie in a plane at angles of 120° to one another. The carbons form a [[i:σ]] bond by a head-on overlap of [[i:sp]][[sup:2]] orbitals and form a [[i:π]] bond by sideways overlap of unhybridized [[i:p]] orbitals oriented perpendicular to the [[i:sp]][[sup:2]] plane, as shown in [[docref:m00165#fig-00002]].
 
 <!-- SEG:m00066:para:para-00002 -->
-In molecular orbital language (), interaction between the [[i:p]] orbitals leads to one bonding and one antibonding [[i:π]] molecular orbital. The [[i:π]] bonding MO has no node between nuclei and results from a combination of [[i:p]] orbital lobes with the same algebraic sign. The [[i:π]] antibonding MO has a node between nuclei and results from a combination of lobes with different algebraic signs, as shown in [[docref:m00168#fig-00002]].
+In molecular orbital language ([[docref:m00168]]), interaction between the [[i:p]] orbitals leads to one bonding and one antibonding [[i:π]] molecular orbital. The [[i:π]] bonding MO has no node between nuclei and results from a combination of [[i:p]] orbital lobes with the same algebraic sign. The [[i:π]] antibonding MO has a node between nuclei and results from a combination of lobes with different algebraic signs, as shown in [[docref:m00168#fig-00002]].
 
 <!-- SEG:m00066:para:para-00003 -->
-Although essentially free rotation around single bonds is possible (), the same is not true of double bonds. For rotation to occur around a double bond, the [[i:π]] bond must break and re-form ([[xref:fig-00001]]). Thus, the barrier to double-bond rotation must be at least as great as the strength of the [[i:π]] bond itself, an estimated 350 kJ/mol (84 kcal/mol). Recall that the barrier to bond rotation in ethane is only 12 kJ/mol.
+Although essentially free rotation around single bonds is possible ([[docref:m00037]]), the same is not true of double bonds. For rotation to occur around a double bond, the [[i:π]] bond must break and re-form ([[xref:fig-00001]]). Thus, the barrier to double-bond rotation must be at least as great as the strength of the [[i:π]] bond itself, an estimated 350 kJ/mol (84 kcal/mol). Recall that the barrier to bond rotation in ethane is only 12 kJ/mol.
 
 <!-- SEG:m00066:caption:fig-00001-caption -->
 [[b:The [[i:π]] bond must break for rotation to take place around a carbon–carbon double bond]].
@@ -17,7 +17,7 @@ Although essentially free rotation around single bonds is possible (), the same 
 An orbital diagram with two parallel p orbitals before rotation. After rotation the p orbitals are perpendicular, which breaks the double bond.
 
 <!-- SEG:m00066:para:para-00004 -->
-The lack of rotation around carbon–carbon double bonds is of more than just theoretical interest; it also has chemical consequences. Imagine the situation for a disubstituted alkene such as 2-butene. (Disubstituted means that two substituents other than hydrogen are bonded to the double-bond carbons.) The two methyl groups in 2-butene can either be on the same side of the double bond or on opposite sides, a situation similar to that in disubstituted cycloalkanes ().
+The lack of rotation around carbon–carbon double bonds is of more than just theoretical interest; it also has chemical consequences. Imagine the situation for a disubstituted alkene such as 2-butene. (Disubstituted means that two substituents other than hydrogen are bonded to the double-bond carbons.) The two methyl groups in 2-butene can either be on the same side of the double bond or on opposite sides, a situation similar to that in disubstituted cycloalkanes ([[docref:m00041]]).
 
 <!-- SEG:m00066:para:para-00005 -->
 Since bond rotation can’t occur, the two 2-butenes can’t spontaneously interconvert; they are different, isolable compounds. As with disubstituted cycloalkanes, we call such compounds cis–trans stereoisomers. The compound with substituents on the same side of the double bond is called [[i:cis]]-2-butene, and the isomer with substituents on opposite sides is [[i:trans]]-2-butene ([[xref:fig-00002]]).

@@ -18,6 +18,10 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": {
+        "segmentId": "m00018:figure-title:fig-00001-title",
+        "text": "The continuum in bonding from covalent to ionic is a result of an unequal distribution of bonding electrons between atoms."
+      },
       "caption": {
         "segmentId": "m00018:caption:fig-00001-caption"
       },
@@ -39,6 +43,10 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": {
+        "segmentId": "m00018:figure-title:fig-00002-title",
+        "text": "Electronegativity values and trends."
+      },
       "caption": {
         "segmentId": "m00018:caption:fig-00002-caption"
       },
@@ -60,6 +68,10 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "scaled-down",
+      "title": {
+        "segmentId": "m00018:figure-title:fig-00003-title",
+        "text": "Polar covalent bonds."
+      },
       "caption": {
         "segmentId": "m00018:caption:fig-00003-caption"
       },

@@ -5,7 +5,7 @@ Spectroscopy of Amines
 Infrared Spectroscopy
 
 <!-- SEG:m00298:para:para-00001 -->
-Primary and secondary amines can be identified by a characteristic N–H stretching absorption in the 3300 to 3500 cm[[sup:–1]] range of the IR spectrum. Alcohols also absorb in this range (), but amine absorption bands are generally sharper and less intense than hydroxyl bands. Primary amines show a pair of bands at about 3350 and 3450 cm[[sup:–1]] from the symmetric and asymmetric stretching modes, and secondary amines show a single band at 3350 cm[[sup:–1]]. Tertiary amines have no absorption in this region because they have no N–H bonds. [[xref:fig-00001]] recalls the IR spectrum of cyclohexylamine from .
+Primary and secondary amines can be identified by a characteristic N–H stretching absorption in the 3300 to 3500 cm[[sup:–1]] range of the IR spectrum. Alcohols also absorb in this range ([[docref:m00210]]), but amine absorption bands are generally sharper and less intense than hydroxyl bands. Primary amines show a pair of bands at about 3350 and 3450 cm[[sup:–1]] from the symmetric and asymmetric stretching modes, and secondary amines show a single band at 3350 cm[[sup:–1]]. Tertiary amines have no absorption in this region because they have no N–H bonds. [[xref:fig-00001]] recalls the IR spectrum of cyclohexylamine from [[docref:m00142]].
 
 <!-- SEG:m00298:caption:fig-00001-caption -->
 [[b:IR spectrum of cyclohexylamine.]]
@@ -17,7 +17,7 @@ The IR spectrum of cyclohexylamine, where peaks are observed at 900, 1500, 2900,
 Nuclear Magnetic Resonance Spectroscopy
 
 <!-- SEG:m00298:para:para-00002 -->
-Amines are difficult to identify solely by [[sup:1]]H NMR spectroscopy because N–H hydrogens tend to appear as broad signals without clear-cut coupling to neighboring C–H hydrogens. As with O–H absorptions (), amine N–H absorptions can appear over a wide range and are best identified by adding a small amount of D[[sub:2]]O to the sample. Exchange of N–D for N–H occurs, and the N–H signal disappears from the NMR spectrum.
+Amines are difficult to identify solely by [[sup:1]]H NMR spectroscopy because N–H hydrogens tend to appear as broad signals without clear-cut coupling to neighboring C–H hydrogens. As with O–H absorptions ([[docref:m00210]]), amine N–H absorptions can appear over a wide range and are best identified by adding a small amount of D[[sub:2]]O to the sample. Exchange of N–D for N–H occurs, and the N–H signal disappears from the NMR spectrum.
 
 <!-- SEG:m00298:alt:fig-00002-alt -->
 A reversible reaction in which N-methylmethanamine reacts with deuterium oxide to form a product in which hydrogen is replaced by deuterium. H D O is the second product.
@@ -47,7 +47,7 @@ Mass Spectrometry
 The [[i:nitrogen rule]] of mass spectrometry says that a compound with an odd number of nitrogen atoms has an odd-numbered molecular weight. Thus, the presence of nitrogen in a molecule is detected simply by observing its mass spectrum. An odd-numbered molecular ion usually means that the unknown compound has one or three nitrogen atoms, and an even-numbered molecular ion usually means that a compound has either zero or two nitrogen atoms. The logic behind the rule derives from the fact that nitrogen is trivalent, thus requiring an odd number of hydrogen atoms. For example, morphine has the formula C[[sub:17]]H[[sub:19]]NO[[sub:3]] and a molecular weight of 285 amu.
 
 <!-- SEG:m00298:para:para-00007 -->
-Alkylamines undergo a characteristic [[i:α]] cleavage in the mass spectrometer, similar to the cleavage observed for alcohols (). C–C bond nearest the nitrogen atom is broken, yielding an alkyl radical and a resonance-stabilized, nitrogen-containing cation.
+Alkylamines undergo a characteristic [[i:α]] cleavage in the mass spectrometer, similar to the cleavage observed for alcohols ([[docref:m00210]]). C–C bond nearest the nitrogen atom is broken, yielding an alkyl radical and a resonance-stabilized, nitrogen-containing cation.
 
 <!-- SEG:m00298:alt:fig-00005-alt -->
 Alkyl amines undergo alpha cleavage to form a radical and carbocation with two reversible resonance forms enclosed inside parentheses.
@@ -188,7 +188,7 @@ Arylamines are converted by diazotization with nitrous acid into [[b:arenediazon
 Summary of Reactions
 
 <!-- SEG:m00298:item:list-00003-item-1 -->
-Synthesis of amines ()
+Synthesis of amines ([[docref:m00294]])
 
 <!-- SEG:m00298:item:list-00004-item-1 -->
 Reduction of nitriles[[BR]]
@@ -224,13 +224,13 @@ Reactions of amines
 Alkylation with alkyl halides; see reaction 1(d)
 
 <!-- SEG:m00298:item:list-00005-item-2 -->
-Hofmann elimination ()[[BR]]
+Hofmann elimination ([[docref:m00295]])[[BR]]
 
 <!-- SEG:m00298:item:list-00005-item-3 -->
-Diazotization ()[[BR]]
+Diazotization ([[docref:m00296]])[[BR]]
 
 <!-- SEG:m00298:item:list-00003-item-3 -->
-Reactions of arenediazonium salts ()
+Reactions of arenediazonium salts ([[docref:m00296]])
 
 <!-- SEG:m00298:item:list-00006-item-1 -->
 Nucleophilic substitutions[[BR]]
@@ -281,25 +281,25 @@ Benzenediazonium hydrogen phosphate reacts with phenol to form para-hydroxyazobe
 Additional Problems
 
 <!-- SEG:m00298:para:para-00022 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00298:para:para-00027 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00298:para:para-00045 -->
-[[b:Naming Amines]]
+[[b:[[span:Naming Amines|red-text]]]]
 
 <!-- SEG:m00298:para:para-00049 -->
-[[b:Amine Basicity]]
+[[b:[[span:Amine Basicity|red-text]]]]
 
 <!-- SEG:m00298:para:para-00053 -->
-[[b:Synthesis of Amines]]
+[[b:[[span:Synthesis of Amines|red-text]]]]
 
 <!-- SEG:m00298:para:para-00060 -->
-[[b:Reactions of Amines]]
+[[b:[[span:Reactions of Amines|red-text]]]]
 
 <!-- SEG:m00298:para:para-00067 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00298:para:para-00071 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00085",
-  "extractedAt": "2026-08-31T19:08:47.438Z",
+  "extractedAt": "2026-09-22T17:26:36.270Z",
   "sourceHash": "772ff9a67f990d9a",
   "segmentCount": 19,
   "segmentIds": [
@@ -60,5 +60,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "reaction coordinate",
+    "term-00002": "transition state",
+    "term-00003": "activation energy, ΔG‡"
   }
 }

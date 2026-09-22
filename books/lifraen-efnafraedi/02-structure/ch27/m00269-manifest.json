@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00269",
-  "extractedAt": "2026-08-31T19:08:50.096Z",
+  "extractedAt": "2026-09-22T17:26:39.737Z",
   "sourceHash": "8246153dc4188da5",
-  "segmentCount": 49,
+  "segmentCount": 50,
   "segmentIds": [
     "m00269:title:auto-1",
     "m00269:para:para-00001",
@@ -18,6 +18,7 @@
     "m00269:alt:fig-00003-alt",
     "m00269:title:sect-00003-title",
     "m00269:para:para-00006",
+    "m00269:figure-title:fig-00004-title",
     "m00269:caption:fig-00004-caption",
     "m00269:alt:fig-00004-alt",
     "m00269:alt:fig-00005-alt",
@@ -107,5 +108,8 @@
       "sect-00007",
       "sect-00008"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "terpenoids"
   }
 }

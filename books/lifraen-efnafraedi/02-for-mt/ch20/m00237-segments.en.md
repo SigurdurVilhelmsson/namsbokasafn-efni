@@ -35,7 +35,7 @@ Carboxyl carbon atoms absorb in the range 165 to 185 [[i:δ]] in the [[sup:13]]C
 Various C 13 shifts: propionic acid (alpha carbon at 181); benzoic acid (carbonyl at 173, benzenes at 128 to 134), but-2-enoic acid (carbonyl at 172), and propionitrile (nitrile at 121).
 
 <!-- SEG:m00237:para:para-00006 -->
-In the [[sup:1]]H NMR spectrum, the acidic –CO[[sub:2]][[b:H]] proton normally absorbs as a singlet near 12 [[i:δ]]. The chemical shift of the carboxyl proton is concentration and solvent dependent, as these variables can change the extent of hydrogen-bonding in the sample. In some cases, the carboxyl-proton resonance is broadened to the point of being nearly undetectable. Traces of water in the sample can exacerbate the situation. As with alcohols (), the –CO[[sub:2]]H proton can be replaced by deuterium when D[[sub:2]]O is added to the sample tube, causing the absorption to disappear from the NMR spectrum. [[xref:fig-00004]] shows the [[sup:1]]H NMR spectrum of phenylacetic acid. Note that the –CO[[sub:2]]H absorption occurs at 12.0 [[i:δ]].
+In the [[sup:1]]H NMR spectrum, the acidic –CO[[sub:2]][[b:[[span:H|magenta-text]]]] proton normally absorbs as a singlet near 12 [[i:δ]]. The chemical shift of the carboxyl proton is concentration and solvent dependent, as these variables can change the extent of hydrogen-bonding in the sample. In some cases, the carboxyl-proton resonance is broadened to the point of being nearly undetectable. Traces of water in the sample can exacerbate the situation. As with alcohols ([[docref:m00210]]), the –CO[[sub:2]]H proton can be replaced by deuterium when D[[sub:2]]O is added to the sample tube, causing the absorption to disappear from the NMR spectrum. [[xref:fig-00004]] shows the [[sup:1]]H NMR spectrum of phenylacetic acid. Note that the –CO[[sub:2]]H absorption occurs at 12.0 [[i:δ]].
 
 <!-- SEG:m00237:caption:fig-00004-caption -->
 [[b:Proton NMR spectrum of phenylacetic acid, C[[sub:6]]H[[sub:5]]CH[[sub:2]]CO[[sub:2]]H.]]
@@ -125,7 +125,7 @@ Carboxylic acids and nitriles are easily distinguished spectroscopically. Acids 
 Summary of Reactions
 
 <!-- SEG:m00237:item:list-00002-item-1 -->
-Preparation of carboxylic acids ()
+Preparation of carboxylic acids ([[docref:m00234]])
 
 <!-- SEG:m00237:item:list-00003-item-1 -->
 Carboxylation of Grignard reagents[[BR]]
@@ -134,7 +134,7 @@ Carboxylation of Grignard reagents[[BR]]
 Hydrolysis of nitriles[[BR]]
 
 <!-- SEG:m00237:item:list-00002-item-2 -->
-Preparation of nitriles ()
+Preparation of nitriles ([[docref:m00236]])
 
 <!-- SEG:m00237:item:list-00004-item-1 -->
 S[[sub:N]]2 reaction of alkyl halides[[BR]]
@@ -143,7 +143,7 @@ S[[sub:N]]2 reaction of alkyl halides[[BR]]
 Dehydration of amides[[BR]]
 
 <!-- SEG:m00237:item:list-00002-item-3 -->
-Reactions of nitriles ()
+Reactions of nitriles ([[docref:m00236]])
 
 <!-- SEG:m00237:item:list-00005-item-1 -->
 Hydrolysis to yield carboxylic acids[[BR]]
@@ -179,22 +179,22 @@ Nitrile reacts first with organomagnesium bromide in ether, then with hydronium 
 Additional Problems
 
 <!-- SEG:m00237:para:para-00021 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00237:para:para-00026 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00237:para:para-00037 -->
-[[b:Naming Carboxylic Acids and Nitriles]]
+[[b:[[span:Naming Carboxylic Acids and Nitriles|red-text]]]]
 
 <!-- SEG:m00237:para:para-00043 -->
-[[b:Acidity of Carboxylic Acids]]
+[[b:[[span:Acidity of Carboxylic Acids|red-text]]]]
 
 <!-- SEG:m00237:para:para-00051 -->
-[[b:Reactions of Carboxylic Acids and Nitriles]]
+[[b:[[span:Reactions of Carboxylic Acids and Nitriles|red-text]]]]
 
 <!-- SEG:m00237:para:para-00062 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00237:para:para-00067 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

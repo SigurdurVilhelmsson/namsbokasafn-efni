@@ -22,6 +22,9 @@ A non-feasible reaction shows chlorobenzene forming chloride ion and benzene wit
 <!-- SEG:m00194:para:para-00004 -->
 Instead, nucleophilic substitutions on an aromatic ring proceed by the mechanism shown in [[xref:fig-00004]]. The nucleophile first adds to the electron-deficient aryl halide, forming a resonance-stabilized, negatively charged intermediate called a [[i:Meisenheimer complex]] after its discoverer. Halide ion is then eliminated.
 
+<!-- SEG:m00194:figure-title:fig-00004-title -->
+MECHANISM
+
 <!-- SEG:m00194:caption:fig-00004-caption -->
 [[b:Mechanism of nucleophilic aromatic substitution]]. The reaction occurs in two steps and involves a resonance-stabilized carbanion intermediate.
 

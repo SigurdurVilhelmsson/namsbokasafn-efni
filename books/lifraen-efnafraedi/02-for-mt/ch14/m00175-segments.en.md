@@ -14,7 +14,7 @@ The structures and names of some Diels–Alder dienophiles. Ethylene: unreactive
 In all cases, the double or triple bond of the dienophile is adjacent to the positively polarized carbon of an electron-withdrawing substituent. As a result, the double-bond carbons in these substances are substantially less electron-rich than the carbons in ethylene, as indicated by the electrostatic potential maps in [[xref:fig-00002]].
 
 <!-- SEG:m00175:caption:fig-00002-caption -->
-[[b:Electrostatic potential maps of ethylene, propenal, and propenenitrile show that electron-withdrawing groups make the double-bond carbons less electron-rich.]]
+[[b:Electrostatic potential maps of ethylene, propenal, and propenenitrile show that electron-withdrawing groups make the double-bond carbons [[span:less electron-rich|magenta-text]].]]
 
 <!-- SEG:m00175:alt:fig-00002-alt -->
 Electrostatic potential maps along with the ball-and-stick models of ethylene, propenal, and propenenitrile each with an arrow pointing toward carbon-carbon double bonds.
@@ -26,7 +26,7 @@ One of the most useful features of the Diels–Alder reaction is that it is [[te
 The first reaction shows 1,3-butadiene reacting with methyl (Z)-2-butenoate to yield a cis product. The second reaction shows 1,3-butadiene reacting with methyl (E)-2-butenoate to yield trans product.
 
 <!-- SEG:m00175:para:para-00004 -->
-Another stereochemical feature of the Diels–Alder reaction is that the diene and dienophile partners orient so that the endo product, rather than the alternative exo product, is formed. The words [[i:endo]] and [[i:exo]] are used to indicate relative stereochemistry when referring to bicyclic structures like substituted norbornanes (). A substituent on one bridge is said to be [[term:endo|term-00003]] if it is syn (cis) to the larger of the other two bridges and is said to be [[term:exo|term-00004]] if it is anti (trans) to the larger of the other two.
+Another stereochemical feature of the Diels–Alder reaction is that the diene and dienophile partners orient so that the endo product, rather than the alternative exo product, is formed. The words [[i:endo]] and [[i:exo]] are used to indicate relative stereochemistry when referring to bicyclic structures like substituted norbornanes ([[docref:m00048]]). A substituent on one bridge is said to be [[term:endo|term-00003]] if it is syn (cis) to the larger of the other two bridges and is said to be [[term:exo|term-00004]] if it is anti (trans) to the larger of the other two.
 
 <!-- SEG:m00175:alt:fig-00004-alt -->
 A 7-membered bicyclic ring with C 2 bonded to an axial R group (endo) and an equatorial R group (exo).. To the right, the ball-and-stick model of 7-membered bicyclic ring is depicted.
@@ -44,13 +44,13 @@ Predicting the Product of a Diels–Alder Reaction
 Predict the product of the following Diels–Alder reaction:
 
 <!-- SEG:m00175:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00175:para:para-00007 -->
 Draw the diene so that the ends of its two double bonds are near the dienophile double bond. Then form two single bonds between the partners, convert the three double bonds into single bonds, and convert the former single bond of the diene into a double bond. Because the dienophile double bond is cis to begin with, the two attached hydrogens must remain cis in the product.
 
 <!-- SEG:m00175:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00175:alt:fig-00006-alt -->
 A 4-carbon chain with two alternate double bonds and methyl at C 2 reacts with cyclohexadiene with carbonyl groups at C 1 and C 4. Question mark represents the product.

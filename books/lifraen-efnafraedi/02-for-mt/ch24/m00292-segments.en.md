@@ -17,7 +17,7 @@ Much of the resonance stabilization is lost on protonation, however, so the ener
 The energy levels of four compounds, arylamine, alkylamine, aryl ammonium ion, and alkyl ammonium ion in increasing order. Aniline reacts with hydrogen ion to form anilinium ion.
 
 <!-- SEG:m00292:para:para-00003 -->
-Substituted arylamines can be either more basic or less basic than aniline, depending on the substituent. Electron-donating substituents, such as –CH[[sub:3]], –NH[[sub:2]], and –OCH[[sub:3]], which increase the reactivity of an aromatic ring toward electrophilic substitution (), also increase the basicity of the corresponding arylamine. Electron-withdrawing substituents, such as –Cl, –NO[[sub:2]], and –CN, which decrease ring reactivity toward electrophilic substitution, also decrease arylamine basicity. [[xref:table-00001]] considers only [[i:p]]-substituted anilines, but similar trends are observed for ortho and meta derivatives.
+Substituted arylamines can be either more basic or less basic than aniline, depending on the substituent. Electron-donating substituents, such as –CH[[sub:3]], –NH[[sub:2]], and –OCH[[sub:3]], which increase the reactivity of an aromatic ring toward electrophilic substitution ([[docref:m00192]]), also increase the basicity of the corresponding arylamine. Electron-withdrawing substituents, such as –Cl, –NO[[sub:2]], and –CN, which decrease ring reactivity toward electrophilic substitution, also decrease arylamine basicity. [[xref:table-00001]] considers only [[i:p]]-substituted anilines, but similar trends are observed for ortho and meta derivatives.
 
 <!-- SEG:m00292:table-title:table-00001-title -->
 Base Strength of Some [[i:p]]-Substituted Anilines
@@ -35,22 +35,22 @@ p[[i:K]][[sub:a]]
 An arrow points upward; the bottom (blue) says weaker base, and the top (red) says stronger base.
 
 <!-- SEG:m00292:entry:auto-13 -->
-–NH[[sub:2]]
+[[span:–NH[[sub:2]]|magenta-text]]
 
 <!-- SEG:m00292:entry:auto-14 -->
 6.15
 
 <!-- SEG:m00292:entry:auto-15 -->
-Activating groups
+[[span:Activating groups|magenta-text]]
 
 <!-- SEG:m00292:entry:auto-16 -->
-–OCH[[sub:3]]
+[[span:–OCH[[sub:3]]|magenta-text]]
 
 <!-- SEG:m00292:entry:auto-17 -->
 5.34
 
 <!-- SEG:m00292:entry:auto-18 -->
-–CH[[sub:3]]
+[[span:–CH[[sub:3]]|magenta-text]]
 
 <!-- SEG:m00292:entry:auto-19 -->
 5.08
@@ -62,28 +62,28 @@ Activating groups
 4.63
 
 <!-- SEG:m00292:entry:auto-22 -->
-–Cl
+[[span:–Cl|cyan-text]]
 
 <!-- SEG:m00292:entry:auto-23 -->
 3.98
 
 <!-- SEG:m00292:entry:auto-24 -->
-Deactivating groups
+[[span:Deactivating groups|cyan-text]]
 
 <!-- SEG:m00292:entry:auto-25 -->
-–Br
+[[span:–Br|cyan-text]]
 
 <!-- SEG:m00292:entry:auto-26 -->
 3.86
 
 <!-- SEG:m00292:entry:auto-27 -->
-–CN
+[[span:–CN|cyan-text]]
 
 <!-- SEG:m00292:entry:auto-28 -->
 1.74
 
 <!-- SEG:m00292:entry:auto-29 -->
-–NO[[sub:2]]
+[[span:–NO[[sub:2]]|cyan-text]]
 
 <!-- SEG:m00292:entry:auto-30 -->
 1.00

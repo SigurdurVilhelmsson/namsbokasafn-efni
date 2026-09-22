@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00075",
-  "extractedAt": "2026-08-31T19:08:49.026Z",
+  "extractedAt": "2026-09-22T17:26:38.181Z",
   "sourceHash": "18383f20bd95aae0",
   "segmentCount": 8,
   "segmentIds": [
@@ -42,5 +42,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Ethers (R–O–R′)",
+    "term-00002": "Thiols"
   }
 }

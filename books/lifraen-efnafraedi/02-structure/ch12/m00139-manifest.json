@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00139",
-  "extractedAt": "2026-08-31T19:08:48.216Z",
+  "extractedAt": "2026-09-22T17:26:37.248Z",
   "sourceHash": "99d3ad7deff28103",
   "segmentCount": 25,
   "segmentIds": [
@@ -77,5 +77,14 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "electromagnetic spectrum",
+    "term-00002": "photon",
+    "term-00003": "wavelength, λ",
+    "term-00004": "frequency, ν",
+    "term-00005": "hertz, Hz",
+    "term-00006": "amplitude",
+    "term-00007": "absorption spectrum"
   }
 }

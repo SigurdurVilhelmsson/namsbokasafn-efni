@@ -26,7 +26,7 @@ Each step in a multistep process can always be considered separately. Each step 
 The biological reactions that take place in living organisms have the same energy requirements as reactions that take place in the laboratory and can be described in similar ways. They are, however, constrained by the fact that they must have low enough activation energies to occur at moderate temperatures, and they must release energy in relatively small amounts to avoid overheating the organism. These constraints can be met through the use of large, structurally complex, enzyme catalysts that alter the mechanism of a reaction to a pathway that can proceed through a series of small steps rather than one or two large steps. Thus, an energy diagram for a biological reaction might look like that in [[xref:fig-00003]].
 
 <!-- SEG:m00086:caption:fig-00003-caption -->
-[[b:Energy diagrams for a typical, enzyme-catalyzed biological reaction]] and an [[b:uncatalyzed laboratory reaction]]. The biological reaction involves many steps, each of which has a relatively small activation energy and small energy change. The end result is the same, however.
+[[b:Energy diagrams for a typical, [[span:enzyme-catalyzed biological reaction|cyan-text]]]] and an [[b:[[span:uncatalyzed laboratory reaction|magenta-text]]]]. The biological reaction involves many steps, each of which has a relatively small activation energy and small energy change. The end result is the same, however.
 
 <!-- SEG:m00086:alt:fig-00003-alt -->
 Two energy diagrams for the same reaction; catalyzed shows multiple transition states each with low activation barrier, uncatalyzed shows single transition state with high activation barrier.
@@ -38,13 +38,13 @@ Drawing a Reaction Energy Diagram
 Sketch an energy diagram for a one-step reaction that is fast and highly exergonic.
 
 <!-- SEG:m00086:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00086:para:para-00007 -->
 A fast reaction has a small Δ[[i:G]][[sup:‡]], and a highly exergonic reaction has a large negative Δ[[i:G]]°.
 
 <!-- SEG:m00086:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00086:alt:fig-00004-alt -->
 Energy diagram with small activation barrier to transition state, large net negative delta G naught.
@@ -56,13 +56,13 @@ Drawing a Reaction Energy Diagram
 Sketch an energy diagram for a two-step exergonic reaction whose second step has a higher-energy transition state than its first step. Show Δ[[i:G]][[sup:‡]] and Δ[[i:G]]° for the overall reaction.
 
 <!-- SEG:m00086:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00086:para:para-00010 -->
 A two-step reaction has two transition states and an intermediate between them. The Δ[[i:G]][[sup:‡]] for the overall reaction is the energy change between reactants and the highest-energy transition state—the second one in this case. An exergonic reaction has a negative overall Δ[[i:G]]°.
 
 <!-- SEG:m00086:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00086:alt:fig-00005-alt -->
 Energy diagram shows large barrier to transition state, high energy intermediate, smaller barrier to second transition state (overall higher in energy than first), and small net negative delta G naught.

@@ -4,6 +4,9 @@ Nucleophilic Addition Reactions of Aldehydes and Ketones
 <!-- SEG:m00215:para:para-00001 -->
 As we saw in the [[docref:[[i:Preview of Carbonyl Chemistry,]]|m00255#sect-00009]] the most general reaction of aldehydes and ketones is the [[term:nucleophilic addition reaction|term-00001]]. As shown in [[xref:fig-00001]], a nucleophile, [[b::]]Nu[[sup:–]], approaches the carbonyl group from an angle of about 105° opposite the carbonyl oxygen and forms a bond to the electrophilic C–O carbon atom. At the same time, rehybridization of the carbonyl carbon from [[i:sp]][[sup:2]] to [[i:sp]][[sup:3]] occurs, an electron pair from the [[MATH:1]] bond moves toward the electronegative oxygen atom, and a tetrahedral alkoxide ion intermediate is produced. Protonation of the alkoxide by addition of acid then gives an alcohol.
 
+<!-- SEG:m00215:figure-title:fig-00001-title -->
+MECHANISM
+
 <!-- SEG:m00215:caption:fig-00001-caption -->
 [[b:A nucleophilic addition reaction to an aldehyde or ketone.]] The nucleophile approaches the carbonyl group from an angle of approximately 75° to the plane of the [[i:sp]][[sup:2]] orbitals, the carbonyl carbon rehybridizes from [[i:sp]][[sup:2]] to [[i:sp]][[sup:3]], and an alkoxide ion is formed. Protonation by addition of acid then gives an alcohol.
 
@@ -35,7 +38,7 @@ Aldehydes are generally more reactive than ketones in nucleophilic addition reac
 Ball-and-stick models of ethanal and acetone. It shows the nucleophilic attack on carbonyl and bond shifts in linear arrangements. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.
 
 <!-- SEG:m00215:para:para-00005 -->
-Electronically, aldehydes are more reactive than ketones because of the greater polarization of aldehyde carbonyl groups. To see this polarity difference, recall the stability order of carbocations (). A primary carbocation is higher in energy and thus more reactive than a secondary carbocation since it has only one alkyl group inductively stabilizing the positive charge rather than two. In the same way, an aldehyde has only one alkyl group inductively stabilizing the partial positive charge on the carbonyl carbon rather than two, and is a bit more electrophilic, and, therefore, more reactive than a ketone.
+Electronically, aldehydes are more reactive than ketones because of the greater polarization of aldehyde carbonyl groups. To see this polarity difference, recall the stability order of carbocations ([[docref:m00071]]). A primary carbocation is higher in energy and thus more reactive than a secondary carbocation since it has only one alkyl group inductively stabilizing the positive charge rather than two. In the same way, an aldehyde has only one alkyl group inductively stabilizing the partial positive charge on the carbonyl carbon rather than two, and is a bit more electrophilic, and, therefore, more reactive than a ketone.
 
 <!-- SEG:m00215:alt:fig-00005-alt -->
 The structures of primary carbocation, secondary carbocation, aldehyde, and ketone. Primary carbocation is less stable but more reactive than secondary carbocation whereas aldehyde is more reactive than ketone.

@@ -2,7 +2,7 @@
 Reactions of Alcohols
 
 <!-- SEG:m00205:para:para-00001 -->
-We’ve already seen several reactions of alcohols—their conversion into alkyl halides and tosylates in and their dehydration to give alkenes in —albeit without mechanistic details. Let’s now look at those details.
+We’ve already seen several reactions of alcohols—their conversion into alkyl halides and tosylates in [[docref:m00117]] and their dehydration to give alkenes in [[docref:m00089]]—albeit without mechanistic details. Let’s now look at those details.
 
 <!-- SEG:m00205:title:sect-00001-title -->
 Conversion of Alcohols into Alkyl Halides
@@ -26,7 +26,7 @@ Primary or secondary alcohol reacts with thionyl chloride to form chlorosulfite 
 Conversion of Alcohols into Tosylates
 
 <!-- SEG:m00205:para:para-00005 -->
-Alcohols react with [[i:p]]-toluenesulfonyl chloride (tosyl chloride, [[i:p]]-TosCl) in pyridine solution to yield alkyl tosylates, ROTos (). Only the O–H bond of the alcohol is broken in this reaction; the C–O bond remains intact, so no change of configuration occurs if the oxygen is attached to a chirality center. The resultant alkyl tosylates behave much like alkyl halides, undergoing both S[[sub:N]]1 and S[[sub:N]]2 substitution reactions.
+Alcohols react with [[i:p]]-toluenesulfonyl chloride (tosyl chloride, [[i:p]]-TosCl) in pyridine solution to yield alkyl tosylates, ROTos ([[docref:m00122]]). Only the O–H bond of the alcohol is broken in this reaction; the C–O bond remains intact, so no change of configuration occurs if the oxygen is attached to a chirality center. The resultant alkyl tosylates behave much like alkyl halides, undergoing both S[[sub:N]]1 and S[[sub:N]]2 substitution reactions.
 
 <!-- SEG:m00205:alt:fig-00003-alt -->
 An alcohol reacts with para-toluenesulfonylchloride in the presence of pyridine to form a tosylate (R O T o S) and pyridine dot hydrogen chloride.
@@ -47,19 +47,22 @@ Problems
 Dehydration of Alcohols to Yield Alkenes
 
 <!-- SEG:m00205:para:para-00008 -->
-A third important reaction of alcohols, both in the laboratory and in biological pathways, is their dehydration to give alkenes. Because of the usefulness of the reaction, a number of methods have been devised for carrying out dehydrations. One method that works particularly well for tertiary alcohols is the acid-catalyzed reaction discussed in . For example, treatment of 1-methylcyclohexanol with warm, aqueous sulfuric acid in a solvent such as tetrahydrofuran results in loss of water and formation of 1-methylcyclohexene.
+A third important reaction of alcohols, both in the laboratory and in biological pathways, is their dehydration to give alkenes. Because of the usefulness of the reaction, a number of methods have been devised for carrying out dehydrations. One method that works particularly well for tertiary alcohols is the acid-catalyzed reaction discussed in [[docref:m00089]]. For example, treatment of 1-methylcyclohexanol with warm, aqueous sulfuric acid in a solvent such as tetrahydrofuran results in loss of water and formation of 1-methylcyclohexene.
 
 <!-- SEG:m00205:alt:fig-00005-alt -->
 1-methylcyclohexanol reacts with hydronium ion, tetrahydrofuran at 50 degree celsius to form 1-methylcyclohexene with 91 percent yield.
 
 <!-- SEG:m00205:para:para-00009 -->
-Acid-catalyzed dehydrations usually follow Zaitsev’s rule () and yield the more stable alkene as the major product. Thus, 2-methyl-2-butanol gives primarily 2-methyl-2-butene (trisubstituted double bond) rather than 2-methyl-1-butene (disubstituted double bond).
+Acid-catalyzed dehydrations usually follow Zaitsev’s rule ([[docref:m00128]]) and yield the more stable alkene as the major product. Thus, 2-methyl-2-butanol gives primarily 2-methyl-2-butene (trisubstituted double bond) rather than 2-methyl-1-butene (disubstituted double bond).
 
 <!-- SEG:m00205:alt:fig-00006-alt -->
 2-methyl-2-butanol reacts with hydronium ion, tetrahydrofuran at 25 degree Celsius to form 2-methyl-2-butene (trisubstituted) as the major product and 2-methyl-1-butene (disubstituted) as the minor product.
 
 <!-- SEG:m00205:para:para-00010 -->
-This reaction is an E1 process () and occurs by the three-step mechanism shown in [[xref:fig-00007]] on the next page. Protonation of the alcohol oxygen is followed by unimolecular loss of water to generate a carbocation intermediate and final loss of a proton from the neighboring carbon atom to complete the process. As with most E1 reactions, tertiary alcohols react fastest because they lead to stabilized, tertiary carbocation intermediates. Secondary alcohols can be made to react, but the conditions are severe (75% H[[sub:2]]SO[[sub:4]], 100 °C) and sensitive molecules don’t survive.
+This reaction is an E1 process ([[docref:m00131]]) and occurs by the three-step mechanism shown in [[xref:fig-00007]] on the next page. Protonation of the alcohol oxygen is followed by unimolecular loss of water to generate a carbocation intermediate and final loss of a proton from the neighboring carbon atom to complete the process. As with most E1 reactions, tertiary alcohols react fastest because they lead to stabilized, tertiary carbocation intermediates. Secondary alcohols can be made to react, but the conditions are severe (75% H[[sub:2]]SO[[sub:4]], 100 °C) and sensitive molecules don’t survive.
+
+<!-- SEG:m00205:figure-title:fig-00007-title -->
+MECHANISM
 
 <!-- SEG:m00205:caption:fig-00007-caption -->
 [[b:Mechanism for the acid-catalyzed dehydration of a tertiary alcohol to yield an alkene]]. The process is an E1 reaction and involves a carbocation intermediate.
@@ -74,7 +77,10 @@ To circumvent the need for strong acid and allow the dehydration of secondary al
 1-methylcyclohexanol reacts with phosphorus oxychloride and pyridine at 0 degree Celsius to form 1-methylcyclohexene with 96 percent yield.
 
 <!-- SEG:m00205:para:para-00012 -->
-Alcohol dehydrations carried out with POCl[[sub:3]] in pyridine take place by an E2 mechanism, as shown in [[xref:fig-00009]]. Because hydroxide ion is a poor leaving group (), direct E2 elimination of water from an alcohol does not occur. On reaction with POCl[[sub:3]], however, the –OH group is converted into a dichlorophosphate (–OPOCl[[sub:2]]), which is a good leaving group and is readily eliminated. Pyridine is both the reaction solvent and the base that removes a neighboring proton in the E2 elimination step.
+Alcohol dehydrations carried out with POCl[[sub:3]] in pyridine take place by an E2 mechanism, as shown in [[xref:fig-00009]]. Because hydroxide ion is a poor leaving group ([[docref:m00124]]), direct E2 elimination of water from an alcohol does not occur. On reaction with POCl[[sub:3]], however, the –OH group is converted into a dichlorophosphate (–OPOCl[[sub:2]]), which is a good leaving group and is readily eliminated. Pyridine is both the reaction solvent and the base that removes a neighboring proton in the E2 elimination step.
+
+<!-- SEG:m00205:figure-title:fig-00009-title -->
+MECHANISM
 
 <!-- SEG:m00205:caption:fig-00009-caption -->
 [[b:Mechanism for the dehydration of secondary and tertiary alcohols by reaction with POCl[[sub:3]] in pyridine]]. The reaction is an E2 process.
@@ -83,7 +89,7 @@ Alcohol dehydrations carried out with POCl[[sub:3]] in pyridine take place by an
 Two-step mechanism: cyclohexanol oxygen attacks P O Cl 3, chlorine leaves. Pyradine deprotonates adjacent carbon, electrons force O P O Cl 2 to leave, forming cyclohexene.
 
 <!-- SEG:m00205:para:para-00013 -->
-As noted in , biological dehydrations are also common and usually occur by an E1cB mechanism on a substrate in which the –OH group is two carbons away from a carbonyl group. One example occurs in the biosynthesis of the aromatic amino acid tyrosine. A base ([[b::]]B) first abstracts a proton from the carbon adjacent to the carbonyl group, and the anion intermediate then expels the –OH group with simultaneous protonation by an acid (HA) to form water.
+As noted in [[docref:m00132]], biological dehydrations are also common and usually occur by an E1cB mechanism on a substrate in which the –OH group is two carbons away from a carbonyl group. One example occurs in the biosynthesis of the aromatic amino acid tyrosine. A base ([[b::]]B) first abstracts a proton from the carbon adjacent to the carbonyl group, and the anion intermediate then expels the –OH group with simultaneous protonation by an acid (HA) to form water.
 
 <!-- SEG:m00205:alt:fig-00010-alt -->
 A base reacts with 5-dehydroquinate to form an anion intermediate. This is followed by the release of water to form 5-dehydroshikimate. This further forms tyrosine.

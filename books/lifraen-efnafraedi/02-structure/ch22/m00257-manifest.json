@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00257",
-  "extractedAt": "2026-08-31T19:08:49.513Z",
+  "extractedAt": "2026-09-22T17:26:38.885Z",
   "sourceHash": "db3109f3c791cd8d",
-  "segmentCount": 13,
+  "segmentCount": 14,
   "segmentIds": [
     "m00257:title:auto-1",
     "m00257:para:para-00001",
@@ -13,6 +13,7 @@
     "m00257:alt:fig-00002-alt",
     "m00257:para:para-00004",
     "m00257:para:para-00005",
+    "m00257:figure-title:fig-00003-title",
     "m00257:caption:fig-00003-caption",
     "m00257:alt:fig-00003-alt",
     "m00257:para:para-00006",
@@ -53,5 +54,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "enol",
+    "term-00002": "tautomers",
+    "term-00003": "enolate ion"
   }
 }

@@ -19,6 +19,9 @@ Imine formation and enamine formation seem different because one leads to a prod
 <!-- SEG:m00219:para:para-00004 -->
 Imines are formed in a reversible, acid-catalyzed process ([[xref:fig-00003]]) that begins with nucleophilic addition of the primary amine to the carbonyl group, followed by transfer of a proton from nitrogen to oxygen to yield a neutral amino alcohol, or [[term:carbinolamine|term-00004]]. Protonation of the carbinolamine oxygen by an acid catalyst then converts the –OH into a better leaving group (–OH[[sub:2]][[sup:+]]), and E1-like loss of water produces an iminium ion. Loss of a proton from nitrogen gives the final product and regenerates the acid catalyst.
 
+<!-- SEG:m00219:figure-title:fig-00003-title -->
+MECHANISM
+
 <!-- SEG:m00219:caption:fig-00003-caption -->
 [[b:Mechanism of imine formation by reaction of an aldehyde or ketone with a primary amine.]] The key step is the initial nucleophilic addition to yield a carbinolamine intermediate, which then loses water to give the imine.
 
@@ -33,6 +36,9 @@ First reaction shows the formation of cyclohexanone oxime between cyclohexanone 
 
 <!-- SEG:m00219:para:para-00006 -->
 Reaction of an aldehyde or ketone with a secondary amine, R[[sub:2]]NH, rather than a primary amine yields an enamine. As shown in [[xref:fig-00005]], the process is identical to imine formation up to the iminium ion stage, but at this point there is no proton on nitrogen that can be lost to form a neutral imine product. Instead, a proton is lost from the [[i:neighboring]] carbon (the [[i:α]] carbon), yielding an enamine.
+
+<!-- SEG:m00219:figure-title:fig-00005-title -->
+MECHANISM
 
 <!-- SEG:m00219:caption:fig-00005-caption -->
 [[b:Mechanism for enamine formation by reaction of an aldehyde or ketone with a secondary amine, R[[sub:2]]NH.]] The iminium ion intermediate formed in step 3 has no hydrogen attached to N and so must lose H[[sup:+]] from the carbon two atoms away.
@@ -62,13 +68,13 @@ Predicting the Product of Reaction between a Ketone and an Amine
 Show the products you would obtain by acid-catalyzed reaction of 3-pentanone with methylamine, CH[[sub:3]]NH[[sub:2]], and with dimethylamine, (CH[[sub:3]])[[sub:2]]NH.
 
 <!-- SEG:m00219:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00219:para:para-00011 -->
 An aldehyde or ketone reacts with a primary amine, RNH[[sub:2]], to yield an imine, in which the carbonyl oxygen atom has been replaced by the =N–R group of the amine. Reaction of the same aldehyde or ketone with a secondary amine, R[[sub:2]]NH, yields an enamine, in which the oxygen atom has been replaced by the –NR[[sub:2]] group of the amine and the double bond has moved to a position between the former carbonyl carbon and the neighboring carbon.
 
 <!-- SEG:m00219:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00219:alt:fig-00007-alt -->
 3-pentanone undergoes two reactions. It reacts with methylamine to form an imine and water. It reacts with ethyl amine to form an enamine and water.

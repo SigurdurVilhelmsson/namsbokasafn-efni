@@ -5,10 +5,10 @@ Properties of Alcohols and Phenols
 Alcohols and phenols have nearly the same geometry around the oxygen atom as water. The R–O–H bond angle has an approximately tetrahedral value (108.5° in methanol, for instance), and the oxygen atom is [[i:sp]][[sup:3]]-hybridized.
 
 <!-- SEG:m00201:para:para-00002 -->
-Also like water, alcohols and phenols have higher boiling points than might be expected, because of hydrogen-bonding (). A positively polarized –OH hydrogen atom from one molecule is attracted to a lone pair of electrons on the electronegative oxygen atom of another molecule, resulting in a weak force that holds the molecules together ([[xref:fig-00001]]). These intermolecular attractions must be overcome for a molecule to break free from the liquid and enter the vapor state, so the boiling temperature is raised. For example, 1-propanol (MW = 60), butane (MW = 58), and chloroethane (MW = 65) have similar molecular weights, yet 1-propanol boils at 97 °C, compared with –0.5 °C for the alkane and 12.5 °C for the chloroalkane.
+Also like water, alcohols and phenols have higher boiling points than might be expected, because of hydrogen-bonding ([[docref:m00029]]). A positively polarized –OH hydrogen atom from one molecule is attracted to a lone pair of electrons on the electronegative oxygen atom of another molecule, resulting in a weak force that holds the molecules together ([[xref:fig-00001]]). These intermolecular attractions must be overcome for a molecule to break free from the liquid and enter the vapor state, so the boiling temperature is raised. For example, 1-propanol (MW = 60), butane (MW = 58), and chloroethane (MW = 65) have similar molecular weights, yet 1-propanol boils at 97 °C, compared with –0.5 °C for the alkane and 12.5 °C for the chloroalkane.
 
 <!-- SEG:m00201:caption:fig-00001-caption -->
-[[b:Hydrogen-bonding in alcohols and phenols]]. Attraction between a positively polarized –OH hydrogen and a negatively polarized oxygen holds molecules together. The electrostatic potential map of methanol shows the [[b:positively polarized]] –OH hydrogen and the [[b:negatively polarized]] oxygen.
+[[b:Hydrogen-bonding in alcohols and phenols]]. Attraction between a positively polarized –OH hydrogen and a negatively polarized oxygen holds molecules together. The electrostatic potential map of methanol shows the [[b:[[span:positively polarized|cyan-text]]]] –OH hydrogen and the [[b:[[span:negatively polarized|magenta-text]]]] oxygen.
 
 <!-- SEG:m00201:alt:fig-00001-alt -->
 Hydrogen bonding in alcohols in which oxygen and hydrogen carry delta-negative and delta-positive charges, respectively. The figure shows hydrogen bonding between two ball-and-stick models of methanol in electrostatic potential map.
@@ -26,7 +26,7 @@ As weak acids, they dissociate slightly in dilute aqueous solution by donating a
 A reversible reaction in which alcohol reacts with water to form alkoxide ion and hydronium ions. Phenol reacts with water to form phenoxide ion and hydronium ion.
 
 <!-- SEG:m00201:para:para-00005 -->
-Recall from the earlier discussion of acidity in to that the strength of any acid HA in water can be expressed by an acidity constant, [[i:K]][[sub:a]].
+Recall from the earlier discussion of acidity in [[docref:m00024]] to [[docref:m00028]] that the strength of any acid HA in water can be expressed by an acidity constant, [[i:K]][[sub:a]].
 
 <!-- SEG:m00201:para:para-00006 -->
 Compounds with a smaller [[i:K]][[sub:a]] and larger p[[i:K]][[sub:a]] are less acidic, whereas compounds with a larger [[i:K]][[sub:a]] and smaller p[[i:K]][[sub:a]] are more acidic. As shown in [[xref:table-00001]], simple alcohols like methanol and ethanol are about as acidic as water, but the more highly substituted [[i:tert]]-butyl alcohol is somewhat weaker. Substituent groups also have a significant effect: 2,2,2-trifluoroethanol is approximately 3700 times stronger than ethanol, for instance. Phenols and [[i:thiols,]] the sulfur analogs of alcohols, are substantially more acidic than water.
@@ -56,10 +56,10 @@ CH[[sub:3]]CH[[sub:2]]OH
 16
 
 <!-- SEG:m00201:entry:auto-20 -->
-H[[sub:2]]O
+[[span:H[[sub:2]]O|cyan-text]]
 
 <!-- SEG:m00201:entry:auto-21 -->
-15.74
+[[span:15.74|cyan-text]]
 
 <!-- SEG:m00201:entry:auto-22 -->
 CH[[sub:3]]OH
@@ -116,7 +116,7 @@ The effect of alkyl substitution on alcohol acidity is due primarily to solvatio
 The ball-and-stick model of methoxide and tertiary-butoxide ion with p k a values. The oxygen of methoxide ion is sterically accessible, less hindered, and more easily solvated than tertiary-butoxide ion.
 
 <!-- SEG:m00201:para:para-00008 -->
-Inductive effects () are also important in determining alcohol acidities. Electron-withdrawing halogen substituents, for instance, stabilize an alkoxide ion by spreading the charge over a larger volume, thus making the alcohol more acidic. Compare, for instance, the acidities of ethanol (p[[i:K]][[sub:a]] = 16) and 2,2,2-trifluoroethanol (p[[i:K]][[sub:a]] = 12.43), or of [[i:tert]]-butyl alcohol (p[[i:K]][[sub:a]] = 18) and nonafluoro-[[i:tert]]-butyl alcohol (p[[i:K]][[sub:a]] = 5.4).
+Inductive effects ([[docref:m00192]]) are also important in determining alcohol acidities. Electron-withdrawing halogen substituents, for instance, stabilize an alkoxide ion by spreading the charge over a larger volume, thus making the alcohol more acidic. Compare, for instance, the acidities of ethanol (p[[i:K]][[sub:a]] = 16) and 2,2,2-trifluoroethanol (p[[i:K]][[sub:a]] = 12.43), or of [[i:tert]]-butyl alcohol (p[[i:K]][[sub:a]] = 18) and nonafluoro-[[i:tert]]-butyl alcohol (p[[i:K]][[sub:a]] = 5.4).
 
 <!-- SEG:m00201:alt:fig-00005-alt -->
 t-butoxide with fluorines replacing all hydrogens has a lower p K a (5.4) than t-butoxide (18).
@@ -137,13 +137,13 @@ Phenol reacts with sodium hydroxide to form sodium phenoxide (sodium phenolate) 
 Phenols are more acidic than alcohols because the phenoxide anion is resonance-stabilized. Delocalization of the negative charge over the ortho and para positions of the aromatic ring results in increased stability of the phenoxide anion relative to undissociated phenol and in a consequently lower ∆[[i:G]]° for dissociation. [[xref:fig-00008]] compares electrostatic potential maps of an alkoxide ion (CH[[sub:3]]O[[sup:–]]) with phenoxide ion to show how the negative charge in phenoxide ion is delocalized from oxygen to the ring.
 
 <!-- SEG:m00201:caption:fig-00008-caption -->
-[[b:The resonance-stabilized phenoxide ion is more stable than an alkoxide ion]]. Electrostatic potential maps show how the [[b:negative charge]] is concentrated on oxygen in the methoxide ion but is spread over the aromatic ring in the phenoxide ion.
+[[b:The resonance-stabilized phenoxide ion is more stable than an alkoxide ion]]. Electrostatic potential maps show how the [[b:[[span:negative charge|magenta-text]]]] is concentrated on oxygen in the methoxide ion but is spread over the aromatic ring in the phenoxide ion.
 
 <!-- SEG:m00201:alt:fig-00008-alt -->
 The ball-and-stick model in the electrostatic potential map of methoxide and phenoxide ion. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.
 
 <!-- SEG:m00201:para:para-00012 -->
-Substituted phenols can be either more acidic or less acidic than phenol itself, depending on whether the substituent is electron-withdrawing or electron-donating (). Phenols with an electron-withdrawing substituent are more acidic because these substituents delocalize the negative charge; phenols with an electron-donating substituent are less acidic because these substituents concentrate the charge. The acidifying effect of an electron-withdrawing substituent is particularly noticeable in phenols with a nitro group at the ortho or para position.
+Substituted phenols can be either more acidic or less acidic than phenol itself, depending on whether the substituent is electron-withdrawing or electron-donating ([[docref:m00192]]). Phenols with an electron-withdrawing substituent are more acidic because these substituents delocalize the negative charge; phenols with an electron-donating substituent are less acidic because these substituents concentrate the charge. The acidifying effect of an electron-withdrawing substituent is particularly noticeable in phenols with a nitro group at the ortho or para position.
 
 <!-- SEG:m00201:alt:fig-00009-alt -->
 The six resonance structures of a p-nitrophenoxide, separated by double-head arrows. The double bonds and charges shift in the molecules in resonance structures.
@@ -155,16 +155,16 @@ Predicting the Relative Acidity of a Substituted Phenol
 Is [[i:p]]-hydroxybenzaldehyde more acidic or less acidic than phenol?
 
 <!-- SEG:m00201:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00201:para:para-00014 -->
 Identify the substituent on the aromatic ring, and decide whether it is electron-donating or electron-withdrawing. Electron-withdrawing substituents make the phenol more acidic by stabilizing the phenoxide anion, and electron-donating substituents make the phenol less acidic by destabilizing the anion.
 
 <!-- SEG:m00201:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00201:para:para-00015 -->
-We saw in that a carbonyl group is electron-withdrawing. Thus, [[i:p]]-hydroxybenzaldehyde is more acidic (p[[i:K]][[sub:a]] = 7.9) than phenol (p[[i:K]][[sub:a]] = 9.89).
+We saw in [[docref:m00192]] that a carbonyl group is electron-withdrawing. Thus, [[i:p]]-hydroxybenzaldehyde is more acidic (p[[i:K]][[sub:a]] = 7.9) than phenol (p[[i:K]][[sub:a]] = 9.89).
 
 <!-- SEG:m00201:alt:fig-00010-alt -->
 The structure of para-hydroxybenzaldehyde with a p K a of 7.9. The oxygen of aldehyde has a delta negative charge and the carbon atom has delta positive charge.

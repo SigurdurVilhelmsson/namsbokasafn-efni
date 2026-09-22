@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00311",
-  "extractedAt": "2026-08-31T19:08:50.187Z",
+  "extractedAt": "2026-09-22T17:26:39.867Z",
   "sourceHash": "4db74492df4ef645",
   "segmentCount": 22,
   "segmentIds": [
@@ -61,5 +61,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "double helix"
   }
 }

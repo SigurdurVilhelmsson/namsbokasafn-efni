@@ -32,7 +32,7 @@ Meta
 Para
 
 <!-- SEG:m00192:entry:auto-12 -->
-[[b:Meta-directing deactivators]]
+[[b:[[span:Meta-directing deactivators|cyan-text]]]]
 
 <!-- SEG:m00192:entry:auto-13 -->
 [[MATH:1]]
@@ -119,7 +119,7 @@ Para
 &#8199;9
 
 <!-- SEG:m00192:entry:auto-41 -->
-[[b:Ortho- and para-directing deactivators]]
+[[b:[[span:Ortho- and para-directing deactivators|green-text]]]]
 
 <!-- SEG:m00192:entry:auto-42 -->
 –F
@@ -170,7 +170,7 @@ Para
 54
 
 <!-- SEG:m00192:entry:auto-58 -->
-[[b:Ortho- and para-directing activators]]
+[[b:[[span:Ortho- and para-directing activators|magenta-text]]]]
 
 <!-- SEG:m00192:entry:auto-59 -->
 –CH[[sub:3]]
@@ -224,13 +224,13 @@ Predicting the Product of an Electrophilic Aromatic Substitution Reaction
 Predict the major product of the sulfonation of toluene.
 
 <!-- SEG:m00192:para-title:para-00004-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00192:para:para-00004 -->
 Identify the substituent present on the ring, and decide whether it is ortho- and para-directing or meta-directing. According to [[xref:fig-00002]], an alkyl substituent is ortho- and para-directing, so sulfonation of toluene will primarily give a mixture of [[i:o]]-toluenesulfonic acid and [[i:p]]-toluenesulfonic acid.
 
 <!-- SEG:m00192:para-title:para-00005-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00192:alt:fig-00003-alt -->
 Toluene reacts with sulfur trioxide in the presence of sulfuric acid to form ortho-toluenesulfonic acid and para-toluenesulfonic acid.
@@ -251,13 +251,13 @@ The difference in rate of reaction of benzene with a Y group withdrawing electro
 Compare the electrostatic potential maps of benzaldehyde (deactivated), chlorobenzene (weakly deactivated), and phenol (activated) with that of benzene. As shown in [[xref:fig-00005]], the ring is more positive (yellow-green) when an electron-withdrawing group such as –CHO or –Cl is present and more negative (red) when an electron-donating group such as –OH is present.
 
 <!-- SEG:m00192:caption:fig-00005-caption -->
-[[b:[[i:Electrostatic potential maps of benzene and several substituted benzenes]] show that an electron-withdrawing group (–CHO or –Cl) makes the ring more [[b:electron-poor]], while an electron-donating group (–OH) makes the ring more [[b:electron-rich]].]]
+[[b:[[i:Electrostatic potential maps of benzene and several substituted benzenes]] show that an electron-withdrawing group (–CHO or –Cl) makes the ring more [[b:[[span:electron-poor|green-text]]]], while an electron-donating group (–OH) makes the ring more [[b:[[span:electron-rich|magenta-text]]]].]]
 
 <!-- SEG:m00192:alt:fig-00005-alt -->
 The ball-and-stick model in electrostatic potential maps and structures of benzaldehyde, chlorobenzene, benzene, and phenol.
 
 <!-- SEG:m00192:para:para-00010 -->
-The withdrawal or donation of electrons by a substituent group is controlled by an interplay of [[i:inductive effects]] and [[i:resonance effects.]] As we saw in , an [[term:inductive effect|term-00001]] is the withdrawal or donation of electrons through a [[i:σ]] bond due to electronegativity. Halogens, hydroxyl groups, carbonyl groups, cyano groups, and nitro groups inductively withdraw electrons through the [[i:σ]] bond linking the substituent to a benzene ring. This effect is most pronounced in halobenzenes and phenols, in which the electronegative atom is directly attached to the ring, but is also significant in carbonyl compounds, nitriles, and nitro compounds, in which the electronegative atom is farther removed. Alkyl groups, on the other hand, inductively donate electrons. This is the same hyperconjugative donating effect that causes alkyl substituents to stabilize alkenes () and carbocations ().
+The withdrawal or donation of electrons by a substituent group is controlled by an interplay of [[i:inductive effects]] and [[i:resonance effects.]] As we saw in [[docref:m00018]], an [[term:inductive effect|term-00001]] is the withdrawal or donation of electrons through a [[i:σ]] bond due to electronegativity. Halogens, hydroxyl groups, carbonyl groups, cyano groups, and nitro groups inductively withdraw electrons through the [[i:σ]] bond linking the substituent to a benzene ring. This effect is most pronounced in halobenzenes and phenols, in which the electronegative atom is directly attached to the ring, but is also significant in carbonyl compounds, nitriles, and nitro compounds, in which the electronegative atom is farther removed. Alkyl groups, on the other hand, inductively donate electrons. This is the same hyperconjugative donating effect that causes alkyl substituents to stabilize alkenes ([[docref:m00068]]) and carbocations ([[docref:m00071]]).
 
 <!-- SEG:m00192:alt:fig-00006-alt -->
 Five benzene rings with chlorine, hydroxyl group, carbonyl group, cyano group, and nitro group are labeled inductive electron withdrawal. Toluene is labeled inductive electron donation.
@@ -368,7 +368,7 @@ Resonance effect
 –CH[[sub:3]]
 
 <!-- SEG:m00192:entry:auto-124 -->
-Activating
+[[span:Activating|magenta-text]]
 
 <!-- SEG:m00192:entry:auto-125 -->
 Ortho, para
@@ -383,7 +383,7 @@ Weak donating
 –OH, –NH[[sub:2]]
 
 <!-- SEG:m00192:entry:auto-129 -->
-Activating
+[[span:Activating|magenta-text]]
 
 <!-- SEG:m00192:entry:auto-130 -->
 Ortho, para
@@ -398,7 +398,7 @@ Strong donating
 –F, –Cl
 
 <!-- SEG:m00192:entry:auto-134 -->
-Deactivating
+[[span:Deactivating|green-text]]
 
 <!-- SEG:m00192:entry:auto-135 -->
 Ortho, para
@@ -416,7 +416,7 @@ Weak donating
 –NO[[sub:2]], –CN,
 
 <!-- SEG:m00192:entry:auto-140 -->
-Deactivating
+[[span:Deactivating|cyan-text]]
 
 <!-- SEG:m00192:entry:auto-141 -->
 Meta

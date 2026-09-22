@@ -1,20 +1,20 @@
 <!-- SEG:m00067:title:auto-1 -->
-Problems
+Alkene Stereochemistry and the [[i:E]],[[i:Z]] Designation
 
 <!-- SEG:m00067:para:para-00001 -->
 The cis–trans naming system used in the previous section works only with disubstituted alkenes—compounds that have two substituents other than hydrogen on the double bond. With trisubstituted and tetrasubstituted double bonds, a more general method is needed for describing double-bond geometry. ([[i:Trisubstituted]] means three substituents other than hydrogen on the double bond; [[i:tetrasubstituted]] means four substituents other than hydrogen.)
 
 <!-- SEG:m00067:para:para-00002 -->
-The method used for describing alkene stereochemistry is called the [[term:[[i:E,Z]] system|term-00001]] and employs the same Cahn–Ingold–Prelog sequence rules given in for specifying the configuration of a chirality center. Let’s briefly review the sequence rules and then see how they’re used to specify double-bond geometry. For a more thorough review, reread .
+The method used for describing alkene stereochemistry is called the [[term:[[i:E,Z]] system|term-00001]] and employs the same Cahn–Ingold–Prelog sequence rules given in [[docref:m00054]] for specifying the configuration of a chirality center. Let’s briefly review the sequence rules and then see how they’re used to specify double-bond geometry. For a more thorough review, reread [[docref:m00054]].
 
 <!-- SEG:m00067:para:para-00003 -->
-[[b:RULE 1]][[BR]]Considering each of the double-bond carbons separately, look at the two substituents attached and rank them according to the atomic number of the first atom in each (8 for oxygen, 6 for carbon, 1 for hydrogen, and so forth). An atom with higher atomic number ranks higher than an atom with lower atomic number.
+[[b:[[span:RULE 1|red-text]]]][[BR]]Considering each of the double-bond carbons separately, look at the two substituents attached and rank them according to the atomic number of the first atom in each (8 for oxygen, 6 for carbon, 1 for hydrogen, and so forth). An atom with higher atomic number ranks higher than an atom with lower atomic number.
 
 <!-- SEG:m00067:para:para-00004 -->
-[[b:RULE 2]][[BR]]If a decision can’t be reached by ranking the first atoms in the two substituents, look at the second, third, or fourth atoms away from the double-bond until the first difference is found.
+[[b:[[span:RULE 2|red-text]]]][[BR]]If a decision can’t be reached by ranking the first atoms in the two substituents, look at the second, third, or fourth atoms away from the double-bond until the first difference is found.
 
 <!-- SEG:m00067:para:para-00005 -->
-[[b:RULE 3]][[BR]]Multiple-bonded atoms are equivalent to the same number of single-bonded atoms.
+[[b:[[span:RULE 3|red-text]]]][[BR]]Multiple-bonded atoms are equivalent to the same number of single-bonded atoms.
 
 <!-- SEG:m00067:para:para-00006 -->
 Once the two groups attached to each double-bonded carbon have been ranked as either higher or lower, look at the entire molecule. If the higher-ranked groups on each carbon are on the same side of the double bond, the alkene is said to have a [[term:[[i:Z]] configuration|term-00002]], for the German [[i:zusammen,]] meaning “together.” If the higher-ranked groups are on opposite sides, the alkene has an [[term:[[i:E]] configuration|term-00003]], for the German [[i:entgegen,]] meaning “opposite.” (For a simple way to remember which is which, note that the groups are on “ze zame zide” in the [[i:Z]] isomer.)
@@ -41,13 +41,13 @@ Assigning [[i:E]] and [[i:Z]] Configurations to Alkenes
 Assign [[i:E]] or [[i:Z]] configuration to the double bond in the following compound:
 
 <!-- SEG:m00067:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00067:para:para-00010 -->
 Look at the two substituents connected to each double-bonded carbon, and determine their ranking using the Cahn–Ingold–Prelog rules. Then, check whether the two higher-ranked groups are on the same or opposite sides of the double bond.
 
 <!-- SEG:m00067:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00067:para:para-00011 -->
 The left-hand carbon has −H and −CH[[sub:3]] substituents, of which −CH[[sub:3]] ranks higher by sequence rule 1. The right-hand carbon has −CH(CH[[sub:3]])[[sub:2]] and −CH[[sub:2]]OH substituents, which are equivalent by rule 1. By rule 2, however, −CH[[sub:2]]OH ranks higher than −CH(CH[[sub:3]])[[sub:2]] because the substituent −CH[[sub:2]]OH has an oxygen as its highest second atom, but −CH(CH[[sub:3]])[[sub:2]] has a carbon as its highest second atom. The two higher-ranked groups are on the same side of the double bond, so we assign a [[i:Z]] configuration.

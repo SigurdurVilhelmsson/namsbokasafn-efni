@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00330",
-  "extractedAt": "2026-08-31T19:08:50.281Z",
+  "extractedAt": "2026-09-22T17:26:40.010Z",
   "sourceHash": "c846b0d8a3c9e8a8",
   "segmentCount": 27,
   "segmentIds": [
@@ -72,5 +72,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "metabolism",
+    "term-00002": "catabolism",
+    "term-00003": "anabolism"
   }
 }

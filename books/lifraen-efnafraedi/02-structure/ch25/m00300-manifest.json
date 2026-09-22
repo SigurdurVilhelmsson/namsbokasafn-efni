@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00300",
-  "extractedAt": "2026-08-31T19:08:49.838Z",
+  "extractedAt": "2026-09-22T17:26:39.397Z",
   "sourceHash": "3c682e7aea5b641f",
   "segmentCount": 29,
   "segmentIds": [
@@ -76,5 +76,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Fischer projections"
   }
 }

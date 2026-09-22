@@ -2,7 +2,7 @@
 Preparing Alkyl Halides from Alkanes: Radical Halogenation
 
 <!-- SEG:m00114:para:para-00001 -->
-As we saw briefly in , simple alkyl halides can sometimes be prepared by the radical reaction of an alkane with Cl[[sub:2]] or Br[[sub:2]] in the presence of ultraviolet light. The detailed mechanism is shown in [[xref:fig-00001]] for chlorination.
+As we saw briefly in [[docref:m00079]], simple alkyl halides can sometimes be prepared by the radical reaction of an alkane with Cl[[sub:2]] or Br[[sub:2]] in the presence of ultraviolet light. The detailed mechanism is shown in [[xref:fig-00001]] for chlorination.
 
 <!-- SEG:m00114:caption:fig-00001-caption -->
 [[b:Mechanism of the radical chlorination of methane.]] Three kinds of steps are required in radical substitution reactions: initiation, propagation, and termination. The propagation steps are a repeating cycle, with Cl[[b:·]] a reactant in step 1 and a product in step 2, and with [[b:·]]CH[[sub:3]] a product in step 1 and a reactant in step 2. The symbol [[i:hν]] shown in the initiation step is the standard way of indicating irradiation with light ([[i:ν]] is the lowercase Greek letter nu).

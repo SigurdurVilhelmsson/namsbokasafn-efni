@@ -2,7 +2,7 @@
 Disaccharides
 
 <!-- SEG:m00306:para:para-00001 -->
-We saw in that reaction of a monosaccharide with an alcohol yields a glycoside in which the anomeric –OH group is replaced by an –OR substituent. If the alcohol is itself a sugar, the glycosidic product is a [[term:disaccharide|term-00001]].
+We saw in [[docref:m00304]] that reaction of a monosaccharide with an alcohol yields a glycoside in which the anomeric –OH group is replaced by an –OR substituent. If the alcohol is itself a sugar, the glycosidic product is a [[term:disaccharide|term-00001]].
 
 <!-- SEG:m00306:title:sect-00001-title -->
 Maltose and Cellobiose
@@ -11,7 +11,7 @@ Maltose and Cellobiose
 Disaccharides contain a glycosidic acetal bond between the anomeric carbon of one sugar and an –OH group at any position on the other sugar. A glycosidic bond between C1 of the first sugar and the –OH at C4 of the second sugar is particularly common. Such a bond is called a 1→4 link.
 
 <!-- SEG:m00306:para:para-00003 -->
-The glycosidic bond to an anomeric carbon can be either [[i:α]] or [[i:β.]] Maltose, the disaccharide obtained by enzyme-catalyzed hydrolysis of starch, consists of two [[i:α]]-D-glucopyranose units joined by a 1→4-[[i:α]]-glycoside bond. Cellobiose, the disaccharide obtained by partial hydrolysis of cellulose, consists of two [[i:β]]-D-glucopyranose units joined by a 1→4-[[i:β]]-glycoside bond.
+The glycosidic bond to an anomeric carbon can be either [[i:α]] or [[i:β.]] Maltose, the disaccharide obtained by enzyme-catalyzed hydrolysis of starch, consists of two [[i:α]]-[[sc:D]]-glucopyranose units joined by a 1→4-[[i:α]]-glycoside bond. Cellobiose, the disaccharide obtained by partial hydrolysis of cellulose, consists of two [[i:β]]-[[sc:D]]-glucopyranose units joined by a 1→4-[[i:β]]-glycoside bond.
 
 <!-- SEG:m00306:alt:fig-00001-alt -->
 Maltose is two D glucopyranose units with 1,4 alpha glycosidic bond. Cellobiose is two D glucopyranose units with 1,4 beta glycosidic bond. The figure shows the structure and ball-and-stick model.
@@ -32,7 +32,7 @@ Problems
 Lactose
 
 <!-- SEG:m00306:para:para-00007 -->
-Lactose is a disaccharide that occurs naturally in both human and cow’s milk. It is widely used in baking and in commercial milk formulas for infants. Like maltose and cellobiose, lactose is a reducing sugar. It exhibits mutarotation and is a 1→4-[[i:β]]-linked glycoside. Unlike maltose and cellobiose, however, lactose contains two different monosaccharides—D-glucose and D-galactose—joined by a [[i:β]]-glycosidic bond between C1 of galactose and C4 of glucose.
+Lactose is a disaccharide that occurs naturally in both human and cow’s milk. It is widely used in baking and in commercial milk formulas for infants. Like maltose and cellobiose, lactose is a reducing sugar. It exhibits mutarotation and is a 1→4-[[i:β]]-linked glycoside. Unlike maltose and cellobiose, however, lactose contains two different monosaccharides—[[sc:D]]-glucose and [[sc:D]]-galactose—joined by a [[i:β]]-glycosidic bond between C1 of galactose and C4 of glucose.
 
 <!-- SEG:m00306:alt:fig-00003-alt -->
 The structure and ball-and-stick model of lactose which is a 1,4-beta-glycoside. The beta-glucopyranose and beta-galactopyranoside in the structure are labeled.

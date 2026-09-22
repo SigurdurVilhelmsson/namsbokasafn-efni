@@ -17,7 +17,7 @@ The structure of dibutyl phthalate shows a benzene ring with two carbonyl groups
 Preparation of Esters
 
 <!-- SEG:m00244:para:para-00003 -->
-Esters are usually prepared from carboxylic acids by the methods already discussed. Thus, carboxylic acids are converted directly into esters by S[[sub:N]]2 reaction of a carboxylate ion with a primary alkyl halide or by Fischer esterification of a carboxylic acid with an alcohol in the presence of a mineral acid catalyst. In addition, acid chlorides are converted into esters by treatment with an alcohol in the presence of base ().
+Esters are usually prepared from carboxylic acids by the methods already discussed. Thus, carboxylic acids are converted directly into esters by S[[sub:N]]2 reaction of a carboxylate ion with a primary alkyl halide or by Fischer esterification of a carboxylic acid with an alcohol in the presence of a mineral acid catalyst. In addition, acid chlorides are converted into esters by treatment with an alcohol in the presence of base ([[docref:m00242]]).
 
 <!-- SEG:m00244:alt:fig-00003-alt -->
 The flow chart shows conversion of carboxylic acids to esters. The first example uses sodium hydroxide and an alkyl halide, the second uses an alcohol and acid, and the third uses thionyl chloride, followed by an alcohol and pyridine.
@@ -40,6 +40,9 @@ Ester hydrolysis in basic solution is called [[term:saponification|term-00002]],
 <!-- SEG:m00244:para:para-00007 -->
 As shown in [[xref:fig-00006]], ester hydrolysis occurs through a typical nucleophilic acyl substitution pathway in which hydroxide ion is the nucleophile that adds to the ester carbonyl group to give a tetrahedral intermediate. Loss of alkoxide ion then gives a carboxylic acid, which is deprotonated to give the carboxylate ion. Addition of aqueous HCl, in a separate step after the saponification is complete, protonates the carboxylate ion and gives the carboxylic acid.
 
+<!-- SEG:m00244:figure-title:fig-00006-title -->
+MECHANISM
+
 <!-- SEG:m00244:caption:fig-00006-caption -->
 [[b:Mechanism of base-induced ester hydrolysis (saponification)]].
 
@@ -53,7 +56,10 @@ The mechanism shown in [[xref:fig-00006]] is supported by isotope-labeling studi
 The reaction shows an ester (ethyl propionate) reacting with aqueous sodium hydroxide followed by treatment with acid to give propanoic acid and ethanol.
 
 <!-- SEG:m00244:para:para-00009 -->
-Acid-catalyzed ester hydrolysis can occur by more than one mechanism, depending on the structure of the ester. The usual pathway, however, is just the reverse of a Fischer esterification reaction (). As shown in [[xref:fig-00008]], the ester is first activated toward nucleophilic attack by protonation of the carboxyl oxygen atom, and nucleophilic addition of water then occurs. Transfer of a proton and elimination of alcohol yields the carboxylic acid. Because this hydrolysis reaction is the reverse of a Fischer esterification reaction, [[xref:fig-00008]] is the reverse of [[docref:m00241#fig-00006]].
+Acid-catalyzed ester hydrolysis can occur by more than one mechanism, depending on the structure of the ester. The usual pathway, however, is just the reverse of a Fischer esterification reaction ([[docref:m00241]]). As shown in [[xref:fig-00008]], the ester is first activated toward nucleophilic attack by protonation of the carboxyl oxygen atom, and nucleophilic addition of water then occurs. Transfer of a proton and elimination of alcohol yields the carboxylic acid. Because this hydrolysis reaction is the reverse of a Fischer esterification reaction, [[xref:fig-00008]] is the reverse of [[docref:m00241#fig-00006]].
+
+<!-- SEG:m00244:figure-title:fig-00008-title -->
+MECHANISM
 
 <!-- SEG:m00244:caption:fig-00008-caption -->
 [[b:Mechanism of acid-catalyzed ester hydrolysis.]] The forward reaction is a hydrolysis; the back-reaction is a Fischer esterification and is thus the reverse of [[docref:m00241#fig-00006]].
@@ -71,7 +77,7 @@ The reaction shows a fat reacting with an enzyme and base to form a fatty acid a
 Conversion of Esters into Amides: Aminolysis
 
 <!-- SEG:m00244:para:para-00012 -->
-Esters react with ammonia and amines to yield amides. The reaction is not often used, however, because it’s usually easier to prepare an amide by starting with an acid chloride ().
+Esters react with ammonia and amines to yield amides. The reaction is not often used, however, because it’s usually easier to prepare an amide by starting with an acid chloride ([[docref:m00242]]).
 
 <!-- SEG:m00244:alt:fig-00010-alt -->
 Methyl benzoate reacts with ammonia in ether to form benzamide and methanol. The benzamide structure has a benzene ring attached to the amide (C O N H 2) group.
@@ -80,7 +86,7 @@ Methyl benzoate reacts with ammonia in ether to form benzamide and methanol. The
 Conversion of Esters into Alcohols: Reduction
 
 <!-- SEG:m00244:para:para-00013 -->
-Esters are easily reduced by treatment with LiAlH[[sub:4]] to yield primary alcohols ().
+Esters are easily reduced by treatment with LiAlH[[sub:4]] to yield primary alcohols ([[docref:m00203]]).
 
 <!-- SEG:m00244:alt:fig-00011-alt -->
 Ethyl-2-pentenoate is converted to 2-penten-1-ol in ninety-two percent yield when treated with lithium aluminum hydride followed by acid. A five-membered lactone is converted to 1,4-pentanediol in eighty-six percent yield using the same reagents.
@@ -101,7 +107,7 @@ The conversion of ethyl dodecanoate to dodecanal (eighty-eight percent) and etha
 Conversion of Esters into Alcohols: Grignard Reaction
 
 <!-- SEG:m00244:para:para-00018 -->
-Esters react with 2 equivalents of a Grignard reagent to yield a tertiary alcohol in which two of the substituents are identical (). The reaction occurs by the usual nucleophilic substitution mechanism to give an intermediate ketone, which reacts further with the Grignard reagent to yield a tertiary alcohol.
+Esters react with 2 equivalents of a Grignard reagent to yield a tertiary alcohol in which two of the substituents are identical ([[docref:m00204]]). The reaction occurs by the usual nucleophilic substitution mechanism to give an intermediate ketone, which reacts further with the Grignard reagent to yield a tertiary alcohol.
 
 <!-- SEG:m00244:alt:fig-00014-alt -->
 Methyl benzoate reacts with two moles of phenyl magnesium bromide followed by acid hydrolysis forming a product with tetrahedral carbon single-bonded to three benzene rings and hydroxyl (triphenylmethanol (ninety-six percent)).

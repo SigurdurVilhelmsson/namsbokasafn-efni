@@ -5,7 +5,7 @@ Naming Carboxylic Acid Derivatives
 Acid Halides, RCOX
 
 <!-- SEG:m00239:para:para-00001 -->
-Acid halides are named by identifying first the acyl group and then the halide. As described in and shown in [[docref:m00230#table-00001]], the acyl group name is derived from the carboxylic acid name by replacing the -[[i:ic acid]] or -[[i:oic acid]] ending with -[[i:oyl,]] or the -[[i:carboxylic acid]] ending with -[[i:carbonyl.]] To keep things interesting, however, IUPAC recognizes eight exceptions for which a -[[i:yl]] rather than an -[[i:oyl]] ending is used: formic (formyl), acetic (acetyl), propionic (propionyl), butyric (butyryl), oxalic (oxalyl), malonic (malonyl), succinic (succinyl), and glutaric (glutaryl).
+Acid halides are named by identifying first the acyl group and then the halide. As described in [[docref:m00230]] and shown in [[docref:m00230#table-00001]], the acyl group name is derived from the carboxylic acid name by replacing the -[[i:ic acid]] or -[[i:oic acid]] ending with -[[i:oyl,]] or the -[[i:carboxylic acid]] ending with -[[i:carbonyl.]] To keep things interesting, however, IUPAC recognizes eight exceptions for which a -[[i:yl]] rather than an -[[i:oyl]] ending is used: formic (formyl), acetic (acetyl), propionic (propionyl), butyric (butyryl), oxalic (oxalyl), malonic (malonyl), succinic (succinyl), and glutaric (glutaryl).
 
 <!-- SEG:m00239:alt:fig-00001-alt -->
 The structures of three acid halides. The first is acetyl chloride, the second is benzoyl bromide, and the third is cyclohexanecarbonyl chloride.

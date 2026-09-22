@@ -2,7 +2,7 @@
 Aromatic Heterocycles: Pyridine and Pyrrole
 
 <!-- SEG:m00185:para:para-00001 -->
-Look back once again at the definition of aromaticity in : a cyclic, conjugated molecule containing 4[[i:n]] + 2 [[i:π]] electrons. Nothing in this definition says that the atoms in the ring must be [[i:carbon.]] In fact, [[i:heterocyclic]] compounds can also be aromatic. A [[term:heterocycle|term-00001]] is a cyclic compound that contains atoms of more than one element in its ring, usually carbon along with nitrogen, oxygen, or sulfur. Pyridine and pyrimidine, for example, are six-membered heterocycles with carbon and nitrogen in their rings ([[xref:fig-00001]]).
+Look back once again at the definition of aromaticity in [[docref:m00183]]: a cyclic, conjugated molecule containing 4[[i:n]] + 2 [[i:π]] electrons. Nothing in this definition says that the atoms in the ring must be [[i:carbon.]] In fact, [[i:heterocyclic]] compounds can also be aromatic. A [[term:heterocycle|term-00001]] is a cyclic compound that contains atoms of more than one element in its ring, usually carbon along with nitrogen, oxygen, or sulfur. Pyridine and pyrimidine, for example, are six-membered heterocycles with carbon and nitrogen in their rings ([[xref:fig-00001]]).
 
 <!-- SEG:m00185:caption:fig-00001-caption -->
 [[b:Pyridine and pyrimidine are nitrogen-containing aromatic heterocycles with [[i:π]] electron arrangements like that of benzene.]] Both have a lone pair of electrons on nitrogen in an [[i:sp]][[sup:2]] orbital in the plane of the ring.
@@ -38,13 +38,13 @@ Accounting for the Aromaticity of a Heterocycle
 Thiophene, a sulfur-containing heterocycle, undergoes typical aromatic substitution reactions rather than addition reactions. Why is thiophene aromatic?
 
 <!-- SEG:m00185:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00185:para:para-00007 -->
 Recall the requirements for aromaticity—a planar, cyclic, conjugated molecule with 4[[i:n]] + 2 [[i:π]] electrons—and see how these requirements apply to thiophene.
 
 <!-- SEG:m00185:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00185:para:para-00008 -->
 Thiophene is the sulfur analog of pyrrole. The sulfur atom is [[i:sp]][[sup:2]]-hybridized and has a lone pair of electrons in a [[i:p]] orbital perpendicular to the plane of the ring. Sulfur also has a second lone pair of electrons in the ring plane.

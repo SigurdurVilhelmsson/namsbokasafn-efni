@@ -23,7 +23,7 @@ Thye condensation of (R)-mevalonate and 1-deoxy-D-xylose-5-phosphate leads to th
 The Mevalonate Pathway to Isopentenyl Diphosphate
 
 <!-- SEG:m00269:title:sect-00002-title -->
-Step 1 of [[xref:fig-00004]]: Claisen Condensation
+Step [[span:1|magenta-text]] of [[xref:fig-00004]]: Claisen Condensation
 
 <!-- SEG:m00269:para:para-00005 -->
 The first step in mevalonate biosynthesis is a Claisen condensation to yield acetoacetyl CoA, a reaction catalyzed by acetoacetyl-CoA acetyltransferase. An acetyl group is first bound to the enzyme by a nucleophilic acyl substitution reaction with a cysteine –SH group. Formation of an enolate ion from a second molecule of acetyl CoA, followed by Claisen condensation, then yields the product.
@@ -32,10 +32,13 @@ The first step in mevalonate biosynthesis is a Claisen condensation to yield ace
 Claisen condensation of acetyl CoA and a thioacetate forms an intermediate that leads to the formation of acetoacetyl CoA.
 
 <!-- SEG:m00269:title:sect-00003-title -->
-Step 2 of [[xref:fig-00004]]: Aldol Condensation
+Step [[span:2|magenta-text]] of [[xref:fig-00004]]: Aldol Condensation
 
 <!-- SEG:m00269:para:para-00006 -->
 Acetoacetyl CoA next undergoes an aldol-like addition of an acetyl CoA enolate ion in a reaction catalyzed by 3-hydroxy-3-methylglutaryl-CoA synthase. The reaction occurs by initial binding of the substrate to a cysteine –SH group in the enzyme, followed by enolate-ion addition and subsequent hydrolysis to give (3[[i:S]])-3-hydroxy-3-methylglutaryl CoA (HMG-CoA).
+
+<!-- SEG:m00269:figure-title:fig-00004-title -->
+MECHANISM
 
 <!-- SEG:m00269:caption:fig-00004-caption -->
 [[b:The mevalonate pathway for the biosynthesis of isopentenyl diphosphate from three molecules of acetyl CoA.]] Individual steps are explained in the text.
@@ -47,16 +50,16 @@ A four-step reaction is involved to produce isopentenyl diphosphate from acetyl 
 Base catalyzed Aldol condensation of acetyl CoA with an enzyme-bound thiol diketone generated a tetrahedral intermediate which collapses to (3 S)-3-hydroxy-3-methylglutaryl coenzyme A.
 
 <!-- SEG:m00269:title:sect-00004-title -->
-Step 3 of [[xref:fig-00004]]: Reduction
+Step [[span:3|magenta-text]] of [[xref:fig-00004]]: Reduction
 
 <!-- SEG:m00269:para:para-00007 -->
-Reduction of HMG-CoA to give ([[i:R]])-mevalonate is catalyzed by 3-hydroxy-3-methylglutaryl-CoA reductase and requires 2 equivalents of reduced nicotinamide adenine dinucleotide phosphate (NADPH), a close relative of NADH (). The reaction occurs in two steps and proceeds through an aldehyde intermediate. The first step is a nucleophilic acyl substitution reaction involving hydride transfer from NADPH to the thioester carbonyl group of HMG-CoA. Following expulsion of HSCoA as leaving group, the aldehyde intermediate undergoes a second hydride addition to give mevalonate.
+Reduction of HMG-CoA to give ([[i:R]])-mevalonate is catalyzed by 3-hydroxy-3-methylglutaryl-CoA reductase and requires 2 equivalents of reduced nicotinamide adenine dinucleotide phosphate (NADPH), a close relative of NADH ([[docref:m00223]]). The reaction occurs in two steps and proceeds through an aldehyde intermediate. The first step is a nucleophilic acyl substitution reaction involving hydride transfer from NADPH to the thioester carbonyl group of HMG-CoA. Following expulsion of HSCoA as leaving group, the aldehyde intermediate undergoes a second hydride addition to give mevalonate.
 
 <!-- SEG:m00269:alt:fig-00006-alt -->
 H M G CoA is reduced by two nicotinamide adenine dinucleotide phosphate hydride molecules to form an aldehyde intermediate and then (R)-mevalonate.
 
 <!-- SEG:m00269:title:sect-00005-title -->
-Step 4 of [[xref:fig-00004]]: Phosphorylation and Decarboxylation
+Step [[span:4|magenta-text]] of [[xref:fig-00004]]: Phosphorylation and Decarboxylation
 
 <!-- SEG:m00269:para:para-00008 -->
 Three additional reactions are needed to convert mevalonate to isopentenyl diphosphate. The first two are straightforward phosphorylations by ATP that occur through nucleophilic substitution reactions on the terminal phosphorus. Mevalonate is first converted to mevalonate 5-phosphate (phosphomevalonate) by reaction with ATP; mevalonate 5-phosphate then reacts with a second ATP to give mevalonate 5-diphosphate (diphosphomevalonate). The third reaction results in phosphorylation of the tertiary hydroxyl group, followed by decarboxylation and loss of phosphate ion.
@@ -65,7 +68,7 @@ Three additional reactions are needed to convert mevalonate to isopentenyl dipho
 (R)-Mevalonate reacts to form mevalonate-5-phosphate that further reacts to form mevalonate-5-diphosphate. Adenosine triphosphate converts to adenosine diphosphate. This forms isopentenyl diphosphate. Adenosine triphosphate converts to carbon dioxide.
 
 <!-- SEG:m00269:para:para-00009 -->
-The final decarboxylation of mevalonate 5-diphosphate seems unusual because decarboxylations of acids do not typically occur except in [[i:β]]-keto acids and malonic acids, in which the carboxylate group is two atoms away from an additional carbonyl group. As discussed in , the function of this second carbonyl group is to act as an electron acceptor and stabilize the charge resulting from loss of CO[[sub:2]]. In fact, though, the decarboxylation of a [[i:β]]-keto acid and the decarboxylation of mevalonate 5-diphosphate are closely related.
+The final decarboxylation of mevalonate 5-diphosphate seems unusual because decarboxylations of acids do not typically occur except in [[i:β]]-keto acids and malonic acids, in which the carboxylate group is two atoms away from an additional carbonyl group. As discussed in [[docref:m00263]], the function of this second carbonyl group is to act as an electron acceptor and stabilize the charge resulting from loss of CO[[sub:2]]. In fact, though, the decarboxylation of a [[i:β]]-keto acid and the decarboxylation of mevalonate 5-diphosphate are closely related.
 
 <!-- SEG:m00269:para:para-00010 -->
 Catalyzed by mevalonate-5-diphosphate decarboxylase, the substrate is first phosphorylated on the free –OH group by reaction with ATP to give a tertiary phosphate, which undergoes spontaneous S[[sub:N]]1-like dissociation to give a tertiary carbocation. The positive charge then acts as an electron acceptor to facilitate decarboxylation in the same way a [[i:β]] carbonyl group does, giving isopentenyl diphosphate. (In the following structures, the diphosphate group is abbreviated OPP.)
@@ -128,13 +131,13 @@ Proposing a Terpenoid Biosynthesis Pathway
 Propose a mechanistic pathway for the biosynthesis of [[i:α]]-terpineol from geranyl diphosphate.
 
 <!-- SEG:m00269:para-title:para-00019-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00269:para:para-00019 -->
 [[i:α]]-Terpineol, a monoterpenoid, must be derived biologically from geranyl diphosphate through its isomer linalyl diphosphate. Draw the precursor in a conformation that approximates the structure of the target molecule, and then carry out a cationic cyclization, using the appropriate double bond to displace the diphosphate leaving group. Since the target is an alcohol, the carbocation resulting from cyclization evidently reacts with water.
 
 <!-- SEG:m00269:para-title:para-00020-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00269:alt:fig-00013-alt -->
 The structure of alpha-terpineol in which cyclohexene has methyl on C 1, and a C H linked to two methyl groups and an alcohol on C 4 position.

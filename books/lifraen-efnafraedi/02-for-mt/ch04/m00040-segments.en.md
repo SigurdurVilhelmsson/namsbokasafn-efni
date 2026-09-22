@@ -8,16 +8,16 @@ Saturated cyclic hydrocarbons are called [[term:cycloalkanes|term-00001]], or [[
 The ball and stick models and bond-line structures of cyclopropane, cyclobutane, cyclopentane, and cyclohexane, positioned from left to right.
 
 <!-- SEG:m00040:para:para-00002 -->
-Substituted cycloalkanes are named by rules similar to those we saw in () for open-chain alkanes. For most compounds, there are only two steps.
+Substituted cycloalkanes are named by rules similar to those we saw in ([[docref:m00035]]) for open-chain alkanes. For most compounds, there are only two steps.
 
 <!-- SEG:m00040:para:para-00003 -->
-[[b:STEP 1]] [[BR]][[b:Find the parent.]] [[BR]]Count the number of carbon atoms in the ring and the number in the largest substituent. If the number of carbon atoms in the ring is equal to or greater than the number in the substituent, the compound is named as an alkyl-substituted cycloalkane. If the number of carbon atoms in the largest substituent is greater than the number in the ring, the compound is named as a cycloalkyl-substituted alkane. For example:
+[[b:[[span:STEP 1|red-text]]]] [[BR]][[b:Find the parent.]] [[BR]]Count the number of carbon atoms in the ring and the number in the largest substituent. If the number of carbon atoms in the ring is equal to or greater than the number in the substituent, the compound is named as an alkyl-substituted cycloalkane. If the number of carbon atoms in the largest substituent is greater than the number in the ring, the compound is named as a cycloalkyl-substituted alkane. For example:
 
 <!-- SEG:m00040:alt:fig-00002-alt -->
 The chemical structures of methylcyclopentane and 1-cyclopropylbutane. In 1-cyclopropylbutane, 3 carbons form a ring and 4 carbons form a straight chain.
 
 <!-- SEG:m00040:para:para-00005 -->
-[[b:STEP 2]] [[BR]][[b:Number the substituents, and write the name.]] [[BR]]For an alkyl- or halo-substituted cycloalkane, choose a point of attachment as carbon 1 and number the substituents on the ring so that the [[i:second]] substituent has as low a number as possible. If ambiguity still exists, number so that the third or fourth substituent has as low a number as possible, until a point of difference is found.
+[[b:[[span:STEP 2|red-text]]]] [[BR]][[b:Number the substituents, and write the name.]] [[BR]]For an alkyl- or halo-substituted cycloalkane, choose a point of attachment as carbon 1 and number the substituents on the ring so that the [[i:second]] substituent has as low a number as possible. If ambiguity still exists, number so that the third or fourth substituent has as low a number as possible, until a point of difference is found.
 
 <!-- SEG:m00040:alt:fig-00003-alt -->
 The correct and incorrect numbering of substituted cyclohexane. The name with correct numbering is 1,3-dimethylcyclohexane and with incorrect numbering is 1,5-dimethylcyclohexane because 1,3 is a lower locant than 1,5. 3 and 5 are labeled lower and higher, respectively.

@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00129",
-  "extractedAt": "2026-08-31T19:08:48.072Z",
+  "extractedAt": "2026-09-22T17:26:37.080Z",
   "sourceHash": "8a3d3e392ee127a0",
-  "segmentCount": 24,
+  "segmentCount": 25,
   "segmentIds": [
     "m00129:title:auto-1",
     "m00129:para:para-00001",
+    "m00129:figure-title:fig-00001-title",
     "m00129:caption:fig-00001-caption",
     "m00129:alt:fig-00001-alt",
     "m00129:para:para-00002",
@@ -70,5 +71,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "E2 reaction",
+    "term-00002": "deuterium isotope effect",
+    "term-00003": "periplanar",
+    "term-00004": "syn periplanar",
+    "term-00005": "anti periplanar"
   }
 }

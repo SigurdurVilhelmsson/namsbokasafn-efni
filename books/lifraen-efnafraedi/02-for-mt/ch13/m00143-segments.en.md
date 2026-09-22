@@ -29,7 +29,7 @@ Molecular size and formula
 Functional groups present
 
 <!-- SEG:m00143:entry:auto-11 -->
-[[b:NMR spectroscopy]]
+[[b:[[span:NMR spectroscopy|magenta-text]]]]
 
 <!-- SEG:m00143:entry:auto-12 -->
 Map of carbon–hydrogen framework

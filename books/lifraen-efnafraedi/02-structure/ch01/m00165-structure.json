@@ -2,7 +2,7 @@
   "moduleId": "m00165",
   "title": {
     "segmentId": "m00165:title:auto-1",
-    "text": "Drawing Electron-Dot and Line-Bond Structures"
+    "text": "[[i:sp]][[sup:2]] Hybrid Orbitals and the Structure of Ethylene"
   },
   "documentClass": null,
   "metadata": {
@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00165:caption:fig-00001-caption"
       },
@@ -49,6 +50,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00165:caption:fig-00002-caption"
       },
@@ -85,7 +87,7 @@
           "segmentId": "m00165:para:para-00007",
           "title": {
             "segmentId": "m00165:para-title:para-00007-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -94,7 +96,7 @@
           "segmentId": "m00165:para:para-00008",
           "title": {
             "segmentId": "m00165:para-title:para-00008-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         },
         {
@@ -108,6 +110,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00173",
-  "extractedAt": "2026-08-31T19:08:48.487Z",
+  "extractedAt": "2026-09-22T17:26:37.581Z",
   "sourceHash": "10ab289d952b76a8",
   "segmentCount": 17,
   "segmentIds": [
@@ -61,5 +61,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "kinetic control",
+    "term-00002": "thermodynamic control"
   }
 }

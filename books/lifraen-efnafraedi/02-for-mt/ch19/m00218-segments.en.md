@@ -5,7 +5,7 @@ Nucleophilic Addition of Hydride and Grignard Reagents: Alcohol Formation
 Addition of Hydride Reagents: Reduction
 
 <!-- SEG:m00218:para:para-00001 -->
-We saw in that the most common method for preparing alcohols, both in the laboratory and in living organisms, is by the reduction of carbonyl compounds. Aldehydes are reduced with sodium borohydride (NaBH[[sub:4]]) to give primary alcohols, and ketones are reduced similarly to give secondary alcohols.
+We saw in [[docref:m00203]] that the most common method for preparing alcohols, both in the laboratory and in living organisms, is by the reduction of carbonyl compounds. Aldehydes are reduced with sodium borohydride (NaBH[[sub:4]]) to give primary alcohols, and ketones are reduced similarly to give secondary alcohols.
 
 <!-- SEG:m00218:alt:fig-00001-alt -->
 First reaction: Carbonyl in aldehyde gets reduced to primary alcohol using sodium borohydride in ethanol. Second reaction: Carbonyl in ketone gets reduced to secondary alcohol using the same reagents.
@@ -15,6 +15,9 @@ Carbonyl reduction occurs by a typical nucleophilic addition mechanism under bas
 
 <!-- SEG:m00218:alt:fig-00002-alt -->
 Hydride from sodium borohydride adds to the carbonyl of ketone forming an alkoxide intermediate where O carries a negative charge. Further hydrolysis of the intermediate gives secondary alcohol and water.
+
+<!-- SEG:m00218:figure-title:fig-00003-title -->
+MECHANISM
 
 <!-- SEG:m00218:caption:fig-00003-caption -->
 [[b:Mechanism of the Grignard reaction.]] Complexation of the carbonyl oxygen with the Lewis acid Mg[[sup:2+]] and subsequent nucleophilic addition of a carbanion to an aldehyde or ketone is followed by protonation of the alkoxide intermediate to yield an alcohol.

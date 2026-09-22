@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00254",
-  "extractedAt": "2026-08-31T19:08:49.060Z",
+  "extractedAt": "2026-09-22T17:26:38.209Z",
   "sourceHash": "74f0ac3878bcb478",
   "segmentCount": 28,
   "segmentIds": [
@@ -78,5 +78,14 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "mercapto group",
+    "term-00002": "sulfide",
+    "term-00003": "disulfides (R–S–S–R′)",
+    "term-00004": "thiolate ion",
+    "term-00005": "sulfonium ions",
+    "term-00006": "sulfoxide (R2SO)",
+    "term-00007": "sulfone (R2SO2)"
   }
 }

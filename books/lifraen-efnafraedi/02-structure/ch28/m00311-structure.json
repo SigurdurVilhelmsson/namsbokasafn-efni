@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00311:caption:fig-00001-caption"
       },
@@ -44,6 +45,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00311:caption:fig-00002-caption"
       },
@@ -91,6 +93,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -120,7 +123,7 @@
           "segmentId": "m00311:para:para-00007",
           "title": {
             "segmentId": "m00311:para-title:para-00007-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -128,7 +131,7 @@
           "id": "para-00008",
           "title": {
             "segmentId": "m00311:para-title:para-00008-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         },
         {

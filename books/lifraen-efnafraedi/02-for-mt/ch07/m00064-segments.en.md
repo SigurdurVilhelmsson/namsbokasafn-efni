@@ -2,13 +2,13 @@
 Calculating the Degree of Unsaturation
 
 <!-- SEG:m00064:item:list-00001-item-1 -->
-[[b:Organohalogen compounds (C, H, X, where X = F, Cl, Br, or I)]] A halogen substituent acts as a replacement for hydrogen in an organic molecule, so we can add the number of halogens and hydrogens to arrive at an equivalent hydrocarbon formula from which the degree of unsaturation can be found. For example, the formula C[[sub:4]]H[[sub:6]]Br[[sub:2]] is equivalent to the hydrocarbon formula C[[sub:4]]H[[sub:8]] and thus corresponds to one degree of unsaturation.
+[[b:[[span:Organohalogen compounds (C, H, X, where X = F, Cl, Br, or I)|green-text]]]] A halogen substituent acts as a replacement for hydrogen in an organic molecule, so we can add the number of halogens and hydrogens to arrive at an equivalent hydrocarbon formula from which the degree of unsaturation can be found. For example, the formula C[[sub:4]]H[[sub:6]]Br[[sub:2]] is equivalent to the hydrocarbon formula C[[sub:4]]H[[sub:8]] and thus corresponds to one degree of unsaturation.
 
 <!-- SEG:m00064:item:list-00001-item-2 -->
-[[b:Organooxygen compounds (C, H, O)]] Oxygen forms two bonds, so it doesn’t affect the formula of an equivalent hydrocarbon and can be ignored when calculating the degree of unsaturation. You can convince yourself of this by seeing what happens when an oxygen atom is inserted into an alkane bond: C−C becomes C−O−C or C−H becomes C−O−H, and there is no change in the number of hydrogen atoms. For example, the formula C[[sub:5]]H[[sub:8]]O is equivalent to the hydrocarbon formula C[[sub:5]]H[[sub:8]] and thus corresponds to two degrees of unsaturation.
+[[b:[[span:Organooxygen compounds (C, H, O)|magenta-text]]]] Oxygen forms two bonds, so it doesn’t affect the formula of an equivalent hydrocarbon and can be ignored when calculating the degree of unsaturation. You can convince yourself of this by seeing what happens when an oxygen atom is inserted into an alkane bond: C−C becomes C−O−C or C−H becomes C−O−H, and there is no change in the number of hydrogen atoms. For example, the formula C[[sub:5]]H[[sub:8]]O is equivalent to the hydrocarbon formula C[[sub:5]]H[[sub:8]] and thus corresponds to two degrees of unsaturation.
 
 <!-- SEG:m00064:item:list-00001-item-3 -->
-[[b:Organonitrogen compounds (C, H, N)]] Nitrogen forms three bonds, so an organonitrogen compound has one more hydrogen than a related hydrocarbon. We therefore subtract the number of nitrogens from the number of hydrogens to arrive at the equivalent hydrocarbon formula. Again, you can convince yourself of this by seeing what happens when a nitrogen atom is inserted into an alkane bond: C−C becomes C−NH−C or C−H becomes C−NH[[sub:2]], meaning that one additional hydrogen atom has been added. We must therefore subtract this extra hydrogen atom to arrive at the equivalent hydrocarbon formula. For example, the formula C[[sub:5]]H[[sub:9]]N is equivalent to C[[sub:5]]H[[sub:8]] and thus has two degrees of unsaturation.
+[[b:[[span:Organonitrogen compounds (C, H, N)|cyan-text]]]] Nitrogen forms three bonds, so an organonitrogen compound has one more hydrogen than a related hydrocarbon. We therefore subtract the number of nitrogens from the number of hydrogens to arrive at the equivalent hydrocarbon formula. Again, you can convince yourself of this by seeing what happens when a nitrogen atom is inserted into an alkane bond: C−C becomes C−NH−C or C−H becomes C−NH[[sub:2]], meaning that one additional hydrogen atom has been added. We must therefore subtract this extra hydrogen atom to arrive at the equivalent hydrocarbon formula. For example, the formula C[[sub:5]]H[[sub:9]]N is equivalent to C[[sub:5]]H[[sub:8]] and thus has two degrees of unsaturation.
 
 <!-- SEG:m00064:para:para-00001 -->
 Because of its double bond, an alkene has fewer hydrogens than an alkane with the same number of carbons&#8212;C[[i:[[sub:n]]]]H[[sub:2[[i:n]]]] for an alkene versus C[[i:[[sub:n]]]]H[[sub:2[[i:n]]+2]] for an alkane&#8212;and is therefore referred to as [[term:unsaturated|term-00001]]. Ethylene, for example, has the formula C[[sub:2]]H[[sub:4]], whereas ethane has the formula C[[sub:2]]H[[sub:6]].
@@ -41,13 +41,13 @@ The structure of 1-aminocyclopent-3-ene is shown as equivalently unsaturated to 
 To summarize:
 
 <!-- SEG:m00064:item:list-00002-item-1 -->
-[[b:Add]] the number of halogens to the number of hydrogens.
+[[b:[[span:Add|green-text]]]] the number of [[span:halogens|green-text]] to the number of hydrogens.
 
 <!-- SEG:m00064:item:list-00002-item-2 -->
-[[b:Ignore]] the number of oxygens.
+[[b:[[span:Ignore|magenta-text]]]] the number of [[span:oxygens|magenta-text]].
 
 <!-- SEG:m00064:item:list-00002-item-3 -->
-[[b:Subtract]] the number of nitrogens from the number of hydrogens.
+[[b:[[span:Subtract|cyan-text]]]] the number of [[span:nitrogens|cyan-text]] from the number of hydrogens.
 
 <!-- SEG:m00064:title:sect-00001-title -->
 Problems

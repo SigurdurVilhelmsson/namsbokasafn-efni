@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00327",
-  "extractedAt": "2026-08-31T19:08:49.985Z",
+  "extractedAt": "2026-09-22T17:26:39.598Z",
   "sourceHash": "a221bbedf11bc51d",
   "segmentCount": 50,
   "segmentIds": [
@@ -92,5 +92,16 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "enzyme",
+    "term-00002": "turnover number",
+    "term-00003": "Oxidoreductases",
+    "term-00004": "transferases",
+    "term-00005": "hydrolases",
+    "term-00006": "lyases",
+    "term-00007": "isomerases",
+    "term-00008": "cofactor",
+    "term-00009": "coenzyme"
   }
 }

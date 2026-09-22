@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00149",
-  "extractedAt": "2026-08-31T19:08:48.365Z",
+  "extractedAt": "2026-09-22T17:26:37.423Z",
   "sourceHash": "5773a6a2d78e8c97",
   "segmentCount": 55,
   "segmentIds": [
@@ -102,5 +102,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "multiplet",
+    "term-00002": "spin–spin splitting",
+    "term-00003": "coupling",
+    "term-00004": "n + 1 rule",
+    "term-00005": "coupling constant"
   }
 }

@@ -170,22 +170,22 @@ A variety of [[b:noncovalent interactions]] have a significant effect on the pro
 Additional Problems
 
 <!-- SEG:m00029:para:para-00070 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00029:para:para-00071 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00029:para:para-00027 -->
-[[b:Electronegativity and Dipole Moments]]
+[[b:[[span:Electronegativity and Dipole Moments|red-text]]]]
 
 <!-- SEG:m00029:para:para-00035 -->
-[[b:Formal Charges]]
+[[b:[[span:Formal Charges|red-text]]]]
 
 <!-- SEG:m00029:para:para-00038 -->
-[[b:Resonance]]
+[[b:[[span:Resonance|red-text]]]]
 
 <!-- SEG:m00029:para:para-00042 -->
-[[b:Acids and Bases]]
+[[b:[[span:Acids and Bases|red-text]]]]
 
 <!-- SEG:m00029:para:para-00056 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00163",
-  "extractedAt": "2026-08-31T19:08:46.516Z",
+  "extractedAt": "2026-09-22T17:26:35.489Z",
   "sourceHash": "74d5f17cdae092b5",
   "segmentCount": 10,
   "segmentIds": [
@@ -42,5 +42,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "sp3 hybrid orbitals",
+    "term-00002": "bond angle"
   }
 }

@@ -1,5 +1,5 @@
 <!-- SEG:m00100:title:auto-1 -->
-Untitled
+Reaction Stereochemistry: Addition of H[[sub:2]]O to an Achiral Alkene
 
 <!-- SEG:m00100:para:para-00001 -->
 Most of the biochemical reactions that take place in the body, as well as many organic reactions in the laboratory, yield products with chirality centers. For example, acid-catalyzed addition of H[[sub:2]]O to 1-butene in the laboratory yields 2-butanol, a chiral alcohol. What is the stereochemistry of this chiral product? If a single enantiomer is formed, is it [[i:R]] or [[i:S]]? If a mixture of enantiomers is formed, how much of each? In fact, the 2-butanol produced is a racemic mixture of [[i:R]] and [[i:S]] enantiomers. Let’s see why.
@@ -17,7 +17,7 @@ To understand why a racemic product results from the reaction of H[[sub:2]]O wit
 A 2-pathway reaction shows sec-butyl cation (achiral) reacting with water to form (S)-2-butanol and (R)-2-butanol each with 50 percent yield via transition state 1 and transition state 2, respectively.
 
 <!-- SEG:m00100:para:para-00003 -->
-As a general rule, the formation of a new chirality center by achiral reactants always leads to a racemic mixture of enantiomeric products. Put another way, optical activity can’t appear from nowhere; an optically active product can only result by starting with an optically active reactant or chiral environment ().
+As a general rule, the formation of a new chirality center by achiral reactants always leads to a racemic mixture of enantiomeric products. Put another way, optical activity can’t appear from nowhere; an optically active product can only result by starting with an optically active reactant or chiral environment ([[docref:m00061]]).
 
 <!-- SEG:m00100:para:para-00004 -->
 In contrast to laboratory reactions, enzyme-catalyzed biological reactions often give a single enantiomer of a chiral product, even when the substrate is achiral. One step in the citric acid cycle of food metabolism, for instance, is the aconitase-catalyzed addition of water to ([[i:Z]])-aconitate (usually called [[i:cis]]-aconitate) to give isocitrate.
@@ -26,7 +26,7 @@ In contrast to laboratory reactions, enzyme-catalyzed biological reactions often
 A reaction shows cis-aconitate (achiral) reacting with water in the presence of aconitase to form (2 R, 3 S)-isocitrate.
 
 <!-- SEG:m00100:para:para-00005 -->
-Even though [[i:cis]]-aconitate is achiral, only the (2[[i:R]],3[[i:S]]) enantiomer of the product is formed. As discussed in and , [[i:cis]]-aconitate is a prochiral molecule, which is held in a chiral environment by the aconitase enzyme during the reaction. In this environment, the two faces of the double bond are chemically distinct, and addition occurs on only the Re face at C2.
+Even though [[i:cis]]-aconitate is achiral, only the (2[[i:R]],3[[i:S]]) enantiomer of the product is formed. As discussed in [[docref:m00060]] and [[docref:m00061]], [[i:cis]]-aconitate is a prochiral molecule, which is held in a chiral environment by the aconitase enzyme during the reaction. In this environment, the two faces of the double bond are chemically distinct, and addition occurs on only the Re face at C2.
 
 <!-- SEG:m00100:alt:fig-00004-alt -->
 A reaction shows cis-aconitate reacting with water in the presence of aconitase to form (2 R, 3 S)-isocitrate.

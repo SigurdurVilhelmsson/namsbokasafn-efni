@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00249",
-  "extractedAt": "2026-08-31T19:08:49.035Z",
+  "extractedAt": "2026-09-22T17:26:38.190Z",
   "sourceHash": "8f24b3a9cb743818",
   "segmentCount": 23,
   "segmentIds": [
@@ -73,5 +73,9 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Williamson ether synthesis",
+    "term-00002": "alkoxymercuration"
   }
 }

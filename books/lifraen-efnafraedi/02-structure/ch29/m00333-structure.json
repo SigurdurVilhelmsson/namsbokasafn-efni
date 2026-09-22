@@ -30,7 +30,7 @@
       "class": null,
       "title": {
         "segmentId": "m00333:title:sect-00006-title",
-        "text": "Steps 1–2 of [[xref:fig-00001]]: Acyl Transfers"
+        "text": "Steps [[span:1|magenta-text]]–[[span:2|magenta-text]] of [[xref:fig-00001]]: Acyl Transfers"
       },
       "content": [
         {
@@ -56,6 +56,7 @@
               "type": "figure",
               "id": "fig-00001",
               "class": "mechanism-figure scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m00333:caption:fig-00001-caption"
               },
@@ -72,6 +73,7 @@
               "type": "figure",
               "id": "fig-00002",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -91,6 +93,7 @@
               "type": "figure",
               "id": "fig-00003",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -114,7 +117,7 @@
           "class": null,
           "title": {
             "segmentId": "m00333:title:sect-00002-title",
-            "text": "Steps 3–4 of [[xref:fig-00001]]: Carboxylation and Acyl Transfer"
+            "text": "Steps [[span:3|magenta-text]]–[[span:4|magenta-text]] of [[xref:fig-00001]]: Carboxylation and Acyl Transfer"
           },
           "content": [
             {
@@ -131,6 +134,10 @@
               "type": "figure",
               "id": "fig-00004",
               "class": "mechanism-figure scaled-down",
+              "title": {
+                "segmentId": "m00333:figure-title:fig-00004-title",
+                "text": "MECHANISM"
+              },
               "caption": {
                 "segmentId": "m00333:caption:fig-00004-caption"
               },
@@ -156,7 +163,7 @@
           "class": null,
           "title": {
             "segmentId": "m00333:title:sect-00003-title",
-            "text": "Step 5 of [[xref:fig-00001]]: Condensation"
+            "text": "Step [[span:5|magenta-text]] of [[xref:fig-00001]]: Condensation"
           },
           "content": [
             {
@@ -168,6 +175,7 @@
               "type": "figure",
               "id": "fig-00005",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -186,7 +194,7 @@
           "class": null,
           "title": {
             "segmentId": "m00333:title:sect-00004-title",
-            "text": "Steps 6–8 of [[xref:fig-00001]]: Reduction and Dehydration"
+            "text": "Steps [[span:6|magenta-text]]–[[span:8|magenta-text]] of [[xref:fig-00001]]: Reduction and Dehydration"
           },
           "content": [
             {
@@ -198,6 +206,7 @@
               "type": "figure",
               "id": "fig-00006",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -217,6 +226,7 @@
               "type": "figure",
               "id": "fig-00007",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -236,6 +246,7 @@
               "type": "figure",
               "id": "fig-00008",
               "class": "unnumbered",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {

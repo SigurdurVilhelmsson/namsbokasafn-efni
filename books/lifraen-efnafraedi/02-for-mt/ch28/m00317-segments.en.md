@@ -14,13 +14,13 @@ The key to the polymerase chain reaction is [[i:Taq]] DNA polymerase, a heat-sta
 Polymerase chain reaction relies on thermostable Taq polymerase and D N A primers. Through a series of temperature changes, multiple instances of specific D N A region are made in vitro.
 
 <!-- SEG:m00317:para:para-00003 -->
-[[b:STEP 1]][[BR]]The double-stranded DNA to be amplified is heated in the presence of [[i:Taq]] polymerase, Mg[[sup:2+]] ion, the four deoxynucleotide triphosphate monomers (dNTPs), and a large excess of two short oligonucleotide primers of about 20 bases each. Each primer is complementary to the sequence at the end of one of the target DNA segments. At a temperature of 95 °C, double-stranded DNA denatures, spontaneously breaking apart into two single strands.
+[[b:[[span:STEP 1|red-text]]]][[BR]]The double-stranded DNA to be amplified is heated in the presence of [[i:Taq]] polymerase, Mg[[sup:2+]] ion, the four deoxynucleotide triphosphate monomers (dNTPs), and a large excess of two short oligonucleotide primers of about 20 bases each. Each primer is complementary to the sequence at the end of one of the target DNA segments. At a temperature of 95 °C, double-stranded DNA denatures, spontaneously breaking apart into two single strands.
 
 <!-- SEG:m00317:para:para-00004 -->
-[[b:STEP 2]][[BR]]The temperature is lowered to between 37 and 50 °C, allowing the primers, because of their relatively high concentration, to anneal by hydrogen-bonding to their complementary sequence at the end of each target strand.
+[[b:[[span:STEP 2|red-text]]]][[BR]]The temperature is lowered to between 37 and 50 °C, allowing the primers, because of their relatively high concentration, to anneal by hydrogen-bonding to their complementary sequence at the end of each target strand.
 
 <!-- SEG:m00317:para:para-00005 -->
-[[b:STEP 3]][[BR]]The temperature is then raised to 72 °C, and [[i:Taq]] polymerase catalyzes the addition of further nucleotides to the two primed DNA strands. When replication of each strand is complete, two copies of the original DNA now exist. Repeating the denature–anneal–synthesize cycle a second time yields four DNA copies, repeating a third time yields eight copies, and so on, in an exponential series.
+[[b:[[span:STEP 3|red-text]]]][[BR]]The temperature is then raised to 72 °C, and [[i:Taq]] polymerase catalyzes the addition of further nucleotides to the two primed DNA strands. When replication of each strand is complete, two copies of the original DNA now exist. Repeating the denature–anneal–synthesize cycle a second time yields four DNA copies, repeating a third time yields eight copies, and so on, in an exponential series.
 
 <!-- SEG:m00317:para:para-00006 -->
 PCR has been automated, and 30 or so cycles can be carried out in an hour, resulting in a theoretical amplification factor of 2[[sup:30]] (∼10[[sup:9]]). In practice, however, the efficiency of each cycle is less than 100%, and an experimental amplification of about 10[[sup:6]] to 10[[sup:8]] is routinely achieved for 30 cycles.
@@ -131,10 +131,10 @@ Sequencing of DNA is carried out by the [[b:Sanger dideoxy method]], and small D
 Additional Problems
 
 <!-- SEG:m00317:para:para-00016 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00317:para:para-00020 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00317:para:para-00026 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -11,7 +11,7 @@ In the Wittig reaction, a triphenylphosphorus [[i:ylide,]] [[MATH:1]] also calle
 An aldehyde or ketone reacts with ylide to form an oxaphosphetane. This further forms alkene plus triphenylphosphine oxide.
 
 <!-- SEG:m00222:para:para-00003 -->
-The initial addition takes place by different pathways depending on the structure of the reactants and the exact experimental conditions. One pathway involves a one-step cycloaddition process analogous to the Diels–Alder cycloaddition reaction (). The other pathway involves a nucleophilic addition reaction to give a dipolar intermediate called a [[i:betaine]] ([[b:bay]]-ta-een), which undergoes ring closure.
+The initial addition takes place by different pathways depending on the structure of the reactants and the exact experimental conditions. One pathway involves a one-step cycloaddition process analogous to the Diels–Alder cycloaddition reaction ([[docref:m00174]]). The other pathway involves a nucleophilic addition reaction to give a dipolar intermediate called a [[i:betaine]] ([[b:bay]]-ta-een), which undergoes ring closure.
 
 <!-- SEG:m00222:alt:fig-00002-alt -->
 A cyclic reversible reaction where aldehyde or ketone reacts with ylide, to form betaine (intermediate), which further forms oxaphosphetane. This transforms back to the reactants, aldehyde or ketone and ylide.
@@ -44,13 +44,13 @@ Synthesizing an Alkene Using a Wittig Reaction
 What carbonyl compound and what phosphorus ylide might you use to prepare 3-ethyl-2-pentene?
 
 <!-- SEG:m00222:para-title:para-00009-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00222:para:para-00009 -->
 An aldehyde or ketone reacts with a phosphorus ylide to yield an alkene in which the oxygen atom of the carbonyl reactant is replaced by the ═CR[[sub:2]] of the ylide. Preparation of the phosphorus ylide itself usually involves S[[sub:N]]2 reaction of a primary alkyl halide with triphenylphosphine, so the ylide is typically primary, [[MATH:6]]. This means that the disubstituted alkene carbon in the product comes from the carbonyl reactant, while the monosubstituted alkene carbon comes from the ylide.
 
 <!-- SEG:m00222:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00222:alt:fig-00006-alt -->
 3-pentanone reacts with a compound containing (P h) 3 P cation bonded to C H negative C H 3 and T H F, to form 3-ethyl-2-pentene.

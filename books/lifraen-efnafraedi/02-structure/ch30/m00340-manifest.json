@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00340",
-  "extractedAt": "2026-08-31T19:08:50.376Z",
+  "extractedAt": "2026-09-22T17:26:40.157Z",
   "sourceHash": "f60341a6656dfc59",
   "segmentCount": 6,
   "segmentIds": [
@@ -37,5 +37,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "pericyclic reaction"
   }
 }

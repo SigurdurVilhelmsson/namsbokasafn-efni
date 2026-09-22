@@ -86,13 +86,13 @@ Drawing the Most Stable Conformation of a Substituted Cyclohexane
 Draw the more stable chair conformation of [[i:cis]]-1-[[i:tert]]-butyl-4-chlorocyclohexane. By how much is it favored?
 
 <!-- SEG:m00047:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00047:para:para-00008 -->
 Draw the two possible chair conformations, and calculate the strain energy in each. Remember that equatorial substituents cause less strain than axial substituents.
 
 <!-- SEG:m00047:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00047:para:para-00009 -->
 First draw the two chair conformations of the molecule:

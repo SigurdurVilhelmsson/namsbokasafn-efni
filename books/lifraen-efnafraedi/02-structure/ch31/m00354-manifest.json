@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00354",
-  "extractedAt": "2026-08-31T19:08:50.491Z",
+  "extractedAt": "2026-09-22T17:26:40.350Z",
   "sourceHash": "6092700f525cc834",
   "segmentCount": 15,
   "segmentIds": [
@@ -60,5 +60,10 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Polycarbonates",
+    "term-00002": "urethane",
+    "term-00003": "polyurethane"
   }
 }

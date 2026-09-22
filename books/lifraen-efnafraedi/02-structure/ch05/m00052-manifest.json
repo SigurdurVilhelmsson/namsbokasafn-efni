@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00052",
-  "extractedAt": "2026-08-31T19:08:47.248Z",
+  "extractedAt": "2026-09-22T17:26:36.056Z",
   "sourceHash": "77a98a31e39fcd0e",
   "segmentCount": 41,
   "segmentIds": [
@@ -88,5 +88,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "optically active",
+    "term-00002": "levorotatory",
+    "term-00003": "dextrorotatory",
+    "term-00004": "specific rotation, [α]D"
   }
 }

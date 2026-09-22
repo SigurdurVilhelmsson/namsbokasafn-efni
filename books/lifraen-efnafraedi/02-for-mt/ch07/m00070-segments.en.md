@@ -11,7 +11,7 @@ Look carefully at the electrophilic addition reactions shown in the previous sec
 After looking at the results of many such reactions, the Russian chemist Vladimir Markovnikov proposed in 1869 what has become known as:
 
 <!-- SEG:m00070:para:para-00003 -->
-[[b:Markovnikov’s rule]][[BR]]In the addition of HX to an alkene, the H attaches to the carbon with fewer alkyl substituents and the X attaches to the carbon with more alkyl substituents.
+[[b:[[span:Markovnikov’s rule|magenta-text]]]][[BR]]In the addition of HX to an alkene, the H attaches to the carbon with fewer alkyl substituents and the X attaches to the carbon with more alkyl substituents.
 
 <!-- SEG:m00070:alt:fig-00002-alt -->
 2-methylpropene reacts with hydrogen chloride in ether to form 2-chloro-2-methylpropane. 1-methylcyclohexene reacts with hydrogen bromide in ether to form 1-bromo-1-methylcyclohexane. X adds to more substituted carbon.
@@ -26,7 +26,7 @@ When both double-bonded carbon atoms have the same degree of substitution, a mix
 Because carbocations are involved as intermediates in these electrophilic addition reactions, Markovnikov’s rule can be restated in the following way:
 
 <!-- SEG:m00070:para:para-00007 -->
-[[b:[[term:Markovnikov’s rule|term-00002]] restated]][[BR]]In the addition of HX to an alkene, the more highly substituted carbocation is formed as the intermediate rather than the less highly substituted one.
+[[b:[[span:[[term:Markovnikov’s rule|term-00002]] restated|magenta-text]]]][[BR]]In the addition of HX to an alkene, the more highly substituted carbocation is formed as the intermediate rather than the less highly substituted one.
 
 <!-- SEG:m00070:para:para-00009 -->
 For example, addition of H[[sup:+]] to 2-methylpropene yields the intermediate [[i:tertiary]] carbocation rather than the alternative primary carbocation, and addition to 1-methylcyclohexene yields a tertiary cation rather than a secondary one. Why should this be?
@@ -41,13 +41,13 @@ Predicting the Product of an Electrophilic Addition Reaction
 What product would you expect from reaction of HCl with 1-ethylcyclopentene?
 
 <!-- SEG:m00070:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00070:para:para-00011 -->
 When solving a problem that asks you to predict a reaction product, begin by looking at the functional group(s) in the reactants and deciding what kind of reaction is likely to occur. In the present instance, the reactant is an alkene that will probably undergo an electrophilic addition reaction with HCl. Next, recall what you know about electrophilic addition reactions to predict the product. You know that electrophilic addition reactions follow Markovnikov’s rule, so H[[sup:+]] will add to the double-bond carbon that has one alkyl group (C2 on the ring) and the Cl will add to the double-bond carbon that has two alkyl groups (C1 on the ring).
 
 <!-- SEG:m00070:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00070:para:para-00012 -->
 The expected product is 1-chloro-1-ethylcyclopentane. [[MEDIA:1]]
@@ -65,13 +65,13 @@ Synthesizing a Specific Compound
 What alkene would you start with to prepare the following alkyl halide? There may be more than one possibility.
 
 <!-- SEG:m00070:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00070:para:para-00014 -->
 When solving a problem that asks how to prepare a given product, always work backward. Look at the product, identify the functional group(s) it contains, and ask yourself, “How can I prepare that functional group?” In the present instance, the product is a tertiary alkyl chloride, which can be prepared by reaction of an alkene with HCl. The carbon atom bearing the −Cl atom in the product must be one of the double-bond carbons in the reactant. Draw and evaluate all possibilities.
 
 <!-- SEG:m00070:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00070:para:para-00015 -->
 There are three possibilities, all of which could give the desired product according to Markovnikov’s rule. [[MEDIA:2]]

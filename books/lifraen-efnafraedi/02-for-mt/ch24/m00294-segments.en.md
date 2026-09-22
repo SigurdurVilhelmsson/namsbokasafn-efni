@@ -5,13 +5,13 @@ Synthesis of Amines
 Reduction of Nitriles, Amides, and Nitro Compounds
 
 <!-- SEG:m00294:para:para-00001 -->
-We’ve already seen in and how amines can be prepared by reduction of nitriles and amides with LiAlH[[sub:4]]. The two-step sequence of S[[sub:N]]2 displacement with CN[[sup:–]] followed by reduction thus converts an alkyl halide into a primary alkylamine having an additional carbon atom. Amide reduction converts carboxylic acids and their derivatives into amines with the same number of carbon atoms.
+We’ve already seen in [[docref:m00236]] and [[docref:m00245]] how amines can be prepared by reduction of nitriles and amides with LiAlH[[sub:4]]. The two-step sequence of S[[sub:N]]2 displacement with CN[[sup:–]] followed by reduction thus converts an alkyl halide into a primary alkylamine having an additional carbon atom. Amide reduction converts carboxylic acids and their derivatives into amines with the same number of carbon atoms.
 
 <!-- SEG:m00294:alt:fig-00001-alt -->
 Alkyl halide reacts with sodium cyanide, then lithium aluminum hydride, then water. Carboxylic acid reacts with thionyl chloride, then ammonium, then lithium aluminum hydride, then water. Both form primary amine.
 
 <!-- SEG:m00294:para:para-00002 -->
-Arylamines are usually prepared by nitration of an aromatic starting material, followed by reduction of the nitro group (). The reduction step can be carried out in many different ways, depending on the circumstances. Catalytic hydrogenation over platinum works well but is often incompatible with the presence elsewhere in the molecule of other reducible groups, such as [[MATH:1]] bonds or carbonyl groups. Iron, zinc, tin, and tin(II) chloride (SnCl[[sub:2]]) are also effective when used in acidic aqueous solution. Tin(II) chloride is particularly mild and is often used when other reducible functional groups are present.
+Arylamines are usually prepared by nitration of an aromatic starting material, followed by reduction of the nitro group ([[docref:m00190]]). The reduction step can be carried out in many different ways, depending on the circumstances. Catalytic hydrogenation over platinum works well but is often incompatible with the presence elsewhere in the molecule of other reducible groups, such as [[MATH:1]] bonds or carbonyl groups. Iron, zinc, tin, and tin(II) chloride (SnCl[[sub:2]]) are also effective when used in acidic aqueous solution. Tin(II) chloride is particularly mild and is often used when other reducible functional groups are present.
 
 <!-- SEG:m00294:alt:fig-00002-alt -->
 p-tert-Butylnitrobenzene reacts with hydrogen, platinum catalyst, and ethanol to form p-tert-butylaniline (100%). Meta-nitrobenzaldehyde reacts with tin(2) chloride and hydronium ion, then sodium hydroxide to form m-aminobenzaldehyde (90%).
@@ -41,7 +41,7 @@ A better method for preparing primary amines is to use azide ion, N[[sub:3]][[su
 1-Bromo-2-phenylethane reacts with sodium azide and ethanol to form 2-phenylethyl azide. This reacts with lithium aluminum hydride in ether, then water to form 2-phenylethylamine with 89 percent yield.
 
 <!-- SEG:m00294:para:para-00007 -->
-Another alternative for preparing a primary amine from an alkyl halide is the [[term:Gabriel amine synthesis|term-00001]], which uses a [[i:phthalimide]] alkylation. An [[term:imide|term-00002]] ([[MATH:2]]) is similar to a [[i:β]]-keto ester in that the acidic N–H hydrogen is flanked by two carbonyl groups. Thus, imides are deprotonated by such bases as KOH, and the resultant anions are readily alkylated in a reaction similar to acetoacetic ester synthesis (). Basic hydrolysis of the [[i:N]]-alkylated imide then yields a primary amine product. The imide hydrolysis step is analogous to the hydrolysis of an amide ().
+Another alternative for preparing a primary amine from an alkyl halide is the [[term:Gabriel amine synthesis|term-00001]], which uses a [[i:phthalimide]] alkylation. An [[term:imide|term-00002]] ([[MATH:2]]) is similar to a [[i:β]]-keto ester in that the acidic N–H hydrogen is flanked by two carbonyl groups. Thus, imides are deprotonated by such bases as KOH, and the resultant anions are readily alkylated in a reaction similar to acetoacetic ester synthesis ([[docref:m00263]]). Basic hydrolysis of the [[i:N]]-alkylated imide then yields a primary amine product. The imide hydrolysis step is analogous to the hydrolysis of an amide ([[docref:m00245]]).
 
 <!-- SEG:m00294:alt:fig-00006-alt -->
 Phthalimide reacts with potassium hydroxide and ethanol, then alkyl halide and N,N-dimethylformamide, then sodium hydroxide and water to form a primary amine.
@@ -59,7 +59,10 @@ Amines can be synthesized in a single step by treatment of an aldehyde or ketone
 Phenyl-2-propanone reacts with ammonia, hydrogen, nickel or sodium borohydride to form amphetamine and water.
 
 <!-- SEG:m00294:para:para-00011 -->
-Reductive amination takes place by the pathway shown in [[xref:fig-00008]]. An imine intermediate is first formed by a nucleophilic addition reaction (), and the [[MATH:3]] bond of the imine is then reduced to the amine, much as the [[MATH:4]] bond of a ketone can be reduced to an alcohol.
+Reductive amination takes place by the pathway shown in [[xref:fig-00008]]. An imine intermediate is first formed by a nucleophilic addition reaction ([[docref:m00219]]), and the [[MATH:3]] bond of the imine is then reduced to the amine, much as the [[MATH:4]] bond of a ketone can be reduced to an alcohol.
+
+<!-- SEG:m00294:figure-title:fig-00008-title -->
+MECHANISM
 
 <!-- SEG:m00294:caption:fig-00008-caption -->
 [[b:Mechanism for reductive amination of a ketone to yield an amine]]. Details of the imine-forming step are shown in [[docref:m00219#fig-00003]].
@@ -86,13 +89,13 @@ Using a Reductive Amination Reaction
 How might you prepare [[i:N]]-methyl-2-phenylethylamine using a reductive amination reaction?
 
 <!-- SEG:m00294:para-title:para-00015-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00294:para:para-00015 -->
 Look at the target molecule, and identify the groups attached to nitrogen. One of the groups must be derived from the aldehyde or ketone component, and the other must be derived from the amine component. In the case of [[i:N]]-methyl-2-phenylethylamine, two combinations can lead to the product: phenylacetaldehyde plus methylamine or formaldehyde plus 2-phenylethylamine. It’s usually better to choose the combination with the simpler amine component—methylamine in this case—and to use an excess of that amine as reactant.
 
 <!-- SEG:m00294:para-title:para-00016-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00294:alt:fig-00011-alt -->
 The structure of N-methyl-2-phenylethylamine. It is a benzene ring with the substituent C H 2 C H 2 N H C H 3.
@@ -113,7 +116,10 @@ Carboxylic acid derivatives can be converted into primary amines with loss of on
 Hofmann rearrangement: An amide reacts with sodium hydroxide, bromine, and water to form an amine. Curtius rearrangement: An acyl azide reacts with water and heat to form an amine.
 
 <!-- SEG:m00294:para:para-00020 -->
-Hofmann rearrangement occurs when a primary amide, RCONH[[sub:2]], is treated with Br[[sub:2]] and base ([[xref:fig-00014]]). The overall mechanism is lengthy, but most of the individual steps have been encountered before. Thus, the bromination of an amide in steps [[b:1]] and [[b:2]] is analogous to the base-promoted bromination of a ketone enolate ion (), and the rearrangement of the bromoamide anion in step [[b:4]] is analogous to a carbocation rearrangement (). Nucleophilic addition of water to the isocyanate carbonyl group in step [[b:5]] is a typical carbonyl-group process (), as is the final decarboxylation step [[b:6]] ().
+Hofmann rearrangement occurs when a primary amide, RCONH[[sub:2]], is treated with Br[[sub:2]] and base ([[xref:fig-00014]]). The overall mechanism is lengthy, but most of the individual steps have been encountered before. Thus, the bromination of an amide in steps [[b:[[span:1|magenta-text]]]] and [[b:[[span:2|magenta-text]]]] is analogous to the base-promoted bromination of a ketone enolate ion ([[docref:m00262]]), and the rearrangement of the bromoamide anion in step [[b:[[span:4|magenta-text]]]] is analogous to a carbocation rearrangement ([[docref:m00073]]). Nucleophilic addition of water to the isocyanate carbonyl group in step [[b:[[span:5|magenta-text]]]] is a typical carbonyl-group process ([[docref:m00215]]), as is the final decarboxylation step [[b:[[span:6|magenta-text]]]] ([[docref:m00263]]).
+
+<!-- SEG:m00294:figure-title:fig-00014-title -->
+MECHANISM
 
 <!-- SEG:m00294:caption:fig-00014-caption -->
 [[b:Mechanism of the Hofmann rearrangement of an amide to an amine]]. Each step is analogous to a reaction studied previously.
@@ -146,13 +152,13 @@ Using the Hofmann and Curtius Rearrangements
 How would you prepare [[i:o]]-methylbenzylamine from a carboxylic acid, using both Hofmann and Curtius rearrangements?
 
 <!-- SEG:m00294:para-title:para-00025-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00294:para:para-00025 -->
 Both Hofmann and Curtius rearrangements convert a carboxylic acid derivative—either an amide (Hofmann) or an acid chloride (Curtius)—into a primary amine with loss of one carbon, RCOY → RNH[[sub:2]]. Both reactions begin with the same carboxylic acid, which can be identified by replacing the –NH[[sub:2]] group of the amine product by a –CO[[sub:2]]H group. In the present instance, [[i:o]]-methylphenylacetic acid is needed.
 
 <!-- SEG:m00294:para-title:para-00026-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00294:alt:fig-00018-alt -->
 o-Methylphenylacetic acid reacts with thionyl chloride to form an intermediate. This reacts with ammonia, then bromine, sodium hydroxide and water or sodium azide, then water and heat to form o-methylbenzylamine.

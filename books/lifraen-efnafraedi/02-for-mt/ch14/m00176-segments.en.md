@@ -2,7 +2,7 @@
 Diene Polymers: Natural and Synthetic Rubbers
 
 <!-- SEG:m00176:para:para-00001 -->
-Conjugated dienes can be polymerized just as simple alkenes can (). Diene polymers are structurally more complex than simple alkene polymers, however, because double bonds occur every four carbon atoms along the chain, leading to the possibility of cis–trans isomers. The initiator (In) for the reaction can be either a radical, as occurs in ethylene polymerization, or an acid. Note that the polymerization is a 1,4 addition of the growing chain to a conjugated diene monomer.
+Conjugated dienes can be polymerized just as simple alkenes can ([[docref:m00098]]). Diene polymers are structurally more complex than simple alkene polymers, however, because double bonds occur every four carbon atoms along the chain, leading to the possibility of cis–trans isomers. The initiator (In) for the reaction can be either a radical, as occurs in ethylene polymerization, or an acid. Note that the polymerization is a 1,4 addition of the growing chain to a conjugated diene monomer.
 
 <!-- SEG:m00176:alt:fig-00001-alt -->
 Two molecules of 1,3-butadiene form cis-polybutadiene and trans-polybutadiene. Arrows on 1,3-butadiene molecules depict the movement of electrons and initiator (In) lies on the left side of 1,3-butadiene.

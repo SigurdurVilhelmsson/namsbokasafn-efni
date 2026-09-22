@@ -77,28 +77,28 @@ Name
 Explanation
 
 <!-- SEG:m00083:entry:auto-27 -->
-Δ[[b:[[i:G]]°]]
+[[span:Δ[[b:[[i:G]]°]]|green-text]]
 
 <!-- SEG:m00083:entry:auto-28 -->
-[[b:Gibbs free-energy change]]
+[[span:[[b:Gibbs free-energy change]]|green-text]]
 
 <!-- SEG:m00083:entry:auto-29 -->
 The energy difference between reactants and products. When Δ[[i:G]]° is negative, the reaction is [[b:exergonic]], has a favorable equilibrium constant, and can occur spontaneously. When Δ[[i:G]]° is positive, the reaction is [[b:endergonic]], has an unfavorable equilibrium constant, and cannot occur spontaneously.
 
 <!-- SEG:m00083:entry:auto-30 -->
-Δ[[b:[[i:H]]°]]
+[[span:Δ[[b:[[i:H]]°]]|red-text]]
 
 <!-- SEG:m00083:entry:auto-31 -->
-[[b:Enthalpy change]]
+[[span:[[b:Enthalpy change]]|red-text]]
 
 <!-- SEG:m00083:entry:auto-32 -->
 The heat of reaction, or difference in strength between the bonds broken in a reaction and the bonds formed. When Δ[[i:H]]° is negative, the reaction releases heat and is [[b:exothermic]]. When Δ[[i:H]]° is positive, the reaction absorbs heat and is [[b:endothermic]].
 
 <!-- SEG:m00083:entry:auto-33 -->
-Δ[[b:[[i:S]]°]]
+[[span:Δ[[b:[[i:S]]°]]|cyan-text]]
 
 <!-- SEG:m00083:entry:auto-34 -->
-[[b:Entropy change]]
+[[span:[[b:Entropy change]]|cyan-text]]
 
 <!-- SEG:m00083:entry:auto-35 -->
 The change in molecular randomness during a reaction. When Δ[[i:S]]° is negative, randomness decreases. When Δ[[i:S]]° is positive, randomness increases.

@@ -2,7 +2,7 @@
 Biological Amines and the Henderson–Hasselbalch Equation
 
 <!-- SEG:m00293:para:para-00001 -->
-We saw in that the extent of dissociation of a carboxylic acid HA in an aqueous solution buffered to a given pH can be calculated with the Henderson–Hasselbalch equation. Furthermore, we concluded that at the physiological pH of 7.3 inside living cells, carboxylic acids are almost entirely dissociated into their carboxylate anions, RCO[[sub:2]][[sup:–]].
+We saw in [[docref:m00232]] that the extent of dissociation of a carboxylic acid HA in an aqueous solution buffered to a given pH can be calculated with the Henderson–Hasselbalch equation. Furthermore, we concluded that at the physiological pH of 7.3 inside living cells, carboxylic acids are almost entirely dissociated into their carboxylate anions, RCO[[sub:2]][[sup:–]].
 
 <!-- SEG:m00293:para:para-00002 -->
 [[b:Henderson–Hasselbalch equation:]]

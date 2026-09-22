@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00160",
-  "extractedAt": "2026-08-31T19:08:46.504Z",
+  "extractedAt": "2026-09-22T17:26:35.479Z",
   "sourceHash": "e21f0f342bdaf3c8",
   "segmentCount": 21,
   "segmentIds": [
@@ -61,5 +61,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "ground-state electron configuration",
+    "term-00002": "Aufbau principle",
+    "term-00003": "Pauli exclusion principle",
+    "term-00004": "Hund’s rule"
   }
 }

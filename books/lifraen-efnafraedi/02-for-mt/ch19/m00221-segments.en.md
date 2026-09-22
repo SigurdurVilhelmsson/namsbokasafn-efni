@@ -8,13 +8,16 @@ Aldehydes and ketones react reversibly with 2 equivalents of an alcohol in the p
 Cyclohexanone reacts with two equivalents of methanol and hydrochloric acid catalyst to form cyclohexanone dimethyl acetal and water.
 
 <!-- SEG:m00221:para:para-00002 -->
-Acetal formation is similar to the hydration reaction discussed in . Like water, alcohols are weak nucleophiles that add to aldehydes and ketones slowly under neutral conditions. Under acidic conditions, however, the reactivity of the carbonyl group is increased by protonation, so addition of an alcohol occurs rapidly.
+Acetal formation is similar to the hydration reaction discussed in [[docref:m00216]]. Like water, alcohols are weak nucleophiles that add to aldehydes and ketones slowly under neutral conditions. Under acidic conditions, however, the reactivity of the carbonyl group is increased by protonation, so addition of an alcohol occurs rapidly.
 
 <!-- SEG:m00221:alt:fig-00002-alt -->
 The structure shows a reversible reaction where a carbonyl group is protonated at oxygen by H A; resonance produces neutral O H group single bonded to carbocation.
 
 <!-- SEG:m00221:para:para-00003 -->
 As shown in [[xref:fig-00003]], nucleophilic addition of an alcohol to the carbonyl group initially yields a hydroxy ether called a [[term:hemiacetal|term-00003]], analogous to the gem diol formed by addition of water. Hemiacetals are formed reversibly, with equilibrium normally favoring the carbonyl compound. In the presence of acid, however, a further reaction occurs. Protonation of the –OH group, followed by an E1-like loss of water, leads to an oxonium ion, [[MATH:1]], which undergoes a second nucleophilic addition of alcohol to yield the protonated acetal. Loss of a proton completes the reaction.
+
+<!-- SEG:m00221:figure-title:fig-00003-title -->
+MECHANISM
 
 <!-- SEG:m00221:caption:fig-00003-caption -->
 [[b:Mechanism of acid-catalyzed acetal formation by reaction of an aldehyde or ketone with an alcohol.]]
@@ -26,7 +29,7 @@ Ketone or aldehyde to acetal via seven steps: protonation of O, alcohol attacks 
 Because all the steps in acetal formation are reversible, the reaction can be driven either forward (from carbonyl compound to acetal) or backward (from acetal to carbonyl compound), depending on the conditions. The forward reaction is favored by conditions that remove water from the medium and thus drive the equilibrium to the right. In practice, this is often done by distilling off water as it forms. The reverse reaction is favored by treating the acetal with a large excess of aqueous acid to drive the equilibrium to the left.
 
 <!-- SEG:m00221:para:para-00005 -->
-Acetals are useful because they can act as protecting groups for aldehydes and ketones in the same way that trimethylsilyl ethers act as protecting groups for alcohols (). As we saw previously, it sometimes happens that one functional group interferes with intended chemistry elsewhere in a complex molecule. For example, if we wanted to reduce only the ester group of ethyl 4-oxopentanoate, the ketone would interfere. Treatment of the starting keto ester with LiAlH[[sub:4]] would reduce both the keto group and the ester group to give a diol product.
+Acetals are useful because they can act as protecting groups for aldehydes and ketones in the same way that trimethylsilyl ethers act as protecting groups for alcohols ([[docref:m00207]]). As we saw previously, it sometimes happens that one functional group interferes with intended chemistry elsewhere in a complex molecule. For example, if we wanted to reduce only the ester group of ethyl 4-oxopentanoate, the ketone would interfere. Treatment of the starting keto ester with LiAlH[[sub:4]] would reduce both the keto group and the ester group to give a diol product.
 
 <!-- SEG:m00221:alt:fig-00004-alt -->
 Ethyl 4-oxopentanoate reacts with an unknown reagent represented as a question mark to produce 5-hydroxy-2-pentanone.
@@ -50,13 +53,13 @@ Predicting the Product of Reaction between a Ketone and an Alcohol
 Show the structure of the acetal you would obtain by acid-catalyzed reaction of 2-pentanone with 1,3-propanediol.
 
 <!-- SEG:m00221:para-title:para-00009-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00221:para:para-00009 -->
 Acid-catalyzed reaction of an aldehyde or ketone with 2 equivalents of a monoalcohol or 1 equivalent of a diol yields an acetal, in which the carbonyl oxygen atom is replaced by two –OR groups from the alcohol.
 
 <!-- SEG:m00221:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00221:alt:fig-00007-alt -->
 2-pentanone reacts with propane-1,3-diol and proton catalyst to form acetal, which is a six-membered ring containing two oxygens, both bonded to the original carbonyl carbon.

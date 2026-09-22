@@ -299,7 +299,7 @@ IR spectroscopy is a valuable tool for the structural analysis of acid derivativ
 Summary of Reactions
 
 <!-- SEG:m00248:item:list-00002-item-1 -->
-Reactions of carboxylic acids ()
+Reactions of carboxylic acids ([[docref:m00241]])
 
 <!-- SEG:m00248:item:list-00003-item-1 -->
 Conversion into acid chlorides[[BR]]
@@ -314,7 +314,7 @@ Conversion into amides[[BR]]
 Reduction to yield primary alcohols[[BR]]
 
 <!-- SEG:m00248:item:list-00002-item-2 -->
-Reactions of acid chlorides ()
+Reactions of acid chlorides ([[docref:m00242]])
 
 <!-- SEG:m00248:item:list-00004-item-1 -->
 Hydrolysis to yield acids[[BR]]
@@ -338,7 +338,7 @@ Grignard reaction to yield tertiary alcohols[[BR]]
 Diorganocopper reaction to yield ketones[[BR]]
 
 <!-- SEG:m00248:item:list-00002-item-3 -->
-Reactions of acid anhydrides ()
+Reactions of acid anhydrides ([[docref:m00243]])
 
 <!-- SEG:m00248:item:list-00005-item-1 -->
 Hydrolysis to yield acids[[BR]]
@@ -350,7 +350,7 @@ Alcoholysis to yield esters[[BR]]
 Aminolysis to yield amides[[BR]]
 
 <!-- SEG:m00248:item:list-00002-item-4 -->
-Reactions of esters ()
+Reactions of esters ([[docref:m00244]])
 
 <!-- SEG:m00248:item:list-00006-item-1 -->
 Hydrolysis to yield acids[[BR]]
@@ -365,7 +365,7 @@ Partial reduction to yield aldehydes[[BR]]
 Grignard reaction to yield tertiary alcohols[[BR]]
 
 <!-- SEG:m00248:item:list-00002-item-5 -->
-Reactions of amides ()
+Reactions of amides ([[docref:m00245]])
 
 <!-- SEG:m00248:item:list-00007-item-1 -->
 Hydrolysis to yield acids[[BR]]
@@ -437,22 +437,22 @@ Reduction of amides to amines using lithium aluminum hydride in ether followed b
 Additional Problems
 
 <!-- SEG:m00248:para:para-00019 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00248:para:para-00024 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00248:para:para-00039 -->
-[[b:Naming Carboxylic Acid Derivatives]]
+[[b:[[span:Naming Carboxylic Acid Derivatives|red-text]]]]
 
 <!-- SEG:m00248:para:para-00043 -->
-[[b:Nucleophilic Acyl Substitution Reactions]]
+[[b:[[span:Nucleophilic Acyl Substitution Reactions|red-text]]]]
 
 <!-- SEG:m00248:para:para-00056 -->
-[[b:Step-Growth Polymers]]
+[[b:[[span:Step-Growth Polymers|red-text]]]]
 
 <!-- SEG:m00248:para:para-00061 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00248:para:para-00065 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

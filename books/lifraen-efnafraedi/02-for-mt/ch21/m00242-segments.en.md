@@ -71,13 +71,13 @@ Synthesizing an Amide from an Acid Chloride
 How might you prepare [[i:N]]-methylpropanamide by reaction of an acid chloride with an amine?
 
 <!-- SEG:m00242:para-title:para-00013-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00242:para:para-00013 -->
 As its name implies, [[i:N]]-methylpropanamide can be made by reaction of [[i:methylamine]] with the acid chloride of [[i:propanoic]] acid.
 
 <!-- SEG:m00242:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00242:alt:fig-00009-alt -->
 Propanoyl chloride reacts with two moles of methylamine, forming N-methylpropanamide and methylammonium chloride.

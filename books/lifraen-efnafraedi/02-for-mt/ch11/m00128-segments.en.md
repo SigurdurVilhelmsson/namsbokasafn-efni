@@ -14,7 +14,7 @@ Elimination reactions are more complex than substitution reactions for several r
 According to [[term:Zaitsev’s rule|term-00001]], formulated in 1875 by the Russian chemist Alexander Zaitsev, base-induced elimination reactions generally (although not always) give the more stable alkene product—that is, the alkene with more alkyl substituents on the double-bond carbons. In the following two cases, for example, the more highly substituted alkene product predominates.
 
 <!-- SEG:m00128:para:para-00004 -->
-[[b:ZAITSEV’S RULE]] [[BR]]In the elimination of HX from an alkyl halide, the more highly substituted alkene product predominates.
+[[b:[[span:ZAITSEV’S RULE|red-text]]]] [[BR]]In the elimination of HX from an alkyl halide, the more highly substituted alkene product predominates.
 
 <!-- SEG:m00128:alt:fig-00002-alt -->
 Two reactions in presence of sodium ethoxide and ethanol. 2-Bromobutane reacts to form 2-butene (81%) and 1-butene (19%). In the second reaction, 2-bromo-2-methylbutane yields 2-methyl-2-butene (70%) and 2-methyl-1-butene (30%).
@@ -41,13 +41,13 @@ Predicting the Product of an Elimination Reaction
 What product would you expect from reaction of 1-chloro-1-methylcyclohexane with KOH in ethanol?
 
 <!-- SEG:m00128:para-title:para-00009-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00128:para:para-00009 -->
 Treatment of an alkyl halide with a strong base such as KOH yields an alkene. To find the products in a specific case, locate the hydrogen atoms on each carbon next to the leaving group, and then generate the potential alkene products by removing HX in as many ways as possible. The major product will be the one that has the most highly substituted double bond—in this case, 1-methylcyclohexene.
 
 <!-- SEG:m00128:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00128:alt:fig-00005-alt -->
 The reaction of 1-chloro-1-methylcyclohexane with K O H and ethanol forms an unknown product, depicted by a question mark.

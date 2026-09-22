@@ -125,10 +125,10 @@ Another reaction unique to conjugated dienes is [[b:Diels–Alder cycloaddition]
 Summary of Reactions
 
 <!-- SEG:m00179:item:list-00002-item-1 -->
-Electrophilic addition reactions ( and )[[BR]]
+Electrophilic addition reactions ([[docref:m00172]] and [[docref:m00173]])[[BR]]
 
 <!-- SEG:m00179:item:list-00002-item-2 -->
-Diels–Alder cycloaddition reaction ( and )[[BR]]
+Diels–Alder cycloaddition reaction ([[docref:m00174]] and [[docref:m00175]])[[BR]]
 
 <!-- SEG:m00179:alt:fig-00007-alt -->
 Reaction of 1,3-butadiene with hydrogen bromide  yields either 3-bromo-1-butene or 1-bromo-2-butene.
@@ -140,22 +140,22 @@ In a Diels–Alder cycloaddition reaction, when heated, a diene reacts with a di
 Additional Problems
 
 <!-- SEG:m00179:para:para-00015 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00179:para:para-00020 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00179:para:para-00026 -->
-[[b:Conjugated Dienes]]
+[[b:[[span:Conjugated Dienes|red-text]]]]
 
 <!-- SEG:m00179:para:para-00033 -->
-[[b:Diels–Alder Reactions]]
+[[b:[[span:Diels–Alder Reactions|red-text]]]]
 
 <!-- SEG:m00179:para:para-00045 -->
-[[b:Diene Polymers]]
+[[b:[[span:Diene Polymers|red-text]]]]
 
 <!-- SEG:m00179:para:para-00048 -->
-[[b:UV Spectroscopy]]
+[[b:[[span:UV Spectroscopy|red-text]]]]
 
 <!-- SEG:m00179:para:para-00055 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

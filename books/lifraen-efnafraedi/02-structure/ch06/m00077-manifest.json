@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00077",
-  "extractedAt": "2026-08-31T19:08:47.384Z",
+  "extractedAt": "2026-09-22T17:26:36.209Z",
   "sourceHash": "ae7c6b0db1435b65",
   "segmentCount": 11,
   "segmentIds": [
@@ -49,5 +49,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Addition reactions",
+    "term-00002": "Elimination reactions",
+    "term-00003": "Substitution reactions",
+    "term-00004": "Rearrangement reactions"
   }
 }

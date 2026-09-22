@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00319",
-  "extractedAt": "2026-08-31T19:08:49.959Z",
+  "extractedAt": "2026-09-22T17:26:39.569Z",
   "sourceHash": "3538ae5bbae613ff",
   "segmentCount": 22,
   "segmentIds": [
@@ -71,5 +71,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "isoelectric point (pI)"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00352",
-  "extractedAt": "2026-08-31T19:08:50.483Z",
+  "extractedAt": "2026-09-22T17:26:40.338Z",
   "sourceHash": "515da67d50a8011c",
   "segmentCount": 12,
   "segmentIds": [
@@ -53,5 +53,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "isotactic",
+    "term-00002": "syndiotactic",
+    "term-00003": "atactic",
+    "term-00004": "Ziegler–Natta catalysts"
   }
 }

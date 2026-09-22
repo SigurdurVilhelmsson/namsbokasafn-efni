@@ -50,7 +50,7 @@ Typical spin–spin splitting [[i:is]] observed between protons on the oxygen-be
 H N M R spectrum with signals at 0.93 (triplet, C 3 hydrogens), 1.56 (sextet, C 2 hydrogens), 3.17 (singlet, hydroxyl hydrogen), and 3.58 (triplet, C 1 hydrogens).
 
 <!-- SEG:m00210:para:para-00007 -->
-Phenols, like all aromatic compounds, show [[sup:1]]H NMR absorptions near 7 to 8 [[i:δ,]] the expected position for aromatic-ring protons (). In addition, phenol O–H protons absorb at 3 to 8 [[i:δ.]] In neither case are these absorptions uniquely diagnostic for phenols, since other kinds of protons absorb in the same range.
+Phenols, like all aromatic compounds, show [[sup:1]]H NMR absorptions near 7 to 8 [[i:δ,]] the expected position for aromatic-ring protons ([[docref:m00187]]). In addition, phenol O–H protons absorb at 3 to 8 [[i:δ.]] In neither case are these absorptions uniquely diagnostic for phenols, since other kinds of protons absorb in the same range.
 
 <!-- SEG:m00210:title:sect-00004-title -->
 Problems
@@ -59,7 +59,7 @@ Problems
 Mass Spectrometry
 
 <!-- SEG:m00210:para:para-00009 -->
-As noted in , alcohols undergo fragmentation in the mass spectrometer by two characteristic pathways, alpha cleavage and dehydration. In the alpha-cleavage pathway, a C–C bond nearest the hydroxyl group is broken, yielding a neutral radical plus a resonance-stabilized, oxygen-containing cation.
+As noted in [[docref:m00137]], alcohols undergo fragmentation in the mass spectrometer by two characteristic pathways, alpha cleavage and dehydration. In the alpha-cleavage pathway, a C–C bond nearest the hydroxyl group is broken, yielding a neutral radical plus a resonance-stabilized, oxygen-containing cation.
 
 <!-- SEG:m00210:alt:fig-00006-alt -->
 A cation radical undergoes alpha cleavage to form R C H 2 radical and two reversible structures in parentheses.
@@ -152,22 +152,22 @@ Summary of Reactions
 Synthesis of alcohols
 
 <!-- SEG:m00210:item:list-00003-item-1 -->
-Reduction of carbonyl compounds () (1) Aldehydes (2) Ketones (3) Esters (4) Carboxylic acids
+Reduction of carbonyl compounds ([[docref:m00203]]) (1) Aldehydes (2) Ketones (3) Esters (4) Carboxylic acids
 
 <!-- SEG:m00210:item:list-00003-item-2 -->
-Grignard addition to carbonyl compounds () (1) Formaldehyde (2) Aldehydes (3) Ketones (4) Esters
+Grignard addition to carbonyl compounds ([[docref:m00204]]) (1) Formaldehyde (2) Aldehydes (3) Ketones (4) Esters
 
 <!-- SEG:m00210:item:list-00002-item-2 -->
 Reactions of alcohols
 
 <!-- SEG:m00210:item:list-00006-item-1 -->
-Dehydration () (1) Tertiary alcohols (2) Secondary and tertiary alcohols
+Dehydration ([[docref:m00205]]) (1) Tertiary alcohols (2) Secondary and tertiary alcohols
 
 <!-- SEG:m00210:item:list-00006-item-2 -->
-Oxidation () (1) Primary alcohols (2) Secondary alcohols
+Oxidation ([[docref:m00206]]) (1) Primary alcohols (2) Secondary alcohols
 
 <!-- SEG:m00210:item:list-00002-item-3 -->
-Oxidation of phenols to quinones ()[[BR]]
+Oxidation of phenols to quinones ([[docref:m00209]])[[BR]]
 
 <!-- SEG:m00210:alt:fig-00011-alt -->
 An aldehyde reacts with sodium borohydride or lithium aluminum hydride, then hydronium ion to form a primary alcohol.
@@ -215,22 +215,22 @@ Phenol reacts with sodium dichromate and water to form benzoquinone.
 Additional Problems
 
 <!-- SEG:m00210:para:para-00022 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00210:para:para-00100 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00210:para:para-00040 -->
-[[b:Naming Alcohols]]
+[[b:[[span:Naming Alcohols|red-text]]]]
 
 <!-- SEG:m00210:para:para-00046 -->
-[[b:Synthesizing Alcohols]]
+[[b:[[span:Synthesizing Alcohols|red-text]]]]
 
 <!-- SEG:m00210:para:para-00051 -->
-[[b:Reactions of Alcohols]]
+[[b:[[span:Reactions of Alcohols|red-text]]]]
 
 <!-- SEG:m00210:para:para-00057 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00210:para:para-00064 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

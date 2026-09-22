@@ -11,13 +11,13 @@ The wedge-dash structure and ball-and-stick model of (S)-fluoxetine. Gray, black
 Why do different enantiomers have different biological properties? To have a biological effect, a substance typically must fit into an appropriate receptor that has a complementary shape. But because biological receptors are chiral, only one enantiomer of a chiral substrate can fit, just as only a right hand can fit into a right-handed glove. The mirror-image enantiomer will be a misfit, like a left hand in a right-handed glove. A representation of the interaction between a chiral molecule and a chiral biological receptor is shown in [[xref:fig-00002]]: one enantiomer fits the receptor perfectly, but the other does not.
 
 <!-- SEG:m00061:caption:fig-00002-caption -->
-[[b:Interaction of a chiral object with a chiral receptor.]] A left hand interacts with a chiral object, much as a biological receptor interacts with a chiral molecule. [[b:(a)]] One enantiomer fits into the hand perfectly: [[b:green thumb]], [[b:red palm]], and [[b:gray pinkie finger]], with the [[b:blue substituent exposed]]. [[b:(b)]] The other enantiomer, however, can’t fit into the hand. When the green thumb and gray pinkie finger interact appropriately, the palm holds a blue substituent rather than a red one, with the [[b:red substituent exposed]].
+[[b:Interaction of a chiral object with a chiral receptor.]] A left hand interacts with a chiral object, much as a biological receptor interacts with a chiral molecule. [[b:(a)]] One enantiomer fits into the hand perfectly: [[b:[[span:green thumb|green-text]]]], [[b:[[span:red palm|magenta-text]]]], and [[b:[[span:gray pinkie finger|gray-text]]]], with the [[b:[[span:blue substituent exposed|cyan-text]]]]. [[b:(b)]] The other enantiomer, however, can’t fit into the hand. When the green thumb and gray pinkie finger interact appropriately, the palm holds a blue substituent rather than a red one, with the [[b:[[span:red substituent exposed|magenta-text]]]].
 
 <!-- SEG:m00061:alt:fig-00002-alt -->
 A hand on left holds chiral molecule with a cube above the palm. Hand on right shows enantiomer with the cube on palm, labeled mismatch.
 
 <!-- SEG:m00061:para:para-00003 -->
-The hand-in-glove fit of a chiral substrate into a chiral receptor is relatively straightforward, but it’s less obvious how a prochiral substrate can undergo a selective reaction. Take the reaction of ethanol with NAD[[sup:+]] catalyzed by yeast alcohol dehydrogenase. As we saw at the end of , this reaction occurs with exclusive removal of the pro-[[i:R]] hydrogen from ethanol and with addition only to the Re face of the NAD[[sup:+]] carbon.
+The hand-in-glove fit of a chiral substrate into a chiral receptor is relatively straightforward, but it’s less obvious how a prochiral substrate can undergo a selective reaction. Take the reaction of ethanol with NAD[[sup:+]] catalyzed by yeast alcohol dehydrogenase. As we saw at the end of [[docref:m00060]], this reaction occurs with exclusive removal of the pro-[[i:R]] hydrogen from ethanol and with addition only to the Re face of the NAD[[sup:+]] carbon.
 
 <!-- SEG:m00061:para:para-00004 -->
 We can understand this result by imagining that the chiral enzyme receptor again has three binding sites, as in [[xref:fig-00002]]. When green and gray substituents of a prochiral substrate are held appropriately, however, only one of the two red substituents—say, the pro-[[i:S]] one—is also held while the other, pro-[[i:R,]] substituent is exposed for reaction.
@@ -161,19 +161,19 @@ A molecule is [[b:prochiral]] if it can be converted from achiral to chiral in a
 Additional Problems
 
 <!-- SEG:m00061:para:para-00075 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00061:para:para-00023 -->
-[[b:Chirality and Optical Activity]]
+[[b:[[span:Chirality and Optical Activity|red-text]]]]
 
 <!-- SEG:m00061:para:para-00030 -->
-[[b:Assigning Configuration to Chirality Centers]]
+[[b:[[span:Assigning Configuration to Chirality Centers|red-text]]]]
 
 <!-- SEG:m00061:para:para-00045 -->
-[[b:Meso Compounds]]
+[[b:[[span:Meso Compounds|red-text]]]]
 
 <!-- SEG:m00061:para:para-00051 -->
-[[b:Prochirality]]
+[[b:[[span:Prochirality|red-text]]]]
 
 <!-- SEG:m00061:para:para-00058 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

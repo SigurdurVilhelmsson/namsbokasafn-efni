@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00317",
-  "extractedAt": "2026-08-31T19:08:50.209Z",
+  "extractedAt": "2026-09-22T17:26:39.896Z",
   "sourceHash": "53336d1d86c61c84",
   "segmentCount": 47,
   "segmentIds": [
@@ -110,5 +110,8 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "polymerase chain reaction (PCR)"
   }
 }

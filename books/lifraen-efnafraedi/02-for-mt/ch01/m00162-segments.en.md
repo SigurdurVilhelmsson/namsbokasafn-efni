@@ -23,7 +23,7 @@ The cylindrical symmetry of H 2 molecule featuring a circular cross-section havi
 During the bond-forming reaction 2H[[b:·]]&#8201;⟶&#8201;H2, 436 kJ/mol (104 kcal/mol) of energy is released. Because the product H[[sub:2]] molecule has 436 kJ/mol less energy than the starting 2 H[[b:·]] atoms, the product is more stable than the reactant and we say that the H–H bond has a [[term:bond strength|term-00003]] of 436 kJ/mol. In other words, we would have to put 436 kJ/mol of energy into the H–H bond to break the H[[sub:2]] molecule apart into two H atoms ([[xref:fig-00003]]). For convenience, we’ll generally give energies in both kilocalories (kcal) and the SI unit kilojoules (kJ): 1 kJ = 0.2390 kcal; 1 kcal = 4.184 kJ.
 
 <!-- SEG:m00162:caption:fig-00003-caption -->
-[[b:Relative energy levels of two H atoms and the H[[sub:2]] molecule.]] The H[[sub:2]] molecule has 436 kJ/mol (104 kcal/mol) less energy than the two separate H atoms, so 436 kJ/mol of energy is [[b:released when the H–H bond forms]]. Conversely, 436 kJ/mol is [[b:absorbed when the H–H bond breaks]].
+[[b:Relative energy levels of two H atoms and the H[[sub:2]] molecule.]] The H[[sub:2]] molecule has 436 kJ/mol (104 kcal/mol) less energy than the two separate H atoms, so 436 kJ/mol of energy is [[b:[[span:released when the H–H bond forms|cyan-text]]]]. Conversely, 436 kJ/mol is [[b:[[span:absorbed when the H–H bond breaks|magenta-text]]]].
 
 <!-- SEG:m00162:alt:fig-00003-alt -->
 The energy level and electron orientation of H 2 molecule and two hydrogen atoms are shown. The difference in their energy level is 436 kilojoules per mole.
@@ -32,7 +32,7 @@ The energy level and electron orientation of H 2 molecule and two hydrogen atoms
 How close are the two nuclei in the H[[sub:2]] molecule? If they are too close, they will repel each other because both are positively charged. Yet if they’re too far apart, they won’t be able to share the bonding electrons. Thus, there is an optimum distance between nuclei that leads to maximum stability ([[xref:fig-00004]]). Called the [[term:bond length|term-00004]], this distance is 74 pm in the H–H molecule. Every covalent bond has both a characteristic bond strength and bond length.
 
 <!-- SEG:m00162:caption:fig-00004-caption -->
-[[b:A plot of energy versus internuclear distance for two hydrogen atoms.]] The distance between nuclei at the minimum energy point is the [[b:bond length]].
+[[b:A plot of energy versus internuclear distance for two hydrogen atoms.]] The distance between nuclei at the minimum energy point is the [[b:[[span:bond length|green-text]]]].
 
 <!-- SEG:m00162:alt:fig-00004-alt -->
 A graph of energy versus internuclear distance. A horizontal line separates the positive and negative energy and a curve with a single trough at 74 ppm is shown.

@@ -11,7 +11,7 @@ Steroids are heavily modified triterpenoids that are biosynthesized in living or
 Two farnesyl diphosphate molecules undergo dimerization to form squalene which cyclizes to lanosterol. This leads to the formation of steroids.
 
 <!-- SEG:m00271:para:para-00002 -->
-Lanosterol biosynthesis begins with the selective epoxidation of squalene to give (3[[i:S]])-2,3-oxidosqualene, catalyzed by squalene epoxidase. Molecular O[[sub:2]] provides the epoxide oxygen atom, and NADPH is required, along with a flavin coenzyme. The proposed mechanism involves reaction of FADH[[sub:2]] with O[[sub:2]] to produce a flavin hydroperoxide intermediate (ROOH), which transfers an oxygen to squalene in a pathway initiated by nucleophilic attack of the squalene double bond on the terminal hydroperoxide oxygen ([[xref:fig-00002]]). The flavin alcohol formed as a by-product loses H[[sub:2]]O to give FAD, which is reduced back to FADH[[sub:2]] by NADPH. As noted in , this biological epoxidation mechanism is closely analogous to the mechanism by which peroxyacids (RCO[[sub:3]]H) react with alkenes to give epoxides in the laboratory.
+Lanosterol biosynthesis begins with the selective epoxidation of squalene to give (3[[i:S]])-2,3-oxidosqualene, catalyzed by squalene epoxidase. Molecular O[[sub:2]] provides the epoxide oxygen atom, and NADPH is required, along with a flavin coenzyme. The proposed mechanism involves reaction of FADH[[sub:2]] with O[[sub:2]] to produce a flavin hydroperoxide intermediate (ROOH), which transfers an oxygen to squalene in a pathway initiated by nucleophilic attack of the squalene double bond on the terminal hydroperoxide oxygen ([[xref:fig-00002]]). The flavin alcohol formed as a by-product loses H[[sub:2]]O to give FAD, which is reduced back to FADH[[sub:2]] by NADPH. As noted in [[docref:m00095]], this biological epoxidation mechanism is closely analogous to the mechanism by which peroxyacids (RCO[[sub:3]]H) react with alkenes to give epoxides in the laboratory.
 
 <!-- SEG:m00271:para:para-00003 -->
 The second part of lanosterol biosynthesis is catalyzed by oxidosqualene-lanosterol cyclase and occurs as shown in [[xref:fig-00004]]. Squalene is folded by the enzyme into a conformation that aligns the various double bonds for a cascade of successive intramolecular electrophilic additions, followed by a series of hydride and methyl migrations. Except for the initial epoxide protonation/cyclization, the process is probably stepwise and appears to involve discrete carbocation intermediates that are stabilized by electrostatic interactions with electron-rich aromatic amino acids in the enzyme.
@@ -23,22 +23,25 @@ The second part of lanosterol biosynthesis is catalyzed by oxidosqualene-lanoste
 Squalene undergoes expoxidation to form (3 S)-2,3-oxidosqualene via flavin adenine dinucleotide hydroperoxide, generated from flavin adenine dinucleotide dihydrogen and molecular oxygen.
 
 <!-- SEG:m00271:title:sect-00010-title -->
-Steps 1, 2 of [[xref:fig-00004]]: Epoxide Opening and Initial Cyclizations
+Steps [[span:1|magenta-text]], [[span:2|magenta-text]] of [[xref:fig-00004]]: Epoxide Opening and Initial Cyclizations
 
 <!-- SEG:m00271:para:para-00004 -->
-Cyclization begins in step [[b:1]] with protonation of the epoxide ring by an aspartic acid residue in the enzyme. Nucleophilic opening of the protonated epoxide by the nearby 5,10 double bond (steroid numbering; ) then yields a tertiary carbocation at C10. Further addition of C10 to the 8,9 double bond in step [[b:2]] next gives a bicyclic tertiary cation at C8.
+Cyclization begins in step [[b:[[span:1|magenta-text]]]] with protonation of the epoxide ring by an aspartic acid residue in the enzyme. Nucleophilic opening of the protonated epoxide by the nearby 5,10 double bond (steroid numbering; [[docref:m00270]]) then yields a tertiary carbocation at C10. Further addition of C10 to the 8,9 double bond in step [[b:[[span:2|magenta-text]]]] next gives a bicyclic tertiary cation at C8.
 
 <!-- SEG:m00271:alt:fig-00003-alt -->
 Acid-promoted ring opening of (3 S)-2,3-oxidosqualene undergoes two cationic cyclizations to form a decaline ring with carbocation at C 8.
 
 <!-- SEG:m00271:title:sect-00002-title -->
-Step 3 of [[xref:fig-00004]]: Third Cyclization
+Step [[span:3|magenta-text]] of [[xref:fig-00004]]: Third Cyclization
 
 <!-- SEG:m00271:para:para-00005 -->
 The third cationic cyclization is somewhat unusual because it occurs with non-Markovnikov regiochemistry and gives a secondary cation at C13 rather than the alternative tertiary cation at C14. There is growing evidence, however, that the tertiary carbocation may in fact be formed initially and that the secondary cation arises by subsequent rearrangement. The secondary cation is probably stabilized in the enzyme pocket by the proximity of an electron-rich aromatic ring.
 
+<!-- SEG:m00271:figure-title:fig-00004-title -->
+MECHANISM
+
 <!-- SEG:m00271:caption:fig-00004-caption -->
-[[b:Mechanism of the conversion of 2,3-oxidosqualene to lanosterol.]] Four cationic cyclizations are followed by four rearrangements and a final loss of H[[sup:+]] from C9. The steroid numbering system is used for referring to specific positions in the intermediates (). Individual steps are explained in the text.
+[[b:Mechanism of the conversion of 2,3-oxidosqualene to lanosterol.]] Four cationic cyclizations are followed by four rearrangements and a final loss of H[[sup:+]] from C9. The steroid numbering system is used for referring to specific positions in the intermediates ([[docref:m00270]]). Individual steps are explained in the text.
 
 <!-- SEG:m00271:alt:fig-00004-alt -->
 A four-step reaction mechanism in the formation of protosteryl cation from (3 S)-2,3-oxidosqualene.
@@ -53,7 +56,7 @@ The remaining five steps in the formation of lanosterol where the protosteryl ca
 The intermediate generated at the second step of oxidation of (3 S)-2,3-oxidosqualene forms tricyclic secondary and tertiary carbocations.
 
 <!-- SEG:m00271:title:sect-00003-title -->
-Step 4 of [[xref:fig-00004]]: Final Cyclization
+Step [[span:4|magenta-text]] of [[xref:fig-00004]]: Final Cyclization
 
 <!-- SEG:m00271:para:para-00006 -->
 The fourth and last cyclization occurs in step 4 by addition of the cationic center at C13 to the 17,20 double bond, giving what is known as the [[i:protosteryl]] cation. The side-chain alkyl group at C17 has [[i:β]] (up) stereochemistry, although this stereochemistry is lost in step 5 and then reset in step 6.
@@ -62,10 +65,10 @@ The fourth and last cyclization occurs in step 4 by addition of the cationic cen
 The intermediate generated at the third step undergoes cyclization to form protosteryl cation.
 
 <!-- SEG:m00271:title:sect-00004-title -->
-Steps 5–9 of [[xref:fig-00004]]: Carbocation Rearrangements
+Steps [[span:5|magenta-text]]–[[span:9|magenta-text]] of [[xref:fig-00004]]: Carbocation Rearrangements
 
 <!-- SEG:m00271:para:para-00007 -->
-Once the tetracyclic carbon skeleton of lanosterol has been formed, a series of carbocation rearrangements occur (). The first rearrangement, hydride migration from C17 to C20, occurs in step 5 and results in establishment of [[i:R]] stereochemistry at C20 in the side chain. In step 6, a second hydride migration occurs from C13 to C17 on the [[i:α]] (bottom) face of the ring and reestablishes the 17[[i:β]] orientation of the side chain. Finally, two methyl migrations, the first from C14 to C13 on the top ([[i:β]]) face and the second from C8 to C14 on the bottom ([[i:α]]) face, place the positive charge at C8. A basic histidine residue in the enzyme then removes the neighboring [[i:β]] proton from C9 to give lanosterol.
+Once the tetracyclic carbon skeleton of lanosterol has been formed, a series of carbocation rearrangements occur ([[docref:m00073]]). The first rearrangement, hydride migration from C17 to C20, occurs in step 5 and results in establishment of [[i:R]] stereochemistry at C20 in the side chain. In step 6, a second hydride migration occurs from C13 to C17 on the [[i:α]] (bottom) face of the ring and reestablishes the 17[[i:β]] orientation of the side chain. Finally, two methyl migrations, the first from C14 to C13 on the top ([[i:β]]) face and the second from C8 to C14 on the bottom ([[i:α]]) face, place the positive charge at C8. A basic histidine residue in the enzyme then removes the neighboring [[i:β]] proton from C9 to give lanosterol.
 
 <!-- SEG:m00271:alt:fig-00008-alt -->
 A base reacts with the protosteryl cation to form lanosterol. The reaction mechanism is denoted by multiple arrows.
@@ -103,76 +106,76 @@ As a rule of thumb, a person’s risk drops about 25% for each increase of 5 mg/
 <!-- SEG:m00271:table-title:table-00001-title -->
 Serum Lipoproteins
 
-<!-- SEG:m00271:entry:auto-36 -->
+<!-- SEG:m00271:entry:auto-37 -->
 Name
 
-<!-- SEG:m00271:entry:auto-37 -->
+<!-- SEG:m00271:entry:auto-38 -->
 Density (g/mL)
 
-<!-- SEG:m00271:entry:auto-38 -->
+<!-- SEG:m00271:entry:auto-39 -->
 % Lipid
 
-<!-- SEG:m00271:entry:auto-39 -->
+<!-- SEG:m00271:entry:auto-40 -->
 % Protein
 
-<!-- SEG:m00271:entry:auto-40 -->
+<!-- SEG:m00271:entry:auto-41 -->
 Optimal (mg/dL)
 
-<!-- SEG:m00271:entry:auto-41 -->
+<!-- SEG:m00271:entry:auto-42 -->
 Poor (mg/dL)
 
-<!-- SEG:m00271:entry:auto-42 -->
+<!-- SEG:m00271:entry:auto-43 -->
 VLDL
 
-<!-- SEG:m00271:entry:auto-43 -->
+<!-- SEG:m00271:entry:auto-44 -->
 0.930–1.006
 
-<!-- SEG:m00271:entry:auto-44 -->
+<!-- SEG:m00271:entry:auto-45 -->
 90
 
-<!-- SEG:m00271:entry:auto-45 -->
-10
-
 <!-- SEG:m00271:entry:auto-46 -->
-—
+10
 
 <!-- SEG:m00271:entry:auto-47 -->
 —
 
 <!-- SEG:m00271:entry:auto-48 -->
-LDL
+—
 
 <!-- SEG:m00271:entry:auto-49 -->
-1.019–1.063
+LDL
 
 <!-- SEG:m00271:entry:auto-50 -->
-75
+1.019–1.063
 
 <!-- SEG:m00271:entry:auto-51 -->
-25
+75
 
 <!-- SEG:m00271:entry:auto-52 -->
-&lt;100
+25
 
 <!-- SEG:m00271:entry:auto-53 -->
->130
+&lt;100
 
 <!-- SEG:m00271:entry:auto-54 -->
-HDL
+>130
 
 <!-- SEG:m00271:entry:auto-55 -->
-1.063–1.210
+HDL
 
 <!-- SEG:m00271:entry:auto-56 -->
-67
+1.063–1.210
 
 <!-- SEG:m00271:entry:auto-57 -->
-33
+67
 
 <!-- SEG:m00271:entry:auto-58 -->
->60
+33
 
 <!-- SEG:m00271:entry:auto-59 -->
+>60
+
+<!-- SEG:m00271:entry:auto-60 -->
 &lt;40
 
 <!-- SEG:m00271:para:para-00014 -->
@@ -260,16 +263,16 @@ Summary
 Additional Problems
 
 <!-- SEG:m00271:para:para-00019 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00271:para:para-00023 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00271:para:para-00027 -->
-[[b:Fats, Oils, and Related Lipids]]
+[[b:[[span:Fats, Oils, and Related Lipids|red-text]]]]
 
 <!-- SEG:m00271:para:para-00038 -->
-[[b:Terpenoids and Steroids]]
+[[b:[[span:Terpenoids and Steroids|red-text]]]]
 
 <!-- SEG:m00271:para:para-00046 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

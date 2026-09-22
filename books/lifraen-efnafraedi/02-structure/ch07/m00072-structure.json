@@ -44,6 +44,7 @@
     {
       "type": "figure",
       "id": "fig-00001",
+      "title": null,
       "caption": {
         "segmentId": "m00072:caption:fig-00001-caption"
       },
@@ -64,6 +65,7 @@
     {
       "type": "figure",
       "id": "fig-00002",
+      "title": null,
       "caption": {
         "segmentId": "m00072:caption:fig-00002-caption"
       },
@@ -82,9 +84,15 @@
       "segmentId": "m00072:para:para-00007"
     },
     {
-      "type": "para",
-      "id": "para-00008",
-      "segmentId": "m00072:para:para-00008"
+      "type": "quote",
+      "id": "quote-00001",
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00072:para:para-00008"
+        }
+      ]
     },
     {
       "type": "para",
@@ -95,6 +103,7 @@
       "type": "figure",
       "id": "fig-00003",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00072:caption:fig-00003-caption"
       },
@@ -115,6 +124,7 @@
     {
       "type": "figure",
       "id": "fig-00004",
+      "title": null,
       "caption": {
         "segmentId": "m00072:caption:fig-00004-caption"
       },

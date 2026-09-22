@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00321",
-  "extractedAt": "2026-08-31T19:08:49.966Z",
+  "extractedAt": "2026-09-22T17:26:39.577Z",
   "sourceHash": "2dbc1e9f562620f4",
   "segmentCount": 13,
   "segmentIds": [
@@ -55,5 +55,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "residues",
+    "term-00002": "backbone",
+    "term-00003": "N-terminal amino acid",
+    "term-00004": "C-terminal amino acid"
   }
 }

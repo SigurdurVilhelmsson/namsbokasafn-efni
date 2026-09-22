@@ -59,13 +59,13 @@ Correlating Energy and Frequency of Radiation
 Which is higher in energy, FM radio waves with a frequency of 1.015 × 10[[sup:8]] Hz (101.5 MHz) or visible green light with a frequency of 5 × 10[[sup:14]] Hz?
 
 <!-- SEG:m00139:para-title:para-00013-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00139:para:para-00013 -->
 Remember the equations [[i:ε]] = [[i:hν]] and [[i:ε]] = [[i:hc]]/[[i:λ,]] which say that energy increases as frequency increases and as wavelength decreases.
 
 <!-- SEG:m00139:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00139:para:para-00014 -->
 Since visible light has a higher frequency than radio waves, it is higher in energy.

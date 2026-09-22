@@ -41,6 +41,7 @@
       "type": "figure",
       "id": "fig-dedication",
       "class": "unnumbered",
+      "title": null,
       "caption": {
         "segmentId": "m00001:caption:fig-dedication-caption"
       },
@@ -540,6 +541,7 @@
               "type": "figure",
               "id": "fig-00001",
               "class": "unnumbered",
+              "title": null,
               "caption": {
                 "segmentId": "m00001:caption:fig-00001-caption"
               },

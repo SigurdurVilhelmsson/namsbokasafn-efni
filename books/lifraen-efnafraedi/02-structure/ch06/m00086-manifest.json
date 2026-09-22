@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00086",
-  "extractedAt": "2026-08-31T19:08:47.443Z",
+  "extractedAt": "2026-09-22T17:26:36.274Z",
   "sourceHash": "bc44600f0b07cbd7",
   "segmentCount": 24,
   "segmentIds": [
@@ -66,5 +66,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "reaction intermediate"
   }
 }

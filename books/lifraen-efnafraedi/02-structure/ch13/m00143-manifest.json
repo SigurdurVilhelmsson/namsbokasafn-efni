@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00143",
-  "extractedAt": "2026-08-31T19:08:48.333Z",
+  "extractedAt": "2026-09-22T17:26:37.386Z",
   "sourceHash": "f9f47b3ede396398",
   "segmentCount": 12,
   "segmentIds": [
@@ -45,5 +45,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Nuclear magnetic resonance (NMR) spectroscopy"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00350",
-  "extractedAt": "2026-08-31T19:08:50.470Z",
+  "extractedAt": "2026-09-22T17:26:40.320Z",
   "sourceHash": "09018b2fefbf7010",
   "segmentCount": 7,
   "segmentIds": [
@@ -39,5 +39,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "polymer",
+    "term-00002": "monomers"
   }
 }

@@ -2,13 +2,13 @@
 Base Pairing in DNA
 
 <!-- SEG:m00311:item:list-00001-item-1 -->
-[[b:Replication]] is the process by which identical copies of DNA are made so that information can be preserved and handed down to offspring.
+[[b:[[span:Replication|magenta-text]]]] is the process by which identical copies of DNA are made so that information can be preserved and handed down to offspring.
 
 <!-- SEG:m00311:item:list-00001-item-2 -->
-[[b:Transcription]] is the process by which genetic messages are read and carried out of the cell nucleus to ribosomes, where protein synthesis occurs.
+[[b:[[span:Transcription|green-text]]]] is the process by which genetic messages are read and carried out of the cell nucleus to ribosomes, where protein synthesis occurs.
 
 <!-- SEG:m00311:item:list-00001-item-3 -->
-[[b:Translation]] is the process by which the genetic messages are decoded and used to synthesize proteins.[[BR]]
+[[b:[[span:Translation|cyan-text]]]] is the process by which the genetic messages are decoded and used to synthesize proteins.[[BR]]
 
 <!-- SEG:m00311:para:para-00001 -->
 Samples of DNA isolated from different tissues of the same species have the same proportions of heterocyclic bases, but samples from different species often have greatly differing proportions of bases. Human DNA, for example, contains about 30% each of adenine and thymine and about 20% each of guanine and cytosine. The bacterium [[i:Clostridium perfringens,]] however, contains about 37% each of adenine and thymine and only 13% each of guanine and cytosine. Note that in both examples the bases occur in pairs. Adenine and thymine are present in equal amounts, as are cytosine and guanine. Why?
@@ -17,7 +17,7 @@ Samples of DNA isolated from different tissues of the same species have the same
 In 1953, Rosalind Franklin, Maurice Wilkins, James Watson, and Francis Crick published scientific reports describing the secondary structure of DNA. According to their model, DNA under physiological conditions consists of two polynucleotide strands, running in opposite directions and coiled around each other in a [[term:double helix|term-00001]] like the handrails on a spiral staircase. The two strands are complementary rather than identical and are held together by hydrogen bonds between specific pairs of bases, A with T and C with G. That is, whenever an A base occurs in one strand, a T base occurs opposite it in the other strand; when a C base occurs in one, a G occurs in the other ([[xref:fig-00001]]). This complementary base-pairing thus explains why A and T are always found in equal amounts, as are G and C.
 
 <!-- SEG:m00311:caption:fig-00001-caption -->
-[[b:Hydrogen-bonding between base pairs in the DNA double helix.]] Electrostatic potential maps show that the faces of the bases are relatively [[b:neutral]], while the edges have [[b:positive]] and [[b:negative]] regions. Pairing G with C and A with T brings together oppositely charged regions.
+[[b:Hydrogen-bonding between base pairs in the DNA double helix.]] Electrostatic potential maps show that the faces of the bases are relatively [[b:[[span:neutral|green-text]]]], while the edges have [[b:[[span:positive|cyan-text]]]] and [[b:[[span:negative|magenta-text]]]] regions. Pairing G with C and A with T brings together oppositely charged regions.
 
 <!-- SEG:m00311:alt:fig-00001-alt -->
 The ball-and-stick model in electrostatic potential maps and structures of base pairs. In deoxyribonucleic acid, the G-C pair involves three hydrogen bonds and the A-T pair involves two hydrogen bonds.
@@ -47,13 +47,13 @@ Predicting the Complementary Base Sequence in Double-Stranded DNA
 What sequence of bases on one strand of DNA is complementary to the sequence TATGCAT on another strand?
 
 <!-- SEG:m00311:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00311:para:para-00007 -->
 Remember that A and G form complementary pairs with T and C, respectively, and then go through the sequence replacing A by T, G by C, T by A, and C by G. Remember also that the 5′ end is on the left and the 3′ end is on the right in the original strand.
 
 <!-- SEG:m00311:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00311:para:para-00009 -->
 Original: &#8201;(5′) TATGCAT (3′)

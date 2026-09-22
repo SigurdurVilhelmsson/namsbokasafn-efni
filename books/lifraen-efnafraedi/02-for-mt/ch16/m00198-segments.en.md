@@ -2,13 +2,13 @@
 Synthesis of Polysubstituted Benzenes
 
 <!-- SEG:m00198:para:para-00001 -->
-As discussed in the [[b:Introduction to Organic Synthesis]] in , one of the surest ways to learn organic chemistry is to work synthesis problems. The ability to plan a successful multistep synthesis of a complex molecule requires a working knowledge of the uses and limitations of a great many organic reactions. Not only must you know which reactions to use, you must also know when to use them because the order in which reactions are carried out is often critical to the success of the overall scheme.
+As discussed in the [[b:Introduction to Organic Synthesis]] in [[docref:m00111]], one of the surest ways to learn organic chemistry is to work synthesis problems. The ability to plan a successful multistep synthesis of a complex molecule requires a working knowledge of the uses and limitations of a great many organic reactions. Not only must you know which reactions to use, you must also know when to use them because the order in which reactions are carried out is often critical to the success of the overall scheme.
 
 <!-- SEG:m00198:para:para-00002 -->
 The ability to plan a sequence of reactions in the right order is particularly important in the synthesis of substituted aromatic rings, where the introduction of a new substituent is strongly affected by the directing effects of other substituents. Planning syntheses of substituted aromatic compounds is therefore a good way to gain confidence in using the many reactions discussed in the past few chapters.
 
 <!-- SEG:m00198:para:para-00003 -->
-As we said in , it’s usually best to work a synthesis problem backward, or [[i:retrosynthetically.]] Look at the target molecule and ask yourself, “What is an immediate precursor of this compound?” Choose a likely answer and continue working backward, one step at a time, until you arrive at a simple starting material. Let’s try some examples.
+As we said in [[docref:m00111]], it’s usually best to work a synthesis problem backward, or [[i:retrosynthetically.]] Look at the target molecule and ask yourself, “What is an immediate precursor of this compound?” Choose a likely answer and continue working backward, one step at a time, until you arrive at a simple starting material. Let’s try some examples.
 
 <!-- SEG:m00198:example-title:exam-00001-title -->
 Synthesizing a Polysubstituted Benzene
@@ -17,7 +17,7 @@ Synthesizing a Polysubstituted Benzene
 How would you synthesize 4-bromo-2-nitrotoluene from benzene?
 
 <!-- SEG:m00198:para-title:para-00005-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00198:para:para-00005 -->
 Draw the target molecule, identify the substituents, and recall how each group can be introduced separately. Then plan retrosynthetically.
@@ -26,7 +26,7 @@ Draw the target molecule, identify the substituents, and recall how each group c
 The three substituents on the ring are a bromine, a methyl group, and a nitro group. A bromine can be introduced by bromination with Br[[sub:2]]/FeBr[[sub:3]], a methyl group can be introduced by Friedel–Crafts alkylation with CH[[sub:3]]Cl/AlCl[[sub:3]], and a nitro group can be introduced by nitration with HNO[[sub:3]]/H[[sub:2]]SO[[sub:4]].
 
 <!-- SEG:m00198:para-title:para-00007-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00198:para:para-00007 -->
 Ask yourself, “What is an immediate precursor of the target?” The final step will involve introduction of one of three groups—bromine, methyl, or nitro—so we have to consider three possibilities. Of the three, the bromination of [[i:o]]-nitrotoluene could be used because the activating methyl group would dominate the deactivating nitro group and direct bromination to the correct position. Unfortunately, a mixture of product isomers would be formed. A Friedel–Crafts reaction can’t be used as the final step because this reaction doesn’t work on a nitro-substituted (strongly deactivated) benzene. The best precursor of the desired product is probably [[i:p]]-bromotoluene, which can be nitrated ortho to the activating methyl group to give a single product.
@@ -59,7 +59,7 @@ Synthesizing a Polysubstituted Benzene
 Synthesize 4-chloro-2-propylbenzenesulfonic acid from benzene.
 
 <!-- SEG:m00198:para-title:para-00012-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00198:para:para-00012 -->
 Draw the target molecule, identify its substituents, and recall how each of the three can be introduced. Then plan retrosynthetically.
@@ -68,7 +68,7 @@ Draw the target molecule, identify its substituents, and recall how each of the 
 The three substituents on the ring are a chlorine, a propyl group, and a sulfonic acid group. A chlorine can be introduced by chlorination with Cl[[sub:2]]/FeCl[[sub:3]], a propyl group can be introduced by Friedel–Crafts acylation with CH[[sub:3]]CH[[sub:2]]COCl/AlCl[[sub:3]] followed by reduction with H[[sub:2]]/Pd, and a sulfonic acid group can be introduced by sulfonation with SO[[sub:3]]/H[[sub:2]]SO[[sub:4]].
 
 <!-- SEG:m00198:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00198:para:para-00014 -->
 “What is an immediate precursor of the target?” The final step will involve introduction of one of three groups—chlorine, propyl, or sulfonic acid—so we have to consider three possibilities. Of the three, the chlorination of [[i:o]]-propylbenzenesulfonic acid can’t be used because the reaction would occur at the wrong position. Similarly, a Friedel–Crafts reaction can’t be used as the final step because this reaction doesn’t work on sulfonic-acid-substituted (strongly deactivated) benzenes. Thus, the immediate precursor of the desired product is probably [[i:m]]-chloropropylbenzene, which can be sulfonated to give a mixture of product isomers that must then be separated.
@@ -203,52 +203,52 @@ Summary of Reactions
 Electrophilic aromatic substitution
 
 <!-- SEG:m00198:item:list-00003-item-1 -->
-Fluorination ()[[BR]]
+Fluorination ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-2 -->
-Bromination ()[[BR]]
+Bromination ([[docref:m00189]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-3 -->
-Chlorination ()[[BR]]
+Chlorination ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-4 -->
-Iodination ()[[BR]]
+Iodination ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-5 -->
-Nitration ()[[BR]]
+Nitration ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-6 -->
-Sulfonation ()[[BR]]
+Sulfonation ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-7 -->
-Friedel–Crafts alkylation ()[[BR]] [[BR]]
+Friedel–Crafts alkylation ([[docref:m00191]])[[BR]] [[BR]]
 
 <!-- SEG:m00198:item:list-00003-item-8 -->
-Friedel–Crafts acylation ()[[BR]]
+Friedel–Crafts acylation ([[docref:m00191]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-2 -->
-Reduction of aromatic nitro groups ()[[BR]]
+Reduction of aromatic nitro groups ([[docref:m00190]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-3 -->
 Nucleophilic aromatic substitution
 
 <!-- SEG:m00198:item:list-00004-item-1 -->
-By addition to activated aryl halides ()[[BR]]
+By addition to activated aryl halides ([[docref:m00194]])[[BR]]
 
 <!-- SEG:m00198:item:list-00004-item-2 -->
-By formation of benzyne intermediate from unactivated aryl halide ()[[BR]]
+By formation of benzyne intermediate from unactivated aryl halide ([[docref:m00195]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-4 -->
-Oxidation of alkylbenzene side chain ()[[BR]]
+Oxidation of alkylbenzene side chain ([[docref:m00196]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-5 -->
-Benzylic bromination of alkylbenzene side chain ()[[BR]]
+Benzylic bromination of alkylbenzene side chain ([[docref:m00196]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-6 -->
-Catalytic hydrogenation of aromatic ring ()[[BR]]
+Catalytic hydrogenation of aromatic ring ([[docref:m00197]])[[BR]]
 
 <!-- SEG:m00198:item:list-00002-item-7 -->
-Reduction of aryl alkyl ketones ()[[BR]]
+Reduction of aryl alkyl ketones ([[docref:m00197]])[[BR]]
 
 <!-- SEG:m00198:alt:fig-00015-alt -->
 Benzene reacts with a fluorinating agent to form fluorobenzene.
@@ -299,22 +299,22 @@ A carbonyl group bonded to a benzene ring on one side and an R groyp on the othe
 Additional Problems
 
 <!-- SEG:m00198:para:para-00033 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00198:para:para-00038 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00198:para:para-00094 -->
-[[b:Mechanisms of Electrophilic Substitutions]]
+[[b:[[span:Mechanisms of Electrophilic Substitutions|red-text]]]]
 
 <!-- SEG:m00198:para:para-00047 -->
-[[b:Additional Mechanism Practice]]
+[[b:[[span:Additional Mechanism Practice|red-text]]]]
 
 <!-- SEG:m00198:para:para-00058 -->
-[[b:Reactivity and Orientation of Electrophilic Substitutions]]
+[[b:[[span:Reactivity and Orientation of Electrophilic Substitutions|red-text]]]]
 
 <!-- SEG:m00198:para:para-00068 -->
-[[b:Organic Synthesis]]
+[[b:[[span:Organic Synthesis|red-text]]]]
 
 <!-- SEG:m00198:para:para-00073 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00128",
-  "extractedAt": "2026-08-31T19:08:48.069Z",
+  "extractedAt": "2026-09-22T17:26:37.075Z",
   "sourceHash": "f91d8614d1e19726",
   "segmentCount": 20,
   "segmentIds": [
@@ -64,5 +64,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Zaitsev’s rule"
   }
 }

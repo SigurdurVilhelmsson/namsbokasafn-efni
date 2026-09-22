@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00180",
-  "extractedAt": "2026-08-31T19:08:48.584Z",
+  "extractedAt": "2026-09-22T17:26:37.708Z",
   "sourceHash": "577eaaf4e42551b4",
   "segmentCount": 8,
   "segmentIds": [
@@ -41,5 +41,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "aromatic"
   }
 }

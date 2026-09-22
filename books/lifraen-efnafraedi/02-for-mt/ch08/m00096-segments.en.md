@@ -35,13 +35,13 @@ Predicting the Reactant in an Ozonolysis Reaction
 What alkene would yield a mixture of cyclopentanone and propanal on treatment with ozone followed by reduction with zinc?
 
 <!-- SEG:m00096:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00096:para:para-00007 -->
 Reaction of an alkene with ozone, followed by reduction with zinc, cleaves the [[MATH:4]] bond and becomes two [[MATH:5]] bonds. Working backward from the carbonyl-containing products, the alkene precursor can be found by removing the oxygen from each product and joining the two carbon atoms.
 
 <!-- SEG:m00096:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00096:alt:fig-00005-alt -->
 An unknown reactant, depicted by a question mark, reacts with ozone in first step and zinc in acetic acid in second step to form cyclopentanone and propanal.

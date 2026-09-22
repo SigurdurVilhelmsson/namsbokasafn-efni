@@ -2,7 +2,7 @@
 Naming Alkynes
 
 <!-- SEG:m00103:para:para-00001 -->
-Alkyne nomenclature follows the general rules for hydrocarbons discussed in and . The suffix [[i:-yne]] is used, and the position of the triple bond is indicated by giving the number of the first alkyne carbon in the chain. Numbering the main chain begins at the end nearer the triple bond so that the triple bond receives as low a number as possible.
+Alkyne nomenclature follows the general rules for hydrocarbons discussed in [[docref:m00035]] and [[docref:m00065]]. The suffix [[i:-yne]] is used, and the position of the triple bond is indicated by giving the number of the first alkyne carbon in the chain. Numbering the main chain begins at the end nearer the triple bond so that the triple bond receives as low a number as possible.
 
 <!-- SEG:m00103:alt:fig-00001-alt -->
 The structure of 6-methyl-3-octyne or 6-methyloct-3-yne (new) with the numbering of groups starting from the carbon on the right side.

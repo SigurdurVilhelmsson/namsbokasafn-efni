@@ -1,5 +1,5 @@
 <!-- SEG:m00224:title:auto-1 -->
-Conjugate Addition of Amines
+Conjugate Nucleophilic Addition to [[i:α]],[[i:β]]‑Unsaturated Aldehydes and Ketones
 
 <!-- SEG:m00224:para:para-00001 -->
 All the reactions we’ve been discussing to this point have involved the addition of a nucleophile directly to the carbonyl group, a so-called [[term:1,2-addition|term-00001]]. Closely related to this direct addition is the [[term:conjugate addition|term-00002]], or [[term:1,4-addition|term-00003]], of a nucleophile to the [[MATH:1]] bond of an [[i:α]],[[i:β]]-unsaturated aldehyde or ketone. (The carbon atom next to a carbonyl group is often called the [[i:α]] carbon, the next carbon is the [[i:β]] carbon, and so on. Thus, an [[i:α]],[[i:β]]-unsaturated aldehyde or ketone has a double bond conjugated with the carbonyl group.) The initial product of conjugate addition is a resonance-stabilized [[i:enolate ion]], which typically undergoes protonation on the [[i:α]] carbon to give a saturated aldehyde or ketone product ([[xref:fig-00001]]).
@@ -26,7 +26,7 @@ Double bond of alpha-beta unsaturated ketone or aldehyde is activated, susceptib
 Conjugate Addition of Amines
 
 <!-- SEG:m00224:para:para-00004 -->
-Both primary and secondary amines add to [[i:α]],[[i:β]]-unsaturated aldehydes and ketones to yield [[i:β]]-amino aldehydes and ketones rather than the alternative imines. Under typical reaction conditions, both modes of addition occur rapidly. But because the reactions are reversible, they generally proceed with thermodynamic control rather than kinetic control (), so the more stable conjugate addition product is often obtained with the complete exclusion of the less stable direct addition product.
+Both primary and secondary amines add to [[i:α]],[[i:β]]-unsaturated aldehydes and ketones to yield [[i:β]]-amino aldehydes and ketones rather than the alternative imines. Under typical reaction conditions, both modes of addition occur rapidly. But because the reactions are reversible, they generally proceed with thermodynamic control rather than kinetic control ([[docref:m00173]]), so the more stable conjugate addition product is often obtained with the complete exclusion of the less stable direct addition product.
 
 <!-- SEG:m00224:alt:fig-00004-alt -->
 2-Cyclohexenone undergoes reversible reactions with methylamine to form beta-amino ketone (sole product). A second pathway shows intermediate ion leading to an unsaturated imine that is not formed.
@@ -53,7 +53,7 @@ The conjugate addition of an alkyl or other organic group to an [[i:α]],[[i:β]
 An alpha beta-unsaturated ketone reacts first with R anion, then with hydronium, to produce a saturated product with R as a substituent on the beta carbon.
 
 <!-- SEG:m00224:para:para-00008 -->
-Conjugate addition of an organic group is carried out by treating the [[i:α]],[[i:β]]-unsaturated ketone with a lithium diorganocopper reagent, R[[sub:2]]CuLi. As we saw in , lithium diorganocopper (Gilman) reagents are prepared by reaction between 1 equivalent of copper(I) iodide and 2 equivalents of an organolithium regent, RLi. The organolithium reagent, in turn, is formed by reaction of lithium metal with an organohalide in the same way that a Grignard reagent is prepared by reaction of magnesium metal with an organohalide.
+Conjugate addition of an organic group is carried out by treating the [[i:α]],[[i:β]]-unsaturated ketone with a lithium diorganocopper reagent, R[[sub:2]]CuLi. As we saw in [[docref:m00119]], lithium diorganocopper (Gilman) reagents are prepared by reaction between 1 equivalent of copper(I) iodide and 2 equivalents of an organolithium regent, RLi. The organolithium reagent, in turn, is formed by reaction of lithium metal with an organohalide in the same way that a Grignard reagent is prepared by reaction of magnesium metal with an organohalide.
 
 <!-- SEG:m00224:alt:fig-00007-alt -->
 R X reacts with two equivalents lithium in pentane to form R L i Two equivalents of this react with copper iodide in ether to form lithium diorganocopper (Gilman reagent).
@@ -77,13 +77,13 @@ Using a Conjugate Addition Reaction
 How might you use a conjugate addition reaction to prepare 2-methyl-3-propylcyclopentanone?
 
 <!-- SEG:m00224:para-title:para-00012-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00224:para:para-00012 -->
 A ketone with a substituent group in its [[i:β]] position might be prepared by a conjugate addition of that group to an [[i:α]],[[i:β]]-unsaturated ketone. In the present instance, the target molecule has a propyl substituent on the [[i:β]] carbon and might therefore be prepared from 2-methyl-2-cyclopentenone by reaction with lithium dipropylcopper.
 
 <!-- SEG:m00224:para-title:para-00013-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00224:alt:fig-00010-alt -->
 The structure of 2-methyl-3-propylcyclopentane. It is cyclopentanone with methyl on C 2 and propyl on C 3 position.

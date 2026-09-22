@@ -2,7 +2,7 @@
 The Eight Essential Monosaccharides
 
 <!-- SEG:m00305:para:para-00001 -->
-Humans need to obtain eight monosaccharides for proper functioning. Although all eight can be biosynthesized from simpler precursors if necessary, it’s more energetically efficient to obtain them from the diet. The eight are L-fucose (6-deoxy-L-galactose), D-galactose, D-glucose, D-mannose, [[i:N]]-acetyl-D-glucosamine, [[i:N]]-acetyl-D-galactosamine, D-xylose, and [[i:N]]-acetyl-D-neuraminic acid ([[xref:fig-00001]]). All are used for the synthesis of the [[b:glycoconjugate]] components of cell membranes, and glucose is also the body’s primary source of energy.
+Humans need to obtain eight monosaccharides for proper functioning. Although all eight can be biosynthesized from simpler precursors if necessary, it’s more energetically efficient to obtain them from the diet. The eight are [[sc:L]]-fucose (6-deoxy-[[sc:L]]-galactose), [[sc:D]]-galactose, [[sc:D]]-glucose, [[sc:D]]-mannose, [[i:N]]-acetyl-[[sc:D]]-glucosamine, [[i:N]]-acetyl-[[sc:D]]-galactosamine, [[sc:D]]-xylose, and [[i:N]]-acetyl-[[sc:D]]-neuraminic acid ([[xref:fig-00001]]). All are used for the synthesis of the [[b:glycoconjugate]] components of cell membranes, and glucose is also the body’s primary source of energy.
 
 <!-- SEG:m00305:caption:fig-00001-caption -->
 [[b:Structures of the eight monosaccharides essential to humans.]]

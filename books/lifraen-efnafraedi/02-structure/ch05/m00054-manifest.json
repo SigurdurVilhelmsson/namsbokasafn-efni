@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00054",
-  "extractedAt": "2026-08-31T19:08:47.257Z",
+  "extractedAt": "2026-09-22T17:26:36.066Z",
   "sourceHash": "401859700c46ed26",
   "segmentCount": 38,
   "segmentIds": [
@@ -93,5 +93,12 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "configuration",
+    "term-00002": "Cahn–Ingold–Prelog rules",
+    "term-00003": "R configuration",
+    "term-00004": "S configuration",
+    "term-00005": "absolute configuration"
   }
 }

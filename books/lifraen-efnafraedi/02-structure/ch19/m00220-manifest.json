@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00220",
-  "extractedAt": "2026-08-31T19:08:49.205Z",
+  "extractedAt": "2026-09-22T17:26:38.392Z",
   "sourceHash": "d2b18a2c0bf6e2e7",
-  "segmentCount": 8,
+  "segmentCount": 9,
   "segmentIds": [
     "m00220:title:auto-1",
     "m00220:para:para-00001",
     "m00220:alt:fig-00001-alt",
     "m00220:para:para-00002",
+    "m00220:figure-title:fig-00002-title",
     "m00220:caption:fig-00002-caption",
     "m00220:alt:fig-00002-alt",
     "m00220:para:para-00003",
@@ -47,5 +48,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Wolff–Kishner reaction"
   }
 }

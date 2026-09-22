@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00055",
-  "extractedAt": "2026-08-31T19:08:47.261Z",
+  "extractedAt": "2026-09-22T17:26:36.069Z",
   "sourceHash": "2e845607fefa0d7e",
   "segmentCount": 26,
   "segmentIds": [
@@ -66,5 +66,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Diastereomers",
+    "term-00002": "epimers"
   }
 }

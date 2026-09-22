@@ -4,6 +4,9 @@ The E2 Reaction and the Deuterium Isotope Effect
 <!-- SEG:m00129:para:para-00001 -->
 The [[term:E2 reaction|term-00001]] (for [[i:elimination, bimolecular]]) occurs when an alkyl halide is treated with a strong base, such as hydroxide ion or alkoxide ion (RO[[sup:–]]). It is the most commonly occurring pathway for elimination and can be formulated as shown in [[xref:fig-00001]].
 
+<!-- SEG:m00129:figure-title:fig-00001-title -->
+MECHANISM
+
 <!-- SEG:m00129:caption:fig-00001-caption -->
 [[b:Mechanism of the E2 reaction of an alkyl halide.]] The reaction takes place in a single step through a transition state in which the double bond begins to form at the same time the H and X groups are leaving.
 
@@ -53,13 +56,13 @@ Predicting the Double-Bond Stereochemistry of the Product in an E2 Reaction
 What stereochemistry do you expect for the alkene obtained by E2 elimination of (1[[i:S]],2[[i:S]])-1,2-dibromo-1,2-diphenylethane?
 
 <!-- SEG:m00129:para-title:para-00009-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00129:para:para-00009 -->
 Draw (1[[i:S]],2[[i:S]])-1,2-dibromo-1,2-diphenylethane so that you can see its stereochemistry and so that the –H and –Br groups to be eliminated are anti periplanar. Then carry out the elimination while keeping all substituents in approximately the same positions, and see what alkene results.
 
 <!-- SEG:m00129:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00129:para:para-00010 -->
 Anti periplanar elimination of HBr gives ([[i:Z]])-1-bromo-1,2-diphenylethylene.

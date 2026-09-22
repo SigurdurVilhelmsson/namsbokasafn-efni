@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00135",
-  "extractedAt": "2026-08-31T19:08:48.177Z",
+  "extractedAt": "2026-09-22T17:26:37.218Z",
   "sourceHash": "f9e2b332b4e0098b",
   "segmentCount": 16,
   "segmentIds": [
@@ -51,5 +51,12 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "mass spectrometry (MS)",
+    "term-00002": "cation radical",
+    "term-00003": "quadrupole mass analyzer",
+    "term-00004": "base peak",
+    "term-00005": "precursor peak"
   }
 }

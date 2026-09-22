@@ -137,22 +137,22 @@ Evidence in support of a carbocation mechanism for electrophilic additions comes
 Additional Problems
 
 <!-- SEG:m00073:para:para-00074 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00073:para:para-00074a -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00073:para:para-00031 -->
-[[b:Calculating a Degree of Unsaturation]]
+[[b:[[span:Calculating a Degree of Unsaturation|red-text]]]]
 
 <!-- SEG:m00073:para:para-00035 -->
-[[b:Naming Alkenes]]
+[[b:[[span:Naming Alkenes|red-text]]]]
 
 <!-- SEG:m00073:para:para-00044 -->
-[[b:Alkene Isomers and Their Stability]]
+[[b:[[span:Alkene Isomers and Their Stability|red-text]]]]
 
 <!-- SEG:m00073:para:para-00054 -->
-[[b:Carbocations and Electrophilic Addition Reactions]]
+[[b:[[span:Carbocations and Electrophilic Addition Reactions|red-text]]]]
 
 <!-- SEG:m00073:para:para-00062 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

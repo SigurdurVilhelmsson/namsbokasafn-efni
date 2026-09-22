@@ -27,6 +27,7 @@
           "type": "figure",
           "id": "fig-00001",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00255:caption:fig-00001-caption"
           },
@@ -43,6 +44,7 @@
           "type": "figure",
           "id": "fig-00002",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00255:caption:fig-00002-caption"
           },
@@ -75,6 +77,7 @@
           "type": "figure",
           "id": "fig-00003",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00255:caption:fig-00003-caption"
           },
@@ -96,6 +99,7 @@
           "type": "figure",
           "id": "fig-00004",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00255:caption:fig-00004-caption"
           },
@@ -117,6 +121,7 @@
           "type": "figure",
           "id": "fig-00005",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -176,6 +181,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00255:caption:fig-00006-caption"
           },
@@ -192,6 +198,7 @@
           "type": "figure",
           "id": "fig-00007",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -211,6 +218,7 @@
           "type": "figure",
           "id": "fig-00008",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -407,6 +415,7 @@
           "type": "figure",
           "id": "fig-00009",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -421,6 +430,7 @@
           "type": "figure",
           "id": "fig-00010",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -435,6 +445,7 @@
           "type": "figure",
           "id": "fig-00011",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -449,6 +460,7 @@
           "type": "figure",
           "id": "fig-00013",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -463,6 +475,7 @@
           "type": "figure",
           "id": "fig-00014",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -477,6 +490,7 @@
           "type": "figure",
           "id": "fig-00015",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -491,6 +505,7 @@
           "type": "figure",
           "id": "fig-00016",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -505,6 +520,7 @@
           "type": "figure",
           "id": "fig-00017",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -519,6 +535,7 @@
           "type": "figure",
           "id": "fig-00018",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -533,6 +550,7 @@
           "type": "figure",
           "id": "fig-00019",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -547,6 +565,7 @@
           "type": "figure",
           "id": "fig-00020",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -561,6 +580,7 @@
           "type": "figure",
           "id": "fig-00021",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -1037,6 +1057,7 @@
           "type": "figure",
           "id": "fig-00022",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -1452,6 +1473,7 @@
               "type": "figure",
               "id": "fig-00023",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -1482,6 +1504,7 @@
               "type": "figure",
               "id": "fig-00024",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -1501,6 +1524,7 @@
               "type": "figure",
               "id": "fig-00025",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m00255:caption:fig-00025-caption"
               },
@@ -1552,6 +1576,7 @@
                   "type": "figure",
                   "id": "fig-00026",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1570,6 +1595,7 @@
                 {
                   "type": "figure",
                   "id": "fig-00027",
+                  "title": null,
                   "caption": {
                     "segmentId": "m00255:caption:fig-00027-caption"
                   },
@@ -1600,6 +1626,7 @@
                       "type": "figure",
                       "id": "fig-00028",
                       "class": "unnumbered scaled-down",
+                      "title": null,
                       "caption": null,
                       "media": {
                         "alt": {
@@ -1630,6 +1657,10 @@
                       "type": "figure",
                       "id": "fig-00029",
                       "class": "mechanism-figure scaled-down",
+                      "title": {
+                        "segmentId": "m00255:figure-title:fig-00029-title",
+                        "text": "MECHANISM"
+                      },
                       "caption": {
                         "segmentId": "m00255:caption:fig-00029-caption"
                       },
@@ -1664,6 +1695,7 @@
                   "type": "figure",
                   "id": "fig-00030",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1683,6 +1715,10 @@
                   "type": "figure",
                   "id": "fig-00031",
                   "class": "mechanism-figure scaled-down",
+                  "title": {
+                    "segmentId": "m00255:figure-title:fig-00031-title",
+                    "text": "MECHANISM"
+                  },
                   "caption": {
                     "segmentId": "m00255:caption:fig-00031-caption"
                   },
@@ -1715,6 +1751,7 @@
                   "type": "figure",
                   "id": "fig-00032",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1734,6 +1771,7 @@
                   "type": "figure",
                   "id": "fig-00033",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1753,6 +1791,7 @@
                   "type": "figure",
                   "id": "fig-00034",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1788,6 +1827,7 @@
                   "type": "figure",
                   "id": "fig-00035",
                   "class": "unnumbered scaled-down",
+                  "title": null,
                   "caption": null,
                   "media": {
                     "alt": {
@@ -1807,6 +1847,10 @@
                   "type": "figure",
                   "id": "fig-00036",
                   "class": "mechanism-figure scaled-down",
+                  "title": {
+                    "segmentId": "m00255:figure-title:fig-00036-title",
+                    "text": "MECHANISM"
+                  },
                   "caption": {
                     "segmentId": "m00255:caption:fig-00036-caption"
                   },

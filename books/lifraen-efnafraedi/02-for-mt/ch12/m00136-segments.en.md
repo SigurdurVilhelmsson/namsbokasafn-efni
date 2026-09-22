@@ -62,13 +62,13 @@ Using Mass Spectra to Identify Compounds
 Assume that you have two unlabeled samples, one of methylcyclohexane and the other of ethylcyclopentane. How could you use mass spectrometry to tell them apart? The mass spectra of both are shown in [[xref:fig-00005]].
 
 <!-- SEG:m00136:para-title:para-00013-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00136:para:para-00013 -->
 Look at the possible structures and decide on how they differ. Then think about how any of these differences in structure might give rise to differences in mass spectra. Methyl cyclohexane, for instance, has a –CH[[sub:3]] group, and ethylcyclopentane has a –CH[[sub:2]]CH[[sub:3]] group, which should affect the fragmentation patterns.
 
 <!-- SEG:m00136:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00136:para:para-00014 -->
 Both mass spectra show molecular ions at M[[sup:+]] = 98, corresponding to C[[sub:7]]H[[sub:14]], but they differ in their fragmentation patterns. Sample [[b:A]] has its base peak at [[i:m]]/[[i:z]] = 69, corresponding to the loss of a CH[[sub:2]]CH[[sub:3]] group (29 mass units), but [[b:B]] has a rather small peak at [[i:m]]/[[i:z]] = 69. Sample [[b:B]] shows a base peak at [[i:m]]/[[i:z]] = 83, corresponding to the loss of a CH[[sub:3]] group (15 mass units), but sample [[b:A]] has only a small peak at [[i:m]]/[[i:z]] = 83. We can therefore be reasonably certain that [[b:A]] is ethylcyclopentane and [[b:B]] is methylcyclohexane.

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00216",
-  "extractedAt": "2026-08-31T19:08:49.192Z",
+  "extractedAt": "2026-09-22T17:26:38.371Z",
   "sourceHash": "1fb485f629178168",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m00216:title:auto-1",
     "m00216:para:para-00001",
@@ -15,6 +15,7 @@
     "m00216:para:para-00005",
     "m00216:para:para-00006",
     "m00216:para:para-00007",
+    "m00216:figure-title:fig-00004-title",
     "m00216:caption:fig-00004-caption",
     "m00216:alt:fig-00004-alt",
     "m00216:para:para-00008",
@@ -61,5 +62,6 @@
     "section": [
       "sect-00001"
     ]
-  }
+  },
+  "termEnglish": {}
 }

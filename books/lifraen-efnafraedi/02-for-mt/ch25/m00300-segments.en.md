@@ -35,16 +35,16 @@ A Fischer projection can also have one group held steady while the other three r
 The structures of (R)-glyceraldehyde before and after counterclockwise rotation are the same having R configuration, holding C H O group steady. The figure shows the ball-and-stick model of both structures.
 
 <!-- SEG:m00300:para:para-00006 -->
-[[i:R]],[[i:S]] stereochemical designations () can be assigned to the chirality center in a Fischer projection by following three steps, as shown in Worked Example 25.1.
+[[i:R]],[[i:S]] stereochemical designations ([[docref:m00054]]) can be assigned to the chirality center in a Fischer projection by following three steps, as shown in Worked Example 25.1.
 
 <!-- SEG:m00300:para:para-00007 -->
-[[b:STEP 1]][[BR]]Rank the four substituents in the usual way ().
+[[b:[[span:STEP 1|red-text]]]][[BR]]Rank the four substituents in the usual way ([[docref:m00054]]).
 
 <!-- SEG:m00300:para:para-00008 -->
-[[b:STEP 2]][[BR]]Place the group of lowest ranking, usually H, at the top of the Fischer projection by using one of the allowed motions. This means that the lowest-ranked group is oriented back, away from the viewer, as required for assigning configuration.
+[[b:[[span:STEP 2|red-text]]]][[BR]]Place the group of lowest ranking, usually H, at the top of the Fischer projection by using one of the allowed motions. This means that the lowest-ranked group is oriented back, away from the viewer, as required for assigning configuration.
 
 <!-- SEG:m00300:para:para-00009 -->
-[[b:STEP 3]][[BR]]Determine the direction of rotation 1&#8201;→&#8201;2&#8201;→&#8201;3 of the remaining three groups, and assign [[i:R]] or [[i:S]] configuration.
+[[b:[[span:STEP 3|red-text]]]][[BR]]Determine the direction of rotation 1&#8201;→&#8201;2&#8201;→&#8201;3 of the remaining three groups, and assign [[i:R]] or [[i:S]] configuration.
 
 <!-- SEG:m00300:para:para-00010 -->
 Carbohydrates with more than one chirality center are shown in Fischer projections by stacking the centers on top of one another, with the carbonyl carbon at or near the top. Glucose, for example, has four chirality centers stacked on top of one another in a Fischer projection. Such representations don’t, however, give an accurate picture of the molecule’s true three-dimensional conformation, which is curled around on itself like a bracelet.
@@ -59,13 +59,13 @@ Assigning [[i:R]] or [[i:S]] Configuration to a Fischer Projection
 Assign [[i:R]] or [[i:S]] configuration to the following Fischer projection of alanine:
 
 <!-- SEG:m00300:para-title:para-00012-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00300:para:para-00012 -->
-Follow the steps in the text. ([[b:1]]) Rank the four substituents on the chiral carbon. ([[b:2]]) Manipulate the Fischer projection to place the group of lowest ranking at the top by carrying out one of the allowed motions. ([[b:3]]) Determine the direction 1&#8201;→&#8201;2&#8201;→&#8201;3 of the remaining three groups.
+Follow the steps in the text. ([[b:[[span:1|magenta-text]]]]) Rank the four substituents on the chiral carbon. ([[b:[[span:2|magenta-text]]]]) Manipulate the Fischer projection to place the group of lowest ranking at the top by carrying out one of the allowed motions. ([[b:[[span:3|magenta-text]]]]) Determine the direction 1&#8201;→&#8201;2&#8201;→&#8201;3 of the remaining three groups.
 
 <!-- SEG:m00300:para-title:para-00013-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00300:para:para-00013 -->
 The rankings of the groups are ([[b:1]]) –NH[[sub:2]], ([[b:2]]) –CO[[sub:2]]H, ([[b:3]]) –CH[[sub:3]], and ([[b:4]]) –H. To bring the group of lowest ranking (–H) to the top, we might want to hold the –CH[[sub:3]] group steady while rotating the other three groups counterclockwise.

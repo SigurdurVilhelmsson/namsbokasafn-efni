@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00309",
-  "extractedAt": "2026-08-31T19:08:50.174Z",
+  "extractedAt": "2026-09-22T17:26:39.853Z",
   "sourceHash": "0d774f4898b4db58",
   "segmentCount": 6,
   "segmentIds": [
@@ -37,5 +37,9 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "deoxyribonucleic acid (DNA)",
+    "term-00002": "ribonucleic acid (RNA)"
   }
 }

@@ -33,6 +33,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00138:caption:fig-00001-caption"
       },

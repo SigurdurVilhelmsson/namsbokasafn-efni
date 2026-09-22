@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00073",
-  "extractedAt": "2026-08-31T19:08:47.609Z",
+  "extractedAt": "2026-09-22T17:26:36.461Z",
   "sourceHash": "af57bfd44dc6f21a",
   "segmentCount": 53,
   "segmentIds": [
@@ -150,5 +150,8 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "hydride shift"
   }
 }

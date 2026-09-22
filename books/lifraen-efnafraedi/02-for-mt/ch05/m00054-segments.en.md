@@ -5,19 +5,19 @@ Sequence Rules for Specifying Configuration
 Structural drawings provide a visual representation of stereochemistry, but a written method for indicating the three-dimensional arrangement, or [[term:configuration|term-00001]], of substituents at a chirality center is also needed. The method used a set of [[b:sequence rules]] to rank the four groups attached to the chirality center and then looks at the handedness with which those groups are attached. Called the [[term:Cahn–Ingold–Prelog rules|term-00002]] after the chemists who proposed them, the sequence rules are as follows:
 
 <!-- SEG:m00054:para:para-00002 -->
-[[b:RULE 1]][[BR]][[b:Look at the four atoms directly attached to the chirality center, and rank them according to atomic number.]] The atom with the highest atomic number has the highest ranking (first), and the atom with the lowest atomic number (usually hydrogen) has the lowest ranking (fourth). When different isotopes of the same element are compared, such as deuterium ([[sup:2]]H) and protium ([[sup:1]]H), the heavier isotope ranks higher than the lighter isotope. Thus, atoms commonly found in organic compounds have the following order.
+[[b:[[span:RULE 1|red-text]]]][[BR]][[b:Look at the four atoms directly attached to the chirality center, and rank them according to atomic number.]] The atom with the highest atomic number has the highest ranking (first), and the atom with the lowest atomic number (usually hydrogen) has the lowest ranking (fourth). When different isotopes of the same element are compared, such as deuterium ([[sup:2]]H) and protium ([[sup:1]]H), the heavier isotope ranks higher than the lighter isotope. Thus, atoms commonly found in organic compounds have the following order.
 
 <!-- SEG:m00054:alt:fig-00001-alt -->
 The atoms are arranged in descending order of their ranking and atomic number as follows: B r, C l, S, P, O, N, C, 2 H, and 1 H.
 
 <!-- SEG:m00054:para:para-00004 -->
-[[b:RULE 2]][[BR]][[b:If a decision can’t be reached by ranking the first atoms in the substituent, look at the second, third, or fourth atoms away from the chirality center until the first difference is found.]] A −CH[[sub:2]]CH[[sub:3]] substituent and a −CH[[sub:3]] substituent are equivalent by rule 1 because both have carbon as the first atom. By rule 2, however, ethyl ranks higher than methyl because ethyl has a carbon as its highest second atom, while methyl has only hydrogen as its second atom. Look at the following pairs of examples to see how the rule works:
+[[b:[[span:RULE 2|red-text]]]][[BR]][[b:If a decision can’t be reached by ranking the first atoms in the substituent, look at the second, third, or fourth atoms away from the chirality center until the first difference is found.]] A −CH[[sub:2]]CH[[sub:3]] substituent and a −CH[[sub:3]] substituent are equivalent by rule 1 because both have carbon as the first atom. By rule 2, however, ethyl ranks higher than methyl because ethyl has a carbon as its highest second atom, while methyl has only hydrogen as its second atom. Look at the following pairs of examples to see how the rule works:
 
 <!-- SEG:m00054:alt:fig-00002-alt -->
 Four pairs of structures are ranked. Within each pair, one structure is labeled as lower while the other as higher.
 
 <!-- SEG:m00054:para:para-00006 -->
-[[b:RULE 3]][[BR]][[b:Multiple-bonded atoms are equivalent to the same number of single-bonded atoms.]] For example, an aldehyde substituent ([[MATH:1]]), which has a carbon atom [[i:doubly]] bonded to [[i:one]] oxygen, is equivalent to a substituent having a carbon atom [[i:singly]] bonded to [[i:two]] oxygens:
+[[b:[[span:RULE 3|red-text]]]][[BR]][[b:Multiple-bonded atoms are equivalent to the same number of single-bonded atoms.]] For example, an aldehyde substituent ([[MATH:1]]), which has a carbon atom [[i:doubly]] bonded to [[i:one]] oxygen, is equivalent to a substituent having a carbon atom [[i:singly]] bonded to [[i:two]] oxygens:
 
 <!-- SEG:m00054:alt:fig-00003-alt -->
 Two equivalent structures. The first structure has a carbonyl group. The second structure has a carbon bonded to hydrogen and two oxygens. One of the oxygens is bonded to carbon.
@@ -32,7 +32,7 @@ Two pairs of equivalent structures. First pair shows alkene and a 4-carbon chain
 Having ranked the four groups attached to a chiral carbon, we describe the stereochemical configuration around the carbon by orienting the molecule so that the group with the lowest ranking (4) points directly away from us. We then look at the three remaining substituents, which now appear to radiate toward us like the spokes on a steering wheel ([[xref:fig-00005]]). If a curved arrow drawn from the highest to second-highest to third-highest ranked substituent (1 → 2 → 3) is clockwise, we say that the chirality center has the [[term:[[i:R]] configuration|term-00003]] (Latin [[i:rectus,]] meaning “right”). If an arrow from 1 → 2 → 3 is counterclockwise, the chirality center has the [[term:[[i:S]] configuration|term-00004]] (Latin [[i:sinister]], meaning “left”). To remember these assignments, think of a car’s steering wheel when making a [[i:R]]ight (clockwise) turn.
 
 <!-- SEG:m00054:caption:fig-00005-caption -->
-[[b:Assigning [[i:R]] and [[i:S]] configurations to chirality centers.]] When the molecule is oriented so that the lowest-ranked group ([[b:4]]) is toward the rear, the remaining three groups radiate toward the viewer like the spokes of a steering wheel. If the direction of travel 1 → 2 → 3 is clockwise (right turn), the center has the [[i:R]] configuration. If the direction of travel 1 → 2 → 3 is counterclockwise (left turn), the center is [[i:S]].
+[[b:Assigning [[i:R]] and [[i:S]] configurations to chirality centers.]] When the molecule is oriented so that the lowest-ranked group ([[b:4]]) is toward the rear, the remaining three groups radiate toward the viewer like the spokes of a steering wheel. If the direction of travel [[span:1|magenta-text]] → [[span:2|green-text]] → [[span:3|cyan-text]] is clockwise (right turn), the center has the [[i:R]] configuration. If the direction of travel [[span:1|magenta-text]] → [[span:2|green-text]] → [[span:3|cyan-text]] is counterclockwise (left turn), the center is [[i:S]].
 
 <!-- SEG:m00054:alt:fig-00005-alt -->
 Substituents in the compound form R configuration, depicted as a right turn of the steering wheel. Its mirror image forms S configuration, depicted as left turn of the steering wheel.
@@ -65,13 +65,13 @@ Assigning Configuration to Chirality Centers
 Orient each of the following drawings so that the lowest-ranked group is toward the rear, and then assign [[i:R]] or [[i:S]] configuration to each:
 
 <!-- SEG:m00054:para-title:para-00014-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00054:para:para-00014 -->
 It takes practice to be able to visualize and orient a chirality center in three dimensions. You might start by indicating where the observer must be located—180° opposite the lowest-ranked group. Then imagine yourself in the position of the observer, and redraw what you would see.
 
 <!-- SEG:m00054:para-title:para-00015-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00054:para:para-00015 -->
 In [[b:(a)]], you would be located in front of the page toward the top right of the molecule, and you would see group 2 to your left, group 3 to your right, and group 1 below you. This corresponds to an [[i:R]] configuration.
@@ -95,13 +95,13 @@ Drawing the Three-Dimensional Structure of a Specific Enantiomer
 Draw a tetrahedral representation of ([[i:R]])-2-chlorobutane.
 
 <!-- SEG:m00054:para-title:para-00018-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00054:para:para-00018 -->
 Begin by ranking the four substituents bonded to the chirality center: (1) −Cl, (2) −CH[[sub:2]]CH[[sub:3]], (3) −CH[[sub:3]], (4) −H. To draw a tetrahedral representation of the molecule, orient the lowest-ranked group (−H) away from you and imagine that the other three groups are coming out of the page toward you. Then, place the remaining three substituents such that the direction of travel 1 → 2 → 3 is clockwise (right turn), and tilt the molecule toward you to bring the rear hydrogen into view. Using molecular models is a real help in working problems of this sort.
 
 <!-- SEG:m00054:para-title:para-00019-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00054:para:para-00019 -->
 [[MEDIA:1]]

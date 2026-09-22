@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00314",
-  "extractedAt": "2026-08-31T19:08:50.197Z",
+  "extractedAt": "2026-09-22T17:26:39.880Z",
   "sourceHash": "70524f37fd02902f",
   "segmentCount": 111,
   "segmentIds": [
@@ -154,5 +154,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "codon",
+    "term-00002": "translation",
+    "term-00003": "anticodon"
   }
 }

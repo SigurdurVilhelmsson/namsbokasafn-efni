@@ -1,5 +1,5 @@
 <!-- SEG:m00125:title:auto-1 -->
-MECHANISM
+The S[[sub:N]]1 Reaction
 
 <!-- SEG:m00125:para:para-00001 -->
 Most nucleophilic substitutions take place by the S[[sub:N]]2 pathway just discussed. The reaction is favored when carried out with an unhindered substrate and a negatively charged nucleophile in a polar aprotic solvent, but is disfavored when carried out with a hindered substrate and a neutral nucleophile in a protic solvent. You might therefore expect the reaction of a tertiary substrate (hindered) with water (neutral, protic) to be among the slowest of substitution reactions. Remarkably, however, the opposite is true. The reaction of the tertiary halide 2-bromo-2-methylpropane (CH[[sub:3]])[[sub:3]]CBr with H[[sub:2]]O to give the alcohol 2-methyl-2-propanol is more than [[i:1 million times]] faster than the corresponding reaction of CH[[sub:3]]Br to give methanol.
@@ -16,8 +16,11 @@ In contrast to the S[[sub:N]]2 reaction of CH[[sub:3]]Br with OH[[sup:–]], the
 <!-- SEG:m00125:para:para-00004 -->
 To explain this result, we need to know more about kinetics measurements. Many organic reactions occur in several steps, one of which usually has a higher-energy transition state than the others and is therefore slower. We call this step with the highest transition-state energy the [[term:[[i:rate-limiting step]]|term-00004]], or [[b:[[term:rate-determining step|term-00006]]]]. No reaction can proceed faster than its rate-limiting step, which acts as a kind of traffic jam, or bottleneck. In the S[[sub:N]]1 reaction of (CH[[sub:3]])[[sub:3]]CBr with H[[sub:2]]O, the fact that the nucleophile concentration does not appear in the first-order rate equation means that it is not involved in the rate-limiting step and must therefore be involved in some other, non-rate-limiting step. The mechanism shown in [[xref:fig-00002]] accounts for these observations.
 
+<!-- SEG:m00125:figure-title:fig-00002-title -->
+MECHANISM
+
 <!-- SEG:m00125:caption:fig-00002-caption -->
-[[b:The mechanism of the S[[sub:N]]1 reaction of 2-bromo-2-methylpropane with H[[sub:2]]O involves three steps.]] Step [[b:1]] —the spontaneous, unimolecular dissociation of the alkyl bromide to yield a carbocation—is rate-limiting.
+[[b:The mechanism of the S[[sub:N]]1 reaction of 2-bromo-2-methylpropane with H[[sub:2]]O involves three steps.]] Step [[b:[[span:1|magenta-text]]]] —the spontaneous, unimolecular dissociation of the alkyl bromide to yield a carbocation—is rate-limiting.
 
 <!-- SEG:m00125:alt:fig-00002-alt -->
 2-bromo-2-methylpropane undergoes a 3-step reaction to form neutral alcohol and hydronium by way of a carbocation. Step 1 forms carbocation, is rate-limiting; step 2 quenches carbocation, is fast.
@@ -32,7 +35,7 @@ Unlike what occurs in an S[[sub:N]]2 reaction, where the leaving group is displa
 An energy diagram shows a large barrier to step 1 of S N 1 (forming carbocation) and small barrier to step 2 (quenching carbocation).
 
 <!-- SEG:m00125:para:para-00006 -->
-Because an S[[sub:N]]1 reaction occurs through a carbocation intermediate, its stereochemical outcome is different from that of an S[[sub:N]]2 reaction. Carbocations, as we’ve seen, are planar, [[i:sp]][[sup:2]]-hybridized, and achiral. Thus, if we carry out an S[[sub:N]]1 reaction on one enantiomer of a chiral reactant and go through an achiral carbocation intermediate, the product loses its optical activity (). That is, the symmetrical intermediate carbocation can react with a nucleophile equally well from either side, leading to a racemic, 50 : 50 mixture of enantiomers ([[xref:fig-00004]]).
+Because an S[[sub:N]]1 reaction occurs through a carbocation intermediate, its stereochemical outcome is different from that of an S[[sub:N]]2 reaction. Carbocations, as we’ve seen, are planar, [[i:sp]][[sup:2]]-hybridized, and achiral. Thus, if we carry out an S[[sub:N]]1 reaction on one enantiomer of a chiral reactant and go through an achiral carbocation intermediate, the product loses its optical activity ([[docref:m00100]]). That is, the symmetrical intermediate carbocation can react with a nucleophile equally well from either side, leading to a racemic, 50 : 50 mixture of enantiomers ([[xref:fig-00004]]).
 
 <!-- SEG:m00125:caption:fig-00004-caption -->
 [[b:Stereochemistry of the S[[sub:N]]1 reaction.]] Because the reaction goes through an achiral intermediate, an enantiomerically pure reactant gives an optically inactive racemic product.

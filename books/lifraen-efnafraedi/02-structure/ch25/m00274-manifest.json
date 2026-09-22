@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00274",
-  "extractedAt": "2026-08-31T19:08:49.826Z",
+  "extractedAt": "2026-09-22T17:26:39.381Z",
   "sourceHash": "633cdb98b6911146",
   "segmentCount": 10,
   "segmentIds": [
@@ -43,5 +43,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Carbohydrates"
   }
 }

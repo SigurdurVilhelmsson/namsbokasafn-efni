@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00240",
-  "extractedAt": "2026-08-31T19:08:49.417Z",
+  "extractedAt": "2026-09-22T17:26:38.733Z",
   "sourceHash": "0c480c5792b9a001",
   "segmentCount": 39,
   "segmentIds": [
@@ -94,5 +94,13 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nucleophilic acyl substitution reaction",
+    "term-00002": "Hydrolysis",
+    "term-00003": "Alcoholysis",
+    "term-00004": "Aminolysis",
+    "term-00005": "Reduction",
+    "term-00006": "Grignard reaction"
   }
 }

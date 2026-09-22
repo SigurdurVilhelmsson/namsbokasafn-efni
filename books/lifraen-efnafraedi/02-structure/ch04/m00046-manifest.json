@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00046",
-  "extractedAt": "2026-08-31T19:08:47.108Z",
+  "extractedAt": "2026-09-22T17:26:35.924Z",
   "sourceHash": "d140feb48344889e",
   "segmentCount": 49,
   "segmentIds": [
@@ -91,5 +91,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "1,3-diaxial interactions"
   }
 }

@@ -22,6 +22,9 @@ A reaction shows 1,2-dimethyl-cyclohexene reacting with hydrogen, and platinum d
 <!-- SEG:m00094:para:para-00005 -->
 As shown in [[xref:fig-00003]], hydrogenation begins with adsorption of H[[sub:2]] onto the catalyst surface. Complexation between catalyst and alkene then occurs as a vacant orbital on the metal interacts with the filled alkene [[i:π]] orbital on the alkene. In the final steps, hydrogen is inserted into the double bond and the saturated product diffuses away from the catalyst. The stereochemistry of hydrogenation is syn because both hydrogens add to the double bond from the same catalyst surface.
 
+<!-- SEG:m00094:figure-title:fig-00003-title -->
+MECHANISM
+
 <!-- SEG:m00094:caption:fig-00003-caption -->
 [[b:Mechanism of alkene hydrogenation.]] The reaction takes place with syn stereochemistry on the surface of insoluble catalyst particles.
 
@@ -50,10 +53,10 @@ In addition to its usefulness in the laboratory, catalytic hydrogenation is also
 Catalytic hydrogenation of a polyunsaturated fatty acid in vegetable oil with two molecules of hydrogen in palladium on carbon to form a saturated and trans-fatty acid in margarine.
 
 <!-- SEG:m00094:para:para-00009 -->
-Double-bond reductions are very common in biological pathways, although the mechanism is completely different from that of laboratory catalytic hydrogenation over palladium. As with biological hydrations (), biological reductions usually occur in two steps and require that the double bond be adjacent to a carbonyl group. In the first step, the biological reducing agent NADPH (reduced nicotinamide adenine dinucleotide phosphate), adds a hydride ion (H:[[sup:−]]) to the double bond to give an anion. In the second, the anion is protonated by acid HA, leading to overall addition of H[[sub:2]]. An example is the reduction of [[i:trans]]-crotonyl ACP to yield butyryl ACP, a step involved in the biosynthesis of fatty acids ([[xref:fig-00007]]).
+Double-bond reductions are very common in biological pathways, although the mechanism is completely different from that of laboratory catalytic hydrogenation over palladium. As with biological hydrations ([[docref:m00092]]), biological reductions usually occur in two steps and require that the double bond be adjacent to a carbonyl group. In the first step, the biological reducing agent NADPH (reduced nicotinamide adenine dinucleotide phosphate), adds a hydride ion (H:[[sup:−]]) to the double bond to give an anion. In the second, the anion is protonated by acid HA, leading to overall addition of H[[sub:2]]. An example is the reduction of [[i:trans]]-crotonyl ACP to yield butyryl ACP, a step involved in the biosynthesis of fatty acids ([[xref:fig-00007]]).
 
 <!-- SEG:m00094:caption:fig-00007-caption -->
-[[b:Reduction of the carbon–carbon double bond in [[i:trans]]-crotonyl ACP, a step in the biosynthesis of fatty acids.]] [[b:One hydrogen]] is delivered from NADPH as a hydride ion, H:[[sup:−]]; the [[b:other hydrogen]] is delivered by protonation of the anion intermediate with an acid, HA.
+[[b:Reduction of the carbon–carbon double bond in [[i:trans]]-crotonyl ACP, a step in the biosynthesis of fatty acids.]] [[span:[[b:One hydrogen]]|cyan-text]] is delivered from NADPH as a hydride ion, H:[[sup:−]]; the [[span:[[b:other hydrogen]]|magenta-text]] is delivered by protonation of the anion intermediate with an acid, HA.
 
 <!-- SEG:m00094:alt:fig-00007-alt -->
 A reaction shows trans-crotonyl A C P reacting with N A D P H to form anion intermediate, which reacts with H A to form butyryl A C P.

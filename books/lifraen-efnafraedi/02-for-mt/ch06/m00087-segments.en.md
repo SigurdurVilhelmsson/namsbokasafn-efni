@@ -221,16 +221,16 @@ Many reactions take place in more than one step and involve the formation of a [
 Additional Problems
 
 <!-- SEG:m00087:para:para-00045 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00087:para:para-00055 -->
-[[b:Energy Diagrams and Reaction Mechanisms]]
+[[b:[[span:Energy Diagrams and Reaction Mechanisms|red-text]]]]
 
 <!-- SEG:m00087:para:para-00039 -->
-[[b:Polar Reactions]]
+[[b:[[span:Polar Reactions|red-text]]]]
 
 <!-- SEG:m00087:para:para-00056 -->
-[[b:Radical Reactions]]
+[[b:[[span:Radical Reactions|red-text]]]]
 
 <!-- SEG:m00087:para:para-00057 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00219",
-  "extractedAt": "2026-08-31T19:08:49.202Z",
+  "extractedAt": "2026-09-22T17:26:38.385Z",
   "sourceHash": "5279b74e441db41c",
-  "segmentCount": 26,
+  "segmentCount": 28,
   "segmentIds": [
     "m00219:title:auto-1",
     "m00219:para:para-00001",
@@ -12,11 +12,13 @@
     "m00219:alt:fig-00002-alt",
     "m00219:para:para-00003",
     "m00219:para:para-00004",
+    "m00219:figure-title:fig-00003-title",
     "m00219:caption:fig-00003-caption",
     "m00219:alt:fig-00003-alt",
     "m00219:para:para-00005",
     "m00219:alt:fig-00004-alt",
     "m00219:para:para-00006",
+    "m00219:figure-title:fig-00005-title",
     "m00219:caption:fig-00005-caption",
     "m00219:alt:fig-00005-alt",
     "m00219:para:para-00007",
@@ -78,5 +80,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "imines",
+    "term-00002": "enamines",
+    "term-00003": "Schiff bases",
+    "term-00004": "carbinolamine"
   }
 }

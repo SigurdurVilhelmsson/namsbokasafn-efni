@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00301",
-  "extractedAt": "2026-08-31T19:08:49.840Z",
+  "extractedAt": "2026-09-22T17:26:39.400Z",
   "sourceHash": "47b607a0cda44265",
   "segmentCount": 9,
   "segmentIds": [
@@ -46,5 +46,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "sugars",
+    "term-00002": "sugars"
   }
 }

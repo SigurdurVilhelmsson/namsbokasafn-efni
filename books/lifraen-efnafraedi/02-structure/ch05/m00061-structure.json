@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "unnumbered scaled-down",
+      "title": null,
       "caption": null,
       "media": {
         "alt": {
@@ -37,6 +38,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00061:caption:fig-00002-caption"
       },
@@ -68,6 +70,7 @@
       "type": "figure",
       "id": "fig-00004",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00061:caption:fig-00004-caption"
       },
@@ -98,6 +101,7 @@
           "type": "figure",
           "id": "fig-00005",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00061:caption:fig-00005-caption"
           },
@@ -119,6 +123,7 @@
           "type": "figure",
           "id": "fig-00006",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {
@@ -138,6 +143,7 @@
           "type": "figure",
           "id": "fig-00007",
           "class": "unnumbered scaled-down",
+          "title": null,
           "caption": null,
           "media": {
             "alt": {

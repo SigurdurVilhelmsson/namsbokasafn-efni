@@ -16,6 +16,9 @@ The figure shows three structures, dibromo acetaldehyde, bromoacetone, and 1,1,1
 <!-- SEG:m00259:para:para-00003 -->
 This form of halogenation is a typical [[i:α]]-substitution reaction that proceeds by acid-catalyzed formation of an enol intermediate, as shown in [[xref:fig-00003]].
 
+<!-- SEG:m00259:figure-title:fig-00003-title -->
+MECHANISM
+
 <!-- SEG:m00259:caption:fig-00003-caption -->
 [[b:Mechanism of the acid-catalyzed bromination of acetone.]]
 
@@ -35,7 +38,7 @@ Furthermore, if an aldehyde or ketone is treated with D[[sub:3]]O[[sup:+]], the 
 Ketone or aldehyde reacts slowly with hydronium ions to form enol intermediate, which reacts fast with trideuteriooxidanium ion and X 2 to form the product with D and X, respectively.
 
 <!-- SEG:m00259:para:para-00008 -->
-[[i:α]]-Bromo ketones are useful in the laboratory because they can be dehydrobrominated by base treatment to yield [[i:α]],[[i:β]]-unsaturated ketones. For example, 2-methylcyclohexanone gives 2-bromo-2-methylcyclohexanone on halogenation, and the [[i:α]]-bromo ketone gives 2-methyl-2-cyclohexenone when heated in pyridine. The reaction takes place by an E2 elimination pathway () and is a good method for introducing a [[MATH:1]] bond into a molecule. Note that bromination of 2-methylcyclohexanone occurs primarily on the more highly substituted [[i:α]] position because the more highly substituted enol is favored over the less highly substituted one ().
+[[i:α]]-Bromo ketones are useful in the laboratory because they can be dehydrobrominated by base treatment to yield [[i:α]],[[i:β]]-unsaturated ketones. For example, 2-methylcyclohexanone gives 2-bromo-2-methylcyclohexanone on halogenation, and the [[i:α]]-bromo ketone gives 2-methyl-2-cyclohexenone when heated in pyridine. The reaction takes place by an E2 elimination pathway ([[docref:m00129]]) and is a good method for introducing a [[MATH:1]] bond into a molecule. Note that bromination of 2-methylcyclohexanone occurs primarily on the more highly substituted [[i:α]] position because the more highly substituted enol is favored over the less highly substituted one ([[docref:m00068]]).
 
 <!-- SEG:m00259:alt:fig-00005-alt -->
 2-methyl cyclohexanone reacts with bromine in acetic acid to form 2-bromo-2-methyl-cyclohexanone, which when heated reacts with pyridine to form 2-methyl-2-cyclohexenone in 63 percent yield.

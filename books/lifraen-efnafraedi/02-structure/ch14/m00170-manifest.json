@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00170",
-  "extractedAt": "2026-08-31T19:08:48.459Z",
+  "extractedAt": "2026-09-22T17:26:37.557Z",
   "sourceHash": "c62736246f744181",
   "segmentCount": 7,
   "segmentIds": [
@@ -40,5 +40,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "conjugated"
   }
 }

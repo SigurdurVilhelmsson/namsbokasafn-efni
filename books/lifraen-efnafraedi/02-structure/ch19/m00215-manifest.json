@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m00215",
-  "extractedAt": "2026-08-31T19:08:49.189Z",
+  "extractedAt": "2026-09-22T17:26:38.366Z",
   "sourceHash": "70337353bd32e094",
-  "segmentCount": 17,
+  "segmentCount": 18,
   "segmentIds": [
     "m00215:title:auto-1",
     "m00215:para:para-00001",
+    "m00215:figure-title:fig-00001-title",
     "m00215:caption:fig-00001-caption",
     "m00215:alt:fig-00001-alt",
     "m00215:para:para-00002",
@@ -64,5 +65,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "nucleophilic addition reaction"
   }
 }

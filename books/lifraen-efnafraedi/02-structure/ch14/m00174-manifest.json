@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00174",
-  "extractedAt": "2026-08-31T19:08:48.489Z",
+  "extractedAt": "2026-09-22T17:26:37.584Z",
   "sourceHash": "753109cf794708ef",
   "segmentCount": 9,
   "segmentIds": [
@@ -41,5 +41,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Diels–Alder cycloaddition reaction"
   }
 }

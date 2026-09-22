@@ -2,7 +2,7 @@
   "moduleId": "m00153",
   "title": {
     "segmentId": "m00153:title:auto-1",
-    "text": "Untitled"
+    "text": "[[sup:13]]C NMR Spectroscopy: Signal Averaging and FT–NMR"
   },
   "documentClass": null,
   "metadata": {
@@ -23,6 +23,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00153:caption:fig-00001-caption"
       },

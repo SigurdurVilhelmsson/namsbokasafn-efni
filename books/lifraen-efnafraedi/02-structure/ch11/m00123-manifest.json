@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00123",
-  "extractedAt": "2026-08-31T19:08:48.048Z",
+  "extractedAt": "2026-09-22T17:26:37.049Z",
   "sourceHash": "0991df8bf5e08d33",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00123:title:auto-1",
     "m00123:para:para-00001",
@@ -12,6 +12,7 @@
     "m00123:para:para-00003",
     "m00123:para:para-00004",
     "m00123:para:para-00005",
+    "m00123:figure-title:fig-00002-title",
     "m00123:caption:fig-00002-caption",
     "m00123:alt:fig-00002-alt",
     "m00123:para:para-00006",
@@ -58,5 +59,11 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "kinetics",
+    "term-00002": "second-order reaction",
+    "term-00003": "SN2 reaction",
+    "term-00004": "Bimolecular"
   }
 }

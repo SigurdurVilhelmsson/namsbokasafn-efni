@@ -2,7 +2,7 @@
 Preparation of Alkynes: Elimination Reactions of Dihalides
 
 <!-- SEG:m00104:para:para-00001 -->
-Alkynes can be prepared by the elimination of HX from alkyl halides in a similar manner as alkenes (). Treatment of a 1,2-dihaloalkane (called a [[i:vicinal]] dihalide) with an excess amount of a strong base such as KOH or NaNH[[sub:2]] results in a twofold elimination of HX and formation of an alkyne. As with the elimination of HX to form an alkene, we’ll defer a full discussion of this topic and the relevant reaction mechanisms to Chapter 11.
+Alkynes can be prepared by the elimination of HX from alkyl halides in a similar manner as alkenes ([[docref:m00089]]). Treatment of a 1,2-dihaloalkane (called a [[i:vicinal]] dihalide) with an excess amount of a strong base such as KOH or NaNH[[sub:2]] results in a twofold elimination of HX and formation of an alkyne. As with the elimination of HX to form an alkene, we’ll defer a full discussion of this topic and the relevant reaction mechanisms to Chapter 11.
 
 <!-- SEG:m00104:para:para-00002 -->
 The starting vicinal dihalides are themselves readily available by addition of Br[[sub:2]] or Cl[[sub:2]] to alkenes. Thus, the overall halogenation/dehydrohalogenation sequence makes it possible to go from an alkene to an alkyne. For example, diphenylethylene is converted into diphenylacetylene by reaction with Br[[sub:2]] and subsequent base treatment.

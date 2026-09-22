@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00338",
-  "extractedAt": "2026-08-31T19:08:50.306Z",
+  "extractedAt": "2026-09-22T17:26:40.044Z",
   "sourceHash": "1faab5332c4693db",
-  "segmentCount": 20,
+  "segmentCount": 21,
   "segmentIds": [
     "m00338:title:auto-1",
     "m00338:para:para-00001",
@@ -19,6 +19,7 @@
     "m00338:para:para-00002",
     "m00338:alt:fig-00002-alt",
     "m00338:para:para-00003",
+    "m00338:figure-title:fig-00003-title",
     "m00338:caption:fig-00003-caption",
     "m00338:alt:fig-00003-alt",
     "m00338:title:sect-00004-title",
@@ -72,5 +73,9 @@
       "sect-00004",
       "sect-00005"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "deamination",
+    "term-00002": "transamination"
   }
 }

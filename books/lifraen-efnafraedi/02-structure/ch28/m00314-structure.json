@@ -768,6 +768,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00314:caption:fig-00001-caption"
       },
@@ -789,6 +790,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00314:caption:fig-00002-caption"
       },
@@ -825,7 +827,7 @@
           "segmentId": "m00314:para:para-00007",
           "title": {
             "segmentId": "m00314:para-title:para-00007-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -844,7 +846,7 @@
           "segmentId": "m00314:para:para-00010",
           "title": {
             "segmentId": "m00314:para-title:para-00010-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]

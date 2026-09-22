@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00282",
-  "extractedAt": "2026-08-31T19:08:49.622Z",
+  "extractedAt": "2026-09-22T17:26:39.052Z",
   "sourceHash": "9c3d38999428e8fc",
-  "segmentCount": 14,
+  "segmentCount": 15,
   "segmentIds": [
     "m00282:title:auto-1",
     "m00282:para:para-00001",
     "m00282:alt:fig-00001-alt",
     "m00282:para:para-00002",
+    "m00282:figure-title:fig-00002-title",
     "m00282:caption:fig-00002-caption",
     "m00282:alt:fig-00002-alt",
     "m00282:para:para-00003",
@@ -54,5 +55,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Claisen condensation reaction"
   }
 }

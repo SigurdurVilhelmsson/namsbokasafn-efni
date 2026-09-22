@@ -32,7 +32,7 @@ Hydrogens on carbon next to an ether oxygen are shifted downfield from the norma
 Proton N M R with shifts at 0 (TMS), 0.92 (triplet), 1.58 (sextet), and 3.36 (triplet). Relative areas are 1.50, 1.00, and 1.00 respectively.
 
 <!-- SEG:m00255:para:para-00003 -->
-Epoxides absorb at a slightly higher field than other ethers and show characteristic resonances at 2.5 to 3.5 [[i:δ]] in their [[sup:1]]H NMR spectra, as indicated for 1,2-epoxypropane in [[xref:fig-00004]]. The methylene protons of this epoxide are diastereotopic, and display complex splitting (see and ).
+Epoxides absorb at a slightly higher field than other ethers and show characteristic resonances at 2.5 to 3.5 [[i:δ]] in their [[sup:1]]H NMR spectra, as indicated for 1,2-epoxypropane in [[xref:fig-00004]]. The methylene protons of this epoxide are diastereotopic, and display complex splitting (see [[docref:m00150]] and [[docref:m00151]]).
 
 <!-- SEG:m00255:caption:fig-00004-caption -->
 [[b:The [[sup:1]]H NMR spectrum of 1,2-epoxypropane]].
@@ -131,7 +131,7 @@ Epoxides are cyclic ethers with a three-membered, oxygen-containing ring. Becaus
 Summary of Reactions
 
 <!-- SEG:m00255:item:list-00002-item-1 -->
-Synthesis of ethers ()
+Synthesis of ethers ([[docref:m00249]])
 
 <!-- SEG:m00255:item:list-00003-item-1 -->
 Williamson ether synthesis[[BR]]
@@ -143,25 +143,25 @@ Alkoxymercuration/demercuration[[BR]]
 Reactions of ethers
 
 <!-- SEG:m00255:item:list-00004-item-1 -->
-Cleavage by HBr or HI ()[[BR]]
+Cleavage by HBr or HI ([[docref:m00250]])[[BR]]
 
 <!-- SEG:m00255:item:list-00004-item-2 -->
-Acid-catalyzed epoxide opening ()[[BR]]
+Acid-catalyzed epoxide opening ([[docref:m00252]])[[BR]]
 
 <!-- SEG:m00255:item:list-00004-item-3 -->
-Base-catalyzed epoxide opening ()[[BR]]
+Base-catalyzed epoxide opening ([[docref:m00252]])[[BR]]
 
 <!-- SEG:m00255:item:list-00002-item-3 -->
-Synthesis of thiols ()[[BR]]
+Synthesis of thiols ([[docref:m00254]])[[BR]]
 
 <!-- SEG:m00255:item:list-00002-item-4 -->
-Oxidation of thiols to disulfides ()[[BR]]
+Oxidation of thiols to disulfides ([[docref:m00254]])[[BR]]
 
 <!-- SEG:m00255:item:list-00002-item-5 -->
-Synthesis of sulfides ()[[BR]]
+Synthesis of sulfides ([[docref:m00254]])[[BR]]
 
 <!-- SEG:m00255:item:list-00002-item-6 -->
-Oxidation of sulfides to sulfoxides and sulfones ()[[BR]]
+Oxidation of sulfides to sulfoxides and sulfones ([[docref:m00254]])[[BR]]
 
 <!-- SEG:m00255:alt:fig-00009-alt -->
 An alkoxide ion reacts with an alkyl halide (R dash C H 2 X) to yield an ether (R O C H 2 R dash) and a halide ion.
@@ -203,25 +203,25 @@ Sulfoxide reacts with R C O 3 H to form a product in which sulfur is double-bond
 Additional Problems
 
 <!-- SEG:m00255:para:para-00014 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00255:para:para-00019 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00255:para:para-00035 -->
-[[b:Naming Ethers]]
+[[b:[[span:Naming Ethers|red-text]]]]
 
 <!-- SEG:m00255:para:para-00038 -->
-[[b:Synthesizing Ethers]]
+[[b:[[span:Synthesizing Ethers|red-text]]]]
 
 <!-- SEG:m00255:para:para-00043 -->
-[[b:Reactions of Ethers and Epoxides]]
+[[b:[[span:Reactions of Ethers and Epoxides|red-text]]]]
 
 <!-- SEG:m00255:para:para-00053 -->
-[[b:Spectroscopy]]
+[[b:[[span:Spectroscopy|red-text]]]]
 
 <!-- SEG:m00255:para:para-00057 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]
 
 <!-- SEG:m00255:title:sect-00009-title -->
 Preview of Carbonyl Chemistry
@@ -380,7 +380,7 @@ Nucleophilic Addition Reactions of Aldehydes and Ketones (Chapter 19)
 FORMATION OF AN ALCOHOL
 
 <!-- SEG:m00255:para:para-00081 -->
-The simplest reaction of a tetrahedral alkoxide intermediate is protonation to yield an alcohol. We’ve already seen two examples of this kind of process during reduction of aldehydes and ketones with hydride reagents such as NaBH[[sub:4]] and LiAlH[[sub:4]] () and during Grignard reactions (). During a reduction, the nucleophile that adds to the carbonyl group is a hydride ion, H[[b::]][[sup:–]], while during a Grignard reaction, the nucleophile is a carbanion, R[[sub:3]]C[[b::]][[sup:–]].
+The simplest reaction of a tetrahedral alkoxide intermediate is protonation to yield an alcohol. We’ve already seen two examples of this kind of process during reduction of aldehydes and ketones with hydride reagents such as NaBH[[sub:4]] and LiAlH[[sub:4]] ([[docref:m00203]]) and during Grignard reactions ([[docref:m00204]]). During a reduction, the nucleophile that adds to the carbonyl group is a hydride ion, H[[b::]][[sup:–]], while during a Grignard reaction, the nucleophile is a carbanion, R[[sub:3]]C[[b::]][[sup:–]].
 
 <!-- SEG:m00255:alt:fig-00028-alt -->
 Reduction reaction involves ketones or aldehydes converting to alcohols. The Grignard reaction involves the conversion of ketones or aldehydes to alcohols. Both reactions progress via a tetrahedral intermediate.
@@ -390,6 +390,9 @@ FORMATION OF [[MATH:2]]
 
 <!-- SEG:m00255:para:para-00082 -->
 The second mode of nucleophilic addition, which often occurs with amine nucleophiles, involves elimination of oxygen and formation of a [[MATH:3]] double bond. For example, aldehydes and ketones react with primary amines, RNH[[sub:2]], to form [[i:imines,]] [[MATH:4]]. These reactions use the same kind of tetrahedral intermediate as that formed during hydride reduction and Grignard reaction, but the initially formed alkoxide ion is not isolated. Instead, it is protonated and then loses water to form an imine, as shown in [[xref:fig-00029]].
+
+<!-- SEG:m00255:figure-title:fig-00029-title -->
+MECHANISM
 
 <!-- SEG:m00255:caption:fig-00029-caption -->
 [[b:Formation of an imine, R[[sub:2]]C=NR′, by reaction of an amine with an aldehyde or a ketone]].
@@ -423,6 +426,9 @@ A carboxylic acid derivative reaction involving nucleophile addition that leads 
 
 <!-- SEG:m00255:para:para-00084 -->
 The net effect of nucleophilic acyl substitution is the replacement of the leaving group by the entering nucleophile. We’ll see in Chapter 21, for instance, that acid chlorides are rapidly converted into esters by treatment with alkoxide ions ([[xref:fig-00031]]).
+
+<!-- SEG:m00255:figure-title:fig-00031-title -->
+MECHANISM
 
 <!-- SEG:m00255:caption:fig-00031-caption -->
 [[b:Nucleophilic acyl substitution of an acid chloride with an alkoxide ion yields an ester]].
@@ -465,6 +471,9 @@ Two equivalents of acetaldehyde in sodium hydroxide produce 3-hydroxybutanal, an
 
 <!-- SEG:m00255:para:para-00090 -->
 Although carbonyl condensation appears to be different from the three processes already discussed, it’s actually quite similar. A carbonyl condensation reaction is simply a combination of a nucleophilic addition step and an [[i:α]]-substitution step. The initially formed enolate ion of one acetaldehyde molecule acts as a nucleophile and adds to the carbonyl group of another acetaldehyde molecule, as shown in [[xref:fig-00036]].
+
+<!-- SEG:m00255:figure-title:fig-00036-title -->
+MECHANISM
 
 <!-- SEG:m00255:caption:fig-00036-caption -->
 [[b:A carbonyl condensation reaction between two molecules of acetaldehyde yields a hydroxy aldehyde product]].

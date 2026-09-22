@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00263",
-  "extractedAt": "2026-08-31T19:08:49.546Z",
+  "extractedAt": "2026-09-22T17:26:38.923Z",
   "sourceHash": "003a746a4ee4b041",
   "segmentCount": 111,
   "segmentIds": [
@@ -250,5 +250,10 @@
       "sect-00011",
       "sect-00012"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "malonic ester synthesis",
+    "term-00002": "decarboxylation",
+    "term-00003": "acetoacetic ester synthesis"
   }
 }

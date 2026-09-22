@@ -35,7 +35,7 @@ Drawing Resonance Forms for an Anion
 Draw three resonance structures for the carbonate ion, CO[[sub:3]][[sup:2–]].
 
 <!-- SEG:m00023:para-title:para-00007-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00023:para:para-00007 -->
 Look for three-atom groupings that contain a multiple bond next to an atom with a [[i:p]] orbital. Then exchange the positions of the multiple bond and the electrons in the [[i:p]] orbital. In the carbonate ion, each singly bonded oxygen atom with three lone pairs and a negative charge is adjacent to the [[MATH:5]] double bond, giving the grouping [[MEDIA:1]].
@@ -44,7 +44,7 @@ Look for three-atom groupings that contain a multiple bond next to an atom with 
 Condensed structure of O with two nonbonding pairs double-bonded to C, which is single-bonded to another O with three nonbonding pairs and a negative charge.
 
 <!-- SEG:m00023:para-title:para-00008-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00023:para:para-00008 -->
 Exchanging the position of the double bond and an electron lone pair in each grouping generates three resonance structures.
@@ -62,13 +62,13 @@ Drawing Resonance Forms for a Radical
 Draw three resonance forms for the pentadienyl radical, where a [[b:radical]] is a substance that contains a single, unpaired electron in one of its orbitals, denoted by a dot ([[b:·]]).
 
 <!-- SEG:m00023:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00023:para:para-00010 -->
 Find the three-atom groupings that contain a multiple bond next to an atom with a [[i:p]] orbital.
 
 <!-- SEG:m00023:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00023:para:para-00011 -->
 The unpaired electron is on a carbon atom next to a [[MATH:6]] bond, giving a typical three-atom grouping that has two resonance forms.

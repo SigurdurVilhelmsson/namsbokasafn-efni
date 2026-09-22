@@ -1,11 +1,11 @@
 <!-- SEG:m00166:title:auto-1 -->
-Comparison of C−C and C−H Bonds in Methane, Ethane, Ethylene, and Acetylene
+[[i:sp]] Hybrid Orbitals and the Structure of Acetylene
 
 <!-- SEG:m00166:para:para-00001 -->
 In addition to forming single and double bonds by sharing two and four electrons, respectively, carbon can also form a [[i:triple]] bond by sharing six electrons. To account for the triple bond in a molecule such as acetylene, [[MATH:1]], we need a third kind of hybrid orbital, an [[term:[[i:sp]] hybrid|term-00001]]. Imagine that, instead of combining with two or three [[i:p]] orbitals, a carbon 2[[i:s]] orbital hybridizes with only a single [[i:p]] orbital. Two [[i:sp]] hybrid orbitals result, and two [[i:p]] orbitals remain unchanged. The two [[i:sp]] orbitals are oriented 180° apart on the right-left ([[i:x]]) axis, while the p orbitals are perpendicular on the up-down ([[i:y]]) axis and the in-out ([[i:z]]) axis, as shown in [[xref:fig-00001]].
 
 <!-- SEG:m00166:caption:fig-00001-caption -->
-[[b:[[i:sp]] Hybridization.]] The two [[b:[[i:sp]] hybrid orbitals]] are oriented 180° away from each other, perpendicular to the two remaining [[b:[[i:p]] orbitals (red/blue)]].
+[[b:[[i:sp]] Hybridization.]] The two [[b:[[span:[[i:sp]] hybrid orbitals|green-text]]]] are oriented 180° away from each other, perpendicular to the two remaining [[b:[[i:p]] orbitals [[span:(red|magenta-text]]/[[span:blue)|cyan-text]]]].
 
 <!-- SEG:m00166:alt:fig-00001-alt -->
 The orientation of two s p orbitals at 180 degrees on the x-axis. The p orbital in the second image is perpendicular to the y and z axis.

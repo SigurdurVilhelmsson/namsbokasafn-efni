@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00295",
-  "extractedAt": "2026-08-31T19:08:49.740Z",
+  "extractedAt": "2026-09-22T17:26:39.245Z",
   "sourceHash": "d0aff98ed9e761a5",
   "segmentCount": 21,
   "segmentIds": [
@@ -67,5 +67,8 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Hofmann elimination reaction"
   }
 }

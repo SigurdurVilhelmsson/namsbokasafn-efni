@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00201",
-  "extractedAt": "2026-08-31T19:08:48.890Z",
+  "extractedAt": "2026-09-22T17:26:38.033Z",
   "sourceHash": "16d5de75a0a7dc1c",
   "segmentCount": 58,
   "segmentIds": [
@@ -112,5 +112,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkoxide ion, RO–",
+    "term-00002": "phenoxide ion, ArO–"
   }
 }

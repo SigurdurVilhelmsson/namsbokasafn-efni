@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00271",
-  "extractedAt": "2026-08-31T19:08:50.109Z",
+  "extractedAt": "2026-09-22T17:26:39.750Z",
   "sourceHash": "d930bc56a1dd16bd",
-  "segmentCount": 92,
+  "segmentCount": 93,
   "segmentIds": [
     "m00271:title:auto-1",
     "m00271:para:para-00001",
@@ -18,6 +18,7 @@
     "m00271:alt:fig-00003-alt",
     "m00271:title:sect-00002-title",
     "m00271:para:para-00005",
+    "m00271:figure-title:fig-00004-title",
     "m00271:caption:fig-00004-caption",
     "m00271:alt:fig-00004-alt",
     "m00271:caption:fig-00005-caption",
@@ -40,7 +41,6 @@
     "m00271:para:para-00012",
     "m00271:para:para-00013",
     "m00271:table-title:table-00001-title",
-    "m00271:entry:auto-36",
     "m00271:entry:auto-37",
     "m00271:entry:auto-38",
     "m00271:entry:auto-39",
@@ -64,6 +64,7 @@
     "m00271:entry:auto-57",
     "m00271:entry:auto-58",
     "m00271:entry:auto-59",
+    "m00271:entry:auto-60",
     "m00271:para:para-00014",
     "m00271:item:list-00001-item-1",
     "m00271:item:list-00001-item-2",
@@ -185,5 +186,8 @@
       "sect-00008",
       "sect-00009"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lipoproteins"
   }
 }

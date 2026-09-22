@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00305",
-  "extractedAt": "2026-08-31T19:08:49.857Z",
+  "extractedAt": "2026-09-22T17:26:39.422Z",
   "sourceHash": "d8f6928be1d2eb0d",
   "segmentCount": 9,
   "segmentIds": [
@@ -45,5 +45,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "deoxy sugar",
+    "term-00002": "amino sugars"
   }
 }

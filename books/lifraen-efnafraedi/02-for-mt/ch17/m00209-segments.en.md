@@ -5,7 +5,7 @@ Reactions of Phenols
 Electrophilic Aromatic Substitution Reactions
 
 <!-- SEG:m00209:para:para-00001 -->
-The hydroxyl group is a strongly activating, ortho- and para-directing substituent in electrophilic aromatic substitution reactions (). As a result, phenols are highly reactive substrates for electrophilic halogenation, nitration, sulfonation, and Friedel–Crafts reactions.
+The hydroxyl group is a strongly activating, ortho- and para-directing substituent in electrophilic aromatic substitution reactions ([[docref:m00192]]). As a result, phenols are highly reactive substrates for electrophilic halogenation, nitration, sulfonation, and Friedel–Crafts reactions.
 
 <!-- SEG:m00209:alt:fig-00001-alt -->
 Phenol reacts with an electrophile to form ortho-substituted phenol and para-substituted phenol.

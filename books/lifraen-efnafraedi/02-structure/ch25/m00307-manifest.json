@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00307",
-  "extractedAt": "2026-08-31T19:08:49.863Z",
+  "extractedAt": "2026-09-22T17:26:39.429Z",
   "sourceHash": "0cb88e15fdf5391f",
   "segmentCount": 23,
   "segmentIds": [
@@ -64,5 +64,8 @@
       "sect-00002",
       "sect-00003"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Polysaccharides"
   }
 }

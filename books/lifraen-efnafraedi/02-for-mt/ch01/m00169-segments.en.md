@@ -14,13 +14,13 @@ Note that the horizontal bonds between carbons aren’t shown in condensed struc
 Even simpler than condensed structures are [[term:skeletal structures|term-00002]] such as those shown in [[xref:table-00001]]. The rules for drawing skeletal structures are straightforward.
 
 <!-- SEG:m00169:para:para-00004 -->
-[[b:RULE 1]][[BR]]Carbon atoms aren’t usually shown. Instead, a carbon atom is assumed to be at each intersection of two lines (bonds) and at the end of each line. Occasionally, a carbon atom might be indicated for emphasis or clarity.
+[[b:[[span:RULE 1|red-text]]]][[BR]]Carbon atoms aren’t usually shown. Instead, a carbon atom is assumed to be at each intersection of two lines (bonds) and at the end of each line. Occasionally, a carbon atom might be indicated for emphasis or clarity.
 
 <!-- SEG:m00169:para:para-00005 -->
-[[b:RULE 2]][[BR]]Hydrogen atoms bonded to carbon aren’t shown. Because carbon always has a valence of 4, we mentally supply the correct number of hydrogen atoms for each carbon.
+[[b:[[span:RULE 2|red-text]]]][[BR]]Hydrogen atoms bonded to carbon aren’t shown. Because carbon always has a valence of 4, we mentally supply the correct number of hydrogen atoms for each carbon.
 
 <!-- SEG:m00169:para:para-00006 -->
-[[b:RULE 3]][[BR]]Atoms other than carbon and hydrogen [[i:are]] shown.
+[[b:[[span:RULE 3|red-text]]]][[BR]]Atoms other than carbon and hydrogen [[i:are]] shown.
 
 <!-- SEG:m00169:para:para-00007 -->
 One further comment: Although such groupings as –CH[[sub:3]], –OH, and –NH[[sub:2]] are usually written with the C, O, or N atom first and the H atom second, the order of writing is sometimes inverted to H[[sub:3]]C–, HO–, and H[[sub:2]]N– if needed to make the bonding connections clearer. Larger units such as –CH[[sub:2]]CH[[sub:3]] are not inverted, though; we don’t write H[[sub:3]]CH[[sub:2]]C– because it would be confusing. There are, however, no well-defined rules that cover all cases; it’s largely a matter of preference.
@@ -71,13 +71,13 @@ Interpreting a Line-Bond Structure
 Carvone, a substance responsible for the odor of spearmint, has the following structure. Tell how many hydrogens are bonded to each carbon, and give the molecular formula of carvone.
 
 <!-- SEG:m00169:para-title:para-00009-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00169:para:para-00009 -->
 The end of a line represents a carbon atom with 3 hydrogens, CH[[sub:3]]; a two-way intersection is a carbon atom with 2 hydrogens, CH[[sub:2]]; a three-way intersection is a carbon atom with 1 hydrogen, CH; and a four-way intersection is a carbon atom with no attached hydrogens.
 
 <!-- SEG:m00169:para-title:para-00010-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00169:alt:fig-00002-alt -->
 The skeletal structure of carvone.
@@ -320,19 +320,19 @@ As you study organic chemistry, take the time to work the problems. Do the ones 
 Additional Problems
 
 <!-- SEG:m00169:para:para-00028 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00169:para:para-00033 -->
-[[b:Electron Configurations]]
+[[b:[[span:Electron Configurations|red-text]]]]
 
 <!-- SEG:m00169:para:para-00036 -->
-[[b:Electron-Dot and Line-Bond Structures]]
+[[b:[[span:Electron-Dot and Line-Bond Structures|red-text]]]]
 
 <!-- SEG:m00169:para:para-00047 -->
-[[b:Hybridization]]
+[[b:[[span:Hybridization|red-text]]]]
 
 <!-- SEG:m00169:para:para-00055 -->
-[[b:Skeletal Structures]]
+[[b:[[span:Skeletal Structures|red-text]]]]
 
 <!-- SEG:m00169:para:para-00060 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

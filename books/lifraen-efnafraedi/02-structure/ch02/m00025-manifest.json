@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00025",
-  "extractedAt": "2026-08-31T19:08:46.694Z",
+  "extractedAt": "2026-09-22T17:26:35.640Z",
   "sourceHash": "953f3e99e4f3baab",
   "segmentCount": 57,
   "segmentIds": [
@@ -101,5 +101,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "acidity constant (Ka)",
+    "term-00002": "pKa"
   }
 }

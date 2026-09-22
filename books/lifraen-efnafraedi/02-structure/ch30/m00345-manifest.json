@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00345",
-  "extractedAt": "2026-08-31T19:08:50.396Z",
+  "extractedAt": "2026-09-22T17:26:40.189Z",
   "sourceHash": "d8c3adba435e129d",
   "segmentCount": 10,
   "segmentIds": [
@@ -43,5 +43,10 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "cycloaddition reaction",
+    "term-00002": "Suprafacial",
+    "term-00003": "Antarafacial"
   }
 }

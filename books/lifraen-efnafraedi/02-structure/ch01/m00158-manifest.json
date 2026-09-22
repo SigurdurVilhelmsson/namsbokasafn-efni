@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00158",
-  "extractedAt": "2026-08-31T19:08:46.491Z",
+  "extractedAt": "2026-09-22T17:26:35.466Z",
   "sourceHash": "3a65e34dde773d86",
   "segmentCount": 7,
   "segmentIds": [
@@ -38,5 +38,10 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "atomic number (Z)",
+    "term-00002": "mass number (A)",
+    "term-00003": "isotopes"
   }
 }

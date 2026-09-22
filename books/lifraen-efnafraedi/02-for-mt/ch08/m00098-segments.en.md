@@ -2,16 +2,16 @@
 Radical Additions to Alkenes: Chain-Growth Polymers
 
 <!-- SEG:m00098:item:list-00001-item-1 -->
-[[b:Initiation]] The polymerization reaction is initiated when a few radicals are generated on heating a small amount of benzoyl peroxide catalyst to break the weak O−O bond. The initially formed benzoyloxy radical loses CO[[sub:2]] and gives a phenyl radical (Ph[[b:·]]), which adds to the [[MATH:1]] bond of ethylene to start the polymerization process. One electron from the ethylene double bond pairs up with the odd electron on the phenyl radical to form a new C−C bond, and the other electron remains on carbon.
+[[span:[[b:Initiation]]|magenta-text]] The polymerization reaction is initiated when a few radicals are generated on heating a small amount of benzoyl peroxide catalyst to break the weak O−O bond. The initially formed benzoyloxy radical loses CO[[sub:2]] and gives a phenyl radical (Ph[[b:·]]), which adds to the [[MATH:1]] bond of ethylene to start the polymerization process. One electron from the ethylene double bond pairs up with the odd electron on the phenyl radical to form a new C−C bond, and the other electron remains on carbon.
 
 <!-- SEG:m00098:item:list-00001-item-2 -->
-[[b:Propagation]] Polymerization occurs when the carbon radical formed in the initiation step adds to another ethylene molecule to yield another radical. Repetition of the process for hundreds or thousands of times builds the polymer chain.
+[[span:[[b:Propagation]]|magenta-text]] Polymerization occurs when the carbon radical formed in the initiation step adds to another ethylene molecule to yield another radical. Repetition of the process for hundreds or thousands of times builds the polymer chain.
 
 <!-- SEG:m00098:item:list-00001-item-3 -->
-[[b:Termination]] The chain process is eventually ended by a reaction that consumes the radical. The combination of two growing chains is one possible chain-terminating reaction.
+[[span:[[b:Termination]]|magenta-text]] The chain process is eventually ended by a reaction that consumes the radical. The combination of two growing chains is one possible chain-terminating reaction.
 
 <!-- SEG:m00098:para:para-00001 -->
-In our brief introduction to radical reactions in , we said that radicals can add to [[MATH:2]] bonds, taking one electron from the double bond and leaving one behind to yield a new radical. Let’s now look at the process in more detail, focusing on the industrial synthesis of alkene polymers. A [[term:polymer|term-00001]] is a large—sometimes [[i:very]] large—molecule, built up by repetitive joining together of many smaller molecules, called [[term:monomers|term-00002]].
+In our brief introduction to radical reactions in [[docref:m00079]], we said that radicals can add to [[MATH:2]] bonds, taking one electron from the double bond and leaving one behind to yield a new radical. Let’s now look at the process in more detail, focusing on the industrial synthesis of alkene polymers. A [[term:polymer|term-00001]] is a large—sometimes [[i:very]] large—molecule, built up by repetitive joining together of many smaller molecules, called [[term:monomers|term-00002]].
 
 <!-- SEG:m00098:para:para-00002 -->
 Nature makes wide use of biological polymers. Cellulose, for instance, is a polymer built of repeating glucose monomer units; proteins are polymers built of repeating amino acid monomers; and nucleic acids are polymers built of repeating nucleotide monomers.
@@ -176,13 +176,13 @@ Predicting the Structure of a Polymer
 Show the structure of poly(vinyl chloride), a polymer made from [[MATH:10]], by drawing several repeating units.
 
 <!-- SEG:m00098:para-title:para-00013-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00098:para:para-00013 -->
 Mentally break the carbon–carbon double bond in the monomer unit, and form single bonds by connecting numerous units together.
 
 <!-- SEG:m00098:para-title:para-00014-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00098:para:para-00014 -->
 The general structure of poly(vinyl chloride) is

@@ -5,7 +5,7 @@ Polymer Structure and Physical Properties
 Polymers aren’t really that different from other organic molecules. They’re much larger, of course, but their chemistry is similar to that of analogous small molecules. Thus, the alkane chains of polyethylene undergo radical-initiated halogenation, the aromatic rings of polystyrene undergo typical electrophilic aromatic substitution reactions, and the amide linkages of nylon are hydrolyzed by aqueous base.
 
 <!-- SEG:m00357:para:para-00002 -->
-The major difference between small and large organic molecules is in their physical properties. For instance, their large size means that polymers experience substantially greater van der Waals forces than do small molecules (). But because van der Waals forces operate only at close distances, they are strongest in polymers like high-density polyethylene, in which chains can pack together closely in a regular way. Many polymers, in fact, have regions that are essentially crystalline. These regions, called [[term:crystallites|term-00001]], consist of highly ordered portions in which the zigzag polymer chains are held together by van der Waals forces ([[xref:fig-00001]]).
+The major difference between small and large organic molecules is in their physical properties. For instance, their large size means that polymers experience substantially greater van der Waals forces than do small molecules ([[docref:m00029]]). But because van der Waals forces operate only at close distances, they are strongest in polymers like high-density polyethylene, in which chains can pack together closely in a regular way. Many polymers, in fact, have regions that are essentially crystalline. These regions, called [[term:crystallites|term-00001]], consist of highly ordered portions in which the zigzag polymer chains are held together by van der Waals forces ([[xref:fig-00001]]).
 
 <!-- SEG:m00357:caption:fig-00001-caption -->
 [[b:Crystallites in linear polyethylene.]] The long polymer chains are arranged in parallel lines in the crystallite regions.
@@ -53,7 +53,7 @@ A representation of unoriented crystallites in a thermoplastic which is drawn to
 The unstretched form of an elastomer stretches to form another elastomer. This elastomer relaxes to form the unstretched elastomer.
 
 <!-- SEG:m00357:para:para-00010 -->
-Natural rubber () is the most common example of an elastomer. Rubber has the long chains and occasional cross-links needed for elasticity, but its irregular geometry prevents close packing of the chains into crystallites. Gutta-percha, by contrast, is highly crystalline and is not an elastomer ([[xref:fig-00006]]).
+Natural rubber ([[docref:m00176]]) is the most common example of an elastomer. Rubber has the long chains and occasional cross-links needed for elasticity, but its irregular geometry prevents close packing of the chains into crystallites. Gutta-percha, by contrast, is highly crystalline and is not an elastomer ([[xref:fig-00006]]).
 
 <!-- SEG:m00357:caption:fig-00006-caption -->
 [[b:[[i:(a)]] Natural rubber is elastic and noncrystalline because of its cis double-bond geometry, but [[b:(b)]] gutta-percha is nonelastic and crystalline because its geometry allows for better packing together of chains.]]
@@ -263,10 +263,10 @@ The chemistry of synthetic polymers is similar to the chemistry of small molecul
 Additional Problems
 
 <!-- SEG:m00357:para:para-00024 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00357:para:para-00027 -->
-[[b:Mechanism Problems]]
+[[b:[[span:Mechanism Problems|red-text]]]]
 
 <!-- SEG:m00357:para:para-00033 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

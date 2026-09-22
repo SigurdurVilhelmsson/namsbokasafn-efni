@@ -98,7 +98,7 @@ Calculating an Optical Rotation
 A 1.20 g sample of cocaine, [[[i:α]]][[sub:D]]&#8201;=&#8201;−16, was dissolved in 7.50 mL of chloroform and placed in a sample tube having a pathlength of 5.00 cm. What was the observed rotation?
 
 <!-- SEG:m00052:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00052:para:para-00010 -->
 Since [[MATH:1]]
@@ -110,7 +110,7 @@ Then [[MATH:2]]
 where [[[i:α]]][[sub:D]]&#8201;=&#8201;−16; [[i:l]]&#8201;=&#8201;5.00 cm&#8201;=&#8201;0.500 dm; [[i:c]]&#8201;=&#8201;1.20 g/7.50 cm[[sup:3]]&#8201;=&#8201;0.160 g/cm[[sup:3]]
 
 <!-- SEG:m00052:para-title:para-00013-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00052:para:para-00013 -->
 [[i:α]]&#8201;=&#8201;(−16) (0.500) (0.160)&#8201;=&#8201;−1.3°.

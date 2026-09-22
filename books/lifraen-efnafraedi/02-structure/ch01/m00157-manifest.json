@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00157",
-  "extractedAt": "2026-08-31T19:08:46.481Z",
+  "extractedAt": "2026-09-22T17:26:35.462Z",
   "sourceHash": "aee6c8dbf3ece56b",
   "segmentCount": 12,
   "segmentIds": [
@@ -45,5 +45,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Organic chemistry"
   }
 }

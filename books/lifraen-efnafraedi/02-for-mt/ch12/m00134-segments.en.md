@@ -20,19 +20,19 @@ Every time a reaction is run, the products must be identified, and every time a 
 What is the size and formula?
 
 <!-- SEG:m00134:entry:auto-8 -->
-[[b:Infrared spectroscopy]]
+[[b:[[span:Infrared spectroscopy|red-text]]]]
 
 <!-- SEG:m00134:entry:auto-9 -->
 What functional groups are present?
 
 <!-- SEG:m00134:entry:auto-10 -->
-[[b:Ultraviolet spectroscopy]]
+[[b:[[span:Ultraviolet spectroscopy|cyan-text]]]]
 
 <!-- SEG:m00134:entry:auto-11 -->
 Is a conjugated [[i:π]] electron system present?
 
 <!-- SEG:m00134:entry:auto-12 -->
-[[b:Nuclear magnetic resonance spectroscopy]]
+[[b:[[span:Nuclear magnetic resonance spectroscopy|green-text]]]]
 
 <!-- SEG:m00134:entry:auto-13 -->
 What is the carbon–hydrogen framework?

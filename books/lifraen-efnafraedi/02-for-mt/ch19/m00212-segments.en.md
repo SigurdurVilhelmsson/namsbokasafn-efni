@@ -74,7 +74,7 @@ Benzaldehyde
 Benzenecarbaldehyde
 
 <!-- SEG:m00212:para:para-00004 -->
-Ketones are named by replacing the terminal -[[i:e]] of the corresponding alkane name with -[[i:one.]] The parent chain is the longest one that includes the ketone group, and the numbering begins at the end nearer the carbonyl carbon. As with alkenes () and alcohols (), the locant is placed before the parent name using older rules but before the suffix with the newer IUPAC guidelines. For example:
+Ketones are named by replacing the terminal -[[i:e]] of the corresponding alkane name with -[[i:one.]] The parent chain is the longest one that includes the ketone group, and the numbering begins at the end nearer the carbonyl carbon. As with alkenes ([[docref:m00065]]) and alcohols ([[docref:m00200]]), the locant is placed before the parent name using older rules but before the suffix with the newer IUPAC guidelines. For example:
 
 <!-- SEG:m00212:alt:fig-00003-alt -->
 The structures of 3-hexanone (new name: hexan-3-one), 4-hexen-2-one (new name: hex-4-en-2-one), and 2,4-hexanedione (new name: hexane-2,4-dione). The carbon atoms in each structure are numbered.

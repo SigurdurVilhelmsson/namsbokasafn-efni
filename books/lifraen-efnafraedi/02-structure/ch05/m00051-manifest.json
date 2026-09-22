@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00051",
-  "extractedAt": "2026-08-31T19:08:47.239Z",
+  "extractedAt": "2026-09-22T17:26:36.049Z",
   "sourceHash": "3516d720a63ae125",
   "segmentCount": 24,
   "segmentIds": [
@@ -73,5 +73,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chiral",
+    "term-00002": "achiral",
+    "term-00003": "chirality centers"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00343",
-  "extractedAt": "2026-08-31T19:08:50.390Z",
+  "extractedAt": "2026-09-22T17:26:40.179Z",
   "sourceHash": "343de0c6e0b40b44",
   "segmentCount": 12,
   "segmentIds": [
@@ -52,5 +52,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "photochemical reactions"
   }
 }

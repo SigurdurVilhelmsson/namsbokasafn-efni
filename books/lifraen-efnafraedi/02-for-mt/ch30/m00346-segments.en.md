@@ -41,10 +41,10 @@ Stereochemical Rules for Cycloaddition Reactions
 Electron pairs (double bonds)
 
 <!-- SEG:m00346:entry:auto-15 -->
-Thermal reaction
+[[span:Thermal reaction|magenta-text]]
 
 <!-- SEG:m00346:entry:auto-16 -->
-Photochemical reaction
+[[span:Photochemical reaction|green-text]]
 
 <!-- SEG:m00346:entry:auto-17 -->
 Even number

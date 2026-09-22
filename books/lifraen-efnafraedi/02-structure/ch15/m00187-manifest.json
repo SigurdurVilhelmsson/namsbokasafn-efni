@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00187",
-  "extractedAt": "2026-08-31T19:08:48.632Z",
+  "extractedAt": "2026-09-22T17:26:37.753Z",
   "sourceHash": "cde5bfd211a1f4fd",
   "segmentCount": 87,
   "segmentIds": [
@@ -186,5 +186,8 @@
       "sect-00006",
       "sect-00007"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "ring-current"
   }
 }

@@ -5,7 +5,7 @@ Chain-Growth Polymers
 Synthetic polymers are classified by their method of synthesis as either [[i:chain-growth]] or [[i:step-growth]]. These categories are somewhat imprecise but nevertheless provide a useful distinction. [[term:Chain-growth polymers|term-00001]] are produced by chain-reaction polymerization in which an initiator adds to the carbon–carbon double bond of an unsaturated substrate (a [[i:vinyl monomer]]) to yield a reactive intermediate. This intermediate reacts with a second molecule of monomer to yield a new intermediate, which reacts with a third monomer unit, and so on.
 
 <!-- SEG:m00351:para:para-00002 -->
-The initiator can be a radical, an acid, or a base. Historically, as we saw in , radical polymerization was the most common method because it can be carried out with practically any vinyl monomer.
+The initiator can be a radical, an acid, or a base. Historically, as we saw in [[docref:m00098]], radical polymerization was the most common method because it can be carried out with practically any vinyl monomer.
 
 <!-- SEG:m00351:alt:fig-00001-alt -->
 Benzoyl peroxide reacts with heat to form benzoyloxy radical, which reacts to form phenyl radical. Phenyl radical reacts with ethene to form ethylbenzene radical; continued polymerization with ethene forms product.
@@ -23,7 +23,7 @@ Propene (2-methylpropylene) is a good example of a monomer that polymerizes rapi
 Isobutylene reacts with hydrogen trifluoro(hydroxy)borate to form polyisobutylene depicted inside parentheses with subscript n.
 
 <!-- SEG:m00351:para:para-00005 -->
-Vinyl monomers with electron-withdrawing groups (EWG) can be polymerized by basic (anionic) catalysts. The chain-carrying step is a conjugate nucleophilic addition of an anion to the unsaturated monomer ().
+Vinyl monomers with electron-withdrawing groups (EWG) can be polymerized by basic (anionic) catalysts. The chain-carrying step is a conjugate nucleophilic addition of an anion to the unsaturated monomer ([[docref:m00224]]).
 
 <!-- SEG:m00351:alt:fig-00004-alt -->
 A nucleophile reacts with a vinyl monomer bonded to an electron-withdrawing group to form an anionic intermediate. Continued reaction with units of monomer result in polymerization (always via anion formation).

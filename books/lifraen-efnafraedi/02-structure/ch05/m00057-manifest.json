@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00057",
-  "extractedAt": "2026-08-31T19:08:47.268Z",
+  "extractedAt": "2026-09-22T17:26:36.078Z",
   "sourceHash": "b34acdb0c0f5695a",
   "segmentCount": 19,
   "segmentIds": [
@@ -61,5 +61,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "racemate"
   }
 }

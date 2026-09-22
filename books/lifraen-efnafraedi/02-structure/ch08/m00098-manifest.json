@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00098",
-  "extractedAt": "2026-08-31T19:08:47.759Z",
+  "extractedAt": "2026-09-22T17:26:36.618Z",
   "sourceHash": "b3d3d8a9ed324b4f",
   "segmentCount": 65,
   "segmentIds": [
@@ -127,5 +127,10 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "polymer",
+    "term-00002": "monomers",
+    "term-00003": "chain-growth polymers"
   }
 }

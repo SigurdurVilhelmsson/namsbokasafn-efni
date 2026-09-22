@@ -1,5 +1,5 @@
 <!-- SEG:m00093:title:auto-1 -->
-Predicting the Products of a Hydration Reaction
+Hydration of Alkenes: Addition of H[[sub:2]]O by Hydroboration
 
 <!-- SEG:m00093:para:para-00001 -->
 In addition to the oxymercuration–demercuration method, which yields the Markovnikov product, a complementary method that yields the non-Markovnikov product is also useful. Discovered in 1959 by H.C. Brown at Purdue University and called [[term:hydroboration|term-00001]], the reaction involves addition of a B−H bond of borane, BH[[sub:3]], to an alkene to yield an organoborane intermediate, RBH[[sub:2]]. Oxidation of the organoborane by reaction with basic hydrogen peroxide, H[[sub:2]]O[[sub:2]], then gives an alcohol. For example:
@@ -44,13 +44,13 @@ What products would you obtain from reaction of 2-methyl-2-pentene with:
 [[b:(a)]] BH[[sub:3]], followed by H[[sub:2]]O[[sub:2]], OH[[sup:−]] [[b:(b)]] Hg(OAc)[[sub:2]], followed by NaBH[[sub:4]]
 
 <!-- SEG:m00093:para-title:para-00008-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00093:para:para-00008 -->
 When predicting the product of a reaction, you have to recall what you know about the kind of reaction being carried out and apply that knowledge to the specific case you’re dealing with. In the present instance, recall that the two methods of hydration—hydroboration–oxidation and oxymercuration–demercuration—give complementary products. Hydroboration–oxidation occurs with syn stereochemistry and gives the non-Markovnikov addition product; oxymercuration–demercuration gives the Markovnikov product.
 
 <!-- SEG:m00093:para-title:para-00009-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00093:alt:fig-00006-alt -->
 A 2-pathway reaction (a) and (b) shows 2-methyl-2-pentene forming 2-methyl-3-pentanol and 2-methyl-2-pentanol in different reaction conditions.
@@ -62,7 +62,7 @@ Synthesizing an Alcohol
 How might you prepare the following alcohol?
 
 <!-- SEG:m00093:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00093:para:para-00011 -->
 Problems that require the synthesis of a specific target molecule should always be worked backward. Look at the target, identify its functional group(s), and ask yourself, “What are the methods for preparing that functional group?” In the present instance, the target molecule is a secondary alcohol (R[[sub:2]]CHOH), and we’ve seen that alcohols can be prepared from alkenes by either hydroboration–oxidation or oxymercuration–demercuration. The −OH-bearing carbon in the product must have been a double-bond carbon in the alkene reactant, so there are two possibilities here: 4-methyl-2-hexene and 3-methyl-3-hexene.
@@ -71,7 +71,7 @@ Problems that require the synthesis of a specific target molecule should always 
 4-Methyl-2-hexene has a disubstituted double bond, [[MATH:1]], and will probably give a mixture of two alcohols with either hydration method since Markovnikov’s rule does not apply to symmetrically substituted alkenes. 3-Methyl-3-hexene, however, has a trisubstituted double bond, and should give only the desired product on non-Markovnikov hydration using the hydroboration–oxidation method.
 
 <!-- SEG:m00093:para-title:para-00013-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00093:alt:fig-00007-alt -->
 The unknown reactant, indicated by question mark, forms a product that has 6-carbon chain. C3 is bonded to a hydroxyl group. C4 is bonded to a methyl group.

@@ -18,6 +18,7 @@
       "type": "figure",
       "id": "fig-00001",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00271:caption:fig-00001-caption"
       },
@@ -44,6 +45,7 @@
       "type": "figure",
       "id": "fig-00002",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m00271:caption:fig-00002-caption"
       },
@@ -62,7 +64,7 @@
       "class": null,
       "title": {
         "segmentId": "m00271:title:sect-00010-title",
-        "text": "Steps 1, 2 of [[xref:fig-00004]]: Epoxide Opening and Initial Cyclizations"
+        "text": "Steps [[span:1|magenta-text]], [[span:2|magenta-text]] of [[xref:fig-00004]]: Epoxide Opening and Initial Cyclizations"
       },
       "content": [
         {
@@ -80,6 +82,7 @@
               "type": "figure",
               "id": "fig-00003",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -98,7 +101,7 @@
           "class": null,
           "title": {
             "segmentId": "m00271:title:sect-00002-title",
-            "text": "Step 3 of [[xref:fig-00004]]: Third Cyclization"
+            "text": "Step [[span:3|magenta-text]] of [[xref:fig-00004]]: Third Cyclization"
           },
           "content": [
             {
@@ -110,6 +113,10 @@
               "type": "figure",
               "id": "fig-00004",
               "class": "mechanism-figure scaled-down",
+              "title": {
+                "segmentId": "m00271:figure-title:fig-00004-title",
+                "text": "MECHANISM"
+              },
               "caption": {
                 "segmentId": "m00271:caption:fig-00004-caption"
               },
@@ -126,6 +133,7 @@
               "type": "figure",
               "id": "fig-00005",
               "class": "mechanism-figure scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m00271:caption:fig-00005-caption"
               },
@@ -142,6 +150,7 @@
               "type": "figure",
               "id": "fig-00006",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -160,7 +169,7 @@
           "class": null,
           "title": {
             "segmentId": "m00271:title:sect-00003-title",
-            "text": "Step 4 of [[xref:fig-00004]]: Final Cyclization"
+            "text": "Step [[span:4|magenta-text]] of [[xref:fig-00004]]: Final Cyclization"
           },
           "content": [
             {
@@ -172,6 +181,7 @@
               "type": "figure",
               "id": "fig-00007",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -190,7 +200,7 @@
           "class": null,
           "title": {
             "segmentId": "m00271:title:sect-00004-title",
-            "text": "Steps 5–9 of [[xref:fig-00004]]: Carbocation Rearrangements"
+            "text": "Steps [[span:5|magenta-text]]–[[span:9|magenta-text]] of [[xref:fig-00004]]: Carbocation Rearrangements"
           },
           "content": [
             {
@@ -202,6 +212,7 @@
               "type": "figure",
               "id": "fig-00008",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -221,6 +232,7 @@
               "type": "figure",
               "id": "fig-00009",
               "class": "unnumbered scaled-down",
+              "title": null,
               "caption": null,
               "media": {
                 "alt": {
@@ -277,6 +289,7 @@
           "type": "figure",
           "id": "fig-00010",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m00271:caption:fig-00010-caption"
           },
@@ -311,13 +324,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m00271:entry:auto-36",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m00271:entry:auto-37",
                   "attributes": {
                     "valign": "top",
@@ -351,18 +357,18 @@
                     "valign": "top",
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m00271:entry:auto-42",
                   "attributes": {
                     "valign": "top",
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m00271:entry:auto-43",
                   "attributes": {
@@ -397,18 +403,18 @@
                     "valign": "top",
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m00271:entry:auto-48",
                   "attributes": {
                     "valign": "top",
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m00271:entry:auto-49",
                   "attributes": {
@@ -443,18 +449,18 @@
                     "valign": "top",
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m00271:entry:auto-54",
                   "attributes": {
                     "valign": "top",
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m00271:entry:auto-55",
                   "attributes": {
@@ -485,6 +491,13 @@
                 },
                 {
                   "segmentId": "m00271:entry:auto-59",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m00271:entry:auto-60",
                   "attributes": {
                     "valign": "top",
                     "align": "center"

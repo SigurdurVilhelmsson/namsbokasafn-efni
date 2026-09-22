@@ -44,16 +44,16 @@ Atom
 C
 
 <!-- SEG:m00020:entry:auto-16 -->
-N
+[[span:N|cyan-text]]
 
 <!-- SEG:m00020:entry:auto-17 -->
-O
+[[span:O|magenta-text]]
 
 <!-- SEG:m00020:entry:auto-18 -->
-S
+[[span:S|green-text]]
 
 <!-- SEG:m00020:entry:auto-19 -->
-P
+[[span:P|purple-text]]
 
 <!-- SEG:m00020:entry:auto-20 -->
 Structure
@@ -191,34 +191,34 @@ Number of nonbonding electrons
 Formal charge
 
 <!-- SEG:m00020:entry:auto-65 -->
-0
+[[span:0|green-text]]
 
 <!-- SEG:m00020:entry:auto-66 -->
-+1
+[[span:+1|magenta-text]]
 
 <!-- SEG:m00020:entry:auto-67 -->
-–1
+[[span:–1|cyan-text]]
 
 <!-- SEG:m00020:entry:auto-68 -->
-+1
+[[span:+1|magenta-text]]
 
 <!-- SEG:m00020:entry:auto-69 -->
-–1
+[[span:–1|cyan-text]]
 
 <!-- SEG:m00020:entry:auto-70 -->
-+1
+[[span:+1|magenta-text]]
 
 <!-- SEG:m00020:entry:auto-71 -->
-–1
+[[span:–1|cyan-text]]
 
 <!-- SEG:m00020:entry:auto-72 -->
-+1
+[[span:+1|magenta-text]]
 
 <!-- SEG:m00020:entry:auto-73 -->
-–1
+[[span:–1|cyan-text]]
 
 <!-- SEG:m00020:entry:auto-74 -->
-+1
+[[span:+1|magenta-text]]
 
 <!-- SEG:m00020:title:sect-00001-title -->
 Problems

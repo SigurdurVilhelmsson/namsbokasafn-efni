@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00081",
-  "extractedAt": "2026-08-31T19:08:47.412Z",
+  "extractedAt": "2026-09-22T17:26:36.240Z",
   "sourceHash": "4a11a08d960a7243",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m00081:title:auto-1",
     "m00081:para:para-00001",
@@ -15,6 +15,7 @@
     "m00081:alt:fig-00002-alt",
     "m00081:para:para-00005",
     "m00081:para:para-00006",
+    "m00081:figure-title:fig-00003-title",
     "m00081:caption:fig-00003-caption",
     "m00081:alt:fig-00003-alt",
     "m00081:para:para-00007",
@@ -57,5 +58,8 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "carbocation"
   }
 }

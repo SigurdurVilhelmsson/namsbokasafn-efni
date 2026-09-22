@@ -8,7 +8,7 @@ Nitriles are analogous to carboxylic acids in that both have a carbon atom with 
 In nitrile, carbon is triple-bonded to nitrogen and single-bonded to R. In acid, carbon has a bond to R, a double bond to oxygen, and a single bond to hydroxyl.
 
 <!-- SEG:m00236:para:para-00002 -->
-Nitriles occur infrequently in living organisms, although several hundred examples are known. Cyanocycline A, for instance, has been isolated from the bacterium [[i:Streptomyces lavendulae]] and was found to have both antimicrobial and antitumor activity. In addition, more than 1000 compounds called [[i:cyanogenic glycosides]] are known. Derived primarily from plants, cyanogenic glycosides contain a sugar with an acetal carbon, one oxygen of which is bonded to a nitrile-bearing carbon (sugar–O–C–CN). On hydrolysis with aqueous acid, the acetal is cleaved (), generating a cyanohydrin (HO–C–CN), which releases hydrogen cyanide. It’s thought that the primary function of cyanogenic glycosides is to protect the plant by poisoning any animal foolish enough to eat it. Lotaustralin from the cassava plant is an example.
+Nitriles occur infrequently in living organisms, although several hundred examples are known. Cyanocycline A, for instance, has been isolated from the bacterium [[i:Streptomyces lavendulae]] and was found to have both antimicrobial and antitumor activity. In addition, more than 1000 compounds called [[i:cyanogenic glycosides]] are known. Derived primarily from plants, cyanogenic glycosides contain a sugar with an acetal carbon, one oxygen of which is bonded to a nitrile-bearing carbon (sugar–O–C–CN). On hydrolysis with aqueous acid, the acetal is cleaved ([[docref:m00221]]), generating a cyanohydrin (HO–C–CN), which releases hydrogen cyanide. It’s thought that the primary function of cyanogenic glycosides is to protect the plant by poisoning any animal foolish enough to eat it. Lotaustralin from the cassava plant is an example.
 
 <!-- SEG:m00236:alt:fig-00002-alt -->
 The structures of Cyanocycline A and Lotaustralin. Lotaustralin is a cyanogenic glycoside with an acetal carbon (C with two R groups and two O R groups).
@@ -17,7 +17,7 @@ The structures of Cyanocycline A and Lotaustralin. Lotaustralin is a cyanogenic 
 Preparation of Nitriles
 
 <!-- SEG:m00236:para:para-00003 -->
-The simplest method of nitrile preparation is the S[[sub:N]]2 reaction of CN[[sup:–]] with a primary or secondary alkyl halide, as discussed in . Another method for preparing nitriles is by dehydration of a primary amide, RCONH[[sub:2]]. Thionyl chloride is often used for this reaction, although other dehydrating agents such as POCl[[sub:3]] also work.
+The simplest method of nitrile preparation is the S[[sub:N]]2 reaction of CN[[sup:–]] with a primary or secondary alkyl halide, as discussed in [[docref:m00234]]. Another method for preparing nitriles is by dehydration of a primary amide, RCONH[[sub:2]]. Thionyl chloride is often used for this reaction, although other dehydrating agents such as POCl[[sub:3]] also work.
 
 <!-- SEG:m00236:alt:fig-00003-alt -->
 The  reaction of 2-ethylhexanamide with thionyl chloride in benzene at 80 degrees Celsius forms 2-ethylhexanenitrile (94 percent yield), sulfur dioxide, and two equivalents of hydrogen chloride.
@@ -44,7 +44,10 @@ Among the most useful reactions of nitriles is their hydrolysis to yield first a
 Hydrolysis of nitriles to amide using acidic or basic aqueous solutions. Amide is hydrolyzed to carboxylic acid and ammonia using acidic or basic aqueous solutions.
 
 <!-- SEG:m00236:para:para-00009 -->
-As shown in [[xref:fig-00008]], base-catalyzed nitrile hydrolysis involves nucleophilic addition of hydroxide ion to the polar [[MATH:1]] bond to give an imine anion in a process similar to the nucleophilic addition to a polar [[MATH:2]] bond to give an alkoxide anion. Protonation then gives a hydroxy imine, which tautomerizes () to an amide in a step similar to the tautomerization of an enol to a ketone. Further hydrolysis gives a carboxylate ion.
+As shown in [[xref:fig-00008]], base-catalyzed nitrile hydrolysis involves nucleophilic addition of hydroxide ion to the polar [[MATH:1]] bond to give an imine anion in a process similar to the nucleophilic addition to a polar [[MATH:2]] bond to give an alkoxide anion. Protonation then gives a hydroxy imine, which tautomerizes ([[docref:m00106]]) to an amide in a step similar to the tautomerization of an enol to a ketone. Further hydrolysis gives a carboxylate ion.
+
+<!-- SEG:m00236:figure-title:fig-00008-title -->
+MECHANISM
 
 <!-- SEG:m00236:caption:fig-00008-caption -->
 [[b:Mechanism for the basic hydrolysis of a nitrile to yield an amide, which is then hydrolyzed further to a carboxylic acid anion.]]
@@ -89,13 +92,13 @@ Synthesizing a Ketone from a Nitrile
 How would you prepare 2-methyl-3-pentanone from a nitrile?
 
 <!-- SEG:m00236:para-title:para-00015-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00236:para:para-00015 -->
 A ketone results from the reaction between a Grignard reagent and a nitrile, with the [[MATH:5]] carbon of the nitrile becoming the carbonyl carbon. Identify the two groups attached to the carbonyl carbon atom in the product. One will come from the Grignard reagent and the other will come from the nitrile.
 
 <!-- SEG:m00236:para-title:para-00016-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00236:para:para-00016 -->
 There are two possibilities.
