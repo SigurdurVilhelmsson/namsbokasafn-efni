@@ -54,6 +54,10 @@ const BLOCK_LITERAL = [
   'entry',
   'equation',
   'note',
+  // §C179 — <quote> became a handled block container (organic's named-rule
+  // callouts). It was in NEITHER set before, which is why four tests used it as
+  // their stand-in for "a genuinely unhandled tag".
+  'quote',
   'example',
   'exercise',
   'problem',
@@ -73,7 +77,7 @@ describe('handled-tags — canonical sets match the pre-refactor literals', () =
     expect(sorted(HANDLED_INLINE)).toEqual([...INLINE_LITERAL].sort());
   });
 
-  it('HANDLED_BLOCK membership is frozen (28 tags)', () => {
+  it('HANDLED_BLOCK membership is frozen (29 tags)', () => {
     expect(sorted(HANDLED_BLOCK)).toEqual([...BLOCK_LITERAL].sort());
   });
 

@@ -1203,6 +1203,11 @@ function processTopLevelContent(
   const examples = extractNestedElements(content, 'example');
   const exercises = extractNestedElements(content, 'exercise');
   const notes = extractNestedElements(content, 'note');
+  // §C179 — <quote> is a block container OpenStax ships and this pipeline had no
+  // case for anywhere. Its children were extracted as TOP-LEVEL paras and the
+  // wrapper was dropped at inject, so the reader lost the callout and kept the
+  // words. Organic is the only book in the repo that has any.
+  const quotes = extractNestedElements(content, 'quote');
 
   // For simple elements (paras, lists, equations) - only extract those NOT inside containers
   // Remove container content to avoid extracting nested elements as top-level
@@ -1223,6 +1228,13 @@ function processTopLevelContent(
   for (const note of notes) {
     if (note.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+    }
+  }
+  // Same reason as notes above: processQuote owns these paras, so leaving them in
+  // scope would emit each one TWICE — once inside the quote and once top-level.
+  for (const quote of quotes) {
+    if (quote.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(quote.fullMatch, '');
     }
   }
   for (const figure of figures) {
@@ -1353,6 +1365,34 @@ function processTopLevelContent(
         position: notePosition !== -1 ? notePosition : 0,
       });
     }
+  }
+
+  // 🔴 A QUOTE NESTED IN A CONTAINER IS ALREADY OWNED BY THAT CONTAINER — EMITTING
+  // IT HERE TOO SHIPS THE PROSE TWICE. Measured on ch13/m00155, whose single
+  // `<quote>` lives inside an `<example>`: without this guard the injected CNXML
+  // carried TWO, one from the preserved example subtree and one standalone, and
+  // the reader would have read Markovnikov-style callout prose twice over.
+  //
+  // ⚠️ IT IS ALSO WHY m00155 WAS NEVER IN THE LOST SET. The example preserves its
+  // subtree verbatim, so that quote round-tripped clean the whole time while
+  // ch07's two top-level ones were dropped — the population is 4 elements of
+  // which 3 were lost, not 4 of 4, and a count of `<quote>` alone cannot tell
+  // those apart. Same guard, same reason, as the notes loop above.
+  for (const quote of quotes) {
+    const position = quote.fullMatch
+      ? content.indexOf(quote.fullMatch)
+      : elementIdPosition(content, quote.id);
+    const insideContainer = [...examples, ...exercises, ...notes].some((c) => {
+      if (!c.fullMatch || !quote.fullMatch) return false;
+      const start = content.indexOf(c.fullMatch);
+      return position >= start && position < start + c.fullMatch.length;
+    });
+    if (insideContainer) continue;
+    elementsWithPositions.push({
+      ...quote,
+      type: 'quote',
+      position: position !== -1 ? position : 0,
+    });
   }
 
   for (const eq of equations) {
@@ -1487,6 +1527,20 @@ function processTopLevelContent(
           inlineTablesMap
         );
         elements.push(noteStructure);
+        break;
+      }
+      case 'quote': {
+        elements.push(
+          processQuote(
+            item,
+            moduleId,
+            addSegment,
+            mathMap,
+            counters,
+            inlineMediaMap,
+            inlineTablesMap
+          )
+        );
         break;
       }
       case 'equation': {
@@ -2464,6 +2518,54 @@ function processExercise(
   }
 
   return exerciseStructure;
+}
+
+/**
+ * Process a <quote> element (§C179).
+ *
+ * The simplest container in the corpus: every instance is block-level, wraps
+ * exactly one `<para>`, and carries no title, figure, table or list — so this is
+ * `processNote` with everything it does not need removed, rather than a new
+ * pattern. Measured over all five books: organic 4 elements in 3 modules,
+ * everyone else 0.
+ *
+ * ⚠️ THE PARAS MUST BE OWNED HERE OR NOWHERE — the caller strips this quote's
+ * `fullMatch` from the simple-element scope for exactly that reason. CLAUDE.md's
+ * container/cut rule: owner-without-cut duplicates the prose, cut-without-owner
+ * deletes it, and neither is visible to a tag count.
+ */
+function processQuote(
+  quote,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
+  const quoteStructure = {
+    type: 'quote',
+    id: quote.id,
+    class: quote.attributes.class,
+    content: [],
+  };
+
+  for (const para of extractElements(quote.content, 'para')) {
+    const text = extractInlineText(
+      para.content,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
+    if (text) {
+      const segId = addSegment('para', text, para.id);
+      drainInlineMediaAlts(inlineMediaMap, addSegment);
+      quoteStructure.content.push({ type: 'para', id: para.id, segmentId: segId });
+    }
+  }
+
+  return quoteStructure;
 }
 
 /**

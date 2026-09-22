@@ -1202,6 +1202,7 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
       section: sectionHandler,
       figure: renderFigure,
       note: renderNote,
+      quote: renderQuote,
       example: renderExample,
       exercise: renderExercise,
       table: renderTable,
@@ -1654,6 +1655,37 @@ function renderNote(note, context, extraClass = '') {
   }
 
   lines.push('</aside>');
+  return lines.join('\n');
+}
+
+/**
+ * Render a <quote> (§C179) — [USER] ruling 2026-09-22.
+ *
+ * `<blockquote class="cnx-callout">`, with the class styled in namsbokasafn-vefur's
+ * `static/styles/content.css` (the cross-repo CSS contract). A bare `<blockquote>`
+ * would already indent on browser defaults; the class is what gets OpenStax's
+ * boxed presentation, which is what these are: named-rule callouts — Markovnikov's
+ * rule, the Hammond postulate.
+ *
+ * ⚠️ WITHOUT A HANDLER HERE THE BLOCK WALK'S LOUD SEAM FIRES, and that is the
+ * correct behaviour rather than a hazard — `<quote>` reached neither HANDLED_INLINE
+ * nor HANDLED_BLOCK, and it stayed silent only because the injector dropped the
+ * wrapper before render ever saw one. Teaching inject to preserve it without
+ * teaching render to draw it would have turned a silent loss into a loud failure.
+ *
+ * The child dispatch is deliberately NARROW — para and list. Every corpus instance
+ * wraps a single `<para>`; a figure or table inside a quote would hit the seam and
+ * say so, which is the outcome to want from a 4-element population.
+ */
+function renderQuote(quote, context) {
+  const id = quote.id || null;
+  const blocks = renderBlockChildrenInOrder(quote.content, context, {
+    para: renderPara,
+    list: renderList,
+  });
+  const lines = [`<blockquote${id ? ` id="${escapeAttr(id)}"` : ''} class="cnx-callout">`];
+  for (const block of blocks) lines.push(`  ${block}`);
+  lines.push('</blockquote>');
   return lines.join('\n');
 }
 

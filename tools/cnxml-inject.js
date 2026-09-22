@@ -2510,6 +2510,8 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       return buildExerciseDom(element, getSeg, equations, originalCnxml, ctx);
     case 'note':
       return buildNoteDom(element, getSeg, equations, originalCnxml, ctx);
+    case 'quote':
+      return buildQuote(element, getSeg, originalCnxml);
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
@@ -4328,6 +4330,44 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   result = deduplicateElementsById(result, 'equation');
 
   return result;
+}
+
+/**
+ * Build a <quote> element (§C179).
+ *
+ * Pulls the quote out of the READ-ONLY original by id and replaces each child
+ * para's content — the `buildNote` idiom with nothing else, because every corpus
+ * instance is a bare wrapper around one `<para>`.
+ *
+ * ⚠️ NO `buildGenericElement` FALLBACK, deliberately. A quote whose id does not
+ * resolve returns null and the block is dropped — which the block walk's loud
+ * seam then reports — rather than being silently rebuilt from a shape this
+ * function has not verified. The population is 4 elements; a wrong reconstruction
+ * that looks plausible is worse than a visible gap.
+ */
+function buildQuote(element, getSeg, originalCnxml) {
+  if (!element.id) return null;
+
+  // §C115 — TAG_ATTR_SPAN, never `[^>]*`: a raw `>` is legal inside an attribute
+  // value, so `[^>]*` can end the open tag early and hand back a truncated block.
+  const pattern = new RegExp(
+    `<quote\\s${TAG_ATTR_SPAN}id="${element.id}"${TAG_ATTR_SPAN}>[\\s\\S]*?<\\/quote>`
+  );
+  const match = originalCnxml.match(pattern);
+  if (!match) return null;
+
+  let quoteCnxml = match[0];
+  for (const child of element.content || []) {
+    if (child.type !== 'para' || !child.id || !child.segmentId) continue;
+    const paraText = getSeg(child.segmentId);
+    if (!paraText) continue;
+    const paraPattern = new RegExp(
+      `<para\\s+id="${child.id}"${TAG_ATTR_SPAN}>[\\s\\S]*?<\\/para>`,
+      'g'
+    );
+    quoteCnxml = quoteCnxml.replace(paraPattern, `<para id="${child.id}">${paraText}</para>`);
+  }
+  return quoteCnxml;
 }
 
 /**
