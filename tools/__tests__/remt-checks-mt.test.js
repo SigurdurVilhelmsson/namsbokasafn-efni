@@ -212,7 +212,30 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     vi.resetModules();
   });
 
-  it('PREMISE PIN — chemistry: 5,160 mustache + 49 ++ hits over 111 of 149 files', async () => {
+  // 🔴 THE CLEAN BREAK IS COMPLETE, AND THAT COSTS THIS CHECK ITS NATURAL MUST-TRIP.
+  // RECORDED HERE BESIDE THE ZERO, BY [USER] RULING 2026-09-22, RATHER THAN ABSORBED
+  // INTO IT — because a `0` that replaces a `1,456` looks identical whether the corpus
+  // got clean or the detector went blind, and this file's own header says so:
+  // "A6 over organic is 0 across 48 files — which is exactly what a wholly broken
+  // detector returns. The planted trip and the chemistry figures are what separate the
+  // two readings (L44③)." Chemistry has now joined organic at 0, so HALF OF THAT
+  // SENTENCE HAS EXPIRED.
+  //
+  // MEASURED 2026-09-22, all three books, with the same code path this test walks:
+  //   efnafraedi-2e       149 files   examined 22,664   mustache 0     carriers 0
+  //   lifraen-efnafraedi   48 files   examined  7,397   mustache 0     carriers 0
+  //   orverufraedi         10 files   examined    654   mustache 146   carriers 4
+  //
+  // ▶ **THE ONLY SURVIVING NATURAL DISCRIMINATOR IS IN `orverufraedi`, A RETIRED BOOK
+  // THAT IS NOT IN THE SWEEP'S POPULATION.** So `remt-sweep` alone can no longer tell a
+  // working A6 from a broken one; what still proves the gate fires is the PLANTED
+  // sentinel trip above and the micro-fixture premise pin, both of which pass and
+  // neither of which is corpus evidence.
+  // ⚠️ DO NOT "TIDY" orverufraedi's four ch01 modules. They are the last real carriers
+  // in the repo, and §C118 ⑳ already records three of them as the ⑲ gate's only
+  // remaining natural must-trips. Repairing them would leave two gates proven by
+  // planted evidence alone.
+  it('PREMISE PIN — chemistry: 0 mustache, 0 ++ over 0 of 149 files — the clean break is COMPLETE', async () => {
     let mustache = 0;
     let plus = 0;
     let carriers = 0;
@@ -231,28 +254,30 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // +25.6%. Adding them produces a number that is neither, and no single corrected
     // figure exists to put in its place: the plan's 49-vs-39 anchor was EN-side, over 6
     // modules, against `01-source`, while this 49 is IS-side and corpus-wide.
-    expect(mustache).toBe(1456); // {{…}} occurrences, chemistry IS side, 149 files
-    // 3,200 -> 2,988 -> 2,772 is ch09's then ch10's re-MT (2026-09-20) retiring each chapter's share of the
-    // legacy dialect. Same direction as ch00/ch01/ch02/ch08 before it; the count falls
-    // once per chapter bought and reaches 0 when the clean break is complete.
-    expect(plus).toBe(0); // ++ REGEX HITS (detector), same population — 49 -> 0: the
-    // autorun's re-MT of ch00/ch01/ch02/ch08 retired the last of that dialect
-    // 75 -> 69 -> 65 -> 60 -> 56 -> 52 -> 45 -> 42: ch09..ch15 each retiring their modules' share of the
-    // legacy dialect.
-    // ⚠️ SIX, NOT SEVEN — a whole-chapter re-MT does not necessarily clear a whole chapter,
-    // because a module that never carried a mustache marker was never a carrier to begin
-    // with. Read this delta against `mustache` above, not against the chapter's module count.
-    expect(carriers).toBe(42);
-    // 🔴 examined ROSE while the hits FELL — 22,025 -> 22,107 against 2,988 -> 2,772. That
-    // direction is what distinguishes repair from blindness: MORE segments were inspected
-    // and FEWER legacy-dialect hits found. A drop in both would have been the alarm.
-    // The delta is the chapter's figure-`alt` segments: +49 for ch09, +82 for ch10, +46 for
-    // ch11, +42 for ch12, +14 for ch13, +36 for ch14, +32 for ch15 — each EQUAL to the figure count `figure-run` independently
-    // enumerated (30+7+2+3 for ch12). The
-    // SAME numbers that moved A2b's id count and A2c's marker count, and the same numbers
-    // `figure-run` enumerated as that chapter's figures. Four censuses, one delta, every
-    // time — which is why these bumps are predictions met, not numbers copied off a red run.
-    expect(examined).toBe(22277); // segments inspected; an empty walk cannot reach it
+    // 3,200 -> 2,988 -> 2,772 -> … -> 1,456 -> 0. The count fell once per chapter bought
+    // and REACHED 0 when the clean break completed: ch16..ch21 + appendices retired the
+    // last 1,456 (appendices 76, ch16 236, ch17 260, ch18 268, ch19 420, ch20 0, ch21 196).
+    // ⚠️ ch20 contributed 0, which is not an anomaly — a module that never carried a
+    // mustache marker was never a carrier to begin with.
+    expect(mustache).toBe(0); // {{…}} occurrences, chemistry IS side, 149 files
+    expect(plus).toBe(0); // ++ REGEX HITS (detector), same population — 49 -> 0 earlier,
+    // when the autorun's re-MT of ch00/ch01/ch02/ch08 retired the last of that dialect
+    // 75 -> 69 -> 65 -> 60 -> 56 -> 52 -> 45 -> 42 -> 0: ch09..ch21 + appendices each
+    // retiring their modules' share, the last seven units taking it to zero.
+    expect(carriers).toBe(0);
+    // 🔴 examined ROSE while the hits FELL — 22,025 -> 22,107 -> … -> 22,664 against
+    // 2,988 -> 2,772 -> … -> 0. **THAT DIRECTION IS THE WHOLE REASON THE ZERO ABOVE CAN
+    // BE READ AS REPAIR RATHER THAN BLINDNESS, AND IT IS NOW THE ONLY IN-TEST EVIDENCE
+    // FOR IT**: MORE segments inspected, FEWER legacy hits found. A drop in both would
+    // have been the alarm, and with the corpus at 0 there is no longer a positive count
+    // to cross-check against — so this assertion is load-bearing, not decoration.
+    // The delta is each chapter's figure-`alt` segments: +49 ch09, +82 ch10, +46 ch11,
+    // +42 ch12, +14 ch13, +36 ch14, +32 ch15, then +32 ch15, +16 ch16, +20 ch17, +92 ch18,
+    // +51 ch19, +134 ch20, +38 ch21, +36 appendices — each EQUAL to the figure count
+    // `figure-run` independently enumerated. The SAME numbers that moved A2b's id count
+    // and A2c's marker count. Four censuses, one delta, every time — which is why these
+    // bumps are predictions met, not numbers copied off a red run.
+    expect(examined).toBe(22664); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
