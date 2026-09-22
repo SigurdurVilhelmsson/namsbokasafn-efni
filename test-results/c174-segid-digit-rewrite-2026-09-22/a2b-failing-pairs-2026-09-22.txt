@@ -1,0 +1,32 @@
+A2b: blocking=true tier=2
+
+POPULATION (control): {"efnafraedi-2e":149,"lifraen-efnafraedi":48,"orverufraedi":10}  pairs=207 examined=30715 noEnCounterpart=0
+
+NON-PASS pairs: 9
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00134-segments.is.md   examined=12
+    12 raw SEG tokens, 12 parsed, 13 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00135-segments.is.md   examined=11
+    11 raw SEG tokens, 11 parsed, 16 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00136-segments.is.md   examined=22
+    22 raw SEG tokens, 22 parsed, 28 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00137-segments.is.md   examined=29
+    29 raw SEG tokens, 29 parsed, 43 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00138-segments.is.md   examined=6
+    6 raw SEG tokens, 6 parsed, 7 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00139-segments.is.md   examined=21
+    21 raw SEG tokens, 21 parsed, 25 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00140-segments.is.md   examined=7
+    7 raw SEG tokens, 7 parsed, 9 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00141-segments.is.md   examined=100
+    100 raw SEG tokens, 100 parsed, 104 EN parsed — legs fired: cross-side
+
+  FAIL  /home/siggi/dev/repos/namsbokasafn-efni/books/lifraen-efnafraedi/02-mt-output/ch12/m00142-segments.is.md   examined=78
+    78 raw SEG tokens, 78 parsed, 99 EN parsed — legs fired: cross-side

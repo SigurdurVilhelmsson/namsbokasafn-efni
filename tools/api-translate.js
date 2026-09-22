@@ -147,9 +147,68 @@ export function assertNoControlChars(text, label) {
 // ─── SEG Tag Repair ─────────────────────────────────────────────────
 
 /**
+ * The non-digit skeleton of a SEG id: every digit run removed.
+ * `m68863:alt:fs-idm364999968-alt` → `m:alt:fs-idm-alt`.
+ *
+ * §C174's damage class rewrites DIGITS inside an id and nothing else, so an
+ * equal skeleton is what separates "the same id, damaged" from "a different id".
+ * Without it, ordinal alignment alone would license overwriting any unmatched
+ * tag with whatever sat at that position — a guess, not a repair.
+ */
+function segIdSkeleton(id) {
+  return id.replace(/\d+/g, '');
+}
+
+/**
+ * Strategy 3's precompute (§C174): map output tag INDEX → correct input id.
+ * Returns `null` — repair nothing — unless every precondition holds.
+ *
+ * 🔑 THE CORPUS MEASUREMENT THAT LICENSES REPAIRING BY POSITION (2026-09-22,
+ * `test-results/c174-segid-digit-rewrite-2026-09-22/`): over all 207 EN/IS
+ * pairs, **0** reorder their matched ids — 192 id sequences are byte-identical
+ * and 198 count-equal — and all 6 known corruptions sit at the SAME ordinal
+ * position on both sides. Order preservation is measured, not assumed.
+ *
+ * ⚠️ FAIL-CLOSED. Attaching a translation to the WRONG element is worse than
+ * the defect it repairs and is invisible to every count-based gate, so any
+ * doubt refuses the whole file rather than repairing part of it.
+ */
+function buildOrdinalRepairMap(input, output, inputTags) {
+  const inIds = [...input.matchAll(/<!-- SEG:(\S+?) -->/g)].map((m) => m[1]);
+  const outIds = [...output.matchAll(/<!-- SEG:(\S+?) -->/g)].map((m) => m[1]);
+  // Unequal counts mean position carries no information at all.
+  if (inIds.length === 0 || inIds.length !== outIds.length) return null;
+
+  const outSet = new Set(outIds);
+  const fix = new Map();
+  for (let i = 0; i < inIds.length; i++) {
+    if (inIds[i] === outIds[i]) continue;
+    // A REORDER, not a corruption: the id is intact, it simply moved. Position
+    // is then a lie and repairing by it would mis-attach every moved segment.
+    if (inputTags.has(outIds[i]) || outSet.has(inIds[i])) return null;
+    // 🔴 THE MODULE ID MUST BE IDENTICAL. Strategy 3 owns ELEMENT-id damage;
+    // module-id damage belongs to strategies 1 and 2, and F23 deliberately caps
+    // how far those may reach. Without this the skeleton test alone would
+    // "repair" `m68664:para:1` → `m99999:para:1` and `m68667:…` → `m6:…`,
+    // re-opening exactly the mis-repair F23 exists to prevent — both are pinned
+    // in this file's tests and both caught it.
+    const inMod = inIds[i].indexOf(':');
+    const outMod = outIds[i].indexOf(':');
+    if (inMod < 1 || outMod < 1) return null;
+    if (inIds[i].slice(0, inMod) !== outIds[i].slice(0, outMod)) return null;
+    // Not §C174's class — refuse rather than guess.
+    if (segIdSkeleton(inIds[i]) !== segIdSkeleton(outIds[i])) return null;
+    fix.set(i, inIds[i]);
+  }
+  return fix.size > 0 ? fix : null;
+}
+
+/**
  * Repair SEG tags corrupted by the MT API.
  * The API occasionally inserts hyphens in numeric module IDs
- * (e.g., m68683 → m6-8683).
+ * (e.g., m68683 → m6-8683), and occasionally rewrites digits INSIDE the element
+ * id (§C174), which strategies 1 and 2 structurally cannot reach because both
+ * key on an intact suffix.
  */
 export function repairSegTags(input, output) {
   // Build set of valid SEG tag IDs from input
@@ -169,7 +228,13 @@ export function repairSegTags(input, output) {
     }
   }
 
+  // §C174, strategy 3 — computed once over the whole pair, because unlike
+  // strategies 1 and 2 it needs to know where every OTHER tag sits.
+  const ordinalFix = buildOrdinalRepairMap(input, output, inputTags);
+  let outIndex = -1;
+
   return output.replace(/<!-- SEG:(\S+?) -->/g, (fullMatch, tagId) => {
+    outIndex++;
     if (inputTags.has(tagId)) return fullMatch;
 
     // Strategy 1: Remove hyphens from module ID (e.g., m6-8683 → m68683)
@@ -208,6 +273,13 @@ export function repairSegTags(input, output) {
         }
       }
     }
+
+    // Strategy 3 (§C174): the id's DIGITS were rewritten, so neither the
+    // de-hyphenate nor the suffix lookup above can see it. Repair by ordinal
+    // position — but only under the preconditions checked in
+    // `buildOrdinalRepairMap`, which refuses the whole file on any doubt.
+    const byOrdinal = ordinalFix && ordinalFix.get(outIndex);
+    if (byOrdinal) return `<!-- SEG:${byOrdinal} -->`;
 
     return fullMatch;
   });

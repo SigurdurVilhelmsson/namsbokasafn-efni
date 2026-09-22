@@ -330,6 +330,113 @@ describe('repairSegTags', () => {
     const output = '<!-- SEG:m6:para:fs-idX --> Hæ';
     expect(repairSegTags(input, output)).toBe(output);
   });
+
+  // ─── Strategy 3: ordinal repair (§C174) ───────────────────────────
+  //
+  // 🔴 WHY A THIRD STRATEGY EXISTS. Strategies 1 and 2 both key on an INTACT
+  // SUFFIX — 1 de-hyphenates the module id, 2 looks the suffix up. So a digit
+  // rewritten INSIDE the element id is structurally unreachable by both, and
+  // the SEG COUNT never moves, so `validateMarkers` cannot see it either. The
+  // translation is then paid for, written, and DROPPED at inject because
+  // `getSeg` misses; the ENGLISH reaches the reader. Measured 2026-09-22:
+  // 6 instances over 207 pairs, 2 of them live on published chemistry pages.
+  //
+  // 🔑 WHAT LICENSES REPAIRING BY POSITION, and it is a corpus measurement, not
+  // an assumption: over all 207 EN/IS pairs, **0** reorder their matched ids
+  // (192 id sequences are byte-identical, 198 are count-equal), and all 6
+  // corruptions sit at the SAME ordinal position on both sides, 6 of 6.
+  // `test-results/c174-segid-digit-rewrite-2026-09-22/` holds the instrument.
+  //
+  // ⚠️ IT IS FAIL-CLOSED BY DESIGN. Repairing the wrong id would attach a
+  // translation to the wrong element — worse than the defect, and invisible to
+  // every count. So every precondition below must hold or it does nothing.
+
+  it('repairs a digit rewritten inside the ELEMENT id, which strategies 1-2 cannot reach', () => {
+    const input = '<!-- SEG:m68863:alt:fs-idm364999968-alt --> A line graph';
+    const output = '<!-- SEG:m68863:alt:fs-idm36499968-alt --> Línurit';
+    expect(repairSegTags(input, output)).toBe(
+      '<!-- SEG:m68863:alt:fs-idm364999968-alt --> Línurit'
+    );
+  });
+
+  it('repairs the real m68783 corruption, keeping its 2 intact siblings untouched', () => {
+    // The live ch11 instance, with neighbours, so the repair is shown not to
+    // disturb ids that were never damaged.
+    const input =
+      '<!-- SEG:m68783:para:a --> One\n' +
+      '<!-- SEG:m68783:alt:fs-idp105222176-alt --> This phase diagram\n' +
+      '<!-- SEG:m68783:para:b --> Two';
+    const output =
+      '<!-- SEG:m68783:para:a --> Eitt\n' +
+      '<!-- SEG:m68783:alt:fs-idp10522176-alt --> Fasarit\n' +
+      '<!-- SEG:m68783:para:b --> Tvö';
+    const r = repairSegTags(input, output);
+    expect(r).toContain('<!-- SEG:m68783:alt:fs-idp105222176-alt --> Fasarit');
+    expect(r).toContain('<!-- SEG:m68783:para:a --> Eitt');
+    expect(r).toContain('<!-- SEG:m68783:para:b --> Tvö');
+  });
+
+  it('repairs a two-digit drop (the ch26 shape), since the damage is not a known form', () => {
+    const input = '<!-- SEG:26-99-OC-VC01:stem:359601-b0 --> Draw';
+    const output = '<!-- SEG:26-99-OC-VC01:stem:3601-b0 --> Teiknaðu';
+    expect(repairSegTags(input, output)).toBe('<!-- SEG:26-99-OC-VC01:stem:359601-b0 --> Teiknaðu');
+  });
+
+  it('REFUSES when the tag counts differ — nothing can be aligned by position', () => {
+    const input = '<!-- SEG:m1:alt:aaa111 --> A\n<!-- SEG:m1:para:b --> B';
+    const output = '<!-- SEG:m1:alt:aaa11 --> Á';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('passes a pure REORDER through untouched (no tag is unmatched, so nothing is repaired)', () => {
+    // Both ids are valid, so the callback returns each one early and strategy 3
+    // is never consulted. ⚠️ This does NOT exercise the no-reorder guard — an
+    // earlier version of this file claimed it did, and mutation-testing proved
+    // it vacuous: the assertion held with the guard deleted. The test below is
+    // the one that exercises it.
+    const input = '<!-- SEG:m1:para:a --> A\n<!-- SEG:m1:para:b --> B';
+    const output = '<!-- SEG:m1:para:b --> B\n<!-- SEG:m1:para:a --> Á';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('REFUSES the whole file when a REORDER accompanies a corruption', () => {
+    // 🔴 THE CASE THE no-reorder GUARD ACTUALLY EXISTS FOR, and it needs all
+    // three parts: two ids that SWAP (so position is a lie), sharing a digit
+    // skeleton with each other (so the skeleton guard cannot catch it first),
+    // plus one genuinely corrupted id that WOULD otherwise be repaired.
+    // Once order is untrustworthy anywhere in the file, ordinal repair is
+    // untrustworthy everywhere in it — hence refusing the file, not the tag.
+    // The corpus measured 0 reorders in 207 pairs; this guard is so a future
+    // first one is refused rather than silently mis-attached.
+    const input =
+      '<!-- SEG:m1:para:a1 --> A\n' + '<!-- SEG:m1:para:a2 --> B\n' + '<!-- SEG:m1:alt:x111 --> C';
+    const output =
+      '<!-- SEG:m1:para:a2 --> B\n' + '<!-- SEG:m1:para:a1 --> Á\n' + '<!-- SEG:m1:alt:x11 --> Cé';
+    // The corrupted `x11` is left alone precisely because the swap above it
+    // makes position meaningless.
+    expect(repairSegTags(input, output)).toContain('<!-- SEG:m1:alt:x11 --> Cé');
+    expect(repairSegTags(input, output)).not.toContain('m1:alt:x111');
+  });
+
+  it('REFUSES when the unmatched ids do not sit at the same positions', () => {
+    const input = '<!-- SEG:m1:alt:aaa111 --> A\n<!-- SEG:m1:para:b --> B';
+    const output = '<!-- SEG:m1:para:b --> B\n<!-- SEG:m1:alt:aaa11 --> Á';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('REFUSES an unrelated id even at an aligned position (it is not a repair, it is a guess)', () => {
+    // Nothing links `zzz` to `aaa111`. Ordinal alignment alone must not be
+    // enough, or the strategy becomes "overwrite whatever is there".
+    const input = '<!-- SEG:m1:alt:aaa111 --> A';
+    const output = '<!-- SEG:m1:alt:zzz --> Á';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
+
+  it('leaves a wholly clean pair untouched (control: the strategy is not always firing)', () => {
+    const input = '<!-- SEG:m1:para:a --> A\n<!-- SEG:m1:para:b --> B';
+    const output = '<!-- SEG:m1:para:a --> Á\n<!-- SEG:m1:para:b --> Bé';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
 });
 
 // ─── Glossary Filtering ─────────────────────────────────────────────

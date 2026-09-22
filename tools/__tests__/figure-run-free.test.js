@@ -465,7 +465,7 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
 
   it('resolves a hashed figure through its stripped name, in a SECOND resolver pass', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures(CH03, { spawn });
+    const result = await runFigures(CH03, { spawn, ...PRISTINE });
     const hashed = result.figures.filter((f) => isHashed(f.basename));
     expect(hashed.length).toBeGreaterThan(0); // non-vacuity: ch03 really carries them
     expect(hashed.every((f) => f.resolvedVia === 'de-hashed')).toBe(true);
@@ -489,7 +489,7 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
   // figure gets refused `basename-mismatch` for ever.
   it('prepares every figure under its own unstripped basename, in its own directory', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures(CH03, { spawn });
+    const result = await runFigures(CH03, { spawn, ...PRISTINE });
     const prepares = spawn.calls.filter((c) => c.stage === 'prepare');
     expect(prepares.length).toBe(result.figures.length);
     const enumerated = new Set(result.figures.map((f) => f.basename));
@@ -507,7 +507,7 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
 
   it('still reports a hashed figure unresolved when neither name has artwork', async () => {
     const spawn = fakeSpawn({ resolve: () => null });
-    const result = await runFigures(CH03, { spawn });
+    const result = await runFigures(CH03, { spawn, ...PRISTINE });
     expect(result.tally.unresolved).toBe(result.figures.length);
     expect(result.verdict.ok).toBe(true); // R9: named, never fatal
   });
@@ -910,7 +910,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
     const spawn = fakeSpawn({
       prepare: (b) => (b.startsWith('CNX_Chem_04_01') ? { __fail: 'ghostscript blew up' } : {}),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.tally['failed-prepare']).toBeGreaterThan(0);
     expect(result.verdict.ok).toBe(false);
     const bad = result.figures.find((f) => f.outcome === 'failed-prepare');
@@ -924,7 +924,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
     const spawn = fakeSpawn({
       prepare: (b) => (b === 'CNX_Chem_04_04_limiting' ? { __meta: 'SOME_OTHER_FIGURE' } : {}),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04_04_limiting');
     expect(rec.outcome).toBe('failed-prepare');
     expect(rec.reason).toMatch(/basename-mismatch/);
@@ -937,7 +937,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
     const spawn = fakeSpawn({
       prepare: () => ({ sendable: 3, chars: 40, blocks: 3 }),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04_04_limiting');
     expect(rec.outcome).toBe('translated');
     expect(result.tally['failed-prepare']).toBe(0);
@@ -995,7 +995,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
         '--figure',
         'CNX_Chem_04_04_limiting',
       ],
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     expect(code).toBe(0);
     expect(spawn.countOf('prepare')).toBe(1);
@@ -1256,7 +1256,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
     const spawn = fakeSpawn(strippedOnly);
     const result = await runFigures(
       { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: null, dryRun: true },
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     const hashed = result.figures.filter((f) => isHashed(f.basename));
     expect(hashed).toHaveLength(9);
@@ -1436,7 +1436,7 @@ describe('prepare warnings reach the operator', () => {
       prepare: (b) =>
         b === 'CNX_Chem_04_04_limiting' ? { sendable: 2, chars: 20, warnings: [STREAM] } : {},
     });
-    const text = summarise(await runFigures(CH04, { spawn }));
+    const text = summarise(await runFigures(CH04, { spawn, ...PRISTINE }));
     expect(text).toContain(STREAM);
     expect(text).toContain('CNX_Chem_04_04_limiting');
   });

@@ -41,10 +41,34 @@ import { detectResidue, normalizeForComparison } from '../lib/residue-check.js';
 const read = (p) => fs.readFileSync(p, 'utf8');
 const BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi'];
 
-/** The `{segText, isText}` pair for one module, by book+chapter+module. */
+/** The `{segText, isText}` pair for one module, by book+chapter+module — LIVE tree. */
 const pair = (b, ch, m) => ({
   segText: read(path.join(REPO_ROOT, 'books', b, '02-for-mt', ch, `${m}-segments.en.md`)),
   isText: read(path.join(REPO_ROOT, 'books', b, '02-mt-output', ch, `${m}-segments.is.md`)),
+});
+
+/**
+ * The same pair from the FROZEN pre-repair fixtures, shared with
+ * `bracket-delta-corpus.test.js` (which carries the full rationale in its header).
+ *
+ * 🔴 WHY A SECOND SOURCE EXISTS, 2026-09-22. A3's acceptance trio names one true
+ * positive, one true negative and one proven false-negative-closer. The 2026-09-21
+ * re-MT buys REPAIRED two of the three out of the live corpus, so the trio stopped
+ * being a trio: m68823's MATH loss is gone (it now PASSes where WARN is pinned) and
+ * m68791 acquired a §C169 `[[sub:]]` invention in a figure `alt` (it now WARNs where
+ * PASS is pinned). **The two verdicts did not drift — they SWAPPED**, which is what
+ * makes this look alarming and is in fact two independent, already-explained events.
+ * ▶ Freezing keeps all three assertions exactly as written. Re-pinning would have
+ * inverted the trio's meaning: the "true negative" would assert a finding and the
+ * "false negative the widening exists to close" would assert none.
+ * ⚠️ m58781 stays on the LIVE tree deliberately — it is in retired `orverufraedi`,
+ * which no buy touches, and it is the trio's only remaining corpus-anchored member.
+ * §C118 ⑳ records it as one of the ⑲ gate's last natural must-trips; do not "repair" it.
+ */
+const FROZEN = path.join(REPO_ROOT, 'tools/__tests__/fixtures/bracket-delta-corpus');
+const frozenPair = (m) => ({
+  segText: read(path.join(FROZEN, `${m}.en.md`)),
+  isText: read(path.join(FROZEN, `${m}.is.md`)),
 });
 
 describe('population control — an empty walk must not pass anything below', () => {
@@ -155,16 +179,24 @@ describe('A3 — per-segment bracket-marker delta', () => {
       expect(r.findings[0].delta).toEqual({ b: -2 });
     });
 
-    it('m68791 is the true negative — 380 segments, no delta', async () => {
-      const r = await runCheck(A3, pair('efnafraedi-2e', 'ch12', 'm68791'));
+    it('m68791 is the true negative — 380 segments, no delta (FROZEN)', async () => {
+      // ⚠️ THE LIVE COPY IS NO LONGER A TRUE NEGATIVE: the 2026-09-01 re-extract added
+      // figure-`alt` segments and one came back `C[[sub:4]]H[[sub:6]]` where OpenStax
+      // spells the subscripts out in words for a screen reader — §C169's class, repaired
+      // at INJECT rather than in `02-mt-output`. Reading the live file here would assert
+      // that a module WITH a finding has none, which is the opposite of this test's point.
+      const r = await runCheck(A3, frozenPair('m68791'));
       expect(r.verdict).toBe(VERDICT.PASS);
       expect(r.findings).toHaveLength(0);
       expect(r.examined).toBe(380);
     });
 
-    it('🔴 m68823 — the PROVEN false negative the §C69 widening exists to close', async () => {
+    it('🔴 m68823 — the PROVEN false negative the §C69 widening exists to close (FROZEN)', async () => {
       // It returned `{}` before `MATH` entered the tallied set, while MATH went 56→54.
-      const r = await runCheck(A3, pair('efnafraedi-2e', 'ch17', 'm68823'));
+      // ⚠️ FROZEN: the ch17 re-buy (2026-09-21) repaired this MATH loss, so the live copy
+      // now PASSes. A check whose acceptance case is "the defect the widening exists to
+      // catch" cannot be re-pinned to a corpus where the defect is gone.
+      const r = await runCheck(A3, frozenPair('m68823'));
       expect(r.verdict).toBe(VERDICT.WARN);
       const deltas = r.findings.filter((f) => f.kind === 'marker-delta');
       expect(deltas).toHaveLength(2);
@@ -234,11 +266,23 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // ▶ `unpairedMods` did NOT move, and that is the tell that this was a re-TRANSLATION
     // and not a re-EXTRACTION: the EN side is untouched, so no pairing changed.
     // The same segment is R1's one organic FAIL (`emphasis` 33 -> 32) in remt-sweep.
-    expect(deltaMods).toBe(130); //  66.0% of 197
-    expect(unpairedMods).toBe(145); //  73.6% — EN segments with no IS counterpart
-    expect(anyMods).toBe(156); //  79.2% — what A3 would halt on, were it blocking
-    // Global Constraints rule 4 needs ≤ ~5%. Every one of these is an order of magnitude
-    // over it, which is why `A3.blocking === false` above.
+    // ✅ RE-PINNED 2026-09-22, AND THE COLLAPSE IS THIS BLOCK'S OWN PREDICTION MET. The
+    // note above says "THEY FALL AS CHAPTERS ARE BOUGHT and only regain the old meaning
+    // once the corpus is one vintage again". ch16..ch21 + appendices bought, and they fell:
+    //   deltaMods    130 -> 13   (66.0% -> 6.6%)
+    //   unpairedMods 145 -> 13   (73.6% -> 6.6%)
+    //   anyMods      156 -> 24   (79.2% -> 12.2%)
+    // ▶ `unpairedMods` falling from 145 to 13 is the vintage mismatch RESOLVING — those were
+    // never 141 modules that lost segments, but 141 whose EN side had gained segments their
+    // committed IS had never seen. The 13 that remain are almost entirely organic ch12,
+    // whose MT is still 2026-08-12 against a 2026-09-01 extract (§C174/§C175).
+    expect(deltaMods).toBe(13); //   6.6% of 197
+    expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
+    expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking
+    // Global Constraints rule 4 needs ≤ ~5%. ⚠️ THE MARGIN HAS NARROWED BY AN ORDER OF
+    // MAGNITUDE — 79.2% was "obviously non-blocking", 12.2% is merely over the bar — so the
+    // justification for `A3.blocking === false` is now a measurement to re-check each buy,
+    // not a settled fact. Buying organic ch12 would take it close to the bar.
     expect(anyMods / pairs).toBeGreaterThan(0.05);
   });
 });
@@ -466,9 +510,17 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       }
     }
     expect(pairs).toBe(197); // control
-    // ⚠️ 7 → 5, RE-MEASURED 2026-09-20: the autorun's ch08 retry translated m68745's five
-    // English prose segments (5 of 5), leaving m68744's one stubborn π-bond paragraph.
-    expect(hits).toHaveLength(5);
+    // ⚠️ 7 → 5 → 11, RE-MEASURED 2026-09-22. It ROSE, and the rise is accounted for rather
+    // than absorbed: ch21's buy logged its residue instead of clearing it (§C175's register
+    // entry records 7 segments left English in 2 modules after two paid attempts), so
+    // m68852 contributes 5 and m68856 1. The set is now
+    //   m00037 1 · m00135 3 · m68744 1 · m68852 5 · m68856 1 = 11
+    // m68744 is the same stubborn π-bond paragraph; m00037 is §C121's deterministic
+    // casualty below; m00135 is organic ch12, whose MT predates its extract.
+    // ▶ A RISING residue count is not automatically a regression — these were BOUGHT,
+    // MEASURED and RECORDED as incomplete, which is the loop working. What would be a
+    // regression is a module appearing here that nobody logged.
+    expect(hits).toHaveLength(11);
     // 🔴 RE-PINNED 2026-09-05 — m00037 RE-ENTERED this set (it had LEFT it at eeac7731,
     // when an earlier re-translation made it Icelandic). This is the §C121 re-MT's one
     // paid-for casualty, NOT a regression in the check: `m00037:para:para-00003` came back
@@ -483,7 +535,20 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     // chemistry ch08's π-bond definition, which came back ENGLISH on two paid attempts.
     // ▶ That is the SAME deterministic shape as m00037 above, in the other book: a second
     // purchase reproduced it exactly, so a third is waste and the route is the editor.
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68744']);
+    // ⚠️ RE-MEASURED 2026-09-22: m68852 and m68856 ENTERED, both from ch21's buy. They are
+    // the §C175-recorded `[INCOMPLETE]` pair — two paid attempts each, id-reattach
+    // mismatches whose counts MATCHED the residue exactly, so B4-D11's count guard declined
+    // to attach rather than the model refusing to translate (§C136: held back ≠ defect).
+    // ▶ **THE SET IS THE ASSERTION, NOT THE COUNT**, and that is the point: every module
+    // here is one somebody bought, measured and wrote down. A module appearing in this set
+    // that is NOT in that record is the regression this line exists to catch.
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual([
+      'm00037',
+      'm00135',
+      'm68744',
+      'm68852',
+      'm68856',
+    ]);
   });
 });
 

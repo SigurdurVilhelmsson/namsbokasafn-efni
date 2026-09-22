@@ -4,6 +4,25 @@
 **Status of this document:** a starting brief. **It owns no status** — the active register's ⏩ RESUME
 does. Everything below is either a measurement taken on 2026-09-21 or a pointer.
 
+> 🔴 **CORRECTED 2026-09-21, later the same night — §2 BELOW NAMES *TWO* BLOCKERS AND THE
+> REGISTER ALREADY OWNED *FOUR*.** The pre-flight checklist is **§C126**'s ("THE RE-MT PRE-FLIGHT
+> CENSUS", 26 agents, adversarially verified) and it is the owner. It adds, both **organic-only**:
+> **#3 exercise `<img alt>` → segments (§C123)** — 2,375 strings / 288,603 chars across 1,961
+> exercise JSONs — and **#4 `table@summary`**, which wants a **[USER] RULING, not a fix** (19
+> organic). It also carries an **ordering meta-rule** about segment renumbering that decides the
+> SHAPE of the alt fix. ✅ **And it records one blocker organic does NOT have: its glossary is
+> clean** (249/249 `domain: chemistry`, all three shadows absent) — the glossary work is
+> chemistry-only, so §3 below should not be read as implying organic inherits it.
+>
+> ⚠️ **§2(b) is also narrower than it reads.** A missing `fidelity-allowlist.json` is real, but
+> organic's manifest is red on **exactly one** discrepancy today, because the fidelity check only
+> runs on INJECTED modules and only 8 of 342 are. The workload that matters was measured for free
+> instead of guessed — see **§C173**.
+>
+> ▶ **The blocker list, the fix set and every number are owned by the register. Read its newest
+> ⏩ RESUME and §C173 before §2 and §5 below.** Blocker **(a) is discharged** — the driver is
+> book-parameterised.
+
 ---
 
 ## 1. The shape of the job, measured
@@ -103,6 +122,18 @@ times, 179 of them inside *reactants*/*plants*/*constants*). **Do not widen it.*
 ---
 
 ## 5. Suggested first moves (0 ISK before anything is bought)
+
+> ✅ **STEPS 1, 2 AND 5 WERE DONE 2026-09-21 — results at §C173, not here.** Step 2 was widened
+> from "a candidate chapter" to **all 33 units** (`source-roundtrip-check.js` costs 0.3 s per unit,
+> so sampling was the more expensive choice) and it found two defects §C126's 26 agents did not.
+> ⚠️ **Step 2's other half is NOT executable for organic:** `render-oracle-check` needs
+> `openstax-id-manifest.json`, which covers **ch03 only** — the chapter §4 says not to start with —
+> and **no committed tool can extend it**. It exits **2** out of scope, so it fails loudly rather
+> than silently. **Organic's free QC tier is T2-only.**
+> ⚠️ **Step 3 needs a different audit than chemistry's:** 30 of 33 organic units have no content
+> MT, so `compute-glossary-subset.js`'s "already-handled" exclusions are unreliable **by default**
+> (it prints the warning itself), and organic **inherits all 41 chemistry house-style rulings** —
+> so the cross-check inverts into looking for entries to EXCLUDE. Both measured at §C173.
 
 1. **Re-extract a candidate chapter** and confirm `02-for-mt` is current (the diff is the control —
    chemistry's re-extract moved 8 manifest timestamps and nothing else).

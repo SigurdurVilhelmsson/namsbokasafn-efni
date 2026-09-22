@@ -1,0 +1,38 @@
+POPULATION (control): pairs=207
+
+COUNT-EQUAL but ID-SET DIFFERENT — the digit-rewrite class: 6
+
+  books/efnafraedi-2e/02-mt-output/appendices/m68863-segments.is.md   (168 segments, counts equal)
+     EN: m68863:alt:fs-idm364999968-alt
+     IS: m68863:alt:fs-idm36499968-alt
+
+  books/efnafraedi-2e/02-mt-output/ch11/m68783-segments.is.md   (429 segments, counts equal)
+     EN: m68783:alt:fs-idp105222176-alt
+     IS: m68783:alt:fs-idp10522176-alt
+
+  books/lifraen-efnafraedi/02-mt-output/ch06/exercises-segments.is.md   (153 segments, counts equal)
+     EN: 06-99-OC-VC03:stem:353278-b0
+     IS: 06-99-OC-VC03:stem:353282-b0
+
+  books/lifraen-efnafraedi/02-mt-output/ch12/exercises-segments.is.md   (154 segments, counts equal)
+     EN: 12-99-OC-AP33:stem:352255-b0
+     IS: 12-99-OC-AP33:stem:352253-b0
+
+  books/lifraen-efnafraedi/02-mt-output/ch26/exercises-segments.is.md   (179 segments, counts equal)
+     EN: 26-99-OC-VC01:stem:359601-b0
+     IS: 26-99-OC-VC01:stem:3601-b0
+
+  books/lifraen-efnafraedi/02-mt-output/ch29/exercises-segments.is.md   (123 segments, counts equal)
+     EN: 29-99-OC-MP08:stem:358571-b1
+     IS: 29-99-OC-MP08:stem:358157-b1
+
+COUNT-UNEQUAL (vintage drift, a different class): 9
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00134-segments.is.md  EN 13 / IS 12
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00135-segments.is.md  EN 16 / IS 11
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00136-segments.is.md  EN 28 / IS 22
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00137-segments.is.md  EN 43 / IS 29
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00138-segments.is.md  EN 7 / IS 6
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00139-segments.is.md  EN 25 / IS 21
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00140-segments.is.md  EN 9 / IS 7
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00141-segments.is.md  EN 104 / IS 100
+  books/lifraen-efnafraedi/02-mt-output/ch12/m00142-segments.is.md  EN 99 / IS 78

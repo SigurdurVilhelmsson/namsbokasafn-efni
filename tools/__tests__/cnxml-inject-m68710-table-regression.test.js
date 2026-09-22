@@ -25,7 +25,7 @@ describe('m68710 container-table translation (OC-B regression, in-memory)', () =
     const { cnxml } = buildCnxml(structure, segments, equations, originalCnxml, {}, {});
 
     expect(cnxml).toContain('<entry align="left">Hvarfefni</entry>');
-    expect(cnxml).toContain('<entry align="left">Hleðsla</entry>');
+    expect(cnxml).toContain('<entry align="left">hleðsla</entry>');
     expect(cnxml).not.toContain('<entry align="left">Reactants</entry>');
     expect(cnxml).not.toContain('<entry align="left">charge</entry>');
   });

@@ -118,7 +118,7 @@ export function readAlt(alt, getSeg) {
  * @param {string} text
  * @returns {string} the same text with every bracket marker unwrapped
  */
-export function stripAltMarkers(text) {
+function unwrapBracketMarkers(text) {
   const s = String(text ?? '');
   if (!s.includes('[[')) return s; // fast path: the overwhelming majority
   let out = '';
@@ -181,4 +181,46 @@ export function stripAltMarkers(text) {
     i = end + 2;
   }
   return out;
+}
+
+/**
+ * An inline TAG in an alt — quote-aware, so a bare `>` inside an attribute
+ * value cannot truncate the match.
+ *
+ * 🔴 `<tag[^>]*>` IS THE WRONG SPAN AND THIS REPO HAS MEASURED WHY (§C115): only
+ * `<` and `&` MUST be escaped in an attribute value, so a raw `>` is legal there
+ * and `[^>]*` stops at the first one — leaving half a tag in a published alt.
+ * ⚠️ THE LEADING `[a-zA-Z]` IS LOAD-BEARING, not tidiness: an alt is PROSE, and
+ * descriptions really do contain `x < y`. Requiring a tag NAME after `<` is what
+ * keeps a mathematical comparison from being eaten as markup.
+ */
+const ALT_INLINE_TAG = new RegExp(`</?[a-zA-Z][a-zA-Z0-9]*(?:"[^"]*"|'[^']*'|[^>'"])*>`, 'g');
+
+/**
+ * Strip every form of markup from an alt value, leaving its visible text.
+ *
+ * 🔴 §C176 — §C169's UNWRAP WAS CORRECT AND STILL LET THE DEFECT REACH A READER,
+ * BECAUSE ON ONE PATH IT RAN TOO LATE. `getSeg` ends in `reverseInlineMarkup()`,
+ * which turns `[[sub:w]]` into `<sub>w</sub>`; `readAlt(alt, getSeg)` resolves
+ * THROUGH that conversion, so the bracket scanner above finds nothing left to
+ * unwrap and the markup reaches the page — where `escapeAttr` then double-escapes
+ * it and a screen reader reads out the literal characters `&lt;sub&gt;`.
+ * Measured on `appendices-5-eiginleikar-vatns.html` 2026-09-22.
+ *
+ * ▶ "PATCH THE SHARED LOOKUP, NOT THE WRITERS" WAS NECESSARY AND NOT SUFFICIENT.
+ * §C169 landed in `ctx.peekSeg`, which reads `segments.get()` RAW and is
+ * therefore immune — correct, and silent about `readAlt(…, getSeg)`, which is a
+ * SECOND shared resolution point. A fix at one shared point says nothing about
+ * the other. ▶ **Enumerate the RESOLUTION paths, not just the writers.**
+ *
+ * So the invariant is widened rather than another caller added: **an `alt` may
+ * not contain markup, in whatever form it arrived** — brackets, tags, or both.
+ * That holds no matter which reader a caller was handed, which is the property
+ * the previous fix lacked.
+ *
+ * @param {string} text
+ * @returns {string} the same text with every marker and inline tag unwrapped
+ */
+export function stripAltMarkers(text) {
+  return unwrapBracketMarkers(text).replace(ALT_INLINE_TAG, '');
 }

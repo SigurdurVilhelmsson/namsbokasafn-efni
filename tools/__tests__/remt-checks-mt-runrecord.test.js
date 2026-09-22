@@ -73,7 +73,7 @@ function cleanRecord(over = {}) {
 
 const v2 = (run) => ({ provenance: { schemaVersion: 2, tool: 'api-translate', run } });
 
-describe('the premise: the corpus is v1 except the 67 units the paid runs bought', () => {
+describe('the premise: 180 of 220 sidecars now carry a run record — chemistry is 170 of 170', () => {
   // ⚠️ THE AUTORUN MOVES THIS PIN EVERY CHAPTER (2026-09-20 onward): each chapter
   // bought adds its module sidecars plus one chapter-metadata one, and turns them
   // into v2-with-a-run-record. Re-measure and bump it in the commit that buys the
@@ -82,7 +82,7 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
   // ⚠️ A PREMISE PIN, NOT A REGRESSION PIN. It is EXPECTED to go red the moment the
   // clean-break run writes its first sidecar. When it does, that is the corpus moving
   // — update the numbers in the commit that observes it, do not delete the test.
-  it('215 sidecars across the two kept books, 215 with a tool, 119 with a run record', () => {
+  it('220 sidecars across the two kept books, 220 with a tool, 180 with a run record', () => {
     const found = [];
     const walk = (p) => {
       for (const e of fs.readdirSync(p, { withFileTypes: true })) {
@@ -98,20 +98,20 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
       byBook[b] = found.length - before;
     }
     // The SPLIT, not just the total: a glob that swept in a third book would otherwise
-    // still satisfy a bare `toBe(208)` by coincidence.
-    expect(byBook).toEqual({ 'efnafraedi-2e': 165, 'lifraen-efnafraedi': 50 });
-    expect(found).toHaveLength(215);
+    // still satisfy a bare `toBe(220)` by coincidence.
+    expect(byBook).toEqual({ 'efnafraedi-2e': 170, 'lifraen-efnafraedi': 50 });
+    expect(found).toHaveLength(220);
 
     // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 208
     // is NOT the population every other number in this suite family uses. The sibling
     // suite counts `*-segments.is.md` with `chapter-metadata-*` DELIBERATELY EXCLUDED
     // (chemistry 149, organic 48); this walk counts SIDECARS and excludes nothing, so it
-    // is 197 module sidecars PLUS 13 chapter-metadata ones. Both numbers are right and
-    // they reconcile exactly — but a reader comparing 208 against 207 without this note
+    // is 197 module sidecars PLUS 23 chapter-metadata ones. Both numbers are right and
+    // they reconcile exactly — but a reader comparing 220 against 207 without this note
     // is comparing populations, which is this repo's commonest error. Asserted rather
     // than merely commented, so the reconciliation stays checkable.
     const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
-    expect(metadata).toHaveLength(18);
+    expect(metadata).toHaveLength(23); // 21 chemistry (ch01..ch21) + 2 organic; appendices and ch00 have none
     // ⚠️ UNCHANGED AT 197 WHILE THE TOTAL ROSE, AND THAT ASYMMETRY IS THE EVIDENCE, NOT AN
     // ODDITY: buying ch09 and ch10 (2026-09-20) OVERWROTE the module sidecars they already had
     // and ADDED the one `chapter-metadata` sidecar each lacked. A buy that had also added modules
@@ -122,15 +122,25 @@ describe('the premise: the corpus is v1 except the 67 units the paid runs bought
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
-    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(215);
-    // ⚠️ 119 AND 119 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
+    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(220);
+    // ⚠️ 180 AND 180 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
     // written v2 to the kept books; `docx-import` and `backfill-provenance` write v2
     // WITHOUT a run (see the docstring below). Keep these as TWO assertions.
-    // 67 -> 75 -> 83 -> 90 -> 99 -> 105 -> 114 -> 119 is ch09..ch15's units (modules + chapter-metadata)
-    // each turning v2-with-a-run. +8 per bought chapter is the law; check it against the
-    // chapter's module count before bumping.
-    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(119);
-    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(119);
+    // 67 -> 75 -> 83 -> 90 -> 99 -> 105 -> 114 -> 119 -> 180 is ch09..ch21 + appendices, each
+    // unit (modules + chapter-metadata) turning v2-with-a-run. Check the delta against the
+    // chapter's module count before bumping; do not copy it off a red run.
+    // 🔴 CHEMISTRY IS NOW 170 OF 170 — EVERY sidecar in the book carries a run record, which
+    // is the provenance half of the clean break completing. Reconciled per chapter rather
+    // than assumed: appendices 13, ch00 1, ch01 8, ch02 9, ch03 6, ch04 7, ch05 5, ch06 7,
+    // ch07 8, ch08 6, ch09 8, ch10 8, ch11 7, ch12 9, ch13 6, ch14 9, ch15 5, ch16 6,
+    // ch17 9, ch18 14, ch19 5, ch20 6, ch21 8 = 170, with v2+run equal to the sidecar count
+    // in every single chapter. Organic contributes 10 (ch03 alone) for 180.
+    // ⚠️ SO THIS PIN HAS LOST ITS DISCRIMINATING POWER OVER CHEMISTRY: with the book at
+    // 100%, `schemaVersion === 2` can no longer distinguish a healthy corpus from a walk
+    // that returned everything. What still separates them is the `found.length - metadata`
+    // assertion above, which is keyed to a DIFFERENT population and did NOT move.
+    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(180);
+    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(180);
   });
 });
 

@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 #
-# chemistry-autorun-chapter.sh — ONE chemistry chapter through the per-chapter loop
+# chemistry-autorun-chapter.sh — ONE chapter of ONE book through the per-chapter loop
 # (docs/plans/2026-09-05-per-chapter-loop.md), printing ONE compact summary.
+#
+# ⚠️ THE FILENAME IS A MISNOMER AND IS KEPT DELIBERATELY. It is book-agnostic since
+# v4; the name stays because the register and five handoff documents cite it by path,
+# and renaming it would break every one of those citations. Read `chemistry-` as
+# historical, not as scope.
 #
 # 🔴 IT STOPS RATHER THAN PUSHING THROUGH. [USER]'s rule, 2026-09-20: a FUNDAMENTAL
 # problem is one that would force a re-purchase later, and the run halts on it —
@@ -13,13 +18,21 @@
 # chapter's figures (~30–100), plus up to one per-module retry when the MT returns
 # English prose. Never run it on a chapter you have not priced with --dry-run.
 #
-# Usage: scripts/chemistry-autorun-chapter.sh <chapterNumber|appendices> "<glossary-only subset>"
+# Usage: scripts/chemistry-autorun-chapter.sh <book-slug> <chapterNumber|appendices> "<glossary-only subset>"
 #   The subset is that chapter's own, curated FOR SENSE — see Section 3 of
 #   docs/handoffs/2026-09-19-chemistry-pre-buy-review.md. A right word sent to the
 #   wrong chapter is how a chapter gets bought twice (`cell` in ch10 is `unit cell`).
 #
+# 🔴 <book-slug> IS REQUIRED AND HAS NO DEFAULT, ON PURPOSE. A default would let a
+# session typing the old two-argument form spend chemistry's money on an organic
+# subset — silently, because every downstream tool would agree with the default.
+# Required-and-validated means the old form dies on the chapter parse instead.
+#
 #   AUTORUN_RULED_TERMS="a,b"  key terms [USER] has already ruled; they do not halt step 2.
 #   AUTORUN_SKIP_BUY=1         resume after a halt WITHOUT re-buying the text (see below).
+#   AUTORUN_KNOWN_INJECT_FAILURES="m1|m2"
+#                              override the per-book set of modules whose inject FAILURE
+#                              is answered with --no-annotate-en instead of a halt.
 #
 # ═══════════════════════════════════════════════════════════════════════════════
 # 🔴 v3, 2026-09-20 — REWRITTEN AFTER AN ADVERSARIAL AUDIT OF v1's FIRST LIVE RUN.
@@ -39,8 +52,38 @@
 # Logs land in pipeline-output/autorun/ (gitignored).
 set -uo pipefail
 cd "$(dirname "$0")/.."
-CH="${1:?usage: $0 <chapterNumber|appendices> \"<subset>\"}"
-SUBSET="${2:?usage: $0 <chapterNumber|appendices> \"<subset>\"}"
+BOOK="${1:?usage: $0 <book-slug> <chapterNumber|appendices> \"<subset>\"}"
+CH="${2:?usage: $0 <book-slug> <chapterNumber|appendices> \"<subset>\"}"
+SUBSET="${3:?usage: $0 <book-slug> <chapterNumber|appendices> \"<subset>\"}"
+
+# 🔴 VALIDATE THE SLUG AGAINST THE TREE, NOT AGAINST A LIST HERE. An unknown slug must die
+# NOW, not at step 3 with money already spent — and a hardcoded list of books in this file
+# is exactly the enumeration CLAUDE.md's § One source of truth forbids. `book-config.json`
+# is the file the pipeline itself reads, so its presence is the real predicate.
+[ -f "books/$BOOK/book-config.json" ] \
+  || { echo "🔴 STOP: no such book '$BOOK' (books/$BOOK/book-config.json does not exist)"; exit 3; }
+
+# ⑰'s KNOWN inject-FAILURE modules are PER BOOK. Chemistry's four were found by running it;
+# every other book starts with NONE, so any FAILED module there halts — which is the
+# conservative direction and the only honest starting state.
+# 🔴 DO NOT CARRY CHEMISTRY'S IDS TO ANOTHER BOOK. They are chemistry module ids; a book
+# that shares none of them gains nothing, and a book that accidentally matched one would
+# have a real refusal silently answered with --no-annotate-en.
+# ⚠️ `__none__` is a sentinel that matches no module id — an EMPTY case pattern is a bash
+# syntax error, and an unquoted empty variable in `case` would match the empty string.
+case "$BOOK" in
+  efnafraedi-2e) KNOWN_INJECT_FAILURES='m68700|m68733|m68747|m68844' ;;
+  *)             KNOWN_INJECT_FAILURES='__none__' ;;
+esac
+KNOWN_INJECT_FAILURES="${AUTORUN_KNOWN_INJECT_FAILURES:-$KNOWN_INJECT_FAILURES}"
+
+# 🔴 `case "$M" in $VAR)` DOES NOT TREAT `|` IN THE EXPANDED VALUE AS ALTERNATION. Measured
+# 2026-09-21 with a positive control: with P='m68700|m68733' BOTH ids fall through to `*)`,
+# while the literal `m68700|m68733)` matches both. Alternation is parsed BEFORE expansion.
+# ▶ So the per-book set is tested with `grep -E`, never with a case pattern. Had this gone
+# unnoticed the gate would not have failed open — every module would have halted — but a
+# chemistry re-run would have died on its own four known modules and read as a new defect.
+is_known_inject_failure() { printf '%s' "$1" | grep -qE "^($KNOWN_INJECT_FAILURES)$"; }
 
 # 🔴 `printf 'ch%02d' appendices` WRITES "invalid number" TO STDERR AND STILL PRINTS `ch00`,
 # and a zero-padded `08` is read as OCTAL. Measured 2026-09-20. The BUY stays correct either
@@ -68,16 +111,16 @@ halt() { echo "[$CHD] 🔴 STOP: $*"; echo "[$CHD] DONE=stopped"; exit 3; }
 rm -f "$S/$CHD".*.retried
 
 say "--- 1 re-extract"
-node tools/cnxml-extract.js --book efnafraedi-2e --chapter "$CH" > "$S/$CHD.extract.log" 2>&1 \
+node tools/cnxml-extract.js --book "$BOOK" --chapter "$CH" > "$S/$CHD.extract.log" 2>&1 \
   || halt "extract exited $? (see $S/$CHD.extract.log)"
 # 02-for-mt must not change: the committed English is what a price was agreed on.
 # ⚠️ `git diff` cannot see a NEWLY CREATED file, so ask git for untracked ones too.
-FORMT_DIFF=$(git status --porcelain "books/efnafraedi-2e/02-for-mt/$CHD" | head -3)
+FORMT_DIFF=$(git status --porcelain "books/$BOOK/02-for-mt/$CHD" | head -3)
 [ -n "$FORMT_DIFF" ] && say "⚠️ 02-for-mt changed since the price was agreed:
 $FORMT_DIFF"
 
 say "--- 2 pre-buy scan"
-node tools/chapter-term-check.js --book efnafraedi-2e --chapter "$CH" --pre-buy --json \
+node tools/chapter-term-check.js --book "$BOOK" --chapter "$CH" --pre-buy --json \
   > "$S/$CHD.prebuy.json" 2>"$S/$CHD.prebuy.err" \
   || halt "chapter-term-check exited $? — the pre-buy scan did NOT run (see $S/$CHD.prebuy.err)"
 # 🔴 `require()` ON A BARE RELATIVE PATH RESOLVES AS A MODULE NAME, NOT A FILE. That was v1's
@@ -108,7 +151,7 @@ if [ "${AUTORUN_SKIP_BUY:-}" = "1" ]; then
   say "--- 3 buy text SKIPPED (AUTORUN_SKIP_BUY=1 — resuming on the text already paid for)"
 else
   say "--- 3 buy text (subset: $SUBSET)"
-  node tools/api-translate.js --book efnafraedi-2e --chapter "$CH" --force \
+  node tools/api-translate.js --book "$BOOK" --chapter "$CH" --force \
     --glossary-only "$SUBSET" > "$S/$CHD.buy.log" 2>&1
   BUY=$?
   grep -E "Translated:|Skipped:|Failed:|Locked:|API usage|Est. cost" "$S/$CHD.buy.log" | sed "s/^/[$CHD] /"
@@ -145,14 +188,14 @@ fi
 # ONE module carries the right arm, so a partial buy reads as clean while most of the
 # chapter is still the previous full-glossary MT.
 # ⚠️ `grep -a` is load-bearing — see CLAUDE.md on NUL bytes silencing a census.
-ARM_TOTAL=$(ls books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
-ARM_OK=$(grep -al '"arm": *"glossary-only"' books/efnafraedi-2e/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
+ARM_TOTAL=$(ls books/$BOOK/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
+ARM_OK=$(grep -al '"arm": *"glossary-only"' books/$BOOK/02-mt-output/"$CHD"/*-provenance.json 2>/dev/null | wc -l)
 say "arm: $ARM_OK of $ARM_TOTAL provenance files are glossary-only"
 [ "$ARM_TOTAL" -eq 0 ] && halt "no provenance files in $CHD — the buy wrote nothing"
 [ "$ARM_OK" -ne "$ARM_TOTAL" ] && halt "wrong MT arm: only $ARM_OK of $ARM_TOTAL modules are glossary-only (a partial buy)"
 
 say "--- 4 figures"
-node tools/figure-run.js --book efnafraedi-2e --chapter "$CH" > "$S/$CHD.fig.log" 2>&1
+node tools/figure-run.js --book "$BOOK" --chapter "$CH" > "$S/$CHD.fig.log" 2>&1
 FIG=$?
 # 🔴 v1 captured FIG and never read it, and its bucket regex named 6 of the 11 outcomes —
 # omitting failed-compose, failed-publish and failed-sidecar. A figure run that died after
@@ -169,7 +212,7 @@ fi
 grep -qE "VERDICT" "$S/$CHD.fig.log" || halt "figure-run printed no VERDICT — it did not finish, so its silence is not a pass"
 if grep -q "failed-mt " "$S/$CHD.fig.log"; then
   say "⚠️ failed-mt present — retrying once (sporadic, [USER] 2026-09-06)"
-  node tools/figure-run.js --book efnafraedi-2e --chapter "$CH" > "$S/$CHD.fig2.log" 2>&1 \
+  node tools/figure-run.js --book "$BOOK" --chapter "$CH" > "$S/$CHD.fig2.log" 2>&1 \
     || halt "figure-run retry exited $? (see $S/$CHD.fig2.log)"
   grep -E "MT spawned|published [0-9]+ figure|failed-mt " "$S/$CHD.fig2.log" | sed "s/^/[$CHD] retry /"
   grep -q "failed-mt " "$S/$CHD.fig2.log" && say "⚠️ still failing after one retry — logged, not fatal"
@@ -180,9 +223,9 @@ fi
 # If inject dies before `updateTranslationErrors` (cnxml-inject.js:5437), the committed file
 # still holds the LAST SUCCESSFUL run's green — for a different chapter. v1 read it anyway
 # and printed DONE=ok. So: stamp the time first and require the manifest to be NEWER.
-MANIFEST=books/efnafraedi-2e/translation-errors.json
+MANIFEST=books/$BOOK/translation-errors.json
 STAMP="$S/$CHD.inject.stamp"; : > "$STAMP"
-inject_all() { node tools/cnxml-inject.js --book efnafraedi-2e --chapter "$CH" > "$1" 2>&1; }
+inject_all() { node tools/cnxml-inject.js --book "$BOOK" --chapter "$CH" > "$1" 2>&1; }
 
 say "--- 5 inject"
 inject_all "$S/$CHD.inject.log"; INJ=$?
@@ -196,19 +239,18 @@ fi
 # --no-annotate-en is CLAUDE.md's documented remedy. Only these four; any other
 # module that FAILS is a stop.
 for M in $(grep -oE "m[0-9]+: FAILED" "$S/$CHD.inject.log" | cut -d: -f1 | sort -u); do
-  case "$M" in
-    m68700|m68733|m68747|m68844)
-      say "⚠️ $M is a known ⑰ module — re-injecting with --no-annotate-en"
-      node tools/cnxml-inject.js --book efnafraedi-2e --chapter "$CH" --module "$M" \
-        --no-annotate-en > "$S/$CHD.inject.$M.log" 2>&1
-      # ⚠️ INCOMPLETE is explicitly NOT a stop per the handoff, so accept it here and let the
-      # --allow-incomplete triage below handle it; only a FAILED/refused module halts.
-      if grep -qE "m[0-9]+: FAILED" "$S/$CHD.inject.$M.log"; then
-        halt "$M still refused after --no-annotate-en"
-      fi
-      ;;
-    *) halt "inject REFUSED $M (not one of ⑰'s known modules)" ;;
-  esac
+  if is_known_inject_failure "$M"; then
+    say "⚠️ $M is a known ⑰ module for $BOOK — re-injecting with --no-annotate-en"
+    node tools/cnxml-inject.js --book "$BOOK" --chapter "$CH" --module "$M" \
+      --no-annotate-en > "$S/$CHD.inject.$M.log" 2>&1
+    # ⚠️ INCOMPLETE is explicitly NOT a stop per the handoff, so accept it here and let the
+    # --allow-incomplete triage below handle it; only a FAILED/refused module halts.
+    if grep -qE "m[0-9]+: FAILED" "$S/$CHD.inject.$M.log"; then
+      halt "$M still refused after --no-annotate-en"
+    fi
+  else
+    halt "inject REFUSED $M (not in $BOOK's known ⑰ set: $KNOWN_INJECT_FAILURES)"
+  fi
 done
 
 # A SKIPPED module means untranslated-EN residue. Triage it by VALUE: residue that
@@ -218,19 +260,19 @@ RETRIED_ANY=0
 for M in $(grep -oE "m[0-9]+: SKIPPED" "$S/$CHD.inject.log" | cut -d: -f1 | sort -u); do
   PROSE=$(node -e '
     const fs=require("fs");const {parseSegmentsMap}=require("./tools/lib/seg-markers.cjs");
-    const [ch,m]=process.argv.slice(1);
-    const en=parseSegmentsMap(fs.readFileSync(`books/efnafraedi-2e/02-for-mt/${ch}/${m}-segments.en.md`,"utf8"));
-    const is=parseSegmentsMap(fs.readFileSync(`books/efnafraedi-2e/02-mt-output/${ch}/${m}-segments.is.md`,"utf8"));
+    const [bk,ch,m]=process.argv.slice(1);
+    const en=parseSegmentsMap(fs.readFileSync(`books/${bk}/02-for-mt/${ch}/${m}-segments.en.md`,"utf8"));
+    const is=parseSegmentsMap(fs.readFileSync(`books/${bk}/02-mt-output/${ch}/${m}-segments.is.md`,"utf8"));
     let n=0;
     for(const [k,v] of en){ if(is.get(k)?.trim()!==v.trim()) continue;
       if(v.length>80 && (v.match(/[A-Za-z]{3,}/g)||[]).length>=10 &&
          /\b(the|and|that|with|from|which|this|are|is)\b/i.test(v)) n++; }
-    console.log(n);' "$CHD" "$M") \
+    console.log(n);' "$BOOK" "$CHD" "$M") \
     || halt "the English-prose triage reader failed for $M — its silence is not 'no prose'"
   if [ "${PROSE:-0}" -gt 0 ] && [ ! -f "$S/$CHD.$M.retried" ]; then
     say "⚠️ $M has $PROSE English PROSE segment(s) — one paid retry ([USER] 2026-09-06)"
     touch "$S/$CHD.$M.retried"
-    node tools/api-translate.js --book efnafraedi-2e --chapter "$CH" --module "$M" --force \
+    node tools/api-translate.js --book "$BOOK" --chapter "$CH" --module "$M" --force \
       --glossary-only "$SUBSET" > "$S/$CHD.rebuy.$M.log" 2>&1 \
       || say "⚠️ $M retry buy exited $? — see $S/$CHD.rebuy.$M.log"
     grep -E "Est. cost|HELD BACK|WARNING:" "$S/$CHD.rebuy.$M.log" | sed "s/^ *//" | sed "s/^/[$CHD] $M retry /"
@@ -248,13 +290,14 @@ if [ "$RETRIED_ANY" = 1 ]; then
     halt "post-retry inject exited $INJ2 with no per-module verdict — it died wholesale"
   fi
   for M in $(grep -oE "m[0-9]+: FAILED" "$S/$CHD.inject2.log" | cut -d: -f1 | sort -u); do
-    case "$M" in
-      m68700|m68733|m68747|m68844) say "⚠️ $M is ⑰'s known set — re-injecting with --no-annotate-en"
-        node tools/cnxml-inject.js --book efnafraedi-2e --chapter "$CH" --module "$M" \
-          --no-annotate-en > "$S/$CHD.inject.$M.log" 2>&1
-        grep -qE "m[0-9]+: FAILED" "$S/$CHD.inject.$M.log" && halt "$M still refused after --no-annotate-en" ;;
-      *) halt "inject REFUSED $M after the retry (not one of ⑰'s known modules)" ;;
-    esac
+    if is_known_inject_failure "$M"; then
+      say "⚠️ $M is in $BOOK's known ⑰ set — re-injecting with --no-annotate-en"
+      node tools/cnxml-inject.js --book "$BOOK" --chapter "$CH" --module "$M" \
+        --no-annotate-en > "$S/$CHD.inject.$M.log" 2>&1
+      grep -qE "m[0-9]+: FAILED" "$S/$CHD.inject.$M.log" && halt "$M still refused after --no-annotate-en"
+    else
+      halt "inject REFUSED $M after the retry (not in $BOOK's known ⑰ set: $KNOWN_INJECT_FAILURES)"
+    fi
   done
   cp "$S/$CHD.inject2.log" "$S/$CHD.inject.log"
 fi
@@ -263,17 +306,17 @@ fi
 # (formula answers, contributor names, a segment the MT reproducibly returns).
 for M in $(grep -oE "m[0-9]+: SKIPPED" "$S/$CHD.inject.log" | cut -d: -f1 | sort -u); do
   say "⚠️ $M still incomplete after triage — writing with --allow-incomplete, residue logged"
-  node tools/cnxml-inject.js --book efnafraedi-2e --chapter "$CH" --module "$M" \
+  node tools/cnxml-inject.js --book "$BOOK" --chapter "$CH" --module "$M" \
     --allow-incomplete > "$S/$CHD.inject.$M.allow.log" 2>&1 \
     || halt "$M refused even with --allow-incomplete (see $S/$CHD.inject.$M.allow.log)"
   # ⚠️ v1 promised "residue logged" and printed nothing when the module was absent from the
   # report — an absence that reads as clean for a module just written with missing segments.
   node -e '
     const fs=require("fs");
-    const r=JSON.parse(fs.readFileSync("books/efnafraedi-2e/residue-report.mt-preview.json","utf8"));
-    const x=(r.modules||{})[process.argv[1]];
+    const r=JSON.parse(fs.readFileSync(`books/${process.argv[1]}/residue-report.mt-preview.json`,"utf8"));
+    const x=(r.modules||{})[process.argv[2]];
     if(x) console.log(`residue ${(x.exact||[]).length}: ${(x.exact||[]).slice(0,4).join(", ")}`);
-    else console.log("⚠️ NOT IN THE RESIDUE REPORT — residue unknown, not zero");' "$M" \
+    else console.log("⚠️ NOT IN THE RESIDUE REPORT — residue unknown, not zero");' "$BOOK" "$M" \
     | sed "s/^/[$CHD] $M /"
 done
 
@@ -281,22 +324,22 @@ done
 [ "$MANIFEST" -nt "$STAMP" ] || halt "translation-errors.json was not rewritten by this inject — its green describes an EARLIER run"
 node -e '
 const fs=require("fs");
-const j=JSON.parse(fs.readFileSync("books/efnafraedi-2e/translation-errors.json","utf8"));
+const j=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));
 const s=j.tracks["mt-preview"].summary;
 console.log(`green=${s.green} unexplained=${s.unexplainedDiscrepancies} perfect=${s.perfect}`);
 if(!s.green||s.unexplainedDiscrepancies) process.exitCode=9;
-' | sed "s/^/[$CHD] manifest /"
+' "$MANIFEST" | sed "s/^/[$CHD] manifest /"
 [ "${PIPESTATUS[0]}" -eq 0 ] || halt "fidelity manifest is not green"
 
 say "--- 6 render + index"
-node tools/cnxml-render.js --book efnafraedi-2e --chapter "$CH" > "$S/$CHD.render.log" 2>&1 \
+node tools/cnxml-render.js --book "$BOOK" --chapter "$CH" > "$S/$CHD.render.log" 2>&1 \
   || halt "render exited $? (see $S/$CHD.render.log)"
 grep -E "Pruned superseded page" "$S/$CHD.render.log" | sed "s/^/[$CHD] /"
-node tools/generate-index.js --book efnafraedi-2e --track mt-preview > "$S/$CHD.index.log" 2>&1 \
+node tools/generate-index.js --book "$BOOK" --track mt-preview > "$S/$CHD.index.log" 2>&1 \
   || halt "generate-index exited $?"
 
 say "--- 7 free checks"
-PAGES="books/efnafraedi-2e/05-publication/mt-preview/chapters/$PAGESUF"
+PAGES="books/$BOOK/05-publication/mt-preview/chapters/$PAGESUF"
 # ⚠️ --include='*.html' is load-bearing: a JPEG can contain the bytes "[[H:" by
 # chance, and ch01 produced exactly two such false positives.
 # 🔴 AND THE CONTROL MUST ACTUALLY RUN. v1 printed "(control: the MT file has them)" without
@@ -314,7 +357,7 @@ PAGECOUNT=$(ls "$PAGES"/*.html 2>/dev/null | wc -l)
 # CANNOT FAIL IS NOT A CONTROL, and a hardcoded "control fired" is a lie the log tells you.
 # Now: -c only, summed across every file (`-c` prints "file:count" for multiple files and a
 # bare count for one, so $NF is right in both shapes), and the count is REPORTED, not asserted.
-CONTROL=$(grep -caE '\[\[[A-Za-z][A-Za-z0-9_]*:' books/efnafraedi-2e/02-mt-output/"$CHD"/*-segments.is.md 2>/dev/null | awk -F: '{s+=$NF} END{print s+0}')
+CONTROL=$(grep -caE '\[\[[A-Za-z][A-Za-z0-9_]*:' books/$BOOK/02-mt-output/"$CHD"/*-segments.is.md 2>/dev/null | awk -F: '{s+=$NF} END{print s+0}')
 case "$CONTROL" in ''|*[!0-9]*) halt "the raw-marker POSITIVE CONTROL did not produce a number (got: '$CONTROL') - the control is broken, so a clean result below would be meaningless";; esac
 [ "$CONTROL" -eq 0 ] && halt "the raw-marker detector's POSITIVE CONTROL found no markers in the MT source — the detector is not proven to work here"
 RAW=$(grep -rlaE '\[\[[A-Za-z][A-Za-z0-9_]*:' --include='*.html' "$PAGES" 2>/dev/null | wc -l)
@@ -325,7 +368,7 @@ say "raw [[ markers in $PAGECOUNT pages: $RAW (positive control: $CONTROL marker
 # source-roundtrip-check caps its per-module listing, so counting MISSING/ADDED lines
 # UNDER-REPORTS real loss — and prints the cleanest possible line when it printed nothing
 # at all. It also emits ATTR/TEXT/BUILD FAILED rows that v1 never looked at.
-node tools/source-roundtrip-check.js efnafraedi-2e "$CHD" > "$S/$CHD.roundtrip.log" 2>&1
+node tools/source-roundtrip-check.js "$BOOK" "$CHD" > "$S/$CHD.roundtrip.log" 2>&1
 RT=$?
 grep -qE "module\(s\) differ from 01-source|modules match" "$S/$CHD.roundtrip.log" \
   || halt "source-roundtrip-check printed no verdict line (exit $RT) — it did not finish"
