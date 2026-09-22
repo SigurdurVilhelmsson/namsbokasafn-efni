@@ -83,7 +83,7 @@ Eðlismassi (g/ml)
 0,9584
 
 <!-- SEG:m68863:alt:fs-idm271037008-alt -->
-Línurit ber titilinn „Eðlismassi vatns sem fall af hitastigi“. X-ásinn ber titilinn „Hitastig, Celsíusgráður“ og y-ásinn ber titilinn „Eðlismassi, kílógrömm á rúmmetra“. Lína tengir saman punkta á hnitunum 0 og 999,8395, 4 og 999,9720, 10 og 999,7026, 15 og 999,1026, 20 og 998,2071, 22 og 997,7735, 25 og 997,0479, 30 og 995,6502, 40 og 992,2, 60 og 983,2, 80 og 971,8 og 100 og 958,4.
+Línurit ber heitið „Eðlismassi vatns sem fall af hitastigi“. X-ásinn ber heitið „Hitastig, Celsíusgráður“ og y-ásinn ber heitið „Eðlismassi, kílógrömm á rúmmetra“. Lína tengir saman punkta á hnitunum 0 og 999,8395, 4 og 999,9720, 10 og 999,7026, 15 og 999,1026, 20 og 998,2071, 22 og 997,7735, 25 og 997,0479, 30 og 995,6502, 40 og 992,2, 60 og 983,2, 80 og 971,8 og 100 og 958,4.
 
 <!-- SEG:m68863:entry:auto-30 -->
 Gufunarþrýstingur vatns við mismunandi hitastig (°C)
@@ -446,22 +446,22 @@ pK[[sub:w]] [[fn:pK[[sub:w]] = –log[[sub:10]](K[[sub:w]])|fs-idm106976512]]
 12,25
 
 <!-- SEG:m68863:alt:fs-idm370140880-alt -->
-Línurit með titlinum „pK með lágvísi W vatns sem fall af hitastigi“. X-ásinn heitir „Hitastig, Celsíusgráður“ og y-ásinn heitir „pK með lágvísi W“. Lína tengir saman punkta á hnitunum 0 og 14,95, 5 og 14,74, 10 og 14,54, 15 og 14,33, 20 og 14,17, 25 og 14, 30 og 13,84, 35 og 13,69, 40 og 13,55, 45 og 13,41, 50 og 13,28, 55 og 13,15, 60 og 13,03, 75 og 12,7 og 100 og 12,25.
+Línurit með titlinum „pK[[sub:w]] vatns sem fall af hitastigi“. X-ásinn heitir „Hitastig, Celsíusgráður“ og y-ásinn heitir „pK[[sub:w]]“. Lína tengir saman punkta á hnitunum 0 og 14,95, 5 og 14,74, 10 og 14,54, 15 og 14,33, 20 og 14,17, 25 og 14, 30 og 13,84, 35 og 13,69, 40 og 13,55, 45 og 13,41, 50 og 13,28, 55 og 13,15, 60 og 13,03, 75 og 12,7 og 100 og 12,25.
 
 <!-- SEG:m68863:entry:auto-151 -->
-Eðlisvarmarými vatns
+Eðlisvarmarýmd vatns
 
 <!-- SEG:m68863:entry:auto-152 -->
-C°(H[[sub:2]]O([[i:l]])) = 4,184 J⋅g[[sup:-1]]⋅°C[[sup:-1]]
+C°(H[[sub:2]]O([[i:l]])) = 4,184 J⋅g[[sup:–1]]⋅°C[[sup:–1]]
 
 <!-- SEG:m68863:entry:auto-153 -->
-C°(H[[sub:2]]O([[i:s]])) = 2,093 J⋅g[[sup:−1]]⋅°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:s]])) = 2,093 J⋅g[[sup:–1]]⋅°C[[sup:–1]]
 
 <!-- SEG:m68863:entry:auto-154 -->
-C°(H[[sub:2]]O([[i:g]])) = 1,864 J⋅g[[sup:−1]]⋅°C[[sup:−1]]
+C°(H[[sub:2]]O([[i:g]])) = 1,864 J⋅g[[sup:–1]]⋅°C[[sup:–1]]
 
 <!-- SEG:m68863:entry:auto-155 -->
-Staðlað bræðslu- og suðumark vatns og entalpíur hamskiptanna
+Staðalbræðslu- og suðuhitastig vatns og entalpíur hamskiptanna
 
 <!-- SEG:m68863:entry:auto-156 -->
 Hitastig (K)
@@ -497,7 +497,7 @@ K[[sub:f]] = 1,86°C∙kg∙mol[[sup:−1]] (frystimarkslækkunarfasti)
 K[[sub:b]] = 0,51°C∙kg∙mol[[sup:−1]] (suðumarkshækkunarfasti)
 
 <!-- SEG:m68863:caption:CNX_Chem_00_EE_LiqWatAbso-caption -->
-Línuritið sýnir hversu mikið vatn gleypir í sig ljós á móti bylgjulengd. Ljósgleypni er gefin upp í metrum í mínus fyrsta veldi og samsvarar andhverfu vegalengdarinnar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/[[i:e]] (~37%).
+Línuritið sýnir umfang ljósgleypni á móti bylgjulengd fyrir vatn. Gleypni er gefin upp í umhverfum metrum og samsvarar umhverfu þeirrar vegalengdar sem ljós getur ferðast í gegnum vatn áður en styrkur þess minnkar um 1/[[i:e]] (~37%).
 
-<!-- SEG:m68863:alt:fs-idm36499968-alt -->
-Línurit ber heitið „Ljósgleypniferill vatns á öllu litrófinu“. X-ásinn ber heitið „Bylgjulengd“ og y-ásinn ber heitið „Ljósgleypni (1 á metra)“. Jafnt bil er á milli merkja á x-ásnum sem tákna 10 nanómetra, 100 nanómetra, 1 míkrómetra, 10 míkrómetra, 100 míkrómetra, 1 millimetra og 10 millimetra. Jafnt bil er á milli merkja á y-ásnum sem tákna 10 í hávísi mínus tveir, 10 í hávísi mínus einn, 10 í hávísi núll, 10 í hávísi einn, 10 í hávísi tveir, 10 í hávísi þrír, 10 í hávísi fjórir, 10 í hávísi fimm, 10 í hávísi sex, 10 í hávísi sjö og 10 í hávísi átta. Fyrir ofan línuritið sýna láréttar línur bylgjulengdarsvið fyrir UV, VIS, nær-IR, mið-IR, fjær-IR og EHF. Línuritið inniheldur eina línu sem byrjar við 10 nanómetra og aðeins meira en 10 í hávísi sex. Línan færist frá vinstri til hægri og hækkar smám saman þar til hún nær punkti nálægt 100 nanómetrum og 10 í hávísi átta. Frá þessum punkti lækkar línan hratt niður í punkt sem er aðeins meira en hálfa leið á milli 100 nanómetra og 1 míkrómetra og aðeins meira en 10 í hávísi tveir. Þessi punktur markar lok sviðsins sem merkt er „UV“ og upphaf sviðsins sem merkt er „VIS“. Sviðið sem merkt er „VIS“ er skyggt með litrófi sem inniheldur alla liti regnbogans. Hér lækkar línan stuttlega eftir sömu braut og áður og hækkar síðan hratt upp í punkt nálægt 1 míkrómetra og 10 í hávísi núll. Þessi punktur markar lok sviðsins sem merkt er „VIS“ og upphaf sviðsins sem merkt er „nær-IR“. Línan heldur áfram að hækka hratt, með stuttum, snöggum lækkunum inn á milli, þar til hún nær punkti sem er aðeins meira en hálfa leið á milli 1 míkrómetra og 10 míkrómetra og aðeins meira en 10 í hávísi sex. Þessi punktur markar lok sviðsins sem merkt er „nær-IR“ og upphaf sviðsins sem merkt er „mið-IR“. Hér færist línan hratt og óreglulega upp og niður þar til hún nær punkti sem er aðeins meira en hálfa leið á milli 10 míkrómetra og 100 míkrómetra og aðeins meira en 10 í hávísi fimm. Þessi punktur markar lok sviðsins sem merkt er „mið-IR“ og upphaf sviðsins sem merkt er „fjær-IR“. Línan lækkar mjög smám saman niður í punkt sem er aðeins meira en 1 millimetri og aðeins meira en 10 í hávísi fjórir. Þessi punktur markar lok sviðsins sem merkt er „fjær-IR“ og upphaf sviðsins sem merkt er „EHF“. Línan heldur áfram að lækka smám saman niður í 10 millimetra og aðeins meira en 10 í hávísi þrír. Þessi punktur markar lok sviðsins sem merkt er „EHF“.
+<!-- SEG:m68863:alt:fs-idm364999968-alt -->
+Línurit ber heitið „Gleypniferill vatns yfir allt litrófið“. X-ásinn ber heitið „Bylgjulengd“ og y-ásinn ber heitið „Gleypni (1 á metra)“. Jafndreifð merki á x-ásnum tákna 10 nanómetra, 100 nanómetra, 1 míkrómetra, 10 míkrómetra, 100 míkrómetra, 1 millimetra og 10 millimetra. Jafndreifð merki á y-ásnum tákna 10 í hávísi mínus tveir, 10 í hávísi mínus einn, 10 í hávísi núll, 10 í hávísi einn, 10 í hávísi tveir, 10 í hávísi þrír, 10 í hávísi fjórir, 10 í hávísi fimm, 10 í hávísi sex, 10 í hávísi sjö og 10 í hávísi átta. Fyrir ofan línuritið sýna láréttar línur bylgjulengdarsvið fyrir UV, VIS, nær-IR, mið-IR, fjær-IR og EHF. Línuritið inniheldur eina línu sem byrjar við 10 nanómetra og aðeins meira en 10 í hávísi sex. Línan færist frá vinstri til hægri og hækkar smám saman þar til hún nær punkti nálægt 100 nanómetrum og 10 í hávísi átta. Frá þessum punkti lækkar línan hratt niður í punkt sem er aðeins meira en hálfa leið á milli 100 nanómetra og 1 míkrómetra, og aðeins meira en 10 í hávísi tveir. Þessi punktur markar lok sviðsins sem merkt er „UV“ og upphaf sviðsins sem merkt er „VIS“. Sviðið sem merkt er „VIS“ er skyggt með litrófi sem inniheldur alla liti regnbogans. Hér lækkar línan stuttlega eftir sömu braut og áður og hækkar síðan hratt upp í punkt nálægt 1 míkrómetra og 10 í hávísi núll. Þessi punktur markar lok sviðsins sem merkt er „VIS“ og upphaf sviðsins sem merkt er „nær-IR“. Línan heldur áfram að hækka hratt, með stuttum, snöggum lækkunum inn á milli, þar til hún nær punkti sem er aðeins meira en hálfa leið á milli 1 míkrómetra og 10 míkrómetra, og aðeins meira en 10 í hávísi sex. Þessi punktur markar lok sviðsins sem merkt er „nær-IR“ og upphaf sviðsins sem merkt er „mið-IR“. Hér færist línan hratt og óreglulega upp og niður þar til hún nær punkti sem er aðeins meira en hálfa leið á milli 10 míkrómetra og 100 míkrómetra, og aðeins meira en 10 í hávísi fimm. Þessi punktur markar lok sviðsins sem merkt er „mið-IR“ og upphaf sviðsins sem merkt er „fjær-IR“. Línan lækkar mjög smám saman niður í punkt sem er aðeins meira en 1 millimetri og aðeins meira en 10 í hávísi fjórir. Þessi punktur markar lok sviðsins sem merkt er „fjær-IR“ og upphaf sviðsins sem merkt er „EHF“. Línan heldur áfram að lækka smám saman niður í 10 millimetra og aðeins meira en 10 í hávísi þrír. Þessi punktur markar lok sviðsins sem merkt er „EHF“.
