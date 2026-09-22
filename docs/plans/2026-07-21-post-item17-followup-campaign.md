@@ -19,6 +19,8 @@
 
 ⚖️ **TWO [USER] QUESTIONS, NEITHER BLOCKS #4:** (1) **19 alts read `"Alt Text Placeholder"`** (OpenStax's own). They are emitted today, so a buy yields an Icelandic placeholder; skipping them keeps an English one. Neither can be edited into a real description (L148). (2) **The buy shape** above — a whole-bundle re-buy per chapter, or build segment-granular buying first.
 
+🔎 **FIRST-BUY CHECK (hypothesis, not observed): grep the 22 alts carrying literal IUPAC brackets (`bicyclo[2.2.2]octane`) in the first bought exercise bundle.** Runs escape `[` as `[[lb:]]`; alts are sent raw. If the model copies the runs' escape into an alt (§C118 ⑲'s pattern-copying shape), `stripAltMarkers` — executed — turns `bísýkló[[lb:]]2.2.2[[rb:]]oktan` into **`bísýkló2.2.2oktan`**, and no count sees it. If it happens, the fix is one case in the shared unwrap (`lb`→`[`, `rb`→`]`), safe because module alts never carry those types.
+
 📌 **LOGGED, not fixed:** **§C181** — 31 committed exercise sidecars (ch12 ×19, ch14 ×1, ch23 ×11) predate their own chapter's exercise MT and were never re-assembled. The published unit (ch03) is not among them.
 
 ## ⏩ RESUME — state as of **2026-09-22, night — ✅ ORGANIC IS RE-EXTRACTED TO TODAY'S EXTRACTOR, WHOLE BOOK (`cc28de312`). ✅ §C92 CLOSED: no source refresh, errata carried by hand. ⏹ The sync is still HELD** (supersedes every block below)
