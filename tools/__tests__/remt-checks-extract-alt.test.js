@@ -135,17 +135,44 @@ describe("E5's `examined` unit — decided here, not inherited (§C82 L17)", () 
     }
   });
 
-  it("🔴 the plan's unit would have halted EXACTLY the modules E5 passes — not a random 8.1%", async () => {
+  it("🔴 the plan's unit would halt modules E5 passes — the counterfactual, not a coincidence", async () => {
     // The measurement that moved the unit, re-derived here so it cannot rot silently.
     // `expected` is the plan's `examined`; a blocking check that examines 0 halts.
+    //
+    // 🔴 THE EQUALITY THIS REPLACES WAS TRUE ONLY FOR A MOMENT, AND THE RE-EXTRACT ENDED
+    // IT. The old form asserted `zeroExpected.sort()).toEqual(t.passing.sort())` under the
+    // title "would have halted EXACTLY the modules E5 passes". That held while E5 passed
+    // 12 modules and the plan's unit zeroed the same 12. The re-extract took E5 to
+    // **149 PASS / 0 FAIL** (see the L20 pin below, which records that flip as the loop's
+    // own success criterion) while `zeroExpected` stayed at 12 — so the two sets stopped
+    // being equal for a reason that is the WORK SUCCEEDING, not a regression.
+    // ▶ **AN EQUALITY BETWEEN TWO SETS THAT MERELY COINCIDE IS A COINCIDENCE PINNED AS A
+    // LAW.** The live claim was never "these sets are identical"; it was "the plan's unit
+    // would halt on modules E5 correctly passes", which is a SUBSET relation and is still
+    // true — of 12 modules rather than all 149.
+    // ⚠️ RETIRING IT WITHOUT A REPLACEMENT WOULD DESTROY THIS FILE'S ONLY IN-REPO EVIDENCE
+    // FOR *WHY* E5 KEYS `examined` TO SEGMENTS RATHER THAN TO `expected` (§C82 L17/L22),
+    // and would destroy it INVISIBLY, because a deleted assertion passes. Hence the
+    // counterfactual below rather than a deletion.
     const zeroExpected = [];
     for (const { ch, m } of modulesWithSegments(CHEM)) {
       const { content } = parseModuleDoc(srcText(CHEM, ch, m));
       if (altReachability(content).reachable === 0) zeroExpected.push(`${ch}/${m}`);
     }
     const t = await tallyOver(CHEM);
-    expect(zeroExpected.length).toBeGreaterThan(0); // control: the population is not empty
-    expect(zeroExpected.sort()).toEqual(t.passing.sort());
+
+    // Two controls, because the claim below is a subset relation and a subset assertion
+    // over an empty set — or over a set that happens to be everything — proves nothing.
+    expect(zeroExpected.length).toBeGreaterThan(0); // the plan's unit really does zero some
+    expect(zeroExpected.length).toBeLessThan(t.passing.length); // …and not all of them
+    expect(t.passing.length).toBeGreaterThan(0); // E5 really does pass some
+
+    // THE LIVE CLAIM: every module the plan's unit would have halted is one E5 passes.
+    // That is the whole argument for the unit change — the plan's `examined` would have
+    // turned a blocking check into a halt on modules that are, in fact, fine.
+    const passing = new Set(t.passing);
+    const wronglyHalted = zeroExpected.filter((k) => passing.has(k));
+    expect(wronglyHalted.sort()).toEqual(zeroExpected.sort());
   });
 
   it('📌 L20 PIN, FLIPPED AT THE RE-EXTRACT — chemistry is 149 PASS / 0 FAIL, all 1,149 alt positions reached', async () => {
