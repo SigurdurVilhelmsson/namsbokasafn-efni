@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_11_Exercise4c_img",
+ "renderHash": "1817d998e4a70495",
+ "composedHash": "1817d998e4a70495",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Trigonal bipyramidal": "Þríhyrndur tvípíramídi"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

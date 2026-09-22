@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_11_Exercise4b_img",
+ "renderHash": "087fa6a9e9802f74",
+ "composedHash": "087fa6a9e9802f74",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Linear": "Línuleg"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

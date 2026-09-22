@@ -710,3 +710,33 @@ comma. Each is named in `pipeline-output/autorun/ch17.fig.log`.
 **3 page renames → 3 redirect rows**, two of them caused by the terminology rulings themselves
 (`rafefnafrumur` → `galvaniker`, and `raftrods` → `rafskauts`). ⏹ Readers see none of it until
 [USER]'s sync.
+
+## ch18 — 14 units · ~2,576 ISK text + ~39 ISK figures · `DONE=ok`, PREPARED
+
+**34-term subset** = the audited 27 + seven, derived by the two checks ch17 established. `arm: 14 of
+14 glossary-only`. Figures 92 enumerated / 20 translated / 20 unresolved. Inject 13 COMPLETE, 132
+perfect, `green=true unexplained=0`. 17 pages, **0 raw `[[` against a 552-marker positive control**.
+
+🔴 **THE ch17 CROSS-CHECK PAID OFF AGAIN, IMMEDIATELY.** ch18 has three chapter-scoped house-style
+rulings; the audited subset carried `representative metal` but omitted **`hydroxide` (55 segments)**
+and **`carbonate` (40 segments)**. ▶ **Measured before adding, and the measurement split them:**
+
+| candidate | EN | committed MT | call |
+|---|---|---|---|
+| `hydroxide` | 83 | `hýdroxíð` **83 (100%)** | **OMITTED — the audit was right** |
+| `carbonate` | 75 | `karbónat` 47 (63%) | added |
+| `lone pair` | 93 | `rafeindapar` 11 (12%) | added |
+| `amorphous` | 9 | `formlaus` 9, `myndlaus` **0** | added |
+| `trigonal planar` | 4 | `þríhyrningslaga` 5 | added — else ch18 keeps the old form while ch19/ch20 get the new |
+
+⚠️ **`hydroxide` is the control that keeps this honest: a dropped ruling is not automatically a
+defect.** Its own `why` says the row *"pins a choice the model makes rather than forcing a new
+form"*, and at 83/83 the model already makes it. §C73's asymmetry says omitting a term the model
+handles costs almost nothing, so the audit's exclusion stands.
+
+✅ **VERIFIED BY VALUE.** `amorphous` flipped outright — `myndlaus` **0 → 9**, `formlaus` **9 → 0**.
+`rafeindapar` 11 → 35 · `rafneikvæð` 30 → 33 (`rafeindadræg` 2 → 1) · `kolmónoxíð` 5, `koleinoxíð`
+0. `þríhyrnt flatt` reached 1 of 2 remaining sites — partial, not a failure.
+
+**The one flagged ATTR row is benign whitespace:** the source `alt` on m68836 `#fs-idp215036560`
+ends with a **trailing space** that the round-trip trims. Same class as ch16's leading-space trim.

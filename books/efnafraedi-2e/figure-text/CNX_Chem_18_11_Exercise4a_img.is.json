@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_11_Exercise4a_img",
+ "renderHash": "7c38f2da550ecfe4",
+ "composedHash": "7c38f2da550ecfe4",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Square pyramidal": "Ferkantaður pýramídi"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

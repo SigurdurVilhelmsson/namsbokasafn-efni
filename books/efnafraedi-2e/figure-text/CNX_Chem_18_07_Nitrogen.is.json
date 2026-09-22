@@ -1,0 +1,69 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_07_Nitrogen",
+ "renderHash": "3e32f616d3f1f956",
+ "composedHash": "3e32f616d3f1f956",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Decomposers|(aerobic and anaerobic|bacteria and fungi)": "Sundrendur (loftháðar og loftfirrtar bakteríur og sveppir)",
+  "Nitrogen-fixing|bacteria in|root nodules": "Niturbindandi bakteríur í rótarhnýðum",
+  "Nitrogen-fixing|soil bacteria": "Niturbindandi jarðvegsbakteríur",
+  "Nitrifying bacteria": "Nítrítgerlar",
+  "Nitrifying|bacteria": "Nítratgerlar",
+  "Denitrifying|bacteria": "Afnítrunarbakteríur",
+  "Assimilation": "Upptaka",
+  "Atmospheric|nitrogen (N2)": "Andrúmslofts köfnunarefni (N2)",
+  "ammonium (NH4|+|)": "ammóníum (NH4 + )",
+  "nitrites (NO2|–": "nítrít (NO2 –",
+  "nitrates (NO3|–": "nítrat (NO3 –"
+ },
+ "mtAlternatives": {
+  "Decomposers|(aerobic and anaerobic|bacteria and fungi)": {
+   "kept": "joined",
+   "other": "Rotverur (loftháðar og loftfirrtar bakteríur og sveppir)",
+   "reason": "disagree",
+   "mt": "Sundrendur (loftháðar og loftfirrtar bakteríur og sveppir)"
+  },
+  "Nitrogen-fixing|soil bacteria": {
+   "kept": "joined",
+   "other": "Köfnunarefnisbindandi jarðvegsbakteríur",
+   "reason": "disagree",
+   "mt": "Niturbindandi jarðvegsbakteríur"
+  },
+  "Nitrifying bacteria": {
+   "kept": "joined",
+   "other": "Nítratgerlar",
+   "reason": "disagree",
+   "mt": "Nítrítgerlar"
+  },
+  "Denitrifying|bacteria": {
+   "kept": "joined",
+   "other": "Afnítrandi gerlar",
+   "reason": "disagree",
+   "mt": "Afnítrunarbakteríur"
+  },
+  "Assimilation": {
+   "kept": "joined",
+   "other": "Aðlögun",
+   "reason": "disagree",
+   "mt": "Upptaka"
+  },
+  "ammonium (NH4|+|)": {
+   "kept": "joined",
+   "other": "ammoníum (NH4 + )",
+   "reason": "disagree",
+   "mt": "ammóníum (NH4 + )"
+  },
+  "nitrates (NO3|–": {
+   "kept": "joined",
+   "other": "nítröt (NO3 –",
+   "reason": "disagree",
+   "mt": "nítrat (NO3 –"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

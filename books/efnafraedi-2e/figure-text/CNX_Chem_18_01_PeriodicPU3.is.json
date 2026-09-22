@@ -1,0 +1,523 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_01_PeriodicPU3",
+ "renderHash": "68c309db90214e13",
+ "composedHash": "68c309db90214e13",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Representative metals": "Aðalmálmar",
+  "Transition and inner transition metals": "Hliðarmálmar og innri hliðarmálmar",
+  "Radioactive elements": "Geislavirk frumefni",
+  "Solid": "Fast efni",
+  "Liquid": "Vökvi",
+  "Gas": "Gas",
+  "Metalloid": "Hálfmálmur",
+  "Nonmetal": "Málmleysingi",
+  "Color Code": "Litakóði",
+  "hydrogen": "vetni",
+  "sodium": "natríum",
+  "lithium": "litíum",
+  "aluminum": "ál",
+  "boron": "bór",
+  "potassium": "kalíum",
+  "rubidium": "rúbidíum",
+  "cesium": "sesíum",
+  "francium": "fransíum",
+  "helium": "helíum",
+  "argon": "argon",
+  "neon": "neon",
+  "krypton": "krypton",
+  "xenon": "xenon",
+  "radon": "radon",
+  "oganesson": "oganesson",
+  "magnesium": "magnesíum",
+  "beryllium": "beryllíum",
+  "calcium": "kalsíum",
+  "strontium": "strontíum",
+  "scandium": "skandíum",
+  "yttrium": "ýttríum",
+  "titanium": "títan",
+  "zirconium": "sirkon",
+  "barium": "baríum",
+  "radium": "radíum",
+  "hafnium": "hafníum",
+  "rutherfordium": "rutherfordíum",
+  "vanadium": "vanadíum",
+  "niobium": "níóbíum",
+  "tantalum": "tantal",
+  "dubnium": "dubníum",
+  "chromium": "króm",
+  "molybdenum": "mólýbden",
+  "tungsten": "volfram",
+  "seaborgium": "sæborgíum",
+  "manganese": "mangan",
+  "technetium": "teknetíum",
+  "rhenium": "reníum",
+  "bohrium": "bóríum",
+  "iron": "járn",
+  "ruthenium": "rúþen",
+  "osmium": "osmíum",
+  "hassium": "hassíum",
+  "cobalt": "kóbalt",
+  "rhodium": "ródíum",
+  "iridium": "iridíum",
+  "meitnerium": "meitneríum",
+  "nickel": "nikkel",
+  "palladium": "palladíum",
+  "platinum": "platína",
+  "darmstadtium": "darmstadtíum",
+  "roentgenium": "röntgeníum",
+  "copper": "kopar",
+  "silver": "silfur",
+  "gold": "gull",
+  "copernicium": "kópernikíum",
+  "zinc": "sink",
+  "cadmium": "kadmíum",
+  "mercury": "kvikasilfur",
+  "nihonium": "níhoníum",
+  "gallium": "gallíum",
+  "indium": "indíum",
+  "thallium": "þallíum",
+  "silicon": "kísill",
+  "carbon": "kolefni",
+  "flerovium": "fleróvíum",
+  "germanium": "germaníum",
+  "tin": "tin",
+  "lead": "blý",
+  "phosphorus": "fosfór",
+  "nitrogen": "köfnunarefni",
+  "moscovium": "moskóvíum",
+  "arsenic": "arsen",
+  "antimony": "antimon",
+  "bismuth": "bismút",
+  "sulfur": "brennisteinn",
+  "oxygen": "súrefni",
+  "livermorium": "livermoríum",
+  "tennessine": "tenessín",
+  "selenium": "selen",
+  "tellurium": "tellúr",
+  "polonium": "pólon",
+  "chlorine": "klór",
+  "fluorine": "flúor",
+  "bromine": "bróm",
+  "iodine": "joð",
+  "astatine": "astat",
+  "lanthanum": "lantan",
+  "actinium": "aktiníum",
+  "cerium": "seríum",
+  "thorium": "þóríum",
+  "praseodymium": "praseódým",
+  "protactinium": "prótaktiníum",
+  "neodymium": "neódým",
+  "uranium": "úran",
+  "promethium": "prómetíum",
+  "neptunium": "neptúníum",
+  "samarium": "samaríum",
+  "plutonium": "plúton",
+  "europium": "evropíum",
+  "americium": "amerikíum",
+  "gadolinium": "gadólíníum",
+  "curium": "kúríum",
+  "terbium": "terbíum",
+  "berkelium": "berkelíum",
+  "dysprosium": "dysprósíum",
+  "californium": "kaliforníum",
+  "einsteinium": "einsteiníum",
+  "holmium": "hólmíum",
+  "fermium": "fermíum",
+  "erbium": "erbíum",
+  "mendelevium": "mendelevíum",
+  "thulium": "þúlíum",
+  "nobelium": "nóbelíum",
+  "ytterbium": "ýtterbíum",
+  "lawrencium": "lawrensíum",
+  "lutetium": "lútetíum",
+  "Group": "Flokkur",
+  "Period": "Lota"
+ },
+ "mtAlternatives": {
+  "Solid": {
+   "kept": "joined",
+   "other": "Traust",
+   "reason": "disagree",
+   "mt": "Fast efni"
+  },
+  "boron": {
+   "kept": "joined",
+   "other": "Bór",
+   "reason": "disagree",
+   "mt": "bór"
+  },
+  "rubidium": {
+   "kept": "joined",
+   "other": "rúbidín",
+   "reason": "disagree",
+   "mt": "rúbidíum"
+  },
+  "cesium": {
+   "kept": "joined",
+   "other": "sesín",
+   "reason": "disagree",
+   "mt": "sesíum"
+  },
+  "francium": {
+   "kept": "joined",
+   "other": "fransín",
+   "reason": "disagree",
+   "mt": "fransíum"
+  },
+  "argon": {
+   "kept": "joined",
+   "other": "Argon",
+   "reason": "disagree",
+   "mt": "argon"
+  },
+  "xenon": {
+   "kept": "joined",
+   "other": "Xenon",
+   "reason": "disagree",
+   "mt": "xenon"
+  },
+  "oganesson": {
+   "kept": "joined",
+   "other": "óganesson",
+   "reason": "disagree",
+   "mt": "oganesson"
+  },
+  "calcium": {
+   "kept": "joined",
+   "other": "Kalsíum",
+   "reason": "disagree",
+   "mt": "kalsíum"
+  },
+  "scandium": {
+   "kept": "joined",
+   "other": "skandín",
+   "reason": "disagree",
+   "mt": "skandíum"
+  },
+  "yttrium": {
+   "kept": "joined",
+   "other": "yttrín",
+   "reason": "disagree",
+   "mt": "ýttríum"
+  },
+  "hafnium": {
+   "kept": "joined",
+   "other": "hafn",
+   "reason": "disagree",
+   "mt": "hafníum"
+  },
+  "rutherfordium": {
+   "kept": "joined",
+   "other": "rutherfordín",
+   "reason": "disagree",
+   "mt": "rutherfordíum"
+  },
+  "vanadium": {
+   "kept": "joined",
+   "other": "vanadín",
+   "reason": "disagree",
+   "mt": "vanadíum"
+  },
+  "niobium": {
+   "kept": "joined",
+   "other": "níóbín",
+   "reason": "disagree",
+   "mt": "níóbíum"
+  },
+  "dubnium": {
+   "kept": "joined",
+   "other": "dúbnín",
+   "reason": "disagree",
+   "mt": "dubníum"
+  },
+  "seaborgium": {
+   "kept": "joined",
+   "other": "sæborgín",
+   "reason": "disagree",
+   "mt": "sæborgíum"
+  },
+  "technetium": {
+   "kept": "joined",
+   "other": "teknetín",
+   "reason": "disagree",
+   "mt": "teknetíum"
+  },
+  "rhenium": {
+   "kept": "joined",
+   "other": "renín",
+   "reason": "disagree",
+   "mt": "reníum"
+  },
+  "bohrium": {
+   "kept": "joined",
+   "other": "borín",
+   "reason": "disagree",
+   "mt": "bóríum"
+  },
+  "hassium": {
+   "kept": "joined",
+   "other": "hassín",
+   "reason": "disagree",
+   "mt": "hassíum"
+  },
+  "rhodium": {
+   "kept": "joined",
+   "other": "ródín",
+   "reason": "disagree",
+   "mt": "ródíum"
+  },
+  "iridium": {
+   "kept": "joined",
+   "other": "Iridín",
+   "reason": "disagree",
+   "mt": "iridíum"
+  },
+  "platinum": {
+   "kept": "joined",
+   "other": "Platína",
+   "reason": "disagree",
+   "mt": "platína"
+  },
+  "darmstadtium": {
+   "kept": "joined",
+   "other": "darmstadtín",
+   "reason": "disagree",
+   "mt": "darmstadtíum"
+  },
+  "roentgenium": {
+   "kept": "joined",
+   "other": "röntgenín",
+   "reason": "disagree",
+   "mt": "röntgeníum"
+  },
+  "nihonium": {
+   "kept": "joined",
+   "other": "nihon",
+   "reason": "disagree",
+   "mt": "níhoníum"
+  },
+  "gallium": {
+   "kept": "joined",
+   "other": "gallín",
+   "reason": "disagree",
+   "mt": "gallíum"
+  },
+  "indium": {
+   "kept": "joined",
+   "other": "indín",
+   "reason": "disagree",
+   "mt": "indíum"
+  },
+  "thallium": {
+   "kept": "joined",
+   "other": "þallín",
+   "reason": "disagree",
+   "mt": "þallíum"
+  },
+  "flerovium": {
+   "kept": "joined",
+   "other": "fleróvín",
+   "reason": "disagree",
+   "mt": "fleróvíum"
+  },
+  "germanium": {
+   "kept": "joined",
+   "other": "german",
+   "reason": "disagree",
+   "mt": "germaníum"
+  },
+  "lead": {
+   "kept": "joined",
+   "other": "leiða",
+   "reason": "disagree",
+   "mt": "blý"
+  },
+  "phosphorus": {
+   "kept": "joined",
+   "other": "Fosfór",
+   "reason": "disagree",
+   "mt": "fosfór"
+  },
+  "moscovium": {
+   "kept": "joined",
+   "other": "moskovín",
+   "reason": "disagree",
+   "mt": "moskóvíum"
+  },
+  "arsenic": {
+   "kept": "joined",
+   "other": "arsenik",
+   "reason": "disagree",
+   "mt": "arsen"
+  },
+  "antimony": {
+   "kept": "joined",
+   "other": "Antímon",
+   "reason": "disagree",
+   "mt": "antimon"
+  },
+  "livermorium": {
+   "kept": "joined",
+   "other": "livermorín",
+   "reason": "disagree",
+   "mt": "livermoríum"
+  },
+  "tennessine": {
+   "kept": "joined",
+   "other": "tennessín",
+   "reason": "disagree",
+   "mt": "tenessín"
+  },
+  "selenium": {
+   "kept": "joined",
+   "other": "Selen",
+   "reason": "disagree",
+   "mt": "selen"
+  },
+  "tellurium": {
+   "kept": "joined",
+   "other": "Tellúr",
+   "reason": "disagree",
+   "mt": "tellúr"
+  },
+  "polonium": {
+   "kept": "joined",
+   "other": "pólón",
+   "reason": "disagree",
+   "mt": "pólon"
+  },
+  "chlorine": {
+   "kept": "joined",
+   "other": "Klór",
+   "reason": "disagree",
+   "mt": "klór"
+  },
+  "thorium": {
+   "kept": "joined",
+   "other": "þórín",
+   "reason": "disagree",
+   "mt": "þóríum"
+  },
+  "promethium": {
+   "kept": "joined",
+   "other": "prómetín",
+   "reason": "disagree",
+   "mt": "prómetíum"
+  },
+  "neptunium": {
+   "kept": "joined",
+   "other": "neptúnín",
+   "reason": "disagree",
+   "mt": "neptúníum"
+  },
+  "samarium": {
+   "kept": "joined",
+   "other": "samarín",
+   "reason": "disagree",
+   "mt": "samaríum"
+  },
+  "europium": {
+   "kept": "joined",
+   "other": "evrópíum",
+   "reason": "disagree",
+   "mt": "evropíum"
+  },
+  "americium": {
+   "kept": "joined",
+   "other": "ameríkín",
+   "reason": "disagree",
+   "mt": "amerikíum"
+  },
+  "gadolinium": {
+   "kept": "joined",
+   "other": "gadólín",
+   "reason": "disagree",
+   "mt": "gadólíníum"
+  },
+  "curium": {
+   "kept": "joined",
+   "other": "kúrín",
+   "reason": "disagree",
+   "mt": "kúríum"
+  },
+  "terbium": {
+   "kept": "joined",
+   "other": "terbín",
+   "reason": "disagree",
+   "mt": "terbíum"
+  },
+  "berkelium": {
+   "kept": "joined",
+   "other": "berkelín",
+   "reason": "disagree",
+   "mt": "berkelíum"
+  },
+  "dysprosium": {
+   "kept": "joined",
+   "other": "dysprósín",
+   "reason": "disagree",
+   "mt": "dysprósíum"
+  },
+  "einsteinium": {
+   "kept": "joined",
+   "other": "Einsteinín",
+   "reason": "disagree",
+   "mt": "einsteiníum"
+  },
+  "fermium": {
+   "kept": "joined",
+   "other": "fermín",
+   "reason": "disagree",
+   "mt": "fermíum"
+  },
+  "erbium": {
+   "kept": "joined",
+   "other": "erbín",
+   "reason": "disagree",
+   "mt": "erbíum"
+  },
+  "mendelevium": {
+   "kept": "joined",
+   "other": "mendelevín",
+   "reason": "disagree",
+   "mt": "mendelevíum"
+  },
+  "nobelium": {
+   "kept": "joined",
+   "other": "nóbelín",
+   "reason": "disagree",
+   "mt": "nóbelíum"
+  },
+  "ytterbium": {
+   "kept": "joined",
+   "other": "ytterbín",
+   "reason": "disagree",
+   "mt": "ýtterbíum"
+  },
+  "lawrencium": {
+   "kept": "joined",
+   "other": "lárinsín",
+   "reason": "disagree",
+   "mt": "lawrensíum"
+  },
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 129
+ }
+}

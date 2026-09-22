@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_09_Limelight",
+ "renderHash": "d77c638aad4eaf17",
+ "composedHash": "d77c638aad4eaf17",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Calcium oxide": "Kalsíumoxíð",
+  "Oxygen": "Súrefni",
+  "Hydrogen": "Vetni"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

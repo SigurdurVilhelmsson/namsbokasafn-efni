@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T16:56:31.406Z",
+  "generated": "2026-09-21T17:40:27.233Z",
   "termCount": 763,
   "entries": [
     {
@@ -787,7 +787,7 @@
       "termIs": "bismút",
       "termEn": "bismuth",
       "termFull": "bismút (e. bismuth)",
-      "definition": "þyngsti meðlimur hóps 15; minna hvarfgjarn málmur en aðrir aðalflokkamálmar",
+      "definition": "þyngsti meðlimur flokks 15; málmur sem er minna hvarfgjarn en aðrir aðalflokkamálmar",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -886,11 +886,11 @@
       "termIs": "bórat",
       "termEn": "borate",
       "termFull": "bórat (e. borate)",
-      "definition": "efnasamband sem inniheldur bór-súrefnis efnatengi, yfirleitt með klösum eða keðjum sem hluta af efnafræðilegri byggingu",
+      "definition": "efnasamband sem inniheldur bór-súrefnistengi, yfirleitt með knippi eða keðjur sem hluta af efnafræðilegu byggingunni",
       "chapter": 18,
       "section": "18.3",
-      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
-      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
+      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
+      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
       "termId": "fs-idp42336592"
     },
     {
@@ -1150,11 +1150,11 @@
       "termIs": "Downs-rafgreiningarklefi",
       "termEn": "downs cell",
       "termFull": "Downs-rafgreiningarklefi (e. downs cell)",
-      "definition": "rafefnafræðilegur klefi sem notaður er við iðnaðarframleiðslu á natríni (og klór) úr bráðnu natríumklóríði",
+      "definition": "rafefnafræðilegur klefi sem notaður er við iðnaðarframleiðslu á natríummálmi (og klór) úr bráðnu natríumklóríði",
       "chapter": 18,
       "section": "18.2",
-      "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
-      "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
+      "sectionTitle": "Tilvist og framleiðsla aðalflokkamálma",
+      "sectionSlug": "18-2-tilvist-og-framleidsla-adalflokkamalma",
       "termId": "fs-idp11434288"
     },
     {
@@ -1257,6 +1257,17 @@
       "termId": "fs-idm205028976"
     },
     {
+      "termIs": "efnaafoxun",
+      "termEn": "chemical reduction",
+      "termFull": "efnaafoxun (e. chemical reduction)",
+      "definition": "aðferð til að framleiða aðalflokkamálm með afoxara",
+      "chapter": 18,
+      "section": "18.2",
+      "sectionTitle": "Tilvist og framleiðsla aðalflokkamálma",
+      "sectionSlug": "18-2-tilvist-og-framleidsla-adalflokkamalma",
+      "termId": "fs-idp238031216"
+    },
+    {
       "termIs": "efnabreyting",
       "termEn": "chemical change",
       "termFull": "efnabreyting (e. chemical change)",
@@ -1288,17 +1299,6 @@
       "sectionTitle": "Efnafræði í samhengi",
       "sectionSlug": "1-1-efnafraedi-i-samhengi",
       "termId": "fs-idm42704816"
-    },
-    {
-      "termIs": "efnafræðileg afoxun",
-      "termEn": "chemical reduction",
-      "termFull": "efnafræðileg afoxun (e. chemical reduction)",
-      "definition": "aðferð til að framleiða dæmigerðan málm með afoxara",
-      "chapter": 18,
-      "section": "18.2",
-      "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
-      "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
-      "termId": "fs-idp238031216"
     },
     {
       "termIs": "efnahvörfunarvarmafræði",
@@ -1708,17 +1708,6 @@
       "termId": "fs-idm52768832"
     },
     {
-      "termIs": "fjölbrigði",
-      "termEn": "polymorph",
-      "termFull": "fjölbrigði (e. polymorph)",
-      "definition": "breytileiki í kristalbyggingu sem leiðir til mismunandi eðliseiginleika fyrir efnasambandið sem myndast",
-      "chapter": 18,
-      "section": "18.3",
-      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
-      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
-      "termId": "fs-idp20554272"
-    },
-    {
       "termIs": "fjölfrumeinda jón",
       "termEn": "polyatomic ion",
       "termFull": "fjölfrumeinda jón (e. polyatomic ion)",
@@ -1730,10 +1719,21 @@
       "termId": "fs-idp93746160"
     },
     {
+      "termIs": "fjölmynd",
+      "termEn": "polymorph",
+      "termFull": "fjölmynd (e. polymorph)",
+      "definition": "breyting í kristalbyggingu sem veldur mismunandi eðliseiginleikum fyrir myndaða efnasambandið",
+      "chapter": 18,
+      "section": "18.3",
+      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
+      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "termId": "fs-idp20554272"
+    },
+    {
       "termIs": "fjölmyndir",
       "termEn": "allotropes",
       "termFull": "fjölmyndir (e. allotropes)",
-      "definition": "tvö eða fleiri form af sama frumefni, í sama eðlisástandi, með mismunandi efnafræðilega byggingu",
+      "definition": "tvö eða fleiri form af sama frumefni, í sama fasa, með mismunandi efnafræðilega byggingu",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -1818,17 +1818,6 @@
       "termId": "fs-idm20590592"
     },
     {
-      "termIs": "formlaust efni",
-      "termEn": "amorphous",
-      "termFull": "formlaust efni (e. amorphous)",
-      "definition": "fast efni, eins og gler, sem hefur ekki reglulega endurtekinn hluta í þrívíðri byggingu sinni; fast efni en ekki kristall",
-      "chapter": 18,
-      "section": "18.3",
-      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
-      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
-      "termId": "fs-idp50657904"
-    },
-    {
       "termIs": "formúlumassi",
       "termEn": null,
       "termFull": "formúlumassi",
@@ -1865,7 +1854,7 @@
       "termIs": "Frasch-aðferðin",
       "termEn": "frasch process",
       "termFull": "Frasch-aðferðin (e. frasch process)",
-      "definition": "mikilvæg við vinnslu á hreinum brennisteini úr gríðarstórum neðanjarðarnámum",
+      "definition": "mikilvæg við námuvinnslu á hreinum brennisteini úr gríðarstórum neðanjarðar námum",
       "chapter": 18,
       "section": "18.10",
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar brennisteins",
@@ -2294,7 +2283,7 @@
       "termIs": "Haber-ferlið",
       "termEn": "haber process",
       "termFull": "Haber-ferlið (e. haber process)",
-      "definition": "helsta iðnaðarferlið sem notað er til að framleiða ammóníak úr nitri og vetni; felur í sér notkun járnhvata og hækkaðs hitastigs og þrýstings",
+      "definition": "helsta iðnaðarferlið sem notað er til að framleiða ammoníak úr köfnunarefni og vetni; felur í sér notkun járnhvata og hækkaðs hitastigs og þrýstings",
       "chapter": 18,
       "section": "18.5",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd vetnis",
@@ -2305,22 +2294,22 @@
       "termIs": "halíð",
       "termEn": "halide",
       "termFull": "halíð (e. halide)",
-      "definition": "efnasamband sem inniheldur anjón af frumefni úr hóp 17 með oxunartalið 1− (flúoríð, F−; klóríð, Cl−; brómíð, Br−; og joðíð, I−)",
+      "definition": "efnasamband sem inniheldur anjón úr flokki 17 með oxunartalið 1− (flúoríð, F−; klóríð, Cl−; brómíð, Br−; og joðíð, I−)",
       "chapter": 18,
       "section": "18.12",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðalgastegunda",
-      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
+      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda",
       "termId": "fs-idm39818672"
     },
     {
       "termIs": "Hall–Héroult-rafgreiningarklefi",
       "termEn": "hall–héroult cell",
       "termFull": "Hall–Héroult-rafgreiningarklefi (e. hall–héroult cell)",
-      "definition": "rafgreiningarbúnaður sem notaður er til að einangra hreint ál úr lausn af súráli í bráðnum krýólíti",
+      "definition": "rafgreiningartæki sem notað er til að einangra hreinan álmálm úr lausn af súráli í bráðnu krýolíti",
       "chapter": 18,
       "section": "18.2",
-      "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
-      "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
+      "sectionTitle": "Tilvist og framleiðsla aðalflokkamálma",
+      "sectionSlug": "18-2-tilvist-og-framleidsla-adalflokkamalma",
       "termId": "fs-idp167269072"
     },
     {
@@ -2558,7 +2547,7 @@
       "termIs": "hjúpun",
       "termEn": "passivation",
       "termFull": "hjúpun (e. passivation)",
-      "definition": "málmar með verndandi, óhvarfgjarna filmu úr oxíði eða öðru efnasambandi sem myndar hindrun fyrir efnahvörf; ef óvirknifilman er fjarlægð með eðlis- eða efnafræðilegum aðferðum geta málmarnir sýnt vænta hvarfgirni sína",
+      "definition": "málmar með verndandi óhvarfgjarna filmu úr oxíði eða öðru efnasambandi sem myndar hindrun fyrir efnahvörf; ef þessi óvirknisfilma er fjarlægð, annaðhvort eðlisfræðilega eða efnafræðilega, geta málmarnir sýnt væntanlega efnahvarfgirni sína",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -3130,7 +3119,7 @@
       "termIs": "jarðalkalímálmur",
       "termEn": "alkaline earth metal",
       "termFull": "jarðalkalímálmur (e. alkaline earth metal)",
-      "definition": "hver þeirra málma (beryllíum, magnesíum, kalsíum, strontíum, baríum og radíum) sem eru í hópi 2 í lotukerfinu; þeir eru hvarfgjarnir, tvígilentir málmar sem mynda basísk oxíð",
+      "definition": "hver þeirra málma (beryllíum, magnesíum, kalsíum, strontíum, baríum og radíum) sem eru í flokki 2 í lotukerfinu; þeir eru hvarfgjarnir, tvígilentir málmar sem mynda basísk oxíð",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -3350,7 +3339,7 @@
       "termIs": "karbónat",
       "termEn": "carbonate",
       "termFull": "karbónat (e. carbonate)",
-      "definition": "salt anjónarinnar CO32−; sem oft myndast við efnahvarf koldíoxíðs við basa",
+      "definition": "salt anjónarinnar CO32−; sem oft myndast við hvarf koltvíoxíðs við basa",
       "chapter": 18,
       "section": "18.6",
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar karbónata",
@@ -4153,7 +4142,7 @@
       "termIs": "ljóstillífun",
       "termEn": "photosynthesis",
       "termFull": "ljóstillífun (e. photosynthesis)",
-      "definition": "ferli þar sem ljósorka ýtir undir efnahvarf vatns og koldíoxíðs til að mynda kolvetni og súrefni; þetta gerir ljóstillífandi lífverum kleift að geyma orku",
+      "definition": "ferli þar sem ljósorka ýtir undir efnahvarf vatns og koltvíoxíðs til að mynda kolvetni og súrefni; þetta gerir ljóstillífandi lífverum kleift að geyma orku",
       "chapter": 18,
       "section": "18.9",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
@@ -4604,7 +4593,7 @@
       "termIs": "málmur (aðalflokka)",
       "termEn": "metal (representative)",
       "termFull": "málmur (aðalflokka) (e. metal (representative))",
-      "definition": "atóm málmfrumefna í hópum 1, 2, 12, 13, 14, 15 og 16, sem mynda jónaefni með því að missa rafeindir af ytri s eða p svigrúmum sínum",
+      "definition": "atóm málmfrumefna í flokkum 1, 2, 12, 13, 14, 15 og 16, sem mynda jónaefnasambönd með því að missa rafeindir af ytri s eða p svigrúmum sínum",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -4711,6 +4700,17 @@
       "termId": "fs-idp178458288"
     },
     {
+      "termIs": "milli-halógen",
+      "termEn": "interhalogen",
+      "termFull": "milli-halógen (e. interhalogen)",
+      "definition": "efnasamband myndað úr tveimur eða fleiri mismunandi halógenum",
+      "chapter": 18,
+      "section": "18.12",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
+      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda",
+      "termId": "fs-idm15345952"
+    },
+    {
       "termIs": "milliefni",
       "termEn": "intermediate",
       "termFull": "milliefni (e. intermediate)",
@@ -4720,17 +4720,6 @@
       "sectionTitle": "Hvarfgangar",
       "sectionSlug": "12-6-hvarfgangar",
       "termId": "fs-idp63453216"
-    },
-    {
-      "termIs": "millihalógen",
-      "termEn": "interhalogen",
-      "termFull": "millihalógen (e. interhalogen)",
-      "definition": "efnasamband myndað úr tveimur eða fleiri mismunandi halógenum",
-      "chapter": 18,
-      "section": "18.12",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðalgastegunda",
-      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda",
-      "termId": "fs-idm15345952"
     },
     {
       "termIs": "millikúrí (mCi)",
@@ -4821,17 +4810,6 @@
       "termId": "fs-idp102632368"
     },
     {
-      "termIs": "misvægishvarf",
-      "termEn": "disproportionation reaction",
-      "termFull": "misvægishvarf (e. disproportionation reaction)",
-      "definition": "efnahvarf þar sem eitt hvarfefni afoxast og oxast samtímis; það er bæði afoxari og oxari",
-      "chapter": 18,
-      "section": "18.4",
-      "sectionTitle": "Bygging og almennir eiginleikar málmleysingja",
-      "sectionSlug": "18-4-bygging-og-almennir-eiginleikar-malmleysingja",
-      "termId": "fs-idm60186560"
-    },
-    {
       "termIs": "móðurkirni",
       "termEn": "parent nuclide",
       "termFull": "móðurkirni (e. parent nuclide)",
@@ -4918,6 +4896,17 @@
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
       "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
       "termId": "fs-idp145224064"
+    },
+    {
+      "termIs": "myndlaus",
+      "termEn": "amorphous",
+      "termFull": "myndlaus (e. amorphous)",
+      "definition": "fast efni á borð við gler sem hefur ekki reglulega endurtekna einingu í þrívíðri byggingu sinni; fast efni en ekki kristall",
+      "chapter": 18,
+      "section": "18.3",
+      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
+      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "termId": "fs-idp50657904"
     },
     {
       "termIs": "myndlaust fast efni",
@@ -5022,7 +5011,7 @@
       "termIs": "niturbinding",
       "termEn": "nitrogen fixation",
       "termFull": "niturbinding (e. nitrogen fixation)",
-      "definition": "myndun nitursambanda úr nitursameindum",
+      "definition": "myndun köfnunarefnasambanda úr nitursameindum",
       "chapter": 18,
       "section": "18.7",
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar niturs",
@@ -5132,7 +5121,7 @@
       "termIs": "oxíð",
       "termEn": "oxide",
       "termFull": "oxíð (e. oxide)",
-      "definition": "tvíeykisamband súrefnis við annað frumefni eða hóp, inniheldur yfirleitt O2− jónir eða hópinn –O– eða =O",
+      "definition": "tvíeykjasamband súrefnis við annað frumefni eða hóp, inniheldur venjulega O2− jónir eða hópinn –O– eða =O",
       "chapter": 18,
       "section": "18.9",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
@@ -5237,6 +5226,17 @@
       "sectionTitle": "Líffræðileg áhrif geislunar",
       "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
       "termId": "fs-idp8726208"
+    },
+    {
+      "termIs": "ójöfnunarhvarf",
+      "termEn": "disproportionation reaction",
+      "termFull": "ójöfnunarhvarf (e. disproportionation reaction)",
+      "definition": "efnahvarf þar sem eitt hvarfefni er samtímis afoxað og oxað; það er bæði afoxarinn og oxarinn",
+      "chapter": 18,
+      "section": "18.4",
+      "sectionTitle": "Bygging og almennir eiginleikar málmleysingja",
+      "sectionSlug": "18-4-bygging-og-almennir-eiginleikar-malmleysingja",
+      "termId": "fs-idm60186560"
     },
     {
       "termIs": "óleysanlegt",
@@ -5363,7 +5363,7 @@
       "termIs": "peroxíð",
       "termEn": "peroxide",
       "termFull": "peroxíð (e. peroxide)",
-      "definition": "sameind sem inniheldur tvær súrefnisfrumeindir sem eru tengdar saman eða sem anjón, O22−",
+      "definition": "sameind sem inniheldur tvö súrefnisatóm tengd saman eða sem anjón, O22−",
       "chapter": 18,
       "section": "18.9",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd súrefnis",
@@ -5385,11 +5385,11 @@
       "termIs": "Pidgeon-ferlið",
       "termEn": "pidgeon process",
       "termFull": "Pidgeon-ferlið (e. pidgeon process)",
-      "definition": "efnafræðilegt afoxunarferli sem notað er til að framleiða magnesín með varmaefnahvarfi magnesíumoxíðs og kísils",
+      "definition": "efnaafoxunarferli sem notað er til að framleiða magnesíum með hitahvarfi magnesíumoxíðs við kísil",
       "chapter": 18,
       "section": "18.2",
-      "sectionTitle": "Tilvist og framleiðsla dæmigerðra málma",
-      "sectionSlug": "18-2-tilvist-og-framleidsla-daemigerdra-malma",
+      "sectionTitle": "Tilvist og framleiðsla aðalflokkamálma",
+      "sectionSlug": "18-2-tilvist-og-framleidsla-adalflokkamalma",
       "termId": "fs-idp121441888"
     },
     {
@@ -6240,6 +6240,17 @@
       "termId": "fs-idp36919168"
     },
     {
+      "termIs": "silikat",
+      "termEn": "silicate",
+      "termFull": "silikat (e. silicate)",
+      "definition": "efnasamband sem inniheldur kísil-súrefnistengi, með silikattetrahedrona tengda í hringi, lög eða þrívíð net, eftir því hvaða önnur frumefni taka þátt í myndun efnasambandanna",
+      "chapter": 18,
+      "section": "18.3",
+      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
+      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "termId": "fs-idp17081184"
+    },
+    {
       "termIs": "sindurefni",
       "termEn": "free radical",
       "termFull": "sindurefni (e. free radical)",
@@ -6249,17 +6260,6 @@
       "sectionTitle": "Lewis-tákn og Lewis-myndir",
       "sectionSlug": "7-3-lewis-takn-og-lewis-myndir",
       "termId": "fs-idm4719424"
-    },
-    {
-      "termIs": "sílikat",
-      "termEn": "silicate",
-      "termFull": "sílikat (e. silicate)",
-      "definition": "efnasamband sem inniheldur kísil-súrefnis efnatengi, þar sem sílikatferflötungar eru tengdir í hringi, lög eða þrívíð net, allt eftir því hvaða önnur frumefni koma að myndun efnasambandanna",
-      "chapter": 18,
-      "section": "18.3",
-      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
-      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
-      "termId": "fs-idp17081184"
     },
     {
       "termIs": "sívert (Sv)",
@@ -7783,7 +7783,7 @@
       "termIs": "vetnishalíð",
       "termEn": "hydrogen halide",
       "termFull": "vetnishalíð (e. hydrogen halide)",
-      "definition": "tvíundarsamband sem myndast milli vetnis og halógena: HF, HCl, HBr og HI",
+      "definition": "tvíundarsamband myndað milli vetnis og halógena: HF, HCl, HBr og HI",
       "chapter": 18,
       "section": "18.5",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd vetnis",
@@ -7794,7 +7794,7 @@
       "termIs": "vetniskarbónat",
       "termEn": "hydrogen carbonate",
       "termFull": "vetniskarbónat (e. hydrogen carbonate)",
-      "definition": "salt kolsýru, H2CO3 (inniheldur anjónina HCO3−) þar sem einni vetnisfrumeind hefur verið skipt út; súrt karbónat; einnig þekkt sem bíkarbónatjón",
+      "definition": "salt kolsýru, H2CO3 (inniheldur anjónina HCO3−)) þar sem einu vetnisatómi hefur verið skipt út; súrt karbónat; einnig þekkt sem bíkarbónatjón",
       "chapter": 18,
       "section": "18.6",
       "sectionTitle": "Tilvist, framleiðsla og eiginleikar karbónata",
@@ -7838,7 +7838,7 @@
       "termIs": "vetnun",
       "termEn": "hydrogenation",
       "termFull": "vetnun (e. hydrogenation)",
-      "definition": "álagning vetnis (H2) til að afoxa efnasamband",
+      "definition": "viðbót vetnis (H2) til að afoxa efnasamband",
       "chapter": 18,
       "section": "18.5",
       "sectionTitle": "Tilvist, framleiðsla og efnasambönd vetnis",

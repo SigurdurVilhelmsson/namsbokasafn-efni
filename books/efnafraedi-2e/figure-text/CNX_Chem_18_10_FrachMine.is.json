@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_10_FrachMine",
+ "renderHash": "6adebb8b4bf62bc8",
+ "composedHash": "6adebb8b4bf62bc8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Compressed air": "Þjappað loft",
+  "Superheated|water": "Yfirhitað vatn",
+  "Sulfur, water,|and air": "Brennisteinn, vatn og loft",
+  "Soil": "Jarðvegur",
+  "Solid sulfur|deposit": "Fast brennisteinslag",
+  "Liquid sulfur": "Fljótandi brennisteinn"
+ },
+ "mtAlternatives": {
+  "Solid sulfur|deposit": {
+   "kept": "joined",
+   "other": "Fast brennisteinsset",
+   "reason": "disagree",
+   "mt": "Fast brennisteinslag"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

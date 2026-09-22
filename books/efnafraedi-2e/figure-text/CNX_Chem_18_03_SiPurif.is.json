@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_03_SiPurif",
+ "renderHash": "c57fb04cfb11a335",
+ "composedHash": "c57fb04cfb11a335",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Impure silicon": "Óhreinn kísill",
+  "Molten silicon": "Bráðinn kísill",
+  "Pure silicon": "Hreinn kísill"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

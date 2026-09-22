@@ -1,0 +1,49 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_02_DownsCell",
+ "renderHash": "f605ee9a134d51dd",
+ "composedHash": "f605ee9a134d51dd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Liquid|Na metal ": "Fljótandi Na málmur",
+  "Inlet for|NaCl": "Inntak fyrir NaCl",
+  "Cl2 outlet": "Úttak fyrir Cl2",
+  "Molten|NaCl": "Bráðið NaCl",
+  "Iron|screen": "Járnskermur",
+  "Na outlet": "Úttak fyrir Na",
+  "Anode (+)": "Anóða (+)",
+  "Voltage|source": "Spennugjafi",
+  "Cathode (–)": "Katþóða (–)"
+ },
+ "mtAlternatives": {
+  "Liquid|Na metal ": {
+   "kept": "joined",
+   "other": "Fljótandi Na-málmur",
+   "reason": "disagree",
+   "mt": "Fljótandi Na málmur"
+  },
+  "Cl2 outlet": {
+   "kept": "joined",
+   "other": "Cl2-úttak",
+   "reason": "disagree",
+   "mt": "Úttak fyrir Cl2"
+  },
+  "Na outlet": {
+   "kept": "joined",
+   "other": "Í útsölunni",
+   "reason": "disagree",
+   "mt": "Úttak fyrir Na"
+  },
+  "Cathode (–)": {
+   "kept": "joined",
+   "other": "Bakskaut (–)",
+   "reason": "disagree",
+   "mt": "Katþóða (–)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 9
+ }
+}

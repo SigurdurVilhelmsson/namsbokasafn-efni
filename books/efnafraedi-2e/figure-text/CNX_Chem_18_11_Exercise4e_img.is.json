@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_18_11_Exercise4e_img",
+ "renderHash": "8451d2493f413990",
+ "composedHash": "8451d2493f413990",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "T-shaped": "T-laga"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}
