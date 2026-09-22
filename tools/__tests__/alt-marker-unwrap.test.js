@@ -159,3 +159,70 @@ describe('REACH — no marker survives into a published alt (the property, not t
     expect(offenders).toEqual([]);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+describe('§C176 — the SAME invention, arriving as TAGS because getSeg converted it first', () => {
+  /**
+   * 🔴 §C169's UNWRAP WAS CORRECT AND STILL LET THE DEFECT REACH A READER, BECAUSE
+   * IT RAN TOO LATE ON ONE PATH. Measured 2026-09-22 on `appendices-5-eiginleikar-
+   * vatns.html`, which the §C174 re-buy had just repaired:
+   *
+   *   02-mt-output    pK[[sub:w]]                      ← the MT's invention
+   *   03-translated   pK&lt;sub&gt;w&lt;/sub&gt;       ← CONVERTED, not stripped
+   *   05-publication  pK&amp;lt;sub&amp;gt;w…          ← double-escaped
+   *
+   * A screen reader then reads the literal characters `&lt;sub&gt;`. The value it
+   * replaced was `pK með lágvísi W` — correct Icelandic — so the repair made that
+   * alt WORSE than the English it was fixing elsewhere on the same page.
+   *
+   * ▶ THE MECHANISM, AND IT IS AN ORDERING BUG RATHER THAN A MISSING CALL.
+   * `getSeg` ends in `reverseInlineMarkup(...)`, which turns `[[sub:w]]` into
+   * `<sub>w</sub>`. `readAlt(alt, getSeg)` therefore resolves THROUGH that
+   * conversion, and `stripAltMarkers` — whose fast path is `if (!s.includes('[['))`
+   * — then finds no brackets and returns the markup untouched. `ctx.peekSeg` reads
+   * `segments.get()` RAW and so is unaffected, which is exactly why it exists.
+   *
+   * ⚠️ SO "PATCH THE SHARED LOOKUP, NOT THE WRITERS" IS NECESSARY AND WAS NOT
+   * SUFFICIENT. §C169 landed in `peekSeg` on the reasoning that a single shared
+   * point cannot rot — true, but `readAlt(…, getSeg)` is a SECOND shared point,
+   * and a fix at one says nothing about the other. `cnxml-inject.js` carries 13
+   * `alt="` sites; enumerate the RESOLUTION paths, not just the writers.
+   *
+   * The fix widens the invariant instead of adding a caller: **an `alt` may not
+   * contain markup, in whatever form it arrived.**
+   */
+  it('unwraps a tag-form subscript — the live m68863 value', () => {
+    expect(stripAltMarkers('Línurit með titlinum „pK<sub>w</sub> vatns“.')).toBe(
+      'Línurit með titlinum „pKw vatns“.'
+    );
+  });
+
+  it('unwraps the §C169 corpus case in its converted form', () => {
+    expect(stripAltMarkers('C<sub>4</sub>H<sub>6</sub>')).toBe('C4H6');
+  });
+
+  it('unwraps a tag carrying ATTRIBUTES, quote-aware', () => {
+    // 🔴 `<tag[^>]*>` IS THE WRONG SPAN AND THIS REPO HAS MEASURED WHY: a bare `>`
+    // is legal inside an attribute value, so `[^>]*` truncates mid-attribute and
+    // leaves half a tag in a published alt. The unwrap uses `TAG_ATTR_SPAN`.
+    expect(stripAltMarkers('<emphasis effect="italics">cis</emphasis>-bútan')).toBe('cis-bútan');
+    expect(stripAltMarkers('<emphasis effect="a>b">x</emphasis>')).toBe('x');
+  });
+
+  it('leaves ordinary prose alone — the control that keeps this honest', () => {
+    // If the unwrap were a blanket delete of anything angle-bracketed, a legitimate
+    // mathematical `<` in a description would vanish with it.
+    const prose = 'Línurit þar sem x < y og gildið er 5 > 3.';
+    expect(stripAltMarkers(prose)).toBe(prose);
+    expect(stripAltMarkers('pK með lágvísi W')).toBe('pK með lágvísi W');
+  });
+
+  it('still unwraps BRACKET markers — §C169 behaviour is unchanged', () => {
+    expect(stripAltMarkers('C[[sub:4]]H[[sub:6]]')).toBe('C4H6');
+    expect(stripAltMarkers('pK[[sub:w]] vatns')).toBe('pKw vatns');
+  });
+
+  it('handles BOTH forms in one value', () => {
+    expect(stripAltMarkers('C[[sub:4]]H<sub>6</sub>')).toBe('C4H6');
+  });
+});
