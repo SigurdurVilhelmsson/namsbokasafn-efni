@@ -13,6 +13,8 @@
  * exercise-bank refresh must surface, never silently strip.
  */
 
+import { stripAltMarkers } from './alt-segments.js';
+
 /** Tags handled as block structure (skeleton-side, attrs preserved verbatim). */
 const STRUCTURAL_SRC = '<\\/?(?:p|br|ul|li|table|thead|tbody|tr|th|td|figure|figcaption)\\b[^>]*>';
 
@@ -282,4 +284,116 @@ export function fieldToHtml(field, runs = field.runs) {
     throw new MarkerError(`marker conservation violated: ${parts.join('; ')}`);
   }
   return html;
+}
+
+// ─── §C126 #3 / §C123 — <img> alt text ───────────────────────────────
+//
+// An <img> is an OPAQUE literal (field.opaques[n] ↔ [[MEDIA:n]]), so its alt
+// rode the skeleton byte-for-byte and was never extracted: 2,375 organic alts
+// shipped in English to screen-reader users. The alt is now a segment of its
+// own, keyed on the opaque index n. These two functions are the ONE predicate
+// exercise-extract (emit) and exercise-assemble (write back) share, so the two
+// sides cannot disagree about which images carry an alt segment.
+
+/**
+ * One attribute at a time, from where the previous one ended (sticky), so an
+ * `alt=` sitting INSIDE another attribute's value can never be read as one.
+ * Value forms: double-quoted (2), single-quoted (3), unquoted (4), or none.
+ */
+const IMG_ATTR = /\s+([^\s=/>"']+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/y;
+
+/**
+ * Locate an <img> literal's alt VALUE (the bytes between its quotes).
+ * @param {string} literal - one opaque literal
+ * @returns {{start: number, end: number, value: string}|null} null when the
+ *   literal is not an <img> or carries no alt attribute
+ * @throws {MarkerError} on an alt that is not double-quoted — every corpus alt
+ *   is (2,380 of 2,380), and a refresh that changes that must surface rather
+ *   than silently lose the alt (this module's closed-inventory contract)
+ */
+function imgAltSpan(literal) {
+  const head = /^<img\b/i.exec(literal);
+  if (!head) return null;
+  IMG_ATTR.lastIndex = head[0].length;
+  let m;
+  while ((m = IMG_ATTR.exec(literal)) !== null) {
+    if (m[1].toLowerCase() !== 'alt') continue;
+    if (m[2] === undefined) {
+      throw new MarkerError('unsupported <img> alt form (not double-quoted)', literal.slice(0, 80));
+    }
+    const end = m.index + m[0].length - 1; // the closing quote
+    return { start: end - m[2].length, end, value: m[2] };
+  }
+  return null;
+}
+
+/** `&` first, or the `&` inside a just-written `&quot;` is re-escaped. Mirrors cnxml-inject's escapeAttr. */
+const escapeAttrValue = (s) =>
+  String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+/**
+ * The <img> alts in one field that carry a translatable segment, in [[MEDIA:n]]
+ * order. A blank alt carries nothing. Edge whitespace is hoisted out of `core`
+ * (as pushRun hoists it out of a run) so MT sees a clean segment and the
+ * identity round-trip stays byte-exact.
+ * @param {{opaques: Record<string, string>}} field
+ * @returns {{n: string, lead: string, core: string, trail: string}[]}
+ */
+export function fieldImgAlts(field) {
+  return Object.keys(field.opaques)
+    .sort((a, b) => Number(a) - Number(b))
+    .flatMap((n) => {
+      const span = imgAltSpan(field.opaques[n]);
+      if (!span || !span.value.trim()) return [];
+      const lead = span.value.match(/^\s*/)[0];
+      const trail = span.value.match(/\s*$/)[0];
+      return [
+        { n, lead, core: span.value.slice(lead.length, span.value.length - trail.length), trail },
+      ];
+    });
+}
+
+/**
+ * Write a translated alt core back into its <img> literal, keeping the source's
+ * edge whitespace. An alt is an attribute value, so it may not hold markup in
+ * any form — invented brackets or tags are stripped here, at the one writer,
+ * whichever reader produced the text (§C169/§C176). Never invents an alt, and a
+ * translation that is blank once stripped leaves the source literal as it was.
+ * @param {string} literal - the <img> opaque literal
+ * @param {string} core - translated alt text
+ * @returns {string}
+ */
+export function withImgAlt(literal, core) {
+  const span = imgAltSpan(literal);
+  if (!span || !span.value.trim()) return literal;
+  const clean = stripAltMarkers(core).trim();
+  if (!clean) return literal;
+  const lead = span.value.match(/^\s*/)[0];
+  const trail = span.value.match(/\s*$/)[0];
+  return (
+    literal.slice(0, span.start) + lead + escapeAttrValue(clean) + trail + literal.slice(span.end)
+  );
+}
+
+/**
+ * The segment id of one field's image alt — the single construction point
+ * exercise-extract (emit) and exercise-assemble (look up) share.
+ *
+ * TYPE `alt`, as module alts are (`{module}:alt:{elementId}`), so every
+ * consumer that already understands an alt segment understands this one. The
+ * elementId names the field (`stimulus` | `stem-{qid}` | `sol-{qid}`) and the
+ * opaque index n of the [[MEDIA:n]] the image sits at: unique per exercise,
+ * fixed by the read-only source, and `[\w-]` only, which both segment parsers
+ * require.
+ * @param {string} nickname - e.g. '01-04-OC-P04'
+ * @param {string} fieldKey - skeleton field key: 'stimulus' | 'stem:{qid}' | 'sol:{qid}'
+ * @param {string|number} n - opaque index
+ * @returns {string}
+ */
+export function altSegId(nickname, fieldKey, n) {
+  return `${nickname}:alt:${fieldKey.replace(':', '-')}-m${n}`;
 }

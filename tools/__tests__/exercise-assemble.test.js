@@ -348,3 +348,108 @@ describe('pure-opaque EN runs are translation-invariant (item-9 MT-run follow-up
     expect(res.skipped.length).toBe(1);
   });
 });
+
+// §C126 #3 / §C123 — image alt segments. BEST-EFFORT by design, unlike runs:
+// every organic chapter's committed exercise MT predates this segment type, so
+// a missing IS alt is the NORMAL state for 31 chapters. Refusing the exercise
+// over it (as a missing run does) would revert all 1,961 translated sidecars
+// to English — strictly worse for a reader than one English alt. A fallback is
+// REPORTED, never silent.
+describe('assembleBook — exercise <img> alt segments', () => {
+  const P04 = '01-04-OC-P04.json';
+  const STEM_ALT_ID = '01-04-OC-P04:alt:stem-357566-m0';
+  const SOL_ALT_ID = '01-04-OC-P04:alt:sol-357566-m0';
+  const EN_SOL_ALT = 'The wedge-dash structure of ethane.';
+
+  const sidecarOf = (res) => JSON.parse(fs.readFileSync(res.written[0], 'utf8'));
+  /** Every <img> alt value in an HTML string, in document order. */
+  const altsIn = (html) => [...html.matchAll(/<img\b[^>]*\salt="([^"]*)"/g)].map((m) => m[1]);
+  const setIsLine = (id, text) => (is) =>
+    is.replace(new RegExp(`(<!-- SEG:${id} -->\\n)[^\\n]*`), (_, head) => head + text);
+  const dropIsBlock = (id) => (is) => is.replace(new RegExp(`<!-- SEG:${id} -->\\n[^\\n]*\\n`), '');
+
+  it("writes the translated alt into its own field's image — the WHOLE value", () => {
+    const res = assembleBook(makeBook({ fixture: P04 }), { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]);
+    const side = sidecarOf(res);
+    expect(altsIn(side.questions[0].collaborator_solutions[0].content_html)).toEqual([
+      `ÞÝТ ${EN_SOL_ALT}`,
+    ]);
+  });
+
+  it('keys the write on the field — the stem alt lands in the stem, not the solution', () => {
+    const book = makeBook({ fixture: P04, mutateIs: setIsLine(STEM_ALT_ID, 'STEMSENTINEL') });
+    const side = sidecarOf(assembleBook(book, { track: 'mt-preview' }));
+    expect(altsIn(side.questions[0].stem_html)).toEqual(['STEMSENTINEL']);
+    expect(altsIn(side.questions[0].collaborator_solutions[0].content_html)).toEqual([
+      `ÞÝТ ${EN_SOL_ALT}`,
+    ]);
+  });
+
+  it('a MISSING IS alt keeps the English alt and does NOT skip the exercise', () => {
+    const book = makeBook({ fixture: P04, mutateIs: dropIsBlock(SOL_ALT_ID) });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]);
+    const q = sidecarOf(res).questions[0];
+    expect(altsIn(q.collaborator_solutions[0].content_html)).toEqual([EN_SOL_ALT]);
+    // The exercise's runs are still translated. (The solution is image-only,
+    // so the check has to look at the stem, which carries text.)
+    expect(q.stem_html).toContain('ÞÝТ');
+  });
+
+  it('reports each fallback by segment id and reason', () => {
+    const book = makeBook({ fixture: P04, mutateIs: dropIsBlock(SOL_ALT_ID) });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.altFallbacks).toEqual([
+      { nickname: '01-04-OC-P04', segId: SOL_ALT_ID, reason: 'missing' },
+    ]);
+  });
+
+  it('a blank IS alt keeps the English alt, reported as empty', () => {
+    const book = makeBook({ fixture: P04, mutateIs: setIsLine(SOL_ALT_ID, '   ') });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]);
+    expect(altsIn(sidecarOf(res).questions[0].collaborator_solutions[0].content_html)).toEqual([
+      EN_SOL_ALT,
+    ]);
+    expect(res.altFallbacks.map((f) => f.reason)).toEqual(['empty']);
+  });
+
+  it('counts the alts it wrote', () => {
+    const res = assembleBook(makeBook({ fixture: P04 }), { track: 'mt-preview' });
+    expect(res.altsWritten).toBe(2);
+  });
+
+  it('strips a marker the MT invented inside an alt', () => {
+    const book = makeBook({
+      fixture: P04,
+      mutateIs: setIsLine(SOL_ALT_ID, 'C[[sub:2]]H[[sub:6]]'),
+    });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(altsIn(sidecarOf(res).questions[0].collaborator_solutions[0].content_html)).toEqual([
+      'C2H6',
+    ]);
+  });
+
+  it('escapes a quote and an ampersand so the attribute stays well-formed', () => {
+    const book = makeBook({ fixture: P04, mutateIs: setIsLine(SOL_ALT_ID, 'A "B" & C') });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(altsIn(sidecarOf(res).questions[0].collaborator_solutions[0].content_html)).toEqual([
+      'A &quot;B&quot; &amp; C',
+    ]);
+  });
+
+  it('a fallback in an exercise that is then SKIPPED is not reported (commit-or-discard)', () => {
+    const book = makeBook({
+      fixture: P04,
+      mutateIs: (is) =>
+        dropIsBlock(SOL_ALT_ID)(is).replace(
+          /<!-- SEG:01-04-OC-P04:stem:357566-b0 -->\n[^\n]*\n/,
+          ''
+        ),
+    });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped.map((s) => s.nickname)).toEqual(['01-04-OC-P04']); // control: the run is missing
+    expect(res.altFallbacks).toEqual([]);
+  });
+});

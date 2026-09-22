@@ -229,3 +229,108 @@ describe('extractBook', () => {
     expect(skel.exercises['01-03-OC-P01']).toBeDefined(); // clean exercise unaffected
   });
 });
+
+// §C126 #3 / §C123 — an exercise <img>'s alt is an opaque literal, so it was
+// never emitted and shipped in English (2,375 organic alts). It is now a
+// segment of its own TYPE, `alt`, keyed on the field and the opaque index n of
+// the [[MEDIA:n]] it belongs to. A new type is what makes this ADDITIVE: a new
+// RUN would shift every later `b{k}` in its field, and 31 chapters of organic
+// exercise MT are keyed on those.
+describe('extractBook — exercise <img> alt segments', () => {
+  const segIds = (text) => [...text.matchAll(/<!-- SEG:(\S+) -->/g)].map((m) => m[1]);
+  const readSeg = (book, ch = 'ch01') =>
+    fs.readFileSync(path.join(book, '02-for-mt', ch, 'exercises-segments.en.md'), 'utf8');
+
+  /** The fixture with every img alt blanked — the same exercise, minus its alts. */
+  function withAltsBlanked(name) {
+    const ex = JSON.parse(fs.readFileSync(path.join(FIXTURES, name), 'utf8'));
+    const blank = (h) => (h ? h.replace(/(<img\b[^>]*\salt=")[^"]*"/g, '$1"') : h);
+    ex.stimulus_html = blank(ex.stimulus_html);
+    for (const q of ex.questions || []) {
+      q.stem_html = blank(q.stem_html);
+      for (const s of q.collaborator_solutions || []) s.content_html = blank(s.content_html);
+    }
+    return ex;
+  }
+
+  it('emits a stem image alt as `{nickname}:alt:stem-{qid}-m{n}` carrying the alt text', () => {
+    const book = makeBook(['01-04-OC-P04.json']);
+    extractBook(book, {});
+    expect(readSeg(book)).toMatch(
+      /<!-- SEG:01-04-OC-P04:alt:stem-357566-m0 -->\nThe ball and stick model of ethane where grey and /
+    );
+  });
+
+  it('emits a public-solution image alt as `{nickname}:alt:sol-{qid}-m{n}`', () => {
+    const book = makeBook(['01-04-OC-P04.json']);
+    extractBook(book, {});
+    expect(readSeg(book)).toContain(
+      '<!-- SEG:01-04-OC-P04:alt:sol-357566-m0 -->\nThe wedge-dash structure of ethane.\n'
+    );
+  });
+
+  it("places each alt right after its own field's runs", () => {
+    const book = makeBook(['01-04-OC-P04.json']);
+    extractBook(book, {});
+    const ids = segIds(readSeg(book));
+    const at = (id) => ids.indexOf(id);
+    const lastStemRun = Math.max(...ids.filter((i) => /:stem:357566-b\d+$/.test(i)).map(at));
+    const firstSolRun = Math.min(...ids.filter((i) => /:sol:357566-b\d+$/.test(i)).map(at));
+    expect(at('01-04-OC-P04:alt:stem-357566-m0')).toBe(lastStemRun + 1);
+    expect(at('01-04-OC-P04:alt:stem-357566-m0')).toBeLessThan(firstSolRun);
+  });
+
+  it('adding alt segments renumbers nothing — the non-alt output is byte-identical to the same exercise without alts', () => {
+    const book = makeBook(['01-04-OC-P04.json']);
+    extractBook(book, {});
+    const withAlts = readSeg(book);
+
+    const bare = makeBook([]);
+    fs.writeFileSync(
+      path.join(bare, '01-source', 'exercises', '01-04-OC-P04.json'),
+      JSON.stringify(withAltsBlanked('01-04-OC-P04.json'))
+    );
+    extractBook(bare, {});
+    const withoutAlts = readSeg(bare);
+
+    const dropAltBlocks = (t) => t.replace(/<!-- SEG:\S+:alt:\S+ -->\n[^\n]*\n\n/g, '');
+    expect(segIds(withoutAlts).some((i) => i.includes(':alt:'))).toBe(false); // control
+    expect(segIds(withAlts).filter((i) => i.includes(':alt:'))).toHaveLength(2); // control
+    expect(dropAltBlocks(withAlts)).toBe(withoutAlts);
+  });
+
+  it('a blank alt emits no segment', () => {
+    const book = makeBook([]);
+    fs.writeFileSync(
+      path.join(book, '01-source', 'exercises', '01-04-OC-P04.json'),
+      JSON.stringify(withAltsBlanked('01-04-OC-P04.json'))
+    );
+    extractBook(book, {});
+    expect(readSeg(book)).not.toContain(':alt:');
+  });
+
+  it('never emits an alt for a private solution (the gate covers alts too)', () => {
+    // 15-99-OC-AP33 is solutions_are_public: false; its only image is in the stem.
+    const book = makeBook(['15-99-OC-AP33.json']);
+    extractBook(book, {});
+    const ids = segIds(readSeg(book, 'ch15'));
+    expect(ids.filter((i) => i.includes(':alt:'))).toEqual(['15-99-OC-AP33:alt:stem-358706-m0']);
+  });
+
+  it('counts alt segments in counts.segments and separately in counts.alts', () => {
+    const book = makeBook(['01-04-OC-P04.json']);
+    const res = extractBook(book, {});
+    expect(res.counts.alts).toBe(2);
+    expect(res.counts.segments).toBe(segIds(readSeg(book)).length);
+  });
+
+  it('every alt elementId is [\\w-] only, so both segment parsers accept it', () => {
+    const book = makeBook(['01-04-OC-P04.json', '15-99-OC-AP33.json', '18a-04-OC-P01.json']);
+    extractBook(book, {});
+    const altIds = ['ch01', 'ch15', 'ch18']
+      .flatMap((ch) => segIds(readSeg(book, ch)))
+      .filter((i) => i.includes(':alt:'));
+    expect(altIds).toHaveLength(4);
+    for (const id of altIds) expect(id.split(':')[2]).toMatch(/^[\w-]+$/);
+  });
+});
