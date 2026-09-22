@@ -1276,7 +1276,7 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:/.test(
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:|\[\[sc:/.test(
       text
     );
 
@@ -1406,6 +1406,26 @@ function reverseInlineMarkup(
       s = s.replace(
         /\[\[span:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
         '<span class="$2">$1</span>'
+      );
+
+      // §C178 — [[sc:text]] (<emphasis effect="smallcaps">, the D/L carbohydrate
+      // notation) BELONGS INSIDE THIS LOOP, and that is measured, not stylistic.
+      // Its own content is always plain text on the real corpus (D ×86, L ×28,
+      // BC ×2 — never wrapping markup), so it is always leaf-level itself and a
+      // single pass would resolve it fine in isolation.
+      //
+      // 🔴 THE REASON IS THE OTHER DIRECTION: 10 of the 116 sit INSIDE another
+      // inline element (parent `emphasis` ×6, `term` ×2, `link` ×2), which extracts
+      // as `[[i:…[[sc:D]]…]]`. The `[[i:` pattern above forbids `[[` in its body,
+      // so that outer marker is NOT leaf-level until `sc` is resolved. Resolved
+      // after the loop — where `[[u:]]` sits — the outer emphasis would never
+      // match and the literal marker would reach the page (assertNoMarkerResidue
+      // turns that into a loud failure, which is the good case, not the safe one).
+      // `[[term:` is resolved later still and forbids `[[` the same way, so the
+      // term-parent instances need this ordering too.
+      s = s.replace(
+        /\[\[sc:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+        '<emphasis effect="smallcaps">$1</emphasis>'
       );
 
       // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].

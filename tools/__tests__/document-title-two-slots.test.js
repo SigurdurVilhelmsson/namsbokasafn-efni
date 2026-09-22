@@ -87,25 +87,23 @@ describe('§C126 ② — a module title carrying markup fills two slots, two way
     expect(withMarkers).toEqual([]);
   });
 
-  it('CONTROL — the markup survives into <title>, bar the ONE title the smallcaps gap owns', () => {
+  it('CONTROL — the markup survives into <title> for EVERY marked-up title', () => {
     // Without this control, a change that flattened BOTH slots would satisfy the
     // md:title test above by stripping everything — a passing suite and a book
     // with no italics in any heading.
     //
-    // 🔴 THE EXCEPTION IS NAMED, NOT TOLERATED. ch25/m00301's title is
+    // ✅ DISCHARGED 2026-09-22 BY §C178, AND THE DISCHARGE IS THE POINT. This
+    // assertion was written as `toEqual(['ch25/m00301'])` — that module's title is
     // `<emphasis effect="smallcaps">D</emphasis>,<emphasis effect="smallcaps">L</emphasis>
-    // Sugars`, and `smallcaps` HAS NO BRACKET-MARKER TYPE — so extract drops it and
-    // the title round-trips as plain `D,L Sugars`. That is organic blocker ① (116
-    // occurrences across 12 modules), not a defect in this one; the same module is
-    // still red in the round-trip check at `{"emphasis":"29->10"}`, i.e. its BODY
-    // loses 19 more.
-    //
-    // ▶ WHEN ① LANDS THIS LIST GOES EMPTY AND THIS TEST GOES RED. That is the
-    // point: it is the notification, not an obstacle. Empty the array then.
+    // Sugars` and `smallcaps` had no bracket-marker type, so it round-tripped as
+    // plain `D,L Sugars`. The exception was NAMED rather than tolerated precisely
+    // so that fixing ① would turn this test red and say so. It did, in the same
+    // full-suite run that proved §C178 green. ▶ A known defect pinned as a
+    // checker's control is a defect with a scheduled notification.
     const lost = marked
       .filter((m) => !/<[a-zA-Z]/.test(firstTitle(roundTrip(m.src)) ?? ''))
       .map((m) => `${m.unit}/${m.moduleId}`);
-    expect(lost).toEqual(['ch25/m00301']);
+    expect(lost).toEqual([]);
   });
 
   it('CONTROL — chemistry has no marked-up title, and round-trips unchanged in both slots', () => {

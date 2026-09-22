@@ -447,6 +447,19 @@ function extractInlineText(
       if (effect === 'italics') return `[[i:${inner}]]`;
       if (effect === 'bold') return `[[b:${inner}]]`;
       if (effect === 'underline') return `[[u:${inner}]]`;
+      // §C178 — smallcaps is the D/L carbohydrate notation and it is NOT italics.
+      // It fell through to `return inner` below, so the element was silently
+      // FLATTENED at extraction: 116 occurrences in 12 organic modules, 0 in
+      // chemistry. ⚠️ AND THE RENDERER'S DEFAULT IS WHAT MADE THIS WORTH A NEW
+      // TYPE RATHER THAN A PASSTHROUGH: `processInlineContent` maps an unmapped
+      // effect to `<em>`, so merely letting smallcaps survive would publish an
+      // ITALIC D — and in chemical nomenclature α/β ARE italic while D/L are not.
+      // A wrong statement, not a missing one.
+      if (effect === 'smallcaps') return `[[sc:${inner}]]`;
+      // ⚠️ `effect="italic"` (SINGULAR) still falls through and is flattened — 2
+      // occurrences, organic ch00/m00001 only. Deliberately NOT mapped here: it
+      // would rewrite the source's own attribute value to `italics` on the way
+      // back, trading a content loss for a fidelity diff. → active register.
       return inner;
     }
   );
@@ -459,6 +472,25 @@ function extractInlineText(
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
       return `[[em:${inner}|${parsedAttrs.class}]]`;
     }
+    // §C178 — AN EFFECT-BEARING <emphasis> DOES REACH HERE, AND UNTIL THIS LINE IT
+    // BECAME ITALICS. The handler above is a LAZY regex with no innermost-first
+    // loop, so on `<emphasis effect="bold"><emphasis effect="smallcaps">D</emphasis>
+    // Sugars</emphasis>` it stops at the FIRST `</emphasis>`: the outer marker's
+    // body is truncated to `<emphasis effect="smallcaps">D` and an orphaned
+    // `</emphasis>` is left behind. This handler then matches that wreckage and,
+    // having no class, returned `[[i:…]]`.
+    //
+    // ▶ THE TWO BUGS CANCELLED INTO WELL-FORMED NESTING WITH THE WRONG TYPE:
+    // `[[b:[[i:D]] Sugars]]` — structurally perfect, and an ITALIC D where the
+    // source says small-caps. Measured on all 6 corpus instances (parents:
+    // emphasis ×6), and it was ALREADY the behaviour before smallcaps had a marker
+    // at all, so no count and no round-trip tag census could see it: an
+    // `<emphasis>` went in and an `<emphasis>` came out.
+    //
+    // Only `smallcaps` is mapped here, deliberately. Widening this to bold and
+    // underline would change what every other orphan produces corpus-wide, which
+    // is a separate change with its own measurement. → active register.
+    if (parsedAttrs.effect === 'smallcaps') return `[[sc:${inner}]]`;
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
     return `[[i:${inner}]]`;
   });
