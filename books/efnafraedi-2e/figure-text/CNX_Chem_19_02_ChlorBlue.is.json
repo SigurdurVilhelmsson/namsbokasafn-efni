@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_ChlorBlue",
+ "renderHash": "268c1337de901ac7",
+ "composedHash": "268c1337de901ac7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "COOCH3": "COOCH3",
+  "CH2CH2COOC20H39": "CH2CH2COOC20H39"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

@@ -3518,5 +3518,10 @@
     "originalImage": "CNX_Chem_12_07_CatConvert",
     "outputName": "CNX_Chem_12_07_CatConvert_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_Dorbital",
+    "outputName": "CNX_Chem_19_03_Dorbital_IS.svg",
+    "extension": ".svg"
   }
 ]

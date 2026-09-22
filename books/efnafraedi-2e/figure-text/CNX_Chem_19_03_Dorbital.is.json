@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_03_Dorbital",
+ "renderHash": "8535480046f1860a",
+ "composedHash": "8535480046f1860a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "dxy": "dxy",
+  "dxz": "dxz",
+  "dyz": "dyz"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

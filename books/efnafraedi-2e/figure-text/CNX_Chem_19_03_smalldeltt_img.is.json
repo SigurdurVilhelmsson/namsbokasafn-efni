@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_03_smalldeltt_img",
+ "renderHash": "64d44f575654d43a",
+ "composedHash": "64d44f575654d43a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "small Δtet": "lítið Δtet"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

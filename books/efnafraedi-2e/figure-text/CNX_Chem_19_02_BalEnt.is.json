@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_19_02_BalEnt",
+ "renderHash": "2f290c4bd1160c20",
+ "composedHash": "2f290c4bd1160c20",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "NHNH": "NHNH"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

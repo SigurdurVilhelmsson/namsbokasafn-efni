@@ -740,3 +740,38 @@ handles costs almost nothing, so the audit's exclusion stands.
 
 **The one flagged ATTR row is benign whitespace:** the source `alt` on m68836 `#fs-idp215036560`
 ends with a **trailing space** that the round-trip trims. Same class as ch16's leading-space trim.
+
+## ch19 — 5 units · ~1,730 ISK text + ~31 ISK figures · `DONE=stopped` then PREPARED BY HAND
+
+**41-term subset** = audited 39 + `complementary color` + `trigonal planar`. `arm: 5 of 5
+glossary-only`. Figures 51 enumerated / 15 translated, VERDICT ok. 8 pages, **0 raw `[[` against a
+1,267-marker positive control**. Manifest `green=true unexplained=0`, 133 perfect, 0 skipped.
+
+### ⏹ THE DRIVER STOPPED ON SUPERSEDED ARTWORK — a KNOWN, PRE-RULED condition, not a new problem
+
+Two figures were **REFUSED**, both verified by [USER] on **2026-09-08** and recorded in
+`supersededArtwork`, which is *why* they were refused:
+- `CNX_Chem_19_01_BlastFurn` — the EPS artboard holds TWO furnaces (an old embedded bitmap beside
+  the current vector), so a composed SVG would show both.
+- `CNX_Chem_19_03_Pattern_img` — the published 2e figure is re-oriented; the delivery holds only
+  the old horizontal strip.
+
+▶ **REFUSED means nothing was composed and nothing is published over them**, so the driver's
+*"confirm before publishing over it"* halt is conservative rather than describing a live risk. The
+remaining steps were run by hand at 0 ISK. ⚠️ **Readers still see an earlier translated copy of
+`CNX_Chem_19_01_BlastFurn` — refusing does not retire it** (§C140 ⑦), and that is unchanged by this
+run.
+
+### ✅ THE REGISTER PREDICTED THE FAILING MODULE BY NAME, BEFORE THE RUN
+
+Inject exited 1 with a GREEN manifest: `m68844: FAILED — Marker residue … 2 marker(s) survived`.
+CLAUDE.md already says *"⑰'s four named modules refusing inject (`--no-annotate-en`); **ch19 will
+hit m68844**"*, and the driver carries `m68700|m68733|m68747|m68844` as its known set. Re-injected
+with `--no-annotate-en` → **COMPLETE, PERFECT fidelity**. ⚠️ **That flag must be re-applied after
+any future ch19 inject** — the documented plain command does not reproduce it.
+
+✅ **Verified by value:** `fyllingarlitur` **0 → 1** with `fyllilitur` **1 → 0** · `þríhyrnt flatt`
+**0 → 1** with `þríhyrningslaga` **5 → 0** · `miðjumálm` **10 → 41** · `ferningslaga flatt` 3 → 9.
+
+**Roundtrip: 2 ATTR rows, both benign** — source alts ending in a trailing space that the
+round-trip trims, the same class as ch16's and ch18's.
