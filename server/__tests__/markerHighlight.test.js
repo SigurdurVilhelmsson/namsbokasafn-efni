@@ -31,6 +31,11 @@ describe('highlightMarkersInPlace — character preservation invariant', () => {
     'Sýran er **feit** og __hugtak__ og ++undirstrik++.',
     'Vatn H~2~O og Ca^2+^ og {=áhersla=}.',
     'Sjá [tengill](#anchor) og [skjal](m123#frag) og [#CNX_Chem_05_02].',
+    // §C178 — smallcaps, including the nested shape the corpus actually holds
+    // (`<emphasis effect="bold"><emphasis effect="smallcaps">D</emphasis> …`).
+    // This file enforces the character-preservation invariant for every marker
+    // type the editor can be shown, and it had no `sc` case when the type shipped.
+    'Sykrurnar [[sc:D]] og [[sc:L]], og [[b:[[sc:D]] sykrur]].',
     'Special <chars> & "quotes" \'apos\' með [[i:a<b & c]].',
   ];
   for (const input of cases) {
@@ -48,6 +53,13 @@ describe('highlightMarkersInPlace — character preservation invariant', () => {
 describe('highlightMarkersInPlace — marker detection', () => {
   it('wraps a [[MATH:N]] atom in a highlight span', () => {
     expect(highlightMarkersInPlace('x [[MATH:1]] y')).toContain('class="marker-hl');
+  });
+
+  it('highlights [[sc:]] — the type added with §C178', () => {
+    // Cosmetic, but an UNhighlighted marker reads as prose an editor may try to
+    // translate. The nested form is the one the corpus holds.
+    expect(highlightMarkersInPlace('[[sc:D]] sykrur')).toContain('marker-hl');
+    expect(highlightMarkersInPlace('[[b:[[sc:D]] sykrur]]')).toContain('marker-hl');
   });
 
   it('highlights the bracket family ([[sub:]], [[i:]], [[xref:]])', () => {

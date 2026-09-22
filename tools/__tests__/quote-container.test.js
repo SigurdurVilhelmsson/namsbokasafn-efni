@@ -77,10 +77,21 @@ describe('§C179 — <quote> survives as a callout instead of being unwrapped', 
     expect(JSON.stringify(structure.elements || []).includes('"type":"quote"')).toBe(false);
     // …and exactly one must still reach the injected CNXML, via the example.
     expect(count(roundTrip(m.src), /<quote\b/g)).toBe(1);
-    // ⚠️ AND ITS TEXT MUST STILL REACH THE READER. Preserving-not-emitting is
-    // only correct if the example really does carry it through; this is the
-    // control that separates "owned elsewhere" from "silently dropped".
-    expect(html(roundTrip(m.src), 13, 'm00155')).toContain('Broadband decoupled');
+    // 🔴 AND ITS PROSE MUST REACH THE READER — KEYED ON THE ELEMENT ID, NOT ON
+    // THE WORDS. The first version of this assertion searched the page for
+    // "Broadband decoupled" and PASSED while all three paras were missing,
+    // because a nearby figure's `alt` contains the same phrase. The value was
+    // present; the element was not.
+    //
+    // That false pass hid a real, pre-existing loss: renderExample had no quote
+    // handler, so this example jumped from "…has the following spectral data:"
+    // straight to the Strategy heading and the data never appeared. §C179 wires
+    // `quote: renderQuote` into that dispatch; these ids are the proof.
+    const out155 = html(roundTrip(m.src), 13, 'm00155');
+    for (const id of ['para-00005', 'para-00006', 'para-00007']) {
+      expect(out155).toContain(`id="${id}"`);
+    }
+    expect(out155).toContain('<blockquote');
   });
 
   it('RENDERED — a top-level quote becomes <blockquote class="cnx-callout"> with its prose inside', () => {

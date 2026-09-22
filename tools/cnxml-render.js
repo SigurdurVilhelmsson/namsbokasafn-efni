@@ -1844,6 +1844,20 @@ function renderExample(example, context) {
       // (the depth-aware walk itemizes it once, at this container — m68793
       // tables 12.31/12.32).
       table: renderTable,
+      // 🔴 §C179 — WITHOUT THIS LINE A QUOTE INSIDE AN <example> LOSES ITS PROSE
+      // ENTIRELY, AND IT DID. Measured on ch13/m00155, whose <quote> is the only
+      // one of the corpus's 4 that is nested: its three paras (the ¹³C NMR data
+      // the preceding sentence promises with "…has the following spectral data:")
+      // reached the rendered page NOT AT ALL — the example jumped straight from
+      // that sentence to the Strategy heading. Identical on origin/main, so this
+      // is a PRE-EXISTING loss this item closes, not a regression it caused.
+      //
+      // ⚠️ IT WAS ALMOST SHIPPED AS "verified fine", and the probe is why: a
+      // check for the quote's text found it and passed, because the SAME WORDS
+      // appear in a nearby figure's `alt`. The value was present; the element was
+      // not. ▶ Key a presence check on the ELEMENT ID, never on prose that can
+      // legitimately occur elsewhere on the page.
+      quote: renderQuote,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
     // centered display block, not as a cramped inline <span class="math-inline">

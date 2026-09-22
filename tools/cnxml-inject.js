@@ -1417,12 +1417,20 @@ function reverseInlineMarkup(
       // 🔴 THE REASON IS THE OTHER DIRECTION: 10 of the 116 sit INSIDE another
       // inline element (parent `emphasis` ×6, `term` ×2, `link` ×2), which extracts
       // as `[[i:…[[sc:D]]…]]`. The `[[i:` pattern above forbids `[[` in its body,
-      // so that outer marker is NOT leaf-level until `sc` is resolved. Resolved
-      // after the loop — where `[[u:]]` sits — the outer emphasis would never
-      // match and the literal marker would reach the page (assertNoMarkerResidue
-      // turns that into a loud failure, which is the good case, not the safe one).
-      // `[[term:` is resolved later still and forbids `[[` the same way, so the
-      // term-parent instances need this ordering too.
+      // so that outer marker is NOT leaf-level until `sc` is resolved.
+      //
+      // ⚠️ AND THE MECHANISM IS `term`, NOT `emphasis` — a first version of this
+      // comment named the wrong one. MEASURED by counterfactual: move this
+      // replace to the `[[u:]]` site after the loop and the corpus run THROWS,
+      // `assertNoMarkerResidue` catching two unresolved
+      // `[[term:<emphasis effect="smallcaps">D</emphasis> sugars|term-00001]]`
+      // on m00301. The emphasis-parent cases (×6) survive that move, because
+      // `resolveBracketEmphasis` is called AGAIN after the link conversion (the
+      // C1 re-resolve) and rescues them. `[[term:` is converted BEFORE that
+      // re-resolve and forbids `[[` in its body, so the term-parent instances
+      // (×2) are what genuinely require this placement.
+      // ▶ The failure is LOUD, not silent — which is the good case, not the safe
+      // one: it refuses the module rather than publishing a literal marker.
       s = s.replace(
         /\[\[sc:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
         '<emphasis effect="smallcaps">$1</emphasis>'
