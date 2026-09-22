@@ -19,8 +19,8 @@
  * Residue policy = inject's, same libs (detectResidue + allowlist).
  *
  * §C126 #3 — image alt segments are the one exception, and deliberately
- * BEST-EFFORT: a missing or blank IS alt keeps the image's English alt and is
- * REPORTED (`altFallbacks`), never refused. Every organic chapter's committed
+ * BEST-EFFORT: a missing, blank or verbatim-English IS alt keeps the image's
+ * English alt and is REPORTED (`altFallbacks`), never refused. Every organic chapter's committed
  * exercise MT predates the alt segment type, so refusing would revert whole
  * translated exercises to English over one attribute.
  *
@@ -182,6 +182,11 @@ export function assembleBook(bookDir, opts) {
               exAltFallbacks.push({ nickname, segId, reason: 'missing' });
             } else if (!stripAltMarkers(isAlt).trim()) {
               exAltFallbacks.push({ nickname, segId, reason: 'empty' });
+            } else if (detectResidue(alt.core, isAlt).exact) {
+              // The MT echoed the English. Writing it would change nothing a
+              // reader sees, and counting it as written would report an
+              // English alt as translated (§C89, applied to our own counter).
+              exAltFallbacks.push({ nickname, segId, reason: 'untranslated' });
             } else {
               opaques[alt.n] = withImgAlt(opaques[alt.n], isAlt);
               exAltsWritten++;
@@ -280,7 +285,9 @@ function main() {
     const by = (r) => res.altFallbacks.filter((f) => f.reason === r).length;
     console.log(
       `  image alts: ${res.altsWritten} translated, ${res.altFallbacks.length} kept English` +
-        (res.altFallbacks.length ? ` (no IS segment: ${by('missing')}, blank: ${by('empty')})` : '')
+        (res.altFallbacks.length
+          ? ` (no IS segment: ${by('missing')}, blank: ${by('empty')}, MT left English: ${by('untranslated')})`
+          : '')
     );
   }
   if (res.chaptersMissingIs.length > 0) {

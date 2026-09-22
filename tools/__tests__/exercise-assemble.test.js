@@ -415,6 +415,18 @@ describe('assembleBook — exercise <img> alt segments', () => {
     expect(res.altFallbacks.map((f) => f.reason)).toEqual(['empty']);
   });
 
+  it('an IS alt the MT returned verbatim is reported untranslated, NOT counted as written', () => {
+    // §C89 applied to our own counter: a write of the English alt is not a
+    // translation, and a counter of writes would report it as one.
+    const book = makeBook({ fixture: P04, mutateIs: setIsLine(SOL_ALT_ID, EN_SOL_ALT) });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]); // best-effort: never refused
+    expect(res.altFallbacks).toEqual([
+      { nickname: '01-04-OC-P04', segId: SOL_ALT_ID, reason: 'untranslated' },
+    ]);
+    expect(res.altsWritten).toBe(1); // the stem alt only
+  });
+
   it('counts the alts it wrote', () => {
     const res = assembleBook(makeBook({ fixture: P04 }), { track: 'mt-preview' });
     expect(res.altsWritten).toBe(2);
