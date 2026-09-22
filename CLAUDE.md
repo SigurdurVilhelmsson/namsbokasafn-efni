@@ -710,6 +710,25 @@ copy anywhere, which is what made the loss total rather than recoverable.
   It is the only detector that fires here, and it is two seconds. **This is the second mutant
   stranded in this repo by an agent rather than a timeout** (the first was committed; see
   memory `engineering-lessons`, two agents on one tree).
+- 🔴 **AMENDED 2026-09-22 — THE SAME RULE GOVERNS A BEFORE/AFTER MEASUREMENT, AND THERE
+  `git stash` IS THE UNSAFE RESTORE.** Measured while sizing §C177: a run had left four
+  tracked `books/*/02-structure/*-manifest.json` files dirty on nothing but their
+  `extractedAt` timestamp. `git stash` swept them in with the two source files, and the
+  pop came back **`UU` conflicted**, stranding the tree mid-measurement — the source
+  files survived only because golden copies existed. ▶ **For the before-arm use
+  `git show HEAD:<file> > <file>`, restore from the golden `cp`, and `cmp`** — it touches
+  exactly the files you name, which `stash` does not. ⚠️ **And a generated artifact under
+  `books/` can be dirty without you having written it**, so `git status --porcelain`
+  before any stash, not only after an agent goes quiet.
+- 🔴 **AND CHOOSE THE RIGHT TWO SIDES: A FRESH RUN vs A *COMMITTED* ARTIFACT MEASURES
+  VINTAGE, NOT YOUR CHANGE.** The generated trees are of mixed vintage by design, so
+  diffing a fresh extract against committed `02-for-mt` reports every pipeline change
+  since that file was written. Measured: 83 chemistry count-differences attributed to an
+  edit that touched chemistry not at all. ▶ **The tell was internal and is worth carrying:
+  `COUNT differs: 83` beside `ID SET differs: 0` is not a shape one edit produces** — a
+  change that alters how many segments a module emits alters which ids exist. **When two
+  halves of one result cannot both be true of your change, the instrument is wrong, not
+  the change.** Re-run as before-vs-after and the same probe read 0 / 0 / 0.
 
 🔴 **DURABLE — A PROMISE THAT NEVER SETTLES EXITS 0; IT DOES NOT HANG.** `new Promise(() => {})`
 holds **no handle**, so Node's event loop empties and the process exits **normally with 0**,
