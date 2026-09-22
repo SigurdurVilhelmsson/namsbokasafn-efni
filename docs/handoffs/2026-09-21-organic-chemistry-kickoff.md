@@ -50,7 +50,10 @@ rather than a fix** (19 organic). ✅ And one blocker organic does **not** have:
    export for the ruled values. Never by the clock; buying early spends on the OLD glossary.
 5. **Re-extract, then `--dry-run` to price it.** `api-translate` reads the GENERATED `02-for-mt`, so
    buying without re-extracting re-translates the old English and exits 0 — and §C177/§C178/§C179
-   all changed what extraction emits, so **every organic unit's `02-for-mt` is now stale**.
+   all changed what extraction emits. ✅ **The whole-book re-extract is done (`cc28de312`, 2026-09-22) —
+   the register's RESUME carries what it measured.** ▶ **The rule survives the event: after ANY later
+   extractor change, re-extract the unit again before its `--dry-run`.** ⚠️ And ch12's committed MT is
+   stale under stable ids — re-buy it, never inject it.
 
 ▶ **Then buy text and figures as ONE unit** ([USER] ruling), in the foreground, and let the loop stop
 at PREPARED. **Only [USER] syncs**, timed against classroom use.

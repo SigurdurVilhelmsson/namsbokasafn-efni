@@ -2,6 +2,22 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of **2026-09-22, night — ✅ ORGANIC IS RE-EXTRACTED TO TODAY'S EXTRACTOR, WHOLE BOOK (`cc28de312`). ✅ §C92 CLOSED: no source refresh, errata carried by hand. ⏹ The sync is still HELD** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **pick organic's first unit (not ch03) and run its free pre-buy checks, then price it with `--dry-run --force`.** Nothing is bought until [USER] authorises the spend.
+
+The 0-ISK sequence is the kickoff handoff's moves 2–4 plus loop Step 1b: `source-roundtrip-check.js lifraen-efnafraedi <unit> --verbose` → `compute-glossary-subset.js` then audit it (and cross-check `houseStyleTerms.js`, which organic **inherits** from chemistry, where the check inverts) → `chapter-term-check.js --pre-buy` → `api-translate.js --dry-run --force`. ⚠️ Only ch03 is in the render oracle's manifest.
+
+✅ **THE PREVIOUS BLOCK'S NEXT ACTION WAS ALREADY DISCHARGED WHEN THIS SESSION OPENED.** It said the two vefur CSS commits were "on a local branch and not pushed"; both are on vefur `origin/main` via merged PR #233 (`731199b`). **Merged — deploy NOT verified from here.**
+
+✅ **THE RE-EXTRACT — measured, not assumed; detail in `cc28de312`'s message.** All 33 units exit 0, 342 modules. **262 of 342** segment files changed, **0 lost segments**, id moves are additions only (64 `figure-title`, 14 positional `entry` ids renumbered in 3 modules without MT). Sentinels: `[[sc:` **0 → 116** = source smallcaps; `[[span:` **31 → 1,071** = source `<span>`; the 15 fabricated `"Problems"` titles gone. `exercise-extract` byte-identical. A word-token loss check flagged 36 modules; an 18-agent adversarial review classified all 36 against source as intended fix or tokenizer artifact, **0 real losses, 0 duplications** — and found `c9f2f5354` restoring **704** empty cross-references in the glossary appendix alone. Suite by name: exactly 2 premise pins went red and were re-pinned with measurements; 0 other movement.
+- 🔴 **organic ch12's committed MT is STALE UNDER STABLE IDS — 6 of its 9 modules changed English with no id change.** That is the `getSeg`-hit case no count sees. **Re-buy ch12; never inject it from the committed MT.** ch03 (the one published unit) is byte-identical.
+- ⚠️ **Three instrument traps hit and corrected in the doing — all the known shapes:** `grep -r` over `02-for-mt` counts the gitignored `.backup.*` copies (1,164 "spans" vs 1,071); a set keyed on `basename.slice(0,6)` collapses every `exercises-segments` bundle into one id (A3 probe read 10 vs the true 13); a source normaliser that strips tags to SPACES makes `C<sub>6</sub>H<sub>14</sub>` unmatchable and reports `×0 in source` for text that is there. **Each was caught by a control that reproduced a known number first.**
+
+✅ **§C92 CLOSED — [USER] 2026-09-22, route (c): no refresh.** Upstream re-measured, unchanged since 2026-07-01. The editor-applicable errata (**ch11 `m00130`: four edits in three segments**), the two figure-only errata and the nine `<thead>` additions no editor can insert are listed by name in §C92. ▶ **When ch11 is bought, apply §C92's `m00130` edits before it reaches PREPARED.**
+
+⏹ **THE SYNC IS STILL HELD BY [USER] 2026-09-22**, and the **21 redirect rows must reach vefur BEFORE it** (`docs/handoffs/2026-09-20-vefur-chemistry-autorun-redirects.md`).
+
 ## ⏩ RESUME — state as of **2026-09-22, evening — ✅ §C173's WHOLE FIX SET IS SHIPPED. ① smallcaps (§C178) · ② `<quote>` (§C179) · ③ document title (§C177), in BOTH repos. Organic's unbought fidelity workload fell 101 → 67 red modules at 0 ISK. ⏹ The sync is still HELD** (supersedes every block below)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER] decides whether the two vefur CSS commits are pushed/deployed, then organic's first chapter can be priced.** Nothing is bought until that.
