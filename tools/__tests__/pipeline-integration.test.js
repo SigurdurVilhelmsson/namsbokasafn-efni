@@ -332,7 +332,7 @@ describe('cnxml-render', () => {
       'utf8'
     );
     const c = readFileSync(
-      join(outputPath, 'appendices-3-einingar-og-umreiknistudlar.html'),
+      join(outputPath, 'appendices-3-einingar-og-umreikningsstudlar.html'),
       'utf8'
     );
 
