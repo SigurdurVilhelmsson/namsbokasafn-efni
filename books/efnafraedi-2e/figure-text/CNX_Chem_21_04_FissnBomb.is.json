@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_04_FissnBomb",
+ "renderHash": "6d528421345e78ea",
+ "composedHash": "6d528421345e78ea",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "beryllium - polonium initiator": "Beryllíum-pólóníum kveikir",
+  "Detonators": "Sprengikveikjur",
+  "Conventional|explosive": "Hefðbundið sprengiefni",
+  "plutonium 239": "Plútoníum 239",
+  "Detonator": "Sprengikveikja",
+  "uranium 235": "Úraníum 235"
+ },
+ "mtAlternatives": {
+  "beryllium - polonium initiator": {
+   "kept": "joined",
+   "other": "beryllín-pólóníum kveikir",
+   "reason": "disagree",
+   "mt": "Beryllíum-pólóníum kveikir"
+  },
+  "plutonium 239": {
+   "kept": "joined",
+   "other": "plútoníum 239",
+   "reason": "disagree",
+   "mt": "Plútoníum 239"
+  },
+  "Detonator": {
+   "kept": "joined",
+   "other": "Sprengikveikir",
+   "reason": "disagree",
+   "mt": "Sprengikveikja"
+  },
+  "uranium 235": {
+   "kept": "joined",
+   "other": "úran 235",
+   "reason": "disagree",
+   "mt": "Úraníum 235"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

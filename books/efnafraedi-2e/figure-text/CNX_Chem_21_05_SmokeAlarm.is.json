@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_05_SmokeAlarm",
+ "renderHash": "76910514b9e147cd",
+ "composedHash": "76910514b9e147cd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "No smoke,|charged particles|complete the circuit": "Enginn reykur, hlaðnar agnir loka rafrásinni",
+  "Metal|plates": "Málmplötur",
+  "Smoke|particle": "Reykögn",
+  "Alpha|particles": "Alfaagnir",
+  "Americium|source": "Ameríkíumgjafi",
+  "Smoke uncharges the particles,|circuit is broken,|alarm is triggered": "Reykur afhleður agnirnar, rafrásin rofnar, viðvörunarbjalla fer í gang",
+  "Ionization chamber": "Jónunarhólf",
+  "Alarm": "Viðvörunarbjalla"
+ },
+ "mtAlternatives": {
+  "Americium|source": {
+   "kept": "joined",
+   "other": "Amerísíngeisli",
+   "reason": "disagree",
+   "mt": "Ameríkíumgjafi"
+  },
+  "Smoke uncharges the particles,|circuit is broken,|alarm is triggered": {
+   "kept": "joined",
+   "other": "Reykur afhleður agnirnar, rásin rofnar, viðvörun fer í gang",
+   "reason": "disagree",
+   "mt": "Reykur afhleður agnirnar, rafrásin rofnar, viðvörunarbjalla fer í gang"
+  },
+  "Alarm": {
+   "kept": "joined",
+   "other": "Vekjaraklukka",
+   "reason": "disagree",
+   "mt": "Viðvörunarbjalla"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

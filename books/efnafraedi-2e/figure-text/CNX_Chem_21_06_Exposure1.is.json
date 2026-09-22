@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Exposure1",
+ "renderHash": "70757769a8d7c40e",
+ "composedHash": "70757769a8d7c40e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "AREA|83769S|14601ARE07/20/2002": "SVÆÐI 83769S 14601ARE07/20/2002",
+  "83769DPT": "83769DPT",
+  "Rate of radioactive decay": "Hraði geislavirkrar hrörnunar",
+  "measured in bequerels or curies": "mældur í bekerelum eða kúrím",
+  "Absorbed dose measured in grays or rads": "Geislaálag mælt í greium eða rödum",
+  "Film badge or dosimeter": "Filmuskammtamælir eða skammtamælir",
+  "measures tissue damage": "mælir vefjaskemmdir",
+  "exposure in rems or sieverts": "útsetning í remum eða sívertum"
+ },
+ "mtAlternatives": {
+  "AREA|83769S|14601ARE07/20/2002": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "SVÆÐI 83769S 14601ARE07/20/2002"
+  },
+  "Rate of radioactive decay": {
+   "kept": "joined",
+   "other": "Hraði geislavirkrar rotnunar",
+   "reason": "disagree",
+   "mt": "Hraði geislavirkrar hrörnunar"
+  },
+  "measured in bequerels or curies": {
+   "kept": "joined",
+   "other": "mælt í bekkerelum eða kúrím",
+   "reason": "disagree",
+   "mt": "mældur í bekerelum eða kúrím"
+  },
+  "Absorbed dose measured in grays or rads": {
+   "kept": "joined",
+   "other": "Geislaskammtur mældur í grejum eða rödum",
+   "reason": "disagree",
+   "mt": "Geislaálag mælt í greium eða rödum"
+  },
+  "Film badge or dosimeter": {
+   "kept": "joined",
+   "other": "Filmuskammta- eða geislamælir",
+   "reason": "disagree",
+   "mt": "Filmuskammtamælir eða skammtamælir"
+  },
+  "measures tissue damage": {
+   "kept": "joined",
+   "other": "metur vefjaskemmdir",
+   "reason": "disagree",
+   "mt": "mælir vefjaskemmdir"
+  },
+  "exposure in rems or sieverts": {
+   "kept": "joined",
+   "other": "geislaálag í rem eða sievert",
+   "reason": "disagree",
+   "mt": "útsetning í remum eða sívertum"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Hydroxyrad_img",
+ "renderHash": "43a08e68937fb201",
+ "composedHash": "43a08e68937fb201",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "radiation": "geislun"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

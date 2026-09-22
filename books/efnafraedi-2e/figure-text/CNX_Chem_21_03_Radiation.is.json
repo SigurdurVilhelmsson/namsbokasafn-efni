@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_03_Radiation",
+ "renderHash": "4f20202b2ff7d13f",
+ "composedHash": "4f20202b2ff7d13f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "α rays": "α-geislar",
+  "γ rays": "γ-geislar",
+  "β rays": "β-geislar",
+  "Lead block": "Blýkubbur",
+  "Radioactive substance": "Geislavirkt efni",
+  "Electrically charged|plates": "Rafhlaðnar plötur",
+  "Photographic|plate": "Ljósmyndaplata"
+ },
+ "mtAlternatives": {
+  "γ rays": {
+   "kept": "joined",
+   "other": "Gammageislar",
+   "reason": "disagree",
+   "mt": "γ-geislar"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

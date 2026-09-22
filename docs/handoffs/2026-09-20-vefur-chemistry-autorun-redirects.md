@@ -247,3 +247,15 @@ real: transcribing the render log would have left a live URL pointing at a delet
 
 ⚠️ **The first row is the `hydrocarbon → vetniskolefni` ruling reaching the §20.1 section URL** —
 the page was literally named `kolvetni`, the word that meant both *hydrocarbon* and *carbohydrate*.
+
+## ch21 — prepared 2026-09-21 (~2,353 ISK all in, including a 2nd-attempt retry)
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/21/21-3-geislavirk-hrornun.html` | `chapters/21/21-3-geislasundrun.html` | m68854 |
+| `chapters/21/21-4-umskipting-og-kjarnorka.html` | `chapters/21/21-4-frumefnabreyting-og-kjarnorka.html` | m68856 |
+| `chapters/21/21-5-notkun-geislasamsaeta.html` | `chapters/21/21-5-notkun-geislasamsaetna.html` | m68857 |
+
+_Slug map 53 → 56: **added=3, changed=0, removed=0**._ ⚠️ **The first row is
+`radioactive decay → geislasundrun` reaching a section URL — a form the model had NEVER produced
+before the ruling.**

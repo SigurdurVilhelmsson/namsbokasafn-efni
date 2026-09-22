@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_03_Reaction1",
+ "renderHash": "53da5d9eb5c8cc7b",
+ "composedHash": "53da5d9eb5c8cc7b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Parent nucleus|uranium-238": "Móðurkjarni úran-238",
+  "α particle": "α-ögn",
+  "Daughter nucleus|thorium-234": "Dótturkjarni þórín-234"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_03_HalfLife",
+ "renderHash": "6fbb8566c62f759d",
+ "composedHash": "6fbb8566c62f759d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Number of half-lives|(1 half-life = 5.27y)": "Fjöldi helmingunartíma (1 helmingunartími = 5,27 ár)",
+  "Co-60 Decay": "Co-60 hrörnun",
+  "Co-60 remaining (%)": "Co-60 eftir (%)"
+ },
+ "mtAlternatives": {
+  "Co-60 Decay": {
+   "kept": "joined",
+   "other": "Hrun Co-60",
+   "reason": "disagree",
+   "mt": "Co-60 hrörnun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_05_Co60Decay",
+ "renderHash": "55f771e8a42cedf1",
+ "composedHash": "55f771e8a42cedf1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1.48 MeV β|0.12%": "1,48 MeV β 0,12%",
+  "0.31 MeV β|99.88%": "0,31 MeV β 99,88%",
+  "1.1732 MeV γ": "1,1732 MeV γ",
+  "1.3325 MeV  γ": "1,3325 MeV γ"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

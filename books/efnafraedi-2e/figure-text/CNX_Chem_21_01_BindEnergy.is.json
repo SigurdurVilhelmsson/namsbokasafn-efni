@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_01_BindEnergy",
+ "renderHash": "c8f195cc922b2e3c",
+ "composedHash": "c8f195cc922b2e3c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Mass number": "Massatala",
+  "Binding energy per nucleon (MeV)": "Bindiefni á hverja kjarneind (MeV)",
+  "Fusion": "Kjarnasamruni",
+  "Fission": "Kjarnaklofnun"
+ },
+ "mtAlternatives": {
+  "Binding energy per nucleon (MeV)": {
+   "kept": "joined",
+   "other": "Bindingsorka á hverja núkleón (MeV)",
+   "reason": "disagree",
+   "mt": "Bindiefni á hverja kjarneind (MeV)"
+  },
+  "Fusion": {
+   "kept": "joined",
+   "other": "Samruni",
+   "reason": "disagree",
+   "mt": "Kjarnasamruni"
+  },
+  "Fission": {
+   "kept": "joined",
+   "other": "Klofnun",
+   "reason": "disagree",
+   "mt": "Kjarnaklofnun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

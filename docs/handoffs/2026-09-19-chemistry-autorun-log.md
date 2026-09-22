@@ -806,3 +806,36 @@ have shipped the wrong word here** — the check is per-term measurement, not a 
 
 🔴 **FOUR redirect rows, not the three the render log printed** — a chain collapse rewrote an
 earlier entry's target. See the redirects handoff; one previously-published row is superseded.
+
+## ch21 — 8 units · ~1,697 ISK text + ~48 ISK figures + ~608 ISK retry · PREPARED, WITH LOGGED RESIDUE
+
+**36-term subset** = audited 34 + `laser` + `steam`. `arm: 8 of 8 glossary-only`. Figures 38
+enumerated / 25 translated. Manifest `green=true unexplained=0`, 134 perfect, 0 skipped. 12 pages,
+**0 raw `[[` against a 623-marker positive control**. Roundtrip **0 ATTR/TEXT/BUILD rows**.
+
+### 🔴 ch21 IS THE ONLY CHAPTER IN THE CAMPAIGN WITH UNTRANSLATED PROSE, AND CONTROLS PROVE IT
+
+A prose-filtered census of segments whose Icelandic is byte-identical to the English (markers
+stripped; ≥5 alphabetic words, so chemical formulas and numeric answers — which are *correctly*
+identical — are excluded):
+
+| ch09 | ch16 | ch17 | ch18 | ch19 | ch20 | **ch21** |
+|---|---|---|---|---|---|---|
+| 0 | 0 | 0 | 0 | 0 | 0 | **11 (2.2%)** |
+
+▶ **ch09 and ch16 were already accepted, so the zeros are a control, not an assumption** — the
+instrument finds nothing where there is nothing.
+
+**Second paid attempt (~608 ISK), per [USER]'s rule that a detected sporadic defect is retried:**
+m68856 **5 → 1**, m68852 **6 → 6**. Both returned `HELD BACK` on id-reattach mismatches (6 and 1
+respectively) — **and those counts match the residue exactly**, so this is not the model refusing
+to translate, it is B4-D11's count guard declining to attach. §C136: *held back ≠ defect*.
+
+⏸ **7 segments remain English, in 2 modules. Two paid attempts is CLAUDE.md's precedent before
+logging rather than re-buying** (ch08 m68744 is the recorded case). m68852, m68856 and m68858 were
+written with `--allow-incomplete` and are marked `[INCOMPLETE]` — a recorded state, not a silent
+one. **📋 For editors: `m68852` (6 segments) and `m68856` (1).**
+
+✅ **Verified by value:** `geislasundrun` **43** and `sundrun` 141 — the 0-token deliberate ruling
+of 2026-09-20 took strongly and renamed a section URL. `keðjuhvar-` 25. `klofnanleg` 11 with
+`fissionable` correctly OFF the wire, so the chapter keeps the distinction it teaches.

@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_01_BandStable",
+ "renderHash": "80fe086e908b5485",
+ "composedHash": "80fe086e908b5485",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Number of protons (Z)": "Fjöldi róteinda (Z)",
+  "Nonradioactive": "Ógeislavirkt",
+  "Radioactive": "Geislavirkt",
+  "Number of neutrons (n)": "Fjöldi nifteinda (n)"
+ },
+ "mtAlternatives": {
+  "Nonradioactive": {
+   "kept": "joined",
+   "other": "Ógeislavirkur",
+   "reason": "disagree",
+   "mt": "Ógeislavirkt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

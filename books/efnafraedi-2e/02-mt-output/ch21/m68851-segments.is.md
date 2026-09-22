@@ -2,28 +2,28 @@
 Gerð og stöðugleiki kjarna
 
 <!-- SEG:m68851:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68851:abstract-item:abstract-item-1 -->
 Lýst gerð kjarna með tilliti til róteinda, nifteinda og rafeinda
 
 <!-- SEG:m68851:abstract-item:abstract-item-2 -->
-Reiknað massagalla og bindiorku fyrir kjarna
+Reiknað út massarýrð og bindisorku kjarna
 
 <!-- SEG:m68851:abstract-item:abstract-item-3 -->
 Útskýrt þróun í hlutfallslegum stöðugleika kjarna
 
 <!-- SEG:m68851:para:fs-idp11934128 -->
-{{term}}Kjarnaefnafræði{{/term}} er fræðigrein sem fæst við rannsóknir á efnahvörfum sem fela í sér breytingar á gerð kjarna. Í kaflanum um frumeindir, sameindir og jónir var farið yfir grunnhugmyndina um gerð kjarna, þ.e. að kjarni frumeindar sé samsettur úr róteindum og, að undanskildu [[MATH:1]], nifteindum. Rifjum upp að fjöldi róteinda í kjarna er kallaður sætistala (Z) frumefnisins og summa fjölda róteinda og nifteinda er massatala (A). Frumeindir með sömu sætistölu en mismunandi massatölu eru samsætur sama frumefnis. Þegar vísað er til einnar ákveðinnar tegundar kjarna notum við oft hugtakið {{term}}kjarnategund{{/term}} og auðkennum hana með rithættinum [[MATH:2]] þar sem X er tákn frumefnisins, A er massatalan og Z er sætistalan (til dæmis [[MATH:3]]). Oft er vísað til kjarnategundar með nafni frumefnisins, bandstriki og massatölunni. Til dæmis er [[MATH:4]] kallað „kolefni-14“.
+[[term:Kjarnaefnafræði|term-00001]] er fræðigrein sem fæst við rannsóknir á efnahvörfum sem fela í sér breytingar á gerð kjarna. Í kaflanum um atóm, sameindir og jónir var farið yfir grunnhugmyndina um gerð kjarna, þ.e. að kjarni atóms sé samsettur úr róteindum og, að undanskildu [[MATH:1]], nifteindum. Rifjum upp að fjöldi róteinda í kjarna er kallaður sætistala (Z) frumefnisins og summa fjölda róteinda og nifteinda er massatala (A). Atóm með sömu sætistölu en mismunandi massatölu eru samsætur sama frumefnis. Þegar vísað er til einnar tiltekinnar gerðar kjarna notum við oft hugtakið [[term:kjarnategund|term-00002]] og auðkennum hana með táknuninni [[MATH:2]] þar sem X er tákn frumefnisins, A er massatalan og Z er sætistalan (til dæmis [[MATH:3]]). Oft er vísað til kjarnategundar með nafni frumefnisins ásamt bandstriki og massatölunni. Til dæmis er [[MATH:4]] kallað „kolefni-14“.
 
 <!-- SEG:m68851:para:fs-idm77528832 -->
-Róteindir og nifteindir, sem sameiginlega eru kallaðar {{term}}kjarnaeindir{{/term}}, eru þéttpakkaðar saman í kjarna. Með radíus um 10[[sup:−15]] metra er kjarni frekar lítill í samanburði við radíus allrar frumeindarinnar, sem er um 10[[sup:−10]] metrar. Kjarnar eru gríðarlega þéttir í samanburði við efni í heild, með eðlismassa að meðaltali 1,8 [[MATH:5]] 10[[sup:14]] grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridíum, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm[[sup:3]]. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 [[MATH:6]] 10[[sup:6]] metrar, 30.000 sinnum stærri). [#fs-idp85198000] sýnir hversu mikill eðlismassi kjarna getur verið í náttúrunni.
+Róteindir og nifteindir, sem sameiginlega eru kallaðar [[term:kjarnaeindir|term-00003]], pakkast þétt saman í kjarna. Kjarni er fremur lítill, með radíus um 10[[sup:−15]] metra, samanborið við radíus alls atómsins, sem er um 10[[sup:−10]] metrar. Kjarnar eru gríðarlega þéttir miðað við efni í föstu formi, að meðaltali 1,8 [[MATH:5]] 10[[sup:14]] grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridín, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm[[sup:3]]. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 [[MATH:6]] 10[[sup:6]] metrar, 30.000 sinnum stærri). [[xref:fs-idp85198000]] sýnir hversu gríðarlega mikill eðlismassi kjarna getur verið í náttúrunni.
 
 <!-- SEG:m68851:example-title:fs-idp85198000-title -->
 Eðlismassi nifteindastjörnu
 
 <!-- SEG:m68851:para:fs-idp771680 -->
-Nifteindastjörnur myndast þegar kjarni mjög massamikillar stjörnu verður fyrir þyngdarhruni, sem veldur því að ytri lög stjörnunnar springa í sprengistjörnu. Þær eru nánast alfarið samsettar úr nifteindum og eru þéttustu þekktu stjörnur alheimsins, með eðlismassa sem er sambærilegur við meðaleðlismassa frumeindarkjarna. Nifteindastjarna í fjarlægri vetrarbraut hefur massa sem jafngildir 2,4 sólmössum (1 sólar massi = [[MATH:7]] = massi sólar = 1,99 [[MATH:8]] 10[[sup:30]] kg) og þvermál 26 km.
+Nifteindastjörnur myndast þegar kjarni mjög massamikillar stjörnu fellur saman vegna þyngdarafls, sem veldur því að ytri lög stjörnunnar springa í sprengistjörnu. Þær eru nánast alfarið samsettar úr nifteindum og eru þéttustu stjörnur sem þekktar eru í alheiminum, með eðlismassa sem er sambærilegur við meðaleðlismassa atómkjarna. Nifteindastjarna í fjarlægri vetrarbraut hefur massa sem jafngildir 2,4 sólmössum (1 sólmassi = [[MATH:7]] = massi sólar = 1,99 [[MATH:8]] 10[[sup:30]] kg) og þvermál 26 km.
 
 <!-- SEG:m68851:para:fs-idp10832352 -->
 (a) Hver er eðlismassi þessarar nifteindastjörnu?
@@ -47,7 +47,7 @@ Við getum litið á bæði nifteindastjörnuna og U-235 kjarnann sem kúlur. Þ
 Þessi gildi eru nokkuð svipuð (af sömu stærðargráðu), en nifteindastjarnan er meira en tvöfalt þéttari en U-235 kjarninn.
 
 <!-- SEG:m68851:para-title:fs-idp49863776-title -->
-Kannaðu þekkingu þína
+Prófaðu þekkingu þína
 
 <!-- SEG:m68851:para:fs-idp49863776 -->
 Finndu eðlismassa nifteindastjörnu með massa 1,97 sólmassa og þvermál 13 km og berðu hann saman við eðlismassa vetniskjarna, sem hefur þvermál 1,75 fm (1 fm = 1 [[MATH:11]] 10[[sup:–15]] m).
@@ -62,34 +62,34 @@ Svar:
 Eðlismassi nifteindastjörnunnar er 3,4 [[MATH:14]] 10[[sup:18]] kg/m[[sup:3]]. Eðlismassi vetniskjarna er 6,0 [[MATH:15]] 10[[sup:17]] kg/m[[sup:3]]. Nifteindastjarnan er 5,7 sinnum þéttari en vetniskjarninn.
 
 <!-- SEG:m68851:para:fs-idm88935120 -->
-Til að halda jákvætt hlöðnum róteindum saman í mjög litlu rúmmáli kjarna þarf mjög sterka aðdráttarkrafta því jákvætt hlaðnar róteindir hrinda hver annarri frá sér af miklum krafti í svo stuttri fjarlægð. Aðdráttarkrafturinn sem heldur kjarnanum saman er {{term}}sterki kjarnakrafturinn{{/term}}. (Sterki krafturinn er einn af fjórum grunnkröftum sem vitað er að séu til. Hinir eru rafsegulkrafturinn, þyngdarkrafturinn og veiki kjarnakrafturinn.) Þessi kraftur verkar á milli róteinda, á milli nifteinda og á milli róteinda og nifteinda. Hann er mjög ólíkur rafstöðukraftinum sem heldur neikvætt hlöðnum rafeindum í kringum jákvætt hlaðinn kjarna (aðdrátturinn milli gagnstæðra hleðslna). Í fjarlægðum sem eru minni en 10[[sup:−15]] metrar og innan kjarnans er sterki kjarnakrafturinn mun sterkari en rafstöðufráhrindingin milli róteinda; í meiri fjarlægð og utan kjarnans er hann nánast ótilstaðar.
+Til að halda jákvætt hlöðnum róteindum saman í mjög litlu rúmmáli kjarna þarf mjög sterka aðdráttarkrafta því jákvætt hlaðnar róteindir hrinda hver annarri mjög sterkt frá sér í svo stuttri fjarlægð. Aðdráttarkrafturinn sem heldur kjarnanum saman er [[term:sterki kjarnakrafturinn|term-00004]]. (Sterki krafturinn er einn af fjórum grunnkröftum sem vitað er að séu til. Hinir eru rafsegulkrafturinn, þyngdarkrafturinn og veiki kjarnakrafturinn.) Þessi kraftur verkar milli róteinda, milli nifteinda og milli róteinda og nifteinda. Hann er mjög frábrugðinn rafstöðukraftinum sem heldur neikvætt hlöðnum rafeindum í kringum jákvætt hlaðinn kjarna (aðdrátturinn milli gagnstæðra hleðslna). Í fjarlægð sem er minni en 10[[sup:−15]] metrar og innan kjarnans er sterki kjarnakrafturinn mun sterkari en rafstöðufráhrindingin milli róteinda; í meiri fjarlægð og utan kjarnans er hann nánast ekki til staðar.
 
 <!-- SEG:m68851:para:fs-idp91518256 -->
-Farðu inn á þessa [vefsíðu](http://openstax.org/l/16fourfund) til að fá frekari upplýsingar um grunnkraftana fjóra.
+Farðu á þessa [[link:vefsíðu|http://openstax.org/l/16fourfund]] til að fá frekari upplýsingar um grunnkraftana fjóra.
 
 <!-- SEG:m68851:title:fs-idm9295456-title -->
-Kjarnabindiorka
+Kjarnabindingsorka
 
 <!-- SEG:m68851:para:fs-idm36435184 -->
-Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helínfrumeind sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum. Heildarmassa þessara sex öreinda má reikna sem:
+Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helínatóm sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum. Heildarmassa þessara sex öreinda má reikna sem:
 
 <!-- SEG:m68851:para:fs-idp28406768 -->
-Hins vegar sýna massarófsmælingar að massi [[MATH:16]] frumeindar er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem hún er gerð úr. Þessi munur á reiknuðum og tilraunamældum massa er þekktur sem {{term}}massagalli{{/term}} frumeindarinnar. Í tilviki helíns gefur massagallinn til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun frumeindar úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar frumeindin myndast. {{term}}Kjarnabindiorka{{/term}} er orkan sem myndast þegar kjarnaeindir frumeindarinnar bindast saman; þetta er einnig orkan sem þarf til að kljúfa kjarna í róteindir og nifteindir sem hann er gerður úr. Í samanburði við bindiorku efnatengja eru kjarnabindiorkur {{i}}gríðarlega{{/i}} miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum.
+Hins vegar sýna massarófsmælingar að massi [[MATH:16]] atóms er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem það er myndað úr. Þessi munur á útreiknuðum og mældum massa er þekktur sem [[term:massarýrð|term-00005]] atómsins. Í tilfelli helíns gefur massarýrðin til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun atóms úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar atómið myndast. [[term:Kjarnabindingsorka|term-00006]] er orkan sem myndast þegar kjarnaeindir atómsins bindast saman; þetta er líka orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir. Í samanburði við efnatengisorku er kjarnabindingsorka [[i:gríðarlega]] miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum.
 
 <!-- SEG:m68851:para:fs-idp77271552 -->
-Umbreytingin milli massa og orku er best sýnd með {{term}}jafngildisjöfnu massa og orku{{/term}} eins og Albert Einstein setti hana fram:
+Umbreytingin milli massa og orku er best sýnd með [[term:jafngildisjöfnu massa og orku|term-00007]] eins og Albert Einstein setti hana fram:
 
 <!-- SEG:m68851:para:fs-idp18183904 -->
-þar sem {{i}}E{{/i}} er orka, {{i}}m{{/i}} er massi efnisins sem er að umbreytast og {{i}}c{{/i}} er ljóshraði í tómarúmi. Þessa jöfnu má nota til að finna orkumagnið sem verður til þegar efni umbreytist í orku. Með því að nota þessa jafngildisjöfnu massa og orku má reikna kjarnabindiorku kjarna út frá massagalla hans, eins og sýnt er í [#fs-idm18254784]. Ýmsar einingar eru almennt notaðar fyrir kjarnabindiorku, þar á meðal {{term}}rafeindavolt (eV){{/term}}, þar sem 1 eV jafngildir því orkumagni sem þarf til að færa hleðslu rafeindar yfir rafspennumun upp á 1 volt, sem gerir 1 eV = 1,602 [[MATH:17]] 10[[sup:–19]] J.
+þar sem [[i:E]] er orka, [[i:m]] er massi efnisins sem er að umbreytast og [[i:c]] er ljóshraði í tómarúmi. Þessa jöfnu má nota til að finna orkumagnið sem myndast þegar efni er breytt í orku. Með því að nota þessa jafngildisjöfnu massa og orku má reikna kjarnabindingsorku kjarna út frá massarýrð hans, eins og sýnt er í [[xref:fs-idm18254784]]. Ýmsar einingar eru almennt notaðar fyrir kjarnabindingsorku, þar á meðal [[term:rafeindarvolt (eV)|term-00008]], þar sem 1 eV jafngildir því orkumagni sem þarf til að færa hleðslu rafeindar yfir rafspennumun upp á 1 volt, sem gerir 1 eV = 1,602 [[MATH:17]] 10[[sup:–19]] J.
 
 <!-- SEG:m68851:example-title:fs-idm18254784-title -->
-Útreikningur á kjarnabindiorku
+Útreikningur á kjarnabindingsorku
 
 <!-- SEG:m68851:para:fs-idm17489664 -->
-Ákvarðaðu bindiorkuna fyrir kjarnategundina [[MATH:18]] í:
+Ákvarðaðu bindingsorkuna fyrir kjarnategundina [[MATH:18]] í:
 
 <!-- SEG:m68851:para:fs-idm41576528 -->
-(a) júlum á mól kjarna
+(a) júlum á mól af kjörnum
 
 <!-- SEG:m68851:para:fs-idm67177840 -->
 (b) júlum á kjarna
@@ -101,25 +101,25 @@ Umbreytingin milli massa og orku er best sýnd með {{term}}jafngildisjöfnu mas
 Lausn
 
 <!-- SEG:m68851:para:fs-idp81004736 -->
-Massagalli [[MATH:19]] kjarna er 0,0305 amu, eins og sýnt var áður. Ákvarðaðu bindiorkuna í júlum á kjarnategund með því að nota jafngildisjöfnu massa og orku. Til að koma til móts við umbeðnar orkueiningar verður að gefa massagallann upp í kílógrömmum (munum að 1 J = 1 kg m[[sup:2]]/s[[sup:2]]).
+Massarýrð fyrir [[MATH:19]] kjarna er 0,0305 amu, eins og sýnt var áður. Ákvarðaðu bindingsorkuna í júlum á kjarnategund með því að nota jafngildisjöfnu massa og orku. Til að koma til móts við umbeðnar orkueiningar verður að gefa massarýrðina upp í kílógrömmum (munum að 1 J = 1 kg m[[sup:2]]/s[[sup:2]]).
 
 <!-- SEG:m68851:para:fs-idm55054176 -->
-(a) Fyrst skaltu gefa massagallann upp í g/mól. Það er auðvelt að gera það með hliðsjón af {{i}}tölulegu jafngildi{{/i}} atómmassa (amu) og mólmassa (g/mól) sem leiðir af skilgreiningum á einingunum amu og mól (vísað er til fyrri umfjöllunar í kaflanum um frumeindir, sameindir og jónir ef þörf krefur). Massagallinn er því 0,0305 g/mól. Til að koma til móts við einingar hinna liðanna í massa-orku jöfnunni verður að gefa massann upp í kg, þar sem 1 J = 1 kg m[[sup:2]]/s[[sup:2]]. Umreikningur gramma í kílógrömm gefur massagalla upp á 3,05 [[MATH:20]] 10[[sup:–5]] kg/mól. Með því að setja þetta magn inn í jafngildisjöfnu massa og orku fæst:
+(a) Fyrst skaltu gefa massarýrðina upp í g/mól. Það er auðvelt með hliðsjón af [[i:tölulegu jafngildi]] atómmassa (amu) og mólmassa (g/mól) sem leiðir af skilgreiningum á amu og mól einingunum (vísað er í fyrri umfjöllun í kaflanum um atóm, sameindir og jónir ef þörf krefur). Massarýrðin er því 0,0305 g/mól. Til að koma til móts við einingar hinna liðanna í massa-orku jöfnunni verður að gefa massann upp í kg, þar sem 1 J = 1 kg m[[sup:2]]/s[[sup:2]]. Umreikningur gramma í kílógrömm gefur massarýrð upp á 3,05 [[MATH:20]] 10[[sup:–5]] kg/mól. Með því að setja þetta magn inn í jafngildisjöfnu massa og orku fæst:
 
 <!-- SEG:m68851:para:fs-idm125097680 -->
 Athugið að þetta gríðarlega orkumagn tengist umbreytingu á mjög litlu magni af efni (um 30 mg, sem er nokkurn veginn massi dæmigerðs vatnsdropa).
 
 <!-- SEG:m68851:para:fs-idm28777712 -->
-(b) Bindiorka fyrir einn kjarna er reiknuð út frá mólbindiorkunni með því að nota tölu Avogadros:
+(b) Bindingsorkan fyrir einn kjarna er reiknuð út frá mólbindingsorkunni með því að nota tölu Avogadros:
 
 <!-- SEG:m68851:para:fs-idp34903136 -->
-(c) Munum að 1 eV = 1,602 [[MATH:21]] 10[[sup:–19]] J. Með því að nota bindiorkuna sem reiknuð var í hluta (b):
+(c) Munum að 1 eV = 1,602 [[MATH:21]] 10[[sup:–19]] J. Með því að nota bindingsorkuna sem reiknuð var út í hluta (b):
 
 <!-- SEG:m68851:para-title:fs-idp117760560-title -->
-Kannaðu þekkingu þína
+Prófaðu þekkingu þína
 
 <!-- SEG:m68851:para:fs-idp117760560 -->
-Hver er bindiorkan fyrir kjarnategundina [[MATH:22]] (atómmassi: 18,9984 amu) í MeV á kjarna?
+Hver er bindingsorkan fyrir kjarnategundina [[MATH:22]] (atómmassi: 18,9984 amu) í MeV á kjarna?
 
 <!-- SEG:m68851:para:fs-idp26065248 -->
 148,4 MeV
@@ -131,136 +131,142 @@ Svar:
 148,4 MeV
 
 <!-- SEG:m68851:para:fs-idp50673248 -->
-Þar sem orkubreytingar við rof og myndun tengja eru svo litlar í samanburði við orkubreytingar við rof eða myndun kjarna eru massabreytingar við öll venjuleg efnahvörf nánast ómælanlegar. Eins og lýst er í kaflanum um varmaefnafræði sýna orkumestu efnahvörfin entalpíur á stærðargráðunni {{i}}þúsundir{{/i}} kJ/mól, sem jafngildir massamun á nanógramma bili (10[[sup:–9]] g). Á hinn bóginn eru bindiorkur kjarna yfirleitt á stærðargráðunni {{i}}milljarðar{{/i}} kJ/mól, sem samsvarar massamun á milligramma bili (10[[sup:–3]] g).
+Vegna þess að orkubreytingar við að rjúfa og mynda tengi eru svo litlar í samanburði við orkubreytingar við að rjúfa eða mynda kjarna, eru massabreytingar við öll venjuleg efnahvörf nánast ómælanlegar. Eins og lýst er í kaflanum um varmaefnafræði sýna orkumestu efnahvörfin innvörp upp á [[i:þúsundir]] kJ/mól, sem jafngildir massamun á nanógramma bili (10[[sup:–9]] g). Á hinn bóginn eru kjarnabindingarorkur yfirleitt upp á [[i:milljarða]] kJ/mól, sem samsvarar massamun á milligramma bili (10[[sup:–3]] g).
 
 <!-- SEG:m68851:title:fs-idp105853456-title -->
 Stöðugleiki kjarna
 
 <!-- SEG:m68851:para:fs-idm27681216 -->
-Kjarni er stöðugur ef ekki er hægt að breyta honum í aðra uppsetningu án þess að bæta við orku utan frá. Af þeim þúsundum kjarnategunda sem til eru, eru um 250 stöðugar. Línurit yfir fjölda nifteinda á móti fjölda róteinda fyrir stöðuga kjarna sýnir að stöðugar samsætur falla innan þröngs bands. Þetta svæði er þekkt sem {{term}}stöðugleikabeltið{{/term}} (einnig kallað stöðugleikasvæði eða stöðugleikadalur). Beina línan á [#CNX_Chem_21_01_BandStable] táknar kjarna sem hafa hlutfallið 1:1 milli róteinda og nifteinda (n:p hlutfall). Athugið að léttari stöðugir kjarnar hafa almennt jafnmargar róteindir og nifteindir. Til dæmis hefur nitur-14 sjö róteindir og sjö nifteindir. Þyngri stöðugir kjarnar hafa hins vegar sífellt fleiri nifteindir en róteindir. Til dæmis: járn-56 hefur 30 nifteindir og 26 róteindir, sem gefur n:p hlutfallið 1,15, en stöðuga kjarnategundin blý-207 hefur 125 nifteindir og 82 róteindir, sem gefur n:p hlutfallið 1,52. Þetta er vegna þess að stærri kjarnar hafa meiri fráhrindikrafta milli róteinda og þurfa fleiri nifteindir til að veita uppbót með sterkum kjarnakröftum til að yfirstíga þessa rafstöðufráhrindingu og halda kjarnanum saman.
+Kjarni er stöðugur ef ekki er hægt að breyta honum í aðra uppsetningu án þess að bæta við orku utan frá. Af þeim þúsundum kjarnategunda sem til eru, eru um 250 stöðugar. Línurit yfir fjölda nifteinda á móti fjölda róteinda fyrir stöðuga kjarna sýnir að stöðugar samsætur falla innan þröngs bands. Þetta svæði er þekkt sem [[term:stöðugleikabeltið|term-00009]] (einnig kallað stöðugleikasvæði eða stöðugleikadalur). Beina línan á [[xref:CNX_Chem_21_01_BandStable]] táknar kjarna sem hafa hlutfallið 1:1 milli róteinda og nifteinda (n:p hlutfall). Athugið að léttari stöðugir kjarnar hafa almennt jafnmargar róteindir og nifteindir. Til dæmis hefur nitur-14 sjö róteindir og sjö nifteindir. Þyngri stöðugir kjarnar hafa hins vegar sífellt fleiri nifteindir en róteindir. Til dæmis: járn-56 hefur 30 nifteindir og 26 róteindir, n:p hlutfallið er 1,15, en stöðuga kjarnategundin blý-207 hefur 125 nifteindir og 82 róteindir, n:p hlutfallið er 1,52. Þetta er vegna þess að stærri kjarnar hafa meiri fráhrindikrafta milli róteinda og þurfa fleiri nifteindir til að veita jöfnunarsterka krafta til að yfirstíga þessa rafstöðufráhrindingu og halda kjarnanum saman.
 
 <!-- SEG:m68851:caption:CNX_Chem_21_01_BandStable-caption -->
-Þetta línurit sýnir þær kjarnategundir sem vitað er að séu til og þær sem eru stöðugar. Stöðugu kjarnategundirnar eru merktar með bláu og óstöðugu kjarnategundirnar með grænu. Athugið að allar samsætur frumefna með sætistölu hærri en 83 eru óstöðugar. Heilbrota línan er línan þar sem n = Z.
+Þetta línurit sýnir þær kjarnategundir sem vitað er að séu til og þær sem eru stöðugar. Stöðugu kjarnategundirnar eru merktar með bláu og óstöðugu kjarnategundirnar með grænu. Athugið að allar samsætur frumefna með sætistölu hærri en 83 eru óstöðugar. Heil línan er línan þar sem n = Z.
+
+<!-- SEG:m68851:alt:fs-idm82801808-alt -->
+Sýnt er línurit þar sem x-ásinn er merktur „Fjöldi nifteinda, opinn svigi, n, loka svigi“ og hefur gildi frá 0 til 180 í 10 eininga þrepum. Y-ásinn er merktur „Fjöldi róteinda, opinn svigi, Z, loka svigi“ og hefur gildi frá 0 til 120 í 10 eininga þrepum. Grænt skyggt band með breytilegri breidd, merkt „Geislavirkt“, teygir sig frá punkti 0 á báðum ásum að 178 á y-ás og 118 á x-ás á línulegan hátt. Breidd þessa bands er breytileg frá 8 til 18 einingum á breidd samkvæmt mælingum á x-ás. Blá lína í nokkurn veginn sikksakk-mynstri liggur í gegnum miðju skyggða bandsins og stoppar við 128 á y-ás og 82 á x-ás. Þessi lína er merkt „Ekki geislavirkt“. Ómerkt, svört, heil lína teygir sig frá punkti 0, 0 að 120, 120 á línulegan hátt.
 
 <!-- SEG:m68851:para:fs-idm67089056 -->
-Kjarnar sem eru vinstra eða hægra megin við stöðugleikabeltið eru óstöðugir og sýna {{term}}geislavirkni{{/term}}. Þeir breytast sjálfkrafa (hrörna) í aðra kjarna sem eru annaðhvort í, eða nær, stöðugleikabeltinu. Þessi kjarnahrörnunarbreyting breytir einni óstöðugri samsætu (eða {{term}}geislasamsætu{{/term}}) í aðra, stöðugri samsætu. Við munum fjalla um eðli og afurðir þessarar geislavirku hrörnunar í síðari köflum þessa kafla.
+Kjarnarnir sem eru vinstra eða hægra megin við stöðugleikabeltið eru óstöðugir og sýna [[term:geislavirkni|term-00010]]. Þeir breytast sjálfkrafa (sundrast) í aðra kjarna sem eru annaðhvort í, eða nær, stöðugleikabeltinu. Þessi kjarnasundrunarhvörf breyta einni óstöðugri samsætu (eða [[term:geislasamsætu|term-00011]]) í aðra, stöðugri samsætu. Við munum ræða eðli og afurðir þessarar geislasundrunar í síðari köflum þessa kafla.
 
 <!-- SEG:m68851:para:fs-idm18227760 -->
-Nokkrar athuganir má gera varðandi sambandið milli stöðugleika kjarna og byggingar hans. Kjarnar með sléttum tölum róteinda, nifteinda eða beggja eru líklegri til að vera stöðugir (sjá [#fs-idp70040672]). Kjarnar með ákveðnum fjölda kjarneinda, þekktum sem {{term}}töfratölur{{/term}}, eru stöðugir gegn kjarnahrörnun. Þessar tölur róteinda eða nifteinda (2, 8, 20, 28, 50, 82 og 126) mynda fullskipuð hvolf í kjarnanum. Þetta er svipað í hugmynd og stöðugu rafeindahvolfin sem sjást hjá eðallofttegundum. Kjarnar sem hafa töfratölur bæði róteinda og nifteinda, svo sem [[MATH:23]] [[MATH:24]] [[MATH:25]] og [[MATH:26]] eru kallaðir „tvítöfrandi“ og eru sérstaklega stöðugir. Þessar tilhneigingar í stöðugleika kjarna má rökstyðja með því að skoða skammtafræðilegt líkan af orkuástöndum kjarna, hliðstætt því sem notað var til að lýsa rafeindaástöndum fyrr í þessari kennslubók. Smáatriði þessa líkans eru utan gildissviðs þessa kafla.
-
-<!-- SEG:m68851:entry:auto-51 -->
-Stöðugar kjarnasamsætur
+Nokkrar athuganir má gera varðandi sambandið milli stöðugleika kjarna og byggingar hans. Kjarnar með sléttum tölum róteinda, nifteinda eða beggja eru líklegri til að vera stöðugir (sjá [[xref:fs-idp70040672]]). Kjarnar með ákveðnum fjölda kjarnaagna, þekktum sem [[term:töfratölur|term-00012]], eru stöðugir gegn kjarnasundrun. Þessar tölur róteinda eða nifteinda (2, 8, 20, 28, 50, 82 og 126) mynda fullskipuð hvolf í kjarnanum. Þetta er svipað í hugmyndafræði og stöðug rafeindahvolf sem sjást hjá eðallofttegundum. Kjarnar sem hafa töfratölur bæði róteinda og nifteinda, svo sem [[MATH:23]] [[MATH:24]] [[MATH:25]] og [[MATH:26]] eru kallaðir „tvítöfrandi“ og eru sérstaklega stöðugir. Þessar tilhneigingar í kjarnastöðugleika má rökstyðja með því að íhuga skammtafræðilegt líkan af orkuástöndum kjarna, hliðstætt því sem notað var til að lýsa rafeindaástöndum fyrr í þessari kennslubók. Smáatriði þessa líkans eru utan gildissviðs þessa kafla.
 
 <!-- SEG:m68851:entry:auto-52 -->
-Fjöldi stöðugra samsæta
+Stöðugar kjarnasamsætur
 
 <!-- SEG:m68851:entry:auto-53 -->
-Fjöldi róteinda
+Fjöldi stöðugra samsæta
 
 <!-- SEG:m68851:entry:auto-54 -->
-Fjöldi nifteinda
+Fjöldi róteinda
 
 <!-- SEG:m68851:entry:auto-55 -->
-157
+Fjöldi nifteinda
 
 <!-- SEG:m68851:entry:auto-56 -->
-slétt tala
+157
 
 <!-- SEG:m68851:entry:auto-57 -->
 slétt tala
 
 <!-- SEG:m68851:entry:auto-58 -->
-53
+slétt tala
 
 <!-- SEG:m68851:entry:auto-59 -->
-slétt tala
+53
 
 <!-- SEG:m68851:entry:auto-60 -->
-oddatala
-
-<!-- SEG:m68851:entry:auto-61 -->
-50
-
-<!-- SEG:m68851:entry:auto-62 -->
-oddatala
-
-<!-- SEG:m68851:entry:auto-63 -->
 slétt tala
 
+<!-- SEG:m68851:entry:auto-61 -->
+oddatala
+
+<!-- SEG:m68851:entry:auto-62 -->
+50
+
+<!-- SEG:m68851:entry:auto-63 -->
+oddatala
+
 <!-- SEG:m68851:entry:auto-64 -->
-5
+slétt tala
 
 <!-- SEG:m68851:entry:auto-65 -->
-oddatala
+5
 
 <!-- SEG:m68851:entry:auto-66 -->
 oddatala
 
+<!-- SEG:m68851:entry:auto-67 -->
+oddatala
+
 <!-- SEG:m68851:para:fs-idm63271648 -->
-Hlutfallslegur stöðugleiki kjarna er í samhengi við {{term}}bindiorku hans á kjarneind{{/term}}, heildarbindiorku kjarnans deilt með fjölda kjarneinda í kjarnanum. Til dæmis sáum við í [#fs-idm18254784] að bindiorka fyrir [[MATH:27]] kjarna er 28,4 MeV. Bindiorkan {{i}}á kjarneind{{/i}} fyrir [[MATH:28]] kjarna er því:
+Hlutfallslegur stöðugleiki kjarna er í samhengi við [[term:bindingarorku hans á kjarnaögn|term-00013]], heildarbindingarorku kjarnans deilt með fjölda kjarnaagna í kjarnanum. Til dæmis sáum við í [[xref:fs-idm18254784]] að bindingarorka fyrir [[MATH:27]] kjarna er 28,4 MeV. Bindingarorkan [[i:á kjarnaögn]] fyrir [[MATH:28]] kjarna er því:
 
 <!-- SEG:m68851:para:fs-idp78837648 -->
-Í [#fs-idp47733552] lærum við hvernig á að reikna út bindiorku á kjarneind fyrir kjarnategund á ferlinum sem sýndur er á [#CNX_Chem_21_01_BindEnergy].
+Í [[xref:fs-idp47733552]] lærum við hvernig á að reikna út bindisorku á hverja kjarneind fyrir kjarnategund á ferlinum sem sýndur er í [[xref:CNX_Chem_21_01_BindEnergy]].
 
 <!-- SEG:m68851:caption:CNX_Chem_21_01_BindEnergy-caption -->
-Bindiorkan á kjarneind er mest fyrir kjarnategundir með massatölu um það bil 56.
+Bindisorka á hverja kjarneind er mest fyrir kjarnategundir með massatölu í kringum 56.
+
+<!-- SEG:m68851:alt:fs-idm93760-alt -->
+Sýnt er línurit þar sem x-ásinn er merktur „bindisorka á hverja kjarneind, opinn svigi, MeV, lokaður svigi“ og hefur gildi frá 0 til 10 í 1 þrepa bili. Y-ásinn er merktur „Massatala“ og hefur gildi frá 0 til 260 í 20 þrepa bili. Aðhvarfslína sem byrjar í punktinum 0, 0 er dregin í gegnum punktana „8, 5,5; 9, 7,3; 18, 7,1; 20, 7,5; 19, 7,9; 27, 7,8; 21, 8,1; 25, 8,4; 37, 8,6; 43, 8,8; 57, 8,6; 60, 8,9; 70, 9; 88, 8,8; 102, 8,9; 108, 8,5; 126, 8,7; 133, 8,8; 143, 8,2; 157, 8,1; 167, 8,2; 195, 7,9; 205, 7,9; 241, 7,3 og 255, 75. Ör sem vísar upp á við neðst til vinstri á línuritinu er merkt „Kjarnasamruni“ en ör sem vísar til vinstri efst til hægri er merkt „Kjarnaklofnun.“
 
 <!-- SEG:m68851:example-title:fs-idp47733552-title -->
-Útreikningur á bindiorku á kjarneind
+Útreikningur á bindisorku á hverja kjarneind
 
 <!-- SEG:m68851:para:fs-idm62997744 -->
-Járnkjarnategundin [[MATH:29]] liggur nálægt toppi bindiorkuferilsins ([#CNX_Chem_21_01_BindEnergy]) og er ein af stöðugustu kjarnategundunum. Hver er bindiorkan á kjarneind (í MeV) fyrir kjarnategundina [[MATH:30]] (atómmassi 55,9349 amu)?
+Járnkjarnategundin [[MATH:29]] er nálægt toppi bindisorkuferilsins ([[xref:CNX_Chem_21_01_BindEnergy]]) og er ein af stöðugustu kjarnategundunum. Hver er bindisorka á hverja kjarneind (í MeV) fyrir kjarnategundina [[MATH:30]] (atómamassi 55,9349 amu)?
 
 <!-- SEG:m68851:para-title:fs-idp15576576-title -->
 Lausn
 
 <!-- SEG:m68851:para:fs-idp15576576 -->
-Eins og í [#fs-idm18254784] ákveðum við fyrst massagalla núklíðsins, sem er mismunurinn á massa 26 róteinda, 30 nifteinda og 26 rafeinda, og mældum massa [[MATH:31]] frumeindar:
+Eins og í [[xref:fs-idm18254784]] ákveðum við fyrst massarýrð kjarnategundarinnar, sem er mismunurinn á massa 26 róteinda, 30 nifteinda og 26 rafeinda, og mældum massa [[MATH:31]] atóms:
 
 <!-- SEG:m68851:para:fs-idp91322720 -->
-Næst reiknum við bindiorku fyrir einn kjarna út frá massagallanum með því að nota jöfnu massajafngildis:
+Næst reiknum við út bindisorkuna fyrir einn kjarna út frá massarýrðinni með því að nota jöfnuna um jafngildi massa og orku:
 
 <!-- SEG:m68851:para:fs-idp148855104 -->
-Síðan breytum við bindiorkunni í júlum á kjarna yfir í eininguna MeV á núklíð:
+Síðan breytum við bindisorkunni í júlum á hvern kjarna í einingar af MeV á hverja kjarnategund:
 
 <!-- SEG:m68851:para:fs-idp84501712 -->
-Að lokum ákveðum við bindiorku á kjarnaeind með því að deila heildarbindiorku kjarnans með fjölda kjarnaeinda í frumeindinni:
+Loks ákveðum við bindisorkuna á hverja kjarneind með því að deila heildarbindisorku kjarnans með fjölda kjarneinda í atóminu:
 
 <!-- SEG:m68851:para:fs-idm37662944 -->
-Takið eftir að þetta er næstum 25% meira en bindiorka á kjarnaeind fyrir [[MATH:32]]
+Athugið að þetta er næstum 25% meira en bindisorka á hverja kjarneind fyrir [[MATH:32]]
 
 <!-- SEG:m68851:para:fs-idp8906016 -->
-(Takið einnig eftir að þetta er sama ferli og í [#fs-idp85198000], en með því viðbótarskrefi að deila heildarbindiorku kjarnans með fjölda kjarnaeinda.)
+(Athugið einnig að þetta er sama ferli og í [[xref:fs-idp85198000]], en með því viðbótarskrefi að deila heildarbindisorku kjarnans með fjölda kjarneinda.)
 
 <!-- SEG:m68851:para-title:fs-idp90415648-title -->
-Kannaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68851:para:fs-idp90415648 -->
-Hver er bindiorka á kjarnaeind í [[MATH:33]] (atómmassi, 18,9984 amu)?
+Hver er bindisorka á hverja kjarneind í [[MATH:33]] (atómamassi, 18,9984 amu)?
 
 <!-- SEG:m68851:para:fs-idm46993968 -->
-7,810 MeV/kjarnaeind
+7,810 MeV/kjarneind
 
 <!-- SEG:m68851:note-title:fs-idm62295296-title -->
 Svar:
 
 <!-- SEG:m68851:para:fs-idm46993968 -->
-7,810 MeV/kjarnaeind
+7,810 MeV/kjarneind
 
 <!-- SEG:m68851:title:fs-idm22567904-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68851:para:fs-idp104867712 -->
-Frumeindarkjarni samanstendur af róteindum og nifteindum, sem sameiginlega eru kallaðar kjarnaeindir. Þrátt fyrir að róteindir hrindi hver annarri frá sér, er kjarninn haldinn þétt saman af skammdrægum en mjög sterkum krafti sem kallast sterki kjarnakrafturinn. Kjarni hefur minni massa en heildarmassi kjarnaeinda sinna. Þessi „týndi“ massi er massagallinn, sem hefur breyst í bindiorkuna sem heldur kjarnanum saman samkvæmt jöfnu Alberts Einsteins um jafngildi massa og orku, {{i}}E{{/i}} = {{i}}mc{{/i}}[[sup:2]]. Af þeim mörgu núklíðum sem til eru, er aðeins lítill fjöldi stöðugur. Núklíð með sléttum tölum róteinda eða nifteinda, eða þau með töfratölur kjarnaeinda, eru sérstaklega líkleg til að vera stöðug. Þessi stöðugu núklíð mynda þröngt stöðugleikabelti á grafi sem sýnir fjölda róteinda á móti fjölda nifteinda. Bindiorka á kjarnaeind er mest fyrir frumefni með massatölur nálægt 56; þetta eru stöðugustu kjarnarnir.
+Atómkjarni samanstendur af róteindum og nifteindum, sem saman kallast kjarneindir. Þrátt fyrir að róteindir hrindi hver annarri frá sér er kjarninn þétt samanbundinn af skammdrægum en mjög sterkum krafti sem kallast sterki kjarnakrafturinn. Kjarni hefur minni massa en heildarmassi kjarneindanna sem hann er gerður úr. Þessi „týndi“ massi er massarýrðin, sem hefur verið breytt í bindisorkuna sem heldur kjarnanum saman samkvæmt jöfnu Einsteins um jafngildi massa og orku, [[i:E]] = [[i:mc]][[sup:2]]. Af þeim mörgu kjarnategundum sem til eru er aðeins lítill fjöldi stöðugur. Kjarnategundir með sléttum tölum róteinda eða nifteinda, eða þær með töfratölur kjarneinda, eru sérstaklega líklegar til að vera stöðugar. Þessar stöðugu kjarnategundir mynda þröngt stöðugleikabelti á línuriti yfir fjölda róteinda á móti fjölda nifteinda. Bindisorka á hverja kjarneind er mest fyrir frumefni með massatölur nálægt 56; þetta eru stöðugustu kjarnarnir.
 
 <!-- SEG:m68851:title:fs-idp28539744-title -->
 Lykiljöfnur
 
-<!-- SEG:m68851:entry:auto-87 -->
-{{i}}E{{/i}} = {{i}}mc{{/i}}[[sup:2]]
+<!-- SEG:m68851:entry:auto-89 -->
+[[i:E]] = [[i:mc]][[sup:2]]
 
 <!-- SEG:m68851:title:fs-idm26476112-title -->
-Efnafræði – verkefni í lok kafla
+Efnafræði – Æfingar í lok kafla
 
 <!-- SEG:m68851:problem:fs-idm5227312 -->
 Skrifið eftirfarandi samsætur með bandstriki (t.d. „kolefni-14“)
@@ -281,7 +287,7 @@ Skrifið eftirfarandi samsætur með bandstriki (t.d. „kolefni-14“)
 (a) natríum-24; (b) ál-29; (c) krypton-73; (d) iridíum-194
 
 <!-- SEG:m68851:problem:fs-idm59548176 -->
-Skrifið eftirfarandi samsætur með núklíðtáknun (t.d. [[MATH:38]]
+Skrifið eftirfarandi samsætur með rithætti fyrir kjarnategundir (t.d. [[MATH:38]]
 
 <!-- SEG:m68851:problem:fs-idp78762864 -->
 (a) súrefni-14
@@ -296,7 +302,7 @@ Skrifið eftirfarandi samsætur með núklíðtáknun (t.d. [[MATH:38]]
 (d) fransín-217
 
 <!-- SEG:m68851:problem:fs-idp72263728 -->
-Fyrir eftirfarandi samsætur þar sem upplýsingar vantar, fyllið inn í eyðurnar til að ljúka við táknunina
+Fyrir eftirfarandi samsætur þar sem upplýsingar vantar, fylltu inn upplýsingarnar sem vantar til að ljúka við ritháttinn
 
 <!-- SEG:m68851:problem:fs-idm36976592 -->
 (a) [[MATH:39]]
@@ -314,10 +320,10 @@ Fyrir eftirfarandi samsætur þar sem upplýsingar vantar, fyllið inn í eyður
 (a) [[MATH:43]] (b) [[MATH:44]] (c) [[MATH:45]] (d) [[MATH:46]]
 
 <!-- SEG:m68851:problem:fs-idm37442896 -->
-Fyrir hverja samsætu í [#fs-idm84959200], ákvarðið fjölda róteinda, nifteinda og rafeinda í hlutlausri frumeind samsætunnar.
+Fyrir hverja samsætu í [[xref:fs-idm84959200]], ákvarðaðu fjölda róteinda, nifteinda og rafeinda í hlutlausu atómi samsætunnar.
 
 <!-- SEG:m68851:problem:fs-idp8334976 -->
-Skrifið núklíðtáknun, þar með talið hleðslu ef við á, fyrir frumeindir með eftirfarandi eiginleika:
+Skrifaðu rithátt kjarnategundar, þar með talið hleðslu ef við á, fyrir atóm með eftirfarandi eiginleika:
 
 <!-- SEG:m68851:problem:fs-idp166416416 -->
 (a) 25 róteindir, 20 nifteindir, 24 rafeindir
@@ -341,19 +347,19 @@ Reiknaðu eðlismassa [[MATH:51]] kjarnans í g/ml, að því gefnu að hann haf
 Hver er meginmunurinn tvenns konar á kjarnahvörfum og venjulegum efnabreytingum?
 
 <!-- SEG:m68851:solution:fs-idm86113504 -->
-Kjarnahvörf breyta yfirleitt einni tegund kjarna í aðra; efnabreytingar endurraða frumeindum. Kjarnahvörf fela í sér mun meiri orku en efnahvörf og hafa mælanlegar massabreytingar.
+Kjarnahvörf breyta venjulega einni tegund kjarna í aðra; efnabreytingar endurraða atómum. Kjarnahvörf fela í sér mun meiri orku en efnahvörf og hafa mælanlegar massabreytingar.
 
 <!-- SEG:m68851:problem:fs-idm83369984 -->
-Massi frumeindarinnar [[MATH:53]] er 22,9898 amu.
+Massi atómsins [[MATH:53]] er 22,9898 amu.
 
 <!-- SEG:m68851:problem:fs-idm85494352 -->
-(a) Reiknaðu bindiorku hennar á hverja frumeind í milljónum rafeindavolta.
+(a) Reiknaðu bindinorku þess á atóm í milljónum rafeindarvolta.
 
 <!-- SEG:m68851:problem:fs-idp17813712 -->
-(b) Reiknaðu bindiorku hennar á hverja kjarnaeind.
+(b) Reiknaðu bindinorku þess á kjarnaeind.
 
 <!-- SEG:m68851:problem:fs-idm99606016 -->
-Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í [#CNX_Chem_21_01_BandStable]?
+Hverjir af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í [[xref:CNX_Chem_21_01_BandStable]]?
 
 <!-- SEG:m68851:problem:fs-idp13838000 -->
 (a) klór-37
@@ -383,7 +389,7 @@ Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er
 (a), (b), (c), (d) og (e)
 
 <!-- SEG:m68851:problem:fs-idp166773904 -->
-Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í [#CNX_Chem_21_01_BandStable]?
+Hverjir af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er í [[xref:CNX_Chem_21_01_BandStable]]?
 
 <!-- SEG:m68851:problem:fs-idm118428384 -->
 (a) argon-40
@@ -413,50 +419,52 @@ Hvaða af eftirfarandi kjörnum liggja innan stöðugleikabeltisins sem sýnt er
 stöðugleikabelti
 
 <!-- SEG:m68851:glossary-def:fs-idm88281984-def -->
-(einnig, stöðugleikasvæði eða stöðugleikadalur) svæði á línuriti fjölda róteinda á móti fjölda nifteinda sem inniheldur stöðuga (ekki geislavirka) kjarna
+(einnig stöðugleikasvæði eða stöðugleikadalur) svæði á grafi yfir fjölda róteinda á móti fjölda nifteinda sem inniheldur stöðugar (ekki geislavirkar) kjarnategundir
 
 <!-- SEG:m68851:glossary-term:fs-idp85639552-term -->
-bindiorka á kjarnaeind
+bindingarorka á hverja kjarneind
 
 <!-- SEG:m68851:glossary-def:fs-idp85639552-def -->
-heildarbindiorka kjarnans deilt með fjölda kjarnaeinda í kjarnanum
+heildarbindingarorka kjarnans deilt með fjölda kjarneinda í kjarnanum
 
 <!-- SEG:m68851:glossary-term:fs-idm98883968-term -->
-rafeindavolt (eV)
+rafeindarvolt (eV)
 
 <!-- SEG:m68851:glossary-def:fs-idm98883968-def -->
-mælieining fyrir bindiorku kjarna, þar sem 1 eV jafngildir orkunni sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt
+mælieining fyrir kjarnabindingarorku, þar sem 1 eV jafngildir orkumagninu sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt
 
 <!-- SEG:m68851:glossary-term:fs-idm146646496-term -->
 töfratala
 
 <!-- SEG:m68851:glossary-def:fs-idm146646496-def -->
-kjarnar með ákveðnum fjölda kjarnaeinda sem eru innan stöðugleikabeltisins
+kjarnar með ákveðnum fjölda kjarneinda sem eru innan stöðugleikabeltisins
 
 <!-- SEG:m68851:glossary-term:fs-idm49105504-term -->
-massagalli
+massarýrð
 
 <!-- SEG:m68851:glossary-def:fs-idm49105504-def -->
-munur á massa frumeindar og samanlögðum massa undirfrumeinda hennar (eða massinn sem „tapast“ þegar kjarnaeindir koma saman til að mynda kjarna)
+munur á massa atóms og samanlögðum massa undiratómaeinda þess (eða massinn sem „tapast“ þegar kjarneindir koma saman og mynda kjarna)
 
 <!-- SEG:m68851:glossary-term:fs-idp26221264-term -->
-jafngildisjafna massa og orku<!-- SEG:m68851:glossary-def:fs-idp26221264-def -->
-Jafna Alberts Einstein sem sýnir að massi og orka eru jafngild
+jafngildisjafna massa og orku
+
+<!-- SEG:m68851:glossary-def:fs-idp26221264-def -->
+samband Alberts Einsteins sem sýnir að massi og orka eru jafngild
 
 <!-- SEG:m68851:glossary-term:fs-idm27477328-term -->
-kjarnbindiorka
+kjarnabindingarorka
 
 <!-- SEG:m68851:glossary-def:fs-idm27477328-def -->
-orka sem tapast þegar kjarnaeindir frumeindar bindast saman (eða orkan sem þarf til að kljúfa kjarna í róteindir og nifteindir)
+orka sem tapast þegar kjarneindir atóms bindast saman (eða orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir)
 
 <!-- SEG:m68851:glossary-term:fs-idp125852496-term -->
 kjarnaefnafræði
 
 <!-- SEG:m68851:glossary-def:fs-idp125852496-def -->
-fræðigrein sem fæst við rannsóknir á byggingu frumeindarkjarna og ferla sem breyta byggingu kjarna
+fræðigrein sem fjallar um byggingu atómkjarna og ferla sem breyta byggingu kjarna
 
 <!-- SEG:m68851:glossary-term:fs-idm41591488-term -->
-kjarnaeind
+kjarneind
 
 <!-- SEG:m68851:glossary-def:fs-idm41591488-def -->
 samheiti yfir róteindir og nifteindir í kjarna
@@ -471,7 +479,7 @@ kjarni tiltekinnar samsætu
 geislavirkni
 
 <!-- SEG:m68851:glossary-def:fs-idp188698800-def -->
-fyrirbæri sem óstöðug kjarnaeind sýnir þegar hún breytist sjálfgengt í stöðugri kjarnaeind; óstöðug kjarnaeind er sögð vera geislavirk
+fyrirbæri sem óstöðug kjarneind sýnir þegar hún breytist sjálfkrafa í stöðugri kjarneind; óstöðug kjarneind er sögð vera geislavirk
 
 <!-- SEG:m68851:glossary-term:fs-idm38468176-term -->
 geislasamsæta
@@ -483,4 +491,4 @@ samsæta sem er óstöðug og breytist í aðra, stöðugri samsætu
 sterki kjarnakrafturinn
 
 <!-- SEG:m68851:glossary-def:fs-idp26284960-def -->
-aðdráttarkraftur milli kjarnaeinda sem heldur kjarna saman
+aðdráttarkraftur milli kjarneinda sem heldur kjarna saman

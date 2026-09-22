@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Damage2",
+ "renderHash": "4db94f9bfe0118e4",
+ "composedHash": "4db94f9bfe0118e4",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Direct effect": "Bein áhrif",
+  "Indirect effect": "Óbein áhrif",
+  "radiation": "geislun"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

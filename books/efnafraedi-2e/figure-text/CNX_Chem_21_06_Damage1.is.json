@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_Damage1",
+ "renderHash": "80dee0e2c77a23c3",
+ "composedHash": "80dee0e2c77a23c3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cancer cell": "Krabbameinsfruma",
+  "Radiation source": "Geislagjafi",
+  "DNA|damage": "DNA-skemmdir",
+  "Tumor": "Æxli"
+ },
+ "mtAlternatives": {
+  "Radiation source": {
+   "kept": "joined",
+   "other": "Geislunaruppspretta",
+   "reason": "disagree",
+   "mt": "Geislagjafi"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

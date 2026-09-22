@@ -1,0 +1,125 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_21_06_IonRadSpec",
+ "renderHash": "9c867ac155738e0f",
+ "composedHash": "9c867ac155738e0f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Increasing frequency ν": "Vaxandi tíðni ν",
+  "Increasing energy E": "Vaxandi orka E",
+  "Increasing wavelength λ": "Vaxandi bylgjulengd λ",
+  "Non-ionizing": "Ójónandi",
+  "Ionizing": "Jónandi",
+  "Broadcast and wireless radio": "Útvarps- og þráðlausar bylgjur",
+  "Ultraviolet": "Útfjólublátt",
+  "Visible light": "Sýnilegt ljós",
+  "Gamma": "Gammageislun",
+  "Infrared": "Innrautt",
+  "X-ray": "Röntgengeislun",
+  "Broken bonds": "Rofin tengi",
+  "Damages DNA": "Skaðar DNA",
+  "Thermal": "Varmaáhrif",
+  "Induces high currents": "Myndar háa strauma",
+  "Non-thermal": "Ekki varmaáhrif",
+  "Induces low currents": "Myndar lága strauma",
+  "Static|field": "Stöðusvið",
+  "Power|line": "Rafmagnslína",
+  "AM|radio": "AM-útvarp",
+  "FM|radio": "FM-útvarp",
+  "Microwave|oven": "Örbylgjuofn",
+  "Heat|lamp": "Hitalampi",
+  "Tanning|booth": "Ljósabekkur",
+  "Medical|x-rays": "Röntgenmyndataka í læknisfræði",
+  "Optical": "Ljósgeislun",
+  "Excites electrons": "Örvar rafeindir",
+  "Heating": "Hitun",
+  "Photo-chemical effects": "Ljósefnafræðileg áhrif",
+  "Microwave": "Örbylgjur",
+  "Terahertz": "Terahertz"
+ },
+ "mtAlternatives": {
+  "Increasing energy E": {
+   "kept": "joined",
+   "other": "Aukinn orka E",
+   "reason": "disagree",
+   "mt": "Vaxandi orka E"
+  },
+  "Broadcast and wireless radio": {
+   "kept": "joined",
+   "other": "Útvarp og þráðlaust útvarp",
+   "reason": "disagree",
+   "mt": "Útvarps- og þráðlausar bylgjur"
+  },
+  "Gamma": {
+   "kept": "joined",
+   "other": "Gamma",
+   "reason": "disagree",
+   "mt": "Gammageislun"
+  },
+  "X-ray": {
+   "kept": "joined",
+   "other": "Röntgenmynd",
+   "reason": "disagree",
+   "mt": "Röntgengeislun"
+  },
+  "Broken bonds": {
+   "kept": "joined",
+   "other": "Rofin bönd",
+   "reason": "disagree",
+   "mt": "Rofin tengi"
+  },
+  "Thermal": {
+   "kept": "joined",
+   "other": "Varma",
+   "reason": "disagree",
+   "mt": "Varmaáhrif"
+  },
+  "Induces high currents": {
+   "kept": "joined",
+   "other": "Veldur háum straumum",
+   "reason": "disagree",
+   "mt": "Myndar háa strauma"
+  },
+  "Non-thermal": {
+   "kept": "joined",
+   "other": "Ekki hitatengt",
+   "reason": "disagree",
+   "mt": "Ekki varmaáhrif"
+  },
+  "Induces low currents": {
+   "kept": "joined",
+   "other": "Veldur lágum straumum",
+   "reason": "disagree",
+   "mt": "Myndar lága strauma"
+  },
+  "Medical|x-rays": {
+   "kept": "joined",
+   "other": "Læknisfræðilegar röntgenmyndir",
+   "reason": "disagree",
+   "mt": "Röntgenmyndataka í læknisfræði"
+  },
+  "Optical": {
+   "kept": "joined",
+   "other": "Sjónrænt",
+   "reason": "disagree",
+   "mt": "Ljósgeislun"
+  },
+  "Heating": {
+   "kept": "joined",
+   "other": "Kynding",
+   "reason": "disagree",
+   "mt": "Hitun"
+  },
+  "Microwave": {
+   "kept": "joined",
+   "other": "Örbylgjuofn",
+   "reason": "disagree",
+   "mt": "Örbylgjur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 31
+ }
+}
