@@ -95,6 +95,10 @@ export const HANDLED_BLOCK = new Set([
   'entry',
   'equation',
   'note',
+  // §C179 — <quote>, a block container OpenStax ships. It was in NEITHER set, so
+  // the pre-intake probe reported it as an unknown tag; organic is the only book
+  // in the repo that has any (4 elements, 3 modules).
+  'quote',
   'example',
   'exercise',
   'problem',

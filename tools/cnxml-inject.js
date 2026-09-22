@@ -78,7 +78,7 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
-import { readAlt, stripAltMarkers } from './lib/alt-segments.js';
+import { readAlt, stripAltMarkers, stripMarkupToText } from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
 
 // =====================================================================
@@ -1276,7 +1276,7 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:/.test(
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:|\[\[sc:/.test(
       text
     );
 
@@ -1406,6 +1406,34 @@ function reverseInlineMarkup(
       s = s.replace(
         /\[\[span:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
         '<span class="$2">$1</span>'
+      );
+
+      // §C178 — [[sc:text]] (<emphasis effect="smallcaps">, the D/L carbohydrate
+      // notation) BELONGS INSIDE THIS LOOP, and that is measured, not stylistic.
+      // Its own content is always plain text on the real corpus (D ×86, L ×28,
+      // BC ×2 — never wrapping markup), so it is always leaf-level itself and a
+      // single pass would resolve it fine in isolation.
+      //
+      // 🔴 THE REASON IS THE OTHER DIRECTION: 10 of the 116 sit INSIDE another
+      // inline element (parent `emphasis` ×6, `term` ×2, `link` ×2), which extracts
+      // as `[[i:…[[sc:D]]…]]`. The `[[i:` pattern above forbids `[[` in its body,
+      // so that outer marker is NOT leaf-level until `sc` is resolved.
+      //
+      // ⚠️ AND THE MECHANISM IS `term`, NOT `emphasis` — a first version of this
+      // comment named the wrong one. MEASURED by counterfactual: move this
+      // replace to the `[[u:]]` site after the loop and the corpus run THROWS,
+      // `assertNoMarkerResidue` catching two unresolved
+      // `[[term:<emphasis effect="smallcaps">D</emphasis> sugars|term-00001]]`
+      // on m00301. The emphasis-parent cases (×6) survive that move, because
+      // `resolveBracketEmphasis` is called AGAIN after the link conversion (the
+      // C1 re-resolve) and rescues them. `[[term:` is converted BEFORE that
+      // re-resolve and forbids `[[` in its body, so the term-parent instances
+      // (×2) are what genuinely require this placement.
+      // ▶ The failure is LOUD, not silent — which is the good case, not the safe
+      // one: it refuses the module rather than publishing a literal marker.
+      s = s.replace(
+        /\[\[sc:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+        '<emphasis effect="smallcaps">$1</emphasis>'
       );
 
       // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
@@ -2122,8 +2150,25 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   const lines = [];
   lines.push(`<document${documentAttrs}>`);
 
-  // Add title
-  const titleText = getSeg(structure.title?.segmentId) || structure.title?.text || 'Untitled';
+  // Add title.
+  //
+  // 🔴 THE DOCUMENT `<title>` TAKES INLINE MARKUP AND `<md:title>` BELOW DOES
+  // NOT — the two are written from the SAME string and must not be written the
+  // SAME WAY (§C126 ②). Organic's m00163 source is the proof, both slots in one
+  // file: `<title><emphasis effect="italics">sp</emphasis><sup>3</sup> Hybrid
+  // Orbitals…</title>` beside `<md:title>sp3 Hybrid Orbitals…</md:title>`.
+  // `getSeg` ends in `reverseInlineMarkup`, so it restores exactly that markup
+  // from the `[[i:]]`/`[[sup:]]` the wire carries — correct HERE.
+  //
+  // ⚠️ THE FALLBACK IS MARKER-FORM ENGLISH, NOT PLAIN TEXT, AND THAT CHANGED
+  // UNDER THIS FILE. Until §C126 ② `structure.title.text` was always plain (the
+  // extractor could not see a marked-up title at all), so publishing it raw was
+  // safe. It now carries `[[i:sp]][[sup:3]] …`, and a literal `[[` reaching a
+  // page is §C140 ㉟'s measured damage shape — so it is stripped, not published.
+  // A missing title segment already makes the module `complete: false`; this
+  // only decides what the refused artifact holds.
+  const injectedTitle = getSeg(structure.title?.segmentId);
+  const titleText = injectedTitle || stripMarkupToText(structure.title?.text || '') || 'Untitled';
   lines.push(`<title>${titleText}</title>`);
 
   // Add metadata (with translated abstract if present)
@@ -2162,8 +2207,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       }
     }
 
-    // Replace md:title with translated document title
-    const translatedTitle = getSeg(structure.title?.segmentId) || structure.title?.text;
+    // Replace md:title with the translated document title, AS TEXT.
+    //
+    // 🔴 MEASURED, AND THE NUMBER FLIPPED SIGN RATHER THAN GOING TO ZERO.
+    // `source-roundtrip-check lifraen-efnafraedi ch01` scored m00163
+    // `{"emphasis":"32->31","sup":"11->10"}` before §C126 ② — the title's markup
+    // LOST, because extraction never captured it. Writing the marked-up value
+    // into BOTH slots turned that into `32->33 / 11->12` — the same markup
+    // DUPLICATED into metadata. Neither is 0. Stripping here is what reaches 0,
+    // and m00166 (an `<emphasis>`-only title, `emphasis` alone in its delta)
+    // is the control that says the mechanism is the title and nothing else.
+    //
+    // ⚠️ Reuses `titleText` rather than calling `getSeg` a second time: the
+    // second call re-counted the same id in `segmentsRequested`/`segmentsFound`.
+    const translatedTitle = stripMarkupToText(titleText);
     if (translatedTitle) {
       translatedMetadata = translatedMetadata.replace(
         /<md:title>[^<]*<\/md:title>/,
@@ -2461,6 +2518,8 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       return buildExerciseDom(element, getSeg, equations, originalCnxml, ctx);
     case 'note':
       return buildNoteDom(element, getSeg, equations, originalCnxml, ctx);
+    case 'quote':
+      return buildQuote(element, getSeg, originalCnxml);
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
@@ -4279,6 +4338,44 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   result = deduplicateElementsById(result, 'equation');
 
   return result;
+}
+
+/**
+ * Build a <quote> element (§C179).
+ *
+ * Pulls the quote out of the READ-ONLY original by id and replaces each child
+ * para's content — the `buildNote` idiom with nothing else, because every corpus
+ * instance is a bare wrapper around one `<para>`.
+ *
+ * ⚠️ NO `buildGenericElement` FALLBACK, deliberately. A quote whose id does not
+ * resolve returns null and the block is dropped — which the block walk's loud
+ * seam then reports — rather than being silently rebuilt from a shape this
+ * function has not verified. The population is 4 elements; a wrong reconstruction
+ * that looks plausible is worse than a visible gap.
+ */
+function buildQuote(element, getSeg, originalCnxml) {
+  if (!element.id) return null;
+
+  // §C115 — TAG_ATTR_SPAN, never `[^>]*`: a raw `>` is legal inside an attribute
+  // value, so `[^>]*` can end the open tag early and hand back a truncated block.
+  const pattern = new RegExp(
+    `<quote\\s${TAG_ATTR_SPAN}id="${element.id}"${TAG_ATTR_SPAN}>[\\s\\S]*?<\\/quote>`
+  );
+  const match = originalCnxml.match(pattern);
+  if (!match) return null;
+
+  let quoteCnxml = match[0];
+  for (const child of element.content || []) {
+    if (child.type !== 'para' || !child.id || !child.segmentId) continue;
+    const paraText = getSeg(child.segmentId);
+    if (!paraText) continue;
+    const paraPattern = new RegExp(
+      `<para\\s+id="${child.id}"${TAG_ATTR_SPAN}>[\\s\\S]*?<\\/para>`,
+      'g'
+    );
+    quoteCnxml = quoteCnxml.replace(paraPattern, `<para id="${child.id}">${paraText}</para>`);
+  }
+  return quoteCnxml;
 }
 
 /**

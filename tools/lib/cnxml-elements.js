@@ -793,6 +793,20 @@ export function processInlineContent(content, context) {
         if (effect === 'bold') return `<strong${classAttr}>${body}</strong>`;
         if (effect === 'underline') return `<u${classAttr}>${body}</u>`;
         if (effect === 'italics') return `<em${classAttr}>${body}</em>`;
+        // §C178 — smallcaps: the D/L carbohydrate notation. HTML has no element
+        // for it, so it is a class the stylesheet keys on (`font-variant:
+        // small-caps`), the same contract as the `class` passthrough below.
+        //
+        // 🔴 WITHOUT THIS CASE THE FIX WOULD BE WORSE THAN THE BUG. The default
+        // return below maps an UNMAPPED effect to `<em>`, so the moment extraction
+        // stopped flattening smallcaps the reader would get an ITALIC D — and in
+        // chemical nomenclature α/β ARE italic while D/L are not. A silent loss
+        // would have become a confident wrong statement, which no count can see
+        // because the element is present either way.
+        if (effect === 'smallcaps') {
+          const scClass = cls ? `smallcaps ${cls}` : 'smallcaps';
+          return `<span class="${escapeAttr(scClass)}">${body}</span>`;
+        }
         return `<em${classAttr}>${body}</em>`; // effect-less (or unmapped effect) default: italics
       });
     } while (result !== prev);

@@ -87,6 +87,15 @@ export const BODY_SOURCE_ELEMENTS = Object.freeze({
   // reads `1[[i:s]]` — the body class `[^\[\]|]*` refuses `[`, so they are counted
   // as unmatchable rather than reported as swallows. E2 stays BLOCKING-eligible.
   span: ['span'],
+  // §C178 — `[[sc:body]]` is `<emphasis effect="smallcaps">`, extracted by the same
+  // lazy-regex shape as i/b/u/em and equally exposed to a swallow, so it belongs
+  // here exactly as they do. ⚠️ THIS CHECK IS BLOCKING, SO ADDING A TYPE MOVES ITS
+  // BASE RATE — measured against a FULL RE-EXTRACT rather than today's tree,
+  // because the committed 02-for-mt predates this type entirely and would report
+  // zero of everything. The numbers are in the register (§C178); what matters here
+  // is that the bodies are D / L / BC — plain single tokens with no `[`, so every
+  // one of the 116 is comparable rather than unmatchable, and findings stay 0.
+  sc: ['emphasis'],
 });
 
 /** Collapse whitespace for comparison; leading/trailing space is preserved as a single space. */

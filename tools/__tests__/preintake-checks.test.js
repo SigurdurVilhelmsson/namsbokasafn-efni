@@ -53,10 +53,10 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
   it('flags an unhandled inline element inside a para', () => {
     const cnxml =
       '<document xmlns:m="http://www.w3.org/1998/Math/MathML">' +
-      '<para>A <quote>q</quote> and <emphasis>e</emphasis> and <m:math><m:mn>2</m:mn></m:math></para>' +
+      '<para>A <cite>q</cite> and <emphasis>e</emphasis> and <m:math><m:mn>2</m:mn></m:math></para>' +
       '</document>';
     const r = runFileChecks(cnxml);
-    expect(r.unrecognizedInline).toEqual({ quote: 1 });
+    expect(r.unrecognizedInline).toEqual({ cite: 1 });
   });
 
   it('does not flag handled inline or MathML internals', () => {
@@ -80,12 +80,20 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
     // gained a marker case in cnxml-extract.js and joined HANDLED_INLINE, so it is
     // no longer unknown — leaving it here would have left this test asserting
     // `toEqual({})`, i.e. a null with nothing proving the check still fires.
-    // <quote> is the replacement: still genuinely unhandled, so the ignore-list
+    // <cite> is the replacement: still genuinely unhandled, so the ignore-list
     // below is measured against something that DOES flag.
+    //
+    // ⚠️ THIS IS NOW A CHAIN OF THREE, AND THAT IS THE POINT — span → quote →
+    // cite. <quote> took the role after <span> and lost it to §C179, which made
+    // it a real block container (organic's named-rule callouts). ▶ Each successor
+    // is chosen by MEASUREMENT, not by which name sounds obscure: <cite> is in
+    // neither HANDLED_INLINE nor HANDLED_BLOCK and occurs 0 times across all five
+    // books' 01-source. Re-measure when it is promoted too; the pipeline widening
+    // underneath this fixture is exactly the drift the assertion exists to catch.
     const cnxml =
       '<document><para>x<figure id="f"/><list><item>a</item></list>' +
-      '<equation/><table/><quote>q</quote></para></document>';
-    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({ quote: 1 });
+      '<equation/><table/><cite>q</cite></para></document>';
+    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({ cite: 1 });
   });
 
   it('does not flag <span> — it is a handled inline marker type (§C118 ⑬)', () => {
@@ -101,8 +109,8 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
     // Non-vacuity: the same container with a genuinely-unknown sibling still fires,
     // so the {} above is a classification result and not a dead code path.
     const withUnknown =
-      '<document><para>x<span class="magenta-text">F</span><quote>q</quote></para></document>';
-    expect(runFileChecks(withUnknown).unrecognizedInline).toEqual({ quote: 1 });
+      '<document><para>x<span class="magenta-text">F</span><cite>q</cite></para></document>';
+    expect(runFileChecks(withUnknown).unrecognizedInline).toEqual({ cite: 1 });
   });
 });
 

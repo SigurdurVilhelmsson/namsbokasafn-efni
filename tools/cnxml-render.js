@@ -1202,6 +1202,7 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
       section: sectionHandler,
       figure: renderFigure,
       note: renderNote,
+      quote: renderQuote,
       example: renderExample,
       exercise: renderExercise,
       table: renderTable,
@@ -1658,6 +1659,37 @@ function renderNote(note, context, extraClass = '') {
 }
 
 /**
+ * Render a <quote> (§C179) — [USER] ruling 2026-09-22.
+ *
+ * `<blockquote class="cnx-callout">`, with the class styled in namsbokasafn-vefur's
+ * `static/styles/content.css` (the cross-repo CSS contract). A bare `<blockquote>`
+ * would already indent on browser defaults; the class is what gets OpenStax's
+ * boxed presentation, which is what these are: named-rule callouts — Markovnikov's
+ * rule, the Hammond postulate.
+ *
+ * ⚠️ WITHOUT A HANDLER HERE THE BLOCK WALK'S LOUD SEAM FIRES, and that is the
+ * correct behaviour rather than a hazard — `<quote>` reached neither HANDLED_INLINE
+ * nor HANDLED_BLOCK, and it stayed silent only because the injector dropped the
+ * wrapper before render ever saw one. Teaching inject to preserve it without
+ * teaching render to draw it would have turned a silent loss into a loud failure.
+ *
+ * The child dispatch is deliberately NARROW — para and list. Every corpus instance
+ * wraps a single `<para>`; a figure or table inside a quote would hit the seam and
+ * say so, which is the outcome to want from a 4-element population.
+ */
+function renderQuote(quote, context) {
+  const id = quote.id || null;
+  const blocks = renderBlockChildrenInOrder(quote.content, context, {
+    para: renderPara,
+    list: renderList,
+  });
+  const lines = [`<blockquote${id ? ` id="${escapeAttr(id)}"` : ''} class="cnx-callout">`];
+  for (const block of blocks) lines.push(`  ${block}`);
+  lines.push('</blockquote>');
+  return lines.join('\n');
+}
+
+/**
  * Render an example.
  *
  * OpenStax CNXML examples have a specific structure where:
@@ -1812,6 +1844,20 @@ function renderExample(example, context) {
       // (the depth-aware walk itemizes it once, at this container — m68793
       // tables 12.31/12.32).
       table: renderTable,
+      // 🔴 §C179 — WITHOUT THIS LINE A QUOTE INSIDE AN <example> LOSES ITS PROSE
+      // ENTIRELY, AND IT DID. Measured on ch13/m00155, whose <quote> is the only
+      // one of the corpus's 4 that is nested: its three paras (the ¹³C NMR data
+      // the preceding sentence promises with "…has the following spectral data:")
+      // reached the rendered page NOT AT ALL — the example jumped straight from
+      // that sentence to the Strategy heading. Identical on origin/main, so this
+      // is a PRE-EXISTING loss this item closes, not a regression it caused.
+      //
+      // ⚠️ IT WAS ALMOST SHIPPED AS "verified fine", and the probe is why: a
+      // check for the quote's text found it and passed, because the SAME WORDS
+      // appear in a nearby figure's `alt`. The value was present; the element was
+      // not. ▶ Key a presence check on the ELEMENT ID, never on prose that can
+      // legitimately occur elsewhere on the page.
+      quote: renderQuote,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
     // centered display block, not as a cramped inline <span class="math-inline">

@@ -402,6 +402,16 @@ export const BRACKET_MARKER_TYPES = [
   // this closed: it checks the types the extractor ACTUALLY emits, rather than
   // checking this list against another list beside it.
   'span',
+  // §C178 — `<emphasis effect="smallcaps">` (the D/L carbohydrate notation),
+  // emitted by cnxml-extract.js as `[[sc:text]]`. ⚠️ MEMBERSHIP HERE IS NOT
+  // BOOKKEEPING: `KNOWN_BRACKET_TYPES` is built from this list, and
+  // `unwrapInventedMarkers` treats a marker whose type is NOT in that set as one
+  // the MT invented around a glossary word — so it would STRIP it and write the
+  // payload into the Icelandic as prose, on the leg that costs money. That is
+  // exactly what happened to `span` (§C118, the comment above). Membership also
+  // gives bracketMarkerDelta a column for `sc`, without which the conservation
+  // check is blind to the very loss it exists to catch.
+  'sc',
   // Opaque/escape markers from the os-embed exercise-field converter (item
   // 9/D3, tools/lib/exercise-html.js) — same bracket dialect, same delta
   // exposure (final review m6, widened).

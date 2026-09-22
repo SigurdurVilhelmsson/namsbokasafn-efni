@@ -447,6 +447,19 @@ function extractInlineText(
       if (effect === 'italics') return `[[i:${inner}]]`;
       if (effect === 'bold') return `[[b:${inner}]]`;
       if (effect === 'underline') return `[[u:${inner}]]`;
+      // §C178 — smallcaps is the D/L carbohydrate notation and it is NOT italics.
+      // It fell through to `return inner` below, so the element was silently
+      // FLATTENED at extraction: 116 occurrences in 12 organic modules, 0 in
+      // chemistry. ⚠️ AND THE RENDERER'S DEFAULT IS WHAT MADE THIS WORTH A NEW
+      // TYPE RATHER THAN A PASSTHROUGH: `processInlineContent` maps an unmapped
+      // effect to `<em>`, so merely letting smallcaps survive would publish an
+      // ITALIC D — and in chemical nomenclature α/β ARE italic while D/L are not.
+      // A wrong statement, not a missing one.
+      if (effect === 'smallcaps') return `[[sc:${inner}]]`;
+      // ⚠️ `effect="italic"` (SINGULAR) still falls through and is flattened — 2
+      // occurrences, organic ch00/m00001 only. Deliberately NOT mapped here: it
+      // would rewrite the source's own attribute value to `italics` on the way
+      // back, trading a content loss for a fidelity diff. → active register.
       return inner;
     }
   );
@@ -459,6 +472,25 @@ function extractInlineText(
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
       return `[[em:${inner}|${parsedAttrs.class}]]`;
     }
+    // §C178 — AN EFFECT-BEARING <emphasis> DOES REACH HERE, AND UNTIL THIS LINE IT
+    // BECAME ITALICS. The handler above is a LAZY regex with no innermost-first
+    // loop, so on `<emphasis effect="bold"><emphasis effect="smallcaps">D</emphasis>
+    // Sugars</emphasis>` it stops at the FIRST `</emphasis>`: the outer marker's
+    // body is truncated to `<emphasis effect="smallcaps">D` and an orphaned
+    // `</emphasis>` is left behind. This handler then matches that wreckage and,
+    // having no class, returned `[[i:…]]`.
+    //
+    // ▶ THE TWO BUGS CANCELLED INTO WELL-FORMED NESTING WITH THE WRONG TYPE:
+    // `[[b:[[i:D]] Sugars]]` — structurally perfect, and an ITALIC D where the
+    // source says small-caps. Measured on all 6 corpus instances (parents:
+    // emphasis ×6), and it was ALREADY the behaviour before smallcaps had a marker
+    // at all, so no count and no round-trip tag census could see it: an
+    // `<emphasis>` went in and an `<emphasis>` came out.
+    //
+    // Only `smallcaps` is mapped here, deliberately. Widening this to bold and
+    // underline would change what every other orphan produces corpus-wide, which
+    // is a separate change with its own measurement. → active register.
+    if (parsedAttrs.effect === 'smallcaps') return `[[sc:${inner}]]`;
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
     return `[[i:${inner}]]`;
   });
@@ -853,8 +885,20 @@ function extractSegments(cnxml, options = {}) {
   }
 
   // Extract document title
-  const titleSegmentId = addSegment('title', doc.title);
-  structure.title = { segmentId: titleSegmentId, text: doc.title };
+  // 🔴 §C126 — RUN IT THROUGH `extractInlineText`, like every other piece of text.
+  // 32 of 342 organic module titles carry `<emphasis>`/`<sub>`/`<sup>`; sending
+  // the markup-stripped form would put `sp3` on the paid wire where the source
+  // means `sp³`. Marker-bearing titles are the established house shape — 62
+  // committed title segments already look like `Steric Effects in the
+  // S[[sub:N]]2 Reaction`.
+  // ⚠️ THIS REPLACES THE TEXT UNDER `auto-1` AND ADDS NO SEGMENT, so nothing
+  // renumbers (§C126's ordering meta-rule: the title is the first segment
+  // emitted). A fix that ADDED one would shift every later positional id.
+  const titleText = doc.titleRaw
+    ? extractInlineText(doc.titleRaw, mathMap, counters, inlineMediaMap, inlineTablesMap)
+    : doc.title;
+  const titleSegmentId = addSegment('title', titleText);
+  structure.title = { segmentId: titleSegmentId, text: titleText };
 
   // Extract abstract/learning objectives
   if (doc.metadata.abstract) {
@@ -1159,6 +1203,11 @@ function processTopLevelContent(
   const examples = extractNestedElements(content, 'example');
   const exercises = extractNestedElements(content, 'exercise');
   const notes = extractNestedElements(content, 'note');
+  // §C179 — <quote> is a block container OpenStax ships and this pipeline had no
+  // case for anywhere. Its children were extracted as TOP-LEVEL paras and the
+  // wrapper was dropped at inject, so the reader lost the callout and kept the
+  // words. Organic is the only book in the repo that has any.
+  const quotes = extractNestedElements(content, 'quote');
 
   // For simple elements (paras, lists, equations) - only extract those NOT inside containers
   // Remove container content to avoid extracting nested elements as top-level
@@ -1179,6 +1228,13 @@ function processTopLevelContent(
   for (const note of notes) {
     if (note.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+    }
+  }
+  // Same reason as notes above: processQuote owns these paras, so leaving them in
+  // scope would emit each one TWICE — once inside the quote and once top-level.
+  for (const quote of quotes) {
+    if (quote.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(quote.fullMatch, '');
     }
   }
   for (const figure of figures) {
@@ -1309,6 +1365,34 @@ function processTopLevelContent(
         position: notePosition !== -1 ? notePosition : 0,
       });
     }
+  }
+
+  // 🔴 A QUOTE NESTED IN A CONTAINER IS ALREADY OWNED BY THAT CONTAINER — EMITTING
+  // IT HERE TOO SHIPS THE PROSE TWICE. Measured on ch13/m00155, whose single
+  // `<quote>` lives inside an `<example>`: without this guard the injected CNXML
+  // carried TWO, one from the preserved example subtree and one standalone, and
+  // the reader would have read Markovnikov-style callout prose twice over.
+  //
+  // ⚠️ IT IS ALSO WHY m00155 WAS NEVER IN THE LOST SET. The example preserves its
+  // subtree verbatim, so that quote round-tripped clean the whole time while
+  // ch07's two top-level ones were dropped — the population is 4 elements of
+  // which 3 were lost, not 4 of 4, and a count of `<quote>` alone cannot tell
+  // those apart. Same guard, same reason, as the notes loop above.
+  for (const quote of quotes) {
+    const position = quote.fullMatch
+      ? content.indexOf(quote.fullMatch)
+      : elementIdPosition(content, quote.id);
+    const insideContainer = [...examples, ...exercises, ...notes].some((c) => {
+      if (!c.fullMatch || !quote.fullMatch) return false;
+      const start = content.indexOf(c.fullMatch);
+      return position >= start && position < start + c.fullMatch.length;
+    });
+    if (insideContainer) continue;
+    elementsWithPositions.push({
+      ...quote,
+      type: 'quote',
+      position: position !== -1 ? position : 0,
+    });
   }
 
   for (const eq of equations) {
@@ -1443,6 +1527,20 @@ function processTopLevelContent(
           inlineTablesMap
         );
         elements.push(noteStructure);
+        break;
+      }
+      case 'quote': {
+        elements.push(
+          processQuote(
+            item,
+            moduleId,
+            addSegment,
+            mathMap,
+            counters,
+            inlineMediaMap,
+            inlineTablesMap
+          )
+        );
         break;
       }
       case 'equation': {
@@ -2420,6 +2518,54 @@ function processExercise(
   }
 
   return exerciseStructure;
+}
+
+/**
+ * Process a <quote> element (§C179).
+ *
+ * The simplest container in the corpus: every instance is block-level, wraps
+ * exactly one `<para>`, and carries no title, figure, table or list — so this is
+ * `processNote` with everything it does not need removed, rather than a new
+ * pattern. Measured over all five books: organic 4 elements in 3 modules,
+ * everyone else 0.
+ *
+ * ⚠️ THE PARAS MUST BE OWNED HERE OR NOWHERE — the caller strips this quote's
+ * `fullMatch` from the simple-element scope for exactly that reason. CLAUDE.md's
+ * container/cut rule: owner-without-cut duplicates the prose, cut-without-owner
+ * deletes it, and neither is visible to a tag count.
+ */
+function processQuote(
+  quote,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
+  const quoteStructure = {
+    type: 'quote',
+    id: quote.id,
+    class: quote.attributes.class,
+    content: [],
+  };
+
+  for (const para of extractElements(quote.content, 'para')) {
+    const text = extractInlineText(
+      para.content,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
+    if (text) {
+      const segId = addSegment('para', text, para.id);
+      drainInlineMediaAlts(inlineMediaMap, addSegment);
+      quoteStructure.content.push({ type: 'para', id: para.id, segmentId: segId });
+    }
+  }
+
+  return quoteStructure;
 }
 
 /**

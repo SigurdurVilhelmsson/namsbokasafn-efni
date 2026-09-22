@@ -70,6 +70,9 @@
     html = html.replace(/\[\[term:(.+?)\]\]/g, (_m, t) => `${delim('[[term:')}${t}${delim(']]')}`);
     html = html.replace(/\[\[fn:(.+?)\]\]/g, (_m, t) => `${delim('[[fn:')}${t}${delim(']]')}`);
     html = html.replace(/\[\[u:(.+?)\]\]/g, (_m, t) => `${delim('[[u:')}${t}${delim(']]')}`);
+    // §C178 — smallcaps (D/L). Cosmetic only: an unhighlighted marker is legible,
+    // it just is not dimmed, so an editor may read it as prose to translate.
+    html = html.replace(/\[\[sc:(.+?)\]\]/g, (_m, t) => `${delim('[[sc:')}${t}${delim(']]')}`);
 
     // 4. Brace markers (term/footnote + legacy emphasis from old files).
     html = html.replace(

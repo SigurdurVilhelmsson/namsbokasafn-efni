@@ -63,10 +63,17 @@ describe('depth-aware section walk', () => {
     expect(li).toContain('media-inline');
   });
 
-  it('unknown block element (quote) hits the loud seam and does not leak raw', () => {
-    const res = render('<quote id="q1">tilvitnun_texti</quote><para id="p1">Eftir.</para>');
-    expect(res.undispatchedBlocks.some((b) => b.tag === 'quote')).toBe(true);
-    expect(res.html).not.toContain('<quote');
+  it('unknown block element (cite) hits the loud seam and does not leak raw', () => {
+    // ⚠️ <cite> IS THE STAND-IN FOR "GENUINELY UNHANDLED", AND IT IS THE THIRD TAG
+    // TO HOLD THE ROLE. <quote> held it until §C179 made it a real block container
+    // (organic's named-rule callouts), and the tag before <quote> was promoted the
+    // same way. ▶ The successor is MEASURED, not guessed: <cite> is in neither
+    // HANDLED_INLINE nor HANDLED_BLOCK and occurs 0 times across all five books'
+    // 01-source. When it too becomes handled, re-measure rather than reaching for
+    // the next plausible-sounding name.
+    const res = render('<cite id="q1">tilvitnun_texti</cite><para id="p1">Eftir.</para>');
+    expect(res.undispatchedBlocks.some((b) => b.tag === 'cite')).toBe(true);
+    expect(res.html).not.toContain('<cite');
   });
 
   it('excluded section classes are still dropped at top level', () => {
