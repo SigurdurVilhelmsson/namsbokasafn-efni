@@ -410,17 +410,22 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
   // asserted "SKIPPED with examined 0 — no module carries a run record", true of every
   // module until the paid run wrote the first 16 run records. 14 of those sit on units
   // `isFileUnits` counts; the other 2 are `chapter-metadata`, which it excludes by design.
-  it('A2a / A4 / A8 measure the 14 modules the paid run recorded, and SKIP the other 183', async () => {
+  it('A2a / A4 / A8 measure the 158 units with a run record, and SKIP the other 39', async () => {
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [2] });
     for (const id of ['A2a', 'A4', 'A8']) {
       const r = report.rows.find((x) => x.id === id);
       expect(r.population, `${id} population`).toBe(197);
-      expect(r.SKIPPED, `${id} skipped`).toBe(183);
-      expect(r.evaluable, `${id} evaluable`).toBe(14);
-      // 🔴 NOT `toBeGreaterThan(0)`, AND NOT 0. `examined` is 1 per judged unit, so 14 is
-      // the only value consistent with 14 evaluable; the old `toBe(0)` pinned the QUIET
+      // 183 -> 39 and 14 -> 158: the ch09..ch21 + appendices buys wrote a run record to
+      // every unit they touched, so the population these three can MEASURE grew elevenfold
+      // while the population itself held at 197. The split, not the total, is the evidence.
+      expect(r.SKIPPED, `${id} skipped`).toBe(39);
+      expect(r.evaluable, `${id} evaluable`).toBe(158);
+      // 🔴 NOT `toBeGreaterThan(0)`, AND NOT 0. `examined` is 1 per judged unit, so 158 is
+      // the only value consistent with 158 evaluable; the old `toBe(0)` pinned the QUIET
       // state and would stay green if every run record were deleted again.
-      expect(r.examinedTotal, `${id} examined`).toBe(14);
+      // ⚠️ The 39 SKIPs are the units with no run record left — organic's 38 unbought
+      // segment files plus one. When organic is bought this pin moves again, by design.
+      expect(r.examinedTotal, `${id} examined`).toBe(158);
       // The successor to the old `rate).toBeNull()`. That pin said "never 0% — that would
       // read as measured, clean"; now that these checks DO measure, the same distinction
       // is that the rate must exist. A null rate would mean the run-record units vanished
@@ -754,11 +759,44 @@ describe('the over-bar advice names the stage that actually rewrites that tier',
   });
 
   it('a tier-2 over-bar row is told to re-measure after the re-MT, not the extract', async () => {
+    // 🔴 REWRITTEN 2026-09-22 — THIS ASSERTED ON A REAL OVER-BAR ROW AND THE CORPUS GOT
+    // HEALTHY UNDERNEATH IT. It read `expect(text).toMatch(/A6\s+tier 2/)` with the note
+    // "A6 is blocking and over the bar today". A6's rate is now **0.0%**: the legacy
+    // marker dialects it detects were retired from chemistry by the ch16..ch21 +
+    // appendices buys. `formatReport` prints the advice block only for rows where
+    // `blocking && rate > BLOCKING_RATE_BAR`, and at tier 2 the only blocking rows are
+    // A2b (4.6%) and A6 (0.0%) — so the entire section stopped printing and every
+    // assertion here failed at once.
+    //
+    // ▶ THE SUBJECT IS THE ADVICE TEXT, NOT THE CORPUS. Tying it to a live defect meant
+    // the test died the moment the defect was fixed — which is the outcome the work is
+    // FOR. So the over-bar row is now synthesised by raising one real row's rate above
+    // the bar, keeping the real report structure and asserting what the formatter says.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [2] });
-    const text = formatReport(report);
-    expect(text).toMatch(/A6\s+tier 2/); // A6 is blocking and over the bar today
+
+    const a6 = report.rows.find((r) => r.id === 'A6');
+    expect(a6, 'control: A6 must still be in a tier-2 sweep').toBeDefined();
+    expect(a6.blocking, 'control: the advice block only covers BLOCKING rows').toBe(true);
+    expect(a6.tier, 'control: this test is about tier 2 specifically').toBe(2);
+
+    const forced = {
+      ...report,
+      rows: report.rows.map((r) => (r.id === 'A6' ? { ...r, rate: 0.9 } : r)),
+    };
+    const text = formatReport(forced);
+    expect(text).toMatch(/A6\s+tier 2/);
     expect(text).toContain('re-MT (02-mt-output)');
     expect(text).not.toContain('re-EXTRACT (02-for-mt)'); // tier 1's stage must not appear here
+
+    // ⚠️ AND THE NEGATIVE, so the synthetic arm above cannot pass by accident: on the
+    // REAL report the block is absent, because no blocking tier-2 row exceeds the bar.
+    // If this ever fails, a blocking check has gone over Global Constraint 4's budget —
+    // which is a finding, not a broken test.
+    const realText = formatReport(report);
+    expect(realText).not.toContain('re-MT (02-mt-output)');
+    for (const r of report.rows.filter((x) => x.blocking && x.rate !== null)) {
+      expect(r.rate, `${r.id} is blocking and over the ~5% bar`).toBeLessThanOrEqual(0.05);
+    }
   }, 120_000);
 });
 
