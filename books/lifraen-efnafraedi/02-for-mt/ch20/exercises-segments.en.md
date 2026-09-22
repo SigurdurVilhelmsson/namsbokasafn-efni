@@ -4,11 +4,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:20-01-OC-P01:stem:359080-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P01:alt:stem-359080-m0 -->
+The structure of 3-methylbutanoic acid, which has a C O O H group on C 1 and a methyl group on C 3 of a four-carbon chain.
+
 <!-- SEG:20-01-OC-P01:sol:359080-b0 -->
 3-Methylbutanoic acid
 
 <!-- SEG:20-01-OC-P01:stem:359081-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P01:alt:stem-359081-m0 -->
+The structure of 4-bromopentanoic acid, which has a C O O H group on C 1 and a bromine atom on C 4 of a five-carbon chain.
 
 <!-- SEG:20-01-OC-P01:sol:359081-b0 -->
 4-Bromopentanoic acid
@@ -16,11 +22,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:20-01-OC-P01:stem:359082-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P01:alt:stem-359082-m0 -->
+The structure of 2-ethylpentanoic acid, which has a C O O H group on C 1 and an ethyl on C 2 of a five-carbon chain.
+
 <!-- SEG:20-01-OC-P01:sol:359082-b0 -->
 2-Ethylpentanoic acid
 
 <!-- SEG:20-01-OC-P01:stem:359083-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P01:alt:stem-359083-m0 -->
+The structure of (Z)-hex-4-enoic acid with six-carbon atoms. There is a C O O H on C 1, and C 4 and C 5 are double bonded with cis arrangement.
 
 <!-- SEG:20-01-OC-P01:sol:359083-b0 -->
 [[i:cis]]-4-Hexenoic acid
@@ -28,11 +40,17 @@ Give IUPAC names for the following compounds:
 <!-- SEG:20-01-OC-P01:stem:359084-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P01:alt:stem-359084-m0 -->
+The structure of 2,4-dimethylpentane, which is a five-carbon chain in which C 1 is part of a C N group. There are methyl groups on C 2 and C 4.
+
 <!-- SEG:20-01-OC-P01:sol:359084-b0 -->
 2,4-Dimethylpentanenitrile
 
 <!-- SEG:20-01-OC-P01:stem:359085-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P01:alt:stem-359085-m0 -->
+The structure of cyclopentane-1,3-dicarboxylic acid with cyclopentane ring. There are C O O H groups on C 1 and C 3, positioned cis to each other.
 
 <!-- SEG:20-01-OC-P01:sol:359085-b0 -->
 [[i:cis]]-1,3-Cyclopentanedicarboxylic acid
@@ -46,11 +64,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:20-01-OC-P02:sol:359092-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P02:alt:sol-359092-m0 -->
+The structure of 2,3-dimethylhexanoic acid. Methyl groups are attached to C 2 and C 3. C 1 is part of the C O O H group.
+
 <!-- SEG:20-01-OC-P02:stem:359093-b0 -->
 4-Methylpentanoic acid
 
 <!-- SEG:20-01-OC-P02:sol:359093-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P02:alt:sol-359093-m0 -->
+The structure of 4-methylpentanoic acid, a five-carbon chain with a methyl group attached to C 4. C 1 is part of the C O O H group.
 
 <!-- SEG:20-01-OC-P02:stem:359094-b0 -->
 [[i:trans]]-1,2-Cyclobutanedicarboxylic acid
@@ -58,11 +82,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:20-01-OC-P02:sol:359094-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P02:alt:sol-359094-m0 -->
+The structure of trans-1,2-cyclobutanedicarboxylic acid. C O O H groups are attached to C 1 and C 2 of a cyclobutane ring, trans to one another.
+
 <!-- SEG:20-01-OC-P02:stem:359095-b0 -->
 [[i:o]]-Hydroxybenzoic acid
 
 <!-- SEG:20-01-OC-P02:sol:359095-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P02:alt:sol-359095-m0 -->
+The structure of o-hydroxybenzoic acid. A C O O H group is present on C 1 of benzene ring. The ortho position is connected to the O H group.
 
 <!-- SEG:20-01-OC-P02:stem:359096-b0 -->
 (9[[i:Z]],12[[i:Z]])-9,12-Octadecadienoic acid
@@ -70,11 +100,17 @@ Draw structures corresponding to the following IUPAC names:
 <!-- SEG:20-01-OC-P02:sol:359096-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-01-OC-P02:alt:sol-359096-m0 -->
+Structure of (9 Z, 12 Z)-9, 12-octadecadienoic acid. C 9 and C 12 are double-bonded with attached groups in Z configuration. C 1 is part of C O O H.
+
 <!-- SEG:20-01-OC-P02:stem:359097-b0 -->
 2-Pentenenitrile
 
 <!-- SEG:20-01-OC-P02:sol:359097-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-01-OC-P02:alt:sol-359097-m0 -->
+The structure of 2-pentenenitrile. A double bond is placed between C 2 and C 3. C 1 is part of the C N group.
 
 <!-- SEG:20-02-OC-P03:stem:341934-b0 -->
 Assume you have a mixture of naphthalene and benzoic acid that you want to separate. How might you take advantage of the acidity of one component in the mixture to effect a separation?
@@ -108,6 +144,9 @@ Which would you expect to be a stronger acid, the lactic acid found in tired mus
 
 <!-- SEG:20-04-OC-P06:stem:347263-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-04-OC-P06:alt:stem-347263-m0 -->
+Alt Text Placeholder
 
 <!-- SEG:20-04-OC-P06:sol:347263-b0 -->
 Lactic acid is stronger because of the inductive effect of the  −OH group.
@@ -160,6 +199,9 @@ How might you prepare 2-phenylethanol from benzyl bromide? More than one step is
 <!-- SEG:20-06-OC-P11:stem:359106-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-06-OC-P11:alt:stem-359106-m0 -->
+Benzyl bromide reacts with unknown reagent(s) depicted by question mark to produce 2-phenylethanol.
+
 <!-- SEG:20-06-OC-P11:sol:359106-b0 -->
 1. NaCN; 2. H[[sub:3]]O[[sup:+]]; 3. LiAlH[[sub:4]]
 
@@ -168,6 +210,9 @@ How might you carry out the following transformation? More than one step is need
 
 <!-- SEG:20-06-OC-P12:stem:359108-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-06-OC-P12:alt:stem-359108-m0 -->
+Cyclopentylmethanol reacts with unknown reagent(s) depicted by question mark to produce 2-cyclopentylethanol.
 
 <!-- SEG:20-06-OC-P12:sol:359108-b0 -->
 1. PBr[[sub:3]]; 2. NaCN; 3. H[[sub:3]]O[[sup:+]]; 4. LiAlH[[sub:4]]
@@ -178,11 +223,17 @@ How would you prepare the following carbonyl compounds from a nitrile?
 <!-- SEG:20-07-OC-P13:stem:464248-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-07-OC-P13:alt:stem-464248-m0 -->
+The structure of pentan-3-one, a five-carbon chain with a carbonyl on C 3.
+
 <!-- SEG:20-07-OC-P13:sol:464248-b0 -->
 Propanenitrile + CH[[sub:3]]CH[[sub:2]]MgBr, then H[[sub:3]]O[[sup:+]]
 
 <!-- SEG:20-07-OC-P13:stem:464249-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-07-OC-P13:alt:stem-464249-m0 -->
+The structure of 1-(4-nitrophenyl)ethanone.
 
 <!-- SEG:20-07-OC-P13:sol:464249-b0 -->
 [[i:p]]-Chlorobenzonitrile + CH[[sub:3]]MgBr, then H[[sub:3]]O[[sup:+]]
@@ -211,26 +262,50 @@ Give IUPAC names for the following compounds:
 <!-- SEG:20-99-OC-AP01:stem:359170-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP01:alt:stem-359170-m0 -->
+A six-carbon chain with carboxyl groups on carbons 2 and 5.
+
 <!-- SEG:20-99-OC-AP01:stem:359171-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP01:alt:stem-359171-m0 -->
+A three-carbon chain in which the first carbon is part of a carboxyl group. There are two methyl groups on the adjacent carbon.
 
 <!-- SEG:20-99-OC-AP01:stem:359172-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP01:alt:stem-359172-m0 -->
+A benzene ring with a carboxyl substituent. Meta to the carboxyl is a cyano substituent.
+
 <!-- SEG:20-99-OC-AP01:stem:359173-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP01:alt:stem-359173-m0 -->
+A ten-carbon ring with a carboxyl substituent. There is a double bond on the alpha carbon, with trans orientation.
 
 <!-- SEG:20-99-OC-AP01:stem:359174-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP01:alt:stem-359174-m0 -->
+A three-carbon chain in which the first carbon is part of a nitrile group. There are two methyl groups on the adjacent carbon.
+
 <!-- SEG:20-99-OC-AP01:stem:359175-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP01:alt:stem-359175-m0 -->
+A six-carbon chain with a substituent on the third carbon. The substituent has the condensed formula C H 2 C O 2 H.
 
 <!-- SEG:20-99-OC-AP01:stem:359176-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP01:alt:stem-359176-m0 -->
+A five-carbon chain in which the first carbon is part of a carboxyl group. There are bromine groups on the furthest and next-to-furthest carbons from the carboxyl.
+
 <!-- SEG:20-99-OC-AP01:stem:359177-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP01:alt:stem-359177-m0 -->
+A cyclopentene with a cyano substituent one carbon from the end of the double bond.
 
 <!-- SEG:20-99-OC-AP02:stimulus:b0 -->
 Draw structures corresponding to the following IUPAC names:
@@ -324,6 +399,9 @@ In humans, the final product of purine degradation from DNA is uric acid, p[[i:K
 
 <!-- SEG:20-99-OC-AP11:stem:359179-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP11:alt:stem-359179-m0 -->
+The structure of uric acid from pyrimidine base. The nitrogen atom in the five-membered ring is attached to a highlighted hydrogen. The nitrogen is placed in between two carbonyl groups.
 
 <!-- SEG:20-99-OC-AP12:stem:342086-b0 -->
 Some p[[i:K]][[sub:a]] data for simple dibasic acids is shown. How can you account for the fact that the difference between the first and second ionization constants decreases with increasing distance between the carboxyl groups?
@@ -466,26 +544,44 @@ How would you carry out the following transformations?
 <!-- SEG:20-99-OC-AP19:stem:359181-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP19:alt:stem-359181-m0 -->
+The conversion of methylenecyclohexane reacts with one set of unknown reagents to form 2-cyclohexylacetic acid, and with another set of unknown reagents to form 1-methylcyclohexanecarboxylic acid.
+
 <!-- SEG:20-99-OC-AP20:stimulus:b0 -->
 Which method—Grignard carboxylation or nitrile hydrolysis—would you use for each of the following reactions? Explain.
 
 <!-- SEG:20-99-OC-AP20:stem:359186-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP20:alt:stem-359186-m0 -->
+2-(bromomethyl)phenol separated from 2-(2-hydroxyphenyl)acetic acid by a reaction arrow.
+
 <!-- SEG:20-99-OC-AP20:stem:359187-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP20:alt:stem-359187-m0 -->
+2-bromobutane separated from 3-methylbutanoic acid by a reaction arrow.
 
 <!-- SEG:20-99-OC-AP20:stem:359188-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP20:alt:stem-359188-m0 -->
+5-iodopentan-2-one separated from 5-oxohexanoic acid by a reaction arrow.
+
 <!-- SEG:20-99-OC-AP20:stem:359189-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP20:alt:stem-359189-m0 -->
+3-bromopropanol separated from 4-hydroxybutanoic acid by a reaction arrow.
 
 <!-- SEG:20-99-OC-AP21:stem:359191-b0 -->
 1,6-Hexanediamine, a starting material needed for making nylon, can be made from 1,3-butadiene. How would you accomplish the synthesis?
 
 <!-- SEG:20-99-OC-AP21:stem:359191-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP21:alt:stem-359191-m0 -->
+The conversion of buta-1,3-diene to hexane-1,6-diamine. The missing reagents are depicted with a question mark.
 
 <!-- SEG:20-99-OC-AP22:stem:342144-b0 -->
 3-Methyl-2-hexenoic acid (mixture of [[i:E]] and [[i:Z]] isomers) has been identified as the substance responsible for the odor of human sweat. Synthesize the compound from starting materials having five or fewer carbons.
@@ -499,26 +595,44 @@ What spectroscopic method could you use to distinguish among the following three
 <!-- SEG:20-99-OC-AP24:stem:359193-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP24:alt:stem-359193-m0 -->
+The condensed formulas for pentanoic acid, 3-methylbutanoic acid, and 2,2-dimethylpropanoic acid.
+
 <!-- SEG:20-99-OC-AP25:stimulus:b0 -->
 How would you use NMR (either [[sup:13]]C or [[sup:1]]H) to distinguish between the following pairs of isomers?
 
 <!-- SEG:20-99-OC-AP25:stem:359198-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP25:alt:stem-359198-m0 -->
+The structures of benzene-1,3-dicarboxylic acid and benzene-1,4-dicarboxylic acid. Structure 1 carboxyl groups at first and third carbons. Structure 2 carboxyl groups at first and fourth carbons.
+
 <!-- SEG:20-99-OC-AP25:stem:359199-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP25:alt:stem-359199-m0 -->
+The condensed formulas read H O 2 C C H 2 C H 2 C O 2 H and C H 3 C H (C O 2 H)2
 
 <!-- SEG:20-99-OC-AP25:stem:359200-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP25:alt:stem-359200-m0 -->
+Formulas read C H 3 C H 2 C H 2 C O 2 H and H O C H 2 C H 2 C H 2 C H O.
+
 <!-- SEG:20-99-OC-AP25:stem:359201-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP25:alt:stem-359201-m0 -->
+The condensed formula of 4-methylpent-3-enoic acid, and the chemical structure of cyclopentanecarboxylic acid.
 
 <!-- SEG:20-99-OC-AP26:stem:359203-b0 -->
 Compound [[b:A]], C[[sub:4]]H[[sub:8]]O[[sub:3]], has infrared absorptions at 1710 and 2500 to 3100 cm[[sup:–1]] and has the [[sup:1]]H NMR spectrum shown. Propose a structure for [[b:A]].
 
 <!-- SEG:20-99-OC-AP26:stem:359203-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP26:alt:stem-359203-m0 -->
+The proton spectrum of C 4 H 8 O 3 shows peaks at 1.26 (triplet), 3.64 (quartet), 4.14 (singlet), and 11.12 (singlet).
 
 <!-- SEG:20-99-OC-AP27:stem:342160-b0 -->
 A chemist in need of 2,2-dimethylpentanoic acid decided to synthesize some by reaction of 2-chloro-2-methylpentane with NaCN, followed by hydrolysis of the product. After the reaction sequence was carried out, however, none of the desired product could be found. What do you suppose went wrong?
@@ -529,17 +643,29 @@ Show how you might prepare the anti-inflammatory agent ibuprofen starting from i
 <!-- SEG:20-99-OC-AP28:stem:359205-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP28:alt:stem-359205-m0 -->
+Chemical structure of isobutylbenzene with arrows pointing toward ibuprofen (isobutyl benzene with substituent in para position: ethyl group with C O 2 H at ethyl C 1).
+
 <!-- SEG:20-99-OC-AP29:stimulus:b0 -->
 The following synthetic schemes all have at least one flaw in them. What is wrong with each?
 
 <!-- SEG:20-99-OC-AP29:stem:359209-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP29:alt:stem-359209-m0 -->
+Conversion of 3-bromopentane to 2-ethylbutanoic acid through reaction first with magnesium, then sodium cyanide, then hydronium.
+
 <!-- SEG:20-99-OC-AP29:stem:359210-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP29:alt:stem-359210-m0 -->
+Conversion of 2-phenylacetic acid to ethylbenzene through reaction first with lithium aluminum hydride, then hydronium.
+
 <!-- SEG:20-99-OC-AP29:stem:359211-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP29:alt:stem-359211-m0 -->
+Conversion of 4-chloro-2-methylbutan-2-ol to 4-hydroxy-4-methylpentanoic acid using sodium cyanide followed by acid hydrolysis.
 
 <!-- SEG:20-99-OC-AP30:stem:351789-b0 -->
 [[i:p]]-Aminobenzoic acid (PABA) was once widely used as a sunscreen agent. Propose a synthesis of PABA starting from toluene.
@@ -549,6 +675,9 @@ Propose a synthesis of the anti-inflammatory drug fenclorac from phenylcyclohexa
 
 <!-- SEG:20-99-OC-AP31:stem:359213-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP31:alt:stem-359213-m0 -->
+The structure of Fenclorac. A phenylcyclohexane ring is depicted with a chlorine atom bonded to the third carbon of the benzene. 2-chloroacetic acid occupies the first carbon of the benzene.
 
 <!-- SEG:20-99-OC-AP32:stem:359216-b0 -->
 The p[[i:K]][[sub:a]]’s of five [[i:p]]-substituted benzoic acids ([[em:Y|0]]C[[sub:6]]H[[sub:4]]CO[[sub:2]]H) are listed below. Rank the corresponding substituted benzenes ([[em:Y|1]]C[[sub:6]]H[[sub:5]]) in order of their increasing reactivity toward electrophilic aromatic substitution. If benzoic acid has p[[i:K]][[sub:a]] = 4.19, which of the substituents are activators and which are deactivators?
@@ -589,14 +718,23 @@ The p[[i:K]][[sub:a]]’s of five [[i:p]]-substituted benzoic acids ([[em:Y|0]]C
 <!-- SEG:20-99-OC-AP32:stem:359216-b12 -->
 3.59
 
+<!-- SEG:20-99-OC-AP32:alt:stem-359216-m0 -->
+The structure of benzoic acid with a substituent Y placed para to the carboxylic acid group attached to the benzene ring. To the left, p k a term is mentioned.
+
 <!-- SEG:20-99-OC-AP33:stimulus:b0 -->
 How would you carry out the following transformations? More than one step is needed in each case.
 
 <!-- SEG:20-99-OC-AP33:stem:359219-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP33:alt:stem-359219-m0 -->
+Benzene separated from 2-methyl-2-phenylpropanoic acid by a reaction arrow.
+
 <!-- SEG:20-99-OC-AP33:stem:359220-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP33:alt:stem-359220-m0 -->
+Cyclohexanone separated from 1-phenylcyclohexanecarboxylic acid by a reaction arrow. 1-phenylcyclohexanecarboxylic acid has a cyclohexane ring single bonded to a phenyl group and a carboxyl group at C 1.
 
 <!-- SEG:20-99-OC-AP34:stem:359222-b0 -->
 The following p[[i:K]][[sub:a]] values have been measured. Explain why a hydroxyl group in the para position decreases the acidity while a hydroxyl group in the meta position increases the acidity.
@@ -604,11 +742,17 @@ The following p[[i:K]][[sub:a]] values have been measured. Explain why a hydroxy
 <!-- SEG:20-99-OC-AP34:stem:359222-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP34:alt:stem-359222-m0 -->
+The acid strengths of 4-hydroxybenzoic acid (p K a equals 4.48), benzoic acid (p K a equals 4.19), and 3-hydroxybenzoic acid (p K a equals 4.07) are compared.
+
 <!-- SEG:20-99-OC-AP35:stem:359224-b0 -->
 Identify the missing reagents [[b:a]]–[[b:f]] in the following scheme:
 
 <!-- SEG:20-99-OC-AP35:stem:359224-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP35:alt:stem-359224-m0 -->
+Reaction of 3-methylbut-1-ene to form 3-methylbutan-1-ol, then 3-methyl-1-bromobutane, then 3-methylpentanoic acid, then 4-methylpentan-1-ol, then 4-methylpentanal, then 4-methyl pentane. Missing reagents in each step indicated using letters a through f.
 
 <!-- SEG:20-99-OC-AP36:stem:359227-b0 -->
 Propose a structure for a compound, C[[sub:4]]H[[sub:7]]N, that has the following IR and [[sup:1]]H NMR spectra:
@@ -616,14 +760,23 @@ Propose a structure for a compound, C[[sub:4]]H[[sub:7]]N, that has the followin
 <!-- SEG:20-99-OC-AP36:stem:359227-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP36:alt:stem-359227-m0 -->
+An I R spectrum with a strong band below 3000 and around 1750 wavenumbers. A proton spectrum with shifts of 1.06 (triplet), 1.68 (sextet), and 2.31 (triplet).
+
 <!-- SEG:20-99-OC-AP37:stimulus:b0 -->
 The two [[sup:1]]H NMR spectra shown here belong to crotonic acid ([[i:trans]]-CH[[sub:3]]CH[[MEDIA:0]]CHCO[[sub:2]]H) and methacrylic acid [[lb:]]H[[sub:2]]C[[MEDIA:1]]C(CH[[sub:3]])CO[[sub:2]]H[[rb:]]. Which spectrum corresponds to which acid? Explain.
 
 <!-- SEG:20-99-OC-AP37:stem:359230-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP37:alt:stem-359230-m0 -->
+The proton spectrum shows peaks at 1.91 (doublet), 5.83 (doublet), 7.10 (multiplet), and 12.21 (singlet).
+
 <!-- SEG:20-99-OC-AP37:stem:359231-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP37:alt:stem-359231-m0 -->
+The proton spectrum shows peaks at 1.93 (singlet), 5.66 (singlet), 6.25 (singlet), and 12.24 (singlet).
 
 <!-- SEG:20-99-OC-AP38:stimulus:b0 -->
 The [[sup:1]]H and [[sup:13]]C NMR spectra below belong to a compound with formula C[[sub:6]]H[[sub:10]]O[[sub:2]]. Propose a structure for this compound.
@@ -631,8 +784,14 @@ The [[sup:1]]H and [[sup:13]]C NMR spectra below belong to a compound with formu
 <!-- SEG:20-99-OC-AP38:stem:359235-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP38:alt:stem-359235-m0 -->
+The proton spectrum shows peaks at 1.05 (triplet), 1.80 (singlet), 2.25 (multiplet), 6.85 (triplet), and 12.5 (singlet).
+
 <!-- SEG:20-99-OC-AP38:stem:359236-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-AP38:alt:stem-359236-m0 -->
+The carbon-13 spectra show peaks at 11.79, 12.89, 22.24, 126.62, 146.71, and 174.19.
 
 <!-- SEG:20-99-OC-AP39:stimulus:b0 -->
 Propose structures for carboxylic acids that show the following peaks in their [[sup:13]]C NMR spectra. Assume that the kinds of carbons (1°, 2°, 3°, or 4°) have been assigned by DEPT-NMR.
@@ -649,14 +808,23 @@ Carboxylic acids having a second carbonyl group two atoms away lose CO[[sub:2]] 
 <!-- SEG:20-99-OC-AP40:stem:359238-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-AP40:alt:stem-359238-m0 -->
+Conversion of 3-oxobutanoic acid on reaction with aqueous sodium hydroxide to a three-carbon enolate ion and carbon dioxide. Further reaction with water produces propan-2-one.
+
 <!-- SEG:20-99-OC-MP01:stimulus:b0 -->
 Predict the product(s) and write the mechanism of each of the following reactions:
 
 <!-- SEG:20-99-OC-MP01:stem:359131-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP01:alt:stem-359131-m0 -->
+Conversion of bromobenzene to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.
+
 <!-- SEG:20-99-OC-MP01:stem:359132-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP01:alt:stem-359132-m0 -->
+Conversion of 2-bromobutane to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.
 
 <!-- SEG:20-99-OC-MP02:stimulus:b0 -->
 Predict the product(s) and write the mechanism of each of the following reactions:
@@ -664,8 +832,14 @@ Predict the product(s) and write the mechanism of each of the following reaction
 <!-- SEG:20-99-OC-MP02:stem:359136-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP02:alt:stem-359136-m0 -->
+Conversion of cyclopentanecarboxamide to unknown products depicted by a question mark by reaction with thionyl chloride.
+
 <!-- SEG:20-99-OC-MP02:stem:359137-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP02:alt:stem-359137-m0 -->
+Conversion of benzamide to unknown products depicted by a question mark by reaction with thionyl chloride.
 
 <!-- SEG:20-99-OC-MP03:stimulus:b0 -->
 Predict the product(s) and write the mechanism of each of the following reactions:
@@ -673,8 +847,14 @@ Predict the product(s) and write the mechanism of each of the following reaction
 <!-- SEG:20-99-OC-MP03:stem:359140-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP03:alt:stem-359140-m0 -->
+Conversion of 2-methylbutanenitrile to unknown products depicted by a question mark by reaction with sodium hydroxide and water.
+
 <!-- SEG:20-99-OC-MP03:stem:359141-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP03:alt:stem-359141-m0 -->
+Conversion of 3-methylbenzonitrile to unknown products depicted by a question mark by reaction with sodium hydroxide and water.
 
 <!-- SEG:20-99-OC-MP04:stimulus:b0 -->
 Predict the product(s) and write the complete mechanism of each of the following reactions:
@@ -682,8 +862,14 @@ Predict the product(s) and write the complete mechanism of each of the following
 <!-- SEG:20-99-OC-MP04:stem:359144-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP04:alt:stem-359144-m0 -->
+2-methoxybenzonitrile reacts with methylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.
+
 <!-- SEG:20-99-OC-MP04:stem:359145-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP04:alt:stem-359145-m0 -->
+Cyclopropanecarbonitrile reacts with phenylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.
 
 <!-- SEG:20-99-OC-MP05:stimulus:b0 -->
 Acid-catalyzed hydrolysis of a nitrile to give a carboxylic acid occurs by initial protonation of the nitrogen atom, followed by nucleophilic addition of water. Review the mechanism of base-catalyzed nitrile hydrolysis in Section 20.7 and then predict the products for the following reactions. Write the steps involved in the acid-catalyzed reaction, using curved arrows.
@@ -691,14 +877,23 @@ Acid-catalyzed hydrolysis of a nitrile to give a carboxylic acid occurs by initi
 <!-- SEG:20-99-OC-MP05:stem:359148-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP05:alt:stem-359148-m0 -->
+Conversion of 3,3-dimethylbutane nitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.
+
 <!-- SEG:20-99-OC-MP05:stem:359149-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP05:alt:stem-359149-m0 -->
+Conversion of 4-methylbenzonitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.
 
 <!-- SEG:20-99-OC-MP06:stem:359151-b0 -->
 Nitriles can be converted directly to esters by the Pinner reaction, which first produces an iminoester salt that is isolated and then treated with water to give the final product. Propose a mechanism for the Pinner reaction using curved arrows to show the flow of electrons at each step.
 
 <!-- SEG:20-99-OC-MP06:stem:359151-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP06:alt:stem-359151-m0 -->
+Conversion of benzonitrile to methyl benzoate. An imine ester intermediate is formed (reacting with hydrochloric acid in methanol) in which carbon is double-bonded to nitrogen, carrying a positive charge.
 
 <!-- SEG:20-99-OC-MP07:stimulus:b0 -->
 Naturally occurring compounds called [[i:cyanogenic glycosides,]] such as lotaustralin, release hydrogen cyanide, HCN, when treated with aqueous acid. The reaction occurs by hydrolysis of the acetal linkage to form a cyanohydrin, which then expels HCN and gives a carbonyl compound.
@@ -712,11 +907,17 @@ Propose a mechanism for the loss of HCN, and show the structure of the carbonyl 
 <!-- SEG:20-99-OC-MP07:stem:359155-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP07:alt:stem-359155-m0 -->
+Structure of Lotaustralin comprises a pyran ring in the chair conformation, with attached hydroxyl groups. The carbon connected to side-chain oxygen bonded to carbon carries wedged-methyl and dashed-wedged nitrile groups.
+
 <!-- SEG:20-99-OC-MP08:stem:359157-b0 -->
 2-Bromo-6,6-dimethylcyclohexanone gives 2,2-dimethylcyclopentanecarboxylic acid on treatment with aqueous NaOH followed by acidification, a process called the Favorskii reaction. Propose a mechanism.
 
 <!-- SEG:20-99-OC-MP08:stem:359157-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP08:alt:stem-359157-m0 -->
+Conversion of 6-bromo-2,2-dimethylcyclohexanone to 2,2-dimethylcyclopentanecarboxylic acid on reaction with aqueous sodium hydroxide followed by acid hydrolysis.
 
 <!-- SEG:20-99-OC-MP09:stem:359159-b0 -->
 Naturally occurring compounds called [[i:terpenoids,]] which we’ll discuss in [[b:Section 27.5]], are biosynthesized by a pathway that involves loss of CO[[sub:2]] from 3-phosphomevalonate 5-diphosphate to yield isopentenyl diphosphate. Use curved arrows to show the mechanism of this reaction.
@@ -724,11 +925,17 @@ Naturally occurring compounds called [[i:terpenoids,]] which we’ll discuss in 
 <!-- SEG:20-99-OC-MP09:stem:359159-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-MP09:alt:stem-359159-m0 -->
+The reaction of 3-phosphomevalonate 5-diphosphate forms three products: isopentenyl diphosphate, carbon dioxide, and phosphate.
+
 <!-- SEG:20-99-OC-MP10:stem:359161-b0 -->
 In the Ritter reaction, an alkene reacts with a nitrile in the presence of strong aqueous sulfuric acid to yield an amide. Propose a mechanism.
 
 <!-- SEG:20-99-OC-MP10:stem:359161-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-MP10:alt:stem-359161-m0 -->
+Conversion of 1-methylcyclohex-1-ene to N-(1-methylcyclohexyl)acetamide. The reagents used are aqueous sulfuric acid and acetonitrile.
 
 <!-- SEG:20-99-OC-VC01:stimulus:b0 -->
 Give IUPAC names for the following carboxylic acids (reddish brown = Br):
@@ -736,14 +943,26 @@ Give IUPAC names for the following carboxylic acids (reddish brown = Br):
 <!-- SEG:20-99-OC-VC01:stem:359117-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-VC01:alt:stem-359117-m0 -->
+A ball-and-stick model of a benzene ring with a carboxyl group, a bromine meta to the carboxyl, and a methoxy group para to the carboxyl.
+
 <!-- SEG:20-99-OC-VC01:stem:359118-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-VC01:alt:stem-359118-m0 -->
+A ball-and-stick model of a four-carbon chain with a carboxyl end. There is a double bond on C 2 and a methyl on C 3.
 
 <!-- SEG:20-99-OC-VC01:stem:359119-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-VC01:alt:stem-359119-m0 -->
+The ball-and-stick model represents a cyclopentadiene ring with a carboxylic acid group attached to C 1. The double bonds are located on the first and third carbon atoms.
+
 <!-- SEG:20-99-OC-VC01:stem:359120-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-VC01:alt:stem-359120-m0 -->
+A ball-and-stick model of a three-carbon chain with a carboxyl end. There is a methyl on C 2 and a cyclopentane on C 3.
 
 <!-- SEG:20-99-OC-VC02:stimulus:b0 -->
 Would you expect the following carboxylic acids to be more acidic or less acidic than benzoic acid? Explain. (Reddish brown = Br.)
@@ -751,8 +970,14 @@ Would you expect the following carboxylic acids to be more acidic or less acidic
 <!-- SEG:20-99-OC-VC02:stem:359123-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-VC02:alt:stem-359123-m0 -->
+A ball-and-stick model of a benzene ring with a carboxyl group and a bromine para to the carboxyl.
+
 <!-- SEG:20-99-OC-VC02:stem:359124-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-VC02:alt:stem-359124-m0 -->
+A ball-and-stick model of a benzene ring with a carboxyl group and a dimethylamine group para to the carboxyl.
 
 <!-- SEG:20-99-OC-VC03:stem:359126-b0 -->
 The following carboxylic acid can’t be prepared from an alkyl halide by either the nitrile hydrolysis route or the Grignard carboxylation route. Explain.
@@ -760,9 +985,15 @@ The following carboxylic acid can’t be prepared from an alkyl halide by either
 <!-- SEG:20-99-OC-VC03:stem:359126-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:20-99-OC-VC03:alt:stem-359126-m0 -->
+A ball-and-stick model of a four-carbon chain with a carboxyl end. There are two methyl groups on C 2 and a hydroxy group on C 4.
+
 <!-- SEG:20-99-OC-VC04:stem:359128-b0 -->
 Electrostatic potential maps of anisole and thioanisole are shown. Which do you think is the stronger acid, [[i:p]]-methoxybenzoic acid or [[i:p]]-(methylthio)benzoic acid? Explain.
 
 <!-- SEG:20-99-OC-VC04:stem:359128-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:20-99-OC-VC04:alt:stem-359128-m0 -->
+The ball-and-stick model with electrostatic potential maps of anisole (methoxybenzene) and thioanisole ([methylsulfanyl]benzene).
 

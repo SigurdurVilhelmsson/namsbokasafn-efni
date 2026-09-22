@@ -18,6 +18,12 @@
  * fallback persists) and sets exit code 1; other exercises proceed.
  * Residue policy = inject's, same libs (detectResidue + allowlist).
  *
+ * §C126 #3 — image alt segments are the one exception, and deliberately
+ * BEST-EFFORT: a missing, blank or verbatim-English IS alt keeps the image's
+ * English alt and is REPORTED (`altFallbacks`), never refused. Every organic chapter's committed
+ * exercise MT predates the alt segment type, so refusing would revert whole
+ * translated exercises to English over one attribute.
+ *
  * Usage:
  *   node tools/exercise-assemble.js --book lifraen-efnafraedi --track mt-preview [--chapter 12] [--verbose]
  */
@@ -25,7 +31,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { fieldToHtml } from './lib/exercise-html.js';
+import { fieldToHtml, fieldImgAlts, withImgAlt, altSegId } from './lib/exercise-html.js';
+import { stripAltMarkers } from './lib/alt-segments.js';
 import { parseSegmentsMap } from './lib/seg-markers.cjs';
 import { detectResidue } from './lib/residue-check.js';
 import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
@@ -66,6 +73,8 @@ export function assembleBook(bookDir, opts) {
   const tolerated = [];
   const chaptersMissingIs = [];
   const chaptersMissingEn = [];
+  const altFallbacks = [];
+  let altsWritten = 0;
 
   const chDirs = fs.existsSync(structRoot)
     ? fs
@@ -121,6 +130,10 @@ export function assembleBook(bookDir, opts) {
       let tmpPath = null;
       try {
         const assembled = {}; // fieldKey -> IS html
+        // Alt outcomes are buffered and committed only if the exercise is
+        // written, so a skipped exercise never reports alt fallbacks.
+        const exAltFallbacks = [];
+        let exAltsWritten = 0;
         for (const [fieldKey, fieldMeta] of Object.entries(entry.fields)) {
           const runs = [];
           for (let k = 0; k < fieldMeta.slots; k++) {
@@ -160,10 +173,29 @@ export function assembleBook(bookDir, opts) {
             }
             runs.push(isText.trim());
           }
+          // §C126 #3: write each translated image alt into its opaque literal.
+          const opaques = { ...fieldMeta.opaques };
+          for (const alt of fieldImgAlts(fieldMeta)) {
+            const segId = altSegId(nickname, fieldKey, alt.n);
+            const isAlt = isMap.get(segId);
+            if (isAlt === undefined) {
+              exAltFallbacks.push({ nickname, segId, reason: 'missing' });
+            } else if (!stripAltMarkers(isAlt).trim()) {
+              exAltFallbacks.push({ nickname, segId, reason: 'empty' });
+            } else if (detectResidue(alt.core, isAlt).exact) {
+              // The MT echoed the English. Writing it would change nothing a
+              // reader sees, and counting it as written would report an
+              // English alt as translated (§C89, applied to our own counter).
+              exAltFallbacks.push({ nickname, segId, reason: 'untranslated' });
+            } else {
+              opaques[alt.n] = withImgAlt(opaques[alt.n], isAlt);
+              exAltsWritten++;
+            }
+          }
           const field = {
             skeleton: fieldMeta.skeleton,
             runs: new Array(fieldMeta.slots).fill(''),
-            opaques: fieldMeta.opaques,
+            opaques,
             wraps: fieldMeta.wraps,
           };
           assembled[fieldKey] = fieldToHtml(field, runs); // throws MarkerError on corruption
@@ -190,6 +222,8 @@ export function assembleBook(bookDir, opts) {
         fs.writeFileSync(tmpPath, JSON.stringify(sidecar, null, 2) + '\n', 'utf8');
         fs.renameSync(tmpPath, outPath);
         written.push(outPath);
+        altFallbacks.push(...exAltFallbacks);
+        altsWritten += exAltsWritten;
       } catch (err) {
         try {
           if (tmpPath && fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
@@ -200,7 +234,16 @@ export function assembleBook(bookDir, opts) {
     }
   }
 
-  return { written, skipped, residues, tolerated, chaptersMissingIs, chaptersMissingEn };
+  return {
+    written,
+    skipped,
+    residues,
+    tolerated,
+    chaptersMissingIs,
+    chaptersMissingEn,
+    altsWritten,
+    altFallbacks,
+  };
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────
@@ -236,6 +279,17 @@ function main() {
     `Assembled ${res.written.length} exercise sidecar(s) [track=${track}]` +
       (res.tolerated.length ? `; tolerated (allowlisted) residues: ${res.tolerated.length}` : '')
   );
+  // §C126 #3: alt fallbacks are best-effort, so they never change the exit
+  // code — which is exactly why they are printed rather than left in `res`.
+  if (res.altsWritten > 0 || res.altFallbacks.length > 0) {
+    const by = (r) => res.altFallbacks.filter((f) => f.reason === r).length;
+    console.log(
+      `  image alts: ${res.altsWritten} translated, ${res.altFallbacks.length} kept English` +
+        (res.altFallbacks.length
+          ? ` (no IS segment: ${by('missing')}, blank: ${by('empty')}, MT left English: ${by('untranslated')})`
+          : '')
+    );
+  }
   if (res.chaptersMissingIs.length > 0) {
     console.log(`  chapters without ${track} IS segments: ${res.chaptersMissingIs.join(', ')}`);
   }

@@ -28,11 +28,17 @@ Assign [[i:R]] or [[i:S]] configuration to each chirality center in prostaglandi
 <!-- SEG:27-04-OC-P05:sol:358187-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-04-OC-P05:alt:sol-358187-m0 -->
+The wedge-dash structure of Prostaglandin E 2. C 8, C 12, and C 11 have an R configuration whereas C 15 has an S configuration.
+
 <!-- SEG:27-05-OC-P06:stem:358191-b0 -->
 The conversion of mevalonate 5-phosphate to isopentenyl diphosphate occurs with the following result. Which hydrogen, pro-[[i:R]] or pro-[[i:S]], ends up cis to the methyl group, and which ends up trans?
 
 <!-- SEG:27-05-OC-P06:stem:358191-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-05-OC-P06:alt:stem-358191-m0 -->
+Mevalonate-5-diphosphate represented in wedge-dash form undergoes dehydration to form isopentenyl diphosphate.
 
 <!-- SEG:27-05-OC-P06:sol:358191-b0 -->
 The pro-[[i:S]] hydrogen is cis to the −CH[[sub:3]] group; the pro-[[i:R]] hydrogen is trans.
@@ -43,14 +49,26 @@ Propose mechanistic pathways for the biosynthetic formation of the following ter
 <!-- SEG:27-05-OC-P07:stem:358194-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-05-OC-P07:alt:stem-358194-m0 -->
+The structure of alpha-pinene in which cyclohexene has a methyl group on C 1, two methyl groups on C 3, and two methyl groups connected inside the ring.
+
 <!-- SEG:27-05-OC-P07:sol:358194-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-05-OC-P07:alt:sol-358194-m0 -->
+O P P releases from linalyl diphosphate leading to a carbocation intermediate. The double bond shifts to form another carbocation. The base reacts with carbocation to form alpha-pinene.
 
 <!-- SEG:27-05-OC-P07:stem:358195-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-05-OC-P07:alt:stem-358195-m0 -->
+Gamma-bisabolene comprises cyclohexene bonded with methyl and a double bond linked to methyl. Further linked to two methylene groups and C-H is linked to double bond with two methyl groups.
+
 <!-- SEG:27-05-OC-P07:sol:358195-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-05-OC-P07:alt:sol-358195-m0 -->
+The structure shows the formation of gamma-bisabolene from several carbocations involving four steps.
 
 <!-- SEG:27-06-OC-P08:stimulus:b0 -->
 Draw the following molecules in chair conformations, and tell whether the ring substituents are axial or equatorial:
@@ -58,14 +76,26 @@ Draw the following molecules in chair conformations, and tell whether the ring s
 <!-- SEG:27-06-OC-P08:stem:358198-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-06-OC-P08:alt:stem-358198-m0 -->
+The structure of a trans-decline with dashed and wedged hydrogens at the ring junction and a wedged methyl group and dashed hydrogen on the second ring.
+
 <!-- SEG:27-06-OC-P08:sol:358198-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-06-OC-P08:alt:sol-358198-m0 -->
+trans-Decaline in chair conformation with hydrogens at the ring junctions and an equatorial methyl group at C1.
 
 <!-- SEG:27-06-OC-P08:stem:358199-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-06-OC-P08:alt:stem-358199-m0 -->
+The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.
+
 <!-- SEG:27-06-OC-P08:sol:358199-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-06-OC-P08:alt:sol-358199-m0 -->
+The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.
 
 <!-- SEG:27-06-OC-P09:stem:358201-b0 -->
 Lithocholic acid is an A–B cis steroid found in human bile. Draw lithocholic acid showing chair conformations, as in Figure 27.12, and tell whether the hydroxyl group at C3 is axial or equatorial.
@@ -73,8 +103,14 @@ Lithocholic acid is an A–B cis steroid found in human bile. Draw lithocholic a
 <!-- SEG:27-06-OC-P09:stem:358201-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-06-OC-P09:alt:stem-358201-m0 -->
+The figure shows the wedge-dash structure of lithocholic acid.
+
 <!-- SEG:27-06-OC-P09:sol:358201-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-06-OC-P09:alt:sol-358201-m0 -->
+The chair conformation of lithocholic acid. A tetracyclic conformation of three cyclohexyls and one cyclopentyl fused rings with one equatorial hydroxyl, two axial methyls, and methyl substituted butyric acid
 
 <!-- SEG:27-07-OC-P10:stem:346637-b0 -->
 Compare the structures of lanosterol and cholesterol, and catalog the changes needed for the transformation shown.
@@ -142,6 +178,9 @@ Nonanedioic acid
 <!-- SEG:27-99-OC-AP06:stem:358215-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP06:alt:stem-358215-m0 -->
+The structure of a plasmalogen lipid, contains a vinyl-ether and two fatty acids.
+
 <!-- SEG:27-99-OC-AP07:stem:346687-b0 -->
 What products would you obtain from hydrolysis of a plasmalogen (Problem 27-22) with aqueous NaOH? With H[[sub:3]]O[[sup:+]]?
 
@@ -150,6 +189,9 @@ What products would you obtain from hydrolysis of a plasmalogen (Problem 27-22) 
 
 <!-- SEG:27-99-OC-AP08:stem:374676-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP08:alt:stem-374676-m0 -->
+The structure of a cardiolipin. It comprises several ester molecules with two phosphate groups.
 
 <!-- SEG:27-99-OC-AP09:stem:346691-b0 -->
 Stearolic acid, C[[sub:18]]H[[sub:32]]O[[sub:2]], yields stearic acid on catalytic hydrogenation and undergoes oxidative cleavage with ozone to yield nonanoic acid and nonanedioic acid. What is the structure of stearolic acid?
@@ -163,8 +205,14 @@ Without proposing an entire biosynthetic pathway, draw the appropriate precursor
 <!-- SEG:27-99-OC-AP11:stem:358220-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP11:alt:stem-358220-m0 -->
+The structure of guaiol. It comprises of a bicyclo[5.3.0]decane ring with a double bond,  a wedged bonded propanol, and two wedged bonded methyl groups.
+
 <!-- SEG:27-99-OC-AP11:stem:358221-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP11:alt:stem-358221-m0 -->
+The structure of sabinene. It comprises of a bicyclo[3.1.0]hexane ring with an exocyclic double bond, and a bridgehead fused isopropyl group.
 
 <!-- SEG:27-99-OC-AP12:stem:346699-b0 -->
 Indicate by asterisks the chirality centers present in each of the terpenoids shown in Problem 27-27. What is the maximum possible number of stereoisomers for each?
@@ -181,11 +229,17 @@ Assume that acetyl CoA containing a [[sup:14]]C isotopic label in the carboxyl c
 <!-- SEG:27-99-OC-AP15:stem:374694-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP15:alt:stem-374694-m0 -->
+The structure of alpha-cardinol. It comprises of a trans-decalin ring with an endo double bond, exo-substituted hydroxyl, isopropyl, and two methyl groups.
+
 <!-- SEG:27-99-OC-AP16:stem:358225-b0 -->
 Assume that acetyl CoA containing a [[sup:14]]C isotopic label in the carboxyl carbon atom is used as starting material and that the mevalonate pathway is followed. Identify the positions in squalene where the label would appear.
 
 <!-- SEG:27-99-OC-AP16:stem:358225-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP16:alt:stem-358225-m0 -->
+The structure of squalene. It is a thirty-carbon chain with double bonds and methyl groups at different positions.
 
 <!-- SEG:27-99-OC-AP17:stem:358227-b0 -->
 Assume that acetyl CoA containing a [[sup:14]]C isotopic label in the carboxyl carbon atom is used as starting material and that the mevalonate pathway is followed. Identify the positions in lanosterol where the label would appear.
@@ -193,11 +247,17 @@ Assume that acetyl CoA containing a [[sup:14]]C isotopic label in the carboxyl c
 <!-- SEG:27-99-OC-AP17:stem:358227-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP17:alt:stem-358227-m0 -->
+The wedge-dash structure of Lanosterol.
+
 <!-- SEG:27-99-OC-AP18:stem:358229-b0 -->
 Flexibilene, a compound isolated from marine coral, is the first known terpenoid to contain a 15-membered ring. What is the structure of the acyclic biosynthetic precursor of flexibilene? Show the mechanistic pathway for the biosynthesis.
 
 <!-- SEG:27-99-OC-AP18:stem:358229-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP18:alt:stem-358229-m0 -->
+The structure of flexibilene. It is a fifteen-membered ring with three methyl vinyl groups at C 7, C 11, and C 15, and a dimethylated carbon at C 3.
 
 <!-- SEG:27-99-OC-AP19:stem:358231-b0 -->
 Draw the most stable chair conformation of dihydrocarvone.
@@ -205,11 +265,17 @@ Draw the most stable chair conformation of dihydrocarvone.
 <!-- SEG:27-99-OC-AP19:stem:358231-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP19:alt:stem-358231-m0 -->
+The structure of dihydrocarvone. It is a cyclohexane with carbonyl at C 1, wedged methyl and dashed hydrogen at C 2, and dashed methyl vinyl group at C 5
+
 <!-- SEG:27-99-OC-AP20:stem:358233-b0 -->
 Draw the most stable chair conformation of menthol, and label each substituent as axial or equatorial.
 
 <!-- SEG:27-99-OC-AP20:stem:358233-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP20:alt:stem-358233-m0 -->
+The structure of menthol. It is a cyclohexane with dashed hydroxyl at C 1, a wedged isopropyl at C2, and a dashed methyl at C5.
 
 <!-- SEG:27-99-OC-AP21:stimulus:b0 -->
 As a general rule, equatorial alcohols are esterified more readily than axial alcohols. What product would you expect to obtain from reaction of the following two compounds with 1 equivalent of acetic anhydride?
@@ -217,8 +283,14 @@ As a general rule, equatorial alcohols are esterified more readily than axial al
 <!-- SEG:27-99-OC-AP21:stem:358236-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP21:alt:stem-358236-m0 -->
+The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 2, and dashed hydroxyl at C 7.
+
 <!-- SEG:27-99-OC-AP21:stem:358237-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP21:alt:stem-358237-m0 -->
+The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 3, and dashed hydroxyl at C 6.
 
 <!-- SEG:27-99-OC-AP22:stem:358239-b0 -->
 Propose a mechanistic pathway for the biosynthesis of isoborneol. A carbocation rearrangement is needed at one point in the scheme.
@@ -226,11 +298,17 @@ Propose a mechanistic pathway for the biosynthesis of isoborneol. A carbocation 
 <!-- SEG:27-99-OC-AP22:stem:358239-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP22:alt:stem-358239-m0 -->
+The structure of Isoborneol. It is a norbornane with three methyl groups, a hydroxyl group, and a hydrogen atom.
+
 <!-- SEG:27-99-OC-AP23:stem:358241-b0 -->
 Digitoxigenin is a heart stimulant obtained from the purple foxglove [[i:Digitalis purpurea]] and used in the treatment of heart disease. Draw the three-dimensional conformation of digitoxigenin, and identify the two –OH groups as axial or equatorial.
 
 <!-- SEG:27-99-OC-AP23:stem:358241-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP23:alt:stem-358241-m0 -->
+The structure of digitoxigenin. It is a beta-hydroxy steroid with one wedged hydroxyl and two wedged methyls at the ring juctions,and substituted furanone
 
 <!-- SEG:27-99-OC-AP24:stem:346726-b0 -->
 What product would you obtain by reduction of digitoxigenin (Problem 27-39) with LiAlH[[sub:4]]? By oxidation with the Dess–Martin periodinane?
@@ -250,6 +328,9 @@ Diethylstilbestrol (DES) has estrogenic activity even though it is structurally 
 <!-- SEG:27-99-OC-AP28:stem:358243-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP28:alt:stem-358243-m0 -->
+The structures of diethylstilbestrol and estradiol. Diethylstilbestrol is a diethyl subsituted diphenol. Estradiol is an aromatic steroid with a phenol and wedged methyl and hydroxyl groups.
+
 <!-- SEG:27-99-OC-AP31:stem:358245-b0 -->
 Cembrene, C[[sub:20]]H[[sub:32]], a diterpenoid hydrocarbon isolated from pine resin, has a UV absorption at 245 nm, but dihydrocembrene (C[[sub:20]]H[[sub:34]]), the product of hydrogenation with 1 equivalent of H[[sub:2]], has no UV absorption. On exhaustive hydrogenation, 4 equivalents of H[[sub:2]] react, and octahydrocembrene, C[[sub:20]]H[[sub:40]], is produced. On ozonolysis of cembrene, followed by treatment of the ozonide with zinc, four carbonyl-containing products are obtained:
 
@@ -259,11 +340,17 @@ Cembrene, C[[sub:20]]H[[sub:32]], a diterpenoid hydrocarbon isolated from pine r
 <!-- SEG:27-99-OC-AP31:stem:358245-b2 -->
 Propose a structure for cembrene that is consistent with its formation from geranylgeranyl diphosphate.
 
+<!-- SEG:27-99-OC-AP31:alt:stem-358245-m0 -->
+The structure of four carbonyl-containing compounds, a dialdehyde, a  keto-aldehyde, a dialdehyde, and a keto-aldehyde.
+
 <!-- SEG:27-99-OC-AP32:stem:358247-b0 -->
 [[i:α]]-Fenchone is a pleasant-smelling terpenoid isolated from oil of lavender. Propose a pathway for the formation of [[i:α]]-fenchone from geranyl diphosphate. A carbocation rearrangement is required.
 
 <!-- SEG:27-99-OC-AP32:stem:358247-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP32:alt:stem-358247-m0 -->
+The structure of alpha-fenchone. It is a bicyclo[2.2.1] heptane with two methyls at C 3, one methyl at C 1, and a carbonyl at C 2,
 
 <!-- SEG:27-99-OC-AP33:stem:358249-b0 -->
 Fatty acids are synthesized by a multistep route that starts with acetate. The first step is a reaction between protein-bound acetyl and malonyl units to give a protein-bound 3-ketobutyryl unit. Show the mechanism, and tell what kind of reaction is occurring.
@@ -271,11 +358,17 @@ Fatty acids are synthesized by a multistep route that starts with acetate. The f
 <!-- SEG:27-99-OC-AP33:stem:358249-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-AP33:alt:stem-358249-m0 -->
+Malonyl protein reacts with an acetyl protein to form an intermediate. This reacts to form 3-ketobutyryl protein and carbon dioxide.
+
 <!-- SEG:27-99-OC-AP34:stem:358251-b0 -->
 Propose a mechanism for the biosynthesis of the sesquiterpenoid trichodiene from farnesyl diphosphate. The process involves cyclization to give an intermediate secondary carbocation, followed by several carbocation rearrangements.
 
 <!-- SEG:27-99-OC-AP34:stem:358251-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-AP34:alt:stem-358251-m0 -->
+Farnesyl diphosphate (F P P) cyclizes to form an intermediate. This further forms trichodiene as the final product.
 
 <!-- SEG:27-99-OC-MP01:stem:358565-b0 -->
 Propose a mechanistic pathway for the biosynthesis of caryophyllene, a substance found in clove oil.
@@ -283,11 +376,17 @@ Propose a mechanistic pathway for the biosynthesis of caryophyllene, a substance
 <!-- SEG:27-99-OC-MP01:stem:358565-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-MP01:alt:stem-358565-m0 -->
+The structure of caryophyllene.
+
 <!-- SEG:27-99-OC-MP02:stem:358211-b0 -->
 Suggest a mechanism by which [[i:ψ]]-ionone is transformed into [[i:β]]-ionone on treatment with acid.
 
 <!-- SEG:27-99-OC-MP02:stem:358211-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-MP02:alt:stem-358211-m0 -->
+Psi-ionone reacts with hydronium ions to form beta-ionone. The open chain gets converted to a closed ring in the product.
 
 <!-- SEG:27-99-OC-MP03:stem:358213-b0 -->
 Isoborneol is converted into camphene on treatment with dilute sulfuric acid. Propose a mechanism for the reaction, which involves a carbocation rearrangement.
@@ -295,11 +394,17 @@ Isoborneol is converted into camphene on treatment with dilute sulfuric acid. Pr
 <!-- SEG:27-99-OC-MP03:stem:358213-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-MP03:alt:stem-358213-m0 -->
+Isoborneol reacts with sulfuric acid to form camphene. Carbocation rearrangement happens during the process.
+
 <!-- SEG:27-99-OC-VC01:stem:358561-b0 -->
 The following model is that of cholic acid, a constituent of human bile. Locate the three hydroxyl groups, and identify each as axial or equatorial. Is cholic acid an A–B trans steroid or an A–B cis steroid?
 
 <!-- SEG:27-99-OC-VC01:stem:358561-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-VC01:alt:stem-358561-m0 -->
+The ball-and-stick model of cholic acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.
 
 <!-- SEG:27-99-OC-VC02:stem:358205-b0 -->
 Propose a biosynthetic pathway for the sesquiterpenoid helminthogermacrene from farnesyl diphosphate.
@@ -307,9 +412,15 @@ Propose a biosynthetic pathway for the sesquiterpenoid helminthogermacrene from 
 <!-- SEG:27-99-OC-VC02:stem:358205-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:27-99-OC-VC02:alt:stem-358205-m0 -->
+The ball-and-stick model of sesquiterpenoid, helmintho germacrene. Black and gray spheres denote carbon and hydrogen, respectively.
+
 <!-- SEG:27-99-OC-VC03:stem:358563-b0 -->
 Identify the following fatty acid, and tell whether it is more likely to be found in peanut oil or in red meat:
 
 <!-- SEG:27-99-OC-VC03:stem:358563-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:27-99-OC-VC03:alt:stem-358563-m0 -->
+The ball-and-stick model of fatty acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.
 

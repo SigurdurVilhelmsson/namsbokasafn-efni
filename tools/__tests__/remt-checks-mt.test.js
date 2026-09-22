@@ -63,7 +63,11 @@ import {
   SPACED_SEG_RE,
   SEG_ID_RE,
 } from '../lib/remt-checks-mt.js';
-import { mtOutputSegmentFiles, enCounterpart } from './helpers/remt-corpus.js';
+import {
+  mtOutputSegmentFiles,
+  enCounterpart,
+  withoutPreAltExerciseDrift,
+} from './helpers/remt-corpus.js';
 // ⚠️ INJECT'S OWN PARSER, imported so the two-parser disagreement is asserted rather than
 // described. `.cjs` under a `"type": "module"` root loads as CommonJS default-only.
 import segMarkers from '../lib/seg-markers.cjs';
@@ -396,11 +400,20 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     let examined = 0;
     let pairs = 0;
     const nonPass = [];
+    // §C126 #3 — the RAW verdicts too, so the pre-alt-type drift is asserted, not waved off.
+    const rawNonPass = [];
+    let driftIds = 0;
     for (const b of BOOKS) {
       for (const f of FILES[b]) {
         const en = enCounterpart(f);
         expect(en).not.toBeNull(); // 0 IS files lack an EN pair — asserted, not assumed
-        const r = await runCheck(A2b, { isText: read(f), segText: read(en) });
+        const isText = read(f);
+        const enText = read(en);
+        const raw = await runCheck(A2b, { isText, segText: enText });
+        if (raw.verdict !== VERDICT.PASS) rawNonPass.push({ f, r: raw });
+        const drift = withoutPreAltExerciseDrift(f, enText, isText);
+        driftIds += drift.removed.length;
+        const r = await runCheck(A2b, { isText, segText: drift.en });
         if (r.verdict !== VERDICT.PASS) nonPass.push({ f, r });
         examined += r.examined;
         pairs++;
@@ -408,6 +421,26 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     }
     expect(pairs).toBe(207);
     expect(examined).toBe(30715);
+
+    // 🔴 §C126 #3 (2026-09-22) — 31 ORGANIC EXERCISE BUNDLES NOW FAIL THE CROSS-SIDE LEG, AND
+    // THEY ARE THE ch12 CASE BELOW AGAIN: VINTAGE, NOT DAMAGE. Their EN gained 2,375
+    // image-alt segments that no committed exercise IS has ever seen (every bundle was bought
+    // before the type existed). Raw, that is 40/207 = 19.3% — over Global Constraint 4's bar.
+    // ▶ The gate is NOT made to look healthy by allowlisting 31 more names: the drift is
+    // subtracted by a PREDICATE (`withoutPreAltExerciseDrift` — only a bundle whose IS carries
+    // ZERO alt ids), every assertion below runs on the subtracted view and must reproduce the
+    // pre-§C126 pins EXACTLY, and the raw failures are pinned here as precisely that drift.
+    // ▶ WHERE THE BLOCK BITES: A2b runs only in `remt-battery`/`remt-sweep`, which a person
+    // runs after a buy — and a fresh buy's IS is made from today's EN, so it carries no drift.
+    // ⚠️ `driftIds` FALLS WITH EVERY ORGANIC CHAPTER BOUGHT; re-pin it then, with the chapter.
+    expect(driftIds).toBe(2375);
+    const rawOnly = rawNonPass.filter((x) => !nonPass.some((y) => y.f === x.f));
+    expect(rawOnly).toHaveLength(31);
+    for (const { f, r } of rawOnly) {
+      expect(f).toMatch(/lifraen-efnafraedi\/02-mt-output\/ch\d+\/exercises-segments\.is\.md$/);
+      expect(r.message, `${f}: only the cross-side leg may fire`).toMatch(/cross-side/);
+      expect(r.message, `${f}: the raw leg must stay clean`).not.toMatch(/raw-vs-parsed/);
+    }
 
     // 🔴 NINE REAL FAILURES, ALL ORGANIC ch12, ALL ON THE `cross-side` LEG — AND THEY ARE
     // VINTAGE DRIFT, NOT DAMAGE. That chapter's MT is 2026-08-12; its EN was re-extracted
@@ -439,6 +472,32 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // ⚠️ A2b IS BLOCKING, so its base rate is a LICENCE. 0.000% became 9/207 = 4.3%
     // against Global Constraint 4's ~5% bar — it keeps the licence by 0.4 points, not by 5.
     expect(nonPass.length / pairs).toBeLessThanOrEqual(0.05);
+  });
+
+  it('MUST-TRIP — a destroyed alt `SEG:` token in a chapter bought AFTER the type existed stays visible through the §C126 drift subtraction', async () => {
+    // The base-rate pin above subtracts pre-alt-type exercise drift. That subtraction must
+    // not become a blind spot for real damage, so this builds a FRESH buy from a real bundle
+    // (its IS carries every alt, as a post-§C126 buy will), destroys ONE alt's token, and
+    // requires A2b to fail on the cross-side leg with the subtraction applied.
+    // ⚠️ The predicate's residual blind spot is a bundle whose EVERY alt token is destroyed
+    // (the IS would then look pre-type). Every organic bundle carries ≥ 6 alts, so that is
+    // six simultaneous destructions in one file, not one.
+    const isPath = FILES['lifraen-efnafraedi'].find((f) => /\/ch01\/exercises-segments/.test(f));
+    const en = read(enCounterpart(isPath));
+    const fresh = en.replace(/(<!-- SEG:\S+ -->\n)([^\n]+)/g, '$1ÞÝТ $2'); // every id, alts included
+    const altIds = [...en.matchAll(/<!-- SEG:(\S+:alt:\S+) -->/g)].map((m) => m[1]);
+    expect(altIds.length).toBeGreaterThan(1); // a post-type IS keeps other alts after the damage
+    const damaged = fresh.replace(`<!-- SEG:${altIds[0]} -->`, `<!-- SEG :${altIds[0]} -->`);
+
+    const view = withoutPreAltExerciseDrift(isPath, en, damaged);
+    expect(view.removed).toEqual([]); // post-type IS: nothing set aside
+    const r = await runCheck(A2b, { isText: damaged, segText: view.en });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((x) => x.leg === 'cross-side')).toBeDefined();
+
+    // Control: the same fresh buy UNdamaged passes, so the FAIL above is the damage.
+    const ok = await runCheck(A2b, { isText: fresh, segText: en });
+    expect(ok.verdict).toBe(VERDICT.PASS);
   });
 
   it('MUST-TRIP — a DESTROYED `SEG:` token, which the raw leg structurally cannot see', async () => {
@@ -795,7 +854,10 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // ch10. The March MT predates alt extraction, so those modules carried 0. A2c's marker
       // count and A6's `examined` move by the SAME number every time — that agreement across
       // three censuses plus figure-run is what makes each bump a prediction rather than a copy.
-      expect(ids).toBe(61488); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 61,488 -> 63,863 is +2,375 (§C126 #3): organic's exercise bundles gained one `:alt:`
+      // segment per non-blank image alt, and `exercise-extract` independently printed
+      // "2375 image alts" for the same run. Every one passes SEG_ID_RE — violations stay 0.
+      expect(ids).toBe(63863); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -947,7 +1009,13 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
       for (const f of FILES[b]) {
         const en = enCounterpart(f);
         expect(en, f).not.toBeNull();
-        const r = await runCheck(A1, { segText: read(en), isText: read(f) });
+        // §C126 #3: pre-alt-type exercise drift is subtracted first. Without it the four
+        // RENAME bundles below would carry 1 + (that chapter's alts) EN-only ids against 1
+        // IS-only id, fail the `enOnly.length === isOnly.length` test, and be RECLASSIFIED
+        // AS DRIFT — the alt gap would hide the very MT damage this test is named for.
+        const isText = read(f);
+        const { en: enText } = withoutPreAltExerciseDrift(f, read(en), isText);
+        const r = await runCheck(A1, { segText: enText, isText });
         if (r.verdict !== VERDICT.PASS) hits.push([f, r]);
         compared++;
       }

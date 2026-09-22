@@ -22,6 +22,9 @@ The amino acid threonine, (2[[i:S]],3[[i:R]])-2-amino-3-hydroxybutanoic acid, ha
 <!-- SEG:26-01-OC-P03:sol:359575-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-01-OC-P03:alt:sol-359575-m0 -->
+Three structures of threonine. One structure is a Fischer projection of L-threonine. The other two structures represent the diastereomers of L-threonine. The configuration of each carbon atom is mentioned.
+
 <!-- SEG:26-02-OC-P04:stem:349000-b0 -->
 Hemoglobin has p[[i:I]] = 6.8. Does hemoglobin have a net negative charge or net positive charge at pH = 5.3? At pH = 7.3?
 
@@ -52,11 +55,17 @@ Leucine
 <!-- SEG:26-03-OC-P06:sol:359580-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-03-OC-P06:alt:sol-359580-m0 -->
+The structure of a linear three-carbon alkyl bromide, with bromine attached at C 1 and a methyl group at C 3.
+
 <!-- SEG:26-03-OC-P06:stem:359581-b0 -->
 Histidine
 
 <!-- SEG:26-03-OC-P06:sol:359581-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-03-OC-P06:alt:sol-359581-m0 -->
+The structure of an imidazole, with an N-H group at C 1, nitrogen at C 3,  and a bromomethyl group at C 5.
 
 <!-- SEG:26-03-OC-P06:stem:359582-b0 -->
 Tryptophan
@@ -64,11 +73,17 @@ Tryptophan
 <!-- SEG:26-03-OC-P06:sol:359582-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-03-OC-P06:alt:sol-359582-m0 -->
+The structure of an indole comprises a benzene ring fused to a cyclopentene, with an N-H group at C 1,  and a bromomethyl group at C 3.
+
 <!-- SEG:26-03-OC-P06:stem:359583-b0 -->
 Methionine
 
 <!-- SEG:26-03-OC-P06:sol:359583-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-03-OC-P06:alt:sol-359583-m0 -->
+The structure of a methyl bromoethyl thioether, with a bromoethyl and methyl groups.
 
 <!-- SEG:26-03-OC-P07:stem:360847-b0 -->
 Show how you could prepare the following amino acid enantioselectively:
@@ -76,8 +91,14 @@ Show how you could prepare the following amino acid enantioselectively:
 <!-- SEG:26-03-OC-P07:stem:360847-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-03-OC-P07:alt:stem-360847-m0 -->
+A ball-and-stick model of a five-carbon compound with a carboxylate anion at C 1, an amine at C 2, and a methyl group at C 4 position.
+
 <!-- SEG:26-03-OC-P07:sol:360847-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-03-OC-P07:alt:sol-360847-m0 -->
+Ethene with H (up) and isopropyl on left, and carboxyl (up) and N with acetyl on right reacts with hydrogen and rhodium catalyst, then aqueous hydroxide, forming (2S)-2-amino-4-methylpentanoic acid.
 
 <!-- SEG:26-04-OC-P08:stem:348941-b0 -->
 Six isomeric tripeptides contain valine, tyrosine, and glycine. Name them using both three- and one-letter abbreviations.
@@ -91,17 +112,26 @@ Draw the structure of M-P-V-G, and indicate its amide bonds.
 <!-- SEG:26-04-OC-P09:sol:359587-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-04-OC-P09:alt:sol-359587-m0 -->
+The structure of M P V G.  A tetrapeptide, starting at the N-terminus  containing a methionine,  a proline, a valine, and a  glycine,
+
 <!-- SEG:26-05-OC-P10:stem:359589-b0 -->
 Show the structure of the product you would expect to obtain by S[[sub:N]]2 reaction of a cysteine residue with iodoacetic acid.
 
 <!-- SEG:26-05-OC-P10:sol:359589-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-05-OC-P10:alt:sol-359589-m0 -->
+The structure of the reaction product of cysteine and iodoacetic acid. A zwitterionic   S-aceto alkylated dicarboxylic acidic amino acid derivative i
+
 <!-- SEG:26-05-OC-P11:stem:359591-b0 -->
 Show the structures of the products obtained on reaction of valine with ninhydrin.
 
 <!-- SEG:26-05-OC-P11:sol:359591-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-05-OC-P11:alt:sol-359591-m0 -->
+A benzene ring fused to cyclopentanedione linked to a double bond to a nitrogen to a cyclopentanedione with an oxygen ion fused to a benzene plus isobutyraldehyde plus carbon dioxide.
 
 <!-- SEG:26-06-OC-P12:stem:348949-b0 -->
 The octapeptide angiotensin II has the sequence Asp-Arg-Val-Tyr-Ile-His-Pro-Phe. What fragments would result if angiotensin II were cleaved with trypsin? With chymotrypsin?
@@ -118,6 +148,9 @@ What is the N-terminal residue on a peptide that gives the following PTH derivat
 <!-- SEG:26-06-OC-P13:stem:359593-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-06-OC-P13:alt:stem-359593-m0 -->
+The ball-and-stick model of a P T H derivative containing a methyl thiol ether formed from the Edman degradation of the  N-terminal residue of a peptide.
+
 <!-- SEG:26-06-OC-P13:sol:359593-b0 -->
 Methionine
 
@@ -126,6 +159,9 @@ Draw the structure of the PTH derivative that would be formed by Edman degradati
 
 <!-- SEG:26-06-OC-P14:sol:359595-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-06-OC-P14:alt:sol-359595-m0 -->
+A P T H derivative containing an acetic acid residue formed from the Edman degradation of the  N-terminal residue of a peptide.
 
 <!-- SEG:26-06-OC-P15:stimulus:b0 -->
 Give the amino acid sequence of hexapeptides that produce the following sets of fragments upon partial acid hydrolysis:
@@ -337,6 +373,9 @@ Leuprolide is a synthetic nonapeptide used to treat both endometriosis in women 
 <!-- SEG:26-99-OC-AP21:stimulus:b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-AP21:alt:stimulus-m0 -->
+The wedge-dash structure of leuprolide.
+
 <!-- SEG:26-99-OC-AP21:stem:359636-b0 -->
 Both C-terminal and N-terminal amino acids in leuprolide have been structurally modified. Identify the modifications.
 
@@ -358,6 +397,9 @@ Arginine, the most basic of the 20 common amino acids, contains a [[i:guanidino]
 <!-- SEG:26-99-OC-AP23:stem:359641-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-AP23:alt:stem-359641-m0 -->
+The structure of L- arginine in which the guanidino group is labeled. It comprises wedged bonded  C1 amine cation and carboxylate ion.
+
 <!-- SEG:26-99-OC-AP24:stem:348905-b0 -->
 Cytochrome [[i:c]] is an enzyme found in the cells of all aerobic organisms. Elemental analysis of cytochrome [[i:c]] shows that it contains 0.43% iron. What is the minimum molecular weight of this enzyme?
 
@@ -366,6 +408,9 @@ Evidence for restricted rotation around amide [[MEDIA:0]] bonds comes from NMR s
 
 <!-- SEG:26-99-OC-AP25:stem:359643-b1 -->
 [[MEDIA:1]]
+
+<!-- SEG:26-99-OC-AP25:alt:stem-359643-m1 -->
+The structure of N,N-dimethylformamide, an aldehyde group linked to a nitrogen atom to two methyl groups.
 
 <!-- SEG:26-99-OC-AP26:stem:348907-b0 -->
 Propose a structure for an octapeptide that shows the composition Asp, Gly[[sub:2]], Leu, Phe, Pro[[sub:2]], Val on amino acid analysis. Edman analysis shows a glycine N-terminal group, and leucine is the C-terminal group. Acidic hydrolysis gives the following fragments:
@@ -378,6 +423,9 @@ Look at the structure of human insulin, and indicate where in each chain the mol
 
 <!-- SEG:26-99-OC-AP27:stem:360857-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-AP27:alt:stem-360857-m0 -->
+The structure of insulin is made up of A and B chains, shown in terms of the three-letter amino acid abbreviations in sequence. Cysteine disulfide bonds are also shown.
 
 <!-- SEG:26-99-OC-AP28:stem:348909-b0 -->
 What is the structure of a nonapeptide that gives the following fragments when cleaved?
@@ -433,11 +481,17 @@ The first step in the biological degradation of histidine is formation of a 4-me
 <!-- SEG:26-99-OC-AP33:stem:359645-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-AP33:alt:stem-359645-m0 -->
+A segment of the peptide chain in the histidine ammonia lyase enzyme undergoes cyclization to form 4-methylidene-5-imidazolone (M I O).
+
 <!-- SEG:26-99-OC-AP34:stem:359647-b0 -->
 The first step in the biological degradation of lysine is reductive amination with [[i:α]]-ketoglutarate to give saccharopine. Nicotinamide adenine dinucleotide phosphate (NADPH), a relative of NADH, is the reducing agent. Show the mechanism.
 
 <!-- SEG:26-99-OC-AP34:stem:359647-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-AP34:alt:stem-359647-m0 -->
+L-Lysine reacts with alpha-ketoglutarate and nicotinamide adenine dinucleotide phosphate hydrogen to form saccharopine and nicotinamide adenine dinucleotide phosphate cation.
 
 <!-- SEG:26-99-OC-MP01:stimulus:b0 -->
 The reaction of ninhydrin with an [[i:α]]-amino acid occurs in several steps.
@@ -457,17 +511,26 @@ The final step is formation of the purple anion. Show the mechanism of the react
 <!-- SEG:26-99-OC-MP01:stem:360855-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-MP01:alt:stem-360855-m0 -->
+Two molecules of ninhydrin react with an amino acid to form a large compound with multiple ring structures. The other byproducts are aldehyde and carbon dioxide.
+
 <!-- SEG:26-99-OC-MP02:stem:359619-b0 -->
 The chloromethylated polystyrene resin originally used for Merrifield solid-phase peptide synthesis was prepared by treatment of polystyrene with chloromethyl methyl ether and a Lewis acid catalyst. Propose a mechanism for the reaction.
 
 <!-- SEG:26-99-OC-MP02:stem:359619-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-MP02:alt:stem-359619-m0 -->
+A polystyrene resin reacts with chloro(methoxy)methane and tin (IV) chloride to form  a polystyrene linked benzyl chloride resin for use in Merrifield solid-phase peptide synthesis.
+
 <!-- SEG:26-99-OC-MP03:stem:359621-b0 -->
 An Fmoc protecting group can be removed from an amino acid by treatment with the amine base piperidine. Propose a mechanism.
 
 <!-- SEG:26-99-OC-MP03:stem:359621-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-MP03:alt:stem-359621-m0 -->
+An F m o c-protected amino acid reacts with a base to form the free amino acid, carbon dioxide, and the dibenzofulvene (DBF) intermediate.
 
 <!-- SEG:26-99-OC-MP04a:stimulus:b0 -->
 Proteins can be cleaved specifically at the amide bond on the carboxyl side of methionine residues by reaction with cyanogen bromide, BrC≡N.
@@ -499,17 +562,29 @@ A clever recent method of peptide synthesis involves formation of an amide bond 
 <!-- SEG:26-99-OC-MP05:stem:359631-b2 -->
 The reaction is thought to occur by nucleophilic addition of the [[i:N]]-alkylhydroxylamine to the keto acid as if forming an oxime (Section 19.8), followed by decarboxylation and elimination of water. Show the mechanism.
 
+<!-- SEG:26-99-OC-MP05:alt:stem-359631-m0 -->
+An alpha-keto acid reacts with hydroxylamine in the presence of N, N-dimethylformamide to form an amide, with carbon dioxide and water as the products.
+
 <!-- SEG:26-99-OC-VC01:stimulus:b0 -->
 Identify the following amino acids:
 
 <!-- SEG:26-99-OC-VC01:stem:359599-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-VC01:alt:stem-359599-m0 -->
+A ball-and-stick model of a five-carbon amino acid,  with a carboxylate anion , an amine at  C 1, and a methyl group at C 2.
+
 <!-- SEG:26-99-OC-VC01:stem:359600-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-VC01:alt:stem-359600-m0 -->
+A ball-and-stick model of a substituted imidazole  connected to a three-carbon chain carboxylic acid containing an amine group at C 1
+
 <!-- SEG:26-99-OC-VC01:stem:359601-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-VC01:alt:stem-359601-m0 -->
+A ball-and-stick model of a five-carbon chain with an amide group at C 1, an amine and a  carboxylic acid anion at C 3.
 
 <!-- SEG:26-99-OC-VC02:stem:359603-b0 -->
 Give the sequence of the following tetrapeptide (yellow = S):
@@ -517,11 +592,17 @@ Give the sequence of the following tetrapeptide (yellow = S):
 <!-- SEG:26-99-OC-VC02:stem:359603-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-VC02:alt:stem-359603-m0 -->
+A ball-and-stick model of a tripeptide. Black, gray, blue, red, and yellow spheres indicate carbon, hydrogen, nitrogen, oxygen, and sulfur atoms, respectively.
+
 <!-- SEG:26-99-OC-VC03:stem:359605-b0 -->
 Isoleucine and threonine are the only two amino acids with two chirality centers. Assign [[i:R]] or [[i:S]] configuration to the methyl-bearing carbon atom of isoleucine.
 
 <!-- SEG:26-99-OC-VC03:stem:359605-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-VC03:alt:stem-359605-m0 -->
+A ball-and-stick model of isoleucine, a five-carbon chain with a carboxylate anion at  C 1, amine at C 2, and a methyl group at C 3 position.
 
 <!-- SEG:26-99-OC-VC04:stem:359607-b0 -->
 Is the following structure a [[em:D|0]] amino acid or an [[em:L|1]] amino acid? Identify it.
@@ -529,9 +610,15 @@ Is the following structure a [[em:D|0]] amino acid or an [[em:L|1]] amino acid? 
 <!-- SEG:26-99-OC-VC04:stem:359607-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:26-99-OC-VC04:alt:stem-359607-m0 -->
+A ball-and-stick model of a four-carbon amino acid with a carboxylate anion at C 1, an amine at  C 1, and a methyl group at  C 3.
+
 <!-- SEG:26-99-OC-VC05:stem:359609-b0 -->
 Give the sequence of the following tetrapeptide:
 
 <!-- SEG:26-99-OC-VC05:stem:359609-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:26-99-OC-VC05:alt:stem-359609-m0 -->
+A ball-and-stick model of a tetrapeptide. Black, gray, blue, and red spheres indicate carbon, hydrogen, nitrogen, and oxygen, respectively.
 

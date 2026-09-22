@@ -330,6 +330,10 @@ already be there when they do. A chapter whose text is bought and whose figures 
 **second editor visit** — which is a cost paid in the scarcest thing this project has, not in ISK.
 ▶ **Text and figures are ONE unit of work per chapter. Do not batch the figures of several
 chapters "later"; that is the same reversal by another name.**
+⚖️ **ONE SCOPED EXCEPTION — `lifraen-efnafraedi` ONLY ([USER] 2026-09-22):** its artwork delivery
+has not arrived, so its text may be bought first, **on the condition that editors stay off each
+such chapter until its figures are done.** Every other book keeps this rule unchanged. →
+[`docs/decisions/2026-09-22-organic-text-before-figures-exception.md`](../decisions/2026-09-22-organic-text-before-figures-exception.md)
 
 🔧 **BEFORE ANY `figure-run.js` RUN, ON ANY BOX: CHECK ITS LOCAL PREREQUISITES.** They are not repo dependencies, and two of them fail quietly or per figure rather than up front: the Python libraries (numpy included), poppler's `pdftocairo`, and the official STIX 1.1.0 font file (§C140 ⑥a; never committed). **The list, the paths and the download source live in [`experiments/figure-text-translation/README.md`](../../experiments/figure-text-translation/README.md) § Running it — read them there.** Gate, run from `experiments/figure-text-translation/`: `FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py` and `FIGTEXT_PYLIBS=./pylibs python3 test_figsym.py` each print `ALL PASS`. ⚠️ `--dry-run` cannot catch a missing font: it composes nothing.
 

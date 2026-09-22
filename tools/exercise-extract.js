@@ -13,6 +13,9 @@
  * questions[].stem_html, and questions[].collaborator_solutions[0]
  * .content_html — solutions only when solutions_are_public is truthy
  * (mirrors resolveOsEmbed; render-blocked content never spends MT budget).
+ * Each field's non-blank <img> alt is emitted after that field's runs as a
+ * segment of type `alt` (§C126 #3) — a separate type, never a run, so no
+ * existing `b{k}` id moves.
  *
  * Deterministic seg-ids ({nickname}:{type}:{elementId}) — re-extraction is
  * byte-identical; ids are stable the day real MT runs.
@@ -24,7 +27,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { htmlToField } from './lib/exercise-html.js';
+import { htmlToField, fieldImgAlts, altSegId } from './lib/exercise-html.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BOOKS_DIR = path.join(__dirname, '..', 'books');
@@ -85,7 +88,7 @@ function exerciseFields(exercise) {
  * @param {{chapter?: string|number, verbose?: boolean, log?: (s:string)=>void}} opts
  * @returns {{chapters: Map<string, {segments: string, skeleton: object}>,
  *            failures: {nickname: string, error: string}[],
- *            counts: {exercises: number, segments: number}}}
+ *            counts: {exercises: number, segments: number, alts: number}}}
  */
 export function extractBook(bookDir, opts = {}) {
   const log = opts.log || (() => {});
@@ -122,6 +125,7 @@ export function extractBook(bookDir, opts = {}) {
 
   const chapters = new Map();
   let segmentCount = 0;
+  let altCount = 0;
   let exerciseCount = 0;
 
   for (const [chDir, list] of [...byChapter.entries()].sort(([a], [b]) => a.localeCompare(b))) {
@@ -142,6 +146,7 @@ export function extractBook(bookDir, opts = {}) {
         // its skeleton entry never gets written).
         const exSegLines = [];
         let exSegmentCount = 0;
+        let exAltCount = 0;
         for (const fd of fieldDefs) {
           const field = htmlToField(fd.html);
           entryFields[fd.key] = {
@@ -154,9 +159,16 @@ export function extractBook(bookDir, opts = {}) {
             exSegLines.push(`<!-- SEG:${nickname}:${fd.type}:${fd.elementId(k)} -->`, run, '');
             exSegmentCount++;
           });
+          // §C126 #3: each image's alt, right after its own field's runs. A
+          // separate TYPE, never a run — a run would shift every later b{k}.
+          for (const alt of fieldImgAlts(field)) {
+            exSegLines.push(`<!-- SEG:${altSegId(nickname, fd.key, alt.n)} -->`, alt.core, '');
+            exAltCount++;
+          }
         }
         segLines.push(...exSegLines);
-        segmentCount += exSegmentCount;
+        segmentCount += exSegmentCount + exAltCount;
+        altCount += exAltCount;
         skeleton.exercises[nickname] = {
           source_uid: exercise.uid || null,
           solutions_are_public: exercise.solutions_are_public || false,
@@ -184,7 +196,11 @@ export function extractBook(bookDir, opts = {}) {
     log(`  ${chDir}: ${Object.keys(skeleton.exercises).length} exercises`);
   }
 
-  return { chapters, failures, counts: { exercises: exerciseCount, segments: segmentCount } };
+  return {
+    chapters,
+    failures,
+    counts: { exercises: exerciseCount, segments: segmentCount, alts: altCount },
+  };
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────
@@ -212,7 +228,8 @@ function main() {
 
   const res = extractBook(bookDir, { chapter, verbose, log: verbose ? console.log : () => {} });
   console.log(
-    `Extracted ${res.counts.exercises} exercises → ${res.counts.segments} segments across ${res.chapters.size} chapter file(s)`
+    `Extracted ${res.counts.exercises} exercises → ${res.counts.segments} segments ` +
+      `(${res.counts.alts} image alts) across ${res.chapters.size} chapter file(s)`
   );
   if (res.failures.length > 0) {
     console.error(`FAILED: ${res.failures.length} exercise(s) skipped:`);

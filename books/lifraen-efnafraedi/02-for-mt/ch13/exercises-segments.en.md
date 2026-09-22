@@ -19,6 +19,9 @@ The vinylic C − H protons are nonequivalent.
 <!-- SEG:13-02-OC-P03:sol:358253-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-02-OC-P03:alt:sol-358253-m0 -->
+A chemical structure of 2-chloro-1-propene. Hydrogens are labeled a (on methyl), b (cis to methyl group) and c (cis to chlorine).
+
 <!-- SEG:13-03-OC-P04:stimulus:b0 -->
 The following [[sup:1]]H NMR peaks were recorded on a spectrometer operating at 200 MHz. Convert each into [[i:δ]] units.
 
@@ -73,11 +76,17 @@ Each of the following compounds has a single [[sup:1]]H NMR peak. Approximately 
 <!-- SEG:13-04-OC-P06:stem:358260-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-04-OC-P06:alt:stem-358260-m0 -->
+A chemical structure of cyclohexane.
+
 <!-- SEG:13-04-OC-P06:sol:358260-b0 -->
 1.43 [[i:δ]]
 
 <!-- SEG:13-04-OC-P06:stem:358261-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-04-OC-P06:alt:stem-358261-m0 -->
+A chemical structure of acetone.
 
 <!-- SEG:13-04-OC-P06:sol:358261-b0 -->
 2.17 [[i:δ]]
@@ -85,11 +94,17 @@ Each of the following compounds has a single [[sup:1]]H NMR peak. Approximately 
 <!-- SEG:13-04-OC-P06:stem:358262-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-04-OC-P06:alt:stem-358262-m0 -->
+A chemical structure of benzene.
+
 <!-- SEG:13-04-OC-P06:sol:358262-b0 -->
 7.37 [[i:δ]]
 
 <!-- SEG:13-04-OC-P06:stem:358263-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-04-OC-P06:alt:stem-358263-m0 -->
+The structure of dichloromethane whose condensed structural formula reads, C H 2 C l 2.
 
 <!-- SEG:13-04-OC-P06:sol:358263-b0 -->
 5.30 [[i:δ]]
@@ -97,11 +112,17 @@ Each of the following compounds has a single [[sup:1]]H NMR peak. Approximately 
 <!-- SEG:13-04-OC-P06:stem:358264-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-04-OC-P06:alt:stem-358264-m0 -->
+The structure of ethane-1, 2-dial has a 2-carbon chain. Each carbon is single-bonded to a hydrogen atom and double-bonded to an oxygen atom.
+
 <!-- SEG:13-04-OC-P06:sol:358264-b0 -->
 9.70 [[i:δ]]
 
 <!-- SEG:13-04-OC-P06:stem:358265-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-04-OC-P06:alt:stem-358265-m0 -->
+The structure of N,N-dimethylmethanamine in which nitrogen atom is bonded to three methyl groups.
 
 <!-- SEG:13-04-OC-P06:sol:358265-b0 -->
 2.12 [[i:δ]]
@@ -112,17 +133,26 @@ Identify the different types of protons in the following molecule, and tell wher
 <!-- SEG:13-04-OC-P07:stem:358267-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-04-OC-P07:alt:stem-358267-m0 -->
+Two carbon atoms with a trans double bond in-between. C 1 is bonded to benzene with a methoxy group at C 4. C 2 is bonded to an ethyl group.
+
 <!-- SEG:13-04-OC-P07:sol:358267-b0 -->
 There are seven kinds of protons labeled. The types and expected range of absorption of each follow. [[b:[[i:a:]]]] ether, 3.5–4.5 [[i:δ]]; [[b:[[i:b:]]]] aryl, 6.5–8.0 [[i:δ]]; [[b:[[i:c:]]]] aryl, 6.5–8.0; [[b:[[i:d:]]]] vinylic, 4.5–6.5 [[i:δ]]; [[b:[[i:e:]]]] vinylic, 4.5–6.5 [[i:δ]]; [[b:[[i:f:]]]] alkyl (secondary), 1.2–1.6 [[i:δ]]; [[b:[[i:g:]]]] alkyl (primary), 0.7–1.3 [[i:δ]].
 
 <!-- SEG:13-04-OC-P07:sol:358267-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-04-OC-P07:alt:sol-358267-m0 -->
+Structure of 1-[(E)-but-1-enyl]-4-methoxybenzene. Hydrogens labeled a (methoxy), b  and c (ortho and meta to methoxy), d (benzylic), e (trans to d), f (methylene), and g (methyl) .
+
 <!-- SEG:13-05-OC-P08:stem:358269-b0 -->
 How many peaks would you expect in the [[sup:1]]H NMR spectrum of 1,4-dimethylbenzene ([[i:para]]-xylene, or [[i:p]]-xylene)? What ratio of peak areas would you expect on integration of the spectrum? Refer to Table 13.3 for approximate chemical shifts, and sketch what the spectrum would look like. (Remember from [[b:Section 2.4]] that aromatic rings have two resonance forms.)
 
 <!-- SEG:13-05-OC-P08:stem:358269-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-05-OC-P08:alt:stem-358269-m0 -->
+The structure of para-xylene (1,4-dimethylbenzene).
 
 <!-- SEG:13-05-OC-P08:sol:358269-b0 -->
 Two peaks; 3 : 2 ratio
@@ -133,11 +163,17 @@ Predict the splitting patterns you would expect for each proton in the following
 <!-- SEG:13-06-OC-P09:stem:358276-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-06-OC-P09:alt:stem-358276-m0 -->
+The condensed structural formula reads, C H B r 2 C H 3.
+
 <!-- SEG:13-06-OC-P09:sol:358276-b0 -->
 −CHBr[[sub:2]], quartet;  −CH[[sub:3]], doublet
 
 <!-- SEG:13-06-OC-P09:stem:358277-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-06-OC-P09:alt:stem-358277-m0 -->
+The condensed structural formula reads, C H 3 O C H 2 C H 2 B r.
 
 <!-- SEG:13-06-OC-P09:sol:358277-b0 -->
 CH[[sub:3]]O−, singlet;  −OCH[[sub:2]] −, triplet;  −CH[[sub:2]]Br, triplet
@@ -145,11 +181,17 @@ CH[[sub:3]]O−, singlet;  −OCH[[sub:2]] −, triplet;  −CH[[sub:2]]Br
 <!-- SEG:13-06-OC-P09:stem:358278-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-06-OC-P09:alt:stem-358278-m0 -->
+The condensed structural formula reads, C l C H 2 C H 2 C H 2 C l.
+
 <!-- SEG:13-06-OC-P09:sol:358278-b0 -->
 ClCH[[sub:2]]− , triplet;  −CH[[sub:2]]−, quintet
 
 <!-- SEG:13-06-OC-P09:stem:358279-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-06-OC-P09:alt:stem-358279-m0 -->
+The condensed structural formula of ethyl isobutyrate.
 
 <!-- SEG:13-06-OC-P09:sol:358279-b0 -->
 CH[[sub:3]]− , triplet;  −CH[[sub:2]]− , quartet;   −CH− , septet; (CH[[sub:3]])[[sub:2]], doublet
@@ -157,11 +199,17 @@ CH[[sub:3]]− , triplet;  −CH[[sub:2]]− , quartet;   −CH− , s
 <!-- SEG:13-06-OC-P09:stem:358280-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-06-OC-P09:alt:stem-358280-m0 -->
+The condensed structural formula of isopropyl propanoate.
+
 <!-- SEG:13-06-OC-P09:sol:358280-b0 -->
 CH[[sub:3]]−, triplet;  −CH[[sub:2]]−, quartet;   −CH−, septet; (CH[[sub:3]])[[sub:2]], doublet
 
 <!-- SEG:13-06-OC-P09:stem:358281-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-06-OC-P09:alt:stem-358281-m0 -->
+The structure has a cyclohexene ring fused to a benzene ring; double bond in cyclohexene is opposite fusion.
 
 <!-- SEG:13-06-OC-P09:sol:358281-b0 -->
 [[MEDIA:0]]CH, triplet,  −CH[[sub:2]]−, doublet, aromatic C−H, two multiplets
@@ -202,6 +250,9 @@ The integrated [[sup:1]]H NMR spectrum of a compound of formula C[[sub:4]]H[[sub
 <!-- SEG:13-06-OC-P11:stem:360081-b2 -->
 An integrated [[sup:1]]H NMR spectrum for Problem 11.
 
+<!-- SEG:13-06-OC-P11:alt:stem-360081-m0 -->
+The 1 H N M R spectrum of a compound has peaks at 0 (T M S), 1.2 (triplet), and 3.5 (quartet).
+
 <!-- SEG:13-06-OC-P11:sol:360081-b0 -->
 CH[[sub:3]]CH[[sub:2]]OCH[[sub:2]]CH[[sub:3]]
 
@@ -211,11 +262,17 @@ Identify the indicated sets of protons as unrelated, homotopic, enantiotopic, or
 <!-- SEG:13-07-OC-P12:stem:358290-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-07-OC-P12:alt:stem-358290-m0 -->
+Chemical structure of 2-methyl-3-pentanone. Two arrows point toward the highlighted hydrogens at C 4.
+
 <!-- SEG:13-07-OC-P12:sol:358290-b0 -->
 Enantiotopic
 
 <!-- SEG:13-07-OC-P12:stem:358291-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-07-OC-P12:alt:stem-358291-m0 -->
+Chemical structure of cyclohexanol. Two arrows point toward the highlighted hydrogens at C 3.
 
 <!-- SEG:13-07-OC-P12:sol:358291-b0 -->
 Diastereotopic
@@ -223,11 +280,17 @@ Diastereotopic
 <!-- SEG:13-07-OC-P12:stem:358292-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-07-OC-P12:alt:stem-358292-m0 -->
+Chemical structure of 3-methyl-2-butene. Two arrows point toward the highlighted hydrogens on methyl carbon and C 4.
+
 <!-- SEG:13-07-OC-P12:sol:358292-b0 -->
 Diastereotopic
 
 <!-- SEG:13-07-OC-P12:stem:358293-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-07-OC-P12:alt:stem-358293-m0 -->
+Chemical structure of ethyl 2-bromopropionate. Two arrows point toward the highlighted hydrogens on ethyl carbon adjacent to oxygen.
 
 <!-- SEG:13-07-OC-P12:sol:358293-b0 -->
 Diastereotopic
@@ -235,11 +298,17 @@ Diastereotopic
 <!-- SEG:13-07-OC-P12:stem:358294-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-07-OC-P12:alt:stem-358294-m0 -->
+Chemical structure of 2-isopropylcyclohexanone. Two arrows point toward the highlighted hydrogens on isopropyl terminals.
+
 <!-- SEG:13-07-OC-P12:sol:358294-b0 -->
 Diastereotopic
 
 <!-- SEG:13-07-OC-P12:stem:358295-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-07-OC-P12:alt:stem-358295-m0 -->
+Chemical structure of cis-bicyclo[3.3.0]octane. Two arrows point toward the highlighted hydrogens on fusion carbons.
 
 <!-- SEG:13-07-OC-P12:sol:358295-b0 -->
 Homotopic
@@ -289,6 +358,9 @@ How many absorptions would you expect ([[i:S]])-malate, an intermediate in carbo
 <!-- SEG:13-07-OC-P14:stem:358297-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-07-OC-P14:alt:stem-358297-m0 -->
+The ball-and-stick model of (S)-Malate shows a 4-carbon chain. C 1 and C 4 are carboxyl groups. C 2 is bonded to hydroxyl group.
+
 <!-- SEG:13-07-OC-P14:sol:358297-b0 -->
 4
 
@@ -298,11 +370,17 @@ How many absorptions would you expect ([[i:S]])-malate, an intermediate in carbo
 <!-- SEG:13-08-OC-P15:stem:358299-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-08-OC-P15:alt:stem-358299-m0 -->
+The structure of 3-Bromo-1-phenyl-1-propene with carbon atoms in the chain labeled.
+
 <!-- SEG:13-08-OC-P15:sol:358299-b0 -->
 [[i:J]][[sub:1–2]] = 16 Hz; [[i:J]][[sub:2–3]] = 8 Hz
 
 <!-- SEG:13-08-OC-P15:sol:358299-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-08-OC-P15:alt:sol-358299-m0 -->
+The structure of 3-Bromo-1-phenyl-1-propene and its proton splitting tree diagram that shows J 1-2 and J 2-3 values equals 16 and 8 Hertz, respectively.
 
 <!-- SEG:13-09-OC-P16:stem:338044-b0 -->
 How could you use [[sup:1]]H NMR to determine the regiochemistry of electrophilic addition to alkenes? For example, does addition of HCl to 1-methylcyclohexene yield 1-chloro-1-methylcyclohexane or 1-chloro-2-methylcyclohexane?
@@ -340,11 +418,17 @@ Methylcyclopentane
 <!-- SEG:13-11-OC-P17:stem:361096-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-11-OC-P17:alt:stem-361096-m0 -->
+Chemical structure of 2-methyl-3-pentanone.
+
 <!-- SEG:13-11-OC-P17:sol:361096-b0 -->
 5
 
 <!-- SEG:13-11-OC-P17:stem:361097-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-11-OC-P17:alt:stem-361097-m0 -->
+Chemical structure of 2,3-dimethyl-2-pentene.
 
 <!-- SEG:13-11-OC-P17:sol:361097-b0 -->
 7
@@ -379,6 +463,9 @@ Classify the resonances in the [[sup:13]]C NMR spectrum of methyl propanoate, CH
 <!-- SEG:13-11-OC-P19:stem:358325-b2 -->
 [[sup:13]]C NMR spectrum of methyl propanoate, Problem 19.
 
+<!-- SEG:13-11-OC-P19:alt:stem-358325-m0 -->
+The 13 C N M R spectrum of methyl propanoate shows peaks at 0 (T M S), 9, 29, 52, and 175.
+
 <!-- SEG:13-11-OC-P19:sol:358325-b0 -->
 −CH[[sub:3]], 9.3 [[i:δ;]]  −CH[[sub:2]]− , 27.6 [[i:δ;]] C=O, 174.6 [[i:δ;]]− OCH[[sub:3]], 51.4 [[i:δ]]
 
@@ -388,14 +475,23 @@ Assign a chemical shift to each carbon in 6-methyl-5-hepten-2-ol (Figure 13.21).
 <!-- SEG:13-12-OC-P20:sol:358327-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-12-OC-P20:alt:sol-358327-m0 -->
+The structure has a 7-carbon chain with double bond between C 2-C 3. C 2 and C 6 are bonded to methyl and hydroxyl, respectively. Delta values are given.
+
 <!-- SEG:13-12-OC-P21:stem:358329-b0 -->
 Estimate the chemical shift of each carbon in the following molecule. Predict which carbons will appear in the DEPT-90 spectrum, which will give positive peaks in the DEPT-135 spectrum, and which will give negative peaks in the DEPT-135 spectrum.
 
 <!-- SEG:13-12-OC-P21:stem:358329-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-12-OC-P21:alt:stem-358329-m0 -->
+The ball-and-stick model has a 6-carbon chain with double bond between C 2-C 3. C 2 is bonded to methoxy group. C 4 is carbonyl group.
+
 <!-- SEG:13-12-OC-P21:sol:358329-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-12-OC-P21:alt:sol-358329-m0 -->
+Two carbons with double bond in-between. C 1 is bonded to methoxy and methyl group. C 2 is bonded to carbonyl, which is bonded to ethyl.
 
 <!-- SEG:13-12-OC-P22:stem:358331-b0 -->
 Propose a structure for an aromatic hydrocarbon, C[[sub:11]]H[[sub:16]], that has the following [[sup:13]]C NMR spectral data:
@@ -411,6 +507,9 @@ DEPT-135: positive peaks at 29.5, 125.5, 127.5, 130.3 [[i:δ;]] negative peak at
 
 <!-- SEG:13-12-OC-P22:sol:358331-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-12-OC-P22:alt:sol-358331-m0 -->
+The structure has a benzene ring. C 1 is bonded to a methylene group, which is bonded to carbon. The carbon atom is bonded to three methyl groups.
 
 <!-- SEG:13-13-OC-P23:stem:342810-b0 -->
 We saw in [[b:Section 9.3]] that addition of HBr to a terminal alkyne leads to the Markovnikov addition product, with the Br bonding to the more highly substituted carbon. How could you use [[sup:13]]C NMR to identify the product of the addition of 1 equivalent of HBr to 1-hexyne?
@@ -469,17 +568,32 @@ How many types of nonequivalent protons are present in each of the following mol
 <!-- SEG:13-99-OC-AP06:stem:358351-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP06:alt:stem-358351-m0 -->
+A chemical structure of 1,1-dimethylcyclohexane.
+
 <!-- SEG:13-99-OC-AP06:stem:358352-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP06:alt:stem-358352-m0 -->
+The condensed structural formula reads, C H 3 C H 2 C H 2 O C H 3.
 
 <!-- SEG:13-99-OC-AP06:stem:358353-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP06:alt:stem-358353-m0 -->
+Naphthalene has a benzene ring fused to a cyclohexadiene ring with alternating double bonds.
+
 <!-- SEG:13-99-OC-AP06:stem:358354-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP06:alt:stem-358354-m0 -->
+A chemical structure of styrene (vinyl benzene).
+
 <!-- SEG:13-99-OC-AP06:stem:358355-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP06:alt:stem-358355-m0 -->
+Ethyl acrylate has a carbon atom double bonded to another carbon. C 1 is bonded to C O 2 C H 2 C H 3.
 
 <!-- SEG:13-99-OC-AP07:stem:338121-b0 -->
 The following compounds all show a single line in their [[sup:1]]H NMR spectra. List them in order of expected increasing chemical shift:
@@ -493,20 +607,38 @@ How many signals would you expect each of the following molecules to have in its
 <!-- SEG:13-99-OC-AP08:stem:358362-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP08:alt:stem-358362-m0 -->
+The structure has two carbon atoms with a double bond in-between. C 1 and C 2 are each bonded to two methyl groups.
+
 <!-- SEG:13-99-OC-AP08:stem:358363-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP08:alt:stem-358363-m0 -->
+The structure has a cyclohexane ring. C 1 is a carbonyl group. C 4 is bonded to two methyl groups.
 
 <!-- SEG:13-99-OC-AP08:stem:358364-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP08:alt:stem-358364-m0 -->
+A condensed structure of acetone.
+
 <!-- SEG:13-99-OC-AP08:stem:358365-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP08:alt:stem-358365-m0 -->
+A chemical structure of methyl 2,2-dimethyl propionate.
 
 <!-- SEG:13-99-OC-AP08:stem:358366-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP08:alt:stem-358366-m0 -->
+The structure has a benzene ring. C 1 and C 4 are each bonded to a methyl group.
+
 <!-- SEG:13-99-OC-AP08:stem:358367-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP08:alt:stem-358367-m0 -->
+A chemical structure of 1,1-dimethylcyclopropane.
 
 <!-- SEG:13-99-OC-AP09:stimulus:b0 -->
 Propose structures for compounds with the following formulas that show only one peak in their [[sup:1]]H NMR spectra:
@@ -541,11 +673,20 @@ Identify the indicated sets of protons as unrelated, homotopic, enantiotopic, or
 <!-- SEG:13-99-OC-AP12:stem:358371-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP12:alt:stem-358371-m0 -->
+A chemical structure of 3-pentanone. Arrows point to highlighted hydrogens on C 2.
+
 <!-- SEG:13-99-OC-AP12:stem:358372-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP12:alt:stem-358372-m0 -->
+A chemical structure of 3-pentanol. Arrows point to highlighted hydrogens on C 2.
+
 <!-- SEG:13-99-OC-AP12:stem:358373-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP12:alt:stem-358373-m0 -->
+A chemical structure of 3-chloropentane, with chlorine on a wedge bond. Arrows point to highlighted wedge hydrogen on C 2 and dash hydrogen on C 4.
 
 <!-- SEG:13-99-OC-AP13:stimulus:b0 -->
 Identify the indicated sets of protons as unrelated, homotopic, enantiotopic, or diastereotopic:
@@ -553,11 +694,20 @@ Identify the indicated sets of protons as unrelated, homotopic, enantiotopic, or
 <!-- SEG:13-99-OC-AP13:stem:358377-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP13:alt:stem-358377-m0 -->
+A cyclohexane ring is fused to another cyclohexane ring. The top and bottom fusion sites are wedge bonded to hydrogen (highlighted) and dash bonded to another hydrogen (highlighted), respectively.
+
 <!-- SEG:13-99-OC-AP13:stem:358378-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP13:alt:stem-358378-m0 -->
+A cyclohexane ring is fused to a cyclopentane ring. The top and bottom fusion sites are wedge bonded to hydrogen (highlighted) and dash bonded to another hydrogen (highlighted), respectively.
+
 <!-- SEG:13-99-OC-AP13:stem:358379-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP13:alt:stem-358379-m0 -->
+A structure of bicyclo[3.1.1.]heptane. C 2 has a methylene substituent. C 6 has two methyl substituents with highlighted hydrogens.
 
 <!-- SEG:13-99-OC-AP14:stem:358381-b0 -->
 The acid-catalyzed dehydration of 1-methylcyclohexanol yields a mixture of two alkenes. How could you use [[sup:1]]H NMR to help you decide which was which?
@@ -565,20 +715,35 @@ The acid-catalyzed dehydration of 1-methylcyclohexanol yields a mixture of two a
 <!-- SEG:13-99-OC-AP14:stem:358381-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP14:alt:stem-358381-m0 -->
+A cyclohexane ring with methyl and hydroxyl at C 1 reacts with hydronium ion to form cyclohexane double bonded to methylene and cyclohexene with methyl at C 1.
+
 <!-- SEG:13-99-OC-AP15:stimulus:b0 -->
 How could you use [[sup:1]]H NMR to distinguish between the following pairs of isomers?
 
 <!-- SEG:13-99-OC-AP15:stem:358386-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP15:alt:stem-358386-m0 -->
+Condensed structures of 2-pentene and ethylcyclopropane.
+
 <!-- SEG:13-99-OC-AP15:stem:358387-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP15:alt:stem-358387-m0 -->
+Condensed structures of diethyl ether and methyl propyl ether.
 
 <!-- SEG:13-99-OC-AP15:stem:358388-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP15:alt:stem-358388-m0 -->
+Condensed structures of diethyl ether and methyl propyl ether.
+
 <!-- SEG:13-99-OC-AP15:stem:358389-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP15:alt:stem-358389-m0 -->
+Condensed structures of ethyl acetate and 2-butanone.
 
 <!-- SEG:13-99-OC-AP16:stimulus:b0 -->
 Propose structures for compounds that fit the following [[sup:1]]H NMR data:
@@ -616,11 +781,17 @@ C[[sub:4]]H[[sub:9]]Br
 <!-- SEG:13-99-OC-AP17:stem:358396-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP17:alt:stem-358396-m0 -->
+The 1 H N M R spectrum of C 4 H 9 B r shows peaks at 0 (T M S), 1 (doublet), 2 (septet), and 3.3 (doublet).
+
 <!-- SEG:13-99-OC-AP17:stem:358397-b0 -->
 C[[sub:4]]H[[sub:8]]Cl[[sub:2]]
 
 <!-- SEG:13-99-OC-AP17:stem:358397-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP17:alt:stem-358397-m0 -->
+1 H N M R spectrum of C 4 H 8 C l 2 shows peaks at 0 (T M S), 1.5 (doublet), 2.1 (quartet), 3.7 (multiplet), and 4.2 (multiplet).
 
 <!-- SEG:13-99-OC-AP18:stem:338179-b0 -->
 How many [[sup:13]]C NMR absorptions would you expect for [[i:cis]]-1,3-dimethylcyclohexane? For [[i:trans]]-1,3-dimethylcyclohexane? Explain.
@@ -655,17 +826,26 @@ How could you use [[sup:1]]H and [[sup:13]]C NMR to help distinguish the followi
 <!-- SEG:13-99-OC-AP21:stem:358399-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP21:alt:stem-358399-m0 -->
+Condensed structures of cyclobutane, 1-butene, 2-butene, and 2-methyl-1-propene.
+
 <!-- SEG:13-99-OC-AP22:stem:352915-b0 -->
 How could you use [[sup:1]]H NMR, [[sup:13]]C NMR, and IR spectroscopy to help you distinguish between the following structures?
 
 <!-- SEG:13-99-OC-AP22:stem:352915-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-AP22:alt:stem-352915-m0 -->
+An illustration shows the structures of 3-Methyl-2-cyclohexenone and 3-Cyclopentenyl methyl ketone. 3-Methyl-2-cyclohexenone shows a cyclohexenone bonded to a methyl group. 3-Cyclopentenyl methyl ketone shows a cyclopentene bonded to a carbonyl group bonded to a methyl group.
+
 <!-- SEG:13-99-OC-AP23:stem:358401-b0 -->
 Assign as many resonances as you can to specific carbon atoms in the [[sup:13]]C NMR spectrum of ethyl benzoate.
 
 <!-- SEG:13-99-OC-AP23:stem:358401-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-AP23:alt:stem-358401-m0 -->
+The 13 C N M R spectrum of ethyl benzoate shows peaks at 0 (T M S), 15 (sharp), 61 (sharp), between 126 and 132 (variable heights), and 165 (tiny).
 
 <!-- SEG:13-99-OC-GP01:stimulus:b0 -->
 Assume that you have a compound with the formula C[[sub:3]]H[[sub:6]]O.
@@ -688,11 +868,17 @@ The compound whose [[sup:1]]H NMR spectrum is shown has the molecular formula C[
 <!-- SEG:13-99-OC-GP02:stem:358403-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP02:alt:stem-358403-m0 -->
+The 1 H N M R spectrum shows peaks at 0 (T M S), 2.3 (quintet), and 3.6 (triplet).
+
 <!-- SEG:13-99-OC-GP03:stem:358405-b0 -->
 The compound whose [[sup:1]]H NMR spectrum is shown has the molecular formula C[[sub:4]]H[[sub:7]]O[[sub:2]]Cl and has an infrared absorption peak at 1740 cm[[sup:–1]]. Propose a structure.
 
 <!-- SEG:13-99-OC-GP03:stem:358405-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP03:alt:stem-358405-m0 -->
+The H N M R spectrum shows peaks at 0 (T M S), 1.3 (triplet), 4.1 (singlet), and 4.3 (quartet).
 
 <!-- SEG:13-99-OC-GP04:stimulus:b0 -->
 Propose structures for compounds that fit the following [[sup:1]]H NMR data:
@@ -754,11 +940,17 @@ Long-range coupling between protons more than two carbon atoms apart is sometime
 <!-- SEG:13-99-OC-GP05:stem:358407-b2 -->
 Construct tree diagrams that account for the observed splitting patterns of H[[i:[[sub:a]]]], H[[i:[[sub:b]]]], and H[[i:[[sub:c]]]].
 
+<!-- SEG:13-99-OC-GP05:alt:stem-358407-m0 -->
+1-Methoxy-1-buten-3-yne structure with hydrogen shifts of 3.08 (alkyne). 4.52 (on C 2), and 6.35 (on C 1). J values are also mentioned.
+
 <!-- SEG:13-99-OC-GP06:stem:358409-b0 -->
 The [[sup:1]]H and [[sup:13]]C NMR spectra of compound [[b:A]], C[[sub:8]]H[[sub:9]]Br, are shown. Propose a structure for [[b:A]], and assign peaks in the spectra to your structure.
 
 <!-- SEG:13-99-OC-GP06:stem:358409-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP06:alt:stem-358409-m0 -->
+H N M R shifts: 0, 1.2 (triplet), 2.6 (quartet), 7.1 (singlet), and 7.1 and 7.4 (two doublets). C N M R shifts: 17, 30, 120 (short), 130, and 132.
 
 <!-- SEG:13-99-OC-GP07:stimulus:b0 -->
 Propose structures for the three compounds whose [[sup:1]]H NMR spectra are shown.
@@ -769,11 +961,17 @@ C[[sub:5]]H[[sub:10]]O
 <!-- SEG:13-99-OC-GP07:stem:358413-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP07:alt:stem-358413-m0 -->
+The 1 H N M R spectrum shows peaks at 0 (T M S), 0.9 (triplet), 1.7 (sextet), and 2.4 (triplet).
+
 <!-- SEG:13-99-OC-GP07:stem:358414-b0 -->
 C[[sub:7]]H[[sub:7]]Br
 
 <!-- SEG:13-99-OC-GP07:stem:358414-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP07:alt:stem-358414-m0 -->
+The 1 H N M R spectrum shows peaks at 0 (T M S), 2.3 (singlet), 7 (doublet), and 7.3 (doublet).
 
 <!-- SEG:13-99-OC-GP07:stem:358415-b0 -->
 C[[sub:8]]H[[sub:9]]Br
@@ -781,11 +979,17 @@ C[[sub:8]]H[[sub:9]]Br
 <!-- SEG:13-99-OC-GP07:stem:358415-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP07:alt:stem-358415-m0 -->
+The 1 H N M R spectrum shows peaks at 0 (T M S), 3.1 (triplet), 3.6 (triplet), and 7.2 (indistinct, messy multiplet).
+
 <!-- SEG:13-99-OC-GP08:stem:358417-b0 -->
 The mass spectrum and [[sup:13]]C NMR spectrum of a hydrocarbon are shown. Propose a structure for this hydrocarbon, and explain the spectral data.
 
 <!-- SEG:13-99-OC-GP08:stem:358417-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP08:alt:stem-358417-m0 -->
+The mass spectrum shows main peaks at 15, 26, 29, 39, 41, 42, 43, 56 (base), 69, and 84. C N M R spectrum shifts at 15, 26, ad 132.
 
 <!-- SEG:13-99-OC-GP09:stem:351578-b0 -->
 Compound [[b:A]], a hydrocarbon with M[[sup:+]] = 96 in its mass spectrum, has the following [[sup:13]]C spectral data. On reaction with BH[[sub:3]], followed by treatment with basic H[[sub:2]]O[[sub:2]], [[b:A]] is converted into [[b:B]], whose [[sup:13]]C spectral data are also given. Propose structures for [[b:A]] and [[b:B]].
@@ -892,11 +1096,17 @@ DEPT-135: positive peak at 56.0 [[i:δ;]] negative peaks at 25.1, 27.7, 39.9 [[i
 <!-- SEG:13-99-OC-GP14:stem:358419-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP14:alt:stem-358419-m0 -->
+The structure of 2-methyl-2-butanol with main chain carbons numbered 1 through 4.
+
 <!-- SEG:13-99-OC-GP15:stem:358421-b0 -->
 A [[sup:13]]C NMR spectrum of commercially available 2,4-pentanediol, shows [[i:five]] peaks at 23.3, 23.9, 46.5, 64.8, and 68.1 [[i:δ.]] Explain.
 
 <!-- SEG:13-99-OC-GP15:stem:358421-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP15:alt:stem-358421-m0 -->
+The structure of 2,4-pentanediol has a 5-carbon chain. C 2 and C 4 are each bonded to a hydroxyl group.
 
 <!-- SEG:13-99-OC-GP16:stem:358423-b0 -->
 Carboxylic acids (RCO[[sub:2]]H) react with alcohols (R′OH) in the presence of an acid catalyst. The reaction product of propanoic acid with methanol has the following spectroscopic properties. Propose a structure.
@@ -919,6 +1129,9 @@ IR: 1735 cm[[sup:–1]]
 <!-- SEG:13-99-OC-GP16:stem:358423-b6 -->
 [[sup:13]]C NMR: 9.3, 27.6, 51.4, 174.6 [[i:δ]]
 
+<!-- SEG:13-99-OC-GP16:alt:stem-358423-m0 -->
+Propanoic acid reacts with methanol in the presence of hydrogen ion catalyst to form unknown product(s), depicted by a question mark.
+
 <!-- SEG:13-99-OC-GP17:stem:358425-b0 -->
 Nitriles (RC[[MEDIA:0]]N) react with Grignard reagents (R′MgBr). The reaction product from 2-methylpropanenitrile with methylmagnesium bromide has the following spectroscopic properties. Propose a structure.
 
@@ -939,6 +1152,9 @@ IR: 1715 cm[[sup:–1]]
 
 <!-- SEG:13-99-OC-GP17:stem:358425-b6 -->
 [[sup:13]]C NMR: 18.2, 27.2, 41.6, 211.2 [[i:δ]]
+
+<!-- SEG:13-99-OC-GP17:alt:stem-358425-m1 -->
+2-Methylpropanenitrile reacts with methyl magnesium bromide in step 1 and hydronium ion in step 2 to form unknown product(s), depicted by a question mark.
 
 <!-- SEG:13-99-OC-GP18:stem:358427-b0 -->
 The proton NMR spectrum is shown for a compound with the formula C[[sub:5]]H[[sub:9]]NO[[sub:4]]. The infrared spectrum displays strong bands at 1750 and 1562 cm[[sup:–1]] and a medium-intensity band at 1320 cm[[sup:–1]]. The normal carbon-13 and the DEPT experimental results are tabulated. Draw the structure of this compound.
@@ -1000,6 +1216,9 @@ No peak
 <!-- SEG:13-99-OC-GP18:stem:358427-b19 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP18:alt:stem-358427-m0 -->
+Proton spectrum of C 5 H 9 N O 4 shifts: 0, 1.3 (triplet), 1.8 (doublet), 4.3 (quartet), and 5.2 (quartet). Relative areas of 3, 3, 2, and 0.92 respectively.
+
 <!-- SEG:13-99-OC-GP19:stem:358429-b0 -->
 The proton NMR spectrum of a compound with the formula C[[sub:5]]H[[sub:10]]O is shown. The normal carbon-13 and the DEPT experimental results are tabulated. The infrared spectrum shows a broad peak at about 3340 cm[[sup:–1]] and a medium-sized peak at about 1651 cm[[sup:–1]]. Draw the structure of this compound.
 
@@ -1059,6 +1278,9 @@ No peak
 
 <!-- SEG:13-99-OC-GP19:stem:358429-b19 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-GP19:alt:stem-358429-m0 -->
+Proton spectrum of C 5 H 10 O shifts: 1.75 (singlet), 2.15 (singlet), 2.3 (triplet), 3.7 (triplet), and 4.8 (doublet). Relative areas of 3, 1.2, 2, 2.1, and 2.1 respectively.
 
 <!-- SEG:13-99-OC-GP20:stem:358431-b0 -->
 The proton NMR spectrum of a compound with the formula C[[sub:7]]H[[sub:12]]O[[sub:2]] is shown. The infrared spectrum displays a strong band at 1738 cm[[sup:–1]] and a weak band at 1689 cm[[sup:–1]]. The normal carbon-13 and the DEPT experimental results are tabulated. Draw the structure of this compound.
@@ -1138,14 +1360,23 @@ No peak
 <!-- SEG:13-99-OC-GP20:stem:358431-b25 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-GP20:alt:stem-358431-m0 -->
+Proton spectrum of C 7 H 12 O 2 shifts: 1.75 (doublet), 2.05 (singlet), 4.55 (doublet), and 5.35 (triplet). Relative areas of 5.7, 2.9, 2, and .96 respectively.
+
 <!-- SEG:13-99-OC-VC01:stimulus:b0 -->
 Into how many peaks would you expect the [[sup:1]]H NMR signals of the indicated protons to be split? (Green = Cl.)
 
 <!-- SEG:13-99-OC-VC01:stem:358334-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-VC01:alt:stem-358334-m0 -->
+The ball-and-stick model has a 4-carbon chain. C 1 is bonded to chlorine atom. C 2 is double bonded to oxygen atom. C 3 is bonded to methyl group.
+
 <!-- SEG:13-99-OC-VC01:stem:358335-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-VC01:alt:stem-358335-m0 -->
+The ball-and-stick model has a benzene ring. C 1 is bonded to a 2-carbon chain, in which C 1 is an aldehyde group. C 4 is bonded to methyl.
 
 <!-- SEG:13-99-OC-VC02:stem:358337-b0 -->
 How many absorptions would you expect the following compound to have in its [[sup:1]]H and [[sup:13]]C NMR spectra?
@@ -1153,11 +1384,17 @@ How many absorptions would you expect the following compound to have in its [[su
 <!-- SEG:13-99-OC-VC02:stem:358337-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-VC02:alt:stem-358337-m0 -->
+The ball-and-stick model of 3-methyl-2-cyclohexen-1-one.
+
 <!-- SEG:13-99-OC-VC03:stem:358339-b0 -->
 Sketch what you might expect the [[sup:1]]H and [[sup:13]]C NMR spectra of the following compound to look like (green = Cl):
 
 <!-- SEG:13-99-OC-VC03:stem:358339-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-VC03:alt:stem-358339-m0 -->
+The ball-and-stick model of ethyl 2-chloropropionate.
 
 <!-- SEG:13-99-OC-VC04:stem:358341-b0 -->
 How many electronically nonequivalent kinds of protons and how many kinds of carbons are present in the following compound? Don’t forget that cyclohexane rings can ring-flip.
@@ -1165,12 +1402,21 @@ How many electronically nonequivalent kinds of protons and how many kinds of car
 <!-- SEG:13-99-OC-VC04:stem:358341-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-VC04:alt:stem-358341-m0 -->
+The ball-and-stick model of a cyclohexane ring in chair form. C 1 is bonded to equatorial methyl and C 2 is bonded to axial methyl.
+
 <!-- SEG:13-99-OC-VC05:stimulus:b0 -->
 Identify the indicated protons in the following molecules as unrelated, homotopic, enantiotopic, or diastereotopic.
 
 <!-- SEG:13-99-OC-VC05:stem:358344-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:13-99-OC-VC05:alt:stem-358344-m0 -->
+The ball-and-stick model of cysteine. The gray, black, blue, yellow, and red spheres represent hydrogen, carbon, nitrogen, sulfur, and oxygen atoms, respectively. Arrows point toward hydrogens at C 3.
+
 <!-- SEG:13-99-OC-VC05:stem:358345-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:13-99-OC-VC05:alt:stem-358345-m0 -->
+Ball-and-stick model of cyclopentanol. Gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively. Arrows point toward hydrogens trans to the hydroxy group on C 3 and 4.
 

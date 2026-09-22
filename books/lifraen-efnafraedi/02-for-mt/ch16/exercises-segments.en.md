@@ -10,6 +10,9 @@ Propose a mechanism for the electrophilic fluorination of benzene with SelectFlu
 <!-- SEG:16-02-OC-P02:sol:361099-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-02-OC-P02:alt:sol-361099-m0 -->
+Two-step reaction shows benzene reacting with F-T E D A-B F 4. Cation intermediate (fluorine on s p 3 carbon adjacent to carbocation) is deprotonated by base to fluorobenzene.
+
 <!-- SEG:16-02-OC-P03:stem:342885-b0 -->
 How many products might be formed on chlorination of [[i:o]]-xylene ([[i:o]]-dimethylbenzene), [[i:m]]-xylene, and [[i:p]]-xylene?
 
@@ -46,11 +49,17 @@ Identify the carboxylic acid chloride that might be used in a Friedel–Crafts a
 <!-- SEG:16-03-OC-P07:stem:358919-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-03-OC-P07:alt:stem-358919-m0 -->
+Benzene is bonded to a three-carbon chain, in which C 1 is a carbonyl group. C 2 is bonded to a methyl group.
+
 <!-- SEG:16-03-OC-P07:sol:358919-b0 -->
 (CH[[sub:3]])[[sub:2]]CHCOCl
 
 <!-- SEG:16-03-OC-P07:stem:358920-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-03-OC-P07:alt:stem-358920-m0 -->
+A central carbonyl group is bonded to two benzene rings, one on each side.
 
 <!-- SEG:16-03-OC-P07:sol:358920-b0 -->
 PhCOCl
@@ -109,6 +118,9 @@ Use Figure 16.12 to explain why Friedel–Crafts alkylations often give polysubs
 <!-- SEG:16-04-OC-P10:stem:358922-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-04-OC-P10:alt:stem-358922-m0 -->
+Benzene reacts with methyl chloride in the presence of aluminum trichloride to form mono and para disubstituted products. Benzene reacts with acetyl chloride in the presence of aluminum trichloride to form only one product.
+
 <!-- SEG:16-04-OC-P10:sol:358922-b0 -->
 Alkylbenzenes are more reactive than benzene itself, but acylbenzenes are less reactive.
 
@@ -118,6 +130,9 @@ An electrostatic potential map of (trifluoromethyl)benzene, C[[sub:6]]H[[sub:5]]
 <!-- SEG:16-04-OC-P11:stem:358924-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-04-OC-P11:alt:stem-358924-m0 -->
+Electrostatic potential maps constituting the ball-and-stick models of (trifluoromethyl)benzene and toluene show redness around fluorine atoms and in the ring region, respectively.
+
 <!-- SEG:16-04-OC-P11:sol:358924-b0 -->
 Toluene is more reactive; the trifluoromethyl group is electron-withdrawing.
 
@@ -126,6 +141,9 @@ Acetanilide is less reactive than aniline toward electrophilic substitution. Exp
 
 <!-- SEG:16-04-OC-P12:stem:358926-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-04-OC-P12:alt:stem-358926-m0 -->
+Acetanilide has benzene ring bonded to an N H group. The nitrogen atom is bonded to the carbonyl group which, in turn, is bonded to a methyl group.
 
 <!-- SEG:16-04-OC-P12:sol:358926-b0 -->
 The nitrogen electrons are donated to the nearby carbonyl group by resonance and are less available to the ring.
@@ -142,17 +160,26 @@ At what position would you expect electrophilic substitution to occur in each of
 <!-- SEG:16-05-OC-P14:stem:358930-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-05-OC-P14:alt:stem-358930-m0 -->
+In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a methoxy group, respectively.
+
 <!-- SEG:16-05-OC-P14:sol:358930-b0 -->
 Ortho and para to  − OCH[[sub:3]]
 
 <!-- SEG:16-05-OC-P14:stem:358931-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-05-OC-P14:alt:stem-358931-m0 -->
+In a benzene ring, C 1 and C 2 are bonded to a bromine atom and an amino group, respectively.
+
 <!-- SEG:16-05-OC-P14:sol:358931-b0 -->
 Ortho and para to  − NH[[sub:2]]
 
 <!-- SEG:16-05-OC-P14:stem:358932-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-05-OC-P14:alt:stem-358932-m0 -->
+In a benzene ring, C 1 and C 2 are bonded to a chlorine atom and a nitro group, respectively.
 
 <!-- SEG:16-05-OC-P14:sol:358932-b0 -->
 Ortho and para to  − Cl
@@ -163,11 +190,17 @@ Show the major product(s) from reaction of the following substances with (1) CH[
 <!-- SEG:16-05-OC-P15:stem:358935-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-05-OC-P15:alt:stem-358935-m0 -->
+The ball-and-stick model has a benzene ring. C 1 is bonded to a large red sphere. C 2 is bonded to a methyl group.
+
 <!-- SEG:16-05-OC-P15:sol:358935-b0 -->
 Reaction occurs ortho and para to the  − CH[[sub:3]] group.
 
 <!-- SEG:16-05-OC-P15:stem:358936-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-05-OC-P15:alt:stem-358936-m0 -->
+The ball-and-stick model has a benzene ring. C 1 is bonded to a small red sphere, which is bonded to a methyl group. C 2 is bonded to methyl group.
 
 <!-- SEG:16-05-OC-P15:sol:358936-b0 -->
 Reaction occurs ortho and para to the  − OCH[[sub:3]] group.
@@ -177,6 +210,9 @@ The herbicide oxyfluorfen can be prepared by reaction between a phenol and an ar
 
 <!-- SEG:16-06-OC-P16:stem:358938-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-06-OC-P16:alt:stem-358938-m0 -->
+A substituted phenol and a substituted aryl fluoride react with each other in the presence of potassium hydroxide to form oxyfluorfen where the two starting materials are joined to one another by an oxygen atom.
 
 <!-- SEG:16-06-OC-P16:sol:358938-b0 -->
 The phenol is deprotonated by KOH to give an anion that carries out a nucleophilic acyl substitution reaction on the fluoronitrobenzene.
@@ -193,11 +229,17 @@ What aromatic products would you obtain from the KMnO[[sub:4]] oxidation of the 
 <!-- SEG:16-08-OC-P18:stem:358941-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-08-OC-P18:alt:stem-358941-m0 -->
+In a benzene ring, C 1 is bonded to C H (C H 3) 2 group and C 3 is bonded to a nitro group.
+
 <!-- SEG:16-08-OC-P18:sol:358941-b0 -->
 [[i:m]]-Nitrobenzoic acid
 
 <!-- SEG:16-08-OC-P18:stem:358942-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-08-OC-P18:alt:stem-358942-m0 -->
+In a benzene ring, C 1 is bonded to C (C H 3) 3 group. C 4 is bonded to a methyl group.
 
 <!-- SEG:16-08-OC-P18:sol:358942-b0 -->
 [[i:p]]-[[i:tert]]-Butylbenzoic acid
@@ -213,6 +255,9 @@ Styrene, the simplest alkenylbenzene, is prepared commercially for use in plasti
 
 <!-- SEG:16-08-OC-P20:stem:358944-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-08-OC-P20:alt:stem-358944-m0 -->
+Styrene has a benzene ring. C 1 attached to an ethene group.
 
 <!-- SEG:16-08-OC-P20:sol:358944-b0 -->
 1. CH[[sub:3]]CH[[sub:2]]Cl, AlCl[[sub:3]]; 2. NBS; 3. KOH, ethanol
@@ -256,11 +301,17 @@ In planning a synthesis, it’s as important to know what not to do as to know w
 <!-- SEG:16-10-OC-P23:stem:358947-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-10-OC-P23:alt:stem-358947-m0 -->
+Benzonitrile reacts with propanoyl chloride in the presence of aluminum trichloride followed by nitric acid in the presence of sulfuric acid to form a trisubstituted benzene ring bearing a cyano, a nitro, and an acyl group.
+
 <!-- SEG:16-10-OC-P23:sol:358947-b0 -->
 Friedel–Crafts acylation does not occur on a deactivated ring.
 
 <!-- SEG:16-10-OC-P23:stem:358948-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-10-OC-P23:alt:stem-358948-m0 -->
+Chlorobenzene reacts with 1-chloropropane in the presence of aluminum trichloride in step 1 and chlorine in the presence of iron trichloride in step 2 to form a trisubstituted benzene bearing two chloro groups and a propyl group.
 
 <!-- SEG:16-10-OC-P23:sol:358948-b0 -->
 Rearrangement occurs during Friedel–Crafts alkylation with primary halides; chlorination occurs ortho to the alkyl group.
@@ -271,14 +322,26 @@ Identify each of the following groups as an activator or deactivator and as an [
 <!-- SEG:16-99-OC-AP01:stem:358992-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP01:alt:stem-358992-m0 -->
+The structure of a group where N H (C H 3) 2 is bonded to an open single bond that has a wavy line across it.
+
 <!-- SEG:16-99-OC-AP01:stem:358993-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP01:alt:stem-358993-m0 -->
+The structure of a group where cyclopentane ring is bonded to an open single bond that has a wavy line across it.
 
 <!-- SEG:16-99-OC-AP01:stem:358994-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP01:alt:stem-358994-m0 -->
+The structure of a group where O C H 2 C H 3 is bonded to an open single bond that has a wavy line across it.
+
 <!-- SEG:16-99-OC-AP01:stem:358995-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP01:alt:stem-358995-m0 -->
+A cyclohexane ring bonded to a carbonyl group. The carbonyl carbon is bonded to an open single bond that has a wavy line across it.
 
 <!-- SEG:16-99-OC-AP02:stimulus:b0 -->
 Predict the major product(s) of nitration of the following substances. Which react faster than benzene, and which slower?
@@ -400,14 +463,26 @@ What product(s) would you expect to obtain from the following reactions:
 <!-- SEG:16-99-OC-AP08:stem:359000-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP08:alt:stem-359000-m0 -->
+Benzene with an acyl group and a nitro group ortho to one another reacts with hydrogen in the presence of a palladium catalyst to form unknown product(s), depicted by a question mark.
+
 <!-- SEG:16-99-OC-AP08:stem:359001-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP08:alt:stem-359001-m0 -->
+ortho-Dibromobenzene reacts with nitric acid in the presence of sulfuric acid followed by iron and actd forming unknown product(s), depicted by a question mark
 
 <!-- SEG:16-99-OC-AP08:stem:359002-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP08:alt:stem-359002-m0 -->
+In water, benzene fused to a cyclohexane ring reacts with potassium permanganate to form unknown product(s), depicted by question mark.
+
 <!-- SEG:16-99-OC-AP08:stem:359003-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP08:alt:stem-359003-m0 -->
+Benzene bonded to a methoxy group and a chlorine atom para to one another reacts with propyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.
 
 <!-- SEG:16-99-OC-AP09:stimulus:b0 -->
 Predict the major product(s) of the following reactions:
@@ -415,14 +490,26 @@ Predict the major product(s) of the following reactions:
 <!-- SEG:16-99-OC-AP09:stem:359010-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP09:alt:stem-359010-m0 -->
+Chlorobenzene reacts with ethyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.
+
 <!-- SEG:16-99-OC-AP09:stem:359011-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP09:alt:stem-359011-m0 -->
+A compound containg an oxygen atom bonded to two benzene rings reacts with propanoyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.
 
 <!-- SEG:16-99-OC-AP09:stem:359012-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP09:alt:stem-359012-m0 -->
+Benzoic acid reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by question mark.
+
 <!-- SEG:16-99-OC-AP09:stem:359013-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP09:alt:stem-359013-m0 -->
+Benzene bonded to N (C H 2 C H 3) 2 reacts with sulfur trioxide in presence of sulfuric acid to form unknown product(s), depicted by question mark.
 
 <!-- SEG:16-99-OC-AP10:stimulus:b0 -->
 How would you synthesize the following substances starting from benzene or phenol? Assume that ortho- and para-substitution products can be separated.
@@ -475,11 +562,20 @@ As written, the following syntheses have flaws. What is wrong with each?
 <!-- SEG:16-99-OC-AP13:stem:359017-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP13:alt:stem-359017-m0 -->
+Toluene reacts with chlorine in the presence of iron trichloride in step 1 and potassium permanganate in step 2 to form benzoic acid with chlorine atom at C 3.
+
 <!-- SEG:16-99-OC-AP13:stem:359018-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP13:alt:stem-359018-m0 -->
+Chlorobenzene reacts with nitric acid in sulfuric acid, followed by methyl chloride and aluminum trichloride, then iron and acid, and finally sodium hydroxide in water to form a substituted benzene.
+
 <!-- SEG:16-99-OC-AP13:stem:359019-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP13:alt:stem-359019-m0 -->
+Toluene reacts with acetyl chloride in the presence of aluminum trichloride, then with nitric acid in the presence of sulfuric acid, then hydrogen and a palladium catalyst to form a substituted benzene.
 
 <!-- SEG:16-99-OC-AP14:stem:359021-b0 -->
 At what position and on what ring do you expect nitration of 4-bromo-biphenyl to occur? Explain, using resonance structures of the potential intermediates.
@@ -487,11 +583,17 @@ At what position and on what ring do you expect nitration of 4-bromo-biphenyl to
 <!-- SEG:16-99-OC-AP14:stem:359021-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP14:alt:stem-359021-m0 -->
+4-Bromobiphenyl has a benzene ring bonded to a second benzene ring bearing a bromine atom in the para position.
+
 <!-- SEG:16-99-OC-AP15:stem:359023-b0 -->
 Electrophilic substitution on 3-phenylpropanenitrile occurs at the ortho and para positions, but reaction with 3-phenylpropenenitrile occurs at the meta position. Explain, using resonance structures of the intermediates.
 
 <!-- SEG:16-99-OC-AP15:stem:359023-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP15:alt:stem-359023-m0 -->
+The structures of 3-phenylpropanenitrile and 3-phenylpropenenitrile.
 
 <!-- SEG:16-99-OC-AP16:stimulus:b0 -->
 At what position, and on what ring, would you expect the following substances to undergo electrophilic substitution?
@@ -499,20 +601,35 @@ At what position, and on what ring, would you expect the following substances to
 <!-- SEG:16-99-OC-AP16:stem:359028-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP16:alt:stem-359028-m0 -->
+A molecule in which a central oxygen atom is bonded to a benzene ring and and a second benzene ring bearing a methyl group in the para position
+
 <!-- SEG:16-99-OC-AP16:stem:359029-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP16:alt:stem-359029-m0 -->
+A molecule in which a central N H group is bonded to a benzene ring and a second benzene ring bearing a bromine atom in the para position
 
 <!-- SEG:16-99-OC-AP16:stem:359030-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP16:alt:stem-359030-m0 -->
+A molecule in which a benzene ring is bonded to a second benzene ring bearing a methyl group in the meta position.
+
 <!-- SEG:16-99-OC-AP16:stem:359031-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP16:alt:stem-359031-m0 -->
+A molecule in which a central carbonyl group is bonded to a benzene ring and to a meta-substituted chlorobenzene ring.
 
 <!-- SEG:16-99-OC-AP17:stem:359033-b0 -->
 At what position, and on what ring, would you expect bromination of benzanilide to occur? Explain by drawing resonance structures of the intermediates.
 
 <!-- SEG:16-99-OC-AP17:stem:359033-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP17:alt:stem-359033-m0 -->
+Benzanilide has a benzene ring bonded to a carbonyl group, which is bonded to an N H group. The nitrogen of N H group is bonded to another benzene ring.
 
 <!-- SEG:16-99-OC-AP18:stem:339601-b0 -->
 Would you expect the Friedel–Crafts reaction of benzene with ([[i:R]])-2- chlorobutane to yield optically active or racemic product? Explain.
@@ -523,17 +640,29 @@ How would you synthesize the following substances starting from benzene?
 <!-- SEG:16-99-OC-AP19:stem:359037-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP19:alt:stem-359037-m0 -->
+A benzene ring with an ethene group and a chlorine atom para to one another
+
 <!-- SEG:16-99-OC-AP19:stem:359038-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP19:alt:stem-359038-m0 -->
+A benzene ring with two hydroxymethyl groups para to one another
+
 <!-- SEG:16-99-OC-AP19:stem:359039-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP19:alt:stem-359039-m0 -->
+A benzene ring, with a 2-carbon chain attached to it, the othermost carbon of which is itself attached to a hydroxyl group.
 
 <!-- SEG:16-99-OC-AP20:stem:359041-b0 -->
 The compound MON-0585 is a nontoxic, biodegradable larvicide that is highly selective against mosquito larvae. Synthesize MON-0585 using either benzene or phenol as a source of the aromatic rings.
 
 <!-- SEG:16-99-OC-AP20:stem:359041-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP20:alt:stem-359041-m0 -->
+MON-0585 has a central carbon bonded to a benzene ring, two methyl groups, and a phenol group, in which the two carbons next to the O H are each bonded to a tertiaru butyl group.
 
 <!-- SEG:16-99-OC-AP21:stem:339611-b0 -->
 Phenylboronic acid, C[[sub:6]]H[[sub:5]]B(OH)[[sub:2]], is nitrated to give 15% ortho- substitution product and 85% meta. Explain the meta-directing effect of the  –B(OH)[[sub:2]] group.
@@ -544,11 +673,17 @@ Draw resonance structures of the intermediate carbocations in the bromination of
 <!-- SEG:16-99-OC-AP22:stem:359043-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP22:alt:stem-359043-m0 -->
+Naphthalene reacts with molecular bromine to form 1-bromonaphthalene.
+
 <!-- SEG:16-99-OC-AP23:stem:359045-b0 -->
 Propose a mechanism for the reaction of 1-chloroanthraquinone with methoxide ion to give the substitution product 1-methoxyanthraquinone. Use curved arrows to show the electron flow in each step.
 
 <!-- SEG:16-99-OC-AP23:stem:359045-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP23:alt:stem-359045-m0 -->
+1-Chloroanthraquinone reacts with methoxide ion to yield 1-methoxyanthraquinone and sodium chloride.
 
 <!-- SEG:16-99-OC-AP24:stem:339617-b0 -->
 [[i:p]]-Bromotoluene reacts with potassium amide to give a mixture of [[i:m]]- and [[i:p]]-methylaniline. Explain.
@@ -559,14 +694,23 @@ Propose a mechanism to account for the reaction of benzene with 2,2,5,5-tetramet
 <!-- SEG:16-99-OC-AP25:stem:359047-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP25:alt:stem-359047-m0 -->
+Benzene reacts with a five-membered ring compound made up of one oxygen and four carbons with two methyl groups on each of the two carbons next to the O atom. A fused product is formed.
+
 <!-- SEG:16-99-OC-AP26:stimulus:b0 -->
 How would you synthesize the following compounds from benzene? Assume that ortho and para isomers can be separated.
 
 <!-- SEG:16-99-OC-AP26:stem:359050-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP26:alt:stem-359050-m0 -->
+A toluene ring with bromine at C 2 and a nitro group at C 4.
+
 <!-- SEG:16-99-OC-AP26:stem:359051-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP26:alt:stem-359051-m0 -->
+Benzene with C 1, C 2, and C 4 bonded to a sulfonic acid group, a 3-carbon chain with a methyl group at C 2, and a chlorine atom, respectively.
 
 <!-- SEG:16-99-OC-AP27:stem:359053-b0 -->
 You know the mechanism of HBr addition to alkenes, and you know the effects of various substituent groups on aromatic substitution. Use this knowledge to predict which of the following two alkenes reacts faster with HBr. Explain your answer by drawing resonance structures of the carbocation intermediates.
@@ -574,17 +718,26 @@ You know the mechanism of HBr addition to alkenes, and you know the effects of v
 <!-- SEG:16-99-OC-AP27:stem:359053-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP27:alt:stem-359053-m0 -->
+Methoxy benzene with ethene group at the para position and nitrobenzene with an ethene at the para position.
+
 <!-- SEG:16-99-OC-AP28:stem:359055-b0 -->
 Use your knowledge of directing effects, along with the following data, to deduce the directions of the dipole moments in aniline, bromobenzene, and bromoaniline.
 
 <!-- SEG:16-99-OC-AP28:stem:359055-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP28:alt:stem-359055-m0 -->
+Structures of aniline, bromobenzene, and 4-bromoaniline with dipole moment values equal 1.53, 1.52, and 2.91 D, respectively.
+
 <!-- SEG:16-99-OC-AP29:stem:359058-b0 -->
 Identify the reagents represented by the letters [[b:a]]–[[b:e]] in the following scheme:
 
 <!-- SEG:16-99-OC-AP29:stem:359058-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP29:alt:stem-359058-m0 -->
+A five-step process converting benzene to a product comprising of a benzene ring with a three carbob chain in which there is a double bond between C 1 and C 2. The steps are labeled from a to e.
 
 <!-- SEG:16-99-OC-AP30:stem:339631-b0 -->
 Phenols (ArOH) are relatively acidic, and the presence of a substituent group on the aromatic ring has a large effect. The p[[i:K]][[sub:a]] of unsubstituted phenol, for example, is 9.89, while that of [[i:p]]-nitrophenol is 7.15. Draw resonance structures of the corresponding phenoxide anions and explain the data.
@@ -598,14 +751,26 @@ Predict the product(s) for each of the following reactions. In each case, draw t
 <!-- SEG:16-99-OC-AP32:stem:374671-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP32:alt:stem-374671-m0 -->
+Benzene bonded to acetyl group reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by a question mark.
+
 <!-- SEG:16-99-OC-AP32:stem:374672-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP32:alt:stem-374672-m0 -->
+Toluene reacts with 2-chloropropane in the presence of aluminum trichloride to form unknown product(s), depicted by a question mark.
 
 <!-- SEG:16-99-OC-AP32:stem:374673-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-AP32:alt:stem-374673-m0 -->
+Benzene bonded to a cyano group reacts with C I 2 in the presence of iron trichloride to form unknown products, depicted by a question mark.
+
 <!-- SEG:16-99-OC-AP32:stem:374674-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-AP32:alt:stem-374674-m0 -->
+Benzene bonded to a methoxy group reacts with iodine in the presence of copper (2) chloride to form unknown product(s), depicted by a question mark.
 
 <!-- SEG:16-99-OC-MP01:stem:339429-b0 -->
 Aromatic iodination can be carried out with a number of reagents, including iodine monochloride, ICl. What is the direction of polarization of ICl? Propose a mechanism for the iodination of an aromatic ring with ICl.
@@ -628,11 +793,17 @@ Triphenylmethane can be prepared by reaction of benzene and chloroform in the pr
 <!-- SEG:16-99-OC-MP06:stem:358960-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP06:alt:stem-358960-m0 -->
+Benzene reacts with chloroform in the presence of aluminum trichloride to yield triphenylmethane.
+
 <!-- SEG:16-99-OC-MP07:stem:358962-b0 -->
 Using resonance structures of the intermediates, explain why bromination of biphenyl occurs at ortho and para positions rather than at meta.
 
 <!-- SEG:16-99-OC-MP07:stem:358962-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP07:alt:stem-358962-m0 -->
+Biphenyl has a benzene ring bonded to another benzene ring.
 
 <!-- SEG:16-99-OC-MP08:stem:358964-b0 -->
 Benzene and alkyl-substituted benzenes can be hydroxylated by reaction with H[[sub:2]]O[[sub:2]] in the presence of an acidic catalyst. What is the structure of the reactive electrophile? Propose a mechanism for the reaction.
@@ -640,17 +811,26 @@ Benzene and alkyl-substituted benzenes can be hydroxylated by reaction with H[[s
 <!-- SEG:16-99-OC-MP08:stem:358964-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP08:alt:stem-358964-m0 -->
+Benzene reacts with hydrogen peroxide in the presence of trifluoromethanesulfonic acid catalyst to form phenol.
+
 <!-- SEG:16-99-OC-MP09:stem:358966-b0 -->
 Addition of HBr to 1-phenylpropene yields only (1-bromopropyl)benzene. Propose a mechanism for the reaction, and explain why none of the other regioisomer is produced.
 
 <!-- SEG:16-99-OC-MP09:stem:358966-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP09:alt:stem-358966-m0 -->
+Benzene bonded to a three-carbon chain with double bond between C 1 and C 2 reacts with hydrogen bromide to form a product when bromine is added to C1 of the three-carbon chain
+
 <!-- SEG:16-99-OC-MP10:stem:358968-b0 -->
 Hexachlorophene, a substance used in the manufacture of germicidal soaps, is prepared by reaction of 2,4,5-trichlorophenol with formaldehyde in the presence of concentrated sulfuric acid. Propose a mechanism for the reaction.
 
 <!-- SEG:16-99-OC-MP10:stem:358968-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP10:alt:stem-358968-m0 -->
+Benzene bonded to three chlorine atoms and a hydroxyl group reacts with formaldehyde in the presence of sulfuric acid to form hexachlorophene.
 
 <!-- SEG:16-99-OC-MP11:stem:358970-b0 -->
 Benzenediazonium carboxylate decomposes when heated to yield N[[sub:2]], CO[[sub:2]], and a reactive substance that can’t be isolated. When benzene-diazonium carboxylate is heated in the presence of furan, the following reaction is observed:
@@ -661,11 +841,17 @@ Benzenediazonium carboxylate decomposes when heated to yield N[[sub:2]], CO[[sub
 <!-- SEG:16-99-OC-MP11:stem:358970-b2 -->
 What intermediate is involved in this reaction? Propose a mechanism for its formation.
 
+<!-- SEG:16-99-OC-MP11:alt:stem-358970-m0 -->
+When heated, benzenediazonium carboxylate reacts with furan to yield an organic product, carbon dioxide, and nitrogen.
+
 <!-- SEG:16-99-OC-MP12:stem:358973-b0 -->
 4-Chloropyridine undergoes reaction with dimethylamine to yield 4-dimethylaminopyridine. Propose a mechanism for the reaction.
 
 <!-- SEG:16-99-OC-MP12:stem:358973-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP12:alt:stem-358973-m0 -->
+4-Chloropyridine reacts with dimethylamine to yield 4-dimethylaminopyridine and hydrogen chloride.
 
 <!-- SEG:16-99-OC-MP13:stem:358975-b0 -->
 Propose a mechanism to account for the following reaction:
@@ -673,11 +859,17 @@ Propose a mechanism to account for the following reaction:
 <!-- SEG:16-99-OC-MP13:stem:358975-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP13:alt:stem-358975-m0 -->
+Benzene bonded to acetyl group at C 1 and a 4-carbon chain with terminal carbon bonded to chlorine reacts with aluminum chloride to form a product.where the 4-carbon chain is cyclized on to the benzene ring
+
 <!-- SEG:16-99-OC-MP14:stem:358977-b0 -->
 In the [[i:Gatterman–Koch reaction,]] a formyl group ( – CHO) is introduced directly onto a benzene ring. For example, reaction of toluene with CO and HCl in the presence of mixed CuCl/AlCl[[sub:3]] gives [[i:p]]-methylbenzaldehyde. Propose a mechanism.
 
 <!-- SEG:16-99-OC-MP14:stem:358977-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP14:alt:stem-358977-m0 -->
+Toluene reacts with carbon monoxide and hydrogen chloride in the presence of copper (1) chloride or aluminum trichloride to form toluene with an aldehyde group in the para position.
 
 <!-- SEG:16-99-OC-MP15:stem:339457-b0 -->
 Treatment of [[i:p]]-[[i:tert]]-butylphenol with a strong acid such as H[[sub:2]]SO[[sub:4]] yields phenol and 2-methylpropene. Propose a mechanism.
@@ -688,11 +880,17 @@ Benzyl bromide is converted into benzaldehyde by heating in dimethyl sulfoxide. 
 <!-- SEG:16-99-OC-MP16:stem:358979-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP16:alt:stem-358979-m0 -->
+A two-step reaction shows benzene bonded to a C H 2 B r group being converted to benzene bonded to an aldehyde group.
+
 <!-- SEG:16-99-OC-MP17:stem:358981-b0 -->
 Propose a mechanism for the [[i:Smiles rearrangement]] below.
 
 <!-- SEG:16-99-OC-MP17:stem:358981-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP17:alt:stem-358981-m0 -->
+When heated, pyridine with a nitro group at C 2 and, at C 5, an oxygen bonded to ethylamine reacts to form a product where the substituent at C 5 rearranges.
 
 <!-- SEG:16-99-OC-MP18:stimulus:b0 -->
 Because of their conjugation, azo dyes are highly colored compounds and the major artificial color source for textiles and food. Azo dyes are produced by the reaction of aryl diazonium salts with a second aromatic compound. In the product, the aromatic rings are linked by a diazo bridge ( – N=N – ). From the reactants provided, propose a structure for each azo dye and draw the electron-pushing mechanism.
@@ -700,11 +898,20 @@ Because of their conjugation, azo dyes are highly colored compounds and the majo
 <!-- SEG:16-99-OC-MP18:stem:358985-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP18:alt:stem-358985-m0 -->
+Benzene bonded to nitrogen with two open single bonds reacts with benzene bonded to S O 3 N a and to N triple bonded to N with a plus charge on the first N, forming methyl orange.
+
 <!-- SEG:16-99-OC-MP18:stem:358986-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-MP18:alt:stem-358986-m0 -->
+A disubstituted napthalene reacts with a diazo compound to form Allura Red.
+
 <!-- SEG:16-99-OC-MP18:stem:358987-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-MP18:alt:stem-358987-m0 -->
+A disubstituted napthalene reacts with a diazo compound to form Lithol Rubine BK..
 
 <!-- SEG:16-99-OC-VC01:stimulus:b0 -->
 Draw the product from reaction of each of the following substances with (1) Br[[sub:2]], FeBr[[sub:3]] and (2) CH[[sub:3]]COCl, AlCl[[sub:3]].
@@ -712,8 +919,14 @@ Draw the product from reaction of each of the following substances with (1) Br[[
 <!-- SEG:16-99-OC-VC01:stem:358951-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-VC01:alt:stem-358951-m0 -->
+The ball-and-stick model has a benzene ring bonded to an oxygen atom, which is bonded to a methyl group.
+
 <!-- SEG:16-99-OC-VC01:stem:358952-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-VC01:alt:stem-358952-m0 -->
+The ball-and-stick model has a benzene ring. C 1 is bonded to an aldehyde group. C 4 is bonded to a methyl group.
 
 <!-- SEG:16-99-OC-VC02:stem:358954-b0 -->
 The following molecular model of a dimethyl-substituted biphenyl represents the lowest-energy conformation of the molecule. Why are the two benzene rings tilted at a 63° angle to each other rather than being in the same plane so that their [[i:p]] orbitals overlap? Why doesn’t complete rotation around the single bond joining the two rings occur?
@@ -721,15 +934,24 @@ The following molecular model of a dimethyl-substituted biphenyl represents the 
 <!-- SEG:16-99-OC-VC02:stem:358954-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-VC02:alt:stem-358954-m0 -->
+The ball-and-stick model has two benzene rings bonded to each other. Each benzene ring also has an ortho methyl group.
+
 <!-- SEG:16-99-OC-VC03:stem:358956-b0 -->
 How would you synthesize the following compound starting from benzene? More than one step is needed.
 
 <!-- SEG:16-99-OC-VC03:stem:358956-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:16-99-OC-VC03:alt:stem-358956-m0 -->
+The ball-and-stick model has a benzene ring. C 1 is bonded to a carboxylic acid group. C 4 is bonded to an amino group.
+
 <!-- SEG:16-99-OC-VC04:stem:358958-b0 -->
 The following compound can’t be synthesized using the methods discussed in this chapter. Why not?
 
 <!-- SEG:16-99-OC-VC04:stem:358958-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:16-99-OC-VC04:alt:stem-358958-m0 -->
+The ball-and-stick model has a toluene ring. C 3 is bonded to an amino group.
 

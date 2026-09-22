@@ -22,6 +22,9 @@ Polystyrene is produced commercially by reaction of styrene with butyllithium as
 <!-- SEG:31-01-OC-P03:sol:360400-b0 -->
 The intermediate is a resonance-stabilized benzylic carbanion, [[MEDIA:0]]
 
+<!-- SEG:31-01-OC-P03:alt:sol-360400-m0 -->
+The structure shows phenyl group connected to a C H R group with lone pair of electron and negative charge on carbon.
+
 <!-- SEG:31-02-OC-P04:stem:349532-b0 -->
 Vinylidene chloride, [[MEDIA:0]], does not polymerize in isotactic, syndiotactic, and atactic forms. Explain.
 
@@ -40,11 +43,17 @@ Draw the structure of an alternating segment of butyl rubber, a copolymer of iso
 <!-- SEG:31-03-OC-P06:sol:358111-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-03-OC-P06:alt:sol-358111-m0 -->
+An eight-membered carbon with methyl and alkene on C 3 and two methyl groups on C 7 position. The compound is inside parentheses with a subscript n.
+
 <!-- SEG:31-03-OC-P07:stem:358113-b0 -->
 Irradiation of poly(1,3-butadiene), followed by addition of styrene, yields a graft copolymer that is used to make rubber soles for shoes. Draw the structure of a representative segment of this styrene–butadiene graft copolymer.
 
 <!-- SEG:31-03-OC-P07:sol:358113-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-03-OC-P07:alt:sol-358113-m0 -->
+The figure shows the structure of a polymer with polybutadiene chain and polystyrene chain. A curved line is present at one end of styrene and both ends of polybutadiene.
 
 <!-- SEG:31-04-OC-P08:stem:358115-b0 -->
 Poly(ethylene terephthalate), or PET, is a polyester used to make soft-drink bottles. It is prepared by reaction of ethylene glycol with 1,4-benzenedicarboxylic acid (terephthalic acid). Draw the structure of PET.
@@ -52,11 +61,17 @@ Poly(ethylene terephthalate), or PET, is a polyester used to make soft-drink bot
 <!-- SEG:31-04-OC-P08:sol:358115-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-04-OC-P08:alt:sol-358115-m0 -->
+The structure of poly(ethylene terephthalate). A carbonyl linked to a benzene ring which is bonded to a carbonyl group, oxygen atom, two methylene groups further linked to an oxygen atom.
+
 <!-- SEG:31-04-OC-P09:stem:359335-b0 -->
 Show the mechanism of the nucleophilic addition reaction of an alcohol with an isocyanate to yield a urethane.
 
 <!-- SEG:31-04-OC-P09:sol:359335-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-04-OC-P09:alt:sol-359335-m0 -->
+R prime O H and R N double bond C double bond O react via two steps to produce a carbonyl with substituent O R prime and N H R.
 
 <!-- SEG:31-05-OC-P10:stem:358119-b0 -->
 Look at the structures of Vestenamer and Norsorex and show how they might be made by olefin metathesis polymerization.
@@ -67,11 +82,17 @@ Vestenamer: ADMET polymerization of 1,9-decadiene or ROMP of cyclooctene; Norsor
 <!-- SEG:31-05-OC-P10:sol:358119-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-05-OC-P10:alt:sol-358119-m0 -->
+The structure of norbornene comprising a cyclohexene ring and a bridged methylene group.
+
 <!-- SEG:31-06-OC-P11:stem:358121-b0 -->
 What product would you expect to obtain from catalytic hydrogenation of natural rubber? Would the product be syndiotactic, atactic, or isotactic?
 
 <!-- SEG:31-06-OC-P11:sol:358121-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-06-OC-P11:alt:sol-358121-m0 -->
+The structure shows a six-carbon chain with a methyl group at C3. The structure is inside parentheses and has a subscript n. It is labeled as atactic.
 
 <!-- SEG:31-06-OC-P12:stem:359337-b0 -->
 Propose a mechanism to account for the formation of Bakelite from acid-catalyzed polymerization of phenol and formaldehyde.
@@ -79,23 +100,41 @@ Propose a mechanism to account for the formation of Bakelite from acid-catalyzed
 <!-- SEG:31-06-OC-P12:sol:359337-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-06-OC-P12:alt:sol-359337-m0 -->
+Phenol reacts with formaldehyde via electrophilic aromatic substitution to produce 2-(hydroxymethyl)phenol which reacts to produce a C H 2 attached to two phenols (each at their C 2).
+
 <!-- SEG:31-99-OC-AP01:stimulus:b0 -->
 Identify the monomer units from which each of the following polymers is made, and tell whether each is a chain-growth or a step-growth polymer:
 
 <!-- SEG:31-99-OC-AP01:stem:355032-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP01:alt:stem-355032-m0 -->
+The structure of a polymer whose repeating unit is C H 2 O. The unit is inside parentheses with bonds extending out and has a subscript n.
+
 <!-- SEG:31-99-OC-AP01:stem:355033-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-AP01:alt:stem-355033-m0 -->
+The structure of a polymer whose repeating unit is C F 2 C F Cl. The unit is inside parentheses with bonds extending out and has a subscript n.
 
 <!-- SEG:31-99-OC-AP01:stem:355034-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP01:alt:stem-355034-m0 -->
+The structure of a polymer comprising N H connected to three methylene units that is linked to a carbonyl. The structure is inside the parentheses and has a subscript n.
+
 <!-- SEG:31-99-OC-AP01:stem:355035-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP01:alt:stem-355035-m0 -->
+The structure of a polymer comprising oxygen linked to a benzene ring with a carbonyl group. The structure is inside the parentheses and has a subscript n.
+
 <!-- SEG:31-99-OC-AP01:stem:355036-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-AP01:alt:stem-355036-m0 -->
+The structure of a polymer comprising oxygen linked to cyclohexane further bonded to another oxygen and carbonyl group. The structure is inside the parentheses and has a subscript n.
 
 <!-- SEG:31-99-OC-AP02:stimulus:b0 -->
 Draw a three-dimensional representation of segments of the following polymers:
@@ -115,11 +154,17 @@ Draw the structure of Kodel, a polyester prepared by heating dimethyl 1,4-benzen
 <!-- SEG:31-99-OC-AP03:stem:355038-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP03:alt:stem-355038-m0 -->
+The structure of 1,4-bis(hydroxymethyl)cyclohexane.
+
 <!-- SEG:31-99-OC-AP04:stem:355040-b0 -->
 Show the structure of the polymer that results from heating the following diepoxide and diamine:
 
 <!-- SEG:31-99-OC-AP04:stem:355040-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-AP04:alt:stem-355040-m0 -->
+Diepoxide comprises benzene bonded to two O-atoms on both sides. Further bonded to methylene and epoxide ring. It reacts with diamine to give unknown product, shown as a question mark.
 
 <!-- SEG:31-99-OC-AP05:stem:349586-b0 -->
 Nomex, a polyamide used in such applications as fire-retardant clothing, is prepared by reaction of 1,3-benzenediamine with 1,3-benzenedicarbonyl chloride. Show the structure of Nomex.
@@ -142,11 +187,17 @@ Poly(vinyl butyral) is used as the plastic laminate in the preparation of automo
 <!-- SEG:31-99-OC-AP10:stem:355042-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP10:alt:stem-355042-m0 -->
+The structure of poly(vinyl butyral). It comprises eleven-carbon chain with oxygen connected at C 3, C 5, C 7, and C 9. The oxygen is linked to the propyl group.
+
 <!-- SEG:31-99-OC-AP11:stem:355044-b0 -->
 What is the structure of the polymer produced by anionic polymerization of [[i:β]]-propiolactone using NaOH as catalyst?
 
 <!-- SEG:31-99-OC-AP11:stem:355044-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-AP11:alt:stem-355044-m0 -->
+The structure of beta-propiolactone, a four-membered cyclic ester.
 
 <!-- SEG:31-99-OC-AP12:stem:349602-b0 -->
 Glyptal is a highly cross-linked thermosetting resin produced by heating glycerol and phthalic anhydride (1,2-benzenedicarboxylic acid anhydride). Show the structure of a representative segment of glyptal.
@@ -157,11 +208,17 @@ Melmac, a thermosetting resin often used to make plastic dishes, is prepared by 
 <!-- SEG:31-99-OC-AP13:stem:355046-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP13:alt:stem-355046-m0 -->
+The structure of melamine. It is a six-membered ring with alternating C and N, and alternating single and double bonds. Each C has an N H 2 substituent.
+
 <!-- SEG:31-99-OC-AP14:stimulus:b0 -->
 Epoxy adhesives are cross-linked resins prepared in two steps. The first step involves S[[sub:N]]2 reaction of the disodium salt of bisphenol A with epichlorohydrin to form a low-molecular-weight prepolymer. This prepolymer is then “cured” into a cross-linked resin by treatment with a triamine such as H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NHCH[[sub:2]]CH[[sub:2]]NH[[sub:2]].
 
 <!-- SEG:31-99-OC-AP14:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-AP14:alt:stimulus-m0 -->
+The structures of Bisphenol A and Epichlorohydrin.
 
 <!-- SEG:31-99-OC-AP14:stem:355049-b0 -->
 What is the structure of the prepolymer?
@@ -175,6 +232,9 @@ The smoking salons of the Hindenburg and other hydrogen-filled dirigibles of the
 <!-- SEG:31-99-OC-AP15:stem:355052-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-AP15:alt:stem-355052-m0 -->
+An incomplete reaction in which urea reacts with formaldehyde to form unknown product(s) indicated by a question mark.
+
 <!-- SEG:31-99-OC-AP16:stem:349612-b0 -->
 2-Ethyl-1-hexanol, used in the synthesis of di(2-ethylhexyl) phthalate plasticizer, is made commercially from butanal. Show the likely synthesis route.
 
@@ -184,11 +244,17 @@ Poly(ethylene glycol), or Carbowax, is made by anionic polymerization of ethylen
 <!-- SEG:31-99-OC-MP01:stem:355016-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-MP01:alt:stem-355016-m0 -->
+The structure of polyethylene glycol. Oxygen is connected to two methylene units and its structure is inside parentheses with n as the subscript.
+
 <!-- SEG:31-99-OC-MP02:stem:355018-b0 -->
 The polyurethane foam used for home insulation uses methanediphenyldiisocyanate (MDI) as monomer. The MDI is prepared by acid-catalyzed reaction of aniline with formaldehyde, followed by treatment with phosgene, COCl[[sub:2]]. Propose mechanisms for both steps.
 
 <!-- SEG:31-99-OC-MP02:stem:355018-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-MP02:alt:stem-355018-m0 -->
+The formation of methanediphenyldidisocyanate. Aniline reacts with formaldehyde to form a polymer. This polymer reacts with phosgene to produce the polymer, M D I.
 
 <!-- SEG:31-99-OC-MP03:stem:349560-b0 -->
 Write the structure of a representative segment of polyurethane prepared by reaction of ethylene glycol with MDI (Problem 31-16).
@@ -199,11 +265,17 @@ The polymeric resin used for Merrifield solid-phase peptide synthesis (Section 2
 <!-- SEG:31-99-OC-MP04:stem:355020-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-MP04:alt:stem-355020-m0 -->
+Polystyrene reacts with N-(hydroxymethyl)phthalimide and trifluoromethanesulfonic acid to form an intermediate that further reacts with hydrazine to form resin. The product's structure is inside parentheses with n as the subscript.
+
 <!-- SEG:31-99-OC-MP05:stimulus:b0 -->
 Polydicyclopentadiene (PDCPD), marketed as Telene or Metton, is a highly cross-linked thermosetting resin used for molding such impact-resistant parts as cabs for large trucks and earth-moving equipment. PDCPD is prepared by ring-opening metathesis polymerization of dicyclopentadiene, which is itself prepared from 1,3-cyclopentadiene. The polymerization occurs by initial metathesis of the more highly strained double bond in the bicyclo[[lb:]]2.2.1[[rb:]]heptane part of the molecule (Section 4.9) to give a linear polymer, followed by cross-linking of different chains in a second metathesis of the remaining cyclopentene double bond.
 
 <!-- SEG:31-99-OC-MP05:stimulus:b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-MP05:alt:stimulus-m0 -->
+Two molecules of cyclopentadiene react with heat to form dicyclopentadiene. This further undergoes ring-opening metathesis polymerization to form polydicyclopentadiene. Wavy lines denote the bond extensions.
 
 <!-- SEG:31-99-OC-MP05:stem:355024-b0 -->
 Show the mechanism of the formation of dicyclopentadiene from cyclopentadiene.
@@ -220,12 +292,21 @@ Identify the structural class to which the following polymer belongs, and show t
 <!-- SEG:31-99-OC-VC01:stem:355010-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-VC01:alt:stem-355010-m0 -->
+A ball-and-stick model of a polymer showing two benzene rings and connecting substituents. Wavy lines indicate boundaries of the repeating unit.
+
 <!-- SEG:31-99-OC-VC02:stimulus:b0 -->
 Show the structures of the polymers that could be made from the following monomers (green = Cl):
 
 <!-- SEG:31-99-OC-VC02:stem:355013-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:31-99-OC-VC02:alt:stem-355013-m0 -->
+A ball-and-stick model of a monomer showing five-carbon chain with nitrogen, carbonyl, and alkene bond. Carbon, hydrogen, oxygen, and nitrogen are denoted using black, gray, red, and blue spheres, respectively.
+
 <!-- SEG:31-99-OC-VC02:stem:355014-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:31-99-OC-VC02:alt:stem-355014-m0 -->
+Ball-and-stick model of 2-chloro-1,3-butadiene. Carbon, hydrogen, and halogen are denoted using black, gray, and green spheres, respectively.
 

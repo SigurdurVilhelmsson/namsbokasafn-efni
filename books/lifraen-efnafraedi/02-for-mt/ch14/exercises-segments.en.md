@@ -22,6 +22,9 @@ Give the structures of both 1,2 and 1,4 adducts resulting from reaction of 1 equ
 <!-- SEG:14-02-OC-P04:stem:358433-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-02-OC-P04:alt:stem-358433-m0 -->
+The ball-and-stick model shows a cyclohexadiene ring. C 2 and C 3 are each bonded to a methyl group. The gray and white spheres represent carbon and hydrogen atoms, respectively.
+
 <!-- SEG:14-02-OC-P04:sol:358433-b0 -->
 1,2 Addition: 6-bromo-1,6-dimethylcyclohexene 1,4 Addition: 3-bromo-1,2-dimethylcyclohexene
 
@@ -43,8 +46,14 @@ Predict the product of the following Diels–Alder reaction:
 <!-- SEG:14-05-OC-P07:stem:358435-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-05-OC-P07:alt:stem-358435-m0 -->
+Four-carbon chain with methyl groups at C 2 and C 3 reacts with 4-carbon chain in which C 1 is acetate group, C 2 is double bonded to C 3.  Question mark represents the product.
+
 <!-- SEG:14-05-OC-P07:sol:358435-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-05-OC-P07:alt:sol-358435-m0 -->
+A cyclohexene, in which C 1 and C 2 are bonded to methyl. C 4 is wedge bonded to C O 2 C H 3. C 5 is dash bonded to methyl.
 
 <!-- SEG:14-05-OC-P08:stem:358437-b0 -->
 Which of the following alkenes would you expect to be good Diels–Alder dienophiles?
@@ -55,6 +64,21 @@ Which of the following alkenes would you expect to be good Diels–Alder dienoph
  [[b:(c)]][[MEDIA:2]]
  [[b:(d)]][[MEDIA:3]]
  [[b:(e)]][[MEDIA:4]]
+
+<!-- SEG:14-05-OC-P08:alt:stem-358437-m0 -->
+The condensed structural formula reads, H 2 C double bonded to C H C (double bonded to O) C l.
+
+<!-- SEG:14-05-OC-P08:alt:stem-358437-m1 -->
+The condensed structural formula reads, H 2 C double bonded to C H C H 2 C H 2 C (double bonded to O) O C H 3.
+
+<!-- SEG:14-05-OC-P08:alt:stem-358437-m2 -->
+A cyclohexane ring has a double bond between C 1 and C 2.
+
+<!-- SEG:14-05-OC-P08:alt:stem-358437-m3 -->
+In a cyclohexane ring, C 1 is a carbonyl group. C 2 is double bonded to C 3.
+
+<!-- SEG:14-05-OC-P08:alt:stem-358437-m4 -->
+In a cyclohexane ring, C 1 is a carbonyl group. C 3 is double bonded to C 4.
 
 <!-- SEG:14-05-OC-P08:sol:358437-b0 -->
 Good dienophiles: [[b:(a)]], [[b:(d)]]
@@ -67,6 +91,15 @@ Which of the following dienes have an [[i:s]]-cis conformation, and which have a
  [[b:(b)]][[MEDIA:1]]
  [[b:(c)]] [[MEDIA:2]]
 
+<!-- SEG:14-05-OC-P09:alt:stem-358439-m0 -->
+A cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4 fused to a cyclohexane ring.
+
+<!-- SEG:14-05-OC-P09:alt:stem-358439-m1 -->
+A cyclohexene ring with the double bond at bottom right is fused to another cyclohexene with the double bond at top left.
+
+<!-- SEG:14-05-OC-P09:alt:stem-358439-m2 -->
+In a 5-carbon chain, C 1 is double bonded to C 2. C 3 is double bonded to C 4, which itself is single bonded to a methyl group.
+
 <!-- SEG:14-05-OC-P09:sol:358439-b0 -->
 Compound [[b:(a)]] is [[i:s]]-cis. Compound [[b:(c)]] can rotate to [[i:s]]-cis.
 
@@ -76,8 +109,14 @@ Predict the product of the following Diels–Alder reaction:
 <!-- SEG:14-05-OC-P10:stem:358441-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-05-OC-P10:alt:stem-358441-m0 -->
+Ball-and-stick model of cyclohexene bonded to C 2 of propene reacts with 4-carbon chain with double bond at C 2. C 1 and C 4 are carbonyls bonded to methoxy.groups
+
 <!-- SEG:14-05-OC-P10:sol:358441-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-05-OC-P10:alt:sol-358441-m0 -->
+A cyclohexane is fused to a cyclohexene with the double bond between C1 and C2. There is a methyl at C 2. C 3 and C 4 of second ring are each wedge bonded to C O 2 C H 3.
 
 <!-- SEG:14-06-OC-P11:stem:358443-b0 -->
 Draw a segment of the polymer that might be prepared from 2-phenyl-1,3-butadiene.
@@ -85,11 +124,17 @@ Draw a segment of the polymer that might be prepared from 2-phenyl-1,3-butadiene
 <!-- SEG:14-06-OC-P11:sol:358443-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-06-OC-P11:alt:sol-358443-m0 -->
+Polymer has n repeating units of of a 4-carbon chain, in which C 2 is double bonded to C 3 and a benzene ring at C 2.
+
 <!-- SEG:14-06-OC-P12:stem:360207-b0 -->
 Show the mechanism of the acid-catalyzed polymerization of 1,3-butadiene.
 
 <!-- SEG:14-06-OC-P12:sol:360207-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-06-OC-P12:alt:sol-360207-m0 -->
+A two-step polymerization reaction mechanism of 1,3-butadiene with H plus (acid-catalyzed) shows the formation of a polymer.
 
 <!-- SEG:14-07-OC-P13:stem:338860-b0 -->
 Calculate the energy range of electromagnetic radiation in the UV region of the spectrum from 200 to 400 nm (see [[b:Section 12.5]]). How does this value compare with the values calculated previously for IR and NMR spectroscopy?
@@ -116,6 +161,24 @@ Which of the following compounds would you expect to show ultraviolet absorption
 <!-- SEG:14-08-OC-P15:stem:358447-b2 -->
 [[b:(f)]][[MEDIA:5]]
 
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m0 -->
+In a cyclohexane ring, C 1 is double bonded to C 2. C 4 is double bonded to C 5.
+
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m1 -->
+In a cyclohexane ring, C 1 is double bonded to C 2. C 3 is double bonded to C 4.
+
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m2 -->
+Two carbons double-bonded to each other. At C 1 there is a cyano group.
+
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m3 -->
+The structure of Aspirin has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to acetoxyl group.
+
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m4 -->
+A cyclohexadiene ring with double bonded oxygen at C 3 is fused to a cyclohexane ring. Both rings share a methyl group.
+
+<!-- SEG:14-08-OC-P15:alt:stem-358447-m5 -->
+Indole has a benzene ring fused to a 5-membered ring made of  four carbons, in which C 2 is double bonded to C 3, and an N-H group at position 1.
+
 <!-- SEG:14-08-OC-P15:sol:358447-b0 -->
 All except [[b:(a)]] have UV absorptions.
 
@@ -125,14 +188,26 @@ Name the following compounds:
 <!-- SEG:14-99-OC-AP01:stem:358476-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP01:alt:stem-358476-m0 -->
+The condensed structural formula has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5. C 3 is single bonded to a methyl group.
+
 <!-- SEG:14-99-OC-AP01:stem:358477-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP01:alt:stem-358477-m0 -->
+The condensed structural formula has a 7-carbon chain with double bonds between C 1-C 2, C 3-C 4, and C 5-C 6.
 
 <!-- SEG:14-99-OC-AP01:stem:358478-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP01:alt:stem-358478-m0 -->
+The condensed structural formula has a 7-carbon chain with double bonds between C 2-C 3, C 3-C 4, and C 5-C 6.
+
 <!-- SEG:14-99-OC-AP01:stem:358479-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP01:alt:stem-358479-m0 -->
+The condensed structural formula has a 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4. C 3 is further single bonded to a 3-carbon chain.
 
 <!-- SEG:14-99-OC-AP02:stem:338751-b0 -->
 Draw and name the six possible diene isomers of formula C[[sub:5]]H[[sub:8]]. Which of the six are conjugated dienes?
@@ -167,6 +242,9 @@ Electrophilic addition of Br[[sub:2]] to isoprene (2-methyl-1,3-butadiene) yield
 <!-- SEG:14-99-OC-AP04:stem:358481-b2 -->
 Of the 1,2-addition products, explain why 3,4-dibromo-3-methyl-1-butene (21%) predominates over 3,4-dibromo-2-methyl-1-butene (3%).
 
+<!-- SEG:14-99-OC-AP04:alt:stem-358481-m0 -->
+Isoprene (2-methyl-1,3-butadiene) reacts with molecular bromine to give three products in 3, 21, and 76 percent yields.
+
 <!-- SEG:14-99-OC-AP05:stem:338759-b0 -->
 Propose a structure for a conjugated diene that gives the same product from both 1,2 and 1,4-addition of HBr.
 
@@ -176,14 +254,23 @@ Draw the possible products resulting from addition of 1 equivalent of HCl to 1-p
 <!-- SEG:14-99-OC-AP06:stem:358483-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP06:alt:stem-358483-m0 -->
+1-Phenyl-1,3-butadiene contains a benzene ring.one carbon of which is bonded to a 4-carbon chain, in which C 1 is double bonded to C 2 and C 3 is double bonded to C 4.
+
 <!-- SEG:14-99-OC-AP07:stimulus:b0 -->
 Predict the products of the following Diels–Alder reactions:
 
 <!-- SEG:14-99-OC-AP07:stem:358486-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP07:alt:stem-358486-m0 -->
+Cyclopentadiene reacts with maleic anhydride, a 5-membered ring with four carbons and one oxygen where the carbons either side of the oxygen are carbonyl groups.. Question mark represents the product.
+
 <!-- SEG:14-99-OC-AP07:stem:358487-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP07:alt:stem-358487-m0 -->
+Cyclohexadiene reacts with a cyclohexadiene with double bonds at C 2 and C 5, and carbonyl groups at C 1 and C 4. Question mark represents the product.
 
 <!-- SEG:14-99-OC-AP08:stem:358489-b0 -->
 2,3-Di-[[i:tert]]-butyl-1,3-butadiene does not undergo Diels–Alder reactions. Explain.
@@ -191,11 +278,17 @@ Predict the products of the following Diels–Alder reactions:
 <!-- SEG:14-99-OC-AP08:stem:358489-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP08:alt:stem-358489-m0 -->
+2,3-Di-tert-butyl-1,3-butadiene has a 6-carbon chain with C 3 and C 4 each double bonded to methylene. C 2 and C 5 are each bonded to two methyl groups.
+
 <!-- SEG:14-99-OC-AP09:stem:358491-b0 -->
 Show the structure, including stereochemistry, of the product from the following Diels–Alder reaction:
 
 <!-- SEG:14-99-OC-AP09:stem:358491-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP09:alt:stem-358491-m0 -->
+Benzene bonded to 4-carbon chain containing double bonds at C 1 an C 3  reacts with a four-carbon chain with a double bond between C 2 and C 3 and where C1 and C4 are carbonyl groups also bound to methoxy griups. Question mark represents the product.
 
 <!-- SEG:14-99-OC-AP10:stem:338777-b0 -->
 How can you account for the fact that [[i:cis]]-1,3-pentadiene is much less reactive than [[i:trans]]-1,3-pentadiene in the Diels–Alder reaction?
@@ -209,11 +302,17 @@ Reaction of isoprene (2-methyl-1,3-butadiene) with ethyl propenoate gives a mixt
 <!-- SEG:14-99-OC-AP12:stem:358493-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP12:alt:stem-358493-m0 -->
+A 4-carbon chain with  double bonds between C1-C2 and C3-C4 and with a methyl group at C2 reacts with ethyl propenoate.Question mark represents the product.
+
 <!-- SEG:14-99-OC-AP13:stem:358495-b0 -->
 Rank the following dienophiles in order of their expected reactivity in the Diels–Alder reaction.
 
 <!-- SEG:14-99-OC-AP13:stem:358495-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP13:alt:stem-358495-m0 -->
+Ethene with methyl at C 1, ethene with aldehyde at C 1, ethene with both carbons each bonded to two cyano groups, and ethene with both carbons each bonded to two methyl groups.
 
 <!-- SEG:14-99-OC-AP14:stem:338781-b0 -->
 1,3-Cyclopentadiene is very reactive in Diels–Alder cycloaddition reactions, but 1,3-cyclohexadiene is less reactive and 1,3-cycloheptadiene is nearly inert. Explain. (Molecular models are helpful.)
@@ -224,26 +323,44 @@ Rank the following dienophiles in order of their expected reactivity in the Diel
 <!-- SEG:14-99-OC-AP15:stem:358497-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP15:alt:stem-358497-m0 -->
+1,3-pentadiene has a 5-carbon chain with doiuble bonds between C1-C2 and C3-C4. 2,4-Pentadienal has a 5-carbon chain with doiuble bonds between C2-C3 and C4-C5 and a carbonyl group at C1
+
 <!-- SEG:14-99-OC-AP16:stimulus:b0 -->
 How could you use Diels–Alder reactions to prepare the following products? Show the starting diene and dienophile in each case.
 
 <!-- SEG:14-99-OC-AP16:stem:358502-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP16:alt:stem-358502-m0 -->
+A cyclohexene ring is fused to a 5-membered ring made of four carbon atoms and an oxygen atom at postion 3. Carbonds at positions 2 and 5 of the ring are carbonyls..
+
 <!-- SEG:14-99-OC-AP16:stem:358503-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP16:alt:stem-358503-m0 -->
+A 7-membered bicyclic ring. C 2 is double bonded to C 3. C 6 is bonded to a hydrogen atom and a cyano group.
 
 <!-- SEG:14-99-OC-AP16:stem:358504-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP16:alt:stem-358504-m0 -->
+Cyclohexene fused to a cyclohexane where C 1 and C 4 are carbonyls. The cyclohexane is further fused to another cyclohexene.
+
 <!-- SEG:14-99-OC-AP16:stem:358505-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP16:alt:stem-358505-m0 -->
+Cyclohexadiene ring with double bonds between C1-C2 and C4-C5. C 1 is bonded to C O 2 C H 3 group.
 
 <!-- SEG:14-99-OC-AP17:stem:358507-b0 -->
 Show the product of the following reaction.
 
 <!-- SEG:14-99-OC-AP17:stem:358507-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP17:alt:stem-358507-m0 -->
+Cyclobutene with double bonded oxygen at C 3 reacts in the presence of zinc chloride with a 6-carbon chain that has double bonds between C 2-C 3 and C 4-C 5 .
 
 <!-- SEG:14-99-OC-AP19:stem:338788-b0 -->
 Tires whose sidewalls are made of natural rubber tend to crack and weather rapidly in areas around cities where high levels of ozone and other industrial pollutants are found. Explain.
@@ -257,11 +374,20 @@ Arrange the molecules in each of the following sets according to where you would
 <!-- SEG:14-99-OC-AP21:stem:358511-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP21:alt:stem-358511-m0 -->
+Three cyclohexadienes fused to cyclohexenes. First 1,4,5,8-tetrahydronaphthalene. Second 1,6-dihydronaphthalene. Third 1,2,5,6-eetrahydronaphthaline.
+
 <!-- SEG:14-99-OC-AP21:stem:358512-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP21:alt:stem-358512-m0 -->
+Three 1,3-cyclohexadiene rings. First: with methylene groups at C 5 and C 6. Second: with methyl groups at C 5 and C 6. Third: with a methylene group at C 5 and a methyl group at C 6.
+
 <!-- SEG:14-99-OC-AP21:stem:358513-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP21:alt:stem-358513-m0 -->
+Three structures with a benzene ring at the end of a 5-carbon chain. First: Double bonds at C 1 and C 4 of the chain. Second: Double bonds at C 1 and C 3 of the chain. Third: Double bonds at C 2 and C 4 of the chain.
 
 <!-- SEG:14-99-OC-AP22:stimulus:b0 -->
 Which of the following compounds would you expect to have a [[i:π]] ​→ ​[[i:π]]* UV absorption in the 200 to 400 nm range?
@@ -269,11 +395,20 @@ Which of the following compounds would you expect to have a [[i:π]] ​→ 
 <!-- SEG:14-99-OC-AP22:stem:358517-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP22:alt:stem-358517-m0 -->
+The structure has a cyclopentene ring. C 4 is double bonded to a methylene group.
+
 <!-- SEG:14-99-OC-AP22:stem:358518-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP22:alt:stem-358518-m0 -->
+Pyridine has a 6-membered ring with nitrogen in the first position. The ring has alternate double bonds.
+
 <!-- SEG:14-99-OC-AP22:stem:358519-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP22:alt:stem-358519-m0 -->
+The condensed structural formula of a ketene reads, (C H 3) 2 C double bonded to C double bonded to O.
 
 <!-- SEG:14-99-OC-AP23:stem:340904-b0 -->
 Would you expect allene, H[[sub:2]]C[[MEDIA:0]]C[[MEDIA:1]]CH[[sub:2]], to show a UV absorption in the 200 to 400 nm range? Explain.
@@ -335,6 +470,9 @@ What conclusion can you draw about the effect of alkyl substitution on UV absorp
 <!-- SEG:14-99-OC-AP26:stimulus:b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP26:alt:stimulus-m0 -->
+The structures of acetone, formaldehyde, pyruvaldehyde, and malonaldehyde.
+
 <!-- SEG:14-99-OC-AP26:stem:358524-b0 -->
 How many double bonds does [[i:β]]-ocimene have?
 
@@ -353,11 +491,20 @@ Draw the resonance forms that result when the following dienes are protonated. I
 <!-- SEG:14-99-OC-AP27:stem:358531-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP27:alt:stem-358531-m0 -->
+The structure has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5.
+
 <!-- SEG:14-99-OC-AP27:stem:358532-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP27:alt:stem-358532-m0 -->
+The structure has a cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 1 and C 4 are each bonded to a methyl group.
+
 <!-- SEG:14-99-OC-AP27:stem:358533-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP27:alt:stem-358533-m0 -->
+The structure has a cyclopentadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 2 and C 3 are each bonded to a methyl group.
 
 <!-- SEG:14-99-OC-AP28:stimulus:b0 -->
 Answer the following questions for 1,3,5-cycloheptatriene.
@@ -389,11 +536,17 @@ Addition of HCl to 1-methoxycyclohexene yields 1-chloro-1-methoxycyclohexane as 
 <!-- SEG:14-99-OC-AP30:stem:358535-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP30:alt:stem-358535-m0 -->
+A cyclohexene with a double bond between C1-C2 and a methoxy group at C1 reacts with hydrogen chloride to form a cyclohexane ring, in which C 1 is bonded to a methoxy group and a chlorine atom.
+
 <!-- SEG:14-99-OC-AP31:stem:358537-b0 -->
 Aldrin, a chlorinated insecticide now banned from use in most countries since 1990, can be made by Diels–Alder reaction of hexachloro-1,3-cyclopentadiene with norbornadiene. What is the structure of aldrin?
 
 <!-- SEG:14-99-OC-AP31:stem:358537-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP31:alt:stem-358537-m0 -->
+The structure of norbornadiene has a 7-membered bicyclic ring with two double bonds.
 
 <!-- SEG:14-99-OC-AP32:stem:351594-b0 -->
 Norbornadiene (Problem 14-54) can be prepared by reaction of chloroethylene with 1,3-cyclopentadiene, followed by treatment of the product with sodium ethoxide. Write the overall scheme, and identify the two kinds of reactions.
@@ -404,6 +557,9 @@ The triene shown here reacts with 2 equivalents of maleic anhydride to yield a p
 <!-- SEG:14-99-OC-AP33:stem:358539-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP33:alt:stem-358539-m0 -->
+A cyclohexene with an ethene group at C 2 and a  methylene at C 3 reacts with 2 equivalents of maleic anhydride to form C 17 H 16 O 6.
+
 <!-- SEG:14-99-OC-AP34:stem:358541-b0 -->
 Myrcene, C[[sub:10]]H[[sub:16]], is found in oil of bay leaves and is isomeric with [[i:β]]-ocimene (Problem 14-49). It has an ultraviolet absorption at 226 nm and can be hydrogenated to yield 2,6-dimethyloctane. On ozonolysis followed by zinc/acetic acid treatment, myrcene yields formaldehyde, acetone, and 2-oxopentanedial:
 
@@ -413,6 +569,9 @@ Myrcene, C[[sub:10]]H[[sub:16]], is found in oil of bay leaves and is isomeric w
 <!-- SEG:14-99-OC-AP34:stem:358541-b2 -->
 Propose a structure for myrcene, and write the reactions, showing starting material and products.
 
+<!-- SEG:14-99-OC-AP34:alt:stem-358541-m0 -->
+The condensed structure of 2-oxopentanedial has a 5-carbon chain. C 1, C 2, and C 5 are each double-bonded to an oxygen atom.
+
 <!-- SEG:14-99-OC-AP35:stimulus:b0 -->
 Hydrocarbon [[b:A]], C[[sub:10]]H[[sub:14]], has a UV absorption at [[i:λ]][[sub:max]] = 236 nm and gives hydrocarbon [[b:B]], C[[sub:10]]H[[sub:18]], on hydrogenation. Ozonolysis of [[b:A]], followed by zinc/acetic acid treatment, yields the following diketo dialdehyde:
 
@@ -421,6 +580,9 @@ Hydrocarbon [[b:A]], C[[sub:10]]H[[sub:14]], has a UV absorption at [[i:λ]][[su
 
 <!-- SEG:14-99-OC-AP35:stimulus:b2 -->
 An illustration shows the structure of diketo dialdehyde. It shows two carbonyl groups single bonded to each other. Each carbonyl group is bonded to a chain of three methylene groups and then to an aldehyde group.
+
+<!-- SEG:14-99-OC-AP35:alt:stimulus-m0 -->
+The condensed formula of compound has a 10-carbon chain. C 1, C 5, C 6, and C 10 are all double-bonded to oxygen atoms.
 
 <!-- SEG:14-99-OC-AP35:stem:358545-b0 -->
 Propose two possible structures for [[b:A]].
@@ -437,17 +599,26 @@ Adiponitrile, a starting material used in the manufacture of nylon, can be prepa
 <!-- SEG:14-99-OC-AP36:stem:358549-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP36:alt:stem-358549-m0 -->
+A 3-step reaction shows the formation of adiponitrile from 1,3-butadiene
+
 <!-- SEG:14-99-OC-AP37:stem:358551-b0 -->
 Ergosterol, a precursor of vitamin D, has [[i:λ]][[sub:max]] = 282 nm and molar absorptivity [[i:ϵ]] = 11,900. What is the concentration of ergosterol in a solution whose absorbance [[i:A]] = 0.065 with a sample pathlength [[i:l]] = 1.00 cm?
 
 <!-- SEG:14-99-OC-AP37:stem:358551-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP37:alt:stem-358551-m0 -->
+The wedge-dash structure of ergosterol that has the chemical formula C 28 H 44 O.
+
 <!-- SEG:14-99-OC-AP38:stem:358553-b0 -->
 Dimethyl butynedioate undergoes a Diels–Alder reaction with (2[[i:E]],4[[i:E]])-2,4-hexadiene. Show the structure and stereochemistry of the product.
 
 <!-- SEG:14-99-OC-AP38:stem:358553-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP38:alt:stem-358553-m0 -->
+The condensed formula of compound has a 4-carbon chain. C 2 is triple-bonded to C3. C1 and C4 are carbonyl groups each bonded to methoxy groups, C 5, C 6, and C 10 are all double-bonded to oxygen atoms.
 
 <!-- SEG:14-99-OC-AP39:stem:351598-b0 -->
 Dimethyl butynedioate also undergoes a Diels–Alder reaction with (2[[i:E]],4[[i:Z]])-2,4-hexadiene, but the stereochemistry of the product is different from that of the (2[[i:E]],4[[i:E]]) isomer (Problem 14-61). Explain.
@@ -458,11 +629,17 @@ How would you carry out the following synthesis (more than one step is required)
 <!-- SEG:14-99-OC-AP40:stem:358555-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP40:alt:stem-358555-m0 -->
+1,3-Cyclohexadiene reacts with ethene bonded to C O 2 C H 3 in the presence of an unknown reagent represented by a question mark to form a substituted product.
+
 <!-- SEG:14-99-OC-AP41:stem:358557-b0 -->
 The double bond of an [[i:enamine]] (alk[[i:ene]] + [[i:amine]]) is much more nucleophilic than a typical alkene double bond. Assuming that the nitrogen atom in an enamine is [[i:sp]][[sup:2]]-hybridized, draw an orbital picture of an enamine, and explain why the double bond is electron-rich.
 
 <!-- SEG:14-99-OC-AP41:stem:358557-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-AP41:alt:stem-358557-m0 -->
+An enamine comprises of a 2-carbon chain with a double bond between. C 1 and C 2 and a nitrogen with two R groups and a lone pair is attached to C 2.
 
 <!-- SEG:14-99-OC-AP42:stem:358559-b0 -->
 Benzene has an ultraviolet absorption at [[i:λ]][[sub:max]] = 204 nm, and para-toluidine has [[i:λ]][[sub:max]] = 235 nm. How do you account for this difference?
@@ -470,17 +647,29 @@ Benzene has an ultraviolet absorption at [[i:λ]][[sub:max]] = 204 nm, and para-
 <!-- SEG:14-99-OC-AP42:stem:358559-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-AP42:alt:stem-358559-m0 -->
+The structures of benzene and para-toluidine with lambda max values of 204 and 235 nanometers, respectively.
+
 <!-- SEG:14-99-OC-MP01:stimulus:b0 -->
 Predict the major product(s) from the addition of 1 equivalent of HX and show the mechanism for each of the following reactions.
 
 <!-- SEG:14-99-OC-MP01:stem:358459-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP01:alt:stem-358459-m0 -->
+A 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5 reacts with hydrogen chloride at 40 degrees Celsius. Product is not shown.
+
 <!-- SEG:14-99-OC-MP01:stem:358460-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP01:alt:stem-358460-m0 -->
+A 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4, and methyl at C 3 reacts with hydrogen bromide at 40 degrees Celsius. Product is not shown.
+
 <!-- SEG:14-99-OC-MP01:stem:358461-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-MP01:alt:stem-358461-m0 -->
+A 4-membered ring with double-bonded methylene groups at C 1 and C 2 reacts with hydrogen chloride at 0 degrees Celsius. Product is not shown.
 
 <!-- SEG:14-99-OC-MP02:stem:358463-b0 -->
 We’ve seen that the Diels–Alder cycloaddition reaction is a one-step, pericyclic process that occurs through a cyclic transition state. Propose a mechanism for the following reaction:
@@ -488,14 +677,23 @@ We’ve seen that the Diels–Alder cycloaddition reaction is a one-step, pericy
 <!-- SEG:14-99-OC-MP02:stem:358463-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP02:alt:stem-358463-m0 -->
+When heated, an 8-membered ring with two double bonds between C 2-C 3 and C 5-C 6 forms benzene and ethene.
+
 <!-- SEG:14-99-OC-MP03:stimulus:b0 -->
 In light of your answer to Problem 14-21 propose mechanisms for the following reactions.
 
 <!-- SEG:14-99-OC-MP03:stem:358466-b0 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP03:alt:stem-358466-m0 -->
+When heated, a 6-membered ring made of one oxygen and five carbon atoms with two double bonds and a carbonyl group at position 2 reacts with an alkyne, forming a benzene ring and carbon dioxide..
+
 <!-- SEG:14-99-OC-MP03:stem:358467-b0 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-MP03:alt:stem-358467-m0 -->
+A 6-membered ring made of two carbons and four nitrogens (at positions 1, 2, 4, and 5) with alternate double bonds, and with methyl groups at positions 3 and 6 reacts with benzene bonded to ethyne.
 
 <!-- SEG:14-99-OC-MP04:stem:358469-b0 -->
 Luminol, which is used by forensic scientists to find blood, fluoresces as a result of Diels–Alder-like process. The dianion of luminol reacts with O[[sub:2]] to form an unstable peroxide intermediate that then loses nitrogen to form a dicarboxylate and emit light. The process is similar to that in Problems 14-21 and 14-22. Propose a mechanism for this process.
@@ -503,17 +701,26 @@ Luminol, which is used by forensic scientists to find blood, fluoresces as a res
 <!-- SEG:14-99-OC-MP04:stem:358469-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP04:alt:stem-358469-m0 -->
+Luminol dianion reacts with molecular oxygen to yield aniline with carboxylate groups bonded at positions 2 and 3. Molecular nitrogen is a byproduct and light is generated.
+
 <!-- SEG:14-99-OC-MP05:stem:358471-b0 -->
 A useful diene in the synthesis of many naturally occurring substances is known as Danishefsky’s diene. It’s useful because after the Diels–Alder reaction it can be converted into a product that can't be accessed by a typical Diels–Alder reaction. Show the Diels–Alder adduct and propose a mechanism that accounts for the final products.
 
 <!-- SEG:14-99-OC-MP05:stem:358471-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-MP05:alt:stem-358471-m0 -->
+When heated, Danishefsky’s Diene reacts with ethene bound to an aldehyde group to yield Diels–Alder Adduct that reacts with hydrogen chloride to yield three products.
+
 <!-- SEG:14-99-OC-VC01:stem:358449-b0 -->
 Show the structures of all possible adducts of the following diene with 1 equivalent of HCl:
 
 <!-- SEG:14-99-OC-VC01:stem:358449-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-VC01:alt:stem-358449-m0 -->
+The ball-and-stick model has a cyclopentene ring. C 1 is bonded to an ethene group.
 
 <!-- SEG:14-99-OC-VC02:stem:358451-b0 -->
 Show the product of the Diels–Alder reaction of the following diene with 3-buten-2-one,
@@ -524,15 +731,24 @@ H[[sub:2]]C[[MEDIA:0]]CHCOCH[[sub:3]]. Make sure you show the full stereochemist
 <!-- SEG:14-99-OC-VC02:stem:358451-b2 -->
 [[MEDIA:1]]
 
+<!-- SEG:14-99-OC-VC02:alt:stem-358451-m1 -->
+The ball-and-stick model has a cyclopentene ring. C 1 of the ring is bonded to C1 of another cyclopentene ring.
+
 <!-- SEG:14-99-OC-VC03:stem:358453-b0 -->
 The following diene does not undergo Diels–Alder reactions. Explain.
 
 <!-- SEG:14-99-OC-VC03:stem:358453-b1 -->
 [[MEDIA:0]]
 
+<!-- SEG:14-99-OC-VC03:alt:stem-358453-m0 -->
+The ball-and-stick model has cyclohexene. C 1 is bonded to 3-carbon chain with double bond at C 1. C 2 of ring and chain are each bonded to a methyl group.
+
 <!-- SEG:14-99-OC-VC04:stem:358455-b0 -->
 The following model is that of an allylic carbocation intermediate formed by protonation of a conjugated diene with HBr. Show the structure of the diene and the structures of the final reaction products.
 
 <!-- SEG:14-99-OC-VC04:stem:358455-b1 -->
 [[MEDIA:0]]
+
+<!-- SEG:14-99-OC-VC04:alt:stem-358455-m0 -->
+The ball-and-stick model has a 6-carbon chain. C 3 is bonded to a methyl group. Gray and white spheres represent carbon and hydrogen atoms, respectively.
 
