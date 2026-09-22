@@ -1,0 +1,39 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_03_GalvanCu",
+ "renderHash": "35a08e99014eadbd",
+ "composedHash": "35a08e99014eadbd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1 atm H2(g)": "1 atm H2(g)",
+  "Standard|hydrogen|electrode": "Stöðluð vetnisskaut",
+  " flow": "flæði",
+  "Cu electrode": "Cu-rafskaut",
+  "Voltmeter": "Spenningamælir"
+ },
+ "mtAlternatives": {
+  "Standard|hydrogen|electrode": {
+   "kept": "joined",
+   "other": "Staðalvetnisrafskaut",
+   "reason": "disagree",
+   "mt": "Stöðluð vetnisskaut"
+  },
+  "Cu electrode": {
+   "kept": "joined",
+   "other": "Cu rafskaut",
+   "reason": "disagree",
+   "mt": "Cu-rafskaut"
+  },
+  "Voltmeter": {
+   "kept": "joined",
+   "other": "Spenumælir",
+   "reason": "disagree",
+   "mt": "Spenningamælir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

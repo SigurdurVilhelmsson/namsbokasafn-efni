@@ -1,0 +1,57 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_NiCd",
+ "renderHash": "efbd170d9b86dc59",
+ "composedHash": "efbd170d9b86dc59",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Positive electrode collector": "Jákvæður rafskautssafnari",
+  "Negative|electrode": "Neikvætt rafskaut",
+  "Positive|electrode": "Jákvætt rafskaut",
+  "Separator": "Skilja",
+  "Negative electrode collector": "Neikvæður rafskautssafnari",
+  "“Jelly-roll”": "„Hlauprúlla“",
+  "Safety valve": "Öryggisventill",
+  "Insulation ring": "Einangrunarhringur",
+  "Case": "Hylki",
+  "Metal top cover (+)": "Efri málmlok (+)",
+  "Metal bottom cover (−)": "Neðri málmlok (−)"
+ },
+ "mtAlternatives": {
+  "Separator": {
+   "kept": "joined",
+   "other": "Skil",
+   "reason": "disagree",
+   "mt": "Skilja"
+  },
+  "“Jelly-roll”": {
+   "kept": "joined",
+   "other": "„Rúlluterta“",
+   "reason": "disagree",
+   "mt": "„Hlauprúlla“"
+  },
+  "Case": {
+   "kept": "joined",
+   "other": "Mál",
+   "reason": "disagree",
+   "mt": "Hylki"
+  },
+  "Metal top cover (+)": {
+   "kept": "joined",
+   "other": "Málmlok (+)",
+   "reason": "disagree",
+   "mt": "Efri málmlok (+)"
+  },
+  "Metal bottom cover (−)": {
+   "kept": "joined",
+   "other": "Botnhlíf úr málmi (–)",
+   "reason": "disagree",
+   "mt": "Neðri málmlok (−)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

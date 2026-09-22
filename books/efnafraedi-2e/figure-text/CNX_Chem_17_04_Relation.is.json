@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_04_Relation",
+ "renderHash": "bec9fcf41715ee52",
+ "composedHash": "bec9fcf41715ee52",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ΔG° = –nFE°cell": "ΔG° = –nFE°rafhlaða",
+  "E°cell": "E°rafhlaða",
+  "E°cell = (    )ln K": "E°rafhlaða = (    )ln K"
+ },
+ "mtAlternatives": {
+  "E°cell": {
+   "kept": "joined",
+   "other": "E°sell",
+   "reason": "disagree",
+   "mt": "E°rafhlaða"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

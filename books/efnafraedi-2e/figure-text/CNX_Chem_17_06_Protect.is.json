@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_06_Protect",
+ "renderHash": "9e34aca2a6c15d57",
+ "composedHash": "9e34aca2a6c15d57",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Object|to be|protected|(cathode)": "Hlutur sem á að verja (bakskaut)",
+  "Sacrificial|anode": "Fórnarskaut"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

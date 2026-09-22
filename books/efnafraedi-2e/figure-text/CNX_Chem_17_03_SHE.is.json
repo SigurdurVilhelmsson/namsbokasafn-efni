@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_03_SHE",
+ "renderHash": "7a88be05b4d63e90",
+ "composedHash": "7a88be05b4d63e90",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "H2(g) at 1 atm": "H2(g) við 1 loftþrýsting",
+  "Pt electrode": "Pt-rafskaut",
+  "Pt wire": "Pt-vír",
+  "Pt electrode atoms": "Pt-rafskautsfrumeindir"
+ },
+ "mtAlternatives": {
+  "H2(g) at 1 atm": {
+   "kept": "joined",
+   "other": "H2(g) við 1 atm",
+   "reason": "disagree",
+   "mt": "H2(g) við 1 loftþrýsting"
+  },
+  "Pt electrode atoms": {
+   "kept": "joined",
+   "other": "Pt rafskautsfrumeindir",
+   "reason": "disagree",
+   "mt": "Pt-rafskautsfrumeindir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

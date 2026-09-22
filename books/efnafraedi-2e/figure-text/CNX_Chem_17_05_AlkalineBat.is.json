@@ -1,0 +1,66 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_AlkalineBat",
+ "renderHash": "da1b89ecb8169841",
+ "composedHash": "da1b89ecb8169841",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Porous separator": "Gropinn skilari",
+  "MnO2 powder mixed|with coal dust (cathode)": "MnO2-duft blandað kolaryki (bakskaut)",
+  "zinc powder with|potassium hydroxide|(anode)": "Sinkduft með kalíumhýdroxíði (forskaut)",
+  "Anode current collector": "Forskautssafnari",
+  "Metal top cover (+)": "Efri málmlok (+)",
+  "steel can, cathode|current collector": "Stálhylki, bakskautssafnari",
+  "Plastic cover": "Plasthlíf",
+  "Metal bottom cover (−)": "Neðri málmlok (−)"
+ },
+ "mtAlternatives": {
+  "Porous separator": {
+   "kept": "joined",
+   "other": "Gropin skilja",
+   "reason": "disagree",
+   "mt": "Gropinn skilari"
+  },
+  "MnO2 powder mixed|with coal dust (cathode)": {
+   "kept": "joined",
+   "other": "MnO2-duft blandað kolaryki (katóða)",
+   "reason": "disagree",
+   "mt": "MnO2-duft blandað kolaryki (bakskaut)"
+  },
+  "zinc powder with|potassium hydroxide|(anode)": {
+   "kept": "joined",
+   "other": "sinkduft með kalíumhýdroxíði (anóða)",
+   "reason": "disagree",
+   "mt": "Sinkduft með kalíumhýdroxíði (forskaut)"
+  },
+  "Anode current collector": {
+   "kept": "joined",
+   "other": "Anóðustraum safnari",
+   "reason": "disagree",
+   "mt": "Forskautssafnari"
+  },
+  "Metal top cover (+)": {
+   "kept": "joined",
+   "other": "Efri málmhlíf (+)",
+   "reason": "disagree",
+   "mt": "Efri málmlok (+)"
+  },
+  "steel can, cathode|current collector": {
+   "kept": "joined",
+   "other": "stálhylki, bakskautsafnari",
+   "reason": "disagree",
+   "mt": "Stálhylki, bakskautssafnari"
+  },
+  "Metal bottom cover (−)": {
+   "kept": "joined",
+   "other": "Botnhlíf úr málmi (–)",
+   "reason": "disagree",
+   "mt": "Neðri málmlok (−)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

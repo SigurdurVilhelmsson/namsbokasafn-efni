@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_LiIon",
+ "renderHash": "cce6157d04a28a2c",
+ "composedHash": "cce6157d04a28a2c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Graphite|layers": "Grafítlög",
+  "lithium": "litíum",
+  "Charge": "Hleðsla",
+  "Discharge": "Afhleðsla",
+  "Negative electrode": "Neikvætt rafskaut",
+  "Positive electrode": "Jákvætt rafskaut",
+  "oxygen": "súrefni",
+  "Metal": "Málmur"
+ },
+ "mtAlternatives": {
+  "Charge": {
+   "kept": "joined",
+   "other": "Gjald",
+   "reason": "disagree",
+   "mt": "Hleðsla"
+  },
+  "Discharge": {
+   "kept": "joined",
+   "other": "Útskrift",
+   "reason": "disagree",
+   "mt": "Afhleðsla"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

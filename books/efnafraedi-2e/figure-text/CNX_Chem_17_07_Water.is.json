@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_07_Water",
+ "renderHash": "1b1a3bb4a7267823",
+ "composedHash": "1b1a3bb4a7267823",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Voltage|source": "Spennugjafi",
+  "Anode": "Anóða",
+  "Cathode": "Katóða"
+ },
+ "mtAlternatives": {
+  "Cathode": {
+   "kept": "joined",
+   "other": "Bakskaut",
+   "reason": "disagree",
+   "mt": "Katóða"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

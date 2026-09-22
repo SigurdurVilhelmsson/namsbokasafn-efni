@@ -1,0 +1,33 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_07_NaCl",
+ "renderHash": "f17b2d5263ba6b39",
+ "composedHash": "f17b2d5263ba6b39",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cathode": "Bakskaut",
+  "Porous screen": "Glöggt skilrúm",
+  "Voltage|source": "Spennugjafi",
+  "Molten NaCl": "Bráðið NaCl",
+  "Anode": "Forskaut"
+ },
+ "mtAlternatives": {
+  "Porous screen": {
+   "kept": "joined",
+   "other": "Götóttur skjár",
+   "reason": "disagree",
+   "mt": "Glöggt skilrúm"
+  },
+  "Anode": {
+   "kept": "joined",
+   "other": "Anóða",
+   "reason": "disagree",
+   "mt": "Forskaut"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

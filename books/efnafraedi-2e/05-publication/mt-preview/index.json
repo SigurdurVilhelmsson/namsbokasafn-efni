@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T13:39:01.953Z",
+  "generated": "2026-09-21T16:56:31.406Z",
   "termCount": 763,
   "entries": [
     {
@@ -223,10 +223,10 @@
       "termId": "fs-idm207304016"
     },
     {
-      "termIs": "alkalín-rafhlaða",
+      "termIs": "Alkalínrafhlaða",
       "termEn": "alkaline battery",
-      "termFull": "alkalín-rafhlaða (e. alkaline battery)",
-      "definition": "einnota rafhlaða svipuð þurrefnarhlöðu sem notar basískan rafkleyfa (oft kalíumhýdroxíð); hönnuð til að vera endurbætt útgáfa af þurrefnarhlöðu, en með meiri orkugeymslu og minni leka á rafkleyfa en dæmigerð þurrefnarhlaða",
+      "termFull": "Alkalínrafhlaða (e. alkaline battery)",
+      "definition": "Einnota rafhlaða svipuð dry cell sem notar basískan (oft kalíumhýdroxíð) raflausn; hönnuð til að vera endurbætt útgáfa af þurrafhlöðu, en með meiri orkugeymslu og minni raflausnarleka en dæmigerð þurrafhlaða",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -375,17 +375,6 @@
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
       "sectionSlug": "16-3-annad-og-thridja-logmal-varmafraedinnar",
       "termId": "fs-idp194754048"
-    },
-    {
-      "termIs": "anóða",
-      "termEn": "anode",
-      "termFull": "anóða (e. anode)",
-      "definition": "raftroð í rafefnakerfi þar sem oxun á sér stað",
-      "chapter": 17,
-      "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
-      "termId": "fs-idp4652784"
     },
     {
       "termIs": "arómatískt vetniskolefni",
@@ -630,6 +619,28 @@
       "termId": "fs-idm73604928"
     },
     {
+      "termIs": "bakskaut",
+      "termEn": "cathode",
+      "termFull": "bakskaut (e. cathode)",
+      "definition": "rafskaut í rafefnakeri þar sem afoxun á sér stað",
+      "chapter": 17,
+      "section": "17.2",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
+      "termId": "fs-idm120688224"
+    },
+    {
+      "termIs": "bakskautsvörn",
+      "termEn": "cathodic protection",
+      "termFull": "bakskautsvörn (e. cathodic protection)",
+      "definition": "aðferð til að koma í veg fyrir tæringu málmhlutar með því að tengja hann við fórnarskaut sem samanstendur af málmi sem oxast auðveldar",
+      "chapter": 17,
+      "section": "17.6",
+      "sectionTitle": "Tæring",
+      "sectionSlug": "17-6-taering",
+      "termId": "fs-idp84325552"
+    },
+    {
       "termIs": "bar",
       "termEn": null,
       "termFull": "bar",
@@ -839,10 +850,10 @@
       "termId": "fs-idp141100816"
     },
     {
-      "termIs": "blýsýrurafgeymir",
+      "termIs": "Blýsýrurafgeymir",
       "termEn": "lead acid battery",
-      "termFull": "blýsýrurafgeymir (e. lead acid battery)",
-      "definition": "endurhlaðanlegur rafgeymir sem er algengur í bifreiðum; hann samanstendur yfirleitt af sex galvanískum kerfum sem byggja á Pb-hálfhvörfum í súrri lausn",
+      "termFull": "Blýsýrurafgeymir (e. lead acid battery)",
+      "definition": "Endurhlaðanlegur rafgeymir sem er algengur í bifreiðum; hann samanstendur yfirleitt af sex galvaníkerum sem byggja á Pb-helmingahvörfum í súrri lausn",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -1312,10 +1323,10 @@
       "termId": "fs-idp46927152"
     },
     {
-      "termIs": "efnarafall",
+      "termIs": "Efnarafhlaða",
       "termEn": "fuel cell",
-      "termFull": "efnarafall (e. fuel cell)",
-      "definition": "tæki svipuð galvanískum kerfum sem krefjast stöðugs aðflæðis oxunar-afoxunarhvarfefna; einnig kallað flæðirafhlaða",
+      "termFull": "Efnarafhlaða (e. fuel cell)",
+      "definition": "Búnaður svipaður galvaníkerum sem krefst stöðugs aðflæðis oxunar-afoxunarhvarfefna; einnig kölluð flow battery",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -1455,10 +1466,10 @@
       "termId": "fs-idm331555696"
     },
     {
-      "termIs": "einnota rafhlaða",
+      "termIs": "Einnota ker",
       "termEn": "primary cell",
-      "termFull": "einnota rafhlaða (e. primary cell)",
-      "definition": "óendurhlaðanleg rafhlaða, eingöngu ætluð til einnota notkunar",
+      "termFull": "Einnota ker (e. primary cell)",
+      "definition": "Óendurhlaðanleg rafhlaða, eingöngu hentug til einnota notkunar",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -1554,10 +1565,10 @@
       "termId": "fs-idp276080304"
     },
     {
-      "termIs": "endurhlaðanleg rafhlaða",
+      "termIs": "Endurhlaðanlegt ker",
       "termEn": "secondary cell",
-      "termFull": "endurhlaðanleg rafhlaða (e. secondary cell)",
-      "definition": "rafhlaða hönnuð til að leyfa endurhleðslu",
+      "termFull": "Endurhlaðanlegt ker (e. secondary cell)",
+      "definition": "Rafhlaða hönnuð til að leyfa endurhleðslu",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -1829,10 +1840,21 @@
       "termId": "fs-idp40905984"
     },
     {
-      "termIs": "fórnaranóða",
+      "termIs": "forskaut",
+      "termEn": "anode",
+      "termFull": "forskaut (e. anode)",
+      "definition": "rafskaut í rafefnakeri þar sem oxun á sér stað",
+      "chapter": 17,
+      "section": "17.2",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
+      "termId": "fs-idp4652784"
+    },
+    {
+      "termIs": "fórnarskaut",
       "termEn": "sacrificial anode",
-      "termFull": "fórnaranóða (e. sacrificial anode)",
-      "definition": "raftroð smíðað úr málmi sem oxast auðveldlega, oft magnesíum eða sinki, notað til að koma í veg fyrir tæringu málmhluta með katóðuvörn",
+      "termFull": "fórnarskaut (e. sacrificial anode)",
+      "definition": "rafskaut úr málmi sem oxast auðveldlega, oft magnesíum eða sink, notað til að koma í veg fyrir tæringu málmhluta með bakskautsvörn",
       "chapter": 17,
       "section": "17.6",
       "sectionTitle": "Tæring",
@@ -1942,7 +1964,7 @@
       "termIs": "galvanisering",
       "termEn": "galvanization",
       "termFull": "galvanisering (e. galvanization)",
-      "definition": "aðferð til að vernda járn eða svipaða málma gegn tæringu með því að húða þá með þunnu lagi af sinki sem oxast auðveldar.",
+      "definition": "aðferð til að verja járn eða svipaða málma gegn tæringu með því að húða þá með þunnu lagi af sinki sem oxast auðveldar.",
       "chapter": 17,
       "section": "17.6",
       "sectionTitle": "Tæring",
@@ -1950,14 +1972,14 @@
       "termId": "fs-idm145050816"
     },
     {
-      "termIs": "galvanískt kerfi (voltaískt kerfi)",
+      "termIs": "galvaníker (voltaískt ker)",
       "termEn": "galvanic (voltaic) cell",
-      "termFull": "galvanískt kerfi (voltaískt kerfi) (e. galvanic (voltaic) cell)",
-      "definition": "rafefnakerfi þar sem sjálfgengt oxunar-afoxunarhvarf á sér stað; einnig kallað voltaískt kerfi",
+      "termFull": "galvaníker (voltaískt ker) (e. galvanic (voltaic) cell)",
+      "definition": "rafefnaker þar sem sjálfgengt oxunar-afoxunarhvarf á sér stað; einnig kallað voltaískt ker",
       "chapter": 17,
       "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
       "termId": "fs-idm159189392"
     },
     {
@@ -2327,11 +2349,11 @@
       "termIs": "hálfker",
       "termEn": "half cell",
       "termFull": "hálfker (e. half cell)",
-      "definition": "hluti rafefnakerfis sem inniheldur oxunar-afoxunarparið („couple“) eins hvarfefnis",
+      "definition": "íhlutur kers sem inniheldur oxunar-afoxunarparið („couple“) eins hvarfefnis",
       "chapter": 17,
       "section": "17.1",
-      "sectionTitle": "Yfirlit yfir oxunar-afoxunarefnafræði",
-      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi",
+      "sectionTitle": "Yfirlit yfir oxunar-afoxunarfræði",
+      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarfraedi",
       "termId": "fs-idp62148528"
     },
     {
@@ -3358,28 +3380,6 @@
       "termId": "fs-idp1800912"
     },
     {
-      "termIs": "katóða",
-      "termEn": "cathode",
-      "termFull": "katóða (e. cathode)",
-      "definition": "raftroð í rafefnakerfi þar sem afoxun á sér stað",
-      "chapter": 17,
-      "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
-      "termId": "fs-idm120688224"
-    },
-    {
-      "termIs": "katóðuvörn",
-      "termEn": "cathodic protection",
-      "termFull": "katóðuvörn (e. cathodic protection)",
-      "definition": "aðferð til að koma í veg fyrir tæringu málmhlutar með því að tengja hann við fórnaranóðu sem samanstendur af málmi sem oxast auðveldar",
-      "chapter": 17,
-      "section": "17.6",
-      "sectionTitle": "Tæring",
-      "sectionSlug": "17-6-taering",
-      "termId": "fs-idp84325552"
-    },
-    {
       "termIs": "keðjuverkun",
       "termEn": "chain reaction",
       "termFull": "keðjuverkun (e. chain reaction)",
@@ -3424,25 +3424,25 @@
       "termId": "fs-idp41853808"
     },
     {
-      "termIs": "kerfisrit (skematískt)",
+      "termIs": "kerritun (skýringarmynd)",
       "termEn": "cell notation (schematic)",
-      "termFull": "kerfisrit (skematískt) (e. cell notation (schematic))",
-      "definition": "táknræn framsetning á íhlutum og efnahvörfum í rafefnakerfi",
+      "termFull": "kerritun (skýringarmynd) (e. cell notation (schematic))",
+      "definition": "táknræn framsetning á íhlutum og hvörfum í rafefnakeri",
       "chapter": 17,
       "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
       "termId": "fs-idm139905600"
     },
     {
       "termIs": "kerspenna (Eker)",
       "termEn": "cell potential (ecell)",
       "termFull": "kerspenna (Eker) (e. cell potential (ecell))",
-      "definition": "spennumunur katóðu- og anóðuhálfkeranna",
+      "definition": "spennumunur bakskauts- og forskautshálfkera",
       "chapter": 17,
       "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
       "termId": "fs-idm153779040"
     },
     {
@@ -4040,6 +4040,17 @@
       "termId": "fs-idp67177296"
     },
     {
+      "termIs": "Litíumjónarafhlaða",
+      "termEn": "lithium ion battery",
+      "termFull": "Litíumjónarafhlaða (e. lithium ion battery)",
+      "definition": "Víða notuð endurhlaðanleg rafhlaða sem er algeng í færanlegum rafeindatækjum, byggð á flutningi litíumjóna milli rafskauts og bakskauts",
+      "chapter": 17,
+      "section": "17.5",
+      "sectionTitle": "Rafhlöður og efnarafalar",
+      "sectionSlug": "17-5-rafhlodur-og-efnarafalar",
+      "termId": "fs-idm118911936"
+    },
+    {
       "termIs": "litrófsefnafræðileg röð",
       "termEn": "spectrochemical series",
       "termFull": "litrófsefnafræðileg röð (e. spectrochemical series)",
@@ -4115,17 +4126,6 @@
       "sectionTitle": "Mælingar",
       "sectionSlug": "1-4-maelingar",
       "termId": "fs-idm238691152"
-    },
-    {
-      "termIs": "líþíumjónarafhlaða",
-      "termEn": "lithium ion battery",
-      "termFull": "líþíumjónarafhlaða (e. lithium ion battery)",
-      "definition": "víðnotuð endurhlaðanleg rafhlaða sem er algeng í færanlegum rafeindatækjum, byggð á flutningi líþíumjóna milli anóðu og katóðu",
-      "chapter": 17,
-      "section": "17.5",
-      "sectionTitle": "Rafhlöður og efnarafalar",
-      "sectionSlug": "17-5-rafhlodur-og-efnarafalar",
-      "termId": "fs-idm118911936"
     },
     {
       "termIs": "ljósbrot",
@@ -4978,7 +4978,7 @@
       "termIs": "Nernst-jafna",
       "termEn": "nernst equation",
       "termFull": "Nernst-jafna (e. nernst equation)",
-      "definition": "jafna sem tengir spennu oxunar-afoxunarkerfis við samsetningu þess",
+      "definition": "lýsir sambandi spennu oxunar-afoxunarkerfis og efnasamsetningar þess",
       "chapter": 17,
       "section": "17.4",
       "sectionTitle": "Kerspenna, frjáls orka og jafnvægi",
@@ -5008,10 +5008,10 @@
       "termId": "fs-idp100350096"
     },
     {
-      "termIs": "nikkel-kadmíum rafhlaða",
+      "termIs": "Nikkel-kadmíum rafhlaða",
       "termEn": "nickel-cadmium battery",
-      "termFull": "nikkel-kadmíum rafhlaða (e. nickel-cadmium battery)",
-      "definition": "endurhlaðanleg rafhlaða byggð á Ni/Cd hálfkerfum með svipuð notkunarsvið og líþíumjónarafhlöður",
+      "termFull": "Nikkel-kadmíum rafhlaða (e. nickel-cadmium battery)",
+      "definition": "Endurhlaðanleg rafhlaða byggð á Ni/Cd-helmingakerum með notkunarsvið svipað og litíumjónarafhlöður",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",
@@ -5305,14 +5305,14 @@
       "termId": "fs-idm113628896"
     },
     {
-      "termIs": "óvirkt raftroð",
+      "termIs": "óvirkt rafskaut",
       "termEn": "inert electrode",
-      "termFull": "óvirkt raftroð (e. inert electrode)",
-      "definition": "raftroð sem leiðir rafeindir til og frá hvarfefnum í hálfkeri en er hvorki oxað né afoxað sjálft",
+      "termFull": "óvirkt rafskaut (e. inert electrode)",
+      "definition": "rafskaut sem leiðir rafeindir til og frá hvarfefnum í hálfkeri en oxast eða afoxast ekki sjálft",
       "chapter": 17,
       "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
       "termId": "fs-idm19899136"
     },
     {
@@ -5561,7 +5561,7 @@
       "termIs": "rafgreining",
       "termEn": "electrolysis",
       "termFull": "rafgreining (e. electrolysis)",
-      "definition": "ferli sem notar raforku til að knýja fram ósjálfgengt efnahvarf",
+      "definition": "ferli sem notar raforku til að valda því að ferli sem ekki er sjálfsprottið eigi sér stað",
       "chapter": 17,
       "section": "17.7",
       "sectionTitle": "Rafgreining",
@@ -5569,26 +5569,26 @@
       "termId": "fs-idm213056464"
     },
     {
-      "termIs": "rafhlaða",
-      "termEn": "battery",
-      "termFull": "rafhlaða (e. battery)",
-      "definition": "eitt eða fleiri galvanísk kerfi í röð, hönnuð til notkunar sem raforkugjafi",
-      "chapter": 17,
-      "section": "17.5",
-      "sectionTitle": "Rafhlöður og efnarafalar",
-      "sectionSlug": "17-5-rafhlodur-og-efnarafalar",
-      "termId": "fs-idm170712416"
-    },
-    {
-      "termIs": "rafker",
+      "termIs": "rafgreiningarker",
       "termEn": "electrolytic cell",
-      "termFull": "rafker (e. electrolytic cell)",
-      "definition": "rafefnafræðilegt ker þar sem ytri raforkugjafi er notaður til að knýja fram ferli sem annars væri ósjálfgengt",
+      "termFull": "rafgreiningarker (e. electrolytic cell)",
+      "definition": "rafefnafræðilegt ker þar sem ytri raforkugjafi er notaður til að knýja áfram ferli sem annars væri ekki sjálfsprottið",
       "chapter": 17,
       "section": "17.7",
       "sectionTitle": "Rafgreining",
       "sectionSlug": "17-7-rafgreining",
       "termId": "fs-idm117181824"
+    },
+    {
+      "termIs": "Rafhlaða",
+      "termEn": "battery",
+      "termFull": "Rafhlaða (e. battery)",
+      "definition": "Eitt eða fleiri galvaníker í röð sem eru hönnuð til notkunar sem raforkugjafi",
+      "chapter": 17,
+      "section": "17.5",
+      "sectionTitle": "Rafhlöður og efnarafalar",
+      "sectionSlug": "17-5-rafhlodur-og-efnarafalar",
+      "termId": "fs-idm170712416"
     },
     {
       "termIs": "raflausn",
@@ -5635,14 +5635,14 @@
       "termId": "fs-idm51371008"
     },
     {
-      "termIs": "rafspenna raftroðs (EX)",
+      "termIs": "rafskautsspenna (EX)",
       "termEn": "electrode potential (ex)",
-      "termFull": "rafspenna raftroðs (EX) (e. electrode potential (ex))",
-      "definition": "spenna rafefnakerfis þar sem viðkomandi hálfker virkar sem katóða þegar það er tengt við staðlað vetnisraftroð",
+      "termFull": "rafskautsspenna (EX) (e. electrode potential (ex))",
+      "definition": "spenna kers þar sem viðkomandi hálfker virkar sem bakskaut þegar það er tengt við staðlaða vetnisrafskautið",
       "chapter": 17,
       "section": "17.1",
-      "sectionTitle": "Yfirlit yfir oxunar-afoxunarefnafræði",
-      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi",
+      "sectionTitle": "Yfirlit yfir oxunar-afoxunarfræði",
+      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarfraedi",
       "termId": "fs-idp85536816"
     },
     {
@@ -5880,7 +5880,7 @@
       "termIs": "saltbrú",
       "termEn": "salt bridge",
       "termFull": "saltbrú (e. salt bridge)",
-      "definition": "rör fyllt með óvirkri rafkleyfalausn",
+      "definition": "rör fyllt með óvirkri raflausn",
       "chapter": 17,
       "section": "17.6",
       "sectionTitle": "Tæring",
@@ -6537,14 +6537,14 @@
       "termId": "fs-idp102388352"
     },
     {
-      "termIs": "staðalkerspenna (Ekerfis°)",
-      "termEn": "standard cell potential (Eker°)",
-      "termFull": "staðalkerspenna (Ekerfis°) (e. standard cell potential (Eker°))",
+      "termIs": "staðalkerspenna",
+      "termEn": "standard cell potential (Ecell°)",
+      "termFull": "staðalkerspenna (e. standard cell potential (Ecell°))",
       "definition": "kerspennan þegar öll hvarfefni og myndefni eru í staðalham (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni), venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Raftroðs- og kerspenna",
-      "sectionSlug": "17-3-raftrods-og-kerspenna",
+      "sectionTitle": "Rafskauts- og kerspenna",
+      "sectionSlug": "17-3-rafskauts-og-kerspenna",
       "termId": "fs-idp227872832"
     },
     {
@@ -6603,25 +6603,25 @@
       "termId": "fs-idp85418944"
     },
     {
-      "termIs": "staðalraftroðsspenna ((EX°))",
+      "termIs": "staðalskautspenna ()",
       "termEn": "standard electrode potential ((EX°))",
-      "termFull": "staðalraftroðsspenna ((EX°)) (e. standard electrode potential ((EX°)))",
-      "definition": "raftroðsspenna mæld við staðalaðstæður (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni) venjulega við 298,15 K",
+      "termFull": "staðalskautspenna () (e. standard electrode potential ((EX°)))",
+      "definition": "skautspenna mæld við staðalaðstæður (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni) venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Raftroðs- og kerspenna",
-      "sectionSlug": "17-3-raftrods-og-kerspenna",
+      "sectionTitle": "Rafskauts- og kerspenna",
+      "sectionSlug": "17-3-rafskauts-og-kerspenna",
       "termId": "fs-idm4867824"
     },
     {
-      "termIs": "staðalvetnisraftroð (SHE)",
+      "termIs": "staðalvetnisskaut (SHE)",
       "termEn": "standard hydrogen electrode (she)",
-      "termFull": "staðalvetnisraftroð (SHE) (e. standard hydrogen electrode (she))",
-      "definition": "hálfkerfi byggt á myndun vetnisjóna, með spennuna nákvæmlega 0 V við staðalaðstæður, notað sem almennur viðmiðunarpunktur til að mæla raftroðsspennu",
+      "termFull": "staðalvetnisskaut (SHE) (e. standard hydrogen electrode (she))",
+      "definition": "hálfker sem byggir á myndun vetnisjóna, með skilgreinda spennu sem er nákvæmlega 0 V við staðalaðstæður, notað sem almennt viðmið til að mæla skautspennu",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Raftroðs- og kerspenna",
-      "sectionSlug": "17-3-raftrods-og-kerspenna",
+      "sectionTitle": "Rafskauts- og kerspenna",
+      "sectionSlug": "17-3-rafskauts-og-kerspenna",
       "termId": "fs-idp198657264"
     },
     {
@@ -6790,10 +6790,10 @@
       "termId": "fs-idp46928304"
     },
     {
-      "termIs": "styrksker",
+      "termIs": "styrksmunaker",
       "termEn": "concentration cell",
-      "termFull": "styrksker (e. concentration cell)",
-      "definition": "rafefnakerfi sem samanstendur af hálfkerum með sömu samsetningu að öðru leyti en styrk eins oxunar-afoxunarhvarfefnis eða myndefnis",
+      "termFull": "styrksmunaker (e. concentration cell)",
+      "definition": "galvaníker sem samanstendur af hálfkerum með eins samsetningu að undanskildum styrk eins oxunar-afoxunar hvarfefnis eða myndefnis",
       "chapter": 17,
       "section": "17.4",
       "sectionTitle": "Kerspenna, frjáls orka og jafnvægi",
@@ -7912,14 +7912,14 @@
       "termId": "fs-idp68092560"
     },
     {
-      "termIs": "virkt raftroð",
+      "termIs": "virkt rafskaut",
       "termEn": "active electrode",
-      "termFull": "virkt raftroð (e. active electrode)",
-      "definition": "raftroð sem tekur þátt sem hvarfefni eða myndefni í oxunar-afoxunarhvarfi rafefnakerfis; massi virks raftroðs breytist við oxunar-afoxunarhvarfið",
+      "termFull": "virkt rafskaut (e. active electrode)",
+      "definition": "rafskaut sem tekur þátt sem hvarfefni eða myndefni í oxunar-afoxunarhvarfi rafefnakeris; massi virks rafskauts breytist við oxunar-afoxunarhvarfið",
       "chapter": 17,
       "section": "17.2",
-      "sectionTitle": "Rafefnafrumur",
-      "sectionSlug": "17-2-rafefnafrumur",
+      "sectionTitle": "Galvaníker",
+      "sectionSlug": "17-2-galvaniker",
       "termId": "fs-idp13398640"
     },
     {
@@ -8231,10 +8231,10 @@
       "termId": "fs-idm61385376"
     },
     {
-      "termIs": "þurrefnarhlaða",
+      "termIs": "Þurrafhlaða",
       "termEn": "dry cell",
-      "termFull": "þurrefnarhlaða (e. dry cell)",
-      "definition": "einnota rafhlaða, einnig kölluð sink-kolefnisrafhlaða, byggð á sjálfgengri oxun sinks með mangan(IV)",
+      "termFull": "Þurrafhlaða (e. dry cell)",
+      "definition": "Einnota rafhlaða, einnig kölluð sink-kolefnisrafhlaða, byggð á sjálfkrafa oxun sinks með mangan(IV)",
       "chapter": 17,
       "section": "17.5",
       "sectionTitle": "Rafhlöður og efnarafalar",

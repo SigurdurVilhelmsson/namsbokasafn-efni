@@ -1,0 +1,60 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_05_DryCell",
+ "renderHash": "5de241c721f7b803",
+ "composedHash": "5de241c721f7b803",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Carbon rod|(electrode)": "Kolefnisstafur (rafskaut)",
+  "Seal": "Þétting",
+  "Insulator": "Einangrari",
+  "zinc can|(electrode)": "Sinkhylki (rafskaut)",
+  "Porous|separator": "Glöggur skiljari",
+  "Paste of MnO2, NH4Cl,|ZnCl2, water (cathode)": "Deig úr MnO2, NH4Cl, ZnCl2, vatni (bakskaut)",
+  "Metal top cover (+)": "Efsta málmlok (+)",
+  "Metal bottom cover (−)": "Neðsta málmlok (−)"
+ },
+ "mtAlternatives": {
+  "Seal": {
+   "kept": "joined",
+   "other": "Selur",
+   "reason": "disagree",
+   "mt": "Þétting"
+  },
+  "zinc can|(electrode)": {
+   "kept": "joined",
+   "other": "sinkhólkur (rafskaut)",
+   "reason": "disagree",
+   "mt": "Sinkhylki (rafskaut)"
+  },
+  "Porous|separator": {
+   "kept": "joined",
+   "other": "Gropin skilja",
+   "reason": "disagree",
+   "mt": "Glöggur skiljari"
+  },
+  "Paste of MnO2, NH4Cl,|ZnCl2, water (cathode)": {
+   "kept": "joined",
+   "other": "Mauk úr MnO2, NH4Cl, ZnCl2, vatni (bakskaut)",
+   "reason": "disagree",
+   "mt": "Deig úr MnO2, NH4Cl, ZnCl2, vatni (bakskaut)"
+  },
+  "Metal top cover (+)": {
+   "kept": "joined",
+   "other": "Málmlok (+)",
+   "reason": "disagree",
+   "mt": "Efsta málmlok (+)"
+  },
+  "Metal bottom cover (−)": {
+   "kept": "joined",
+   "other": "Botnhlíf úr málmi (–)",
+   "reason": "disagree",
+   "mt": "Neðsta málmlok (−)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 8
+ }
+}

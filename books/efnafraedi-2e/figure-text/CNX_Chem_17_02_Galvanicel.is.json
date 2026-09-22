@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_17_02_Galvanicel",
+ "renderHash": "9bd4d29b9ffa7229",
+ "composedHash": "9bd4d29b9ffa7229",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Cu anode": "Cu anóða",
+  "1 M solution of|copper (II) nitrate|(Cu(NO3)2)": "1 M lausn af kopar(II)nítrati (Cu(NO3)2)",
+  "1 M solution of|silver nitrate|(AgNO3)": "1 M lausn af silfurnítrati (AgNO3)",
+  "Porous|plug": "Gropin tappa",
+  "Salt bridge (NaNO3)": "Saltbrú (NaNO3)",
+  "Flow of anions": "Flæði anjóna",
+  "Flow of cations": "Flæði katjóna",
+  "flow of electrons": "Flæði rafeinda",
+  "Ag cathode": "Ag katóða",
+  "external|circuit": "Ytri rafrás"
+ },
+ "mtAlternatives": {
+  "Cu anode": {
+   "kept": "joined",
+   "other": "Cu-anóða",
+   "reason": "disagree",
+   "mt": "Cu anóða"
+  },
+  "Porous|plug": {
+   "kept": "joined",
+   "other": "Gropinn tappi",
+   "reason": "disagree",
+   "mt": "Gropin tappa"
+  },
+  "flow of electrons": {
+   "kept": "joined",
+   "other": "Rafeindaflæði",
+   "reason": "disagree",
+   "mt": "Flæði rafeinda"
+  },
+  "Ag cathode": {
+   "kept": "joined",
+   "other": "Silfurskaut",
+   "reason": "disagree",
+   "mt": "Ag katóða"
+  },
+  "external|circuit": {
+   "kept": "joined",
+   "other": "ytri rafrás",
+   "reason": "disagree",
+   "mt": "Ytri rafrás"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 10
+ }
+}
