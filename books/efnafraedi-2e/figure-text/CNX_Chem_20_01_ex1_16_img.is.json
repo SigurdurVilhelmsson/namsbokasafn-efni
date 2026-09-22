@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_ex1_16_img",
+ "renderHash": "cf40c2361c7c2313",
+ "composedHash": "cf40c2361c7c2313",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "trans-": "trans-",
+  "cis-": "sis-"
+ },
+ "mtAlternatives": {
+  "trans-": {
+   "kept": "joined",
+   "other": "þver-",
+   "reason": "disagree",
+   "mt": "trans-"
+  },
+  "cis-": {
+   "kept": "joined",
+   "other": "cis-",
+   "reason": "disagree",
+   "mt": "sis-"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

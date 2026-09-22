@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_geoIsomers_img",
+ "renderHash": "00df76f42b69fb53",
+ "composedHash": "00df76f42b69fb53",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1-butene": "1-búten",
+  "cis isomer": "cis-ísómera",
+  "2-butene": "2-búten",
+  "trans isomer": "trans-ísómera"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

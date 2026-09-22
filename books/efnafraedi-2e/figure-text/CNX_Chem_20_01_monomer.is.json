@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_monomer",
+ "renderHash": "9535d8e051166f0f",
+ "composedHash": "9535d8e051166f0f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethylene": "etýlen",
+  "catalyst": "hvati",
+  "polyethylene": "pólýetýlen"
+ },
+ "mtAlternatives": {
+  "catalyst": {
+   "kept": "joined",
+   "other": "Hvati",
+   "reason": "disagree",
+   "mt": "hvati"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

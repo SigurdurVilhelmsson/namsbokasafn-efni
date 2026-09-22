@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_ferment_img",
+ "renderHash": "2bdde9aacd8d10f6",
+ "composedHash": "2bdde9aacd8d10f6",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Yeast": "Ger",
+  "ethanol": "etanól",
+  "glucose": "glúkósi"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

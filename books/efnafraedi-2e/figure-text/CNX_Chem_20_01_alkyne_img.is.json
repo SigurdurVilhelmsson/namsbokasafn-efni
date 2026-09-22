@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alkyne_img",
+ "renderHash": "926c05e7d8424f1a",
+ "composedHash": "926c05e7d8424f1a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethyne (acetylene)": "etýn (asetýlen)"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

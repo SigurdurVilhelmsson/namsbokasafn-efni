@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alkyl_img",
+ "renderHash": "df3486d1aa489792",
+ "composedHash": "df3486d1aa489792",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "methyl group": "Metýlhópur",
+  "ethane": "Etan",
+  "ethyl group": "Etýlhópur",
+  "methane": "Metan"
+ },
+ "mtAlternatives": {
+  "methyl group": {
+   "kept": "joined",
+   "other": "metýlhópur",
+   "reason": "disagree",
+   "mt": "Metýlhópur"
+  },
+  "ethane": {
+   "kept": "joined",
+   "other": "etan",
+   "reason": "disagree",
+   "mt": "Etan"
+  },
+  "ethyl group": {
+   "kept": "joined",
+   "other": "etýlhópur",
+   "reason": "disagree",
+   "mt": "Etýlhópur"
+  },
+  "methane": {
+   "kept": "joined",
+   "other": "metan",
+   "reason": "disagree",
+   "mt": "Metan"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T18:10:43.437Z",
+  "generated": "2026-09-21T18:49:10.515Z",
   "termCount": 763,
   "entries": [
     {
@@ -171,11 +171,11 @@
       "termIs": "aldehýð",
       "termEn": "aldehyde",
       "termFull": "aldehýð (e. aldehyde)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp tengdan tveimur vetnisatómum eða vetnisatómi og kolefnishliðarhópi",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp sem er tengdur tveimur vetnisatómum eða vetnisatómi og kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
-      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
+      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
       "termId": "fs-idp49554496"
     },
     {
@@ -237,33 +237,33 @@
       "termIs": "alkani",
       "termEn": "alkane",
       "termFull": "alkani (e. alkane)",
-      "definition": "sameind sem samanstendur eingöngu af kolefnis- og vetnisatómum sem eru tengd með eintengjum (σ)",
+      "definition": "sameind sem samanstendur eingöngu af kolefnis- og vetnisatómum sem eru tengd með eintengjum (σ-tengjum)",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp52591280"
     },
     {
       "termIs": "alkeni",
       "termEn": "alkene",
       "termFull": "alkeni (e. alkene)",
-      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt tvítengi kolefnis-kolefnis",
+      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt tvítengi milli kolefnisatóma",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp77685456"
     },
     {
       "termIs": "alkóhól",
       "termEn": "alcohol",
       "termFull": "alkóhól (e. alcohol)",
-      "definition": "lífrænt efnasamband með hýdroxýlhóp (–OH) sem er tengdur við kolefnisatóm",
+      "definition": "lífrænt efnasamband með hýdroxýlhóp (–OH) tengdan kolefnisatómi",
       "chapter": 20,
       "section": "20.2",
-      "sectionTitle": "Alkóhól og etrar",
-      "sectionSlug": "20-2-alkohol-og-etrar",
+      "sectionTitle": "Alkóhól og eterar",
+      "sectionSlug": "20-2-alkohol-og-eterar",
       "termId": "fs-idm17880560"
     },
     {
@@ -281,29 +281,29 @@
       "termIs": "alkýlhópur",
       "termEn": "alkyl group",
       "termFull": "alkýlhópur (e. alkyl group)",
-      "definition": "áskilinn hópur, sem samanstendur af alkana sem vantar eitt vetnisatóm, tengdur við stærri byggingu",
+      "definition": "hliðarhópur, sem samanstendur af alkana sem vantar eitt vetnisatóm, tengdur við stærri byggingu",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp64410384"
     },
     {
       "termIs": "alkýn",
       "termEn": "alkyne",
       "termFull": "alkýn (e. alkyne)",
-      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt þrítengi kolefnis-kolefnis",
+      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt þrítengi milli kolefnisatóma",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp70106672"
     },
     {
       "termIs": "amíð",
       "termEn": "amide",
       "termFull": "amíð (e. amide)",
-      "definition": "lífræn sameind sem inniheldur nituratóm tengt kolefnisatómi í karbónýlhópi",
+      "definition": "lífræn sameind sem inniheldur köfnunarefnisatóm tengt við kolefnisatóm í karbónýlhópi",
       "chapter": 20,
       "section": "20.4",
       "sectionTitle": "Amín og amíð",
@@ -314,7 +314,7 @@
       "termIs": "amín",
       "termEn": "amine",
       "termFull": "amín (e. amine)",
-      "definition": "lífræn sameind þar sem nituratóm er tengt einum eða fleiri alkýlhópum",
+      "definition": "lífræn sameind þar sem köfnunarefnisatóm er tengt við einn eða fleiri alkýlhópa",
       "chapter": 20,
       "section": "20.4",
       "sectionTitle": "Amín og amíð",
@@ -380,11 +380,11 @@
       "termIs": "arómatískt vetniskolefni",
       "termEn": "aromatic hydrocarbon",
       "termFull": "arómatískt vetniskolefni (e. aromatic hydrocarbon)",
-      "definition": "hringlaga sameind sem samanstendur af kolefni og vetni með óstaðbundnum víxlum á eintengjum og tvítengjum kolefnis-kolefnis, sem leiðir til aukins stöðugleika",
+      "definition": "hringlaga sameind sem samanstendur af kolefni og vetni með óstaðbundnum víxlum milli eintengja og tvítengja kolefnisatóma, sem leiðir til aukins stöðugleika",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp73021984"
     },
     {
@@ -531,14 +531,14 @@
       "termId": "fs-idp271280640"
     },
     {
-      "termIs": "álagningarhvarf",
+      "termIs": "áleggingarhvarf",
       "termEn": "addition reaction",
-      "termFull": "álagningarhvarf (e. addition reaction)",
-      "definition": "efnahvarf þar sem tvítengi kolefnis-kolefnis myndar eintengi kolefnis-kolefnis með álagningu hvarfefnis. Dæmigert efnahvarf fyrir alkena.",
+      "termFull": "áleggingarhvarf (e. addition reaction)",
+      "definition": "efnahvarf þar sem tvítengi kolefnisatóma myndar eintengi kolefnisatóma með álagningu hvarfefnis. Dæmigert efnahvarf fyrir alkena.",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-id1170893631592"
     },
     {
@@ -551,17 +551,6 @@
       "sectionTitle": "Árekstrakenningin",
       "sectionSlug": "12-5-arekstrakenningin",
       "termId": "fs-idm101548864"
-    },
-    {
-      "termIs": "áskilinn hópur",
-      "termEn": "substituent",
-      "termFull": "áskilinn hópur (e. substituent)",
-      "definition": "grein eða virknihópur sem kemur í stað vetnisatóma í stærri vetniskolefniskeðju",
-      "chapter": 20,
-      "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
-      "termId": "fs-idp68310656"
     },
     {
       "termIs": "ásstaða",
@@ -710,11 +699,11 @@
       "termIs": "beinagrindarmynd",
       "termEn": "skeletal structure",
       "termFull": "beinagrindarmynd (e. skeletal structure)",
-      "definition": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisatóm eru táknuð með endum lína og beygjum á milli lína, og vetnisatóm sem eru tengd við kolefnisatómin eru ekki sýnd (en eru gefin í skyn af samhengi byggingarinnar)",
+      "definition": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisatóm eru táknuð með endum lína og beygjum á milli lína, og vetnisatóm sem eru tengd kolefnisatómum eru ekki sýnd (en er gert ráð fyrir að þau séu til staðar í samhengi við bygginguna)",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp39277120"
     },
     {
@@ -1568,22 +1557,22 @@
       "termIs": "ester",
       "termEn": null,
       "termFull": "ester",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdu súrefnisatómi sem er tengt kolefnishliðarhópi",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengt súrefnisatóm sem er tengt kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
-      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
+      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
       "termId": "fs-idp49325568"
     },
     {
       "termIs": "eter",
       "termEn": "ether",
       "termFull": "eter (e. ether)",
-      "definition": "lífrænt efnasamband með súrefnisatómi sem er tengt við tvö kolefnisatóm",
+      "definition": "lífrænt efnasamband með súrefnisatómi sem er tengt tveimur kolefnisatómum",
       "chapter": 20,
       "section": "20.2",
-      "sectionTitle": "Alkóhól og etrar",
-      "sectionSlug": "20-2-alkohol-og-etrar",
+      "sectionTitle": "Alkóhól og eterar",
+      "sectionSlug": "20-2-alkohol-og-eterar",
       "termId": "fs-idm24389904"
     },
     {
@@ -2588,6 +2577,17 @@
       "termId": "fs-idp10384768"
     },
     {
+      "termIs": "hliðarhópur",
+      "termEn": "substituent",
+      "termFull": "hliðarhópur (e. substituent)",
+      "definition": "grein eða virknihópur sem kemur í stað vetnisatóma í stærri vetniskolefniskeðju",
+      "chapter": 20,
+      "section": "20.1",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
+      "termId": "fs-idp68310656"
+    },
+    {
       "termIs": "hliðarmálmur",
       "termEn": "transition metal",
       "termFull": "hliðarmálmur (e. transition metal)",
@@ -3317,11 +3317,11 @@
       "termIs": "karboxýlsýra",
       "termEn": "carboxylic acid",
       "termFull": "karboxýlsýra (e. carboxylic acid)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdum hýdroxýlhópi",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdan hýdroxýlhóp",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
-      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
+      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
       "termId": "fs-idm3165296"
     },
     {
@@ -3342,8 +3342,8 @@
       "definition": "kolefnisatóm tvítengt súrefnisatómi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
-      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
+      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
       "termId": "fs-idp57350832"
     },
     {
@@ -3427,11 +3427,11 @@
       "termIs": "ketón",
       "termEn": "ketone",
       "termFull": "ketón (e. ketone)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tveimur kolefnishliðarhópum tengdum við hann",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tvo kolefnishliðarhópa tengda við sig",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
-      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
+      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
       "termId": "fs-idm20899104"
     },
     {
@@ -4035,8 +4035,8 @@
       "definition": "náttúrulegt eða tilbúið efnasamband sem inniheldur kolefni",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp68355136"
     },
     {
@@ -4629,8 +4629,8 @@
       "definition": "sameind sem inniheldur kolefni og vetni sem hefur aðeins eintengi milli kolefnisatóma",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp73075792"
     },
     {
@@ -6361,14 +6361,14 @@
       "termId": "fs-idp57075984"
     },
     {
-      "termIs": "skiptihvarf",
+      "termIs": "skipthvarf",
       "termEn": "substitution reaction",
-      "termFull": "skiptihvarf (e. substitution reaction)",
+      "termFull": "skipthvarf (e. substitution reaction)",
       "definition": "efnahvarf þar sem eitt atóm kemur í stað annars í sameind",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp79627072"
     },
     {
@@ -7907,8 +7907,8 @@
       "definition": "hluti af lífrænni sameind sem gefur sameindinni sérstaka efnafræðilega hvarfgirni",
       "chapter": 20,
       "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
+      "sectionTitle": "Vetniskolefni",
+      "sectionSlug": "20-1-vetniskolefni",
       "termId": "fs-idp68092560"
     },
     {

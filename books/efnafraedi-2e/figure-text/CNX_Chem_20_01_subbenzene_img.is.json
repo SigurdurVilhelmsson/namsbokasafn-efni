@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_subbenzene_img",
+ "renderHash": "c5b493d6662318e7",
+ "composedHash": "c5b493d6662318e7",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "toluene": "tólúen",
+  "xylene": "xýlen",
+  "styrene": "stýren"
+ },
+ "mtAlternatives": {
+  "styrene": {
+   "kept": "joined",
+   "other": "Stýren",
+   "reason": "disagree",
+   "mt": "stýren"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

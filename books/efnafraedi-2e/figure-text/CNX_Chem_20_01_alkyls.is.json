@@ -1,0 +1,45 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_alkyls",
+ "renderHash": "94358e05bffd70de",
+ "composedHash": "94358e05bffd70de",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Alkyl Group": "Alkýlhópur",
+  "Structure": "Bygging",
+  "methyl": "metýl",
+  "ethyl": "etýl",
+  "n-propyl": "n-própýl",
+  "isopropyl": "ísóprópýl",
+  "n-butyl": "n-bútýl",
+  "sec-butyl": "sec-bútýl",
+  "isobutyl": "ísóbútýl",
+  "tert-butyl": "tert-bútýl",
+  "HCH2": "HCH2"
+ },
+ "mtAlternatives": {
+  "Alkyl Group": {
+   "kept": "joined",
+   "other": "Alkílhópur",
+   "reason": "disagree",
+   "mt": "Alkýlhópur"
+  },
+  "Structure": {
+   "kept": "joined",
+   "other": "Uppbygging",
+   "reason": "disagree",
+   "mt": "Bygging"
+  },
+  "sec-butyl": {
+   "kept": "joined",
+   "other": "sek-bútýl",
+   "reason": "disagree",
+   "mt": "sec-bútýl"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 11
+ }
+}

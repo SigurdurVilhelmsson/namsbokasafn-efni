@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_propane_img",
+ "renderHash": "d838cc566a4ff650",
+ "composedHash": "d838cc566a4ff650",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "propane": "própan",
+  "2-methylpropane": "2-metýlprópan"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

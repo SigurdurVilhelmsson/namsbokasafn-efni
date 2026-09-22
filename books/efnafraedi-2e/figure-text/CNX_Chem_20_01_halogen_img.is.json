@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_halogen_img",
+ "renderHash": "40d33d1fe517b125",
+ "composedHash": "40d33d1fe517b125",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethene": "eten",
+  "1,2-dichloroethane": "1,2-díklóretan"
+ },
+ "mtAlternatives": {
+  "ethene": {
+   "kept": "joined",
+   "other": "Eten",
+   "reason": "disagree",
+   "mt": "eten"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

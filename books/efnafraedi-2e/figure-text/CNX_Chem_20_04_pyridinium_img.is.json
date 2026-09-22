@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_pyridinium_img",
+ "renderHash": "7be124f6d39ecf6a",
+ "composedHash": "7be124f6d39ecf6a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "pyridine,|trigonal planar, sp2": "pýridín, þríhyrningslaga, sp2",
+  "pyridinium ion,|trigonal planar, sp2": "pýridínjón, þríhyrningslaga, sp2"
+ },
+ "mtAlternatives": {
+  "pyridine,|trigonal planar, sp2": {
+   "kept": "joined",
+   "other": "Pýridín, þríhyrningslaga, sp2",
+   "reason": "disagree",
+   "mt": "pýridín, þríhyrningslaga, sp2"
+  },
+  "pyridinium ion,|trigonal planar, sp2": {
+   "kept": "joined",
+   "other": "pýridínjón, þríhyrningsflatlendi, sp2",
+   "reason": "disagree",
+   "mt": "pýridínjón, þríhyrningslaga, sp2"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

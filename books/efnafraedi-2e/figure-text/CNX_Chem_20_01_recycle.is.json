@@ -1,0 +1,80 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_recycle",
+ "renderHash": "4d7a5f6694359f88",
+ "composedHash": "4d7a5f6694359f88",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "polyethylene terephthalate (PETE)": "pólýetýlen tereftalat (PETE)",
+  "PETE": "PETE",
+  "HDPE": "HDPE",
+  "LDPE": "LDPE",
+  "OTHER": "ANNAÐ",
+  "high-density polyethylene (HDPE)": "háþéttni pólýetýlen (HDPE)",
+  "polyvinyl chloride (PVC)": "pólývínýlklóríð (PVC)",
+  "low density polyethylene (LDPE)": "lágþéttni pólýetýlen (LDPE)",
+  "polypropylene (PP)": "pólýprópýlen (PP)",
+  "polystyrene (PS)": "pólýstýren (PS)",
+  "any other plastics (OTHER)": "annað plast (OTHER)",
+  "Soda bottles and oven-ready food trays": "Gosflöskur og ofnheldir matarílát",
+  "Bottles for milk and dishwashing liquids": "Flöskur undan mjólk og uppþvottalegi",
+  "Food trays, plastic wrap, bottles for mineral water|and shampoo": "Matarbakkar, plastfilma, flöskur undan sódavatni og sjampói",
+  "Shopping bags and garbage bags": "Innkaupapokar og ruslapokar",
+  "Margarine tubs, microwaveable food trays": "Smjörlíkisdósir, matarílát fyrir örbylgjuofna",
+  "Yogurt tubs, foam meat trays, egg cartons, vending cups,|plastic cutlery, packaging for electronics and toys": "Jógúrtdósir, frauðplastbakkar undan kjöti, eggjabakkar, drykkjarmál úr sjálfsölum, plasthnífapör, umbúðir utan af raftækjum og leikföngum",
+  "Plastics that do not fall into any of the above categories|One example is melamine resin (plastic plates, plastic cups)": "Plast sem fellur ekki í neinn af ofangreindum flokkum. Eitt dæmi er melamín plastefni (plastdiskar, plastglös)"
+ },
+ "mtAlternatives": {
+  "polyethylene terephthalate (PETE)": {
+   "kept": "joined",
+   "other": "Pólýetýlen tereftalat (PETE)",
+   "reason": "disagree",
+   "mt": "pólýetýlen tereftalat (PETE)"
+  },
+  "OTHER": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "ANNAÐ"
+  },
+  "polystyrene (PS)": {
+   "kept": "joined",
+   "other": "Pólýstýren (PS)",
+   "reason": "disagree",
+   "mt": "pólýstýren (PS)"
+  },
+  "any other plastics (OTHER)": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "annað plast (OTHER)"
+  },
+  "Soda bottles and oven-ready food trays": {
+   "kept": "joined",
+   "other": "Gosflöskur og ofnfastir matarílát",
+   "reason": "disagree",
+   "mt": "Gosflöskur og ofnheldir matarílát"
+  },
+  "Bottles for milk and dishwashing liquids": {
+   "kept": "joined",
+   "other": "Flöskur fyrir mjólk og uppþvottalög",
+   "reason": "disagree",
+   "mt": "Flöskur undan mjólk og uppþvottalegi"
+  },
+  "Margarine tubs, microwaveable food trays": {
+   "kept": "joined",
+   "other": "Smjörlíkisbox, örbylgjuheldir matarílátsbakkar",
+   "reason": "disagree",
+   "mt": "Smjörlíkisdósir, matarílát fyrir örbylgjuofna"
+  },
+  "Plastics that do not fall into any of the above categories|One example is melamine resin (plastic plates, plastic cups)": {
+   "kept": "joined",
+   "other": "Plast sem fellur ekki í neinn af ofangreindum flokkum. Eitt dæmi er melamínplastefni (plastdiskar, plastglös).",
+   "reason": "disagree",
+   "mt": "Plast sem fellur ekki í neinn af ofangreindum flokkum. Eitt dæmi er melamín plastefni (plastdiskar, plastglös)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 18
+ }
+}

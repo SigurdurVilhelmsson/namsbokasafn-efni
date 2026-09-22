@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_ethylChlor_img",
+ "renderHash": "36508bc94f7bfcf1",
+ "composedHash": "36508bc94f7bfcf1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethane": "etan",
+  "chloroethane": "klóretan",
+  "Heat or light": "Hiti eða ljós"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

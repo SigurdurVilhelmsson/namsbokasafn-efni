@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_ammonia_img",
+ "renderHash": "25e06d7bfa8d9ba6",
+ "composedHash": "25e06d7bfa8d9ba6",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ammonia": "ammoníak",
+  "ammonium ion": "ammóníumjón",
+  "methyl amine": "metýlamín",
+  "methyl ammonium ion": "metýlammóníumjón"
+ },
+ "mtAlternatives": {
+  "ammonia": {
+   "kept": "joined",
+   "other": "Ammóníak",
+   "reason": "disagree",
+   "mt": "ammoníak"
+  },
+  "ammonium ion": {
+   "kept": "joined",
+   "other": "ammoníumjón",
+   "reason": "disagree",
+   "mt": "ammóníumjón"
+  },
+  "methyl amine": {
+   "kept": "joined",
+   "other": "Metýlamín",
+   "reason": "disagree",
+   "mt": "metýlamín"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

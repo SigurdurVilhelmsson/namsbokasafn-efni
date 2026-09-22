@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_alkaloids_img",
+ "renderHash": "ce29cc7a7f0b17ca",
+ "composedHash": "ce29cc7a7f0b17ca",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "nicotine": "nikótín",
+  "morphine": "morfín",
+  "codeine": "kódein",
+  "heroin": "heróín"
+ },
+ "mtAlternatives": {
+  "codeine": {
+   "kept": "joined",
+   "other": "kódeín",
+   "reason": "disagree",
+   "mt": "kódein"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_aldehyde_img",
+ "renderHash": "508d1a85db91bc3a",
+ "composedHash": "508d1a85db91bc3a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Functional group|of an aldehyde": "Virkur hópur aldehýðs",
+  "Functional group|of a ketone": "Virkur hópur ketóns"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

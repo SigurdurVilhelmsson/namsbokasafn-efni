@@ -1,0 +1,20 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_peptide",
+ "renderHash": "48f7308541b77083",
+ "composedHash": "48f7308541b77083",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Condensation|reaction": "Þéttihvarf",
+  "Amino|group": "Amínóhópur",
+  "Carboxyl|group": "Karboxýlhópur",
+  "Peptide bond": "Peptíðtengi",
+  "Polypeptide chain": "Fjölpeptíðkeðja",
+  "Amino acid": "Amínósýra"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

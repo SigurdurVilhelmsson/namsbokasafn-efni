@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_oxaldehyde_img",
+ "renderHash": "8b001b2f7dd9e5e1",
+ "composedHash": "8b001b2f7dd9e5e1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CH3CH2CHO": "CH3CH2CHO",
+  "aldehyde": "aldehýð",
+  "alcohol": "alkóhól"
+ },
+ "mtAlternatives": {
+  "alcohol": {
+   "kept": "joined",
+   "other": "áfengi",
+   "reason": "disagree",
+   "mt": "alkóhól"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

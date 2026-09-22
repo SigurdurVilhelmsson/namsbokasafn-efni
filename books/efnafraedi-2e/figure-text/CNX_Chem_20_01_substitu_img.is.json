@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_substitu_img",
+ "renderHash": "032991107432cbd0",
+ "composedHash": "032991107432cbd0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1-bromo-3-chlorohexane": "1-bróm-3-klórhexan",
+  "propane": "própan",
+  "2,4-difluorohexane": "2,4-díflúorhexan",
+  "CHCH3": "CHCH3",
+  "2-chloropropane": "2-klórprópan",
+  "CH2CHCH2": "CH2CHCH2",
+  "2-methylpropane": "2-metýlprópan"
+ },
+ "mtAlternatives": {
+  "CHCH3": {
+   "kept": "joined",
+   "other": "Metýlklóríð",
+   "reason": "disagree",
+   "mt": "CHCH3"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

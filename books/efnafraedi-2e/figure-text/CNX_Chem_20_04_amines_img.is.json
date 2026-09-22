@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_04_amines_img",
+ "renderHash": "fe6715481ae6723d",
+ "composedHash": "fe6715481ae6723d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "methyl amine": "metýlamín",
+  "dimethyl amine": "dímetýlamín",
+  "trimethyl amine": "trímetýlamín"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

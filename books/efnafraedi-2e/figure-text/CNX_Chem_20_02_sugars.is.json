@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_02_sugars",
+ "renderHash": "f1a419284f76a265",
+ "composedHash": "f1a419284f76a265",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "lactose": "mjólkursykur",
+  "fructose": "ávaxtasykur"
+ },
+ "mtAlternatives": {
+  "fructose": {
+   "kept": "joined",
+   "other": "frúktósi",
+   "reason": "disagree",
+   "mt": "ávaxtasykur"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

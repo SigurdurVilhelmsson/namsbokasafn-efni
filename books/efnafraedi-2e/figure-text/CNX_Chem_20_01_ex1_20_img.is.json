@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_01_ex1_20_img",
+ "renderHash": "9ba5309145cb185e",
+ "composedHash": "9ba5309145cb185e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "1-chlorobutane": "1-klórbútan",
+  "2-chlorobutane": "2-klórbútan",
+  "2-chloro-2-methylpropane": "2-klór-2-metýlprópan",
+  "1-chloro-2-methylpropane|(1-chloro-2-methylpropane)": "1-klór-2-metýlprópan (1-klór-2-metýlprópan)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

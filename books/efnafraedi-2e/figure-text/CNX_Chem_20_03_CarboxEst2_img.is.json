@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_20_03_CarboxEst2_img",
+ "renderHash": "7262139cab1c1bbc",
+ "composedHash": "7262139cab1c1bbc",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "ethanoic acid|(acetic acid)": "etansýra (ediksýra)",
+  "methyl ethanoate|(methyl acetate)": "metýletanóat (metýlasetat)"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}
