@@ -433,11 +433,15 @@ never this document.
 ## Step 4 — inject, render, and the free checks
 
 ```bash
+node tools/exercise-assemble.js --book <slug> --track mt-preview --chapter <N>   # ORGANIC ONLY — before render
 node tools/cnxml-inject.js --book <slug> --chapter <N>
 node tools/cnxml-render.js --book <slug> --chapter <N>
-node tools/source-roundtrip-check.js <slug> <N> --verbose
-node tools/render-oracle-check.js  <slug> <N> --control
+node tools/source-roundtrip-check.js <slug> ch<NN> --verbose
+node tools/render-oracle-check.js  <slug> ch<NN> --control
 ```
+
+🔴 **CORRECTED 2026-09-23 — THE TWO FREE CHECKS TAKE THE DIRECTORY NAME, `ch<NN>` (`ch01`, `appendices`), NOT THE NUMBER.** This block said `<N>`; measured: `source-roundtrip-check lifraen-efnafraedi 1` prints *"No such chapter"* and `render-oracle-check lifraen-efnafraedi 3` prints *"Chapter 3 not in the manifest. Present: ch03"*. The render oracle's manifest covers **organic ch03 only**.
+⚠️ **ORGANIC HAS AN EXERCISES BUNDLE THAT CHEMISTRY DOES NOT, AND THIS PLAN NEVER NAMED ITS TWO TOOLS** (register §C188). Its English is produced by `node tools/exercise-extract.js --book <slug> --chapter <N>` (Step 1, beside `cnxml-extract`) and bought by Step 2's `--force` with the rest of the chapter. Its Icelandic reaches pages only through **`exercise-assemble`, run before render** — skip it and the render publishes whatever sidecars were assembled last (§C181: 31 committed sidecars predate their own chapter's MT). `chapter-term-check` cannot see the bundle (§C188 ①), so count a subset term's coverage there by hand.
 
 ⚠️ **Run `source-roundtrip-check` with `--verbose`** — it caps its detail listing at 4 per category
 per module, so a non-verbose read is a truncated view that looks complete.
