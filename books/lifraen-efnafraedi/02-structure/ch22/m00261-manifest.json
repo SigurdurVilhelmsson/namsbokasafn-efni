@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00261",
-  "extractedAt": "2026-09-22T17:26:38.904Z",
+  "extractedAt": "2026-09-23T06:02:37.735Z",
   "sourceHash": "8ec36301d5a4cee2",
-  "segmentCount": 64,
+  "segmentCount": 65,
   "segmentIds": [
     "m00261:title:auto-1",
     "m00261:para:para-00001",
@@ -16,6 +16,7 @@
     "m00261:alt:fig-00003-alt",
     "m00261:para:para-00005",
     "m00261:table-title:table-00001-title",
+    "m00261:table-summary:table-00001-summary",
     "m00261:entry:auto-12",
     "m00261:entry:auto-13",
     "m00261:entry:auto-14",

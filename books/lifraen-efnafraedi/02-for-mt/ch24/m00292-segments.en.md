@@ -22,6 +22,9 @@ Substituted arylamines can be either more basic or less basic than aniline, depe
 <!-- SEG:m00292:table-title:table-00001-title -->
 Base Strength of Some [[i:p]]-Substituted Anilines
 
+<!-- SEG:m00292:table-summary:table-00001-summary -->
+An illustration shows a hydrolysis reaction of p-substituted aniline and a table below that shows substituent Y and pK subscript a of some substituents. The strongest base is -NH2 and the weakest base is -NO2. The details are as follows: Deactivating groups: -NO2: 1.00; -CN: 1.74; -Br: 3.86; -Cl: 3.98. Activating groups: -CH3: 5.08; -OCH3: 5.34; -NH2: 6.15. Between the deactivating and activating groups is -H: 4.63. The reaction shows hydrolysis of p-substituted aniline to yield hydroxide ion and another product. The p-substituted aniline shows benzene bonded to pink Y and blue amino group that shows two electrons. The product shows benzene bonded to pink Y and blue ammonium group.
+
 <!-- SEG:m00292:alt:OChem_24_04_003a_jpg-alt -->
 The reversible reaction of para-substituted amine with water to form para-substituted anilinium ion and hydroxide ion.
 

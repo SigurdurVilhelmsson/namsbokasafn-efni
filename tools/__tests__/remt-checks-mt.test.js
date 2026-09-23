@@ -67,6 +67,9 @@ import {
   mtOutputSegmentFiles,
   enCounterpart,
   withoutPreAltExerciseDrift,
+  withoutPreSummaryDrift,
+  withoutPreTypeDrift,
+  TABLE_SUMMARY_INTRODUCED,
 } from './helpers/remt-corpus.js';
 // ⚠️ INJECT'S OWN PARSER, imported so the two-parser disagreement is asserted rather than
 // described. `.cjs` under a `"type": "module"` root loads as CommonJS default-only.
@@ -403,6 +406,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // §C126 #3 — the RAW verdicts too, so the pre-alt-type drift is asserted, not waved off.
     const rawNonPass = [];
     let driftIds = 0;
+    let summaryDriftIds = 0;
     for (const b of BOOKS) {
       for (const f of FILES[b]) {
         const en = enCounterpart(f);
@@ -411,8 +415,9 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
         const enText = read(en);
         const raw = await runCheck(A2b, { isText, segText: enText });
         if (raw.verdict !== VERDICT.PASS) rawNonPass.push({ f, r: raw });
-        const drift = withoutPreAltExerciseDrift(f, enText, isText);
-        driftIds += drift.removed.length;
+        const drift = withoutPreTypeDrift(f, enText, isText);
+        driftIds += drift.byType.alt.length;
+        summaryDriftIds += drift.byType.summary.length;
         const r = await runCheck(A2b, { isText, segText: drift.en });
         if (r.verdict !== VERDICT.PASS) nonPass.push({ f, r });
         examined += r.examined;
@@ -434,10 +439,24 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // runs after a buy — and a fresh buy's IS is made from today's EN, so it carries no drift.
     // ⚠️ `driftIds` FALLS WITH EVERY ORGANIC CHAPTER BOUGHT; re-pin it then, with the chapter.
     expect(driftIds).toBe(2375);
+    // 🔴 §C126 #4 (2026-09-23) — TWO MORE, SAME CLASS, KEYED ON VINTAGE. Organic's 19
+    // summary-bearing modules gained one `:table-summary:` segment each; only ch03's m00032
+    // and m00033 have committed MT (2026-09-05, before the type), so they are the whole raw
+    // gap. Chemistry's 191 are NOT in this count because its committed extraction is HELD
+    // until its summaries are bought ([USER] 2026-09-23) — when it is regenerated, this
+    // becomes 2 + 191 and 83 more names join `rawOnly`.
+    expect(summaryDriftIds).toBe(2);
     const rawOnly = rawNonPass.filter((x) => !nonPass.some((y) => y.f === x.f));
-    expect(rawOnly).toHaveLength(31);
+    expect(rawOnly).toHaveLength(33);
+    const summaryOnly = rawOnly.filter((x) => !/exercises-segments/.test(x.f));
+    expect(summaryOnly.map((x) => x.f.split('/').slice(-2).join('/')).sort()).toEqual([
+      'ch03/m00032-segments.is.md',
+      'ch03/m00033-segments.is.md',
+    ]);
     for (const { f, r } of rawOnly) {
-      expect(f).toMatch(/lifraen-efnafraedi\/02-mt-output\/ch\d+\/exercises-segments\.is\.md$/);
+      expect(f).toMatch(
+        /lifraen-efnafraedi\/02-mt-output\/ch\d+\/(exercises|m00032|m00033)-segments\.is\.md$/
+      );
       expect(r.message, `${f}: only the cross-side leg may fire`).toMatch(/cross-side/);
       expect(r.message, `${f}: the raw leg must stay clean`).not.toMatch(/raw-vs-parsed/);
     }
@@ -472,6 +491,35 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // ⚠️ A2b IS BLOCKING, so its base rate is a LICENCE. 0.000% became 9/207 = 4.3%
     // against Global Constraint 4's ~5% bar — it keeps the licence by 0.4 points, not by 5.
     expect(nonPass.length / pairs).toBeLessThanOrEqual(0.05);
+  });
+
+  it('MUST-TRIP — a post-type buy that lost its ONLY table-summary token stays visible through the §C126 #4 vintage view', async () => {
+    // The content predicate the alt view uses would be BLIND here: m00032 carries exactly
+    // one summary, so an IS missing it looks identical to a pre-type IS. The vintage key is
+    // what separates them — this pins that it does, in both directions.
+    const isPath = FILES['lifraen-efnafraedi'].find((f) => /\/ch03\/m00032-segments/.test(f));
+    const en = read(enCounterpart(isPath));
+    const ids = [...en.matchAll(/<!-- SEG:(\S+:table-summary:\S+) -->/g)].map((m) => m[1]);
+    expect(ids).toHaveLength(1); // the blind-spot shape: ONE summary in the module
+    const fresh = en.replace(/(<!-- SEG:\S+ -->\n)([^\n]+)/g, '$1ÞÝТ $2'); // a full post-type buy
+    const damaged = fresh.replace(`<!-- SEG:${ids[0]} -->`, `<!-- SEG :${ids[0]} -->`);
+
+    const after = new Date(Date.parse(TABLE_SUMMARY_INTRODUCED) + 86_400_000).toISOString();
+    const post = withoutPreSummaryDrift(isPath, en, { generatedAt: after });
+    expect(post.removed).toEqual([]); // post-type: nothing set aside
+    const r = await runCheck(A2b, { isText: damaged, segText: post.en });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((x) => x.leg === 'cross-side')).toBeDefined();
+
+    // The same bytes stamped BEFORE the type ARE drift, and are set aside.
+    const pre = withoutPreSummaryDrift(isPath, en, { generatedAt: '2026-09-05T09:09:05.549Z' });
+    expect(pre.removed).toEqual(ids);
+    // Missing provenance reads as pre-type too.
+    expect(withoutPreSummaryDrift(isPath, en, { generatedAt: null }).removed).toEqual(ids);
+
+    // Control: the fresh buy UNdamaged passes, so the FAIL above is the damage.
+    const ok = await runCheck(A2b, { isText: fresh, segText: en });
+    expect(ok.verdict).toBe(VERDICT.PASS);
   });
 
   it('MUST-TRIP — a destroyed alt `SEG:` token in a chapter bought AFTER the type existed stays visible through the §C126 drift subtraction', async () => {
@@ -857,7 +905,10 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // 61,488 -> 63,863 is +2,375 (§C126 #3): organic's exercise bundles gained one `:alt:`
       // segment per non-blank image alt, and `exercise-extract` independently printed
       // "2375 image alts" for the same run. Every one passes SEG_ID_RE — violations stay 0.
-      expect(ids).toBe(63863); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 63,863 -> 63,865 is +2 (§C126 #4): organic ch03's m00032/m00033 EN gained one
+      // `:table-summary:` id each (the other 17 summary modules have no IS to pair with).
+      // Keyed `{tableId}-summary`, all `[\w-]` — violations stay 0.
+      expect(ids).toBe(63865); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -1014,7 +1065,7 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
         // IS-only id, fail the `enOnly.length === isOnly.length` test, and be RECLASSIFIED
         // AS DRIFT — the alt gap would hide the very MT damage this test is named for.
         const isText = read(f);
-        const { en: enText } = withoutPreAltExerciseDrift(f, read(en), isText);
+        const { en: enText } = withoutPreTypeDrift(f, read(en), isText);
         const r = await runCheck(A1, { segText: enText, isText });
         if (r.verdict !== VERDICT.PASS) hits.push([f, r]);
         compared++;

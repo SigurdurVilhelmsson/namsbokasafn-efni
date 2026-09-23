@@ -1,14 +1,15 @@
 {
   "version": 1,
   "moduleId": "m00187",
-  "extractedAt": "2026-09-22T17:26:37.753Z",
+  "extractedAt": "2026-09-23T06:02:36.471Z",
   "sourceHash": "cde5bfd211a1f4fd",
-  "segmentCount": 87,
+  "segmentCount": 88,
   "segmentIds": [
     "m00187:title:auto-1",
     "m00187:title:sect-00001-title",
     "m00187:para:para-00001",
     "m00187:para:para-00002",
+    "m00187:table-summary:table-00001-summary",
     "m00187:entry:auto-5",
     "m00187:entry:auto-6",
     "m00187:entry:auto-7",

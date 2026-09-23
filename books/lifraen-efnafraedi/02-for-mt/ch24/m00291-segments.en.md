@@ -49,6 +49,9 @@ Larger p[[i:K]][[sub:a]] for ammonium ion
 <!-- SEG:m00291:table-title:table-00002-title -->
 Basicity of Some Common Amines
 
+<!-- SEG:m00291:table-summary:table-00002-summary -->
+An illustration (table) shows the Names Structures and pKa of ammonium ion. Ammonia blue NH3 9.26. Primary alkylamine: Methylamine methyl group bonded to blue amino group 10.64; Ethylamine ethyl group bonded to blue amino group 10.75. Secondary alkylamine: Diethylamine two ethyl groups bonded to blue nitrogen monohydride 10.98. Pyrrolidine a cyclopentane with a blue nitrogen monohydride 11.27. Tertiary alkylamine: Triethylamine three ethyl groups bonded to blue nitrogen 10.76. Arylamine: Aniline benzene bonded to blue amino group 4.63. Heterocyclic amine: Pyridine benzene with a blue nitrogen 5.25; Pyrimidine benzene with two blue nitrogen atoms 1.3; Pyrrole a cyclopentane with two double bonds and a blue nitrogen monohydride 0.4; Imidazole a cyclopentane with a nitrogen monohydride and a blue nitrogen 6.95.
+
 <!-- SEG:m00291:entry:auto-18 -->
 Name
 

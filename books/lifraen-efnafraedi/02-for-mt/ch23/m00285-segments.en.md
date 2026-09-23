@@ -34,6 +34,9 @@ The Michael reaction occurs with a variety of [[i:α]],[[i:β]]-unsaturated carb
 <!-- SEG:m00285:table-title:table-00001-title -->
 Some Michael Acceptors and Michael Donors
 
+<!-- SEG:m00285:table-summary:table-00001-summary -->
+An illustration (table) shows some Michael acceptors and Michael donors along with their structures: The compounds under Michael acceptors are as follows: Propenal with the structure showing a methylene group double bonded in pink to a methine group bonded to a methine group double bonded to an oxygen atom; 3-Buten-2-one with the structure showing a methylene bond double bonded in pink to a methine group bonded to a carbonyl group bonded to a methyl group; Ethyl propenoate with the structure showing a methylene group double bonded in pink to a methine group bonded to an acetate group bonded to ethyl group; Propenenitrile with the structure showing a methylene group double bonded in pink to a methine group bonded to a cyanide group; Nitroethylene with the structure showing a methylene group double bonded in pink to a methine group bonded to a nitro group. The compounds under Michael donors are as follows: beta Diketone with the structure showing a radical bonded to a carbonyl group bonded to a blue methylene bonded to a carbonyl group bonded to R prime; beta Keto ester with the structure showing a radical group bonded to a carbonyl group bonded to a blue methylene group bonded to an acetate group bonded to an ethyl group; Diethyl malonate with the structure showing an ethyl group bonded to an acetate group bonded to a blue methylene group bonded to an acetate group bonded to an ethyl group; beta Keto nitrile with the structure showing a radical group bonded to a carbonyl group bonded to a blue methylene group bonded to a cyanide group; Nitro compound with the structure showing a radical group bonded to a blue methylene group bonded to a nitro group.
+
 <!-- SEG:m00285:entry:auto-13 -->
 Michael acceptors
 

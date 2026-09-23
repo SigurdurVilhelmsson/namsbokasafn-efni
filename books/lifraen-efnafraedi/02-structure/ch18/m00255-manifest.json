@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00255",
-  "extractedAt": "2026-09-22T17:26:38.228Z",
+  "extractedAt": "2026-09-23T06:02:37.042Z",
   "sourceHash": "c27f5cd7650aca1e",
-  "segmentCount": 167,
+  "segmentCount": 168,
   "segmentIds": [
     "m00255:title:auto-1",
     "m00255:title:sect-00001-title",
@@ -84,6 +84,7 @@
     "m00255:title:sect-00010-title",
     "m00255:para:para-00073",
     "m00255:table-title:table-00001-title",
+    "m00255:table-summary:table-00001-summary",
     "m00255:entry:auto-80",
     "m00255:entry:auto-81",
     "m00255:entry:auto-82",

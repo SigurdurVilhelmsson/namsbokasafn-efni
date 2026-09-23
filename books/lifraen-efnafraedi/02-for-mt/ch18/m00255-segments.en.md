@@ -235,6 +235,9 @@ I Kinds of Carbonyl Compounds
 <!-- SEG:m00255:table-title:table-00001-title -->
 Some Types of Carbonyl Compounds
 
+<!-- SEG:m00255:table-summary:table-00001-summary -->
+Alt Text Placeholder
+
 <!-- SEG:m00255:entry:auto-80 -->
 Name
 

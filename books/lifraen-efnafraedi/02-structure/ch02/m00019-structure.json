@@ -209,7 +209,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m00019:table-summary:table-00001-summary"
     },
     {
       "type": "figure",

@@ -155,3 +155,68 @@ export function withoutPreAltExerciseDrift(isPath, enText, isText) {
   });
   return { en, removed };
 }
+
+/**
+ * §C126 #4 — the instant from which an extraction of `02-for-mt` carries
+ * `:table-summary:` segments (organic's regeneration on this branch). An IS
+ * written by the MT BEFORE it cannot carry one, by construction.
+ */
+export const TABLE_SUMMARY_INTRODUCED = '2026-09-23T06:00:00Z';
+
+/**
+ * §C126 #4 — set aside the EN `:table-summary:` segments of a pair whose committed IS
+ * PREDATES the type, so a premise pin reads as it did before the type existed.
+ *
+ * 🔴 KEYED ON VINTAGE, NOT ON CONTENT — UNLIKE `withoutPreAltExerciseDrift`, AND
+ * DELIBERATELY. That helper's predicate ("the IS carries ZERO alt ids") is sound because
+ * every exercise bundle carries ≥ 6 alts. A module carries ONE table summary in most
+ * cases (organic 19 of 19; chemistry 44 of 83), so "the IS has no summary id" cannot tell
+ * a pre-type buy from a post-type buy whose ONLY summary token the MT destroyed — the very
+ * damage these checks exist for. The IS provenance's `generatedAt` can: the MT writes it
+ * at buy time. Absent or unparsable provenance ⇒ pre-type (every such file is older than
+ * the provenance schema, let alone this type).
+ *
+ * @param {string} isPath - the `02-mt-output` IS segment file path
+ * @param {string} enText - its `02-for-mt` EN counterpart's text
+ * @param {{generatedAt?: string}} [opts] - override the provenance read (must-trip controls)
+ * @returns {{en: string, removed: string[]}}
+ */
+export function withoutPreSummaryDrift(isPath, enText, opts = {}) {
+  const untouched = { en: enText, removed: [] };
+  if (!enText.includes(':table-summary:')) return untouched;
+  let generatedAt = opts.generatedAt;
+  if (generatedAt === undefined) {
+    try {
+      const prov = isPath.replace(/-segments\.is\.md$/, '-provenance.json');
+      generatedAt = JSON.parse(fs.readFileSync(prov, 'utf8')).generatedAt;
+    } catch {
+      generatedAt = null;
+    }
+  }
+  const t = Date.parse(generatedAt || '');
+  if (Number.isFinite(t) && t >= Date.parse(TABLE_SUMMARY_INTRODUCED)) return untouched;
+  const removed = [];
+  const en = enText.replace(/<!-- SEG:(\S+:table-summary:\S+) -->\n[^\n]*\n\n/g, (_, id) => {
+    removed.push(id);
+    return '';
+  });
+  return { en, removed };
+}
+
+/**
+ * Both pre-type drift views, composed: §C126 #3's exercise alts, then §C126 #4's table
+ * summaries. `removed` is their union; `byType` keeps them apart so each can be pinned.
+ * @param {string} isPath
+ * @param {string} enText
+ * @param {string} isText
+ * @returns {{en: string, removed: string[], byType: {alt: string[], summary: string[]}}}
+ */
+export function withoutPreTypeDrift(isPath, enText, isText) {
+  const alt = withoutPreAltExerciseDrift(isPath, enText, isText);
+  const summary = withoutPreSummaryDrift(isPath, alt.en);
+  return {
+    en: summary.en,
+    removed: [...alt.removed, ...summary.removed],
+    byType: { alt: alt.removed, summary: summary.removed },
+  };
+}

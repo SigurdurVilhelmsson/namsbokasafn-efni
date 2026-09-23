@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00169",
-  "extractedAt": "2026-09-22T17:26:35.512Z",
+  "extractedAt": "2026-09-23T06:02:33.022Z",
   "sourceHash": "3c52e75d5aa7a561",
-  "segmentCount": 113,
+  "segmentCount": 114,
   "segmentIds": [
     "m00169:title:auto-1",
     "m00169:para:para-00001",
@@ -15,6 +15,7 @@
     "m00169:para:para-00006",
     "m00169:para:para-00007",
     "m00169:table-title:table-00001-title",
+    "m00169:table-summary:table-00001-summary",
     "m00169:entry:auto-11",
     "m00169:entry:auto-12",
     "m00169:entry:auto-13",

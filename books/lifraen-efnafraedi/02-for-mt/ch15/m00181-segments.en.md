@@ -19,6 +19,9 @@ Aromatic substances, more than any other class of organic compounds, have acquir
 <!-- SEG:m00181:table-title:table-00001-title -->
 Common Names of Some Aromatic Compounds
 
+<!-- SEG:m00181:table-summary:table-00001-summary -->
+An illustration shows the structures of 8 aromatic compounds: Toluene (bp 111 °C) Phenol (mp 43 °C) Aniline (bp 184 °C) Acetophenone (mp 21 °C) Benzaldehyde (bp 178 °C) Benzoic acid (mp 122 °C) ortho-Xylene (bp 144 °C) and Styrene (bp 145 °C). Toluene shows a benzene bonded to a methyl group. Phenol shows a benzene bonded to a hydroxyl group. Aniline shows a benzene bonded to an amino group. Acetophenone shows a benzene bonded to carbonyl group bonded to methyl group. Benzaldehyde shows a benzene bonded to an aldehyde group. Benzoic acid shows a benzene bonded to a carboxyl group. ortho-Xylene shows a benzene bonded to two methyl groups. Styrene shows a benzene bonded to a methine group double bonded to a methylene group.
+
 <!-- SEG:m00181:entry:auto-8 -->
 Structure
 

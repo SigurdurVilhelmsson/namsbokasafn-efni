@@ -32,7 +32,7 @@ import {
 import {
   modulesWithSegments,
   mtOutputSegmentFiles,
-  withoutPreAltExerciseDrift,
+  withoutPreTypeDrift,
   enCounterpart,
   REPO_ROOT,
 } from './helpers/remt-corpus.js';
@@ -250,7 +250,7 @@ describe('A3 — per-segment bracket-marker delta', () => {
         const rawF = A3.run({ segText: read(enPath), isText }).findings;
         if (rawF.some((x) => x.kind === 'unpaired-segment')) rawUnpairedMods++;
         if (rawF.length) rawAnyMods++;
-        const { en } = withoutPreAltExerciseDrift(isPath, read(enPath), isText);
+        const { en } = withoutPreTypeDrift(isPath, read(enPath), isText);
         const f = A3.run({ segText: en, isText }).findings;
         if (f.some((x) => x.kind === 'marker-delta')) deltaMods++;
         if (f.some((x) => x.kind === 'unpaired-segment')) unpairedMods++;
@@ -303,8 +303,12 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // carries no marker, so a marker-conservation count cannot see one.
     // ▶ THE RAW PAIR IS THE READOUT OF RE-MT OWED and falls by one per organic chapter
     // bought (not ch03 or ch12 alone — all 31 exercise bundles predate the type).
-    expect(rawUnpairedMods).toBe(40);
-    expect(rawAnyMods).toBe(51);
+    // 🔴 §C126 #4 (2026-09-23) — +2 RAW, SAME CLASS: organic ch03's m00032/m00033 EN gained
+    // one `:table-summary:` segment each, which their 2026-09-05 IS predates. Subtracted by
+    // VINTAGE (`withoutPreTypeDrift` → `withoutPreSummaryDrift`), and the three subtracted
+    // pins below did not move. Chemistry's 191 are not here while its extraction is HELD.
+    expect(rawUnpairedMods).toBe(42);
+    expect(rawAnyMods).toBe(53);
     expect(deltaMods).toBe(17); //   8.6% of 197
     expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
     expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking

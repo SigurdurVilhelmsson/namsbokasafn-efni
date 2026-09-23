@@ -28,6 +28,9 @@ One further comment: Although such groupings as –CH[[sub:3]], –OH, and –NH
 <!-- SEG:m00169:table-title:table-00001-title -->
 Line-bond and Skeletal Structures for Some Compounds
 
+<!-- SEG:m00169:table-summary:table-00001-summary -->
+A table titled “Kekule and Skeletal Structures for Some Compounds” is shown here. The column headings are labeled “Compound ” “Kekule structure” and “Skeletal structure.” The first compound is “Isopropene C subscript 5 Hydrogen subscript 8.” The corresponding second column for this shows a molecular structure where 4 carbon atoms are positioned in a zig zag manner. The first carbon atom is double bonded to the second carbon atom which in turn is single bonded to another carbon atom. The third carbon atom is double-bonded to a fourth carbon atom. The first carbon atom is single bonded to 2 hydrogen atoms. The second carbon atom shares a single bond with another carbon atom which in turn is single bonded to 3 hydrogen atoms. The third carbon atom is single bonded to a hydrogen atom while the fourth carbon atom is single bonded to two hydrogen atoms. The second compound is “Methylcyclohexane C subscript 7 H subscript 14.” The second column shows a hexagonal arrangement of carbon atoms with a 2 hydrogen atoms single-bonded to each of the four carbon atoms. The fifth carbon atom is single bonded to a hydrogen atom and another carbon atom which in turn is single bonded to 3 hydrogen atoms. The sixth carbon atom is single bonded with 2 hydrogen atoms. Single bond exists throughout the molecular structure. The third compound is “Phenol C subscript H subscript O.” The corresponding Kekule structure for this shows a hexagonal arrangement of 6 carbon atoms with alternating single and double bonds between them. Five of these carbon atoms are single bonded to one hydrogen atom each while the sixth carbon atom is single bonded to a hydroxyl group.
+
 <!-- SEG:m00169:entry:auto-11 -->
 Compound
 
