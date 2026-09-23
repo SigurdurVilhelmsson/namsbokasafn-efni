@@ -424,13 +424,14 @@ const HOUSE_STYLE_TERMS = Object.freeze([
 
   // ───────────────────────────────────────────────────────────────────────
   // 2026-09-23 — organic ch01's pre-buy rulings (register: the 2026-09-23
-  // midday ⏩ RESUME, Q2; record: docs/decisions/2026-09-23-organic-ch01-term-rulings.md).
+  // midday ⏩ RESUME, Q2; record: docs/decisions/2026-09-23-organic-ch01-term-rulings.md,
+  // bond forms superseded by docs/decisions/2026-09-23-bond-terms-singular-tengi.md).
   // All four are the book's OWN key terms with no glossary row, so there is no
   // incumbent to outrank: each wins by being the only candidate. ⚠️ Filed under
   // `chemistry` like every entry here, so the three that also occur in chemistry's
-  // English (bond angle, bond length, condensed) enter CHEMISTRY's export too —
-  // where its already-bought MT uses the singular `tengi-` forms (editor QA will
-  // flag them; that is the ruling taking effect, not a defect).
+  // English (bond angle, bond length, condensed) enter CHEMISTRY's export too. The
+  // two bond rows pin the singular `tengi-` form chemistry's MT already uses, so
+  // they flag only its minority spellings (tengishorn, tengisfjarlægð).
   // ───────────────────────────────────────────────────────────────────────
   Object.freeze({
     en: Object.freeze(['line-bond structure']),
@@ -448,27 +449,25 @@ const HOUSE_STYLE_TERMS = Object.freeze([
   }),
   Object.freeze({
     en: Object.freeze(['bond angle']),
-    is: 'tengjahorn',
+    is: 'tengihorn',
     ruled: '2026-09-23 [USER]',
     why:
-      '🔴 A DELIBERATE OVERRIDE OF A FORM THE MODEL ALREADY PRODUCES, recorded that way on ' +
-      'purpose, like `trigonal planar` above. [USER] chose the PLURAL genitive for the bond ' +
-      "terms (tengja-, as in 'the angle between bonds'). The committed MT of both books writes " +
-      'the singular — tengihorn- 34 times across 34 aligned chemistry segments, with ' +
-      "tengishorn 6 — and tengjahorn ZERO times, so §C73's second test fails on the RULING, " +
-      'not on an incumbent. Compliance with an unattested form may be partial: count it after ' +
-      "each buy. ch01: 24 segments. Chemistry's bought chapters keep the singular until an " +
-      'editor substitution or a re-buy.',
+      "PINS THE MODEL'S OWN MAJORITY FORM, for consistency. The committed MT of both books " +
+      'writes tengihorn- 34 times across 34 aligned chemistry segments, against tengishorn 6 — ' +
+      'the row removes that minority rather than forcing anything new, so every bought chapter ' +
+      'already agrees with it. ⚠️ [USER] first ruled the plural genitive `tengjahorn` the same ' +
+      'day, then reverted to the singular to keep the books consistent: "If a general ruling ' +
+      'later reverts that, I\'ll make the change in editing." ch01: 24 segments.',
   }),
   Object.freeze({
     en: Object.freeze(['bond length']),
-    is: 'tengjalengd',
+    is: 'tengilengd',
     ruled: '2026-09-23 [USER]',
     why:
-      'Same ruling and same shape as `bond angle`: [USER] chose the plural genitive tengja-. ' +
-      'Committed MT writes the singular tengilengd- (11 of 15 aligned chemistry segments; ' +
-      'tengisfjarlægð 2) and tengjalengd ZERO times — a deliberate override, not a correction ' +
-      'of an inconsistency. ch01: 7 segments, all in modules.',
+      'Same ruling and same shape as `bond angle`: pins the singular the model already writes ' +
+      '(tengilengd- in 11 of 15 aligned chemistry segments; tengisfjarlægð 2), for consistency. ' +
+      'The plural `tengjalengd` was ruled and reverted the same day. ch01: 7 segments, all in ' +
+      'modules.',
   }),
   Object.freeze({
     en: Object.freeze(['condensed structure', 'condensed formula']),

@@ -1,7 +1,8 @@
 // server/__tests__/houseStyleTerms2026-09-23.test.js
 //
 // The [USER] rulings of 2026-09-23 on organic ch01's pre-buy questions.
-// Record: docs/decisions/2026-09-23-organic-ch01-term-rulings.md.
+// Record: docs/decisions/2026-09-23-organic-ch01-term-rulings.md; the bond forms were
+// reverted to singular tengi- the same day: docs/decisions/2026-09-23-bond-terms-singular-tengi.md.
 //
 // 🔴 WHY A TEST AT ALL, when the entries are plain data: migration 051 runs on
 // EVERY server start and `failLoudOnMigrationErrors` exit(1)s on a collected
@@ -17,8 +18,9 @@ const { HOUSE_STYLE_TERMS } = require('../lib/houseStyleTerms');
 /** Each ruled head and the Icelandic [USER] chose. */
 const RULED = [
   { en: 'line-bond structure', is: 'strikamynd' },
-  { en: 'bond angle', is: 'tengjahorn' }, // plural genitive, [USER]'s explicit choice
-  { en: 'bond length', is: 'tengjalengd' }, // plural genitive, [USER]'s explicit choice
+  // Singular tengi-: [USER] ruled the plural first, then reverted it for consistency.
+  { en: 'bond angle', is: 'tengihorn' },
+  { en: 'bond length', is: 'tengilengd' },
   { en: 'condensed structure', is: 'þéttformúla' },
   { en: 'condensed formula', is: 'þéttformúla' },
 ];
@@ -58,13 +60,14 @@ describe('2026-09-23 house-style rulings (organic ch01 pre-buy)', () => {
     );
   });
 
-  it('the plural rulings beat the singular the model writes, even as a same-domain row', () => {
-    // The committed MT writes tengihorn/tengilengd. Seed exactly those as
-    // chemistry-domain competitors: the house row must win by §C164's tie-break.
-    seedCompetitor('bond angle', 'tengihorn', 'chemistry');
-    seedCompetitor('bond length', 'tengilengd', 'chemistry');
-    expect(resolveIn('lifraen-efnafraedi', 'bond angle').winner?.text).toBe('tengjahorn');
-    expect(resolveIn('lifraen-efnafraedi', 'bond length').winner?.text).toBe('tengjalengd');
+  it('the bond rulings beat the MINORITY forms the model also writes, as same-domain rows', () => {
+    // The committed MT writes tengihorn/tengilengd mostly, and tengishorn /
+    // tengisfjarlægð sometimes. Seed the minority forms as chemistry-domain
+    // competitors: the house row must win by §C164's tie-break.
+    seedCompetitor('bond angle', 'tengishorn', 'chemistry');
+    seedCompetitor('bond length', 'tengisfjarlægð', 'chemistry');
+    expect(resolveIn('lifraen-efnafraedi', 'bond angle').winner?.text).toBe('tengihorn');
+    expect(resolveIn('lifraen-efnafraedi', 'bond length').winner?.text).toBe('tengilengd');
   });
 
   it('every head this batch adds is a shape the export census can carry (§C187)', () => {
