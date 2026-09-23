@@ -165,21 +165,31 @@ export function bucketToken(text, stoplist = DEFAULT_STOPLIST) {
   return 'label';
 }
 
+const NAMED_ENTITIES = { lt: '<', gt: '>', quot: '"', apos: "'", amp: '&' };
+
 /**
- * Decode the small set of XML entities that can appear in MathML text nodes.
- * `&amp;` is decoded last so it cannot re-introduce another entity.
+ * Decode the small set of XML entities that can appear in MathML text nodes
+ * and attribute values.
+ *
+ * 🔴 ONE PASS, NEVER A CHAIN OF `.replace`s (§C126 #4 review, 2026-09-23). The
+ * previous form decoded numeric references first and `&amp;` last, and "last"
+ * only protected against `&amp;` — a numeric reference that DECODES TO `&`
+ * re-introduced an entity for the next pass: `a &#38;lt; b` (literally
+ * `a &lt; b`) came out as `a < b`, a different meaning. A single alternation
+ * scans each reference exactly once, so decoded text is never re-read.
+ * Behaviour-identical on the corpus: 0 tracked book files carry `&#38;` or
+ * `&#x26;` (measured the same day), the only shape the chain got wrong.
  * @param {string} s
  * @returns {string}
  */
 export function decodeEntities(s) {
-  return s
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&amp;/g, '&');
+  return s.replace(/&(?:#x([0-9a-fA-F]+)|#(\d+)|(lt|gt|quot|apos|amp));/g, (_, h, d, name) =>
+    h
+      ? String.fromCodePoint(parseInt(h, 16))
+      : d
+        ? String.fromCodePoint(parseInt(d, 10))
+        : NAMED_ENTITIES[name]
+  );
 }
 
 /**

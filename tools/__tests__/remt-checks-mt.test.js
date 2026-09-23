@@ -47,6 +47,8 @@
  */
 import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { createRequire } from 'node:module';
 import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
 import { LEGACY_MUSTACHE_RE, LEGACY_PLUSPLUS_RE } from '../lib/remt-checks-extract.js';
@@ -491,6 +493,43 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // ⚠️ A2b IS BLOCKING, so its base rate is a LICENCE. 0.000% became 9/207 = 4.3%
     // against Global Constraint 4's ~5% bar — it keeps the licence by 0.4 points, not by 5.
     expect(nonPass.length / pairs).toBeLessThanOrEqual(0.05);
+  });
+
+  it('the vintage view READS the provenance file beside the IS — post-type on disk is never subtracted', () => {
+    // 🔴 THE MUST-TRIP BELOW PASSES `generatedAt` BY HAND, SO IT CANNOT SEE THE DISK READ.
+    // The corpus cannot either: its only summary-bearing IS files (organic ch03 m00032/m00033)
+    // are pre-type, and "read fails ⇒ pre-type" gives the same answer as "read 2026-09-05".
+    // A review mutant that misnamed the provenance file survived every battery test. Without
+    // this, a broken read would subtract every POST-type buy's summaries — and a destroyed
+    // summary token would pass A2b green, from the first organic buy onwards.
+    const real = FILES['lifraen-efnafraedi'].find((f) => /\/ch03\/m00032-segments/.test(f));
+    const en = read(enCounterpart(real));
+    const ids = [...en.matchAll(/<!-- SEG:(\S+:table-summary:\S+) -->/g)].map((m) => m[1]);
+    expect(ids).toHaveLength(1);
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c126-4-prov-'));
+    try {
+      const isPath = path.join(dir, 'm00032-segments.is.md');
+      const provPath = path.join(dir, 'm00032-provenance.json');
+      fs.writeFileSync(isPath, read(real));
+      const after = new Date(Date.parse(TABLE_SUMMARY_INTRODUCED) + 86_400_000).toISOString();
+
+      fs.writeFileSync(provPath, JSON.stringify({ schemaVersion: 2, generatedAt: after }));
+      expect(withoutPreSummaryDrift(isPath, en).removed).toEqual([]); // post-type: kept
+
+      fs.writeFileSync(
+        provPath,
+        JSON.stringify({ schemaVersion: 2, generatedAt: '2026-09-05T09:09:05.549Z' })
+      );
+      expect(withoutPreSummaryDrift(isPath, en).removed).toEqual(ids); // pre-type: set aside
+
+      fs.writeFileSync(provPath, '{ not json');
+      expect(withoutPreSummaryDrift(isPath, en).removed).toEqual(ids); // unreadable ⇒ pre-type
+
+      fs.rmSync(provPath);
+      expect(withoutPreSummaryDrift(isPath, en).removed).toEqual(ids); // absent ⇒ pre-type
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it('MUST-TRIP — a post-type buy that lost its ONLY table-summary token stays visible through the §C126 #4 vintage view', async () => {

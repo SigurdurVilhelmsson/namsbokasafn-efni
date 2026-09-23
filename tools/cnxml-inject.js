@@ -2317,7 +2317,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   //
   // §C126 #4 — widened from `:alt:` to every ATTRIBUTE-VALUE segment. A table
   // `summary` is the same kind of value with the same trigger (91 of chemistry's
-  // 191 spell subscripts out in words), and `buildTable` reads it through here.
+  // 191 spell a subscript or superscript out in words — 79 and 48, some both),
+  // and `buildTable` reads it through here.
   const peekSeg = (segmentId) => {
     if (!segmentId) return null;
     const value = segments.get(segmentId) || null;

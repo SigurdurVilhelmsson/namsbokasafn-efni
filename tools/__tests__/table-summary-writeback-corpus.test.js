@@ -4,7 +4,7 @@ import { join, basename } from 'node:path';
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 import { extractSegments } from '../cnxml-extract.js';
 import { buildCnxml } from '../cnxml-inject.js';
-import { renderCnxmlToHtml, decodeEntities } from '../cnxml-render.js';
+import { renderCnxmlToHtml, renderKeyEquations, decodeEntities } from '../cnxml-render.js';
 
 /**
  * §C126 #4 — does a translated `<table summary>` reach the injected CNXML AND the
@@ -32,8 +32,9 @@ import { renderCnxmlToHtml, decodeEntities } from '../cnxml-render.js';
  * The corpus has NONE of those in a summary (0 of 210, measured), so without
  * them escape-only, decode-then-escape and a string replacer are
  * indistinguishable on real data. The marker is what the paid MT does to
- * summaries that spell subscripts out in words (91 of chemistry's 191; cf. the
- * m68791 alt, §C169) — unwrapped at the lookup, it must arrive as `2`.
+ * summaries that spell sub- or superscripts out in words (91 of chemistry's 191:
+ * 79 subscript, 48 superscript, some both; cf. the m68791 alt, §C169) —
+ * unwrapped at the lookup, it must arrive as `2`.
  *
  * ▶ POSITIVE CONTROL, per table: the first cell segment of the same table gets
  * its own token, and must reach the same id-keyed table on both sides. Cell
@@ -130,6 +131,22 @@ function rollupHtml(cnxml, tableId, book) {
   );
 }
 
+/**
+ * The summary attribute's RAW bytes on every open tag of `<table id="X">` in the
+ * injected CNXML. ⚠️ xmldom cannot check escaping: it accepts a bare `&` in an
+ * attribute with no diagnostic and a raw `>` is legal XML, so a writer that
+ * dropped either escape parses identically (review, 2026-09-23 — two mutants
+ * survived the DOM check). The bytes can.
+ */
+function rawSummaries(cnxml, tableId) {
+  const open = new RegExp(`<table\\b((?:[^>"']|"[^"]*"|'[^']*')*)>`, 'g');
+  return [...cnxml.matchAll(open)]
+    .filter((m) => new RegExp(`\\sid="${escapeRegExp(tableId)}"`).test(m[1]))
+    .map((m) => (m[1].match(/\ssummary="([^"]*)"/) || [])[1] ?? null);
+}
+const escapeXmlAttr = (v) =>
+  v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
 const TOKEN = (i) => `ZQX"${i} & x < y > z $& [[sub:2]] ZQX`;
 const EXPECT = (i) => `ZQX"${i} & x < y > z $& 2 ZQX`;
 const CELL = (i) => `ZQXCELL${i}ZQX`;
@@ -139,6 +156,7 @@ function sweep(book) {
   const dropped = [];
   const controlMiss = [];
   const bestEffortBad = [];
+  const rawEscapeBad = [];
   const refused = [];
   let i = 0;
   for (const f of walk(join(BOOKS, book, '01-source'))) {
@@ -206,6 +224,12 @@ function sweep(book) {
         copies.length > 0 &&
         copies.every((el) => el.getAttribute('summary') === EXPECT(p.n));
       if (injected) c.injected++;
+      if (p.segId) {
+        const raw = rawSummaries(built.cnxml, p.id);
+        if (!raw.length || !raw.every((v) => v === escapeXmlAttr(EXPECT(p.n)))) {
+          rawEscapeBad.push(`${mod} ${p.id} ${JSON.stringify(raw)}`);
+        }
+      }
       if (p.cellId && cellOk) c.cellControl++;
       let blocks = renderedTables(page, p.id);
       const onPage = blocks.length > 0;
@@ -250,6 +274,7 @@ function sweep(book) {
     dropped: dropped.sort(),
     controlMiss: controlMiss.sort(),
     bestEffortBad: bestEffortBad.sort(),
+    rawEscapeBad: rawEscapeBad.sort(),
     refused: refused.sort(),
   };
 }
@@ -267,6 +292,7 @@ describe('§C126 #4 — a translated table summary reaches the injected CNXML AN
     expect(r.refused).toEqual([]);
     expect(r.controlMiss).toEqual([]);
     expect(r.bestEffortBad).toEqual([]);
+    expect(r.rawEscapeBad).toEqual([]);
     expect(r.byContext).toEqual({
       body: {
         tables: 120,
@@ -280,14 +306,14 @@ describe('§C126 #4 — a translated table summary reaches the injected CNXML AN
       // the compiled N-exercises / N-answer-key pages, which call renderCnxmlToHtml
       // on the exercise content — the `rollup` column.
       exercise: { tables: 28, cellControl: 28, emitted: 28, injected: 28, rendered: 0, rollup: 28 },
-      // ⚠️ THE ONE ZERO IS A RENDER DIVERGENCE THIS CHANGE DOES NOT OWN, AND IT IS
-      // PINNED SO IT CANNOT HIDE A REAL DROP. All 43 are `section.key-equations`
-      // tables whose summary is the literal "key equations table". The translation
-      // reaches the injected CNXML (43/43), but `renderKeyEquations` MERGES every
-      // module's rows into ONE synthetic `<table class="key-equations-table …">`
-      // with no id and no summary, so the value has no table to land on. OpenStax
-      // renders one `<table id="key-equations-table" data-summary="key equations
-      // table" role="presentation">` per module. Logged in the register (§C126 #4).
+      // ⚠️ THE KEY-EQUATIONS ZERO IS THIS HARNESS, NOT THE DIVERGENCE — CORRECTED BY
+      // REVIEW 2026-09-23. It first read "pinned so it cannot hide a real drop" and blamed
+      // `renderKeyEquations`. It measures neither: a module page EXCLUDES
+      // `section.key-equations` (`EXCLUDED_SECTION_CLASSES`) before any table renders,
+      // and `renderKeyEquations` is reached only from the CLI's `main()`. The 43 do reach
+      // the injected CNXML (43/43). Where they would render — the compiled Key Equations
+      // page — is pinned directly by the next test, which is what goes red when §C184 is
+      // fixed.
       'key-equations': {
         tables: 43,
         cellControl: 43,
@@ -308,9 +334,28 @@ describe('§C126 #4 — a translated table summary reaches the injected CNXML AN
     expect(r.refused).toEqual([]);
     expect(r.controlMiss).toEqual([]);
     expect(r.bestEffortBad).toEqual([]);
+    expect(r.rawEscapeBad).toEqual([]);
     expect(r.byContext).toEqual({
       body: { tables: 19, cellControl: 19, emitted: 19, injected: 19, rendered: 19, rollup: 0 },
     });
     expect(r.dropped).toEqual([]);
   }, 600_000);
+
+  it('§C184 — the compiled Key Equations page renders ONE synthetic table with no id and no data-summary', () => {
+    // Pins the divergence from OpenStax's gold, which renders one table PER MODULE as
+    // `<table id="key-equations-table" class="unnumbered unstyled" data-summary="key
+    // equations table" data-label="" role="presentation">`. This is the test a §C184 fix
+    // turns red on purpose — re-pin it to the per-module shape then.
+    const html = renderKeyEquations(
+      1,
+      [
+        { mathml: 'E = mc<sup>2</sup>', moduleId: 'm1', sectionId: 's1' },
+        { mathml: 'F = ma', moduleId: 'm2', sectionId: 's2' },
+      ],
+      {},
+      {}
+    );
+    const tables = html.match(/<table\b[^>]*>/g) || [];
+    expect(tables).toEqual(['<table class="key-equations-table unnumbered unstyled">']);
+  });
 });
