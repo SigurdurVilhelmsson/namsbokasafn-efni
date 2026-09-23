@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-21T16:28:11.844Z",
+  "generated": "2026-09-23T14:50:45.514Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1736,
-    "approved": 1736,
+    "total": 1740,
+    "approved": 1740,
     "ties": 333,
     "nominalTies": 103,
     "outOfScopeOnly": 1506,
@@ -2818,6 +2818,16 @@
       "alternatives": []
     },
     {
+      "english": "bond angle",
+      "icelandic": "tengihorn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70232,
+      "alternatives": []
+    },
+    {
       "english": "bond energy",
       "icelandic": "tengjaorka",
       "status": "approved",
@@ -2828,6 +2838,16 @@
       "alternatives": [
         "tengiorka"
       ]
+    },
+    {
+      "english": "bond length",
+      "icelandic": "tengilengd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70233,
+      "alternatives": []
     },
     {
       "english": "bond order",
@@ -4233,6 +4253,16 @@
       "alternatives": []
     },
     {
+      "english": "condensed formula",
+      "icelandic": "þéttformúla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70234,
+      "alternatives": []
+    },
+    {
       "english": "condensed matter",
       "icelandic": "þéttefni",
       "status": "approved",
@@ -4240,6 +4270,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 4471,
+      "alternatives": []
+    },
+    {
+      "english": "condensed structure",
+      "icelandic": "þéttformúla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70234,
       "alternatives": []
     },
     {

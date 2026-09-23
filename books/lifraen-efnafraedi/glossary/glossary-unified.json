@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-23T10:00:05.138Z",
+  "generated": "2026-09-23T14:50:46.891Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 276,
-    "approved": 276,
+    "total": 281,
+    "approved": 281,
     "ties": 4,
     "nominalTies": 1,
     "outOfScopeOnly": 2604,
@@ -326,6 +326,16 @@
       "alternatives": []
     },
     {
+      "english": "bond angle",
+      "icelandic": "tengihorn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70232,
+      "alternatives": []
+    },
+    {
       "english": "bond energy",
       "icelandic": "tengjaorka",
       "status": "approved",
@@ -336,6 +346,16 @@
       "alternatives": [
         "tengiorka"
       ]
+    },
+    {
+      "english": "bond length",
+      "icelandic": "tengilengd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70233,
+      "alternatives": []
     },
     {
       "english": "bonding orbital",
@@ -671,6 +691,26 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5197,
+      "alternatives": []
+    },
+    {
+      "english": "condensed formula",
+      "icelandic": "þéttformúla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70234,
+      "alternatives": []
+    },
+    {
+      "english": "condensed structure",
+      "icelandic": "þéttformúla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70234,
       "alternatives": []
     },
     {
@@ -1565,6 +1605,16 @@
       "alternatives": [
         "tengihópur"
       ]
+    },
+    {
+      "english": "line-bond structure",
+      "icelandic": "strikamynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70231,
+      "alternatives": []
     },
     {
       "english": "linear",
