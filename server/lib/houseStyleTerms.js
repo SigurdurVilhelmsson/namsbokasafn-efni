@@ -421,6 +421,68 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       'occurrences) for free; ch07 and ch08 are already bought and hold 43 more, which is an ' +
       'editor substitution or a re-buy, not something this row repairs.',
   }),
+
+  // ───────────────────────────────────────────────────────────────────────
+  // 2026-09-23 — organic ch01's pre-buy rulings (register: the 2026-09-23
+  // midday ⏩ RESUME, Q2; record: docs/decisions/2026-09-23-organic-ch01-term-rulings.md,
+  // bond forms superseded by docs/decisions/2026-09-23-bond-terms-singular-tengi.md).
+  // All four are the book's OWN key terms with no glossary row, so there is no
+  // incumbent to outrank: each wins by being the only candidate. ⚠️ Filed under
+  // `chemistry` like every entry here, so the three that also occur in chemistry's
+  // English (bond angle, bond length, condensed) enter CHEMISTRY's export too. The
+  // two bond rows pin the singular `tengi-` form chemistry's MT already uses, so
+  // they flag only its minority spellings (tengishorn, tengisfjarlægð).
+  // ───────────────────────────────────────────────────────────────────────
+  Object.freeze({
+    en: Object.freeze(['line-bond structure']),
+    is: 'strikamynd',
+    ruled: '2026-09-23 [USER]',
+    why:
+      "Organic's own key term (ch01: 35 segments, defined in m00161 alongside Kekulé " +
+      'structures), with no glossary row and no chemistry occurrence. Every rendering seen is ' +
+      'unprimed and they split FOUR ways over 11 organic segments: línutengibygging 5, ' +
+      'strikamynd 3, línubygging 2, línustriksformúla 1. strikamynd is attested (§C73 second ' +
+      'test passes) and the only one in the ruled -mynd family (Lewis-mynd, vokmynd, and the ' +
+      "model's own beinagrindarmynd for skeletal structure). ⚠️ The co-defined synonym " +
+      '`Kekulé structure` is NOT added: the census tokenises on [A-Za-z], so the é splits it ' +
+      'and it could never reach the export (register §C187).',
+  }),
+  Object.freeze({
+    en: Object.freeze(['bond angle']),
+    is: 'tengihorn',
+    ruled: '2026-09-23 [USER]',
+    why:
+      "PINS THE MODEL'S OWN MAJORITY FORM, for consistency. The committed MT of both books " +
+      'writes tengihorn- 34 times across 34 aligned chemistry segments, against tengishorn 6 — ' +
+      'the row removes that minority rather than forcing anything new, so every bought chapter ' +
+      'already agrees with it. ⚠️ [USER] first ruled the plural genitive `tengjahorn` the same ' +
+      'day, then reverted to the singular to keep the books consistent: "If a general ruling ' +
+      'later reverts that, I\'ll make the change in editing." ch01: 24 segments.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['bond length']),
+    is: 'tengilengd',
+    ruled: '2026-09-23 [USER]',
+    why:
+      'Same ruling and same shape as `bond angle`: pins the singular the model already writes ' +
+      '(tengilengd- in 11 of 15 aligned chemistry segments; tengisfjarlægð 2), for consistency. ' +
+      'The plural `tengjalengd` was ruled and reverted the same day. ch01: 7 segments, all in ' +
+      'modules.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['condensed structure', 'condensed formula']),
+    is: 'þéttformúla',
+    ruled: '2026-09-23 [USER]',
+    why:
+      "Organic's own key term (ch01: 13 segments across both spellings; defined in m00169). " +
+      'The book uses both English spellings for one concept, which is what `en` being a list ' +
+      'is for. Unprimed chemistry MT (21 aligned segments, no row firing) splits two families: ' +
+      'þétt- (þéttformúl- 6, þéttiformúl- 4, others) against þjappað- 5; organic ch03 wrote ' +
+      'þjappað- 2 of 2. þéttformúla is the most frequent attested spelling. ⚠️ `condensed ' +
+      'structural formula` (organic exercises) is 3 words and cannot reach the export ' +
+      '(§C187); if it were ever sent, the existing `structural formula → byggingarformúla` row ' +
+      'would substring-fire on it.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */

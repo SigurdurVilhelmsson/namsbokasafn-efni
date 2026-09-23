@@ -433,18 +433,22 @@ never this document.
 ## Step 4 — inject, render, and the free checks
 
 ```bash
+node tools/exercise-assemble.js --book <slug> --track mt-preview --chapter <N>   # ORGANIC ONLY — before render
 node tools/cnxml-inject.js --book <slug> --chapter <N>
 node tools/cnxml-render.js --book <slug> --chapter <N>
-node tools/source-roundtrip-check.js <slug> <N> --verbose
-node tools/render-oracle-check.js  <slug> <N> --control
+node tools/source-roundtrip-check.js <slug> ch<NN> --verbose
+node tools/render-oracle-check.js  <slug> ch<NN> --control
 ```
+
+🔴 **CORRECTED 2026-09-23 — THE TWO FREE CHECKS TAKE THE DIRECTORY NAME, `ch<NN>` (`ch01`, `appendices`), NOT THE NUMBER.** This block said `<N>`; measured: `source-roundtrip-check lifraen-efnafraedi 1` prints *"No such chapter"* and `render-oracle-check lifraen-efnafraedi 3` prints *"Chapter 3 not in the manifest. Present: ch03"*. The render oracle's manifest covers **organic ch03 only**.
+⚠️ **ORGANIC HAS AN EXERCISES BUNDLE THAT CHEMISTRY DOES NOT, AND THIS PLAN NEVER NAMED ITS TWO TOOLS** (register §C188). Its English is produced by `node tools/exercise-extract.js --book <slug> --chapter <N>` (Step 1, beside `cnxml-extract`) and bought by Step 2's `--force` with the rest of the chapter. Its Icelandic reaches pages only through **`exercise-assemble`, run before render** — skip it and the render publishes whatever sidecars were assembled last (§C181: 31 committed sidecars predate their own chapter's MT). `chapter-term-check` cannot see the bundle (§C188 ①), so count a subset term's coverage there by hand.
 
 ⚠️ **Run `source-roundtrip-check` with `--verbose`** — it caps its detail listing at 4 per category
 per module, so a non-verbose read is a truncated view that looks complete.
 ⚠️ **Run `render-oracle-check` with `--control` before believing a clean result.**
 
 > **AMENDED 2026-09-17 (§C140 ㉟, register §C145): four checks Step 4 was missing, each learned from one incident.**
-> 1. **A red fidelity manifest is a stop.** If `books/<slug>/translation-errors.json` reads `green: false` after the inject, stop before committing. On 2026-09-06 it did, the commit went ahead, and a literal `[[term:` reached a prepared page 11 days later.
+> 1. **A red fidelity manifest is a stop.** If `books/<slug>/translation-errors.json` reads `green: false` after the inject, stop before committing. ⚖️ **ORGANIC, [USER] 2026-09-23: read it PER CHAPTER** — 0 `unexplained` rows for the chapter's modules in `tracks['mt-preview'].modules`. The book-level `green` cannot be true until all 342 organic modules are injected (it also requires `skippedUntranslated` 0), so as a book-level stop it would halt every organic chapter. → [`docs/decisions/2026-09-23-organic-ch01-term-rulings.md`](../decisions/2026-09-23-organic-ch01-term-rulings.md) On 2026-09-06 it did, the commit went ahead, and a literal `[[term:` reached a prepared page 11 days later.
 > 2. **Chemistry ch03 only:** after ANY inject, re-apply ⑰'s holding state: `node tools/cnxml-inject.js --book efnafraedi-2e --chapter 3 --module m68700 --no-annotate-en`. This applies until ⑰ is fixed (register §C118 ledger).
 >    ✅ **AMENDED 2026-09-17 (§C145 ① shipped) — FORGETTING THIS IS NO LONGER SILENT.** A default chemistry inject now **REFUSES** m68700 by name (`FAILED — Marker residue … [[term: TRUNCATED`) instead of writing the corruption and exiting 0. The remedy command is unchanged; what changed is that the run stops rather than looking clean. **The same refusal now fires on m68733 (ch06), m68747 (ch08) and m68844 (ch19)** — ⑰'s other three modules, previously masked by an unrelated incompleteness skip. For those three `--no-annotate-en` clears the residue but they stay skipped for missing segments, so **do not read their refusal as something your inject broke.**
 > 3. **The two free checks above cannot see the translated output.** They render `01-source` English in memory. ✅ **The opener-only census this point used to prescribe is now MECHANICAL at both stages (§C145 ①②):** inject refuses a module whose output carries a surviving marker, and render refuses a page that does. **Run the manual census only over the tree as it already EXISTS** — pages written before those gates were never checked by them — and pair it with a positive control: `grep -rlaE '\[\[[A-Za-z][A-Za-z0-9_]*:' books/<slug>/05-publication/`.
