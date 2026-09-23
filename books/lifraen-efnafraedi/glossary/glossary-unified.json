@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-21T16:28:13.174Z",
+  "generated": "2026-09-23T10:00:05.138Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 275,
-    "approved": 275,
+    "total": 276,
+    "approved": 276,
     "ties": 4,
     "nominalTies": 1,
-    "outOfScopeOnly": 2574,
-    "censusStrings": 84089
+    "outOfScopeOnly": 2604,
+    "censusStrings": 88676
   },
   "terms": [
     {
@@ -1859,6 +1859,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4866,
+      "alternatives": []
+    },
+    {
+      "english": "nucleobase",
+      "icelandic": "niturbasi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4970,
       "alternatives": []
     },
     {
