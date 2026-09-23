@@ -2,6 +2,19 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of **2026-09-23, afternoon — ✅ [USER] ANSWERED Q1–Q5. The four house-style rulings are CODED on `feat/organic-ch01-term-rulings` (with the lineup's docs commits), UNPUSHED. ⏹ The sync is still HELD** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **merge this branch → [USER] deploys → wait for one cron export tick (≤ 2 h) → `git pull --ff-only` → grep the PULLED `books/lifraen-efnafraedi/glossary/glossary-unified.json` for all five new heads → then the ch01 buy, in a FRESH session, by the midday block's N4–N7.**
+
+⚖️ **[USER] 2026-09-23: *"atóm, yes to the rest, except use plural for bonds (tengjalengd, tengjahorn)."*** Record: [`docs/decisions/2026-09-23-organic-ch01-term-rulings.md`](../decisions/2026-09-23-organic-ch01-term-rulings.md).
+- **Q1 `atom` → `atóm`**: `atom` and `atomic orbital` stay OFF ch01's wire. ▶ **Before editors open ch01, set organic's book preference `atom → atóm` on prod** (an editor action, as chemistry's is; not a house-style row — that would be global). Published organic ch03 then needs an editor substitution `frumeind → atóm`.
+- **Q2 → four rows in `server/lib/houseStyleTerms.js`**: `line-bond structure → strikamynd` · `bond angle → tengjahorn` · `bond length → tengjalengd` · `condensed structure`/`condensed formula → þéttformúla` (the audit's pick among attested `þétt-` spellings — [USER] may still change it before the deploy). ⚠️ **The plural `tengja-` forms appear 0 times in any committed MT** (the model writes `tengihorn-` 34, `tengilengd-` 11): a deliberate override like `trigonal planar`, so **count `tengja-` vs `tengi-` after the buy** — compliance with an unattested form may be partial. ⚠️ **Three of the four also enter CHEMISTRY's export** (its English has them); its bought chapters keep the singular until an editor pass or re-buy.
+- **Q3 `shell → hvolf`** joins the subset. **Q4** ch01 runs by hand; the manifest is read per chapter (recorded in the loop plan). **Q5** the buy is authorised once Q2's heads are in the pulled export.
+
+▶ **ch01's FINAL `--glossary-only` subset (14 heads):** `enthalpy,enthalpy change,hybridization,hybrid orbital,Lewis structure,lone pair,molecular formula,orbital,shell,line-bond structure,bond angle,bond length,condensed structure,condensed formula`. The dry run's *"Glossary restricted to N term(s)"* line must say **14**; fewer means a head is missing from the export — stop, do not buy.
+
+✅ **Verified on the branch:** all five new heads resolve in organic's own scope and beat a seeded same-domain `tengihorn`/`tengilengd` competitor (§C164 tie-break), with a control that the competitor wins for an unruled head; every head is a shape the export census carries (§C187); `atom` deliberately has no house-style row. The new test is red (7 of 9) against the file without the rows. **All five heads are present in organic's source-English census** (measured), so the export can carry them.
+
 ## ⏩ RESUME — state as of **2026-09-23, midday — ✅ §C126 #4 MERGED (#516, `898bbd6aa`) AND DEPLOYED. ORGANIC ch01's PRE-BUY IS LINED UP AT 0 ISK — AND THE AUDIT REPLACED THE COMPUTED SUBSET, WHICH WAS WRONG IN BOTH DIRECTIONS. ⏹ The sync is still HELD** (supersedes every block below)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]: answer Q1–Q3 below (Q4–Q5 have recommended answers). Then, in a FRESH session: the necessary steps N1–N8, by hand.** Nothing is bought until Q1 is answered.
