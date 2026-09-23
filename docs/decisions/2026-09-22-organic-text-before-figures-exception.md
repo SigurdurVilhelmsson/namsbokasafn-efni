@@ -1,7 +1,7 @@
 # Decision: organic chemistry may buy a chapter's text before its figures; editors stay off the chapter until its figures are done
 
 - **Date:** 2026-09-22
-- **Status:** Accepted
+- **Status:** Superseded by `docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md`
 - **Context owners:** [USER]
 - **Supersedes:** none. This is a scoped **exception** to the one-unit ruling (2026-09-06, restated 2026-09-12), which has no decision record of its own. It lives in `docs/plans/2026-09-05-per-chapter-loop.md` § Step 3, and it still governs every other book.
 - **Related:** `docs/plans/2026-09-05-per-chapter-loop.md` (Step 3) · `experiments/figure-text-translation/REGISTER.md` (③, organic scope) · `docs/plans/2026-07-21-post-item17-followup-campaign.md` (§C126, the 2026-09-22 RESUME)

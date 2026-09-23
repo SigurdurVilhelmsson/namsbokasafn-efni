@@ -108,6 +108,23 @@ it and no longer does.
 
 ---
 
+## ⛔ Organic Chemistry (`lifraen-efnafraedi`) is NOT translated — OpenStax has not authorised it
+
+**[USER] ruling 2026-09-23**, after OpenStax said the book is not an original OpenStax book (it was
+donated by its author), that its translation rights are limited, and that they cannot authorise a
+translation at this time. Record:
+[docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md](docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md).
+
+- **Never run `api-translate`, `cnxml-inject`, `cnxml-render`, `exercise-assemble` or any sync on
+  organic, and never commit or push organic translated output.** This holds whatever `book-config.json`'s
+  licence says; the decision records that tension and does not resolve it.
+- **A paid organic translation exists OUTSIDE the repo, in a private archive. Never restore or commit
+  it** unless [USER] records that OpenStax's position has changed.
+- `01-source/` and the glossary stay. Removal from the website and from `main`'s tree is **work with an
+  order**, and status lives in the register (§C190), not here.
+
+---
+
 ## 🌐 THIS REPOSITORY IS PUBLIC (since 2026-07-25)
 
 Assume anything committed is world-readable immediately. A pre-publication audit +
