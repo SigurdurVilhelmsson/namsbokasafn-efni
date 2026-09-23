@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00032",
-  "extractedAt": "2026-09-22T17:26:35.759Z",
+  "extractedAt": "2026-09-23T06:02:33.350Z",
   "sourceHash": "8832544389aedece",
-  "segmentCount": 114,
+  "segmentCount": 115,
   "segmentIds": [
     "m00032:title:auto-1",
     "m00032:para:para-00001",
@@ -14,6 +14,7 @@
     "m00032:para:para-00003",
     "m00032:alt:fig-00002-alt",
     "m00032:table-title:table-00001-title",
+    "m00032:table-summary:table-00001-summary",
     "m00032:entry:auto-10",
     "m00032:entry:auto-11",
     "m00032:entry:auto-12",

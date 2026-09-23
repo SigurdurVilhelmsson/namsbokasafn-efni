@@ -375,7 +375,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m00080:table-summary:table-00001-summary"
     },
     {
       "type": "para",

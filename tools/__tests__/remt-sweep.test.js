@@ -53,6 +53,7 @@ import {
   mtOutputSegmentFiles,
   enCounterpart,
   withoutPreAltExerciseDrift,
+  withoutPreSummaryDrift,
 } from './helpers/remt-corpus.js';
 
 const CHEM = 'efnafraedi-2e';
@@ -820,7 +821,17 @@ describe('the over-bar advice names the stage that actually rewrites that tier',
       );
     }).length;
     expect(preAltBundles).toBeGreaterThan(0); // control: the predicate still sees the drift
-    expect(byBook[ORG].tripped).toBe(9 + preAltBundles); // ch12's nine (§C174/§C175) + drift
+    // §C126 #4 — pre-type table-summary drift, by the same independent route (vintage-keyed).
+    const preSummaryModules = mtOutputSegmentFiles(ORG).filter((f) => {
+      const en = enCounterpart(f);
+      const isText = fs.readFileSync(f, 'utf8');
+      return (
+        en && withoutPreSummaryDrift(f, fs.readFileSync(en, 'utf8'), { isText }).removed.length
+      );
+    }).length;
+    expect(preSummaryModules).toBe(2); // organic ch03 m00032 + m00033
+    // ch12's nine (§C174/§C175) + alt drift + summary drift
+    expect(byBook[ORG].tripped).toBe(9 + preAltBundles + preSummaryModules);
   }, 120_000);
 });
 

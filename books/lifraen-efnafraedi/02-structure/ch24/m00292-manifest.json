@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00292",
-  "extractedAt": "2026-09-22T17:26:39.226Z",
+  "extractedAt": "2026-09-23T06:02:38.106Z",
   "sourceHash": "80826be3bf6c3b36",
-  "segmentCount": 31,
+  "segmentCount": 32,
   "segmentIds": [
     "m00292:title:auto-1",
     "m00292:para:para-00001",
@@ -13,6 +13,7 @@
     "m00292:alt:fig-00002-alt",
     "m00292:para:para-00003",
     "m00292:table-title:table-00001-title",
+    "m00292:table-summary:table-00001-summary",
     "m00292:alt:OChem_24_04_003a_jpg-alt",
     "m00292:entry:auto-10",
     "m00292:entry:auto-11",

@@ -34,6 +34,9 @@ Compounds with a smaller [[i:K]][[sub:a]] and larger p[[i:K]][[sub:a]] are less 
 <!-- SEG:m00201:table-title:table-00001-title -->
 Acidity Constants of Some Alcohols and Phenols
 
+<!-- SEG:m00201:table-summary:table-00001-summary -->
+An illustration shows a table having compounds their pKa values and a downward pointing arrow in the third column; the inverted base of arrow is labeled as “weaker acid”; the arrow shows blue color at its base turning to purple at the center and pink at its tip which is labeled as “stronger acid.” The compounds and their associated pKa values are as follows: (CH3)3COH 18; CH3CH2OH 16; blue H2O 15.74; CH3OH 15.54; CF3CH2OH 12.43; p-Aminophenol 10.46; CH3SH 10.3; p-Methylphenol 10.17; Phenol 9.89; p-Chlorophenol 9.38; p-Nitrophenol 7.15.
+
 <!-- SEG:m00201:entry:auto-13 -->
 Compound
 

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00147",
-  "extractedAt": "2026-09-22T17:26:37.413Z",
+  "extractedAt": "2026-09-23T06:02:36.087Z",
   "sourceHash": "88b28cfbc0b084ad",
-  "segmentCount": 61,
+  "segmentCount": 62,
   "segmentIds": [
     "m00147:title:auto-1",
     "m00147:para:para-00001",
@@ -12,6 +12,7 @@
     "m00147:alt:OChem_13_04_001_jpg-alt",
     "m00147:para:para-00003",
     "m00147:table-title:table-00002-title",
+    "m00147:table-summary:table-00002-summary",
     "m00147:entry:auto-8",
     "m00147:entry:auto-9",
     "m00147:entry:auto-10",

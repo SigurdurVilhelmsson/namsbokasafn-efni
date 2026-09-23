@@ -49,6 +49,17 @@ describe('collectMathTokens', () => {
     expect(decodeEntities('&#8722;')).toBe('−');
     expect(decodeEntities('a&amp;b')).toBe('a&b');
   });
+  it('decodes each reference ONCE — a numeric `&` never re-opens an entity (§C126 #4 review)', () => {
+    // The old chain decoded numeric refs first and named ones after, so a numeric
+    // reference that decodes to `&` was decoded again: `a &#38;lt; b` means the
+    // literal text `a &lt; b` and came out as `a < b`.
+    expect(decodeEntities('a &#38;lt; b')).toBe('a &lt; b');
+    expect(decodeEntities('x &#x26;amp; y')).toBe('x &amp; y');
+    // Controls: the ordinary forms, including a named `&amp;` before an entity name.
+    expect(decodeEntities('&amp;lt;')).toBe('&lt;');
+    expect(decodeEntities('&lt;1,000 &#60;&#x3E;&quot;&apos;')).toBe(`<1,000 <>"'`);
+    expect(decodeEntities('&unknown;')).toBe('&unknown;');
+  });
 });
 
 describe('aggregate', () => {

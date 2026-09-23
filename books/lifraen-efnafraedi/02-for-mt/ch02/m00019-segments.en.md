@@ -16,6 +16,9 @@ Dipole moments for some common substances are given in [[xref:table-00001]]. Of 
 <!-- SEG:m00019:table-title:table-00001-title -->
 Dipole Moments of Some Compounds
 
+<!-- SEG:m00019:table-summary:table-00001-summary -->
+Dipole Moments of Some Compounds
+
 <!-- SEG:m00019:entry:auto-7 -->
 Compound
 

@@ -109,6 +109,9 @@ Straight-chain alkanes are named according to the number of carbon atoms they co
 <!-- SEG:m00033:table-title:table-00002-title -->
 Names of Straight-Chain Alkanes
 
+<!-- SEG:m00033:table-summary:table-00002-summary -->
+Alt Text Placeholder
+
 <!-- SEG:m00033:entry:auto-38 -->
 Number of carbons ([[i:n]])
 

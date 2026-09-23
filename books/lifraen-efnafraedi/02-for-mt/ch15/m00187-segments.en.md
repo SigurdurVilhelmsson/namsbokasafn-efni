@@ -10,6 +10,9 @@ As we saw in the brief introduction to infrared spectroscopy ([[docref:m00142]])
 <!-- SEG:m00187:para:para-00002 -->
 As many as four absorptions are sometimes observed in the 1450 to 1600 cm[[sup:–1]] region because of the complex molecular motions of the ring itself. Two bands, one at 1500 cm[[sup:–1]] and one at 1600 cm[[sup:–1]], are usually the most intense. In addition, aromatic compounds show weak absorptions in the 1660 to 2000 cm[[sup:–1]] region and strong absorptions in the 690 to 900 cm[[sup:–1]] range due to C–H out-of-plane bending. The exact position of both sets of absorptions is diagnostic of the substitution pattern of the aromatic ring ([[docref:m00142#fig-00006]] in [[docref:m00142]]).
 
+<!-- SEG:m00187:table-summary:table-00001-summary -->
+An illustration reads as follows: Monosubstituted: 690–710 cm to the power of minus 1 / 730–770 cm to the power of minus 1; o-Disubstituted: 735–770 cm to the power of minus 1; m-Disubstituted: 690–710 cm to the power of minus 1 / 810–850 cm to the power of minus 1; p-Disubstituted: 810–840 cm to the power of minus 2 1; 1 2 4-Trisubstituted: 780–830 cm to the power of minus 1 / 870–900 cm to the power of minus 1; 1 2 3-Trisubstituted: 670–720 cm to the power of minus 1 / 750–790 cm to the power of minus 1; 1 3 5-Trisubstituted: 660–700 cm to the power of minus 1 / 830–900 cm to the power of minus 1.
+
 <!-- SEG:m00187:entry:auto-5 -->
 [[b:Monosubstituted:]]
 

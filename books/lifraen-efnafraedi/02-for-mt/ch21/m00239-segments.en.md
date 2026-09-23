@@ -73,6 +73,9 @@ A summary of nomenclature rules for carboxylic acid derivatives is given in [[xr
 <!-- SEG:m00239:table-title:table-00001-title -->
 Nomenclature of Carboxylic Acid Derivatives
 
+<!-- SEG:m00239:table-summary:table-00001-summary -->
+An illustration shows the Functional group Structure and Name ending of 7 Carboxylic Acid Derivatives. Carboxylic acid: RCOOH -ic acid (-carboxylic acid); Acid halide: RCOX -oyl halide (-carbonyl halide); Acid anhydride: RCOOCOR’ anhydride; Amide: RCONH2 (NHR NR2) -amide (-carboxamide); Ester: RCOOR’ -oate (-carboxylate); Thioester: RCOSR’ -thioate (-carbothioate); Acyl phosphate: RCOPO4 2 minus (OR’) -oyl phosphate. The carbonyl oxygen atoms are highlighted in pink; the other oxygen atoms hydroxyl group X amino group NHR NR2 OR’ SR’ and phosphate groups are highlighted in green.
+
 <!-- SEG:m00239:entry:auto-26 -->
 Functional group
 

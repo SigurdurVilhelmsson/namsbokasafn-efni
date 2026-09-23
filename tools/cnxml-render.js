@@ -2068,6 +2068,20 @@ function renderTable(table, context) {
   if (id) attrs.push(`id="${escapeAttr(id)}"`);
   if (className) attrs.push(`class="${escapeAttr(className)}"`);
   if (tableNum) attrs.push(`data-table-number="${tableNum}"`);
+  // §C126 #4 — THE SUMMARY REACHES THE PAGE HERE, OR NOWHERE. Until this line no
+  // render path emitted it (0 of 278 committed pages), so a translated summary
+  // would have been bought and discarded (§C89's shape). `data-summary` is
+  // exactly what OpenStax's own published HTML carries (measured 2026-09-23 on
+  // chemistry 1.5 and on a Key Equations page) — parity with the gold. It is NOT
+  // announced by screen readers; exposing it to assistive tech is a separate
+  // decision (register §C126 #4).
+  // ⚠️ decode-then-escape, as for media `alt` and `data-latex`: the value arrives
+  // entity-encoded from CNXML, and escape-only would double-encode `&amp;`.
+  // ⚠️ AFTER `id`: tests assert `<table id="…"` as a prefix.
+  const summary = table.attributes.summary;
+  if (summary && summary.trim()) {
+    attrs.push(`data-summary="${escapeAttr(decodeEntities(summary))}"`);
+  }
 
   lines.push(`<table ${attrs.join(' ')}>`);
 

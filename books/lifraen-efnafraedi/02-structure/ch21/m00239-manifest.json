@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m00239",
-  "extractedAt": "2026-09-22T17:26:38.726Z",
+  "extractedAt": "2026-09-23T06:02:37.535Z",
   "sourceHash": "3a4fc702497e42aa",
-  "segmentCount": 50,
+  "segmentCount": 51,
   "segmentIds": [
     "m00239:title:auto-1",
     "m00239:title:sect-00001-title",
@@ -30,6 +30,7 @@
     "m00239:alt:fig-00008-alt",
     "m00239:para:para-00009",
     "m00239:table-title:table-00001-title",
+    "m00239:table-summary:table-00001-summary",
     "m00239:entry:auto-26",
     "m00239:entry:auto-27",
     "m00239:entry:auto-28",

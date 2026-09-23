@@ -41,7 +41,13 @@ import {
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
-import { altElementId, altElementIdFromSrc } from './lib/alt-segments.js';
+import {
+  altElementId,
+  altElementIdFromSrc,
+  TABLE_SUMMARY_TYPE,
+  tableSummaryElementId,
+} from './lib/alt-segments.js';
+import { decodeEntities } from './lib/math-label-inventory.js';
 import { flattenMarkersToText, scanTermMarkers } from './lib/term-text.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import {
@@ -883,6 +889,30 @@ function extractSegments(cnxml, options = {}) {
 
     return segmentId;
   }
+
+  // 🔴 §C126 #4 — A SEGMENT THAT TAKES NO COUNTER SLOT. `addSegment` bumps
+  // `counters.segment` for EVERY segment, keyed or not, and every id-less segment
+  // after it is numbered from that counter (`auto-N`). So emitting even an
+  // id-KEYED segment through `addSegment` renumbers every later positional id in
+  // the module. Measured 2026-09-23 for table summaries: 5,315 chemistry
+  // `entry:auto-N` ids — every one with bought MT — would have carried different
+  // English under the same id, with every count still reconciling.
+  //
+  // This helper exists for segments ADDED to modules whose MT is already bought.
+  // It REQUIRES an elementId (a positional id without a counter would collide),
+  // takes no counter slot, and does NOT consume `lastInlineAttrs` — that capture
+  // belongs to the most recent extractInlineText() call, i.e. to some other
+  // segment. Exposed as a property of `addSegment` so it rides the existing
+  // plumbing (processTopLevelContent/processSection) instead of an eighth
+  // positional parameter.
+  function addKeyedSegment(type, text, elementId) {
+    if (!elementId) throw new Error(`addKeyedSegment(${type}): elementId is required`);
+    if (!text || !text.trim()) return null;
+    const segmentId = generateSegmentId(moduleId, type, elementId, null);
+    segments.push({ id: segmentId, type, text: text.trim() });
+    return segmentId;
+  }
+  addSegment.keyed = addKeyedSegment;
 
   // Extract document title
   // 🔴 §C126 — RUN IT THROUGH `extractInlineText`, like every other piece of text.
@@ -1771,6 +1801,35 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
     const titleText = extractInlineText(tableTitle.inner, mathMap, counters);
     const titleId = addSegment('table-title', titleText, table.id ? `${table.id}-title` : null);
     if (titleId) tableStructure.title = { segmentId: titleId, text: titleText };
+  }
+
+  // 🔴 §C126 #4 — THE TABLE'S `summary` IS A SEGMENT ([USER] 2026-09-22:
+  // "translate it, both books"). Until now it was copied raw into the structure
+  // above and never sent to the MT, so every page shipped it in English.
+  //
+  // ⚠️ `addSegment.keyed`, NEVER `addSegment`: chemistry's MT is already bought,
+  // and a counter slot here would renumber every later `auto-N` id in the module
+  // (see addKeyedSegment). Keyed on the table's own id; all 210 summary-bearing
+  // tables in both kept books have one. A table with no id emits nothing rather
+  // than a positional id.
+  //
+  // ⚠️ DECODED here, unlike the alt path. `parseAttributes` returns the value RAW,
+  // and the injector treats a translation as DECODED text and escapes it on the
+  // way out — so a raw `&amp;` in segment text comes back as `&amp;amp;` (the
+  // alt path carries that trap; its bought EN is left alone rather than changed
+  // under a stable id). This class has no bought MT, and 0 of 210 values carry
+  // an entity today, so decoding costs nothing and closes the trap for it.
+  //
+  // Blank and whitespace-only values emit nothing (organic: 61 of 80).
+  // ⚠️ The raw `summary` string stays on the structure beside the new
+  // `summarySegmentId`: replacing it would mix types with the blank ones.
+  const summaryText = decodeEntities(table.attributes.summary || '');
+  if (summaryText.trim() && table.id && addSegment.keyed) {
+    tableStructure.summarySegmentId = addSegment.keyed(
+      TABLE_SUMMARY_TYPE,
+      summaryText,
+      tableSummaryElementId(table.id)
+    );
   }
 
   // Process rows

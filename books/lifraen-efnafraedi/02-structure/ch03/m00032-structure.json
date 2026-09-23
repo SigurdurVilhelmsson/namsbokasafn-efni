@@ -1038,7 +1038,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m00032:table-summary:table-00001-summary"
         },
         {
           "type": "para",

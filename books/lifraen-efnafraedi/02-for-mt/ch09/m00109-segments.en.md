@@ -16,6 +16,9 @@ Where do hydrocarbons lie on the acidity scale? As the data in [[xref:table-0000
 <!-- SEG:m00109:table-title:table-00001-title -->
 Acidity of Simple Hydrocarbons
 
+<!-- SEG:m00109:table-summary:table-00001-summary -->
+An illustration shows a table depicting the acidity of simple hydrocarbons. The family of hydrocarbons include alkyne alkene and alkane; their examples along with Ka and pKa values are given. The acidity order is in the following increasing order: alkane alkene and alkyne. The values for hydrocarbons are as follows: Alkyne; example acetylene shown as a methine group triple bonded to another methine group; Ka = 10 to the power minus 25; pKa = 25. Alkene; example ethylene shown as a methylene group bonded to another methylene group; Ka = 10 to the power minus 44; pKa = 44. Alkane; example methane shown as CH4; Ka = 10 to the power minus 60; pKa = 60.
+
 <!-- SEG:m00109:entry:auto-7 -->
 Family
 
