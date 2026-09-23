@@ -1,7 +1,7 @@
 # Decision: organic ch01's pre-buy rulings — atóm, four house-style terms (tengja- plural for bonds), shell on the wire, and a by-hand run
 
 - **Date:** 2026-09-23
-- **Status:** Accepted — superseded IN PART by `docs/decisions/2026-09-23-bond-terms-singular-tengi.md` (the `bond angle` / `bond length` forms are singular `tengi-`)
+- **Status:** Accepted — superseded IN PART by `docs/decisions/2026-09-23-bond-terms-singular-tengi.md` (the `bond angle` / `bond length` forms are singular `tengi-`); its organic-only rulings (Q1 book preference, Q3–Q5) are moot per `docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md` — the house-style rows stand
 - **Context owners:** [USER] (rulings), prepared by a 0-ISK pre-buy audit
 - **Supersedes:** none
 - **Related:** the active register `docs/plans/2026-07-21-post-item17-followup-campaign.md` (the 2026-09-23 midday ⏩ RESUME, questions Q1–Q5; §C186–§C189) · `docs/plans/2026-09-05-per-chapter-loop.md` (Steps 1b, 2, 4) · `server/lib/houseStyleTerms.js` + `server/__tests__/houseStyleTerms2026-09-23.test.js` · `docs/decisions/2026-09-22-organic-text-before-figures-exception.md` · `docs/decisions/2026-08-12-idordabankinn-rank-is-not-editorial-consent.md` (the earlier `atóm` preference) · `docs/decisions/2026-09-21-chemistry-terminology-rulings.md` (the `lone pair` ruling this subset inherits)

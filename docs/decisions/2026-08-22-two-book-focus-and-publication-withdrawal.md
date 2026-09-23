@@ -1,7 +1,7 @@
 # Decision: development focuses on chemistry and organic chemistry only; the other three books are retired from the website — a reversible pause, with nothing deleted in either repository
 
 - **Date:** 2026-08-22
-- **Status:** Accepted
+- **Status:** Accepted — its ORGANIC half (organic as a kept, developed book) is superseded by `docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md`; the three-book withdrawal stands
 - **Context owners:** lead (project owner), with the measurements below taken by the pipeline session
 - **Supersedes:** none — this is the first record of *publication* scope. It is adjacent to, and does not
   replace, the re-MT *run* scope, which the active register owns at §C80.
