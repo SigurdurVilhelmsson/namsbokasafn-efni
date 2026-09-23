@@ -78,7 +78,12 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
-import { readAlt, stripAltMarkers, stripMarkupToText } from './lib/alt-segments.js';
+import {
+  readAlt,
+  stripAltMarkers,
+  stripMarkupToText,
+  isAttributeValueSegmentId,
+} from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
 
 // =====================================================================
@@ -2309,10 +2314,14 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // in alt text because a screen reader reads it aloud ("C subscript 4 H
   // subscript 6"); the MT rendered them as real markup, `C[[sub:4]]H[[sub:6]]`,
   // and inject refused the module rather than publish a raw placeholder.
+  //
+  // §C126 #4 — widened from `:alt:` to every ATTRIBUTE-VALUE segment. A table
+  // `summary` is the same kind of value with the same trigger (91 of chemistry's
+  // 191 spell subscripts out in words), and `buildTable` reads it through here.
   const peekSeg = (segmentId) => {
     if (!segmentId) return null;
     const value = segments.get(segmentId) || null;
-    return value && segmentId.includes(':alt:') ? stripAltMarkers(value) : value;
+    return value && isAttributeValueSegmentId(segmentId) ? stripAltMarkers(value) : value;
   };
 
   const ctx = {
@@ -3310,11 +3319,57 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
         }
       }
 
-      return tableCnxml;
+      // §C126 #4 — LAST, so the figure-alt DOM round-trip above cannot undo it.
+      return applyTableSummary(tableCnxml, element, ctx);
     }
   }
 
   return null; // Fallback not implemented for tables
+}
+
+/**
+ * §C126 #4 — write a table's translated `summary` back into its open tag.
+ *
+ * 🔴 BEST-EFFORT, THROUGH `ctx.peekSeg`, NEVER `getSeg`. Every committed MT
+ * predates the `table-summary` type — chemistry is fully bought — so an ABSENT
+ * translation is the normal case, and `getSeg` records a miss that makes inject
+ * refuse the whole module. Absent or blank ⇒ the source summary stays, untouched.
+ * (Consequence, accepted as for alts: a summary never reaches `residue-report`,
+ * whose English-residue check lives inside the recording lookup.)
+ *
+ * `peekSeg` also unwraps any bracket marker the MT invented: a summary is an
+ * ATTRIBUTE VALUE, so the extractor can never have put one there (§C169).
+ *
+ * ⚠️ The open tag is scanned attribute by attribute with quoted values consumed
+ * whole, so a `summary=` inside some other attribute's value cannot be mistaken
+ * for the attribute, and a raw `>` in a value cannot end the tag (§C115).
+ * ⚠️ FUNCTION replacer: the replacement is translated text, and `String.replace`
+ * would expand `$&`/`$1` inside it.
+ * ⚠️ `&`, `<`, `>` and `"` are escaped — `>` because a raw one in our OWN output
+ * would re-open §C115 for every `[^>]*` reader downstream.
+ *
+ * @param {string} tableCnxml - the rebuilt `<table …>…</table>` block
+ * @param {{summarySegmentId?: string|null}} element - the structure node
+ * @param {object|null} ctx - build context carrying `peekSeg`
+ * @returns {string}
+ */
+function applyTableSummary(tableCnxml, element, ctx) {
+  if (!element || !element.summarySegmentId || !ctx || !ctx.peekSeg) return tableCnxml;
+  const translated = ctx.peekSeg(element.summarySegmentId);
+  if (!translated || !translated.trim()) return tableCnxml;
+
+  const open = tableCnxml.match(new RegExp(`^<table\\b${TAG_ATTR_SPAN}>`));
+  if (!open) return tableCnxml;
+  const escaped = String(translated)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+  const rewritten = open[0].replace(
+    /(\s)([\w:.-]+)(\s*=\s*)("[^"]*"|'[^']*')/g,
+    (whole, sp, name, eq) => (name === 'summary' ? `${sp}${name}${eq}"${escaped}"` : whole)
+  );
+  return rewritten + tableCnxml.slice(open[0].length);
 }
 
 /**

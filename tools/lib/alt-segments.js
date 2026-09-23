@@ -238,3 +238,47 @@ export function stripAltMarkers(text) {
  * measuring. Same function object, so they cannot.
  */
 export const stripMarkupToText = stripAltMarkers;
+
+/**
+ * §C126 #4 — the segment TYPE of a `<table summary>` translation.
+ *
+ * ⚠️ DELIBERATELY NOT `alt`. `dedupeAltSegments`, E5's BLOCKING orphan-key leg and
+ * `extraction-coverage`'s alt census are all keyed on the `alt` type, and a table
+ * summary is none of their business. It shares exactly one property with an alt —
+ * it is an ATTRIBUTE VALUE — and `isAttributeValueSegmentId` below is where that
+ * property is expressed.
+ */
+export const TABLE_SUMMARY_TYPE = 'table-summary';
+
+/**
+ * The `elementId` to hand generateSegmentId for a table's summary segment.
+ * Keyed on the table's own id, mirroring the `table-title` precedent
+ * (`${table.id}-title`). Every summary-bearing table in both kept books has an id
+ * (210 of 210, measured 2026-09-23), all `[\w-]`, so the result parses under both
+ * SEG marker regexes.
+ * @param {string} tableId
+ * @returns {string}
+ */
+export function tableSummaryElementId(tableId) {
+  return `${tableId}-summary`;
+}
+
+/**
+ * Does this segment id hold an XML ATTRIBUTE VALUE (an `alt`, a table `summary`)?
+ *
+ * 🔴 §C169's rule, widened to its real scope: markup cannot live in an attribute,
+ * so extraction never emits a bracket marker into such a segment, and any marker
+ * on the IS side was INVENTED by the MT (OpenStax spells subscripts out in words —
+ * "C subscript 4" — and the MT renders them as `C[[sub:4]]`). Unwrapping it to its
+ * visible text destroys nothing. The rule lives at the injector's single lookup
+ * (`peekSeg`), and this predicate is that lookup's key — so a third attribute-typed
+ * class later is one line here, not a hunt for writers.
+ * @param {string} segmentId
+ * @returns {boolean}
+ */
+export function isAttributeValueSegmentId(segmentId) {
+  return (
+    typeof segmentId === 'string' &&
+    (segmentId.includes(':alt:') || segmentId.includes(`:${TABLE_SUMMARY_TYPE}:`))
+  );
+}
