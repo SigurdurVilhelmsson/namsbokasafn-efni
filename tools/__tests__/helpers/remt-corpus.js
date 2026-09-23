@@ -178,12 +178,20 @@ export const TABLE_SUMMARY_INTRODUCED = '2026-09-23T06:00:00Z';
  *
  * @param {string} isPath - the `02-mt-output` IS segment file path
  * @param {string} enText - its `02-for-mt` EN counterpart's text
- * @param {{generatedAt?: string}} [opts] - override the provenance read (must-trip controls)
+ * ⚠️ AND AN IS THAT ALREADY CARRIES A SUMMARY ID IS POST-TYPE, WHATEVER ITS STAMP SAYS.
+ * A top-up that splices summaries into an existing IS without re-stamping `generatedAt`
+ * (register §C183) would otherwise have its EN summaries stripped against an IS that has
+ * them — A2b failing in REVERSE on a healthy pair. Content can only ever REDUCE what is set
+ * aside, never add to it, so this guard cannot hide damage.
+ *
+ * @param {{generatedAt?: string, isText?: string}} [opts] - `generatedAt` overrides the
+ *   provenance read (must-trip controls); `isText` enables the carries-a-summary guard
  * @returns {{en: string, removed: string[]}}
  */
 export function withoutPreSummaryDrift(isPath, enText, opts = {}) {
   const untouched = { en: enText, removed: [] };
   if (!enText.includes(':table-summary:')) return untouched;
+  if (opts.isText && opts.isText.includes(':table-summary:')) return untouched;
   let generatedAt = opts.generatedAt;
   if (generatedAt === undefined) {
     try {
@@ -213,7 +221,7 @@ export function withoutPreSummaryDrift(isPath, enText, opts = {}) {
  */
 export function withoutPreTypeDrift(isPath, enText, isText) {
   const alt = withoutPreAltExerciseDrift(isPath, enText, isText);
-  const summary = withoutPreSummaryDrift(isPath, alt.en);
+  const summary = withoutPreSummaryDrift(isPath, alt.en, { isText });
   return {
     en: summary.en,
     removed: [...alt.removed, ...summary.removed],

@@ -527,6 +527,13 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
 
       fs.rmSync(provPath);
       expect(withoutPreSummaryDrift(isPath, en).removed).toEqual(ids); // absent ⇒ pre-type
+
+      // §C183's shape: a top-up spliced the summary in WITHOUT re-stamping — the IS carries
+      // the id under a pre-type (here: absent) stamp. Nothing may be set aside, or A2b would
+      // fail in reverse on a healthy pair. Through the composed view, which passes isText.
+      const toppedUp = `${read(real)}<!-- SEG:${ids[0]} -->\nÞÝТ samantekt\n\n`;
+      expect(withoutPreSummaryDrift(isPath, en, { isText: toppedUp }).removed).toEqual([]);
+      expect(withoutPreTypeDrift(isPath, en, toppedUp).byType.summary).toEqual([]);
     } finally {
       fs.rmSync(dir, { recursive: true, force: true });
     }

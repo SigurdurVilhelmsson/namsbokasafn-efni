@@ -824,7 +824,10 @@ describe('the over-bar advice names the stage that actually rewrites that tier',
     // §C126 #4 — pre-type table-summary drift, by the same independent route (vintage-keyed).
     const preSummaryModules = mtOutputSegmentFiles(ORG).filter((f) => {
       const en = enCounterpart(f);
-      return en && withoutPreSummaryDrift(f, fs.readFileSync(en, 'utf8')).removed.length;
+      const isText = fs.readFileSync(f, 'utf8');
+      return (
+        en && withoutPreSummaryDrift(f, fs.readFileSync(en, 'utf8'), { isText }).removed.length
+      );
     }).length;
     expect(preSummaryModules).toBe(2); // organic ch03 m00032 + m00033
     // ch12's nine (§C174/§C175) + alt drift + summary drift
