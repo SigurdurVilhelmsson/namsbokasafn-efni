@@ -2,6 +2,44 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of **2026-09-24 — ⏸ THE TRANSLATION WRAP-UP AUDIT IS PAUSED PART-WAY ([USER]'s weekly usage limit). [USER] wants to pivot to the EDITOR INTERFACE; the audit answers "what translation-process work must be wrapped up first?" Nothing was changed in either repo, 0 ISK.** (the 2026-09-23 evening block below stays current for everything this block does not name)
+
+### ⏭ SINGLE NEXT ACTION — **Resume the audit: verify the 47 queued units, then write the triage, then critique it. The procedure and the local evidence location are in project memory `translation-wrapup-audit-2026-09-24`.** The [USER]-owned actions in the block below still come first, unchanged: finish the vefur organic removal, and tell the editors or revoke organic access on prod.
+
+- **What ran:**
+  - 24 read-only readers covered the whole register, the figure register, the loop plan, the decisions, the handoffs and memory. They returned **1,425 item ids**.
+  - **537** of those passed the filter (open, affects chemistry, part of the translation process), giving **293** verification units.
+  - **190 units are verified (407 verdicts). 47 are queued. 57 are un-numbered fragments** that were deliberately left unverified; they go to the triage as leads only.
+  - All **6 ground-truth probes completed.**
+  - **The triage is NOT done.** Each verdict's bin is one agent's opinion until the synthesis and critic stages have run.
+- **What the probes measured** (2026-09-24, read-only, each with a control). These are facts, not yet triaged:
+  - ✅ **Chemistry's text layer holds.**
+    - The EN and IS id sets match: 22,685 each, 0 of 170 files mismatched.
+    - 0 stable-id English drift; the manifest reads 149/149 green.
+    - A fresh extract in a scratch worktree reproduces the committed `02-for-mt` **except exactly the 191 `:table-summary:` ids in 83 modules**. That confirms §C183's prediction.
+    - The 2026-09-22 extractor fixes (§C177–§C179) do not touch chemistry.
+  - 🔴 **Redirect rows: 60 are missing from vefur `main` and 2 need correcting.** efni's `slug-map.mt-preview.json` records 62 renames. vefur's `sectionRedirects.ts` has 2 chemistry entries, and both point at pages since pruned. No vefur branch carries the rest. **The "21 rows" in the 2026-09-22 blocks below is stale.** These rows must land before the held sync.
+  - 🔴 **Faithful overlay:** vefur serves 14 faithful pages (ch01 and ch03) over their mt-preview twins. The ch01 pages are June/July vintage (ch03's were re-rendered on 09-17). **All 37 image alts on those pages are English**, and the two tracks differ on 262 of 801 id-keyed elements. No mt-preview fix reaches these pages.
+  - 🔴 **§C191 ① is live: 193 lowercased glosses on 64 pages, plus 94 entries in the book `glossary.json`.** 12 of them turn Δ/Π into δ/π. The fix is free (a code change, then re-inject and re-render), but it is a design choice: 57 glosses are lowercased correctly.
+  - ⚠️ **New, and no register item owns it:** a raw `[[test tube:tilraunaglas]]` sits inside an alt on ch18 `m68832`. Both marker strippers stop reading a marker's type at whitespace, so neither removes it.
+  - ⚠️ **The reader `glossary.json` dates from 2026-06-25** and was never regenerated after the re-MT; it still says `atom → frumeind`. The loop has no glossary-regeneration step.
+  - ⚠️ **The editor-handoff runbook steps have no dated closure:** re-apply editorial work, and re-apply MT locks on prod (0 chemistry lock markers are tracked). `status.json` is stale for all 22 chapter files, and the editor dashboard falls back to it.
+  - ⚠️ **§C170:** 32 English external-link labels remain on 22 pages. The wire fix only prevents new cases.
+  - ⚠️ **§C190 ① is only partly done.** vefur PR #234 covers the nginx example config and the notice page. The following are still in place:
+    - `PUBLISHED_BOOKS` still lists organic.
+    - 3 organic redirect entries remain.
+    - Organic stays in the sitemap.
+    - The site is not verified down.
+  - **Glossary:**
+    - The chemistry export is current apart from `degree Celsius` (§C187).
+    - `valence → girðitala` (§C189) is in the export. It never reached the MT, but the editor QA reads the same concept model.
+    - **New:** ch18 was bought without `resonance` and `hydrocarbon`, and ch20 without `trigonal planar`, so editors inherit that residue.
+  - **Figures:** the purchase side is complete. 717 of 1,148 distinct images are translated, and every sidecar is current at `COMPOSER_VERSION` 4. The other 431 are raster-only, copied photos, or 3 refused.
+  - **Hygiene:**
+    - CI on HEAD is green.
+    - The three `feat/figure-text-review-prerebase*` branches are fully superseded on `main`.
+    - PR #367, the UX audit, is still open, 1,297 commits behind `main`. It is the natural first input for the editor work.
+
 ## ⏩ RESUME — state as of **2026-09-23, evening — ⛔ THE ORGANIC TRANSLATION IS STOPPED ([USER], after OpenStax's notice). Organic comes off the website (vefur handoff), then out of `main`'s tree. Translation scope is CHEMISTRY ONLY. ⏹ The chemistry sync is still HELD** (supersedes every block below)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]: start a Claude session in `namsbokasafn-vefur` with [`docs/handoffs/2026-09-23-vefur-remove-organic-and-retire-withdrawn-books.md`](../handoffs/2026-09-23-vefur-remove-organic-and-retire-withdrawn-books.md); and on production, tell the editors or revoke organic access (§C190 ③ — a live leak path). Then efni's removal commit (§C190 ②), only after the site is verified down.**
