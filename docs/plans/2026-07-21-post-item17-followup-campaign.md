@@ -4,7 +4,27 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]: the rulings in ① (one sitting). Then the editor phase opens with ③, and ② runs alongside it, before the sync.**
+### ⏭ SINGLE NEXT ACTION — **Prepare the combined terminology + title ruling sheet (§C193 + §C192; 0 ISK) for [USER]'s one sitting. Then the development order in the ⚖️ line below.**
+
+⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
+1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
+2. **Bought terminology:** fixed by editors, and the re-buy option is given up. A ruling sheet is to be prepared.
+3. **§C192 titles:** settled on a sheet before the redirect rows. **Hand repair of the ruled title lines in `02-mt-output` is AUTHORISED.**
+4. **Figures:**
+   - **㉗:** the strict licence reading, like STIX.
+   - **⑭:** automated WebKit/Firefox screenshots plus a real iPad; `npx playwright install` is ALLOWED.
+5. **㊲:** fix the backup first, then keep figure review CLOSED on prod until the recompose pass is deployed.
+
+**Development order:**
+1. The ruling sheet.
+2. The paid-run guards.
+3. The top-up and the buy.
+4. The ㊲ fix and its deploy.
+5. The ㉗/⑭ composer changes.
+6. The single recompose pass.
+7. ②'s re-inject batch.
+
+Then ③ opens the editor phase.
 
 **Method.** Two runs:
 - 1,425 extracted ids → 293 verification units → 486 verdicts; 6 ground-truth probes.
