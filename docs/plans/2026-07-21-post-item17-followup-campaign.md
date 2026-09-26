@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **Prepare the combined terminology + title ruling sheet (§C193 + §C192; 0 ISK) for [USER]'s one sitting. Then the development order in the ⚖️ line below.**
+### ⏭ SINGLE NEXT ACTION — **[USER] answers the ruling sheet in one sitting: [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md) (§C192 + §C193 + a §C194 yes/no; prepared 2026-09-26, 0 ISK). Then record the answers as a decision record and continue with step 2 of the development order below.**
 
 ⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
 1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
@@ -16,7 +16,7 @@
 5. **㊲:** fix the backup first, then keep figure review CLOSED on prod until the recompose pass is deployed.
 
 **Development order:**
-1. The ruling sheet.
+1. The ruling sheet. ✅ **Prepared 2026-09-26; awaiting [USER]'s answers.**
 2. The paid-run guards.
 3. The top-up and the buy.
 4. The ㊲ fix and its deploy.
@@ -6792,6 +6792,12 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - ⚠️ **AND A2b's LICENCE TO BLOCK NARROWS: the base rate goes 0.000% → 4.3% (9/207), or 4.6% in the two-book sweep scope. Global Constraint 4's bar is ~5%** — so it keeps the licence by **0.4 points instead of 5**. State that beside the number; it is the difference between a comfortable gate and a marginal one.
   - ▶ **Ordering that follows from the above:** the 4 trivial edits and the 9-site `PRISTINE` fix are unambiguous and touch no gate. `bracket-delta-corpus` needs the fixture freeze **before** anything else moves under it. **§C174's two live defects are a separate [USER] ruling and are the only part that reaches a reader.**
 
+- **C194 · THE MT MISSPELLS *sameind* (molecule) AS *sámeind-* THROUGHOUT 8.4 (`m68747`, *Molecular Orbital Theory*), AND IT SHIPS AT THE SYNC** — **[USER]** yes/no + a hand repair — **P1 before the sync** — _found 2026-09-26 while building the §C192 title census._
+  - **Measured:** 27 `sámeind…` tokens (`grep -o | wc -l`) in `02-mt-output/ch08/m68747-segments.is.md` (*sámeind, sámeinda, sámeindir, sámeindasvigrúm…*, and the title *Sámeindasvigrúmskenningin*); 35 on the prepared 8.4 page, and 1 each on the ch08 intro, summary, answer key and exercises pages. No other module carries it.
+  - **Why no gate saw it:** the text is well-formed Icelandic-shaped prose, every marker survives, and the word is simply misspelt. Only a spelling or term check could see it, and §C193's census found it by accident: the 8.4 title missed the approved `molecular orbital → sameindasvigrúm` stem.
+  - **Route:** the 2026-09-26 authorisation covers the TITLE line only. The sheet's Part 0 asks [USER] to extend it to every `sámeind` in `m68747`. Then the ② re-inject and re-render. The alternative is an editor substitution once §C59 lands.
+  - _[severity: a misspelt core term on a whole section page · reader-visible: yes, at the sync · blocks: nothing]_
+
 - **C193 · APPROVED GLOSSARY ROWS THE PAID MT SPLIT OR OVERRODE, BOOK-WIDE — §C157 WAS ONLY EVER RUN ON ch06** — **[USER]** rulings + editor work — **P2** — _found 2026-09-26 by the wrap-up audit's completeness critic; census re-runnable from the audit evidence (memory `translation-wrapup-audit-2026-09-24`)._
   - **Measured 2026-09-26, over aligned segments (legacy (b)/(c)/(d) files excluded, stem substring):**
     - *stoichiometry*: 0 of 129 carry the approved *hlutfallaefnafræði*. The MT invented *efnismagnsfræði* (25) and *efnajöfnuhlutfall* (17).
@@ -6803,6 +6809,10 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - **Why it matters:**
     - It enlarges the already-bought remediation decision beyond P5's 420 pairs.
     - It defines how much false "missing term" noise the editor QA shows (§C50). Rule on it before that QA is put in front of editors.
+  - **2026-09-26 — the ruling sheet is prepared** → [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md). The census can be re-run: `node tools/chapter-term-check.js --book efnafraedi-2e --book-wide --min-segments 10 --threshold 0.35`.
+    - It flags 151 rows, not 41. The unit differs, not the finding: all domains and whole-word headwords, against chemistry-domain rows and substring matching.
+    - **The key column is "approved form anywhere in the book".** For most flagged real terms it is **0**, so "keep approved" means editors introduce a word the model never produced.
+    - 🔴 **Found while building it: `chapter-term-check --threshold` had been parsed with `parseInt` since the tool shipped (2026-09-19).** `0.8` became 0, and the check silently reported 0 candidates, exit 0. It is fixed and test-pinned on this branch; the default 0.5 path was never affected.
   - _[severity: terminology residue in bought text · reader-visible: yes · blocks: nothing, but sizes the editor cleanup]_
 
 - **C192 · CHAPTER AND SECTION TITLE REGRESSIONS WILL SHIP AT THE CHEMISTRY SYNC — AND §C183 CANNOT FIX THEM** — **[USER]** ruling + a hand repair or editor edit — **P1 before the sync** — _found 2026-09-26 by the wrap-up audit's completeness critic; chapter titles re-checked by hand the same day._
@@ -6820,6 +6830,7 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
     - a [USER]-approved hand repair of the READ-ONLY `02-mt-output` title segments (the ch06/ch07 section-title precedent), or
     - an editor edit once §C59 lands, because chapter-metadata edits apply without a chapter filter.
     - The §C183 top-up is additive and never touches an existing segment.
+  - **2026-09-26 — the ruling sheet covers every changed title, not only the instances above:** 7 of 21 chapter titles and 51 of 114 numbered section titles. If all are kept, 48 URLs move; if all are restored, 7 still move, because some live file names were rendered from an older title. 2.7 and 5.1 move URL whatever is ruled. Each row carries a default and a reason, and several titles follow a book-level term question. → [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md). The faithful overlay has only 1.1 and 3.1, and neither changed.
   - _[severity: wrong chapter titles · reader-visible: yes, at the sync · blocks: the redirect-row list]_
 
 - **C191 · SALVAGED FROM THE LAST ORGANIC VERIFICATION — BOOK-INDEPENDENT DEFECTS THE 2026-09-23 ch01 AGENTS FOUND, KEPT SO THEY DO NOT VANISH WITH THE BOOK** — **[CODE]** — **P3** — _logged 2026-09-23 from a 67-agent read-only verification of organic ch01 (6 lanes, 2 refuters per finding, a critic). Organic is stopped (§C190), so only what can touch chemistry is kept here._
