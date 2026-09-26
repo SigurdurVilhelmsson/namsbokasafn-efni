@@ -3,14 +3,16 @@
 > **For [USER], one sitting. Prepared 2026-09-26, 0 ISK, read-only.** Once answered, this file is
 > *evidence*: the answers go into a decision record under `docs/decisions/`, and status stays in the
 > active register. Every number below was generated from the census commands in § Provenance; none
-> was typed by hand.
+> was typed by hand. Updated the same day from the live-vs-re-MT comparison
+> ([`2026-09-26-live-vs-remt-terminology-comparison.md`](2026-09-26-live-vs-remt-terminology-comparison.md)):
+> K6 *kinetics* was added, and five *adopt* defaults became *ask* where live was clearly more consistent.
 
 ## How to answer
 
 Every row has a **default**. Reply with **exceptions only** — e.g. `K3 raflausn`, `T 9.6 keep new`,
 `A radius keep`, `H plasma is right`. A class with no exceptions is accepted as a whole.
 
-**Rows that need a real reading: 5 book-level questions + 7 chapter titles + 51 section titles + 59 adopt-or-keep terms.** The other 82 term rows are one tick per class.
+**Rows that need a real reading: 6 book-level questions + 7 chapter titles + 51 section titles + 59 adopt-or-keep terms.** The other 82 term rows are one tick per class.
 
 **What each answer does** (nothing is applied until you answer):
 
@@ -113,6 +115,16 @@ Approved rows use *-hamur* (*vökvahamur*, *storkuhamur*, *gashamur*); the MT wr
 Options: keep *-hamur* for states, *fasi* for phases · adopt the MT's *ástand/form* · other.
 
 **Default:** your call; **10.3 restores *Fasabreytingar* regardless**, because it is already ruled.
+
+### K6 · kinetics
+
+*kinetics* → keep **hraðafræði** (approved, concept 4812)?
+
+Not flagged by the census, because 7 of 21 re-MT paragraphs still carry *hraðafræði*. But the live-vs-re-MT comparison found the re-MT collapsing it onto *efnahvörf* (**reactions**) in ~10 paragraphs, e.g. "the kinetics chapter" → *kaflanum um efnahvörf*, and onto *hreyfifræði* (**kinematics**) in 2. That is the same wrong-sense class as the **ch12** title. Live wrote *hraðafræði* or *efnahvarfafræði*.
+
+Options: keep *hraðafræði* (editors fix the collapses) · other.
+
+**Default:** keep *hraðafræði* — the collapses are wrong-sense, so editors fix them whatever else is ruled.
 
 ## Part 2 — titles (§C192)
 
@@ -227,8 +239,8 @@ with no split of one word's forms noted, so read those.
 | soluble | auðleystur | 0 | 0/102 | leysanleg 84%, vatni 32%, örlítið 19% | *leysanlegur* | adopt | pair with *insoluble* |
 | atomic orbital | frumeindasvigrúm | 0 | 0/83 | atómsvigrúm 93%, skörun 20%, svigrúm 27% | *atómsvigrúm* | adopt | §C157 |
 | vapor pressure | gufunarþrýstingur | 4 | 4/83 | gufuþrýstingur 94%, hitastig 38%, vökva 28% | *gufuþrýstingur* | adopt |  |
-| cathode | katóða | 12 | 11/78 | bakskaut 85%, forskaut 49%, rafskaut 27% | *bakskaut* | adopt | family with *anode/electrode* |
-| anode | anóða | 19 | 19/74 | bakskaut 80%, forskaut 65%, rafskaut 31% | *forskaut* | adopt | family; the top MT word is *bakskaut* only because anode and cathode share sentences |
+| cathode | katóða | 12 | 11/78 | bakskaut 85%, forskaut 49%, rafskaut 27% | *bakskaut* | **ask** | family with *anode/electrode*; live was more consistent (see the live-vs-re-MT comparison): *katóða* 98% |
+| anode | anóða | 19 | 19/74 | bakskaut 80%, forskaut 65%, rafskaut 31% | *forskaut* | **ask** | family; live was more consistent (see the live-vs-re-MT comparison): *anóða* 96%, and the re-MT reaches *forskaut* in only 55% |
 | electrode | raftroð | 0 | 0/72 | rafskaut 65%, bakskaut 26%, forskaut 19% | *rafskaut* | adopt | family; decides **17.3** too |
 | radius | geisli | 344 | 3/70 | radíus 60%, atómradíus 30%, yfir 18% | *radíus* | **ask** | §C157 (33/35 in ch06); *geisli* also means *ray* |
 | crystalline | kristallskenndur | 0 | 0/66 | kristallað 65%, kristölluðu 36%, efni 48% | *kristallaður* | adopt | pair with *crystalline solid* |
@@ -242,18 +254,18 @@ with no split of one word's forms noted, so read those.
 | chemical properties | efnaeiginleikar | 6 | 5/34 | efnafræðilega 100%, eiginleika 100%, hafa 66% | *efnafræðilegir eiginleikar* | adopt |  |
 | mole fraction | mólhlutfall | 11 | 2/33 | mólbrot 71%, mólalstyrkur 26%, mólbroti 19% | *mólbrot* | adopt |  |
 | osmotic pressure | flæðiþrýstingur | 0 | 0/33 | osmósuþrýstingur 100%, kjörlausn 27%, osmósa 18% | *osmósuþrýstingur* | adopt | pair with *osmosis* |
-| binding energy | bindiorka | 0 | 0/32 | bindisorka 44%, kjarneind 41%, hverja 38% | *bindisorka* | adopt | one letter |
+| binding energy | bindiorka | 0 | 0/32 | bindisorka 44%, kjarneind 41%, hverja 38% | *bindisorka* | **ask** | one letter; live was more consistent (see the live-vs-re-MT comparison): *bindiorka* 100% |
 | nucleon | kjarnaeind | 7 | 7/31 | kjarneind 88%, bindisorka 42%, hverja 46% | *kjarneind* | adopt | one letter |
 | conversion factor | umreiknistuðull | 0 | 0/29 | umreikningsstuðlar 93%, einingar 21%, nota 28% | *umreikningsstuðull* | adopt |  |
 | node | nóða | 19 | 0/27 | hnútur 26%, andbindandi 30%, geislahnúta 22% | *hnútur* | adopt | §C157 (13/13 in ch06); short word, so its forms split the share |
 | vertical axis | lóðás | 0 | 0/27 | lóðrétti 78%, ásinn 89%, línurit 78% | *lóðréttur ás* | adopt |  |
-| calorie | kaloría | 9 | 9/26 | hitaeining 88%, næringargildi 47%, meðalfjöldi 29% | *hitaeining* | adopt |  |
+| calorie | kaloría | 9 | 9/26 | hitaeining 88%, næringargildi 47%, meðalfjöldi 29% | *hitaeining* | **ask** | live was more consistent (see the live-vs-re-MT comparison): *kaloría* 100% |
 | intermolecular forces | millisameindakraftar | 7 | 3/26 | millikrafta 48%, sameinda 65%, milli 65% | *millikraftar* | **ask** | decides **10.1** too |
 | quantitative | magnbundinn | 8 | 5/25 | megindleg 95%, efnagreining 25%, þættir 25% | *megindlegur* | adopt | decides **4.5** too |
 | titrant | títrantur | 2 | 2/24 | títrunarvökva 100%, rúmmál 64%, jafngildispunkt 45% | *títrunarvökvi* | adopt |  |
 | alloy | melmi | 0 | 0/23 | málmblöndur 61%, málmblanda 22%, stál 22% | *málmblanda* | adopt | two forms of one lemma split the share (*málmblöndur*/*málmblanda*) |
 | bent | beygður | 5 | 3/23 | bogin 55%, línuleg 35%, hornlaga 25% | *boginn* | **ask** |  |
-| percent yield | prósentuheimtur | 7 | 7/23 | prósentunýtni 63%, fræðileg 38%, nýtni 31% | *prósentunýtni* | **ask** |  |
+| percent yield | prósentuheimtur | 7 | 7/23 | prósentunýtni 63%, fræðileg 38%, nýtni 31% | *prósentunýtni* | **ask** | live was more consistent (see the live-vs-re-MT comparison): *prósentuheimtur* 100% |
 | bond energy | tengjaorka | 0 | 0/22 | tengisorka 91%, rjúfa 18%, tengi 27% | *tengisorka* | adopt | §C165 |
 | effusion | útsveim | 0 | 0/22 | útstreymi 100%, lofttegunda 45%, grahams 32% | *útstreymi* | adopt | live and prepared **9.4** both already use it |
 | polyatomic ion | fjölfrumeinda jón | 2 | 1/21 | fjölatóma 85%, jónir 55%, innihalda 55% | *fjölatóma jón* | adopt |  |

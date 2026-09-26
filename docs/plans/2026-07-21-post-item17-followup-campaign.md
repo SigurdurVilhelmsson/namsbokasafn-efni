@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **[USER] answers the ruling sheet in one sitting: [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md) (§C192 + §C193 + a §C194 yes/no; prepared 2026-09-26, 0 ISK). Then record the answers as a decision record and continue with step 2 of the development order below.**
+### ⏭ SINGLE NEXT ACTION — **[USER] answers the ruling sheet in one sitting: [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md) (§C192 + §C193 + a §C194 yes/no; prepared 2026-09-26, 0 ISK). Read it alongside [`docs/handoffs/2026-09-26-live-vs-remt-terminology-comparison.md`](../handoffs/2026-09-26-live-vs-remt-terminology-comparison.md), which answers whether the unedited live text is better: **no, not overall**, but it is better on the sheet's book-level terms. Then record the answers as a decision record and continue with step 2 of the development order below.**
 
 ⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
 1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
@@ -6791,6 +6791,20 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - ⚠️ **A2b IS BLOCKING AND ITS 9 FAILS ARE REAL — ALL organic `ch12/m00134..m00142`, leg `cross-side`, EN/IS parsed 13/12 · 16/11 · 28/22 · 43/29 · 7/6 · 25/21 · 9/7 · 104/100 · 99/78.** Those deltas sum to **58 — the entire residual EN−IS id gap** (30,773 − 30,715). It is **pure vintage drift**: the IS bytes are 2026-08-12, the EN was re-extracted 2026-09-01. ✅ **It halts nothing today** — `scripts/chemistry-autorun-chapter.sh` contains **0** references to `remt`/`battery` (positive control: 2 `api-translate`, 13 `node tools/`) — but it would halt a per-unit driver that pre-flights tier 2, **i.e. exactly the organic loop being prepared**. ▶ **Buying organic ch12 dissolves it** by regenerating the IS side from today's EN. ⚠️ **If A2b is instead re-pinned with a 9-name allowlist, pin the `{enParsed, isParsed}` PAIRS, not the filenames** — otherwise further damage in those nine files hides behind the allowlist, and `cross-side` is the only defence against post-write damage.
   - ⚠️ **AND A2b's LICENCE TO BLOCK NARROWS: the base rate goes 0.000% → 4.3% (9/207), or 4.6% in the two-book sweep scope. Global Constraint 4's bar is ~5%** — so it keeps the licence by **0.4 points instead of 5**. State that beside the number; it is the difference between a comfortable gate and a marginal one.
   - ▶ **Ordering that follows from the above:** the 4 trivial edits and the 9-site `PRISTINE` fix are unambiguous and touch no gate. `bracket-delta-corpus` needs the fixture freeze **before** anything else moves under it. **§C174's two live defects are a separate [USER] ruling and are the only part that reaches a reader.**
+
+- **C195 · SEVEN ch21 PROSE SEGMENTS CAME BACK FROM THE PAID MT IN ENGLISH, AND SHIP AT THE SYNC** — **[USER]** route + a repair — **P1 before the sync** — _found 2026-09-26 by the live-vs-re-MT comparison._
+  - **Measured:** a whole-book census of `02-mt-output` segments identical to their English and prose-shaped (≥ 4 English function words) finds **8**.
+    - The positive control is the one already logged: ch08 `m68744:para:fs-idp92007424`, the π-bond definition, which came back English on two paid attempts (see the 8,080-segment census above).
+    - The **7 new ones are all ch21:** `m68852` (21.2) paras `fs-idp10810528`, `fs-idm5999248`, `fs-idp183438528`, `fs-idp1433408`, plus alt `fs-idp74884384-alt` and item `fs-idp258853168-item-1`; and `m68856` (21.4) para `fs-idm211204656`.
+    - That earlier census predates the ch21 buy, which is why these are new.
+  - **Reader-visible:** the prepared 21.2 and 21.4 pages show whole English paragraphs, with only the figure reference translated. Live has them in Icelandic.
+  - **Route:** choose one of
+    - a targeted `--force --module` re-buy of those segments (the second π-bond attempt suggests a retry may not take);
+    - a [USER]-authorised hand translation into `02-mt-output`;
+    - an editor edit once §C59 lands.
+    
+    The live Icelandic of the same paragraphs, from the unedited old MT, is a free starting point for a hand repair.
+  - _[severity: untranslated paragraphs · reader-visible: yes, at the sync · blocks: nothing]_
 
 - **C194 · THE MT MISSPELLS *sameind* (molecule) AS *sámeind-* THROUGHOUT 8.4 (`m68747`, *Molecular Orbital Theory*), AND IT SHIPS AT THE SYNC** — **[USER]** yes/no + a hand repair — **P1 before the sync** — _found 2026-09-26 while building the §C192 title census._
   - **Measured:** 27 `sámeind…` tokens (`grep -o | wc -l`) in `02-mt-output/ch08/m68747-segments.is.md` (*sámeind, sámeinda, sámeindir, sámeindasvigrúm…*, and the title *Sámeindasvigrúmskenningin*); 35 on the prepared 8.4 page, and 1 each on the ch08 intro, summary, answer key and exercises pages. No other module carries it.
