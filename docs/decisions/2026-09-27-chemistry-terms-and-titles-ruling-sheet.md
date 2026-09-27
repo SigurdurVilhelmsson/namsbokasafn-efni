@@ -144,3 +144,16 @@ migration 051, which is why CLAUDE.md sends a ruled value to the file the code r
    reverted on boot.
 3. **Leave titles as the re-MT wrote them.** Rejected: several carry exactly the terms ruled here, and every
    later fix would rename a live page again.
+
+---
+
+## Addendum — the two held items, answered 2026-09-27
+
+1. **Part 0: YES.** [USER] authorises the hand repair of every *sámeind* → *sameind* in
+   `books/efnafraedi-2e/02-mt-output/ch08/m68747-segments.is.md` (§C194), in addition to the 8.4 title line.
+   It covers the misspelling only. Any other wording in that module is left for editors.
+2. **Electrode: raftroð.** [USER] reversed the sheet's default (*adopt rafskaut*), so the approved row stands
+   and editors substitute. **17.3 therefore restores the live title *Raftroðs- og kerspenna***, not *Rafskauts-*.
+   It is consistent with the named electrochemistry rulings: *anóða*, *katóða*, *fórnaranóða*, *katóðuvörn*.
+
+The lemma reading above (*auðleystur, torleystur, kristalkenndur*) was not corrected, so it stands.

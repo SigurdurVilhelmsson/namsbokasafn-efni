@@ -5,7 +5,7 @@
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
 ### ⏭ SINGLE NEXT ACTION — **Apply the ruling sheet, which [USER] answered on 2026-09-27** → [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). All 0 ISK:
-1. Get an **explicit yes on the sheet's Part 0** (§C194 body repair). It was not ruled, and silence is not taken as consent for a READ-ONLY-tree edit.
+1. ~~Get an explicit yes on the sheet's Part 0~~ → **YES, and electrode = *raftroð*** (addendum to the same record, 2026-09-27).
 2. `houseStyleTerms.js` entries for the eight changed rows and the adopted A-row words. This is code, so it reaches the export only after a deploy.
 3. Hand repair of the ruled title lines in `02-mt-output`.
 4. Then the redirect rows.
