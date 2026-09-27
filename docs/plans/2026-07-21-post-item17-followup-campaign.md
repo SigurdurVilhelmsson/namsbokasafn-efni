@@ -4,13 +4,13 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **Apply the ruling sheet, which [USER] answered on 2026-09-27** → [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). All 0 ISK:
-1. ~~Get an explicit yes on the sheet's Part 0~~ → **YES, and electrode = *raftroð*** (addendum to the same record, 2026-09-27).
-2. `houseStyleTerms.js` entries for the eight changed rows and the adopted A-row words. This is code, so it reaches the export only after a deploy.
-3. Hand repair of the ruled title lines in `02-mt-output`.
-4. Then the redirect rows.
-
-After that, step 2 of the development order below. **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
+### ⏭ SINGLE NEXT ACTION — **The ruling sheet is APPLIED (2026-09-27, 0 ISK). Next: hand the 20 chemistry redirect rows to vefur** ([`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md), replacing the 09-20 list). They must land BEFORE the chemistry sync. **Then step 2 of the development order below.**
+- ✅ Decision + addendum: [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Part 0 = yes; electrode stays *raftroð*.
+- ✅ Hand repair `f313fee32`: 53 title lines (34 section, 12 intro-list, 7 chapter) + §C194 in `m68747`. Readers get it at the ② re-inject/re-render.
+- ✅ `houseStyleTerms.js` `ed9b62e4e`: the eight concept-row changes. **It is code, so it reaches the export only after a deploy.**
+- ⏸ **Open:** where the ~30 *adopted* A-row words should live (see §C193).
+- **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
+ **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
 
 ⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
 1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
@@ -6816,6 +6816,7 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - **Measured:** 27 `sámeind…` tokens (`grep -o | wc -l`) in `02-mt-output/ch08/m68747-segments.is.md` (*sámeind, sámeinda, sámeindir, sámeindasvigrúm…*, and the title *Sámeindasvigrúmskenningin*); 35 on the prepared 8.4 page, and 1 each on the ch08 intro, summary, answer key and exercises pages. No other module carries it.
   - **Why no gate saw it:** the text is well-formed Icelandic-shaped prose, every marker survives, and the word is simply misspelt. Only a spelling or term check could see it, and §C193's census found it by accident: the 8.4 title missed the approved `molecular orbital → sameindasvigrúm` stem.
   - **Route:** the 2026-09-26 authorisation covers the TITLE line only. The sheet's Part 0 asks [USER] to extend it to every `sámeind` in `m68747`. Then the ② re-inject and re-render. The alternative is an editor substitution once §C59 lands.
+  - ✅ **Repaired in source 2026-09-27 (`f313fee32`, [USER] yes):** 27 → 0. It reaches readers at the ② re-render. 8.4's title is the live *Sameindasvigrúmakenningin* (*-a-*), while the body reads *sameindasvigrúms-*; editors reconcile that split.
   - _[severity: a misspelt core term on a whole section page · reader-visible: yes, at the sync · blocks: nothing]_
 
 - **C193 · APPROVED GLOSSARY ROWS THE PAID MT SPLIT OR OVERRODE, BOOK-WIDE — §C157 WAS ONLY EVER RUN ON ch06** — **[USER]** rulings + editor work — **P2** — _found 2026-09-26 by the wrap-up audit's completeness critic; census re-runnable from the audit evidence (memory `translation-wrapup-audit-2026-09-24`)._
@@ -6833,7 +6834,10 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
     - It flags 151 rows, not 41. The unit differs, not the finding: all domains and whole-word headwords, against chemistry-domain rows and substring matching.
     - **The key column is "approved form anywhere in the book".** For most flagged real terms it is **0**, so "keep approved" means editors introduce a word the model never produced.
     - 🔴 **Found while building it: `chapter-term-check --threshold` had been parsed with `parseInt` since the tool shipped (2026-09-19).** `0.8` became 0, and the check silently reported 0 candidates, exit 0. It is fixed and test-pinned on this branch; the default 0.5 path was never affected.
-  - ⚖️ **RULED 2026-09-27** → [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Most named terms KEEP the approved row, so editors substitute. Eight concept rows change, via `houseStyleTerms.js`.
+  - ⚖️ **RULED 2026-09-27** → [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Most named terms KEEP the approved row, so editors substitute. Eight concept rows change via `houseStyleTerms.js` (✅ `ed9b62e4e`, **awaiting a deploy**).
+  - ⏸ **OPEN, routing only, 0 ISK to defer: the ~30 A-row words [USER] adopted by default** (*atómsvigrúm, gufuþrýstingur, hraðalögmál, tvískautsvægi …*) have no concept-model entry yet.
+    - `server/__tests__/houseStyleTerms2026-09-23.test.js` deliberately pins that `atomic orbital` has **no** house-style entry: a house row is global to the chemistry domain, while a per-book choice belongs in `book_term_preference` (an editor action on prod).
+    - So: house-style or book preference? The glossary is off the MT wire, so these rows affect only the editor QA, whose population ③ defines. Decide it there; do not edit the pinned control to make room.
   - _[severity: terminology residue in bought text · reader-visible: yes · blocks: nothing, but sizes the editor cleanup]_
 
 - **C192 · CHAPTER AND SECTION TITLE REGRESSIONS WILL SHIP AT THE CHEMISTRY SYNC — AND §C183 CANNOT FIX THEM** — **[USER]** ruling + a hand repair or editor edit — **P1 before the sync** — _found 2026-09-26 by the wrap-up audit's completeness critic; chapter titles re-checked by hand the same day._
@@ -6852,7 +6856,7 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
     - an editor edit once §C59 lands, because chapter-metadata edits apply without a chapter filter.
     - The §C183 top-up is additive and never touches an existing segment.
   - **2026-09-26 — the ruling sheet covers every changed title, not only the instances above:** 7 of 21 chapter titles and 51 of 114 numbered section titles. If all are kept, 48 URLs move; if all are restored, 7 still move, because some live file names were rendered from an older title. 2.7 and 5.1 move URL whatever is ruled. Each row carries a default and a reason, and several titles follow a book-level term question. → [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md). The faithful overlay has only 1.1 and 3.1, and neither changed.
-  - ⚖️ **RULED 2026-09-27** (same record). Three titles were named (2.6, 4.5, 10.1), eleven follow a book-level or term ruling, and the rest take the sheet's defaults. Next: the hand repair, then the redirect rows.
+  - ⚖️ **RULED 2026-09-27** (same record). ✅ **Hand-repaired in `f313fee32`**; the pages move at the ② re-render. ✅ **Redirect rows computed: 20** (the audit's 62 predate the rulings) → [`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md). vefur's 2 existing chemistry rows stay correct.
   - _[severity: wrong chapter titles · reader-visible: yes, at the sync · blocks: the redirect-row list]_
 
 - **C191 · SALVAGED FROM THE LAST ORGANIC VERIFICATION — BOOK-INDEPENDENT DEFECTS THE 2026-09-23 ch01 AGENTS FOUND, KEPT SO THEY DO NOT VANISH WITH THE BOOK** — **[CODE]** — **P3** — _logged 2026-09-23 from a 67-agent read-only verification of organic ch01 (6 lanes, 2 refuters per finding, a critic). Organic is stopped (§C190), so only what can touch chemistry is kept here._

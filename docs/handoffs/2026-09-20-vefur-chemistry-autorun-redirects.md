@@ -1,5 +1,8 @@
 # vefur redirect rows — chemistry autorun (2026-09-20 →)
 
+> ⛔ **SUPERSEDED 2026-09-27 — do not land these rows.** [USER]'s title rulings restored many live titles, so
+> this list is stale. Use [`2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](2026-09-27-vefur-chemistry-redirects-after-title-rulings.md).
+
 **For `../namsbokasafn-vefur/src/lib/data/sectionRedirects.ts`.** One section per chapter, appended
 as the run renames pages. Each row is `from` → `to` with the module id.
 
