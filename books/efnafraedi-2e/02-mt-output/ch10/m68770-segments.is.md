@@ -1,5 +1,5 @@
 <!-- SEG:m68770:title:auto-1 -->
-Fast efni
+Fastur efnishamur
 
 <!-- SEG:m68770:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

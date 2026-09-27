@@ -1,5 +1,5 @@
 <!-- SEG:m68713:title:auto-1 -->
-Efnajöfnuhlutfall
+Hlutfallaefnafræði efnahvarfa
 
 <!-- SEG:m68713:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

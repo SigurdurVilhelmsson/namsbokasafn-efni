@@ -1,5 +1,5 @@
 <!-- SEG:m68751:title:auto-1 -->
-Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið
+Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið
 
 <!-- SEG:m68751:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

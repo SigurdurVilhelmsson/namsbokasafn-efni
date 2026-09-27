@@ -1,5 +1,5 @@
 <!-- SEG:m68787:title:auto-1 -->
-Þættir sem hafa áhrif á efnahvarfshraða
+Þættir sem hafa áhrif á hvarfhraða
 
 <!-- SEG:m68787:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

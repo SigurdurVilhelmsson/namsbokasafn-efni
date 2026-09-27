@@ -2,7 +2,7 @@
 Inngangur
 
 <!-- SEG:m68785:abstract-item:abstract-item-1 -->
-Hraði efnahvarfa
+Hvarfhraði efnahvarfa
 
 <!-- SEG:m68785:abstract-item:abstract-item-2 -->
 Þættir sem hafa áhrif á hvarfhraða

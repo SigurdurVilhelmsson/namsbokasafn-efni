@@ -1,5 +1,5 @@
 <!-- SEG:m68786:title:auto-1 -->
-Hraði efnahvarfa
+Hvarfhraði efnahvarfa
 
 <!-- SEG:m68786:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla muntu geta:

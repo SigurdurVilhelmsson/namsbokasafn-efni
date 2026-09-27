@@ -14,7 +14,7 @@ Magnhlutföll efnahvarfa
 Heimtur efnahvarfa
 
 <!-- SEG:m68730:abstract-item:abstract-item-5 -->
-Megindleg efnagreining
+Magnbundin efnagreining
 
 <!-- SEG:m68730:caption:CNX_Chem_04_00_Rocket-caption -->
 Mörg nútíma eldflaugaeldsneyti eru fastar blöndur efna sem blandað er saman í vandlega mældu magni og kveikt í til að mynda efnahvarf sem skapar þrýstikraft. (heimild: breytt útgáfa af verki NASA)

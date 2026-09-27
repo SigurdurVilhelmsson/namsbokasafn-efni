@@ -1,5 +1,5 @@
 <!-- SEG:m68683:title:auto-1 -->
-Stærðfræðileg meðferð mæliniðurstaðna
+Stærðfræðileg meðferð á niðurstöðum mælinga
 
 <!-- SEG:m68683:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

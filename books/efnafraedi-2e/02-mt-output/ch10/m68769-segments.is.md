@@ -1,5 +1,5 @@
 <!-- SEG:m68769:title:auto-1 -->
-Fasamyndir
+Fasarit
 
 <!-- SEG:m68769:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

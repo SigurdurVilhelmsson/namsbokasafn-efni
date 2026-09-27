@@ -8,7 +8,7 @@ Lotubundnir eiginleikar
 Tilvist og framleiðsla aðalflokkamálma
 
 <!-- SEG:m68828:abstract-item:abstract-item-3 -->
-Bygging og almennir eiginleikar málmunga
+Uppbygging og almennir eiginleikar hálfmálma
 
 <!-- SEG:m68828:abstract-item:abstract-item-4 -->
 Bygging og almennir eiginleikar málmleysingja
@@ -35,7 +35,7 @@ Tilvist, framleiðsla og eiginleikar brennisteins
 Tilvist, framleiðsla og eiginleikar halógena
 
 <!-- SEG:m68828:abstract-item:abstract-item-12 -->
-Tilvist, framleiðsla og eiginleikar eðallofttegunda
+Tilvist, framleiðsla og eiginleikar eðalgastegunda
 
 <!-- SEG:m68828:caption:CNX_Chem_18_00_SilWafer-caption -->
 Hreinleiki er afar mikilvægur við framleiðslu kísilplatna. Tæknimenn í hreinherbergi framleiða kísil án óhreininda (til vinstri). Don Hutcheson, forstjóri VLSI Research, sýnir hreina kísilplötu (í miðjunni). Kísilplata þakin Pentium-örgjörvum er stækkuð útgáfa af kísilplötunum sem finnast í mörgum raftækjum sem notuð eru í dag (til hægri). (heimild fyrir miðmynd: breytt útgáfa af verki eftir „Intel Free Press“/Flickr; heimild fyrir hægri mynd: breytt útgáfa af verki eftir Naotake Murayama)

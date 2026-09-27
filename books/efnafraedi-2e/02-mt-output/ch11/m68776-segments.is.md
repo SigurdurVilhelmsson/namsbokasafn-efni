@@ -5,7 +5,7 @@ Inngangur
 Upplausnarferlið
 
 <!-- SEG:m68776:abstract-item:abstract-item-2 -->
-Rafleiðar
+Rafkleyfar
 
 <!-- SEG:m68776:abstract-item:abstract-item-3 -->
 Leysni

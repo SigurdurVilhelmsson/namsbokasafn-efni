@@ -1,5 +1,5 @@
 <!-- SEG:m68823:title:auto-1 -->
-Rafskauts- og kerspenna
+Raftroðs- og kerspenna
 
 <!-- SEG:m68823:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

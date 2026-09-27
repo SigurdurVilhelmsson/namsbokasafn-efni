@@ -14,7 +14,7 @@ Geislasundrun
 Frumefnabreyting og kjarnorka
 
 <!-- SEG:m68850:abstract-item:abstract-item-5 -->
-Notkun geislasamsætna
+Notkun geislasamsæta
 
 <!-- SEG:m68850:abstract-item:abstract-item-6 -->
 Líffræðileg áhrif geislunar

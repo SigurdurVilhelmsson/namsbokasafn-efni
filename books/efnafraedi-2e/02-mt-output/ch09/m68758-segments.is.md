@@ -1,5 +1,5 @@
 <!-- SEG:m68758:title:auto-1 -->
-Hreyfi-sameindakenningin
+Hreyfiorkukenningin
 
 <!-- SEG:m68758:abstract-item:abstract-item-1 -->
 Tilgreindu grundvallarsetningar hreyfi-sameindakenningarinnar

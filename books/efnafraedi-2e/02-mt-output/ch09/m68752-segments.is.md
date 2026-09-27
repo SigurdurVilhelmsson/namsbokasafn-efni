@@ -1,5 +1,5 @@
 <!-- SEG:m68752:title:auto-1 -->
-Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa
+Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa
 
 <!-- SEG:m68752:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

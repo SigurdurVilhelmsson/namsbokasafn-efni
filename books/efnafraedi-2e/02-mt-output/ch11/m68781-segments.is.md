@@ -1,5 +1,5 @@
 <!-- SEG:m68781:title:auto-1 -->
-Rafleiðar
+Rafkleyfar
 
 <!-- SEG:m68781:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla muntu geta:

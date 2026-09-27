@@ -1,5 +1,5 @@
 <!-- SEG:m68791:title:auto-1 -->
-Heildunarhraðalögmál
+Heilduð hraðalögmál
 
 <!-- SEG:m68791:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

@@ -1,5 +1,5 @@
 <!-- SEG:m68805:title:auto-1 -->
-Afstæður styrkur sýra og basa
+Hlutfallslegur styrkur sýra og basa
 
 <!-- SEG:m68805:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

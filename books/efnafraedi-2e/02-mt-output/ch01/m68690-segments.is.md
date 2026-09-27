@@ -1,5 +1,5 @@
 <!-- SEG:m68690:title:auto-1 -->
-Mælióvissa, nákvæmni og genkvæmni
+Óvissa í mælingum, hittni og nákvæmni
 
 <!-- SEG:m68690:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla munt þú geta:

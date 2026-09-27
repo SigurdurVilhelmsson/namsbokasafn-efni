@@ -1,5 +1,5 @@
 <!-- SEG:m68848:title:auto-1 -->
-Aldehýð, ketónar, karboxýlsýrur og esterar
+Aldehýð, ketón, karboxýlsýrur og estrar
 
 <!-- SEG:m68848:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla muntu geta:

@@ -1,5 +1,5 @@
 <!-- SEG:m68667:title:auto-1 -->
-Ástandsform og flokkun efnis
+Efnishamir og flokkun efnis
 
 <!-- SEG:m68667:abstract:auto-2 -->
 Þegar þú hefur lokið þessum kafla muntu geta:

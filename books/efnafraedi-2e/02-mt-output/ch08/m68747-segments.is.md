@@ -1,32 +1,32 @@
 <!-- SEG:m68747:title:auto-1 -->
-Sámeindasvigrúmskenningin
+Sameindasvigrúmakenningin
 
 <!-- SEG:m68747:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68747:abstract-item:abstract-item-1 -->
-Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sámeindasvigrúm út frá atómsvigrúmum
+Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sameindasvigrúm út frá atómsvigrúmum
 
 <!-- SEG:m68747:abstract-item:abstract-item-2 -->
-Lýst eiginleikum bindandi og andbindandi sámeindasvigrúma
+Lýst eiginleikum bindandi og andbindandi sameindasvigrúma
 
 <!-- SEG:m68747:abstract-item:abstract-item-3 -->
-Reiknað tengiraðir út frá rafeindaskipan sámeinda
+Reiknað tengiraðir út frá rafeindaskipan sameinda
 
 <!-- SEG:m68747:abstract-item:abstract-item-4 -->
-Skrifað rafeindaskipan sámeinda fyrir tvíatóma sámeindir úr fyrstu og annarri lotu
+Skrifað rafeindaskipan sameinda fyrir tvíatóma sameindir úr fyrstu og annarri lotu
 
 <!-- SEG:m68747:abstract-item:abstract-item-5 -->
-Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sámeindanna
+Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sameindanna
 
 <!-- SEG:m68747:para:fs-idm108621792 -->
-Fyrir næstum allar samgildar sámeindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sámeindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sámeindin sem við þekkjum, súrefnissámeindin O[[sub:2]], vandamáli hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:
+Fyrir næstum allar samgildar sameindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sameindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sameindin sem við þekkjum, súrefnissameindin O[[sub:2]], vandamáli hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:
 
 <!-- SEG:m68747:alt:fs-idm39755904-alt -->
 Lewis-mynd er sýnd. Hún er samsett úr tveimur súrefnisatómum, hvort með tvö stök rafeindapör, sem eru tengd saman með tvítengi.
 
 <!-- SEG:m68747:para:fs-idm179265392 -->
-Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hvert súrefnisatóm hefur átta rafeindir í kringum sig. Þessi mynd er þó í andstöðu við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það saman milli póla segulsins og ögrar þyngdaraflinu, eins og í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður [[term:hjásegulmagn|term-00001]] og kemur fram í sámeindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig útskýrum við þetta misræmi?
+Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hvert súrefnisatóm hefur átta rafeindir í kringum sig. Þessi mynd er þó í andstöðu við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það saman milli póla segulsins og ögrar þyngdaraflinu, eins og í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður [[term:hjásegulmagn|term-00001]] og kemur fram í sameindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig útskýrum við þetta misræmi?
 
 <!-- SEG:m68747:para:fs-idm140344208 -->
 Segulnæmi mælir kraftinn sem efni verður fyrir í segulsviði. Þegar við berum saman þyngd sýnis við þyngdina sem mæld er í segulsviði ([[xref:CNX_Chem_08_04_Gouy]]), munu hjásegulmögnuð sýni sem dragast að seglinum virðast þyngri vegna kraftsins sem segulsviðið beitir. Við getum reiknað út fjölda óparaðra rafeinda út frá þyngdaraukningunni.
@@ -38,13 +38,13 @@ Segulnæmi mælir kraftinn sem efni verður fyrir í segulsviði. Þegar við be
 Myndin sýnir stand sem styður tvo hluti sem haldið er í jafnvægi með láréttri slá. Hægra megin styður sláin skál sem heldur tveimur lóðum. Vinstra megin er lína fest við tilraunaglas merkt „Sýnisglas“. Tilraunaglasið hefur verið látið síga niður í rýmið merkt „Segulsvið“, á milli tveggja mannvirkja merkt „Rafseglar“.
 
 <!-- SEG:m68747:para:fs-idm167869376 -->
-Tilraunir sýna að hver O[[sub:2]] sámeind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja óparaðra rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sámeinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru [[term:mótsegulmögnuð|term-00003]] og hrinda segulsviði veiklega frá sér. Hjásegulmögnuð og mótsegulmögnuð efni virka ekki sem varanlegir seglar. Aðeins í viðurvist ytra segulsviðs sýna þau aðdrátt eða fráhrindingu.
+Tilraunir sýna að hver O[[sub:2]] sameind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja óparaðra rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sameinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru [[term:mótsegulmögnuð|term-00003]] og hrinda segulsviði veiklega frá sér. Hjásegulmögnuð og mótsegulmögnuð efni virka ekki sem varanlegir seglar. Aðeins í viðurvist ytra segulsviðs sýna þau aðdrátt eða fráhrindingu.
 
 <!-- SEG:m68747:para:fs-idm182773888 -->
 Horfðu á þetta [[link:stutta myndband|http://openstax.org/l/16diamagnetic]] til að sjá nokkrar sýnikennslur á hjásegulmagnaðri og mótsegulmagnaðri hegðun.
 
 <!-- SEG:m68747:para:fs-idm112096224 -->
-Sámeindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissámeindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sámeindum, svo sem brot á áttureglunni og flóknari sámeindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sámeind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sámeindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sámeindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sámeinda.
+Sameindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissameindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sameindum, svo sem brot á áttureglunni og flóknari sameindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sameind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sameindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sameindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sameinda.
 
 <!-- SEG:m68747:entry:auto-17 -->
 Samanburður á tengjakenningum
@@ -53,19 +53,19 @@ Samanburður á tengjakenningum
 Gildisrafeindatengjakenningin
 
 <!-- SEG:m68747:entry:auto-19 -->
-Sámeindasvigrúmskenningin
+Sameindasvigrúmskenningin
 
 <!-- SEG:m68747:entry:auto-20 -->
 lítur á tengi sem staðbundin milli eins atómapars
 
 <!-- SEG:m68747:entry:auto-21 -->
-lítur á rafeindir sem óstaðbundnar um alla sámeindina
+lítur á rafeindir sem óstaðbundnar um alla sameindina
 
 <!-- SEG:m68747:entry:auto-22 -->
 býr til tengi úr skörun atómsvigrúma ([[i:s, p, d]]…) og blendingssvigrúma ([[i:sp, sp]][[sup:2]], [[i:sp]][[sup:3]]…)
 
 <!-- SEG:m68747:entry:auto-23 -->
-sameinar atómsvigrúm til að mynda sámeindasvigrúm (σ, σ*, π, π*)
+sameinar atómsvigrúm til að mynda sameindasvigrúm (σ, σ*, π, π*)
 
 <!-- SEG:m68747:entry:auto-24 -->
 myndar σ- eða π-tengi
@@ -74,10 +74,10 @@ myndar σ- eða π-tengi
 býr til bindandi og andbindandi víxlverkanir eftir því hvaða svigrúm eru fyllt
 
 <!-- SEG:m68747:entry:auto-26 -->
-spáir fyrir um lögun sámeindar út frá fjölda svæða með rafeindaþéttleika
+spáir fyrir um lögun sameindar út frá fjölda svæða með rafeindaþéttleika
 
 <!-- SEG:m68747:entry:auto-27 -->
-spáir fyrir um fyrirkomulag rafeinda í sámeindum
+spáir fyrir um fyrirkomulag rafeinda í sameindum
 
 <!-- SEG:m68747:entry:auto-28 -->
 þarf margar byggingar til að lýsa voki
