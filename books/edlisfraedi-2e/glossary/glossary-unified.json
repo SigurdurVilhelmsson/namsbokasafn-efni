@@ -1,6 +1,6 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-20T09:43:07.206Z",
+  "generated": "2026-09-28T12:00:01.934Z",
   "book": "edlisfraedi-2e",
   "stats": {
     "total": 425,
@@ -345,12 +345,12 @@
     },
     {
       "english": "bent",
-      "icelandic": "beygður",
+      "icelandic": "boginn",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "house-style",
       "domain": "chemistry",
       "position": 5,
-      "conceptId": 4659,
+      "conceptId": 70237,
       "alternatives": []
     },
     {

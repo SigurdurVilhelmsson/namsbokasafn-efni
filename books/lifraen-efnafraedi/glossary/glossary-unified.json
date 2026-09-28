@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-23T14:50:46.891Z",
+  "generated": "2026-09-28T12:00:04.696Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 281,
-    "approved": 281,
+    "total": 285,
+    "approved": 285,
     "ties": 4,
     "nominalTies": 1,
-    "outOfScopeOnly": 2604,
+    "outOfScopeOnly": 2600,
     "censusStrings": 88676
   },
   "terms": [
@@ -49,6 +49,26 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5036,
+      "alternatives": []
+    },
+    {
+      "english": "absorption",
+      "icelandic": "gleypni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70240,
+      "alternatives": []
+    },
+    {
+      "english": "abundance",
+      "icelandic": "fjöldahlutfall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70239,
       "alternatives": []
     },
     {
@@ -287,12 +307,12 @@
     },
     {
       "english": "bent",
-      "icelandic": "beygður",
+      "icelandic": "boginn",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "house-style",
       "domain": "chemistry",
       "position": 1,
-      "conceptId": 4659,
+      "conceptId": 70237,
       "alternatives": []
     },
     {
@@ -802,6 +822,16 @@
       "alternatives": []
     },
     {
+      "english": "crystalline",
+      "icelandic": "kristalkenndur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70236,
+      "alternatives": []
+    },
+    {
       "english": "crystalline solid",
       "icelandic": "kristalkennt fastefni",
       "status": "approved",
@@ -1232,6 +1262,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4753,
+      "alternatives": []
+    },
+    {
+      "english": "general anesthetic",
+      "icelandic": "svæfingarlyf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70241,
       "alternatives": []
     },
     {
