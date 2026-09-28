@@ -4,7 +4,14 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **The ruling sheet is APPLIED (2026-09-27, 0 ISK). Next: hand the 20 chemistry redirect rows to vefur** ([`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md), replacing the 09-20 list). They must land BEFORE the chemistry sync. **Then step 2 of the development order below.**
+### ⏭ SINGLE NEXT ACTION — **Step 2 of the development order below: the paid-run guards (0 ISK), then the §C183 top-up and the buy.** The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+
+⏹ **SYNC PRECONDITION — do not sync chemistry without this ([USER] 2026-09-28).** The redirect rows are **deliberately NOT landed early**. Titles can still change before the sync (e.g. editor retitles once §C59 lands), and a stale row points at a page that never exists, so the live URL 404s.
+- **At sync time,** after the ② re-render and before running `sync-content.js`, **RECOMPUTE the rows from the final titles.** Do not land the 2026-09-27 list as it stands.
+  - Method: `slugify(title in 02-mt-output)` against production's `toc.json`. The script is kept with the audit evidence (memory `translation-wrapup-audit-2026-09-24`, `ruling-sheet-2026-09-26/redirects.mjs`).
+- Hand the rows to vefur, and sync only after they land.
+- The 2026-09-27 handoff is the worked example and today's answer: [`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md).
+- Backstop (warn-only): the ② re-render records renames in `slug-map.mt-preview.json`, which vefur's rename detector reads at sync.
 - ✅ Decision + addendum: [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Part 0 = yes; electrode stays *raftroð*.
 - ✅ Hand repair `f313fee32`: 53 title lines (34 section, 12 intro-list, 7 chapter) + §C194 in `m68747`. Readers get it at the ② re-inject/re-render.
 - ✅ `houseStyleTerms.js` `ed9b62e4e`: the eight concept-row changes. **It is code, so it reaches the export only after a deploy.**
@@ -89,7 +96,7 @@ Then ③ opens the editor phase.
   - the `looks_verbatim` figures (MattType);
   - the PerTable2 June-raster restore.
 - **Faithful ch01/ch03 overlay** (moved out of ① by the critic): a [LEAD] ruling gated on the sync. Either retire it, or let editors' re-apply replace it.
-- **Redirect rows: 60 missing, 2 to correct** — after ①'s title rulings.
+- **Redirect rows:** ruled titles gave 20 rows (2026-09-27), and vefur's 2 existing rows stay correct. **Recompute them at sync time; see the ⏹ SYNC PRECONDITION above.**
 - **Deploy prod after the batch and before anyone uses *Publish MT preview* or *Vista + Birta*.** Otherwise old code rewrites the fixed pages and the cron commits them.
 
 **③ FIRST IN THE EDITOR PHASE — before editors are unfrozen:**

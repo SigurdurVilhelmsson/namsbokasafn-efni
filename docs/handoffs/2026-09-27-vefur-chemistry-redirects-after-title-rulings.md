@@ -1,5 +1,9 @@
 # vefur redirect rows — chemistry, after the 2026-09-27 title rulings
 
+> ⏸ **HELD UNTIL THE CHEMISTRY SYNC ([USER] 2026-09-28).** Do not land these now. At sync time, after the ② re-render,
+> **recompute** them from the final titles, since a title may change before then. Land the recomputed rows first, then sync.
+> The procedure is the ⏹ SYNC PRECONDITION in the register's RESUME block.
+
 **For `../namsbokasafn-vefur/src/lib/data/sectionRedirects.ts`.** This list **replaces**
 [`2026-09-20-vefur-chemistry-autorun-redirects.md`](2026-09-20-vefur-chemistry-autorun-redirects.md): that one was
 written for the re-MT titles **before** [USER] ruled on them, and many of its targets are now moot, because the ruling
