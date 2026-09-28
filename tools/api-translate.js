@@ -1804,7 +1804,7 @@ function chunkDefect(chunkText, output) {
     const outputCount = (output.match(/<!-- SEG:/g) || []).length;
     return (
       `segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
-      `API may have truncated the response.`
+      `API may have truncated the response. ${responseEvidence(output)}`
     );
   }
   // The count above matches even when a marker was cut or mangled; compare the ids.
@@ -1822,6 +1822,31 @@ function chunkDefect(chunkText, output) {
   return (
     `possible truncation in ${suspects.length} segment(s): ${detail}. ` +
     `Refusing to write — the SEG count matched, so only the segment VALUES show it.`
+  );
+}
+
+/** How much of each end of a refused response the refusal message keeps. */
+const EVIDENCE_CHARS = 160;
+
+/**
+ * What a refused response actually said, bounded and on one line (§C196 ⑥).
+ *
+ * A refusal is paid for, and it is the only record of what came back. §C183's buy got
+ * m68867's one-segment request back with NO SEG marker, twice, and "output has 0" was all
+ * that survived, so the cause could not be diagnosed without paying again. JSON-quoting
+ * keeps the message on one line and makes stray whitespace and control characters visible.
+ *
+ * @param {string} output the post-processed response the check refused
+ * @returns {string}
+ */
+function responseEvidence(output) {
+  const q = (s) => JSON.stringify(s);
+  if (output.length <= 2 * EVIDENCE_CHARS) {
+    return `Response (${output.length} chars): ${q(output)}`;
+  }
+  return (
+    `Response (${output.length} chars) begins ${q(output.slice(0, EVIDENCE_CHARS))} … ` +
+    `ends ${q(output.slice(-EVIDENCE_CHARS))}`
   );
 }
 
