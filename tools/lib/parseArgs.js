@@ -62,6 +62,8 @@ export const CHAPTER_OPTION = {
   flags: ['--chapter'],
   type: 'string',
   default: null,
+  // A missing chapter widens a run to the WHOLE BOOK — see `requiresValue` in parseArgs.
+  requiresValue: true,
   parse: (val) => (val === 'appendices' ? 'appendices' : parseInt(val, 10)),
 };
 
@@ -88,6 +90,8 @@ export const MODULE_OPTION = {
   flags: ['--module'],
   type: 'string',
   default: null,
+  // A missing module widens a run to the whole chapter — see `requiresValue` in parseArgs.
+  requiresValue: true,
 };
 
 // ─── Built-in options (always available) ──────────────────────────────
@@ -100,10 +104,38 @@ const BUILTIN_OPTIONS = [
 // ─── Parser ───────────────────────────────────────────────────────────
 
 /**
+ * Refuse a `requiresValue` flag that was GIVEN with no usable value.
+ *
+ * 🔴 A SCOPE FLAG WITH NO VALUE WIDENS THE RUN, SILENTLY. Treating `--module=`,
+ * a trailing `--module`, or `--module ''` as "absent" leaves `args.module` null,
+ * so the tool runs the whole chapter — and `--chapter` the same way runs the
+ * whole book. Measured 2026-09-28 on `api-translate --dry-run`: 13 modules for
+ * each empty `--module` spelling, 170 for each empty `--chapter`, all exit 0, on
+ * the one tool where the widening costs money. The raw-token guards elsewhere
+ * (`argv.includes('--module')`) cannot see `--module=`; only the parser sees the
+ * missing value, so the refusal lives here. Exit 2 and the wording match those
+ * guards, so every tool's usage-error contract is unchanged.
+ *
+ * @param {string} flag the flag as the user spelled it (without any `=value`)
+ */
+function refuseMissingValue(flag) {
+  console.error(
+    `Error: ${flag} requires a value. Given none, the run would silently widen ` +
+      `to a larger scope than you asked for.`
+  );
+  process.exit(2);
+}
+
+/**
  * Parse CLI arguments against declared option definitions.
  *
+ * An option with `requiresValue: true` refuses (exit 2) when it is given with an
+ * empty `=`, as the last argument, with an empty or whitespace-only next argument,
+ * or with a next argument that is itself a DECLARED flag. A value that merely
+ * starts with a dash (`--chapter -1`) is still a value.
+ *
  * @param {string[]} argv - Typically `process.argv.slice(2)`
- * @param {Array<{name: string, flags: string[], type: 'boolean'|'string'|'number', default?, parse?}>} optionDefs
+ * @param {Array<{name: string, flags: string[], type: 'boolean'|'string'|'number', default?, parse?, requiresValue?: boolean}>} optionDefs
  * @param {{ positional?: { name: string } }} [config]
  * @returns {object} Parsed arguments keyed by option name
  */
@@ -155,9 +187,9 @@ export function parseArgs(argv, optionDefs = [], config = {}) {
       if (def.type === 'boolean') {
         result[def.name] = true;
       } else if (inlineValue !== null) {
-        // `--flag=` with nothing after it is ABSENT, not an empty value. An empty
-        // module id matches no module, and reporting it as present would route past
-        // the bare-flag guards that exist to catch exactly this operator slip.
+        // `--flag=` with nothing after it is ABSENT, not an empty value — unless the
+        // option requires a value, in which case absent would widen the run's scope.
+        if (def.requiresValue && inlineValue.trim() === '') refuseMissingValue(arg.slice(0, eq));
         if (inlineValue !== '') {
           if (def.parse) {
             result[def.name] = def.parse(inlineValue);
@@ -170,6 +202,12 @@ export function parseArgs(argv, optionDefs = [], config = {}) {
       } else {
         // String or number — consume next arg
         const nextArg = argv[i + 1];
+        if (
+          def.requiresValue &&
+          (nextArg === undefined || nextArg.trim() === '' || flagMap.has(nextArg))
+        ) {
+          refuseMissingValue(arg);
+        }
         if (nextArg === undefined) continue;
         i++;
 

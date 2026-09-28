@@ -117,6 +117,11 @@ function tallyByType(items) {
  * @param {number|null} p.glossaryTermCount terms in the unfiltered glossary
  * @param {number} p.chunksWithGlossary chunks whose actual (used) API call carried a glossary
  * @param {number} p.chunksTotal total chunks the module was split into (>=1)
+ * @param {Array<{segId: string, lost: string[], added: string[]}>} [p.greekLost] segments
+ *   whose Greek letters the MT LOST (greekConservationBySegment, a substitution shows up
+ *   as a loss). Omitted by a caller that did not measure it → `greek: null`, never a
+ *   false "0 lost".
+ * @param {number} [p.greekAddedCount] segments that only GAINED Greek letters
  * @returns {object} the run record, JSON-serializable
  */
 export function buildRunRecord({
@@ -132,6 +137,8 @@ export function buildRunRecord({
   glossaryTermCount,
   chunksWithGlossary,
   chunksTotal,
+  greekLost,
+  greekAddedCount,
 }) {
   return {
     runRecordVersion: RUN_RECORD_VERSION,
@@ -150,5 +157,25 @@ export function buildRunRecord({
       chunksWithGlossary,
       chunksTotal,
     },
+    greek: greekRecord(greekLost, greekAddedCount),
+  };
+}
+
+/**
+ * Losses beyond this many are counted but not listed — the file's rule is bounded
+ * scalars and small tallies, never an array that grows with module size.
+ */
+export const GREEK_LOST_SAMPLE_MAX = 20;
+
+function greekRecord(greekLost, greekAddedCount) {
+  if (greekLost === undefined) return null;
+  return {
+    lostCount: greekLost.length,
+    lost: greekLost.slice(0, GREEK_LOST_SAMPLE_MAX).map((g) => ({
+      segId: g.segId,
+      lost: g.lost.join(''),
+      added: g.added.join(''),
+    })),
+    addedCount: greekAddedCount ?? 0,
   };
 }

@@ -268,17 +268,89 @@ describe('--flag=value — the GNU spelling, which used to be silently dropped',
     expect(r.label).toBe('a=b');
   });
 
-  it('still treats a bare --module (no value, no equals) as absent', () => {
-    // The bare-flag guards in cnxml-fidelity-check / cnxml-linguistic-check key on
-    // this staying falsy. Supporting `=` must not accidentally make it truthy.
-    const r = parseArgs(['--module'], [MODULE_OPTION]);
-    expect(r.module).toBeNull();
+  it('treats --label= (equals, empty value) on an ordinary option as absent', () => {
+    // An option WITHOUT `requiresValue` keeps the lenient reading: absent, default kept.
+    const PLAIN = { name: 'label', flags: ['--label'], type: 'string', default: 'x' };
+    expect(parseArgs(['--label='], [PLAIN]).label).toBe('x');
+  });
+});
+
+describe('requiresValue — a SCOPE flag given with no value refuses instead of widening', () => {
+  // 🔴 MEASURED 2026-09-28 on the paid tool, `api-translate --dry-run`:
+  //   --module m68865   -> 1 module        --chapter=   -> 170 modules (the WHOLE BOOK)
+  //   --module=         -> 13 modules      --chapter    -> 170 modules
+  //   --module          -> 13 modules      --module ''  -> 13 modules
+  // all EXIT 0. These two tests used to pin `--module` and `--module=` as ABSENT, on
+  // the reasoning that absent "routes to the bare-flag guard". It did not: the three
+  // bare-flag guards (scan-residue, cnxml-fidelity-check, cnxml-linguistic-check) test
+  // the RAW TOKEN `argv.includes('--module')`, which `--module=` never satisfies, and
+  // api-translate — the one tool where the widening costs money — had no guard at all.
+  // ▶ The parser is the only place that SEES the missing value, so it refuses here.
+  let exitSpy, errSpy;
+  beforeEach(() => {
+    exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+      throw new Error('__exit__');
+    });
+    errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+  });
+  afterEach(() => {
+    exitSpy.mockRestore();
+    errSpy.mockRestore();
   });
 
-  it('treats --module= (equals, empty value) as absent rather than as an empty id', () => {
-    // An empty id would match no module and, before the §C82 guards, exit 0 having
-    // examined nothing. Absent is the honest reading and routes to the bare-flag guard.
-    const r = parseArgs(['--module='], [MODULE_OPTION]);
+  it('refuses a trailing --module with no value', () => {
+    expect(() => parseArgs(['--module'], [MODULE_OPTION])).toThrow('__exit__');
+    expect(exitSpy).toHaveBeenCalledWith(2);
+  });
+
+  it('refuses --module= (equals, empty value)', () => {
+    expect(() => parseArgs(['--module='], [MODULE_OPTION])).toThrow('__exit__');
+  });
+
+  it("refuses --module '' (an empty next argument)", () => {
+    expect(() => parseArgs(['--module', ''], [MODULE_OPTION])).toThrow('__exit__');
+  });
+
+  it('refuses --module followed by whitespace only', () => {
+    expect(() => parseArgs(['--module', '  '], [MODULE_OPTION])).toThrow('__exit__');
+  });
+
+  it('refuses --module followed by another DECLARED flag, instead of swallowing it', () => {
+    // `--module --dry-run` used to set module = '--dry-run' and drop the dry run.
+    const DRY = { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean' };
+    expect(() => parseArgs(['--module', '--dry-run'], [MODULE_OPTION, DRY])).toThrow('__exit__');
+  });
+
+  it('refuses a trailing --chapter — which widens to the WHOLE BOOK, not a chapter', () => {
+    expect(() => parseArgs(['--chapter'], [CHAPTER_OPTION])).toThrow('__exit__');
+  });
+
+  it('refuses --chapter= (equals, empty value)', () => {
+    expect(() => parseArgs(['--chapter='], [CHAPTER_OPTION])).toThrow('__exit__');
+  });
+
+  it('names the flag in the refusal', () => {
+    expect(() => parseArgs(['--module='], [MODULE_OPTION])).toThrow('__exit__');
+    expect(errSpy.mock.calls.flat().join(' ')).toMatch(/--module requires a value/);
+  });
+
+  it('still parses a real module, both spellings (positive control)', () => {
+    expect(parseArgs(['--module', 'm68710'], [MODULE_OPTION]).module).toBe('m68710');
+    expect(parseArgs(['--module=m68710'], [MODULE_OPTION]).module).toBe('m68710');
+    expect(exitSpy).not.toHaveBeenCalled();
+  });
+
+  it('accepts a value that merely starts with "-" when it is not a declared flag', () => {
+    // The rule is "the next token is a declared FLAG", never "starts with a dash":
+    // -1 is the appendices sentinel's number, and it must stay a value.
+    expect(parseArgs(['--chapter', '-1'], [CHAPTER_OPTION]).chapter).toBe(-1);
+    expect(exitSpy).not.toHaveBeenCalled();
+  });
+
+  it('leaves an absent scope flag absent — only a GIVEN flag with no value refuses', () => {
+    const r = parseArgs([], [MODULE_OPTION, CHAPTER_OPTION]);
     expect(r.module).toBeNull();
+    expect(r.chapter).toBeNull();
+    expect(exitSpy).not.toHaveBeenCalled();
   });
 });

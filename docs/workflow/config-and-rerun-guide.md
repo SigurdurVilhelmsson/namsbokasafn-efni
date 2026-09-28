@@ -101,8 +101,10 @@ no entry, and several plausible-looking edits (`terminology_translations.status`
 # so a bare --force re-translates the old English and exits 0.
 node tools/cnxml-extract.js --book <book> --chapter <num>
 
-# Re-translate affected chapters (--force overwrites existing translations; this COSTS MONEY)
-node tools/api-translate.js --book <book> --chapter <num> --force
+# Re-translate affected chapters (--force overwrites existing translations; this COSTS MONEY).
+# A live run needs a stated glossary arm: --no-glossary (the ruling), --glossary-only <list>,
+# or --full-glossary.
+node tools/api-translate.js --book <book> --chapter <num> --force --no-glossary
 
 # Then re-inject and re-render
 node tools/cnxml-inject.js --book <book> --chapter <num> --source-dir 03-faithful-translation
@@ -196,7 +198,7 @@ done
 
 ### "I want to re-translate a chapter from scratch"
 ```bash
-node tools/api-translate.js --book <book> --chapter <num> --force
+node tools/api-translate.js --book <book> --chapter <num> --force --no-glossary
 node tools/cnxml-inject.js --book <book> --chapter <num>
 node tools/cnxml-render.js --book <book> --chapter <num>
 ```

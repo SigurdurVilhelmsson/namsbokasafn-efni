@@ -112,17 +112,18 @@ node tools/cnxml-extract.js --book efnafraedi-2e --input books/efnafraedi-2e/01-
 #### Method A: Automated via API (Recommended)
 
 ```bash
-# Translate all modules in a chapter
-node tools/api-translate.js --book efnafraedi-2e --chapter 5
+# Translate all modules in a chapter. A live run REFUSES without a stated glossary
+# arm: --no-glossary (the ruling), --glossary-only <list>, or --full-glossary.
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --no-glossary
 
 # Preview what will be translated and estimated cost
 node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 
 # Translate a single module
-node tools/api-translate.js --book efnafraedi-2e --chapter 5 --module m68724
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --module m68724 --no-glossary
 
 # Translate an entire book
-node tools/api-translate.js --book efnafraedi-2e
+node tools/api-translate.js --book efnafraedi-2e --no-glossary
 ```
 
 **Requirements:** `MALSTADUR_API_KEY` set in `.env` or environment.
@@ -492,8 +493,8 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 # Step 1: Extract EN segments from CNXML
 node tools/cnxml-extract.js --book efnafraedi-2e --chapter 5
 
-# Step 2: Machine translate via API (automated)
-node tools/api-translate.js --book efnafraedi-2e --chapter 5
+# Step 2: Machine translate via API (automated; a live run needs a stated glossary arm)
+node tools/api-translate.js --book efnafraedi-2e --chapter 5 --no-glossary
 # Or dry-run first to see cost estimate:
 node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 

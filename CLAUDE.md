@@ -651,7 +651,7 @@ are not guessable".
 | `node tools/cnxml-extract.js --book <book> --chapter <N>` | Extract EN segments from CNXML |
 | `node tools/cnxml-inject.js --book <book> --chapter <N>` | Inject translations into CNXML |
 | `node tools/cnxml-render.js --book <book> --chapter <N>` | Render translated CNXML to HTML |
-| `node tools/api-translate.js --book <book> --chapter <ch>` | Translate segments via Málstaður API |
+| `node tools/api-translate.js --book <book> --chapter <ch> --no-glossary` | Translate segments via Málstaður API. **A live run refuses without exactly one glossary arm** (`--no-glossary` · `--glossary-only <list>` · `--full-glossary`), and an empty `--module`/`--chapter` value refuses instead of widening |
 | `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
 | `node tools/translate-chapter-titles.js <slug>` | Translate chapter titles via Málstaður API |
 | `node tools/generate-tm.js --book <book> [--chapter N] [--format tmx\|csv\|json]` | Generate TM (TMX default; CSV/JSON) from paired EN/faithful segments |

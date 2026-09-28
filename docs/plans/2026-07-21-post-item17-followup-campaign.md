@@ -4,7 +4,13 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **Step 2 of the development order below: the paid-run guards (0 ISK), then the §C183 top-up and the buy.** The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+### ⏭ SINGLE NEXT ACTION — **Step 3 of the development order below: build the §C183 add-only top-up mode (0 ISK), then the ~2,000 ISK summary buy with `--no-glossary`.** Step 2, the paid-run guards, is BUILT (2026-09-28, branch `feat/c183-paid-run-guards`, stacked on the three `docs/redirects-at-sync` commits). The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+
+✅ **2026-09-28 — THE FOUR PAID-RUN GUARDS ARE BUILT**, each measured before it was written:
+- **Explicit glossary arm:** a live `api-translate` run refuses (exit 2) unless exactly one of `--no-glossary` · `--glossary-only` · `--full-glossary` is given; `--dry-run` says whether the live run would.
+- **Empty scope flags:** `--module=`, a trailing `--module` and `--module ''` widened to the whole chapter (13 modules); `--chapter=` and a trailing `--chapter` to the **whole book (170)** — all exit 0. `parseArgs` now refuses them for every tool (`requiresValue`).
+- **Greek-letter conservation** and **truncation** → §C191 ② and §C183. Truncation now refuses to write; on HEAD a truncated response overwrote a good translation under `--force`.
+- ⏳ **[USER] — new: four Greek-letter substitutions are live in bought chemistry, on prepared pages** (ch08 summary, 20-1, ch21 key terms; list in §C191 ②). They ship at the held sync. Route: a hand repair of those four `02-mt-output` segments needs a NEW authorisation (the 2026-09-26 one covers ruled titles only), or leave them to the editor phase. Either way, before the sync.
 
 ✅ **VERIFIED 2026-09-28:** prod's 12:00Z export (`e1897da91`) carries all eight house-style rows under chemistry (`radius → radíus` … `molecular compound → sameindaefni`), 1,740 → 1,742 terms. The controls held: `phase transition → fasabreyting`, `anode → anóða`.
 
@@ -19,7 +25,6 @@
 - ✅ `houseStyleTerms.js` `ed9b62e4e`: the eight concept-row changes. **It is code, so it reaches the export only after a deploy.**
 - ⏸ **Open:** where the ~30 *adopted* A-row words should live (see §C193).
 - **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
- **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
 
 ⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
 1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
@@ -31,9 +36,9 @@
 5. **㊲:** fix the backup first, then keep figure review CLOSED on prod until the recompose pass is deployed.
 
 **Development order:**
-1. The ruling sheet. ✅ **Prepared 2026-09-26; answered by [USER] 2026-09-27** (applying it is the next action above).
-2. The paid-run guards.
-3. The top-up and the buy.
+1. The ruling sheet. ✅ **Prepared 2026-09-26; answered by [USER] 2026-09-27; applied and deployed 2026-09-28.**
+2. The paid-run guards. ✅ **Built 2026-09-28** (see above).
+3. The top-up and the buy. ◀ next
 4. The ㊲ fix and its deploy.
 5. The ㉗/⑭ composer changes.
 6. The single recompose pass.
@@ -57,9 +62,9 @@ Then ③ opens the editor phase.
   - What it buys: 191 summaries, ~2.1k ISK, which reach no reader.
   - Why now is cheapest: 0 chemistry locks and 0 faithful segment files. Afterwards, `locked-skip` and §C112 get in the way unless additive writes are exempted — a design choice, not an impossibility.
   - **Under `--glossary-only`, §C186 is live for exactly this buy**: after the re-extract, the tool ranks over every segment EXCEPT the summaries. So either choose `--no-glossary`, or fix §C186 first.
-  - Pre-buy guards (0 ISK):
+  - Pre-buy guards (0 ISK) — ✅ all four built 2026-09-28:
     - an explicit arm flag;
-    - reject the empty, trailing and `=` spellings of `--module`;
+    - reject the empty, trailing and `=` spellings of `--module` (and of `--chapter`);
     - per-segment Greek conservation;
     - an output/input length-ratio guard (`m68865` is one 24,833-character chunk).
 - **The route for wrong terms already bought: editor substitution (0 ISK, recommended) or re-buy.**
@@ -97,6 +102,7 @@ Then ③ opens the editor phase.
   - Nitrogen (§C140 ㉑);
   - the `looks_verbatim` figures (MattType);
   - the PerTable2 June-raster restore.
+- **Four Greek-letter substitutions in bought chemistry (§C191 ②, found 2026-09-28):** repair route is [USER]'s — a new hand-repair authorisation, or the editor phase. Re-render after a repair, and the corpus pin in `mt-output-guards-corpus.test.js` goes red on purpose.
 - **Faithful ch01/ch03 overlay** (moved out of ① by the critic): a [LEAD] ruling gated on the sync. Either retire it, or let editors' re-apply replace it.
 - **Redirect rows:** ruled titles gave 20 rows (2026-09-27), and vefur's 2 existing rows stay correct. **Recompute them at sync time; see the ⏹ SYNC PRECONDITION above.**
 - **Deploy prod after the batch and before anyone uses *Publish MT preview* or *Vista + Birta*.** Otherwise old code rewrites the fixed pages and the cron commits them.
@@ -3717,7 +3723,7 @@ Nothing in the automated path can ever close a cron change → [[deploy-infrastr
   - ⚠️ **`PAIRED_ID_FIELD` IS DERIVED, NOT LISTED** — as a literal table, a type added to `PAIRED_WIRE_TYPES` and forgotten there does **not** fail (`record[undefined]` coerces to the key `'undefined'` and `idsFor` reads it back), so the omission is invisible **until a second type is added the same way**, at which point both collide and every segment carrying either marker degrades to English corpus-wide.
   - 🔴 **A STALE FILE IS SITTING IN THE REFUSED SLOT, AND A FILE-EXISTENCE CHECK READS 8 OF 8.** `03-translated/mt-preview/ch03/m00038.cnxml` is from **`43c40fce`, five months old**, while its seven siblings carry the fresh `eeac7731`. **This is CLAUDE.md's "`03-translated` is not a correctness reference" rule biting exactly as written** — the refusal left a plausible file in place rather than a gap. The English reaches readers: `05-publication/mt-preview/chapters/03/3-key-terms.html` carries **36 English anchors** today (`alcohol`, `aldehyde`, `alkane`, …).
   - ✅ **THE BLOCKER IS NAMED, NOT INFERRED — AND ⑯ CLEARS IT.** Running inject reports `2 untranslated-EN residue segment(s)` → **`m00038:item:list-00001-item-13` = `branched-chain alkane`** and **`item-36` = `straight-chain alkane`**, then `SKIPPED — incomplete injection`. They are 2 of the 36 because they are multi-word English; the single words are not flagged. **Translating them is exactly what ⑯ does**, so the chapter unblocks — subject to the probe. _(`--module` IS honoured for writes: only the derived `translation-errors.json` timestamp changed, and every `.cnxml` was byte-identical to a golden copy afterwards. The "8 total" in its fidelity summary is a REPORTING scope, not a write scope.)_
-  - ⚠️ **A `--module` SPELLING TRAP THAT COSTS 5× — measured, and `api-translate.js` is the one tool missing from the §C83 guard suite.** `--module m00038` correctly narrows to **1 unit / ~181 ISK** against **10 units / ~889 ISK** for the bare chapter _(and note the chapter figure is 10 units, not the 8 modules one might count — the filter runs after `chapter-metadata` and `exercises` are pushed in)_. **BUT `--module=` with an empty value, and a trailing bare `--module`, both silently widen back to the whole chapter, exit 0, no warning** — `parseArgs` leaves `args.module` null and the `if (args.module)` filter never runs. ▶ **Always `--dry-run` first and read the "N modules found" line; expect 1.** `tools/__tests__/module-flag-honesty.test.js` covers five tools and **not this one — the only one where the failure costs money.**
+  - ⚠️ **A `--module` SPELLING TRAP THAT COSTS 5× — measured, and `api-translate.js` is the one tool missing from the §C83 guard suite.** `--module m00038` correctly narrows to **1 unit / ~181 ISK** against **10 units / ~889 ISK** for the bare chapter _(and note the chapter figure is 10 units, not the 8 modules one might count — the filter runs after `chapter-metadata` and `exercises` are pushed in)_. **BUT `--module=` with an empty value, and a trailing bare `--module`, both silently widen back to the whole chapter, exit 0, no warning** — `parseArgs` leaves `args.module` null and the `if (args.module)` filter never runs. ▶ **Always `--dry-run` first and read the "N modules found" line; expect 1.** `tools/__tests__/module-flag-honesty.test.js` covers five tools and **not this one — the only one where the failure costs money.** ✅ **CLOSED 2026-09-28 (§C183 paid-run guards):** `parseArgs` now refuses (exit 2) a `requiresValue` flag given empty, trailing, blank or followed by another declared flag — set on `MODULE_OPTION` **and** `CHAPTER_OPTION`, because the same trap on `--chapter` widened the paid tool to the **whole book, 170 modules**. The api-translate block in that test file is now there, with `--module m68865 → 1 module` as its control.
   - 📌 **LOGGED, NOT FIXED — each with its measurement, none blocking:**
     - **228 mixed-prose segments newly enter the safe-degrade population.** One dropped `[[/docref]]` now reverts a WHOLE translated paragraph to English, where before the worst case was an English link label inside a translated paragraph. **This is the same trade-off `term` already makes at 1,406 markers and it is LOUD** — a mismatch is recorded, the chapter is held back, the reader never sees it — but recovery is a paid module re-buy, because `mtRunDecision` skips on file existence.
     - **Positional id re-attachment is blind to an MT reorder.** 13 segments hold 2+ prose docrefs (6 in a kept book, max 3); all have distinct ids, so there is no benign subset. Same accepted risk term/fn carry.
@@ -6862,6 +6868,15 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
 - **C191 · SALVAGED FROM THE LAST ORGANIC VERIFICATION — BOOK-INDEPENDENT DEFECTS THE 2026-09-23 ch01 AGENTS FOUND, KEPT SO THEY DO NOT VANISH WITH THE BOOK** — **[CODE]** — **P3** — _logged 2026-09-23 from a 67-agent read-only verification of organic ch01 (6 lanes, 2 refuters per finding, a critic). Organic is stopped (§C190), so only what can touch chemistry is kept here._
   - ① **✅ LIVE ON CHEMISTRY, MEASURED: the injector's English gloss LOWERCASES proper names and acronyms.** Chemistry `6-4-rafeindabygging-atoma-rafeindaskipan.html` and `6-key-terms.html` read *"(e. aufbau principle)"*, *"(e. hund’s rule)"*; organic showed *"(e. valence bond (vb) theory)"*, *"(e. bonding mo)"*. Reader-visible on prepared pages. The source term keeps its case, so the lowercasing is ours (annotate-en in `cnxml-inject`). Fix is post-wire (free re-inject + re-render). **Census the whole chemistry book before fixing** — the census above was a grep for five names, not a sweep.
   - ② **MT symbol substitution no guard sees: organic `m00166` came back with σ → Δ in all 3 occurrences** (*"sp–sp σ bond"* → *"sp Δ-tengi"*), with every sibling module keeping its σ (control). `bracketMarkerDelta`, the count-guard and inject's residue check are all blind to it — the markers were intact. ▶ **A cheap per-segment conservation check (Greek letters, digits, sub/sup payloads, EN vs IS) would catch this class on chemistry's future buys**; the numeric lane's script did it in one pass with a working mutation control.
+    - ✅ **GUARD SHIPPED 2026-09-28 (Greek letters only, per the 2026-09-26 ruling) — AND ITS FIRST CORPUS RUN FOUND THE CLASS LIVE IN BOUGHT CHEMISTRY.** `greekConservationBySegment` (`tools/lib/mt-output-guards.js`); a LOSS holds the chapter back in `api-translate`, an addition is only reported. **4 segments, all on PREPARED mt-preview pages, so they ship at the held sync:**
+      - `m68745:para:fs-idm25402912` (ch08, `8-summary.html`): "sigma (**Δ**) tengi" — σ and π both became Δ;
+      - `m68846:para:fs-idp51580832` (ch20, `20-1-vetniskolefni.html`): "A **Β**-tengi" — π became capital Beta, which reads as a Latin B (and "A" stayed English);
+      - `m68852:glossary-def:fs-idm57603984-def` (ch21, `21-key-terms.html` + `index.json`): "(**Α**" — α became capital Alpha, which reads as a Latin A;
+      - `m68852:glossary-def:fs-idm12021616-def` (same pages): "(**Γ**" — γ became Γ.
+      - Pinned as the guard's positive control in `tools/__tests__/mt-output-guards-corpus.test.js`; a repair turns that test red on purpose.
+    - 🔴 **Before the fold list, 7 CORRECT normalisations read as losses** — OpenStax writes `∆` (U+2206), `Ʃ` (U+01A9, Latin *esh*), `∑` and `µ`, and the MT returns proper Greek. The fold is corpus-derived; case is deliberately NOT folded.
+    - ⚠️ **An ADDITION is not damage:** the MT turns spelled-out accessibility names into symbols (`m68729` "wavelength lambda" → λ). 19 of the 191 §C183 table summaries spell Greek out, so a strict-equality gate would have held back that buy for a non-defect.
+    - ⏳ **Fix route for the four is a [USER] question** → the 2026-09-28 ⏩ RESUME block.
   - ③ **Document titles lose italic/superscript** in `<h1>`, `<title>` and the TOC (organic showed *sp3-blendingssvigrúm* for *sp³*). Not yet measured on chemistry.
   - ④ **A cross-book or out-of-chapter `docref` can render its raw module id as link text** (organic 1-1: *"…í lotukerfinu í m00228."*). Not yet measured on chemistry.
   - ⑤ **`chapter-term-check` counts a count-guard-degraded (English) segment as coverage** (*"kept verbatim"*), inflating a term's reach. Tool defect, book-independent.
@@ -6927,6 +6942,8 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - ⚠️ **Two hazards to settle BEFORE the buy — both predicted, neither yet measured on the wire:**
     - **Hold-back.** `bracketMarkerDelta` has no attribute-type exemption, and 91 of the 191 summaries spell a subscript or superscript out in words (79 subscript, 48 superscript, some both) — the shape the MT turns into `[[sub:N]]`/`[[sup:N]]` (§C169, m68791's alt). Inject unwraps those harmlessly, but `classifyModuleOutcome` would mark each such module **HELD BACK** and keep its chapter out of `--update-status`. Decide whether invented markers in `isAttributeValueSegmentId` ids count toward the delta, or expect a §C136 triage per chapter.
     - **Silent truncation.** `m68865`'s summary is **24,833 characters (25,594 UTF-8 bytes)** and rides as a single-segment chunk just under the 25,000-character chunk budget; `api-translate.js` notes the API truncating around 33–35 KB, and Icelandic output is longer. `validateMarkers` counts `SEG` markers (1 = 1), so **a truncated one-segment chunk passes.** Four summaries exceed 10k (`m68865` 24,833 · `m68870` 21,592 · `m68866` 12,203 · `m68868` 11,565, all appendices). Add a per-segment output/input length-ratio guard first.
+      - ✅ **GUARDED 2026-09-28** — `truncationSuspectsBySegment` (`tools/lib/mt-output-guards.js`), two legs, both at a measured **0** base rate over chemistry's committed MT: an IS/EN ratio below 0.5 at ≥ 200 EN chars (lowest honest value in 32,402 segments across six books: 0.633), and an IS that stops without terminal punctuation where its ≥ 300-char EN ends cleanly (0 of 4,049). It joins the SEG-count check in `translateChunk`, so it gets the same retry-without-glossary, then **refuses to write**. On HEAD a truncated response **overwrote a good prior translation under `--force`**; a test now pins that it cannot.
+    - ⏳ **Still open for step 3:** the hold-back hazard above (invented `[[sub:]]`/`[[sup:]]` in summaries), and "every existing IS segment byte-identical afterwards" — both belong to the top-up mode itself.
   - _[severity: completeness of the CNXML/TM, not reader-visible (`data-summary` is not announced) · blocks: chemistry's summaries only]_
 
 - **C182 · EXERCISE CONTENT MUST REACH THE EDITOR — [USER] RULED IT REQUIRED WORK, NOT AN OPTIONAL IMPROVEMENT** — **[CODE]** — **REQUIRED ([USER] 2026-09-22), unscheduled** — _promoted from §C82 L148 by that ruling; this item is now the work's ONE owner._
