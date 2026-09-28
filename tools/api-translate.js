@@ -17,6 +17,7 @@
  *   --chapter <num>     Chapter number (omit for whole book)
  *   --module <id>       Single module ID (requires --chapter)
  *   --force             Overwrite existing output files
+ *   --top-up            Buy only the segments an existing IS lacks; splice them in (§C183)
  *   --dry-run, -n       Show what would be translated + cost estimate
  *   --no-glossary       Don't send glossary terms with requests
  *   --glossary-only <a,b>  Send ONLY these approved headwords; refuses if any is
@@ -44,13 +45,14 @@ import {
 } from './lib/parseArgs.js';
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
-import { writeProvenance } from './lib/provenance.js';
+import { writeProvenance, writeProvenancePayload, readProvenance } from './lib/provenance.js';
 import { buildRunRecord, glossaryContentHash, usageUnits } from './lib/run-record.js';
 import {
   greekConservationBySegment,
   segmentIdSetDelta,
   truncationSuspectsBySegment,
 } from './lib/mt-output-guards.js';
+import { planTopUp, spliceTopUp } from './lib/mt-top-up.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -1341,13 +1343,35 @@ export function glossaryStatusLine(glossary, skippedCount, omittedCount = 0) {
  * --force. Absent a lock, `exists && !force` is the pre-existing accident
  * guard, unchanged.
  *
- * @param {{ exists: boolean, force: boolean, locked: boolean }} state
- * @returns {'locked-skip'|'skip'|'write'}
+ * §C183: `topUp` (opt-in, `--top-up`) turns an existing IS into a `'top-up'` — buy only
+ * the segments it lacks and splice them in. The lock stays absolute, and a missing IS is
+ * still an ordinary full `'write'`. ⚠️ OPT-IN IS LOAD-BEARING: the glossary-arm CLI tests
+ * run a LIVE command on m68865 and are safe only because an existing IS is `'skip'` —
+ * including once chemistry is re-extracted and that IS lacks the new summary id.
+ *
+ * @param {{ exists: boolean, force: boolean, locked: boolean, topUp?: boolean }} state
+ * @returns {'locked-skip'|'skip'|'write'|'top-up'}
  */
-export function mtRunDecision({ exists, force, locked }) {
+export function mtRunDecision({ exists, force, locked, topUp = false }) {
   if (locked) return 'locked-skip'; // absolute: editing has begun, never clobber
+  if (exists && topUp) return 'top-up'; // §C183: additive only, never rewrites a segment
   if (exists && !force) return 'skip'; // accident guard (unchanged)
   return 'write';
+}
+
+/**
+ * What a top-up plan (`planTopUp`) makes of a module that exists.
+ *
+ * `'refuse'` wins over missing ids: an IS carrying an id the EN no longer has means the
+ * two sides are different vintages, so splicing new segments in would dress a stale file
+ * up as current. That is a deliberate re-buy or re-extract decision, never a top-up's.
+ *
+ * @param {{missing: string[], extra: string[]}} plan
+ * @returns {'top-up'|'skip'|'refuse'}
+ */
+export function topUpAction(plan) {
+  if (plan.extra.length > 0) return 'refuse';
+  return plan.missing.length > 0 ? 'top-up' : 'skip';
 }
 
 /**
@@ -1436,6 +1460,7 @@ function parseCliArgs(argv) {
     CHAPTER_OPTION,
     MODULE_OPTION,
     { name: 'force', flags: ['--force'], type: 'boolean', default: false },
+    { name: 'topUp', flags: ['--top-up'], type: 'boolean', default: false },
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'glossaryOnly', flags: ['--glossary-only'], type: 'string', default: null },
@@ -1498,6 +1523,9 @@ Options:
   --chapter <num>     Chapter number (omit for whole book)
   --module <id>       Single module ID (requires --chapter)
   --force             Overwrite existing output files
+  --top-up            Buy ONLY the segments an existing IS lacks and splice them in;
+                      every existing segment stays byte-identical (§C183). Refuses a
+                      module whose IS carries ids the EN no longer has. Not with --force.
   --dry-run, -n       Show what would be translated + cost estimate
   Glossary arm — a live run REFUSES unless exactly one is given:
   --no-glossary       Don't send glossary terms with requests
@@ -1823,21 +1851,25 @@ export function moduleIdFromOutputPath(outputPath) {
 }
 
 /**
- * Translate a single module file via the API.
- * Automatically splits large modules at SEG boundaries to avoid API truncation.
- * Filters glossary to terms in source text. Retries without glossary on truncation.
+ * The GUARDED CORE of every paid translation: chunk → `translateChunk` (per-chunk id-set
+ * and truncation checks, retry without glossary) → reassemble → the module-level checks.
+ * It WRITES NOTHING.
+ *
+ * 🔴 §C183: this is the only route to the API. A full run (`translateModule`) and a
+ * top-up (`topUpModule`) both call it, so every guard wired in here covers both. A top-up
+ * that built its own send/splice would have bought the summaries with no guard at all.
+ * Throws on any defect that makes the output unusable; a Greek loss and a bracket delta
+ * are returned, not thrown — the caller writes the paid-for text and holds it back.
+ *
+ * @param {object} client the Málstaður client (`translateAuto`)
+ * @param {string} input an EN segment file's text (a whole module, or a top-up's wire text)
+ * @param {object|null} glossary
+ * @param {boolean} verbose
+ * @param {number} maxChunk
+ * @param {{moduleId: string, where: string}} ctx names used in messages
  */
-export async function translateModule(
-  client,
-  inputPath,
-  outputPath,
-  glossary,
-  verbose,
-  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
-  { glossaryArm } = {}
-) {
-  const input = fs.readFileSync(inputPath, 'utf8');
-  const moduleId = path.basename(inputPath, '-segments.en.md');
+export async function translateSegmentText(client, input, glossary, verbose, maxChunk, ctx) {
+  const { moduleId, where } = ctx;
 
   // Split if too large for a single API call
   const chunks = splitAtSegBoundaries(input, maxChunk);
@@ -1913,67 +1945,138 @@ export async function translateModule(
     throw new Error(
       `${moduleId}: a wire-only paired marker (${leaked}; one of ` +
         `${PAIRED_WIRE_TYPES.join('/')}) survived to write in ` +
-        `${outputPath} — a SEG-id mangle that repairSegTags did not fix, or an ` +
+        `${where} — a SEG-id mangle that repairSegTags did not fix, or an ` +
         `otherwise-unresolved marker. Refusing to write corrupted output.`
     );
   }
 
-  // §C183: the id sets again, on the REASSEMBLED module — normalizeSegMarkers and the join
-  // run after the per-chunk check, so this is the last look before the write.
+  // §C183: the id sets again, on the REASSEMBLED text — normalizeSegMarkers and the join
+  // run after the per-chunk check, so this is the last look before any write.
   const moduleIdDefect = idSetDefect(input, output);
   if (moduleIdDefect) throw new Error(`${moduleId}: ${moduleIdDefect}`);
 
-  // §C183 guard ①: Greek letters the MT substituted, per segment. Computed BEFORE the
-  // write (pure, over in-memory strings) so nothing can throw between the write and the
-  // provenance. A LOSS holds the chapter back (classifyModuleOutcome) but the module is
-  // still written — it was paid for, and one wrong symbol leaves the rest usable. An
-  // ADDITION alone is reported, not held: the MT turns spelled-out names ("lambda") into
-  // symbols. See greekConservationBySegment.
+  // §C183 guard ①: Greek letters the MT substituted, per segment. A LOSS holds the
+  // chapter back (classifyModuleOutcome) but the text is still written — it was paid for,
+  // and one wrong symbol leaves the rest usable. An ADDITION alone is reported, not held:
+  // the MT turns spelled-out names ("lambda") into symbols. See greekConservationBySegment.
   const greekFindings = greekConservationBySegment(input, output);
   const greekLost = greekFindings.filter((g) => g.lost.length > 0);
   const greekAdded = greekFindings.filter((g) => g.lost.length === 0);
+
+  // §C82 fix round 1, Finding 1: every value the run record needs is computed HERE,
+  // before the caller's write, so nothing that can throw sits between the segment write
+  // and the provenance write. (This used to be computed in that window.)
+  const bracketDelta = bracketMarkerDelta(input, output);
+
+  return {
+    output,
+    usage: totalUsage,
+    chunksWithGlossary,
+    chunksTotal: chunks.length,
+    markersNormalized,
+    mismatches,
+    unwrapped,
+    greekLost,
+    greekAdded,
+    bracketDelta,
+  };
+}
+
+/** The run record for one paid call of `translateSegmentText` over `input`. */
+function runRecordFor(input, r, glossary, glossaryArm) {
+  return buildRunRecord({
+    chars: input.length,
+    usage: r.usage,
+    estimatedIsk: estimateIsk(input.length),
+    markersNormalized: r.markersNormalized,
+    mismatches: r.mismatches,
+    bracketDelta: r.bracketDelta,
+    unwrapped: r.unwrapped,
+    glossaryArm: glossaryArm ?? (glossary ? 'glossary' : 'no-glossary'),
+    glossaryHash: glossaryContentHash(glossary),
+    glossaryTermCount: glossary?.terms?.length ?? null,
+    chunksWithGlossary: r.chunksWithGlossary,
+    chunksTotal: r.chunksTotal,
+    greekLost: r.greekLost,
+    greekAddedCount: r.greekAdded.length,
+  });
+}
+
+/**
+ * The per-module diagnostics, printed AFTER the provenance write: none is needed to build
+ * the record, and an EPIPE on a broken stderr must not cost us the sidecar.
+ */
+function printModuleNotes(moduleId, r) {
+  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
+  // is a module-level aggregate: a drop in one segment and a spurious add of the same
+  // type in another cancel to zero and won't be reported — acceptable for a non-gating
+  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
+  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
+  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
+  const bracketNote = formatBracketDelta(moduleId, r.bracketDelta);
+  if (bracketNote) console.error(`  Note: ${bracketNote}`);
+
+  // §C67 class 3: markers the MT invented around glossary target words and we
+  // removed. Reported, never silent — the rate is the input to deciding whether
+  // a glossary is safe to send at its current size.
+  if (r.unwrapped.length) {
+    const types = [...new Set(r.unwrapped.map((u) => u.type))].join(', ');
+    console.error(
+      `  Note: ${moduleId}: removed ${r.unwrapped.length} invented glossary marker(s) — ${types}`
+    );
+  }
+
+  if (r.greekLost.length) {
+    const shown = r.greekLost
+      .map((g) => `${g.segId} ${g.lost.join('')}→${g.added.join('') || '∅'}`)
+      .join('; ');
+    console.error(
+      `  Note: ${moduleId}: Greek letter(s) LOST in ${r.greekLost.length} segment(s) — ${shown}`
+    );
+  }
+  if (r.greekAdded.length) {
+    console.error(
+      `  Note: ${moduleId}: Greek letter(s) ADDED in ${r.greekAdded.length} segment(s) ` +
+        `(usually a spelled-out name the MT turned into a symbol) — not held back`
+    );
+  }
+}
+
+/**
+ * Translate a single module file via the API.
+ * Automatically splits large modules at SEG boundaries to avoid API truncation.
+ * Filters glossary to terms in source text. Retries without glossary on truncation.
+ */
+export async function translateModule(
+  client,
+  inputPath,
+  outputPath,
+  glossary,
+  verbose,
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
+  { glossaryArm } = {}
+) {
+  const input = fs.readFileSync(inputPath, 'utf8');
+  const moduleId = path.basename(inputPath, '-segments.en.md');
+  const r = await translateSegmentText(client, input, glossary, verbose, maxChunk, {
+    moduleId,
+    where: outputPath,
+  });
+  // Built before the write, for the same reason as the values it reads (Finding 1).
+  const run = runRecordFor(input, r, glossary, glossaryArm);
 
   // Write output
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-  fs.writeFileSync(outputPath, output, 'utf8');
-
-  // §C82 fix round 1, Finding 1: the ONLY thing that may sit between
-  // fs.writeFileSync and writeProvenance is what buildRunRecord actually needs —
-  // here, the bare bracketDelta value. resolveRestorePolicy THROWS when a segment
-  // file exists with no sidecar, so every statement in this window widens a real
-  // failure window; a pure computation over in-memory strings is about as safe as
-  // that window gets, but it is not zero, so keep it to exactly this one call.
-  // B3's diagnostics (the human-readable note and the invented-marker note) are
-  // deliberately printed AFTER writeProvenance below: neither is needed to build
-  // the record, and an EPIPE on a broken stderr must not cost us the sidecar.
-  const bracketDelta = bracketMarkerDelta(input, output);
+  fs.writeFileSync(outputPath, r.output, 'utf8');
 
   // B2: stamp producer provenance next to the segment file.
   // §C82 prerequisite 2: it now also carries the run record. Without this the
-  // in-pipeline repairs erase their own evidence — the counters below exist
-  // nowhere else once this function returns.
-  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), {
-    tool: 'api-translate',
-    run: buildRunRecord({
-      chars: input.length,
-      usage: totalUsage,
-      estimatedIsk: estimateIsk(input.length),
-      markersNormalized,
-      mismatches,
-      bracketDelta,
-      unwrapped,
-      glossaryArm: glossaryArm ?? (glossary ? 'glossary' : 'no-glossary'),
-      glossaryHash: glossaryContentHash(glossary),
-      glossaryTermCount: glossary?.terms?.length ?? null,
-      chunksWithGlossary,
-      chunksTotal: chunks.length,
-      greekLost,
-      greekAddedCount: greekAdded.length,
-    }),
-  });
+  // in-pipeline repairs erase their own evidence — the counters exist nowhere
+  // else once this function returns.
+  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), { tool: 'api-translate', run });
 
   // Copy -links.json if it exists
   const linksFilename = path.basename(inputPath).replace('-segments.en.md', '-segments-links.json');
@@ -1983,49 +2086,127 @@ export async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
-  // is a module-level aggregate: a drop in one segment and a spurious add of the same
-  // type in another cancel to zero and won't be reported — acceptable for a non-gating
-  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
-  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
-  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
-  const bracketNote = formatBracketDelta(moduleId, bracketDelta);
-  if (bracketNote) console.error(`  Note: ${bracketNote}`);
-
-  // §C67 class 3: markers the MT invented around glossary target words and we
-  // removed. Reported, never silent — the rate is the input to deciding whether
-  // a glossary is safe to send at its current size.
-  if (unwrapped.length) {
-    const types = [...new Set(unwrapped.map((u) => u.type))].join(', ');
-    console.error(
-      `  Note: ${moduleId}: removed ${unwrapped.length} invented glossary marker(s) — ${types}`
-    );
-  }
-
-  if (greekLost.length) {
-    const shown = greekLost
-      .map((g) => `${g.segId} ${g.lost.join('')}→${g.added.join('') || '∅'}`)
-      .join('; ');
-    console.error(
-      `  Note: ${moduleId}: Greek letter(s) LOST in ${greekLost.length} segment(s) — ${shown}`
-    );
-  }
-  if (greekAdded.length) {
-    console.error(
-      `  Note: ${moduleId}: Greek letter(s) ADDED in ${greekAdded.length} segment(s) ` +
-        `(usually a spelled-out name the MT turned into a symbol) — not held back`
-    );
-  }
+  printModuleNotes(moduleId, r);
 
   return {
     chars: input.length,
-    usage: totalUsage,
-    markersNormalized,
-    mismatches,
-    bracketDelta,
-    unwrapped,
-    greekLost,
-    greekAdded,
+    usage: r.usage,
+    markersNormalized: r.markersNormalized,
+    mismatches: r.mismatches,
+    bracketDelta: r.bracketDelta,
+    unwrapped: r.unwrapped,
+    greekLost: r.greekLost,
+    greekAdded: r.greekAdded,
+  };
+}
+
+/**
+ * §C183 — TOP UP a module whose IS already exists: buy only the EN segments it lacks and
+ * splice them in. Every existing segment stays byte-identical (`spliceTopUp` proves it),
+ * which is what makes this safe over `02-mt-output`'s hand repairs, unlike `--force`.
+ *
+ * Everything that can refuse happens BEFORE the spend or before the first write: drift
+ * (an IS id the EN lacks), a missing or foreign provenance sidecar, any guard in
+ * `translateSegmentText`, and the splice's own invariants.
+ *
+ * Provenance: the sidecar is carried over whole — `run` untouched (it describes the buy
+ * that produced the rest of the file, and `chapter-term-check` / `compute-glossary-subset`
+ * read its arm), `schemaVersion` untouched (the latter filters on `=== 2`), any other key
+ * kept — with `generatedAt` RE-STAMPED (the battery reads it as the MT's vintage) and this
+ * run appended to `topUps`. ⚠️ The `-links.json` is deliberately left alone: a top-up
+ * adds segments, and the links file is not one.
+ *
+ * @returns {Promise<{toppedUp: number, chars: number, usage: number, markersNormalized: number,
+ *   mismatches: Array, bracketDelta: object, unwrapped: Array, greekLost: Array,
+ *   greekAdded: Array}>} the guard values describe the NEW segments only
+ */
+export async function topUpModule(
+  client,
+  inputPath,
+  outputPath,
+  glossary,
+  verbose,
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
+  { glossaryArm } = {}
+) {
+  const enText = fs.readFileSync(inputPath, 'utf8');
+  const isText = fs.readFileSync(outputPath, 'utf8');
+  const moduleId = path.basename(inputPath, '-segments.en.md');
+  const outputDir = path.dirname(outputPath);
+  const sidecarId = moduleIdFromOutputPath(outputPath);
+
+  const plan = planTopUp(enText, isText);
+  const action = topUpAction(plan);
+  if (action === 'refuse') {
+    throw new Error(
+      `${moduleId}: the IS carries id(s) the EN no longer has (${plan.extra.join(', ')}) — ` +
+        `different vintages, not an additive change. Refusing to top up.`
+    );
+  }
+  if (action === 'skip') {
+    return {
+      toppedUp: 0,
+      chars: 0,
+      usage: 0,
+      markersNormalized: 0,
+      mismatches: [],
+      bracketDelta: {},
+      unwrapped: [],
+      greekLost: [],
+      greekAdded: [],
+    };
+  }
+
+  // Before the spend: a module whose sidecar cannot be carried over must not be bought.
+  const prior = readProvenance(outputDir, sidecarId); // throws on malformed JSON / unknown tool
+  if (!prior) {
+    throw new Error(
+      `${moduleId}: no provenance sidecar next to ${outputPath} — refusing to top up an IS ` +
+        `whose producer is unknown. Run: node tools/backfill-provenance.js --book <book>`
+    );
+  }
+  if (prior.tool !== 'api-translate') {
+    throw new Error(
+      `${moduleId}: its IS was produced by ${prior.tool}, not api-translate — refusing to ` +
+        `splice api-translate segments into it.`
+    );
+  }
+
+  const r = await translateSegmentText(client, plan.wireText, glossary, verbose, maxChunk, {
+    moduleId,
+    where: outputPath,
+  });
+  const { text } = spliceTopUp(enText, isText, r.output); // throws before any write
+  const at = new Date().toISOString();
+  const payload = {
+    ...prior,
+    generatedAt: at,
+    topUps: [
+      ...(prior.topUps ?? []),
+      {
+        at,
+        priorGeneratedAt: prior.generatedAt,
+        ids: plan.missing,
+        run: runRecordFor(plan.wireText, r, glossary, glossaryArm),
+      },
+    ],
+  };
+
+  fs.writeFileSync(outputPath, text, 'utf8');
+  writeProvenancePayload(outputDir, sidecarId, payload);
+
+  printModuleNotes(moduleId, r);
+
+  return {
+    toppedUp: plan.missing.length,
+    chars: plan.wireText.length,
+    usage: r.usage,
+    markersNormalized: r.markersNormalized,
+    mismatches: r.mismatches,
+    bracketDelta: r.bracketDelta,
+    unwrapped: r.unwrapped,
+    greekLost: r.greekLost,
+    greekAdded: r.greekAdded,
   };
 }
 
@@ -2097,6 +2278,15 @@ async function main() {
     if (envVars.MALSTADUR_API_KEY) {
       process.env.MALSTADUR_API_KEY = envVars.MALSTADUR_API_KEY;
     }
+  }
+
+  // §C183: a top-up never rewrites an existing segment; --force rewrites them all.
+  if (args.topUp && args.force) {
+    console.error(
+      'Error: --top-up and --force contradict each other — a top-up keeps every existing ' +
+        'segment byte-identical, --force re-buys them all. Pick one.'
+    );
+    process.exit(1);
   }
 
   // Glossary arm — stated, never defaulted, on a live run (resolveGlossaryArm).
@@ -2198,20 +2388,32 @@ async function main() {
       const outputPath = path.join(outputDir, mod.filename.replace('.en.md', '.is.md'));
       const exists = fs.existsSync(outputPath);
       const locked = isMtLocked(outputPath);
-      const action = mtRunDecision({ exists, force: args.force, locked });
+      let action = mtRunDecision({ exists, force: args.force, locked, topUp: args.topUp });
+      let plan = null;
+      if (action === 'top-up') {
+        // Planned now, so a dry run sizes the WIRE text, not the whole module.
+        plan = planTopUp(fs.readFileSync(mod.path, 'utf8'), fs.readFileSync(outputPath, 'utf8'));
+        action = topUpAction(plan); // 'top-up' | 'skip' | 'refuse'
+      }
 
       workList.push({
         ...mod,
         chapterDir,
         outputPath,
         action,
-        skip: action !== 'write',
+        plan,
+        skip: action !== 'write' && action !== 'top-up',
       });
     }
   }
 
   const toTranslate = workList.filter((m) => !m.skip);
-  const toSkip = workList.filter((m) => m.skip);
+  const toSkip = workList.filter((m) => m.skip && m.action !== 'refuse');
+  const toTopUp = workList.filter((m) => m.action === 'top-up');
+  const refused = workList.filter((m) => m.action === 'refuse');
+  // What goes on the wire: the whole module for a write, the missing segments for a top-up.
+  const wireTextOf = (m) =>
+    m.action === 'top-up' ? m.plan.wireText : fs.readFileSync(m.path, 'utf8');
 
   if (workList.length === 0) {
     console.error('No modules found for the specified scope.');
@@ -2222,7 +2424,20 @@ async function main() {
   if (args.dryRun) {
     const lockedList = workList.filter((m) => m.action === 'locked-skip');
     console.log(`\nDry run — ${workList.length} modules found:`);
-    console.log(`  To translate: ${toTranslate.length}`);
+    console.log(`  To translate: ${toTranslate.length - toTopUp.length}`);
+    if (args.topUp) {
+      const segs = toTopUp.reduce((n, m) => n + m.plan.missing.length, 0);
+      console.log(`  To top up:    ${toTopUp.length} (${segs} missing segment(s))`);
+    }
+    // Drift is never quiet: the operator must see which modules a top-up will not touch.
+    if (refused.length > 0) {
+      console.log(
+        `  Refused:      ${refused.length} (the IS carries ids the EN lacks — not additive)`
+      );
+      for (const mod of refused) {
+        console.log(`    ⛔ ${mod.chapterDir}/${mod.moduleId}: ${mod.plan.extra.join(', ')}`);
+      }
+    }
     // The Already-done count includes locked modules, but --force does NOT
     // apply to those — qualify the hint so the operator isn't misled.
     const lockedHint =
@@ -2243,11 +2458,12 @@ async function main() {
 
     let totalChars = 0;
     for (const mod of toTranslate) {
-      const content = fs.readFileSync(mod.path, 'utf8');
+      const content = wireTextOf(mod);
       totalChars += content.length;
       if (args.verbose) {
+        const what = mod.action === 'top-up' ? ` (top-up: ${mod.plan.missing.length} seg)` : '';
         console.log(
-          `  ${mod.chapterDir}/${mod.moduleId}: ${content.length.toLocaleString()} chars`
+          `  ${mod.chapterDir}/${mod.moduleId}: ${content.length.toLocaleString()} chars${what}`
         );
       }
     }
@@ -2288,6 +2504,8 @@ async function main() {
     bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
     deltaModules: 0, // §C118 ⑲: modules whose PER-MODULE delta was non-empty
     greekModules: 0, // §C183 ①: modules where the MT lost a Greek letter
+    toppedUpModules: 0, // §C183: modules a --top-up spliced new segments into
+    toppedUpSegments: 0,
     errors: [],
   };
 
@@ -2311,6 +2529,18 @@ async function main() {
       results.lockedSkipped++;
       continue;
     }
+    // §C183: drift found while planning a top-up. Nothing is sent for it, and it is a
+    // failure, not a skip — the exit code must say that a module was left untouched.
+    if (mod.action === 'refuse') {
+      const error =
+        `top-up refused — the IS carries id(s) the EN no longer has ` +
+        `(${mod.plan.extra.join(', ')}); different vintages, not an additive change`;
+      console.log(`  ⛔ ${mod.chapterDir}/${mod.moduleId}: ${error}`);
+      results.failed++;
+      results.errors.push({ module: mod.moduleId, chapter: mod.chapterDir, error });
+      failedChapters.add(mod.chapterDir);
+      continue;
+    }
     if (mod.skip) {
       if (args.verbose) console.log(`  ⏭  ${mod.chapterDir}/${mod.moduleId} (exists)`);
       continue;
@@ -2319,19 +2549,27 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized, mismatches, bracketDelta, greekLost } =
-        await translateModule(
-          client,
-          mod.path,
-          mod.outputPath,
-          glossary,
-          args.verbose,
-          args.maxChunk,
-          { glossaryArm: glossaryOnly ? 'glossary-only' : undefined }
-        );
+      // Both routes go through translateSegmentText, so every paid-run guard covers both.
+      const run = mod.action === 'top-up' ? topUpModule : translateModule;
+      const { chars, markersNormalized, mismatches, bracketDelta, greekLost, toppedUp } = await run(
+        client,
+        mod.path,
+        mod.outputPath,
+        glossary,
+        args.verbose,
+        args.maxChunk,
+        {
+          glossaryArm: glossaryOnly ? 'glossary-only' : undefined,
+        }
+      );
       const fixedNote = markersNormalized > 0 ? `, ${markersNormalized} marker(s) un-glued` : '';
-      console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
+      const what = mod.action === 'top-up' ? `topped up ${toppedUp} segment(s), ` : '';
+      console.log(`✅ (${what}${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
+      if (mod.action === 'top-up') {
+        results.toppedUpModules++;
+        results.toppedUpSegments += toppedUp;
+      }
       results.markersNormalized += markersNormalized;
       for (const [t, n] of Object.entries(bracketDelta || {})) {
         results.bracketLoss[t] = (results.bracketLoss[t] || 0) + n;
@@ -2378,6 +2616,11 @@ async function main() {
   console.log('\n' + '═'.repeat(50));
   console.log('Summary:');
   console.log(`  Translated: ${results.translated}`);
+  if (args.topUp) {
+    console.log(
+      `  Topped up:  ${results.toppedUpModules} module(s), ${results.toppedUpSegments} segment(s) (of the translated)`
+    );
+  }
   console.log(`  Skipped:    ${results.skipped}`);
   if (results.lockedSkipped > 0) {
     console.log(`  Locked:     ${results.lockedSkipped} (editing started — MT re-run refused)`);
