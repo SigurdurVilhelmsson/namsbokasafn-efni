@@ -215,7 +215,7 @@ unprompted (§C73). One-word fragments of longer candidates are hidden unless `-
 ## Step 2 — re-MT the text
 
 ```bash
-node tools/api-translate.js --book <slug> --chapter <N> --dry-run --force   # 0 ISK — see below, --force is REQUIRED
+node tools/api-translate.js --book <slug> --chapter <N> --dry-run --force --no-glossary   # 0 ISK — see below, --force is REQUIRED; the arm too, so the rehearsal mirrors the buy
 node tools/api-translate.js --book <slug> --chapter <N> --force --no-glossary
 ```
 
