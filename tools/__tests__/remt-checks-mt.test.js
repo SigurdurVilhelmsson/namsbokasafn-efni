@@ -286,10 +286,12 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // `figure-run` independently enumerated. The SAME numbers that moved A2b's id count
     // and A2c's marker count. Four censuses, one delta, every time — which is why these
     // bumps are predictions met, not numbers copied off a red run.
-    // 22,664 -> 22,854 is +190, §C183 (2026-09-28): chemistry's summary top-up spliced 190 `:table-summary:` segments into
-    // 82 IS files (191 extracted; m68867's was refused twice by the API and stays unbought). The
-    // buy's own summary printed 188 + the m68829 control + the m68862 retry = 190.
-    expect(examined).toBe(22854); // segments inspected; an empty walk cannot reach it
+    // 22,664 -> 22,855 is +191, one per summary bought:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(examined).toBe(22855); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
@@ -430,10 +432,12 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       }
     }
     expect(pairs).toBe(207);
-    // 30,715 -> 30,905 is +190, the SAME delta as A6 and A2c: §C183 (2026-09-28): chemistry's summary top-up spliced 190 `:table-summary:` segments into
-    // 82 IS files (191 extracted; m68867's was refused twice by the API and stays unbought). The
-    // buy's own summary printed 188 + the m68829 control + the m68862 retry = 190.
-    expect(examined).toBe(30905);
+    // 30,715 -> 30,906 is +191, the SAME delta as A6 and A2c:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(examined).toBe(30906);
 
     // 🔴 §C126 #3 (2026-09-22) — 31 ORGANIC EXERCISE BUNDLES NOW FAIL THE CROSS-SIDE LEG, AND
     // THEY ARE THE ch12 CASE BELOW AGAIN: VINTAGE, NOT DAMAGE. Their EN gained 2,375
@@ -454,24 +458,21 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // until its summaries are bought ([USER] 2026-09-23) — when it is regenerated, this
     // becomes 2 + 191 and 83 more names join `rawOnly`.
     // ✅ §C183 (2026-09-28) — CHEMISTRY WAS REGENERATED AND BOUGHT IN ONE CHANGE, so the
-    // prediction above ("2 + 191 and 83 more names") became 2 + 1 and ONE more name: the
-    // top-up bought 190 of the 191, re-stamping each IS's `generatedAt`, so the vintage view
-    // KEEPS those summaries and A2b judges them (none fails). The one left is appendices
-    // m68867, whose summary the API returned without its SEG marker twice; its IS keeps its
-    // 2026-09-21 stamp and is subtracted like organic's two. ▶ These 82 re-stamped files
-    // are also the corpus's FIRST post-type summary IS on disk — see the next test's note.
-    expect(summaryDriftIds).toBe(3);
+    // prediction above ("2 + 191 and 83 more names") never came true: it became 2 + 0. The
+    // top-up bought all 191 and re-stamped each IS's `generatedAt`, so the vintage view KEEPS
+    // those summaries and A2b judges them (none fails). ▶ These 83 re-stamped files are the
+    // corpus's FIRST post-type summary IS on disk — see the next test's note.
+    expect(summaryDriftIds).toBe(2);
     const rawOnly = rawNonPass.filter((x) => !nonPass.some((y) => y.f === x.f));
-    expect(rawOnly).toHaveLength(34);
+    expect(rawOnly).toHaveLength(33);
     const summaryOnly = rawOnly.filter((x) => !/exercises-segments/.test(x.f));
     expect(summaryOnly.map((x) => x.f.split('/').slice(-2).join('/')).sort()).toEqual([
-      'appendices/m68867-segments.is.md',
       'ch03/m00032-segments.is.md',
       'ch03/m00033-segments.is.md',
     ]);
     for (const { f, r } of rawOnly) {
       expect(f).toMatch(
-        /(lifraen-efnafraedi\/02-mt-output\/ch\d+\/(exercises|m00032|m00033)|efnafraedi-2e\/02-mt-output\/appendices\/m68867)-segments\.is\.md$/
+        /lifraen-efnafraedi\/02-mt-output\/ch\d+\/(exercises|m00032|m00033)-segments\.is\.md$/
       );
       expect(r.message, `${f}: only the cross-side leg may fire`).toMatch(/cross-side/);
       expect(r.message, `${f}: the raw leg must stay clean`).not.toMatch(/raw-vs-parsed/);
@@ -513,7 +514,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // 🔴 THE MUST-TRIP BELOW PASSES `generatedAt` BY HAND, SO IT CANNOT SEE THE DISK READ.
     // The corpus could not either, until 2026-09-28: its only summary-bearing IS files
     // (organic ch03 m00032/m00033) are pre-type, and "read fails ⇒ pre-type" gives the same
-    // answer as "read 2026-09-05". ⚠️ Since §C183's top-up, 82 chemistry IS files carry
+    // answer as "read 2026-09-05". ⚠️ Since §C183's top-up, 83 chemistry IS files carry
     // summaries under a RE-STAMPED post-type `generatedAt`, so the corpus now reaches the
     // post-type branch too — but they also carry the summary ids, which the carries-a-summary
     // guard keeps on its own. So the corpus still cannot tell a broken disk read from a
@@ -973,10 +974,9 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // 63,863 -> 63,865 is +2 (§C126 #4): organic ch03's m00032/m00033 EN gained one
       // `:table-summary:` id each (the other 17 summary modules have no IS to pair with).
       // Keyed `{tableId}-summary`, all `[\w-]` — violations stay 0.
-      // 63,865 -> 64,246 is +381 (§C183, 2026-09-28): chemistry's re-extract added 191
-      // `:table-summary:` EN ids and the top-up bought 190 of them into the IS (m68867's was
-      // refused twice). 191 + 190 = 381, the dry run's and the buy's own counts.
-      expect(ids).toBe(64246); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 63,865 -> 64,247 is +382 (§C183, 2026-09-28): chemistry's re-extract added 191
+      // `:table-summary:` EN ids and the top-up bought all 191 into the IS. 191 + 191 = 382.
+      expect(ids).toBe(64247); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -1029,10 +1029,12 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     // 30,027 -> 30,076 -> 30,158 is the SAME +49 then +82 A2b's id count moved by — the figure-`alt`
     // segments. Two independent censuses agreeing on the delta is what makes either
     // number worth trusting; if only one had moved, that would be the alarm.
-    // 30,715 -> 30,905 is +190, the SAME delta A2b and A6 moved by: §C183 (2026-09-28): chemistry's summary top-up spliced 190 `:table-summary:` segments into
-    // 82 IS files (191 extracted; m68867's was refused twice by the API and stays unbought). The
-    // buy's own summary printed 188 + the m68829 control + the m68862 retry = 190.
-    expect(markers).toBe(30905);
+    // 30,715 -> 30,906 is +191, the SAME delta A2b and A6 moved by:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(markers).toBe(30906);
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {
