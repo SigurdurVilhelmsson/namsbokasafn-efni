@@ -6,7 +6,7 @@
 
 ### ⏭ SINGLE NEXT ACTION — **Step 2 of the development order below: the paid-run guards (0 ISK), then the §C183 top-up and the buy.** The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
 
-🔎 **VERIFY FIRST (0 ISK, one pull):** the eight house-style rows deployed with #519 must appear in chemistry's `glossary-unified.json` after the first cron export following the deploy (12:00Z on 2026-09-28, or later). Check it in the **pulled** file (`radius → radíus`, `molecular compound → sameindaefni` …), never by the clock. Until then, prod health reported chemistry `unchanged since 2026-09-23`.
+✅ **VERIFIED 2026-09-28:** prod's 12:00Z export (`e1897da91`) carries all eight house-style rows under chemistry (`radius → radíus` … `molecular compound → sameindaefni`), 1,740 → 1,742 terms. The controls held: `phase transition → fasabreyting`, `anode → anóða`.
 
 ⏹ **SYNC PRECONDITION — do not sync chemistry without this ([USER] 2026-09-28).** The redirect rows are **deliberately NOT landed early**. Titles can still change before the sync (e.g. editor retitles once §C59 lands), and a stale row points at a page that never exists, so the live URL 404s.
 - **At sync time,** after the ② re-render and before running `sync-content.js`, **RECOMPUTE the rows from the final titles.** Do not land the 2026-09-27 list as it stands.
