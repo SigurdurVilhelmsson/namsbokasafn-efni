@@ -296,7 +296,7 @@ H[[sub:3]][[u:C]], [[i:sp]][[sup:3]]; [[u:C]](O)OH, [[i:sp]][[sup:2]]
 Lykilhugtök og samantekt
 
 <!-- SEG:m68745:para:fs-idm25402912 -->
-Við getum notað blendingssvigrúm, sem eru stærðfræðilegar samsetningar sumra eða allra gildisrafeindasvigrúma, til að lýsa rafeindaþéttleika í kringum samgild tengd atóm. Þessi blendingssvigrúm mynda annaðhvort sigma (Δ) tengi sem beinast að öðrum atómum sameindarinnar eða innihalda einmana rafeindapör. Við getum ákvarðað gerð svigrúmablöndunar í kringum miðjuatóm út frá rúmfræði rafeindaþéttleikasvæðanna í kringum það. Tvö slík svæði gefa til kynna [[i:sp]] svigrúmablöndun; þrjú, [[i:sp]][[sup:2]] svigrúmablöndun; fjögur, [[i:sp]][[sup:3]] svigrúmablöndun; fimm, [[i:sp]][[sup:3]][[i:d]] svigrúmablöndun; og sex, [[i:sp]][[sup:3]][[i:d]][[sup:2]] svigrúmablöndun. Pí (Δ) tengi eru mynduð úr óblönduðum atómsvigrúmum ([[i:p]] eða [[i:d]] svigrúmum).
+Við getum notað blendingssvigrúm, sem eru stærðfræðilegar samsetningar sumra eða allra gildisrafeindasvigrúma, til að lýsa rafeindaþéttleika í kringum samgild tengd atóm. Þessi blendingssvigrúm mynda annaðhvort sigma (σ) tengi sem beinast að öðrum atómum sameindarinnar eða innihalda einmana rafeindapör. Við getum ákvarðað gerð svigrúmablöndunar í kringum miðjuatóm út frá rúmfræði rafeindaþéttleikasvæðanna í kringum það. Tvö slík svæði gefa til kynna [[i:sp]] svigrúmablöndun; þrjú, [[i:sp]][[sup:2]] svigrúmablöndun; fjögur, [[i:sp]][[sup:3]] svigrúmablöndun; fimm, [[i:sp]][[sup:3]][[i:d]] svigrúmablöndun; og sex, [[i:sp]][[sup:3]][[i:d]][[sup:2]] svigrúmablöndun. Pí (π) tengi eru mynduð úr óblönduðum atómsvigrúmum ([[i:p]] eða [[i:d]] svigrúmum).
 
 <!-- SEG:m68745:title:fs-idp58929664-title -->
 Efnafræði – verkefni í lok kafla

@@ -11,7 +11,7 @@
 - **Empty scope flags:** `--module=`, a trailing `--module` and `--module ''` widened to the whole chapter (13 modules); `--chapter=` and a trailing `--chapter` to the **whole book (170)** — all exit 0. `parseArgs` now refuses them for every tool (`requiresValue`).
 - **Greek-letter conservation** and **truncation** → §C191 ② and §C183. Truncation now refuses to write; on HEAD a truncated response overwrote a good translation under `--force`.
 - **Adversarially reviewed the same day** (15 agents, mutation testing included). Two should-fixes survived their skeptics and are fixed: `--full-glossary` failed OPEN on a book with no glossary, and a response cut inside a SEG marker slipped past both value checks. Five cheap nits were also fixed. The rest → §C196. ⚠️ **Step 3 must route the top-up through the guarded path** (§C183).
-- ⏳ **[USER] — new: four Greek-letter substitutions are live in bought chemistry, on prepared pages** (ch08 summary, 20-1, ch21 key terms; list in §C191 ②). They ship at the held sync. Route: a hand repair of those four `02-mt-output` segments needs a NEW authorisation (the 2026-09-26 one covers ruled titles only), or leave them to the editor phase. Either way, before the sync.
+- ✅ **Four Greek-letter substitutions found in bought chemistry — HAND-REPAIRED 2026-09-28 ([USER] authorised it in session, the same day)**: 6 edits in 3 `02-mt-output` files, recorded in the `data(mt): HAND REPAIR` commit. **The prepared pages still carry them until the ② re-inject/re-render.** Details → §C191 ②.
 
 ✅ **VERIFIED 2026-09-28:** prod's 12:00Z export (`e1897da91`) carries all eight house-style rows under chemistry (`radius → radíus` … `molecular compound → sameindaefni`), 1,740 → 1,742 terms. The controls held: `phase transition → fasabreyting`, `anode → anóða`.
 
@@ -103,7 +103,7 @@ Then ③ opens the editor phase.
   - Nitrogen (§C140 ㉑);
   - the `looks_verbatim` figures (MattType);
   - the PerTable2 June-raster restore.
-- **Four Greek-letter substitutions in bought chemistry (§C191 ②, found 2026-09-28):** repair route is [USER]'s — a new hand-repair authorisation, or the editor phase. Re-render after a repair, and the corpus pin in `mt-output-guards-corpus.test.js` goes red on purpose.
+- **Four Greek-letter substitutions in bought chemistry (§C191 ②, found 2026-09-28):** ✅ hand-repaired in `02-mt-output` the same day. ⏳ They reach readers only through **this** re-inject/re-render (`m68745` ch08, `m68846` ch20, `m68852` ch21). ⚠️ A future `--force` of any of those three modules reverts the repair.
 - **Faithful ch01/ch03 overlay** (moved out of ① by the critic): a [LEAD] ruling gated on the sync. Either retire it, or let editors' re-apply replace it.
 - **Redirect rows:** ruled titles gave 20 rows (2026-09-27), and vefur's 2 existing rows stay correct. **Recompute them at sync time; see the ⏹ SYNC PRECONDITION above.**
 - **Deploy prod after the batch and before anyone uses *Publish MT preview* or *Vista + Birta*.** Otherwise old code rewrites the fixed pages and the cron commits them.
@@ -6882,10 +6882,11 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
       - `m68846:para:fs-idp51580832` (ch20, `20-1-vetniskolefni.html`): "A **Β**-tengi" — π became capital Beta, which reads as a Latin B (and "A" stayed English);
       - `m68852:glossary-def:fs-idm57603984-def` (ch21, `21-key-terms.html` + `index.json`): "(**Α**" — α became capital Alpha, which reads as a Latin A;
       - `m68852:glossary-def:fs-idm12021616-def` (same pages): "(**Γ**" — γ became Γ.
-      - Pinned as the guard's positive control in `tools/__tests__/mt-output-guards-corpus.test.js`; a repair turns that test red on purpose.
+      - ✅ **HAND-REPAIRED 2026-09-28**, authorised by [USER] in session that day for exactly these four segments. The repair has 6 edits in 3 files, listed in the `data(mt): HAND REPAIR` commit. It also dropped the stray English article in "A Β-tengi", which sat inside the same broken phrase. Verified by value: 0 Greek losses remain in chemistry's committed MT, and the repaired letter reads U+03C0. **Readers get it at the ② re-inject/re-render.**
+      - The four are pinned as **planted history** in `tools/__tests__/mt-output-guards-corpus.test.js`. Each is re-planted into its repaired real segment, and the guard must catch it. A clean corpus left the guard with no natural positive control, which is the bracket-delta lesson.
     - 🔴 **The look-alike fold — CORRECTED the same day by the adversarial review; this bullet first said that without it "7 correct normalisations read as losses", which is backwards.** OpenStax writes `∆` (U+2206), `Ʃ` (U+01A9, Latin *esh*) and `∑`, and the MT returns proper Greek. None of the three is `\p{Script=Greek}`, so without the fold they read as ADDITIONS (reported, not held). What the fold protects is the HOLD verdict: a LOST look-alike (`∆H` → `H`) and an IS look-alike for a proper EN letter. NFKC now handles `µ`, the Ohm sign and the symbol variants (organic's `ϵ` → `ε` was a false hold). The corpus test pins the fold through the addition set. Case is deliberately NOT folded.
     - ⚠️ **An ADDITION is not damage:** the MT turns spelled-out accessibility names into symbols (`m68729` "wavelength lambda" → λ). 19 of the 191 §C183 table summaries spell Greek out, so a strict-equality gate would have held back that buy for a non-defect.
-    - ⏳ **Fix route for the four is a [USER] question** → the 2026-09-28 ⏩ RESUME block.
+    - ✅ **Fix route decided:** [USER] chose the hand repair (2026-09-28), not the editor phase.
   - ③ **Document titles lose italic/superscript** in `<h1>`, `<title>` and the TOC (organic showed *sp3-blendingssvigrúm* for *sp³*). Not yet measured on chemistry.
   - ④ **A cross-book or out-of-chapter `docref` can render its raw module id as link text** (organic 1-1: *"…í lotukerfinu í m00228."*). Not yet measured on chemistry.
   - ⑤ **`chapter-term-check` counts a count-guard-degraded (English) segment as coverage** (*"kept verbatim"*), inflating a term's reach. Tool defect, book-independent.

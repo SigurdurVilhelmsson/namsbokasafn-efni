@@ -1,13 +1,16 @@
 /**
  * The two MT-output guards, anchored on chemistry's COMMITTED MT (the book being bought).
  *
- * 🔴 THE FOUR GREEK LOSSES BELOW ARE REAL, READER-VISIBLE DEFECTS — NOT FIXTURES. They
- * were found by this guard's first corpus run on 2026-09-28 and are logged in the active
- * register (§C191 ②). They are pinned here as the guard's POSITIVE CONTROL: a guard that
- * found nothing on this corpus would be indistinguishable from a broken one.
- * ▶ When one is repaired (by an authorised hand repair or by an editor), this test goes
- * red ON PURPOSE: remove it from KNOWN_GREEK_LOSSES and update the register in the same
- * commit. When a NEW one appears, it is a new defect: log it, do not just pin it.
+ * 🔴 THE GREEK-LOSS SET IS NOW EMPTY — AND THAT IS WHY THE PLANTED-HISTORY TEST EXISTS.
+ * This guard's first corpus run (2026-09-28) found four real, reader-visible substitutions
+ * (§C191 ②); [USER] authorised a hand repair of exactly those segments the same day.
+ * ▶ REPAIRING THE CORPUS STRIPS A CHECK OF ITS PROOF THAT IT WORKS — CLAUDE.md's
+ * bracket-delta lesson, which happened three times in one afternoon there. A guard that
+ * finds nothing on a clean corpus is indistinguishable from a broken one, so the four
+ * defects are pinned as HISTORY: re-planted into the repaired, real segments in memory,
+ * and the guard must report each exactly. Do not delete that test because the corpus is
+ * clean — a clean corpus is exactly when it is the only proof left.
+ * ▶ A NEW loss in the committed MT is a new defect: log it, do not just pin it.
  *
  * Chemistry only, deliberately: organic's committed MT is scheduled for removal (§C190 ②).
  */
@@ -50,12 +53,48 @@ function pairs() {
 
 const PAIRS = pairs();
 
-const KNOWN_GREEK_LOSSES = [
-  'm68745:para:fs-idm25402912 πσ→ΔΔ', // ch08 — σ and π bonds both became Δ
-  'm68846:para:fs-idp51580832 ππ→ΒΒ', // ch20 — "A Β-tengi": π became capital Beta
-  'm68852:glossary-def:fs-idm57603984-def α→Α', // ch21 key term — reads as a Latin A
-  'm68852:glossary-def:fs-idm12021616-def γ→Γ', // ch21 key term
+// The four substitutions the paid MT really made, hand-repaired 2026-09-28. Written as
+// code points: capital Greek Beta and Alpha are indistinguishable from Latin B and A.
+const cp = (...c) => String.fromCodePoint(...c);
+const [DELTA, BETA, ALPHA, GAMMA] = [cp(0x394), cp(0x392), cp(0x391), cp(0x393)];
+const [sigma, pi, alpha, gamma] = [cp(0x3c3), cp(0x3c0), cp(0x3b1), cp(0x3b3)];
+const HISTORY = [
+  {
+    unit: 'ch08/m68745', // "sigma (Δ) tengi … Pí (Δ) tengi"
+    segId: 'm68745:para:fs-idm25402912',
+    plant: [
+      [`(${sigma})`, `(${DELTA})`],
+      [`(${pi})`, `(${DELTA})`],
+    ],
+    lost: [pi, sigma].sort(),
+  },
+  {
+    unit: 'ch20/m68846', // "A Β-tengi": π became capital Beta, which reads as a B
+    segId: 'm68846:para:fs-idp51580832',
+    plant: [
+      [`${pi}-tengi, sem`, `A ${BETA}-tengi, sem`],
+      [`${pi}-tengið`, `${BETA}-tengið`],
+    ],
+    lost: [pi, pi],
+  },
+  {
+    unit: 'ch21/m68852', // key term: "(Α" reads as a Latin A
+    segId: 'm68852:glossary-def:fs-idm57603984-def',
+    plant: [[`(${alpha}`, `(${ALPHA}`]],
+    lost: [alpha],
+  },
+  {
+    unit: 'ch21/m68852',
+    segId: 'm68852:glossary-def:fs-idm12021616-def',
+    plant: [[`(${gamma}`, `(${GAMMA}`]],
+    lost: [gamma],
+  },
 ];
+
+const segmentOf = (tree, unit, lang, segId) =>
+  parseSegmentsMap(
+    fs.readFileSync(path.join(BOOK, tree, `${unit}-segments.${lang}.md`), 'utf8')
+  ).get(segId);
 
 describe('chemistry committed MT — Greek-letter conservation', () => {
   it('reads a real corpus (denominator control)', () => {
@@ -74,14 +113,28 @@ describe('chemistry committed MT — Greek-letter conservation', () => {
     expect(addedOnly).toEqual(['m68729:alt:fs-idm60605232-alt +λλν']); // "lambda"/"nu" → λ/ν
   });
 
-  it('finds exactly the four logged losses — no more, no fewer', () => {
+  it('finds no loss in the committed MT — the four were hand-repaired 2026-09-28', () => {
     const losses = PAIRS.flatMap(({ en, is }) =>
       greekConservationBySegment(en, is)
         .filter((f) => f.lost.length)
         .map((f) => `${f.segId} ${f.lost.join('')}→${f.added.join('')}`)
     );
-    expect(losses.sort()).toEqual([...KNOWN_GREEK_LOSSES].sort());
+    expect(losses).toEqual([]);
   });
+
+  for (const h of HISTORY) {
+    it(`PLANTED HISTORY: re-planting ${h.segId}'s real substitution is caught`, () => {
+      const en = segmentOf('02-for-mt', h.unit, 'en', h.segId);
+      const repaired = segmentOf('02-mt-output', h.unit, 'is', h.segId);
+      let planted = repaired;
+      for (const [good, bad] of h.plant) planted = planted.replace(good, bad);
+      expect(planted).not.toBe(repaired); // control: the plant really happened
+      const one = (text) => `<!-- SEG:${h.segId} -->\n${text}\n`;
+      expect(greekConservationBySegment(one(en), one(repaired))).toEqual([]);
+      const found = greekConservationBySegment(one(en), one(planted));
+      expect(found.map((f) => f.lost)).toEqual([h.lost]);
+    });
+  }
 });
 
 describe('chemistry committed MT — truncation', () => {
