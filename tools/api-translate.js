@@ -46,7 +46,11 @@ import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.j
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
 import { buildRunRecord, glossaryContentHash, usageUnits } from './lib/run-record.js';
-import { greekConservationBySegment, truncationSuspectsBySegment } from './lib/mt-output-guards.js';
+import {
+  greekConservationBySegment,
+  segmentIdSetDelta,
+  truncationSuspectsBySegment,
+} from './lib/mt-output-guards.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -1775,6 +1779,9 @@ function chunkDefect(chunkText, output) {
       `API may have truncated the response.`
     );
   }
+  // The count above matches even when a marker was cut or mangled; compare the ids.
+  const idDefect = idSetDefect(chunkText, output);
+  if (idDefect) return idDefect;
   const suspects = truncationSuspectsBySegment(chunkText, output);
   if (suspects.length === 0) return null;
   const detail = suspects
@@ -1787,6 +1794,26 @@ function chunkDefect(chunkText, output) {
   return (
     `possible truncation in ${suspects.length} segment(s): ${detail}. ` +
     `Refusing to write — the SEG count matched, so only the segment VALUES show it.`
+  );
+}
+
+/**
+ * The id-set half of the truncation check, shared by the chunk and the module level.
+ * A missing EN id is a segment whose marker was cut or mangled, so neither value leg
+ * ever judged it (segmentIdSetDelta).
+ * @param {string} enText
+ * @param {string} isText
+ * @returns {string|null}
+ */
+function idSetDefect(enText, isText) {
+  const { missing, extra } = segmentIdSetDelta(enText, isText);
+  if (missing.length === 0 && extra.length === 0) return null;
+  const parts = [];
+  if (missing.length) parts.push(`missing from the response: ${missing.join(', ')}`);
+  if (extra.length) parts.push(`not in the source: ${extra.join(', ')}`);
+  return (
+    `segment id set differs — ${parts.join('; ')}. The SEG count may still match: a marker ` +
+    `cut before its "-->", or an id the repairs could not restore. Refusing to write.`
   );
 }
 
@@ -1890,6 +1917,11 @@ export async function translateModule(
         `otherwise-unresolved marker. Refusing to write corrupted output.`
     );
   }
+
+  // §C183: the id sets again, on the REASSEMBLED module — normalizeSegMarkers and the join
+  // run after the per-chunk check, so this is the last look before the write.
+  const moduleIdDefect = idSetDefect(input, output);
+  if (moduleIdDefect) throw new Error(`${moduleId}: ${moduleIdDefect}`);
 
   // §C183 guard ①: Greek letters the MT substituted, per segment. Computed BEFORE the
   // write (pure, over in-memory strings) so nothing can throw between the write and the
@@ -2098,6 +2130,15 @@ async function main() {
       },
     });
     console.log(glossaryStatusLine(glossary, skippedCount, omittedCount));
+    // A STATED full arm with nothing to send must fail closed, like --glossary-only's
+    // missing-headword refusal below — never print "glossary" while sending none.
+    if (args.fullGlossary && !glossary) {
+      console.error(
+        `Error: --full-glossary was given, but ${args.book} has no approved glossary to send. ` +
+          `Nothing was sent. Use --no-glossary if that is what you mean.`
+      );
+      process.exit(1);
+    }
     if (glossaryOnly) {
       const { glossary: narrowed, missing } = restrictGlossary(glossary, glossaryOnly);
       if (missing.length > 0) {

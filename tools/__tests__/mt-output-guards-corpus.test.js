@@ -62,6 +62,18 @@ describe('chemistry committed MT — Greek-letter conservation', () => {
     expect(PAIRS.length).toBeGreaterThan(150);
   });
 
+  it('finds exactly one addition-only segment — the pin on the look-alike fold', () => {
+    // Without the fold, ∆ Ʃ ∑ are not Script=Greek, so the MT's proper Δ/Σ read as
+    // ADDITIONS: six more segments land here (m68727, m68741 ×2, m68752, m68817, m68819).
+    // The LOSS set below cannot see the fold's removal — measured by the 2026-09-28 review.
+    const addedOnly = PAIRS.flatMap(({ en, is }) =>
+      greekConservationBySegment(en, is)
+        .filter((f) => !f.lost.length)
+        .map((f) => `${f.segId} +${f.added.join('')}`)
+    );
+    expect(addedOnly).toEqual(['m68729:alt:fs-idm60605232-alt +λλν']); // "lambda"/"nu" → λ/ν
+  });
+
   it('finds exactly the four logged losses — no more, no fewer', () => {
     const losses = PAIRS.flatMap(({ en, is }) =>
       greekConservationBySegment(en, is)

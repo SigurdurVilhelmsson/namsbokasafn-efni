@@ -80,6 +80,35 @@ describe('two arms at once are a contradiction', () => {
   });
 });
 
+describe('--full-glossary fails CLOSED when there is no glossary to send', () => {
+  // Adversarial review 2026-09-28: with no loadable glossary the run printed
+  // "Glossary arm: glossary" and sent nothing, while provenance recorded "no-glossary".
+  // --glossary-only already refuses a headword the glossary lacks; the full arm must not
+  // be the one arm that silently degrades. orverufraedi has no glossary-unified.json.
+  const noGlossaryBook = ['--book', 'orverufraedi', '--chapter', '1', '--dry-run'];
+  const runBook = (extra) => {
+    const r = spawnSync(process.execPath, [TOOL, ...noGlossaryBook, ...extra], {
+      encoding: 'utf8',
+      env: { ...process.env, MALSTADUR_API_KEY: 'test-bogus-key-never-sent' },
+    });
+    return { code: r.status, out: `${r.stdout}${r.stderr}` };
+  };
+
+  it('refuses --full-glossary on a book with no approved glossary', () => {
+    const r = runBook(['--full-glossary']);
+    expect(r.code).toBe(1);
+    expect(r.out).toMatch(/--full-glossary/);
+  });
+
+  it('still accepts --no-glossary on that book (control)', () => {
+    expect(runBook(['--no-glossary']).code).toBe(0);
+  });
+
+  it('still accepts --full-glossary where a glossary exists (control)', () => {
+    expect(run(['--dry-run', '--full-glossary']).code).toBe(0);
+  });
+});
+
 describe('a dry run rehearses the arm decision', () => {
   it('does not refuse a dry run with no arm — a buy is sized this way', () => {
     expect(run(['--dry-run']).code).toBe(0);

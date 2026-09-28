@@ -127,6 +127,20 @@ function refuseMissingValue(flag) {
 }
 
 /**
+ * Is `token` one of this parser's declared flags, in either spelling (`--module` or
+ * `--module=m1`)? Matching only the exact spelling let `--chapter --module=m1` take the
+ * whole `--module=m1` token as the chapter value (NaN), which widened to the whole book.
+ * @param {string} token
+ * @param {Map<string, object>} flagMap
+ * @returns {boolean}
+ */
+function isDeclaredFlag(token, flagMap) {
+  if (flagMap.has(token)) return true;
+  const eq = token.startsWith('--') ? token.indexOf('=') : -1;
+  return eq > 2 && flagMap.has(token.slice(0, eq));
+}
+
+/**
  * Parse CLI arguments against declared option definitions.
  *
  * An option with `requiresValue: true` refuses (exit 2) when it is given with an
@@ -204,7 +218,7 @@ export function parseArgs(argv, optionDefs = [], config = {}) {
         const nextArg = argv[i + 1];
         if (
           def.requiresValue &&
-          (nextArg === undefined || nextArg.trim() === '' || flagMap.has(nextArg))
+          (nextArg === undefined || nextArg.trim() === '' || isDeclaredFlag(nextArg, flagMap))
         ) {
           refuseMissingValue(arg);
         }

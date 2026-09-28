@@ -304,7 +304,8 @@ invocation, and requires `--chapter`):
 ```bash
 # which modules were actually rewritten? today's date = already done
 grep -a generatedAt books/<slug>/02-mt-output/ch<NN>/*-provenance.json
-node tools/api-translate.js --book <slug> --chapter <N> --module <mNNNNN> --force [--no-glossary]
+node tools/api-translate.js --book <slug> --chapter <N> --module <mNNNNN> --force --no-glossary
+# the arm is REQUIRED since 2026-09-28 — use the SAME arm the chapter was bought with
 ```
 
 **Measured:** scoping to chemistry ch03's largest module priced at **~623 ISK** against **~1,408 ISK**

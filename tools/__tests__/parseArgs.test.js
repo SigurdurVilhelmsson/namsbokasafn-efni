@@ -321,6 +321,14 @@ describe('requiresValue — a SCOPE flag given with no value refuses instead of 
     expect(() => parseArgs(['--module', '--dry-run'], [MODULE_OPTION, DRY])).toThrow('__exit__');
   });
 
+  it('refuses --chapter followed by a declared flag in its --flag=value spelling', () => {
+    // Review 2026-09-28: `--chapter --module=m68664` made the chapter NaN and widened
+    // cnxml-fidelity-check to 149 modules, exit 0 — the lookahead matched flags exactly.
+    expect(() =>
+      parseArgs(['--chapter', '--module=m68664'], [CHAPTER_OPTION, MODULE_OPTION])
+    ).toThrow('__exit__');
+  });
+
   it('refuses a trailing --chapter — which widens to the WHOLE BOOK, not a chapter', () => {
     expect(() => parseArgs(['--chapter'], [CHAPTER_OPTION])).toThrow('__exit__');
   });
@@ -341,8 +349,10 @@ describe('requiresValue — a SCOPE flag given with no value refuses instead of 
   });
 
   it('accepts a value that merely starts with "-" when it is not a declared flag', () => {
-    // The rule is "the next token is a declared FLAG", never "starts with a dash":
-    // -1 is the appendices sentinel's number, and it must stay a value.
+    // The rule is "the next token is a declared FLAG", never "starts with a dash".
+    // (-1 is only an example of a dash-led VALUE: no tool reads CLI `-1` as the appendices
+    // — they take the word `appendices`, and `--chapter -1` finds no chapter and fails
+    // closed. Do not add -1 → appendices handling on the strength of this test.)
     expect(parseArgs(['--chapter', '-1'], [CHAPTER_OPTION]).chapter).toBe(-1);
     expect(exitSpy).not.toHaveBeenCalled();
   });

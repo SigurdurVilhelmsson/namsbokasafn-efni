@@ -100,6 +100,47 @@ describe('② truncation — translateChunk refuses a short response', () => {
   });
 });
 
+describe('② truncation — a segment whose MARKER was lost is refused too', () => {
+  // Adversarial review 2026-09-28: `validateMarkers` counts the literal `<!-- SEG:`, and
+  // the value checks only compare ids parsed on BOTH sides (the parser needs `-->`). So a
+  // response cut INSIDE the next marker kept the count equal, the cut segment was never
+  // judged, and a raw `<!-- SEG:` fragment was written into the previous segment. For a
+  // table summary, inject then silently keeps the English (peekSeg, best-effort).
+  // ▶ Compare id SETS, never counts. Measured: 0 of 205 committed EN/IS pairs in four
+  // books differ in id set, so no historical response would have been refused.
+  const two = `<!-- SEG:m68724:para:p1 -->\n${LONG_EN}\n\n<!-- SEG:m68724:para:p2 -->\n${LONG_EN}\n\n`;
+  const both = (text) => text.replaceAll(LONG_EN, LONG_IS);
+
+  it('refuses a response cut inside the next SEG marker', async () => {
+    const cut = (text) => both(text).replace(/<!-- SEG:m68724:para:p2 -->[\s\S]*$/, '<!-- SEG:');
+    const err = await translateChunk(scriptedClient(cut), two, null, false, 'm68724').catch(
+      (e) => e
+    );
+    expect(err).toBeInstanceOf(Error);
+    expect(err.message).toContain('m68724:para:p2');
+  });
+
+  it('refuses a mangled id the repairs cannot restore (digit transposition)', async () => {
+    const mangle = (text) => both(text).replace('SEG:m68724:para:p2', 'SEG:m68742:para:p2');
+    await expect(
+      translateChunk(scriptedClient(mangle), two, null, false, 'm68724')
+    ).rejects.toThrow(/m68724:para:p2/);
+  });
+
+  it('refuses a duplicated marker that stands in for a dropped one', async () => {
+    const three = `${two}<!-- SEG:m68724:para:p3 -->\n${LONG_EN}\n\n`;
+    const dup = (text) => both(text).replace('SEG:m68724:para:p3', 'SEG:m68724:para:p2');
+    await expect(translateChunk(scriptedClient(dup), three, null, false, 'm68724')).rejects.toThrow(
+      /m68724:para:p3/
+    );
+  });
+
+  it('passes an intact two-segment response (control)', async () => {
+    const r = await translateChunk(scriptedClient(both), two, null, false, 'm68724');
+    expect(r.text).toContain('m68724:para:p2');
+  });
+});
+
 describe('② truncation — translateModule never writes a truncated module', () => {
   let dir;
   beforeEach(() => {
@@ -192,9 +233,17 @@ describe('① Greek loss — the verdict is wired into main()', () => {
   const src = fs.readFileSync(API_TRANSLATE, 'utf8');
   const mainBody = src.slice(src.indexOf('async function main('));
 
+  // ⚠️ EXACT strings, not "contains the word". The 2026-09-28 mutation review found two
+  // mutants that survived looser pins: `greekLost: []` still contains "greekLost", and
+  // `if (false && greekLost …)` still contains the increment.
   it('passes the Greek losses to classifyModuleOutcome', () => {
-    const i = mainBody.indexOf('classifyModuleOutcome(');
-    expect(mainBody.slice(i, mainBody.indexOf(')', i))).toContain('greekLost');
+    expect(mainBody).toContain('classifyModuleOutcome({ mismatches, bracketDelta, greekLost })');
+  });
+
+  it('counts a Greek-loss module and holds its chapter', () => {
+    expect(mainBody).toMatch(
+      /if \(greekLost && greekLost\.length > 0\) \{\s*results\.greekModules\+\+;\s*greekChapters\.add\(mod\.chapterDir\);/
+    );
   });
 
   it('feeds a Greek held-back set into computeCompleteChapters', () => {
