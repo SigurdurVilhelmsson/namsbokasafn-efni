@@ -220,6 +220,9 @@ Lausnir sem innihalda umtalsvert magn af veiku samoka sýru-basa pari kallast st
 <!-- SEG:m68808:title:fs-idm101899904-title -->
 Lykiljöfnur
 
+<!-- SEG:m68808:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68808:entry:auto-75 -->
 p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]
 

@@ -304,6 +304,9 @@ Byggt á gögnunum sem gefin eru, hvert þessara er hraðaákvarðandi skrefið?
 <!-- SEG:m68794:solution:fs-idp77008528 -->
 (a) Tvöföldun á [H[[sub:2]]] tvöfaldar hraðann. [H[[sub:2]]] verður að koma fyrir í hraðalögmálinu í fyrsta veldi. Tvöföldun á [NO] eykur hraðann um stuðulinn 4. [NO] verður að koma fyrir í hraðalögmálinu í öðru veldi. (b) Hraði = [[i:k]] [NO][[sup:2]][H[[sub:2]]]; (c) [[i:k]] = 5,0 [[MATH:22]] 10[[sup:3]] mól[[sup:2]] L[[sup:−2]] mín[[sup:−1]]; (d) 0,0050 mól/L; (e) Skref II er hraðaákvarðandi skrefið. Ef skref I gefur N[[sub:2]]O[[sub:2]] í nægilegu magni, sameinast skref 1 og 2 til að gefa [[MATH:23]] Þetta hvarf samsvarar athuguðu hraðalögmáli. Sameinaðu skref 1 og 2 með skrefi 3, sem gerist að því gefnu hratt, til að fá rétt hlutföll.
 
+<!-- SEG:m68794:table-summary:fs-idp16941152-summary -->
+Þessi tafla hefur fjóra dálka og fimm raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk, „Tilraun“, „Upphafsstyrkur [ N O ] ( mól / L )“, „Upphafsstyrkur, [ H neðanskrift 2 ] ( mól / L )“ og „Upphafshraði myndunar N neðanskrift 2 ( mól / L mín )“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2, 3 og 4. Undir dálkinum „Upphafsstyrkur [ N O ] ( mól / L )“ eru tölurnar: 0,0060, 0,0060, 0,0010 og 0,0020. Undir dálkinum „Upphafsstyrkur, [ H neðanskrift 2 ] ( mól / L )“ eru tölurnar: 0,0010, 0,0020, 0,0060, 0,0060. Undir dálkinum „Upphafshraði myndunar N neðanskrift 2 ( mól / L mín )“ eru tölurnar: 1,8 sinnum tíu í mínus fjórða; 3,6 sinnum tíu í mínus fjórða; 0,30 sinnum tíu í mínus fjórða; og 1,2 sinnum tíu í mínus fjórða.
+
 <!-- SEG:m68794:entry:auto-103 -->
 Tilraun
 

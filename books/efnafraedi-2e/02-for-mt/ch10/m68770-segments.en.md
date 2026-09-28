@@ -88,6 +88,9 @@ Properties of Solids
 <!-- SEG:m68770:para:fs-idp69161920 -->
 A crystalline solid, like those listed in [[xref:fs-idp121853232]], has a precise melting temperature because each atom or molecule of the same type is held in place with the same forces or energy. Thus, the attractions between the units that make up the crystal all have the same strength and all require the same amount of energy to be broken. The gradual softening of an amorphous material differs dramatically from the distinct melting of a crystalline solid. This results from the structural nonequivalence of the molecules in the amorphous solid. Some forces are weaker than others, and when an amorphous material is heated, the weakest intermolecular attractions break first. As the temperature is increased further, the stronger attractions are broken. Thus amorphous materials soften over a range of temperatures.
 
+<!-- SEG:m68770:table-summary:fs-idp121853232-summary -->
+This table has five rows and five columns. The first row is a header row, and it labels each column: “Type of Solid,” “Type of Particles,” “Type of Attractions,” “Properties,” and “Examples.” Under the “Type of Solid” column are the following: ionic, metallic, covalent network, and molecular. Under the “Type of Particles” column are the following: ions, atoms of electropositive elements, atoms of electronegative elements, and molecules ( or atoms ). Under the “Type of Attractions” column are the following: ionic bonds, metallic bonds, covalent bonds, I M F s. Under the “Properties column” are the following: hard, brittle, conducts electricity as a liquid but not as a solid, high to very high melting points; shiny, malleable, ductile, conducts heat and electricity well, variable hardness and melting temperature; very hard, not conductive, very high melting points; variable hardness, variable brittleness, not conductive, low melting points. Under the “Examples” column are the following: N a C l, A l subscript 2 O subscript 3; C u, F e, T I, P b, U; C (diamond), S I O subscript 2, S i C; H subscript 2 O, C O subscript 2, I subscript 2, C subscript 12 H subscript 22 O subscript 11.
+
 <!-- SEG:m68770:entry:auto-31 -->
 Types of Crystalline Solids and Their Properties
 
@@ -415,6 +418,9 @@ vacancy
 <!-- SEG:m68770:glossary-def:fs-idm37032656-def -->
 defect that occurs when a position that should contain an atom or ion is vacant
 
+<!-- SEG:m68770:table-summary:fs-idm7525216-summary -->
+This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.
+
 <!-- SEG:m68770:entry:auto-140 -->
 Substance
 
@@ -474,6 +480,9 @@ only if melted/dissolved
 
 <!-- SEG:m68770:entry:auto-159 -->
 soluble
+
+<!-- SEG:m68770:table-summary:fs-idp139392608-summary -->
+This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.
 
 <!-- SEG:m68770:entry:auto-160 -->
 Substance

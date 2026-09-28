@@ -22,6 +22,9 @@ Compounds Containing Only Monatomic Ions
 <!-- SEG:m68698:para:fs-idp279143120 -->
 The name of a binary compound containing monatomic ions consists of the name of the cation (the name of the metal) followed by the name of the anion (the name of the nonmetallic element with its ending replaced by the suffix –[[i:ide]]). Some examples are given in [[xref:fs-idp282234816]].
 
+<!-- SEG:m68698:table-summary:fs-idp282234816-summary -->
+The examples of ionic compounds shown in this table are N a C l sodium chloride, K B r potassium bromide, C a I subscript 2 calcium iodide, C s F cesium fluoride, L i C l lithium chloride, N a subscript 2 O sodium oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, and A l subscript 4 C subscript 3 aluminum carbide.
+
 <!-- SEG:m68698:entry:auto-9 -->
 Names of Some Ionic Compounds
 
@@ -61,6 +64,9 @@ Compounds Containing Polyatomic Ions
 <!-- SEG:m68698:para:fs-idp282236928 -->
 Compounds containing polyatomic ions are named similarly to those containing only monatomic ions, i.e. by naming first the cation and then the anion. Examples are shown in [[xref:fs-idp279316112]].
 
+<!-- SEG:m68698:table-summary:fs-idp279316112-summary -->
+The examples of polyatomic ionic compounds shown in this table are K C subscript 2 H subscript 3 O subscript 2 potassium acetate, N a H C O subscript 3 sodium bicarbonate, A l subscript 2 ( C O subscript 3 ) subscript 3 aluminum carbonate, (N H subscript 4) CL, ammonium chloride, C a S O subscript 4 calcium sulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate.
+
 <!-- SEG:m68698:entry:auto-22 -->
 Names of Some Polyatomic Ionic Compounds
 
@@ -87,6 +93,9 @@ Ionic Compounds in Your Cabinets
 
 <!-- SEG:m68698:para:fs-idm70496 -->
 Every day you encounter and use a large number of ionic compounds. Some of these compounds, where they are found, and what they are used for are listed in [[xref:fs-idp268265360]]. Look at the label or ingredients list on the various products that you use during the next few days, and see if you run into any of those in this table, or find other ionic compounds that you could now name or write as a formula.
+
+<!-- SEG:m68698:table-summary:fs-idp268265360-summary -->
+The everyday ionic compound examples included in this table are: N a C L sodium chloride, or ordinary table salt, K I potassium iodide which is added to iodized salt, N a F, sodium fluoride which is an ingredient in toothpaste, N a H C O subscript 3 sodium bicarbonate which is baking soda, used in cooking and as an antacid, N a subscript 2 C O subscript 3 sodium carbonate which is washing soda and is used in cleaning agents, N a O C l sodium hypochlorite which is the active ingredient in household bleach, C a C O subscript 3 calcium carbonate which is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O H ) subscript 3 aluminum hydroxide which is also an ingredient in antacids, N a O H sodium hydroxide which is lye and is used as a drain cleaner, K subscript 3 P O subscript 4 potassium phosphate which is a food additive, M g S O subscript 4 magneisum sulfate which is added to purified water, N a subscript 2 H P O subscript 4 sodium hydrogen phosphate which is an anti-caking agent and is used in powdered products, and N a subscript 2 S O subscript 3 sodium sulfite which is a preservative.
 
 <!-- SEG:m68698:entry:auto-31 -->
 Everyday Ionic Compounds
@@ -187,6 +196,9 @@ Compounds Containing a Metal Ion with a Variable Charge
 <!-- SEG:m68698:para:fs-idp282354128 -->
 Most of the transition metals and some main group metals can form two or more cations with different charges. Compounds of these metals with nonmetals are named with the same method as compounds in the first category, except the charge of the metal ion is specified by a Roman numeral in parentheses after the name of the metal. The charge of the metal ion is determined from the formula of the compound and the charge of the anion. For example, consider binary ionic compounds of iron and chlorine. Iron typically exhibits a charge of either 2+ or 3+ (see [[docref:m68696#CNX_Chem_02_06_IonCharges]]), and the two corresponding compound formulas are FeCl[[sub:2]] and FeCl[[sub:3]]. The simplest name, “iron chloride,” will, in this case, be ambiguous, as it does not distinguish between these two compounds. In cases like this, the charge of the metal ion is included as a Roman numeral in parentheses immediately following the metal name. These two compounds are then unambiguously named iron(II) chloride and iron(III) chloride, respectively. Other examples are provided in [[xref:fs-idp282283328]].
 
+<!-- SEG:m68698:table-summary:fs-idp282283328-summary -->
+The transition metal ionic compound examples included in this table are F e C L subscript 3 or iron three chloride, H g subscript 2 O or mercury one oxide, H g O or mercury two oxide, and C u subscript 3 ( P O subscript 4 ) subscript 2 or copper two phosphate.
+
 <!-- SEG:m68698:entry:auto-64 -->
 Some Ionic Compounds with Variably Charged Metal Ions
 
@@ -243,6 +255,9 @@ Ionic compounds that contain water molecules as integral components of their cry
 
 <!-- SEG:m68698:para:fs-idm217856880 -->
 Formulas for ionic hydrates are written by appending a vertically centered dot, a coefficient representing the number of water molecules, and the formula for water. The two examples mentioned in the previous paragraph are represented by the formulas
+
+<!-- SEG:m68698:table-summary:fs-idp268400368-summary -->
+This table has two columns labeled “prefix” and “number”. Mono is associated with one although this prefix is sometimes omitted. Di is associated with two. Tri is associated with three. Tetra is associated with four. Penta is associated with five. Hexa is associated with six. Hepta is associated with seven. Octa is associated with eight. Nona is associated with nine. Deca is associated with ten.
 
 <!-- SEG:m68698:entry:auto-83 -->
 Nomenclature Prefixes
@@ -424,6 +439,9 @@ When two nonmetallic elements form a molecular compound, several combination rat
 <!-- SEG:m68698:para:fs-idm325632 -->
 When only one atom of the first element is present, the prefix [[i:mono]]- is usually deleted from that part. Thus, CO is named carbon monoxide, and CO[[sub:2]] is called carbon dioxide. When two vowels are adjacent, the ending vowel in the Greek prefix is sometimes omitted in common practice, though IUPAC guidelines only permit this for the duplicate letters o in [[i:monooxide]], which is correctly written as [[i:monoxide]]. For purposes of the nomenclature exercises in this text, students may choose to follow either approach. Some examples demonstrating this Some other examples are shown in [[xref:fs-idp269568176]].
 
+<!-- SEG:m68698:table-summary:fs-idp269568176-summary -->
+A two column table is shown. The left column is titled “Compound” and the right column is titled “Name.” From left to right, the first row reads “S O subscript 2” and “sulfur dioxide.” The second row reads “S O subscript 3” and “sulfur trioxide.” The third row reads “N O subscript 2” and “nitrogen dioxide.” The fourth row reads “N subscript 2 O subscript 4” and “dinitrogen tetroxide.” The fifth row reads “N subscript 2 O subscript 5” and “dinitrogen pentoxide.” The sixth row reads “B C l subscript 3” and “boron trichloride.” The seventh row reads “S F subscript 6” and “sulfur hexafluoride.” The eighth row reads “P F subscript 5” and “phosphorus pentafluoride.” The ninth row reads “P subscript 4 O subscript 10” and “tetraphosphorus decaoxide.” The tenth row reads “I F subscript 7” and “iodine heptafluoride.”
+
 <!-- SEG:m68698:entry:auto-143 -->
 Names of Some Molecular Compounds Composed of Two Elements
 
@@ -586,6 +604,9 @@ The word “acid” is added as a second word
 <!-- SEG:m68698:para:fs-idm109568 -->
 For example, when the gas HCl (hydrogen chloride) is dissolved in water, the solution is called [[i:hydrochloric acid]]. Several other examples of this nomenclature are shown in [[xref:fs-idp272649888]].
 
+<!-- SEG:m68698:table-summary:fs-idp272649888-summary -->
+The names of simple acids included in this table are: H F gas, which is hydrogen fluoride, H C l gas which is hydrogen chloride, H B r gas which is hydrogen bromide, H I gas which is hydrogen iodide, H subscript 2 S gas which is hydrogen sulfide, H F aqueous which is hydrofluoric acid, H C l aqueous which is hydrochloric acid, H B r aqueous which is hydrobromic acid, H I aqueous which is hydroiodic acid, and H subscript 2 S aqueous which is hydrosulfuric acid.
+
 <!-- SEG:m68698:entry:auto-197 -->
 Names of Some Simple Acids
 
@@ -645,6 +666,9 @@ Add “acid”
 
 <!-- SEG:m68698:para:fs-idp282461232 -->
 For example, consider H[[sub:2]]CO[[sub:3]] (which you might be tempted to call “hydrogen carbonate”). To name this correctly, “hydrogen” is omitted; the –[[i:ate]] of carbonate is replace with –[[i:ic]]; and acid is added—so its name is carbonic acid. Other examples are given in [[xref:fs-idp268340336]]. There are some exceptions to the general naming method (e.g., H[[sub:2]]SO[[sub:4]] is called sulfuric acid, not sulfic acid, and H[[sub:2]]SO[[sub:3]] is sulfurous, not sulfous, acid).
+
+<!-- SEG:m68698:table-summary:fs-idp268340336-summary -->
+This table has three columns labeled “formula”, “anion name”, and “acid name”. H C subscript 2 H subscript 3 O subscript 2 is named acetate or acetic acid. H N O subscript 3 is named nitrate or nitric acid. H N O subscript 2 is named nitrite or nitrous acid, H C l O subscript 4 is named perchlorate or perchloric acid. H subscript 2 C O subscript 3 is named carbonate or carbonic acid. H subscript 2 S O subscript 4 is named sulfate or sulfuric acid. H subscript 2 S O subscript 3 is named sulfite or sulfurous acid. H subscript 3 P O subscript 4 is named phosphate or phosphoric acid.
 
 <!-- SEG:m68698:entry:auto-217 -->
 Names of Common Oxyacids

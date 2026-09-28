@@ -118,6 +118,9 @@ The plot of ln[[[i:A]]][[sub:[[i:t]]]] vs. [[i:t]] is not linear, indicating the
 <!-- SEG:m68791:alt:fs-idm135178736-alt -->
 A graph, labeled above as “l n [ A ] vs. Time” is shown. The x-axis is labeled, “Time ( s )” and the y-axis is labeled, “l n [ A ].” The x-axis shows markings at 5, 10, 15, 20, and 25 hours. The y-axis shows markings at negative 3, negative 2, negative 1, and 0. A slight curve is drawn connecting five points at coordinates of approximately (4, negative 1.5), (8, negative 2), (12, negative 2.2), (16, negative 2.4), and (20, negative 2.6).
 
+<!-- SEG:m68791:table-summary:fs-idp114347648-summary -->
+This table contains four columns and six rows. The first row is a header row, and it labels each column, “Trial,” “Time ( h ),” “[ H subscript 2 O subscript 2 ] ( M ),” and “l n [ H subscript 2 O subscript 2 ].” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the column, “Time ( h )” are the numbers 0, 6.00, 12.00, 18.00, and 24.00. Under the column “[ H subscript 2 O subscript 2 ] ( M ),” are the numbers 1.000, 0.500, 0.250, 0.125, and 0.0625. Under the column, “l n [ H subscript 2 O subscript 2 ],” are the numbers: 0.0, negative 0.693, negative 1.386, negative 2.079, and negative 2.772.
+
 <!-- SEG:m68791:entry:auto-41 -->
 Time (h)
 
@@ -177,6 +180,9 @@ A linear relationship between ln[H[[sub:2]]O[[sub:2]]] and time suggests the dec
 
 <!-- SEG:m68791:alt:fs-idm90898176-alt -->
 A graph is shown with the label “Time ( h )” on the x-axis and “l n [ H subscript 2 O subscript 2 ]” on the y-axis. The x-axis shows markings at 6, 12, 18, and 24 hours. The vertical axis shows markings at negative 3, negative 2, negative 1, and 0. A decreasing linear trend line is drawn through five points represented at the coordinates (0, 0), (6, negative 0.693), (12, negative 1.386), (18, negative 2.079), and (24, negative 2.772).
+
+<!-- SEG:m68791:table-summary:fs-idm149704608-summary -->
+This table has three columns and six rows. The first row is a header row, and it labels each column, “Trial,” “Time ( s ),” and, “[ A ].” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the “Time ( s )” column are the numbers: 4.0, 8.0, 12.0, 16.0, and 20.0. Under the “ [ A ]” column are the numbers: 0.220, 0.144, 0.110, 0.088, and 0.074.
 
 <!-- SEG:m68791:entry:auto-61 -->
 Time (s)
@@ -307,6 +313,9 @@ Yes. The plot of [[MATH:16]] vs. [[i:t]] is linear:
 <!-- SEG:m68791:alt:fs-idm144508704-alt -->
 A graph, with the title “1 divided by [ A ] vs. Time” is shown, with the label, “Time ( s ),” on the x-axis. The label “1 divided by [ A ]” appears left of the y-axis. The x-axis shows markings beginning at zero and continuing at intervals of 10 up to and including 40. The y-axis on the left shows markings beginning at 0 and increasing by intervals of 1 up to and including 5. A line with an increasing trend is drawn through six points at approximately (4, 1), (10, 1.5), (15, 2.2), (20, 2.8), (26, 3.4), and (36, 4.4).
 
+<!-- SEG:m68791:table-summary:fs-idp62232800-summary -->
+This table contains three columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 ),” and “l n [ C subscript 4 H subscript 6 ].” Under the column “Time ( s )” are the numbers: 0, 1600, 3200, 4800, and 6200. Under the “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 )” column are the numbers: 100, 198, 296, 395, and 481. Under the “l n [ C subscript 4 H subscript 6 ]” column are the numbers: negative 4.605, negative 5.289, negative 5.692, negative 5.978, and negative 6.175.
+
 <!-- SEG:m68791:entry:auto-104 -->
 Time (s)
 
@@ -366,6 +375,9 @@ These two graphs show first- and second-order plots for the dimerization of C[[s
 
 <!-- SEG:m68791:alt:fs-idp16234496-alt -->
 Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).
+
+<!-- SEG:m68791:table-summary:fs-idm88760288-summary -->
+This table contains two columns and seven rows. The first row is a header row, and it labels each column “Time ( s )” and “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 5, 10, 15, 20, 25, and 35. Under the “[ A ] ( M )” column are the numbers 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.
 
 <!-- SEG:m68791:entry:auto-124 -->
 Time (s)
@@ -544,6 +556,9 @@ As for all reaction orders, the half-life for a zero-order reaction is inversely
 <!-- SEG:m68791:para:fs-idm22269120 -->
 Equations for both differential and integrated rate laws and the corresponding half-lives for zero-, first-, and second-order reactions are summarized in [[xref:fs-idm117482272]].
 
+<!-- SEG:m68791:table-summary:fs-idm117482272-summary -->
+This table contains four columns and seven rows. The first column and the first row both serve as headers. The first cell in the first column is blank and is followed by, “rate law,” “units of rate constant,” “integrated rate law,” “plot needed for linear fit of rate date,” “relationship between slope of linear plot and rate constant,” and “half-life.” The first row labels each column, “Zero-Order,” “First-Order,” and “Second-Order.” Under “Zero-order” are the following: “rate = k,” “M s superscript negative 1,” “[ A ] = negative k t + [ A ] subscript 0,” “[ A ] v s. t,” “k = negative slope,” and “t subscript one half = [ A ] subscript 0 over 2 k.” Under “First-Order” are the following: “rate = k [ A ],” “s superscript negative 1,” “l n [ A ] = negative k t plus l n [ A ] subscript 0,” “l n [ A ] v s. t,” “k = negative slope,” and “t subscript one half = 0.693 over k.” Under “Second-Order” are the following: “rate = k [ A ] superscript 2,” “M superscript negative 1 s superscript negative 1,” “1 over [ A ] = k t + ( 1 over [ A ] subscript 0 ),” “1 over [ A ] v s. t,” “k = positive slope,” and “t subscript one half – 1 over [ A ] subscript 0 k.”
+
 <!-- SEG:m68791:entry:auto-183 -->
 Summary of Rate Laws for Zero-, First-, and Second-Order Reactions
 
@@ -670,6 +685,9 @@ The half-life of a reaction is the time required to decrease the amount of a giv
 <!-- SEG:m68791:title:fs-idm150818384-title -->
 Key Equations
 
+<!-- SEG:m68791:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68791:entry:auto-225 -->
 integrated rate law for zero-order reactions: [[MATH:33]]
 
@@ -702,6 +720,9 @@ Plotting a graph of ln[SO[[sub:2]]Cl[[sub:2]]] versus [[i:t]] reveals a linear t
 
 <!-- SEG:m68791:alt:fs-idm141495696-alt -->
 A graph is shown with the label “Time ( s )” on the x-axis and “l n [ S O subscript 2 C l subscript 2 ] M” on the y-axis. The x-axis begins at 0 and extends to 4.00 times 10 superscript 4 with markings every 1.00 times 10 superscript 4. The y-axis shows markings extending from negative 3.5 to negative 2.5. A decreasing linear trend line is drawn through seven points at the approximate coordinates: (0, negative 2.3), (0.5 times 10 superscript 4, negative 2.4), (1.0 times 10 superscript 4, negative 2.5), (1.5 times 10 superscript 4, negative 2.6), (2.0 times 10 superscript 4, negative 2.9), (2.5 times 10 superscript 4, negative 3.0), and (3.0 times 10 superscript 4, negative 3.2).
+
+<!-- SEG:m68791:table-summary:fs-idp120830736-summary -->
+This table contains two columns and eight rows. The first column is labeled, “Time ( s ),” and the second column is labeled, “[ S O subscript 2 C l subscript 2 ] ( M ).” Under the “Time ( s )” column are the numbers: 0; 5.00 times ten to the third power; 1.00 times ten to the fourth power; 1.50 times ten to the fourth power; 2.50 times ten to the fourth power; 3.00 times ten to the fourth power; and 4.00 times ten to the fourth power. Under the “[ S O subscript 2 C l subscript 2 ] ( M )” column are the numbers: 0.100, 0.0896, 0.0802, 0.0719, 0.0577, 0.0517, and 0.0415.
 
 <!-- SEG:m68791:entry:auto-236 -->
 Time (s)
@@ -865,6 +886,9 @@ integrated rate law
 <!-- SEG:m68791:glossary-def:fs-idm46847680-def -->
 equation that relates the concentration of a reactant to elapsed time of reaction
 
+<!-- SEG:m68791:table-summary:fs-idm140502592-summary -->
+This table contains two columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” and “[ C subscript 4 H subscript 6 ] ( M ).”  Under the “Time ( s )” column are the numbers: 0, 1600, 3200, 4800, and 6200. Under the column “[ C subscript 4 H subscript 6 ] ( M )” are the numbers: 1.00 times ten to the negative 2; 5.04 times ten to the negative 3; 3.37 times ten to the negative 3; 2.53 times ten to the negative 3; and 2.08 times ten to the negative 3.
+
 <!-- SEG:m68791:entry:auto-290 -->
 Time (s)
 
@@ -900,6 +924,9 @@ Time (s)
 
 <!-- SEG:m68791:entry:auto-301 -->
 2.08 [[MATH:11]] 10[[sup:−3]]
+
+<!-- SEG:m68791:table-summary:fs-idp72766816-summary -->
+This table has two columns and eight rows. The first row is a header row, and it labels each column, “Time ( h ),” and, “[ O subscript 3 ] ( M ).” Under the “Time ( h )” column are the numbers: 0; 2.0 times ten to the third power; 7.6 times ten to the third power; 1.00 times ten to the fourth power; 1.23 times ten to the fourth power; 1.43 times ten to the fourth power; 1.70 times ten to the fourth power. Under the “[ O subscript 3 ] ( M )” column are the numbers: 1.00 times ten to the negative 5; 4.98 times ten to the negative 6; 2.07 times ten to the negative 6; 1.66 times ten to the negative 6; 1.39 times ten to the negative 6; 1.22 times ten to the negative 6; and 1.05 times ten to the negative 6.
 
 <!-- SEG:m68791:entry:auto-302 -->
 Time (h)
@@ -955,6 +982,9 @@ Time (h)
 <!-- SEG:m68791:entry:auto-319 -->
 1.05 [[MATH:60]] 10[[sup:−6]]
 
+<!-- SEG:m68791:table-summary:fs-idm133654768-summary -->
+This table contains two columns and nine rows. The first row is a header row, and it labels each column, “Time ( s ),” and “[ X ] ( M ).” Under the “Time ( s )” column are the numbers: 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, and 40.0. Under the “[ X ] ( M )” column are the numbers; 0.0990, 0.497, 0.0332, 0.0249, 0.0200, 0.0166, 0.0143, and 0.0125.
+
 <!-- SEG:m68791:entry:auto-320 -->
 Time (s)
 
@@ -1009,6 +1039,9 @@ Time (s)
 <!-- SEG:m68791:entry:auto-337 -->
 0.0125
 
+<!-- SEG:m68791:table-summary:fs-idp79245440-summary -->
+This table contains two columns and four rows. The first row is a header row, and it labels each column, “[ Penicillin ] ( M ),” and, “Rate ( mol / L / min ).” Under the “[ Penicillin ] ( M )” column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the “Rate ( mol / L / min )” column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10.
+
 <!-- SEG:m68791:entry:auto-338 -->
 [Penicillin] ([[i:M]])
 
@@ -1032,6 +1065,9 @@ Rate (mol L[[sup:−1]] min[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-345 -->
 2.0 [[MATH:76]] 10[[sup:−10]]
+
+<!-- SEG:m68791:table-summary:fs-idp121895360-summary -->
+This table contains three columns and nine rows. The first row is a header row, and it labels each column, “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M ),” “t ( s ),” and “% Decomposed.” Under the “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “% Decomposed” column are the numbers: 52.0, 52.9, 53.2, 53.9, 34.6, 35.9, 36.0, and 35.4.
 
 <!-- SEG:m68791:entry:auto-346 -->
 Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
@@ -1113,6 +1149,9 @@ Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-372 -->
 35.4
+
+<!-- SEG:m68791:table-summary:fs-idm247275488-summary -->
+This table has five columns and nine rows. The first row is a header row, and it labels each column: “[ A ] subscript 0 ( M ),” “[ A ] ( M ),” “l n ( [ A ] subscript 0 over [ A ] ),” “t ( s ),” and “k times 10 to the third power ( s superscript negative 1 ).” Under the “[ A ] subscript 0 ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “[ A ] ( M )” column are the numbers: 2.34, 1.66, 1.07, 0.834, 3.49, 2.61, 1.89, and 1.11. Under the “l n ( [ A ] subscript 0 over [ A ] )” column are the numbers: 0.734, 0.752, 0.761, 0.775, 0.423, 0.439, 0.445, and 0.438. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “k times 10 to the third power ( s superscript negative 1 )” columns are the numbers: 2.45, 2.51, 2.54, 2.58, 2.35, 2.44, 2.47, and 2.43.
 
 <!-- SEG:m68791:entry:auto-373 -->
 [[[i:A]]][[sub:0]] ([[i:M]])

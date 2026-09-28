@@ -295,6 +295,9 @@ This graph shows the vapor pressure of water at sea level as a function of tempe
 <!-- SEG:m68752:alt:fs-idp38546432-alt -->
 A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”
 
+<!-- SEG:m68752:table-summary:fs-idm68841392-summary -->
+This table has six columns and 13 rows. The first row is a header and it labels each column, “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” and “Pressure (torr).” Under the first column are the following: negative 10, negative 5, negative 2, 0, 2, 4, 6, 8, 10, 12, 14, and 16. Under the second column are the following: 1.95, 3.0, 3.9, 4.6, 5.3, 6.1, 7.0, 8.0, 9.2, 10.5, 12.0, and 13.6. Under the third column are the following: 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, and 29. Under the fourth column are the following: 15.5, 16.5, 17.5, 18.7, 19.8, 21.1, 22.4, 23.8, 25.2, 26.7, 28.3, and 30.0. Under the fifth column are the following: 30, 35, 40, 50, 60, 70, 80, 90, 95, 99, 100.0, and 101.0. Under the sixth column are the following: 31.8, 42.2, 55.3, 92.5, 149.4, 233.7, 355.1, 525.8, 633.9, 733.2, 760.0, and 787.6.
+
 <!-- SEG:m68752:entry:auto-100 -->
 Vapor Pressure of Ice and Water in Various Temperatures at Sea Level
 
@@ -732,6 +735,9 @@ The ideal gas law can be used to derive a number of convenient equations relatin
 
 <!-- SEG:m68752:title:fs-idp7509520-title -->
 Key Equations
+
+<!-- SEG:m68752:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68752:entry:auto-246 -->
 [[i:P[[sub:Total]]]] = [[i:P[[sub:A]]]] + [[i:P[[sub:B]]]] + [[i:P[[sub:C]]]] + … = Ʃ[[sub:i]][[i:P]][[sub:i]]

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-09-21T10:23:18.731Z",
+  "generatedAt": "2026-09-28T20:18:53.517Z",
   "run": {
     "runRecordVersion": 1,
     "chars": 18747,
@@ -19,5 +19,39 @@
       "chunksWithGlossary": 1,
       "chunksTotal": 1
     }
-  }
+  },
+  "topUps": [
+    {
+      "at": "2026-09-28T20:18:53.517Z",
+      "priorGeneratedAt": "2026-09-21T10:23:18.731Z",
+      "ids": [
+        "m68818:table-summary:fs-idp41455824-summary",
+        "m68818:table-summary:fs-idm78597984-summary",
+        "m68818:table-summary:key-equations-table-summary"
+      ],
+      "run": {
+        "runRecordVersion": 1,
+        "chars": 2110,
+        "usage": 1930,
+        "estimatedIsk": 21.1,
+        "markersNormalized": 0,
+        "mismatchCount": 0,
+        "bracketDelta": {},
+        "unwrappedCount": 0,
+        "unwrappedByType": {},
+        "glossary": {
+          "arm": "no-glossary",
+          "contentHash": null,
+          "termCount": null,
+          "chunksWithGlossary": 0,
+          "chunksTotal": 1
+        },
+        "greek": {
+          "lostCount": 0,
+          "lost": [],
+          "addedCount": 0
+        }
+      }
+    }
+  ]
 }

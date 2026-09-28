@@ -265,6 +265,9 @@ Finndu mólstyrk 40,0% vatnslausnar af brennisteinssýru, H[[sub:2]]SO[[sub:4]],
 <!-- SEG:m68704:title:fs-idm8172720-title -->
 Lykiljafna
 
+<!-- SEG:m68704:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68704:entry:auto-90 -->
 [[MATH:5]]
 

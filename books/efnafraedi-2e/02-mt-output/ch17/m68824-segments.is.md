@@ -43,6 +43,9 @@ Mynd sem sýnir sambandið milli þriggja mikilvægra varmafræðilegra eiginlei
 <!-- SEG:m68824:alt:fs-idp78132768-alt -->
 Sýnd er skýringarmynd með þremur tvíhöfða örvum sem eru staðsettar í formi jafnhliða þríhyrnings. Hornpunktarnir eru merktir með rauðu. Efsti hornpunkturinn er merktur „K“. Hornpunkturinn neðst til vinstri er merktur „delta G hávísistákn gráðu“. Hornpunkturinn neðst til hægri er merktur „E hávísistákn gráðu lágvísir ker“. Hægri hlið þríhyrningsins er merkt „E hávísistákn gráðu lágvísir ker jafnt og ( R T deilt með n F ) l n K“. Neðri hlið þríhyrningsins er merkt „delta G hávísistákn gráðu jafnt og neikvætt n F E hávísistákn gráðu lágvísir ker“. Vinstri hlið þríhyrningsins er merkt „delta G hávísistákn gráðu jafnt og neikvætt R T l n K“.
 
+<!-- SEG:m68824:table-summary:fs-idm241340256-summary -->
+Engin samantekt
+
 <!-- SEG:m68824:entry:auto-16 -->
 [[i:K]]
 
@@ -222,6 +225,9 @@ Spenna er varmafræðileg stærð sem endurspeglar innri drifkraft oxunar-afoxun
 
 <!-- SEG:m68824:title:fs-idp39495232-title -->
 Lykiljöfnur
+
+<!-- SEG:m68824:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68824:entry:auto-76 -->
 [[MATH:7]]

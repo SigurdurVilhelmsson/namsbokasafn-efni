@@ -55,6 +55,9 @@ Jafnvel þótt fíllinn sé meira en hundrað sinnum þyngri en skautarinn, beit
 <!-- SEG:m68750:para:fs-idm10039728 -->
 SI-eining þrýstings er [[term:paskal (Pa)|term-00002]], þar sem 1 Pa = 1 N/m[[sup:2]], þar sem N er njúton, eining krafts sem er skilgreind sem 1 kg m/s[[sup:2]]. Eitt paskal er lítill þrýstingur; í mörgum tilfellum er hentugra að nota einingarnar kílópaskal (1 kPa = 1000 Pa) eða [[term:bar|term-00003]] (1 bar = 100.000 Pa). Í Bandaríkjunum er þrýstingur oft mældur í pundum af krafti á flatarmáli einnar fertommu – [[term:pund á fertommu (psi)|term-00004]] – til dæmis í bíldekkjum. Einnig er hægt að mæla þrýsting með einingunni [[term:loftþyngd (atm)|term-00005]], sem upphaflega táknaði meðalloftþrýsting við sjávarmál á breiddargráðu Parísar (45°). [[xref:fs-idp189967312]] veitir upplýsingar um þessar og nokkrar aðrar algengar einingar fyrir þrýstingsmælingar.
 
+<!-- SEG:m68750:table-summary:fs-idp189967312-summary -->
+Þessi tafla hefur tvo dálka og 10 raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir dálkana sem „Heiti einingar og skammstöfun“ og „Skilgreining eða tengsl við aðra einingu“. Fyrsta heiti einingar og skammstöfun er pascal og er skammstafað Pa. Skilgreiningin eða tengslin við aðra einingu er 1 Pa jafngildir N á móti m í öðru veldi og er ráðlögð IUPAC eining. Næsta heiti einingar er kílópascal og er skammstafað kPa. Skilgreiningin eða tengslin við aðra einingu er 1 kPa jafngildir 1000 Pa. Næsta heiti einingar er pund á fertommu og er skammstafað psi. Skilgreiningin eða tengslin við aðra einingu er að loftþrýstingur við sjávarmál er um það bil 14,7 psi. Næsta heiti einingar er loftþyngd og er skammstafað atm. Skilgreiningin eða tengslin við aðra einingu er 1 atm jafngildir 101.325 Pa og loftþrýstingur við sjávarmál er um það bil ein atm. Næsta heiti einingar er bar og er skammstafað bar eða b. Skilgreiningin eða tengslin við aðra einingu er 1 bar jafngildir nákvæmlega 100.000 Pa og er algengt í veðurfræði. Næsta heiti einingar er millibar og er skammstafað mbar eða mb. Skilgreiningin eða tengslin við aðra einingu er 1000 mbar jafngildir einu bari. Næsta heiti einingar er tommur kvikasilfurs og er skammstafað in. Hg. Skilgreiningin eða tengslin við aðra einingu er ein in. Hg jafngildir 3386 Pa og er notað í flugiðnaðinum og einnig í sumum veðurskeytum. Næsta eining er torr. Skilgreiningin eða tengslin við aðra einingu er 1 torr jafngildir 1 á móti 760 atm og er nefnt eftir Evangelista Torricelli, uppfinningamanni loftvogarinnar. Síðasta heiti einingar er millimetrar kvikasilfurs og er skammstafað mmHg. Skilgreiningin eða tengslin við aðra einingu er 1 mmHg er um það bil 1 torr.
+
 <!-- SEG:m68750:entry:auto-20 -->
 Þrýstingseiningar
 
@@ -387,6 +390,9 @@ Gös beita þrýstingi, sem er kraftur á flatareiningu. Þrýstingur gass má g
 
 <!-- SEG:m68750:title:fs-idp68662112-title -->
 Lykiljafna
+
+<!-- SEG:m68750:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68750:entry:auto-131 -->
 [[MATH:13]]

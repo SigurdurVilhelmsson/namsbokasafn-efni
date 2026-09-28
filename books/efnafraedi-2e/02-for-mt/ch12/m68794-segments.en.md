@@ -304,6 +304,9 @@ Based on the data presented, which of these is the rate determining step? Show t
 <!-- SEG:m68794:solution:fs-idp77008528 -->
 (a) Doubling [H[[sub:2]]] doubles the rate. [H[[sub:2]]] must enter the rate law to the first power. Doubling [NO] increases the rate by a factor of 4. [NO] must enter the rate law to the second power. (b) Rate = [[i:k]] [NO][[sup:2]][H[[sub:2]]]; (c) [[i:k]] = 5.0 [[MATH:22]] 10[[sup:3]] mol[[sup:2]] L[[sup:−2]] min[[sup:−1]]; (d) 0.0050 mol/L; (e) Step II is the rate-determining step. If step I gives N[[sub:2]]O[[sub:2]] in adequate amount, steps 1 and 2 combine to give [[MATH:23]] This reaction corresponds to the observed rate law. Combine steps 1 and 2 with step 3, which occurs by supposition in a rapid fashion, to give the appropriate stoichiometry.
 
+<!-- SEG:m68794:table-summary:fs-idp16941152-summary -->
+This table has four columns and five rows. The first row is a header row and it labels each column, “Experiment,” “Initial Concentration [ N O ] ( mol / L ),” “Initial Concentration, [ H subscript 2 ] ( mol / L ),” and “Initial Rate of Formation of N subscript 2 ( mol / L min ).” Under the “Experiment” columns are the numbers: 1, 2, 3, and 4. Under the “Initial Concentration [ N O ] ( mol / L )” column are the numbers: 0.0060, 0.0060, 0.0010, and 0.0020. Under the “Initial Concentration, [ H subscript 2 ] ( mol / L )” column are the numbers: 0.0010, 0.0020, 0.0060, 0.0060. Under the “Initial Rate of Formation of N subscript 2 ( mol / L min )” are the numbers: 1.8 times ten to the negative 4; 3.6 times ten to the negative 4; 0.30 times ten to the negative 4; and 1.2 times ten to the negative 4.
+
 <!-- SEG:m68794:entry:auto-103 -->
 Experiment
 

@@ -59,6 +59,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_05_titration",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68716:caption:CNX_Chem_04_05_titration-caption"
           },
@@ -218,6 +219,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_05_Filter",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68716:caption:CNX_Chem_04_05_Filter-caption"
           },
@@ -332,6 +334,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_04_05_combustion",
+          "title": null,
           "caption": {
             "segmentId": "m68716:caption:CNX_Chem_04_05_combustion-caption"
           },

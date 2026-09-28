@@ -88,6 +88,9 @@ Sýnd eru tvö pör af sameindum þar sem hvor sameind hefur stærri bláa hlið
 <!-- SEG:m68761:para:fs-idm80968928 -->
 Dreifikraftar sem myndast milli atóma í mismunandi sameindum geta dregið sameindirnar tvær hvor að annarri. Kraftarnir eru þó tiltölulega veikir og verða aðeins marktækir þegar sameindirnar eru mjög nálægt. Stærri og þyngri atóm og sameindir sýna sterkari dreifikrafta en minni og léttari atóm og sameindir. F[[sub:2]] og Cl[[sub:2]] eru gös við stofuhita (sem endurspeglar veikari aðdráttarkrafta); Br[[sub:2]] er vökvi og I[[sub:2]] er fast efni (sem endurspeglar sterkari aðdráttarkrafta). Þróun í bræðslu- og suðumörkum halógena sýnir þessi áhrif greinilega, eins og sést í [[xref:fs-idp55860464]].
 
+<!-- SEG:m68761:table-summary:fs-idp55860464-summary -->
+Þessi tafla hefur sex raðir og fimm dálka. Fyrsta röðin er haus og hún merkir hvern dálk: „Halógen“, „Mólmassi“, „Atómradíus“, „Bræðslumark“ og „Suðumark“. Undir dálkinum „Halógen“ er eftirfarandi: Flúor, F með lækkuðu 2; Klór, C l með lækkuðu 2; bróm, B r með lækkuðu 2; joð, I með lækkuðu 2; astat, A t með lækkuðu 2. Undir dálkinum „Mólmassi“ er eftirfarandi: 38 g/mól; 71 g/mól; 160 g/mól; 254 g/mól; 420 g/mól. Undir dálkinum „Atómradíus“ er eftirfarandi: 72 pm; 99 pm; 114 pm; 133 pm; 150 pm. Undir dálkinum „Bræðslumark“ er eftirfarandi: 53 K; 172 K; 266 K; 387 K; og 575 K. Undir dálkinum „Suðumark“ er eftirfarandi: 85 K; 238 K; 332 K; 457 K; og 610 K.
+
 <!-- SEG:m68761:entry:auto-31 -->
 Bræðslu- og suðumörk halógena
 

@@ -557,7 +557,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68789:table-summary:fs-idm205685856-summary"
     },
     {
       "type": "table",
@@ -654,7 +655,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68789:table-summary:fs-idm276791216-summary"
     },
     {
       "type": "example",
@@ -975,7 +977,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68789:table-summary:fs-idm285249664-summary"
     },
     {
       "type": "table",
@@ -1096,7 +1099,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68789:table-summary:fs-idm275492048-summary"
     },
     {
       "type": "section",
@@ -1231,7 +1235,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm233742304-summary"
         },
         {
           "type": "para",
@@ -1582,7 +1587,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm155842464-summary"
         },
         {
           "type": "exercise",
@@ -1674,7 +1680,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm176170864-summary"
         },
         {
           "type": "exercise",
@@ -1753,7 +1760,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm146675536-summary"
         },
         {
           "type": "exercise",
@@ -1882,7 +1890,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idp1859024-summary"
         },
         {
           "type": "exercise",
@@ -1994,7 +2003,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm261821504-summary"
         },
         {
           "type": "exercise",
@@ -2091,7 +2101,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm262119440-summary"
         },
         {
           "type": "exercise",
@@ -2180,7 +2191,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm53317088-summary"
         },
         {
           "type": "exercise",
@@ -2389,7 +2401,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68789:table-summary:fs-idm189410736-summary"
         }
       ]
     }
@@ -2506,7 +2519,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68789:table-summary:fs-idm121830912-summary"
       }
     }
   ],

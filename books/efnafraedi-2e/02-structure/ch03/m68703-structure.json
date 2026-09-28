@@ -26,6 +26,7 @@
       "type": "figure",
       "id": "CNX_Chem_03_03_espresso",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68703:caption:CNX_Chem_03_03_espresso-caption"
       },
@@ -252,6 +253,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_04_vinegar",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68703:caption:CNX_Chem_03_04_vinegar-caption"
           },
@@ -440,6 +442,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_04_dilution",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68703:caption:CNX_Chem_03_04_dilution-caption"
           },
@@ -1441,7 +1444,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68703:table-summary:key-equations-table-summary"
         }
       ]
     }

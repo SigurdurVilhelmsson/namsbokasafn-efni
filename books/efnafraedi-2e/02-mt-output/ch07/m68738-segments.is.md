@@ -127,6 +127,9 @@ Silíkon eru fjölliðu efnasambönd sem innihalda, meðal annars, eftirfarandi 
 <!-- SEG:m68738:note-title:fs-idp56083008-title -->
 Svar:
 
+<!-- SEG:m68738:table-summary:fs-idm2614240-summary -->
+Þessi tafla hefur þrjá dálka og sjö raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk. Fyrsti dálkurinn heitir „Tengi“, annar „hástafur delta E N“ og þriðji „Skautun“. Undir dálkinum „Tengi“ er eftirfarandi: C tengist H með eintengi; S tengist H með eintengi; C tengist N með eintengi; N tengist H með eintengi; C tengist O með eintengi; og O tengist H með eintengi. Undir dálkinum „hástafur delta E N“ eru gildin: 0,4; 0,4; 0,5; 0,9; 1,0; og 1,4. Undir dálkinum „Skautun“ er eftirfarandi: C tengist H með eintengi, það er lágstafur delta neikvætt formerki fyrir ofan C og lágstafur delta jákvætt formerki fyrir ofan H; S tengist H með eintengi, það er lágstafur delta neikvætt formerki fyrir ofan S og lágstafur delta jákvætt formerki fyrir ofan H; C tengist N með eintengi, það er lágstafur delta jákvætt formerki fyrir ofan C og lágstafur delta neikvætt formerki fyrir ofan N; N tengist H með eintengi, það er lágstafur delta neikvætt formerki fyrir ofan N og lágstafur delta jákvætt formerki fyrir ofan H; C tengist O með eintengi, það er lágstafur delta jákvætt formerki fyrir ofan C og lágstafur delta neikvætt formerki fyrir ofan O; og O tengist H með eintengi, það er lágstafur delta neikvætt formerki fyrir ofan O og lágstafur delta jákvætt formerki fyrir ofan H.
+
 <!-- SEG:m68738:entry:auto-44 -->
 Skautun tengis og rafneikvæðnimunur
 
@@ -192,6 +195,9 @@ O–H
 
 <!-- SEG:m68738:entry:auto-65 -->
 [[MATH:11]]
+
+<!-- SEG:m68738:table-summary:fs-idm25109184-summary -->
+Þessi tafla hefur þrjá dálka og fimm raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk. Fyrsti dálkurinn heitir „Tengi“, annar dálkurinn heitir „Rafneikvæðnismunur“ og þriðji dálkurinn heitir „Skautun“. Undir dálkinum „Tengi“ er eftirfarandi: C tengist C með eintengi; C tengist H með eintengi; S i tengist C með eintengi; og S i tengist O með eintengi. Undir dálkinum „Rafneikvæðnismunur“ eru gildin: 0,0; 0,4; 0,7; og 1,7. Undir dálkinum „Skautun“ er eftirfarandi: óskautað, C tengist H með eintengi, það er lágstafur delta neikvætt formerki fyrir ofan C og lágstafur delta jákvætt formerki fyrir ofan H; S i tengist C með eintengi, það er lágstafur delta jákvætt formerki fyrir ofan S i og lágstafur delta neikvætt formerki fyrir ofan C; og S i tengist O með eintengi, það er lágstafur delta jákvætt formerki fyrir ofan S i og lágstafur delta neikvætt formerki fyrir ofan O.
 
 <!-- SEG:m68738:entry:auto-66 -->
 Tengi

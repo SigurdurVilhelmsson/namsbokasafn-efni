@@ -259,6 +259,9 @@ where [[i:K]][[sub:b]] is the [[term:boiling point elevation constant|term-00005
 <!-- SEG:m68783:para:fs-idp83055184 -->
 Boiling point elevation constants are characteristic properties that depend on the identity of the solvent. Values of [[i:K]][[sub:b]] for several solvents are listed in [[xref:fs-idm37127680]].
 
+<!-- SEG:m68783:table-summary:fs-idm37127680-summary -->
+The table provides boiling points in degrees Celsius at 1 atmosphere of pressure, K subscript b in C m superscript negative 1, freezing point in degrees Celsius at 1 atmosphere of pressure, and K subscript f in C m superscript negative 1for five solvents. Water has the following values: 100.00, 0.512, 0.00, and 1.86. Hydrogen acetate has the following values: 118.1, 3.07, 16.6, and 3.9. Benzene has the following values: 80.1, 2.53, 5.5, 5.12. Chloroform has the following values: 61.26, 3.63, −63.5, and 4.68. Nitrobenzene has the following values: 210.9, 5.24, 5.67, 8.1
+
 <!-- SEG:m68783:entry:auto-88 -->
 Boiling Point Elevation and Freezing Point Depression Constants for Several Solvents
 
@@ -700,6 +703,9 @@ To account for this and avoid the errors accompanying the assumption of total di
 <!-- SEG:m68783:para:fs-idp100413216 -->
 Values for measured van’t Hoff factors for several solutes, along with predicted values assuming complete dissociation, are shown in [[xref:fs-idp191832160]].
 
+<!-- SEG:m68783:table-summary:fs-idp191832160-summary -->
+This table provides electrolytes, particles in solution, i (predicted), and i (Measured). H C l yields H superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. N a C l yields N a superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. M g S O subscript 4 yields M g superscript 2 plus and S O subscript 4 superscript 2 minus particles in solution with a predicted i value of 2 and a measured value of 1.3. M g C l subscript 2 yields M g superscript 2 plus and C l superscript minus particles in solution with a predicted i value of 3 and a measured value of 2.7. F e C l subscript 3 yields Fe superscript 3 plus and C l superscript minus particles in solution with a predicted i value of 4 and a measured value of 3.4. Glucose yields C subscript 12 H subscript 22 O subscript 11 particles in solution with a predicted i value of 1 and a measured value of 1.0.
+
 <!-- SEG:m68783:entry:auto-235 -->
 Predicated and Measured van’t Hoff Factors for Several 0.050 [[i:m]] Aqueous Solutions
 
@@ -870,6 +876,9 @@ Properties of a solution that depend only on the concentration of solute particl
 
 <!-- SEG:m68783:title:fs-idp102974528-title -->
 Key Equations
+
+<!-- SEG:m68783:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68783:entry:auto-292 -->
 [[MATH:21]]

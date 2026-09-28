@@ -31,6 +31,9 @@ The objects are at essentially the same temperature, [[i:T]][[sub:sys]] ≈ [[i:
 <!-- SEG:m68818:para:fs-idp26583536 -->
 These results lead to a profound statement regarding the relation between entropy and spontaneity known as the [[term:second law of thermodynamics|term-00001]]: [[i:all spontaneous changes cause an increase in the entropy of the universe.]] A summary of these three relations is provided in [[xref:fs-idp41455824]].
 
+<!-- SEG:m68818:table-summary:fs-idp41455824-summary -->
+This table contains two columns and three rows. The first column has the following: “capital delta S subscript univ is greater than 0,” “capital delta S subscript univ is less than 0,” and, “capital delta S subscript univ equals 0.” The second column contains the following: “Spontaneous,” “nonspontaneous ( spontaneous in opposite direction ),” and, “reversible ( system is at equilibrium ).”
+
 <!-- SEG:m68818:entry:auto-12 -->
 The Second Law of Thermodynamics
 
@@ -120,6 +123,9 @@ is computed as:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
 A partial listing of standard entropies is provided in [[xref:fs-idm78597984]], and additional values are provided in [[docref:Appendix G|m68865]]. The example exercises that follow demonstrate the use of [[i:S]]° values in calculating standard entropy changes for physical and chemical processes.
+
+<!-- SEG:m68818:table-summary:fs-idm78597984-summary -->
+The table has two columns and twenty rows. The first row is a header row and it labels the columns, “Substance,” and “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 ).” The second row spans both columns and contains the word, “Carbon.” Under the “Substance” column for carbon are the following: C ( s, graphite ), C ( s, diamond ), C O ( g ), C O subscript 2 ( g ), C H subscript 4 ( g ), C subscript 2 H subscript 4 ( g ), C subscript 2 H subscript 6 ( g ), C H subscript 3 O H ( l ), and C subscript 2 H subscript 5 O H ( l ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for carbon are the following: 5.740, 2.38, 197.7, 213.8, 186.3, 219.5, 229.5, 126.8, and 160.7. The twelfth row spans both columns and contains the word, “Hydrogen.” Under the “Substance” column for hydrogen are the following: H subscript 2 ( g ), H ( g ), H subscript 2 O ( g ), H subscript 2 O ( l ), H C I ( g ), and H subscript 2 S ( g ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for hydrogen are the following: 130.57, 114.6, 188.71, 69.91, 186.8, and 205.7. The nineteenth row spans both columns and contains the word, “Oxygen.” Under the “Substance” column for oxygen is O subscript 2 ( g ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for oxygen is 205.03.
 
 <!-- SEG:m68818:entry:auto-42 -->
 [[b:Substance]]
@@ -297,6 +303,9 @@ The second law of thermodynamics states that a spontaneous process increases the
 
 <!-- SEG:m68818:title:fs-idp50875552-title -->
 Key Equations
+
+<!-- SEG:m68818:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68818:entry:auto-101 -->
 [[MATH:6]]

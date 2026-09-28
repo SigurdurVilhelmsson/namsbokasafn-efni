@@ -451,6 +451,9 @@ The equations describing these laws are special cases of the ideal gas law, [[i:
 <!-- SEG:m68751:title:fs-idm157803264-title -->
 Key Equations
 
+<!-- SEG:m68751:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68751:entry:auto-152 -->
 [[i:PV]] = [[i:nRT]]
 

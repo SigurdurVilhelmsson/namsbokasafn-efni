@@ -403,6 +403,9 @@ Halogen Oxyacids and Their Salts
 <!-- SEG:m68837:para:fs-idm47315952 -->
 The compounds HXO, HXO[[sub:2]], HXO[[sub:3]], and HXO[[sub:4]], where X represents Cl, Br, or I, are the hypohalous, halous, halic, and perhalic acids, respectively. The strengths of these acids increase from the hypohalous acids, which are very weak acids, to the perhalic acids, which are very strong. [[xref:fs-idp152462192]] lists the known acids, and, where known, their pK[[sub:a]] values are given in parentheses.
 
+<!-- SEG:m68837:table-summary:fs-idp152462192-summary -->
+This table has five columns and six rows. The first row is a header row, and it labels each column: “Name,” “Fluorine,” “Chlorine,” “Bromine,” and “Iodine.” Under the “Name” column are the following: hypohalous, halous, halic, perhalic, and paraperhalic. Under the “Fluorine” column is H O F and the rest of the rows are empty. Under the “Chlorine” column are: H O C l ( 7.5 ); H C l O subscript 2 ( 2.0 ); H C l O subscript 3; H C l O subscript 4; and the final row is empty. Under the “Bromine” column are: H O B r ( 8.7 ); a blank row; H B r O subscript 3; H B r O subscript 4; and another blank row. Under the “Iodine” column are: H O I ( 11 ); a blank row; H I O subscript 3 ( 0.8 ); H I O subscript 4 ( 1.6 ); and H subscript 5 I O subscript 6 ( 1.6 ).
+
 <!-- SEG:m68837:entry:auto-136 -->
 Oxyacids of the Halogens
 

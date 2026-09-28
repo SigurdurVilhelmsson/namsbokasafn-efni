@@ -37,6 +37,9 @@ Visit this [[link:virtual lab|http://openstax.org/l/16Phetsugar]] to view simula
 <!-- SEG:m68778:para:fs-idm72001728 -->
 Water is used so often as a solvent that the word solution has come to imply an aqueous solution to many people. However, almost any gas, liquid, or solid can act as a solvent. Many [[term:alloys|term-00001]] are solid solutions of one metal dissolved in another; for example, US five-cent coins contain nickel dissolved in copper. Air is a gaseous solution, a homogeneous mixture of nitrogen, oxygen, and several other gases. Oxygen (a gas), alcohol (a liquid), and sugar (a solid) all dissolve in water (a liquid) to form liquid solutions. [[xref:fs-idp13681744]] gives examples of several different solutions and the phases of the solutes and solvents.
 
+<!-- SEG:m68778:table-summary:fs-idp13681744-summary -->
+The table provides solutes and solvents for a variety of solutions. In air, the solute is O subscript 2 g and the solvent is N subscript 2 g. In soft drinks, the solute is C O subscript 2 g and the solvent is H subscript 2 O l. In hydrogen in palladium, H subscript 2 g is the solute and P d s is the solvent. In rubbing alcohol, H subscript 2 O l is the solute and C subscript 3 H subscript 8 O l or 2 – propanol is the solvent. In saltwater, N a C l s is the solute and H subscript 2 O l is the solvent. In brass, Z n s is the solute and C u s is the solvent.
+
 <!-- SEG:m68778:entry:auto-14 -->
 Different Types of Solutions
 

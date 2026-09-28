@@ -154,6 +154,9 @@ Notkun logra og veldisvísistalna
 <!-- SEG:m68860:para:fs-idm310797664 -->
 Tugalogri (log) tölu er veldisvísirinn sem þarf að hefja 10 í til að fá töluna. Til dæmis er tugalogri 100 jafn 2, því það þarf að hefja 10 í annað veldi til að fá 100. Hér á eftir fylgja fleiri dæmi.
 
+<!-- SEG:m68860:table-summary:fs-idm247181504-summary -->
+Tafla með heitinu „Lograr og veldistölur“ hefur þrjá dálka með heitunum „Tala“, „Tala sett fram með veldi“ og „Almennur logri“. Talan 1000 er sett fram með veldi sem 10 í þriðja veldi og hefur almennan logra upp á 3. Talan 10 er sett fram með veldi sem 10 í fyrsta veldi og hefur almennan logra upp á 1. Talan 1 er sett fram með veldi sem 10 í núllta veldi og hefur almennan logra upp á 0. Talan 0,1 er sett fram með veldi sem 10 í mínus fyrsta veldi og hefur almennan logra upp á mínus 1. Talan 0,001 er sett fram með veldi sem 10 í mínus þriðja veldi og hefur almennan logra upp á mínus 3.
+
 <!-- SEG:m68860:entry:auto-53 -->
 Lograr og veldisvísistölur
 
@@ -283,6 +286,9 @@ Línurit yfir fylgni [[i:y]] við [[i:x]]
 <!-- SEG:m68860:alt:fs-idm174022560-alt -->
 Línurit ber heitið „Fylgni Y við X“. X-ásinn er á bilinu 0 til 4,5. Y-ásinn er á bilinu 0 til 16. Fjórir punktar eru teiknaðir sem línurit; punktarnir eru 1 og 5, 2 og 10, 3 og 7 og 4 og 14.
 
+<!-- SEG:m68860:table-summary:fs-idm165592384-summary -->
+Tafla hefur tvo dálka merkta x og y. Í fyrstu röð er gildi x 1 og gildi y er 5. Í annarri röð er gildi x 2 og gildi y er 10. Í þriðju röð er gildi x 3 og gildi y er 7. Í fjórðu röð er gildi x 4 og gildi y er 14.
+
 <!-- SEG:m68860:entry:auto-96 -->
 [[i:x]]
 
@@ -324,6 +330,9 @@ Ef við vitum að [[i:y]] = [[i:x]][[sup:2]] + 2, getum við búið til töflu m
 
 <!-- SEG:m68860:alt:fs-idp112843584-alt -->
 Línurit ber heitið „Y jafnt og x hávísir 2 plús 2“. X-ásinn er á bilinu 0 til 4,5. Y-ásinn er á bilinu 0 til 20. Fjórir punktar eru teiknaðir sem línurit; punktarnir eru 1 og 3, 2 og 6, 3 og 11 og 4 og 18.
+
+<!-- SEG:m68860:table-summary:fs-idm70341712-summary -->
+Tafla hefur tvo dálka: sá fyrri er merktur x og sá síðari er merktur y jafnt og x í öðru veldi plús 2. Í fyrstu röð er gildi x 1 og gildi y jafnt og x í öðru veldi plús 2 er 3. Í annarri röð er gildi x 2 og gildi y jafnt og x í öðru veldi plús 2 er 6. Í þriðju röð er gildi x 3 og gildi y jafnt og x í öðru veldi plús 2 er 11. Í fjórðu röð er gildi x 4 og gildi y jafnt og x í öðru veldi plús 2 er 18.
 
 <!-- SEG:m68860:entry:auto-110 -->
 [[i:x]]

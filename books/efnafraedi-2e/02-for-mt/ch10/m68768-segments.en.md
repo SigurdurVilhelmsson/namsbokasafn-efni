@@ -61,6 +61,9 @@ Answer:
 <!-- SEG:m68768:para:fs-idm44101792 -->
 All these compounds exhibit hydrogen bonding; these strong IMFs are difficult for the molecules to overcome, so the vapor pressures are relatively low. As the size of molecule increases from methanol to butanol, dispersion forces increase, which means that the vapor pressures decrease as observed:[[BR]] P[[sub:methanol]] > P[[sub:ethanol]] > P[[sub:propanol]] > P[[sub:butanol]].
 
+<!-- SEG:m68768:table-summary:fs-idm60218336-summary -->
+This table has two rows and five columns. The first column is a header column, and it labels each row: “Compound,” and “Vapor Pressure at 25 degrees C.” To the right of the “Compound” column are the following: methanol, C H subscript 3 O H; ethanol, C subscript 2 H subscript 5 O H; propanol C subscript 3 H subscript 7 O H; and butanol C subscript 4 H subscript 9 O H. To the right of the “Vapor Pressure at 25 degrees C” column are the following: 11.9 k P a, 5.95 k P a, 2.67 k P a, and 0.56 k P a.
+
 <!-- SEG:m68768:entry:auto-22 -->
 Compound
 
@@ -393,6 +396,9 @@ Phase transitions are processes that convert matter from one physical state into
 
 <!-- SEG:m68768:title:fs-idp14058304-title -->
 Key Equations
+
+<!-- SEG:m68768:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68768:entry:auto-133 -->
 [[MATH:4]]

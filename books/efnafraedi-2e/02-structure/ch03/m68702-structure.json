@@ -309,6 +309,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_03_03_empform",
+          "title": null,
           "caption": {
             "segmentId": "m68702:caption:CNX_Chem_03_03_empform-caption"
           },
@@ -406,6 +407,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_03_hematite",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68702:caption:CNX_Chem_03_03_hematite-caption"
           },
@@ -530,6 +532,7 @@
               "type": "figure",
               "id": "CNX_Chem_03_03_BrewTank",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68702:caption:CNX_Chem_03_03_BrewTank-caption"
               },
@@ -1073,7 +1076,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68702:table-summary:key-equations-table-summary"
         }
       ]
     }

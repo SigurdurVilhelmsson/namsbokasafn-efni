@@ -55,6 +55,9 @@ Við tiltölulega lágan þrýsting hafa gassameindir nánast engan aðdráttark
 <!-- SEG:m68759:para:fs-idm12594352 -->
 Fastinn [[i:a]] samsvarar styrk aðdráttarkraftsins milli sameinda tiltekinnar gastegundar og fastinn [[i:b]] samsvarar stærð sameinda tiltekinnar gastegundar. „Leiðréttingin“ á þrýstiliðnum í kjörgaslögmálinu er [[MATH:1]] og „leiðréttingin“ á rúmmálinu er [[i:nb]]. Athugið að þegar [[i:V]] er tiltölulega stórt og [[i:n]] er tiltölulega lítið, verða báðir þessir leiðréttingarliðir hverfandi og van der Waals-jafnan einfaldast í kjörgaslögmálið, [[i:PV = nRT]]. Slíkt ástand samsvarar gasi þar sem tiltölulega lítill fjöldi sameinda tekur tiltölulega stórt rúmmál, það er að segja gas við tiltölulega lágan þrýsting. Tilraunagildi fyrir van der Waals-fasta sumra algengra gastegunda eru gefin í [[xref:fs-idm15100464]].
 
+<!-- SEG:m68759:table-summary:fs-idm15100464-summary -->
+Þessi tafla hefur þrjá dálka og sjö raðir. Fyrsta röðin er fyrirsögn og hún merkir hvern dálk, „Gas“, „a (L í öðru veldi atm deilt með mol í öðru veldi)“, „b (L deilt með mol)“. Undir „Gas“ er eftirfarandi: N með neðanskrift 2, O með neðanskrift 2, CO með neðanskrift 2, H með neðanskrift 2 O, He og CCl með neðanskrift 4. Undir „a (L í öðru veldi atm deilt með mol í öðru veldi)“ er eftirfarandi: 1,39, 1,36, 3,59, 5,46, 0,0342 og 20,4. Undir „b (L deilt með mol)“ er eftirfarandi: 0,0391, 0,0318, 0,0427, 0,0305, 0,0237 og 0,1383.
+
 <!-- SEG:m68759:entry:auto-20 -->
 Gildi van der Waals-fasta fyrir nokkrar algengar gastegundir
 
@@ -189,6 +192,9 @@ Gassameindir hafa endanlegt rúmmál og verða fyrir aðdráttarkröftum hver fr
 
 <!-- SEG:m68759:title:fs-idm24142800-title -->
 Lykiljöfnur
+
+<!-- SEG:m68759:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68759:entry:auto-65 -->
 [[MATH:2]]

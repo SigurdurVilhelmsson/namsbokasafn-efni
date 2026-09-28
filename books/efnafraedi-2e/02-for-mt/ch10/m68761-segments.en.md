@@ -88,6 +88,9 @@ Two pairs of molecules are shown where each molecule has one larger blue side la
 <!-- SEG:m68761:para:fs-idm80968928 -->
 Dispersion forces that develop between atoms in different molecules can attract the two molecules to each other. The forces are relatively weak, however, and become significant only when the molecules are very close. Larger and heavier atoms and molecules exhibit stronger dispersion forces than do smaller and lighter atoms and molecules. F[[sub:2]] and Cl[[sub:2]] are gases at room temperature (reflecting weaker attractive forces); Br[[sub:2]] is a liquid, and I[[sub:2]] is a solid (reflecting stronger attractive forces). Trends in observed melting and boiling points for the halogens clearly demonstrate this effect, as seen in [[xref:fs-idp55860464]].
 
+<!-- SEG:m68761:table-summary:fs-idp55860464-summary -->
+This table has six rows and five columns. The first row is a header row and it labels each column: “Halogen,” “Molar Mass,” “Atomic Radius,” “Melting Point,” and “Boiling Point.” Under the “Halogen” column are the following: Fluorine, F subscript 2; Chlorine, C l subscript 2; bromine, B r subscript 2; iodine, I subscript 2; astatine, A t subscript 2. Under the “Molar Mass” column are the following: 38 g / mol; 71 g / mol; 160 g / mol; 254 g / mol; 420 g / mol. Under the “Atomic Radius” column are the following: 72 p m; 99 p m; 114 p m; 133 p m; 150 p m. Under the “Melting Point” column are the following: 53 K; 172 K; 266 K; 387 K; and 575 K. Under the “Boiling Point” column are the following: 85 K; 238 K; 332 K; 457 K; and 610 K.
+
 <!-- SEG:m68761:entry:auto-31 -->
 Melting and Boiling Points of the Halogens
 

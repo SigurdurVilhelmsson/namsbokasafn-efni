@@ -43,6 +43,9 @@ Með því að bera þessa jöfnu saman við fyrri jöfnu fyrir breytingu á frj
 <!-- SEG:m68819:para:fs-idm228637552 -->
 Breytingin á frjálsri orku er því áreiðanlegur mælikvarði á sjálfgengi ferlis, þar sem hún er í beinum tengslum við áður skilgreindan mælikvarða á sjálfgengi, Δ[[i:S]][[sub:alheimur]]. [[xref:fs-idm211518768]] tekur saman sambandið milli sjálfgengis ferlis og formerkja þessara mælikvarða.
 
+<!-- SEG:m68819:table-summary:fs-idm211518768-summary -->
+Þessi tafla hefur þrjá dálka og þrjár raðir. Fyrsti dálkurinn hefur eftirfarandi: „stórt delta S með lágstaf univ er stærra en 0,“ „stórt delta S með lágstaf univ er minna en 0,“ og „stórt delta S með lágstaf univ er jafnt og 0.“ Annar dálkurinn inniheldur eftirfarandi: „stórt delta G er minna en 0,“ „stórt delta G er stærra en 0,“ og „stórt delta G er jafnt og 0.“ Þriðji dálkurinn inniheldur eftirfarandi: „Sjálfsprottið,“ „ekki sjálfsprottið (sjálfsprottið í öfuga átt),“ og „afturkræft (kerfið er í jafnvægi).“
+
 <!-- SEG:m68819:entry:auto-16 -->
 Samband milli sjálfgengis ferlis og formerkja varmafræðilegra eiginleika
 
@@ -136,6 +139,9 @@ Notið staðalvermis- og óreiðugögn úr [[docref:viðauka G|m68865]] til að 
 <!-- SEG:m68819:note-title:fs-idm97664544-title -->
 Svar:
 
+<!-- SEG:m68819:table-summary:fs-idm230329280-summary -->
+Þessi tafla hefur þrjá dálka og þrjár raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Efni,“ „stórt delta H með lágstaf f og háskrift gráðutákni (kJ/mól),“ og „S með lágstaf 298 og háskrift gráðutákni (J/K∙mól).“ Undir dálkinum „Efni“ eru H með lágstaf 2 O (l) og H með lágstaf 2 O (g). Undir dálkinum „stórt delta H með lágstaf f og háskrift gráðutákni (kJ/mól)“ eru gildin mínus 286,83 og mínus 241,82. Undir dálkinum „S með lágstaf 298 og háskrift gráðutákni (J/K∙mól)“ eru gildin 70,0 og 188,8.
+
 <!-- SEG:m68819:para:fs-idm157144416 -->
 [[MATH:4]] hvarfið er ekki sjálfgengt ([[i:ekki]] sjálfgengt) við 25 °C.
 
@@ -210,6 +216,9 @@ Reiknið Δ[[i:G]]° með því að nota (a) myndunarfrjálsorku og (b) myndunar
 
 <!-- SEG:m68819:note-title:fs-idm254989456a-title -->
 Svar:
+
+<!-- SEG:m68819:table-summary:fs-idm232730384-summary -->
+Þessi tafla hefur fjóra dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Efnasamband,“ „stórt delta G með lágstaf f og háskrift gráðutákni (kJ/mól),“ „stórt delta H með lágstaf f og háskrift gráðutákni (kJ/mól),“ og „S með lágstaf 298 og háskrift gráðutákni (J/K∙mól).“ Undir dálkinum „Efnasamband“ er eftirfarandi: „HgO (s, gult),“ „Hg (l),“ og „O með lágstaf 2 (g).“ Undir dálkinum „stórt delta G með lágstaf f og háskrift gráðutákni (kJ/mól)“ eru eftirfarandi gildi: mínus 58,43, 0 og 0. Undir dálkinum „stórt delta H með lágstaf f og háskrift gráðutákni (kJ/mól)“ eru gildin: mínus 90,46, 0 og 0. Undir dálkinum „S með lágstaf 298 og háskrift gráðutákni (J/K∙mól)“ eru gildin: 71,13, 75,9 og 205,2.
 
 <!-- SEG:m68819:para:fs-idp2244016 -->
 (a) 140,8 kJ/mól, ekki sjálfgengt
@@ -484,6 +493,9 @@ Fyrir efnaferil í jafnvægi er [[i:Q]] = [[i:K]] og Δ[[i:G]] = 0 og fyrri jöf
 <!-- SEG:m68819:para:fs-idm206226416 -->
 Þetta form jöfnunnar veitir gagnlegan hlekk á milli þessara tveggja nauðsynlegu varmafræðilegu eiginleika og hægt er að nota það til að leiða út jafnvægisfasta út frá staðalbreytingum á frjálsri orku og öfugt. Samböndin milli staðalbreytinga á frjálsri orku og jafnvægisfasta eru tekin saman í [[xref:fs-idm159425040]].
 
+<!-- SEG:m68819:table-summary:fs-idm159425040-summary -->
+Þessi tafla hefur þrjá dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „K,“ „stórt delta G með háskrift gráðutákni,“ og „Athugasemdir.“ Undir dálkinum „K“ er eftirfarandi: „stærra en 1,“ „minna en 1,“ og „jafnt og 1.“ Undir dálkinum „stórt delta G með háskrift gráðutákni“ er eftirfarandi: „minna en 0,“ „stærra en 0,“ og „jafnt og 0.“ Undir dálkinum „Athugasemdir“ er eftirfarandi: „Myndefni eru ríkjandi við jafnvægi,“ „Hvarfefni eru ríkjandi við jafnvægi,“ og „Hvarfefni og myndefni eru jafn ríkjandi við jafnvægi.“
+
 <!-- SEG:m68819:entry:auto-163 -->
 Samband milli staðalbreytinga á frjálsri orku og jafnvægisfasta
 
@@ -576,6 +588,9 @@ Gibbs frjáls orka ([[i:G]]) er ástandsfall sem er skilgreint með tilliti til 
 
 <!-- SEG:m68819:title:fs-idm248576000-title -->
 Lykiljafna
+
+<!-- SEG:m68819:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68819:entry:auto-194 -->
 Δ[[i:G]] = Δ[[i:H]] − [[i:T]]Δ[[i:S]]

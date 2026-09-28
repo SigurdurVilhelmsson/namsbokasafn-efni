@@ -1056,7 +1056,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68741:table-summary:fs-idp13638832-summary"
         },
         {
           "type": "table",
@@ -1297,7 +1298,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68741:table-summary:fs-idm44464336-summary"
         },
         {
           "type": "para",
@@ -1785,7 +1787,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68741:table-summary:fs-idm33829552-summary"
         },
         {
           "type": "para",
@@ -1873,7 +1876,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68741:table-summary:key-equations-table-summary"
         }
       ]
     },
@@ -2282,7 +2286,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68741:table-summary:fs-idm30060832-summary"
         },
         {
           "type": "exercise",

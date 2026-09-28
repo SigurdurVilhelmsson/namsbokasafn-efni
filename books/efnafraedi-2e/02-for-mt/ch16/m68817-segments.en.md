@@ -214,6 +214,9 @@ For a given substance, entropy depends on phase with [[i:S]][[sub:solid]] &lt; [
 <!-- SEG:m68817:title:fs-idm145716272-title -->
 Key Equations
 
+<!-- SEG:m68817:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68817:entry:auto-73 -->
 [[MATH:17]]
 

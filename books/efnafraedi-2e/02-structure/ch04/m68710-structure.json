@@ -301,7 +301,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68710:table-summary:fs-idp140132617697568-summary"
         },
         {
           "type": "para",
@@ -337,6 +338,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_02_LeadIodide",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_04_02_LeadIodide-caption"
           },
@@ -485,6 +487,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_02_HClsoln",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_04_02_HClsoln-caption"
           },
@@ -517,6 +520,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_02_Citrus",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_04_02_Citrus-caption"
           },
@@ -661,7 +665,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68710:table-summary:fs-idp55395904-summary"
         },
         {
           "type": "para",
@@ -702,6 +707,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_02_ammonia",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_04_02_ammonia-caption"
           },
@@ -875,6 +881,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_14_03_FishLemon",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_14_03_FishLemon-caption"
           },
@@ -1222,6 +1229,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_02_CuAgNO3",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68710:caption:CNX_Chem_04_02_CuAgNO3-caption"
           },
@@ -1767,7 +1775,8 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "summarySegmentId": "m68710:table-summary:fs-idp8525760-summary"
             }
           ]
         }

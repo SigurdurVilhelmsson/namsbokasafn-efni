@@ -25,6 +25,9 @@ Two photographs are shown and labeled “a” and “b.” Photo a shows a jar o
 <!-- SEG:m68764:para:fs-idm133174592 -->
 The IMFs between the molecules of a liquid, the size and shape of the molecules, and the temperature determine how easily a liquid flows. As [[xref:fs-idm123780960]] shows, the more structurally complex are the molecules in a liquid and the stronger the IMFs between them, the more difficult it is for them to move past each other and the greater is the viscosity of the liquid. As the temperature increases, the molecules move more rapidly and their kinetic energies are better able to overcome the forces that hold them together; thus, the viscosity of the liquid decreases.
 
+<!-- SEG:m68764:table-summary:fs-idm123780960-summary -->
+This table has three columns and eight rows. The first row is a header row, and it labels each column, “Substance,” “Formula,” and “Viscosity ( m P a dot s ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol, honey, and motor oil. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ); variable; and variable. Under the “Viscosity ( m P a dot s )” column are the following: 0.890, 1.526, 1.074, 0.508, 16.1, approximately 2000 to 10000, and approximately 50 to 500.
+
 <!-- SEG:m68764:entry:auto-10 -->
 Viscosities of Common Substances at 25 °C
 
@@ -111,6 +114,9 @@ A photo of a spider’s web with droplets of water attached to it is shown. Two 
 
 <!-- SEG:m68764:para:fs-idm78773504 -->
 [[term:Surface tension|term-00003]] is defined as the energy required to increase the surface area of a liquid, or the force required to increase the length of a liquid surface by a given amount. This property results from the cohesive forces between molecules at the surface of a liquid, and it causes the surface of a liquid to behave like a stretched rubber membrane. Surface tensions of several liquids are presented in [[xref:fs-idm139826368]]. Among common liquids, water exhibits a distinctly high surface tension due to strong hydrogen bonding between its molecules. As a result of this high surface tension, the surface of water represents a relatively “tough skin” that can withstand considerable force without breaking. A steel needle carefully placed on water will float. Some insects, like the one shown in [[xref:CNX_Chem_10_02_Strider]], even though they are denser than water, move on its surface because they are supported by the surface tension.
+
+<!-- SEG:m68764:table-summary:fs-idm139826368-summary -->
+This table has three columns and six rows. The first row is a header row, and it labels each column: “Substance,” “Formula,” and “Surface tension ( m N / m ).” Under the “Substance” column are the following: water, mercury, ethanol, octane, ethylene glycol. Under the “Formula” column are the following: H subscript 2 O; H g; C subscript 2 H subscript 5 O H; C subscript 8 H subscript 18; C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Surface tension ( m N / m )” column are the following: 71.99, 458.48, 21.97, 21.14, 47.99.
 
 <!-- SEG:m68764:entry:auto-39 -->
 Surface Tensions of Common Substances at 25 °C
@@ -268,6 +274,9 @@ The intermolecular forces between molecules in the liquid state vary depending u
 <!-- SEG:m68764:title:fs-idm31673664-title -->
 Key Equations
 
+<!-- SEG:m68764:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68764:entry:auto-91 -->
 [[MATH:2]]
 
@@ -366,6 +375,9 @@ viscosity
 
 <!-- SEG:m68764:glossary-def:fs-idm129199712-def -->
 measure of a liquid’s resistance to flow
+
+<!-- SEG:m68764:table-summary:fs-idm84550336-summary -->
+This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.
 
 <!-- SEG:m68764:entry:auto-125 -->
 Water

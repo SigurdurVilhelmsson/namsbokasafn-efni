@@ -199,6 +199,9 @@ Ef fleiri en einn tengill af ákveðinni gerð er til staðar er fjöldinn gefin
 <!-- SEG:m68843:para:fs-idp51192128 -->
 Nafngiftir flókinna efnasambanda eru byggðar á kerfi sem Alfred Werner, svissneskur efnafræðingur og Nóbelsverðlaunahafi, lagði til, en framúrskarandi verk hans fyrir meira en 100 árum síðan lagði grunninn að skýrari skilningi á þessum efnasamböndum. Eftirfarandi fimm reglur eru notaðar til að nefna flókin efnasambönd:
 
+<!-- SEG:m68843:table-summary:fs-idp115554880-summary -->
+Þessi tafla hefur tvo dálka og 11 raðir. Fyrsta röðin er haus og hún merkir hvern dálk, „Anjónískur bindill“ og „Nafn“. Undir „Anjónískur bindill“ er eftirfarandi: F með neikvætt formerki í hávísi, C l með neikvætt formerki í hávísi, B r með neikvætt formerki í hávísi, I með neikvætt formerki í hávísi, C N með neikvætt formerki í hávísi, N O með 3 í lágvísi og neikvætt formerki í hávísi, O H með neikvætt formerki í hávísi, O í öðru veldi með neikvætt formerki í hávísi, C með 2 í lágvísi O með 4 í lágvísi í öðru veldi með neikvætt formerki í hávísi, C O með 2 í lágvísi í öðru veldi með neikvætt formerki í hávísi. Undir „Nafn“ er eftirfarandi: flúoró, klóró, brómó, joðó, sýanó, nítrató, hýdroxó, oxó, oxalat, karbónató.
+
 <!-- SEG:m68843:entry:auto-68 -->
 Dæmi um anjóníska tengla
 
@@ -271,6 +274,9 @@ karbónat
 <!-- SEG:m68843:para:fs-idp261455600 -->
 Þegar girðisambandið er annaðhvort katjón eða hlutlaus sameind er nafn miðjumálmatómsins stafað nákvæmlega eins og nafn frumefnisins og á eftir fylgir rómversk tala í sviga til að gefa til kynna oxunarástand þess ([[xref:fs-idp99540896]] og [[xref:fs-idp97436016]]). Þegar girðisambandið er anjón er viðskeytinu -at bætt við stofn nafns málmsins og á eftir fylgir rómversk tala sem táknar oxunarástand hans ([[xref:fs-idp240256816]]). Stundum er latneskt nafn málmsins notað þegar enska nafnið er klunnalegt. Til dæmis er [[i:ferrat]] notað í stað [[i:íronat]], [[i:plúmbat]] í stað [[i:lídat]] og [[i:stannat]] í stað [[i:tínat]]. Oxunarástand málmsins er ákvarðað út frá hleðslum hvers tengils og heildarhleðslu girðisambandsins. Til dæmis, í [Cr(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]]Br, hefur girðihvolfið (í hornklofum) hleðsluna 1+ til að vega upp á móti brómíðjóninni. Vatnstenglarnir eru hlutlausir og klóríðtenglarnir eru anjónískir með hleðsluna 1− hvor. Til að ákvarða oxunarástand málmsins setjum við heildarhleðsluna jafna summu tenglanna og málmsins: +1 = −2 + [[i:x]], þannig að oxunarástandið ([[i:x]]) er jafnt og 3+.
 
+<!-- SEG:m68843:table-summary:fs-idp99540896-summary -->
+Þessi tafla hefur tvo dálka og fimm raðir. Í fyrsta dálki er eftirfarandi: [ C o ( N H með 3 í lágvísi ) með 6 í lágvísi ] C l með 3 í lágvísi, [ P t ( N H með 3 í lágvísi ) með 4 í lágvísi C l með 2 í lágvísi ] í öðru veldi með jákvætt formerki í hávísi, [ A g ( N H með 3 í lágvísi ) með 2 í lágvísi ] með jákvætt formerki í hávísi, [ C r ( H með 2 í lágvísi O ) með 4 í lágvísi C l með 2 í lágvísi ] C l, [ C o ( H með 2 í lágvísi N C H með 2 í lágvísi C H með 2 í lágvísi N H með 2 í lágvísi ) með 3 í lágvísi ] með 2 í lágvísi ( S O með 4 í lágvísi ) með 3 í lágvísi. Í öðrum dálki er eftirfarandi: Hexaammínkóbalt ( I I I ) klóríð, Tetraammíndíklórplatínu ( I V ) jón, Díammínsilfur ( I ) jón, Tetraakvadíklórkróm ( I I I ) klóríð, Tris ( etýlendíamín ) kóbalt ( I I I ) súlfat.
+
 <!-- SEG:m68843:entry:auto-92 -->
 Dæmi þar sem girðisambandið er katjón
 
@@ -304,6 +310,9 @@ tetraakvadíklórkróm(III)klóríð
 <!-- SEG:m68843:entry:auto-102 -->
 tris(etýlendíamín)kóbalt(III)súlfat
 
+<!-- SEG:m68843:table-summary:fs-idp97436016-summary -->
+Þessi tafla hefur tvo dálka og tvær raðir. Í fyrstu röðinni er eftirfarandi: [ P t ( N H með 3 í lágvísi ) með 2 í lágvísi C l með 4 í lágvísi ], [ N i ( H með 2 í lágvísi N C H með 2 í lágvísi C H með 2 í lágvísi N H með 2 í lágvísi ) með 2 í lágvísi C l með 2 í lágvísi ]. Í öðrum dálki er eftirfarandi: Díammíntetraklórplatína ( I V ), Díklórbis ( etýlendíamín ) nikkel ( I I ).
+
 <!-- SEG:m68843:entry:auto-103 -->
 Dæmi þar sem girðisambandið er hlutlaust
 
@@ -318,6 +327,9 @@ díammíntetraklórplatína(IV)
 
 <!-- SEG:m68843:entry:auto-107 -->
 díklórbis(etýlendíamín)nikkel(II)
+
+<!-- SEG:m68843:table-summary:fs-idp240256816-summary -->
+Þessi tafla hefur tvo dálka og tvær raðir. Í fyrsta dálki er eftirfarandi: [ P t C l með 6 í lágvísi ] í öðru veldi með neikvætt formerki í hávísi, N a með 2 í lágvísi [ S n C l með 6 í lágvísi ]. Í öðrum dálki er eftirfarandi: Hexaklórplatínat ( I V ) jón, Natríumhexaklórstannat ( I V ).
 
 <!-- SEG:m68843:entry:auto-108 -->
 Dæmi þar sem girðisambandið er anjón
@@ -384,6 +396,9 @@ Bygging girðisambanda
 
 <!-- SEG:m68843:alt:fs-idp159515584-alt -->
 Þessi mynd inniheldur þrjár svart-hvítar skýringarmyndir. Sú fyrsta er merkt „Fimmhyrndur tvípíramídi“. Hún hefur 10 jafnarma þríhyrningsfleti, fimm efst sem mætast í einum punkti og mynda odd sem vísar upp á við efst á myndinni, og fimm neðst sem mætast í einum punkti og mynda odd sem vísar niður á við neðst á myndinni. Önnur er merkt „Ferningslaga andstæðingsprísma“. Hún hefur flata ferkantaða efri og neðri fleti og hliðar úr 8 jafnhliða þríhyrningum. Hliðarnar vísa til skiptis upp og niður. Þriðja skýringarmyndin er merkt „Tólfflötungur“. Hún hefur tólf jafnarma þríhyrningsfleti.
+
+<!-- SEG:m68843:table-summary:fs-idp162520608-summary -->
+Þessi tafla hefur þrjá dálka og 12 raðir. Fyrsta röðin er haus og hún merkir hvern dálk, „Hnitsetningartala“, „Sameindabygging“ og „Dæmi“. Í dálkinum „Hnitsetningartala“ er eftirfarandi: 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9 og hærra. Undir dálkinum „Sameindabygging“ er eftirfarandi: línuleg, þríhyrnd flatarmynd, ferflötungur ( d með 0 í hávísi eða d með 10 í hávísi ) og lág oxunarstig fyrir M, ferhyrnd flatarmynd ( d með 8 í hávísi ), þríhyrnd tvípýramíðabygging, áttflötungur, fimmhyrndur tvípýramídi, ferhyrndur andstæðingur, tólfflötungur og flóknari byggingar. Undir dálkinum „Dæmi“ er eftirfarandi: [ A g ( N H með 3 í lágvísi ) með 2 í lágvísi ] með jákvætt formerki í hávísi, [ C u ( C N ) með 3 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi, [ N I ( C O ) með 4 í lágvísi], [ N i C l með 4 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi, [ C o C l með 5 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi, [ V O ( C N ) með 4 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi, [ C o C l með 6 í lágvísi ] með þremur neikvæðum formerkjum í hávísi, [ Z r F með 7 í lágvísi ] með þremur neikvæðum formerkjum í hávísi, [ R e F með 8 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi, [ M o ( C N ) með 8 í lágvísi] með fjórum neikvæðum formerkjum í hávísi, [ R e H með 9 í lágvísi ] með tveimur neikvæðum formerkjum í hávísi.
 
 <!-- SEG:m68843:entry:auto-130 -->
 Girðitölur og sameindalögun

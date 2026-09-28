@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68752",
-  "extractedAt": "2026-09-20T17:49:34.249Z",
+  "extractedAt": "2026-09-28T20:03:06.412Z",
   "sourceHash": "87f7d7641d0838c1",
-  "segmentCount": 322,
+  "segmentCount": 324,
   "segmentIds": [
     "m68752:title:auto-1",
     "m68752:abstract:auto-2",
@@ -104,6 +104,7 @@
     "m68752:para:fs-idp221722032",
     "m68752:caption:CNX_Chem_09_03_WaterVapor2-caption",
     "m68752:alt:fs-idp38546432-alt",
+    "m68752:table-summary:fs-idm68841392-summary",
     "m68752:entry:auto-100",
     "m68752:entry:auto-101",
     "m68752:entry:auto-102",
@@ -250,6 +251,7 @@
     "m68752:title:fs-idp102169424-title",
     "m68752:para:fs-idp71854032",
     "m68752:title:fs-idp7509520-title",
+    "m68752:table-summary:key-equations-table-summary",
     "m68752:entry:auto-246",
     "m68752:entry:auto-247",
     "m68752:entry:auto-248",

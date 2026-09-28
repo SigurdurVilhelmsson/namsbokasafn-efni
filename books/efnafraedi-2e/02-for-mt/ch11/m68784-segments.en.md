@@ -34,6 +34,9 @@ The term “colloid”—from the Greek words [[i:kolla]], meaning “glue,” a
 <!-- SEG:m68784:para:fs-idm31787584 -->
 Analogous to the identification of solution components as “solute” and “solvent,” the components of a colloid are likewise classified according to their relative amounts. The particulate component typically present in a relatively minor amount is called the [[term:dispersed phase|term-00005]] and the substance or solution throughout which the particulate is dispersed is called the [[term:dispersion medium|term-00006]]. Colloids may involve virtually any combination of physical states (gas in liquid, liquid in solid, solid in gas, etc.), as illustrated by the examples of colloidal systems given in [[xref:fs-idm28163488]].
 
+<!-- SEG:m68784:table-summary:fs-idm28163488-summary -->
+This table provides examples of colloids. Examples of a solid dispersed in a gas are smoke and dust. Common examples of a solid dispersed in a liquid, also known as a sol, include starch in water, some inks, paints, and milk of magnesia. Examples of a solid dispersed in a solid include some colored gems and some alloys. Examples of a liquid dispersed in a gas, also called an aerosol, include clouds, fogs, mists, and sprays. Examples of a liquid dispersed in a liquid, also called emulsions, include milk, mayonnaise, and butter. Examples of a liquid that is dispersed in a solid, also called gels, include jellies, gels, pearl, and opal which is H subscript 2 O in S i O subscript 2. Examples of a gas dispersed in a liquid, also called a foam, include foams, whipped cream, and beaten egg whites. Examples of gas dispersed in solid include pumice and floating soaps.
+
 <!-- SEG:m68784:entry:auto-13 -->
 Examples of Colloidal Systems
 
@@ -270,6 +273,9 @@ Chemistry End of Chapter Exercises
 
 <!-- SEG:m68784:problem:fs-idm156555296 -->
 Identify the dispersed phase and the dispersion medium in each of the following colloidal systems: starch dispersion, smoke, fog, pearl, whipped cream, floating soap, jelly, milk, and ruby.
+
+<!-- SEG:m68784:table-summary:fs-idm34982368-summary -->
+This table provides the dispersed phase and medium for a variety of colloidal systems. In starch dispersion, the dispersed phase is starch and the dispersion medium is water. In smoke, the dispersed phase is solid particles and the dispersion medium is air. In fog, the dispersed phase is water and the dispersion medium is air. In pearl, the dispersed phase is water and the dispersion medium is calcium carbonate, C a C O subscript 3. In whipped cream, the dispersed phase is air and the dispersion medium is cream. In floating soap, the dispersed phase is air and the dispersion medium is soap. In jelly, the dispersed phase is fruit juice and the dispersion medium is pectin gel. In milk, the dispersed phase is butterfat and the dispersion medium is water. In ruby, the dispersed phase is chromium three oxide C r subscript 2 O subscript 3, and the dispersion medium is aluminum oxide A l subscript 2 O subscript 3.
 
 <!-- SEG:m68784:entry:auto-92 -->
 Colloidal System

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68823",
-  "extractedAt": "2026-09-21T16:38:44.354Z",
+  "extractedAt": "2026-09-28T20:03:09.169Z",
   "sourceHash": "09554e829c3eee23",
-  "segmentCount": 153,
+  "segmentCount": 155,
   "segmentIds": [
     "m68823:title:auto-1",
     "m68823:abstract:auto-2",
@@ -24,6 +24,7 @@
     "m68823:caption:CNX_Chem_17_03_GalvanCu-caption",
     "m68823:alt:fs-idm8697872-alt",
     "m68823:para:fs-idm218785168",
+    "m68823:table-summary:fs-idm42585168-summary",
     "m68823:entry:auto-20",
     "m68823:entry:auto-21",
     "m68823:entry:auto-22",
@@ -132,6 +133,7 @@
     "m68823:title:fs-idp47245120-title",
     "m68823:para:fs-idp43740416",
     "m68823:title:fs-idm175821376-title",
+    "m68823:table-summary:key-equations-table-summary",
     "m68823:entry:auto-128",
     "m68823:title:fs-idp17878176-title",
     "m68823:problem:fs-idm41082448",

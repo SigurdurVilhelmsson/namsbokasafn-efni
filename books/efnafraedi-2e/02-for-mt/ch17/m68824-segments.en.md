@@ -43,6 +43,9 @@ Graphic depicting the relation between three important thermodynamic properties.
 <!-- SEG:m68824:alt:fs-idp78132768-alt -->
 A diagram is shown that involves three double headed arrows positioned in the shape of an equilateral triangle. The vertices are labeled in red. The top vertex is labeled “K.“ The vertex at the lower left is labeled “delta G superscript degree symbol.” The vertex at the lower right is labeled “E superscript degree symbol subscript cell.” The right side of the triangle is labeled “E superscript degree symbol subscript cell equals ( R T divided by n  F ) l n K.” The lower side of the triangle is labeled “delta G superscript degree symbol equals negative n F E superscript degree symbol subscript cell.” The left side of the triangle is labeled “delta G superscript degree symbol equals negative R T l n K.”
 
+<!-- SEG:m68824:table-summary:fs-idm241340256-summary -->
+No Summary
+
 <!-- SEG:m68824:entry:auto-16 -->
 [[i:K]]
 
@@ -222,6 +225,9 @@ Potential is a thermodynamic quantity reflecting the intrinsic driving force of 
 
 <!-- SEG:m68824:title:fs-idp39495232-title -->
 Key Equations
+
+<!-- SEG:m68824:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68824:entry:auto-76 -->
 [[MATH:7]]

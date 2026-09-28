@@ -321,7 +321,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68685:table-summary:fs-idp114534448-summary"
     },
     {
       "type": "para",
@@ -676,7 +677,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68685:table-summary:fs-idp22296752-summary"
         }
       ]
     }

@@ -232,6 +232,9 @@ In a Lewis structure, formal charges can be assigned to each atom by treating ea
 <!-- SEG:m68740:title:fs-idp77377632-title -->
 Key Equations
 
+<!-- SEG:m68740:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68740:entry:auto-79 -->
 [[MATH:7]]
 

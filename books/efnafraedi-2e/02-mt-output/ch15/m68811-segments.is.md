@@ -694,6 +694,9 @@ Leysnimargfeldi örlítið leysanlegs saltkristals má reikna út frá leysni þ
 <!-- SEG:m68811:title:fs-idp13519952-title -->
 Lykiljöfnur
 
+<!-- SEG:m68811:table-summary:key-equations-table-summary -->
+Tafla með lykiljöfnum
+
 <!-- SEG:m68811:entry:auto-233 -->
 [[MATH:75]]
 

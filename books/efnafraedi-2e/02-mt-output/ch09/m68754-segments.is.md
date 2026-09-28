@@ -187,6 +187,9 @@ Gaslaga frumeindir og sameindir hreyfast frjálslega og af handahófi í geimnum
 <!-- SEG:m68754:title:fs-idp166246928-title -->
 Lykiljafna
 
+<!-- SEG:m68754:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68754:entry:auto-64 -->
 [[MATH:5]]
 

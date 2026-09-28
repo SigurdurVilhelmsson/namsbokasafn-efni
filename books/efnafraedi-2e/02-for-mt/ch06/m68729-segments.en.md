@@ -310,6 +310,9 @@ Light and other forms of electromagnetic radiation move through a vacuum with a 
 <!-- SEG:m68729:title:fs-idp8373504-title -->
 Key Equations
 
+<!-- SEG:m68729:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68729:entry:auto-105 -->
 [[i:c]] = [[i:λν]]
 

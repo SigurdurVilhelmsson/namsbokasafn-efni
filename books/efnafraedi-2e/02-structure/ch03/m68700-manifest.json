@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68700",
-  "extractedAt": "2026-09-12T20:12:11.518Z",
+  "extractedAt": "2026-09-28T20:03:04.438Z",
   "sourceHash": "8b0d4d033c6a1cce",
-  "segmentCount": 312,
+  "segmentCount": 313,
   "segmentIds": [
     "m68700:title:auto-1",
     "m68700:abstract:auto-2",
@@ -55,6 +55,7 @@
     "m68700:para:fs-idm26436032",
     "m68700:caption:CNX_Chem_03_02_compound-caption",
     "m68700:alt:fs-idm24308080-alt",
+    "m68700:table-summary:fs-idp17650992-summary",
     "m68700:entry:auto-51",
     "m68700:entry:auto-52",
     "m68700:entry:auto-53",

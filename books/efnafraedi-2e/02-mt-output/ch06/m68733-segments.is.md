@@ -223,6 +223,9 @@ Rafeind í atómi er að fullu lýst með fjórum skammtatölum: [[i:n]], [[i:l]
 <!-- SEG:m68733:para:fs-idm86324032 -->
 Eiginleikar og merking skammtatalna rafeinda í atómum eru teknir saman í stuttu máli í [[xref:fs-idm21167392]].
 
+<!-- SEG:m68733:table-summary:fs-idm21167392-summary -->
+Þessi tafla hefur fjóra dálka og fimm raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Nafn“, „Tákn“, „Leyfileg gildi“ og „Eðlisfræðileg merking“. Undir dálkinum „Nafn“ eru eftirfarandi orðasambönd: „Aðalskammtatala“, „Hverfiþunga- eða hliðarskammtatala“, „Segulskammtatala“ og „Spunaskammtatala“. Undir dálkinum „Tákn“ er eftirfarandi: „n“, „l“, „m með l sem lágskrift“ og „m með s sem lágskrift“. Undir dálkinum „Leyfileg gildi“ er eftirfarandi: „1, 2, 3, 4, …“, „0 er minna en eða jafnt og l sem er minna en eða jafnt og n mínus 1“, „neikvætt l er minna en eða jafnt og m með l sem lágskrift sem er minna en eða jafnt og l“ og „einn helmingur, neikvætt formerki“. Undir dálkinum „Eðlisfræðileg merking“ er eftirfarandi: „Hvolf, almenna svæðið fyrir orkugildi rafeindar á svigrúmi“, „Undirhvolf, lögun svigrúmsins“, „Stefna svigrúmsins“, „Stefna eiginlega skammta-„spuna“ rafeindarinnar“.
+
 <!-- SEG:m68733:entry:auto-76 -->
 Skammtatölur, eiginleikar þeirra og mikilvægi
 
@@ -382,6 +385,9 @@ Fjöldi geislahnoða er jafn [[i:n –]] [[i:l]] – 1.
 <!-- SEG:m68733:note-title:fs-idm55454448-title -->
 Svar:
 
+<!-- SEG:m68733:table-summary:fs-idm179835952-summary -->
+Þessi tafla hefur fimm dálka og fimm raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „svigrúm“, „n“, „l“, „úrkynjun m með l sem lágskrift“ og „fjöldi geislahnoða“. Undir dálkinum „svigrúm“ er: „4 f“, tveir auðir reitir og „5 d“. Undir dálkinum „n“ er auður reitur, 4, 7 og annar auður reitur. Undir dálkinum „l“ er auður reitur, 1 og tveir aðrir auðir reitir. Undir dálkinum „úrkynjun m með l sem lágskrift“ eru tveir auðir reitir, 7 og svo einn auður reitur í viðbót. Undir dálkinum „fjöldi geislahnoða“ eru tveir auðir reitir, 3 og svo einn auður reitur í viðbót.
+
 <!-- SEG:m68733:para:fs-idm129700624 -->
 Fimm úrkynjuðu 3[[i:d]] svigrúmin
 
@@ -420,6 +426,9 @@ Geislahnoð (fj.)
 
 <!-- SEG:m68733:entry:auto-141 -->
 5[[i:d]]
+
+<!-- SEG:m68733:table-summary:fs-idm91407168-summary -->
+Þessi tafla hefur fimm dálka og fimm raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „svigrúm“, „n“, „l“, „úrkynjun m með l sem lágskrift“ og „fjöldi geislahnoða“. Undir dálkinum „svigrúm“ er: „4 f“, „4 p“, „7 f“ og „5 d“. Undir dálkinum „n“ er: 4, 4, 7 og 5. Undir dálkinum „l“ er: 3, 1, 3 og 2. Undir dálkinum „úrkynjun m með l sem lágskrift“ er: 7, 3, 7 og 5. Undir dálkinum „fjöldi geislahnoða“ er: 0, 2, 3 og 2.
 
 <!-- SEG:m68733:entry:auto-142 -->
 Svigrúm
@@ -630,6 +639,9 @@ Hverjar af eftirfarandi jöfnum lýsa hegðun sem líkist ögn? Hverjar lýsa he
 
 <!-- SEG:m68733:problem:fs-idm133893888 -->
 Skrifaðu mengi skammtatalna fyrir hverja rafeind með [[i:n]] = 4 í Se-atómi.
+
+<!-- SEG:m68733:table-summary:fs-idm2123072-summary -->
+Þessi tafla hefur fjóra dálka og sjö raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „n“, „l“, „m með l sem lágskrift“ og „s“. Undir dálkinum „n“ eru eftirfarandi tölur: 4, 4, 4, 4, 4 og 4. Undir dálkinum „l“ eru eftirfarandi tölur: 0, 0, 1, 1, 1 og 1. Undir dálkinum „m með l sem lágskrift“ eru eftirfarandi tölur: 0, 0, neikvæður 1, 0, jákvæður 1 og neikvæður 1. Undir dálkinum „s“ eru eftirfarandi tölur: plús einn helmingur, mínus einn helmingur, plús einn helmingur, plús einn helmingur, plús einn helmingur og mínus einn helmingur.
 
 <!-- SEG:m68733:entry:auto-212 -->
 [[i:n]]

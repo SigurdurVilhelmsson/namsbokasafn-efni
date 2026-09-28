@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68817",
-  "extractedAt": "2026-09-21T10:21:08.636Z",
+  "extractedAt": "2026-09-28T20:03:08.794Z",
   "sourceHash": "43ae001071c4abd5",
-  "segmentCount": 118,
+  "segmentCount": 119,
   "segmentIds": [
     "m68817:title:auto-1",
     "m68817:abstract:auto-2",
@@ -77,6 +77,7 @@
     "m68817:para:fs-idm12417328",
     "m68817:para:fs-idm1916912",
     "m68817:title:fs-idm145716272-title",
+    "m68817:table-summary:key-equations-table-summary",
     "m68817:entry:auto-73",
     "m68817:entry:auto-74",
     "m68817:entry:auto-75",

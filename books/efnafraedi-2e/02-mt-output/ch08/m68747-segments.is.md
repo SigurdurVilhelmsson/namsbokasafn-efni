@@ -46,6 +46,9 @@ Horfðu á þetta [[link:stutta myndband|http://openstax.org/l/16diamagnetic]] t
 <!-- SEG:m68747:para:fs-idm112096224 -->
 Sameindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissameindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sameindum, svo sem brot á áttureglunni og flóknari sameindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sameind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sameindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sameindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sameinda.
 
+<!-- SEG:m68747:table-summary:fs-idm162808816-summary -->
+Sýnd er tafla sem samanstendur af tveimur dálkum og sex röðum. Í hausnum stendur „Gildistengjakenningin“ og „Sameindasvigrúmskenningin“. Fyrsti dálkurinn inniheldur setningarnar: „lítur á tengi sem staðbundin milli eins atómapars“, „býr til tengi úr skörun atómsvigrúma (s, p, d…) og blendingssvigrúma (s p, s p í öðru veldi, s p í þriðja veldi …)“, „myndar sigma- eða pí-tengi“, „spáir fyrir um lögun sameinda á grundvelli fjölda svæða með rafeindaþéttleika“ og „þörf er á mörgum formgerðum til að lýsa samómun“. Í öðrum dálki stendur: „lítur á rafeindir sem óstaðbundnar um alla sameindina“, „sameinar atómsvigrúm til að mynda sameindasvigrúm (sigma, sigma með stjörnu, pí, pí með stjörnu)“, „býr til tengi- og andtengivíxlverkanir eftir því hvaða svigrúm eru fyllt“, „spáir fyrir um fyrirkomulag rafeinda í sameindum“.
+
 <!-- SEG:m68747:entry:auto-17 -->
 Samanburður á tengjakenningum
 
@@ -265,6 +268,9 @@ s-p blöndun á sér stað þegar [[i:s]]- og [[i:p]]-svigrúm hafa svipaða ork
 
 <!-- SEG:m68747:para:fs-idm113653568 -->
 Með því að nota sameindasvigrúmsmyndirnar sem sýndar eru í [[xref:CNX_Chem_08_04_X2MOs]] getum við bætt við rafeindunum og ákvarðað rafeindaskipan sameindarinnar og tengisröð fyrir hverja tvíatóma sameindanna. Eins og sýnt er í [[xref:fs-idp20943328]] myndu Be[[sub:2]]- og Ne[[sub:2]]-sameindir hafa tengisröðina 0 og þessar sameindir eru ekki til.
+
+<!-- SEG:m68747:table-summary:fs-idp20943328-summary -->
+Sýnd er tafla með þremur dálkum og níu röðum. Í hausnum stendur: „Sameind“, „Rafeindaskipan“ og „Tengistala“. Fyrsti dálkurinn inniheldur táknin „L i með lágstaf 2“, „B e með lágstaf 2 (óstöðugt)“, „B e með lágstaf 2“, „C með lágstaf 2“, „N með lágstaf 2“, „O með lágstaf 2“, „F með lágstaf 2“ og „Ne með lágstaf 2 (óstöðugt)“. Annar dálkurinn inniheldur táknin „(sigma með lágstaf 2 s) í öðru veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í öðru veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í fjórða veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í fjórða veldi (sigma með lágstaf 2 p x) í öðru veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (sigma með lágstaf 2 p x) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í fjórða veldi (pí með stjörnu með lágstaf 2 p y, pí með stjörnu með lágstaf 2 p z) í öðru veldi“, „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (sigma með lágstaf 2 p x) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í fjórða veldi (pí með stjörnu með lágstaf 2 p y, pí með stjörnu með lágstaf 2 p z) í fjórða veldi“ og „(sigma með lágstaf 2 s) í öðru veldi (sigma með stjörnu með lágstaf 2 s) í öðru veldi (sigma með lágstaf 2 p x) í öðru veldi (pí með lágstaf 2 p y, pí með lágstaf 2 p z) í fjórða veldi (pí með stjörnu með lágstaf 2 p y, pí með stjörnu með lágstaf 2 p z) í fjórða veldi (sigma með stjörnu með lágstaf 2 p x) í öðru veldi“. Þriðji dálkurinn inniheldur tölurnar: „1“, „0“, „1“, „2“, „3“, „2“, „1“, „0“.
 
 <!-- SEG:m68747:entry:auto-90 -->
 Rafeindaskipan og tengisröð fyrir sameindasvigrúm í eins kjarna tvíatóma sameindum frumefna í lotu tvö
@@ -487,6 +493,9 @@ Við getum lýst rafeindabyggingu tvíatóma sameinda með því að beita samei
 
 <!-- SEG:m68747:title:fs-idm136319184-title -->
 Lykiljafna
+
+<!-- SEG:m68747:table-summary:key-equations-table-summary -->
+tafla með lykiljögnum
 
 <!-- SEG:m68747:entry:auto-164 -->
 [[MATH:32]]

@@ -190,6 +190,9 @@ The rate of a reaction can be expressed either in terms of the decrease in the a
 <!-- SEG:m68786:title:fs-idp13917664-title -->
 Key Equations
 
+<!-- SEG:m68786:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68786:entry:auto-65 -->
 [[MATH:13]]
 
@@ -222,6 +225,9 @@ A study of the rate of dimerization of C[[sub:4]]H[[sub:6]] gave the data shown 
 
 <!-- SEG:m68786:problem:fs-idp17436544 -->
 (c) Determine the average rate of formation of C[[sub:8]]H[[sub:12]] at 1600 s and the instantaneous rate of formation at 3200 s from the rates found in parts (a) and (b).
+
+<!-- SEG:m68786:table-summary:fs-idm53738576-summary -->
+This table contains two columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” and, “[C subscript 4 H subscript 6] ( M ).” Under the “Time ( s )” column are the numbers: 0, 1600, 3200, 4800, 6200. Under the “[C subscript 4 H subscript 6] ( M )” column are the numbers: 1.00 times ten to the negative two; 5.04 time ten to the negative three; 3.37 time ten to the negative three; 2.53 time ten to the negative three; and 2.08 times ten to the negative three.
 
 <!-- SEG:m68786:entry:auto-76 -->
 Time (s)
@@ -273,6 +279,9 @@ A study of the rate of the reaction represented as [[MATH:23]] gave the followin
 
 <!-- SEG:m68786:solution:fs-idm15349328 -->
 (a) average rate, 0 − 10 s = 0.0375 mol L[[sup:−1]] s[[sup:−1]]; average rate, 10 − 20 s = 0.0265 mol L[[sup:−1]] s[[sup:−1]]; (b) instantaneous rate, 15 s = 0.023 mol L[[sup:−1]] s[[sup:−1]]; (c) average rate for B formation = 0.0188 mol L[[sup:−1]] s[[sup:−1]]; instantaneous rate for B formation = 0.012 mol L[[sup:−1]] s[[sup:−1]]
+
+<!-- SEG:m68786:table-summary:fs-idp108292976-summary -->
+This table has two columns and eight rows. The first row is a header row and it labels each column, “Time ( s ),” and, “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 0.0, 5.0, 10.0, 15.0, 20.0, 25.0, and 35.0. Under the “[ A ] ( M )” column are the numbers: 1.00, 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.
 
 <!-- SEG:m68786:entry:auto-93 -->
 Time (s)

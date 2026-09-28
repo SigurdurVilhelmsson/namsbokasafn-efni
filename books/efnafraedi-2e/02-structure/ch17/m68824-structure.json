@@ -261,7 +261,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68824:table-summary:fs-idm241340256-summary"
         },
         {
           "type": "example",
@@ -646,7 +647,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68824:table-summary:key-equations-table-summary"
         }
       ]
     },

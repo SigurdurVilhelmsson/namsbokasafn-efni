@@ -148,6 +148,9 @@ Taktu eftir í [[xref:fs-idm73111648]] að flúor getur oxað joð upp í hæsta
 <!-- SEG:m68839:para:fs-idm19980944 -->
 Jónísk fjölhalíð alkalímálma, svo sem KI[[sub:3]], KICl[[sub:2]], KICl[[sub:4]], CsIBr[[sub:2]] og CsBrCl[[sub:2]], sem innihalda anjón sem samanstendur af að minnsta kosti þremur halógenatómum, eru náskyld millihalógenum. Eins og áður hefur komið fram er myndun fjölhalíðanjónarinnar [[MATH:2]] ábyrg fyrir leysni joðs í vatnslausnum sem innihalda joðíðjón.
 
+<!-- SEG:m68839:table-summary:fs-idm73111648-summary -->
+Þessi tafla hefur fjóra dálka og sjö raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Y X“, „Y X neðanskrift 3“, „Y X neðanskrift 5“, „Y X neðanskrift 7“. Undir „Y X“ dálknum er eftirfarandi: C l F ( g ); B r F ( g ); B r C l ( g ); I F ( s ); I C l ( l ); I B r ( s ). Undir „Y X neðanskrift 3“ dálknum er eftirfarandi: C l F neðanskrift 3 ( g ); B r F neðanskrift 3 ( l ); tóm röð; I F neðanskrift 3 ( s ); I C l neðanskrift 3 ( s ); og önnur tóm röð. Undir dálknum „Y X neðanskrift 5“ er eftirfarandi: C l F neðanskrift 5 ( g ); B r F neðanskrift 5 ( l ); tóm röð; I F neðanskrift 5 ( l ); og tvær tómar raðir. Undir dálknum „Y X neðanskrift 7“ eru þrjár tómar raðir; I F neðanskrift 7 ( g ); og tvær tómar raðir.
+
 <!-- SEG:m68839:entry:auto-51 -->
 Millihalógenar
 

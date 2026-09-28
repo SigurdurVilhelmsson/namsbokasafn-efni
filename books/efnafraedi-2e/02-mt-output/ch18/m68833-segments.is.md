@@ -76,6 +76,9 @@ Hvörf við frumefni
 <!-- SEG:m68833:para:fs-idp263935152 -->
 Hvörf vetnis við málmleysingja mynda yfirleitt [[i:súr]] vetnissambönd þar sem vetni hefur oxunartöluna 1+. Hvörfin verða útvermnari og kröftugri eftir því sem rafneikvæðni málmleysingjans eykst. Vetni hvarfast aðeins við köfnunarefni og brennistein þegar það er hitað, en það hvarfast með sprengikrafti við flúor (myndar HF) og, við sumar aðstæður, við klór (myndar HCl). Blanda af vetni og súrefni springur ef kveikt er í henni. Vegna sprengihættu hvarfsins er nauðsynlegt að gæta varúðar við meðhöndlun vetnis (eða annars eldfims gass) til að forðast myndun sprengifimrar blöndu í lokuðu rými. Þrátt fyrir að flest hýdríð málmleysingja séu súr eru ammóníak og fosfín (PH[[sub:3]]) mjög, mjög veikar sýrur og virka yfirleitt sem basar. Yfirlit yfir þessi hvörf vetnis við frumefnin er í [[xref:fs-idp87200896]].
 
+<!-- SEG:m68833:table-summary:fs-idp87200896-summary -->
+Þessi tafla hefur tvo dálka og sjö raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvorn dálk, „Almenn jafna“ og „Athugasemdir“. Undir dálkinum „Almenn jafna“ eru eftirfarandi jöfnur: M H eða M H með neðanskrift 2 gefur M O H eða M ( O H ) með neðanskrift 2 plús H með neðanskrift 2; H með neðanskrift 2 plús C gefur (ekkert hvarf); 2 H með neðanskrift 2 plús N með neðanskrift 2 gefur 2 N H með neðanskrift 3; 2 H með neðanskrift 2 plús O með neðanskrift 2 gefur 2 H með neðanskrift 2 O; H með neðanskrift 2 plús S gefur H með neðanskrift 2 S; og H með neðanskrift 2 plús X með neðanskrift 2 gefur 2 H X. Undir dálkinum „Athugasemdir“ er eftirfarandi: „jónahýdríð með flokki 1 og C a, S r og B a,“ ekkert, „krefst hás þrýstings og hitastigs; lítil heimt,“ „útvermið og hugsanlega sprengifimt,“ „krefst hitunar; lítil heimt,“ og „X jafngildir F, C l, B r og I; sprengifimt með F með neðanskrift 2; lítil heimt með I með neðanskrift 2.“
+
 <!-- SEG:m68833:entry:auto-27 -->
 Efnahvörf vetnis við önnur frumefni
 

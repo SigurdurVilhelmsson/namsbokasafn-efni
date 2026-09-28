@@ -22,6 +22,9 @@ Efnasambönd sem innihalda aðeins einatóma jónir
 <!-- SEG:m68698:para:fs-idp279143120 -->
 Nafn tvíefnasambands sem inniheldur einatóma jónir samanstendur af nafni katjónarinnar (nafn málmsins) á eftir nafni anjónarinnar (nafn málmleysingjans þar sem endingunni er skipt út fyrir viðskeytið –[[i:íð]]). Nokkur dæmi eru gefin í [[xref:fs-idp282234816]].
 
+<!-- SEG:m68698:table-summary:fs-idp282234816-summary -->
+Dæmin um jónaefnasambönd sem sýnd eru í þessari töflu eru N a C l natríumklóríð, K B r kalíumbrómíð, C a I neðanskrift 2 kalsíumjoðíð, C s F sesíumflúoríð, L i C l litíumklóríð, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðanskrift 3 álkarbíð.
+
 <!-- SEG:m68698:entry:auto-9 -->
 Nöfn nokkurra jónasambanda
 
@@ -61,6 +64,9 @@ Efnasambönd sem innihalda fjölatóma jónir
 <!-- SEG:m68698:para:fs-idp282236928 -->
 Efnasambönd sem innihalda fjölatóma jónir eru nefnd á svipaðan hátt og þau sem innihalda aðeins einatóma jónir, þ.e. með því að nefna fyrst katjónina og síðan anjónina. Dæmi eru sýnd í [[xref:fs-idp279316112]].
 
+<!-- SEG:m68698:table-summary:fs-idp279316112-summary -->
+Dæmin um fjölatóma jónaefnasambönd sem sýnd eru í þessari töflu eru K C neðanskrift 2 H neðanskrift 3 O neðanskrift 2 kalíumasetat, N a H C O neðanskrift 3 natríumbíkarbónat, A l neðanskrift 2 ( C O neðanskrift 3 ) neðanskrift 3 álkarbónat, (N H neðanskrift 4) CL ammóníumklóríð, C a S O neðanskrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.
+
 <!-- SEG:m68698:entry:auto-22 -->
 Nöfn nokkurra fjölatóma jónasambanda
 
@@ -87,6 +93,9 @@ Jónasambönd í skápunum þínum
 
 <!-- SEG:m68698:para:fs-idm70496 -->
 Á hverjum degi rekst þú á og notar fjölda jónasambanda. Sum þessara efnasambanda, hvar þau er að finna og til hvers þau eru notuð, eru talin upp í [[xref:fs-idp268265360]]. Skoðaðu merkimiðann eða innihaldslistann á hinum ýmsu vörum sem þú notar á næstu dögum og athugaðu hvort þú rekst á einhverjar þeirra í þessari töflu, eða finnur önnur jónasambönd sem þú gætir nú nefnt eða skrifað sem formúlu.
+
+<!-- SEG:m68698:table-summary:fs-idp268265360-summary -->
+Dæmi um jónaefnasambönd úr daglegu lífi sem eru í þessari töflu eru: N a C L natríumklóríð, eða venjulegt matarsalt, K I kalíumjoðíð sem er bætt í joðsalt, N a F, natríumflúoríð sem er innihaldsefni í tannkremi, N a H C O neðanskrift 3 natríumbíkarbónat sem er matarsódi, notað í matargerð og sem sýrubindandi lyf, N a neðanskrift 2 C O neðanskrift 3 natríumkarbónat sem er þvottasódi og er notað í hreinsiefni, N a O C l natríumhýpóklórít sem er virka efnið í heimilsklór, C a C O neðanskrift 3 kalsíumkarbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 álhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, N a O H natríumhýdroxíð sem er lútur og er notað sem vaskahreinsir, K neðanskrift 3 P O neðanskrift 4 kalíumfosfat sem er aukefni í matvælum, M g S O neðanskrift 4 magnesíumsúlfat sem er bætt í hreinsað vatn, N a neðanskrift 2 H P O neðanskrift 4 natríumvetnisfosfat sem er kekkjavarnarefni og er notað í duftvörur, og N a neðanskrift 2 S O neðanskrift 3 natríumsúlfít sem er rotvarnarefni.
 
 <!-- SEG:m68698:entry:auto-31 -->
 Algeng jónasambönd
@@ -187,6 +196,9 @@ Efnasambönd sem innihalda málmjón með breytilega hleðslu
 <!-- SEG:m68698:para:fs-idp282354128 -->
 Flestir hliðarmálmar og sumir aðalflokksmálmar geta myndað tvær eða fleiri katjónir með mismunandi hleðslur. Efnasambönd þessara málma með málmleysingjum eru nefnd með sömu aðferð og efnasambönd í fyrsta flokknum, nema hvað hleðsla málmjónarinnar er tilgreind með rómverskri tölu í sviga á eftir nafni málmsins. Hleðsla málmjónarinnar er ákvörðuð út frá formúlu efnasambandsins og hleðslu anjónarinnar. Skoðum til dæmis tvíundar jónaefnasambönd járns og klórs. Járn hefur yfirleitt annaðhvort hleðsluna 2+ eða 3+ (sjá [[docref:m68696#CNX_Chem_02_06_IonCharges]]) og formúlur samsvarandi efnasambanda eru FeCl[[sub:2]] og FeCl[[sub:3]]. Einfaldasta nafnið, „járnklóríð“, væri í þessu tilfelli tvírætt þar sem það gerir ekki greinarmun á þessum tveimur efnasamböndum. Í slíkum tilfellum er hleðsla málmjónarinnar sett sem rómversk tölustafur í sviga strax á eftir nafni málmsins. Þessi tvö efnasambönd eru þá ótvírætt nefnd járn(II)klóríð og járn(III)klóríð. Önnur dæmi eru í [[xref:fs-idp282283328]].
 
+<!-- SEG:m68698:table-summary:fs-idp282283328-summary -->
+Dæmi um jónaefnasambönd hliðarmálma sem eru í þessari töflu eru F e C L neðanskrift 3 eða járn(III)klóríð, H g neðanskrift 2 O eða kvikasilfur(I)oxíð, H g O eða kvikasilfur(II)oxíð og C u neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 eða kopar(II)fosfat.
+
 <!-- SEG:m68698:entry:auto-64 -->
 Nokkur jónaefnasambönd með málmjónum með breytilega hleðslu
 
@@ -243,6 +255,9 @@ Jónaefnasambönd sem innihalda vatnssameindir sem óaðskiljanlegan hluta af kr
 
 <!-- SEG:m68698:para:fs-idm217856880 -->
 Formúlur fyrir jónahýdröt eru skrifaðar með því að bæta við lóðrétt miðjusettum punkti, stuðli sem táknar fjölda vatnssameinda og formúlu vatns. Dæmin tvö sem nefnd voru í fyrri málsgrein eru táknuð með formúlunum
+
+<!-- SEG:m68698:table-summary:fs-idp268400368-summary -->
+Þessi tafla hefur tvo dálka sem heita „forskeyti“ og „fjöldi“. Mónó er tengt við einn þótt þessu forskeyti sé stundum sleppt. Dí er tengt við tvo. Trí er tengt við þrjá. Tetra er tengt við fjóra. Penta er tengt við fimm. Hexa er tengt við sex. Hepta er tengt við sjö. Okta er tengt við átta. Nona er tengt við níu. Deka er tengt við tíu.
 
 <!-- SEG:m68698:entry:auto-83 -->
 Forskeyti í nafnakerfum
@@ -424,6 +439,9 @@ Efnasambönd sem samanstanda af tveimur frumefnum
 <!-- SEG:m68698:para:fs-idm325632 -->
 Þegar aðeins eitt atóm af fyrsta frumefninu er til staðar er forskeytinu [[i:mónó]]- venjulega sleppt úr þeim hluta. Þannig er CO nefnt kolsýringur og CO[[sub:2]] er kallað koltvísýringur. Þegar tveir sérhljóðar eru samliggjandi er endasérhljóðanum í gríska forskeytinu stundum sleppt í almennri venju, þó að leiðbeiningar IUPAC leyfi þetta aðeins fyrir tvöföldu stafina o í [[i:mónóoxíð]], sem er rétt skrifað sem [[i:mónoxíð]]. Í nafngiftaæfingum í þessum texta geta nemendur valið að fylgja hvorri aðferðinni sem er. Nokkur dæmi sem sýna þetta Nokkur önnur dæmi eru sýnd í [[xref:fs-idp269568176]].
 
+<!-- SEG:m68698:table-summary:fs-idp269568176-summary -->
+Sýnd er tafla með tveimur dálkum. Vinstri dálkurinn heitir „Efnasamband“ og hægri dálkurinn heitir „Nafn“. Frá vinstri til hægri stendur í fyrstu röðinni „S O neðanskrift 2“ og „brennisteinsdíoxíð“. Í annarri röðinni stendur „S O neðanskrift 3“ og „brennisteinstríoxíð“. Í þriðju röðinni stendur „N O neðanskrift 2“ og „köfnunarefnisdíoxíð“. Í fjórðu röðinni stendur „N neðanskrift 2 O neðanskrift 4“ og „díköfnunarefnistetraoxíð“. Í fimmtu röðinni stendur „N neðanskrift 2 O neðanskrift 5“ og „díköfnunarefnispentaoxíð“. Í sjöttu röðinni stendur „B C l neðanskrift 3“ og „bórtríklóríð“. Í sjöundu röðinni stendur „S F neðanskrift 6“ og „brennisteinshexaflúoríð“. Í áttundu röðinni stendur „P F neðanskrift 5“ og „fosfórpentaflúoríð“. Í níundu röðinni stendur „P neðanskrift 4 O neðanskrift 10“ og „tetrafosfórdekaoxíð“. Í tíundu röðinni stendur „I F neðanskrift 7“ og „joðheptaflúoríð“.
+
 <!-- SEG:m68698:entry:auto-143 -->
 Nöfn nokkurra sameindaefnasambanda sem samanstanda af tveimur frumefnum
 
@@ -586,6 +604,9 @@ Orðið „sýra“ er bætt við sem annað orð
 <!-- SEG:m68698:para:fs-idm109568 -->
 Til dæmis, þegar gasið HCl (vetnisklóríð) er leyst upp í vatni, er lausnin kölluð [[i:vetnisklóríðsýra]] (einnig saltsýra). Nokkur önnur dæmi um þessa nafnakerfisfræði eru sýnd í [[xref:fs-idp272649888]].
 
+<!-- SEG:m68698:table-summary:fs-idp272649888-summary -->
+Nöfn einfaldra sýra sem eru í þessari töflu eru: H F gas, sem er vetnisflúoríð, H C l gas sem er vetnisklóríð, H B r gas sem er vetnisbrómíð, H I gas sem er vetnisjoðíð, H neðanskrift 2 S gas sem er vetnissúlfíð, H F vatnslausn sem er flúorsýra, H C l vatnslausn sem er saltsýra, H B r vatnslausn sem er brómsýra, H I vatnslausn sem er joðsýra og H neðanskrift 2 S vatnslausn sem er brennisteinsvetnissýra.
+
 <!-- SEG:m68698:entry:auto-197 -->
 Nöfn nokkurra einfaldra sýra
 
@@ -645,6 +666,9 @@ Bættu við „sýra“
 
 <!-- SEG:m68698:para:fs-idp282461232 -->
 Tökum sem dæmi H[[sub:2]]CO[[sub:3]] (sem þú gætir freistast til að kalla „vetniskarbónat“). Til að nafngreina þetta rétt er „vetni“ sleppt; –[[i:at]] í karbónat er skipt út fyrir –[[i:sýra]]; og sýru er bætt við – þannig að nafnið er kolsýra. Önnur dæmi eru gefin í [[xref:fs-idp268340336]]. Það eru nokkrar undantekningar frá almennu nafngiftaraðferðinni (t.d. er H[[sub:2]]SO[[sub:4]] kallað brennisteinssýra, ekki súlfatsýra, og H[[sub:2]]SO[[sub:3]] er brennisteinssýrlingur, ekki súlfítsýra).
+
+<!-- SEG:m68698:table-summary:fs-idp268340336-summary -->
+Þessi tafla hefur þrjá dálka sem heita „formúla“, „nafn anjónar“ og „nafn sýru“. H C neðanskrift 2 H neðanskrift 3 O neðanskrift 2 heitir asetat eða ediksýra. H N O neðanskrift 3 heitir nítrat eða saltpéturssýra. H N O neðanskrift 2 heitir nítrít eða saltpéturssýrlingur, H C l O neðanskrift 4 heitir perklórat eða perklórsýra. H neðanskrift 2 C O neðanskrift 3 heitir karbónat eða kolsýra. H neðanskrift 2 S O neðanskrift 4 heitir súlfat eða brennisteinssýra. H neðanskrift 2 S O neðanskrift 3 heitir súlfít eða brennisteinssýrlingur. H neðanskrift 3 P O neðanskrift 4 heitir fosfat eða fosfórsýra.
 
 <!-- SEG:m68698:entry:auto-217 -->
 Nöfn algengra oxósýra

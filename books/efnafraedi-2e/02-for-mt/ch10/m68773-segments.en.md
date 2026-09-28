@@ -523,6 +523,9 @@ The structures of crystalline metals and simple ionic compounds can be described
 <!-- SEG:m68773:title:fs-idp29862416-title -->
 Key Equations
 
+<!-- SEG:m68773:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68773:entry:auto-176 -->
 [[MATH:23]]
 

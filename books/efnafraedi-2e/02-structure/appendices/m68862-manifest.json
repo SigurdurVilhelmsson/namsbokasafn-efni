@@ -1,11 +1,12 @@
 {
   "version": 1,
   "moduleId": "m68862",
-  "extractedAt": "2026-09-21T20:04:37.653Z",
+  "extractedAt": "2026-09-28T20:03:10.621Z",
   "sourceHash": "53e3cf67e6074e44",
-  "segmentCount": 34,
+  "segmentCount": 35,
   "segmentIds": [
     "m68862:title:auto-1",
+    "m68862:table-summary:fs-idm136825040-summary",
     "m68862:entry:auto-2",
     "m68862:entry:auto-3",
     "m68862:entry:auto-4",

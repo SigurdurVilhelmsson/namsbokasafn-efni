@@ -235,6 +235,9 @@ Að hve miklu leyti eitt efni leysist upp í öðru ræðst af nokkrum þáttum,
 <!-- SEG:m68782:title:fs-idp44827264-title -->
 Lykiljafna
 
+<!-- SEG:m68782:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68782:entry:auto-80 -->
 [[MATH:6]]
 

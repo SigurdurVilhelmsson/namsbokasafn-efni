@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-09-20T21:11:37.632Z",
+  "generatedAt": "2026-09-28T20:16:11.184Z",
   "run": {
     "runRecordVersion": 1,
     "chars": 39576,
@@ -19,5 +19,50 @@
       "chunksWithGlossary": 2,
       "chunksTotal": 2
     }
-  }
+  },
+  "topUps": [
+    {
+      "at": "2026-09-28T20:16:11.184Z",
+      "priorGeneratedAt": "2026-09-20T21:11:37.632Z",
+      "ids": [
+        "m68789:table-summary:fs-idm205685856-summary",
+        "m68789:table-summary:fs-idm276791216-summary",
+        "m68789:table-summary:fs-idm285249664-summary",
+        "m68789:table-summary:fs-idm275492048-summary",
+        "m68789:table-summary:fs-idm233742304-summary",
+        "m68789:table-summary:fs-idm155842464-summary",
+        "m68789:table-summary:fs-idm176170864-summary",
+        "m68789:table-summary:fs-idm146675536-summary",
+        "m68789:table-summary:fs-idp1859024-summary",
+        "m68789:table-summary:fs-idm261821504-summary",
+        "m68789:table-summary:fs-idm262119440-summary",
+        "m68789:table-summary:fs-idm53317088-summary",
+        "m68789:table-summary:fs-idm189410736-summary",
+        "m68789:table-summary:fs-idm121830912-summary"
+      ],
+      "run": {
+        "runRecordVersion": 1,
+        "chars": 9060,
+        "usage": 8236,
+        "estimatedIsk": 90.6,
+        "markersNormalized": 0,
+        "mismatchCount": 0,
+        "bracketDelta": {},
+        "unwrappedCount": 0,
+        "unwrappedByType": {},
+        "glossary": {
+          "arm": "no-glossary",
+          "contentHash": null,
+          "termCount": null,
+          "chunksWithGlossary": 0,
+          "chunksTotal": 1
+        },
+        "greek": {
+          "lostCount": 0,
+          "lost": [],
+          "addedCount": 0
+        }
+      }
+    }
+  ]
 }

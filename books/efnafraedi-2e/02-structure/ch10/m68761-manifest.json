@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68761",
-  "extractedAt": "2026-09-21T08:35:19.040Z",
+  "extractedAt": "2026-09-28T20:03:06.667Z",
   "sourceHash": "7d2e3bcf65d19389",
-  "segmentCount": 195,
+  "segmentCount": 196,
   "segmentIds": [
     "m68761:title:auto-1",
     "m68761:abstract:auto-2",
@@ -35,6 +35,7 @@
     "m68761:caption:CNX_Chem_10_01_DispForces-caption",
     "m68761:alt:fs-idp52348576-alt",
     "m68761:para:fs-idm80968928",
+    "m68761:table-summary:fs-idp55860464-summary",
     "m68761:entry:auto-31",
     "m68761:entry:auto-32",
     "m68761:entry:auto-33",

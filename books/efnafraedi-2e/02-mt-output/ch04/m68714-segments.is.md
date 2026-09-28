@@ -172,6 +172,9 @@ Lykilhugtök og samantekt
 <!-- SEG:m68714:title:fs-idp36036608-title -->
 Lykiljöfnur
 
+<!-- SEG:m68714:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68714:entry:auto-59 -->
 [[MATH:1]]
 

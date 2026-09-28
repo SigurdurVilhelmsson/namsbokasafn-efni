@@ -46,6 +46,9 @@ View this [[link:brief video|http://openstax.org/l/16diamagnetic]] to see severa
 <!-- SEG:m68747:para:fs-idm112096224 -->
 Molecular orbital theory (MO theory) provides an explanation of chemical bonding that accounts for the paramagnetism of the oxygen molecule. It also explains the bonding in a number of other molecules, such as violations of the octet rule and more molecules with more complicated bonding (beyond the scope of this text) that are difficult to describe with Lewis structures. Additionally, it provides a model for describing the energies of electrons in a molecule and the probable location of these electrons. Unlike valence bond theory, which uses hybrid orbitals that are assigned to one specific atom, MO theory uses the combination of atomic orbitals to yield molecular orbitals that are [[i:delocalized]] over the entire molecule rather than being localized on its constituent atoms. MO theory also helps us understand why some substances are electrical conductors, others are semiconductors, and still others are insulators. [[xref:fs-idm162808816]] summarizes the main points of the two complementary bonding theories. Both theories provide different, useful ways of describing molecular structure.
 
+<!-- SEG:m68747:table-summary:fs-idm162808816-summary -->
+A table is shown that is composed of two columns and six rows. The header row reads, “Valence Bond Theory,” and, “Molecular Orbital Theory.” The first column contains the phrases: “considers bonds as localized between one pair of atoms,” “creates bonds from overlap of atomic orbitals ( s, p, d…) and hybrid orbitals ( s p , s p superscript 2, s p superscript 3 … ) ,” “forms sigma or pi bonds,” “predicts molecular shape based on the number of regions of electron density,” and, “needs multiple structures are needed to describe resonance.” The second column reads, “considers electrons delocalized throughout the entire molecule,” “combines atomic orbitals to form molecular orbitals ( sigma, sigma superscript asterik, pi, pi superscript asterisk ),” “creates bonding and antibonding interactions based on which orbitals are filled,” “predicts the arrangement of electrons in molecules.”
+
 <!-- SEG:m68747:entry:auto-17 -->
 Comparison of Bonding Theories
 
@@ -264,6 +267,9 @@ s-p mixing occurs when the [[i:s]] and [[i:p]] orbitals have similar energies. T
 
 <!-- SEG:m68747:para:fs-idm113653568 -->
 Using the MO diagrams shown in [[xref:CNX_Chem_08_04_X2MOs]], we can add in the electrons and determine the molecular electron configuration and bond order for each of the diatomic molecules. As shown in [[xref:fs-idp20943328]], Be[[sub:2]] and Ne[[sub:2]] molecules would have a bond order of 0, and these molecules do not exist.
+
+<!-- SEG:m68747:table-summary:fs-idp20943328-summary -->
+A table is shown that has three columns and nine rows. The header row reads: “Molecule,” “Electron Configuration,” and, “Bond Order.” The first column contains the symbols “L i subscript 2,” “B e subscript 2 ( unstable ),” “B e subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and, “Ne subscript 2 ( unstable ).” The second column contains the symbols “( sigma subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( sigma subscript 2 p x ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 2,” “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4,” and “( sigma subscript 2 s ) superscript 2 ( sigma superscript asterisk subscript 2 s ) superscript 2 ( sigma subscript 2 p x ) superscript 2 ( pi subscript 2 p y, pi subscript 2 p z ) superscript 4 ( pi superscript asterisk subscript 2 p y, pi superscript asterisk subscript 2 p z ) superscript 4 ( sigma superscript asterisk subscript 2 p x ) superscript 2.” The third column contains the numbers: “1,” “0,” “1,” “2,” “3,” “2,” “1,” “0.”
 
 <!-- SEG:m68747:entry:auto-90 -->
 Electron Configuration and Bond Order for Molecular Orbitals in Homonuclear Diatomic Molecules of Period Two Elements
@@ -486,6 +492,9 @@ We can describe the electronic structure of diatomic molecules by applying molec
 
 <!-- SEG:m68747:title:fs-idm136319184-title -->
 Key Equations
+
+<!-- SEG:m68747:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68747:entry:auto-164 -->
 [[MATH:32]]

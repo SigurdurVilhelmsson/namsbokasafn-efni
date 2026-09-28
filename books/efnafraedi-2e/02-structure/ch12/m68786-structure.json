@@ -492,7 +492,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68786:table-summary:key-equations-table-summary"
         }
       ]
     },
@@ -679,7 +680,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68786:table-summary:fs-idm53738576-summary"
         },
         {
           "type": "exercise",
@@ -829,7 +831,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68786:table-summary:fs-idp108292976-summary"
         },
         {
           "type": "exercise",

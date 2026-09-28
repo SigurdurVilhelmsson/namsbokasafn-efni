@@ -91,6 +91,9 @@ Einingar geislamælinga
 <!-- SEG:m68858:para:fs-idp36142832 -->
 [[xref:fs-idp3417984]] tekur saman einingarnar sem notaðar eru til að mæla geislun.
 
+<!-- SEG:m68858:table-summary:fs-idp3417984-summary -->
+Þessi tafla inniheldur fjóra dálka og fjórar raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Tilgangur mælingar“, „Eining“, „Mælt magn“ og „Lýsing“. Undir dálkinum „Tilgangur mælingar“ er eftirfarandi: virkni uppsprettu, geislaálag og líffræðilega virkur skammtur. Undir dálkinum „Eining“ er eftirfarandi: bekerel (Bq) og kúrí (Ci); grey (Gy) og geislaálag (rad); sívert (Sv) og röntgenígildi fyrir menn (rem). Undir dálkinum „Mælt magn“ er eftirfarandi: geislavirkar hrörnanir eða losun; orka sem frásogast á hvert kg af vef; vefjaskemmdir. Undir dálkinum „Lýsing“ er eftirfarandi: magn sýnis sem verður fyrir 1 hrörnun/sekúndu og magn sýnis sem verður fyrir 3,7 sinnum tíu í tíunda veldi hrörnunum/sekúndu; 1 Gy jafngildir 1 J/kg af vef og 1 rad jafngildir 0,01 J/kg af vef; Sv jafngildir RBE sinnum Gy og Rem jafngildir RBE sinnum rad.
+
 <!-- SEG:m68858:entry:auto-32 -->
 Einingar notaðar til að mæla geislun
 
@@ -238,6 +241,9 @@ Súlurit með titlinum „Geislaskammtar og leyfileg mörk, (í milliremum)“ e
 <!-- SEG:m68858:para:fs-idp111220720 -->
 Skammtíma-, skyndilegur skammtur af mikilli geislun getur valdið margvíslegum heilsufarsáhrifum, allt frá breytingum á blóðefnafræði til dauða. Skammtímaútsetning fyrir tugum remma af geislun mun líklega valda mjög áberandi einkennum eða veikindum; áætlað er að skammtur upp á um 500 rem hafi 50% líkur á að valda dauða fórnarlambsins innan 30 daga frá útsetningu. Útsetning fyrir geislavirkri losun hefur uppsafnandi áhrif á líkamann á ævi einstaklings, sem er önnur ástæða fyrir því að það er mikilvægt að forðast alla óþarfa útsetningu fyrir geislun. Heilsufarsáhrif skammtímaútsetningar fyrir geislun eru sýnd í [[xref:fs-idp167827232]].
 
+<!-- SEG:m68858:table-summary:fs-idp167827232-summary -->
+Þessi tafla inniheldur þrjá dálka og fimmtán raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Áhrif (rem)“, „Heilsuáhrif“ og „Tími að upphafi (án meðferðar)“. Undir dálkinum „Áhrif (rem)“ er eftirfarandi: 5–10, 50, 55, 70, 75, 90, 100, 400, 1000, tvær auðar reitir, 2000 og tveir auðir reitir til viðbótar. Undir dálkinum „Heilsuáhrif“ er eftirfarandi: breytingar á blóðefnafræði, ógleði, þreyta, uppköst, hárlos, niðurgangur, blæðing, mögulegur dauði, eyðilegging á þarmaþekju, innvortis blæðing, dauði, skemmdir á miðtaugakerfi, meðvitundarleysi og dauði. Undir dálkinum „Tími að upphafi (án meðferðar)“ er eftirfarandi: auður reitur, klukkustundir, tveir auðir reitir, 2–3 vikur, tveir auðir reitir, innan 2 mánaða, tveir auðir reitir, 1–2 vikur, einn auður reitur, mínútur og klukkustundir til dagar.
+
 <!-- SEG:m68858:entry:auto-81 -->
 Heilsuáhrif geislunar [[fn:Heimild: Umhverfisverndarstofnun Bandaríkjanna|fs-idm72989328]]
 
@@ -378,6 +384,9 @@ Við verðum stöðugt fyrir geislun frá ýmsum náttúrulegum og manngerðum u
 
 <!-- SEG:m68858:title:fs-idp6038480-title -->
 Lykiljafna
+
+<!-- SEG:m68858:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68858:entry:auto-128 -->
 rem = RBE [[MATH:9]] rad

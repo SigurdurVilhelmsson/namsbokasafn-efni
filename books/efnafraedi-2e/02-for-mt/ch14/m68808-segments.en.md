@@ -220,6 +220,9 @@ Solutions that contain appreciable amounts of a weak conjugate acid-base pair ar
 <!-- SEG:m68808:title:fs-idm101899904-title -->
 Key Equations
 
+<!-- SEG:m68808:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68808:entry:auto-75 -->
 p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]
 

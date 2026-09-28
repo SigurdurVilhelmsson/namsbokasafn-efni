@@ -190,6 +190,9 @@ Rannsóknir á ensímum eru mikilvæg tenging milli líffræði og efnafræði. 
 <!-- SEG:m68795:para:fs-idm189720768 -->
 Ensím sameindir hafa virkan setstað, hluta sameindarinnar með lögun sem gerir henni kleift að bindast tilteknu hvarfefni (hvarfefnissameind) og mynda ensím-hvarfefnisflóka sem millistig í hvarfinu. Tvö líkön eru til sem reyna að útskýra hvernig þessi virki setstaður virkar. Einfaldasta líkanið er nefnt lás-og-lykils tilgátan, sem gefur til kynna að sameindaform virka setstaðarins og hvarfefnisins séu samstæð, og passi saman eins og lykill í lás. Tilgátan um framkallaða aðlögun bendir aftur á móti á að ensímsameindin sé sveigjanleg og breyti um lögun til að koma til móts við bindingu við hvarfefnið. Þetta þýðir þó ekki að virkur setstaður ensíms sé algjörlega mótunarhæfur. Bæði lás-og-lykils líkanið og líkanið um framkallaða aðlögun gera ráð fyrir því að ensím geti aðeins bundist tilteknum hvarfefnum, þar sem tiltekið ensím hvetur almennt aðeins tiltekið hvarf ([[xref:CNX_Chem_12_07_Enzyme]]).
 
+<!-- SEG:m68795:table-summary:fs-idm184565904-summary -->
+Þessi tafla hefur tvo dálka og sjö raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk, „Flokkur“ og „Hlutverk“. Undir dálkinum „Flokkur“ er eftirfarandi: „oxídóredúktasar“, „transferasar“, „hýdrólasar“, „lýasar“, „ísómerasar“ og „lígasar“. Undir dálkinum „Hlutverk“ er eftirfarandi: „oxunar-afoxunarhvörf“, „flutningur starfshópa“, „vatnsrofshvörf“, „brottnám hópa til að mynda tvítengi“, „ísómerun“ og „tengjamyndun með ATP-vatnsrofi“.
+
 <!-- SEG:m68795:entry:auto-65 -->
 Flokkar ensíma og virkni þeirra
 

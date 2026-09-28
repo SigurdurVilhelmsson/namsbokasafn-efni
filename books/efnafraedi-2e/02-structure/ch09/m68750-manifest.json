@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68750",
-  "extractedAt": "2026-09-20T17:49:34.165Z",
+  "extractedAt": "2026-09-28T20:03:06.318Z",
   "sourceHash": "21ab34fa0d6d4ebb",
-  "segmentCount": 195,
+  "segmentCount": 197,
   "segmentIds": [
     "m68750:title:auto-1",
     "m68750:abstract:auto-2",
@@ -24,6 +24,7 @@
     "m68750:caption:CNX_Chem_09_01_Pressure2-caption",
     "m68750:alt:fs-idp170647376-alt",
     "m68750:para:fs-idm10039728",
+    "m68750:table-summary:fs-idp189967312-summary",
     "m68750:entry:auto-20",
     "m68750:entry:auto-21",
     "m68750:entry:auto-22",
@@ -135,6 +136,7 @@
     "m68750:title:fs-idm62097440-title",
     "m68750:para:fs-idm102779232",
     "m68750:title:fs-idp68662112-title",
+    "m68750:table-summary:key-equations-table-summary",
     "m68750:entry:auto-131",
     "m68750:entry:auto-132",
     "m68750:title:fs-idm20163680-title",

@@ -451,6 +451,9 @@ Jöfnurnar sem lýsa þessum lögmálum eru sértilvik kjörgasjöfnunnar, [[i:P
 <!-- SEG:m68751:title:fs-idm157803264-title -->
 Lykiljöfnur
 
+<!-- SEG:m68751:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68751:entry:auto-152 -->
 [[i:PV]] = [[i:nRT]]
 

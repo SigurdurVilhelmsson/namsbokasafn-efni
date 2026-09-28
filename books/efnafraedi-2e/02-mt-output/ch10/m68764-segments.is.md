@@ -25,6 +25,9 @@ Tvær ljósmyndir eru sýndar og merktar „a“ og „b“. Mynd a sýnir hunan
 <!-- SEG:m68764:para:fs-idm133174592 -->
 Millikraftar (IMFs) milli sameinda vökva, stærð og lögun sameindanna og hitastig ákvarða hversu auðveldlega vökvi flæðir. Eins og [[xref:fs-idm123780960]] sýnir, því flóknari sem sameindirnar í vökva eru að byggingu og því sterkari sem millikraftarnir milli þeirra eru, því erfiðara er fyrir þær að hreyfast fram hjá hvor annarri og því meiri er seigja vökvans. Þegar hitastigið hækkar hreyfast sameindirnar hraðar og hreyfiorka þeirra er færari um að yfirstíga kraftana sem halda þeim saman; þannig minnkar seigja vökvans.
 
+<!-- SEG:m68764:table-summary:fs-idm123780960-summary -->
+Þessi tafla hefur þrjá dálka og átta raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Efni“, „Formúla“ og „Seigja (mPa·s)“. Undir dálkinum „Efni“ er eftirfarandi: vatn, kvikasilfur, etanól, oktan, etýlen glýkól, hunang og vélarolía. Undir dálkinum „Formúla“ er eftirfarandi: H með neðanskrift 2 O; Hg; C með neðanskrift 2 H með neðanskrift 5 OH; C með neðanskrift 8 H með neðanskrift 18; CH með neðanskrift 2 (OH)CH með neðanskrift 2 (OH); breytilegt; og breytilegt. Undir dálkinum „Seigja (mPa·s)“ er eftirfarandi: 0,890, 1,526, 1,074, 0,508, 16,1, um það bil 2000 til 10000 og um það bil 50 til 500.
+
 <!-- SEG:m68764:entry:auto-10 -->
 Seigja algengra efna við 25 °C
 
@@ -111,6 +114,9 @@ Sýnd er ljósmynd af kóngulóarvef með vatnsdropum sem eru fastir við hann. 
 
 <!-- SEG:m68764:para:fs-idm78773504 -->
 [[term:Yfirborðsspenna|term-00003]] er skilgreind sem orkan sem þarf til að auka yfirborðsflatarmál vökva, eða krafturinn sem þarf til að auka lengd yfirborðs vökva um tiltekna vegalengd. Þessi eiginleiki stafar af samloðunarkröftum milli sameinda á yfirborði vökva og veldur því að yfirborð vökva hegðar sér eins og strekkt gúmmíhimna. Yfirborðsspenna nokkurra vökva er sýnd í [[xref:fs-idm139826368]]. Af algengum vökvum sýnir vatn sérstaklega mikla yfirborðsspennu vegna sterkra vetnistengja milli sameinda þess. Vegna þessarar miklu yfirborðsspennu myndar yfirborð vatns tiltölulega „seiga himnu“ sem þolir talsverðan kraft án þess að rofna. Stálnál sem er varlega lögð á vatn mun fljóta. Sum skordýr, eins og það sem sýnt er í [[xref:CNX_Chem_10_02_Strider]], hreyfast á yfirborði vatnsins þótt þau séu eðlisþyngri en vatn, vegna þess að yfirborðsspennan heldur þeim uppi.
+
+<!-- SEG:m68764:table-summary:fs-idm139826368-summary -->
+Þessi tafla hefur þrjá dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Efni“, „Formúla“ og „Yfirborðsspenna (mN/m)“. Undir dálkinum „Efni“ er eftirfarandi: vatn, kvikasilfur, etanól, oktan, etýlen glýkól. Undir dálkinum „Formúla“ er eftirfarandi: H með neðanskrift 2 O; Hg; C með neðanskrift 2 H með neðanskrift 5 OH; C með neðanskrift 8 H með neðanskrift 18; CH með neðanskrift 2 (OH)CH með neðanskrift 2 (OH). Undir dálkinum „Yfirborðsspenna (mN/m)“ er eftirfarandi: 71,99, 458,48, 21,97, 21,14, 47,99.
 
 <!-- SEG:m68764:entry:auto-39 -->
 Yfirborðsspenna algengra efna við 25 °C
@@ -268,6 +274,9 @@ Milli sameindakraftar milli sameinda í vökvafasa eru mismunandi eftir efnafræ
 <!-- SEG:m68764:title:fs-idm31673664-title -->
 Lykiljafna
 
+<!-- SEG:m68764:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68764:entry:auto-91 -->
 [[MATH:2]]
 
@@ -366,6 +375,9 @@ seigja
 
 <!-- SEG:m68764:glossary-def:fs-idm129199712-def -->
 mælikvarði á viðnám vökva gegn flæði
+
+<!-- SEG:m68764:table-summary:fs-idm84550336-summary -->
+Þessi tafla inniheldur fimm raðir og þrjá dálka. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Vatn“, „Yfirborðsspenna (mN/m)“ og „Seigja (mPa·s)“. Undir dálkinum „Vatn“ er eftirfarandi: 0 gráður C, 20 gráður C, 60 gráður C og 100 gráður C. Undir dálkinum „Yfirborðsspenna (mN/m)“ er eftirfarandi: 75,6, 72,8, 66,2 og 58,9. Undir dálkinum „Seigja (mPa·s)“ er eftirfarandi: 1,79, 1,00, 0,47 og 0,28.
 
 <!-- SEG:m68764:entry:auto-125 -->
 Vatn

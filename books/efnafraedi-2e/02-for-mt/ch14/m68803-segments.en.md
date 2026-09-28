@@ -184,6 +184,9 @@ The ion product of water, [[i:K]][[sub:w]] is the equilibrium constant for the a
 <!-- SEG:m68803:title:fs-idp36036608-title -->
 Key Equations
 
+<!-- SEG:m68803:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68803:entry:auto-63 -->
 [[i:K]][[sub:w]] = [H[[sub:3]]O[[sup:+]]][OH[[sup:−]]] = 1.0 [[MATH:19]] 10[[sup:−14]] (at 25 °C)
 

@@ -151,6 +151,9 @@ Kjarnarnir sem eru vinstra eða hægra megin við stöðugleikabeltið eru óst�
 <!-- SEG:m68851:para:fs-idm18227760 -->
 Nokkrar athuganir má gera varðandi sambandið milli stöðugleika kjarna og byggingar hans. Kjarnar með sléttum tölum róteinda, nifteinda eða beggja eru líklegri til að vera stöðugir (sjá [[xref:fs-idp70040672]]). Kjarnar með ákveðnum fjölda kjarnaagna, þekktum sem [[term:töfratölur|term-00012]], eru stöðugir gegn kjarnasundrun. Þessar tölur róteinda eða nifteinda (2, 8, 20, 28, 50, 82 og 126) mynda fullskipuð hvolf í kjarnanum. Þetta er svipað í hugmyndafræði og stöðug rafeindahvolf sem sjást hjá eðallofttegundum. Kjarnar sem hafa töfratölur bæði róteinda og nifteinda, svo sem [[MATH:23]] [[MATH:24]] [[MATH:25]] og [[MATH:26]] eru kallaðir „tvítöfrandi“ og eru sérstaklega stöðugir. Þessar tilhneigingar í kjarnastöðugleika má rökstyðja með því að íhuga skammtafræðilegt líkan af orkuástöndum kjarna, hliðstætt því sem notað var til að lýsa rafeindaástöndum fyrr í þessari kennslubók. Smáatriði þessa líkans eru utan gildissviðs þessa kafla.
 
+<!-- SEG:m68851:table-summary:fs-idp70040672-summary -->
+Þessi tafla hefur þrjá dálka og fimm raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Fjöldi stöðugra samsæta“, „Rófendatala“ og „Nifteindatala“. Undir dálkinum „Fjöldi stöðugra samsæta“ eru eftirfarandi tölur: 157, 53, 50 og 5. Undir dálkinum „Rófendatala“ er eftirfarandi: slétt tala, slétt tala, oddatala, oddatala. Undir dálkinum „Nifteindatala“ er eftirfarandi: slétt tala, oddatala, slétt tala, oddatala.
+
 <!-- SEG:m68851:entry:auto-52 -->
 Stöðugar kjarnasamsætur
 
@@ -261,6 +264,9 @@ Atómkjarni samanstendur af róteindum og nifteindum, sem saman kallast kjarnein
 
 <!-- SEG:m68851:title:fs-idp28539744-title -->
 Lykiljöfnur
+
+<!-- SEG:m68851:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68851:entry:auto-89 -->
 [[i:E]] = [[i:mc]][[sup:2]]

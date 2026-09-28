@@ -169,6 +169,9 @@ Ofurkritískir vökvar
 <!-- SEG:m68769:para:fs-idm114606944 -->
 Ef við setjum vatnssýni í lokað ílát við 25 °C, fjarlægjum loftið og látum jafnvægi milli uppgufunar og þéttingar komast á, sitjum við eftir með blöndu af fljótandi vatni og vatnsgufu við 0,03 atm þrýsting. Greinileg mörk sjást á milli þéttari vökvans og gisnarri gassins. Þegar við aukum hitastigið eykst þrýstingur vatnsgufunnar, eins og lýst er með vökva-gas kúrfu í fasariti vatns ([[xref:CNX_Chem_10_04_H2OPhasDi2]]), og tveggja fasa jafnvægi fljótandi og loftkenndra fasa helst. Við 374 °C hitastig hefur gufuþrýstingurinn hækkað í 218 atm og öll frekari hækkun á hitastigi veldur því að mörkin milli vökva- og gufufasa hverfa. Allt vatnið í ílátinu er nú til staðar í einum fasa þar sem eðliseiginleikar eru mitt á milli eiginleika loftkennds og fljótandi ástands. Þessi fasi efnis er kallaður [[term:ofurkritískur vökvi|term-00003]] og hitastigið og þrýstingurinn sem þessi fasi er fyrir ofan er [[term:kritíski punkturinn|term-00004]] ([[xref:CNX_Chem_10_04_CritFluid]]). Fyrir ofan kritískt hitastig sitt er ekki hægt að breyta gasi í vökva, sama hversu miklum þrýstingi er beitt. Þrýstingurinn sem þarf til að breyta gasi í vökva við kritískt hitastig þess er kallaður kritískur þrýstingur. Kritískt hitastig og kritískur þrýstingur nokkurra algengra efna eru gefin upp í eftirfarandi töflu.
 
+<!-- SEG:m68769:table-summary:fs-idm180459824-summary -->
+Þessi tafla inniheldur átta raðir og þrjá dálka. Fyrsta röðin er haus og hún merkir hvern dálk: „Efni“, „Markhitastig (K)“ og „Markþrýstingur (atm)“. Undir dálkinum „Efni“ er eftirfarandi: vetni, köfnunarefni, súrefni, koldíoxíð, ammóníak, brennisteinsdíoxíð og vatn. Undir dálkinum „Markhitastig (K)“ er eftirfarandi: 33,2, 126,0, 154,3, 304,2, 405,5, 430,3 og 647,1. Undir dálkinum „Markþrýstingur (atm)“ er eftirfarandi: 12,8, 33,5, 49,7, 73,0, 111,5, 77,7 og 217,7.
+
 <!-- SEG:m68769:entry:auto-58 -->
 Efni
 

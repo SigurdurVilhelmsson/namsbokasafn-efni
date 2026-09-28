@@ -49,6 +49,9 @@ Since the autoionization constant [[i:K]][[sub:w]] is temperature dependent, the
 <!-- SEG:m68804:para:fs-idm67617872 -->
 At this temperature, then, neutral solutions exhibit pH = pOH = 6.31, acidic solutions exhibit pH less than 6.31 and pOH greater than 6.31, whereas basic solutions exhibit pH greater than 6.31 and pOH less than 6.31. This distinction can be important when studying certain processes that occur at other temperatures, such as enzyme reactions in warm-blooded organisms at a temperature around 36–40 °C. Unless otherwise noted, references to pH values are presumed to be those at 25 °C ([[xref:fs-idp56820128]]).
 
+<!-- SEG:m68804:table-summary:fs-idp56820128-summary -->
+This table has three columns and four rows. The first row is a header row, and it labels each column: “Classification,” “Relative ion concentrations,” and “p H at 25 degrees C.” Under the “Classification” column are the following: “acidic,” “neutral,” and “basic.” Under the “Relative ion concentrations” column are the following, “[ H subscript 2 O superscript plus sign ] is greater than [ O H superscript negative sign],” “[ H subscript 2 O superscript plus sign ] equals [ O H superscript negative sign ],” and, “[ H subscript 2 O superscript plus sign ] is less than [ O H superscript negative sing ].” Under the “p H at 25 degrees C” column are the following: “p H is less than 7,” “p H equals 7,” and “p H is greater than 7.”
+
 <!-- SEG:m68804:entry:auto-18 -->
 Summary of Relations for Acidic, Basic and Neutral Solutions
 
@@ -234,6 +237,9 @@ Concentrations of hydronium and hydroxide ions in aqueous media are often repres
 
 <!-- SEG:m68804:title:fs-idp66998992-title -->
 Key Equations
+
+<!-- SEG:m68804:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68804:entry:auto-80 -->
 [[MATH:18]]

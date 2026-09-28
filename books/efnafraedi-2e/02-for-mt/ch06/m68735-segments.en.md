@@ -22,6 +22,9 @@ Variation in Covalent Radius
 <!-- SEG:m68735:para:fs-idm81399712 -->
 The quantum mechanical picture makes it difficult to establish a definite size of an atom. However, there are several practical ways to define the radius of atoms and, thus, to determine their relative sizes that give roughly similar values. We will use the [[term:covalent radius|term-00001]] ([[xref:CNX_Chem_06_05_CovalradiT]]), which is defined as one-half the distance between the nuclei of two identical atoms when they are joined by a covalent bond (this measurement is possible because atoms within molecules still retain much of their atomic identity). We know that as we scan down a group, the principal quantum number, [[i:n]], increases by one for each element. Thus, the electrons are being added to a region of space that is increasingly distant from the nucleus. Consequently, the size of the atom (and its covalent radius) must increase as we increase the distance of the outermost electrons from the nucleus. This trend is illustrated for the covalent radii of the halogens in [[xref:fs-idp28766560]] and [[xref:CNX_Chem_06_05_CovalradiT]]. The trends for the entire periodic table can be seen in [[xref:CNX_Chem_06_05_CovalradiT]].
 
+<!-- SEG:m68735:table-summary:fs-idp28766560-summary -->
+This table has three columns and six rows. The first row is a header row, and it labels each column: “Atom,” “Covalent Radius, picometers,” and “Nuclear Charge.” Under the “Atom” column are the following: F, C l, B r, I, and A t. Under the “Covalent Radius, picometers” column are the following: 64, 99, 114, 133, and 148. Under the “Nuclear Charge” column are the following: positive 9, positive 17, positive 35, positive 53, and positive 85.
+
 <!-- SEG:m68735:entry:auto-9 -->
 Covalent Radii of the Halogen Group Elements
 
@@ -183,6 +186,9 @@ This figure includes the element symbol O followed by the electron configuration
 
 <!-- SEG:m68735:para:fs-idm10621984 -->
 Removing an electron from a cation is more difficult than removing an electron from a neutral atom because of the greater electrostatic attraction to the cation. Likewise, removing an electron from a cation with a higher positive charge is more difficult than removing an electron from an ion with a lower charge. Thus, successive ionization energies for one element always increase. As seen in [[xref:fs-idp3693744]], there is a large increase in the ionization energies for each element. This jump corresponds to removal of the core electrons, which are harder to remove than the valence electrons. For example, Sc and Ga both have three valence electrons, so the rapid increase in ionization energy occurs after the third ionization.
+
+<!-- SEG:m68735:table-summary:fs-idp3693744-summary -->
+This table has eight columns and seven rows. The first row is a header row, and it labels each column: “Element,” “I E subscript 1,” “I E subscript 2,” “I E subscript 3,” “I E subscript 4,” “I E subscript 5,” “I E subscript 6,” and “I E subscript 7.” Under the “Element” column are: K, C a, S c, G a, G e, and A s. Under the “I E subscript 1” column are the values: 418.8, 589.8, 633.1, 578.8, 762.2, and 944.5. Under the “I E subscript 2” column are the following values: 3051.8, 1145.4, 1235.0, 1979.4, 1537.5, and 1793.6. The value 3051.8 appears in red. Under the column “I E subscript 3” column are the values: 4419.6, 4912.4, 2388.7, 2964.6, 3302.1, and 2735.5. Under the “I E subscript 4” column are the values: 5876.9, 6490.6, 7090.6, 6180, 4410.6, and 4836.8. Under the “I E subscript 5” column are the values: 7975.5, 8153.0, 8842.9, 8298.7, 9021.4, and 6042.9. Under the “I E subscript 6” column are the values: 9590.6, 10495.7, 10679.0, 10873.9, not available, and 12311.5. Under the “I E subscript 7” column are the values: 11343, 12272.9, 13315.0, 13594.8, not available, and not available.
 
 <!-- SEG:m68735:entry:auto-63 -->
 Successive Ionization Energies for Selected Elements (kJ/mol)

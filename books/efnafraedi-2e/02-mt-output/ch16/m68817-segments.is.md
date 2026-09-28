@@ -214,6 +214,9 @@ Fyrir tiltekið efni fer óreiða eftir fasa þar sem [[i:S]][[sub:fast efni]] <
 <!-- SEG:m68817:title:fs-idm145716272-title -->
 Lykiljafna
 
+<!-- SEG:m68817:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68817:entry:auto-73 -->
 [[MATH:17]]
 

@@ -112,6 +112,9 @@ Mynd A sýnir glas sem inniheldur rauðan vökva með lagi af gulri olíu sem fl
 <!-- SEG:m68667:para:fs-idm39281712 -->
 Ellefu frumefni mynda um 99% af jarðskorpunni og lofthjúpnum ([[xref:fs-idp31507504]]). Súrefni er næstum helmingur og kísill um fjórðungur af heildarmagni þessara frumefna. Meirihluti frumefna á jörðinni finnst í efnasamböndum með öðrum frumefnum; um fjórðungur frumefnanna finnst einnig í hreinu formi.
 
+<!-- SEG:m68667:table-summary:fs-idp31507504-summary -->
+Súrefni, táknað með O, hefur massaprósentu upp á 49,20. Kísill, táknaður með Si, hefur massaprósentu upp á 25,67. Ál, táknað með Al, hefur massaprósentu upp á 7,50. Járn, táknað með Fe, hefur massaprósentu upp á 4,71. Kalsíum, táknað með Ca, hefur massaprósentu upp á 3,39. Natríum, táknað með Na, hefur massaprósentu upp á 2,63. Kalíum, táknað með K, hefur massaprósentu upp á 2,40. Magnesíum, táknað með Mg, hefur massaprósentu upp á 1,93. Vetni, táknað með H, hefur massaprósentu upp á 0,87. Títan, táknað með Ti, hefur massaprósentu upp á 0,58. Klór, táknaður með Cl, hefur massaprósentu upp á 0,19. Fosfór, táknaður með P, hefur massaprósentu upp á 0,11. Mangan, táknað með Mn, hefur massaprósentu upp á 0,09. Kolefni, táknað með C, hefur massaprósentu upp á 0,08. Brennisteinn, táknaður með S, hefur massaprósentu upp á 0,06. Baríum, táknað með Ba, hefur massaprósentu upp á 0,04. Nitur, táknað með N, hefur massaprósentu upp á 0,03. Flúor, táknaður með F, hefur massaprósentu upp á 0,03. Strontíum, táknað með Sr, hefur massaprósentu upp á 0,02. Öll önnur hafa massaprósentu upp á 0,47.
+
 <!-- SEG:m68667:entry:auto-39 -->
 Frumefnasamsetning jarðar
 

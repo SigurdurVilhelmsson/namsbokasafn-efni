@@ -142,6 +142,9 @@ Bohr incorporated Planck’s and Einstein’s quantization ideas into a model of
 <!-- SEG:m68732:title:fs-idp212850576-title -->
 Key Equations
 
+<!-- SEG:m68732:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68732:entry:auto-49 -->
 [[MATH:16]]
 

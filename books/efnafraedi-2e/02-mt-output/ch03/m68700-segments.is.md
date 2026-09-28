@@ -148,6 +148,9 @@ Hvert sýni inniheldur 6,02 [[MATH:4]] 10[[sup:23]] sameindir eða formúlueinin
 <!-- SEG:m68700:alt:fs-idm24308080-alt -->
 Þessi mynd sýnir tvö hettuglös fyllt með litlausum vökva. Hún sýnir einnig tvær skálar: önnur fyllt með beinhvítu dufti og hin fyllt með skærrauðu dufti.
 
+<!-- SEG:m68700:table-summary:fs-idp17650992-summary -->
+Sýnd er tafla sem samanstendur af fjórum dálkum og sex röðum. Í hauslínunni stendur: „Frumefni“, „Meðal atómmassi (a m u)“, „Mólmassi (g/mól)“ og „Atóm/mól“. Fyrsti dálkurinn inniheldur táknin „C“, „H“, „O“, „Na“ og „Cl“. Annar dálkurinn inniheldur gildin „12,01“, „1,008“, „16,00“, „22,99“ og „35,45“. Þriðji dálkurinn inniheldur gildin „12,01“, „1,008“, „16,00“, „22,99“ og „33,45“. Síðasti dálkurinn inniheldur gildið „6,022 sinnum 10 í 23. veldi“ í hverjum reit.
+
 <!-- SEG:m68700:entry:auto-51 -->
 Frumefni
 

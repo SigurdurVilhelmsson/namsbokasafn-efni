@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68724",
-  "extractedAt": "2026-09-19T08:38:59.388Z",
+  "extractedAt": "2026-09-28T20:03:05.124Z",
   "sourceHash": "2b0ef256a1bffa70",
-  "segmentCount": 202,
+  "segmentCount": 204,
   "segmentIds": [
     "m68724:title:auto-1",
     "m68724:abstract:auto-2",
@@ -52,6 +52,7 @@
     "m68724:caption:CNX_Chem_05_01_HeatCapacity-caption",
     "m68724:alt:fs-idm67222368-alt",
     "m68724:para:fs-idm50153600",
+    "m68724:table-summary:fs-idm68801008-summary",
     "m68724:entry:auto-48",
     "m68724:entry:auto-49",
     "m68724:entry:auto-50",
@@ -146,6 +147,7 @@
     "m68724:para:fs-idp43407888",
     "m68724:para:fs-idp20727296",
     "m68724:title:fs-idm20711744-title",
+    "m68724:table-summary:key-equations-table-summary",
     "m68724:entry:auto-142",
     "m68724:title:fs-idm41088208-title",
     "m68724:problem:fs-idp13648176",

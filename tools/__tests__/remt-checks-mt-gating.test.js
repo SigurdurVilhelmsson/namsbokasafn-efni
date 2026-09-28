@@ -307,8 +307,13 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // one `:table-summary:` segment each, which their 2026-09-05 IS predates. Subtracted by
     // VINTAGE (`withoutPreTypeDrift` → `withoutPreSummaryDrift`), and the three subtracted
     // pins below did not move. Chemistry's 191 are not here while its extraction is HELD.
-    expect(rawUnpairedMods).toBe(42);
-    expect(rawAnyMods).toBe(53);
+    // ✅ §C183 (2026-09-28) — +1 RAW, AND ONLY ONE: chemistry was re-extracted and its
+    // summaries bought IN THE SAME CHANGE, so 82 of its 83 summary modules paired up again at
+    // once. The one left is appendices m68867, whose summary the API returned twice without
+    // its SEG marker; it is subtracted by vintage like organic's, so the three pins below
+    // did not move. (Predicted before this run: 43 / 54 raw, 17 / 13 / 24 subtracted.)
+    expect(rawUnpairedMods).toBe(43);
+    expect(rawAnyMods).toBe(54);
     expect(deltaMods).toBe(17); //   8.6% of 197
     expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
     expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking

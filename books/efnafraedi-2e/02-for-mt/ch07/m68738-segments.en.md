@@ -127,6 +127,9 @@ Silicones are polymeric compounds containing, among others, the following types 
 <!-- SEG:m68738:note-title:fs-idp56083008-title -->
 Answer:
 
+<!-- SEG:m68738:table-summary:fs-idm2614240-summary -->
+This table has three columns and seven rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second is, “capital delta E N,” and the third is, “Polarity.” Under the “Bond” column are the following: C bonds to H with a single bond; S bonds to H with a single bond; C bonds to N with a single bond; N bonds to H with a single bond; C bonds to O with a single bond; and O bonds to H with a single bond. Under the “capital delta E N” columna are the values: 0.4; 0.4; 0.5; 0.9; 1.0; and 1.4. Under the “Polarity” column are the follwoing: C bonds to H with a single bond, there is a lowercase delta negative sign above the C and a lowercase delta positive sign over H; S bonds to H with a single bond, there is a lowercase delta negative sign over the S and a lowercase delta positive sign over the H; C bonds to N with a single bond, there is a lowercase delta positive sign over the C and a lowercase delta negative sign over the N; N bonds to H with a single bond, there is a lowercase delta negative sign over the N and a lowercase delta positive sign over the H; C bonds to O with a single bond, there is a lowercase delta positive sign over C and a lowercase delta negative sign over the O; and O bonds to H with a single bond, there is a lowercase delta negative sign over the O and a lowercase delta positive sign over the H.
+
 <!-- SEG:m68738:entry:auto-44 -->
 Bond Polarity and Electronegativity Difference
 
@@ -192,6 +195,9 @@ O–H
 
 <!-- SEG:m68738:entry:auto-65 -->
 [[MATH:11]]
+
+<!-- SEG:m68738:table-summary:fs-idm25109184-summary -->
+This table has three columns and five rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second column header is, “Electronegativity Difference,” and the third column header is, “Polarity.” Under the column “Bond” are the following: C bonds to C with a single bond; C bonds to H with a single bond; S i bonds to C with a single bond; and S i bonds to O with a single bond. Under the column “Electronegativity Difference” are the values: 0.0; 0.4; 0.7; and 1.7. Under the column “Polarity” are the following: nonpolar, C bonds to H with a single bond, there is a lowercase delta negative sign over C and a lowercase delta positive sign over H; S i bonds to C with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over C; and S i bonds to O with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over O.
 
 <!-- SEG:m68738:entry:auto-66 -->
 Bond

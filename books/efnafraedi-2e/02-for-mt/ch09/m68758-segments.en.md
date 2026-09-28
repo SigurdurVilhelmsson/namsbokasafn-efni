@@ -166,6 +166,9 @@ The kinetic molecular theory is a simple but very effective model that effective
 <!-- SEG:m68758:title:fs-idm188828400-title -->
 Key Equations
 
+<!-- SEG:m68758:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68758:entry:auto-57 -->
 [[MATH:1]]
 

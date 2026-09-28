@@ -58,6 +58,9 @@ Fjórar Lewis-myndir eru sýndar. Fyrsta myndin, merkt „etanól“, sýnir kol
 <!-- SEG:m68768:note-title:fs-idm91362784-title -->
 Svar:
 
+<!-- SEG:m68768:table-summary:fs-idm60218336-summary -->
+Þessi tafla hefur tvær raðir og fimm dálka. Fyrsti dálkurinn er hausadálkur og hann merkir hverja röð: „Efnasamband“ og „Gufuþrýstingur við 25 gráður C“. Hægra megin við dálkinn „Efnasamband“ er eftirfarandi: metanól, C H með lágstaf 3 O H; etanól, C með lágstaf 2 H með lágstaf 5 O H; própanól C með lágstaf 3 H með lágstaf 7 O H; og bútanól C með lágstaf 4 H með lágstaf 9 O H. Hægra megin við dálkinn „Gufuþrýstingur við 25 gráður C“ er eftirfarandi: 11,9 kPa, 5,95 kPa, 2,67 kPa og 0,56 kPa.
+
 <!-- SEG:m68768:para:fs-idm44101792 -->
 Öll þessi efnasambönd sýna vetnistengi; það er erfitt fyrir sameindirnar að yfirstíga þessa sterku millikrafta, þannig að gufuþrýstingurinn er tiltölulega lágur. Eftir því sem stærð sameindarinnar eykst frá metanóli yfir í bútanól aukast dreifikraftar, sem þýðir að gufuþrýstingurinn minnkar eins og sést:[[BR]] P[[sub:metanól]] > P[[sub:etanól]] > P[[sub:própanól]] > P[[sub:bútanól]].
 
@@ -393,6 +396,9 @@ Fasabreytingar eru ferli sem breyta efni úr einu eðlisástandi í annað. Þa�
 
 <!-- SEG:m68768:title:fs-idp14058304-title -->
 Lykiljöfnur
+
+<!-- SEG:m68768:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68768:entry:auto-133 -->
 [[MATH:4]]

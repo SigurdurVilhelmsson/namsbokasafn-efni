@@ -226,6 +226,9 @@ Answer:
 <!-- SEG:m68798:para:fs-idp96400256 -->
 (a) [[i:Q[[sub:c]]]] = 6.45 [[MATH:22]] 10[[sup:3]], forward. (b) [[i:Q[[sub:c]]]] = 0.23, reverse. (c) [[i:Q[[sub:c]]]] = 0, forward.
 
+<!-- SEG:m68798:table-summary:fs-idp70024256-summary -->
+This table has four columns and five rows. The first row is a header row, and it labels each column, “Reactants / Products,” “Experiment 1,” “Experiment 2,” and “Experiment 3.” Under the “Reactants / Products” column are: [ C O ] subscript i; [ H subscript 2 O ] subscript i; [ C O subscript 2 ] subscript i; [ H subscript 2 ] subscript i. Under the “Experiment 1” column are the numbers: 0.0203 M; 0.0203 M; 0.0040 M; and 0.0040 M. Under the “Experiment 2” column are the numbers: 0.011 M; 0.0011 M; 0.037 M; and 0.046 M. Under the “Experiment 3” column are the numbers: 0.0094 M; 0.0025 M; 0.0015 M; 0.0076 M.
+
 <!-- SEG:m68798:entry:auto-77 -->
 Reactants/Products
 
@@ -465,6 +468,9 @@ A homogeneous equilibrium is an equilibrium in which all components are in the s
 
 <!-- SEG:m68798:title:fs-idp116522752-title -->
 Key Equations
+
+<!-- SEG:m68798:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68798:entry:auto-157 -->
 [[MATH:34]]

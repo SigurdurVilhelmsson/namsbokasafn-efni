@@ -28,6 +28,9 @@ Talan í mælingunni getur verið sett fram á mismunandi vegu, þar á meðal �
 <!-- SEG:m68674:para:fs-idm144392592 -->
 Mælieiningar fyrir sjö grundvallareiginleika („grunneiningar“) eru taldar upp í [[xref:fs-idm81346144]]. Staðlarnir fyrir þessar einingar eru fastsettir með alþjóðasamningi og þær eru kallaðar [[term:Alþjóðlega einingakerfið|term-00002]] eða [[term:SI-einingar|term-00003]] (úr frönsku, [[i:Le Système International d'Unités]]). SI-einingar hafa verið notaðar af bandarísku staðlastofnuninni (NIST) síðan 1964. Einingar fyrir aðra eiginleika má leiða af þessum sjö grunneiningum.
 
+<!-- SEG:m68674:table-summary:fs-idm81346144-summary -->
+Lengd er mæld í metrum, sem táknaðir eru með litlum staf m. Massi er mældur í kílógrömmum, sem táknuð eru með litlum stöfum kg. Tími er mældur í sekúndum, sem táknaðar eru með litlum staf s. Hiti er mældur í kelvinum, sem táknuð eru með stórum staf K. Rafstraumur er mældur í amperum, sem táknuð eru með stórum staf A. Efnismagn er mælt í mólum, sem táknuð eru með litlu stöfunum mol. Ljósstyrkur er mældur í kandelum, sem táknaðar eru með litlu stöfunum cd.
+
 <!-- SEG:m68674:entry:auto-11 -->
 Grunneiningar SI-kerfisins
 
@@ -105,6 +108,9 @@ cd
 
 <!-- SEG:m68674:para:eip-134 -->
 Hversdagslegar mælieiningar eru oft skilgreindar sem brot eða margfeldi af öðrum einingum. Mjólk er venjulega pökkuð í ílát sem eru 1 gallon (4 kvart), 1 kvart (0,25 gallon) og eitt pint (0,5 kvart). Sama aðferð er notuð með SI-einingum, en þessi brot eða margfeldi eru alltaf veldi af 10. Brot eða margfeldi SI-eininga eru nefnd með forskeyti og heiti grunneiningarinnar. Til dæmis er lengd upp á 1000 metra einnig kölluð kílómetri vegna þess að forskeytið [[i:kíló]] þýðir „eitt þúsund“, sem á staðalformi er 10[[sup:3]] (1 kílómetri = 1000 m = 10[[sup:3]] m). Forskeytin sem notuð eru og veldin sem 10 er hafið í eru talin upp í [[xref:fs-idm81128320]].
+
+<!-- SEG:m68674:table-summary:fs-idm81128320-summary -->
+Forskeytið femtó hefur táknið lítinn staf f og þáttinn 10 í mínus fimmtánda veldi. Þess vegna er 1 femtósekúnda, fs, jafnt og 1 sinnum 10 í mínus 15. veldi metra, eða 0,000000000000001 af metra. Forskeytið píkó hefur táknið lítinn staf p og þáttinn 10 í mínus tólfta veldi. Þess vegna er 1 píkósekúnda, ps, jafnt og 1 sinnum 10 í mínus 12. veldi metra, eða 0,000000000001 af metra. Forskeytið nanó hefur táknið lítinn staf n og þáttinn 10 í mínus níunda veldi. Þess vegna eru 4 nanógrömm, eða ng, jöfn 4 sinnum tíu í mínus 9. veldi, eða 0,000000004 g. Forskeytið míkró hefur gríska stafinn mú sem tákn og þáttinn 10 í mínus sjötta veldi. Þess vegna er 1 míkrólítri, eða μL, jafnt og einn sinnum tíu í mínus 6. veldi eða 0,000001 L. Forskeytið millí hefur lítinn staf m sem tákn og þáttinn 10 í mínus þriðja veldi. Þess vegna eru 2 millímól, eða mmol, jöfn tveimur sinnum tíu í mínus 3. veldi eða 0,002 mól. Forskeytið sentí hefur lítinn staf c sem tákn og þáttinn 10 í mínus öðru veldi. Þess vegna eru 7 sentimetrar, eða cm, jafnir sjö sinnum tíu í mínus 2. veldi metra eða 0,07 m. Forskeytið desí hefur lítinn staf d sem tákn og þáttinn 10 í mínus fyrsta veldi. Þess vegna er 1 desilítri, eða dL, jafn einum sinnum tíu í mínus 1. veldi metra eða 0,1 L. Forskeytið kíló hefur lítinn staf k sem tákn og þáttinn 10 í þriðja veldi. Þess vegna er 1 kílómetri, eða km, jafn einum sinnum tíu í þriðja veldi metra eða 1000 m. Forskeytið mega hefur stóran staf M sem tákn og þáttinn 10 í sjötta veldi. Þess vegna eru 3 megahertz, eða MHz, jöfn þremur sinnum 10 í sjötta veldi hertz, eða 3.000.000 Hz. Forskeytið gíga hefur stóran staf G sem tákn og þáttinn 10 í níunda veldi. Þess vegna eru 8 gígaár, eða Gyr, jöfn átta sinnum 10 í níunda veldi ára, eða 8.000.000.000 Gyr. Forskeytið tera hefur stóran staf T sem tákn og þáttinn 10 í tólfta veldi. Þess vegna eru 5 teravött, eða TW, jöfn fimm sinnum 10 í tólfta veldi vatta, eða 5.000.000.000.000 W.
 
 <!-- SEG:m68674:entry:auto-37 -->
 Algeng einingaforskeyti
@@ -328,6 +334,9 @@ Við notum massa og rúmmál efnis til að ákvarða eðlismassa þess. Þannig 
 <!-- SEG:m68674:para:fs-idm74744496 -->
 [[term:Eðlismassi|term-00016]] efnis er hlutfallið milli massa sýnis af efninu og rúmmáls þess. SI-einingin fyrir eðlismassa er kílógramm á rúmmetra (kg/m[[sup:3]]). Í mörgum tilfellum er þetta þó óhentug eining og við notum oft grömm á rúmsentimetra (g/cm[[sup:3]]) fyrir eðlismassa fastra efna og vökva, og grömm á lítra (g/L) fyrir lofttegundir. Þótt undantekningar séu til hafa flestir vökvar og föst efni eðlismassa sem er á bilinu frá um 0,7 g/cm[[sup:3]] (eðlismassi bensíns) til 19 g/cm[[sup:3]] (eðlismassi gulls). Eðlismassi lofts er um 1,2 g/L. [[xref:fs-idm45639696]] sýnir eðlismassa nokkurra algengra efna.
 
+<!-- SEG:m68674:table-summary:fs-idm45639696-summary -->
+Þessi tafla sýnir eðlismassa fastra efna, vökva og lofttegunda í grömmum á rúmsentimetra. Gildin fyrir föst efni eru: ís 0,92, eikarviður 0,60 til 0,90, járn 7,9, kopar 9,0, blý 11,3, silfur 10,5 og gull 19,3. Gildin fyrir vökva eru: vatn 1,0, etanól 0,79, asetón 0,79, glýserín 1,26, ólífuolía 0,92, bensín 0,70 til 0,77 og kvikasilfur 13,6. Gildin fyrir lofttegundir, sem voru mældar þegar lofttegundin var við 25 gráður á Celsíus og 1 loftþrýsting, eru: þurrt loft 1,20, súrefni 1,31, köfnunarefni 1,14, koltvísýringur 1,80, helíum 0,16, neon 0,83 og radon 9,1.
+
 <!-- SEG:m68674:entry:auto-111 -->
 Eðlismassi algengra efna
 
@@ -489,6 +498,9 @@ Mælingar veita megindlegar upplýsingar sem eru mikilvægar við nám og iðkun
 
 <!-- SEG:m68674:title:fs-idm313032912-title -->
 Lykiljafna
+
+<!-- SEG:m68674:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68674:entry:auto-165 -->
 [[MATH:16]]

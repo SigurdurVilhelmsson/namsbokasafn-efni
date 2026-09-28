@@ -223,6 +223,9 @@ An electron in an atom is completely described by four quantum numbers: [[i:n]],
 <!-- SEG:m68733:para:fs-idm86324032 -->
 The properties and meaning of the quantum numbers of electrons in atoms are briefly summarized in [[xref:fs-idm21167392]].
 
+<!-- SEG:m68733:table-summary:fs-idm21167392-summary -->
+This table has four columns and five rows. The first row is a header row, and it labels each column: “Name,” “Symbol,” “Allowed values,” and “Physical meaning.” Under the “name” column are the following phrases: “Principle quantum number,” “Angular moment or azimuthal quantum number,” “Magnetic quantum number,” and “Spin quantum number.” Under the “symbol” column are the following: “n,” “l,” “m subscript l,” and “m subscript s.” Under the “allowed values” column are the following: “1, 2, 3, 4, ….,” “0 is less than or equal to l which is less than or equal to n minus 1,” “negative l is less than or equal to m subscript l which is less than or equal to l,” and “one half, negative sign.” Under the “physical meaning” column are the following: “Shell, the general region for the value of energy for an electron on the orbital,” “Subshell, the shape of the orbital,” “Orientation of the orbital,” “Direction of the intrinsic quantum ‘spinning’ of the electron.”
+
 <!-- SEG:m68733:entry:auto-76 -->
 Quantum Numbers, Their Properties, and Significance
 
@@ -385,6 +388,9 @@ Answer:
 <!-- SEG:m68733:para:fs-idm129700624 -->
 The five degenerate 3[[i:d]] orbitals
 
+<!-- SEG:m68733:table-summary:fs-idm179835952-summary -->
+This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.
+
 <!-- SEG:m68733:entry:auto-130 -->
 Orbital
 
@@ -420,6 +426,9 @@ Radial nodes (no.)
 
 <!-- SEG:m68733:entry:auto-141 -->
 5[[i:d]]
+
+<!-- SEG:m68733:table-summary:fs-idm91407168-summary -->
+This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” “4 p,” “7 f,” and “5 d.” Under the “n” column are: 4, 4, 7, and 5. Under the “l” column are: 3, 1, 3, and 2. Under the “m subscript l degeneracy” column are: 7, 3, 7, and 5. Under the “number radial nodes” column are: 0, 2, 3, and 2.
 
 <!-- SEG:m68733:entry:auto-142 -->
 Orbital
@@ -630,6 +639,9 @@ Which of the following equations describe particle-like behavior? Which describe
 
 <!-- SEG:m68733:problem:fs-idm133893888 -->
 Write a set of quantum numbers for each of the electrons with an [[i:n]] of 4 in a Se atom.
+
+<!-- SEG:m68733:table-summary:fs-idm2123072-summary -->
+This table has four columns and seven rows. The first row is a header row, and it labels each column: “n,” “l,” “m subscript l,” and “s.” Under the “n” column are the following numbers: 4, 4, 4, 4, 4, and 4. Under the “l” column are the following numbers: 0, 0, 1, 1, 1, and 1. Under the “m subscript l” column are the following numbers: 0, 0, negative 1, 0, positive 1, and negative 1. Under the “s” column are the following numbers: positive one half, negative one half, positive one half, positive one half, positive one half, and negative one half.
 
 <!-- SEG:m68733:entry:auto-212 -->
 [[i:n]]

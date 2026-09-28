@@ -1,6 +1,9 @@
 <!-- SEG:m68869:title:auto-1 -->
 Formation Constants for Complex Ions
 
+<!-- SEG:m68869:table-summary:fs-idm42176688-summary -->
+2
+
 <!-- SEG:m68869:entry:auto-2 -->
 Formation Constants for Complex Ions
 
