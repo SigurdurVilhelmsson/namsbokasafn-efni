@@ -215,7 +215,7 @@ Fyrir hvarfið [[MATH:44]], ef 100,0 g af kolefni hvarfast, hvert er rúmmál k�
 alfaeind
 
 <!-- SEG:m68852:glossary-def:fs-idm57603984-def -->
-[[b:(Α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir
+[[b:(α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir
 
 <!-- SEG:m68852:glossary-term:fs-idm54113552-term -->
 andefni
@@ -233,7 +233,7 @@ betaeind
 gammageisli
 
 <!-- SEG:m68852:glossary-def:fs-idm12021616-def -->
-[[b:(Γ]] eða [[MATH:50]] stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar
+[[b:(γ]] eða [[MATH:50]] stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar
 
 <!-- SEG:m68852:glossary-term:fs-idm45950256-term -->
 kjarnahvarf

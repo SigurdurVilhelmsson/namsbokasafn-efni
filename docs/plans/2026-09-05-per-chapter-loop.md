@@ -215,16 +215,16 @@ unprompted (§C73). One-word fragments of longer candidates are hidden unless `-
 ## Step 2 — re-MT the text
 
 ```bash
-node tools/api-translate.js --book <slug> --chapter <N> --dry-run --force   # 0 ISK — see below, --force is REQUIRED
+node tools/api-translate.js --book <slug> --chapter <N> --dry-run --force --no-glossary   # 0 ISK — see below, --force is REQUIRED; the arm too, so the rehearsal mirrors the buy
 node tools/api-translate.js --book <slug> --chapter <N> --force --no-glossary
 ```
 
 🔴 **`--no-glossary` IS MANDATORY AND THE DEFAULT IS THE WRONG ONE.** [USER] ruled 2026-09-06 to
 take the glossary off the MT wire (§C133 measured its effect *inside* the same-arm noise floor; the
 verbatim ruling is quoted in the register’s **§C133**). **That ruling was implemented for the FIGURE leg (`153858a3`)
-and never for the TEXT leg**: `tools/api-translate.js:1290` declares
-`{ name: 'noGlossary', flags: ['--no-glossary'], default: false }`, consumed at `:1826`. **Nothing
-gates on the arm** — `glossaryArm` is read by two test files and by no check — so the ruling was
+and never for the TEXT leg**: `parseCliArgs` in `tools/api-translate.js` declared
+`{ name: 'noGlossary', flags: ['--no-glossary'], default: false }`. **Nothing
+gated on the arm** — `glossaryArm` was read by two test files and by no check — so the ruling was
 enforced only by the operator remembering an optional flag this command did not show. Practice has
 been correct (all 13 ch03+ch04 provenance sidecars read `arm: "no-glossary"`), which is exactly what
 makes the omission easy to miss. ▶ **The damage lands INSIDE the paid translation and the repair is
@@ -235,6 +235,14 @@ it by case-insensitive SUBSTRING, in 23 of 23 chemistry chapters. **Verify the a
 grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | sort | uniq -c
 # every module must read arm: "no-glossary"
 ```
+
+> **AMENDED 2026-09-28 — THERE IS NO DEFAULT ARM ANY MORE.** A live run now **refuses** (exit 2)
+> unless exactly one of `--no-glossary`, `--glossary-only <list>` or `--full-glossary` is given;
+> `--full-glossary` spells out what a flagless run used to send silently. `--dry-run` does not
+> refuse, but its last line says whether the live run would. → `resolveGlossaryArm`, pinned by
+> `tools/__tests__/api-translate-glossary-arm.test.js`. ⚠️ **The tool forces you to STATE an arm;
+> it does not choose one for you** — `--no-glossary` is still the ruling, and the post-buy
+> `grep` above is still how you confirm what was sent.
 
 > **AMENDED 2026-09-19 (chemistry ch05) — ONE BOUNDED EXCEPTION: `--glossary-only "enthalpy,enthalpy change"`.**
 > A paid probe of `m68727` with `--no-glossary` rendered *enthalpy* as `varmaorka` / `varmi` / `entalpía`: 40 of 86
@@ -296,7 +304,8 @@ invocation, and requires `--chapter`):
 ```bash
 # which modules were actually rewritten? today's date = already done
 grep -a generatedAt books/<slug>/02-mt-output/ch<NN>/*-provenance.json
-node tools/api-translate.js --book <slug> --chapter <N> --module <mNNNNN> --force [--no-glossary]
+node tools/api-translate.js --book <slug> --chapter <N> --module <mNNNNN> --force --no-glossary
+# the arm is REQUIRED since 2026-09-28 — use the SAME arm the chapter was bought with
 ```
 
 **Measured:** scoping to chemistry ch03's largest module priced at **~623 ISK** against **~1,408 ISK**

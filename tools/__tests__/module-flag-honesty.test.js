@@ -205,3 +205,32 @@ describe('§C89 follow-up — a SCOPED run that examined nothing must not report
     });
   }
 });
+
+describe('api-translate — the PAID tool — refuses an empty scope flag instead of widening', () => {
+  // 🔴 The one tool this file did not cover, and the only one where the widening
+  // costs money. Measured 2026-09-28 with --dry-run (no network, no key needed):
+  // every spelling below ran 13 modules (--module) or the WHOLE BOOK, 170 modules
+  // (--chapter), and exited 0. The refusal lives in parseArgs (`requiresValue`).
+  const base = ['--book', 'efnafraedi-2e', '--no-glossary', '--dry-run'];
+  const cases = [
+    ['--module=', ['--chapter', 'appendices', '--module=']],
+    ['a trailing --module', ['--chapter', 'appendices', '--module']],
+    ["--module ''", ['--chapter', 'appendices', '--module', '']],
+    ['--chapter=', ['--chapter=']],
+    ['a trailing --chapter', ['--chapter']],
+  ];
+  for (const [label, extra] of cases) {
+    it(`refuses ${label}`, () => {
+      const r = run('api-translate.js', [...base, ...extra]);
+      expect(r.code).toBe(2);
+      expect(r.out).toMatch(/requires a value/);
+      expect(r.out).not.toMatch(/modules found/);
+    });
+  }
+
+  it('still narrows a real --module to exactly one unit (positive control)', () => {
+    const r = run('api-translate.js', [...base, '--chapter', 'appendices', '--module', 'm68865']);
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(/Dry run — 1 modules found/);
+  });
+});

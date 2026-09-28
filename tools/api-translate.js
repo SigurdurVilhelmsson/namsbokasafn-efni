@@ -21,6 +21,9 @@
  *   --no-glossary       Don't send glossary terms with requests
  *   --glossary-only <a,b>  Send ONLY these approved headwords; refuses if any is
  *                       missing. Not with --no-glossary.
+ *   --full-glossary     Send the whole approved glossary (the old silent default).
+ *                       A live run refuses unless exactly one of these three arms
+ *                       is given — see resolveGlossaryArm.
  *   --rate-delay <ms>   Delay between API calls (default: 500)
  *   -v, --verbose       Detailed progress output
  *   -h, --help          Show this help
@@ -43,6 +46,11 @@ import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.j
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
 import { buildRunRecord, glossaryContentHash, usageUnits } from './lib/run-record.js';
+import {
+  greekConservationBySegment,
+  segmentIdSetDelta,
+  truncationSuspectsBySegment,
+} from './lib/mt-output-guards.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -1400,6 +1408,16 @@ export function classifyModuleOutcome(result = {}) {
   if (delta && Object.keys(delta).length > 0) {
     reasons.push(`bracket-marker delta ${formatDeltaParts(delta)}`);
   }
+  // §C183 guard ①: a Greek letter the MT substituted (σ → Δ, α → Α) with every marker
+  // intact — invisible to both checks above. Additions are not passed in: they are a
+  // spelled-out name turned into a symbol, not damage (greekConservationBySegment).
+  const greekLost = result.greekLost;
+  if (greekLost && greekLost.length > 0) {
+    const shown = greekLost
+      .map((g) => `${g.segId} ${g.lost.join('')}→${g.added.join('') || '∅'}`)
+      .join('; ');
+    reasons.push(`Greek letter(s) lost in ${greekLost.length} segment(s): ${shown}`);
+  }
   return { heldBack: reasons.length > 0, reasons };
 }
 
@@ -1421,11 +1439,43 @@ function parseCliArgs(argv) {
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'glossaryOnly', flags: ['--glossary-only'], type: 'string', default: null },
+    { name: 'fullGlossary', flags: ['--full-glossary'], type: 'boolean', default: false },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
     { name: 'maxChunk', flags: ['--max-chunk'], type: 'number', default: DEFAULT_MAX_CHUNK_CHARS },
     { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
   ]);
 }
+
+/**
+ * Which glossary arm did the caller STATE? (2026-09-26 ruling, §C183 paid-run guards.)
+ *
+ * 🔴 A LIVE RUN WITH NO STATED ARM IS REFUSED. Before 2026-09-28, giving no glossary flag
+ * silently sent the whole approved glossary — an arm nobody chose, on the one decision
+ * §C73 measured as able to make output worse (a wrong row is obeyed on some occurrences
+ * and propagates into every compound). `--full-glossary` spells that old default out.
+ *
+ * @param {{noGlossary?: boolean, glossaryOnly?: string|null, fullGlossary?: boolean}} args
+ * @returns {{arm: 'no-glossary'|'glossary-only'|'glossary'|null, flags: string[]}}
+ *   `arm` is null unless EXACTLY one arm flag was given; `flags` lists every one given,
+ *   so the caller can tell "none" (length 0) from "a contradiction" (length > 1).
+ *   `'glossary'` is the arm value the run record has always used for the full glossary.
+ */
+export function resolveGlossaryArm(args) {
+  const given = [
+    ['--no-glossary', 'no-glossary', Boolean(args.noGlossary)],
+    ['--glossary-only', 'glossary-only', args.glossaryOnly != null],
+    ['--full-glossary', 'glossary', Boolean(args.fullGlossary)],
+  ].filter(([, , on]) => on);
+  return {
+    arm: given.length === 1 ? given[0][1] : null,
+    flags: given.map(([flag]) => flag),
+  };
+}
+
+const NO_ARM_HELP =
+  'Pick one: --no-glossary · --glossary-only <a,b> (compute it with ' +
+  'tools/compute-glossary-subset.js, then audit it) · --full-glossary (the whole ' +
+  'approved glossary, which a run with no flag used to send silently).';
 
 function formatChapter(chapter) {
   if (chapter === 'appendices') return 'appendices';
@@ -1449,9 +1499,13 @@ Options:
   --module <id>       Single module ID (requires --chapter)
   --force             Overwrite existing output files
   --dry-run, -n       Show what would be translated + cost estimate
+  Glossary arm — a live run REFUSES unless exactly one is given:
   --no-glossary       Don't send glossary terms with requests
   --glossary-only <a,b>  Send ONLY these approved headwords (comma-separated);
-                      refuses if any is not in the glossary. Not with --no-glossary.
+                      refuses if any is not in the glossary. Compute the list with
+                      tools/compute-glossary-subset.js, then audit it.
+  --full-glossary     Send the whole approved glossary, filtered per chunk
+                      (what a run with no glossary flag used to do silently)
   --rate-delay <ms>   Delay between API calls (default: 500)
   --update-status     Mark mtOutput stage as complete in pipeline DB
   -v, --verbose       Detailed progress output
@@ -1461,9 +1515,9 @@ Environment:
   MALSTADUR_API_KEY   API key (or set in .env file)
 
 Examples:
-  node tools/api-translate.js --book efnafraedi-2e --chapter 1
+  node tools/api-translate.js --book efnafraedi-2e --chapter 1 --no-glossary
   node tools/api-translate.js --book efnafraedi-2e --dry-run
-  node tools/api-translate.js --book liffraedi-2e --chapter 3 --module m71234
+  node tools/api-translate.js --book liffraedi-2e --chapter 3 --module m71234 --no-glossary
 `);
 }
 
@@ -1667,7 +1721,7 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
   let mismatches = reattach.mismatches;
 
   // Validate — retry without glossary if truncated
-  if (!validateMarkers(chunkText, output)) {
+  if (chunkDefect(chunkText, output)) {
     if (filteredGlossary) {
       if (verbose) {
         console.error(
@@ -1696,17 +1750,71 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
       glossarySent = false;
     }
 
-    if (!validateMarkers(chunkText, output)) {
-      const inputCount = (chunkText.match(/<!-- SEG:/g) || []).length;
-      const outputCount = (output.match(/<!-- SEG:/g) || []).length;
-      throw new Error(
-        `${chunkLabel}: segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
-          `API may have truncated the response.`
-      );
-    }
+    const defect = chunkDefect(chunkText, output);
+    if (defect) throw new Error(`${chunkLabel}: ${defect}`);
   }
 
   return { text: output, usage: result.usage, mismatches, unwrapped, glossarySent };
+}
+
+/**
+ * Why a chunk's response cannot be used, or null when it can.
+ *
+ * Two truncation detectors, in order: the SEG-marker COUNT, then the per-segment VALUE
+ * check (§C183). 🔴 The count alone cannot see a one-segment chunk that came back short —
+ * it still carries exactly one marker, and chemistry's longest table summary (m68865,
+ * 24,833 characters) rides alone in its chunk. Both lead to the same refusal: a
+ * truncated segment would replace a good translation under `--force`.
+ *
+ * @param {string} chunkText the EN chunk as sent (on-disk form)
+ * @param {string} output the post-processed IS response (on-disk form)
+ * @returns {string|null}
+ */
+function chunkDefect(chunkText, output) {
+  if (!validateMarkers(chunkText, output)) {
+    const inputCount = (chunkText.match(/<!-- SEG:/g) || []).length;
+    const outputCount = (output.match(/<!-- SEG:/g) || []).length;
+    return (
+      `segment marker mismatch: input has ${inputCount}, output has ${outputCount}. ` +
+      `API may have truncated the response.`
+    );
+  }
+  // The count above matches even when a marker was cut or mangled; compare the ids.
+  const idDefect = idSetDefect(chunkText, output);
+  if (idDefect) return idDefect;
+  const suspects = truncationSuspectsBySegment(chunkText, output);
+  if (suspects.length === 0) return null;
+  const detail = suspects
+    .map(
+      (s) =>
+        `${s.segId} (${s.reason}: EN ${s.enLen} → IS ${s.isLen} chars, ratio ${s.ratio}; ` +
+        `IS ends "…${s.isTail}")`
+    )
+    .join('; ');
+  return (
+    `possible truncation in ${suspects.length} segment(s): ${detail}. ` +
+    `Refusing to write — the SEG count matched, so only the segment VALUES show it.`
+  );
+}
+
+/**
+ * The id-set half of the truncation check, shared by the chunk and the module level.
+ * A missing EN id is a segment whose marker was cut or mangled, so neither value leg
+ * ever judged it (segmentIdSetDelta).
+ * @param {string} enText
+ * @param {string} isText
+ * @returns {string|null}
+ */
+function idSetDefect(enText, isText) {
+  const { missing, extra } = segmentIdSetDelta(enText, isText);
+  if (missing.length === 0 && extra.length === 0) return null;
+  const parts = [];
+  if (missing.length) parts.push(`missing from the response: ${missing.join(', ')}`);
+  if (extra.length) parts.push(`not in the source: ${extra.join(', ')}`);
+  return (
+    `segment id set differs — ${parts.join('; ')}. The SEG count may still match: a marker ` +
+    `cut before its "-->", or an id the repairs could not restore. Refusing to write.`
+  );
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
@@ -1810,6 +1918,21 @@ export async function translateModule(
     );
   }
 
+  // §C183: the id sets again, on the REASSEMBLED module — normalizeSegMarkers and the join
+  // run after the per-chunk check, so this is the last look before the write.
+  const moduleIdDefect = idSetDefect(input, output);
+  if (moduleIdDefect) throw new Error(`${moduleId}: ${moduleIdDefect}`);
+
+  // §C183 guard ①: Greek letters the MT substituted, per segment. Computed BEFORE the
+  // write (pure, over in-memory strings) so nothing can throw between the write and the
+  // provenance. A LOSS holds the chapter back (classifyModuleOutcome) but the module is
+  // still written — it was paid for, and one wrong symbol leaves the rest usable. An
+  // ADDITION alone is reported, not held: the MT turns spelled-out names ("lambda") into
+  // symbols. See greekConservationBySegment.
+  const greekFindings = greekConservationBySegment(input, output);
+  const greekLost = greekFindings.filter((g) => g.lost.length > 0);
+  const greekAdded = greekFindings.filter((g) => g.lost.length === 0);
+
   // Write output
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
@@ -1847,6 +1970,8 @@ export async function translateModule(
       glossaryTermCount: glossary?.terms?.length ?? null,
       chunksWithGlossary,
       chunksTotal: chunks.length,
+      greekLost,
+      greekAddedCount: greekAdded.length,
     }),
   });
 
@@ -1877,6 +2002,21 @@ export async function translateModule(
     );
   }
 
+  if (greekLost.length) {
+    const shown = greekLost
+      .map((g) => `${g.segId} ${g.lost.join('')}→${g.added.join('') || '∅'}`)
+      .join('; ');
+    console.error(
+      `  Note: ${moduleId}: Greek letter(s) LOST in ${greekLost.length} segment(s) — ${shown}`
+    );
+  }
+  if (greekAdded.length) {
+    console.error(
+      `  Note: ${moduleId}: Greek letter(s) ADDED in ${greekAdded.length} segment(s) ` +
+        `(usually a spelled-out name the MT turned into a symbol) — not held back`
+    );
+  }
+
   return {
     chars: input.length,
     usage: totalUsage,
@@ -1884,6 +2024,8 @@ export async function translateModule(
     mismatches,
     bracketDelta,
     unwrapped,
+    greekLost,
+    greekAdded,
   };
 }
 
@@ -1957,13 +2099,20 @@ async function main() {
     }
   }
 
+  // Glossary arm — stated, never defaulted, on a live run (resolveGlossaryArm).
+  const { arm: statedArm, flags: armFlags } = resolveGlossaryArm(args);
+  if (armFlags.length > 1) {
+    console.error(`Error: ${armFlags.join(' and ')} contradict each other; pick one glossary arm.`);
+    process.exit(1);
+  }
+  if (!statedArm && !args.dryRun) {
+    console.error(`Error: no glossary arm given — refusing a paid run. ${NO_ARM_HELP}`);
+    process.exit(2);
+  }
+
   // Load glossary
   let glossary = null;
   const glossaryOnly = args.glossaryOnly != null ? parseHeadwordList(args.glossaryOnly) : null;
-  if (glossaryOnly && args.noGlossary) {
-    console.error('Error: --glossary-only and --no-glossary contradict each other; pick one.');
-    process.exit(1);
-  }
   if (glossaryOnly && glossaryOnly.length === 0) {
     console.error('Error: --glossary-only needs at least one headword.');
     process.exit(1);
@@ -1981,6 +2130,15 @@ async function main() {
       },
     });
     console.log(glossaryStatusLine(glossary, skippedCount, omittedCount));
+    // A STATED full arm with nothing to send must fail closed, like --glossary-only's
+    // missing-headword refusal below — never print "glossary" while sending none.
+    if (args.fullGlossary && !glossary) {
+      console.error(
+        `Error: --full-glossary was given, but ${args.book} has no approved glossary to send. ` +
+          `Nothing was sent. Use --no-glossary if that is what you mean.`
+      );
+      process.exit(1);
+    }
     if (glossaryOnly) {
       const { glossary: narrowed, missing } = restrictGlossary(glossary, glossaryOnly);
       if (missing.length > 0) {
@@ -2095,6 +2253,14 @@ async function main() {
     }
     console.log(`\n  Estimated characters: ${totalChars.toLocaleString()}`);
     console.log(`  Estimated cost: ~${estimateIsk(totalChars).toFixed(0)} ISK`);
+    // The rehearsal must show the arm decision, or it passes and the paid command fails.
+    if (statedArm) {
+      console.log(`  Glossary arm: ${statedArm}`);
+    } else {
+      console.log(
+        `  ⚠️  No glossary arm given — the live run with these flags would be REFUSED. ${NO_ARM_HELP}`
+      );
+    }
     process.exit(0);
   }
 
@@ -2107,7 +2273,8 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\nTranslating ${toTranslate.length} module(s), skipping ${toSkip.length}...`);
+  console.log(`\nGlossary arm: ${statedArm}`);
+  console.log(`Translating ${toTranslate.length} module(s), skipping ${toSkip.length}...`);
   console.log('');
 
   // Translate
@@ -2120,6 +2287,7 @@ async function main() {
     mismatches: 0,
     bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
     deltaModules: 0, // §C118 ⑲: modules whose PER-MODULE delta was non-empty
+    greekModules: 0, // §C183 ①: modules where the MT lost a Greek letter
     errors: [],
   };
 
@@ -2132,6 +2300,7 @@ async function main() {
   const failedChapters = new Set();
   const mismatchChapters = new Set();
   const deltaChapters = new Set();
+  const greekChapters = new Set();
 
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
@@ -2150,15 +2319,16 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized, mismatches, bracketDelta } = await translateModule(
-        client,
-        mod.path,
-        mod.outputPath,
-        glossary,
-        args.verbose,
-        args.maxChunk,
-        { glossaryArm: glossaryOnly ? 'glossary-only' : undefined }
-      );
+      const { chars, markersNormalized, mismatches, bracketDelta, greekLost } =
+        await translateModule(
+          client,
+          mod.path,
+          mod.outputPath,
+          glossary,
+          args.verbose,
+          args.maxChunk,
+          { glossaryArm: glossaryOnly ? 'glossary-only' : undefined }
+        );
       const fixedNote = markersNormalized > 0 ? `, ${markersNormalized} marker(s) un-glued` : '';
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
@@ -2183,7 +2353,11 @@ async function main() {
         results.deltaModules++;
         deltaChapters.add(mod.chapterDir);
       }
-      const outcome = classifyModuleOutcome({ mismatches, bracketDelta });
+      if (greekLost && greekLost.length > 0) {
+        results.greekModules++;
+        greekChapters.add(mod.chapterDir);
+      }
+      const outcome = classifyModuleOutcome({ mismatches, bracketDelta, greekLost });
       if (outcome.heldBack) {
         console.error(
           `  ⛔ ${mod.chapterDir}/${mod.moduleId} HELD BACK — ${outcome.reasons.join('; ')}. ` +
@@ -2226,6 +2400,11 @@ async function main() {
       `  Marker id-reattach mismatches: ${results.mismatches} (segments degraded to source — see warnings)`
     );
   }
+  if (results.greekModules > 0) {
+    console.log(
+      `  Greek-letter losses: ${results.greekModules} module(s) (symbols the MT substituted — see per-module notes)`
+    );
+  }
   console.log(`  API usage:  ${usage.totalChars.toLocaleString()} chars`);
   console.log(`  Est. cost:  ~${usage.estimatedISK.toFixed(0)} ISK`);
   console.log(`  Time:       ${(usage.elapsedMs / 1000).toFixed(1)}s`);
@@ -2247,26 +2426,32 @@ async function main() {
       succeededChapters,
       failedChapters,
       mismatchChapters,
-      deltaChapters
+      deltaChapters,
+      greekChapters
     );
     if (completeChapters.length > 0) {
       console.log('\nUpdating pipeline status...');
       await updatePipelineStatus(args.book, completeChapters);
     }
     const heldBack = [...succeededChapters].filter(
-      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch) || deltaChapters.has(ch)
+      (ch) =>
+        failedChapters.has(ch) ||
+        mismatchChapters.has(ch) ||
+        deltaChapters.has(ch) ||
+        greekChapters.has(ch)
     );
     if (heldBack.length > 0) {
       console.log(
-        `  Held back (failures, id-reattach mismatches or bracket-marker deltas): ${heldBack.join(', ')} — fix and re-run to mark complete`
+        `  Held back (failures, id-reattach mismatches, bracket-marker deltas or Greek-letter losses): ${heldBack.join(', ')} — fix and re-run to mark complete`
       );
     }
   }
 
   // §C118 ⑲: a bracket delta is a verdict, not a note — it must reach the exit
   // code too, or the chapter is held back from --update-status while the run
-  // still reports success to whoever is watching.
-  if (results.failed > 0 || results.mismatches > 0 || results.deltaModules > 0) process.exit(1);
+  // still reports success to whoever is watching. §C183 ①: so is a Greek-letter loss.
+  // prettier-ignore
+  if (results.failed > 0 || results.mismatches > 0 || results.deltaModules > 0 || results.greekModules > 0) process.exit(1);
 }
 
 // Only run when executed directly

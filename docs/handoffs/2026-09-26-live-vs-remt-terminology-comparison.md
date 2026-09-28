@@ -56,7 +56,7 @@ Counted in paragraphs where the English term occurs; every re-MT count marked �
 | *dissociation* → **sundrun** (the ruled word for nuclear decay) | 6 / 25 | **22 / 25** | **re-MT** |
 | *stoichiometry*: approved *hlutfallaefnafræði* | 86% | **0%** | **re-MT** |
 | **misspelt core term** *sámeind* (§C194) | 0 | **27 tokens** in 8.4 | **re-MT** |
-| **prose returned in English by the paid MT** ✔ | 0 | **8 segments**: 1 known (ch08 π-bond, logged) + **7 new in ch21** (`m68852` ×6, `m68856` ×1) | **re-MT** |
+| **prose returned in English by the paid MT** ✔ | 0 | **8 segments**: ch08 π-bond + 7 in ch21 (`m68852` ×6, `m68856` ×1), **all 8 already recorded**; see the correction below | **re-MT** |
 | omissions (IS < 50% of EN length) | 21 | 20 | equal |
 | whole paragraph identical to EN | 15 | 13 | equal (mostly names, formulas) |
 
@@ -113,8 +113,7 @@ the appendix below is there so you can calibrate it against your own reading.
 4. **Add *kinetics* to the sheet as a book-level question.** It is not flagged there, because 7 of 21 paragraphs
    still carry *hraðafræði*, but the re-MT collapses it onto *reactions* in about 10 paragraphs and onto
    *kinematics* in 2 more. That is the same wrong-sense class as the ch12 title.
-5. **New defect, register §C195:** 7 ch21 prose segments came back from the paid MT in English and would ship at
-   the sync. It is a free fix by hand repair or editor edit, or a small targeted re-buy.
+5. ~~New defect, §C195~~ **Corrected 2026-09-28: not new.** The 7 ch21 segments were already recorded `[INCOMPLETE]` at the ch21 buy (register, 2026-09-21 night RESUME block). This report checked against the older 8,080-segment census and missed that record. The finding that stands: the live site has those paragraphs in Icelandic, a free starting point for editors.
 
 ## Provenance
 
