@@ -1,5 +1,5 @@
 <!-- SEG:m68761:title:auto-1 -->
-Millikraftar
+Millisameindakraftar
 
 <!-- SEG:m68761:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

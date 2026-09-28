@@ -1,5 +1,5 @@
 <!-- SEG:m68831:title:auto-1 -->
-Bygging og almennir eiginleikar málmunga
+Uppbygging og almennir eiginleikar hálfmálma
 
 <!-- SEG:m68831:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

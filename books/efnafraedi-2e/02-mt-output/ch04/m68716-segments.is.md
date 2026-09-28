@@ -1,5 +1,5 @@
 <!-- SEG:m68716:title:auto-1 -->
-Megindleg efnagreining
+Magnbundin efnagreining
 
 <!-- SEG:m68716:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

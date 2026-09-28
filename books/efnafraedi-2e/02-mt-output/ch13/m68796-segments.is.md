@@ -8,7 +8,7 @@ Efnafræðilegt jafnvægi
 Jafnvægisfastar
 
 <!-- SEG:m68796:abstract-item:abstract-item-3 -->
-Jafnvægisbreytingar: Lögmál Le Châteliers
+Tilfærsla jafnvægis: Lögmál Le Châteliers
 
 <!-- SEG:m68796:abstract-item:abstract-item-4 -->
 Jafnvægisútreikningar

@@ -189,6 +189,47 @@ describe('(a) collisions ignore a word common to the whole chapter', () => {
   });
 });
 
+describe('(a) rivals — the word the MT wrote instead, from its OWN output', () => {
+  // `collisions` can only name another glossary TARGET. The MT's own word (raflausn for
+  // electrolyte, efnismagnsfræði for stoichiometry) usually has no row at all, so a ruling
+  // sheet needs it read from the Icelandic itself. A large background keeps lift realistic.
+  const build = (uncoveredText, n = 8) => {
+    const en = new Map();
+    const is = new Map();
+    for (let i = 0; i < n; i++) {
+      en.set(`m:p:${i}`, `The electrolyte ${i}.`);
+      is.set(`m:p:${i}`, typeof uncoveredText === 'function' ? uncoveredText(i) : uncoveredText);
+    }
+    for (let i = 0; i < 100; i++) {
+      en.set(`m:b:${i}`, 'Water.');
+      is.set(`m:b:${i}`, 'Vatn er efni.');
+    }
+    return glossaryCoverage({
+      en,
+      is,
+      terms: [{ sourceWord: 'electrolyte', targetWord: 'rafkleyfi' }],
+      minSegments: 1,
+    })[0];
+  };
+
+  it('names the word the uncovered segments used', () => {
+    expect(build('Um raflausn.').rivals[0]).toEqual({ form: 'raflausn', count: 8 });
+  });
+
+  it('merges inflected forms of one word, reporting the commonest', () => {
+    const row = build((i) => (i < 5 ? 'Gufuþrýstingur hér.' : 'Um gufuþrýsting.'));
+    expect(row.rivals[0]).toEqual({ form: 'gufuþrýstingur', count: 8 });
+  });
+
+  it('does not report a word common to the whole chapter', () => {
+    expect(build('Raflausn er efni.').rivals.map((r) => r.form)).not.toContain('efni');
+  });
+
+  it('is empty when every segment carries the approved form', () => {
+    expect(build('Um rafkleyfi.').rivals).toEqual([]);
+  });
+});
+
 describe('(a) glossaryCoverage — the ch05 enthalpy control, on the real corpus', () => {
   const en = parseSegmentsMap(read(path.join(CHEM, '02-for-mt/ch05/m68727-segments.en.md')));
   const terms = loadGlossary(path.join(CHEM, 'glossary'), bookToDomain('efnafraedi-2e')).terms;
@@ -311,5 +352,22 @@ describe('the CLI', () => {
 
   it('exits 2 without --chapter', () => {
     expect(run('--book', 'efnafraedi-2e').status).toBe(2);
+  });
+
+  // 🔴 parseArgs parses a `number` option with parseInt, so `--threshold 0.8` used to become
+  // 0 — every term then passed and the check printed "0 candidates", exit 0.
+  it('honours a fractional --threshold', () => {
+    const r = run('--book', 'efnafraedi-2e', '--chapter', '5', '--threshold', '0.8');
+    expect(r.stdout).toMatch(/coverage < 80%/);
+  });
+
+  it('exits 2 on a --threshold outside (0, 1]', () => {
+    expect(run('--book', 'efnafraedi-2e', '--chapter', '5', '--threshold', '35').status).toBe(2);
+  });
+
+  // ⚠️ No real-corpus --book-wide run here: it takes ~40 s over chemistry's 22k segments.
+  // The mode only merges per-chapter maps that the tests above already exercise.
+  it('--book-wide refuses --chapter', () => {
+    expect(run('--book', 'efnafraedi-2e', '--book-wide', '--chapter', '5').status).toBe(2);
   });
 });

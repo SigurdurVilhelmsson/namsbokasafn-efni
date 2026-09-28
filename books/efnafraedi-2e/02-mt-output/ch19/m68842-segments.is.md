@@ -1,5 +1,5 @@
 <!-- SEG:m68842:title:auto-1 -->
-Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra
+Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra
 
 <!-- SEG:m68842:para:fs-idm272953936 -->
 Hliðarfrumefni eru skilgreind sem þau frumefni sem hafa (eða mynda auðveldlega) hálffyllt [[i:d]]-svigrúm. Eins og sést í [[xref:CNX_Chem_19_01_PeriodicEConfig]] eru [[term:[[i:d]]-blakkar frumefnin|term-00001]] í dálkum 3–11 hliðarfrumefni. [[term:[[i:f]]-blakkar frumefnin|term-00002]], einnig kölluð [[i:innri hliðarfrumefni]] (lanþaníðar og aktiníðar), uppfylla einnig þetta skilyrði þar sem [[i:d]]-svigrúmið er hálffyllt á undan [[i:f]]-svigrúmunum. [[i:d]]-svigrúmin fyllast með koparfjölskyldunni (dálkur 11); af þeirri ástæðu er næsta fjölskylda (dálkur 12) tæknilega séð ekki hliðarfrumefni. Hins vegar sýna frumefnin í dálki 12 suma af sömu efnafræðilegu eiginleikunum og eru oft tekin með í umræður um hliðarfrumefni. Sumir efnafræðingar meðhöndla frumefnin í dálki 12 sem hliðarfrumefni.

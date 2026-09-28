@@ -2,7 +2,7 @@
 Inngangur
 
 <!-- SEG:m68760:abstract-item:abstract-item-1 -->
-Millikraftar
+Millisameindakraftar
 
 <!-- SEG:m68760:abstract-item:abstract-item-2 -->
 Eiginleikar vökva
@@ -14,7 +14,7 @@ Hambrigði
 Hamrit
 
 <!-- SEG:m68760:abstract-item:abstract-item-5 -->
-Fast efni
+Fastur efnishamur
 
 <!-- SEG:m68760:abstract-item:abstract-item-6 -->
 Kristalgrindur í kristölluðum föstum efnum

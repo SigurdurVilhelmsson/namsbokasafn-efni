@@ -108,18 +108,72 @@ export function containsStem(foldedText, stem) {
 }
 
 /**
+ * Icelandic words of 4+ letters in a segment, lowercased, with bracket-marker syntax
+ * removed so a marker's type (`term`, `link`) is not read as a word the MT chose.
+ * @param {string} text
+ * @returns {Set<string>}
+ */
+function icelandicWords(text) {
+  const plain = text.replace(/\[\[[a-z]+:/g, ' ').replace(/\|[^\]]*\]\]/g, ' ');
+  return new Set(plain.toLowerCase().match(/\p{L}{4,}/gu) || []);
+}
+
+/**
+ * Inflected forms of one word share a long prefix (`gufuþrýstingur`, `gufuþrýsting`,
+ * `gufuþrýstings`), so rivals are grouped on the first RIVAL_KEY_LEN letters. `stemOf`
+ * is NOT used here: its cut depends on each form's own length, so it splits one word's
+ * forms across keys.
+ */
+const RIVAL_KEY_LEN = 8;
+const rivalKey = (w) => [...w].slice(0, RIVAL_KEY_LEN).join('');
+
+/**
+ * What the MT wrote instead, read from its own output: word groups present in at least
+ * `minShare` of the uncovered segments and at least `minLift` times their rate across the
+ * whole corpus, ranked by count × ln(lift) so a frequent, specific word leads. Unlike
+ * `collisions`, a rival need not be a glossary target — the MT's word usually has no row.
+ * @returns {Array<{form:string,count:number}>} `form` is the commonest surface form.
+ */
+function rivalsFor(uncovered, keyFreq, total, { minShare = 0.15, minLift = 8, top = 3 } = {}) {
+  if (uncovered.length === 0) return [];
+  const count = new Map();
+  const forms = new Map();
+  for (const p of uncovered) {
+    for (const w of p.words) {
+      const k = rivalKey(w);
+      const f = forms.get(k) || new Map();
+      f.set(w, (f.get(w) || 0) + 1);
+      forms.set(k, f);
+    }
+    for (const k of p.keys) count.set(k, (count.get(k) || 0) + 1);
+  }
+  return [...count]
+    .filter(([, n]) => n >= Math.max(2, uncovered.length * minShare))
+    .map(([k, n]) => ({ k, n, lift: n / uncovered.length / (keyFreq.get(k) / total) }))
+    .filter((r) => r.lift >= minLift)
+    .sort((a, b) => b.n * Math.log(b.lift) - a.n * Math.log(a.lift) || (a.k < b.k ? -1 : 1))
+    .slice(0, top)
+    .map(({ k, n }) => ({
+      form: [...forms.get(k)].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0][0],
+      count: n,
+    }));
+}
+
+/**
  * (a) Per approved term: `total` English segments using the headword, of which `covered`
  * carry the target's stem and `kept` keep the headword itself (a symbol the MT rightly
  * leaves alone); `coverage = (covered + kept) / total`. A term is a `candidate` when it
  * has at least `minSegments` segments and coverage below `threshold`. `collisions` are
  * the other targets the UNCOVERED segments used, kept only at ≥ 2× their chapter-wide
  * rate — so a word common everywhere (*efni*) is not reported as what replaced a term.
+ * `rivals` are the words the MT itself wrote there (see rivalsFor), glossary row or not.
  * @param {{en: Map<string,string>, is: Map<string,string>,
  *          terms: Array<{sourceWord:string,targetWord:string}>,
  *          minSegments?: number, threshold?: number, sample?: number}} p
  * @returns {Array<{sourceWord:string,targetWord:string,stem:string,total:number,covered:number,
  *   kept:number,coverage:number,candidate:boolean,uncovered:string[],
- *   collisions:Array<{sourceWord:string,targetWord:string,count:number}>}>}
+ *   collisions:Array<{sourceWord:string,targetWord:string,count:number}>,
+ *   rivals:Array<{form:string,count:number}>}>}
  *   sorted: candidates first, then by total descending. Terms with no stem or no
  *   matching segment are omitted.
  */
@@ -128,16 +182,36 @@ export function glossaryCoverage({ en, is, terms, minSegments = 5, threshold = 0
   const pairs = [];
   for (const [id, text] of en) {
     if (!is.has(id)) continue;
-    pairs.push({ id, text, is: is.get(id), isFold: foldUmlaut(is.get(id).toLowerCase()) });
+    const words = icelandicWords(is.get(id));
+    pairs.push({
+      id,
+      text,
+      textLower: text.toLowerCase(),
+      is: is.get(id),
+      isFold: foldUmlaut(is.get(id).toLowerCase()),
+      words,
+      keys: new Set([...words].map(rivalKey)),
+    });
   }
-  // Base rate of each distinct stem across the chapter's Icelandic, for collision lift.
+  const keyFreq = new Map();
+  for (const p of pairs) for (const k of p.keys) keyFreq.set(k, (keyFreq.get(k) || 0) + 1);
+  // Base rate of a stem across the chapter's Icelandic, for collision lift. Computed on
+  // demand: only a stem already present in ≥ 2 uncovered segments needs one.
   const distinct = [...new Map(stems.map((t) => [t.stem, t])).values()];
-  const base = new Map(
-    distinct.map((t) => [t.stem, pairs.filter((p) => containsStem(p.isFold, t.stem)).length])
-  );
+  const baseMemo = new Map();
+  const base = (stem) => {
+    if (!baseMemo.has(stem))
+      baseMemo.set(stem, pairs.filter((p) => containsStem(p.isFold, stem)).length);
+    return baseMemo.get(stem);
+  };
   const rows = [];
   for (const t of stems) {
-    const hits = pairs.filter((p) => usesHeadword(t.sourceWord, p.text));
+    // A word match implies a case-folded substring match, so the cheap test only
+    // discards segments the regex would reject anyway; book-wide it saves most of the run.
+    const lcHead = t.sourceWord.toLowerCase();
+    const hits = pairs.filter(
+      (p) => p.textLower.includes(lcHead) && usesHeadword(t.sourceWord, p.text)
+    );
     if (hits.length === 0) continue;
     // A SYMBOL the MT kept verbatim (kg, Cl, ppm, pH) is not a miss. Only symbol-shaped
     // headwords qualify: an English WORD left in the Icelandic is untranslated residue,
@@ -153,7 +227,7 @@ export function glossaryCoverage({ en, is, terms, minSegments = 5, threshold = 0
         if (o.stem === t.stem || o.stem.includes(t.stem) || t.stem.includes(o.stem)) continue;
         const count = uncovered.filter((p) => containsStem(p.isFold, o.stem)).length;
         if (count < 2) continue;
-        const lift = count / uncovered.length / (base.get(o.stem) / pairs.length);
+        const lift = count / uncovered.length / (base(o.stem) / pairs.length);
         if (lift >= 2)
           collisions.push({ sourceWord: o.sourceWord, targetWord: o.targetWord, count, lift });
       }
@@ -176,6 +250,7 @@ export function glossaryCoverage({ en, is, terms, minSegments = 5, threshold = 0
         targetWord,
         count,
       })),
+      rivals: rivalsFor(uncovered, keyFreq, pairs.length),
     });
   }
   return rows.sort((a, b) => b.candidate - a.candidate || b.total - a.total);

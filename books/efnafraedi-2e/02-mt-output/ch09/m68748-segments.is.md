@@ -8,10 +8,10 @@ Gasþrýstingur
 Tengsl þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið
 
 <!-- SEG:m68748:abstract-item:abstract-item-3 -->
-Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa
+Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa
 
 <!-- SEG:m68748:abstract-item:abstract-item-4 -->
-Útstreymi og flæði lofttegunda
+Útstreymi og sveim gasa
 
 <!-- SEG:m68748:abstract-item:abstract-item-5 -->
 Hreyfiorkukenningin

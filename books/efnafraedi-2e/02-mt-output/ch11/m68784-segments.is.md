@@ -1,5 +1,5 @@
 <!-- SEG:m68784:title:auto-1 -->
-Kollóíðar
+Svif
 
 <!-- SEG:m68784:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla munt þú geta:

@@ -1,5 +1,5 @@
 <!-- SEG:m68840:title:auto-1 -->
-Tilvist, framleiðsla og eiginleikar eðallofttegunda
+Tilvist, framleiðsla og eiginleikar eðalgastegunda
 
 <!-- SEG:m68840:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

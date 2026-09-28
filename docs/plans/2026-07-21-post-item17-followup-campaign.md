@@ -2,6 +2,173 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
+
+### ⏭ SINGLE NEXT ACTION — **The ruling sheet is APPLIED (2026-09-27, 0 ISK). Next: hand the 20 chemistry redirect rows to vefur** ([`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md), replacing the 09-20 list). They must land BEFORE the chemistry sync. **Then step 2 of the development order below.**
+- ✅ Decision + addendum: [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Part 0 = yes; electrode stays *raftroð*.
+- ✅ Hand repair `f313fee32`: 53 title lines (34 section, 12 intro-list, 7 chapter) + §C194 in `m68747`. Readers get it at the ② re-inject/re-render.
+- ✅ `houseStyleTerms.js` `ed9b62e4e`: the eight concept-row changes. **It is code, so it reaches the export only after a deploy.**
+- ⏸ **Open:** where the ~30 *adopted* A-row words should live (see §C193).
+- **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
+ **The editor substitution list is the bulk of the terminology work, and it belongs to the editor phase.**
+
+⚖️ **[USER] RULED ALL FIVE ① DECISIONS 2026-09-26, each the recommended option** → [`docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md`](../decisions/2026-09-26-pre-editor-pivot-translation-rulings.md):
+1. **§C183:** buy the 191 summaries now, `--no-glossary`, after the add-only top-up and the paid-run guards.
+2. **Bought terminology:** fixed by editors, and the re-buy option is given up. A ruling sheet is to be prepared.
+3. **§C192 titles:** settled on a sheet before the redirect rows. **Hand repair of the ruled title lines in `02-mt-output` is AUTHORISED.**
+4. **Figures:**
+   - **㉗:** the strict licence reading, like STIX.
+   - **⑭:** automated WebKit/Firefox screenshots plus a real iPad; `npx playwright install` is ALLOWED.
+5. **㊲:** fix the backup first, then keep figure review CLOSED on prod until the recompose pass is deployed.
+
+**Development order:**
+1. The ruling sheet. ✅ **Prepared 2026-09-26; answered by [USER] 2026-09-27** (applying it is the next action above).
+2. The paid-run guards.
+3. The top-up and the buy.
+4. The ㊲ fix and its deploy.
+5. The ㉗/⑭ composer changes.
+6. The single recompose pass.
+7. ②'s re-inject batch.
+
+Then ③ opens the editor phase.
+
+**Method.** Two runs:
+- 1,425 extracted ids → 293 verification units → 486 verdicts; 6 ground-truth probes.
+- 7 consolidators (one per bin), 1 synthesis, 2 critics.
+- The critics' two decision-changing claims were re-checked by hand on 2026-09-26.
+- The evidence is off-repo → project memory `translation-wrapup-audit-2026-09-24`.
+
+**Chemistry's text is sound:**
+- EN and IS id sets match (22,685 each).
+- 0 of 170 files have stale MT under a stable id; a positive control finds 74 changed ids on `m68667` against `34f870ac9^`.
+- The only thing the current extractor adds is the 191 `:table-summary:` ids (§C183).
+
+**① DECIDE BEFORE EDITORS EDIT — each of these closes an option once they do:**
+- **§C183 top-up: its timing AND its glossary arm.** The arm is unrecorded.
+  - What it buys: 191 summaries, ~2.1k ISK, which reach no reader.
+  - Why now is cheapest: 0 chemistry locks and 0 faithful segment files. Afterwards, `locked-skip` and §C112 get in the way unless additive writes are exempted — a design choice, not an impossibility.
+  - **Under `--glossary-only`, §C186 is live for exactly this buy**: after the re-extract, the tool ranks over every segment EXCEPT the summaries. So either choose `--no-glossary`, or fix §C186 first.
+  - Pre-buy guards (0 ISK):
+    - an explicit arm flag;
+    - reject the empty, trailing and `=` spellings of `--module`;
+    - per-segment Greek conservation;
+    - an output/input length-ratio guard (`m68865` is one 24,833-character chunk).
+- **The route for wrong terms already bought: editor substitution (0 ISK, recommended) or re-buy.**
+  - A re-buy is a whole-module `--force`: ≈ 11k ISK; it re-rolls verified text and reverts hand repairs.
+  - The volume is larger than P5's 420 pairs → **§C193**.
+- 🔴 **§C192 (new): chapter and section TITLE regressions ship at the sync.** Titles were bought as isolated one-segment requests.
+  - **Chapter titles, measured 2026-09-26:**
+    - **ch07** "Efnahvörf og sameindabygging" — that is *reactions*; live has "Efnatengi…".
+    - **ch12** "Hreyfifræði" — that is *kinematics*; live and the approved row have "Hraðafræði".
+    - **ch04** "Efnajöfnur og efnahvörf" drops *stoichiometry*; live has "Hlutfallaefnafræði efnahvarfa".
+    - ch11, ch15, ch18 and ch21 changed arguably and need a ruling.
+  - **Section titles:** 11-2 "Rafleiðar", 4-3, 9-3 and 11-5 "Kollóíðar" contradict approved rows.
+  - **§C183 cannot fix any of these**, because it is additive only.
+  - **Each section-title fix changes a slug, so rule on them BEFORE the redirect rows are written.**
+  - Route: a [USER]-approved hand repair of the `02-mt-output` title segments (the ch06/ch07 precedent), or an editor edit once §C59 has landed.
+- **§C140 ㉗ font verdict and ⑭ WebKit/Firefox check.** Either remedy bumps `COMPOSER_VERSION`, which demotes every figure approval.
+- **§C140 ㊲** (moved to ① by the critic): add `books/*/figure-text/` to `git-backup.sh` PATHSPECS and deploy **before ANY figure review on prod**, [USER]'s ㉕ batch included. Until then, prod sidecar edits never reach `main`.
+
+**② BEFORE THE SYNC — 0 ISK, can run alongside editor development:**
+- **One code batch, then ONE whole-book mt-preview re-inject and re-render.** The batch:
+  - §C191 ① gloss casing (193 glosses on 64 pages) — a casing rule, not a revert;
+  - widen `stripAltMarkers` (9 residue alts on 5 pages, including ch18 `m68832`'s `[[test tube:tilraunaglas]]`);
+  - §C16(a) italic converter (8-4);
+  - §C185 ⑤ table relocation (`m68738`, `m68843`);
+  - §C4 (4-2);
+  - land the ruled math-label edits before the re-inject.
+- **Regenerate the reader `glossary.json`** (last generated 2026-06-25) **and `index.json`**, keyed on the manifests' `termEnglish`.
+  - Add `generate-glossary` to loop Step 5.
+  - Check §C106 homographs at the same time.
+  - Never run the bare `--track faithful` generators.
+- **One figure recompose pass**, at the same `COMPOSER_VERSION` so approvals are kept:
+  - the 20 heavy figures of §C168 (up to 66 MB);
+  - HetCats (label fix, then recompute `renderHash`);
+  - §C161 `/Annots`;
+  - Nitrogen (§C140 ㉑);
+  - the `looks_verbatim` figures (MattType);
+  - the PerTable2 June-raster restore.
+- **Faithful ch01/ch03 overlay** (moved out of ① by the critic): a [LEAD] ruling gated on the sync. Either retire it, or let editors' re-apply replace it.
+- **Redirect rows: 60 missing, 2 to correct** — after ①'s title rulings.
+- **Deploy prod after the batch and before anyone uses *Publish MT preview* or *Vista + Birta*.** Otherwise old code rewrites the fixed pages and the cron commits them.
+
+**③ FIRST IN THE EDITOR PHASE — before editors are unfrozen:**
+- **Apply-path safety:**
+  - §C112;
+  - §C114 ① — prod's 151 chemistry `segment_edits` (39 pending) overlay by id onto re-extracted modules; e.g. `m68667:entry:auto-98` now lands on "Sr";
+  - §C59.
+- §C101 ③ — a save block on 71 segments caused by duplicate seg-ids.
+- Publish failures the editor cannot see: ⑰ (`m68700`/`m68733`/`m68747`/`m68844`) and §C153.
+- The §C53 save gate.
+- Runbook 4.2: re-apply the ch01/ch03/ch05 editorial work. Runbook 4.4: the prod MT re-lock, AFTER the top-up.
+- Define the terminology-QA population before editors see it: §C157 book-wide and §C165.
+- The stale `status.json`, then PR #367.
+
+**§C193 (new) — approved rows the MT split or overrode, book-wide.** §C157 was only ever run on ch06. Census 2026-09-26, aligned segments:
+- *stoichiometry*: 0 of 129 carry the approved *hlutfallaefnafræði*. The MT invented *efnismagnsfræði* (25) and *efnajöfnuhlutfall* (17).
+- *electrolyte*: 0 of 46 carry *rafkleyfi*.
+- *dissociation*: 0 of 33 carry *klofnun*; 24 use *sundr-*, the word ruled for nuclear decay.
+- *colloid*: 3 of 23 carry *svif*.
+- A heuristic flags 41 of 418 chemistry rows as candidates; that is not a defect count. Some rows should simply be deleted (the MT's synonym is fine), and those still flood the editor QA until ruled.
+
+🔴 **CORRECTED — vefur's `deploy.yml` CANNOT release anything.**
+- It has 0 secrets and 0 successful runs; its one dispatch failed on 2026-06-17.
+- **The real trigger that would release the held chemistry is a human running `node scripts/sync-content.js` in vefur, either bare or naming `efnafraedi-2e`.** A sync that names only another book cannot pull chemistry along.
+- The `deploy.yml` route also PROTECTS withheld books from `--delete`, so it would not withdraw organic either. The server-side step in §C190 ① stands.
+- The 2026-09-24 block's "21 rows" was stale; the count is 62.
+
+**[USER] / prod actions** (the reasons are in the evidence):
+- **Prod, read-only:**
+  - SELECT the chemistry `segment_edits`;
+  - count the rows in `figure_review`.
+- **Prod, before assigning or developing:**
+  - run `backfill-appendix-sections.js` (dry-run first) before assigning appendix sections;
+  - bring down a sanitised `sessions.db` copy for terminology-assistant development.
+- **Dev box:** permission for a one-time `npx playwright install` in `server/`, since headless-shell revision 1243 is missing.
+- **Deploy:** prod's content backup may be stranded since #518.
+- **Lesser items:**
+  - record *sykra*/*sykrur* in `houseStyleTerms.js` — they exist only in prod's DB;
+  - strip the BÍN inflections from the tracked C41 manifest;
+  - reconcile the Miðeind invoice (§C91 ①).
+
+## ⏩ RESUME — state as of **2026-09-24 — ⏸ THE TRANSLATION WRAP-UP AUDIT IS PAUSED PART-WAY ([USER]'s weekly usage limit). [USER] wants to pivot to the EDITOR INTERFACE; the audit answers "what translation-process work must be wrapped up first?" Nothing was changed in either repo, 0 ISK.** (the 2026-09-23 evening block below stays current for everything this block does not name)
+
+### ⏭ SINGLE NEXT ACTION — **Resume the audit: verify the 47 queued units, then write the triage, then critique it. The procedure and the local evidence location are in project memory `translation-wrapup-audit-2026-09-24`.** The [USER]-owned actions in the block below still come first, unchanged: finish the vefur organic removal, and tell the editors or revoke organic access on prod.
+
+- **What ran:**
+  - 24 read-only readers covered the whole register, the figure register, the loop plan, the decisions, the handoffs and memory. They returned **1,425 item ids**.
+  - **537** of those passed the filter (open, affects chemistry, part of the translation process), giving **293** verification units.
+  - **190 units are verified (407 verdicts). 47 are queued. 57 are un-numbered fragments** that were deliberately left unverified; they go to the triage as leads only.
+  - All **6 ground-truth probes completed.**
+  - **The triage is NOT done.** Each verdict's bin is one agent's opinion until the synthesis and critic stages have run.
+- **What the probes measured** (2026-09-24, read-only, each with a control). These are facts, not yet triaged:
+  - ✅ **Chemistry's text layer holds.**
+    - The EN and IS id sets match: 22,685 each, 0 of 170 files mismatched.
+    - 0 stable-id English drift; the manifest reads 149/149 green.
+    - A fresh extract in a scratch worktree reproduces the committed `02-for-mt` **except exactly the 191 `:table-summary:` ids in 83 modules**. That confirms §C183's prediction.
+    - The 2026-09-22 extractor fixes (§C177–§C179) do not touch chemistry.
+  - 🔴 **Redirect rows: 60 are missing from vefur `main` and 2 need correcting.** efni's `slug-map.mt-preview.json` records 62 renames. vefur's `sectionRedirects.ts` has 2 chemistry entries, and both point at pages since pruned. No vefur branch carries the rest. **The "21 rows" in the 2026-09-22 blocks below is stale.** These rows must land before the held sync.
+  - 🔴 **Faithful overlay:** vefur serves 14 faithful pages (ch01 and ch03) over their mt-preview twins. The ch01 pages are June/July vintage (ch03's were re-rendered on 09-17). **All 37 image alts on those pages are English**, and the two tracks differ on 262 of 801 id-keyed elements. No mt-preview fix reaches these pages.
+  - 🔴 **§C191 ① is live: 193 lowercased glosses on 64 pages, plus 94 entries in the book `glossary.json`.** 12 of them turn Δ/Π into δ/π. The fix is free (a code change, then re-inject and re-render), but it is a design choice: 57 glosses are lowercased correctly.
+  - ⚠️ **New, and no register item owns it:** a raw `[[test tube:tilraunaglas]]` sits inside an alt on ch18 `m68832`. Both marker strippers stop reading a marker's type at whitespace, so neither removes it.
+  - ⚠️ **The reader `glossary.json` dates from 2026-06-25** and was never regenerated after the re-MT; it still says `atom → frumeind`. The loop has no glossary-regeneration step.
+  - ⚠️ **The editor-handoff runbook steps have no dated closure:** re-apply editorial work, and re-apply MT locks on prod (0 chemistry lock markers are tracked). `status.json` is stale for all 22 chapter files, and the editor dashboard falls back to it.
+  - ⚠️ **§C170:** 32 English external-link labels remain on 22 pages. The wire fix only prevents new cases.
+  - ⚠️ **§C190 ① is only partly done.** vefur PR #234 covers the nginx example config and the notice page. The following are still in place:
+    - `PUBLISHED_BOOKS` still lists organic.
+    - 3 organic redirect entries remain.
+    - Organic stays in the sitemap.
+    - The site is not verified down.
+  - **Glossary:**
+    - The chemistry export is current apart from `degree Celsius` (§C187).
+    - `valence → girðitala` (§C189) is in the export. It never reached the MT, but the editor QA reads the same concept model.
+    - **New:** ch18 was bought without `resonance` and `hydrocarbon`, and ch20 without `trigonal planar`, so editors inherit that residue.
+  - **Figures:** the purchase side is complete. 717 of 1,148 distinct images are translated, and every sidecar is current at `COMPOSER_VERSION` 4. The other 431 are raster-only, copied photos, or 3 refused.
+  - **Hygiene:**
+    - CI on HEAD is green.
+    - The three `feat/figure-text-review-prerebase*` branches are fully superseded on `main`.
+    - PR #367, the UX audit, is still open, 1,297 commits behind `main`. It is the natural first input for the editor work.
+
 ## ⏩ RESUME — state as of **2026-09-23, evening — ⛔ THE ORGANIC TRANSLATION IS STOPPED ([USER], after OpenStax's notice). Organic comes off the website (vefur handoff), then out of `main`'s tree. Translation scope is CHEMISTRY ONLY. ⏹ The chemistry sync is still HELD** (supersedes every block below)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]: start a Claude session in `namsbokasafn-vefur` with [`docs/handoffs/2026-09-23-vefur-remove-organic-and-retire-withdrawn-books.md`](../handoffs/2026-09-23-vefur-remove-organic-and-retire-withdrawn-books.md); and on production, tell the editors or revoke organic access (§C190 ③ — a live leak path). Then efni's removal commit (§C190 ②), only after the site is verified down.**
@@ -6630,6 +6797,67 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - ⚠️ **A2b IS BLOCKING AND ITS 9 FAILS ARE REAL — ALL organic `ch12/m00134..m00142`, leg `cross-side`, EN/IS parsed 13/12 · 16/11 · 28/22 · 43/29 · 7/6 · 25/21 · 9/7 · 104/100 · 99/78.** Those deltas sum to **58 — the entire residual EN−IS id gap** (30,773 − 30,715). It is **pure vintage drift**: the IS bytes are 2026-08-12, the EN was re-extracted 2026-09-01. ✅ **It halts nothing today** — `scripts/chemistry-autorun-chapter.sh` contains **0** references to `remt`/`battery` (positive control: 2 `api-translate`, 13 `node tools/`) — but it would halt a per-unit driver that pre-flights tier 2, **i.e. exactly the organic loop being prepared**. ▶ **Buying organic ch12 dissolves it** by regenerating the IS side from today's EN. ⚠️ **If A2b is instead re-pinned with a 9-name allowlist, pin the `{enParsed, isParsed}` PAIRS, not the filenames** — otherwise further damage in those nine files hides behind the allowlist, and `cross-side` is the only defence against post-write damage.
   - ⚠️ **AND A2b's LICENCE TO BLOCK NARROWS: the base rate goes 0.000% → 4.3% (9/207), or 4.6% in the two-book sweep scope. Global Constraint 4's bar is ~5%** — so it keeps the licence by **0.4 points instead of 5**. State that beside the number; it is the difference between a comfortable gate and a marginal one.
   - ▶ **Ordering that follows from the above:** the 4 trivial edits and the 9-site `PRISTINE` fix are unambiguous and touch no gate. `bracket-delta-corpus` needs the fixture freeze **before** anything else moves under it. **§C174's two live defects are a separate [USER] ruling and are the only part that reaches a reader.**
+
+- **C195 · SEVEN ch21 PROSE SEGMENTS CAME BACK FROM THE PAID MT IN ENGLISH, AND SHIP AT THE SYNC** — **[USER]** route + a repair — **P1 before the sync** — _found 2026-09-26 by the live-vs-re-MT comparison._
+  - **Measured:** a whole-book census of `02-mt-output` segments identical to their English and prose-shaped (≥ 4 English function words) finds **8**.
+    - The positive control is the one already logged: ch08 `m68744:para:fs-idp92007424`, the π-bond definition, which came back English on two paid attempts (see the 8,080-segment census above).
+    - The **7 new ones are all ch21:** `m68852` (21.2) paras `fs-idp10810528`, `fs-idm5999248`, `fs-idp183438528`, `fs-idp1433408`, plus alt `fs-idp74884384-alt` and item `fs-idp258853168-item-1`; and `m68856` (21.4) para `fs-idm211204656`.
+    - That earlier census predates the ch21 buy, which is why these are new.
+  - **Reader-visible:** the prepared 21.2 and 21.4 pages show whole English paragraphs, with only the figure reference translated. Live has them in Icelandic.
+  - **Route:** choose one of
+    - a targeted `--force --module` re-buy of those segments (the second π-bond attempt suggests a retry may not take);
+    - a [USER]-authorised hand translation into `02-mt-output`;
+    - an editor edit once §C59 lands.
+    
+    The live Icelandic of the same paragraphs, from the unedited old MT, is a free starting point for a hand repair.
+  - _[severity: untranslated paragraphs · reader-visible: yes, at the sync · blocks: nothing]_
+
+- **C194 · THE MT MISSPELLS *sameind* (molecule) AS *sámeind-* THROUGHOUT 8.4 (`m68747`, *Molecular Orbital Theory*), AND IT SHIPS AT THE SYNC** — **[USER]** yes/no + a hand repair — **P1 before the sync** — _found 2026-09-26 while building the §C192 title census._
+  - **Measured:** 27 `sámeind…` tokens (`grep -o | wc -l`) in `02-mt-output/ch08/m68747-segments.is.md` (*sámeind, sámeinda, sámeindir, sámeindasvigrúm…*, and the title *Sámeindasvigrúmskenningin*); 35 on the prepared 8.4 page, and 1 each on the ch08 intro, summary, answer key and exercises pages. No other module carries it.
+  - **Why no gate saw it:** the text is well-formed Icelandic-shaped prose, every marker survives, and the word is simply misspelt. Only a spelling or term check could see it, and §C193's census found it by accident: the 8.4 title missed the approved `molecular orbital → sameindasvigrúm` stem.
+  - **Route:** the 2026-09-26 authorisation covers the TITLE line only. The sheet's Part 0 asks [USER] to extend it to every `sámeind` in `m68747`. Then the ② re-inject and re-render. The alternative is an editor substitution once §C59 lands.
+  - ✅ **Repaired in source 2026-09-27 (`f313fee32`, [USER] yes):** 27 → 0. It reaches readers at the ② re-render. 8.4's title is the live *Sameindasvigrúmakenningin* (*-a-*), while the body reads *sameindasvigrúms-*; editors reconcile that split.
+  - _[severity: a misspelt core term on a whole section page · reader-visible: yes, at the sync · blocks: nothing]_
+
+- **C193 · APPROVED GLOSSARY ROWS THE PAID MT SPLIT OR OVERRODE, BOOK-WIDE — §C157 WAS ONLY EVER RUN ON ch06** — **[USER]** rulings + editor work — **P2** — _found 2026-09-26 by the wrap-up audit's completeness critic; census re-runnable from the audit evidence (memory `translation-wrapup-audit-2026-09-24`)._
+  - **Measured 2026-09-26, over aligned segments (legacy (b)/(c)/(d) files excluded, stem substring):**
+    - *stoichiometry*: 0 of 129 carry the approved *hlutfallaefnafræði*. The MT invented *efnismagnsfræði* (25) and *efnajöfnuhlutfall* (17).
+    - *electrolyte*: 0 of 46 carry *rafkleyfi*.
+    - *dissociation*: 0 of 33 carry *klofnun*; 24 use *sundr-*, which is also the ruled word for nuclear decay.
+    - *colloid*: 3 of 23 carry *svif*.
+    - Plausible-synonym rows are candidates for DELETION, not defects: *soluble*, *molar solubility*, *binding energy*, *photoelectric effect*.
+  - **A heuristic flags 41 of 418 chemistry-domain rows (≥10 aligned segments, <35% approved stem).** That is a candidate list, not a defect count.
+  - **Why it matters:**
+    - It enlarges the already-bought remediation decision beyond P5's 420 pairs.
+    - It defines how much false "missing term" noise the editor QA shows (§C50). Rule on it before that QA is put in front of editors.
+  - **2026-09-26 — the ruling sheet is prepared** → [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md). The census can be re-run: `node tools/chapter-term-check.js --book efnafraedi-2e --book-wide --min-segments 10 --threshold 0.35`.
+    - It flags 151 rows, not 41. The unit differs, not the finding: all domains and whole-word headwords, against chemistry-domain rows and substring matching.
+    - **The key column is "approved form anywhere in the book".** For most flagged real terms it is **0**, so "keep approved" means editors introduce a word the model never produced.
+    - 🔴 **Found while building it: `chapter-term-check --threshold` had been parsed with `parseInt` since the tool shipped (2026-09-19).** `0.8` became 0, and the check silently reported 0 candidates, exit 0. It is fixed and test-pinned on this branch; the default 0.5 path was never affected.
+  - ⚖️ **RULED 2026-09-27** → [`docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md`](../decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md). Most named terms KEEP the approved row, so editors substitute. Eight concept rows change via `houseStyleTerms.js` (✅ `ed9b62e4e`, **awaiting a deploy**).
+  - ⏸ **OPEN, routing only, 0 ISK to defer: the ~30 A-row words [USER] adopted by default** (*atómsvigrúm, gufuþrýstingur, hraðalögmál, tvískautsvægi …*) have no concept-model entry yet.
+    - `server/__tests__/houseStyleTerms2026-09-23.test.js` deliberately pins that `atomic orbital` has **no** house-style entry: a house row is global to the chemistry domain, while a per-book choice belongs in `book_term_preference` (an editor action on prod).
+    - So: house-style or book preference? The glossary is off the MT wire, so these rows affect only the editor QA, whose population ③ defines. Decide it there; do not edit the pinned control to make room.
+  - _[severity: terminology residue in bought text · reader-visible: yes · blocks: nothing, but sizes the editor cleanup]_
+
+- **C192 · CHAPTER AND SECTION TITLE REGRESSIONS WILL SHIP AT THE CHEMISTRY SYNC — AND §C183 CANNOT FIX THEM** — **[USER]** ruling + a hand repair or editor edit — **P1 before the sync** — _found 2026-09-26 by the wrap-up audit's completeness critic; chapter titles re-checked by hand the same day._
+  - **Chapter titles.** Each was bought as an isolated one-segment request, and vefur's `generate-toc` prefers the intro page's `chapterTitle`, so the sync replaces the live titles.
+    - **ch07** "Efnahvörf og sameindabygging" — that is *reactions*; live has "Efnatengi og sameindabygging".
+    - **ch12** "Hreyfifræði" — that is *kinematics*; live and the approved row (concept 4812) have "Hraðafræði", and the ch12 body uses *hraðafræði* 10 times.
+    - **ch04** "Efnajöfnur og efnahvörf" drops *stoichiometry*; live has "Hlutfallaefnafræði efnahvarfa".
+    - Arguable, needing a ruling: ch11 "Lausnir og kvoðulausnir" (live "…og svif"), ch15, ch18, and ch21 "Kjarnakemía" (live "Kjarnaefnafræði").
+  - **Section titles** that contradict an approved row:
+    - 11-2 "Rafleiðar" (approved *rafkleyfi*);
+    - 4-3 "Efnajöfnuhlutfall" and 9-3 "Efnismagnsfræði…" (approved *hlutfallaefnafræði*);
+    - 11-5 "Kollóíðar" (approved *svif*).
+    - **Each fix changes a slug, and so a redirect row — rule on them BEFORE the redirect rows are written.**
+  - **Route:**
+    - a [USER]-approved hand repair of the READ-ONLY `02-mt-output` title segments (the ch06/ch07 section-title precedent), or
+    - an editor edit once §C59 lands, because chapter-metadata edits apply without a chapter filter.
+    - The §C183 top-up is additive and never touches an existing segment.
+  - **2026-09-26 — the ruling sheet covers every changed title, not only the instances above:** 7 of 21 chapter titles and 51 of 114 numbered section titles. If all are kept, 48 URLs move; if all are restored, 7 still move, because some live file names were rendered from an older title. 2.7 and 5.1 move URL whatever is ruled. Each row carries a default and a reason, and several titles follow a book-level term question. → [`docs/handoffs/2026-09-26-terminology-and-title-ruling-sheet.md`](../handoffs/2026-09-26-terminology-and-title-ruling-sheet.md). The faithful overlay has only 1.1 and 3.1, and neither changed.
+  - ⚖️ **RULED 2026-09-27** (same record). ✅ **Hand-repaired in `f313fee32`**; the pages move at the ② re-render. ✅ **Redirect rows computed: 20** (the audit's 62 predate the rulings) → [`docs/handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md`](../handoffs/2026-09-27-vefur-chemistry-redirects-after-title-rulings.md). vefur's 2 existing chemistry rows stay correct.
+  - _[severity: wrong chapter titles · reader-visible: yes, at the sync · blocks: the redirect-row list]_
 
 - **C191 · SALVAGED FROM THE LAST ORGANIC VERIFICATION — BOOK-INDEPENDENT DEFECTS THE 2026-09-23 ch01 AGENTS FOUND, KEPT SO THEY DO NOT VANISH WITH THE BOOK** — **[CODE]** — **P3** — _logged 2026-09-23 from a 67-agent read-only verification of organic ch01 (6 lanes, 2 refuters per finding, a critic). Organic is stopped (§C190), so only what can touch chemistry is kept here._
   - ① **✅ LIVE ON CHEMISTRY, MEASURED: the injector's English gloss LOWERCASES proper names and acronyms.** Chemistry `6-4-rafeindabygging-atoma-rafeindaskipan.html` and `6-key-terms.html` read *"(e. aufbau principle)"*, *"(e. hund’s rule)"*; organic showed *"(e. valence bond (vb) theory)"*, *"(e. bonding mo)"*. Reader-visible on prepared pages. The source term keeps its case, so the lowercasing is ours (annotate-en in `cnxml-inject`). Fix is post-wire (free re-inject + re-render). **Census the whole chemistry book before fixing** — the census above was a grep for five names, not a sweep.

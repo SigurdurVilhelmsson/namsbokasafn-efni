@@ -1,5 +1,5 @@
 <!-- SEG:m68773:title:auto-1 -->
-Grindarformgerðir í kristölluðum föstum efnum
+Grindargerðir í kristalkenndum fastefnum
 
 <!-- SEG:m68773:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

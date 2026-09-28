@@ -1,2 +1,2 @@
 <!-- SEG:chapter:title:ch11 -->
-Lausnir og kvoðulausnir
+Lausnir og svif

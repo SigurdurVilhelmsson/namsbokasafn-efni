@@ -1,5 +1,5 @@
 <!-- SEG:m68783:title:auto-1 -->
-Sameiginlegir eiginleikar
+Samþynningareiginleikar
 
 <!-- SEG:m68783:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

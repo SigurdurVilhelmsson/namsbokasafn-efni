@@ -1,5 +1,5 @@
 <!-- SEG:m68821:title:auto-1 -->
-Yfirlit yfir oxunar-afoxunarfræði
+Yfirlit yfir oxunar-afoxunarefnafræði
 
 <!-- SEG:m68821:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

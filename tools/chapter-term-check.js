@@ -58,6 +58,8 @@ Options:
   --min-segments <n>  Segments a term needs before it can be a candidate (default 5)
   --threshold <x>     Coverage below which a term is a candidate (default 0.5)
   --top <n>           Candidates to print (default 20; 0 = all)
+  --book-wide         (a) over EVERY chapter's aligned segments at once, in place of
+                      --chapter. The short-label check (b) is per chapter and is skipped.
   --all-fragments     Pre-buy: also show one-word pieces of longer candidates
   --json              Print the full result as JSON
   -h, --help          Show this help`);
@@ -74,6 +76,23 @@ function readChapterSegments(dir, re) {
     for (const [k, v] of parseSegmentsMap(fs.readFileSync(path.join(dir, f), 'utf8')))
       merged.set(k, v);
   }
+  return merged;
+}
+
+/** Every chapter directory of a book's 02-for-mt, in order (chNN, then appendices). */
+function chapterDirs(bookDir) {
+  const root = path.join(bookDir, '02-for-mt');
+  if (!fs.existsSync(root)) return [];
+  return fs
+    .readdirSync(root)
+    .filter((d) => /^ch\d+$/.test(d) || d === 'appendices')
+    .sort();
+}
+
+/** Merge several segment maps. Ids carry their module, so they cannot collide. */
+function mergeMaps(maps) {
+  const merged = new Map();
+  for (const m of maps) for (const [k, v] of m) merged.set(k, v);
   return merged;
 }
 
@@ -100,11 +119,13 @@ function main() {
     BOOK_OPTION,
     CHAPTER_OPTION,
     { name: 'minSegments', flags: ['--min-segments'], type: 'number', default: 5 },
-    { name: 'threshold', flags: ['--threshold'], type: 'number', default: 0.5 },
+    // parseArgs' `number` type is parseInt, which turned 0.8 into 0 and made every term pass.
+    { name: 'threshold', flags: ['--threshold'], type: 'number', default: 0.5, parse: Number },
     { name: 'top', flags: ['--top'], type: 'number', default: 20 },
     { name: 'json', flags: ['--json'], type: 'boolean', default: false },
     { name: 'preBuy', flags: ['--pre-buy'], type: 'boolean', default: false },
     { name: 'allFragments', flags: ['--all-fragments'], type: 'boolean', default: false },
+    { name: 'bookWide', flags: ['--book-wide'], type: 'boolean', default: false },
   ]);
   if (args.help) {
     help();
@@ -112,18 +133,31 @@ function main() {
     return;
   }
   requireBook(args);
-  if (args.chapter === null || Number.isNaN(args.chapter)) {
+  if (args.bookWide && (args.preBuy || args.chapter !== null)) {
+    console.error('Error: --book-wide replaces --chapter and cannot be used with --pre-buy');
+    return;
+  }
+  if (!(args.threshold > 0 && args.threshold <= 1)) {
+    console.error(`Error: --threshold must be a share in (0, 1], got ${args.threshold}`);
+    return;
+  }
+  if (!args.bookWide && (args.chapter === null || Number.isNaN(args.chapter))) {
     console.error('Error: --chapter is required');
     return;
   }
 
   const bookDir = path.join(REPO_ROOT, 'books', args.book);
-  const ch = chapterDirName(args.chapter);
-  const mtDir = path.join(bookDir, '02-mt-output', ch);
-  const en = readChapterSegments(path.join(bookDir, '02-for-mt', ch), EN_FILE);
+  const chs = args.bookWide ? chapterDirs(bookDir) : [chapterDirName(args.chapter)];
+  const ch = args.bookWide ? 'book-wide' : chs[0];
+  const mtDirs = chs.map((c) => path.join(bookDir, '02-mt-output', c));
+  const en = mergeMaps(
+    chs.map((c) => readChapterSegments(path.join(bookDir, '02-for-mt', c), EN_FILE))
+  );
   // ⚠️ Pre-buy runs BEFORE any purchase, so there is no Icelandic to read and demanding
   // it would make the mode useless exactly when it is needed. English alone is required.
-  const is = args.preBuy ? new Map() : readChapterSegments(mtDir, IS_FILE);
+  const is = args.preBuy
+    ? new Map()
+    : mergeMaps(mtDirs.map((d) => readChapterSegments(d, IS_FILE)));
   if (en.size === 0 || (!args.preBuy && is.size === 0)) {
     console.error(`Error: no segments for ${args.book} ${ch} (EN ${en.size}, IS ${is.size})`);
     return;
@@ -150,11 +184,15 @@ function main() {
 
   const sourceDir = path.join(bookDir, '01-source', ch);
   const { overlay, glossaryMap } = loadMathLabelResolver(bookDir);
-  const labels = fs.existsSync(sourceDir)
-    ? findSuppressedShortLabels(chapterMathTokens(sourceDir), { overlay, glossaryMap })
-    : [];
+  const labels =
+    !args.bookWide && fs.existsSync(sourceDir)
+      ? findSuppressedShortLabels(chapterMathTokens(sourceDir), { overlay, glossaryMap })
+      : [];
 
-  const arms = args.preBuy ? {} : mtArms(mtDir);
+  const arms = {};
+  if (!args.preBuy)
+    for (const d of mtDirs)
+      for (const [a, n] of Object.entries(mtArms(d))) arms[a] = (arms[a] || 0) + n;
   if (args.json) {
     console.log(
       JSON.stringify({ book: args.book, chapter: ch, arms, coverage, plan, labels }, null, 2)
@@ -237,6 +275,7 @@ function main() {
       console.log(
         `  ${r.sourceWord} → ${r.targetWord}  [stem ${r.stem}]  ${r.covered + r.kept}/${r.total}` +
           (r.kept ? ` (${r.kept} kept verbatim)` : '') +
+          `\n      MT wrote: ${r.rivals.map((x) => `${x.form} ×${x.count}`).join(', ') || '—'}` +
           `\n      also present: ${used || '—'}\n      e.g. ${r.uncovered.join('  ')}`
       );
     }
@@ -244,6 +283,10 @@ function main() {
       console.log(`  … ${candidates.length - shown.length} more (--top 0)`);
   }
 
+  if (args.bookWide) {
+    process.exitCode = 0;
+    return;
+  }
   // The short-label check reads `01-source`, so it is equally valid before a buy: it is
   // printed in BOTH modes, lettered (b) after the buy and (c) before it.
   const open = labels.filter((l) => !l.ruled);

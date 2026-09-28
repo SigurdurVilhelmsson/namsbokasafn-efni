@@ -1,5 +1,5 @@
 <!-- SEG:m68759:title:auto-1 -->
-Hegðun raungass
+Frávik frá kjörgaseiginleikum
 
 <!-- SEG:m68759:abstract:auto-2 -->
 Þegar þú hefur lokið þessum kafla muntu geta:

@@ -1,5 +1,5 @@
 <!-- SEG:m68754:title:auto-1 -->
-Útstreymi og flæði lofttegunda
+Útstreymi og sveim gasa
 
 <!-- SEG:m68754:abstract:auto-2 -->
 Í lok þessa kafla muntu geta:

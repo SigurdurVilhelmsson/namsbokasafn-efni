@@ -1,5 +1,5 @@
 <!-- SEG:m68799:title:auto-1 -->
-Jafnvægisbreytingar: Lögmál Le Châteliers
+Tilfærsla jafnvægis: Lögmál Le Châteliers
 
 <!-- SEG:m68799:abstract:auto-2 -->
 Þegar þú hefur lokið þessum kafla geturðu:

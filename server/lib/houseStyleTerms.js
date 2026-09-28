@@ -483,6 +483,80 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       '(§C187); if it were ever sent, the existing `structural formula → byggingarformúla` row ' +
       'would substring-fire on it.',
   }),
+  // ── 2026-09-27: the chemistry ruling sheet (§C193).
+  // Record: docs/decisions/2026-09-27-chemistry-terms-and-titles-ruling-sheet.md. Most named
+  // terms confirmed their approved row and need no entry; these eight change the concept model.
+  // Five supersede a PHYSICS row: filed under chemistry they win for chemistry, and in the
+  // physics book's own chain its physics row still outranks them. Counts are aligned chemistry
+  // segments, 2026-09-27.
+  Object.freeze({
+    en: Object.freeze(['radius']),
+    is: 'radíus',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Supersedes the physics row geisli, which also means ray (§C157). The model already writes ' +
+      'radíus in 69 of 70 segments. `atomic radius → atómradíus` is a separate, already-approved row.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['crystalline']),
+    is: 'kristalkenndur',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Supersedes the physics row kristallskenndur, and matches the approved `crystalline solid → ' +
+      'kristalkennt fastefni`. The lemma is stored; [USER] wrote the neuter, as for amorphous on ' +
+      '2026-09-21. The MT writes kristallaður (1 of 66 carry the ruled stem), so editors substitute.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['bent']),
+    is: 'boginn',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Molecular geometry. The incumbent beygður is a CHEMISTRY row, so this wins only by the ' +
+      'same-domain house-style tie-break (§C164). The MT writes boginn in 12 of 23 segments, beygður in 3.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['dimensional analysis']),
+    is: 'einingagreining',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Supersedes the physics row víddargreining. ⚠️ The model writes neither form (víddagreining in ' +
+      'the MT): this is a deliberate [USER] ruling of a form the text does not yet use, so editors ' +
+      'introduce it in all 10 segments. It is not a record of MT behaviour.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['abundance']),
+    is: 'fjöldahlutfall',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Isotopic abundance. Supersedes the physics head hlutmergð, which already lists fjöldahlutfall ' +
+      'as an alternative; [USER] chose it as more transparent for students. ⚠️ The MT writes neither ' +
+      '(náttúruleg gnægð, hlutfallslegt …), so editors introduce it in all 19 segments.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['absorption']),
+    is: 'gleypni',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'Supersedes the physics row gleyping. The MT writes gleypni- in 7 of 12 segments (ljósgleypni ' +
+      'among them), and gleyping in 1.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['general anesthetic']),
+    is: 'svæfingarlyf',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'A NEW head, splitting the biology row `anesthetic → deyfilyf` (which stands): a general ' +
+      'anesthetic puts the patient to sleep; a local one numbs. 1 segment, where the MT already writes it.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['molecular compound']),
+    is: 'sameindaefni',
+    ruled: '2026-09-27 [USER]',
+    why:
+      'A NEW head, the pair of the approved `ionic compound → jónaefni`: common Icelandic usage, ' +
+      'while bare compound stays efnasamband. It titles section 2.6 ("Jónaefni og sameindaefni"). ' +
+      'The MT writes sameindaefni in 11 of 19 segments, sameindasamband in 7.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */

@@ -1,5 +1,5 @@
 <!-- SEG:m68857:title:auto-1 -->
-Notkun geislasamsætna
+Notkun geislasamsæta
 
 <!-- SEG:m68857:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

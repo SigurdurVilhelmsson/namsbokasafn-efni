@@ -1,5 +1,5 @@
 <!-- SEG:m68814:title:auto-1 -->
-Tengt jafnvægi
+Tengd jafnvægi
 
 <!-- SEG:m68814:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

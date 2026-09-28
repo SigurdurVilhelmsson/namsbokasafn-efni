@@ -1,5 +1,5 @@
 <!-- SEG:m68744:title:auto-1 -->
-Gildisrafeindatengjakenningin
+Kenning um gildistengi
 
 <!-- SEG:m68744:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla getur þú:

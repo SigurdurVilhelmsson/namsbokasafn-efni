@@ -1,5 +1,5 @@
 <!-- SEG:m68696:title:auto-1 -->
-Jóna- og sameindasambönd
+Jónaefni og sameindaefni
 
 <!-- SEG:m68696:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla munt þú geta:

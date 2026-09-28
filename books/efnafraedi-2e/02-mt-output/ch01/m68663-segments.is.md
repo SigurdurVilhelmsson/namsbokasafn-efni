@@ -17,7 +17,7 @@ Mælingar
 Óvissa, nákvæmni og nákvæmni mælinga
 
 <!-- SEG:m68663:abstract-item:abstract-item-6 -->
-Stærðfræðileg meðferð mæliniðurstaðna
+Stærðfræðileg meðferð á niðurstöðum mælinga
 
 <!-- SEG:m68663:abstract-item:abstract-item-7 -->
 Eining til að prófa virkni ýmissa atriða til að sjá hvernig þau myndast í PDF-skjali
