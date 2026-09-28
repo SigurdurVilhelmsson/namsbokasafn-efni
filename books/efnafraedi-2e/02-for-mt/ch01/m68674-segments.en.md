@@ -28,6 +28,9 @@ The number in the measurement can be represented in different ways, including de
 <!-- SEG:m68674:para:fs-idm144392592 -->
 The measurement units for seven fundamental properties (“base units”) are listed in [[xref:fs-idm81346144]]. The standards for these units are fixed by international agreement, and they are called the [[term:International System of Units|term-00002]] or [[term:SI Units|term-00003]] (from the French, [[i:Le Système International d’Unités]]). SI units have been used by the United States National Institute of Standards and Technology (NIST) since 1964. Units for other properties may be derived from these seven base units.
 
+<!-- SEG:m68674:table-summary:fs-idm81346144-summary -->
+Length is measured with the meter, which is symbolized using a lowercase M. Mass is measured with the kilogram which is symbolized with a lowercase K G. Time is measured with the second, which is symbolized with a lowercase S. Temperature is measured with the kelvin which is symbolized with an uppercase K. Electric current is measured with the ampere which is symbolized with an uppercase A. The amount of a substance is measured with the mole, which is symbolized with the lowercase letters, M O L. Luminous intensity is measured with the candela, which is symbolized with the lowercase letters C D.
+
 <!-- SEG:m68674:entry:auto-11 -->
 Base Units of the SI System
 
@@ -105,6 +108,9 @@ cd
 
 <!-- SEG:m68674:para:eip-134 -->
 Everyday measurement units are often defined as fractions or multiples of other units. Milk is commonly packaged in containers of 1 gallon (4 quarts), 1 quart (0.25 gallon), and one pint (0.5 quart). This same approach is used with SI units, but these fractions or multiples are always powers of 10. Fractional or multiple SI units are named using a prefix and the name of the base unit. For example, a length of 1000 meters is also called a kilometer because the prefix [[i:kilo]] means “one thousand,” which in scientific notation is 10[[sup:3]] (1 kilometer = 1000 m = 10[[sup:3]] m). The prefixes used and the powers to which 10 are raised are listed in [[xref:fs-idm81128320]].
+
+<!-- SEG:m68674:table-summary:fs-idm81128320-summary -->
+The prefix femto has the symbol lowercase f and a factor of 10 to the negative fifteenth power. Therefore, 1 femtosecond, F S, is equal to 1 times 10 to the negative 15 of a meter, or 0.000000000001 of a meter. The prefix pico has the symbol lowercase P and a factor of 10 to the negative twelfth power. Therefore, 1 picosecond, P S, is equal to 1 times 10 to the negative 12 of a meter, or 0.000000000001 of a meter. The prefix nano has the symbol lowercase N and a factor of 10 to the negative ninth power. Therefore, 4 nanograms, or NG, equals 4 times ten to the negative 9, or 0.000000004 g. The prefix micro has the greek letter mu as its symbol and a factor of 10 to the negative sixth power. Therefore, 1 microliter, or mu L, is equal to one times ten to the negative 6 or 0.000001 L. The prefix milli has a lowercase M as its symbol and a factor of 10 to the negative third power. Therefore, 2 millimoles, or M mol, are equal to two times ten to the negative 3 or 0.002 mol. The prefix centi has a lowercase C as its symbol and a factor of 10 to the negative second power. Therefore, 7 centimeters, or C M, are equal to seven times ten to the negative 2 meters or 0.07 M O L. The prefix deci has a lowercase D as its symbol and a factor of 10 to the negative first power. Therefore, 1 deciliter, or lowercase D uppercase L, are equal to one times ten to the negative 1 meters or 0.1 L. The prefix kilo has a lowercase K as its symbol and a factor of 10 to the third power. Therefore, 1 kilometer, or K M, is equal to one times ten to the third meters or 1000 M. The prefix mega has an uppercase M as its symbol and a factor of 10 to the sixth power. Therefore, 3 megahertz, or M H Z, are equal to three times 10 to the sixth hertz, or 3000000 H Z. The prefix giga has an uppercase G as its symbol and a factor of 10 to the ninth power. Therefore, 8 gigayears, or G Y R, are equal to eight times 10 to the ninth years, or 800000000 G Y R. The prefix tera has an uppercase T as its symbol and a factor of 10 to the twelfth power. Therefore, 5 terawatts, or T W, are equal to five times 10 to the twelfth watts, or 5000000000000 W.
 
 <!-- SEG:m68674:entry:auto-37 -->
 Common Unit Prefixes
@@ -328,6 +334,9 @@ We use the mass and volume of a substance to determine its density. Thus, the un
 <!-- SEG:m68674:para:fs-idm74744496 -->
 The [[term:density|term-00016]] of a substance is the ratio of the mass of a sample of the substance to its volume. The SI unit for density is the kilogram per cubic meter (kg/m[[sup:3]]). For many situations, however, this is an inconvenient unit, and we often use grams per cubic centimeter (g/cm[[sup:3]]) for the densities of solids and liquids, and grams per liter (g/L) for gases. Although there are exceptions, most liquids and solids have densities that range from about 0.7 g/cm[[sup:3]] (the density of gasoline) to 19 g/cm[[sup:3]] (the density of gold). The density of air is about 1.2 g/L. [[xref:fs-idm45639696]] shows the densities of some common substances.
 
+<!-- SEG:m68674:table-summary:fs-idm45639696-summary -->
+This table reports the density of solids, liquids, and gases in grams per centimeters cubed. The values for solids are ice 0.92, oak wood 0.60 to 0.90, iron 7.9, copper 9.0, lead 11.3, silver 10.5, and gold 19.3. The values for liquids are water 1.0, ethanol 0.79, acetone 0.79, glycerin 1.26, olive oil 0.92, gasoline 0.70 to 0.77, and Mercury 13.6. The values for gases, which were measured when the gas was at 25 degrees Celsius and 1 atmosphere, are dry air 1.20, oxygen 1.31, nitrogen 1.14, carbon dioxide 1.80, helium 0.16, neon 0.83, and radon 9.1.
+
 <!-- SEG:m68674:entry:auto-111 -->
 Densities of Common Substances
 
@@ -489,6 +498,9 @@ Measurements provide quantitative information that is critical in studying and p
 
 <!-- SEG:m68674:title:fs-idm313032912-title -->
 Key Equations
+
+<!-- SEG:m68674:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68674:entry:auto-165 -->
 [[MATH:16]]

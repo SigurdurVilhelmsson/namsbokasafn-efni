@@ -142,6 +142,9 @@ Bohr innleiddi skömmtunarhugmyndir Plancks og Einsteins í líkan af vetnisató
 <!-- SEG:m68732:title:fs-idp212850576-title -->
 Lykiljafna
 
+<!-- SEG:m68732:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68732:entry:auto-49 -->
 [[MATH:16]]
 

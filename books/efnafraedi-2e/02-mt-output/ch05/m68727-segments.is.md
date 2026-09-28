@@ -178,6 +178,9 @@ Staðalbrunavermi
 <!-- SEG:m68727:para:fs-idm75327968 -->
 Brunavermi margra efna hefur verið mælt; nokkur þeirra eru talin upp í [[xref:fs-idp98710048]]. Mörg aðgengileg efni með hátt brunavermi eru notuð sem eldsneyti, þar á meðal vetni, kolefni (sem kol eða viðarkol) og [[term:kolvetni|term-00010]] (efnasambönd sem innihalda aðeins vetni og kolefni), svo sem metan, própan og helstu efnisþættir bensíns.
 
+<!-- SEG:m68727:table-summary:fs-idp98710048-summary -->
+Sýnd er gagnatafla með þremur dálkum og ellefu röðum. Í hausnum stendur „Efni“, „Brunahvarf“ og „Brunaentalpía, Δ H neðra skrift C efra skrift gráðutákn (k J/ mól við 25 °C)“. Fyrsti dálkurinn inniheldur færslurnar „kolefni“, „vetni“, „magnesíum“, „brennisteinn“, „kolsýringur“, „metan“, „asetýlen“, „etanól“, „metanól“ og „ísóoktan“. Annar dálkurinn inniheldur jöfnurnar „C (s) + O (g) ör til hægri C O neðra skrift 2 (g)“, „H neðra skrift 2 (g) + einn helmingur O neðra skrift 2 (g) ör til hægri H neðra skrift 2 O (l)“, „M g (s) + einn helmingur O neðra skrift 2 (g) ör til hægri M g O (s)“, „S (s) + O neðra skrift 2 (g) ör til hægri S O neðra skrift 2 (g)“, „C O (g) + einn helmingur O neðra skrift 2 (g) ör til hægri C O neðra skrift 2 (g)“, „C H neðra skrift 4 (g) + 2 O neðra skrift 2 (g) ör til hægri C O neðra skrift 2 (g) + 2 H neðra skrift 2 O (g)“, „C neðra skrift 2 H neðra skrift 2 (g) + fimm helmingar O neðra skrift 2 (g) ör til hægri 2 C O neðra skrift 2 (g) + H neðra skrift 2 O (l)“, „C neðra skrift 2 H neðra skrift 5 O H (l) + 2 O neðra skrift 2 (g) ör til hægri C O neðra skrift 2 (g) + 3 H neðra skrift 2 O (l)“, „C H neðra skrift 3 O H (l) + þrír helmingar O neðra skrift 2 (g) ör til hægri C O neðra skrift 2 (g) + 2 H neðra skrift 2 O (l)“ og „C neðra skrift 8 H neðra skrift 18 (l) + tuttugu og fimm helmingar O neðra skrift 2 (g) ör til hægri 8 C O neðra skrift 2 (g) + 9 H neðra skrift 2 O (l)“. Síðasti dálkurinn inniheldur gildin „–393,5“, „–285,8“, „–601,6“, „–296,8“, „–283,0“, „–890,8“, „–1301,1“, „–1366,8“, „–726,1“ og „–5460“.
+
 <!-- SEG:m68727:entry:auto-61 -->
 Staðalbrunavermi á mól
 
@@ -657,6 +660,9 @@ Ef efnabreyting fer fram við fastan þrýsting og eina vinnan sem unnin er staf
 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Lykiljöfnur
+
+<!-- SEG:m68727:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68727:entry:auto-221 -->
 [[MATH:71]]

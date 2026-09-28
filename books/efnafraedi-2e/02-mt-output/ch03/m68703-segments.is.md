@@ -568,6 +568,9 @@ Umhverfisstofnun Bandaríkjanna (EPA) setur takmarkanir á magn eitraðra efna s
 <!-- SEG:m68703:title:fs-idm26459312-title -->
 Lykiljöfnur
 
+<!-- SEG:m68703:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68703:entry:auto-191 -->
 [[MATH:15]]
 

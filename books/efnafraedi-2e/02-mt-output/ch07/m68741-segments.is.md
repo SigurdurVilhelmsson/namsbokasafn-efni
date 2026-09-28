@@ -40,6 +40,9 @@ Meðaltal C–H tengisorku, D[[sub:C–H]], er 1660/4 = 415 kJ/mól vegna þess 
 <!-- SEG:m68741:para:fs-idp26225392 -->
 Styrkur tengis milli tveggja atóma eykst eftir því sem fjöldi rafeindapara í tenginu eykst. Almennt, þegar tengisstyrkur eykst, minnkar tengilengdin. Þannig komumst við að því að þrítengi eru sterkari og styttri en tvítengi milli sömu tveggja atóma; sömuleiðis eru tvítengi sterkari og styttri en eintengi milli sömu tveggja atóma. Meðaltal tengisorkna fyrir nokkur algeng tengi birtist í [[xref:fs-idp13638832]] og samanburður á tengilengdum og tengisstyrk fyrir nokkur algeng tengi birtist í [[xref:fs-idm44464336]]. Þegar eitt atóm tengist ýmsum atómum í flokki minnkar tengisstyrkurinn venjulega þegar við færumst niður flokkinn. Til dæmis er C–F 439 kJ/mól, C–Cl er 330 kJ/mól og C–Br er 275 kJ/mól.
 
+<!-- SEG:m68741:table-summary:fs-idp13638832-summary -->
+Þessi tafla hefur sex dálka og tuttugu og fjórar raðir. Fyrsta röðin er hausaröð sem merkir dálkana: „Tengi“, „Tengisorka“, „Tengi“, „Tengisorka“, „Tengi“ og „Tengisorka“. Undir fyrsta „Tengi“-dálknum eru gildin: H tengist H með eintengi; H tengist C með eintengi; H tengist N með eintengi; H tengist O með eintengi; H tengist F með eintengi; H tengist Si með eintengi; H tengist P með eintengi; H tengist S með eintengi; H tengist Cl með eintengi; H tengist Br með eintengi; H tengist I með eintengi; C tengist C með eintengi; C tengist C með tvítengi; C tengist C með þrítengi; C tengist N með eintengi; C tengist N með tvítengi; C tengist N með þrítengi; C tengist O með eintengi; C tengist O með tvítengi; C tengist O með þrítengi; C tengist F með eintengi; C tengist Si með eintengi; og C tengist P með eintengi. Undir fyrsta „Tengisorka“-dálknum eru gildin: 436; 415; 390; 464; 569; 395; 320; 340; 432; 370; 295; 345; 611; 837; 290; 615; 891; 350; 741; 1080; 439; 360; og 265. Undir öðrum „Tengi“-dálknum eru gildin: C tengist S með eintengi; C tengist Cl með eintengi; C tengist Br með eintengi; C tengist I með eintengi; N tengist N með eintengi; N tengist N með tvítengi; N tengist N með þrítengi; N tengist O með eintengi; N tengist F með eintengi; N tengist P með eintengi; N tengist Cl með eintengi; N tengist Br með eintengi; O tengist O með eintengi; O tengist O með tvítengi; O tengist F með eintengi; O tengist Si með eintengi; O tengist P með eintengi; O tengist Cl með eintengi; O tengist I með eintengi; F tengist F með eintengi; F tengist Si með eintengi; F tengist P með eintengi; og F tengist S með eintengi. Undir öðrum „Tengisorka“-dálknum eru gildin: 260; 330; 275; 240; 160; 418; 946; 200; 270; 210; 200; 245; 140; 498; 160; 370; 350; 205; 200; 160; 540; 489; og 285. Undir þriðja „Tengi“-dálknum eru gildin: F tengist Cl með eintengi; F tengist Br með eintengi; Si tengist Si með eintengi; Si tengist P með eintengi; Si tengist S með eintengi; Si tengist Cl með eintengi; Si tengist Br með eintengi; Si tengist I með eintengi; P tengist P með eintengi; P tengist S með eintengi; P tengist Cl með eintengi; P tengist Br með eintengi; P tengist I með eintengi; S tengist S með eintengi; S tengist Cl með eintengi; S tengist Br með eintengi; Cl tengist Cl með eintengi; Cl tengist Br með eintengi; Cl tengist I með eintengi; Br tengist Br með eintengi; Br tengist I með eintengi; I tengist I með eintengi; og síðasti reiturinn í dálknum er tómur. Undir þriðja „Tengisorka“-dálknum eru gildin: 255; 235; 230; 215; 225; 359; 290; 215; 215; 230; 330; 270; 215; 215; 250; 215; 243; 220; 210; 190; 180; 150; og síðasti reiturinn í dálknum er tómur.
+
 <!-- SEG:m68741:entry:auto-15 -->
 Tengisorkur (kJ/mól)
 
@@ -469,6 +472,9 @@ F–S
 <!-- SEG:m68741:entry:auto-157 -->
 285
 
+<!-- SEG:m68741:table-summary:fs-idm44464336-summary -->
+Þessi tafla hefur þrjá dálka og tíu raðir. Fyrsta röðin er hausaröð sem merkir dálkana: „Tengi“, „Tengilengd í angströmum“ og „Tengisorka í kJ/mól“. Undir dálknum „Tengi“ eru gildin: C tengist C með eintengi; C tengist C með tvítengi; C tengist C með þrítengi; C tengist N með eintengi; C tengist N með tvítengi; C tengist N með þrítengi; C tengist O með eintengi; C tengist O með tvítengi; og C tengist O með þrítengi. Undir dálknum „Tengilengd í angströmum“ eru gildin: 1,54; 1,34; 1,20; 1,43; 1,38; 1,16; 1,43; 1,23; og 1,13. Undir dálknum „Tengisorka í kJ/mól“ eru gildin: 345; 611; 837; 290; 615; 891; 350; 741; og 1080.
+
 <!-- SEG:m68741:entry:auto-158 -->
 Meðaltengslengdir og tengslorka fyrir nokkur algeng tengi
 
@@ -715,6 +721,9 @@ Við byrjum með frumefnin í sínu algengasta ástandi, Cs([[i:s]]) og F[[sub:2
 <!-- SEG:m68741:para:fs-idm23453808 -->
 Einnig er hægt að nota lögmál Hess til að sýna sambandið milli vermis einstakra skrefa og myndunarvermis. [[xref:fs-idm33829552]] sýnir þetta fyrir flúoríð, CsF.
 
+<!-- SEG:m68741:table-summary:fs-idm33829552-summary -->
+Þessi tafla hefur tvo dálka og sex raðir. Fyrsta röðin er merkt „Þurrgufunarvarmi Cs(s)“ og varmabreytingin er Cs(s) gefur Cs(g). Við hliðina á þessari jöfnu er stórt delta H sem er jafnt og stórt delta H með lágstaf s og gráðumerki sem er einnig jafnt og 76,5 kJ. Önnur röðin er merkt „Helmingur af tengisorku Cl með lágstaf 2.“ Jafnan fyrir þetta er einn helmingur Cl með lágstaf 2 (g) gefur Cl(g). Við hliðina á þessari jöfnu er stórt delta H jafnt og einn helmingur D sem er einnig jafnt og 122 kJ. Þriðja röðin er merkt „Jónunarorka Na(g).“ Jafnan fyrir jónunarorku Na(g) er Na(g) gefur Na með plúsmerki í hástaf (g) plús lítið e með mínusmerki í hástaf. Við hliðina á þessari jöfnu er stórt delta H jafnt og IE sem er einnig jafnt og 496 kJ. Fjórða röðin er merkt „Neikvæð rafeindasækni Cl.“ Jafnan fyrir þetta er Cl(g) plús lítið e með mínusmerki í hástaf gefur Cl með mínusmerki í hástaf (g). Við hliðina á þessari jöfnu er stórt delta H jafnt og neikvætt EA sem er einnig jafnt og neikvætt 368 kJ. Fimmta röðin er merkt „Neikvæð kristalsorka NaCl(s).“ Jafnan fyrir þetta er Na með plúsmerki í hástaf (g) plús Cl með mínusmerki í hástaf (g) gefur NaCl(s). Við hliðina á þessari jöfnu er stórt delta H jafnt og neikvætt stórt delta H með lágstaf kristals sem er einnig óþekkt. Sjötta og síðasta röðin er merkt „Myndunarvarmi NaCl(s), leggðu saman skref 1-5.“ Jafnan fyrir þetta er stórt delta H jafnt og stórt delta H með lágstaf f og gráðumerki sem er einnig jafnt og stórt delta H með lágstaf s og gráðumerki plús einn helmingur D plús IE plús neikvætt EA plús neikvætt stórt delta H með lágstaf kristals. Fyrir neðan þá jöfnu er önnur sem er Na(s) plús einn helmingur Cl með lágstaf 2 (g) gefur NaCl(s) sem er jafnt og neikvætt 411 kJ.
+
 <!-- SEG:m68741:entry:auto-240 -->
 Þurrgufunarvermi Cs([[i:s]])
 
@@ -786,6 +795,9 @@ Styrkur samgilds tengis er mældur með tengisrofsorku þess, þ.e. orkumagninu 
 
 <!-- SEG:m68741:title:fs-idm37663600-title -->
 Lykiljöfnur
+
+<!-- SEG:m68741:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68741:entry:auto-264 -->
 Tengisorka fyrir tvíatóma sameind: [[MATH:37]]
@@ -915,6 +927,9 @@ Notið frumatriði atómbyggingar til að svara hverju eftirfarandi: [[fn:Þessi
 
 <!-- SEG:m68741:solution:fs-idp77726880 -->
 (a) Þegar tvær rafeindir eru fjarlægðar af gildissviði missir Ca-radíusinn ysta orkusviðið og fer aftur á lægra [[i:n]] = 3 sviðið, sem er mun minna í radíus. (b) +2 hleðsla kalsíums dregur súrefnið mun nær samanborið við K og eykur þar með grindarorkuna miðað við minna hlaðna jón. (c) Að fjarlægja 4[[i:s]] rafeindina í Ca krefst meiri orku en að fjarlægja 4[[i:s]] rafeindina í K vegna sterkari aðdráttar frá kjarnanum og aukaorkunnar sem þarf til að rjúfa pörun rafeindanna. Önnur jónunarorka fyrir K krefst þess að rafeind sé fjarlægð af lægra orkusviði, þar sem aðdrátturinn frá kjarnanum að rafeindinni er mun sterkari. Auk þess þarf orku til að afpara tvær rafeindir á fullu svigrúmi. Fyrir Ca krefst önnur jónunarorka þess aðeins að ein stök rafeind sé fjarlægð af óvörðu ytra orkusviðinu. (d) Í Al er rafeindin sem er fjarlægð tiltölulega óvarin og ópöruð á [[i:p]]-svigrúmi. Hærri orkan fyrir Mg endurspeglar aðallega afpörun 2[[i:s]] rafeindarinnar.
+
+<!-- SEG:m68741:table-summary:fs-idm30060832-summary -->
+Þessi tafla hefur þrjá dálka og þrjár raðir. Fyrsta röðin er hausaröð sem merkir dálkana: „Frumefni,“ „Fyrsta jónunarorka í kJ/mól,“ og „Önnur jónunarorka í kJ/mól.“ Undir dálkinum „Frumefni“ eru bókstafirnir: K og Ca. Undir dálkinum „Fyrsta jónunarorka í kJ/mól“ eru gildin: 419 og 590. Undir dálkinum „Önnur jónunarorka í kJ/mól“ eru gildin: 3050 og 1140.
 
 <!-- SEG:m68741:entry:auto-307 -->
 Frumefni

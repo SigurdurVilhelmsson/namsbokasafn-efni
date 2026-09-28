@@ -91,6 +91,9 @@ Units of Radiation Measurement
 <!-- SEG:m68858:para:fs-idp36142832 -->
 [[xref:fs-idp3417984]] summarizes the units used for measuring radiation.
 
+<!-- SEG:m68858:table-summary:fs-idp3417984-summary -->
+This table contains four columns and four rows. The first row is a header row, and it labels each column: “Measurement Purpose,” “Unit,” “Quantity Measure,” and “Description.” Under the “Measurement Purpose” column are the following: activity of source, absorbed dose, and biologically effective dose. Under the “Unit” column are the following: bequerel ( b q) and curie ( c i ); gray ( g y ) and radiation absorbed dose ( rad ); sievert (s v) and roentgen equivalent for humans ( rem ). Under the “Quantity Measured” column are the following: radioactive decays or emissions; energy absorbed per k g of tissue; tissue damage. Under the “Description” column are the following: amount of sample that undergoes 1 decay / second and amount of sample that undergoes 3.7 times ten superscript 10 decays / second; 1 g y equals 1 J / k g tissue and 1 rad equals 0.01 J / k g tissue; S v equals R B E times G y and Rem equals R B E times rad.
+
 <!-- SEG:m68858:entry:auto-32 -->
 Units Used for Measuring Radiation
 
@@ -238,6 +241,9 @@ A bar graph titled “Radiation Doses and Regulatory Limits, open parenthesis, i
 <!-- SEG:m68858:para:fs-idp111220720 -->
 A short-term, sudden dose of a large amount of radiation can cause a wide range of health effects, from changes in blood chemistry to death. Short-term exposure to tens of rems of radiation will likely cause very noticeable symptoms or illness; a dose of about 500 rems is estimated to have a 50% probability of causing the death of the victim within 30 days of exposure. Exposure to radioactive emissions has a cumulative effect on the body during a person’s lifetime, which is another reason why it is important to avoid any unnecessary exposure to radiation. Health effects of short-term exposure to radiation are shown in [[xref:fs-idp167827232]].
 
+<!-- SEG:m68858:table-summary:fs-idp167827232-summary -->
+This table contains three columns and fifteen rows. The first row is a header row, and it labels each column: “Exposure ( rem ),” “Health Effect,” and “Time to Onset ( without treatment ).” Under the “Exposure ( rem )” column are the following: 5 – 10, 50, 55, 70, 75, 90, 100, 400, 1000, two blank cells, 2000, and two more blank cells. Under the “Health Effect” column are the following: changes in blood chemistry, nausea, fatigue, vomiting, hair loss, diarrhea, hemorrhage, possible death, destruction of intestinal lining, internal bleeding, death, damage to central nervous system, loss of consciousness, and death. Under the “Time to Onset ( without treatment” column are the following: a blank cell, hours, two blank cells, 2 – 3 weeks, two blank cells, within 2 months, two blank cells, 1 – 2 weeks, one blank cell, minutes, and hours to days.
+
 <!-- SEG:m68858:entry:auto-81 -->
 Health Effects of Radiation [[fn:Source: US Environmental Protection Agency|fs-idm72989328]]
 
@@ -378,6 +384,9 @@ Various devices, including Geiger counters, scintillators, and dosimeters, are u
 
 <!-- SEG:m68858:title:fs-idp6038480-title -->
 Key Equations
+
+<!-- SEG:m68858:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68858:entry:auto-128 -->
 rem = RBE [[MATH:9]] rad

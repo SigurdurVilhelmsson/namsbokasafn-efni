@@ -235,6 +235,9 @@ The extent to which one substance will dissolve in another is determined by seve
 <!-- SEG:m68782:title:fs-idp44827264-title -->
 Key Equations
 
+<!-- SEG:m68782:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68782:entry:auto-80 -->
 [[MATH:6]]
 

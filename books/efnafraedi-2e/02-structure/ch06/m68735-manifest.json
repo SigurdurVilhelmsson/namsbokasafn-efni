@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68735",
-  "extractedAt": "2026-09-19T11:58:19.572Z",
+  "extractedAt": "2026-09-28T20:03:05.527Z",
   "sourceHash": "527f7d19e891350c",
-  "segmentCount": 179,
+  "segmentCount": 181,
   "segmentIds": [
     "m68735:title:auto-1",
     "m68735:abstract:auto-2",
@@ -13,6 +13,7 @@
     "m68735:para:fs-idp8713040",
     "m68735:title:fs-idm46575248-title",
     "m68735:para:fs-idm81399712",
+    "m68735:table-summary:fs-idp28766560-summary",
     "m68735:entry:auto-9",
     "m68735:entry:auto-10",
     "m68735:entry:auto-11",
@@ -67,6 +68,7 @@
     "m68735:para:fs-idm146806928",
     "m68735:alt:CNX_Chem_06_05_Oxygen122_img-alt",
     "m68735:para:fs-idm10621984",
+    "m68735:table-summary:fs-idp3693744-summary",
     "m68735:entry:auto-63",
     "m68735:entry:auto-64",
     "m68735:entry:auto-65",

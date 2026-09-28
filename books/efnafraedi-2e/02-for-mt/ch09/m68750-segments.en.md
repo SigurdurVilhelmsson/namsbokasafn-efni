@@ -55,6 +55,9 @@ This figure includes two photographs. Figure a is a photo of a large gray elepha
 <!-- SEG:m68750:para:fs-idm10039728 -->
 The SI unit of pressure is the [[term:pascal (Pa)|term-00002]], with 1 Pa = 1 N/m[[sup:2]], where N is the newton, a unit of force defined as 1 kg m/s[[sup:2]]. One pascal is a small pressure; in many cases, it is more convenient to use units of kilopascal (1 kPa = 1000 Pa) or [[term:bar|term-00003]] (1 bar = 100,000 Pa). In the United States, pressure is often measured in pounds of force on an area of one square inch—[[term:pounds per square inch (psi)|term-00004]]—for example, in car tires. Pressure can also be measured using the unit [[term:atmosphere (atm)|term-00005]], which originally represented the average sea level air pressure at the approximate latitude of Paris (45°). [[xref:fs-idp189967312]] provides some information on these and a few other common units for pressure measurements
 
+<!-- SEG:m68750:table-summary:fs-idp189967312-summary -->
+This table has two columns and 10 rows. The first row is a header row, and it labels the columns as “Unit Name and Abbreviation” and “Definition or Relation to Other Unit.” The first unit name and abbreviation is pascal, and it is abbreviated as P a. The definition or relation to other unit is 1 P a equals N over m squared and recommended I U P A C unit. The next unit name is kilopascal, and it is abbreviated as k P a. The definition or relation to other unit is 1 k P a equals 1000 P a. The next unit name is pounds per square inch, and it is abbreviated as p s i. The definition or relation to other unit is air pressure at sea level is approximately 14.7 p s i. The next unit name is atmosphere, and is is abbreviated as a t m. The definition or relation to other unit is 1 a t m equals 101,325 P a and air pressure at sea level is approximately one a t m. The next unit name is bar, and it is abbreviated as bar or b. The definition or relation to other unit is 1 bar equals 100,000 P a exactly and commonly used in meteorology. The next unit name is millibar, and it is abbreviated as m b a r or m b. The definition or relation to other unit is 1000 m b a r equals one bar. The next unit name is inches of mercury, and it is abbreviated as i n period, H g. The definition or relation to other unit is one i n period H g equals 3386 P a and is used by the aviation industry and also some weather reports. The next unit is torr. The definition or relation to other unit is 1 torr equals 1 over 760 a t m and named after Evangelista Torricelli, inventor of the barometer. The last unit name is millimeters of mercury, and it is abbreviated as m m H g. The definition or relation to other unit is 1 m m H g is approximately 1 torr.
+
 <!-- SEG:m68750:entry:auto-20 -->
 Pressure Units
 
@@ -387,6 +390,9 @@ Gases exert pressure, which is force per unit area. The pressure of a gas may be
 
 <!-- SEG:m68750:title:fs-idp68662112-title -->
 Key Equations
+
+<!-- SEG:m68750:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68750:entry:auto-131 -->
 [[MATH:13]]

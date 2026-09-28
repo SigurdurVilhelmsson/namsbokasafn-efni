@@ -37,6 +37,9 @@ Farðu á þessa [[link:sýndartilraunastofu|http://openstax.org/l/16Phetsugar]]
 <!-- SEG:m68778:para:fs-idm72001728 -->
 Vatn er svo oft notað sem leysir að orðið lausn er farið að gefa í skyn vatnslausn í huga margra. Hins vegar getur næstum hvaða gas, vökvi eða fast efni sem er virkað sem leysir. Margar [[term:málmblöndur|term-00001]] eru fastar lausnir af einum málmi uppleystum í öðrum; til dæmis innihalda bandarískar fimm senta myntir nikkel uppleyst í kopar. Loft er gaslausn, einsleit blanda af köfnunarefni, súrefni og nokkrum öðrum lofttegundum. Súrefni (gas), alkóhól (vökvi) og sykur (fast efni) leysast öll upp í vatni (vökva) og mynda vökvalausnir. [[xref:fs-idp13681744]] sýnir dæmi um nokkrar mismunandi lausnir og fasa uppleystu efnanna og leysanna.
 
+<!-- SEG:m68778:table-summary:fs-idp13681744-summary -->
+Taflan sýnir uppleyst efni og leysa fyrir ýmsar lausnir. Í lofti er uppleysta efnið O neðanskrift 2 g og leysirinn er N neðanskrift 2 g. Í gosdrykkjum er uppleysta efnið C O neðanskrift 2 g og leysirinn er H neðanskrift 2 O l. Í vetni í palladíum er H neðanskrift 2 g uppleysta efnið og P d s er leysirinn. Í sótthreinsispíra er H neðanskrift 2 O l uppleysta efnið og C neðanskrift 3 H neðanskrift 8 O l eða 2 – própanól er leysirinn. Í saltvatni er N a C l s uppleysta efnið og H neðanskrift 2 O l er leysirinn. Í látúni er Z n s uppleysta efnið og C u s er leysirinn.
+
 <!-- SEG:m68778:entry:auto-14 -->
 Mismunandi gerðir lausna
 

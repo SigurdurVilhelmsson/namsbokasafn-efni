@@ -178,6 +178,9 @@ Hægt er að þvinga ósjálfsprottin oxunar-afoxunarferli til að eiga sér sta
 <!-- SEG:m68827:title:fs-idm102923952-title -->
 Lykiljöfnur
 
+<!-- SEG:m68827:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68827:entry:auto-61 -->
 [[i:Q]] = [[i:I]] [[MATH:4]] [[i:t]] = [[i:n]] [[MATH:5]] [[i:F]]
 

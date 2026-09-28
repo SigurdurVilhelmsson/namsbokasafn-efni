@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68778",
-  "extractedAt": "2026-09-20T20:39:52.484Z",
+  "extractedAt": "2026-09-28T20:03:06.967Z",
   "sourceHash": "3267e3d0d2c6fa9a",
-  "segmentCount": 99,
+  "segmentCount": 100,
   "segmentIds": [
     "m68778:title:auto-1",
     "m68778:abstract:auto-2",
@@ -18,6 +18,7 @@
     "m68778:alt:fs-idm31373696-alt",
     "m68778:para:fs-idm40076400",
     "m68778:para:fs-idm72001728",
+    "m68778:table-summary:fs-idp13681744-summary",
     "m68778:entry:auto-14",
     "m68778:entry:auto-15",
     "m68778:entry:auto-16",

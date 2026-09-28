@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68829",
-  "extractedAt": "2026-09-21T17:05:37.450Z",
+  "extractedAt": "2026-09-28T20:03:09.421Z",
   "sourceHash": "8ca9a8451628ff1d",
-  "segmentCount": 138,
+  "segmentCount": 139,
   "segmentIds": [
     "m68829:title:auto-1",
     "m68829:abstract:auto-2",
@@ -135,6 +135,7 @@
     "m68829:glossary-def:fs-idp110103392-def",
     "m68829:glossary-term:fs-idm2235360-term",
     "m68829:glossary-def:fs-idm2235360-def",
+    "m68829:table-summary:fs-idp283136-summary",
     "m68829:entry:auto-131",
     "m68829:entry:auto-132",
     "m68829:entry:auto-133",

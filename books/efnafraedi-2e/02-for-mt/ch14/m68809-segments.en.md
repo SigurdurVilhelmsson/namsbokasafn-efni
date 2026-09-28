@@ -154,6 +154,9 @@ equivalence point ([[i:V]] = 25 mL): a drastic rise in pH is observed as the sol
 <!-- SEG:m68809:para:fs-idm183509856 -->
 postequivalence point ([[i:V]] > 25 mL): pH is determined by the amount of excess strong base titrant added; since both samples are titrated with the same titrant, both titration curves appear similar at this stage.
 
+<!-- SEG:m68809:table-summary:fs-idm87178400-summary -->
+This table has four columns and twenty rows. The first row is a header row, and it labels each column, “Volume of 0.100 M N a O H Added ( m L ),” “Moles of N a O H Added,” “p H Values 0.100 M H C l footnote one,” “p H Values 0.100 M C H subscript 3 C O subscript 2 H footnote 2.” Under the “Volume of 0.100 M N a O H Added ( m L )” column are the following values: 0.0, 5.0, 10.0, 15.0, 20.0, 22.0, 24.0, 24.5, 24.9, 25.0, 25.1, 25.5, 26.0, 28.0, 30.0, 35.0, 40.0, 45.0, and 50.0. Under the “Moles of N a O H Added” column are the following values: 0.0, 0.00050, 0.00100, 0.00150, 0.00200, 0.00220, 0.00240, 0.00245, 0.00249, 0.00250, 0.00251, 0.00255, 0.00260, 0.00280, 0.00300, 0.00350, 0.00400, 0.00450, and 0.00500. Under the “p H Values 0.100 M H C l footnote one” column are the following values: 1.00, 1.18, 1.37, 1.60, 1.95, 2.20, 2.69, 3.00, 3.70, 7.00, 10.30, 11.00, 11.29, 11.75, 11.96, 12.22, 12.36, 12.46, and 12.52. Foot note one reads, “Titration of 25.00 m L of 0.100 M H C l ( 0.00250 mol of H C I ) with 0.100 M N a O H.” Under the “p H Values 0.100 M C H subscript 3 C O subscript 2 H footnote 2” column are the following values: 2.87, 4.14, 4.57, 4.92, 5.35, 5.61, 6.13, 6.44, 7.17, 8.72, 10.30, 11.00, 11.29, 11.75, 11.96, 12.22, 12.36, 12.46, and 12.52. Footnote two reads, “Titration of 25.00 m L of 0.100 M C H subscript 3 C O subscript 2 H ( 0.00250 mol of C H subscript 3C O subscript 2 H) with 0.100 M N a O H.”
+
 <!-- SEG:m68809:entry:auto-53 -->
 pH Values in the Titrations of a Strong Acid and of a Weak Acid
 

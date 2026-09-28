@@ -166,6 +166,9 @@ Hreyfifræðikenningin er einfalt en mjög áhrifaríkt líkan sem útskýrir á
 <!-- SEG:m68758:title:fs-idm188828400-title -->
 Lykiljöfnur
 
+<!-- SEG:m68758:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68758:entry:auto-57 -->
 [[MATH:1]]
 

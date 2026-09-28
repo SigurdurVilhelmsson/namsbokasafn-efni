@@ -22,6 +22,9 @@ Breytingar á samgildum radíus
 <!-- SEG:m68735:para:fs-idm81399712 -->
 Skammtafræðilega myndin gerir það erfitt að ákvarða ákveðna stærð atóms. Hins vegar eru nokkrar hagnýtar leiðir til að skilgreina radíus atóma og þar með ákvarða hlutfallslega stærð þeirra sem gefa nokkurn veginn svipuð gildi. Við munum nota [[term:samgildan radíus|term-00001]] ([[xref:CNX_Chem_06_05_CovalradiT]]), sem er skilgreindur sem helmingur fjarlægðarinnar milli kjarna tveggja eins atóma þegar þau eru tengd með samgildu tengi (þessi mæling er möguleg vegna þess að atóm innan sameinda halda enn miklu af atómeinkennum sínum). Við vitum að þegar við förum niður eftir flokki hækkar aðalskammtatalan, [[i:n]], um einn fyrir hvert frumefni. Þannig bætast rafeindirnar við á svæði sem er sífellt fjarlægara kjarnanum. Þar af leiðandi hlýtur stærð atómsins (og samgildur radíus þess) að aukast þegar við aukum fjarlægð ystu rafeindanna frá kjarnanum. Þessi þróun er sýnd fyrir samgilda radíusa halógena í [[xref:fs-idp28766560]] og [[xref:CNX_Chem_06_05_CovalradiT]]. Þróunina fyrir allt lotukerfið má sjá í [[xref:CNX_Chem_06_05_CovalradiT]].
 
+<!-- SEG:m68735:table-summary:fs-idp28766560-summary -->
+Þessi tafla hefur þrjá dálka og sex raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Atóm“, „Samgildur radíus, píkametrar“ og „Kjarnahleðsla“. Undir dálkinum „Atóm“ er eftirfarandi: F, Cl, Br, I og At. Undir dálkinum „Samgildur radíus, píkametrar“ er eftirfarandi: 64, 99, 114, 133 og 148. Undir dálkinum „Kjarnahleðsla“ er eftirfarandi: plús 9, plús 17, plús 35, plús 53 og plús 85.
+
 <!-- SEG:m68735:entry:auto-9 -->
 Samgildir radíusar halógena
 
@@ -183,6 +186,9 @@ Annað frávik verður þegar svigrúm verða meira en hálffyllt. Fyrsta jónun
 
 <!-- SEG:m68735:para:fs-idm10621984 -->
 Það er erfiðara að fjarlægja rafeind úr katjón en úr hlutlausu atómi vegna meiri rafstöðuaðdráttar að katjóninni. Sömuleiðis er erfiðara að fjarlægja rafeind úr katjón með hærri jákvæða hleðslu en að fjarlægja rafeind úr jón með lægri hleðslu. Þannig hækkar síðari jónunarorka fyrir eitt frumefni alltaf. Eins og sést í [[xref:fs-idp3693744]] er mikil aukning í jónunarorku fyrir hvert frumefni. Þetta stökk samsvarar því að fjarlægja kjarnarafeindir, sem er erfiðara að fjarlægja en gildisrafeindir. Til dæmis hafa Sc og Ga bæði þrjár gildisrafeindir, þannig að snögg aukning á jónunarorku á sér stað eftir þriðju jónun.
+
+<!-- SEG:m68735:table-summary:fs-idp3693744-summary -->
+Þessi tafla hefur átta dálka og sjö raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Frumefni“, „IE~1~“, „IE~2~“, „IE~3~“, „IE~4~“, „IE~5~“, „IE~6~“ og „IE~7~“. Undir dálkinum „Frumefni“ er: K, Ca, Sc, Ga, Ge og As. Undir dálkinum „IE~1~“ eru gildin: 418,8, 589,8, 633,1, 578,8, 762,2 og 944,5. Undir dálkinum „IE~2~“ eru eftirfarandi gildi: 3051,8, 1145,4, 1235,0, 1979,4, 1537,5 og 1793,6. Gildið 3051,8 er rautt. Undir dálkinum „IE~3~“ eru gildin: 4419,6, 4912,4, 2388,7, 2964,6, 3302,1 og 2735,5. Undir dálkinum „IE~4~“ eru gildin: 5876,9, 6490,6, 7090,6, 6180, 4410,6 og 4836,8. Undir dálkinum „IE~5~“ eru gildin: 7975,5, 8153,0, 8842,9, 8298,7, 9021,4 og 6042,9. Undir dálkinum „IE~6~“ eru gildin: 9590,6, 10495,7, 10679,0, 10873,9, ekki tiltækt og 12311,5. Undir dálkinum „IE~7~“ eru gildin: 11343, 12272,9, 13315,0, 13594,8, ekki tiltækt og ekki tiltækt.
 
 <!-- SEG:m68735:entry:auto-63 -->
 Síðari jónunarorka fyrir valin frumefni (kJ/mól)

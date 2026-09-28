@@ -34,6 +34,9 @@ Hugtakið „kollóíð“ – úr grísku orðunum [[i:kolla]], sem þýðir �
 <!-- SEG:m68784:para:fs-idm31787584 -->
 Líkt og íhlutir lausnar eru auðkenndir sem „uppleyst efni“ og „leysir“, eru íhlutir kollóíðs einnig flokkaðir eftir hlutfallslegu magni þeirra. Agnaíhluturinn sem venjulega er til staðar í tiltölulega litlu magni er kallaður [[term:dreififasi|term-00005]] og efnið eða lausnin sem agnirnar eru dreifðar um er kölluð [[term:dreifimiðill|term-00006]]. Kollóíðar geta falið í sér nánast hvaða samsetningu eðlisástands sem er (gas í vökva, vökvi í föstu efni, fast efni í gasi o.s.frv.), eins og dæmin um kollóíðkerfi í [[xref:fs-idm28163488]] sýna.
 
+<!-- SEG:m68784:table-summary:fs-idm28163488-summary -->
+Þessi tafla sýnir dæmi um kvoðulausnir. Dæmi um fast efni dreift í gasi eru reykur og ryk. Algeng dæmi um fast efni dreift í vökva, einnig þekkt sem sól, eru sterkja í vatni, sumar tegundir af bleki, málning og magnesíummjólk. Dæmi um fast efni dreift í föstu efni eru sumir litaðir gimsteinar og sumar málmblöndur. Dæmi um vökva dreifðan í gasi, einnig kallað úði, eru ský, þoka, mistur og sprey. Dæmi um vökva dreifðan í vökva, einnig kallað fleyti, eru mjólk, majónes og smjör. Dæmi um vökva sem er dreifður í föstu efni, einnig kallað gel, eru hlaup, gel, perla og ópall, sem er H neðanskrift 2 O í S i O neðanskrift 2. Dæmi um gas dreift í vökva, einnig kallað froða, eru froður, þeyttur rjómi og þeyttar eggjahvítur. Dæmi um gas dreift í föstu efni eru vikur og fljótandi sápur.
+
 <!-- SEG:m68784:entry:auto-13 -->
 Dæmi um kollóíðkerfi
 
@@ -270,6 +273,9 @@ Efnafræði – verkefni í lok kafla
 
 <!-- SEG:m68784:problem:fs-idm156555296 -->
 Greindu dreifða fasann og dreifimiðilinn í hverju af eftirfarandi kvoðukerfum: sterkjudreifing, reykur, þoka, perla, þeyttur rjómi, fljótandi sápa, hlaup, mjólk og rúbín.
+
+<!-- SEG:m68784:table-summary:fs-idm34982368-summary -->
+Þessi tafla sýnir dreifða fasann og dreifimiðilinn fyrir ýmsar kvoðulausnir. Í sterkjudreifingu er dreifði fasinn sterkja og dreifimiðillinn er vatn. Í reyk er dreifði fasinn fastar agnir og dreifimiðillinn er loft. Í þoku er dreifði fasinn vatn og dreifimiðillinn er loft. Í perlu er dreifði fasinn vatn og dreifimiðillinn er kalsíumkarbónat, C a C O neðanskrift 3. Í þeyttum rjóma er dreifði fasinn loft og dreifimiðillinn er rjómi. Í fljótandi sápu er dreifði fasinn loft og dreifimiðillinn er sápa. Í hlaupi er dreifði fasinn ávaxtasafi og dreifimiðillinn er pektíngel. Í mjólk er dreifði fasinn smjörfita og dreifimiðillinn er vatn. Í rúbín er dreifði fasinn króm(III)oxíð C r neðanskrift 2 O neðanskrift 3 og dreifimiðillinn er súrál A l neðanskrift 2 O neðanskrift 3.
 
 <!-- SEG:m68784:entry:auto-92 -->
 Kvoðukerfi

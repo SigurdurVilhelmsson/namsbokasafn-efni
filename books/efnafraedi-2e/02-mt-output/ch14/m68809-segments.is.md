@@ -154,6 +154,9 @@ jafngildispunktur ([[i:V]] = 25 ml): mikil hækkun á pH sést þegar samsetning
 <!-- SEG:m68809:para:fs-idm183509856 -->
 eftir jafngildispunkt ([[i:V]] > 25 ml): pH ræðst af magni umframmagns af sterkum basa títrunarvökva sem bætt er við; þar sem bæði sýnin eru títruð með sama títrunarvökva virðast báðir títrunarferlarnir svipaðir á þessu stigi.
 
+<!-- SEG:m68809:table-summary:fs-idm87178400-summary -->
+Þessi tafla hefur fjóra dálka og tuttugu raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Rúmmál 0,100 M N a O H bætt við ( m L ),“ „Mól af N a O H bætt við,“ „p H gildi 0,100 M H C l neðanmálsgrein eitt,“ „p H gildi 0,100 M C H subscript 3 C O subscript 2 H neðanmálsgrein 2.“ Undir dálkinum „Rúmmál 0,100 M N a O H bætt við ( m L )“ eru eftirfarandi gildi: 0,0, 5,0, 10,0, 15,0, 20,0, 22,0, 24,0, 24,5, 24,9, 25,0, 25,1, 25,5, 26,0, 28,0, 30,0, 35,0, 40,0, 45,0 og 50,0. Undir dálkinum „Mól af N a O H bætt við“ eru eftirfarandi gildi: 0,0, 0,00050, 0,00100, 0,00150, 0,00200, 0,00220, 0,00240, 0,00245, 0,00249, 0,00250, 0,00251, 0,00255, 0,00260, 0,00280, 0,00300, 0,00350, 0,00400, 0,00450 og 0,00500. Undir dálkinum „p H gildi 0,100 M H C l neðanmálsgrein eitt“ eru eftirfarandi gildi: 1,00, 1,18, 1,37, 1,60, 1,95, 2,20, 2,69, 3,00, 3,70, 7,00, 10,30, 11,00, 11,29, 11,75, 11,96, 12,22, 12,36, 12,46 og 12,52. Neðanmálsgrein eitt hljóðar svo: „Títrun á 25,00 m L af 0,100 M H C l ( 0,00250 mól af H C I ) með 0,100 M N a O H.“ Undir dálkinum „p H gildi 0,100 M C H subscript 3 C O subscript 2 H neðanmálsgrein 2“ eru eftirfarandi gildi: 2,87, 4,14, 4,57, 4,92, 5,35, 5,61, 6,13, 6,44, 7,17, 8,72, 10,30, 11,00, 11,29, 11,75, 11,96, 12,22, 12,36, 12,46 og 12,52. Neðanmálsgrein tvö hljóðar svo: „Títrun á 25,00 m L af 0,100 M C H subscript 3 C O subscript 2 H ( 0,00250 mól af C H subscript 3C O subscript 2 H) með 0,100 M N a O H.“
+
 <!-- SEG:m68809:entry:auto-53 -->
 pH-gildi í títrunum á sterkri sýru og veikri sýru
 

@@ -223,6 +223,9 @@ Reiknaðu hvarfstuðulinn og ákvarðaðu í hvaða átt hvert eftirfarandi hvar
 <!-- SEG:m68798:note-title:fs-idp32992592-title -->
 Svar:
 
+<!-- SEG:m68798:table-summary:fs-idp70024256-summary -->
+Þessi tafla hefur fjóra dálka og fimm raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk, „Hvarfefni / Myndefni“, „Tilraun 1“, „Tilraun 2“ og „Tilraun 3“. Undir dálkinum „Hvarfefni / Myndefni“ eru: [ C O ] með lágstaf i; [ H með lágstaf 2 O ] með lágstaf i; [ C O með lágstaf 2 ] með lágstaf i; [ H með lágstaf 2 ] með lágstaf i. Undir dálkinum „Tilraun 1“ eru tölurnar: 0,0203 M; 0,0203 M; 0,0040 M; og 0,0040 M. Undir dálkinum „Tilraun 2“ eru tölurnar: 0,011 M; 0,0011 M; 0,037 M; og 0,046 M. Undir dálkinum „Tilraun 3“ eru tölurnar: 0,0094 M; 0,0025 M; 0,0015 M; og 0,0076 M.
+
 <!-- SEG:m68798:para:fs-idp96400256 -->
 (a) [[i:Q[[sub:c]]]] = 6,45 [[MATH:22]] 10[[sup:3]], framátt. (b) [[i:Q[[sub:c]]]] = 0,23, öfug átt. (c) [[i:Q[[sub:c]]]] = 0, framátt.
 
@@ -465,6 +468,9 @@ Einsleitt jafnvægi er jafnvægi þar sem allir efnisþættir eru í sama fasa. 
 
 <!-- SEG:m68798:title:fs-idp116522752-title -->
 Lykiljöfnur
+
+<!-- SEG:m68798:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68798:entry:auto-157 -->
 [[MATH:34]]

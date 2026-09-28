@@ -54,6 +54,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_05_bleach",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68704:caption:CNX_Chem_03_05_bleach-caption"
           },
@@ -307,6 +308,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_03_05_saline",
+          "title": null,
           "caption": {
             "segmentId": "m68704:caption:CNX_Chem_03_05_saline-caption"
           },
@@ -354,6 +356,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_03_05_faucet",
+          "title": null,
           "caption": {
             "segmentId": "m68704:caption:CNX_Chem_03_05_faucet-caption"
           },
@@ -734,7 +737,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68704:table-summary:key-equations-table-summary"
         }
       ]
     }

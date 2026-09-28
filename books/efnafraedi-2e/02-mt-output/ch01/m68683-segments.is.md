@@ -37,6 +37,9 @@ Hlutfall tveggja jafngildra stærða sem gefnar eru upp með mismunandi mæliein
 <!-- SEG:m68683:para:fs-idm205801120 -->
 Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í [[xref:fs-idm222237232]].
 
+<!-- SEG:m68683:table-summary:fs-idm222237232-summary -->
+Þessari töflu er skipt í 3 dálka. Þeir heita lengd, rúmmál og massi. Eftirfarandi einingar eru í lengdardálkinum: 1 metri er jafnt og 1,0936 yardar, 1 tommur er jafnt og 2,54 cm, 1 kílómetri er jafnt og 0,62137 mílur, 1 míla er jafnt og 1609,3 metrar. Eftirfarandi einingar eru í rúmmálsdálkinum: 1 lítri er jafnt og 1,0567 kvart, 1 kvart er jafnt og 0,94635 lítrar, einn rúmfet er jafnt og 28,317 lítrar, 1 matskeið er jafnt og 14,787 millilítrar. Eftirfarandi einingar eru í massadálkinum: 1 kílógramm er jafnt og 2,2046 pund, 1 pund er jafnt og 453,59 grömm, 1 avoirdupois únsa er jafnt og 28,349 grömm, 1 troy únsa er jafnt og 31,103 grömm.
+
 <!-- SEG:m68683:entry:auto-14 -->
 Algengir umreikningsstuðlar
 
@@ -324,6 +327,9 @@ Mælingar eru gerðar með ýmsum einingum. Það er oft gagnlegt eða nauðsynl
 
 <!-- SEG:m68683:title:fs-idm299998176-title -->
 Lykiljöfnur
+
+<!-- SEG:m68683:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68683:entry:auto-110 -->
 [[MATH:8]]

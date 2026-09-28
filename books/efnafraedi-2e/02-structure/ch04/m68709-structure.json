@@ -24,6 +24,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_04_01_rxn2",
+      "title": null,
       "caption": {
         "segmentId": "m68709:caption:CNX_Chem_04_01_rxn2-caption"
       },
@@ -96,6 +97,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_04_01_rxn3",
+      "title": null,
       "caption": {
         "segmentId": "m68709:caption:CNX_Chem_04_01_rxn3-caption"
       },
@@ -257,7 +259,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idp140513680-summary"
         },
         {
           "type": "para",
@@ -365,7 +368,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idp104786160-summary"
         },
         {
           "type": "para",
@@ -468,7 +472,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idm15543696-summary"
         },
         {
           "type": "para",
@@ -571,7 +576,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idp151419504-summary"
         },
         {
           "type": "para",
@@ -748,7 +754,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idp107503280-summary"
         },
         {
           "type": "table",
@@ -841,7 +848,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idp7305424-summary"
         },
         {
           "type": "table",
@@ -934,7 +942,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68709:table-summary:fs-idm9607408-summary"
         },
         {
           "type": "para",

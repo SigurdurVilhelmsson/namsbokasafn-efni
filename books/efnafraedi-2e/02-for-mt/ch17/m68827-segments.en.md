@@ -178,6 +178,9 @@ Nonspontaneous redox processes may be forced to occur in electrochemical cells b
 <!-- SEG:m68827:title:fs-idm102923952-title -->
 Key Equations
 
+<!-- SEG:m68827:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68827:entry:auto-61 -->
 [[i:Q]] = [[i:I]] [[MATH:4]] [[i:t]] = [[i:n]] [[MATH:5]] [[i:F]]
 

@@ -37,6 +37,9 @@ A ratio of two equivalent quantities expressed with different measurement units 
 <!-- SEG:m68683:para:fs-idm205801120 -->
 Several other commonly used conversion factors are given in [[xref:fs-idm222237232]].
 
+<!-- SEG:m68683:table-summary:fs-idm222237232-summary -->
+This table is divided into 3 columns. They are titled length, volume, and mass. The following units are under the length column: 1 meter is equal to 1.0936 yards, 1 inch is equal to 2.54 cm 1 kilometer is equal to 0.62137 miles, 1 mile is equal to 1609.3 meters. The following units are under the volume column: 1 liter is equal to 1.0567 quarts, 1 quart is equal to 0.94635 meters, one cubic foot is equal to 28.317 liters, 1 tablespoon is equal to 14.787 milliliters. The following units are under the mass column: 1 kilogram is equal to 2.2046 pounds, 1 pound is equal to 453.59 grams, 1 avoirdupois ounce is equal to 28.349 grams, 1 troy ounce is equal to 31.103 grams.
+
 <!-- SEG:m68683:entry:auto-14 -->
 Common Conversion Factors
 
@@ -324,6 +327,9 @@ Measurements are made using a variety of units. It is often useful or necessary 
 
 <!-- SEG:m68683:title:fs-idm299998176-title -->
 Key Equations
+
+<!-- SEG:m68683:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68683:entry:auto-110 -->
 [[MATH:8]]

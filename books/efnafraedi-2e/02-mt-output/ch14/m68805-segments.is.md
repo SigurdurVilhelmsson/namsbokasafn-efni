@@ -469,6 +469,9 @@ Hlutfallslegur styrkur sýra og basa endurspeglast í stærð jónunarfastanna �
 <!-- SEG:m68805:title:fs-idp31338208-title -->
 Lykiljöfnur
 
+<!-- SEG:m68805:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68805:entry:auto-158 -->
 [[MATH:67]]
 

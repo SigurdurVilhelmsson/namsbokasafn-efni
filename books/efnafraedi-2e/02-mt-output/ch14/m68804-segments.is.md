@@ -49,6 +49,9 @@ Og því eru súrar lausnir, [[i:við þetta hitastig]], þær sem hafa mólstyr
 <!-- SEG:m68804:para:fs-idm67617872 -->
 Við þetta hitastig sýna hlutlausar lausnir því pH = pOH = 6,31, súrar lausnir sýna pH undir 6,31 og pOH yfir 6,31, en basískar lausnir sýna pH yfir 6,31 og pOH undir 6,31. Þessi greinarmunur getur verið mikilvægur þegar rannsökuð eru ákveðin ferli sem eiga sér stað við annað hitastig, svo sem ensímhvörf í lífverum með jafnheitt blóð við hitastig í kringum 36–40 °C. Nema annað sé tekið fram er gert ráð fyrir að tilvísanir í pH-gildi séu við 25 °C ([[xref:fs-idp56820128]]).
 
+<!-- SEG:m68804:table-summary:fs-idp56820128-summary -->
+Þessi tafla hefur þrjá dálka og fjórar raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Flokkun“, „Hlutfallslegur jónastyrkur“ og „pH við 25 gráður C“. Undir dálkinum „Flokkun“ er eftirfarandi: „súrt“, „hlutlaust“ og „basískt“. Undir dálkinum „Hlutfallslegur jónastyrkur“ er eftirfarandi: „[H neðanskrift 2 O uppskrift plúsmerki] er meira en [OH uppskrift mínusmerki]“, „[H neðanskrift 2 O uppskrift plúsmerki] er jafnt og [OH uppskrift mínusmerki]“ og „[H neðanskrift 2 O uppskrift plúsmerki] er minna en [OH uppskrift mínusmerki]“. Undir dálkinum „pH við 25 gráður C“ er eftirfarandi: „pH er minna en 7“, „pH er jafnt og 7“ og „pH er meira en 7“.
+
 <!-- SEG:m68804:entry:auto-18 -->
 Samantekt á samböndum fyrir súrar, basískar og hlutlausar lausnir
 
@@ -234,6 +237,9 @@ Styrkur hýdróníum- og hýdroxíðjóna í vatnslausnum er oft táknaður með
 
 <!-- SEG:m68804:title:fs-idp66998992-title -->
 Lykiljafna
+
+<!-- SEG:m68804:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68804:entry:auto-80 -->
 [[MATH:18]]

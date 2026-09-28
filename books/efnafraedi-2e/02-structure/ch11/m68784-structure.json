@@ -342,7 +342,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68784:table-summary:fs-idm28163488-summary"
     },
     {
       "type": "section",
@@ -907,7 +908,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68784:table-summary:fs-idm34982368-summary"
         },
         {
           "type": "exercise",

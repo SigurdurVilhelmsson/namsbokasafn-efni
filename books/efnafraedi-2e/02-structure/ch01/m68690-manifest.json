@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68690",
-  "extractedAt": "2026-09-20T09:49:11.327Z",
+  "extractedAt": "2026-09-28T20:03:03.944Z",
   "sourceHash": "24f7a5823bb2c8a5",
-  "segmentCount": 251,
+  "segmentCount": 252,
   "segmentIds": [
     "m68690:title:auto-1",
     "m68690:abstract:auto-2",
@@ -121,6 +121,7 @@
     "m68690:caption:fs-idm1827280-caption",
     "m68690:alt:fs-idp4898080-alt",
     "m68690:para:fs-idp174984224",
+    "m68690:table-summary:fs-idp31780400-summary",
     "m68690:entry:auto-117",
     "m68690:entry:auto-118",
     "m68690:entry:auto-119",

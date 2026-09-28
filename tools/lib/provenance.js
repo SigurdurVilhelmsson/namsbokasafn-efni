@@ -57,6 +57,27 @@ export function writeProvenance(mtOutputChapterDir, moduleId, { tool, generatedA
   return payload;
 }
 
+/**
+ * Write a sidecar payload EXACTLY as given — for a caller that must carry over keys this
+ * module does not model. §C183's top-up keeps the original `run` (readers take the buy's
+ * glossary arm from it) and any hand-added key such as `manualCorrections`, re-stamping
+ * only `generatedAt`; `writeProvenance` would rebuild the payload and drop them.
+ *
+ * @param {string} mtOutputChapterDir
+ * @param {string} moduleId
+ * @param {object} payload must carry a KNOWN_TOOLS `tool`
+ * @returns {object} the payload written
+ */
+export function writeProvenancePayload(mtOutputChapterDir, moduleId, payload) {
+  restorePolicyFor(payload.tool); // validate before writing
+  fs.writeFileSync(
+    provenancePath(mtOutputChapterDir, moduleId),
+    JSON.stringify(payload, null, 2) + '\n',
+    'utf8'
+  );
+  return payload;
+}
+
 export function readProvenance(mtOutputChapterDir, moduleId) {
   const p = provenancePath(mtOutputChapterDir, moduleId);
   if (!fs.existsSync(p)) return null;

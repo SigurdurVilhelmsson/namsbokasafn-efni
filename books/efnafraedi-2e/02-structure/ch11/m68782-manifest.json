@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68782",
-  "extractedAt": "2026-09-20T20:39:52.511Z",
+  "extractedAt": "2026-09-28T20:03:07.007Z",
   "sourceHash": "d8ff8a59cfc122f8",
-  "segmentCount": 118,
+  "segmentCount": 119,
   "segmentIds": [
     "m68782:title:auto-1",
     "m68782:abstract:auto-2",
@@ -84,6 +84,7 @@
     "m68782:title:fs-idp9146256-title",
     "m68782:para:fs-idp47489632",
     "m68782:title:fs-idp44827264-title",
+    "m68782:table-summary:key-equations-table-summary",
     "m68782:entry:auto-80",
     "m68782:title:fs-idm30288080-title",
     "m68782:problem:fs-idp72058416",

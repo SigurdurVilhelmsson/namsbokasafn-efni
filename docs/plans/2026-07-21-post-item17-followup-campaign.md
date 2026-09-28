@@ -4,13 +4,37 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **Step 3 of the development order below: build the §C183 add-only top-up mode (0 ISK), then the ~2,000 ISK summary buy with `--no-glossary`.** Step 2, the paid-run guards, is BUILT (2026-09-28) and **awaiting merge as [PR #520](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/520)** (branch `feat/c183-paid-run-guards`, which also carries the three `docs/redirects-at-sync` commits and the Greek-letter hand repair). ⚠️ Merging to `main` strands prod's content backup until the next deploy (CLAUDE.md), so deploy after merging. The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+### ⏭ SINGLE NEXT ACTION — **Step 4 of the development order below: the §C140 ㊲ fix (add `books/*/figure-text/` to `git-backup.sh` PATHSPECS) and ITS deploy.** Step 3 is DONE (2026-09-28, below). **[PR #520](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/520) (the paid-run guards, with the three `docs/redirects-at-sync` commits and the Greek-letter hand repair) and [PR #525](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/525) (the top-up and all 191 bought summaries) are MERGED.** This text reaches `main` only through #525's merge, and #525 was stacked on #520, so its presence here is the proof. They were merged on green on 2026-09-28, as merge commits, with #525 retargeted to `main` first.
+- ⚠️ **Prod is NOT deployed after these merges, and nothing in them needs it:** both change only dev-side paid-run tooling (`tools/api-translate.js`, `tools/lib/`) plus `02-for-mt` / `02-mt-output` data. The merges do strand prod's content backup until the next deploy (CLAUDE.md). That is bounded, and step 4's own deploy drains it. Do not deploy merely to drain it (memory `feedback-batch-docs-only-pushes`), unless [USER] wants to sooner.
+- The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+
+✅ **2026-09-28, night — STEP 3 IS DONE: chemistry's table summaries are BOUGHT, ALL 191, ~2,093 ISK** (`1c61e9c42` + `a73432a98`). The re-extract and the buy are in one commit, per §C183's precondition. Built first, then rehearsed at 0 ISK (`b44c55276`, `54e781434`; details → §C183).
+- **The rehearsal:** a real re-extract, an identity MT and a scratch `02-mt-output`. Every predicted number held: **83 modules, 191 segments, all `:table-summary:`, 213,816 characters ≈ 2,138 ISK**. The re-extract **removed 0 ids and changed 0 texts**, so the audit's "the extractor only adds the 191" is now measured, and no positional `auto-N` id moved. Negative controls on real modules (a cut to 40% of `m68865`'s 24,833 characters; a cut inside a marker, both before one and inside the last one) were each refused with both files byte-identical.
+- **The buy, staged ([USER]'s go in session, `--no-glossary`):**
+  - A ~2 ISK control on ch18 `m68829`: the IS diff was one inserted block, the sidecar had `run` untouched plus `topUps[0]`, and inject wrote the summary into `summary=` with no other change to the page.
+  - Then the whole book: 80 modules / 188 segments, ~2,022 ISK.
+  - **Nothing was held back:** the predicted `[[sub:]]`/`[[sup:]]` hold-back did not occur on any of the 191.
+  - **Nothing was truncated:** the four >10k appendix summaries came back whole, `m68865`'s 24,833 characters included.
+- **A third failure shape, predicted by nobody: the API returned a one-segment request with NO SEG marker** (input 1, output 0). It hit `m68862` once and `m68867` twice. Each was refused, and nothing was written.
+  - `m68862` succeeded on its retry (~22 ISK).
+  - `m68867` (*Ionization Constants of Weak Bases*, 2,372 characters of plain prose) failed identically on its retry.
+  - The refusal then learned to carry the response it refused (§C196 ⑥, `817ffd7f2`). **The third attempt succeeded**, so that evidence has not yet seen a real refusal, and **the cause is still unknown.** The next refusal of this shape will record what came back.
+  - ~70 ISK in all paid for the three refused responses.
+  - **Ledger (the tools' own usage lines):** 205 + 202,157 + 2,222 + 2,372 + 2,372 = 209,328 characters ≈ 2,093 ISK, against the ~2,138 estimate. The estimate also counts marker characters, which the API does not bill.
+- **Verified against HEAD over all 170 files, by value:** 83 modules / 191 summaries added, none empty, none verbatim English, 0 marker residue, 0 bracket deltas, 0 existing segments disturbed, `run` unchanged and `generatedAt` re-stamped in every touched sidecar. Each module has exactly one `topUps` record, because the refused attempts wrote nothing.
+- **Six corpus pins moved, each by its predicted delta, re-pinned in the same commits:**
+  - +191 IS segments and markers (A6 22,855; A2b and A2c 30,906);
+  - +382 ids (191 EN + 191 IS; 64,247);
+  - A3 raw unmoved at 42/53, with the vintage-subtracted 17/13/24 unmoved (while `m68867` was the one residue it read 43/54);
+  - one more benign Greek ADDITION (`m68674`: "the greek letter mu" → μL).
+  - Full suite on the final tree: 438 files, 7,190 passed, exit 0.
+- **What this unblocks:** runbook 4.4, the prod MT re-lock "AFTER the top-up" (③). The summaries reach readers only through the ② re-inject/re-render, like everything else in `02-mt-output`.
 
 ✅ **2026-09-28 — THE FOUR PAID-RUN GUARDS ARE BUILT**, each measured before it was written:
 - **Explicit glossary arm:** a live `api-translate` run refuses (exit 2) unless exactly one of `--no-glossary` · `--glossary-only` · `--full-glossary` is given; `--dry-run` says whether the live run would.
 - **Empty scope flags:** `--module=`, a trailing `--module` and `--module ''` widened to the whole chapter (13 modules); `--chapter=` and a trailing `--chapter` to the **whole book (170)** — all exit 0. `parseArgs` now refuses them for every tool (`requiresValue`).
 - **Greek-letter conservation** and **truncation** → §C191 ② and §C183. Truncation now refuses to write; on HEAD a truncated response overwrote a good translation under `--force`.
-- **Adversarially reviewed the same day** (15 agents, mutation testing included). Two should-fixes survived their skeptics and are fixed: `--full-glossary` failed OPEN on a book with no glossary, and a response cut inside a SEG marker slipped past both value checks. Five cheap nits were also fixed. The rest → §C196. ⚠️ **Step 3 must route the top-up through the guarded path** (§C183).
+- **Adversarially reviewed the same day** (15 agents, mutation testing included). Two should-fixes survived their skeptics and are fixed: `--full-glossary` failed OPEN on a book with no glossary, and a response cut inside a SEG marker slipped past both value checks. Five cheap nits were also fixed. The rest → §C196. ✅ **Step 3 routes the top-up through the guarded path**: both a full run and `--top-up` call `translateSegmentText` (§C183).
 - ✅ **Four Greek-letter substitutions found in bought chemistry — HAND-REPAIRED 2026-09-28 ([USER] authorised it in session, the same day)**: 6 edits in 3 `02-mt-output` files, recorded in the `data(mt): HAND REPAIR` commit. **The prepared pages still carry them until the ② re-inject/re-render.** Details → §C191 ②.
 
 ✅ **VERIFIED 2026-09-28:** prod's 12:00Z export (`e1897da91`) carries all eight house-style rows under chemistry (`radius → radíus` … `molecular compound → sameindaefni`), 1,740 → 1,742 terms. The controls held: `phase transition → fasabreyting`, `anode → anóða`.
@@ -39,8 +63,8 @@
 **Development order:**
 1. The ruling sheet. ✅ **Prepared 2026-09-26; answered by [USER] 2026-09-27; applied and deployed 2026-09-28.**
 2. The paid-run guards. ✅ **Built 2026-09-28** (see above).
-3. The top-up and the buy. ◀ next
-4. The ㊲ fix and its deploy.
+3. The top-up and the buy. ✅ **Done 2026-09-28: all 191 summaries bought**; PRs #520 + #525 merged.
+4. The ㊲ fix and its deploy. ◀ next
 5. The ㉗/⑭ composer changes.
 6. The single recompose pass.
 7. ②'s re-inject batch.
@@ -59,7 +83,7 @@ Then ③ opens the editor phase.
 - The only thing the current extractor adds is the 191 `:table-summary:` ids (§C183).
 
 **① DECIDE BEFORE EDITORS EDIT — each of these closes an option once they do:**
-- **§C183 top-up: its timing AND its glossary arm.** The arm is unrecorded.
+- ✅ **§C183 top-up: its timing AND its glossary arm** — RULED 2026-09-26 (now, `--no-glossary`) and BOUGHT 2026-09-28 (all 191).
   - What it buys: 191 summaries, ~2.1k ISK, which reach no reader.
   - Why now is cheapest: 0 chemistry locks and 0 faithful segment files. Afterwards, `locked-skip` and §C112 get in the way unless additive writes are exempted — a design choice, not an impossibility.
   - **Under `--glossary-only`, §C186 is live for exactly this buy**: after the re-extract, the tool ranks over every segment EXCEPT the summaries. So either choose `--no-glossary`, or fix §C186 first.
@@ -116,7 +140,7 @@ Then ③ opens the editor phase.
 - §C101 ③ — a save block on 71 segments caused by duplicate seg-ids.
 - Publish failures the editor cannot see: ⑰ (`m68700`/`m68733`/`m68747`/`m68844`) and §C153.
 - The §C53 save gate.
-- Runbook 4.2: re-apply the ch01/ch03/ch05 editorial work. Runbook 4.4: the prod MT re-lock, AFTER the top-up.
+- Runbook 4.2: re-apply the ch01/ch03/ch05 editorial work. Runbook 4.4: the prod MT re-lock, AFTER the top-up (✅ the top-up is done, 2026-09-28).
 - Define the terminology-QA population before editors see it: §C157 book-wide and §C165.
 - The stale `status.json`, then PR #367.
 
@@ -6820,7 +6844,8 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
   - ③ **Two documented blind spots, not defects:** a response cut cleanly at a sentence boundary that keeps more than half the segment passes both truncation legs (no threshold closes it without refusing honest output); and a Greek substitution masked by an addition of the same letter.
   - ④ **A known false-hold class:** the MT correcting a source error (organic `m00036`: υ "where υ is the Greek letter nu" → ν). It holds back correctly for a human look; no fold can tell it apart.
   - ⑤ **The OTHER paid tool, `translate-chapter-titles.js`, has the silent-glossary default the arm guard closed — and a wider one.** Measured by reading it: it sends the book's WHOLE `glossary-unified.json`, unfiltered per request, with `approvedOnly: false` and a hard-coded `domain: 'chemistry'` whatever the book, and it has no arm flag at all. `.claude/hooks/guard-paid-mt.mjs` names it as paid. Not used by the §C183 buy.
-  - _[severity: ① a silent scope widening on free tools, one of which writes · the rest documentation · blocks: nothing]_
+  - ⑥ ✅ **FIXED 2026-09-28 (`817ffd7f2`): the refusal now carries the response length and its first and last 160 characters, JSON-quoted. Not yet seen on a real refusal, because `m68867` then succeeded on its third attempt.** Was: **the SEG-count refusal carries none of the response it refused** (`chunkDefect`'s first branch in `tools/api-translate.js`), while the truncation refusal carries lengths, ratio and the IS tail. Found by §C183's buy: `m68867` came back twice with **0 markers for 1**, and nothing records what the API returned instead, so the failure cannot be diagnosed without paying a third time. Cheap fix: include the head and tail of the response in that message (the evidence-in-the-error precedent the truncation leg set).
+  - _[severity: ① a silent scope widening on free tools, one of which writes · ⑥ diagnosability of a paid refusal · the rest documentation · blocks: nothing]_
 
 - **C195 · ~~SEVEN ch21 PROSE SEGMENTS CAME BACK IN ENGLISH~~ — NOT NEW: A DUPLICATE, corrected 2026-09-28** — kept only as a pointer.
   - The 7 segments (`m68852` ×6, `m68856` ×1) were **already recorded at the ch21 buy**: the 2026-09-21 night RESUME block ("ch21 IS THE ONLY UNIT WITH UNTRANSLATED PROSE"), written `[INCOMPLETE]` after two paid attempts and handed to editors. That record owns them.
@@ -6954,8 +6979,10 @@ editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniq
     - **Silent truncation.** `m68865`'s summary is **24,833 characters (25,594 UTF-8 bytes)** and rides as a single-segment chunk just under the 25,000-character chunk budget; `api-translate.js` notes the API truncating around 33–35 KB, and Icelandic output is longer. `validateMarkers` counts `SEG` markers (1 = 1), so **a truncated one-segment chunk passes.** Four summaries exceed 10k (`m68865` 24,833 · `m68870` 21,592 · `m68866` 12,203 · `m68868` 11,565, all appendices). Add a per-segment output/input length-ratio guard first.
       - ✅ **GUARDED 2026-09-28** — `truncationSuspectsBySegment` (`tools/lib/mt-output-guards.js`), two legs, both at a measured **0** base rate over chemistry's committed MT: an IS/EN ratio below 0.5 at ≥ 200 EN chars (lowest honest value in 32,402 segments across six books: 0.633), and an IS that stops without terminal punctuation where its ≥ 300-char EN ends cleanly (0 of 4,049). It joins the SEG-count check in `translateChunk`, so it gets the same retry-without-glossary, then **refuses to write**. On HEAD a truncated response **overwrote a good prior translation under `--force`**; a test now pins that it cannot.
       - ✅ **Hardened the same day by the adversarial review (§C196 holds what was not fixed):** an EN/IS **id-set** check now runs before the value legs, at chunk and module level. A response cut INSIDE the next marker kept the literal `<!-- SEG:` count equal, so the cut segment was never judged and a raw `<!-- SEG:` fragment was written (for a summary, inject then keeps the English silently). Measured: 0 of 205 committed pairs in four books differ in id set. The end-of-text leg is now strict (a sentence end in EN needs one in IS), at ≥ 100 chars: 0 false positives in 8,087 committed segments. The first version accepted `)`, `;`, `:` and `]]`, which are interior characters in chemistry prose.
-    - ⏳ **Still open for step 3:** the hold-back hazard above (invented `[[sub:]]`/`[[sup:]]` in summaries), and "every existing IS segment byte-identical afterwards" — both belong to the top-up mode itself. 🔴 **And the top-up MUST send through `translateChunk` and run `translateModule`'s pre-write checks (or call `tools/lib/mt-output-guards.js` itself).** Every guard above is wired into that path, so a top-up that builds its own send/splice/write would buy the summaries with NO guard at all.
+    - ✅ **BUILT 2026-09-28 (`b44c55276` plan + splice, `54e781434` the CLI):** "every existing IS segment byte-identical afterwards" is PROVEN on every write: `spliceTopUp` deletes its insertions and must get the old IS back byte for byte, and it counts raw markers because a surviving mutant showed the first-wins parser hid a double insertion from the value checks. It is opt-in (`--top-up`). It refuses drift (an IS id the EN lacks), a missing or `docx-import` sidecar, and `--force`. The sidecar keeps `run` and `schemaVersion` (their readers were measured), re-stamps `generatedAt` and appends a `topUps` record. The whole-book rehearsal numbers are in the 2026-09-26 RESUME block's evening entry.
+    - ✅ **BOUGHT 2026-09-28 (`1c61e9c42` + `a73432a98`): all 191, ~2,093 ISK, re-extract in the same commit.** Neither predicted hazard occurred. **Hold-back: 0 of 190** carried an invented `[[sub:]]`/`[[sup:]]` (and had one done so, `peekSeg` strips known marker types from attribute-valued ids at inject, measured: `C[[sub:2]]` → `C2`). **Truncation: 0**; all four >10k appendix summaries came back whole. What DID happen was a third shape: the API returned a one-segment request with NO SEG marker, once on `m68862` and twice on `m68867`. Both were refused, then bought on a later attempt. The cause is unknown (§C196 ⑥). Full account in the 2026-09-26 RESUME block's night entry. 🔴 **And the top-up MUST send through `translateChunk` and run `translateModule`'s pre-write checks (or call `tools/lib/mt-output-guards.js` itself).** Every guard above is wired into that path, so a top-up that builds its own send/splice/write would buy the summaries with NO guard at all.
       - ⚠️ **A test-safety premise the top-up can break:** `tools/__tests__/api-translate-glossary-arm.test.js` spawns the REAL CLI **without** `--dry-run`, and is safe only because `m68865`'s committed IS exists and no `--force` is passed, so the work list is all `skip`. A top-up that exempts additive writes from `skip` would make those tests attempt a real call (with a bogus key: a loud 401, not a charge). Re-scope them in the same change, before, not after.
+        - ✅ **Discharged 2026-09-28 by making the top-up OPT-IN (`--top-up`)**, pinned in `api-translate-top-up.test.js` (an existing IS without the flag stays `skip`). Measured: against the re-extracted tree, where `m68865` lacks its summary, the glossary-arm and top-up test files pass (36/36) and `02-mt-output` stays clean. ⚠️ **The same trap bit once in the other direction:** the top-up test's `--top-up --force` refusal, run RED before the flag existed, had the unknown flag dropped by `parseArgs`, and so ran a LIVE `--force` on `m68865`. The bogus key stopped it at a 401 and nothing was written. That test now carries `--dry-run`, so any future RED degrades to a rehearsal.
   - _[severity: completeness of the CNXML/TM, not reader-visible (`data-summary` is not announced) · blocks: chemistry's summaries only]_
 
 - **C182 · EXERCISE CONTENT MUST REACH THE EDITOR — [USER] RULED IT REQUIRED WORK, NOT AN OPTIONAL IMPROVEMENT** — **[CODE]** — **REQUIRED ([USER] 2026-09-22), unscheduled** — _promoted from §C82 L148 by that ruling; this item is now the work's ONE owner._

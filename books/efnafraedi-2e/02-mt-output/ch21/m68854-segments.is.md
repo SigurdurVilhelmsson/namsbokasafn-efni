@@ -190,6 +190,9 @@ Svar:
 <!-- SEG:m68854:para:fs-idp76857680 -->
 Þar sem hver kjarnategund hefur ákveðinn fjölda kjarneinda, ákveðið jafnvægi milli fráhrindikrafta og aðdráttarkrafta og sinn eigin stöðugleika, er helmingunartími geislavirkra kjarnategunda mjög mismunandi. Til dæmis: helmingunartími [[MATH:14]] er 1,9 [[MATH:15]] 10[[sup:19]] ár; [[MATH:16]] er 24.000 ár; [[MATH:17]] er 3,82 dagar; og frumefni-111 (Rg fyrir röntgeníum) er 1,5 [[MATH:18]] 10[[sup:–3]] sekúndur. Helmingunartími nokkurra geislavirkra samsætna sem eru mikilvægar í læknisfræði er sýndur í [[xref:fs-idp14399952]] og aðrar eru taldar upp í [[docref:viðauka M|m68871]].
 
+<!-- SEG:m68854:table-summary:fs-idp14399952-summary -->
+Þessi tafla hefur fjóra dálka og sex raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Tegund,“ „Hröðnunarháttur,“ „Helmingunartími,“ og „Notkun.“ Undir dálkinum „Tegund“ er eftirfarandi: „F - 18,“ „Co - 60,“ „Tc - 99 m,“ „I – 131,“ og „Tl - 201.“ Undir dálkinum „Hröðnunarháttur“ er eftirfarandi: „lágstafur beta hávísir plúsmerki hrörnun,“ „lágstafur beta hrörnun, lágstafur gamma hrörnun,“ „lágstafur gamma hrörnun,“ „lágstafur beta hrörnun,“ og „rafeindahremming.“ Undir dálkinum „Helmingunartími“ er eftirfarandi: 110 mínútur, 5,27 ár, 8,01 klukkustundir, 8,02 dagar og 73 klukkustundir. Undir dálkinum „Notkun“ er eftirfarandi: PET-skannanir; krabbameinsmeðferð; skannanir á heila, lungum, hjarta, beinum o.s.frv.; skjaldkirtilsskannanir og -meðferð; skannanir á hjarta og slagæðum og hjartaálagspróf.
+
 <!-- SEG:m68854:entry:auto-65 -->
 Helmingunartími geislavirkra samsætna sem eru mikilvægar í læknisfræði
 
@@ -411,6 +414,9 @@ Kjarnar með óstöðugt n:p hlutfall gangast undir sjálfsprottna geislasundrun
 
 <!-- SEG:m68854:title:fs-idm2719024-title -->
 Lykiljöfnur
+
+<!-- SEG:m68854:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68854:entry:auto-139 -->
 sundrunarhraði = [[i:λN]]

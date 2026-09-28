@@ -148,6 +148,9 @@ Each sample contains 6.02 [[MATH:4]] 10[[sup:23]] molecules or formula units—1
 <!-- SEG:m68700:alt:fs-idm24308080-alt -->
 This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.
 
+<!-- SEG:m68700:table-summary:fs-idp17650992-summary -->
+A table is shown that is made up of four columns and six rows. The header row reads: “Element,” “Average Atomic Mass (a m u),” “Molar Mass (g / m o l),” and “Atoms / Mole.” The first column contains the symbols “C,” “H,” “O,” “N a,” and “C l.” The second column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “35.45.” The third column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “33.45.” The final column contains the value “6.022 times 10 superscript 23” in each cell.
+
 <!-- SEG:m68700:entry:auto-51 -->
 Element
 

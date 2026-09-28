@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68667",
-  "extractedAt": "2026-09-20T09:49:11.209Z",
+  "extractedAt": "2026-09-28T20:03:03.855Z",
   "sourceHash": "8fd06816cdd967d3",
-  "segmentCount": 213,
+  "segmentCount": 214,
   "segmentIds": [
     "m68667:title:auto-1",
     "m68667:abstract:auto-2",
@@ -43,6 +43,7 @@
     "m68667:caption:CNX_Chem_01_02_MattType-caption",
     "m68667:alt:fs-idm6448800-alt",
     "m68667:para:fs-idm39281712",
+    "m68667:table-summary:fs-idp31507504-summary",
     "m68667:entry:auto-39",
     "m68667:entry:auto-40",
     "m68667:entry:auto-41",

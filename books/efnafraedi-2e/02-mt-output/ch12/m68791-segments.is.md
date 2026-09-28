@@ -118,6 +118,9 @@ Línuritið af ln[[[i:A]]][[sub:[[i:t]]]] á móti [[i:t]] er ekki línulegt, se
 <!-- SEG:m68791:alt:fs-idm135178736-alt -->
 Sýnt er línurit merkt „ln[A] á móti tíma“. X-ásinn er merktur „Tími (s)“ og y-ásinn er merktur „ln[A]“. X-ásinn sýnir merkingar við 5, 10, 15, 20 og 25 klukkustundir. Y-ásinn sýnir merkingar við mínus 3, mínus 2, mínus 1 og 0. Lítilsháttar sveigja er dregin sem tengir fimm punkta við hnitin u.þ.b. (4, mínus 1,5), (8, mínus 2), (12, mínus 2,2), (16, mínus 2,4) og (20, mínus 2,6).
 
+<!-- SEG:m68791:table-summary:fs-idp114347648-summary -->
+Þessi tafla inniheldur fjóra dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tilraun“, „Tími (klst.)“, „[H neðanskrift 2 O neðanskrift 2] (M)“ og „ln [H neðanskrift 2 O neðanskrift 2]“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2, 3, 4 og 5. Undir dálkinum „Tími (klst.)“ eru tölurnar 0, 6,00, 12,00, 18,00 og 24,00. Undir dálkinum „[H neðanskrift 2 O neðanskrift 2] (M)“ eru tölurnar 1,000, 0,500, 0,250, 0,125 og 0,0625. Undir dálkinum „ln [H neðanskrift 2 O neðanskrift 2]“ eru tölurnar: 0,0, mínus 0,693, mínus 1,386, mínus 2,079 og mínus 2,772.
+
 <!-- SEG:m68791:entry:auto-41 -->
 Tími (klst.)
 
@@ -177,6 +180,9 @@ Línulegt samband milli ln[H[[sub:2]]O[[sub:2]]] og tíma bendir til þess að n
 
 <!-- SEG:m68791:alt:fs-idm90898176-alt -->
 Sýnt er línurit með merkingunni „Tími (klst.)“ á x-ásnum og „ln[H neðanskrift 2 O neðanskrift 2]“ á y-ásnum. X-ásinn sýnir merkingar við 6, 12, 18 og 24 klukkustundir. Lóðrétti ásinn sýnir merkingar við mínus 3, mínus 2, mínus 1 og 0. Minnkkandi línuleg stefnulína er dregin í gegnum fimm punkta sem eru táknaðir með hnitunum (0, 0), (6, mínus 0,693), (12, mínus 1,386), (18, mínus 2,079) og (24, mínus 2,772).
+
+<!-- SEG:m68791:table-summary:fs-idm149704608-summary -->
+Þessi tafla hefur þrjá dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tilraun“, „Tími (s)“ og „[A]“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2, 3, 4 og 5. Undir dálkinum „Tími (s)“ eru tölurnar: 4,0, 8,0, 12,0, 16,0 og 20,0. Undir dálkinum „[A]“ eru tölurnar: 0,220, 0,144, 0,110, 0,088 og 0,074.
 
 <!-- SEG:m68791:entry:auto-61 -->
 Tími (s)
@@ -307,6 +313,9 @@ Já. Grafið af [[MATH:16]] á móti [[i:t]] er línulegt:
 <!-- SEG:m68791:alt:fs-idm144508704-alt -->
 Sýnt er graf með titlinum „1 deilt með [ A ] á móti tíma“, með merkingunni „Tími ( s )“ á x-ásnum. Merkingin „1 deilt með [ A ]“ birtist vinstra megin við y-ásinn. X-ásinn sýnir merkingar sem byrja á núlli og halda áfram með 10 millibili upp að og með 40. Y-ásinn vinstra megin sýnir merkingar sem byrja á 0 og aukast með 1 millibili upp að og með 5. Lína með vaxandi þróun er dregin í gegnum sex punkta við u.þ.b. (4, 1), (10, 1,5), (15, 2,2), (20, 2,8), (26, 3,4) og (36, 4,4).
 
+<!-- SEG:m68791:table-summary:fs-idp62232800-summary -->
+Þessi tafla inniheldur þrjá dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (s)“, „1 yfir [C neðanskrift 4 H neðanskrift 6] (M efstaskrift mínus 1)“ og „ln [C neðanskrift 4 H neðanskrift 6]“. Undir dálkinum „Tími (s)“ eru tölurnar: 0, 1600, 3200, 4800 og 6200. Undir dálkinum „1 yfir [C neðanskrift 4 H neðanskrift 6] (M efstaskrift mínus 1)“ eru tölurnar: 100, 198, 296, 395 og 481. Undir dálkinum „ln [C neðanskrift 4 H neðanskrift 6]“ eru tölurnar: mínus 4,605, mínus 5,289, mínus 5,692, mínus 5,978 og mínus 6,175.
+
 <!-- SEG:m68791:entry:auto-104 -->
 Tími (s)
 
@@ -366,6 +375,9 @@ ln[C[[sub:4]]H[[sub:6]]]
 
 <!-- SEG:m68791:alt:fs-idp16234496-alt -->
 Sýnd eru tvö gröf, bæði með merkingunni „Tími (s)“ á x-ásnum. Grafið vinstra megin er merkt „ln [C[[sub:4]]H[[sub:6]]]“ á y-ásnum. Grafið hægra megin er merkt „1 deilt með [C[[sub:4]]H[[sub:6]]]“ á y-ásnum. X-ásar beggja grafa sýna merkingar við 3000 og 6000. Y-ás grafsins vinstra megin sýnir merkingar við mínus 6, mínus 5 og mínus 4. Lækkandi, örlítið íhvolf upp á við ferill er dreginn í gegnum fimm punkta með hnitin (0, mínus 4,605), (1600, mínus 5,289), (3200, mínus 5,692), (4800, mínus 5,978) og (6200, mínus 6,175). Y-ás grafsins hægra megin sýnir merkingar við 100, 300 og 500. Næstum línulegur vaxandi ferill er dreginn í gegnum fimm punkta með hnitin (0, 100), (1600, 198), (3200, 296), (4800, 395) og (6200, 481).
+
+<!-- SEG:m68791:table-summary:fs-idm88760288-summary -->
+Þessi tafla inniheldur tvo dálka og sjö raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk „Tími (s)“ og „[A] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 5, 10, 15, 20, 25 og 35. Undir dálkinum „[A] (M)“ eru tölurnar 0,952, 0,625, 0,465, 0,370, 0,308 og 0,230.
 
 <!-- SEG:m68791:entry:auto-124 -->
 Tími (s)
@@ -544,6 +556,9 @@ Eins og fyrir öll stig efnahvarfa er helmingunartími núllta stigs efnahvarfs 
 <!-- SEG:m68791:para:fs-idm22269120 -->
 Jöfnur fyrir bæði afleiðu- og heildað hraðalögmál og samsvarandi helmingunartíma fyrir núllta, fyrsta og annars stigs efnahvörf eru teknar saman í [[xref:fs-idm117482272]].
 
+<!-- SEG:m68791:table-summary:fs-idm117482272-summary -->
+Þessi tafla inniheldur fjóra dálka og sjö raðir. Fyrsti dálkurinn og fyrsta röðin eru bæði hausar. Fyrsti reiturinn í fyrsta dálkinum er auður og á eftir honum kemur „hraðalögmál“, „einingar hraðafasta“, „heildað hraðalögmál“, „graf sem þarf fyrir línulega aðlögun hraðagagna“, „samband milli halla línulegs grafs og hraðafasta“ og „helmingunartími“. Fyrsta röðin merkir hvern dálk, „Núllta stig“, „Fyrsta stig“ og „Annað stig“. Undir „Núllta stig“ er eftirfarandi: „hraði = k“, „M s efstaskrift mínus 1“, „[A] = mínus k t + [A] neðanskrift 0“, „[A] á móti t“, „k = mínus halli“ og „t neðanskrift einn helmingur = [A] neðanskrift 0 yfir 2 k“. Undir „Fyrsta stig“ er eftirfarandi: „hraði = k [A]“, „s efstaskrift mínus 1“, „ln [A] = mínus k t plús ln [A] neðanskrift 0“, „ln [A] á móti t“, „k = mínus halli“ og „t neðanskrift einn helmingur = 0,693 yfir k“. Undir „Annað stig“ er eftirfarandi: „hraði = k [A] efstaskrift 2“, „M efstaskrift mínus 1 s efstaskrift mínus 1“, „1 yfir [A] = k t + (1 yfir [A] neðanskrift 0)“, „1 yfir [A] á móti t“, „k = plús halli“ og „t neðanskrift einn helmingur – 1 yfir [A] neðanskrift 0 k“.
+
 <!-- SEG:m68791:entry:auto-183 -->
 Samantekt á hraðalögmálum fyrir núllta, fyrsta og annars stigs efnahvörf
 
@@ -670,6 +685,9 @@ Helmingunartími efnahvarfs er sá tími sem það tekur að minnka magn tilteki
 <!-- SEG:m68791:title:fs-idm150818384-title -->
 Lykiljafna
 
+<!-- SEG:m68791:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68791:entry:auto-225 -->
 heildunarhraðalögmál fyrir núllta stigs efnahvörf: [[MATH:33]]
 
@@ -702,6 +720,9 @@ Graf af ln[SO[[sub:2]]Cl[[sub:2]]] á móti [[i:t]] sýnir línulega þróun; þ
 
 <!-- SEG:m68791:alt:fs-idm141495696-alt -->
 Sýnt er graf með merkingunni „Tími (s)“ á x-ás og „ln [SO neðanskrift 2 Cl neðanskrift 2] M“ á y-ás. X-ásinn byrjar í 0 og nær að 4,00 sinnum 10 í veldisvísi 4 með merkingum á 1,00 sinnum 10 í veldisvísi 4 fresti. Y-ásinn sýnir merkingar frá mínus 3,5 til mínus 2,5. Minnkkandi línuleg stefnulína er dregin í gegnum sjö punkta við áætluð hnit: (0, mínus 2,3), (0,5 sinnum 10 í veldisvísi 4, mínus 2,4), (1,0 sinnum 10 í veldisvísi 4, mínus 2,5), (1,5 sinnum 10 í veldisvísi 4, mínus 2,6), (2,0 sinnum 10 í veldisvísi 4, mínus 2,9), (2,5 sinnum 10 í veldisvísi 4, mínus 3,0) og (3,0 sinnum 10 í veldisvísi 4, mínus 3,2).
+
+<!-- SEG:m68791:table-summary:fs-idp120830736-summary -->
+Þessi tafla inniheldur tvo dálka og átta raðir. Fyrsti dálkurinn er merktur „Tími (s)“ og annar dálkurinn er merktur „[S O neðanskrift 2 C l neðanskrift 2] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 0; 5,00 sinnum tíu í þriðja veldi; 1,00 sinnum tíu í fjórða veldi; 1,50 sinnum tíu í fjórða veldi; 2,50 sinnum tíu í fjórða veldi; 3,00 sinnum tíu í fjórða veldi; og 4,00 sinnum tíu í fjórða veldi. Undir dálkinum „[S O neðanskrift 2 C l neðanskrift 2] (M)“ eru tölurnar: 0,100, 0,0896, 0,0802, 0,0719, 0,0577, 0,0517 og 0,0415.
 
 <!-- SEG:m68791:entry:auto-236 -->
 Tími (s)
@@ -865,6 +886,9 @@ heildað hraðalögmál
 <!-- SEG:m68791:glossary-def:fs-idm46847680-def -->
 jafna sem tengir styrk hvarfefnis við liðinn tíma efnahvarfs
 
+<!-- SEG:m68791:table-summary:fs-idm140502592-summary -->
+Þessi tafla inniheldur tvo dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (s)“ og „[C neðanskrift 4 H neðanskrift 6] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 0, 1600, 3200, 4800 og 6200. Undir dálkinum „[C neðanskrift 4 H neðanskrift 6] (M)“ eru tölurnar: 1,00 sinnum tíu í mínus öðru veldi; 5,04 sinnum tíu í mínus þriðja veldi; 3,37 sinnum tíu í mínus þriðja veldi; 2,53 sinnum tíu í mínus þriðja veldi; og 2,08 sinnum tíu í mínus þriðja veldi.
+
 <!-- SEG:m68791:entry:auto-290 -->
 Tími (s)
 
@@ -900,6 +924,9 @@ Tími (s)
 
 <!-- SEG:m68791:entry:auto-301 -->
 2,08 [[MATH:11]] 10[[sup:−3]]
+
+<!-- SEG:m68791:table-summary:fs-idp72766816-summary -->
+Þessi tafla hefur tvo dálka og átta raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (klst.)“ og „[O neðanskrift 3] (M)“. Undir dálkinum „Tími (klst.)“ eru tölurnar: 0; 2,0 sinnum tíu í þriðja veldi; 7,6 sinnum tíu í þriðja veldi; 1,00 sinnum tíu í fjórða veldi; 1,23 sinnum tíu í fjórða veldi; 1,43 sinnum tíu í fjórða veldi; 1,70 sinnum tíu í fjórða veldi. Undir dálkinum „[O neðanskrift 3] (M)“ eru tölurnar: 1,00 sinnum tíu í mínus fimmta veldi; 4,98 sinnum tíu í mínus sjötta veldi; 2,07 sinnum tíu í mínus sjötta veldi; 1,66 sinnum tíu í mínus sjötta veldi; 1,39 sinnum tíu í mínus sjötta veldi; 1,22 sinnum tíu í mínus sjötta veldi; og 1,05 sinnum tíu í mínus sjötta veldi.
 
 <!-- SEG:m68791:entry:auto-302 -->
 Tími (klst.)
@@ -955,6 +982,9 @@ Tími (klst.)
 <!-- SEG:m68791:entry:auto-319 -->
 1,05 [[MATH:60]] 10[[sup:−6]]
 
+<!-- SEG:m68791:table-summary:fs-idm133654768-summary -->
+Þessi tafla inniheldur tvo dálka og níu raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (s)“ og „[X] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 5,0, 10,0, 15,0, 20,0, 25,0, 30,0, 35,0 og 40,0. Undir dálkinum „[X] (M)“ eru tölurnar; 0,0990, 0,497, 0,0332, 0,0249, 0,0200, 0,0166, 0,0143 og 0,0125.
+
 <!-- SEG:m68791:entry:auto-320 -->
 Tími (s)
 
@@ -1009,6 +1039,9 @@ Tími (s)
 <!-- SEG:m68791:entry:auto-337 -->
 0,0125
 
+<!-- SEG:m68791:table-summary:fs-idp79245440-summary -->
+Þessi tafla inniheldur tvo dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „[Penisillín] (M)“ og „Hraði (mól/L/mín)“. Undir dálkinum „[Penisillín] (M)“ eru tölurnar: 2,0 sinnum tíu í mínus sjötta; 3,0 sinnum tíu í mínus sjötta; og 4,0 sinnum tíu í mínus sjötta. Undir dálkinum „Hraði (mól/L/mín)“ eru tölurnar: 1,0 sinnum tíu í mínus tíunda; 1,5 sinnum tíu í mínus tíunda; og 2,0 sinnum tíu í mínus tíunda.
+
 <!-- SEG:m68791:entry:auto-338 -->
 [Penisillín] ([[i:M]])
 
@@ -1032,6 +1065,9 @@ Hraði (mól L[[sup:−1]] mín[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-345 -->
 2,0 [[MATH:76]] 10[[sup:−10]]
+
+<!-- SEG:m68791:table-summary:fs-idp121895360-summary -->
+Þessi tafla inniheldur þrjá dálka og níu raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Upphafs [C neðanskrift 3 H neðanskrift 5 N neðanskrift 3 O neðanskrift 9] (M)“, „t (s)“ og „% niðurbrotið“. Undir dálkinum „Upphafs [C neðanskrift 3 H neðanskrift 5 N neðanskrift 3 O neðanskrift 9] (M)“ eru tölurnar: 4,88, 3,52, 2,29, 1,81, 5,33, 4,05, 2,95 og 1,72. Undir dálkinum „t (s)“ eru tölurnar: 300, 300, 300, 300, 180, 180, 180 og 180. Undir dálkinum „% niðurbrotið“ eru tölurnar: 52,0, 52,9, 53,2, 53,9, 34,6, 35,9, 36,0 og 35,4.
 
 <!-- SEG:m68791:entry:auto-346 -->
 Upphafsstyrkur [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
@@ -1113,6 +1149,9 @@ Upphafsstyrkur [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-372 -->
 35,4
+
+<!-- SEG:m68791:table-summary:fs-idm247275488-summary -->
+Þessi tafla hefur fimm dálka og níu raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „[A] neðanskrift 0 (M)“, „[A] (M)“, „ln ([A] neðanskrift 0 yfir [A])“, „t (s)“ og „k sinnum 10 í þriðja veldi (s í mínus fyrsta veldi)“. Undir dálkinum „[A] neðanskrift 0 (M)“ eru tölurnar: 4,88, 3,52, 2,29, 1,81, 5,33, 4,05, 2,95 og 1,72. Undir dálkinum „[A] (M)“ eru tölurnar: 2,34, 1,66, 1,07, 0,834, 3,49, 2,61, 1,89 og 1,11. Undir dálkinum „ln ([A] neðanskrift 0 yfir [A])“ eru tölurnar: 0,734, 0,752, 0,761, 0,775, 0,423, 0,439, 0,445 og 0,438. Undir dálkinum „t (s)“ eru tölurnar: 300, 300, 300, 300, 180, 180, 180 og 180. Undir dálkinum „k sinnum 10 í þriðja veldi (s í mínus fyrsta veldi)“ eru tölurnar: 2,45, 2,51, 2,54, 2,58, 2,35, 2,44, 2,47 og 2,43.
 
 <!-- SEG:m68791:entry:auto-373 -->
 [[[i:A]]][[sub:0]] ([[i:M]])

@@ -172,6 +172,9 @@ When reactions are carried out using less-than-stoichiometric quantities of reac
 <!-- SEG:m68714:title:fs-idp36036608-title -->
 Key Equations
 
+<!-- SEG:m68714:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68714:entry:auto-59 -->
 [[MATH:1]]
 

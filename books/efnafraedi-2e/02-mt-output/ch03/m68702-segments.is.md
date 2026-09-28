@@ -400,6 +400,9 @@ C[[sub:15]]H[[sub:15]]N[[sub:3]]
 <!-- SEG:m68702:title:fs-idp39993248-title -->
 Lykiljafna
 
+<!-- SEG:m68702:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68702:entry:auto-135 -->
 [[MATH:2]]
 

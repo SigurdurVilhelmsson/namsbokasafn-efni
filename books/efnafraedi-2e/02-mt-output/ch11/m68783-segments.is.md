@@ -259,6 +259,9 @@ Eins og lýst er í kaflanum um vökva og föst efni er [[i:suðumark]] vökva s
 <!-- SEG:m68783:para:fs-idp83055184 -->
 Suðumarkshækkunarfastar eru einkennandi eiginleikar sem ráðast af gerð leysisins. Gildi [[i:K]][[sub:b]] fyrir nokkra leysa eru talin upp í [[xref:fs-idm37127680]].
 
+<!-- SEG:m68783:table-summary:fs-idm37127680-summary -->
+Taflan sýnir suðumark í Celsíusgráðum við 1 loftþyngd þrýstings, K með lágstaf b í C m í mínus fyrsta veldi, frostmark í Celsíusgráðum við 1 loftþyngd þrýstings og K með lágstaf f í C m í mínus fyrsta veldi fyrir fimm leysa. Vatn hefur eftirfarandi gildi: 100,00, 0,512, 0,00 og 1,86. Vetnisasetat hefur eftirfarandi gildi: 118,1, 3,07, 16,6 og 3,9. Bensen hefur eftirfarandi gildi: 80,1, 2,53, 5,5, 5,12. Klóróform hefur eftirfarandi gildi: 61,26, 3,63, −63,5 og 4,68. Nítróbensen hefur eftirfarandi gildi: 210,9, 5,24, 5,67, 8,1
+
 <!-- SEG:m68783:entry:auto-88 -->
 Suðumarkshækkunar- og frostmarkslækkunarfastar fyrir nokkra leysa
 
@@ -700,6 +703,9 @@ Til að taka tillit til þessa og forðast villur sem fylgja þeirri forsendu a�
 <!-- SEG:m68783:para:fs-idp100413216 -->
 Gildi fyrir mælda van't Hoff-stuðla fyrir nokkur uppleyst efni, ásamt spáðum gildum miðað við fullkomna sundrun, eru sýnd í [[xref:fs-idp191832160]].
 
+<!-- SEG:m68783:table-summary:fs-idp191832160-summary -->
+Þessi tafla sýnir raflausnir, agnir í lausn, i (spáð) og i (mælt). HCl gefur H með hástaf plús og Cl með hástaf mínus agnir í lausn með spáð i-gildi 2 og mælt gildi 1,9. NaCl gefur Na með hástaf plús og Cl með hástaf mínus agnir í lausn með spáð i-gildi 2 og mælt gildi 1,9. MgSO með lágstaf 4 gefur Mg með hástaf 2 plús og SO með lágstaf 4 og hástaf 2 mínus agnir í lausn með spáð i-gildi 2 og mælt gildi 1,3. MgCl með lágstaf 2 gefur Mg með hástaf 2 plús og Cl með hástaf mínus agnir í lausn með spáð i-gildi 3 og mælt gildi 2,7. FeCl með lágstaf 3 gefur Fe með hástaf 3 plús og Cl með hástaf mínus agnir í lausn með spáð i-gildi 4 og mælt gildi 3,4. Glúkósi gefur C með lágstaf 12 H með lágstaf 22 O með lágstaf 11 agnir í lausn með spáð i-gildi 1 og mælt gildi 1,0.
+
 <!-- SEG:m68783:entry:auto-235 -->
 Spáðir og mældir van't Hoff-stuðlar fyrir nokkrar 0,050 [[i:m]] vatnslausnir
 
@@ -870,6 +876,9 @@ Eiginleikar lausnar sem ráðast eingöngu af styrk uppleystra agna kallast sam�
 
 <!-- SEG:m68783:title:fs-idp102974528-title -->
 Lykiljöfnur
+
+<!-- SEG:m68783:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68783:entry:auto-292 -->
 [[MATH:21]]

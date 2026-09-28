@@ -199,6 +199,9 @@ If more than one ligand of a given type is present, the number is indicated by t
 <!-- SEG:m68843:para:fs-idp51192128 -->
 The nomenclature of the complexes is patterned after a system suggested by Alfred Werner, a Swiss chemist and Nobel laureate, whose outstanding work more than 100 years ago laid the foundation for a clearer understanding of these compounds. The following five rules are used for naming complexes:
 
+<!-- SEG:m68843:table-summary:fs-idp115554880-summary -->
+This table has two columns and 11 rows. The first row is a header and it labels each column, “Anionic Ligand,” and “Name.” Under “Anionic Ligand” are the following: F superscript negative sign, C l superscript negative sign, B r superscript negative sign, I superscript negative sign, C N superscript negative sign, N O subscript 3 superscript negative sign, O H superscript negative sign, O to the second power superscript negative sign, C subscript 2 O subscript 4 to the second power superscript negative sign, C O subscript 2 to the second power superscript negative sign. Under the “Name” are the following: fluoro, chloror, bromo, iodo, cyano, nitrato, hydroxo, oxo, oxalate, carbonato.
+
 <!-- SEG:m68843:entry:auto-68 -->
 Examples of Anionic Ligands
 
@@ -271,6 +274,9 @@ carbonato
 <!-- SEG:m68843:para:fs-idp261455600 -->
 When the complex is either a cation or a neutral molecule, the name of the central metal atom is spelled exactly like the name of the element and is followed by a Roman numeral in parentheses to indicate its oxidation state ([[xref:fs-idp99540896]] and [[xref:fs-idp97436016]]). When the complex is an anion, the suffix -ate is added to the stem of the name of the metal, followed by the Roman numeral designation of its oxidation state ([[xref:fs-idp240256816]]). Sometimes, the Latin name of the metal is used when the English name is clumsy. For example, [[i:ferrate]] is used instead of [[i:ironate]], [[i:plumbate]] instead [[i:leadate]], and [[i:stannate]] instead of [[i:tinate]]. The oxidation state of the metal is determined based on the charges of each ligand and the overall charge of the coordination compound. For example, in [Cr(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]]Br, the coordination sphere (in brackets) has a charge of 1+ to balance the bromide ion. The water ligands are neutral, and the chloride ligands are anionic with a charge of 1− each. To determine the oxidation state of the metal, we set the overall charge equal to the sum of the ligands and the metal: +1 = −2 + [[i:x]], so the oxidation state ([[i:x]]) is equal to 3+.
 
+<!-- SEG:m68843:table-summary:fs-idp99540896-summary -->
+This table has two columns and five rows. In the first column are the following: [ C o ( N H subscript 3 ) subscript 6 ] C l subscript 3, [ P t ( N H subscript 3 ) subscript 4 C l subscript 2 ] to the second power superscript positive sign, [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C r ( H subscript 2 O ) subscript 4 C l subscript 2 ] C l, [ C o ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 3 ] subscript 2 ( S O subscript 4 ) subscript 3. In the second column are the following: Hexaamminecobalt ( I I I ) chloride, Tetraamminedichloroplatinum ( I V ) ion, Diamminesilve ( I ) ion, Tetraaquadichlorochromium ( I I I ) chloride, Tris ( ethylenediamine ) cobalt ( I I I ) sulfate.
+
 <!-- SEG:m68843:entry:auto-92 -->
 Examples in Which the Complex Is a Cation
 
@@ -304,6 +310,9 @@ tetraaquadichlorochromium(III) chloride
 <!-- SEG:m68843:entry:auto-102 -->
 tris(ethylenediamine)cobalt(III) sulfate
 
+<!-- SEG:m68843:table-summary:fs-idp97436016-summary -->
+This table has two columns and two rows. In the first row are the following: [ P t ( N H subscript 3 ) subscript 2 C l subscript 4 ], [ N i ( H subscript 2 N C H subscript 2 C H subscript 2 N H subscript 2 ) subscript 2 C l subscript 2 ]. In the second column are the following: Diamminetetrachloroplatiumn ( I V ), Dichlorobis ( ethylenediamine ) nickel ( I I ).
+
 <!-- SEG:m68843:entry:auto-103 -->
 Examples in Which the Complex Is Neutral
 
@@ -318,6 +327,9 @@ diamminetetrachloroplatinum(IV)
 
 <!-- SEG:m68843:entry:auto-107 -->
 dichlorobis(ethylenediamine)nickel(II)
+
+<!-- SEG:m68843:table-summary:fs-idp240256816-summary -->
+This table has two columns and two rows. In the first column is the following: [ P t C l subscript 6 ] to the second power superscript negative sign, N a subscript 2 [ S n C l subscript 6 ]. The second column are the following Hexachloroplatinate ( I V ) ion, Sodium hexachlorostannate ( I V ).
 
 <!-- SEG:m68843:entry:auto-108 -->
 Examples in Which the Complex Is an Anion
@@ -384,6 +396,9 @@ These are geometries of some complexes with coordination numbers of seven and ei
 
 <!-- SEG:m68843:alt:fs-idp159515584-alt -->
 This figure contains three diagrams in black and white. The first is labeled, “Pentagonal Bipyramid.” It has 10 isosceles triangle faces, five at the top, joined at a vertex, making a point projecting upward at the top of the figure, and five below, joined at a vertex, making a point projecting downward, at the base of the figure. The second is labeled, “Square Antiprism.” It has flat upper and lower square surfaces and sides made up of 8 equilateral triangles. The sides alternate in orientation between pointing up and pointing down. The third diagram is labeled, “Dodecahedron.” It has twelve isosceles triangle faces.
+
+<!-- SEG:m68843:table-summary:fs-idp162520608-summary -->
+This table has three columns and 12 rows. The first row is a header row, and it labels each column, “Coordination Number,” “Molecular Geometry,” and “Example.” In the “Coordination Number” column are the following: 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9 and above. Under the “Molecular Geometry” column are the following: linear, trigonal planar, tetrahedral ( d superscript 0 or d superscript 10 ) and low oxidation states for M, square planar ( d superscript 8 ), trigonal bipyramidal, octahedral, pentagonal bipyramid, square antiprism, dodecahedron, and more complicated structures. Under the “Example” column are the following: [ A g ( N H subscript 3 ) subscript 2 ] superscript positive sign, [ C u ( C N ) subscript 3 ] superscript two negative sign, [ N I ( C O ) subscript 4], [ N i C l subscript 4 ] superscript two negative sign, [ C o C l subscript 5 ] superscript two negative sign, [ V O ( C N ) subscript 4 ] superscript two negative sign, [ C o C l subscript 6 ] superscript three negative sign, [ Z r F subscript 7 ] superscript three negative sign, [ R e F subscript 8 ] superscript two negative sign, [ M o ( C N ) subscript 8] superscript four negative sign, [ R e H subscript 9 ] superscript two negative sign.
 
 <!-- SEG:m68843:entry:auto-130 -->
 Coordination Numbers and Molecular Geometry

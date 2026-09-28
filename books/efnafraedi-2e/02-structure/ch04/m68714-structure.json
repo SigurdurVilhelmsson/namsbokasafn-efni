@@ -49,6 +49,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_04_04_sandwich",
+          "title": null,
           "caption": {
             "segmentId": "m68714:caption:CNX_Chem_04_04_sandwich-caption"
           },
@@ -105,6 +106,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_04_04_limiting",
+          "title": null,
           "caption": {
             "segmentId": "m68714:caption:CNX_Chem_04_04_limiting-caption"
           },
@@ -386,6 +388,7 @@
           "type": "figure",
           "id": "CNX_Chem_04_04_GreenChem",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68714:caption:CNX_Chem_04_04_GreenChem-caption"
           },
@@ -441,7 +444,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68714:table-summary:key-equations-table-summary"
         }
       ]
     },

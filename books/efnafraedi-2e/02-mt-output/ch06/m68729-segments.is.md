@@ -310,6 +310,9 @@ Ljós og aðrar gerðir rafsegulgeislunar fara í gegnum tómarúm með föstum 
 <!-- SEG:m68729:title:fs-idp8373504-title -->
 Lykiljöfnur
 
+<!-- SEG:m68729:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68729:entry:auto-105 -->
 [[i:c]] = [[i:λν]]
 

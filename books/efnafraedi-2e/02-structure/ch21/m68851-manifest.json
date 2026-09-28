@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68851",
-  "extractedAt": "2026-09-21T18:51:11.383Z",
+  "extractedAt": "2026-09-28T20:03:10.324Z",
   "sourceHash": "d0b59c18f7c107dc",
-  "segmentCount": 165,
+  "segmentCount": 167,
   "segmentIds": [
     "m68851:title:auto-1",
     "m68851:abstract:auto-2",
@@ -56,6 +56,7 @@
     "m68851:alt:fs-idm82801808-alt",
     "m68851:para:fs-idm67089056",
     "m68851:para:fs-idm18227760",
+    "m68851:table-summary:fs-idp70040672-summary",
     "m68851:entry:auto-52",
     "m68851:entry:auto-53",
     "m68851:entry:auto-54",
@@ -93,6 +94,7 @@
     "m68851:title:fs-idm22567904-title",
     "m68851:para:fs-idp104867712",
     "m68851:title:fs-idp28539744-title",
+    "m68851:table-summary:key-equations-table-summary",
     "m68851:entry:auto-89",
     "m68851:title:fs-idm26476112-title",
     "m68851:problem:fs-idm5227312",

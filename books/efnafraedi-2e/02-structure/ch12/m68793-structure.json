@@ -449,7 +449,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68793:table-summary:fs-idm125968016-summary"
         },
         {
           "type": "table",
@@ -554,7 +555,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68793:table-summary:fs-idp10812288-summary"
         },
         {
           "type": "figure",
@@ -632,7 +634,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68793:table-summary:key-equations-table-summary"
         }
       ]
     },
@@ -1154,7 +1157,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68793:table-summary:fs-idm124800496-summary"
       }
     },
     {
@@ -1214,7 +1218,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68793:table-summary:fs-idm163198896-summary"
       }
     }
   ],

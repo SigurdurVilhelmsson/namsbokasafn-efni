@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68744",
-  "extractedAt": "2026-09-20T11:51:44.177Z",
+  "extractedAt": "2026-09-28T20:03:06.016Z",
   "sourceHash": "7ff528c3fcf12092",
-  "segmentCount": 136,
+  "segmentCount": 137,
   "segmentIds": [
     "m68744:title:auto-1",
     "m68744:abstract:auto-2",
@@ -16,6 +16,7 @@
     "m68744:caption:CNX_Chem_08_01_Morse-caption",
     "m68744:alt:fs-idp39719248-alt",
     "m68744:para:fs-idm5865744",
+    "m68744:table-summary:fs-idp43355056-summary",
     "m68744:entry:auto-12",
     "m68744:entry:auto-13",
     "m68744:entry:auto-14",

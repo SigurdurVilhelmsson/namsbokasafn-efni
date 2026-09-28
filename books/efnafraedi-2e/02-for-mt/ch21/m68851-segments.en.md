@@ -151,6 +151,9 @@ The nuclei that are to the left or to the right of the band of stability are uns
 <!-- SEG:m68851:para:fs-idm18227760 -->
 Several observations may be made regarding the relationship between the stability of a nucleus and its structure. Nuclei with even numbers of protons, neutrons, or both are more likely to be stable (see [[xref:fs-idp70040672]]). Nuclei with certain numbers of nucleons, known as [[term:magic numbers|term-00012]], are stable against nuclear decay. These numbers of protons or neutrons (2, 8, 20, 28, 50, 82, and 126) make complete shells in the nucleus. These are similar in concept to the stable electron shells observed for the noble gases. Nuclei that have magic numbers of both protons and neutrons, such as [[MATH:23]] [[MATH:24]] [[MATH:25]] and [[MATH:26]] are called “double magic” and are particularly stable. These trends in nuclear stability may be rationalized by considering a quantum mechanical model of nuclear energy states analogous to that used to describe electronic states earlier in this textbook. The details of this model are beyond the scope of this chapter.
 
+<!-- SEG:m68851:table-summary:fs-idp70040672-summary -->
+This table has three columns and five rows. The first row is a header row, and it labels each column: “Number of Stable Isotopes,” “Proton Number,” and “Neutron Number.” Under the “Number of Stable Isotopes” column are the following numbers: 157, 53, 50, and 5. Under the “Proton Number” column are the following: even, even, odd, odd. Under the “Neutron Number” column are the following: even, odd, even, odd.
+
 <!-- SEG:m68851:entry:auto-52 -->
 Stable Nuclear Isotopes
 
@@ -261,6 +264,9 @@ An atomic nucleus consists of protons and neutrons, collectively called nucleons
 
 <!-- SEG:m68851:title:fs-idp28539744-title -->
 Key Equations
+
+<!-- SEG:m68851:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68851:entry:auto-89 -->
 [[i:E]] = [[i:mc]][[sup:2]]

@@ -346,6 +346,9 @@ Figures A through C each show targets with holes where the arrows hit. The arche
 <!-- SEG:m68690:para:fs-idp174984224 -->
 Suppose a quality control chemist at a pharmaceutical company is tasked with checking the accuracy and precision of three different machines that are meant to dispense 10 ounces (296 mL) of cough syrup into storage bottles. She proceeds to use each machine to fill five bottles and then carefully determines the actual volume dispensed, obtaining the results tabulated in [[xref:fs-idp31780400]].
 
+<!-- SEG:m68690:table-summary:fs-idp31780400-summary -->
+The volume, in milliliters, of cough medicine delivered by dispensers 1, 2 and 3 are shown in a table. The values for dispenser 1 are 283.3, 284.1, 283.9, 284.0, and 284.1. The values for dispenser 2 are 298.3, 294.2, 296.0, 297.8, and 293.9. The values for dispenser 3 are 296.1, 295.9, 296.1, 296.0, and 296.1.
+
 <!-- SEG:m68690:entry:auto-117 -->
 Volume (mL) of Cough Medicine Delivered by 10-oz (296 mL) Dispensers
 

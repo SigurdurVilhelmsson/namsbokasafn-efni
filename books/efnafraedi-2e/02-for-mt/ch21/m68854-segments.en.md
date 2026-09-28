@@ -190,6 +190,9 @@ Answer:
 <!-- SEG:m68854:para:fs-idp76857680 -->
 Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in [[docref:Appendix M|m68871]].
 
+<!-- SEG:m68854:table-summary:fs-idp14399952-summary -->
+This table has four columns and six rows. The first row is a header row, and it labels each column: “Type,” “Decay Mode,” “Half-life,” and “Uses.” Under the “Type” column are the following: “F - 18,” “C o - 60,” “T c - 99 m,” “I – 131,” and “T l - 201.” Under the “Decay Mode” column are the following: “lowercase beta superscript positive sign decay,” “lowercase beta decay, lowercase gamma decay,” “lowercase gamma decay,” “lowercase beta decay,” and “electron capture.” Under the “Half-life” column are the following: 110. Minutes, 5.27 years, 8.01 hours, 8.02 days, and 73 hours. Under the “Uses” column are the following: PET scans; concern treatment; scans of brain, lung heart bone, etc.; thyroid scans and treatment; heart and arteries scans and cardiac stress tests.
+
 <!-- SEG:m68854:entry:auto-65 -->
 Half-lives of Radioactive Isotopes Important to Medicine
 
@@ -411,6 +414,9 @@ Nuclei that have unstable n:p ratios undergo spontaneous radioactive decay. The 
 
 <!-- SEG:m68854:title:fs-idm2719024-title -->
 Key Equations
+
+<!-- SEG:m68854:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68854:entry:auto-139 -->
 decay rate = [[i:λN]]

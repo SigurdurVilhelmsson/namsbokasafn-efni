@@ -469,6 +469,9 @@ The relative strengths of acids and bases are reflected in the magnitudes of the
 <!-- SEG:m68805:title:fs-idp31338208-title -->
 Key Equations
 
+<!-- SEG:m68805:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68805:entry:auto-158 -->
 [[MATH:67]]
 

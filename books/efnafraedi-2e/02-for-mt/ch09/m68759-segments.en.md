@@ -55,6 +55,9 @@ This figure shows the equation P V equals n R T, with the P in blue text and the
 <!-- SEG:m68759:para:fs-idm12594352 -->
 The constant [[i:a]] corresponds to the strength of the attraction between molecules of a particular gas, and the constant [[i:b]] corresponds to the size of the molecules of a particular gas. The “correction” to the pressure term in the ideal gas law is [[MATH:1]] and the “correction” to the volume is [[i:nb]]. Note that when [[i:V]] is relatively large and [[i:n]] is relatively small, both of these correction terms become negligible, and the van der Waals equation reduces to the ideal gas law, [[i:PV = nRT]]. Such a condition corresponds to a gas in which a relatively low number of molecules is occupying a relatively large volume, that is, a gas at a relatively low pressure. Experimental values for the van der Waals constants of some common gases are given in [[xref:fs-idm15100464]].
 
+<!-- SEG:m68759:table-summary:fs-idm15100464-summary -->
+This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383.
+
 <!-- SEG:m68759:entry:auto-20 -->
 Values of van der Waals Constants for Some Common Gases
 
@@ -189,6 +192,9 @@ Gas molecules possess a finite volume and experience forces of attraction for on
 
 <!-- SEG:m68759:title:fs-idm24142800-title -->
 Key Equations
+
+<!-- SEG:m68759:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68759:entry:auto-65 -->
 [[MATH:2]]

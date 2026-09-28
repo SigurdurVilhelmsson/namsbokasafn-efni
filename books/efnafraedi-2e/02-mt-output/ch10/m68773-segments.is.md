@@ -523,6 +523,9 @@ Lýsa má byggingu kristallaðra málma og einfaldra jónaefnasambanda með till
 <!-- SEG:m68773:title:fs-idp29862416-title -->
 Lykiljafna
 
+<!-- SEG:m68773:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68773:entry:auto-176 -->
 [[MATH:23]]
 

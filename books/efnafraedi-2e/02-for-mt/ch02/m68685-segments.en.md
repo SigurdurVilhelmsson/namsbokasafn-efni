@@ -88,6 +88,9 @@ The starting materials consist of four green spheres and two purple spheres. The
 <!-- SEG:m68685:para:fs-idp28034944 -->
 Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that [[i:all samples of a pure compound contain the same elements in the same proportion by mass]]. This statement is known as the [[term:law of definite proportions|term-00004]] or the [[term:law of constant composition|term-00005]]. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [[xref:fs-idp114534448]].
 
+<!-- SEG:m68685:table-summary:fs-idp114534448-summary -->
+This table displays how much carbon and hydrogen are in samples A, B and C, as well as the mass ratio of each. Sample A contains 14.82 grams of carbon and 2.78 grams of hydrogen. Its mass ratio is, therefore, 14.82 grams of carbon over 2.78 grams of hydrogen. This ratio is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample B contains 22.33 grams of carbon and 4.19 grams of hydrogen. Its mass ratio is 22.3 grams of carbon over 4.19 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample C contains 19.40 grams of carbon and 3.64 grams of hydrogen. Its mass ratio is 19.40 grams of carbon over 3.63 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen.
+
 <!-- SEG:m68685:entry:auto-31 -->
 Constant Composition of Isooctane
 
@@ -225,6 +228,9 @@ Samples of compound X, Y, and Z are analyzed, with results shown here.
 
 <!-- SEG:m68685:problem:fs-idm32094368 -->
 Do these data provide example(s) of the law of definite proportions, the law of multiple proportions, neither, or both? What do these data tell you about compounds X, Y, and Z?
+
+<!-- SEG:m68685:table-summary:fs-idp22296752-summary -->
+This table has a “description” column, a “mass of carbon” column, and a “mass of hydrogen” column for compounds X, Y and Z. Compound X is a clear, colorless liquid with a strong odor. Its mass of carbon is 1.776 grams, and its mass of hydrogen is 0.148 grams. Compound Y is also a clear, colorless liquid with a strong odor. Its mass of carbon is 1.974 grams, and its mass of hydrogen is 0.329 grams. Compound Z is also a clear, colorless liquid with a strong odor. Its mass of carbon is 7.812 grams and its mass of hydrogen is 0.651 g.
 
 <!-- SEG:m68685:entry:auto-77 -->
 Compound

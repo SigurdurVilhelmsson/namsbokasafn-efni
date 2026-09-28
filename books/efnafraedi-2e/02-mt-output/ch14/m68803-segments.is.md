@@ -184,6 +184,9 @@ Jónamargfeldi vatns, [[i:K]][[sub:w]], er jafnvægisfasti fyrir sjálfjónunarh
 <!-- SEG:m68803:title:fs-idp36036608-title -->
 Lykiljöfnur
 
+<!-- SEG:m68803:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68803:entry:auto-63 -->
 [[i:K]][[sub:w]] = [H[[sub:3]]O[[sup:+]]][OH[[sup:−]]] = 1,0 [[MATH:19]] 10[[sup:−14]] (við 25 °C)
 

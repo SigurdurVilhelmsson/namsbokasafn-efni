@@ -88,6 +88,9 @@ Eiginleikar fastra efna
 <!-- SEG:m68770:para:fs-idp69161920 -->
 Kristallað fast efni, eins og þau sem talin eru upp í [[xref:fs-idp121853232]], hefur nákvæmt bræðslumark vegna þess að hvert atóm eða sameind af sömu gerð er haldið á sínum stað með sömu kröftum eða orku. Þannig hafa aðdráttarkraftarnir milli eininganna sem mynda kristallinn allir sama styrk og þurfa allir sama magn af orku til að rofna. Smám saman mýking formlauss efnis er verulega frábrugðin skýrri bráðnun kristallaðs fasts efnis. Þetta stafar af byggingarlegum ójöfnuði sameindanna í formlausa fasta efninu. Sumir kraftar eru veikari en aðrir og þegar formlaust efni er hitað rofna veikustu millisameindakraftarnir fyrst. Eftir því sem hitastigið er hækkað frekar rofna sterkari aðdráttarkraftarnir. Þannig mýkjast formlaus efni yfir hitastigssvið.
 
+<!-- SEG:m68770:table-summary:fs-idp121853232-summary -->
+Þessi tafla hefur fimm raðir og fimm dálka. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Tegund fasts efnis“, „Tegund einda“, „Tegund aðdráttarkrafta“, „Eiginleikar“ og „Dæmi“. Undir dálkinum „Tegund fasts efnis“ er eftirfarandi: jónaefni, málmur, samgilt net, sameindaefni. Undir dálkinum „Tegund einda“ er eftirfarandi: jónir, frumeindir jákvæðra frumefna, frumeindir neikvæðra frumefna og sameindir (eða frumeindir). Undir dálkinum „Tegund aðdráttarkrafta“ er eftirfarandi: jónatengi, málmtengi, samgild tengi, millikraftar sameinda. Undir dálkinum „Eiginleikar“ er eftirfarandi: hart, stökkt, leiðir rafmagn sem vökvi en ekki sem fast efni, hátt til mjög hátt bræðslumark; glansandi, sveigjanlegt, þjált, leiðir hita og rafmagn vel, breytileg hörku og bræðslumark; mjög hart, leiðir ekki rafmagn, mjög hátt bræðslumark; breytileg hörku, breytilegur stökkleiki, leiðir ekki rafmagn, lágt bræðslumark. Undir dálkinum „Dæmi“ er eftirfarandi: N a C l, A l neðanskrift 2 O neðanskrift 3; C u, F e, T I, P b, U; C (demantur), S I O neðanskrift 2, S i C; H neðanskrift 2 O, C O neðanskrift 2, I neðanskrift 2, C neðanskrift 12 H neðanskrift 22 O neðanskrift 11.
+
 <!-- SEG:m68770:entry:auto-31 -->
 Tegundir kristallaðra fastra efna og eiginleikar þeirra
 
@@ -415,6 +418,9 @@ tóm
 <!-- SEG:m68770:glossary-def:fs-idm37032656-def -->
 galli sem verður þegar staða sem ætti að innihalda atóm eða jón er tóm
 
+<!-- SEG:m68770:table-summary:fs-idm7525216-summary -->
+Þessi tafla hefur fjórar raðir og fimm dálka. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Efni“, „Útlit“, „Bræðslumark“, „Rafleiðni“ og „Leysni í vatni“. Undir dálkinum „Efni“ er eftirfarandi: X, Y og Z. Undir dálkinum „Útlit“ er eftirfarandi: gljáandi, sveigjanlegt; mjúkt, gult; hart, hvítt. Undir dálkinum „Bræðslumark“ er eftirfarandi: 1500 gráður C, 113 gráður C og 800 gráður C. Undir dálkinum „Rafleiðni“ er eftirfarandi: mikil; engin; aðeins ef bráðið / uppleyst. Undir dálkinum „Leysni í vatni“ er eftirfarandi: óleysanlegt, óleysanlegt og leysanlegt.
+
 <!-- SEG:m68770:entry:auto-140 -->
 Efni
 
@@ -474,6 +480,9 @@ aðeins ef brætt/leyst upp
 
 <!-- SEG:m68770:entry:auto-159 -->
 leysanlegt
+
+<!-- SEG:m68770:table-summary:fs-idp139392608-summary -->
+Þessi tafla hefur fjórar raðir og fimm dálka. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Efni“, „Útlit“, „Bræðslumark“, „Rafleiðni“ og „Leysni í vatni“. Undir dálkinum „Efni“ er eftirfarandi: X, Y og Z. Undir dálkinum „Útlit“ er eftirfarandi: stökkt, hvítt; glansandi, sveigjanlegt; hart, litlaust. Undir dálkinum „Bræðslumark“ er eftirfarandi: 800 gráður C, 1100 gráður C og 3550 gráður C. Undir dálkinum „Rafleiðni“ er eftirfarandi: aðeins ef bráðið / uppleyst, mikil og engin. Undir dálkinum „Leysni í vatni“ er eftirfarandi: leysanlegt, óleysanlegt og óleysanlegt.
 
 <!-- SEG:m68770:entry:auto-160 -->
 Efni

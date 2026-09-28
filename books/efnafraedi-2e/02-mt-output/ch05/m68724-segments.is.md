@@ -139,6 +139,9 @@ Myndin sýnir tvær svartar málmsteikarpönnur á sléttu yfirborði. Pannan ti
 <!-- SEG:m68724:para:fs-idm50153600 -->
 Vatn hefur tiltölulega háan eðlisvarma (um 4,2 J/g °C fyrir vökva og 2,09 J/g °C fyrir fast efni); flestir málmar hafa mun lægri eðlisvarma (yfirleitt minna en 1 J/g °C). Eðlisvarmi efnis er nokkuð breytilegur með hitastigi. Þessi breyting er þó yfirleitt nógu lítil til að við munum meðhöndla eðlisvarma sem fasta á því hitastigsbili sem fjallað verður um í þessum kafla. Eðlisvarmar nokkurra algengra efna eru taldir upp í [[xref:fs-idm68801008]].
 
+<!-- SEG:m68724:table-summary:fs-idm68801008-summary -->
+Sýnd er tafla með þremur dálkum og sautján röðum. Efsta röðin er fyrirsagnarröð og inniheldur fyrirsagnirnar „Efni“, „Ástand og tákn“ og „Eðlisvarmi (J / g °C)“. Undir fyrstu fyrirsögninni eru hugtökin „helíum“, „vatn“, „etanól“, „ís“, „vatnsgufa“, „köfnunarefni“, „loft“, „súrefni“, „ál“, „koltvísýringur“, „argon“, „járn“, „kopar“, „blý“, „gull“ og „kísill“. Annar dálkurinn inniheldur táknin og merkin: „He (g)“, „H neðanskrift 2 O (l)“, „C neðanskrift 2 H neðanskrift 6 O (l)“, „H neðanskrift 2 O (s)“, „H neðanskrift 2 O (g)“, „N neðanskrift 2 (g)“, auður reitur fyrir loft, „O neðanskrift 2 (g)“, „Al (s)“, „CO neðanskrift 2 (g)“, „Ar (g)“, „Fe (s)“, „Cu (s)“, „Pb (s)“, „Au (s)“ og „Si (s)“. Síðasti dálkurinn inniheldur gildin „5,193“, „4,184“, „2,376“, „2,093 (við –10 °C)“, „1,864“, „1,040“, „1,007“, „0,918“, „0,897“, „0,853“, „0,522“, „0,449“, „0,385“, „0,130“, „0,129“ og „0,712“.
+
 <!-- SEG:m68724:entry:auto-48 -->
 Eðlisvarmar algengra efna við 25 °C og 1 bar
 
@@ -420,6 +423,9 @@ Eðlisvarmi og varmarýmd eru mælikvarðar á þá orku sem þarf til að breyt
 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Lykiljafna
+
+<!-- SEG:m68724:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68724:entry:auto-142 -->
 [[MATH:4]]

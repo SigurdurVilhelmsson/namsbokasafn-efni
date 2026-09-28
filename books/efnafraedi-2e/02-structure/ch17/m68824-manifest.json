@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68824",
-  "extractedAt": "2026-09-21T16:38:44.434Z",
+  "extractedAt": "2026-09-28T20:03:09.197Z",
   "sourceHash": "874f66e155e52c0a",
-  "segmentCount": 109,
+  "segmentCount": 111,
   "segmentIds": [
     "m68824:title:auto-1",
     "m68824:abstract:auto-2",
@@ -20,6 +20,7 @@
     "m68824:para:fs-idm242471888",
     "m68824:caption:CNX_Chem_17_04_Relation-caption",
     "m68824:alt:fs-idp78132768-alt",
+    "m68824:table-summary:fs-idm241340256-summary",
     "m68824:entry:auto-16",
     "m68824:entry:auto-17",
     "m68824:entry:auto-18",
@@ -80,6 +81,7 @@
     "m68824:title:fs-idp160224496-title",
     "m68824:para:fs-idp58835888",
     "m68824:title:fs-idp39495232-title",
+    "m68824:table-summary:key-equations-table-summary",
     "m68824:entry:auto-76",
     "m68824:entry:auto-77",
     "m68824:entry:auto-78",

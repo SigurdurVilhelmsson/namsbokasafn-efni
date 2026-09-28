@@ -43,6 +43,9 @@ Comparing this equation to the previous one for free energy change shows the fol
 <!-- SEG:m68819:para:fs-idm228637552 -->
 The free energy change is therefore a reliable indicator of the spontaneity of a process, being directly related to the previously identified spontaneity indicator, Δ[[i:S]][[sub:univ]]. [[xref:fs-idm211518768]] summarizes the relation between the spontaneity of a process and the arithmetic signs of these indicators.
 
+<!-- SEG:m68819:table-summary:fs-idm211518768-summary -->
+This table has three columns and three rows. The first column has the following: “capital delta S subscript univ is greater than 0,” “capital delta S subscript univ is less than 0,” and, “capital delta S subscript univ equals 0.” The second column contains the following: “capital delta G is less than 0,” “capital delta G is greater than 0,” and, “capital delta G equals 0.” The third column contains the following: “Spontaneous,” “nonspontaneous ( spontaneous in opposite direction ),” and, “reversible ( system is at equilibrium ).”
+
 <!-- SEG:m68819:entry:auto-16 -->
 Relation between Process Spontaneity and Signs of Thermodynamic Properties
 
@@ -139,6 +142,9 @@ Answer:
 <!-- SEG:m68819:para:fs-idm157144416 -->
 [[MATH:4]] the reaction is nonspontaneous ([[i:not]] spontaneous) at 25 °C.
 
+<!-- SEG:m68819:table-summary:fs-idm230329280-summary -->
+This table has three columns and three rows. The first row is a header row and it labels each column: “Substance,” “capital delta H subscript f superscript degree symbol ( k J / mol),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Substance” column are H subscript 2 O ( l ) and H subscript 2 O ( g ). Under the “capital delta H subscript f superscript degree symbol ( k J / mol)” column are the values negative 286.83 and negative 241.82. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values 70.0 and 188.8.
+
 <!-- SEG:m68819:entry:auto-48 -->
 Substance
 
@@ -216,6 +222,9 @@ Answer:
 
 <!-- SEG:m68819:para:eip-687 -->
 (b) 141.5 kJ/mol, nonspontaneous
+
+<!-- SEG:m68819:table-summary:fs-idm232730384-summary -->
+This table has four columns and four rows. The first row is a header row, and it labels each column: “Compound,” “capital delta G subscript f superscript degree symbol ( k J / mol ),” “capital delta H subscript f superscript degree symbol ( k J / mol ),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Compound” column are the following: “H g O ( s, yellow ),” “H g ( l ),” and “O subscript 2 ( g ).” Under the “capital delta G subscript f superscript degree symbol ( k J / mol )” column are the following values: negative 58.43, 0, and 0. Under the “capital delta H subscript f superscript degree symbol ( k J / mol )” column are the values: negative 90.46, 0, and 0. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values: 71.13, 75.9, and 205.2.
 
 <!-- SEG:m68819:entry:auto-74 -->
 Compound
@@ -484,6 +493,9 @@ For a system at equilibrium, [[i:Q]] = [[i:K]] and Δ[[i:G]] = 0, and the previo
 <!-- SEG:m68819:para:fs-idm206226416 -->
 This form of the equation provides a useful link between these two essential thermodynamic properties, and it can be used to derive equilibrium constants from standard free energy changes and vice versa. The relations between standard free energy changes and equilibrium constants are summarized in [[xref:fs-idm159425040]].
 
+<!-- SEG:m68819:table-summary:fs-idm159425040-summary -->
+This table has three columns and four rows. The first row is a header row, and it labels each column, “K,” “capital delta G superscript degree symbol,” and “Comments.” Under the “K” column are the following: “greater than 1,” “less than 1,” and “equal to 1.” Under the “capital delta G superscript degree symbol” column are the following: “less than 0,” “greater than 0,” and “equal to 0.” Under the “Comments” column are the following: “Products are more abundant at equilibrium,” “Reactants are more abundant at equilibrium,” and “Reactants and products are equally abundant at equilibrium.”
+
 <!-- SEG:m68819:entry:auto-163 -->
 Relations between Standard Free Energy Changes and Equilibrium Constants
 
@@ -576,6 +588,9 @@ Gibbs free energy ([[i:G]]) is a state function defined with regard to system qu
 
 <!-- SEG:m68819:title:fs-idm248576000-title -->
 Key Equations
+
+<!-- SEG:m68819:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68819:entry:auto-194 -->
 Δ[[i:G]] = Δ[[i:H]] − [[i:T]]Δ[[i:S]]

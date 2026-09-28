@@ -187,6 +187,9 @@ Gaseous atoms and molecules move freely and randomly through space. Diffusion is
 <!-- SEG:m68754:title:fs-idp166246928-title -->
 Key Equations
 
+<!-- SEG:m68754:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68754:entry:auto-64 -->
 [[MATH:5]]
 

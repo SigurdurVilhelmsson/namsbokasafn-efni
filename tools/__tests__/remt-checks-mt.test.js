@@ -286,7 +286,12 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // `figure-run` independently enumerated. The SAME numbers that moved A2b's id count
     // and A2c's marker count. Four censuses, one delta, every time — which is why these
     // bumps are predictions met, not numbers copied off a red run.
-    expect(examined).toBe(22664); // segments inspected; an empty walk cannot reach it
+    // 22,664 -> 22,855 is +191, one per summary bought:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(examined).toBe(22855); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
@@ -427,7 +432,12 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       }
     }
     expect(pairs).toBe(207);
-    expect(examined).toBe(30715);
+    // 30,715 -> 30,906 is +191, the SAME delta as A6 and A2c:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(examined).toBe(30906);
 
     // 🔴 §C126 #3 (2026-09-22) — 31 ORGANIC EXERCISE BUNDLES NOW FAIL THE CROSS-SIDE LEG, AND
     // THEY ARE THE ch12 CASE BELOW AGAIN: VINTAGE, NOT DAMAGE. Their EN gained 2,375
@@ -447,6 +457,11 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // gap. Chemistry's 191 are NOT in this count because its committed extraction is HELD
     // until its summaries are bought ([USER] 2026-09-23) — when it is regenerated, this
     // becomes 2 + 191 and 83 more names join `rawOnly`.
+    // ✅ §C183 (2026-09-28) — CHEMISTRY WAS REGENERATED AND BOUGHT IN ONE CHANGE, so the
+    // prediction above ("2 + 191 and 83 more names") never came true: it became 2 + 0. The
+    // top-up bought all 191 and re-stamped each IS's `generatedAt`, so the vintage view KEEPS
+    // those summaries and A2b judges them (none fails). ▶ These 83 re-stamped files are the
+    // corpus's FIRST post-type summary IS on disk — see the next test's note.
     expect(summaryDriftIds).toBe(2);
     const rawOnly = rawNonPass.filter((x) => !nonPass.some((y) => y.f === x.f));
     expect(rawOnly).toHaveLength(33);
@@ -497,8 +512,13 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
 
   it('the vintage view READS the provenance file beside the IS — post-type on disk is never subtracted', () => {
     // 🔴 THE MUST-TRIP BELOW PASSES `generatedAt` BY HAND, SO IT CANNOT SEE THE DISK READ.
-    // The corpus cannot either: its only summary-bearing IS files (organic ch03 m00032/m00033)
-    // are pre-type, and "read fails ⇒ pre-type" gives the same answer as "read 2026-09-05".
+    // The corpus could not either, until 2026-09-28: its only summary-bearing IS files
+    // (organic ch03 m00032/m00033) are pre-type, and "read fails ⇒ pre-type" gives the same
+    // answer as "read 2026-09-05". ⚠️ Since §C183's top-up, 83 chemistry IS files carry
+    // summaries under a RE-STAMPED post-type `generatedAt`, so the corpus now reaches the
+    // post-type branch too — but they also carry the summary ids, which the carries-a-summary
+    // guard keeps on its own. So the corpus still cannot tell a broken disk read from a
+    // working one; this synthetic pin remains the only test of the read.
     // A review mutant that misnamed the provenance file survived every battery test. Without
     // this, a broken read would subtract every POST-type buy's summaries — and a destroyed
     // summary token would pass A2b green, from the first organic buy onwards.
@@ -954,7 +974,9 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // 63,863 -> 63,865 is +2 (§C126 #4): organic ch03's m00032/m00033 EN gained one
       // `:table-summary:` id each (the other 17 summary modules have no IS to pair with).
       // Keyed `{tableId}-summary`, all `[\w-]` — violations stay 0.
-      expect(ids).toBe(63865); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 63,865 -> 64,247 is +382 (§C183, 2026-09-28): chemistry's re-extract added 191
+      // `:table-summary:` EN ids and the top-up bought all 191 into the IS. 191 + 191 = 382.
+      expect(ids).toBe(64247); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -1007,7 +1029,12 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     // 30,027 -> 30,076 -> 30,158 is the SAME +49 then +82 A2b's id count moved by — the figure-`alt`
     // segments. Two independent censuses agreeing on the delta is what makes either
     // number worth trusting; if only one had moved, that would be the alarm.
-    expect(markers).toBe(30715);
+    // 30,715 -> 30,906 is +191, the SAME delta A2b and A6 moved by:
+    // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
+    // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
+    // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
+    // with no SEG marker) = 191, the number the dry run planned.
+    expect(markers).toBe(30906);
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {

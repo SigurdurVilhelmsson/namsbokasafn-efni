@@ -145,6 +145,9 @@ Answer:
 <!-- SEG:m68793:para:fs-idm147992368 -->
 1.1 [[MATH:10]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
 
+<!-- SEG:m68793:table-summary:fs-idm125968016-summary -->
+This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2.
+
 <!-- SEG:m68793:entry:auto-50 -->
 [[i:T]] (K)
 
@@ -180,6 +183,9 @@ Answer:
 
 <!-- SEG:m68793:entry:auto-61 -->
 3.95 [[MATH:15]] 10[[sup:−2]]
+
+<!-- SEG:m68793:table-summary:fs-idp10812288-summary -->
+This table has two columns and six rows. The first row is labeled, “1 over T ( K superscript negative 1 ),” and, “l n k.” Under the first column are the numbers: 1.80 times ten to the negative 3; 1.74 times ten to the negative 3; 1.55 times ten to the negative 3; 1.43 times ten to the negative 3; and 1.28 times ten to the negative 3. Under the second column are the numbers: negative 14.860, negative 13.617, negative 9.362, negative 6.759, and negative 3.231.
 
 <!-- SEG:m68793:entry:auto-62 -->
 [[MATH:16]]
@@ -231,6 +237,9 @@ Chemical reactions typically require collisions between reactant species. These 
 
 <!-- SEG:m68793:title:fs-idp2946768-title -->
 Key Equations
+
+<!-- SEG:m68793:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68793:entry:auto-79 -->
 [[MATH:24]]
@@ -391,6 +400,9 @@ reaction diagram
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
 used in chemical kinetics to illustrate various properties of a reaction
 
+<!-- SEG:m68793:table-summary:fs-idm124800496-summary -->
+This table has two columns and five rows. The first column is labeled, “Temperature ( K ),” and the second column is labeled, “k ( M superscript negative 1 s superscript negative 1 ).” Under the first column are the numbers: 555, 575, 645, and 700. Under the second column are the numbers: 6.23 times ten to the negative 7; 2.42 times ten to the negative 6; 1.44 times ten to the negative 4; and 2.01 times ten to the negative 3.
+
 <!-- SEG:m68793:entry:auto-132 -->
 Temperature (K)
 
@@ -420,6 +432,9 @@ Temperature (K)
 
 <!-- SEG:m68793:entry:auto-141 -->
 2.01 [[MATH:36]] 10[[sup:−3]]
+
+<!-- SEG:m68793:table-summary:fs-idm163198896-summary -->
+This table contains two columns and three rows. The first row is a header row, and it labels each column, “T ( K )” and “k ( s superscript negative 1 ).” Under the first column are the numbers 293 and 298. Under the second column are the numbers 0.054 and 0.100.
 
 <!-- SEG:m68793:entry:auto-142 -->
 [[i:T]] (K)

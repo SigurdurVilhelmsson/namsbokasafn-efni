@@ -148,6 +148,9 @@ Note from [[xref:fs-idm73111648]] that fluorine is able to oxidize iodine to its
 <!-- SEG:m68839:para:fs-idm19980944 -->
 The ionic polyhalides of the alkali metals, such as KI[[sub:3]], KICl[[sub:2]], KICl[[sub:4]], CsIBr[[sub:2]], and CsBrCl[[sub:2]], which contain an anion composed of at least three halogen atoms, are closely related to the interhalogens. As seen previously, the formation of the polyhalide anion [[MATH:2]] is responsible for the solubility of iodine in aqueous solutions containing an iodide ion.
 
+<!-- SEG:m68839:table-summary:fs-idm73111648-summary -->
+This table has four columns and seven rows. The first row is a header row, and it labels each column, “Y X,” “Y X subscript 3,” “Y X subscript 5,” “Y X subscript 7.” Under the “Y X” column are the following: C l F ( g ); B r F ( g ); B r C l ( g ); I F ( s ); I C l ( l ); I B r ( s ). Under the “Y X subscript 3” column are the following: C l F subscript 3 ( g ); B r F subscript 3 ( l ); a blank row; I F subscript 3 ( s ); I C l subscript 3 ( s ); and another blank row. Under the column “Y X subscript 5,” are the following: C l F subscript 5 ( g ); B r F subscript 5 ( l ); a blank row; I F subscript 5 ( l ); and two blank rows. Under the column “Y X subscript 7,” are three blank rows; I F subscript 7 ( g ); and two blank rows.
+
 <!-- SEG:m68839:entry:auto-51 -->
 Interhalogens
 

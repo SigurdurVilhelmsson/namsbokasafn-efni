@@ -112,6 +112,9 @@ This flow chart begins with matter at the top and the question: does the matter 
 <!-- SEG:m68667:para:fs-idm39281712 -->
 Eleven elements make up about 99% of the earth’s crust and atmosphere ([[xref:fs-idp31507504]]). Oxygen constitutes nearly one-half and silicon about one-quarter of the total quantity of these elements. A majority of elements on earth are found in chemical combinations with other elements; about one-quarter of the elements are also found in the free state.
 
+<!-- SEG:m68667:table-summary:fs-idp31507504-summary -->
+Oxygen, symbolized by O, has a percent mass of 49.20. Silicon, symbolized by S I, has a percent mass of 25.67. Aluminum, symbolized by A L, has a percent mass of 7.50. Iron, symbolized by F E, has a percent mass of 4.71. Calcium, symbolized by C A, has a percent mass of 3.39. Sodium, symbolized by N A, has a percent mass of 2.63. Potassium, symbolized by K, has a percent mass of 2.40. Magnesium, symbolized by M G, has a percent mass of 1.93. Hydrogen, symbolized by H, has a percent mass of 0.87. Titanium, symbolized by T I, has a percent mass of 0.58. Chlorine, symbolized by C L, has a percent mass of 0.19. Phosphorus, symbolized by P, has a percent mass of 0.11. Manganese, symbolized by M N, has a percent mass of 0.09. Carbon, symbolized by C, has a percent mass of 0.08. Sulfur, symbolized by S, has a percent mass of 0.06. Barium, symbolized by B A, has a percent mass of 0.04. Nitrogen, symbolized by N, has a percent mass of 0.03. Fluorine, symbolized by F, has a percent mass of 0.03. Strontium, symbolized by S R, has a percent mass of 0.02. All others have a percent mass of 0.47.
+
 <!-- SEG:m68667:entry:auto-39 -->
 Elemental Composition of Earth
 

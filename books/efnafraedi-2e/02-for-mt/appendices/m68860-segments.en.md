@@ -154,6 +154,9 @@ The Use of Logarithms and Exponential Numbers
 <!-- SEG:m68860:para:fs-idm310797664 -->
 The common logarithm of a number (log) is the power to which 10 must be raised to equal that number. For example, the common logarithm of 100 is 2, because 10 must be raised to the second power to equal 100. Additional examples follow.
 
+<!-- SEG:m68860:table-summary:fs-idm247181504-summary -->
+A table titled “Logarithms and Exponential Numbers” has three columns titled “Number,” “Number Expressed Exponentially,” and “Common Logarithm.” The number 1000 is expressed exponentially as 10 superscript 3 and has a common logarithm of 3. The number 10 is expressed exponentially as 10 superscript 1 and has a common logarithm of 1. The number 1 is expressed exponentially as 10 superscript 0 and has a common logarithm of 0. The number 0.1 is expressed exponentially as 10 superscript negative 1 and has a common logarithm of negative 1. The number 0.001 is expressed exponentially as 10 superscript negative 3 and has a common logarithm of negative 3.
+
 <!-- SEG:m68860:entry:auto-53 -->
 Logarithms and Exponential Numbers
 
@@ -283,6 +286,9 @@ This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each
 <!-- SEG:m68860:alt:fs-idm174022560-alt -->
 A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.
 
+<!-- SEG:m68860:table-summary:fs-idm165592384-summary -->
+A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.
+
 <!-- SEG:m68860:entry:auto-96 -->
 [[i:x]]
 
@@ -324,6 +330,9 @@ If we know that [[i:y]] = [[i:x]][[sup:2]] + 2, we can produce a table of a few 
 
 <!-- SEG:m68860:alt:fs-idp112843584-alt -->
 A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.
+
+<!-- SEG:m68860:table-summary:fs-idm70341712-summary -->
+A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.
 
 <!-- SEG:m68860:entry:auto-110 -->
 [[i:x]]

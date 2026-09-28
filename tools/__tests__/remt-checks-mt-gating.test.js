@@ -307,6 +307,10 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // one `:table-summary:` segment each, which their 2026-09-05 IS predates. Subtracted by
     // VINTAGE (`withoutPreTypeDrift` → `withoutPreSummaryDrift`), and the three subtracted
     // pins below did not move. Chemistry's 191 are not here while its extraction is HELD.
+    // ✅ §C183 (2026-09-28) — +0 RAW: chemistry was re-extracted and all 191 summaries bought
+    // IN THE SAME CHANGE, so its 83 summary modules never appear unpaired here. (While
+    // m68867's summary was still unbought, after two marker-less API responses, this read
+    // 43 / 54, with the subtracted 17 / 13 / 24 unmoved.)
     expect(rawUnpairedMods).toBe(42);
     expect(rawAnyMods).toBe(53);
     expect(deltaMods).toBe(17); //   8.6% of 197

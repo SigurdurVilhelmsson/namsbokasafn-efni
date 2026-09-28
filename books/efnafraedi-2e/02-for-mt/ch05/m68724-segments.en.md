@@ -139,6 +139,9 @@ The picture shows two black metal frying pans sitting on a flat surface. The lef
 <!-- SEG:m68724:para:fs-idm50153600 -->
 Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in [[xref:fs-idm68801008]].
 
+<!-- SEG:m68724:table-summary:fs-idm68801008-summary -->
+A table with three columns and seventeen rows is shown. The top row is the header row and contains the headers “Substance,” “State and Symbol,” and “Specific Heat (J / g ° C)”. Under the first heading are the terms “helium,” “water,” “ethanol,” “ice,” “water vapor,” “nitrogen,” “air,” “oxygen,” “aluminum,” “carbon dioxide,” “argon,” “iron,” “copper,” “lead,” “gold” and “silicon.” The second column contains the symbols and signs: “H e (g),” “H subscript 2 O (l),” “C subscript 2 H subscript 6 O (l),” “H subscript 2 O (s),” “H subscript 2 O (g),” “N subscript 2 (g),” a blank entry for air, “O subscript 2 (g),” “A l (s),” “C O subscript 2 (g),” “A r (g),” “F e (s),” “C u (s),” “P b (s),” “A u (s),” and “S I (s).” The last column contains the values “5.193,” “4.184,” “2.376,” “2.093 (at –10 °C), ” “1.864,” “1.040,” “1.007,” “0.918.” “0.897,” “0.853,” “0.522,” “0.449,” “0.385,” “0.130,” “0.129,” and “0.712.”
+
 <!-- SEG:m68724:entry:auto-48 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
 
@@ -420,6 +423,9 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
+
+<!-- SEG:m68724:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68724:entry:auto-142 -->
 [[MATH:4]]

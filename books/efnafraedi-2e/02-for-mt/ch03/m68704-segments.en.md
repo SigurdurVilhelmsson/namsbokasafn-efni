@@ -265,6 +265,9 @@ Find the molarity of a 40.0% by mass aqueous solution of sulfuric acid, H[[sub:2
 <!-- SEG:m68704:title:fs-idm8172720-title -->
 Key Equations
 
+<!-- SEG:m68704:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68704:entry:auto-90 -->
 [[MATH:5]]
 

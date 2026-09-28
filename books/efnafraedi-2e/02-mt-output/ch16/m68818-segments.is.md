@@ -31,6 +31,9 @@ Hlutirnir eru með nánast sama hitastig, [[i:T]][[sub:sys]] ≈ [[i:T]][[sub:su
 <!-- SEG:m68818:para:fs-idp26583536 -->
 Þessar niðurstöður leiða til djúprar staðhæfingar um sambandið milli óreiðu og sjálfgengis sem er þekkt sem [[term:annað lögmál varmafræðinnar|term-00001]]: [[i:allar sjálfgengar breytingar valda aukningu á óreiðu alheimsins.]] Samantekt á þessum þremur samböndum er að finna í [[xref:fs-idp41455824]].
 
+<!-- SEG:m68818:table-summary:fs-idp41455824-summary -->
+Þessi tafla inniheldur tvo dálka og þrjár raðir. Í fyrri dálkinum stendur eftirfarandi: „stórt delta S með lágstaf univ er stærra en 0“, „stórt delta S með lágstaf univ er minna en 0“ og „stórt delta S með lágstaf univ er jafnt og 0“. Í seinni dálkinum stendur eftirfarandi: „Sjálfsprottið“, „ekki sjálfsprottið (sjálfsprottið í öfuga átt)“ og „afturkræft (kerfið er í jafnvægi)“.
+
 <!-- SEG:m68818:entry:auto-12 -->
 Annað lögmál varmafræðinnar
 
@@ -120,6 +123,9 @@ er reiknað sem:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
 Listi yfir hluta staðalóreiðugilda er í [[xref:fs-idm78597984]] og viðbótargildi eru í [[docref:viðauka G|m68865]]. Dæmin sem fylgja sýna notkun [[i:S]]°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.
+
+<!-- SEG:m68818:table-summary:fs-idm78597984-summary -->
+Taflan hefur tvo dálka og tuttugu raðir. Fyrsta röðin er hausaröð og hún merkir dálkana „Efni“ og „S með lágstaf 298 og hástaf gráðumerki (J mól með hástaf mínus 1 K með hástaf mínus 1)“. Önnur röðin spannar báða dálkana og inniheldur orðið „Kolefni“. Undir dálkinum „Efni“ fyrir kolefni er eftirfarandi: C (s, grafít), C (s, demantur), CO (g), CO með lágstaf 2 (g), CH með lágstaf 4 (g), C með lágstaf 2 H með lágstaf 4 (g), C með lágstaf 2 H með lágstaf 6 (g), CH með lágstaf 3 OH (l) og C með lágstaf 2 H með lágstaf 5 OH (l). Undir dálkinum „S með lágstaf 298 og hástaf gráðumerki (J mól með hástaf mínus 1 K með hástaf mínus 1)“ fyrir kolefni er eftirfarandi: 5,740, 2,38, 197,7, 213,8, 186,3, 219,5, 229,5, 126,8 og 160,7. Tólfta röðin spannar báða dálkana og inniheldur orðið „Vetni“. Undir dálkinum „Efni“ fyrir vetni er eftirfarandi: H með lágstaf 2 (g), H (g), H með lágstaf 2 O (g), H með lágstaf 2 O (l), HCl (g) og H með lágstaf 2 S (g). Undir dálkinum „S með lágstaf 298 og hástaf gráðumerki (J mól með hástaf mínus 1 K með hástaf mínus 1)“ fyrir vetni er eftirfarandi: 130,57, 114,6, 188,71, 69,91, 186,8 og 205,7. Nítjánda röðin spannar báða dálkana og inniheldur orðið „Súrefni“. Undir dálkinum „Efni“ fyrir súrefni er O með lágstaf 2 (g). Undir dálkinum „S með lágstaf 298 og hástaf gráðumerki (J mól með hástaf mínus 1 K með hástaf mínus 1)“ fyrir súrefni er 205,03.
 
 <!-- SEG:m68818:entry:auto-42 -->
 [[b:Efni]]
@@ -297,6 +303,9 @@ Annað lögmál varmafræðinnar segir að sjálfgengt ferli auki óreiðu alhei
 
 <!-- SEG:m68818:title:fs-idp50875552-title -->
 Lykiljöfnur
+
+<!-- SEG:m68818:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68818:entry:auto-101 -->
 [[MATH:6]]

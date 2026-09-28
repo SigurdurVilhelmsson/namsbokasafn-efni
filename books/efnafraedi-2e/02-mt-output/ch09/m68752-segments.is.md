@@ -295,6 +295,9 @@ Hins vegar er annar þáttur sem við verðum að hafa í huga þegar við mælu
 <!-- SEG:m68752:alt:fs-idp38546432-alt -->
 Línurit er sýnt. Lárétti ásinn er merktur „Hitastig (gráður C)“ með merkingum og tölum fyrir margfeldi af 20, frá 0 og upp í 100. Lóðrétti ásinn er merktur „Gufuþrýstingur (torr)“ með merkingum og tölum fyrir margfeldi af 200, frá 0 og upp í 800. Slétt, svört heilsteypt lína teygir sig frá upphafspunkti upp og til hægri yfir línuritið. Línuritið sýnir jákvæða þróun með vaxandi breytingarhraða. Á lóðrétta ásnum er (760) og ör sem bendir á það. Örin er merkt „Gufuþrýstingur við (100 gráður C)“.
 
+<!-- SEG:m68752:table-summary:fs-idm68841392-summary -->
+Þessi tafla hefur sex dálka og 13 raðir. Fyrsta röðin er fyrirsögn og hún merkir hvern dálk, „Hiti (°C),“ „Þrýstingur (torr),“ „Hiti (°C),“ „Þrýstingur (torr),“ „Hiti (°C),“ og „Þrýstingur (torr).“ Undir fyrsta dálki er eftirfarandi: mínus 10, mínus 5, mínus 2, 0, 2, 4, 6, 8, 10, 12, 14 og 16. Undir öðrum dálki er eftirfarandi: 1,95, 3,0, 3,9, 4,6, 5,3, 6,1, 7,0, 8,0, 9,2, 10,5, 12,0 og 13,6. Undir þriðja dálki er eftirfarandi: 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 og 29. Undir fjórða dálki er eftirfarandi: 15,5, 16,5, 17,5, 18,7, 19,8, 21,1, 22,4, 23,8, 25,2, 26,7, 28,3 og 30,0. Undir fimmta dálki er eftirfarandi: 30, 35, 40, 50, 60, 70, 80, 90, 95, 99, 100,0 og 101,0. Undir sjötta dálki er eftirfarandi: 31,8, 42,2, 55,3, 92,5, 149,4, 233,7, 355,1, 525,8, 633,9, 733,2, 760,0 og 787,6.
+
 <!-- SEG:m68752:entry:auto-100 -->
 Gufuþrýstingur íss og vatns við ýmis hitastig við sjávarmál
 
@@ -732,6 +735,9 @@ Hægt er að nota kjörgaslögmálið til að leiða út ýmsar hentugar jöfnur
 
 <!-- SEG:m68752:title:fs-idp7509520-title -->
 Lykiljöfnur
+
+<!-- SEG:m68752:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68752:entry:auto-246 -->
 [[i:P[[sub:Heildar]]]] = [[i:P[[sub:A]]]] + [[i:P[[sub:B]]]] + [[i:P[[sub:C]]]] + … = Σ[[sub:i]][[i:P]][[sub:i]]

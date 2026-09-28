@@ -61,6 +61,9 @@ Efnajafnan sem lýst er í kafla 4.1 er [[term:stillt|term-00005]], sem þýðir
 <!-- SEG:m68709:para:fs-idp52518864 -->
 Jafnan fyrir efnahvarf metans og súrefnis sem myndar koltvíoxíð og vatn er staðfest sem stillt með þessari aðferð, eins og sýnt er hér:
 
+<!-- SEG:m68709:table-summary:fs-idp140513680-summary -->
+Þetta er tafla með fjórum dálkum og fjórum röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir C, H og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „1 sinnum 1 er jafnt og 1“, „4 sinnum 1 er jafnt og 4“ og „2 sinnum 2 er jafnt og 4“. Undir dálkinum „Myndefni“ eru jöfnurnar „1 sinnum 1 er jafnt og 1“, „2 sinnum 2 er jafnt og 4“ og „( 1 sinnum 2 ) plús ( 2 sinnum 1 ) er jafnt og 4“. Undir dálkinum „Jafnað?“ er „1 er jafnt og 1, já“, „4 er jafnt og 4, já“, „4 er jafnt og 4, já“.
+
 <!-- SEG:m68709:entry:auto-22 -->
 Frumefni
 
@@ -115,6 +118,9 @@ Oft má leiða út stillta efnajöfnu út frá eigindlegri lýsingu á einhverju
 <!-- SEG:m68709:para:fs-idp20832160 -->
 Samanburður á fjölda H- og O-atóma hvorum megin við þessa jöfnu staðfestir ójafnvægi hennar:
 
+<!-- SEG:m68709:table-summary:fs-idp104786160-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir H og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „1 sinnum 1 er jafnt og 1“. Undir dálkinum „Myndefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „1 sinnum 2 er jafnt og 2“. Undir dálkinum „Jafnað?“ er „2 er jafnt og 2, já“ og „1 er ekki jafnt og 2, nei“.
+
 <!-- SEG:m68709:entry:auto-40 -->
 Frumefni
 
@@ -154,6 +160,9 @@ O
 <!-- SEG:m68709:para:fs-idp116453584 -->
 Fjöldi H-atóma í hvarfefnum og myndefnum jöfnunnar er jafn, en fjöldi O-atóma er það ekki. Til að ná jafnvægi má breyta [[i:stuðlum]] jöfnunnar eftir þörfum. Hafðu auðvitað í huga að [[i:neðanskriftir formúlunnar]] skilgreina að hluta til auðkenni efnisins og því er ekki hægt að breyta þeim án þess að breyta eigindlegri merkingu jöfnunnar. Til dæmis, ef formúlu hvarfefnisins væri breytt úr H[[sub:2]]O í H[[sub:2]]O[[sub:2]] myndi nást jafnvægi í fjölda atóma, en það breytir líka auðkenni hvarfefnisins (það er nú vetnisperoxíð en ekki vatn). Jafnvægi O-atóma má ná með því að breyta stuðlinum fyrir H[[sub:2]]O í 2.
 
+<!-- SEG:m68709:table-summary:fs-idm15543696-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir H og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 4“ og „2 sinnum 1 er jafnt og 2“. Fyrri talan 2 í jöfnunni „2 sinnum 2 er jafnt og 4“ er feitletruð. Undir dálkinum „Myndefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „1 sinnum 2 er jafnt og 2“. Undir dálkinum „Jafnað?“ er „4 er ekki jafnt og 2, nei“ og „2 er jafnt og 2, já“.
+
 <!-- SEG:m68709:entry:auto-53 -->
 Frumefni
 
@@ -192,6 +201,9 @@ O
 
 <!-- SEG:m68709:para:fs-idp53902400 -->
 Jafnvægi H-atóma raskaðist við þessa breytingu, en það er auðveldlega endurheimt með því að breyta stuðlinum fyrir myndefnið H[[sub:2]] í 2.
+
+<!-- SEG:m68709:table-summary:fs-idp151419504-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir H og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 4“ og „2 sinnum 1 er jafnt og 2“. Undir dálkinum „Myndefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 2“ og „1 sinnum 2 er jafnt og 2“. Fyrri talan 2 í jöfnunni „2 sinnum 2 er jafnt og 2“ er feitletruð. Undir dálkinum „Jafnað?“ er „4 er jafnt og 4, já“ og „2 er jafnt og 2, já“.
 
 <!-- SEG:m68709:entry:auto-66 -->
 Frumefni
@@ -265,6 +277,9 @@ Skrifaðu stillta jöfnu fyrir niðurbrot ammóníumnítrats til að mynda nitur
 <!-- SEG:m68709:note-title:fs-idp114338576-title -->
 Svar:
 
+<!-- SEG:m68709:table-summary:fs-idp107503280-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir N og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „1 sinnum 2 er jafnt og 2“. Undir dálkinum „Myndefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „1 sinnum 5 er jafnt og 5“. Undir dálkinum „Jafnað?“ er „2 er jafnt og 2, já“ og „2 er ekki jafnt og 5, nei“.
+
 <!-- SEG:m68709:entry:auto-90 -->
 Frumefni
 
@@ -301,6 +316,9 @@ O
 <!-- SEG:m68709:entry:auto-101 -->
 2 ≠ 5, nei
 
+<!-- SEG:m68709:table-summary:fs-idp7305424-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir N og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „1 sinnum 2 er jafnt og 2“ og „5 sinnum 2 er jafnt og 10“. Talan 5 í seinni jöfnunni er feitletruð. Undir dálkinum „Myndefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 4“ og „2 sinnum 5 er jafnt og 10“. Fyrsta talan 2 í hvorri jöfnu er feitletruð. Undir dálkinum „Jafnað?“ er „2 er ekki jafnt og 4, nei“ og „10 er jafnt og 10, já“.
+
 <!-- SEG:m68709:entry:auto-102 -->
 Frumefni
 
@@ -336,6 +354,9 @@ O
 
 <!-- SEG:m68709:entry:auto-113 -->
 10 = 10, já
+
+<!-- SEG:m68709:table-summary:fs-idm9607408-summary -->
+Þetta er tafla með fjórum dálkum og þremur röðum. Dálkarnir eru merktir „Frumefni“, „Hvarfefni“, „Myndefni“ og „Jafnað?“. Undir dálkinum „Frumefni“ eru bókstafirnir N og O. Undir dálkinum „Hvarfefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 4“ og „5 sinnum 2 er jafnt og 10“. Fyrsta talan 2 í fyrri jöfnunni er feitletruð. Undir dálkinum „Myndefni“ eru jöfnurnar „2 sinnum 2 er jafnt og 4“ og „2 sinnum 5 er jafnt og 10“. Undir dálkinum „Jafnað?“ er „4 er jafnt og 4, já“ og „10 er jafnt og 10, já“.
 
 <!-- SEG:m68709:entry:auto-114 -->
 Frumefni

@@ -40,6 +40,9 @@ The average C–H bond energy, D[[sub:C–H]], is 1660/4 = 415 kJ/mol because th
 <!-- SEG:m68741:para:fs-idp26225392 -->
 The strength of a bond between two atoms increases as the number of electron pairs in the bond increases. Generally, as the bond strength increases, the bond length decreases. Thus, we find that triple bonds are stronger and shorter than double bonds between the same two atoms; likewise, double bonds are stronger and shorter than single bonds between the same two atoms. Average bond energies for some common bonds appear in [[xref:fs-idp13638832]], and a comparison of bond lengths and bond strengths for some common bonds appears in [[xref:fs-idm44464336]]. When one atom bonds to various atoms in a group, the bond strength typically decreases as we move down the group. For example, C–F is 439 kJ/mol, C–Cl is 330 kJ/mol, and C–Br is 275 kJ/mol.
 
+<!-- SEG:m68741:table-summary:fs-idp13638832-summary -->
+This table has six columns and twenty-four rows. The first row is a header row that labels the columns: “Bond,” “Bond Energy,” “Bond,” “Bond Energy,” “Bond,” and, “Bond Energy.” Under the first “Bond” column are the values: H bond to H with a single bond; H bonds to C with a single bond; H bonds to N with a single bond; H bonds to O with a single bond; H bonds to F with a single bond; H bonds to S i with a single bond; H bonds to P with a single bond; H bonds to S with a single bond; H bonds to C l with a single bond; H bonds to B r with a single bond; H bonds to I with a single bond; C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; C bonds to O with a triple bond; C bonds to F with a single bond; C bonds to S i with a single bond; and C bonds to P with a single bond. Under the first “Bond Energy” column are the values: 436; 415; 390; 464; 569; 395; 320; 340; 432; 370; 295; 345; 611; 837; 290; 615; 891; 350; 741; 1080; 439; 360; and 265. Under the second “Bond” column are the values: C bonds to S with a single bond; C bonds to C l with a single bond; C bonds to B r with a single bond; C bonds to I with a single bond; N bonds to N with a single bond; N bonds to N with a double bond; N bonds to N with a triple bond; N bonds to O with a single bond; N bonds to F with a single bond; N bonds to P with a single bond; N bonds to C l with a single bond; N bonds to B r with a single bond; O bonds to O with a single bond; O bonds to O with a double bond; O bonds to F with a single bond; O bonds to S i with a single bond; O bonds to P with a single bond; O bonds to C l with a single bond; O bonds to I with a single bond; F bonds to F with a single bond; F bonds to S i with a single bond; F bonds to P with a single bond; and F bonds to S with a single bond. Under the second “Bond Energy” column are the values: 260; 330; 275; 240; 160; 418; 946; 200; 270; 210; 200; 245; 140; 498; 160; 370; 350; 205; 200; 160; 540; 489; and 285. Under the third “Bond” column are the values: F bonds to C l with a single bond; F bonds to B r with a single bond; S i bonds to S i with a single bond; S i bonds to P with a single bond; S i bonds to S with a single bond; S i bonds to C l with a single bond; S i bonds to B r with a single bond; S i bonds to I with a single bond; P bonds to P with a single bond; P bonds to S with a single bond; P bonds to C l with a single bond; P bonds to B r with a single bond; P bonds to I with a single bond; S bonds to S with a single bond; S bonds to C l with a single bond; S bonds to B r with a single bond; C l bonds to C l with a single bond; C l bonds to B r with a single bond; C l bonds to I with a single bond; B r bonds to B r with a single bond; B r bonds to I with a single bond; I bonds to I with a single bond; and the last cell in the column is empty. Under the third “Bond Energy” column are the values: 255; 235; 230; 215; 225; 359; 290; 215; 215; 230; 330; 270; 215; 215; 250; 215; 243; 220; 210; 190; 180; 150; and the last cell in the column is empty.
+
 <!-- SEG:m68741:entry:auto-15 -->
 Bond Energies (kJ/mol)
 
@@ -469,6 +472,9 @@ F–S
 <!-- SEG:m68741:entry:auto-157 -->
 285
 
+<!-- SEG:m68741:table-summary:fs-idm44464336-summary -->
+This table has three columns and ten rows. The first row is a header row that labels the columns: “Bond,” “Bond Length in angstroms,” and, “Bond Energy in k J / mol.” Under the column “Bond” are the values: C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; and C bonds to O with a triple bond. Under the column “Bond Length in angstroms” are the values: 1.54; 1.34; 1.20; 1.43; 1.38; 1.16; 1.43; 1.23; and 1.13. Under the column “Bond Energy in k J / mol” are the values: 345; 611; 837; 290; 615; 891; 350; 741; and 1080.
+
 <!-- SEG:m68741:entry:auto-158 -->
 Average Bond Lengths and Bond Energies for Some Common Bonds
 
@@ -715,6 +721,9 @@ We begin with the elements in their most common states, Cs([[i:s]]) and F[[sub:2
 <!-- SEG:m68741:para:fs-idm23453808 -->
 Hess’s law can also be used to show the relationship between the enthalpies of the individual steps and the enthalpy of formation. [[xref:fs-idm33829552]] shows this for fluoride, CsF.
 
+<!-- SEG:m68741:table-summary:fs-idm33829552-summary -->
+This table has two columns and six rows. The first row is labeled, “Enthalpy of sublimation of C s ( s )” and the enthalpy reaction is C s ( s ) yields C s ( g ). Beside this equation is capital delta H which equals capital delta H subscript s superscript degree symbol which also equals 76.5 k J. The second row is labeled, “One-half of the bond energy of C l subscript 2.” The equation for this is one half C l subscript 2 ( g ) yields C l ( g ). Beside this equation is capital delta H equals one half D which also equals 122 k J. The third row is labeled, “Ionization Energy of N a ( g ).” The equation for the ionization energy of N a ( g ) is N a ( g ) yields N a superscript positive sign ( g ) plus lower case e superscript negative sign. Beside this equation is capital delta H equals I E which also equals 496 k J. The fourth row is labeled, “Negative of the electron affinity of C l.” The equation for this is C l ( g ) plus lowercase e superscript negative sign yields C l superscript negative sign ( g ). Beside this equation is capital delta H equals negative E A which also equals negative 368 k J. The fifth row is labeled “Negative of the lattice energy of N a C l ( s ).” The equation for this is N a superscript positive sign ( g ) plus C l superscript negative sign ( g ) yields N a C l ( s ). Beside this equation is capital delta H equals negative capital delta H subscript lattice which also equals unknown. The sixth and final row is labeled, “Enthalpy of formation of N a C l ( s ), add steps 1 - 5.” The equation for this is capital delta H equals capital delta H subscript f superscript degree symbol which also equals capital delta H subscript s superscript degree symbol plus one-half D plus I E plus negative E A plus negative capital delta H subscript lattice. Underneath that equation, is another which is N a ( s ) plus one-half C l subscript 2 ( g ) yields N a C l ( s ) which equals negative 411 k J.
+
 <!-- SEG:m68741:entry:auto-240 -->
 Enthalpy of sublimation of Cs([[i:s]])
 
@@ -786,6 +795,9 @@ The strength of a covalent bond is measured by its bond dissociation energy, tha
 
 <!-- SEG:m68741:title:fs-idm37663600-title -->
 Key Equations
+
+<!-- SEG:m68741:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68741:entry:auto-264 -->
 Bond energy for a diatomic molecule: [[MATH:37]]
@@ -915,6 +927,9 @@ Use principles of atomic structure to answer each of the following: [[fn:This qu
 
 <!-- SEG:m68741:solution:fs-idp77726880 -->
 (a) When two electrons are removed from the valence shell, the Ca radius loses the outermost energy level and reverts to the lower [[i:n]] = 3 level, which is much smaller in radius. (b) The +2 charge on calcium pulls the oxygen much closer compared with K, thereby increasing the lattice energy relative to a less charged ion. (c) Removal of the 4[[i:s]] electron in Ca requires more energy than removal of the 4[[i:s]] electron in K because of the stronger attraction of the nucleus and the extra energy required to break the pairing of the electrons. The second ionization energy for K requires that an electron be removed from a lower energy level, where the attraction is much stronger from the nucleus for the electron. In addition, energy is required to unpair two electrons in a full orbital. For Ca, the second ionization potential requires removing only a lone electron in the exposed outer energy level. (d) In Al, the removed electron is relatively unprotected and unpaired in a [[i:p]] orbital. The higher energy for Mg mainly reflects the unpairing of the 2[[i:s]] electron.
+
+<!-- SEG:m68741:table-summary:fs-idm30060832-summary -->
+This table has three columns and three rows. The first row is a header row that labels the columns: “Element,” “First Ionization Energy in k J / mol,” and “Second Ionization Energy in k J / mol.” Under the column “Element” are the letters: K and C a. Under the column “First Ionization Energy in k J / mol” are the values: 419 and 590. Under the column “Second Ionization Energy in k J / mol” are the values: 3050 and 1140.
 
 <!-- SEG:m68741:entry:auto-307 -->
 Element

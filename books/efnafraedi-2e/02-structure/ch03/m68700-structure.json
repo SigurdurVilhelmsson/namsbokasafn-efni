@@ -53,6 +53,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_03_01_chloroform",
+              "title": null,
               "caption": {
                 "segmentId": "m68700:caption:CNX_Chem_03_01_chloroform-caption"
               },
@@ -74,6 +75,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_03_01_aspirin",
+              "title": null,
               "caption": {
                 "segmentId": "m68700:caption:CNX_Chem_03_01_aspirin-caption"
               },
@@ -173,6 +175,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_03_01_saltMass",
+              "title": null,
               "caption": {
                 "segmentId": "m68700:caption:CNX_Chem_03_01_saltMass-caption"
               },
@@ -285,6 +288,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_02_moles",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_02_moles-caption"
           },
@@ -307,6 +311,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_02_compound",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_02_compound-caption"
           },
@@ -495,7 +500,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68700:table-summary:fs-idp17650992-summary"
         },
         {
           "type": "para",
@@ -506,6 +512,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_02_water",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_02_water-caption"
           },
@@ -774,6 +781,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_02_copper",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_02_copper-caption"
           },
@@ -1082,6 +1090,7 @@
           "type": "figure",
           "id": "CNX_Chem_03_01_brain",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_01_brain-caption"
           },
@@ -1098,6 +1107,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_03_01_exocytosis",
+          "title": null,
           "caption": {
             "segmentId": "m68700:caption:CNX_Chem_03_01_exocytosis-caption"
           },

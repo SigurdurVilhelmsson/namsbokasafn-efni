@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68794",
-  "extractedAt": "2026-09-21T08:33:04.915Z",
+  "extractedAt": "2026-09-28T20:03:07.468Z",
   "sourceHash": "4613374fe89686d2",
-  "segmentCount": 143,
+  "segmentCount": 144,
   "segmentIds": [
     "m68794:title:auto-1",
     "m68794:abstract:auto-2",
@@ -107,6 +107,7 @@
     "m68794:problem:fs-idp265543072",
     "m68794:problem:fs-idp72418144",
     "m68794:solution:fs-idp77008528",
+    "m68794:table-summary:fs-idp16941152-summary",
     "m68794:entry:auto-103",
     "m68794:entry:auto-104",
     "m68794:entry:auto-105",

@@ -258,3 +258,42 @@ describe('① Greek loss — the verdict is wired into main()', () => {
     expect(exitLine).toMatch(/greekModules/);
   });
 });
+
+// §C196 ⑥ — THE SEG-COUNT REFUSAL MUST CARRY WHAT IT REFUSED. §C183's buy saw the API return
+// m68867's one-segment request with NO SEG marker, twice; the refusal recorded only
+// "input has 1, output has 0", so what came back instead was unknowable without paying a
+// third time. The truncation refusal already carries lengths and the IS tail — same precedent.
+describe('⑥ the SEG-count refusal carries the response it refused', () => {
+  const HEAD = 'Svarið byrjar hér án merkis.';
+  const TAIL = 'Og því lýkur hér.';
+  const markerless = (filler) => () => `${HEAD} ${filler} ${TAIL}`;
+  const refuse = (transform) =>
+    translateChunk(scriptedClient(transform), chunk(['p1', LONG_EN]), null, false, 'm1').catch(
+      (e) => e
+    );
+
+  it('names the counts, as before', async () => {
+    expect((await refuse(markerless('miðja'))).message).toMatch(/input has 1, output has 0/);
+  });
+
+  it('carries the head of the response', async () => {
+    expect((await refuse(markerless('x'.repeat(2000)))).message).toContain(HEAD);
+  });
+
+  it('carries the tail of the response', async () => {
+    expect((await refuse(markerless('x'.repeat(2000)))).message).toContain(TAIL);
+  });
+
+  it('carries the response length', async () => {
+    const response = markerless('x'.repeat(2000))();
+    expect((await refuse(() => response)).message).toContain(`${response.length} chars`);
+  });
+
+  it('stays bounded for a long response', async () => {
+    expect((await refuse(markerless('x'.repeat(30000)))).message.length).toBeLessThan(1000);
+  });
+
+  it('stays on one line when the response has newlines', async () => {
+    expect((await refuse(markerless('lína\n\nný lína'))).message).not.toContain('\n');
+  });
+});

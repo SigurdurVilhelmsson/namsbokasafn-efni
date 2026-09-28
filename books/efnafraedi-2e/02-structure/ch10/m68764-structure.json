@@ -240,7 +240,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68764:table-summary:fs-idm123780960-summary"
     },
     {
       "type": "para",
@@ -421,7 +422,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68764:table-summary:fs-idm139826368-summary"
     },
     {
       "type": "figure",
@@ -674,7 +676,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68764:table-summary:key-equations-table-summary"
         }
       ]
     },
@@ -1082,7 +1085,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68764:table-summary:fs-idm84550336-summary"
       }
     }
   ],

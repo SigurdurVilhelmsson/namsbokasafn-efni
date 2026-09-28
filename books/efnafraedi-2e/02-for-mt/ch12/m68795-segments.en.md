@@ -190,6 +190,9 @@ The study of enzymes is an important interconnection between biology and chemist
 <!-- SEG:m68795:para:fs-idm189720768 -->
 Enzyme molecules possess an active site, a part of the molecule with a shape that allows it to bond to a specific substrate (a reactant molecule), forming an enzyme-substrate complex as a reaction intermediate. There are two models that attempt to explain how this active site works. The most simplistic model is referred to as the lock-and-key hypothesis, which suggests that the molecular shapes of the active site and substrate are complementary, fitting together like a key in a lock. The induced fit hypothesis, on the other hand, suggests that the enzyme molecule is flexible and changes shape to accommodate a bond with the substrate. This is not to suggest that an enzyme’s active site is completely malleable, however. Both the lock-and-key model and the induced fit model account for the fact that enzymes can only bind with specific substrates, since in general a particular enzyme only catalyzes a particular reaction ([[xref:CNX_Chem_12_07_Enzyme]]).
 
+<!-- SEG:m68795:table-summary:fs-idm184565904-summary -->
+This table has two columns and seven rows. The first row is a header row, and it labels each column, “Class,” and, “Function.” Under the “Class” column are the following: “oxidoreductases,” “transferases,” “hydrolases,” “lyases,” “isomerases,” and “ligases.” Under the “Function” column are the following: “redox reactions,” “transfer of functional groups,” “hydrolysis reactions,” “group elimination to form double bonds,” “isomerization,” and “bond formation with ATP hydrolysis.”
+
 <!-- SEG:m68795:entry:auto-65 -->
 Classes of Enzymes and Their Functions
 

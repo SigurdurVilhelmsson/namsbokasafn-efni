@@ -178,6 +178,9 @@ Standard Enthalpy of Combustion
 <!-- SEG:m68727:para:fs-idm75327968 -->
 Enthalpies of combustion for many substances have been measured; a few of these are listed in [[xref:fs-idp98710048]]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and [[term:hydrocarbons|term-00010]] (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
+<!-- SEG:m68727:table-summary:fs-idp98710048-summary -->
+A data table is shown that has three columns and eleven rows. The header row reads “Substance,” “Combustion reaction,” and “Enthalpy of Combustion, Δ H subscript C superscript degree symbol (k J/ mol at 25 ° C).” The first column contains entries reading “carbon,” “hydrogen,” “magnesium,” “sulfur,” “carbon monoxide,” “methane,” “acetylene,” “ethanol,” “methanol,” and “isooctane.” The second column contains the equations “C (s) + O (g) right-facing arrow C O subscript 2 (g),” “H subscript 2 (g) + one half O subscript 2 (g) right-facing arrow H subscript 2 O (l),” “M g (s) + one half O subscript 2 (g) right-facing arrow M g O (s),” “S (s) + O subscript 2 (g) right-facing arrow S O subscript 2 (g),” “C O (g) + one half O subscript 2 (g) right-facing arrow C O subscript 2 (g),” “C H subscript 4 (g) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (g),” “C subscript 2 H subscript 2 (g) + five halves O subscript 2 (g) right-facing arrow 2 C O subscript 2 (g) + H subscript 2 O (l),” “C subscript 2 H subscript 5 O H (l) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 3 H subscript 2 O (l),” “C H subscript 3 O H (l) + three halves O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (l),” and “C subscript 8 H subscript 18 (l) + twenty five halves O subscript 2 (g) right-facing arrow 8 C O subscript 2 (g) + 9 H subscript 2 O (l).” The final column contains the values “–393.5,” “–285.8,” “–601.6,” “–296.8,” “–283.0,” “–890.8,” “–1301.1,” “–1366.8,” “–726.1,” and “–5460.”
+
 <!-- SEG:m68727:entry:auto-61 -->
 Standard Molar Enthalpies of Combustion
 
@@ -657,6 +660,9 @@ If a chemical change is carried out at constant pressure and the only work done 
 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Key Equations
+
+<!-- SEG:m68727:table-summary:key-equations-table-summary -->
+key equations table
 
 <!-- SEG:m68727:entry:auto-221 -->
 [[MATH:71]]

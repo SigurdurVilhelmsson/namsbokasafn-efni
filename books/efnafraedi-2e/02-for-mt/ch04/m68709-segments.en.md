@@ -61,6 +61,9 @@ The chemical equation described in section 4.1 is [[term:balanced|term-00005]], 
 <!-- SEG:m68709:para:fs-idp52518864 -->
 The equation for the reaction between methane and oxygen to yield carbon dioxide and water is confirmed to be balanced per this approach, as shown here:
 
+<!-- SEG:m68709:table-summary:fs-idp140513680-summary -->
+This is a table with four columns and four rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters C, H, and O. Under the “Reactants” column are the equations “1 times 1 equals 1,” “4 times 1 equals 4,” and “2 times 2 equals 4.” Under the “Products” column are the equations, “1 times 1 equals 1,” “2 times 2 equals 4,” and “( 1 times 2 ) plus ( 2 times 1 ) equals 4.” Under the “Balanced?” column are, “1 equals 1, yes,” “4 equals 4, yes,” “4 equals 4, yes.”
+
 <!-- SEG:m68709:entry:auto-22 -->
 Element
 
@@ -115,6 +118,9 @@ A balanced chemical equation often may be derived from a qualitative description
 <!-- SEG:m68709:para:fs-idp20832160 -->
 Comparing the number of H and O atoms on either side of this equation confirms its imbalance:
 
+<!-- SEG:m68709:table-summary:fs-idp104786160-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 1 equals 1.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “2 equals 2, yes,” and “1 does not equal 2, no.”
+
 <!-- SEG:m68709:entry:auto-40 -->
 Element
 
@@ -154,6 +160,9 @@ O
 <!-- SEG:m68709:para:fs-idp116453584 -->
 The numbers of H atoms on the reactant and product sides of the equation are equal, but the numbers of O atoms are not. To achieve balance, the [[i:coefficients]] of the equation may be changed as needed. Keep in mind, of course, that the [[i:formula subscripts]] define, in part, the identity of the substance, and so these cannot be changed without altering the qualitative meaning of the equation. For example, changing the reactant formula from H[[sub:2]]O to H[[sub:2]]O[[sub:2]] would yield balance in the number of atoms, but doing so also changes the reactant’s identity (it’s now hydrogen peroxide and not water). The O atom balance may be achieved by changing the coefficient for H[[sub:2]]O to 2.
 
+<!-- SEG:m68709:table-summary:fs-idm15543696-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” The first 2 in the “2 times 2 equals 4” equation is bold. Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “4 does not equal 2, no,” and “2 equals 2, yes.”
+
 <!-- SEG:m68709:entry:auto-53 -->
 Element
 
@@ -192,6 +201,9 @@ O
 
 <!-- SEG:m68709:para:fs-idp53902400 -->
 The H atom balance was upset by this change, but it is easily reestablished by changing the coefficient for the H[[sub:2]] product to 2.
+
+<!-- SEG:m68709:table-summary:fs-idp151419504-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” Under the “Products” column are the equations, “2 times 2 equals 2,” and “1 times 2 equals 2.” The first 2 in the “2 times 2 equals 2” equation is bold. Under the “Balanced?” column are, “4 equals 4, yes,” and “2 equals 2, yes.”
 
 <!-- SEG:m68709:entry:auto-66 -->
 Element
@@ -265,6 +277,9 @@ Write a balanced equation for the decomposition of ammonium nitrate to form mole
 <!-- SEG:m68709:note-title:fs-idp114338576-title -->
 Answer:
 
+<!-- SEG:m68709:table-summary:fs-idp107503280-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 5 equals 5.” Under the “Balanced?” column are, “2 equals 2, yes,” and “2 does not equal 5, no.”
+
 <!-- SEG:m68709:entry:auto-90 -->
 Element
 
@@ -301,6 +316,9 @@ O
 <!-- SEG:m68709:entry:auto-101 -->
 2 ≠ 5, no
 
+<!-- SEG:m68709:table-summary:fs-idp7305424-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “5 times 2 equals 10.” The 5 in the second equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” The initial 2 in each equation is bold. Under the “Balanced?” column are, “2 does not equal 4, no,” and “10 equals 10, yes.”
+
 <!-- SEG:m68709:entry:auto-102 -->
 Element
 
@@ -336,6 +354,9 @@ O
 
 <!-- SEG:m68709:entry:auto-113 -->
 10 = 10, yes
+
+<!-- SEG:m68709:table-summary:fs-idm9607408-summary -->
+This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “5 times 2 equals 10.” The initial 2 in the first equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” Under the “Balanced?” column are, “4 equals 4, yes,” and “10 equals 10, yes.”
 
 <!-- SEG:m68709:entry:auto-114 -->
 Element

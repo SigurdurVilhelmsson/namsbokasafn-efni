@@ -403,6 +403,9 @@ Oxósýrur halógena og sölt þeirra
 <!-- SEG:m68837:para:fs-idm47315952 -->
 Efnasamböndin HXO, HXO[[sub:2]], HXO[[sub:3]] og HXO[[sub:4]], þar sem X táknar Cl, Br eða I, eru hýpóhalógen-, halógen-, halógen- og perhalógensýrur, í sömu röð. Styrkur þessara sýra eykst frá hýpóhalógensýrum, sem eru mjög veikar sýrur, yfir í perhalógensýrur, sem eru mjög sterkar. [[xref:fs-idp152462192]] telur upp þekktar sýrur og þar sem þekkt er eru pK[[sub:a]] gildi þeirra gefin innan sviga.
 
+<!-- SEG:m68837:table-summary:fs-idp152462192-summary -->
+Þessi tafla hefur fimm dálka og sex raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Nafn“, „Flúor“, „Klór“, „Bróm“ og „Joð“. Undir dálkinum „Nafn“ er eftirfarandi: hýpóhalógenít, halógenít, halógenat, perhalógenat og paraperhalógenat. Undir dálkinum „Flúor“ er H O F og restin af röðunum eru auðar. Undir dálkinum „Klór“ er: H O C l ( 7,5 ); H C l O með neðanskrift 2 ( 2,0 ); H C l O með neðanskrift 3; H C l O með neðanskrift 4; og síðasta röðin er auð. Undir dálkinum „Bróm“ er: H O B r ( 8,7 ); auð röð; H B r O með neðanskrift 3; H B r O með neðanskrift 4; og önnur auð röð. Undir dálkinum „Joð“ er: H O I ( 11 ); auð röð; H I O með neðanskrift 3 ( 0,8 ); H I O með neðanskrift 4 ( 1,6 ); og H með neðanskrift 5 I O með neðanskrift 6 ( 1,6 ).
+
 <!-- SEG:m68837:entry:auto-136 -->
 Oxósýrur halógena
 

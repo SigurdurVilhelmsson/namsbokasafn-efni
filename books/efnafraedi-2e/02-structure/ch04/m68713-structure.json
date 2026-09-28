@@ -141,6 +141,7 @@
       "type": "figure",
       "id": "CNX_Chem_04_03_iodine",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68713:caption:CNX_Chem_04_03_iodine-caption"
       },
@@ -395,6 +396,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_04_03_flowchart",
+      "title": null,
       "caption": {
         "segmentId": "m68713:caption:CNX_Chem_04_03_flowchart-caption"
       },
@@ -433,6 +435,7 @@
       "type": "figure",
       "id": "CNX_Chem_04_03_airbag",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68713:caption:CNX_Chem_04_03_airbag-caption"
       },

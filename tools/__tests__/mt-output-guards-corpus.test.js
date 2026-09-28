@@ -101,16 +101,22 @@ describe('chemistry committed MT — Greek-letter conservation', () => {
     expect(PAIRS.length).toBeGreaterThan(150);
   });
 
-  it('finds exactly one addition-only segment — the pin on the look-alike fold', () => {
+  it('finds exactly the two addition-only segments — the pin on the look-alike fold', () => {
     // Without the fold, ∆ Ʃ ∑ are not Script=Greek, so the MT's proper Δ/Σ read as
     // ADDITIONS: six more segments land here (m68727, m68741 ×2, m68752, m68817, m68819).
     // The LOSS set below cannot see the fold's removal — measured by the 2026-09-28 review.
+    // Both are a spelled-out name the MT turned into a symbol, the benign addition the guard
+    // reports and does not hold. The second arrived with §C183's summary top-up (2026-09-28),
+    // whose run printed it: EN "the greek letter mu" → IS "μL".
     const addedOnly = PAIRS.flatMap(({ en, is }) =>
       greekConservationBySegment(en, is)
         .filter((f) => !f.lost.length)
         .map((f) => `${f.segId} +${f.added.join('')}`)
     );
-    expect(addedOnly).toEqual(['m68729:alt:fs-idm60605232-alt +λλν']); // "lambda"/"nu" → λ/ν
+    expect(addedOnly).toEqual([
+      'm68674:table-summary:fs-idm81128320-summary +μ', // "the greek letter mu" → μL
+      'm68729:alt:fs-idm60605232-alt +λλν', // "lambda"/"nu" → λ/ν
+    ]);
   });
 
   it('finds no loss in the committed MT — the four were hand-repaired 2026-09-28', () => {

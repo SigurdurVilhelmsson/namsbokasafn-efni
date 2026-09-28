@@ -88,6 +88,9 @@ Upphafsefnin samanstanda af fjórum grænum kúlum og tveimur fjólubláum kúlu
 <!-- SEG:m68685:para:fs-idp28034944 -->
 Dalton þekkti til tilrauna franska efnafræðingsins Josephs Proust, sem sýndi fram á að [[i:öll sýni af hreinu efnasambandi innihalda sömu frumefnin í sömu massahlutföllum]]. Þessi staðhæfing er þekkt sem [[term:lögmálið um föst massahlutföll|term-00004]] eða [[term:lögmálið um fasta samsetningu|term-00005]]. Sú tillaga að fjöldi atóma frumefnanna í tilteknu efnasambandi sé alltaf í sama hlutfalli er í samræmi við þessar athuganir. Til dæmis, þegar mismunandi sýni af ísóoktani (hluti af bensíni og einn af stöðlunum sem notaðir eru í oktanmælingakerfinu) eru greind, kemur í ljós að þau hafa massahlutfall kolefnis og vetnis sem er 5,33:1, eins og sýnt er í [[xref:fs-idp114534448]].
 
+<!-- SEG:m68685:table-summary:fs-idp114534448-summary -->
+Þessi tafla sýnir hversu mikið kolefni og vetni er í sýnum A, B og C, ásamt massahlutfalli hvers þeirra. Sýni A inniheldur 14,82 grömm af kolefni og 2,78 grömm af vetni. Massahlutfall þess er því 14,82 grömm af kolefni á móti 2,78 grömmum af vetni. Þetta hlutfall jafngildir 5,33 grömmum af kolefni á móti 1,00 grammi af vetni. Sýni B inniheldur 22,33 grömm af kolefni og 4,19 grömm af vetni. Massahlutfall þess er 22,3 grömm af kolefni á móti 4,19 grömmum af vetni, sem jafngildir 5,33 grömmum af kolefni á móti 1,00 grammi af vetni. Sýni C inniheldur 19,40 grömm af kolefni og 3,64 grömm af vetni. Massahlutfall þess er 19,40 grömm af kolefni á móti 3,63 grömmum af vetni, sem jafngildir 5,33 grömmum af kolefni á móti 1,00 grammi af vetni.
+
 <!-- SEG:m68685:entry:auto-31 -->
 Föst samsetning ísóoktans
 
@@ -225,6 +228,9 @@ Sýni af efnasamböndum X, Y og Z eru efnagreind og niðurstöðurnar eru sýnda
 
 <!-- SEG:m68685:problem:fs-idm32094368 -->
 Sýna þessi gögn dæmi um lögmálið um föst massahlutföll, lögmálið um margföld massahlutföll, hvorugt eða bæði? Hvað segja þessi gögn þér um efnasamböndin X, Y og Z?
+
+<!-- SEG:m68685:table-summary:fs-idp22296752-summary -->
+Þessi tafla hefur dálk fyrir „lýsingu“, dálk fyrir „massa kolefnis“ og dálk fyrir „massa vetnis“ fyrir efnasamböndin X, Y og Z. Efnasamband X er tær, litlaus vökvi með sterkri lykt. Massi kolefnis í því er 1,776 grömm og massi vetnis er 0,148 grömm. Efnasamband Y er einnig tær, litlaus vökvi með sterkri lykt. Massi kolefnis í því er 1,974 grömm og massi vetnis er 0,329 grömm. Efnasamband Z er einnig tær, litlaus vökvi með sterkri lykt. Massi kolefnis í því er 7,812 grömm og massi vetnis er 0,651 g.
 
 <!-- SEG:m68685:entry:auto-77 -->
 Efnasamband

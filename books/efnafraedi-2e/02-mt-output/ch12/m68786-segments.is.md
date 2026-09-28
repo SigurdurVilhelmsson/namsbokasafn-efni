@@ -190,6 +190,9 @@ Hvarfhraða má annaðhvort lýsa með minnkun á magni hvarfefnis eða aukningu
 <!-- SEG:m68786:title:fs-idp13917664-title -->
 Lykiljöfnur
 
+<!-- SEG:m68786:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
+
 <!-- SEG:m68786:entry:auto-65 -->
 [[MATH:13]]
 
@@ -222,6 +225,9 @@ Rannsókn á tvíliðunarhraða C[[sub:4]]H[[sub:6]] gaf gögnin sem sýnd eru �
 
 <!-- SEG:m68786:problem:fs-idp17436544 -->
 (c) Ákvarðaðu meðalmyndunarhraða C[[sub:8]]H[[sub:12]] við 1600 s og augnabliksmyndunarhraða við 3200 s út frá hraðanum sem fannst í liðum (a) og (b).
+
+<!-- SEG:m68786:table-summary:fs-idm53738576-summary -->
+Þessi tafla inniheldur tvo dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (s)“ og „[C neðanskrift 4 H neðanskrift 6] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 0, 1600, 3200, 4800, 6200. Undir dálkinum „[C neðanskrift 4 H neðanskrift 6] (M)“ eru tölurnar: 1,00 sinnum tíu í mínus öðru veldi; 5,04 sinnum tíu í mínus þriðja veldi; 3,37 sinnum tíu í mínus þriðja veldi; 2,53 sinnum tíu í mínus þriðja veldi; og 2,08 sinnum tíu í mínus þriðja veldi.
 
 <!-- SEG:m68786:entry:auto-76 -->
 Tími (s)
@@ -273,6 +279,9 @@ Rannsókn á hraða efnahvarfsins sem táknað er með [[MATH:23]] gaf eftirfara
 
 <!-- SEG:m68786:solution:fs-idm15349328 -->
 (a) meðalhraði, 0 − 10 s = 0,0375 mól L[[sup:−1]] s[[sup:−1]]; meðalhraði, 10 − 20 s = 0,0265 mól L[[sup:−1]] s[[sup:−1]]; (b) augnablikshraði, 15 s = 0,023 mól L[[sup:−1]] s[[sup:−1]]; (c) meðalhraði fyrir myndun B = 0,0188 mól L[[sup:−1]] s[[sup:−1]]; augnablikshraði fyrir myndun B = 0,012 mól L[[sup:−1]] s[[sup:−1]]
+
+<!-- SEG:m68786:table-summary:fs-idp108292976-summary -->
+Þessi tafla hefur tvo dálka og átta raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tími (s)“ og „[ A ] (M)“. Undir dálkinum „Tími (s)“ eru tölurnar: 0,0, 5,0, 10,0, 15,0, 20,0, 25,0 og 35,0. Undir dálkinum „[ A ] (M)“ eru tölurnar: 1,00, 0,952, 0,625, 0,465, 0,370, 0,308 og 0,230.
 
 <!-- SEG:m68786:entry:auto-93 -->
 Tími (s)

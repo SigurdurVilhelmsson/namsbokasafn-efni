@@ -694,6 +694,9 @@ A slightly soluble electrolyte begins to precipitate when the magnitude of the r
 <!-- SEG:m68811:title:fs-idp13519952-title -->
 Key Equations
 
+<!-- SEG:m68811:table-summary:key-equations-table-summary -->
+key equations table
+
 <!-- SEG:m68811:entry:auto-233 -->
 [[MATH:75]]
 

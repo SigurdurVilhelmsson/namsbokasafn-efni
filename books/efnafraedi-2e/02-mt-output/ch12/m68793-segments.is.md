@@ -142,6 +142,9 @@ Miðað við að hvarfhraði þessa hvarfs sé í samræmi við Arrheniusarjöfn
 <!-- SEG:m68793:note-title:fs-idp70913968-title -->
 Svar:
 
+<!-- SEG:m68793:table-summary:fs-idm125968016-summary -->
+Þessi tafla hefur tvo dálka og sex raðir. Fyrsti dálkurinn er merktur „T ( K )“ og sá síðari er merktur „k ( L / mol / s )“. Undir fyrsta dálkinum eru tölurnar: 555, 575, 645, 700 og 781. Undir seinni dálkinum eru tölurnar: 3,52 sinnum tíu í mínus sjöunda veldi; 1,22 sinnum tíu í mínus sjötta veldi; 8,59 sinnum tíu í mínus fimmta veldi; 1,16 sinnum tíu í mínus þriðja veldi; og 3,95 sinnum tíu í mínus öðru veldi.
+
 <!-- SEG:m68793:para:fs-idm147992368 -->
 1,1 [[MATH:10]] 10[[sup:5]] J mól[[sup:−1]] eða 110 kJ mól[[sup:−1]]
 
@@ -180,6 +183,9 @@ Svar:
 
 <!-- SEG:m68793:entry:auto-61 -->
 3,95 [[MATH:15]] 10[[sup:−2]]
+
+<!-- SEG:m68793:table-summary:fs-idp10812288-summary -->
+Þessi tafla hefur tvo dálka og sex raðir. Fyrsta röðin er merkt „1 deilt með T ( K í mínus fyrsta veldi )“ og „l n k“. Undir fyrsta dálkinum eru tölurnar: 1,80 sinnum tíu í mínus þriðja veldi; 1,74 sinnum tíu í mínus þriðja veldi; 1,55 sinnum tíu í mínus þriðja veldi; 1,43 sinnum tíu í mínus þriðja veldi; og 1,28 sinnum tíu í mínus þriðja veldi. Undir seinni dálkinum eru tölurnar: mínus 14,860, mínus 13,617, mínus 9,362, mínus 6,759 og mínus 3,231.
 
 <!-- SEG:m68793:entry:auto-62 -->
 [[MATH:16]]
@@ -231,6 +237,9 @@ Efnahvörf krefjast yfirleitt árekstra milli hvarfefna. Þessir árekstrar hvar
 
 <!-- SEG:m68793:title:fs-idp2946768-title -->
 Lykiljöfnur
+
+<!-- SEG:m68793:table-summary:key-equations-table-summary -->
+lykiljöfnutafla
 
 <!-- SEG:m68793:entry:auto-79 -->
 [[MATH:24]]
@@ -391,6 +400,9 @@ hvarfrit
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
 notað í hvarfhraðafræði til að sýna ýmsa eiginleika hvarfs
 
+<!-- SEG:m68793:table-summary:fs-idm124800496-summary -->
+Þessi tafla hefur tvo dálka og fimm raðir. Fyrsti dálkurinn er merktur „Hiti ( K )“ og seinni dálkurinn er merktur „k ( M í mínus fyrsta veldi s í mínus fyrsta veldi )“. Undir fyrsta dálkinum eru tölurnar: 555, 575, 645 og 700. Undir seinni dálkinum eru tölurnar: 6,23 sinnum tíu í mínus sjöunda veldi; 2,42 sinnum tíu í mínus sjötta veldi; 1,44 sinnum tíu í mínus fjórða veldi; og 2,01 sinnum tíu í mínus þriðja veldi.
+
 <!-- SEG:m68793:entry:auto-132 -->
 Hitastig (K)
 
@@ -420,6 +432,9 @@ Hitastig (K)
 
 <!-- SEG:m68793:entry:auto-141 -->
 2,01 [[MATH:36]] 10[[sup:−3]]
+
+<!-- SEG:m68793:table-summary:fs-idm163198896-summary -->
+Þessi tafla inniheldur tvo dálka og þrjár raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „T ( K )“ og „k ( s í mínus fyrsta veldi )“. Undir fyrsta dálkinum eru tölurnar 293 og 298. Undir seinni dálkinum eru tölurnar 0,054 og 0,100.
 
 <!-- SEG:m68793:entry:auto-142 -->
 [[i:T]] (K)

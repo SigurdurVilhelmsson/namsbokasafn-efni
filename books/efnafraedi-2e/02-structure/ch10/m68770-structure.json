@@ -406,7 +406,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68770:table-summary:fs-idp121853232-summary"
         },
         {
           "type": "note",
@@ -1113,7 +1114,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68770:table-summary:fs-idm7525216-summary"
       }
     },
     {
@@ -1261,7 +1263,8 @@
               }
             ]
           }
-        ]
+        ],
+        "summarySegmentId": "m68770:table-summary:fs-idp139392608-summary"
       }
     }
   ],

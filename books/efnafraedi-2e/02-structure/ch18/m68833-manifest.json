@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68833",
-  "extractedAt": "2026-09-21T17:05:37.598Z",
+  "extractedAt": "2026-09-28T20:03:09.507Z",
   "sourceHash": "849e090538a3eb6c",
-  "segmentCount": 107,
+  "segmentCount": 108,
   "segmentIds": [
     "m68833:title:auto-1",
     "m68833:abstract:auto-2",
@@ -31,6 +31,7 @@
     "m68833:title:fs-idp115312768-title",
     "m68833:para:fs-idp90253696",
     "m68833:para:fs-idp263935152",
+    "m68833:table-summary:fs-idp87200896-summary",
     "m68833:entry:auto-27",
     "m68833:entry:auto-28",
     "m68833:entry:auto-29",

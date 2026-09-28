@@ -228,7 +228,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summarySegmentId": "m68692:table-summary:fs-idp90857696-summary"
     },
     {
       "type": "para",
@@ -779,7 +780,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68692:table-summary:fs-idm36686800-summary"
         },
         {
           "type": "para",
@@ -1851,7 +1853,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68692:table-summary:fs-idm87646592-summary"
         },
         {
           "type": "note",
@@ -2160,7 +2163,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summarySegmentId": "m68692:table-summary:key-equations-table-summary"
         }
       ]
     },

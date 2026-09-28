@@ -163,6 +163,9 @@ Línurit sem sýnir styrk ósons í heiðhvolfinu og „ósonholið“ sem mynda
 <!-- SEG:m68789:alt:fs-idm204213280-alt -->
 Sýnd er mynd af suðurhveli jarðar. Næstum hringlaga svæði sem er um það bil helmingur af þvermáli myndarinnar er sýnt í fjólubláum tónum, þar sem Suðurskautslandið birtist í aðeins ljósari lit en nærliggjandi hafsvæði. Rétt fyrir utan þetta svæði er þröngt, skærblátt svæði og þar á eftir skærgrænt svæði. Í efri helmingi myndarinnar teygir fjólubláa svæðið sig örlítið út fyrir hringinn og bláa svæðið teygir sig meira út til hægri við miðju samanborið við neðri helming myndarinnar. Í efri helmingi myndarinnar er meirihluti svæðisins utan fjólubláa svæðisins grænn á litinn, með nokkrum litlum ræmum af bláum svæðum á milli. Neðri helmingurinn sýnir hins vegar meirihluta svæðisins utan miðlæga fjólubláa svæðisins í gulum, appelsínugulum og rauðum lit. Rauðu svæðin birtast á neðri mið- og vinstri svæðum utan fjólubláa svæðisins. Neðst til hægri á þessari mynd er litakvarði sem er merktur „Heildaróson (Dobson-einingar)“. Þessi kvarði byrjar á 0 og hækkar um 100 upp í 700. Vinstra megin á kvarðanum sýnir gildið 0 mjög dökkfjólubláan lit, 100 er indígóblár, 200 er blár, 300 er grænn, 400 er gul-appelsínugulur, 500 er rauður, 600 er bleikur og 700 er hvítur.
 
+<!-- SEG:m68789:table-summary:fs-idm205685856-summary -->
+Þessi tafla hefur fjóra dálka og sex raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk: „Tilraun“, „[ N O ] ( mól / L)“, „[ O neðanskrift 3 ] ( mól / L )“ og „delta [ N O neðanskrift 2 ] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1 )“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2, 3, 4 og 5. Undir dálkinum „[ N O ] ( mól / L)“ eru tölurnar: 1,00 sinnum tíu í mínus sjötta veldi; 1,00 sinnum tíu í mínus sjötta veldi; 1,00 sinnum tíu í mínus sjötta veldi; 2,00 sinnum tíu í mínus sjötta veldi; og 3,00 sinnum tíu í mínus sjötta veldi. Undir dálkinum „[ O neðanskrift 3 ] ( mól / L )“ eru tölurnar: 3,00 sinnum tíu í mínus sjötta; 6,00 sinnum tíu í mínus sjötta; 9,00 sinnum tíu í mínus sjötta; 9,00 sinnum tíu í mínus sjötta; og 9,00 sinnum tíu í mínus sjötta. Undir dálkinum „delta [ N O neðanskrift 2 ] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1 )“ eru tölurnar: 6,60 sinnum tíu í mínus fimmta; 1,32 sinnum tíu í mínus fjórða; 1,98 sinnum tíu í mínus fjórða; 3,96 sinnum tíu í mínus fjórða; og 5,94 sinnum tíu í mínus fjórða.
+
 <!-- SEG:m68789:entry:auto-56 -->
 Tilraun
 
@@ -234,6 +237,9 @@ Tilraun
 
 <!-- SEG:m68789:entry:auto-79 -->
 5,94 [[MATH:24]] 10[[sup:−4]]
+
+<!-- SEG:m68789:table-summary:fs-idm276791216-summary -->
+Þessi tafla hefur þrjá dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tilraun“, „[ C H neðanskrift 3 C H O ] ( mól / L)“ og „mínus delta [ C H neðanskrift 3 C H O ] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1 )“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2 og 3. Undir dálkinum „[ C H neðanskrift 3 C H O ] ( mól / L)“ eru tölurnar: 1,75 sinnum tíu í mínus þriðja; 3,50 sinnum tíu í mínus þriðja; og 7,00 sinnum tíu í mínus þriðja. Undir dálkinum „mínus delta [ C H neðanskrift 3 C H O ] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1 )“ eru tölurnar: 2,06 sinnum tíu í mínus 11; 8,24 sinnum tíu í mínus 11; og 3,30 sinnum tíu í mínus tíunda.
 
 <!-- SEG:m68789:entry:auto-80 -->
 Tilraun
@@ -346,6 +352,9 @@ Notið uppgefin upphafshraðagögn til að leiða út hraðalögmál fyrir efnah
 <!-- SEG:m68789:note-title:fs-idm214856768-title -->
 Svar:
 
+<!-- SEG:m68789:table-summary:fs-idm285249664-summary -->
+Þessi tafla hefur fjóra dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir dálkana, „Tilraun“, „[ N O ] ( mól / L)“, „[ C l neðanskrift 2 ] ( mól / L )“ og „mínus delta [ N O] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1 )“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2 og 3. Undir dálkinum „[ N O ] ( mól / L)“ eru tölurnar: 0,10, 0,10 og 0,15. Undir dálkinum „[ C l neðanskrift 2 ] ( mól / L )“ eru tölurnar: 0,10, 0,15 og 0,10. Undir dálkinum „mínus delta [ N O] deilt með delta t ( mól L í veldinu mínus 1 s í veldinu mínus 1“ eru tölurnar: 0,00300, 0,00450, 0,00675.
+
 <!-- SEG:m68789:para:fs-idm19062704 -->
 [[MATH:57]][[BR]] 2,00 = 2,00[[sup:[[i:y]]]][[BR]] [[i:y]] = 1[[BR]] [[MATH:58]][[BR]] [[MATH:59]][[BR]] Innsetning styrksgagna úr tilraun 1 og lausn fyrir [[i:k]] gefur:[[BR]] [[MATH:60]]
 
@@ -396,6 +405,9 @@ Tilraun
 
 <!-- SEG:m68789:entry:auto-133 -->
 0,00675
+
+<!-- SEG:m68789:table-summary:fs-idm275492048-summary -->
+Þessi tafla hefur fjóra dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Tilraun“, „[ O C l í veldinu mínusmerki ] ( mól / L)“, „[ I í veldinu mínusmerki ] ( mól / l )“ og „Upphafshraði ( mól / L / s)“. Undir dálkinum „Tilraun“ eru tölurnar: 1, 2 og 3. Undir dálkinum „[ O C l í veldinu mínusmerki ] ( mól / L)“ eru tölurnar 0,0040, 0,0020 og 0,0020. Undir dálkinum „[ I í veldinu mínusmerki ] ( mól / l )“ eru tölurnar: 0,0020, 0,0040 og 0,0020. Undir dálkinum „Upphafshraði ( mól / L / s)“ eru tölurnar: 0,00184, 0,00092 og 0,00046.
 
 <!-- SEG:m68789:entry:auto-134 -->
 Tilraun
@@ -459,6 +471,9 @@ Mikilvægt er að hafa í huga að [[i:hraðalögmál eru eingöngu ákvörðuð
 
 <!-- SEG:m68789:para:fs-idm218845648 -->
 Einingar hraðafasta eru breytilegar eftir því sem við á til að passa við heildarstig efnahvarfsins. Eining hraðafastans fyrir annars stigs efnahvarfið sem lýst er í [[xref:fs-idm234815200]] var ákvörðuð sem [[MATH:62]] Fyrir þriðja stigs efnahvarfið sem lýst er í [[xref:fs-idm285627376]] var einingin fyrir [[i:k]] leidd út sem [[MATH:63]] Víddagreining krefst þess að eining hraðafastans fyrir efnahvarf með heildarstig [[i:x]] sé [[MATH:64]] [[xref:fs-idm233742304]] tekur saman einingar hraðafasta fyrir algeng stig efnahvarfa.
+
+<!-- SEG:m68789:table-summary:fs-idm233742304-summary -->
+Þessi tafla hefur tvo dálka og fjórar raðir. Fyrsta röðin er hausaröð og hún merkir hvern dálk, „Hvarfstig“ og „Einingar k“. Undir dálkinum „Hvarfstig“ eru: „( m + n )“, „núll“, „fyrsta“, „annað“ og „þriðja“. Undir dálkinum „Einingar k“ eru: „mól í veldinu 1 mínus ( m + n) L í veldinu ( m + n) mínus 1 s í veldinu mínus einn“, „mól / L / s“, „s í veldinu mínus 1“, „L / mól / s“ og „mól í veldinu mínus 2 L í veldinu 2 s í veldinu mínus 1“.
 
 <!-- SEG:m68789:entry:auto-155 -->
 Einingar hraðafasta fyrir algeng stig efnahvarfa
@@ -589,6 +604,9 @@ Við ákveðnar aðstæður gefur niðurbrot ammoníaks á málmyfirborði eftir
 <!-- SEG:m68789:problem:fs-idm279312480 -->
 Ákvarðið hraðalögmálið, hraðafastann og heildarstig þessa efnahvarfs.
 
+<!-- SEG:m68789:table-summary:fs-idm155842464-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn merkir hverja röð, „[ N H neðanskrift 3 ] ( M )“ og „Hraði ( mól / L / klst. í veldinu 1 )“. Tölurnar hægra megin við hausinn, „[ N H neðanskrift 3 ] ( M )“ eru: 1,0 sinnum tíu í mínus þriðja; 2,0 sinnum tíu í mínus þriðja; og 3,0 sinnum tíu í mínus þriðja. Tölurnar hægra megin við hausinn, „Hraði ( mól / L / klst. í veldinu 1“ eru: 1,5 sinnum tíu í mínus sjötta; 1,50 sinnum tíu í mínus 6; og 1,5 sinnum tíu í mínus sjötta.
+
 <!-- SEG:m68789:entry:auto-198 -->
 [NH[[sub:3]]] ([[i:M]])
 
@@ -622,6 +640,9 @@ Nítrósýlklóríð, NOCl, brotnar niður í NO og Cl[[sub:2]].[[BR]] [[MATH:97
 <!-- SEG:m68789:solution:fs-idp5189312 -->
 hraði = [[i:k]][NOCl][[sup:2]]; [[i:k]] = 8,0 [[MATH:98]] 10[[sup:−8]] L/mól/klst.; annað stig
 
+<!-- SEG:m68789:table-summary:fs-idm176170864-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn merkir hverja röð, „[ N O C l ] ( M ),“ og „Hraði ( mól / L / klst. ).“ Hægra megin við fyrirsögnina „[ N O C l ] ( M )“ eru tölurnar: 0,10, 0,20 og 0,30. Hægra megin við fyrirsögnina „Hraði ( mól / L / klst. )“ eru tölurnar: 8,0 sinnum tíu í mínus tíunda veldi; 3,2 sinnum tíu í mínus níunda veldi; og 7,2 sinnum tíu í mínus níunda veldi.
+
 <!-- SEG:m68789:entry:auto-209 -->
 [NOCl] ([[i:M]])
 
@@ -648,6 +669,9 @@ Hraði (mól L[[sup:−1]] klst.[[sup:−1]])
 
 <!-- SEG:m68789:problem:fs-idm254308880 -->
 Ákvarðaðu hraðalögmálið, hraðafastann og stig efnahvarfsins með tilliti til [[i:A]] fyrir efnahvarfið [[MATH:102]] út frá eftirfarandi gögnum.
+
+<!-- SEG:m68789:table-summary:fs-idm146675536-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn merkir hverja röð, „[ A ] ( M ),“ og „Hraði ( mól / L / klst.).“ Hægra megin við fyrirsögnina „[ A ] ( M ),“ eru tölurnar: 1,33 sinnum tíu í mínus öðru veldi; 2,66 sinnum tíu í mínus öðru veldi; og 3,99 sinnum tíu í mínus öðru veldi.“ Hægra megin við fyrirsögnina „Hraði ( mól / L / klst.),“ eru tölurnar 3,80 sinnum tíu í mínus sjöunda veldi; 1,52 sinnum tíu í mínus sjötta veldi; og 3,42 sinnum tíu í mínus sjötta veldi.
 
 <!-- SEG:m68789:entry:auto-218 -->
 [[[i:A]]] ([[i:M]])
@@ -684,6 +708,9 @@ Hvert er hraðalögmálið sem lýsir tengslum hraðans við styrk NO og Cl[[sub
 
 <!-- SEG:m68789:solution:fs-idm174039344 -->
 hraði = [[i:k]][NO][[sup:2]][Cl[[sub:2]]]; [[i:k]] = 9,1 L[[sup:2]] mól[[sup:−2]] klst.[[sup:−1]]; annað stig með tilliti til NO; fyrsta stig með tilliti til Cl[[sub:2]]
+
+<!-- SEG:m68789:table-summary:fs-idp1859024-summary -->
+Þessi tafla hefur þrjá dálka og fjórar raðir. Fyrsta röðin er fyrirsagnarröð og merkir hvern dálk, „[ N O ] ( mól / L í fyrsta veldi ),“ „[ C l með lágstaf 2 ] ( mól / L ),“ og „Hraði ( mól / L / klst. ).“ Undir dálkinum „[ N O ] ( mól / L í fyrsta veldi )“ eru tölurnar: 0,50, 1,00 og 1,00. Undir dálkinum „[ C l með lágstaf 2 ] ( mól / L)“ eru tölurnar: 0,50, 0,50 og 1,00. Undir dálkinum „Hraði ( mól / L / klst. )“ eru tölurnar: 1,14, 4,56 og 9,12.
 
 <!-- SEG:m68789:entry:auto-230 -->
 [NO] (mól/L)
@@ -726,6 +753,9 @@ Vetni hvarfast við nituroxíð og myndar tvínituroxíð (hláturgas) samkvæmt
 
 <!-- SEG:m68789:problem:fs-idm148410512 -->
 Ákvarðaðu hraðalögmálið, hraðafastann og stig efnahvarfsins með tilliti til hvors hvarfefnis út frá eftirfarandi gögnum:
+
+<!-- SEG:m68789:table-summary:fs-idm261821504-summary -->
+Þessi tafla hefur fjóra dálka og þrjár raðir. Fyrsti dálkurinn merkir hverja röð, „[ N O ] ( M ),“ „[ H með lágstaf 2 ] ( M ),“ og „Hraði ( mól / L / s ).“ Hægra megin við fyrirsögnina „[ N O ] ( M )“ eru tölurnar: 0,30, 0,60 og 0,60. Hægra megin við fyrirsögnina „[ H með lágstaf 2 ] ( M )“ eru tölurnar: 0,35, 0,35 og 0,70. Hægra megin við fyrirsögnina „Hraði ( mól / L / s )“ eru tölurnar 2,835 sinnum tíu í mínus þriðja veldi; 1,134 sinnum 10 í mínus öðru veldi; og 2,268 sinnum tíu í mínus öðru veldi.“
 
 <!-- SEG:m68789:entry:auto-244 -->
 [NO] ([[i:M]])
@@ -775,6 +805,9 @@ Fyrir efnahvarfið [[MATH:114]] fengust eftirfarandi gögn við 30 °C:
 <!-- SEG:m68789:solution:fs-idm168970144 -->
 (a) Hraðalögmálið er af öðru stigi með tilliti til A og er skrifað sem hraði = [[i:k]][[[i:A]]][[sup:2]]. (b) [[i:k]] = 7,88 [[MATH:115]] 10[[sup:−3]] L mól[[sup:−1]] s[[sup:−1]]
 
+<!-- SEG:m68789:table-summary:fs-idm262119440-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn merkir hverja röð, „[ A ] ( M ),“ og „Hraði ( mól / L / s ).“ Hægra megin við fyrirsögnina „[ A ] ( M ),“ eru tölurnar: 0,230, 0,356 og 0,557. Hægra megin við fyrirsögnina „Hraði ( mól / L / s ),“ eru tölurnar: 4,7 sinnum tíu í mínus fjórða veldi; 9,99 sinnum tíu í mínus fjórða veldi; og 2,44 sinnum tíu í mínus þriðja veldi.
+
 <!-- SEG:m68789:entry:auto-260 -->
 [[[i:A]]] ([[i:M]])
 
@@ -807,6 +840,9 @@ Fyrir efnahvarfið [[MATH:119]] fengust eftirfarandi gögn við 30 °C:
 
 <!-- SEG:m68789:problem:fs-idm187916448 -->
 (b) Hver er hraðafastinn?
+
+<!-- SEG:m68789:table-summary:fs-idm53317088-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn merkir hverja röð, „[ Q ] með lágstaf upphafs ( M ),“ og „Hraði ( mól / L / s ).“ Hægra megin við fyrirsögnina „[ Q ] með lágstaf upphafs ( M ),“ eru tölurnar: 0,170, 0,212 og 0,357. Hægra megin við fyrirsögnina „Hraði ( mól / L / s ),“ eru tölurnar: 6,68 sinnum tíu í mínus þriðja veldi; 1,04 sinnum tíu í mínus öðru veldi; og 2,94 sinnum tíu í mínus öðru veldi.
 
 <!-- SEG:m68789:entry:auto-271 -->
 [[[i:Q]]][[sub:upphafs]] ([[i:M]])
@@ -864,6 +900,9 @@ Eftirfarandi gögn hafa verið ákvörðuð fyrir efnahvarfið:[[BR]] [[MATH:130
 
 <!-- SEG:m68789:solution:fs-idm220253504 -->
 hraði = [[i:k]][I[[sup:−]]][OCl[[sup:−]]]; [[i:k]] = 6,1 [[MATH:131]] 10[[sup:−2]] L mól [[sup:−1]] s[[sup:−1]]
+
+<!-- SEG:m68789:table-summary:fs-idm189410736-summary -->
+Þessi tafla hefur fjóra dálka og fjórar raðir. Fyrsti dálkurinn merkir hverja röð. Fyrsti reiturinn í fyrsta dálknum er auður og síðan er hver röð merkt, „[ I með mínusmerki í hástaf ] með lágstaf upphafs ( M ),“ „[ O C l með mínusmerki í hástaf ] með lágstaf upphafs ( M ),“ og „Hraði ( mól / L / s ).“ Hægra megin við auða reitinn eru tölurnar: 1, 2 og 3. Hægra megin við fyrirsögnina „[ I með mínusmerki í hástaf ] með lágstaf upphafs ( M ),“ eru tölurnar: 0,10, 0,20 og 0,30. Hægra megin við fyrirsögnina „[ O C l með mínusmerki í hástaf ] með lágstaf upphafs ( M ),“ eru tölurnar: 0,050, 0,050 og 0,010. Hægra megin við fyrirsögnina „Hraði ( mól / L / s ),“ eru tölurnar: 3,05 sinnum tíu í mínus fjórða veldi; 6,20 sinnum tíu í mínus fjórða veldi; og 1,83 sinnum tíu í mínus fjórða veldi.
 
 <!-- SEG:m68789:entry:auto-290 -->
 1
@@ -939,6 +978,9 @@ stig efnahvarfs
 
 <!-- SEG:m68789:glossary-def:fs-idm333854336-def -->
 gildi veldisvísis í hraðalögmáli (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2 og svo framvegis)
+
+<!-- SEG:m68789:table-summary:fs-idm121830912-summary -->
+Þessi tafla hefur fjóra dálka og tvær raðir. Fyrsti dálkurinn er fyrirsögn og merkir hverja röð, „[ C með lágstaf 2 H með lágstaf 5 O H ] ( M ),“ og „Hraði ( mól / L / klst. ).“ Hægra megin við fyrirsögnina „Upphafshraði ( mól / L / s)“ eru tölurnar: 4,4 sinnum tíu í mínus öðru veldi; 3,3 sinnum tíu í mínus öðru veldi; 2,2 sinnum tíu í mínus öðru veldi. Hægra megin við fyrirsögnina „Hraði ( mól / L / klst. )“ eru tölurnar: 2,0 sinnum tíu í mínus öðru veldi, 2,0 sinnum tíu í mínus öðru veldi og 2,0 sinnum tíu í mínus öðru veldi.
 
 <!-- SEG:m68789:entry:auto-315 -->
 [C[[sub:2]]H[[sub:5]]OH] ([[i:M]])

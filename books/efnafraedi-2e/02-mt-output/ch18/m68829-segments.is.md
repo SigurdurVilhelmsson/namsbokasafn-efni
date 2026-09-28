@@ -388,6 +388,9 @@ aðalflokkamálmur
 <!-- SEG:m68829:glossary-def:fs-idm2235360-def -->
 málmur meðal aðalflokkafrumefna
 
+<!-- SEG:m68829:table-summary:fs-idp283136-summary -->
+Þessi tafla hefur tvo dálka og fjórar raðir. Fyrsti dálkurinn er merktur „1“ og annar dálkurinn er merktur „2“. Undir fyrsta dálkinum eru: N a, S r og A l. Undir öðrum dálkinum eru: I, S e og O.
+
 <!-- SEG:m68829:entry:auto-131 -->
 1
 

@@ -1,6 +1,9 @@
 <!-- SEG:m68864:title:auto-1 -->
 Samsetning algengra sýra og basa
 
+<!-- SEG:m68864:table-summary:fs-idp8700128-summary -->
+Tafla með yfirskriftinni „Samsetning algengra sýra og basa“ hefur fjóra dálka með yfirskriftunum „Sýra eða basi“, „Eðlismassi (g/ml)“, „Massaprósenta“ og „Mólstyrkur“. Fyrir ediksýru, hreina, er eðlismassinn 1,05, massaprósentan 99,5 og mólstyrkurinn 17,4. Fyrir vatnslausn ammóníaks er eðlismassinn 0,90, massaprósentan 28 og mólstyrkurinn 14,8. Fyrir saltsýru er eðlismassinn 1,18, massaprósentan 36 og mólstyrkurinn 11,6. Fyrir saltpéturssýru er eðlismassinn 1,42, massaprósentan 71 og mólstyrkurinn 16,0. Fyrir perklórsýru er eðlismassinn 1,67, massaprósentan 70 og mólstyrkurinn 11,65. Fyrir fosfórsýru er eðlismassinn 1,70, massaprósentan 85 og mólstyrkurinn 14,7. Fyrir natríumhýdroxíð er eðlismassinn 1,53, massaprósentan 50 og mólstyrkurinn 19,1. Fyrir brennisteinssýru er eðlismassinn 1,84, massaprósentan 96 og mólstyrkurinn 18,0.
+
 <!-- SEG:m68864:entry:auto-2 -->
 Samsetning algengra sýra og basa
 

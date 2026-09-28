@@ -388,6 +388,9 @@ representative metal
 <!-- SEG:m68829:glossary-def:fs-idm2235360-def -->
 metal among the representative elements
 
+<!-- SEG:m68829:table-summary:fs-idp283136-summary -->
+This table has two columns and four rows. The first column is labeled, “1,” and the second column is labeled, “2.” Under the first column are: N a, S r, and A l. Under the second column are: I, S e, and O.
+
 <!-- SEG:m68829:entry:auto-131 -->
 1
 
