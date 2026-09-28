@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-09-26 — ✅ THE TRANSLATION WRAP-UP AUDIT IS COMPLETE (0 ISK, read-only). Chemistry is finished at the translation layer. Moving DEVELOPMENT to the editor is safe now; letting editors EDIT again is not, until the apply/save/publish fixes in ③ land. ⏹ The chemistry sync is still HELD** (supersedes the 2026-09-24 block; the 2026-09-23 evening block stays current for the organic removal)
 
-### ⏭ SINGLE NEXT ACTION — **Step 3 of the development order below: build the §C183 add-only top-up mode (0 ISK), then the ~2,000 ISK summary buy with `--no-glossary`.** Step 2, the paid-run guards, is BUILT (2026-09-28, branch `feat/c183-paid-run-guards`, stacked on the three `docs/redirects-at-sync` commits). The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
+### ⏭ SINGLE NEXT ACTION — **Step 3 of the development order below: build the §C183 add-only top-up mode (0 ISK), then the ~2,000 ISK summary buy with `--no-glossary`.** Step 2, the paid-run guards, is BUILT (2026-09-28) and **awaiting merge as [PR #520](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/520)** (branch `feat/c183-paid-run-guards`, which also carries the three `docs/redirects-at-sync` commits and the Greek-letter hand repair). ⚠️ Merging to `main` strands prod's content backup until the next deploy (CLAUDE.md), so deploy after merging. The ruling sheet is APPLIED and deployed (PR #519, 2026-09-28).
 
 ✅ **2026-09-28 — THE FOUR PAID-RUN GUARDS ARE BUILT**, each measured before it was written:
 - **Explicit glossary arm:** a live `api-translate` run refuses (exit 2) unless exactly one of `--no-glossary` · `--glossary-only` · `--full-glossary` is given; `--dry-run` says whether the live run would.
