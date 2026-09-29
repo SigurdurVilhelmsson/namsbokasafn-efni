@@ -132,7 +132,7 @@ file name drawn as a caption — in Chromium and Firefox alike.
 
 ## 5. ㉗ — the A/B (pre-㉗ vs ㉗ composer, identical inputs)
 
-A workflow agent built a re-runnable harness (kept in the session scratchpad, not committed): two sparse worktrees at
+A workflow agent built a re-runnable harness (not committed; kept on this box at `~/.cache/namsbokasafn-figtext/c27-ab-2026-09-29/`, with the raster-arm composes beside it in `c14-raster-arm-2026-09-29/`): two sparse worktrees at
 `43f61a1c1` (BEFORE) and `ade93a3c2` (AFTER, ㉗ only — the ⑭ gate deliberately excluded, since it changes pixels on
 purpose), the composer's own CLIs, and 27 figures stratified by face mix (Regular/Bold/Italic/BoldItalic), FigIS +
 FigSym, §C159 textless, in-document feImage and no-font. Each was resolved and prepared ONCE (prepare is unchanged
