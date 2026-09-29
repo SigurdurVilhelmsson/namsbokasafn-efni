@@ -72,6 +72,7 @@ const FIXTURE_FILES = {
   'books/prufubok/02-mt-output/ch01/m00001-segments.locked': 'locked\n',
   'books/prufubok/glossary/glossary-unified.json': '{"terms":[]}\n',
   'books/prufubok/tm/prufubok-2026-01-01.tmx': '<tmx version="1.4"/>\n',
+  'books/prufubok/figure-text/CNX_Prufa_01.is.json': '{"version":1,"blocks":{}}\n',
 };
 
 beforeEach(() => {
@@ -167,6 +168,27 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
         encoding: 'utf8',
       })
     ).toBe('<tmx>new</tmx>\n');
+  });
+
+  it('§C140 ㊲: a figure-text sidecar rewritten on prod reaches the REMOTE', () => {
+    // Every figure-review transition on prod (approve, flag, explicit
+    // mt-preview) rewrites the figure's sidecar via applyApprovedFigureEdits,
+    // and the design makes that sidecar COMMITTED content. Without this
+    // pathspec the rewrite stays on prod's disk, and the next committed change
+    // to the same sidecar wedges deploy.sh's stash-pop.
+    // ⚠️ `success` is the load-bearing assertion, not exit 0: without the
+    // pathspec nothing is staged, the run takes the `no_changes` branch and
+    // still exits 0.
+    const rel = 'books/prufubok/figure-text/CNX_Prufa_01.is.json';
+    const approved = '{"version":1,"state":"approved","blocks":{"k":"vatn"}}\n';
+    writeFileSync(path.join(work, rel), approved);
+
+    runBackup();
+
+    expect(readStatus().status).toBe('success');
+    expect(execFileSync('git', ['show', `main:${rel}`], { cwd: bare, encoding: 'utf8' })).toBe(
+      approved
+    );
   });
 
   it('C3 guard: a gitignored dir matching a pathspec does not fail the whole run', () => {
