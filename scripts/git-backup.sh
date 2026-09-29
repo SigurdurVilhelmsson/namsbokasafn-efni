@@ -168,6 +168,10 @@ PATHSPECS=(
   'books/*/chapters/'
   'books/*/glossary/'
   'books/*/tm/'
+  # Figure-text sidecars: every figure-review transition rewrites one on this
+  # box (register §C140 ㊲). A stray writer .tmp is safe: *.tmp is gitignored,
+  # and `git add <dir>` skips ignored files inside a directory it is given.
+  'books/*/figure-text/'
   'books/*/translation-errors.json'
   'books/*/residue-report.*.json'
   'books/*/02-mt-output/*/*-segments.locked'
