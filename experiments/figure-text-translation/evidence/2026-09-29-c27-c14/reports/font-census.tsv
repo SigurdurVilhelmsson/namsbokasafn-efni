@@ -1,0 +1,719 @@
+basename	book	bytes	fontsig	feimage_indoc	mapped	sidecar	pub_copies	pub_identical
+CNX_Chem_01_01_Alchemist	__e2e-fixture__	222	NO-FONT	0	True	True	0	0
+CNX_Chem_00_AA_PeriodicPU_img	efnafraedi-2e	172244	FigIS/Version 2.1.5/woff2	0	True	True	0	0
+CNX_Chem_00_BB_Dependence_img	efnafraedi-2e	36352	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_EE_Density_img	efnafraedi-2e	32733	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_EE_LiqWatAbso	efnafraedi-2e	64352	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_EE_Vapor_img	efnafraedi-2e	36531	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_EE_WaterpKw_img	efnafraedi-2e	35618	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform1_img	efnafraedi-2e	5973	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform2_img	efnafraedi-2e	5845	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform3_img	efnafraedi-2e	5483	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform4_img	efnafraedi-2e	5467	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform7_img	efnafraedi-2e	5532	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_00_HH_chemform9_img	efnafraedi-2e	5603	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_01_ChemWeb	efnafraedi-2e	37737	FigIS/Version 2.1.5/woff2	0	True	True	2	1
+CNX_Chem_01_01_Electrolys	efnafraedi-2e	937552	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_01_FuelCell	efnafraedi-2e	2182330	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_01_SciMethod	efnafraedi-2e	39475	FigIS/Version 2.1.5/woff2	0	True	True	2	1
+CNX_Chem_01_02_CellPhone	efnafraedi-2e	1185110	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_02_ConsMatter	efnafraedi-2e	411810	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_01_02_MattType	efnafraedi-2e	31455	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_02_Molecules	efnafraedi-2e	548839	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_02_StatesMatt	efnafraedi-2e	272995	FigIS/Version 2.1.5/woff2	12	True	True	1	1
+CNX_Chem_01_03_HazDiamond	efnafraedi-2e	35879	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_03_PeriodicPU	efnafraedi-2e	170416	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_04_CylGold	efnafraedi-2e	1438316	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_04_CylRebar	efnafraedi-2e	434728	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_04_MYdCmIn	efnafraedi-2e	49582	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_04_Volume	efnafraedi-2e	123839	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_Archer2_img	efnafraedi-2e	68180	FigIS/Version 2.1.5/woff2	64	True	True	2	1
+CNX_Chem_01_05_Archery	efnafraedi-2e	42969	FigIS/Version 2.1.5/woff2	36	True	True	1	1
+CNX_Chem_01_05_Measure	efnafraedi-2e	196028	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_SigDigits1_img	efnafraedi-2e	16870	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_SigDigits2_img	efnafraedi-2e	19666	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_SigDigits3_img	efnafraedi-2e	12062	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_SigDigits4_img	efnafraedi-2e	19163	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_05_SigDigits5_img	efnafraedi-2e	13267	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_01_06_TempScales	efnafraedi-2e	40152	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_01_Dalton10_img	efnafraedi-2e	905749	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_02_01_Dalton2	efnafraedi-2e	2394697	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_02_01_Dalton3	efnafraedi-2e	546672	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_01_Dalton6_img	efnafraedi-2e	803808	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_02_01_Dalton8_img	efnafraedi-2e	1633618	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_02_01_MultProp	efnafraedi-2e	2402888	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_02_AtomModels	efnafraedi-2e	1024837	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_02_02_CathodeRay	efnafraedi-2e	744093	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	4	True	True	1	1
+CNX_Chem_02_02_GoldFoil3	efnafraedi-2e	4506709	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_02_Millikan	efnafraedi-2e	270528	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	152	True	True	1	1
+CNX_Chem_02_02_Rutherford	efnafraedi-2e	167770	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_03_AtomSize	efnafraedi-2e	1980565	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_03_AtomSym	efnafraedi-2e	11779	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_03_MassSpec	efnafraedi-2e	180064	FigIS/Version 2.1.5/woff2	6	True	True	1	1
+CNX_Chem_02_04_Hydrogen	efnafraedi-2e	690976	FigIS/Version 2.1.5/woff2	24	True	True	1	1
+CNX_Chem_02_04_Isomers2	efnafraedi-2e	4402555	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_04_Isomers	efnafraedi-2e	16698	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_04_Question3b_img	efnafraedi-2e	6220	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question3c_img	efnafraedi-2e	7094	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question3d_img	efnafraedi-2e	7151	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question4a_img	efnafraedi-2e	9126	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question4b_img	efnafraedi-2e	8615	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question4c_img	efnafraedi-2e	7761	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question4d_img	efnafraedi-2e	7335	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question7a_img	efnafraedi-2e	7706	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question7b_img	efnafraedi-2e	9969	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question9a_img	efnafraedi-2e	7879	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_04_Question9b_img	efnafraedi-2e	7888	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_02_05_PerTable1	efnafraedi-2e	172249	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_05_PerTable2	efnafraedi-2e	38734	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_02_06_IonCharges	efnafraedi-2e	96441	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_02_06_NaCation	efnafraedi-2e	777675	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_03_01_Ex01_05a_img	efnafraedi-2e	6245	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_05b_img	efnafraedi-2e	6259	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_05c_img	efnafraedi-2e	7423	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_05d_img	efnafraedi-2e	10526	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_06a_img	efnafraedi-2e	7793	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_06b_img	efnafraedi-2e	8652	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_06c_img	efnafraedi-2e	7780	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_06d_img	efnafraedi-2e	13127	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_07a_img	efnafraedi-2e	6238	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_07b_img	efnafraedi-2e	7096	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_Ex01_07c_img	efnafraedi-2e	7335	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_01_alsulfatemass_img	efnafraedi-2e	313155	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	2	2
+CNX_Chem_03_01_aspirin	efnafraedi-2e	221062	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	2	2
+CNX_Chem_03_01_brain-ec0b	efnafraedi-2e	4974911	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_01_chloroform	efnafraedi-2e	109493	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	2	2
+CNX_Chem_03_01_exocytosis-88f6	efnafraedi-2e	24921531	FigIS/Version 2.1.5/woff2	632	True	True	2	2
+CNX_Chem_03_01_glycinemass_img	efnafraedi-2e	244000	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	2	2
+CNX_Chem_03_01_ibuprofenmass_img	efnafraedi-2e	194080	LiberationSans/Version 1.07.4/None	0	True	False	2	2
+CNX_Chem_03_01_saltMass	efnafraedi-2e	402447	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	2	2
+CNX_Chem_03_02_argon_img-9025	efnafraedi-2e	11593	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_02_copperMoles_img-a962	efnafraedi-2e	15521	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_02_glycine_img-7c96	efnafraedi-2e	13511	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_02_potassium_img-f1d1	efnafraedi-2e	10346	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_02_sacch_img-3278	efnafraedi-2e	20189	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_02_saccharin_img	efnafraedi-2e	13663	FigIS/Version 2.1.5/woff2	0	True	False	2	2
+CNX_Chem_03_02_vitC_img-e537	efnafraedi-2e	12177	FigIS/Version 2.1.5/woff2	0	True	True	2	2
+CNX_Chem_03_03_empform	efnafraedi-2e	20259	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_03_05_Example2_img	efnafraedi-2e	14200	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_01_basehyd_img	efnafraedi-2e	24205	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_04_01_rxn2	efnafraedi-2e	1453401	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_04_01_rxn3	efnafraedi-2e	5513133	FigIS/Version 2.1.5/woff2	24	True	True	1	1
+CNX_Chem_04_02_HClsoln	efnafraedi-2e	489648	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	8	True	True	1	1
+CNX_Chem_04_03_etheneBr_img	efnafraedi-2e	15753	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_ethene_img	efnafraedi-2e	16258	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_flowchart	efnafraedi-2e	30043	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_map2_img	efnafraedi-2e	16072	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_map3_img	efnafraedi-2e	17482	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_moleratio1_img	efnafraedi-2e	10365	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_03_moleratio2_img	efnafraedi-2e	15875	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_04_GreenChem	efnafraedi-2e	744477	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_04_limiting	efnafraedi-2e	3813996	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_04_saccharin_img	efnafraedi-2e	16328	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_04_04_sandwich	efnafraedi-2e	19708684	FigIS/Version 2.1.5/woff2	208	True	True	1	1
+CNX_Chem_04_05_combmap_img	efnafraedi-2e	29696	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_05_combustion	efnafraedi-2e	177310	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_05_map7_img	efnafraedi-2e	16390	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_05_map8_img	efnafraedi-2e	19471	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_04_05_propionate_img	efnafraedi-2e	27702	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_05_01_HeatTrans1	efnafraedi-2e	9762674	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_01_HotCold	efnafraedi-2e	3805916	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_01_OxyacTorch	efnafraedi-2e	1776798	FigIS/Version 2.1.5/woff2	540	True	True	1	1
+CNX_Chem_05_01_SolTherm1	efnafraedi-2e	1099661	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_01_Thermom	efnafraedi-2e	927759	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_02_BombCalor	efnafraedi-2e	570656	FigIS/Version 2.1.5/woff2	12	True	True	1	1
+CNX_Chem_05_02_Calorim2	efnafraedi-2e	247438	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_02_Calorim	efnafraedi-2e	144656	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_02_FoodLabel	efnafraedi-2e	1608723	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_02_HeatMeas	efnafraedi-2e	5010643	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_05_02_HeatTrans2	efnafraedi-2e	1920324	FigIS/Version 2.1.5/woff2	16	True	True	1	1
+CNX_Chem_05_02_IcePack	efnafraedi-2e	1733123	FigIS/Version 2.1.5/woff2	520	True	True	1	1
+CNX_Chem_05_03_AlgalFuel2	efnafraedi-2e	209375	FigIS/Version 2.1.5/woff2	48	True	True	1	1
+CNX_Chem_05_03_HessCO2	efnafraedi-2e	45590	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_05_03_Summit	efnafraedi-2e	899879	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_05_03_Systemqw	efnafraedi-2e	31941	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_01_AMFM	efnafraedi-2e	13381	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_01_Blackbody	efnafraedi-2e	60816	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_01_Ephoton	efnafraedi-2e	559405	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_01_Frequency	efnafraedi-2e	47500	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_01_Solardist	efnafraedi-2e	97941	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_01_emspectrum	efnafraedi-2e	1304726	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	4	True	True	1	1
+CNX_Chem_06_02_BohrArrows	efnafraedi-2e	55288	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_02_Hlevels	efnafraedi-2e	38786	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_03_Electrnin	efnafraedi-2e	463167	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_06_03_OrbOutline_img	efnafraedi-2e	26581	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_03_Oshapes	efnafraedi-2e	20042497	FigIS/Version 2.1.5/woff2	88	True	True	1	1
+CNX_Chem_06_03_Qnumbers	efnafraedi-2e	320297	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_06_03_elecw	efnafraedi-2e	46797	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_03_spin	efnafraedi-2e	708273	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_03_subshells	efnafraedi-2e	21871	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Beryll12_img	efnafraedi-2e	12932	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Boron122_img	efnafraedi-2e	14613	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Carbon122_img	efnafraedi-2e	14864	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Econfig	efnafraedi-2e	1403068	FigIS/Version 2.1.5/woff2	324	True	True	1	1
+CNX_Chem_06_04_Econtable	efnafraedi-2e	477615	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_04_Helium1_img	efnafraedi-2e	10907	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Hydrog1_img	efnafraedi-2e	10143	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Lithium12_img	efnafraedi-2e	12026	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_NOFNe_img	efnafraedi-2e	36329	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_OrbDiaSh2a_img	efnafraedi-2e	12248	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_OrbDiaSh2b_img	efnafraedi-2e	12023	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_OrbDiaSh2c_img	efnafraedi-2e	14174	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_OrbDiaSh2d_img	efnafraedi-2e	12788	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_OrbDiaSh2e_img	efnafraedi-2e	13792	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_PhosphOrb_img	efnafraedi-2e	21182	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_04_Ptableconf	efnafraedi-2e	1267559	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_04_Valence	efnafraedi-2e	17501	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_04_eLeveldiag	efnafraedi-2e	50773	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_05_CovalradiT	efnafraedi-2e	9374408	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_05_Elaffin	efnafraedi-2e	80109	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_05_Firstionen	efnafraedi-2e	82055	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_05_Firstiongr	efnafraedi-2e	58925	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_06_05_Ionradii	efnafraedi-2e	398776	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_05_Oxygen122_img	efnafraedi-2e	15640	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_06_05_Radiigraph	efnafraedi-2e	53064	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_03_COCO2_img	efnafraedi-2e	11114	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_ClS_img	efnafraedi-2e	30635	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_07_03_Exercise25_img	efnafraedi-2e	7993	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3a_img	efnafraedi-2e	8647	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3b_img	efnafraedi-2e	8515	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3c_img	efnafraedi-2e	8621	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3d_img	efnafraedi-2e	8133	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3e_img	efnafraedi-2e	8230	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Exercise3f_img	efnafraedi-2e	7744	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_IF5XeF4_img	efnafraedi-2e	30149	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Impbioansc_img	efnafraedi-2e	12862	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Lewisstruct1_img	efnafraedi-2e	5322	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_MXLewisa_img	efnafraedi-2e	9717	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_MXLewisb_img	efnafraedi-2e	9941	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_MXLewisc_img	efnafraedi-2e	9841	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_MXLewisd_img	efnafraedi-2e	10299	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_NaCa_img	efnafraedi-2e	20415	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_07_03_Question18_img	efnafraedi-2e	47092	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question1a_img	efnafraedi-2e	7982	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question1b_img	efnafraedi-2e	7250	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question1d_img	efnafraedi-2e	7627	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question1g_img	efnafraedi-2e	7713	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question5_img	efnafraedi-2e	6525	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question7c_img	efnafraedi-2e	13959	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question7d_img	efnafraedi-2e	9984	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question7f_img	efnafraedi-2e	7259	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question7g_img	efnafraedi-2e	6893	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question7h_img	efnafraedi-2e	15374	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question9a_img	efnafraedi-2e	20019	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Question9c_img	efnafraedi-2e	14272	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_SiH4_img	efnafraedi-2e	23187	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Singlebond_img	efnafraedi-2e	11376	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_Unprelec_img	efnafraedi-2e	36157	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_03_XeF6_img	efnafraedi-2e	20659	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_dative_img	efnafraedi-2e	33154	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_03_ex070301_1_img	efnafraedi-2e	11081	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_ex070301_2_img	efnafraedi-2e	13158	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_ex070301_3_img	efnafraedi-2e	15339	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_03_ex070301_4_img	efnafraedi-2e	22709	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_03_formate2_img	efnafraedi-2e	18518	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_03_nitrosoni2_img	efnafraedi-2e	13813	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_03_nitrosoni3_img	efnafraedi-2e	7591	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ex070402_img	efnafraedi-2e	12855	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Exercis12a_img	efnafraedi-2e	19731	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_04_Exercis12b_img	efnafraedi-2e	20137	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_04_Exercis12c_img	efnafraedi-2e	21418	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_04_Exercis12d_img	efnafraedi-2e	35158	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_04_HNO2_img	efnafraedi-2e	14535	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ques13ansb_img	efnafraedi-2e	8676	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ques13ansc_img	efnafraedi-2e	6753	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ques2ansb_img	efnafraedi-2e	30404	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ques2ansc_img	efnafraedi-2e	20744	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Ques2anse_img	efnafraedi-2e	15784	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_04_Thiocyan_img	efnafraedi-2e	25254	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_05_CH3OHLew_img	efnafraedi-2e	21160	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_05_CH4bond_img	efnafraedi-2e	23416	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_05_Ethanol_img	efnafraedi-2e	23961	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_06_BeF2	efnafraedi-2e	15550	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_CHCl3_img	efnafraedi-2e	10170	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_CS3a_img	efnafraedi-2e	30694	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_CS3b_img	efnafraedi-2e	8858	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_CS3c_img	efnafraedi-2e	6929	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_Dipolfield	efnafraedi-2e	1749067	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_07_06_Egeom	efnafraedi-2e	7846480	FigIS/Version 2.1.5/woff2	188	True	True	1	1
+CNX_Chem_07_06_NH3	efnafraedi-2e	3283408	FigIS/Version 2.1.5/woff2	100	True	True	1	1
+CNX_Chem_07_06_OSC_img	efnafraedi-2e	11620	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_06_Ques23ans_img	efnafraedi-2e	15657	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_07_06_SH2NH3_img	efnafraedi-2e	19483	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_07_06_ala_img	efnafraedi-2e	12598	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_gly3D_img	efnafraedi-2e	12466	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_07_06_molgeom	efnafraedi-2e	92197	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_00_N2O2Lewis_img	efnafraedi-2e	10343	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_01_C4H6_img	efnafraedi-2e	8773	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_01_Morse-3a8e	efnafraedi-2e	610177	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_08_01_N2LewStru_img	efnafraedi-2e	3384036	FigIS/Version 2.1.5/woff2	48	True	True	1	1
+CNX_Chem_08_01_O2bonds_img	efnafraedi-2e	6758128	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	28	True	True	1	1
+CNX_Chem_08_01_bondtype_img	efnafraedi-2e	16772	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_01_pi	efnafraedi-2e	1308182	NO-FONT	12	True	False	1	1
+CNX_Chem_08_02_BH3Diag	efnafraedi-2e	26101	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_02_BH3	efnafraedi-2e	11750	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_CO2Diag	efnafraedi-2e	24943	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_02_HybrdOrbit	efnafraedi-2e	7866535	FigIS/Version 2.1.5/woff2	296	True	True	1	1
+CNX_Chem_08_02_SF4_img	efnafraedi-2e	7576	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_SulfManuf1_img	efnafraedi-2e	18934	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_SulfManuf2_img	efnafraedi-2e	16067	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_SulfManuf3_img	efnafraedi-2e	11624	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_SulfManuf4_img	efnafraedi-2e	13372	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_acetic_img	efnafraedi-2e	10715	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_enyne_img	efnafraedi-2e	6172	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_methionine_img	efnafraedi-2e	18281	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_phosnitro_img	efnafraedi-2e	26212	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_phsphorus1_img	efnafraedi-2e	8421	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_phsphorus2_img	efnafraedi-2e	25442	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_sp2Conv	efnafraedi-2e	879308	FigIS/Version 2.1.5/woff2	24	True	False	1	1
+CNX_Chem_08_02_sp2Ex	efnafraedi-2e	16291	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_sp2Geom	efnafraedi-2e	6577425	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_02_sp3Diag	efnafraedi-2e	26949	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_02_sp3Geom	efnafraedi-2e	7519091	FigIS/Version 2.1.5/woff2	100	True	True	1	1
+CNX_Chem_08_02_sp3d_img	efnafraedi-2e	13477	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_spDiag	efnafraedi-2e	24224	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_02_spGeom	efnafraedi-2e	2828445	FigIS/Version 2.1.5/woff2	36	True	True	1	1
+CNX_Chem_08_02_urea_img	efnafraedi-2e	10983	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_02_xefluoride_img	efnafraedi-2e	11870	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_Acetonitri_img	efnafraedi-2e	11177	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_03_C2H2	efnafraedi-2e	8763991	FigIS/Version 2.1.5/woff2	60	True	True	1	1
+CNX_Chem_08_03_C2H4orbit	efnafraedi-2e	8294883	FigIS/Version 2.1.5/woff2	64	True	True	1	1
+CNX_Chem_08_03_C4H4Lewis_img	efnafraedi-2e	6779	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_C6H6	efnafraedi-2e	16469	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_HybridAll_img	efnafraedi-2e	10364	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_HybridCarb_img	efnafraedi-2e	9718	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_HybridSulf_img	efnafraedi-2e	10611	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_SO2_img	efnafraedi-2e	17976	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_03_sp3config	efnafraedi-2e	26079	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_03_spC	efnafraedi-2e	2243274	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_04_AOtype_img	efnafraedi-2e	3857064	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_04_Band	efnafraedi-2e	24563	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_08_04_FillMo	efnafraedi-2e	70287	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_08_04_Gouy	efnafraedi-2e	517727	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_08_04_H2MO-a7a1	efnafraedi-2e	48640	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_08_04_He2MO-cf1f	efnafraedi-2e	51194	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_08_04_O2MO-912b	efnafraedi-2e	76897	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_08_04_O2_img	efnafraedi-2e	7602	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_08_04_salabel_img	efnafraedi-2e	1133204	NO-FONT	0	True	False	1	1
+CNX_Chem_08_04_siganti_img	efnafraedi-2e	1212766	NO-FONT	0	True	False	1	1
+CNX_Chem_08_04_ssigma	efnafraedi-2e	1898522	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_08_04_waveadd	efnafraedi-2e	17510	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_09_01_Atmosphere	efnafraedi-2e	138627	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_01_Barometer	efnafraedi-2e	173370	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_01_Manometer	efnafraedi-2e	487163	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_02_Amontons2	efnafraedi-2e	31252	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_02_Boyleslaw2	efnafraedi-2e	15191	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_02_Charles2	efnafraedi-2e	29913	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_02_Exercise25_img	efnafraedi-2e	30638	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_03_BoylesLaw1	efnafraedi-2e	383809	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_03_DaltonLaw1-f981	efnafraedi-2e	1490162	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_03_GlobalWarming-b740	efnafraedi-2e	190199	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_03_WaterVapor2	efnafraedi-2e	20434	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_03_WaterVapor	efnafraedi-2e	651987	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_04_GasDiff	efnafraedi-2e	1054855	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_04_KMT2	efnafraedi-2e	2134168	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_05_MolSpeed1	efnafraedi-2e	23810	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_09_06_RealGas2	efnafraedi-2e	1638841	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_01_Aminacidch_img	efnafraedi-2e	16566	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_10_01_DispForces	efnafraedi-2e	79778	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_10_01_Geckos	efnafraedi-2e	6597591	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_01_IntravInter	efnafraedi-2e	174585	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_01_KMTPhases1	efnafraedi-2e	56097835	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_01_PentIso	efnafraedi-2e	679564	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_02_CapRise	efnafraedi-2e	486628	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_02_Question4_img	efnafraedi-2e	940703	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_02_Testtubeoi_img	efnafraedi-2e	1051701	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_03_HeatCurve	efnafraedi-2e	39881	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_03_VapPress1	efnafraedi-2e	5850139	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_03_VapPress3	efnafraedi-2e	19157	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_CO2PhasDi	efnafraedi-2e	36052	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_Ex06answer_img	efnafraedi-2e	15757	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_Exercise10a_img	efnafraedi-2e	22528	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_Exercise10b_img	efnafraedi-2e	20551	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_Exercise10c_img	efnafraedi-2e	20709	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_Exercise10d_img	efnafraedi-2e	24950	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_04_SupCritCof	efnafraedi-2e	462589	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_Carbon	efnafraedi-2e	3179059	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_CrystDfcts	efnafraedi-2e	19139714	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_Graphene	efnafraedi-2e	2405297	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_MolSolids	efnafraedi-2e	1679336	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_NtwrkSolid	efnafraedi-2e	3093736	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_05_TypesSol	efnafraedi-2e	11071344	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_BdyCntrdCb	efnafraedi-2e	738954	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_CbcCltPckd	efnafraedi-2e	8513996	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_ClstPckng2	efnafraedi-2e	7550961	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_ConDec	efnafraedi-2e	24316	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_CrystalSys	efnafraedi-2e	19029050	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_10_06_CubUntCll	efnafraedi-2e	6491868	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_Ex100602_img	efnafraedi-2e	79202	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_10_06_GenUnitCll	efnafraedi-2e	16894	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_10_06_IntIonst	efnafraedi-2e	9904579	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_SimpleCub2	efnafraedi-2e	980685	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_10_06_SimpleCub3	efnafraedi-2e	783742	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_TetOctHole	efnafraedi-2e	22868007	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_UnitCell1	efnafraedi-2e	35039	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_XRyDiff1	efnafraedi-2e	144119	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_06_ZnSStrctr	efnafraedi-2e	2243071	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_07_CaF2Strctr	efnafraedi-2e	2771186	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_07_CsClStrctr	efnafraedi-2e	30733714	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_07_NaClStrctr	efnafraedi-2e	36196058	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_10_07_XRyDiff2	efnafraedi-2e	406927	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_01_Icepack	efnafraedi-2e	900165	FigIS/Version 2.1.5/woff2	516	True	True	1	1
+CNX_Chem_11_01_solusolv	efnafraedi-2e	7710759	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_02_ammonia1_img	efnafraedi-2e	23931	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_11_03_gasdissolv	efnafraedi-2e	24605	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_03_solubility	efnafraedi-2e	33757	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_EX03Steps_img	efnafraedi-2e	17663	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_Ex02Steps_img	efnafraedi-2e	11968	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_Ex04Steps_img	efnafraedi-2e	13357	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_Ex07Steps_img	efnafraedi-2e	30981	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_11_04_Ex08Steps_img	efnafraedi-2e	16079	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_Ex09Steps_img	efnafraedi-2e	20257	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_LabDistill	efnafraedi-2e	1942757	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_RaoultLaw	efnafraedi-2e	988309	FigIS/Version 2.1.5/woff2	176	True	True	1	1
+CNX_Chem_11_04_ionpair	efnafraedi-2e	327418	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_osmosis	efnafraedi-2e	44317681	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_phasediag	efnafraedi-2e	87912	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	2	True	True	1	1
+CNX_Chem_11_04_refinery	efnafraedi-2e	1284208	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_04_rvosmosis	efnafraedi-2e	191588	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_11_05_detrg	efnafraedi-2e	16425	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_05_emulsoil	efnafraedi-2e	4019917	FigIS/Version 2.1.5/woff2	150	True	True	1	1
+CNX_Chem_11_05_oilspill	efnafraedi-2e	8707969	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_11_05_soap	efnafraedi-2e	20279	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_01_KDataH2O2	efnafraedi-2e	42874	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_01_NH3Decomp	efnafraedi-2e	54796	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_01_RRateIll	efnafraedi-2e	49487	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_03_OzoneHole	efnafraedi-2e	638507	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_2OrdKin	efnafraedi-2e	32560	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_AmDecomK	efnafraedi-2e	30504	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_CYL1_img	efnafraedi-2e	28926	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_CYL2_img	efnafraedi-2e	27458	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_Exercise02_img	efnafraedi-2e	40100	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_FrstOKin	efnafraedi-2e	25013	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_04_HPerDcmp	efnafraedi-2e	1197314	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_05_ArrhPlot	efnafraedi-2e	42599	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_12_05_COandO2	efnafraedi-2e	903252	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_05_RCooDgm	efnafraedi-2e	34446	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_05_SuccessR	efnafraedi-2e	29451	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_06_BimoElRe	efnafraedi-2e	2648779	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_06_CyclobD_img	efnafraedi-2e	19272	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_12_07_CatConvert	efnafraedi-2e	17865055	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_CatReCoDig	efnafraedi-2e	33730	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_12_07_Enzyme	efnafraedi-2e	91902	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise4a_img	efnafraedi-2e	27303	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise4b_img	efnafraedi-2e	32839	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise5a_img	efnafraedi-2e	33286	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise5b_img	efnafraedi-2e	33411	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise6a_img	efnafraedi-2e	20753	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise6b_img	efnafraedi-2e	20738	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise7a_img	efnafraedi-2e	22212	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Exercise7b_img	efnafraedi-2e	22159	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_HMPShuntPa	efnafraedi-2e	22874	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_HetCats-230a	efnafraedi-2e	66438396	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Rxndiagramcyl_img	efnafraedi-2e	34019	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_12_07_Rxndiagramex_img	efnafraedi-2e	33084	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_00_Blood	efnafraedi-2e	493056	FigIS/Version 2.1.5/woff2	36	True	True	1	1
+CNX_Chem_13_01_equilibrium	efnafraedi-2e	819068	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_02_mixtures	efnafraedi-2e	61479	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_13_02_quotient	efnafraedi-2e	37835	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_03_catalyst	efnafraedi-2e	136615	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_13_03_factory	efnafraedi-2e	1180209	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_04_ICETable2_img	efnafraedi-2e	44230	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_13_04_ICETable30_img	efnafraedi-2e	32306	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_04_ICETable3_img	efnafraedi-2e	30494	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_13_05_Butane_img	efnafraedi-2e	11334	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_01_HF_img	efnafraedi-2e	30562	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_01_NH3_img	efnafraedi-2e	38572	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_01_Water_img	efnafraedi-2e	30702	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_01_conjugate_img	efnafraedi-2e	1370835	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_02_phscale	efnafraedi-2e	57009	FigIS/Version 2.1.5/woff2	2	True	True	1	1
+CNX_Chem_14_03_AcidpH	efnafraedi-2e	59573	FigIS/Version 2.1.5/woff2	12	True	True	1	1
+CNX_Chem_14_03_FishLemon	efnafraedi-2e	1957879	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_03_ICETable2_img	efnafraedi-2e	137796	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_14_03_ICETable3_img	efnafraedi-2e	34528	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_03_ICETable5_img	efnafraedi-2e	43629	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_03_OHbonds_img	efnafraedi-2e	14568	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_03_Oxyacid	efnafraedi-2e	44682	FigIS/Version 2.1.5/woff2	2	True	True	1	1
+CNX_Chem_14_03_corresp	efnafraedi-2e	65919	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_14_03_strengths	efnafraedi-2e	62926	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_03_strong	efnafraedi-2e	24180	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_04_ICETable13_img	efnafraedi-2e	139945	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_14_04_steps1_img	efnafraedi-2e	21389	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_05_ICETable1_img	efnafraedi-2e	32109	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_05_acetic_img	efnafraedi-2e	31862	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_06_ICETable16_img	efnafraedi-2e	32682	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_06_buffer	efnafraedi-2e	35753	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_06_bufferchrt	efnafraedi-2e	50300	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_14_07_indicators	efnafraedi-2e	520038	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_07_titration2	efnafraedi-2e	78306	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_14_07_titration	efnafraedi-2e	57987	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_01_ICETable1_img	efnafraedi-2e	30053	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_01_ICETable2_img	efnafraedi-2e	32301	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_01_ICETable3_img	efnafraedi-2e	31952	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_01_ICETable7_img	efnafraedi-2e	31284	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_02_AlOH4_img	efnafraedi-2e	14516	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_15_02_Answer18a_img	efnafraedi-2e	29846	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer18b_img	efnafraedi-2e	36372	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer18c_img	efnafraedi-2e	32562	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer18d_img	efnafraedi-2e	37999	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer18e_img	efnafraedi-2e	37771	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer24a_img	efnafraedi-2e	39245	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_Answer24b_img	efnafraedi-2e	24174	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_15_02_Answer24c_img	efnafraedi-2e	38233	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_15_02_Answer24d_img	efnafraedi-2e	29543	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_15_02_BF3-LA_img	efnafraedi-2e	39890	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_CuCN2-_img	efnafraedi-2e	8749	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_15_02_Displace_img	efnafraedi-2e	66806	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_ICETable1_img	efnafraedi-2e	31653	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_15_02_NH3-LBase_img	efnafraedi-2e	25452	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_02_NonmetalOx_img	efnafraedi-2e	40296	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_15_03_AgBr_img	efnafraedi-2e	47477	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_15_03_hydronium_img	efnafraedi-2e	25405	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_16_01_carbon	efnafraedi-2e	2243229	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_16_01_decayrates	efnafraedi-2e	25230	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_16_02_EntGraph	efnafraedi-2e	31973	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_16_02_Gas	efnafraedi-2e	10932812	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_16_03_Energy	efnafraedi-2e	24958	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_16_03_Entropies	efnafraedi-2e	7108543	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_16_04_Scenarios	efnafraedi-2e	24415	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_02_Galvanicel	efnafraedi-2e	887464	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_02_Oxidareduc	efnafraedi-2e	928974	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_03_GalvanCu	efnafraedi-2e	1105290	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_03_SHE	efnafraedi-2e	345111	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_04_Relation	efnafraedi-2e	36199	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_17_05_AlkalineBat	efnafraedi-2e	1200555	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_05_DryCell	efnafraedi-2e	1845056	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_05_FuelCell	efnafraedi-2e	533130	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_05_Lead	efnafraedi-2e	139321	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_05_LiIon	efnafraedi-2e	1451112	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_05_NiCd	efnafraedi-2e	233554	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_06_Protect	efnafraedi-2e	495101	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_06_Rust	efnafraedi-2e	765547	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_17_07_Electroplate	efnafraedi-2e	306345	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_17_07_NaCl	efnafraedi-2e	820650	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_17_07_Water	efnafraedi-2e	741727	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_17_08_Daniell	efnafraedi-2e	1296332	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_01_PeriodicPU3	efnafraedi-2e	168834	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_02_Boricacid_img	efnafraedi-2e	14207	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_02_DownsCell	efnafraedi-2e	59168	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_02_HallHerCell	efnafraedi-2e	154906	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_03_BorateAnio	efnafraedi-2e	26923	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_03_CO2vsSiO2	efnafraedi-2e	780737	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_03_Exercise2b_img	efnafraedi-2e	19894	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_03_SiPurif	efnafraedi-2e	331317	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_04_OxStNonmts	efnafraedi-2e	39859	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_05_AmmonDeriv_img	efnafraedi-2e	18814	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_05_Electrolys	efnafraedi-2e	937552	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_07_Exercise1a_img	efnafraedi-2e	8059	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise1b_img	efnafraedi-2e	16210	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise1c_img	efnafraedi-2e	7509	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise1d_img	efnafraedi-2e	12524	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise1e_img	efnafraedi-2e	20798	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise5a_img	efnafraedi-2e	15431	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise5b_img	efnafraedi-2e	17595	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_Exercise5c_img	efnafraedi-2e	9448	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_07_N2O5	efnafraedi-2e	113919	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_18_07_Nitrogen	efnafraedi-2e	7249479	FigIS/Version 2.1.5/woff2	84	True	True	1	1
+CNX_Chem_18_07_molecreso	efnafraedi-2e	100418	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_18_08_Exercise1a_img	efnafraedi-2e	6496	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_08_Exercise1b_img	efnafraedi-2e	6842	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_08_Exercise1c_img	efnafraedi-2e	7817	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_08_Exercise1d_img	efnafraedi-2e	15726	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_08_Exercise1e_img	efnafraedi-2e	17117	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_18_08_Exercise8a_img	efnafraedi-2e	16989	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_08_Exercise8b_img	efnafraedi-2e	19996	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_08_Exercise8c_img	efnafraedi-2e	22518	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_08_Exercise8d_img	efnafraedi-2e	16291	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_09_Cl2OClO2	efnafraedi-2e	123232	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_18_09_Limelight	efnafraedi-2e	93581	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_18_10_FrachMine	efnafraedi-2e	67698	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_11_Exercise4a_img	efnafraedi-2e	21021	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_11_Exercise4b_img	efnafraedi-2e	13581	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_11_Exercise4c_img	efnafraedi-2e	20212	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_11_Exercise4d_img	efnafraedi-2e	16586	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_18_11_Exercise4e_img	efnafraedi-2e	14558	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_01_BlastFurn	efnafraedi-2e	222201	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_19_01_Oxistatra	efnafraedi-2e	25795	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_01_PeriodicEConfig	efnafraedi-2e	170426	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_01_ResTemp	efnafraedi-2e	15338	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_4geom	efnafraedi-2e	15090	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_Answer4a_img	efnafraedi-2e	15568	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_Answer4b_img	efnafraedi-2e	11950	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_Answer4c_img	efnafraedi-2e	8164	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_Answer4d_img	efnafraedi-2e	8320	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_Answer4e_img	efnafraedi-2e	19426	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_Answer4f_img	efnafraedi-2e	29532	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_BalEnt	efnafraedi-2e	44575	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_CN	efnafraedi-2e	17511	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_ChlorBlue	efnafraedi-2e	49843	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_Coen2Cl2	efnafraedi-2e	33977	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_DMSA	efnafraedi-2e	18791	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_EDTA	efnafraedi-2e	17607	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_Gly	efnafraedi-2e	12036	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_H2O2Br2	efnafraedi-2e	9427	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_cistrans	efnafraedi-2e	22889	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_en	efnafraedi-2e	17777	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_enant	efnafraedi-2e	21011	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_ex10ans_img	efnafraedi-2e	37096	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_heme	efnafraedi-2e	30618	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_oct	efnafraedi-2e	23585	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_02_structures	efnafraedi-2e	19651	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_02_transplatin	efnafraedi-2e	7825	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_19_03_CFSE	efnafraedi-2e	32045	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_19_03_Dorbital	efnafraedi-2e	177447	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_03_FECN6FEH2O_img	efnafraedi-2e	18853	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_03_Lightper	efnafraedi-2e	536766	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_19_03_Lowhigh	efnafraedi-2e	35770	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_19_03_smalldeltt_img	efnafraedi-2e	19022	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_AromatIso1_img	efnafraedi-2e	13625	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_AromatIso2_img	efnafraedi-2e	24151	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_AromatIso3_img	efnafraedi-2e	28976	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_FracDistil	efnafraedi-2e	1251451	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_GeomHybr1_img	efnafraedi-2e	8372	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_HalAlkane2_img	efnafraedi-2e	12032	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_HalAlkane3_img	efnafraedi-2e	14421	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_HalAlkane_img	efnafraedi-2e	11766	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_HaloReact2_img	efnafraedi-2e	8580	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_HaloReact_img	efnafraedi-2e	17750	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_01_HybrBAngl_img	efnafraedi-2e	9657	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct1	efnafraedi-2e	27405	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_LineStruct2_img	efnafraedi-2e	10932	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct3_img	efnafraedi-2e	9399	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct4_img	efnafraedi-2e	11021	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct5_img	efnafraedi-2e	10076	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct6_img	efnafraedi-2e	3678	NO-FONT	0	True	False	1	1
+CNX_Chem_20_01_LineStruct7_img	efnafraedi-2e	9377	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_LineStruct8_img	efnafraedi-2e	2681	NO-FONT	0	True	False	1	1
+CNX_Chem_20_01_ReactProd1_img	efnafraedi-2e	22009	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_01_acetylene_img	efnafraedi-2e	31122	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_01_alkanes	efnafraedi-2e	1733364	FigIS/Version 2.1.5/woff2	4	True	True	1	1
+CNX_Chem_20_01_alkenes_img	efnafraedi-2e	24643	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_alklnm_img	efnafraedi-2e	19802	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_alkyl_img	efnafraedi-2e	16191	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_alkyls	efnafraedi-2e	28320	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_alkyne_img	efnafraedi-2e	7991	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_aromatic_img	efnafraedi-2e	17058	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_benzene	efnafraedi-2e	7648	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_butaneIsom_img	efnafraedi-2e	1919891	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ethylChlor_img	efnafraedi-2e	28000	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_11_c_img	efnafraedi-2e	6305	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_11_e_img	efnafraedi-2e	7978	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_11_f_img	efnafraedi-2e	7689	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_12_c_img	efnafraedi-2e	6312	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_12_e_img	efnafraedi-2e	8064	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_14_img	efnafraedi-2e	18143	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_16_img	efnafraedi-2e	15868	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_18a_img	efnafraedi-2e	7315	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_18b_img	efnafraedi-2e	16832	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_1a_img	efnafraedi-2e	11075	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_1b_img	efnafraedi-2e	10436	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_1c_img	efnafraedi-2e	9737	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_20_img	efnafraedi-2e	27948	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_ex1_21_img	efnafraedi-2e	27309	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_ex1_23_img	efnafraedi-2e	12154	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_geoIsomers_img	efnafraedi-2e	3086091	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_halogen_img	efnafraedi-2e	27003	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_01_hexane_a_img	efnafraedi-2e	12192	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_hexane_b_img	efnafraedi-2e	12204	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_hexane_c_img	efnafraedi-2e	11596	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_hexane_d_img	efnafraedi-2e	11593	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_hexane_e_img	efnafraedi-2e	11020	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_hexane_f_img	efnafraedi-2e	11135	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_monomer	efnafraedi-2e	1837156	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_01_notiso1_img	efnafraedi-2e	19009	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_notiso2_img	efnafraedi-2e	19638	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_octane1_img	efnafraedi-2e	16800	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_octane2_img	efnafraedi-2e	17752	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_01_propane_img	efnafraedi-2e	16583	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_propene1	efnafraedi-2e	2794754	FigIS/Version 2.1.5/woff2	12	True	True	1	1
+CNX_Chem_20_01_recycle	efnafraedi-2e	40934	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_subbenzene_img	efnafraedi-2e	19516	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_01_substitu_img	efnafraedi-2e	20325	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_02_Exercise3a_img	efnafraedi-2e	7240	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_Exercise3b_img	efnafraedi-2e	9218	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_Exercise3c_img	efnafraedi-2e	9877	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_Exercise4a_img	efnafraedi-2e	8438	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_Exercise4b_img	efnafraedi-2e	7894	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_Exercise4c_img	efnafraedi-2e	7366	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_FunctGroup_img	efnafraedi-2e	999759	FigIS/Version 2.1.5/woff2	8	True	True	1	1
+CNX_Chem_20_02_MTBE_img	efnafraedi-2e	20937	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_02_NameEthers_img	efnafraedi-2e	7286	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_alcohol1_img	efnafraedi-2e	12689	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_alcohol2_img	efnafraedi-2e	8665	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_ethanol_img	efnafraedi-2e	21905	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_02_ether_img	efnafraedi-2e	36156	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_02_ethers1_img	efnafraedi-2e	7465	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_ethers2_img	efnafraedi-2e	7144	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_02_ferment_img	efnafraedi-2e	24904	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_02_polyols_img	efnafraedi-2e	21797	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_02_sugars	efnafraedi-2e	810612	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_COgeom_img	efnafraedi-2e	17467	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_03_CarboxEst1_img	efnafraedi-2e	57947	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_CarboxEst2_img	efnafraedi-2e	21479	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_OxiOrder_img	efnafraedi-2e	11391	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1a_a_img	efnafraedi-2e	8273	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1a_b_img	efnafraedi-2e	7833	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1a_c_img	efnafraedi-2e	8232	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1b_a_img	efnafraedi-2e	7394	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1b_b_img	efnafraedi-2e	7399	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiProd1b_c_img	efnafraedi-2e	7511	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiRedu2_img	efnafraedi-2e	6926	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_OxiRedu_img	efnafraedi-2e	11246	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_ReduProd1a_a_img	efnafraedi-2e	7519	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_ReduProd1a_b_img	efnafraedi-2e	7652	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_ReduProd1a_c_img	efnafraedi-2e	7516	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_acetate_img	efnafraedi-2e	19614	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_alcoholABC_img	efnafraedi-2e	29073	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_aldehyde_img	efnafraedi-2e	11353	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_aldket_img	efnafraedi-2e	20445	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_carbonyl_img	efnafraedi-2e	5621	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_03_carboxylic_img	efnafraedi-2e	33761	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_03_esterform_img	efnafraedi-2e	28904	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_03_oxaldehyde_img	efnafraedi-2e	9415	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_oxidation_img	efnafraedi-2e	13922	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_oxketone_img	efnafraedi-2e	8680	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_03_oxtoacid_img	efnafraedi-2e	20348	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_DNA	efnafraedi-2e	113314	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_alkaloids_img	efnafraedi-2e	55409	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_amide1_img	efnafraedi-2e	18588	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_amide2_img	efnafraedi-2e	26221	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_04_amines_img	efnafraedi-2e	14298	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_ammonia_img	efnafraedi-2e	27878	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_04_kevlar1	efnafraedi-2e	20377	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_04_kevpoly	efnafraedi-2e	328336	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_04_peptide	efnafraedi-2e	37561	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_04_pyridine_img	efnafraedi-2e	10372	FigIS/Version 2.1.5/woff2	0	True	False	1	1
+CNX_Chem_20_04_pyridinium_img	efnafraedi-2e	25818	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_20_04_react2a_img	efnafraedi-2e	29788	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_20_04_react2b_img	efnafraedi-2e	41146	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_04_react2c_img	efnafraedi-2e	46435	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_04_react2e_img	efnafraedi-2e	23772	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_04_reaction1b_img	efnafraedi-2e	24631	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_04_reaction1c_img	efnafraedi-2e	25536	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_20_04_reaction1f_img	efnafraedi-2e	33857	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	False	1	1
+CNX_Chem_21_01_BandStable	efnafraedi-2e	131940	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_01_BindEnergy	efnafraedi-2e	44290	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_03_CarbonDate	efnafraedi-2e	185654	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_03_DecayS	efnafraedi-2e	47986	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_03_HalfLife	efnafraedi-2e	68870	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_03_Radiation	efnafraedi-2e	157559	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_03_RadioDecay-e619	efnafraedi-2e	265249	LiberationSans/Version 1.07.4/None	0	True	False	1	1
+CNX_Chem_21_03_Reaction1	efnafraedi-2e	209485	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_04_ChnReact1	efnafraedi-2e	939649	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_04_ControlRod	efnafraedi-2e	5314904	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_04_CritMass	efnafraedi-2e	927992	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_04_Fission1	efnafraedi-2e	365581	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_04_Fission2	efnafraedi-2e	99716	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_04_FissnBomb	efnafraedi-2e	8195703	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_04_NuclearPwr	efnafraedi-2e	2512287	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_05_Co60Decay	efnafraedi-2e	22746	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_05_RadTherapy	efnafraedi-2e	1043196	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_05_SmokeAlarm	efnafraedi-2e	4842628	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_06_Damage1	efnafraedi-2e	989247	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_06_Damage2	efnafraedi-2e	197422	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_06_Exposure1	efnafraedi-2e	885403	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_06_Exposure2	efnafraedi-2e	37544	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_06_Hydroxyrad_img	efnafraedi-2e	19763	FigIS/Version 2.1.5/woff2 | FigSym/Version 1.1.0/woff2	0	True	True	1	1
+CNX_Chem_21_06_IonRadSpec	efnafraedi-2e	100832	FigIS/Version 2.1.5/woff2	20	True	True	1	1
+CNX_Chem_21_06_Penetrate	efnafraedi-2e	3491402	FigIS/Version 2.1.5/woff2	0	True	True	1	1
+CNX_Chem_21_06_RadonExpos	efnafraedi-2e	1407987	FigIS/Version 2.1.5/woff2	148	True	True	1	1

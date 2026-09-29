@@ -1,0 +1,584 @@
+{
+ "done": {
+  "done": true,
+  "engines": [
+   {
+    "engine": "chromium",
+    "version": "153.0.8010.12",
+    "n": 711
+   },
+   {
+    "engine": "firefox",
+    "version": "155.0",
+    "n": 711
+   }
+  ],
+  "variant": "notext",
+  "items": 711,
+  "skippedNoSize": 0
+ },
+ "unassigned": [
+  {
+   "id": "CNX_Chem_03_01_ibuprofenmass_img",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_11_04_rvosmosis",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_13_03_catalyst",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_14_03_ICETable2_img",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_14_04_ICETable13_img",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_18_07_N2O5",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_18_07_molecreso",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_18_09_Cl2OClO2",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_19_01_BlastFurn",
+   "status": "no-framing"
+  },
+  {
+   "id": "CNX_Chem_21_03_RadioDecay-e619",
+   "status": "no-framing"
+  }
+ ],
+ "flag_rule": "tol_hot_tiles > 0 (a 12x12 px tile more than 25% of whose pixels have no match within 1 px in the other render), OR not rendered",
+ "statuses": {
+  "rendered": 711
+ },
+ "noise_baseline_nonfeimage": {
+  "n": 651,
+  "p50": 0.0,
+  "p90": 0.0035125716745109475,
+  "p99": 0.015876754158004158,
+  "max": 0.0390741662518666
+ },
+ "tol_tile_noise_nonfeimage": {
+  "n": 651,
+  "p50": 0.0,
+  "p99": 0.16666666666666666,
+  "max": 0.5,
+  "with_hot_tiles": 3
+ },
+ "controls": [
+  {
+   "id": "ctl-plain",
+   "tol_hot_tiles": 0,
+   "tol_strong": 0.0,
+   "strong": 6.944444444444444e-05,
+   "ink_ratio": 1.0005189114391144
+  },
+  {
+   "id": "ctl-mix-blend",
+   "tol_hot_tiles": 0,
+   "tol_strong": 0.0,
+   "strong": 0.0,
+   "ink_ratio": 1.0003565825131935
+  },
+  {
+   "id": "ctl-feimage",
+   "tol_hot_tiles": 116,
+   "tol_strong": 0.5692361111111112,
+   "strong": 0.5692361111111112,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "ctl-blend-chain",
+   "tol_hot_tiles": 112,
+   "tol_strong": 0.4847916666666667,
+   "strong": 0.4847916666666667,
+   "ink_ratio": 0.0
+  }
+ ],
+ "flagged": [
+  {
+   "id": "CNX_Chem_18_07_Nitrogen",
+   "feimage": 84,
+   "tol_hot_tiles": 2181,
+   "tol_strong": 0.9647579071677963,
+   "strong": 0.9647579071677963,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_21_06_RadonExpos",
+   "feimage": 148,
+   "tol_hot_tiles": 1106,
+   "tol_strong": 0.518951360428051,
+   "strong": 0.518951360428051,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_05_02_BombCalor",
+   "feimage": 12,
+   "tol_hot_tiles": 783,
+   "tol_strong": 0.5499397762534706,
+   "strong": 0.5508737546954108,
+   "ink_ratio": 0.05239908606245241
+  },
+  {
+   "id": "CNX_Chem_04_04_sandwich",
+   "feimage": 208,
+   "tol_hot_tiles": 719,
+   "tol_strong": 0.4159745447788926,
+   "strong": 0.4159745447788926,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_05_02_HeatMeas",
+   "feimage": 8,
+   "tol_hot_tiles": 700,
+   "tol_strong": 0.40613699868507563,
+   "strong": 0.4065633218277449,
+   "ink_ratio": 0.0037193514606579272
+  },
+  {
+   "id": "CNX_Chem_13_00_Blood",
+   "feimage": 36,
+   "tol_hot_tiles": 592,
+   "tol_strong": 0.4452290331196581,
+   "strong": 0.4454404825498576,
+   "ink_ratio": 0.3014620535714285
+  },
+  {
+   "id": "CNX_Chem_05_01_OxyacTorch",
+   "feimage": 540,
+   "tol_hot_tiles": 577,
+   "tol_strong": 0.46878587830080365,
+   "strong": 0.46878587830080365,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_11_04_RaoultLaw",
+   "feimage": 176,
+   "tol_hot_tiles": 493,
+   "tol_strong": 0.21988452552120777,
+   "strong": 0.21988452552120777,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_06_03_Oshapes",
+   "feimage": 88,
+   "tol_hot_tiles": 473,
+   "tol_strong": 0.12223098624465811,
+   "strong": 0.12226645966880342,
+   "ink_ratio": 0.016224709013370954
+  },
+  {
+   "id": "CNX_Chem_02_02_CathodeRay",
+   "feimage": 4,
+   "tol_hot_tiles": 352,
+   "tol_strong": 0.15613448336560465,
+   "strong": 0.15658921551370064,
+   "ink_ratio": 0.04458242706295491
+  },
+  {
+   "id": "CNX_Chem_19_03_Lightper",
+   "feimage": 4,
+   "tol_hot_tiles": 339,
+   "tol_strong": 0.14283415714138606,
+   "strong": 0.14283415714138606,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_02_02_Millikan",
+   "feimage": 152,
+   "tol_hot_tiles": 280,
+   "tol_strong": 0.18398111677479148,
+   "strong": 0.185622296879827,
+   "ink_ratio": 0.22122379802695746
+  },
+  {
+   "id": "CNX_Chem_08_02_HybrdOrbit",
+   "feimage": 296,
+   "tol_hot_tiles": 254,
+   "tol_strong": 0.11164712855637512,
+   "strong": 0.11175414910432034,
+   "ink_ratio": 0.008549887898888282
+  },
+  {
+   "id": "CNX_Chem_05_02_HeatTrans2",
+   "feimage": 16,
+   "tol_hot_tiles": 236,
+   "tol_strong": 0.26955025146343475,
+   "strong": 0.27023043944265807,
+   "ink_ratio": 0.056408323010358884
+  },
+  {
+   "id": "CNX_Chem_01_05_Archer2_img",
+   "feimage": 64,
+   "tol_hot_tiles": 229,
+   "tol_strong": 0.19702136273044346,
+   "strong": 0.19702136273044346,
+   "ink_ratio": 0.1779312509810077
+  },
+  {
+   "id": "CNX_Chem_02_03_MassSpec",
+   "feimage": 6,
+   "tol_hot_tiles": 227,
+   "tol_strong": 0.16367631509384087,
+   "strong": 0.16367631509384087,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_01_02_StatesMatt",
+   "feimage": 12,
+   "tol_hot_tiles": 227,
+   "tol_strong": 0.1601112114954397,
+   "strong": 0.1601112114954397,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_11_05_emulsoil",
+   "feimage": 150,
+   "tol_hot_tiles": 226,
+   "tol_strong": 0.35831376003131726,
+   "strong": 0.35831376003131726,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_03_01_exocytosis-88f6",
+   "feimage": 632,
+   "tol_hot_tiles": 218,
+   "tol_strong": 0.13790760869565216,
+   "strong": 0.1393525707384403,
+   "ink_ratio": 0.28976566236250595
+  },
+  {
+   "id": "CNX_Chem_02_01_Dalton2",
+   "feimage": 4,
+   "tol_hot_tiles": 211,
+   "tol_strong": 0.5539394677052905,
+   "strong": 0.5548523206751055,
+   "ink_ratio": 0.06265294492306661
+  },
+  {
+   "id": "CNX_Chem_16_01_carbon",
+   "feimage": 4,
+   "tol_hot_tiles": 210,
+   "tol_strong": 0.14707638040971374,
+   "strong": 0.1478835978835979,
+   "ink_ratio": 0.5027011363401155
+  },
+  {
+   "id": "CNX_Chem_11_01_Icepack",
+   "feimage": 516,
+   "tol_hot_tiles": 206,
+   "tol_strong": 0.15005675747863248,
+   "strong": 0.15005675747863248,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_01_05_Archery",
+   "feimage": 36,
+   "tol_hot_tiles": 198,
+   "tol_strong": 0.17999452390155907,
+   "strong": 0.17999452390155907,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_06_01_emspectrum",
+   "feimage": 4,
+   "tol_hot_tiles": 192,
+   "tol_strong": 0.09518355920341032,
+   "strong": 0.09523525481962207,
+   "ink_ratio": 0.07231590526071469
+  },
+  {
+   "id": "CNX_Chem_05_02_IcePack",
+   "feimage": 520,
+   "tol_hot_tiles": 190,
+   "tol_strong": 0.1480997969248622,
+   "strong": 0.1480997969248622,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_08_03_C2H4orbit",
+   "feimage": 64,
+   "tol_hot_tiles": 171,
+   "tol_strong": 0.2866666666666667,
+   "strong": 0.2876210826210826,
+   "ink_ratio": 0.031685823754789275
+  },
+  {
+   "id": "CNX_Chem_14_03_AcidpH",
+   "feimage": 12,
+   "tol_hot_tiles": 163,
+   "tol_strong": 0.15616276727387837,
+   "strong": 0.15616276727387837,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_04_02_HClsoln",
+   "feimage": 8,
+   "tol_hot_tiles": 160,
+   "tol_strong": 0.15105070368228263,
+   "strong": 0.1516210397789345,
+   "ink_ratio": 0.0369177187636047
+  },
+  {
+   "id": "CNX_Chem_08_03_C2H2",
+   "feimage": 60,
+   "tol_hot_tiles": 151,
+   "tol_strong": 0.2659259259259259,
+   "strong": 0.2667094017094017,
+   "ink_ratio": 0.052857648188387486
+  },
+  {
+   "id": "CNX_Chem_05_03_AlgalFuel2",
+   "feimage": 48,
+   "tol_hot_tiles": 148,
+   "tol_strong": 0.141863344988345,
+   "strong": 0.1421456148018648,
+   "ink_ratio": 0.17190239991983566
+  },
+  {
+   "id": "CNX_Chem_01_02_ConsMatter",
+   "feimage": 8,
+   "tol_hot_tiles": 148,
+   "tol_strong": 0.09833767926988266,
+   "strong": 0.09856040851803563,
+   "ink_ratio": 0.7165707268401259
+  },
+  {
+   "id": "CNX_Chem_18_09_Limelight",
+   "feimage": 4,
+   "tol_hot_tiles": 145,
+   "tol_strong": 0.22168042507519645,
+   "strong": 0.22168042507519645,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_21_06_IonRadSpec",
+   "feimage": 20,
+   "tol_hot_tiles": 142,
+   "tol_strong": 0.1482044133066438,
+   "strong": 0.1482044133066438,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_08_02_sp3Geom",
+   "feimage": 100,
+   "tol_hot_tiles": 139,
+   "tol_strong": 0.05083955223880597,
+   "strong": 0.05083955223880597,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_20_01_propene1",
+   "feimage": 12,
+   "tol_hot_tiles": 137,
+   "tol_strong": 0.07889921171171171,
+   "strong": 0.07890462577962577,
+   "ink_ratio": 0.043192830719533164
+  },
+  {
+   "id": "CNX_Chem_04_01_rxn3",
+   "feimage": 24,
+   "tol_hot_tiles": 136,
+   "tol_strong": 0.1044447976266158,
+   "strong": 0.10541163382072473,
+   "ink_ratio": 0.3801565846294281
+  },
+  {
+   "id": "CNX_Chem_07_06_Egeom",
+   "feimage": 188,
+   "tol_hot_tiles": 126,
+   "tol_strong": 0.06531005163817664,
+   "strong": 0.06539630074786325,
+   "ink_ratio": 0.008424531681555015
+  },
+  {
+   "id": "CNX_Chem_08_01_O2bonds_img",
+   "feimage": 28,
+   "tol_hot_tiles": 124,
+   "tol_strong": 0.24517059273156835,
+   "strong": 0.25227572788548397,
+   "ink_ratio": 0.112882136853247
+  },
+  {
+   "id": "CNX_Chem_14_02_phscale",
+   "feimage": 2,
+   "tol_hot_tiles": 101,
+   "tol_strong": 0.04005238363099423,
+   "strong": 0.04005238363099423,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_07_06_NH3",
+   "feimage": 100,
+   "tol_hot_tiles": 85,
+   "tol_strong": 0.1340395223373947,
+   "strong": 0.13561556646663028,
+   "ink_ratio": 0.0376940133037694
+  },
+  {
+   "id": "CNX_Chem_14_03_corresp",
+   "feimage": 8,
+   "tol_hot_tiles": 85,
+   "tol_strong": 0.044682921245421246,
+   "strong": 0.044682921245421246,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_02_02_AtomModels",
+   "feimage": 8,
+   "tol_hot_tiles": 83,
+   "tol_strong": 0.07922570850202429,
+   "strong": 0.08135964912280702,
+   "ink_ratio": 0.8470360693563164
+  },
+  {
+   "id": "CNX_Chem_08_01_N2LewStru_img",
+   "feimage": 48,
+   "tol_hot_tiles": 76,
+   "tol_strong": 0.23910777569314154,
+   "strong": 0.24059307900771315,
+   "ink_ratio": 0.08732225115161225
+  },
+  {
+   "id": "CNX_Chem_08_02_spGeom",
+   "feimage": 36,
+   "tol_hot_tiles": 75,
+   "tol_strong": 0.04625238218988219,
+   "strong": 0.04635524948024948,
+   "ink_ratio": 0.026706231454005934
+  },
+  {
+   "id": "CNX_Chem_02_05_PerTable2",
+   "feimage": 8,
+   "tol_hot_tiles": 68,
+   "tol_strong": 0.045860333054626536,
+   "strong": 0.045860333054626536,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_20_02_FunctGroup_img",
+   "feimage": 8,
+   "tol_hot_tiles": 49,
+   "tol_strong": 0.05790097489316239,
+   "strong": 0.058079037571225074,
+   "ink_ratio": 0.016479475865757456
+  },
+  {
+   "id": "CNX_Chem_08_04_Gouy",
+   "feimage": 4,
+   "tol_hot_tiles": 37,
+   "tol_strong": 0.021331099456099456,
+   "strong": 0.021707459207459208,
+   "ink_ratio": 0.8405868614099149
+  },
+  {
+   "id": "CNX_Chem_11_04_phasediag",
+   "feimage": 2,
+   "tol_hot_tiles": 35,
+   "tol_strong": 0.021517717472624636,
+   "strong": 0.021517717472624636,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_14_03_Oxyacid",
+   "feimage": 2,
+   "tol_hot_tiles": 33,
+   "tol_strong": 0.036758563074352546,
+   "strong": 0.036758563074352546,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_08_04_ssigma",
+   "feimage": 8,
+   "tol_hot_tiles": 31,
+   "tol_strong": 0.0391439566832237,
+   "strong": 0.03917751823510986,
+   "ink_ratio": 0.06171766342141863
+  },
+  {
+   "id": "CNX_Chem_08_01_pi",
+   "feimage": 12,
+   "tol_hot_tiles": 20,
+   "tol_strong": 0.2282051282051282,
+   "strong": 0.2287878787878788,
+   "ink_ratio": 0.008986520219670493
+  },
+  {
+   "id": "CNX_Chem_08_02_sp2Conv",
+   "feimage": 24,
+   "tol_hot_tiles": 18,
+   "tol_strong": 0.15161943319838056,
+   "strong": 0.15229419703103914,
+   "ink_ratio": 0.05894562058945621
+  },
+  {
+   "id": "CNX_Chem_20_01_alkanes",
+   "feimage": 4,
+   "tol_hot_tiles": 17,
+   "tol_strong": 0.014660698496905393,
+   "strong": 0.015379089301503095,
+   "ink_ratio": 0.7500473754026908
+  },
+  {
+   "id": "CNX_Chem_09_03_GlobalWarming-b740",
+   "feimage": 0,
+   "tol_hot_tiles": 17,
+   "tol_strong": 0.004484596386325231,
+   "strong": 0.005004549590536852,
+   "ink_ratio": 0.9999848346982104
+  },
+  {
+   "id": "CNX_Chem_06_03_Electrnin",
+   "feimage": 8,
+   "tol_hot_tiles": 16,
+   "tol_strong": 0.004963874402433724,
+   "strong": 0.005011408083441982,
+   "ink_ratio": 0.9994838762954705
+  },
+  {
+   "id": "CNX_Chem_06_04_Econfig",
+   "feimage": 324,
+   "tol_hot_tiles": 11,
+   "tol_strong": 0.02255460588793922,
+   "strong": 0.022792022792022793,
+   "ink_ratio": 0.12194217939214233
+  },
+  {
+   "id": "CNX_Chem_07_06_Dipolfield",
+   "feimage": 0,
+   "tol_hot_tiles": 11,
+   "tol_strong": 0.002984200216034126,
+   "strong": 0.009840537522198422,
+   "ink_ratio": 0.9985366430045174
+  },
+  {
+   "id": "CNX_Chem_02_04_Hydrogen",
+   "feimage": 24,
+   "tol_hot_tiles": 9,
+   "tol_strong": 0.01471360023991603,
+   "strong": 0.01471360023991603,
+   "ink_ratio": 0.0
+  },
+  {
+   "id": "CNX_Chem_04_05_propionate_img",
+   "feimage": 0,
+   "tol_hot_tiles": 1,
+   "tol_strong": 0.005687260536398468,
+   "strong": 0.010556353767560664,
+   "ink_ratio": 1.012
+  }
+ ]
+}
