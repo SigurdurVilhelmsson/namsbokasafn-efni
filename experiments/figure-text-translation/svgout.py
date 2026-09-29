@@ -8,42 +8,20 @@ stylesheet, no webfont. A `font-family` alone therefore resolves against whateve
 the READER happens to have, and "Liberation Sans" is absent from stock Windows and
 macOS. The committed corpus already does this; the subsetting is what keeps it
 affordable.
+
+§C140 ㉗: every embedded face is a RENAMED subset that names no Reserved Font Name
+and keeps its copyright and trademark notices, and each family embedded brings its
+licence as a <metadata> element. The Liberation faces (FigIS) are owned by figis.py
+and the STIX face (FigSym) by figsym.py; this file only places what they return.
+There is deliberately no unrenamed subsetter here any more: the pre-㉗ one embedded
+"Liberation Sans" names and dropped the trademark notice.
 """
-import base64, io, re
+import base64
 from pathlib import Path
 import _deps
+import figis
 
-FACES = {   # (bold, italic)
-    (False, False): '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
-    (True, False):  '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
-    (False, True):  '/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf',
-    (True, True):   '/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf',
-}
-FAMILY = 'FigIS'          # local name; must not collide with a real installed family
-
-
-def subset_face(path, chars):
-    """Subset a TTF to `chars` and return woff2 bytes."""
-    from fontTools import subset as fsubset
-    from fontTools.ttLib import TTFont
-    # recalcTimestamp=False: fontTools otherwise stamps the SAVE time into head.modified, so two
-    # composes of one figure a second apart embed different woff2 bytes (measured 2026-09-19,
-    # §C159). A textless figure is recomposed on every run, and a byte that moves with the clock
-    # turns every run into a spurious media/ diff. The source font's own timestamp is kept.
-    font = TTFont(path, recalcTimestamp=False)
-    opt = fsubset.Options()
-    opt.layout_features = ['*']
-    opt.desubroutinize = True
-    opt.drop_tables += ['DSIG']
-    opt.notdef_outline = True
-    fsubset.Subsetter(options=opt).subset(font) if False else None
-    sub = fsubset.Subsetter(options=opt)
-    sub.populate(text=''.join(sorted(chars)))
-    sub.subset(font)
-    font.flavor = 'woff2'
-    buf = io.BytesIO()
-    font.save(buf)
-    return buf.getvalue()
+FAMILY = figis.FAMILY     # 'FigIS': a local name; must not collide with a real installed family
 
 
 def esc(t):
@@ -100,11 +78,14 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
         art = raster_shell(art, raster_png)
 
     faces = []
+    figis_keys = []
     # A face is embedded only when some item uses it, iterated (F,F),(T,F),(F,T),(T,T): a
     # figure with no italic item therefore emits today's rules in today's order. Italic
     # arrives with E (§C140 ①) - a kept run in an italic BaseFont is drawn italic.
     # §C140 ⑥a: a FigSym item (it['family'] == 'FigSym') is drawn in the STIX subset, never
     # here - so its characters are excluded from every FigIS character set below.
+    # §C140 ㉗: each face is figis.subset_woff2's renamed subset, which refuses (FontUnavailable)
+    # unless the file is the pinned one AND the file cairo measured the layout with.
     for bold, italic in ((False, False), (True, False), (False, True), (True, True)):
         chars = {c for it in items
                  if it.get('family') != 'FigSym' and bool(it['bold']) is bold
@@ -112,7 +93,8 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
                  for c in it['text']}
         if not chars:
             continue
-        b64 = base64.b64encode(subset_face(FACES[(bold, italic)], chars)).decode('ascii')
+        figis_keys.append((bold, italic))
+        b64 = base64.b64encode(figis.subset_woff2((bold, italic), chars)).decode('ascii')
         faces.append(
             f"@font-face{{font-family:'{FAMILY}';font-weight:{700 if bold else 400};"
             f"font-style:{'italic' if italic else 'normal'};"
@@ -142,9 +124,13 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
     # <text> carries its own trailing style - see below - while run-exact and arc elements stay
     # byte-identical); the artwork above the group keeps the renderer's defaults. Pinned by test_svgout.py.
     parts = [f"<style>{''.join(faces)}</style>", '<g text-rendering="geometricPrecision">']
+    # The licensing information, one <metadata> per family embedded, in @font-face order (FigIS,
+    # then FigSym), as the group's FIRST children - never before <style> (it is not artwork) and
+    # never after </g> (figparts keys off the group's framing). A figure that embeds no font (a
+    # textless one) owes no licence and carries none. §C140 ㉗ for FigIS, ⑥a's T5 for FigSym.
+    if figis_keys:
+        parts.append(figis.metadata_element(figis_keys))
     if stix_chars:
-        # T5: the licensing information, as the group's FIRST child - never before <style> (it
-        # is not artwork) and never after </g> (svgfix / figparts key off the group's framing).
         parts.append(figsym.metadata_element())
     for it in items:
         # PDF y-up -> SVG y-down. Rotation flips sign with the axis.

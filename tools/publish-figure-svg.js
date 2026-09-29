@@ -333,7 +333,8 @@ function placeInMedia({ bookDir, book, basename, svgPath, metaPath, mismatch }) 
  * ⚠️ NO STAMP IS WRITTEN, SO NOTHING MARKS THIS FIGURE CURRENT. The driver recomposes it on every
  * run. That is affordable because it is prepared on every run anyway, and it is harmless only
  * because the composer's output is byte-deterministic (the font subset's timestamp is pinned;
- * see `svgout.subset_face`) — a nondeterministic compose would make every run a media/ diff.
+ * see `fontsubset.subset_renamed` in experiments/figure-text-translation/) — a nondeterministic
+ * compose would make every run a media/ diff.
  *
  * @param {{bookDir:string, basename:string, svgPath:string, metaPath:string}} options
  * @returns {{ok:true, book, basename, outputName, path, replaced, composedHash:null,
