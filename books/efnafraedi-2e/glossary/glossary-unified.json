@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-28T12:00:03.298Z",
+  "generated": "2026-09-29T10:00:03.374Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1742,
-    "approved": 1742,
+    "total": 1748,
+    "approved": 1748,
     "ties": 333,
-    "nominalTies": 103,
-    "outOfScopeOnly": 1505,
-    "censusStrings": 108414
+    "nominalTies": 104,
+    "outOfScopeOnly": 1509,
+    "censusStrings": 109321
   },
   "terms": [
     {
@@ -6281,6 +6281,18 @@
       "alternatives": []
     },
     {
+      "english": "electron charge",
+      "icelandic": "rafeindarhleðsla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2753,
+      "alternatives": [
+        "hleðsla rafeindar"
+      ]
+    },
+    {
       "english": "electron configuration",
       "icelandic": "rafeindaskipan",
       "status": "approved",
@@ -7754,6 +7766,18 @@
       "position": 2,
       "conceptId": 3219,
       "alternatives": []
+    },
+    {
+      "english": "gamma decay",
+      "icelandic": "gammahrörnun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 930,
+      "alternatives": [
+        "gammasundrun"
+      ]
     },
     {
       "english": "gamma radiation",
@@ -10406,6 +10430,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1194,
+      "alternatives": []
+    },
+    {
+      "english": "lowercase letter",
+      "icelandic": "lágstafur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2013,
       "alternatives": []
     },
     {
@@ -13919,6 +13953,16 @@
       "alternatives": []
     },
     {
+      "english": "pus",
+      "icelandic": "gröftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 3,
+      "conceptId": 52147,
+      "alternatives": []
+    },
+    {
       "english": "pyramid",
       "icelandic": "strýta",
       "status": "approved",
@@ -16021,6 +16065,16 @@
       "alternatives": []
     },
     {
+      "english": "spontaneous fission",
+      "icelandic": "sjálfklofnun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3249,
+      "alternatives": []
+    },
+    {
       "english": "square planar",
       "icelandic": "ferningslaga flatt",
       "status": "approved",
@@ -17846,6 +17900,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1175,
+      "alternatives": []
+    },
+    {
+      "english": "uppercase letter",
+      "icelandic": "hástafur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1185,
       "alternatives": []
     },
     {
