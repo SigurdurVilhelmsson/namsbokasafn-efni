@@ -44,10 +44,6 @@ import fs from 'fs';
 import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'url';
 
-// Failure default: a run that never reaches its verdict must not exit 0 (CLAUDE.md, the
-// never-settling promise rule).
-process.exitCode = 1;
-
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, '..', '..');
 
@@ -458,6 +454,10 @@ async function sweepEngine(pw, engine, items, base, args, emit) {
 }
 
 export async function main(argv) {
+  // Failure default: a run that never reaches its verdict must not exit 0 (CLAUDE.md, the
+  // never-settling promise rule). Set HERE, not at module level: importing this file (its tests
+  // do) must not change the importing process's exit code.
+  process.exitCode = 1;
   let args;
   try {
     args = parseCli(argv);

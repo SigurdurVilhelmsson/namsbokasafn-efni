@@ -30,6 +30,13 @@ const composed = (artBody = ART_BODY) =>
   ].join('\n') +
   '\n</svg>\n';
 
+describe('importing the module', () => {
+  it('does not set a failure exit code on the importing process (the failure default belongs to main())', () => {
+    // The static import at the top of this file has already run by now.
+    expect(process.exitCode).not.toBe(1);
+  });
+});
+
 describe('artworkOnly — the composed figure without its text layer', () => {
   it('drops the last <style> and the text group, keeping the artwork byte-for-byte', () => {
     expect(artworkOnly(composed())).toBe(`${ART_OPEN}${ART_BODY}</svg>\n`);
