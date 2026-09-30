@@ -114,13 +114,35 @@ Sizes (with ㉗'s licence): PerTable2 38,734 → 52,050 bytes, phasediag 87,912 
 RaoultLaw 988,309 → 429,140. `artwork.png` is **opaque RGB** (white page) where the vector artwork has no background;
 vefur's dark theme gives figure images no background, so these figures would sit on a white card.
 
-### 3.6 WebKit: not measured
+### 3.6 WebKit — measured 2026-09-30
 
-`webkit-2359` (WebKit 26.6) is installed but will not launch: 34 shared libraries are missing (GTK 4, GStreamer,
-libsoup 3, flite …), which `npx playwright install-deps --dry-run webkit` maps to 148 apt packages. Installing them
-needs sudo. A private test page for the real-iPad look ([USER]'s) was published 2026-09-29: the four controls with
-Chromium references, the four feImage figures today vs after ⑭, two ordinary figures after ㉗, and a copyable result
-summary — <https://claude.ai/artifact/K6ttycf2mP4FqNyo8EM5Yq>.
+Until [USER] installed its system packages on 2026-09-30, `webkit-2359` (WebKit 26.6) would not launch: 34 shared
+libraries were missing, which `npx playwright install-deps --dry-run webkit` mapped to 148 apt packages. The same sweeps
+then ran in WebKit (log `sweep.webkit.log` beside the raw PNGs; every pass ended with its terminal row).
+Summary: [`reports/sweep-notext-webkit-summary.json`](reports/sweep-notext-webkit-summary.json).
+
+- **WebKit supports an in-document `<feImage>`.** All four controls match Chromium, 0 hot tiles
+  ([`sheets/webkit-controls-and-feimage-figures.png`](sheets/webkit-controls-and-feimage-figures.png)).
+- **But it has its OWN defect on the in-document-feImage figures** — at display scale, on real, deep filter chains.
+  `RaoultLaw` comes out blurred with the dissolved particles missing; `PerTable2` gets a misplaced solid overlay and
+  loses its right edge (group 18, the actinide strip). Artwork only: **54 of the 56 flagged**.
+- **And it is NOT deterministic.** One file, loaded twice, can come out differently: `Electrnin` scored 16 hot tiles
+  in one run and 0 in another, and each run was internally stable
+  ([`sheets/webkit-same-file-two-renders.png`](sheets/webkit-same-file-two-renders.png) shows the same for
+  `PerTable2`). So "54 of 56" is a sample of a random process, not a fixed list.
+- **No second WebKit mechanism among the other 651 composed figures:** 8 flagged, all inspected — identical content,
+  differing only on thin strokes and dots at pixel scale and in photo resampling
+  ([`sheets/webkit-non-feimage-flags-are-noise.png`](sheets/webkit-non-feimage-flags-are-noise.png)).
+- **The heaviest figures do not paint in time.** Full renders: 719 of 721; `HetCats-230a` (66 MB, never finished
+  loading) and `TetOctHole` (23 MB) exceeded 120 s, and `KMTPhases1` (56 MB) did in the artwork pass; `osmosis` took
+  140 s. All are over §C168's 8 MB gate, so the step-6 recompose rasterises them.
+- **The approved ⑭ raster arm repairs WebKit too**, measured on the same four figures as §3.5 (artwork only, against
+  today's Chromium vector render): PerTable2 141 → **0** hot tiles, Electrnin 16 → **0**, RaoultLaw 254 → **0**,
+  phasediag 0 → 0.
+- Caveat: this is WebKit on Linux. The iPad's WebKit uses a different graphics backend, so the real-device look stays
+  owed. The private test page for it (published 2026-09-29): the four controls with Chromium references, the four
+  feImage figures today vs after ⑭, two ordinary figures after ㉗, and a copyable result summary —
+  <https://claude.ai/artifact/K6ttycf2mP4FqNyo8EM5Yq>.
 
 ## 4. The June figures (live defects confirmed in both engines)
 
@@ -166,3 +188,9 @@ parses of all 27 files. One untested hypothesis it raised, recorded for the WebK
 name `FigIS` to DejaVu Sans, whose `20-unhint-small-dejavu-sans` rule turns hinting off below 7.5 px. Chromium and
 Firefox measurably do not take that path at 5–7.4 px. A **Linux** WebKit port that built fontconfig patterns from the
 web font's family name might; iPadOS WebKit uses CoreText, not fontconfig.
+
+**WebKit, added 2026-09-30:** the same 27 BEFORE/AFTER pairs rendered in WebKit 26.6 — **26 of 27 pixel-identical.** The
+27th, `PerTable2` (an in-document-feImage figure), was rendered 4 times per side: all 4 BEFORE renders and 2 of the 4
+AFTER renders are byte-identical, and the other 2 AFTER renders differ only in the artwork's overlay — WebKit's
+non-deterministic filter rendering (§3.6), not ㉗. That also refutes the fontconfig hypothesis above on this build: had
+the internal family name changed how the text is drawn, no AFTER render could have matched BEFORE.
