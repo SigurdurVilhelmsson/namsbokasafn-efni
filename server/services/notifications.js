@@ -823,6 +823,9 @@ module.exports = {
   DEFAULT_PREFERENCES,
   STAGE_LABELS,
   isEmailConfigured,
+  // Exported for server/__tests__/sendEmailSmtpSink.test.js, the only test
+  // that reaches nodemailer (its require is lazy and SMTP-gated).
+  sendEmail,
   createNotification,
   notifyFeedbackReceived,
   // Hand-off notifications
