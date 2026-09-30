@@ -80,6 +80,38 @@ def test_raster_shell_is_dramatically_smaller():
     assert len(raster_shell(heavy, png)) < len(heavy) / 10
 
 
+_FE_LOCAL = ('<defs><g id="compositing-group-1"><rect width="5" height="5"/></g>'
+             '<filter id="filter-2" x="0%" y="0%" width="100%" height="100%">'
+             '<feImage xlink:href="#compositing-group-1" result="source" x="0" y="0" width="5" height="5"/>'
+             '</filter></defs><g filter="url(#filter-2)"><rect width="5" height="5"/></g>')
+
+
+def test_an_in_document_feImage_fires_whatever_the_size():
+    # §C140 ⑭: Firefox paints an <feImage> that references an element of the same document as
+    # transparent black (Mozilla bug 455986, NEW since 2008; measured 2026-09-29 on the corpus). A small
+    # figure is NOT spared: the whole artwork vanishes, so size is irrelevant here.
+    hit, m, why = figweight.should_rasterise(ART.format(_FE_LOCAL))
+    assert hit is True, why
+    assert m['localFeImages'] == 1
+    assert 'feImage' in why and 'Firefox' in why
+
+
+def test_an_EXTERNAL_feImage_does_not_fire():
+    # Firefox does load an external or data: image in <feImage>; only a local #reference fails.
+    ext = ART.format('<filter id="f"><feImage xlink:href="data:image/png;base64,AAAA"/></filter>')
+    hit, m, why = figweight.should_rasterise(ext)
+    assert hit is False, why
+    assert m['localFeImages'] == 0
+
+
+def test_a_gt_inside_another_attribute_does_not_hide_the_local_reference():
+    # CLAUDE.md: a bare '>' is legal inside an attribute value, so a `[^>]*` scan would stop early.
+    tricky = ART.format('<filter id="f"><feImage result="a>b" xlink:href="#g"/></filter><g id="g"/>')
+    hit, m, why = figweight.should_rasterise(tricky)
+    assert hit is True, why
+    assert m['localFeImages'] == 1
+
+
 def test_thresholds_are_exported_values_not_prose():
     assert figweight.RASTER_BYTES_MIN > 0
     assert figweight.RASTER_VECTOR_ELEMENTS_MIN > 20991  # above the corpus p99

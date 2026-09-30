@@ -130,10 +130,12 @@ _FACES = {}
 
 
 def face(bold, italic):
-    from svgout import FACES
+    # §C140 ㉗: figis.py owns the face files (svgout.FACES is gone). Read the FILE with fontTools directly, so this
+    # stays independent of both cairo's measure and figis's own verification.
+    from figis import face_path
     k = (bool(bold), bool(italic))
     if k not in _FACES:
-        f = TTFont(FACES[k])
+        f = TTFont(str(face_path(k)))
         _FACES[k] = (f.getBestCmap(), f['hmtx'], f['head'].unitsPerEm)
     return _FACES[k]
 

@@ -41,6 +41,8 @@ os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 
 import svgout                                   # noqa: E402
 import figsym                                   # noqa: E402
+import figis                                    # noqa: E402
+import fontsubset                               # noqa: E402
 from fontTools.ttLib import TTFont              # noqa: E402
 
 SVG_NS = '{http://www.w3.org/2000/svg}'
@@ -244,10 +246,14 @@ texts1 = [e for e in root1.iter() if local(e.tag) == 'text']
 check('T1b every <text> has font-family="FigIS"',
       bool(texts1) and all(e.get('font-family') == 'FigIS' for e in texts1),
       repr([e.get('font-family') for e in texts1]))
-check('T1c no <metadata> element in a figure with no eligible run',
-      not any(local(e.tag) == 'metadata' for e in root1.iter()))
-check("T1d the <g>'s first child is a <text> (the group is unchanged in shape)",
-      group_children(svg1)[:1] == ['text'], repr(group_children(svg1)))
+# §C140 ㉗ changed T1c/T1d: a figure with FigIS text now carries the Liberation licence (the FigIS
+# <metadata>) as the group's first child; before ㉗ it carried none and the first child was a <text>.
+metas1 = [e for e in root1.iter() if local(e.tag) == 'metadata']
+check('T1c exactly one <metadata> in a figure with no eligible run, and it is the FigIS licence',
+      len(metas1) == 1 and (metas1[0].text or '').startswith('Font: FigIS is a subset of Liberation Sans'),
+      repr([(m.text or '')[:60] for m in metas1]))
+check("T1d the <g>'s first child is that <metadata>, then the <text> elements",
+      group_children(svg1) == ['metadata', 'text', 'text'], repr(group_children(svg1)))
 
 # Case 2: one FigSym item ('+') and one FigIS item ('X').
 ITEMS_2 = [item('X', 10.0, 10.0), item('+', 30.0, 10.0, family=figsym.FAMILY)]
@@ -263,8 +269,11 @@ by_text2 = {''.join(e.itertext()): e.get('font-family')
 check("T2b the FigSym item's <text> is font-family=\"FigSym\", the other is \"FigIS\"",
       by_text2.get('+') == 'FigSym' and by_text2.get('X') == 'FigIS', repr(by_text2))
 metas2 = [e for e in root2.iter() if local(e.tag) == 'metadata']
-check("T2c exactly one <metadata> and it is the first child of the <g>",
-      len(metas2) == 1 and group_children(svg2)[:1] == ['metadata'], repr(group_children(svg2)))
+# §C140 ㉗: one <metadata> per embedded family, in the @font-face order (FigIS, then FigSym), as the
+# group's first children. Each owner (figis.py, figsym.py) writes its own.
+check("T2c two <metadata>, FigIS's then FigSym's, and they are the first two children of the <g>",
+      [(m.text or '')[:30] for m in metas2] == ['Font: FigIS is a subset of Lib', 'Font: FigSym is a subset of ST']
+      and group_children(svg2)[:2] == ['metadata', 'metadata'], repr(group_children(svg2)))
 figis_b64_2 = next((f[3] for f in faces2 if f[0] == 'FigIS'), None)
 check("T2d the FigIS face's characters do not include '+' (decoded from its own woff2)",
       figis_b64_2 is not None and ord('+') not in cmap_of(figis_b64_2),
@@ -277,6 +286,39 @@ parses(svg3, 'T3 the all-FigSym SVG parses as XML')
 faces3 = font_face_rules(svg3)
 check('T3 no FigIS face is emitted when no item uses it',
       [f[0] for f in faces3] == ['FigSym'], repr([f[:3] for f in faces3]))
+metas3 = [(e.text or '')[:30] for e in ET.fromstring(svg3.encode('utf-8')).iter() if local(e.tag) == 'metadata']
+check('T3b ... and so no FigIS licence either: the only <metadata> is FigSym\'s',
+      metas3 == ['Font: FigSym is a subset of ST'], repr(metas3))
+
+# --- §C140 ㉗: the FigIS faces are renamed subsets carrying their notices ---------------------------------
+# [USER] ruling 4a, docs/decisions/2026-09-26-pre-editor-pivot-translation-rulings.md. These assert on the
+# EMBEDDED woff2, decoded from the written SVG: the break they catch is write_svg still reaching an
+# unrenamed subsetter, which a figis.py unit test cannot see.
+ITEMS_N = [item('Þyngd', 10.0, 10.0), item('Ö', 20.0, 20.0, bold=True), item('á', 30.0, 30.0, italic=True),
+           item('ð', 40.0, 40.0, bold=True, italic=True)]
+svgN = compose_svg(ITEMS_N)
+parses(svgN, 'N0 the four-face SVG parses as XML')
+facesN = font_face_rules(svgN)
+check('N1 all four FigIS faces are embedded, in (bold, italic) order',
+      [(f[0], f[1], f[2]) for f in facesN] == [('FigIS', '400', 'normal'), ('FigIS', '700', 'normal'),
+                                              ('FigIS', '400', 'italic'), ('FigIS', '700', 'italic')],
+      repr([f[:3] for f in facesN]))
+for fam, wt, st, b64 in facesN:
+    emb = TTFont(io.BytesIO(base64.b64decode(b64)))
+    left = fontsubset.name_violations(emb, figis.FORBIDDEN)
+    tm = emb['name'].getDebugName(7) or ''
+    check(f'N2 {wt}/{st}: the embedded face names no Reserved Font Name and keeps the trademark notice',
+          left == [] and tm.startswith('Liberation is a trademark of Red Hat'), f'{left[:2]} {tm[:40]!r}')
+metaN = [e for e in ET.fromstring(svgN.encode('utf-8')).iter() if local(e.tag) == 'metadata']
+check('N3 the FigIS <metadata> names exactly the four faces embedded',
+      len(metaN) == 1 and '(Regular, Bold, Italic, Bold Italic)' in (metaN[0].text or ''),
+      (metaN[0].text or '')[:120] if metaN else 'none')
+# A textless figure (§C159) embeds no font, so it owes no licence text.
+svgE = compose_svg([])
+parses(svgE, 'N4 the textless SVG parses as XML')
+check('N4a a textless figure embeds no font and carries no <metadata>',
+      font_face_rules(svgE) == [] and 'metadata' not in group_children(svgE),
+      repr((font_face_rules(svgE)[:1], group_children(svgE))))
 
 # Case 4: the figparts.split() contract (last <style>; remainder \n<g …>…</g>\n</svg>\n) still
 # holds with a FigSym face and a <metadata> element present. Imported by path - it lives under

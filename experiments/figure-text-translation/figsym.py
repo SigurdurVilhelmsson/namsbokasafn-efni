@@ -22,6 +22,7 @@ licensing information in each SVG. Evidence: evidence/2026-09-16-stix-licence/, 
 import hashlib, io, os, re
 from pathlib import Path
 import _deps  # noqa: F401
+import fontsubset
 
 HERE = Path(__file__).resolve().parent
 FAMILY = 'FigSym'
@@ -32,7 +33,6 @@ LICENCE_FILE = HERE / 'fonts' / 'STIX-1.1.0-LICENSE.txt'
 LICENCE_SHA256 = '69eca010e01385fd991696cd087e03b586656936b61619cd9f7bf6cc0044dcc3'
 DEFAULT_PATH = Path.home() / '.cache' / 'namsbokasafn-figtext' / 'stix-1.1.0' / 'STIXGeneral-Regular.otf'
 ELIGIBLE_BASE = 'STIXGeneral-Regular'
-NAMED_IDS = (1, 2, 3, 4, 5, 6, 16, 17, 21, 22)
 FORBIDDEN = re.compile(r'stix|fonts|tm|math', re.I)
 RENAMED = {1: 'FigSym', 3: 'FigSym-Regular:1.1.0-subset', 4: 'FigSym Regular', 6: 'FigSym-Regular',
            16: 'FigSym', 17: 'Regular', 21: 'FigSym', 22: 'Regular'}
@@ -91,58 +91,18 @@ def covers(text):
 
 def name_violations(font):
     """Every place a font is named that contains a reserved name or word. [] is clean."""
-    out = []
-    for rec in font['name'].names:
-        if rec.nameID in NAMED_IDS and FORBIDDEN.search(rec.toUnicode()):
-            out.append(f'name ID {rec.nameID} ({rec.platformID},{rec.platEncID},{rec.langID}): {rec.toUnicode()}')
-    if 'CFF ' in font:
-        cff = font['CFF '].cff
-        top = cff.topDictIndex[0]
-        for label, value in (('CFF fontNames', ' '.join(cff.fontNames)), ('CFF FullName', getattr(top, 'FullName', '')),
-                             ('CFF FamilyName', getattr(top, 'FamilyName', ''))):
-            if value and FORBIDDEN.search(value):
-                out.append(f'{label}: {value}')
-    return out
+    return fontsubset.name_violations(font, FORBIDDEN)
 
 
 def subset_woff2(chars):
     """A FigSym subset of the official font holding `chars`, as woff2 bytes. Refuses to return a subset that still names
-    a reserved name or word."""
-    from fontTools import subset as fsubset
-    from fontTools.ttLib import TTFont
+    a reserved name or word. The subsetting, renaming and check are fontsubset.subset_renamed, shared with FigIS (§C140 ㉗)."""
     load()                                   # hash check first (once per process; see load())
-    # A FRESH parse of the verified bytes on every call: `sub.subset(font)` mutates the font in place, so subsetting
-    # the cached `_font` would corrupt `covers()` for the rest of the process - and re-opening `font_path()` here
-    # would read a file that was never hashed if $FIGTEXT_STIX_FONT changed after load().
-    # recalcTimestamp=False for the same reason as `svgout.subset_face`: the save time must not
-    # reach the output bytes (§C159).
-    font = TTFont(io.BytesIO(_font_bytes), recalcTimestamp=False)
-    opt = fsubset.Options()
-    opt.layout_features = ['*']
-    opt.desubroutinize = True
-    opt.drop_tables += ['DSIG']
-    opt.notdef_outline = True
-    opt.name_IDs = [0, 1, 2, 3, 4, 5, 6, 7, 13, 14]
-    opt.name_languages = ['*']
-    opt.name_legacy = True
-    sub = fsubset.Subsetter(options=opt)
-    sub.populate(text=''.join(sorted(chars)))
-    sub.subset(font)
-    for rec in font['name'].names:
-        if rec.nameID in RENAMED:
-            rec.string = RENAMED[rec.nameID]
-    cff = font['CFF '].cff
-    cff.fontNames = ['FigSym-Regular']
-    top = cff.topDictIndex[0]
-    top.FullName = 'FigSym Regular'
-    top.FamilyName = 'FigSym'
-    left = name_violations(font)
-    if left:
-        raise FontUnavailable(f'renamed subset still names a reserved name or word: {left}')
-    font.flavor = 'woff2'
-    buf = io.BytesIO()
-    font.save(buf)
-    return buf.getvalue()
+    # A FRESH parse of the VERIFIED bytes on every call (subset_renamed parses what it is given): subsetting the cached
+    # `_font` would corrupt `covers()` for the rest of the process - and re-opening `font_path()` here would read a
+    # file that was never hashed if $FIGTEXT_STIX_FONT changed after load().
+    return fontsubset.subset_renamed(_font_bytes, chars, renamed=RENAMED, forbidden=FORBIDDEN, error=FontUnavailable,
+                                     cff_names=('FigSym-Regular', 'FigSym Regular', 'FigSym'))
 
 
 def _esc(t):

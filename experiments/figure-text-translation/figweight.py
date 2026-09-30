@@ -39,6 +39,22 @@ one measurement nobody has run — how long a browser takes to PAINT these figur
 and said it may change the gate from a byte count to an element count. Until then
 this is set conservatively, to the clear tail only. Revisit with that measurement;
 do not treat the number as settled.
+
+🔴 §C140 ⑭ ADDS A FOURTH MECHANISM, AND IT IS ABOUT CORRECTNESS, NOT WEIGHT: an
+<feImage> that references an element of the SAME document. cairo's SVG surface
+emulates every non-OVER blend (multiply, screen, lighten, SOURCE, DEST_OUT, ADD) as
+blend(S, D) where D is "everything painted so far", referenced through
+<feImage href="#…">; after the first such paint every later one nests inside that
+filter tree. Firefox has never supported a local reference in <feImage> (Mozilla bug
+455986, NEW since 2008; since Firefox 143 it is transparent black by code path), so
+it paints the WHOLE artwork of such a figure away, whatever its size. Measured
+2026-09-29 with browser-sweep.mjs (evidence/2026-09-29-c27-c14/): 56 of the 717
+chemistry figures carry one (4,926 references), and Firefox drew labels on a blank
+canvas or lost most of the artwork. The raster arm is exact in every engine by
+construction: poppler/cairo computes the PDF's blend semantics into artwork.png, and
+a browser only displays pixels. A CSS mix-blend-mode rewrite would keep the vector
+but breaks the iPad: Safari does not isolate blending inside an SVG loaded as <img>
+(WPT css/compositing/svg/mix-blend-mode-in-svg-image).
 """
 
 import re
@@ -56,6 +72,9 @@ RASTER_TILES_MIN = 2_000
 _PATH = re.compile(r'<path\b')
 _CLIP = re.compile(r'<clipPath\b')
 _IMAGE = re.compile(r'<image\b')
+# §C140 ⑭ — an <feImage> whose href points into the SAME document. The attribute span is quote-aware
+# (CLAUDE.md: a bare '>' is legal inside an attribute value, so `[^>]*` could stop inside one).
+_LOCAL_FEIMAGE = re.compile(r'<feImage\b(?:[^>"\']|"[^"]*"|\'[^\']*\')*?\s(?:xlink:)?href\s*=\s*["\']#')
 
 
 def measure(svg_text):
@@ -65,6 +84,7 @@ def measure(svg_text):
         'paths': len(_PATH.findall(svg_text)),
         'clipPaths': len(_CLIP.findall(svg_text)),
         'tiles': len(_IMAGE.findall(svg_text)),
+        'localFeImages': len(_LOCAL_FEIMAGE.findall(svg_text)),
     }
 
 
@@ -79,6 +99,10 @@ def should_rasterise(svg_text):
     m = measure(svg_text)
     vec = m['paths'] + m['clipPaths']
     m['vectorElements'] = vec
+    fe = m['localFeImages']
+    # §C140 ⑭ is a CORRECTNESS mechanism, not a weight one, so it is named beside any weight reason and fires alone.
+    also = (f'; {fe:,} in-document <feImage> reference(s), which Firefox paints transparent (§C140 ⑭)'
+            if fe else '')
     if m['bytes'] >= RASTER_BYTES_MIN:
         if vec >= RASTER_VECTOR_ELEMENTS_MIN:
             why = f'path soup ({vec:,} vector elements)'
@@ -86,9 +110,11 @@ def should_rasterise(svg_text):
             why = f'tile soup ({m["tiles"]:,} raster tiles)'
         else:
             why = f'path data ({vec:,} elements but {m["bytes"] / 1048576:.1f} MB)'
-        return True, m, f'{m["bytes"] / 1048576:.1f} MB — {why}'
+        return True, m, f'{m["bytes"] / 1048576:.1f} MB — {why}{also}'
     if vec >= RASTER_VECTOR_ELEMENTS_MIN:
-        return True, m, f'{vec:,} vector elements (DOM backstop, {m["bytes"] / 1048576:.1f} MB)'
+        return True, m, f'{vec:,} vector elements (DOM backstop, {m["bytes"] / 1048576:.1f} MB){also}'
     if m['tiles'] >= RASTER_TILES_MIN:
-        return True, m, f'{m["tiles"]:,} raster tiles (DOM backstop, {m["bytes"] / 1048576:.1f} MB)'
+        return True, m, f'{m["tiles"]:,} raster tiles (DOM backstop, {m["bytes"] / 1048576:.1f} MB){also}'
+    if fe:
+        return True, m, f'{also[2:]} ({m["bytes"] / 1048576:.1f} MB)'
     return False, m, f'{m["bytes"] / 1048576:.1f} MB, {vec:,} elements, {m["tiles"]:,} tiles — vector'

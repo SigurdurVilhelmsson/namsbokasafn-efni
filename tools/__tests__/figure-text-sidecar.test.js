@@ -204,8 +204,14 @@ describe('the composer computes no hashes — there is no second implementation'
   //   word, and must still never import hashlib.
   // Every other .py file still gets the full absence check, and both are
   // checked below for the sidecar-hash symbols specifically.
-  const HASH_ALLOWLIST = ['figsym.py', 'test_figsym.py'];
+  // §C140 ㉗ adds figis.py on the same terms: it verifies the four Liberation
+  // Sans faces (one call, in _verified()) and the committed licence text (one
+  // call, in metadata_element()) — spec
+  // docs/superpowers/specs/2026-09-29-c140-c27-c14-composer-design.md. The
+  // shared fontsubset.py computes NO hash and gets the full absence check.
+  const HASH_ALLOWLIST = ['figsym.py', 'test_figsym.py', 'figis.py', 'test_figis.py'];
   const FIGSYM_SHA256_CALLS = 2;
+  const FIGIS_SHA256_CALLS = 2;
 
   it('no Python file in the figure-text tree reaches for a hashing library, except the allowlisted STIX/licence integrity checks', () => {
     const files = fs.readdirSync(composerDir).filter((f) => f.endsWith('.py'));
@@ -235,6 +241,18 @@ describe('the composer computes no hashes — there is no second implementation'
     );
     // control: the exemption is for a word the file really contains
     expect(testFigsym).toMatch(/\bsha256\b/);
+  });
+
+  it('figis.py hashes at exactly its pinned call sites, and test_figis.py never imports hashlib', () => {
+    const figis = fs.readFileSync(new URL('figis.py', composerDir), 'utf-8');
+    expect(
+      figis.split('hashlib.sha256(').length - 1,
+      'a new hashlib.sha256( site in figis.py must be a conscious change to FIGIS_SHA256_CALLS'
+    ).toBe(FIGIS_SHA256_CALLS);
+    expect(figis.split('hashlib.').length - 1).toBe(FIGIS_SHA256_CALLS);
+    const testFigis = fs.readFileSync(new URL('test_figis.py', composerDir), 'utf-8');
+    expect(testFigis, 'test_figis.py may name sha256 but must not hash').not.toMatch(/\bhashlib\b/);
+    expect(testFigis).toMatch(/\bsha256\b/);
   });
 
   it('the allowlisted files still implement no sidecar hash, even though they hash', () => {

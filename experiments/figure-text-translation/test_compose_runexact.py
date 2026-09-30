@@ -490,7 +490,11 @@ if _hcl_src is not None:
                   len(hcl_figsym_texts) > 0, repr(len(hcl_figsym_texts)))
             hcl_metadata = ([e for e in hcl_root.iter() if e.tag.split('}', 1)[-1] == 'metadata']
                             if hcl_root is not None else [])
-            check('R6 its <metadata> exists', len(hcl_metadata) == 1, repr(len(hcl_metadata)))
+            # §C140 ㉗: the figure also draws FigIS labels, so the Liberation licence sits beside the STIX one
+            # (FigIS first, in @font-face order). Asserted by CONTENT: a count alone cannot tell them apart.
+            heads = [(e.text or '')[:30] for e in hcl_metadata]
+            check('R6 its FigSym <metadata> exists, after the FigIS one §C140 ㉗ adds',
+                  heads == ['Font: FigIS is a subset of Lib', 'Font: FigSym is a subset of ST'], repr(heads))
 
     # Negative arm: FIGTEXT_STIX_FONT pointing at a missing file refuses this figure — exit
     # non-zero, no compose-report.json (T3 of the design: a missing/wrong font fails loudly).
