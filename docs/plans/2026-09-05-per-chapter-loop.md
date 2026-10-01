@@ -412,11 +412,15 @@ the per-outcome tally (the `translated` count is the buy list), every figure NAM
 assertion the driver makes on itself. Its design is
 [`docs/superpowers/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md).
 
-🔴 **NEITHER `--stale` NOR `--force` CAN SPEND — THEY RECOMPOSE.** Both compose from the sidecar's
-own blocks, and after an editorial correction those blocks ARE the corrected Icelandic, so
-re-running the MT would overwrite the correction *and* charge for it. **To re-buy a figure, a human
-DELETES `books/<slug>/figure-text/<basename>.is.json`** — there is no `--retranslate`. The paid
-stage runs for exactly one class of figure: one with **no sidecar file**.
+🔴 **NEITHER `--stale` NOR `--force` CAN RE-BUY A FIGURE — ON A FIGURE WITH A SIDECAR, BOTH
+RECOMPOSE.** Both compose from the sidecar's own blocks, and after an editorial correction those
+blocks ARE the corrected Icelandic, so re-running the MT would overwrite the correction *and*
+charge for it. **To re-buy a figure, a human DELETES `books/<slug>/figure-text/<basename>.is.json`**
+and runs without `--stale` — there is no `--retranslate`. The paid stage runs for exactly one class
+of figure: one with **no sidecar file**. ⚠️ **Only `--stale` spends nothing at all** (§C140 ㊴): it
+refuses the paid step outright, and it also reaches the textless figures, which carry no sidecar.
+**`--force`, like a plain run, still buys every figure with no sidecar file.** *(Corrected
+2026-10-01: this said neither flag "CAN SPEND", which was never true of `--force`.)*
 
 ⚠️ **`--chapter` is required on EVERY invocation, `--stale` included** — the CLI refuses without it.
 *(Corrected 2026-09-08 before it was written down: a bare `--stale` was proposed for this block,

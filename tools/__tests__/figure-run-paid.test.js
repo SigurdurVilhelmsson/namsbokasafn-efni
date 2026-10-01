@@ -1158,6 +1158,138 @@ describe('a textless figure is recomposed from its source artwork (§C159)', () 
   });
 });
 
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊴ — `--stale` REACHES EVERY FIGURE READERS ARE SERVED A COPY OF OURS, AND NEVER BUYS.
+// It used to select only figures with a sidecar FILE, so the §C159 textless figures — composed,
+// but carrying no sidecar and so no stamp — were deselected before prepare, and a
+// COMPOSER_VERSION bump's bare `--stale` recompose missed a third of the composed corpus. It now
+// selects a figure with a sidecar file OR an image-mapping row (readers are served our `_IS.svg`
+// exactly when the row exists), and a selected figure with no sidecar that classifies
+// `translated` lands `skipped-unbought` instead of reaching the paid step.
+describe('--stale reaches every figure that serves our copy, and never buys (§C140 ㊴)', () => {
+  const row = (b) => ({ originalImage: b, outputName: `${b}_IS.svg`, extension: '.svg' });
+  const textlessOr = (b) =>
+    b === 'FIG_TEXTLESS'
+      ? {
+          sendable: 0,
+          imageXObjects: 0,
+          paintOps: 9,
+          __blocks: [{ key: 'kC', english: 'C', lines: ['C'], arc: false, send: false }],
+        }
+      : { sendable: 2 };
+  const stale = () => madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1' }); // no composedHash
+
+  it('recomposes a textless figure that has a mapping row and no sidecar', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_TEXTLESS', 'FIG_A', 'FIG_NONE'],
+      mapping: [row('FIG_TEXTLESS'), row('FIG_A')],
+      sidecars: { FIG_A: stale() },
+    });
+    const old = path.join(bookDir, 'media', 'FIG_TEXTLESS_IS.svg');
+    fs.writeFileSync(old, '<svg id="composed-by-an-older-composer"/>');
+    const spawn = fakeSpawn({ prepare: textlessOr });
+    const result = await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+
+    // SELECTED: the textless figure is worked on; FIG_NONE (no row, no sidecar) is not.
+    expect(result.figures.map((f) => f.basename).sort()).toEqual(['FIG_A', 'FIG_TEXTLESS']);
+    expect(result.deselected).toBe(1);
+    // …recomposed from an EMPTY set and published over the old copy, buying nothing…
+    expect(rec(result, 'FIG_TEXTLESS').outcome).toBe('copied-textless');
+    expect(spawn.translationsSeen.FIG_TEXTLESS).toEqual({ blocks: {} });
+    expect(fs.readFileSync(old, 'utf-8')).toBe('<svg id="FIG_TEXTLESS"/>');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_TEXTLESS'))).toBe(false);
+    expect(spawn.countOf('translate')).toBe(0);
+    // …and the control, in the same run: the stale sidecar-bearing figure recomposed too.
+    expect(spawn.outDirsFor('compose').sort()).toEqual(['FIG_A', 'FIG_TEXTLESS']);
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // The case the R8 header names: to re-buy a figure, a human DELETES its sidecar. Its mapping
+  // row stays, so the widened selection reaches it — and `--stale` must not be the run that buys.
+  it('selects a figure whose sidecar a human deleted, and refuses to buy it', async () => {
+    const make = () => {
+      const book = makeBook({
+        figures: ['FIG_REBUY', 'FIG_A'],
+        mapping: [row('FIG_REBUY'), row('FIG_A')],
+        sidecars: { FIG_A: stale() },
+      });
+      fs.writeFileSync(path.join(book.bookDir, 'media', 'FIG_REBUY_IS.svg'), '<svg id="earlier"/>');
+      return book;
+    };
+
+    const s = make();
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(s.booksRoot, { stale: true }), {
+      spawn,
+      booksRoot: s.booksRoot,
+    });
+    const r = rec(result, 'FIG_REBUY');
+    // SELECTED. Before ㊴ the figure was deselected, so "nothing was bought" held vacuously.
+    expect(r).toBeDefined();
+    expect(r.outcome).toBe('skipped-unbought');
+    expect(r.spent).toBe(false);
+    expect(spawn.outDirsFor('translate')).toEqual([]);
+    expect(fs.existsSync(sidecarPath(s.bookDir, 'FIG_REBUY'))).toBe(false);
+    expect(fs.readFileSync(path.join(s.bookDir, 'media', 'FIG_REBUY_IS.svg'), 'utf-8')).toBe(
+      '<svg id="earlier"/>'
+    );
+    expect(result.tally['skipped-unbought']).toBe(1);
+    expect(result.verdict.ok).toBe(true); // a NOTE, not a failure
+    expect(spawn.outDirsFor('compose')).toEqual(['FIG_A']); // the run did do its work
+    expect(summarise(result)).toMatch(
+      /--stale never buys[^\n]*1 figure\(s\)[^\n]*\n\s+FIG_REBUY\b/
+    );
+
+    // THE CONTROL THAT GIVES THE REFUSAL ITS MEANING: the same tree, run without --stale, buys it.
+    const p = make();
+    const spawnPlain = fakeSpawn();
+    const bought = await runFigures(live(p.booksRoot), {
+      spawn: spawnPlain,
+      booksRoot: p.booksRoot,
+    });
+    expect(spawnPlain.outDirsFor('translate')).toEqual(['FIG_REBUY']);
+    expect(rec(bought, 'FIG_REBUY').spent).toBe(true);
+  });
+
+  // A dry run never calls `processFigureLive`, so a refusal placed only in the paid branch would
+  // leave the one report an operator reads before spending saying "would buy" about this figure.
+  it('a --stale dry run reports the refusal and never lists the figure as one it would buy', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_REBUY'], mapping: [row('FIG_REBUY')] });
+    const result = await runFigures(live(booksRoot, { stale: true, dryRun: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+
+    expect(rec(result, 'FIG_REBUY')?.outcome).toBe('skipped-unbought');
+    const report = summarise(result);
+    expect(report).not.toMatch(/^\s+would buy \d+ figure/m);
+    expect(report).toMatch(/--stale never buys[^\n]*1 figure\(s\)[^\n]*\n\s+FIG_REBUY\b/);
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // 🔴 THE REPORT LINE, WHICH WAS FALSE FOR THE TEXTLESS FIGURES: "They are the ones a run
+  // WITHOUT --stale would buy" — measured on chemistry ch02, 26 named and 0 buyable. What is
+  // left unselected now is only what no recompose can change, and the line says no more.
+  it('describes the figures it did not select without claiming a plain run would buy them', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['FIG_A', 'FIG_NONE'],
+      mapping: [row('FIG_A')],
+      sidecars: { FIG_A: stale() },
+    });
+    const result = await runFigures(live(booksRoot, { stale: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    const report = summarise(result);
+
+    expect(result.deselected).toBe(1); // the premise: there IS a not-selected line to read
+    expect(report).toMatch(
+      /1 figure\(s\) in this chapter have no sidecar and no image-mapping row/
+    );
+    expect(report).not.toMatch(/would buy/);
+  });
+});
+
 describe('the MT failure modes each leave the figure eligible', () => {
   it('a non-zero exit from the MT buckets failed-mt, writes NO sidecar, and stays eligible', async () => {
     const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });

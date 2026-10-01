@@ -12,15 +12,18 @@
  * git-conflicted or truncated file read as "nobody has bought this" and was bought AND
  * overwritten — see `applySidecarGuard`. That is R8, and it is not a flag: after an editor's
  * correction the sidecar's blocks ARE the corrected Icelandic, so re-running the MT would
- * overwrite the correction *and* charge for it. `--stale` and `--force` therefore spend NOTHING
- * — they recompose. **To re-buy a figure, a human deletes its `books/<slug>/figure-text/
- * <basename>.is.json`.** Every child process goes through ONE injectable `spawn`, tagged by
+ * overwrite the correction *and* charge for it. So neither `--stale` nor `--force` can RE-buy a
+ * figure: on one that has a sidecar, both recompose. ⚠️ ONLY `--stale` SPENDS NOTHING AT ALL — it
+ * refuses the paid step outright (§C140 ㊴) — while `--force`, like a plain run, still buys a
+ * figure with no sidecar file. *(Corrected 2026-10-01: this said both flags "spend NOTHING".)*
+ * **To re-buy a figure, a human deletes its `books/<slug>/figure-text/<basename>.is.json` and runs
+ * without `--stale`.** Every child process goes through ONE injectable `spawn`, tagged by
  * stage, so "the MT was spawned zero times" is a counter a test can read rather than a claim.
  *
  * 🔴 THE ORDER IS THE FIX, AND IT IS THE WHOLE POINT OF THIS FILE:
  *
  *    5. PRE-FLIGHT   is a mapping entry present or mintable? + the identity seam   PURE, no write
- *    6. translate    ONLY when no sidecar exists                                   ← the paid step
+ *    6. translate    ONLY when no sidecar exists, and never under --stale (㊴)     ← the paid step
  *    7. SIDECAR      writeSidecar IMMEDIATELY, and REGARDLESS of step 8            ← records it
  *    8. verify       compare key SETS both ways → decides the BUCKET, never the record
  *    9. compose      figure-compose.py, from the sidecar's own blocks
@@ -163,10 +166,11 @@ export class CliError extends Error {
  * that way would have run LIVE.
  *
  * ⚠️ `--stale` AND `--force` ARE BOOLEANS, AND NEITHER CAN CAUSE A PURCHASE. `--stale` narrows
- * the run to figures that already HAVE a sidecar; `--force` stops a current one being skipped so
- * it is recomposed anyway. A figure with no sidecar is bought with or without either flag,
- * because that is not a re-do — it is the first do. Neither is in VALUED_FLAGS: adding them
- * there would make the bare `--stale` a usage error.
+ * the run to the figures readers are served a copy of ours for (a sidecar file or an
+ * image-mapping row) and refuses to buy any of them (§C140 ㊴); `--force` stops a current one
+ * being skipped so it is recomposed anyway. A figure with no sidecar is bought with or without
+ * `--force`, because that is not a re-do — it is the first do — but never under `--stale`.
+ * Neither is in VALUED_FLAGS: adding them there would make the bare `--stale` a usage error.
  *
  * @param {string[]} argv
  * @returns {{book:string, chapter:string, modules:string[]|null, figures:string[]|null,
@@ -1406,6 +1410,8 @@ function recomposeTextless(rec, { spawn, publishTextless, bookDir, outDir }) {
  *   a sidecar   → RECOMPOSE from its own blocks, 0 ISK, and write nothing but the publisher's
  *                 stamp. The blocks may be an editor's corrections; re-running the MT would
  *                 overwrite them and charge for it.
+ * ⚠️ Under `--stale` the first path is never entered: `runFigures` refuses that figure as
+ * `skipped-unbought` before calling this, in both modes (§C140 ㊴).
  *
  * 🔴 AND A THIRD, FOR A TEXTLESS FIGURE THAT ALREADY SERVES A COMPOSED COPY (§C159) — see
  * `recomposeTextless`. It spends nothing and writes no sidecar.
@@ -1936,17 +1942,30 @@ export async function runFigures(args, deps = {}) {
 
   for (const rec of records) applySidecarGuard(rec, bookDir, sidecarExists);
 
-  // `--stale`: narrow to the figures that already HAVE a sidecar, i.e. the ones a recompose can
-  // finish. Selecting them OUT of the run rather than giving them an outcome is deliberate and
-  // matches `--figure`: the tally then describes what was worked on, and the partition still
-  // sums. Selecting nothing is a legitimate answer here (nothing is stranded), so — unlike a
-  // `--figure` that names no figure — it is not a refusal.
+  // `--stale`: narrow to the figures readers are served a copy OF OURS for — a sidecar FILE, or an
+  // image-mapping row (the renderer swaps in our `_IS.svg` exactly when the row exists). That is
+  // every figure a composer change can have made stale, and nothing else: a figure with neither
+  // is served no composed copy of ours, so no recompose changes what its readers see. Selecting
+  // them OUT of the run rather than giving them an outcome is deliberate and matches `--figure`:
+  // the tally then describes what was worked on, and the partition still sums. Selecting nothing
+  // is a legitimate answer here (nothing is stranded), so — unlike a `--figure` that names no
+  // figure — it is not a refusal.
   //
-  // 🔴 THE PREDICATE IS "A SIDECAR FILE IS PRESENT", NOT "readSidecar RETURNED SOMETHING". An
+  // 🔴 §C140 ㊴ — THE MAPPING ROW IS WHAT REACHES THE §C159 TEXTLESS FIGURES. They are composed and
+  // published but carry no sidecar (one would badge them "unreviewed"), so a predicate of "has a
+  // sidecar" deselected them before prepare, and a COMPOSER_VERSION bump's bare `--stale`
+  // recompose missed a third of the composed corpus. ⚠️ Widening the selection is what makes the
+  // refusal in the loop below necessary: a selected figure with no sidecar that classifies
+  // `translated` would otherwise reach the paid step — the commonest one is a figure whose sidecar
+  // a human deleted to re-buy it, which keeps its row.
+  //
+  // 🔴 THE SIDECAR HALF IS "A SIDECAR FILE IS PRESENT", NOT "readSidecar RETURNED SOMETHING". An
   // unreadable sidecar HAS a file, so `--stale` must SELECT it — deselecting it printed the
   // operator the exact opposite of the truth: "have no sidecar … the ones a run WITHOUT
   // --stale would buy", about the one file in the chapter that must never be bought again.
-  const selected = args.stale ? records.filter((r) => r.sidecar || r.sidecarUnreadable) : records;
+  const selected = args.stale
+    ? records.filter((r) => r.sidecar || r.sidecarUnreadable || mapped.has(r.basename))
+    : records;
 
   // 🔴 "ALREADY DONE" IS A HASH QUESTION, NOT A FILE QUESTION, AND IT IS ASKED FIRST — before
   // anything is resolved or prepared, because a figure that needs nothing should cost nothing.
@@ -2141,7 +2160,22 @@ export async function runFigures(args, deps = {}) {
       applyDriftGuard(rec);
       applyPartialDriftGuard(rec, outDir);
       applyMappingPreflight(rec, { mapped, mintIndex, bookDir });
-      if (rec.outcome === 'translated' && !rec.sidecar) rec.billable = billableFrom(outDir);
+      if (rec.outcome === 'translated' && !rec.sidecar) {
+        rec.billable = billableFrom(outDir);
+        // 🔴 §C140 ㊴ — `--stale` NEVER BUYS, AND THE REFUSAL IS HERE, IN BOTH MODES. Its selection
+        // reaches figures with no sidecar (the textless ones it exists to recompose, and any whose
+        // sidecar a human deleted to re-buy), so this one is refused before `processFigureLive`,
+        // whose paid step is reachable only through outcome `translated`. A guard inside the paid
+        // branch alone would leave a `--stale --dry-run` — which never calls it — reporting "would
+        // buy" about a figure the live run refuses. `billable` is kept: the report says what a
+        // run without `--stale` would spend on it.
+        if (args.stale) {
+          rec.outcome = 'skipped-unbought';
+          rec.reason =
+            'no sidecar, and it classifies translated: --stale never buys. A run without ' +
+            '--stale would buy it.';
+        }
+      }
       if (!args.dryRun)
         processFigureLive(rec, {
           spawn,
@@ -2290,10 +2324,15 @@ export function summarise(result) {
     );
   }
 
+  // 🔴 §C140 ㊴ — THIS LINE USED TO SAY "They are the ones a run WITHOUT --stale would buy", and
+  // that was false for the textless figures it named (chemistry ch02: 26 named, 0 buyable). What
+  // `--stale` leaves unselected now is only what no recompose can change, and the line says no
+  // more than that; what a run without `--stale` WOULD buy is the refusal list further down.
   if (result.deselected > 0) {
     lines.push(
-      `  --stale: ${result.deselected} figure(s) in this chapter have no sidecar and were not ` +
-        `selected. They are the ones a run WITHOUT --stale would buy.`
+      `  --stale: ${result.deselected} figure(s) in this chapter have no sidecar and no ` +
+        `image-mapping row and were not selected — no composed copy of ours is served for ` +
+        `them, so no recompose changes what readers see.`
     );
   }
 
@@ -2654,23 +2693,34 @@ export function summarise(result) {
   // The headline counts and adds only figures whose size is known, and says how many it could not.
   const unknownNote = (k) => (k > 0 ? ` (+${k} figure(s) whose billable size is UNKNOWN)` : '');
   const known = (f) => f.billable && f.billable.chars !== null;
-  const buyable = result.figures.filter((f) => f.billable);
-  if (buyable.length) {
-    const counted = buyable.filter(known);
+  const billableList = (label, figs) => {
+    const counted = figs.filter(known);
     const total = counted.reduce((n, f) => n + f.billable.chars, 0);
-    lines.push('');
-    lines.push(
-      `  ${result.mode === 'dry-run' ? 'would buy' : 'buyable this run'} ${counted.length} figure(s): ` +
+    return [
+      '',
+      `  ${label} ${counted.length} figure(s): ` +
         `${total} billable characters, est ${estimateIsk(total).toFixed(2)} ISK at list rate` +
-        unknownNote(buyable.length - counted.length)
-    );
-    for (const f of buyable) {
-      lines.push(
+        unknownNote(figs.length - counted.length),
+      ...figs.map((f) =>
         f.billable.chars === null
           ? `    ${f.basename}  billable count UNKNOWN (${f.billable.error})`
           : `    ${f.basename}  ${f.billable.blocks} block(s), ${f.billable.chars} chars`
-      );
-    }
+      ),
+    ];
+  };
+  // ⚠️ A `--stale` refusal KEEPS `billable` (§C140 ㊴), so this list must exclude it by outcome or
+  // it would name, as buyable, the very figures the run declined to buy.
+  const buyable = result.figures.filter((f) => f.billable && f.outcome !== 'skipped-unbought');
+  if (buyable.length) {
+    lines.push(
+      ...billableList(result.mode === 'dry-run' ? 'would buy' : 'buyable this run', buyable)
+    );
+  }
+  // §C140 ㊴ — WHAT `--stale` DECLINED, AND WHAT A RUN WITHOUT IT WOULD SPEND. Read off the outcome
+  // the refusal set, so this cannot name a figure the run would not in fact have bought.
+  const refused = result.figures.filter((f) => f.outcome === 'skipped-unbought');
+  if (refused.length) {
+    lines.push(...billableList('--stale never buys — a run WITHOUT --stale would buy', refused));
   }
 
   // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
