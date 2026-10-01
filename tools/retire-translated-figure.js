@@ -315,16 +315,22 @@ const PLAIN_NAME = /^[A-Za-z0-9._-]+$/;
 /**
  * Which published copies to delete, and why every other one is kept. Reads only.
  * A copy is deleted only when NO mapping row names it, NOTHING references it (spec D13), its name
- * is plain, and git tracks it unmodified.
+ * is plain, and git tracks it unmodified. The run is REFUSED, before any copy is judged, when the
+ * mapping cannot be read — a missing one included, whenever at least one published copy exists.
  */
 export function planPrune({ repoRoot, booksRoot, book, git = runGit, suffix = DEFAULT_SUFFIX }) {
   const bookDir = path.join(booksRoot, book);
   if (!fs.existsSync(bookDir)) return { refusals: [`no book directory at ${bookDir}`] };
-  const mediaDir = path.join(bookDir, 'media');
+  const bookRel = path.relative(repoRoot, bookDir);
+  const copies = publishedCopies(repoRoot, bookRel, suffix);
   let rows;
   try {
-    rows = readMappingOrRefuse(path.join(mediaDir, 'image-mapping.json'), {
-      allowMissing: !fs.existsSync(mediaDir),
+    // A translated copy reaches 05-publication only through a mapping row, so with any copy to judge a
+    // missing mapping is an inconsistent checkout, and reading it as "no rows" would make every copy
+    // look unmapped (and, once the pages are re-rendered, unreferenced too): refuse. With no copy there
+    // is nothing to judge, so the plan is simply empty. Settled before any deletion is considered.
+    rows = readMappingOrRefuse(path.join(bookDir, 'media', 'image-mapping.json'), {
+      allowMissing: copies.length === 0,
     });
   } catch (err) {
     return { refusals: [err.message] };
@@ -332,8 +338,6 @@ export function planPrune({ repoRoot, booksRoot, book, git = runGit, suffix = DE
   const mapped = new Set(
     rows.filter((r) => typeof r.outputName === 'string').map((r) => r.outputName)
   );
-  const bookRel = path.relative(repoRoot, bookDir);
-  const copies = publishedCopies(repoRoot, bookRel, suffix);
   const needles = new Set(copies.map((c) => referenceNeedle(path.basename(c))));
   const refs = findReferences({ repoRoot, bookRel, needles, suffix, git });
   const clean = cleanTrackedSet(repoRoot, copies, git);

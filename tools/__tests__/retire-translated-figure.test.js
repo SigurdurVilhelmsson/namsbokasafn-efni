@@ -581,13 +581,39 @@ describe('retire-translated-figure --prune (§C140 ㊵)', () => {
     expect(fx.snapshot()).toEqual(before);
   });
 
-  it('a book with no media/ folder has no mapping to consult, so nothing is mapped', () => {
+  it('refuses a book with a published copy but no media/ folder, rather than reading its mapping as empty', () => {
+    // A translated copy reaches 05-publication only through a mapping row, so a copy with no mapping at
+    // all is an inconsistent checkout. Had the pages been re-rendered as well, every copy would read
+    // unmapped AND unreferenced, and --apply would delete them all.
     const fx = makeGitFixture({ [`${PUB}/images/media/CNX_Old${S}.svg`]: '<svg/>' });
     expect(fx.exists('books/b/media')).toBe(false); // control: the premise holds
+    const before = fx.snapshot();
     const r = runTool(fx, ['--book', 'b', '--prune', '--apply']);
-    expect(r.code).toBe(0);
-    expect(fx.exists(`${PUB}/images/media/CNX_Old${S}.svg`)).toBe(false);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/image-mapping\.json cannot be read \(ENOENT\)/);
+    expect(fx.snapshot()).toEqual(before);
   });
+
+  it.each([
+    ['no media/ folder', {}],
+    ['a media/ folder but no mapping file', { 'books/b/media/CNX_Loose.svg': '<svg/>' }],
+  ])(
+    'a book with %s and no published copies still runs: there is nothing to judge',
+    (_state, extra) => {
+      const fx = makeGitFixture({
+        'books/b/03-translated/mt-preview/ch01/m1.cnxml': '<image src="../../media/CNX_A.jpg"/>',
+        ...extra,
+      });
+      expect(fx.exists('books/b/media/image-mapping.json')).toBe(false); // control: no mapping to read
+      const before = fx.snapshot();
+      const r = runTool(fx, ['--book', 'b', '--prune', '--apply']);
+      expect(r.code).toBe(0);
+      expect(r.out.split('\n')[0]).toBe(
+        '0 published translated copies: 0 to delete, 0 kept (0 still mapped).'
+      );
+      expect(fx.snapshot()).toEqual(before);
+    }
+  );
 
   it('refuses a book that does not exist, rather than reading its missing pages as "no copies"', () => {
     const fx = retiredAndRerendered();
@@ -614,6 +640,9 @@ describe('retire-translated-figure --prune (§C140 ㊵)', () => {
     );
     fs.mkdirSync(path.dirname(copy), { recursive: true });
     fs.writeFileSync(copy, '<svg/>');
+    // A readable mapping, so the run gets past the missing-mapping refusal and reaches the corpus scan.
+    fs.mkdirSync(path.join(outside, 'b', 'media'), { recursive: true });
+    fs.writeFileSync(path.join(outside, 'b', 'media', 'image-mapping.json'), '[]\n');
     // git refuses the escaping pathspec. An unreadable corpus must never read as an empty one:
     // then every unmapped copy would look unreferenced.
     expect(() =>
