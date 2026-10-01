@@ -187,9 +187,10 @@ with tempfile.TemporaryDirectory() as td:
     check('never resolves into Translated_IS', got, None)
 
 # ---------------------------------------------------------------------------
-# §C140 ⑦ — PRODUCTION PAGES ARE REFUSED, INSIDE AN EDITION, WITH A REASON
-# Measured 2026-09-16: exactly 2 of 910 resolved artworks sit at a standard paper size
-# (rvosmosis, N2O5 — both Letter), 0 others even at ±10 pt; the next largest is 468×576 pt.
+# §C140 ⑦ — PRODUCTION PAGES ARE SKIPPED, AND REFUSED ONLY WHEN AN EDITION HAS NOTHING ELSE
+# Measured 2026-09-16, before the per-candidate rule: exactly 2 of 910 resolved artworks sat at a
+# standard paper size (rvosmosis, N2O5 — both Letter), 0 others even at ±10 pt; the next largest is
+# 468×576 pt. Today only rvosmosis is refused: N2O5's .eps sibling resolves.
 # ---------------------------------------------------------------------------
 import pikepdf, struct
 import sources as S

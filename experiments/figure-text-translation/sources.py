@@ -25,11 +25,13 @@ def load_config():
     return json.loads((HERE / 'figure-text.config.json').read_text())
 
 
-# §C140 ⑦. A resolved artwork whose page box is a standard paper size, in either orientation, is a
-# production page — a placement or dialogue SHEET — not a figure. Measured 2026-09-16 over 910
-# resolved artworks: exactly 2 (rvosmosis, N2O5; both Letter), still 2 at ±10 pt; the next
-# largest is 468×576 pt. Aspect ratio, creator and embedded-raster size were measured and rejected
-# (evidence/2026-09-16-c7-explore/README.md).
+# §C140 ⑦. A candidate whose page box is a standard paper size, in either orientation, is a
+# production page — a placement or dialogue SHEET — not a figure: `resolve_detail` skips it for the
+# edition's next candidate, and refuses the figure only when every candidate in the edition is one.
+# Measured 2026-09-16, before that per-candidate rule, over 910 resolved artworks: exactly 2
+# (rvosmosis, N2O5; both Letter), still 2 at ±10 pt; the next largest is 468×576 pt. Today only
+# rvosmosis is refused: N2O5's .eps sibling resolves. Aspect ratio, creator and embedded-raster
+# size were measured and rejected (evidence/2026-09-16-c7-explore/README.md).
 # 🔴 THE TABLE LIVES IN figure-text.config.json (`paperSizes`, `paperTolerancePt`) AND ONLY THERE:
 # tools/figure-run.js reads the same keys to name a live translated copy whose viewBox is a whole
 # sheet, so a size written here as a literal would be a second copy free to drift from the first.

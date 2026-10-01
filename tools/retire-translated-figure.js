@@ -13,7 +13,10 @@
  *                     reports every page and CNXML file that still references the copy; run it
  *                     again later as a dry run, and once nothing references a figure it says so.
  *   --prune           after that re-render: deletes each published translated copy that no
- *                     mapping row names and nothing references.
+ *                     mapping row names and nothing references. A copy whose name is not plain
+ *                     (^[A-Za-z0-9._-]+$; a page could reference it URL-encoded) is kept, and the
+ *                     run REFUSES when a published copy exists but the book's mapping cannot be
+ *                     read — a missing media/ folder included.
  *
  * Both are DRY RUNS unless --apply is given. Every file deleted is one git tracks unmodified, so
  * git is the backup; a failure part-way restores the mapping and every file already deleted.

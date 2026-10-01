@@ -5,10 +5,10 @@
  *
  * Generate or update a book's image mapping from a directory of translated figure files.
  * The mapping (`media/image-mapping.json`) is the producer side of the image-localization
- * mechanism that `cnxml-inject.js` consumes (`loadImageMapping` / `resolveTranslatedImage`):
- * during injection each `<figure id>` whose id appears in the mapping has its `<image src>`
- * (and mime-type) swapped for the translated variant, which `cnxml-render.js` then publishes
- * from the book-level `media/` dir.
+ * mechanism that `cnxml-inject.js` consumes (`loadImageBasenameMap` / `applyImageBasenameSwaps`):
+ * during injection every `<image>` whose src basename equals an entry's `originalImage` has its
+ * `src` (and mime-type) swapped for the entry's `outputName`, which `cnxml-render.js` then
+ * publishes from the book-level `media/` dir.
  *
  * ⚠️ A figure listed in the figure config's `retiredFigures` (§C140 ㊵) is NEVER mapped: its
  * translated copy is named and skipped, so restoring the file cannot bring its row back.
@@ -20,12 +20,15 @@
  *      is the read-only OpenStax source). Name each one `<original-basename><suffix>.<ext>`,
  *      e.g. CNX_Chem_11_03_gasdissolv_IS.svg for the original CNX_Chem_11_03_gasdissolv.jpg.
  *   2. Run this tool to scan the source CNXML, match each translated file back to the
- *      figure that references its original image, and write the mapping.
+ *      <image> whose basename is its original, and write the mapping.
  *   3. Re-inject + re-render (CLI, or "Vista + Birta" per module) to publish the swap.
  *
- * The mapping is keyed on the *figure id*, because that is what injection swaps on —
- * a translated file whose original image is not inside a <figure> is reported as
- * unmatched (injection cannot place it).
+ * The mapping is keyed on the original image BASENAME (`originalImage`, no extension), not on
+ * a figure id: an entry carries no `figureId`, which keeps it out of the legacy figure-id
+ * loader (`loadImageMapping`). `indexSourceImageBasenames` indexes every <image src> in the
+ * scanned source CNXML whatever element encloses it (figure, example, exercise or standalone
+ * media), so a translated file is reported as unmatched when no <image> there has its original
+ * basename — it does not matter whether that image sits inside a <figure>.
  *
  * Usage:
  *   node tools/generate-image-mapping.js --book <slug> [options]

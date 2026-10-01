@@ -73,6 +73,28 @@ old `(path, edition)` signature for existing callers; `resolve_detail()` is the 
 reports a refusal, so a caller can tell "no artwork anywhere" apart from "the only artwork here is a
 production page". Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).
 
+**§C140 ㊵ — four rules decide what the resolver may return, checked in this order before the
+normal lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
+
+1. **`retiredFigures`** — a [USER] ruling retired the figure's *translated copy*: refused as
+   `retired`, and never mapped again. Carry a retirement out with
+   `node tools/retire-translated-figure.js --book <slug> --retire <names>` (row and translated copy),
+   then, after ②'s whole-book re-render, `--prune` (published copies nothing references). Both are dry
+   runs unless `--apply`.
+2. **`supersededArtwork`** — the only vector in the delivery is known to be superseded by the published
+   figure: refused as `superseded`. A figure may be in both 1 and 2; retired wins.
+3. **`artworkPins`** — the ONE file a figure's artwork comes from, as a tree key plus a path inside it.
+   An `alias` fills a hole in the delivery and is refused as `pin-conflict` once any file matches the
+   basename; an `override` deliberately replaces the normal lookup. A pin names an exact file, never a
+   tree or a stem: the base tree holds two different ibuprofen drawings, and a tree-only rule returns
+   the wrong one. A missing pinned file is `pin-missing`, never a fall-back.
+4. **The normal lookup** — editions in `editionPrecedence` order, formats in `SOURCE_EXTS` order, then a
+   case-and-punctuation fold (`_normkey`, which never strips `_img`), refusing an ambiguous fold.
+
+Every table's keys are matched after the same fold, and `tools/lib/figure-config-validate.js` (run by
+`npm test`) checks every entry. An entry lands in the commit that acts on it; **run that validator
+locally before a pin's buy**, because CI runs only after the money is spent.
+
 ## Where the translated file goes
 
 Nowhere in this directory. The repo already has the mechanism, and it predates this
@@ -80,6 +102,11 @@ experiment: put `<basename>_IS.<ext>` in `books/<slug>/media/`, run
 `node tools/generate-image-mapping.js --book <slug>`, then re-inject and re-render.
 `01-source/` is never touched and no `src` is hand-edited. See CLAUDE.md
 § *A translated figure is a file in `books/<slug>/media/`*.
+
+A figure listed in `retiredFigures` is never mapped: the generator names its translated copy and
+skips it, so restoring the file cannot bring its row back. Retire a figure with
+`tools/retire-translated-figure.js`, never by deleting its mapping row by hand — the generator
+re-adds any row whose translated copy is still in `media/`.
 
 ## EPS inputs
 
