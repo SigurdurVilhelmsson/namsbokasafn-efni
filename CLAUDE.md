@@ -395,6 +395,10 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
     decide whether CI can speak to the change at all. ⚠️ **This cuts both ways: it is also the
     argument for taking the in-range patch,** because the unvalidatable route is the one to avoid
     when a validated-by-construction one exists.
+    ✅ *Since 2026-09-30 (§C197, where 9 → 10 was forced) `server/__tests__/sendEmailSmtpSink.test.js`
+    drives the real `sendEmail` through a local SMTP sink, so a `nodemailer` bump IS validated by CI
+    now. The rule stands for every other lazy, config-gated dependency — and the sink is the pattern:
+    a protocol stub in-process, with a rejecting arm as the control.*
   - **⚠️ Check whether the EXISTING semver range already admits the fix before reaching for
     `overrides`.** If it does, `npm update <pkg>` re-resolves within it and the diff is three
     lines. An override is a permanent pin to maintain, and **an `overrides` pin can BECOME the
@@ -421,6 +425,12 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
     (root), `npm ci` (`server/`), then `npm audit --audit-level=high` in each. A failing log names
     only the tree it died in. Re-derive in both, and remember `--audit-level=high` hides everything
     below it.
+    - 🔴 **"RE-DERIVE IN BOTH" MEANS *RUN* `npm audit` IN BOTH, NOT *LOOK UP* THE ADVISORY THE LOG
+      NAMED IN THE OTHER LOCKFILE.** Measured 2026-09-30 (§C197): the log died on root's
+      `brace-expansion`; checking that one package in `server/package-lock.json` confirmed it there
+      too, and filed the item as a small two-tree fix. **Running the audit in `server/` found three
+      more — one high (`nodemailer`) that no in-range version cleared, forcing a major.** The failing
+      step hid them, and a lookup can only find what you already know to look for.
 - **Fresh-clone bootstrap:** the server builds its full SQLite schema from scratch on first start — `migrationRunner` creates `pipeline-output/sessions.db` and runs all migrations when the file is missing (fixed 2026-06-10; previously a fresh checkout silently skipped all migrations and write endpoints 500'd)
 
 **⚠️ DURABLE — resolve resource paths against something intrinsic, never `process.cwd()`.** Use `import.meta.url`/`__dirname` for files and `resolveDbPath()` for the DB. The server runs with **cwd=`server/`** (`cd server && npm start`), so a `books/`-relative path resolved against cwd silently points at the wrong tree — this shipped three times in `tools/lib` (`embed-mapping`, `book-rendering-config`, `parseArgs`; #213). Corollary: **run `npm test` from the repo root.**
