@@ -13,7 +13,8 @@
  * ⚠️ A figure listed in the figure config's `retiredFigures` (§C140 ㊵) is NEVER mapped: its
  * translated copy is named and skipped, so restoring the file cannot bring its row back.
  * Retire a figure with `tools/retire-translated-figure.js`, not by deleting its row: this tool
- * re-adds any row whose translated copy is still in `media/`.
+ * re-adds the row of any figure that is not in `retiredFigures` whose translated copy is still
+ * in `media/`.
  *
  * Workflow:
  *   1. Place translated figures in `books/<book>/media/` (NOT 01-source/media — that

@@ -89,8 +89,11 @@ A refusal: `{"path": null, "refused": "retired"|"pin-conflict"|"pin-missing"|"pi
    ch19 or ch21: prod still has the old mapping. After the first content-backup cron run that follows the deploy,
    re-run the census.
 5. **In ②:** its whole-book mt-preview re-inject and re-render puts the English figures back (no row means the
-   original image) and regenerates `index.json`. Then `--prune` as a dry run, then `--apply`; then the census:
-   `--retire <the 6>` re-run as a dry run reports, for each, no row, no translated copy and no reference.
+   original image) and regenerates `index.json`. Then `--prune` as a dry run, then `--apply`; then the census: no
+   reference to any of the 6 (or the 9 leftovers) remains. ✏️ *Amended 2026-10-01 during planning: the census is
+   `--retire <the 6>` re-run as a dry run, which reports for each no row, no translated copy and no reference; the 9
+   leftovers are confirmed by a second `--prune` dry run, which lists any copy it still keeps, and why, apart from the
+   copies a mapping row still names, which it only counts (D10).*
 6. Readers see it at the chemistry sync, which [USER] holds: after ② and the recomputed redirect rows, with efni on a
    clean, current `main` (vefur's sync reads the working tree), naming `efnafraedi-2e` (organic is still on vefur's
    allowlist, register §C190). The `/downloads/` PDFs keep the June figures until they are regenerated.

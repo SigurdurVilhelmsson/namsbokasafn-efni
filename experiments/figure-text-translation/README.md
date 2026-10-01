@@ -73,8 +73,8 @@ old `(path, edition)` signature for existing callers; `resolve_detail()` is the 
 reports a refusal, so a caller can tell "no artwork anywhere" apart from "the only artwork here is a
 production page". Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).
 
-**§C140 ㊵ — four rules decide what the resolver may return, checked in this order before the
-normal lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
+**§C140 ㊵ — four rules decide what the resolver may return, in this order; the fourth is the normal
+lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
 
 1. **`retiredFigures`** — a [USER] ruling retired the figure's *translated copy*: refused as
    `retired`, and never mapped again. Carry a retirement out with
@@ -89,11 +89,15 @@ normal lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-
    tree or a stem: the base tree holds two different ibuprofen drawings, and a tree-only rule returns
    the wrong one. A missing pinned file is `pin-missing`, never a fall-back.
 4. **The normal lookup** — editions in `editionPrecedence` order, formats in `SOURCE_EXTS` order, then a
-   case-and-punctuation fold (`_normkey`, which never strips `_img`), refusing an ambiguous fold.
+   case-and-punctuation fold (`_normkey`, which never strips `_img`). An ambiguous fold (two differently
+   named files in one edition folding onto the basename) yields no candidate from that edition: the
+   lookup moves on to the next edition, and if nothing resolves the figure is reported as not found, not
+   refused.
 
 Every table's keys are matched after the same fold, and `tools/lib/figure-config-validate.js` (run by
 `npm test`) checks every entry. An entry lands in the commit that acts on it; **run that validator
-locally before a pin's buy**, because CI runs only after the money is spent.
+locally before a pin's buy** (`npx vitest run tools/__tests__/figure-config-validate.test.js`), because
+CI runs only after the money is spent.
 
 ## Where the translated file goes
 
@@ -106,7 +110,8 @@ experiment: put `<basename>_IS.<ext>` in `books/<slug>/media/`, run
 A figure listed in `retiredFigures` is never mapped: the generator names its translated copy and
 skips it, so restoring the file cannot bring its row back. Retire a figure with
 `tools/retire-translated-figure.js`, never by deleting its mapping row by hand — the generator
-re-adds any row whose translated copy is still in `media/`.
+re-adds the row of any figure that is not in `retiredFigures` whose translated copy is still in
+`media/`.
 
 ## EPS inputs
 
