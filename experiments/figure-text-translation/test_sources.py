@@ -317,8 +317,13 @@ _sup = _cfg.get('supersededArtwork', {})
 check('supersededArtwork is a non-empty mapping', bool(_sup) and isinstance(_sup, dict), True)
 check('every superseded entry carries a substantive reason',
       sorted(k for k, v in _sup.items() if not (isinstance(v, str) and len(v.strip()) > 40)), [])
-check('the two verified entries are present',
-      sorted(_sup) == sorted(['CNX_Chem_19_01_BlastFurn', 'CNX_Chem_19_03_Pattern_img']), True)
+# §C140 ㊷ — PRESENCE, not equality: a verified entry must never be lost, and adding one must not
+# turn this red. The equality pin it replaces went red on 2026-09-19, when the two [USER]-confirmed
+# ch07 entries were added without touching it, and no CI job runs these suites, so nobody saw it.
+# A newly verified entry is added to this list.
+_VERIFIED = ['CNX_Chem_07_02_Morse', 'CNX_Chem_07_04_Ques11ans_img',
+             'CNX_Chem_19_01_BlastFurn', 'CNX_Chem_19_03_Pattern_img']
+check('every verified entry is present', sorted(k for k in _VERIFIED if k not in _sup), [])
 
 # §C140 ⑦ — the paper-size table has ONE owner, figure-text.config.json; tools/figure-run.js reads
 # the same keys. sources.py must be using the config's values, not a copy of them.
