@@ -1,9 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import {
   indexSourceImageBasenames,
+  indexBookSourceBasenames,
   deriveOriginalBasename,
   buildMappingEntries,
   mergeMapping,
@@ -113,5 +115,69 @@ describe('DEFAULT_SUFFIX', () => {
     expect(deriveOriginalBasename(`fig${DEFAULT_SUFFIX}.svg`, DEFAULT_SUFFIX)).toBe('fig');
     // and the lower-case form must NOT be accepted as equivalent
     expect(deriveOriginalBasename('fig_is.svg', DEFAULT_SUFFIX)).toBeNull();
+  });
+});
+
+// ─── indexBookSourceBasenames (§C140 ㊵) ──────────────────────────
+
+describe('indexBookSourceBasenames', () => {
+  // Each fixture tree is removed after its test, so a run leaves nothing behind in tmp.
+  const made = [];
+  const tmp = (prefix) => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), prefix));
+    made.push(dir);
+    return dir;
+  };
+  afterEach(() => {
+    for (const dir of made.splice(0)) fs.rmSync(dir, { recursive: true, force: true });
+  });
+
+  it('collects every image basename the book source references, whole book or one chapter', () => {
+    const root = tmp('genmap-index-');
+    const src = path.join(root, '01-source');
+    fs.mkdirSync(path.join(src, 'ch01'), { recursive: true });
+    fs.mkdirSync(path.join(src, 'ch02'), { recursive: true });
+    fs.writeFileSync(path.join(src, 'ch01', 'm1.cnxml'), '<image src="../../media/CNX_One.jpg"/>');
+    fs.writeFileSync(path.join(src, 'ch02', 'm2.cnxml'), '<image src="../../media/CNX_Two.png"/>');
+    expect([...indexBookSourceBasenames(root)].sort()).toEqual(['CNX_One', 'CNX_Two']);
+    expect([...indexBookSourceBasenames(root, 2)]).toEqual(['CNX_Two']);
+  });
+
+  it('is empty for a book with no source tree', () => {
+    expect(indexBookSourceBasenames(tmp('genmap-none-')).size).toBe(0);
+  });
+});
+
+// ─── buildMappingEntries — retired figures (§C140 ㊵) ─────────────
+
+describe('buildMappingEntries — retired figures', () => {
+  const S = DEFAULT_SUFFIX;
+  const set = new Set(['CNX_A', 'CNX_B']);
+  const files = [`CNX_A${S}.svg`, `CNX_B${S}.svg`];
+
+  it('never maps a retired figure, and names it as skipped rather than unmatched', () => {
+    const r = buildMappingEntries(files, set, S, { retired: new Set(['CNX_A']) });
+    expect(r.entries.map((e) => e.originalImage)).toEqual(['CNX_B']);
+    expect(r.skippedRetired).toEqual([`CNX_A${S}.svg`]);
+    expect(r.unmatched).toEqual([]);
+  });
+
+  it('names a retired figure as skipped even when its source image is not in the scanned set', () => {
+    // e.g. a --chapter run, whose basename set holds one chapter only
+    const r = buildMappingEntries([`CNX_Z${S}.svg`], set, S, { retired: new Set(['CNX_Z']) });
+    expect(r.skippedRetired).toEqual([`CNX_Z${S}.svg`]);
+    expect(r.unmatched).toEqual([]);
+  });
+
+  it('CONTROL: without a retired set both are mapped', () => {
+    expect(buildMappingEntries(files, set, S).entries.map((e) => e.originalImage)).toEqual([
+      'CNX_A',
+      'CNX_B',
+    ]);
+  });
+
+  it('matches a retired name EXACTLY, not by a fold', () => {
+    const r = buildMappingEntries(files, set, S, { retired: new Set(['cnx_a']) });
+    expect(r.entries.map((e) => e.originalImage)).toEqual(['CNX_A', 'CNX_B']);
   });
 });
