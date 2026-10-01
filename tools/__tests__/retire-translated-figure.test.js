@@ -255,6 +255,31 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     );
   });
 
+  it('still restores the deleted files when restoring the mapping fails too', () => {
+    const fx = standardBook();
+    const mapping = path.join(fx.booksRoot, 'b', 'media', 'image-mapping.json');
+    let calls = 0;
+    const unlink = (p) => {
+      calls += 1;
+      if (calls === 2) {
+        // The mapping is written through `<mapping>.<pid>.tmp` (writeAtomically). A directory of that
+        // name makes the NEXT write fail — the restore — and only it, the retire's own write being done.
+        fs.mkdirSync(`${mapping}.${process.pid}.tmp`);
+        throw Object.assign(new Error('EACCES: simulated'), { code: 'EACCES' });
+      }
+      fs.unlinkSync(p);
+    };
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A,CNX_B', '--apply'], {
+      retired: new Set(['CNX_A', 'CNX_B']),
+      unlink,
+    });
+    expect(r.code).toBe(1);
+    // Control: the mapping restore really did fail, so this is the double fault and not a clean rollback.
+    expect(r.err).toMatch(/RESTORE ALSO FAILED: EISDIR/);
+    // The failed mapping restore must not stop the files being restored: the copy deleted first is back.
+    expect(fx.exists(`books/b/media/CNX_A${S}.svg`)).toBe(true);
+  });
+
   it('a re-run finishes a half-done retire: the row is gone, the copy is not', () => {
     const fx = standardBook();
     fx.write(

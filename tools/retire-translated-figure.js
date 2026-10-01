@@ -216,13 +216,20 @@ export function applyRetire(plan, { repoRoot, git = runGit, unlink = fs.unlinkSy
     }
     return { ok: true, done };
   } catch (err) {
-    let restoreError;
+    // Each undo is attempted on its OWN: if restoring the mapping fails, the deleted files must
+    // still be restored — and the reverse — rather than the first failure ending the rollback.
+    const problems = [];
     try {
       if (mappingWritten && before !== null) writeAtomically(plan.mappingPath, before);
+    } catch (e) {
+      problems.push(e.message);
+    }
+    try {
       restoreFromHead(repoRoot, deleted, git);
     } catch (e) {
-      restoreError = e.message;
+      problems.push(e.message);
     }
+    const restoreError = problems.length ? problems.join('; ') : undefined;
     return { ok: false, done, error: err.message, restoreError };
   }
 }
