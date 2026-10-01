@@ -301,6 +301,14 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       /artwork of another figure, CNX_Other/,
     ],
     [
+      'a pin to a figure in another book',
+      (c) => {
+        pinOf(c).file = 'OSX/Figure_1.eps';
+      },
+      null,
+      /artwork of another figure, Figure_1/,
+    ],
+    [
       'a pin whose key only FOLDS onto a superseded key',
       (c) => {
         c.artworkPins = { 'cnx-sup': pinOf(c) };
@@ -315,6 +323,22 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       },
       null,
       /also in retiredFigures/,
+    ],
+    [
+      'two retiredFigures keys that fold together',
+      (c) => {
+        c.retiredFigures['CNX-Ret'] = R;
+      },
+      null,
+      /retiredFigures: CNX_Ret and CNX-Ret fold to the same key/,
+    ],
+    [
+      'two artworkPins keys that fold together',
+      (c) => {
+        c.artworkPins['CNX-Pin'] = { ...pinOf(c), file: 'OSX/A_second_file.eps' };
+      },
+      null,
+      /artworkPins: CNX_Pin and CNX-Pin fold to the same key/,
     ],
     [
       'a reason of exactly 40 characters',
@@ -333,12 +357,28 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       /over 40 characters/,
     ],
     [
+      'a retired figure with a short reason',
+      (c) => {
+        c.retiredFigures.CNX_Ret = 'short';
+      },
+      null,
+      /retiredFigures\.CNX_Ret needs a reason of over 40 characters/,
+    ],
+    [
       'two pins naming one file by an unnormalised path',
       (c) => {
         c.artworkPins.CNX_Other = { ...pinOf(c), file: 'OSX/./Figure 14_03_Pin.eps' };
       },
       null,
       /name the same file/,
+    ],
+    [
+      'a pin key that is no book’s image',
+      (c) => {
+        c.artworkPins.CNX_Typo = { ...pinOf(c), file: 'OSX/A_second_file.eps' };
+      },
+      null,
+      /artworkPins\.CNX_Typo names an image in 0 books/,
     ],
     [
       'a retired figure that is no book’s image, and so has no state',
