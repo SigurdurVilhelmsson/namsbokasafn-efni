@@ -159,6 +159,16 @@ describe('cleanTrackedSet — git is the backup a deletion relies on', () => {
     expect([...cleanTrackedSet(f.root, rels)]).toEqual(['books/b/media/clean.svg']);
   });
 
+  it('reads a modified file as modified when repoRoot is below the git top-level', () => {
+    // ls-files prints paths relative to the -C directory; diff --name-only prints them from the
+    // top-level unless given --relative. In two different bases a MODIFIED file never matched the
+    // dirty list and read as clean: the guard failing open. y is the control that returns.
+    const f = makeGitFixture({ 'sub/books/x.svg': 'x', 'sub/books/y.svg': 'y' });
+    f.write('sub/books/x.svg', 'edited');
+    const clean = cleanTrackedSet(path.join(f.root, 'sub'), ['books/x.svg', 'books/y.svg']);
+    expect([...clean]).toEqual(['books/y.svg']);
+  });
+
   it('is empty in a repository with no commits', () => {
     const f = makeGitFixture({ 'books/b/media/x.svg': 'x' });
     const fresh = makeTmpDir('c40-fresh-');

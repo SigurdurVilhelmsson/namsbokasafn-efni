@@ -170,15 +170,20 @@ export function publishedCopies(repoRoot, bookRel, suffix) {
  * The subset of `rels` that git tracks and that is unmodified against HEAD — staged or not.
  * Any other git outcome (untracked, ignored, modified, no commits, git missing) leaves a path out:
  * git is the backup a deletion relies on, so nothing git cannot restore is deleted.
+ * `rels` are relative to `repoRoot`, which need not be the git top-level.
  * @returns {Set<string>}
  */
 export function cleanTrackedSet(repoRoot, rels, git = runGit) {
   if (rels.length === 0) return new Set();
   const tracked = git(repoRoot, ['--literal-pathspecs', 'ls-files', '-z', '--', ...rels]);
+  // `--relative`: ls-files names paths from `repoRoot`, but diff names them from the git top-level
+  // unless told otherwise. Below the top-level the two bases never matched, so a MODIFIED file
+  // escaped `d` below and read as clean: the guard failing open. At the top-level it is a no-op.
   const dirty = git(repoRoot, [
     '--literal-pathspecs',
     'diff',
     '--name-only',
+    '--relative',
     '-z',
     'HEAD',
     '--',
