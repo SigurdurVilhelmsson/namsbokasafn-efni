@@ -12,7 +12,7 @@ which is why this precedence is code with a test, not a note in a README.
 Precedence comes from figure-text.config.json; local paths from sources.local.json.
 """
 import sys, json, re, struct
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import _deps
 from _deps import HERE
 
@@ -150,8 +150,126 @@ def _norm_index(root, exts, memo):
     return idx
 
 
+def _require_dir(key, root, basename):
+    """A CONFIGURED tree that is not a directory refuses the whole resolve — see resolve_detail.
+    SystemExit, not an exception: it is BaseException, so a per-figure `except Exception` in a
+    batch loop cannot swallow it into a skip."""
+    if not root.is_dir():
+        raise SystemExit(
+            f"Source tree {key!r} is configured for this book but is not a "
+            f"directory: {root}\n"
+            f"  Refusing to resolve {basename!r} — falling back to a lower-precedence "
+            f"tree would silently source superseded artwork.\n"
+            f"  Mount the tree, or remove {key!r} from sources.local.json if it is "
+            f"genuinely gone."
+        )
+
+
+# §C140 ㊵ — ARTWORK PINS (spec D3–D5). A pin names ONE file: a configured tree key plus a path
+# inside that tree. Never a stem, a pattern or a tree alone: the base tree holds two DIFFERENT
+# ibuprofen drawings, and a tree-only rule returns the .pdf (18.114) because SOURCE_EXTS puts .pdf
+# first, where [USER] approved the .eps (18.144, the published value).
+_PIN_KINDS = ('alias', 'override')
+
+
+def _pin_refusal(kind, reason, edition=None, candidates=None):
+    return {'path': None, 'refused': kind, 'edition': edition,
+            'candidates': candidates or [], 'reason': reason}
+
+
+def _pin_invalid(entry, trees, exts):
+    """-> why `entry` is malformed, or None. Fail closed per figure: a malformed pin is a typo,
+    not a run-wide fault. ⚠️ Two rules are NOT here and live in tools/lib/figure-config-validate.js:
+    a pinned stem must not end in the translated suffix (its owner is the JS constant, which this
+    file must not restate), and a pinned file must not be another figure's artwork (that needs the
+    CNXML corpus)."""
+    if not isinstance(entry, dict):
+        return f'the entry is a {type(entry).__name__}, not an object'
+    for field in ('kind', 'edition', 'file', 'reason'):
+        value = entry.get(field)
+        if not isinstance(value, str) or not value.strip():
+            return f'{field!r} must be a non-empty string, got {value!r}'
+    if entry['kind'] not in _PIN_KINDS:
+        return f"kind {entry['kind']!r} is not one of {', '.join(_PIN_KINDS)}"
+    if not trees.get(entry['edition']):
+        return f"edition {entry['edition']!r} is not configured for this book"
+    file = entry['file']
+    parts = PurePosixPath(file).parts
+    if (file.startswith('/') or '\\' in file or re.match(r'[A-Za-z]:', file)
+            or not parts or '..' in parts):
+        return f'file {file!r} is not a relative path inside its tree'
+    if _OWN_OUTPUT_DIRS.intersection(parts):
+        return f'file {file!r} is inside our own translated output'
+    if PurePosixPath(file).suffix.lower() not in exts:
+        return f"file {file!r} is not one of the source formats {', '.join(exts)}"
+    return None
+
+
+def _files_under(basename, trees, precedence, exts, memo):
+    """-> every delivery file, in any configured tree, named exactly as the basename or folding
+    onto it — INCLUDING an ambiguous fold, which the normal lookup declines and reports as None,
+    the same value as a hole. An alias is valid only while this is empty."""
+    found = {}
+    for key in precedence:
+        root = trees.get(key)
+        if not root:
+            continue
+        root = Path(root).expanduser()
+        _require_dir(key, root, basename)
+        for ext in exts:
+            for p in root.rglob(basename + ext):
+                if not _OWN_OUTPUT_DIRS.intersection(p.parts):
+                    found[str(p)] = p
+        for p in _norm_index(root, exts, memo).get(_normkey(basename), []):
+            found[str(p)] = p
+    return list(found.values())
+
+
+def _resolve_pin(basename, entry, trees, precedence, exts, memo, size_of, pins):
+    """-> a pinned hit, or a refusal. Never None, and never the normal lookup's answer."""
+    bad = _pin_invalid(entry, trees, exts)
+    if bad:
+        return _pin_refusal('pin-invalid', f'artworkPins[{basename!r}] is malformed: {bad}')
+    edition, file = entry['edition'], entry['file']
+    root = Path(trees[edition]).expanduser()
+    _require_dir(edition, root, basename)
+    path = root / file
+    target = PurePosixPath(file).as_posix()
+    twins = sorted(k for k, e in pins.items()
+                   if _normkey(k) != _normkey(basename) and isinstance(e, dict)
+                   and e.get('edition') == edition and isinstance(e.get('file'), str)
+                   and PurePosixPath(e['file']).as_posix() == target)
+    if twins:
+        return _pin_refusal('pin-conflict',
+                            f"{edition}:{target} is also pinned for {', '.join(twins)} — "
+                            f"one file cannot be the artwork of two figures",
+                            edition, [{'path': str(path)}])
+    if not path.is_file():
+        return _pin_refusal('pin-missing',
+                            f'the pinned file {edition}:{target} does not exist; a pin never '
+                            f'falls back to the normal lookup', edition, [{'path': str(path)}])
+    if entry['kind'] == 'alias':
+        found = _files_under(basename, trees, precedence, exts, memo)
+        if found:
+            return _pin_refusal('pin-conflict',
+                                f"the delivery now has a file under {basename!r} "
+                                f"({', '.join(str(p) for p in found)}); the alias was for a "
+                                f"hole — re-rule it", edition, [{'path': str(p)} for p in found])
+    size = size_of(path)
+    paper = paper_size_name(size)
+    if paper:
+        return {'path': None, 'refused': 'production-page', 'edition': edition,
+                'candidates': [{'path': str(path), 'page': [size[0], size[1]], 'paper': paper}],
+                'reason': f'the pinned file in {edition!r} is a {paper}-size page — a production '
+                          f'sheet, not a figure'}
+    hit = {'path': str(path), 'edition': edition, 'via': entry['kind']}
+    if size is None:
+        hit['pageUnknown'] = True
+    return hit
+
+
 def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-                   size_of=page_size, *, retired=None):
+                   size_of=page_size, *, retired=None, pins=None):
     """-> {'path', 'edition'[, 'pageUnknown']} | None (a hole) | a refusal dict (see below).
 
     Precedence is over EDITIONS first, then over formats within an edition: a 2nd-edition EPS
@@ -160,6 +278,9 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
     Checked BEFORE any lookup, in this order (§C140 ㊵): `retired` (a ruling retired the
     figure's TRANSLATED COPY), then `superseded` (its only vector is known to be superseded).
+    Then a pin, if the figure has one in `pins` (§C140 ㊵): its one exact file, or a refusal —
+    never the normal lookup's answer. A pinned hit carries 'via': 'alias'|'override', and a pin
+    refusal is 'pin-conflict'|'pin-missing'|'pin-invalid'.
 
     A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page', 'edition',
     'candidates': [{'path', 'page', 'paper'}], 'reason'}.
@@ -195,6 +316,15 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
             return {'path': None, 'refused': 'superseded', 'edition': None,
                     'candidates': [], 'reason': reason}
 
+    # 🔴 §C140 ㊵ — AN ARTWORK PIN IS CHECKED AFTER `retired` AND `superseded`, so a pin can never
+    # bring back a figure either table refuses.
+    if pins:
+        folded_pins = {_normkey(k): v for k, v in pins.items()}
+        pin_key = _normkey(basename)
+        if pin_key in folded_pins:
+            return _resolve_pin(basename, folded_pins[pin_key], trees, precedence, exts,
+                                {} if _memo is None else _memo, size_of, pins)
+
     for key in precedence:
         root = trees.get(key)
         if not root:
@@ -202,22 +332,14 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
             # still resolve, so this one falls through — unlike the case below.
             continue
         root = Path(root).expanduser()
-        if not root.is_dir():
-            # CONFIGURED but ABSENT. Falling through here is the exact failure this
-            # module exists to prevent: with 'updates-2e' unmounted every figure
-            # silently resolves to its superseded 1st-edition artwork, and the output
-            # is a correct-looking translation of the wrong picture. Nothing downstream
-            # can see it — the file resolves, reads, composes and publishes.
-            # SystemExit, not a caught exception: it is BaseException, so a per-figure
-            # `except Exception` in a batch loop cannot swallow it into a skip.
-            raise SystemExit(
-                f"Source tree {key!r} is configured for this book but is not a "
-                f"directory: {root}\n"
-                f"  Refusing to resolve {basename!r} — falling back to a lower-precedence "
-                f"tree would silently source superseded artwork.\n"
-                f"  Mount the tree, or remove {key!r} from sources.local.json if it is "
-                f"genuinely gone."
-            )
+        # CONFIGURED but ABSENT. Falling through here is the exact failure this
+        # module exists to prevent: with 'updates-2e' unmounted every figure
+        # silently resolves to its superseded 1st-edition artwork, and the output
+        # is a correct-looking translation of the wrong picture. Nothing downstream
+        # can see it — the file resolves, reads, composes and publishes.
+        # SystemExit, not a caught exception: it is BaseException, so a per-figure
+        # `except Exception` in a batch loop cannot swallow it into a skip.
+        _require_dir(key, root, basename)
 
         def candidates():
             found = False
@@ -267,17 +389,18 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
 
 def resolve(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-            size_of=page_size, *, retired=None):
+            size_of=page_size, *, retired=None, pins=None):
     """-> (Path, edition_key) for the authoritative source, or (None, None) for a hole or a
     refusal. `resolve_detail` says which."""
     d = resolve_detail(basename, trees, precedence, exts, superseded=superseded, _memo=_memo,
-                       size_of=size_of, retired=retired)
+                       size_of=size_of, retired=retired, pins=pins)
     if d and d.get('path'):
         return Path(d['path']), d['edition']
     return None, None
 
 
-def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, *, retired=None):
+def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, *, retired=None,
+                   pins=None):
     """-> {name: resolve_detail(...)} — a hit, `None` for a hole, or a refusal dict.
 
     The JSON half of this tool's CLI, kept as a pure function so it can be tested against
@@ -294,11 +417,11 @@ def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, 
     memo = {}  # call-scoped: each tree indexed once for the whole batch
     for n in names:
         out[n] = resolve_detail(n, trees, precedence, exts, superseded=superseded, _memo=memo,
-                                retired=retired)
+                                retired=retired, pins=pins)
     return out
 
 
-def human_report(names, trees, precedence, superseded=None, *, retired=None):
+def human_report(names, trees, precedence, superseded=None, *, retired=None, pins=None):
     """-> (lines, missing, refused) — the operator-facing half of this tool's CLI.
 
     🔴 A REFUSAL IS NOT "NOT FOUND" (§C140 ⑦). The file is in the delivery and was declined, and
@@ -307,11 +430,13 @@ def human_report(names, trees, precedence, superseded=None, *, retired=None):
     corrects in the driver, so the two are printed and counted apart.
     """
     lines, missing, refused = [], 0, 0
-    report = resolve_report(names, trees, precedence, superseded=superseded, retired=retired)
+    report = resolve_report(names, trees, precedence, superseded=superseded, retired=retired,
+                            pins=pins)
     for n in names:
         d = report[n]
         if d and d.get('path'):
-            lines.append(f"  {d['edition']:14} {n:36} {d['path']}")
+            via = f"  (pinned: {d['via']})" if d.get('via') else ''
+            lines.append(f"  {d['edition']:14} {n:36} {d['path']}{via}")
         elif d and d.get('refused'):
             refused += 1
             lines.append(f"  {'REFUSED':14} {n:36} REFUSED — {d['refused']}: {d['reason']}")
@@ -337,7 +462,8 @@ def policy(cfg):
     above it. The ONE place a command-line path reads them (§C140 ㊵): a second copy is how one
     mode comes to miss a table."""
     return {'superseded': cfg.get('supersededArtwork'),
-            'retired': cfg.get('retiredFigures')}
+            'retired': cfg.get('retiredFigures'),
+            'pins': cfg.get('artworkPins')}
 
 
 def run_cli(argv, cfg=None, out=print):

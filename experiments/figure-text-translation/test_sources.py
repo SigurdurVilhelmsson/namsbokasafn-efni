@@ -359,7 +359,8 @@ with tempfile.TemporaryDirectory() as td:
     cfg = {'editionPrecedence': prec, 'sourceTreesFile': str(local),
            'supersededArtwork': {}, 'retiredFigures': R}
     check('㊵ policy() takes its tables from the config',
-          S.policy({'supersededArtwork': 1, 'retiredFigures': 2}), {'superseded': 1, 'retired': 2})
+          S.policy({'supersededArtwork': 1, 'retiredFigures': 2, 'artworkPins': 3}),
+          {'superseded': 1, 'retired': 2, 'pins': 3})
     out = []
     rc = S.run_cli(['--json', 'testbook', 'CNX_Ret', 'CNX_Other'], cfg=cfg, out=out.append)
     rep = json.loads(out[0])
@@ -393,6 +394,146 @@ _NORMKEY_CASES = [
 ]
 check('㊵ _normkey matches the case table the JS normkey is pinned to',
       [S._normkey(a) for a, _ in _NORMKEY_CASES], [b for _, b in _NORMKEY_CASES])
+
+# ---------------------------------------------------------------------------
+# §C140 ㊵ — ARTWORK PINS: one exact file, alias or override, failing closed.
+# ---------------------------------------------------------------------------
+PIN_REASON = 'a pin reason that is long enough to be a real reason (test)'
+
+
+def pin(kind, edition, file, reason=PIN_REASON):
+    return {'kind': kind, 'edition': edition, 'file': file, 'reason': reason}
+
+
+with tempfile.TemporaryDirectory() as td:
+    td = Path(td)
+    old, new = td / 'first-edition', td / 'updates-2e'
+    (old / 'Ch_03').mkdir(parents=True); (new / 'OSX').mkdir(parents=True)
+    trees = {'first-edition': str(old), 'updates-2e': str(new)}
+    prec = ['updates-2e', 'first-edition']
+
+    make_eps(new / 'OSX' / 'Figure 14_03_ICE.eps', 351, 95)     # an alias target, with a space
+    make_pdf(old / 'Ch_03' / 'CNX_Ibu.pdf', 432, 115)           # the base tree's OTHER drawing
+    make_eps(old / 'Ch_03' / 'CNX_Ibu.eps', 451, 126)           # the drawing [USER] approved
+    make_eps(new / 'CNX_Ibu.eps', 430, 114)                     # what the normal lookup returns
+    make_eps(new / 'CNX_ice2.eps', 300, 200)                    # folds onto CNX_ICE2
+    make_eps(old / 'Cnx_Amb.eps', 300, 200)                     # two stems folding onto one key,
+    make_eps(old / 'cnx-amb.eps', 300, 200)                     #   neither exact: the lookup declines both
+    make_pdf(new / 'OSX' / 'Sheet.pdf', 612, 792)               # a Letter production page
+    (new / 'OSX' / 'Junk.pdf').write_bytes(b'not a pdf')        # a size nobody can read
+    make_eps(new / 'OSX' / 'Shared.eps', 300, 200)
+
+    P = {'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')}
+    d = resolve_detail('CNX_ICE', trees, prec, pins=P)
+    check('㊵ an alias resolves to its exact file, space included, marked via alias',
+          (Path(d['path']).name, d['edition'], d['via']),
+          ('Figure 14_03_ICE.eps', 'updates-2e', 'alias'))
+    check('㊵ CONTROL: without the pin the basename is a hole',
+          resolve_detail('CNX_ICE', trees, prec), None)
+
+    d = resolve_detail('CNX_ICE2', trees, prec,
+                       pins={'CNX_ICE2': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')})
+    check('㊵ an alias is refused as pin-conflict once a file folds onto its basename, naming it',
+          (d['refused'], [Path(c['path']).name for c in d['candidates']]),
+          ('pin-conflict', ['CNX_ice2.eps']))
+    check('㊵ CONTROL: that file is what the normal lookup finds',
+          Path(resolve_detail('CNX_ICE2', trees, prec)['path']).name, 'CNX_ice2.eps')
+    d = resolve_detail('CNX_Amb', trees, prec,
+                       pins={'CNX_Amb': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')})
+    check('㊵ an AMBIGUOUS fold is a conflict too, though the normal lookup returns None for it',
+          (d['refused'], sorted(Path(c['path']).name for c in d['candidates'])),
+          ('pin-conflict', ['Cnx_Amb.eps', 'cnx-amb.eps']))
+    check('㊵ CONTROL: the normal lookup does return None for the ambiguous fold',
+          resolve_detail('CNX_Amb', trees, prec), None)
+
+    O = {'CNX_Ibu': pin('override', 'first-edition', 'Ch_03/CNX_Ibu.eps')}
+    d = resolve_detail('CNX_Ibu', trees, prec, pins=O)
+    check('㊵ an override returns its exact file, over edition AND format precedence',
+          (Path(d['path']).relative_to(old).as_posix(), d['edition'], d['via']),
+          ('Ch_03/CNX_Ibu.eps', 'first-edition', 'override'))
+    d = resolve_detail('CNX_Ibu', trees, prec)
+    check('㊵ CONTROL: without the pin the normal lookup returns the updates-2e file',
+          (Path(d['path']).name, d['edition']), ('CNX_Ibu.eps', 'updates-2e'))
+    check('㊵ CONTROL: a tree-only rule would pick the .pdf, the other drawing',
+          Path(resolve_detail('CNX_Ibu', {'first-edition': str(old)}, ['first-edition'])['path']).name,
+          'CNX_Ibu.pdf')
+
+    d = resolve_detail('CNX_Ibu', trees, prec,
+                       pins={'CNX_Ibu': pin('override', 'first-edition', 'Ch_03/Nope.eps')})
+    check('㊵ a missing pinned file is refused as pin-missing, never a fall-back',
+          (d['path'], d['refused']), (None, 'pin-missing'))
+
+    for label, entry in [
+        ('not an object', 'OSX/Figure 14_03_ICE.eps'),
+        ('an unknown kind', pin('alias2', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')),
+        ('an unconfigured edition', pin('alias', 'nowhere', 'OSX/Figure 14_03_ICE.eps')),
+        ('a .. segment', pin('alias', 'updates-2e', '../escape.eps')),
+        ('an absolute path', pin('alias', 'updates-2e', str(new / 'OSX' / 'Figure 14_03_ICE.eps'))),
+        ('an empty file', pin('alias', 'updates-2e', '')),
+        ('the tree root', pin('alias', 'updates-2e', '.')),
+        ('our own output dir', pin('alias', 'updates-2e', 'Translated_IS/CNX_X.eps')),
+        ('a format we cannot read', pin('alias', 'updates-2e', 'OSX/notes.txt')),
+        ('no reason', {'kind': 'alias', 'edition': 'updates-2e', 'file': 'OSX/Figure 14_03_ICE.eps'}),
+        ('a non-string file', pin('alias', 'updates-2e', 5)),
+    ]:
+        d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': entry})
+        check(f'㊵ a pin with {label} is refused as pin-invalid', (d['path'], d['refused']),
+              (None, 'pin-invalid'))
+
+    TWINS = {'CNX_P1': pin('alias', 'updates-2e', 'OSX/Shared.eps'),
+             'CNX_P2': pin('alias', 'updates-2e', 'OSX/./Shared.eps')}
+    check('㊵ two pins naming one file are BOTH refused as pin-conflict',
+          [resolve_detail(n, trees, prec, pins=TWINS)['refused'] for n in ('CNX_P1', 'CNX_P2')],
+          ['pin-conflict', 'pin-conflict'])
+    check('㊵ CONTROL: either pin alone resolves',
+          Path(resolve_detail('CNX_P1', trees, prec, pins={'CNX_P1': TWINS['CNX_P1']})['path']).name,
+          'Shared.eps')
+
+    d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Sheet.pdf')})
+    check('㊵ a pinned Letter page is refused as a production page, with its size',
+          (d['refused'], d['candidates'][0]['paper'], d['candidates'][0]['page']),
+          ('production-page', 'Letter', [612.0, 792.0]))
+    d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Junk.pdf')})
+    check('㊵ a pinned file whose size cannot be read resolves and is FLAGGED',
+          (Path(d['path']).name, d.get('pageUnknown')), ('Junk.pdf', True))
+
+    check('㊵ a pin cannot bring back a RETIRED figure',
+          resolve_detail('CNX_ICE', trees, prec, pins=P, retired={'CNX_ICE': PIN_REASON})['refused'],
+          'retired')
+    check('㊵ a pin cannot bring back a SUPERSEDED figure',
+          resolve_detail('CNX_ICE', trees, prec, pins=P, superseded={'CNX_ICE': PIN_REASON})['refused'],
+          'superseded')
+    check('㊵ pin keys fold like the lookup', resolve_detail('cnx-ice', trees, prec, pins=P)['via'], 'alias')
+
+    absent = {'updates-2e': str(td / 'not-mounted'), 'first-edition': str(old)}
+    try:
+        resolve_detail('CNX_ICE', absent, prec, pins=P)
+        raised = 'returned'
+    except SystemExit as exc:
+        raised = str(exc)
+    check('㊵ a pin into a configured tree that is not mounted raises, as the lookup does',
+          raised.startswith("Source tree 'updates-2e' is configured"), True)
+
+    H = {'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps'),
+         'CNX_ICE2': pin('alias', 'updates-2e', 'OSX/Shared.eps'),
+         'CNX_Ibu': pin('override', 'first-edition', 'Ch_03/Nope.eps'),
+         'CNX_Bad': pin('nope', 'updates-2e', 'OSX/Other.eps')}
+    lines, missing, refused = human_report(['CNX_ICE', 'CNX_ICE2', 'CNX_Ibu', 'CNX_Bad'], trees, prec, pins=H)
+    text = '\n'.join(lines)
+    check('㊵ the human report prints a pinned hit with its kind',
+          any(l.rstrip().endswith('Figure 14_03_ICE.eps  (pinned: alias)') for l in lines), True)
+    check('㊵ the human report prints every new refusal kind, and counts them as refused',
+          (all(f'REFUSED — {k}' in text for k in ('pin-conflict', 'pin-missing', 'pin-invalid')),
+           missing, refused), (True, 0, 3))
+    check('㊵ a candidate with no page size is printed as its path alone',
+          any(l.rstrip().endswith('Nope.eps') for l in lines), True)
+
+    local = td / 'sources.local.json'
+    local.write_text(json.dumps({'testbook': trees}))
+    out = []
+    S.run_cli(['--json', 'testbook', 'CNX_ICE'], out=out.append,
+              cfg={'editionPrecedence': prec, 'sourceTreesFile': str(local), 'artworkPins': P})
+    check('㊵ run_cli --json applies artworkPins', json.loads(out[0])['CNX_ICE']['via'], 'alias')
 
 
 # ---------------------------------------------------------------------------
