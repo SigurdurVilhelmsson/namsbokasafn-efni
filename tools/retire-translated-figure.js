@@ -36,6 +36,8 @@ import {
   runGit,
   readMappingOrRefuse,
   topLevelTranslatedCopies,
+  publishedCopies,
+  referenceNeedle,
   findReferences,
   cleanTrackedSet,
   locate,
@@ -307,9 +309,113 @@ function runRetire(args, { repoRoot, booksRoot, git, retired, unlink, out, err }
   return 0;
 }
 
-function runPrune(_args, { err }) {
-  err('--prune is not built yet (§C140 ㊵ Task 9)');
-  return 1;
+/** A name a page can reference only in plain form; any other name might be URL-encoded there. */
+const PLAIN_NAME = /^[A-Za-z0-9._-]+$/;
+
+/**
+ * Which published copies to delete, and why every other one is kept. Reads only.
+ * A copy is deleted only when NO mapping row names it, NOTHING references it (spec D13), its name
+ * is plain, and git tracks it unmodified.
+ */
+export function planPrune({ repoRoot, booksRoot, book, git = runGit, suffix = DEFAULT_SUFFIX }) {
+  const bookDir = path.join(booksRoot, book);
+  if (!fs.existsSync(bookDir)) return { refusals: [`no book directory at ${bookDir}`] };
+  const mediaDir = path.join(bookDir, 'media');
+  let rows;
+  try {
+    rows = readMappingOrRefuse(path.join(mediaDir, 'image-mapping.json'), {
+      allowMissing: !fs.existsSync(mediaDir),
+    });
+  } catch (err) {
+    return { refusals: [err.message] };
+  }
+  const mapped = new Set(
+    rows.filter((r) => typeof r.outputName === 'string').map((r) => r.outputName)
+  );
+  const bookRel = path.relative(repoRoot, bookDir);
+  const copies = publishedCopies(repoRoot, bookRel, suffix);
+  const needles = new Set(copies.map((c) => referenceNeedle(path.basename(c))));
+  const refs = findReferences({ repoRoot, bookRel, needles, suffix, git });
+  const clean = cleanTrackedSet(repoRoot, copies, git);
+  const del = [];
+  const keep = [];
+  for (const rel of copies) {
+    const name = path.basename(rel);
+    const by = refs.get(referenceNeedle(name)) || [];
+    if (mapped.has(name)) {
+      keep.push({ rel, kind: 'mapped', why: 'a mapping row still names it' });
+    } else if (by.length) {
+      keep.push({
+        rel,
+        kind: 'referenced',
+        why: `still referenced by ${by[0]}${by.length > 1 ? ` and ${by.length - 1} more` : ''}`,
+      });
+    } else if (!PLAIN_NAME.test(name)) {
+      keep.push({
+        rel,
+        kind: 'encoded',
+        why: 'its name could be URL-encoded where a page references it — check by hand',
+      });
+    } else if (!clean.has(rel)) {
+      keep.push({
+        rel,
+        kind: 'git',
+        why: 'not tracked by git, or modified — git is the backup a deletion relies on',
+      });
+    } else {
+      del.push(rel);
+    }
+  }
+  return { refusals: [], del, keep };
+}
+
+/** Delete the planned copies. On any failure, restore every copy already deleted. */
+export function applyPrune(plan, { repoRoot, git = runGit, unlink = fs.unlinkSync }) {
+  const deleted = [];
+  try {
+    for (const rel of plan.del) {
+      unlink(path.join(repoRoot, rel));
+      deleted.push(rel);
+    }
+    return { ok: true, done: deleted.map((r) => `deleted ${r}`) };
+  } catch (err) {
+    let restoreError;
+    try {
+      restoreFromHead(repoRoot, deleted, git);
+    } catch (e) {
+      restoreError = e.message;
+    }
+    return {
+      ok: false,
+      done: deleted.map((r) => `deleted ${r}`),
+      error: err.message,
+      restoreError,
+    };
+  }
+}
+
+function runPrune(args, { repoRoot, booksRoot, git, unlink, out, err }) {
+  const plan = planPrune({ repoRoot, booksRoot, book: args.book, git });
+  if (plan.refusals.length) {
+    err('REFUSED — nothing was deleted:');
+    for (const r of plan.refusals) err(`  ${r}`);
+    return 1;
+  }
+  const mappedCount = plan.keep.filter((k) => k.kind === 'mapped').length;
+  out(
+    `${plan.del.length + plan.keep.length} published translated copies: ${plan.del.length} to delete, ` +
+      `${plan.keep.length} kept (${mappedCount} still mapped).`
+  );
+  for (const k of plan.keep) if (k.kind !== 'mapped') out(`  keep ${k.rel} — ${k.why}`);
+  for (const rel of plan.del) out(`  ${args.apply ? 'delete' : 'would delete'} ${rel}`);
+  if (!args.apply) {
+    out('\nDry run — nothing was deleted. Add --apply to prune.');
+    return 0;
+  }
+  const result = applyPrune(plan, { repoRoot, git, unlink });
+  if (!result.ok) return failed(result, err, 'every file already deleted was');
+  out(`\nDone: ${result.done.length} deleted.`);
+  return 0;
 }
 
 /**
