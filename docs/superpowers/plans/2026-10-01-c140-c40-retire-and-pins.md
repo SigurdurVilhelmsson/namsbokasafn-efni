@@ -3034,7 +3034,7 @@ In `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`:
 
 (b) In D13's decision cell, replace `raster and font files skipped.` with:
 
-`raster and font files skipped, and the translated copies themselves skipped. ✏️ *Amended 2026-10-01 during planning: measured, the copies are 821 MB of the 879 MB corpus, and 0 of 1,471 translated SVGs reference any external file (every `href`/`src`/`url(` is a `data:` URI or a `#` fragment), so scanning them costs about 2,000× the time and can find nothing. If the composer ever writes an external reference into a figure, revisit this.*`
+`raster and font files skipped, and the translated copies themselves skipped. ✏️ *Amended 2026-10-01 during planning: measured, the copies are 821 MB of the 879 MB corpus, and 0 of 1,471 translated SVGs reference any external file (every `href`/`src`/`url(` is a `data:` URI or a `#` fragment), so scanning them costs about 10× the time (re-measured 2026-10-01, during implementation, on the dev box: 0.2 s without them, 1.5–3 s with them) and can find nothing. If the composer ever writes an external reference into a figure, revisit this.*`
 
 (c) In D10's decision cell, replace `Everything kept is listed with its reason.` with `Everything kept is listed with its reason, except the copies a mapping row still names, which are reported as a count. ✏️ *Amended 2026-10-01 during planning: listing them would print about 745 lines for chemistry.*`
 
