@@ -21,11 +21,13 @@
 - **The retire tool:** strict flags (unknown → exit 2), a dry run unless `--apply`, exit codes `0` done · `1` refused or failed-and-restored · `2` usage, `process.exitCode` (never `process.exit` after output).
 - **MIT boundary:** nothing new under `tools/` imports from `server/`.
 - **The literal `01-source` must not appear in `tools/retire-translated-figure.js`** (`tools/__tests__/source-write-guard.test.js` flags any top-level tool whose text contains it). Reach the source CNXML through `indexBookSourceBasenames` (Task 5).
-- **Two refinements made during planning, applied to the spec in Task 10:**
+- **Three refinements made during planning, applied to the spec in Task 10:**
   - **D13:** translated copies are not scanned for references. Measured 2026-10-01: they are 821 MB of the 879 MB corpus, and 0 of 1,471 translated SVGs reference any external file (every `href`/`src`/`url(` is a `data:` URI or a `#` fragment). Without them the scan takes about 0.4 s.
+  - **D10:** `--prune` lists every kept copy whose reason is not "a mapping row still names it", and reports the mapped ones as a count. Listing all of them would print about 745 lines for chemistry.
   - **D11:** the validator checks that a retired figure has **no row and no translated copy** (what `--retire` removes). Published copies and references legitimately remain until ②. After the prune, `--retire` re-run as a dry run is the census: its report says whether anything still references each figure.
 - **Python tests:** `cd experiments/figure-text-translation && FIGTEXT_PYLIBS=./pylibs python3 -u test_sources.py`. Expected tail: `ALL PASS`. No CI job runs it, so run it by hand.
 - **Shell traps on this box:** `grep` is ugrep (use `grep -a`); `find` is bfs; `jq` is not installed. Run `git status --porcelain` after any agent finishes.
+- **Fixtures that contain an `01-source` directory are built with `fs` in test code, never with a shell redirect.** The project's `guard-01-source.mjs` hook refuses any Bash command that redirects into a path containing `01-source`, scratch paths included. The refusal looks like a permissions problem; it is the licence guard working as designed. Never work around it.
 - **JS formatting:** the pre-commit hook (lint-staged) runs `eslint --fix` and `prettier --write` on staged `tools/**/*.js`. Long lines in this plan's code are reflowed at commit. If eslint rejects a commit, fix the reported line and commit again, never with `--no-verify`.
 - **Commits** end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
@@ -3034,7 +3036,9 @@ In `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`:
 
 `raster and font files skipped, and the translated copies themselves skipped. ✏️ *Amended 2026-10-01 during planning: measured, the copies are 821 MB of the 879 MB corpus, and 0 of 1,471 translated SVGs reference any external file (every `href`/`src`/`url(` is a `data:` URI or a `#` fragment), so scanning them costs about 2,000× the time and can find nothing. If the composer ever writes an external reference into a figure, revisit this.*`
 
-(c) In § Run order, step 3 of the retires, replace `the validator passes; rows and translated copies still match one-to-one.` with `the validator passes (no row and no translated copy for any of the 7); rows and translated copies still match one-to-one.`, and in step 5 replace `then the census: no reference to any of the 6 (or the 9 leftovers) remains.` with `then the census: `--retire <the 6>` re-run as a dry run reports, for each, no row, no translated copy and no reference.`
+(c) In D10's decision cell, replace `Everything kept is listed with its reason.` with `Everything kept is listed with its reason, except the copies a mapping row still names, which are reported as a count. ✏️ *Amended 2026-10-01 during planning: listing them would print about 745 lines for chemistry.*`
+
+(d) In § Run order, step 3 of the retires, replace `the validator passes; rows and translated copies still match one-to-one.` with `the validator passes (no row and no translated copy for any of the 7); rows and translated copies still match one-to-one.`, and in step 5 replace `then the census: no reference to any of the 6 (or the 9 leftovers) remains.` with `then the census: `--retire <the 6>` re-run as a dry run reports, for each, no row, no translated copy and no reference.`
 
 - [ ] **Step 5: Regenerate the generated docs**
 
