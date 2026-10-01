@@ -11,6 +11,7 @@
 | file | what |
 |---|---|
 | `facts.json` | The structured results of a read-only fact-finding workflow: six readers, one question each, and a critic that cross-checked them. |
+| `review.json` | The adversarial review of the first draft of the spec (`10c7ad7c7`): four lenses (`resolver`, `retire-tool`, `tests`, `run-order`) each tried to break it, and an independent verifier per lens re-measured every finding and tried to refute it. **45 findings reported, 42 distinct** (all four lenses found the BlastFurn one); **39 confirmed, 3 refuted**. The revised spec folds in every confirmed finding; [USER] approved the two that changed the design (the check order, and when pages change) on 2026-10-01. |
 
 The six readers' questions:
 
