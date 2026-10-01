@@ -828,7 +828,10 @@ describe('a sidecar that moves during compose', () => {
 // 🔴 R8 — THE ONLY SPENDABLE FIGURE IS ONE WITH NO SIDECAR. After an editor's correction the
 // sidecar's blocks ARE the corrected Icelandic; re-running the MT would overwrite the
 // correction AND charge for it. To re-buy, a human deletes the `.is.json`.
-describe('--stale and --force spend NOTHING', () => {
+// ⚠️ The title said "--stale and --force spend NOTHING" until §C140 ㊴. Over a figure with a
+// sidecar neither spends; but `--force`, like a plain run, buys a figure with NO sidecar — only
+// `--stale` never buys (that is the ㊴ describe further down).
+describe('--stale and --force never RE-buy a figure that has a sidecar', () => {
   const STALE = { FIG_A: madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1' }) };
 
   it('spends NOTHING on --stale: it recomposes from the sidecar’s own blocks', async () => {
@@ -848,7 +851,7 @@ describe('--stale and --force spend NOTHING', () => {
     expect(composeCall.argv).toContain(sidecarPath(bookDir, 'FIG_A'));
   });
 
-  it('spends NOTHING on --force either, and --force is what makes a current figure move', async () => {
+  it('spends NOTHING on --force over a figure with a sidecar, and --force is what makes a current figure move', async () => {
     const blocks = { k0: 'IS k0', k1: 'IS k1' };
     const make = () =>
       makeBook({ figures: ['FIG_A'], sidecars: { FIG_A: currentSidecar('FIG_A', blocks) } });
@@ -1163,8 +1166,8 @@ describe('a textless figure is recomposed from its source artwork (§C159)', () 
 // It used to select only figures with a sidecar FILE, so the §C159 textless figures — composed,
 // but carrying no sidecar and so no stamp — were deselected before prepare, and a
 // COMPOSER_VERSION bump's bare `--stale` recompose missed a third of the composed corpus. It now
-// selects a figure with a sidecar file OR an image-mapping row (readers are served our `_IS.svg`
-// exactly when the row exists), and a selected figure with no sidecar that classifies
+// selects a figure with a sidecar file OR a basename-keyed image-mapping row (inject swaps in our
+// `_IS.svg` exactly when that row exists), and a selected figure with no sidecar that classifies
 // `translated` lands `skipped-unbought` instead of reaching the paid step.
 describe('--stale reaches every figure that serves our copy, and never buys (§C140 ㊴)', () => {
   const row = (b) => ({ originalImage: b, outputName: `${b}_IS.svg`, extension: '.svg' });
@@ -1178,6 +1181,22 @@ describe('--stale reaches every figure that serves our copy, and never buys (§C
         }
       : { sendable: 2 };
   const stale = () => madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1' }); // no composedHash
+  /** FIG_REBUY: a row, an earlier copy, NO sidecar (a human deleted it to re-buy). FIG_A: stale. */
+  const rebuyBook = () => {
+    const book = makeBook({
+      figures: ['FIG_REBUY', 'FIG_A'],
+      mapping: [row('FIG_REBUY'), row('FIG_A')],
+      sidecars: { FIG_A: stale() },
+    });
+    fs.writeFileSync(path.join(book.bookDir, 'media', 'FIG_REBUY_IS.svg'), '<svg id="earlier"/>');
+    return book;
+  };
+  // FIG_REBUY's size, derived by hand from the fake prepare's two blocks, "English 0" and
+  // "English 1" (9 characters each): 9 + 9 sent one label at a time, plus the joined send
+  // "English 0" + separator + "English 1" = 19 → 37 billable characters, 2 blocks.
+  const REFUSED_HEADLINE =
+    '  --stale refused to buy 1 figure(s): 37 billable characters, est 0.37 ISK at list rate';
+  const REFUSED_ROW = '    FIG_REBUY  2 block(s), 37 chars';
 
   it('recomposes a textless figure that has a mapping row and no sidecar', async () => {
     const { booksRoot, bookDir } = makeBook({
@@ -1207,17 +1226,7 @@ describe('--stale reaches every figure that serves our copy, and never buys (§C
   // The case the R8 header names: to re-buy a figure, a human DELETES its sidecar. Its mapping
   // row stays, so the widened selection reaches it — and `--stale` must not be the run that buys.
   it('selects a figure whose sidecar a human deleted, and refuses to buy it', async () => {
-    const make = () => {
-      const book = makeBook({
-        figures: ['FIG_REBUY', 'FIG_A'],
-        mapping: [row('FIG_REBUY'), row('FIG_A')],
-        sidecars: { FIG_A: stale() },
-      });
-      fs.writeFileSync(path.join(book.bookDir, 'media', 'FIG_REBUY_IS.svg'), '<svg id="earlier"/>');
-      return book;
-    };
-
-    const s = make();
+    const s = rebuyBook();
     const spawn = fakeSpawn();
     const result = await runFigures(live(s.booksRoot, { stale: true }), {
       spawn,
@@ -1236,12 +1245,13 @@ describe('--stale reaches every figure that serves our copy, and never buys (§C
     expect(result.tally['skipped-unbought']).toBe(1);
     expect(result.verdict.ok).toBe(true); // a NOTE, not a failure
     expect(spawn.outDirsFor('compose')).toEqual(['FIG_A']); // the run did do its work
-    expect(summarise(result)).toMatch(
-      /--stale never buys[^\n]*1 figure\(s\)[^\n]*\n\s+FIG_REBUY\b/
-    );
+    const report = summarise(result);
+    expect(report).toContain(`${REFUSED_HEADLINE}\n${REFUSED_ROW}\n`);
+    // …and a live run never calls a figure it refused "buyable this run".
+    expect(report).not.toMatch(/buyable this run/);
 
     // THE CONTROL THAT GIVES THE REFUSAL ITS MEANING: the same tree, run without --stale, buys it.
-    const p = make();
+    const p = rebuyBook();
     const spawnPlain = fakeSpawn();
     const bought = await runFigures(live(p.booksRoot), {
       spawn: spawnPlain,
@@ -1261,15 +1271,44 @@ describe('--stale reaches every figure that serves our copy, and never buys (§C
     });
 
     expect(rec(result, 'FIG_REBUY')?.outcome).toBe('skipped-unbought');
+    // `billable` is KEPT on a refusal, at its real size — the report's number is read from it.
+    expect(rec(result, 'FIG_REBUY').billable).toEqual({ blocks: 2, chars: 37 });
     const report = summarise(result);
     expect(report).not.toMatch(/^\s+would buy \d+ figure/m);
-    expect(report).toMatch(/--stale never buys[^\n]*1 figure\(s\)[^\n]*\n\s+FIG_REBUY\b/);
+    expect(report).toContain(`${REFUSED_HEADLINE}\n${REFUSED_ROW}\n`);
     expect(result.verdict.ok).toBe(true);
+  });
+
+  // 🔴 THE REFUSAL MUST HOLD FOR EVERY FLAG `--stale` IS RUN WITH. `--stale --force` is the
+  // documented 0-ISK recompose of current figures, and `--figure`/`--module` narrow a run; a
+  // conjunct exempting any of them (`args.stale && !args.force`) left the whole suite green while
+  // that invocation BOUGHT — measured: three such mutants survived this block's first version.
+  // The control in every row: both figures really were prepared, so "0 translate" is a refusal
+  // and not a run that never reached classification.
+  it.each([
+    ['--force', { force: true }],
+    ['--figure', { figures: ['FIG_REBUY', 'FIG_A'] }],
+    ['--module', { modules: ['m00001'] }],
+    ['--force --dry-run', { force: true, dryRun: true }],
+    ['--figure --dry-run', { figures: ['FIG_REBUY', 'FIG_A'], dryRun: true }],
+    ['--module --dry-run', { modules: ['m00001'], dryRun: true }],
+  ])('refuses to buy under --stale %s as well', async (_flags, over) => {
+    const s = rebuyBook();
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(s.booksRoot, { stale: true, ...over }), {
+      spawn,
+      booksRoot: s.booksRoot,
+    });
+
+    expect(rec(result, 'FIG_REBUY')?.outcome).toBe('skipped-unbought');
+    expect(spawn.countOf('translate')).toBe(0);
+    expect(spawn.outDirsFor('prepare').sort()).toEqual(['FIG_A', 'FIG_REBUY']);
   });
 
   // 🔴 THE REPORT LINE, WHICH WAS FALSE FOR THE TEXTLESS FIGURES: "They are the ones a run
   // WITHOUT --stale would buy" — measured on chemistry ch02, 26 named and 0 buyable. What is
-  // left unselected now is only what no recompose can change, and the line says no more.
+  // left unselected now is only what no recompose can change, and the line says no more: those
+  // figures are never prepared, so whether a plain run would buy any of them is not known here.
   it('describes the figures it did not select without claiming a plain run would buy them', async () => {
     const { booksRoot } = makeBook({
       figures: ['FIG_A', 'FIG_NONE'],
@@ -1284,7 +1323,7 @@ describe('--stale reaches every figure that serves our copy, and never buys (§C
 
     expect(result.deselected).toBe(1); // the premise: there IS a not-selected line to read
     expect(report).toMatch(
-      /1 figure\(s\) in this chapter have no sidecar and no image-mapping row/
+      /1 figure\(s\) in this chapter have no sidecar and no basename-keyed image-mapping row/
     );
     expect(report).not.toMatch(/would buy/);
   });
@@ -1764,7 +1803,8 @@ describe('a sidecar that is present but unreadable is refused, never re-bought',
   });
 
   // 🔴 THE REPORT LINE, WHICH WAS MEASURABLY WRONG. `--stale` narrows to the figures that
-  // already HAVE a sidecar; the unreadable one HAS one, so it must be SELECTED and named —
+  // have a sidecar file or a basename-keyed image-mapping row (§C140 ㊴); FIG_B here has
+  // neither, and the unreadable one HAS a sidecar file, so it must be SELECTED and named —
   // not deselected and described to the operator as "no sidecar … the ones a run WITHOUT
   // --stale would buy", which is the exact opposite of the truth about it.
   it('--stale SELECTS it and the report does not call it "no sidecar"', async () => {

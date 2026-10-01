@@ -211,13 +211,14 @@ describe('verdict', () => {
   // `translated` lands `skipped-unbought`. A NOTE, never a failure: the reader's picture is
   // whatever it already was, and failing would be the always-red exit code R9 rejects. But it
   // must be NAMED, or a figure a run without `--stale` would buy is invisible in the verdict.
+  // ⚠️ AT THE BOUNDARY, ONE: a `> 1` threshold survived this test while it used two.
   it('NOTEs the figures --stale refused to buy, and is not fatal', () => {
-    const t = { ...emptyTally(), translated: 3, 'skipped-unbought': 2 };
+    const t = { ...emptyTally(), translated: 3, 'skipped-unbought': 1 };
     const v = verdict(t, sum(t));
     expect(v.ok).toBe(true);
     const notes = v.reasons.filter((r) => r.startsWith('NOTE') && r.includes('skipped-unbought'));
     expect(notes).toHaveLength(1);
-    expect(notes[0]).toMatch(/\b2 figure\(s\)/);
+    expect(notes[0]).toMatch(/\b1 figure\(s\)/);
     // The control: the NOTE is keyed on the count, not printed on every run.
     const none = { ...emptyTally(), translated: 3 };
     expect(verdict(none, sum(none)).reasons.some((r) => r.includes('skipped-unbought'))).toBe(

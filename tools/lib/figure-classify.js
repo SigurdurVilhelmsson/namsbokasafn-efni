@@ -52,10 +52,10 @@
  * descent still reports `chars > 0`, and this branch is blind to it. It is a sentinel, not a
  * detector — do not read a quiet run as proof the form descent is healthy.
  *
- * WHAT THIS MODULE DOES NOT DECIDE. `failed-prepare`, `failed-mt`, `failed-compose`,
- * `failed-publish` and `skipped-current` are the driver's: this function is called only on a
- * prepare that EXITED 0, and the outcome it returns is the INTENT, which a later stage may
- * downgrade. `copied-photo` and `unresolved` stay distinct although both end in "copy the
+ * WHAT THIS MODULE DOES NOT DECIDE. Every `PROCESS_OUTCOMES` member (`figure-outcomes.js` — read
+ * the list there; this comment enumerated five of them and went stale twice) is the driver's:
+ * this function is called only on a prepare that EXITED 0, and the outcome it returns is the
+ * INTENT, which a later stage may downgrade. `copied-photo` and `unresolved` stay distinct although both end in "copy the
  * artwork": a photograph legitimately has no translatable text, whereas `unresolved` is the only
  * number in the pipeline that looks at the artwork DELIVERY at all.
  *

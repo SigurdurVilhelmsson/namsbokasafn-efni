@@ -13,12 +13,15 @@
  * overwritten — see `applySidecarGuard`. That is R8, and it is not a flag: after an editor's
  * correction the sidecar's blocks ARE the corrected Icelandic, so re-running the MT would
  * overwrite the correction *and* charge for it. So neither `--stale` nor `--force` can RE-buy a
- * figure: on one that has a sidecar, both recompose. ⚠️ ONLY `--stale` SPENDS NOTHING AT ALL — it
- * refuses the paid step outright (§C140 ㊴) — while `--force`, like a plain run, still buys a
- * figure with no sidecar file. *(Corrected 2026-10-01: this said both flags "spend NOTHING".)*
- * **To re-buy a figure, a human deletes its `books/<slug>/figure-text/<basename>.is.json` and runs
- * without `--stale`.** Every child process goes through ONE injectable `spawn`, tagged by
- * stage, so "the MT was spawned zero times" is a counter a test can read rather than a claim.
+ * figure that has a sidecar: `--stale` recomposes it when it is stale, `--force` even when it is
+ * current. ⚠️ ONLY `--stale` SPENDS NOTHING AT ALL — it refuses the paid step outright (§C140 ㊴)
+ * — while `--force`, like a plain run, still buys any figure with no sidecar file that classifies
+ * `translated`. *(Corrected 2026-10-01: this said both flags "spend NOTHING".)* **To re-buy a
+ * figure, a human deletes its `books/<slug>/figure-text/<basename>.is.json` and runs
+ * `--figure <basename>` without `--stale`** — dry-run that command first: a chapter-wide plain run
+ * buys EVERY figure in the chapter that has no sidecar. Every child process goes through ONE
+ * injectable `spawn`, tagged by stage, so "the MT was spawned zero times" is a counter a test can
+ * read rather than a claim.
  *
  * 🔴 THE ORDER IS THE FIX, AND IT IS THE WHOLE POINT OF THIS FILE:
  *
@@ -1411,7 +1414,8 @@ function recomposeTextless(rec, { spawn, publishTextless, bookDir, outDir }) {
  *                 stamp. The blocks may be an editor's corrections; re-running the MT would
  *                 overwrite them and charge for it.
  * ⚠️ Under `--stale` the first path is never entered: `runFigures` refuses that figure as
- * `skipped-unbought` before calling this, in both modes (§C140 ㊴).
+ * `skipped-unbought` before calling this, in both modes, and the branch throws if it ever is
+ * (§C140 ㊴).
  *
  * 🔴 AND A THIRD, FOR A TEXTLESS FIGURE THAT ALREADY SERVES A COMPOSED COPY (§C159) — see
  * `recomposeTextless`. It spends nothing and writes no sidecar.
@@ -1444,6 +1448,18 @@ function processFigureLive(
 
   if (!rec.sidecar) {
     // ── STEP 6. THE ONLY PAID STEP IN THE WHOLE DRIVER. ──────────────────────────────────
+    // 🔴 §C140 ㊴ — THE BACKSTOP, AT THE SPEND SITE. `runFigures` refuses a sidecar-less
+    // `translated` figure under `--stale` before calling this, so the branch below is unreachable
+    // by construction. It THROWS rather than setting an outcome because reaching it means that
+    // refusal was moved or broken: a purchase under `--stale` is a driver bug, never a result to
+    // tally, and the run's abandonment message names anything already bought.
+    if (args.stale) {
+      throw new Error(
+        `refusing to buy ${rec.basename} under --stale: the per-figure refusal in runFigures ` +
+          `did not fire. This is a driver bug, not a figure outcome; nothing was sent to the MT ` +
+          `for this figure.`
+      );
+    }
     const expected = sendKeysFrom(outDir);
     if (expected === null) {
       rec.outcome = 'failed-mt';
@@ -1942,22 +1958,25 @@ export async function runFigures(args, deps = {}) {
 
   for (const rec of records) applySidecarGuard(rec, bookDir, sidecarExists);
 
-  // `--stale`: narrow to the figures readers are served a copy OF OURS for — a sidecar FILE, or an
-  // image-mapping row (the renderer swaps in our `_IS.svg` exactly when the row exists). That is
-  // every figure a composer change can have made stale, and nothing else: a figure with neither
-  // is served no composed copy of ours, so no recompose changes what its readers see. Selecting
-  // them OUT of the run rather than giving them an outcome is deliberate and matches `--figure`:
-  // the tally then describes what was worked on, and the partition still sums. Selecting nothing
-  // is a legitimate answer here (nothing is stranded), so — unlike a `--figure` that names no
-  // figure — it is not a refusal.
+  // `--stale`: narrow to the figures readers are served a copy OF OURS for — a sidecar FILE, or a
+  // basename-keyed image-mapping row (`cnxml-inject` swaps in our `_IS.svg` exactly when that row
+  // exists). That covers every figure a composer change can have made stale; a figure with
+  // neither is served no composed copy of ours, so no recompose changes what its readers see. The
+  // selection also reaches the few mapped figures no driver run composed (the June copies, §C140
+  // ㊵), which then resolve and classify exactly as in a plain run. A legacy `figureId` row is a
+  // docx-import raster, never composer output, and `loadImageBasenameMap` leaves it out on purpose.
+  // Selecting the rest OUT of the run rather than giving them an outcome is deliberate and matches
+  // `--figure`: the tally then describes what was worked on, and the partition still sums.
+  // Selecting nothing is a legitimate answer here (nothing is stranded), so — unlike a `--figure`
+  // that names no figure — it is not a refusal.
   //
   // 🔴 §C140 ㊴ — THE MAPPING ROW IS WHAT REACHES THE §C159 TEXTLESS FIGURES. They are composed and
   // published but carry no sidecar (one would badge them "unreviewed"), so a predicate of "has a
   // sidecar" deselected them before prepare, and a COMPOSER_VERSION bump's bare `--stale`
   // recompose missed a third of the composed corpus. ⚠️ Widening the selection is what makes the
   // refusal in the loop below necessary: a selected figure with no sidecar that classifies
-  // `translated` would otherwise reach the paid step — the commonest one is a figure whose sidecar
-  // a human deleted to re-buy it, which keeps its row.
+  // `translated` would otherwise reach the paid step — for example a figure whose sidecar a human
+  // deleted to re-buy it, which keeps its row, or a ㊵ June figure once its artwork resolves.
   //
   // 🔴 THE SIDECAR HALF IS "A SIDECAR FILE IS PRESENT", NOT "readSidecar RETURNED SOMETHING". An
   // unreadable sidecar HAS a file, so `--stale` must SELECT it — deselecting it printed the
@@ -2168,12 +2187,17 @@ export async function runFigures(args, deps = {}) {
         // whose paid step is reachable only through outcome `translated`. A guard inside the paid
         // branch alone would leave a `--stale --dry-run` — which never calls it — reporting "would
         // buy" about a figure the live run refuses. `billable` is kept: the report says what a
-        // run without `--stale` would spend on it.
+        // run without `--stale` would spend on it. `processFigureLive` refuses as well, as a
+        // fail-closed backstop at the spend site itself.
+        // ⚠️ AFTER `applyMappingPreflight`, DELIBERATELY: a row that can never publish (a `.png`
+        // row on a figure the composer would draw, an `outputName` escaping media/) is a fact
+        // about the book that a plain run hits too, so it stays `failed-publish` here rather than
+        // being masked as a refusal.
         if (args.stale) {
           rec.outcome = 'skipped-unbought';
           rec.reason =
             'no sidecar, and it classifies translated: --stale never buys. A run without ' +
-            '--stale would buy it.';
+            '--stale would buy it; to buy only this one, run --figure <basename> without --stale.';
         }
       }
       if (!args.dryRun)
@@ -2326,13 +2350,17 @@ export function summarise(result) {
 
   // 🔴 §C140 ㊴ — THIS LINE USED TO SAY "They are the ones a run WITHOUT --stale would buy", and
   // that was false for the textless figures it named (chemistry ch02: 26 named, 0 buyable). What
-  // `--stale` leaves unselected now is only what no recompose can change, and the line says no
-  // more than that; what a run without `--stale` WOULD buy is the refusal list further down.
+  // `--stale` leaves unselected now is only what no recompose can change. ⚠️ Those figures are
+  // never prepared, so NOTHING here knows whether a plain run would buy any of them — the refusal
+  // list further down covers only the figures this run selected. The line says exactly that, and
+  // sends the operator to the run that does know. ("basename-keyed": a legacy `figureId` row is a
+  // docx-import raster, never composer output, and is deliberately not a selector.)
   if (result.deselected > 0) {
     lines.push(
       `  --stale: ${result.deselected} figure(s) in this chapter have no sidecar and no ` +
-        `image-mapping row and were not selected — no composed copy of ours is served for ` +
-        `them, so no recompose changes what readers see.`
+        `basename-keyed image-mapping row and were not selected — no composed copy of ours is ` +
+        `served for them, so no recompose changes what readers see. Not classified either: a ` +
+        `plain --dry-run does that.`
     );
   }
 
@@ -2716,11 +2744,13 @@ export function summarise(result) {
       ...billableList(result.mode === 'dry-run' ? 'would buy' : 'buyable this run', buyable)
     );
   }
-  // §C140 ㊴ — WHAT `--stale` DECLINED, AND WHAT A RUN WITHOUT IT WOULD SPEND. Read off the outcome
-  // the refusal set, so this cannot name a figure the run would not in fact have bought.
+  // §C140 ㊴ — WHAT `--stale` DECLINED, AT ITS REAL SIZE. Read off the outcome the refusal set, so it
+  // names exactly the SELECTED figures a run without `--stale` would send to the paid step. ⚠️ It
+  // is not that run's whole bill: figures `--stale` did not select were never classified (see the
+  // not-selected line), which is why the headline says what this run refused and claims no more.
   const refused = result.figures.filter((f) => f.outcome === 'skipped-unbought');
   if (refused.length) {
-    lines.push(...billableList('--stale never buys — a run WITHOUT --stale would buy', refused));
+    lines.push(...billableList('--stale refused to buy', refused));
   }
 
   // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
