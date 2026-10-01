@@ -70,6 +70,9 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(fx.snapshot()).toEqual(before);
     expect(r.out).toMatch(/would remove: 1 mapping row\(s\); media\/CNX_A.*\.svg/);
     expect(r.out).toMatch(/still referenced by 2 file\(s\)/);
+    // The report says WHERE each reference is: area · track · chapter · file.
+    expect(r.out).toMatch(/03-translated · mt-preview · ch01 · m1\.cnxml/);
+    expect(r.out).toMatch(/05-publication · mt-preview · 01 · 1-1-page\.html/);
     expect(r.out).toMatch(/Dry run/);
   });
 
@@ -142,6 +145,27 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
     expect(r.code).toBe(1);
     expect(r.err).toMatch(/inside media/);
+  });
+
+  // A row that is flat and inside media/ but is not THIS figure's copy would make a retire of
+  // CNX_A delete somebody else's file: the exact-name rule is the only thing that stops it.
+  it.each([
+    [
+      "another figure's copy",
+      (n) => ({ originalImage: n, outputName: `CNX_B${S}.svg`, extension: '.svg' }),
+    ],
+    ['no extension', (n) => ({ originalImage: n, outputName: `${n}${S}`, extension: '' })],
+    ['no outputName at all', (n) => ({ originalImage: n, extension: '.svg' })],
+  ])('refuses a mapping row naming %s, and deletes nothing', (_kind, makeRow) => {
+    const fx = standardBook({
+      'books/b/media/image-mapping.json':
+        JSON.stringify([makeRow('CNX_A'), ROW('CNX_B')], null, 2) + '\n',
+    });
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/which is not CNX_A.*<ext> inside media\//);
+    expect(fx.snapshot()).toEqual(before);
   });
 
   it.each([
@@ -291,6 +315,7 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     [['--book', '../x', '--prune'], /is not a book slug/],
     [['--book', 'b', '--retire'], /--retire needs a value, and got nothing/],
     [['--book', 'b', '--retire', '--apply'], /--retire needs a value, and got "--apply"/],
+    [['--book', 'b', '--retire', ','], /--retire needs at least one name/],
     [['--book', 'b'], /exactly one of --retire/],
   ])('refuses usage %j with exit 2 and writes nothing', (argv, reason) => {
     const fx = standardBook();
