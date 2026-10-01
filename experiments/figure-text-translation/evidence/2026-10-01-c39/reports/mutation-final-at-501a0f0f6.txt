@@ -1,0 +1,57 @@
+# mutate3.cjs at 501a0f0f6f27a47be85f6385e35238f035171140 — real vitest suite (figure-run-paid + figure-outcomes + figure-run-free)
+KILLED           M1 selection reverted to sidecar-only  [exit 1, 243 tests, 9 failing]
+                   - recomposes a textless figure that has a mapping row and no sidecar
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+                   - refuses to buy under --stale --force as well
+KILLED           M2 --stale selects every figure  [exit 1, 243 tests, 4 failing]
+                   - spends NOTHING on --stale: it recomposes from the sidecar’s own blocks
+                   - recomposes a textless figure that has a mapping row and no sidecar
+                   - describes the figures it did not select without claiming a plain run would buy them
+                   - --stale SELECTS it and the report does not call it "no sidecar"
+KILLED           M3 refusal deleted (backstop throws instead)  [exit 1, 243 tests, 8 failing]
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+                   - refuses to buy under --stale --force as well
+                   - refuses to buy under --stale --figure as well
+KILLED           M4 refusal live-only  [exit 1, 243 tests, 4 failing]
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+                   - refuses to buy under --stale --force --dry-run as well
+                   - refuses to buy under --stale --figure --dry-run as well
+                   - refuses to buy under --stale --module --dry-run as well
+KILLED           M5 would-buy list keeps refused figures  [exit 1, 243 tests, 2 failing]
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+KILLED           M6 verdict NOTE removed  [exit 1, 243 tests, 1 failing]
+                   - NOTEs the figures --stale refused to buy, and is not fatal
+KILLED           M7 outcome dropped from the vocabulary  [exit 1, 243 tests, 10 failing]
+                   - carries the specific outcomes later tasks name, each in the right group
+                   - NOTEs the figures --stale refused to buy, and is not fatal
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+KILLED           M8 refused list not printed  [exit 1, 243 tests, 2 failing]
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+                   - a --stale dry run reports the refusal and never lists the figure as one it would buy
+KILLED           M9 not-selected line reverted to the old false claim  [exit 1, 243 tests, 1 failing]
+                   - describes the figures it did not select without claiming a plain run would buy them
+KILLED           M10 refusal also hits figures WITH a sidecar  [exit 1, 243 tests, 9 failing]
+                   - REFUSES to publish, and does not certify blocks the SVG was never composed from
+                   - the next run finishes the figure from the corrected blocks
+                   - publishes normally when nothing moves — the control
+                   - a benign approval that leaves the blocks alone still publishes
+KILLED           C1 refusal exempts --force  [exit 1, 243 tests, 2 failing]
+                   - refuses to buy under --stale --force as well
+                   - refuses to buy under --stale --force --dry-run as well
+KILLED           C2 refusal exempts --figure  [exit 1, 243 tests, 2 failing]
+                   - refuses to buy under --stale --figure as well
+                   - refuses to buy under --stale --figure --dry-run as well
+KILLED           C3 refusal exempts --module  [exit 1, 243 tests, 2 failing]
+                   - refuses to buy under --stale --module as well
+                   - refuses to buy under --stale --module --dry-run as well
+KILLED           C4 NOTE needs 2+ refusals  [exit 1, 243 tests, 1 failing]
+                   - NOTEs the figures --stale refused to buy, and is not fatal
+KILLED           C6 live buyable list keeps refused  [exit 1, 243 tests, 1 failing]
+                   - selects a figure whose sidecar a human deleted, and refuses to buy it
+PROBE PASSED     PROBE backstop holds with the loop refusal deleted  [exit 1, 244 tests, 8 failing]
+PROBE PASSED     PROBE --force buys a sidecar-less figure  [exit 0, 244 tests, 0 failing]
+FINAL golden compare: identical

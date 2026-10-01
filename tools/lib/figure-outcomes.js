@@ -49,6 +49,10 @@ export const PROCESS_OUTCOMES = [
   // translate-able figures were found" about a chapter of photographs.
   'failed-sidecar',
   'skipped-current',
+  // §C140 ㊴ — `--stale` never buys. A figure it selects that has NO sidecar and classifies
+  // `translated` lands here instead of reaching the paid step: a run WITHOUT `--stale` would buy
+  // it. Non-fatal, like `skipped-current` — nothing was changed for the reader.
+  'skipped-unbought',
 ];
 
 export const ALL_OUTCOMES = [...CLASSIFICATION_OUTCOMES, ...PROCESS_OUTCOMES];
@@ -148,6 +152,16 @@ export function verdict(tally, enumeratedCount, extra = {}) {
   if (tally['unreadable-text'] > 0) {
     reasons.push(
       `NOTE (not a failure): ${tally['unreadable-text']} figure(s) carry text we cannot read — see experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md`
+    );
+  }
+  // 🔴 §C140 ㊴ — NAMED, NEVER FATAL. The figure's reader picture is whatever it already was, and
+  // failing would be the always-red exit code R9 rejects; but a figure a run WITHOUT `--stale`
+  // would buy must not be invisible in the verdict of a run that refused it.
+  if (tally['skipped-unbought'] > 0) {
+    reasons.push(
+      `NOTE (not a failure): ${tally['skipped-unbought']} figure(s) skipped-unbought — no ` +
+        `sidecar, and they classify translated. --stale never buys; a run without it would. ` +
+        `The report names them.`
     );
   }
 

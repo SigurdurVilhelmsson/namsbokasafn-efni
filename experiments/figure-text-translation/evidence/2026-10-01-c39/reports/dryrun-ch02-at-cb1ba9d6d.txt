@@ -1,0 +1,46 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch02: 32 figure(s) across 8 module(s)
+  --stale: 15 figure(s) in this chapter have no sidecar and no image-mapping row and were not selected — no composed copy of ours is served for them, so no recompose changes what readers see.
+
+    11  copied-textless
+    21  skipped-current
+    32  = enumerated
+
+  textless, would be recomposed from source artwork over its existing copy (0 ISK) (11):
+    CNX_Chem_02_04_Question3b_img
+    CNX_Chem_02_04_Question3c_img
+    CNX_Chem_02_04_Question3d_img
+    CNX_Chem_02_04_Question4a_img
+    CNX_Chem_02_04_Question4b_img
+    CNX_Chem_02_04_Question4c_img
+    CNX_Chem_02_04_Question4d_img
+    CNX_Chem_02_04_Question7a_img
+    CNX_Chem_02_04_Question7b_img
+    CNX_Chem_02_04_Question9a_img
+    CNX_Chem_02_04_Question9b_img
+  copied figures, with the counts the read layer produced (11):
+    copied-textless  chars=4 formText=4 images=0 paint=6 held=4v/0u/0f  CNX_Chem_02_04_Question3b_img
+    copied-textless  chars=6 formText=6 images=0 paint=7 held=6v/0u/0f  CNX_Chem_02_04_Question3c_img
+    copied-textless  chars=7 formText=7 images=0 paint=7 held=7v/0u/0f  CNX_Chem_02_04_Question3d_img
+    copied-textless  chars=12 formText=12 images=0 paint=13 held=12v/0u/0f  CNX_Chem_02_04_Question4a_img
+    copied-textless  chars=10 formText=10 images=0 paint=12 held=10v/0u/0f  CNX_Chem_02_04_Question4b_img
+    copied-textless  chars=14 formText=8 images=0 paint=8 held=8v/0u/0f  CNX_Chem_02_04_Question4c_img
+    copied-textless  chars=8 formText=8 images=0 paint=8 held=8v/0u/0f  CNX_Chem_02_04_Question4d_img
+    copied-textless  chars=8 formText=8 images=0 paint=8 held=8v/0u/0f  CNX_Chem_02_04_Question7a_img
+    copied-textless  chars=14 formText=14 images=0 paint=14 held=14v/0u/0f  CNX_Chem_02_04_Question7b_img
+    copied-textless  chars=9 formText=9 images=0 paint=8 held=9v/0u/0f  CNX_Chem_02_04_Question9a_img
+    copied-textless  chars=9 formText=9 images=0 paint=8 held=9v/0u/0f  CNX_Chem_02_04_Question9b_img
+  figure-prepare.py warnings — 95 across 11 figure(s), its own !! lines:
+    CNX_Chem_02_04_Question3b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_02_04_Question3c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_02_04_Question3d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0
+    CNX_Chem_02_04_Question4a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_02_04_Question4b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_02_04_Question4c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_02_04_Question4d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_02_04_Question7a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_02_04_Question7b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_02_04_Question9a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0
+    CNX_Chem_02_04_Question9b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0
+
+VERDICT ok

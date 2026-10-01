@@ -38,6 +38,7 @@ describe('figure outcome vocabulary', () => {
       'failed-publish',
       'failed-sidecar',
       'skipped-current',
+      'skipped-unbought',
     ])
       expect(PROCESS_OUTCOMES).toContain(o);
   });
@@ -204,6 +205,25 @@ describe('verdict', () => {
   it('is ok on a run where everything was already current', () => {
     const t = { ...emptyTally(), 'skipped-current': 12 };
     expect(verdict(t, sum(t)).ok).toBe(true);
+  });
+
+  // 🔴 §C140 ㊴ — `--stale` never buys, so a figure it selects that has no sidecar and classifies
+  // `translated` lands `skipped-unbought`. A NOTE, never a failure: the reader's picture is
+  // whatever it already was, and failing would be the always-red exit code R9 rejects. But it
+  // must be NAMED, or a figure a run without `--stale` would buy is invisible in the verdict.
+  // ⚠️ AT THE BOUNDARY, ONE: a `> 1` threshold survived this test while it used two.
+  it('NOTEs the figures --stale refused to buy, and is not fatal', () => {
+    const t = { ...emptyTally(), translated: 3, 'skipped-unbought': 1 };
+    const v = verdict(t, sum(t));
+    expect(v.ok).toBe(true);
+    const notes = v.reasons.filter((r) => r.startsWith('NOTE') && r.includes('skipped-unbought'));
+    expect(notes).toHaveLength(1);
+    expect(notes[0]).toMatch(/\b1 figure\(s\)/);
+    // The control: the NOTE is keyed on the count, not printed on every run.
+    const none = { ...emptyTally(), translated: 3 };
+    expect(verdict(none, sum(none)).reasons.some((r) => r.includes('skipped-unbought'))).toBe(
+      false
+    );
   });
 
   // 🔴 THE PARTITION IS CHECKED AT RUNTIME, NOT BY HAND AND NOT BY A SOURCE REGEX.

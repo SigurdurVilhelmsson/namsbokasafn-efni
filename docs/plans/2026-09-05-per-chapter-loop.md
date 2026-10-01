@@ -405,18 +405,29 @@ The driver enumerates the chapter's figures, resolves each source (PDF, EPS or A
 sends only the vectors whose text it can actually read to the paid MT, and **writes the
 `books/<slug>/figure-text/<basename>.is.json` sidecar** that the editor's review panel and
 `publish-figure-svg.js` both read. Text-less figures and photographs land in a `copied-*` outcome —
-**counted and NAMED, never crashed on and never paid for**. ⚠️ **The driver publishes only
-`translated` figures**: `processFigureLive` returns early for anything else, so a `copied-*` bucket
-records a decision about a figure, it does not move the artwork onto the page. ⚠️ **The dry run prints no cost estimate** — what it gives you is
-the per-outcome tally (the `translated` count is the buy list), every figure NAMED, and a partition
-assertion the driver makes on itself. Its design is
+**counted and NAMED, never crashed on and never paid for**. ⚠️ **The driver publishes `translated`
+figures, plus one kind of copy:** a pure-vector `copied-textless` figure that already has an `.svg`
+image-mapping row is recomposed from its source artwork and published at 0 ISK (§C159). Every other
+`copied-*` bucket records a decision about a figure; it does not move the artwork onto the page.
+⚠️ **The dry run's buy list is its `would buy` line**, with billable characters and an ISK estimate
+— not the `translated` count, which also holds figures whose stale sidecar is recomposed for 0 ISK.
+It also names every figure and asserts its own partition. *(Corrected 2026-10-01: this said the
+driver publishes only `translated` figures, that the dry run prints no cost estimate, and that the
+`translated` count is the buy list; all three went stale with §C140 ⑦ and §C159.)* Its design is
 [`docs/superpowers/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md).
 
-🔴 **NEITHER `--stale` NOR `--force` CAN SPEND — THEY RECOMPOSE.** Both compose from the sidecar's
-own blocks, and after an editorial correction those blocks ARE the corrected Icelandic, so
-re-running the MT would overwrite the correction *and* charge for it. **To re-buy a figure, a human
-DELETES `books/<slug>/figure-text/<basename>.is.json`** — there is no `--retranslate`. The paid
-stage runs for exactly one class of figure: one with **no sidecar file**.
+🔴 **NEITHER `--stale` NOR `--force` CAN RE-BUY A FIGURE THAT HAS A SIDECAR.** `--stale` recomposes
+it when it is stale and `--force` even when it is current, both from the sidecar's own blocks — and
+after an editorial correction those blocks ARE the corrected Icelandic, so re-running the MT would
+overwrite the correction *and* charge for it. **To re-buy a figure, a human DELETES
+`books/<slug>/figure-text/<basename>.is.json`** and runs `--figure <basename>` without `--stale`,
+dry-running that command first: a chapter-wide plain run buys EVERY figure in the chapter that has
+no sidecar. There is no `--retranslate`. The paid stage runs for exactly one class of figure: one
+with **no sidecar file** that classifies `translated`. ⚠️ **Only `--stale` spends nothing at all**
+(§C140 ㊴): it refuses the paid step outright, and it also reaches the textless figures, which carry
+no sidecar. **`--force`, like a plain run, still buys any figure with no sidecar file that classifies
+`translated`.** *(Corrected 2026-10-01: this said neither flag "CAN SPEND", which was never true of
+`--force`.)*
 
 ⚠️ **`--chapter` is required on EVERY invocation, `--stale` included** — the CLI refuses without it.
 *(Corrected 2026-09-08 before it was written down: a bare `--stale` was proposed for this block,

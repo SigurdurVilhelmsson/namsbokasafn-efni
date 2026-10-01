@@ -1,0 +1,14 @@
+PREDICT enumerated(selected)=32 deselected=15
+PREDICT skipped-current=21 (stale sidecars: 0)
+PREDICT prepared = 11; recomposable-textless list = the 11 row-only figures:
+  CNX_Chem_02_04_Question3b_img
+  CNX_Chem_02_04_Question3c_img
+  CNX_Chem_02_04_Question3d_img
+  CNX_Chem_02_04_Question4a_img
+  CNX_Chem_02_04_Question4b_img
+  CNX_Chem_02_04_Question4c_img
+  CNX_Chem_02_04_Question4d_img
+  CNX_Chem_02_04_Question7a_img
+  CNX_Chem_02_04_Question7b_img
+  CNX_Chem_02_04_Question9a_img
+  CNX_Chem_02_04_Question9b_img
