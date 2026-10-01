@@ -514,6 +514,22 @@ with tempfile.TemporaryDirectory() as td:
     check('㊵ a pin into a configured tree that is not mounted raises, as the lookup does',
           raised.startswith("Source tree 'updates-2e' is configured"), True)
 
+    # 🔴 THE GUARD INSIDE THE ALIAS'S CONFLICT SCAN. The check above pins INTO the absent tree, so it only
+    # reaches `_resolve_pin`'s own guard. Here the pinned tree is MOUNTED and ANOTHER configured tree is not:
+    # without `_files_under`'s guard the scan walks past the unmounted tree, finds nothing, and the alias
+    # resolves — "no file matches this basename" asserted over a tree nobody looked in.
+    HOLE = {'CNX_Hole': pin('alias', 'first-edition', 'Ch_03/CNX_Ibu.eps')}
+    try:
+        resolve_detail('CNX_Hole', absent, prec, pins=HOLE)
+        raised = 'returned'
+    except SystemExit as exc:
+        raised = str(exc)
+    check('㊵ an alias scans EVERY configured tree: an unmounted one raises, though the pin is in a mounted one',
+          (raised.startswith("Source tree 'updates-2e' is configured"), "'CNX_Hole'" in raised), (True, True))
+    d = resolve_detail('CNX_Hole', trees, prec, pins=HOLE)
+    check('㊵ CONTROL: the same alias with both trees mounted resolves',
+          (d.get('edition'), d.get('via')), ('first-edition', 'alias'))
+
     H = {'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps'),
          'CNX_ICE2': pin('alias', 'updates-2e', 'OSX/Shared.eps'),
          'CNX_Ibu': pin('override', 'first-edition', 'Ch_03/Nope.eps'),
@@ -534,6 +550,27 @@ with tempfile.TemporaryDirectory() as td:
     S.run_cli(['--json', 'testbook', 'CNX_ICE'], out=out.append,
               cfg={'editionPrecedence': prec, 'sourceTreesFile': str(local), 'artworkPins': P})
     check('㊵ run_cli --json applies artworkPins', json.loads(out[0])['CNX_ICE']['via'], 'alias')
+
+    # 🔴 TWO PIN KEYS THAT FOLD ONTO ONE BASENAME. A table is a dict, so the second key used to shadow
+    # the first in the fold and the resolver quietly picked a picture by dict order. Both entries are
+    # VALID and name DIFFERENT drawings — nothing malformed, nothing missing, and the twin check skips
+    # keys that fold onto the basename — so only a run-time refusal sees it, not the JS validator alone.
+    make_eps(new / 'OSX' / 'Drawing_one.eps', 300, 200)
+    make_eps(old / 'Ch_03' / 'Drawing_two.eps', 320, 210)
+    DUP = {'CNX_Fig': pin('alias', 'updates-2e', 'OSX/Drawing_one.eps'),
+           'cnx-fig': pin('override', 'first-edition', 'Ch_03/Drawing_two.eps')}
+    check('㊵ two pin keys folding onto one basename are refused as pin-conflict, whichever spelling is asked for',
+          [resolve_detail(n, trees, prec, pins=DUP).get('refused') for n in ('CNX_Fig', 'cnx-fig', 'CNX_FIG')],
+          ['pin-conflict'] * 3)
+    d = resolve_detail('CNX_FIG', trees, prec, pins=DUP)
+    check('㊵ that refusal names BOTH keys, and picks no file',
+          (d.get('path'), d.get('edition'), d.get('candidates'), '(CNX_Fig, cnx-fig)' in d.get('reason', '')),
+          (None, None, [], True))
+    check('㊵ CONTROL: either key alone resolves, each to its own drawing via its own kind',
+          [(Path(r['path']).name, r['via']) for r in (
+              resolve_detail('CNX_Fig', trees, prec, pins={'CNX_Fig': DUP['CNX_Fig']}),
+              resolve_detail('cnx-fig', trees, prec, pins={'cnx-fig': DUP['cnx-fig']}))],
+          [('Drawing_one.eps', 'alias'), ('Drawing_two.eps', 'override')])
 
 
 # ---------------------------------------------------------------------------

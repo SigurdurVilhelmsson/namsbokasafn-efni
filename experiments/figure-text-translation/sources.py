@@ -270,7 +270,7 @@ def _resolve_pin(basename, entry, trees, precedence, exts, memo, size_of, pins):
 
 def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
                    size_of=page_size, *, retired=None, pins=None):
-    """-> {'path', 'edition'[, 'pageUnknown']} | None (a hole) | a refusal dict (see below).
+    """-> {'path', 'edition'[, 'via'][, 'pageUnknown']} | None (a hole) | a refusal (see below).
 
     Precedence is over EDITIONS first, then over formats within an edition: a 2nd-edition EPS
     beats a 1st-edition PDF, because the edition is a question of WHICH PICTURE and the format
@@ -282,8 +282,9 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
     never the normal lookup's answer. A pinned hit carries 'via': 'alias'|'override', and a pin
     refusal is 'pin-conflict'|'pin-missing'|'pin-invalid'.
 
-    A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page', 'edition',
-    'candidates': [{'path', 'page', 'paper'}], 'reason'}.
+    A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page'|
+    'pin-conflict'|'pin-missing'|'pin-invalid', 'edition', 'candidates', 'reason'}. Each candidate
+    is {'path'} plus 'page' and 'paper' when they are known.
     """
     # 🔴 §C140 ㊵ — A RETIRED FIGURE IS REFUSED FIRST, BEFORE `superseded` AND BEFORE ANY LOOKUP.
     # Retired is about the TRANSLATED COPY: a [USER] ruling removed it, readers get OpenStax's own
@@ -318,11 +319,20 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
     # 🔴 §C140 ㊵ — AN ARTWORK PIN IS CHECKED AFTER `retired` AND `superseded`, so a pin can never
     # bring back a figure either table refuses.
+    # ⚠️ Keys fold, so two keys can name ONE figure. Two `retired` or `superseded` entries differ
+    # only in their reason text, but two pins can name two different DRAWINGS: folding them into a
+    # dict lets the later key shadow the earlier and picks a picture by table order, with nothing
+    # malformed to refuse. More than one key is a conflict, so the resolver refuses it itself and
+    # does not rely on a config validator having run.
     if pins:
-        folded_pins = {_normkey(k): v for k, v in pins.items()}
         pin_key = _normkey(basename)
-        if pin_key in folded_pins:
-            return _resolve_pin(basename, folded_pins[pin_key], trees, precedence, exts,
+        pinned = [k for k in pins if _normkey(k) == pin_key]
+        if len(pinned) > 1:
+            return _pin_refusal('pin-conflict',
+                                f"artworkPins has {len(pinned)} keys that fold onto {basename!r} "
+                                f"({', '.join(sorted(pinned))}) — one figure cannot have two pins")
+        if pinned:
+            return _resolve_pin(basename, pins[pinned[0]], trees, precedence, exts,
                                 {} if _memo is None else _memo, size_of, pins)
 
     for key in precedence:
