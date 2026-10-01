@@ -1,0 +1,25 @@
+appendices  {"all":36,"sidecar":12,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":24}
+ch00        {"all":0,"sidecar":0,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":0}
+ch01        {"all":36,"sidecar":24,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":12}
+ch02        {"all":47,"sidecar":21,"svgRowNoSidecar":11,"otherRowNoSidecar":0,"noRowNoSidecar":15}
+ch03        {"all":41,"sidecar":15,"svgRowNoSidecar":13,"otherRowNoSidecar":0,"noRowNoSidecar":13}
+ch04        {"all":30,"sidecar":19,"svgRowNoSidecar":2,"otherRowNoSidecar":0,"noRowNoSidecar":9}
+ch05        {"all":24,"sidecar":16,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":8}
+ch06        {"all":51,"sidecar":23,"svgRowNoSidecar":17,"otherRowNoSidecar":0,"noRowNoSidecar":11}
+ch07        {"all":159,"sidecar":16,"svgRowNoSidecar":55,"otherRowNoSidecar":0,"noRowNoSidecar":88}
+ch08        {"all":72,"sidecar":25,"svgRowNoSidecar":30,"otherRowNoSidecar":0,"noRowNoSidecar":17}
+ch09        {"all":49,"sidecar":16,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":33}
+ch10        {"all":82,"sidecar":40,"svgRowNoSidecar":4,"otherRowNoSidecar":0,"noRowNoSidecar":38}
+ch11        {"all":46,"sidecar":20,"svgRowNoSidecar":2,"otherRowNoSidecar":0,"noRowNoSidecar":24}
+ch12        {"all":42,"sidecar":30,"svgRowNoSidecar":2,"otherRowNoSidecar":0,"noRowNoSidecar":10}
+ch13        {"all":14,"sidecar":9,"svgRowNoSidecar":1,"otherRowNoSidecar":0,"noRowNoSidecar":4}
+ch14        {"all":36,"sidecar":22,"svgRowNoSidecar":2,"otherRowNoSidecar":0,"noRowNoSidecar":12}
+ch15        {"all":32,"sidecar":15,"svgRowNoSidecar":7,"otherRowNoSidecar":0,"noRowNoSidecar":10}
+ch16        {"all":16,"sidecar":6,"svgRowNoSidecar":1,"otherRowNoSidecar":0,"noRowNoSidecar":9}
+ch17        {"all":20,"sidecar":17,"svgRowNoSidecar":0,"otherRowNoSidecar":0,"noRowNoSidecar":3}
+ch18        {"all":92,"sidecar":20,"svgRowNoSidecar":19,"otherRowNoSidecar":0,"noRowNoSidecar":53}
+ch19        {"all":51,"sidecar":15,"svgRowNoSidecar":18,"otherRowNoSidecar":0,"noRowNoSidecar":18}
+ch20        {"all":134,"sidecar":53,"svgRowNoSidecar":73,"otherRowNoSidecar":0,"noRowNoSidecar":8}
+ch21        {"all":38,"sidecar":25,"svgRowNoSidecar":1,"otherRowNoSidecar":0,"noRowNoSidecar":12}
+TOTAL       {"all":1148,"sidecar":459,"svgRowNoSidecar":258,"otherRowNoSidecar":0,"noRowNoSidecar":431} basenames enumerated in >1 chapter: 0
+sidecar files on disk: 459 | mapping rows: 717 | .svg rows: 717

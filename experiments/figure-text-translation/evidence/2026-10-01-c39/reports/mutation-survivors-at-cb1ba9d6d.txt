@@ -1,0 +1,7 @@
+# mutate2.cjs at cb1ba9d6deb34d35f3483382d21696d57005067b — the 5 mutants the review proposed, real vitest suite
+*** SURVIVED *** C1 refusal exempts --force  [exit 0, 132 tests]
+*** SURVIVED *** C2 refusal exempts --figure  [exit 0, 132 tests]
+*** SURVIVED *** C3 refusal exempts --module  [exit 0, 132 tests]
+*** SURVIVED *** C4 NOTE needs 2+ refusals  [exit 0, 132 tests]
+*** SURVIVED *** C6 live buyable list keeps refused  [exit 0, 132 tests]
+FINAL golden compare: identical

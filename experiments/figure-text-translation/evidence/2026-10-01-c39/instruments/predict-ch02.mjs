@@ -1,0 +1,21 @@
+// READ-ONLY: derive the predicted --stale dry-run numbers for chemistry ch02 from committed files.
+import path from 'path';
+import fs from 'fs';
+import { createRequire } from 'module';
+const REPO = process.argv[2];
+const require = createRequire(path.join(REPO, 'tools/x.js'));
+const { isStale } = await import(path.join(REPO, 'tools/figure-run.js'));
+const { enumerateChapterImages } = require('./lib/figure-enumerate.cjs');
+const { loadImageBasenameMap } = require('./lib/image-basename-map.cjs');
+const { readSidecar, sidecarPath } = require('./lib/figure-text-sidecar.cjs');
+const bookDir = path.join(REPO, 'books', 'efnafraedi-2e');
+const mapped = new Map(loadImageBasenameMap(bookDir).map((e) => [e.originalImage, e]));
+const { figures } = enumerateChapterImages({ bookDir, chapterDir: 'ch02' });
+const withSidecar = figures.filter((f) => fs.existsSync(sidecarPath(bookDir, f.basename)));
+const current = withSidecar.filter((f) => !isStale(readSidecar(bookDir, f.basename)));
+const rowOnly = figures.filter((f) => !fs.existsSync(sidecarPath(bookDir, f.basename)) && mapped.has(f.basename));
+const neither = figures.filter((f) => !fs.existsSync(sidecarPath(bookDir, f.basename)) && !mapped.has(f.basename));
+console.log(`PREDICT enumerated(selected)=${withSidecar.length + rowOnly.length} deselected=${neither.length}`);
+console.log(`PREDICT skipped-current=${current.length} (stale sidecars: ${withSidecar.length - current.length})`);
+console.log(`PREDICT prepared = ${withSidecar.length - current.length + rowOnly.length}; recomposable-textless list = the ${rowOnly.length} row-only figures:`);
+for (const f of rowOnly) console.log(`  ${f.basename}`);
