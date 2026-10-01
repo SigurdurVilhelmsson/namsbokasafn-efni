@@ -143,7 +143,8 @@ export function verdict(tally, enumeratedCount, extra = {}) {
     reasons.push(
       `NOTE (not a failure): ${tally.unresolved} figure(s) unresolved — the artwork delivery has ` +
         `a hole here, or the run refused the artwork it found (two figures sharing one file, a ` +
-        `production page, or a known-superseded picture); the report names which`
+        `production page, a known-superseded picture, a retired figure, or an artwork pin that ` +
+        `does not hold); the report names which`
     );
   }
   // 🔴 Same shape, different cause: the artwork is present and carries text we could not decode.

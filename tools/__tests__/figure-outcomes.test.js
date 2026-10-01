@@ -126,6 +126,13 @@ describe('verdict', () => {
     expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(/unresolved/);
   });
 
+  it('names a retired figure and an artwork pin among the refusal causes (§C140 ㊵)', () => {
+    const t = { ...emptyTally(), translated: 5, unresolved: 3 };
+    expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(
+      /a retired figure, or an artwork pin that does not hold/
+    );
+  });
+
   // The spec's self-review caught this: a chapter of legitimate photographs translates zero
   // and is CORRECT. Failing it would train the operator to ignore the exit code.
   it('is ok when zero translated because nothing was translate-able', () => {
