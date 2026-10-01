@@ -32,7 +32,9 @@ export function validateFigureConfig(cfg, corpus) {
   const problems = [];
   const tables = {};
   for (const name of TABLES) {
-    const t = cfg[name] ?? {};
+    // Only an ABSENT table is empty. `?? {}` would also read a null one as empty, and the tools
+    // throw on a null table (retiredFigureNames), so the validator must refuse it, not pass it.
+    const t = cfg[name] === undefined ? {} : cfg[name];
     if (!isPlainObject(t)) problems.push(`${name} must be an object`);
     tables[name] = t;
   }

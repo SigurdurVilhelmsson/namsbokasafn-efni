@@ -205,6 +205,30 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
 
   it.each([
     [
+      'a retiredFigures table that is null',
+      (c) => {
+        c.retiredFigures = null;
+      },
+      null,
+      /retiredFigures must be an object/,
+    ],
+    [
+      'a supersededArtwork table that is null',
+      (c) => {
+        c.supersededArtwork = null;
+      },
+      null,
+      /supersededArtwork must be an object/,
+    ],
+    [
+      'an artworkPins table that is null',
+      (c) => {
+        c.artworkPins = null;
+      },
+      null,
+      /artworkPins must be an object/,
+    ],
+    [
       'a pin that is not an object',
       (c) => {
         c.artworkPins.CNX_Pin = 'x';
@@ -343,6 +367,14 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       'the same file under ANOTHER edition, which is a different file',
       (c) => {
         c.artworkPins.CNX_Other = { ...pinOf(c), edition: 'first-edition' };
+      },
+    ],
+    [
+      'a config with none of the three tables (an absent table is an empty one)',
+      (c) => {
+        delete c.supersededArtwork;
+        delete c.retiredFigures;
+        delete c.artworkPins;
       },
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
