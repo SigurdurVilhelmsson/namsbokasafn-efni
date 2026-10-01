@@ -151,16 +151,35 @@ def _norm_index(root, exts, memo):
 
 
 def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-                   size_of=page_size):
+                   size_of=page_size, *, retired=None):
     """-> {'path', 'edition'[, 'pageUnknown']} | None (a hole) | a refusal dict (see below).
 
     Precedence is over EDITIONS first, then over formats within an edition: a 2nd-edition EPS
     beats a 1st-edition PDF, because the edition is a question of WHICH PICTURE and the format
     only of how we read it.
 
-    A refusal is {'path': None, 'refused': 'superseded'|'production-page', 'edition',
+    Checked BEFORE any lookup, in this order (§C140 ㊵): `retired` (a ruling retired the
+    figure's TRANSLATED COPY), then `superseded` (its only vector is known to be superseded).
+
+    A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page', 'edition',
     'candidates': [{'path', 'page', 'paper'}], 'reason'}.
     """
+    # 🔴 §C140 ㊵ — A RETIRED FIGURE IS REFUSED FIRST, BEFORE `superseded` AND BEFORE ANY LOOKUP.
+    # Retired is about the TRANSLATED COPY: a [USER] ruling removed it, readers get OpenStax's own
+    # figure, and no run may make a translated copy again. Superseded is about the SOURCE drawing.
+    # A figure may be both (BlastFurn, Ques11ans). Checking retired first prints
+    # `REFUSED — retired`, so the chapter autorun's halt on `REFUSED — superseded` stops firing for
+    # a figure with nothing left to publish over. A key acts by its PRESENCE: an entry whose
+    # reason is empty still refuses.
+    if retired:
+        folded = {_normkey(k): v for k, v in retired.items()}
+        key = _normkey(basename)
+        if key in folded:
+            reason = folded[key]
+            return {'path': None, 'refused': 'retired', 'edition': None, 'candidates': [],
+                    'reason': reason if isinstance(reason, str) and reason.strip()
+                    else '(no reason recorded)'}
+
     # 🔴 KNOWN-SUPERSEDED ARTWORK IS REFUSED BEFORE ANY LOOKUP. The delivery can hold a figure the
     # published book has since redrawn; sourcing it produces correct Icelandic on the WRONG
     # ARRANGEMENT. Verified instance: CNX_Chem_19_03_Pattern_img.
@@ -248,17 +267,17 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
 
 def resolve(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-            size_of=page_size):
+            size_of=page_size, *, retired=None):
     """-> (Path, edition_key) for the authoritative source, or (None, None) for a hole or a
     refusal. `resolve_detail` says which."""
     d = resolve_detail(basename, trees, precedence, exts, superseded=superseded, _memo=_memo,
-                       size_of=size_of)
+                       size_of=size_of, retired=retired)
     if d and d.get('path'):
         return Path(d['path']), d['edition']
     return None, None
 
 
-def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None):
+def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, *, retired=None):
     """-> {name: resolve_detail(...)} — a hit, `None` for a hole, or a refusal dict.
 
     The JSON half of this tool's CLI, kept as a pure function so it can be tested against
@@ -274,11 +293,12 @@ def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None):
     out = {}
     memo = {}  # call-scoped: each tree indexed once for the whole batch
     for n in names:
-        out[n] = resolve_detail(n, trees, precedence, exts, superseded=superseded, _memo=memo)
+        out[n] = resolve_detail(n, trees, precedence, exts, superseded=superseded, _memo=memo,
+                                retired=retired)
     return out
 
 
-def human_report(names, trees, precedence, superseded=None):
+def human_report(names, trees, precedence, superseded=None, *, retired=None):
     """-> (lines, missing, refused) — the operator-facing half of this tool's CLI.
 
     🔴 A REFUSAL IS NOT "NOT FOUND" (§C140 ⑦). The file is in the delivery and was declined, and
@@ -287,7 +307,7 @@ def human_report(names, trees, precedence, superseded=None):
     corrects in the driver, so the two are printed and counted apart.
     """
     lines, missing, refused = [], 0, 0
-    report = resolve_report(names, trees, precedence, superseded=superseded)
+    report = resolve_report(names, trees, precedence, superseded=superseded, retired=retired)
     for n in names:
         d = report[n]
         if d and d.get('path'):
@@ -296,8 +316,9 @@ def human_report(names, trees, precedence, superseded=None):
             refused += 1
             lines.append(f"  {'REFUSED':14} {n:36} REFUSED — {d['refused']}: {d['reason']}")
             for c in d.get('candidates') or []:
-                lines.append(f"  {'':14} {'':36}   {c['path']}  "
-                             f"{c['page'][0]:g}×{c['page'][1]:g} pt ({c['paper']})")
+                size = (f"  {c['page'][0]:g}×{c['page'][1]:g} pt ({c['paper']})"
+                        if c.get('page') and c.get('paper') else '')
+                lines.append(f"  {'':14} {'':36}   {c['path']}{size}")
         else:
             missing += 1
             lines.append(f"  {'NOT FOUND':14} {n:36} -")
@@ -311,31 +332,39 @@ def human_report(names, trees, precedence, superseded=None):
     return lines, missing, refused
 
 
-def main(book, names):
-    cfg = load_config()
-    trees = load_trees(book, cfg)
-    lines, missing, refused = human_report(names, trees, cfg['editionPrecedence'],
-                                           superseded=cfg.get('supersededArtwork'))
-    print('\n'.join(lines))
-    # Non-zero whenever a name did not resolve, as before; the two count lines say which kind.
-    return 1 if (missing or refused) else 0
+def policy(cfg):
+    """-> the config's refusal tables as keyword arguments for `resolve_detail` and everything
+    above it. The ONE place a command-line path reads them (§C140 ㊵): a second copy is how one
+    mode comes to miss a table."""
+    return {'superseded': cfg.get('supersededArtwork'),
+            'retired': cfg.get('retiredFigures')}
 
 
-if __name__ == '__main__':
-    argv = sys.argv[1:]
+def run_cli(argv, cfg=None, out=print):
+    """Both command-line modes. -> the exit code; raises SystemExit(__doc__) on a usage error.
+
+    `--json <book> <names…>`: one JSON report per call, exit 0 even when names did not resolve.
+    A non-zero exit is reserved for a failure of the RESOLVER, which tools/figure-run.js must
+    treat as fatal.
+    `<book> <names…>`: the human report, exit 1 whenever a name did not resolve; the two count
+    lines say which kind.
+    """
     as_json = bool(argv) and argv[0] == '--json'
     if as_json:
         argv = argv[1:]
     if len(argv) < 2:
-        sys.exit(__doc__)
+        raise SystemExit(__doc__)
+    cfg = load_config() if cfg is None else cfg
+    trees = load_trees(argv[0], cfg)
+    precedence = cfg['editionPrecedence']
     if as_json:
-        cfg = load_config()
-        trees = load_trees(argv[0], cfg)
-        report = resolve_report(argv[1:], trees, cfg['editionPrecedence'],
-                                superseded=cfg.get('supersededArtwork'))
-        print(json.dumps(report, ensure_ascii=False))
-        # Exit 0 even when names went unresolved: see resolve_report's docstring. A
-        # non-zero exit here is reserved for a failure of the RESOLVER, which the caller
-        # must treat as fatal.
-        sys.exit(0)
-    sys.exit(main(argv[0], argv[1:]))
+        out(json.dumps(resolve_report(argv[1:], trees, precedence, **policy(cfg)),
+                       ensure_ascii=False))
+        return 0
+    lines, missing, refused = human_report(argv[1:], trees, precedence, **policy(cfg))
+    out('\n'.join(lines))
+    return 1 if (missing or refused) else 0
+
+
+if __name__ == '__main__':
+    sys.exit(run_cli(sys.argv[1:]))

@@ -308,6 +308,94 @@ with tempfile.TemporaryDirectory() as td:
 
 
 # ---------------------------------------------------------------------------
+# §C140 ㊵ — A RETIRED FIGURE IS REFUSED FIRST: before `superseded`, before any lookup.
+# Retired is about the TRANSLATED COPY (removed by a ruling); superseded is about the SOURCE
+# drawing. A figure may be in both, and retired wins so the chapter autorun's halt on
+# `REFUSED — superseded` stops firing for a figure with nothing left to publish over.
+# ---------------------------------------------------------------------------
+import json
+
+with tempfile.TemporaryDirectory() as td:
+    td = Path(td)
+    old, new = td / 'first-edition', td / 'updates-2e'
+    old.mkdir(); new.mkdir()
+    trees = {'first-edition': str(old), 'updates-2e': str(new)}
+    prec = ['updates-2e', 'first-edition']
+    make_eps(old / 'CNX_Ret.eps', 300, 200)
+    make_eps(old / 'CNX_Other.eps', 300, 200)
+    R = {'CNX_Ret': 'retired by a test ruling: readers get the English figure instead'}
+    SUP = {'CNX_Ret': 'its only vector is known to be superseded (a test reason)'}
+
+    d = resolve_detail('CNX_Ret', trees, prec, retired=R)
+    check('㊵ a retired figure is refused before any lookup, with its reason',
+          (d['path'], d['refused'], d['edition'], d['reason']), (None, 'retired', None, R['CNX_Ret']))
+    check('㊵ CONTROL: without the table the same figure resolves',
+          Path(resolve_detail('CNX_Ret', trees, prec)['path']).name, 'CNX_Ret.eps')
+    check('㊵ retired is checked BEFORE superseded: a figure may be in both',
+          resolve_detail('CNX_Ret', trees, prec, superseded=SUP, retired=R)['refused'], 'retired')
+    check('㊵ CONTROL: superseded alone still refuses as superseded',
+          resolve_detail('CNX_Ret', trees, prec, superseded=SUP)['refused'], 'superseded')
+    check('㊵ retired keys fold case and punctuation, like the lookup',
+          resolve_detail('cnx-ret', trees, prec, retired=R)['refused'], 'retired')
+    d = resolve_detail('CNX_Ret', trees, prec, retired={'CNX_Ret': ''})
+    check('㊵ an entry acts by its PRESENCE: an empty reason still refuses',
+          (d['refused'], d['reason']), ('retired', '(no reason recorded)'))
+    check('㊵ CONTROL: another figure is untouched by the table',
+          Path(resolve_detail('CNX_Other', trees, prec, retired=R)['path']).name, 'CNX_Other.eps')
+    check('㊵ resolve() returns (None, None) for a retired figure',
+          resolve('CNX_Ret', trees, prec, retired=R), (None, None))
+    check('㊵ resolve_report carries the retired refusal',
+          resolve_report(['CNX_Ret'], trees, prec, retired=R)['CNX_Ret']['refused'], 'retired')
+    lines, missing, refused = human_report(['CNX_Ret', 'CNX_Other'], trees, prec, retired=R)
+    check('㊵ the human report prints REFUSED — retired with its reason, and counts it',
+          (any('REFUSED — retired: retired by a test ruling' in l for l in lines), missing, refused),
+          (True, 0, 1))
+
+    # ONE function runs both command-line modes. The seam is a synthetic config whose
+    # sourceTreesFile is an ABSOLUTE path: load_trees joins it onto HERE, and an absolute path
+    # wins a pathlib join.
+    local = td / 'sources.local.json'
+    local.write_text(json.dumps({'testbook': trees}))
+    cfg = {'editionPrecedence': prec, 'sourceTreesFile': str(local),
+           'supersededArtwork': {}, 'retiredFigures': R}
+    check('㊵ policy() takes its tables from the config',
+          S.policy({'supersededArtwork': 1, 'retiredFigures': 2}), {'superseded': 1, 'retired': 2})
+    out = []
+    rc = S.run_cli(['--json', 'testbook', 'CNX_Ret', 'CNX_Other'], cfg=cfg, out=out.append)
+    rep = json.loads(out[0])
+    check('㊵ run_cli --json applies retiredFigures, leaves the control alone, and exits 0',
+          (rc, rep['CNX_Ret']['refused'], Path(rep['CNX_Other']['path']).name),
+          (0, 'retired', 'CNX_Other.eps'))
+    out = []
+    rc = S.run_cli(['testbook', 'CNX_Ret', 'CNX_Other'], cfg=cfg, out=out.append)
+    check('㊵ run_cli human mode applies it too, and exits 1 on the refusal',
+          (rc, 'REFUSED — retired' in out[0], 'CNX_Other.eps' in out[0]), (1, True, True))
+    out = []
+    S.run_cli(['--json', 'testbook', 'CNX_Ret'], cfg=dict(cfg, retiredFigures={}), out=out.append)
+    check('㊵ CONTROL: run_cli without the entry resolves the figure',
+          Path(json.loads(out[0])['CNX_Ret']['path']).name, 'CNX_Ret.eps')
+    try:
+        S.run_cli(['--json', 'testbook'], cfg=cfg, out=out.append)
+        raised = 'returned'
+    except SystemExit as exc:
+        raised = str(exc)
+    check('㊵ run_cli with too few arguments exits with the usage text',
+          raised.startswith('Resolve a figure basename'), True)
+
+# §C140 ㊵ — THE SAME LITERAL TABLE AS tools/__tests__/figure-text-config.test.js. Two implementations
+# of one fold (sources._normkey and the JS normkey) are kept in agreement by pinning both to it.
+_NORMKEY_CASES = [
+    ('CNX_Chem_12_07_Cat Convert', 'cnxchem1207catconvert'),
+    ('CNX_Chem_21_03_RadioDecay-e619', 'cnxchem2103radiodecaye619'),
+    ('Figure 14_03_ICETable2_img', 'figure1403icetable2img'),
+    ('CNX_Chem_08_02_sp3d_img', 'cnxchem0802sp3dimg'),
+    ('Ö_Ð-þ²', 'öðþ²'),
+]
+check('㊵ _normkey matches the case table the JS normkey is pinned to',
+      [S._normkey(a) for a, _ in _NORMKEY_CASES], [b for _, b in _NORMKEY_CASES])
+
+
+# ---------------------------------------------------------------------------
 # The shipped list is DATA, and its integrity is checkable without a machine's
 # artwork trees: an entry whose value is empty is a permanent hole nobody can
 # later evaluate, which is the whole reason the value is the reason.
