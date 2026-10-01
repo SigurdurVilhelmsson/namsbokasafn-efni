@@ -496,10 +496,10 @@ describe('retire-translated-figure --prune (§C140 ㊵)', () => {
     expect(fx.snapshot()).toEqual(before);
   });
 
-  // ── Added beyond the brief ─────────────────────────────────────────────────────────────────────
-  // In the brief's rows CNX_B is kept for TWO reasons at once (mapped AND referenced), the counts
+  // ── One failing case per keep reason and per safety condition ──────────────────────────────────
+  // In the rows above, CNX_B is kept for TWO reasons at once (mapped AND referenced), the counts
   // line has no row of its own, and a rollback that exits 1 with the tree unchanged is also what a
-  // refusal looks like. These pin each keep reason and each safety condition on its own.
+  // refusal looks like. Each row below isolates one of these.
 
   it('prints the plan counts, lists no keep line for a mapped copy, and says it was a dry run', () => {
     const fx = retiredAndRerendered();
@@ -658,6 +658,35 @@ describe('retire-translated-figure --prune (§C140 ㊵)', () => {
     // The message is true: the copy deleted before the failure is still gone, and git still holds it.
     expect(fx.exists(COPY_A)).toBe(false);
     expect(fx.git('ls-files', COPY_A).trim()).toBe(COPY_A);
+  });
+
+  it('a failure on the third deletion restores BOTH copies already deleted, not just one', () => {
+    const fx = retiredAndRerendered({
+      [`${PUB}/images/media/CNX_Old1${S}.svg`]: '<svg>1</svg>',
+      [`${PUB}/images/media/CNX_Old2${S}.svg`]: '<svg>2</svg>',
+    });
+    const before = fx.snapshot();
+    let calls = 0;
+    const unlink = (p) => {
+      calls += 1;
+      if (calls === 3) throw Object.assign(new Error('EACCES: simulated'), { code: 'EACCES' });
+      fs.unlinkSync(p);
+    };
+    const r = runTool(fx, ['--book', 'b', '--prune', '--apply'], { unlink });
+    // Control: two copies really were deleted before the fault, so a restore of only one would show.
+    expect(calls).toBe(3);
+    expect(r.code).toBe(1);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  it('the counts line says how many KEPT copies are mapped, not how many are kept', () => {
+    const fx = retiredAndRerendered();
+    // Kept, but not for being mapped: nothing tracks it.
+    fx.write(`${PUB}/images/media/CNX_Z${S}.svg`, '<svg/>');
+    const r = runTool(fx, ['--book', 'b', '--prune']);
+    expect(r.out.split('\n')[0]).toBe(
+      '3 published translated copies: 1 to delete, 2 kept (1 still mapped).'
+    );
   });
 
   it('--apply says what it deleted, one line per copy, and how many', () => {
