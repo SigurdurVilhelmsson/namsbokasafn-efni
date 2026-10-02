@@ -120,7 +120,9 @@ function fakeSpawn(plan = {}) {
       return {
         status: 0,
         stderr: '',
-        stdout: JSON.stringify([{ svg: 'a.svg', viewBox: [0, 0, 351, 174], candidates }]),
+        stdout: JSON.stringify([
+          { svg: 'a.svg', viewBox: plan.viewBox || [0, 0, 351, 174], candidates },
+        ]),
       };
     }
     if (sub === 'gate') {
@@ -242,8 +244,53 @@ describe('applyRingGate — fail-closed', () => {
       expect(artworkNow()).toBe(ARTWORK);
       expect((rec.ringWarnings || []).join(' ')).toContain(expected);
       expect(rec.rings ? rec.rings.approved : []).toEqual([]);
+      // §C140 ㊼ — and it is MARKED, so the run's verdict cannot read ok.
+      expect(rec.ringGateFailed).toBe(true);
     });
   }
+
+  // §C140 ㊼ — the two failure exits the table above does not reach.
+  it('marks a figure whose artwork has no usable viewBox as not gated', () => {
+    writeArtwork();
+    const spawn = fakeSpawn({
+      candidates: ['mask-2'],
+      approved: ['mask-2'],
+      viewBox: [0, 0, 0, 0],
+    });
+    const rec = applyRingGate({ basename: 'b' }, outDir, { spawn });
+    expect(artworkNow()).toBe(ARTWORK);
+    expect(rec.ringWarnings.join(' ')).toContain('no usable viewBox');
+    expect(rec.ringGateFailed).toBe(true);
+  });
+  it('marks a figure whose gated heal failed as not gated', () => {
+    writeArtwork();
+    const spawn = fakeSpawn({
+      candidates: ['mask-2'],
+      approved: ['mask-2'],
+      fail: { gatedHeal: true },
+    });
+    const rec = applyRingGate({ basename: 'b' }, outDir, { spawn });
+    expect(rec.ringGateFailed).toBe(true);
+  });
+
+  // 🔴 §C140 ㊼ CONTROLS — a DECISION is not a failure. A heal, a refusal, a clean census, a dry
+  // run's candidate list and a raster figure must leave the mark unset, or every run turns red.
+  it('does NOT mark a figure the gate decided about, nor a dry run, nor a figure with nothing to gate', () => {
+    const decided = [
+      ['healed', { candidates: ['mask-2'], approved: ['mask-2'] }, {}],
+      ['refused', { candidates: ['mask-491'], approved: [] }, {}],
+      ['clean census', { candidates: [] }, {}],
+      ['dry run with a candidate', { candidates: ['mask-2'] }, { dryRun: true }],
+    ];
+    for (const [name, plan, opts] of decided) {
+      writeArtwork();
+      const rec = applyRingGate({ basename: 'b' }, outDir, { spawn: fakeSpawn(plan), ...opts });
+      expect(rec.ringGateFailed, name).toBeUndefined();
+    }
+    fs.rmSync(path.join(outDir, 'artwork.svg'));
+    const raster = applyRingGate({ basename: 'b' }, outDir, { spawn: fakeSpawn({}) });
+    expect(raster.ringGateFailed, 'no cairo artwork').toBeUndefined();
+  });
 
   // 🔴 A FAIL-CLOSED WARNING THAT DROPS THE CHILD'S STDERR HIDES THE CAUSE. On 2026-09-15 a box
   // whose `pylibs/` lacked numpy printed "could not build the counterfactual heal (exit 1)" and

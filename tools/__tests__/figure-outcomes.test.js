@@ -353,3 +353,23 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
     expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(4);
   });
 });
+
+// 🔴 §C140 ㊼ — a ring gate that could not run is FATAL to the verdict (a human must look), unlike
+// the NOTEs: the figure goes on unhealed, which is right for the figure and wrong for a green run.
+describe('verdict fails a run whose ring gate could not run', () => {
+  const sum = (t) => Object.values(t).reduce((n, x) => n + x, 0);
+  it('one figure is enough, and the reason is not a NOTE', () => {
+    const t = { ...emptyTally(), translated: 3 };
+    const v = verdict(t, sum(t), { ringGateFailedFigures: 1 });
+    expect(v.ok).toBe(false);
+    const ring = v.reasons.filter((r) => r.includes('ring gate could not run'));
+    expect(ring).toHaveLength(1);
+    expect(ring[0]).toMatch(/^1 figure\(s\)/);
+  });
+  it('CONTROL: the same run without it is ok and names no ring gate', () => {
+    const t = { ...emptyTally(), translated: 3 };
+    const v = verdict(t, sum(t), { ringGateFailedFigures: 0 });
+    expect(v.ok).toBe(true);
+    expect(v.reasons.some((r) => r.includes('ring gate'))).toBe(false);
+  });
+});

@@ -122,9 +122,11 @@ export function tallyOutcome(tally, outcome) {
  * @param {Record<string, number>} tally
  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
  * @param {{undecodedFigures?: number, undecodedLabels?: number, unformattedFigures?: number,
- *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number}} [extra]
- *   counted over the records, not derivable from the tally. The last four are `translated`
- *   figures whose compose.json carried a non-empty list of that name (§C140).
+ *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number,
+ *   ringGateFailedFigures?: number}} [extra]
+ *   counted over the records, not derivable from the tally. `unformattedFigures` through
+ *   `containerErrorFigures` are `translated` figures whose compose.json carried a non-empty list
+ *   of that name (§C140); `ringGateFailedFigures` are figures whose ring gate could not run (㊼).
  * @returns {{ok: boolean, reasons: string[]}}
  */
 export function verdict(tally, enumeratedCount, extra = {}) {
@@ -215,6 +217,20 @@ export function verdict(tally, enumeratedCount, extra = {}) {
   ];
   for (const [count, message] of composeNotes) {
     if (count > 0) reasons.push(`NOTE (not a failure): ${message(count)}`);
+  }
+
+  // 🔴 §C140 ㊼ — A RING GATE THAT COULD NOT RUN IS FATAL TO THE VERDICT, NOT TO THE FIGURE.
+  // `applyRingGate` never blocks a figure and never heals on a guess, so the figure goes on with
+  // its artwork unhealed. That is right for the figure, and it is exactly why the RUN must not say
+  // ok: on 2026-09-15 a box without numpy shipped a visible ring under `VERDICT ok`. Unlike the
+  // NOTEs above this is not a standing property of the corpus that would make every run red
+  // (R9); it fires only when a tool or the box is broken, and a human has to look.
+  const ringGateFailedFigures = extra.ringGateFailedFigures || 0;
+  if (ringGateFailedFigures > 0) {
+    reasons.push(
+      `${ringGateFailedFigures} figure(s) whose soft-mask ring gate could not run — their artwork ` +
+        `was left unhealed; the report's ring-gate section names each cause`
+    );
   }
 
   // The predicate is deliberately NOT `translated === 0 && figures > 0`: a chapter whose
