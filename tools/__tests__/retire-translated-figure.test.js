@@ -246,6 +246,39 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(r.out).toMatch(/nothing to retire: no mapping row, no translated copy/);
   });
 
+  // The rule's "or WRITE" half: a write-only retire — a row to remove, no copy to delete — must also
+  // find the mapping tracked and unmodified. Every dirty-mapping test above also had a copy to
+  // delete, so a gate keyed on deletions alone passed them all (the FR-I1-acts survivor).
+  const writeOnlyBook = () => {
+    const fx = standardBook();
+    fx.git('rm', '-q', `books/b/media/CNX_A${S}.svg`);
+    fx.git('commit', '-qm', 'CNX_A keeps its row and has no copy');
+    return fx;
+  };
+
+  it.each([
+    ['a dry run', []],
+    ['--apply', ['--apply']],
+  ])('refuses a WRITE-ONLY retire over an uncommitted mapping, in %s too', (_mode, extra) => {
+    const fx = writeOnlyBook();
+    const dirty =
+      JSON.stringify([ROW('CNX_A'), ROW('CNX_B'), LEGACY, ROW('CNX_NEW')], null, 2) + '\n';
+    fx.write(MAPPING, dirty);
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', ...extra]);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/image-mapping\.json: must exist, tracked by git and unmodified/);
+    expect(fx.read(MAPPING)).toBe(dirty);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  it('CONTROL: the same write-only retire over a committed mapping runs, and removes the row', () => {
+    const fx = writeOnlyBook();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+    expect(r.code).toBe(0);
+    expect(JSON.parse(fx.read(MAPPING))).toEqual([ROW('CNX_B'), LEGACY]);
+  });
+
   // DS-3: the --prune "mapped" rule, applied to the retire. A row the retire KEEPS — any row it does
   // not remove, a legacy figureId row included — must not be left naming a file the retire deleted.
   it('refuses to delete a file a KEPT row still names, a legacy row included, and deletes nothing', () => {

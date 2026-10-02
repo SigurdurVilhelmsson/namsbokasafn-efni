@@ -83,8 +83,8 @@ lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-de
    runs unless `--apply`. A retire that would delete or write anything refuses unless
    `image-mapping.json` is tracked and unmodified in git (commit it first, so a failed retire is restored
    exactly), and it never deletes a file that a row it keeps, a legacy `figureId` row included, still
-   names. Neither mode deletes a copy git does not track as a plain, unmodified file: an
-   assume-unchanged or skip-worktree copy is kept.
+   names. Neither mode deletes a copy git does not track as a plain, unmodified file: `--prune`
+   keeps an assume-unchanged or skip-worktree copy, and `--retire` refuses to run.
 2. **`supersededArtwork`** — the only vector in the delivery is known to be superseded by the published
    figure: refused as `superseded`. A figure may be in both 1 and 2; retired wins. Like the other two
    tables, a key acts by its presence: an entry whose reason is empty or null still refuses.
