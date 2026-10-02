@@ -63,14 +63,24 @@ export function validateFigureConfig(cfg, corpus) {
     }
   }
 
-  // Every key is EXACTLY the basename of an image in exactly one book's source.
+  // Every key is EXACTLY the basename of an image in exactly one book's source, and no other book
+  // holds an image that FOLDS onto it. The tables are global and sources.py matches a key after the
+  // fold, so a twin spelt differently in a second book would be retired, superseded or pinned there
+  // too, at run time, while an exact-match rule here passed it (R5, amended 2026-10-02).
   const books = Object.entries(corpus.basenamesByBook);
+  const foldsByBook = books.map(([b, set]) => [b, new Set([...set].map(normkey))]);
   for (const name of TABLES) {
     for (const k of Object.keys(tables[name])) {
       const owners = books.filter(([, set]) => set.has(k)).map(([b]) => b);
-      if (owners.length !== 1) {
+      const foldOwners = foldsByBook.filter(([, f]) => f.has(normkey(k))).map(([b]) => b);
+      if (owners.length !== 1 || foldOwners.length !== 1) {
+        const twins = foldOwners.filter((b) => !owners.includes(b));
         problems.push(
-          `${name}.${k} names an image in ${owners.length} books' source (${owners.join(', ') || 'none'}); it must be exactly one`
+          `${name}.${k} names an image in ${owners.length} books' source (${owners.join(', ') || 'none'})` +
+            (twins.length
+              ? `; it folds onto a differently spelt image in ${twins.join(', ')}`
+              : '') +
+            '; it must be exactly one book, by exact name and by fold'
         );
       }
     }

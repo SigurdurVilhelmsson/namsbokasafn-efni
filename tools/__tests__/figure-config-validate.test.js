@@ -422,6 +422,30 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
     mutateCfg(c);
     expect(validateFigureConfig(c, baseCorpus())).toEqual([]);
   });
+
+  // R5: the tables are global and sources.py matches a key after the FOLD, so a key exact in one
+  // book that folds onto a differently spelt image in another would be applied to BOTH books' figures
+  // at run time — while an exact-match owner rule passed it. Measured: 11 such groups, physics
+  // against biology, 0 in chemistry. The rule therefore counts fold owners too.
+  const twoBooks = (bio) => ({
+    suffix: S,
+    basenamesByBook: {
+      'edlisfraedi-2e': new Set(['Figure 26_01_02']),
+      'liffraedi-2e': new Set([bio]),
+    },
+    retiredState: { 'Figure 26_01_02': { rows: 0, translatedCopies: [] } },
+  });
+  const retiredOnly = { editionPrecedence: [], retiredFigures: { 'Figure 26_01_02': R } };
+
+  it('refuses a key exact in one book that FOLDS onto a different spelling in another', () => {
+    expect(validateFigureConfig(retiredOnly, twoBooks('Figure_26_01_02')).join('\n')).toMatch(
+      /retiredFigures\.Figure 26_01_02 names an image in 1 books' source \(edlisfraedi-2e\); it folds onto a differently spelt image in liffraedi-2e/
+    );
+  });
+
+  it('CONTROL: the same key passes when the other book holds only a look-alike that does NOT fold', () => {
+    expect(validateFigureConfig(retiredOnly, twoBooks('Figure_26_01_03'))).toEqual([]);
+  });
 });
 
 describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)', () => {
