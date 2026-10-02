@@ -104,9 +104,17 @@ print `ALL PASS`) must be fixed first, or [USER] rules that it may be relaxed fo
    (`npx vitest run <its test file>`), then the pre-buy lineup.
 2. `figure-run.js --book efnafraedi-2e --chapter <N> --figure <name>`, without `--stale`.
 3. Keep the pin only if the buy wrote a sidecar; otherwise revert it before anything else runs.
+   ✏️ *Amended 2026-10-02, after the buys (register §C140 ㊽).* The sidecar test is whether the `.is.json` file
+   exists; a stranded `.is.json.tmp` is not a sidecar. Once a sidecar exists the pin is mandatory, because every
+   later compose resolves the artwork again. A partial sidecar (verify failed) is deleted and re-bought, never
+   committed. **Before step 4, compare the new copy with the copy it replaces, by eye, in Chromium and Firefox:**
+   a composition under `VERDICT ok` can be worse, and catalyst's was. To discard a buy, restore the media copy
+   from `HEAD`, delete the uncommitted sidecar (otherwise a later `--stale` recompose rebuilds it) and revert the
+   pin, then show with a plain and a `--stale` dry run that the figure reads `unresolved`.
 4. Commit the pin, the sidecar and the new translated copy. No re-inject (the row is unchanged); the page updates
    in ②'s re-render.
 5. Ibuprofen's faithful-track copy follows the [LEAD] ruling on the faithful overlay (② is mt-preview only).
+   ✏️ *Amended 2026-10-02: moot. [USER] kept ibuprofen's June copy, so it was not bought (register §C140 ㊵).*
 
 ## Known limits
 
