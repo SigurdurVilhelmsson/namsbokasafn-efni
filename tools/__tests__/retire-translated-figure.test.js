@@ -111,6 +111,44 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(r.err).toMatch(/no retiredFigures entry/);
   });
 
+  // F1: the test above passes for ANY set lacking CNX_A — an empty one, or the superseded table read
+  // by mistake. A config holding both tables tells them apart: only retiredFigures authorises a retire.
+  describe('the CLI default reads retiredFigures from the config at configPath, and nothing else', () => {
+    const config = () => {
+      const file = path.join(makeTmpDir('c40-config-'), 'figure-text.config.json');
+      fs.writeFileSync(
+        file,
+        JSON.stringify({
+          supersededArtwork: {
+            CNX_B: 'superseded in this test config, never ruled retired (test)',
+          },
+          retiredFigures: { CNX_A: 'retired in this test config by a test ruling, for this test' },
+        })
+      );
+      return file;
+    };
+
+    it('accepts a name its retiredFigures holds', () => {
+      const fx = standardBook();
+      const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A'], {
+        retired: undefined,
+        configPath: config(),
+      });
+      expect(r.code).toBe(0);
+      expect(r.out).toMatch(/would remove: 1 mapping row\(s\)/);
+    });
+
+    it('refuses a name only its supersededArtwork holds', () => {
+      const fx = standardBook();
+      const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_B'], {
+        retired: undefined,
+        configPath: config(),
+      });
+      expect(r.code).toBe(1);
+      expect(r.err).toMatch(/CNX_B: no retiredFigures entry/);
+    });
+  });
+
   it('refuses a name this book does not use (wrong --book), rather than reporting a no-op', () => {
     const fx = standardBook({
       'books/b2/01-source/ch01/m1.cnxml': '<image src="../../media/CNX_Q.jpg"/>',
@@ -136,6 +174,82 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(r.err).toMatch(/is not valid JSON/);
     expect(fx.read('books/b/media/image-mapping.json')).toBe('{not json');
   });
+
+  // ── The mapping rule (spec D9, amended 2026-10-02) ──────────────────────────────────────────────
+  // Whenever a retire would delete or write anything, the mapping must exist, tracked by git and
+  // unmodified, so that a failed retire, and "restore by hand from git" after a double fault, are
+  // exact. Read as "no rows", a missing mapping deleted the copy, removed no row and printed Done.
+  it('refuses a tracked mapping deleted from the working tree, rather than reading it as no rows', () => {
+    const fx = standardBook();
+    fs.unlinkSync(path.join(fx.booksRoot, 'b', 'media', 'image-mapping.json'));
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/image-mapping\.json: must exist, tracked by git and unmodified/);
+    expect(r.err).toMatch(/commit it first/);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  it.each([
+    ['a dry run', []],
+    ['--apply', ['--apply']],
+  ])('refuses a mapping with an uncommitted extra row, in %s too', (_mode, extra) => {
+    const fx = standardBook();
+    fx.write(
+      'books/b/media/image-mapping.json',
+      JSON.stringify([ROW('CNX_A'), ROW('CNX_B'), LEGACY, ROW('CNX_NEW')], null, 2) + '\n'
+    );
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', ...extra]);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/image-mapping\.json: must exist, tracked by git and unmodified/);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  it('CONTROL: a book with no mapping and nothing to delete still runs its census dry run', () => {
+    const fx = makeGitFixture({
+      'books/b/01-source/ch01/m1.cnxml': '<image src="../../media/CNX_A.jpg"/>',
+    });
+    expect(fx.exists('books/b/media/image-mapping.json')).toBe(false); // control: the premise holds
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A']);
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(/nothing to retire: no mapping row, no translated copy/);
+  });
+
+  // DS-3: the --prune "mapped" rule, applied to the retire. A row the retire KEEPS — any row it does
+  // not remove, a legacy figureId row included — must not be left naming a file the retire deleted.
+  it('refuses to delete a file a KEPT row still names, a legacy row included, and deletes nothing', () => {
+    const fx = standardBook({
+      'books/b/media/image-mapping.json':
+        JSON.stringify(
+          [ROW('CNX_A'), { figureId: 'fig-ch01_01_01', outputName: `CNX_A${S}.png` }],
+          null,
+          2
+        ) + '\n',
+      [`books/b/media/CNX_A${S}.png`]: 'png',
+    });
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/media\/CNX_A\S*\.png is still named by a mapping row this retire keeps/);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  // DS-2: `git diff` does not see an edit to an assume-unchanged or skip-worktree file, and
+  // `git restore` cannot restore a skip-worktree path, so neither is a backup a deletion can rely on.
+  it.each([['--assume-unchanged'], ['--skip-worktree']])(
+    'refuses to delete a copy flagged %s, whose edit git cannot see',
+    (flag) => {
+      const fx = standardBook();
+      fx.git('update-index', flag, `books/b/media/CNX_A${S}.svg`);
+      fx.write(`books/b/media/CNX_A${S}.svg`, '<svg>edited after the flag</svg>');
+      const before = fx.snapshot();
+      const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+      expect(r.code).toBe(1);
+      expect(r.err).toMatch(/CNX_A\S*\.svg: not tracked by git, or modified/);
+      expect(fx.snapshot()).toEqual(before);
+    }
+  );
 
   it('refuses a row whose outputName would reach outside media/', () => {
     const bad = { originalImage: 'CNX_A', outputName: `../CNX_A${S}.svg`, extension: '.svg' };
@@ -342,6 +456,7 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     [['--book', 'b', '--retire', '--apply'], /--retire needs a value, and got "--apply"/],
     [['--book', 'b', '--retire', ','], /--retire needs at least one name/],
     [['--book', 'b'], /exactly one of --retire/],
+    [['--book', 'b', '--prune', '--book', 'b2'], /--book given twice/],
   ])('refuses usage %j with exit 2 and writes nothing', (argv, reason) => {
     const fx = standardBook();
     const before = fx.snapshot();
@@ -546,6 +661,19 @@ describe('retire-translated-figure --prune (§C140 ㊵)', () => {
     expect(fx.read(COPY_A)).toBe('<svg>edited since the last commit</svg>');
     expect(r.out).toMatch(/keep .*CNX_A.* not tracked by git, or modified/);
   });
+
+  it.each([['--assume-unchanged'], ['--skip-worktree']])(
+    'keeps a copy flagged %s — git cannot see its edit, so it is no backup',
+    (flag) => {
+      const fx = retiredAndRerendered();
+      fx.git('update-index', flag, COPY_A);
+      fx.write(COPY_A, '<svg>edited after the flag</svg>');
+      const r = runTool(fx, ['--book', 'b', '--prune', '--apply']);
+      expect(r.code).toBe(0);
+      expect(fx.read(COPY_A)).toBe('<svg>edited after the flag</svg>');
+      expect(r.out).toMatch(/keep .*CNX_A.* not tracked by git, or modified/);
+    }
+  );
 
   it('names the first referrer and counts the rest', () => {
     const fx = retiredAndRerendered();

@@ -120,6 +120,56 @@ describe('findReferences — one corpus, one predicate (spec D13)', () => {
     expect(hits.get(`CNX_A${S}.`)).toEqual([]);
   });
 
+  // CP-1: only the figure copies are skipped, i.e. a translated name in a directory named `media`.
+  // A page, JSON or CNXML file whose own stem ends in the suffix is a referrer like any other.
+  it('scans a page whose own name ends in the suffix; a copy in images/media/ is still skipped', () => {
+    const f = fx();
+    f.write(
+      `${PUB}/glossary${S}.html`,
+      `<img src="/content/b/chapters/01/images/media/CNX_H${S}.svg">`
+    );
+    const hits = findReferences({
+      repoRoot: f.root,
+      bookRel: 'books/b',
+      needles: needles('CNX_H', 'CNX_E'),
+      suffix: S,
+    });
+    expect(hits.get(`CNX_H${S}.`)).toEqual([`${PUB}/glossary${S}.html`]);
+    // CONTROL: the copy CNX_D's text names CNX_E's copy, and it sits in images/media/, so it is not read.
+    expect(hits.get(`CNX_E${S}.`)).toEqual([]);
+  });
+
+  it('scans a NON-translated .svg outside media/: the skip is for the copies, not for a format', () => {
+    const f = fx();
+    f.write(`${PUB}/diagram.svg`, `<svg><image href="images/media/CNX_K${S}.svg"/></svg>`);
+    const hits = findReferences({
+      repoRoot: f.root,
+      bookRel: 'books/b',
+      needles: needles('CNX_K'),
+      suffix: S,
+    });
+    expect(hits.get(`CNX_K${S}.`)).toEqual([`${PUB}/diagram.svg`]);
+  });
+
+  it('rethrows a read error other than ENOENT: an unreadable referrer must not make a copy look orphaned', () => {
+    const f = fx();
+    const readFile = (file, enc) => {
+      if (file.endsWith('1-1-page.html')) {
+        throw Object.assign(new Error('EACCES: simulated'), { code: 'EACCES' });
+      }
+      return fs.readFileSync(file, enc);
+    };
+    expect(() =>
+      findReferences({
+        repoRoot: f.root,
+        bookRel: 'books/b',
+        needles: needles('CNX_A'),
+        suffix: S,
+        readFile,
+      })
+    ).toThrow(/EACCES: simulated/);
+  });
+
   it('gitVisibleFiles throws outside a git repository rather than returning nothing', () => {
     const notRepo = makeTmpDir('c40-norepo-');
     expect(() => gitVisibleFiles(notRepo, ['books'])).toThrow(/git ls-files failed/);

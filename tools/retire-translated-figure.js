@@ -19,7 +19,9 @@
  *                     read — a missing media/ folder included.
  *
  * Both are DRY RUNS unless --apply is given. Every file deleted is one git tracks unmodified, so
- * git is the backup; a failure part-way restores the mapping and every file already deleted.
+ * git is the backup; a failure part-way restores the mapping and every file already deleted. A
+ * retire that would delete or write anything also needs the mapping itself tracked and unmodified:
+ * commit it first, and git can restore it exactly.
  *
  * Usage:
  *   node tools/retire-translated-figure.js --book <slug> --retire <name>[,<name>…] [--apply]
@@ -31,6 +33,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { DEFAULT_SUFFIX, indexBookSourceBasenames } from './generate-image-mapping.js';
 import { escapesMediaDir } from './publish-figure-svg.js';
@@ -49,6 +52,9 @@ import {
 } from './lib/translated-figure-refs.js';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/** The sidecar's path comes from its owner, never spelled out here: a moved layout must not fail open. */
+const { sidecarPath } = createRequire(import.meta.url)('./lib/figure-text-sidecar.cjs');
 
 /** Every flag this tool accepts. An argv token outside it is a typo, not a no-op. */
 const KNOWN_FLAGS = new Set(['--book', '--retire', '--prune', '--apply', '--help', '-h']);
@@ -94,8 +100,15 @@ export function parseCli(argv) {
       );
     }
     i += 1;
-    if (token === '--book') args.book = value;
-    else
+    if (token === '--book') {
+      // A second --book used to win silently, so `--prune` could act on a book nobody meant.
+      if (args.book !== null) {
+        throw new CliError(
+          `--book given twice (${JSON.stringify(args.book)} and ${JSON.stringify(value)}): a run acts on one book`
+        );
+      }
+      args.book = value;
+    } else
       args.retire = [
         ...(args.retire ?? []),
         ...value
@@ -134,6 +147,10 @@ export function planRetire({
   const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
   let rows;
   try {
+    // A MISSING mapping reads as "no rows" here only so that the census dry run works on a book with
+    // no mapping. Whenever the retire would delete or write anything, the gate at the end of this
+    // function requires the mapping to exist, tracked by git and unmodified — as a missing one is
+    // also, from git's side, a modified one, a mapping deleted from the working tree is refused there.
     rows = readMappingOrRefuse(mappingPath, { allowMissing: true });
   } catch (err) {
     return { refusals: [err.message] };
@@ -154,7 +171,7 @@ export function planRetire({
       refusals.push(`${name}: no image of that name in ${book}'s source CNXML — wrong --book?`);
       continue;
     }
-    if (fs.existsSync(path.join(bookDir, 'figure-text', `${name}.is.json`))) {
+    if (fs.existsSync(sidecarPath(bookDir, name))) {
       refusals.push(
         `${name}: has a sidecar, i.e. a current paid translation — retiring that is a different decision`
       );
@@ -188,13 +205,44 @@ export function planRetire({
     for (const f of files) deletions.add(path.relative(repoRoot, path.join(bookDir, 'media', f)));
     perName.push({ name, rows: mine.length, files });
   }
+  // A row the retire KEEPS — any row it does not remove, a legacy figureId row included — must not
+  // be left naming a file it deletes (the --prune "mapped" rule). Settled only now, once every
+  // removed name in the batch is known: inside the loop a later name's row would still read as kept.
+  const kept = new Map();
+  for (const r of rows) {
+    if (removeNames.has(r.originalImage) || typeof r.outputName !== 'string') continue;
+    if (!kept.has(r.outputName)) kept.set(r.outputName, r);
+  }
+  for (const p of perName) {
+    for (const f of p.files) {
+      const r = kept.get(f);
+      if (!r) continue;
+      const which =
+        r.originalImage !== undefined
+          ? `originalImage ${r.originalImage}`
+          : `figureId ${r.figureId ?? '(none)'}`;
+      refusals.push(
+        `${p.name}: media/${f} is still named by a mapping row this retire keeps (${which}) — deleting it would leave that row naming a missing file`
+      );
+    }
+  }
   const deletionList = [...deletions];
-  const clean = cleanTrackedSet(repoRoot, deletionList, git);
+  // Git is the backup: every file deleted, and the mapping itself whenever the retire writes or
+  // deletes anything, must be tracked and unmodified. Then a failed retire — and the "restore by hand
+  // from git" a double fault prints — gives back exactly what was there. Dry run included.
+  const mappingRel = path.relative(repoRoot, mappingPath);
+  const acts = deletionList.length > 0 || removeNames.size > 0;
+  const clean = cleanTrackedSet(repoRoot, acts ? [...deletionList, mappingRel] : [], git);
   for (const rel of deletionList) {
     if (!clean.has(rel))
       refusals.push(
-        `${rel}: not tracked by git, or modified — git is the backup a deletion relies on`
+        `${rel}: not tracked by git, or modified, or flagged assume-unchanged or skip-worktree — git is the backup a deletion relies on`
       );
+  }
+  if (acts && (!fs.existsSync(mappingPath) || !clean.has(mappingRel))) {
+    refusals.push(
+      `${mappingRel}: must exist, tracked by git and unmodified, before a retire deletes or writes anything — commit it first, so that a failed retire can be restored from git exactly`
+    );
   }
   return { refusals, mappingPath, rows, removeNames, deletions: deletionList, perName };
 }
@@ -367,7 +415,7 @@ export function planPrune({ repoRoot, booksRoot, book, git = runGit, suffix = DE
       keep.push({
         rel,
         kind: 'git',
-        why: 'not tracked by git, or modified — git is the backup a deletion relies on',
+        why: 'not tracked by git, or modified, or flagged assume-unchanged or skip-worktree — git is the backup a deletion relies on',
       });
     } else {
       del.push(rel);
@@ -436,6 +484,7 @@ export function run(
     booksRoot = path.join(REPO_ROOT, 'books'),
     git = runGit,
     retired,
+    configPath, // the figure config to read `retiredFigures` from when `retired` is not given
     unlink = fs.unlinkSync,
     out = console.log,
     err = console.error,
@@ -459,7 +508,7 @@ export function run(
       repoRoot,
       booksRoot,
       git,
-      retired: retired ?? loadRetiredFigures(),
+      retired: retired ?? loadRetiredFigures(configPath),
       unlink,
       out,
       err,

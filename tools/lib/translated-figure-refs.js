@@ -1,19 +1,23 @@
 /**
  * Where a figure's translated copy lives, and what still references it (§C140 ㊵, spec D13).
  *
- * ONE corpus and ONE predicate, shared by tools/retire-translated-figure.js (its report and
- * --prune) and the figure-config validator:
+ * ONE corpus and ONE predicate, used by tools/retire-translated-figure.js (its report and
+ * --prune). The figure-config validator uses this module's mapping reader and copy finder, not the
+ * reference scan:
  *
  * - THE CORPUS is the WORKING-TREE content of every file git does not ignore under a book's
  *   03-translated/ and 05-publication/ (`git ls-files -co --exclude-standard`). Not a disk walk:
  *   inject leaves gitignored `<module>.cnxml.backup.<ts>` files naming every figure it ever saw,
  *   and they would keep every copy alive (measured: 0 of 754 deletable). Not HEAD: HEAD cannot
  *   see a re-render's uncommitted pages.
- * - Raster, font and other binary files are skipped, and so are THE TRANSLATED COPIES THEMSELVES.
- *   A composed SVG embeds its fonts and rasters and references no other file (measured 2026-10-01:
- *   0 external href/src/url references in 1,471 translated SVGs), and the copies are 821 MB of the
- *   879 MB corpus. Without them a scan takes about 0.4 s. If the composer ever writes an external
- *   reference into a figure, this exclusion must be revisited.
+ * - Raster, font and other binary files are skipped, and so are THE TRANSLATED COPIES THEMSELVES:
+ *   a translated name in a directory named `media` (every published `images/media/`). A composed
+ *   SVG embeds its fonts and rasters and references no other file (measured 2026-10-01: 0 external
+ *   href/src/url references in 1,471 translated SVGs), and the copies are 821 MB of the 879 MB
+ *   corpus. Without them a scan takes about 0.4 s. If the composer ever writes an external
+ *   reference into a figure, this exclusion must be revisited. ⚠️ Only the copies: a page, JSON or
+ *   CNXML file whose own stem ends in the suffix is a referrer like any other (spec D13, amended
+ *   2026-10-02), or a copy only it references would look orphaned.
  * - A REFERENCE to a translated file is its stem plus a dot — `<name><suffix>.` — anywhere in a
  *   corpus file. Keyed on the suffix, so the restored English `<name>.jpg` and look-alike names
  *   (`molecreso2`) are never references.
@@ -107,7 +111,9 @@ export function findReferences({
   for (const rel of files) {
     const base = path.basename(rel);
     if (SKIP_EXTENSIONS.has(path.extname(base).toLowerCase())) continue;
-    if (isTranslatedName(base, suffix)) continue;
+    // A figure copy, not any file whose stem ends in the suffix (git names paths with '/').
+    if (isTranslatedName(base, suffix) && path.posix.basename(path.posix.dirname(rel)) === 'media')
+      continue;
     let text;
     try {
       text = readFile(path.join(repoRoot, rel), 'utf-8');
@@ -170,12 +176,15 @@ export function publishedCopies(repoRoot, bookRel, suffix) {
  * The subset of `rels` that git tracks and that is unmodified against HEAD — staged or not.
  * Any other git outcome (untracked, ignored, modified, no commits, git missing) leaves a path out:
  * git is the backup a deletion relies on, so nothing git cannot restore is deleted.
+ * "Tracked" means the index tags the path `H` (`ls-files -v`). An assume-unchanged file (a lower-case
+ * tag) or a skip-worktree one (`S`) is left out too: `git diff` does not see an edit to either, so
+ * the edit would be lost, and `git restore` refuses a skip-worktree path, failing a whole rollback.
  * `rels` are relative to `repoRoot`, which need not be the git top-level.
  * @returns {Set<string>}
  */
 export function cleanTrackedSet(repoRoot, rels, git = runGit) {
   if (rels.length === 0) return new Set();
-  const tracked = git(repoRoot, ['--literal-pathspecs', 'ls-files', '-z', '--', ...rels]);
+  const tracked = git(repoRoot, ['--literal-pathspecs', 'ls-files', '-v', '-z', '--', ...rels]);
   // `--relative`: ls-files names paths from `repoRoot`, but diff names them from the git top-level
   // unless told otherwise. Below the top-level the two bases never matched, so a MODIFIED file
   // escaped `d` below and read as clean: the guard failing open. At the top-level it is a no-op.
@@ -190,7 +199,13 @@ export function cleanTrackedSet(repoRoot, rels, git = runGit) {
     ...rels,
   ]);
   if (tracked.status !== 0 || dirty.status !== 0) return new Set();
-  const t = new Set(tracked.stdout.split('\0').filter(Boolean));
+  // Each entry is `<tag> <path>`; only `H` is a plain tracked file.
+  const t = new Set(
+    tracked.stdout
+      .split('\0')
+      .filter((e) => e.startsWith('H '))
+      .map((e) => e.slice(2))
+  );
   const d = new Set(dirty.stdout.split('\0').filter(Boolean));
   return new Set(rels.filter((r) => t.has(r) && !d.has(r)));
 }
