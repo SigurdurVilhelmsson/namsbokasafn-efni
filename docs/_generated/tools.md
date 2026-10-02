@@ -36,7 +36,7 @@
 | `export-corpus` | Emits, per segment, the four pipeline tiers {EN, MT, faithful, localized} |
 | `figure-run` | The M5 figure driver. It enumerates a chapter's figures, resolves each to its ar |
 | `generate-glossary` | translated CNXML files. Produces a book-wide glossary sorted by |
-| `generate-image-mapping` | translated figure files. This is the producer side of the image-localization |
+| `generate-image-mapping` | Generate or update a book's image mapping from a directory of translated figure  |
 | `generate-index` | translated CNXML files and organizing them alphabetically with |
 | `generate-source-manifest` | the committed sha256 baseline that makes a silent 01-source swap detectable (F2) |
 | `generate-tm` | Pairing + serialization live in the boundary lib so the server route |
@@ -54,6 +54,7 @@
 | `repair-invented-markers` | from an MT output file, but ONLY where the document proves them separable. |
 | `resolve-embeds` | Scans a book's 01-source CNXML for <iframe src="...openstax.org/l/..."> embeds, |
 | `resolve-os-embed` | Resolves <link class="os-embed" url="#exercise/{nickname}"/> references |
+| `retire-translated-figure` | Retire a figure's translated copy, then prune published copies nothing reference |
 | `scan-residue` | Read-only EN-residue scanner. Walks a book's 02-for-mt × 02-mt-output segment |
 | `source-roundtrip-check` | WHAT IT DOES. Extracts a module, injects its OWN ENGLISH straight back, and diff |
 | `test-glossary-comparison` | Tests whether the server-side glossary (activated in the Málstaður web UI) |
@@ -75,6 +76,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*54 tools total (54 active, 0 deprecated)*
+*55 tools total (55 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

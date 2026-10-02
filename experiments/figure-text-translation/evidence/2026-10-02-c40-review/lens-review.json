@@ -1,0 +1,652 @@
+[
+ {
+  "lens": "resolver",
+  "findings": [
+   {
+    "id": "R1",
+    "severity": "Important",
+    "title": "D5's per-figure containment of a malformed pin has no test: removing either twin-scan guard leaves test_sources.py ALL PASS",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 241,
+    "scenario": "The twin scan in _resolve_pin (sources.py:240-243) walks EVERY artworkPins entry for every pinned figure. Only the two guards `isinstance(e, dict)` (:241) and `isinstance(e.get('file'), str)` (:242) stop one bad sibling entry from crashing the others. Take a table {\"CNX_A\": <valid alias>, \"_note\": \"a comment someone left in the table\"}, or a second pin with file: 5. With either guard removed, resolving CNX_A raises AttributeError or TypeError, so every batch that holds any pinned figure fails, `sources.py --json` exits 1, and figure-run aborts the chapter. D5 says \"a malformed pin is a typo, not a run-wide fault\", and D11 asks for every D2–D6 rule with a control plus a mutation pass over the resolver. The current code is CORRECT: CNX_A resolves, and the bad entry is either pin-invalid on its own or ignored. The gap is the test. Every malformed-shape test (test_sources.py:467-482) uses a one-entry table, so the twin loop never meets a malformed sibling. Mitigation, which may justify down-rating to Minor: the regression would be loud (exit 1, nothing bought), and the JS validator rejects a non-object pin entry before a buy.",
+    "evidence": "Scratch: <scratch>/c40-wf/review-resolver/mutate.py (works on a copy in mut/, golden copy byte-identical to the repo file, golden passes rc=0). `M7 twin check: drop the isinstance(e, dict) guard :: SURVIVED rc=0 last='ALL PASS'`; `M8 twin check: drop the isinstance(file, str) guard :: SURVIVED rc=0 last='ALL PASS'`. survivors.py, current code: `valid pin beside a \"_note\" string entry -> {\"CNX_A\": {\"path\": \"<td>/updates-2e/OSX/Good.eps\", \"edition\": \"updates-2e\", \"via\": \"alias\"}, \"CNX_B\": null}`. Mutant M7: `-> RAISES AttributeError 'str' object has no attribute 'get'`. Mutant M8 (`file=5` sibling): `-> RAISES TypeError argument should be a str or an os.PathLike object ... not 'int'`."
+   },
+   {
+    "id": "R2",
+    "severity": "Minor",
+    "title": "A pin through a symlink resolves to a file outside its tree, or into our own Translated_IS output",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 249,
+    "scenario": "_pin_invalid (:198-206) checks only the DECLARED `file` parts: no `..`, no Translated_IS segment, and a source suffix. _resolve_pin then accepts any `root / file` for which `path.is_file()` (:249) is true. is_file follows symlinks, and nothing resolves the path or checks that it stays inside the tree. Example: pin {kind: alias, edition: updates-2e, file: 'OSX/link_own.eps'}, where OSX/link_own.eps is a symlink to first-edition/Ch_19/Translated_IS/CNX_Own_IS.eps. The figure resolves as a hit with via: alias, and a buy would compose our own translated output. The JS validator's `_IS`-stem rule does not catch it, because the declared stem is `link_own`. A directory symlink ('dirlink/Elsewhere.eps') reaches a file outside every configured tree the same way. D5 requires a file that crosses _OWN_OUTPUT_DIRS to be pin-invalid. Realism: low.",
+    "evidence": "probe.py 2a–2d: `2b file symlink into Translated_IS: ('hit', 'link_own.eps', 'updates-2e', 'alias', None, '<td>/first-edition/Ch_19/Translated_IS/CNX_Own_IS.eps')`; `2a file symlink out of the tree: ('hit', 'link_out.eps', ..., '<scratch>/c40-wf/review-resolver/outside-tree/Elsewhere.eps')`; `2c dir symlink out of the tree: ('hit', 'Elsewhere.eps', 'updates-2e', 'alias', ...)`; `2d dir symlink into Translated_IS: ('hit', 'CNX_Own_IS.eps', ...)`. realtrees.py, over both real trees: `symlinks: 0`."
+   },
+   {
+    "id": "R3",
+    "severity": "Minor",
+    "title": "An artworkPins table that is a string is silently ignored (pins dropped, exit 0); other non-object tables crash the resolver",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 331,
+    "scenario": "Config \"artworkPins\": \"TODO\". At :331, `for k in pins` iterates the string's characters, no character folds onto a real basename, and every pinned figure falls through to the normal lookup. For ibuprofen that is the updates-2e raster drawing the override exists to avoid. `sources.py --json` exits 0 with ordinary hits, so figure-run would buy it. Any other non-object table shape raises: a list, number or bool artworkPins, or a non-dict retiredFigures (:299 calls `.items()`). That gives a traceback and exit 1, and figure-run aborts (fail-closed). So the runtime and the validator disagree on the failure mode. The validator's isPlainObject rule (figure-config-validate.js:38) rejects every one of these shapes, and the buy procedure runs it locally, and checks that sources.py returns the approved file, before paying. So this bites only when that step is skipped.",
+    "evidence": "probe.py 7g: `json, pins table is a string (malformed table): (('ok', 0), ['{\"CNX_X\": {\"path\": \"<td>/first-edition/CNX_X.eps\", \"edition\": \"first-edition\"}}'])`; 3c: `pins is a string: ('hit', 'CNX_X.eps', 'first-edition', None, None)`. Crashes: 3a `AttributeError: 'list' object has no attribute 'items'`, 3d `AttributeError: 'dict' object has no attribute 'lower'`, 3e `TypeError: list indices must be integers or slices, not str`, 3f `TypeError: 'int' object is not iterable`, 7f run_cli `AttributeError` (exit 1)."
+   },
+   {
+    "id": "R4",
+    "severity": "Minor",
+    "title": "A supersededArtwork key whose value is null is treated as absent, so a pin, or the plain lookup, resolves a 'superseded' figure",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 318,
+    "scenario": "D2 says a key acts by its presence, and that a pin cannot resurrect a retired or superseded figure. retiredFigures honours presence: a null value still refuses, as '(no reason recorded)'. The superseded branch does not, because it tests `if reason is not None` (:318). This check predates the branch, but the branch's ordering now relies on it. So supersededArtwork {CNX_X: null} plus a pin for CNX_X returns the pinned file, and without a pin the normal lookup resolves the drawing the table was meant to refuse. Both test_sources.py's 'every superseded entry carries a substantive reason' and the validator's >40-character reason rule reject a null value. Only a config that skipped both reaches this.",
+    "evidence": "probe.py: `1f superseded value null + pin: ('hit', 'Alias_target.eps', 'updates-2e', 'override', None)`; `1g superseded value null, no pin: ('hit', 'CNX_X.eps', 'first-edition', None, None)`; control `1h retired value null + pin: ('refused', 'retired', '(no reason recorded)', [])`; `1i superseded value \"\" + pin: ('refused', 'superseded', '', [])`."
+   },
+   {
+    "id": "R5",
+    "severity": "Minor",
+    "title": "The validator's 'exactly one book' key rule is exact-match, but the resolver folds, so a key valid for one book refuses a different book's figure",
+    "file": "tools/lib/figure-config-validate.js",
+    "line": 70,
+    "scenario": "The tables are global. The validator checks key ownership with an exact `set.has(k)` (:70), while sources.py matches retired, superseded and pins keys by _normkey (:299, :316, :331). The generator and the retire tool match exactly. Example: retiredFigures {\"Figure 26_01_02\": …}, a physics basename owned by exactly one book. The validator returns [] and the generator still maps biology's Figure_26_01_02_IS.svg, but sources.py refuses biology's `Figure_26_01_02` as `retired`. A pin keyed the same way would hand the physics pin to the biology figure. Latent today: no pair involves efnafraedi-2e, the tables are meant to hold chemistry keys, and sources.local.json configures trees for efnafraedi-2e only.",
+    "evidence": "fold-collisions.mjs over every book's 01-source basenames: 6,759 names, 11 cross-book fold collisions, all edlisfraedi-2e↔liffraedi-2e (e.g. `figure260102 {\"edlisfraedi-2e\":[\"Figure 26_01_02\"],\"liffraedi-2e\":[\"Figure_26_01_02\"]}`), withinBookCollisions: 0. crossbook.py: `biology Figure_26_01_02, physics-keyed retired -> retired` (control without the table resolves `Figure_26_01_02.eps`). crossbook.mjs: generator `entries:[{originalImage:'Figure_26_01_02', outputName:'Figure_26_01_02_IS.svg'}], skippedRetired:[]`; `validator problems -> []`."
+   },
+   {
+    "id": "R6",
+    "severity": "Minor",
+    "title": "figure-run discards the reason on a PINNED production-page refusal and reports it as 'the only artwork in <edition> is a production page'",
+    "file": "tools/figure-run.js",
+    "line": 1657,
+    "scenario": "D4 sends a pinned file through the same paper-size check. sources.py returns {refused: 'production-page', edition, candidates:[{path,page,paper}], reason: \"the pinned file in 'updates-2e' is a Letter-size page — a production sheet, not a figure\"}. refusalReason's production-page branch (figure-run.js:1657-1665) builds its own sentence from `edition` and the candidates and never reads `reason`. It prints \"the only artwork in updates-2e is a production page\", which is false for a pin: the pin chose that one file. The report branch at :2418 also prints only the path and size. Nothing in figure-run's output says a pin was involved, though the remedy (re-rule the pin) differs from a delivery problem. This is D7's own cost-if-wrong, \"a refusal printed without its reason\", and not a matter of wording.",
+    "evidence": "consumer.mjs fed the resolver's real JSON (shapes.json): `production-page-pinned: REFUSED, not missing: the only artwork in updates-2e is a production page, not a figure — <tmp>/Letter.pdf (612×792 pt, Letter). Nothing is bought or composed.` and report line `⚠️ REFUSED — production page: FIG_production-page-pinned  <tmp>/Letter.pdf  612×792 pt (Letter)`. The resolver's reason ('the pinned file in ...') appears in neither."
+   },
+   {
+    "id": "R7",
+    "severity": "Minor",
+    "title": "D4's 'existing regular file' rule has no test that can fail: is_file()→exists() survives, and a directory target then resolves as a hit",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 249,
+    "scenario": "D4: \"The pinned path must be an existing regular file, else pin-missing.\" The suite tests a MISSING file and a '.' file (pin-invalid before :249), but never a non-regular target. With `path.exists()` in place of `path.is_file()`, a pin to a directory named OSX/IsDir.eps resolves as {path: …/IsDir.eps, via: alias, pageUnknown: true}, and figure-run would hand a directory to figure-prepare.py. The current code correctly returns pin-missing without calling size_of. The regression would be loud downstream, at prepare.",
+    "evidence": "mutate.py: `M4 is_file -> exists (a directory passes) :: SURVIVED rc=0 last='ALL PASS'`. survivors.py, current code: `dir target -> {\"refused\": \"pin-missing\", ...}`. Mutant M4: `dir target -> {\"path\": \"<td>/updates-2e/OSX/IsDir.eps\", \"edition\": \"updates-2e\", \"via\": \"alias\", \"pageUnknown\": true}`. probe.py 5f: pin-missing, and `5f size_of reached?: []`."
+   },
+   {
+    "id": "R8",
+    "severity": "Minor",
+    "title": "run_cli's human mode is never tested with a pin: a mutant that drops pins there survives, and the operator's report then prints NOT FOUND",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 502,
+    "scenario": "D6's cost-if-wrong is \"a CLI mode silently missing a table\". test_sources.py exercises run_cli's human mode only with retiredFigures (:372-374), and artworkPins only through --json (:551-553). A mutant of :502 that passes pins=None leaves the suite green. The operator's human report would then print `NOT FOUND` for an aliased figure, and the updates-2e file instead of the override for ibuprofen. That is the check the buy procedure asks for (\"Check that sources.py returns the approved file\"). Today both modes share **policy(cfg), so the code is correct and a regression would be visible to the operator.",
+    "evidence": "mutate.py: `M10 human mode drops the pins table :: SURVIVED rc=0 last='ALL PASS'`. survivors.py, current code: `human mode with a pin -> rc 0 |   updates-2e     CNX_A   <td>/updates-2e/OSX/Good.eps  (pinned: alias)`. Mutant M10: `human mode with a pin -> rc 1 |   NOT FOUND      CNX_A   -`."
+   }
+  ],
+  "checked": [
+   "Baseline: `PYTHONDONTWRITEBYTECODE=1 FIGTEXT_PYLIBS=./pylibs python3 -u test_sources.py` prints ALL PASS, exit 0. Every Python run had bytecode writing off; the __pycache__ timestamps predate this session.",
+   "Order with one name in all three tables, each under a fold-variant key (retired 'cnx-x', superseded 'CNX x', pin 'Cnx_X'), peeled one table at a time: retired → superseded → pin (override hit, via) → lookup (probe 1a–1d). Asked for by a fold variant 'cnx.x': still retired (1e). Each refusal carries the winning table's reason.",
+   "Presence: a retired value of null or '' still refuses as '(no reason recorded)' (1h; repo test). A superseded '' or 0 refuses (1i/1j). A superseded null does NOT refuse (finding R4). Two retired keys that fold together: the later reason wins and both refuse (1k).",
+   "Alias conflict edges: a .jpg or .svg under the basename is not a conflict, per D4's 'exact pass or _norm_index' (4a/4b). An uppercase .EPS conflicts through the fold index, and its control resolves (4c). An alias target whose own stem folds onto the basename conflicts as an alias and resolves as an override (4d). A Letter-only file under the basename conflicts (4f). A directory named <basename>.eps conflicts (4g). The ambiguous fold is covered by the repo test.",
+   "Twin normalisation: './OSX/Shared.eps', 'OSX/Shared.eps/' and 'OSX//Shared.eps' each conflict with 'OSX/Shared.eps' (5a–5c). 'OSX/Shared.EPS' is a different file on ext4, so pin-missing (5d). The same file reached through two edition keys that point at one directory is not detected (5e). That is by design ((edition, file) identity), unrealistic, and the figure-run backstop catches it within one run, since the path strings are equal.",
+   "Odd file values: './' → pin-invalid; 'OSX/.' → pin-invalid (suffix); a NUL byte → pin-missing, no crash; '~/x.eps' → pin-missing (literal '~'); a trailing space → pin-invalid; 'a:b/x.eps' → pin-invalid; kind ' alias' → pin-invalid; a directory target → pin-missing with size_of never reached (5f–5n).",
+   "An edition that is configured in sources.local.json but not in editionPrecedence resolves (4h). That matches D5's text; the validator is the stricter owner, and the real sources.local.json has only the two keys, both in precedence.",
+   "JSON contract: every refusal shape (retired, superseded, pin-invalid, pin-missing, pin-conflict alias/twin/two-keys, pinned production-page) has exactly the keys {path, refused, edition, candidates, reason}. Both pinned hit shapes are {path, edition, via}. All eight pass through refusalReason and summarise without error (consumer.mjs). NOTE: refusalReason lives in tools/figure-run.js:1656, not in tools/lib/figure-outcomes.js as the task text says. figure-outcomes.js carries only the verdict NOTE, which names retired figures and artwork pins.",
+   "figure-run reads only path, edition and pageUnknown from a hit, and `hit.refused` for a refusal (figure-run.js:2024-2032, 2064-2071). A pin refusal sets artworkRefusal, so the de-hash fallback never runs for it: no fall-back path exists.",
+   "run_cli exit codes: human mode 0 with a pinned hit (7a) and 1 with pin-missing (7b); --json 0 with pin-missing (7c); --json with the pinned tree unmounted raises SystemExit, which means exit 1 and no stdout (7d); --json for a retired name with a tree unmounted gives 0 and `retired`, by design (7e). The real __main__ was run read-only: --json gives exit 0, human mode exit 1 on a refusal or hole, and no arguments print the usage text with exit 1.",
+   "Callers: inspect.signature shows the positional prefix of resolve_detail, resolve, resolve_report and human_report unchanged, with retired= and pins= keyword-only. Every caller found (test_*, the census and read-layer scripts, the evidence instruments) passes at most basename, trees and precedence positionally plus `superseded=`/`_memo=` by keyword. The four census and read-layer scripts ignore all three tables, as D6 states.",
+   "Real trees, read-only: the four planned pins resolve to the measured files. catalyst, ICETable2 and ICETable13 resolve via alias to their updates-2e OSX_* and 'Figure 14_0x_*' .eps. ibuprofenmass resolves via override to first-edition Ch_03/Source_File/…img.eps. Without pins the three are null and ibuprofen gives the updates-2e .eps (realpins.py). The three alias basenames have no conflicting file.",
+   "Real trees: 0 symlinks, 42 Translated_IS dirs, 0 exact-name CNXML basenames inside Translated_IS (realtrees.py). Corpus: 0 fold collisions within any one book; 0 chemistry hashed basenames whose stripped stem is itself a figure; none of the planned pin targets is a hashed figure's stem.",
+   "Pre-existing, outside this branch, 0 real instances: the normal lookup's exact pass (sources.py:358-361) does not exclude _OWN_OUTPUT_DIRS, while the new _files_under (:223) does. A file named exactly <basename>.eps inside Translated_IS is sourced by the lookup (probe 4e control) but is not an alias conflict. The comment at :110-112 says only the fuzzy pass could reach own output.",
+   "Killed mutants (test_sources.py goes red): M1 superseded checked before retired; M2 two fold-equal pin keys tolerated; M3 alias scan applied to override instead; M5 fold pass dropped from _files_under; M6 alias scans only its own edition; M13 pin-missing falls back to the lookup; M14 pinned file skips the paper-size check; M15 _require_dir removed from _resolve_pin; M16 own-output check removed from _pin_invalid; M18 retired matched by truthy value; M19 pins checked before retired and superseded. The golden scratch copy passes and is byte-identical to the repo file."
+  ],
+  "mutants": [
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 249,
+    "change": "`if not path.is_file():` → `if not path.exists():`",
+    "why": "SURVIVED. D4's 'existing regular file' rule has no test; a directory target then resolves as a hit with pageUnknown (finding R7)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 241,
+    "change": "drop `isinstance(e, dict)` from the twin scan",
+    "why": "SURVIVED. D5's per-figure containment is untested; a stray non-object entry then crashes resolution of every other pinned figure (finding R1)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 242,
+    "change": "drop `isinstance(e.get('file'), str)` from the twin scan",
+    "why": "SURVIVED. Same class as above: a sibling pin with file: 5 raises TypeError for every other pinned figure (finding R1)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 502,
+    "change": "human_report(..., **dict(policy(cfg), pins=None))",
+    "why": "SURVIVED. Human mode is never tested with a pin; the operator's report then prints NOT FOUND for an aliased figure (finding R8)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 192,
+    "change": "`not value.strip()` → `not value` (accept a whitespace-only kind/edition/file/reason)",
+    "why": "SURVIVED. Low value: a whitespace-only reason passes at runtime, but the validator's >40-character reason rule still rejects it."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 408,
+    "change": "resolve() stops passing pins= to resolve_detail",
+    "why": "SURVIVED. Low value: no production caller passes pins to resolve(); figure-run uses --json, which goes through resolve_report."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 242,
+    "change": "twin scan ignores edition (`e.get('edition') == edition` → `True`)",
+    "why": "SURVIVED. Over-refusal only: two pins with the same relative path in different trees would conflict. Fail-closed, so not reported."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 223,
+    "change": "_files_under's exact pass no longer excludes _OWN_OUTPUT_DIRS",
+    "why": "SURVIVED. Over-refusal only: an exact-name file in Translated_IS would become an alias conflict. Fail-closed, and 0 such files exist in the real trees."
+   }
+  ],
+  "porcelain": "",
+  "verdicts": [
+   {
+    "id": "R1",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Scratch harness <scratch>/c40-wf/verify-resolver/mutate.py runs on copies byte-identical (cmp) to HEAD. Both mutants SURVIVED with rc=0 and ALL PASS: M7 drops isinstance(e, dict) at sources.py:241, and M8 drops isinstance(e.get('file'), str) at :242. Four positive controls were KILLED, so the harness can see a broken guard: twin refusal disabled, --json dropping pins, the pin-missing check disabled, and human mode dropping retired. On golden code, {CNX_A: valid alias, _note: str} resolves CNX_A via alias, and a file=5 sibling is pin-invalid on its own. Under M7, a str or a None sibling raises AttributeError. Under M8, a file=5 sibling raises TypeError, but only when it shares the pinned figure's edition: a first-edition sibling beside an updates-2e pin passes, because the edition== clause short-circuits first. Through the real CLI entry point (subprocess), the batch [CNX_A, CNX_X] exits 1 with empty stdout under either mutant, so the unpinned CNX_X is lost too; a batch with no pinned figure exits 0. Every malformed-shape test (test_sources.py:467-482) uses a one-entry table, so D5's containment is untested. Why Minor and not Important: the code is correct today. No mutant path gives a wrong answer; every case raises, and figure-run.js:532 throws on a non-zero exit, before any spend. The JS validator flags both sibling shapes: '_note' gets 'must be an object' plus the ownership and reason rules, and file 5 gets 'file must be a non-empty string'. The buy procedure runs that validator before paying. The real config keeps its notes in top-level _<table> keys, never inside a table. task-12-mutation-brief.md's mandatory resolver list does not include these guards, but it reserves a slot for test-vacuity survivors like this one.",
+    "fix": "Add a test_sources.py case that resolves a valid pin beside a '_note' string sibling and beside a same-edition file=5 sibling. Assert the valid pin's alias hit and the sibling's pin-invalid; it kills M7 and M8."
+   },
+   {
+    "id": "R2",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "probe.py on golden code: pins to four symlinked paths all resolve as hits via alias. They are OSX/link_own.eps (a file symlink into first-edition/Ch_19/Translated_IS), OSX/link_out.eps (a file symlink out of the tree), dirlink/Elsewhere.eps (a directory symlink out of the tree) and dirlink_is/CNX_Own_IS.eps (a directory symlink into Translated_IS). Each realpath lands in Translated_IS or outside the tree. The control holds: declaring Ch_19/Translated_IS/... directly is pin-invalid. D5's list is lexical properties of the declared file, and the code meets its letter; a symlink defeats its cost-if-wrong, 'a pin to our own _IS output reaches the paid MT'. This lexical treatment is module-wide and predates the branch. In the R2e control, the normal lookup resolves a basename CNX_SymNorm.eps that is a file symlink into Translated_IS as a hit. Unreachable on the real corpus today: both configured efnafraedi-2e trees (5,764 files, 177 directories) hold 0 file symlinks and 0 directory symlinks.",
+    "fix": "In _resolve_pin, and in the normal lookup's candidate filter, refuse when path.resolve() is not under root.resolve() or when _OWN_OUTPUT_DIRS intersects path.resolve().parts."
+   },
+   {
+    "id": "R3",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "On golden code, pins='TODO' gives CNX_X its normal-lookup hit. run_cli --json with artworkPins 'TODO' exits 0 with ordinary hits, and on an ibuprofen-shaped tree CNX_Ibu returns the updates-2e file. Every other non-object shape crashes, so it fails closed. A pins list of names raises TypeError ('list indices must be integers'); a number or true raises TypeError (not iterable); a list of objects raises AttributeError ('dict' has no 'lower'). A string retiredFigures or supersededArtwork raises AttributeError (no .items). So the runtime handles a string table differently from every other non-object table. A string table cannot hold a pin, so the realistic shape is a placeholder string where the object belongs. Both pre-buy checks catch it. The validator says 'artworkPins must be an object' or 'retiredFigures must be an object' (measured), and the sources.py check would show the unpinned file.",
+    "fix": "In policy(cfg), or at the top of resolve_detail, raise SystemExit when any of the three tables is not None and not a dict."
+   },
+   {
+    "id": "R4",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "On golden code, superseded {CNX_X: null} plus a pin returns the pinned hit via override, and without a pin the normal lookup resolves CNX_X. Controls: retired {CNX_X: null} refuses as retired with '(no reason recorded)', and superseded {CNX_X: ''} refuses as superseded. The `if reason is not None` check at sources.py:318 predates the branch: it was introduced in 67075b7ad on 2026-09-16, and the branch's pin step now sits behind it. The validator flags the config with 'needs a reason of over 40 characters' plus the shared-key rule. One thing the reporter did not note: the validator's shared-key message, 'that pin can never apply', is false in exactly this case, because the pin does apply. The branch's own final-review-report.md already logs this as M8 (optional fix).",
+    "fix": "Replace the check with `if _normkey(basename) in folded:` and use retired's '(no reason recorded)' fallback for an empty or null reason."
+   },
+   {
+    "id": "R5",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Latent: reproduced at resolve_detail level, unreachable through the CLI today. fold-collisions.mjs uses the validator's own indexBookSourceBasenames and the JS normkey. It finds 6,759 basenames and 11 cross-book fold groups, all edlisfraedi-2e against liffraedi-2e; 0 touch efnafraedi-2e and 0 are within one book. Another 65 names are exactly the same across books, and the rule correctly refuses those (control: Figure_02_03_04 gets 'names an image in 2 books'). With retiredFigures {'Figure 26_01_02': ...}, the validator returns [] on the real corpus, and buildMappingEntries maps biology's Figure_26_01_02 (skippedRetired []). resolve_detail on a biology tree refuses Figure_26_01_02 as retired; the control without the table resolves it. A pin keyed the same way resolves biology's figure via override. The real sources.local.json configures only efnafraedi-2e, so run_cli --json for liffraedi-2e or edlisfraedi-2e exits with 'No source trees configured'. The branch's own final-review-report.md already logs this as M3(ii).",
+    "fix": "Make the validator's owner rule count fold owners: require exactly one book to hold any basename b with normkey(b) === normkey(k), with k exact in that book."
+   },
+   {
+    "id": "R6",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "refusal-probe.mjs feeds figure-run the resolver's real JSON for a pinned Letter page, whose reason is 'the pinned file in updates-2e is a Letter-size page', and for an unpinned one. refusalReason returns byte-identical text for both: 'the only artwork in updates-2e is a production page, not a figure — <path> (612×792 pt, Letter)'. Neither output contains the resolver's reason. summarise also prints identical lines: '⚠️ REFUSED — production page: <name> <path> 612×792 pt (Letter)'. This is not a style point. For a pin, the sentence asserts a fact the resolver never checked, since only the pinned file was examined, and it drops the resolver's own correct reason. The operator's remedy differs too: re-rule the pin rather than fix the delivery. Nothing is bought, and the printed path lets an attentive operator recognise the pinned file. The production-page branch predates the branch, but D4 adds this new route into it. The branch's own final-review-report.md already logs this as M7 (optional).",
+    "fix": "In refusalReason's production-page branch, use refusal.reason when present, or append it, in place of the hard-coded 'the only artwork in <edition>' sentence."
+   },
+   {
+    "id": "R7",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Mutant M4, is_file changed to exists at sources.py:249, SURVIVED with ALL PASS. On golden code, a pin to a directory named OSX/IsDir.eps is refused as pin-missing and size_of is never called. Under M4 it resolves as {via: alias, pageUnknown: true}, and size_of is called on the directory. Downstream, figure-prepare.py:577 runs `if not artwork.is_file(): raise PrepareError('artwork not found')` before any MT, so the regression would be loud and cost nothing. The real trees hold 0 directories named *.pdf, *.eps or *.ai.",
+    "fix": "Add a test that pins to a directory named X.eps and asserts pin-missing."
+   },
+   {
+    "id": "R8",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Mutant M10 makes run_cli's human branch at sources.py:502 pass pins=None; it SURVIVED with ALL PASS. On golden code, human mode prints 'updates-2e CNX_A .../OSX/Good.eps (pinned: alias)' with rc 0, and the override prints the first-edition Ch_03/CNX_Ibu.eps file with '(pinned: override)'. Under M10, the alias prints 'NOT FOUND CNX_A -' with rc 1. The override is the misleading direction: it prints the normal lookup's updates-2e/CNX_Ibu.eps with rc 0 and no '(pinned' marker. The --json mode that figure-run buys from stays correct, and its wiring is pinned: control C2 was killed. So the regression would mislead the pre-buy operator check, not the buy. test_sources.py exercises human mode only with retiredFigures (:372-374) and pins only through --json (:551-553); human_report itself is tested with pins at :538.",
+    "fix": "Add a run_cli human-mode test with artworkPins that asserts '(pinned: alias)' in the output and rc 0."
+   }
+  ],
+  "verifierPorcelain": ""
+ },
+ {
+  "lens": "deletion-safety",
+  "findings": [
+   {
+    "id": "DS-1",
+    "severity": "Important",
+    "title": "The retire's rollback tests cannot detect a partial restore: a version that restores only one of several deleted copies passes them all",
+    "file": "tools/__tests__/retire-translated-figure.test.js",
+    "line": 198,
+    "scenario": "The four retire rollback tests (test lines 198, 216, 229 and 258) all inject the fault on unlink 1 or 2, in a batch of at most two names. So at most ONE translated copy is ever deleted before the fault. A regression in applyRetire's rollback call (tools/retire-translated-figure.js:233) that restores only the first, or only the last, deleted file passes the whole test file. Meanwhile the operator is told that every file was restored. The run order's real retire is a 6-name batch (6 rows and 6 copies, measured in a dry run), which is exactly the path this leaves unpinned. The prune got its own 'restores BOTH copies' test at line 692; the retire did not. The code is correct today, as measured below; the suite simply does not pin it.",
+    "evidence": "Mutation run on a scratch copy (<scratch>/c40-wf/review-deletion-safety/mut-run.mjs, mut-run.out). M1 `restoreFromHead(repoRoot, deleted.slice(0, 1), git)` and M2 `deleted.slice(-1)` at :233 both pass 66/66 (SURVIVED). The same edit to applyPrune's restore at :391 is KILLED by test line 692, the positive control. Probe <scratch>/c40-wf/review-deletion-safety/probes/p10-retire-rollback-two-deleted.mjs (+ p10.out) runs a 3-name retire with the fault on the 3rd unlink. Repo code: exit 1, 0 files differ from before. M1: exit 1 and prints 'the mapping and every file already deleted were restored', but books/b/media/CNX_B_IS.svg stays deleted."
+   },
+   {
+    "id": "DS-2",
+    "severity": "Minor",
+    "title": "cleanTrackedSet treats assume-unchanged and skip-worktree copies as clean, and one such path makes the whole rollback fail",
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 176,
+    "scenario": "The gate is `ls-files` minus `diff --name-only HEAD`. git diff does not check assume-unchanged entries and skips skip-worktree ones. (a) An edited copy flagged --assume-unchanged is deleted by --prune --apply, and its edit cannot be recovered: git restore gives back HEAD's bytes. (b) A copy flagged --skip-worktree is deleted, and `git restore --source=HEAD --worktree` refuses it ('pathspec ... did not match any file(s) known to git'). restoreFromHead (:270) passes every deleted path in ONE git call, so that single path stops the restore of all the others. In p7 a fault on the 3rd unlink left the ordinary copy CNX_A1_IS.svg deleted as well, with RESTORE ALSO FAILED. This breaks the tool's stated invariant ('nothing git cannot restore is deleted'), but not on a realistic input here: all 23,894 index entries in this repo are 'H' (no assume-unchanged or skip-worktree), and there is no sparse checkout. Intent-to-add (git add -N) is correctly excluded. Measured on git 2.53.0.",
+    "evidence": "<scratch>/c40-wf/review-deletion-safety/probes/p1-index-states.mjs + p1.out: assume and skipwt read 'CLEAN (deletable)'; untracked, modified and ita are excluded; --apply deleted both flagged copies; 'restore skipwt: status 1'. probes/p7-restore-batch.mjs + p7.out: after the rollback both CNX_A1_IS.svg and CNX_A2_IS.svg are missing. `git ls-files -v | cut -c1 | sort | uniq -c` gives 23894 H."
+   },
+   {
+    "id": "DS-3",
+    "severity": "Minor",
+    "title": "The retire's name rule deletes a copy that a kept legacy row still names, and a legacy-mapped figure reads as 'nothing to retire'",
+    "file": "tools/retire-translated-figure.js",
+    "line": 186,
+    "scenario": "The name rule (:186-187) adds every top-level `<name>_IS.<ext>` to the deletions, but rows are removed only by originalImage (:210). Take a mapping with {originalImage:'CNX_A', outputName:'CNX_A_IS.svg'} plus the legacy row {figureId:'fig-ch01_01_01', outputName:'CNX_A_IS.png'}. `--retire CNX_A --apply` exits 0 and deletes both files, but keeps the legacy row, which now names a missing file. cnxml-inject's loadImageMapping and resolveTranslatedImage (tools/cnxml-inject.js:1117-1152) swap by figureId with no existence check, so the next re-inject points that figure at a deleted file. The D9 amendment calls the name rule 'a safe superset' because the git gate covers it. But that gate checks the git backup, not whether a kept row still names the file. --prune has that guard (`mapped`); --retire has none. The converse, measured on biology: `--retire Figure_03_01_01` (a dry run with the retired set injected) prints 'nothing to retire: no mapping row, no translated copy' and 'no page or CNXML file references it', exit 0. Yet the legacy row fig-ch03_01_01 → Figure_03_01_01_is.jpg exists and its file is present; all 34 biology rows are legacy. No chemistry instance: chemistry has 0 legacy rows, and every chemistry row is <originalImage>_IS.svg. Biology's legacy names use a lowercase _is, which the case-sensitive name rule never matches.",
+    "evidence": "<scratch>/c40-wf/review-deletion-safety/probes/p4-kept-row-names-deleted-file.mjs + p4.out: 'row fig-ch01_01_01 names CNX_A_IS.png: MISSING (deleted by this retire)'. probes/p12-bio-legacy-dryrun.mjs + p12.out: read-only, no --apply. Mapping census <scratch>/c40-wf/review-deletion-safety/mappings.mjs: efnafraedi-2e has 717 rows, 0 legacy; liffraedi-2e has 34 rows, 34 legacy."
+   },
+   {
+    "id": "DS-4",
+    "severity": "Minor",
+    "title": "After a double fault, the advice 'restore by hand from git' loses uncommitted mapping rows",
+    "file": "tools/retire-translated-figure.js",
+    "line": 249,
+    "scenario": "Only deletions are gated on git; image-mapping.json is rewritten whatever its state. Suppose the mapping holds an uncommitted row (CNX_NEW, as a figure run leaves it before its commit). A deletion fails, and then the mapping restore fails too. The mapping is left in the retired state, still holding CNX_NEW, and the tool prints 'RESTORE ALSO FAILED: EISDIR … — restore by hand from git'. Doing exactly that restores HEAD's mapping and loses CNX_NEW. The pre-run bytes (`before`, :206) were in memory and are discarded. The harmless recovery is to re-run the retire, which finishes a half-done retire, and the tool does not suggest it. This needs a double fault.",
+    "evidence": "<scratch>/c40-wf/review-deletion-safety/probes/p8-double-fault-dirty-mapping.mjs + p8.out: 'mapping now holds: [\"CNX_NEW\"]'; after the restore by hand from git: [\"CNX_A\",\"CNX_B\"]."
+   },
+   {
+    "id": "DS-5",
+    "severity": "Minor",
+    "title": "A repeated --book is accepted, and the last one silently wins",
+    "file": "tools/retire-translated-figure.js",
+    "line": 97,
+    "scenario": "`--book efnafraedi-2e --prune --book <other> --apply` parses to {book:<other>, prune:true, apply:true}. Nothing refuses it, so --prune acts on the other book. For --retire, the source-basename check ('wrong --book?') usually catches it. Every other strictness case holds: --apply=false, '--apply false', --book=b, '--', and --retire together with --prune all exit 2.",
+    "evidence": "<scratch>/c40-wf/review-deletion-safety/probes/p5-cli.mjs + p5.out"
+   }
+  ],
+  "checked": [
+   "The real dry run `--book efnafraedi-2e --prune` (exit 0, 0.5 s) plans 754 published copies: 9 to delete, 745 kept, all 745 because a row maps them. It matches set-for-set an independent recomputation along a different code path (find, git ls-files -co, plain includes). It also matches the spec's 9 June leftovers (GasBurning in ch05, Ex9soln_img in ch06, 7 in ch08). The 9 are tracked and clean (ls-files 9, diff HEAD 0). Their only non-page mentions are in the gitignored media/_reexport-pending/*.txt. Every mapping row has its top-level copy.",
+   "vefur, read-only: 0 references to the 9 in tracked source or in the synced static/content pages. Positive control: 124 synced pages reference some _IS.svg.",
+   "planPrune for every book (read-only): only efnafraedi-2e has candidates. Biology's published copies use a lowercase _is and are not candidates.",
+   "The real retire as a dry run, with the 6 planned retirees and Ques11ans injected as the retired set: 6 rows and 6 top-level copies. Each is still referenced by exactly its 03-translated module and its mt-preview page, and an independent grep agrees. Ques11ans gives 'nothing to retire'. Exit 0, porcelain clean.",
+   "The real tool ran three times, all dry runs and read-only: the plan run; a pipe-integrity run (1180 bytes through `| cat`, the same 1180 through a redirect); and a `--bogus` usage run (exit 2 at parseCli). Porcelain was empty after each. There is no process.exit in the tool or its library.",
+   "Containment holds. The --book regex rejects '/', a leading '.' and '--book=x'. Retire deletions are only <book>/media/<name>_IS.<ext>, and names come from source basenames, which never contain '/'. Prune candidates are only direct files (Dirent.isFile, so never symlinks) under 05-publication/*/chapters/*/images/media. There are 0 symlinks under books/ and 0 untracked or ignored files at the top of chemistry media/.",
+   "Symlink fixtures (p11, p11b): a tracked symlinked images/media directory crashes findReferences with EISDIR before anything is deleted. An ignored one is listed but kept, because git cannot track a path beyond a symlink.",
+   "cleanTrackedSet excludes untracked, modified, staged-new and intent-to-add copies (git 2.53.0). With repoRoot below the git top-level, ls-files, diff --relative, ls-files -co and restore all work, and the modified control is excluded (p2).",
+   "Rollback: a real EACCES (chmod 555 on the third chapter's media folder) restores the two earlier deletions exactly. A real failure at the retire's first mapping write leaves no tmp file and changes nothing. Injected faults with repoRoot below the top-level also restore exactly (p2, p3). With two files deleted before the fault, the current retire code restores everything (p10).",
+   "Ignore sources: core.excludesFile is unset. ~/.config/git/ignore and .git/info/exclude hold only .claude/* and docs/grants/. No file under chemistry 05-publication is ignored; the ignored files under 03-translated are *.cnxml.backup.<ts>.",
+   "No text, eol or filter attributes apply to the copies or the mapping, so a git restore gives back exact bytes.",
+   "The renderer writes media names raw: no book's pages hold a %-encoded images/media reference, and physics has 7 with raw spaces. So the plain-text needle sees what the pages hold. Chemistry's only non-plain source basename, Fe(NO3)3_img, is untranslated.",
+   "The retire's sidecar check, figure-text/<name>.is.json, matches sidecarPath() in tools/lib/figure-text-sidecar.cjs. All 459 sidecars are flat.",
+   "The imported modules (generate-image-mapping.js, publish-figure-svg.js) have CLI guards that do not fire when the retire tool runs.",
+   "Focused vitest on retire-translated-figure.test.js and translated-figure-refs.test.js: 86/86 pass, with TMPDIR set to the scratch folder.",
+   "Every probe fixture was built under <scratch>/c40-wf/review-deletion-safety and removed afterwards; no c40-* folder remains."
+  ],
+  "mutants": [
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 233,
+    "change": "applyRetire: restoreFromHead(repoRoot, deleted.slice(0, 1), git)",
+    "why": "SURVIVED 66/66: no retire rollback test has more than one file deleted before the fault (DS-1)"
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 233,
+    "change": "applyRetire: restoreFromHead(repoRoot, deleted.slice(-1), git)",
+    "why": "SURVIVED 66/66 (DS-1)"
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 391,
+    "change": "applyPrune: restoreFromHead(repoRoot, deleted.slice(0, 1), git)",
+    "why": "CONTROL, KILLED by 'a failure on the third deletion restores BOTH copies' (test line 692); it shows the harness can fail"
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 173,
+    "change": "drop `|| escapesMediaDir(bookDir, out)` from the retire row check",
+    "why": "SURVIVED but EQUIVALENT, not a gap: the exact-name rule out === name+suffix+ext already refuses every escaping outputName, because names are source basenames from split('/').pop() and never contain '/'"
+   }
+  ],
+  "porcelain": "",
+  "verdicts": [
+   {
+    "id": "DS-1",
+    "verdict": "CONFIRMED",
+    "severity": "Important",
+    "measured": "Scratch copy of the tool and its test file under <scratch>/c40-wf/verify-deletion-safety/mut, byte-identical to the repo; the unmutated copy passes 66/66. (1) Replay of the four retire rollback tests (test lines 198, 216, 229, 258) with a git wrapper recording the restore's pathspec count gives [1], [] (restore never called), [1] and [1]. No retire test ever hands `git restore` two or more paths. A new 3-name retire with the fault on unlink 3 hands it 2, and the real code restores both (probes/ds1-restore-arity.mjs, ds1-golden.out). (2) Mutation pass with a golden copy, cmp'd after every round and at the end (probes/ds1-mutate.mjs, ds1-mutate.out). CONTROL: applyPrune `deleted.slice(0, 1)` is KILLED by the test at line 692. SANITY: applyRetire restoring nothing (`[]`) is KILLED by 3 tests (198, 229, 258). M1 `deleted.slice(0, 1)` and M2 `deleted.slice(-1)` at tools/retire-translated-figure.js:233 both SURVIVE, 66/66. So the suite pins 'restore at least one file', and the gap is exactly two or more deleted files. On M1 the 3-name probe exits 1 and prints 'the mapping and every file already deleted were restored', but books/b/media/CNX_B_IS.svg stays missing; M2 leaves CNX_A_IS.svg missing. (3) Realism: planRetire, read-only, on the real repo with the 6 ruled names (rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619) gives 0 refusals, 6 rows and 6 deletions (probes/ds1-real-plan.out). No other test file references the tool. The code is correct today. The severity rubric names this case ('a test that cannot fail where the design relies on it'): D9's failure column lists 'a half-retire'.",
+    "fix": "Add a retire twin of the prune test at line 692. Give three figures a row and a tracked copy each (standardBook's CNX_C has neither, so extend the fixture), fault on unlink 3, and assert calls === 3 and fx.snapshot() equal to before."
+   },
+   {
+    "id": "DS-2",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Scratch fixture on git 2.53.0 (probes/ds2-index-flags.mjs, ds2-index-flags.out). `ls-files -v` tags: h for assume, S for skipwt, H for plain and edited. cleanTrackedSet reads plain, assume (edited after being flagged) and skipwt as CLEAN, and edited and untracked as excluded. `--prune --apply` deleted all three and printed 'Done: 3 deleted.' A git restore of the assume-unchanged copy returns HEAD's bytes, so the edit is lost silently. A restore of the skip-worktree copy fails with \"pathspec ... did not match any file(s) known to git\". A batched restoreFromHead([plain, skipwt]) throws, and NEITHER file comes back. Control: the same batch without the flag restores both. Reachability: the real repo has 23,894 index entries, all tagged H, and 0 non-H under books/. core.sparseCheckout and index.sparse are unset, and there is no .git/info/sparse-checkout. The mechanism is real, but nothing on this checkout reaches it.",
+    "fix": "In cleanTrackedSet, list with `ls-files -v -z` and count a path as tracked only when its tag is `H`, which drops lowercase (assume-unchanged) and `S` (skip-worktree) entries. Add a fixture test with each flag set."
+   },
+   {
+    "id": "DS-3",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Part A, scratch fixture (probes/ds3-legacy.mjs, ds3-legacy.out). The mapping holds [{originalImage:'CNX_A', outputName:'CNX_A_IS.svg'}, {figureId:'fig-ch01_01_01', outputName:'CNX_A_IS.png'}], both files tracked. `--retire CNX_A --apply` exits 0, prints 'removing: 1 mapping row(s); media/CNX_A_IS.svg, media/CNX_A_IS.png', and deletes both. The kept legacy row then names a MISSING file. tools/cnxml-inject.js:1117-1152 (loadImageMapping, resolveTranslatedImage) swaps a figure by figureId with no existence check. That swap runs before the basename post-pass (:5503), so a re-inject would point the figure at the deleted file. Part B, real repo, dry run only, with the retired set injected: `--retire Figure_03_01_01 --book liffraedi-2e` exits 0 and prints 'nothing to retire: no mapping row, no translated copy' and 'no page or CNXML file references it'. Yet the legacy row {figureId:'fig-ch03_01_01', outputName:'Figure_03_01_01_is.jpg'} exists, its file is present, and `grep -a` finds 2 corpus files referencing it: 03-translated/mt-preview/ch03/m66438.cnxml and 05-publication/mt-preview/chapters/03/3-1-nymyndun-lifraenna-storsameinda.html. So both halves of that report are false. The validator (figure-config-validate.js:180) also counts only originalImage rows, so it would pass too. It stays Minor because of the census (probes/ds3-mapping-census.out): efnafraedi-2e has 717 rows, 0 legacy and 0 rows not `<originalImage>_IS.<ext>`; liffraedi-2e has 34 rows, all legacy with suffix `_is`, 0 reachable by the case-sensitive name rule. Biology is withheld and every planned retire is chemistry.",
+    "fix": "In planRetire, refuse any file in `files` that a kept row's outputName names (the --prune `mapped` check, applied to the retire). Also refuse, or at least report, a name whose legacy row names a `<name>_is.*` copy, matching the suffix without regard to case."
+   },
+   {
+    "id": "DS-4",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Scratch fixture (probes/ds4-double-fault.mjs, ds4-double-fault.out). The committed mapping is [CNX_A, CNX_B], and an uncommitted CNX_NEW row (with its copy) is added. The plan does not refuse a dirty mapping, since only deletions are gated on git. `--retire CNX_A,CNX_B --apply` has the fault on unlink 2 and a directory planted at `<mapping>.<pid>.tmp`, so the mapping restore fails. It exits 1 with 'FAILED part-way (EACCES: simulated); RESTORE ALSO FAILED: EISDIR ... — restore by hand from git'. The mapping held [CNX_A, CNX_B, CNX_NEW] before the run and [CNX_NEW] after; the deleted copies were restored. Following the advice (`git restore --source=HEAD` of the mapping) gives [CNX_A, CNX_B]: CNX_NEW is lost. The pre-run bytes (`before`, tools/retire-translated-figure.js:206) were in memory and are discarded. This needs a double fault plus an uncommitted mapping. The generator could re-derive a new-route row from a copy still in media/, but the operator is not told that.",
+    "fix": "When the mapping restore fails, write `before` to a recovery file beside the mapping (e.g. image-mapping.json.pre-retire) and name it in the message instead of 'restore by hand from git'. Or refuse a retire while image-mapping.json is modified against HEAD."
+   },
+   {
+    "id": "DS-5",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "parseCli is pure (probes/ds5-cli.mjs, ds5-cli.out). ['--book','efnafraedi-2e','--prune','--book','liffraedi-2e','--apply'] parses to {book:'liffraedi-2e', prune:true, apply:true}, with no refusal. `--book X --retire N --book Y` likewise gives book Y. A repeated --retire accumulates, which is by design. '--apply=false', '--book=b' and '--' all exit 2. What limits the damage: --prune on the wrong book still applies its full delete rule (unmapped, unreferenced, plain name, tracked and clean), so it deletes only true orphans of that book, all restorable from git. --retire is caught by the source-basename check ('wrong --book?') unless the name exists in both books.",
+    "fix": "In parseCli, throw CliError('--book given twice') when --book appears again with args.book already set. Add the case to the exit-2 usage table in the test."
+   }
+  ],
+  "verifierPorcelain": ""
+ },
+ {
+  "lens": "corpus-predicate",
+  "findings": [
+   {
+    "id": "CP-1",
+    "severity": "Minor",
+    "title": "The reference scan skips every corpus file whose stem ends in the suffix, not only the figure copies",
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 110,
+    "scenario": "Suppose a page, JSON or CNXML file in the corpus has a name whose stem ends in `_IS`, for example `05-publication/mt-preview/chapters/01/glossary_IS.html` holding `<img src=\".../images/media/CNX_A_IS.svg\">`. Line 110 never reads that file, because the skip `isTranslatedName(base, suffix)` applies to any extension in any directory. `planPrune` then finds no reference to CNX_A_IS.svg. If that copy is unmapped, tracked and clean, `--prune --apply` deletes an image the page still shows. D13 and the module header say the skip is for \"the translated copies themselves\", but the code skips a wider set. Live exposure on chemistry today is 0. The only corpus files with an `_IS` stem are the 754 published SVG copies. `slugify` (tools/lib/module-sections.js:153) emits only `[a-z0-9-]`. Every other corpus name is `mNNNNN.html`, `mNNNNN.cnxml`, `mNNNNN-fidelity.json`, `index.json`, `glossary.json`, `toc.json` or `slug-map.<track>.json`. A narrower skip (an image extension, or a path under `images/media/` or `media/`) keeps both the D13 rationale and the speed.",
+    "evidence": "Shape matrix through the real `planPrune` on a git fixture (<scratch>/c40-wf/review-corpus-predicate/shapes.mjs): `DELETED  page whose stem ends in _IS`; control on the same harness: `kept (referenced)  control: plain <img src>`. Real-tree census of names: 754 `_IS`-stemmed files in the 2,889-file corpus, all `.svg` copies under `images/media/`. The tests do not pin how far the skip reaches in either direction; see mutant 1."
+   }
+  ],
+  "checked": [
+   "REAL TREE, chemistry. findReferences was compared with two independent instruments (scratch scripts tool-side.mjs, independent2.py and compare.py, all under <scratch>/c40-wf/review-corpus-predicate/). Population: 754 published copies with 725 distinct names. The corpus holds 2,889 git-visible files, of which 574 are scanned (265 html, 153 cnxml, 153 json, 3 other). The instruments walked 15,380 files on disk, including 12,491 gitignored inject backups. Instrument A is a structural parse: html.parser with entity-decoded attributes, srcset, url() and script bodies; ElementTree for CNXML; json for JSON; then URL-decoding and the basename. Instrument B is a case-insensitive scan of decoded tokens in every file, binaries included. RESULT: 1,489 reference pairs in both. Every directed difference is 0: B[visible] − tool, A − tool, case-only matches, tool − A, references without the extension dot, and a stem embedded inside a longer name.",
+   "Positive controls for the independent instruments: B detects lowercase, %5F, &#95;, _, no-dot, srcset and CSS url() forms of the reference; A detects the forms that decode.",
+   "planPrune dry run on the real tree (the CLI without --apply): 754 copies, 9 to delete, 745 kept, all 745 as 'mapped'. The 9 are GasBurning in ch05, Ex9soln_img in ch06 and 7 in ch08. Both instruments find them referenced only by gitignored 2026-06-26 *.cnxml.backup.* files under 03-translated/mt-preview: no visible file, no case-only reference, no reference without the dot. vefur's local synced snapshot (index.json dated 2026-08-18) holds all 9 files, and none of its 255 pages references them.",
+   "Per location: each of the 745 kept copies is referenced by a page in its own track and chapter. The 29 names with two copies are faithful/mt-preview pairs in the same chapter. Copies kept only because a same-named file elsewhere is referenced: 0. False positives measured: 0. Every tool hit is an attribute value; none comes from alt text, a comment or a look-alike name.",
+   "Encodings in the real corpus: 0 percent-escapes in any scanned file, entities limited to &amp; &lt; &gt; &nbsp; &quot;, and no src or href value containing % or &. escapeAttr (cnxml-elements.js:419) changes only & \" < >, and inject writes outputName verbatim, so a plain name cannot be referenced in encoded form. Non-plain names are kept by PLAIN_NAME.",
+   "Shape matrix through the real planPrune (shapes.mjs). Kept: plain src, srcset, CSS url(), a JS string, JSON with \\/, an English SVG embedding the copy. DELETED: %5F, &#95;, _, a case difference, no extension dot, a reference held in a .pdf or .zip, a page whose stem ends in _IS, a translated SVG embedding the copy, another book's page, a gitignored *.tmp page. Live instances of every DELETED shape on chemistry: 0. Details: 0 case-only matches; 0 references without the dot; 0 .pdf files; 1 .zip, holding three English JPGs and no _IS name; 0 external href/src/url( in the 754 published copies (svgout.py inlines rasters as data: URIs); 0 ignored files under 05-publication.",
+   "Cross-book: 2,491 non-image files in the other books' 05-publication, 03-translated, 04-localized-content and 03-faithful-translation. None mentions efnafraedi-2e, and none contains a chemistry copy stem. Control: 217 occurrences of _is. in those files.",
+   "Outside books/: vefur's sync reads only books/<slug>/05-publication and docs/provenance/provenance.md, which has 0 _IS. references. The 241 tracked files in vefur's src, scripts and static reference no _IS figure. Sync rebuilds the book directory from efni's working tree (rmSync, then cpSync).",
+   "Ignored files: all 12,491 are *.cnxml.backup.<ts> files under 03-translated. Render reads only *.cnxml (cnxml-render.js:2600), and vefur excludes .backup., so leaving them out of the corpus is correct. A fixture showed that ls-files -co --exclude-standard lists tracked-but-ignored files, and the files inside untracked directories one by one.",
+   "The six planned retirements (rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619): each is referenced today by exactly one mt-preview CNXML and one mt-preview page, with no faithful reference. The --retire dry run (census.mjs, retired set injected, no --apply) printed the same two files for each name. Ques11ans: nothing to retire, and nothing references it.",
+   "Validator corpus, D11 (validator-corpus.mjs): each of the 11 planned keys (7 retirements, 4 pin targets) names an image in exactly one book, efnafraedi-2e. __e2e-fixture__, testbook, _slug-maps and stjornufraedi own 0 basenames; the e2e fixture has no 01-source by design. Physics and biology share 65 basenames, which is the documented global-table limit and outside chemistry's scope. A hypothetical config holding the 7 retirements produces exactly the expected row and copy problems for the 6, and none for Ques11ans. The source has 149 CNXML files, tracked and present on disk, so CI sees the same corpus. The validator's translated-copy rule is the same function the retire tool deletes by (topLevelTranslatedCopies).",
+   "Other books: --prune dry runs on physics, biology, organic and microbiology find 0 candidates. Biology's 34 translated copies are named *_is.jpg, which the case-sensitive suffix does not match, so they are never candidates (the safe direction).",
+   "Tests: translated-figure-refs.test.js and figure-config-validate.test.js pass (79 tests). In a scratch copy, translated-figure-refs plus the retire tests pass 86 of 86. Mutants there (the original was restored from a golden copy and checked with cmp after each): dropping the translated-copy skip was killed (1 failed); dropping -o from ls-files was killed (4 failed); the two mutants listed survived.",
+   "Outside the lens, logged only: (a) the published CNX_Chem_14_03_ICETable5_img.zip, an OpenStax source asset holding three English JPGs, ships to readers and is outside the prune's _IS scope. (b) The corpus is this box's working tree, so a page rendered on prod and not yet pulled is invisible to it. The spec's run order (merge, deploy, then ②) is what covers that."
+  ],
+  "mutants": [
+   {
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 110,
+    "change": "`if (isTranslatedName(base, suffix)) continue;` -> `if (path.extname(base).toLowerCase() === '.svg') continue;`",
+    "why": "It survives translated-figure-refs.test.js plus retire-translated-figure.test.js (86/86 pass, run in a scratch copy). No fixture puts a non-translated SVG in the corpus, so nothing pins that the skip is limited to translated copies, and CP-1 shows nothing pins the opposite either. Live consequence today: none. The mutated findReferences returns an identical map on the real chemistry tree, whose corpus has 754 SVGs, all of them _IS copies."
+   },
+   {
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 122,
+    "change": "`text.slice(Math.max(0, end - maxLen), end)` -> `text.slice(end - maxLen, end)`",
+    "why": "It survives (86/86). The mutant misses a needle that ends within maxLen characters of the start of a file while a longer needle is in the set, and no fixture places a reference that early. Live consequence today: none. The map is identical on the real tree, because pages and CNXML begin with a doctype or an XML declaration."
+   }
+  ],
+  "porcelain": "",
+  "verdicts": [
+   {
+    "id": "CP-1",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "MECHANISM REPRODUCED END TO END, WITH A CONTROL ON THE SAME HARNESS. tools/lib/translated-figure-refs.js:110 skips any corpus file whose name passes isTranslatedName (stem ends in `_IS`, any non-empty extension, any directory). Fixture through the real planPrune, then the real CLI `run(['--book','b','--prune','--apply'])` against the throwaway fixture only, with an unlink guard that refuses any path outside it (<scratch>/c40-wf/verify-corpus-predicate/repro.mjs): DELETED for copies referenced only by `glossary_IS.html`, by `03-translated/.../m1_IS.cnxml` and by `index_IS.json`. Kept (referenced) for the plain-page control `1-1-page.html`, a lowercase `glossary_is.html`, an extensionless `notes_IS`, and an English `CNX_X.svg` under images/media. After apply, CNX_A_IS.svg is gone while glossary_IS.html still holds `<img src=…CNX_A_IS.svg>`, and the control copy survives. SECOND CONSUMER, also measured: `--retire` (dry run, retire-report.mjs) prints 'no page or CNXML file references it' for CNX_A while glossary_IS.html shows it, and lists the control CNX_C's reference correctly. That consumer deletes nothing, but its report is wrong. The validator does NOT call findReferences, although the module header (line 4) says it shares the scan. PINNING, settled by mutants on a scratch copy of the 10-file import closure, never the repo. Baseline: 86/86 pass. V1 (skip narrowed to `.svg` directly under images/media/): 86/86 pass, so the skip's REACH is not pinned. V2 (skip removed): 1 test fails ('does not scan translated copies or raster files'), so the skip's EXISTENCE is pinned. The suite can fail on line 110; it cannot tell wide from narrow. V1 also closes every case in the shape matrix and keeps the designed one: a copy mentioned only inside another copy is still deleted. LIVE EXPOSURE: 0 in EVERY book, not only chemistry (census.mjs over all 9 dirs under books/). Chemistry: 2,889 corpus files, 754 name-skipped, all `.svg` directly under images/media. These are 725 distinct names: 716 still in media/ plus exactly the 9 June leftovers D10 names. 0 source files anywhere have an `_IS` stem. Every other book has 0 name-skipped files. Biology's 34 published `_is` copies are lowercase rasters, which the extension list already skips. REACHABILITY, checked as the refutation attempt and it fails to refute: no current producer can emit an `_IS`-stemmed non-image into 03-translated or 05-publication. slugify lowercases. Every real book-config.json endOfChapterSections slug is lowercase-hyphenated. Module ids are m\\d+. Organic's exercise ids come from OpenStax. publish-figure-svg writes to books/<slug>/media/, which is outside the corpus. So the trigger needs a hand-placed file or a future producer, and that is why it is Minor even though the consequence (a deleted image a page still shows) would be Critical if the trigger occurred. CORRECTIONS TO THE REPORTER'S EVIDENCE (the conclusion survives): pages are `N-N-<slug>.html`, `N-<slug>.html` and `appendices-N-<slug>.html`; `mNNNNN.html` is only getOutputFilename's no-section fallback (cnxml-render.js:2632). Chemistry also has 05-publication/README.md. Organic's 03-translated/mt-preview/exercises/ holds 1,961 uppercase-stemmed JSONs such as `01-03-OC-P01.json`. So 'slugify emits only [a-z0-9-]' describes one producer, not the whole corpus. git status --porcelain was empty after every round, and the scratch copy was cmp-verified identical to the repo file after the mutants.",
+    "fix": "Change only the skip at translated-figure-refs.js:110, not isTranslatedName itself, which also defines the prune candidates (publishedCopies) and the retire deletions (topLevelTranslatedCopies). Skip a file only when isTranslatedName(base, suffix) && path.extname(base).toLowerCase() === '.svg' && it sits directly under images/media/. Settle it with a test: add `${PUB}/glossary${S}.html` referencing a copy to fx() in translated-figure-refs.test.js and assert findReferences reports it. That test is red on the current code and green on the narrowed skip; both halves were measured."
+   }
+  ],
+  "verifierPorcelain": ""
+ },
+ {
+  "lens": "test-vacuity",
+  "findings": [
+   {
+    "id": "F1",
+    "severity": "Important",
+    "title": "The only test of the retire CLI's config wiring passes whether the CLI reads retiredFigures, reads nothing, or reads supersededArtwork",
+    "file": "tools/__tests__/retire-translated-figure.test.js",
+    "line": 107,
+    "scenario": "run() at tools/retire-translated-figure.js:462 resolves `retired ?? loadRetiredFigures()`; every other retire test injects `retired` (runTool defaults to new Set(['CNX_A'])), so the real CLI default is exercised only by 'reads the retired set from the figure config when none is given (empty in this PR)', which asserts a refusal that holds for ANY set lacking CNX_A. A regression to `retired ?? new Set()` (CLI refuses everything) or to reading supersededArtwork stays green. Under the latter, an operator running `--retire CNX_Chem_19_03_Pattern_img --apply` (superseded, never ruled retired) gets exit 0, media/CNX_Chem_19_03_Pattern_img_IS.svg deleted and the mapping row removed, where the real tool refuses. D1/D9 rely on the tool only executing the retiredFigures record. Fix: vi.mock the config reader (as generate-image-mapping-retired.test.js does) or add a configPath seam to run(), and assert both a positive (a name in the mocked retiredFigures is accepted) and a negative (a name only in supersededArtwork is refused).",
+    "evidence": "Scratch harness (copies of the modules and the 6 test files, <scratch>/c40-wf/review-test-vacuity/h), each mutant applied alone and restored from golden copies:\n{\"id\":\"M1-retire-config-never-read\",\"files\":\"6 passed (6)\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M2-retire-reads-superseded-table\",\"files\":\"6 passed (6)\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M2b-one-line-reads-superseded\",\"files\":\"6 passed (6)\",\"tests\":\"179 passed (179)\"}\nConsequence demo (demo.mjs, git fixture with that figure's row and copy, retired left undefined so the CLI reads the harness copy of the committed config):\nM2 original tool  : 1 | CNX_Chem_19_03_Pattern_img: no retiredFigures entry — record the ruling in the figure config first | copy still there: true\nM2 mutated tool   : 0 | copy still there: false | mapping now: []"
+   },
+   {
+    "id": "F2",
+    "severity": "Important",
+    "title": "The census line of the --retire report ('no page or CNXML file references it') never executes in any test",
+    "file": "tools/retire-translated-figure.js",
+    "line": 293,
+    "scenario": "Run order step 5 (amended) and D11's amendment make a dry-run `--retire <the 6>` after the prune THE census: it must say 'no page or CNXML file references it' for each figure. This is a coverage gap, not a vacuous assertion: no test runs --retire after a re-render, and every --retire fixture still has 2 references, so lines 293-294 never run and nothing asserts the string (grep: no match in the test file). The current code is correct; nothing can tell if it stops being. An off-by-one `by.length <= 1` makes the census report clean after a PARTIAL re-render where 03-translated/mt-preview/ch01/m1.cnxml still names CNX_A_IS.svg. The operator then declares the retire complete while a page source still points at the June copy. Fix: a test that runs `--retire CNX_A` as a dry run after retiredAndRerendered() and asserts the zero-reference line, plus a one-reference case asserting 'still referenced by 1 file(s)'.",
+    "evidence": "{\"id\":\"M11-census-clean-at-one-reference\",\"files\":\"6 passed (6)\",\"tests\":\"179 passed (179)\"}\ngrep -an 'no page or CNXML' tools/__tests__/retire-translated-figure.test.js -> no match (only tools/retire-translated-figure.js:294).\nDemo, fixture with one remaining CNXML reference:\nM11 original census: 0 | nothing to retire: no mapping row, no translated copy /   still referenced by 1 file(s) — pages change only in the whole-book re-inject and re-render (②):\nM11 mutated  census: 0 | nothing to retire: no mapping row, no translated copy /   no page or CNXML file references it"
+   },
+   {
+    "id": "F3",
+    "severity": "Minor",
+    "title": "D9's 'writes only if a row was removed' and 'restores the previous mapping bytes' cannot fail: every fixture mapping is already in the tool's own serialisation",
+    "file": "tools/__tests__/retire-translated-figure.test.js",
+    "line": 302,
+    "scenario": "'a second run changes nothing...' (:302) and 'a failure part-way restores the mapping...' (:198) compare snapshots, but every fixture mapping is written as JSON.stringify(x, null, 2)+'\\n', exactly what applyRetire emits. So three mutants survive: an unconditional rewrite (`if (true)` at :209), always adding the name to removeNames (:184), and a restore that re-serialises plan.rows instead of the saved bytes (:228). Measured on the real corpus: efnafraedi-2e's mapping is canonical, but liffraedi-2e's is not (4,885 vs 4,886 bytes: no trailing newline; 34 rows without originalImage), and neither is __e2e-fixture__'s. On biology, a no-row retire or a rollback would therefore change the file while the suite stays green. Kept at Minor despite the rubric clause, because parse-then-stringify keeps the content and the measured damage is a one-byte trailing-newline change. Fix: one fixture mapping in non-canonical whitespace for the no-row re-run and the rollback test.",
+    "evidence": "{\"id\":\"M3-mapping-always-rewritten\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M12-removeNames-always-added\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M4-restore-reserialises-rows\",\"tests\":\"179 passed (179)\"}\ncanon.mjs over real books/:\nefnafraedi-2e          rows 717 | canonical true | bytes 99000 vs 99000 | rows without originalImage 0\nliffraedi-2e           rows 34 | canonical false | bytes 4885 vs 4886 | rows without originalImage 34\n__e2e-fixture__        rows 1 | canonical false | bytes 130 vs 138"
+   },
+   {
+    "id": "F4",
+    "severity": "Minor",
+    "title": "The test named for the outputName escape guard passes on the exact-name rule; escapesMediaDir in planRetire is unreachable (likely an equivalent mutant)",
+    "file": "tools/__tests__/retire-translated-figure.test.js",
+    "line": 140,
+    "scenario": "'refuses a row whose outputName would reach outside media/' uses outputName `../CNX_A_IS.svg`. The exact-name check `out !== ${name}${suffix}${ext}` (tools/retire-translated-figure.js:172) rejects that first, so `|| escapesMediaDir(bookDir, out)` (:173) never decides a result. The test also plants no file at the escape target, so it never shows that nothing outside media/ is deleted. The mutant is likely EQUIVALENT: a name must be an image basename from indexSourceImageBasenames (`split('/').pop()`), so `<name><suffix><ext>` cannot contain '/' and cannot escape media/ on POSIX. The mutation pass should expect this survivor and not file it as a code gap.",
+    "evidence": "{\"id\":\"M5-no-escapesMediaDir\",\"files\":\"6 passed (6)\",\"tests\":\"179 passed (179)\"}\ngenerate-image-mapping.js:89 `const file = img[1].split('/').pop();`"
+   },
+   {
+    "id": "F5",
+    "severity": "Minor",
+    "title": "The two exact-match rules for a --retire name mask each other; neither is tested on its own",
+    "file": "tools/retire-translated-figure.js",
+    "line": 147,
+    "scenario": "D9 requires the name to be EXACTLY a retiredFigures key (:147) and EXACTLY a source basename (:153). No test passes a mis-cased name or a mis-cased config key, so case-folding either check alone survives, because the other still rejects the usual inputs. Under a folded source check (:153), a mis-cased config key `cnx_a` plus `--retire cnx_a` reports 'nothing to retire: no mapping row, no translated copy' and exits 0, which is the no-op report D9 says a wrong name must refuse. Under a folded retired check (:147), a mis-cased config key retires CNX_A. The validator's 'in 0 books' rule catches the key only in CI, after the retire has already run locally.",
+    "evidence": "{\"id\":\"M6-retired-check-folds-case\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M7-source-check-folds-case\",\"tests\":\"179 passed (179)\"}"
+   },
+   {
+    "id": "F6",
+    "severity": "Minor",
+    "title": "readMappingOrRefuse's array-of-objects rule is tested only with [1] and {}; [null] and [[]] pass after the guard is weakened",
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 239,
+    "scenario": "translated-figure-refs.test.js:211 checks '{not json', '{}' and '[1]' only. Dropping `r === null ||` lets a mapping holding null through the refusal, and planRetire then crashes with a TypeError at `r.originalImage` (retire-translated-figure.js:163) instead of refusing cleanly. Dropping `|| Array.isArray(r)` reads `[[]]` as a legacy row, which is kept and rewritten. D9 requires 'parses as an array of objects'. Fix: add [null] and [[]] cases.",
+    "evidence": "{\"id\":\"M9-mapping-accepts-null-row\",\"tests\":\"179 passed (179)\"}\n{\"id\":\"M10-mapping-accepts-array-row\",\"tests\":\"179 passed (179)\"}"
+   },
+   {
+    "id": "F7",
+    "severity": "Minor",
+    "title": "The writeAtomically unit test cannot fail on a direct, non-atomic write",
+    "file": "tools/__tests__/translated-figure-refs.test.js",
+    "line": 239,
+    "scenario": "'writes through a temp file in the same directory and leaves none behind' checks only the final content and the directory listing. Replacing writeAtomically's temp-file-and-rename with `fs.writeFileSync(file, data)` keeps it green. The property is pinned only indirectly, by the double-fault rollback test (retire-translated-figure.test.js:258), whose purpose is different: it plants a DIRECTORY at `${mapping}.${pid}.tmp`. If that test is ever reworked, nothing pins atomicity.",
+    "evidence": "{\"id\":\"C7-writeAtomically-not-atomic\",\"tests\":\"1 failed | 178 passed (179)\",\"failedNames\":[\"still restores the deleted files when restoring the mapping fails too\"]} — the unit test at translated-figure-refs.test.js:239 is not among the failures."
+   },
+   {
+    "id": "F8",
+    "severity": "Minor",
+    "title": "run_cli's human mode is tested only with retiredFigures; dropping artworkPins there survives",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 502,
+    "scenario": "D6 says one function runs both command-line modes, but test_sources.py exercises the human branch of run_cli only with a retired entry; pins go through run_cli only in --json mode. If the human call drops pins, the by-hand check that the buy procedure names ('Check that sources.py returns the approved file'; 'A sources.py check of the pinned names belongs in each chemistry lineup') prints the normal lookup's file, with no '(pinned: …)' marker, while figure-run's --json path still uses the pin. For ibuprofen, that is updates-2e/CNX_Ibu.eps, the drawing [USER] rejected.",
+    "evidence": "{\"id\":\"P4-human-mode-drops-pins\",\"verdict\":\"ALL PASS\"}"
+   },
+   {
+    "id": "F9",
+    "severity": "Minor",
+    "title": "Python pin rules with no test: backslash and drive-letter paths, the twin scan's edition match and dict guard, and blank string fields",
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 200,
+    "scenario": "(a) The malformed-pin table (test_sources.py:466-478) has no backslash or drive-letter case, though the JS validator test has both. Dropping either clause at :200 refuses such a pin as pin-missing instead of pin-invalid. (b) No Python control has the same relative path pinned in two editions (the JS validator has one). Dropping `e.get('edition') == edition` (:242) makes two valid pins in different trees both pin-conflict, so the runtime would disagree with the validator, which accepts them. (c) No table mixes a malformed entry with a valid pin. Dropping `isinstance(e, dict)` (:241) makes resolving the valid pin crash the whole --json run with AttributeError, which figure-run treats as fatal. (d) Accepting whitespace-only kind/edition/file/reason (:192 `not value.strip()` → `not value`) is untested. All fail closed or fail loud, hence Minor.",
+    "evidence": "{\"id\":\"P1-no-backslash-rule\",\"verdict\":\"ALL PASS\"}\n{\"id\":\"P2-no-drive-letter-rule\",\"verdict\":\"ALL PASS\"}\n{\"id\":\"P3-twins-ignore-edition\",\"verdict\":\"ALL PASS\"}\n{\"id\":\"P6-twins-no-dict-guard\",\"verdict\":\"ALL PASS\"}\n{\"id\":\"M13-py-blank-string-fields-accepted\",\"verdict\":\"ALL PASS\"}\n{\"id\":\"P5-pin-ext-case-sensitive\",\"verdict\":\"ALL PASS\"} (a pinned .EPS file would become pin-invalid; also untested)"
+   }
+  ],
+  "checked": [
+   "Method: copied the six changed JS test files, git-fixture.js, the modules they load (retire-translated-figure.js, generate-image-mapping.js, publish-figure-svg.js, lib/translated-figure-refs.js, figure-text-config.js, figure-config-validate.js, image-basename-map.cjs, figure-text-sidecar.cjs), sources.py, _deps.py, test_sources.py and figure-text.config.json into <scratch>/c40-wf/review-test-vacuity/h. The baseline reproduced: 179 JS tests (= 120 + 59 from the repo-root runs) and Python ALL PASS. Each mutant was applied alone, restored from golden copies, then diffed against golden; every round reported restoredClean:true. The repo files cmp identical to golden at the end.",
+   "Controls on the same functions, all KILLED as predicted. C1 sidecar refusal removed: 'refuses a figure with a sidecar'. C2 '--relative' dropped from cleanTrackedSet: 'reads a modified file as modified when repoRoot is below the git top-level'. C3 publishedCopies name filter dropped: 'walks every track and chapter directory, appendices included'. C4 `<= MIN_REASON` → `<`: 'refuses a reason of exactly 40 characters'. C5 generator `retired ?? new Set()`: 'reads the retired set from the figure config, and skips it'. C6 mapping restore dropped: 3 rollback tests. C7 non-atomic write: only 'still restores the deleted files when restoring the mapping fails too', through its planted .tmp directory. C8 prune `allowMissing: true`: both missing-mapping refusals. C9 PLAIN_NAME unanchored: all 4 URL-encoded-name tests. PC1 Python retired matched by truthiness: crashed with KeyError 'refused'. PC2 own-output-dir rule removed: '㊵ a pin with our own output dir is refused as pin-invalid'.",
+   "Reasoned from the code, not run, all killed by existing tests: removing --exclude-standard (the .backup tests); -c-only or -o-only in gitVisibleFiles (the untracked-page test and the 'a CNXML file only' keep test); reading HEAD instead of the working tree (the prune POSITIVE CONTROL, since HEAD still references CNX_A); window arithmetic in findReferences; dropping the 03-translated dir from the corpus ('a CNXML file only'); swapping the mapped and referenced keep order (the no-keep-line test for mapped CNX_B); validator null tables vs `?? {}`; path.posix.normalize; other-case suffix; fold-onto-other-figure with its own-figure control; generator skip ordering ('names a retired figure as skipped even when its source image is not in the scanned set'); exact, not folded, generator matching; Python order retired → superseded → pin (KeyError crash if a pin wins); the alias-only conflict scan (override test); _require_dir in _resolve_pin and _files_under; the DUP fold-key refusal.",
+   "Python 'the tree root' pin case (test_sources.py:474) is refused by the extension rule, not by `not parts`: removing `or not parts` (P7) gives ALL PASS. This is an equivalent mutant ('.' has no suffix, and '' fails the non-empty rule), so it is a wrong-reason label only.",
+   "retire test :98 ('refuses a figure with no retiredFigures entry, and writes nothing') uses CNX_C, which has no row and no copy, so its snapshot half is vacuous. The exit-code assertion still kills the realistic mutants, and the batch-atomicity test (:189) checks snapshots with a figure that has a row and a copy.",
+   "Every other refusal test that checks 'deletes nothing' does so against files that WOULD be deleted: sidecar; wrong-figure outputName rows; prune unreadable or missing mapping; no-media-folder with an unreferenced copy. Rollback tests assert the fault fired (calls === 2/3) or fail on exit code.",
+   "Sidecar path figure-text/<name>.is.json matches the real corpus: 459 files in books/efnafraedi-2e/figure-text.",
+   "Real mappings: efnafraedi-2e is canonical (99,000 bytes either way); liffraedi-2e is not (4,885 vs 4,886, 34 rows without originalImage); __e2e-fixture__ is not (130 vs 138). Fixture book names b/b2/nope do not exist in real books/.",
+   "Other resolver callers (read-layer-eps-control.py, read_layer_accept.py, test_readlayer.py) call S.resolve without the tables, which is the scripts D6 deliberately leaves alone. figure-run.js reaches the tables only via `sources.py --json` → run_cli → policy().",
+   "figure-run-free 'treats a pinned hit (with via) exactly like any other hit' has a plain.length > 0 control; it is a wording-only area and was not mutated.",
+   "No tracked or untracked repo file was written; vitest's cache went to the scratch cacheDir, and the repo's node_modules/.vite already existed (dated 2026-09-30). Final `git status --porcelain` exit status was 0, with empty output."
+  ],
+  "mutants": [
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 462,
+    "change": "`retired: retired ?? loadRetiredFigures(),` → `retired: retired ?? new Set(),`",
+    "why": "Survived 179/179. The only CLI-default test asserts a refusal true of any set lacking CNX_A (F1)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 462,
+    "change": "`retired: retired ?? loadRetiredFigures(),` → `retired: retired ?? new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'experiments/figure-text-translation/figure-text.config.json'), 'utf-8')).supersededArtwork)),`",
+    "why": "Survived 179/179. The CLI then retires superseded-but-not-retired figures (demo: exit 0, copy deleted, mapping []) (F1)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 293,
+    "change": "`if (by.length === 0) {` → `if (by.length <= 1) {`",
+    "why": "Survived 179/179. The census zero-reference branch never runs in any test (F2)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 209,
+    "change": "`if (plan.removeNames.size > 0) {` → `if (true) {`",
+    "why": "Survived 179/179. Every fixture mapping is already canonically serialised (F3)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 228,
+    "change": "`if (mappingWritten && before !== null) writeAtomically(plan.mappingPath, before);` → `if (mappingWritten && before !== null) writeAtomically(plan.mappingPath, JSON.stringify(plan.rows, null, 2) + '\\n');`",
+    "why": "Survived 179/179. A re-serialised restore equals the saved bytes for canonical fixtures (F3)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 173,
+    "change": "`escapesMediaDir(bookDir, out)` → `false`",
+    "why": "Survived 179/179. LIKELY EQUIVALENT: the exact-name rule at :172 rejects every escaping outputName first (F4)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 147,
+    "change": "`if (!retired.has(name)) {` → `if (![...retired].some((k) => k.toLowerCase() === name.toLowerCase())) {`",
+    "why": "Survived 179/179. Masked by the exact source-basename check, and no test uses a mis-cased name or key (F5)."
+   },
+   {
+    "file": "tools/retire-translated-figure.js",
+    "line": 153,
+    "change": "`if (!sourceBasenames.has(name)) {` → `if (![...sourceBasenames].some((k) => k.toLowerCase() === name.toLowerCase())) {`",
+    "why": "Survived 179/179. Masked by the exact retired check; a mis-cased pair then reports a no-op (F5)."
+   },
+   {
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 239,
+    "change": "`parsed.some((r) => r === null || typeof r !== 'object' || Array.isArray(r))` → `parsed.some((r) => typeof r !== 'object' || Array.isArray(r))`",
+    "why": "Survived 179/179. Only [1] and {} are tested, so [null] then reaches a TypeError in planRetire (F6)."
+   },
+   {
+    "file": "tools/lib/translated-figure-refs.js",
+    "line": 239,
+    "change": "`parsed.some((r) => r === null || typeof r !== 'object' || Array.isArray(r))` → `parsed.some((r) => r === null || typeof r !== 'object')`",
+    "why": "Survived 179/179. [[]] is then accepted as a legacy row (F6)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 200,
+    "change": "`if (file.startswith('/') or '\\\\' in file or re.match(r'[A-Za-z]:', file)` → `if (file.startswith('/') or re.match(r'[A-Za-z]:', file)`",
+    "why": "ALL PASS. No Python backslash case; the drive-letter clause on the same line survives the same way (F9)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 242,
+    "change": "`and e.get('edition') == edition and isinstance(e.get('file'), str)` → `and isinstance(e.get('file'), str)`",
+    "why": "ALL PASS. No Python control for the same path in another edition (F9)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 241,
+    "change": "`if _normkey(k) != _normkey(basename) and isinstance(e, dict)` → `if _normkey(k) != _normkey(basename)`",
+    "why": "ALL PASS. No table mixes a malformed entry with a valid pin, so the twin scan never meets a non-dict (F9)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 502,
+    "change": "`lines, missing, refused = human_report(argv[1:], trees, precedence, **policy(cfg))` → `lines, missing, refused = human_report(argv[1:], trees, precedence, **dict(policy(cfg), pins=None))`",
+    "why": "ALL PASS. Human mode is tested through run_cli only with retiredFigures (F8)."
+   },
+   {
+    "file": "experiments/figure-text-translation/sources.py",
+    "line": 192,
+    "change": "`if not isinstance(value, str) or not value.strip():` → `if not isinstance(value, str) or not value:`",
+    "why": "ALL PASS. No whitespace-only kind/edition/file/reason case in the malformed-pin table (F9)."
+   }
+  ],
+  "porcelain": "",
+  "verdicts": [
+   {
+    "id": "F1",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Harness: scratch copies of the tool and its tests in <scratch>/c40-wf/verify-test-vacuity/h, each mutant restored from a golden copy and checked with cmp. The retire test file alone has 66 tests; the reporter's 179 was over six files, so the counts differ for that reason only. F1-M0 (`retired: retired,`, the default dropped) is KILLED by :107 (1 failed of 66), so the test does catch a missing default. F1-M1 (`retired ?? new Set()`) and F1-M2 (the default reads Object.keys(supersededArtwork)) both survive 66/66. The test asserts a refusal that holds for any set lacking CNX_A. CORRECTION to the scenario: the Pattern_img deletion was fixture state, not the real repo. books/efnafraedi-2e has 0 mapping rows and 0 media/ copies for CNX_Chem_19_03_Pattern_img (also for Morse and Ques11ans_img). I ran planRetire on the real corpus, read-only with git stubbed. Under M2, Pattern_img gives perName {rows:0, files:[]}: 'nothing to retire', and nothing is deleted. Of the four superseded keys only BlastFurn has a live copy, and it is one of the six ruled retires. SEVERITY RULE I APPLIED: what the surviving mutant does on the planned run. On the real corpus with the planned six, M1 refuses 6 of 6 and M2 refuses 5 of 6 (rvosmosis, N2O5, molecreso, Cl2OClO2, RadioDecay-e619). Either refusal is batch-atomic, so the regression shows itself at run-order step 2's dry run, before any --apply. M1 behaves exactly like the real tool while the committed table is empty. The loader itself is pinned by figure-text-config.test.js ('loads the table from a given config path'). D11(b) does not list this wiring test; D11(c) asks for one only for the generator.",
+    "fix": "Give run() a configPath option, passed to loadRetiredFigures(configPath). Add a test pair on a temp config holding retiredFigures {CNX_A} and supersededArtwork {CNX_B}: `--retire CNX_A` (dry run) exits 0, and `--retire CNX_B` is refused with 'no retiredFigures entry'. This kills M1 and M2 by assertion. A vi.mock that returns only loadRetiredFigures would kill M2 only through an undefined import."
+   },
+   {
+    "id": "F2",
+    "verdict": "CONFIRMED",
+    "severity": "Important",
+    "measured": "F2-REACH (the clean-census out() replaced by a throw) survives 66/66, so no test executes tools/retire-translated-figure.js:293-294. `grep -an 'no page or CNXML'` matches only :294 of the tool. The test file's only census assertion is 'still referenced by 2 file(s)' (:72). F2-M11 (`by.length <= 1`) survives 66/66. Fixture demo: `--retire CNX_A --apply`, then the page is re-rendered but m1.cnxml is not re-injected. The real census says 'still referenced by 1 file(s) ... 03-translated · mt-preview · ch01 · m1.cnxml'; the M11 census says 'no page or CNXML file references it', a false clean verdict. Real corpus today (findReferences, git ls-files only): each of the six has exactly 2 references, one mt-preview CNXML and one mt-preview page, so one remaining reference is the state a partial ② leaves. WHY IMPORTANT WHILE F1 IS MINOR: this survivor gives a false CLEAN verdict in exactly the state the census exists to detect. The design (the D11 amendment and the run-order step 5 amendment) made this census the replacement for a dropped CI rule. MITIGATION, measured on the same fixture: the --prune dry run that comes before the census in step 5 prints 'keep .../CNX_A_IS.svg — still referenced by books/b/03-translated/mt-preview/ch01/m1.cnxml' for the same reference, and so does the second prune dry run. The census is read-only, so nothing is wrongly deleted. If you weigh that mitigation more heavily, Minor is defensible.",
+    "fix": "Add two --retire dry-run tests after retiredAndRerendered(). With nothing referencing CNX_A, expect 'no page or CNXML file references it'. With only the page re-rendered (m1.cnxml still names CNX_A_IS.svg), expect 'still referenced by 1 file(s)' and the m1.cnxml location line."
+   },
+   {
+    "id": "F3",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "F3-M3 (`if (true)` at :209), F3-M12 (unconditional removeNames.add at :184) and F3-M4 (the restore writes JSON.stringify(plan.rows) at :228) each survive 66/66. Every retire fixture mapping is written as JSON.stringify(x, null, 2)+'\\n'. I re-measured the real mappings read-only. efnafraedi-2e is canonical (99000 = 99000 bytes). liffraedi-2e differs only by the missing trailing newline (4885 vs 4886 bytes); its 34 rows all lack originalImage. __e2e-fixture__ is not canonical (130 vs 138). Demo on biology's real bytes, a retire that removes no row: the real tool leaves the file identical; M3 and M12 make it 4885 to 4886 bytes with equal content. Demo on a compact mapping, a rollback: the real tool restores the bytes exactly; M4 writes 147 to 197 bytes. TWO CORRECTIONS to the reach claim. (1) __e2e-fixture__ fails the --book slug regex, which requires a leading letter or digit, so the CLI cannot target it. (2) M4 cannot reach the real corpus at all. A rollback rewrites the mapping only after a row was removed; no biology row has originalImage, so none can be removed, and chemistry is canonical. The only real-corpus damage is M3 or M12 adding one trailing newline on biology, which no planned retire touches.",
+    "fix": "Write one fixture mapping in non-canonical form (compact JSON with no trailing newline). Use it for 'a second run changes nothing' and for the :198 rollback test, and assert that the mapping bytes are unchanged, or restored exactly."
+   },
+   {
+    "id": "F4",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "F4-M5 (drop `|| escapesMediaDir(bookDir, out)`) survives 66/66. F4-M5b (drop the exact-name rule, keep escapesMediaDir) also leaves :140 green; it fails only 'refuses a mapping row naming another figure's copy' (1 of 66). So the escape test passes under either rule alone. M5 is an equivalent survivor on POSIX: indexSourceImageBasenames uses src.split('/').pop() and strips one extension, so a name holds no '/'. The suffix is '_IS', and path.extname never contains '/'. An out equal to `${name}${suffix}${ext}` therefore has no '/' and can never be '.' or '..'. escapesMediaDir (`path.dirname(path.resolve(mediaDir, out)) !== mediaDir`) is then always false. As the reporter states, the fixture plants no file at the escape target.",
+    "fix": "No code change: record M5 as an expected equivalent survivor in the mutation pass. Optionally, plant books/b/CNX_A_IS.svg in the :140 fixture and assert that it still exists after the refusal."
+   },
+   {
+    "id": "F5",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "F5-M6 (the retired check folds case) and F5-M7 (the source check folds case) each survive 66/66; no test uses a mis-cased name or key. Demos with the config key mis-cased as 'cnx_a'. `--retire cnx_a`: the real tool refuses with 'no image of that name ... wrong --book?' (exit 1). M7 exits 0 with 'nothing to retire: no mapping row, no translated copy' and 'no page or CNXML file references it', while CNX_A's row and copy stay. `--retire CNX_A --apply`: the real tool refuses with 'no retiredFigures entry'; M6 exits 0 and deletes CNX_A's row and copy. Mitigations: run-order step 3 runs the validator, whose exactly-one-book rule flags 'cnx_a' as naming an image in 0 books. sources.py folds keys, so under M6 the figure retired is the one intended.",
+    "fix": "Add two tests. With retired {'cnx_a'}, `--retire cnx_a` is refused with /wrong --book/. With retired {'cnx_a'}, `--retire CNX_A --apply` is refused with /no retiredFigures entry/ and writes nothing."
+   },
+   {
+    "id": "F6",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "F6-M9 (drop `r === null ||`) and F6-M10 (drop `|| Array.isArray(r)`) each survive the translated-figure-refs and retire tests (0 failed of 86). The validator test cannot kill them either, judging from its code and the corpus. Its throwaway section plants only valid row arrays and '{not json'. No real mapping holds a null or array row (0 in efnafraedi-2e, liffraedi-2e and __e2e-fixture__, measured). CLI demos: the real guard refuses both [null,row] and [[],row] with exit 1 and writes nothing. Under M9, [null,row] throws TypeError (reading 'originalImage') and leaves the mapping unchanged. Under M10, [[],row] exits 0, removes CNX_A's row and copy, and rewrites the file as [[]]. Each mutant either fails loudly or keeps the content; nothing is corrupted.",
+    "fix": "Add `expect(() => readMappingOrRefuse(tmpFile('[null]'))).toThrow(/not an array of objects/)` to the readMappingOrRefuse refusal test, and the same assertion for '[[]]'."
+   },
+   {
+    "id": "F7",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "F7-C7 replaces writeAtomically's body with `fs.writeFileSync(file, data)`. The unit test at translated-figure-refs.test.js:239 still passes. The suite does kill the mutant (1 failed of 86), through 'still restores the deleted files when restoring the mapping fails too', which depends on the temp path. Atomicity is pinned indirectly; it is not an open gap.",
+    "fix": "In the unit test, plant a directory at `${file}.${process.pid}.tmp` and expect writeAtomically to throw EISDIR (or spy on renameSync with the temp path), so the property is pinned where it is defined."
+   },
+   {
+    "id": "F8",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "P4 (run_cli's human branch calls human_report with **dict(policy(cfg), pins=None)) leaves test_sources.py at ALL PASS. Both controls are killed: dropping retired from the same branch gives 1 FAILED, and dropping pins from the --json branch crashes the suite. human_report is tested with pins directly (test_sources.py:538); only run_cli's human branch passing pins is untested. D6's stated requirement ('with a retired entry and a control') is met as written, so this is a gap beyond what D6 asked for. Demo with an override pin for CNX_Ibu: the real human mode prints first-edition/Ch_03/CNX_Ibu.eps '(pinned: override)'. P4 prints updates-2e/CNX_Ibu.eps with no marker. Both exit 0, and --json still returns the pinned file (via=override), so the buy path is unaffected. Under P4 the by-hand check shows a file that is not the approved one, which is visible, and it would hide a stale alias's pin-conflict.",
+    "fix": "Add a run_cli human-mode check whose cfg holds artworkPins {CNX_Ibu: an override to Ch_03/CNX_Ibu.eps}. Assert that out[0] contains Ch_03/CNX_Ibu.eps and '(pinned: override)'."
+   },
+   {
+    "id": "F9",
+    "verdict": "CONFIRMED",
+    "severity": "Minor",
+    "measured": "Six mutants each leave test_sources.py at ALL PASS: P1 (no backslash rule), P2 (no drive-letter rule), P3 (twins ignore edition), P6 (twins without the dict guard), M13 (`not value` in place of `not value.strip()`) and P5 (a case-sensitive suffix). The kill control, which accepts an unknown kind, crashed the suite. Demos: (a) backslash and 'C:/...' pins are pin-invalid in the real code and pin-missing under P1/P2. (b) The same relative file pinned in two editions resolves both in the real code and refuses both as pin-conflict under P3; the JS validator's control at figure-config-validate.test.js:407 accepts that config. (c) A string entry beside a valid pin: the valid pin resolves in the real code, and under P6 resolve_report and run_cli --json raise AttributeError. P5: an upper-case .EPS pin resolves in the real code and is pin-invalid under P5. Correction to (d): M13 changes behaviour only for reason. Whitespace-only kind, edition and file are still refused as pin-invalid by later rules; only a whitespace-only reason is accepted, and the validator's rule that a reason has over 40 characters catches that in CI. Every case fails closed or loudly.",
+    "fix": "Extend the malformed-pin table with a backslash path (a\\b.eps), 'C:/x.eps' and a whitespace-only reason. Add three controls that must still resolve: a pinned .EPS file, the same path pinned in two editions, and a valid pin in a table that also holds a string entry."
+   }
+  ],
+  "verifierPorcelain": ""
+ }
+]

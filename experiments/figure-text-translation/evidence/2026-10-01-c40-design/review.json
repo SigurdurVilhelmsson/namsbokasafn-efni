@@ -1,0 +1,829 @@
+{
+ "lenses": {
+  "resolver": {
+   "attack": {
+    "findings": [
+     {
+      "id": "blastfurn-in-two-tables",
+      "severity": "major",
+      "specClaim": "D2 \"Resolver order: supersededArtwork → retiredFigures → pin\"; D9 \"the name has a retiredFigures entry\"; D11 \"the three tables share no key, compared after the same fold\"; Run order step 1 \"Add the 6 retiredFigures entries\" and step 5 \"sources.py prints REFUSED — retired for all 6\".",
+      "problem": "BlastFurn is one of the 6 retirees (register L12) and is already a supersededArtwork key, which test_sources.py pins as present. Every way of following the spec breaks one of its own checks. (a) Add it to retiredFigures and keep it superseded: D11's no-shared-key corpus test goes red, and because D2 checks superseded first, step 5 still prints 'superseded'. (b) Move it out of supersededArtwork: test_sources.py `_VERIFIED` goes red, and no D12 item covers that edit. (c) Leave it superseded only: D9's `--retire` refuses it (no retiredFigures entry), step 1 is not done and step 5 fails. D2's own reason for a separate `retired` label is the ch19 autorun halt on `REFUSED — superseded`. Only (b) serves that reason; under (a) or (c), every ch19 autorun keeps halting after the retire.",
+      "evidence": "experiments/figure-text-translation/figure-text.config.json:21 (BlastFurn key). test_sources.py:324-326 `_VERIFIED = [... 'CNX_Chem_19_01_BlastFurn' ...]` with the check 'every verified entry is present' (comment: 'a verified entry must never be lost'). scripts/chemistry-autorun-chapter.sh:207-208 `grep -q \"REFUSED — superseded\" … && halt`. Measured today: `FIGTEXT_PYLIBS=./pylibs python3 sources.py efnafraedi-2e … CNX_Chem_19_01_BlastFurn` prints `REFUSED — superseded: The EPS artboard holds TWO blast furnaces…`. Register docs/plans/2026-07-21-post-item17-followup-campaign.md L12: 'Retire 6: rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619'.",
+      "basis": "read",
+      "suggestedFix": "State BlastFurn's disposition explicitly. Either (i) move it from supersededArtwork to retiredFigures, remove it from test_sources.py `_VERIFIED` (add that to D12), and record that ch19's autorun halt then stops. Or (ii) keep it superseded-only: D9 accepts a supersededArtwork entry as the retire record, D11's retired-figure checks also cover retired superseded entries (Ques11ans is the precedent), and step 5 expects `REFUSED — superseded` for BlastFurn and says ch19 keeps halting."
+     },
+     {
+      "id": "human-report-candidate-shape",
+      "severity": "minor",
+      "specClaim": "D4 \"the pin is refused as pin-conflict and the found files are named\"; Interfaces: a refusal is {\"path\": null, \"refused\": …, \"edition\", \"candidates\", \"reason\"}; D6: human_report gains the new tables.",
+      "problem": "human_report prints every refusal's candidates in the production-page shape (`c['page'][0]:g`, `c['paper']`). The spec never says what a pin-conflict or pin-missing candidate looks like. If a found file is carried the way the normal lookup returns it ({path, edition}), the human CLI dies with KeyError. If its size cannot be read, or the pinned file is missing, page is None and it dies with TypeError. An ordinary-size file prints '(None)'. This is the CLI the buy step uses to check that sources.py returns the approved file, and the one step 5 verifies with, so it crashes in exactly the case the operator has to read. `--json` is not affected.",
+      "evidence": "sources.py:298-300 `for c in d.get('candidates') or []: … {c['page'][0]:g}×{c['page'][1]:g} pt ({c['paper']})`. Measured with scratchpad/resolver/probe1.py (resolve_report monkeypatched to return a pin-conflict refusal): candidates [{path, edition}] → `KeyError: 'page'`; [{path, page: None, paper: None}] → `TypeError: 'NoneType' object is not subscriptable`; [{path, page:[234.4,222.4], paper: None}] → prints '/t/x.eps  234.4×222.4 pt (None)'.",
+      "basis": "measured",
+      "suggestedFix": "In Interfaces, define the candidate shape for pin-conflict and pin-missing (e.g. `{path}` only, or `{path, page|null, paper|null}`). Require human_report to print page and paper only when they are present. Add a D11 Python case that runs human_report on each new kind, including a pin-missing whose file cannot be sized."
+     },
+     {
+      "id": "alias-misses-ambiguous-fold",
+      "severity": "minor",
+      "specClaim": "D4 \"alias is valid only while the normal lookup finds nothing under the basename; if it ever finds a file (a hit, or a refused candidate), the pin is refused as pin-conflict\".",
+      "problem": "The normal lookup has a third outcome. When two differently named delivery files fold onto the basename's key, it declines both and returns None, the same value as a true hole. A rule written on 'a hit, or a refused candidate' therefore lets the alias stand even though the delivery now holds files under that basename. That is the stale alias D4 exists to stop ('keeps sourcing an old file after the delivery changes').",
+      "evidence": "sources.py:214-226: `if cands and len({c.stem for c in cands}) == 1: yield from cands`, otherwise nothing is yielded and :247 returns None. Measured with probe1.py A, on scratch trees holding `CNX_Chem_13_03_Catalyst.eps` and `cnx_chem_13_03_catalyst.eps`: `resolve_detail('CNX_Chem_13_03_catalyst', …)` = None while `_norm_index` holds both files. test_sources.py:135-136 already pins that None.",
+      "basis": "measured",
+      "suggestedFix": "Amend D4: pin-conflict also fires when any file in any configured tree matches the basename exactly or folds onto its key (the exact pass or `_norm_index`), whether or not it is ambiguous. Add that case, with a control, to the D11 Python tests."
+     },
+     {
+      "id": "pin-target-uniqueness-under-figure",
+      "severity": "minor",
+      "specClaim": "D3 \"A pin names one exact file\"; D11's corpus-test list; Run order (buys) \"run figure-run.js --figure <name>\"; D6 \"its contract does not change\".",
+      "problem": "Nothing stops two pins naming the same (edition, file), for example after a copy-paste slip. Nothing stops a pin naming a file whose stem is another figure's basename either. figure-run's one-artwork-one-figure backstop compares only the records in `pending`. `--figure`, the run order's one-figure-at-a-time buy procedure, narrows `pending` to the named figure, so the backstop cannot fire. The chapter-wide stem guard covers only hashed names, and none of the pinned names is hashed. D11 does not check pin targets, and under decision (1) it would run after the buy anyway. The result is one figure's picture bought and published under another figure's basename, with every count green.",
+      "evidence": "tools/figure-run.js:1870-1881 (`figures = figures.filter((f) => want.has(f.basename))`); :1905 (`records = figures.map`); :2002 (`pending = selected.filter`); :2067-2082 (byArtwork over `pending` only), whose own comment says 'this one cannot fire when a narrowed run holds a single claimant'; :2024-2043 (dehashStemClaims runs only on `HASH_SUFFIX` names). No target-uniqueness item in spec D11.",
+      "basis": "read",
+      "suggestedFix": "D4/D5: sources.py refuses as pin-conflict any pin whose (edition, normalised file) another pin also names. Compute this over the whole artworkPins table at run time, whichever names were requested. D11: assert that no pin's target stem folds onto a different 01-source basename."
+     },
+     {
+      "id": "decision1-pin-checks-after-buy",
+      "severity": "minor",
+      "specClaim": "D5 \"The translated-suffix rule (a pinned stem must not end in DEFAULT_SUFFIX) is checked only in CI\"; [USER] (1) / D1 \"each pin is added in the commit that runs its buy\"; buy run order \"add its pin; check that sources.py returns the approved file; run its pre-buy lineup; run figure-run.js --figure <name>\".",
+      "problem": "This is a risk created by decision (1). Every check D11 makes only in CI (suffix, exact key, configured edition, substantive reason) first runs at PR time, after the money is spent and media/<b>_IS.svg has been overwritten. At run time, D5's own-output guard is `_OWN_OUTPUT_DIRS = {'Translated_IS'}` only. `base/_session_updates_2026-06-28/` is not in it, and it holds our own `CNX_Chem_03_01_ibuprofenmass_img_IS.pdf`, a valid PDF with Icelandic text. An exact pin to that file passes every run-time rule in D5. Only the operator's reading of the printed path stands between it and a buy that sends our own Icelandic to the EN→IS MT.",
+      "evidence": "sources.py:111 `_OWN_OUTPUT_DIRS = {'Translated_IS'}`. Measured: `ls <base>/_session_updates_2026-06-28/` → `CNX_Chem_03_01_ibuprofenmass_img_IS.pdf` (1176403 bytes) and `_IS.svg`. facts.json alias-config: the folder's 48 PDFs are resolver-visible. Spec D5 and § Run order, 'The buys'.",
+      "basis": "measured",
+      "suggestedFix": "Add one step to the buy run order, between 'add its pin' and 'run figure-run.js': run the D11 corpus test locally (`npx vitest run <that test file>`) and stop on red. This changes no code; it moves the CI-only pin checks ahead of the spend that decision (1) placed them after."
+     },
+     {
+      "id": "retired-matching-copies-superseded-quirks",
+      "severity": "minor",
+      "specClaim": "D2 \"Keys are matched the way supersededArtwork's are (sources._normkey)\"; D9 \"the name has a retiredFigures entry\"; D11 \"the three tables share no key\".",
+      "problem": "supersededArtwork's matcher refuses only when the folded value `is not None`. It also folds keys into a dict, so of two fold-equal keys the last one wins. If retiredFigures copies this, an entry whose value is null does not refuse, while D9's tool, which checks only that an entry exists, retires the figure: the resolver and the tool disagree about the same entry. Two fold-equal keys in one table silently drop a refusal, and D11 compares across tables, not within one. D1 lands the entries with the retire run, so CI catches either case only afterwards.",
+      "evidence": "Measured on supersededArtwork (probe1.py B): value 'a reason' → REFUSED; '' → REFUSED; None → 'resolves to CNX_X.pdf'. B2: `{\"CNX_X\": \"a reason\", \"cnx-x\": None}` → 'resolves (refusal silently lost)'. Code: sources.py:172-177 (`folded = {_normkey(k): v …}; if reason is not None`). For retiredFigures this is inferred from D2's 'matched the way supersededArtwork's are'.",
+      "basis": "inferred",
+      "suggestedFix": "D2: a retiredFigures or artworkPins key acts by its presence, whatever its value. A non-string or empty value is refused ('retired' with a placeholder reason, or pin-invalid), never treated as 'not listed'. Two keys in one table that fold together refuse every figure they match, and D11 asserts that no table has fold-duplicate keys."
+     },
+     {
+      "id": "pin-malformed-shapes-not-enumerated",
+      "severity": "minor",
+      "specClaim": "D5 \"anything malformed about a pin refuses that one figure as pin-invalid: a kind other than alias/override; an edition not configured for the book; a file that is absolute, contains .., or crosses _OWN_OUTPUT_DIRS; a missing reason\"; D4 \"A pinned file that does not exist → pin-missing\".",
+      "problem": "The D11 Python tests will be written from this list, and it misses shapes that raise instead of refusing, or that pass. A pin entry that is not an object, or an edition or file that is not a string (`trees.get([...])` → TypeError: unhashable; `root / 5` → TypeError), escapes as a traceback. sources.py --json then exits non-zero, and figure-run aborts the whole chapter rather than refusing one figure. A `file` of \"\" or \".\" names the tree root: it exists, and page_size(dir) returns None, so an existence check gives a pageUnknown hit on a directory. A file whose suffix is outside SOURCE_EXTS, such as a JPEG/ sibling, passes and fails later in prepare.",
+      "evidence": "Measured with probe1.py D: `page_size(<a directory>) = None`; `Path(root) / \"\" == root` is True, exists True, is_file False. figure-prepare.py:268-289 copies any non-EPS/AI file to `<basename>.pdf`. tools/figure-run.js:532-537 throws the whole run on a non-zero sources.py exit. That a directory 'resolves as a pageUnknown hit' is inferred: it holds if the implementation tests exists() rather than is_file().",
+      "basis": "measured",
+      "suggestedFix": "Extend D5: pin-invalid when the entry is not an object, when kind, edition, file or reason is not a non-empty string, or when the file's lower-cased suffix is not in SOURCE_EXTS. In D4, refuse as pin-missing unless the joined path passes `is_file()`. Add one D11 Python case for each."
+     },
+     {
+      "id": "pin-conflict-dormant-after-buy",
+      "severity": "nit",
+      "specClaim": "D4 why-column \"pin-conflict stops it outliving that reason\"; § Known limits.",
+      "problem": "pin-conflict is only computed when a figure is resolved. All four pinned figures get a sidecar at their buy. After that, a plain or autorun figure-run files them skipped-current before anything is resolved, and --stale resolves them only after a COMPOSER_VERSION bump. So no routine run notices when the delivery later fills an alias's hole. D4's rationale holds only for a by-hand `sources.py` check or `--force`. Known limits covers a changed pin, not a changed delivery.",
+      "evidence": "tools/figure-run.js:1995-2000 (skipped-current is set before `resolveArtwork` at :2003). facts.json resolver-contract: 'a current sidecar is skipped before anything is resolved'.",
+      "basis": "read",
+      "suggestedFix": "Add to Known limits: once bought, a pinned figure is not resolved by routine runs, so pin-conflict appears only on `sources.py <pinned names>`, `--force`, or a post-bump `--stale`. Optionally make that sources.py check part of each chemistry lineup."
+     },
+     {
+      "id": "configured-edition-two-meanings",
+      "severity": "nit",
+      "specClaim": "D5 \"an edition not configured for the book\" (run time); D11 \"every pin has … a configured edition\" (CI).",
+      "problem": "At run time 'configured for the book' can only mean the book's entry in sources.local.json, which is gitignored and machine-specific. CI has no such file, so D11 must mean something else, presumably editionPrecedence. The spec does not say, so the two checks can disagree.",
+      "evidence": "experiments/figure-text-translation/.gitignore:9 ignores sources.local.json; sources.py:95-105 (load_trees); the config's editionPrecedence = [\"updates-2e\", \"first-edition\"].",
+      "basis": "read",
+      "suggestedFix": "D11: 'edition is a member of editionPrecedence'. D5: 'edition is a key of this book's entry in sources.local.json'."
+     },
+     {
+      "id": "comments-false-after-retire",
+      "severity": "nit",
+      "specClaim": "D12 \"Fixed in passing: … the comments in sources.py, test_sources.py and the config's _paperSizes that still describe N2O5 as a refused paper-size page\".",
+      "problem": "Three comments that name retirees as live June copies become false at the retire commit, and neither D12 nor the run order mentions them: sources.py:169 ('CNX_Chem_19_01_BlastFurn is one'), tools/figure-run.js:1438 ('rvosmosis, N2O5, BlastFurn are measured instances'), and :1791-1792 (N2O5's 'June `_IS.svg` is still a whole sheet'). The fact base listed all three.",
+      "evidence": "The quoted lines, read with sed. facts.json retire-durability designImplications: 'Comments that become false when the retire lands … tools/figure-run.js:1438 … :1791-1792 … sources.py:169'.",
+      "basis": "read",
+      "suggestedFix": "Fix those three comments in the retire run's commit (run order step 1 or 6). They stay true until the retire lands."
+     },
+     {
+      "id": "tables-not-book-scoped",
+      "severity": "nit",
+      "specClaim": "D11 \"every key is exactly the basename of an image some 01-source CNXML references\".",
+      "problem": "The config is shared by every book, and sources.py applies its tables to whichever `<book>` is requested. Physics and biology share 76 identical basenames (Figure_02_03_04, …), so a future entry for one book would refuse or redirect the other book's different figure, and the 'some 01-source' check would accept it. This is latent: no trees are configured for those books, and every ㊵ name folds only onto itself.",
+      "evidence": "Measured with scratchpad/resolver/census.mjs (xmldom over every book's 01-source): 'cross-book fold collisions: 76', all edlisfraedi-2e ↔ liffraedi-2e, none involving efnafraedi-2e. sources.py:332-335 passes the config tables with no book filter.",
+      "basis": "measured",
+      "suggestedFix": "D11: each key names an image in exactly one book's 01-source (or, for now, in efnafraedi-2e's)."
+     },
+     {
+      "id": "match-rule-unstated-for-tool-and-generator",
+      "severity": "nit",
+      "specClaim": "D9 \"the name has a retiredFigures entry … removes the rows whose originalImage equals the name\"; D10 \"The generator also skips any name in retiredFigures\".",
+      "problem": "The resolver matches keys by fold. For the tool's entry check and the generator's skip, the spec does not say whether matching is exact or by fold. Suppose a key is misspelt by case: the resolver still refuses it. Passing the misspelt name to `--retire` finds the entry, matches 0 rows and deletes nothing. D9's 'a second run changes nothing' makes that look like 'already retired' (exit 0). It is caught only by the step-5 corpus test.",
+      "evidence": "Spec D9/D10 wording. sources.py:172-174 folds keys. The existing chemistry mapping keys rows on the exact originalImage (facts.json: 717 rows, each derivable from its file name).",
+      "basis": "inferred",
+      "suggestedFix": "D9/D10: the tool's entry check and the generator's skip match exactly. The tool also refuses (exit 1) a name that is not exactly an image basename in the book's 01-source, so 'nothing to do' is reported only for a name that genuinely has no row and no file."
+     }
+    ],
+    "checkedAndSound": [
+     "Adding retired=/pins= as keyword parameters cannot shift any caller. Every caller of resolve_detail/resolve/resolve_report/human_report in git ls-files (sources.py's own resolve(), which passes exts 4th; 7 scripts and tests; 6 frozen evidence instruments) passes at most (basename|names, trees, precedence[, exts]) positionally, and always passes superseded/_memo/size_of by keyword.",
+     "A 'retired' or pin-* refusal on a hashed name keeps it out of figure-run's de-hash pass: `hashed = pending.filter(r => !r.artwork && !r.artworkRefusal && HASH_SUFFIX…)` (tools/figure-run.js:2024-2026). A retired RadioDecay-e619 therefore cannot be reopened through its stripped stem, which today resolves to base Ch_21/Source_File/CNX_Chem_21_03_RadioDecay.pdf (measured). e619's key does not fold onto that stem either (cnxchem2103radiodecaye619 vs cnxchem2103radiodecay).",
+     "After e619 is retired, -d92b still cannot de-hash. The contest is built from the whole chapter's enumeration, not from the refusal-filtered selection (`dehashStemClaims(chapterFigures.map(…))`, figure-run.js:2032-2035), so e619 remains a claimant.",
+     "Matching by _normkey cannot reach a different real figure in chemistry. An xmldom census of all 6 books' 01-source found 0 within-book fold collisions in every book; each of the 10 ㊵ names and the 4 supersededArtwork keys folds onto exactly itself across all books; and there are 0 non-ASCII basenames, so an ASCII JS port of _normkey for D11 is exact for any valid key.",
+     "No cross-chapter de-hash bleed exists in chemistry: of 23 hashed basenames, 0 have a stripped stem that folds onto an unhashed basename, and 0 stems are claimed in more than one chapter (census.mjs). A retired or pinned unhashed key therefore cannot capture another chapter's de-hashed figure.",
+     "figure-run's contract survives D6/D7. From a hit it reads only path/edition/pageUnknown (figure-run.js:2010-2014, 2049-2053), so `via` is ignored. Any truthy `refused` becomes the non-fatal outcome 'unresolved' (:2015-2017, :2087-2099), and only a non-zero sources.py exit aborts the run (:532-537).",
+     "The autorun cannot halt on the new kinds. Its halt is the literal `grep -q \"REFUSED — superseded\"` (scripts/chemistry-autorun-chapter.sh:207-208), and summarise prints the other kinds as `⚠️ REFUSED — <kind>: <name>: <reason>` (figure-run.js:2398-2409).",
+     "D7's NOTE wording change cannot make 'unresolved' fatal: the interface is the `NOTE (not a failure)` prefix (tools/lib/figure-outcomes.js:115, 141-146).",
+     "The stillMapped line behaves correctly through a retire. liveCopyOf falls back to media/<b>_IS.svg when no row exists, and stillMappedCopy returns null when that file is gone too (figure-run.js liveCopyOf/stillMappedCopy, ~1676-1697). So 'readers still see…' names the live copy before `--retire --apply` and disappears after it.",
+     "An exact relative pin without '..' cannot leave its tree today: `find <base> <selected-art> -type l` finds 0 symlinks in either configured tree.",
+     "The real resolver output on the 10 June figures matches the fact base: rvosmosis production-page, BlastFurn superseded, N2O5/molecreso/Cl2OClO2 first-edition .eps, e619 NOT FOUND (its stem resolves), catalyst/ICETable2/ICETable13 NOT FOUND, and ibuprofenmass the updates-2e .eps (sources.py human CLI, exit 1)."
+    ],
+    "gitStatusPorcelain": ""
+   },
+   "verify": {
+    "verdicts": [
+     {
+      "id": "blastfurn-in-two-tables",
+      "verdict": "confirmed",
+      "severityAfterCheck": "major",
+      "reasoning": "The register's retire list includes BlastFurn, and the config already holds BlastFurn as a supersededArtwork key. The spec never mentions BlastFurn, so following it literally breaks one of its own checks on every route. (a) Step 1 adds BlastFurn to retiredFigures: D11's 'the three tables share no key' goes red. D2 also checks supersededArtwork first, so step 5 still prints 'superseded', not 'retired'. figure-run's report line prints `REFUSED — ${r.refused}`, which keeps matching the autorun's `REFUSED — superseded` halt, so D2's stated reason for a separate `retired` label is not served for ch19. (b) Moving BlastFurn out of supersededArtwork turns test_sources.py `_VERIFIED` red. No CI job runs that suite (the ㊷ class), and neither D12 nor the run order mentions the edit. (c) Leaving it superseded-only fails D9's 'has a retiredFigures entry' check and step 5. The fact base raised exactly this as an open question, and the spec does not answer it. It is not a blocker for this PR's tools, but the run order cannot be executed as written for a [USER]-named figure.",
+      "evidence": "[read] docs/plans/2026-07-21-post-item17-followup-campaign.md:12 'Retire 6: rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619'. figure-text.config.json:21 (BlastFurn key). test_sources.py:324-326 `_VERIFIED` includes BlastFurn, checked as 'every verified entry is present'. Spec D2, D9, D11, run order steps 1 and 5. `grep -a -n -i blastfurn <spec>` → exit 1 (not mentioned). tools/figure-run.js:2407 `⚠️ REFUSED — ${r.refused}: …`. scripts/chemistry-autorun-chapter.sh:207-208 halt on 'REFUSED — superseded'. facts.json retire-durability openQuestions: 'Should the autorun's superseded halt stop firing for a superseded figure that is also retired? Today ch19 would keep halting'. [measured] `FIGTEXT_PYLIBS=./pylibs python3 sources.py efnafraedi-2e CNX_Chem_19_01_BlastFurn …` → 'REFUSED — superseded: The EPS artboard holds TWO blast furnaces…'."
+     },
+     {
+      "id": "human-report-candidate-shape",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The mechanism is measured. The spec's Interfaces defines the refusal JSON but not the candidate shape for the four new kinds. The existing docstring contract says candidates are {path, page, paper}, and human_report reads c['page'][0] unconditionally. An implementer who follows that contract and sizes a missing pinned file gets page None (page_size returns None on OSError), which raises TypeError. A hit-shaped candidate raises KeyError. In the planned run order pin-conflict cannot fire: the three alias basenames are NOT FOUND today (measured), and an override is exempt. The reachable case is therefore a typo in a pin, which gives pin-missing at the 'check that sources.py returns the approved file' step. The result is a loud traceback with no spend, and --json and figure-run are unaffected, so minor.",
+      "evidence": "[measured] scratchpad/refute-resolver/p_human.py (human_report with a pin-conflict refusal; resolve_report monkeypatched): {path, edition} → KeyError 'page'; {path} → KeyError 'page'; {path, page None, paper None} → TypeError 'NoneType' object is not subscriptable; {path, page [234.4,222.4], paper None} → prints '(None)'; [] → OK; control with the production-page shape → OK. [measured] the sources.py human CLI prints NOT FOUND for CNX_Chem_13_03_catalyst, CNX_Chem_14_03_ICETable2_img and CNX_Chem_14_04_ICETable13_img. [read] sources.py:161-162 (candidate contract), :298-300; tools/figure-run.js:2401-2407 (the driver prints candidates only for production-page)."
+     },
+     {
+      "id": "alias-misses-ambiguous-fold",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The mechanism holds. An ambiguous fold makes the normal lookup return None, the same value as a hole, and D4's parenthetical '(a hit, or a refused candidate)' does not cover it, so a check built on resolve_detail lets the alias stand. It cannot occur on today's trees: across both editions, no fold key holds two distinct stems, and the three alias basenames' keys hold no files. It needs a future change to the static delivery that adds two differently named, fold-equal files for an aliased basename. After the buy the check is dormant anyway (finding 8). Even then, the outcome is that the [USER]-verified file keeps being used rather than the figure going unresolved, so nit.",
+      "evidence": "[measured] scratchpad/refute-resolver/p_ambig.py. On a scratch tree holding CNX_Chem_13_03_Catalyst.eps and cnx_chem_13_03_catalyst.eps, resolve_detail('CNX_Chem_13_03_catalyst') = None while the fold index holds both files. Control with one variant → a hit. Real trees (both editions): 1460 fold keys, 0 with two or more distinct stems. [measured] the sources.py human CLI prints NOT FOUND for all three alias basenames. [read] sources.py:214-226, :247; test_sources.py:135-136; facts.json alias-config #24."
+     },
+     {
+      "id": "pin-target-uniqueness-under-figure",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "Confirmed in code, and the gap is wider than stated. byArtwork iterates only `pending`, which excludes figures --figure deselects and also every skipped-current figure, and figure-run runs per chapter. So once the first figure of a pair is bought, no run, narrowed or full-chapter, can see a second pin naming the same file. The same holds for a pin naming another figure's own artwork. A measured, plausible slip: the delivery holds four 'ICETable2_img' files, and CNX_Chem_13_04_ICETable2_img.eps resolves as figure 13_04's own artwork. 13_04 has a sidecar and is in ch13, so a 14_03 pin naming that file passes every D4/D5 run-time rule and every D11 rule as written. D11 has no target check, and under decision (1) it would run after the buy anyway. The procedure's human 'check that sources.py returns the approved file' and the post-buy 'review' make it minor rather than major.",
+      "evidence": "[read] tools/figure-run.js:1881 (`figures = figures.filter((f) => want.has(f.basename))`), :1905 (records built from figures), :1997 (skipped-current), :2002 (`pending = selected.filter((r) => r.outcome === null)`), :2067-2082 (byArtwork over pending; its comment says it 'cannot fire when a narrowed run holds a single claimant'), :131 HASH_SUFFIX and :2024-2043 (de-hash names only). Spec D4, D5 and D11 contain no uniqueness or target-stem rule. [measured] sources.py human CLI: CNX_Chem_13_04_ICETable2_img → updates-2e …/OSX_Chem2e_Ch13_SourceFiles/CNX_Chem_13_04_ICETable2_img.eps. `ls books/efnafraedi-2e/figure-text/` shows CNX_Chem_13_04_ICETable2_img.is.json. facts.json alias-config #31."
+     },
+     {
+      "id": "decision1-pin-checks-after-buy",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The facts hold. Of D11's CI-only pin rules, only the translated-suffix rule lacks a run-time twin in D5 that matters. Kind, edition, absolute paths, '..' and a missing reason are also checked at run time, and a pin key misspelt by case still folds correctly. The reachable set is exactly `_session_updates_2026-06-28/` in the first-edition tree: 99 files, of which 48 are resolver-visible PDFs. Every one of them is `_IS`, including CNX_Chem_03_01_ibuprofenmass_img_IS.pdf. D3 names this folder as a hazard, but D5's `_OWN_OUTPUT_DIRS` guard ({'Translated_IS'}) does not cover it. Under decision (1), D5's cost column ('caught at review time rather than at run time') is wrong, because CI and PR review come after the spend. Likelihood is low: the operator would have to name our own `_IS` file, and the path is visible at the check step. The cost is about 1.3 ISK plus a review catch. The procedural fix (run the D11 corpus test locally before figure-run) is cheap and moves every other CI-only pin check ahead of the spend too.",
+      "evidence": "[read] sources.py:111 `_OWN_OUTPUT_DIRS = {'Translated_IS'}`; spec D3, D5 ('checked only in CI', 'caught at review time'), D1, [USER] (1), and the buy steps of the run order. [measured] python iterdir over the configured trees: first-edition contains `_session_updates_2026-06-28` (99 files: 50 .svg, 48 .pdf, 1 .skill), including CNX_Chem_03_01_ibuprofenmass_img_IS.pdf at 1176403 bytes; updates-2e has no such folder. facts.json alias-config #33 (all 48 PDFs are `_IS`)."
+     },
+     {
+      "id": "retired-matching-copies-superseded-quirks",
+      "verdict": "refuted",
+      "severityAfterCheck": "none",
+      "reasoning": "The matcher facts are accurate and measured: a None value does not refuse, '' and False do, and when two keys fold together the last one wins. What is refuted is the claim that the consequence goes unhandled. A null or empty retiredFigures value is caught at run time by run-order step 5: 'sources.py prints REFUSED — retired for all 6' fails if the entry does not refuse. In CI, D11's 'every entry has a substantive reason' catches it. For fold-duplicate keys, chemistry's 01-source has 0 within-book fold collisions, so one key of any fold-equal pair is not exactly a basename and D11's exact-basename rule fails. 'D11 compares across tables, not within one' therefore misses that the per-key exact check already catches duplicates within a table. A null pin is already pin-invalid under D5 ('anything malformed'). D2's 'matched the way supersededArtwork's are (sources._normkey)' is about keys, so copying the value check is itself an inference.",
+      "evidence": "[measured] scratchpad/refute-resolver/p_quirks.py: 'a reason' → REFUSED; '' → REFUSED; None → resolves; False → REFUSED; {'CNX_X':'a reason','cnx-x':None} → resolves; the reversed order → REFUSED; two string values → REFUSED. [measured] scratchpad/refute-resolver/census.mjs (xmldom over every book's 01-source, 0 parse errors): efnafraedi-2e has 1148 distinct image basenames and 0 within-book fold collisions. [read] spec run order step 5, D11, D5; sources.py:172-177."
+     },
+     {
+      "id": "pin-malformed-shapes-not-enumerated",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The mechanisms are measured. The strongest instance is a pin missing its `file` key: `root / None` raises TypeError. D5 lists 'a missing reason' but not a missing file. The TypeError makes sources.py --json exit 1, and figure-run then throws and aborts the whole run. That breaks D5's 'fail closed per figure', but loudly and before any spend. A non-string edition raises an unhashable TypeError the same way. A `file` of '' or '.' joins to the tree root, which exists and has page_size None. An existence check would therefore give a pageUnknown hit on a directory, and prepare's copyfile then fails that one figure as failed-prepare. A JPEG pin passes and fails at prepare. Every outcome is loud and costs 0 ISK, and D5's 'anything malformed' catch-all arguably covers all of them already, so nit.",
+      "evidence": "[measured] scratchpad/refute-resolver/p_shapes.py: file '', '.' and './' → equal to the root, exists True, is_file False, page_size None; file 5, None, a list or a dict → TypeError; an edition given as a list or dict → TypeError (unhashable). [read] tools/figure-run.js:532-537 (a non-zero sources.py exit throws), :2125 (a prepare failure is a per-figure 'failed-prepare'); figure-prepare.py:85 STAGED_EXTS = ('.eps','.ai'), :269-289 (any other file is staged with shutil.copyfile)."
+     },
+     {
+      "id": "pin-conflict-dormant-after-buy",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The code confirms it. skipped-current is set before resolveArtwork runs, and isStale is true only on a hash mismatch or a COMPOSER_VERSION change. A bought pinned figure is therefore re-resolved only by a by-hand sources.py, a --force run, or --stale after a version bump. The planned '4' → '5' bump at step 6 is one such moment. Known limits covers a changed pin but not a changed delivery. This is a documentation gap only, and the delivery is a static local tree.",
+      "evidence": "[read] tools/figure-run.js:1995-2000 (skipped-current), :2002-2003 (pending → resolveArtwork), :297-307 isStale (composedVersion !== COMPOSER_VERSION, plus the hash checks); spec Known limits, first bullet; register RESUME 'The COMPOSER_VERSION '4' → '5' bump rides with step 6's recompose'."
+     },
+     {
+      "id": "configured-edition-two-meanings",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "At run time the trees come only from sources.local.json, which is gitignored and so absent in CI. D11's 'configured edition' can therefore only be checked against editionPrecedence, and the spec does not say which list it means. A CI test written to read sources.local.json would be red or vacuous in CI. If the two checks diverge, one side still refuses the pin, so this is a nit.",
+      "evidence": "[measured] `git check-ignore -v experiments/figure-text-translation/sources.local.json` → .gitignore:9. [read] sources.py:95-105 load_trees; figure-text.config.json:14 editionPrecedence; spec D5 and D11."
+     },
+     {
+      "id": "comments-false-after-retire",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "All three comments name retirees as live June copies. They are true today and become false when the retire lands. D12's 'fixed in passing' list covers only the comments that describe N2O5 as a refused paper-size page (for example sources.py:30), and the run order does not mention these three. The fact base listed all three.",
+      "evidence": "[read] sources.py:169 '(CNX_Chem_19_01_BlastFurn is one)'; tools/figure-run.js:1438 '(rvosmosis, N2O5, BlastFurn are measured instances)'; :1792 '…its June `_IS.svg` is still a whole sheet'; spec D12; facts.json retire-durability designImplications."
+     },
+     {
+      "id": "tables-not-book-scoped",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The config tables are global (supersededArtwork already is), and D11's 'some 01-source' would accept a key from any book. The risk is latent: only efnafraedi-2e has trees configured, and every ㊵ name folds only onto itself, in chemistry. One correction to the original evidence: the 76 collisions are 75 physics↔biology and 1 biology↔microbiology, not all physics↔biology; the total of 76 is right, and none involve chemistry. Scoping the tables by book is beyond the ruling; at most, D11's wording could be tightened.",
+      "evidence": "[measured] scratchpad/refute-resolver/census.mjs: 76 cross-book fold keys {'edlisfraedi-2e <-> liffraedi-2e': 75, 'liffraedi-2e <-> orverufraedi': 1}, 0 involving efnafraedi-2e. All 10 June basenames are exact basenames in chemistry, and their keys appear in efnafraedi-2e only. [measured] sources.local.json configures only efnafraedi-2e. [read] sources.py:332-335 (no book filter)."
+     },
+     {
+      "id": "match-rule-unstated-for-tool-and-generator",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "It is true that D9 and D10 do not say whether matching is exact or by fold. But D11 explicitly anticipates misspelt keys ('only this check catches a misspelt key'). What remains is the tool's silent no-op when an operator passes the misspelt name: it matches 0 rows and exits 0. That shows in step 2's dry run, which plans nothing for the figure, and step 5 catches it ('no file … mentions any of them' and the corpus test). It fails safe: nothing wrong is deleted. Chemistry has 0 within-book fold collisions, so a generator skip that matched by fold could not catch an unintended figure either.",
+      "evidence": "[read] spec D9, D10, D11, run order steps 2 and 5; sources.py:172-174. [measured] scratchpad/refute-resolver/census.mjs: 0 within-book fold collisions in efnafraedi-2e."
+     }
+    ],
+    "gitStatusPorcelain": ""
+   }
+  },
+  "retire-tool": {
+   "attack": {
+    "findings": [
+     {
+      "id": "prune-corpus-counts-gitignored-backups",
+      "severity": "major",
+      "specClaim": "D10: deletes a candidate only if \"no other file under 03-translated/ or 05-publication/, in any track, contains its name\" (the candidate itself must be tracked and unmodified, the corpus has no such restriction); D10: \"its first run also clears the 9 June leftovers\"; Run order step 5: \"no file under 03-translated/ or 05-publication/ mentions any of them\"; D11: \"every retired figure has no ... reference\".",
+      "problem": "Read literally, the reference corpus includes the gitignored *.backup.<ts> files that cnxml-inject's safeWrite writes next to every 03-translated module on each run and never prunes (render prunes its own; inject does not). On this box, 1,560 of those backups mention a published _IS name. A disk-walking --prune therefore deletes 0 of 754 candidates: the 9 June leftovers are kept by backup references alone. Each of the 6 retirees already has 13-20 backup mentions, and run-order step 3 (re-inject) adds another per module, because safeWrite copies the pre-inject file, which still names X_IS.svg. Consequences: the 6 retired published copies are never pruned and stay deployed; step 5 cannot pass with a plain grep; and D11's 'no reference' check passes in CI (a fresh clone has no backups) while failing on a dev box. D9's module derivation has the same problem: walking 03-translated finds backup files and would print commands for names like 'm68783.cnxml.backup.2026-…'. The opposite error also exists. An implementation that reads committed content (git grep HEAD / git show) cannot see the re-render's uncommitted page changes, so the stale references block the prune until commit.",
+      "evidence": "MEASURED: scratchpad/retire-tool/prune-sim.mjs applies the D10 predicate to the real tree. Disk-wide corpus gives efnafraedi-2e: 754 candidates, DELETE 0, KEEP 754 (745 row+referenced, 9 referenced-only; every one of the 9 is referenced only by files like books/efnafraedi-2e/03-translated/mt-preview/ch08/m68744.cnxml.backup.2026-06-26T18-52-29). With --tracked-only it gives DELETE 9 (GasBurning ch05, Ex9soln_img ch06, 7 in ch08) and KEEP 745. `git status --porcelain --ignored -- books/efnafraedi-2e/03-translated | wc -l` returns 12491; 1,560 distinct backups name a candidate. Per retiree, the count of on-disk *.backup.* files naming <b>_IS.svg against tracked refs: rvosmosis 14/2, N2O5 13/2, molecreso 13/2, Cl2OClO2 13/2, BlastFurn 20/2, RadioDecay-e619 14/2. `.gitignore:20 *.backup.*` (git check-ignore -v). READ: tools/lib/safeWrite.js:21-27 (copyFileSync to `${filePath}.backup.${timestamp}` before every write); tools/cnxml-inject.js:5309 (safeWrite, no prune); tools/cnxml-render.js:4777-4792 (render prunes only its own backups). Other books: no _IS candidates.",
+      "basis": "measured",
+      "suggestedFix": "Define the corpus once and use it for D10, D9's module and track derivation, run-order step 5 and D11's 'no reference' check: the WORKING-TREE content of every file under 03-translated/ and 05-publication/ that git does not ignore (`git ls-files -co --exclude-standard`), not the disk walk and not HEAD content. Have D11 plant a .backup.<ts> file in its fixture that names a candidate, as a control that must not block the prune."
+     },
+     {
+      "id": "blastfurn-in-two-tables",
+      "severity": "major",
+      "specClaim": "Run order step 1: \"Add the 6 retiredFigures entries\"; D11: \"the three tables share no key\"; D2: resolver order \"supersededArtwork → retiredFigures → pin\"; step 5: \"sources.py prints REFUSED — retired for all 6\"; D9: --retire requires \"the name has a retiredFigures entry\".",
+      "problem": "CNX_Chem_19_01_BlastFurn, one of the 6 retirees, is already a supersededArtwork key, and the spec gives no rule for a name in both tables. If BlastFurn stays in supersededArtwork and is added to retiredFigures, D11's corpus test fails, and because of D2's ordering sources.py still prints 'REFUSED — superseded', so step 5's 'retired for all 6' cannot pass. If it is moved out of supersededArtwork so that --retire will accept it, test_sources.py's _VERIFIED presence pin goes red in a suite no CI job runs (the same 'red unseen' pattern ㊷ just fixed), sources.py:167-171's comment still names it, and the autorun's ch19 halt on 'REFUSED — superseded' stops firing, which changes behaviour nobody has ruled on. The Ques11ans precedent kept its superseded entry after the retire, which corresponds to neither option.",
+      "evidence": "READ: experiments/figure-text-translation/figure-text.config.json:21 (BlastFurn is a supersededArtwork key); test_sources.py:324-326 `_VERIFIED = [... 'CNX_Chem_19_01_BlastFurn', ...]` checked by presence; sources.py:166-177 (superseded refused before any lookup; comment names BlastFurn as still live); scripts/chemistry-autorun-chapter.sh:208 `grep -q \"REFUSED — superseded\" … && halt`; the spec does not mention BlastFurn anywhere (grep of the spec finds only line 71's 'for all 6').",
+      "basis": "read",
+      "suggestedFix": "Add one explicit rule to D1/D2/D11, for example: a retired name is removed from supersededArtwork in the same commit, its reason is carried into retiredFigures, and test_sources.py's _VERIFIED moves the name to a retired-presence check. Or allow exactly this overlap and change step 5 to expect 'superseded' for BlastFurn. Also state whether ch19's autorun halt should survive."
+     },
+     {
+      "id": "faithful-inject-command-reads-mt",
+      "severity": "major",
+      "specClaim": "D9: \"It prints the re-inject and re-render command for every module and track whose 03-translated/ file references the figure.\"",
+      "problem": "cnxml-inject.js and cnxml-render.js select the track asymmetrically. Render takes --track. Inject takes the track from --source-dir, whose default is 02-mt-output, and a bare --track only renames the output directory. A tool that prints the natural symmetric form `cnxml-inject.js --book B --chapter N --module M --track faithful` therefore reads the MACHINE translation and overwrites 03-translated/faithful/<ch>/<M>.cnxml, which holds reviewed content. The printed faithful render then publishes it, and vefur lays the faithful track over mt-preview, so readers see MT where reviewed text was. On this box the correct command cannot even run: 03-faithful-translation holds no segment files (only the README is tracked), so `--source-dir 03-faithful-translation` refuses ('Translation not found … Refusing to publish'), while the wrong form succeeds. An operator who hits the refusal is pushed toward the destructive form. The damage can be undone from git and *.backup.*, but nothing reports it. It is latent for the 6 (no faithful track in ch11/18/19/21) and live for any ch01 or ch03 retire.",
+      "evidence": "READ: tools/cnxml-inject.js:5372-5373 (`const sourceDir = args.sourceDir || '02-mt-output'; const track = args.track || trackFromSourceDir(sourceDir);`), :5185-5190 (segments read from <sourceDir>), :5296 and :5306-5309 (written to 03-translated/<track>/); the server's canonical argv in server/services/pipelineService.js:195-205 passes `--source-dir` to inject and :236-243 passes `--track` to render. MEASURED: `git ls-files books/*/03-faithful-translation | wc -l` gives 1 (README.md); `ls books/efnafraedi-2e/03-faithful-translation/` gives README.md and ch01/ holding only *.bak; 03-translated/faithful/ch01 and ch03 hold 4 tracked modules (last commit for m68700: 84f774483 'fix m68700 FAITHFUL track').",
+      "basis": "read",
+      "suggestedFix": "Specify the exact argv per track. Inject: `--source-dir <TRACK_SOURCE_DIR[track]>`, never `--track`. Render: `--track <track>`. For any track other than mt-preview, have the tool check that the module's segment file exists in that source dir before printing, and print a refusal naming the missing file when it does not."
+     },
+     {
+      "id": "faithful-rollup-not-in-command-set",
+      "severity": "minor",
+      "specClaim": "D9: commands are printed \"for every module and track whose 03-translated/ file references the figure.\"",
+      "problem": "Faithful rollup pages (exercises, answer key, summary) are built from the union of faithful modules and the mt-preview CNXML of unreviewed modules. A figure can therefore appear on a faithful page while no 03-translated/faithful file names it. Deriving commands from 03-translated alone prints no faithful re-render for such a figure. --prune then correctly keeps both copies, because the faithful page still references the name, so nothing breaks. But readers keep seeing the retired figure through the faithful overlay, and step 5's check fails with no command printed to fix it.",
+      "evidence": "MEASURED (node census of tracked 03-translated and 05-publication): CNX_Chem_01_05_Archer2_img_IS.svg is referenced by books/efnafraedi-2e/05-publication/faithful/chapters/01/1-exercises.html, while the only 03-translated reference is mt-preview/ch01/m68690.cnxml (faithful/ch01 holds m68663 and m68664 only). It is the 1 such gap among 717 referenced names. READ: tools/cnxml-render.js:3985-3998 (the faithful allModules is the union with the mt-preview baseline); books/efnafraedi-2e/05-publication/faithful/rollups-complete says 'Faithful rollups assembled with mt-preview fallback for unreviewed modules.'; facts.json vefur-sync: faithful wins the overlay and rollup pages are gated on that marker.",
+      "basis": "measured",
+      "suggestedFix": "Derive the re-render set from the 05-publication pages that name the outputName (track plus chapter), not only from 03-translated. Equivalently: whenever a chapter has a faithful track, print a faithful re-render of that chapter as well."
+     },
+     {
+      "id": "outputname-containment-and-name-regex",
+      "severity": "minor",
+      "specClaim": "Interfaces: \"A name must match ^[A-Za-z0-9_.-]+$, so a flag value cannot reach outside media/\"; D9: \"deletes the top-level media/<outputName>\" after checking that \"every file it would delete is tracked by git and unmodified\".",
+      "problem": "The file that gets deleted is named by the mapping row's outputName, which is data from a committed JSON file. The flag regex does not constrain it. A malformed row such as {originalImage: <retired name>, outputName: '../01-source/media/X.jpg'} resolves into the licensed 01-source tree, and the 'tracked and unmodified' precondition passes for a 01-source file. An outputName of 'image-mapping.json' would delete the mapping itself, and it passes even the repo's own containment helper. The regex is also too narrow. It refuses a real chemistry basename and 127 physics basenames, so a retiredFigures key that passes D11's 'exactly a CNXML basename' check can still be impossible for the tool to execute (this fails safe).",
+      "evidence": "READ: tools/publish-figure-svg.js:115-136 `escapesMediaDir`, whose comment records the 2026-09-05 provenance audit: 'the traversal wrote into the licensed tree AND the call still returned ok:true', says 'the rule may not have two implementations', and uses figure-run's pre-flight as its other consumer. MEASURED: today all 717 chemistry rows have outputName matching [A-Za-z0-9_.-]+ with no duplicates. Source image basenames failing ^[A-Za-z0-9_.-]+$: efnafraedi-2e 1 ('CNX_Chem_11_02_Fe(NO3)3_img'), edlisfraedi-2e 127 (e.g. 'Figure 04_03_01'), liffraedi-2e 2, orverufraedi 2.",
+      "basis": "read",
+      "suggestedFix": "Before any deletion, require that escapesMediaDir(bookDir, outputName) is false, that outputName === originalImage + DEFAULT_SUFFIX + extname, and that its stem ends with DEFAULT_SUFFIX (this also excludes 'image-mapping.json'). Have D11 assert that every retiredFigures key is accepted by the tool's own name rule, or widen that rule to the CNXML basename charset, since containment is enforced on the resolved path anyway."
+     },
+     {
+      "id": "git-tracked-check-blind-spots-and-vacuous-test",
+      "severity": "minor",
+      "specClaim": "D9/D10: \"tracked by git and unmodified\"; D11: \"Vitest (in CI): the tool (D8–D10)\".",
+      "problem": "The spec does not say how the check is made, and the obvious git commands are blind exactly where it matters. `git diff --quiet HEAD -- <untracked>` exits 0. `git status --porcelain` prints nothing for an ignored file, and prints nothing for an untracked one under `status.showUntrackedFiles=no`. A check built on either would delete a file that has no git copy. In tests: the fixtures are mkdtemp trees outside any repo, so a git call exits 128. If the tool reads that as 'untracked → refuse', every refusal test passes whether or not the guard works, and if the git check is stubbed out instead, the real check is never exercised. Either way the guard is not tested.",
+      "evidence": "MEASURED in a throwaway repo (scratchpad/retire-tool/gitprobe): untracked media/B_IS.svg gives `status --porcelain` '?? …' by default but EMPTY with `-c status.showUntrackedFiles=no`; ignored media/C_IS.svg.bak gives porcelain EMPTY; `git diff --quiet HEAD -- media/B_IS.svg` gives exit 0; `git ls-files --error-unmatch -- media/B_IS.svg` gives exit 1 (the only positive test); a path outside the repo gives exit 128. `git lfs` is not installed, and .gitattributes holds only merge=ours rules on 3 manifests, so no filter or eol rule affects svg or json.",
+      "basis": "measured",
+      "suggestedFix": "Name the predicate: tracked means `git ls-files --error-unmatch -- <p>` exits 0; unmodified means `git diff --quiet HEAD -- <p>` exits 0; any other git failure refuses. Run git with -C set to the repo containing the books dir. Have D11 build a real `git init` + commit fixture with an untracked candidate, an ignored candidate and a modified candidate (all three refused) and a clean candidate that IS deleted, so the refusals cannot pass vacuously."
+     },
+     {
+      "id": "printed-chapter-arg-conversion",
+      "severity": "minor",
+      "specClaim": "D9: the tool prints re-inject/re-render commands for modules found under 03-translated/<track>/<dir>/.",
+      "problem": "The directory name must be converted to a --chapter value: chNN becomes N, ch00 becomes 0 and appendices stays appendices. The spec does not say how. A naive `--chapter ch11` parses to NaN in both tools. CLAUDE.md's two-conventions rule requires the canonical server/lib/chapterLabel helpers, but importing them from tools/ creates an MIT→AGPL edge that root LICENSE must list, and LICENSE is not in this PR's scope. A directory that is not a chapter must be refused rather than printed; organic's 03-translated/mt-preview/exercises/ is one, and organic must never be injected.",
+      "evidence": "READ: tools/lib/parseArgs.js:60-68 (CHAPTER_OPTION.parse: 'appendices' else parseInt, so 'ch11' becomes NaN); server/lib/chapterLabel.js:61-66 chapterFromDir and :49-51 cliChapterArg; LICENSE:93-101 lists every existing chapterLabel edge. MEASURED: 03-translated dirs include efnafraedi-2e appendices and ch00, and lifraen-efnafraedi exercises/. Both tools accept `--chapter 0` and `--chapter appendices` (cnxml-inject.js:104-109, :5365; cnxml-render.js:3892).",
+      "basis": "read",
+      "suggestedFix": "Specify chapterFromDir followed by cliChapterArg, with the LICENSE entry, or a local equivalent pinned by a test. Refuse to print a command for a directory chapterFromDir maps to null."
+     },
+     {
+      "id": "partial-apply-unrecoverable-by-rerun",
+      "severity": "minor",
+      "specClaim": "D9: writes the mapping \"through a temp file and a rename, and deletes the top-level media/<outputName>\"; \"A second run changes nothing\"; Exit codes: \"1 refused (nothing written)\".",
+      "problem": "The spec says nothing about failures after the first write. If the mapping rename succeeds and a deletion then fails (EACCES, or the third of several names), the rows are gone but media/X_IS.svg remains. A second --retire cannot find it, because it locates files only through rows. The generator skip then keeps that file unmapped indefinitely, and only D11 notices. The exit code for this state is also undefined, since '1 = nothing written' does not describe it. The temp file's location is not given either: os.tmpdir() here is a tmpfs, a different filesystem from the repo's ext4, so a temp-dir-plus-rename would fail with EXDEV. That failure comes before any deletion, so it is safe, but the tool would never complete.",
+      "evidence": "READ: spec D9 order (write, then delete); tools/figure-run.js:780-838 is the in-repo model, with a same-directory `${mappingPath}.tmp` plus restoreMapping rollback from the previous bytes. MEASURED: `df -T /tmp books/efnafraedi-2e/media` gives tmpfs vs ext4 /dev/sdd; `os.tmpdir()` is /tmp. INFERRED: rename(2) across filesystems returns EXDEV. A leftover image-mapping.json.tmp* is harmless: it is gitignored (.gitignore:13-14) and ignored by the generator's stem.endsWith('_IS') filter (generate-image-mapping.js:189-192) and by the inject loader, which reads the exact filename.",
+      "basis": "inferred",
+      "suggestedFix": "Specify that the temp file lives in the same directory as the mapping. On any failure after the rename, either restore the previous mapping bytes (figure-run's restoreMapping) or exit 1 with a list of exactly what was done. Have --retire also find leftover media files through the name rule (<name>DEFAULT_SUFFIX.*) when no row remains, so a rerun can finish the job."
+     },
+     {
+      "id": "retired-table-not-book-scoped",
+      "severity": "nit",
+      "specClaim": "D1: `retiredFigures` is `{basename: reason}`; D9: \"the name has a retiredFigures entry\"; D10: \"The generator also skips any name in retiredFigures\".",
+      "problem": "The table is global, but basenames are not unique across books. A retire recorded for one book would make the generator skip that name in every other book that uses it. `--retire` under the wrong --book passes the entry check, finds no row and reports a successful no-op. This is latent today because only chemistry has mapping rows, but the tool takes --book.",
+      "evidence": "MEASURED (01-source image basenames per book): edlisfraedi-2e and liffraedi-2e share 64 (e.g. 'Figure_03_01_01'); liffraedi-2e and orverufraedi share 1 ('Figure_11_01_06'); efnafraedi-2e shares none.",
+      "basis": "measured",
+      "suggestedFix": "Either have --retire and the generator skip a name only when books/<book>/01-source references it, refusing a retire whose name the book does not reference, or document that the table is chemistry-only and have D11 assert that each key occurs in exactly one book's 01-source."
+     },
+     {
+      "id": "prune-mapping-unreadable-unspecified",
+      "severity": "nit",
+      "specClaim": "D10: deletes only if \"no mapping row names it\" (D9's \"parses and is an array of objects\" is stated for --retire only).",
+      "problem": "The spec does not say what --prune does when the mapping is absent or unparseable. If it loads the mapping through loadImageBasenameMap, which swallows a parse error and returns [], the row guard disappears without notice. This is not destructive today: no kept copy depends on the row guard alone. It would matter for a mapped copy that no page references yet.",
+      "evidence": "MEASURED: in the tracked simulation all 745 kept copies have BOTH a row and a tracked reference, and 0 are kept by the row alone. READ: tools/lib/image-basename-map.cjs loadImageBasenameMap `catch { return []; }` (facts.json); tools/figure-run.js:668-690 parseMappingOrRefuse is the refusing model.",
+      "basis": "measured",
+      "suggestedFix": "State that --prune refuses (exit 1) on a mapping that exists but does not parse as an array of objects, as --retire does. Treat an absent mapping as zero rows only for a book with no media/ directory."
+     }
+    ],
+    "checkedAndSound": [
+     "Candidate shape matches the spec. A walk of every books/*/05-publication finds all 788 _IS/_is-stem files at <track>/chapters/<ch>/images/media/ with no nested dirs. With case-sensitive DEFAULT_SUFFIX '_IS' the candidates are chemistry's 754 only (mt-preview 725, faithful 29, 11 of them in chapters/appendices). Biology's 34 lowercase _is rasters are excluded; physics, organic and microbiology have 0.",
+     "On a tracked corpus the predicate does what D10 promises. It deletes exactly the 9 June leftovers (GasBurning ch05, Ex9soln_img ch06, 7 in ch08), all tracked and clean, and keeps 745 copies, each of which has a mapping row AND a tracked reference (prune-sim.mjs --tracked-only).",
+     "The name-substring reference test misses no current reference form. Every reference is a raw name in src=: HTML uses /content/<book>/chapters/<ch>/images/media/<name> and CNXML uses ../../media/<name>. There are 0 percent-encoded, 0 srcset, 0 CSS url() and 0 cross-chapter URLs; physics renders names with spaces raw, without %20.",
+     "No false references in tracked files: 0 name-substring pairs among the 725 distinct candidate names; 0 tracked non-HTML/CNXML files (JSON, SVG, md, zip; index.json, glossary.json, slug-map, toc.json) contain another candidate's filename or stem; the one zip in images/media holds only .jpg member names.",
+     "vefur cannot depend on a file that efni sees as unreferenced: a grep of vefur's tracked src/ and scripts/ finds no code that builds an _IS name or images/media path (the only hit is og:locale is_IS), so an efni-side reference check is complete.",
+     "Matching by name across tracks keeps every copy of any referenced name, so vefur's faithful-over-mt-preview flattening cannot get a broken image from --prune. Running the steps out of order (prune before re-inject or re-render) fails safe, because the stale reference keeps the file.",
+     "A module-scoped render still rebuilds the chapter's rollup pages from allModules (cnxml-render.js:3985-3998, 4549-4592), so a --module re-render does update an answer-key or exercises page that carries the figure (the Ques11ans case).",
+     "Chemistry's mapping is regular. 717 rows, all objects, all carrying originalImage, all outputNames in [A-Za-z0-9_.-]+, no duplicate outputName, and `JSON.stringify(rows,null,2)+'\\n'` reproduces it byte for byte. Biology's 34 legacy rows have no originalImage, so originalImage equality never matches them. Biology's file and the e2e fixture's do not re-serialise byte-identically (no trailing newline; 1-space indent), which matters only if the tool writes when it removes nothing.",
+     "Leftover temp and backup files from the mapping write are inert: *.tmp, *.tmp.* and *.backup.* are gitignored; the generator's filter (stem endsWith '_IS') skips image-mapping.json.tmp*; the inject loader and the server's translatedImageFor read exact names only.",
+     "No git-lfs (not installed) and no .gitattributes filter or eol rule on svg or json (only merge=ours on translation-errors, residue-report and review-status), so a clean svg or json cannot read as modified.",
+     "Render accepts --track, --chapter appendices and --chapter 0 (== null guards at cnxml-render.js:3892 and cnxml-inject.js:5365); both tools reject nothing silently for these values.",
+     "The faithful-track copy of the 6 retirees: none exists (the 6 are mt-preview only), so the faithful command defects are latent for this run and live only for a ch01 or ch03 retire."
+    ],
+    "gitStatusPorcelain": ""
+   },
+   "verify": {
+    "verdicts": [
+     {
+      "id": "prune-corpus-counts-gitignored-backups",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "D10 defines the reference corpus as 'no other file under 03-translated/ or 05-publication/, in any track'. Only the CANDIDATE must be 'tracked and unmodified'. The spec lists exceptions (raster, font, same-name copies), and listing them makes the literal reading include gitignored backups. Inject's safeWrite copies every module to <file>.backup.<ts> before each write and inject never prunes them; render prunes only its own. I re-implemented D10 independently on the real tree. A disk-walk corpus deletes 0 of 754, and each of the 9 June leftovers is kept by backup files alone. A tracked corpus, or tracked plus untracked-not-ignored, deletes exactly those 9. So under a disk walk the spec's 'its first run also clears the 9 June leftovers' and step 5's 'no file … mentions any of them' cannot hold. Step 3's re-inject also adds one more backup per module naming X_IS.svg. CONCRETE COST: if D11's 'no reference' check is a disk walk, it goes red on every dev-box npm test after step 3, while CI (fresh clone, no backups) stays green. WHY MINOR, NOT MAJOR: the failure only ever keeps files, never deletes. D10's 'Everything kept is listed with its reason' makes the mandatory dry run (step 4) name the backup files loudly. And `git grep`, a natural tracked-only implementation, produces the correct corpus without being told. CORRECTION: the finding's per-retiree 'backup' counts (14/13/13/13/20/14) are total on-disk referrers including the 2 tracked files. The backups alone number 12/11/11/11/18/12. The D9 sub-claim (module names like m68783.cnxml.backup…) is speculative, since a `.cnxml$` filter excludes those files.",
+      "evidence": "MEASURED: `node scratchpad/refute-retire-tool/prune-sim2.mjs <repo> efnafraedi-2e` → 'candidates=754 rows=717 corpusFiles=13820 backupsInCorpus=12491'; '[diskAll] DELETE 0 KEEP 754 (row+ref 745, ref-only 9 …)', each of the 9 'REF-ONLY-BY-BACKUPS', e.g. 'CNX_Chem_08_01_sigma_IS.svg <- 2 backups e.g. books/efnafraedi-2e/03-translated/mt-preview/ch08/m68744.cnxml.backup.2026-06-26T18-52-29'; '[trackedOnly] DELETE 9 KEEP 745' (GasBurning ch05, Ex9soln_img ch06, 7 in ch08); 'distinct backup files naming some candidate: 1560'; per retiree 'backups=12/11/11/11/18/12 tracked=2'. Cross-check `grep -rlaF <b>_IS.svg 03-translated 05-publication`: rvosmosis 14 files of which 12 are backups; BlastFurn 20 of which 18. `git check-ignore -v …m68744.cnxml.backup.2026-06-26T18-52-29` → '.gitignore:20:*.backup.*'. READ: tools/lib/safeWrite.js:21-27; tools/cnxml-inject.js:5309 (safeWrite, no prune); tools/cnxml-render.js:4777-4792 (prunes only render's own backups); spec line 38 (D10 wording)."
+     },
+     {
+      "id": "blastfurn-in-two-tables",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "BlastFurn is one of the 6 retirees (register ㊵ row) and is already a supersededArtwork key. The spec never names it. Following the run order: step 1 adds it to retiredFigures, so D11's 'the three tables share no key' fails in CI. If it is kept in both tables, D2's order (superseded first) makes sources.py print 'REFUSED — superseded', so step 5's 'REFUSED — retired for all 6' fails. The other resolution, removing it from supersededArtwork, breaks test_sources.py:321-326's committed invariant ('a verified entry must never be lost'). No CI job runs that suite, so this repeats the ㊷ red-unseen pattern. It also leaves sources.py:169-170's comment ('BlastFurn is one') false; D12 lists N2O5 comment fixes but not this one. It also silently stops the ch19 autorun superseded halt (chemistry-autorun-chapter.sh:207-208). Retire-durability Q4 in the spec's own fact base asked exactly that question, and the spec does not answer it. The spec forces one of two reds and names neither. Minor rather than major: neither path damages content, and each red is visible (CI, or step 5's check).",
+      "evidence": "READ: experiments/figure-text-translation/figure-text.config.json:21 (key CNX_Chem_19_01_BlastFurn under supersededArtwork); test_sources.py:321-326 (`_VERIFIED = [… 'CNX_Chem_19_01_BlastFurn' …]`, presence check, comment 'a verified entry must never be lost'); sources.py:166-177 (superseded refused before any lookup; :170 'CNX_Chem_19_01_BlastFurn is one'); scripts/chemistry-autorun-chapter.sh:207-208 (`grep -q \"REFUSED — superseded\" … && halt`); docs/plans/2026-07-21-post-item17-followup-campaign.md:3036 ('retire 6 — rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619'); facts.json retire-durability F18, DI5, Q4. MEASURED: `grep -anE 'BlastFurn|superseded'` on the spec → hits only at lines 29, 30, 34, 40, 88, none naming BlastFurn."
+     },
+     {
+      "id": "faithful-inject-command-reads-mt",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "Inject derives its track as `args.track || trackFromSourceDir(sourceDir)`, with sourceDir defaulting to 02-mt-output. So `--track faithful` alone reads MT segments and overwrites 03-translated/faithful, which holds reviewed content: the 4 faithful modules differ from mt-preview by 6–262 diff lines. The server's canonical argv passes --source-dir to inject and --track to render. A stronger fact than the finding states: the CORRECT form cannot run anywhere today. Only README.md is tracked under 03-faithful-translation, and git-backup.sh stages that directory, so prod has committed no segments either. On this box the directory holds only ch01 *.bak files, and ch03 is absent. MT segments do exist, so the wrong form succeeds. D9's faithful re-inject command is therefore un-runnable in its correct form and destructive in its wrong form. This affects 28 names in faithful CNXML today, none of them among the 6 (ch11/18/19/21 have no faithful track). Minor: latent for this run, recoverable from git and the safeWrite backups, and a by-value before/after diff would flag it.",
+      "evidence": "READ: tools/cnxml-inject.js:5372-5373 (`const sourceDir = args.sourceDir || '02-mt-output'; const track = args.track || trackFromSourceDir(sourceDir);`), :120-124, :5188-5205 (throws 'Translation not found … Refusing to publish untranslated content'), :5296-5309 (writes 03-translated/<track>/); server/services/pipelineService.js:44-48 (TRACK_SOURCE_DIR faithful → '03-faithful-translation'), :195-205 (inject argv uses --source-dir), :236-243 (render argv uses --track); scripts/git-backup.sh PATHSPECS includes 'books/*/03-faithful-translation/'. MEASURED: `git ls-files 'books/*/03-faithful-translation/**' | wc -l` → 1 (README.md); `ls …/03-faithful-translation/ch03` → No such file; …/ch01 holds only m68664-segments.*.bak; 02-mt-output/ch03/m68700-segments.is.md and ch01/m68664-segments.is.md exist; diff of faithful vs mt-preview 03-translated: m68663 10, m68664 100, m68699 6, m68700 262 lines; node census: 28 _IS names in faithful 03-translated."
+     },
+     {
+      "id": "faithful-rollup-not-in-command-set",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "For the faithful track, render's module set is the union with the mt-preview baseline. A faithful rollup page can therefore name a figure that no faithful 03-translated file names, and D9's derivation from 03-translated would print no faithful re-render for it. Exactly one such name exists today (Archer2_img), and it is not one of the 6. The failure is safe: D10 keeps the copy while the faithful page references it. The gap is also exposed by run-order step 5 and by D11's 'no reference' corpus check, so a retired figure cannot silently stay visible. Nit.",
+      "evidence": "READ: tools/cnxml-render.js:3985-3998 (for faithful, allModuleSet adds findChapterModules(chapter,'mt-preview')); 05-publication/faithful/rollups-complete reads 'Faithful rollups assembled with mt-preview fallback for unreviewed modules.' MEASURED: `git grep -laF CNX_Chem_01_05_Archer2_img_IS.svg -- 03-translated 05-publication` → 03-translated/mt-preview/ch01/m68690.cnxml, 05-publication/faithful/chapters/01/1-exercises.html, 05-publication/mt-preview/chapters/01/1-exercises.html. A node census of tracked faithful pages against faithful CNXML → 'faithful-published names: 29 in faithful 03-translated: 28 gaps: 1' (Archer2)."
+     },
+     {
+      "id": "outputname-containment-and-name-regex",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "Spec line 50 states something false: it credits the flag regex with keeping deletion inside media/ ('so a flag value cannot reach outside media/'). But the file D9 deletes is media/<outputName>, taken from row data the regex never sees. The repo already treats outputName as untrusted and has one owner for this predicate, escapesMediaDir, whose comment forbids a second implementation. The spec does not name it. 'Tracked and unmodified' is no defence, because a 01-source file is tracked. No malformed row exists today (717 of 717 rows are well-formed), so this is defence in depth: minor. The second point, that the regex is too narrow, fails safe: the one chemistry basename it rejects has no mapping row.",
+      "evidence": "READ: tools/publish-figure-svg.js:115-134 (escapesMediaDir; 'the traversal wrote into the licensed tree AND the call still returned ok:true'; 'the rule may not have two implementations'); tools/figure-run.js:457-466 (pre-flight uses it); spec line 37 ('deletes the top-level media/<outputName>') and line 50. MEASURED: node over books/efnafraedi-2e/media/image-mapping.json → 'rows 717 outputName failing regex 0 originalImage failing regex 0'; 'rows where outputName != originalImage+_IS+ext: 0'. Distinct 01-source image basenames failing ^[A-Za-z0-9_.-]+$: efnafraedi-2e 1 ['CNX_Chem_11_02_Fe(NO3)3_img'], edlisfraedi-2e 127, liffraedi-2e 2, orverufraedi 2, lifraen-efnafraedi 0."
+     },
+     {
+      "id": "git-tracked-check-blind-spots-and-vacuous-test",
+      "verdict": "refuted",
+      "severityAfterCheck": "none",
+      "reasoning": "The finding's git facts are correct; I reproduced every one. They do not make this a spec defect. The spec states the predicate explicitly and in two parts ('tracked by git AND unmodified'). The blind spots matter only to an implementation that drops the 'tracked' half (`diff --quiet` alone), or that relies on porcelain under a config this repo does not set. No real target meets them today: all 717 --retire targets are tracked and clean, and chemistry 05-publication holds 0 untracked or ignored files. On vacuity, D11 already prescribes 'an adversarial review and a mutation pass over the guards' and names 'a guard that passes vacuously' as its cost if wrong. A positive-path test (a clean orphan IS deleted; --retire --apply DOES remove media/X_IS.svg) cannot pass in a non-git mkdtemp fixture, which forces a real git fixture. Naming the exact commands is good implementation advice, not a correction to the design.",
+      "evidence": "MEASURED in a throwaway repo (scratchpad/refute-retire-tool/gitprobe): modified A: diff--quiet=1, ls-files--error-unmatch=0; untracked B: diff--quiet=0, ls-files--error-unmatch=1, porcelain '?? media/B_IS.svg' by default but absent under -c status.showUntrackedFiles=no; ignored C_IS.svg.bak: diff--quiet=0, absent from porcelain; outside a repo exit=128. `git -C <repo> config --get status.showUntrackedFiles` → unset (exit 1). node over the mapping → 'rows 717 missing-on-disk 0 untracked 0 modified 0'; 'top-level media _IS files on disk 717 untracked among them 0'; `git status --porcelain --ignored -- books/efnafraedi-2e/05-publication | wc -l` → 0. READ: spec line 37 ('tracked by git and unmodified'); spec line 39 (D11: 'an adversarial review and a mutation pass over the guards'; cost 'A guard that passes vacuously')."
+     },
+     {
+      "id": "printed-chapter-arg-conversion",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "True that the spec does not say how a 03-translated directory name becomes a --chapter value, and true that 'ch11' parses to NaN. The consequence is loud, not silent. NaN is not == null, so both tools continue to a 'chNaN' path, throw ('Structure directory not found' in inject, 'Translated directory not found' in render) and exit 1 from their outer catch. The organic angle is unreachable: organic has no image-mapping.json and 0 _IS references, so D9 would print nothing for it. On LICENSE, CLAUDE.md already requires that any new chapterLabel edge be recorded in root LICENSE, so that follows from repo rules without a spec change. Nit.",
+      "evidence": "MEASURED: `node -e` parseArgs(['--book','x','--chapter','ch11'],[BOOK_OPTION,CHAPTER_OPTION]) → 'chapter = NaN number isNaN true r.chapter==null false'. READ: tools/lib/parseArgs.js:60-68 (parse: 'appendices' else parseInt); tools/cnxml-inject.js:104-109 (formatChapter → 'chNaN'), :5145-5150 (throws 'Structure directory not found'), :5365 (`== null` check passes NaN), :5624-5628 (catch → process.exit(1)); tools/cnxml-render.js:296-301 formatChapterDir, :2585-2590 (throws 'Translated directory not found'), :4820-4825 (catch → exit 1). The render half was read, not run. server/lib/chapterLabel.js:49-66. MEASURED: `ls books/lifraen-efnafraedi/media/image-mapping.json` → No such file; `git grep -laE '_IS\\.(svg|png|jpg)'` over organic 03-translated and 05-publication → 0."
+     },
+     {
+      "id": "partial-apply-unrecoverable-by-rerun",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The gap is real. D9 writes the mapping first and deletes second, and it finds files only through rows. If a deletion fails after the rename, an unmapped media/X_IS.svg remains that a rerun cannot see; 'a second run changes nothing' then describes a job left unfinished. Exit code 1 ('nothing written') does not describe that state either. The leftover is inert: with no row, inject and render ignore it, and the generator skip keeps it unmapped. D11's 'no media/ file' check catches it in CI. A failed unlink of one's own files on ext4 is unlikely. EXDEV is real in principle, since /tmp is tmpfs and the repo is on ext4. But it would fail before any deletion, and the in-repo model (figure-run's same-directory .tmp plus restoreMapping) is the natural template to copy. Nit.",
+      "evidence": "MEASURED: `df -T /tmp books/efnafraedi-2e/media` → 'tmpfs … /tmp' vs 'ext4 … /dev/sdd'; `os.tmpdir()` → /tmp. READ: tools/figure-run.js:820-822 (`${mappingPath}.tmp`, writeFileSync, renameSync), :834-838 restoreMapping (rewrites the previous bytes); .gitignore:13-14 (*.tmp, *.tmp.*); spec line 37 (write, then delete; 'A second run changes nothing'), line 49 (exit codes). INFERRED: rename(2) across filesystems returns EXDEV."
+     },
+     {
+      "id": "retired-table-not-book-scoped",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The config is global: supersededArtwork is a flat {basename: reason} with no book key, and the spec deliberately copies that shape for retiredFigures. A skip or refusal keyed on a basename shared between books would therefore apply in every book. The overlaps are real but latent. Chemistry, the only book with originalImage rows, shares no basename with any other book. Physics, microbiology and organic have no mapping, and biology's 34 rows carry no originalImage. A --retire run under the wrong book is a silent no-op, which D11's chemistry check would still expose. This mirrors an existing design choice. Nit.",
+      "evidence": "MEASURED: node over each book's 01-source <image src> basenames → 'edlisfraedi-2e & liffraedi-2e 64 [Figure_02_03_04, Figure_03_04_01]', 'liffraedi-2e & orverufraedi 1 [Figure_11_01_06]', efnafraedi-2e shares none; mapping rows: efnafraedi-2e 717 (717 with originalImage), liffraedi-2e 34 (0 with originalImage), edlisfraedi-2e, orverufraedi and lifraen-efnafraedi none. READ: figure-text.config.json:17-23 (global supersededArtwork, no book key); spec line 29 (retiredFigures {basename: reason}) and line 30 (keys matched like supersededArtwork's)."
+     },
+     {
+      "id": "prune-mapping-unreadable-unspecified",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The spec text is asymmetric. D9 requires --retire to check that the mapping parses as an array of objects; D10 says nothing about --prune. loadImageBasenameMap does swallow parse errors and return []. The finding limits itself correctly ('not destructive today'): in my simulation, 0 of 745 kept copies depend on the row guard alone. Even the hypothetical case is harmless. A published copy exists only because a render copied it for a page that referenced it. Deleting a mapped copy that no page references breaks no page, and copyChapterImages restores it from media/ the next time a page references it. Nit.",
+      "evidence": "READ: tools/lib/image-basename-map.cjs:34-42 (docstring 'Never throws'; `catch { return []; }`); spec lines 37-38 (D9's parse check, D10 silent); tools/cnxml-render.js:2649-2717 copyChapterImages (scans HTML src refs; copies each from 01-source/media, then media/, with copyFileSync; never deletes). MEASURED: prune-sim2.mjs '[trackedOnly] DELETE 9 KEEP 745 (row+ref 745, ref-only 0, row-only 0, other/not-clean 0)'."
+     }
+    ],
+    "gitStatusPorcelain": ""
+   }
+  },
+  "tests": {
+   "attack": {
+    "findings": [
+     {
+      "id": "blastfurn-in-two-tables",
+      "severity": "major",
+      "specClaim": "D11: \"the three tables share no key, compared after the same fold the resolver uses\"; Run order step 1: \"Add the 6 `retiredFigures` entries\"; D2: \"Resolver order: `supersededArtwork` → `retiredFigures` → pin\"; step 5: \"`sources.py` prints `REFUSED — retired` for all 6\"",
+      "problem": "CNX_Chem_19_01_BlastFurn is one of the six figures to retire, and it is already a `supersededArtwork` key. Following the spec exactly breaks at least one rule, whichever way it is done. (a) Adding it to `retiredFigures` (step 1) gives the two tables a shared key, so the D11 corpus test fails on the retire PR. Even with that ignored, D2 checks superseded first, so step 5 gets `REFUSED — superseded` for BlastFurn and never `REFUSED — retired`. (b) Leaving it out of `retiredFigures` makes D9's `--retire` refuse it, because the name has no `retiredFigures` entry, so its June row and SVG cannot be removed with the tool. (c) Moving it from `supersededArtwork` to `retiredFigures` turns `test_sources.py`'s ㊷ presence pin red. That pin was added one commit before this spec. On arrival nothing fails, because the new tables are empty: the rule meets the conflict the first time it has anything to compare.",
+      "evidence": "Simulation over the committed config and the six names: `D11 disjointness after run-order step 1 -> shared keys: [ 'CNX_Chem_19_01_BlastFurn' ]`; with D2's order, the first table hit for the six is `['retired','retired','retired','retired','superseded','retired']`. `python3 sources.py --json efnafraedi-2e … CNX_Chem_19_01_BlastFurn` today returns `REFUSED superseded`. figure-text.config.json:21 (BlastFurn key); test_sources.py:324-326 `_VERIFIED = [... 'CNX_Chem_19_01_BlastFurn' ...]` checked for PRESENCE; the spec's own facts.json (conventions and critic) records that only BlastFurn among the six is in supersededArtwork; register ㊵ row (campaign register L3036) lists BlastFurn among the six to retire.",
+      "basis": "measured",
+      "suggestedFix": "Narrow D11's disjointness to `artworkPins` against (`supersededArtwork` ∪ `retiredFigures`), and allow a key in both supersededArtwork and retiredFigures; D2's order already decides it, and superseded wins. Make step 5 expect `REFUSED — superseded` for BlastFurn and `REFUSED — retired` for the other five, and state that the ch19 autorun keeps halting on it, as it does today. If the spec prefers moving BlastFurn instead, it must say so and also amend `_VERIFIED` and its comment in test_sources.py in the same commit."
+     },
+     {
+      "id": "reference-check-not-keyed-on-suffix",
+      "severity": "major",
+      "specClaim": "D11: \"every retired figure has no row, no `media/` file, no published copy and no reference\"; step 5: \"no file under `03-translated/` or `05-publication/` mentions any of them\"",
+      "problem": "Neither rule says what counts as a mention or a copy. If it is checked against the figure's bare basename, the check fails after a correct retire, and it can push someone to delete the wrong file. A correct retire puts the English `<name>.jpg` src back into the re-injected CNXML and the re-rendered HTML. Every retiree also keeps a tracked published `<name>.jpg`, which becomes the page's picture. JPEG metadata already carries bare basenames. D10's prune is keyed on the `_IS` stem and is safe; the corpus test and the step-5 check have no such key. If they are implemented by bare name, the retire PR's CI fails. A 'fix' that loosens them makes them vacuous, and treating `<name>.jpg` as a leftover copy deletes the image the page now needs.",
+      "evidence": "`git ls-files -z books/efnafraedi-2e/05-publication/ books/efnafraedi-2e/03-translated/ | xargs -0 grep -laF CNX_Chem_11_04_rvosmosis` → the cnxml, the html, the _IS.svg AND 3 JPEGs (chapters/04/…Drano.jpg, …PhotoChrom.jpg, chapters/18/…ZincHCl.jpg); 0 JPEGs contain any `<name>_IS`. Precedent 8ebdf1a4f (§C163): the html went from `-…/CNX_Chem_07_04_Ques11ans_img_IS.svg` to `+…/CNX_Chem_07_04_Ques11ans_img.jpg`. Each of the six has both `<name>.jpg` and `<name>_IS.svg` tracked under 05-publication/mt-preview/chapters/NN/images/media/ (listed per name).",
+      "basis": "measured",
+      "suggestedFix": "Define a single predicate and use it in D10, D11 and step 5. A reference is an occurrence of `<name>` + DEFAULT_SUFFIX (`.` or end of name) in a non-raster, non-font file under `03-translated/` or `05-publication/`, any track, excluding copies of the same name. A copy is `05-publication/*/chapters/*/images/media/<name>` + DEFAULT_SUFFIX + `.*`, and a `media/` file is top-level `media/<name>` + DEFAULT_SUFFIX + `.*`. Cite §C163's `0 files mention Ques11ans_img_IS` as the precedent."
+     },
+     {
+      "id": "json-path-never-exercised",
+      "severity": "major",
+      "specClaim": "D6: \"One helper builds all three from the config, and both command-line paths (`main` and `--json`) use it … pinned by a test of the helper\"; D11 Python tests; step 5",
+      "problem": "The path that buys is `sources.py --json`, the only path figure-run.js uses, and nothing planned runs it with a retired entry. In `__main__` the `--json` branch is written inline and reads the config separately from `main()`. `load_config()` always reads the committed file, whose new tables ship empty. A test of the helper therefore shows the helper builds the tables, not that `--json` passes them on. Step 5's check uses the human report: `REFUSED — retired` is `human_report`'s format, and the JSON form is `\"refused\": \"retired\"`. The spec also says 'The retires do not run figure-run.js'. A `--json` branch that drops `retired=` would let a retired figure resolve and be bought, the failure D2 says it exists to stop, and no test or run-order step would notice.",
+      "evidence": "sources.py:24-25 (`load_config` reads `HERE / 'figure-text.config.json'`), :314-321 (main reads cfg), :331-336 (`--json` reads cfg again inline inside `if __name__ == '__main__'`); :297 human format `REFUSED — {d['refused']}`; sources.local.json is untracked (`git ls-files` lists only `.example`), so CI cannot run either path; spec line 83 'The retires do not run figure-run.js.'",
+      "basis": "read",
+      "suggestedFix": "Route both CLI branches through one function that takes `cfg` (and argv). Test it in test_sources.py with a synthetic cfg whose `sourceTreesFile` is an absolute temp path, covering both `--json` and human output for a retired entry, with a non-retired control. Add to step 5: `sources.py --json efnafraedi-2e <the 6>` returns `\"refused\": \"retired\"` for each, subject to the BlastFurn finding."
+     },
+     {
+      "id": "corpus-rules-vacuous-on-arrival",
+      "severity": "major",
+      "specClaim": "D11: corpus test rules (no shared key; every entry has a substantive reason; every pin has a valid kind, a configured edition and a relative file; every retired figure has no row/file/copy/reference) and \"a mutation pass over the guards\"; D1: \"Both ship **empty**\"",
+      "problem": "Both new tables are `{}` at merge, so three of the six corpus rules check nothing: no-shared-key, pin validity, and the retired-state rule. The reason rule is only partly exercised, on supersededArtwork's 4 entries. Any implementation passes, including an empty function body, and the planned mutation pass will find surviving mutants the spec has no plan to kill. [USER] decision (1) makes this worse: the first real pin arrives in a buy commit, so the pin rules meet real data for the first time after money has been spent.",
+      "evidence": "spec D1 (line 29) 'Both ship empty'; [USER] decision (1) 'each pin is added in the commit that runs its buy'; today only `supersededArtwork` has entries (4, measured). D11 names a floor control only for the row/file bijection and no control for any per-entry rule.",
+      "basis": "read",
+      "suggestedFix": "Put the corpus rules in a pure validator such as `validateFigureConfig(cfg, corpus)`. Test it with synthetic configs in tools/__tests__, one passing and one failing case for each rule, as the named controls. Then also run it on the committed config. State that the mutation pass applies to the validator through those fixtures."
+     },
+     {
+      "id": "generator-skip-untestable-and-silent",
+      "severity": "minor",
+      "specClaim": "D10: \"The generator also skips any name in `retiredFigures`, so a restored file cannot re-add its row\"; D11: \"Vitest … the generator skip\"",
+      "problem": "The spec does not say where the skip lives or how it is tested. `generateImageMapping()` (its file-reading half) has no test today. Its config path would be fixed, and the committed `retiredFigures` is empty, so a test that goes through the real config cannot see a skip. The spec also does not say how a skipped file is reported. Dropped silently, an operator who placed a file sees nothing. Added to `unmatched`, it prints the wrong advice: 'no matching <figure> … Check the basename matches the original <image src>'.",
+      "evidence": "tools/generate-image-mapping.js:159-210 (IO half; facts.json conventions: `_setTestBooksDir` exported, used by no test), :260-268 (unmatched warning text); tools/__tests__/generate-image-mapping.test.js tests only the pure functions.",
+      "basis": "read",
+      "suggestedFix": "Make the skip a parameter of the pure core, for example `buildMappingEntries(files, basenames, suffix, {retired})`, and have the IO half pass in the config's table. Test both halves: the pure skip with its control (a non-retired restored file is added), and the IO wiring through `_setTestBooksDir` plus a config-path seam. Require that a skipped file is named in the output with the reason 'retired'."
+     },
+     {
+      "id": "pin-suffix-check-after-the-buy",
+      "severity": "minor",
+      "specClaim": "D5: \"The translated-suffix rule (a pinned stem must not end in `DEFAULT_SUFFIX`) is checked only in CI\"; Run order: \"add its pin; check that `sources.py` returns the approved file; run its pre-buy lineup; run `figure-run.js --figure <name>`\"",
+      "problem": "The only guard against pinning our own June output is a CI test, and CI runs on the commit that already contains the paid buy. A pin to `_session_updates_2026-06-28/CNX_Chem_03_01_ibuprofenmass_img_IS.pdf` in the same first-edition tree that the ibuprofen override targets passes every runtime check in D5. If an operator picks the wrong file of the five on that key, about 1.3 ISK is spent before anything objects.",
+      "evidence": "Python probe via sources.py: `session _IS.pdf exists: True size: (432.0, 115.0) paper: None`, `parts cross _OWN_OUTPUT_DIRS: False` (`_OWN_OUTPUT_DIRS = {'Translated_IS'}`, sources.py:111); the first-edition tree holds 99 files in `_session_updates_2026-06-28/`, including ibuprofenmass `_IS.pdf/.svg`.",
+      "basis": "measured",
+      "suggestedFix": "Smallest fix: in the per-buy run order, run the corpus test locally (`npx vitest run <corpus test>`) after adding the pin and before `figure-run.js`. Alternatively, figure-run.js, which already imports DEFAULT_SUFFIX, could refuse any resolved `hit.path` whose stem ends in it before the spend branch. That is no Python restatement, but it goes beyond D7's 'wording only'."
+     },
+     {
+      "id": "suffix-rule-literal-is-vacuous",
+      "severity": "minor",
+      "specClaim": "D11: \"every pin has … a relative `file` that does not end in `DEFAULT_SUFFIX`\"",
+      "problem": "As written, the rule checks the whole file string, which always ends in an extension, so it can never fire. D5 states the correct form ('a pinned stem'). Implemented literally, the CI copy of the rule is vacuous. D11's list also omits the `..` check that D5 makes at run time.",
+      "evidence": "Probe: `'_session_updates_2026-06-28/CNX_Chem_03_01_ibuprofenmass_img_IS.pdf'` → `file string endswith _IS: False | stem endswith _IS: True`.",
+      "basis": "measured",
+      "suggestedFix": "Reword D11: \"a relative `file` with no `..` segment, whose stem (basename without extension) does not end in `DEFAULT_SUFFIX`\", with a fixture whose `file` is `X_IS.pdf` as the failing control."
+     },
+     {
+      "id": "configured-edition-unreadable-in-ci",
+      "severity": "minor",
+      "specClaim": "D11: \"every pin has a valid kind, a configured `edition`\" (vs D5: \"an `edition` not configured for the book\")",
+      "problem": "At run time, 'configured' means the book's trees in `sources.local.json`. That file is gitignored and absent in CI. A test that reads it will either crash or skip in CI, and a skip is a vacuous check.",
+      "evidence": "`git ls-files experiments/figure-text-translation/sources.local.json` → nothing (only `.example` is tracked); experiments/figure-text-translation/.gitignore:9; config `editionPrecedence` = [\"updates-2e\",\"first-edition\"] is committed.",
+      "basis": "measured",
+      "suggestedFix": "State that the CI rule is `edition ∈ cfg.editionPrecedence`, and that the per-book check stays the runtime `pin-invalid` in D5."
+     },
+     {
+      "id": "idempotency-test-vacuous-on-canonical-fixture",
+      "severity": "minor",
+      "specClaim": "D9: \"writes `JSON.stringify(rows, null, 2) + '\\n'` … A second run changes nothing\" / \"Chemistry's mapping re-serialises byte-identically (measured)\"",
+      "problem": "As worded, the write happens every time. 'A second run changes nothing' holds for chemistry only because its file happens to be serialised that way already. A tool that always rewrites passes a test fixture written in the same format. The other committed mappings are not in that format, so a run there leaves a whitespace-only diff even when no row is removed.",
+      "evidence": "node: efnafraedi-2e byte-identical true (99000/99000); liffraedi-2e false (4885 vs 4886 bytes); __e2e-fixture__ false (130 vs 138, 1-space indent).",
+      "basis": "measured",
+      "suggestedFix": "Write only when at least one row is removed. Test the second run on a fixture in a different format (1-space indent, no trailing newline) and assert its bytes are unchanged."
+     },
+     {
+      "id": "d12-omits-stale-texts",
+      "severity": "minor",
+      "specClaim": "D12: \"Fixed in passing: the config's Ques11ans reason; the comments in `sources.py`, `test_sources.py` and the config's `_paperSizes` …; the ㊵ row's evidence pointer\"",
+      "problem": "D12's list is incomplete. This PR makes false: figure-run.js:1925-1926, which lists only two refusal kinds ('a production page, or known-superseded'); sources.py's `resolve_detail` docstring (:155, :161-162), which lists the refusal kinds and a hit shape without `via`; README:76-82, where 'put <basename>_IS.<ext> in media/, run generate-image-mapping' now silently maps nothing for a retired name; generate-image-mapping.js's own header (:13-19) and `printHelp` (:236-241); and the config's `_supersededArtwork` 'Matched case-insensitively, like the lookup', which leaves out punctuation (`_normkey` drops non-alphanumerics), wording the new notes are likely to copy. The retire commit then makes false: sources.py:169 ('CNX_Chem_19_01_BlastFurn is one' still-live copy), figure-run.js:1438 ('rvosmosis, N2O5, BlastFurn are measured instances'), :1789-1791 (N2O5's 'June _IS.svg is still a whole sheet') and :2417 ('N2O5 resolves cleanly'). Neither D12 nor the run order gives these to anyone, though the spec's own facts.json lists the last four.",
+      "evidence": "Lines as cited (read); facts.json retire-durability: 'Comments that become false when the retire lands, to fix in the ㊵ PR: tools/figure-run.js:1438 … 1791-1792 … sources.py:169'.",
+      "basis": "read",
+      "suggestedFix": "Add the five PR-time texts to D12, and add the four retire-time texts to run-order step 1 or 2, fixed in the retire commit."
+     },
+     {
+      "id": "c40-pointer-half-supported",
+      "severity": "nit",
+      "specClaim": "D12: \"the ㊵ row's evidence pointer, which cites a README section that does not support it\"",
+      "problem": "This is only half true. §4 of evidence/2026-09-29-c27-c14/README.md does support the row's first sentence: molecreso and Cl2OClO2 drawn on black panels, and N2O5 a letter-size sheet. It does not support the second: the 'holes are not holes' alias file names. Replacing the pointer would leave the first sentence without a source.",
+      "evidence": "evidence/2026-09-29-c27-c14/README.md:147-153 (§4 text); register L3036 evidence column cites only §4 for both claims; facts.json alias-config supports the alias identities.",
+      "basis": "read",
+      "suggestedFix": "Keep §4 as the source for the live-defects sentence, and add a second pointer, to `evidence/2026-10-01-c40-design/` (alias-config), for the holes claim."
+     },
+     {
+      "id": "paper-sizes-wording",
+      "severity": "nit",
+      "specClaim": "D12: \"the config's `_paperSizes` that still describe N2O5 as a refused paper-size page\"",
+      "problem": "`_paperSizes` does not name N2O5. What is out of date there is 'sources.py refuses it' together with 'exactly 2 of 910 resolved artworks are paper-size'. The resolver skips a paper-size candidate and refuses only when every candidate in the edition is one. Today N2O5 resolves to its .eps, and only rvosmosis is refused.",
+      "evidence": "figure-text.config.json:32; sources.py --json today: `CNX_Chem_18_07_N2O5 HIT first-edition …N2O5.eps`, `CNX_Chem_11_04_rvosmosis REFUSED production-page … 612x792 Letter`.",
+      "basis": "measured",
+      "suggestedFix": "Describe the fix as: say that a paper-size candidate is skipped and the figure is refused only when every candidate is one, and date the '2 of 910' census as a measurement taken before ⑦."
+     },
+     {
+      "id": "floor-and-reason-length-unstated",
+      "severity": "nit",
+      "specClaim": "D11: \"with a floor on the row count\"; Run order step 1: \"with the ruling as the reason\"",
+      "problem": "No floor value is given, and the count will be 711 after the retires. A floor at today's 717, the natural pick, fails the retire PR's CI, the same equality-pin trap ㊷ just fixed. Separately, a reason that is only a citation, such as '§C140 ㊵ [USER] 2026-09-30', is under the 40-character reason minimum and fails the same PR.",
+      "evidence": "Measured 717 rows ↔ 717 top-level _IS files today; tools/__tests__/image-basename-map.test.js:79 already pins `> 600` on the same file; test_sources.py:319 rule `len(v.strip()) > 40`.",
+      "basis": "measured",
+      "suggestedFix": "State the floor and the existing pin it reuses (`> 600`). Say the retired reason must state what was ruled and why, not only cite the ruling."
+     },
+     {
+      "id": "reference-scan-cost",
+      "severity": "nit",
+      "specClaim": "D10/D11: \"no other file under `03-translated/` or `05-publication/` … contains its name (raster and font files are skipped)\"",
+      "problem": "SVGs are neither raster nor font files, so the reference scan reads all the published SVGs on every CI run. No SVG references an `_IS` name today.",
+      "evidence": "Published SVGs total 821,423,564 bytes (`du --files0-from`); a one-pass scan over 1,328 non-raster files (879 MB) took 5,420 ms here; 0 SVG files contain an `_IS.svg` name (probe).",
+      "basis": "measured",
+      "suggestedFix": "Limit the reference scan to .html, .cnxml and .json, or measure and state that its CI time is acceptable."
+     },
+     {
+      "id": "docs-tripwires-unlisted",
+      "severity": "nit",
+      "specClaim": "D12: \"the tool's header and `--help`; `npm run docs:generate`\"; D7 wording change",
+      "problem": "The tool-list generator takes the first line of the first JSDoc block that does not contain '.js' (case-insensitive). That also skips any line mentioning 'image-mapping.json', which is why generate-image-mapping's row starts mid-sentence. The 01-source guard test fails if the new tool's text contains '01-source' anywhere, comments included, unless it is added to ALLOW. No test pins the unresolved verdict NOTE that D7 rewrites, and D11 tests only `refusalReason`.",
+      "evidence": "scripts/generate-tool-inventory.js:58-84; docs/_generated/tools.md:39; tools/__tests__/source-write-guard.test.js:22-80; grep of tools/__tests__ for the NOTE wording → no hits.",
+      "basis": "read",
+      "suggestedFix": "In D12, say the header's first description line must not mention a .js/.json name, and that the tool must be classified in source-write-guard's ALLOW list if its text names 01-source. In D11, add a test that asserts the new NOTE names 'retired'."
+     }
+    ],
+    "checkedAndSound": [
+     "All 4 supersededArtwork keys exactly match the basename of an image that chemistry's 01-source references (indexSourceImageBasenames over 1,192 tracked CNXML). None has a variant that differs only in case or punctuation. The 10 June names to be added later also match exactly, and none collides with another under the fold.",
+     "The reason rule (> 40 chars) passes for all 4 existing superseded entries: their trimmed lengths are 290, 380, 377 and 549.",
+     "Chemistry's mapping and its media/ files match one-to-one today: 717 rows and 717 top-level `_IS` files, with none unmatched in either direction. All 717 are tracked. Every row has the shape {originalImage, outputName, extension} with outputName = originalImage + '_IS' + extension. The file re-serialises byte-identically.",
+     "A one-to-one check run over every book would fail on biology, which has 34 legacy rows with figureId and no originalImage, 0 `_IS` files, and 36 lowercase `_is` files (2 .emf with no row). The e2e fixture matches 1 to 1 but has no 01-source. Limiting the check to chemistry, as the spec does, is right.",
+     "No workflow in .github/workflows/*.yml runs Python; the only grep hit is `pipefail` in deploy.yml. The Tests job runs `npm test` (vitest) and Playwright only.",
+     "The corpus test can run in CI. books/ content is tracked (1,192 01-source CNXML, chemistry media/ and 05-publication), with no LFS (.gitattributes holds only merge=ours). It needs no git history, so a depth-1 clone is fine. vitest's `**/books/**` exclude affects test discovery only, and testTimeout is 30 s.",
+     "D10's prune rule, run over today's tree, would delete exactly the 9 June leftovers (GasBurning ch05, Ex9soln_img ch06, 7 in ch08). It keeps the other 745 as mapped, and finds 0 copies that are referenced but have no row.",
+     "D10's raster skip is necessary: 3 published JPEGs carry the bare rvosmosis name in their metadata. 0 JPEGs carry any `<name>_IS` name.",
+     "The mapping generator's `[^>]*` regex finds every `<image src>` that a quote-aware scan finds: 6,775 of 6,775 tags, with 0 single-quoted, 0 containing a raw '>' and 0 non-ASCII basenames. So an ASCII-only JS fold gives the same result as Python's `_normkey` on every valid key. It is still a second copy of the fold, so it should be pinned with test_sources.py's own cases (the space in Cat Convert, and sp3d vs sp3d_img).",
+     "D12's factual claims hold. N2O5 resolves to its first-edition .eps and only rvosmosis is refused as a production page (sources.py --json, exit 0, porcelain clean). Ques11ans has 0 mapping rows, 0 media/ files and 0 published copies or references, so the config's 'stays mapped' is out of date.",
+     "docs:generate lists every new tools/*.js. docs-check runs on PRs that touch tools/** and fails on any diff under docs/_generated/. The root README has no tools-start marker, so update-readme-sections changes nothing.",
+     "The 'tracked and unmodified' check can be tested against a real git fixture: scripts/__tests__/git-backup.test.mjs:79-99 already runs git init and sets user.email and user.name in a temp dir.",
+     "D7's fallback wording change breaks no existing test. The only refusalReason assertion is the superseded case at figure-run-free.test.js:631.",
+     "The only repo-wide check on top-level tools/*.js files is source-write-guard.test.js. Other tests that call readdirSync scan books/ or workflows, not tools/."
+    ],
+    "gitStatusPorcelain": ""
+   },
+   "verify": {
+    "verdicts": [
+     {
+      "id": "blastfurn-in-two-tables",
+      "verdict": "confirmed",
+      "severityAfterCheck": "major",
+      "reasoning": "The spec never names BlastFurn, and its rules cannot all be satisfied for CNX_Chem_19_01_BlastFurn. That figure is both a supersededArtwork key and one of the six [USER] ruled to retire. The rules in conflict are D11's no-shared-key rule (after the fold), run-order step 1 (6 entries), D2's order (superseded is checked first) and step 5 (`REFUSED — retired` for all 6). Every way out breaks a stated rule. (a) Add it to retiredFigures: D11 goes red on the retire PR, and step 5 still sees `REFUSED — superseded`. (b) Leave it out: D9 refuses the name. D9 checks every name before writing anything, so the whole 6-name `--retire` batch is refused. (c) Move it: test_sources.py's ㊷ `_VERIFIED` presence pin goes red, in a suite no CI job runs. I found two things the original finding missed. First, the spec's own fact base assumes the overlap: facts.json says ch19 autoruns keep halting on BlastFurn after the retire, which only happens if it stays superseded. Second, the Ques11ans precedent (8ebdf1a4f) is a figure that is both superseded and retired. Under D11 such a figure can never have a retiredFigures entry, so D10's generator skip (\"a restored file cannot re-add its row\") cannot cover Ques11ans today or BlastFurn after the retire. That leaves one way for a retired figure's row to come back. This is not a blocker: the PR ships empty tables, so the conflict only shows at the retire run, and it fails loudly.",
+      "evidence": "MEASURED: a fold simulation (`_normkey`) over the committed config and the 6 ruled names gives shared key ['CNX_Chem_19_01_BlastFurn']. D2 order, first table hit: ['retired','retired','retired','retired','superseded','retired']. `sources.py --json efnafraedi-2e <6>` today returns `CNX_Chem_19_01_BlastFurn REFUSED superseded`, and the human CLI prints `REFUSED — superseded: The EPS artboard holds TWO blast furnaces…`. READ: spec L30 (D2 order), L37 (D9: 'validates every name before writing anything: the name has a retiredFigures entry'), L39 (D11: 'the three tables share no key'), L65 (step 1, 6 entries), L71 (step 5, 'REFUSED — retired for all 6'); figure-text.config.json:21 (BlastFurn key); test_sources.py:324-326 (`_VERIFIED` includes BlastFurn, checked for presence); register L3036 (㊵: 'retire 6 — … BlastFurn …'); facts.json retire-durability: \"The autorun's 'REFUSED — superseded' halt (207-208) does NOT go away for BlastFurn, so ch19 autoruns keep halting after the retire\"; register L7458 and commit 8ebdf1a4f: 'The figure stays refused in supersededArtwork, so no run re-creates it' (Ques11ans, retired 2026-09-19); scripts/chemistry-autorun-chapter.sh:207-208. INFERRED: the generator re-adding a superseded-and-retired row needs a manual file restore followed by a generator run."
+     },
+     {
+      "id": "reference-check-not-keyed-on-suffix",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The spec never defines what counts as a reference or a published copy, and step 5's 'no file under 03-translated/ or 05-publication/ mentions any of them' is literally false after a correct retire. The re-injected CNXML and re-rendered HTML go back to referencing `<name>.jpg`, as the §C163 precedent shows. All six have a tracked English `<name>.jpg` under 05-publication. JPEG metadata carries basenames. I measured an instance the finding missed: `CNX_Chem_18_07_molecreso2.jpg` (a different figure) is referenced in the same module m68835 and on the same page 18-7. A bare-substring check on `CNX_Chem_18_07_molecreso` therefore can never pass for that figure, which is the strongest case for one predicate with an explicit `_IS` boundary. I downgrade this from major to minor for three reasons. D10's prune is keyed on `DEFAULT_SUFFIX` stems, so the tool cannot delete `<name>.jpg`. The literal reading fails loudly (a red CI or a false alarm), not silently. And D10's own vocabulary ('published copy', 'contains its name' for an `_IS` candidate) plus the precedent ('0 files … mention Ques11ans_img_IS') make the intent recoverable.",
+      "evidence": "MEASURED: `git ls-files -z books/efnafraedi-2e/05-publication/ books/efnafraedi-2e/03-translated/ | xargs -0 grep -laF CNX_Chem_11_04_rvosmosis` returns m68783.cnxml, the 11-4 html, the _IS.svg, and 3 JPEGs (ch04 Drano.jpg, ch04 PhotoChrom.jpg, ch18 ZincHCl.jpg). For each of the six, `git ls-files` lists both `05-publication/mt-preview/chapters/NN/images/media/<name>.jpg` and `<name>_IS.svg`. `grep -aoE 'CNX_Chem_18_07_molecreso[A-Za-z0-9_]*\\.[a-z]+'` on m68835.cnxml and the 18-7 html finds `molecreso2.jpg` and `molecreso_IS.svg` in both. My scan: bare-substring hits per retiree are 2-3, with `_IS`-keyed hits at 2 each (the cnxml and html that must change). READ: `git show 8ebdf1a4f`: the html went from `-…/CNX_Chem_07_04_Ques11ans_img_IS.svg` to `+…/CNX_Chem_07_04_Ques11ans_img.jpg`, and the message says '0 files under 05-publication mention Ques11ans_img_IS'; spec L38 (D10 keyed on DEFAULT_SUFFIX stems), L39 (D11 'no published copy and no reference'), L71 (step 5)."
+     },
+     {
+      "id": "json-path-never-exercised",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The spec overclaims in D6's cost column: 'A CLI path silently missing a table; pinned by a test of the helper.' A test of the helper cannot show that the inline `__main__` `--json` branch calls it. That branch reads the config on its own and is the only path figure-run.js uses. No test anywhere runs the real `sources.py --json`: figure-run-free.test.js fakes the resolve spawn. Step 5 checks the human format (`REFUSED — retired`), not JSON. The risk is latent, not live. If `--json` dropped `retired=`, none of the six would be bought today. The de-hash runs only for records with no artwork and no `artworkRefusal`. The facts' post-retire dry runs show rvosmosis refused as production-page, BlastFurn as superseded and e619 contested, while N2O5, Cl2OClO2 and molecreso classify copied-*. The dropped guard would matter only after some other change, such as a classifier change that makes '(a)'/'(b)' sendable, which is exactly the case D2 is for. A dropped `pins=` would show up as an unexpected `unresolved`.",
+      "evidence": "READ: sources.py:24-25 (`load_config` reads HERE/figure-text.config.json), :314-321 (`main` builds cfg), :324-341 (`--json` reads cfg again inline under `__main__` and passes only `superseded=`), :297 (human `REFUSED — {kind}`); tools/figure-run.js:527 (`argv: [sources.py, '--json', book, ...names]`), :2024-2025 (`hashed = pending.filter((r) => !r.artwork && !r.artworkRefusal && HASH_SUFFIX…)`); tools/__tests__/figure-run-free.test.js:73-83 (fakeSpawn fabricates the `resolve` stage, so the real sources.py is never spawned); spec L34 (D6 and its cost column), L71 (step 5), L82 ('The retires do not run figure-run.js'). MEASURED: `git ls-files experiments/figure-text-translation/ | grep sources` lists only sources.py, test_sources.py and sources.local.json.example. READ (facts.json retire-durability, measured by that agent): post-retire, a plain run or `--force` gives the same classes and nothing billable."
+     },
+     {
+      "id": "corpus-rules-vacuous-on-arrival",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "Both new tables ship empty (D1), so three of D11's six corpus rules check nothing at merge: no shared key, pin validity and retired-state. The other three have data: the exact-basename and substantive-reason rules run over supersededArtwork's 4 entries, and the row/file bijection runs over 717 rows with a floor. The only control D11 names is that floor. The planned mutation pass would leave survivors in the three empty-table rules, and the spec names no fixtures to kill them. I keep it at minor because D5's runtime `pin-invalid` catches most pin malformations (kind, edition, absolute path, `..`, own-output dirs, a missing reason) before any buy. Only the suffix rule and the exact-basename rule are CI-only, and the retired-state rule first meets data in the retire PR's own CI.",
+      "evidence": "READ: spec L29 (D1 'Both ship empty'), L39 (D11's rule list; 'with a floor on the row count so the check cannot pass on an empty file' is the only named control; 'a mutation pass over the guards'), L33 (D5 runtime checks). MEASURED: config supersededArtwork has 4 keys; image-mapping.json has 717 rows, matching 717 top-level `_IS` files in media/."
+     },
+     {
+      "id": "generator-skip-untestable-and-silent",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The finding's facts hold: no test calls `generateImageMapping` (the IO half), no test uses its `_setTestBooksDir`, and the unmatched warning gives figure-matching advice. But 'untestable' is overstated. The skip is untestable only if it sits in the IO half and reads a fixed config path, and nothing in the spec forces that; the spec only commits to testing 'the generator skip'. How a skipped file is reported is not specified. That is a real but small gap against the repo's make-the-refusal-visible rule. If a restored file were committed, D11's retired-state rule would catch it in CI.",
+      "evidence": "MEASURED: tools/__tests__/generate-image-mapping.test.js imports only the pure functions (lines 5-11) and never calls `generateImageMapping(`; no test file imports generate-image-mapping's `_setTestBooksDir` (the server tests call segmentParser's). READ: tools/generate-image-mapping.js:56-59 (seam), :159-210 (IO half, unconditional write at :207-209), :260-268 (unmatched warning: 'no matching <figure> in source … Check the basename matches the original <image src>'); spec L38 (D10 generator skip), L39 (D11 'the generator skip')."
+     },
+     {
+      "id": "pin-suffix-check-after-the-buy",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "Measured: a pin to our own June output passes every D5 runtime check, and D3 itself calls that directory 'our own June output' while `_OWN_OUTPUT_DIRS` does not include it. But the spec accepts this in D5's cost column ('A malformed pin is caught at review time rather than at run time'). The run order also has a pre-spend human gate, 'check that sources.py returns the approved file': the ruled file is the base tree's `.eps`, so an `_IS.pdf` path visibly fails that check. This is a concrete risk created by decision (1). The worst case is about 1.3 ISK and a wrong picture, caught at the post-buy review step before any re-inject.",
+      "evidence": "MEASURED (Python, via sources.page_size / paper_size_name): `<first-edition>/_session_updates_2026-06-28/CNX_Chem_03_01_ibuprofenmass_img_IS.pdf` exists, (432.0, 115.0) pt, paper None; it does not intersect `_OWN_OUTPUT_DIRS` (= {'Translated_IS'}, sources.py:111); it is not absolute and has no `..`. The first-edition tree holds 99 files under `_session_updates_2026-06-28/`, and the base tree has 7 ibuprofenmass files (incl. Source_File .eps 451x126 and .pdf 432x115). READ: spec L31 (D3 'our own June output'), L33 (D5 'checked only in CI' and its cost column), L78-79 (run order 'add its pin; check that sources.py returns the approved file; run its pre-buy lineup')."
+     },
+     {
+      "id": "suffix-rule-literal-is-vacuous",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "Read literally, D11's 'a relative `file` that does not end in `DEFAULT_SUFFIX`' can never fire, because the file string always ends in an extension. D5 states the rule correctly ('a pinned stem'), so this is a wording slip in D11's summary that an implementer reading both would probably catch. Leaving `..` out of the CI list does no harm: D5's runtime refuses `..` as `pin-invalid` before any lookup.",
+      "evidence": "MEASURED: probe on `'_session_updates_2026-06-28/CNX_Chem_03_01_ibuprofenmass_img_IS.pdf'`: file string endswith _IS False, Path(stem) endswith _IS True. READ: spec L33 (D5 'a pinned stem must not end in DEFAULT_SUFFIX'; runtime 'contains ..'), L39 (D11 wording)."
+     },
+     {
+      "id": "configured-edition-unreadable-in-ci",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "At run time, 'configured' means the book's trees in `sources.local.json`. That file is gitignored, untracked and so absent from CI's standard checkout. A CI test reading it either crashes (loud) or skips (vacuous). The only edition list CI can read is `editionPrecedence`. The ambiguity is real but cheap to resolve.",
+      "evidence": "MEASURED: `git ls-files experiments/figure-text-translation/` lists only `sources.local.json.example`; experiments/figure-text-translation/.gitignore:9 = `sources.local.json`; .github/workflows/test.yml uses a plain `actions/checkout`. READ: figure-text.config.json:14 `editionPrecedence: [\"updates-2e\",\"first-edition\"]`; sources.py:95-105 (`load_trees` raises SystemExit when the file is missing); spec L33 vs L39."
+     },
+     {
+      "id": "idempotency-test-vacuous-on-canonical-fixture",
+      "verdict": "refuted",
+      "severityAfterCheck": "none",
+      "reasoning": "The measurements hold, but the central claim does not. The first `--apply` rewrites any mapping into canonical form, so 'a second run changes nothing' is true for every book, not 'for chemistry only'. The spec's byte-identity claim ('the diff is the removed rows only') is explicitly about chemistry, the only book in the run order. What remains is cosmetic and outside the ruling: a first run on biology adds a trailing newline, and on the e2e fixture it re-indents. On a canonical file an always-write tool changes no bytes, so a canonical-fixture test misses no behaviour the spec specifies. 'Write only when a row is removed' changes behaviour beyond the ruling. It would also need care, because `--retire` also deletes `media/<outputName>` even when no row remains.",
+      "evidence": "MEASURED (node: `raw === JSON.stringify(JSON.parse(raw), null, 2) + '\\n'`): efnafraedi-2e true (99000/99000 bytes); liffraedi-2e false (4885 vs 4886, the only difference is the missing trailing newline at byte 4885); __e2e-fixture__ false (130 vs 138, 1-space indent). READ: spec L37 (D9: 'Chemistry's mapping re-serialises byte-identically (measured), so the diff is the removed rows only'; 'A second run changes nothing'); run order L64-76 retires chemistry only."
+     },
+     {
+      "id": "d12-omits-stale-texts",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "Every cited text exists and becomes incomplete or false. The ones made stale by this PR are figure-run.js:1925 (lists two refusal kinds), sources.py's `resolve_detail` docstring (hit shape without `via`, two refusal kinds), README 'Where the translated file goes' (a retired name now maps nothing), and generate-image-mapping.js's header and help. The ones made stale by the retire are sources.py:169, figure-run.js:1438, 1789-1791 and 2417. Three of the retire-time texts were on facts.json's own 'to fix in the ㊵ PR' list. D12 kept only the Ques11ans reason from that list, the evaporated-findings pattern CLAUDE.md's § One source of truth was written against. In mitigation, the docstring and line 1925 sit inside code this PR edits anyway. The retire-time texts have no owner in D12 or the run order. The `_supersededArtwork` 'Matched case-insensitively' imprecision predates this PR.",
+      "evidence": "READ: tools/figure-run.js:1925 '§C140 ⑦ — artwork `sources.py` found and REFUSED (a production page, or known-superseded)'; :1438 '(rvosmosis, N2O5, BlastFurn are measured instances)'; :1789-1791 'on N2O5 … its June `_IS.svg` is still a whole sheet'; :2417 '(N2O5 resolves cleanly)'; sources.py:155 and :161-162 (docstring), :169 '(CNX_Chem_19_01_BlastFurn is one)'; experiments/figure-text-translation/README.md:76-82; tools/generate-image-mapping.js:13-19, printHelp ~:236-241; figure-text.config.json:23 'Matched case-insensitively, like the lookup' vs sources.py:131 (`_normkey` drops non-alphanumerics). facts.json retire-durability: 'Comments that become false when the retire lands, to fix in the ㊵ PR (CLAUDE.md: fix B): tools/figure-run.js:1438 …; tools/figure-run.js:1791-1792 …; sources.py:169 …'. Spec L40 (D12 list)."
+     },
+     {
+      "id": "c40-pointer-half-supported",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "§4 of the cited README supports the first sentence of the ㊵ row's evidence (molecreso and Cl2OClO2 on black panels; N2O5 a letter-size sheet with its file name as a caption). It does not support the 'holes are not holes' alias names. So D12's 'cites a README section that does not support it' is half true, and replacing the pointer outright would leave the first sentence without a source.",
+      "evidence": "READ: evidence/2026-09-29-c27-c14/README.md:147-153 (§4 text). MEASURED: `grep -anE 'catalyst|ICETable|OSX_Chem_Ch13|holes? are not'` on that README finds nothing; across evidence/, only 2026-10-01-c40-design/facts.json names `OSX_Chem_Ch13_Mod3_catalyst` / `Figure 14_03_ICETable2_img`. Register L3036 cites only §4."
+     },
+     {
+      "id": "paper-sizes-wording",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "`_paperSizes` does not name N2O5. Its 'exactly 2 of 910 … both Letter' census includes N2O5 only implicitly, and 'sources.py refuses it' is imprecise, because the resolver skips a paper-size candidate and refuses only when every candidate is one. The explicit N2O5 mentions are in sources.py:30 and test_sources.py:191-192. Today N2O5 resolves to its .eps and only rvosmosis is refused, as the finding says.",
+      "evidence": "MEASURED: `sources.py --json efnafraedi-2e …` returns `CNX_Chem_18_07_N2O5 HIT first-edition …N2O5.eps` and `CNX_Chem_11_04_rvosmosis REFUSED production-page first-edition [(…rvosmosis.pdf, [612.0, 792.0], 'Letter')]`. READ: figure-text.config.json:32; sources.py:30, :228-246; test_sources.py:191-192."
+     },
+     {
+      "id": "floor-and-reason-length-unstated",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The spec gives no floor value and no meaning for 'substantive'. Both failure modes it allows are loud CI reds, and a floor at exactly 717 is a speculative choice, since the existing corpus pin already uses `> 600`. The gap is still real: the retire takes the count from 717 to 711. A citation-only reason (25 chars) would fail a 40-character rule like the existing Python one.",
+      "evidence": "MEASURED: 717 rows and 717 top-level `_IS` files in books/efnafraedi-2e/media/; `len('§C140 ㊵ [USER] 2026-09-30')` = 25. READ: tools/__tests__/image-basename-map.test.js:79 `toBeGreaterThan(600)`; test_sources.py:317-319 (`len(v.strip()) > 40`); spec L39 (floor with no value), L65 ('with the ruling as the reason')."
+     },
+     {
+      "id": "reference-scan-cost",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "SVGs are not skipped by D10's 'raster and font' exclusion, so a reference scan reads all published SVGs. The cost is about 5 s here, well under vitest's 30 s testTimeout, and no SVG references a retiree `_IS` name. The check is accurate but does not block anything.",
+      "evidence": "MEASURED: tracked 05-publication SVGs: 754 files, 821,423,564 bytes. A one-pass node scan over the 1,328 non-raster tracked files under efnafraedi-2e 03-translated + 05-publication (879,219,546 bytes) took 5,028 ms. SVG files referencing a retiree `_IS` name: 0. READ: vitest.config.js `testTimeout: 30000`; .github/workflows/test.yml uses a full `actions/checkout`."
+     },
+     {
+      "id": "docs-tripwires-unlisted",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "All three points are accurate, but two of them are intended, loud behaviour rather than spec defects. The tool inventory skips any description line containing '.js', '.json' included, which only makes a row start mid-sentence, and docs-check only tests staleness. source-write-guard is designed as a tripwire ('A new one trips this test, forcing a reviewer to classify it'). The real gap is that no test checks the wording of the D7 NOTE: the outcomes test only checks /unresolved/, and D11 lists only `refusalReason`.",
+      "evidence": "READ: scripts/generate-tool-inventory.js:58-84 (`line.toLowerCase().includes('.js')` skip); docs/_generated/tools.md:39 (generate-image-mapping row starts 'translated figure files…'); .github/workflows/docs-check.yml:28-35 (generate, then `git status --porcelain docs/_generated/`); tools/__tests__/source-write-guard.test.js:17-80 (ALLOW set; any top-level tools/*.js containing '01-source' must be classified); tools/lib/figure-outcomes.js:142-148 (NOTE text); tools/__tests__/figure-outcomes.test.js:124-126 (asserts only `/unresolved/`)."
+     }
+    ],
+    "gitStatusPorcelain": ""
+   }
+  },
+  "run-order": {
+   "attack": {
+    "findings": [
+     {
+      "id": "c192-c183-half-delivery",
+      "severity": "major",
+      "specClaim": "Run order step 3: 'Re-inject and re-render the modules it names: all mt-preview; ch11 m68783, ch18 m68835 and m68837, ch19 m68842, ch21 m68854. Expect changes beyond the swap: these chapters predate §C126 #4, so 24 table summaries turn Icelandic and gain data-summary. Compare before and after by value.' Also D9: 'It prints the re-inject and re-render command for every module and track…'",
+      "problem": "02-mt-output already holds §C192's ruled titles (f313fee32, 2026-09-27) and §C183's summaries. The ② whole-book re-inject/re-render that delivers them is development-order step 10, after ㊵ (step 7). Render takes page filenames and every cross-module link slug from the 02-mt-output titles (buildModuleSections), so the prescribed per-module run ships a partial and inconsistent slice of ②:\n- 2 section pages are pruned and renamed (11-4, 19-1), and the slug map is rewritten.\n- 3 in-book links break: 11-0-introduction points to the pruned 11-4 slug; 11-exercises points to 11-2-rafkleyfar, which does not exist (the page is still 11-2-rafleidar.html); 19-0-introduction points to the pruned 19-1 slug.\n- Rollup headings switch to the ruled titles for 5 modules whose own pages keep the old title (11.2, 11.5, 18.3, 18.12, 21.5).\n- Only 6 summaries turn Icelandic, not 24, and they render as 4 Icelandic plus 2 ENGLISH data-summary attributes (11-answer-key and 18-exercises, from modules never re-injected).\nNo corpus test reads in-book links in committed HTML, so the broken links pass silently. They reach readers if chemistry is synced between ㊵ and ② (step 7 reads as if the retires are sync-deliverable), and the partial state is also deployed to prod. Whole-chapter inject is not clean today either: ch19 m68844 FAILS, and ch21 m68852/m68856/m68858 are SKIPPED. On 'compare by value': 4 rollup pages differ only in MathJax ids, so a raw diff reads noise as drift.",
+      "evidence": "Scratch copy from `git archive HEAD` (book without media, plus tools and server/lib). Retire simulated: 6 rows filtered out, 6 media/_IS.svg deleted. Then `node tools/cnxml-inject.js --book efnafraedi-2e --chapter N --module M` and `node tools/cnxml-render.js … --module M` for the 5 modules, all exit 0.\n- Render printed 'Pruned superseded page: chapters/11/11-4-sameiginlegir-eiginleikar.html → chapters/11/11-4-samthynningareiginleikar.html (m68783)' and the same for 19-1-…-hlidarfrumefna → 19-1-…-hlidarmalma-og (m68842).\n- The m68783 inject diff shows `<title>Sameiginlegir eiginleikar` → `Samþynningareiginleikar`. f313fee32 lists 'ch11 m68783:title:auto-1: Sameiginlegir eiginleikar → Samþynningareiginleikar'.\n- Manifest diff: 28 changed, 7 added, 8 removed. That includes answer-key, exercises and summary pages in all 4 chapters, plus slug-map.mt-preview.json.\n- Link check of href=\"/efnafraedi-2e/kafli/NN/<slug>\": committed mt-preview book 0 broken of 209; after the run 3 broken of 40 (ch11/18/19/21).\n- data-summary census: committed 0. After: 11-4 [IS,IS], 11-answer-key [EN], 18-9 [IS], 18-exercises [EN], 21-3 [IS].\n- Per-module summaries in 03-translated: m68783 3, m68835 0, m68837 1, m68842 0, m68854 2. The '24' is the chapter totals 7/4/5/8; ch19's 5 tables are all in m68843.\n- Slug source: tools/lib/module-sections.js:218-234 and :273; tools/cnxml-render.js:2630.\n- Register L43 vs L46: ㊵ (step 7) comes before '10. ②'s re-inject batch'. L169-170: ② is 'ONE whole-book mt-preview re-inject and re-render'.\n- Contrast A (per-module inject + whole-chapter render): 0 broken of 40, but 5 renamed pages keep their old <h1>.\n- Contrast C (whole-chapter inject): 'm68844: FAILED — Marker residue'; 'm68852/m68856/m68858: SKIPPED — incomplete injection'; 21-4 and 21-6 keep English data-summary.\n- grep of tools/__tests__ for 'kafli/' finds only unit tests and a catalogue test (read).\n- With MJX-\\d+- normalised, 11-key-equations, 18-key-terms, 21-key-equations and 21-key-terms show 0 changes.",
+      "basis": "measured",
+      "suggestedFix": "Name the interaction in step 3, and in what D9 prints, and pick an order.\n- Preferred: run the retires' re-inject/re-render, prune and corpus test inside ②'s whole-book re-inject/re-render, so the retire diff is swap-only.\n- If ㊵ must precede ②: make D9 print whole-chapter render commands (never --module), regenerate index.json, keep the chemistry sync held until ② lands, and replace '24 table summaries…' with the measured expectation: 6 summaries, 2 page renames, rollup headings changing, and MathJax-id churn that is noise."
+     },
+     {
+      "id": "blastfurn-in-two-tables",
+      "severity": "major",
+      "specClaim": "Step 1 'Add the 6 retiredFigures entries'; D9 '--retire … validates … the name has a retiredFigures entry'; D11 'the three tables share no key'; D2 'Resolver order: supersededArtwork → retiredFigures → pin'; step 5 'sources.py prints REFUSED — retired for all 6'.",
+      "problem": "BlastFurn is one of the 6 retirees and is already a supersededArtwork key. Following step 1 and D9 puts it in both tables, which turns D11's disjointness test red in CI. Removing it from supersededArtwork instead turns test_sources.py's ㊷ _VERIFIED check red. That is a hand-run suite no CI job runs: the same unseen red that ㊷ closed after 12 days. Either way step 5 is false for BlastFurn: under D2's order it prints 'REFUSED — superseded' while it stays in supersededArtwork. The spec never says which table owns BlastFurn after the retire.",
+      "evidence": "experiments/figure-text-translation/figure-text.config.json:21 holds the \"CNX_Chem_19_01_BlastFurn\" key under supersededArtwork. test_sources.py:324-326 has `_VERIFIED = [..., 'CNX_Chem_19_01_BlastFurn', ...]` and the check 'every verified entry is present'. Register L13 reads 'Retire 6: rvosmosis, N2O5, molecreso, Cl2OClO2, BlastFurn, RadioDecay-e619'. Precedent: Ques11ans was retired (8ebdf1a4f) and stays only in supersededArtwork; D12 rewrites that entry's reason.",
+      "basis": "read",
+      "suggestedFix": "Follow the Ques11ans precedent:\n- D9 accepts a name present in supersededArtwork OR retiredFigures.\n- Step 1 adds the 5 names not already in supersededArtwork.\n- Step 5 expects 'REFUSED — superseded' for BlastFurn.\n- D11's 'every retired figure has no row/media/copy/reference' also covers BlastFurn by name."
+     },
+     {
+      "id": "backup-files-block-prune",
+      "severity": "major",
+      "specClaim": "D10: '--prune … deletes one only if … no other file under 03-translated/ or 05-publication/, in any track, contains its name … its first run also clears the 9 June leftovers'. Step 5: 'no file under 03-translated/ or 05-publication/ mentions any of them'. D11: 'every retired figure has no … reference'.",
+      "problem": "Inject's safeWrite leaves a gitignored <module>.cnxml.backup.<ts> beside every output in 03-translated, and nothing prunes them there; render sweeps backups only in 05-publication, which is clean today. A disk-walking reference scan is the natural reading, since candidates are 'found by walking the tree' and only the candidate must be 'tracked'. Such a scan finds the names in backups for all 15 targets (6 retirees and 9 orphans). The consequences:\n- The prune keeps every retired copy, which vefur's mt-preview mirror then keeps deploying.\n- It keeps none of the 9 June leftovers' deletions either, so 'its first run clears the 9 June leftovers' is false.\n- Step 5 can never pass on this box.\n- D11's test passes in CI (a clean clone has no backups) and fails locally.\nStep 3's own re-inject mints a fresh backup holding the old reference just before step 4 runs.",
+      "evidence": "- `git status --porcelain --ignored books/efnafraedi-2e/03-translated | wc -l` → 12491, all '!! …cnxml.backup.…'. .gitignore:20 has '*.backup.*'. 05-publication holds 0 backup files.\n- On-disk scan of 03-translated and 05-publication, tracked/untracked references per name: rvosmosis 2/12, N2O5 2/11, molecreso 2/11, Cl2OClO2 2/11, BlastFurn 2/18, RadioDecay-e619 2/12; GasBurning 0/1; Ex9soln_img 0/2; each of the 7 ch08 orphans 0/2 (e.g. '…/ch08/m68744.cnxml.backup.2026-06-26T18-52-29').\n- tools/lib/safeWrite.js:22-27 copies the old file to `${filePath}.backup.${timestamp}`.\n- The scratch re-inject created m68783.cnxml.backup.2026-10-01T16-24-47, and `grep -ac rvosmosis_IS.svg` on it → 1.\n- isPublicationArtifact (tools/cnxml-render.js:91-93) is applied only to 05-publication.",
+      "basis": "measured",
+      "suggestedFix": "In D9's module listing, D10, step 5 and D11, say 'among tracked files (git ls-files / git grep)', or 'excluding render's isPublicationArtifact set (.backup., .pre-fix-, .bak, .tmp.<hex>)'."
+     },
+     {
+      "id": "index-json-dangles",
+      "severity": "minor",
+      "specClaim": "Step 3 (re-render) followed by step 5: '… the corpus test passes'; the buys' '… re-inject and re-render'.",
+      "problem": "generate-index takes sectionSlug from the rendered filenames. Any render that renames a page therefore leaves 05-publication/mt-preview/index.json pointing at a pruned page, and the run order never regenerates it.\n- After the retire run, 32 of 763 index entries dangle. vefur's subject-index page reads this file, and tools/__tests__/index-slug-resolves-corpus.test.js goes red on the retire PR.\n- The buys' re-renders of ch13 and ch14 add 6 more.",
+      "evidence": "- Committed index: 'entries 763 dangling 0'.\n- After the per-module retire run: 'dangling 32 {\"11-4-sameiginlegir-eiginleikar\":17,\"19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna\":15}'.\n- After `node tools/generate-index.js --book efnafraedi-2e --track mt-preview` (exit 0): 'dangling 0'.\n- tools/generate-index.js:243-263 (loadPublicationPages reads chapters/*/*.html names).\n- Committed index entries citing 13-3-jafnvaegisbreytingar…: 1; citing 14-3-afstaedur…: 5.\n- vefur src/routes/[bookSlug]/atridiordasskra/+page.svelte reads index.json.",
+      "basis": "measured",
+      "suggestedFix": "After every re-render in step 3 and in the buys, add 'node tools/generate-index.js --book efnafraedi-2e --track mt-preview'. Alternatively fold it into ②, which already lists regenerating index.json."
+     },
+     {
+      "id": "buys-reinject-rerender",
+      "severity": "minor",
+      "specClaim": "Buys: '… run figure-run.js --figure <name> without --stale; review; re-inject and re-render. For ibuprofen, re-render both ch03 tracks: vefur serves the faithful copy over mt-preview's.'",
+      "problem": "Re-inject is unnecessary and partly impossible:\n- A recompose keeps the 'mapped' row and its outputName, so the 03-translated <image> line does not change.\n- A faithful re-inject cannot run on dev: 03-faithful-translation holds only a README.\nThe re-render is needed, but per module it renames pages here too. m68799 (catalyst) and m68805 (ICETable2) have §C192 ruled titles in 02-mt-output. Their pages move to new slugs while the <h1> keeps the old title, and the chapters' intro pages link to the pruned slugs.\nIbuprofen's both-track re-render is clean apart from an ENGLISH data-summary on 3-1's table in both tracks, plus the rollups-complete timestamp.\n(The spec's 'Found outside ㊵' flags a plan for omitting a re-inject where one was needed; this line prescribes one where none is.)",
+      "evidence": "- Scratch: `cnxml-inject.js --chapter 3 --module m68700 --source-dir 03-faithful-translation` → exit 1, 'Translation not found for m68700 in 03-faithful-translation'.\n- `git ls-files books/efnafraedi-2e/03-faithful-translation` → README.md only.\n- `cnxml-render.js --chapter 13 --module m68799` → 'Pruned superseded page: chapters/13/13-3-jafnvaegisbreytingar-logmal-le-chteliers.html → …/13-3-tilfaersla-jafnvaegis-logmal-le-chteliers.html'. The new page's <title> is '13.3 Jafnvægisbreytingar: Lögmál Le Châteliers'.\n- m68805: 14-3-afstaedur… → 14-3-hlutfallslegur…, with h1 'Afstæður styrkur sýra og basa'.\n- Link check over ch13/14: 0 broken committed, 2 broken after (13-0 and 14-0 introductions).\n- ch03 whole-chapter render of both tracks: the only value change is '<table id=\"fs-idp17650992\" class=\"unnumbered\" data-summary=\"A table is shown that is made up of four columns…\"', plus faithful/rollups-complete. No renames.\n- tools/figure-run.js:1602 mints only for 'mintable'.",
+      "basis": "measured",
+      "suggestedFix": "Change the line to 're-render (no re-inject; the row is unchanged)'. Schedule the ch13/ch14 re-renders after ②, or render whole chapters and regenerate the index. Note that ch03 3-1 carries an English data-summary until ② re-injects it."
+     },
+     {
+      "id": "prod-window-mechanism",
+      "severity": "minor",
+      "specClaim": "Step 6: 'PR, merge, and deploy promptly. The prod backup cron does not stage media/, so prod keeps the old rows and files until the deploy; a prod inject or render of those chapters before it would write the old references back.'",
+      "problem": "The stated mechanism is wrong. Prod's tree already holds the old reference, so a pre-deploy prod inject makes no diff on that line, and the rebase keeps main's .jpg. The real hazards are these:\n- (1) A 'Vista + Birta' on a ch11/18/19/21 module creates a FAITHFUL track, which none of these chapters has, from prod's old mapping. Its new files survive deploy.sh's rebase, re-reference the retired SVG, win in vefur's overlay, and turn D11's corpus test red on main after the cron push.\n- (2) The retire commit renames pages and rewrites slug-map.mt-preview.json. A prod render of those chapters in the window writes the same paths with different bytes (the img line, MathJax ids). That is an add/add or modify/modify conflict that merge=ours does not cover, so `git pull --rebase` stops under set -e and the stash is never popped.\nEach of the 4 buy commits re-renders ch03, ch13 or ch14 and opens the same window, which step 6 does not mention.",
+      "evidence": "- scripts/deploy.sh:58-73: `git stash push`, then `git pull --rebase origin main` under `set -euo pipefail`; the pop is only at :76-85.\n- .gitattributes:17, 18 and 23: merge=ours covers only translation-errors.json, residue-report.*.json and *-review-status.json.\n- scripts/git-backup.sh:162-178 stage books/*/03-translated/ and 05-publication/ whole.\n- server/routes/segment-editor.js:1697-1703: apply-and-render runs runPipeline with track 'faithful'.\n- Measured: the retire run deletes and adds the 11-4 and 19-1 pages and rewrites the slug map.\n- The register's ② block says 'Deploy prod after the batch and before anyone uses Publish MT preview or Vista + Birta'.",
+      "basis": "inferred",
+      "suggestedFix": "Reword step 6:\n- Between merge and deploy, no 'Vista + Birta' or 'Publish MT preview' of the touched chapters: ch11/18/19/21 for the retires, ch03/13/14 for each buy.\n- After the first cron tick following the deploy, re-run the '0 files under 05-publication mention <b>_IS' census.\n- Confirm `git ls-files 'books/efnafraedi-2e/03-translated/faithful/ch1[189]/*' 'books/efnafraedi-2e/03-translated/faithful/ch21/*'` is empty."
+     },
+     {
+      "id": "pin-armed-after-failed-buy",
+      "severity": "nit",
+      "specClaim": "Buys: 'For each figure: add its pin; … run figure-run.js --figure <name> without --stale', with settled decision (1): each pin lands in the commit that runs its buy.",
+      "problem": "From 'add its pin' until the commit, the pin is live for any plain run of that chapter on the box. figure-run has no spend confirmation, and the autorun runs it live without --stale. A buy that ends failed-mt writes no sidecar, so a pin left in the tree afterwards (or swept into an unrelated commit) arms a buy with no lineup. Preventing exactly that is the purpose of decision (1). Conversely, a buy that wrote a sidecar must keep its pin, because the recompose resolves artwork through it.",
+      "evidence": "- tools/figure-run.js:1985: without --stale every record is selected.\n- tools/figure-run.js:1535: the sidecar is written at STEP 7, before verify and compose.\n- failed-mt reason text: 'NOTHING was persisted and no sidecar was minted'.\n- scripts/chemistry-autorun-chapter.sh:198 runs `node tools/figure-run.js --book \"$BOOK\" --chapter \"$CH\"` live.\n- figure-run's KNOWN_FLAGS has no budget or confirmation flag.",
+      "basis": "read",
+      "suggestedFix": "Add one line: keep the pin only if the buy wrote a sidecar; otherwise revert it before anything else runs."
+     },
+     {
+      "id": "sync-scope-gaps",
+      "severity": "nit",
+      "specClaim": "Step 7: 'Readers see it only after the chemistry sync, which [USER] holds. The sync must name efnafraedi-2e…'",
+      "problem": "Two gaps:\n- vefur's sync reads efni's working tree at ../namsbokasafn-efni, not a git ref, so efni must be on a clean, current main when it runs.\n- /downloads/efnafraedi-2e/*.pdf sit outside both deploy rsyncs' --delete. PDF readers keep the retired and pre-recompose June figures until the PDFs are regenerated by hand.",
+      "evidence": "vefur scripts/sync-content.js:66: `DEFAULT_SOURCE = resolve(projectRoot, '..', 'namsbokasafn-efni')`. facts.json vefur-sync: downloads/ is excluded from both deploy rsyncs and is refreshed only by a separate manual rsync (deployment.md:89-105, deploy-excludes.js:63-65).",
+      "basis": "read",
+      "suggestedFix": "Add to step 7: 'with efni on a clean, current main', and 'PDF downloads keep the June figures until regenerated'."
+     }
+    ],
+    "checkedAndSound": [
+     "D9 'the diff is the removed rows only': simulated JSON.stringify(kept, null, 2) + '\\n'. diff → 30 lines removed, 0 added, exactly the 6 originalImage values.",
+     "The re-inject's rewrite of translation-errors.json and residue-report.mt-preview.json is harmless: the diff shows only the generated/generatedAt timestamps, and both files are merge=ours (.gitattributes:17-18), so they do not conflict at deploy.",
+     "Inject and render touch no status files, TM, sidecars or faithful track: the full manifest diff of the per-module run has nothing under chapters/, tm/, figure-text/ or either faithful tree; the only extras are 5 gitignored .backup files.",
+     "Step 3's module list is complete: the on-disk reference scan finds tracked references to the 6 retirees only in m68783, m68835 (N2O5 and molecreso), m68837, m68842 and m68854 and their section pages.",
+     "figure-run-free.test.js ch21 tests survive removal of the e619 row and file. I re-ran their fakeSpawn and assertions against scratch copies: all 11 checks PASS in both states. Control: stillMapped flips from 'media/CNX_Chem_21_03_RadioDecay-e619_IS.svg (mapping row present)' to null and summarise stops warning, and no assertion reads either.",
+     "vefur claims hold:\n- mt-preview is mirrored with rsync '-av --delete --delete-excluded' (sync-content.js:311).\n- The faithful overlay is a cpSync with no deletion, and runs only when not a dry run (:326).\n- rmSync + cpSync (:541-547) is syncBookFallback, used only when rsync is absent (:704, :726).\n- PUBLISHED_BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi'] (published-books.js:31).",
+     "`figure-run.js --figure <name>` without --stale buys a sidecar-less 'mapped' figure that classifies translated:\n- All records are selected (:1985); skipped-unbought fires only under --stale (:2190).\n- The paid step writes the sidecar (:1535), publish overwrites media/<outputName>, and there is no mint (:1602 is 'mintable' only).\n- Nothing is written under 05-publication; dry run skips processFigureLive (:2203).",
+     "Ibuprofen 're-render both ch03 tracks' is correct and sufficient. Scratch whole-chapter renders of both tracks exit 0 with no renames, and copyChapterImages (cnxml-render.js:4795) re-copies the referenced _IS.svg from media/. The faithful intro's 3 'broken' links are identical in the committed tree (overlay on mt-preview; control).",
+     "The renames the run order causes need no new vefur redirect rows. vefur's July-synced static/content already holds the ruled slugs: 11-2-rafkleyfar, 11-4-samthynningareiginleikar, 11-5-svif, 13-3-tilfaersla-jafnvaegis-…, 14-3-hlutfallslegur-…, 18-3-uppbygging-…-halfmalma, 18-12-…-edalgastegunda, 19-1-…-hlidarmalma-og and 21-5-notkun-geislasamsaeta. The renames move efni toward the deployed slugs.",
+     "Step 2 before step 3 is fail-safe. Pages keep working on the still-present published copy. A render before the re-inject only warns 'Referenced image not found in source' (cnxml-render.js:2709) and keeps the old copy, and the prune keeps any referenced file.",
+     "Step 6 'the prod backup cron does not stage media/': scripts/git-backup.sh:162-178 PATHSPECS has no books/*/media/ entry.",
+     "Containment of my probes: every run used a git-archive copy in scratch. find -newer over the real repo's books, pipeline-output, tools, experiments and server/lib found 0 files, against a control of 88 scratch files; vefur porcelain is 0 lines."
+    ],
+    "gitStatusPorcelain": ""
+   },
+   "verify": {
+    "verdicts": [
+     {
+      "id": "c192-c183-half-delivery",
+      "verdict": "confirmed",
+      "severityAfterCheck": "major",
+      "reasoning": "Step 3 and D9 prescribe a per-module re-inject and re-render. buildModuleSections takes each page's slug from the IS title in 02-mt-output (module-sections.js:218-234, 265, 273), so any render of ch11 or ch19 moves the page to its §C192 ruled slug, with or without a re-inject. f313fee32 already holds the ruled titles for m68783 and m68842. The run therefore lands a partial copy of ② on main, and on prod at step 6:\n- 2 renamed pages;\n- 3 broken in-book links, which no test reads;\n- rollup headings using ruled titles for pages that keep their old ones;\n- index.json going stale (see index-json-dangles).\nThe spec's '24' is the critic's whole-chapter count (W2: 7/4/5/8) applied to a per-module run; the measured figure is 6. The slug map is not swap-only either: the committed map already held the REVERSE entries for 11-4 (recorded 2026-09-20) and 19-1 (2026-09-21), and the run flips them.\nControl: the slug-map-corpus predicate still passes on the after-tree (each 'to' exists and its moduleId matches), while the index predicate fails, so the instruments tell the two apart.\nMitigations: the sync is held, and the register puts ② 'BEFORE THE SYNC', so readers see this only if that order is broken. The run order is still wrong in its stated expectation and cannot land cleanly. No clean retire-only path exists before ②: whole-chapter inject is red today.",
+      "evidence": "MEASURED in scratch.\n- Setup: `git archive HEAD` of tools/, server/lib, package.json and the chemistry book, without binaries; images/ dirs deleted. 6 mapping rows filtered (717→711; the mapping re-serialises byte-identically). Then `cnxml-inject.js` and `cnxml-render.js --book efnafraedi-2e --chapter N --module M` for the 5 modules, all exit 0.\n- Render printed 'Pruned superseded page: chapters/11/11-4-sameiginlegir-eiginleikar.html → chapters/11/11-4-samthynningareiginleikar.html (m68783)', and the same for 19-1 …hlidarfrumefna → …hlidarmalma-og (m68842).\n- Inject diff for m68783: `<title>Sameiginlegir eiginleikar` → `Samþynningareiginleikar`; for m68842, hliðarfrumefna → hliðarmálma.\n- Manifest: 20 changed (19 HTML plus slug-map.mt-preview.json), 2 added, 2 removed. This is lower than the reviewer's 28/7/8 only because my scratch had no images/ dirs.\n- Links (href=/efnafraedi-2e/kafli/NN/slug): 0/209 broken before, 3/209 after: 11-0-introduction→11-4-sameiginlegir-eiginleikar, 11-exercises→11-2-rafkleyfar (the page is still 11-2-rafleidar.html), 19-0-introduction→19-1-…hlidarfrumefna.\n- data-summary: 0 before, 6 after: 11-4 IS×2, 18-9 IS, 21-3 IS, 11-answer-key EN, 18-exercises EN. Summaries translated per module: m68783 3, m68835 0, m68837 1, m68842 0, m68854 2.\n- Rollup <h2> headings changed for 11.2, 11.4, 11.5, 18.3, 18.12, 19.1 and 21.5, while 11-2-rafleidar.html keeps <h1>Rafleiðar</h1>.\n- 11-key-equations, 18-key-terms, 21-key-equations and 21-key-terms differ only in MathJax ids: raw 186/190/70/198 lines, 0 after normalising MJX ids.\n- Whole-chapter inject: ch19 exit 1, 'm68844: FAILED — Marker residue'; ch21 exit 1, 'm68852/m68856/m68858: SKIPPED — incomplete injection'.\n- Tests: cnxml-link-resolution.test.js uses fixtures only, and no test reads /kafli/ links in committed HTML (git grep).\n- Register L170: ② is 'ONE whole-book mt-preview re-inject and re-render'."
+     },
+     {
+      "id": "blastfurn-in-two-tables",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The spec contradicts itself for 1 of the 6 retirees:\n- Step 1 adds all 6 to retiredFigures (register L13 lists BlastFurn).\n- D9 requires a retiredFigures entry.\n- D11 requires that the three tables share no key.\n- D2 checks supersededArtwork first, so BlastFurn prints 'REFUSED — superseded', which contradicts step 5.\n- The spec never mentions BlastFurn.\nDowngraded from major: almost every path is loud (D9 refuses, or D11 goes red in CI) and nothing is damaged. The exception is removing BlastFurn from supersededArtwork, which turns the hand-run test_sources.py red where no CI sees it, the ㊷ failure class.\nThe reviewer's fix (the Ques11ans precedent) is right but underspecified. Under it, BlastFurn is never a retiredFigures key, so D11's 'every retired figure has no row/media/copy/reference' check covers it only if the test also iterates an explicit list. 'By name' needs saying how.",
+      "evidence": "READ.\n- figure-text.config.json:21 has the key \"CNX_Chem_19_01_BlastFurn\" under supersededArtwork.\n- test_sources.py:324-326: `_VERIFIED = ['CNX_Chem_07_02_Morse', 'CNX_Chem_07_04_Ques11ans_img', 'CNX_Chem_19_01_BlastFurn', 'CNX_Chem_19_03_Pattern_img']`, then check('every verified entry is present', …).\n- sources.py:172-176 refuses superseded before any lookup; :297 prints `REFUSED — {refused}: {reason}`.\n- Spec lines 30 (D2), 37 (D9), 39 (D11) and 65/71 (steps 1 and 5); grep of the spec for BlastFurn finds nothing."
+     },
+     {
+      "id": "backup-files-block-prune",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "D10 finds candidates 'by walking the tree' and requires that 'no other file under 03-translated/ or 05-publication/ … contains its name'. That admits a disk-walking reference scan. Under that reading:\n- all 15 targets are kept;\n- 'its first run also clears the 9 June leftovers' is false;\n- step 5 cannot pass on this box;\n- a D11 test that walks the disk fails locally and passes in CI.\nThe step-3 re-inject itself mints a fresh backup that still holds the old reference, so the disk-walk reading fails for the retirees even on a clean clone.\nDowngraded from major: the result is fail-closed (files are kept and listed with their reasons), and D11's CI test on a clean clone would flag the surviving published copies of retirees. A one-line clarification fixes it: tracked files only, or exclude render's isPublicationArtifact set.",
+      "evidence": "MEASURED.\n- On-disk find: 12491 '*.backup.*' files under books/efnafraedi-2e/03-translated, 0 of them tracked; 0 under 05-publication.\n- .gitignore:20 has `*.backup.*`. safeWrite.js:22-27 copies the old file to `${filePath}.backup.${timestamp}`. Inject has no backup prune (grep). isPublicationArtifact (cnxml-render.js:91-93) is used only by the 05-publication sweep (:3920-3935).\n- Disk scan of 15380 files (raster and font skipped, same-name copies excluded), tracked/untracked references: rvosmosis 2/12, N2O5 2/11, molecreso 2/11, Cl2OClO2 2/11, BlastFurn 2/18, RadioDecay-e619 2/12, GasBurning 0/1, Ex9soln_img 0/2, and each of the 7 ch08 orphans 0/2 (e.g. ch08/m68744.cnxml.backup.2026-06-26T18-52-29). These are identical to the reviewer's.\n- The scratch re-inject created m68783.cnxml.backup.2026-10-01T16-45-35, and `grep -ac rvosmosis_IS.svg` on it → 1."
+     },
+     {
+      "id": "index-json-dangles",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "The run order never regenerates index.json. After the retire run, 32 committed index entries name pruned pages. tools/__tests__/index-slug-resolves-corpus.test.js runs in CI's `npm test` (`vitest run`), so the retire PR would go red. The buys' ch13/ch14 re-renders add 6 more.\nIt is loud (CI red) and the fix is one command, so minor. Measured with the test's own predicate, re-implemented in node, not by running vitest.",
+      "evidence": "MEASURED with the test's predicate: every sectionSlug must name an existing chapters/*/*.html.\n- Committed: 763 entries, 0 dangling.\n- After the per-module retire run: 32 dangling ({\"11-4-sameiginlegir-eiginleikar\":17,\"19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna\":15}).\n- After `node tools/generate-index.js --book efnafraedi-2e --track mt-preview` in scratch (exit 0): 0 dangling; 32 entries changed (sectionTitle, sectionSlug, definition).\n- Committed index entries citing 13-3-jafnvaegisbreytingar…: 1; citing 14-3-afstaedur…: 5.\n- CI: test.yml:33 runs `npm test`; package.json:20 is `vitest run`; vitest.config.js does not exclude tools/__tests__.\n- READ: vefur src/routes/[bookSlug]/atridiordasskra/+page.svelte reads index.json."
+     },
+     {
+      "id": "buys-reinject-rerender",
+      "verdict": "confirmed",
+      "severityAfterCheck": "minor",
+      "reasoning": "All 4 buy targets already have mapping rows ('mapped'), so a recompose keeps the row and its outputName, and the injected <image> line cannot change. The re-inject is unnecessary.\nThe per-module re-render is the harmful part. It renames 13-3 and 14-3 to their §C192 slugs while the <title> and <h1> keep the old titles, and it breaks both chapters' intro links. This is the same root cause as c192-c183-half-delivery.\n'Partly impossible' is weak: the spec asks only to re-RENDER both ch03 tracks, not to re-inject faithful.\nSharpening the reviewer missed: the English data-summary measured on FAITHFUL 3-1 is not cleared by ②, which is an mt-preview-only whole-book re-inject, and vefur serves faithful over mt-preview. The reviewer's 'until ② re-injects it' undersells this. Whether it persists depends on the separate [LEAD] ruling on the faithful overlay.",
+      "evidence": "READ: figure-run.js:375-388 (an existing row returns status 'mapped') and :1602 (mints only for 'mintable'). Inject does not read figure-text sidecars (grep).\nMEASURED in scratch:\n- `cnxml-inject.js --chapter 3 --module m68700 --source-dir 03-faithful-translation` → exit 1, 'Translation not found for m68700 in 03-faithful-translation'. `git ls-files books/efnafraedi-2e/03-faithful-translation` → README.md only.\n- `cnxml-render.js --chapter 13 --module m68799` (no re-inject) → 'Pruned superseded page: chapters/13/13-3-jafnvaegisbreytingar-logmal-le-chteliers.html → chapters/13/13-3-tilfaersla-jafnvaegis-logmal-le-chteliers.html'; the new page's <title> is '13.3 Jafnvægisbreytingar: Lögmál Le Châteliers'.\n- m68805 → 14-3-hlutfallslegur-styrkur-syra-og-basa.html, with <h1>Afstæður styrkur sýra og basa.\n- Links in ch13/14: 0/19 broken before, 2/19 after (13-0 and 14-0 introductions).\n- Per-module ch03 m68700 render of both tracks: the only value change is `<table id=\"fs-idp17650992\" class=\"unnumbered\" data-summary=\"A table is shown that is made up of four columns…` on 3-1 in both tracks. mt-preview rollup diffs are MathJax-only (0 after normalising). No renames."
+     },
+     {
+      "id": "prod-window-mechanism",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "Confirmed in part; the headline overstates. The spec is incomplete, not wrong.\n- For an EXISTING file, prod's pre-deploy inject makes no diff on the image line, and the rebase keeps main's .jpg. So 'write the old references back' is false on that path.\n- For NEW files, old references do come back. A faithful track created by Vista + Birta (runPipeline, track 'faithful') from prod's old mapping is exactly the write-back the spec warns of.\n- For renamed pages, the rebase hits an add/add conflict. deploy.sh exits under set -e with the stash unpopped. This mode is new, and it exists because of the renames in c192-c183-half-delivery.\nThe mitigation is unchanged: deploy promptly, which the register's ② line already states for Publish MT preview and Vista + Birta. The 4 buy commits open the same window and the spec does not mention it.\nNit.",
+      "evidence": "READ: deploy.sh:10 `set -euo pipefail`, :61 `git stash push`, :73 `git pull --rebase origin main`, pop only at :78. .gitattributes:17, 18 and 23 are the only merge=ours rules. git-backup.sh PATHSPECS stage 03-translated/ and 05-publication/ whole, with no media/. segment-editor.js:1697-1703 runs runPipeline with track 'faithful'.\nMEASURED in a scratch toy repo:\n- main's retire commit: title change, image line .jpg, renamed page with .jpg.\n- prod's cron commit: the same title change, image line still _IS, the same renamed page with _IS.\n- prod's push is rejected; `git pull --rebase origin main` exits 1 with 'AA ch11/11-4-new.html'; the CNXML's image line ends as 'img .jpg' (main's)."
+     },
+     {
+      "id": "pin-armed-after-failed-buy",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The code facts hold:\n- Without --stale, every record is selected, and only a figure with a current sidecar is skipped.\n- A failed-mt buy persists nothing.\n- The autorun runs figure-run live.\nSo an uncommitted pin left after a failed-mt arms a buy, with no new lineup, for any later plain run of that chapter. Conversely, a pin must stay once STEP 7 has written a sidecar, or the paid spend is stranded as unresolved.\nThe risk is low: no plain chapter runs are planned, the standing lineup practice applies, and the cost is about 1 ISK. The spec only lacks one line on what to do when a buy fails. Nit.",
+      "evidence": "READ: figure-run.js:1985 (`const selected = args.stale ? … : records`); :1997 (only a current sidecar → 'skipped-current'); :1535 (writeSidecar at STEP 7, before verify and compose); :1488-1492 (failed-mt: 'NOTHING was persisted and no sidecar was minted — the figure stays eligible and the next run re-buys it (~1 ISK)'); :134-142 (KNOWN_FLAGS has no budget or confirm flag). scripts/chemistry-autorun-chapter.sh:198 runs `node tools/figure-run.js --book \"$BOOK\" --chapter \"$CH\"`."
+     },
+     {
+      "id": "sync-scope-gaps",
+      "verdict": "confirmed",
+      "severityAfterCheck": "nit",
+      "reasoning": "The actual defect is that both caveats appear in the spec's OWN fact base (the vefur-sync reader's summary) but not in its step 7 or Known limits:\n- the sync reads efni's working tree, so efni must be on a clean, current main;\n- the /downloads PDFs sit outside --delete.\nThe clean-main precondition is otherwise general sync practice, which the register's ⏹ SYNC PRECONDITION owns. That the PDFs embed the June SVGs is inferred from their dates, not opened. Nit.",
+      "evidence": "READ: vefur scripts/sync-content.js:66, `const DEFAULT_SOURCE = resolve(projectRoot, '..', 'namsbokasafn-efni');`. facts.json readers['vefur-sync'].summary: 'The local sync reads the efni working tree at ../namsbokasafn-efni, which is currently on feat/c140-c40-retire-and-alias' and 'The /downloads PDFs are outside --delete and keep retired figures until regenerated by hand'. Its fact: chemistry PDFs (the book plus 21 chapters) dated 2026-07-01; downloads/ is excluded from both deploy rsyncs (deployment.md:89-105, deploy-excludes.js:63-65). Spec lines 75-76 and 84-92 omit both caveats."
+     }
+    ],
+    "gitStatusPorcelain": ""
+   }
+  }
+ }
+}

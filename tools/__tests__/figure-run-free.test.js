@@ -633,6 +633,59 @@ describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () =>
     );
   });
 
+  it.each([
+    ['retired', /retired by ruling.*the ruling text/],
+    ['pin-conflict', /artwork pin no longer holds.*the ruling text/],
+    ['pin-missing', /pinned artwork file is not there.*the ruling text/],
+    ['pin-invalid', /artwork pin is malformed.*the ruling text/],
+  ])('describes a %s refusal by its reason (§C140 ㊵)', (refused, pattern) => {
+    expect(refusalReason({ refused, reason: 'the ruling text' })).toMatch(pattern);
+  });
+
+  it('keeps the reason for a refusal kind it does not know (§C140 ㊵)', () => {
+    expect(refusalReason({ refused: 'some-new-kind', reason: 'why it was refused' })).toBe(
+      'REFUSED, not missing: some-new-kind — why it was refused'
+    );
+  });
+
+  // R6 / FR-M7: a pin examines ONE file, so "the only artwork in <edition>" is false for it. sources.py
+  // marks a pinned production page with `via`, as it marks a pinned hit, and its reason says so.
+  it('names a PINNED production page by the resolver’s own reason (§C140 ㊵)', () => {
+    const pinned = {
+      path: null,
+      refused: 'production-page',
+      edition: 'updates-2e',
+      via: 'alias',
+      candidates: [{ path: '/fake/artwork/Letter.pdf', page: [612, 792], paper: 'Letter' }],
+      reason:
+        "the pinned file in 'updates-2e' is a Letter-size page — a production sheet, not a figure",
+    };
+    expect(refusalReason(pinned)).toBe(
+      "REFUSED, not missing: the pinned file in 'updates-2e' is a Letter-size page — a production " +
+        'sheet, not a figure — /fake/artwork/Letter.pdf (612×792 pt, Letter). Nothing is bought or composed.'
+    );
+  });
+
+  it('CONTROL: an unpinned production page keeps today’s sentence, though it carries a reason too', () => {
+    expect(refusalReason(PAGE)).toBe(
+      'REFUSED, not missing: the only artwork in first-edition is a production page, not a figure — ' +
+        '/fake/artwork/sheet.pdf (612×792 pt, Letter). Nothing is bought or composed.'
+    );
+  });
+
+  it('treats a pinned hit (with `via`) exactly like any other hit (§C140 ㊵)', async () => {
+    const outcomes = async (extra) => {
+      const spawn = fakeSpawn({
+        resolve: (n) => ({ path: `/fake/artwork/${n}.pdf`, edition: 'first-edition', ...extra }),
+      });
+      const result = await runFigures(CH04, { spawn, ...PRISTINE });
+      return result.figures.map((f) => [f.basename, f.outcome]);
+    };
+    const plain = await outcomes({});
+    expect(plain.length).toBeGreaterThan(0);
+    expect(await outcomes({ via: 'override' })).toEqual(plain);
+  });
+
   // ── A live translated copy that is a whole paper-size SHEET is named whatever the outcome ──
   // rxn2 has a real image-mapping row; LeadIodide has neither a row nor an `_IS.svg`. The media
   // tree is injected, so no real copy is read in these tests.

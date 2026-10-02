@@ -1651,22 +1651,39 @@ function processFigureLive(
 /**
  * §C140 ⑦ — the operator-facing reason for artwork `sources.py` REFUSED. A refusal is not a hole:
  * the delivery has a file, and the run declined it.
- * @param {{refused: string, reason?: string, edition?: string, candidates?: Array<{path:string,page:number[],paper:string}>}} refusal
+ * @param {{refused: string, reason?: string, edition?: string, via?: string, candidates?: Array<{path:string,page:number[],paper:string}>}} refusal
  */
 export function refusalReason(refusal) {
   if (refusal.refused === 'production-page') {
     const found = (refusal.candidates || [])
       .map((c) => `${c.path} (${c.page[0]}×${c.page[1]} pt, ${c.paper})`)
       .join('; ');
-    return (
-      `REFUSED, not missing: the only artwork in ${refusal.edition} is a production page, not a ` +
-      `figure — ${found}. Nothing is bought or composed.`
-    );
+    // §C140 ㊵ — a PINNED file (sources.py sets `via`, as on a pinned hit) is ONE file the pin chose,
+    // so "the only artwork in <edition>" would be false: print the resolver's own reason for it.
+    const what =
+      refusal.via && refusal.reason
+        ? refusal.reason
+        : `the only artwork in ${refusal.edition} is a production page, not a figure`;
+    return `REFUSED, not missing: ${what} — ${found}. Nothing is bought or composed.`;
   }
   if (refusal.refused === 'superseded') {
     return `REFUSED, not missing: known-superseded artwork — ${refusal.reason}`;
   }
-  return `REFUSED, not missing: ${refusal.refused}`;
+  // §C140 ㊵ — the four kinds the retired record and the artwork pins add.
+  if (refusal.refused === 'retired') {
+    return `REFUSED, not missing: retired by ruling, so no translated copy is made again — ${refusal.reason}`;
+  }
+  if (refusal.refused === 'pin-conflict') {
+    return `REFUSED, not missing: its artwork pin no longer holds — ${refusal.reason}`;
+  }
+  if (refusal.refused === 'pin-missing') {
+    return `REFUSED, not missing: its pinned artwork file is not there, and a pin never falls back — ${refusal.reason}`;
+  }
+  if (refusal.refused === 'pin-invalid') {
+    return `REFUSED, not missing: its artwork pin is malformed — ${refusal.reason}`;
+  }
+  // An unknown kind still carries its reason: the operator acts on the reason, not the label.
+  return `REFUSED, not missing: ${refusal.refused}${refusal.reason ? ` — ${refusal.reason}` : ''}`;
 }
 
 /**
@@ -1922,8 +1939,9 @@ export async function runFigures(args, deps = {}) {
     // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
     // "we refused to guess", which is a different fact and gets its own report line.
     artworkContest: null,
-    // §C140 ⑦ — artwork `sources.py` found and REFUSED (a production page, or known-superseded),
-    // with its reason. Like a contest it is `unresolved` but is not a hole.
+    // §C140 ⑦/㊵ — artwork `sources.py` found and REFUSED (a production page, known-superseded,
+    // retired, or an artwork pin that does not hold), with its reason. Like a contest it is
+    // `unresolved` but is not a hole.
     artworkRefusal: null,
     pageUnknown: false,
     stillMapped: null,
