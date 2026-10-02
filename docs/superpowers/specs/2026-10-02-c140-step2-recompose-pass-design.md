@@ -78,7 +78,8 @@ blocks (PerTable2: *Aðalsmaður*, …). An editor could then approve edits that
 record stays in git at its buy commit, which the reason string names.
 
 **D2. PerTable2: restore the June raster under `keptCopies`** (recommended). `d20952748` is the file live today
-(sha256 matched), it embeds **no font** (so ㉗ is not touched), and the [USER] ruling of 2026-09-26 (2: the re-buy
+(sha256 matched), it embeds **no font** (so ㉗ is not touched; the earlier `9269fcda8` version draws ENGLISH labels
+and embeds Liberation, so it is not a candidate), and the [USER] ruling of 2026-09-26 (2: the re-buy
 option is given up) argues against the alternative: a writing-mode splitter in `readlayer._continues`, which moves
 the bought block keys, then a ~1.5–3 ISK re-buy. **Ordering:** guard and restore before the pass and before step 3's
 re-render; otherwise the pass overwrites `media/` through `publishFigureSvg`'s unconditional copy, or the sync ships
