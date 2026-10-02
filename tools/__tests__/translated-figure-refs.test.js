@@ -263,6 +263,14 @@ describe('readMappingOrRefuse', () => {
     expect(() => readMappingOrRefuse(tmpFile('{}'))).toThrow(/not an array of objects/);
     expect(() => readMappingOrRefuse(tmpFile('[1]'))).toThrow(/not an array of objects/);
   });
+  // F6: typeof null and typeof [] are both 'object', so each needs its own clause — a `[null]` row
+  // crashed planRetire at `r.originalImage`, and a `[[]]` row was kept and rewritten as legacy.
+  it('refuses an array holding null', () => {
+    expect(() => readMappingOrRefuse(tmpFile('[null]'))).toThrow(/not an array of objects/);
+  });
+  it('refuses an array holding an array', () => {
+    expect(() => readMappingOrRefuse(tmpFile('[[]]'))).toThrow(/not an array of objects/);
+  });
   it('treats a missing file as empty only when told it may', () => {
     expect(readMappingOrRefuse(tmpFile(undefined), { allowMissing: true })).toEqual([]);
     expect(() => readMappingOrRefuse(tmpFile(undefined))).toThrow(/cannot be read/);

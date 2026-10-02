@@ -61,6 +61,36 @@ function runTool(fx, argv, opts = {}) {
   return { code, out: out.join('\n'), err: err.join('\n') };
 }
 
+/**
+ * CNX_A retired, then what ②'s re-inject and re-render do: its pages point at the English image
+ * again. `{ cnxml: false }` re-renders the page only, leaving m1.cnxml naming the June copy — the
+ * state a partial ② leaves, which the census must still report.
+ */
+function retiredAndRerendered(extra = {}, { cnxml = true } = {}) {
+  const fx = standardBook(extra);
+  expect(runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']).code).toBe(0);
+  fx.git('commit', '-qam', 'retire CNX_A');
+  if (cnxml) {
+    fx.write(
+      'books/b/03-translated/mt-preview/ch01/m1.cnxml',
+      `<image src="../../media/CNX_A.jpg"/><image src="../../media/CNX_B${S}.svg"/>`
+    );
+  }
+  fx.write(
+    `${PUB}/1-1-page.html`,
+    `<img src="/content/b/chapters/01/images/media/CNX_A.jpg"><img src="/content/b/chapters/01/images/media/CNX_B${S}.svg">`
+  );
+  return fx;
+}
+
+const MAPPING = 'books/b/media/image-mapping.json';
+/**
+ * A mapping in NON-canonical form — compact, no trailing newline — unlike the tool's own
+ * `JSON.stringify(rows, null, 2) + '\n'`. With every fixture already canonical, a needless rewrite
+ * and a rollback that re-serialises instead of restoring the saved bytes were both invisible (F3).
+ */
+const COMPACT = (...rows) => JSON.stringify(rows);
+
 describe('retire-translated-figure --retire (§C140 ㊵)', () => {
   it('a dry run writes nothing, and reports the row, the copy and every reference', () => {
     const fx = standardBook();
@@ -309,8 +339,9 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(fx.snapshot()).toEqual(before);
   });
 
-  it('a failure part-way restores the mapping and every file already deleted', () => {
-    const fx = standardBook();
+  it('a failure part-way restores the mapping BYTES and every file already deleted', () => {
+    const compact = COMPACT(ROW('CNX_A'), ROW('CNX_B'), LEGACY);
+    const fx = standardBook({ [MAPPING]: compact });
     const before = fx.snapshot();
     let calls = 0;
     const unlink = (p) => {
@@ -324,6 +355,33 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     });
     expect(r.code).toBe(1);
     expect(r.err).toMatch(/were restored/);
+    // The saved bytes, not a re-serialisation of the parsed rows: the fixture is not canonical.
+    expect(fx.read(MAPPING)).toBe(compact);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  // DS-1: every rollback above deletes at most ONE copy before its fault, so a restore of only the
+  // first, or only the last, deleted file passed them all. The prune has this twin; now so does the
+  // retire, whose planned real run is a six-name batch.
+  it('a failure on the third deletion restores BOTH copies already deleted, not just one', () => {
+    const fx = standardBook({
+      [MAPPING]: JSON.stringify([ROW('CNX_A'), ROW('CNX_B'), ROW('CNX_C'), LEGACY], null, 2) + '\n',
+      [`books/b/media/CNX_C${S}.svg`]: '<svg>C</svg>',
+    });
+    const before = fx.snapshot();
+    let calls = 0;
+    const unlink = (p) => {
+      calls += 1;
+      if (calls === 3) throw Object.assign(new Error('EACCES: simulated'), { code: 'EACCES' });
+      fs.unlinkSync(p);
+    };
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A,CNX_B,CNX_C', '--apply'], {
+      retired: new Set(['CNX_A', 'CNX_B', 'CNX_C']),
+      unlink,
+    });
+    // Control: two copies really were deleted before the fault, so a restore of only one would show.
+    expect(calls).toBe(3);
+    expect(r.code).toBe(1);
     expect(fx.snapshot()).toEqual(before);
   });
 
@@ -416,11 +474,55 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
   it('a second run changes nothing and says there is nothing to retire', () => {
     const fx = standardBook();
     expect(runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']).code).toBe(0);
+    // The same rows, made non-canonical: the first run's write would otherwise hide a rewrite.
+    const compact = COMPACT(ROW('CNX_B'), LEGACY);
+    fx.write(MAPPING, compact);
     fx.git('commit', '-qam', 'retired');
     const before = fx.snapshot();
     const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
     expect(r.code).toBe(0);
     expect(r.out).toMatch(/nothing to retire/);
+    expect(fx.read(MAPPING)).toBe(compact);
+    expect(fx.snapshot()).toEqual(before);
+  });
+
+  // F2: run-order step 5's census is `--retire` re-run as a dry run. Every fixture above still has
+  // two references, so the census's zero-reference line never ran, and its one-reference case — what
+  // a partial ② leaves — was never asserted.
+  it('the census says nothing references the figure once its pages and CNXML are re-rendered', () => {
+    const fx = retiredAndRerendered();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A']);
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(
+      /nothing to retire: no mapping row, no translated copy\n {2}no page or CNXML file references it/
+    );
+  });
+
+  it('the census still names the CNXML file a partial re-render left naming the copy', () => {
+    const fx = retiredAndRerendered({}, { cnxml: false });
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A']);
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(/still referenced by 1 file\(s\)/);
+    expect(r.out).toMatch(/03-translated · mt-preview · ch01 · m1\.cnxml/);
+  });
+
+  // F5: D9's two EXACT-match rules — the retiredFigures key and the source basename — masked each
+  // other: folding either one alone left every test green. A mis-cased key must not authorise anything.
+  it('refuses a name matching a retired key but no source image exactly (wrong --book)', () => {
+    const fx = standardBook();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'cnx_a'], { retired: new Set(['cnx_a']) });
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/cnx_a: no image of that name in b's source CNXML — wrong --book/);
+  });
+
+  it('a retiredFigures key that differs only by case does not authorise the retire, and writes nothing', () => {
+    const fx = standardBook();
+    const before = fx.snapshot();
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply'], {
+      retired: new Set(['cnx_a']),
+    });
+    expect(r.code).toBe(1);
+    expect(r.err).toMatch(/CNX_A: no retiredFigures entry/);
     expect(fx.snapshot()).toEqual(before);
   });
 
@@ -474,24 +576,24 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(r.status).toBe(0);
     expect(r.stdout).toMatch(/--retire <name>/);
   });
+
+  // FR-M6: --help returns before any repo path is used, so the test above passes with
+  // REPO_ROOT = process.cwd(). A run that reaches the books/ path shows where the tool looked.
+  // (A slug the parser accepts: `__no_such_book__` would be refused as a usage error first.)
+  it('finds books/ by its own location, not the working directory', () => {
+    const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+    const r = spawnSync(process.execPath, [TOOL, '--book', 'c40-no-such-book', '--prune'], {
+      cwd: os.tmpdir(),
+      encoding: 'utf-8',
+    });
+    expect(r.status).toBe(1);
+    expect(r.stderr).toContain(
+      `no book directory at ${path.join(repo, 'books', 'c40-no-such-book')}`
+    );
+  });
 });
 
 describe('retire-translated-figure --prune (§C140 ㊵)', () => {
-  /** CNX_A retired, then what ②'s re-inject and re-render do: its pages point at the English image again. */
-  function retiredAndRerendered(extra = {}) {
-    const fx = standardBook(extra);
-    expect(runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']).code).toBe(0);
-    fx.git('commit', '-qam', 'retire CNX_A');
-    fx.write(
-      'books/b/03-translated/mt-preview/ch01/m1.cnxml',
-      `<image src="../../media/CNX_A.jpg"/><image src="../../media/CNX_B${S}.svg"/>`
-    );
-    fx.write(
-      `${PUB}/1-1-page.html`,
-      `<img src="/content/b/chapters/01/images/media/CNX_A.jpg"><img src="/content/b/chapters/01/images/media/CNX_B${S}.svg">`
-    );
-    return fx;
-  }
   const COPY_A = `${PUB}/images/media/CNX_A${S}.svg`;
 
   it('POSITIVE CONTROL: deletes the unreferenced, unmapped copy and keeps the mapped one', () => {
