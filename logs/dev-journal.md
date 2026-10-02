@@ -371,3 +371,22 @@ the review panel runs the old enumeration predicate until then) → then M6, the
 panel; ~2/5 of that fixable without re-extraction) is its own PR after this.
 
 ---
+
+## 2026-10-02 12:20 - Finishing chemistry's translation layer before the editor pivot: §C140 ㊵ retire, ㊸ figure test, ㊼ ring-gate verdict
+
+**Branch:** docs/c140-c47-merged-census
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+
+**Recent commits:**
+859aeb05c docs(register): §C140 ㊵ census DONE (clean, after the 12:00Z tick); ㊼ MERGED (#533, 68abfeffe)
+68abfeffe Merge pull request #533 from SigurdurVilhelmsson/fix/c140-c47-ring-gate-verdict
+3a6c6a16b docs(register): §C140 ㊼ — FIXED on a branch (PR #533): the run fails, the figure does not
+
+**Why:** The figure track is the last translation-layer work before the editor phase. Today: the 6 June
+figures [USER] ruled out are retired (#531, deployed, census clean after the noon tick); the figure test
+finishes again (#532, deployed) — it was stuck on ONE 1.34 MB figure with ~7e24 walk paths, not on the
+heavy files the register blamed; and a ring gate that cannot run now fails the run's verdict, not the
+figure (#533). Status and the next action live in the register's 2026-10-02 ⏩ RESUME, not here.
+
+---
