@@ -449,8 +449,9 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
 });
 
 describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)', () => {
-  // The committed config's retiredFigures is empty, so on the real tree the retiredState branch
-  // never runs. These cases run it: a fail-open there would let a half-done retire pass.
+  // These cases run the retiredState branch on a tree built to fail, with a control: a fail-open
+  // there would let a half-done retire pass. (The committed config held no retired entry until the
+  // retire run of 2026-10-02, so until then the real tree never reached this branch at all.)
   const row = (n) => ({ originalImage: n, outputName: `${n}${S}.svg`, extension: '.svg' });
   const cnxmlOf = (names) =>
     `<document><content>${names
@@ -575,6 +576,18 @@ describe('the committed figure config (§C140 ㊵)', () => {
   it('NON-VACUITY: the corpus holds chemistry, and the superseded entries are real', () => {
     expect(corpus.basenamesByBook['efnafraedi-2e'].size).toBeGreaterThan(1000);
     expect(Object.keys(cfg.supersededArtwork).length).toBeGreaterThan(0);
+  });
+
+  // `buildValidatorCorpus` skips a key that is not exactly one book's basename, so a green "passes
+  // every rule" alone cannot show the retired-state rule looked at each retired figure on the real
+  // tree. Every key must have been examined, and each examination must have found the figure gone.
+  it('NON-VACUITY: every retired key was examined on the real tree, and found retired', () => {
+    const keys = Object.keys(cfg.retiredFigures).sort();
+    expect(keys.length).toBeGreaterThan(0);
+    expect(Object.keys(corpus.retiredState).sort()).toEqual(keys);
+    for (const k of keys) {
+      expect(corpus.retiredState[k], k).toEqual({ rows: 0, translatedCopies: [] });
+    }
   });
 
   it("chemistry's mapping rows and its top-level translated copies match one-to-one", () => {
