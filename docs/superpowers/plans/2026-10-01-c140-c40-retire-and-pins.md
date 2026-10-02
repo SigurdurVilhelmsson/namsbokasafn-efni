@@ -1199,8 +1199,11 @@ import { loadRetiredFigures } from './lib/figure-text-config.js';
  * ⚠️ A figure listed in the figure config's `retiredFigures` (§C140 ㊵) is NEVER mapped: its
  * translated copy is named and skipped, so restoring the file cannot bring its row back.
  * Retire a figure with `tools/retire-translated-figure.js`, not by deleting its row: this tool
- * re-adds any row whose translated copy is still in `media/`.
+ * re-adds the row of any figure that is not in `retiredFigures` whose translated copy is still
+ * in `media/`.
 ```
+
+✏️ *Corrected 2026-10-01 at Task 10's review: the generator skips a figure in `retiredFigures`.*
 
 Keep the rest of the header (`Workflow:`, `Usage:`, `Options:`) as it is. The tool inventory takes its description from the first header line that names no `.js` or `.json` file, which is now "Generate or update a book's image mapping…".
 
@@ -2958,9 +2961,11 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 In `experiments/figure-text-translation/README.md`, directly after the paragraph that ends `Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).`, insert:
 
+✏️ *Corrected 2026-10-01 at Task 10's review: this block, and Step 2's block below, now match the README as committed in `1926b6851`; the originals had three false sentences between them (the heading's order claim, rule 4's ambiguous-fold clause, and Step 2's re-add clause).*
+
 ```markdown
-**§C140 ㊵ — four rules decide what the resolver may return, checked in this order before the
-normal lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
+**§C140 ㊵ — four rules decide what the resolver may return, in this order; the fourth is the normal
+lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
 
 1. **`retiredFigures`** — a [USER] ruling retired the figure's *translated copy*: refused as
    `retired`, and never mapped again. Carry a retirement out with
@@ -2975,11 +2980,15 @@ normal lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-
    tree or a stem: the base tree holds two different ibuprofen drawings, and a tree-only rule returns
    the wrong one. A missing pinned file is `pin-missing`, never a fall-back.
 4. **The normal lookup** — editions in `editionPrecedence` order, formats in `SOURCE_EXTS` order, then a
-   case-and-punctuation fold (`_normkey`, which never strips `_img`), refusing an ambiguous fold.
+   case-and-punctuation fold (`_normkey`, which never strips `_img`). An ambiguous fold (two differently
+   named files in one edition folding onto the basename) yields no candidate from that edition: the
+   lookup moves on to the next edition, and if nothing resolves the figure is reported as not found, not
+   refused.
 
 Every table's keys are matched after the same fold, and `tools/lib/figure-config-validate.js` (run by
 `npm test`) checks every entry. An entry lands in the commit that acts on it; **run that validator
-locally before a pin's buy**, because CI runs only after the money is spent.
+locally before a pin's buy** (`npx vitest run tools/__tests__/figure-config-validate.test.js`), because
+CI runs only after the money is spent.
 ```
 
 - [ ] **Step 2: README — where the translated file goes**
@@ -2990,7 +2999,8 @@ In the same file, at the end of § "Where the translated file goes" (after `§ *
 A figure listed in `retiredFigures` is never mapped: the generator names its translated copy and
 skips it, so restoring the file cannot bring its row back. Retire a figure with
 `tools/retire-translated-figure.js`, never by deleting its mapping row by hand — the generator
-re-adds any row whose translated copy is still in `media/`.
+re-adds the row of any figure that is not in `retiredFigures` whose translated copy is still in
+`media/`.
 ```
 
 - [ ] **Step 3: The ⑦ comments in `sources.py` and `test_sources.py`**
