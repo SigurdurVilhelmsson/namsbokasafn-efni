@@ -186,7 +186,71 @@ def _ring_from_png(b64, use_filter):
     return {k: round(v, 1) for k, v in ring.items()}, (w, h)
 
 
-def find_candidates(svg_text, ring_bytes=RING_BYTES):
+# ---------------------------------------------------------------------------
+# The walk's edges, in ONE place: `find_candidates`' walk and `_walk_is_acyclic` both read
+# them, so the cycle check cannot drift from what the walk actually follows.
+# ---------------------------------------------------------------------------
+
+_WALK_SKIP = ('defs', 'clipPath', 'mask', 'filter', 'image')
+
+
+def _feimage_edges(el, ids):
+    """[(feImage, ref, target)] for every feImage of the filter `el` paints through."""
+    out = []
+    flt = el.get('filter')
+    if flt and flt.startswith('url('):
+        fel = ids.get(flt[flt.find('#') + 1:flt.find(')')])
+        if fel is not None and _tag(fel) == 'filter':
+            for fe in fel:
+                if _tag(fe) != 'feImage':
+                    continue
+                ref = (fe.get(XLINK_HREF) or fe.get('href') or '')[1:]
+                tgt = ids.get(ref)
+                if tgt is not None:
+                    out.append((fe, ref, tgt))
+    return out
+
+
+def _structural_edges(el, ids):
+    """A `use` walks into its target (never an <image>) and NOT into its own children;
+    anything else walks into its children, minus the definition-only kinds."""
+    if _tag(el) == 'use':
+        tgt = ids.get((el.get(XLINK_HREF) or el.get('href') or '')[1:])
+        return [tgt] if tgt is not None and _tag(tgt) != 'image' else []
+    return [ch for ch in el if _tag(ch) not in _WALK_SKIP]
+
+
+def _walk_is_acyclic(root, ids):
+    """True when no element can reach itself over the walk's edges (iterative: an SVG can be
+    deeper than Python's recursion limit).  §C140 ㊸ — the memoised walk is exact only then."""
+    WHITE, GREY, BLACK = 0, 1, 2
+    colour = {}
+
+    def targets(el):
+        return iter([t for _, _, t in _feimage_edges(el, ids)] + _structural_edges(el, ids))
+
+    for start in root:
+        if _tag(start) == 'defs' or colour.get(id(start), WHITE) != WHITE:
+            continue
+        colour[id(start)] = GREY
+        stack = [(start, targets(start))]
+        while stack:
+            el, it = stack[-1]
+            nxt = next(it, None)
+            if nxt is None:
+                colour[id(el)] = BLACK
+                stack.pop()
+                continue
+            c = colour.get(id(nxt), WHITE)
+            if c == GREY:
+                return False
+            if c == WHITE:
+                colour[id(nxt)] = GREY
+                stack.append((nxt, targets(nxt)))
+    return True
+
+
+def find_candidates(svg_text, ring_bytes=RING_BYTES, *, memo=True, stats=None):
     """Every image-backed soft mask reachable from the root, with geometry and byte statistics.
 
     Returns candidates only (ring ≥ `ring_bytes` on some side, untransformed use, i.e. the
@@ -194,9 +258,28 @@ def find_candidates(svg_text, ring_bytes=RING_BYTES):
     rect clip, or whose image is referenced more than once, is returned with `.refuse` set —
     it is NEVER silently dropped, because c10 measured 0 of those in this corpus and an
     untested branch that quietly does nothing is how the defect comes back.
+
+    🔴 §C140 ㊸ — THE WALK IS MEMOISED, BECAUSE WITHOUT IT ONE SMALL FIGURE NEVER FINISHES.
+    cairo's blend emulation reaches a group both as a child and through an `<feImage>` that
+    references it, level after level, so the number of PATHS doubles per level while the number
+    of distinct STATES does not grow. Measured 2026-10-02 on `CNX_Chem_06_04_Econfig_IS.svg`
+    (1.34 MB, 1,568 elements): about 7e24 paths, 1,568 states, 3 masks reached. The unmemoised
+    walk was killed at 60 s, and on 2026-09-30 it held test_figrings.py's corpus sweep on that
+    one file for over 22 minutes with RSS climbing, because it records one hit per PATH.
+    A state is (element, exact ctm, the last clip entering it): everything a hit is built from
+    downstream reads only `clips[-1]` and whether `clips` is empty. Re-walking a state already
+    walked from no deeper can only record hits whose (mask, ctm) keys are already recorded,
+    earlier in the same depth-first order, and the dedup below keeps the first; so the output is
+    identical. That argument needs `seen` (the feImage cycle guard) never to block, which holds
+    exactly when the walk graph is acyclic, so a cyclic document takes the original walk.
+    `memo=False` forces the original walk (for equivalence checks); `stats`, if a dict, receives
+    `mode` ('memo' or 'paths') and `visits` (calls into the walk).
     """
     root = ET.fromstring(svg_text)
     ids = {e.get('id'): e for e in root.iter() if e.get('id')}
+    use_memo = memo and _walk_is_acyclic(root, ids)
+    walked = {}     # state -> the shallowest depth it was walked from
+    visits = [0]
 
     rasters = {}
     for m in root.iter('{%s}mask' % SVG_NS):
@@ -210,6 +293,7 @@ def find_candidates(svg_text, ring_bytes=RING_BYTES):
     hits = []
 
     def walk(el, ctm, clips, depth, seen):
+        visits[0] += 1
         if depth > 500:
             return
         ctm = _matmul(ctm, parse_transform(el.get('transform')))
@@ -223,45 +307,42 @@ def find_candidates(svg_text, ring_bytes=RING_BYTES):
             r = _clip_rect(cel) if cel is not None else None
             if r:
                 clips = clips + [(cid, r, ctm)]
+        # §C140 ㊸ — everything below depends only on this state (and on depth and `seen`; see
+        # the docstring for why skipping is exact), so walk each state once from its shallowest.
+        if use_memo:
+            last = clips[-1] if clips else None
+            state = (id(el), tuple(v for row in ctm for v in row),
+                     None if last is None else
+                     (last[0], last[1], tuple(v for row in last[2] for v in row)))
+            if walked.get(state, depth + 1) <= depth:
+                return
+            walked[state] = depth
         # ⚠️ MEASURED, and it is the whole reason this branch exists: cairo emulates PDF
         # blend modes with <filter><feImage href="#g">…, so on a figure carrying blend
         # paints the masked groups are reachable ONLY through filters.  A walker that
         # skips filters finds 0 masks on CNX_Chem_03_01_exocytosis — the one figure in
         # the corpus where the byte detector false-positives — and reports it as clean.
-        flt = el.get('filter')
-        if flt and flt.startswith('url('):
-            fel = ids.get(flt[flt.find('#') + 1:flt.find(')')])
-            if fel is not None and _tag(fel) == 'filter':
-                for fe in fel:
-                    if _tag(fe) != 'feImage':
-                        continue
-                    ref = (fe.get(XLINK_HREF) or fe.get('href') or '')[1:]
-                    tgt = ids.get(ref)
-                    if tgt is None or ref in seen:
-                        continue
-                    fctm = _matmul(ctm, parse_transform(
-                        'translate(%s,%s)' % (fe.get('x', 0), fe.get('y', 0))))
-                    walk(tgt, fctm, clips, depth + 1, seen | {ref})
+        for fe, ref, tgt in _feimage_edges(el, ids):
+            if ref in seen:
+                continue
+            fctm = _matmul(ctm, parse_transform(
+                'translate(%s,%s)' % (fe.get('x', 0), fe.get('y', 0))))
+            walk(tgt, fctm, clips, depth + 1, seen | {ref})
         mk = el.get('mask')
         if mk and '#' in mk:
             mid = mk[mk.find('#') + 1:mk.find(')')]
             if mid in rasters:
                 hits.append((mid, ctm, clips))
-        if _tag(el) == 'use':
-            ref = (el.get(XLINK_HREF) or el.get('href') or '')[1:]
-            tgt = ids.get(ref)
-            if tgt is not None and _tag(tgt) != 'image':
-                walk(tgt, ctm, clips, depth + 1, seen)
-            return
-        for ch in el:
-            if _tag(ch) in ('defs', 'clipPath', 'mask', 'filter', 'image'):
-                continue
-            walk(ch, ctm, clips, depth + 1, seen)
+        for tgt in _structural_edges(el, ids):
+            walk(tgt, ctm, clips, depth + 1, seen)
 
     for ch in root:
         if _tag(ch) == 'defs':
             continue
         walk(ch, [[1.0, 0, 0], [0, 1.0, 0], [0, 0, 1.0]], [], 0, frozenset())
+    if isinstance(stats, dict):
+        stats['mode'] = 'memo' if use_memo else 'paths'
+        stats['visits'] = visits[0]
 
     out, seen_rec = [], set()
     for mid, ctm, clips in hits:

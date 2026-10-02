@@ -1,0 +1,21 @@
+{
+ "rev": "7193e7f6d",
+ "files": 710,
+ "mismatch": [],
+ "cands_default": 10,
+ "cands_inf": 482,
+ "memo_mode": 710,
+ "paths_mode": 0,
+ "t_old": 68.0,
+ "t_new": 75.1,
+ "econfig_inf": {
+  "cands": [],
+  "stats": {
+   "mode": "memo",
+   "visits": 1797
+  },
+  "s": 0.11
+ },
+ "econfig_default": []
+}
+DONE

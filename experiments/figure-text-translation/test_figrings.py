@@ -341,6 +341,78 @@ def test_gate_is_interventional():
 
 
 # ---------------------------------------------------------------------------
+# 6b. The walk is linear in STATES, not in PATHS (§C140 ㊸) — run before section 7, because
+#     a broken memo should fail here in a second, not hang the corpus sweep
+# ---------------------------------------------------------------------------
+
+def _with_body(text, defs_extra, body):
+    """`svg_with_mask`'s document with extra <defs> and a replacement body (its direct
+    placement is kept as `L0`, so every variant reaches the same masked group)."""
+    head, tail = text.split('</defs>\n', 1)
+    placed = tail.split('\n</svg>', 1)[0]
+    l0 = placed.replace('<g>', '<g id="L0">', 1)
+    return f'{head}{l0}\n{defs_extra}</defs>\n{body}\n</svg>\n'
+
+
+def nested_blend_svg(levels, b64):
+    """cairo's blend emulation, nested: each level reaches the level below BOTH through an
+    feImage and as a `use`, at the same ctm, so PATHS double per level and STATES do not."""
+    lv = ''.join(
+        f'<filter id="f-{k}" x="0%" y="0%" width="100%" height="100%">\n'
+        f'<feImage xlink:href="#L{k - 1}" x="0" y="0" width="351" height="174"/>\n</filter>\n'
+        f'<g id="L{k}">\n<g filter="url(#f-{k})">\n<rect x="0" y="0" width="1" height="1"/>\n'
+        f'</g>\n<use xlink:href="#L{k - 1}"/>\n</g>\n'
+        for k in range(1, levels + 1))
+    return _with_body(svg_with_mask(b64), lv, f'<use xlink:href="#L{levels}"/>')
+
+
+def test_walk_is_memoised():
+    print('6b. the walk is linear in states, not paths (§C140 ㊸)')
+    b64 = ring_mask_png()
+    direct, _ = figrings.find_candidates(svg_with_mask(b64))
+    LEVELS = 14
+    text = nested_blend_svg(LEVELS, b64)
+    fast, slow = {}, {}
+    got, _ = figrings.find_candidates(text, stats=fast)
+    ref, _ = figrings.find_candidates(text, memo=False, stats=slow)
+    # NON-VACUITY: the fixture really has the shape that hung the sweep — the original walk
+    # makes at least one call per path, and there are 2**LEVELS paths to the masked group.
+    check('CONTROL: the original walk makes over 2**LEVELS calls on this fixture',
+          slow.get('mode') == 'paths' and slow.get('visits', 0) > 2 ** LEVELS, repr(slow))
+    check('the memoised walk is used, and makes a number of calls linear in the levels',
+          fast.get('mode') == 'memo' and fast.get('visits', 1e9) <= 10 * LEVELS + 20, repr(fast))
+    check('and it finds exactly what the original walk finds',
+          [c.as_dict() for c in got] == [c.as_dict() for c in ref], f'{got} vs {ref}')
+    check('which is the one candidate of the direct placement',
+          [c.as_dict() for c in got] == [c.as_dict() for c in direct], f'{got} vs {direct}')
+
+    # 🔴 THE OVER-MERGE CONTROL. One reused group reached under two DIFFERENT ctms is two
+    # candidates; a memo keyed too coarsely (on the element alone) passes everything above
+    # and silently drops one.
+    two = _with_body(svg_with_mask(b64), '',
+                     '<use xlink:href="#L0"/>\n<use xlink:href="#L0" transform="translate(10, 20)"/>')
+    got2, _ = figrings.find_candidates(two)
+    ref2, _ = figrings.find_candidates(two, memo=False)
+    check('one group under two different ctms yields two candidates',
+          len(got2) == 2 and len({tuple(c.rect) for c in got2}) == 2, repr(got2))
+    check('and the original walk agrees', [c.as_dict() for c in got2] == [c.as_dict() for c in ref2],
+          f'{got2} vs {ref2}')
+
+    # A CYCLE disables the memo: the exactness argument needs the feImage cycle guard never to
+    # block, which only an acyclic walk graph guarantees. The fallback is the original walk,
+    # which the depth cap still stops.
+    cyc = _with_body(svg_with_mask(b64),
+                     '<g id="cyc-a">\n<use xlink:href="#cyc-b"/>\n</g>\n'
+                     '<g id="cyc-b">\n<use xlink:href="#cyc-a"/>\n</g>\n',
+                     '<use xlink:href="#L0"/>\n<use xlink:href="#cyc-a"/>')
+    cs = {}
+    got3, _ = figrings.find_candidates(cyc, stats=cs)
+    check('a cyclic document takes the original walk', cs.get('mode') == 'paths', repr(cs))
+    check('and still finds the candidate',
+          [c.as_dict() for c in got3] == [c.as_dict() for c in direct], f'{got3} vs {direct}')
+
+
+# ---------------------------------------------------------------------------
 # 7. Corpus anchors — the two real carriers, and the corpus-wide count
 # ---------------------------------------------------------------------------
 
@@ -376,6 +448,20 @@ def test_corpus_anchors():
           len(ec) == 8, f'got {len(ec)}')
     check('and mask-491 is among them (the measured false positive)',
           any(c.mask == 'mask-491' for c in ec), str([c.mask for c in ec]))
+
+    # §C140 ㊸ — the figure that held this sweep for over 22 minutes on 2026-09-30: about 7e24
+    # walk paths and 1,568 elements. It must now finish in the memoised walk, in a number of
+    # calls on the order of its elements, and it carries no candidate (all four of its raster
+    # masks are drawn through a TRANSFORMED use, which is not this defect's shape).
+    econfig = MEDIA / 'CNX_Chem_06_04_Econfig_IS.svg'
+    if econfig.exists():
+        st = {}
+        ec_c, _ = figrings.find_candidates(econfig.read_text(encoding='utf-8'), stats=st)
+        check('Econfig finishes in the memoised walk, in under 5,000 calls',
+              st.get('mode') == 'memo' and st.get('visits', 1e9) < 5000, repr(st))
+        check('and carries no candidate', ec_c == [], repr(ec_c))
+    else:
+        skip('Econfig anchor', 'committed media SVG not present')
 
     others = sorted(p for p in MEDIA.glob('*_IS.svg')
                     if p.name not in (brain.name, exo.name))
@@ -419,7 +505,7 @@ def test_gate_separation_is_documented():
 
 def main():
     for fn in (test_detector, test_feimage_reachability, test_refusals, test_heal_is_local,
-               test_edgeline_one_sided, test_gate_is_interventional,
+               test_edgeline_one_sided, test_gate_is_interventional, test_walk_is_memoised,
                test_corpus_anchors, test_gate_separation_is_documented):
         fn()
     print()
