@@ -360,8 +360,23 @@ with tempfile.TemporaryDirectory() as td:
     cfg = {'editionPrecedence': prec, 'sourceTreesFile': str(local),
            'supersededArtwork': {}, 'retiredFigures': R}
     check('㊵ policy() takes its tables from the config',
-          S.policy({'supersededArtwork': 1, 'retiredFigures': 2, 'artworkPins': 3}),
-          {'superseded': 1, 'retired': 2, 'pins': 3})
+          S.policy({'supersededArtwork': {'a': 'x'}, 'retiredFigures': {'b': 'y'},
+                    'artworkPins': {'c': {}}}),
+          {'superseded': {'a': 'x'}, 'retired': {'b': 'y'}, 'pins': {'c': {}}})
+    # R3 — A TABLE THAT IS NOT AN OBJECT FAILS CLOSED, AND THE SAME WAY FOR ALL THREE. A string
+    # artworkPins used to be iterated as characters: no pin applied, every pinned figure fell through
+    # to the normal lookup, and `--json` exited 0 — while a list or a number crashed elsewhere.
+    for table in ('supersededArtwork', 'retiredFigures', 'artworkPins'):
+        for label, bad in (('a string', 'TODO'), ('a list', ['CNX_Ret']), ('a number', 5)):
+            try:
+                S.policy({table: bad})
+                raised = 'returned'
+            except SystemExit as exc:
+                raised = str(exc)
+            check(f'㊵ policy() refuses {table} given as {label}, naming the table',
+                  raised.startswith(f'{table} in the figure config must be an object'), True)
+    check('㊵ CONTROL: an absent or null table is no table',
+          S.policy({'retiredFigures': None}), {'superseded': None, 'retired': None, 'pins': None})
     out = []
     rc = S.run_cli(['--json', 'testbook', 'CNX_Ret', 'CNX_Other'], cfg=cfg, out=out.append)
     rep = json.loads(out[0])
@@ -476,6 +491,11 @@ with tempfile.TemporaryDirectory() as td:
         ('a format we cannot read', pin('alias', 'updates-2e', 'OSX/notes.txt')),
         ('no reason', {'kind': 'alias', 'edition': 'updates-2e', 'file': 'OSX/Figure 14_03_ICE.eps'}),
         ('a non-string file', pin('alias', 'updates-2e', 5)),
+        # F9: without their own rule each of these is refused as pin-missing (a backslash or a drive
+        # letter is just an odd name to POSIX), or resolves (a reason of spaces is still a string).
+        ('a backslash in the path', pin('alias', 'updates-2e', 'OSX\\Figure 14_03_ICE.eps')),
+        ('a Windows drive letter', pin('alias', 'updates-2e', 'C:/x.eps')),
+        ('a reason of only spaces', pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps', '   ')),
     ]:
         d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': entry})
         check(f'㊵ a pin with {label} is refused as pin-invalid', (d['path'], d['refused']),
@@ -489,6 +509,76 @@ with tempfile.TemporaryDirectory() as td:
     check('㊵ CONTROL: either pin alone resolves',
           Path(resolve_detail('CNX_P1', trees, prec, pins={'CNX_P1': TWINS['CNX_P1']})['path']).name,
           'Shared.eps')
+
+    # R1 — D5's containment: a malformed SIBLING refuses only its own figure. The twin scan walks the
+    # whole table for every pinned figure, so without its two guards one bad entry crashed them all.
+    # The `file: 5` sibling shares the valid pin's edition, or the edition test would short-circuit.
+    for label, sibling_key, sibling in (
+            ('a string entry', '_note', 'a comment someone left inside the table'),
+            ('an entry whose file is 5', 'CNX_Five', pin('alias', 'updates-2e', 5))):
+        table = {'CNX_ICE': P['CNX_ICE'], sibling_key: sibling}
+        d = resolve_detail('CNX_ICE', trees, prec, pins=table)
+        check(f'㊵ a valid pin beside {label} still resolves',
+              (Path(d['path']).name, d['via']), ('Figure 14_03_ICE.eps', 'alias'))
+        check(f'㊵ ...and {label}, asked for itself, is pin-invalid',
+              resolve_detail(sibling_key, trees, prec, pins=table)['refused'], 'pin-invalid')
+
+    # F9 CONTROLS that must still resolve: a pinned upper-case suffix, and the same relative path in
+    # two DIFFERENT editions (two different files — the JS validator accepts it too).
+    make_eps(new / 'OSX' / 'Upper.EPS', 300, 200)
+    d = resolve_detail('CNX_Upper', trees, prec, pins={'CNX_Upper': pin('alias', 'updates-2e', 'OSX/Upper.EPS')})
+    check('㊵ CONTROL: a pinned file with an upper-case suffix resolves',
+          (Path(d['path']).name, d.get('via')), ('Upper.EPS', 'alias'))
+    (old / 'OSX').mkdir()
+    make_eps(new / 'OSX' / 'Same.eps', 300, 200)
+    make_eps(old / 'OSX' / 'Same.eps', 320, 210)
+    TWO_EDITIONS = {'CNX_S1': pin('alias', 'updates-2e', 'OSX/Same.eps'),
+                    'CNX_S2': pin('alias', 'first-edition', 'OSX/Same.eps')}
+    check('㊵ CONTROL: the same relative path pinned in two editions is two files, and both resolve',
+          [(resolve_detail(n, trees, prec, pins=TWO_EDITIONS).get('edition'),
+            resolve_detail(n, trees, prec, pins=TWO_EDITIONS).get('refused'))
+           for n in ('CNX_S1', 'CNX_S2')],
+          [('updates-2e', None), ('first-edition', None)])
+
+    # R7 — D4: the pinned path must be an existing REGULAR file. A directory named like a source file
+    # is pin-missing, never a hit handed to prepare.
+    (new / 'OSX' / 'IsDir.eps').mkdir()
+    d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/IsDir.eps')})
+    check('㊵ a pin to a DIRECTORY named like a source file is pin-missing',
+          (d['path'], d['refused']), (None, 'pin-missing'))
+
+    # R2 — a pin is judged by where it RESOLVES: `_pin_invalid` reads only the declared path, which a
+    # symlink defeats. Out of the tree, or into our own output, is pin-invalid.
+    outside = td / 'outside'
+    outside.mkdir()
+    make_eps(outside / 'Elsewhere.eps', 300, 200)
+    (new / 'Ch_19' / 'Translated_IS').mkdir(parents=True)
+    make_eps(new / 'Ch_19' / 'Translated_IS' / 'CNX_Own.eps', 300, 200)
+    (new / 'OSX' / 'link_out.eps').symlink_to(outside / 'Elsewhere.eps')
+    (new / 'OSX' / 'link_own.eps').symlink_to(new / 'Ch_19' / 'Translated_IS' / 'CNX_Own.eps')
+    (new / 'dirlink').symlink_to(outside, target_is_directory=True)
+    make_eps(new / 'OSX' / 'Linked.eps', 300, 200)
+    (new / 'OSX' / 'link_in.eps').symlink_to(new / 'OSX' / 'Linked.eps')
+    for label, file in (('a file symlink out of the tree', 'OSX/link_out.eps'),
+                        ('a file symlink into Translated_IS', 'OSX/link_own.eps'),
+                        ('a directory symlink out of the tree', 'dirlink/Elsewhere.eps')):
+        d = resolve_detail('CNX_Sym', trees, prec, pins={'CNX_Sym': pin('alias', 'updates-2e', file)})
+        check(f'㊵ a pin through {label} is pin-invalid', (d.get('path'), d.get('refused')),
+              (None, 'pin-invalid'))
+    d = resolve_detail('CNX_Sym', trees, prec, pins={'CNX_Sym': pin('alias', 'updates-2e', 'OSX/Linked.eps')})
+    check('㊵ CONTROL: a plain in-tree pin still resolves',
+          (Path(d['path']).name, d.get('via')), ('Linked.eps', 'alias'))
+    d = resolve_detail('CNX_Sym', trees, prec, pins={'CNX_Sym': pin('alias', 'updates-2e', 'OSX/link_in.eps')})
+    check('㊵ CONTROL: a symlink that stays inside the tree, out of our output, still resolves',
+          (Path(d['path']).name, d.get('via')), ('link_in.eps', 'alias'))
+
+    # R4 — supersededArtwork acts by PRESENCE (D2), like retiredFigures and the pins: a key whose
+    # value is null still refuses, and no pin brings the figure back.
+    for label, pins in (('without a pin', None), ('with a pin', O)):
+        d = resolve_detail('CNX_Ibu', trees, prec, superseded={'CNX_Ibu': None}, pins=pins)
+        check(f'㊵ a superseded key whose value is null still refuses, {label}',
+              (d.get('path'), d.get('refused'), d.get('reason')),
+              (None, 'superseded', '(no reason recorded)'))
 
     d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Sheet.pdf')})
     check('㊵ a pinned Letter page is refused as a production page, with its size',
@@ -551,6 +641,18 @@ with tempfile.TemporaryDirectory() as td:
     S.run_cli(['--json', 'testbook', 'CNX_ICE'], out=out.append,
               cfg={'editionPrecedence': prec, 'sourceTreesFile': str(local), 'artworkPins': P})
     check('㊵ run_cli --json applies artworkPins', json.loads(out[0])['CNX_ICE']['via'], 'alias')
+    # R8/F8 — the HUMAN mode is the operator's pre-buy check ("sources.py returns the approved file"),
+    # so it must apply the pins too. Without them the alias prints NOT FOUND and the override prints
+    # the normal lookup's updates-2e file — the drawing [USER] rejected — with no marker.
+    out = []
+    rc = S.run_cli(['testbook', 'CNX_ICE', 'CNX_Ibu'], out=out.append,
+                   cfg={'editionPrecedence': prec, 'sourceTreesFile': str(local),
+                        'artworkPins': {**P, **O}})
+    human = out[0].split('\n')
+    check('㊵ run_cli human mode applies artworkPins: the alias and the override, each marked, exit 0',
+          (rc, any(l.rstrip().endswith('updates-2e/OSX/Figure 14_03_ICE.eps  (pinned: alias)') for l in human),
+           any(l.rstrip().endswith('first-edition/Ch_03/CNX_Ibu.eps  (pinned: override)') for l in human)),
+          (0, True, True))
 
     # 🔴 TWO PIN KEYS THAT FOLD ONTO ONE BASENAME. A table is a dict, so the second key used to shadow
     # the first in the fold and the resolver quietly picked a picture by dict order. Both entries are
@@ -572,6 +674,15 @@ with tempfile.TemporaryDirectory() as td:
               resolve_detail('CNX_Fig', trees, prec, pins={'CNX_Fig': DUP['CNX_Fig']}),
               resolve_detail('cnx-fig', trees, prec, pins={'cnx-fig': DUP['cnx-fig']}))],
           [('Drawing_one.eps', 'alias'), ('Drawing_two.eps', 'override')])
+    # FR L13 — the fold-duplicate refusal is about the figure ASKED FOR, not the whole table: with a
+    # third, non-folding key beside the pair, that key still resolves by its pin and an unpinned name
+    # still falls through to the normal lookup.
+    DUP3 = dict(DUP, CNX_Third=pin('override', 'first-edition', 'Ch_03/CNX_Ibu.eps'))
+    d3 = resolve_detail('CNX_Third', trees, prec, pins=DUP3)
+    du = resolve_detail('CNX_Ibu', trees, prec, pins=DUP3) or {}
+    check('㊵ a fold-duplicate pair refuses only its own figure: a third key and an unpinned name resolve',
+          (d3.get('via'), d3.get('refused'), du.get('edition'), du.get('refused'), du.get('via')),
+          ('override', None, 'updates-2e', None, None))
 
 
 # ---------------------------------------------------------------------------

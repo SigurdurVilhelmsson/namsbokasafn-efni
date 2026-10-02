@@ -207,6 +207,23 @@ def _pin_invalid(entry, trees, exts):
     return None
 
 
+def _pin_escapes(file, root, path):
+    """-> why the pinned path, its symlinks followed, leaves its tree or reaches our own output, or
+    None. `_pin_invalid` reads only the DECLARED path, which a symlink defeats: a pin to
+    `OSX/link.eps` passes every lexical rule while the link points into Translated_IS or out of the
+    tree. Judged on the parts RELATIVE to the resolved root, so a tree whose own real path happens to
+    contain an output-dir name does not invalidate every pin."""
+    try:
+        real_root, real = root.resolve(), path.resolve()
+    except (OSError, RuntimeError) as exc:          # a symlink loop, on an older Python
+        return f'file {file!r} cannot be resolved ({exc})'
+    if not real.is_relative_to(real_root):
+        return f'file {file!r} resolves to {real}, outside its tree'
+    if _OWN_OUTPUT_DIRS.intersection(real.relative_to(real_root).parts):
+        return f'file {file!r} resolves to {real}, inside our own translated output'
+    return None
+
+
 def _files_under(basename, trees, precedence, exts, memo):
     """-> every delivery file, in any configured tree, named exactly as the basename or folding
     onto it — INCLUDING an ambiguous fold, which the normal lookup declines and reports as None,
@@ -236,6 +253,10 @@ def _resolve_pin(basename, entry, trees, precedence, exts, memo, size_of, pins):
     root = Path(trees[edition]).expanduser()
     _require_dir(edition, root, basename)
     path = root / file
+    # §C140 ㊵ R2 — BEFORE is_file(): a directory symlink out of the tree is invalid, not missing.
+    escapes = _pin_escapes(file, root, path)
+    if escapes:
+        return _pin_refusal('pin-invalid', f'artworkPins[{basename!r}] is malformed: {escapes}')
     target = PurePosixPath(file).as_posix()
     twins = sorted(k for k, e in pins.items()
                    if _normkey(k) != _normkey(basename) and isinstance(e, dict)
@@ -312,12 +333,17 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
     # image-mapping row an EARLIER run left stay live (CNX_Chem_19_01_BlastFurn is one). Only
     # where no such copy exists does the reader get OpenStax's English raster. The driver names a
     # still-mapped copy (§C140 ⑦).
+    # §C140 ㊵ R4 — A KEY ACTS BY ITS PRESENCE here too (spec D2), as in `retired` and the pins. This
+    # replaces `if reason is not None` (2026-09-16), under which a key whose value was null read as
+    # absent: the normal lookup, or a pin, then resolved the drawing the table exists to refuse.
     if superseded:
         folded = {_normkey(k): v for k, v in superseded.items()}
-        reason = folded.get(_normkey(basename))
-        if reason is not None:
-            return {'path': None, 'refused': 'superseded', 'edition': None,
-                    'candidates': [], 'reason': reason}
+        key = _normkey(basename)
+        if key in folded:
+            reason = folded[key]
+            return {'path': None, 'refused': 'superseded', 'edition': None, 'candidates': [],
+                    'reason': reason if isinstance(reason, str) and reason.strip()
+                    else '(no reason recorded)'}
 
     # 🔴 §C140 ㊵ — AN ARTWORK PIN IS CHECKED AFTER `retired` AND `superseded`, so a pin can never
     # bring back a figure either table refuses.
@@ -469,13 +495,29 @@ def human_report(names, trees, precedence, superseded=None, *, retired=None, pin
     return lines, missing, refused
 
 
+_POLICY_TABLES = (('supersededArtwork', 'superseded'), ('retiredFigures', 'retired'),
+                  ('artworkPins', 'pins'))
+
+
 def policy(cfg):
     """-> the config's refusal tables as keyword arguments for `resolve_detail` and everything
     above it. The ONE place a command-line path reads them (§C140 ㊵): a second copy is how one
-    mode comes to miss a table."""
-    return {'superseded': cfg.get('supersededArtwork'),
-            'retired': cfg.get('retiredFigures'),
-            'pins': cfg.get('artworkPins')}
+    mode comes to miss a table.
+
+    🔴 A TABLE THAT IS NOT AN OBJECT REFUSES THE WHOLE RUN (R3), the same way for all three. A
+    string `artworkPins` used to be iterated as characters, so no pin applied and every pinned
+    figure fell through to the normal lookup with exit 0; a list or a number crashed elsewhere. An
+    absent or null table is no table."""
+    out = {}
+    for name, keyword in _POLICY_TABLES:
+        table = cfg.get(name)
+        if table is not None and not isinstance(table, dict):
+            raise SystemExit(
+                f"{name} in the figure config must be an object (a table of entries), got a "
+                f"{type(table).__name__}: {table!r}. Refusing to resolve anything — a table that "
+                f"cannot be read must never be read as an empty one.")
+        out[keyword] = table
+    return out
 
 
 def run_cli(argv, cfg=None, out=print):
