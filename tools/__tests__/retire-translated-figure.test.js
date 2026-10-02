@@ -400,6 +400,7 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
 
   it('says so, and where the files are, when the restore itself fails', () => {
     const fx = standardBook();
+    const mappingBefore = fx.read(MAPPING);
     let calls = 0;
     const unlink = (p) => {
       calls += 1;
@@ -425,6 +426,8 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
     expect(fx.git('ls-files', `books/b/media/CNX_A${S}.svg`).trim()).toBe(
       `books/b/media/CNX_A${S}.svg`
     );
+    // X-A3b: each undo is attempted on its own, so the failed FILE restore did not stop the mapping's.
+    expect(fx.read(MAPPING)).toBe(mappingBefore);
   });
 
   it('still restores the deleted files when restoring the mapping fails too', () => {
@@ -454,13 +457,24 @@ describe('retire-translated-figure --retire (§C140 ㊵)', () => {
 
   it('a re-run finishes a half-done retire: the row is gone, the copy is not', () => {
     const fx = standardBook();
-    fx.write(
-      'books/b/media/image-mapping.json',
-      JSON.stringify([ROW('CNX_B'), LEGACY], null, 2) + '\n'
-    );
+    // Non-canonical (F3's fixture): a retire that removes no row must not rewrite the mapping (#18).
+    const compact = COMPACT(ROW('CNX_B'), LEGACY);
+    fx.write(MAPPING, compact);
     fx.git('commit', '-qam', 'row removed by hand');
     expect(runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']).code).toBe(0);
     expect(fx.exists(`books/b/media/CNX_A${S}.svg`)).toBe(false);
+    expect(fx.read(MAPPING)).toBe(compact);
+  });
+
+  it('a retire with nothing to do does not give a book a mapping file it had none of (#18)', () => {
+    // A media/ folder but no mapping: with nothing deleted and no row removed, nothing may be written.
+    const fx = makeGitFixture({
+      'books/b/01-source/ch01/m1.cnxml': '<image src="../../media/CNX_A.jpg"/>',
+      'books/b/media/CNX_Loose.svg': '<svg/>',
+    });
+    const r = runTool(fx, ['--book', 'b', '--retire', 'CNX_A', '--apply']);
+    expect(r.code).toBe(0);
+    expect(fx.exists(MAPPING)).toBe(false);
   });
 
   it('removes a row whose translated copy is already gone, deleting nothing', () => {

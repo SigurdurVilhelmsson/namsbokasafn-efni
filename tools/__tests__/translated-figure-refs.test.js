@@ -151,6 +151,23 @@ describe('findReferences — one corpus, one predicate (spec D13)', () => {
     expect(hits.get(`CNX_K${S}.`)).toEqual([`${PUB}/diagram.svg`]);
   });
 
+  // #14: the window before each marker is clamped at the file's start. Unclamped, a negative start
+  // counts from the END, so a reference that opens a file — with a longer needle in the set — is missed.
+  it('finds a reference at the very start of a file while a longer needle is in the set', () => {
+    const f = fx();
+    f.write(
+      `${PUB}/1-3-starts.html`,
+      `CNX_M${S}.svg opens this file, which runs on well past the longest needle in the set.`
+    );
+    const hits = findReferences({
+      repoRoot: f.root,
+      bookRel: 'books/b',
+      needles: needles('CNX_M', 'CNX_A_much_longer_figure_name'),
+      suffix: S,
+    });
+    expect(hits.get(`CNX_M${S}.`)).toEqual([`${PUB}/1-3-starts.html`]);
+  });
+
   it('rethrows a read error other than ENOENT: an unreadable referrer must not make a copy look orphaned', () => {
     const f = fx();
     const readFile = (file, enc) => {
@@ -329,5 +346,17 @@ describe('writeAtomically and restoreFromHead', () => {
     fs.unlinkSync(path.join(f.root, 'books/b/media/x.svg'));
     restoreFromHead(f.root, ['books/b/media/x.svg']);
     expect(f.read('books/b/media/x.svg')).toBe('committed');
+  });
+  // X-F9: `--literal-pathspecs` makes a name with `[` a name. As a glob, `CNX_Q[1]` also matches
+  // `CNX_Q1`, and the rollback would revert that neighbour's uncommitted edit.
+  it('restores only the named file when its name holds glob characters, leaving an edited neighbour alone', () => {
+    const named = `books/b/media/CNX_Q[1]${S}.svg`;
+    const neighbour = `books/b/media/CNX_Q1${S}.svg`;
+    const f = makeGitFixture({ [named]: 'named, committed', [neighbour]: 'neighbour, committed' });
+    fs.unlinkSync(path.join(f.root, named));
+    f.write(neighbour, 'neighbour, edited and not committed');
+    restoreFromHead(f.root, [named]);
+    expect(f.read(named)).toBe('named, committed');
+    expect(f.read(neighbour)).toBe('neighbour, edited and not committed');
   });
 });

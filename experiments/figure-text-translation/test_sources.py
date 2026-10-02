@@ -581,6 +581,27 @@ with tempfile.TemporaryDirectory() as td:
               (d.get('path'), d.get('refused'), d.get('reason')),
               (None, 'superseded', '(no reason recorded)'))
 
+    # M-S6b — an alias conflicts with a file of EXACTLY its basename, not only with a fold: every
+    # alias-conflict fixture above is a fold (CNX_ice2, Cnx_Amb).
+    make_eps(old / 'CNX_ExactAlias.eps', 300, 200)
+    d = resolve_detail('CNX_ExactAlias', trees, prec,
+                       pins={'CNX_ExactAlias': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')})
+    check('㊵ an alias is refused as pin-conflict by an EXACT-name file, naming it',
+          (d.get('refused'), [Path(c['path']).name for c in d.get('candidates') or []]),
+          ('pin-conflict', ['CNX_ExactAlias.eps']))
+    # #8 — our own output is not the delivery: an exact-name file that exists ONLY under
+    # Translated_IS does not make the alias stale.
+    (old / 'Ch_09' / 'Translated_IS').mkdir(parents=True)
+    make_eps(old / 'Ch_09' / 'Translated_IS' / 'CNX_OnlyOurs.eps', 300, 200)
+    d = resolve_detail('CNX_OnlyOurs', trees, prec,
+                       pins={'CNX_OnlyOurs': pin('alias', 'updates-2e', 'OSX/Figure 14_03_ICE.eps')})
+    check('㊵ an exact-name file only under Translated_IS does not block an alias',
+          (d.get('refused'), d.get('via')), (None, 'alias'))
+    # #6 — resolve(), the public wrapper, forwards pins= (no in-repo caller passes it today).
+    p6, k6 = resolve('CNX_ICE', trees, prec, pins=P)
+    check('㊵ resolve() forwards pins= to resolve_detail',
+          (p6 and p6.name, k6), ('Figure 14_03_ICE.eps', 'updates-2e'))
+
     d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Sheet.pdf')})
     check('㊵ a pinned Letter page is refused as a production page, with its size',
           (d['refused'], d['candidates'][0]['paper'], d['candidates'][0]['page']),
