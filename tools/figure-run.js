@@ -1435,9 +1435,11 @@ function processFigureLive(
   // Every other copy, failure and unresolved figure ends at classification: this run composes
   // and publishes nothing for it. ⚠️ That does NOT mean a reader gets OpenStax's own artwork:
   // where an earlier run left a June `_IS.svg` and an image-mapping row, that copy stays live and
-  // keeps serving readers (rvosmosis, N2O5, BlastFurn are measured instances) — this run does
-  // not retire it, and `summarise` names it (§C140 ⑦). Only where no such copy exists is the
-  // reader's picture the OpenStax media file.
+  // keeps serving readers (measured 2026-10-02, after §C140 ㊵'s retire: catalyst, ICETable2_img
+  // and ICETable13_img, unresolved until their artwork pins and buys) — this run does not retire
+  // it, and `summarise` names it (§C140 ⑦); a ruling does, through `retiredFigures` and
+  // `tools/retire-translated-figure.js`. Only where no such copy exists is the reader's picture
+  // the OpenStax media file.
   if (rec.outcome !== 'translated') return;
   if (!rec.mapping) {
     rec.outcome = 'failed-publish';
@@ -1806,7 +1808,8 @@ export function rootViewBox(head) {
  *
  * 🔴 KEYED ON THE COPY, NOT ON THIS RUN'S OUTCOME. The reader hazard is "the file readers are served
  * is a Letter page", and on N2O5 that came apart from "this run refused the figure": its resolver
- * now finds the real EPS, so no refusal fires, while its June `_IS.svg` is still a whole sheet.
+ * found the real EPS, so no refusal fired, while its June `_IS.svg` was still a whole sheet. (That
+ * copy was retired by §C140 ㊵ on 2026-10-02, and N2O5 now refuses first, as `retired`.)
  * Measuring the copy itself also covers a sheet whose source page has since left the tree.
  *
  * @returns {null|{rel:string, mappingRow:boolean, w:number, h:number, paper:string}|
@@ -2433,7 +2436,7 @@ export function summarise(result) {
   }
   // §C140 ⑦ — a live translated copy that is a whole paper-size SHEET, named whatever this run
   // decided about the figure. ⚠️ The wording must be true for a figure that was NOT refused (N2O5
-  // resolves cleanly): nothing here says "refusing".
+  // resolved cleanly until §C140 ㊵ retired it): nothing here says "refusing".
   const sheets = result.figures.filter((f) => f.sheetCopy && f.sheetCopy.paper);
   if (sheets.length) {
     lines.push(

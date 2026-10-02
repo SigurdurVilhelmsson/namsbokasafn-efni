@@ -335,9 +335,11 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
     # ARRANGEMENT. Verified instance: CNX_Chem_19_03_Pattern_img.
     # ⚠️ Refusing is not the same as fixing, and it does NOT always mean the reader gets English:
     # nothing is composed or published for a refused figure, so whatever `_IS.svg` and
-    # image-mapping row an EARLIER run left stay live (CNX_Chem_19_01_BlastFurn is one). Only
-    # where no such copy exists does the reader get OpenStax's English raster. The driver names a
-    # still-mapped copy (§C140 ⑦).
+    # image-mapping row an EARLIER run left stay live (CNX_Chem_19_01_BlastFurn was one, until
+    # §C140 ㊵ retired its copy on 2026-10-02; measured that day, no superseded figure has one
+    # left). Only where no such copy exists does the reader get OpenStax's English raster. The
+    # driver names a still-mapped copy (§C140 ⑦); a ruling removes one through `retiredFigures`
+    # and tools/retire-translated-figure.js.
     # §C140 ㊵ R4 — A KEY ACTS BY ITS PRESENCE here too (spec D2), as in `retired` and the pins. This
     # replaces `if reason is not None` (2026-09-16), under which a key whose value was null read as
     # absent: the normal lookup, or a pin, then resolved the drawing the table exists to refuse.

@@ -1750,11 +1750,6 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_11_04_rvosmosis",
-    "outputName": "CNX_Chem_11_04_rvosmosis_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_11_05_detrg",
     "outputName": "CNX_Chem_11_05_detrg_IS.svg",
     "extension": ".svg"
@@ -2425,18 +2420,8 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_18_07_N2O5",
-    "outputName": "CNX_Chem_18_07_N2O5_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_18_07_Nitrogen",
     "outputName": "CNX_Chem_18_07_Nitrogen_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_18_07_molecreso",
-    "outputName": "CNX_Chem_18_07_molecreso_IS.svg",
     "extension": ".svg"
   },
   {
@@ -2485,11 +2470,6 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_18_09_Cl2OClO2",
-    "outputName": "CNX_Chem_18_09_Cl2OClO2_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_18_09_Limelight",
     "outputName": "CNX_Chem_18_09_Limelight_IS.svg",
     "extension": ".svg"
@@ -2522,11 +2502,6 @@
   {
     "originalImage": "CNX_Chem_18_11_Exercise4e_img",
     "outputName": "CNX_Chem_18_11_Exercise4e_img_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_19_01_BlastFurn",
-    "outputName": "CNX_Chem_19_01_BlastFurn_IS.svg",
     "extension": ".svg"
   },
   {
@@ -3342,11 +3317,6 @@
   {
     "originalImage": "CNX_Chem_21_03_Radiation",
     "outputName": "CNX_Chem_21_03_Radiation_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_21_03_RadioDecay-e619",
-    "outputName": "CNX_Chem_21_03_RadioDecay-e619_IS.svg",
     "extension": ".svg"
   },
   {
