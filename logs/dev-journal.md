@@ -390,3 +390,26 @@ heavy files the register blamed; and a ring gate that cannot run now fails the r
 figure (#533). Status and the next action live in the register's 2026-10-02 ⏩ RESUME, not here.
 
 ---
+
+## 2026-10-02 15:00 - §C140 ㊵'s June-figure buys: two ICE tables kept, catalyst discarded, ibuprofen kept as it was
+
+**Branch:** docs/c140-c40-buys-merged-handoff
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Recent commits:**
+0c2f06d01 Merge pull request #534 from SigurdurVilhelmsson/content/c140-c40-recompose-buys
+3e41c6001 docs(spec): §C140 ㊵ — amend "The buys" step 3 with what the buys taught (register ㊽)
+19441b9ae docs(register): §C140 ㊵ — the buy track is closed; next is merging #534, then step 2's recompose pass
+
+**Why:** The four June figures [USER] ruled should be recomposed were lined up at 0 ISK (an adversarial
+review found nothing necessary) and bought one at a time. Catalyst passed every gate under `VERDICT ok`
+and was still worse than its June copy: the joined MT spelled out the symbol Eₐ, one label was clipped at
+the artwork's edge, another crossed a curve. [USER] kept the June copy, and the buy was undone before any
+commit (media copy, sidecar and pin, then plain and `--stale` dry runs). [USER] then chose to buy only
+the two ICE tables, for decimal commas, keeping each only if it beat its June copy. Both did, in Chromium
+and Firefox. Ibuprofen keeps its June copy. ≈ 3.95 ISK. Status and the next action (plan step 2, the
+recompose pass) live in the register's 2026-10-02 evening ⏩ RESUME, not here.
+
+---
