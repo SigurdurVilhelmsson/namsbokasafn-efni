@@ -648,6 +648,31 @@ describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () =>
     );
   });
 
+  // R6 / FR-M7: a pin examines ONE file, so "the only artwork in <edition>" is false for it. sources.py
+  // marks a pinned production page with `via`, as it marks a pinned hit, and its reason says so.
+  it('names a PINNED production page by the resolver’s own reason (§C140 ㊵)', () => {
+    const pinned = {
+      path: null,
+      refused: 'production-page',
+      edition: 'updates-2e',
+      via: 'alias',
+      candidates: [{ path: '/fake/artwork/Letter.pdf', page: [612, 792], paper: 'Letter' }],
+      reason:
+        "the pinned file in 'updates-2e' is a Letter-size page — a production sheet, not a figure",
+    };
+    expect(refusalReason(pinned)).toBe(
+      "REFUSED, not missing: the pinned file in 'updates-2e' is a Letter-size page — a production " +
+        'sheet, not a figure — /fake/artwork/Letter.pdf (612×792 pt, Letter). Nothing is bought or composed.'
+    );
+  });
+
+  it('CONTROL: an unpinned production page keeps today’s sentence, though it carries a reason too', () => {
+    expect(refusalReason(PAGE)).toBe(
+      'REFUSED, not missing: the only artwork in first-edition is a production page, not a figure — ' +
+        '/fake/artwork/sheet.pdf (612×792 pt, Letter). Nothing is bought or composed.'
+    );
+  });
+
   it('treats a pinned hit (with `via`) exactly like any other hit (§C140 ㊵)', async () => {
     const outcomes = async (extra) => {
       const spawn = fakeSpawn({

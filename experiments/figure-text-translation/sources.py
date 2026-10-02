@@ -281,7 +281,10 @@ def _resolve_pin(basename, entry, trees, precedence, exts, memo, size_of, pins):
     size = size_of(path)
     paper = paper_size_name(size)
     if paper:
+        # `via`, as on a pinned hit: the same kind as the normal lookup's refusal, but about ONE
+        # file, so tools/figure-run.js prints this reason rather than "the only artwork in <edition>".
         return {'path': None, 'refused': 'production-page', 'edition': edition,
+                'via': entry['kind'],
                 'candidates': [{'path': str(path), 'page': [size[0], size[1]], 'paper': paper}],
                 'reason': f'the pinned file in {edition!r} is a {paper}-size page — a production '
                           f'sheet, not a figure'}
@@ -307,7 +310,8 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
     A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page'|
     'pin-conflict'|'pin-missing'|'pin-invalid', 'edition', 'candidates', 'reason'}. Each candidate
-    is {'path'} plus 'page' and 'paper' when they are known.
+    is {'path'} plus 'page' and 'paper' when they are known. A 'production-page' refusal of a
+    PINNED file also carries 'via', as a pinned hit does.
     """
     # 🔴 §C140 ㊵ — A RETIRED FIGURE IS REFUSED FIRST, BEFORE `superseded` AND BEFORE ANY LOOKUP.
     # Retired is about the TRANSLATED COPY: a [USER] ruling removed it, readers get OpenStax's own

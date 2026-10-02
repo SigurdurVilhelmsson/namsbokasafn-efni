@@ -584,6 +584,14 @@ with tempfile.TemporaryDirectory() as td:
     check('㊵ a pinned Letter page is refused as a production page, with its size',
           (d['refused'], d['candidates'][0]['paper'], d['candidates'][0]['page']),
           ('production-page', 'Letter', [612.0, 792.0]))
+    # R6: "the only artwork in <edition>" is false for a pin, which examined one file, so a pinned
+    # production page says it was pinned — by `via`, as a pinned hit does — and figure-run prints
+    # this reason instead of that sentence.
+    check('㊵ a pinned production page carries via, and a reason that names the pin',
+          (d.get('via'), d['reason'].startswith("the pinned file in 'updates-2e'")), ('alias', True))
+    d_unpinned = resolve_detail('Sheet', trees, prec)
+    check('㊵ CONTROL: an unpinned production page carries no via',
+          (d_unpinned['refused'], 'via' in d_unpinned), ('production-page', False))
     d = resolve_detail('CNX_ICE', trees, prec, pins={'CNX_ICE': pin('alias', 'updates-2e', 'OSX/Junk.pdf')})
     check('㊵ a pinned file whose size cannot be read resolves and is FLAGGED',
           (Path(d['path']).name, d.get('pageUnknown')), ('Junk.pdf', True))
