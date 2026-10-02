@@ -255,6 +255,10 @@ so everything works here without it ever being declared, and on a clean box `ext
 `pypdfium2` and the crypto stack with it. ⚠️ **No CI workflow runs any of this Python**, so a
 broken install line goes red on a human's machine and nowhere else.
 
+✏️ *Amended 2026-10-02: the paragraph below is history. Since §C140 ㊼ (`829206a8c`), a ring gate
+that cannot run (a missing numpy included) makes the run's verdict **needs a human**, not
+`VERDICT ok`. The figure is still published unhealed, so the prerequisite below still stands.*
+
 🔴 **`numpy` is the other one, and its failure is QUIETER: the driver does not go red at all.**
 `figure-run.js`'s ring gate (§C140 ⑩) spawns `figure-rings.py`, whose `census` needs no numpy
 but whose `heal` and `gate` import it lazily — so on a `pylibs/` without it the census finds the

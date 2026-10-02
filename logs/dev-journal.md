@@ -413,3 +413,25 @@ and Firefox. Ibuprofen keeps its June copy. ≈ 3.95 ISK. Status and the next ac
 recompose pass) live in the register's 2026-10-02 evening ⏩ RESUME, not here.
 
 ---
+
+## 2026-10-02 20:30 - §C140 step 2 re-derived: three of six sub-items not built, five June-better copies, a design spec awaiting rulings
+
+**Branch:** docs/c140-c40-buys-merged-handoff
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M experiments/figure-text-translation/README.md
+ M experiments/figure-text-translation/REGISTER.md
+ A docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-design.md
+ M logs/dev-journal.md
+
+**Why:** The recompose pass's sub-item list came from a 2026-09-26 audit that predated six PRs, so each
+item was measured as a hypothesis before planning (25 read-only agents, two verifiers per item, 0 ISK).
+The heavy-figure and feImage work turned out to be built and simply picked up by the bump. The comment
+icons, the Nitrogen layout and the kept-English short words are not built, and PerTable2 needs a guard
+no existing config kind can provide. Comparing the prepared tree with what readers are served today
+showed that the held sync, not the pass, is what replaces the reader's picture, and that five prepared
+copies are worse than the June ones. Several of those choices are [USER]'s, so a spec with a decision
+sheet was written instead of a plan. Status and the next action live in the register's 2026-10-02 night
+⏩ RESUME, not here.
+
+---
