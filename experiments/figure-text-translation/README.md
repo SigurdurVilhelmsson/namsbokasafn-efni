@@ -80,24 +80,33 @@ lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-de
    `retired`, and never mapped again. Carry a retirement out with
    `node tools/retire-translated-figure.js --book <slug> --retire <names>` (row and translated copy),
    then, after ②'s whole-book re-render, `--prune` (published copies nothing references). Both are dry
-   runs unless `--apply`.
+   runs unless `--apply`. A retire that would delete or write anything refuses unless
+   `image-mapping.json` is tracked and unmodified in git (commit it first, so a failed retire is restored
+   exactly), and it never deletes a file that a row it keeps, a legacy `figureId` row included, still
+   names. Neither mode deletes a copy git does not track as a plain, unmodified file: an
+   assume-unchanged or skip-worktree copy is kept.
 2. **`supersededArtwork`** — the only vector in the delivery is known to be superseded by the published
-   figure: refused as `superseded`. A figure may be in both 1 and 2; retired wins.
+   figure: refused as `superseded`. A figure may be in both 1 and 2; retired wins. Like the other two
+   tables, a key acts by its presence: an entry whose reason is empty or null still refuses.
 3. **`artworkPins`** — the ONE file a figure's artwork comes from, as a tree key plus a path inside it.
    An `alias` fills a hole in the delivery and is refused as `pin-conflict` once any file matches the
    basename; an `override` deliberately replaces the normal lookup. A pin names an exact file, never a
    tree or a stem: the base tree holds two different ibuprofen drawings, and a tree-only rule returns
-   the wrong one. A missing pinned file is `pin-missing`, never a fall-back.
-4. **The normal lookup** — editions in `editionPrecedence` order, formats in `SOURCE_EXTS` order, then a
-   case-and-punctuation fold (`_normkey`, which never strips `_img`). An ambiguous fold (two differently
-   named files in one edition folding onto the basename) yields no candidate from that edition: the
-   lookup moves on to the next edition, and if nothing resolves the figure is reported as not found, not
-   refused.
+   the wrong one. A missing pinned file is `pin-missing`, never a fall-back. A pin is judged by where
+   its path resolves: one whose symlinks lead out of its tree, or into `Translated_IS`, is
+   `pin-invalid`.
+4. **The normal lookup** — for each edition in `editionPrecedence` order: its exact names in
+   `SOURCE_EXTS` order, then a case-and-punctuation fold within that edition (`_normkey`, which never
+   strips `_img`). An ambiguous fold (two differently named files in one edition folding onto the
+   basename) yields no candidate from that edition: the lookup moves on to the next edition, and if
+   nothing resolves the figure is reported as not found, not refused.
 
 Every table's keys are matched after the same fold, and `tools/lib/figure-config-validate.js` (run by
-`npm test`) checks every entry. An entry lands in the commit that acts on it; **run that validator
-locally before a pin's buy** (`npx vitest run tools/__tests__/figure-config-validate.test.js`), because
-CI runs only after the money is spent.
+`npm test`) checks every entry. A table that is not an object (a string, a list, a number) stops
+`sources.py` in both its modes, naming the table; it is never read as an empty one. An entry lands in
+the commit that acts on it; **run that validator locally before a pin's buy**
+(`npx vitest run tools/__tests__/figure-config-validate.test.js`), because CI runs only after the money
+is spent.
 
 ## Where the translated file goes
 

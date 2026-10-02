@@ -18,6 +18,14 @@ import { execFileSync } from 'child_process';
 const made = [];
 
 /**
+ * The environment every git call here runs with: this process's, minus every `GIT_*` variable. A git
+ * hook exports some — an ABSOLUTE `GIT_INDEX_FILE` under `git commit -a` or a partial commit — and
+ * inherited, it points the fixture's `git add -A` at the OUTER repository's index (measured).
+ */
+const gitEnv = () =>
+  Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith('GIT_')));
+
+/**
  * A fresh temp directory that `cleanupFixtures()` will remove — for a test that needs a plain
  * directory (or a bare, commit-less repository) beside the `makeGitFixture` ones.
  * @param {string} prefix
@@ -37,7 +45,10 @@ export function cleanupFixtures() {
 export function makeGitFixture(files, { ignore = ['*.backup.*', '*.tmp'] } = {}) {
   const root = makeTmpDir('c40-');
   const git = (...args) =>
-    execFileSync('git', ['-C', root, ...args], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
+    execFileSync('git', ['-C', root, ...args], {
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: gitEnv(),
+    }).toString();
   git('init', '-q');
   git('config', 'user.email', 'fixture@example.invalid');
   git('config', 'user.name', 'fixture');

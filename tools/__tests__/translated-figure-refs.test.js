@@ -293,6 +293,29 @@ describe('topLevelTranslatedCopies', () => {
   });
 });
 
+describe('makeGitFixture — the test helper (FR L28)', () => {
+  // A git hook can export an ABSOLUTE GIT_INDEX_FILE (`git commit -a`, or a partial commit, hands one
+  // to its hooks). Inherited, it pointed the fixture's own `git add -A` at that index — the OUTER
+  // repository's. Only makeGitFixture runs while it is set: the tool's runGit inherits it too.
+  it('runs git with every GIT_* variable removed, so an outer index is never written', () => {
+    const outerIndex = path.join(makeTmpDir('c40-outer-'), 'index');
+    const saved = process.env.GIT_INDEX_FILE;
+    let f;
+    process.env.GIT_INDEX_FILE = outerIndex;
+    try {
+      f = makeGitFixture({ 'books/b/media/x.svg': 'x' });
+    } finally {
+      if (saved === undefined) delete process.env.GIT_INDEX_FILE;
+      else process.env.GIT_INDEX_FILE = saved;
+    }
+    expect(fs.existsSync(outerIndex)).toBe(false);
+    // CONTROL: the fixture's own commit holds its files, so git really ran.
+    expect(f.git('ls-tree', '-r', '--name-only', 'HEAD').split('\n')).toContain(
+      'books/b/media/x.svg'
+    );
+  });
+});
+
 describe('writeAtomically and restoreFromHead', () => {
   it('writes through a temp file in the same directory and leaves none behind', () => {
     const dir = makeTmpDir('c40-atomic-');

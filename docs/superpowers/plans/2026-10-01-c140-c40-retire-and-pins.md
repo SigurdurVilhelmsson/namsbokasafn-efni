@@ -1,5 +1,7 @@
 # §C140 ㊵ — Retire Tool and Artwork Pins Implementation Plan
 
+> **EXECUTED 2026-10-01/02 — a frozen planning record.** Where this plan's scripted text differs from the tree, the tree wins; the rulings made during execution are summarised in the PR description.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the two tools §C140 ㊵ needs: a durable "retired" record with a tool that retires a figure's translated copy and later prunes its orphaned published copies, and artwork pins (alias/override) that `sources.py` resolves to one exact file.

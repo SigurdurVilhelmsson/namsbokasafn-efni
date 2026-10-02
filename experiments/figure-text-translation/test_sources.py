@@ -190,7 +190,8 @@ with tempfile.TemporaryDirectory() as td:
 # §C140 ⑦ — PRODUCTION PAGES ARE SKIPPED, AND REFUSED ONLY WHEN AN EDITION HAS NOTHING ELSE
 # Measured 2026-09-16, before the per-candidate rule: exactly 2 of 910 resolved artworks sat at a
 # standard paper size (rvosmosis, N2O5 — both Letter), 0 others even at ±10 pt; the next largest is
-# 468×576 pt. Today only rvosmosis is refused: N2O5's .eps sibling resolves.
+# 468×576 pt. On 2026-10-01, before any ㊵ retirement, only rvosmosis was refused: N2O5's .eps
+# sibling resolved.
 # ---------------------------------------------------------------------------
 import pikepdf, struct
 import sources as S

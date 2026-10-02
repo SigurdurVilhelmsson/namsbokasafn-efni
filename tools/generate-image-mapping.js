@@ -315,12 +315,12 @@ function main() {
   }
   if (unmatched.length) {
     console.error(
-      `\nWarning: ${unmatched.length} translated file(s) had no matching <figure> in source` +
+      `\nWarning: ${unmatched.length} translated file(s) match no <image src> basename in the source CNXML` +
         `${args.chapter ? ` (chapter ${args.chapter})` : ''}:`
     );
     for (const f of unmatched) console.error(`  ${f}`);
     console.error(
-      `  → Check the basename matches the original <image src>, or that the image sits inside a <figure id>.`
+      `  → Name each <original-basename>${args.suffix}.<ext>, where <original-basename> is the basename of an <image src> in the source, whatever element encloses that image.`
     );
   }
   console.log(written ? `\nWrote ${mappingPath}` : `\n(dry-run) Would write ${mappingPath}`);
