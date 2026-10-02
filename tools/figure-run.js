@@ -882,7 +882,17 @@ const DRIFTABLE = new Set(['copied-photo', 'copied-textless', 'unreadable-text']
  * blocked by this step and artwork is never rewritten on a guess: the damage a wrong heal does is
  * silent and reader-visible, while a skipped heal is one outline somebody can still see.
  *
- * @param {object} rec the figure record; `rec.rings` and `rec.warnings` are written
+ * 🔴 §C140 ㊼ — BUT A GATE THAT COULD NOT RUN MUST NOT LEAVE THE RUN GREEN. Not blocking the FIGURE
+ * is right; letting the RUN say `VERDICT ok` is not. Every such failure also sets
+ * `rec.ringGateFailed`, and `verdict()` turns any figure carrying it into a fatal reason, so the run
+ * says a human must look. Measured cases of the silent green: 2026-09-15, a `pylibs/` without
+ * numpy shipped brain's visible ring unhealed under `VERDICT ok`; and until §C140 ㊸ (2026-10-02)
+ * the census on Econfig could not finish, so a recompose would have spent this step's 600 s timeout
+ * and gone on with its gate unrun. A candidate the gate DECLINES is a decision, not a failure, and
+ * stays a warning; so does a dry run's candidate list.
+ *
+ * @param {object} rec the figure record; `rec.rings`, `rec.ringWarnings` and, when the gate could
+ *   not run to a decision, `rec.ringGateFailed` are written
  * @param {string} outDir this figure's prepared directory
  */
 export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync = fs.existsSync }) {
@@ -896,6 +906,11 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const warn = (msg) => {
     rec.ringWarnings = rec.ringWarnings || [];
     rec.ringWarnings.push(msg);
+  };
+  // §C140 ㊼ — the gate could not reach a decision: a warning AND a mark the verdict reads.
+  const fail = (msg) => {
+    warn(msg);
+    rec.ringGateFailed = true;
   };
   // 🔴 EVERY FAILURE BELOW CARRIES THE CHILD'S OWN CAUSE. Fail-closed means the run goes on and
   // exits 0, so this warning is the only place the cause can surface: on 2026-09-15 a `pylibs/`
@@ -954,7 +969,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   try {
     census = JSON.parse(censused.stdout)[0];
   } catch {
-    warn(
+    fail(
       `census did not return JSON (exit ${censused.status}); artwork left untouched${cause(censused)}`
     );
     return rec;
@@ -975,7 +990,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
 
   const vb = census.viewBox || [0, 0, 0, 0];
   if (!(vb[2] > 0 && vb[3] > 0)) {
-    warn('artwork has no usable viewBox, so a render cannot be mapped to it; left untouched');
+    fail('artwork has no usable viewBox, so a render cannot be mapped to it; left untouched');
     return rec;
   }
   const scale = RING_RENDER_DPI / 72;
@@ -985,7 +1000,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const counterfactual = path.join(outDir, 'artwork.ring-all.svg');
   const healedAll = runPy(['heal', artwork, '--out', counterfactual, '--approve-all']);
   if (healedAll.status !== 0 || !existsSync(counterfactual)) {
-    warn(
+    fail(
       `could not build the counterfactual heal (exit ${healedAll.status}); left untouched${cause(healedAll)}`
     );
     return rec;
@@ -1005,7 +1020,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const rb = render(artwork, before);
   const ra = render(counterfactual, after);
   if (rb.status !== 0 || ra.status !== 0 || !existsSync(before) || !existsSync(after)) {
-    warn(
+    fail(
       `could not render the artwork (before ${rb.status}, after ${ra.status}), so ` +
         `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched${cause(rb, ra)}`
     );
@@ -1025,7 +1040,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   ]);
   const report = readJson(reportPath);
   if (gated.status !== 0 || !report) {
-    warn(
+    fail(
       `the gate produced no verdict (exit ${gated.status}); artwork left untouched${cause(gated)}`
     );
     return rec;
@@ -1048,7 +1063,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const healedPath = path.join(outDir, 'artwork.ring-healed.svg');
   const healed = runPy(['heal', artwork, '--out', healedPath, '--gate-report', reportPath]);
   if (healed.status !== 0 || !existsSync(healedPath)) {
-    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched${cause(healed)}`);
+    fail(`the gated heal failed (exit ${healed.status}); artwork left untouched${cause(healed)}`);
     rec.rings.approved = [];
     return rec;
   }
@@ -2286,6 +2301,7 @@ export async function runFigures(args, deps = {}) {
         overflowFigures: figuresWithComposeNote(selected, 'overflow').length,
         localizedFigures: figuresWithComposeNote(selected, 'localized').length,
         containerErrorFigures: figuresWithComposeNote(selected, 'containerErrors').length,
+        ringGateFailedFigures: selected.filter((r) => r.ringGateFailed).length,
       }),
       tmpRoot,
     };
@@ -2649,9 +2665,15 @@ export function summarise(result) {
   if (ringed.length) {
     const healed = ringed.reduce((n, f) => n + ((f.rings && f.rings.approved.length) || 0), 0);
     const refused = ringed.reduce((n, f) => n + ((f.rings && f.rings.refused.length) || 0), 0);
+    // §C140 ㊼ — a figure whose gate could not run is named here too, but a failed census never
+    // learned whether it carries a candidate, so carriers are counted from the census and the
+    // figures that could not be gated are counted apart (a figure can be both).
+    const carriers = ringed.filter((f) => f.rings && f.rings.candidates).length;
+    const unjudged = ringed.filter((f) => f.ringGateFailed).length;
     lines.push(
-      `  soft-mask ring gate (§C140 ⑩) — ${ringed.length} figure(s) carry a candidate; ` +
-        `${healed} healed, ${refused} refused:`
+      `  soft-mask ring gate (§C140 ⑩) — ${carriers} figure(s) carry a ` +
+        `candidate; ${healed} healed, ${refused} refused` +
+        (unjudged ? `; ${unjudged} figure(s) could NOT be gated:` : ':')
     );
     for (const f of ringed) {
       if (f.rings && f.rings.approved.length) {

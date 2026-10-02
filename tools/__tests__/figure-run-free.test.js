@@ -1699,3 +1699,65 @@ describe('§C140 ⑦ — the dry run says what a live run would buy', () => {
     fs.rmSync(dir, { recursive: true, force: true });
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊼ — A RING GATE THAT COULD NOT RUN MUST NOT LEAVE THE RUN GREEN. `applyRingGate` keeps
+// the figure going with its artwork unhealed (right for the figure); the RUN has to say a human
+// must look. On 2026-09-15 a box without numpy shipped a visible ring under `VERDICT ok`.
+// The fake above never writes `artwork.svg`, so in every other test the gate stands down; here
+// one figure's artwork is planted and the gate's own stage is answered, so the wiring from
+// `applyRingGate` through `runFigures` to `verdict` and `summarise` is exercised end to end.
+describe('§C140 ㊼ — a ring gate that could not run makes the run need a human', () => {
+  const withRingGate = (census) => {
+    let planted = null;
+    const base = fakeSpawn({
+      prepare: (basename, outDir) => {
+        if (!planted) {
+          planted = basename;
+          fs.writeFileSync(
+            path.join(outDir, 'artwork.svg'),
+            '<svg xmlns="http://www.w3.org/2000/svg"/>'
+          );
+        }
+        return {};
+      },
+    });
+    const fn = (call) => {
+      if (call.stage !== 'ring-gate') return base(call);
+      fn.ringCalls += 1;
+      return census;
+    };
+    fn.ringCalls = 0;
+    fn.planted = () => planted;
+    return fn;
+  };
+
+  it('a census that fails marks the figure, fails the verdict and says so in the report', async () => {
+    const spawn = withRingGate({ status: 1, stdout: '', stderr: 'census exploded' });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    expect(spawn.ringCalls).toBe(1); // non-vacuity: the gate really ran, once, on the planted figure
+    const rec = result.figures.find((f) => f.basename === spawn.planted());
+    expect(rec.ringGateFailed).toBe(true);
+    expect(result.verdict.ok).toBe(false);
+    expect(
+      result.verdict.reasons.filter((r) => r.startsWith('1 figure(s) whose soft-mask ring gate'))
+    ).toHaveLength(1);
+    const text = summarise(result);
+    expect(text).toContain('1 figure(s) could NOT be gated');
+    expect(text).toContain('census exploded');
+    expect(text).toContain('VERDICT needs a human');
+  });
+
+  it('CONTROL: the same run, with a census that answers, is ok', async () => {
+    const spawn = withRingGate({
+      status: 0,
+      stderr: '',
+      stdout: JSON.stringify([{ svg: 'artwork.svg', viewBox: [0, 0, 1, 1], candidates: [] }]),
+    });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    expect(spawn.ringCalls).toBe(1);
+    expect(result.figures.some((f) => f.ringGateFailed)).toBe(false);
+    expect(result.verdict.ok).toBe(true);
+    expect(summarise(result)).toContain('VERDICT ok');
+  });
+});
