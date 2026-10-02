@@ -33,7 +33,14 @@
   },
   "_retiredFigures": "§C140 ㊵. Basenames whose TRANSLATED COPY was retired by a [USER] ruling: readers get OpenStax's own figure, and no run may make a translated copy again. sources.py refuses these first — before supersededArtwork and before any lookup — as `retired`; tools/generate-image-mapping.js never maps them; tools/retire-translated-figure.js removes their image-mapping row and translated copy (--retire), and later their published copies once nothing references them (--prune). Different from supersededArtwork, which is about the SOURCE drawing: a figure may be in both (BlastFurn, Ques11ans). The value is what was ruled and why, over 40 characters. An entry lands in the commit that runs the retire, never earlier. The JS tools match a key exactly; sources.py folds case and punctuation; tools/lib/figure-config-validate.js requires each key to be exactly one book's image basename.",
 
-  "artworkPins": {},
+  "artworkPins": {
+    "CNX_Chem_14_03_ICETable2_img": {
+      "kind": "alias",
+      "edition": "updates-2e",
+      "file": "OSX_Chem2e_Ch14_SourceFiles/Figure 14_03_ICETable2_img.eps",
+      "reason": "[USER] ruled 2026-09-30 (register §C140 ㊵): recompose from this file. The delivery holds the figure's artwork only under this name, which sources.py does not fold onto the basename. Measured 2026-10-01: every value matches the published jpg, it renders at exactly the jpg's 1000x262 px at 200 dpi, and the June _IS.pdf's Title names this file. Not CNX_Chem_14_06_ICETable2_img.eps, a different drawing no module references. [USER] confirmed 2026-10-02 (register §C140 ㊽): buy it for its decimal commas, and keep it only if it beats the June copy; bought that day and kept after an old/new/source comparison in Chromium and Firefox."
+    }
+  },
   "_artworkPins": "§C140 ㊵. {basename: {kind, edition, file, reason}}: the ONE file a figure's artwork is taken from. `edition` is a key of this book's trees in sources.local.json; `file` is a path inside that tree, never a stem or a pattern. kind `alias` fills a hole in the delivery, and is refused as pin-conflict once any file matches the basename, exactly or folded. kind `override` deliberately replaces the normal lookup. A missing file is refused as pin-missing, never a fall-back; a malformed entry as pin-invalid; two pins naming one file as pin-conflict. A pin lands in the commit that runs its buy, after tools/lib/figure-config-validate.js passes locally: CI runs only after the money is spent.",
 
   "paperSizes": {
