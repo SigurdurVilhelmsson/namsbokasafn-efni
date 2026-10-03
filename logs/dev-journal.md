@@ -435,3 +435,25 @@ sheet was written instead of a plan. Status and the next action live in the regi
 ⏩ RESUME, not here.
 
 ---
+
+## 2026-10-03 - §C140 step 2: rulings taken, PR-A half-planned, value sheet filled; paused at the usage limit
+
+**Branch:** feat/c140-c49-step2-code-fixes (pushed, no PR)
+**Modified:**
+ A docs/superpowers/plans/2026-10-03-c140-step2-code-fixes.md
+ A docs/handoffs/2026-10-03-step2-value-sheet.md
+ M docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-design.md
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Why:** [USER] chose the recommended option on all four design questions: a keep-copy guard, PerTable2's
+June raster, compose-time values for the short English words, and value edits for HetCats and Graphene. A
+drafting workflow then wrote the two plans section by section, each section checked by two verifiers. The
+weekly usage limit stopped it with 8 of 15 agents done, so PR-A's plan was assembled from the finished
+sections (two verified, two not) and its fifth part is a stub. The verifiers caught one money-and-overwrite
+ordering trap for PR-B: a kept figure's guard entry must land no later than its sidecar deletion. The value
+sheet was built from real keys and filled by [USER]. It showed that the figure font cannot draw ⁰ or ⁻, so
+formula values must be drawn as raised and lowered runs. Status and the next action live in the register's
+2026-10-03 ⏩ RESUME, not here.
+
+---
