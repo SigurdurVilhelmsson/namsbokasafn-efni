@@ -34,7 +34,7 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * V §C140 ㉑ REAL Nitrogen / conjugate / Blood - `figtext.visual_lines` merges a stacked charge or a same-size
   superscript into ONE visual line (V1-V4); a genuine two-line label does not merge (V5); FT.lines and `block_key`
   still split (V6, V7); the threshold is 0.6 of a lead (V8); an arc is never merged (V9); the measured CbcCltPckd
-  `C|B|A` over-merge is pinned (V10).
+  `C|B|A` over-merge is pinned (V10); the threshold scales with the LARGER first-run size (V11).
 * T* transfer - whole token, repeats, `CO2` not donating `O2`, the anchored fallback, empty
   anchor, glued repeats -> `partial`, Unicode-subscript and name edits -> `absent`.
 * B* body size - an 11 pt STIX first run over 9 pt letters is not the label's size.
@@ -408,6 +408,16 @@ def v_all():
           repr(texts(FT.visual_lines(arc))))
     check('V10 REAL CbcCltPckd C|B|A: 3 FT.lines, and the rule merges C and B - pinned as measured',
           len(FT.lines(CBA)) == 3 and texts(FT.visual_lines(CBA)) == ['CB', 'A'], repr(texts(FT.visual_lines(CBA))))
+    # the threshold's SIZE is the LARGER first-run size of the two lines (instrument A's max): 6.0 pt apart, a
+    # 9 pt / 7 pt pair merges whichever line holds the 9 pt run (6.0 < 0.6 x 1.222 x 9 = 6.60); sized by min, or
+    # by either line's own first run, one of the two does not (0.6 x 1.222 x 7 = 5.13). Census-equivalent today
+    # (0 of 14,962 blocks change), so this pins the rule, not a measured case.
+    big_first = [run('Aa', 9.0, 0.0, 100.0), run('b', 7.0, 12.0, 106.0)]
+    small_first = [run('a', 7.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 106.0)]
+    check('V11 the threshold scales with the LARGER of the two first-run sizes (9 pt over 7 pt, either order)',
+          [len(FT.lines(b)) for b in (big_first, small_first)] == [2, 2]
+          and [len(FT.visual_lines(b)) for b in (big_first, small_first)] == [1, 1],
+          repr([texts(FT.visual_lines(b)) for b in (big_first, small_first)]))
 
 
 attempt('V', v_all)

@@ -907,9 +907,10 @@ describe('the dry run spends nothing and writes nothing', () => {
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 // 🔴 THIS BRANCH HAD NO EXERCISER, AND TWO MUTATIONS OF IT SURVIVED ALL 57 TESTS.
-// `books/efnafraedi-2e/figure-text/` does not exist — the campaign has minted no sidecar for a
-// real book yet — so `readSidecar` returns null for every figure of every chapter, `&&`
-// short-circuits, and no corpus-driven test can reach `isStale` through `runFigures` at all.
+// When this was written `books/efnafraedi-2e/figure-text/` did not exist, so `readSidecar`
+// returned null for every figure, `&&` short-circuited, and no corpus-driven test could reach
+// `isStale` through `runFigures` at all. Real sidecars exist now (the first purchase was on
+// 2026-09-12); the tests below still inject the reader, so each one controls its own case.
 // The reader is injected rather than planted on disk, because a test that writes into `books/`
 // would violate the invariant the suite next door exists to prove.
 describe('a figure whose sidecar is current is skipped before anything is spent', () => {
@@ -1014,6 +1015,22 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
     });
     expect(currentBy(current, restamped)).toBeGreaterThan(0);
     expect(restamped.tally['skipped-current'] || 0).toBe(currentBy(current, restamped));
+
+    // A second control, for the HASH half of "current". In all three worlds above composedHash
+    // equals renderHash, so a skip that read composedVersion alone passed every test in this file
+    // (measured 2026-10-03). Here every sidecar carries THIS composer's version over artwork
+    // published from other blocks, which `isStale` calls stale.
+    const unpublished = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedHash: `not-${s.renderHash}`, composedVersion: COMPOSER_VERSION };
+    };
+    const drifted = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: unpublished,
+      sidecarExists: fs.existsSync,
+    });
+    expect(drifted.tally['skipped-current'] || 0).toBe(currentBy(unpublished, drifted));
+    expect(drifted.tally['skipped-current'] || 0).toBe(0);
 
     // Control: with the filesystem stubbed empty, the same corpus skips nothing — so the
     // assertions above are measuring the sidecars and not some unrelated skip path.
@@ -1836,7 +1853,13 @@ describe('§C140 ㊼ — a ring gate that could not run makes the run need a hum
 // checked property: every runFigures and main call names `PRISTINE`, `CORPUS`, or BOTH sidecar
 // readers, because stubbing one alone leaves the other on the real tree.
 describe('every driver run in this file states which sidecar world it runs in (§C140 ㊳)', () => {
-  /** Each call of `name` in `text`, with its argument text, found by balancing parentheses. */
+  /**
+   * Each call of `name` in `text`, with its argument text, found by balancing parentheses.
+   * A comment inside the arguments is skipped and left out of that text: an apostrophe in one
+   * would open a "string" that swallows the next call's `PRISTINE`, and a name a comment mentions
+   * would count as stated. A regex literal is not parsed, so a quote or parenthesis inside one
+   * would still miscount.
+   */
   const callsOf = (name, text) => {
     const calls = [];
     const re = new RegExp(`\\b${name}\\(`, 'g');
@@ -1844,20 +1867,29 @@ describe('every driver run in this file states which sidecar world it runs in (�
     while ((m = re.exec(text)) !== null) {
       let depth = 1;
       let quote = null;
-      let i = m.index + m[0].length;
-      for (; i < text.length && depth > 0; i++) {
+      let args = '';
+      for (let i = m.index + m[0].length; i < text.length; i++) {
         const ch = text[i];
+        if (!quote && ch === '/' && (text[i + 1] === '/' || text[i + 1] === '*')) {
+          const lineComment = text[i + 1] === '/';
+          const close = lineComment ? text.indexOf('\n', i) : text.indexOf('*/', i + 2);
+          if (close === -1) break;
+          i = lineComment ? close - 1 : close + 1; // the loop's i++ resumes just after the comment
+          continue;
+        }
         if (quote) {
-          if (ch === '\\') i++;
-          else if (ch === quote) quote = null;
+          if (ch === '\\') {
+            args += text.slice(i, i + 2);
+            i++;
+            continue;
+          }
+          if (ch === quote) quote = null;
         } else if (ch === "'" || ch === '"' || ch === '`') quote = ch;
         else if (ch === '(') depth++;
-        else if (ch === ')') depth--;
+        else if (ch === ')' && --depth === 0) break;
+        args += ch;
       }
-      calls.push({
-        line: text.slice(0, m.index).split('\n').length,
-        args: text.slice(m.index + m[0].length, i - 1),
-      });
+      calls.push({ line: text.slice(0, m.index).split('\n').length, args });
     }
     return calls;
   };
@@ -1873,7 +1905,8 @@ describe('every driver run in this file states which sidecar world it runs in (�
   });
 
   // The scan's own control: a bare call is flagged; a multi-line call with a nested call and a
-  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough.
+  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough; and a
+  // comment can neither swallow the next call (its apostrophe) nor state a world (its words).
   it('CONTROL: flags a bare call and a one-reader call, passes a nested multi-line PRISTINE call', () => {
     const fn = 'runFigures'; // built, never written as a call, so the scan above cannot match it
     const planted = [
@@ -1883,11 +1916,19 @@ describe('every driver run in this file states which sidecar world it runs in (�
       `  { spawn: fakeSpawn({ resolve: (n) => (n === ')' ? null : null) }), ...PRISTINE }`,
       `);`,
       `await ${fn}(CH04, { spawn, readSidecar: () => null });`,
+      `await ${fn}(CH04, {`,
+      `  spawn, // the real tree: don't stub it (yet`,
+      `});`,
+      `await ${fn}(CH04, { spawn, ...PRISTINE });`,
+      `await ${fn}(CH04, { spawn /* not PRISTINE */ });`,
     ].join('\n');
     expect(callsOf(fn, planted).map((c) => [c.line, statesItsWorld(c.args)])).toEqual([
       [1, false],
       [2, true],
       [6, false],
+      [7, false],
+      [10, true],
+      [11, false],
     ]);
   });
 });

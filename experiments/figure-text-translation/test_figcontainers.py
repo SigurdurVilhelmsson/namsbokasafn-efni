@@ -459,6 +459,13 @@ CUED = [run(298.64, 150.0, 'Label', size=9.0, adv=40.0)]
 c = FC.container_for(0, [CUED, CBA], page(), blank(), H)
 check('pin: a sibling cue reads the OTHER block\'s FT.lines frames (C\'s left edge 298.64 -> left)',
       c['align'] == 'left' and c['align_why'] == 'single-cue-left-only->left', f"{c['align']} {c['align_why']}")
+# PIN 2 - the OBSTACLE half, which the sibling-cue pin above cannot see: free_box reads line_frames too. A 7 pt
+# label left of C|B|A, above B's glyph box (top 95.98) and level with C's (93.28-101.74): its rightward free-box
+# rays pass over B and stop at C's left edge, 298.64. The merged C+B visual frame would stop them at B's 289.27.
+LEFT = [run(250.0, 97.07, 'Label', size=7.0, adv=20.0)]
+fb = FC.free_box(0, [LEFT, CBA], blank(), H)
+check('pin: a free-box ray stops at the OTHER block\'s FT.lines frames (C\'s left edge 298.64, not B\'s 289.27)',
+      abs(fb['FR'] - 298.64) <= FC.MARCH_STEP and fb['by']['right'] == 'hit', f"FR {fb['FR']} {fb['by']['right']}")
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)

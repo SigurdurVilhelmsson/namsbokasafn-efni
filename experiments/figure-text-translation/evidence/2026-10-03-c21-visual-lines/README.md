@@ -12,7 +12,7 @@ commit (`base.sha`) and the tree at ㉑'s last commit (`after.sha`) — using ea
   `tools/publish-figure-svg.js`, and writes only under `--data`, which is off-repo:
   `~/.cache/namsbokasafn-audit/2026-10-03-c21/`.
 - **Population (27).** The 13 rule-A figures that have a sidecar; the 11 sidecar figures whose rule-A merges are all
-  in KEPT blocks — the population the rejected `line_frames` design would move, so the discriminating control; and 3 of
+  in KEPT blocks — the population the rejected `line_frames` design would move, so the discriminating control — for SIBLING-CUE leaks only (measured: with `line_frames` mutated onto `visual_lines`, or with only `sibling_cues` mutated, exactly one decide record of the 27 figures moves, `CNX_Chem_17_02_Galvanicel` `Flow of cations`, align right → center; with only `free_box`'s obstacles mutated, 0 of 163 records and 0 of 27 SVGs move. So the obstacle half is pinned by Part 3 Task 2's free-box pin alone, and CbcCltPckd's byte-identical SVG is not evidence that `C|B|A` stays three lines); and 3 of
   the 34 originally bought figures. `CNX_Chem_07_04_Ques11ans_img`, the 14th rule-A figure, is retired and has no
   sidecar.
 - **Prediction (registered in the script before the run).** Exactly 4 decide records change, each to one drawn line

@@ -168,7 +168,7 @@ def cmd_compare(a):
                 changed.add((b, rb['key']))
                 print(f"CHANGED {b} {rb['key']!r}: n_src {rb['n_src']}->{ra['n_src']}  lines {rb['lines']}"
                       f" -> {ra['lines']}  [{rb['cls']} {rb['step']} {rb['size']}] -> [{ra['cls']} {ra['step']}"
-                      f" {ra['size']}]  top {rb['top']:.3f}->{ra['top']:.3f}", flush=True)
+                      f" {ra['size']}]  top {rb['top']:.3f}->{ra['top']:.3f}  align {rb['align']}->{ra['align']}", flush=True)
         kb = [e for e in text_elements(sb) if 'font-kerning:none' not in e]
         ka = [e for e in text_elements(sa) if 'font-kerning:none' not in e]
         if kb != ka:

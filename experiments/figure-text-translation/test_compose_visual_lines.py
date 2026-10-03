@@ -35,6 +35,9 @@ the `+` run that opens FT.lines line 2). The controls are not red-first and must
 C1 (the block keys still split - the bought keys did not move), V3 (the nitrites line ends on its
 `)`: the old composer right-aligned its two lines there too), V6 (the boxed label is drawn on two
 lines - without it V7 would be vacuous) and T1 (the drawn pieces reproduce each value's words).
+NOT PINNED: `width()`'s line index. `seg_width` reads only `bold` from the run it is handed and every planted
+run is `PAGE/F1`, so indexing `width()` by FT.lines instead passes this file (measured); 0 of the 48 blocks
+`visual_lines` merges in the 2026-09-13 census mix weights, so that mutant is equivalent on the corpus too.
 """
 import ast
 import json

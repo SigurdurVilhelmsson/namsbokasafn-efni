@@ -95,8 +95,9 @@ def visual_lines(b):
     OWN cell / open alignment). NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
     bought key, sidecar value or renderHash moves. NEVER another block's frames: `line_frames` (sibling
     cues, free-box obstacles) stays on `lines`, because this rule merges a genuine diagonal kept label
-    (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move neighbouring labels in up to 18
-    bought figures."""
+    (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move the frames neighbouring labels align against and avoid in up to 18
+    bought figures (measured 2026-10-03, applied to every block: ONE drawn label moves,
+    CNX_Chem_17_02_Galvanicel `Flow of cations`, align right -> center)."""
     ls = lines(b)
     if is_arc(b) or len(ls) < 2:
         return ls
