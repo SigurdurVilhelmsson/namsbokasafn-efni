@@ -457,3 +457,25 @@ formula values must be drawn as raised and lowered runs. Status and the next act
 2026-10-03 ⏩ RESUME, not here.
 
 ---
+
+## 2026-10-03 (evening) - §C140 step 2: both plans complete, PR-A built on a scratch branch; chemistry faithful retirement planned
+
+**Branch:** feat/c140-c49-step2-code-fixes (15 local commits since the last push; not pushed)
+**Modified:**
+ A docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md
+ A docs/superpowers/plans/2026-10-03-c140-step2-code-fixes-part5.md
+ A docs/superpowers/plans/2026-10-03-c140-step2-recompose-pass.md
+ A docs/superpowers/plans/2026-10-03-chemistry-faithful-retirement.md
+ M docs/superpowers/plans/2026-10-03-c140-step2-code-fixes.md
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Why:** Part 5 had to be written against the tree after Parts 1-4, and none of that code existed, so Parts 1-2 were
+applied and Parts 3-4 verified first, in scratch worktrees (32 fixes folded into the plan). Part 5 was then designed by
+a judge panel, built test-first, and its plan text generated from the commits; a replicate rebuilt it from the text
+alone with a 0-byte diff, and a skeptic's four findings became Task 12. PR-B's plan was drafted, verified and checked
+against the real Part 5 code by a consistency critic. In between, [USER] ruled Part 5's four items, and approved a plan
+to retire chemistry's stale faithful vintage (its backup condition was met; a sister-session report that it was not
+turned out to be a false negative). Status and the next action live in the register's newest RESUME, not here.
+
+---
