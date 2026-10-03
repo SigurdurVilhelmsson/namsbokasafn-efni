@@ -357,7 +357,6 @@ container_errors = []
 PAGE = DARK = None
 
 for BI, b in enumerate(blocks):
-    ls = FT.lines(b)
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
     # a value of the wrong shape. A block `is_arc` calls an arc but that has no usable
@@ -510,21 +509,28 @@ for BI, b in enumerate(blocks):
     # rather than laying every label of the figure out against containers nobody measured.)
     if container['why'].startswith('error:'):
         container_errors.append(dict(key=key, block=BI, why=container['why']))
-    # Source cues from the PDF's OWN advances, never from a cairo measure.
-    cues = dict(n_src=len(ls), sz0=sz0,
-                starts=[min(FT.along(r) for r in l) for l in ls],
-                ends=[max(FT.along(r) + r['adv'] for r in l) for l in ls],
-                projs=[FT.proj(l[0]) for l in ls])
+    # Source cues from the PDF's OWN advances, never from a cairo measure - per VISUAL source line
+    # (§C140 ㉑): `figtext.visual_lines` merges the FT.lines a stacked charge or a same-size superscript
+    # splits off, so `nitrites (NO2|–` is ONE source line here (n_src 1, its own baseline) while its
+    # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
+    # every block that has no such split.
+    vls = FT.visual_lines(b)
+    cues = dict(n_src=len(vls), sz0=sz0,
+                starts=[min(FT.along(r) for r in l) for l in vls],
+                ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],
+                projs=[FT.proj(l[0]) for l in vls])
 
     def width(chars, size, j):
-        """figlayout's ONE width function: output line j is drawn in the font and colour of
-        source line min(j, last) - font AND colour are per LINE."""
-        return seg_width(chars, ls[min(j, len(ls) - 1)][0], size)
+        """figlayout's ONE width function: output line j is drawn in the font and colour of the FIRST
+        run of VISUAL source line min(j, last) - font AND colour are per LINE. After a §C140 ㉑ merge
+        that run is the one that opens the source line, so a drawn line never takes a script run's
+        font or colour; a script run is chosen only where the source line itself opens with one."""
+        return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
     layout = FL.decide(words, width, container, cues)
     align, size, lead, top = layout['align'], layout['size'], layout['lead'], layout['top']
     for j, lc in enumerate(layout['lines']):
-        fr = ls[min(j, len(ls) - 1)][0]
+        fr = vls[min(j, len(vls) - 1)][0]
         p_ = top - j * lead
         # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
         # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
