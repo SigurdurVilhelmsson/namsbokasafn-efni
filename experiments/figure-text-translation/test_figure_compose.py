@@ -38,6 +38,15 @@ does nothing produces - so case 4c runs the SAME probe on the SAME artwork with
 ⚠️ This file writes ONLY into temporary directories. Case 7 is what proves it: the shared
 `out/` must come out byte-for-byte and mtime-for-mtime unchanged, because
 `test_blockkey_consumers.py` requires `out/artwork.png` to be CNX_Chem_01_01_SciMethod's.
+
+🔴 SECTION 12 IS heldBlockValues (§C140 ㊾ D5(a), design
+docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-d/D-e/D-i F1-F11).
+figure-compose.py is the ONE reader of the table: a pre-flight refuses a configured key that matches
+no block, is send:true, or is also translated, BEFORE anything is spawned or written; it hands this
+figure's values to compose.py in `<out>/held-values.json`; and `verify` checks the held labels compose
+drew against blocks.json as a multiset before the money check subtracts them. F4 and F10 are the
+CONTROLS that make the refusals mean anything: a configured value IS drawn, and the production route
+(no --config) reads the committed config. Every value there is an ASCII sentinel (QZ...).
 """
 import collections
 import json
@@ -71,10 +80,11 @@ K_HYP = 'Form a hypothesis'
 K_TEST = 'Test the hypothesis'
 K_VERBATIM = 'H2O (g)'
 
-# The composer's NOTE lists that figure-compose.py copies into compose.json (§C140 ② ③ ⑨).
+# The composer's NOTE lists that figure-compose.py copies into compose.json (§C140 ② ③ ⑨ ㊾).
 # Spelled out here rather than read from the wrapper, so a list the wrapper stops copying fails
-# this file instead of silently shrinking the set it is checked against.
-COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors')
+# this file instead of silently shrinking the set it is checked against. `held` (§C140 ㊾ D5(a)) is
+# the labels drawn from heldBlockValues; `heldErrors` is NOT a note - verify refuses it (section 12).
+COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held')
 
 fails = []
 
@@ -331,11 +341,11 @@ with tempfile.TemporaryDirectory() as td:
           '--control run', rep.get('translationsPath') == str(tr)
           and rep.get('control') is False,
           f"{rep.get('translationsPath')!r} control={rep.get('control')!r}")
-    # §C140: compose.json carries the composer's four NOTE lists beside outputPath, so the
+    # §C140: compose.json carries the composer's five NOTE lists beside outputPath, so the
     # driver can name them without a second file. Each must be the REPORT'S list, and a report
     # that has none (an older composer's) must read as [] - a note is never a refusal. Section 11
     # carries the non-empty arm, which this fixture cannot produce.
-    check("2h compose.json carries the composer's four note lists, each the report's own "
+    check("2h compose.json carries the composer's five note lists, each the report's own "
           "(or [] where the report has none)",
           all(isinstance(d.get(k), list) and d.get(k) == rep.get(k, [])
               for k in COMPOSE_NOTES),
@@ -630,7 +640,7 @@ with tempfile.TemporaryDirectory() as td:
 # its "this report is from a --control run" guard is unreachable through the CLI. That
 # makes it exactly the kind of defensive branch that rots unnoticed - and it guards a real
 # trap, measured: a `--control` run re-injects the ENGLISH and leaves `missing` EMPTY, so
-# assertion 2 would compare [] against the send:false blocks and refuse a correct figure.
+# the money assertion would compare [] against the send:false blocks and refuse a correct figure.
 # So it is exercised here as a unit instead.
 _mod = None
 if WRAPPER.exists():
@@ -1026,15 +1036,15 @@ with tempfile.TemporaryDirectory() as td:
 
 
 # ── 11. THE COMPOSER'S NOTES REACH compose.json — THROUGH main(), NOT A HELPER ────────
-# §C140 ② ③ ⑨. compose-report.json carries four lists beside its key sets - `unformatted`,
-# `overflow`, `localized`, `containerErrors` - and the driver reads compose.json, never the
+# §C140 ② ③ ⑨ ㊾. compose-report.json carries five note lists beside its key sets - `unformatted`,
+# `overflow`, `localized`, `containerErrors`, `held` - and the driver reads compose.json, never the
 # report, so a list the wrapper does not copy is a list nobody sees. Case 2h can only show []
 # (the committed fixture has nothing to style, nothing to overhang, no decimal and a detectable
 # page), so this plants the CHILD: `run_compose` is replaced in-process by one that writes a
 # report the real `verify` accepts, and `main()` is driven for real - validate, read_report,
 # verify and the compose.json write all run.
 # ⚠️ THROUGH main() ON PURPOSE. A unit test of a payload helper stays green against a main() that
-# writes four hand-built [] lists, and case 2h cannot tell that apart either.
+# writes five hand-built [] lists, and case 2h cannot tell that apart either.
 NOTES_PLANTED = {
     'unformatted': [
         {'key': K_OBS, 'token': 'Na3PO4', 'stretch': '3', 'reason': 'absent', 'candidates': 0},
@@ -1047,12 +1057,26 @@ NOTES_PLANTED = {
     # multiplicity is data: a figure that draws one localised key twice names it twice
     'localized': [K_HYP, K_HYP],
     'containerErrors': [{'key': K_TEST, 'block': 2, 'why': 'error: KeyError'}],
+    # §C140 ㊾ D5(a): a label drawn from heldBlockValues. `verify` checks this list before it is copied
+    # (the held contract), so the planted figure really CONFIGURES that key - main_with_planted_report
+    # writes the --config - and the planted `missing` leaves it out. 11a is then the copy of a held list
+    # verify accepted, never one it would refuse.
+    'held': [{'key': K_VERBATIM, 'block': 3, 'changed': [0]}],
 }
+HELD_PLANTED = {K_VERBATIM: 'QZX'}
+# Report fields that are NOT notes, planted so 11b can show they stay out of compose.json: `heldErrors` is
+# fatal at verify (never a note), and the two paths are the composer's own bookkeeping.
+REPORT_ONLY = {'heldErrors': [], 'heldValuesPath': '/planted/held-values.json',
+               'heldConfigPath': '/planted/figure-text.config.json'}
 
 
-def main_with_planted_report(extra_report):
+def main_with_planted_report(extra_report, held_values=None):
     """Prepare the fixture, plant a verify-clean report carrying `extra_report`, drive main().
-    -> (main's return code, the compose.json it wrote, the prepare result)."""
+    `held_values` None = no --config (the production route, the committed config); a dict = a --config
+    whose heldBlockValues configures exactly that for this figure.
+    -> (main's return code, the compose.json it wrote, the prepare result, `handed`): `handed` records
+    what main() gave the child - the held-values path and that file's content AT SPAWN TIME - plus
+    `out` and `config`."""
     with tempfile.TemporaryDirectory() as td:
         out = Path(td) / 'fig-notes'
         prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Notes')
@@ -1060,15 +1084,28 @@ def main_with_planted_report(extra_report):
                       {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu',
                        K_TEST: 'Profa tilgatuna'})
         blocks = load_json(out / 'blocks.json') or []
+        drawn_held = {h['key'] for h in extra_report.get('held', [])}
         report = {'blocks': [b['key'] for b in blocks],
-                  'missing': [b['key'] for b in blocks if not b.get('send')],
+                  'missing': [b['key'] for b in blocks
+                              if not b.get('send') and b['key'] not in drawn_held],
                   'translated': [b['key'] for b in blocks if b.get('send')],
                   'translationsPath': str(tr), 'control': False, **extra_report}
+        argv = ['--out', str(out), '--translations', str(tr)]
+        handed = {'out': out.resolve(), 'config': None, 'path': None, 'doc': None}
+        if held_values is not None:
+            cfg = Path(td) / 'config.json'
+            cfg.write_text(json.dumps({'heldBlockValues': {'CNX_Fixture_Notes': held_values}},
+                                      ensure_ascii=False), encoding='utf-8')
+            handed['config'] = cfg.resolve()
+            argv += ['--config', str(cfg)]
 
         class _Child:
             returncode, stdout, stderr = 0, '', ''
 
-        def planted_child(out_dir, _translations):
+        # The third parameter is DEFAULTED so the same child serves a wrapper that does not pass one.
+        def planted_child(out_dir, _translations, held_path=None):
+            handed['path'] = held_path
+            handed['doc'] = load_json(held_path) if held_path else None
             (out_dir / 'compose-report.json').write_text(
                 json.dumps(report, ensure_ascii=False), encoding='utf-8')
             (out_dir / 'translated.svg').write_text('<svg/>', encoding='utf-8')
@@ -1077,34 +1114,497 @@ def main_with_planted_report(extra_report):
         real = _mod.run_compose
         _mod.run_compose = planted_child
         try:
-            rc = _mod.main(['--out', str(out), '--translations', str(tr)])
+            rc = _mod.main(argv)
+        except SystemExit as exc:                 # argparse refusing a flag: report its code, run on
+            rc = exc.code
         finally:
             _mod.run_compose = real
-        return rc, load_json(out / 'compose.json') or {}, prep
+        return rc, load_json(out / 'compose.json') or {}, prep, handed
 
 
 if _mod is not None:
-    rc, d, prep = main_with_planted_report(NOTES_PLANTED)
+    rc, d, prep, handed = main_with_planted_report({**NOTES_PLANTED, **REPORT_ONLY}, HELD_PLANTED)
     check('11 PRECONDITION the planted report is one verify ACCEPTS - main() exits 0 with an '
           'outputPath, so 11a is about the copy and not a refusal',
           prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
           f'prepare exit {prep.returncode}, main {rc}: {d!r}')
-    check('11a compose.json carries all four note lists VERBATIM - draw order, multiplicity '
+    check('11a compose.json carries all five note lists VERBATIM - draw order, multiplicity '
           'and every field of every entry',
           all(d.get(k) == NOTES_PLANTED[k] for k in COMPOSE_NOTES),
           repr({k: d.get(k) for k in COMPOSE_NOTES}))
-    check('11b ... and nothing else from the report leaks into compose.json',
+    check('11b ... and nothing else from the report leaks into compose.json - not heldErrors, '
+          'not the two held paths',
           set(d) == {'outputPath', *COMPOSE_NOTES}, f'{sorted(d)}')
+    check("11e main() hands the child <out>/held-values.json, already written at spawn time with "
+          "this figure's basename, the --config path and its configured values",
+          handed['path'] is not None
+          and Path(handed['path']).resolve() == handed['out'] / 'held-values.json'
+          and handed['doc'] == {'basename': 'CNX_Fixture_Notes', 'configPath': str(handed['config']),
+                                'values': HELD_PLANTED},
+          f"path={handed['path']!r} doc={handed['doc']!r}")
 
-    # THE OLDER COMPOSER. Its report has none of the four lists, and that must read as four
-    # EMPTY lists - never a refusal, because none of them is a verdict.
-    rc, d, prep = main_with_planted_report({})
+    # THE OLDER COMPOSER. Its report has none of the lists, and that must read as EMPTY lists -
+    # never a refusal, because none of them is a verdict - when nothing is configured for the figure.
+    rc, d, prep, handed = main_with_planted_report({})
     check("11c a report WITHOUT the lists (an older composer's) still composes, exit 0",
           prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
           f'prepare exit {prep.returncode}, main {rc}: {d!r}')
     check('11d ... and its compose.json carries each list as []',
           all(d.get(k) == [] for k in COMPOSE_NOTES),
           repr({k: d.get(k) for k in COMPOSE_NOTES}))
+
+
+# ── 12. heldBlockValues — the pre-flight, the hand-off, and verify's held contract ────────────
+# §C140 ㊾ D5(a); design D-d, D-e, D-f, D-i (F1-F11). figure-compose.py is the ONE reader of
+# figure-text.config.json's `heldBlockValues`. It takes THIS figure's entry by exact basename (meta.json's
+# `source` stem), refuses before anything is spawned or written a key that matches no block, is
+# send:true, or is also in --translations, and hands the values to compose.py in <out>/held-values.json
+# (always - `{}` included). `verify` then checks the held labels compose DREW against blocks.json as a
+# multiset and only then subtracts them from the send:false keys the money check expects in `missing`.
+# 🔴 EVERY ARM RUNS THROUGH `attempt`, so a wrapper that lacks this (no --config, a 3-argument
+# run_compose, no `held=`) prints FAIL lines rather than killing the file.
+# ⚠️ SOURCE_DATE_EPOCH: fontTools stamps a font subset's head.modified from it, and translated.svg
+# embeds the FigIS subset - F5's byte identity across two runs needs it in the spawn environment.
+os.environ.setdefault('SOURCE_DATE_EPOCH', '1700000000')
+import heldvalues as HV                         # noqa: E402 - stdlib only (test_heldvalues HV7)
+from fontTools.ttLib import TTFont              # noqa: E402 - after the pylibs bootstrap
+
+TR12 = {K_OBS: 'QZO', K_HYP: 'QZH', K_TEST: 'QZT'}     # ASCII sentinels for the three send:true keys
+GEOM = json.loads((HERE / 'evidence' / '2026-10-03-c140-held' / 'held-geometry.json')
+                  .read_text(encoding='utf-8'))
+MATT = GEOM['figures']['CNX_Chem_01_02_MattType']
+MATT_RUNS = [dict(r) for b in MATT['blocks'] for r in b['runs']]      # the three real `No`
+
+
+def attempt(label, fn):
+    """Run one arm; an exception is a FAIL of that arm, never a crash of the file."""
+    try:
+        fn()
+    except Exception as exc:                      # noqa: BLE001 - reported, not swallowed
+        check(label + ' (raised)', False, f'{type(exc).__name__}: {exc}')
+
+
+def write_config(path, table):
+    """A --config file whose `heldBlockValues` is `table`, written VERBATIM (any JSON value)."""
+    Path(path).write_text(json.dumps({'heldBlockValues': table}, ensure_ascii=False),
+                          encoding='utf-8')
+    return Path(path)
+
+
+def err_of(d):
+    return d.get('error') if isinstance(d.get('error'), str) else ''
+
+
+def held_of(d):
+    """compose.json / compose-report.json `held` as (key, block, changed) tuples, or the raw value."""
+    h = d.get('held')
+    return [(e.get('key'), e.get('block'), e.get('changed')) for e in h] if isinstance(h, list) else h
+
+
+SPAWN_TRACES = ('compose-report.json', 'translated.png', 'held-values.json')
+
+
+def clean(out):
+    """Remove what a spawned run leaves, so the next arm's `not_spawned` reads only its OWN run."""
+    for n in SPAWN_TRACES:
+        (out / n).unlink(missing_ok=True)
+
+
+def not_spawned(out):
+    """-> (True when nothing past the pre-flight happened, a detail string)."""
+    seen = {n: (out / n).exists() for n in SPAWN_TRACES}
+    return not any(seen.values()), repr(seen)
+
+
+_FACES = {}
+
+
+def text_adv(text, size, bold=False, italic=False):
+    """The drawn width from the face FILES with fontTools - one instrument for both sides of F4's
+    comparison (test_compose_t23.py's)."""
+    from figis import face_path
+    k = (bool(bold), bool(italic))
+    if k not in _FACES:
+        f = TTFont(str(face_path(k)))
+        _FACES[k] = (f.getBestCmap(), f['hmtx'], f['head'].unitsPerEm)
+    cmap, hmtx, upm = _FACES[k]
+    return sum(hmtx[cmap.get(ord(c), '.notdef')][0] for c in text) * size / upm
+
+
+def svg_items(svg_path):
+    """[(text, x, y-in-SVG, laid-out?)] for every <text> element, in document order."""
+    import re
+    out = []
+    for m in re.finditer(r'<text ([^>]*)>([^<]*)</text>', Path(svg_path).read_text(encoding='utf-8')):
+        a = dict(re.findall(r'([\w:-]+)="([^"]*)"', m.group(1)))
+        out.append((m.group(2), float(a['x']), float(a['y']), 'font-kerning:none' in a.get('style', '')))
+    return out
+
+
+def plant_matt(td, basename):
+    """The fixture prepared under `basename`, its runs.json REPLACED by MattType's three real `No`
+    (evidence/2026-10-03-c140-held/held-geometry.json, unshifted - they fit the 300 x 220 page), its
+    meta fonts extended with MattType's, and blocks.json re-derived by the REAL rules. -> (out, prepare
+    result, blocks.json entries)."""
+    out = Path(td) / basename
+    prep = run_prepare(FIXTURE, out, basename)
+    if prep.returncode != 0:
+        return out, prep, []
+    (out / 'runs.json').write_text(json.dumps(MATT_RUNS, ensure_ascii=False))
+    meta = json.loads((out / 'meta.json').read_text())
+    meta['fonts'].update(MATT['fonts'])
+    (out / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
+    return out, prep, regenerate_blocks(out)
+
+
+# F1-F3: the three pre-flight refusals of a key. Each is asserted BEFORE the spawn - no report, no png,
+# no held-values.json - on a freshly prepared directory, so "never written" cannot be a leftover.
+def f1_f3():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f1'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F1')
+        check('12 PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+              f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+
+        stale = 'QZ no such label'
+        r = run_wrapper('--out', out, '--translations', write_tr(Path(td) / 'tr1.json', TR12),
+                        '--config', write_config(Path(td) / 'c1.json',
+                                                 {'CNX_Fixture_F1': {stale: 'QZX'}}))
+        d = load_json(out / 'compose.json') or {}
+        quiet, seen = not_spawned(out)
+        check('F1 a configured key that matches no block is REFUSED (exit 1) and named',
+              refused(r, 1) and d.get('keys') == [stale], f'exit {r.returncode}: {d!r}')
+        check('F1b ... compose.json says it `matches no block`', 'matches no block' in err_of(d)
+              and stale in err_of(d), repr(err_of(d)))
+        check('F1c ... BEFORE the spawn: no compose-report.json, translated.png or held-values.json',
+              quiet, seen)
+
+        # F2's translations file OMITS the send:true key, so only one reason can fire.
+        clean(out)
+        r = run_wrapper('--out', out, '--translations',
+                        write_tr(Path(td) / 'tr2.json', {K_HYP: 'QZH', K_TEST: 'QZT'}),
+                        '--config', write_config(Path(td) / 'c2.json',
+                                                 {'CNX_Fixture_F1': {K_OBS: 'QZX'}}))
+        d = load_json(out / 'compose.json') or {}
+        quiet, seen = not_spawned(out)
+        check('F2 a configured key that blocks.json marks send:true is refused before the spawn',
+              refused(r, 1) and d.get('keys') == [K_OBS] and 'send:true' in err_of(d)
+              and '--translations' not in err_of(d) and quiet, f'exit {r.returncode}: {d!r} {seen}')
+
+        clean(out)
+        r = run_wrapper('--out', out, '--translations',
+                        write_tr(Path(td) / 'tr3.json', {**TR12, K_VERBATIM: 'QZW'}),
+                        '--config', write_config(Path(td) / 'c3.json',
+                                                 {'CNX_Fixture_F1': {K_VERBATIM: 'QZX'}}))
+        d = load_json(out / 'compose.json') or {}
+        quiet, seen = not_spawned(out)
+        check('F3 a configured key that the --translations file ALSO translates is refused - two '
+              'authors for one label', refused(r, 1) and d.get('keys') == [K_VERBATIM]
+              and '--translations' in err_of(d) and 'send:true' not in err_of(d) and quiet,
+              f'exit {r.returncode}: {d!r} {seen}')
+
+
+# F4 + F10: the CONTROLS. A configured value IS drawn, where the block was; and with no --config the
+# production route reads the committed config, writing held-values.json even when it holds nothing.
+def f4_f10():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f4'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F4')
+        blocks = load_json(out / 'blocks.json') or []
+        cands = [b for b in blocks if not b['send'] and not b['arc'] and len(b['lines']) == 1]
+        check('F4 PRECONDITION the fixture has a single-line send:false non-arc block, and it is the '
+              'formula', prep.returncode == 0 and cands and cands[0]['key'] == K_VERBATIM,
+              repr([(b['key'], b['send']) for b in blocks]))
+        key, sent = K_VERBATIM, 'QZ'
+        bi = [b['key'] for b in blocks].index(key)
+        src = next(r for r in json.loads((out / 'runs.json').read_text()) if r['text'] == key)
+        page_h = json.loads((out / 'meta.json').read_text())['page'][1]
+        check('F4 PRECONDITION the sentinel is narrower than the key, by ONE linear measure',
+              text_adv(sent, src['size']) < text_adv(key, src['size']),
+              f"{text_adv(sent, src['size']):.3f} < {text_adv(key, src['size']):.3f}")
+        cfg = write_config(Path(td) / 'c4.json', {'CNX_Fixture_F4': {key: sent}})
+        r = run_wrapper('--out', out, '--translations', write_tr(Path(td) / 'tr4.json', TR12),
+                        '--config', cfg)
+        d = load_json(out / 'compose.json') or {}
+        rep = load_json(out / 'compose-report.json') or {}
+        check('F4 CONTROL a configured send:false key composes, exit 0, and compose.json `held` lists '
+              'it ONCE', r.returncode == 0 and 'error' not in d and held_of(d) == [(key, bi, [0])],
+              f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+        items = svg_items(out / 'translated.svg') if (out / 'translated.svg').exists() else []
+        mine = [i for i in items if i[0] == sent]
+        check("F4b ... translated.svg draws the sentinel, laid out, on the block's baseline and inside "
+              "its source extent - and not the key",
+              len(mine) == 1 and mine[0][3] and abs(mine[0][2] - (page_h - src['y'])) <= 0.01
+              and src['x'] - 0.01 <= mine[0][1] <= src['x'] + src['adv']
+              and not [i for i in items if i[0] == key], f'{mine!r} of {items!r}')
+        check('F4c ... the report keeps it out of `missing`, with no heldErrors, and names the file',
+              rep.get('missing') == [] and rep.get('heldErrors') == []
+              and rep.get('heldValuesPath') == str((out / 'held-values.json').resolve()),
+              f"missing={rep.get('missing')!r} heldErrors={rep.get('heldErrors')!r} "
+              f"heldValuesPath={rep.get('heldValuesPath')!r}")
+        check('F4d ... and held-values.json carries the basename, the --config path and the values',
+              load_json(out / 'held-values.json') == {'basename': 'CNX_Fixture_F4',
+                                                      'configPath': str(cfg.resolve()),
+                                                      'values': {key: sent}},
+              repr(load_json(out / 'held-values.json')))
+
+        # F10: the SAME directory through the production route - no --config.
+        r = run_wrapper('--out', out, '--translations', write_tr(Path(td) / 'tr10.json', TR12))
+        d = load_json(out / 'compose.json') or {}
+        rep = load_json(out / 'compose-report.json') or {}
+        hv = load_json(out / 'held-values.json')
+        committed = str(HERE / 'figure-text.config.json')
+        check('F10 CONTROL with no --config the wrapper reads the COMMITTED config and still writes '
+              'held-values.json: values {} for this basename', r.returncode == 0
+              and hv == {'basename': 'CNX_Fixture_F4', 'configPath': committed, 'values': {}},
+              f'exit {r.returncode}: {hv!r}')
+        check('F10b ... and passes --held-values anyway: the report names that file, the committed '
+              'config, and draws nothing held',
+              rep.get('heldValuesPath') == str((out / 'held-values.json').resolve())
+              and rep.get('heldConfigPath') == committed and rep.get('held') == []
+              and rep.get('heldErrors') == [] and held_of(d) == [] and rep.get('missing') == [key],
+              f"{ {k: rep.get(k) for k in ('heldValuesPath', 'heldConfigPath', 'held', 'missing')} }")
+
+
+# F5 + F11: the NOBELIUM control, and verify on compose's REAL report. MattType's three real `No`
+# (send:false by the real rules) are planted under three basenames; the config names ONE. A prefix twin
+# and a fold twin must draw exactly what they draw with an empty table.
+def f5_f11():
+    a_, prefix, fold = 'CNX_Fixture_Nobel', 'CNX_Fixture_Nobelium', 'cnx_fixture_nobel'
+    with tempfile.TemporaryDirectory() as td:
+        dirs = {}
+        for b in (a_, prefix, fold):
+            out, prep, entries = plant_matt(td, b)
+            dirs[b] = out
+            check(f'F5 PRECONDITION {b}: the planted figure is three send:false `No` blocks',
+                  prep.returncode == 0 and [(e['key'], e['send']) for e in entries]
+                  == [('No', False)] * 3, f'exit {prep.returncode}: {entries!r}')
+        tr = write_tr(Path(td) / 'empty-tr.json', {})
+        cfg = write_config(Path(td) / 'c5.json', {a_: {'No': 'QZX'}})
+        empty = write_config(Path(td) / 'c5-empty.json', {})
+
+        r = run_wrapper('--out', dirs[a_], '--translations', tr, '--config', cfg)
+        d = load_json(dirs[a_] / 'compose.json') or {}
+        items = svg_items(dirs[a_] / 'translated.svg') if (dirs[a_] / 'translated.svg').exists() else []
+        check('F5 POSITIVE CONTROL the configured basename draws QZX three times and No not at all',
+              r.returncode == 0 and held_of(d) == [('No', 0, [0]), ('No', 1, [0]), ('No', 2, [0])]
+              and sum(1 for i in items if i[0] == 'QZX') == 3 and not [i for i in items if i[0] == 'No'],
+              f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+        for b, what in ((prefix, 'a PREFIX twin'), (fold, 'a FOLD twin')):
+            r1 = run_wrapper('--out', dirs[b], '--translations', tr, '--config', cfg)
+            d1 = load_json(dirs[b] / 'compose.json') or {}
+            svg1 = (dirs[b] / 'translated.svg').read_bytes() \
+                if (dirs[b] / 'translated.svg').exists() else None
+            r2 = run_wrapper('--out', dirs[b], '--translations', tr, '--config', empty)
+            svg2 = (dirs[b] / 'translated.svg').read_bytes() \
+                if (dirs[b] / 'translated.svg').exists() else None
+            check(f'F5 {b} ({what} of the configured basename): held [] and translated.svg '
+                  f'BYTE-identical to an empty table', r1.returncode == 0 and r2.returncode == 0
+                  and held_of(d1) == [] and svg1 is not None and svg1 == svg2
+                  and b'>No</text>' in svg1,
+                  f'exit {r1.returncode}/{r2.returncode} held={held_of(d1)!r} '
+                  f'identical={svg1 == svg2 if svg1 else None}')
+
+        # F11: verify, IN PROCESS, on compose.py's REAL report (the production spawn, run_compose),
+        # against blocks.json as block_key derived it. A drawn value passes; a refused one (the snowman
+        # is in none of the four faces - test_compose_held CH5) raises, naming its reason.
+        import contextlib
+        import io
+        out = dirs[a_]
+        blocks = json.loads((out / 'blocks.json').read_text())
+        rec = _mod.Translations(path=tr, keys=frozenset(), has_state=False)
+        for value, want_raise in (('QZX', False), ('Q☃', True)):
+            hp = Path(td) / 'f11-held.json'
+            HV.write_file(hp, a_, 'f11', {'No': value})
+            (out / 'compose-report.json').unlink(missing_ok=True)
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                child = _mod.run_compose(out, tr, hp)
+            report = _mod.read_report(out, child)
+            ok, keys, msg = _raises(lambda: _mod.verify(report, blocks, rec, held={'No': value}))
+            if want_raise:
+                check("F11b verify REFUSES compose's real report of a refused value, naming its reason",
+                      ok and keys == ['No'] and 'no-glyph:U+2603' in msg,
+                      f"{keys!r}: {msg} :: heldErrors={report.get('heldErrors')!r}")
+            else:
+                check("F11 verify ACCEPTS compose's real report of three drawn held labels - nothing "
+                      "raised at all", not ok and msg == '' and len(report.get('held') or []) == 3,
+                      f"{msg!r} held={report.get('held')!r}")
+
+
+# F6: a configured TWIN. synth_duplicate draws prose, which the read layer buys (case 3 translates
+# both keys), so the planted blocks.json marks both twins send:false - the one input the wrapper reads
+# for that decision; the keys stay as block_key derived them.
+def f6():
+    with tempfile.TemporaryDirectory() as td:
+        art = synth_duplicate(Path(td) / 'CNX_Fake_Dup.pdf')
+        out = Path(td) / 'fig-dup'
+        prep = run_prepare(art, out, 'CNX_Fake_Dup')
+        blocks = load_json(out / 'blocks.json') or []
+        check('F6 PRECONDITION the twin is send:true as prepared - flipping it is what makes it held',
+              prep.returncode == 0 and [b['send'] for b in blocks if b['key'] == DUP_LABEL] == [True, True],
+              repr([(b['key'], b['send']) for b in blocks]))
+        for b in blocks:
+            if b['key'] == DUP_LABEL:
+                b['send'] = False
+        (out / 'blocks.json').write_text(json.dumps(blocks, indent=1, ensure_ascii=False))
+        tr = write_tr(Path(td) / 'tr6.json', {SOLO_LABEL: 'QZS'})
+        r = run_wrapper('--out', out, '--translations', tr,
+                        '--config', write_config(Path(td) / 'c6.json',
+                                                 {'CNX_Fake_Dup': {DUP_LABEL: 'QZX'}}))
+        d = load_json(out / 'compose.json') or {}
+        check('F6 a configured twin key is drawn TWICE - compose.json `held` names it twice',
+              r.returncode == 0 and [h[0] for h in held_of(d) or []] == [DUP_LABEL, DUP_LABEL],
+              f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+        rep = load_json(out / 'compose-report.json') or {}
+        rec = _mod.Translations(path=tr, keys=frozenset({SOLO_LABEL}), has_state=False)
+        planted = {**rep, 'held': (rep.get('held') or [])[:1]}
+        ok, keys, msg = _raises(lambda: _mod.verify(planted, blocks, rec, held={DUP_LABEL: 'QZX'}))
+        check('F6b a report that drew the twin ONCE is refused, naming the key', ok
+              and keys == [DUP_LABEL] and 'heldBlockValues' in msg, f'{keys!r}: {msg}')
+
+
+# F7: verify's held contract as units (V1-V6 of the design, V5 in four arms, V6 in two).
+def f7():
+    blocks = [{'key': 'a', 'send': True}, {'key': 'b', 'send': False}]
+    present = _mod.Translations(path='/x.json', keys=frozenset({'a'}), has_state=False)
+    hb = [{'key': 'b', 'block': 1, 'changed': [0]}]
+
+    ok, _k, msg = _raises(lambda: _mod.verify({**GOOD, 'missing': [], 'held': hb, 'heldErrors': []},
+                                              blocks, present, held={'b': 'QZX'}))
+    check('F7 V1 a held send:false key is SUBTRACTED from the expected English and passes',
+          not ok and msg == '', repr(msg))
+
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'translated': [], 'held': [{'key': 'a', 'block': 0, 'changed': [0]}],
+         'heldErrors': []}, blocks, present, held={'a': 'QZX'}))
+    check('F7 V2 a value drawn over a send:true block gets its OWN wording, never held_but_drawn\'s',
+          ok and keys == ['a'] and 'drawn from heldBlockValues for block(s) blocks.json marks '
+          'send:true' in msg and 'translated anyway' not in msg, f'{keys!r}: {msg}')
+
+    # CONTROL: three positional arguments, exactly as before this change - the OLD wording survives.
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'missing': [], 'translated': ['a', 'b'], 'held': [], 'heldErrors': []},
+        blocks, present))
+    check('F7 V3 CONTROL a send:false key in neither list keeps the OLD held_but_drawn wording',
+          ok and keys == ['b'] and 'translated anyway' in msg and 'heldBlockValues' not in msg,
+          f'{keys!r}: {msg}')
+
+    no3 = [{'key': 'No', 'send': False}] * 3
+    rep3 = {'blocks': ['No'] * 3, 'missing': [], 'translated': [], 'heldErrors': [],
+            'held': [{'key': 'No', 'block': i, 'changed': [0]} for i in range(3)]}
+    rec0 = _mod.Translations(path='/x.json', keys=frozenset(), has_state=False)
+    ok, _k, msg = _raises(lambda: _mod.verify(rep3, no3, rec0, held={'No': 'QZX'}))
+    check('F7 V4-ctl MattType `No` x3 drawn x3 passes', not ok and msg == '', repr(msg))
+    ok, keys, msg = _raises(lambda: _mod.verify({**rep3, 'missing': ['No'], 'held': rep3['held'][:2]},
+                                                no3, rec0, held={'No': 'QZX'}))
+    check('F7 V4 MattType `No` x3 with only TWO drawn is refused', ok and keys == ['No']
+          and 'heldBlockValues' in msg, f'{keys!r}: {msg}')
+
+    ok, _k, msg = _raises(lambda: _mod.verify({**GOOD, 'missing': []}, blocks, present,
+                                              held={'b': 'QZX'}))
+    check('F7 V5a values configured and the report has no `held` list: refused as drift',
+          ok and 'drifted' in msg, repr(msg))
+    ok, keys, msg = _raises(lambda: _mod.verify({**GOOD, 'missing': [], 'held': hb, 'heldErrors': []},
+                                                blocks, present))
+    # The old money check refuses this too (as held_but_drawn), so the WORDING is what is pinned: the
+    # held contract must refuse it, whatever the money check would say.
+    check('F7 V5b NOTHING configured and the report names a held label: refused by the held contract',
+          ok and keys == ['b'] and 'heldBlockValues' in msg and 'translated anyway' not in msg,
+          f'{keys!r}: {msg}')
+    ok, _k, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'heldErrors': [{'key': 'b', 'block': 1, 'reason': 'line-count'}]}, blocks, present))
+    check('F7 V5c nothing configured, `heldErrors` but no `held` list: refused as drift',
+          ok and 'drifted' in msg, repr(msg))
+    ok, _k, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'missing': [], 'held': [{'block': 1, 'changed': [0]}], 'heldErrors': []},
+        blocks, present, held={'b': 'QZX'}))
+    check('F7 V5d a `held` entry with no string key: refused as drift', ok and 'drifted' in msg,
+          repr(msg))
+
+    blocks3 = blocks + [{'key': 'c', 'send': False}]
+    errs = [{'key': 'b', 'block': 1, 'reason': 'no-glyph:U+2603'},
+            {'key': 'c', 'block': 2, 'reason': 'line-count', 'value': 2, 'visual': 1}]
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {'blocks': ['a', 'b', 'c'], 'missing': ['b', 'c'], 'translated': ['a'], 'held': [],
+         'heldErrors': errs}, blocks3, present, held={'b': 'QZX', 'c': 'QZQ\nQZR'}))
+    check('F7 V6 heldErrors refuses and names EVERY key and reason', ok and keys == ['b', 'c']
+          and all(s in msg for s in ("'b'", "'c'", 'no-glyph:U+2603', 'line-count')),
+          f'{keys!r}: {msg}')
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'held': [], 'heldErrors': [{'key': 'zz', 'block': None, 'reason': 'no-block'}]},
+        blocks, present, held={'zz': 'QZX'}))
+    check('F7 V6b a compose-side no-block has ONE verdict: the heldErrors refusal, before any '
+          'multiplicity check', ok and keys == ['zz'] and 'no-block' in msg and 'NOT drawn' in msg,
+          f'{keys!r}: {msg}')
+
+
+# F8: meta.json without a usable `source` - it names the figure's basename, which picks its entry.
+def f8():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f8'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F8')
+        meta = json.loads((out / 'meta.json').read_text())
+        check('F8 PRECONDITION prepare wrote a string `source`', prep.returncode == 0
+              and isinstance(meta.get('source'), str), repr(meta.get('source')))
+        tr = write_tr(Path(td) / 'tr8.json', TR12)
+        for label, bad in (('absent', None), ('empty', '')):
+            m = {k: v for k, v in meta.items() if k != 'source'}
+            if bad is not None:
+                m['source'] = bad
+            (out / 'meta.json').write_text(json.dumps(m, ensure_ascii=False))
+            clean(out)
+            r = run_wrapper('--out', out, '--translations', tr)
+            d = load_json(out / 'compose.json') or {}
+            quiet, seen = not_spawned(out)
+            check(f'F8 meta.json `source` {label}: refused by the pre-flight in its own words - no '
+                  f'traceback, nothing spawned', refused(r, 1) and '`source`' in err_of(d)
+                  and 'wrote no compose-report.json' not in err_of(d) and 'Traceback' not in r.stderr
+                  and quiet, f'exit {r.returncode}: {d!r} {seen}')
+
+
+# F9: a malformed --config. Each refusal names what it read; a malformed entry for ANOTHER figure is
+# never read (the CONTROL, last).
+def f9():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f9'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F9')
+        check('F9 PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+              f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+        tr = write_tr(Path(td) / 'tr9.json', TR12)
+        bad_json = Path(td) / 'c9-bad.json'
+        bad_json.write_text('{"heldBlockValues": {', encoding='utf-8')
+        arms = (
+            ('a list table', write_config(Path(td) / 'c9a.json', []),
+             'heldBlockValues must be an object'),
+            ('a string entry', write_config(Path(td) / 'c9b.json', {'CNX_Fixture_F9': 'QZX'}),
+             'heldBlockValues.CNX_Fixture_F9'),
+            ("a value holding '|'", write_config(Path(td) / 'c9c.json',
+                                                 {'CNX_Fixture_F9': {K_VERBATIM: 'QZ|X'}}),
+             f"heldBlockValues.CNX_Fixture_F9[{K_VERBATIM!r}]"),
+            ('a nonexistent --config', Path(td) / 'no-such-config.json', 'no-such-config.json'),
+            ('an unparsable --config', bad_json, 'c9-bad.json'),
+        )
+        for label, cfg, needle in arms:
+            clean(out)
+            r = run_wrapper('--out', out, '--translations', tr, '--config', cfg)
+            d = load_json(out / 'compose.json') or {}
+            quiet, seen = not_spawned(out)
+            check(f'F9 {label} is refused before the spawn, naming {needle!r}',
+                  refused(r, 1) and needle in err_of(d) and quiet, f'exit {r.returncode}: {d!r} {seen}')
+        r = run_wrapper('--out', out, '--translations', tr, '--config',
+                        write_config(Path(td) / 'c9-other.json',
+                                     {'CNX_Other_Figure': 'not an object',
+                                      'CNX_Fixture_F9': {K_VERBATIM: 'QZ'}}))
+        d = load_json(out / 'compose.json') or {}
+        check("F9 CONTROL a malformed entry for ANOTHER basename is never read - this figure composes "
+              "and draws its own value", r.returncode == 0 and held_of(d) == [(K_VERBATIM, 3, [0])],
+              f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+
+
+if _mod is not None:
+    for _label, _fn in (('F1-F3', f1_f3), ('F4/F10', f4_f10), ('F5/F11', f5_f11), ('F6', f6),
+                        ('F7', f7), ('F8', f8), ('F9', f9)):
+        attempt(_label, _fn)
 
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
