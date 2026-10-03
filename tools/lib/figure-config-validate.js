@@ -1,5 +1,6 @@
 /**
- * The figure config's three tables, checked against the repo (§C140 ㊵, spec D11).
+ * The figure config's four tables, checked against the repo (§C140 ㊵, spec D11; `keptCopies`,
+ * §C140 ㊾, spec 2026-10-02 D1).
  *
  * Run by `npm test` (tools/__tests__/figure-config-validate.test.js), and run LOCALLY before any
  * pin's buy: CI only sees a pin after the money is spent, because a pin lands in the commit that
@@ -16,7 +17,7 @@ import { normkey } from './figure-text-config.js';
 import { DEFAULT_SUFFIX, indexBookSourceBasenames } from '../generate-image-mapping.js';
 import { readMappingOrRefuse, topLevelTranslatedCopies } from './translated-figure-refs.js';
 
-const TABLES = ['supersededArtwork', 'retiredFigures', 'artworkPins'];
+const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPins'];
 const PIN_KINDS = new Set(['alias', 'override']);
 const MIN_REASON = 40;
 
@@ -25,7 +26,8 @@ const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArr
 /**
  * @param {object} cfg  the parsed figure config
  * @param {{suffix:string, basenamesByBook:Object<string,Set<string>>,
- *          retiredState:Object<string,{rows:number, translatedCopies:string[]}>}} corpus
+ *          retiredState:Object<string,{rows:number, translatedCopies:string[]}>,
+ *          keptState:Object<string,{rows:number, translatedCopies:string[]}>}} corpus
  * @returns {string[]} problems; empty when the config is valid
  */
 export function validateFigureConfig(cfg, corpus) {
@@ -50,9 +52,9 @@ export function validateFigureConfig(cfg, corpus) {
     }
   }
 
-  // A pin shares no key with the other two tables: either would refuse the figure first.
+  // A pin shares no key with the other three tables: each refuses the figure before a pin is read.
   const foldedKeys = (t) => new Map(Object.keys(t).map((k) => [normkey(k), k]));
-  for (const other of ['supersededArtwork', 'retiredFigures']) {
+  for (const other of ['supersededArtwork', 'retiredFigures', 'keptCopies']) {
     const keys = foldedKeys(tables[other]);
     for (const k of Object.keys(tables.artworkPins)) {
       if (keys.has(normkey(k))) {
@@ -164,12 +166,35 @@ export function validateFigureConfig(cfg, corpus) {
     for (const f of s.translatedCopies)
       problems.push(`retiredFigures.${k} still has a translated copy: media/${f}`);
   }
+
+  // §C140 ㊾ — A KEPT FIGURE IS THE INVERSE OF A RETIRED ONE: it HAS its row and its translated
+  // copy, because that copy is what readers are served and what the ruling keeps. It is not also
+  // retired, by any spelling: one ruling removes the copy the other keeps. It MAY also be in
+  // supersededArtwork, as a retired figure may — that table is about the SOURCE drawing — and
+  // sources.py checks kept first, so the run prints `REFUSED — kept`.
+  const retiredKeys = foldedKeys(tables.retiredFigures);
+  for (const k of Object.keys(tables.keptCopies)) {
+    if (retiredKeys.has(normkey(k))) {
+      problems.push(
+        `keptCopies.${k} is also in retiredFigures (${retiredKeys.get(normkey(k))}) — a copy cannot be both kept and retired`
+      );
+    }
+    const s = corpus.keptState[k];
+    if (!s) continue; // the exactly-one-book rule above already names it
+    if (!s.rows)
+      problems.push(
+        `keptCopies.${k} has no image-mapping row — readers are not served the copy it keeps`
+      );
+    if (s.translatedCopies.length === 0)
+      problems.push(`keptCopies.${k} has no translated copy at the top of its book's media/`);
+  }
   return problems;
 }
 
 /**
  * The corpus the validator needs, read from the repo. No git: this runs in CI.
- * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object}}
+ * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object,
+ *            keptState:Object}}
  */
 export function buildValidatorCorpus(repoRoot, cfg) {
   const booksDir = path.join(repoRoot, 'books');
@@ -178,18 +203,29 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     const bookDir = path.join(booksDir, b);
     if (fs.statSync(bookDir).isDirectory()) basenamesByBook[b] = indexBookSourceBasenames(bookDir);
   }
-  const retiredState = {};
-  for (const k of Object.keys(cfg.retiredFigures ?? {})) {
-    const owners = Object.keys(basenamesByBook).filter((b) => basenamesByBook[b].has(k));
-    if (owners.length !== 1) continue;
-    const bookDir = path.join(booksDir, owners[0]);
-    const rows = readMappingOrRefuse(path.join(bookDir, 'media', 'image-mapping.json'), {
-      allowMissing: true,
-    });
-    retiredState[k] = {
-      rows: rows.filter((r) => r.originalImage === k).length,
-      translatedCopies: topLevelTranslatedCopies(bookDir, k, DEFAULT_SUFFIX),
-    };
-  }
-  return { suffix: DEFAULT_SUFFIX, basenamesByBook, retiredState };
+  // One measurement for both tables (§C140 ㊾): a retired figure must come out with neither a
+  // mapping row nor a translated copy, a kept one with both. A key that is not exactly one book's
+  // image gets no state; the exactly-one-book rule names it.
+  const copyState = (table) => {
+    const state = {};
+    for (const k of Object.keys(table ?? {})) {
+      const owners = Object.keys(basenamesByBook).filter((b) => basenamesByBook[b].has(k));
+      if (owners.length !== 1) continue;
+      const bookDir = path.join(booksDir, owners[0]);
+      const rows = readMappingOrRefuse(path.join(bookDir, 'media', 'image-mapping.json'), {
+        allowMissing: true,
+      });
+      state[k] = {
+        rows: rows.filter((r) => r.originalImage === k).length,
+        translatedCopies: topLevelTranslatedCopies(bookDir, k, DEFAULT_SUFFIX),
+      };
+    }
+    return state;
+  };
+  return {
+    suffix: DEFAULT_SUFFIX,
+    basenamesByBook,
+    retiredState: copyState(cfg.retiredFigures),
+    keptState: copyState(cfg.keptCopies),
+  };
 }

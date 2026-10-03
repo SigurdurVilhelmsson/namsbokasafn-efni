@@ -16,6 +16,7 @@ const baseCfg = () => ({
   editionPrecedence: ['updates-2e', 'first-edition'],
   supersededArtwork: { CNX_Sup: R },
   retiredFigures: { CNX_Ret: R },
+  keptCopies: { CNX_Kept: R },
   artworkPins: {
     CNX_Pin: { kind: 'alias', edition: 'updates-2e', file: 'OSX/Figure 14_03_Pin.eps', reason: R },
   },
@@ -23,10 +24,11 @@ const baseCfg = () => ({
 const baseCorpus = () => ({
   suffix: S,
   basenamesByBook: {
-    chem: new Set(['CNX_Sup', 'CNX_Ret', 'CNX_Pin', 'CNX_Other']),
+    chem: new Set(['CNX_Sup', 'CNX_Ret', 'CNX_Kept', 'CNX_Pin', 'CNX_Other']),
     bio: new Set(['Figure_1']),
   },
   retiredState: { CNX_Ret: { rows: 0, translatedCopies: [] } },
+  keptState: { CNX_Kept: { rows: 1, translatedCopies: [`CNX_Kept${S}.svg`] } },
 });
 const pinOf = (c) => c.artworkPins.CNX_Pin;
 
@@ -185,6 +187,63 @@ describe('validateFigureConfig (§C140 ㊵, spec D11)', () => {
         k.retiredState.CNX_Ret.translatedCopies = [`CNX_Ret${S}.svg`];
       },
       /still has a translated copy/,
+    ],
+    // §C140 ㊾ — keptCopies, the inverse of retiredFigures (spec 2026-10-02 D1).
+    [
+      'a keptCopies table that is not an object',
+      (c) => {
+        c.keptCopies = [];
+      },
+      null,
+      /keptCopies must be an object/,
+    ],
+    [
+      'a pin on a kept figure',
+      (c) => {
+        c.artworkPins = { CNX_Kept: pinOf(c) };
+      },
+      null,
+      /artworkPins\.CNX_Kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a kept figure that is also retired',
+      (c) => {
+        c.retiredFigures.CNX_Kept = R;
+      },
+      null,
+      /keptCopies\.CNX_Kept is also in retiredFigures \(CNX_Kept\)/,
+    ],
+    [
+      'a kept figure with no image-mapping row',
+      () => {},
+      (k) => {
+        k.keptState.CNX_Kept.rows = 0;
+      },
+      /keptCopies\.CNX_Kept has no image-mapping row/,
+    ],
+    [
+      'a kept figure with no translated copy',
+      () => {},
+      (k) => {
+        k.keptState.CNX_Kept.translatedCopies = [];
+      },
+      /keptCopies\.CNX_Kept has no translated copy/,
+    ],
+    [
+      'a kept key that is no book’s image',
+      (c) => {
+        c.keptCopies.CNX_Typo = R;
+      },
+      null,
+      /keptCopies\.CNX_Typo names an image in 0 books/,
+    ],
+    [
+      'a kept figure with a short reason',
+      (c) => {
+        c.keptCopies.CNX_Kept = 'kept, see §C140';
+      },
+      null,
+      /keptCopies\.CNX_Kept needs a reason of over 40 characters/,
     ],
   ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
     const c = baseCfg();
@@ -388,6 +447,38 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       null,
       /retiredFigures\.CNX_Gone names an image in 0 books/,
     ],
+    [
+      'a keptCopies table that is null',
+      (c) => {
+        c.keptCopies = null;
+      },
+      null,
+      /keptCopies must be an object/,
+    ],
+    [
+      'a pin whose key only FOLDS onto a kept key',
+      (c) => {
+        c.artworkPins = { 'cnx-kept': pinOf(c) };
+      },
+      null,
+      /artworkPins\.cnx-kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a kept key that only FOLDS onto a retired key',
+      (c) => {
+        c.retiredFigures['cnx-kept'] = R;
+      },
+      null,
+      /keptCopies\.CNX_Kept is also in retiredFigures \(cnx-kept\)/,
+    ],
+    [
+      'two keptCopies keys that fold together',
+      (c) => {
+        c.keptCopies['CNX-Kept'] = R;
+      },
+      null,
+      /keptCopies: CNX_Kept and CNX-Kept fold to the same key/,
+    ],
   ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
     const c = baseCfg();
     const k = baseCorpus();
@@ -410,11 +501,21 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       },
     ],
     [
-      'a config with none of the three tables (an absent table is an empty one)',
+      'a config with none of the four tables (an absent table is an empty one)',
       (c) => {
         delete c.supersededArtwork;
         delete c.retiredFigures;
+        delete c.keptCopies;
         delete c.artworkPins;
+      },
+    ],
+    // §C140 ㊾ — ALLOWED, as retired + superseded is (BlastFurn, Ques11ans): superseded is about the
+    // SOURCE drawing, kept about the translated COPY. sources.py checks kept first, so the run
+    // prints `REFUSED — kept` and the chapter autorun's halt on `REFUSED — superseded` stays quiet.
+    [
+      'a kept figure that is also superseded',
+      (c) => {
+        c.supersededArtwork.CNX_Kept = R;
       },
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
@@ -559,6 +660,41 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
     const root = makeRepo({ b1: { images: ['CNX_Row'], media: { mapping: '{not json' } } });
     expect(() => buildValidatorCorpus(root, retiredCfg('CNX_Row'))).toThrow(/not valid JSON/);
   });
+
+  // §C140 ㊾ — a kept figure is measured exactly as a retired one is, and must come out the other
+  // way round: WITH its row and its copy. The tree holds each half alone, both, and neither, plus a
+  // key no book names, so a rule that checked only one half, or only one figure, would show.
+  it('reports each kept figure’s rows and copies, and the validator names each half-kept one', () => {
+    const root = makeRepo({
+      b1: {
+        images: ['CNX_Kept', 'CNX_NoRow', 'CNX_NoCopy', 'CNX_Neither'],
+        media: {
+          mapping: [row('CNX_Kept'), row('CNX_NoCopy')],
+          files: [`CNX_Kept${S}.svg`, `CNX_NoRow${S}.svg`],
+        },
+      },
+    });
+    const keptCfg = {
+      keptCopies: Object.fromEntries(
+        ['CNX_Kept', 'CNX_NoRow', 'CNX_NoCopy', 'CNX_Neither', 'CNX_Absent'].map((n) => [n, R])
+      ),
+    };
+    const k = buildValidatorCorpus(root, keptCfg);
+    expect(k.keptState).toEqual({
+      CNX_Kept: { rows: 1, translatedCopies: [`CNX_Kept${S}.svg`] },
+      CNX_NoRow: { rows: 0, translatedCopies: [`CNX_NoRow${S}.svg`] },
+      CNX_NoCopy: { rows: 1, translatedCopies: [] },
+      CNX_Neither: { rows: 0, translatedCopies: [] },
+    });
+    const named = validateFigureConfig(keptCfg, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'keptCopies.CNX_Absent names an image',
+      'keptCopies.CNX_Neither has no image-mapping',
+      'keptCopies.CNX_Neither has no translated',
+      'keptCopies.CNX_NoCopy has no translated',
+      'keptCopies.CNX_NoRow has no image-mapping',
+    ]);
+  });
 });
 
 describe('the committed figure config (§C140 ㊵)', () => {
@@ -587,6 +723,19 @@ describe('the committed figure config (§C140 ㊵)', () => {
     expect(Object.keys(corpus.retiredState).sort()).toEqual(keys);
     for (const k of keys) {
       expect(corpus.retiredState[k], k).toEqual({ rows: 0, translatedCopies: [] });
+    }
+  });
+
+  // §C140 ㊾ — the retired test above, the other way round: every kept key was examined on the real
+  // tree, and each was found WITH its row and its copy. Vacuous while the table is empty; the
+  // commit that records the first kept figure adds `expect(keys.length).toBeGreaterThan(0)` here,
+  // as the retired test carries.
+  it('every kept key was examined on the real tree, and found with its row and its copy', () => {
+    const keys = Object.keys(cfg.keptCopies ?? {}).sort();
+    expect(Object.keys(corpus.keptState).sort()).toEqual(keys);
+    for (const k of keys) {
+      expect(corpus.keptState[k].rows, k).toBeGreaterThan(0);
+      expect(corpus.keptState[k].translatedCopies.length, k).toBeGreaterThan(0);
     }
   });
 
