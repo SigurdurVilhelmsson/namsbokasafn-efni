@@ -53,9 +53,13 @@ let BOOK_SLUG = null;
  * re-declared. Bound by the `--track` test in
  * `tools/__tests__/audit-render-output-defects.test.js`, whose fixture is decisive
  * because the two tracks give different output on chemistry ch01: mt-preview FAILs
- * (2 errors, exit 1), while faithful (retired 2026-10-03; it PASSed with warnings
- * before) reports all 7 modules unauditable. A dropped flag therefore shows up as
- * mt-preview's output rather than as a missing option.
+ * (2 errors, exit 1), while faithful (retired 2026-10-03) reports all 7 modules
+ * unauditable. Both verdicts are FAIL / exit 1, so the test discriminates on stdout
+ * content. ⚠️ They were before the retirement too: since #420 (`fa208375c`) an
+ * unauditable module FAILs, and on `0c2f06d01` faithful ch01 was `FAIL — 5 module(s)
+ * could not be audited` / exit 1 — never the `PASS with warnings` this comment once
+ * claimed. A dropped flag therefore shows up as mt-preview's output rather than as a
+ * missing option.
  *
  * ▶ THE MIGRATION IS WHAT FIXES TWO OF THE FOUR DEFECTS, and it is the idiom the
  * sibling tool `cnxml-fidelity-check.js` already uses: `BOOK_OPTION.default` is

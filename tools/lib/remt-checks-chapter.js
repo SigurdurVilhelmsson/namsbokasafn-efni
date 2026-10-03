@@ -109,7 +109,8 @@
  *     inside it. Sub-counts are REPORTED in `message` instead (§C82 L76's precedent).
  *
  * ⚠️ K3's unit is different and must be: published files carrying a `data-module-id` —
- * 240 of 334 today, because `snapshotModuleIds` omits id-less files by design. See K3.
+ * 240 of 334 when measured (before the 2026-10-03 chemistry faithful retirement), because
+ * `snapshotModuleIds` omits id-less files by design. See K3.
  *
  * ══ WHAT A SWEEP RUN TODAY MUST SHOW — AND MUST NOT "FIX" ════════════════════════
  * 🔴 TASK 13 WILL SEE `--tier 4` EXIT 1 ON EVERY BOOK x TRACK, AND THAT IS THE CORRECT
@@ -168,8 +169,9 @@ export const TRACKS = Object.freeze(['mt-preview', 'faithful']);
  * translated document**. Here the same shape is a chapter whose CNXML exists and whose
  * render is missing (a failed render), or the reverse (a stale publication tree with the
  * injected CNXML deleted). Neither can be judged, and neither may read as clean.
- * ⚠️ Measured today: cells with cnxml>0 and html==0 = **0 of 112**, against 26 carrying
- * both — so this guard has no natural fixture and its test is synthetic by necessity.
+ * ⚠️ Measured before the 2026-10-03 chemistry faithful retirement: cells with cnxml>0 and
+ * html==0 = **0 of 112**, against 26 carrying both — so this guard has no natural fixture
+ * and its test is synthetic by necessity.
  *
  * @param {object} ctx
  * @param {string} id  the check id, for the message
@@ -443,8 +445,9 @@ function marginNote({ cnxml, html }, drops) {
     // re-deriving a predicate and then dropping one of its terms, which is worse than
     // re-deriving it whole. `checkChapter` compares `<image> - knownIntentionalImageDrops`
     // against `<img>`, so a note computed without the subtraction under-reports the slack
-    // by exactly `drops`. Latent (0 of 26 cells disagree today, and only one cell has
-    // drops > 0) but wrong by construction.
+    // by exactly `drops`. Latent (0 of 26 cells disagreed when measured, before the
+    // 2026-10-03 chemistry faithful retirement, and only one cell had drops > 0) but
+    // wrong by construction.
     ['image', c(cn, /<image\b/g) - (Number.isInteger(drops) ? drops : 0), c(ht, /<img\b/g)],
   ]) {
     if (b > a) parts.push(`${unit} +${b - a}`);
@@ -808,7 +811,7 @@ export const K3 = defineCheck({
         `${before.size} published page(s) carrying a module id before the render, ` +
         `${after.size} after; ${entries.length} slug-map entr(ies); ` +
         `${findings.length} unaccounted. ⚠️ Pages with no data-module-id are outside this ` +
-        `population by design (240 of 334 corpus-wide carry one)`,
+        `population by design`,
     };
   },
 });

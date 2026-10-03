@@ -232,9 +232,13 @@ describe('R4 defect 4 — --book is required, never defaulted', () => {
  * The fixture is decisive because the two tracks give DIFFERENT output on the same
  * chapter: chemistry ch01 is `Result: FAIL` / exit 1 on mt-preview (2 errors), while
  * faithful, retired 2026-10-03, has no rendered HTML at all, so it reports all 7 modules
- * unauditable (`not found`). (Until the retirement, faithful was `PASS with warnings` /
- * exit 0.) A dropped `--track` therefore shows up as mt-preview's output, not merely as
- * a missing flag.
+ * unauditable (`not found`). Both tracks are FAIL / exit 1, so the test discriminates on
+ * STDOUT CONTENT (which modules were audited, the unauditable line), never on the verdict.
+ * ⚠️ That was already true before the retirement: since #420 (`fa208375c`) an unauditable
+ * module is a FAIL, and when measured on `0c2f06d01` faithful ch01 printed `Result: FAIL —
+ * 5 module(s) could not be audited` / exit 1 (2 errors, 5 of 7 unrendered) — not the
+ * `PASS with warnings` / exit 0 an earlier version of this comment claimed. A dropped
+ * `--track` therefore shows up as mt-preview's output, not merely as a missing flag.
  */
 describe('the --track flag actually arrives', () => {
   it('--track faithful is not silently dropped to mt-preview', () => {
