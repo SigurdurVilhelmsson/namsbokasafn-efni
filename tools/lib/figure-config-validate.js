@@ -20,6 +20,10 @@
  * `compose.py`'s planner), before anything publishes. Here: the owner book, the `.svg` row, the
  * translated copy, the policy overlaps, a collision with a bought sidecar key, the value's shape
  * and encoding, and the line upper bound.
+ *
+ * ⚠️ A REPEATED KEY IS INVISIBLE TO `validateFigureConfig`, which reads the PARSED config: JSON.parse
+ * keeps only the last of two equal keys. `repeatedKeyProblems` reads the raw text instead; the
+ * committed-config test runs both.
  */
 import fs from 'fs';
 import path from 'path';
@@ -315,6 +319,83 @@ export function validateFigureConfig(cfg, corpus) {
       }
     }
   }
+  return problems;
+}
+
+/**
+ * Every key a JSON text repeats inside one object, at any depth (§C140 ㊾ D5(a); a skeptic's finding,
+ * 2026-10-03). JSON.parse keeps only the LAST of two equal keys, so the parsed config cannot show a
+ * repeat: a figure's heldBlockValues entry written twice (say one per value-sheet row), or a block key
+ * repeated inside one, would drop the first value with no error, and `validateFigureConfig` would pass
+ * what is left. figure-compose.py refuses the same thing at compose time, with an `object_pairs_hook`;
+ * this is the CI half. Each key is compared as JSON.parse DECODES it (the slice is handed to
+ * JSON.parse), so two spellings of one key - `"No"` and `"N\u006f"` - collide as they collapse. A key
+ * written n times is named once.
+ *
+ * The text is parsed first, so invalid JSON throws and the scanner below only ever reads valid JSON.
+ *
+ * @param {string} text  the raw config file
+ * @returns {string[]} problems, in document order; empty when no key repeats
+ */
+export function repeatedKeyProblems(text) {
+  JSON.parse(text);
+  const problems = [];
+  let i = 0;
+  const skipSpace = () => {
+    while (i < text.length && ' \t\n\r'.includes(text[i])) i += 1;
+  };
+  const readString = () => {
+    const start = i;
+    i += 1; // the opening quote
+    // A backslash skips the character it escapes (the hex digits of \uXXXX are never a quote).
+    while (text[i] !== '"') i += text[i] === '\\' ? 2 : 1;
+    i += 1; // the closing quote
+    return JSON.parse(text.slice(start, i));
+  };
+  const readValue = (where) => {
+    skipSpace();
+    const c = text[i];
+    if (c === '{' || c === '[') {
+      const close = c === '{' ? '}' : ']';
+      const seen = new Set();
+      const named = new Set();
+      i += 1;
+      skipSpace();
+      if (text[i] === close) {
+        i += 1;
+        return;
+      }
+      for (let n = 0; ; n += 1) {
+        let child = `${where}[${n}]`;
+        if (c === '{') {
+          skipSpace();
+          const key = readString();
+          if (seen.has(key) && !named.has(key)) {
+            named.add(key);
+            problems.push(
+              `${where === '' ? 'the config' : where} repeats the key ${key} — JSON keeps only the last ` +
+                'of a repeated key, so the earlier one is dropped silently; merge them into one'
+            );
+          }
+          seen.add(key);
+          child = where === '' ? key : `${where}.${key}`;
+          skipSpace();
+          i += 1; // the colon
+        }
+        readValue(child);
+        skipSpace();
+        const sep = text[i];
+        i += 1; // a comma, or the closing bracket
+        if (sep === close) return;
+      }
+    }
+    if (c === '"') {
+      readString();
+      return;
+    }
+    while (i < text.length && !',]} \t\n\r'.includes(text[i])) i += 1; // a number, true, false, null
+  };
+  readValue('');
   return problems;
 }
 

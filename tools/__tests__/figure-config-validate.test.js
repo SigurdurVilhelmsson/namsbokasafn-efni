@@ -5,9 +5,10 @@ import { fileURLToPath } from 'url';
 import {
   validateFigureConfig,
   buildValidatorCorpus,
+  repeatedKeyProblems,
   HELD_SCRIPT_CHARS,
 } from '../lib/figure-config-validate.js';
-import { loadFigureTextConfig } from '../lib/figure-text-config.js';
+import { loadFigureTextConfig, FIGURE_TEXT_CONFIG } from '../lib/figure-text-config.js';
 import { readMappingOrRefuse, isTranslatedName } from '../lib/translated-figure-refs.js';
 import { DEFAULT_SUFFIX } from '../generate-image-mapping.js';
 import { makeTmpDir, cleanupFixtures } from './helpers/git-fixture.js';
@@ -889,6 +890,77 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
   });
 });
 
+// §C140 ㊾ D5(a), a skeptic's finding (2026-10-03). JSON.parse keeps only the LAST of two equal keys,
+// so `validateFigureConfig`, which reads the PARSED object, cannot see a figure's heldBlockValues entry
+// written twice, or a block key repeated inside one: the first value vanishes with no error and its
+// label ships in English. `repeatedKeyProblems` reads the RAW text. figure-compose.py refuses the same
+// thing at compose time (test_figure_compose.py F12); this is the CI half.
+const REPEAT_TAIL =
+  ' — JSON keeps only the last of a repeated key, so the earlier one is dropped silently; merge them into one';
+
+describe('repeatedKeyProblems — a key JSON.parse would collapse (§C140 ㊾ D5(a))', () => {
+  it.each([
+    [
+      'a figure’s heldBlockValues entry written twice',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX"}, "CNX_Other": {"C|H or R": "C\\nQZX R"}}}',
+      ['heldBlockValues repeats the key CNX_Other'],
+    ],
+    [
+      'a block key repeated inside an entry',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX", "No": "QZQ"}}}',
+      ['heldBlockValues.CNX_Other repeats the key No'],
+    ],
+    [
+      'one key spelt twice — a JSON escape decodes to the same key',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX", "N\\u006f": "QZQ"}}}',
+      ['heldBlockValues.CNX_Other repeats the key No'],
+    ],
+    [
+      'a key repeated at the root',
+      '{"locale": "is", "locale": "is"}',
+      ['the config repeats the key locale'],
+    ],
+    [
+      'a key repeated in an object inside an array',
+      '{"editionPrecedence": [{"a": 1}, {"b": 2, "b": 3}]}',
+      ['editionPrecedence[1] repeats the key b'],
+    ],
+    [
+      'a key written three times (named once) and a repeat in a second object',
+      '{"t": {"k": 1, "k": 2, "k": 3}, "u": {"x": 1, "x": 2}}',
+      ['t repeats the key k', 'u repeats the key x'],
+    ],
+  ])('names %s', (_label, text, named) => {
+    expect(repeatedKeyProblems(text)).toEqual(named.map((p) => p + REPEAT_TAIL));
+  });
+
+  it.each([
+    ['the same key in two DIFFERENT objects', '{"a": {"k": 1}, "b": {"k": 2}, "k": 3}'],
+    ['two keys that differ only in case', '{"No": 1, "no": 2}'],
+    [
+      'string VALUES holding braces, brackets, quotes, backslashes and key-shaped text',
+      '{"a": "x\\", \\"a\\": {\\\\", "b": {"a": "}, \\"b\\": ["}}',
+    ],
+    [
+      'empty objects and arrays, nesting and every scalar',
+      '{"a": {}, "b": [], "c": [1, true, null, -2.5e3, "s", [{}]], "d": {"e": {"f": false}}}',
+    ],
+  ])('CONTROL: %s repeats nothing', (_label, text) => {
+    expect(repeatedKeyProblems(text)).toEqual([]);
+  });
+
+  it('CONTROL: what it names really collapses — JSON.parse keeps only the last, and the validator passes that', () => {
+    const text =
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX"}, "CNX_Other": {"C|H or R": "C\\nQZX R"}}}';
+    expect(JSON.parse(text).heldBlockValues).toEqual({ CNX_Other: { 'C|H or R': 'C\nQZX R' } });
+    expect(validateFigureConfig(JSON.parse(text), heldCorpus())).toEqual([]);
+  });
+
+  it('refuses text that is not valid JSON, instead of scanning it', () => {
+    expect(() => repeatedKeyProblems('{"a": 1,')).toThrow(SyntaxError);
+  });
+});
+
 describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)', () => {
   // These cases run the retiredState branch on a tree built to fail, with a control: a fail-open
   // there would let a half-done retire pass. (The committed config held no retired entry until the
@@ -1131,6 +1203,19 @@ describe('the committed figure config (§C140 ㊵)', () => {
 
   it('passes every rule', () => {
     expect(validateFigureConfig(cfg, corpus)).toEqual([]);
+  });
+
+  // §C140 ㊾ D5(a) — JSON.parse collapses a repeated key, so "passes every rule" cannot see one.
+  it('repeats no key at any depth (read from the RAW text: the parsed config cannot show a repeat)', () => {
+    expect(repeatedKeyProblems(fs.readFileSync(FIGURE_TEXT_CONFIG, 'utf-8'))).toEqual([]);
+  });
+
+  it('NON-VACUITY: the same scan names a root key planted twice into a copy of the committed text', () => {
+    const raw = fs.readFileSync(FIGURE_TEXT_CONFIG, 'utf-8');
+    expect(raw.startsWith('{\n') && raw.includes('"heldBlockValues"')).toBe(true);
+    expect(repeatedKeyProblems(raw.replace('{\n', '{\n "heldBlockValues": {},\n'))).toEqual([
+      'the config repeats the key heldBlockValues' + REPEAT_TAIL,
+    ]);
   });
 
   it('NON-VACUITY: the corpus holds chemistry, and the superseded entries are real', () => {

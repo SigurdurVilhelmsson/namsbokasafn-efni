@@ -46,7 +46,9 @@ no block, is send:true, or is also translated, BEFORE anything is spawned or wri
 figure's values to compose.py in `<out>/held-values.json`; and `verify` checks the held labels compose
 drew against blocks.json as a multiset before the money check subtracts them. F4 and F10 are the
 CONTROLS that make the refusals mean anything: a configured value IS drawn, and the production route
-(no --config) reads the committed config. Every value there is an ASCII sentinel (QZ...).
+(no --config) reads the committed config. Every value there is an ASCII sentinel (QZ...). F12 (a
+skeptic's finding, 2026-10-03): a config that REPEATS a key at any depth is refused before the spawn -
+JSON keeps only the last of two equal keys, so an earlier entry or value would vanish silently.
 """
 import collections
 import json
@@ -1601,9 +1603,76 @@ def f9():
               f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
 
 
+# F12 (a skeptic's finding, 2026-10-03): a REPEATED key in the config. json.loads - and JSON.parse in the
+# validator - keeps only the LAST of two equal keys, so a figure's entry written twice, or a block key
+# repeated inside one, drops the first value with no error: that label ships in English, exit 0, and the
+# validator, the pre-flight and verify all pass it. The pre-flight now refuses a repeat at ANY depth,
+# before anything is spawned. ⚠️ DELIBERATELY UNLIKE F9's CONTROL, which never reads ANOTHER figure's
+# malformed entry: a repeated key is a file JSON cannot read faithfully - the unparsable-config class,
+# which refuses every figure wherever its syntax error sits - so a repeat under another figure or in
+# another table refuses this figure too (two arms pin that). The configs are RAW TEXT: a Python dict
+# cannot hold a repeated key. The CONTROLS: the committed config repeats nothing (an independent census),
+# and the same value written ONCE composes.
+def f12():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f12'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F12')
+        check('F12 PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+              f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+        tr = write_tr(Path(td) / 'tr12.json', TR12)
+        me, k = json.dumps('CNX_Fixture_F12'), json.dumps(K_VERBATIM)
+        # (label, the repeated key the refusal must name, the raw config, what json.loads keeps for this figure)
+        arms = (
+            ("this figure's entry written twice", 'CNX_Fixture_F12',
+             '{"heldBlockValues": {%s: {%s: "QZ"}, %s: {%s: "QZY"}}}' % (me, k, me, k), {K_VERBATIM: 'QZY'}),
+            ('a block key repeated inside its entry', K_VERBATIM,
+             '{"heldBlockValues": {%s: {%s: "QZ", %s: "QZY"}}}' % (me, k, k), {K_VERBATIM: 'QZY'}),
+            ('one block key spelt twice (a JSON escape decodes to the same key)', K_VERBATIM,
+             '{"heldBlockValues": {%s: {"H2O (g)": "QZ", "H2O\\u0020(g)": "QZY"}}}' % me, {K_VERBATIM: 'QZY'}),
+            ("a key repeated in ANOTHER figure's entry", 'No',
+             '{"heldBlockValues": {%s: {%s: "QZ"}, "CNX_Other_Figure": {"No": "QZA", "No": "QZB"}}}'
+             % (me, k), {K_VERBATIM: 'QZ'}),
+            ('a key repeated in another table', 'CNX_Other_Figure',
+             '{"retiredFigures": {"CNX_Other_Figure": "QZ one", "CNX_Other_Figure": "QZ two"}, '
+             '"heldBlockValues": {%s: {%s: "QZ"}}}' % (me, k), {K_VERBATIM: 'QZ'}),
+        )
+        for i, (label, key, text, kept) in enumerate(arms):
+            check(f'F12 PRECONDITION {label}: json.loads reads it with no error and keeps this figure '
+                  f'{kept!r} - the repeat collapses silently',
+                  json.loads(text)['heldBlockValues'].get('CNX_Fixture_F12') == kept, text)
+            cfg = Path(td) / f'c12-{i}.json'
+            cfg.write_text(text, encoding='utf-8')
+            clean(out)
+            r = run_wrapper('--out', out, '--translations', tr, '--config', cfg)
+            d = load_json(out / 'compose.json') or {}
+            quiet, seen = not_spawned(out)
+            check(f'F12 {label}: refused before the spawn, naming the repeated key {key!r}',
+                  refused(r, 1) and 'repeats the key' in err_of(d) and repr(key) in err_of(d) and quiet,
+                  f'exit {r.returncode}: {d!r} {seen}')
+
+        census = {'objects': 0, 'repeated': []}
+
+        def hook(pairs):
+            census['objects'] += 1
+            ks = [p[0] for p in pairs]
+            census['repeated'] += sorted({x for x in ks if ks.count(x) > 1})
+            return dict(pairs)
+
+        json.loads((HERE / 'figure-text.config.json').read_text(encoding='utf-8'), object_pairs_hook=hook)
+        check('F12 CONTROL the committed config repeats no key at any depth (an independent census, '
+              'which saw its objects)', census['repeated'] == [] and census['objects'] > 1, repr(census))
+        clean(out)
+        cfg = Path(td) / 'c12-once.json'
+        cfg.write_text('{"heldBlockValues": {%s: {%s: "QZY"}}}' % (me, k), encoding='utf-8')
+        r = run_wrapper('--out', out, '--translations', tr, '--config', cfg)
+        d = load_json(out / 'compose.json') or {}
+        check('F12 CONTROL the same value written ONCE composes and draws it', r.returncode == 0
+              and held_of(d) == [(K_VERBATIM, 3, [0])], f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+
+
 if _mod is not None:
     for _label, _fn in (('F1-F3', f1_f3), ('F4/F10', f4_f10), ('F5/F11', f5_f11), ('F6', f6),
-                        ('F7', f7), ('F8', f8), ('F9', f9)):
+                        ('F7', f7), ('F8', f8), ('F9', f9), ('F12', f12)):
         attempt(_label, _fn)
 
 

@@ -60,10 +60,11 @@ FILE IS THEIR ONE READER. `--config` overrides the path for tests only: the driv
 it, so every route - sidecar recompose, textless, buy - reads the committed file with no JS
 plumbing. `load_held` takes this figure's entry by EXACT basename (meta.json's `source` stem, the
 rule the publisher's `basenameFromMeta` applies) and refuses, BEFORE anything is spawned or
-written: a `source` that names no basename, a table or entry that cannot be read, a key that
-matches no block (renamed or re-extracted - the ruled value would never be drawn), a key
-blocks.json marks send:true, and a key the --translations file also translates (two authors for
-one label). The values reach compose.py in `<out>/held-values.json` (heldvalues.py owns the
+written: a `source` that names no basename, a config that repeats a key at any depth (JSON keeps
+only the last of two equal keys, so an earlier entry or value would vanish with no error), a table
+or entry that cannot be read, a key that matches no block (renamed or re-extracted - the ruled
+value would never be drawn), a key blocks.json marks send:true, and a key the --translations file
+also translates (two authors for one label). The values reach compose.py in `<out>/held-values.json` (heldvalues.py owns the
 format), written on EVERY run - `{}` included - after the stale outputs are removed, and
 `--held-values` is always passed. A value compose refuses (`heldErrors`) refuses the figure in
 assertion 2: readers keep the previous copy, and the fix is one config edit and a 0-ISK rerun.
@@ -248,12 +249,36 @@ def load_held(out_dir, blocks, tr, config_path):
             f'meta.json in {out_dir} has no string `source` naming a file (got {source!r}) - '
             f"its stem is this figure's basename, which picks its heldBlockValues entry and which "
             f'the publisher checks; run figure-prepare.py for this figure again')
+    # A REPEATED KEY IS REFUSED, NEVER COLLAPSED (a skeptic's finding, 2026-10-03). json.loads - and
+    # JSON.parse in the validator - keeps only the LAST of two equal keys, so a figure's entry written
+    # twice (say one per value-sheet row), or a block key repeated inside one, silently drops the first
+    # value: that key stays send:false, lands in `missing` where verify expects it, and ships in English
+    # with exit 0. The hook sees every object's keys AFTER decoding, so two spellings of one key (a JSON
+    # escape) collide as JSON itself collides them; `dict(pairs)` keeps json's own last-wins result.
+    # ANY depth, deliberately: like a syntax error, a repeat anywhere is a file JSON cannot read
+    # faithfully, so it refuses every figure - unlike a malformed entry for ANOTHER figure, which
+    # for_figure never reads. Measured on the committed config: 9 objects, no key repeated.
+    repeated = []
+
+    def _note_repeats(pairs):
+        seen = set()
+        for k, _ in pairs:
+            if k in seen:
+                repeated.append(k)
+            seen.add(k)
+        return dict(pairs)
+
     try:
-        config = json.loads(Path(config_path).read_text(encoding='utf-8'))
+        config = json.loads(Path(config_path).read_text(encoding='utf-8'), object_pairs_hook=_note_repeats)
     except Exception as exc:                      # noqa: BLE001 - reported, not raised
         raise ComposeError(
             f'the policy config {config_path} cannot be read ({type(exc).__name__}: {exc}) - a '
             f'heldBlockValues table that cannot be read is never read as empty') from exc
+    if repeated:
+        raise ComposeError(
+            f'the policy config {config_path} repeats the key(s) {sorted(set(repeated))!r} - JSON keeps '
+            f'only the last of a repeated key, so an earlier heldBlockValues entry or value would be '
+            f'dropped silently and its label drawn in English; merge them into one')
     try:
         values = heldvalues.for_figure(heldvalues.load_table(config), basename)
     except heldvalues.HeldValueError as exc:
