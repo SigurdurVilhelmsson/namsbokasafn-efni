@@ -1,0 +1,1382 @@
+{
+ "_README": "§C140 ㊾ D5(a): the REAL runs and post-Part-3 containers of the 13 value-sheet blocks. Written by held_geometry.py (see README.md); read by test_heldplan.py, test_figscripts.py section HS and test_compose_held.py. OpenStax figure text, CC BY.",
+ "code": {
+  "figtext.py": "2f59711df4d3dbacff18dce0db3e021ecae094ca2cabc7dfba9d3e7ca62d34a8",
+  "figcontainers.py": "2b7108f5674f1d93f9c9ae390d83cbca5d539763c415bc1d905bf23a1e369379",
+  "blockkey.py": "3cf6ed661efd9a84d0a7a471e9e7ed18a42b8e7fb8bedd0dfb8480fa39165ff2",
+  "numloc.py": "1ce743770f0ea82ba45ff77c5c192aa7fed1ba1dc7614e68891b046d29665e0d",
+  "_deps.py": "d567814568d2cc31e18f310e501d1c4bf0fa9a10fe587677b90abd6828d2bdb2"
+ },
+ "figures": {
+  "CNX_Chem_01_02_MattType": {
+   "page": [
+    468.0,
+    158.34
+   ],
+   "fonts": {
+    "PAGE/TT0": {
+     "base": "/XXCSWE+LiberationSans-Bold",
+     "first": 32,
+     "last": 120,
+     "subtype": "/TrueType",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": false,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "199bafd336bb4557b76c841db74b47ad272a0b669e1fc75e05cd1ec395ce76ef",
+    "runs.json": "67ce47526c3ec4ea7193596bd321e82c62961f5c31ec59504ae93949559c17c1",
+    "blocks.json": "00eedbfe61352958d92cc49ba9e393bb8aa415af0edaa86bff02e3b3c1f32b79",
+    "artwork.pdf": "c6d6717c077f3e7378fbd53e075af28e358a4408926a898b078ad8240f502f5b",
+    "artwork.png": "e16993066e8983ad6b1cd86bfda54b52a36a66977602c691fdc7b1bcf30e8d58"
+   },
+   "blocks": [
+    {
+     "key": "No",
+     "block": 11,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "No",
+       "font": "PAGE/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 145.7043,
+       "y": 117.8916,
+       "adv": 11.997,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        0.8
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        145.7043,
+        117.8916
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 0.20429999999998927,
+      "FR": 172.2013,
+      "room_up": 33.75,
+      "room_down": 0.25,
+      "free_left_clear": 145.5,
+      "free_right_clear": 14.5,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    },
+    {
+     "key": "No",
+     "block": 13,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "No",
+       "font": "PAGE/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 46.7763,
+       "y": 66.3756,
+       "adv": 11.997,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        0.8
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        46.7763,
+        66.3756
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 0.026299999999999102,
+      "FR": 68.5233,
+      "room_up": 85.25,
+      "room_down": 0.25,
+      "free_left_clear": 46.75,
+      "free_right_clear": 9.75,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    },
+    {
+     "key": "No",
+     "block": 15,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "No",
+       "font": "PAGE/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 282.9363,
+       "y": 66.3756,
+       "adv": 11.997,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        0.8
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        282.9363,
+        66.3756
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container (refused: rules-not-spanning)",
+      "FL": 187.43630000000002,
+      "FR": 304.68330000000003,
+      "room_up": 24.75,
+      "room_down": 0.25,
+      "free_left_clear": 95.5,
+      "free_right_clear": 9.75,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_07_04_HNO2_img": {
+   "page": [
+    151.5,
+    38.0
+   ],
+   "fonts": {
+    "PAGE/Fm0/TT0": {
+     "base": "/RDDKBP+LiberationSans",
+     "first": 72,
+     "last": 114,
+     "subtype": "/TrueType",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": false,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "42c5496a25eacd46076d6757f47e5e25f259f04d6a0505dcc62198ea94275dcc",
+    "runs.json": "7f89a5b531a6a3a82bc7fae56d057e0985fa3c66fb9205444d8e2209eaec623d",
+    "blocks.json": "8d0373b6b65d5e5ad6617f16ca0589cec7c2f1673fe7f779e562f5b6fe39dcf0",
+    "artwork.pdf": "5b88a2a1aad447e5fa6d346ccfdd30fd42295b1fbafaf0ac5cc64680992f8fd6",
+    "artwork.png": "cee6d10c5188fa90e893324360e50221a856cf02c69c1b1858665b1b45e93e77"
+   },
+   "blocks": [
+    {
+     "key": "or",
+     "block": 8,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "or",
+       "font": "PAGE/Fm0/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 64.752,
+       "y": 8.4453,
+       "adv": 8.001,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        64.752,
+        8.4453
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 54.751999999999995,
+      "FR": 82.003,
+      "room_up": 22.75,
+      "room_down": 6.5,
+      "free_left_clear": 10.0,
+      "free_right_clear": 9.25,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_09_05_MolSpeed1": {
+   "page": [
+    228.06,
+    181.7
+   ],
+   "fonts": {
+    "PAGE/R9": {
+     "base": "/PUMGIW+LiberationSans",
+     "first": 32,
+     "last": 121,
+     "subtype": "/Type1",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": true,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "f9d7774556547c37c5ad0db69f2895f6ecd98233594390e17bf06be54d6212c0",
+    "runs.json": "1e788247a50510d6cb5ad0476033e85712fbe105d5e996d786d87dfc171f10bc",
+    "blocks.json": "ad23297fa47c7b0e309cfa048512e3e43a9b6af229d1cd312252d21f7d05e541",
+    "artwork.pdf": "a4e530ac8144d0f819409f13d61b2fecfef36a947770ad1392f59b4a01d5a5d4",
+    "artwork.png": "4e463af6e8d34117e911a953de70e46d508440de356db0fc553f187d5afbef5b"
+   },
+   "blocks": [
+    {
+     "key": "02 at T = 300 K",
+     "block": 13,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "0",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 127.7819,
+       "y": 83.2989,
+       "adv": 5.004,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        127.78194,
+        83.2989
+       ]
+      },
+      {
+       "text": "2",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 132.787,
+       "y": 81.2989,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        132.78702,
+        81.2989
+       ]
+      },
+      {
+       "text": " at T = 300 K",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 136.68,
+       "y": 83.2989,
+       "adv": 51.782,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        136.67999,
+        83.2989
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 116.7819,
+      "FR": 228.212,
+      "room_up": 91.75,
+      "room_down": 21.75,
+      "free_left_clear": 11.0,
+      "free_right_clear": 39.75,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_14_02_phscale": {
+   "page": [
+    468.0,
+    410.0
+   ],
+   "fonts": {
+    "PAGE/TT1": {
+     "base": "/GAXDFJ+LiberationSans",
+     "first": 32,
+     "last": 150,
+     "subtype": "/TrueType",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": false,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "418db94879aba1433ac9d746baeb1b685b8fd29cf63b217f2f790d967dd55385",
+    "runs.json": "df0ea32d82ba2ef516d954a4ed89a88b1d3bbcc619915213132266d6fda01492",
+    "blocks.json": "98aefce40cbb674b525865a710d1cd53d12730c6d356c6b9467e72ac28fbe65f",
+    "artwork.pdf": "9c8b8218050520d832a8331cde823768c014486abc71db89edcc890bfad42a20",
+    "artwork.png": "201062fa7f891df5b85ebbc5d7dc75e98df46ceeb69ff87c93cce83934e2bf75"
+   },
+   "blocks": [
+    {
+     "key": "100 or 1",
+     "block": 5,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "10",
+       "font": "PAGE/TT1",
+       "size": 8.9998,
+       "rot": 0.0,
+       "x": 27.8628,
+       "y": 341.6631,
+       "adv": 10.008,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        8.9998,
+        27.8628,
+        341.6631
+       ]
+      },
+      {
+       "text": "0",
+       "font": "PAGE/TT1",
+       "size": 6.9999,
+       "rot": 0.0,
+       "x": 37.8735,
+       "y": 345.6631,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        7.0,
+        0.0,
+        0.0,
+        6.9999,
+        37.8735,
+        345.6631
+       ]
+      },
+      {
+       "text": " or 1",
+       "font": "PAGE/TT1",
+       "size": 8.9998,
+       "rot": 0.0,
+       "x": 41.7666,
+       "y": 341.6631,
+       "adv": 18.009,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        8.9998,
+        41.7666,
+        341.6631
+       ]
+      }
+     ],
+     "container": {
+      "cls": "cell",
+      "why": "rules",
+      "L": 21.0,
+      "R": 69.6689,
+      "D": 3.676,
+      "U": 377.8008,
+      "src_left_margin": 6.8628,
+      "src_right_margin": 9.893299999999996,
+      "src_up_margin": 27.027772999999968,
+      "src_down_margin": 336.097142,
+      "align": "center",
+      "align_why": "cell-single-margins(ratio 1.44)->center"
+     }
+    },
+    {
+     "key": "100 or 1",
+     "block": 87,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "10",
+       "font": "PAGE/TT1",
+       "size": 8.9998,
+       "rot": 0.0,
+       "x": 77.5181,
+       "y": 35.4844,
+       "adv": 10.008,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        8.9998,
+        77.5181,
+        35.4844
+       ]
+      },
+      {
+       "text": "0",
+       "font": "PAGE/TT1",
+       "size": 6.9999,
+       "rot": 0.0,
+       "x": 87.5288,
+       "y": 39.4844,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        7.0,
+        0.0,
+        0.0,
+        6.9999,
+        87.5288,
+        39.4844
+       ]
+      },
+      {
+       "text": " or 1",
+       "font": "PAGE/TT1",
+       "size": 8.9998,
+       "rot": 0.0,
+       "x": 91.4219,
+       "y": 35.4844,
+       "adv": 18.009,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        8.9998,
+        91.4219,
+        35.4844
+       ]
+      }
+     ],
+     "container": {
+      "cls": "cell",
+      "why": "rules",
+      "L": 70.6689,
+      "R": 119.3379,
+      "D": 3.676,
+      "U": 377.8008,
+      "src_left_margin": 6.84920000000001,
+      "src_right_margin": 9.90700000000001,
+      "src_up_margin": 333.20647299999996,
+      "src_down_margin": 29.918442,
+      "align": "center",
+      "align_why": "cell-single-margins(ratio 1.45)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_14_06_buffer": {
+   "page": [
+    293.22,
+    241.25
+   ],
+   "fonts": {
+    "PAGE/R9": {
+     "base": "/QPOGTQ+LiberationSans",
+     "first": 32,
+     "last": 208,
+     "subtype": "/Type1",
+     "encoding": "pikepdf.Dictionary(Type=\"/Encoding\")({\n  \"/BaseEncoding\": \"/WinAnsiEncoding\",\n  \"/Differences\": [ 208, \"/endash\" ],\n  \"/Type\": \"/Encoding\"\n})",
+     "decodable": true,
+     "tounicode": true,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "58780e28a415aa465050553048ded3784b863aa56365d60369aecdbeccebfa44",
+    "runs.json": "5c7578010b9fe5b4352b8fd6fd5597a99b157a73b2820b98e50be15f113cb7b9",
+    "blocks.json": "d0b93940e82778773074cb295e558ac28514a249dc78741698016c41f613e425",
+    "artwork.pdf": "71c2015fd24c62a350603b6e3481739c8f8ada4ef85ad6a2e928c045ddc9a302",
+    "artwork.png": "322b328da70196c5a71899a86e61bcdb91a6a40d342628fa248b9d75a27c3c9c"
+   },
+   "blocks": [
+    {
+     "key": "[CH3CO2H] is 11% of [CH3CO2|–]",
+     "block": 23,
+     "send": false,
+     "ftLines": 2,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "[CH",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 102.052,
+       "y": 150.365,
+       "adv": 15.498,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        102.052,
+        150.365
+       ]
+      },
+      {
+       "text": "3",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 117.5512,
+       "y": 147.365,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        117.5512,
+        147.365
+       ]
+      },
+      {
+       "text": "CO",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 121.4442,
+       "y": 150.365,
+       "adv": 13.502,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        121.44417,
+        150.365
+       ]
+      },
+      {
+       "text": "2",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 134.9442,
+       "y": 147.365,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        134.94417,
+        147.365
+       ]
+      },
+      {
+       "text": "H] is 11% of [CH",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 138.8371,
+       "y": 150.365,
+       "adv": 65.851,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        138.83714,
+        150.365
+       ]
+      },
+      {
+       "text": "3",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 204.6891,
+       "y": 147.365,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        204.68914,
+        147.365
+       ]
+      },
+      {
+       "text": "CO",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 208.5829,
+       "y": 150.365,
+       "adv": 13.502,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        208.58289,
+        150.365
+       ]
+      },
+      {
+       "text": "2",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 222.0829,
+       "y": 147.365,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        222.08289,
+        147.365
+       ]
+      },
+      {
+       "text": "–",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 224.5763,
+       "y": 154.365,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        224.57625,
+        154.365
+       ]
+      },
+      {
+       "text": "]",
+       "font": "PAGE/R9",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 228.8891,
+       "y": 150.365,
+       "adv": 2.502,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        228.88914,
+        150.365
+       ]
+      }
+     ],
+     "container": {
+      "cls": "cell",
+      "why": "rules",
+      "L": 99.7172,
+      "R": 236.717,
+      "D": 142.64600000000002,
+      "U": 164.261,
+      "src_left_margin": 2.3348000000000013,
+      "src_right_margin": 5.32589999999999,
+      "src_up_margin": 4.785999999999973,
+      "src_down_margin": 3.2489999999999952,
+      "align": "center",
+      "align_why": "cell-single-margins(ratio 2.28)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_18_04_OxStNonmts": {
+   "page": [
+    575.44,
+    114.42
+   ],
+   "fonts": {
+    "PAGE/R11": {
+     "base": "/QANPDO+STIXGeneral-BoldItalic",
+     "first": 43,
+     "last": 150,
+     "subtype": "/Type1",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": true,
+     "unmapped_glyphs": []
+    },
+    "PAGE/R9": {
+     "base": "/BFZTYJ+LiberationSans-Bold",
+     "first": 32,
+     "last": 115,
+     "subtype": "/Type1",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": true,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "6f090f2c6c88d938642c4c7167e439611a98c50ea34e5e3b3d12908bb5ebf89d",
+    "runs.json": "bc45e01cc4a6b50af057ab8418996d116d934d1fde0af198427fcacfe7552f63",
+    "blocks.json": "e4867bef02b2b7eda0f47739e21b4ae5db8d4afde7c530bc027128dad910b33b",
+    "artwork.pdf": "430569d836b9d418cbf7ae7986e55aa1b1e166416b858557422fc40d13c1d49b",
+    "artwork.png": "7d7b2a18ba75e7dc2032bede039bd93cda0c535b4dad8ac9caab2615fffa7637"
+   },
+   "blocks": [
+    {
+     "key": "4+|To|4–",
+     "block": 2,
+     "send": false,
+     "ftLines": 3,
+     "visualLines": 3,
+     "runs": [
+      {
+       "text": "4",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 163.07,
+       "y": 66.5133,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        163.06996,
+        66.5133
+       ]
+      },
+      {
+       "text": "+",
+       "font": "PAGE/R11",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 166.9629,
+       "y": 67.0133,
+       "adv": 3.99,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        166.96293,
+        67.0133
+       ]
+      },
+      {
+       "text": "To",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 162.9211,
+       "y": 59.5133,
+       "adv": 8.034,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        162.92113,
+        59.5133
+       ]
+      },
+      {
+       "text": "4",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 163.5602,
+       "y": 52.5133,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        163.56019,
+        52.5133
+       ]
+      },
+      {
+       "text": "–",
+       "font": "PAGE/R11",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 167.4532,
+       "y": 53.0133,
+       "adv": 3.5,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        167.45316,
+        53.0133
+       ]
+      }
+     ],
+     "container": {
+      "cls": "cell",
+      "why": "fill-rect",
+      "L": 131.631,
+      "R": 202.18800000000002,
+      "D": 1.76211,
+      "U": 86.91720000000001,
+      "src_left_margin": 31.290099999999995,
+      "src_right_margin": 31.23290000000003,
+      "src_up_margin": 14.793900000000008,
+      "src_down_margin": 49.28119,
+      "align": "center",
+      "align_why": "multi-ambiguous(margin 0.32)->center"
+     }
+    },
+    {
+     "key": "5+|To|3–",
+     "block": 4,
+     "send": false,
+     "ftLines": 3,
+     "visualLines": 3,
+     "runs": [
+      {
+       "text": "5",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 241.07,
+       "y": 66.5133,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        241.07,
+        66.5133
+       ]
+      },
+      {
+       "text": "+",
+       "font": "PAGE/R11",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 244.963,
+       "y": 67.0133,
+       "adv": 3.99,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        244.96297,
+        67.0133
+       ]
+      },
+      {
+       "text": "To",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 240.9212,
+       "y": 59.5133,
+       "adv": 8.034,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        240.92117,
+        59.5133
+       ]
+      },
+      {
+       "text": "3",
+       "font": "PAGE/R9",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 241.5602,
+       "y": 52.5133,
+       "adv": 3.892,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        241.56024,
+        52.5133
+       ]
+      },
+      {
+       "text": "–",
+       "font": "PAGE/R11",
+       "size": 7.0,
+       "rot": 0.0,
+       "x": 245.4532,
+       "y": 53.0133,
+       "adv": 3.5,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        245.45321,
+        53.0133
+       ]
+      }
+     ],
+     "container": {
+      "cls": "cell",
+      "why": "fill-rect",
+      "L": 209.631,
+      "R": 280.18800000000005,
+      "D": 1.76211,
+      "U": 86.91720000000001,
+      "src_left_margin": 31.2902,
+      "src_right_margin": 31.232800000000054,
+      "src_up_margin": 14.793900000000008,
+      "src_down_margin": 49.28119,
+      "align": "center",
+      "align_why": "multi-ambiguous(margin 0.32)->center"
+     }
+    }
+   ]
+  },
+  "CNX_Chem_20_04_amide1_img": {
+   "page": [
+    234.0,
+    127.5
+   ],
+   "fonts": {
+    "PAGE/Fm0/TT0": {
+     "base": "/SKFJQL+LiberationSans",
+     "first": 32,
+     "last": 120,
+     "subtype": "/TrueType",
+     "encoding": "/WinAnsiEncoding",
+     "decodable": true,
+     "tounicode": false,
+     "unmapped_glyphs": []
+    }
+   },
+   "inputs": {
+    "meta.json": "b634b65f764c7de0862a7cc2c4afc4b0a13634486cff1678393d070278584b27",
+    "runs.json": "55fb42a74f0a7ed9fc898fee5cb41525e7ac9038a719de73dc8d794c1ffd584e",
+    "blocks.json": "bf83bca28e02c3b9dc27ee35c134f1e9b376cfb6bc6632a6485cc1ed978e1461",
+    "artwork.pdf": "6841c19a477d20c2dcb6d7f0d5c57c08be20d4d89346bb22eceb99aa621dfc62",
+    "artwork.png": "8baed46bb66226f8c2910b81843ce664d54c94aa36898f6a5e976753a7c62934"
+   },
+   "blocks": [
+    {
+     "key": "C|H or R",
+     "block": 0,
+     "send": false,
+     "ftLines": 2,
+     "visualLines": 2,
+     "runs": [
+      {
+       "text": "C",
+       "font": "PAGE/Fm0/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 98.0259,
+       "y": 93.4453,
+       "adv": 6.498,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        98.0259,
+        93.4453
+       ]
+      },
+      {
+       "text": "H or R",
+       "font": "PAGE/Fm0/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 61.2607,
+       "y": 83.4922,
+       "adv": 26.001,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        61.2607,
+        83.4922
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 0.010699999999999932,
+      "FR": 106.2739,
+      "room_up": 11.75,
+      "room_down": 44.0,
+      "free_left_clear": 61.25,
+      "free_right_clear": 1.75,
+      "align": "right",
+      "align_why": "multi(margin 9.75)->right"
+     }
+    },
+    {
+     "key": "R or H",
+     "block": 1,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "R or H",
+       "font": "PAGE/Fm0/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 132.7607,
+       "y": 93.4922,
+       "adv": 26.001,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        132.7607,
+        93.4922
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 131.5107,
+      "FR": 233.76170000000002,
+      "room_up": 27.25,
+      "room_down": 19.0,
+      "free_left_clear": 1.25,
+      "free_right_clear": 75.0,
+      "align": "left",
+      "align_why": "single-flush(tight 1.25, ratio 60.0)->left"
+     }
+    },
+    {
+     "key": "R or H",
+     "block": 2,
+     "send": false,
+     "ftLines": 1,
+     "visualLines": 1,
+     "runs": [
+      {
+       "text": "R or H",
+       "font": "PAGE/Fm0/TT0",
+       "size": 9.0,
+       "rot": 0.0,
+       "x": 125.5107,
+       "y": 66.1172,
+       "adv": 26.001,
+       "fill": [
+        "cmyk",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "tm": [
+        9.0,
+        0.0,
+        0.0,
+        9.0,
+        125.5107,
+        66.1172
+       ]
+      }
+     ],
+     "container": {
+      "cls": "open",
+      "why": "no-container",
+      "FL": 0.010699999999999932,
+      "FR": 233.7617,
+      "room_up": 19.0,
+      "room_down": 32.25,
+      "free_left_clear": 125.5,
+      "free_right_clear": 82.25,
+      "align": "center",
+      "align_why": "single-cue(L0C0R0)->center"
+     }
+    }
+   ]
+  }
+ }
+}

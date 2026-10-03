@@ -1,0 +1,144 @@
+
+######## CNX_Chem_01_02_MattType  (16 blocks; page [468.0, 158.34])
+-- block 11 key='No' send=[False, False, False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=117.89
+      run 'No'           size=9.00 along=145.70 adv=12.00 proj=117.89 rot=0.0 font=/XXCSWE+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 0.8]
+      line_styles: ('No', [None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+-- block 13 key='No' send=[False, False, False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=66.38
+      run 'No'           size=9.00 along=46.78 adv=12.00 proj=66.38 rot=0.0 font=/XXCSWE+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 0.8]
+      line_styles: ('No', [None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+-- block 15 key='No' send=[False, False, False] arc=False n_lines=1 cls=open align=center why=no-container (refused: rules-not-spanning)
+   line 0: proj0=66.38
+      run 'No'           size=9.00 along=282.94 adv=12.00 proj=66.38 rot=0.0 font=/XXCSWE+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 0.8]
+      line_styles: ('No', [None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+   [3 matching block(s)]
+
+######## CNX_Chem_07_04_HNO2_img  (9 blocks; page [151.5, 38.0])
+-- block 8 key='or' send=[False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=8.45
+      run 'or'           size=9.00 along=64.75 adv=8.00 proj=8.45 rot=0.0 font=/RDDKBP+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('or', [None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+   [1 matching block(s)]
+
+######## CNX_Chem_20_04_amide1_img  (17 blocks; page [234.0, 127.5])
+-- block 0 key='C|H or R' send=[False] arc=False n_lines=2 cls=open align=right why=no-container
+   line 0: proj0=93.45
+      run 'C'            size=9.00 along=98.03 adv=6.50 proj=93.45 rot=0.0 font=/SKFJQL+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('C', [None], 9.0, False)
+   line 1: proj0=83.49
+      run 'H or R'       size=9.00 along=61.26 adv=26.00 proj=83.49 rot=0.0 font=/SKFJQL+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('H or R', [None, None, None, None, None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+-- block 1 key='R or H' send=[False, False] arc=False n_lines=1 cls=open align=left why=no-container
+   line 0: proj0=93.49
+      run 'R or H'       size=9.00 along=132.76 adv=26.00 proj=93.49 rot=0.0 font=/SKFJQL+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('R or H', [None, None, None, None, None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+-- block 2 key='R or H' send=[False, False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=66.12
+      run 'R or H'       size=9.00 along=125.51 adv=26.00 proj=66.12 rot=0.0 font=/SKFJQL+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('R or H', [None, None, None, None, None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+   [3 matching block(s)]
+
+######## CNX_Chem_09_05_MolSpeed1  (14 blocks; page [228.06, 181.7])
+-- block 13 key='02 at T = 300 K' send=[False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=83.30
+      run '0'            size=9.00 along=127.78 adv=5.00 proj=83.30 rot=0.0 font=/PUMGIW+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '2'            size=7.00 along=132.79 adv=3.89 proj=81.30 rot=0.0 font=/PUMGIW+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run ' at T = 300 K' size=9.00 along=136.68 adv=51.78 proj=83.30 rot=0.0 font=/PUMGIW+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('02 at T = 300 K', [None, SourceStyle(ratio=0.7778, frac=-0.2222, italic=False), None, None, None, None, None, None, None, None, None, None, None, None, None], 9.0, False)
+   tokens=[('02', [None, SourceStyle(ratio=0.7778, frac=-0.2222, italic=False)])] misses=[]
+   body_size=9.0
+   [1 matching block(s)]
+
+######## CNX_Chem_14_02_phscale  (90 blocks; page [468.0, 410.0])
+-- block 5 key='100 or 1' send=[False, False] arc=False n_lines=1 cls=cell align=center why=rules
+   line 0: proj0=341.66
+      run '10'           size=9.00 along=27.86 adv=10.01 proj=341.66 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '0'            size=7.00 along=37.87 adv=3.89 proj=345.66 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run ' or 1'        size=9.00 along=41.77 adv=18.01 proj=341.66 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('100 or 1', [None, None, SourceStyle(ratio=0.7778, frac=0.4445, italic=False), None, None, None, None, None], 8.9998, False)
+   tokens=[('100', [None, None, SourceStyle(ratio=0.7778, frac=0.4445, italic=False)])] misses=[]
+   body_size=8.9998
+-- block 87 key='100 or 1' send=[False, False] arc=False n_lines=1 cls=cell align=center why=rules
+   line 0: proj0=35.48
+      run '10'           size=9.00 along=77.52 adv=10.01 proj=35.48 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '0'            size=7.00 along=87.53 adv=3.89 proj=39.48 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run ' or 1'        size=9.00 along=91.42 adv=18.01 proj=35.48 rot=0.0 font=/GAXDFJ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('100 or 1', [None, None, SourceStyle(ratio=0.7778, frac=0.4445, italic=False), None, None, None, None, None], 8.9998, False)
+   tokens=[('100', [None, None, SourceStyle(ratio=0.7778, frac=0.4445, italic=False)])] misses=[]
+   body_size=8.9998
+   [2 matching block(s)]
+
+######## CNX_Chem_14_06_buffer  (24 blocks; page [293.22, 241.25])
+-- block 23 key='[CH3CO2H] is 11% of [CH3CO2|–]' send=[False] arc=False n_lines=2 cls=cell align=right why=rules
+   line 0: proj0=150.37
+      run '[CH'          size=9.00 along=102.05 adv=15.50 proj=150.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '3'            size=7.00 along=117.55 adv=3.89 proj=147.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run 'CO'           size=9.00 along=121.44 adv=13.50 proj=150.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '2'            size=7.00 along=134.94 adv=3.89 proj=147.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run 'H] is 11% of [CH' size=9.00 along=138.84 adv=65.85 proj=150.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '3'            size=7.00 along=204.69 adv=3.89 proj=147.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run 'CO'           size=9.00 along=208.58 adv=13.50 proj=150.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '2'            size=7.00 along=222.08 adv=3.89 proj=147.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('[CH3CO2H] is 11% of [CH3CO2', [None, None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False)], 9.0, False)
+   line 1: proj0=154.37
+      run '–'            size=7.00 along=224.58 adv=3.89 proj=154.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run ']'            size=9.00 along=228.89 adv=2.50 proj=150.37 rot=0.0 font=/QPOGTQ+LiberationSans it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('–]', [SourceStyle(ratio=0.7778, frac=0.4444, italic=False), None], 9.0, False)
+   tokens=[('[CH3CO2H]', [None, None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None]), ('[CH3CO2–]', [None, None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), None, None, SourceStyle(ratio=0.7778, frac=-0.3333, italic=False), SourceStyle(ratio=0.7778, frac=0.4444, italic=False), None])] misses=[]
+   body_size=9.0
+   [1 matching block(s)]
+
+######## CNX_Chem_18_04_OxStNonmts  (18 blocks; page [575.44, 114.42])
+-- block 2 key='4+|To|4–' send=[False] arc=False n_lines=3 cls=cell align=center why=fill-rect
+   line 0: proj0=66.51
+      run '4'            size=7.00 along=163.07 adv=3.89 proj=66.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '+'            size=7.00 along=166.96 adv=3.99 proj=67.01 rot=0.0 font=/QANPDO+STIXGeneral-BoldItalic it=True fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('4+', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)], 7.0, False)
+   line 1: proj0=59.51
+      run 'To'           size=7.00 along=162.92 adv=8.03 proj=59.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('To', [None, None], 7.0, False)
+   line 2: proj0=52.51
+      run '4'            size=7.00 along=163.56 adv=3.89 proj=52.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '–'            size=7.00 along=167.45 adv=3.50 proj=53.01 rot=0.0 font=/QANPDO+STIXGeneral-BoldItalic it=True fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('4–', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)], 7.0, False)
+   tokens=[('4+', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)]), ('4–', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)])] misses=[]
+   body_size=7.0
+-- block 4 key='5+|To|3–' send=[False] arc=False n_lines=3 cls=cell align=center why=fill-rect
+   line 0: proj0=66.51
+      run '5'            size=7.00 along=241.07 adv=3.89 proj=66.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '+'            size=7.00 along=244.96 adv=3.99 proj=67.01 rot=0.0 font=/QANPDO+STIXGeneral-BoldItalic it=True fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('5+', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)], 7.0, False)
+   line 1: proj0=59.51
+      run 'To'           size=7.00 along=240.92 adv=8.03 proj=59.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('To', [None, None], 7.0, False)
+   line 2: proj0=52.51
+      run '3'            size=7.00 along=241.56 adv=3.89 proj=52.51 rot=0.0 font=/BFZTYJ+LiberationSans-Bold it=False fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      run '–'            size=7.00 along=245.45 adv=3.50 proj=53.01 rot=0.0 font=/QANPDO+STIXGeneral-BoldItalic it=True fill=['cmyk', 0.0, 0.0, 0.0, 1.0]
+      line_styles: ('3–', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)], 7.0, False)
+   tokens=[('5+', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)]), ('3–', [None, SourceStyle(ratio=1.0, frac=0.0714, italic=True)])] misses=[]
+   body_size=7.0
+   [2 matching block(s)]
+
+######## CNX_Chem_01_04_MYdCmIn  (25 blocks; page [435.11, 226.88])
+-- block 16 key='1 in. = 2.54 cm' send=[False] arc=False n_lines=1 cls=open align=center why=no-container
+   line 0: proj0=2.73
+      run '1 in. = 2.54 cm' size=9.00 along=16.62 adv=59.28 proj=2.73 rot=0.0 font=/VDCNLO+LiberationSans it=False fill=['cmyk', 0.697266, 0.675781, 0.638672, 0.740234]
+      line_styles: ('1 in. = 2.54 cm', [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 9.0, False)
+   tokens=[] misses=[]
+   body_size=9.0
+   [1 matching block(s)]
