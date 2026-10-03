@@ -23,9 +23,9 @@ Content arrives here through the segment editor web UI:
 4. Inject + render produces faithful HTML for that module
 
 ```bash
-# Render to faithful publication track
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --source-dir 03-faithful-translation
-node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --track faithful
+# Render one reviewed module to the faithful track, as the server runs it (a full-chapter faithful inject fails each unreviewed module by design; never --allow-en-fallback)
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --module <moduleId> --source-dir 03-faithful-translation
+node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --module <moduleId> --track faithful
 ```
 
 **Output:** `05-publication/faithful/chapters/NN/`

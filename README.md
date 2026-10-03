@@ -133,8 +133,9 @@ The pipeline tools are run directly:
 
 ```bash
 node tools/cnxml-extract.js --book efnafraedi-2e --chapter 01
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --source-dir 03-faithful-translation
-node tools/cnxml-render.js --book efnafraedi-2e --chapter 01 --track faithful
+# Faithful: one reviewed module, as the server runs it (a full-chapter faithful inject fails each unreviewed module by design; never --allow-en-fallback)
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --module <moduleId> --source-dir 03-faithful-translation
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 01 --module <moduleId> --track faithful
 ```
 
 See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for full usage.

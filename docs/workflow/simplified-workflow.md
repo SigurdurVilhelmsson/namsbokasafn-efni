@@ -501,7 +501,8 @@ node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 
 # Step 3 Option A: Review via segment editor at /segment-editor (recommended)
 # Step 3 Option B: Manual editing — edit 03-faithful-translation/ directly
-#   (no initialization step; inject falls back to 02-mt-output/)
+#   (no initialization step; the segment editor falls back to 02-mt-output/ for a
+#   module with no reviewed file, but inject does not — it refuses that module)
 
 # Step 4: TM creation (in-house; TMX default, no upload)
 node tools/generate-tm.js --book efnafraedi-2e --chapter 5
