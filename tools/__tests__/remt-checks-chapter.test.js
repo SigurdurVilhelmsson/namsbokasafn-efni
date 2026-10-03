@@ -885,8 +885,9 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     const { math, image, ctx } = ch3WithPageDuplicated();
     const withMargin = await runCheck(K2, ctx);
     expect(withMargin.verdict).toBe(VERDICT.PASS);
-    expect(withMargin.message).toContain(`PASS margin math +${math}`);
-    expect(withMargin.message).toContain(`image +${image}`);
+    // The whole clause, with its delimiters: a bare `image +${image}` prefix-matches
+    // `image +${image}1`, so an over-count by a trailing digit would pass.
+    expect(withMargin.message).toContain(`PASS margin math +${math}, image +${image} (`);
 
     // The negative half: a clean cell with no surplus must not print a margin note at all,
     // or the disclosure becomes noise an operator learns to skip.
