@@ -144,7 +144,7 @@ not a `chNN`/`appendices` name and so is unreachable by `--chapter`; no faithful
 Whole-chapter callers: `scripts/rerender-remediation-delivery.sh` (the one loop caller; it plans from
 `[[ -d …/03-translated/$track/chNN ]]` and aborts on the first non-zero render, so a residue-only faithful chapter now
 ABORTS it where it used to rebuild faithful rollups from mt-preview — Decision 1's fail-closed intent, a behaviour change
-in a script last used 2026-07-10); the admin chapter render (`server/routes/pipeline.js`), the one server path that can
+in a script last changed 2026-07-10); the admin chapter render (`server/routes/pipeline.js`), the one server path that can
 reach the guard, as a single failed job. *(Review fix `837c0f8e9`: the refusal now also names the remedy, inject the
 track's modules first or remove a retired track's leftover directory; and the delivery script plans a chapter only when
 its directory holds a `*.cnxml`, R1's own predicate, so it skips such a directory instead of aborting.)* Unaffected: *Vista + Birta* (always `--module`), `publicationService`'s publish
