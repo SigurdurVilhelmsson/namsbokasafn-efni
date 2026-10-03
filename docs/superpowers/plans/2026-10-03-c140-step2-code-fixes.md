@@ -13,7 +13,7 @@
 ## ⚠️ State of this plan (read first)
 
 - **Parts 1 and 2 are drafted AND independently verified.** Two verifiers applied every code block verbatim to scratch copies of HEAD (`2f5f213bf`), each anchor matching exactly once, and ran the red arm (fails as predicted) and the green arm (passes). Their defects are folded in below.
-- **Parts 3 (㉑) and 4 (㊳) are drafted but NOT independently verified:** the drafting run stopped at the weekly usage limit before their verifiers ran. **Before editing any file in those parts, run the task's red-first test against unmodified HEAD and confirm it fails exactly as the step says.** If an anchor or a predicted failure does not match, stop and re-derive. Do not adapt the code to fit.
+- **Parts 3 (㉑) and 4 (㊳) are now verified too (2026-10-03).** A replicating verifier applied each part verbatim in a scratch worktree of `a9fe1f031` and a skeptic then tried to refute it with mutants. Every anchor matched exactly once, every red arm failed exactly as written, every green arm passed, and Part 3 Task 4's prediction held (4 laid-out blocks in 2 figures; 25 of 27 SVGs byte-identical). Their fixes are folded in below, including two test-strength gaps the skeptics found: Part 4's `skips exactly` test gains a version-current, hash-stale control, and its tripwire scanner skips comments; Part 3 Task 2 gains a free-box pin for the obstacle half of the `C|B|A` guard. Off-repo record: `~/.cache/namsbokasafn-audit/2026-10-03-step2/wf1/` (`plan-fixes.json` lists all 32 applied fixes). As for Parts 1 and 2, still run each red-first test before editing: the tree may have moved.
 - **Part 5 (`heldBlockValues`, spec D5(a)) is NOT DRAFTED.** The same stop hit its drafter, which also owed the **value sheet** (the exact `blocks.json` keys that PR-B's user-input step asks [USER] to fill). **PR-A must not merge without Part 5.** Parts 1–4 can be executed and reviewed before it. Part 5 edits `compose.py` (as Part 3 does) and `figure-config-validate.js` (as Part 1 does), so write it against the tree after Parts 1–4.
 - Task numbers are LOCAL to each part (Part 1 has Tasks 1–4, Part 3 has Tasks 1–4, …). A reference such as "Task 3 Step 6" inside a part means that part's task.
 
@@ -34,8 +34,8 @@
 
 1. **A kept figure on every driver route.** Plain (buying), `--stale`, `--force` and `--figure`, with a sidecar and without: none may prepare, buy or publish over the kept copy. Part 1 Task 2's paid-harness test covers this; a reviewer should check it includes the sidecar-LESS case, since that is PerTable2's state after PR-B deletes the sidecar.
 2. **An annotation subtype other than `/Text` or `/Popup`.** It must refuse loudly, as `failed-prepare` naming the subtype, before anything is deleted or written. A silent drop could remove real artwork (Part 2's red arm 13i; check it asserts NO `artwork.pdf` is written).
-3. **A block that OPENS with its script run.** ㉑'s merged line takes its baseline and font from its first run; on all 21 measured merges that is the body run, but a source opening with a superscript would take the script's baseline (Part 3, an open question its draft names). Add a planted fixture with a script-first block to Part 3 Task 3 if a reviewer judges it reachable.
-4. **A diagonal kept label.** CbcCltPckd's `C|B|A` must stay three lines: ㉑'s merge applies to a block's own cues only, never to `figcontainers.line_frames` for siblings and obstacles (Part 3 Task 2's control).
+3. **A block that OPENS with its script run.** ㉑'s merged line takes its baseline and font from its first run; on all 21 measured merges that is the body run, but a source opening with a superscript would take the script's baseline (Part 3, an open question its draft names). Add a planted fixture with a script-first block to Part 3 Task 3 if a reviewer judges it reachable. **Measured 2026-10-03 (Part 3 skeptic): not reachable on the chemistry corpus.** Over the 2026-09-13 census (`evidence/2026-09-13-t23/data/1b-census.jsonl.gz`, 14,962 blocks) `visual_lines` merges 48 blocks (21 send:true, 27 send:false), and in 0 of them does a merged visual line open with a run smaller than, or more than 0.5 pt off the baseline of, its largest run. No fixture is added; re-measure before a new book.
+4. **A diagonal kept label.** CbcCltPckd's `C|B|A` must stay three lines: ㉑'s merge applies to a block's own cues only, never to `figcontainers.line_frames` for siblings and obstacles (Part 3 Task 2's two pins, one per half: the sibling-cue pin and the free-box pin. Task 4's 27-figure run cannot stand in for the second: with only `free_box`'s obstacles moved onto visual lines, 0 of its 163 decide records and 0 of its 27 SVGs change).
 5. **The validator's shared helpers vs. `heldBlockValues`.** Its values are OBJECTS, not reason strings, so `figure-config-validate.js`'s generic `reasonOf` rule would reject them if reused. Part 5 must give the table its own rule, and Part 1's tests must stay green after it.
 
 ---
@@ -367,8 +367,8 @@ with:
 ```
 (h) The pin-block comment (verifier fix). Find the two-line comment above the pin check that says a pin is checked after `retired` AND `superseded`, and replace it with:
 ```python
-# 🔴 §C140 ㊵, ㊾ — AN ARTWORK PIN IS CHECKED AFTER `retired`, `kept` AND `superseded`, so a pin can never
-# bring back a figure any of those tables refuses.
+    # 🔴 §C140 ㊵, ㊾ — AN ARTWORK PIN IS CHECKED AFTER `retired`, `kept` AND `superseded`, so a pin can never
+    # bring back a figure any of those tables refuses.
 ```
 It is a comment, so `test_sources.py` is unaffected.
 
@@ -981,7 +981,7 @@ In `describe('the committed figure config (§C140 ㊵)')`, insert before line 59
 Run: `npx vitest run tools/__tests__/figure-config-validate.test.js`
 
 Expected (measured on a scratch mirror against HEAD's validator): `Tests  13 failed | 63 passed (76)` (HEAD: 62). The 13 are the 7 + 4 new refusal rows and the two new `it`s:
-- HEAD's `TABLES` has no `keptCopies` and no kept rule, so every refusal row receives `[]`.
+- HEAD's `TABLES` has no `keptCopies` and no kept rule, so 9 of the 11 refusal rows receive `[]`. The other two, `a pin whose key only FOLDS onto a kept key` and `a kept key that only FOLDS onto a retired key`, receive one problem that is not the kept one: HEAD's exactly-one-book rule already refuses the fold-only key `cnx-kept` (`artworkPins.cnx-kept names an image in 0 books' source (none); it folds onto a differently spelt image in chem; …` and `retiredFigures.cnx-kept names an image in 0 books' source (none); …`). Both still fail, because no kept message is produced.
 - The throwaway-tree test fails on `k.keptState` being `undefined`.
 - The committed-config test fails with `Object.keys(undefined)`.
 
@@ -1299,7 +1299,7 @@ EOF
 - **Produces in `figure-prepare.py`:** `annotation_warnings(out_dir) -> list[str]`. It raises `PrepareError` if `annotations.json` is missing. `prepare.json`'s `warnings` gains exactly one string, `annotations removed from page 1: <n> /Popup, <n> /Text (§C161)`, when something was removed. **No new `prepare.json` key**, and nothing changes what the figure is classified as: `tools/lib/figure-classify.js` reads only its integer counts (its line 101). The driver already prints every warning, unfiltered, for every outcome (`tools/figure-run.js` 2632–2654). The text contains no `;`, which matters because the driver joins warnings with `'; '`. The existing exact pins 2j (`['subset font PAGE/F1']`) and 3e (`[]`) are unaffected: neither fixture has `/Annots`. Measured: both still pass with the change. `annotations.json` lands only in the driver's per-figure scratch directory (`fs.mkdtempSync(path.join(os.tmpdir(), 'figure-run-'))`, `tools/figure-run.js` 2120/2141), and nothing copies that directory wholesale: `publish-figure-svg.js` 316 copies only the named SVG. `figure-run-free.test.js` and `figure-run-paid.test.js` stub prepare and never list the directory's files, so no JS test can see the new file.
 
 - [ ] **Step 0: Preconditions and baseline (2 min).**
-  Confirm `git -C /home/siggi/dev/repos/namsbokasafn-efni branch --show-current` prints `feat/c140-c49-step2-code-fixes` and `git status --porcelain` is empty. Run `free -h` (stop below 2 GiB available) and `df -h /tmp`. Then, from the repo root:
+  Confirm `git -C /home/siggi/dev/repos/namsbokasafn-efni branch --show-current` prints `feat/c140-c49-step2-code-fixes` and `git status --porcelain` is empty. Run `free -h` (stop below 2 GiB available) and `df -h /tmp`. In a fresh git worktree, first copy the gitignored `experiments/figure-text-translation/sources.local.json` from the main checkout: no new worktree has it, and 12e's precondition and Step 6's `sources.py --json` both read it. Do not link the gitignored `out/` into a worktree, because a prepare that broke the shared-`out/` guard would then write into the main checkout. Then, from the repo root:
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 experiments/figure-text-translation/test_figure_prepare.py; echo "EXIT=$?"
 ```
@@ -1725,7 +1725,7 @@ git commit -m "fix(figures): §C161 — strip-text.py removes page-1 comment ann
 
 ---
 
-# Part 3 — §C140 ㉑: the visual line count, restricted to a block's OWN cues · ⚠️ drafted, NOT independently verified
+# Part 3 — §C140 ㉑: the visual line count, restricted to a block's OWN cues · ✅ drafted and verified
 
 > Run each task's red-first test against unmodified HEAD before editing anything, and stop if it does not fail exactly as written.
 
@@ -1752,7 +1752,9 @@ figures for every fraction 0.5–0.8, 29 in 19 at 0.9 (rederive item `nitrogen`,
 
 **Per-line font/colour after a merge:** `compose.py` indexes `vls[min(j, len(vls) - 1)][0]` — the first run of the
 VISUAL line, which is the run that opens the source line (the body run on all 21 measured merges), so a drawn line
-never takes a script run's font or colour. Pinned by Task 3's V7, and by a named mutant that fails it.
+never takes a script run's font or colour. The draw-loop index is pinned by Task 3's V7 (through colour), and by a
+named mutant that fails it; the `width()` index is not (every planted run shares one font, and 0 of the 48 census
+merges mix weights, so a width-index mutant is equivalent there and on the corpus; see the test's docstring).
 
 **Boundaries:**
 - Branch `feat/c140-c49-step2-code-fixes` (PR-A). Code + tests + evidence only: no `books/` file, no media, no
@@ -1799,7 +1801,7 @@ insert:
 * V §C140 ㉑ REAL Nitrogen / conjugate / Blood - `figtext.visual_lines` merges a stacked charge or a same-size
   superscript into ONE visual line (V1-V4); a genuine two-line label does not merge (V5); FT.lines and `block_key`
   still split (V6, V7); the threshold is 0.6 of a lead (V8); an arc is never merged (V9); the measured CbcCltPckd
-  `C|B|A` over-merge is pinned (V10).
+  `C|B|A` over-merge is pinned (V10); the threshold scales with the LARGER first-run size (V11).
 ```
 Then, immediately after the line `attempt('S7', s7)` (HEAD :338) and its following blank line, insert:
 ```python
@@ -1870,6 +1872,16 @@ def v_all():
           repr(texts(FT.visual_lines(arc))))
     check('V10 REAL CbcCltPckd C|B|A: 3 FT.lines, and the rule merges C and B - pinned as measured',
           len(FT.lines(CBA)) == 3 and texts(FT.visual_lines(CBA)) == ['CB', 'A'], repr(texts(FT.visual_lines(CBA))))
+    # the threshold's SIZE is the LARGER first-run size of the two lines (instrument A's max): 6.0 pt apart, a
+    # 9 pt / 7 pt pair merges whichever line holds the 9 pt run (6.0 < 0.6 x 1.222 x 9 = 6.60); sized by min, or
+    # by either line's own first run, one of the two does not (0.6 x 1.222 x 7 = 5.13). Census-equivalent today
+    # (0 of 14,962 blocks change), so this pins the rule, not a measured case.
+    big_first = [run('Aa', 9.0, 0.0, 100.0), run('b', 7.0, 12.0, 106.0)]
+    small_first = [run('a', 7.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 106.0)]
+    check('V11 the threshold scales with the LARGER of the two first-run sizes (9 pt over 7 pt, either order)',
+          [len(FT.lines(b)) for b in (big_first, small_first)] == [2, 2]
+          and [len(FT.visual_lines(b)) for b in (big_first, small_first)] == [1, 1],
+          repr([texts(FT.visual_lines(b)) for b in (big_first, small_first)]))
 
 
 attempt('V', v_all)
@@ -1919,8 +1931,9 @@ def visual_lines(b):
     OWN cell / open alignment). NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
     bought key, sidecar value or renderHash moves. NEVER another block's frames: `line_frames` (sibling
     cues, free-box obstacles) stays on `lines`, because this rule merges a genuine diagonal kept label
-    (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move neighbouring labels in up to 18
-    bought figures."""
+    (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move the frames neighbouring labels align against and avoid in up to 18
+    bought figures (measured 2026-10-03, applied to every block: ONE drawn label moves,
+    CNX_Chem_17_02_Galvanicel `Flow of cations`, align right -> center)."""
     ls = lines(b)
     if is_arc(b) or len(ls) < 2:
         return ls
@@ -1953,7 +1966,7 @@ with
 ```bash
 cd "$(git rev-parse --show-toplevel)/experiments/figure-text-translation" && FIGTEXT_PYLIBS=./pylibs python3 -u test_figscripts.py; echo EXIT=$?
 ```
-Expected: `PASS` on V-pre and V1–V10 (V1 `['nitrites (NO2–']`, V2 `['ammonium (NH4+)']`, V5 `['Atmospheric', 'nitrogen (N2)']`,
+Expected: `PASS` on V-pre and V1–V11 (V11 `[['Aab'], ['aBb']]`, V1 `['nitrites (NO2–']`, V2 `['ammonium (NH4+)']`, V5 `['Atmospheric', 'nitrogen (N2)']`,
 V8 `1 2 0.6`, V10 `['CB', 'A']`), tail `ALL PASS`, `EXIT=0`.
 
 - [ ] **Step 6: Commit**
@@ -2018,6 +2031,13 @@ CUED = [run(298.64, 150.0, 'Label', size=9.0, adv=40.0)]
 c = FC.container_for(0, [CUED, CBA], page(), blank(), H)
 check('pin: a sibling cue reads the OTHER block\'s FT.lines frames (C\'s left edge 298.64 -> left)',
       c['align'] == 'left' and c['align_why'] == 'single-cue-left-only->left', f"{c['align']} {c['align_why']}")
+# PIN 2 - the OBSTACLE half, which the sibling-cue pin above cannot see: free_box reads line_frames too. A 7 pt
+# label left of C|B|A, above B's glyph box (top 95.98) and level with C's (93.28-101.74): its rightward free-box
+# rays pass over B and stop at C's left edge, 298.64. The merged C+B visual frame would stop them at B's 289.27.
+LEFT = [run(250.0, 97.07, 'Label', size=7.0, adv=20.0)]
+fb = FC.free_box(0, [LEFT, CBA], blank(), H)
+check('pin: a free-box ray stops at the OTHER block\'s FT.lines frames (C\'s left edge 298.64, not B\'s 289.27)',
+      abs(fb['FR'] - 298.64) <= FC.MARCH_STEP and fb['by']['right'] == 'hit', f"FR {fb['FR']} {fb['by']['right']}")
 ```
 
 - [ ] **Step 2: Run it — expect FAIL**
@@ -2028,7 +2048,7 @@ cd "$(git rev-parse --show-toplevel)/experiments/figure-text-translation" && FIG
 Expected (on Task 1's commit): two FAILs, both reading `right multi(margin 22.95)->right` — `open: the label flush
 against its kept ")" is ONE line …` and `cell: the same label takes the single-line margin rule …` — because both
 alignments still count the block's two FT.lines frames. The two fixture checks, the Atmospheric control and the
-`pin:` check PASS (the pin is not red-first: Step 6 proves it against a mutant). Tail `2 FAILED: …`, `EXIT=1`.
+two `pin:` checks PASS (neither pin is red-first: Step 6 proves them against mutants). Tail `2 FAILED: …`, `EXIT=1`.
 
 - [ ] **Step 3: Write the implementation — `figcontainers.py`**
 
@@ -2079,7 +2099,7 @@ HEAD :500) as they are.
 cd "$(git rev-parse --show-toplevel)/experiments/figure-text-translation" && FIGTEXT_PYLIBS=./pylibs python3 -u test_figcontainers.py; echo EXIT=$?
 ```
 Expected: case 12 all PASS — `right single-flush(tight 0.00, ratio inf)->right`, `center cell-single-margins(ratio 1.71)->center`,
-`left multi(margin 0.70)->left`, `left single-cue-left-only->left` — every earlier case unchanged, tail `ALL PASS`, `EXIT=0`.
+`left multi(margin 0.70)->left`, `left single-cue-left-only->left`, `FR 298.75 hit` — every earlier case unchanged, tail `ALL PASS`, `EXIT=0`.
 
 - [ ] **Step 5: Commit**
 
@@ -2106,9 +2126,9 @@ FIGTEXT_PYLIBS=./pylibs python3 -u test_figcontainers.py > ~/.cache/namsbokasafn
 grep -a "FAIL" ~/.cache/namsbokasafn-audit/2026-10-03-c21/mutant-line-frames.log
 cp "$G" figcontainers.py && cmp figcontainers.py "$G" && git diff --quiet -- figcontainers.py && echo RESTORED
 ```
-Expected: `EXIT=1`; exactly three FAILs — `fixture: FT.lines splits the nitrites block in two …`, `fixture: C|B|A is three FT.lines frames …`
-and `pin: a sibling cue reads the OTHER block's FT.lines frames … : center single-cue(L0C0R0)->center` — then `RESTORED`.
-(No case 1–11 check fails under this mutant: the pin is the only guard on it.) Then `git status --porcelain` → empty.
+Expected: `EXIT=1`; exactly four FAILs — `fixture: FT.lines splits the nitrites block in two …`, `fixture: C|B|A is three FT.lines frames …`,
+`pin: a sibling cue reads the OTHER block's FT.lines frames … : center single-cue(L0C0R0)->center` and `pin: a free-box ray stops at the OTHER block's FT.lines frames … : FR 289.5 hit` — then `RESTORED`.
+(No case 1–11 check fails under this mutant: the two pins are the only guards on it.) Then mutate each half ALONE, with the same golden-copy restore and `cmp` after each: `for a0, a1, _, _ in line_frames(other):` → `own_line_frames(other)` (sibling cues) gives exactly one FAIL, the sibling-cue pin (`center single-cue(L0C0R0)->center`); `for f in line_frames(other)]` → `own_line_frames(other)]` (free-box obstacles) gives exactly one FAIL, the free-box pin (`FR 289.5 hit`). Then `git status --porcelain` → empty.
 
 ### Task 3: `compose.py` lays a label out by its VISUAL source lines (n_src, cues, per-line font/colour)
 
@@ -2161,6 +2181,9 @@ the `+` run that opens FT.lines line 2). The controls are not red-first and must
 C1 (the block keys still split - the bought keys did not move), V3 (the nitrites line ends on its
 `)`: the old composer right-aligned its two lines there too), V6 (the boxed label is drawn on two
 lines - without it V7 would be vacuous) and T1 (the drawn pieces reproduce each value's words).
+NOT PINNED: `width()`'s line index. `seg_width` reads only `bold` from the run it is handed and every planted
+run is `PAGE/F1`, so indexing `width()` by FT.lines instead passes this file (measured); 0 of the 48 blocks
+`visual_lines` merges in the 2026-09-13 census mix weights, so that mutant is equivalent on the corpus too.
 """
 import ast
 import json
@@ -2526,7 +2549,7 @@ tail `ALL PASS`, `EXIT=0` (about 2 s).
 cd "$(git rev-parse --show-toplevel)/experiments/figure-text-translation"
 for f in test_figlayout.py test_figscripts.py test_figcontainers.py test_figtext_runexact.py test_compose_runexact.py test_compose_t23.py; do FIGTEXT_PYLIBS=./pylibs python3 -u $f > ~/.cache/namsbokasafn-audit/2026-10-03-c21/$f.log 2>&1; echo "$f EXIT=$? :: $(tail -1 ~/.cache/namsbokasafn-audit/2026-10-03-c21/$f.log)"; done
 ```
-Expected: six lines, each `EXIT=0 :: ALL PASS` (measured at plan time on this exact change: ≤ 13 s each;
+Expected: six lines, each `EXIT=0 :: ALL PASS` (measured at plan time on this exact change: ≤ 13 s each; a replicate measured 33 s / 22 s, then 19 s / 14 s, for `test_compose_runexact.py` / `test_compose_t23.py` on a loaded box, so timing is not a pass criterion;
 `test_compose_t23.py`'s goldens are unchanged, so its planted figures draw byte-for-byte as before).
 `test_blockkey_consumers.py` (needs a prepared `out/` for SciMethod) and `test_figure_compose.py` (spawns `tools/`) are
 not in this set; neither plants a rule-A shape, and V6/C1 pin the key directly.
@@ -2756,7 +2779,7 @@ def cmd_compare(a):
                 changed.add((b, rb['key']))
                 print(f"CHANGED {b} {rb['key']!r}: n_src {rb['n_src']}->{ra['n_src']}  lines {rb['lines']}"
                       f" -> {ra['lines']}  [{rb['cls']} {rb['step']} {rb['size']}] -> [{ra['cls']} {ra['step']}"
-                      f" {ra['size']}]  top {rb['top']:.3f}->{ra['top']:.3f}", flush=True)
+                      f" {ra['size']}]  top {rb['top']:.3f}->{ra['top']:.3f}  align {rb['align']}->{ra['align']}", flush=True)
         kb = [e for e in text_elements(sb) if 'font-kerning:none' not in e]
         ka = [e for e in text_elements(sa) if 'font-kerning:none' not in e]
         if kb != ka:
@@ -2825,7 +2848,7 @@ commit (`base.sha`) and the tree at ㉑'s last commit (`after.sha`) — using ea
   `tools/publish-figure-svg.js`, and writes only under `--data`, which is off-repo:
   `~/.cache/namsbokasafn-audit/2026-10-03-c21/`.
 - **Population (27).** The 13 rule-A figures that have a sidecar; the 11 sidecar figures whose rule-A merges are all
-  in KEPT blocks — the population the rejected `line_frames` design would move, so the discriminating control; and 3 of
+  in KEPT blocks — the population the rejected `line_frames` design would move, so the discriminating control — for SIBLING-CUE leaks only (measured: with `line_frames` mutated onto `visual_lines`, or with only `sibling_cues` mutated, exactly one decide record of the 27 figures moves, `CNX_Chem_17_02_Galvanicel` `Flow of cations`, align right → center; with only `free_box`'s obstacles mutated, 0 of 163 records and 0 of 27 SVGs move. So the obstacle half is pinned by Part 3 Task 2's free-box pin alone, and CbcCltPckd's byte-identical SVG is not evidence that `C|B|A` stays three lines); and 3 of
   the 34 originally bought figures. `CNX_Chem_07_04_Ques11ans_img`, the 14th rule-A figure, is retired and has no
   sidecar.
 - **Prediction (registered in the script before the run).** Exactly 4 decide records change, each to one drawn line
@@ -2853,7 +2876,7 @@ git commit -m "docs(evidence): §C140 ㉑ — the 0-ISK before/after measurement
 free -h; df -h ~/.cache      # stop if 'available' memory is under 2 GiB
 REPO=$(git rev-parse --show-toplevel); cd "$REPO"; D=~/.cache/namsbokasafn-audit/2026-10-03-c21; EVD=$REPO/experiments/figure-text-translation/evidence/2026-10-03-c21-visual-lines
 for arm in base after; do
-  rm -rf "$D/$arm-src" && mkdir -p "$D/$arm-src"
+  rm -rf "${D:?}/${arm:?}-src" && mkdir -p "$D/$arm-src"
   git archive "$(cat "$D/$arm.sha")" experiments/figure-text-translation ':!experiments/figure-text-translation/evidence' | tar -x -C "$D/$arm-src"
   ln -s "$REPO/experiments/figure-text-translation/pylibs" "$D/$arm-src/experiments/figure-text-translation/pylibs"
 done
@@ -2877,10 +2900,10 @@ grep -a "^CHANGED\|^UNPREDICTED\|^PREDICTED\|^DETERMINISM\|^BASELINE\|^VERDICT" 
 Expected: `ARM before DONE`, `ARM before2 DONE`, `ARM after DONE`; compare `EXIT=0` and exactly these lines (the four
 CHANGED lines were measured at plan time, and quote the committed sidecar values):
 ```
-CHANGED CNX_Chem_14_01_conjugate_img 'NH4|+ (conjugate acid)': n_src 2->1  lines ['NH4 + (samoka', 'sýra)'] -> ['NH4 + (samoka sýra)']  [open i 9.0] -> [open i 9.0]  top 129.823->122.324
-CHANGED CNX_Chem_18_07_Nitrogen 'ammonium (NH4|+|)': n_src 3->1  lines ['ammóníum', '(NH4', '+ )'] -> ['ammóníum (NH4 + )']  [open i 9.0] -> [open i 9.0]  top 81.068->67.820
-CHANGED CNX_Chem_18_07_Nitrogen 'nitrites (NO2|–': n_src 2->1  lines ['nítrít', '(NO2 –'] -> ['nítrít (NO2 –']  [open i 9.0] -> [open i 9.0]  top 75.569->67.820
-CHANGED CNX_Chem_18_07_Nitrogen 'nitrates (NO3|–': n_src 2->1  lines ['nítrat', '(NO3 –'] -> ['nítrat (NO3 –']  [open i 9.0] -> [open i 9.0]  top 143.870->136.121
+CHANGED CNX_Chem_14_01_conjugate_img 'NH4|+ (conjugate acid)': n_src 2->1  lines ['NH4 + (samoka', 'sýra)'] -> ['NH4 + (samoka sýra)']  [open i 9.0] -> [open i 9.0]  top 129.823->122.324  align left->center
+CHANGED CNX_Chem_18_07_Nitrogen 'ammonium (NH4|+|)': n_src 3->1  lines ['ammóníum', '(NH4', '+ )'] -> ['ammóníum (NH4 + )']  [open i 9.0] -> [open i 9.0]  top 81.068->67.820  align right->center
+CHANGED CNX_Chem_18_07_Nitrogen 'nitrites (NO2|–': n_src 2->1  lines ['nítrít', '(NO2 –'] -> ['nítrít (NO2 –']  [open i 9.0] -> [open i 9.0]  top 75.569->67.820  align right->right
+CHANGED CNX_Chem_18_07_Nitrogen 'nitrates (NO3|–': n_src 2->1  lines ['nítrat', '(NO3 –'] -> ['nítrat (NO3 –']  [open i 9.0] -> [open i 9.0]  top 143.870->136.121  align right->right
 DETERMINISM CNX_Chem_14_03_corresp: before2 svg byte-identical to before
 BASELINE before reproduces the committed _IS.svg <text> for 27 of 27 figures
 VERDICT PREDICTION HELD: changed 4 (predicted 4), unpredicted 0, determinism True, predicted-to-one-line True
@@ -2905,7 +2928,7 @@ of Nitrogen and conjugate_img in Chromium and Firefox may reuse its `after/` SVG
 
 ---
 
-# Part 4 — §C140 ㊳: `figure-run-free.test.js` asks whether a sidecar is CURRENT · ⚠️ drafted, NOT independently verified
+# Part 4 — §C140 ㊳: `figure-run-free.test.js` asks whether a sidecar is CURRENT · ✅ drafted and verified
 
 > Same rule as Part 3: confirm the red arm at HEAD before editing.
 
@@ -2921,8 +2944,8 @@ The same preload at `'4'` is all green (the preload breaks nothing by itself). M
 **Design:** (1) the "skips exactly" test uses the driver's own `isStale` over the reader the run used, in three worlds (the real tree; every sidecar stale, i.e. a bump in miniature; every sidecar current); (2) every other driver call gets `...PRISTINE`; (3) a tripwire makes the file's own rule ("anything asserting a pristine corpus must SAY so", lines 140–148) a checked property. No production code changes.
 
 **Files:**
-- Modify: `tools/__tests__/figure-run-free.test.js` — line 47 (the sidecar `require`); after line 150 (`const PRISTINE = …`); lines 936–957 (the "skips exactly" test); the 12 call sites at lines 482, 811, 863, 1006, 1026, 1031–1034, 1059–1062, 1265, 1292, 1300, 1348, 1504; one `describe` appended after line 1763 (end of file).
-- Modify: `docs/plans/2026-07-21-post-item17-followup-campaign.md` — row ㊳'s status cell (line 3117 at HEAD).
+- Modify: `tools/__tests__/figure-run-free.test.js` — line 47 (the sidecar `require`); after line 150 (`const PRISTINE = …`); lines 936–957 (the "skips exactly" test); the 12 call sites at lines 482, 811, 863, 1006, 1026, 1031–1034, 1059–1062, 1265, 1292, 1300, 1348, 1504; one `describe` appended after line 1763 (end of file). These numbers are at `2f5f213bf`: if Part 1 has landed first, its Task 2 Step 1 inserts 9 lines before line 645, so every number past 645 is 9 higher on the PR branch — locate each edit by its quoted text.
+- Modify: `docs/plans/2026-07-21-post-item17-followup-campaign.md` — row ㊳'s status cell (find it with `grep -an '^| ㊳'`: line 3117 at `2f5f213bf`, 3146 at `a9fe1f031`).
 - Scratch, never committed: `/tmp/c38-plan/bump-preload.cjs` (a few hundred bytes).
 
 **Interfaces:**
@@ -2934,21 +2957,26 @@ Run everything from `/home/siggi/dev/repos/namsbokasafn-efni` on `feat/c140-c49-
 - [ ] **Step 1: Write the bump simulator and reproduce ㊳ against the unchanged file (RED).**
 
 ```bash
-mkdir -p /tmp/c38-plan && cat > /tmp/c38-plan/bump-preload.cjs <<'EOF'
+REPO=$(git rev-parse --show-toplevel)
+mkdir -p /tmp/c38-plan && cat > /tmp/c38-plan/bump-preload.cjs <<EOF
 // Simulates a COMPOSER_VERSION bump IN MEMORY ONLY: the repo file is never written.
 // Loaded through NODE_OPTIONS=--require, so it runs in every vitest fork before the test file;
 // figure-run.js destructures the constant from this same cached exports object when it loads.
-const m = require('/home/siggi/dev/repos/namsbokasafn-efni/tools/lib/figure-text-sidecar.cjs');
+// The path is the CHECKOUT UNDER TEST's, interpolated from git when this file is written. A path
+// into ANOTHER checkout mutates a module the driver never loads, prints its line all the same,
+// and leaves every test green (measured from a worktree 2026-10-03: 3 lines, failed 0 at '5').
+const p = '$REPO/tools/lib/figure-text-sidecar.cjs';
+const m = require(p);
 const v = process.env.SIM_COMPOSER_VERSION;
 if (v) {
   m.COMPOSER_VERSION = v;
-  process.stderr.write(`[bump-preload pid ${process.pid}] COMPOSER_VERSION -> ${v}\n`);
+  process.stderr.write('[bump-preload pid ' + process.pid + '] COMPOSER_VERSION -> ' + v + ' in ' + p + '\n');
 }
 EOF
 for v in 5 4; do SIM_COMPOSER_VERSION=$v NODE_OPTIONS="--require /tmp/c38-plan/bump-preload.cjs" npx vitest run tools/__tests__/figure-run-free.test.js --reporter=json --outputFile=/tmp/c38-plan/sim$v.json >/tmp/c38-plan/sim$v.out 2>&1; echo "v=$v exit=$?"; grep -ac 'bump-preload' /tmp/c38-plan/sim$v.out; node -e "const r=require('/tmp/c38-plan/sim$v.json');console.log('failed',r.numFailedTests);for(const f of r.testResults)for(const a of f.assertionResults)if(a.status==='failed')console.log(' RED',a.fullName)"; done; git status --porcelain
 ```
 
-Expected: `v=5 exit=1`, a non-zero preload-line count, `failed 3` with exactly the three names above; `v=4 exit=0`, `failed 0`; `git status --porcelain` empty. If `v=4` is not green, the instrument is broken — stop.
+Expected: `v=5 exit=1`, a non-zero preload-line count, `failed 3` with exactly the three names above; `v=4 exit=0`, `failed 0`; `git status --porcelain` empty. If `v=4` is not green, the instrument is broken — stop. **And each preload line must end `in <this checkout>/tools/lib/figure-text-sidecar.cjs`** (`grep -ac "in $(git rev-parse --show-toplevel)/tools/lib/figure-text-sidecar.cjs" /tmp/c38-plan/sim5.out` equals the preload-line count): a line proves only that the preload RAN, not that it reached the module the driver loads. If `v=5` is green, that is the first suspect: measured 2026-10-03 from a worktree, a preload hard-coding the main checkout's path printed 3 lines and gave `failed 0` at `'5'`.
 
 - [ ] **Step 2: Reproduce ㊳ inside the suite (RED).** Give the test the real reader under a name, then add a bump-in-miniature arm that still uses the test's CURRENT oracle (sidecar files on disk).
 
@@ -3075,11 +3103,43 @@ Replace the whole block from the comment line `  // 🔴 REWRITTEN 2026-09-12, A
     expect(currentBy(current, restamped)).toBeGreaterThan(0);
     expect(restamped.tally['skipped-current'] || 0).toBe(currentBy(current, restamped));
 
+    // A second control, for the HASH half of "current". In all three worlds above composedHash
+    // equals renderHash, so a skip that read composedVersion alone passed every test in this file
+    // (measured 2026-10-03). Here every sidecar carries THIS composer's version over artwork
+    // published from other blocks, which `isStale` calls stale.
+    const unpublished = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedHash: `not-${s.renderHash}`, composedVersion: COMPOSER_VERSION };
+    };
+    const drifted = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: unpublished,
+      sidecarExists: fs.existsSync,
+    });
+    expect(drifted.tally['skipped-current'] || 0).toBe(currentBy(unpublished, drifted));
+    expect(drifted.tally['skipped-current'] || 0).toBe(0);
+
     // Control: with the filesystem stubbed empty, the same corpus skips nothing — so the
     // assertions above are measuring the sidecars and not some unrelated skip path.
     const pristine = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(pristine.tally['skipped-current'] || 0).toBe(0);
   });
+```
+
+In the header of the enclosing `describe('a figure whose sidecar is current is skipped before anything is spent'` (HEAD lines 886–889), correct the claim that no sidecar exists (ch04 holds 19 at `2f5f213bf`, and this task's own test depends on them). Replace:
+```js
+// 🔴 THIS BRANCH HAD NO EXERCISER, AND TWO MUTATIONS OF IT SURVIVED ALL 57 TESTS.
+// `books/efnafraedi-2e/figure-text/` does not exist — the campaign has minted no sidecar for a
+// real book yet — so `readSidecar` returns null for every figure of every chapter, `&&`
+// short-circuits, and no corpus-driven test can reach `isStale` through `runFigures` at all.
+```
+with:
+```js
+// 🔴 THIS BRANCH HAD NO EXERCISER, AND TWO MUTATIONS OF IT SURVIVED ALL 57 TESTS.
+// When this was written `books/efnafraedi-2e/figure-text/` did not exist, so `readSidecar`
+// returned null for every figure, `&&` short-circuited, and no corpus-driven test could reach
+// `isStale` through `runFigures` at all. Real sidecars exist now (the first purchase was on
+// 2026-09-12); the tests below still inject the reader, so each one controls its own case.
 ```
 
 Run: `npx vitest run tools/__tests__/figure-run-free.test.js`
@@ -3106,7 +3166,13 @@ git commit -m "test(figure-run): §C140 ㊳ — 'skips exactly' counts CURRENT s
 // checked property: every runFigures and main call names `PRISTINE`, `CORPUS`, or BOTH sidecar
 // readers, because stubbing one alone leaves the other on the real tree.
 describe('every driver run in this file states which sidecar world it runs in (§C140 ㊳)', () => {
-  /** Each call of `name` in `text`, with its argument text, found by balancing parentheses. */
+  /**
+   * Each call of `name` in `text`, with its argument text, found by balancing parentheses.
+   * A comment inside the arguments is skipped and left out of that text: an apostrophe in one
+   * would open a "string" that swallows the next call's `PRISTINE`, and a name a comment mentions
+   * would count as stated. A regex literal is not parsed, so a quote or parenthesis inside one
+   * would still miscount.
+   */
   const callsOf = (name, text) => {
     const calls = [];
     const re = new RegExp(`\\b${name}\\(`, 'g');
@@ -3114,20 +3180,29 @@ describe('every driver run in this file states which sidecar world it runs in (�
     while ((m = re.exec(text)) !== null) {
       let depth = 1;
       let quote = null;
-      let i = m.index + m[0].length;
-      for (; i < text.length && depth > 0; i++) {
+      let args = '';
+      for (let i = m.index + m[0].length; i < text.length; i++) {
         const ch = text[i];
+        if (!quote && ch === '/' && (text[i + 1] === '/' || text[i + 1] === '*')) {
+          const lineComment = text[i + 1] === '/';
+          const close = lineComment ? text.indexOf('\n', i) : text.indexOf('*/', i + 2);
+          if (close === -1) break;
+          i = lineComment ? close - 1 : close + 1; // the loop's i++ resumes just after the comment
+          continue;
+        }
         if (quote) {
-          if (ch === '\\') i++;
-          else if (ch === quote) quote = null;
+          if (ch === '\\') {
+            args += text.slice(i, i + 2);
+            i++;
+            continue;
+          }
+          if (ch === quote) quote = null;
         } else if (ch === "'" || ch === '"' || ch === '`') quote = ch;
         else if (ch === '(') depth++;
-        else if (ch === ')') depth--;
+        else if (ch === ')' && --depth === 0) break;
+        args += ch;
       }
-      calls.push({
-        line: text.slice(0, m.index).split('\n').length,
-        args: text.slice(m.index + m[0].length, i - 1),
-      });
+      calls.push({ line: text.slice(0, m.index).split('\n').length, args });
     }
     return calls;
   };
@@ -3143,7 +3218,8 @@ describe('every driver run in this file states which sidecar world it runs in (�
   });
 
   // The scan's own control: a bare call is flagged; a multi-line call with a nested call and a
-  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough.
+  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough; and a
+  // comment can neither swallow the next call (its apostrophe) nor state a world (its words).
   it('CONTROL: flags a bare call and a one-reader call, passes a nested multi-line PRISTINE call', () => {
     const fn = 'runFigures'; // built, never written as a call, so the scan above cannot match it
     const planted = [
@@ -3153,11 +3229,19 @@ describe('every driver run in this file states which sidecar world it runs in (�
       `  { spawn: fakeSpawn({ resolve: (n) => (n === ')' ? null : null) }), ...PRISTINE }`,
       `);`,
       `await ${fn}(CH04, { spawn, readSidecar: () => null });`,
+      `await ${fn}(CH04, {`,
+      `  spawn, // the real tree: don't stub it (yet`,
+      `});`,
+      `await ${fn}(CH04, { spawn, ...PRISTINE });`,
+      `await ${fn}(CH04, { spawn /* not PRISTINE */ });`,
     ].join('\n');
     expect(callsOf(fn, planted).map((c) => [c.line, statesItsWorld(c.args)])).toEqual([
       [1, false],
       [2, true],
       [6, false],
+      [7, false],
+      [10, true],
+      [11, false],
     ]);
   });
 });
@@ -3300,7 +3384,7 @@ npx vitest run tools/__tests__/figure-run-free.test.js
 for v in 5 4; do SIM_COMPOSER_VERSION=$v NODE_OPTIONS="--require /tmp/c38-plan/bump-preload.cjs" npx vitest run tools/__tests__/figure-run-free.test.js --reporter=json --outputFile=/tmp/c38-plan/sim$v.json >/tmp/c38-plan/sim$v.out 2>&1; echo "v=$v exit=$?"; grep -ac 'bump-preload' /tmp/c38-plan/sim$v.out; node -e "const r=require('/tmp/c38-plan/sim$v.json');console.log('failed',r.numFailedTests);for(const f of r.testResults)for(const a of f.assertionResults)if(a.status==='failed')console.log(' RED',a.fullName)"; done; git status --porcelain
 ```
 
-Expected: the plain run 0 failed; `v=5 exit=0 failed 0` and `v=4 exit=0 failed 0`, each with a non-zero preload-line count (the preload really ran); porcelain shows only the test file. **This run is the evidence that a bump-only commit leaves this file green.** (The planning replay of the fixed call sites, green at `'5'` and `'4'`, was the instrument that chose the design, not this evidence.)
+Expected: the plain run 0 failed; `v=5 exit=0 failed 0` and `v=4 exit=0 failed 0`, each with a non-zero preload-line count whose lines name this checkout's `tools/lib/figure-text-sidecar.cjs` (a line proves the preload ran; that the bump reached the driver is shown by Step 1's red at `'5'` from the same preload file); porcelain shows only the test file. **This run is the evidence that a bump-only commit leaves this file green.** (The planning replay of the fixed call sites, green at `'5'` and `'4'`, was the instrument that chose the design, not this evidence.)
 
 - [ ] **Step 8: Lint, format, commit.**
 
@@ -3319,7 +3403,7 @@ git commit -m "test(figure-run): §C140 ㊳ — every driver run names its sidec
 ```
 with
 ```
-| ✅ **BUILT (PR-A, `feat/c140-c49-step2-code-fixes`)**: "skips exactly" now applies `isStale` to the run's own reader in three worlds (real tree, every sidecar stale, every sidecar current), and every `runFigures`/`main` call in the file names `PRISTINE`, `CORPUS` or both readers, enforced by a source-scan tripwire with a planted control. **Re-measured 2026-10-03 at `2f5f213bf` with an in-memory '5' (a `--require` preload; the repo file untouched): the unfixed file went from all green to 3 red, the same three names; the fixed file is green at '5' and at '4'.** So a bump commit no longer has to share a commit with its restamp (D8's single MERGE still stands). ~~open, logged.~~ ⚠️ **RE-MEASURED 2026-09-29 for the '4' → '5' bump
+| ✅ **BUILT (PR-A, `feat/c140-c49-step2-code-fixes`)**: "skips exactly" now applies `isStale` to the run's own reader in three worlds (real tree, every sidecar stale, every sidecar current), and every `runFigures`/`main` call in the file names `PRISTINE`, `CORPUS` or both readers, enforced by a source-scan tripwire with a planted control. **Re-measured 2026-10-03 at `2f5f213bf` with an in-memory '5' (a `--require` preload; the repo file untouched): the unfixed file went from all green to 3 red, the same three names; the fixed file is green at '5' and at '4'.** So a bump commit no longer has to share a commit with its restamp: re-measured 2026-10-03 with the constant set to '5' ON DISK in a scratch worktree (restored from a golden copy), every test file under `tools/__tests__` and `server/__tests__` whose name or text reaches a sidecar consumer (`figure-run`, `figure-text-sidecar`, `publish-figure-svg`, `cnxml-render`, `figureReviewService`) stayed green, this file included (D8's single MERGE still stands). ~~open, logged.~~ ⚠️ **RE-MEASURED 2026-09-29 for the '4' → '5' bump
 ```
 ```bash
 git add docs/plans/2026-07-21-post-item17-followup-campaign.md
