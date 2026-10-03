@@ -41,6 +41,7 @@ import {
   billableFrom,
   rootViewBox,
   main,
+  COMPOSE_NOTE_LISTS,
 } from '../figure-run.js';
 
 const require = createRequire(import.meta.url);
@@ -1279,6 +1280,97 @@ describe('the outcome vocabulary is Task 1’s, not a second copy', () => {
     for (const f of result.figures) {
       expect(() => tallyOutcome(slots, f.outcome)).not.toThrow();
     }
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// §C140 ㊾ D5(a) — the compose-note lists are ONE list written twice, in two languages.
+//
+// `figure-compose.py` copies the lists named in its `COMPOSE_NOTES` tuple out of
+// compose-report.json into compose.json; this driver reads the lists named in
+// `COMPOSE_NOTE_LISTS` out of compose.json. A list the wrapper copies and the driver does not
+// name is a list nobody sees (`held` was added to both on the same day, by hand). So the tuple
+// is read from the Python SOURCE here and held against the exported array, in order.
+describe('COMPOSE_NOTE_LISTS is figure-compose.py’s COMPOSE_NOTES, not a second copy (§C140 ㊾)', () => {
+  /**
+   * The string items of the ONE top-level `<name> = ( ... )` assignment in a Python source, read
+   * by a scanner that honours quotes and `#` comments (so a `)` inside either cannot end the
+   * tuple). It throws rather than half-parse: no assignment or a second one (Python's last one
+   * wins), a right-hand side that does not open with `(` (`BASE + ('held',)`), an item that is not
+   * a plain one-line string literal, or anything but a comment after the closing `)`.
+   */
+  const pythonStringTuple = (src, name) => {
+    const heads = [...src.matchAll(new RegExp(`^${name}[ \\t]*=[ \\t]*`, 'gm'))];
+    if (heads.length !== 1) {
+      throw new Error(`${name}: expected ONE assignment, found ${heads.length}`);
+    }
+    let i = heads[0].index + heads[0][0].length;
+    if (src[i] !== '(') throw new Error(`${name}: the right-hand side is not a literal tuple`);
+    const items = [];
+    let wantItem = true;
+    for (i += 1; i < src.length; i++) {
+      const ch = src[i];
+      if (/\s/.test(ch)) continue;
+      if (ch === '#') {
+        i = src.indexOf('\n', i);
+        if (i === -1) break;
+        continue;
+      }
+      if (ch === ')') {
+        const eol = src.indexOf('\n', i);
+        const rest = src.slice(i + 1, eol === -1 ? src.length : eol);
+        if (!/^[ \t]*(#.*)?$/.test(rest)) {
+          throw new Error(`${name}: ${JSON.stringify(rest.trim())} follows the tuple`);
+        }
+        return items;
+      }
+      if (ch === ',' && !wantItem) {
+        wantItem = true;
+        continue;
+      }
+      if ((ch === "'" || ch === '"') && wantItem) {
+        const close = src.indexOf(ch, i + 1);
+        const body = close === -1 ? '' : src.slice(i + 1, close);
+        if (close === -1 || /[\\\n]/.test(body)) {
+          throw new Error(`${name}: an item is not a plain string literal`);
+        }
+        items.push(body);
+        i = close;
+        wantItem = false;
+        continue;
+      }
+      throw new Error(`${name}: ${JSON.stringify(ch)} in the tuple is not a plain string literal`);
+    }
+    throw new Error(`${name}: the tuple never closes`);
+  };
+
+  it('parses figure-compose.py’s COMPOSE_NOTES and finds the exported list, in order', () => {
+    const src = fs.readFileSync(
+      path.join(REPO_ROOT, 'experiments', 'figure-text-translation', 'figure-compose.py'),
+      'utf-8'
+    );
+    const notes = pythonStringTuple(src, 'COMPOSE_NOTES');
+    expect(notes.length).toBeGreaterThan(0); // non-vacuity: the tuple was really read
+    expect(COMPOSE_NOTE_LISTS).toEqual(notes);
+  });
+
+  // The parser's own control: what it accepts, and the shapes it must refuse rather than misread.
+  it('CONTROL: reads a multi-line tuple with comments; refuses every shape it cannot read', () => {
+    const planted = [
+      'X = (',
+      "    'a',  # the first ) of two, a comment",
+      '    "b",',
+      ')  # end',
+      'Y = 1',
+    ];
+    expect(pythonStringTuple(planted.join('\n'), 'X')).toEqual(['a', 'b']);
+    expect(() => pythonStringTuple('Y = 1', 'X')).toThrow(/expected ONE assignment, found 0/);
+    expect(() => pythonStringTuple("X = ('a',)\nX = ('a', 'b')", 'X')).toThrow(/found 2/);
+    expect(() => pythonStringTuple("X = BASE + ('held',)", 'X')).toThrow(/not a literal tuple/);
+    expect(() => pythonStringTuple("X = ('a', B)", 'X')).toThrow(/not a plain string literal/);
+    expect(() => pythonStringTuple("X = ('a' 'b')", 'X')).toThrow(/not a plain string literal/);
+    expect(() => pythonStringTuple("X = ('a',) + BASE", 'X')).toThrow(/follows the tuple/);
+    expect(() => pythonStringTuple("X = ('a',", 'X')).toThrow(/never closes/);
   });
 });
 
