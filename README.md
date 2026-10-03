@@ -133,7 +133,7 @@ The pipeline tools are run directly:
 
 ```bash
 node tools/cnxml-extract.js --book efnafraedi-2e --chapter 01
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --track faithful
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --source-dir 03-faithful-translation
 node tools/cnxml-render.js --book efnafraedi-2e --chapter 01 --track faithful
 ```
 

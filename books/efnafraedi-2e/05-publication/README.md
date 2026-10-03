@@ -73,7 +73,7 @@ node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1
 node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track mt-preview
 
 # Faithful for a single reviewed module
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663 --source-dir 03-faithful-translation
 node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --module m68663 --track faithful
 
 # Appendices

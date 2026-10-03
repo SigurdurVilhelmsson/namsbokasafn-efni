@@ -24,7 +24,7 @@ Content arrives here through the segment editor web UI:
 
 ```bash
 # Render to faithful publication track
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --track faithful
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --source-dir 03-faithful-translation
 node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --track faithful
 ```
 
