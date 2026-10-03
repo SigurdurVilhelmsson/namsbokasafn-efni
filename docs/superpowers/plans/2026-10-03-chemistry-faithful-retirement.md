@@ -28,7 +28,7 @@ Nothing reaches readers until [USER]'s held chemistry sync. At that sync, with t
 | **No URL dies** | Every one of the 14 faithful page slugs and 66 image names has a same-named mt-preview twin in the same chapter directory (same `data-module-id` on the 4 reading pages). So no redirect row is needed for the retirement. | slug and filename sets compared, both trees |
 | **Gains** | The 6 affected pages' **37 image alts** become Icelandic (all 37 are English on faithful, 0 of 77 on mt-preview); **14 captions** change, including the English copper caption on 3-1 (§C148) and ibuprofen's English alt (§C140 ㊻②). **PR-B's recomposed ch01/ch03 figures can reach readers at all**: while the faithful tree exists, vefur's sync overlays every faithful image over mt-preview's (unconditionally, `force:true`). | cmp, per element |
 | **Gains** | The 3 June TrueType figure copies (ch01 ChemWeb, SciMethod, Archer2_img; §C140 ㊻①) leave the reader's path; their mt-preview copies equal `media/`. | `data:font/ttf` census |
-| **Costs** | The **MT banner returns on 4 pages** (1-0, 1-1, 3-0, 3-1): vefur marks a module `reviewed` only while its faithful file exists. On those pages the human edits leave the website until they are re-applied by hand (runbook 4.2) from the archive and the Word document. | live `toc.json` has `reviewed:true` on exactly those 4 |
+| **Costs** | The **MT banner returns on 4 pages** (1-0, 1-1, 3-0, 3-1), because those pages ARE machine translations once this vintage goes: vefur marks a module `reviewed` only while its faithful file exists. Nothing is destroyed. The human edits on them were made on the OLD MT dialect, and the 2026-08-22 clean-break decision already resolved to re-apply them by hand on the new MT (runbook 4.2) from the archive and the Word document. This retirement carries out that decision on the reader's side. | live `toc.json` has `reviewed:true` on exactly those 4 |
 | **Costs** | vefur's "for teachers" page hardcodes chemistry chapter 1 as *Yfirfarið* (reviewed); after this, chapter 1 has 0 reviewed modules. **A vefur follow-up**, not an efni edit. | vefur source |
 | **Costs** | A browser that cached the 3 June SVGs keeps them up to 30 days (vefur's service worker: CacheFirst, 30 days, 200 entries). Per-browser only. | `sw.js`, `vite.config.ts` |
 
@@ -86,12 +86,20 @@ rows from the final titles), which this plan does not change.
   (the dev DB has all `not_started`; production was not measured).
 
 ### Task R1 — (Decision 1) the zero-own-modules guard in `cnxml-render`, test-first
-- [ ] A red test with a temporary fixture book: a track whose `03-translated/<track>/chNN/` exists but holds only an
-  ignored-style file; a full-chapter render must refuse (non-zero exit, a message naming the track and chapter) and
-  write nothing under `05-publication/<track>/`. Control: a chapter with one module still renders.
+- [ ] Scope: refuse ONLY a full-chapter render (no `--module`) of a track whose `03-translated/<track>/chNN/` holds
+  **zero modules of its own**. It must not touch the overlay's intended path: *Vista + Birta* injects ONE module into
+  `03-translated/faithful/chNN/` and renders with `--module`, building the rollups from the union of that module and
+  the mt-preview fallback (own-module count 1, so the guard never fires).
+- [ ] A red test with a temporary fixture book: `03-translated/<track>/chNN/` exists but holds only an ignored-style
+  file; a full-chapter render must refuse (non-zero exit, a message naming the track and chapter) and write nothing
+  under `05-publication/<track>/`. **Controls: (1) the *Vista + Birta* shape — one own module, rendered with `--module`,
+  rollups from the union — still renders; (2) a full-chapter render with one own module still renders.**
 - [ ] The guard; the test green; `npm test` failing set unchanged by name.
 
-### Task R2 — Move this box's ignored faithful residue off-repo (never delete it)
+### Task R2 — Move this box's ignored faithful residue off-repo (never delete it) · ⚠️ BEFORE R3: the order is load-bearing
+
+If R3's `git rm` runs first, the directories it empties still exist on disk (they hold the ignored files), and R2's
+"absent" check would then run against a tree that was never clean.
 - [ ] Dev box: 58 `*.cnxml.backup.*` files in `03-translated/faithful/ch0{1,3}/` and 6 editor-save `.bak` files in
   `03-faithful-translation/ch01/` (intermediate states of real editorial work on m68664). Move them, with a
   `MANIFEST.sha256`, to `~/namsbokasafn-faithful-aside-dev-2026-10-03/`. After Task R3, both chapter directories must
@@ -108,15 +116,24 @@ rows from the final titles), which this plan does not change.
   whenever it exists, so removing only the pages would let the next *Vista + Birta* on ch01/ch03 bring the stale
   m68663/m68664/m68699/m68700 text back into the rollups; and `remt-sweep` would record "not attempted" failures that
   suppress its R4 row.
-- [ ] Unchanged on purpose: `03-faithful-translation/README.md`, `image-mapping.json` (its rows carry no track and
-  mt-preview needs them), `translation-errors.json` (it carries only the mt-preview track), everything under
-  `reference-translations/`.
+- [ ] Unchanged on purpose: `03-faithful-translation/README.md`; `image-mapping.json` (its rows carry no track and
+  mt-preview needs them); everything under `reference-translations/`; and `translation-errors.json`, whose
+  `tracks.faithful` section (2026-07-14, 4 modules checked, `green: false`) is left stale on purpose. Measured: no code
+  reads that section; `updateTranslationErrors` replaces a track's section only on that track's own inject, so the next
+  faithful inject rewrites it; and the file is written by production's cron as well as dev under `merge=ours`, so a
+  hand edit of a derived manifest is the riskier move.
 - [ ] Test pins, measured green after the removal (only these two files go red): `tools/__tests__/remt-sweep.test.js`
   — `toBe(161)` → `toBe(157)` at both sites, and K2's `evaluable` `toBe(26)` → `toBe(24)`;
-  `tools/__tests__/remt-checks-chapter.test.js` — the K2 positive-margin fixture read faithful ch03, and no real chapter
-  can replace it (organic mt-preview ch3, the only survivor, leaves with §C190 ②), so it becomes an **in-memory
-  replay** in the file's own `ch4WithSvarDropReplayed` (§C160) pattern, predicting the margin from an independent
-  count. Update the now-stale prose comments in `tools/__tests__/audit-render-output-defects.test.js` (no assertion
+  `tools/__tests__/remt-checks-chapter.test.js` (its K2 test around lines 848–853) — the positive-margin fixture read
+  faithful ch03, and no real chapter can replace it (organic mt-preview ch3, the only survivor, leaves with §C190 ②), so
+  it becomes an **in-memory replay** in the file's own `ch4WithSvarDropReplayed` (§C160) pattern: chemistry mt-preview
+  ch3 with its most equation-heavy page appended a second time, asserting `PASS margin math +${count}` where `count`
+  comes from an independent count of that page's equations. **Measured by the tests researcher on a scratch copy:** the
+  real mt-preview ch3 alone gives `PASS -` (no margin); with the page duplicated it gives `PASS margin math +31, image
+  +3`; disabling K2's disclosure (`tools/lib/remt-checks-chapter.js`, the `margin ? …` branch) turns the moved test red;
+  remt-sweep 43/43 and remt-checks-chapter 67/67 green after the removal. **R3 is executed implement-then-extract, as
+  Part 5 was:** the replay's code is written test-first when the task runs, and this plan's text is updated from the
+  commit. Update the now-stale prose comments in `tools/__tests__/audit-render-output-defects.test.js` (no assertion
   changes).
 - [ ] Gate: `npm test` (failing FILES diffed by name against `main`), `npm run lint`, `npm run format:check`, and the
   Python suites if R1 touched any. Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
@@ -132,6 +149,9 @@ rows from the final titles), which this plan does not change.
   C105's fix must precede the first new faithful publication.
 - [ ] `docs/plans/2026-09-05-per-chapter-loop.md`: keep the overlay rule; say chemistry's instance was retired
   2026-10-03. Frozen decisions and handoffs are cited, never edited.
+- [ ] PR-A plan, Part 2's "Carries into PR-B" note: "plus 7 `05-publication` copies (faithful ch03 included)" becomes 5 once the
+  two faithful ch03 annotated copies leave (informational; no PR-B check counts `05-publication/faithful/`, measured by
+  grep of PR-B's plan).
 - [ ] Log, not fix: `validate-pipeline-consistency.js` builds a `ch`-prefixed publication path, so it never sees any
   track's HTML for numbered chapters (predates this work).
 
