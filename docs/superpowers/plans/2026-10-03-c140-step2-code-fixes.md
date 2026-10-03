@@ -1719,7 +1719,7 @@ git commit -m "fix(figures): §C161 — strip-text.py removes page-1 comment ann
 
 **Carries into PR-B (not steps here):**
 - The `--stale` pass's driver summary should list **exactly 5** `annotations removed from page 1: …` warnings: ch03 05d 1/1 and 06d 2/2, ch04 saccharin 1/1, ch20 HalAlkane 1/1 and HalAlkane3 1/1. It should show **0** `failed-prepare` reasons containing `AnnotationRefused`. Any other number means the prediction is wrong.
-- The post-pass census must match both encodings: `rgb(25%, 66.664124%, 33.331299%)`/`rgb(100%, 100%, 0%)` and `#40aa55`/`#ffff00`. Today exactly these 5 `media/*_IS.svg` match, plus 7 `05-publication` copies (faithful ch03 included).
+- The post-pass census must match both encodings: `rgb(25%, 66.664124%, 33.331299%)`/`rgb(100%, 100%, 0%)` and `#40aa55`/`#ffff00`. Today exactly these 5 `media/*_IS.svg` match, plus 7 `05-publication` copies (faithful ch03 included). ✏️ *2026-10-03: 5 once the chemistry faithful retirement lands, because its two faithful ch03 annotated copies (05d, 06d) leave with `ac1a2f99d`. Informational: no PR-B check counts `05-publication/faithful/`.*
 - `test_figure_prepare.py` runs in no CI job, so add it to the operator's one-time pre-flight list on the figure box beside `test_figrings.py`/`test_figsym.py`.
 
 

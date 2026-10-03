@@ -59,7 +59,7 @@ rows from the final titles), which this plan does not change.
    faithful `index.json` over mt-preview's 763); and **never between PR-B's branch cut and PR-B's merge** (PR-B's census
    refuses any `books/` deletion other than PerTable2's sidecar in its base..head range).
 
-4. **🆕 NEW, from the completeness critic (not yet ruled) — widen the guard to the INJECT route back in? Recommended YES.**
+4. **From the completeness critic — widen the guard to the INJECT route back in? Recommended YES; ⚖️ RULED YES 2026-10-03 (heading above), and built (below).**
    `cnxml-inject --track faithful` run WITHOUT `--source-dir` takes its text from `02-mt-output`
    (`tools/cnxml-inject.js`: `const sourceDir = args.sourceDir || '02-mt-output'`, with nothing tying `--track` to the
    source), so it would write MACHINE text for all 7 ch01 modules into `03-translated/faithful/ch01/`. The chapter then
@@ -69,6 +69,30 @@ rows from the final titles), which this plan does not change.
    line 27). Proposed: `cnxml-inject` refuses `--track faithful` unless the source directory maps to faithful
    (`trackFromSourceDir(sourceDir) === track`), red-first; and the two README lines are corrected in the same PR
    (CLAUDE.md: if B is wrong, fix B). Read from the code; inject was not run.
+
+   **Built** (`e2607c5cc` guard + test, `8a8a9f342` docs; on the local branch `content/chem-faithful-retirement`,
+   unpushed). The premise was proved at HEAD before the guard, not only read: on a temporary ch01 copy whose m68663
+   MT title was set to a sentinel, `--module m68663 --track faithful` with no `--source-dir` exited 0, printed
+   `[PERFECT fidelity]`, and wrote the MT sentinel into `03-translated/faithful/ch01/m68663.cnxml` and a fresh
+   `residue-report.faithful.json`. The guard tests the EFFECTIVE track,
+   `track === 'faithful' && trackFromSourceDir(sourceDir) !== 'faithful'`, right after the track is computed and
+   before the residue-manifest read and every write; without `--track`, `track` IS `trackFromSourceDir(sourceDir)`,
+   so it fires only on an explicit `--track faithful` against a non-faithful source. It refuses with the file's own
+   `console.error` + `process.exit(1)` style (no stdout written first) and names the remedy
+   (`--source-dir 03-faithful-translation`). Test: `tools/__tests__/cnxml-inject-faithful-track-guard.test.js`, two
+   refusal arms (bare `--track faithful`; `--track faithful --source-dir 02-mt-output`) asserting exit 1, no output in
+   either `03-translated` track, no manifest and a byte-identical `translation-errors.json`; three by-value controls
+   (the server's `--source-dir 03-faithful-translation` shape, the agreeing pair, the no-flag default). Callers
+   measured unaffected: `pipelineService.runInject` passes `--source-dir` and never `--track`;
+   `scripts/verify-b2-idempotent.sh` passes the agreeing pair. Docs corrected at the four sites that prescribed or
+   described the refused shape: `README.md`, `books/efnafraedi-2e/03-faithful-translation/README.md`,
+   `books/efnafraedi-2e/05-publication/README.md`, `docs/workflow/simplified-workflow.md`. Review fix `660a60987` then
+   made the two READMEs show the per-module form the server runs (`--module <moduleId>` on both inject and render;
+   a full-chapter faithful inject fails each unreviewed module by design; never `--allow-en-fallback`), struck
+   simplified-workflow's claim that inject falls back to `02-mt-output`, and matched `docs/technical/cli-reference.md`
+   to inject's real flags (its `--output-dir` row was a flag the parser drops). Its known neighbours (the
+   `--track localized` sibling, `trackFromSourceDir`'s substring test, `--track` taking any string) are outside the
+   ruled scope and logged in the register (§C198).
 
 ---
 
@@ -98,16 +122,44 @@ rows from the final titles), which this plan does not change.
 - [ ] Production DB (read-only, the service's own Node): no `publication.faithful` stage row for chemistry says complete
   (the dev DB has all `not_started`; production was not measured).
 
-### Task R1 — (Decision 1) the zero-own-modules guard in `cnxml-render`, test-first
-- [ ] Scope: refuse ONLY a full-chapter render (no `--module`) of a track whose `03-translated/<track>/chNN/` holds
+### Task R1 — (Decision 1) the zero-own-modules guard in `cnxml-render`, test-first · ✅ BUILT 2026-10-03 (`a020d4583`, local branch `content/chem-faithful-retirement`, unpushed)
+
+**Executed:** the guard is in `main()` of `tools/cnxml-render.js`, immediately after
+`const modules = findChapterModules(...)`: `if (!args.module && modules.length === 0) throw new Error(...)`, so it runs
+before the §C145 marker-residue pre-flight, the §C9 snapshot, the sweep and every rollup write, and it applies to EVERY
+track (an mt-preview chapter directory holding only residue would also have been swept and rebuilt). It is deliberately
+not inside `findChapterModules`, which `main()` calls three times, the mt-preview fallback among them. The refusal goes
+through `main()`'s existing catch (stderr, then exit 1; nothing on stdout first) and reads *"Refusing a full-chapter
+render (track faithful, chapter 1): … exists but holds no .cnxml module of its own … NOTHING was deleted or written."*
+Test: `tools/__tests__/cnxml-render-zero-own-modules.test.js`, a temp root of the 7 real mt-preview ch01 CNXML files with
+the CLI's cwd redirected (the pipeline-integration idiom), so it never reads the tree R3 removes. Red at the unguarded
+code for the right reasons (exit 0, the sentinel page and its `.backup` swept, all 5 rollups and `rollups-complete`
+rebuilt from mt-preview CNXML). Controls green on both sides: the *Vista + Birta* shape (one own module, `--module`;
+renders the section page and the union rollups, sweeps nothing), a full-chapter render with one own module (renders,
+sweeps), the absent-directory arm (still `Translated directory not found`), and a non-empty pre-run snapshot. A
+source-order pin (guard < pre-flight call < sweep) covers what the CLI cannot show with zero modules.
+**Measured with it:** (a) on-disk census of every `03-translated/<track>/<dir>`, worktree and main checkout identical:
+the only directory with zero `.cnxml` is `lifraen-efnafraedi/03-translated/mt-preview/exercises/` (JSON only), which is
+not a `chNN`/`appendices` name and so is unreachable by `--chapter`; no faithful directory is residue-only today. (b)
+Whole-chapter callers: `scripts/rerender-remediation-delivery.sh` (the one loop caller; it plans from
+`[[ -d …/03-translated/$track/chNN ]]` and aborts on the first non-zero render, so a residue-only faithful chapter now
+ABORTS it where it used to rebuild faithful rollups from mt-preview — Decision 1's fail-closed intent, a behaviour change
+in a script last used 2026-07-10); the admin chapter render (`server/routes/pipeline.js`), the one server path that can
+reach the guard, as a single failed job. *(Review fix `837c0f8e9`: the refusal now also names the remedy, inject the
+track's modules first or remove a retired track's leftover directory; and the delivery script plans a chapter only when
+its directory holds a `*.cnxml`, R1's own predicate, so it skips such a directory instead of aborting.)* Unaffected: *Vista + Birta* (always `--module`), `publicationService`'s publish
+(injects first) and `scripts/chemistry-autorun-chapter.sh` (renders right after its own inject).
+
+- [x] Scope: refuse ONLY a full-chapter render (no `--module`) of a track whose `03-translated/<track>/chNN/` holds
   **zero modules of its own**. It must not touch the overlay's intended path: *Vista + Birta* injects ONE module into
   `03-translated/faithful/chNN/` and renders with `--module`, building the rollups from the union of that module and
   the mt-preview fallback (own-module count 1, so the guard never fires).
-- [ ] A red test with a temporary fixture book: `03-translated/<track>/chNN/` exists but holds only an ignored-style
+- [x] A red test with a temporary fixture book: `03-translated/<track>/chNN/` exists but holds only an ignored-style
   file; a full-chapter render must refuse (non-zero exit, a message naming the track and chapter) and write nothing
   under `05-publication/<track>/`. **Controls: (1) the *Vista + Birta* shape — one own module, rendered with `--module`,
   rollups from the union — still renders; (2) a full-chapter render with one own module still renders.**
-- [ ] The guard; the test green; `npm test` failing set unchanged by name.
+- [ ] The guard; the test green; `npm test` failing set unchanged by name. *(Guard and test ✅ in `a020d4583`; the
+  whole-suite diff by name is the retirement branch's full gate, with R3's, not yet run.)*
 
 ### Task R2 — Move this box's ignored faithful residue off-repo (never delete it) · ⚠️ BEFORE R3: the order is load-bearing · ✅ DONE on the dev box, 2026-10-03
 
@@ -125,8 +177,34 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
 - [ ] Production holds one ignored file in the tree, `05-publication/faithful/chapters/03/3-summary.html.backup.2026-06-12T23-45-57`
   (and none in `03-translated/faithful/`). Removing it is [USER]'s write; with the R1 guard it is harmless either way.
 
-### Task R3 — The retirement commit (one commit: both trees together)
-- [ ] `git rm -r books/efnafraedi-2e/05-publication/faithful books/efnafraedi-2e/03-translated/faithful books/efnafraedi-2e/residue-report.faithful.json`
+### Task R3 — The retirement commit (one commit: both trees together) · ✅ DONE 2026-10-03 (`906b945d7` + `ac1a2f99d`, local branch `content/chem-faithful-retirement`, unpushed)
+
+**Executed:** two commits. `906b945d7` added K2's in-memory replay as its own test, green while the faithful test still
+stood. `ac1a2f99d` is the removal: **86 paths** (81 under `05-publication/faithful/` = 80 under `chapters/` +
+`rollups-complete`; 4 CNXML under `03-translated/faithful/`, 2 in ch01 and 2 in ch03; `residue-report.faithful.json`),
+taken only after the tree hashes matched R0 and `git status --porcelain --ignored` read 0 lines for the three paths;
+afterwards `ls` fails (exit 2) on all three, and the parents keep `mt-preview` (`05-publication/` also its README,
+`glossary.json`, `toc.json`). The same commit folds the replay into the existing "K2 discloses the margin a PASS is
+sitting on, and stays silent when there is none" test in place of the faithful +23 arm, re-pins remt-sweep 161 → 157 at
+both sites and K2 `evaluable` 26 → 24, and fixes the faithful-dependent prose at the listed comment sites (remt-sweep's
+R4 spawns 26 → 24, the chapter cell denominator 26 → 24, the tier-3 pool 161 → 157; dated tables annotated *track retired
+2026-10-03*, not rewritten). **The +31 / +3 hypothesis is confirmed on the real tree:** chemistry mt-preview ch3 is
+exactly balanced (m:math 123 / mjx-container 123, image 41 / img 41), so K2 alone gives `PASS` with no margin; with
+m68702's page (31 equations, 3 images, by a DOM parse independent of `marginNote`'s regex) replayed, it gives
+`PASS margin math +31, image +3 (rollups re-present; not a defect)`. The test asserts the balance premise, takes its
+expected count from the DOM parse (throwing if the page is missing or has 0 equations), and keeps the negative half
+(ch10, no margin); review fix `a3c6e9c76` asserts the margin as one delimited clause, `PASS margin math +N, image +M (`,
+because two prefix matches let an over-count by a trailing digit through. Independent corroboration of the re-pins: after the removal the units are chemistry mt-preview 149 in
+23 chapters + organic mt-preview 8 = 157, faithful 0 in both books. Mutation-checked on the branch: disabling K2's
+disclosure branch turns the folded test red at `PASS margin math +31`, as does R1's guard body made a no-op (6 of the
+16) and D4's condition made false (both refusal arms); every file restored from a golden copy and `cmp`-identical.
+⚠️ The audit-render-output `--track faithful` test still discriminates, now against an ABSENT track (7 modules
+unauditable, against mt-preview's 2 errors) — weaker than before, not vacuous. Its comments, and `ac1a2f99d`'s commit
+message, said faithful ch01 audited `PASS with warnings` / exit 0 before the retirement; that was false since #420 (both
+tracks FAIL, on different stdout), and review fix `d369626b1` corrected the comments and dated the pre-retirement counts
+(the commit message stays as written).
+
+- [x] `git rm -r books/efnafraedi-2e/05-publication/faithful books/efnafraedi-2e/03-translated/faithful books/efnafraedi-2e/residue-report.faithful.json`
   — **85 + 1 files**: 81 under `05-publication/faithful/` (ch01 7 pages + 9 images, ch03 7 pages + 57 images,
   `rollups-complete`), 4 CNXML under `03-translated/faithful/`, and the stale inject manifest
   `residue-report.faithful.json` (2 July ratio warnings on m68700 that would badge segments the first time an editor
@@ -134,13 +212,14 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
   whenever it exists, so removing only the pages would let the next *Vista + Birta* on ch01/ch03 bring the stale
   m68663/m68664/m68699/m68700 text back into the rollups; and `remt-sweep` would record "not attempted" failures that
   suppress its R4 row.
-- [ ] Unchanged on purpose: `03-faithful-translation/README.md`; `image-mapping.json` (its rows carry no track and
+- [x] Unchanged on purpose: `03-faithful-translation/README.md` *(except its inject line, which Decision 4 corrected in
+  `8a8a9f342`)*; `image-mapping.json` (its rows carry no track and
   mt-preview needs them); everything under `reference-translations/`; and `translation-errors.json`, whose
   `tracks.faithful` section (2026-07-14, 4 modules checked, `green: false`) is left stale on purpose. Measured: no code
   reads that section; `updateTranslationErrors` replaces a track's section only on that track's own inject, so the next
   faithful inject rewrites it; and the file is written by production's cron as well as dev under `merge=ours`, so a
   hand edit of a derived manifest is the riskier move.
-- [ ] Test pins, measured green after the removal (only these two files go red): `tools/__tests__/remt-sweep.test.js`
+- [x] Test pins, measured green after the removal (only these two files go red): `tools/__tests__/remt-sweep.test.js`
   — `toBe(161)` → `toBe(157)` at both sites, and K2's `evaluable` `toBe(26)` → `toBe(24)`;
   `tools/__tests__/remt-checks-chapter.test.js` (its K2 test around lines 848–853) — the positive-margin fixture read
   faithful ch03, and no real chapter can replace it (organic mt-preview ch3, the only survivor, leaves with §C190 ②), so
@@ -158,28 +237,33 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
   own comment (`remt-checks-chapter.test.js` ~835–847). ⚠️ One researcher wrote that no test reads the real faithful tree;
   that is wrong (the K2 test reads faithful ch3) — the plan follows the measured side.
 - [ ] Gate: `npm test` (failing FILES diffed by name against `main`), `npm run lint`, `npm run format:check`, and the
-  Python suites if R1 touched any. Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
+  Python suites if R1 touched any. *(Not yet run on the branch as a whole; the implementers ran the targeted files and
+  eslint/prettier on every touched JS file.)* Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
   only) and one red `sync-content.yml` run (it has never worked).
 
 ### Task R4 — The records commit
-- [ ] Register (status only, per § One source of truth): mark RULED 2026-10-03 and carried out in `<sha>`, reaching
+- [x] Register (status only, per § One source of truth): mark RULED 2026-10-03 and carried out in `<sha>`, reaching
   readers at the sync — the 2026-09-26 block's faithful-overlay item; §C140 ㊻ ① and ② (with the measured scope: 37
   alts and 14 captions, not one alt) and ⑤'s 4 faithful TrueType copies (re-measured today: TrueType is 25 of 1,455
   `@font-face` SVGs — 2 in `media/`, 19 in mt-preview, 4 in faithful; the register's "33 of 1,461" is stale);
   §C148's faithful-3-1 reach caveat. Re-aim M5's verify grep at `mt-preview/chapters/03` (it would pass on an empty
   glob). Note that runbook 4.2's re-application must fix *kalsíuminnihaldand* (§C107), not carry it forward, and that
-  C105's fix must precede the first new faithful publication.
-- [ ] `docs/plans/2026-09-05-per-chapter-loop.md`: keep the overlay rule; say chemistry's instance was retired
+  C105's fix must precede the first new faithful publication. *(Done. M5's verify was re-aimed with one change from
+  this line: mt-preview ch03 is its positive control BEFORE the fix, measured to carry both errors today, because the
+  editor's fix lands in `05-publication/faithful/`, never in mt-preview. After the fix the verify asserts the faithful
+  glob is non-empty before grepping it. The ⑤ census was re-run and agrees: 25 of 1,455, 2 / 19 / 4.)*
+- [x] `docs/plans/2026-09-05-per-chapter-loop.md`: keep the overlay rule; say chemistry's instance was retired
   2026-10-03. Frozen decisions and handoffs are cited, never edited.
-- [ ] PR-A plan, Part 2's "Carries into PR-B" note: "plus 7 `05-publication` copies (faithful ch03 included)" becomes 5 once the
+- [x] PR-A plan, Part 2's "Carries into PR-B" note: "plus 7 `05-publication` copies (faithful ch03 included)" becomes 5 once the
   two faithful ch03 annotated copies leave (informational; no PR-B check counts `05-publication/faithful/`, measured by
   grep of PR-B's plan).
-- [ ] Log, not fix (a ③ concern, outside the retirement): `contentVersionService.restoreVersion` defaults to track `faithful` and
+- [x] Log, not fix (a ③ concern, outside the retirement): `contentVersionService.restoreVersion` defaults to track `faithful` and
   keys on current segment ids; in the dev DB every m68664 snapshot id still exists, so a restore would write June text over
   72 of 76 segments without a warning. Size it with one read-only prod count of `content_versions` for chemistry/faithful
   before editors are unfrozen.
-- [ ] Log, not fix: `validate-pipeline-consistency.js` builds a `ch`-prefixed publication path, so it never sees any
-  track's HTML for numbered chapters (predates this work).
+- [x] Log, not fix: `validate-pipeline-consistency.js` builds a `ch`-prefixed publication path, so it never sees any
+  track's HTML for numbered chapters (predates this work). *(Both logged as register §C198 ① and ②, with Decision 4's
+  neighbours as ③.)*
 
 ### Task R5 — PR, merge, deploy (with [USER])
 - [ ] PR (merge commit). [USER] merges, timed so the merge-to-deploy window is short.
