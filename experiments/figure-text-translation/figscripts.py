@@ -63,6 +63,22 @@ STACK_PROJ = 0.9 * 1.222   # * block max size
 STACK_ROT = 3.0            # degrees
 
 
+def is_script_style(st):
+    """Is this SourceStyle a sub/superscript? The script rule above, restated on ONE style, beside its
+    thresholds so the rule keeps one owner: |frac| >= SMALL_SHIFT when ratio < SMALL_RATIO, else
+    >= SAME_SHIFT. `st` is a style as `line_styles` / `source_tokens` write it (ratio and frac rounded
+    to 4 places; a plain tuple works too); None - a plain character - is not a script.
+
+    The italic bit is not read: an italic-only style is NOT a script. OxStNonmts' STIX charges are
+    (1.0, 0.0714, italic) - italic, raised 0.0714 < SAME_SHIFT - so a sign-only reading would call
+    them superscripts. §C140 ㊾ D5(a): heldplan pools a block's script styles with this, to draw a
+    held value's ₂ / ⁰ / ⁻ in the block's OWN source style of that kind."""
+    if st is None:
+        return False
+    ratio, frac = st[0], st[1]
+    return abs(frac) >= (SMALL_SHIFT if ratio < SMALL_RATIO else SAME_SHIFT)
+
+
 def _base_name(run, fonts):
     """The run's BaseFont without the leading '/' and the 6-letter subset prefix.
 
