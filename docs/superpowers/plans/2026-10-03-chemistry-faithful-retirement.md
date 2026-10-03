@@ -40,7 +40,7 @@ rows from the final titles), which this plan does not change.
 
 ---
 
-## 2. Decisions for [USER] (recommendation first) — ⚖️ DECISIONS 1–3 RULED 2026-10-03 (Decision 4, added after the completeness critic, is NOT yet ruled): [USER] "I agree with your three recommendations" (guard: yes; organic's removal a separate PR; its own small PR, merged before PR-B's branch is cut)
+## 2. Decisions for [USER] (recommendation first) — ⚖️ DECISIONS 1–3 RULED 2026-10-03: [USER] "I agree with your three recommendations" (guard: yes; organic's removal a separate PR; its own small PR, merged before PR-B's branch is cut). ⚖️ DECISION 4 RULED 2026-10-03 (later session): "Yes, guard inject (Recommended)" — `cnxml-inject` refuses `--track faithful` unless the source directory maps to faithful, red-first, and the live docs that prescribe the bare command are corrected in the same retirement PR. Scope as ruled: the faithful track only.
 
 1. **Guard the retirement in code? — recommended YES.** `git rm -r` leaves a directory in place when it still holds a
    gitignored file. Then `findChapterModules` returns `[]` instead of throwing, `cnxml-render` has no zero-module
