@@ -146,7 +146,8 @@ COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'hel
 # presence afterwards MEANS "this run produced them" rather than "a file with this name is
 # in the directory" - the same lesson as figure-prepare.py's stale artwork.svg.
 # `held-values.json` (§C140 ㊾ D5(a)) is the hand-off compose.py reads: written AFTER this removal,
-# on every run, so it always holds this run's config.
+# on every run, so it always holds this run's config. The removal comes BEFORE the heldBlockValues
+# pre-flight too, so a refusal leaves none of a previous run's files behind (see compose()).
 DERIVED_OUTPUTS = ('compose.json', 'compose-report.json', 'translated.svg', 'held-values.json')
 
 COMPOSE_TIMEOUT_S = 900         # an unattended driver must not wedge on one figure
@@ -508,9 +509,14 @@ def compose(out_dir, translations, config_path=heldvalues.CONFIG_PATH):
     before the spawn, and verify checks the report against the same list after it."""
     tr = validate_inputs(out_dir, translations)
     blocks = json.loads((out_dir / 'blocks.json').read_text(encoding='utf-8'))
-    basename, held = load_held(out_dir, blocks, tr, config_path)
+    # The stale outputs go BEFORE the heldBlockValues pre-flight (a skeptic's finding, 2026-10-03):
+    # measured, a pre-flight refusal in a reused --out left the previous run's compose-report.json and
+    # held-values.json in place, and a later direct `compose.py --held-values <out>/held-values.json`
+    # would draw the PREVIOUS config's values (same basename, so its cross-check passes).
+    # test_figure_compose.py F13.
     for name in DERIVED_OUTPUTS:
         (out_dir / name).unlink(missing_ok=True)
+    basename, held = load_held(out_dir, blocks, tr, config_path)
     held_path = out_dir / 'held-values.json'
     heldvalues.write_file(held_path, basename, config_path, held)
 

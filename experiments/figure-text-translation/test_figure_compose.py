@@ -48,7 +48,8 @@ drew against blocks.json as a multiset before the money check subtracts them. F4
 CONTROLS that make the refusals mean anything: a configured value IS drawn, and the production route
 (no --config) reads the committed config. Every value there is an ASCII sentinel (QZ...). F12 (a
 skeptic's finding, 2026-10-03): a config that REPEATS a key at any depth is refused before the spawn -
-JSON keeps only the last of two equal keys, so an earlier entry or value would vanish silently.
+JSON keeps only the last of two equal keys, so an earlier entry or value would vanish silently. F13
+(the same review): a pre-flight refusal in a REUSED --out leaves none of the previous run's outputs.
 """
 import collections
 import json
@@ -1670,9 +1671,36 @@ def f12():
               and held_of(d) == [(K_VERBATIM, 3, [0])], f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
 
 
+# F13 (a skeptic's finding, 2026-10-03): a pre-flight refusal in a REUSED --out. DERIVED_OUTPUTS' contract
+# is that their presence afterwards MEANS this run produced them, but the pre-flight used to run BEFORE the
+# unlink loop: measured, a refusal left the previous run's compose-report.json and held-values.json in
+# place, and a later direct `compose.py --held-values <out>/held-values.json` would draw the PREVIOUS
+# config's values (same basename, so its cross-check passes). The PRECONDITION is the successful run
+# that leaves all three files, so their absence afterwards is this refusal's doing.
+def f13():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-f13'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_F13')
+        tr = write_tr(Path(td) / 'tr13.json', TR12)
+        names = ('compose-report.json', 'held-values.json', 'translated.svg')
+        r = run_wrapper('--out', out, '--translations', tr, '--config',
+                        write_config(Path(td) / 'c13-ok.json', {'CNX_Fixture_F13': {K_VERBATIM: 'QZ'}}))
+        before = {n: (out / n).exists() for n in names}
+        check('F13 PRECONDITION a successful run leaves compose-report.json, held-values.json and '
+              'translated.svg in the directory', prep.returncode == 0 and r.returncode == 0
+              and all(before.values()), f'prepare {prep.returncode}, compose {r.returncode}: {before}')
+        r = run_wrapper('--out', out, '--translations', tr, '--config',
+                        write_config(Path(td) / 'c13-stale.json', {'CNX_Fixture_F13': {'QZ no such label': 'QZX'}}))
+        d = load_json(out / 'compose.json') or {}
+        left = {n: (out / n).exists() for n in names}
+        check("F13 a pre-flight refusal in that REUSED --out leaves none of the previous run's outputs: no "
+              "compose-report.json, held-values.json or translated.svg", refused(r, 1)
+              and 'matches no block' in err_of(d) and not any(left.values()), f'exit {r.returncode}: {left}')
+
+
 if _mod is not None:
     for _label, _fn in (('F1-F3', f1_f3), ('F4/F10', f4_f10), ('F5/F11', f5_f11), ('F6', f6),
-                        ('F7', f7), ('F8', f8), ('F9', f9), ('F12', f12)):
+                        ('F7', f7), ('F8', f8), ('F9', f9), ('F12', f12), ('F13', f13)):
         attempt(_label, _fn)
 
 
