@@ -39,8 +39,14 @@ composer under `experiments/figure-text-translation/`, its `check()` suites prin
 
 - **Written 2026-10-03, read-only, against the post-PR-A-Parts-1–4 scratch tree** (`scratch/c140s2-int` at
   `29d3b27d8`, worktree `~/.cache/namsbokasafn-audit/2026-10-03-step2/wt-int`) and the main checkout at `3d9b5d2e5`.
-  **PR-A Part 5 (`heldBlockValues`) is in no tree yet.** Its interfaces here come from its frozen design; Task B-0
-  pins every one of them on the merged `main` before anything depends on it, and stops if one differs.
+  **PR-A Part 5 (`heldBlockValues`) was drafted from its frozen design, then checked against Part 5 as implemented**
+  (local branch `scratch/c140s2-p5`, tip `c85b61cc7`, 2026-10-03, read-only): every B-0 Step 1 row counts 1 there;
+  B-0 Step 6's heading, NOTE, both note lists ending in `'held'` and the one `const keys = Object.keys(cfg.heldBlockValues`
+  line match; `summarise` prints `basename: "key" block N` exactly as `predict.mjs`'s `h()` builds it; compose.json
+  `held` is `[{key, block, changed}]`; the three held suites carry the design's names; and B-3's `heldcheck.py ab`,
+  run on Part 5's own 8-directory A/B output (`~/.cache/namsbokasafn-audit/2026-10-03-step2/p5-measure/ab/`), prints
+  `HELDCHECK PASS`. Task B-0 still pins every one of them on the merged `main` before anything depends on it, and
+  stops if one differs.
 - **Three tasks were drafted on 2026-10-03 and never verified** (their verifiers died at a usage limit): B-7a,
   B-bump and B-7b. Each was re-verified for this plan: every quoted anchor was found exactly once at the line the
   draft named, the precondition grep and the files that read `COMPOSER_VERSION` were re-listed, and the shell
@@ -915,6 +921,10 @@ body = ',\n'.join(
 p.write_text(t.replace(OLD, '"heldBlockValues": {\n' + body + '\n  },'), encoding='utf-8')
 cfg = json.loads(p.read_text(encoding='utf-8'))
 assert cfg['heldBlockValues'] == TABLE
+# B1 by code point, not only by eye: the LETTER O (U+004F), then U+2082. The value sheet's B1 cell also
+# quotes, inside its chat note, the superseded value without the formula; this pins the corrected one.
+mol = cfg['heldBlockValues']['CNX_Chem_09_05_MolSpeed1']['02 at T = 300 K']
+assert mol[:3] == 'O₂ ' and mol.endswith(' T = 300 K'), [f'U+{ord(c):04X}' for c in mol]
 for b, e in cfg['heldBlockValues'].items():
     for k, v in e.items():
         assert '|' not in v and all(ln == ln.strip() and ln for ln in v.split('\n')), (b, k)
@@ -950,13 +960,21 @@ hits = list(re.finditer(r'^(\s*)const keys = Object\.keys\(cfg\.heldBlockValues[
 assert len(hits) == 1, f'{len(hits)} anchors'
 m = hits[0]
 t = t[:m.end()] + f'{m.group(1)}expect(keys.length).toBeGreaterThan(0);\n' + t[m.end():]
+OLD = ("  // `.svg` row and a translated copy, and none of its keys is a bought block. Vacuous while the\n"
+       "  // table is empty; the commit that records [USER]'s first values (PR-B) adds\n"
+       "  // `expect(keys.length).toBeGreaterThan(0)` here, as the retired test carries.\n")
+NEW = ("  // `.svg` row and a translated copy, and none of its keys is a bought block. [USER]'s first values\n"
+       "  // were recorded in PR-B's heldBlockValues commit (§C140 ㊾), so an empty table now fails here, as\n"
+       "  // the retired test's does.\n")
+assert t.count(OLD) == 1, f'comment anchor found {t.count(OLD)} times'
+t = t.replace(OLD, NEW)
 p.write_text(t, encoding='utf-8')
-print('inserted after line', t[:m.end()].count('\n'))
+print('inserted after line', t[:m.end()].count('\n'), '| comment reworded')
 PY
 npx vitest run tools/__tests__/figure-config-validate.test.js > "$PASS/logs/b3-vitest2.txt" 2>&1; echo "EXIT=$?"; tail -4 "$PASS/logs/b3-vitest2.txt"
 ```
-Expected: `inserted after line <n>`, then `EXIT=0`. Then reword, by hand, the comment directly above that test the way B-1 Step 6 reworded the kept one: it says the commit that records [USER]'s first values adds this assertion, and this commit is that commit. If the anchor count is not 1, read the held committed-config test
-(B-0 Step 6 located it) and insert the same assertion as its first statement after the line that builds the key list.
+Expected: `inserted after line <n> | comment reworded`, then `EXIT=0` (the comment edit mirrors B-1 Step 6's for the kept test). If either anchor count is not 1, read the held committed-config test
+(B-0 Step 6 located it), insert the same assertion as its first statement after the line that builds the key list, reword the comment above it the same way, and record it.
 
 - [ ] **Step 5: Write the by-value checker and the triptych renderer** (both reused in B-5 and B-6).
 
@@ -1045,20 +1063,37 @@ def in_line(it, height, line):
     return x0 - 3 <= it['x'] <= x1 + 3 and abs(it['y'] - (height - base)) <= 4.5
 
 
+# The script marks each held line draws, in line order then x (design D-j's script segments):
+# (base glyph, font size, shift off the line's baseline in PDF pt, + = raised). The text check
+# cannot see a lost subscript: a flat `O2` reads the same as O and a lowered 2. Absent = none.
+SCRIPTS = {
+    'CNX_Chem_09_05_MolSpeed1': [('2', 7.0, -2.0)],
+    'CNX_Chem_14_02_phscale': [('0', 7.0, 4.0), ('0', 7.0, 4.0)],
+    'CNX_Chem_14_06_buffer': [('3', 7.0, -3.0), ('2', 7.0, -3.0), ('3', 7.0, -3.0), ('2', 7.0, -3.0),
+                              (EN_DASH, 7.0, 4.0)],
+}
+
+
 def check_figure(svg, b):
     exp, height, its, problems = EXPECT[b], page_height(svg), items(svg), []
+    scripts, text_ok = [], True
     for line in exp['lines']:
         x0, _, base, want = line
         drawn = sorted((i for i in its if in_line(i, height, line)), key=lambda i: i['x'])
         got = ''.join(i['text'] for i in drawn)
         if got != want:
             problems.append(f'{b} @{base}: drew {got!r}, expected {want!r}')
+            text_ok = False
             continue
         if abs(drawn[0]['x'] - x0) > 0.02 or abs(drawn[0]['y'] - (height - base)) > 0.02:
             problems.append(f'{b} @{base}: starts at ({drawn[0]["x"]:.3f}, {drawn[0]["y"]:.3f}), expected '
                             f'({x0:.2f}, {height - base:.2f})')
         if not all(i['layout'] for i in drawn):
             problems.append(f'{b} @{base}: a held item is not on the layout path (no font-kerning:none)')
+        scripts += [(i['text'], round(_num(i['raw'], 'font-size'), 1), round((height - base) - i['y'], 1))
+                    for i in drawn if abs(i['y'] - (height - base)) > 0.5]
+    if text_ok and scripts != SCRIPTS.get(b, []):
+        problems.append(f'{b}: script marks {scripts}, expected {SCRIPTS.get(b, [])} (design D-j)')
     for g in exp['gone']:
         k = sum(1 for i in its if i['text'] == g)
         if k:
@@ -3333,10 +3368,8 @@ ps -eo pid,args | grep -a '[f]igure-run.js'; echo "running=$? (1 = none)"
 test -e .env && echo ".env ALREADY PRESENT — stop" || mv -n "$PASS/env.aside" .env
 ls -la .env | awk '{print $1, $5}'; git status --porcelain
 ```
-Expected: `running=1`; `.env` back (`-rw-r--r-- 540`); empty porcelain (it is ignored). It comes back here, and not
-later, only because nothing after this step is a figure-run. (No Vitest file reads the real `.env` — the driver's
-suites stub the API and `translate-blocks.mjs` takes an injected `envPath` — and B-bump's baseline suite ran with it
-aside; Step 2 compares failing SETS by name, so a difference would show either way.)
+Expected: `running=1`; `.env` back (`-rw-r--r-- 540`); empty porcelain (it is ignored). It comes back here, after Step 2, because nothing after this step is a figure-run. (The premise this step used to
+state here, that no Vitest file reads the real `.env`, is false: see the note at the top of this step.)
 
 - [ ] **Step 2: The full suite's failing set is still the B-bump baseline; lint and format are clean.**
 
