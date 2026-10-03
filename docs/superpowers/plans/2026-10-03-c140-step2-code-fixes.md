@@ -14,7 +14,7 @@
 
 - **Parts 1 and 2 are drafted AND independently verified.** Two verifiers applied every code block verbatim to scratch copies of HEAD (`2f5f213bf`), each anchor matching exactly once, and ran the red arm (fails as predicted) and the green arm (passes). Their defects are folded in below.
 - **Parts 3 (㉑) and 4 (㊳) are now verified too (2026-10-03).** A replicating verifier applied each part verbatim in a scratch worktree of `a9fe1f031` and a skeptic then tried to refute it with mutants. Every anchor matched exactly once, every red arm failed exactly as written, every green arm passed, and Part 3 Task 4's prediction held (4 laid-out blocks in 2 figures; 25 of 27 SVGs byte-identical). Their fixes are folded in below, including two test-strength gaps the skeptics found: Part 4's `skips exactly` test gains a version-current, hash-stale control, and its tripwire scanner skips comments; Part 3 Task 2 gains a free-box pin for the obstacle half of the `C|B|A` guard. Off-repo record: `~/.cache/namsbokasafn-audit/2026-10-03-step2/wf1/` (`plan-fixes.json` lists all 32 applied fixes). As for Parts 1 and 2, still run each red-first test before editing: the tree may have moved.
-- **Part 5 (`heldBlockValues`, spec D5(a)) is NOT DRAFTED.** The same stop hit its drafter, which also owed the **value sheet** (the exact `blocks.json` keys that PR-B's user-input step asks [USER] to fill). **PR-A must not merge without Part 5.** Parts 1–4 can be executed and reviewed before it. Part 5 edits `compose.py` (as Part 3 does) and `figure-config-validate.js` (as Part 1 does), so write it against the tree after Parts 1–4.
+- **Part 5 (`heldBlockValues`, spec D5(a)) is IMPLEMENTED test-first and its text EXTRACTED from the commits (2026-10-03)**, in the companion file [`2026-10-03-c140-step2-code-fixes-part5.md`](2026-10-03-c140-step2-code-fixes-part5.md); its measurements held (27-figure no-op; the 8-directory A/B matched the design's prediction exactly). It is not yet replicated from the text. ~~Part 5 (`heldBlockValues`, spec D5(a)) is NOT DRAFTED. The same stop hit its drafter, which also owed the value sheet (the exact `blocks.json` keys that PR-B's user-input step asks [USER] to fill). PR-A must not merge without Part 5. Parts 1–4 can be executed and reviewed before it. Part 5 edits `compose.py` (as Part 3 does) and `figure-config-validate.js` (as Part 1 does), so write it against the tree after Parts 1–4.~~ (2026-10-03, superseded)
 - Task numbers are LOCAL to each part (Part 1 has Tasks 1–4, Part 3 has Tasks 1–4, …). A reference such as "Task 3 Step 6" inside a part means that part's task.
 
 ## Global Constraints
@@ -3416,7 +3416,9 @@ Expected: porcelain empty.
 
 ---
 
-# Part 5 — `heldBlockValues`: compose-time substitution for the kept-English short words (spec D5(a)) · ❌ NOT DRAFTED
+# Part 5 — `heldBlockValues`: compose-time substitution for the kept-English short words (spec D5(a)) · ✅ implemented test-first and extracted (2026-10-03); not yet replicated
+
+**▶ The tasks are in the companion file [`2026-10-03-c140-step2-code-fixes-part5.md`](2026-10-03-c140-step2-code-fixes-part5.md)** (Part 5's own Tasks 1–11; a separate file only for size). The text below is this part's header and history.
 
 The drafting run stopped at the weekly usage limit before this part's drafter ran. **PR-A must not merge without it.**
 
