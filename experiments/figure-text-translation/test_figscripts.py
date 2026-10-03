@@ -31,6 +31,10 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * S7 REAL stacked splits `HCO3|–` and `NH4|+ (conjugate acid)` - FT.lines splits the charge
   onto its own line, which on its own produces no token at all.
 * S8 REAL `3px and 3px` - duplicate tokens name two false `absent` misses unless de-duplicated.
+* V §C140 ㉑ REAL Nitrogen / conjugate / Blood - `figtext.visual_lines` merges a stacked charge or a same-size
+  superscript into ONE visual line (V1-V4); a genuine two-line label does not merge (V5); FT.lines and `block_key`
+  still split (V6, V7); the threshold is 0.6 of a lead (V8); an arc is never merged (V9); the measured CbcCltPckd
+  `C|B|A` over-merge is pinned (V10).
 * T* transfer - whole token, repeats, `CO2` not donating `O2`, the anchored fallback, empty
   anchor, glued repeats -> `partial`, Unicode-subscript and name edits -> `absent`.
 * B* body size - an 11 pt STIX first run over 9 pt letters is not the label's size.
@@ -337,6 +341,76 @@ def s7():
 
 attempt('S7', s7)
 
+# --------------------------------------------------------------------------------------------
+print('V §C140 ㉑ figtext.visual_lines: one visual line for the LAYOUT; FT.lines and the key never move')
+
+# CNX_Chem_18_07_Nitrogen (send:true, bought 2026-09-21, drawn on 2-3 lines): REAL runs copied from the
+# committed evidence/2026-09-15-t23-review-fixes/reports/code1-control-nitrogen/runs.json (rot 0, so
+# x = along and y = proj). Fonts: R1165 LiberationSans -> 'R', R1170 STIXGeneral-Italic -> 'SI'.
+NITRITES = [run('nitrites (NO', 9.0, 341.303, 67.8199, adv=45.507, font='R'),
+            run('2', 7.0, 386.8081, 64.8199, adv=3.892, font='R'),
+            run('–', 7.0, 390.7011, 72.3199, adv=3.5, font='SI')]
+AMMONIUM = [run('ammonium (NH', 9.0, 221.794, 67.8199, adv=63.0, font='R'),
+            run('4', 9.0, 284.803, 64.8379, adv=5.004, font='R'),
+            run('+', 9.0, 289.8081, 72.3199, adv=6.075, font='SI'),
+            run(')', 9.0, 295.8831, 67.8199, adv=2.997, font='R')]
+# The same figure's genuine TWO-line label, one lead (11.0 pt) apart - the control that must not merge.
+ATMOS = [run('Atmospheric', 9.0, 1.9118, 348.3417, adv=50.013, font='R'),
+         run('nitrogen (N', 9.0, 1.9118, 337.3417, adv=44.514, font='R'),
+         run('2', 7.0, 46.4325, 334.3417, adv=3.892, font='R'),
+         run(')', 9.0, 50.3258, 337.3417, adv=2.997, font='R')]
+# CNX_Chem_10_06_CbcCltPckd 'C|B|A' (send:FALSE): REAL census runs - three 9 pt letters on a diagonal,
+# 5.76 and 5.0 pt apart along the normal. The rule merges C and B: the reason it is confined to a block's
+# OWN cues and never feeds another block's frames (figcontainers.line_frames).
+CBA = census([['C', 9.0, 298.64, 95.17, 6.5, 0.0, 'PAGE/R10'], ['B', 9.0, 289.27, 89.41, 6.0, 0.0, 'PAGE/R10'],
+              ['A', 9.0, 278.23, 84.41, 6.0, 0.0, 'PAGE/R10']], {'PAGE/R10': 'R'})
+
+
+def texts(ls):
+    return [''.join(r['text'] for r in l) for l in ls]
+
+
+def v_all():
+    from blockkey import block_key
+    check('V-pre FT.lines splits nitrites / ammonium / conjugate / Blood into 2 / 3 / 2 / 2 lines',
+          [len(FT.lines(b)) for b in (NITRITES, AMMONIUM, CONJ, BLOOD)] == [2, 3, 2, 2],
+          repr([texts(FT.lines(b)) for b in (NITRITES, AMMONIUM, CONJ, BLOOD)]))
+    check('V1 REAL nitrites (NO2|– is ONE visual line holding all three runs, in source order',
+          [[r['text'] for r in l] for l in FT.visual_lines(NITRITES)] == [['nitrites (NO', '2', '–']],
+          repr(texts(FT.visual_lines(NITRITES))))
+    check('V2 REAL ammonium (NH4|+|) - three FT.lines, chained - is ONE visual line',
+          texts(FT.visual_lines(AMMONIUM)) == ['ammonium (NH4+)'], repr(texts(FT.visual_lines(AMMONIUM))))
+    check('V3 REAL conjugate NH4|+ (conjugate acid) is ONE visual line',
+          texts(FT.visual_lines(CONJ)) == ['NH4+ (conjugate acid)'], repr(texts(FT.visual_lines(CONJ))))
+    check('V4 REAL Blood ... HCO3|– is ONE visual line', len(FT.visual_lines(BLOOD)) == 1,
+          repr(texts(FT.visual_lines(BLOOD))))
+    check('V5 control: REAL Atmospheric|nitrogen (N2), one lead apart, stays TWO visual lines',
+          texts(FT.visual_lines(ATMOS)) == ['Atmospheric', 'nitrogen (N2)'], repr(texts(FT.visual_lines(ATMOS))))
+    check('V6 the keys still split: block_key is built on FT.lines, so no bought key moves',
+          [block_key(b) for b in (NITRITES, AMMONIUM, CONJ)]
+          == ['nitrites (NO2|–', 'ammonium (NH4|+|)', 'NH4|+ (conjugate acid)'],
+          repr([block_key(b) for b in (NITRITES, AMMONIUM, CONJ)]))
+    check('V7 FT.lines still returns 2 / 3 lines after visual_lines ran (nothing is merged in place)',
+          len(FT.lines(NITRITES)) == 2 and len(FT.lines(AMMONIUM)) == 3)
+    # the threshold, at 9 pt: one lead is 10.998 pt, so 0.59 lead (6.489 pt) merges and 0.61 lead (6.709 pt)
+    # does not. Both pairs are two FT.lines (each step is >= 0.5 x 9 = 4.5 pt).
+    near_ = [run('Aa', 9.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 100.0 + 0.59 * 1.222 * 9.0)]
+    far_ = [run('Aa', 9.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 100.0 + 0.61 * 1.222 * 9.0)]
+    check('V8 the merge threshold is 0.6 of a lead: 0.59 lead merges, 0.61 lead does not',
+          len(FT.lines(near_)) == 2 and len(FT.lines(far_)) == 2
+          and len(FT.visual_lines(near_)) == 1 and len(FT.visual_lines(far_)) == 2
+          and FT.VISUAL_LEAD_FRACTION == 0.6,
+          f'{len(FT.visual_lines(near_))} {len(FT.visual_lines(far_))} {getattr(FT, "VISUAL_LEAD_FRACTION", None)}')
+    # an ARC (four single-glyph runs) whose steps of 5 pt the rule WOULD merge pairwise is returned as FT.lines
+    arc = [run('a', 9.0, 0.0, 0.0), run('b', 9.0, 6.0, 5.0), run('c', 9.0, 12.0, 10.0), run('d', 9.0, 18.0, 15.0)]
+    check('V9 an arc is returned as FT.lines, unmerged (FT.is_arc, 4 FT.lines)',
+          FT.is_arc(arc) and len(FT.lines(arc)) == 4 and texts(FT.visual_lines(arc)) == texts(FT.lines(arc)),
+          repr(texts(FT.visual_lines(arc))))
+    check('V10 REAL CbcCltPckd C|B|A: 3 FT.lines, and the rule merges C and B - pinned as measured',
+          len(FT.lines(CBA)) == 3 and texts(FT.visual_lines(CBA)) == ['CB', 'A'], repr(texts(FT.visual_lines(CBA))))
+
+
+attempt('V', v_all)
 # --------------------------------------------------------------------------------------------
 print('S8 tokens: de-duplication and edge trimming')
 

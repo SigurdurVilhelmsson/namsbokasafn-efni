@@ -66,6 +66,50 @@ def lines(b):
         else: out.append(buf); buf=[y]
     out.append(buf); return out
 
+# §C140 ㉑: two `lines` whose first runs sit closer than this fraction of a LEAD (1.222 x size) along the
+# text normal are ONE visual line. MEASURED, NOT CHOSEN: over the 2,925 send:true non-arc blocks of the
+# 2026-09-13 census the merges are flat at 21 blocks in 14 figures for every fraction 0.5-0.8 and jump to
+# 29 in 19 at 0.9; the nearest genuine two-line labels sit 0.806 and 0.837 of a lead apart, the widest
+# charge/superscript split 0.409 (design spec docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-
+# design.md, D3). `visual_lines` IS instrument A of the frozen
+# evidence/2026-09-15-t23-review-fixes/instruments/code1_exposure.py (`visual_a`), plus the arc carve-out.
+# Re-measure before moving it; do not tune it.
+VISUAL_LEAD_FRACTION = 0.6
+
+
+def visual_lines(b):
+    """`lines(b)` with consecutive lines that sit on ONE visual line merged - §C140 ㉑.
+
+    `lines` splits on a baseline jump >= 0.5 x size, so a one-line source label with a stacked charge
+    or a same-size superscript - `nitrites (NO2|–`, `ammonium (NH4|+|)`, `NH4|+ (conjugate acid)` -
+    reads as 2-3 lines, and a layout that counts source lines with it draws the translation on 2-3
+    lines. Line i+1 merges onto the ACCUMULATED line when its first run's proj differs from the
+    accumulated line's FIRST run's proj by < VISUAL_LEAD_FRACTION x 1.222 x the larger of the two
+    first-run sizes; chains merge onto the accumulated line. An arc (`is_arc`) is returned as
+    `lines(b)`: its runs are not lines. A merged line's first run is the run that opens the source
+    line, and compose.py reads that line's baseline (`projs`), font and colour from it: on all 21
+    measured merges it is the body run, never the script.
+
+    🔴 FOR THE LAYOUT'S OWN LINE COUNT AND SOURCE CUES ONLY - compose.py's `n_src` / `starts` /
+    `ends` / `projs` and its per-line font index, and figcontainers' `own_line_frames` (the block's
+    OWN cell / open alignment). NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
+    bought key, sidecar value or renderHash moves. NEVER another block's frames: `line_frames` (sibling
+    cues, free-box obstacles) stays on `lines`, because this rule merges a genuine diagonal kept label
+    (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move neighbouring labels in up to 18
+    bought figures."""
+    ls = lines(b)
+    if is_arc(b) or len(ls) < 2:
+        return ls
+    out = [ls[0]]
+    for l in ls[1:]:
+        p = out[-1]
+        s = max(p[0]['size'], l[0]['size'])
+        if abs(proj(l[0]) - proj(p[0])) < VISUAL_LEAD_FRACTION * 1.222 * s:
+            out[-1] = p + l
+        else:
+            out.append(l)
+    return out
+
 def alignment(b, measure):
     """'left' | 'center' | 'right', decided from the ORIGINAL line geometry"""
     ls=lines(b)
