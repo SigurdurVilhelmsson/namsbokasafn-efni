@@ -2563,3 +2563,111 @@ describe('§C140 ⑦ — what a live run would buy', () => {
     expect(text).toMatch(/FIG_ODD\s+billable count UNKNOWN/);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊾ (spec 2026-10-02 D1) — A KEPT COPY SURVIVES EVERY ROUTE, BYTE FOR BYTE.
+// sources.py refuses a `keptCopies` figure as `kept` at RESOLUTION; the fake resolver here returns
+// exactly that shape (test_sources.py pins it). Three routes reach a figure, and each is run with
+// a CONTROL figure in the SAME run that the same route does recompose or buy — so "the kept copy
+// is unchanged" cannot pass because the route did nothing at all:
+//   --stale over a bumped sidecar (what the '4' → '5' bump makes of every sidecar);
+//   --force over a current sidecar (--force suppresses only `skipped-current`);
+//   a plain run over a figure with NO sidecar (a kept figure's sidecar is deleted in its restore
+//   commit, so the refusal, not a sidecar, is what stops a buy).
+// ⚠️ The plumbing is borrowed: the bumped shape from 'a COMPOSER_VERSION bump recomposes ONCE',
+// the --force arm from '--stale and --force never RE-buy', the plain buy from the minting tests.
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ㊾ — a kept copy is never recomposed, never bought over, on any route', () => {
+  const KEEP_REASON =
+    '[USER] ruled (test): the June copy readers are served is kept as it is, never recomposed';
+  const KEPT = { path: null, refused: 'kept', edition: null, candidates: [], reason: KEEP_REASON };
+  const keepFigA = {
+    resolve: (n) =>
+      n === 'FIG_A' ? KEPT : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+  };
+  const rows = [
+    { originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' },
+    { originalImage: 'FIG_B', outputName: 'FIG_B_IS.svg', extension: '.svg' },
+  ];
+  // A root <svg> with a viewBox that is no paper size, so `paperSheetCopy` reads it cleanly and
+  // adds no line of its own to the report.
+  const JUNE = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" id="june-A"/>';
+  const blocks = { k0: 'IS k0', k1: 'IS k1' };
+  const OLD = '0';
+  const bumpedSidecar = (basename) => {
+    const h = computeRenderHash(blocks, OLD);
+    return {
+      version: 1,
+      basename,
+      renderHash: h,
+      composedHash: h,
+      composerVersion: OLD,
+      composedVersion: OLD,
+      blocks,
+    };
+  };
+  const plantCopies = (bookDir) => {
+    fs.writeFileSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'), JUNE);
+    fs.writeFileSync(
+      path.join(bookDir, 'media', 'FIG_B_IS.svg'),
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" id="old-B"/>'
+    );
+  };
+  const copyOf = (bookDir, b) =>
+    fs.readFileSync(path.join(bookDir, 'media', `${b}_IS.svg`), 'utf-8');
+
+  it.each([
+    ['--stale over a bumped sidecar', { stale: true }, bumpedSidecar],
+    ['--force over a current sidecar', { force: true }, (b) => currentSidecar(b, blocks)],
+  ])(
+    '%s: the kept copy is untouched, and the control figure is recomposed',
+    async (_l, over, sidecarOf) => {
+      const { booksRoot, bookDir } = makeBook({
+        figures: ['FIG_A', 'FIG_B'],
+        mapping: rows,
+        sidecars: { FIG_A: sidecarOf('FIG_A'), FIG_B: sidecarOf('FIG_B') },
+      });
+      plantCopies(bookDir);
+      const spawn = fakeSpawn(keepFigA);
+      const result = await runFigures(live(booksRoot, over), { spawn, booksRoot });
+
+      const a = rec(result, 'FIG_A');
+      expect(a.outcome).toBe('unresolved');
+      expect(a.artworkRefusal.refused).toBe('kept');
+      expect(a.reason).toBe(
+        'REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, ' +
+          `re-buys or overwrites it — ${KEEP_REASON}`
+      );
+      expect(copyOf(bookDir, 'FIG_A')).toBe(JUNE);
+      expect(spawn.outDirsFor('prepare')).toEqual(['FIG_B']);
+      expect(spawn.countOf('translate')).toBe(0);
+      // CONTROL, same run: this route really does recompose a figure that is not kept.
+      expect(rec(result, 'FIG_B').outcome).toBe('translated');
+      expect(spawn.outDirsFor('compose')).toEqual(['FIG_B']);
+      expect(copyOf(bookDir, 'FIG_B')).toBe('<svg id="FIG_B"/>');
+      expect(result.verdict.ok).toBe(true); // unresolved is a NOTE, never fatal (R9)
+      const text = summarise(result);
+      expect(text).toContain(`REFUSED — kept: FIG_A: ${KEEP_REASON}`);
+      expect(text).toContain(
+        'readers still see an earlier translated copy of FIG_A: media/FIG_A_IS.svg (mapping row present)'
+      );
+    }
+  );
+
+  it('a plain run over a kept figure with NO sidecar buys nothing for it; the control is bought', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A', 'FIG_B'], mapping: rows });
+    plantCopies(bookDir);
+    const spawn = fakeSpawn(keepFigA);
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').artworkRefusal.refused).toBe('kept');
+    expect(rec(result, 'FIG_A').reason).toMatch(/kept by ruling, so no run recomposes, re-buys/);
+    expect(copyOf(bookDir, 'FIG_A')).toBe(JUNE);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false); // no sidecar was minted
+    // CONTROL, same run: a plain run DOES buy a sidecar-less figure that is not kept, so the
+    // single translate spawn below is FIG_B's, and none of it is FIG_A's.
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_B']);
+    expect(rec(result, 'FIG_B').outcome).toBe('translated');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_B'))).toBe(true);
+  });
+});

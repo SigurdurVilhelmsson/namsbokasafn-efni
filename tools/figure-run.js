@@ -1690,6 +1690,11 @@ export function refusalReason(refusal) {
   if (refusal.refused === 'retired') {
     return `REFUSED, not missing: retired by ruling, so no translated copy is made again — ${refusal.reason}`;
   }
+  // §C140 ㊾ — the inverse of retired: a ruling KEEPS the translated copy (`keptCopies`). Its
+  // mapping row and `_IS` file stay, and the summary's "readers still see" line names them.
+  if (refusal.refused === 'kept') {
+    return `REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, re-buys or overwrites it — ${refusal.reason}`;
+  }
   if (refusal.refused === 'pin-conflict') {
     return `REFUSED, not missing: its artwork pin no longer holds — ${refusal.reason}`;
   }
@@ -1957,9 +1962,9 @@ export async function runFigures(args, deps = {}) {
     // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
     // "we refused to guess", which is a different fact and gets its own report line.
     artworkContest: null,
-    // §C140 ⑦/㊵ — artwork `sources.py` found and REFUSED (a production page, known-superseded,
-    // retired, or an artwork pin that does not hold), with its reason. Like a contest it is
-    // `unresolved` but is not a hole.
+    // §C140 ⑦/㊵/㊾ — artwork `sources.py` found and REFUSED (a production page, known-superseded,
+    // retired, a translated copy kept by ruling, or an artwork pin that does not hold), with its
+    // reason. Like a contest it is `unresolved` but is not a hole.
     artworkRefusal: null,
     pageUnknown: false,
     stillMapped: null,

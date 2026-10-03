@@ -642,6 +642,15 @@ describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () =>
     expect(refusalReason({ refused, reason: 'the ruling text' })).toMatch(pattern);
   });
 
+  // §C140 ㊾ — a copy a ruling KEEPS. Pinned whole: the generic fallback below would print
+  // "REFUSED, not missing: kept — …", which says nothing about what no run may do to the copy.
+  it('describes a kept refusal by what no run will do to the copy (§C140 ㊾)', () => {
+    expect(refusalReason({ refused: 'kept', reason: 'the ruling text' })).toBe(
+      'REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, ' +
+        're-buys or overwrites it — the ruling text'
+    );
+  });
+
   it('keeps the reason for a refusal kind it does not know (§C140 ㊵)', () => {
     expect(refusalReason({ refused: 'some-new-kind', reason: 'why it was refused' })).toBe(
       'REFUSED, not missing: some-new-kind — why it was refused'

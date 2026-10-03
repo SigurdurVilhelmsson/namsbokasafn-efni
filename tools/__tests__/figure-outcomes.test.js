@@ -126,10 +126,10 @@ describe('verdict', () => {
     expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(/unresolved/);
   });
 
-  it('names a retired figure and an artwork pin among the refusal causes (§C140 ㊵)', () => {
+  it('names a retired figure, a kept copy and an artwork pin among the refusal causes (§C140 ㊵, ㊾)', () => {
     const t = { ...emptyTally(), translated: 5, unresolved: 3 };
     expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(
-      /a retired figure, or an artwork pin that does not hold/
+      /a retired figure, a translated copy kept by ruling, or an artwork pin that does not hold/
     );
   });
 
