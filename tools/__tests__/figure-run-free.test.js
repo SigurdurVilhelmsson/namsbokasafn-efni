@@ -44,7 +44,11 @@ import {
 } from '../figure-run.js';
 
 const require = createRequire(import.meta.url);
-const { computeRenderHash, COMPOSER_VERSION } = require('../lib/figure-text-sidecar.cjs');
+const {
+  computeRenderHash,
+  COMPOSER_VERSION,
+  readSidecar: readSidecarFromDisk,
+} = require('../lib/figure-text-sidecar.cjs');
 const { emptyTally, tallyOutcome } = await import('../lib/figure-outcomes.js');
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -148,6 +152,16 @@ const CH04 = { book: 'efnafraedi-2e', chapter: '4', modules: null, figures: null
  * Anything asserting a pristine corpus must now SAY so rather than assume it.
  */
 const PRISTINE = { readSidecar: () => null, sidecarExists: () => false };
+
+/**
+ * The REAL sidecar tree, NAMED — for the one test whose subject is what has been bought.
+ *
+ * 🔴 §C140 ㊳: a driver run that passes neither this nor `PRISTINE` (nor both readers itself) reads
+ * the real tree WITHOUT SAYING SO, and its verdict then moves with how much has been bought AND
+ * with whether those sidecars are current. A COMPOSER_VERSION bump stales every sidecar at once:
+ * measured 2026-10-03, an in-memory '5' turned three tests in this file red on the bump alone.
+ */
+const CORPUS = { readSidecar: readSidecarFromDisk, sidecarExists: fs.existsSync };
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 describe('parseCli', () => {
@@ -948,19 +962,61 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
   // it will get further from 0 with every chapter bought. ▶ A pin on "how much have we bought so
   // far" is a countdown, not a test. What is durable is the RELATION: the driver skips exactly the
   // figures that have a current sidecar on disk, no more and no fewer.
+  //
+  // 🔴 §C140 ㊳ — AND "CURRENT" IS A HASH QUESTION HERE TOO. This test used to count sidecar FILES,
+  // which equals the current ones only while every sidecar is current. A COMPOSER_VERSION bump
+  // stales all of them at once, so the bump commit alone turned it red ("expected +0 to be 19",
+  // measured by an in-memory '5' on 2026-10-03). The oracle is now the driver's own `isStale` over
+  // the reader the run used, in three worlds: the real tree, a bump in miniature (every sidecar
+  // stale) and its mirror (every sidecar current). The last two hold whatever has been bought or
+  // restamped, so neither can go vacuous.
   it('skips exactly the figures that really do have a current sidecar — no more, no fewer', async () => {
+    const bookDir = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
+    const currentBy = (read, result) =>
+      result.figures.filter((f) => !isStale(read(bookDir, f.basename))).length;
+    const stale = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedVersion: `not-${COMPOSER_VERSION}` };
+    };
+    const current = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedHash: s.renderHash, composedVersion: COMPOSER_VERSION };
+    };
+
     // ⚠️ REAL filesystem here ON PURPOSE — this arm is the one measuring what has actually been
     // bought. (A blanket edit stubbed it for a moment and the assertion would then have compared
     // 0 against a real count: a failure if lucky, a vacuous pass if not.)
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
-    const onDisk = result.figures.filter((f) =>
-      fs.existsSync(
-        path.join(REPO_ROOT, 'books', 'efnafraedi-2e', 'figure-text', `${f.basename}.is.json`)
-      )
-    );
-    expect(result.tally['skipped-current'] || 0).toBe(onDisk.length);
+    const real = await runFigures(CH04, { spawn: fakeSpawn(), ...CORPUS });
+    expect(real.tally['skipped-current'] || 0).toBe(currentBy(readSidecarFromDisk, real));
+
+    // A bump in miniature. The sidecar FILES are all still there, which is what makes the zero
+    // mean "none current" rather than "none found".
+    const bumped = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: stale,
+      sidecarExists: fs.existsSync,
+    });
+    const filesOnDisk = bumped.figures.filter((f) =>
+      fs.existsSync(path.join(bookDir, 'figure-text', `${f.basename}.is.json`))
+    ).length;
+    expect(filesOnDisk).toBeGreaterThan(0);
+    expect(bumped.tally['skipped-current'] || 0).toBe(currentBy(stale, bumped));
+    expect(bumped.tally['skipped-current'] || 0).toBe(0);
+
+    // Its mirror, every sidecar restamped current: the positive control, so the relation is not
+    // only ever checked at zero. It is NOT compared with the file count — a hand-edited sidecar
+    // (blocks changed, renderHash not) stays stale under a restamp, and that is not this test's
+    // business.
+    const restamped = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: current,
+      sidecarExists: fs.existsSync,
+    });
+    expect(currentBy(current, restamped)).toBeGreaterThan(0);
+    expect(restamped.tally['skipped-current'] || 0).toBe(currentBy(current, restamped));
+
     // Control: with the filesystem stubbed empty, the same corpus skips nothing — so the
-    // assertion above is measuring the sidecars and not some unrelated skip path.
+    // assertions above are measuring the sidecars and not some unrelated skip path.
     const pristine = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(pristine.tally['skipped-current'] || 0).toBe(0);
   });
