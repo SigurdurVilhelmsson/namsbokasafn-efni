@@ -247,6 +247,42 @@ def dev(x, y):
     return x * S, (H_PT - y) * S
 
 
+def draw_layout(layout, run_for_line, rot):
+    """Draw a `figlayout.decide` Layout: one ITEMS entry - one <text> - per SEGMENT of each laid-out line.
+
+    run_for_line(j) -> the run whose weight and fill output line j is drawn in. The translated path passes
+    the first run of VISUAL source line min(j, last) (§C140 ㉑); the held path (§C140 ㊾ D5(a)) passes the
+    first run of the one visual line it lays out. `rot` is the block's rotation in degrees.
+
+    EXTRACTED VERBATIM from the translated path's draw loop (§C140 ㊾ D5(a)), so a translated label and a
+    held one are drawn by ONE implementation: every item keeps path='layout', which svgout draws with
+    font-kerning:none ([USER] ruling 2026-09-17), so it matches the linear measure it was laid out with."""
+    rad = math.radians(rot)
+    size, lead, top = layout['size'], layout['lead'], layout['top']
+    for j, lc in enumerate(layout['lines']):
+        fr = run_for_line(j)
+        p_ = top - j * lead
+        # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
+        # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
+        # advance - the same advances the layout decision was made with.
+        off = 0.0
+        for k, (t, st) in enumerate(line_segments(lc)):
+            aa = layout['x0'][j] + off
+            pp = p_ if st is None else p_ + size * st.frac
+            x = aa * math.cos(rad) - pp * math.sin(rad)
+            y = aa * math.sin(rad) + pp * math.cos(rad)
+            px, py = dev(x, y)
+            setfont_st(fr, size, st)
+            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
+                              rot=rot, size=size if st is None else size * st.ratio,
+                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0))
+            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
+            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
+            ctx.restore()
+            off += lin_advance(t, fr, size, st)
+
+
 # See fit_circle. A circle this much larger than the block's OWN extent is a straight
 # line, whatever the algebra returns. ⚠️ THE NUMBER IS MEASURED, NOT CHOSEN, AND THE GAP
 # IT SITS IN IS ELEVEN ORDERS OF MAGNITUDE WIDE: the four genuine arcs on
@@ -464,7 +500,7 @@ for BI, b in enumerate(blocks):
         report.append(f"  ARC    R={R:5.1f}pt  {key!r}")
         continue
 
-    rot = b[0]['rot']; rad = math.radians(rot)
+    rot = b[0]['rot']
     # §C140 ②: the label's BODY size - the size carrying the most letters among non-symbol runs -
     # not its first run's. A formula's scripts are drawn at size * ratio, so a block opening on an
     # 11 pt STIX symbol over a 9 pt body (47 corpus send:true blocks; 0 of 176 in the 34) would
@@ -528,29 +564,10 @@ for BI, b in enumerate(blocks):
         return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
     layout = FL.decide(words, width, container, cues)
-    align, size, lead, top = layout['align'], layout['size'], layout['lead'], layout['top']
-    for j, lc in enumerate(layout['lines']):
-        fr = vls[min(j, len(vls) - 1)][0]
-        p_ = top - j * lead
-        # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
-        # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
-        # advance - the same advances the layout decision was made with.
-        off = 0.0
-        for k, (t, st) in enumerate(line_segments(lc)):
-            aa = layout['x0'][j] + off
-            pp = p_ if st is None else p_ + size * st.frac
-            x = aa * math.cos(rad) - pp * math.sin(rad)
-            y = aa * math.sin(rad) + pp * math.cos(rad)
-            px, py = dev(x, y)
-            setfont_st(fr, size, st)
-            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
-                              rot=rot, size=size if st is None else size * st.ratio,
-                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
-                              rgb=cmyk(fr['fill']), dx=0.0))
-            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
-            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
-            ctx.restore()
-            off += lin_advance(t, fr, size, st)
+    align, size = layout['align'], layout['size']
+    # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
+    # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
+    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot)
     ov = layout['overflow']
     if ov is not None:
         # The report CONTRACT, copied field by field (figure-compose.py passes it verbatim into
