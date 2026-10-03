@@ -75,7 +75,9 @@ chapdir() { [[ "$1" == "appendices" ]] && echo appendices || printf 'ch%02d' "$1
 declare -a PLAN
 add_if_exists() {  # $1 book, $2 track, $3 chapter
   local d="books/$1/03-translated/$2/$(chapdir "$3")"
-  [[ -d "$d" ]] && PLAN+=("$1|$2|$3")
+  # At least one *.cnxml, matching cnxml-render's zero-own-modules guard (R1): a dir
+  # holding only `*.cnxml.backup.*` would be refused there, so it is not planned here.
+  [[ -d "$d" ]] && compgen -G "$d/*.cnxml" >/dev/null && PLAN+=("$1|$2|$3")
   return 0   # absence is not a failure (don't trip `set -e` in the build loop)
 }
 for ch in $(seq 0 21) appendices; do add_if_exists efnafraedi-2e mt-preview "$ch"; done

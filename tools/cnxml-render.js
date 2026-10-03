@@ -3916,7 +3916,9 @@ async function main() {
         `Refusing a full-chapter render (track ${args.track}, chapter ${args.chapter}): ` +
           `${path.join(BOOKS_DIR, '03-translated', args.track, chapterDir)} exists but holds ` +
           `no .cnxml module of its own. Rendering it would rebuild the published chapter ` +
-          `without any ${args.track} input. NOTHING was deleted or written.`
+          `without any ${args.track} input. NOTHING was deleted or written. ` +
+          `To render it, inject this track's modules first; for a retired track, remove ` +
+          `the leftover directory instead (it holds only backups).`
       );
     }
 
