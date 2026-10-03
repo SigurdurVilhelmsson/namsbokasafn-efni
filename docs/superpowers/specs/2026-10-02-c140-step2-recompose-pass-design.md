@@ -9,6 +9,14 @@
 recommended route. One alternative route costs under 1 ISK and needs [USER]'s go.
 **Status of this document:** a design with a decision sheet. **No implementation plan is written yet**, because
 five of its choices are [USER]'s (§ Decision sheet, group A). The plan follows the rulings.
+**Approval:** ⚖️ **[USER] ruled 2026-10-02 (night), in chat, the recommended option on all four questions put:**
+(1) **D1:** add the `keptCopies` guard, and delete a kept figure's sidecar in its restore commit. (2) **D2:**
+restore PerTable2's June raster (`d20952748`) under it. (3) **D5:** `looks_verbatim` by **(a)**, compose-time
+substitution, with the values supplied by [USER] (collected in the plan's input step; no agent writes one).
+(4) **D4:** HetCats and Graphene by **route 1**, a value edit before the pass, which authorises the hand edit of
+those two paid MT values. The wording comes from [USER] in the plan's input step. **Taken as stated defaults, which
+[USER] did not contest:** ㉑ built in the pass, restricted to own cues (D3); catalyst and ibuprofen recorded in
+`keptCopies` (D6); every group-(B) operational default.
 **Method:** the audit's sub-item list (2026-09-26) predates PRs #527 and #529–#534, so each item was treated as a
 hypothesis. 8 read-only measuring agents, each checked by a replicating and a skeptical verifier, then a
 completeness critic: 25 agents, 0 errors, and the tree was clean after every one. Every claim below was measured
