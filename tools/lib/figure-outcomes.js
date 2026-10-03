@@ -123,10 +123,13 @@ export function tallyOutcome(tally, outcome) {
  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
  * @param {{undecodedFigures?: number, undecodedLabels?: number, unformattedFigures?: number,
  *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number,
- *   ringGateFailedFigures?: number}} [extra]
+ *   heldFigures?: number, ringGateFailedFigures?: number}} [extra]
  *   counted over the records, not derivable from the tally. `unformattedFigures` through
  *   `containerErrorFigures` are `translated` figures whose compose.json carried a non-empty list
- *   of that name (§C140); `ringGateFailedFigures` are figures whose ring gate could not run (㊼).
+ *   of that name (§C140); `heldFigures` are `translated` figures AND published `copied-textless`
+ *   ones whose compose.json carried a non-empty `held` list — labels drawn from
+ *   `heldBlockValues`, [USER]'s values (§C140 ㊾ D5(a)); `ringGateFailedFigures` are figures
+ *   whose ring gate could not run (㊼).
  * @returns {{ok: boolean, reasons: string[]}}
  */
 export function verdict(tally, enumeratedCount, extra = {}) {
@@ -191,7 +194,8 @@ export function verdict(tally, enumeratedCount, extra = {}) {
 
   // 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER COULD NOT DO AS THE SOURCE DID, OR DID DIFFERENTLY ON
   // PURPOSE. Same channel and same stance as the NOTE above: a property of figures inside
-  // `translated`, counted over the records. ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
+  // `translated` (for `held`, also a published `copied-textless`), counted over the records.
+  // ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
   // as plain text, an overhang at the 7.5 pt floor (R4/R5), a localised number in the house style
   // (R6), a failed detection laid out as open — so the figure ships, and the report names what to
   // look at. Failing on any of them would be the always-red exit code R9 rejects.
@@ -213,6 +217,16 @@ export function verdict(tally, enumeratedCount, extra = {}) {
     [
       extra.containerErrorFigures,
       (n) => `${n} figure(s) had container detection fail — those labels were laid out as open`,
+    ],
+    // §C140 ㊾ D5(a) — NOT a fidelity gap: a ruling carried out, named so the operator can find
+    // each label drawn from [USER]'s wording rather than the source's English. Unlike the four
+    // above, the driver counts it over published `copied-textless` figures too (HNO2_img and
+    // OxStNonmts are textless). A value compose REFUSED never gets here: figure-compose.py fails
+    // the figure, which reaches the driver as `failed-compose` and is fatal above.
+    [
+      extra.heldFigures,
+      (n) =>
+        `${n} figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each`,
     ],
   ];
   for (const [count, message] of composeNotes) {
