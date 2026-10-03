@@ -73,8 +73,9 @@ old `(path, edition)` signature for existing callers; `resolve_detail()` is the 
 reports a refusal, so a caller can tell "no artwork anywhere" apart from "the only artwork here is a
 production page". Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).
 
-**§C140 ㊵ — four rules decide what the resolver may return, in this order; the fourth is the normal
-lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`):
+**§C140 ㊵, ㊾ — five rules decide what the resolver may return, in this order; the fifth is the normal
+lookup** (designs: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-design.md`; for
+`keptCopies`, D1 of `docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-design.md`):
 
 1. **`retiredFigures`** — a [USER] ruling retired the figure's *translated copy*: refused as
    `retired`, and never mapped again. Carry a retirement out with
@@ -85,17 +86,22 @@ lookup** (design: `docs/superpowers/specs/2026-10-01-c140-c40-retire-and-pins-de
    exactly), and it never deletes a file that a row it keeps, a legacy `figureId` row included, still
    names. Neither mode deletes a copy git does not track as a plain, unmodified file: `--prune`
    keeps an assume-unchanged or skip-worktree copy, and `--retire` refuses to run.
-2. **`supersededArtwork`** — the only vector in the delivery is known to be superseded by the published
-   figure: refused as `superseded`. A figure may be in both 1 and 2; retired wins. Like the other two
-   tables, a key acts by its presence: an entry whose reason is empty or null still refuses.
-3. **`artworkPins`** — the ONE file a figure's artwork comes from, as a tree key plus a path inside it.
+2. **`keptCopies`** — a [USER] ruling KEEPS the figure's *translated copy* as it is, the inverse of 1:
+   refused as `kept`, so no run recomposes it, buys it again or publishes over it, on plain, `--stale`
+   and `--force` runs alike. Its image-mapping row and its `_IS` file stay, and the validator requires
+   both. The refusal is the re-buy lock, so a kept figure needs no sidecar.
+3. **`supersededArtwork`** — the only vector in the delivery is known to be superseded by the published
+   figure: refused as `superseded`. A figure may also be in 1 or 2, and then that rule wins (so the run
+   prints `REFUSED — retired` or `REFUSED — kept`). Like the other tables, a key acts by its presence:
+   an entry whose reason is empty or null still refuses.
+4. **`artworkPins`** — the ONE file a figure's artwork comes from, as a tree key plus a path inside it.
    An `alias` fills a hole in the delivery and is refused as `pin-conflict` once any file matches the
    basename; an `override` deliberately replaces the normal lookup. A pin names an exact file, never a
    tree or a stem: the base tree holds two different ibuprofen drawings, and a tree-only rule returns
    the wrong one. A missing pinned file is `pin-missing`, never a fall-back. A pin is judged by where
    its path resolves: one whose symlinks lead out of its tree, or into `Translated_IS`, is
    `pin-invalid`.
-4. **The normal lookup** — for each edition in `editionPrecedence` order: its exact names in
+5. **The normal lookup** — for each edition in `editionPrecedence` order: its exact names in
    `SOURCE_EXTS` order, then a case-and-punctuation fold within that edition (`_normkey`, which never
    strips `_img`). An ambiguous fold (two differently named files in one edition folding onto the
    basename) yields no candidate from that edition: the lookup moves on to the next edition, and if

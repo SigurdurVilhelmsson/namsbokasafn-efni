@@ -362,12 +362,13 @@ with tempfile.TemporaryDirectory() as td:
            'supersededArtwork': {}, 'retiredFigures': R}
     check('㊵ policy() takes its tables from the config',
           S.policy({'supersededArtwork': {'a': 'x'}, 'retiredFigures': {'b': 'y'},
-                    'artworkPins': {'c': {}}}),
-          {'superseded': {'a': 'x'}, 'retired': {'b': 'y'}, 'pins': {'c': {}}})
-    # R3 — A TABLE THAT IS NOT AN OBJECT FAILS CLOSED, AND THE SAME WAY FOR ALL THREE. A string
+                    'artworkPins': {'c': {}}, 'keptCopies': {'d': 'z'}}),
+          {'superseded': {'a': 'x'}, 'retired': {'b': 'y'}, 'pins': {'c': {}},
+           'kept': {'d': 'z'}})
+    # R3 — A TABLE THAT IS NOT AN OBJECT FAILS CLOSED, AND THE SAME WAY FOR ALL FOUR. A string
     # artworkPins used to be iterated as characters: no pin applied, every pinned figure fell through
     # to the normal lookup, and `--json` exited 0 — while a list or a number crashed elsewhere.
-    for table in ('supersededArtwork', 'retiredFigures', 'artworkPins'):
+    for table in ('supersededArtwork', 'retiredFigures', 'artworkPins', 'keptCopies'):
         for label, bad in (('a string', 'TODO'), ('a list', ['CNX_Ret']), ('a number', 5)):
             try:
                 S.policy({table: bad})
@@ -377,7 +378,8 @@ with tempfile.TemporaryDirectory() as td:
             check(f'㊵ policy() refuses {table} given as {label}, naming the table',
                   raised.startswith(f'{table} in the figure config must be an object'), True)
     check('㊵ CONTROL: an absent or null table is no table',
-          S.policy({'retiredFigures': None}), {'superseded': None, 'retired': None, 'pins': None})
+          S.policy({'retiredFigures': None}),
+          {'superseded': None, 'retired': None, 'pins': None, 'kept': None})
     out = []
     rc = S.run_cli(['--json', 'testbook', 'CNX_Ret', 'CNX_Other'], cfg=cfg, out=out.append)
     rep = json.loads(out[0])
@@ -399,6 +401,80 @@ with tempfile.TemporaryDirectory() as td:
         raised = str(exc)
     check('㊵ run_cli with too few arguments exits with the usage text',
           raised.startswith('Resolve a figure basename'), True)
+
+
+# ---------------------------------------------------------------------------
+# §C140 ㊾ — A KEPT COPY IS REFUSED BEFORE ANY LOOKUP, RIGHT AFTER `retired` (spec 2026-10-02 D1).
+# Kept is about the TRANSLATED COPY too, and is the inverse of retired: a [USER] ruling keeps the
+# copy readers are served, so no run may recompose or buy over it. It is checked before
+# `superseded` (a figure may be in both: the source drawing is superseded, the kept copy is not
+# drawn from it), so the run prints `REFUSED — kept` and the chapter autorun's halt on
+# `REFUSED — superseded` does not fire; and before any pin, so a pin cannot bring it back.
+# ---------------------------------------------------------------------------
+with tempfile.TemporaryDirectory() as td:
+    td = Path(td)
+    old, new = td / 'first-edition', td / 'updates-2e'
+    old.mkdir(); new.mkdir()
+    trees = {'first-edition': str(old), 'updates-2e': str(new)}
+    prec = ['updates-2e', 'first-edition']
+    make_eps(old / 'CNX_Kept.eps', 300, 200)
+    make_eps(old / 'CNX_Other.eps', 300, 200)
+    make_eps(old / 'Drawing_k.eps', 320, 210)       # a pin target that is no figure's basename
+    K = {'CNX_Kept': 'kept by a test ruling: the June copy readers are served stays as it is'}
+    R = {'CNX_Kept': 'retired by a test ruling: readers get the English figure instead'}
+    SUP = {'CNX_Kept': 'its only vector is known to be superseded (a test reason)'}
+    PINS = {'CNX_Kept': {'kind': 'override', 'edition': 'first-edition', 'file': 'Drawing_k.eps',
+                         'reason': 'a pin reason that is long enough to be a real reason (test)'}}
+
+    d = resolve_detail('CNX_Kept', trees, prec, kept=K)
+    check('㊾ a kept figure is refused before any lookup, with its reason',
+          (d['path'], d['refused'], d['edition'], d['candidates'], d['reason']),
+          (None, 'kept', None, [], K['CNX_Kept']))
+    check('㊾ CONTROL: without the table the same figure resolves',
+          Path(resolve_detail('CNX_Kept', trees, prec)['path']).name, 'CNX_Kept.eps')
+    check('㊾ kept is checked BEFORE superseded: a figure may be in both, and prints kept',
+          resolve_detail('CNX_Kept', trees, prec, superseded=SUP, kept=K)['refused'], 'kept')
+    check('㊾ kept is checked BEFORE a pin: a pin can never recompose a kept copy',
+          resolve_detail('CNX_Kept', trees, prec, kept=K, pins=PINS)['refused'], 'kept')
+    check('㊾ CONTROL: that pin alone does resolve the figure, through the pin',
+          resolve_detail('CNX_Kept', trees, prec, pins=PINS).get('via'), 'override')
+    check('㊾ retired is checked before kept (an overlap the config validator refuses)',
+          resolve_detail('CNX_Kept', trees, prec, retired=R, kept=K)['refused'], 'retired')
+    check('㊾ kept keys fold case and punctuation, like the lookup',
+          resolve_detail('cnx-kept', trees, prec, kept=K)['refused'], 'kept')
+    d = resolve_detail('CNX_Kept', trees, prec, kept={'CNX_Kept': ''})
+    check('㊾ an entry acts by its PRESENCE: an empty reason still refuses',
+          (d['refused'], d['reason']), ('kept', '(no reason recorded)'))
+    check('㊾ CONTROL: another figure is untouched by the table',
+          Path(resolve_detail('CNX_Other', trees, prec, kept=K)['path']).name, 'CNX_Other.eps')
+    check('㊾ resolve() returns (None, None) for a kept figure',
+          resolve('CNX_Kept', trees, prec, kept=K), (None, None))
+    check('㊾ resolve_report carries the kept refusal',
+          resolve_report(['CNX_Kept'], trees, prec, kept=K)['CNX_Kept']['refused'], 'kept')
+    lines, missing, refused = human_report(['CNX_Kept', 'CNX_Other'], trees, prec, kept=K)
+    check('㊾ the human report prints REFUSED — kept with its reason, and counts it',
+          (any('REFUSED — kept: kept by a test ruling' in l for l in lines), missing, refused),
+          (True, 0, 1))
+
+    # Both command-line modes, through the same seam as the ㊵ block above.
+    local = td / 'sources.local.json'
+    local.write_text(json.dumps({'testbook': trees}))
+    cfg = {'editionPrecedence': prec, 'sourceTreesFile': str(local), 'keptCopies': K}
+    out = []
+    rc = S.run_cli(['--json', 'testbook', 'CNX_Kept', 'CNX_Other'], cfg=cfg, out=out.append)
+    rep = json.loads(out[0])
+    check('㊾ run_cli --json applies keptCopies, leaves the control alone, and exits 0',
+          (rc, rep['CNX_Kept']['refused'], rep['CNX_Kept']['reason'],
+           Path(rep['CNX_Other']['path']).name),
+          (0, 'kept', K['CNX_Kept'], 'CNX_Other.eps'))
+    out = []
+    rc = S.run_cli(['testbook', 'CNX_Kept', 'CNX_Other'], cfg=cfg, out=out.append)
+    check('㊾ run_cli human mode applies it too, and exits 1 on the refusal',
+          (rc, 'REFUSED — kept' in out[0], 'CNX_Other.eps' in out[0]), (1, True, True))
+    out = []
+    S.run_cli(['--json', 'testbook', 'CNX_Kept'], cfg=dict(cfg, keptCopies={}), out=out.append)
+    check('㊾ CONTROL: an EMPTY keptCopies table (what PR-A ships) refuses nothing',
+          Path(json.loads(out[0])['CNX_Kept']['path']).name, 'CNX_Kept.eps')
 
 # §C140 ㊵ — THE SAME LITERAL TABLE AS tools/__tests__/figure-text-config.test.js. Two implementations
 # of one fold (sources._normkey and the JS normkey) are kept in agreement by pinning both to it.
