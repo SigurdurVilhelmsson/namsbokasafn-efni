@@ -4,11 +4,12 @@
     FIGTEXT_PYLIBS=./pylibs python3 -B -u test_heldplan.py
 
 Plain checks and a module-level `fails` list, like its siblings - there is no pytest in this tree.
-HP0-HP15 and HP17 are PURE: real runs from the committed evidence, a fake container (a thunk that
-counts its calls), a fake width (0.5 x size x ratio per character) and a fake has_glyph. HP16 adds the only
-non-pure inputs: a test-local cairo width (hint metrics off - compose.lin_advance's measure, copied)
-and the real figis cmap, against each block's REAL committed container. No file IO but one read of
-evidence/2026-10-03-c140-held/held-geometry.json; nothing is spawned, nothing is drawn.
+HP0-HP15, HP17 and HP18 are PURE: real runs from the committed evidence, a fake container (a thunk
+that counts its calls), a fake width (0.5 x size x ratio per character; HP18's own depends on the run's
+weight) and a fake has_glyph. HP16 adds the only non-pure inputs: a test-local cairo width (hint
+metrics off - compose.lin_advance's measure, copied) and the real figis cmap, against each block's REAL
+committed container. No file IO but one read of evidence/2026-10-03-c140-held/held-geometry.json;
+nothing is spawned, nothing is drawn.
 
 Design: docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-a, D-b, D-c,
 D-i (HP1-HP16). Values are ASCII sentinels (QZX, QZQ, QZ) and formula characters; the one exception is
@@ -59,6 +60,11 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        is called once on a planned block and never on an arc, line-count, malformed or no-change one.
 * HP17 sz0 is the line's BODY size (figscripts.body_size), not its first run's: an 11 pt STIX symbol
        opening a 9 pt line is planned at 9.0.
+* HP18 (a skeptic's finding, 2026-10-03) the AXES and the MEASURING RUN of a changed line, against a
+       width that depends on the weight of the run it is handed (as compose's seg_width does): a rot-90
+       line is centred on its own ALONG extent at its own PROJ (kills cues read from x / y), and a bold
+       changed line under a regular first line is measured in its OWN run's weight (kills measuring with
+       block[0]). Every value-sheet line is rot 0 and shares its weight with block[0], so HP16 cannot.
 * HP16 REAL PLACEMENTS on the 13 value-sheet lines: step, size, top, disp and vdisp literally as the
        D-c table gives them, and the ANCHOR each row's drawn extent implies - the table's midpoint for a
        centred row, its x0 for amide1 b1 (left), its right edge 87.26 for amide1 b0 (right: a block
@@ -713,6 +719,33 @@ def hp16():
             check(f'{tag}: {kind} anchor {anchor:.3f}', near(got, anchor), f'{got:.4f} ({x0:.2f}..{x0 + wd:.2f})')
 
 
+# ── HP18 (skeptic, 2026-10-03) ─────────────────────────────────────────────────────────────────
+# Every value-sheet line is rot 0 and every changed line shares its weight with the block's first run, so
+# neither the ALONG/PROJ axes nor the per-line measuring run was pinned: a planner reading x/y, or measuring
+# with block[0], passed HP0-HP17. Both are planted here, against a width that depends on the weight of the
+# run it is handed, as compose's seg_width does.
+def hp18():
+    def wdep(chars, size, r):
+        k = 0.62 if bold_of(PF)(r) else 0.5
+        return sum(k * size * (st.ratio if st is not None else 1.0) for _, st in chars)
+
+    r90 = [dict(run('QQ', 9.0, 100.0, 20.0), rot=90.0)]
+    a, e = FT.along(r90[0]), FT.along(r90[0]) + r90[0]['adv']
+    lay = plan(r90, 'QZQZ', PF, width=wdep).lines[0][1]
+    want = (a + e) / 2 - wdep([(c, None) for c in 'QZQZ'], 9.0, r90[0]) / 2
+    check('HP18a a rot-90 changed line is centred on its own ALONG extent, at its own PROJ',
+          abs(lay['x0'][0] - want) < 1e-6 and abs(lay['top'] - FT.proj(r90[0])) < 1e-6,
+          f"x0 {lay['x0']} want {want}; top {lay['top']} proj {FT.proj(r90[0])}")
+
+    mixed = [run('Ab', 9.0, 10.0, 50.0), run('Cd', 9.0, 10.0, 39.0, font='T/B')]
+    p = plan(mixed, 'Ab\nQZQZQZ', PF, width=wdep)
+    want = (10.0 + 19.0) / 2 - wdep([(c, None) for c in 'QZQZQZ'], 9.0, mixed[1]) / 2
+    check("HP18b a changed BOLD line under a regular first line is measured in ITS OWN run's weight",
+          [x[0] for x in p.lines] == ['runs', 'layout'] and abs(p.lines[1][1]['x0'][0] - want) < 1e-6,
+          f"{[x[0] for x in p.lines]} x0 {p.lines[-1][1].get('x0') if p.lines[-1][0] == 'layout' else None} want {want}")
+
+
+attempt('HP18', hp18)
 attempt('HP16-pins', hp16_pins)
 attempt('HP16', hp16)
 

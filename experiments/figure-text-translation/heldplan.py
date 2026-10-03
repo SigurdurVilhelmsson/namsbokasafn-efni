@@ -4,7 +4,7 @@ source line, all or nothing, before anything is drawn.
 PURE: it imports figtext, figscripts, figlayout and heldvalues (and, through figtext, the stdlib-only
 numloc) - no cairo, no pdfplumber, no Pillow, no _deps, no file IO. compose.py measures (`width`),
 fetches the container (`container`), checks glyph coverage (`has_glyph`) and draws the plan, so every
-refusal below is unit-testable (test_heldplan.py, HP0-HP17); compose.py itself draws at import time and
+refusal below is unit-testable (test_heldplan.py, HP0-HP18); compose.py itself draws at import time and
 cannot be imported (test_blockkey_consumers says so).
 
 Design: docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-a (encoding),

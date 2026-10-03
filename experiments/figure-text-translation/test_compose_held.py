@@ -30,6 +30,11 @@ test_heldplan.py's HP16.
           is a STIXGeneral-Bold run (CH12).
 * LOC     a planted 2-line label `2.54 QZ|QZM` (CH13): its first line holds a decimal point that a kept
           line draws as `2,54` (numloc), and its second line is RED, unlike the block's first run.
+* RM      (CH14) two planted blocks: a one-line label `QZ rot` drawn at rot 90, and a 2-line label
+          `QZ ab|QZ cd` whose first line is regular and whose second is BOLD (MattType's own bold face
+          entry), both lines centred on one x. The changed lines draw `QZtrill`, whose Liberation width
+          differs by weight (24.0 regular, 26.5 bold at 9 pt), where every other sentinel here is the
+          same width in both - which is why no other arm could see the measuring run.
 Values are ASCII sentinels (QZX, QZQ, QZT, QZC/QZD), except BUF's, which is the value sheet's B3 quoted
 verbatim as evidence (docs/handoffs/2026-10-03-step2-value-sheet.md), as test_heldplan.py does.
 Every arm is composed WITH the flag and compared against the same figure composed with NO flag (today).
@@ -41,8 +46,9 @@ WHAT IS PINNED
        `missing`. Kills first-occurrence-only, a set where a multiset is needed, held keys in `missing`.
 * CH2  OxStNonmts `4+\\nQZQ\\n4–`: lines 0 and 2 are the no-flag run's <text> elements, byte for byte
        and in order; one laid-out `QZQ` (bold 7) on `To`'s baseline, centred on `To`; no `To`; the STIX
-       runs of the unchanged lines are counted as today. Kills the whole-block route and re-laying
-       unchanged lines.
+       runs of the unchanged lines are counted as today; `localized` is the no-flag run's ([]). Kills the
+       whole-block route, re-laying unchanged lines, and (CH2g) a laid-out line that does not advance the
+       source offset, which compares line 2's drawn runs against `To` and names the block `localized`.
 * CH3  amide1 `C\\nQZX R`: `C` is the no-flag element; the changed line ENDS at its own source end
        87.26 (right-aligned per line). Kills a block anchor (104.52).
 * CH4  buffer B3: ONE laid-out line on 150.365; `3`/`2` at 9 x 0.7778 shifted 9 x -0.3333; the charge
@@ -72,8 +78,14 @@ WHAT IS PINNED
        named in `localized`, exactly as the no-flag run draws and names it; the value line `2,54 QZ` (the
        localised source form) counts as unchanged; the changed line is drawn in the fill of its OWN visual
        line's first run (red), never the block's first run's (black).
+* CH14 (a skeptic's finding, 2026-10-03) the held route's ROTATION and MEASURING RUN, end to end: the
+       rot-90 changed line is drawn rotated (`rotate(-90 ...)`), its pen at the source run's own x and
+       centred on the run's own extent along the text; the bold changed line under a regular first line
+       is drawn bold and centred on its own source line, measured in ITS weight. Kills draw_held drawing
+       at rot 0 and its width measured with the block's first run (draw_held's lambdas, which HP18 cannot
+       reach).
 RED ON THE COMPOSER WITHOUT `--held-values` (it ignores the flag): CH1-CH5, CH7, CH8, CH9 (stdout),
-CH10, CH11, CH12, CH13. CH6 is a CONTROL and passes on both sides.
+CH10, CH11, CH12, CH13, CH14. CH6 is a CONTROL and passes on both sides.
 """
 import ast
 import collections
@@ -355,10 +367,31 @@ LOC, l_blocks, l_keys, l_cont = plant('loc', lruns, {})
 K_LOC = '2.54 QZ|QZM'
 precondition('LOC groups into one block of 2 visual lines', l_keys == [K_LOC] and len(FT.visual_lines(l_blocks[0])) == 2,
              repr(l_keys))
+# RM (CH14): a rot-90 one-line label, then a 2-line label whose second line is bold, both lines centred on
+# x 150. Every value-sheet line is rot 0 and shares its weight with its block's first run.
+RM_SENT = 'QZtrill'
+precondition('RM: the changed-line sentinel is wider in bold than in regular, by far more than the 0.01 tolerance',
+             text_adv(RM_SENT, 9.0, True) - text_adv(RM_SENT, 9.0) > 2.0,
+             f'{text_adv(RM_SENT, 9.0):.3f} regular / {text_adv(RM_SENT, 9.0, True):.3f} bold')
+RX, RY, RADV = 250.0, 60.0, fixture_adv('QZ rot', 9.0)
+rot_run = dict(run('QZ rot', 9.0, RX, RY, RADV), rot=90.0, tm=[0.0, 1.0, -1.0, 0.0, RX, RY])
+MC, M0ADV, M1ADV = 150.0, fixture_adv('QZ ab', 9.0), text_adv('QZ cd', 9.0, True)
+mix0 = run('QZ ab', 9.0, MC - M0ADV / 2, 150.0, M0ADV)
+mix1 = run('QZ cd', 9.0, MC - M1ADV / 2, 139.0, M1ADV, font='PAGE/TT0')
+RMD, rm_blocks, rm_keys, rm_cont = plant('rotmix', [rot_run, mix0, mix1], mfonts)
+K_ROT, K_MIX = 'QZ rot', 'QZ ab|QZ cd'
+precondition('RM groups into the rot-90 one-line block, then ONE block of 2 visual lines',
+             rm_keys == [K_ROT, K_MIX] and len(FT.visual_lines(rm_blocks[1])) == 2, repr(rm_keys))
+precondition("RM: mix's second line is in MattType's bold face, its first is not",
+             'bold' in mfonts['PAGE/TT0']['base'].lower() and mix0['font'] not in mfonts, repr(mfonts['PAGE/TT0']['base']))
+precondition('RM: both blocks are open and centre-aligned here (figcontainers)',
+             [(c['cls'], c['align']) for c in rm_cont] == [('open', 'center')] * 2,
+             repr([(c['cls'], c['why'], c['align'], c.get('align_why')) for c in rm_cont]))
 
 # ── today: every plant composed with NO flag ──────────────────────────────────────────────
 NOFLAG = {}
-for nm, d in (('matt', MATT), ('ox', OXD), ('amide', AMD), ('buffer', BFD), ('stix', STX), ('loc', LOC)):
+for nm, d in (('matt', MATT), ('ox', OXD), ('amide', AMD), ('buffer', BFD), ('stix', STX), ('loc', LOC),
+               ('rotmix', RMD)):
     NOFLAG[nm] = compose(d)
     ok_compose(f'{nm} with no flag', NOFLAG[nm])
 precondition("no flag: MATT keeps every block in English, as today",
@@ -426,6 +459,11 @@ def ch2():
           f"{rget(res, 'stix')} vs {NOFLAG['ox']['report']['stix']}")
     check('CH2f held = [{key, block 0, changed [1]}]', [(h.get('key'), h.get('block'), h.get('changed'))
           for h in rget(res, 'held') or []] == [(K_OX, 0, [1])], repr(rget(res, 'held')))
+    precondition("CH2: today's run names nothing in localized (no run of OX changes under numloc)",
+                 NOFLAG['ox']['report']['localized'] == [], repr(NOFLAG['ox']['report']['localized']))
+    check("CH2g localized is today's - line 2's drawn runs are compared with line 2's OWN source runs, not "
+          "with `To` (a laid-out line advances the offset)", rget(res, 'localized') == NOFLAG['ox']['report']['localized'],
+          f"localized={rget(res, 'localized')} today={NOFLAG['ox']['report']['localized']}")
 
 
 def ch3():
@@ -645,8 +683,36 @@ def ch13():
           repr([e['raw'] for e in lay]))
 
 
+def ch14():
+    res = compose(RMD, held={K_ROT: RM_SENT, K_MIX: 'QZ ab\n' + RM_SENT})
+    ok_compose('CH14', res)
+    check('CH14 pre: held names the rot-90 block (changed [0]) and the mixed block (changed [1])',
+          [(h.get('key'), h.get('block'), h.get('changed')) for h in rget(res, 'held') or []]
+          == [(K_ROT, 0, [0]), (K_MIX, 1, [1])] and rget(res, 'heldErrors') == [],
+          f"held={rget(res, 'held')} heldErrors={rget(res, 'heldErrors')}")
+    lay = [e for e in elements(res['svg']) if e['layout'] and e['text'] == RM_SENT]
+    precondition('CH14: two laid-out lines draw the sentinel', len(lay) == 2, repr([(e['text'], e['raw']) for e in lay]))
+    rot, mix = lay
+    # rot 90: along = y and proj = -x, so the pen sits at x = the run's own x, and along the text (up the
+    # page, y) the line is centred on the run's own extent RY..RY+RADV.
+    centre = rot['y'] + text_adv(RM_SENT, 9.0) / 2
+    check('CH14a the rot-90 line is drawn ROTATED, its pen at the run\'s own x and centred on its own extent '
+          'along the text (0.01)', 'transform="rotate(-90.0000 ' in rot['raw'] and abs(rot['x'] - RX) <= 0.01
+          and abs(centre - (RY + RADV / 2)) <= 0.01,
+          f"x={rot['x']:.3f} (run {RX}) centre={centre:.3f} (run {RY + RADV / 2:.3f}) {rot['raw'][:160]}")
+    centre = mix['x'] + text_adv(RM_SENT, 9.0, True) / 2
+    check("CH14b the bold changed line is drawn bold, on its own baseline 139, and centred on its own source "
+          "line - measured in ITS weight, not its block's first run's (0.01)",
+          mix['bold'] and abs(mix['y'] - 139.0) <= 0.01 and abs(centre - MC) <= 0.01,
+          f"bold={mix['bold']} y={mix['y']:.3f} centre={centre:.3f} (source {MC}; a regular measure would put it "
+          f"at {MC + (text_adv(RM_SENT, 9.0, True) - text_adv(RM_SENT, 9.0)) / 2:.3f})")
+    check("CH14c the mixed block's unchanged line is the no-flag element, byte for byte",
+          [e['raw'] for e in elements(res['svg']) if e['text'] == 'QZ ab']
+          == [e['raw'] for e in elements(NOFLAG['rotmix']['svg']) if e['text'] == 'QZ ab'] != [])
+
+
 for label, fn in (('CH1', ch1), ('CH2', ch2), ('CH3', ch3), ('CH4', ch4), ('CH5', ch5), ('CH6', ch6),
                   ('CH7', ch7), ('CH8', ch8), ('CH9', ch9), ('CH10', ch10), ('CH11', ch11), ('CH12', ch12),
-                  ('CH13', ch13)):
+                  ('CH13', ch13), ('CH14', ch14)):
     attempt(label, fn)
 finish()
