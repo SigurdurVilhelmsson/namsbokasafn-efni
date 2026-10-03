@@ -35,6 +35,7 @@ import {
 import { snapshotModuleIds } from '../lib/publication-reconcile.js';
 import { readSlugMap, recordRename } from '../lib/slug-map.js';
 import fs from 'node:fs';
+import { DOMParser } from '@xmldom/xmldom';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CHEM = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
@@ -75,6 +76,32 @@ const ch4WithSvarDropReplayed = () => {
   });
   if (removed !== 6) throw new Error(`§C160 replay removed ${removed} equations, expected 6`);
   return ctxFor(4, { chapterInputs: { ...real, html } });
+};
+
+/**
+ * The REPLAYED K2 margin — the same §C160 move, run the other way. K2's positive-margin
+ * test read chemistry faithful ch3 (math +23), the last chemistry cell with a surplus; the
+ * faithful track is retired, so the surplus is replayed IN MEMORY on today's real pages:
+ * chemistry mt-preview ch3 with its most equation-heavy page (3.2, m68702) appended a
+ * second time. The page's equations and images are counted here with a DOM parse, a
+ * different predicate from `marginNote`'s regex, so the expected margin does not come from
+ * the code under test. A replay that found no page, or a page with no equations, throws
+ * rather than passing for a control.
+ */
+const MARGIN_PAGE_MODULE = 'm68702';
+const ch3WithPageDuplicated = () => {
+  const real = inputsFor(3);
+  const page = real.html.find((h) => h.includes(`data-module-id="${MARGIN_PAGE_MODULE}"`));
+  if (!page) throw new Error(`margin replay found no page for ${MARGIN_PAGE_MODULE} in ch3`);
+  const dom = new DOMParser({ onError: () => {} }).parseFromString(page, 'text/html');
+  const math = dom.getElementsByTagName('mjx-container').length;
+  const image = dom.getElementsByTagName('img').length;
+  if (math === 0) throw new Error(`margin replay page ${MARGIN_PAGE_MODULE} has no equations`);
+  return {
+    math,
+    image,
+    ctx: ctxFor(3, { chapterInputs: { ...real, html: [...real.html, page] } }),
+  };
 };
 
 const ctxFor = (chapter, extra = {}) => ({
@@ -857,6 +884,22 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     const noMargin = await runCheck(K2, ctxFor(10));
     expect(noMargin.verdict).toBe(VERDICT.PASS);
     expect(noMargin.message).not.toContain('PASS margin');
+  });
+
+  it('K2 discloses a REPLAYED margin — mt-preview ch3 with one page appended twice', async () => {
+    // The premise, asserted rather than assumed: real ch3 is exactly balanced (a PASS with
+    // no margin means html >= cnxml AND not html > cnxml, in both units), so the margin
+    // the replay carries is the duplicated page's own count and nothing else. When a
+    // re-render moves that balance, THIS assertion names the expired premise.
+    const base = await runCheck(K2, ctxFor(3));
+    expect(base.verdict).toBe(VERDICT.PASS);
+    expect(base.message).not.toContain('PASS margin');
+
+    const { math, image, ctx } = ch3WithPageDuplicated();
+    const r = await runCheck(K2, ctx);
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.message).toContain(`PASS margin math +${math}`);
+    expect(r.message).toContain(`image +${image}`);
   });
 
   it('the second pass — `examined` counts files with CONTENT, not array entries', async () => {
