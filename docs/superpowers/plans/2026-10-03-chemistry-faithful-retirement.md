@@ -38,7 +38,7 @@ rows from the final titles), which this plan does not change.
 
 ---
 
-## 2. Decisions for [USER] (recommendation first)
+## 2. Decisions for [USER] (recommendation first) — ⚖️ ALL THREE RULED 2026-10-03: [USER] "I agree with your three recommendations" (guard: yes; organic's removal a separate PR; its own small PR, merged before PR-B's branch is cut)
 
 1. **Guard the retirement in code? — recommended YES.** `git rm -r` leaves a directory in place when it still holds a
    gitignored file. Then `findChapterModules` returns `[]` instead of throwing, `cnxml-render` has no zero-module
