@@ -1,0 +1,34 @@
+CNX_Chem_00_HH_chemform1_img: laid-out 0  positive-control ok  svg identical
+CNX_Chem_00_HH_chemform3_img: laid-out 0  positive-control ok  svg identical
+CNX_Chem_00_HH_chemform4_img: laid-out 0  positive-control ok  svg identical
+CNX_Chem_00_HH_chemform9_img: laid-out 0  positive-control ok  svg identical
+CNX_Chem_11_05_detrg: laid-out 1  positive-control ok  svg identical
+CNX_Chem_13_00_Blood: laid-out 0  positive-control ok  svg identical
+CHANGED CNX_Chem_14_01_conjugate_img 'NH4|+ (conjugate acid)': n_src 2->1  lines ['NH4 + (samoka', 'sýra)'] -> ['NH4 + (samoka sýra)']  [open i 9.0] -> [open i 9.0]  top 129.823->122.324
+CNX_Chem_14_01_conjugate_img: laid-out 12  positive-control ok  svg differs
+CNX_Chem_14_03_ICETable3_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_14_03_ICETable5_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_14_03_corresp: laid-out 54  positive-control ok  svg identical
+CNX_Chem_14_03_strengths: laid-out 6  positive-control ok  svg identical
+CNX_Chem_14_05_ICETable1_img: laid-out 3  positive-control ok  svg identical
+CHANGED CNX_Chem_18_07_Nitrogen 'ammonium (NH4|+|)': n_src 3->1  lines ['ammóníum', '(NH4', '+ )'] -> ['ammóníum (NH4 + )']  [open i 9.0] -> [open i 9.0]  top 81.068->67.820
+CHANGED CNX_Chem_18_07_Nitrogen 'nitrites (NO2|–': n_src 2->1  lines ['nítrít', '(NO2 –'] -> ['nítrít (NO2 –']  [open i 9.0] -> [open i 9.0]  top 75.569->67.820
+CHANGED CNX_Chem_18_07_Nitrogen 'nitrates (NO3|–': n_src 2->1  lines ['nítrat', '(NO3 –'] -> ['nítrat (NO3 –']  [open i 9.0] -> [open i 9.0]  top 143.870->136.121
+CNX_Chem_18_07_Nitrogen: laid-out 11  positive-control ok  svg differs
+CNX_Chem_10_06_CbcCltPckd: laid-out 4  positive-control ok  svg identical
+CNX_Chem_11_05_soap: laid-out 3  positive-control ok  svg identical
+CNX_Chem_13_04_ICETable2_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_14_01_NH3_img: laid-out 4  positive-control ok  svg identical
+CNX_Chem_14_03_FishLemon: laid-out 4  positive-control ok  svg identical
+CNX_Chem_14_06_ICETable16_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_14_06_buffer: laid-out 1  positive-control ok  svg identical
+CNX_Chem_15_01_ICETable2_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_15_02_ICETable1_img: laid-out 3  positive-control ok  svg identical
+CNX_Chem_17_02_Galvanicel: laid-out 10  positive-control ok  svg identical
+CNX_Chem_19_02_BalEnt: laid-out 0  positive-control ok  svg identical
+CNX_Chem_04_01_rxn2: laid-out 8  positive-control ok  svg identical
+CNX_Chem_03_01_glycinemass_img: laid-out 5  positive-control ok  svg identical
+CNX_Chem_04_03_flowchart: laid-out 19  positive-control ok  svg identical
+DETERMINISM CNX_Chem_14_03_corresp: before2 svg byte-identical to before
+BASELINE before reproduces the committed _IS.svg <text> for 27 of 27 figures
+VERDICT PREDICTION HELD: changed 4 (predicted 4), unpredicted 0, determinism True, predicted-to-one-line True
