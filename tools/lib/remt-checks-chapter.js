@@ -133,9 +133,11 @@
  * ⚠️ DENOMINATORS, STATED ONCE SO EVERY RATE ABOVE IS READABLE. A "cell" is
  * book x track x chapter-dir, chapter-dirs read with the tool's own `discoverChapters`
  * predicate (`/^ch\d+$/` or `appendices`): chemistry 23, organic 33, x 2 tracks = **112**.
- * **26** of those have >=1 published HTML file and are the population anything can judge —
+ * **26** of those had >=1 published HTML file and were the population anything can judge —
  * chemistry/mt-preview 23 of 23, chemistry/faithful 2 of 23, organic/mt-preview 1 of 33,
- * organic/faithful 0 of 33 (**the track directory does not exist**). K1's population is
+ * organic/faithful 0 of 33 (**the track directory does not exist**). Since the chemistry
+ * faithful track was retired (2026-10-03) it is **24**: chemistry/faithful is 0 of 23 and,
+ * like organic's, its track directory no longer exists. K1's population is
  * smaller again — **14** cells that have BOTH html and a baseline entry.
  *
  * ⚠️ A THIRD CHAPTER-KEY CONVENTION LIVES IN THIS TIER'S INPUTS. CLAUDE.md documents two
@@ -570,8 +572,9 @@ export const K2 = defineCheck({
  *
  * ⚠️ POPULATION, WHICH THIS CHECK REPORTS RATHER THAN LETTING `examined` IMPLY:
  * `snapshotModuleIds` omits files with no `data-module-id` BY DESIGN, so the unit is
- * "published files carrying a module id" — **240 of 334 today** (chemistry/mt-preview
- * 188 of 251, chemistry/faithful 8 of 14, organic/mt-preview 10 of 13). The 94 omitted are
+ * "published files carrying a module id" — **240 of 334** when measured (chemistry/mt-preview
+ * 188 of 251, chemistry/faithful 8 of 14, organic/mt-preview 10 of 13); the chemistry
+ * faithful track was retired 2026-10-03, which removes its 8 of 14. The 94 omitted are
  * compiled rollups whose names are the chapter number plus a fixed suffix and cannot
  * rename, so excluding them loses nothing — but a reader must not take `examined` for
  * coverage of all 334.

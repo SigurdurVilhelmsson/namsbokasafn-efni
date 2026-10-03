@@ -15,7 +15,7 @@
  *
  * ⚠️ THE CORPUS COUNTS BELOW ARE PINNED ON PURPOSE, AND THEY WILL GO RED. The
  * two kept books are re-extracted and re-rendered by the very loop this battery
- * gates, so 491/197/161/112 are properties of TODAY'S tree. A red here after the
+ * gates, so 491/197/157/112 are properties of TODAY'S tree. A red here after the
  * run means the population moved — re-measure and re-pin; it is signal, not
  * flake. Pinning them is what stops an empty walk from passing as a clean sweep
  * (§C82 test convention: "corpus tests must assert a control count").
@@ -161,7 +161,10 @@ describe('the populations — one unit per tier, each with its own denominator',
 
   it('tier 3 counts translated CNXML that EXISTS, per track', () => {
     const t3 = translatedUnits(CHEM).length + translatedUnits(ORG).length;
-    expect(t3).toBe(161);
+    // RE-PINNED 2026-10-03, 161 -> 157: the chemistry faithful track was retired (its 4
+    // CNXML under 03-translated/faithful removed), leaving chemistry mt-preview 149 +
+    // organic mt-preview 8.
+    expect(t3).toBe(157);
     // organic has no `faithful` directory at all — an absent track is zero units,
     // not an error, and not a track full of empty ones.
     expect(translatedUnits(ORG).filter((u) => u.track === 'faithful')).toEqual([]);
@@ -459,7 +462,9 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
     // either a halt or an advisory SKIP. DO NOT "FIX" THIS BY LETTING K3 PASS.
     // Control: sibling tier-4 checks DID evaluate, so this is K3's state and not
     // the tier failing to run.
-    expect(report.rows.find((r) => r.id === 'K2').evaluable).toBe(26);
+    // RE-PINNED 2026-10-03, 26 -> 24: the chemistry faithful track was retired, and its 2
+    // published cells (ch01, ch03) went with it.
+    expect(report.rows.find((r) => r.id === 'K2').evaluable).toBe(24);
   }, 60_000);
 });
 
@@ -859,12 +864,13 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
 
   it('and R1 therefore JUDGES organic instead of SKIPping all 8 of its units', async () => {
     // The consequence, end to end. Before the repair: 8 SKIPs, rate 0.0% of 153,
-    // and the organic column read `n/a of 0`. After: 0 SKIPs, 161 evaluable, and
+    // and the organic column read `n/a of 0`. After: 0 SKIPs, 161 evaluable (157 since the
+    // 2026-10-03 chemistry faithful retirement removed 4 units), and
     // organic reports 6 FAIL of 8 — findings that existed all along.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [3] });
     const r1 = report.rows.find((r) => r.id === 'R1');
     expect(r1.SKIPPED).toBe(0);
-    expect(r1.evaluable).toBe(161);
+    expect(r1.evaluable).toBe(157);
     const org = r1.byBook.find((b) => b.book === ORG);
     expect(org.population).toBe(8);
     expect(org.SKIPPED).toBe(0);

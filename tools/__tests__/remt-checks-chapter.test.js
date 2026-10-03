@@ -870,36 +870,29 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     // the first draft of this test failed.
     // ⚠️ MOVED 2026-09-19: chemistry mt-preview ch6 lost its +6 when ch06 was re-MT'd and
     // re-rendered (a scan of mt-preview ch1–ch14 found NO chapter with a positive margin left).
-    // faithful ch3 carries +23 and is regenerated only by hand, so it moves less often. A
-    // premise pin on the corpus: when it goes red, re-scan for a margin cell, do not delete.
-    const withMargin = await runCheck(
-      K2,
-      ctxFor(3, { track: 'faithful', chapterInputs: inputsFor(3, 'faithful') })
-    );
+    // ⚠️ MOVED AGAIN 2026-10-03: the fixture then read chemistry faithful ch3 (math +23),
+    // and the faithful track was retired. No real chemistry cell carries a margin any more,
+    // so the margin is now REPLAYED in memory (`ch3WithPageDuplicated`, §C160's pattern):
+    // mt-preview ch3 with page 3.2 appended a second time, its count taken by a DOM parse.
+    // The premise, asserted rather than assumed: real ch3 is exactly balanced (a PASS with
+    // no margin means html >= cnxml AND not html > cnxml, in both units), so the margin the
+    // replay carries is the duplicated page's own count and nothing else. When a re-render
+    // moves that balance, the `base` assertion names the expired premise.
+    const base = await runCheck(K2, ctxFor(3));
+    expect(base.verdict).toBe(VERDICT.PASS);
+    expect(base.message).not.toContain('PASS margin');
+
+    const { math, image, ctx } = ch3WithPageDuplicated();
+    const withMargin = await runCheck(K2, ctx);
     expect(withMargin.verdict).toBe(VERDICT.PASS);
-    expect(withMargin.message).toContain('PASS margin math +23');
+    expect(withMargin.message).toContain(`PASS margin math +${math}`);
+    expect(withMargin.message).toContain(`image +${image}`);
 
     // The negative half: a clean cell with no surplus must not print a margin note at all,
     // or the disclosure becomes noise an operator learns to skip.
     const noMargin = await runCheck(K2, ctxFor(10));
     expect(noMargin.verdict).toBe(VERDICT.PASS);
     expect(noMargin.message).not.toContain('PASS margin');
-  });
-
-  it('K2 discloses a REPLAYED margin — mt-preview ch3 with one page appended twice', async () => {
-    // The premise, asserted rather than assumed: real ch3 is exactly balanced (a PASS with
-    // no margin means html >= cnxml AND not html > cnxml, in both units), so the margin
-    // the replay carries is the duplicated page's own count and nothing else. When a
-    // re-render moves that balance, THIS assertion names the expired premise.
-    const base = await runCheck(K2, ctxFor(3));
-    expect(base.verdict).toBe(VERDICT.PASS);
-    expect(base.message).not.toContain('PASS margin');
-
-    const { math, image, ctx } = ch3WithPageDuplicated();
-    const r = await runCheck(K2, ctx);
-    expect(r.verdict).toBe(VERDICT.PASS);
-    expect(r.message).toContain(`PASS margin math +${math}`);
-    expect(r.message).toContain(`image +${image}`);
   });
 
   it('the second pass — `examined` counts files with CONTENT, not array entries', async () => {

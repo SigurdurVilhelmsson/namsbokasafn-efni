@@ -134,7 +134,7 @@ describe('R4 defect 2 — chapter 0 is a real chapter', () => {
  *
  *   book                track        chapters printing PASS over ZERO audited
  *   efnafraedi-2e       mt-preview    0 of 23      <- control
- *   efnafraedi-2e       faithful     19 of 23
+ *   efnafraedi-2e       faithful     19 of 23     (track retired 2026-10-03)
  *   lifraen-efnafraedi  mt-preview   30 of 31      (329 modules)
  *   lifraen-efnafraedi  faithful     n/a — no rendered html exists at all
  *
@@ -229,10 +229,12 @@ describe('R4 defect 4 — --book is required, never defaulted', () => {
  * them**. So the migration can turn `--track faithful` into a silent no-op that
  * falls back to `mt-preview`, and every other test here would still pass.
  *
- * The fixture is decisive because the two tracks give OPPOSITE verdicts on the same
- * chapter: chemistry ch01 is `Result: FAIL` / exit 1 on mt-preview (2 errors) and
- * `Result: PASS with warnings` / exit 0 on faithful. A dropped `--track` therefore
- * shows up as the wrong verdict, not merely as a missing flag.
+ * The fixture is decisive because the two tracks give DIFFERENT output on the same
+ * chapter: chemistry ch01 is `Result: FAIL` / exit 1 on mt-preview (2 errors), while
+ * faithful, retired 2026-10-03, has no rendered HTML at all, so it reports all 7 modules
+ * unauditable (`not found`). (Until the retirement, faithful was `PASS with warnings` /
+ * exit 0.) A dropped `--track` therefore shows up as mt-preview's output, not merely as
+ * a missing flag.
  */
 describe('the --track flag actually arrives', () => {
   it('--track faithful is not silently dropped to mt-preview', () => {
@@ -242,7 +244,8 @@ describe('the --track flag actually arrives', () => {
     // change that made them identical fails here rather than making the test vacuous.
     expect(mt.stdout).not.toBe(fa.stdout);
     expect(mt.stdout).toMatch(/error\(s\)/);
-    // faithful's ch01 has 5 of 7 modules unrendered — defect 3 again, in CHEMISTRY.
+    // faithful's ch01 has no rendered module since the 2026-10-03 retirement (5 of 7 were
+    // unrendered before it), so every module reports `not found`.
     expect(fa.stderr).toMatch(/not found/);
   });
 });

@@ -825,9 +825,9 @@ export async function collectSpawns(books, tiers, log = () => {}) {
   }
   if (tiers.includes(3)) {
     for (const book of books) {
-      // R4: one audit per book x track x CHAPTER — 26 spawns on today's corpus
-      // (chemistry mt-preview 23 + chemistry faithful 2 + organic mt-preview 1;
-      // organic has no faithful directory). The tool REQUIRES `--chapter`.
+      // R4: one audit per book x track x CHAPTER — 24 spawns on today's corpus
+      // (chemistry mt-preview 23 + organic mt-preview 1; neither book has a faithful
+      // directory since chemistry's was retired 2026-10-03). The tool REQUIRES `--chapter`.
       // `audit-render-output.js` already writes
       // its `--json` with `process.exitCode` rather than `process.exit()`, so the
       // payload is not at risk of the 64 KB pipe truncation that bit the schema
