@@ -20,9 +20,9 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(Array.isArray(loadFigureTextConfig().editionPrecedence)).toBe(true);
   });
 
-  it('the committed config carries both tables as plain objects', () => {
+  it('the committed config carries its policy tables as plain objects (keptCopies: §C140 ㊾)', () => {
     const cfg = loadFigureTextConfig();
-    for (const key of ['retiredFigures', 'artworkPins']) {
+    for (const key of ['retiredFigures', 'keptCopies', 'artworkPins']) {
       const t = cfg[key];
       expect(t !== null && typeof t === 'object' && !Array.isArray(t)).toBe(true);
     }
