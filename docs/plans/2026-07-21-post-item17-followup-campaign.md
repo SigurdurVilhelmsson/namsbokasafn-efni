@@ -15,7 +15,7 @@
 - **False premises fixed in place, in this commit:** ibuprofen is NOT `unresolved` (the evening block below and the afternoon block's step 2); §C161 is 5 figures, and its "Next" is answered; §C163's HNO2 *or* is live text, not outlines; ㉑'s precondition was broken by two buys; ㊸'s numpy parenthetical (and the figure README) predate ㊼; figure `REGISTER.md` ⑤(a) "nothing bought against this segmentation" was falsified by `7df47b298`. HetCats' root cause, a superseded base EPS, is new at figure `REGISTER.md` ⑭.
 - ⚠️ **Never run the pass through `scripts/chemistry-autorun-chapter.sh`:** it runs `figure-run.js` without `--stale`, which can buy. Invoke the driver directly, with `--stale`.
 - ⚠️ This block, the evening block, the step-2 spec, PR-A's plan and the value sheet are all on the feature branch `feat/c140-c49-step2-code-fixes`, PUSHED 2026-10-03 with no PR yet ([USER]'s go) (cut from `docs/c140-c40-buys-merged-handoff`, which it contains). `git branch --no-merged main` lists both; read the feature branch.
-- 📝 **[USER]'s value sheet is ready:** `docs/handoffs/2026-10-03-step2-value-sheet.md` (the exact keys for the `heldBlockValues` rows, the HetCats and Graphene value edits, and the unit-policy rows; June wording quoted only as evidence). PR-B's data commits wait for it.
+- ✅ **[USER] FILLED the value sheet 2026-10-03** (A1 and B1 settled in chat; see its Reading notes, which add two requirements for Part 5). It was first offered as: `docs/handoffs/2026-10-03-step2-value-sheet.md` (the exact keys for the `heldBlockValues` rows, the HetCats and Graphene value edits, and the unit-policy rows; June wording quoted only as evidence). PR-B's data commits wait for it.
 
 ---
 
