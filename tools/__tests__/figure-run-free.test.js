@@ -493,7 +493,7 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
 
   it('spends no second resolver pass on a chapter with no hashed basenames', async () => {
     const spawn = fakeSpawn();
-    await runFigures(CH04, { spawn });
+    await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.countOf('resolve')).toBe(1);
   });
 
@@ -831,7 +831,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   // passes just as happily against a call that was made with the wrong flags.
   it('spawns translate-blocks.mjs ZERO times, having actually done the work', async () => {
     const spawn = fakeSpawn();
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.countOf('translate')).toBe(0);
     // ⚠️ AN ALLOWLIST, NOT A BLOCKLIST. Counting the one stage named 'translate' is trivially
     // zero while no such call site exists; asserting that the ONLY stages a dry run reaches are
@@ -883,7 +883,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   // at the END is not enough; each figure's directory must go as soon as it is classified.
   it('never holds more than one figure directory at a time in a dry run', async () => {
     const spawn = fakeSpawn();
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.liveDirs.length).toBeGreaterThan(10); // non-vacuity: it really did prepare
     expect(Math.max(...spawn.liveDirs)).toBe(1);
     expect(result.figures.every((f) => f.outDir === null)).toBe(true);
@@ -1068,7 +1068,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
           ? null
           : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.tally.unresolved).toBe(1);
     expect(result.verdict.ok).toBe(true);
     expect(summarise(result)).toContain('CNX_Chem_04_05_filter');
@@ -1088,14 +1088,14 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
             stderr: "Source tree 'updates-2e' is configured but is not a directory",
           }
         : spawn(call);
-    await expect(runFigures(CH04, { spawn: failing })).rejects.toThrow(/updates-2e/);
+    await expect(runFigures(CH04, { spawn: failing, ...PRISTINE })).rejects.toThrow(/updates-2e/);
   });
 
   it('REFUSES when --figure matches nothing, instead of exiting 0 having done nothing', async () => {
     const spawn = fakeSpawn();
     const code = await main(
       ['--book', 'efnafraedi-2e', '--chapter', '4', '--dry-run', '--figure', 'NO_SUCH_FIGURE'],
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     expect(code).not.toBe(0);
     expect(spawn.countOf('prepare')).toBe(0);
@@ -1123,7 +1123,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
     const spawn = fakeSpawn();
     const code = await main(
       ['--book', 'efnafraedi-2e', '--chapter', '4', '--dry-run', '--module', 'm00000'],
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     expect(code).not.toBe(0);
     expect(spawn.countOf('prepare')).toBe(0);
@@ -1327,7 +1327,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
 
   it('leaves both ch21 figures unresolved, NAMED, rather than handing them one PDF', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures(CH21, { spawn });
+    const result = await runFigures(CH21, { spawn, ...PRISTINE });
     const d = result.figures.find((f) => f.basename === D92B);
     const e = result.figures.find((f) => f.basename === E619);
     for (const r of [d, e]) {
@@ -1354,7 +1354,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
   // against. A guard that looked only at the selected figures would be defeated by narrowing.
   it('still refuses when --figure names only one of the two claimants', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures({ ...CH21, figures: [D92B] }, { spawn });
+    const result = await runFigures({ ...CH21, figures: [D92B] }, { spawn, ...PRISTINE });
     expect(result.figures).toHaveLength(1);
     expect(result.figures[0].outcome).toBe('unresolved');
     expect(result.figures[0].reason).toContain(E619); // it names the claimant NOT in this run
@@ -1362,7 +1362,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
 
   it('still refuses when --module names only one of the two claimants', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures({ ...CH21, modules: ['m68852'] }, { spawn });
+    const result = await runFigures({ ...CH21, modules: ['m68852'] }, { spawn, ...PRISTINE });
     const d = result.figures.find((f) => f.basename === D92B);
     expect(d.outcome).toBe('unresolved');
     expect(d.reason).toContain(E619);
@@ -1410,7 +1410,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
     const report = summarise(
       await runFigures(
         { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: null, dryRun: true },
-        { spawn: fakeSpawn(strippedOnly) }
+        { spawn: fakeSpawn(strippedOnly), ...PRISTINE }
       )
     );
     expect(report).toMatch(/de-hashed/);
@@ -1566,7 +1566,7 @@ describe('prepare warnings reach the operator', () => {
     const spawn = fakeSpawn({
       prepare: (b) => (b === 'CNX_Chem_04_05_filter' ? { warnings: [COLOUR] } : {}),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.figures.find((f) => f.basename === 'CNX_Chem_04_05_filter').outcome).toMatch(
       /^copied-/
     );
@@ -1824,5 +1824,70 @@ describe('§C140 ㊼ — a ring gate that could not run makes the run need a hum
     expect(result.figures.some((f) => f.ringGateFailed)).toBe(false);
     expect(result.verdict.ok).toBe(true);
     expect(summarise(result)).toContain('VERDICT ok');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊳ — EVERY DRIVER RUN IN THIS FILE SAYS WHICH SIDECAR WORLD IT RUNS IN. `PRISTINE`'s
+// header states the rule: anything asserting a pristine corpus must SAY so rather than assume
+// it. On 2026-10-03 thirteen calls said nothing and read the real tree; three of them went red
+// on a COMPOSER_VERSION bump alone (a red that reads as a driver defect), and the peak-disk test
+// sat one ch04 purchase from red (`liveDirs.length > 10`, measured 11). This makes the rule a
+// checked property: every runFigures and main call names `PRISTINE`, `CORPUS`, or BOTH sidecar
+// readers, because stubbing one alone leaves the other on the real tree.
+describe('every driver run in this file states which sidecar world it runs in (§C140 ㊳)', () => {
+  /** Each call of `name` in `text`, with its argument text, found by balancing parentheses. */
+  const callsOf = (name, text) => {
+    const calls = [];
+    const re = new RegExp(`\\b${name}\\(`, 'g');
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      let depth = 1;
+      let quote = null;
+      let i = m.index + m[0].length;
+      for (; i < text.length && depth > 0; i++) {
+        const ch = text[i];
+        if (quote) {
+          if (ch === '\\') i++;
+          else if (ch === quote) quote = null;
+        } else if (ch === "'" || ch === '"' || ch === '`') quote = ch;
+        else if (ch === '(') depth++;
+        else if (ch === ')') depth--;
+      }
+      calls.push({
+        line: text.slice(0, m.index).split('\n').length,
+        args: text.slice(m.index + m[0].length, i - 1),
+      });
+    }
+    return calls;
+  };
+  const statesItsWorld = (args) =>
+    /\b(?:PRISTINE|CORPUS)\b/.test(args) ||
+    (/\breadSidecar\b/.test(args) && /\bsidecarExists\b/.test(args));
+
+  it('names PRISTINE, CORPUS or both sidecar readers in every runFigures and main call', () => {
+    const src = fs.readFileSync(path.join(HERE, 'figure-run-free.test.js'), 'utf-8');
+    const calls = [...callsOf('runFigures', src), ...callsOf('main', src)];
+    expect(calls.length).toBeGreaterThan(50); // non-vacuity: the scan really finds them
+    expect(calls.filter((c) => !statesItsWorld(c.args)).map((c) => c.line)).toEqual([]);
+  });
+
+  // The scan's own control: a bare call is flagged; a multi-line call with a nested call and a
+  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough.
+  it('CONTROL: flags a bare call and a one-reader call, passes a nested multi-line PRISTINE call', () => {
+    const fn = 'runFigures'; // built, never written as a call, so the scan above cannot match it
+    const planted = [
+      `await ${fn}(CH04, { spawn });`,
+      `await ${fn}(`,
+      `  { ...CH21, figures: [D92B] },`,
+      `  { spawn: fakeSpawn({ resolve: (n) => (n === ')' ? null : null) }), ...PRISTINE }`,
+      `);`,
+      `await ${fn}(CH04, { spawn, readSidecar: () => null });`,
+    ].join('\n');
+    expect(callsOf(fn, planted).map((c) => [c.line, statesItsWorld(c.args)])).toEqual([
+      [1, false],
+      [2, true],
+      [6, false],
+    ]);
   });
 });
