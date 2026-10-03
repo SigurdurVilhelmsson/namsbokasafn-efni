@@ -27,9 +27,11 @@ Nothing reaches readers until [USER]'s held chemistry sync. At that sync, with t
 |---|---|---|
 | **No URL dies** | Every one of the 14 faithful page slugs and 66 image names has a same-named mt-preview twin in the same chapter directory (same `data-module-id` on the 4 reading pages). So no redirect row is needed for the retirement. | slug and filename sets compared, both trees |
 | **Gains** | The 6 affected pages' **37 image alts** become Icelandic (all 37 are English on faithful, 0 of 77 on mt-preview); **14 captions** change, including the English copper caption on 3-1 (§C148) and ibuprofen's English alt (§C140 ㊻②). **PR-B's recomposed ch01/ch03 figures can reach readers at all**: while the faithful tree exists, vefur's sync overlays every faithful image over mt-preview's (unconditionally, `force:true`). | cmp, per element |
+| **Gains** | **ch01's whole chapter catches up with the 2026-09-20 re-MT.** All 5 live ch01 rollup pages (summary, key terms, exercises, answer key, key equations) are June–July faithful renders that hide the re-MT for ALL 7 ch01 modules, not only the 2 reviewed ones: the live ch01 summary differs from mt-preview in 7 of 7 paragraphs, 6 of which belong to modules nobody reviewed (critic, by element id). ch03's live rollups are older faithful vintages too. | text compared by element id |
+| **Gains** | **3 dead in-page links never ship.** The faithful 1-0 introduction links to the three OLD ch01 slugs (1-2, 1-5, 1-6), which the same sync removes; vefur resolves section URLs by exact match only. mt-preview's 1-0 links to the new slugs (0 dead). | link census, both trees |
 | **Gains** | The 3 June TrueType figure copies (ch01 ChemWeb, SciMethod, Archer2_img; §C140 ㊻①) leave the reader's path; their mt-preview copies equal `media/`. | `data:font/ttf` census |
-| **Costs** | The **MT banner returns on 4 pages** (1-0, 1-1, 3-0, 3-1), because those pages ARE machine translations once this vintage goes: vefur marks a module `reviewed` only while its faithful file exists. Nothing is destroyed. The human edits on them were made on the OLD MT dialect, and the 2026-08-22 clean-break decision already resolved to re-apply them by hand on the new MT (runbook 4.2) from the archive and the Word document. This retirement carries out that decision on the reader's side. | live `toc.json` has `reviewed:true` on exactly those 4 |
-| **Costs** | vefur's "for teachers" page hardcodes chemistry chapter 1 as *Yfirfarið* (reviewed); after this, chapter 1 has 0 reviewed modules. **A vefur follow-up**, not an efni edit. | vefur source |
+| **Costs** | The **MT banner returns on 4 pages** (1-0, 1-1, 3-0, 3-1), because those pages ARE machine translations once this vintage goes: vefur marks a module `reviewed` only while its faithful file exists. Nothing is destroyed. The human edits on them were made on the OLD MT dialect, and the 2026-08-22 clean-break decision already resolved to re-apply them by hand on the new MT (runbook 4.2) from the archive and the Word document. This retirement carries out that decision on the reader's side. **Size: at least 53 approved editor edits are visible on live pages today and absent from mt-preview (31 in ch01, 22 in ch03)** — a lower bound from a 40-character matching heuristic over the archived `segment-edits-harvest-2026-08-30.json`; edits inside alt attributes are not counted. It also sizes runbook 4.2. | live `toc.json` has `reviewed:true` on exactly those 4 |
+| **Costs** | vefur's reviewer claims lose their evidence base (4 reviewed modules → 0): the "for teachers" page hardcodes chemistry chapter 1 as *Yfirfarið*; `bookCredits.ts` credits chemistry with *Ritstjórn og fagyfirlestur*; the homepage says *Vélþýtt og yfirlesið af starfandi raungreinakennurum*; the FAQ says *Sumir kaflar eru merktir sem forskoðun*. vefur's own credit module states the principle "never claim yfirlestur where it has not happened". **Whether the wording stays is [USER]'s and vefur's call; a vefur follow-up, not an efni edit.** | vefur source (read-only) |
 | **Costs** | A browser that cached the 3 June SVGs keeps them up to 30 days (vefur's service worker: CacheFirst, 30 days, 200 entries). Per-browser only. | `sw.js`, `vite.config.ts` |
 
 Changes that happen at the next sync **whatever this plan does** (not attributable to it): the ch01 renames 1-2, 1-5
@@ -38,7 +40,7 @@ rows from the final titles), which this plan does not change.
 
 ---
 
-## 2. Decisions for [USER] (recommendation first) — ⚖️ ALL THREE RULED 2026-10-03: [USER] "I agree with your three recommendations" (guard: yes; organic's removal a separate PR; its own small PR, merged before PR-B's branch is cut)
+## 2. Decisions for [USER] (recommendation first) — ⚖️ DECISIONS 1–3 RULED 2026-10-03 (Decision 4, added after the completeness critic, is NOT yet ruled): [USER] "I agree with your three recommendations" (guard: yes; organic's removal a separate PR; its own small PR, merged before PR-B's branch is cut)
 
 1. **Guard the retirement in code? — recommended YES.** `git rm -r` leaves a directory in place when it still holds a
    gitignored file. Then `findChapterModules` returns `[]` instead of throwing, `cnxml-render` has no zero-module
@@ -56,6 +58,17 @@ rows from the final titles), which this plan does not change.
    (`generate-index` defaults to `--track faithful`, and with `rollups-complete` present vefur would overlay a 12-entry
    faithful `index.json` over mt-preview's 763); and **never between PR-B's branch cut and PR-B's merge** (PR-B's census
    refuses any `books/` deletion other than PerTable2's sidecar in its base..head range).
+
+4. **🆕 NEW, from the completeness critic (not yet ruled) — widen the guard to the INJECT route back in? Recommended YES.**
+   `cnxml-inject --track faithful` run WITHOUT `--source-dir` takes its text from `02-mt-output`
+   (`tools/cnxml-inject.js`: `const sourceDir = args.sourceDir || '02-mt-output'`, with nothing tying `--track` to the
+   source), so it would write MACHINE text for all 7 ch01 modules into `03-translated/faithful/ch01/`. The chapter then
+   has 7 modules of its own, Decision 1's zero-module guard never fires, a faithful render makes all 7 section pages
+   from MT, and vefur stamps them `reviewed` — so the MT banner disappears from machine text. **Both READMEs prescribe
+   exactly that command** (`README.md` around line 136, `books/efnafraedi-2e/03-faithful-translation/README.md` around
+   line 27). Proposed: `cnxml-inject` refuses `--track faithful` unless the source directory maps to faithful
+   (`trackFromSourceDir(sourceDir) === track`), red-first; and the two README lines are corrected in the same PR
+   (CLAUDE.md: if B is wrong, fix B). Read from the code; inject was not run.
 
 ---
 
@@ -96,7 +109,12 @@ rows from the final titles), which this plan does not change.
   rollups from the union — still renders; (2) a full-chapter render with one own module still renders.**
 - [ ] The guard; the test green; `npm test` failing set unchanged by name.
 
-### Task R2 — Move this box's ignored faithful residue off-repo (never delete it) · ⚠️ BEFORE R3: the order is load-bearing
+### Task R2 — Move this box's ignored faithful residue off-repo (never delete it) · ⚠️ BEFORE R3: the order is load-bearing · ✅ DONE on the dev box, 2026-10-03
+
+**Executed:** 63 files (57 `*.cnxml.backup.*` + 6 `.bak`; the "58" below counted a directory line) moved to
+`~/namsbokasafn-faithful-aside-dev-2026-10-03/` with `MANIFEST.sha256` (63 of 63 verified at the archive) and a
+`README.txt`; 0 ignored files left in the three trees; the emptied `03-faithful-translation/ch01/` removed with `rmdir`;
+`git status` unchanged. Production's one ignored file is untouched (its removal is [USER]'s write).
 
 If R3's `git rm` runs first, the directories it empties still exist on disk (they hold the ignored files), and R2's
 "absent" check would then run against a tree that was never clean.
@@ -133,8 +151,12 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
   +3`; disabling K2's disclosure (`tools/lib/remt-checks-chapter.js`, the `margin ? …` branch) turns the moved test red;
   remt-sweep 43/43 and remt-checks-chapter 67/67 green after the removal. **R3 is executed implement-then-extract, as
   Part 5 was:** the replay's code is written test-first when the task runs, and this plan's text is updated from the
-  commit. Update the now-stale prose comments in `tools/__tests__/audit-render-output-defects.test.js` (no assertion
-  changes).
+  commit. Update the now-stale prose comments in `tools/__tests__/audit-render-output-defects.test.js` and the nine further
+  comment sites that state faithful-dependent counts (none is an assertion; each checked to exist):
+  `tools/lib/remt-checks-output.js` (~426, ~654), `tools/remt-sweep.js` (~829), `tools/lib/remt-checks-chapter.js` (~137,
+  ~574), `tools/__tests__/remt-sweep.test.js` (~18, ~861), `tools/audit-render-output.js` (~55, ~549), plus the K2 test's
+  own comment (`remt-checks-chapter.test.js` ~835–847). ⚠️ One researcher wrote that no test reads the real faithful tree;
+  that is wrong (the K2 test reads faithful ch3) — the plan follows the measured side.
 - [ ] Gate: `npm test` (failing FILES diffed by name against `main`), `npm run lint`, `npm run format:check`, and the
   Python suites if R1 touched any. Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
   only) and one red `sync-content.yml` run (it has never worked).
@@ -152,6 +174,10 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
 - [ ] PR-A plan, Part 2's "Carries into PR-B" note: "plus 7 `05-publication` copies (faithful ch03 included)" becomes 5 once the
   two faithful ch03 annotated copies leave (informational; no PR-B check counts `05-publication/faithful/`, measured by
   grep of PR-B's plan).
+- [ ] Log, not fix (a ③ concern, outside the retirement): `contentVersionService.restoreVersion` defaults to track `faithful` and
+  keys on current segment ids; in the dev DB every m68664 snapshot id still exists, so a restore would write June text over
+  72 of 76 segments without a warning. Size it with one read-only prod count of `content_versions` for chemistry/faithful
+  before editors are unfrozen.
 - [ ] Log, not fix: `validate-pipeline-consistency.js` builds a `ch`-prefixed publication path, so it never sees any
   track's HTML for numbered chapters (predates this work).
 
@@ -162,11 +188,15 @@ If R3's `git rm` runs first, the directories it empties still exist on disk (the
   empty; the Ritstjóri dashboard shows ch01/ch03 `activeTrack: mt-preview` (it is computed from disk).
 
 ### Task R6 — At [USER]'s held chemistry sync (later; vefur's side)
+- [ ] **Before the sync: the efni checkout vefur reads (`--source ../namsbokasafn-efni`) must CONTAIN the retirement** —
+  `git -C ../namsbokasafn-efni merge-base --is-ancestor <retirement sha> HEAD && test ! -e ../namsbokasafn-efni/books/efnafraedi-2e/05-publication/faithful`.
+  (On 2026-10-03 that checkout is on a feature branch and the retirement lives on another; vefur reads the disk.) Also
+  confirm which vefur branch the deploy ships from.
 - [ ] vefur's dry run prints `Syncing efnafraedi-2e (mt-preview)` with no overlay step.
 - [ ] After the sync and deploy, fetched as `/content/…` files with a nonsense-URL 404 control: `toc.json` carries
   `reviewed:true` 0 times for chemistry; 3-1 carries Icelandic in the copper caption and no `Copper wire`; ChemWeb's live
   bytes equal efni's mt-preview copy.
-- [ ] Hand vefur its follow-up: the "for teachers" page's chapter-1 *Yfirfarið* claim.
+- [ ] Hand vefur its follow-up: the reviewer claims listed in §1 (for-teachers, `bookCredits.ts`, homepage, FAQ).
 
 ---
 
