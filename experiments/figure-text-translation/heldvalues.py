@@ -3,7 +3,7 @@
 STDLIB ONLY, and it imports nothing from this experiment - in particular not `_deps` - so
 figure-compose.py (which must stay free of pikepdf / cairo / Pillow) can import it, and compose.py
 can too. Design: docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md (D-a,
-D-b, D-e). Tests: test_heldvalues.py (HV1-HV7).
+D-b, D-e). Tests: test_heldvalues.py (HV1-HV8).
 
 THE TABLE (figure-text.config.json `heldBlockValues`)
 -----------------------------------------------------
@@ -11,8 +11,9 @@ THE TABLE (figure-text.config.json `heldBlockValues`)
 
 A value is [USER]'s string, kept BYTE FOR BYTE - it is never re-encoded, normalised or localised.
 Its lines are separated by '\\n' (never the key's '|', which a value may not contain at all), and
-each line must be non-empty and equal to its own `.strip()`. figure-compose.py reads the table
-once, takes THIS figure's entry by EXACT basename (`for_figure`) and hands it to compose.py in
+each line must be non-empty, equal to its own `.strip()`, and hold at least one character that is
+not a format, combining or control character (INVISIBLE_CATEGORIES). figure-compose.py reads the
+table once, takes THIS figure's entry by EXACT basename (`for_figure`) and hands it to compose.py in
 `<out>/held-values.json` (`write_file` / `read_file`).
 
 SCRIPT CHARACTERS ARE FORMATTING INTENT (D-a)
@@ -30,7 +31,7 @@ HELD_SCRIPT_CHARS; both test files pin the same literal.
 
 REASONS - `HeldValueError.reason` is a CONTRACT: compose.py, figure-compose.py and their tests
 key on these strings, and the message names the basename and key wherever one is known.
-  parse_value   not-a-string, pipe, empty-line, edge-space, unsupported-script-char
+  parse_value   not-a-string, pipe, empty-line, edge-space, invisible-line, unsupported-script-char
   load_table    config-not-object, table-not-object
   for_figure    entry-not-object, entry-empty, key-empty, and parse_value's
   read_file     unreadable, unparsable, file-not-object, missing-field, bad-field, key-empty,
@@ -38,6 +39,7 @@ key on these strings, and the message names the basename and key wherever one is
 """
 import json
 import os
+import unicodedata
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # never process.cwd() - repo rule
@@ -53,6 +55,16 @@ SCRIPT_MAP = {**{c: (str(i), 'sub') for i, c in enumerate(_SUB_DIGITS)}, '₊': 
               **{c: (str(i), 'sup') for i, c in enumerate(_SUP_DIGITS)}, '⁺': ('+', 'sup'), '⁻': (EN_DASH, 'sup')}
 # Unicode's Superscripts and Subscripts block: a character here that is not in SCRIPT_MAP is refused.
 SCRIPT_BLOCK = (0x2070, 0x209F)
+# The general categories that draw NOTHING on their own: format (U+200B, U+00AD, ...), non-spacing and
+# enclosing combining marks (U+034F, U+0301, ...) and controls. A value line made only of these refuses
+# `invisible-line` (a skeptic's finding, 2026-10-03): the pinned faces' cmap CARRIES 17 Cf, 187 Mn and
+# 2 Me code points (2,327 in all, the same set in all four faces), so compose's no-glyph check passes
+# them, the line fits, and the label would be erased under a `held` note. Invisible LETTERS (U+3164,
+# U+115F) and U+2800 are not in the cmap, so compose refuses those `no-glyph`. ⚠️ figure-config-validate.js
+# holds a SECOND copy of this rule, as \p{Cf}\p{Mn}\p{Me}\p{Cc}. Each reads its engine's own Unicode tables
+# (measured 2026-10-03: Python 3.14's are 16.0, Node 22's 17.0), so they can disagree on a code point
+# assigned in between.
+INVISIBLE_CATEGORIES = ('Cf', 'Mn', 'Me', 'Cc')
 
 
 class HeldValueError(ValueError):
@@ -83,6 +95,9 @@ def parse_value(value):
             raise HeldValueError('empty-line', f'{value!r}: line {i} is empty')
         if line != line.strip():
             raise HeldValueError('edge-space', f'{value!r}: line {i} has leading or trailing whitespace')
+        if all(unicodedata.category(c) in INVISIBLE_CATEGORIES for c in line):
+            raise HeldValueError('invisible-line', f'{value!r}: line {i} has no visible character - only '
+                                                   f'format, combining or control characters, which draw nothing')
         chars = []
         for c in line:
             if c in SCRIPT_MAP:

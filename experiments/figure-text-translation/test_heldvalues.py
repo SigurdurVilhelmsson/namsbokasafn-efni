@@ -30,6 +30,11 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
   empty or absent; holds either way.
 * HV7 heldvalues imports nothing from this experiment (no _deps), so figure-compose.py's
   isolation is unchanged.
+* HV8 (a skeptic's finding, 2026-10-03) a line of ONLY format, combining or control characters
+  refuses as `invisible-line`: U+200B, U+00AD and U+034F are in the pinned faces' cmap, so compose's
+  no-glyph check passes them, and the label would be erased under a `held` note. A format character
+  INSIDE a visible line, and a line of script characters, are the CONTROLS. Kills a value that draws
+  nothing.
 """
 import json
 import sys
@@ -266,6 +271,29 @@ def hv7():
 
 
 attempt('HV7', hv7)
+
+# --------------------------------------------------------------------------------------------
+print('HV8 a line of only format, combining or control characters refuses: it would draw nothing')
+
+
+def hv8():
+    # Written as escapes, never as the characters: they are invisible in an editor, which is the defect.
+    for label, v in (('U+200B ZERO WIDTH SPACE', '\u200b'), ('U+00AD SOFT HYPHEN', '\u00ad'),
+                     ('U+034F COMBINING GRAPHEME JOINER', '\u034f'), ('a lone combining acute U+0301', '\u0301'),
+                     ('U+200B and U+200D together', '\u200b\u200d'), ('a control character U+0007', '\u0007'),
+                     ("an inner line (C|H or R's line 1)", 'C\n\u00ad')):
+        check(f'HV8a {label} refuses as invisible-line', reason(HV.parse_value, v) == 'invisible-line',
+              reason(HV.parse_value, v))
+    check('HV8b the refusal names the line', 'line 1 has no visible character' in message(HV.parse_value, 'C\n\u00ad'),
+          message(HV.parse_value, 'C\n\u00ad'))
+    check('HV8c CONTROL a format character INSIDE a visible line is drawn as written',
+          HV.parse_value('QZ\u200bX') == [[('Q', None), ('Z', None), ('\u200b', None), ('X', None)]],
+          repr(HV.parse_value('QZ\u200bX')))
+    check('HV8d CONTROL a line of script characters only is visible (they decode to digits and signs)',
+          HV.parse_value('\u2082\u207b') == [[('2', 'sub'), ('\u2013', 'sup')]], repr(HV.parse_value('\u2082\u207b')))
+
+
+attempt('HV8', hv8)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)

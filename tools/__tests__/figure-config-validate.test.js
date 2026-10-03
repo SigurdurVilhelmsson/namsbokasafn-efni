@@ -712,6 +712,33 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       null,
       'heldBlockValues.CNX_Other[No] has 2 lines but its key has 1 source lines',
     ],
+    // A skeptic's finding (2026-10-03): U+200B, U+00AD and U+034F are in the pinned faces' cmap, so
+    // compose's no-glyph check passes them and the label would be ERASED. heldvalues.py's
+    // `invisible-line` is the second implementation. Escapes, never the characters (they are invisible).
+    [
+      'a value line of only a zero width space (U+200B)',
+      (c) => {
+        heldOf(c).No = '\u200b';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has a line with no visible character — only format, combining or control characters, which draw nothing',
+    ],
+    [
+      'an inner value line of only a soft hyphen (U+00AD)',
+      (c) => {
+        heldOf(c)['C|H or R'] = 'C\n\u00ad';
+      },
+      null,
+      'heldBlockValues.CNX_Other[C|H or R] has a line with no visible character',
+    ],
+    [
+      'a value line of only a combining grapheme joiner (U+034F)',
+      (c) => {
+        heldOf(c).No = '\u034f';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has a line with no visible character',
+    ],
     [
       'a superscript parenthesis, outside the 24 script characters',
       (c) => {
@@ -863,6 +890,13 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       (k) => {
         k.heldState.CNX_Other.sidecarKeys = ['k0', 'k1'];
       },
+    ],
+    [
+      'a format character INSIDE a visible line (U+200B between letters)',
+      (c) => {
+        heldOf(c).No = 'QZ\u200bX';
+      },
+      () => {},
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg, mutateCorpus) => {
     const c = heldCfg();

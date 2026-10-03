@@ -52,6 +52,8 @@ const MIN_REASON = 40;
  */
 export const HELD_SCRIPT_CHARS = '₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻';
 const SCRIPT_BLOCK = [0x2070, 0x209f]; // Unicode "Superscripts and Subscripts"
+// A line made only of characters that draw nothing on their own (heldvalues.py INVISIBLE_CATEGORIES).
+const INVISIBLE_LINE = /^[\p{Cf}\p{Mn}\p{Me}\p{Cc}]+$/u;
 
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
@@ -295,6 +297,15 @@ export function validateFigureConfig(cfg, corpus) {
       if (lines.some((l) => l === '' || l !== l.trim())) {
         problems.push(
           `heldBlockValues.${b}[${k}] has an empty line, or a line with leading or trailing whitespace`
+        );
+      }
+      // A line of only format, combining or control characters draws NOTHING, and U+200B, U+00AD and
+      // U+034F are in the pinned faces' cmap, so compose's no-glyph check passes them: the label would
+      // be erased. 🔴 A SECOND IMPLEMENTATION of heldvalues.py's `invisible-line` (INVISIBLE_CATEGORIES);
+      // each reads its engine's own Unicode tables, so they can differ on a newly assigned code point.
+      if (lines.some((l) => INVISIBLE_LINE.test(l))) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] has a line with no visible character — only format, combining or control characters, which draw nothing`
         );
       }
       // Visual lines merge and never split, so the key's '|'-lines bound the value's lines from
