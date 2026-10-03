@@ -424,5 +424,41 @@ if cairo is not None:
     check('real PDF: label in the grid -> cell via rules, inner inset 0.5', c2['cls'] == 'cell' and c2['why'] == 'rules'
           and close((c2['L'], c2['R'], c2['D'], c2['U']), (20.5, 119.5, 50.5, 89.5), 1e-3), str(c2))
 
+print('\n== 12. §C140 ㉑ a block\'s OWN alignment reads its VISUAL lines; other blocks\' frames stay on FT.lines')
+# REAL CNX_Chem_18_07_Nitrogen geometry, copied from the committed
+# evidence/2026-09-15-t23-review-fixes/reports/code1-control-nitrogen/runs.json (rot 0): 'nitrites (NO'
+# 9 pt, its subscript '2' 7 pt, the charge '–' 7 pt raised 4.5 pt - FT.lines puts the charge on a line of
+# its own - and the kept ')' that closes the formula: a SEPARATE block, flush against the charge.
+NITRITES = [run(341.303, 67.8199, 'nitrites (NO', size=9.0, adv=45.507),
+            run(386.8081, 64.8199, '2', size=7.0, adv=3.892),
+            run(390.7011, 72.3199, '–', size=7.0, adv=3.5)]
+PAREN = [run(394.2011, 67.8199, ')', size=9.0, adv=2.997)]
+check('fixture: FT.lines splits the nitrites block in two - the frames OTHER blocks see',
+      len(FC.line_frames(NITRITES)) == 2, str(FC.line_frames(NITRITES)))
+c = FC.container_for(0, [NITRITES, PAREN], page(), blank(), H)
+check('open: the label flush against its kept ")" is ONE line -> right, single-flush (was multi-line)',
+      c['align'] == 'right' and c['align_why'].startswith('single-flush'), f"{c['align']} {c['align_why']}")
+al, why = FC.cell_alignment(NITRITES, 6.0, 3.5)
+check('cell: the same label takes the single-line margin rule (margins 6.0 / 3.5 -> center), not multi-line',
+      al == 'center' and why.startswith('cell-single-margins'), f'{al} {why}')
+# control: the same figure's genuine two-line label, one lead apart, is still multi-line in a cell
+ATMOS = [run(1.9118, 348.3417, 'Atmospheric', size=9.0, adv=50.013),
+         run(1.9118, 337.3417, 'nitrogen (N', size=9.0, adv=44.514),
+         run(46.4325, 334.3417, '2', size=7.0, adv=3.892),
+         run(50.3258, 337.3417, ')', size=9.0, adv=2.997)]
+al, why = FC.cell_alignment(ATMOS, 6.0, 3.5)
+check('control: Atmospheric|nitrogen (N2) stays multi-line in a cell', why.startswith('multi'), f'{al} {why}')
+# PIN - passes before ㉑ by design; it fails only if ANOTHER block's frames move onto visual lines.
+# REAL CNX_Chem_10_06_CbcCltPckd 'C|B|A' (send:false, 2026-09-13 census): three 9 pt letters on a diagonal.
+# figtext.visual_lines merges C and B (5.76 pt apart), which would start their frame at B's 289.27. A
+# single-line label whose LEFT edge sits on C's own left edge (298.64) is cued left only by C's own frame.
+CBA = [run(298.64, 95.17, 'C', size=9.0, adv=6.5), run(289.27, 89.41, 'B', size=9.0, adv=6.0),
+       run(278.23, 84.41, 'A', size=9.0, adv=6.0)]
+check('fixture: C|B|A is three FT.lines frames', len(FC.line_frames(CBA)) == 3, str(FC.line_frames(CBA)))
+CUED = [run(298.64, 150.0, 'Label', size=9.0, adv=40.0)]
+c = FC.container_for(0, [CUED, CBA], page(), blank(), H)
+check('pin: a sibling cue reads the OTHER block\'s FT.lines frames (C\'s left edge 298.64 -> left)',
+      c['align'] == 'left' and c['align_why'] == 'single-cue-left-only->left', f"{c['align']} {c['align_why']}")
+
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)
