@@ -40,16 +40,35 @@ imported library, unmodified.
 
 **It DOES distribute third-party FONT DATA, which is a different thing and is
 stated separately because a licence file must not overstate its own scope.**
-1,418 tracked `.svg` files under `books/` carry an `@font-face` whose `src` is a
-base64 **woff2 subset of Liberation Sans**, embedded by
-`experiments/figure-text-translation/svgout.py` so a reader without that face
-installed still sees the figure as laid out. Liberation Sans is licensed under
-the **SIL Open Font License 1.1**, which expressly permits embedding a face in a
-document and carries no Reserved Font Name for these families. The subsets are
-font data, not code; they are not covered by the MIT grant above and are not
-sublicensed by it. *(Re-derive the count rather than trusting this one — it is
-`git ls-files -z '*.svg' | xargs -0 grep -la '@font-face' | wc -l`, and it moves
-whenever a figure is published.)*
+Translated figures under `books/*/media/` carry an `@font-face` whose `src` is a
+base64 **woff2 subset of Liberation Sans 2.1.5**, embedded by
+`experiments/figure-text-translation/svgout.py` (and, for a translated copy kept
+by ruling, `refont.py`) so a reader without that face installed still sees the
+figure as laid out. Liberation Sans 2.1.5 is licensed under the **SIL Open Font
+License 1.1**, which permits embedding a face in a document. That licence
+reserves the font names "Liberation" and "Arimo, Tinos and Cousine", so the
+subset is renamed `FigIS`; each such SVG carries the font's copyright and
+trademark notices and the licence text in a `<metadata>` element.
+`experiments/figure-text-translation/figis.py` records the font files the subsets
+are cut from, and `experiments/figure-text-translation/fonts/Liberation-2.1.5-LICENSE.txt`
+is that release's licence — a third-party licence, committed so that each SVG
+can carry it. The subsets are font data, not code; they are not covered by the
+MIT grant above and are not sublicensed by it. *(No count is given here: derive
+it with `git ls-files -z 'books/*/media/*.svg' | xargs -0 grep -la "font-family:'FigIS'" | wc -l`;
+it moves whenever a figure is published.)*
+
+**Older rendered copies under `books/*/05-publication/` may embed the same
+typeface in an earlier form.** They were rendered before the rule above. Some
+embed a woff2 subset of Liberation Sans 2.1.5 that keeps the font's original
+names and carries no licence `<metadata>`; some embed a TrueType subset of
+**Liberation Sans 1.07.4**, which is licensed under the **GNU General Public
+License version 2 with a font exception**: embedding the font in a document does
+not by itself make the document subject to the GPL. They are rendered output.
+A copy whose figure is still in `media/` is replaced when its chapter is
+rendered again; a copy no page references any more is removed by the
+pipeline's pruning step. Like the subsets above, they are font data not covered
+by the MIT grant. *(List the TrueType ones with
+`git ls-files -z '*.svg' | xargs -0 grep -la 'data:font/ttf'`.)*
 
 **Some of those files carry a second third-party face, from STIX Fonts.** Some
 composed `_IS.svg` files under `books/` embed, beside their Liberation Sans
