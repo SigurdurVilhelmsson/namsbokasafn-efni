@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_03_GalvanCu",
  "renderHash": "35a08e99014eadbd",
  "composedHash": "35a08e99014eadbd",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "1 atm H2(g)": "1 atm H2(g)",
