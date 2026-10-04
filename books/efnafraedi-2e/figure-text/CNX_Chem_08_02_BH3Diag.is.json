@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_02_BH3Diag",
  "renderHash": "077e07e78340b442",
  "composedHash": "077e07e78340b442",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Orbitals in an isolated B atom": "Sviðrúm í einangruðu B-atómi",

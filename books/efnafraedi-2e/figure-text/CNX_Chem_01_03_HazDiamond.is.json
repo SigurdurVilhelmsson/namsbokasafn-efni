@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_01_03_HazDiamond",
  "renderHash": "5c75a4e038d10c12",
  "composedHash": "5c75a4e038d10c12",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Flash points:|4 Below 73 °F|3 Below 100 °F|2 Above 100 °F not exceeding 200 °F|1 Above 200 °F|0 Will not burn": "Blossamark: 4 Undir 23 °C 3 Undir 38 °C 2 Yfir 38 °C en ekki yfir 93 °C 1 Yfir 93 °C 0 Brennur ekki",

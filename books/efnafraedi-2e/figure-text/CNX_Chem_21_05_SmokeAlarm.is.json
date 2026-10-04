@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_05_SmokeAlarm",
  "renderHash": "76910514b9e147cd",
  "composedHash": "76910514b9e147cd",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "No smoke,|charged particles|complete the circuit": "Enginn reykur, hlaðnar agnir loka rafrásinni",

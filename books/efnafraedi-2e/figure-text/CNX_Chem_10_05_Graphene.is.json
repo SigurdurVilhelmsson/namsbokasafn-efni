@@ -1,15 +1,15 @@
 {
  "version": 1,
  "basename": "CNX_Chem_10_05_Graphene",
- "renderHash": "21df80e1e2afb9b3",
- "composedHash": "21df80e1e2afb9b3",
- "composedVersion": "4",
+ "renderHash": "8413764fc3015783",
+ "composedHash": "8413764fc3015783",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Nanotube": "Nanórör",
   "Graphene sheet": "Grafenþynna",
   "Stacked sheets": "Staflaðar þynnur",
-  "Buckyball": "Buckyball"
+  "Buckyball": "Knattkol (e. buckyball)"
  },
  "mtAlternatives": {
   "Stacked sheets": {

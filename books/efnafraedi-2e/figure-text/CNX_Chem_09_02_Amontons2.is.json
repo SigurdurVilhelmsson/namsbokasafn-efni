@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_02_Amontons2",
  "renderHash": "5b05fb004474e21f",
  "composedHash": "5b05fb004474e21f",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Temperature (K)": "Hiti (K)",

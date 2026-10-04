@@ -20,8 +20,117 @@
 <path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(13.729858%, 12.159729%, 12.548828%)" stroke-opacity="1" stroke-miterlimit="12" d="M 0.00095625 0 L -0.432637 0.25 L -0.866231 0 " transform="matrix(1, 0, 0, -1, 154.9717, 23.25)"/>
 <path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(13.729858%, 12.159729%, 12.548828%)" stroke-opacity="1" stroke-miterlimit="12" d="M -0.00001875 0 L 0.433575 -0.25 L 0.867169 0 " transform="matrix(1, 0, 0, -1, 171.4258, 32.75)"/>
 <path fill="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(13.729858%, 12.159729%, 12.548828%)" stroke-opacity="1" stroke-miterlimit="12" d="M 0.00098125 0 L -0.432613 0.25 L -0.866206 0 " transform="matrix(1, 0, 0, -1, 189.6123, 23.25)"/>
-<style>@font-face{font-family:'FigIS';font-weight:400;font-style:normal;src:url(data:font/woff2;base64,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) format('woff2');}</style>
+<style>@font-face{font-family:'FigIS';font-weight:400;font-style:normal;src:url(data:font/woff2;base64,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) format('woff2');}</style>
 <g text-rendering="geometricPrecision">
+<metadata>Font: FigIS is a subset of Liberation Sans 2.1.5 (Regular), renamed as its licence requires.
+Copyright notice (Regular): Digitized data copyright (c) 2010 Google Corporation. 
+Copyright (c) 2012 Red Hat, Inc.
+Trademark notice (Regular): Liberation is a trademark of Red Hat, Inc. registered in U.S. Patent and Trademark Office and certain other jurisdictions.
+The font software is licensed under the SIL Open Font License, Version 1.1. Its licence follows.
+
+Digitized data copyright (c) 2010 Google Corporation
+	with Reserved Font Arimo, Tinos and Cousine.
+Copyright (c) 2012 Red Hat, Inc.
+	with Reserved Font Name Liberation.
+
+This Font Software is licensed under the SIL Open Font License,
+Version 1.1.
+
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+
+PREAMBLE The goals of the Open Font License (OFL) are to stimulate
+worldwide development of collaborative font projects, to support the font
+creation efforts of academic and linguistic communities, and to provide
+a free and open framework in which fonts may be shared and improved in
+partnership with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves.
+The fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works.  The fonts and derivatives,
+however, cannot be released under any other type of license.  The
+requirement for fonts to remain under this license does not apply to
+any document created using the fonts or their derivatives.
+
+ 
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such.
+This may include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components
+as distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting ? in part or in whole ?
+any of the components of the Original Version, by changing formats or
+by porting the Font Software to a new environment.
+
+"Author" refers to any designer, engineer, programmer, technical writer
+or other person who contributed to the Font Software.
+
+
+PERMISSION &amp; CONDITIONS
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,in
+   Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+   redistributed and/or sold with any software, provided that each copy
+   contains the above copyright notice and this license. These can be
+   included either as stand-alone text files, human-readable headers or
+   in the appropriate machine-readable metadata fields within text or
+   binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+   Name(s) unless explicit written permission is granted by the
+   corresponding Copyright Holder. This restriction only applies to the
+   primary font name as presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+   Software shall not be used to promote, endorse or advertise any
+   Modified Version, except to acknowledge the contribution(s) of the
+   Copyright Holder(s) and the Author(s) or with their explicit written
+   permission.
+
+5) The Font Software, modified or unmodified, in part or in whole, must
+   be distributed entirely under this license, and must not be distributed
+   under any other license. The requirement for fonts to remain under
+   this license does not apply to any document created using the Font
+   Software.
+
+
+ 
+TERMINATION
+This license becomes null and void if any of the above conditions are not met.
+
+ 
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT.  IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
+DEALINGS IN THE FONT SOFTWARE.
+
+</metadata>
 <text x="44.566" y="65.500" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">(a)</text>
 <text x="179.440" y="65.500" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">(b)</text>
 </g>

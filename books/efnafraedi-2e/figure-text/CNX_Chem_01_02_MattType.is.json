@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_01_02_MattType",
  "renderHash": "12ac7b3fdfa33f1c",
  "composedHash": "12ac7b3fdfa33f1c",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Matter": "Efni",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_00_EE_LiqWatAbso",
  "renderHash": "c86ae4873c01c7d0",
  "composedHash": "c86ae4873c01c7d0",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Wavelength": "Bylgjulengd",

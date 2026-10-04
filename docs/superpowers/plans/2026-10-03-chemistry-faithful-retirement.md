@@ -266,9 +266,9 @@ tracks FAIL, on different stdout), and review fix `d369626b1` corrected the comm
   neighbours as ③.)*
 
 ### Task R5 — PR, merge, deploy (with [USER])
-- [ ] PR (merge commit). [USER] merges, timed so the merge-to-deploy window is short.
-- [ ] Immediately before THAT deploy: R0's production checks again.
-- [ ] [USER] deploys. After: production's two paths absent from git (`git ls-files` 0), `git status --porcelain -- books`
+- [x] PR (merge commit). [USER] merges, timed so the merge-to-deploy window is short.
+- [x] Immediately before THAT deploy: R0's production checks again.
+- [x] [USER] deploys. After: production's two paths absent from git (`git ls-files` 0), `git status --porcelain -- books`
   empty; the Ritstjóri dashboard shows ch01/ch03 `activeTrack: mt-preview` (it is computed from disk).
 
 ### Task R6 — At [USER]'s held chemistry sync (later; vefur's side)

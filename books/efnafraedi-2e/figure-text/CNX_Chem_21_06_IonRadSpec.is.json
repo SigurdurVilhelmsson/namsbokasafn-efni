@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_06_IonRadSpec",
  "renderHash": "9c867ac155738e0f",
  "composedHash": "9c867ac155738e0f",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Increasing frequency ν": "Vaxandi tíðni ν",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_halogen_img",
  "renderHash": "40d33d1fe517b125",
  "composedHash": "40d33d1fe517b125",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "ethene": "eten",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_01_BindEnergy",
  "renderHash": "c8f195cc922b2e3c",
  "composedHash": "c8f195cc922b2e3c",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Mass number": "Massatala",

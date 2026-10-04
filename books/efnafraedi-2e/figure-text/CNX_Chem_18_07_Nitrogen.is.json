@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_18_07_Nitrogen",
  "renderHash": "3e32f616d3f1f956",
  "composedHash": "3e32f616d3f1f956",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Decomposers|(aerobic and anaerobic|bacteria and fungi)": "Sundrendur (loftháðar og loftfirrtar bakteríur og sveppir)",

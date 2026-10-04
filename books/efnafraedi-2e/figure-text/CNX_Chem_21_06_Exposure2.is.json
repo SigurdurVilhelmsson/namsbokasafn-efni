@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_06_Exposure2",
  "renderHash": "db552e4132f3b6a2",
  "composedHash": "db552e4132f3b6a2",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Annual nuclear worker|doses limit (NRC)|Whole body CT": "Árlegur hámarksskammtur fyrir starfsmenn í kjarnorkuverum (NRC) Tölvusneiðmynd af heilum líkama",

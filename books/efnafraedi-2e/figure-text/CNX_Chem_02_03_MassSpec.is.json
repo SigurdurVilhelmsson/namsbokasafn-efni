@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_02_03_MassSpec",
  "renderHash": "f7cfdc712c3c27c0",
  "composedHash": "f7cfdc712c3c27c0",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Sample|enters|here": "Sýni fer inn hér",

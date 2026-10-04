@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_01_02_Molecules",
  "renderHash": "948fcda462c232c2",
  "composedHash": "948fcda462c232c2",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Hydrogen": "Vetni",

@@ -578,7 +578,8 @@ is a *wrong* key rather than a *moved* one. ✏️ *Falsified 2026-09-20, record
 PerTable2 WAS bought against this segmentation (`7df47b298`). Its sidecar holds 15 per-WORD keys
 (`Noble`, `earth`, `metals`, …), and the prepared copy draws 44 of its 72 `<text>` as rotated
 single glyphs. Readers still get the June raster. What to do with the figure is in the campaign
-register's §C140 ㊾ and the step-2 spec.*
+register's §C140 ㊾ and the step-2 spec.* ✏️ *PR-B (§C140 ㊾): the June raster is restored and kept under
+`keptCopies`, and the sidecar with its 15 per-word keys is removed (bfac944fe); its paid MT record stays at `7df47b298`.*
 
 **(b) The no-`/W`/`/DW` constant-advance class is untouched, deliberately.** A `/Type0 /Identity-H
 CIDFontType2` whose descendant declares neither `/W` nor `/DW` makes pdfminer fall back to the spec
@@ -872,7 +873,9 @@ open:**
   elements, 1 `<image>`, 214 KB. It is the only one of 691 without an `@font-face`,
   because it has no text to style; the Icelandic is baked into pixels. Its sibling
   `PerTable1_IS.svg` has 360 real `<text>` elements at the same file size. Unsearchable,
-  unscalable, not re-editable — a candidate for redoing through this pipeline.
+  unscalable, not re-editable — a candidate for redoing through this pipeline. ✏️ *[USER] ruled 2026-10-02 to KEEP
+  it (step-2 spec D2): it is the copy readers are served, it embeds no font, and the re-buy was given up; recorded in
+  `keptCopies` (bfac944fe).*
 - **⑪ `_IS` is THE convention; biology's lowercase `_is` set is LEGACY and doomed.**
   liffraedi-2e's 36 files are **hand-translated images from a previous job and will be
   replaced** ([USER] 2026-09-02); their mapping is the legacy `docxImage`/`figureId`
@@ -904,7 +907,8 @@ open:**
   content-addressed to what the read layer extracts, and a changed key fails the recompose as
   `failed-compose`. The June copy (`34402e8a6`) reads *Etýlen aðsogað á*. The remedy is a
   [USER] ruling → campaign register §C140 ㊾ and the step-2 spec. Measured read-only; evidence
-  `~/.cache/namsbokasafn-audit/2026-10-02-step2-rederive/`.
+  `~/.cache/namsbokasafn-audit/2026-10-02-step2-rederive/`. ✏️ *Remedied by [USER]'s ruling (route 1): the
+  three values were rewritten by value with the keys untouched (af04e63ad), and the '5' pass (85b656948) recomposed it.*
 
 ## Provenance
 

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_11_04_ionpair",
  "renderHash": "4a3bba8ecf0cc220",
  "composedHash": "4a3bba8ecf0cc220",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Ion pair": "Jónapar"

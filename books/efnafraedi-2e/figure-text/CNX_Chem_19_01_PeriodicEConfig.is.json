@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_19_01_PeriodicEConfig",
  "renderHash": "246ee0fc46f3fbeb",
  "composedHash": "246ee0fc46f3fbeb",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Metal": "Málmur",

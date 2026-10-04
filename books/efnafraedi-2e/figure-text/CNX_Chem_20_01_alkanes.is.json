@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_alkanes",
  "renderHash": "da3ac95efbbee61e",
  "composedHash": "da3ac95efbbee61e",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "methane|CH4": "metan CH4",

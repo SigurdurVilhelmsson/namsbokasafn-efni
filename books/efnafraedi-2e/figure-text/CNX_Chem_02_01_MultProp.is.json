@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_02_01_MultProp",
  "renderHash": "e1c2d32cf02af6c9",
  "composedHash": "e1c2d32cf02af6c9",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Chlorine atom": "Klóratóm",

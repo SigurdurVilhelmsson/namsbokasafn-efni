@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_05_02_Calorim2",
  "renderHash": "38079917e5ad2e27",
  "composedHash": "38079917e5ad2e27",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Precision|thermometer": "Nákvæmnishitamælir",

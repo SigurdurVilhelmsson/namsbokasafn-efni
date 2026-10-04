@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_14_02_phscale",
  "renderHash": "476a5ef9405fec3d",
  "composedHash": "476a5ef9405fec3d",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "pOH": "pOH",

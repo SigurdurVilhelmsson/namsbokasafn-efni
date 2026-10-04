@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_04_Band",
  "renderHash": "977fd96c4b7607fd",
  "composedHash": "977fd96c4b7607fd",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Band gap": "Orkubil",

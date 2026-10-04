@@ -18,17 +18,26 @@ DECISION, and both fail silently in the two ways this repo keeps re-learning:
     in the frozen evidence, not in this file, because a render moves with the browser build.
 
 ⚠️ Since the 2026-09-15 local-box run the committed brain SVG carries the HEAL, not the
-ring, so its corpus anchor asserts the healed state with a reachability witness; exocytosis
-remains the real-bytes carrier the detector must still fire on.
+ring, so its corpus anchor asserts the healed state with a reachability witness.  The
+real-bytes carriers the detector must still fire on (brain's ring, exocytosis's eight
+candidates, HeatMeas's gate-refused pair) are censused in section 7a on SOURCE artwork,
+prepared the way the driver prepares it, because the step-2 recompose (§C140 ㊾) rewrites
+the committed exocytosis, HeatMeas and Econfig as raster shells with no <mask>.
 
 The corpus anchors need the committed SVGs under books/.  They SKIP when those are
 absent, and the skip is counted and printed, because a silent skip would turn this file
-into the empty-result failure it exists to prevent.
+into the empty-result failure it exists to prevent.  The source anchors (7a) need the
+machine-local artwork trees and SKIP when sources.local.json is absent.  ON THE FIGURE BOX
+a SKIPPED line naming them fails the pre-flight, although main() still exits 0.
 """
 import base64
 import io
+import json
 import os
+import shutil
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # never process.cwd() — repo rule
@@ -413,24 +422,168 @@ def test_walk_is_memoised():
 
 
 # ---------------------------------------------------------------------------
-# 7. Corpus anchors — the two real carriers, and the corpus-wide count
+# 7a. Source anchors — the artwork the ring gate censuses, which no recompose rewrites
 # ---------------------------------------------------------------------------
 
+BOOK = 'efnafraedi-2e'
+
+# (the CNXML basename the driver prepares under, the name the artwork is delivered as). brain and
+# exocytosis are hashed in the CNXML and delivered under the stripped name, which the driver
+# reaches through its de-hash second pass; asking sources.py for the stem directly IS that pass.
+SOURCE_ANCHORS = (
+    ('CNX_Chem_03_01_brain-ec0b', 'CNX_Chem_03_01_brain'),
+    ('CNX_Chem_03_01_exocytosis-88f6', 'CNX_Chem_03_01_exocytosis'),
+    ('CNX_Chem_05_02_HeatMeas', 'CNX_Chem_05_02_HeatMeas'),
+    ('CNX_Chem_06_04_Econfig', 'CNX_Chem_06_04_Econfig'),
+)
+
+
+def _driver_env():
+    """The environment tools/figure-run.js gives its resolve and prepare children."""
+    return {**os.environ, 'FIGTEXT_PYLIBS': str(HERE / 'pylibs')}
+
+
+def resolve_sources(stems):
+    """`sources.py --json <book> <names…>`, as figure-run.js's resolveArtwork spawns it. A non-zero
+    exit is the resolver failing (a configured tree that is not mounted), never "these figures
+    have no artwork", so it raises rather than returning nulls."""
+    r = subprocess.run([sys.executable, str(HERE / 'sources.py'), '--json', BOOK, *stems],
+                       cwd=str(HERE), env=_driver_env(), capture_output=True, text=True,
+                       timeout=120)
+    if r.returncode != 0:
+        raise RuntimeError(f'sources.py exited {r.returncode}: {r.stderr.strip()[-400:]}')
+    return json.loads(r.stdout)
+
+
+def prepared_artwork_text(artwork, basename):
+    """figure-prepare.py into a throwaway directory, with the driver's argv, and the artwork.svg it
+    writes: the file the driver's ring gate hands `figure-rings.py census`. The directory is
+    removed before returning, so one prepared figure is on disk at a time."""
+    root = Path(tempfile.mkdtemp(prefix='figrings-src-'))
+    out = root / basename
+    out.mkdir()
+    try:
+        r = subprocess.run([sys.executable, str(HERE / 'figure-prepare.py'), str(artwork),
+                            '--basename', basename, '--out', str(out)],
+                           cwd=str(HERE), env=_driver_env(), capture_output=True, text=True,
+                           timeout=1200)
+        if r.returncode != 0:
+            raise RuntimeError(f'figure-prepare.py exited {r.returncode} on {basename}: '
+                               f'{r.stderr.strip()[-400:]}')
+        return (out / 'artwork.svg').read_text(encoding='utf-8')
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+
+
+def test_source_anchors():
+    print('7a. source anchors — the artwork the ring gate censuses, which no recompose rewrites')
+    # 🔴 WHY THESE ANCHORS LIVE ON SOURCE ARTWORK (§C140 ㊾, design D7). Section 7 pinned ring
+    # candidates in COMMITTED media, and the step-2 recompose rewrites exocytosis, HeatMeas and
+    # Econfig as raster shells (⑭): one <image>, no <mask>, nothing for the detector to find. The
+    # pass does not touch the source artwork or the prepare stage, so the real-bytes carriers live
+    # on here, prepared the way the driver prepares them. Measured 2026-10-03 at 2f5f213bf: each
+    # source census equals the committed one for exocytosis, HeatMeas and Econfig, and brain's
+    # source still carries the ring the driver heals.
+    if not (HERE / 'sources.local.json').exists():
+        skip('source anchors', 'sources.local.json absent — not the figure box')
+        return
+    try:
+        found = resolve_sources([stem for _, stem in SOURCE_ANCHORS])
+    except RuntimeError as e:
+        check('the resolver answers for the source anchors', False, str(e))
+        return
+    art = {}
+    for basename, stem in SOURCE_ANCHORS:
+        hit = found.get(stem)
+        if not (hit and hit.get('path')):
+            check(f'{stem} resolves to source artwork', False, repr(hit))
+            continue
+        try:
+            art[basename] = prepared_artwork_text(hit['path'], basename)
+        except RuntimeError as e:
+            check(f'{basename} prepares', False, str(e))
+
+    brain = art.get('CNX_Chem_03_01_brain-ec0b')
+    if brain is not None:
+        bc, _ = figrings.find_candidates(brain)
+        # The ring §C140 ⑩ heals: a REAL-bytes candidate the gate approves. Section 7's published
+        # brain carries the heal; this is the ring itself.
+        check('brain source carries one candidate, mask-2 (source-29, 90x24, nothing refused)',
+              [(c.mask, c.image, c.px, c.refuse) for c in bc]
+              == [('mask-2', 'source-29', [90, 24], None)], repr(bc))
+    exo = art.get('CNX_Chem_03_01_exocytosis-88f6')
+    if exo is not None:
+        ec, _ = figrings.find_candidates(exo)
+        check('exocytosis source carries eight candidates — reachable only through feImage',
+              len(ec) == 8, f'got {[c.mask for c in ec]}')
+        check('and mask-491 is among the source candidates (the measured false positive)',
+              any(c.mask == 'mask-491' for c in ec), str([c.mask for c in ec]))
+    heat = art.get('CNX_Chem_05_02_HeatMeas')
+    if heat is not None:
+        hc, _ = figrings.find_candidates(heat)
+        # ch05's buy (2026-09-19): the counterfactual gate REFUSED both, so they were published
+        # unhealed on purpose — real-bytes candidates the gate must refuse.
+        check('HeatMeas source carries the two gate-refused candidates, mask-9 and mask-11',
+              [c.mask for c in hc] == ['mask-9', 'mask-11'], str([c.mask for c in hc]))
+    econ = art.get('CNX_Chem_06_04_Econfig')
+    if econ is not None:
+        st = {}
+        xc, _ = figrings.find_candidates(econ, stats=st)
+        # §C140 ㊸ — the figure that held the corpus sweep for over 22 minutes on 2026-09-30.
+        check('Econfig source finishes in the memoised walk, in under 5,000 calls',
+              st.get('mode') == 'memo' and st.get('visits', 1e9) < 5000, repr(st))
+        check('and Econfig source carries no candidate', xc == [], repr(xc))
+
+
+# ---------------------------------------------------------------------------
+# 7b. Corpus anchors — the PUBLISHED bytes, after the step-2 recompose pass
+# ---------------------------------------------------------------------------
+
+# `svgout.raster_shell`'s artwork layer is ONE <image> of a base64 PNG drawn with
+# preserveAspectRatio="none"; `write_svg` adds the live <text> and nothing else. Measured on the
+# eight shells committed before the pass (ch17–21): <image> 1, <path> 0, <mask> 0, <feImage> 0.
+SHELL_MARK = 'preserveAspectRatio="none" xlink:href="data:image/png;base64,'
+
+
+def is_raster_shell(text):
+    """True for a published copy whose artwork is one raster <image> and no vector at all."""
+    return (SHELL_MARK in text and text.count('<image') == 1 and text.count('<path') == 0
+            and text.count('<mask') == 0 and text.count('<feImage') == 0)
+
+
+def published_text(name):
+    """A committed media copy by file name. A seam on purpose: the re-pin's red check swaps a
+    pre-pass copy in here."""
+    return (MEDIA / name).read_text(encoding='utf-8')
+
+
+# Section 7 pinned these three in committed bytes until the step-2 pass, whose ⑭ raster arm drew
+# each as a shell. Their real-bytes ring census lives in 7a now, on source artwork.
+FORMER_CARRIERS = ('CNX_Chem_03_01_exocytosis-88f6_IS.svg', 'CNX_Chem_05_02_HeatMeas_IS.svg',
+                   'CNX_Chem_06_04_Econfig_IS.svg')
+
+# A CORPUS PIN, moved by the step-2 recompose pass (§C140 ㊾). Before it the list was
+# [('CNX_Chem_05_02_HeatMeas_IS.svg', 2)], ch05's gate-refused pair, with exocytosis anchored
+# apart. Measured after the pass over every published copy except brain; the run is recorded in
+# register ㊾. An exact list still trips on any NEW carrier, which is what this check is for.
+KNOWN_PUBLISHED_CARRIERS = []
+
+
 def test_corpus_anchors():
-    print('7. corpus anchors — the real bytes, not a fixture')
+    print('7b. corpus anchors — the PUBLISHED bytes, after the step-2 recompose pass')
     brain = MEDIA / 'CNX_Chem_03_01_brain-ec0b_IS.svg'
-    exo = MEDIA / 'CNX_Chem_03_01_exocytosis-88f6_IS.svg'
-    if not brain.exists() or not exo.exists():
+    if not brain.exists():
         skip('corpus anchors', 'committed media SVGs not present')
         return
     # 🔴 BRAIN IS NO LONGER A CARRIER: THE DRIVER HEALED ITS RING (§C140 ⑩, local-box run
-    # 2026-09-15, evidence/2026-09-15-c10-local-run/). This anchor used to assert exactly one
-    # candidate, which was a COUNTDOWN — true only until the fix it gates was first used. So it
-    # now asserts the heal, and the zero is paired with a WITNESS: at an unbounded threshold the
-    # walker must still reach mask-2, or "no candidate" would read the same as a walker that no
-    # longer finds the mask at all. A visible ring on REAL bytes now survives only in git
-    # history (38f60765) — not read here, because a history lookup is vacuous on a depth-1 clone;
-    # the planted 90x24 ring fixture above is its SYNTHETIC stand-in, not a copy of it.
+    # 2026-09-15, evidence/2026-09-15-c10-local-run/), and the step-2 pass healed it again when it
+    # recomposed brain as vector. This anchor used to assert exactly one candidate, which was a
+    # COUNTDOWN — true only until the fix it gates was first used. So it asserts the heal, and the
+    # zero is paired with a WITNESS: at an unbounded threshold the walker must still reach mask-2,
+    # or "no candidate" would read the same as a walker that no longer finds the mask at all. The
+    # visible ring on REAL bytes is censused in section 7a, on brain's SOURCE artwork, which the
+    # heal never touches; git history (38f60765) is not read here, because a history lookup is
+    # vacuous on a depth-1 clone. The planted 90x24 ring fixture above is its SYNTHETIC stand-in.
     brain_text = brain.read_text(encoding='utf-8')
     bc, _ = figrings.find_candidates(brain_text)
     check('brain carries no candidate — its ring was healed', len(bc) == 0,
@@ -443,28 +596,22 @@ def test_corpus_anchors():
         check('and every side of mask-2 is now below the byte threshold',
               max(reach[0].ring.values()) < figrings.RING_BYTES, repr(reach[0].ring))
 
-    ec, _ = figrings.find_candidates(exo.read_text(encoding='utf-8'))
-    check('exocytosis carries eight candidates — reachable only through feImage',
-          len(ec) == 8, f'got {len(ec)}')
-    check('and mask-491 is among them (the measured false positive)',
-          any(c.mask == 'mask-491' for c in ec), str([c.mask for c in ec]))
+    for name in FORMER_CARRIERS:
+        if not (MEDIA / name).exists():
+            check(f'{name} is published', False, 'no such file under media/')
+            continue
+        text = published_text(name)
+        check(f'{name} is published as a raster shell (§C140 ⑭)', is_raster_shell(text),
+              ' '.join(f'{k} {text.count(k)}' for k in ('<image', '<path', '<mask', '<feImage')))
+        cs, _ = figrings.find_candidates(text)
+        check(f'and {name} carries no candidate', cs == [], str([c.mask for c in cs]))
+    # The fingerprint's two controls: it says yes to a shell committed before the pass and no to
+    # the vector brain, so a "shell" verdict above is not a predicate that says yes to everything.
+    check('CONTROL: the shell fingerprint recognises a pre-pass shell (SHE, ch17)',
+          is_raster_shell(published_text('CNX_Chem_17_03_SHE_IS.svg')))
+    check('CONTROL: and does not call the vector brain a shell', not is_raster_shell(brain_text))
 
-    # §C140 ㊸ — the figure that held this sweep for over 22 minutes on 2026-09-30: about 7e24
-    # walk paths and 1,568 elements. It must now finish in the memoised walk, in a number of
-    # calls on the order of its elements, and it carries no candidate (all four of its raster
-    # masks are drawn through a TRANSFORMED use, which is not this defect's shape).
-    econfig = MEDIA / 'CNX_Chem_06_04_Econfig_IS.svg'
-    if econfig.exists():
-        st = {}
-        ec_c, _ = figrings.find_candidates(econfig.read_text(encoding='utf-8'), stats=st)
-        check('Econfig finishes in the memoised walk, in under 5,000 calls',
-              st.get('mode') == 'memo' and st.get('visits', 1e9) < 5000, repr(st))
-        check('and carries no candidate', ec_c == [], repr(ec_c))
-    else:
-        skip('Econfig anchor', 'committed media SVG not present')
-
-    others = sorted(p for p in MEDIA.glob('*_IS.svg')
-                    if p.name not in (brain.name, exo.name))
+    others = sorted(p for p in MEDIA.glob('*_IS.svg') if p.name != brain.name)
     if not others:
         skip('corpus sweep', 'no other media SVGs')
         return
@@ -477,13 +624,8 @@ def test_corpus_anchors():
         cs, _ = figrings.find_candidates(p.read_text(encoding='utf-8'))
         if cs:
             hits.append((p.name, len(cs)))
-    # A CORPUS PIN, moved 2026-09-19 by chemistry ch05's figure buy: HeatMeas carries
-    # the byte signature on 2 masks, and the counterfactual gate REFUSED both (no
-    # visible ring), so the published SVG keeps them unhealed on purpose. An exact
-    # list still trips on any NEW carrier, which is what this check exists for.
-    known = [('CNX_Chem_05_02_HeatMeas_IS.svg', 2)]
-    check('no carrier beyond the known, gate-refused ones exists in this corpus today',
-          hits == known, str(hits[:5]))
+    check('no published carrier beyond the known ones exists in this corpus today',
+          hits == KNOWN_PUBLISHED_CARRIERS, str(hits[:5]))
 
 
 # ---------------------------------------------------------------------------
@@ -506,7 +648,7 @@ def test_gate_separation_is_documented():
 def main():
     for fn in (test_detector, test_feimage_reachability, test_refusals, test_heal_is_local,
                test_edgeline_one_sided, test_gate_is_interventional, test_walk_is_memoised,
-               test_corpus_anchors, test_gate_separation_is_documented):
+               test_source_anchors, test_corpus_anchors, test_gate_separation_is_documented):
         fn()
     print()
     if SKIPPED:

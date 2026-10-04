@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_06_01_Solardist",
  "renderHash": "49c381659d341d2d",
  "composedHash": "49c381659d341d2d",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Spectral irradiance (W/m2/nm)": "Litrófsgeislunarþéttleiki (W/m2/nm)",

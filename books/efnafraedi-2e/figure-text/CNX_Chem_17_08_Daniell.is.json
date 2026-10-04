@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_08_Daniell",
  "renderHash": "0327b716dd8aa15e",
  "composedHash": "0327b716dd8aa15e",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Zn anode": "Sink anóða",

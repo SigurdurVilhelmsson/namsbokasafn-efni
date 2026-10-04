@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_03_alcoholABC_img",
  "renderHash": "bd135d553f1ea284",
  "composedHash": "bd135d553f1ea284",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Compound C": "Efnasamband C",

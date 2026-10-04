@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_02_spGeom",
  "renderHash": "23e2e1c6de14b750",
  "composedHash": "23e2e1c6de14b750",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Hybridization": "Blendingur",

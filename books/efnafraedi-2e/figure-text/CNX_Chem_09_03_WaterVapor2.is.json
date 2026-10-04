@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_03_WaterVapor2",
  "renderHash": "3e5ba7b2ae6b9588",
  "composedHash": "3e5ba7b2ae6b9588",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Temperature (°C)": "Hiti (°C)",

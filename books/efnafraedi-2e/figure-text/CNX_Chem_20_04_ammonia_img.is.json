@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_04_ammonia_img",
  "renderHash": "25e06d7bfa8d9ba6",
  "composedHash": "25e06d7bfa8d9ba6",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "ammonia": "ammoníak",

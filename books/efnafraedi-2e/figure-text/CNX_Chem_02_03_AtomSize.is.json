@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_02_03_AtomSize",
  "renderHash": "cfef080ffc2f4019",
  "composedHash": "cfef080ffc2f4019",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Nucleus": "Kjarni"

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_14_07_titration2",
  "renderHash": "2b6206c4e9c28cf1",
  "composedHash": "2b6206c4e9c28cf1",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Volume of 0.100 M NaOH added (mL)": "Rúmmál af 0,100 M NaOH sem bætt var við (ml)",
