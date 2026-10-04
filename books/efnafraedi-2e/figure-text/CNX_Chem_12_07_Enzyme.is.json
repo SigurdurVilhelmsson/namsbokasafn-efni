@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_12_07_Enzyme",
  "renderHash": "bc41c467d1a28d69",
  "composedHash": "bc41c467d1a28d69",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Substrates": "Hvarfefni",
