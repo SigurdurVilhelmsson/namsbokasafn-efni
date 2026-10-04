@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_10_04_CO2PhasDi",
  "renderHash": "9cb6d891829c4c53",
  "composedHash": "9cb6d891829c4c53",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "SCF": "SCF",

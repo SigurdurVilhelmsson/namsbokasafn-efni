@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_10_05_NtwrkSolid",
  "renderHash": "8ddf91bc847158ab",
  "composedHash": "8ddf91bc847158ab",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "diamond": "demantur",
