@@ -494,3 +494,19 @@ lost to the box (a sleep, and a low-memory kill caused by a full RAM-backed `/tm
 re-measured alone on `main`'s own code. Status and the next action live in the register's newest RESUME, not here.
 
 ---
+
+## 2026-10-04 (afternoon) - §C140 step 2's recompose pass run, merged and deployed (PR #537)
+
+**Branch:** content/c140-c49-recompose-pass → merged as `3faa17761`; deployed by [USER] 15:15Z, verified read-only
+**Cost:** 0 ISK (`.env` held outside the repo for the whole pass; every live log says MT spawned for 0 figures)
+
+**What ran:** the plan inline in one session: the keptCopies, HetCats/Graphene and heldBlockValues data commits, the
+ring anchors moved to source artwork, the '4' → '5' bump, 22 chapter runs (each dry then live, each summary checked
+against a prediction measured from the tree), the census by value (20/20), textless convergence by byte identity,
+three-engine sweeps (715 × 3), the 7b re-pin, and a by-eye gate of 72 figures double-graded by agents with a planted
+control. **The gate found 13 figures worse than June and 7 unsure; none was caused by the pass** (pre/post renders
+pixel-identical). [USER] ruled it a SYNC gate, merged, and answered all 20 on a review page; the 9 June copies kept
+embed Liberation 1.07.4, so the next PR re-fonts them under the current rules.
+
+**Lessons:** attribute a regression before reporting it (text layer, then pixels, pre vs post); plant a known defect
+as a positive control for agent graders; a review page needs its own answer boxes (viewer comment mode was not usable).
