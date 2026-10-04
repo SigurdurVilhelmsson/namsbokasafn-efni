@@ -6,6 +6,7 @@ Plain checks, in test_figis.py's style. Every property that could pass vacuously
 fail it. The canonical form below is written HERE, independently of refont.py, so the tool cannot certify itself.
 The fixtures are built from literals; the old face's font data is a placeholder, because refont never reads it."""
 import base64, io, re, sys
+from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import _deps  # noqa: F401
@@ -56,11 +57,36 @@ def fixture(faces=(('normal', 'normal'), ('bold', 'normal'), ('normal', 'italic'
 
 
 def canon(svg):
-    """INDEPENDENT of refont.py: the file with its font machinery removed. Equal canon = every byte of artwork, every
-    <text>/<tspan> attribute, coordinate and character is unchanged."""
+    """Only for the 1b control: the tool's notion, kept to show a one-digit change is caught by it too."""
     s = re.sub(r'<style>.*?</style>', '<style/>', svg, count=1, flags=re.S)
     s = re.sub(r'<metadata>.*?</metadata>', '', s, flags=re.S)
     return re.sub(r'font-family="[^"]*"', 'font-family="F"', s)
+
+
+def illicit_edits(old, new):
+    """INDEPENDENT of refont.py, by a different method: split both files before every '<' into tokens that join back to
+    the exact bytes, drop the one <metadata>...</metadata> run that follows </style> in the new file, align token by
+    token, and return every difference that is NOT (a) the <style> token or (b) a <text> start tag that becomes equal
+    once font-family="LiberationSans" reads "FigIS". [] = only the font machinery changed."""
+    tok = lambda t: re.split(r'(?=<)', t)
+    a, b = tok(old), tok(new)
+    if '<metadata>' in new:
+        i = next(k for k, t in enumerate(b) if t.startswith('<metadata>'))
+        j = next(k for k, t in enumerate(b) if k > i and t.startswith('</metadata>'))
+        tail = b[j][len('</metadata>'):]
+        if not b[i - 1].startswith('</style>') or b[i - 1] != '</style>':
+            return ['<metadata> does not directly follow </style>']
+        b = b[:i - 1] + ['</style>' + tail] + b[j + 1:]
+    if len(a) != len(b):
+        return [f'token count {len(a)} != {len(b)}']
+    bad = []
+    for x, y in zip(a, b):
+        if x == y or (x.startswith('<style>') and y.startswith('<style>')):
+            continue
+        if x.startswith('<text') and x.replace('font-family="LiberationSans"', 'font-family="FigIS"') == y:
+            continue
+        bad.append((x[:60], y[:60]))
+    return bad
 
 
 def faces_of(svg):
@@ -76,9 +102,11 @@ def faces_of(svg):
 print('1. the re-fonted file is the June file with only its font machinery replaced')
 old = fixture()
 new, rep = RF.refont(old)
-check('1a canon(old) == canon(new)', canon(old) == canon(new))
+check('1a only the font machinery changed (token alignment, independent of refont)', illicit_edits(old, new) == [],
+      str(illicit_edits(old, new)))
 tampered = new.replace('x="146.87"', 'x="146.88"')
-check('1b CONTROL — a one-digit coordinate change breaks canon equality', canon(old) != canon(tampered))
+check('1b CONTROL — a one-digit coordinate change is reported', len(illicit_edits(old, tampered)) == 1
+      and canon(old) != canon(tampered))
 check('1c no TrueType data and no Liberation family name is left outside <metadata>',
       'font/ttf' not in new and not figis.FORBIDDEN.search(re.sub(r'<metadata>.*?</metadata>', '', new, flags=re.S)))
 check('1d CONTROL — the June input does carry both', 'font/ttf' in old and figis.FORBIDDEN.search(old) is not None)
@@ -115,6 +143,11 @@ check('2g a face drawing NBSP also carries U+0020: WebKit draws NBSP with the SP
 check('2h CONTROL — a face with no NBSP gets no space it was not given',
       0x20 not in set(faces_of(RF.refont(fixture(body='<text font-family="LiberationSans" font-size="9"><tspan x="1" '
                                                        'y="1">ab</tspan></text>'))[0])[(False, False)].getBestCmap()))
+
+tab = fixture(body='<text font-family="LiberationSans" font-size="9" xml:space="preserve"><tspan x="1" y="1">a\tb\nc'
+                   '</tspan></text>')
+check('2i a TAB or NEWLINE drawn as a space under xml:space="preserve" brings U+0020 into the face',
+      0x20 in set(faces_of(RF.refont(tab)[0])[(False, False)].getBestCmap()))
 
 print('3. <metadata> carries the licence, once, immediately after </style>')
 check('3a exactly one <metadata>', new.count('<metadata>') == 1)
@@ -174,6 +207,18 @@ cases = {
         fixture().replace('<g>', '<g id="LiberationSans">', 1),
     '5p a DOCTYPE or entity declaration (no XML entity expansion is ever attempted)':
         '<!DOCTYPE svg [<!ENTITY a "b">]>' + fixture(),
+    '5q a style="" font property written in capitals':
+        fixture(body=plain.replace('<tspan ', '<tspan style="FONT-WEIGHT:bold" ')),
+    '5r a style="" font property spelled with a CSS escape':
+        fixture(body=plain.replace('<tspan ', '<tspan style="f\\6f nt-weight:bold" ')),
+    '5s a font-variant presentation attribute (small caps draw other glyphs)':
+        fixture(body=plain.replace('font-size="9"', 'font-size="9" font-variant="small-caps"')),
+    '5t a style="" text-transform (draws other characters)':
+        fixture(body=plain.replace('<tspan ', '<tspan style="text-transform:uppercase" ')),
+    '5u a text-transform presentation attribute':
+        fixture(body=plain.replace('font-size="9"', 'font-size="9" text-transform="uppercase"')),
+    '5v a namespace-prefixed <svg:style>':
+        fixture().replace('<g>', '<svg:style xmlns:svg="http://www.w3.org/2000/svg">text{font-weight:bold}</svg:style><g>', 1),
     '5o a font-family attribute on a <text> written with single quotes':
         fixture(body=plain.replace('font-family="LiberationSans"', "font-family='LiberationSans'")),
 }
@@ -181,21 +226,24 @@ for label, svg in cases.items():
     msg = refusal(lambda svg=svg: RF.refont(svg))
     check(f'{label} is refused', msg != '', msg[:140])
 
+check('5w CONTROL — a style="" that sets no font or text property on ARTWORK (Archery: mix-blend-mode) is accepted',
+      refusal(lambda: RF.refont(fixture().replace('fill="#e0d1e3"', 'fill="#e0d1e3" style="mix-blend-mode:multiply"'))) == '')
+
 print('6. the real June copies (skipped when the sister repo is absent)')
-from pathlib import Path
-VEFUR = Path(__file__).resolve().parents[3] / 'namsbokasafn-vefur/static/content/efnafraedi-2e/chapters'
-real = sorted(VEFUR.glob('*/images/media/CNX_Chem_01_02_MattType_IS.svg')) if VEFUR.is_dir() else []
-if real:
-    s = real[0].read_text(encoding='utf-8')
-    if 'font/ttf' in s:
-        n, r = RF.refont(s)
-        check('6a MattType: canon identity on the real June bytes', canon(s) == canon(n))
-        check('6b MattType: Regular and Bold embedded, both covering NBSP', set(faces_of(n)) == {(False, False), (True, False)}
-              and all(0xa0 in set(f.getBestCmap()) for f in faces_of(n).values()))
-    else:
-        print('  SKIP  6 the sister repo already serves a re-fonted MattType')
+import subprocess
+REPO = Path(__file__).resolve().parents[2]
+JUNE_MATT = '9269fcda8:books/efnafraedi-2e/media/CNX_Chem_01_02_MattType_IS.svg'   # the June blob [USER] kept
+got = subprocess.run(['git', '-C', str(REPO), 'show', JUNE_MATT], capture_output=True)
+if got.returncode == 0:
+    s = got.stdout.decode('utf-8')
+    n, r = RF.refont(s)
+    check('6a MattType (June bytes from git): only the font machinery changed', illicit_edits(s, n) == [],
+          str(illicit_edits(s, n)))
+    check('6b MattType: Regular and Bold embedded, both covering NBSP and the space WebKit draws it with',
+          set(faces_of(n)) == {(False, False), (True, False)}
+          and all({0xa0, 0x20} <= set(f.getBestCmap()) for f in faces_of(n).values()))
 else:
-    print('  SKIP  6 no sister repo')
+    print('  SKIP  6 the June blob is not in this clone (a shallow clone)')
 
 print()
 print('  ALL PASS' if not fails else f'  {len(fails)} FAILED: {fails}')

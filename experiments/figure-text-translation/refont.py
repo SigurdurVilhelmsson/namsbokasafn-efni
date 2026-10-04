@@ -21,14 +21,18 @@ from the Italic face with synthetic bold. Embedding a true FigIS Bold Italic wou
 routes them to the FigIS Italic face instead. A June face that nothing is routed to is dropped: removing a face that
 is never the closest match cannot change which face is.
 
-WHAT CAN STILL DIFFER is the glyph OUTLINES (2.1.5 is a different cut from 1.07.4; the metrics are compatible) and,
-for a run the browser lays out itself (one x for several characters), any kerning pair whose value differs between
-the two versions. Neither is decided here: both are measured per figure, in each engine, before a copy is committed.
+WHAT CAN STILL DIFFER is the glyph OUTLINES (2.1.5 is a different cut from 1.07.4; the metrics are compatible), the
+TrueType HINTING, which moves rasterised pixels by a fraction of a pixel where the rasteriser honours hints (FreeType
+does, Apple's CoreText does not), and, for a run the browser lays out itself (one x for several characters), any
+kerning pair whose value differs between the two versions. Neither is decided here: both are measured per figure, in each engine, before a copy is committed.
 
 FAIL CLOSED: anything outside the June shape that was surveyed on 2026-10-04 (11 files) is refused with RefontRefused
-rather than guessed at - a font property in a style="" attribute, a font attribute on any element but <text>, a
-<tspan> naming a family, a weight or style outside normal/bold/400/700 and normal/italic, a <style> holding anything
-but the June @font-face rules, a DOCTYPE or entity declaration, a file already carrying <metadata>.
+rather than guessed at - a font-* or text-transform property in a style="" attribute (matched case-insensitively; any
+CSS escape is refused outright), any font-* presentation attribute refont does not route by (font-variant, ...) or
+text-transform, a font-family/weight/style on any element but <text>, a <tspan> naming a family, a weight or style
+outside normal/bold/400/700 and normal/italic, a <style> holding anything but the June @font-face rules, a second
+style element (a prefixed <svg:style> included), a DOCTYPE or entity declaration, a file already carrying <metadata>.
+Found by an adversarial review on 2026-10-04; none of these occurs in the 11 June copies.
 """
 import base64, json, re, sys
 import xml.etree.ElementTree as ET
@@ -46,6 +50,12 @@ _STYLE = re.compile(r'<style>(.*?)</style>', re.S)
 _WEIGHT = {'normal': False, '400': False, 'bold': True, '700': True}
 _STYLE_VALUES = {'normal': False, 'italic': True}
 FONT_ATTRS = ('font-family', 'font-weight', 'font-style')
+# Presentation attributes that change WHICH glyphs are drawn (or how they are synthesised): any font-* refont does not
+# route by, and text-transform. font-size only scales, so it is allowed wherever June has it.
+_GLYPH_ATTR = re.compile(r'^(font(-(?!family$|weight$|style$|size$)[a-z-]+)?|text-transform)$')
+# In a style="" declaration EVERY font property is refused: refont routes by attributes and never reads style.
+_STYLE_PROP = re.compile(r'^(font(-[a-z-]+)?|text-transform)$')
+_WS_DRAWN_AS_SPACE = '\t\n\r'
 ORDER = [(False, False), (True, False), (False, True), (True, True)]   # svgout.write_svg's rule order
 
 
@@ -101,8 +111,15 @@ def _used_chars(root):
         nonlocal texts
         tag = el.tag[len(SVG_NS):] if el.tag.startswith(SVG_NS) else el.tag
         st = el.get('style') or ''
-        if 'font' in st:
-            raise RefontRefused(f'<{tag}> carries a font property in style="{st}"')
+        if '\\' in st:
+            raise RefontRefused(f'<{tag}> has a CSS escape in style="{st}"; refont does not decode CSS')
+        for decl in st.split(';'):
+            prop = decl.split(':', 1)[0].strip().lower()
+            if prop and _STYLE_PROP.match(prop):
+                raise RefontRefused(f'<{tag}> sets {prop} in style="{st}"')
+        glyph = [a for a in el.attrib if _GLYPH_ATTR.match(a.split('}')[-1])]
+        if glyph:
+            raise RefontRefused(f'<{tag}> carries {glyph}, which change the glyphs drawn')
         have = [a for a in FONT_ATTRS if el.get(a) is not None]
         if have and tag not in ('text', 'tspan'):
             raise RefontRefused(f'<{tag}> carries {have}; only <text> may')
@@ -146,6 +163,9 @@ def refont(svg):
         root = ET.fromstring(svg)
     except ET.ParseError as exc:
         raise RefontRefused(f'not well-formed XML: {exc}') from exc
+    styles = [e for e in root.iter() if isinstance(e.tag, str) and e.tag.split('}')[-1] == 'style']
+    if len(styles) != 1:
+        raise RefontRefused(f'{len(styles)} style elements in the parsed tree (a prefixed <svg:style> counts)')
     used, texts = _used_chars(root)
     attr = f'font-family="{JUNE_FAMILY}"'
     if svg.count(attr) != texts:
@@ -162,8 +182,9 @@ def refont(svg):
     # font instead (measured 2026-10-04 in Playwright's WebKit: 2.86 against 2.50 at 9 pt, i.e. DejaVu's space, which
     # moved every later glyph of Manometer's "Lokaður endi"). June's 1.07.4 subsets always held U+0020, so a face that
     # draws NBSP is given U+0020 too. Chromium and Firefox draw the NBSP glyph and measured identical either way.
+    # The same holds for a TAB, NEWLINE or CR, which SVG draws as a space (xml:space="preserve") or folds into one.
     for face in chars.values():
-        if '\xa0' in face:
+        if '\xa0' in face or any(c in face for c in _WS_DRAWN_AS_SPACE):
             face.add(' ')
     keys = [k for k in ORDER if k in chars]
     rules = []
