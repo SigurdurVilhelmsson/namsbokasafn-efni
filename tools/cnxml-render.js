@@ -3901,6 +3901,27 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
+    // ZERO-OWN-MODULES GUARD (chemistry faithful retirement, Decision 1, ruled
+    // 2026-10-03) — before the pre-flight and the sweep, so a refusal deletes and
+    // writes nothing. findChapterModules throws when the track's chapter directory
+    // is ABSENT but returns [] when it exists and holds no .cnxml (e.g. only a
+    // gitignored `*.cnxml.backup.*`, which `git rm -r` leaves behind). A
+    // full-chapter render would then sweep 05-publication/<track>/chapters/NN/
+    // and, for faithful, rebuild every rollup from mt-preview CNXML (the union
+    // below) and rewrite rollups-complete — re-enabling vefur's overlay for a
+    // retired track. --module renders (Vista + Birta) are untouched: their module
+    // is checked to exist above, so they always have one of their own.
+    if (!args.module && modules.length === 0) {
+      throw new Error(
+        `Refusing a full-chapter render (track ${args.track}, chapter ${args.chapter}): ` +
+          `${path.join(BOOKS_DIR, '03-translated', args.track, chapterDir)} exists but holds ` +
+          `no .cnxml module of its own. Rendering it would rebuild the published chapter ` +
+          `without any ${args.track} input. NOTHING was deleted or written. ` +
+          `To render it, inject this track's modules first; for a retired track, remove ` +
+          `the leftover directory instead (it holds only backups).`
+      );
+    }
+
     // §C145 ② PRE-FLIGHT — before the sweep below deletes every .html and every
     // .backup.* in the chapter directory. A refusal here costs nothing; the same
     // refusal after the sweep costs the chapter its published pages.

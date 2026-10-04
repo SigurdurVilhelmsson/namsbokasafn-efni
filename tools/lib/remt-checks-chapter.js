@@ -109,7 +109,8 @@
  *     inside it. Sub-counts are REPORTED in `message` instead (§C82 L76's precedent).
  *
  * ⚠️ K3's unit is different and must be: published files carrying a `data-module-id` —
- * 240 of 334 today, because `snapshotModuleIds` omits id-less files by design. See K3.
+ * 240 of 334 when measured (before the 2026-10-03 chemistry faithful retirement), because
+ * `snapshotModuleIds` omits id-less files by design. See K3.
  *
  * ══ WHAT A SWEEP RUN TODAY MUST SHOW — AND MUST NOT "FIX" ════════════════════════
  * 🔴 TASK 13 WILL SEE `--tier 4` EXIT 1 ON EVERY BOOK x TRACK, AND THAT IS THE CORRECT
@@ -133,9 +134,11 @@
  * ⚠️ DENOMINATORS, STATED ONCE SO EVERY RATE ABOVE IS READABLE. A "cell" is
  * book x track x chapter-dir, chapter-dirs read with the tool's own `discoverChapters`
  * predicate (`/^ch\d+$/` or `appendices`): chemistry 23, organic 33, x 2 tracks = **112**.
- * **26** of those have >=1 published HTML file and are the population anything can judge —
+ * **26** of those had >=1 published HTML file and were the population anything can judge —
  * chemistry/mt-preview 23 of 23, chemistry/faithful 2 of 23, organic/mt-preview 1 of 33,
- * organic/faithful 0 of 33 (**the track directory does not exist**). K1's population is
+ * organic/faithful 0 of 33 (**the track directory does not exist**). Since the chemistry
+ * faithful track was retired (2026-10-03) it is **24**: chemistry/faithful is 0 of 23 and,
+ * like organic's, its track directory no longer exists. K1's population is
  * smaller again — **14** cells that have BOTH html and a baseline entry.
  *
  * ⚠️ A THIRD CHAPTER-KEY CONVENTION LIVES IN THIS TIER'S INPUTS. CLAUDE.md documents two
@@ -166,8 +169,9 @@ export const TRACKS = Object.freeze(['mt-preview', 'faithful']);
  * translated document**. Here the same shape is a chapter whose CNXML exists and whose
  * render is missing (a failed render), or the reverse (a stale publication tree with the
  * injected CNXML deleted). Neither can be judged, and neither may read as clean.
- * ⚠️ Measured today: cells with cnxml>0 and html==0 = **0 of 112**, against 26 carrying
- * both — so this guard has no natural fixture and its test is synthetic by necessity.
+ * ⚠️ Measured before the 2026-10-03 chemistry faithful retirement: cells with cnxml>0 and
+ * html==0 = **0 of 112**, against 26 carrying both — so this guard has no natural fixture
+ * and its test is synthetic by necessity.
  *
  * @param {object} ctx
  * @param {string} id  the check id, for the message
@@ -441,8 +445,9 @@ function marginNote({ cnxml, html }, drops) {
     // re-deriving a predicate and then dropping one of its terms, which is worse than
     // re-deriving it whole. `checkChapter` compares `<image> - knownIntentionalImageDrops`
     // against `<img>`, so a note computed without the subtraction under-reports the slack
-    // by exactly `drops`. Latent (0 of 26 cells disagree today, and only one cell has
-    // drops > 0) but wrong by construction.
+    // by exactly `drops`. Latent (0 of 26 cells disagreed when measured, before the
+    // 2026-10-03 chemistry faithful retirement, and only one cell had drops > 0) but
+    // wrong by construction.
     ['image', c(cn, /<image\b/g) - (Number.isInteger(drops) ? drops : 0), c(ht, /<img\b/g)],
   ]) {
     if (b > a) parts.push(`${unit} +${b - a}`);
@@ -570,8 +575,9 @@ export const K2 = defineCheck({
  *
  * ⚠️ POPULATION, WHICH THIS CHECK REPORTS RATHER THAN LETTING `examined` IMPLY:
  * `snapshotModuleIds` omits files with no `data-module-id` BY DESIGN, so the unit is
- * "published files carrying a module id" — **240 of 334 today** (chemistry/mt-preview
- * 188 of 251, chemistry/faithful 8 of 14, organic/mt-preview 10 of 13). The 94 omitted are
+ * "published files carrying a module id" — **240 of 334** when measured (chemistry/mt-preview
+ * 188 of 251, chemistry/faithful 8 of 14, organic/mt-preview 10 of 13); the chemistry
+ * faithful track was retired 2026-10-03, which removes its 8 of 14. The 94 omitted are
  * compiled rollups whose names are the chapter number plus a fixed suffix and cannot
  * rename, so excluding them loses nothing — but a reader must not take `examined` for
  * coverage of all 334.
@@ -805,7 +811,7 @@ export const K3 = defineCheck({
         `${before.size} published page(s) carrying a module id before the render, ` +
         `${after.size} after; ${entries.length} slug-map entr(ies); ` +
         `${findings.length} unaccounted. ⚠️ Pages with no data-module-id are outside this ` +
-        `population by design (240 of 334 corpus-wide carry one)`,
+        `population by design`,
     };
   },
 });

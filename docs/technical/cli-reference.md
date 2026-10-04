@@ -112,7 +112,7 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--lang <code>` | Language code (default: `is`) |
 | `--source-dir <dir>` | Segments directory relative to `books/efnafraedi-2e/` (default: `02-mt-output`) |
-| `--output-dir <dir>` | Output directory (default: `03-translated/chNN/`) |
+| `--track <name>` | Publication track: mt-preview, faithful, localized (auto-detected from `--source-dir` if not specified; faithful is refused unless `--source-dir` is the faithful one) |
 | `--verbose` | Show detailed progress |
 
 **Input Files:**
@@ -125,7 +125,7 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 
 **Output:**
 ```
-03-translated/chNN/<module>.cnxml                 # Translated CNXML
+03-translated/<track>/chNN/<module>.cnxml         # Translated CNXML
 ```
 
 **Examples:**
@@ -133,8 +133,9 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 # Inject from MT output (default)
 node tools/cnxml-inject.js --chapter 5
 
-# Inject from reviewed faithful translations
-node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful-translation
+# Inject one reviewed module into the faithful track (the form the server runs;
+# a full-chapter faithful inject fails each unreviewed module by design)
+node tools/cnxml-inject.js --chapter 5 --module m68724 --source-dir 03-faithful-translation
 
 # Inject from localized translations
 node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized-content
@@ -163,7 +164,7 @@ node tools/cnxml-render.js --chapter <num> [--module <id>] [options]
 
 **Input:**
 ```
-03-translated/chNN/<module>.cnxml                 # Translated CNXML
+03-translated/<track>/chNN/<module>.cnxml         # Translated CNXML
 ```
 
 **Output:**
