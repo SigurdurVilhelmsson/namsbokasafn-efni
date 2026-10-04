@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_04_ChnReact1",
  "renderHash": "d13771aaa940b102",
  "composedHash": "d13771aaa940b102",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Energy": "Orka"
