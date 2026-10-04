@@ -1283,11 +1283,12 @@ describe('the committed figure config (§C140 ㊵)', () => {
   });
 
   // §C140 ㊾ D5(a) — every held figure was examined on the real tree, and each was found with an
-  // `.svg` row and a translated copy, and none of its keys is a bought block. Vacuous while the
-  // table is empty; the commit that records [USER]'s first values (PR-B) adds
-  // `expect(keys.length).toBeGreaterThan(0)` here, as the retired test carries.
+  // `.svg` row and a translated copy, and none of its keys is a bought block. [USER]'s first values
+  // were recorded in PR-B's heldBlockValues commit (§C140 ㊾), so an empty table now fails here, as
+  // the retired test's does.
   it('every held figure was examined on the real tree, with an .svg row, a copy and no bought key', () => {
     const keys = Object.keys(cfg.heldBlockValues ?? {}).sort();
+    expect(keys.length).toBeGreaterThan(0);
     expect(Object.keys(corpus.heldState).sort()).toEqual(keys);
     for (const k of keys) {
       expect(corpus.heldState[k].svgRows, k).toBeGreaterThan(0);
