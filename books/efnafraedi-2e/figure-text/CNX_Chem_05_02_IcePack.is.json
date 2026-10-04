@@ -1,13 +1,13 @@
 {
  "version": 1,
  "basename": "CNX_Chem_05_02_IcePack",
- "renderHash": "1f4486f747baeec5",
- "composedHash": "1f4486f747baeec5",
+ "renderHash": "ec4a99f323bbde25",
+ "composedHash": "ec4a99f323bbde25",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "5",
  "blocks": {
-  "INSTANT": "STRAX",
-  "SINGLE USE ONLY": "AÐEINS TIL EINNOTA",
+  "INSTANT": "INSTANT",
+  "SINGLE USE ONLY": "SINGLE USE ONLY",
   "ammonium nitrate": "ammóníumnítrat",
   "Inner bag of water": "Innri poki með vatni"
  },
