@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_05_01_SolTherm1",
  "renderHash": "70e3bbdfd1447149",
  "composedHash": "70e3bbdfd1447149",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Heat|exchange": "Varmaskipti",
