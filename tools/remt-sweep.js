@@ -54,6 +54,10 @@
  *   tier 3  a MODULE x TRACK        161   translated CNXML actually on disk
  *   tier 4  a CHAPTER x TRACK CELL  112   of which 26 carry >=1 published HTML
  *
+ * Tier 3's 161 and tier 4's 26 predate the 2026-10-03 chemistry faithful retirement,
+ * which removed that track's translated CNXML and published HTML; the post-retirement
+ * values are re-pinned in `tools/__tests__/remt-sweep.test.js`, not restated here.
+ *
  * ⚠️ 166 AND 197 ARE BOTH "THE CORPUS", AND THEY ARE DIFFERENT NUMBERS. The
  * register's authoritative "197" is `mtOutputSegmentFiles`; Tier 1's population
  * is `modulesWithSegments`, and the 31-unit delta is organic's `exercises`
@@ -825,9 +829,9 @@ export async function collectSpawns(books, tiers, log = () => {}) {
   }
   if (tiers.includes(3)) {
     for (const book of books) {
-      // R4: one audit per book x track x CHAPTER — 26 spawns on today's corpus
-      // (chemistry mt-preview 23 + chemistry faithful 2 + organic mt-preview 1;
-      // organic has no faithful directory). The tool REQUIRES `--chapter`.
+      // R4: one audit per book x track x CHAPTER — 24 spawns on today's corpus
+      // (chemistry mt-preview 23 + organic mt-preview 1; neither book has a faithful
+      // directory since chemistry's was retired 2026-10-03). The tool REQUIRES `--chapter`.
       // `audit-render-output.js` already writes
       // its `--json` with `process.exitCode` rather than `process.exit()`, so the
       // payload is not at risk of the 64 KB pipe truncation that bit the schema

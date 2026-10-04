@@ -423,7 +423,9 @@ export const R2 = defineCheck({
  * corpus is clean. 250 suppressions, ALL of one rule (`c1-abstract-id`), in 136 of 161
  * files — which is why `--allowlist allowlist.recommended.json` is not optional.
  *
- * ⚠️ THE 161 POOLS BOTH TRACKS (chemistry 149 mt-preview + 4 faithful, organic 8). A
+ * ⚠️ THE 161 POOLED BOTH TRACKS (chemistry 149 mt-preview + 4 faithful, organic 8); the
+ * chemistry faithful track was retired 2026-10-03, so today's tier-3 population is 157
+ * (chemistry 149 mt-preview, organic 8). A
  * per-module R3 is track-scoped like the rest of Tier 3; do not inherit the pooled
  * denominator into a per-module rate.
  *
@@ -651,7 +653,7 @@ export const R3 = defineCheck({
  * organic 33** — and the unit is CHAPTERS printing a clean result while auditing zero
  * modules:
  *     efnafraedi-2e       mt-preview   **0 of 23**   <- the control: it discriminates
- *     efnafraedi-2e       faithful     **21 of 23**
+ *     efnafraedi-2e       faithful     **21 of 23**  (track retired 2026-10-03)
  *     lifraen-efnafraedi  mt-preview   **32 of 33**
  *     lifraen-efnafraedi  faithful     n/a — no rendered html exists at all
  * 🔴 AN EARLIER FORM SAID "30 of 31" AND "19 of 23", measured while `--chapter appendices`

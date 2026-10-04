@@ -257,9 +257,10 @@ node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663 --so
 
 > ⚠️ **`--source-dir` chooses the segments; `--track` only names the output directory.**
 > Inject defaults to `--source-dir 02-mt-output`, so a bare `cnxml-inject` produces the
-> **mt-preview** track regardless of what you pass to `--track`. Pass
+> **mt-preview** track. `--track faithful` is **refused** unless `--source-dir` is the
+> faithful one, because it would otherwise write machine text into the faithful track. Pass
 > `--source-dir 03-faithful-translation` to inject reviewed segments (the track is then
-> auto-detected as `faithful`).
+> auto-detected as `faithful`). The server always passes `--source-dir`.
 
 **Input:**
 - Reviewed segments from `03-faithful-translation/ch01/` (or `02-mt-output/` for mt-preview)
@@ -500,7 +501,8 @@ node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 
 # Step 3 Option A: Review via segment editor at /segment-editor (recommended)
 # Step 3 Option B: Manual editing — edit 03-faithful-translation/ directly
-#   (no initialization step; inject falls back to 02-mt-output/)
+#   (no initialization step; the segment editor falls back to 02-mt-output/ for a
+#   module with no reviewed file, but inject does not — it refuses that module)
 
 # Step 4: TM creation (in-house; TMX default, no upload)
 node tools/generate-tm.js --book efnafraedi-2e --chapter 5

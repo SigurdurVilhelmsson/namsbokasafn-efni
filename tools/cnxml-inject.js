@@ -30,7 +30,8 @@
  *                      03-faithful-translation for reviewed translations,
  *                      04-localized-content for localized
  *   --track <name>     Publication track: mt-preview, faithful, localized
- *                      (auto-detected from --source-dir if not specified)
+ *                      (auto-detected from --source-dir if not specified;
+ *                      faithful is refused unless --source-dir is the faithful one)
  *   --verbose          Show detailed progress
  *   -h, --help         Show this help
  */
@@ -192,7 +193,8 @@ Options:
   --source-dir <dir>   Segments directory relative to books/efnafraedi-2e/
                        (default: 02-mt-output)
   --track <name>       Publication track: mt-preview, faithful, localized
-                       (auto-detected from --source-dir if not specified)
+                       (auto-detected from --source-dir if not specified;
+                       faithful is refused unless --source-dir is the faithful one)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
   --allow-en-fallback <ids>  Comma-separated module id(s) permitted to fall back to
@@ -5371,6 +5373,22 @@ async function main() {
 
   const sourceDir = args.sourceDir || '02-mt-output';
   const track = args.track || trackFromSourceDir(sourceDir);
+
+  // Decision 4 (faithful retirement): --source-dir chooses the segments and
+  // --track chooses where they are written, so `--track faithful` alone read
+  // MACHINE text from 02-mt-output into 03-translated/faithful/, which a faithful
+  // render then publishes as reviewed. Refuse before any write. Checked on the
+  // effective track: without --track it IS trackFromSourceDir(sourceDir), so this
+  // can only fire on an explicit --track faithful. The server always passes
+  // --source-dir and never --track, so it is unaffected.
+  if (track === 'faithful' && trackFromSourceDir(sourceDir) !== 'faithful') {
+    console.error(
+      `Error: --track faithful but --source-dir '${sourceDir}' maps to ` +
+        `'${trackFromSourceDir(sourceDir)}'. Refusing to write machine text into the ` +
+        `faithful track. Use --source-dir 03-faithful-translation.`
+    );
+    process.exit(1);
+  }
 
   // A2: per-book, track-qualified residue manifest. Read-merge-preserve so a
   // per-chapter inject doesn't clobber other chapters' records.
