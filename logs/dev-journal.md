@@ -479,3 +479,18 @@ to retire chemistry's stale faithful vintage (its backup condition was met; a si
 turned out to be a false negative). Status and the next action live in the register's newest RESUME, not here.
 
 ---
+
+## 2026-10-04 (morning) - §C140 step 2 PR-A and chemistry's faithful retirement merged and deployed
+
+**Branch:** docs/c140-step2-after-merges (local, unpushed; register-only commits held for PR-B's branch)
+**Merged:** #535 (retirement, `80bf2974f`) then #536 (PR-A, `08014ad4b`); deployed by [USER] 05:55Z
+
+**Why:** [USER] ruled the retirement's Decision 4 (guard the inject route too), so R1 (render refuses a chapter with no
+modules of its own), Decision 4 (inject refuses `--track faithful` with a non-faithful source) and R3 (both faithful
+trees removed in one commit) were built test-first, mutation-checked and reviewed by three lenses with two refuters per
+finding; the one should-fix was a false history written into a comment from memory. Each branch was gated against `main`
+by failing files by name, and then the tree the merge order creates was built and tested before the push. Two runs were
+lost to the box (a sleep, and a low-memory kill caused by a full RAM-backed `/tmp`); the reds those produced were each
+re-measured alone on `main`'s own code. Status and the next action live in the register's newest RESUME, not here.
+
+---
