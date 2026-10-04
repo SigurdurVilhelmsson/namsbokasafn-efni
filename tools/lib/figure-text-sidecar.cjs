@@ -38,13 +38,36 @@ const SIDECAR_VERSION = 1;
  * again tells media drawn before them from media drawn after, so `figure-run.js`'s `isStale` names
  * a bought figure a recompose missed.
  *
+ * '5' (2026-10-04, §C140 ㊾, the step-2 recompose pass): one recompose for every composer change since
+ * '4' that alters pixels or bytes, and for three made for the pass. Since '4': §C159 (ccabafd08:
+ * textless figures recomposed from source, and font subsets saved with a pinned timestamp, so an
+ * unchanged figure recomposes byte-identical), §C168 (11c7ee82f: the heavy tail drawn as raster
+ * artwork under live text), ㉗ (6d32335a7, ade93a3c2: FigIS subsets renamed, carrying the OFL
+ * licence in `<metadata>`) and ⑭ (f9b4cbfff: artwork holding an in-document feImage rasterised
+ * the same way, because Firefox paints it transparent). ㊸ (a5f5b3750, the ring detector's
+ * memoised walk) is output-neutral — test_figrings.py section 6b asserts it finds exactly what the
+ * original walk finds — and is named so nobody bumps for it. Made for the pass: ㉑ (a label
+ * block's visual line count read from its own cues and alignment), §C161 (`/Annots` comment icons
+ * dropped before the artwork is drawn) and `heldBlockValues` (a held, send:false block drawn with
+ * a value [USER] ruled; figure-compose.py reads it from figure-text.config.json and hands it to
+ * compose.py, like numloc's decimal comma it changes no sidecar, and a later change to a value
+ * reaches a sidecar figure's media only at the next bump).
+ *
  * THE RULE FROM HERE: skip a bump only if no sidecar carries `state` AND prod holds no figure
  * approval up to the deploy that carries the change (editors approve against prod's own checkout of
  * the media); otherwise bump. ⚠️ A bump's recompose must be bare `--stale` (never `--force`, which
  * hides whether every sidecar went stale) and changes ONE sidecar field, `composedVersion`; a
  * sidecar's `composerVersion` stays the version its `renderHash` was hashed under.
+ * ⚠️ WHAT A BARE `--stale` REACHES CHANGED WITH ㊴ (#529): it selects a figure with a sidecar file
+ * OR an image-mapping row, so it reaches the §C159 textless figures too, and it never buys (a
+ * selected figure with no sidecar that classifies `translated` is refused `skipped-unbought`).
+ * Textless figures carry no stamp, so EVERY `--stale` run recomposes them: check their convergence
+ * by byte identity across two runs, never by `skipped-current`. A figure in `keptCopies` is
+ * refused at resolution and never recomposed. Run the pass as
+ * `node tools/figure-run.js --book <slug> --chapter <N> --stale`, one chapter at a time, never
+ * through `scripts/chemistry-autorun-chapter.sh`, which runs the driver without `--stale`.
  */
-const COMPOSER_VERSION = '4';
+const COMPOSER_VERSION = '5';
 
 /**
  * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books
