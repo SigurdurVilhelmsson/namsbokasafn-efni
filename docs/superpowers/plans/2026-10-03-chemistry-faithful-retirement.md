@@ -158,8 +158,7 @@ its directory holds a `*.cnxml`, R1's own predicate, so it skips such a director
   file; a full-chapter render must refuse (non-zero exit, a message naming the track and chapter) and write nothing
   under `05-publication/<track>/`. **Controls: (1) the *Vista + Birta* shape — one own module, rendered with `--module`,
   rollups from the union — still renders; (2) a full-chapter render with one own module still renders.**
-- [ ] The guard; the test green; `npm test` failing set unchanged by name. *(Guard and test ✅ in `a020d4583`; the
-  whole-suite diff by name is the retirement branch's full gate, with R3's, not yet run.)*
+- [x] The guard; the test green; `npm test` failing set unchanged by name. *(Guard and test ✅ in `a020d4583`; the whole-suite diff by name is ✅ in Task R3's gate box.)*
 
 ### Task R2 — Move this box's ignored faithful residue off-repo (never delete it) · ⚠️ BEFORE R3: the order is load-bearing · ✅ DONE on the dev box, 2026-10-03
 
@@ -236,10 +235,11 @@ tracks FAIL, on different stdout), and review fix `d369626b1` corrected the comm
   ~574), `tools/__tests__/remt-sweep.test.js` (~18, ~861), `tools/audit-render-output.js` (~55, ~549), plus the K2 test's
   own comment (`remt-checks-chapter.test.js` ~835–847). ⚠️ One researcher wrote that no test reads the real faithful tree;
   that is wrong (the K2 test reads faithful ch3) — the plan follows the measured side.
-- [ ] Gate: `npm test` (failing FILES diffed by name against `main`), `npm run lint`, `npm run format:check`, and the
-  Python suites if R1 touched any. *(Not yet run on the branch as a whole; the implementers ran the targeted files and
-  eslint/prettier on every touched JS file.)* Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
+- [x] Gate: `npm test` (failing FILES diffed by name against `main`), `npm run lint`, `npm run format:check`, and the
+  Python suites if R1 touched any. Expect one `validate.yml` run (it checks `status.json` and the mt-preview render
   only) and one red `sync-content.yml` run (it has never worked).
+
+  ✅ Measured 2026-10-04 at the retirement tip `436a351ba`: lint and format:check clean; `npm test` 444 of 446 files pass. The 2 red are `server/` files, and the branch changes no file under `server/`: `findTermsGolden` (a `beforeAll` 10 s hook timeout, which also fails alone on `0c2f06d01`) and `conceptMatcher` (a `beforeEach` stall while the box slept, which passes 17/17 alone on both the tip and `0c2f06d01`). `main`'s own full run failed only `cnxml-inject-robustness` (`EIO` on a full `/tmp`), which passes 6/6 alone with `TMPDIR` on disk. Logs: `~/.cache/namsbokasafn-audit/2026-10-03-step2/gate/`.
 
 ### Task R4 — The records commit
 - [x] Register (status only, per § One source of truth): mark RULED 2026-10-03 and carried out in `<sha>`, reaching
