@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_02_ferment_img",
  "renderHash": "2bdde9aacd8d10f6",
  "composedHash": "2bdde9aacd8d10f6",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Yeast": "Ger",

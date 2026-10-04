@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_FracDistil",
  "renderHash": "e0bd792ecd746552",
  "composedHash": "e0bd792ecd746552",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Heated|crude oil": "Upphituð hráolía",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_ethylChlor_img",
  "renderHash": "36508bc94f7bfcf1",
  "composedHash": "36508bc94f7bfcf1",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "ethane": "etan",
