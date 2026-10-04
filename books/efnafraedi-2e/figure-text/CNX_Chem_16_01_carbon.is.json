@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_16_01_carbon",
  "renderHash": "49197c9e9adbe1b6",
  "composedHash": "49197c9e9adbe1b6",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "C (diamond)": "C (demantur)",
