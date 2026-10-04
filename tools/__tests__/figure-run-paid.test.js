@@ -517,10 +517,11 @@ describe('a figure whose publish fails is never reported done', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
-// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies four lists
+// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies five lists
 // out of compose-report.json into compose.json: formula formatting a translated label could not
-// carry, words drawn at the floor that overhang, English-kept numbers given a decimal comma, and
-// blocks whose container detection failed. The figure is drawn and published either way — so
+// carry, words drawn at the floor that overhang, English-kept numbers given a decimal comma,
+// blocks whose container detection failed, and (§C140 ㊾ D5(a)) labels drawn from
+// heldBlockValues ([USER]'s values). The figure is drawn and published either way — so
 // these are NOTEs — but a list the driver never reads is a list nobody sees, and the remedy for
 // most of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the BLOCK KEY.
 // ⚠️ THE FAKE COMPOSE IS THE SEAM, DELIBERATELY. `figure-compose.py`'s own suite
@@ -546,11 +547,17 @@ describe("the composer's notes reach the verdict and the report", () => {
     // multiplicity is data: a figure that draws one localised key twice names it twice
     localized: ['26.98', '26.98'],
     containerErrors: [{ key: 'k1', block: 1, why: 'error: KeyError' }],
+    // §C140 ㊾ D5(a) — labels drawn from heldBlockValues ([USER]'s values). One key drawn in two
+    // blocks is two entries (MattType's `No` is three), and still ONE figure in the NOTE.
+    held: [
+      { key: 'No', block: 11, changed: [0] },
+      { key: 'No', block: 13, changed: [0] },
+    ],
   };
-  const EMPTY = { unformatted: [], overflow: [], localized: [], containerErrors: [] };
+  const EMPTY = { unformatted: [], overflow: [], localized: [], containerErrors: [], held: [] };
   const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
 
-  it('copies the four lists from compose.json onto the record, verbatim', async () => {
+  it('copies the five lists from compose.json onto the record, verbatim', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
     expect(rec(result, 'FIG_A').outcome).toBe('translated');
@@ -565,6 +572,7 @@ describe("the composer's notes reach the verdict and the report", () => {
       'NOTE (not a failure): 1 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each',
       'NOTE (not a failure): 1 figure(s) had English-kept numbers drawn with a decimal comma',
       'NOTE (not a failure): 1 figure(s) had container detection fail — those labels were laid out as open',
+      "NOTE (not a failure): 1 figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each",
     ]);
     expect(result.verdict.ok).toBe(true);
   });
@@ -590,6 +598,12 @@ describe("the composer's notes reach the verdict and the report", () => {
     );
     expect(text).toContain('    FIG_A: "26.98", "26.98"');
     expect(text).toContain('    FIG_A: "k1" block 1 — error: KeyError');
+    // §C140 ㊾ — one line per drawn occurrence, under its own heading, block numbers kept apart.
+    expect(text).toContain(
+      "  labels drawn from heldBlockValues ([USER]'s values), by figure (2):\n" +
+        '    FIG_A: "No" block 11\n' +
+        '    FIG_A: "No" block 13\n'
+    );
   });
 
   // An overflow entry need not carry a word (a line-count overhang names none) or an axis (a
@@ -650,14 +664,16 @@ describe("the composer's notes reach the verdict and the report", () => {
   });
 
   // THE CONTROL, AND THE OLDER WRAPPER. A compose.json carrying only `outputPath` — what every
-  // figure-compose.py before §C140 writes — reads as four empty lists: no NOTE, no section.
+  // figure-compose.py before §C140 writes — reads as five empty lists: no NOTE, no section.
   // Without it every assertion above passes against a driver that invents notes.
-  it('a compose.json with no lists reads as four empty lists and says nothing', async () => {
+  it('a compose.json with no lists reads as five empty lists and says nothing', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
     expect(rec(result, 'FIG_A').composeNotes).toEqual(EMPTY);
     expect(result.verdict).toEqual({ ok: true, reasons: [] });
-    expect(summarise(result)).not.toMatch(/decimal comma|overhang|formula formatting|container/);
+    expect(summarise(result)).not.toMatch(
+      /decimal comma|overhang|formula formatting|container|heldBlockValues/
+    );
   });
 
   // 🔴 COUNTED OVER `translated` ONLY, like the undecoded NOTE. A figure whose publish then failed
@@ -672,6 +688,70 @@ describe("the composer's notes reach the verdict and the report", () => {
     expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
     expect(rec(result, 'FIG_A').composeNotes).toEqual(NOTES); // the premise: the lists were read
     expect(result.verdict.reasons.filter((r) => r.startsWith('NOTE'))).toEqual([]);
+  });
+
+  // 🔴 §C140 ㊾ D5(a) — A HELD LABEL ALSO REACHES READERS THROUGH A TEXTLESS RECOMPOSE (§C159).
+  // Two of the seven ruled figures, HNO2_img (ch07) and OxStNonmts (ch18), are `copied-textless`:
+  // a 0-ISK `--stale --dry-run` files both as "would be recomposed from source artwork over its
+  // existing copy". Their held labels are drawn by that recompose and published, so the held NOTE
+  // and section must count a PUBLISHED copied-textless figure — which `figuresWithComposeNote`,
+  // keyed on `translated` (the ㊹ shape), would hide. The figure's `localized` list is the control
+  // that the other four lists stay translated-only.
+  const textlessHeld = {
+    prepare: () => ({
+      sendable: 0,
+      imageXObjects: 0,
+      paintOps: 9,
+      __blocks: [{ key: 'kC', english: 'C', lines: ['C'], arc: false, send: false }],
+    }),
+    compose: () => ({
+      __notes: { held: [{ key: 'kC', block: 0, changed: [0] }], localized: ['1.5'] },
+    }),
+  };
+  const textlessBook = () =>
+    makeBook({
+      figures: ['FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+    });
+
+  it('names the held labels of a PUBLISHED copied-textless figure, in the NOTE and the report', async () => {
+    const { booksRoot } = textlessBook();
+    const result = await runFigures(live(booksRoot), {
+      spawn: fakeSpawn(textlessHeld),
+      booksRoot,
+    });
+    const r = rec(result, 'FIG_TEXTLESS');
+    expect(r.outcome).toBe('copied-textless'); // the premise: still a copy, never `translated`
+    expect(r.published).toMatchObject({ outputName: 'FIG_TEXTLESS_IS.svg' });
+    expect(r.composeNotes.held).toEqual([{ key: 'kC', block: 0, changed: [0] }]);
+    expect(result.verdict).toEqual({
+      ok: true,
+      reasons: [
+        "NOTE (not a failure): 1 figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each",
+      ],
+    });
+    const text = summarise(result);
+    expect(text).toContain(
+      "  labels drawn from heldBlockValues ([USER]'s values), by figure (1):\n" +
+        '    FIG_TEXTLESS: "kC" block 0\n'
+    );
+    expect(text).not.toMatch(/decimal comma/); // the control: `localized` stays translated-only
+  });
+
+  it('a copied-textless figure whose publish failed names no held label', async () => {
+    const { booksRoot } = textlessBook();
+    const result = await runFigures(live(booksRoot), {
+      spawn: fakeSpawn(textlessHeld),
+      booksRoot,
+      publishTextless: () => ({ ok: false, reason: 'stub', message: 'stub publisher refused' }),
+    });
+    const r = rec(result, 'FIG_TEXTLESS');
+    expect(r.outcome).toBe('failed-publish');
+    expect(r.composeNotes.held).toHaveLength(1); // the premise: the list was read
+    expect(result.verdict.reasons.filter((x) => x.startsWith('NOTE'))).toEqual([]);
+    expect(summarise(result)).not.toMatch(/heldBlockValues/);
   });
 });
 
@@ -2561,5 +2641,113 @@ describe('§C140 ⑦ — what a live run would buy', () => {
     );
     expect(text).not.toMatch(/MT spawned for 1 figure\(s\)/);
     expect(text).toMatch(/FIG_ODD\s+billable count UNKNOWN/);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊾ (spec 2026-10-02 D1) — A KEPT COPY SURVIVES EVERY ROUTE, BYTE FOR BYTE.
+// sources.py refuses a `keptCopies` figure as `kept` at RESOLUTION; the fake resolver here returns
+// exactly that shape (test_sources.py pins it). Three routes reach a figure, and each is run with
+// a CONTROL figure in the SAME run that the same route does recompose or buy — so "the kept copy
+// is unchanged" cannot pass because the route did nothing at all:
+//   --stale over a bumped sidecar (what the '4' → '5' bump makes of every sidecar);
+//   --force over a current sidecar (--force suppresses only `skipped-current`);
+//   a plain run over a figure with NO sidecar (a kept figure's sidecar is deleted in its restore
+//   commit, so the refusal, not a sidecar, is what stops a buy).
+// ⚠️ The plumbing is borrowed: the bumped shape from 'a COMPOSER_VERSION bump recomposes ONCE',
+// the --force arm from '--stale and --force never RE-buy', the plain buy from the minting tests.
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ㊾ — a kept copy is never recomposed, never bought over, on any route', () => {
+  const KEEP_REASON =
+    '[USER] ruled (test): the June copy readers are served is kept as it is, never recomposed';
+  const KEPT = { path: null, refused: 'kept', edition: null, candidates: [], reason: KEEP_REASON };
+  const keepFigA = {
+    resolve: (n) =>
+      n === 'FIG_A' ? KEPT : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+  };
+  const rows = [
+    { originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' },
+    { originalImage: 'FIG_B', outputName: 'FIG_B_IS.svg', extension: '.svg' },
+  ];
+  // A root <svg> with a viewBox that is no paper size, so `paperSheetCopy` reads it cleanly and
+  // adds no line of its own to the report.
+  const JUNE = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" id="june-A"/>';
+  const blocks = { k0: 'IS k0', k1: 'IS k1' };
+  const OLD = '0';
+  const bumpedSidecar = (basename) => {
+    const h = computeRenderHash(blocks, OLD);
+    return {
+      version: 1,
+      basename,
+      renderHash: h,
+      composedHash: h,
+      composerVersion: OLD,
+      composedVersion: OLD,
+      blocks,
+    };
+  };
+  const plantCopies = (bookDir) => {
+    fs.writeFileSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'), JUNE);
+    fs.writeFileSync(
+      path.join(bookDir, 'media', 'FIG_B_IS.svg'),
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" id="old-B"/>'
+    );
+  };
+  const copyOf = (bookDir, b) =>
+    fs.readFileSync(path.join(bookDir, 'media', `${b}_IS.svg`), 'utf-8');
+
+  it.each([
+    ['--stale over a bumped sidecar', { stale: true }, bumpedSidecar],
+    ['--force over a current sidecar', { force: true }, (b) => currentSidecar(b, blocks)],
+  ])(
+    '%s: the kept copy is untouched, and the control figure is recomposed',
+    async (_l, over, sidecarOf) => {
+      const { booksRoot, bookDir } = makeBook({
+        figures: ['FIG_A', 'FIG_B'],
+        mapping: rows,
+        sidecars: { FIG_A: sidecarOf('FIG_A'), FIG_B: sidecarOf('FIG_B') },
+      });
+      plantCopies(bookDir);
+      const spawn = fakeSpawn(keepFigA);
+      const result = await runFigures(live(booksRoot, over), { spawn, booksRoot });
+
+      const a = rec(result, 'FIG_A');
+      expect(a.outcome).toBe('unresolved');
+      expect(a.artworkRefusal.refused).toBe('kept');
+      expect(a.reason).toBe(
+        'REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, ' +
+          `re-buys or overwrites it — ${KEEP_REASON}`
+      );
+      expect(copyOf(bookDir, 'FIG_A')).toBe(JUNE);
+      expect(spawn.outDirsFor('prepare')).toEqual(['FIG_B']);
+      expect(spawn.countOf('translate')).toBe(0);
+      // CONTROL, same run: this route really does recompose a figure that is not kept.
+      expect(rec(result, 'FIG_B').outcome).toBe('translated');
+      expect(spawn.outDirsFor('compose')).toEqual(['FIG_B']);
+      expect(copyOf(bookDir, 'FIG_B')).toBe('<svg id="FIG_B"/>');
+      expect(result.verdict.ok).toBe(true); // unresolved is a NOTE, never fatal (R9)
+      const text = summarise(result);
+      expect(text).toContain(`REFUSED — kept: FIG_A: ${KEEP_REASON}`);
+      expect(text).toContain(
+        'readers still see an earlier translated copy of FIG_A: media/FIG_A_IS.svg (mapping row present)'
+      );
+    }
+  );
+
+  it('a plain run over a kept figure with NO sidecar buys nothing for it; the control is bought', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A', 'FIG_B'], mapping: rows });
+    plantCopies(bookDir);
+    const spawn = fakeSpawn(keepFigA);
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').artworkRefusal.refused).toBe('kept');
+    expect(rec(result, 'FIG_A').reason).toMatch(/kept by ruling, so no run recomposes, re-buys/);
+    expect(copyOf(bookDir, 'FIG_A')).toBe(JUNE);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false); // no sidecar was minted
+    // CONTROL, same run: a plain run DOES buy a sidecar-less figure that is not kept, so the
+    // single translate spawn below is FIG_B's, and none of it is FIG_A's.
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_B']);
+    expect(rec(result, 'FIG_B').outcome).toBe('translated');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_B'))).toBe(true);
   });
 });

@@ -1253,10 +1253,23 @@ export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
  * The composer's NOTE lists, in the order the verdict and the report print them (§C140):
  * `unformatted` formula formatting a translated label could not carry (②), `overflow` words drawn
  * at the floor that overhang their space (③, R5), `localized` English-kept numbers drawn with a
- * decimal comma (⑨), `containerErrors` blocks whose container detection failed (③).
+ * decimal comma (⑨), `containerErrors` blocks whose container detection failed (③), `held`
+ * labels drawn from `heldBlockValues`, [USER]'s values (㊾ D5(a)), each `{key, block, changed}`
+ * in draw order WITH multiplicity.
  * `figure-compose.py` copies them out of compose-report.json into compose.json.
+ *
+ * 🔴 EXPORTED SO A TEST CAN HOLD IT AGAINST `figure-compose.py`'s `COMPOSE_NOTES` tuple: two
+ * copies of one list, and a list the wrapper copies but this driver does not name is a list
+ * nobody sees. `heldErrors` is deliberately in NEITHER: a refused value is fatal at the
+ * wrapper's verify, so it reaches this driver as `failed-compose`, never as a note.
  */
-const COMPOSE_NOTE_LISTS = ['unformatted', 'overflow', 'localized', 'containerErrors'];
+export const COMPOSE_NOTE_LISTS = [
+  'unformatted',
+  'overflow',
+  'localized',
+  'containerErrors',
+  'held',
+];
 
 /**
  * compose.json's note lists, each an array. ⚠️ AN ABSENT LIST IS AN EMPTY ONE, NEVER A REFUSAL:
@@ -1264,7 +1277,8 @@ const COMPOSE_NOTE_LISTS = ['unformatted', 'overflow', 'localized', 'containerEr
  * figure is drawn either way, so nothing here may fail a compose `figure-compose.py` accepted.
  *
  * @param {object} composeVerdict the parsed compose.json of a successful compose
- * @returns {{unformatted: object[], overflow: object[], localized: string[], containerErrors: object[]}}
+ * @returns {{unformatted: object[], overflow: object[], localized: string[],
+ *   containerErrors: object[], held: {key: string, block: number, changed: number[]}[]}}
  */
 function composeNotesFrom(composeVerdict) {
   return Object.fromEntries(
@@ -1284,6 +1298,26 @@ function composeNotesFrom(composeVerdict) {
 function figuresWithComposeNote(figures, list) {
   return figures.filter(
     (f) => f.outcome === 'translated' && f.composeNotes && f.composeNotes[list].length > 0
+  );
+}
+
+/**
+ * §C140 ㊾ D5(a) — the figures that drew labels from `heldBlockValues` ([USER]'s values) and
+ * shipped them. 🔴 NOT `figuresWithComposeNote(figures, 'held')`: that keeps `translated` only
+ * (the ㊹ shape), and two of the ruled figures — HNO2_img and OxStNonmts — are TEXTLESS, so their
+ * held labels reach readers through `recomposeTextless` while the record stays `copied-textless`.
+ * Only a PUBLISHED one counts, for the same reason a failed publish counts nothing above: it
+ * shipped nothing. The verdict's NOTE and the report's section both come from here.
+ *
+ * @param {object[]} figures run records
+ * @returns {object[]}
+ */
+function figuresWithHeldValues(figures) {
+  return figures.filter(
+    (f) =>
+      (f.outcome === 'translated' || (f.outcome === 'copied-textless' && f.published)) &&
+      f.composeNotes &&
+      f.composeNotes.held.length > 0
   );
 }
 
@@ -1690,6 +1724,11 @@ export function refusalReason(refusal) {
   if (refusal.refused === 'retired') {
     return `REFUSED, not missing: retired by ruling, so no translated copy is made again — ${refusal.reason}`;
   }
+  // §C140 ㊾ — the inverse of retired: a ruling KEEPS the translated copy (`keptCopies`). Its
+  // mapping row and `_IS` file stay, and the summary's "readers still see" line names them.
+  if (refusal.refused === 'kept') {
+    return `REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, re-buys or overwrites it — ${refusal.reason}`;
+  }
   if (refusal.refused === 'pin-conflict') {
     return `REFUSED, not missing: its artwork pin no longer holds — ${refusal.reason}`;
   }
@@ -1957,9 +1996,9 @@ export async function runFigures(args, deps = {}) {
     // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
     // "we refused to guess", which is a different fact and gets its own report line.
     artworkContest: null,
-    // §C140 ⑦/㊵ — artwork `sources.py` found and REFUSED (a production page, known-superseded,
-    // retired, or an artwork pin that does not hold), with its reason. Like a contest it is
-    // `unresolved` but is not a hole.
+    // §C140 ⑦/㊵/㊾ — artwork `sources.py` found and REFUSED (a production page, known-superseded,
+    // retired, a translated copy kept by ruling, or an artwork pin that does not hold), with its
+    // reason. Like a contest it is `unresolved` but is not a hole.
     artworkRefusal: null,
     pageUnknown: false,
     stillMapped: null,
@@ -2301,6 +2340,7 @@ export async function runFigures(args, deps = {}) {
         overflowFigures: figuresWithComposeNote(selected, 'overflow').length,
         localizedFigures: figuresWithComposeNote(selected, 'localized').length,
         containerErrorFigures: figuresWithComposeNote(selected, 'containerErrors').length,
+        heldFigures: figuresWithHeldValues(selected).length,
         ringGateFailedFigures: selected.filter((r) => r.ringGateFailed).length,
       }),
       tmpRoot,
@@ -2738,6 +2778,17 @@ export function summarise(result) {
     ...nameList(
       'container detection failed — these labels were laid out as open',
       noteEntries('containerErrors', (c) => `${quoted(c.key)} block ${c.block} — ${c.why}`)
+    )
+  );
+  // §C140 ㊾ D5(a) — every label drawn from [USER]'s wording instead of the source's English, one
+  // line per drawn occurrence (MattType draws `No` in three blocks). `figuresWithHeldValues`, not
+  // `noteEntries`: a published textless recompose draws held labels too, and must be named here.
+  lines.push(
+    ...nameList(
+      "labels drawn from heldBlockValues ([USER]'s values), by figure",
+      figuresWithHeldValues(result.figures).flatMap((f) =>
+        f.composeNotes.held.map((h) => `${f.basename}: ${quoted(h.key)} block ${h.block}`)
+      )
     )
   );
 

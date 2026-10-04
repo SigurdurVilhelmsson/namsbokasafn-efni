@@ -20,12 +20,26 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(Array.isArray(loadFigureTextConfig().editionPrecedence)).toBe(true);
   });
 
-  it('the committed config carries both tables as plain objects', () => {
+  it('the committed config carries its policy tables as plain objects (keptCopies, heldBlockValues: §C140 ㊾)', () => {
     const cfg = loadFigureTextConfig();
-    for (const key of ['retiredFigures', 'artworkPins']) {
+    for (const key of ['retiredFigures', 'keptCopies', 'artworkPins', 'heldBlockValues']) {
       const t = cfg[key];
-      expect(t !== null && typeof t === 'object' && !Array.isArray(t)).toBe(true);
+      expect(t !== null && typeof t === 'object' && !Array.isArray(t), key).toBe(true);
     }
+  });
+
+  // §C140 ㊾ D5(a) — the doc string is where a later operator learns what a held value is and how
+  // a change to one reaches readers. It must cite where values come from, and it must name the ONE
+  // sanctioned route for a sidecar figure (the next COMPOSER_VERSION bump) without prescribing any
+  // other: the register and the step-2 spec say never --force, and any other route needs a ruling.
+  it('documents heldBlockValues: the value sheet, the COMPOSER_VERSION route, and no --force recipe', () => {
+    const doc = loadFigureTextConfig()._heldBlockValues;
+    expect(typeof doc).toBe('string');
+    expect(doc).toContain('docs/handoffs/2026-10-03-step2-value-sheet.md');
+    expect(doc).toContain('₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻');
+    expect(doc).toMatch(/next COMPOSER_VERSION bump/);
+    expect(doc).toMatch(/\[USER\] ruling/);
+    expect(doc).not.toMatch(/--force/);
   });
 
   it('reads the EXACT keys of retiredFigures', () => {

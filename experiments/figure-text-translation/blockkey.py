@@ -30,7 +30,11 @@ import figtext as FT
 
 
 def block_lines(block):
-    """The block's text, one string per visual line, in reading order."""
+    """The block's text, one string per `figtext.lines` line, in reading order.
+
+    ⚠️ `figtext.lines`, NEVER `figtext.visual_lines` (§C140 ㉑): the layout counts VISUAL lines, but
+    this is the bought unit - moving it to visual lines would change 20 bought keys in 13 figures and
+    make figure-compose.py refuse every one of them."""
     return [''.join(r['text'] for r in line) for line in FT.lines(block)]
 
 

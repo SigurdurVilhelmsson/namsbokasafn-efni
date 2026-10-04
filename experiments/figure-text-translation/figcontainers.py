@@ -137,8 +137,18 @@ def _inner_to_frame(inner, rot):
 
 
 def line_frames(block):
-    """source_frame of each FT.lines line of the block."""
+    """source_frame of each FT.lines line of the block - for ANOTHER block's sibling cues and free-box
+    obstacles. ⚠️ Stays on FT.lines (§C140 ㉑): `figtext.visual_lines` merges a genuine diagonal kept
+    label (CbcCltPckd `C|B|A`), and these frames are what neighbouring labels align against and avoid."""
     return [source_frame(l) for l in FT.lines(block)]
+
+
+def own_line_frames(block):
+    """source_frame of each VISUAL line of the block (`figtext.visual_lines`) - for the block's OWN
+    alignment only (`cell_alignment`, `open_alignment`), §C140 ㉑: a one-line source label with a
+    stacked charge (`nitrites (NO2|–`) is a single-line label there, not a two-line one. Equal to
+    `line_frames` for every block whose visual lines are its FT.lines."""
+    return [source_frame(l) for l in FT.visual_lines(block)]
 
 
 # =============================================================================================
@@ -355,7 +365,7 @@ def cell_alignment(block, left_margin, right_margin):
                    to the tight side (a right-flush 'Molecular mass' against its number), else
                    centre. The sibling cue is NOT used for cells: glycinemass b13 has a left
                    sibling coincidence while its source is visibly right-flush."""
-    frames = line_frames(block)
+    frames = own_line_frames(block)
     if len(frames) >= 2:
         return multi_alignment(frames)
     tight, far = min(left_margin, right_margin), max(left_margin, right_margin)
@@ -400,7 +410,7 @@ def open_alignment(index, blocks, left_clear, right_clear):
     'Coefficient' (right edges 0.498 pt apart - coincidental) to the right, which moved the
     translation 'Stuðull' 7.6 pt off its brace in a figure [USER] had approved; ethene b0/b17
     (left edges 0.027 pt apart) are a real column and must cue. 0.2 separates the two."""
-    frames = line_frames(blocks[index])
+    frames = own_line_frames(blocks[index])
     if len(frames) >= 2:
         return multi_alignment(frames)
     tight, far = min(left_clear, right_clear), max(left_clear, right_clear)

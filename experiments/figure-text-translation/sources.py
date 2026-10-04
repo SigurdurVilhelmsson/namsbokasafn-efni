@@ -296,20 +296,21 @@ def _resolve_pin(basename, entry, trees, precedence, exts, memo, size_of, pins):
 
 
 def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-                   size_of=page_size, *, retired=None, pins=None):
+                   size_of=page_size, *, retired=None, pins=None, kept=None):
     """-> {'path', 'edition'[, 'via'][, 'pageUnknown']} | None (a hole) | a refusal (see below).
 
     Precedence is over EDITIONS first, then over formats within an edition: a 2nd-edition EPS
     beats a 1st-edition PDF, because the edition is a question of WHICH PICTURE and the format
     only of how we read it.
 
-    Checked BEFORE any lookup, in this order (§C140 ㊵): `retired` (a ruling retired the
-    figure's TRANSLATED COPY), then `superseded` (its only vector is known to be superseded).
+    Checked BEFORE any lookup, in this order (§C140 ㊵, ㊾): `retired` (a ruling retired the
+    figure's TRANSLATED COPY), then `kept` (a ruling KEEPS its translated copy as it is), then
+    `superseded` (its only vector is known to be superseded).
     Then a pin, if the figure has one in `pins` (§C140 ㊵): its one exact file, or a refusal —
     never the normal lookup's answer. A pinned hit carries 'via': 'alias'|'override', and a pin
     refusal is 'pin-conflict'|'pin-missing'|'pin-invalid'.
 
-    A refusal is {'path': None, 'refused': 'retired'|'superseded'|'production-page'|
+    A refusal is {'path': None, 'refused': 'retired'|'kept'|'superseded'|'production-page'|
     'pin-conflict'|'pin-missing'|'pin-invalid', 'edition', 'candidates', 'reason'}. Each candidate
     is {'path'} plus 'page' and 'paper' when they are known. A 'production-page' refusal of a
     PINNED file also carries 'via', as a pinned hit does.
@@ -327,6 +328,25 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
         if key in folded:
             reason = folded[key]
             return {'path': None, 'refused': 'retired', 'edition': None, 'candidates': [],
+                    'reason': reason if isinstance(reason, str) and reason.strip()
+                    else '(no reason recorded)'}
+
+    # 🔴 §C140 ㊾ — A KEPT COPY IS REFUSED NEXT, ALSO BEFORE `superseded` AND BEFORE ANY LOOKUP.
+    # Kept is the inverse of retired, and is about the TRANSLATED COPY too: a [USER] ruling keeps
+    # the copy readers are served (its image-mapping row and its `_IS` file stay), so no run may
+    # recompose it, buy it or publish over it. Refusing HERE, at resolution, is what makes that
+    # hold on every route: `--force` suppresses only `skipped-current`, `--stale` recomposes what
+    # resolves, and a plain run buys what resolves and has no sidecar — so a kept figure needs no
+    # sidecar as a re-buy lock (spec 2026-10-02 D1). Checked before `superseded`, as retired is:
+    # a figure may be in both, and `REFUSED — kept` keeps the chapter autorun's halt on
+    # `REFUSED — superseded` from firing over a copy a ruling has already settled. A key acts by
+    # its PRESENCE, as in `retired`.
+    if kept:
+        folded = {_normkey(k): v for k, v in kept.items()}
+        key = _normkey(basename)
+        if key in folded:
+            reason = folded[key]
+            return {'path': None, 'refused': 'kept', 'edition': None, 'candidates': [],
                     'reason': reason if isinstance(reason, str) and reason.strip()
                     else '(no reason recorded)'}
 
@@ -352,8 +372,8 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
                     'reason': reason if isinstance(reason, str) and reason.strip()
                     else '(no reason recorded)'}
 
-    # 🔴 §C140 ㊵ — AN ARTWORK PIN IS CHECKED AFTER `retired` AND `superseded`, so a pin can never
-    # bring back a figure either table refuses.
+    # 🔴 §C140 ㊵, ㊾ — AN ARTWORK PIN IS CHECKED AFTER `retired`, `kept` AND `superseded`, so a pin can never
+    # bring back a figure any of those tables refuses.
     # ⚠️ Keys fold, so two keys can name ONE figure. Two `retired` or `superseded` entries differ
     # only in their reason text, but two pins can name two different DRAWINGS: folding them into a
     # dict lets the later key shadow the earlier and picks a picture by table order, with nothing
@@ -434,18 +454,18 @@ def resolve_detail(basename, trees, precedence, exts=SOURCE_EXTS, superseded=Non
 
 
 def resolve(basename, trees, precedence, exts=SOURCE_EXTS, superseded=None, _memo=None,
-            size_of=page_size, *, retired=None, pins=None):
+            size_of=page_size, *, retired=None, pins=None, kept=None):
     """-> (Path, edition_key) for the authoritative source, or (None, None) for a hole or a
     refusal. `resolve_detail` says which."""
     d = resolve_detail(basename, trees, precedence, exts, superseded=superseded, _memo=_memo,
-                       size_of=size_of, retired=retired, pins=pins)
+                       size_of=size_of, retired=retired, pins=pins, kept=kept)
     if d and d.get('path'):
         return Path(d['path']), d['edition']
     return None, None
 
 
 def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, *, retired=None,
-                   pins=None):
+                   pins=None, kept=None):
     """-> {name: resolve_detail(...)} — a hit, `None` for a hole, or a refusal dict.
 
     The JSON half of this tool's CLI, kept as a pure function so it can be tested against
@@ -462,11 +482,12 @@ def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None, 
     memo = {}  # call-scoped: each tree indexed once for the whole batch
     for n in names:
         out[n] = resolve_detail(n, trees, precedence, exts, superseded=superseded, _memo=memo,
-                                retired=retired, pins=pins)
+                                retired=retired, pins=pins, kept=kept)
     return out
 
 
-def human_report(names, trees, precedence, superseded=None, *, retired=None, pins=None):
+def human_report(names, trees, precedence, superseded=None, *, retired=None, pins=None,
+                 kept=None):
     """-> (lines, missing, refused) — the operator-facing half of this tool's CLI.
 
     🔴 A REFUSAL IS NOT "NOT FOUND" (§C140 ⑦). The file is in the delivery and was declined, and
@@ -476,7 +497,7 @@ def human_report(names, trees, precedence, superseded=None, *, retired=None, pin
     """
     lines, missing, refused = [], 0, 0
     report = resolve_report(names, trees, precedence, superseded=superseded, retired=retired,
-                            pins=pins)
+                            pins=pins, kept=kept)
     for n in names:
         d = report[n]
         if d and d.get('path'):
@@ -503,7 +524,7 @@ def human_report(names, trees, precedence, superseded=None, *, retired=None, pin
 
 
 _POLICY_TABLES = (('supersededArtwork', 'superseded'), ('retiredFigures', 'retired'),
-                  ('artworkPins', 'pins'))
+                  ('keptCopies', 'kept'), ('artworkPins', 'pins'))
 
 
 def policy(cfg):
@@ -511,7 +532,7 @@ def policy(cfg):
     above it. The ONE place a command-line path reads them (§C140 ㊵): a second copy is how one
     mode comes to miss a table.
 
-    🔴 A TABLE THAT IS NOT AN OBJECT REFUSES THE WHOLE RUN (R3), the same way for all three. A
+    🔴 A TABLE THAT IS NOT AN OBJECT REFUSES THE WHOLE RUN (R3), the same way for all four. A
     string `artworkPins` used to be iterated as characters, so no pin applied and every pinned
     figure fell through to the normal lookup with exit 0; a list or a number crashed elsewhere. An
     absent or null table is no table."""

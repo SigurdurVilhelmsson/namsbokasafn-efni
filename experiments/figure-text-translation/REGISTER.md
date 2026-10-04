@@ -574,7 +574,11 @@ still emitted as one-word blocks, and `figtext.sendable` returns True for them: 
 `'metals'` are bought as standalone Icelandic translation keys, out of the context that makes them
 translatable, and `'metals'` is one key covering two different labels.** Live exposure is the same
 as ④'s and for the same reason — nothing has been bought against this segmentation — but this one
-is a *wrong* key rather than a *moved* one.
+is a *wrong* key rather than a *moved* one. ✏️ *Falsified 2026-09-20, recorded 2026-10-02:
+PerTable2 WAS bought against this segmentation (`7df47b298`). Its sidecar holds 15 per-WORD keys
+(`Noble`, `earth`, `metals`, …), and the prepared copy draws 44 of its 72 `<text>` as rotated
+single glyphs. Readers still get the June raster. What to do with the figure is in the campaign
+register's §C140 ㊾ and the step-2 spec.*
 
 **(b) The no-`/W`/`/DW` constant-advance class is untouched, deliberately.** A `/Type0 /Identity-H
 CIDFontType2` whose descendant declares neither `/W` nor `/DW` makes pdfminer fall back to the spec
@@ -890,6 +894,17 @@ open:**
   replacement in `media/` has intact artwork (0/62 mismatches) but damaged text — see §C140 ⑧ for
   the choice. Instrument: `evidence/2026-09-13-compose-fidelity/instruments/verify/svgimages.py`,
   `june_census.py`.
+- **⑭ (2026-10-02) `CNX_Chem_12_07_HetCats-230a` was bought from a SUPERSEDED base-tree EPS, and
+  no artwork pin can fix it.** The driver de-hashes `-230a` to `base/…/CNX_Chem_12_07_HetCats.eps`
+  (`first-edition`), whose label reads "Ethylene **absorbed** on surface". The figure the CNXML
+  references, `CNX_Chem_12_07_HetCats-230a.jpg`, and its alt text read **adsorbed**. The
+  unreferenced `-c5a2.jpg` is md5-identical to the base JPEG and also reads *absorbed*.
+  `selected-art` has no HetCats. So the MT's *frásogast* is a faithful translation of superseded
+  English, not an MT error, and the block KEY carries that English. **Do not edit the key**: it is
+  content-addressed to what the read layer extracts, and a changed key fails the recompose as
+  `failed-compose`. The June copy (`34402e8a6`) reads *Etýlen aðsogað á*. The remedy is a
+  [USER] ruling → campaign register §C140 ㊾ and the step-2 spec. Measured read-only; evidence
+  `~/.cache/namsbokasafn-audit/2026-10-02-step2-rederive/`.
 
 ## Provenance
 

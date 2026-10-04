@@ -31,9 +31,17 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * S7 REAL stacked splits `HCO3|–` and `NH4|+ (conjugate acid)` - FT.lines splits the charge
   onto its own line, which on its own produces no token at all.
 * S8 REAL `3px and 3px` - duplicate tokens name two false `absent` misses unless de-duplicated.
+* V §C140 ㉑ REAL Nitrogen / conjugate / Blood - `figtext.visual_lines` merges a stacked charge or a same-size
+  superscript into ONE visual line (V1-V4); a genuine two-line label does not merge (V5); FT.lines and `block_key`
+  still split (V6, V7); the threshold is 0.6 of a lead (V8); an arc is never merged (V9); the measured CbcCltPckd
+  `C|B|A` over-merge is pinned (V10); the threshold scales with the LARGER first-run size (V11).
 * T* transfer - whole token, repeats, `CO2` not donating `O2`, the anchored fallback, empty
   anchor, glued repeats -> `partial`, Unicode-subscript and name edits -> `absent`.
 * B* body size - an 11 pt STIX first run over 9 pt letters is not the label's size.
+* HS §C140 ㊾ D5(a) REAL MolSpeed1 / phscale / buffer / OxStNonmts - `is_script_style` restates the script rule on
+  ONE style (heldplan's source-script pool): their sub, sup and charge are scripts, OxStNonmts' italic-only STIX
+  charge is not, and both thresholds and the strict ratio boundary hold (HS1); every NON-italic style
+  `source_tokens` emits on this file's REAL fixtures is a script by it, a 0.111 drop included (HS2).
 """
 import sys
 from pathlib import Path
@@ -338,6 +346,86 @@ def s7():
 attempt('S7', s7)
 
 # --------------------------------------------------------------------------------------------
+print('V §C140 ㉑ figtext.visual_lines: one visual line for the LAYOUT; FT.lines and the key never move')
+
+# CNX_Chem_18_07_Nitrogen (send:true, bought 2026-09-21, drawn on 2-3 lines): REAL runs copied from the
+# committed evidence/2026-09-15-t23-review-fixes/reports/code1-control-nitrogen/runs.json (rot 0, so
+# x = along and y = proj). Fonts: R1165 LiberationSans -> 'R', R1170 STIXGeneral-Italic -> 'SI'.
+NITRITES = [run('nitrites (NO', 9.0, 341.303, 67.8199, adv=45.507, font='R'),
+            run('2', 7.0, 386.8081, 64.8199, adv=3.892, font='R'),
+            run('–', 7.0, 390.7011, 72.3199, adv=3.5, font='SI')]
+AMMONIUM = [run('ammonium (NH', 9.0, 221.794, 67.8199, adv=63.0, font='R'),
+            run('4', 9.0, 284.803, 64.8379, adv=5.004, font='R'),
+            run('+', 9.0, 289.8081, 72.3199, adv=6.075, font='SI'),
+            run(')', 9.0, 295.8831, 67.8199, adv=2.997, font='R')]
+# The same figure's genuine TWO-line label, one lead (11.0 pt) apart - the control that must not merge.
+ATMOS = [run('Atmospheric', 9.0, 1.9118, 348.3417, adv=50.013, font='R'),
+         run('nitrogen (N', 9.0, 1.9118, 337.3417, adv=44.514, font='R'),
+         run('2', 7.0, 46.4325, 334.3417, adv=3.892, font='R'),
+         run(')', 9.0, 50.3258, 337.3417, adv=2.997, font='R')]
+# CNX_Chem_10_06_CbcCltPckd 'C|B|A' (send:FALSE): REAL census runs - three 9 pt letters on a diagonal,
+# 5.76 and 5.0 pt apart along the normal. The rule merges C and B: the reason it is confined to a block's
+# OWN cues and never feeds another block's frames (figcontainers.line_frames).
+CBA = census([['C', 9.0, 298.64, 95.17, 6.5, 0.0, 'PAGE/R10'], ['B', 9.0, 289.27, 89.41, 6.0, 0.0, 'PAGE/R10'],
+              ['A', 9.0, 278.23, 84.41, 6.0, 0.0, 'PAGE/R10']], {'PAGE/R10': 'R'})
+
+
+def texts(ls):
+    return [''.join(r['text'] for r in l) for l in ls]
+
+
+def v_all():
+    from blockkey import block_key
+    check('V-pre FT.lines splits nitrites / ammonium / conjugate / Blood into 2 / 3 / 2 / 2 lines',
+          [len(FT.lines(b)) for b in (NITRITES, AMMONIUM, CONJ, BLOOD)] == [2, 3, 2, 2],
+          repr([texts(FT.lines(b)) for b in (NITRITES, AMMONIUM, CONJ, BLOOD)]))
+    check('V1 REAL nitrites (NO2|– is ONE visual line holding all three runs, in source order',
+          [[r['text'] for r in l] for l in FT.visual_lines(NITRITES)] == [['nitrites (NO', '2', '–']],
+          repr(texts(FT.visual_lines(NITRITES))))
+    check('V2 REAL ammonium (NH4|+|) - three FT.lines, chained - is ONE visual line',
+          texts(FT.visual_lines(AMMONIUM)) == ['ammonium (NH4+)'], repr(texts(FT.visual_lines(AMMONIUM))))
+    check('V3 REAL conjugate NH4|+ (conjugate acid) is ONE visual line',
+          texts(FT.visual_lines(CONJ)) == ['NH4+ (conjugate acid)'], repr(texts(FT.visual_lines(CONJ))))
+    check('V4 REAL Blood ... HCO3|– is ONE visual line', len(FT.visual_lines(BLOOD)) == 1,
+          repr(texts(FT.visual_lines(BLOOD))))
+    check('V5 control: REAL Atmospheric|nitrogen (N2), one lead apart, stays TWO visual lines',
+          texts(FT.visual_lines(ATMOS)) == ['Atmospheric', 'nitrogen (N2)'], repr(texts(FT.visual_lines(ATMOS))))
+    check('V6 the keys still split: block_key is built on FT.lines, so no bought key moves',
+          [block_key(b) for b in (NITRITES, AMMONIUM, CONJ)]
+          == ['nitrites (NO2|–', 'ammonium (NH4|+|)', 'NH4|+ (conjugate acid)'],
+          repr([block_key(b) for b in (NITRITES, AMMONIUM, CONJ)]))
+    check('V7 FT.lines still returns 2 / 3 lines after visual_lines ran (nothing is merged in place)',
+          len(FT.lines(NITRITES)) == 2 and len(FT.lines(AMMONIUM)) == 3)
+    # the threshold, at 9 pt: one lead is 10.998 pt, so 0.59 lead (6.489 pt) merges and 0.61 lead (6.709 pt)
+    # does not. Both pairs are two FT.lines (each step is >= 0.5 x 9 = 4.5 pt).
+    near_ = [run('Aa', 9.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 100.0 + 0.59 * 1.222 * 9.0)]
+    far_ = [run('Aa', 9.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 100.0 + 0.61 * 1.222 * 9.0)]
+    check('V8 the merge threshold is 0.6 of a lead: 0.59 lead merges, 0.61 lead does not',
+          len(FT.lines(near_)) == 2 and len(FT.lines(far_)) == 2
+          and len(FT.visual_lines(near_)) == 1 and len(FT.visual_lines(far_)) == 2
+          and FT.VISUAL_LEAD_FRACTION == 0.6,
+          f'{len(FT.visual_lines(near_))} {len(FT.visual_lines(far_))} {getattr(FT, "VISUAL_LEAD_FRACTION", None)}')
+    # an ARC (four single-glyph runs) whose steps of 5 pt the rule WOULD merge pairwise is returned as FT.lines
+    arc = [run('a', 9.0, 0.0, 0.0), run('b', 9.0, 6.0, 5.0), run('c', 9.0, 12.0, 10.0), run('d', 9.0, 18.0, 15.0)]
+    check('V9 an arc is returned as FT.lines, unmerged (FT.is_arc, 4 FT.lines)',
+          FT.is_arc(arc) and len(FT.lines(arc)) == 4 and texts(FT.visual_lines(arc)) == texts(FT.lines(arc)),
+          repr(texts(FT.visual_lines(arc))))
+    check('V10 REAL CbcCltPckd C|B|A: 3 FT.lines, and the rule merges C and B - pinned as measured',
+          len(FT.lines(CBA)) == 3 and texts(FT.visual_lines(CBA)) == ['CB', 'A'], repr(texts(FT.visual_lines(CBA))))
+    # the threshold's SIZE is the LARGER first-run size of the two lines (instrument A's max): 6.0 pt apart, a
+    # 9 pt / 7 pt pair merges whichever line holds the 9 pt run (6.0 < 0.6 x 1.222 x 9 = 6.60); sized by min, or
+    # by either line's own first run, one of the two does not (0.6 x 1.222 x 7 = 5.13). Census-equivalent today
+    # (0 of 14,962 blocks change), so this pins the rule, not a measured case.
+    big_first = [run('Aa', 9.0, 0.0, 100.0), run('b', 7.0, 12.0, 106.0)]
+    small_first = [run('a', 7.0, 0.0, 100.0), run('Bb', 9.0, 12.0, 106.0)]
+    check('V11 the threshold scales with the LARGER of the two first-run sizes (9 pt over 7 pt, either order)',
+          [len(FT.lines(b)) for b in (big_first, small_first)] == [2, 2]
+          and [len(FT.visual_lines(b)) for b in (big_first, small_first)] == [1, 1],
+          repr([texts(FT.visual_lines(b)) for b in (big_first, small_first)]))
+
+
+attempt('V', v_all)
+# --------------------------------------------------------------------------------------------
 print('S8 tokens: de-duplication and edge trimming')
 
 # CNX_Chem_08_04_AOtype_img '3px and 3px' (send:true): TT0 LiberationSans, TT1 LiberationSans-Italic
@@ -569,6 +657,73 @@ def w_all():
 
 
 attempt('W', w_all)
+
+# --------------------------------------------------------------------------------------------
+print('HS §C140 ㊾ D5(a) is_script_style: the script rule restated on ONE style (heldplan.script_pool)')
+
+# REAL runs copied verbatim from the committed evidence/2026-10-03-c140-held/held-geometry.json (rot 0, so
+# x = along and y = proj). Fonts mapped onto FONTS by face: MolSpeed1 R9 /PUMGIW+LiberationSans, phscale TT1
+# /GAXDFJ+LiberationSans and buffer R9 /QPOGTQ+LiberationSans -> 'R'; OxStNonmts R9 /BFZTYJ+LiberationSans-Bold
+# -> 'B' and R11 /QANPDO+STIXGeneral-BoldItalic -> 'SBI'.
+HS_FONTS = dict(FONTS, SBI={'base': '/QANPDO+STIXGeneral-BoldItalic'})
+# CNX_Chem_09_05_MolSpeed1 block 13 '02 at T = 300 K' (send:false)
+MOLSPEED = [run('0', 9.0, 127.7819, 83.2989, adv=5.004), run('2', 7.0, 132.787, 81.2989, adv=3.892),
+            run(' at T = 300 K', 9.0, 136.68, 83.2989, adv=51.782)]
+# CNX_Chem_14_02_phscale block 5 '100 or 1' (send:false)
+PHSCALE = [run('10', 8.9998, 27.8628, 341.6631, adv=10.008), run('0', 6.9999, 37.8735, 345.6631, adv=3.892),
+           run(' or 1', 8.9998, 41.7666, 341.6631, adv=18.009)]
+# CNX_Chem_14_06_buffer block 23 '[CH3CO2H] is 11% of [CH3CO2|–]' (send:false)
+BUFFER = [run('[CH', 9.0, 102.052, 150.365, adv=15.498), run('3', 7.0, 117.5512, 147.365, adv=3.892),
+          run('CO', 9.0, 121.4442, 150.365, adv=13.502), run('2', 7.0, 134.9442, 147.365, adv=3.892),
+          run('H] is 11% of [CH', 9.0, 138.8371, 150.365, adv=65.851), run('3', 7.0, 204.6891, 147.365, adv=3.892),
+          run('CO', 9.0, 208.5829, 150.365, adv=13.502), run('2', 7.0, 222.0829, 147.365, adv=3.892),
+          run('–', 7.0, 224.5763, 154.365, adv=3.892), run(']', 9.0, 228.8891, 150.365, adv=2.502)]
+# CNX_Chem_18_04_OxStNonmts block 2 '4+|To|4–' (send:false)
+OXST = [run('4', 7.0, 163.07, 66.5133, adv=3.892, font='B'), run('+', 7.0, 166.9629, 67.0133, adv=3.99, font='SBI'),
+        run('To', 7.0, 162.9211, 59.5133, adv=8.034, font='B'),
+        run('4', 7.0, 163.5602, 52.5133, adv=3.892, font='B'), run('–', 7.0, 167.4532, 53.0133, adv=3.5, font='SBI')]
+
+
+def styles_of(block, fonts):
+    """Every distinct non-None style `source_tokens` emits for the block, as sorted plain tuples."""
+    toks, _ = FS.source_tokens(block, fonts)
+    return sorted({tuple(st) for t in toks for st in t['styles'] if st is not None})
+
+
+def hs1():
+    got = [styles_of(b, HS_FONTS) for b in (MOLSPEED, PHSCALE, BUFFER, OXST)]
+    check('HS1-pre the REAL styles: MolSpeed1 sub, phscale sup, buffer sub + charge, OxStNonmts italic-only',
+          got == [[(0.7778, -0.2222, False)], [(0.7778, 0.4445, False)],
+                  [(0.7778, -0.3333, False), (0.7778, 0.4444, False)], [(1.0, 0.0714, True)]], repr(got))
+    yes = FS.is_script_style
+    check('HS1a REAL MolSpeed1 subscript (0.7778, -0.2222) is a script', yes(FS.SourceStyle(0.7778, -0.2222, False)))
+    check('HS1b REAL phscale superscript (0.7778, 0.4445) is a script', yes(FS.SourceStyle(0.7778, 0.4445, False)))
+    check('HS1c REAL buffer charge (0.7778, 0.4444) is a script', yes(FS.SourceStyle(0.7778, 0.4444, False)))
+    check('HS1d REAL OxStNonmts italic-only STIX charge (1.0, 0.0714, italic) is NOT a script (a sign-only rule says sup)',
+          not yes(FS.SourceStyle(1.0, 0.0714, True)))
+    check('HS1e both thresholds: a same-size 0.111 raise is not a script, a 7/9-size 0.111 drop is',
+          not yes(FS.SourceStyle(1.0, 0.1111, True)) and yes(FS.SourceStyle(0.7778, -0.1111, False)))
+    check('HS1f the ratio boundary is strict: at exactly 0.9 the same-size threshold applies',
+          not yes(FS.SourceStyle(0.9, 0.1, False)) and yes(FS.SourceStyle(0.8999, 0.1, False)))
+    check('HS1g a plain character (None) is not a script', yes(None) is False)
+
+
+attempt('HS1', hs1)
+
+
+def hs2():
+    real = {'DZ2': DZ2, 'QOUT': QOUT, 'BLOOD': BLOOD, 'CONJ': CONJ, 'NITRITES': NITRITES, 'AMMONIUM': AMMONIUM,
+            'ATMOS': ATMOS, 'CBA': CBA, 'AOTYPE': AOTYPE, 'RELATION': RELATION, 'PH10': PH10, 'PH1': PH1,
+            'MOLSPEED': MOLSPEED, 'PHSCALE': PHSCALE, 'BUFFER': BUFFER, 'OXST': OXST}
+    pop = sorted({(name, st) for name, b in real.items() for st in styles_of(b, HS_FONTS) if not st[2]})
+    check(f'HS2-pre the population is not empty ({len(pop)} fixture/style pairs) and holds a drop under 0.13',
+          len(pop) > 0 and any(abs(st[1]) < FS.SAME_SHIFT for _, st in pop), repr(pop))
+    bad = [p for p in pop if not FS.is_script_style(FS.SourceStyle(*p[1]))]
+    check('HS2 every NON-italic style source_tokens emits on the REAL fixtures is a script by is_script_style',
+          bad == [], repr(bad))
+
+
+attempt('HS2', hs2)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)

@@ -26,6 +26,19 @@ sub/superscripts and italics onto the value, one <text> per styled segment. Widt
 except under --control. The report gains `unformatted`, `overflow`, `localized` and
 `containerErrors`.
 
+§C140 ㊾ D5(a) (design docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md):
+`--held-values <file>` draws [USER]'s values for send:false labels - figure-text.config.json
+`heldBlockValues`, which figure-compose.py reads and hands over as `<out>/held-values.json` (heldvalues.py
+owns the format). A held block is planned whole by the pure `heldplan.plan_block`, per VISUAL source line:
+an unchanged line is drawn run-exact as today, a changed one is laid out at its source size and drawn by
+`draw_layout`, the translated path's own draw loop. A block the planner refuses is drawn run-exact in
+English, exactly as today, and named in `heldErrors` - figure-compose.py then refuses the figure. A drawn
+held key is reported in `held`, never in `missing`, `translated`, `identity` or `runExact`. The file is
+read only without --control, and a missing, malformed or other-figure file raises before anything is
+drawn (exit 1, no report). With no flag nothing is held. BY EYE: `figure-compose.py --out <dir>
+--translations <file>`, which always passes the flag; a direct run of this file without it draws held
+labels in English, and the report's `heldValuesPath: null` says so.
+
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
 survives re-extraction.
@@ -41,6 +54,8 @@ import figcontainers as FC
 import figlayout as FL
 import numloc
 import figsym
+import heldplan
+import heldvalues
 from PIL import Image
 from blockkey import block_key, block_english
 from figcolour import fill_rgb
@@ -61,6 +76,23 @@ if '--translations' in sys.argv:
     tr_path = Path(sys.argv[sys.argv.index('--translations') + 1])
 _tr = json.loads(tr_path.read_text()) if tr_path.exists() else {}
 TR = _tr.get('blocks', _tr)
+
+# §C140 ㊾ D5(a): [USER]'s held values, {blockKey: raw value}, from the file figure-compose.py writes. The
+# CONTROL test comes FIRST: --control is a faithful redraw of the source, so the path is not even resolved
+# there (a nonexistent one is not an error). Outside --control every problem RAISES before anything is
+# drawn - exit 1, no compose-report.json, which figure-compose.py refuses as "wrote no compose-report.json"
+# (the `load_page` precedent; this file has no exit call). A file is never read as {} (heldvalues.read_file),
+# and one written for another figure - a leftover in a reused directory - is never drawn: its `basename`
+# must be meta.json's `source` stem, the rule publish-figure-svg.js's basenameFromMeta applies.
+HELD, HELD_PATH, HELD_CONFIG = {}, None, None
+if '--held-values' in sys.argv and not CONTROL:
+    HELD_PATH = Path(sys.argv[sys.argv.index('--held-values') + 1]).resolve()
+    _held = heldvalues.read_file(HELD_PATH)
+    _stem = Path(meta['source']).stem if isinstance(meta.get('source'), str) else None
+    if _held['basename'] != _stem:
+        raise ValueError(f"--held-values {HELD_PATH} was written for {_held['basename']!r}, but this figure's "
+                         f"meta.json source names {_stem!r} - another figure's values are never drawn")
+    HELD, HELD_CONFIG = _held['values'], _held['configPath']
 
 surf = cairo.ImageSurface.create_from_png(str(OUT / 'artwork.png'))
 out = cairo.ImageSurface(cairo.FORMAT_RGB24, surf.get_width(), surf.get_height())
@@ -247,6 +279,42 @@ def dev(x, y):
     return x * S, (H_PT - y) * S
 
 
+def draw_layout(layout, run_for_line, rot):
+    """Draw a `figlayout.decide` Layout: one ITEMS entry - one <text> - per SEGMENT of each laid-out line.
+
+    run_for_line(j) -> the run whose weight and fill output line j is drawn in. The translated path passes
+    the first run of VISUAL source line min(j, last) (§C140 ㉑); the held path (§C140 ㊾ D5(a)) passes the
+    first run of the one visual line it lays out. `rot` is the block's rotation in degrees.
+
+    EXTRACTED VERBATIM from the translated path's draw loop (§C140 ㊾ D5(a)), so a translated label and a
+    held one are drawn by ONE implementation: every item keeps path='layout', which svgout draws with
+    font-kerning:none ([USER] ruling 2026-09-17), so it matches the linear measure it was laid out with."""
+    rad = math.radians(rot)
+    size, lead, top = layout['size'], layout['lead'], layout['top']
+    for j, lc in enumerate(layout['lines']):
+        fr = run_for_line(j)
+        p_ = top - j * lead
+        # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
+        # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
+        # advance - the same advances the layout decision was made with.
+        off = 0.0
+        for k, (t, st) in enumerate(line_segments(lc)):
+            aa = layout['x0'][j] + off
+            pp = p_ if st is None else p_ + size * st.frac
+            x = aa * math.cos(rad) - pp * math.sin(rad)
+            y = aa * math.sin(rad) + pp * math.cos(rad)
+            px, py = dev(x, y)
+            setfont_st(fr, size, st)
+            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
+                              rot=rot, size=size if st is None else size * st.ratio,
+                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0))
+            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
+            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
+            ctx.restore()
+            off += lin_advance(t, fr, size, st)
+
+
 # See fit_circle. A circle this much larger than the block's OWN extent is a straight
 # line, whatever the algebra returns. ⚠️ THE NUMBER IS MEASURED, NOT CHOSEN, AND THE GAP
 # IT SITS IN IS ELEVEN ORDERS OF MAGNITUDE WIDE: the four genuine arcs on
@@ -318,9 +386,18 @@ report, missing, degenerate, undecodable = [], [], [], []
 keys, translated = [], []
 # E (§C140 ①), both additive to the contract above and, like it, in draw order WITH
 # multiplicity. `identity` keys are ALSO in `translated` (figure-compose.py assertion 2);
-# `runExact` is every kept block, identity included. `degenerate_kept` only splits the
-# stdout warning - `degenerate` itself keeps its meaning.
+# `runExact` is every kept block drawn wholly run-exact, identity included - never a HELD block,
+# whose unchanged lines are drawn run-exact too. `degenerate_kept` only splits the stdout warning -
+# `degenerate` itself keeps its meaning.
 identity, run_exact, degenerate_kept = [], [], []
+# §C140 ㊾ D5(a), additive. `held`: `{key, block, changed}` for every block drawn from [USER]'s held
+# values - `changed` its re-laid VISUAL line indices - in draw order WITH multiplicity (figure-compose.py
+# compares it against blocks.json's count as a multiset). A held key is in NO other list: not `missing`,
+# `translated`, `identity` or `runExact`. `held_errors`: `{key, block, reason, ...detail}` for every held
+# value NOT drawn - a heldplan.HeldRefusal (that block is then drawn run-exact in English, as today, and is
+# ALSO in `missing`), `in-translations` (the --translations file has the key too; its translation is drawn)
+# and `no-block` (block None: no block of this figure carries the key). Any entry refuses the figure.
+held, held_errors = [], []
 # §C140 ②, additive and in draw order WITH multiplicity: every formula stretch a translated label
 # could NOT carry over - `{key, token, stretch, reason, candidates}`, reason in absent / ambiguous /
 # no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
@@ -356,8 +433,91 @@ container_errors = []
 # The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
 PAGE = DARK = None
 
+
+def ensure_page():
+    """Read PAGE and DARK once per figure, on the first label that needs a container - a translated one
+    or a held one. (load_page is deliberately NOT guarded: see the note at the translated path's
+    container_for call.)"""
+    global PAGE, DARK
+    if PAGE is None:
+        PAGE = FC.load_page(OUT / 'artwork.pdf')
+        with Image.open(OUT / 'artwork.png') as _im:
+            DARK = _im.convert('L')
+
+
+_CMAPS = {}
+
+
+def has_glyph(ch, bold, italic):
+    """Is `ch` in the Liberation face (figis) it would be drawn in? figis is imported here, on the first
+    held block, so a figure with none never loads it; a missing or wrong face raises
+    figis.FontUnavailable, uncaught, exactly as svgout's embedding does."""
+    k = (bool(bold), bool(italic))
+    if k not in _CMAPS:
+        import figis
+        _CMAPS[k] = figis.load(k).getBestCmap()
+    return ord(ch) in _CMAPS[k]
+
+
+def draw_held(BI, b, key):
+    """§C140 ㊾ D5(a): draw block `b` from HELD[key]. -> True when it was drawn (the caller moves on to the
+    next block), False when heldplan REFUSED it - the refusal is in `held_errors` and the caller falls
+    through to the kept branch, which draws the block run-exact in English and names it in `missing`.
+
+    The whole block is planned before anything is drawn (heldplan.plan_block: all or nothing). An
+    unchanged visual line is drawn by draw_run_exact on its localised runs - the same call, on the same
+    runs, as a kept block - and feeds `undecodable` / `localized` as a kept block does; its STIX runs are
+    counted by draw_run_exact as today. A changed line is drawn by draw_layout in the font and fill of its
+    first run; a STIX run on it is drawn as Liberation text, so an eligible one is named in
+    STIX['skipped'] with reason `held` and one in another STIX face `other-face` (per run, as below)."""
+    box = []
+
+    def container():
+        if not box:
+            ensure_page()
+            box.append(FC.container_for(BI, blocks, PAGE, DARK, H_PT))
+        return box[0]
+
+    drawn = localise_block(b)
+    try:
+        plan = heldplan.plan_block(b, HELD[key], meta['fonts'], drawn,
+                                   is_bold=lambda r: r['font'] in BOLD, container=container,
+                                   width=lambda chars, size, run: seg_width(chars, run, size),
+                                   has_glyph=has_glyph)
+    except heldplan.HeldRefusal as e:
+        held_errors.append(dict(key=key, block=BI, reason=e.reason, **e.detail))
+        return False
+    rot = b[0]['rot']
+    off, undec, loc, laid = 0, False, False, []
+    for entry in plan.lines:
+        if entry[0] == 'runs':
+            part = entry[1]
+            if draw_run_exact(part, key):
+                undec = True
+            if any(FT.run_draw_text(d)[0] != FT.run_draw_text(r)[0] for d, r in zip(part, b[off:off + len(part)])):
+                loc = True
+            off += len(part)
+        else:
+            _, layout, vl = entry
+            draw_layout(layout, lambda j, r0=vl[0]: r0, rot)
+            for r in vl:
+                rbase = FS._base_name(r, meta['fonts'])
+                if figsym.eligible_base(rbase):
+                    STIX['skipped'].append(dict(key=key, reason='held'))
+                elif rbase.startswith('STIX'):
+                    STIX['skipped'].append(dict(key=key, reason='other-face'))
+            laid.append(layout)
+            off += len(vl)
+    if undec:
+        undecodable.append(key)
+    if loc:
+        localized.append(key)
+    held.append(dict(key=key, block=BI, changed=list(plan.changed)))
+    report.append(f"  HELD   {key!r} block {BI}: lines {list(plan.changed)}  "
+                  + ', '.join(f"[{box[0]['cls']} {L['step']}] {L['align']} {L['size']:.2f}pt" for L in laid))
+    return True
+
 for BI, b in enumerate(blocks):
-    ls = FT.lines(b)
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
     # a value of the wrong shape. A block `is_arc` calls an arc but that has no usable
@@ -380,6 +540,13 @@ for BI, b in enumerate(blocks):
     if CONTROL:
         kept = True
     else:
+        # §C140 ㊾ D5(a): a HELD key is drawn from [USER]'s value - never over a translation. A refused one
+        # falls through: it is not in TR, so it lands below in `missing` and is drawn run-exact, as today.
+        if key in HELD and key not in TR:
+            if draw_held(BI, b, key):
+                continue
+        elif key in HELD:
+            held_errors.append(dict(key=key, block=BI, reason='in-translations'))
         value = FT.normalise_block_value(TR[key], arc) if key in TR else None
         # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
         # this line looking like a hit - `key in TR` is True - and would DELETE the label: a
@@ -465,7 +632,7 @@ for BI, b in enumerate(blocks):
         report.append(f"  ARC    R={R:5.1f}pt  {key!r}")
         continue
 
-    rot = b[0]['rot']; rad = math.radians(rot)
+    rot = b[0]['rot']
     # §C140 ②: the label's BODY size - the size carrying the most letters among non-symbol runs -
     # not its first run's. A formula's scripts are drawn at size * ratio, so a block opening on an
     # 11 pt STIX symbol over a 9 pt body (47 corpus send:true blocks; 0 of 176 in the 34) would
@@ -496,10 +663,7 @@ for BI, b in enumerate(blocks):
     # it is laid out in it - lines, size, anchor, displacement, a named overhang - decided by the
     # pure figlayout.decide. This file only measures and draws. The page and its raster are read
     # ONCE per figure, and only when a label is actually laid out.
-    if PAGE is None:
-        PAGE = FC.load_page(OUT / 'artwork.pdf')
-        with Image.open(OUT / 'artwork.png') as _im:
-            DARK = _im.convert('L')
+    ensure_page()
     container = FC.container_for(BI, blocks, PAGE, DARK, H_PT)
     # 🔴 A DETECTION ERROR IS NAMED HERE OR NOWHERE. container_for turns ANY exception into an
     # 'open' container whose `why` is 'error: <Type>', with the source width and no vertical room -
@@ -510,41 +674,29 @@ for BI, b in enumerate(blocks):
     # rather than laying every label of the figure out against containers nobody measured.)
     if container['why'].startswith('error:'):
         container_errors.append(dict(key=key, block=BI, why=container['why']))
-    # Source cues from the PDF's OWN advances, never from a cairo measure.
-    cues = dict(n_src=len(ls), sz0=sz0,
-                starts=[min(FT.along(r) for r in l) for l in ls],
-                ends=[max(FT.along(r) + r['adv'] for r in l) for l in ls],
-                projs=[FT.proj(l[0]) for l in ls])
+    # Source cues from the PDF's OWN advances, never from a cairo measure - per VISUAL source line
+    # (§C140 ㉑): `figtext.visual_lines` merges the FT.lines a stacked charge or a same-size superscript
+    # splits off, so `nitrites (NO2|–` is ONE source line here (n_src 1, its own baseline) while its
+    # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
+    # every block that has no such split.
+    vls = FT.visual_lines(b)
+    cues = dict(n_src=len(vls), sz0=sz0,
+                starts=[min(FT.along(r) for r in l) for l in vls],
+                ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],
+                projs=[FT.proj(l[0]) for l in vls])
 
     def width(chars, size, j):
-        """figlayout's ONE width function: output line j is drawn in the font and colour of
-        source line min(j, last) - font AND colour are per LINE."""
-        return seg_width(chars, ls[min(j, len(ls) - 1)][0], size)
+        """figlayout's ONE width function: output line j is drawn in the font and colour of the FIRST
+        run of VISUAL source line min(j, last) - font AND colour are per LINE. After a §C140 ㉑ merge
+        that run is the one that opens the source line, so a drawn line never takes a script run's
+        font or colour; a script run is chosen only where the source line itself opens with one."""
+        return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
     layout = FL.decide(words, width, container, cues)
-    align, size, lead, top = layout['align'], layout['size'], layout['lead'], layout['top']
-    for j, lc in enumerate(layout['lines']):
-        fr = ls[min(j, len(ls) - 1)][0]
-        p_ = top - j * lead
-        # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
-        # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
-        # advance - the same advances the layout decision was made with.
-        off = 0.0
-        for k, (t, st) in enumerate(line_segments(lc)):
-            aa = layout['x0'][j] + off
-            pp = p_ if st is None else p_ + size * st.frac
-            x = aa * math.cos(rad) - pp * math.sin(rad)
-            y = aa * math.sin(rad) + pp * math.cos(rad)
-            px, py = dev(x, y)
-            setfont_st(fr, size, st)
-            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
-                              rot=rot, size=size if st is None else size * st.ratio,
-                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
-                              rgb=cmyk(fr['fill']), dx=0.0))
-            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
-            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
-            ctx.restore()
-            off += lin_advance(t, fr, size, st)
+    align, size = layout['align'], layout['size']
+    # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
+    # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
+    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot)
     ov = layout['overflow']
     if ov is not None:
         # The report CONTRACT, copied field by field (figure-compose.py passes it verbatim into
@@ -556,6 +708,12 @@ for BI, b in enumerate(blocks):
                 entry[extra] = ov[extra]
         overflow.append(entry)
     report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]")
+
+# §C140 ㊾ D5(a): a held value whose key no block carries - renamed or re-extracted - would never be drawn.
+# figure-compose.py's pre-flight refuses this before spawning; a hand-run reaches it here.
+for k in HELD:
+    if k not in keys:
+        held_errors.append(dict(key=k, block=None, reason='no-block'))
 
 name = 'control.png' if CONTROL else 'translated.png'
 out.write_to_png(str(OUT / name))
@@ -620,6 +778,12 @@ if SVG:
     'overflow': overflow,
     # §C140 ③. Additive: translated labels laid out with no container detection (it raised).
     'containerErrors': container_errors,
+    # §C140 ㊾ D5(a). Additive (see `held` / `held_errors` above). Both paths are null when no
+    # --held-values file was read: no flag, or --control.
+    'held': held,
+    'heldErrors': held_errors,
+    'heldValuesPath': None if HELD_PATH is None else str(HELD_PATH),
+    'heldConfigPath': HELD_CONFIG,
     # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason.
     'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped']},
 }, indent=1, ensure_ascii=False))
@@ -630,6 +794,18 @@ if missing:
     print(f"\n!! {len(missing)} block(s) with no translation - ENGLISH KEPT:")
     for k in missing:
         print(f"     {k!r}")
+# §C140 ㊾ D5(a). Leading '\n' is load-bearing - see the note above the compose-report.json write. The
+# refusal header must never contain the consumers' trigger phrase (with no translation), or their parse
+# would read these entries as kept keys.
+if held:
+    print(f"\nNOTE (not a failure): {len(held)} label(s) drawn from heldBlockValues ([USER]'s values):")
+    for h in held:
+        print(f"     {h['key']!r} block {h['block']}: lines {h['changed']}")
+if held_errors:
+    print(f"\n!! {len(held_errors)} heldBlockValues entr(ies) NOT drawn - figure-compose.py refuses this figure:")
+    for e in held_errors:
+        rest = {k: v for k, v in e.items() if k not in ('key', 'block', 'reason')}
+        print(f"     {e['key']!r} block {e['block']}: {e['reason']}" + (f" {rest}" if rest else ''))
 # NAMED, never counted. `is_arc` calling straight text an arc is a real mis-classification; the
 # keys below are the evidence for whoever revisits `is_arc`, which this file
 # deliberately does not touch. Split by path, because only a TRANSLATED one is laid out.
@@ -682,4 +858,5 @@ if localized:
 print(f"\nwrote out/{name}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.
 print(f"\nwrote out/compose-report.json  "
-      f"({len(translated)} translated, {len(missing)} english-kept)")
+      f"({len(translated)} translated, {len(missing)} english-kept"
+      + (f", {len(held)} held" if held else '') + ")")

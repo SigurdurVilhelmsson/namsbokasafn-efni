@@ -390,3 +390,92 @@ heavy files the register blamed; and a ring gate that cannot run now fails the r
 figure (#533). Status and the next action live in the register's 2026-10-02 ⏩ RESUME, not here.
 
 ---
+
+## 2026-10-02 15:00 - §C140 ㊵'s June-figure buys: two ICE tables kept, catalyst discarded, ibuprofen kept as it was
+
+**Branch:** docs/c140-c40-buys-merged-handoff
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Recent commits:**
+0c2f06d01 Merge pull request #534 from SigurdurVilhelmsson/content/c140-c40-recompose-buys
+3e41c6001 docs(spec): §C140 ㊵ — amend "The buys" step 3 with what the buys taught (register ㊽)
+19441b9ae docs(register): §C140 ㊵ — the buy track is closed; next is merging #534, then step 2's recompose pass
+
+**Why:** The four June figures [USER] ruled should be recomposed were lined up at 0 ISK (an adversarial
+review found nothing necessary) and bought one at a time. Catalyst passed every gate under `VERDICT ok`
+and was still worse than its June copy: the joined MT spelled out the symbol Eₐ, one label was clipped at
+the artwork's edge, another crossed a curve. [USER] kept the June copy, and the buy was undone before any
+commit (media copy, sidecar and pin, then plain and `--stale` dry runs). [USER] then chose to buy only
+the two ICE tables, for decimal commas, keeping each only if it beat its June copy. Both did, in Chromium
+and Firefox. Ibuprofen keeps its June copy. ≈ 3.95 ISK. Status and the next action (plan step 2, the
+recompose pass) live in the register's 2026-10-02 evening ⏩ RESUME, not here.
+
+---
+
+## 2026-10-02 20:30 - §C140 step 2 re-derived: three of six sub-items not built, five June-better copies, a design spec awaiting rulings
+
+**Branch:** docs/c140-c40-buys-merged-handoff
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M experiments/figure-text-translation/README.md
+ M experiments/figure-text-translation/REGISTER.md
+ A docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-design.md
+ M logs/dev-journal.md
+
+**Why:** The recompose pass's sub-item list came from a 2026-09-26 audit that predated six PRs, so each
+item was measured as a hypothesis before planning (25 read-only agents, two verifiers per item, 0 ISK).
+The heavy-figure and feImage work turned out to be built and simply picked up by the bump. The comment
+icons, the Nitrogen layout and the kept-English short words are not built, and PerTable2 needs a guard
+no existing config kind can provide. Comparing the prepared tree with what readers are served today
+showed that the held sync, not the pass, is what replaces the reader's picture, and that five prepared
+copies are worse than the June ones. Several of those choices are [USER]'s, so a spec with a decision
+sheet was written instead of a plan. Status and the next action live in the register's 2026-10-02 night
+⏩ RESUME, not here.
+
+---
+
+## 2026-10-03 - §C140 step 2: rulings taken, PR-A half-planned, value sheet filled; paused at the usage limit
+
+**Branch:** feat/c140-c49-step2-code-fixes (pushed, no PR)
+**Modified:**
+ A docs/superpowers/plans/2026-10-03-c140-step2-code-fixes.md
+ A docs/handoffs/2026-10-03-step2-value-sheet.md
+ M docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-design.md
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Why:** [USER] chose the recommended option on all four design questions: a keep-copy guard, PerTable2's
+June raster, compose-time values for the short English words, and value edits for HetCats and Graphene. A
+drafting workflow then wrote the two plans section by section, each section checked by two verifiers. The
+weekly usage limit stopped it with 8 of 15 agents done, so PR-A's plan was assembled from the finished
+sections (two verified, two not) and its fifth part is a stub. The verifiers caught one money-and-overwrite
+ordering trap for PR-B: a kept figure's guard entry must land no later than its sidecar deletion. The value
+sheet was built from real keys and filled by [USER]. It showed that the figure font cannot draw ⁰ or ⁻, so
+formula values must be drawn as raised and lowered runs. Status and the next action live in the register's
+2026-10-03 ⏩ RESUME, not here.
+
+---
+
+## 2026-10-03 (evening) - §C140 step 2: both plans complete, PR-A built on a scratch branch; chemistry faithful retirement planned
+
+**Branch:** feat/c140-c49-step2-code-fixes (15 local commits since the last push; not pushed)
+**Modified:**
+ A docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md
+ A docs/superpowers/plans/2026-10-03-c140-step2-code-fixes-part5.md
+ A docs/superpowers/plans/2026-10-03-c140-step2-recompose-pass.md
+ A docs/superpowers/plans/2026-10-03-chemistry-faithful-retirement.md
+ M docs/superpowers/plans/2026-10-03-c140-step2-code-fixes.md
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Why:** Part 5 had to be written against the tree after Parts 1-4, and none of that code existed, so Parts 1-2 were
+applied and Parts 3-4 verified first, in scratch worktrees (32 fixes folded into the plan). Part 5 was then designed by
+a judge panel, built test-first, and its plan text generated from the commits; a replicate rebuilt it from the text
+alone with a 0-byte diff, and a skeptic's four findings became Task 12. PR-B's plan was drafted, verified and checked
+against the real Part 5 code by a consistency critic. In between, [USER] ruled Part 5's four items, and approved a plan
+to retire chemistry's stale faithful vintage (its backup condition was met; a sister-session report that it was not
+turned out to be a false negative). Status and the next action live in the register's newest RESUME, not here.
+
+---

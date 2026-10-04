@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Stage 2 - remove every BT..ET text object (keeping the graphics state set inside it), drop the embedded Illustrator private data,
-and render the artwork alone.  Produces out/artwork.pdf and out/artwork.png.
+"""Stage 2 - remove every BT..ET text object (keeping the graphics state set inside it), drop the embedded Illustrator private data
+and page 1's comment annotations (§C161, see drop_annotations), and render the artwork alone.  Produces out/artwork.pdf,
+out/artwork.png and out/annotations.json.
 
 Stripping text in the PDF is what makes this safe: the English is a separate object
 that simply is not drawn.  Erasing it from the published raster instead would mean
@@ -19,7 +20,7 @@ on disk had been produced by a hand-run `pdftocairo -svg`.  An automated driver 
 returned success with no artwork.svg would have the translation paid for and only then
 discover composition has no input, so the producer belongs here, beside the PNG.
 """
-import sys, subprocess
+import json, sys, subprocess
 import _deps
 from _deps import read_content
 from _deps import OUT
@@ -314,6 +315,59 @@ def collapse_svg(out_svg):
               f"{report['unmatched']} unmatched -> out/svgfix.json")
 
 
+# §C161. A PDF annotation is not artwork, and pdftocairo draws its appearance stream (/AP) over the page: an
+# editor's comment left in the delivered file became a green or yellow note icon over an atom in our figure, one
+# OpenStax's own published JPG does not show. Census 2026-10-02, page 1 of all 2,238 chemistry source PDFs: the
+# non-empty /Annots are /Text comments with an /AP and their /Popup (14 + 14) and nothing else; 0 of 516 EPS
+# sources carry an annotation pdfmark. Those two subtypes are removed. Anything else is REFUSED, not guessed.
+REMOVABLE_ANNOTATION_SUBTYPES = frozenset(['/Text', '/Popup'])
+
+
+class AnnotationRefused(Exception):
+    """A page-1 annotation this tool has no evidence about. RAISED before anything is deleted or written.
+
+    A /FreeText, /Stamp, /Ink or /Square annotation can be part of the picture (an artist's callout, a stamped
+    label): deleting it loses artwork, keeping it may draw an editor's mark. Neither can be decided here and
+    none occurs in the measured corpus, so a refusal costs nothing today and turns an unmeasured source (a
+    refresh, another book) into one loud failed prepare instead of a silently wrong picture. Extend
+    REMOVABLE_ANNOTATION_SUBTYPES only with evidence, as PERSISTENT_STATE_OPERATORS is.
+    """
+
+
+def drop_annotations(page):
+    """Delete page 1's /Annots when every entry is a /Text comment or a /Popup (§C161).
+
+    -> {subtype: count} removed, sorted by subtype; {} for no /Annots or an empty array (the key is deleted
+    either way). Raises AnnotationRefused, deleting NOTHING, if /Annots is not an array or any entry is not a
+    dictionary, has no /Subtype, or has a subtype outside REMOVABLE_ANNOTATION_SUBTYPES.
+
+    🔴 DELETE THE KEY; DO NOT FILTER BY /F. pdftocairo draws an annotation into the PNG whatever its flags but
+    into the SVG only when Print (4) is set - measured on a synthetic /Text: /F 28 (the corpus value) draws in
+    both, /F 0 in the PNG only. Removing the key is what keeps artwork.pdf, .png and .svg in agreement.
+    """
+    annots = page.obj.get('/Annots')
+    if annots is None:
+        return {}
+    if not isinstance(annots, pikepdf.Array):
+        raise AnnotationRefused('page /Annots is not an array - refused, not guessed; see AnnotationRefused (§C161)')
+    counts, refused = {}, []
+    for annot in annots:
+        if not isinstance(annot, pikepdf.Dictionary):
+            refused.append(f'a non-dictionary entry {repr(annot)[:40]}')
+            continue
+        subtype = str(annot.get('/Subtype', '(no /Subtype)'))
+        if subtype in REMOVABLE_ANNOTATION_SUBTYPES:
+            counts[subtype] = counts.get(subtype, 0) + 1
+        else:
+            refused.append(subtype)
+    if refused:
+        raise AnnotationRefused(
+            f'page 1 carries annotation(s) {sorted(set(refused))} that are neither a /Text comment nor '
+            f'a /Popup - refused, not guessed; see AnnotationRefused (§C161)')
+    del page.obj['/Annots']
+    return dict(sorted(counts.items()))
+
+
 def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
     OUT.mkdir(exist_ok=True)
     pdf = pikepdf.open(pdf_path)
@@ -324,6 +378,12 @@ def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
           f"{stats['forms_rewritten']} contained text")
     print(f"graphics state kept from text objects: {stats['state_kept']} operator(s)")
 
+    # §C161, BEFORE the save: artwork.pdf, .png and .svg are all made from the page without them. Written on
+    # EVERY run, like svgfix.json, so "nothing to remove" can never read like "did not run".
+    removed = drop_annotations(page)
+    (OUT / 'annotations.json').write_text(json.dumps({'removed': removed}, indent=1))
+    print('annotations removed: '
+          + (', '.join(f'{n} {s}' for s, n in removed.items()) or '0') + ' -> out/annotations.json')
     for k in ('/PieceInfo', '/LastModified', '/Metadata', '/Thumb'):
         if k in page.obj:
             del page.obj[k]

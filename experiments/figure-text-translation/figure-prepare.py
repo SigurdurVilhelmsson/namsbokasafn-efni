@@ -398,6 +398,25 @@ def reference_cost_warnings(svg):
     return []
 
 
+def annotation_warnings(out_dir):
+    """-> [] or ONE warning naming the page-1 annotations strip-text.py removed (§C161).
+
+    A removal is expected (5 chemistry figures carry an editor's comment icon) but must not be silent, and
+    the driver prints every warning for every outcome (`tools/figure-run.js`, "figure-prepare.py's
+    WARNINGS"). strip-text.py writes annotations.json on EVERY run, so a missing file means the producer
+    drifted: raised, never read as "nothing removed".
+    """
+    path = Path(out_dir) / 'annotations.json'
+    if not path.is_file():
+        raise PrepareError(f'strip-text.py wrote no {path.name}, so whether it removed an annotation '
+                           f'from the artwork is unknown (§C161)')
+    removed = json.loads(path.read_text()).get('removed') or {}
+    if not removed:
+        return []
+    return ['annotations removed from page 1: '
+            + ', '.join(f'{n} {s}' for s, n in sorted(removed.items())) + ' (§C161)']
+
+
 # ── the artwork/text coordinate guard — ruling (W), 2026-09-15 ────────────────────────
 #
 # 🔴 WHY THIS REFUSES RATHER THAN WARNS. `prepare.json`'s warnings are ADVISORY - the driver
@@ -621,7 +640,8 @@ def prepare(artwork, out_dir, basename):
         'imageXObjects': features['imageXObjects'],
         'paintOps': features['paintOps'],
         'formTextXObjects': features['formTextXObjects'],
-        'warnings': build_warnings(meta, features) + reference_cost_warnings(svg),
+        'warnings': (build_warnings(meta, features) + reference_cost_warnings(svg)
+                     + annotation_warnings(out_dir)),
     }
 
 

@@ -41,10 +41,15 @@ import {
   billableFrom,
   rootViewBox,
   main,
+  COMPOSE_NOTE_LISTS,
 } from '../figure-run.js';
 
 const require = createRequire(import.meta.url);
-const { computeRenderHash, COMPOSER_VERSION } = require('../lib/figure-text-sidecar.cjs');
+const {
+  computeRenderHash,
+  COMPOSER_VERSION,
+  readSidecar: readSidecarFromDisk,
+} = require('../lib/figure-text-sidecar.cjs');
 const { emptyTally, tallyOutcome } = await import('../lib/figure-outcomes.js');
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -148,6 +153,16 @@ const CH04 = { book: 'efnafraedi-2e', chapter: '4', modules: null, figures: null
  * Anything asserting a pristine corpus must now SAY so rather than assume it.
  */
 const PRISTINE = { readSidecar: () => null, sidecarExists: () => false };
+
+/**
+ * The REAL sidecar tree, NAMED — for the one test whose subject is what has been bought.
+ *
+ * 🔴 §C140 ㊳: a driver run that passes neither this nor `PRISTINE` (nor both readers itself) reads
+ * the real tree WITHOUT SAYING SO, and its verdict then moves with how much has been bought AND
+ * with whether those sidecars are current. A COMPOSER_VERSION bump stales every sidecar at once:
+ * measured 2026-10-03, an in-memory '5' turned three tests in this file red on the bump alone.
+ */
+const CORPUS = { readSidecar: readSidecarFromDisk, sidecarExists: fs.existsSync };
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 describe('parseCli', () => {
@@ -479,7 +494,7 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
 
   it('spends no second resolver pass on a chapter with no hashed basenames', async () => {
     const spawn = fakeSpawn();
-    await runFigures(CH04, { spawn });
+    await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.countOf('resolve')).toBe(1);
   });
 
@@ -640,6 +655,15 @@ describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () =>
     ['pin-invalid', /artwork pin is malformed.*the ruling text/],
   ])('describes a %s refusal by its reason (§C140 ㊵)', (refused, pattern) => {
     expect(refusalReason({ refused, reason: 'the ruling text' })).toMatch(pattern);
+  });
+
+  // §C140 ㊾ — a copy a ruling KEEPS. Pinned whole: the generic fallback below would print
+  // "REFUSED, not missing: kept — …", which says nothing about what no run may do to the copy.
+  it('describes a kept refusal by what no run will do to the copy (§C140 ㊾)', () => {
+    expect(refusalReason({ refused: 'kept', reason: 'the ruling text' })).toBe(
+      'REFUSED, not missing: its translated copy is kept by ruling, so no run recomposes, ' +
+        're-buys or overwrites it — the ruling text'
+    );
   });
 
   it('keeps the reason for a refusal kind it does not know (§C140 ㊵)', () => {
@@ -808,7 +832,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   // passes just as happily against a call that was made with the wrong flags.
   it('spawns translate-blocks.mjs ZERO times, having actually done the work', async () => {
     const spawn = fakeSpawn();
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.countOf('translate')).toBe(0);
     // ⚠️ AN ALLOWLIST, NOT A BLOCKLIST. Counting the one stage named 'translate' is trivially
     // zero while no such call site exists; asserting that the ONLY stages a dry run reaches are
@@ -860,7 +884,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   // at the END is not enough; each figure's directory must go as soon as it is classified.
   it('never holds more than one figure directory at a time in a dry run', async () => {
     const spawn = fakeSpawn();
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(spawn.liveDirs.length).toBeGreaterThan(10); // non-vacuity: it really did prepare
     expect(Math.max(...spawn.liveDirs)).toBe(1);
     expect(result.figures.every((f) => f.outDir === null)).toBe(true);
@@ -884,9 +908,10 @@ describe('the dry run spends nothing and writes nothing', () => {
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 // 🔴 THIS BRANCH HAD NO EXERCISER, AND TWO MUTATIONS OF IT SURVIVED ALL 57 TESTS.
-// `books/efnafraedi-2e/figure-text/` does not exist — the campaign has minted no sidecar for a
-// real book yet — so `readSidecar` returns null for every figure of every chapter, `&&`
-// short-circuits, and no corpus-driven test can reach `isStale` through `runFigures` at all.
+// When this was written `books/efnafraedi-2e/figure-text/` did not exist, so `readSidecar`
+// returned null for every figure, `&&` short-circuited, and no corpus-driven test could reach
+// `isStale` through `runFigures` at all. Real sidecars exist now (the first purchase was on
+// 2026-09-12); the tests below still inject the reader, so each one controls its own case.
 // The reader is injected rather than planted on disk, because a test that writes into `books/`
 // would violate the invariant the suite next door exists to prove.
 describe('a figure whose sidecar is current is skipped before anything is spent', () => {
@@ -939,19 +964,77 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
   // it will get further from 0 with every chapter bought. ▶ A pin on "how much have we bought so
   // far" is a countdown, not a test. What is durable is the RELATION: the driver skips exactly the
   // figures that have a current sidecar on disk, no more and no fewer.
+  //
+  // 🔴 §C140 ㊳ — AND "CURRENT" IS A HASH QUESTION HERE TOO. This test used to count sidecar FILES,
+  // which equals the current ones only while every sidecar is current. A COMPOSER_VERSION bump
+  // stales all of them at once, so the bump commit alone turned it red ("expected +0 to be 19",
+  // measured by an in-memory '5' on 2026-10-03). The oracle is now the driver's own `isStale` over
+  // the reader the run used, in three worlds: the real tree, a bump in miniature (every sidecar
+  // stale) and its mirror (every sidecar current). The last two hold whatever has been bought or
+  // restamped, so neither can go vacuous.
   it('skips exactly the figures that really do have a current sidecar — no more, no fewer', async () => {
+    const bookDir = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
+    const currentBy = (read, result) =>
+      result.figures.filter((f) => !isStale(read(bookDir, f.basename))).length;
+    const stale = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedVersion: `not-${COMPOSER_VERSION}` };
+    };
+    const current = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedHash: s.renderHash, composedVersion: COMPOSER_VERSION };
+    };
+
     // ⚠️ REAL filesystem here ON PURPOSE — this arm is the one measuring what has actually been
     // bought. (A blanket edit stubbed it for a moment and the assertion would then have compared
     // 0 against a real count: a failure if lucky, a vacuous pass if not.)
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
-    const onDisk = result.figures.filter((f) =>
-      fs.existsSync(
-        path.join(REPO_ROOT, 'books', 'efnafraedi-2e', 'figure-text', `${f.basename}.is.json`)
-      )
-    );
-    expect(result.tally['skipped-current'] || 0).toBe(onDisk.length);
+    const real = await runFigures(CH04, { spawn: fakeSpawn(), ...CORPUS });
+    expect(real.tally['skipped-current'] || 0).toBe(currentBy(readSidecarFromDisk, real));
+
+    // A bump in miniature. The sidecar FILES are all still there, which is what makes the zero
+    // mean "none current" rather than "none found".
+    const bumped = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: stale,
+      sidecarExists: fs.existsSync,
+    });
+    const filesOnDisk = bumped.figures.filter((f) =>
+      fs.existsSync(path.join(bookDir, 'figure-text', `${f.basename}.is.json`))
+    ).length;
+    expect(filesOnDisk).toBeGreaterThan(0);
+    expect(bumped.tally['skipped-current'] || 0).toBe(currentBy(stale, bumped));
+    expect(bumped.tally['skipped-current'] || 0).toBe(0);
+
+    // Its mirror, every sidecar restamped current: the positive control, so the relation is not
+    // only ever checked at zero. It is NOT compared with the file count — a hand-edited sidecar
+    // (blocks changed, renderHash not) stays stale under a restamp, and that is not this test's
+    // business.
+    const restamped = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: current,
+      sidecarExists: fs.existsSync,
+    });
+    expect(currentBy(current, restamped)).toBeGreaterThan(0);
+    expect(restamped.tally['skipped-current'] || 0).toBe(currentBy(current, restamped));
+
+    // A second control, for the HASH half of "current". In all three worlds above composedHash
+    // equals renderHash, so a skip that read composedVersion alone passed every test in this file
+    // (measured 2026-10-03). Here every sidecar carries THIS composer's version over artwork
+    // published from other blocks, which `isStale` calls stale.
+    const unpublished = (dir, name) => {
+      const s = readSidecarFromDisk(dir, name);
+      return s && { ...s, composedHash: `not-${s.renderHash}`, composedVersion: COMPOSER_VERSION };
+    };
+    const drifted = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      readSidecar: unpublished,
+      sidecarExists: fs.existsSync,
+    });
+    expect(drifted.tally['skipped-current'] || 0).toBe(currentBy(unpublished, drifted));
+    expect(drifted.tally['skipped-current'] || 0).toBe(0);
+
     // Control: with the filesystem stubbed empty, the same corpus skips nothing — so the
-    // assertion above is measuring the sidecars and not some unrelated skip path.
+    // assertions above are measuring the sidecars and not some unrelated skip path.
     const pristine = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(pristine.tally['skipped-current'] || 0).toBe(0);
   });
@@ -1003,7 +1086,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
           ? null
           : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.tally.unresolved).toBe(1);
     expect(result.verdict.ok).toBe(true);
     expect(summarise(result)).toContain('CNX_Chem_04_05_filter');
@@ -1023,14 +1106,14 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
             stderr: "Source tree 'updates-2e' is configured but is not a directory",
           }
         : spawn(call);
-    await expect(runFigures(CH04, { spawn: failing })).rejects.toThrow(/updates-2e/);
+    await expect(runFigures(CH04, { spawn: failing, ...PRISTINE })).rejects.toThrow(/updates-2e/);
   });
 
   it('REFUSES when --figure matches nothing, instead of exiting 0 having done nothing', async () => {
     const spawn = fakeSpawn();
     const code = await main(
       ['--book', 'efnafraedi-2e', '--chapter', '4', '--dry-run', '--figure', 'NO_SUCH_FIGURE'],
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     expect(code).not.toBe(0);
     expect(spawn.countOf('prepare')).toBe(0);
@@ -1058,7 +1141,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
     const spawn = fakeSpawn();
     const code = await main(
       ['--book', 'efnafraedi-2e', '--chapter', '4', '--dry-run', '--module', 'm00000'],
-      { spawn }
+      { spawn, ...PRISTINE }
     );
     expect(code).not.toBe(0);
     expect(spawn.countOf('prepare')).toBe(0);
@@ -1200,6 +1283,97 @@ describe('the outcome vocabulary is Task 1’s, not a second copy', () => {
   });
 });
 
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// §C140 ㊾ D5(a) — the compose-note lists are ONE list written twice, in two languages.
+//
+// `figure-compose.py` copies the lists named in its `COMPOSE_NOTES` tuple out of
+// compose-report.json into compose.json; this driver reads the lists named in
+// `COMPOSE_NOTE_LISTS` out of compose.json. A list the wrapper copies and the driver does not
+// name is a list nobody sees (`held` was added to both on the same day, by hand). So the tuple
+// is read from the Python SOURCE here and held against the exported array, in order.
+describe('COMPOSE_NOTE_LISTS is figure-compose.py’s COMPOSE_NOTES, not a second copy (§C140 ㊾)', () => {
+  /**
+   * The string items of the ONE top-level `<name> = ( ... )` assignment in a Python source, read
+   * by a scanner that honours quotes and `#` comments (so a `)` inside either cannot end the
+   * tuple). It throws rather than half-parse: no assignment or a second one (Python's last one
+   * wins), a right-hand side that does not open with `(` (`BASE + ('held',)`), an item that is not
+   * a plain one-line string literal, or anything but a comment after the closing `)`.
+   */
+  const pythonStringTuple = (src, name) => {
+    const heads = [...src.matchAll(new RegExp(`^${name}[ \\t]*=[ \\t]*`, 'gm'))];
+    if (heads.length !== 1) {
+      throw new Error(`${name}: expected ONE assignment, found ${heads.length}`);
+    }
+    let i = heads[0].index + heads[0][0].length;
+    if (src[i] !== '(') throw new Error(`${name}: the right-hand side is not a literal tuple`);
+    const items = [];
+    let wantItem = true;
+    for (i += 1; i < src.length; i++) {
+      const ch = src[i];
+      if (/\s/.test(ch)) continue;
+      if (ch === '#') {
+        i = src.indexOf('\n', i);
+        if (i === -1) break;
+        continue;
+      }
+      if (ch === ')') {
+        const eol = src.indexOf('\n', i);
+        const rest = src.slice(i + 1, eol === -1 ? src.length : eol);
+        if (!/^[ \t]*(#.*)?$/.test(rest)) {
+          throw new Error(`${name}: ${JSON.stringify(rest.trim())} follows the tuple`);
+        }
+        return items;
+      }
+      if (ch === ',' && !wantItem) {
+        wantItem = true;
+        continue;
+      }
+      if ((ch === "'" || ch === '"') && wantItem) {
+        const close = src.indexOf(ch, i + 1);
+        const body = close === -1 ? '' : src.slice(i + 1, close);
+        if (close === -1 || /[\\\n]/.test(body)) {
+          throw new Error(`${name}: an item is not a plain string literal`);
+        }
+        items.push(body);
+        i = close;
+        wantItem = false;
+        continue;
+      }
+      throw new Error(`${name}: ${JSON.stringify(ch)} in the tuple is not a plain string literal`);
+    }
+    throw new Error(`${name}: the tuple never closes`);
+  };
+
+  it('parses figure-compose.py’s COMPOSE_NOTES and finds the exported list, in order', () => {
+    const src = fs.readFileSync(
+      path.join(REPO_ROOT, 'experiments', 'figure-text-translation', 'figure-compose.py'),
+      'utf-8'
+    );
+    const notes = pythonStringTuple(src, 'COMPOSE_NOTES');
+    expect(notes.length).toBeGreaterThan(0); // non-vacuity: the tuple was really read
+    expect(COMPOSE_NOTE_LISTS).toEqual(notes);
+  });
+
+  // The parser's own control: what it accepts, and the shapes it must refuse rather than misread.
+  it('CONTROL: reads a multi-line tuple with comments; refuses every shape it cannot read', () => {
+    const planted = [
+      'X = (',
+      "    'a',  # the first ) of two, a comment",
+      '    "b",',
+      ')  # end',
+      'Y = 1',
+    ];
+    expect(pythonStringTuple(planted.join('\n'), 'X')).toEqual(['a', 'b']);
+    expect(() => pythonStringTuple('Y = 1', 'X')).toThrow(/expected ONE assignment, found 0/);
+    expect(() => pythonStringTuple("X = ('a',)\nX = ('a', 'b')", 'X')).toThrow(/found 2/);
+    expect(() => pythonStringTuple("X = BASE + ('held',)", 'X')).toThrow(/not a literal tuple/);
+    expect(() => pythonStringTuple("X = ('a', B)", 'X')).toThrow(/not a plain string literal/);
+    expect(() => pythonStringTuple("X = ('a' 'b')", 'X')).toThrow(/not a plain string literal/);
+    expect(() => pythonStringTuple("X = ('a',) + BASE", 'X')).toThrow(/follows the tuple/);
+    expect(() => pythonStringTuple("X = ('a',", 'X')).toThrow(/never closes/);
+  });
+});
+
 afterAll(() => {
   // Nothing should be left behind, but a leaked figure-run-* tree in a 4.9 GB tmpfs is the
   // kind of thing that surfaces as an unrelated EIO three days later.
@@ -1262,7 +1436,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
 
   it('leaves both ch21 figures unresolved, NAMED, rather than handing them one PDF', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures(CH21, { spawn });
+    const result = await runFigures(CH21, { spawn, ...PRISTINE });
     const d = result.figures.find((f) => f.basename === D92B);
     const e = result.figures.find((f) => f.basename === E619);
     for (const r of [d, e]) {
@@ -1289,7 +1463,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
   // against. A guard that looked only at the selected figures would be defeated by narrowing.
   it('still refuses when --figure names only one of the two claimants', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures({ ...CH21, figures: [D92B] }, { spawn });
+    const result = await runFigures({ ...CH21, figures: [D92B] }, { spawn, ...PRISTINE });
     expect(result.figures).toHaveLength(1);
     expect(result.figures[0].outcome).toBe('unresolved');
     expect(result.figures[0].reason).toContain(E619); // it names the claimant NOT in this run
@@ -1297,7 +1471,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
 
   it('still refuses when --module names only one of the two claimants', async () => {
     const spawn = fakeSpawn(strippedOnly);
-    const result = await runFigures({ ...CH21, modules: ['m68852'] }, { spawn });
+    const result = await runFigures({ ...CH21, modules: ['m68852'] }, { spawn, ...PRISTINE });
     const d = result.figures.find((f) => f.basename === D92B);
     expect(d.outcome).toBe('unresolved');
     expect(d.reason).toContain(E619);
@@ -1345,7 +1519,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
     const report = summarise(
       await runFigures(
         { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: null, dryRun: true },
-        { spawn: fakeSpawn(strippedOnly) }
+        { spawn: fakeSpawn(strippedOnly), ...PRISTINE }
       )
     );
     expect(report).toMatch(/de-hashed/);
@@ -1501,7 +1675,7 @@ describe('prepare warnings reach the operator', () => {
     const spawn = fakeSpawn({
       prepare: (b) => (b === 'CNX_Chem_04_05_filter' ? { warnings: [COLOUR] } : {}),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.figures.find((f) => f.basename === 'CNX_Chem_04_05_filter').outcome).toMatch(
       /^copied-/
     );
@@ -1759,5 +1933,94 @@ describe('§C140 ㊼ — a ring gate that could not run makes the run need a hum
     expect(result.figures.some((f) => f.ringGateFailed)).toBe(false);
     expect(result.verdict.ok).toBe(true);
     expect(summarise(result)).toContain('VERDICT ok');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ㊳ — EVERY DRIVER RUN IN THIS FILE SAYS WHICH SIDECAR WORLD IT RUNS IN. `PRISTINE`'s
+// header states the rule: anything asserting a pristine corpus must SAY so rather than assume
+// it. On 2026-10-03 thirteen calls said nothing and read the real tree; three of them went red
+// on a COMPOSER_VERSION bump alone (a red that reads as a driver defect), and the peak-disk test
+// sat one ch04 purchase from red (`liveDirs.length > 10`, measured 11). This makes the rule a
+// checked property: every runFigures and main call names `PRISTINE`, `CORPUS`, or BOTH sidecar
+// readers, because stubbing one alone leaves the other on the real tree.
+describe('every driver run in this file states which sidecar world it runs in (§C140 ㊳)', () => {
+  /**
+   * Each call of `name` in `text`, with its argument text, found by balancing parentheses.
+   * A comment inside the arguments is skipped and left out of that text: an apostrophe in one
+   * would open a "string" that swallows the next call's `PRISTINE`, and a name a comment mentions
+   * would count as stated. A regex literal is not parsed, so a quote or parenthesis inside one
+   * would still miscount.
+   */
+  const callsOf = (name, text) => {
+    const calls = [];
+    const re = new RegExp(`\\b${name}\\(`, 'g');
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      let depth = 1;
+      let quote = null;
+      let args = '';
+      for (let i = m.index + m[0].length; i < text.length; i++) {
+        const ch = text[i];
+        if (!quote && ch === '/' && (text[i + 1] === '/' || text[i + 1] === '*')) {
+          const lineComment = text[i + 1] === '/';
+          const close = lineComment ? text.indexOf('\n', i) : text.indexOf('*/', i + 2);
+          if (close === -1) break;
+          i = lineComment ? close - 1 : close + 1; // the loop's i++ resumes just after the comment
+          continue;
+        }
+        if (quote) {
+          if (ch === '\\') {
+            args += text.slice(i, i + 2);
+            i++;
+            continue;
+          }
+          if (ch === quote) quote = null;
+        } else if (ch === "'" || ch === '"' || ch === '`') quote = ch;
+        else if (ch === '(') depth++;
+        else if (ch === ')' && --depth === 0) break;
+        args += ch;
+      }
+      calls.push({ line: text.slice(0, m.index).split('\n').length, args });
+    }
+    return calls;
+  };
+  const statesItsWorld = (args) =>
+    /\b(?:PRISTINE|CORPUS)\b/.test(args) ||
+    (/\breadSidecar\b/.test(args) && /\bsidecarExists\b/.test(args));
+
+  it('names PRISTINE, CORPUS or both sidecar readers in every runFigures and main call', () => {
+    const src = fs.readFileSync(path.join(HERE, 'figure-run-free.test.js'), 'utf-8');
+    const calls = [...callsOf('runFigures', src), ...callsOf('main', src)];
+    expect(calls.length).toBeGreaterThan(50); // non-vacuity: the scan really finds them
+    expect(calls.filter((c) => !statesItsWorld(c.args)).map((c) => c.line)).toEqual([]);
+  });
+
+  // The scan's own control: a bare call is flagged; a multi-line call with a nested call and a
+  // ')' inside a string is balanced correctly and passes; ONE reader alone is not enough; and a
+  // comment can neither swallow the next call (its apostrophe) nor state a world (its words).
+  it('CONTROL: flags a bare call and a one-reader call, passes a nested multi-line PRISTINE call', () => {
+    const fn = 'runFigures'; // built, never written as a call, so the scan above cannot match it
+    const planted = [
+      `await ${fn}(CH04, { spawn });`,
+      `await ${fn}(`,
+      `  { ...CH21, figures: [D92B] },`,
+      `  { spawn: fakeSpawn({ resolve: (n) => (n === ')' ? null : null) }), ...PRISTINE }`,
+      `);`,
+      `await ${fn}(CH04, { spawn, readSidecar: () => null });`,
+      `await ${fn}(CH04, {`,
+      `  spawn, // the real tree: don't stub it (yet`,
+      `});`,
+      `await ${fn}(CH04, { spawn, ...PRISTINE });`,
+      `await ${fn}(CH04, { spawn /* not PRISTINE */ });`,
+    ].join('\n');
+    expect(callsOf(fn, planted).map((c) => [c.line, statesItsWorld(c.args)])).toEqual([
+      [1, false],
+      [2, true],
+      [6, false],
+      [7, false],
+      [10, true],
+      [11, false],
+    ]);
   });
 });

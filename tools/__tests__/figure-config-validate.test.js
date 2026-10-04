@@ -2,8 +2,13 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { validateFigureConfig, buildValidatorCorpus } from '../lib/figure-config-validate.js';
-import { loadFigureTextConfig } from '../lib/figure-text-config.js';
+import {
+  validateFigureConfig,
+  buildValidatorCorpus,
+  repeatedKeyProblems,
+  HELD_SCRIPT_CHARS,
+} from '../lib/figure-config-validate.js';
+import { loadFigureTextConfig, FIGURE_TEXT_CONFIG } from '../lib/figure-text-config.js';
 import { readMappingOrRefuse, isTranslatedName } from '../lib/translated-figure-refs.js';
 import { DEFAULT_SUFFIX } from '../generate-image-mapping.js';
 import { makeTmpDir, cleanupFixtures } from './helpers/git-fixture.js';
@@ -16,6 +21,7 @@ const baseCfg = () => ({
   editionPrecedence: ['updates-2e', 'first-edition'],
   supersededArtwork: { CNX_Sup: R },
   retiredFigures: { CNX_Ret: R },
+  keptCopies: { CNX_Kept: R },
   artworkPins: {
     CNX_Pin: { kind: 'alias', edition: 'updates-2e', file: 'OSX/Figure 14_03_Pin.eps', reason: R },
   },
@@ -23,10 +29,11 @@ const baseCfg = () => ({
 const baseCorpus = () => ({
   suffix: S,
   basenamesByBook: {
-    chem: new Set(['CNX_Sup', 'CNX_Ret', 'CNX_Pin', 'CNX_Other']),
+    chem: new Set(['CNX_Sup', 'CNX_Ret', 'CNX_Kept', 'CNX_Pin', 'CNX_Other']),
     bio: new Set(['Figure_1']),
   },
   retiredState: { CNX_Ret: { rows: 0, translatedCopies: [] } },
+  keptState: { CNX_Kept: { rows: 1, translatedCopies: [`CNX_Kept${S}.svg`] } },
 });
 const pinOf = (c) => c.artworkPins.CNX_Pin;
 
@@ -185,6 +192,63 @@ describe('validateFigureConfig (§C140 ㊵, spec D11)', () => {
         k.retiredState.CNX_Ret.translatedCopies = [`CNX_Ret${S}.svg`];
       },
       /still has a translated copy/,
+    ],
+    // §C140 ㊾ — keptCopies, the inverse of retiredFigures (spec 2026-10-02 D1).
+    [
+      'a keptCopies table that is not an object',
+      (c) => {
+        c.keptCopies = [];
+      },
+      null,
+      /keptCopies must be an object/,
+    ],
+    [
+      'a pin on a kept figure',
+      (c) => {
+        c.artworkPins = { CNX_Kept: pinOf(c) };
+      },
+      null,
+      /artworkPins\.CNX_Kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a kept figure that is also retired',
+      (c) => {
+        c.retiredFigures.CNX_Kept = R;
+      },
+      null,
+      /keptCopies\.CNX_Kept is also in retiredFigures \(CNX_Kept\)/,
+    ],
+    [
+      'a kept figure with no image-mapping row',
+      () => {},
+      (k) => {
+        k.keptState.CNX_Kept.rows = 0;
+      },
+      /keptCopies\.CNX_Kept has no image-mapping row/,
+    ],
+    [
+      'a kept figure with no translated copy',
+      () => {},
+      (k) => {
+        k.keptState.CNX_Kept.translatedCopies = [];
+      },
+      /keptCopies\.CNX_Kept has no translated copy/,
+    ],
+    [
+      'a kept key that is no book’s image',
+      (c) => {
+        c.keptCopies.CNX_Typo = R;
+      },
+      null,
+      /keptCopies\.CNX_Typo names an image in 0 books/,
+    ],
+    [
+      'a kept figure with a short reason',
+      (c) => {
+        c.keptCopies.CNX_Kept = 'kept, see §C140';
+      },
+      null,
+      /keptCopies\.CNX_Kept needs a reason of over 40 characters/,
     ],
   ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
     const c = baseCfg();
@@ -388,6 +452,38 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       null,
       /retiredFigures\.CNX_Gone names an image in 0 books/,
     ],
+    [
+      'a keptCopies table that is null',
+      (c) => {
+        c.keptCopies = null;
+      },
+      null,
+      /keptCopies must be an object/,
+    ],
+    [
+      'a pin whose key only FOLDS onto a kept key',
+      (c) => {
+        c.artworkPins = { 'cnx-kept': pinOf(c) };
+      },
+      null,
+      /artworkPins\.cnx-kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a kept key that only FOLDS onto a retired key',
+      (c) => {
+        c.retiredFigures['cnx-kept'] = R;
+      },
+      null,
+      /keptCopies\.CNX_Kept is also in retiredFigures \(cnx-kept\)/,
+    ],
+    [
+      'two keptCopies keys that fold together',
+      (c) => {
+        c.keptCopies['CNX-Kept'] = R;
+      },
+      null,
+      /keptCopies: CNX_Kept and CNX-Kept fold to the same key/,
+    ],
   ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
     const c = baseCfg();
     const k = baseCorpus();
@@ -410,11 +506,21 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
       },
     ],
     [
-      'a config with none of the three tables (an absent table is an empty one)',
+      'a config with none of the four tables (an absent table is an empty one)',
       (c) => {
         delete c.supersededArtwork;
         delete c.retiredFigures;
+        delete c.keptCopies;
         delete c.artworkPins;
+      },
+    ],
+    // §C140 ㊾ — ALLOWED, as retired + superseded is (BlastFurn, Ques11ans): superseded is about the
+    // SOURCE drawing, kept about the translated COPY. sources.py checks kept first, so the run
+    // prints `REFUSED — kept` and the chapter autorun's halt on `REFUSED — superseded` stays quiet.
+    [
+      'a kept figure that is also superseded',
+      (c) => {
+        c.supersededArtwork.CNX_Kept = R;
       },
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
@@ -445,6 +551,447 @@ describe('validateFigureConfig — the rest of each rule (§C140 ㊵, spec D11)'
 
   it('CONTROL: the same key passes when the other book holds only a look-alike that does NOT fold', () => {
     expect(validateFigureConfig(retiredOnly, twoBooks('Figure_26_01_03'))).toEqual([]);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// §C140 ㊾ D5(a) — heldBlockValues: {basename: {blockKey: value}}, [USER]'s wording for labels the
+// MT is never sent (design docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-
+// design.md, D-g). Its values are OBJECTS, not reason strings, so it stays out of TABLES and the
+// generic reason rule (Review Focus 5); it shares only the type, fold and exactly-one-book loops.
+// CNX_Other is chem's image in no other table, so baseCfg()/baseCorpus() stay exactly as Part 1
+// left them: every case here ADDS the table and its state. Values are ASCII sentinels (QZX, QZQ).
+const heldCfg = () => ({
+  ...baseCfg(),
+  heldBlockValues: { CNX_Other: { No: 'QZX', 'C|H or R': 'C\nQZX R' } },
+});
+const heldCorpus = () => ({
+  ...baseCorpus(),
+  heldState: {
+    CNX_Other: {
+      rows: 1,
+      translatedCopies: [`CNX_Other${S}.svg`],
+      svgRows: 1,
+      sidecarKeys: null,
+    },
+  },
+});
+const heldOf = (c) => c.heldBlockValues.CNX_Other;
+
+describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
+  it('a valid held table passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(heldCfg(), heldCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'a heldBlockValues table that is not an object',
+      (c) => {
+        c.heldBlockValues = [];
+      },
+      null,
+      /heldBlockValues must be an object/,
+    ],
+    [
+      'a heldBlockValues table that is null',
+      (c) => {
+        c.heldBlockValues = null;
+      },
+      null,
+      /heldBlockValues must be an object/,
+    ],
+    [
+      'two held figures that fold together',
+      (c) => {
+        c.heldBlockValues['CNX-Other'] = { No: 'QZX' };
+      },
+      null,
+      /heldBlockValues: CNX_Other and CNX-Other fold to the same key/,
+    ],
+    [
+      'a held figure that is no book’s image',
+      (c) => {
+        c.heldBlockValues.CNX_Typo = { No: 'QZX' };
+      },
+      null,
+      /heldBlockValues\.CNX_Typo names an image in 0 books/,
+    ],
+    [
+      'a held figure two books share',
+      () => {},
+      (k) => {
+        k.basenamesByBook.bio.add('CNX_Other');
+      },
+      /heldBlockValues\.CNX_Other names an image in 2 books/,
+    ],
+    [
+      'a held entry that is a string, not an object of values',
+      (c) => {
+        c.heldBlockValues.CNX_Other = 'QZX';
+      },
+      null,
+      'heldBlockValues.CNX_Other must be a non-empty object of {blockKey: value}',
+    ],
+    [
+      'a held entry that is an array',
+      (c) => {
+        c.heldBlockValues.CNX_Other = ['QZX'];
+      },
+      null,
+      'heldBlockValues.CNX_Other must be a non-empty object of {blockKey: value}',
+    ],
+    [
+      'a held entry with no values',
+      (c) => {
+        c.heldBlockValues.CNX_Other = {};
+      },
+      null,
+      'heldBlockValues.CNX_Other must be a non-empty object of {blockKey: value}',
+    ],
+    [
+      'an empty block key',
+      (c) => {
+        heldOf(c)[''] = 'QZX';
+      },
+      null,
+      'heldBlockValues.CNX_Other: a block key must be a non-empty string',
+    ],
+    [
+      'a value that is not a string',
+      (c) => {
+        heldOf(c).No = 5;
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] must be a non-empty string',
+    ],
+    [
+      'an empty value',
+      (c) => {
+        heldOf(c).No = '';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] must be a non-empty string',
+    ],
+    [
+      "a value holding '|', the KEY's line notation",
+      (c) => {
+        heldOf(c).No = 'QZX|QZQ';
+      },
+      null,
+      "heldBlockValues.CNX_Other[No] contains '|' — a value's lines are separated by a newline; '|' is the KEY's notation",
+    ],
+    [
+      'a value with an empty line',
+      (c) => {
+        heldOf(c)['C|H or R'] = 'C\n';
+      },
+      null,
+      'heldBlockValues.CNX_Other[C|H or R] has an empty line, or a line with leading or trailing whitespace',
+    ],
+    [
+      'a value line with leading whitespace',
+      (c) => {
+        heldOf(c).No = ' QZX';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has an empty line, or a line with leading or trailing whitespace',
+    ],
+    [
+      'a value line with trailing whitespace',
+      (c) => {
+        heldOf(c)['C|H or R'] = 'C \nQZX R';
+      },
+      null,
+      'heldBlockValues.CNX_Other[C|H or R] has an empty line, or a line with leading or trailing whitespace',
+    ],
+    [
+      'a value with more lines than its key has source lines',
+      (c) => {
+        heldOf(c).No = 'QZX\nQZQ';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has 2 lines but its key has 1 source lines',
+    ],
+    // A skeptic's finding (2026-10-03): U+200B, U+00AD and U+034F are in the pinned faces' cmap, so
+    // compose's no-glyph check passes them and the label would be ERASED. heldvalues.py's
+    // `invisible-line` is the second implementation. Escapes, never the characters (they are invisible).
+    [
+      'a value line of only a zero width space (U+200B)',
+      (c) => {
+        heldOf(c).No = '\u200b';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has a line with no visible character — only format, combining or control characters, which draw nothing',
+    ],
+    [
+      'an inner value line of only a soft hyphen (U+00AD)',
+      (c) => {
+        heldOf(c)['C|H or R'] = 'C\n\u00ad';
+      },
+      null,
+      'heldBlockValues.CNX_Other[C|H or R] has a line with no visible character',
+    ],
+    [
+      'a value line of only a combining grapheme joiner (U+034F)',
+      (c) => {
+        heldOf(c).No = '\u034f';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] has a line with no visible character',
+    ],
+    [
+      'a superscript parenthesis, outside the 24 script characters',
+      (c) => {
+        heldOf(c).No = 'QZX⁽';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] uses ⁽ (U+207D), which is not a sub/superscript a held value can draw',
+    ],
+    [
+      'a subscript letter, from the top of the U+2070–U+209F block',
+      (c) => {
+        heldOf(c).No = 'Qₐ';
+      },
+      null,
+      'heldBlockValues.CNX_Other[No] uses ₐ (U+2090), which is not a sub/superscript a held value can draw',
+    ],
+    [
+      'a value equal to its key, line for line',
+      (c) => {
+        heldOf(c)['C|H or R'] = 'C\nH or R';
+      },
+      null,
+      'heldBlockValues.CNX_Other[C|H or R] equals its key — it draws nothing new',
+    ],
+    [
+      "a key holding the value sheet's Markdown escape '\\|'",
+      (c) => {
+        delete heldOf(c)['C|H or R'];
+        heldOf(c)['C\\|H or R'] = 'C\nQZX R';
+      },
+      null,
+      "heldBlockValues.CNX_Other: the key C\\|H or R holds '\\|', a Markdown escape — copy the bare '|'",
+    ],
+    [
+      'a held figure that is also superseded',
+      (c) => {
+        c.supersededArtwork.CNX_Other = R;
+      },
+      null,
+      'heldBlockValues.CNX_Other is also in supersededArtwork (CNX_Other) — that figure is never composed, so its values are never drawn',
+    ],
+    [
+      'a held figure that is also retired',
+      (c) => {
+        c.retiredFigures.CNX_Other = R;
+      },
+      null,
+      'heldBlockValues.CNX_Other is also in retiredFigures (CNX_Other) — that figure is never composed',
+    ],
+    [
+      'a held figure that is also kept',
+      (c) => {
+        c.keptCopies.CNX_Other = R;
+      },
+      null,
+      'heldBlockValues.CNX_Other is also in keptCopies (CNX_Other) — that figure is never composed',
+    ],
+    [
+      'a held figure that only FOLDS onto a superseded key',
+      (c) => {
+        c.supersededArtwork['cnx-other'] = R;
+      },
+      null,
+      'heldBlockValues.CNX_Other is also in supersededArtwork (cnx-other)',
+    ],
+    [
+      'a held figure with no image-mapping row naming an .svg',
+      () => {},
+      (k) => {
+        k.heldState.CNX_Other.svgRows = 0;
+      },
+      'heldBlockValues.CNX_Other has no image-mapping row naming an .svg — no run recomposes it',
+    ],
+    [
+      'a held figure with no translated copy',
+      () => {},
+      (k) => {
+        k.heldState.CNX_Other.translatedCopies = [];
+      },
+      "heldBlockValues.CNX_Other has no translated copy at the top of its book's media/",
+    ],
+    [
+      'a held key that is a bought block in the figure’s sidecar',
+      () => {},
+      (k) => {
+        k.heldState.CNX_Other.sidecarKeys = ['k9', 'No'];
+      },
+      'heldBlockValues.CNX_Other[No] is a bought block in figure-text/CNX_Other.is.json — edit its value there (figure review), not here',
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = heldCfg();
+    const k = heldCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent heldBlockValues table (an absent table is an empty one)',
+      (c) => {
+        delete c.heldBlockValues;
+      },
+      () => {},
+    ],
+    [
+      'an empty heldBlockValues table',
+      (c) => {
+        c.heldBlockValues = {};
+      },
+      () => {},
+    ],
+    // A pinned figure IS composed (the pin chooses its artwork), so its values are drawn.
+    [
+      'a held figure that is also pinned',
+      (c) => {
+        c.heldBlockValues = { CNX_Pin: { No: 'QZX' } };
+      },
+      (k) => {
+        k.heldState = { CNX_Pin: k.heldState.CNX_Other };
+      },
+    ],
+    [
+      'a 3-line value on a 3-line key',
+      (c) => {
+        heldOf(c)['4+|To|4-'] = '4+\nQZQ\n4-';
+      },
+      () => {},
+    ],
+    // buffer's shape: two FT.lines that are ONE visual line. The CI bound is an upper bound only;
+    // compose.py refuses `line-count` against the visual lines it measures.
+    [
+      'a 1-line value on a 2-line key',
+      (c) => {
+        heldOf(c)['[CH3CO2H] is 11% of [CH3CO2|-]'] = 'QZX';
+      },
+      () => {},
+    ],
+    [
+      'a value using all 24 script characters, an en dash and spaces',
+      (c) => {
+        heldOf(c).No = 'QZX – ₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻';
+      },
+      () => {},
+    ],
+    [
+      'a sidecar whose bought blocks are other keys',
+      () => {},
+      (k) => {
+        k.heldState.CNX_Other.sidecarKeys = ['k0', 'k1'];
+      },
+    ],
+    [
+      'a format character INSIDE a visible line (U+200B between letters)',
+      (c) => {
+        heldOf(c).No = 'QZ\u200bX';
+      },
+      () => {},
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg, mutateCorpus) => {
+    const c = heldCfg();
+    const k = heldCorpus();
+    mutateCfg(c);
+    mutateCorpus(k);
+    expect(validateFigureConfig(c, k)).toEqual([]);
+  });
+
+  // Part 1's fixtures carry no heldState, and a config with no table must still pass them.
+  it('CONTROL: a corpus with no heldState at all, as Part 1 builds it, passes an empty table', () => {
+    expect(validateFigureConfig({ ...baseCfg(), heldBlockValues: {} }, baseCorpus())).toEqual([]);
+  });
+
+  // 🔴 A SECOND IMPLEMENTATION of experiments/figure-text-translation/heldvalues.py's
+  // HELD_SCRIPT_CHARS. Both tests pin the same literal (the normkey / test_sources precedent), and
+  // this one pins it code point by code point too, so a look-alike glyph cannot pass.
+  it('HELD_SCRIPT_CHARS is the 24-character literal heldvalues.py pins, in its order', () => {
+    expect(HELD_SCRIPT_CHARS).toBe('₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻');
+    expect([...HELD_SCRIPT_CHARS].map((ch) => ch.codePointAt(0))).toEqual([
+      0x2080, 0x2081, 0x2082, 0x2083, 0x2084, 0x2085, 0x2086, 0x2087, 0x2088, 0x2089, 0x208a,
+      0x208b, 0x2070, 0x00b9, 0x00b2, 0x00b3, 0x2074, 0x2075, 0x2076, 0x2077, 0x2078, 0x2079,
+      0x207a, 0x207b,
+    ]);
+  });
+});
+
+// §C140 ㊾ D5(a), a skeptic's finding (2026-10-03). JSON.parse keeps only the LAST of two equal keys,
+// so `validateFigureConfig`, which reads the PARSED object, cannot see a figure's heldBlockValues entry
+// written twice, or a block key repeated inside one: the first value vanishes with no error and its
+// label ships in English. `repeatedKeyProblems` reads the RAW text. figure-compose.py refuses the same
+// thing at compose time (test_figure_compose.py F12); this is the CI half.
+const REPEAT_TAIL =
+  ' — JSON keeps only the last of a repeated key, so the earlier one is dropped silently; merge them into one';
+
+describe('repeatedKeyProblems — a key JSON.parse would collapse (§C140 ㊾ D5(a))', () => {
+  it.each([
+    [
+      'a figure’s heldBlockValues entry written twice',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX"}, "CNX_Other": {"C|H or R": "C\\nQZX R"}}}',
+      ['heldBlockValues repeats the key CNX_Other'],
+    ],
+    [
+      'a block key repeated inside an entry',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX", "No": "QZQ"}}}',
+      ['heldBlockValues.CNX_Other repeats the key No'],
+    ],
+    [
+      'one key spelt twice — a JSON escape decodes to the same key',
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX", "N\\u006f": "QZQ"}}}',
+      ['heldBlockValues.CNX_Other repeats the key No'],
+    ],
+    [
+      'a key repeated at the root',
+      '{"locale": "is", "locale": "is"}',
+      ['the config repeats the key locale'],
+    ],
+    [
+      'a key repeated in an object inside an array',
+      '{"editionPrecedence": [{"a": 1}, {"b": 2, "b": 3}]}',
+      ['editionPrecedence[1] repeats the key b'],
+    ],
+    [
+      'a key written three times (named once) and a repeat in a second object',
+      '{"t": {"k": 1, "k": 2, "k": 3}, "u": {"x": 1, "x": 2}}',
+      ['t repeats the key k', 'u repeats the key x'],
+    ],
+  ])('names %s', (_label, text, named) => {
+    expect(repeatedKeyProblems(text)).toEqual(named.map((p) => p + REPEAT_TAIL));
+  });
+
+  it.each([
+    ['the same key in two DIFFERENT objects', '{"a": {"k": 1}, "b": {"k": 2}, "k": 3}'],
+    ['two keys that differ only in case', '{"No": 1, "no": 2}'],
+    [
+      'string VALUES holding braces, brackets, quotes, backslashes and key-shaped text',
+      '{"a": "x\\", \\"a\\": {\\\\", "b": {"a": "}, \\"b\\": ["}}',
+    ],
+    [
+      'empty objects and arrays, nesting and every scalar',
+      '{"a": {}, "b": [], "c": [1, true, null, -2.5e3, "s", [{}]], "d": {"e": {"f": false}}}',
+    ],
+  ])('CONTROL: %s repeats nothing', (_label, text) => {
+    expect(repeatedKeyProblems(text)).toEqual([]);
+  });
+
+  it('CONTROL: what it names really collapses — JSON.parse keeps only the last, and the validator passes that', () => {
+    const text =
+      '{"heldBlockValues": {"CNX_Other": {"No": "QZX"}, "CNX_Other": {"C|H or R": "C\\nQZX R"}}}';
+    expect(JSON.parse(text).heldBlockValues).toEqual({ CNX_Other: { 'C|H or R': 'C\nQZX R' } });
+    expect(validateFigureConfig(JSON.parse(text), heldCorpus())).toEqual([]);
+  });
+
+  it('refuses text that is not valid JSON, instead of scanning it', () => {
+    expect(() => repeatedKeyProblems('{"a": 1,')).toThrow(SyntaxError);
   });
 });
 
@@ -559,6 +1106,125 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
     const root = makeRepo({ b1: { images: ['CNX_Row'], media: { mapping: '{not json' } } });
     expect(() => buildValidatorCorpus(root, retiredCfg('CNX_Row'))).toThrow(/not valid JSON/);
   });
+
+  // §C140 ㊾ — a kept figure is measured exactly as a retired one is, and must come out the other
+  // way round: WITH its row and its copy. The tree holds each half alone, both, and neither, plus a
+  // key no book names, so a rule that checked only one half, or only one figure, would show.
+  it('reports each kept figure’s rows and copies, and the validator names each half-kept one', () => {
+    const root = makeRepo({
+      b1: {
+        images: ['CNX_Kept', 'CNX_NoRow', 'CNX_NoCopy', 'CNX_Neither'],
+        media: {
+          mapping: [row('CNX_Kept'), row('CNX_NoCopy')],
+          files: [`CNX_Kept${S}.svg`, `CNX_NoRow${S}.svg`],
+        },
+      },
+    });
+    const keptCfg = {
+      keptCopies: Object.fromEntries(
+        ['CNX_Kept', 'CNX_NoRow', 'CNX_NoCopy', 'CNX_Neither', 'CNX_Absent'].map((n) => [n, R])
+      ),
+    };
+    const k = buildValidatorCorpus(root, keptCfg);
+    expect(k.keptState).toEqual({
+      CNX_Kept: { rows: 1, translatedCopies: [`CNX_Kept${S}.svg`] },
+      CNX_NoRow: { rows: 0, translatedCopies: [`CNX_NoRow${S}.svg`] },
+      CNX_NoCopy: { rows: 1, translatedCopies: [] },
+      CNX_Neither: { rows: 0, translatedCopies: [] },
+    });
+    const named = validateFigureConfig(keptCfg, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'keptCopies.CNX_Absent names an image',
+      'keptCopies.CNX_Neither has no image-mapping',
+      'keptCopies.CNX_Neither has no translated',
+      'keptCopies.CNX_NoCopy has no translated',
+      'keptCopies.CNX_NoRow has no image-mapping',
+    ]);
+  });
+
+  // §C140 ㊾ D5(a) — heldState is Part 1's copyState, plus the two facts only a held figure needs:
+  // how many of its mapping rows name an `.svg` (what a recompose and the sidecar publish both
+  // need; a `.png` copy still counts as a translated copy) and its sidecar's bought keys, read
+  // STRICTLY — absent is null, anything unreadable throws, never the lenient readSidecar.
+  const heldTree = () => {
+    const root = makeRepo({
+      b1: {
+        images: ['CNX_Svg', 'CNX_Png', 'CNX_Bare'],
+        media: {
+          mapping: [
+            row('CNX_Svg'),
+            { originalImage: 'CNX_Png', outputName: `CNX_Png${S}.png`, extension: '.png' },
+          ],
+          files: [`CNX_Svg${S}.svg`, `CNX_Png${S}.png`],
+        },
+      },
+    });
+    fs.mkdirSync(path.join(root, 'books', 'b1', 'figure-text'));
+    return root;
+  };
+  const writeSidecarRaw = (root, basename, text) =>
+    fs.writeFileSync(path.join(root, 'books', 'b1', 'figure-text', `${basename}.is.json`), text);
+  const heldTreeCfg = {
+    heldBlockValues: {
+      CNX_Svg: { No: 'QZX', 'C|H or R': 'C\nQZX R' },
+      CNX_Png: { No: 'QZX' },
+      CNX_Bare: { No: 'QZX' },
+      CNX_Absent: { No: 'QZX' },
+    },
+  };
+
+  it('reports each held figure’s .svg rows and bought keys, and the validator names each gap', () => {
+    const root = heldTree();
+    writeSidecarRaw(
+      root,
+      'CNX_Svg',
+      JSON.stringify({ version: 1, basename: 'CNX_Svg', blocks: { No: 'IS No', k1: 'IS k1' } })
+    );
+    const k = buildValidatorCorpus(root, heldTreeCfg);
+    expect(k.heldState).toEqual({
+      CNX_Svg: {
+        rows: 1,
+        translatedCopies: [`CNX_Svg${S}.svg`],
+        svgRows: 1,
+        sidecarKeys: ['No', 'k1'],
+      },
+      CNX_Png: { rows: 1, translatedCopies: [`CNX_Png${S}.png`], svgRows: 0, sidecarKeys: null },
+      CNX_Bare: { rows: 0, translatedCopies: [], svgRows: 0, sidecarKeys: null },
+    });
+    const named = validateFigureConfig(heldTreeCfg, k).map((p) =>
+      p.split(' ').slice(0, 4).join(' ')
+    );
+    expect(named.sort()).toEqual([
+      'heldBlockValues.CNX_Absent names an image',
+      'heldBlockValues.CNX_Bare has no image-mapping',
+      'heldBlockValues.CNX_Bare has no translated',
+      'heldBlockValues.CNX_Png has no image-mapping',
+      'heldBlockValues.CNX_Svg[No] is a bought',
+    ]);
+  });
+
+  it('refuses a held figure’s sidecar it cannot parse instead of reading it as no bought keys', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    expect(() => buildValidatorCorpus(root, heldTreeCfg)).toThrow(
+      /CNX_Svg\.is\.json.*not valid JSON/
+    );
+  });
+
+  // Only ENOENT means "nothing bought". A path that exists and cannot be read is not absent.
+  it('refuses a held figure’s sidecar path it cannot read, instead of reading it as absent', () => {
+    const root = heldTree();
+    fs.mkdirSync(path.join(root, 'books', 'b1', 'figure-text', 'CNX_Svg.is.json'));
+    expect(() => buildValidatorCorpus(root, heldTreeCfg)).toThrow(
+      /CNX_Svg\.is\.json cannot be read \(EISDIR\)/
+    );
+  });
+
+  it('refuses a held figure’s sidecar that carries no blocks object', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', JSON.stringify({ version: 1, basename: 'CNX_Svg' }));
+    expect(() => buildValidatorCorpus(root, heldTreeCfg)).toThrow(/CNX_Svg\.is\.json.*blocks/);
+  });
 });
 
 describe('the committed figure config (§C140 ㊵)', () => {
@@ -571,6 +1237,19 @@ describe('the committed figure config (§C140 ㊵)', () => {
 
   it('passes every rule', () => {
     expect(validateFigureConfig(cfg, corpus)).toEqual([]);
+  });
+
+  // §C140 ㊾ D5(a) — JSON.parse collapses a repeated key, so "passes every rule" cannot see one.
+  it('repeats no key at any depth (read from the RAW text: the parsed config cannot show a repeat)', () => {
+    expect(repeatedKeyProblems(fs.readFileSync(FIGURE_TEXT_CONFIG, 'utf-8'))).toEqual([]);
+  });
+
+  it('NON-VACUITY: the same scan names a root key planted twice into a copy of the committed text', () => {
+    const raw = fs.readFileSync(FIGURE_TEXT_CONFIG, 'utf-8');
+    expect(raw.startsWith('{\n') && raw.includes('"heldBlockValues"')).toBe(true);
+    expect(repeatedKeyProblems(raw.replace('{\n', '{\n "heldBlockValues": {},\n'))).toEqual([
+      'the config repeats the key heldBlockValues' + REPEAT_TAIL,
+    ]);
   });
 
   it('NON-VACUITY: the corpus holds chemistry, and the superseded entries are real', () => {
@@ -587,6 +1266,37 @@ describe('the committed figure config (§C140 ㊵)', () => {
     expect(Object.keys(corpus.retiredState).sort()).toEqual(keys);
     for (const k of keys) {
       expect(corpus.retiredState[k], k).toEqual({ rows: 0, translatedCopies: [] });
+    }
+  });
+
+  // §C140 ㊾ — the retired test above, the other way round: every kept key was examined on the real
+  // tree, and each was found WITH its row and its copy. Vacuous while the table is empty; the
+  // commit that records the first kept figure adds `expect(keys.length).toBeGreaterThan(0)` here,
+  // as the retired test carries.
+  it('every kept key was examined on the real tree, and found with its row and its copy', () => {
+    const keys = Object.keys(cfg.keptCopies ?? {}).sort();
+    expect(Object.keys(corpus.keptState).sort()).toEqual(keys);
+    for (const k of keys) {
+      expect(corpus.keptState[k].rows, k).toBeGreaterThan(0);
+      expect(corpus.keptState[k].translatedCopies.length, k).toBeGreaterThan(0);
+    }
+  });
+
+  // §C140 ㊾ D5(a) — every held figure was examined on the real tree, and each was found with an
+  // `.svg` row and a translated copy, and none of its keys is a bought block. Vacuous while the
+  // table is empty; the commit that records [USER]'s first values (PR-B) adds
+  // `expect(keys.length).toBeGreaterThan(0)` here, as the retired test carries.
+  it('every held figure was examined on the real tree, with an .svg row, a copy and no bought key', () => {
+    const keys = Object.keys(cfg.heldBlockValues ?? {}).sort();
+    expect(Object.keys(corpus.heldState).sort()).toEqual(keys);
+    for (const k of keys) {
+      expect(corpus.heldState[k].svgRows, k).toBeGreaterThan(0);
+      expect(corpus.heldState[k].translatedCopies.length, k).toBeGreaterThan(0);
+      const bought = new Set(corpus.heldState[k].sidecarKeys ?? []);
+      expect(
+        Object.keys(cfg.heldBlockValues[k]).filter((b) => bought.has(b)),
+        k
+      ).toEqual([]);
     }
   });
 

@@ -830,5 +830,224 @@ if _pent:
               and sum(' °C' in k for k in keys) == 3 and not any('8C' in k for k in keys),
               f"exit {r.returncode}; {d.get('glyphRepairs')!r}; keys {keys[:4]!r}")
 
+# ── 13. §C161 — an editor's comment annotation is never drawn into the artwork ─────────────────
+# Five chemistry source PDFs carry a /Text comment (an /AP appearance plus its /Popup) that
+# pdftocairo draws over an atom; OpenStax's published JPG does not show it. strip-text.py is the
+# only producer of artwork.pdf/.png/.svg, so this runs that path end to end, through prepare.
+# 🔴 /F 28 IS LOAD-BEARING. It is the corpus value, and pdftocairo draws an annotation into the SVG
+# only when Print (4) is set: measured, /F 0 gives 0 in the SVG and 3,025 pixels in the PNG, so the
+# SVG legs below would pass on the unfixed code. The colour is the corpus's own green, so this test
+# and the post-pass census of media/ share one detector string.
+from PIL import Image                           # noqa: E402 - pylibs is on sys.path (top of file)
+
+ANNOT_SVG = 'rgb(25%, 66.664124%, 33.331299%)'  # what cairo writes for `0.25 0.666656 0.333328 rg`
+ANNOT_PX = (64, 170, 85)                        # ... and what it renders into the 200 dpi PNG
+ANNOT_RECT = (60, 60, 80, 80)                   # pt, PDF y-up; clear of FILL (0..50) and RULE (y 20)
+FILL_PX = (51, 102, 204)                        # FILL's `0.2 0.4 0.8 rg` at 200 dpi
+WHITE = (255, 255, 255)
+
+
+def synth_annotated(dst, subtypes=('/Text',)):
+    """FILL + RULE on a 100 x 100 pt page, plus one annotation per entry of `subtypes`, each with an
+    /AP that fills ANNOT_RECT in the corpus green; a /Text also gets its /Popup, as every corpus
+    comment does. /Annots is an INDIRECT array, as in CNX_Chem_03_01_Ex01_05d_img (`/Annots 244 0 R`).
+    `subtypes=()` is the control: the same page with no /Annots key at all."""
+    pdf = pikepdf.new()
+    page = pdf.add_blank_page(page_size=(100, 100))
+    page.Contents = pdf.make_stream(FILL + RULE)
+    if subtypes:
+        annots = []
+        for subtype in subtypes:
+            ap = pdf.make_stream(b'0.25 0.666656 0.333328 rg 0 0 20 20 re f\n')
+            ap.Type, ap.Subtype = N('/XObject'), N('/Form')
+            ap.BBox = pikepdf.Array([0, 0, 20, 20])
+            annot = pdf.make_indirect(pikepdf.Dictionary(
+                Type=N('/Annot'), Subtype=N(subtype), Rect=pikepdf.Array(list(ANNOT_RECT)), F=28,
+                Contents=pikepdf.String('planted comment'),
+                AP=pikepdf.Dictionary(N=pdf.make_indirect(ap))))
+            annots.append(annot)
+            if subtype == '/Text':
+                popup = pdf.make_indirect(pikepdf.Dictionary(
+                    Type=N('/Annot'), Subtype=N('/Popup'), Rect=pikepdf.Array([80, 40, 100, 60]),
+                    F=28, Parent=annot))
+                annot.Popup = popup
+                annots.append(popup)
+        page.obj.Annots = pdf.make_indirect(pikepdf.Array(annots))
+    pdf.save(str(dst), deterministic_id=True)
+    return Path(dst)
+
+
+def colour_pixels(png, colour):
+    """Exact-VALUE count of `colour` in a PNG - never a count of non-white pixels."""
+    with Image.open(png) as im:
+        rgb = im.convert('RGB')
+        return dict((c, n) for n, c in rgb.getcolors(rgb.width * rgb.height)).get(colour, 0)
+
+
+def pixel_at(png, x_pt, y_pt):
+    """The PNG pixel at PDF point (x_pt, y_pt) of a 100 pt page rendered at 200 dpi."""
+    s = 200 / 72
+    with Image.open(png) as im:
+        return im.convert('RGB').getpixel((int(x_pt * s), int((100 - y_pt) * s)))
+
+
+def annot_objects(pdf_path):
+    """Annotation dictionaries anywhere in the file, not only on the page: a page that merely
+    stopped pointing at them would otherwise read clean while they are still written."""
+    with pikepdf.open(str(pdf_path)) as p:
+        return sum(1 for o in p.objects
+                   if isinstance(o, pikepdf.Dictionary) and o.get('/Type') == N('/Annot'))
+
+
+def bare_conversions(src, td):
+    """-> (ANNOT_SVG count, ANNOT_PX pixels) of the SOURCE through the shipped SVG argv and -png."""
+    svg, root = Path(td) / f'{src.stem}.bare.svg', Path(td) / f'{src.stem}.bare'
+    subprocess.run(_svgfix.pdftocairo_svg_argv(src, svg), check=True, timeout=120)
+    subprocess.run(['pdftocairo', '-png', '-r', '200', '-singlefile', str(src), str(root)],
+                   check=True, timeout=120)
+    return svg.read_text().count(ANNOT_SVG), colour_pixels(Path(f'{root}.png'), ANNOT_PX)
+
+
+print('\n[13] §C161 comment annotations are not drawn into the artwork')
+with tempfile.TemporaryDirectory() as td:
+    td = Path(td)
+    annotated = synth_annotated(td / 'CNX_Fake_Annotated.pdf')
+    plain = synth_annotated(td / 'CNX_Fake_NoAnnots.pdf', subtypes=())
+    stamped = synth_annotated(td / 'CNX_Fake_Stamp.pdf', subtypes=('/Stamp',))
+
+    # 13a/13b THE INSTRUMENT, BOTH WAYS. Without 13a every "absent" below is also what a poppler
+    # that never draws annotations reports; without 13b the detectors could always fire.
+    got_a, got_p = bare_conversions(annotated, td), bare_conversions(plain, td)
+    check('13a CONTROL this poppler DRAWS the planted /Text annotation of the SOURCE into both the '
+          'SVG and the PNG', got_a[0] == 1 and got_a[1] > 0, f'(svg, png) = {got_a!r}')
+    check('13b CONTROL ... and the same detectors read 0 on the page without /Annots',
+          got_p == (0, 0), f'(svg, png) = {got_p!r}')
+
+    out_a, out_p, out_s = td / 'out-annotated', td / 'out-plain', td / 'out-stamp'
+    r_a = run_prepare(annotated, '--basename', annotated.stem, '--out', out_a)
+    r_p = run_prepare(plain, '--basename', plain.stem, '--out', out_p)
+    r_s = run_prepare(stamped, '--basename', stamped.stem, '--out', out_s)
+    d_a, d_p, d_s = (load_prepare_json(o) or {} for o in (out_a, out_p, out_s))
+
+    art = out_a / 'artwork.pdf'
+    page_annots = None
+    if art.exists():
+        with pikepdf.open(str(art)) as p:
+            page_annots = '/Annots' in p.pages[0].obj
+    check('13c artwork.pdf keeps NO annotation: no /Annots on the page and no /Annot object in '
+          'the file', r_a.returncode == 0 and page_annots is False
+          and annot_objects(art) == 0,
+          f'exit {r_a.returncode}, page /Annots {page_annots!r}, '
+          f'/Annot objects {annot_objects(art) if art.exists() else None!r}: '
+          f'{r_a.stderr.strip()[-300:]}')
+    svg_a = out_a / 'artwork.svg'
+    check('13d artwork.svg does not draw the annotation colour',
+          svg_a.exists() and svg_a.read_text().count(ANNOT_SVG) == 0,
+          f'{svg_a.read_text().count(ANNOT_SVG) if svg_a.exists() else None!r} hit(s)')
+    png_a = out_a / 'artwork.png'
+    check('13e artwork.png has 0 pixels of the annotation colour and the centre of its /Rect is '
+          'background', png_a.exists() and colour_pixels(png_a, ANNOT_PX) == 0
+          and pixel_at(png_a, 70, 70) == WHITE,
+          f'{colour_pixels(png_a, ANNOT_PX) if png_a.exists() else None!r} px, centre '
+          f'{pixel_at(png_a, 70, 70) if png_a.exists() else None!r}')
+    # 13f NOTHING ELSE GOES. Byte identity with the control page is the strongest form; the FILL
+    # pixel is what stops an implementation that empties BOTH pages from satisfying it.
+    same = all((out_a / f).exists() and (out_p / f).exists()
+               and (out_a / f).read_bytes() == (out_p / f).read_bytes()
+               for f in ('artwork.svg', 'artwork.png'))
+    check('13f ... and NOTHING ELSE is removed: artwork.svg and artwork.png equal the no-/Annots '
+          'page byte for byte, and FILL is still drawn',
+          same and png_a.exists() and pixel_at(png_a, 25, 25) == FILL_PX,
+          f'identical {same}, FILL pixel {pixel_at(png_a, 25, 25) if png_a.exists() else None!r}')
+    rec_a = json.loads((out_a / 'annotations.json').read_text()) \
+        if (out_a / 'annotations.json').exists() else None
+    check('13g the removal is REPORTED: annotations.json and exactly one prepare.json warning',
+          rec_a == {'removed': {'/Popup': 1, '/Text': 1}}
+          and d_a.get('warnings') == ['annotations removed from page 1: 1 /Popup, 1 /Text (§C161)'],
+          f'{rec_a!r}, {d_a.get("warnings")!r}')
+    rec_p = json.loads((out_p / 'annotations.json').read_text()) \
+        if (out_p / 'annotations.json').exists() else None
+    check('13h CONTROL the page without /Annots: annotations.json is written anyway, empty, and '
+          'prepare.json carries no warning', r_p.returncode == 0 and rec_p == {'removed': {}}
+          and d_p.get('warnings') == [],
+          f'exit {r_p.returncode}, {rec_p!r}, {d_p.get("warnings")!r}')
+    check('13i a /Stamp annotation is REFUSED before anything is written: exit 1, the error names '
+          'it, and there is no artwork.pdf',
+          refused(r_s, 1) and 'AnnotationRefused' in str(d_s.get('error', ''))
+          and "'/Stamp'" in str(d_s.get('error', '')) and not (out_s / 'artwork.pdf').exists(),
+          f'exit {r_s.returncode}, artwork.pdf {(out_s / "artwork.pdf").exists()}, '
+          f'{str(d_s.get("error"))[-200:]!r}')
+
+# 13j-13m THE REFUSAL BRANCHES, in process. 13i reaches one of them; these reach the rest, and pin
+# "refused deletes NOTHING", which no end-to-end run can see (a refused run writes no artwork.pdf).
+_st = None
+try:
+    _st_spec = importlib.util.spec_from_file_location('strip_text_tool', HERE / 'strip-text.py')
+    _st = importlib.util.module_from_spec(_st_spec)
+    _st_spec.loader.exec_module(_st)
+except Exception as exc:                          # noqa: BLE001
+    _st = None
+    check('13j strip-text.py imports without running', False, f'{type(exc).__name__}: {exc}')
+_drop = getattr(_st, 'drop_annotations', None)
+_refusal = getattr(_st, 'AnnotationRefused', None)
+check('13j PRECONDITION strip-text.py exposes drop_annotations and AnnotationRefused',
+      callable(_drop) and isinstance(_refusal, type))
+if callable(_drop) and isinstance(_refusal, type):
+    def _annot(subtype):
+        d = pikepdf.Dictionary(Type=N('/Annot'), Rect=pikepdf.Array([0, 0, 1, 1]))
+        if subtype:
+            d.Subtype = N(subtype)
+        return d
+
+    def _try(annots_value):
+        """-> (return value or the refusal text, the page's /Annots afterwards)."""
+        pdf = pikepdf.new()
+        page = pdf.add_blank_page(page_size=(100, 100))
+        page.obj.Annots = annots_value
+        try:
+            got = _drop(page)
+        except _refusal as exc:
+            got = f'REFUSED {exc}'
+        after = page.obj.get('/Annots')
+        return got, (None if after is None else len(after) if isinstance(after, pikepdf.Array)
+                     else 'non-array')
+
+    got, after = _try(pikepdf.Array([]))
+    check('13k an EMPTY /Annots array is removed and reports nothing', got == {} and after is None,
+          f'{got!r}, /Annots after {after!r}')
+    got, after = _try(pikepdf.Array([_annot('/Text'), _annot('/Stamp')]))
+    check('13l a /Text beside a /Stamp is REFUSED and NOTHING is deleted',
+          isinstance(got, str) and got.startswith('REFUSED') and "'/Stamp'" in got and after == 2,
+          f'{got!r}, /Annots after {after!r}')
+    got, _ = _try(pikepdf.Array([_annot(None)]))
+    check('13m an annotation with no /Subtype is REFUSED',
+          isinstance(got, str) and '(no /Subtype)' in got, f'{got!r}')
+    got, _ = _try(pikepdf.Array([5]))
+    check('13m-b a non-dictionary entry is REFUSED',
+          isinstance(got, str) and 'non-dictionary' in got, f'{got!r}')
+    got, _ = _try(pikepdf.Dictionary())
+    check('13m-c a /Annots that is not an array is REFUSED',
+          isinstance(got, str) and 'not an array' in got, f'{got!r}')
+
+# 13n figure-prepare.py's reader: a missing annotations.json is an ERROR, never "nothing removed".
+_aw = getattr(_mod, 'annotation_warnings', None) if _mod is not None else None
+check('13n PRECONDITION figure-prepare.py exposes annotation_warnings', callable(_aw))
+if callable(_aw):
+    with tempfile.TemporaryDirectory() as td:
+        try:
+            missing = _aw(td)
+        except _mod.PrepareError as exc:
+            missing = f'PrepareError {exc}'
+        check('13n-b a missing annotations.json raises PrepareError',
+              isinstance(missing, str) and missing.startswith('PrepareError')
+              and 'annotations.json' in missing, f'{missing!r}')
+        (Path(td) / 'annotations.json').write_text(
+            json.dumps({'removed': {'/Text': 2, '/Popup': 2}}))
+        check('13n-c two comments make ONE warning, subtypes sorted',
+              _aw(td) == ['annotations removed from page 1: 2 /Popup, 2 /Text (§C161)'],
+              f'{_aw(td)!r}')
+        (Path(td) / 'annotations.json').write_text(json.dumps({'removed': {}}))
+        check('13n-d CONTROL nothing removed makes no warning', _aw(td) == [], f'{_aw(td)!r}')
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

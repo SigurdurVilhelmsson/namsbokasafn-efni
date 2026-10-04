@@ -126,10 +126,10 @@ describe('verdict', () => {
     expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(/unresolved/);
   });
 
-  it('names a retired figure and an artwork pin among the refusal causes (§C140 ㊵)', () => {
+  it('names a retired figure, a kept copy and an artwork pin among the refusal causes (§C140 ㊵, ㊾)', () => {
     const t = { ...emptyTally(), translated: 5, unresolved: 3 };
     expect(verdict(t, sum(t)).reasons.join(' ')).toMatch(
-      /a retired figure, or an artwork pin that does not hold/
+      /a retired figure, a translated copy kept by ruling, or an artwork pin that does not hold/
     );
   });
 
@@ -292,9 +292,10 @@ describe('verdict NOTEs the labels a TRANSLATED figure could not decode', () => 
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 // 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER REPORTED ABOUT THE FIGURES IT DREW. `figure-compose.py`
-// copies four lists out of compose-report.json into compose.json; the driver counts the
-// `translated` figures carrying each and hands the counts to `verdict` through `extra`, the same
-// channel as the undecoded NOTE, because each is a property of a figure INSIDE a bucket.
+// copies five lists out of compose-report.json into compose.json; the driver counts the
+// `translated` figures carrying each (for `held`, §C140 ㊾ D5(a), also the PUBLISHED
+// copied-textless ones) and hands the counts to `verdict` through `extra`, the same channel as
+// the undecoded NOTE, because each is a property of a figure INSIDE a bucket.
 // ⚠️ NONE IS FATAL, AND THAT IS PINNED TOGETHER WITH THE MESSAGE. The figure is drawn and every
 // label is in it: a named formula miss draws plain text, an overhang draws at the floor, a
 // localised number is the house style, a failed detection lays a label out as open. Failing on
@@ -319,6 +320,12 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
       'containerErrorFigures',
       'NOTE (not a failure): 2 figure(s) had container detection fail — those labels were laid out as open',
     ],
+    // §C140 ㊾ D5(a) — a label drawn from [USER]'s value is a ruling carried out, never a failure;
+    // a refused value reaches the driver as `failed-compose` instead, which is fatal.
+    [
+      'heldFigures',
+      "NOTE (not a failure): 2 figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each",
+    ],
   ];
 
   for (const [field, message] of NOTES) {
@@ -329,14 +336,14 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
     });
   }
 
-  // The control for all four: a zero is silence. Without it the tests above pass against a
+  // The control for all five: a zero is silence. Without it the tests above pass against a
   // verdict that prints these lines on every run.
   it('says nothing when every count is zero', () => {
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 0]));
     expect(verdict(tally(), 3, extra)).toEqual({ ok: true, reasons: [] });
   });
 
-  it('all four at once are four NOTEs in list order, and the run is still ok', () => {
+  it('all five at once are five NOTEs in list order, and the run is still ok', () => {
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 2]));
     const v = verdict(tally(), 3, extra);
     expect(v.reasons).toEqual(NOTES.map(([, message]) => message));
@@ -350,7 +357,7 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 1]));
     const v = verdict(t, 3, extra);
     expect(v.ok).toBe(false);
-    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(4);
+    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(5);
   });
 });
 

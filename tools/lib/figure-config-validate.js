@@ -1,5 +1,7 @@
 /**
- * The figure config's three tables, checked against the repo (§C140 ㊵, spec D11).
+ * The figure config's four policy tables and its `heldBlockValues` table, checked against the
+ * repo (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec 2026-10-02 D1; `heldBlockValues`,
+ * §C140 ㊾, spec 2026-10-02 D5(a)).
  *
  * Run by `npm test` (tools/__tests__/figure-config-validate.test.js), and run LOCALLY before any
  * pin's buy: CI only sees a pin after the money is spent, because a pin lands in the commit that
@@ -9,29 +11,66 @@
  * ⚠️ A RETIRED FIGURE'S PUBLISHED COPIES AND REFERENCES ARE NOT CHECKED HERE, ON PURPOSE: they
  * legitimately remain until ②'s whole-book re-render (spec D14). After `--prune`, re-running the
  * retire tool as a dry run is the census: it reports what still references each figure.
+ *
+ * ⚠️ WHAT THIS CANNOT CHECK FOR `heldBlockValues`, AND WHO DOES. A held key is a key of the
+ * figure's `blocks.json`, which `figure-prepare.py` generates from artwork outside the repo. So
+ * whether the key exists in the current read layer, its send flag, the block's exact VISUAL line
+ * count, a source run for each script kind the value uses, glyph coverage, fit, and whether the
+ * block is an arc are all refused by name at compose time (`figure-compose.py`'s pre-flight and
+ * `compose.py`'s planner), before anything publishes. Here: the owner book, the `.svg` row, the
+ * translated copy, the policy overlaps, a collision with a bought sidecar key, the value's shape
+ * and encoding, and the line upper bound.
+ *
+ * ⚠️ A REPEATED KEY IS INVISIBLE TO `validateFigureConfig`, which reads the PARSED config: JSON.parse
+ * keeps only the last of two equal keys. `repeatedKeyProblems` reads the raw text instead; the
+ * committed-config test runs both.
  */
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { normkey } from './figure-text-config.js';
 import { DEFAULT_SUFFIX, indexBookSourceBasenames } from '../generate-image-mapping.js';
 import { readMappingOrRefuse, topLevelTranslatedCopies } from './translated-figure-refs.js';
 
-const TABLES = ['supersededArtwork', 'retiredFigures', 'artworkPins'];
+const { sidecarPath } = createRequire(import.meta.url)('./figure-text-sidecar.cjs');
+
+const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPins'];
+// §C140 ㊾ D5(a) — `heldBlockValues` is keyed by basename like TABLES, so it shares their type,
+// fold and exactly-one-book loops (same `${name}` template, so Part 1's strings are unchanged).
+// It stays OUT of TABLES: its values are objects, not reason strings, so `reasonOf` and the pin
+// overlap list must never read it (Review Focus 5).
+const KEYED = [...TABLES, 'heldBlockValues'];
 const PIN_KINDS = new Set(['alias', 'override']);
 const MIN_REASON = 40;
+
+/**
+ * The 24 sub/superscript characters a held value may use: ₀–₉ ₊ ₋ lowered, ⁰ ¹ ² ³ ⁴–⁹ ⁺ ⁻ raised.
+ * compose.py decodes each to its base glyph drawn in the block's OWN source script style, never
+ * as the glyph itself (the pinned faces lack ⁰ ⁻ ⁺); ₋ and ⁻ draw U+2013.
+ * 🔴 A SECOND IMPLEMENTATION of `experiments/figure-text-translation/heldvalues.py`'s
+ * HELD_SCRIPT_CHARS: both tests pin this literal, in this order. Change both or neither.
+ */
+export const HELD_SCRIPT_CHARS = '₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻';
+const SCRIPT_BLOCK = [0x2070, 0x209f]; // Unicode "Superscripts and Subscripts"
+// A line made only of characters that draw nothing on their own (heldvalues.py INVISIBLE_CATEGORIES).
+const INVISIBLE_LINE = /^[\p{Cf}\p{Mn}\p{Me}\p{Cc}]+$/u;
 
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
 /**
  * @param {object} cfg  the parsed figure config
  * @param {{suffix:string, basenamesByBook:Object<string,Set<string>>,
- *          retiredState:Object<string,{rows:number, translatedCopies:string[]}>}} corpus
+ *          retiredState:Object<string,{rows:number, translatedCopies:string[]}>,
+ *          keptState:Object<string,{rows:number, translatedCopies:string[]}>,
+ *          heldState?:Object<string,{rows:number, translatedCopies:string[], svgRows:number,
+ *                                    sidecarKeys:(string[]|null)}>}} corpus
+ *   `heldState` is optional: a corpus without it (Part 1's fixtures) skips the held corpus rules.
  * @returns {string[]} problems; empty when the config is valid
  */
 export function validateFigureConfig(cfg, corpus) {
   const problems = [];
   const tables = {};
-  for (const name of TABLES) {
+  for (const name of KEYED) {
     // Only an ABSENT table is empty. `?? {}` would also read a null one as empty, and the tools
     // throw on a null table (retiredFigureNames), so the validator must refuse it, not pass it.
     const t = cfg[name] === undefined ? {} : cfg[name];
@@ -41,7 +80,7 @@ export function validateFigureConfig(cfg, corpus) {
   if (problems.length) return problems;
 
   // No two keys within one table fold together: the resolver would keep only one of them.
-  for (const name of TABLES) {
+  for (const name of KEYED) {
     const seen = new Map();
     for (const k of Object.keys(tables[name])) {
       const f = normkey(k);
@@ -50,9 +89,9 @@ export function validateFigureConfig(cfg, corpus) {
     }
   }
 
-  // A pin shares no key with the other two tables: either would refuse the figure first.
+  // A pin shares no key with the other three tables: each refuses the figure before a pin is read.
   const foldedKeys = (t) => new Map(Object.keys(t).map((k) => [normkey(k), k]));
-  for (const other of ['supersededArtwork', 'retiredFigures']) {
+  for (const other of ['supersededArtwork', 'retiredFigures', 'keptCopies']) {
     const keys = foldedKeys(tables[other]);
     for (const k of Object.keys(tables.artworkPins)) {
       if (keys.has(normkey(k))) {
@@ -69,7 +108,7 @@ export function validateFigureConfig(cfg, corpus) {
   // too, at run time, while an exact-match rule here passed it (R5, amended 2026-10-02).
   const books = Object.entries(corpus.basenamesByBook);
   const foldsByBook = books.map(([b, set]) => [b, new Set([...set].map(normkey))]);
-  for (const name of TABLES) {
+  for (const name of KEYED) {
     for (const k of Object.keys(tables[name])) {
       const owners = books.filter(([, set]) => set.has(k)).map(([b]) => b);
       const foldOwners = foldsByBook.filter(([, f]) => f.has(normkey(k))).map(([b]) => b);
@@ -164,12 +203,255 @@ export function validateFigureConfig(cfg, corpus) {
     for (const f of s.translatedCopies)
       problems.push(`retiredFigures.${k} still has a translated copy: media/${f}`);
   }
+
+  // §C140 ㊾ — A KEPT FIGURE IS THE INVERSE OF A RETIRED ONE: it HAS its row and its translated
+  // copy, because that copy is what readers are served and what the ruling keeps. It is not also
+  // retired, by any spelling: one ruling removes the copy the other keeps. It MAY also be in
+  // supersededArtwork, as a retired figure may — that table is about the SOURCE drawing — and
+  // sources.py checks kept first, so the run prints `REFUSED — kept`.
+  const retiredKeys = foldedKeys(tables.retiredFigures);
+  for (const k of Object.keys(tables.keptCopies)) {
+    if (retiredKeys.has(normkey(k))) {
+      problems.push(
+        `keptCopies.${k} is also in retiredFigures (${retiredKeys.get(normkey(k))}) — a copy cannot be both kept and retired`
+      );
+    }
+    const s = corpus.keptState[k];
+    if (!s) continue; // the exactly-one-book rule above already names it
+    if (!s.rows)
+      problems.push(
+        `keptCopies.${k} has no image-mapping row — readers are not served the copy it keeps`
+      );
+    if (s.translatedCopies.length === 0)
+      problems.push(`keptCopies.${k} has no translated copy at the top of its book's media/`);
+  }
+
+  // §C140 ㊾ D5(a) — heldBlockValues: {basename: {blockKey: value}}, [USER]'s wording for labels
+  // the MT is never sent, drawn by compose.py in place of the source's English. Design:
+  // docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-b and D-g.
+  const neverComposed = ['retiredFigures', 'keptCopies', 'supersededArtwork'].map((t) => [
+    t,
+    foldedKeys(tables[t]),
+  ]);
+  const heldState = corpus.heldState || {}; // Part 1's fixtures carry none
+  for (const [b, entry] of Object.entries(tables.heldBlockValues)) {
+    // A retired, kept or superseded figure is refused before compose, so its values would never
+    // be drawn. A PINNED figure is composed (the pin only chooses its artwork), so a pin is fine.
+    for (const [t, keys] of neverComposed) {
+      if (keys.has(normkey(b))) {
+        problems.push(
+          `heldBlockValues.${b} is also in ${t} (${keys.get(normkey(b))}) — that figure is never composed, so its values are never drawn`
+        );
+      }
+    }
+    if (!isPlainObject(entry) || Object.keys(entry).length === 0) {
+      problems.push(`heldBlockValues.${b} must be a non-empty object of {blockKey: value}`);
+      continue;
+    }
+    // The routes that draw a held value: a sidecar recompose and a textless recompose both need
+    // an image-mapping row naming an `.svg` (isRecomposableTextless; the sidecar publish), and a
+    // translated copy at the top of media/ is what readers are served today.
+    const s = heldState[b];
+    if (s && !s.svgRows) {
+      problems.push(
+        `heldBlockValues.${b} has no image-mapping row naming an .svg — no run recomposes it`
+      );
+    }
+    if (s && s.translatedCopies.length === 0) {
+      problems.push(`heldBlockValues.${b} has no translated copy at the top of its book's media/`);
+    }
+    const bought = new Set((s && s.sidecarKeys) || []);
+    for (const [k, v] of Object.entries(entry)) {
+      if (k === '') {
+        problems.push(`heldBlockValues.${b}: a block key must be a non-empty string`);
+        continue;
+      }
+      // The value sheet is Markdown, where a key's `|` is written `\|`. No committed sidecar key
+      // holds a backslash (0 of 2,771, measured 2026-10-03), so this is the copy artefact.
+      if (k.includes('\\|')) {
+        problems.push(
+          `heldBlockValues.${b}: the key ${k} holds '\\|', a Markdown escape — copy the bare '|'`
+        );
+      }
+      // A value never overrides a bought (or editor-corrected) label: that one is edited in the
+      // figure review panel. figure-compose.py also refuses a send:true key; this catches the
+      // ones already in the committed sidecar, in CI.
+      if (bought.has(k)) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] is a bought block in figure-text/${b}.is.json — edit its value there (figure review), not here`
+        );
+      }
+      if (typeof v !== 'string' || v === '') {
+        problems.push(`heldBlockValues.${b}[${k}] must be a non-empty string`);
+        continue;
+      }
+      // Lines are separated by '\n', deliberately NOT the key's '|': a value copied in the key's
+      // shape would be wrong exactly where FT.lines and the visual lines differ (buffer).
+      if (v.includes('|')) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] contains '|' — a value's lines are separated by a newline; '|' is the KEY's notation`
+        );
+      }
+      const lines = v.split('\n');
+      // An edge space would make an unchanged line read as changed and re-lay it.
+      if (lines.some((l) => l === '' || l !== l.trim())) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] has an empty line, or a line with leading or trailing whitespace`
+        );
+      }
+      // A line of only format, combining or control characters draws NOTHING, and U+200B, U+00AD and
+      // U+034F are in the pinned faces' cmap, so compose's no-glyph check passes them: the label would
+      // be erased. 🔴 A SECOND IMPLEMENTATION of heldvalues.py's `invisible-line` (INVISIBLE_CATEGORIES);
+      // each reads its engine's own Unicode tables, so they can differ on a newly assigned code point.
+      if (lines.some((l) => INVISIBLE_LINE.test(l))) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] has a line with no visible character — only format, combining or control characters, which draw nothing`
+        );
+      }
+      // Visual lines merge and never split, so the key's '|'-lines bound the value's lines from
+      // above. The exact count (the block's visual lines) is compose.py's `line-count` refusal.
+      const keyLines = k.split('|').length;
+      if (lines.length > keyLines) {
+        problems.push(
+          `heldBlockValues.${b}[${k}] has ${lines.length} lines but its key has ${keyLines} source lines`
+        );
+      }
+      for (const ch of new Set(v)) {
+        const cp = ch.codePointAt(0);
+        if (cp >= SCRIPT_BLOCK[0] && cp <= SCRIPT_BLOCK[1] && !HELD_SCRIPT_CHARS.includes(ch)) {
+          const u = cp.toString(16).toUpperCase().padStart(4, '0');
+          problems.push(
+            `heldBlockValues.${b}[${k}] uses ${ch} (U+${u}), which is not a sub/superscript a held value can draw`
+          );
+        }
+      }
+      if (lines.join('|') === k) {
+        problems.push(`heldBlockValues.${b}[${k}] equals its key — it draws nothing new`);
+      }
+    }
+  }
   return problems;
 }
 
 /**
+ * Every key a JSON text repeats inside one object, at any depth (§C140 ㊾ D5(a); a skeptic's finding,
+ * 2026-10-03). JSON.parse keeps only the LAST of two equal keys, so the parsed config cannot show a
+ * repeat: a figure's heldBlockValues entry written twice (say one per value-sheet row), or a block key
+ * repeated inside one, would drop the first value with no error, and `validateFigureConfig` would pass
+ * what is left. figure-compose.py refuses the same thing at compose time, with an `object_pairs_hook`;
+ * this is the CI half. Each key is compared as JSON.parse DECODES it (the slice is handed to
+ * JSON.parse), so two spellings of one key - `"No"` and `"N\u006f"` - collide as they collapse. A key
+ * written n times is named once.
+ *
+ * The text is parsed first, so invalid JSON throws and the scanner below only ever reads valid JSON.
+ *
+ * @param {string} text  the raw config file
+ * @returns {string[]} problems, in document order; empty when no key repeats
+ */
+export function repeatedKeyProblems(text) {
+  JSON.parse(text);
+  const problems = [];
+  let i = 0;
+  const skipSpace = () => {
+    while (i < text.length && ' \t\n\r'.includes(text[i])) i += 1;
+  };
+  const readString = () => {
+    const start = i;
+    i += 1; // the opening quote
+    // A backslash skips the character it escapes (the hex digits of \uXXXX are never a quote).
+    while (text[i] !== '"') i += text[i] === '\\' ? 2 : 1;
+    i += 1; // the closing quote
+    return JSON.parse(text.slice(start, i));
+  };
+  const readValue = (where) => {
+    skipSpace();
+    const c = text[i];
+    if (c === '{' || c === '[') {
+      const close = c === '{' ? '}' : ']';
+      const seen = new Set();
+      const named = new Set();
+      i += 1;
+      skipSpace();
+      if (text[i] === close) {
+        i += 1;
+        return;
+      }
+      for (let n = 0; ; n += 1) {
+        let child = `${where}[${n}]`;
+        if (c === '{') {
+          skipSpace();
+          const key = readString();
+          if (seen.has(key) && !named.has(key)) {
+            named.add(key);
+            problems.push(
+              `${where === '' ? 'the config' : where} repeats the key ${key} — JSON keeps only the last ` +
+                'of a repeated key, so the earlier one is dropped silently; merge them into one'
+            );
+          }
+          seen.add(key);
+          child = where === '' ? key : `${where}.${key}`;
+          skipSpace();
+          i += 1; // the colon
+        }
+        readValue(child);
+        skipSpace();
+        const sep = text[i];
+        i += 1; // a comma, or the closing bracket
+        if (sep === close) return;
+      }
+    }
+    if (c === '"') {
+      readString();
+      return;
+    }
+    while (i < text.length && !',]} \t\n\r'.includes(text[i])) i += 1; // a number, true, false, null
+  };
+  readValue('');
+  return problems;
+}
+
+/**
+ * A held figure's bought block keys: `Object.keys(sidecar.blocks)`, read STRICTLY. An absent
+ * sidecar is null (nothing bought); anything else that cannot be read — unreadable, not JSON,
+ * not an object with a `blocks` object — THROWS, as `readMappingOrRefuse` does. Never the
+ * lenient `readSidecar`, which answers null for a conflicted file and would pass a collision.
+ *
+ * @param {string} bookDir
+ * @param {string} basename
+ * @returns {string[]|null}
+ */
+function sidecarKeysStrict(bookDir, basename) {
+  const file = sidecarPath(bookDir, basename);
+  let raw;
+  try {
+    raw = fs.readFileSync(file, 'utf-8');
+  } catch (err) {
+    if (err.code === 'ENOENT') return null;
+    throw new Error(
+      `${file} cannot be read (${err.code || err.message}); refusing to check heldBlockValues against a sidecar I cannot see`
+    );
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `${file} is not valid JSON (${err.message}); refusing to read it as no bought blocks — repair it first`
+    );
+  }
+  if (!isPlainObject(parsed) || !isPlainObject(parsed.blocks)) {
+    throw new Error(
+      `${file} is not a sidecar object with a blocks object; refusing to read it as no bought blocks — repair it first`
+    );
+  }
+  return Object.keys(parsed.blocks);
+}
+
+/**
  * The corpus the validator needs, read from the repo. No git: this runs in CI.
- * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object}}
+ * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object,
+ *            keptState:Object, heldState:Object<string,{rows:number,
+ *            translatedCopies:string[], svgRows:number, sidecarKeys:(string[]|null)}>}}
  */
 export function buildValidatorCorpus(repoRoot, cfg) {
   const booksDir = path.join(repoRoot, 'books');
@@ -178,18 +460,48 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     const bookDir = path.join(booksDir, b);
     if (fs.statSync(bookDir).isDirectory()) basenamesByBook[b] = indexBookSourceBasenames(bookDir);
   }
-  const retiredState = {};
-  for (const k of Object.keys(cfg.retiredFigures ?? {})) {
-    const owners = Object.keys(basenamesByBook).filter((b) => basenamesByBook[b].has(k));
-    if (owners.length !== 1) continue;
-    const bookDir = path.join(booksDir, owners[0]);
+  // One measurement for both tables (§C140 ㊾): a retired figure must come out with neither a
+  // mapping row nor a translated copy, a kept one with both. A key that is not exactly one book's
+  // image gets no state; the exactly-one-book rule names it.
+  const copyState = (table) => {
+    const state = {};
+    for (const k of Object.keys(table ?? {})) {
+      const owners = Object.keys(basenamesByBook).filter((b) => basenamesByBook[b].has(k));
+      if (owners.length !== 1) continue;
+      const bookDir = path.join(booksDir, owners[0]);
+      const rows = readMappingOrRefuse(path.join(bookDir, 'media', 'image-mapping.json'), {
+        allowMissing: true,
+      });
+      state[k] = {
+        rows: rows.filter((r) => r.originalImage === k).length,
+        translatedCopies: topLevelTranslatedCopies(bookDir, k, DEFAULT_SUFFIX),
+      };
+    }
+    return state;
+  };
+  // §C140 ㊾ D5(a) — a held figure is measured as a kept one is (copyState, unchanged), plus the
+  // two facts only it needs: its rows naming an `.svg` (what a recompose and the sidecar publish
+  // both need) and its sidecar's bought keys (a value never overrides a bought label).
+  const heldState = copyState(cfg.heldBlockValues);
+  for (const k of Object.keys(heldState)) {
+    const owner = Object.keys(basenamesByBook).find((b) => basenamesByBook[b].has(k));
+    const bookDir = path.join(booksDir, owner);
     const rows = readMappingOrRefuse(path.join(bookDir, 'media', 'image-mapping.json'), {
       allowMissing: true,
     });
-    retiredState[k] = {
-      rows: rows.filter((r) => r.originalImage === k).length,
-      translatedCopies: topLevelTranslatedCopies(bookDir, k, DEFAULT_SUFFIX),
-    };
+    heldState[k].svgRows = rows.filter(
+      (r) =>
+        r.originalImage === k &&
+        typeof r.outputName === 'string' &&
+        path.extname(r.outputName) === '.svg'
+    ).length;
+    heldState[k].sidecarKeys = sidecarKeysStrict(bookDir, k);
   }
-  return { suffix: DEFAULT_SUFFIX, basenamesByBook, retiredState };
+  return {
+    suffix: DEFAULT_SUFFIX,
+    basenamesByBook,
+    retiredState: copyState(cfg.retiredFigures),
+    keptState: copyState(cfg.keptCopies),
+    heldState,
+  };
 }
