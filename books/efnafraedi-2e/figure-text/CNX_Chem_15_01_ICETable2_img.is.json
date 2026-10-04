@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_15_01_ICETable2_img",
  "renderHash": "116a0545583fb346",
  "composedHash": "116a0545583fb346",
- "composedVersion": "4",
+ "composedVersion": "5",
  "composerVersion": "4",
  "blocks": {
   "Initial concentration (M)": "Upphafsstyrkur (M)",
