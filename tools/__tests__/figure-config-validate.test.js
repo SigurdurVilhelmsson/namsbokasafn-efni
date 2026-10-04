@@ -1270,11 +1270,11 @@ describe('the committed figure config (§C140 ㊵)', () => {
   });
 
   // §C140 ㊾ — the retired test above, the other way round: every kept key was examined on the real
-  // tree, and each was found WITH its row and its copy. Vacuous while the table is empty; the
-  // commit that records the first kept figure adds `expect(keys.length).toBeGreaterThan(0)` here,
-  // as the retired test carries.
+  // tree, and each was found WITH its row and its copy. The first kept figures were recorded in
+  // PR-B's restore commit (§C140 ㊾), so an empty table now fails here, as the retired test's does.
   it('every kept key was examined on the real tree, and found with its row and its copy', () => {
     const keys = Object.keys(cfg.keptCopies ?? {}).sort();
+    expect(keys.length).toBeGreaterThan(0);
     expect(Object.keys(corpus.keptState).sort()).toEqual(keys);
     for (const k of keys) {
       expect(corpus.keptState[k].rows, k).toBeGreaterThan(0);
