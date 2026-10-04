@@ -61,7 +61,10 @@ from says so (figure `REGISTER.md` ⑭), while the 2e figure says *adsorbed*.
 | D4 | `CNX_Chem_10_05_Graphene` (ch10) | `Buckyball` | `Buckyball` (the MT returned it unchanged) | June copy (`34402e8a6`): *Knattkol (buckyball)* | Knattkol (e. buckyball) |
 
 **Not on this sheet, and why:** FoodLabel's `5% or less` is held by a different rule (an undecoded glyph), not the
-2-letter rule. Its June copy has no such label, so it is not a June regression. Element symbols and numbers that the
+2-letter rule. Its June copy has no such label, so it is not a June regression. ✏️ *CORRECTION 2026-10-04: false.
+June (`9269fcda8`) draws `•␣5%␣eða␣minna` and `•␣20%␣eða` (␣ = U+00A0, which is why a plain-space grep finds
+nothing), while the current copy draws English ` 5% or less` / ` 20% or`. It IS a June regression; the remedy
+(a `heldBlockValues` entry, [USER]'s ruling) is asked on the 2026-10-04 figure-review page.* Element symbols and numbers that the
 composer keeps (`N`, `O`, `CH2`, `P, As`, the pH scale's numbers, …) are correct as they are.
 
 ## Reading notes (added 2026-10-03, after [USER] filled the sheet)
