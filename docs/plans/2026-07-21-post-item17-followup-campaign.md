@@ -43,7 +43,8 @@
 - **Off-repo evidence:** `~/.cache/namsbokasafn-audit/c140-composer-design/` — `finish/` (per-mechanism results, integration, grades, spec draft/reviews, textless census), `m*/final/` (patches + scratch tests), `integrate/` (combined tree, leave-one-out arms, triptychs), `shared-prep/` (all 453 figures prepared, deterministic), `page/` (rulings page source + `cards.json`), `salvage/`.
 - ⚠️ **The first design run (wf `e216e249`) crashed the box (OOM; 7 agents each composing the corpus at once) and returned nothing; it was salvaged from transcripts + scratch, verified, and finished under a memory cap.** The lesson lives in memory (`agent-fanout-memory-budget`), not here.
 - **Corrected in place:** this register's 22:20Z quote of [USER]'s phscale answer was truncated (*"vatn is also on the wrong line"*); it now carries the saved text's ending *"-moved down one"*.
-- **Branch:** `content/c140-figure-review-wording`, still no PR. The full `npm test` with the failing set diffed against `main` is still owed before one.
+- **Branch:** `content/c140-figure-review-wording`, still no PR. **The docs commits on it from 2026-10-05 (the spec, the rulings record, and this note) are LOCAL and HELD for the version-6 branch, by [USER]'s instruction of 2026-10-05: do not push them on their own.** The branch's earlier content commits are pushed. The full `npm test` with the failing set diffed against `main` is still owed before a PR.
+- **Dashboard** refreshed to version 66 (2026-10-05 evening snapshot).
 
 ---
 
