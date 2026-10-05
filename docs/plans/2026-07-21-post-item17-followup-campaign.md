@@ -4,8 +4,40 @@
 
 ## ⏩ RESUME — state as of **2026-10-05 — 📐 THE COMPOSER FORMATTING-CLASS DESIGN IS WRITTEN AND REVIEWED: [`docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md`](../superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md) (COMPOSER_VERSION '6'). [USER]'s rulings are pending on https://claude.ai/artifact/T2VLFfbLLFGQPq1fUT68u4. Nothing is implemented; the six figures applied on 2026-10-04 and ch05 IcePack (22:20Z block) are unchanged. ⏹ The chemistry sync is still HELD** (supersedes the 22:20Z block for its SINGLE NEXT ACTION; that block stays current for the six applied figures, [USER]'s answers and the FoodLabel diagnosis)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]: answer the rulings page** (31 questions + 5 info cards; **R-22 is time-sensitive**: whether prod figure review closes until '6' deploys). Answers land in its `verdicts` collection, keyed by ruling id (`R-22`, `R-15a`, …; read with `ArtifactData list`). **Then [CODE]:** implement-then-extract plan from the spec (test-first in a scratch worktree; the per-mechanism patches and their red-first tests already exist off-repo, below), then the '6' PR(s) per the spec's §5 (code first; bump + recompose + [USER]'s figure review page before merge).
+### ⏭ SINGLE NEXT ACTION — **[CODE]: the implementation plan for '6' from the spec + [USER]'s 31 rulings below** (implement-then-extract, test-first in a scratch worktree; the per-mechanism patches and their red-first tests already exist off-repo). First design the two answers the spec did not measure (R-15a box widening, R-15g three-line bullet) and measure them before planning. **[USER]'s R-22 closes prod figure review until '6' deploys** — nothing to do on prod now (0 approvals on 2026-10-05), but no figure review should be invited meanwhile.
 
+- ⚖️ **[USER]'s rulings, 2026-10-05 — ALL 31 ANSWERED** (page `T2VLFfbLLFGQPq1fUT68u4`, `verdicts` collection, read back 31 of 31; exported off-repo `…/c140-composer-design/user-verdicts/`). Labels are the page's option labels; quotes are [USER]'s own notes. **R-22 = close prod figure review until '6' deploys.** Two answers open new design work the spec did not measure: **R-15a** (widen FoodLabel's coloured comment boxes outward so the margin labels fit, wording as the fallback) and **R-15g** (bullet split into three lines). R-8d sets new wording (feminine *súr, hlutlaus, basísk*, to agree with *Sýnislausn*).
+  - **R-22** Close figure review on the live site until version 6 deploys
+  - **R-21** Redraw under version 6 with your 7 ruled values, bullets and R-15 wordings
+  - **R-17** Amend the rule: a spaces-only line is not a line
+  - **R-19** Allow it: a closing 'g)' may end a line
+  - **R-15a** something else — *"If I were doing this manually, I would enlarge the colored boxes so the text fits. They are background for comments on the actual label and there is space to expand the ones on the left to the left, and the one on the right to the right so the text fits properly, without altering the content of the image. If this is either not possible or not viable for coding, I would go with rule on wording."*
+  - **R-15b** Athugaðu orku — *"The comments are general language drawing attention to specific parts of the label. The wording in the label is fixed, but the wording in the comments can be altered without altering the purpose of the image. Even "Athuga orku" would be OK if it fit better (and we don't expand the fields for the comments)."*
+  - **R-15c** Úr fitu 110 beside Hitaeiningar 250
+  - **R-15d** Minnkaðu þessi efni
+  - **R-15e** Fáðu nóg af þessum
+  - **R-15f** Skýringar
+  - **R-15g** something else — *"Splitting it into three lines (5% eða/minna er/lágt)"*
+  - **R-15h** Byrja hér
+  - **R-8e** No
+  - **R-10** Keep the rule; wording stays Transfita 3 g
+  - **R-12** Yes, extend the acceptance to the three faces
+  - **R-13** Include it
+  - **R-14** Redraw under version 6 with fonts and subscript fixes
+  - **R-18** Use June's break points as the wording, with Útblástursgufa
+  - **R-20** Keep the wrap you accepted
+  - **R-5a** Allow an explicit line break in the value
+  - **R-8c** Yes, move them
+  - **R-8d** something else — *"Use feminine for the three labels. Fits with Sýnislausn (feminine): súr, hlutlaus, basísk"*
+  - **R-9** Fix by code
+  - **R-2a** Each label at its own source position, lines centred on it — *"Agree with your recommendation"*
+  - **R-3** Allow shrinking to keep the source rows
+  - **R-4** Yes, at the source's own break only
+  - **R-5b** A wording edit
+  - **R-6a** The rule decides the number of lines only
+  - **R-8a** 1.0 pt
+  - **R-8b** One centred neighbour is enough
+  - **R-16** Yes: shrink to 0.8 × source size, only where the source is below 7.5 pt
 - **What the design is:** seven composer mechanisms (row breaks at source item boundaries; whitespace-only source lines; cell height at the source's own rows + a bracket-closer exception to R9; column alignment + source pitch; formula script transfer; STIX Italic/Bold/BoldItalic faces; boxes holding several labels), each confirmed counterfactually, combined into one tree. **Predicted delta, measured over all 451 chemistry sidecar figures: 117 change** (list `integrate/changed.txt`), **plus 5 of 248 textless figures** (FigSym face swaps only; 6 of 6 textless controls unchanged). Visual grades of all changed figures (Chromium): 80 better, 33 same, 5 mixed, 0 worse. FoodLabel "can it be fixed?": partly — answered in the spec §4 and the page's R-21.
 - **Prod read-only check 2026-10-05:** HEAD `2b262db4f`, `figure_review` 0, `figure_block_edit` 0 (control `registered_books` 6).
 - **Off-repo evidence:** `~/.cache/namsbokasafn-audit/c140-composer-design/` — `finish/` (per-mechanism results, integration, grades, spec draft/reviews, textless census), `m*/final/` (patches + scratch tests), `integrate/` (combined tree, leave-one-out arms, triptychs), `shared-prep/` (all 453 figures prepared, deterministic), `page/` (rulings page source + `cards.json`), `salvage/`.
