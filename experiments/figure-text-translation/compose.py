@@ -274,8 +274,10 @@ _ADV = {}
 
 
 def lin_advance(text, run, size, st):
-    """The LINEAR advance of ONE drawn segment at its own size and slant (weight from the line's
-    run), memoised: the layout decision asks for the same pieces at many sizes."""
+    """The LINEAR advance of ONE drawn segment at its own size and slant, memoised: the layout decision asks
+    for the same pieces at many sizes. A FigIS segment takes its weight from the line's run (`run`); a segment
+    `serif_face` draws in a STIX face (§C140 '6' M6 half B) is measured in THAT face - the source run's weight
+    and slant, `st.serif` - with figsym.advance (memoised there, not in _ADV), exactly as draw_layout draws it."""
     bold = run['font'] in BOLD
     italic = st is not None and st.italic
     px = size * S if st is None else size * st.ratio * S
@@ -799,9 +801,10 @@ for BI, b in enumerate(blocks):
     # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
     # every block that has no such split.
     vls = FT.visual_ink(b)   # geometry from each visual line's ink runs (a folded blank line carries none)
-    # `blank` is read ONLY by figlayout's P1v guard (§C140 '6' M4): a whitespace-only line is not a row. Its
-    # `.strip()` is wider than FT.is_blank_line (U+0020 only) - an NBSP- or U+001F-only line survives M2's fold
-    # and is still `blank` here, which only withholds P1v (the sz0 * LEAD pitch).
+    # `blank` is read by figlayout in TWO places, both one eligibility: M3's SOURCE_ROWS admission of a cell
+    # (rows_pitch, so a cell's height test and line count) and M4's P1v guard (the sz0 * LEAD pitch) - a
+    # whitespace-only line is not a row. Its `.strip()` is wider than FT.is_blank_line (U+0020 only): an NBSP- or
+    # U+001F-only line survives M2's fold and is still `blank` here, so it withholds BOTH.
     cues = dict(n_src=len(vls), sz0=sz0,
                 starts=[min(FT.along(r) for r in l) for l in vls],
                 ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],

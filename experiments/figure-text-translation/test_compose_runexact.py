@@ -560,7 +560,14 @@ def figsym_chars(svg_text):
 #     compose-report.json's stix.layout names it {key, block, text, face}.
 # (d) The same label from a TrueType object: λ stays FigIS italic, measured by cairo, and names nothing.
 K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT = 'U', 'w', 'x  ', '=  ', 'λ max', 'λ min'
-STIX6_TR = {K6_SERIF: 'λ hámark', K6_TT: 'λ lágmark'}
+# G21 review-fix round (F2): (e) n39 - a TRANSLATED label `max v` whose v is a Type 1 STIXGeneral-BoldItalic run
+#     AFTER a regular run, so the line (drawn in its FIRST run's weight) is NOT bold: its laid-out v segment is drawn bold (the item's weight is the SOURCE face's, sf[0], not the
+#     line run's) and named face [True, True]; (f) n44 - `Patm` with a Type 1 STIXGeneral-Italic subscript `atm`,
+#     translated `PaƁ hér`: R7 gives the script style (and its face) to `aƁ`, and U+0181 is NOT in the official
+#     STIX Italic cmap, so serif_face's covers_face guard sends the segment to FigIS - without it compose crashes
+#     (figsym.advance KeyError).
+K6_SBI, K6_COVER = 'max v', 'Patm'
+STIX6_TR = {K6_SERIF: 'λ hámark', K6_TT: 'λ lágmark', K6_SBI: 'hámark v', K6_COVER: 'PaƁ hér'}
 
 
 def plant_stix6(out_dir):
@@ -577,7 +584,10 @@ def plant_stix6(out_dir):
              run('x', 170.0, 140.0, font='PAGE/G4', a=a6), run('  ', 170.0 + a6, 140.0, font='PAGE/G4', a=2 * a6),
              run('=', 170.0, 110.0, font='PAGE/G1', a=a6), run('  ', 170.0 + a6, 110.0, font='PAGE/G1', a=2 * a6),
              run('λ', 170.0, 80.0, font='PAGE/G4', a=a6), run(' max', 170.0 + a6, 80.0, a=adv(' ma', 12.0) + 6.0),
-             run('λ', 170.0, 50.0, font='PAGE/G5', a=a6), run(' min', 170.0 + a6, 50.0, a=adv(' m', 12.0) + 9.0)]
+             run('λ', 170.0, 50.0, font='PAGE/G5', a=a6), run(' min', 170.0 + a6, 50.0, a=adv(' m', 12.0) + 9.0),
+             run('max ', 170.0, 230.0, a=adv('ma', 12.0) + 9.0), run('v', 170.0 + adv('ma', 12.0) + 9.0, 230.0,
+                                                                     font='PAGE/G3', a=a6),
+             run('P', 170.0, 20.0, a=a6), run('atm', 170.0 + a6, 17.0, size=8.0, font='PAGE/G4', a=round(0.6 * 8.0 * 3, 3))]
     (out_dir / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
     (out_dir / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
 
@@ -600,12 +610,14 @@ m6_bi = {e['key']: i for i, e in enumerate(m6_entries)}
 m6_by_key = {e['key']: b for b, e in zip(m6_blocks, m6_entries)}
 check('M6-0 PRECONDITION each M6 plant is its OWN block of the planted runs: (a) one run each, (b) two runs each '
       '(an inked run, then a whitespace-only one), (c)/(d) two runs each; (a)/(b) kept, (c)/(d) translated',
-      all(m6_keys[k] == 1 for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT))
-      and [len(m6_by_key.get(k, ())) for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT)]
-      == [1, 1, 2, 2, 2, 2]
+      all(m6_keys[k] == 1 for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT, K6_SBI, K6_COVER))
+      and [len(m6_by_key.get(k, ())) for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT, K6_SBI,
+                                               K6_COVER)]
+      == [1, 1, 2, 2, 2, 2, 2, 2]
       and collections.Counter(m6_rep.get('runExact', [])) >= collections.Counter([K6_BOLD, K6_BI, K6_BLANK_IT,
                                                                                     K6_BLANK_REG])
-      and K6_SERIF in m6_rep['translated'] and K6_TT in m6_rep['translated'],
+      and all(k in m6_rep['translated'] and k not in m6_rep.get('identity', [])
+              for k in (K6_SERIF, K6_TT, K6_SBI, K6_COVER)),
       f"keys={sorted(m6_keys)} runExact={m6_rep.get('runExact')!r} translated={m6_rep.get('translated')!r}")
 if len(fails) > _m6_pre:
     finish()
@@ -663,8 +675,28 @@ if has_adv:
     check('M6-c2 ... and measured with figsym.advance: the next segment starts exactly that far along (0.002 pt)',
           abs(gap_c - fs_adv) < 0.002, f'gap {gap_c:.4f} vs figsym.advance {fs_adv:.4f}')
 check('M6-c3 stix.layout names it: [{key, block, text λ, face [False, True]}] - and nothing for the TrueType label',
-      m6_stix.get('layout') == [dict(key=K6_SERIF, block=m6_bi[K6_SERIF], text='λ', face=[False, True])],
+      [e for e in m6_stix.get('layout') or [] if e.get('key') in (K6_SERIF, K6_TT)]
+      == [dict(key=K6_SERIF, block=m6_bi[K6_SERIF], text='λ', face=[False, True])],
       repr(m6_stix.get('layout')))
+# (e) G21 n39: the BoldItalic w on a non-bold line. y 230 is above the 220 pt page, as plant_stix's K_S_TTIT.
+sbi_els = [(t, a) for t, a, _ in m6_els if a.get('y') == f'{PAGE_H - 230.0:.3f}' and float(a['x']) > 150.0]
+check('M6-e1 (n39) HALF B: the Type 1 BoldItalic v segment of a translated label on a NON-bold line is drawn in '
+      'FigSym 700 italic - the source face\'s weight, not the line run\'s (its plain text stays FigIS 400)',
+      [(t, a.get('font-family'), a.get('font-weight'), a.get('font-style')) for t, a in sbi_els]
+      == [('hámark ', 'FigIS', '400', None), ('v', 'FigSym', '700', 'italic')]
+      and ''.join(t for t, _ in sbi_els) == STIX6_TR[K6_SBI],
+      repr([(t, a.get('font-family'), a.get('font-weight'), a.get('font-style')) for t, a in sbi_els]))
+check('M6-e2 (n39) ... and stix.layout names it with face [True, True]',
+      [e for e in m6_stix.get('layout') or [] if e.get('key') == K6_SBI]
+      == [dict(key=K6_SBI, block=m6_bi[K6_SBI], text='v', face=[True, True])], repr(m6_stix.get('layout')))
+# (f) G21 n44: R7's tail carries the STIX Italic subscript face onto `aƁ`; U+0181 is outside that face's cmap.
+cov_els = [(t, a) for t, a, _ in m6_els if float(a['x']) > 150.0 and ('Ɓ' in t or t in ('P', 'hér'))]
+check('M6-f1 (n44) a serif-styled segment with a character outside its STIX face (aƁ, U+0181) falls back to FigIS '
+      'italic at the subscript size - compose does not crash - and stix.layout does not name it',
+      [(t, a.get('font-family'), a.get('font-style'), a.get('font-size')) for t, a in cov_els if 'Ɓ' in t]
+      == [('aƁ', 'FigIS', 'italic', '8.000')]
+      and not [e for e in m6_stix.get('layout') or [] if e.get('key') == K6_COVER],
+      repr([(t, a.get('font-family'), a.get('font-style'), a.get('font-size')) for t, a in cov_els]))
 check('M6-d1 the TrueType Italic λ stays FigIS italic',
       (lam_d.get('font-family'), lam_d.get('font-style')) == ('FigIS', 'italic'), repr(lam_d))
 if has_adv:

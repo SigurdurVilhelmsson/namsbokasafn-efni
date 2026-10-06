@@ -22,7 +22,9 @@ every <text> element byte-identical, which is what keeps the raw-<text> goldens 
 test_compose_runexact.py and test_compose_t23.py valid. ⚠️ Since §C140 ⑥b that is true of the KEPT and
 ARC elements those goldens compare byte for byte, and NOT of a translated straight label: section K below
 pins a style="font-kerning:none" on every layout <text> ([USER] ruling (a), 2026-09-17), and the goldens'
-layout-path checks compare text, not bytes.
+layout-path checks compare text, not bytes. Section L (G21 review-fix round, F2 n7) adds
+font-variant-ligatures:none to a FigSym layout <text> only (a FigIS one keeps exactly the K style); Y3b/Y3c (n51)
+pin the FigSym metadata's exact face list, which Y3's substring test could not.
 """
 import base64
 import importlib.util
@@ -476,6 +478,35 @@ check('K4 the stylesheet carries no font-kerning rule (the property is on the el
       kerning_rules(svg_k) == [], repr(kerning_rules(svg_k)))
 check('K5 no element anywhere carries the IGNORED presentation-attribute form font-kerning="…"',
       'font-kerning="' not in svg_k)
+
+# --- G21 review-fix round (F2 n7): a FigSym LAYOUT segment is drawn with ligatures OFF ---------------------------
+# compose measures it with figsym.advance - an unligated hmtx sum - but every official STIX face carries GSUB 'liga'
+# (fi, fl, ff, ffi, ffl, fj, ij, IJ) and the subset keeps every layout feature, so the browser would draw `fi` as one
+# narrower glyph than the pen advance it was placed with. FigIS (Liberation) has no 'liga', so a FigIS layout item
+# keeps exactly its ⑥b style; a run-exact FigSym item (Half A) is outside G21 #7 and stays byte-identical.
+ITEMS_L = [item('fi', 10.0, 10.0, italic=True, family=figsym.FAMILY, block=1, line=0, seg=0),
+           item('fi', 40.0, 10.0, block=2, line=0, seg=0),
+           item('fi', 70.0, 10.0, italic=True, family=figsym.FAMILY, path='run-exact', block=3)]
+svg_l = compose_svg(ITEMS_L)
+parses(svg_l, 'L the ligature SVG parses as XML')
+raw_l = re.findall(r'<text ([^>]*)>', svg_l)
+check('L1 (n7) a FigSym layout <text> carries font-variant-ligatures:none beside font-kerning:none, in its one '
+      'trailing style', len(raw_l) == 3 and raw_l[0].endswith(' style="font-kerning:none;font-variant-ligatures:none"')
+      and style_prop(re.search(r' style="([^"]*)"', raw_l[0]).group(1), 'font-variant-ligatures') == 'none',
+      repr(raw_l[:1]))
+check('L2 CONTROL a FigIS layout <text> keeps exactly style="font-kerning:none"; a run-exact FigSym one has no style',
+      len(raw_l) == 3 and raw_l[1].endswith(' style="font-kerning:none"') and ' style=' not in raw_l[2],
+      repr(raw_l[1:]))
+
+# --- G21 review-fix round (F2 n51): the FigSym licence metadata names the EXACT face list ---------------------------
+# Y3's substring test cannot see a Bold name gone wrong ('STIXGeneral-Bold' is inside 'STIXGeneral-BoldItalic').
+check('Y3b (n51) the four-face metadata names exactly Regular, Bold, Italic, BoldItalic, in that order',
+      len(metasY) == 1 and metasY[0].startswith('Font: FigSym is a subset of STIXGeneral-Regular, STIXGeneral-Bold, '
+                                                'STIXGeneral-Italic, STIXGeneral-BoldItalic from STIX Fonts 1.1.0'),
+      repr(metasY[0][:160] if metasY else None))
+_meta_b = figsym.metadata_element(((True, False),))
+check('Y3c (n51) a Bold-only FigSym figure\'s metadata names STIXGeneral-Bold alone',
+      'is a subset of STIXGeneral-Bold from STIX Fonts 1.1.0' in _meta_b, _meta_b[:120])
 
 print('ALL PASS' if not FAILED else f'{len(FAILED)} FAILED: ' + ', '.join(FAILED))
 sys.exit(1 if FAILED else 0)

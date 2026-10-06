@@ -164,8 +164,14 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
         # Run-exact and arc items keep the default. An INLINE style, never the presentation attribute
         # font-kerning="none", which Chromium silently ignores (measured, evidence/2026-09-17-c6b-build/
         # reports/rd/). Appended LAST, so every other attribute keeps its position. Pinned by test_svgout.py K.
+        # A FigSym layout item (§C140 '6' M6 half B) also draws with LIGATURES off (review-fix round G21 #7): compose
+        # measures it with figsym.advance, an unligated hmtx sum, while every official STIX face carries GSUB 'liga'
+        # (fi, fl, ff, ffi, ffl, fj, ij, IJ) and the subset keeps it - the same measure == draw rule as the kerning,
+        # through GSUB instead of GPOS. FigIS (Liberation) has no 'liga', so a FigIS item keeps exactly its ⑥b style
+        # and its bytes. Pinned by test_svgout.py L.
         if it.get('path') == 'layout':
-            attrs.append('style="font-kerning:none"')
+            attrs.append('style="font-kerning:none;font-variant-ligatures:none"' if it.get('family') == 'FigSym'
+                         else 'style="font-kerning:none"')
         parts.append(f"<text {' '.join(attrs)}>{esc(it['text'])}</text>")
     parts.append('</g>')
 
