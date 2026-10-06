@@ -677,11 +677,14 @@ for BI, b in enumerate(blocks):
 
     # §C140 ②: carry the source's sub/superscripts and italics onto the value. `transfer` reads
     # the RAW value (possibly editor-edited) and never alters it; `words` keys every style by its
-    # offset in that raw string (`re.finditer(r'\S+')` == `str.split()` on every codepoint), so
-    # no whitespace collapse can misalign a style. A word is (text, [SourceStyle|None per char]).
+    # offset in the string it is handed (`re.finditer(r'\S+')` == `str.split()` on every codepoint),
+    # so no whitespace collapse can misalign a style. A word is (text, [SourceStyle|None per char]).
+    # §C140 '6' M5 R3: that string is `raw` with its FS.JOINT positions removed (the hunk below), so
+    # the offsets are into the ELIDED string - which is the drawn text.
     # ⚠️ ONE transfer per VALUE, never one per paragraph. A legacy LIST value (normalise_block_value
-    # still accepts pre-split lines) is joined with ' ' first - a formula token holds no space, so
-    # the join cannot create or break an occurrence. Per-paragraph transfer searched every token in
+    # still accepts pre-split lines) is joined with ' ' first - a word token holds no space, so
+    # the join cannot create or break its occurrence (an M5 R5 phrase token or an R3 joint match
+    # can span a space; exposure 0, as below). Per-paragraph transfer searched every token in
     # every paragraph and named a false `absent` in each paragraph that lacked it. A str value is
     # one paragraph, so for it the join is the value itself.
     # §C140 ③: the layout no longer honours a legacy list's paragraph breaks - figlayout chooses
@@ -690,6 +693,14 @@ for BI, b in enumerate(blocks):
     if tokens:
         fmt, misses = FS.transfer(tokens, raw)
         unformatted.extend(dict(key=key, **m) for m in misses)
+        # §C140 '6' M5 R3: a value position styled FS.JOINT is the MT wire's own joint space (blockkey
+        # joins an attached FT.lines line with ONE space: `NO2 –`); it is ELIDED from the drawn text.
+        # This is the one place the drawn text differs from the sidecar value - [USER] ruling R-9
+        # (2026-10-05) and docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-f.
+        if any(f is FS.JOINT for f in fmt):
+            keep = [i for i, f in enumerate(fmt) if f is not FS.JOINT]
+            raw = ''.join(raw[i] for i in keep)
+            fmt = [fmt[i] for i in keep]
     else:
         fmt = [None] * len(raw)
     words = FS.words(raw, fmt)

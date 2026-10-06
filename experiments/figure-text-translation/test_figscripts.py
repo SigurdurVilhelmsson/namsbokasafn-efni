@@ -14,7 +14,8 @@ Runs marked REAL are copied from the frozen corpus census
 and `y = proj` exactly. The census carries no per-run BaseFont (only a sorted set per block),
 so each REAL run's font is the one a figure-level key -> BaseFont reconstruction assigned (it
 agreed with the real meta.json on 51 of 51 resolved keys of the 34 bought figures); the assignment
-is stated beside each fixture.
+is stated beside each fixture. The M5 section's COVAL, NPENT and TRANS are census rows too; its RVAR
+and H2 are SYNTHETIC (round coordinates, default `adv`) and are labelled so.
 
 WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 ----------------------------------------
@@ -25,7 +26,9 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * S3 REAL d-orbital `dz2` - the `2` sits 1.0 pt below `d` on a 9 pt base, 0.111: a flat 0.12
   rule misses it; the size-conditional 0.075 catches it.
 * S4 REAL `qout` - `q` is STIXGeneral-Italic 11 pt, `out` is 7 pt: the letter vote picks 7 pt
-  and would draw `q` at 11/7 of the label. Unresolvable -> no styles, `inverted-base` named.
+  and would draw `q` at 11/7 of the label. Re-pinned for §C140 '6' M5 R1 ([USER] ruling R-11): the
+  base letter may itself be a SYMBOL run, so the line resolves on `q` - base 11, `q` italic on the
+  baseline, `out` a subscript, one token `qout`, no `inverted-base` miss. Before R1 it was left unstyled.
 * S5 `Patm` - the same inversion, resolvable: base 9, `atm` styled.
 * S6 arc - never styled; a size/italic variation is named `arc`.
 * S7 REAL stacked splits `HCO3|–` and `NH4|+ (conjugate acid)` - FT.lines splits the charge
@@ -42,6 +45,17 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
   ONE style (heldplan's source-script pool): their sub, sup and charge are scripts, OxStNonmts' italic-only STIX
   charge is not, and both thresholds and the strict ratio boundary hold (HS1); every NON-italic style
   `source_tokens` emits on this file's REAL fixtures is a script by it, a 0.111 drop included (HS2).
+* M5 §C140 '6' ([USER] rulings R-9, R-10, R-11; spec
+  docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-f) - the seven narrow
+  script-transfer rules, each placing a style only where it can pin it to exactly ONE occurrence. Rule
+  arms (each FAILS on the composer before M5): R2 a glued same-visual-line continuation attaches for
+  tokens (R2a, R2b); R3 the MT wire's joint space is marked FS.JOINT (R3a, R3b); R4 a leading italic
+  prefix is placed by its right anchor (R4a); R5 a styled run spanning a space is a phrase token, and
+  R5b refuses a token that also stands plain in its source line (R5a, R5b); R6 an italic compound
+  prefix (R6a); R7 a translated script tail (R7 qút, R7 qinn, R7c). R1 is S4 and B6 above. Every
+  `C*` arm is a CONTROL - it passes before and after M5 - pinning what each rule must NOT do. All M5
+  assertions read styles through `lab()`, which classifies by `is_script_style` and the italic flag
+  rather than by an exact tuple, and checks FS.JOINT first.
 """
 import sys
 from pathlib import Path
@@ -120,6 +134,26 @@ def tok(text, mask):
 def mask(fmt):
     inv = {None: '.', SUB: 'v', SUP: '^', ITA: 'i'}
     return ''.join(inv.get(None if s is None else tuple(s), '?') for s in fmt)
+
+
+_NO_JOINT = object()                            # a module without FS.JOINT (pre-M5) matches nothing
+
+
+def lab(st):
+    """One style -> one character, by CLASS rather than exact tuple (M5): '.' plain, 'J' FS.JOINT,
+    '_' / '^' a script (`is_script_style`) below / above the baseline, 'i' italic, '?' anything else.
+    JOINT is tested FIRST: it is a bare object(), and indexing it raises."""
+    if st is None:
+        return '.'
+    if st is getattr(FS, 'JOINT', _NO_JOINT):
+        return 'J'
+    if FS.is_script_style(st):
+        return '_' if st[1] < 0 else '^'
+    return 'i' if st[2] else '?'
+
+
+def lmask(fmt):
+    return ''.join(lab(s) for s in fmt)
 
 
 # --------------------------------------------------------------------------------------------
@@ -214,7 +248,7 @@ def s3():
 attempt('S3', s3)
 
 # --------------------------------------------------------------------------------------------
-print('S4 REAL Systemqw qout: an inverted base that cannot be resolved is left unstyled and named')
+print('S4 REAL Systemqw qout: an inverted base resolves on the symbol base letter (M5 R1)')
 
 # CNX_Chem_05_03_Systemqw 'qout' (send:true): T1_1 STIXGeneral-Italic, TT0 LiberationSans
 QOUT = census([['q', 11.0, 61.96, 108.06, 5.5, 0.0, 'PAGE/T1_1'],
@@ -224,13 +258,15 @@ QOUT = census([['q', 11.0, 61.96, 108.06, 5.5, 0.0, 'PAGE/T1_1'],
 
 def s4():
     text, styles, base, inv = FS.line_styles(QOUT, FONTS)
-    check('S4a inverted is True', inv is True, repr(inv))
-    check('S4b every style is None (q is not drawn at 11/7 of the label)', all(s is None for s in styles),
-          repr(styles))
+    check('S4a resolves on the symbol base letter: inverted is False, base 11.0', inv is False and base == 11.0,
+          f'{inv} {base}')
+    check('S4b q is italic on the baseline (1.0, 0.0), out a subscript (0.6364, -0.1818)',
+          [None if s is None else tuple(s)[:3] for s in styles]
+          == [(1.0, 0.0, True)] + [(0.6364, -0.1818, False)] * 3, repr(styles))
     toks, miss = FS.source_tokens(QOUT, FONTS)
-    check('S4c no token', toks == [], repr(toks))
-    check('S4d one inverted-base miss naming qout',
-          [(m['reason'], m['token']) for m in miss] == [('inverted-base', 'qout')], repr(miss))
+    check('S4c one token qout, q italic and out subscripted (i___)',
+          [(t['text'], lmask(t['styles'])) for t in toks] == [('qout', 'i___')], repr(toks))
+    check('S4d no miss (no inverted-base)', miss == [], repr(miss))
 
 
 attempt('S4', s4)
@@ -624,10 +660,10 @@ def b_all():
                   {'PAGE/R126': 'I', 'PAGE/R124': 'R'})
     check('B5 [F6] REAL Manometer Patm -> body size 9.0 (its line\'s resolved base), not the 6.75 subscript',
           near(FS.body_size(patm, FONTS), 9.0), repr(FS.body_size(patm, FONTS)))
-    # [F6] an UNRESOLVABLE inverted line votes at its letter-vote base: REAL qout (S4) -> 7.0 - not block[0]'s 11 pt
-    # STIX q (what skipping inverted lines would fall back to), and not a size the line never resolved to.
-    check('B6 [F6] REAL qout (inverted, unresolved) -> body size 7.0, its letter-vote base',
-          near(FS.body_size(QOUT, FONTS), 7.0), repr(FS.body_size(QOUT, FONTS)))
+    # [F6] a line votes at its RESOLVED base. REAL qout (S4) resolves on its symbol base letter (M5 R1, re-pinned
+    # per [USER] ruling R-11), so the label is drawn at q's own 11 pt, not at the 7 pt of its subscript.
+    check('B6 [F6] REAL qout (resolves on the symbol base letter, M5 R1) -> body size 11.0',
+          near(FS.body_size(QOUT, FONTS), 11.0), repr(FS.body_size(QOUT, FONTS)))
     text, styles, base, inv = FS.line_styles(freq, FONTS)
     check('B4 REAL Frequency line: nu italic, 1 subscript, = plain', style_of(text, styles, 'ν') is not None
           and style_of(text, styles, 'ν')[2] is True and style_of(text, styles, '1') is not None
@@ -724,6 +760,136 @@ def hs2():
 
 
 attempt('HS2', hs2)
+
+# --------------------------------------------------------------------------------------------
+print("M5 §C140 '6' - seven narrow script-transfer rules (R2-R7; R1 is S4/B6)")
+
+# The census decodes PentIso's MathematicalPi-One degree glyph (code 56, /H11034) as '8'; it is kept verbatim.
+M5_FONTS = dict(FONTS, MP={'base': '/AITLIF+MathematicalPi-One'})
+# CNX_Chem_06_05_CovalradiT 'I radius = 266 pm = 133 pm' (send:true): R18 LiberationSans. The 7 pt
+# '266 pm' is raised 3 pt - ONE styled run that spans a space, beside a plain 'pm'.
+COVAL = census([['I radius = ', 9.0, 354.19, 275.57, 39.77, 0.0, 'PAGE/R18'],
+                ['266 pm', 7.0, 393.96, 278.57, 23.34, 0.0, 'PAGE/R18'],
+                [' = 133 pm', 9.0, 417.31, 275.57, 40.27, 0.0, 'PAGE/R18']],
+               {'PAGE/R18': 'R'})
+# CNX_Chem_10_01_PentIso 'n-pentane|boiling point: 36 8C' (send:true): R14 LiberationSans-Italic,
+# R12 LiberationSans, R16 MathematicalPi-One.
+NPENT = census([['n', 9.0, 261.37, 13.73, 5.0, 0.0, 'PAGE/R14'], ['-pentane', 9.0, 266.38, 13.73, 35.52, 0.0, 'PAGE/R12'],
+                ['boiling point: 36 ', 9.0, 244.12, 2.73, 65.54, 0.0, 'PAGE/R12'],
+                ['8', 9.0, 309.66, 2.73, 3.0, 0.0, 'PAGE/R16'], ['C', 9.0, 312.66, 2.73, 6.5, 0.0, 'PAGE/R12']],
+               {'PAGE/R14': 'I', 'PAGE/R12': 'R', 'PAGE/R16': 'MP'})
+# CNX_Chem_05_02_FoodLabel 'Trans Fat 3g' (send:true): TT2 LiberationSans-Italic, TT0 LiberationSans
+TRANS = census([['Trans', 5.0, 294.07, 157.12, 12.41, 0.0, 'PAGE/TT2'], [' Fat 3g', 5.0, 306.48, 157.12, 15.56, 0.0, 'PAGE/TT0']],
+               {'PAGE/TT2': 'I', 'PAGE/TT0': 'R'})
+# SYNTHETIC (round coordinates, default adv): a 1-letter italic variable, and a digit subscript.
+RVAR = [run('Radius ', 9.0, 10.0, 50.0, adv=30.0), run('r', 9.0, 40.0, 50.0, adv=3.0, font='SI')]
+H2 = [run('H', 9.0, 10.0, 50.0, adv=6.5), run('2', 7.0, 16.5, 47.0, adv=3.9), run(' gas', 9.0, 20.4, 50.0, adv=16.0)]
+
+
+def xfer(block, value):
+    """source_tokens -> transfer on `value`: (the lab() mask of fmt, [(stretch, reason)] of the misses)."""
+    toks, _ = FS.source_tokens(block, M5_FONTS)
+    fmt, ms = FS.transfer(toks, value)
+    return lmask(fmt), [(m['stretch'], m['reason']) for m in ms]
+
+
+def m5_c1():
+    text, st, base, inv = FS.line_styles(ATMOS[1:], M5_FONTS)
+    check('C1 control: an ordinary N2 line keeps base 9 and its subscript',
+          base == 9.0 and lmask(st) == '..........._.', lmask(st))
+
+
+def m5_r2():
+    ls = FS.token_lines(AMMONIUM, M5_FONTS)
+    check('R2a ammonium: token_lines attaches the same-size + and ) (1 line)', len(ls) == 1, repr(texts(ls)))
+    m, ms = xfer(AMMONIUM, 'ammóníum (NH4+)')
+    check('R2b ammonium (NH4+): 4 subscript AND + superscript, no miss', m == '............_^.' and ms == [],
+          repr((m, ms)))
+
+
+def m5_c2():
+    check('C2a control: the diagonal C|B|A is NOT attached (3 token lines)', len(FS.token_lines(CBA, M5_FONTS)) == 3,
+          repr(texts(FS.token_lines(CBA, M5_FONTS))))
+    check('C2b control: a genuine 2-line label stays 2 token lines', len(FS.token_lines(ATMOS, M5_FONTS)) == 2,
+          repr(texts(FS.token_lines(ATMOS, M5_FONTS))))
+    check('C2c control: FT.lines (the key) still splits ammonium into 3', len(FT.lines(AMMONIUM)) == 3,
+          repr(texts(FT.lines(AMMONIUM))))
+
+
+def m5_r3():
+    m, ms = xfer(NITRITES, 'nítrít (NO2 –')
+    check('R3a wire joint space: (NO2 – draws 2 sub, – sup, the space elided (J)', m.endswith('_J^') and ms == [],
+          repr((m, ms)))
+    m, ms = xfer(AMMONIUM, 'ammóníum (NH4 + )')
+    check('R3b ammonium (NH4 + ): both joint spaces elided, 4 sub, + sup', m.endswith('_J^J.') and ms == [],
+          repr((m, ms)))
+
+
+def m5_c3():
+    m, ms = xfer(NITRITES, 'nítrít (NO2–')
+    check('C3a control: a space-free value takes the plain path, nothing elided', m.endswith('_^') and 'J' not in m,
+          repr((m, ms)))
+    m, ms = xfer(NITRITES, 'a (NO2 – b (NO2 –')
+    check('C3b control: two joint matches are ambiguous - nothing elided', 'J' not in m, repr((m, ms)))
+    m, ms = xfer(NITRITES, 'nítrít og NO2 sem –')
+    check('C3c control: a space that is not at the joint is never elided', 'J' not in m, repr((m, ms)))
+
+
+def m5_r4():
+    m, ms = xfer(NPENT, 'Suðumark n-pentans: 36 °C')
+    check('R4a a leading italic n- in an inflected word is placed (right anchor)',
+          m == '.........i...............' and ms == [], repr((m, ms)))
+
+
+def m5_c4():
+    m, ms = xfer(NPENT, 'n-pentan og n-bútan')
+    check('C4a control: two candidates -> not placed, no-base named', 'i' not in m and ('n', 'no-base') in ms,
+          repr((m, ms)))
+    m, ms = xfer(NPENT, 'Suðumark ísópentans')
+    check('C4b control: no n- at a clean left edge -> not placed', 'i' not in m, repr((m, ms)))
+
+
+def m5_r5():
+    m, ms = xfer(COVAL, 'I radíus = 266 pm = 133 pm')
+    check('R5a raised 266 pm (one run spanning a space) is placed as a phrase; 133 pm stays plain',
+          m == '...........^^^^^^.........' and ms == [], repr((m, ms)))
+    m, ms = xfer(COVAL, 'I radíus = 266pm = 133 pm')
+    check('R5b an absent phrase does not style the wrong pm (it also stands plain in the source line)',
+          '^' not in m, repr((m, ms)))
+
+
+def m5_r6():
+    m, ms = xfer(TRANS, 'Transfita 3 g')
+    check('R6a an italic word compounded in the translation keeps its italic', m == 'iiiii........' and ms == [],
+          repr((m, ms)))
+
+
+def m5_c6():
+    m, ms = xfer(RVAR, 'Radíus r')
+    check('C6a control: a 1-letter italic variable is placed only standalone', m == '.......i', m)
+    m, ms = xfer(RVAR, 'radíus')
+    check('C6b control: a 1-letter italic variable never prefixes a word', 'i' not in m, m)
+    m, ms = xfer(TRANS, 'Transfita og Transsýra')
+    check('C6c control: two compound candidates -> not placed', 'i' not in m, m)
+
+
+def m5_r7():
+    for v, want in (('qút', 'i__'), ('qinn', 'i___')):
+        m, ms = xfer(QOUT, v)
+        check(f'R7 translated subscript tail: {v} -> {want}', m == want and ms == [], repr((m, ms)))
+    m, ms = xfer(QOUT, 'qout')
+    check('R7c (needs R1) the untranslated token is placed whole', m == 'i___', repr((m, ms)))
+
+
+def m5_c7():
+    m, ms = xfer(H2, 'Hiti')
+    check('C7a control: a DIGIT subscript (H2) never styles a translated tail', '_' not in m, repr((m, ms)))
+    m, ms = xfer(QOUT, 'qút og qinn')
+    check('C7b control: two words starting with the base -> not placed', '_' not in m, repr((m, ms)))
+
+
+for _f in (m5_c1, m5_r2, m5_c2, m5_r3, m5_c3, m5_r4, m5_c4, m5_r5, m5_r6, m5_c6, m5_r7, m5_c7):
+    attempt(_f.__name__, _f)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)

@@ -31,10 +31,17 @@ for its known width.
 
 RED-FIRST, AND WHAT IS NOT. V1, V2, V4, V5 and V7 FAIL on the composer before ㉑ (it draws 2-3
 lines, the nitrites baseline 3.249 pt off its `)`, and the boxed label's second line in the red of
-the `+` run that opens FT.lines line 2). The controls are not red-first and must pass on both sides:
-C1 (the block keys still split - the bought keys did not move), V3 (the nitrites line ends on its
-`)`: the old composer right-aligned its two lines there too), V6 (the boxed label is drawn on two
-lines - without it V7 would be vacuous) and T1 (the drawn pieces reproduce each value's words).
+the `+` run that opens FT.lines line 2). T1a FAILS on the composer before §C140 '6' M5 R3 ([USER]
+ruling R-11): every planted value carries the MT wire's joint space (`NO2 –`, `NH4 + )`), which R3
+marks FS.JOINT and compose.py ELIDES from the drawn text, so the drawn text is the value MINUS its
+joint spaces (`NO2–`, `NH4+)`) - the pre-M5 composer draws `NH4 + )`. The expected strings are
+hardcoded (quoted from the M5 candidate's measured output), never derived from the value; two data
+guards per key (T1-pre) assert that the expected text differs from the value only by removed spaces
+and by at least one, so neither a composer that strips every space nor one that never elides can
+pass T1a. The guards read no composer output and pass on both sides. The controls are not
+red-first and must pass on both sides: C1 (the block keys still split - the bought keys did not
+move), V3 (the nitrites line ends on its `)`: the old composer right-aligned its two lines there
+too) and V6 (the boxed label is drawn on two lines - without it V7 would be vacuous).
 NOT PINNED: `width()`'s line index. `seg_width` reads only `bold` from the run it is handed and every planted
 run is `PAGE/F1`, so indexing `width()` by FT.lines instead passes this file (measured); 0 of the 48 blocks
 `visual_lines` merges in the 2026-09-13 census mix weights, so that mutant is equivalent on the corpus too.
@@ -304,7 +311,14 @@ fills = sorted({e['fill'] for e in lab[K_BOX]})
 check('V7 every drawn line of the boxed label takes the colour of the run that OPENS its source line, never '
       'the red script run', len(fills) == 1, f'fills={fills} lines={drawn(K_BOX)}')
 want = {K_AMM: V_AMM, K_NIT: V_NIT, K_CONJ: V_CONJ, K_BOX: V_CONJ}
-bad = {k: (' '.join(drawn(k)), ' '.join(v.split())) for k, v in want.items()
-       if ' '.join(' '.join(drawn(k)).split()) != ' '.join(v.split())}
-check('T1 sentinel: each label\'s drawn pieces, line by line, reproduce its value\'s words', not bad, repr(bad))
+# §C140 '6' M5 R3: the drawn text is the value minus its JOINT positions (see the docstring). Hardcoded.
+DRAWN = {K_AMM: 'ammóníum (NH4+)', K_NIT: 'nítrít (NO2–', K_CONJ: 'NH4+ (samoka sýra)', K_BOX: 'NH4+ (samoka sýra)'}
+for k, v in want.items():
+    check(f'T1-pre {k!r}: the expected drawn text is the value with at least one space removed and nothing else',
+          DRAWN[k] != ' '.join(v.split()) and DRAWN[k].replace(' ', '') == v.replace(' ', ''),
+          f'{DRAWN[k]!r} vs {v!r}')
+bad = {k: (' '.join(drawn(k)), DRAWN[k]) for k in want
+       if ' '.join(' '.join(drawn(k)).split()) != DRAWN[k]}
+check('T1a sentinel: each label\'s drawn pieces, line by line, are its value minus the JOINT spaces (M5 R3)',
+      not bad, repr(bad))
 finish()
