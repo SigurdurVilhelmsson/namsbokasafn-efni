@@ -25,18 +25,37 @@ Red on the pre-M4 composer (P1v):
 * P-1  FoodLabel's lower table (cell, block 16, 6 rows) is drawn on the source rows: lead 5.5, top = the first
        source baseline (the pre-M4 lead is sz0 * LEAD = 4.888).
 * P-2  FracDistil 'Small molecules' (open, block 2, 5 rows): lead = the source pitch 9.209, not 10.998.
-CONTROLS (G13: pass before and after by design; each is turned red by a variant the spec rejected, recorded in the
-spec's D-d/D-e tests and the M4 design run - the ungated A2 and the threshold-free P1/P1B):
+* P-3  PITCH_SRC_MIN pinned FROM ABOVE (R-8a ruled 1.0; the spec measured 2.0 and rejected it): FoodLabel's
+       'Less than' column, block 14 - a HAND-BUILT cue, block 16's record cut to its first four source rows, which
+       are block 14's own rows (the M4 design run's base trace records 14's projs as 16's first four). Its span
+       is off by 3 * (5.5 - 4.888) = 1.84 pt, between 1.0 and 2.0, so it moves to lead 5.5, top 50.5894 - the
+       spec's D-e values for block 14 - and stays at 4.888 under a threshold of 2.0. (C-6 pins it from below.)
+CONTROLS (G13: pass before and after by design; each is turned red by a planted variant - the spec's rejected ones
+where it names them (the ungated A2, the threshold-free P1), a one-guard deletion otherwise):
 * C-1  periodic table 'copper' (block 221) stays CENTRE. The GRID-COINCIDENCE control: a column rule that counts
        siblings at any size sees copper's right edge against its symbol and mass and moves it right (column
-       L3C7R8 under the ungated A2). Only the same-size rule and the centre veto hold it.
+       L3C7R8 under the ungated A2). EITHER guard alone holds it - the same-size rule leaves it no right support
+       (L0C4R0) and the centre veto vetoes the any-size R5 (L0C4R5) - so C-1 goes red only when BOTH are removed.
+       C-7 pins the veto alone and C-8 the same-size rule alone.
 * C-2  periodic table 'samarium' (block 407, which shares all three edges with 'plutonium') stays CENTRE. It guards
-       only a same-size-majority variant.
+       a same-size-majority variant: its planted witness drops BOTH the exactly-one-edge rule and the veto
+       (samarium -> left, column L2C2R0); either alone holds it, and C-7 already catches the veto alone.
 * C-7  the CENTRE VETO (R-8b, `c['center'] > 0`), on `column_side` itself: periodic table 'meitnerium' (block 196)
        has two same-size left-edge siblings and seven centre ones (column L2C7R0) and returns no side. C-1 cannot
        see the veto alone - under the same-size rule copper has no left/right support to veto - so a variant that
        drops only the veto passes C-1..C-6 and fails here. SKIPPED where figcontainers has no column_side.
-* C-3  MassSpec block 4, whose source pitch equals sz0 * LEAD: the lead is unchanged.
+* C-8  the SAME-SIZE rule (COLUMN_SIZE_TOL), on `column_side` itself: periodic table 'rutherfordium' (block 117)
+       has no same-size left/right sibling (column L0C0R0). Counting every size gives it four left siblings
+       (L4C0R0 -> left) - the spec's rejected 'centre at 0 at any size with left/right at any size: keeps
+       rutherfordium'. C-1 cannot see this guard alone (copper's veto still holds). SKIPPED without column_side.
+* C-9  COLUMN_MIN pinned from below: FoodLabel '2,000' (block 28) has ONE same-size left sibling (column
+       L1C0R0) and returns no side; COLUMN_MIN = 1 moves it left. SKIPPED without column_side.
+* C-10 the DESCENDING-ROWS guard of P1v: FracDistil block 2 with its second source baseline raised to 0.4 * sz0
+       below the first (a HAND-BUILT cue; no committed record has rows closer than 0.5 * sz0) keeps the base lead
+       and top. P-2 is its positive control: the same block with its real rows does move.
+* C-3  MassSpec block 4, whose source pitch equals sz0 * LEAD: the lead is unchanged. NOT a G13 control - a FIXED
+       POINT: at a zero span error no P1v variant fires, and where one is forced to, the source pitch IS the old
+       lead, so no planted variant can turn it red. It states the invariant; it discriminates nothing.
 * C-4  FoodLabel 'more is| ' with a blank second source line (cues['blank'] = [False, True]): the lead is unchanged.
        The cue shape is the pre-M2 one (n_src 2): after M2 compose folds that line and builds n_src 1, so this pins
        the guard as defence in depth, with hand-built cues.
@@ -52,6 +71,9 @@ these records). SKIPPED where the gate constant does not exist; the constant is 
 * G-2  PITCH_SRC = False: P-1 and P-2 return the base record's own `lead` and `top`.
 `cell_align` falls back to the 3-argument `cell_alignment` on a TypeError, so on the pre-M4 composer A-1/A-2/A-4
 fail on their VALUE and C-1/C-2 still run, instead of one crash for all of them.
+NOT pinned, by construction: P1v's `step != 'iv-gain'` clause. (iv) is reached only at a line count above
+min(n_src, words), and the final partition has exactly that many lines, so `len(lines) == n_src` already excludes
+it - no input to `decide` can reach the clause alone.
 """
 import json
 import os
@@ -126,6 +148,14 @@ check('P-2 FracDistil small molecules: lead = source pitch',
       len(L['lines']) == 5 and abs(L['lead'] - (p[0] - p[-1]) / 4) < 1e-6,
       f"n {len(L['lines'])} lead {L['lead']:.4f} source {(p[0] - p[-1]) / 4:.4f}")
 
+r = REC[FOOD]['16']
+cues14 = {k: (v[:4] if isinstance(v, list) else v) for k, v in r['cues'].items()}
+cues14['n_src'] = 4
+L, _ = lay(FOOD, 16, 'a b c d', cues14)
+check('P-3 FoodLabel Less than (block 14, span off 1.84 pt) is on the source rows: lead 5.5, top 50.5894',
+      len(L['lines']) == 4 and abs(L['lead'] - 5.5) < 1e-6 and abs(L['top'] - 50.5894) < 1e-6,
+      f"n {len(L['lines'])} lead {L['lead']:.4f} top {L['top']:.4f}")
+
 # ---------------- CONTROLS ----------------
 for name, bi in (('C-1 periodic copper stays centre', 221), ('C-2 periodic samarium stays centre', 407)):
     side, why = cell_align(PERIODIC, bi)
@@ -139,6 +169,27 @@ if hasattr(FC, 'column_side'):
           name == 'meitnerium' and side is None and why == 'column(L2C7R0)', f'{name!r} {side} {why}')
 else:
     print('SKIP C-7 (figcontainers has no column_side)')
+
+for cid, short, fig, bi, text, want, what in (
+        ('C-8', 'periodic', PERIODIC, 117, 'rutherfordium', 'column(L0C0R0)',
+         'no same-size sibling holds it (COLUMN_SIZE_TOL)'),
+        ('C-9', 'FoodLabel', FOOD, 28, '2,000', 'column(L1C0R0)', 'one same-size sibling is below COLUMN_MIN')):
+    if hasattr(FC, 'column_side'):
+        blocks = blocks_of(fig)
+        name = ''.join(r['text'] for r in blocks[bi])
+        side, why = FC.column_side(bi, blocks)
+        check(f'{cid} {short} {text!r} returns no side: {what}',
+              name == text and side is None and why == want, f'{name!r} {side} {why}')
+    else:
+        print(f'SKIP {cid} (figcontainers has no column_side)')
+
+r = REC[FRAC]['2']
+p = list(r['cues']['projs'])
+p[1] = p[0] - 0.4 * r['cues']['sz0']
+L, _ = lay(FRAC, 2, P_TEXT[(FRAC, 2)], {'projs': p})
+check('C-10 FracDistil with two source rows 0.4*sz0 apart keeps the base lead and top (P1v needs descending rows)',
+      len(L['lines']) == 5 and abs(L['lead'] - r['lead']) < 1e-9 and abs(L['top'] - r['top']) < 1e-9,
+      f"lead {L['lead']:.4f}/{r['lead']:.4f} top {L['top']:.4f}/{r['top']:.4f}")
 
 L, r = lay(MASS, 4, 'aa bb cc')
 check('C-3 MassSpec: source pitch == sz0*LEAD keeps the lead',
