@@ -47,8 +47,9 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
              token fits that budget, use the min-max partition among those; otherwise the unconstrained one.
              Binding never changes the line count, the size or the step.
              CLOSER exception ([USER] R-19, 2026-10-05, recorded in the campaign register; gate R9_CLOSER): a
-             short token that ends in ')' and CLOSES a '(' opened by an earlier word of the label ('g)' in
-             '(228 g)') binds BACKWARD instead - a line may end directly after it, and no line may start with it.
+             short token that ends in ')' when some earlier word of the label contains a '(' ('g)' in '(228 g)')
+             binds BACKWARD instead - a line may end directly after it, and no line may start with it. The test is
+             the PRESENCE of an earlier '(', not bracket balance: in '(1) x a)' the 'a)' counts as a closer too.
              An enumerator 'a)' with no '(' before it is unchanged (it binds forward), and so is (A).
   box  (R2)  align centre on (L+R)/2; width budget (R-L)-2 pad; height budget (U-D)-2 pad: n fits only if
              (n-1) lead + (ASC+DESC) size <= height budget. Vertical: the glyph box centred in the container.
@@ -138,7 +139,7 @@ SHORT_TOKEN = 2          # R9: a word of 1..SHORT_TOKEN characters binds to the 
 SOURCE_ROWS = True       # (a) a CELL label on the source's own line count is admissible on height at the source's own
                          #     rows, and is then DRAWN on them (lead = source pitch, top = first source baseline)
 CELL_CLAMP_BUDGET = False  # (a') a cell's height budget is the vertical clamp's own interval, not (U-D) - 2 pad
-R9_CLOSER = True         # (c) a short token closing a bracket opened earlier on the label ends a line and binds backward
+R9_CLOSER = True         # (c) a short token ending in ')' after an earlier '(' on the label ends a line, binds backward
 
 _STEP_OPEN = ('i', 'ii', 'iii-anchor', 'iii-displaced', 'iv-gain', 'v-overflow')
 
@@ -203,13 +204,13 @@ class _Partition:
         """R9 ([USER] 2026-09-14, symbols only): a line may not end directly after a word of 1-2 characters,
         UNLESS that word is lowercase alphabetic (`af`, `og`, `á`, `í` may end a line; `A`, `Cu`, `Ar`, `2`, `H2`
         may not). k is the index of the next line's first word; k == 0 is the start of the text, never a cut.
-        With `r9close` (R9_CLOSER, [USER] R-19, 2026-10-05): a short token ending in ')' that closes a '(' opened by
-        an earlier word (`_closer`) binds BACKWARD - a cut directly after it is allowed and a cut directly before it
-        is not. An enumerator 'a)' with no earlier '(' is not a closer."""
+        With `r9close` (R9_CLOSER, [USER] R-19, 2026-10-05): a short token ending in ')' when an earlier word
+        contains a '(' (`_closer`; presence, not bracket balance) binds BACKWARD - a cut directly after it is allowed
+        and a cut directly before it is not. An enumerator 'a)' with no earlier '(' is not a closer."""
         if k == 0:
             return True
         if self.r9close:
-            # §C140 M3 (c): a short token that CLOSES a bracket opened earlier ('(228 g)') belongs to what precedes
+            # §C140 M3 (c): a short token ending in ')' after an earlier '(' ('(228 g)') belongs to what precedes
             # it: it may end a line, and a line may not START with it. FoodLabel's ruled value broke '(228 | g)'.
             # An enumerator 'a)' (no opener before it) and A's final lone symbol are untouched.
             if self._closer(k - 1):

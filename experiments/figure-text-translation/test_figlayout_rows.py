@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """§C140 '6', M3 - a CELL label on the source's own line count is admissible on the source's own rows and is then
-drawn on them (SOURCE_ROWS), and a short token that closes a bracket opened earlier on the label may end a line and
-never starts one (R9_CLOSER, [USER] R-19, 2026-10-05). CELL_CLAMP_BUDGET ships switched off (spec D-c, R-7).
+drawn on them (SOURCE_ROWS), and a short token ending in ')' after an earlier '(' on the label (presence, not bracket
+balance) may end a line and never starts one (R9_CLOSER, [USER] R-19, 2026-10-05). CELL_CLAMP_BUDGET ships switched
+off (spec D-c, R-7).
 
     FIGTEXT_PYLIBS=./pylibs python3 -B -u test_figlayout_rows.py
 
@@ -39,12 +40,21 @@ turned red by the planted variant named beside it:
 CONTROLS (G13: pass before and after by design; each names the planted variant that turns it red):
 * [a3]  width forcing 3 lines in the green band is NAMED on the height axis (floor-overflow): the source rows admit
         n_src lines only. Red when on_rows drops BOTH its `n == n_src` and its clamp-height test.
+* [a3b] the same text with the down margin widened to 8.0, so the clamp interval holds 3 lines at the source pitch
+        while the pad budget still refuses 3 at the lead: still floor-overflow on height, rows False. Red when
+        on_rows drops `n == n_src` alone (3 fit rows True, lead 5.5 - a third line on a source row that does not
+        exist).
+* [a3c] a container whose recorded margins over-report its D/U, so the source rows fall OUTSIDE the clamp interval:
+        not admitted (1 line, rows False, identical to gates off). Red when on_rows drops its clamp-height test
+        alone. Synthetic by necessity: with D/U derived from the source frame the clamp interval always holds the
+        source rows at any size <= sz0.
 * [a4]  source pitch == the lead: identical to the gates-off decision. Red when the pitch test admits a pitch EQUAL
         to the lead (`_p <= lead + EPS`).
 * [a5]  source pitch WIDER than the lead (1.33x, the vitamin column): identical to gates off - the rule never makes
         a cell stricter. Red when the pitch test is dropped.
 * [a6]  a BOX (R2 centres its glyph box): identical to gates off. Red when `cls == 'cell'` is dropped from the
-        rows eligibility and the clamp interval.
+        rows eligibility and the clamp interval (by this assertion). Dropped from the eligibility ALONE, decide
+        raises TypeError on the box's hb_clamp None - red by crash, not by [a6] (G13 accepts a crash as red).
 * [a7]  a whitespace-only source line (cues['blank']) is no row: identical to gates off. Red when the blank guard
         is dropped.
 * [a8]  a 1-line source: identical to gates off. Red when `n_src >= 2` admits one line (pitch divisor max(1, ...)).
@@ -74,8 +84,8 @@ fixtures, which is why [c2b] / [c3b] exist):
 Gates-off controls ([a4]-[a9]) compare decide(..., gates on) with decide(..., **OFF), OFF = the three private
 kwargs False - the module under test is its own baseline (a history-based baseline is vacuous at a depth-1 clone).
 On a figlayout without SOURCE_ROWS, OFF is {} and those checks compare the module with itself.
-NOT pinned alone: on_rows' `n == n_src` without its clamp-height test - in every fixture here an n_src + 1 count that
-the rows would admit is refused by the height test first. CELL_CLAMP_BUDGET is off and no check turns it on.
+Each of on_rows' two clauses is pinned alone ([a3b] `n == n_src`, [a3c] the clamp-height test); [a3] drops both.
+NOT pinned: CELL_CLAMP_BUDGET is off and no check turns it on.
 """
 import os
 import sys
@@ -161,6 +171,26 @@ lay = dec('a' * 60 + ' ' + 'b' * 60 + ' ' + 'c' * 60, c3, src_cues(5.0, GB_PROJ)
 check('[a3 CONTROL] width forcing 3 lines there is NAMED on the height axis',
       lay['step'] == 'floor-overflow' and (lay['overflow'] or {}).get('axis') == 'height',
       f"{texts(lay)} {lay['overflow']}")
+# The same text with the down margin widened to 8.0: the clamp interval (16.2) now holds THREE lines at the source
+# pitch (2 * 5.5 + 4.7 = 15.7) while the pad budget (15.53) still refuses three at the lead (16.92). Only on_rows'
+# `n == n_src` keeps a third line off two source rows (down 7.5 .. 9.39 separates it; 0.39, 6.0 and 7.0 do not).
+c3b = derived('cell', 0, 160, 5.0, GB_PROJ, up=1.33, down=8.0)
+lay = dec('a' * 60 + ' ' + 'b' * 60 + ' ' + 'c' * 60, c3b, src_cues(5.0, GB_PROJ))
+check('[a3b CONTROL] ... and with a clamp interval that holds 3 lines at the source pitch: still NAMED on height, '
+      'not drawn on the rows (the rows admit n_src lines only)',
+      lay['step'] == 'floor-overflow' and (lay['overflow'] or {}).get('axis') == 'height' and lay['rows'] is False,
+      f"{texts(lay)} {lay['step']} {lay['overflow']} rows {lay['rows']}")
+# A container whose recorded margins (2.0) OVER-report its geometry (D/U drawn with margins 0): the clamp interval
+# (10.2 - 2 - 2 = 6.2) no longer holds the source's own rows (5.5 + 4.7 = 10.2). With D/U derived from the source
+# frame this cannot happen (min(pad, m) never removes more than m), which is why only a synthetic margin source
+# reaches on_rows' clamp-height test - the module keeps that test for exactly such a source.
+c3c = dict(derived('cell', 0, 200, 5.0, GB_PROJ, up=0.0, down=0.0), src_up_margin=2.0, src_down_margin=2.0)
+a, b = dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ)), \
+    dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ), **OFF)
+check('[a3c CONTROL] source rows OUTSIDE the clamp interval are not admitted: 1 line, not drawn on the rows, '
+      'identical to gates off',
+      len(a['lines']) == 1 and a.get('rows') is not True and same(a, b),
+      f"{texts(a)} lead {a['lead']:.3f} rows {a.get('rows')} | off {texts(b)} lead {b['lead']:.3f}")
 for lab, c, cu in (
         ('[a4 CONTROL] source pitch == lead: decision identical to gates off',
          derived('cell', 0, 200, 5.0, [P0, P0 - 6.11], 1.33, 0.39), src_cues(5.0, [P0, P0 - 6.11])),
