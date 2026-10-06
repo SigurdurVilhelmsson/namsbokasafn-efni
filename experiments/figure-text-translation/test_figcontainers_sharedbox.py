@@ -27,6 +27,11 @@ WHAT IS PINNED
 * C3  under 'source', cell_alignment is handed the block's `index` and `blocks` (M4's A2v hook needs
       them). No other check can tell that call from a 3-argument one: C2's 'source' column never reaches
       A2v. A recorder stands in for cell_alignment and is always restored.
+* W   (G21 review-fix round, F2 n47) shares_box itself: W1 a neighbour line centre exactly on the inner rect's
+      L, R, D or U edge is inside (each of the four `<=` -> `<` mutants turns it red); W2 a neighbour at
+      -179.95 deg shares the box of a block at 180.0 deg (mutant: a bare abs). W1-ctl and W2-ctl are CONTROLS
+      (0.01 pt outside each edge; 5 deg off) - their mutants (the rect test always true; the rotation filter
+      dropped) are in the round's report.
 """
 import math
 import sys
@@ -171,6 +176,36 @@ ROT03 = [run(120.0, 70.0, 'Tilted', rot=0.3, adv=30.0)]
 c = FC.container_for(0, [HEAD, ROT03], page(BOX), blank(), H)
 check('S3 [RED before M7] POSITIVE control for the line above: the same neighbour at 0.3 deg DOES share it',
       c['cls'] == 'cell' and c['why'].endswith('+shared'), f"{c['cls']} {c['why']}")
+
+print('\n== W. shares_box itself (G21 review-fix round, F2 n47): inclusive bounds and the +/-180 wrap')
+NB = [run(120.0, 70.0, 'Nb', adv=20.0)]
+na0, na1, nn0, nn1 = FC.line_frames(NB)[0]
+ca, cn = (na0 + na1) / 2, (nn0 + nn1) / 2
+EDGES = {'L': (ca, ca + 10, cn - 10, cn + 10), 'R': (ca - 10, ca, cn - 10, cn + 10),
+         'D': (ca - 10, ca + 10, cn, cn + 10), 'U': (ca - 10, ca + 10, cn - 10, cn)}
+got = {k: FC.shares_box(0, [HEAD, NB], *v, 0.0) for k, v in EDGES.items()}
+check('W1 a neighbour line centre EXACTLY on the inner rect\'s L, R, D or U edge is inside (the bounds are inclusive)',
+      got == {'L': True, 'R': True, 'D': True, 'U': True}, repr(got))
+check('W1-ctl CONTROL ... and 0.01 pt outside each edge is not',
+      not any(FC.shares_box(0, [HEAD, NB], *v, 0.0) for v in ((ca + 0.01, ca + 10, cn - 10, cn + 10),
+                                                              (ca - 10, ca - 0.01, cn - 10, cn + 10),
+                                                              (ca - 10, ca + 10, cn + 0.01, cn + 10),
+                                                              (ca - 10, ca + 10, cn - 10, cn - 0.01))))
+
+
+def _flip(r, rot):
+    """`r` rebuilt at `rot` with ITS OWN (along, proj) unchanged (figtext reads both through the run's own rot)."""
+    a, n, t = FC.FT.along(r), FC.FT.proj(r), math.radians(rot)
+    return dict(r, rot=rot, x=a * math.cos(t) - n * math.sin(t), y=a * math.sin(t) + n * math.cos(t))
+
+
+NBF = [_flip(NB[0], -179.95)]
+fa0, fa1, fn0, fn1 = FC.line_frames(NBF)[0]
+inner = ((fa0 + fa1) / 2 - 10, (fa0 + fa1) / 2 + 10, (fn0 + fn1) / 2 - 10, (fn0 + fn1) / 2 + 10)
+check('W2 a neighbour at -179.95 deg shares the box of a block at 180.0 deg (a 0.05 deg turn, not 359.95)',
+      FC.shares_box(0, [HEAD, NBF], *inner, 180.0) is True, repr(inner))
+check('W2-ctl CONTROL ... while one at -175.0 deg (5 deg off, over SHARED_ROT) does not',
+      FC.shares_box(0, [HEAD, [_flip(NB[0], -175.0)]], *inner, 180.0) is False)
 
 print('\n== C2. the switch')
 LEFTB = [run(100.0, 80.0, 'Polymers such as ABS', adv=70.0), run(100.0, 70.0, 'and/or metals', adv=45.0)]

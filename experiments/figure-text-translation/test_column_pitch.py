@@ -71,6 +71,11 @@ where it names them (the ungated A2, the threshold-free P1), a one-guard deletio
 * C-14 the FIRST-RUN size of column_side: strong 'HClO4' (block 2) is set 9 pt with a 7 pt subscript, and its
        column of 9 pt formulas holds it left (column L5C0R0). Its witness takes the label's LAST run size, which
        counts no sibling (L0C0R0). SKIPPED without column_side.
+* C-15 (G21 review-fix round, F2 n37) the EXACTLY-ONE-EDGE rule of column_side, alone: two same-size siblings of the
+       label's own width (all three edges coincide) count for no side. C-2 needs this rule AND the centre veto
+       removed before it goes red; this one fails on the rule alone (witness `len(hit) < 1`: left, L2C0R0).
+* C-16 (G21, F2 n47) column_side compares rotations WRAPPED, like shares_box: C-13's lean page with the label at
+       180.0 deg and its siblings at -179.95 still returns left (witness: a bare `abs`, which drops every sibling).
 * C-4  FoodLabel 'more is| ' with a blank second source line (cues['blank'] = [False, True]): the lead is unchanged.
        The cue shape is the pre-M2 one (n_src 2): after M2 compose folds that line and builds n_src 1, so this pins
        the guard as defence in depth, with hand-built cues.
@@ -95,6 +100,7 @@ min(n_src, words), and the final partition has exactly that many lines, so `len(
 it - no input to `decide` can reach the clause alone.
 """
 import json
+import math
 import os
 import sys
 from pathlib import Path
@@ -246,6 +252,22 @@ if hasattr(FC, 'column_side'):
     check("C-14 strong 'HClO4' (9 pt, 7 pt subscript) is held by its 9 pt column: column_side reads the FIRST run",
           name == 'HClO4' and sizes[0] != sizes[-1] and side == 'left' and why == 'column(L5C0R0)',
           f'{name!r} sizes {sizes} {side} {why}')
+    # C-15 (n37): two same-size siblings of the label's own width, at [100, 130].
+    same = [[_run(100, 100, 30)], [_run(100, 80, 30)], [_run(100, 60, 30)]]
+    got = FC.column_side(0, same)
+    check('C-15 (n37) two same-width, same-size siblings (all three edges coincide) count for no side',
+          got == (None, 'column(L0C0R0)'), repr(got))
+
+    # C-16 (n47): each run placed so that ITS OWN (along, proj) equal C-13's (figtext reads them through its rot).
+    def _rrun(a, n, adv, rot):
+        t = math.radians(rot)
+        return dict(_run(a * math.cos(t) - n * math.sin(t), a * math.sin(t) + n * math.cos(t), adv), rot=rot)
+    flip = [[_rrun(FT.along(b[0]), FT.proj(b[0]), b[0]['adv'], 180.0 if i == 0 else -179.95)]
+            for i, b in enumerate(page[:4])]
+    got = FC.column_side(0, flip)
+    check("C-16 (n47) siblings at -179.95 deg share the rotation of a label at 180 deg: C-13's lean page still "
+          'returns left', got == ('left', 'column(L2C0R1)')
+          and [round(FT.along(b[0]), 6) for b in flip] == [round(FT.along(b[0]), 6) for b in page[:4]], repr(got))
 else:
     print('SKIP C-13, C-14 (figcontainers has no column_side)')
 

@@ -422,10 +422,18 @@ def sibling_cues(index, blocks):
     return tuple(cue)
 
 
+def _rot_delta(a, b):
+    """|a - b| in degrees, WRAPPED to [0, 180]: rotation comes from atan2, range (-180, 180], so upside-down text
+    arrives as 180.0 or -179.95 and a plain subtraction calls that a 359.95-degree turn (readlayer._angle_delta's
+    hazard). Shared by shares_box (M7) and column_side (M4) so the two agree on who is a sibling (G21, F2 n47).
+    `sibling_cues` (older than both) still subtracts plainly: 0 corpus block pairs straddle +/-180."""
+    return abs(((a - b) + 180.0) % 360.0 - 180.0)
+
+
 def column_side(index, blocks):
     """§C140 M4 (A2v): the side of a source text COLUMN this single-line label belongs to, or None.
 
-    A sibling is ANOTHER block of the same rotation, and it is counted per LINE: a line counts for a side only
+    A sibling is ANOTHER block of the same rotation (within SIBLING_ROT, wrapped: `_rot_delta`), and it is counted per LINE: a line counts for a side only
     when EXACTLY ONE of its three edges (left / centre / right) coincides with the label's within SIBLING_TOL.
     A line that coincides on two or three edges has the label's own width and says nothing about alignment
     (FoodLabel 'nutrients' under 'Footnote'; the periodic table's 'plutonium' under 'samarium').
@@ -442,7 +450,7 @@ def column_side(index, blocks):
     mc = (m0 + m1) / 2
     sup = {'left': set(), 'center': set(), 'right': set()}
     for j, other in enumerate(blocks):
-        if j == index or abs(other[0]['rot'] - rot) > SIBLING_ROT:
+        if j == index or _rot_delta(other[0]['rot'], rot) > SIBLING_ROT:
             continue
         for line in FT.lines(other):
             a0, a1 = source_frame(line)[:2]
@@ -601,7 +609,7 @@ def shares_box(index, blocks, L, R, D, U, rot):
     box's inner rect in this block's own (along, normal) frame. Kept, arc and laid-out blocks all
     count: a kept formula under a translated heading is as overprinted as a translated body."""
     for j, other in enumerate(blocks):
-        if j == index or abs(((other[0]['rot'] - rot) + 180.0) % 360.0 - 180.0) > SHARED_ROT:
+        if j == index or _rot_delta(other[0]['rot'], rot) > SHARED_ROT:
             continue
         for fa0, fa1, fn0, fn1 in line_frames(other):
             if L <= (fa0 + fa1) / 2 <= R and D <= (fn0 + fn1) / 2 <= U:
