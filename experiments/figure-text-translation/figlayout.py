@@ -22,7 +22,8 @@ INPUTS
   container  figcontainers.container_for(...) - 'box' | 'cell' | 'open', in the block's own along/normal frame.
   cues       {'n_src', 'sz0', 'starts', 'ends', 'projs'} per VISUAL source line (adv-based in production;
              compose.py builds them on figtext.visual_ink - the visual lines without a folded U+0020-only
-             line's runs, so `n_src` is len(figtext.visual_lines) - §C140 ㉑, '6' M2).
+             line's runs, so `n_src` is len(figtext.visual_lines) - §C140 ㉑, '6' M2). Optional: 'blank' (M4),
+             'texts' (M1), and 'explicit' + 'explicit_pitch' (R-5a, below).
 
 RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E); R-16, [USER] 2026-10-05)
   sizes      sz0, sz0-0.25, ... down to floor_eff inclusive (EPS slack); when sz0 is off the 0.25 grid, or the
@@ -116,15 +117,24 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E); R-16, 
              governs the count only: no (E) test is applied to M1's cut. After an M1 shrink `step` keeps its pre-M1
              value (it names the rule that chose the count) and m1['shrunkFrom'] records the size it shrank from.
 
+  EXPLICIT   §C140 '6' R-5a ([USER] 2026-10-05): cues['explicit'] = the words per line of an editor's LF breaks
+             (figtext.explicit_lines; compose.py passes at most n_src lines), cues['explicit_pitch'] = the source
+             pitch. It REPLACES every rule above except the class's anchor, alignment and cell clamps: the lines are
+             exactly those (no R9, (A), (E) or M1 - m1 None), the size is the largest step at which every line fits
+             (box/cell: the width budget (R-L) - 2 pad; open: b_i undisplaced, else b_ii displaced, at each size),
+             else floor_eff with the widest line named (word None) - step 'explicit' / 'explicit-overflow'. Drawn
+             from projs[0] (a box: its glyph box centred) at the explicit pitch; no height budget (heightFit None),
+             and P1v never redraws them. Counts that do not partition the words raise ValueError.
+
 OUTPUT  Layout dict:
   lines     [[(ch, style)]] per drawn line          size      the drawn base size (pt)
   align     'left' | 'center' | 'right'             anchor    the UNDISPLACED anchor (along)
   x0        per-line start along, displacement included - compose only draws
   top       baseline of line 0 (normal coordinate), vertical displacement included
-  lead      sz0 * 1.222, or the source pitch (M3's source rows, or P1v)
+  lead      sz0 * 1.222, or the source pitch (M3's source rows, or P1v), or cues['explicit_pitch'] (R-5a)
                                                     disp / vdisp  horizontal / vertical displacement (pt)
   step      'fit' | 'floor-overflow' (box/cell); 'i' | 'ii' | 'iii-anchor' | 'iii-displaced' | 'iv-gain' |
-            'v-overflow' (open)
+            'v-overflow' (open); 'explicit' | 'explicit-overflow' (any class, R-5a)
   overflow  None, or ONE named overhang:
               axis 'width'   {'word', 'needPt', 'budgetPt', 'sizePt', 'axis', 'linePt'}: needPt = the named word's
                              width (word None = a line-count overhang, needPt = the widest drawn line); budgetPt =
@@ -143,7 +153,7 @@ OUTPUT  Layout dict:
             heightFit (box/cell: whether the DRAWN line count, size AND lead meet the height budget - for a label
             drawn on the source rows that is the rows' test against the clamp interval, so heightFit can be True
             where the lead-based glyph box exceeds (U-D) - 2 pad, and only `rows` says why; None for open or when
-            the height budget is switched off), cls,
+            the height budget is switched off, or the label is drawn on explicit breaks), cls,
             rows (True when the label is DRAWN on the source rows by M3's SOURCE ROWS - lead = the source pitch,
             top = projs[0]; False otherwise, including P1v's redraw)
 """
@@ -709,6 +719,50 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     spans = P.cut(s, n, bound=bound, tail=tail)
     if m1_spans is not None:                  # M1: the source-anchored cut replaces the min-max one
         spans, bound = m1_spans, m1['bound']
+    explicit = cues.get('explicit')
+    if explicit:
+        # §C140 '6' R-5a ([USER] 2026-10-05): the editor's own LF breaks (compose.py, figtext.explicit_lines). The
+        # line count is len(explicit) - never more than the source's visual lines, which compose guarantees - and
+        # each line keeps its words: no R9, (A), (E) or M1 (m1 None). The size is the largest step at which EVERY
+        # line fits: a box or cell against its TRUE width budget (R - L) - 2 pad, never the widened budget the
+        # count search above may have held (`bud`); an open label tries b_i (undisplaced), then b_ii (displaced),
+        # at each size. Nothing fits: the floor, with the widest line NAMED against that budget. The lines are drawn
+        # from the block's first source baseline (a box: centred) at cues['explicit_pitch'] (the source pitch), so
+        # no height budget applies; P1v never redraws them. The horizontal anchor, alignment and the cell's clamps
+        # are the container's, as for any other label.
+        cuts = [0]
+        for k in explicit:
+            cuts.append(cuts[-1] + k)
+        if cuts[-1] != W or any(k <= 0 for k in explicit):
+            raise ValueError(f'decide: explicit word counts {explicit} do not partition {W} words')
+        spans = list(zip(cuts[:-1], cuts[1:]))
+        n, bound, m1, rows, height_fit = len(spans), False, None, False, None
+
+        def widest(sz):
+            return max(P.wd(a, c, j, sz) for j, (a, c) in enumerate(spans))
+
+        s, overflow, step = None, None, 'explicit'
+        if cls == 'open':
+            for s_try in sizes:
+                if widest(s_try) <= b_i + EPS:
+                    s, use_disp, budget = s_try, False, b_i
+                    break
+                if widest(s_try) <= b_ii + EPS:
+                    s, use_disp, budget = s_try, True, b_ii
+                    break
+            else:
+                use_disp, budget = True, b_ii
+        else:
+            budget = (container['R'] - container['L']) - 2 * pad
+            s = next((s_try for s_try in sizes if widest(s_try) <= budget + EPS), None)
+        if s is None:
+            s, step = sizes[-1], 'explicit-overflow'
+            overflow = {'word': None, 'needPt': widest(s), 'budgetPt': budget, 'sizePt': s, 'axis': 'width'}
+        lead = cues['explicit_pitch']
+        if cls == 'box':
+            top = (container['D'] + container['U']) / 2 + (n - 1) / 2.0 * lead - (ASC - DESC) / 2.0 * s
+        else:
+            top = projs[0]
     lines = [P.chars(a, c) for a, c in spans]
     # §C140 M4 (P1v): sz0 * LEAD is a guess at the source's line pitch, centred on its mean baseline. A label drawn
     # on EXACTLY the source's line count is drawn on the source's own rows instead - its first baseline and its mean
@@ -717,7 +771,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     # test_figlayout's box-vertical cases), not (iv)'s pinned growth, not a source with a whitespace-only line
     # (cues['blank']: that line is not a row - FoodLabel 'more is| ' would land on 'high'), and only when the
     # source rows descend by more than half a size. The size never feeds the pitch: lead stays a source length.
-    if (PITCH_SRC and cls != 'box' and step != 'iv-gain' and len(lines) == n_src >= 2
+    if (PITCH_SRC and not explicit and cls != 'box' and step != 'iv-gain' and len(lines) == n_src >= 2
             and not any(cues.get('blank', ()))
             and all(projs[i] - projs[i + 1] > 0.5 * sz0 for i in range(n_src - 1))
             and abs((projs[0] - projs[-1]) - (n_src - 1) * lead) > PITCH_SRC_MIN):

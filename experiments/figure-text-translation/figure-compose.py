@@ -42,6 +42,13 @@ THE THREE ASSERTIONS, AND WHY THEY ARE DIFFERENT ANCHORS
    What it catches is a STALE OR WRONG-FIGURE `--out`: a directory whose `blocks.json` was
    written for one figure and whose `runs.json` belongs to another. That is exactly the
    failure that had a sidecar asserting another figure's labels.
+1a. EXPLICIT BREAKS (§C140 '6' R-5a, [USER] 2026-10-05). An LF in a translated value is an editor's
+   line break. compose.py draws each line on the block's source rows or, when it cannot (an arc,
+   an empty / edge-space / invisible line, more lines than the block has visual source lines, a
+   break on an R3 joint - figtext.explicit_lines), draws the label as if each LF were a space and
+   names it in `explicitBreakErrors`. Any entry refuses the figure, naming key, block and reason:
+   it was drawn without the breaks the editor typed. `explicitBreaks` (the honoured ones) is
+   compose-report.json only - neither list is one of COMPOSE_NOTES.
 2. THE HELD CONTRACT (§C140 ㊾ D5(a)). Any `heldErrors` entry refuses the figure, naming every
    key and reason; then `Counter(report.held keys) == Counter(blocks.json keys this figure's
    heldBlockValues configure)`. The count compose is held to comes from blocks.json, not from
@@ -422,7 +429,8 @@ def read_report(out_dir, child):
 
 
 def verify(report, blocks, translations, held=None, anchor=None):
-    """The three assertions (blocks; the held contract; money), plus the anchorExclusions contract.
+    """The three assertions (blocks; the held contract; money), plus explicit breaks (1a, R-5a) and the
+    anchorExclusions contract.
     Raises ComposeError naming the offending keys.
 
     `translations` is REQUIRED - a default would silently pick one of the two wordings
@@ -446,6 +454,15 @@ def verify(report, blocks, translations, held=None, anchor=None):
             f'drew {sum(drawn.values())}, declared {sum(declared.values())}; '
             f'multiset delta {sorted(delta.items())}',
             keys=sorted(delta))
+
+    # 1a. EXPLICIT BREAKS (§C140 '6' R-5a): a value whose explicit line breaks compose.py could not honour was
+    # drawn WITHOUT them - the layout the reviewer did not ask for. Refused by name, never published.
+    if report.get('explicitBreakErrors'):
+        listed = '; '.join(f"{e.get('key')!r} block {e.get('block')}: {e.get('reason')} (line {e.get('line')})"
+                           for e in report['explicitBreakErrors'])
+        raise ComposeError(f"{len(report['explicitBreakErrors'])} translated value(s) carry line breaks that "
+                           f'were not honoured: {listed}',
+                           keys=sorted({e.get('key') for e in report['explicitBreakErrors']}))
 
     # 2. THE HELD CONTRACT (§C140 ㊾ D5(a)). `heldErrors` is in the trigger so that a report carrying
     # refusals but no `held` list cannot pass when nothing is configured. A refusal raises BEFORE the

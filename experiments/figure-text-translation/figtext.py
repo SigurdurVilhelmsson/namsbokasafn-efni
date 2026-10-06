@@ -2,7 +2,7 @@
 and lay translated text back with the block's own geometry. Pure geometry -
 no assumption that text is centred, and lines are split on the text NORMAL so
 rotated blocks work the same as horizontal ones."""
-import math, json, re
+import math, json, re, unicodedata
 import numloc   # stdlib-only sibling (§C140 ⑨); imports nothing from this experiment
 
 def proj(r):
@@ -277,10 +277,67 @@ def normalise_block_value(value, arc):
 
     An ARC block is laid out glyph by glyph along a fitted circle, so it stays a
     single string; a non-arc block becomes a list of lines.
+
+    §C140 '6' R-5a: an LF (U+000A) inside a str value is NOT whitespace to wrap - it is
+    an editor's EXPLICIT line break, which compose.py honours (`explicit_lines`, below)
+    or refuses by name. This function passes it through untouched.
     """
     if arc:
         return value if isinstance(value, str) else ''.join(value)
     return [value] if isinstance(value, str) else list(value)
+
+
+def explicit_lines(raw, fmt, n_src, arc, joint=None):
+    """§C140 '6' R-5a ([USER] 2026-10-05): -> (counts, error) for a translated value `raw` that may carry
+    an editor's explicit line breaks (LF, U+000A). Pure; compose.py is the one caller.
+
+    `fmt` is figscripts.transfer's per-character style list for `raw` with each LF read as a space (the
+    same length, so every offset is the value's own), BEFORE compose elides its JOINT positions; None
+    means no styles. `n_src` is the block's VISUAL source line count (figtext.visual_lines, blank lines
+    folded). `joint` is figscripts.JOINT, passed in because this module may not import figscripts.
+
+      (None, None)            no LF: not an explicit-break value - laid out as before, byte for byte
+      (counts, None)          honoured: the number of words drawn on each line, counted on the string
+                              figscripts.words is run on (JOINT positions elided), so the counts
+                              partition the label's words
+      (None, (reason, line))  refused: the label is drawn as if each LF were a space and figure-compose.py
+                              refuses the figure. `line` is a 0-based line index, or None for a reason
+                              about the whole value. Checked in this order, first refusal wins:
+        'arc'             an arc block is drawn glyph by glyph along a circle and has no lines
+        'empty-line'      a line that is empty or spaces only
+        'edge-space'      a line with leading or trailing whitespace - a CR included ('a\r\nb')
+        'invisible-line'  a line of only format, combining or control characters
+                          (heldvalues.INVISIBLE_CATEGORIES; str.strip() keeps U+200B), which draws nothing
+        'line-count'      more lines than the block has visual source lines: every drawn line sits on
+                          a source row, so no height budget is needed and a one-line block takes no LF
+        'break-at-joint'  the break falls on a position transfer marked JOINT (the MT wire's own joint
+                          space, `NO2 –`), which compose ELIDES; `line` is the line the break would open
+    """
+    if '\n' not in raw:
+        return None, None
+    if arc:
+        return None, ('arc', None)
+    import heldvalues   # function-local: only an LF value reaches it, and heldplan's import set stays pure (HP0)
+    segs = raw.split('\n')
+    for i, sg in enumerate(segs):
+        if not sg.strip():
+            return None, ('empty-line', i)
+        if sg != sg.strip():
+            return None, ('edge-space', i)
+        if all(unicodedata.category(c) in heldvalues.INVISIBLE_CATEGORIES for c in sg):
+            return None, ('invisible-line', i)
+    if len(segs) > n_src:
+        return None, ('line-count', None)
+    fmt = [None] * len(raw) if fmt is None else fmt
+    counts, start = [], 0
+    for i, sg in enumerate(segs):
+        end = start + len(sg)
+        if i and joint is not None and fmt[start - 1] is joint:
+            return None, ('break-at-joint', i)
+        drawn = ''.join(c for c, f in zip(sg, fmt[start:end]) if joint is None or f is not joint)
+        counts.append(len(re.findall(r'\S+', drawn)))
+        start = end + 1
+    return counts, None
 
 
 # pdfminer's placeholder for a glyph it could not map to Unicode: `(cid:127)`.

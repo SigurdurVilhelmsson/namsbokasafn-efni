@@ -495,6 +495,13 @@ overflow = []
 # §C140 ③, additive, draw order WITH multiplicity: `{key, block, why}` for every translated label
 # whose container detection RAISED (see the comment at the append).
 container_errors = []
+# §C140 '6' R-5a ([USER] 2026-10-05), additive, draw order WITH multiplicity: a translated value carrying an LF
+# (U+000A) is drawn with the editor's own line breaks. `explicit_breaks`: {key, block, lines, pitch} for every block
+# drawn that way; `explicit_errors`: {key, block, reason, line} for one whose breaks could not be honoured
+# (figtext.explicit_lines names the reasons) - that label is drawn as if each LF were a space, and figure-compose.py
+# refuses the figure. Neither is one of figure-compose.py's COMPOSE_NOTES.
+explicit_breaks, explicit_errors = [], []
+
 # The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
 PAGE = DARK = None
 
@@ -675,6 +682,10 @@ for BI, b in enumerate(blocks):
         if rbase.startswith('STIX') and not figsym.eligible_base(rbase):
             STIX['skipped'].append(dict(key=key, reason='other-face'))
 
+    if arc:   # R-5a: an arc has no lines, so an LF on one is refused (figtext.explicit_lines)
+        _, explicit_bad = FT.explicit_lines(new, None, None, True)
+        if explicit_bad is not None:
+            explicit_errors.append(dict(key=key, block=BI, reason=explicit_bad[0], line=explicit_bad[1]))
     if arc:
         cx, cy, R = circle
         angs = [math.atan2(y - cy, x - cx) for x, y in pts]
@@ -723,10 +734,16 @@ for BI, b in enumerate(blocks):
     # one paragraph, so for it the join is the value itself.
     # §C140 ③: the layout no longer honours a legacy list's paragraph breaks - figlayout chooses
     # the line count from the SOURCE (n_src). Exposure 0: every committed sidecar value is a str.
-    raw = ' '.join(new)
+    # §C140 '6' R-5a: a str value's LF IS honoured - it is the editor's explicit line break (below).
+    # `transfer` and `words` read each LF as a space: the same length, so every style offset is the
+    # value's own, and a token or an R3 joint match spans a break exactly as it spans a space. The
+    # LF-bearing value and its pre-elision styles are kept for figtext.explicit_lines.
+    raw_lf = ' '.join(new)
+    raw = raw_lf.replace('\n', ' ')
     if tokens:
         fmt, misses = FS.transfer(tokens, raw)
         unformatted.extend(dict(key=key, **m) for m in misses)
+        fmt_lf = fmt
         # §C140 '6' M5 R3: a value position styled FS.JOINT is the MT wire's own joint space (blockkey
         # joins an attached FT.lines line with ONE space: `NO2 –`); it is ELIDED from the drawn text.
         # This is the one place the drawn text differs from the sidecar value - [USER] ruling R-9
@@ -736,7 +753,7 @@ for BI, b in enumerate(blocks):
             raw = ''.join(raw[i] for i in keep)
             fmt = [fmt[i] for i in keep]
     else:
-        fmt = [None] * len(raw)
+        fmt = fmt_lf = [None] * len(raw)
     words = FS.words(raw, fmt)
 
     # §C140 ③: WHAT the label is drawn inside - box / table cell / open with a free box - decided
@@ -781,6 +798,23 @@ for BI, b in enumerate(blocks):
     texts = [''.join(r['text'] for r in l) for l in vls]
     if excl_entry is None:
         cues['texts'] = texts
+    # §C140 '6' R-5a: the editor's LF breaks. figtext.explicit_lines -> the words per line, or a named refusal
+    # (that label is then laid out as if each LF were a space). Values without an LF return (None, None) and are
+    # laid out byte for byte as before. Honoured lines go to figlayout as cues['explicit'] - OUTSIDE the R-20
+    # exclusion guard above, so an excluded key keeps its break too (figlayout's explicit route sets m1 None).
+    explicit, explicit_bad = FT.explicit_lines(raw_lf, fmt_lf, cues['n_src'], arc, joint=FS.JOINT)
+    if explicit is not None and sum(explicit) != len(words):
+        explicit, explicit_bad = None, ('word-count', None)   # unreachable by construction; never laid out wrong
+    if explicit_bad is not None:
+        explicit_errors.append(dict(key=key, block=BI, reason=explicit_bad[0], line=explicit_bad[1]))
+    if explicit is not None:
+        # Pitch: the block's own mean source pitch. explicit_lines refuses more lines than visual lines, so an
+        # honoured value has 2 <= len(explicit) <= n_v, and the pitch is always the source's own.
+        n_v = len(vls)
+        pitch = (cues['projs'][0] - cues['projs'][-1]) / (n_v - 1)
+        cues['explicit'] = explicit
+        cues['explicit_pitch'] = pitch
+        explicit_breaks.append(dict(key=key, block=BI, lines=len(explicit), pitch=round(pitch, 4)))
     layout = FL.decide(words, width, container, cues)
     if excl_entry is not None:
         # R-20: laid out WITHOUT the cue (M1 off). `changed` costs one more pure decide, with it.
@@ -877,6 +911,9 @@ if SVG:
     # --held-values file was read: no flag, or --control.
     'held': held,
     'heldErrors': held_errors,
+    # §C140 '6' R-5a. Additive (see `explicit_breaks` above); figure-compose.py refuses on explicitBreakErrors.
+    'explicitBreaks': explicit_breaks,
+    'explicitBreakErrors': explicit_errors,
     'heldValuesPath': None if HELD_PATH is None else str(HELD_PATH),
     'heldConfigPath': HELD_CONFIG,
     # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
