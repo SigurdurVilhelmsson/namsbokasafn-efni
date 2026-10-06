@@ -306,6 +306,9 @@ export function isStale(sidecar) {
   return false;
 }
 
+/** One CR/LF run → one space: the ONE collapse intake applies to every MT string (D9, G21 #15). */
+const collapseBreaks = (s) => s.replace(/[\r\n]+/g, ' ');
+
 /**
  * Turn `translations-api.json`'s payload into the flat `{key: string}` a sidecar carries.
  *
@@ -319,10 +322,17 @@ export function isStale(sidecar) {
  *
  * 🔴 AND WHAT IT FLATTENED (§C140 '6' R-5a, decision 9). An LF in a sidecar value is an editor's
  * explicit line break, which the composer draws as a line of its own; unreviewed MT must never
- * issue one. Each `\r?\n` run in an MT value is collapsed to ONE space, and the key is reported
- * in `newlines`, so the change is named rather than silent. (The joined arm cannot return one —
- * `translate-blocks.mjs` `joinable` refuses a label holding an LF — so this guards the per-label
- * arm.)
+ * issue one. Each run of CR/LF characters (`[\r\n]+`, so a bare CR and a CRLF too — G21 #15:
+ * `blockValueProblems` refuses any CR, and the two owners must agree on what one is) in an MT value
+ * is collapsed to ONE space, and the key is reported in `newlines`, so the change is named rather
+ * than silent. (The joined arm cannot return one — `translate-blocks.mjs` `joinable` refuses a
+ * label holding an LF — so this guards the per-label arm.)
+ * ⚠️ THE PER-LABEL ARM REACHES THE SIDECAR TWICE, so both are collapsed by the SAME function
+ * (G21 #13/#14/#19): as a kept value, and inside `alternatives` — `other` is the wording the review
+ * panel offers as a one-click replacement (shown via textContent, where a break reads as a space),
+ * and `mt` is the fixed point `figure-consistency.cjs` `mtAlternativeWarnings` compares the block
+ * against; collapsing the value but not `mt` would silently suppress the ㉔ fallback note. A key
+ * whose alternative alone was collapsed is reported in `newlines` too, once.
  *
  * @param {object|null} apiJson
  * @returns {{blocks: Record<string,string>, dropped: string[], newlines: string[],
@@ -342,7 +352,7 @@ export function normaliseTranslations(apiJson) {
       dropped.push(key);
       continue;
     }
-    const flat = value.replace(/(?:\r?\n)+/g, ' ');
+    const flat = collapseBreaks(value);
     if (flat !== value) newlines.push(key);
     blocks[key] = flat;
   }
@@ -354,7 +364,13 @@ export function normaliseTranslations(apiJson) {
   if (rawAlt && typeof rawAlt === 'object' && !Array.isArray(rawAlt)) {
     for (const [key, alt] of Object.entries(rawAlt)) {
       if (key in blocks && alt && typeof alt === 'object' && !Array.isArray(alt)) {
-        alternatives[key] = alt;
+        const flatAlt = { ...alt };
+        for (const field of ['other', 'mt']) {
+          if (typeof alt[field] === 'string') flatAlt[field] = collapseBreaks(alt[field]);
+        }
+        const changed = flatAlt.other !== alt.other || flatAlt.mt !== alt.mt;
+        if (changed && !newlines.includes(key)) newlines.push(key);
+        alternatives[key] = flatAlt;
       }
     }
   }
