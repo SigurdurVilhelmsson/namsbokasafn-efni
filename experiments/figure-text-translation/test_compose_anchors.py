@@ -29,6 +29,8 @@ the PRECONDITION - which is its job.
 CONTROLS (G13; they pass before and after by design, each reddened by a planted mutant named in the task
 report): U7 (figconfig.load returns the parsed config) and C1 (under --control the flag is never read, so
 a file written for another figure does not stop a control run).
+E4f-E4j (G21 F3 #59/#60, appended) are units of figure-compose.py verify()'s anchorExclusions contract:
+twin multiplicity and entry shape. E4f is a CONTROL; a planted `{k: 1 ...}` Counter reddens it and E4g.
 """
 import ast
 import json
@@ -298,4 +300,45 @@ rep = report_of(out)
 check('C1 CONTROL --control never reads --anchor-exclusions: an other-figure file still composes',
       c.returncode == 0 and rep is not None and rep.get('control') is True, f'exit {c.returncode}: '
       f'{c.stderr.strip()[-300:]}')
+
+# ── E4f-E4i (G21 F3 #59/#60): figure-compose.py verify()'s anchorExclusions contract, as units ──────────
+# E4-E4e live in test_figure_compose.py (T12-only); these two gaps live HERE so the controller's runner
+# sees them. Loaded through importlib, test_figure_compose.py's pattern. MULTIPLICITY: a key carried by
+# TWO blocks (twin labels) must be named twice - a composer that dropped a twin names it once. SHAPE: an
+# `anchorExcluded` entry that is not {key: str, ...} is DRIFT, refused by name, not a raw TypeError.
+import collections                                            # noqa: E402
+import importlib.util                                         # noqa: E402
+_spec = importlib.util.spec_from_file_location('figure_compose', HERE / 'figure-compose.py')
+FCW = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(FCW)
+
+
+def _verdict(report):
+    """-> (raised ComposeError, its keys, its message); any OTHER exception is returned as not-ComposeError."""
+    try:
+        FCW.verify(report, TWIN_BLOCKS, TWIN_TR, anchor={'a': 'R-20: twin labels, both kept on their source rows'})
+    except FCW.ComposeError as exc:
+        return True, exc.keys, str(exc)
+    except Exception as exc:                      # noqa: BLE001 - reported, not swallowed
+        return False, [], f'{type(exc).__name__}: {exc}'
+    return False, [], ''
+
+
+TWIN_BLOCKS = [{'key': 'a', 'send': True}, {'key': 'a', 'send': True}, {'key': 'b', 'send': False}]
+TWIN_TR = FCW.Translations(path='/x.json', keys=frozenset({'a'}), has_state=False)
+TWIN_GOOD = {'blocks': ['a', 'a', 'b'], 'missing': ['b'], 'translated': ['a', 'a'], 'degenerate': [],
+             'translationsPath': '/x.json', 'control': False}
+assert collections.Counter(TWIN_GOOD['blocks']) == collections.Counter(b['key'] for b in TWIN_BLOCKS)
+ok, _k, msg = _verdict({**TWIN_GOOD, 'anchorExcluded': [{'key': 'a', 'block': 0, 'changed': True},
+                                                         {'key': 'a', 'block': 1, 'changed': False}]})
+check('E4f CONTROL a key carried by two blocks, named twice in anchorExcluded: passes', not ok and msg == '',
+      repr(msg))
+ok, keys, msg = _verdict({**TWIN_GOOD, 'anchorExcluded': [{'key': 'a', 'block': 0, 'changed': True}]})
+check('E4g the same key named ONCE (a composer that dropped a twin) is refused, multiset delta [(a, 1)]',
+      ok and keys == ['a'] and "multiset delta [('a', 1)]" in msg, f'{keys!r}: {msg}')
+for label, bad in (('E4h an entry that is a bare string', ['a']),
+                   ('E4i an entry with no `key`', [{'block': 0, 'changed': True}]),
+                   ('E4j an entry whose `key` is not a string', [{'key': 5, 'block': 0}])):
+    ok, _k, msg = _verdict({**TWIN_GOOD, 'anchorExcluded': bad})
+    check(f'{label} is refused as DRIFT, by name (not a raw TypeError/KeyError)', ok and 'drifted' in msg, repr(msg))
 finish()
