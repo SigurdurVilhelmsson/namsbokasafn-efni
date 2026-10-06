@@ -55,7 +55,8 @@ REFUSALS - `ArtworkEditError.reason` is a CONTRACT (figure-prepare.py reports `a
                select-overlap (one object selected twice, in one op or across ops)
   the rewrite  not-a-rect, not-a-line, not-horizontal, not-axis-aligned (a rotated, skewed or flipped
                CTM or text matrix), quote-operator (a `'` or `"` in a BT this edit must rewrite),
-               no-positioning-op, edge-inverts (an edge or line end reaching or crossing the other one)
+               no-positioning-op, edge-inverts (an edge or line end reaching or crossing the other one),
+               clip-path (move-paths on a path that also sets the clip: `W`/`W*` before its paint)
   the check    verify-failed
 
 FAIL CLOSED, AND VERIFIED: after rewriting, the stream is re-parsed and EVERY painted path and text
@@ -164,7 +165,7 @@ def for_figure(table, basename):
         if not isinstance(op, dict):
             raise ArtworkEditError('op-not-object', f'{w} is {_kind(op)}')
         name = op.get('op')
-        if name not in OPS:
+        if not isinstance(name, str) or name not in OPS:      # G21 #11: a list/dict op is unhashable
             raise ArtworkEditError('unknown-op', f'{w}.op {name!r} is not one of {sorted(OPS)}')
         required, optional = OPS[name]
         extra = set(op) - required - optional
@@ -281,14 +282,15 @@ def inventory(pikepdf, instructions):
                 local = list(zip(nums[0::2], nums[1::2]))
             cur['pts'].extend(_apply(ctm, px, py) for px, py in local)
         elif op in ('W', 'W*'):
-            pass
+            if cur is not None:
+                cur['clip'] = op          # G21 #10: this path ALSO sets the clip (W/W* before its paint)
         elif op in PAINT:
             if cur is not None and PAINT[op] is not None and cur['pts']:
                 xs = [p[0] for p in cur['pts']]
                 ys = [p[1] for p in cur['pts']]
                 paths.append(dict(start=cur['start'], end=i, paint=PAINT[op], fill=fill, stroke=stroke,
                                   bbox=(min(xs), min(ys), max(xs), max(ys)), ctm=cur['ctm'], ops=cur['ops'],
-                                  paintop=op, pts=cur['pts']))
+                                  paintop=op, pts=cur['pts'], clip=cur.get('clip')))
             cur = None
         elif op == 'TL':
             tl = _D(args[0])
@@ -376,6 +378,12 @@ def plan(pikepdf, instructions, ops, where):
                 raise ArtworkEditError('select-overlap', f'{w}.select[{j}] selects the object {taken[tag]} already selected')
             taken[tag] = f'{w}.select[{j}]'
             if op['op'] == 'move-paths':
+                if paths[n]['clip']:
+                    # G21 #10: the `q cm ... Q` wrap would END the clip `W` sets at the inserted `Q`, so
+                    # every later object would be drawn unclipped - a change _verify cannot see.
+                    raise ArtworkEditError('clip-path', f'{w}.select[{j}] is also a clipping path (its '
+                                                        f'`{paths[n]["clip"]}` precedes the paint): a move '
+                                                        f'would unclip every later object')
                 path_dx[n] = _D(op['dx'])
                 done.append(dict(bbox=_fmt(paths[n]['bbox'])))
             elif op['op'] == 'move-text':
@@ -574,6 +582,8 @@ def _selector_of(p):
         return None, 'no colour operator is in force, so there are no operands to match'
     if any(isinstance(v, str) for v in colour[1]):
         return None, f'its colour operands include a name ({colour[0]}), which a selector cannot carry'
+    if p.get('clip'):
+        return None, f"it is also a clipping path ({p['clip']}): no op can move it (`clip-path`)"
     return {'paint': p['paint'], 'colour': [colour[0], *[float(v) for v in colour[1]]],
             'bbox': _fmt(p['bbox'])}, None
 

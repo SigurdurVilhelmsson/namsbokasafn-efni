@@ -1237,6 +1237,16 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
       /artworkEdits\.CNX_Other\[0\] must be an object whose op is one of move-paths, move-edge, move-text, move-line-end/,
     ],
     [
+      // G21 #58: Object.hasOwn coerces ['move-paths'] to the key 'move-paths'; Python's for_figure refuses
+      // it `unknown-op` (test_artworkedits.py AE-6j2). The two implementations must agree.
+      'an op that is an array holding a valid op name',
+      (c) => {
+        aeOf(c, 0).op = ['move-paths'];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] must be an object whose op is one of move-paths, move-edge, move-text, move-line-end/,
+    ],
+    [
       'an unknown field',
       (c) => {
         aeOf(c, 0).colour = 'red';

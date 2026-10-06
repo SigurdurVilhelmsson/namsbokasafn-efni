@@ -105,6 +105,22 @@ DUP = b'''0.9 0 0 0 k 10 10 20 20 re f
 0 0.9 0 0 k 50 10 20 20 re f
 BT /F1 8 Tf (Kilo) Tj ET
 '''
+# G21 #10: a path that is ALSO a clipping path (`W`/`W*` between its construction and its paint). A
+# move-paths wrap `q cm ... Q` would end the clip at the inserted `Q`, so every later object would be
+# drawn unclipped. The blue rect is drawn INSIDE the `re W f` clip; the yellow one is outside both.
+CLIP = b'''q
+1 0 0 rg
+10 10 50 50 re W f
+0 0 1 rg
+0 0 200 200 re f
+Q
+q
+0 1 0 rg
+10 150 20 20 re W* f
+Q
+0.5 0.5 0 rg
+220 10 20 20 re f
+'''
 
 # Selectors, in PDF page space (y up). The bbox includes Bezier control points.
 BAND_A = {'paint': 'fill', 'colour': ['k', 0.2, 0.04, 0.4, 0], 'bbox': [120, 50, 200, 70]}   # w < 0
@@ -117,6 +133,9 @@ SLANT = {'paint': 'stroke', 'colour': ['K', 0, 0, 0, 1], 'bbox': [250, 100, 270,
 FILLINE = {'paint': 'fill', 'colour': ['k', 0, 1, 0, 0], 'bbox': [250, 20, 270, 20]}
 ROT = {'paint': 'fill', 'colour': ['rg', 0.3, 0.3, 0.3], 'bbox': [95, 100, 100, 110]}
 DUPSEL = {'paint': 'fill', 'colour': ['k', 0.9, 0, 0, 0], 'bbox': [10, 10, 30, 30]}
+CLIPPER = {'paint': 'fill', 'colour': ['rg', 1, 0, 0], 'bbox': [10, 10, 60, 60]}       # re W f
+CLIPPER_STAR = {'paint': 'fill', 'colour': ['rg', 0, 1, 0], 'bbox': [10, 150, 30, 170]}  # re W* f
+INSIDE = {'paint': 'fill', 'colour': ['rg', 0, 0, 1], 'bbox': [0, 0, 200, 200]}          # in the clip
 UNIQUE = {'paint': 'fill', 'colour': ['k', 0, 0.9, 0, 0], 'bbox': [50, 10, 70, 30]}
 
 
@@ -205,6 +224,7 @@ if AE is not None:
 TD = Path(tempfile.mkdtemp(prefix='t-artworkedits-'))
 MAIN_PDF = synth(TD / 'main.pdf')
 DUP_PDF = synth(TD / 'dup.pdf', DUP)
+CLIP_PDF = synth(TD / 'clip.pdf', CLIP)
 BASE = plumb(MAIN_PDF)
 check('0c PRECONDITION pdfplumber reads the fixture: 3 rects, the circle curve, every word',
       len(BASE['rects']) == 3 and len(BASE['curves']) >= 1
@@ -402,6 +422,20 @@ if AE is not None:
             [{'op': 'move-edge', 'edge': 'left', 'dx': -1, 'select': [SHAFT]}], 'not-a-rect')
     refuses('AE-6g a text line with no positioning operator',
             [{'op': 'move-text', 'dx': 1, 'select': [line('Kilo', 0, 0)]}], 'no-positioning-op', DUP_PDF)
+    # G21 #10: move-paths on a clipping path is refused by name - its q/Q wrap would pop the clip.
+    refuses('AE-12 move-paths on a path that is also a clip (`re W f`)',
+            [{'op': 'move-paths', 'dx': 100, 'select': [CLIPPER]}], 'clip-path', CLIP_PDF, 'W')
+    refuses('AE-12b move-paths on a path that is also a clip (`re W* f`)',
+            [{'op': 'move-paths', 'dx': 100, 'select': [CLIPPER_STAR]}], 'clip-path', CLIP_PDF, 'W*')
+    p, s = edited([{'op': 'move-paths', 'dx': 5, 'select': [INSIDE]}], CLIP_PDF)
+    check('AE-12c CONTROL move-paths on an object drawn INSIDE the clip applies (its own wrap pops no clip)',
+          isinstance(s, list) and s[0]['selected'] == 1, f'{s!r}')
+    _, inv12 = raises(lambda: AE.inventory_report(CLIP_PDF))
+    clip_recs = [q for q in (inv12 or {}).get('paths', []) if q.get('select') is None]
+    check('AE-12d --inventory prints both clip paths with no selector and a `why` naming the clip; the '
+          'other two are ready selectors',
+          isinstance(inv12, dict) and len(inv12.get('paths', [])) == 4 and len(clip_recs) == 2
+          and all('clip' in q.get('why', '') for q in clip_recs), f'{inv12!r}'[:400])
 
     # Field-level refusals: for_figure validates the entry before any PDF is opened.
     def field(label, entry, want_reason, needle=''):
@@ -417,6 +451,9 @@ if AE is not None:
     field('AE-6h2 an empty entry', [], 'entry-not-list')
     field('AE-6i an op that is not an object', ['move-paths'], 'op-not-object')
     field('AE-6j an unknown op', [dict(MP, op='move-all')], 'unknown-op')
+    # G21 #11/#58: a non-string op is refused by name (a list or dict op is unhashable: no bare TypeError).
+    field('AE-6j2 an op that is a list', [dict(MP, op=['move-paths'])], 'unknown-op')
+    field('AE-6j3 an op that is an object', [dict(MP, op={'move-paths': 1})], 'unknown-op')
     field('AE-6k an unknown field', [dict(MP, colour='red')], 'unknown-field')
     field('AE-6k2 move-line-end takes `dx` only: `to` is an unknown field', [dict(ML, to=214)],
           'unknown-field', "'to'")

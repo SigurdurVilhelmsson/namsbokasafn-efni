@@ -90,7 +90,8 @@ export function artworkEditsProblems(table) {
     }
     entry.forEach((op, i) => {
       const w = `${where}[${i}]`;
-      if (!isPlainObject(op) || !Object.hasOwn(AE_OPS, op.op)) {
+      // typeof first (G21 #58): Object.hasOwn coerces ['move-paths'] to 'move-paths', which Python refuses.
+      if (!isPlainObject(op) || typeof op.op !== 'string' || !Object.hasOwn(AE_OPS, op.op)) {
         problems.push(
           `${w} must be an object whose op is one of ${Object.keys(AE_OPS).join(', ')}`
         );
