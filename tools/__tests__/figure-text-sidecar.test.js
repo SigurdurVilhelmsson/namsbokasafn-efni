@@ -429,6 +429,8 @@ describe("blockValueProblems — R-5a explicit line breaks (§C140 '6' T10b)", (
     expect(owner.keyInkLineCount('more is| ')).toBe(1);
     expect(owner.keyInkLineCount('a||b')).toBe(3);
     expect(owner.keyInkLineCount(' ')).toBe(1); // nothing but spaces: the whole key is one line
+    // G21 F4 n63: the all-spaces fallback counts RAW segments; ' ' alone cannot tell it from `|| 1`
+    expect(owner.keyInkLineCount(' | ')).toBe(2);
     expect(owner.keyInkSegments('more is| ')).toEqual(['more is']);
   });
 

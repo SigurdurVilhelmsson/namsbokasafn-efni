@@ -191,7 +191,7 @@ describe('a multi-line block is edited in a textarea (R-5a)', () => {
     expect(end).toBeGreaterThan(start);
     const client = new Function(`${src.slice(start, end + 4)}; return figureKeyInkLineCount;`)();
     const booksRoot = path.join(__dirname, '..', '..', 'books');
-    const keys = ['Celsius', 'pure water|blood', 'more is| ', 'a||b', ' ', '|', 'a| |b|  '];
+    const keys = ['Celsius', 'pure water|blood', 'more is| ', 'a||b', ' ', ' | ', '|', 'a| |b|  '];
     for (const book of fs.readdirSync(booksRoot)) {
       const dir = path.join(booksRoot, book, 'figure-text');
       if (!fs.existsSync(dir)) continue;
@@ -207,6 +207,9 @@ describe('a multi-line block is edited in a textarea (R-5a)', () => {
     // control: the predicate separates the one committed '|' key that is a single line
     expect(client('more is| ')).toBe(1);
     expect(client('pure water|blood')).toBe(2);
+    // G21 F4 n63: the all-spaces fallback counts raw segments, pinned on the client by itself too,
+    // so a `|| 1` planted in BOTH copies cannot pass the parity check above by agreeing
+    expect(client(' | ')).toBe(2);
   });
 });
 
