@@ -375,6 +375,22 @@ describe("blockValueProblems — R-5a explicit line breaks (§C140 '6' T10b)", (
     expect(codes('a|b', 'x\ny­z')).toEqual([]); // control: a visible line carrying a soft hyphen
   });
 
+  // G21 #16 (F4 n16): the invisible-line rule ran only inside the LF branch, so a value made ONLY of
+  // invisible characters passed on any key — and the route's `!isText.trim()` guard keeps U+200B too.
+  // Such a value erases its label. Refused on every key now (a deliberate divergence from
+  // figtext.explicit_lines, which lays a no-LF value out as before; the corpus held 0 of 2,717).
+  it('V11 (G21 #16): a value of only invisible characters is refused invisible-line on every key', () => {
+    expect(codes('Celsius', '\u200B')).toEqual(['invisible-line']);
+    expect(codes('pure water|blood', '\u200B \u200B')).toEqual(['invisible-line']); // spaces set aside, as V8b
+    expect(codes('Celsius', '\u00AD')).toEqual(['invisible-line']); // U+00AD alone
+    expect(owner.blockValueProblems('Celsius', '\u200B')[0]).toMatch(/no visible character/);
+  });
+
+  it('V11 CONTROL: a visible single-line value carrying an invisible character is accepted', () => {
+    expect(owner.blockValueProblems('Celsius', 'Cel\u200Bsíus')).toEqual([]);
+    expect(owner.blockValueProblems('Celsius', 'x')).toEqual([]);
+  });
+
   it("V9: R-17 — a spaces-only key segment is no line, so 'more is| ' takes no break", () => {
     expect(codes('more is| ', 'minna er\nlágt')).toEqual(['line-count']);
     expect(owner.blockValueProblems('more is| ', 'minna er lágt')).toEqual([]); // control

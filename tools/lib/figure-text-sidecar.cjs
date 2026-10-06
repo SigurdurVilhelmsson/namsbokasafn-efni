@@ -220,10 +220,14 @@ function keyInkLineCount(key) {
  *   edge-space       a line with leading or trailing whitespace         (LF values only)
  *   invisible-line   a line of only INVISIBLE_LINE characters once its spaces (\p{Zs}) are set
  *                    aside: U+200B U+0020 U+200B draws nothing too (G21, F2 n3; figtext.explicit_lines
- *                    judges it alike)                                     (LF values only)
+ *                    judges it alike). ALSO a whole no-LF value of that shape, on ANY key (G21 #16):
+ *                    it would erase its label, and the route's trim() guard keeps U+200B
  *   line-count       more lines than keyInkLineCount(key): a single-line key takes no LF
  * 🔴 A SECOND IMPLEMENTATION of figtext.explicit_lines' refusals (the composer's, which also refuses
- * `arc`, `break-at-joint` and `run-exact` and checks the exact visual count; none is visible here). `trim`
+ * `arc`, `break-at-joint` and `run-exact` and checks the exact visual count; none is visible here),
+ * with ONE DELIBERATE DIVERGENCE: the whole-value invisible-line refusal above is this boundary's
+ * alone — the composer lays out a no-LF value as before, byte for byte, so a sidecar written before
+ * this rule (the committed corpus held 0 of 2,717 on 2026-10-06) still composes. `trim`
  * and Python's `str.strip` differ at the edges of Unicode whitespace (U+FEFF is trimmed here, not
  * there; U+001C-U+001F the reverse), so the two sides can disagree on a value carrying one of those
  * at a line's edge. Accepted gap (D14): a key with more '|' lines than VISUAL lines (the ㉑ merges)
@@ -239,7 +243,14 @@ function blockValueProblems(key, value) {
   if (v.includes('\r')) {
     problems.push('carriage-return: the value holds a CR (U+000D); a line break is an LF only');
   }
-  if (!v.includes('\n')) return problems;
+  if (!v.includes('\n')) {
+    // G21 #16: a value of ONLY invisible characters erases its label on any key, and the route's
+    // `!isText.trim()` guard cannot see it (trim keeps U+200B). Refused here, LF or not.
+    if (INVISIBLE_LINE.test(v.replace(/\p{Zs}/gu, ''))) {
+      problems.push('invisible-line: the value has no visible character');
+    }
+    return problems;
+  }
   const lines = v.split('\n');
   lines.forEach((l, i) => {
     const n = i + 1;
