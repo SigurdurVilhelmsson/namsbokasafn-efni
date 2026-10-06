@@ -778,6 +778,16 @@ describe('POST /figures/:basename/block — explicit line breaks (R-5a)', () => 
     expect(after.body.figures[0].blocks[TWO_LINE]).toBe('X\nY');
   });
 
+  it('R1b CONTROL (G21 F3 #56): a single-line value with a trailing space is saved — the edge rules are LF-only', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: 'Celsius', isText: 'Selsíus ' } })
+    );
+    expect(out.status).toBe(200);
+    expect(out.body).toEqual({ ok: true });
+    expect(rows()).toBe(1);
+  });
+
   it('R2: an LF on a single-line key is a 400 naming line-count, and nothing is written', async () => {
     const out = await invoke(
       postBlockH,

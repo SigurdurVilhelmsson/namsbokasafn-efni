@@ -328,6 +328,13 @@ describe("blockValueProblems — R-5a explicit line breaks (§C140 '6' T10b)", (
     expect(owner.blockValueProblems('pure water|blood', 'hreint vatn blóð')).toEqual([]);
   });
 
+  it('V1b CONTROL (G21 F3 #56): a single-line value with edge whitespace is accepted — the edge rules are LF-only', () => {
+    // figtext.explicit_lines returns (None, None) for a value with no LF: laid out as before, byte for byte.
+    expect(owner.blockValueProblems('Celsius', ' Selsíus ')).toEqual([]);
+    expect(owner.blockValueProblems('Celsius', 'Selsíus ')).toEqual([]);
+    expect(owner.blockValueProblems('pure water|blood', ' hreint vatn blóð')).toEqual([]);
+  });
+
   it("V2: phscale's planned edit — two lines on a two-line key — is accepted", () => {
     expect(owner.blockValueProblems('pure water|blood', 'hreint vatn\nblóð')).toEqual([]);
   });

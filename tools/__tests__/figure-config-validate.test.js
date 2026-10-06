@@ -1079,6 +1079,15 @@ describe("validateFigureConfig — anchorExclusions (§C140 '6', R-20)", () => {
       /anchorExclusions\.CNX_Other\[Small contact area,\|weakest attraction\] needs a reason of over 40 characters/,
     ],
     [
+      // G21 F3 #64: the boundary itself ('R-20' above is 4 characters); 41 passes in the CONTROLs below.
+      'a reason of exactly 40 characters',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = 'x'.repeat(40);
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Small contact area,\|weakest attraction\] needs a reason of over 40 characters/,
+    ],
+    [
       'a reason that is not a string',
       (c) => {
         anchorOf(c)[ANCHOR_KEY] = { reason: R };
@@ -1151,6 +1160,12 @@ describe("validateFigureConfig — anchorExclusions (§C140 '6', R-20)", () => {
       'a figure that is also pinned (a pinned figure IS composed)',
       (c) => {
         c.anchorExclusions = { CNX_Pin: { [ANCHOR_KEY]: R } };
+      },
+    ],
+    [
+      'a reason of exactly 41 characters (G21 F3 #64: the floor is OVER 40)',
+      (c) => {
+        c.anchorExclusions = { CNX_Pin: { [ANCHOR_KEY]: 'x'.repeat(41) } };
       },
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
@@ -1319,6 +1334,25 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
       /artworkEdits\.CNX_Other\[1\] needs exactly one of to \/ dx/,
     ],
     [
+      // G21 F3 #65: the move-edge branch has its OWN numeric check (op.to ?? op.dx); the two cases below
+      // reach it, where the move-paths / move-line-end cases further down reach the other branch.
+      'a move-edge whose to is a string',
+      (c) => {
+        aeOf(c, 1).to = '110';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.to\/dx must be a number/,
+    ],
+    [
+      'a move-edge whose dx is a boolean',
+      (c) => {
+        delete aeOf(c, 1).to;
+        aeOf(c, 1).dx = true;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.to\/dx must be a number/,
+    ],
+    [
       'a dx that is not a number',
       (c) => {
         aeOf(c, 0).dx = '-15';
@@ -1479,6 +1513,15 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
       'a figure that is also pinned (a pinned figure IS composed; its selectors match the pinned artwork)',
       (c) => {
         c.artworkEdits = { CNX_Pin: aeOps() };
+      },
+    ],
+    [
+      // G21 F3 #57: x0 == x1 is a vertical line, a valid selector (Python's _check_bbox agrees:
+      // test_artworkedits.py AE-6n2). Only x0 > x1 is refused.
+      'a move-paths selector for a vertical line (x0 == x1)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+        c.artworkEdits.CNX_Pin[0].select = [{ ...AE_SHAFT, bbox: [5, 0, 5, 10] }];
       },
     ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
