@@ -56,6 +56,9 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
   `C*` arm is a CONTROL - it passes before and after M5 - pinning what each rule must NOT do. All M5
   assertions read styles through `lab()`, which classifies by `is_script_style` and the italic flag
   rather than by an exact tuple, and checks FS.JOINT first.
+* G21 review-fix round (F2): R4b - R4 placing a leading italic must not cost the next stretch its anchor
+  (`Ka=1,8×10–5`, red before the fix: `a` absent); R7d - R7 styling an interior base stretch leaves no miss
+  for it (`ΔHvap` -> `ΔHgufun`, red before: `H` absent).
 """
 import sys
 from pathlib import Path
@@ -917,7 +920,34 @@ def m5_c7():
     check('C7b control: two words starting with the base -> not placed', '_' not in m, repr((m, ms)))
 
 
-for _f in (m5_c1, m5_r2, m5_c2, m5_r3, m5_c3, m5_r4, m5_c4, m5_r5, m5_r6, m5_c6, m5_r7, m5_c7):
+def xtok(tokens, value):
+    """transfer on HAND-BUILT tokens ({'text', 'mask'} in tok()'s alphabet, each style a real SourceStyle):
+    (the lab() mask of fmt, [(stretch, reason)] of the misses)."""
+    toks = [{'text': t['text'],
+             'styles': [None if s is None else FS.SourceStyle(*s) for s in tok(t['text'], t['mask'])['styles']]}
+            for t in tokens]
+    fmt, ms = FS.transfer(toks, value)
+    return lmask(fmt), [(m['stretch'], m['reason']) for m in ms]
+
+
+KA = {'text': 'Ka=1.8×10–5', 'mask': 'iv.......^^'}       # K italic, a subscript, –5 superscript
+DHVAP = {'text': 'ΔHvap', 'mask': '.ivvv'}                  # plain Δ, italic H, subscript vap
+
+
+def m5_g21():
+    """Review-fix round G21 (F2 n6, n8): R4's placement must not cost the NEXT stretch its anchor, and R7's
+    placement must not leave a miss for a base stretch it has just styled."""
+    m, ms = xtok([KA], 'Ka=1,8×10–5')
+    check('R4b (G21 #6) a leading italic K plus its glued subscript a on an UNCLEAN value (Icelandic decimal '
+          'comma): R4 places K AND the a stretch keeps its anchor - both styled, no miss',
+          m == 'i_.......^^' and ms == [], repr((m, ms)))
+    m, ms = xtok([DHVAP], 'ΔHgufun er 40 kJ')
+    check('R7d (G21 #8) an interior italic base stretch styled by R7 (ΔH + gufun) names no miss: the drawing has '
+          'H italic and gufun subscript, so `H absent` would contradict it',
+          m == '.i_____.........' and ms == [], repr((m, ms)))
+
+
+for _f in (m5_c1, m5_r2, m5_c2, m5_r3, m5_c3, m5_r4, m5_c4, m5_r5, m5_r6, m5_c6, m5_r7, m5_c7, m5_g21):
     attempt(_f.__name__, _f)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))

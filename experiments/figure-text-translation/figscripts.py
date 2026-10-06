@@ -483,8 +483,8 @@ def transfer(tokens, value):
     * R7 - a token that is a base plus ONE trailing letter script stretch (>= 2 letters, no script
       in the base), not placed otherwise, takes the unique unconsumed value WORD (trailing `,.;:!?`
       trimmed) that starts with the base and continues with letters only: the base's styles, then
-      the script style to the word's end (`qout` -> `qút`). Placed, the misses for its trailing
-      stretch and a leading `no-base` are dropped.
+      the script style to the word's end (`qout` -> `qút`). Placed, every per-stretch miss except
+      `partial` is dropped: the whole word is styled, an interior base stretch (`H` in `ΔHvap`) included.
     Misses: `{'token', 'stretch', 'reason', 'candidates'}`."""
     fmt = [None] * len(value)
     taken = [False] * len(value)
@@ -520,7 +520,10 @@ def transfer(tokens, value):
             needle = tok[s_ - 1] + stretch
             right = tok[e_] if e_ < n else ''
             m = len(needle)
-            free = [i for i in _occ(value, needle) if _free(taken, i, m)]
+            # Only the STRETCH positions must be free: the anchor (needle[0]) is never consumed by this placement, so
+            # it may already be taken - by R4 placing the leading stretch it anchors on (`Ka`: K italic, then `a`
+            # subscript; review-fix round G21 #6), or by an adjacent stretch placed just before.
+            free = [i for i in _occ(value, needle) if _free(taken, i + 1, m - 1)]
             cands = [i for i in free
                      if i + m >= len(value) or not value[i + m].isalnum() or value[i + m] == right]
             if len(cands) != 1:
@@ -627,8 +630,11 @@ def transfer(tokens, value):
             continue
         any_, ms, placed_last = stretch_fallback(tok, sts, n)
         if tail(tok, sts, n, placed_last):
-            a = _stretches(sts)[-1][0]
-            ms = [x for x in ms if not (x[0] == tok[a:] or (x[1] == 'no-base' and tok.startswith(x[0])))]
+            # R7 styled the WHOLE word - every base stretch with its own style, the tail with the script - so a
+            # `no-base` / `absent` / `ambiguous` miss for any stretch of this token now contradicts the drawing
+            # (an interior base stretch, `H` in `ΔHvap`, included: G21 #8). A `partial` names unformatted glued
+            # repeats of a stretch the fallback placed elsewhere, which R7 did not touch, so it is kept.
+            ms = [x for x in ms if x[1] == 'partial']
         for stretch, reason, c in ms:
             misses.append(_miss(tok, stretch, reason, c))
     return fmt, misses
