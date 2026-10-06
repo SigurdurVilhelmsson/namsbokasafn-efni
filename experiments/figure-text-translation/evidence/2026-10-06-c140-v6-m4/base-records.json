@@ -1,0 +1,794 @@
+{
+"CNX_Chem_05_02_FoodLabel": {
+"7": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 259.89799999999997,
+"R": 365.866,
+"D": 142.054,
+"U": 174.764,
+"src_left_margin": 28.098600000000033,
+"src_right_margin": 47.676399999999944,
+"src_up_margin": 0.5687000000000069,
+"src_down_margin": 27.441299999999984,
+"align": "center",
+"align_why": "cell-single-margins(ratio 1.70)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 5.0,
+"starts": [
+287.9966
+],
+"ends": [
+318.18960000000004
+],
+"projs": [
+170.5453
+]
+},
+"lead": 6.109999999999999,
+"top": 170.5453,
+"align": "center",
+"n": 1
+},
+"8": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 259.89799999999997,
+"R": 365.866,
+"D": 142.054,
+"U": 174.764,
+"src_left_margin": 27.973600000000033,
+"src_right_margin": 36.59440000000001,
+"src_up_margin": 20.788700000000006,
+"src_down_margin": 0.4462999999999795,
+"align": "left",
+"align_why": "multi(margin 3.20)->left"
+},
+"cues": {
+"n_src": 2,
+"sz0": 5.0,
+"starts": [
+287.8716,
+287.8716
+],
+"ends": [
+329.2716,
+322.87660000000005
+],
+"projs": [
+150.3253,
+143.5503
+]
+},
+"lead": 6.109999999999999,
+"top": 149.9928,
+"align": "left",
+"n": 2
+},
+"11": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 259.89799999999997,
+"R": 365.866,
+"D": 142.054,
+"U": 174.764,
+"src_left_margin": 34.17860000000002,
+"src_right_margin": 34.544399999999996,
+"src_up_margin": 7.233699999999999,
+"src_down_margin": 20.776299999999992,
+"align": "center",
+"align_why": "cell-single-margins(ratio 1.01)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 5.0,
+"starts": [
+294.0766
+],
+"ends": [
+331.3216
+],
+"projs": [
+163.8803
+]
+},
+"lead": 6.109999999999999,
+"top": 163.8803,
+"align": "center",
+"n": 1
+},
+"16": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 287.3342,
+"R": 377.0342,
+"D": 21.675100000000015,
+"U": 222.9771,
+"src_left_margin": 0.7436000000000149,
+"src_right_margin": 55.164399999999944,
+"src_up_margin": 169.4677,
+"src_down_margin": 0.5742999999999867,
+"align": "left",
+"align_why": "multi(margin 10.12)->left"
+},
+"cues": {
+"n_src": 6,
+"sz0": 4.0,
+"starts": [
+288.0778,
+288.0778,
+288.0778,
+288.0778,
+288.0778,
+288.0778
+],
+"ends": [
+303.4178,
+303.97380000000004,
+308.30580000000003,
+301.6378,
+321.86980000000005,
+313.9698
+],
+"projs": [
+50.5894,
+45.0894,
+39.5894,
+34.0894,
+28.5894,
+23.0894
+]
+},
+"lead": 4.888,
+"top": 49.0594,
+"align": "left",
+"n": 6
+},
+"40": {
+"container": {
+"cls": "open",
+"why": "no-container (refused: area, rules-not-spanning)",
+"FL": 258.286,
+"FR": 286.421,
+"room_up": 7.25,
+"room_down": 78.25,
+"free_left_clear": 2.0,
+"free_right_clear": 4.75,
+"align": "center",
+"align_why": "single-cue(L1C1R1)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 5.0,
+"starts": [
+260.286
+],
+"ends": [
+281.671
+],
+"projs": [
+79.3672
+]
+},
+"lead": 6.109999999999999,
+"top": 79.3672,
+"align": "center",
+"n": 1
+},
+"45": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 348.538,
+"R": 415.035,
+"D": 84.58,
+"U": 180.679,
+"src_left_margin": 37.07299999999998,
+"src_right_margin": 7.63900000000001,
+"src_up_margin": 64.93679999999999,
+"src_down_margin": 20.96220000000001,
+"align": "left",
+"align_why": "multi(margin 8.20)->left"
+},
+"cues": {
+"n_src": 2,
+"sz0": 5.0,
+"starts": [
+389.611,
+385.611
+],
+"ends": [
+407.396,
+387.001
+],
+"projs": [
+112.0922,
+106.5922
+]
+},
+"lead": 6.109999999999999,
+"top": 112.3972,
+"align": "left",
+"n": 2
+}
+},
+"CNX_Chem_14_03_strong": {
+"9": {
+"container": {
+"cls": "cell",
+"why": "rules",
+"L": 51.73900000000003,
+"R": 167.5752,
+"D": 87.6343,
+"U": 107.6343,
+"src_left_margin": 42.86309999999996,
+"src_right_margin": 5.446100000000001,
+"src_up_margin": 6.726300000000009,
+"src_down_margin": 4.813699999999997,
+"align": "center",
+"align_why": "cell-single-margins(ratio 7.87)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+94.6021
+],
+"ends": [
+162.1291
+],
+"projs": [
+94.338
+]
+},
+"lead": 10.998,
+"top": 94.338,
+"align": "center",
+"n": 1
+}
+},
+"CNX_Chem_00_AA_PeriodicPU_img": {
+"221": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 265.855,
+"R": 288.502,
+"D": 223.979,
+"U": 246.627,
+"src_left_margin": 5.137900000000002,
+"src_right_margin": 5.281099999999981,
+"src_up_margin": 18.910800000000023,
+"src_down_margin": -0.022800000000017917,
+"align": "center",
+"align_why": "cell-single-margins(ratio 1.03)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 4.0,
+"starts": [
+270.9929
+],
+"ends": [
+283.22090000000003
+],
+"projs": [
+224.7962
+]
+},
+"lead": 4.888,
+"top": 224.7962,
+"align": "center",
+"n": 1
+},
+"407": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 213.06100000000004,
+"R": 235.70900000000003,
+"D": 111.99100000000001,
+"U": 134.635,
+"src_left_margin": 2.544599999999974,
+"src_right_margin": 2.5474000000000103,
+"src_up_margin": 19.01809999999999,
+"src_down_margin": -0.13410000000001787,
+"align": "center",
+"align_why": "cell-single-margins(ratio 1.00)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 4.0,
+"starts": [
+215.6056
+],
+"ends": [
+233.16160000000002
+],
+"projs": [
+112.6969
+]
+},
+"lead": 4.888,
+"top": 112.6969,
+"align": "center",
+"n": 1
+}
+},
+"CNX_Chem_20_01_FracDistil": {
+"2": {
+"container": {
+"cls": "open",
+"why": "no-container",
+"FL": 325.7313,
+"FR": 443.7833,
+"room_up": 1.0,
+"room_down": 157.25,
+"free_left_clear": 28.75,
+"free_right_clear": 16.75,
+"align": "left",
+"align_why": "multi(margin 9.26)->left"
+},
+"cues": {
+"n_src": 5,
+"sz0": 9.0,
+"starts": [
+354.4813,
+354.4813,
+354.4813,
+354.4813,
+354.4813
+],
+"ends": [
+422.50829999999996,
+427.0333,
+408.5043,
+408.99429999999995,
+412.0073
+],
+"projs": [
+304.3914,
+295.1824,
+285.9734,
+276.7644,
+267.5555
+]
+},
+"lead": 10.998,
+"top": 307.96944999999994,
+"align": "left",
+"n": 5
+}
+},
+"CNX_Chem_02_03_MassSpec": {
+"4": {
+"container": {
+"cls": "open",
+"why": "no-container",
+"FL": 0.1594000000000051,
+"FR": 230.1874,
+"room_up": 4.75,
+"room_down": 4.0,
+"free_left_clear": 159.0,
+"free_right_clear": 9.0,
+"align": "left",
+"align_why": "multi(margin 11.76)->left"
+},
+"cues": {
+"n_src": 3,
+"sz0": 9.0,
+"starts": [
+159.1594,
+159.1594,
+159.1594
+],
+"ends": [
+214.68040000000002,
+221.1874,
+197.6704
+],
+"projs": [
+27.9041,
+16.9061,
+5.9081
+]
+},
+"lead": 10.998,
+"top": 27.9041,
+"align": "left",
+"n": 3
+}
+},
+"CNX_Chem_01_03_HazDiamond": {
+"2": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 232.96500000000003,
+"R": 390.85,
+"D": 222.484,
+"U": 297.624,
+"src_left_margin": 4.719599999999957,
+"src_right_margin": 3.8764000000000465,
+"src_up_margin": 3.04910000000001,
+"src_down_margin": 2.880899999999997,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 6,
+"sz0": 9.0,
+"starts": [
+237.6846,
+237.6846,
+237.6846,
+237.6846,
+237.6846,
+237.6846
+],
+"ends": [
+288.7056,
+293.8086,
+298.8126,
+386.9736,
+299.32259999999997,
+295.2036
+],
+"projs": [
+288.0049,
+275.8549,
+263.7049,
+251.5549,
+239.4049,
+227.2549
+]
+},
+"lead": 10.998,
+"top": 285.20900000000006,
+"align": "center",
+"n": 6
+},
+"3": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 251.32399999999998,
+"R": 300.275,
+"D": 123.663,
+"U": 135.624,
+"src_left_margin": 3.307600000000008,
+"src_right_margin": 3.127399999999966,
+"src_up_margin": 1.9150999999999954,
+"src_down_margin": 1.5859000000000094,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+254.6316
+],
+"ends": [
+297.1476
+],
+"projs": [
+127.1389
+]
+},
+"lead": 10.998,
+"top": 127.49849999999999,
+"align": "center",
+"n": 1
+},
+"4": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 268.19899999999996,
+"R": 403.19,
+"D": 59.674,
+"U": 122.663,
+"src_left_margin": 4.720600000000047,
+"src_right_margin": 3.190400000000011,
+"src_up_margin": 3.048099999999991,
+"src_down_margin": 2.880900000000004,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 5,
+"sz0": 9.0,
+"starts": [
+272.9196,
+272.9196,
+272.9196,
+272.9196,
+272.9196
+],
+"ends": [
+334.9566,
+399.9996,
+377.8056,
+352.9656,
+305.9406
+],
+"projs": [
+113.0449,
+100.8949,
+88.7449,
+76.5949,
+64.4449
+]
+},
+"lead": 10.998,
+"top": 110.82449999999999,
+"align": "center",
+"n": 5
+},
+"5": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 125.101,
+"R": 174.052,
+"D": 79.51899999999999,
+"U": 100.389,
+"src_left_margin": 7.310599999999994,
+"src_right_margin": 7.125399999999985,
+"src_up_margin": 2.914100000000005,
+"src_down_margin": 9.495900000000006,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+132.4116
+],
+"ends": [
+166.9266
+],
+"projs": [
+90.9049
+]
+},
+"lead": 10.998,
+"top": 87.61399999999999,
+"align": "center",
+"n": 1
+},
+"6": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 125.101,
+"R": 174.052,
+"D": 79.51899999999999,
+"U": 100.389,
+"src_left_margin": 10.064600000000013,
+"src_right_margin": 9.879399999999976,
+"src_up_margin": 11.824100000000001,
+"src_down_margin": 0.5859000000000094,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+135.1656
+],
+"ends": [
+164.17260000000002
+],
+"projs": [
+81.9949
+]
+},
+"lead": 10.998,
+"top": 87.61399999999999,
+"align": "center",
+"n": 1
+},
+"8": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 67.178,
+"R": 157.177,
+"D": 3.378,
+"U": 78.519,
+"src_left_margin": 31.886899999999997,
+"src_right_margin": 5.093099999999993,
+"src_up_margin": 3.049599999999998,
+"src_down_margin": 2.8814,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 6,
+"sz0": 9.0,
+"starts": [
+99.0649,
+99.0649,
+99.0649,
+99.0649,
+99.0649,
+99.0649
+],
+"ends": [
+132.0679,
+116.56989999999999,
+120.5659,
+137.5669,
+152.0839,
+146.08089999999999
+],
+"projs": [
+68.8994,
+56.7494,
+44.5994,
+32.4494,
+20.2994,
+8.1494
+]
+},
+"lead": 10.998,
+"top": 66.1035,
+"align": "center",
+"n": 6
+},
+"9": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 89.46100000000001,
+"R": 138.412,
+"D": 173.884,
+"U": 194.754,
+"src_left_margin": 10.809899999999985,
+"src_right_margin": 10.637100000000004,
+"src_up_margin": 2.914600000000007,
+"src_down_margin": 9.495400000000018,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+100.2709
+],
+"ends": [
+127.7749
+],
+"projs": [
+185.2694
+]
+},
+"lead": 10.998,
+"top": 181.97899999999998,
+"align": "center",
+"n": 1
+},
+"10": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 89.46100000000001,
+"R": 138.412,
+"D": 173.884,
+"U": 194.754,
+"src_left_margin": 10.062899999999985,
+"src_right_margin": 9.881100000000004,
+"src_up_margin": 11.824600000000004,
+"src_down_margin": 0.5854000000000212,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+99.5239
+],
+"ends": [
+128.5309
+],
+"projs": [
+176.3594
+]
+},
+"lead": 10.998,
+"top": 181.97899999999998,
+"align": "center",
+"n": 1
+},
+"11": {
+"container": {
+"cls": "box",
+"why": "stroked-closed",
+"L": 28.808999999999997,
+"R": 121.536,
+"D": 195.754,
+"U": 258.74399999999997,
+"src_left_margin": 4.7179,
+"src_right_margin": 6.973100000000002,
+"src_up_margin": 3.0495999999999697,
+"src_down_margin": 2.880400000000037,
+"align": "center",
+"align_why": "box->center (R2)"
+},
+"cues": {
+"n_src": 5,
+"sz0": 9.0,
+"starts": [
+33.5269,
+33.5269,
+33.5269,
+33.5269,
+33.5269
+],
+"ends": [
+69.0409,
+105.0589,
+84.5479,
+114.5629,
+104.5369
+],
+"projs": [
+249.1244,
+236.9744,
+224.8244,
+212.6744,
+200.5244
+]
+},
+"lead": 10.998,
+"top": 246.90499999999997,
+"align": "center",
+"n": 5
+},
+"12": {
+"container": {
+"cls": "cell",
+"why": "fill-rect",
+"L": 216.09000000000003,
+"R": 272.708,
+"D": 209.524,
+"U": 221.484,
+"src_left_margin": 4.560899999999975,
+"src_right_margin": 4.042100000000005,
+"src_up_margin": 2.9140000000000157,
+"src_down_margin": 0.5860000000000127,
+"align": "center",
+"align_why": "cell-single-margins(ratio 1.13)->center"
+},
+"cues": {
+"n_src": 1,
+"sz0": 9.0,
+"starts": [
+220.6509
+],
+"ends": [
+268.6659
+],
+"projs": [
+212.0
+]
+},
+"lead": 10.998,
+"top": 212.0,
+"align": "center",
+"n": 1
+}
+}
+}
