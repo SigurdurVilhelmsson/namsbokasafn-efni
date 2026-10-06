@@ -6,9 +6,10 @@
 Plain checks and a module-level `fails` list, like its siblings - there is no pytest in this tree.
 HP0-HP15, HP17 and HP18 are PURE: real runs from the committed evidence, a fake container (a thunk
 that counts its calls), a fake width (0.5 x size x ratio per character; HP18's own depends on the run's
-weight) and a fake has_glyph. HP16 adds the only non-pure inputs: a test-local cairo width (hint
+weight) and a fake has_glyph. HP16 adds non-pure inputs: a test-local cairo width (hint
 metrics off - compose.lin_advance's measure, copied) and the real figis cmap, against each block's REAL
-committed container. No file IO but one read of evidence/2026-10-03-c140-held/held-geometry.json;
+committed container. HP10c is the other non-pure arm: a REAL figcontainers.container_for (Pillow from
+pylibs), imported lazily so HP0 still sees heldplan's own imports only. No file IO but one read of evidence/2026-10-03-c140-held/held-geometry.json;
 nothing is spawned, nothing is drawn.
 
 Design: docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-a, D-b, D-c,
@@ -38,6 +39,12 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        and an equality check could not tell a drawn slice from a source slice), at the right offsets.
 * HP9  numloc: the localised source form counts as unchanged, and a changed line is never localised.
 * HP10 a box with a multi-line block refuses `box-multiline`; a one-line block in it is accepted.
+       HP10c (§C140 '6', M7; ruling R-2a = C) a box that holds ANOTHER block's source line is a SHARED
+       box, laid out on the cell path (which reads the source baselines), so the same 2-visual-line
+       amide1 block in a planted stroked rect beside amide1 b1 is PLANNED, not refused; its pair, the
+       same rect holding the block alone, is still refused `box-multiline` (a CONTROL). Red before M7
+       (container_for called that box a box). The container is the REAL figcontainers.container_for
+       on a planted page and a blank Pillow image, imported lazily inside the arm as HP16 imports cairo.
 * HP11 the acceptance predicate, ONE KILLER PER CLAUSE: (a) buffer with a long sentinel (the design's
        arm) and (e) a cell wrap to 2 lines at sz0, step 'fit' - only `len(lines) == 1` refuses it;
        (b) an open shrink (step iii-anchor, which the step clause catches too) and (f) a CELL shrink,
@@ -402,6 +409,30 @@ def hp10():
           p.changed == [0] and p.lines[0][1]['step'] == 'fit' and p.lines[0][1]['cls'] == 'box')
 
 
+def hp10c():
+    sys.path.insert(0, str(HERE / 'pylibs'))
+    import math
+    from PIL import Image
+    import figcontainers as FC
+    pw, ph = GEOM['figures']['CNX_Chem_20_04_amide1_img']['page']
+    rect = {'object_type': 'rect', 'x0': 50.0, 'y0': 65.0, 'x1': 170.0, 'y1': 110.0, 'stroke': True,
+            'fill': False, 'linewidth': 1.0, 'path': [], 'pts': []}     # holds b0's two lines AND b1's one
+    pg = {'width': pw, 'height': ph, 'bbox': (0.0, 0.0, pw, ph), 'rects': [rect], 'curves': [], 'lines': []}
+    dark = Image.new('L', (math.ceil(pw * FC.S), math.ceil(ph * FC.S)), 255)
+    alone = FC.container_for(0, [AM0], pg, dark, ph)
+    e = refused(lambda: plan(AM0, 'C\nQZX R', AM_F, container=alone))
+    check('HP10c-pre CONTROL the planted rect holding the 2-visual-line block ALONE is a box and refuses '
+          'box-multiline', alone['cls'] == 'box' and e is not None and e.reason == 'box-multiline'
+          and e.detail == {'visual': 2}, f"{alone['cls']} {alone['why']} / {why(e)}")
+    shared = FC.container_for(0, [AM0, AM1], pg, dark, ph)
+    check('HP10c-shape the same rect with b1\'s line inside it is a SHARED box (cell, why ends +shared)',
+          shared['cls'] == 'cell' and shared['why'].endswith('+shared'), f"{shared['cls']} {shared['why']}")
+    th = Thunk(shared)
+    e = refused(lambda: plan(AM0, 'C\nQZX R', AM_F, container=th))
+    check('HP10c a 2-visual-line block in a SHARED box is planned, not refused box-multiline',
+          e is None and th.calls == 1, why(e))
+
+
 def _stubbed(fn, edit):
     """Run fn with figlayout.decide replaced by one that edits the REAL layout; always restored."""
     real = FL.decide
@@ -466,6 +497,7 @@ def hp17():
 
 
 attempt('HP10', hp10)
+attempt('HP10c', hp10c)
 attempt('HP11', hp11)
 attempt('HP17', hp17)
 

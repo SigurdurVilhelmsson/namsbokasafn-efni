@@ -5,6 +5,15 @@ figlayout.decide() can choose a wrap budget, an anchor and a size:
 
   box   a single closed path with a visible stroke encloses the label (a schematic box).
         Every line is centred in it (ruling R2).
+        SHARED BOX (§C140 '6', M7): when ANOTHER block's source line sits inside that box too (a
+        heading over its body, a table cell holding several labels, a panel frame), R2's box centre
+        would print every label on the same spot. Such a box is laid out on the CELL path instead:
+        each label keeps its own source position (vertical centre, clamped inside the box) and is
+        centred on its OWN source centre (SHARED_BOX_ALIGN = 'center', the lines stay centred as
+        R2 wants) or keeps its source alignment (SHARED_BOX_ALIGN = 'source', R3). `why` carries
+        '+shared'. SHARED_BOX_ALIGN = None restores R2 for every box. 'center' is [USER]'s ruling
+        R-2a = C (2026-10-05; record -> the campaign register, §C140). A box holding one label alone
+        keeps R2.
   cell  a table cell: the label is bounded on all four sides by rule segments that do not form
         one closed path, or it sits on a fill-only rect (a label patch). The source alignment is
         kept (ruling R3).
@@ -66,6 +75,8 @@ EDGE = 0.25               # a candidate side within this of the page edge is not
 MIN_RULE = 1.0            # every container side is pulled in by max(linewidth, MIN_RULE)/2
 RULE_THIN = 1.0           # a segment / rect thinner than this (pt) is a rule
 ROT_SNAP = 0.5            # box/cell only when rot is within this of a multiple of 90 degrees
+SHARED_ROT = 0.5          # another block shares a box only when its rotation is within this (degrees)
+SHARED_BOX_ALIGN = 'center'   # 'center' | 'source' | None - see SHARED BOX in the module docstring
 
 # --- alignment -------------------------------------------------------------------------------
 SIBLING_TOL = 0.2         # a sibling edge coincides within this (pt) - MEASURED, see open_alignment()
@@ -584,6 +595,20 @@ def free_box(index, blocks, dark, page_h):
 # the per-block entry point
 # =============================================================================================
 
+def shares_box(index, blocks, L, R, D, U, rot):
+    """True when ANOTHER block whose rotation is within SHARED_ROT of `rot` has a source LINE frame
+    (line_frames, the frames neighbours already avoid) whose centre lies inside [L, R] x [D, U] - the
+    box's inner rect in this block's own (along, normal) frame. Kept, arc and laid-out blocks all
+    count: a kept formula under a translated heading is as overprinted as a translated body."""
+    for j, other in enumerate(blocks):
+        if j == index or abs(((other[0]['rot'] - rot) + 180.0) % 360.0 - 180.0) > SHARED_ROT:
+            continue
+        for fa0, fa1, fn0, fn1 in line_frames(other):
+            if L <= (fa0 + fa1) / 2 <= R and D <= (fn0 + fn1) / 2 <= U:
+                return True
+    return False
+
+
 def _container_for(index, blocks, page, dark, page_h):
     block = blocks[index]
     rot = block[0]['rot']
@@ -597,7 +622,14 @@ def _container_for(index, blocks, page, dark, page_h):
         c = {'cls': cls, 'why': why, 'L': L, 'R': R, 'D': D, 'U': U,
              'src_left_margin': a0 - L, 'src_right_margin': R - a1,
              'src_up_margin': U - n1, 'src_down_margin': n0 - D}
-        if cls == 'box':
+        if cls == 'box' and SHARED_BOX_ALIGN and shares_box(index, blocks, L, R, D, U, rot):
+            c['cls'], c['why'] = 'cell', why + '+shared'
+            if SHARED_BOX_ALIGN == 'source':
+                c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'],
+                                                           index, blocks)   # M4's A2v needs index and blocks
+            else:
+                c['align'], c['align_why'] = 'center', 'shared box->center on own source centre (R2)'
+        elif cls == 'box':
             c['align'], c['align_why'] = 'center', 'box->center (R2)'
         else:
             c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'],

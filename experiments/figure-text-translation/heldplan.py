@@ -38,7 +38,11 @@ THE GUARDS, IN THIS ORDER - each a HeldRefusal(reason, **detail), fatal for the 
   line-count {value, visual}   the value's line count differs from the block's visual line count
   no-change                    every line decodes as unchanged - the entry draws nothing ruled
   box-multiline {visual}       a box container and more than one visual line: decide's box branch
-                               centres the glyph box in the box and never reads the source baselines
+                               centres the glyph box in the box and never reads the source baselines.
+                               Only an UNSHARED box: a box that also holds another block's source
+                               line is a shared box, which figcontainers lays out on the cell path
+                               (cls 'cell', why '+shared') - that path reads the source baselines, so
+                               it is not refused here (§C140 '6', M7)
   container-error {why}        container detection raised (`why` starts 'error:')
 then for each CHANGED line, in line order:
   opens-styled {line}          the visual line's first run carries a style (a script or italic)
