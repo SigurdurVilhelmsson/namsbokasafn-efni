@@ -224,11 +224,10 @@ def compose_fixture(tmp, name, mutate, translations, extra_env=None):
     """prepare -> mutate(out) -> derive blocks -> compose. -> (out, blocks, entries, report, svg)"""
     out, extra, blocks, entries, tr = prepare_fixture(tmp, name, mutate, translations)
     c = run_compose(out, tr, extra_env)
-    check(f'{name}: PRECONDITION compose exits 0 and writes its report + SVG',
-          c.returncode == 0 and (out / 'compose-report.json').exists()
-          and (out / 'translated.svg').exists(),
+    ok = c.returncode == 0 and (out / 'compose-report.json').exists() and (out / 'translated.svg').exists()
+    check(f'{name}: PRECONDITION compose exits 0 and writes its report + SVG', ok,
           f'exit {c.returncode}: {c.stderr.strip()[-600:]}')
-    if fails:
+    if not ok:   # only THIS compose's failure stops the file: an earlier red section must not hide a later one
         finish()
     report = json.loads((out / 'compose-report.json').read_text())
     return out, extra, blocks, entries, report, (out / 'translated.svg').read_text()
@@ -583,9 +582,8 @@ def plant_stix6(out_dir):
     (out_dir / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
 
 
-# Self-contained: compose_fixture() stops the file on ANY earlier failure, so this section prepares and composes
-# itself and gates its later checks on ITS OWN preconditions only - its verdicts are then visible even when an
-# earlier section is red (as on the pre-M6 composer, where S1-S4 are).
+# Self-contained: this section prepares and composes itself and gates its later checks on ITS OWN preconditions
+# only, and so does the S section after it - so on the pre-M6 composer the M6 reds and S1-S4's reds show in ONE run.
 m6_out, _, m6_blocks, m6_entries, m6_tr = prepare_fixture(TMP.name, 'stix6', plant_stix6, STIX6_TR)
 m6_c = run_compose(m6_out, m6_tr)
 m6_ok = (m6_c.returncode == 0 and (m6_out / 'compose-report.json').exists()
@@ -653,23 +651,29 @@ import figsym as _figsym  # noqa: E402 - the composer's own measure, read here o
 lam_c, lam_d = serif_els[0][1], tt_els[0][1]
 gap_c = float(serif_els[1][1]['x']) - float(lam_c['x'])
 gap_d = float(tt_els[1][1]['x']) - float(lam_d['x'])
-# getattr: on a composer with no figsym.advance the checks below report red instead of the file crashing.
-_fs_advance = getattr(_figsym, 'advance', lambda *_: float('nan'))
-fs_adv = _fs_advance('λ', (False, True), float(lam_c['font-size']))
-fs_adv_d = _fs_advance('λ', (False, True), float(lam_d['font-size']))
+# M6-c2 and M6-d2 compare a pen gap with figsym.advance, so they are evaluated only when it exists: on a composer
+# without it (pre-M6) a stand-in value would turn c2 red and d2 green or red for the harness's sake, not the code's.
+has_adv = callable(getattr(_figsym, 'advance', None))
+check('M6-c0b PRECONDITION figsym.advance exists to compare the λ pen gaps with (M6-c2, M6-d2)', has_adv,
+      'callable' if has_adv else 'figsym has no advance() - M6-c2 and M6-d2 are not evaluated')
 check('M6-c1 HALF B: the Type 1 Italic λ segment is drawn in FigSym italic',
       (lam_c.get('font-family'), lam_c.get('font-style')) == ('FigSym', 'italic'), repr(lam_c))
-check('M6-c2 ... and measured with figsym.advance: the next segment starts exactly that far along (0.002 pt)',
-      abs(gap_c - fs_adv) < 0.002, f'gap {gap_c:.4f} vs figsym.advance {fs_adv:.4f}')
+if has_adv:
+    fs_adv = _figsym.advance('λ', (False, True), float(lam_c['font-size']))
+    check('M6-c2 ... and measured with figsym.advance: the next segment starts exactly that far along (0.002 pt)',
+          abs(gap_c - fs_adv) < 0.002, f'gap {gap_c:.4f} vs figsym.advance {fs_adv:.4f}')
 check('M6-c3 stix.layout names it: [{key, block, text λ, face [False, True]}] - and nothing for the TrueType label',
       m6_stix.get('layout') == [dict(key=K6_SERIF, block=m6_bi[K6_SERIF], text='λ', face=[False, True])],
       repr(m6_stix.get('layout')))
 check('M6-d1 the TrueType Italic λ stays FigIS italic',
       (lam_d.get('font-family'), lam_d.get('font-style')) == ('FigIS', 'italic'), repr(lam_d))
-check('M6-d2 CONTROL ... and is NOT measured with figsym.advance (its pen gap differs from it by more than 0.05 pt): '
-      'the M6-c2 equality is a property of half B, not of the two faces',
-      abs(gap_d - fs_adv_d) > 0.05, f'gap {gap_d:.4f} vs figsym.advance {fs_adv_d:.4f}')
+if has_adv:
+    fs_adv_d = _figsym.advance('λ', (False, True), float(lam_d['font-size']))
+    check('M6-d2 CONTROL ... and is NOT measured with figsym.advance (its pen gap differs from it by more than '
+          '0.05 pt): the M6-c2 equality is a property of half B, not of the two faces',
+          abs(gap_d - fs_adv_d) > 0.05, f'gap {gap_d:.4f} vs figsym.advance {fs_adv_d:.4f}')
 
+_s_pre = len(fails)
 _, _, s_blocks, s_entries, s_rep, s_svg = compose_fixture(TMP.name, 'stix', plant_stix, STIX_TR)
 s_keys = collections.Counter(e['key'] for e in s_entries)
 s_by_key = {e['key']: b for b, e in zip(s_blocks, s_entries)}
@@ -680,7 +684,7 @@ check('S0 PRECONDITION each STIX plant is its OWN one-run block, the five kept o
       and K_S_TR not in s_rep.get('runExact', []) and K_S_TR in s_rep['translated']
       and K_S_TR not in s_rep.get('identity', []),
       f"keys={sorted(s_keys)} runExact={s_rep.get('runExact')!r} translated={s_rep['translated']!r}")
-if fails:
+if len(fails) > _s_pre:
     finish()
 s_stix = s_rep.get('stix', {})
 s_els = elements(s_svg)
