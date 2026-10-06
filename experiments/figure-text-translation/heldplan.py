@@ -14,10 +14,12 @@ THE ROUTE (D-c)
 ---------------
 The value's lines replace the block's VISUAL lines one for one (`figtext.visual_lines`, §C140 ㉑ - never
 `figtext.lines`, which splits buffer's stacked charge off its line). A value line is UNCHANGED when its
-decoded text, script marks ignored, equals the visual line's joined source text or the joined text of its
-slice of `drawn` (compose.localise_block(b): the source with Icelandic number separators). An unchanged
+decoded text, script marks ignored, equals the joined text of the visual line's INK runs
+(`figtext.visual_ink`: without a folded U+0020-only line, which no value line can say - it may not carry
+an edge space), source or as localised in `drawn` (compose.localise_block(b): the source with Icelandic
+number separators). An unchanged
 line is planned as its `drawn` runs, so compose draws it with draw_run_exact - the same call, on the same
-runs, as today. A CHANGED line is laid out by figlayout.decide with that ONE visual line's cues (n_src 1,
+runs, as today. A CHANGED line is laid out by figlayout.decide with that ONE visual line's INK cues (n_src 1,
 sz0 = figscripts.body_size of the line, its own start, end and baseline) inside the BLOCK's container,
 measured by `width` with the line's first run, and is accepted only when it fits at source size on one
 line:
@@ -73,8 +75,9 @@ THE PLAN - HeldPlan(lines, changed)
 `lines` holds one entry per visual line, in order:
   ('runs', drawn_slice)       an unchanged line: its runs from `drawn` - the SAME dicts, localised
   ('layout', layout, vl)      a changed line: figlayout.decide's Layout dict, and the SOURCE runs of the
-                              visual line (vl[0] carries the line's font and fill for drawing; its STIX
-                              runs are the ones compose names `held`)
+                              visual line, a folded blank run included (compose draws in the font and
+                              fill of the line's first INK run, figtext.visual_ink; its STIX runs are the
+                              ones compose names `held`)
 The entries partition the block in order - a 'runs' entry spans len(drawn_slice) runs and a 'layout'
 entry len(vl) - so a caller derives each entry's source offset by summing. `changed` lists the changed
 visual-line indices, ascending.
@@ -157,8 +160,12 @@ def plan_block(block, value, fonts, drawn, *, is_bold, container, width, has_gly
         spans.append((off, off + len(vl)))
         off += len(vl)
     texts = [''.join(c for c, _ in line) for line in vlines]
-    unchanged = [t == ''.join(r['text'] for r in vl) or t == ''.join(r['text'] for r in drawn[a:e])
-                 for t, vl, (a, e) in zip(texts, vls, spans)]
+    # A line is unchanged when it equals its INK text (source or localised) - a folded blank line's
+    # space is no part of what a value can say (a value line may not carry an edge space).
+    inks = FT.visual_ink(block)
+    pos = {id(r): i for i, r in enumerate(block)}
+    unchanged = [t == ''.join(r['text'] for r in ink) or t == ''.join(drawn[pos[id(r)]]['text'] for r in ink)
+                 for t, ink in zip(texts, inks)]
     if all(unchanged):
         raise HeldRefusal('no-change')
 
@@ -175,6 +182,7 @@ def plan_block(block, value, fonts, drawn, *, is_bold, container, width, has_gly
         if unchanged[i]:
             out.append(('runs', drawn[a:e]))
             continue
+        vfull, vl = vl, inks[i]
         styled = _run_styles(vl, fonts)
         if styled[0][1] is not None:
             raise HeldRefusal('opens-styled', line=i)
@@ -208,6 +216,6 @@ def plan_block(block, value, fonts, drawn, *, is_bold, container, width, has_gly
                 and layout['step'] in ACCEPT_STEPS):
             raise HeldRefusal('does-not-fit', line=i, step=layout['step'], size=layout['size'],
                               lines=len(layout['lines']))
-        out.append(('layout', layout, vl))
+        out.append(('layout', layout, vfull))
         changed.append(i)
     return HeldPlan(out, changed)

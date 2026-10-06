@@ -19,7 +19,9 @@
  * block is an arc are all refused by name at compose time (`figure-compose.py`'s pre-flight and
  * `compose.py`'s planner), before anything publishes. Here: the owner book, the `.svg` row, the
  * translated copy, the policy overlaps, a collision with a bought sidecar key, the value's shape
- * and encoding, and the line upper bound.
+ * and encoding, and the line upper bound (the key's '|'-segments that are not spaces-only: a U+0020-only
+ * segment is the next row's indent space, which the composer folds into its neighbour - spec
+ * 2026-10-05 D-b, ruling R-17; figtext.is_blank_line is the Python twin of that predicate).
  *
  * ⚠️ A REPEATED KEY IS INVISIBLE TO `validateFigureConfig`, which reads the PARSED config: JSON.parse
  * keeps only the last of two equal keys. `repeatedKeyProblems` reads the raw text instead; the
@@ -310,7 +312,11 @@ export function validateFigureConfig(cfg, corpus) {
       }
       // Visual lines merge and never split, so the key's '|'-lines bound the value's lines from
       // above. The exact count (the block's visual lines) is compose.py's `line-count` refusal.
-      const keyLines = k.split('|').length;
+      // A key segment of only U+0020 is the next row's indent space (figtext.is_blank_line); the composer
+      // folds it into its neighbour, so it is no line a value can fill (FoodLabel `(cid:127) 5% or less| `).
+      const segs = k.split('|');
+      const inkSegs = segs.filter((s) => !(s !== '' && /^ +$/.test(s)));
+      const keyLines = inkSegs.length || segs.length;
       if (lines.length > keyLines) {
         problems.push(
           `heldBlockValues.${b}[${k}] has ${lines.length} lines but its key has ${keyLines} source lines`
@@ -325,7 +331,7 @@ export function validateFigureConfig(cfg, corpus) {
           );
         }
       }
-      if (lines.join('|') === k) {
+      if (lines.join('|') === k || (inkSegs.length && lines.join('|') === inkSegs.join('|'))) {
         problems.push(`heldBlockValues.${b}[${k}] equals its key — it draws nothing new`);
       }
     }

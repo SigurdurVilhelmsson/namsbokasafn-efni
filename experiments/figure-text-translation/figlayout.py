@@ -21,7 +21,8 @@ INPUTS
              run, which cannot differ on the corpus - 0 of 176 blocks mix bold or fill across lines, r2-build §2).
   container  figcontainers.container_for(...) - 'box' | 'cell' | 'open', in the block's own along/normal frame.
   cues       {'n_src', 'sz0', 'starts', 'ends', 'projs'} per VISUAL source line (adv-based in production;
-             compose.py builds them on figtext.visual_lines - §C140 ㉑).
+             compose.py builds them on figtext.visual_ink - the visual lines without a folded U+0020-only
+             line's runs, so `n_src` is len(figtext.visual_lines) - §C140 ㉑, '6' M2).
 
 RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
   sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the

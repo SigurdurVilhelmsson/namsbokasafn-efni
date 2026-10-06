@@ -72,7 +72,8 @@ def lines(b):
 # 29 in 19 at 0.9; the nearest genuine two-line labels sit 0.806 and 0.837 of a lead apart, the widest
 # charge/superscript split 0.409 (design spec docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-
 # design.md, D3). `visual_lines` IS instrument A of the frozen
-# evidence/2026-09-15-t23-review-fixes/instruments/code1_exposure.py (`visual_a`), plus the arc carve-out.
+# evidence/2026-09-15-t23-review-fixes/instruments/code1_exposure.py (`visual_a`), plus the arc carve-out
+# and the blank-line fold (§C140 '6', M2: a line of only U+0020 is no line - see `visual_lines`).
 # Re-measure before moving it; do not tune it.
 VISUAL_LEAD_FRACTION = 0.6
 
@@ -90,17 +91,51 @@ def visual_lines(b):
     line, and compose.py reads that line's baseline (`projs`), font and colour from it: on all 21
     measured merges it is the body run, never the script.
 
-    🔴 FOR THE LAYOUT'S OWN LINE COUNT AND SOURCE CUES ONLY - compose.py's `n_src` / `starts` /
-    `ends` / `projs` and its per-line font index, and figcontainers' `own_line_frames` (the block's
-    OWN cell / open alignment). NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
+    A line whose runs draw only U+0020 (`is_blank_line`: the next row's indent space, attached to the
+    block above by group()'s `nl` rule) is no line of its own: it folds into the line before it (the
+    next, when first). Identity when no line is blank or every line is. The fold's geometry-free view is
+    `visual_ink`; the pre-fold lines are `visual_lines_unfolded`.
+
+    🔴 FOR THE LAYOUT'S OWN LINE COUNT AND SOURCE CUES ONLY - compose.py's `n_src` and, through
+    `visual_ink`, its `starts` / `ends` / `projs` and per-line font index; heldplan's `line-count`.
+    figcontainers' `own_line_frames` (the block's OWN cell / open alignment) reads
+    `visual_lines_unfolded`. NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
     bought key, sidecar value or renderHash moves. NEVER another block's frames: `line_frames` (sibling
     cues, free-box obstacles) stays on `lines`, because this rule merges a genuine diagonal kept label
     (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move the frames neighbouring labels align against and avoid in up to 18
     bought figures (measured 2026-10-03, applied to every block: ONE drawn label moves,
     CNX_Chem_17_02_Galvanicel `Flow of cations`, align right -> center)."""
+    return _visual(b)[0]
+
+
+def visual_ink(b):
+    """Per visual line, its runs WITHOUT the blank lines `visual_lines` folded into it - the runs that carry the
+    line's geometry (start, end, baseline, first run). == visual_lines(b) on every block with no blank visual
+    line (all but 3 of 11,200 chemistry blocks, census 2026-10-05: FoodLabel `(cid:127) 5% or less| `,
+    `(cid:127) 20% or| `, `more is| `)."""
+    return _visual(b)[1]
+
+
+def visual_lines_unfolded(b):
+    """The visual lines BEFORE the blank-line fold - what `visual_lines` returned before it. Read ONLY by
+    figcontainers.own_line_frames (the ALIGNMENT decision): a blank line is the next row's indent space, and
+    its left edge is real evidence of the label's text column (FoodLabel: the bullets and `more is` are
+    decided left from it, and drawn at their source x 385.611 / 389.611). Folding it there too moved those 3
+    blocks to the single-line margin rule (right / center / center) - measured, 2026-10-05."""
+    return _visual(b)[2]
+
+
+def is_blank_line(l):
+    """A line whose runs draw only U+0020. NOT `.strip()`: '\\x1f' is a glyph (blockkey.py), and NBSP is not
+    measured blank anywhere in the corpus (all 8 whitespace-only FT.lines are U+0020)."""
+    t = ''.join(r['text'] for r in l)
+    return t != '' and set(t) == {' '}
+
+
+def _visual(b):
     ls = lines(b)
     if is_arc(b) or len(ls) < 2:
-        return ls
+        return ls, ls, ls
     out = [ls[0]]
     for l in ls[1:]:
         p = out[-1]
@@ -109,7 +144,24 @@ def visual_lines(b):
             out[-1] = p + l
         else:
             out.append(l)
-    return out
+    # A BLANK visual line (only U+0020 - the next row's indent space, attached by group()'s `nl` rule to
+    # the block above) is never a line of its own: it folds into the line before it (the next, when first),
+    # keeping the slices consecutive, and carries none of that line's geometry. Identity when no line is
+    # blank, or when every line is.
+    if not any(is_blank_line(l) for l in out) or all(is_blank_line(l) for l in out):
+        return out, out, out
+    vls, ink, lead = [], [], []
+    for l in out:
+        if is_blank_line(l):
+            if vls:
+                vls[-1] = vls[-1] + l
+            else:
+                lead = lead + l
+        else:
+            vls.append(lead + l)
+            ink.append(l)
+            lead = []
+    return vls, ink, out
 
 def alignment(b, measure):
     """'left' | 'center' | 'right', decided from the ORIGINAL line geometry"""

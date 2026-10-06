@@ -144,11 +144,14 @@ def line_frames(block):
 
 
 def own_line_frames(block):
-    """source_frame of each VISUAL line of the block (`figtext.visual_lines`) - for the block's OWN
-    alignment only (`cell_alignment`, `open_alignment`), §C140 ㉑: a one-line source label with a
-    stacked charge (`nitrites (NO2|–`) is a single-line label there, not a two-line one. Equal to
-    `line_frames` for every block whose visual lines are its FT.lines."""
-    return [source_frame(l) for l in FT.visual_lines(block)]
+    """source_frame of each visual line of the block BEFORE the blank-line fold
+    (`figtext.visual_lines_unfolded`) - for the block's OWN alignment only (`cell_alignment`,
+    `open_alignment`), §C140 ㉑: a one-line source label with a stacked charge (`nitrites (NO2|–`) is a
+    single-line label there, not a two-line one. A folded blank line (the next row's indent space) KEEPS
+    its frame here: its left edge is the label's text column, and dropping it moved FoodLabel's bullets
+    and `more is` from left to right/center/center (measured 2026-10-05). Equal to `line_frames` for
+    every block whose visual lines are its FT.lines."""
+    return [source_frame(l) for l in FT.visual_lines_unfolded(block)]
 
 
 # =============================================================================================

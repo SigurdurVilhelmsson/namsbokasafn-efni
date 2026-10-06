@@ -489,7 +489,8 @@ def draw_held(BI, b, key):
         return False
     rot = b[0]['rot']
     off, undec, loc, laid = 0, False, False, []
-    for entry in plan.lines:
+    inks = FT.visual_ink(b)   # a changed line is drawn in the font and fill of its first INK run
+    for li, entry in enumerate(plan.lines):
         if entry[0] == 'runs':
             part = entry[1]
             if draw_run_exact(part, key):
@@ -499,7 +500,7 @@ def draw_held(BI, b, key):
             off += len(part)
         else:
             _, layout, vl = entry
-            draw_layout(layout, lambda j, r0=vl[0]: r0, rot)
+            draw_layout(layout, lambda j, r0=inks[li][0]: r0, rot)
             for r in vl:
                 rbase = FS._base_name(r, meta['fonts'])
                 if figsym.eligible_base(rbase):
@@ -679,7 +680,7 @@ for BI, b in enumerate(blocks):
     # splits off, so `nitrites (NO2|–` is ONE source line here (n_src 1, its own baseline) while its
     # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
     # every block that has no such split.
-    vls = FT.visual_lines(b)
+    vls = FT.visual_ink(b)   # geometry from each visual line's ink runs (a folded blank line carries none)
     cues = dict(n_src=len(vls), sz0=sz0,
                 starts=[min(FT.along(r) for r in l) for l in vls],
                 ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],
