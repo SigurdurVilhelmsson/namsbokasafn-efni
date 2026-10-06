@@ -307,7 +307,11 @@ def explicit_lines(raw, fmt, n_src, arc, joint=None):
         'empty-line'      a line that is empty or spaces only
         'edge-space'      a line with leading or trailing whitespace - a CR included ('a\r\nb')
         'invisible-line'  a line of only format, combining or control characters
-                          (heldvalues.INVISIBLE_CATEGORIES; str.strip() keeps U+200B), which draws nothing
+                          (heldvalues.INVISIBLE_CATEGORIES; str.strip() keeps U+200B), which draws nothing -
+                          its SPACES (category Zs) set aside, so `U+200B U+0020 U+200B` is refused too
+                          (review-fix round G21, F2 n3; tools/lib/figure-text-sidecar.cjs judges it alike)
+        'run-exact'       NOT returned here: compose.py names it when an LF value is token-equal to the
+                          English (figtext.is_identity) and so is drawn run-exact on the source's rows
         'line-count'      more lines than the block has visual source lines: the drawn lines span at
                           most the source's own lines at its mean pitch, so no height budget is needed
                           and a one-line block takes no LF
@@ -325,7 +329,10 @@ def explicit_lines(raw, fmt, n_src, arc, joint=None):
             return None, ('empty-line', i)
         if sg != sg.strip():
             return None, ('edge-space', i)
-        if all(unicodedata.category(c) in heldvalues.INVISIBLE_CATEGORIES for c in sg):
+        # Spaces (Zs) are set aside: they draw nothing either, and str.strip() above already refused a line
+        # of nothing but whitespace, so at least one character is judged here.
+        if all(unicodedata.category(c) in heldvalues.INVISIBLE_CATEGORIES
+               for c in sg if unicodedata.category(c) != 'Zs'):
             return None, ('invisible-line', i)
     if len(segs) > n_src:
         return None, ('line-count', None)

@@ -505,7 +505,8 @@ container_errors = []
 # §C140 '6' R-5a ([USER] 2026-10-05), additive, draw order WITH multiplicity: a translated value carrying an LF
 # (U+000A) is drawn with the editor's own line breaks. `explicit_breaks`: {key, block, lines, pitch} for every block
 # drawn that way; `explicit_errors`: {key, block, reason, line} for one whose breaks could not be honoured
-# (figtext.explicit_lines names the reasons) - that label is drawn as if each LF were a space, and figure-compose.py
+# (figtext.explicit_lines names the reasons; `run-exact`, line None, is an LF value token-equal to the English, drawn
+# run-exact on the source's rows - G21 #2) - that label is drawn as if each LF were a space, and figure-compose.py
 # refuses the figure. Neither is one of figure-compose.py's COMPOSE_NOTES.
 explicit_breaks, explicit_errors = [], []
 # §C140 '6' report keys (spec §9.8, G8), additive, draw order WITH multiplicity, translated labels only (a held
@@ -664,6 +665,12 @@ for BI, b in enumerate(blocks):
             if FT.is_identity(TR[key], block_english(b), arc):
                 identity.append(key)
                 kept = True
+                # R-5a, review-fix round G21 #2: identity compares TOKENS, and an LF is whitespace to str.split(),
+                # so an editor's break in an otherwise-English value lands here and is drawn on the SOURCE's rows.
+                # It is not honoured, so it is named (`run-exact`) and figure-compose.py refuses the figure -
+                # never dropped in silence. (A legacy list value is never an explicit-break value.)
+                if isinstance(TR[key], str) and '\n' in TR[key]:
+                    explicit_errors.append(dict(key=key, block=BI, reason='run-exact', line=None))
 
     if kept:
         if FT.is_arc(b) and circle is None:

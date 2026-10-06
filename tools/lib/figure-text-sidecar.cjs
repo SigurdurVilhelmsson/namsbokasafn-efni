@@ -218,10 +218,12 @@ function keyInkLineCount(key) {
  *                    a CR comes only from a non-browser client)
  *   empty-line       a line that is empty or whitespace only            (LF values only)
  *   edge-space       a line with leading or trailing whitespace         (LF values only)
- *   invisible-line   a line of only INVISIBLE_LINE characters           (LF values only)
+ *   invisible-line   a line of only INVISIBLE_LINE characters once its spaces (\p{Zs}) are set
+ *                    aside: U+200B U+0020 U+200B draws nothing too (G21, F2 n3; figtext.explicit_lines
+ *                    judges it alike)                                     (LF values only)
  *   line-count       more lines than keyInkLineCount(key): a single-line key takes no LF
  * 🔴 A SECOND IMPLEMENTATION of figtext.explicit_lines' refusals (the composer's, which also refuses
- * `arc` and `break-at-joint` and checks the exact visual count; neither is visible here). `trim`
+ * `arc`, `break-at-joint` and `run-exact` and checks the exact visual count; none is visible here). `trim`
  * and Python's `str.strip` differ at the edges of Unicode whitespace (U+FEFF is trimmed here, not
  * there; U+001C-U+001F the reverse), so the two sides can disagree on a value carrying one of those
  * at a line's edge. Accepted gap (D14): a key with more '|' lines than VISUAL lines (the ㉑ merges)
@@ -245,7 +247,7 @@ function blockValueProblems(key, value) {
       problems.push(`empty-line: line ${n} is empty or whitespace only`);
     } else if (l !== l.trim()) {
       problems.push(`edge-space: line ${n} has leading or trailing whitespace`);
-    } else if (INVISIBLE_LINE.test(l)) {
+    } else if (INVISIBLE_LINE.test(l.replace(/\p{Zs}/gu, ''))) {
       problems.push(`invisible-line: line ${n} has no visible character`);
     }
   });

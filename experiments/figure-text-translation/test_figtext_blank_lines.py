@@ -30,6 +30,8 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * T4b CONTROL: an all-blank block is left as it is (the identity rule; Frequency's single ' ' blocks).
 * T4c a FIRST blank line folds forward onto the next line, and the ink is the next line alone. A design pin with
       0 corpus instances (census `firstBlank` []). Red before M2.
+* T4d (G21 review-fix round, F2 n45) ... and ONLY onto the next line: with a third line after it, the visual lines
+      still partition the block (mutant: `_visual` never resets `lead`, so the blank is given to every later line).
 * T9  CONTROL (arm C's property): `figcontainers.cell_alignment` on blocks 42/44/45 with the snapshot's own source
       margins is `left` (`multi(...)`), the pre-M2 decision. Folding the frames too (the rejected arm B) moves them
       to the single-line margin rule - right/center/center - and turns T9 red.
@@ -133,6 +135,13 @@ def t4():
           'that line alone', len(FT.lines(first)) == 2 and len(fl) == 1 and ink is not None
           and texts(ink(first)) == [['more is']] and ids(fl) == [[id(r) for r in first]],
           f'visual {texts(fl)} ink {None if ink is None else texts(ink(first))}')
+    m0 = B45[0]
+    third = first + [dict(m0, text='QZ next', y=m0['y'] - 6.5, tm=m0['tm'][:5] + [m0['y'] - 6.5])]
+    tl = FT.visual_lines(third)
+    check('T4d (G21 n45) a FIRST blank line folds forward onto the next line ONLY: a third line is not given it '
+          'again - the visual lines still partition the block, in order',
+          len(FT.lines(third)) == 3 and texts(tl) == [[' ', 'more is'], ['QZ next']]
+          and [id(r) for l in tl for r in l] == [id(r) for r in third], f'visual {texts(tl)}')
 
 
 def t9():

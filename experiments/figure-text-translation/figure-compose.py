@@ -48,7 +48,8 @@ THE THREE ASSERTIONS, AND WHY THEY ARE DIFFERENT ANCHORS
    source pitch (a box: its glyph box centred at that pitch) or, when it cannot (an arc,
    an empty / edge-space / invisible line, more lines than the block has visual source lines, a
    break on an R3 joint - figtext.explicit_lines), draws the label as if each LF were a space and
-   names it in `explicitBreakErrors`. Any entry refuses the figure, naming key, block and reason:
+   names it in `explicitBreakErrors`; a value token-equal to the English (identity) is drawn run-exact
+   on the source's rows and named there too, reason `run-exact` (G21 #2). Any entry refuses the figure, naming key, block and reason:
    it was drawn without the breaks the editor typed. `explicitBreaks` (the honoured ones) is
    compose-report.json only - neither list is one of COMPOSE_NOTES.
 2. THE HELD CONTRACT (§C140 ㊾ D5(a)). Any `heldErrors` entry refuses the figure, naming every

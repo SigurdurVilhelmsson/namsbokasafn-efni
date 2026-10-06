@@ -51,13 +51,18 @@ ladder's FIRST rung (b_i undisplaced before b_ii - visible only where the anchor
 mutant: the b_i rung deleted), X2b the guard's zero/negative half (mutant: only `cuts[-1] != W` checked - [3, 0]
 then draws an empty line, [4, -1] raises IndexError), X6b heightFit None on an explicit box and cell (mutant: the
 explicit reset keeps the count search's heightFit).
-NOT PINNED HERE: an LF on an ARC end to end (compose refuses it through the arc path's own explicit_lines call;
-only EL8 pins the helper - planting an arc needs a fitted circle).
+G21 review-fix round (F2): EL13 (n3, red before: a line of U+200B, space, U+200B was honoured) - the invisible-line
+rule ignores whitespace; EL14/EL14b (n36) pin that a VISIBLE line carrying a soft hyphen or a ZWJ is honoured (mutant
+all() -> any() refuses it); CE8/CE8b (G21 #2, red before: the LF was silently dropped) - an LF value token-equal to
+the English is drawn run-exact and named `run-exact`, and the wrapper refuses the figure; CE9/CE9b (n38) - an LF on
+a translated ARC (A: `QZARC`, test_compose_runexact.py's arc plant, here at 9 pt) is refused `arc` end to end
+(mutant: the arc path's explicit_errors append disabled).
 ALSO NOT PINNED HERE: whether a translated value reaches compose.py with its LF - the sidecar route, the editor and the
 validators are T10b's.
 """
 import ast
 import json
+import math
 import os
 import re
 import subprocess
@@ -149,6 +154,13 @@ el_check('EL11 words are counted AFTER the joint elision: NO2 + joint + – is o
     'NO2 –\nx', fmt=[None, None, None, J, None, None, None], joint=J), ([1, 1], None))
 el_check('EL12 the same value with no joint marked counts two words on line 0',
          el('NO2 –\nx', fmt=[None] * 7, joint=J), ([2, 1], None))
+# G21 review-fix round (F2 n3, n36): the invisible-line rule judges a line's NON-SPACE characters, and only a line
+# made of nothing else is refused - a visible word that carries a soft hyphen or a ZWJ is honoured.
+el_check('EL13 (n3) a line of U+200B, a space and U+200B draws nothing either: refused invisible-line on line 1',
+         el('a\n\u200b \u200b'), (None, ('invisible-line', 1)))
+el_check('EL14 (n36) a visible line holding a soft hyphen (Natr\u00edum\u00adkl\u00f3r\u00ed\u00f0) is honoured',
+         el('Natr\u00edum\u00adkl\u00f3r\u00ed\u00f0\nlausn'), ([1, 1], None))
+el_check('EL14b (n36) ... and one holding a ZWJ (a\u200db) too', el('a\u200db\nc'), ([1, 1], None))
 
 # ── X. figlayout.decide with cues['explicit'], pure ──────────────────────────────────────────
 print('X   figlayout.decide')
@@ -347,6 +359,25 @@ T_RUNS = [run('QZ one', 9.0, 200.0, TY[0]), run('QZ two', 9.0, 200.0, TY[1]), ru
 KP, KS, KF, KN = 'QZ pure water|QZ blood', 'QZ single', 'QZ CO2|QZD', 'QZ ion NH4|+'
 KT = 'QZ one|QZ two|QZ three'
 
+
+def arc_runs(glyphs, cx, cy, radius=60.0, size=9.0):
+    """test_compose_runexact.py's arc plant: single glyphs at 10-degree steps on a real circle, each rotated to the
+    tangent (figtext.group's arc clause: equal sizes, |drot| < 12, centre distance 10.46 < 1.6 * 9)."""
+    out = []
+    for i, g in enumerate(glyphs):
+        th = 100.0 - 10.0 * i
+        x = round(cx + radius * math.cos(math.radians(th)), 3)
+        y = round(cy + radius * math.sin(math.radians(th)), 3)
+        rot = th - 90.0
+        c, s = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+        out.append(dict(text=g, font='PAGE/F1', size=size, rot=rot, x=x, y=y, adv=fixture_adv(g, size), fill=BLACK,
+                        tm=[c, s, -s, c, x, y]))
+    return out
+
+
+A_RUNS = arc_runs('QZARC', 110.0, -25.0)       # G21 n38: a TRANSLATED arc (glyphs at x 99-141, y 27-35)
+KA = 'QZARC'
+
 TMP = tempfile.TemporaryDirectory(prefix='c140-r5a-explicit-')
 TD = Path(TMP.name)
 FIG = TD / 'fig'
@@ -355,7 +386,7 @@ env0.pop('FIGTEXT_OUT', None)
 prep = subprocess.run([sys.executable, str(PREPARE), str(FIXTURE), '--basename', BASENAME, '--out', str(FIG)],
                       capture_output=True, text=True, env=env0)
 precondition('the fixture prepares', prep.returncode == 0, prep.stderr.strip()[-400:])
-(FIG / 'runs.json').write_text(json.dumps(P_RUNS + S_RUNS + F_RUNS + N_RUNS + T_RUNS, ensure_ascii=False))
+(FIG / 'runs.json').write_text(json.dumps(P_RUNS + S_RUNS + F_RUNS + N_RUNS + T_RUNS + A_RUNS, ensure_ascii=False))
 pdf = FIG / 'artwork.pdf'
 surf = cairo.PDFSurface(str(pdf), PAGE_W, PAGE_H)
 _c = cairo.Context(surf)
@@ -373,9 +404,11 @@ entries = [dict(key=block_key(b), english=block_english(b), lines=block_lines(b)
 (FIG / 'blocks.json').write_text(json.dumps(entries, indent=1, ensure_ascii=False))
 BI = {e['key']: i for i, e in enumerate(entries)}
 nvis = {block_key(b): len(FT.visual_lines(b)) for b in blocks}
-precondition('the plant is five sendable blocks: P and F on TWO visual lines, S and the stacked charge N on ONE, '
-             'T on THREE', sorted(BI) == sorted([KP, KS, KF, KN, KT]) and all(e['send'] for e in entries)
-             and nvis == {KP: 2, KS: 1, KF: 2, KN: 1, KT: 3}, f"{[(e['key'], e['send']) for e in entries]} {nvis}")
+precondition('the plant is six sendable blocks: P and F on TWO visual lines, S and the stacked charge N on ONE, '
+             'T on THREE, and the arc A', sorted(BI) == sorted([KP, KS, KF, KN, KT, KA])
+             and all(e['send'] for e in entries) and [e['arc'] for e in entries if e['key'] == KA] == [True]
+             and {k: v for k, v in nvis.items() if k != KA} == {KP: 2, KS: 1, KF: 2, KN: 1, KT: 3},
+             f"{[(e['key'], e['send'], e['arc']) for e in entries]} {nvis}")
 
 
 def elements(svg_text):
@@ -412,7 +445,8 @@ def S_lines(els):
     return lines_in(els, 0, 170, 0, 100)
 
 
-BASE_TR = {KP: 'QZA QZB QZC QZD', KS: 'QZ eitt', KF: 'QZE CO2 QZF', KN: 'QZ jón NH4 +', KT: 'QZ ein QZ tvo QZ tri'}
+BASE_TR = {KP: 'QZA QZB QZC QZD', KS: 'QZ eitt', KF: 'QZE CO2 QZF', KN: 'QZ jón NH4 +', KT: 'QZ ein QZ tvo QZ tri',
+           KA: 'QZBOGI'}
 _N = [0]
 
 
@@ -443,6 +477,9 @@ LF_P = 'QZA QZB QZC\nQZD'
 rc1, rep1, svg1, out1 = compose({KP: LF_P})
 precondition('the LF compose exits 0 and writes its report and SVG', rc1 == 0 and rep1 is not None and svg1,
              out1[-400:])
+precondition('the arc A has a usable circle: drawn on the arc path, not degenerate',
+             KA not in (rep1.get('degenerate') or []) and KA in (rep1.get('translated') or []),
+             f"degenerate {rep1.get('degenerate')!r}")
 got = P_lines(els_of(svg1))
 check("CE1 'QZA QZB QZC\\nQZD' is drawn as typed: 'QZA QZB QZC' on source line 0's baseline, 'QZD' on line 1's",
       rnd(got) == [(round(PY0, 3), 'QZA QZB QZC'), (round(PY1, 3), 'QZD')], f'{rnd(got)} want rows {PY0} / {PY1}')
@@ -550,6 +587,34 @@ check('CE6 figure-compose.py refuses the figure: exit 1, an error naming each ke
 rc6b, cj6b, out6b = wrap({KP: LF_P})
 check('CE6b CONTROL figure-compose.py passes a figure whose break was honoured: exit 0, no error',
       rc6b == 0 and cj6b is not None and 'error' not in cj6b, f'rc {rc6b} {cj6b!r} {out6b[-300:]}')
+
+# CE8 - G21 #2 (F2 n2): an LF value whose TOKENS equal the English is the identity (run-exact) path - drawn as the
+# source draws it, so the editor's break is NOT honoured; it is named `run-exact` and the figure is refused, never
+# silently dropped.
+rc8, rep8, svg8, out8 = compose({KP: 'QZ pure\nwater QZ blood'})
+errs8 = [e for e in (rep8 or {}).get('explicitBreakErrors') or [] if e.get('key') == KP]
+check("CE8 (G21 #2) 'QZ pure\\nwater QZ blood' on P (token-equal to its English) is identity, drawn run-exact, "
+      "and named in explicitBreakErrors as run-exact - not in explicitBreaks",
+      rc8 == 0 and KP in (rep8 or {}).get('identity', []) and KP in (rep8 or {}).get('runExact', [])
+      and errs8 == [{'key': KP, 'block': BI[KP], 'reason': 'run-exact', 'line': None}]
+      and not [e for e in (rep8 or {}).get('explicitBreaks') or [] if e.get('key') == KP],
+      f"rc {rc8} identity {(rep8 or {}).get('identity')!r} errors {errs8!r} {out8[-300:]}")
+rc8w, cj8w, out8w = wrap({KP: 'QZ pure\nwater QZ blood'})
+check('CE8b ... and figure-compose.py refuses the figure, naming P and run-exact',
+      rc8w == 1 and (cj8w or {}).get('keys') == [KP] and 'run-exact' in ((cj8w or {}).get('error') or ''),
+      f'rc {rc8w} {cj8w!r} {out8w[-300:]}')
+
+# CE9 - G21 n38: an LF on a translated ARC is refused `arc` through compose's own arc-path explicit_lines call
+# (EL8 pins only the helper).
+rc9, rep9, svg9, out9 = compose({KA: 'QZBO\nGI'})
+errs9 = [e for e in (rep9 or {}).get('explicitBreakErrors') or [] if e.get('key') == KA]
+check("CE9 (n38) 'QZBO\\nGI' on the translated arc is named in explicitBreakErrors: reason arc, line None",
+      rc9 == 0 and errs9 == [{'key': KA, 'block': BI[KA], 'reason': 'arc', 'line': None}],
+      f"rc {rc9} errors {(rep9 or {}).get('explicitBreakErrors')!r} {out9[-300:]}")
+rc9w, cj9w, out9w = wrap({KA: 'QZBO\nGI'})
+check('CE9b ... and figure-compose.py refuses the figure, naming the arc',
+      rc9w == 1 and (cj9w or {}).get('keys') == [KA] and 'arc' in ((cj9w or {}).get('error') or ''),
+      f'rc {rc9w} {cj9w!r} {out9w[-300:]}')
 
 # ── FCx. figure-compose.py's verify ───────────────────────────────────────────────────────────
 print('FCx figure-compose.py verify()')

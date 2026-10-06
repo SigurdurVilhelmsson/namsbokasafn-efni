@@ -362,6 +362,12 @@ describe("blockValueProblems — R-5a explicit line breaks (§C140 '6' T10b)", (
     expect(codes('a|b', 'x\n​')).toEqual(['invisible-line']);
   });
 
+  it('V8b (G21, F2 n3): spaces are set aside — U+200B, a space, U+200B is invisible-line too', () => {
+    // figtext.explicit_lines judges the line's non-Zs characters the same way (test_compose_explicit_breaks EL13).
+    expect(codes('pure water|blood', 'pure water\n​ ​')).toEqual(['invisible-line']);
+    expect(codes('a|b', 'x\ny­z')).toEqual([]); // control: a visible line carrying a soft hyphen
+  });
+
   it("V9: R-17 — a spaces-only key segment is no line, so 'more is| ' takes no break", () => {
     expect(codes('more is| ', 'minna er\nlágt')).toEqual(['line-count']);
     expect(owner.blockValueProblems('more is| ', 'minna er lágt')).toEqual([]); // control
