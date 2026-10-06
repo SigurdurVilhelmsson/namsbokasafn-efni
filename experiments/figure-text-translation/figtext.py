@@ -308,8 +308,9 @@ def explicit_lines(raw, fmt, n_src, arc, joint=None):
         'edge-space'      a line with leading or trailing whitespace - a CR included ('a\r\nb')
         'invisible-line'  a line of only format, combining or control characters
                           (heldvalues.INVISIBLE_CATEGORIES; str.strip() keeps U+200B), which draws nothing
-        'line-count'      more lines than the block has visual source lines: every drawn line sits on
-                          a source row, so no height budget is needed and a one-line block takes no LF
+        'line-count'      more lines than the block has visual source lines: the drawn lines span at
+                          most the source's own lines at its mean pitch, so no height budget is needed
+                          and a one-line block takes no LF
         'break-at-joint'  the break falls on a position transfer marked JOINT (the MT wire's own joint
                           space, `NO2 –`), which compose ELIDES; `line` is the line the break would open
     """

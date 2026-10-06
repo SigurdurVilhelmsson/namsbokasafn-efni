@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """§C140 '6' R-5a, the composer half: an LF (U+000A) in a translated sidecar value is the editor's EXPLICIT line
-break. compose.py draws each segment on its own line, on the block's source rows, or refuses the figure by name -
-it never again draws such a value as one line in silence.
+break. compose.py draws each segment on its own line - from the block's first source baseline at its mean source
+pitch (a box: its glyph box centred at that pitch) - or refuses the figure by name - it never again draws such a
+value as one line in silence.
 
     FIGTEXT_PYLIBS=./pylibs python3 -B -u test_compose_explicit_breaks.py
 
@@ -26,7 +27,9 @@ CE  compose.py end to end on a PLANTED copy of the committed fixture (`fixtures/
       S  `QZ single`, one line;
       F  `QZ CO` + a 7 pt `2` 3 pt below + `QZD` on a second line: a formula on a two-line block;
       N  `QZ ion NH` + a 7 pt `4` + a raised 7 pt `+`: a stacked charge (the ㉑ shape) - TWO FT.lines in its key, ONE visual
-         line, so its `|` is not a row.
+         line, so its `|` is not a row;
+      T  `QZ one` / `QZ two` / `QZ three`, baselines 40, 27.0493, 17.0493: THREE visual lines 12.9507 then 10.0
+         apart, so its mean source pitch (11.47535) is not its first gap - the pitch a two-line break is drawn at.
     The values are probe text (`QZ...`), never translations: `QZA QZB QZC\nQZD` on P is 3 + 1 words where the
     balanced cut of the same four words is 2 + 2, so a composer that ignores the LF is seen.
 FCx figure-compose.py's verify() (loaded through importlib, test_figure_compose.py's pattern).
@@ -40,7 +43,12 @@ accepts a report whose breaks were all honoured). CE3b is red there for a second
 pre-task composer ran transfer on the LF-bearing value, so the stacked charge's R3 joint match (`NH4 +`) missed
 across the LF and the `+` was drawn unformatted (the detail prints N's unformatted stretches in both arms) - the
 case D1 (an LF read as a space) closes.
-NOT PINNED HERE: whether a translated value reaches compose.py with its LF - the sidecar route, the editor and the
+X5b and CE7 (T10a review, fix 1) also pin T10a's own choices against a mutant each: X5b the open ladder's third
+rung (the floor, named against b_ii and displaced - an undisplaced or b_i floor passed every other check), CE7
+compose's MEAN source pitch (a first-gap pitch passed, because every other planted block has two visual lines).
+NOT PINNED HERE: an LF on an ARC end to end (compose refuses it through the arc path's own explicit_lines call;
+only EL8 pins the helper - planting an arc needs a fitted circle).
+ALSO NOT PINNED HERE: whether a translated value reaches compose.py with its LF - the sidecar route, the editor and the
 validators are T10b's.
 """
 import ast
@@ -235,6 +243,21 @@ check("X5 open: a line within b_ii but not b_i is drawn at sz0 displaced (b_i, t
       'RAISED' not in L and texts_of(L) == ['aaaaaaaaaaaa', 'b'] and L['size'] == 9.0 and L['step'] == 'explicit'
       and near(L['disp'], -6.0) and near(L['x0'][0], 4.0) and near(L.get('budget'), 56.0), show(L))
 
+# X5b - open, the ladder's THIRD rung: FL 0, FR 40, anchor 10 (left): b_i = 40 - 10 - 2 = 28, b_ii = 40 - 4 = 36.
+# 'xxxxxxxxxxxx' is 12 characters = 54 at 9, 45 at the 7.5 floor: over b_ii at every size -> the floor, the overhang
+# named against b_ii (36, never b_i 28), and DISPLACED: x0 10 -> e1 55, wider than [FL + 2, FR - 2] = [2, 38], so
+# clamp_shift pins the left edge, disp = 2 - 10 = -8. budgetPt and disp see different wrong rungs: (undisplaced,
+# b_i) both, (undisplaced, b_ii) only disp, (displaced, b_i) only budgetPt.
+L = lay('xxxxxxxxxxxx b', open_(0.0, 40.0, 'left'), xcues(explicit=[1, 1]))
+ov = L.get('overflow') or {}
+check("X5b open, nothing fits even b_ii: drawn at the floor, step 'explicit-overflow', the overhang named against "
+      "b_ii (36) and displaced (disp -8)",
+      'RAISED' not in L and texts_of(L) == ['xxxxxxxxxxxx', 'b'] and L['size'] == 7.5
+      and L['step'] == 'explicit-overflow' and ov.get('axis') == 'width' and ov.get('word') is None
+      and near(ov.get('budgetPt'), 36.0) and near(ov.get('needPt'), 45.0) and near(ov.get('linePt'), 45.0)
+      and ov.get('sizePt') == 7.5 and near(L.get('budget'), 36.0) and near(L['disp'], -8.0)
+      and near(L['x0'][0], 2.0), show(L))
+
 # X6 - box L 0 R 100 D 0 U 40: top = (D+U)/2 + (n-1)/2 * pitch - (ASC-DESC)/2 * s = 20 + 6.47535 - 2.34.
 L = lay('aa bb', box(0.0, 100.0, 0.0, 40.0), xcues(explicit=[1, 1]))
 check('X6 box: centred at the explicit pitch (top 24.13535, lead 12.9507, align center)',
@@ -290,7 +313,10 @@ F_RUNS = [run('QZ CO', 9.0, 180.0, 150.0), run('2', 7.0, 180.0 + fixture_adv('QZ
 _NH = fixture_adv('QZ ion NH', 9.0)
 N_RUNS = [run('QZ ion NH', 9.0, 180.0, 60.0), run('4', 7.0, 180.0 + _NH, 57.0),
           run('+', 7.0, 180.0 + _NH + fixture_adv('4', 7.0), 64.0)]
+TY = (40.0, 40.0 - PITCH, 40.0 - PITCH - 10.0)  # T's three baselines: gaps 12.9507 and 10.0
+T_RUNS = [run('QZ one', 9.0, 200.0, TY[0]), run('QZ two', 9.0, 200.0, TY[1]), run('QZ three', 9.0, 200.0, TY[2])]
 KP, KS, KF, KN = 'QZ pure water|QZ blood', 'QZ single', 'QZ CO2|QZD', 'QZ ion NH4|+'
+KT = 'QZ one|QZ two|QZ three'
 
 TMP = tempfile.TemporaryDirectory(prefix='c140-r5a-explicit-')
 TD = Path(TMP.name)
@@ -300,7 +326,7 @@ env0.pop('FIGTEXT_OUT', None)
 prep = subprocess.run([sys.executable, str(PREPARE), str(FIXTURE), '--basename', BASENAME, '--out', str(FIG)],
                       capture_output=True, text=True, env=env0)
 precondition('the fixture prepares', prep.returncode == 0, prep.stderr.strip()[-400:])
-(FIG / 'runs.json').write_text(json.dumps(P_RUNS + S_RUNS + F_RUNS + N_RUNS, ensure_ascii=False))
+(FIG / 'runs.json').write_text(json.dumps(P_RUNS + S_RUNS + F_RUNS + N_RUNS + T_RUNS, ensure_ascii=False))
 pdf = FIG / 'artwork.pdf'
 surf = cairo.PDFSurface(str(pdf), PAGE_W, PAGE_H)
 _c = cairo.Context(surf)
@@ -318,9 +344,9 @@ entries = [dict(key=block_key(b), english=block_english(b), lines=block_lines(b)
 (FIG / 'blocks.json').write_text(json.dumps(entries, indent=1, ensure_ascii=False))
 BI = {e['key']: i for i, e in enumerate(entries)}
 nvis = {block_key(b): len(FT.visual_lines(b)) for b in blocks}
-precondition('the plant is four sendable blocks: P and F on TWO visual lines, S and the stacked charge N on ONE',
-             sorted(BI) == sorted([KP, KS, KF, KN]) and all(e['send'] for e in entries)
-             and nvis == {KP: 2, KS: 1, KF: 2, KN: 1}, f"{[(e['key'], e['send']) for e in entries]} {nvis}")
+precondition('the plant is five sendable blocks: P and F on TWO visual lines, S and the stacked charge N on ONE, '
+             'T on THREE', sorted(BI) == sorted([KP, KS, KF, KN, KT]) and all(e['send'] for e in entries)
+             and nvis == {KP: 2, KS: 1, KF: 2, KN: 1, KT: 3}, f"{[(e['key'], e['send']) for e in entries]} {nvis}")
 
 
 def elements(svg_text):
@@ -357,7 +383,7 @@ def S_lines(els):
     return lines_in(els, 0, 170, 0, 100)
 
 
-BASE_TR = {KP: 'QZA QZB QZC QZD', KS: 'QZ eitt', KF: 'QZE CO2 QZF', KN: 'QZ jón NH4 +'}
+BASE_TR = {KP: 'QZA QZB QZC QZD', KS: 'QZ eitt', KF: 'QZE CO2 QZF', KN: 'QZ jón NH4 +', KT: 'QZ ein QZ tvo QZ tri'}
 _N = [0]
 
 
@@ -458,6 +484,21 @@ check('CE5 an anchor-excluded key is drawn as typed, and anchorExcluded reports 
       and (rep5 or {}).get('anchorExcluded') == [{'key': KP, 'block': BI[KP], 'changed': False}],
       f"rc {rc5} {rnd(got5)} anchorExcluded {(rep5 or {}).get('anchorExcluded')!r} {out5[-300:]}")
 
+
+# CE7 - a two-line break on T's THREE visual lines is drawn at the block's MEAN source pitch
+# (40 - 17.0493) / 2 = 11.47535 from its first baseline, never at its first gap (12.9507). X7 hands decide the pitch
+# directly; this is the one check on compose's own arithmetic, so a first-gap pitch is seen (27.0493 for line 1).
+T_MEAN = (TY[0] - TY[2]) / 2
+rc7, rep7, svg7, out7 = compose({KT: 'QZG QZH\nQZI'})
+precondition('the three-line LF compose exits 0', rc7 == 0 and rep7 is not None and svg7, out7[-400:])
+got7 = lines_in(els_of(svg7), 170, PAGE_W, 0, 50)
+check("CE7 'QZG QZH\\nQZI' on a THREE-line block: line 0 on the first baseline (40), line 1 one MEAN source pitch "
+      "below (28.52465, not the first gap's 27.0493), and explicitBreaks reports that pitch",
+      [t for _, t in got7] == ['QZG QZH', 'QZI'] and abs(got7[0][0] - TY[0]) <= 0.002
+      and abs(got7[1][0] - (TY[0] - T_MEAN)) <= 0.002
+      and [e for e in rep7.get('explicitBreaks') or [] if e.get('key') == KT]
+      == [{'key': KT, 'block': BI[KT], 'lines': 2, 'pitch': round(T_MEAN, 4)}],
+      f"{rnd(got7)} want rows {TY[0]} / {TY[0] - T_MEAN:.5f}; explicitBreaks {rep7.get('explicitBreaks')!r}")
 
 # CE6 - through figure-compose.py: a figure with an unhonoured break is refused, by key and reason.
 def wrap(tr):

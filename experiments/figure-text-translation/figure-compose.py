@@ -43,7 +43,8 @@ THE THREE ASSERTIONS, AND WHY THEY ARE DIFFERENT ANCHORS
    written for one figure and whose `runs.json` belongs to another. That is exactly the
    failure that had a sidecar asserting another figure's labels.
 1a. EXPLICIT BREAKS (§C140 '6' R-5a, [USER] 2026-10-05). An LF in a translated value is an editor's
-   line break. compose.py draws each line on the block's source rows or, when it cannot (an arc,
+   line break. compose.py draws each line from the block's first source baseline at its mean
+   source pitch (a box: its glyph box centred at that pitch) or, when it cannot (an arc,
    an empty / edge-space / invisible line, more lines than the block has visual source lines, a
    break on an R3 joint - figtext.explicit_lines), draws the label as if each LF were a space and
    names it in `explicitBreakErrors`. Any entry refuses the figure, naming key, block and reason:
