@@ -165,8 +165,102 @@ function effectiveState(sidecar, currentBlocks, composerVersion) {
     : 'mt-preview';
 }
 
+/**
+ * A line made only of characters that draw nothing on their own: format, combining or control
+ * characters. U+200B, U+00AD and U+034F are in the pinned faces' cmap, so the composer's no-glyph
+ * check passes them, and `String.prototype.trim` keeps U+200B: such a line would erase its label.
+ * 🔴 A SECOND IMPLEMENTATION of experiments/figure-text-translation/heldvalues.py's
+ * INVISIBLE_CATEGORIES ('Cf', 'Mn', 'Me', 'Cc'); each reads its engine's own Unicode tables, so
+ * the two can differ on a newly assigned code point. Its one JS owner is this module (§C140 '6' D6);
+ * figure-config-validate.js imports it.
+ */
+const INVISIBLE_LINE = /^[\p{Cf}\p{Mn}\p{Me}\p{Cc}]+$/u;
+
+/**
+ * The block key's '|'-segments that are source LINES (§C140 '6' M2, ruling R-17 [USER] 2026-10-05).
+ * A segment of only U+0020 is the next row's indent space (figtext.is_blank_line, its Python twin):
+ * the composer folds it into its neighbour, so it is no line a value can fill (FoodLabel's
+ * `more is| `). An EMPTY segment ('a||b') is kept, as M2 keeps it.
+ *
+ * @param {string} key a sidecar block key: the English source lines joined with '|'
+ * @returns {string[]} the segments that count as lines, in key order (possibly empty)
+ */
+function keyInkSegments(key) {
+  return String(key)
+    .split('|')
+    .filter((s) => !(s !== '' && /^ +$/.test(s)));
+}
+
+/**
+ * How many lines a value for `key` may have: its ink segments, or - when every segment is spaces
+ * only - the raw segment count (so the result is never 0). This is the UPPER bound the boundaries can
+ * check without geometry; the exact visual line count is the composer's (`figtext.explicit_lines`'
+ * `line-count`, against the block's folded visual lines).
+ * The review panel's textarea predicate (server/public/js/segment-editor.js
+ * `figureKeyInkLineCount`) is a browser copy of this function, which cannot require a .cjs; its
+ * parity is pinned over every committed key by server/__tests__/figureCardClientPins.test.js.
+ *
+ * @param {string} key
+ * @returns {number}
+ */
+function keyInkLineCount(key) {
+  return keyInkSegments(key).length || String(key).split('|').length;
+}
+
+/**
+ * Why a translated block VALUE may not be stored, as `reason: detail` strings - [] when it may.
+ * §C140 '6' R-5a ([USER] 2026-10-05): an LF (U+000A) in a value is the editor's explicit line
+ * break, drawn on its own line by the composer or refused by name. The boundaries refuse every shape
+ * the composer would refuse that they can see without geometry, so a malformed break never reaches a
+ * sidecar: the block-save route (400, no write) and the committed-corpus sweep
+ * (tools/__tests__/figure-text-sidecar.test.js V10). Reasons, in the order the composer checks them:
+ *   carriage-return  any CR, with or without an LF (a browser's textarea value is LF-normalised, so
+ *                    a CR comes only from a non-browser client)
+ *   empty-line       a line that is empty or whitespace only            (LF values only)
+ *   edge-space       a line with leading or trailing whitespace         (LF values only)
+ *   invisible-line   a line of only INVISIBLE_LINE characters           (LF values only)
+ *   line-count       more lines than keyInkLineCount(key): a single-line key takes no LF
+ * 🔴 A SECOND IMPLEMENTATION of figtext.explicit_lines' refusals (the composer's, which also refuses
+ * `arc` and `break-at-joint` and checks the exact visual count; neither is visible here). `trim`
+ * and Python's `str.strip` differ at the edges of Unicode whitespace (U+FEFF is trimmed here, not
+ * there; U+001C-U+001F the reverse), so the two sides can disagree on a value carrying one of those
+ * at a line's edge. Accepted gap (D14): a key with more '|' lines than VISUAL lines (the ㉑ merges)
+ * can be saved here and then refused at compose, by name.
+ *
+ * @param {string} key   the block key (English source lines joined with '|')
+ * @param {string} value the translated value an editor or a file supplies
+ * @returns {string[]}
+ */
+function blockValueProblems(key, value) {
+  const problems = [];
+  const v = String(value);
+  if (v.includes('\r')) {
+    problems.push('carriage-return: the value holds a CR (U+000D); a line break is an LF only');
+  }
+  if (!v.includes('\n')) return problems;
+  const lines = v.split('\n');
+  lines.forEach((l, i) => {
+    const n = i + 1;
+    if (l.trim() === '') {
+      problems.push(`empty-line: line ${n} is empty or whitespace only`);
+    } else if (l !== l.trim()) {
+      problems.push(`edge-space: line ${n} has leading or trailing whitespace`);
+    } else if (INVISIBLE_LINE.test(l)) {
+      problems.push(`invisible-line: line ${n} has no visible character`);
+    }
+  });
+  const max = keyInkLineCount(key);
+  if (lines.length > max) {
+    problems.push(
+      `line-count: the value has ${lines.length} lines but its key has ${max} source line${max === 1 ? '' : 's'}`
+    );
+  }
+  return problems;
+}
+
 module.exports = {
   SIDECAR_VERSION, COMPOSER_VERSION,
   sidecarPath, readSidecar, writeSidecar, computeRenderHash,
   editorialState, effectiveState,
+  INVISIBLE_LINE, keyInkSegments, keyInkLineCount, blockValueProblems,
 };

@@ -8,16 +8,31 @@
 // textbook, which is the worst available failure.
 const DECIMAL = /^(\d+)\.(\d+)$/;
 
+/**
+ * The decimal-comma suggestion for every block whose text it would change.
+ *
+ * §C140 '6' R-5a: an LF in a value is the editor's explicit line break, so the rule runs LINE BY
+ * LINE and the lines are re-joined with the LF. `split(/\s+/)` alone treats the break as a space,
+ * so every LF value came back changed: a spurious suggestion whose one-click apply deleted the
+ * break. For a value with no LF the output is byte-identical to the single-line rule's
+ * (tools/__tests__/figure-consistency-parity.test.js pins it against numloc.py).
+ */
 function decimalSeparatorWarnings(blocks) {
   const out = [];
   for (const [blockKey, text] of Object.entries(blocks)) {
     if (typeof text !== 'string') continue;
-    const tokens = text.split(/\s+/);
-    const fixed = tokens.map((t) => {
-      const m = t.match(DECIMAL);
-      return m ? `${m[1]},${m[2]}` : t;
-    });
-    const suggested = fixed.join(' ');
+    const suggested = text
+      .split('\n')
+      .map((line) =>
+        line
+          .split(/\s+/)
+          .map((t) => {
+            const m = t.match(DECIMAL);
+            return m ? `${m[1]},${m[2]}` : t;
+          })
+          .join(' ')
+      )
+      .join('\n');
     if (suggested !== text) out.push({ blockKey, current: text, suggested });
   }
   return out;

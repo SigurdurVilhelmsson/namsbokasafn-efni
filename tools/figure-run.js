@@ -317,15 +317,24 @@ export function isStale(sidecar) {
  * in the image with no review row for anyone to notice it, so the survivors alone are not an
  * answer — the caller gets the casualties too.
  *
+ * 🔴 AND WHAT IT FLATTENED (§C140 '6' R-5a, decision 9). An LF in a sidecar value is an editor's
+ * explicit line break, which the composer draws as a line of its own; unreviewed MT must never
+ * issue one. Each `\r?\n` run in an MT value is collapsed to ONE space, and the key is reported
+ * in `newlines`, so the change is named rather than silent. (The joined arm cannot return one —
+ * `translate-blocks.mjs` `joinable` refuses a label holding an LF — so this guards the per-label
+ * arm.)
+ *
  * @param {object|null} apiJson
- * @returns {{blocks: Record<string,string>, dropped: string[], alternatives: object, mtJoined: object|null}}
+ * @returns {{blocks: Record<string,string>, dropped: string[], newlines: string[],
+ *   alternatives: object, mtJoined: object|null}}
  */
 export function normaliseTranslations(apiJson) {
   const blocks = {};
   const dropped = [];
+  const newlines = [];
   const source = apiJson && typeof apiJson === 'object' ? apiJson.blocks : null;
   if (!source || typeof source !== 'object' || Array.isArray(source)) {
-    return { blocks, dropped, alternatives: {}, mtJoined: null };
+    return { blocks, dropped, newlines, alternatives: {}, mtJoined: null };
   }
   for (const [key, raw] of Object.entries(source)) {
     const value = Array.isArray(raw) ? raw[0] : raw;
@@ -333,7 +342,9 @@ export function normaliseTranslations(apiJson) {
       dropped.push(key);
       continue;
     }
-    blocks[key] = value;
+    const flat = value.replace(/(?:\r?\n)+/g, ' ');
+    if (flat !== value) newlines.push(key);
+    blocks[key] = flat;
   }
 
   // §C140 ㉔ — the joined arm's per-key verdicts. An alternative for a key that did not survive
@@ -351,7 +362,7 @@ export function normaliseTranslations(apiJson) {
     apiJson.mtJoined && typeof apiJson.mtJoined === 'object' && !Array.isArray(apiJson.mtJoined)
       ? apiJson.mtJoined
       : null;
-  return { blocks, dropped, alternatives, mtJoined };
+  return { blocks, dropped, newlines, alternatives, mtJoined };
 }
 
 /**
@@ -1543,10 +1554,11 @@ function processFigureLive(
         `eligible and the next run re-buys it (~1 ISK). ${mt.stderr.trim().slice(-400)}`;
       return;
     }
-    const { blocks, dropped, alternatives, mtJoined } = normaliseTranslations(
+    const { blocks, dropped, newlines, alternatives, mtJoined } = normaliseTranslations(
       readJson(path.join(outDir, 'translations-api.json'))
     );
     rec.droppedKeys = dropped;
+    rec.newlineKeys = newlines;
     // ⚠️ THE CLAUSE THAT STOPS AN EMPTY SIDECAR. Read literally, "write the sidecar regardless
     // of step 8's verdict" invites `blocks: {}` with a perfectly valid renderHash — which R8
     // then locks out of ever being bought again.
@@ -2024,6 +2036,8 @@ export async function runFigures(args, deps = {}) {
     billable: null,
     sidecarWritten: false,
     droppedKeys: [],
+    // §C140 '6' R-5a: the MT values whose line break was collapsed to a space at intake.
+    newlineKeys: [],
     published: null,
     warnings: [],
     // What the composer reported about the figure it DREW (§C140), read from compose.json by
@@ -2880,6 +2894,12 @@ export function summarise(result) {
       lines.push(
         `  ⚠️ ${f.basename}: the MT returned ${f.droppedKeys.length} empty value(s) ` +
           `(${f.droppedKeys.join(', ')}) — those labels ship in English`
+      );
+    }
+    for (const f of result.figures.filter((g) => g.newlineKeys.length)) {
+      lines.push(
+        `  ⚠️ ${f.basename}: the MT returned ${f.newlineKeys.length} value(s) with a line break ` +
+          `(${f.newlineKeys.join(', ')}) — each was minted with a space`
       );
     }
   }

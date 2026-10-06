@@ -291,15 +291,35 @@ describe('normaliseTranslations', () => {
     expect(normaliseTranslations(null)).toEqual({
       blocks: {},
       dropped: [],
+      newlines: [],
       alternatives: {},
       mtJoined: null,
     });
     expect(normaliseTranslations({})).toEqual({
       blocks: {},
       dropped: [],
+      newlines: [],
       alternatives: {},
       mtJoined: null,
     });
+  });
+
+  // §C140 '6' R-5a (D9): after T10 an LF in a sidecar value is an editor's explicit line break, an
+  // instruction the composer obeys. Unreviewed MT must never issue one, so intake collapses each
+  // line-break run to one space — and REPORTS the key, like `dropped`, rather than altering it
+  // silently.
+  it('N1: collapses an LF (and a CRLF run) in an MT value to one space, and reports the key', () => {
+    const r = normaliseTranslations({
+      blocks: { K: ['a\nb'], L: ['c'], M: 'd\r\n\ne' },
+    });
+    expect(r.blocks).toEqual({ K: 'a b', L: 'c', M: 'd e' });
+    expect(r.newlines).toEqual(['K', 'M']);
+  });
+
+  it('N1 CONTROL: a value with no line break is untouched and reports nothing', () => {
+    const r = normaliseTranslations({ blocks: { L: ['c d'] } });
+    expect(r.blocks).toEqual({ L: 'c d' });
+    expect(r.newlines).toEqual([]);
   });
 
   it('carries alternatives and mtJoined through (§C140 ㉔)', () => {

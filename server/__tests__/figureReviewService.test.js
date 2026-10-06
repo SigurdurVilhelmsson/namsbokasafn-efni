@@ -12,6 +12,8 @@ const {
   writeSidecar,
   editorialState,
   effectiveState,
+  computeRenderHash,
+  sidecarPath,
   COMPOSER_VERSION,
 } = require('../../tools/lib/figure-text-sidecar.cjs');
 
@@ -177,6 +179,34 @@ describe('applyApprovedFigureEdits', () => {
     // approved. This assertion is the inversion, and it must not be "fixed".
     expect(side.composedHash).toBeUndefined();
     expect(effectiveState(side, side.blocks, COMPOSER_VERSION)).toBe('mt-preview');
+  });
+
+  /**
+   * §C140 '6' R-5a (T10b) — CONTROL (G13): an editor's explicit line break (LF) survives the whole
+   * write chain into the committed sidecar, and is hashed. It passes before T10b too: nothing on this
+   * path ever touched an LF (Scout B's inference, measured here). Its evidence is a planted mutant
+   * (writeSidecar collapsing the JSON's escaped LF to a space) that turns it red.
+   */
+  it('S1 CONTROL: an LF value reaches the sidecar verbatim, and renderHash hashes the LF', () => {
+    const KEY = 'Boiling|point|of water';
+    svc.saveBlockEdit(db, {
+      bookId,
+      basename: 'CNX_T',
+      blockKey: KEY,
+      isText: 'Suðumark\nvatns',
+      editedBy: 'ed',
+    });
+    const blocks = svc.getFigure(db, bookId, 'CNX_T', MT).blocks;
+    svc.setState(db, { bookId, basename: 'CNX_T', state: 'approved', reviewedBy: 'ed', blocks });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const raw = fs.readFileSync(sidecarPath(bookDir, 'CNX_T'), 'utf-8');
+    expect(raw).toContain('"Suðumark\\nvatns"');
+    const side = readSidecar(bookDir, 'CNX_T');
+    expect(side.blocks[KEY]).toBe('Suðumark\nvatns');
+    expect(side.renderHash).toBe(computeRenderHash(side.blocks, COMPOSER_VERSION));
+    expect(side.renderHash).not.toBe(
+      computeRenderHash({ ...side.blocks, [KEY]: 'Suðumark vatns' }, COMPOSER_VERSION)
+    );
   });
 
   it('CARRIES composedHash FORWARD — a re-approval must not un-compose the figure', () => {

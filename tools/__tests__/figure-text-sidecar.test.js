@@ -308,3 +308,113 @@ describe('writeSidecar byte format', () => {
     );
   });
 });
+
+/**
+ * §C140 '6' R-5a — an LF in a translated block value is the editor's explicit line break, and this
+ * module is the ONE owner of the rule the boundaries refuse a malformed one by (D6): the save route
+ * (server/routes/segment-editor.js), the CI corpus sweep (V10 below) and, through
+ * `keyInkLineCount`, the review panel's textarea predicate and the heldBlockValues validator.
+ * The composer refuses the same shapes by name (figtext.explicit_lines, test_compose_explicit_breaks.py).
+ *
+ * Read through the module OBJECT, not the destructure above, so a missing export fails each case
+ * on its own rather than the whole file at import.
+ */
+describe("blockValueProblems — R-5a explicit line breaks (§C140 '6' T10b)", () => {
+  const owner = require('../lib/figure-text-sidecar.cjs');
+  const codes = (key, value) => owner.blockValueProblems(key, value).map((p) => p.split(':')[0]);
+
+  it('V1 CONTROL: a value with no LF is accepted, whatever its key', () => {
+    expect(owner.blockValueProblems('Celsius', 'Celsíus')).toEqual([]);
+    expect(owner.blockValueProblems('pure water|blood', 'hreint vatn blóð')).toEqual([]);
+  });
+
+  it("V2: phscale's planned edit — two lines on a two-line key — is accepted", () => {
+    expect(owner.blockValueProblems('pure water|blood', 'hreint vatn\nblóð')).toEqual([]);
+  });
+
+  it('V3: an LF on a single-line key is refused line-count — a one-line block takes no break', () => {
+    expect(codes('Celsius', 'Cel\nsíus')).toEqual(['line-count']);
+  });
+
+  it('V4: more lines than the key has source lines is refused line-count', () => {
+    expect(codes('pure water|blood', 'hreint\nvatn\nblóð')).toEqual(['line-count']);
+  });
+
+  it('V5: a CR is refused anywhere — with an LF, and alone', () => {
+    expect(codes('pure water|blood', 'hreint vatn\r\nblóð')).toContain('carriage-return');
+    expect(codes('Celsius', 'Cel\rsíus')).toEqual(['carriage-return']);
+  });
+
+  it('V6: an empty or whitespace-only line is refused empty-line, naming its line', () => {
+    expect(codes('a|b|c', 'x\n\ny')).toEqual(['empty-line']);
+    expect(codes('a|b', 'x\n  ')).toEqual(['empty-line']);
+    expect(owner.blockValueProblems('a|b|c', 'x\n\ny')[0]).toMatch(/line 2\b/);
+  });
+
+  it('V7: a line with leading or trailing whitespace is refused edge-space', () => {
+    expect(codes('a|b', 'x \ny')).toEqual(['edge-space']);
+    expect(codes('a|b', 'x\n y')).toEqual(['edge-space']);
+  });
+
+  it('V8: a line of only invisible characters (U+200B) is refused invisible-line', () => {
+    // U+200B is not whitespace to String.prototype.trim, so the empty-line rule cannot see it.
+    expect('​'.trim()).toBe('​'); // the premise
+    expect(codes('a|b', 'x\n​')).toEqual(['invisible-line']);
+  });
+
+  it("V9: R-17 — a spaces-only key segment is no line, so 'more is| ' takes no break", () => {
+    expect(codes('more is| ', 'minna er\nlágt')).toEqual(['line-count']);
+    expect(owner.blockValueProblems('more is| ', 'minna er lágt')).toEqual([]); // control
+  });
+
+  it('V10: every committed sidecar value in books/*/figure-text passes', () => {
+    const booksRoot = new URL('../../books/', import.meta.url);
+    let checked = 0;
+    let total = 0;
+    const failures = [];
+    for (const book of fs.readdirSync(booksRoot)) {
+      const dir = new URL(`${book}/figure-text/`, booksRoot);
+      if (!fs.existsSync(dir)) continue;
+      for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.is.json'))) {
+        const side = JSON.parse(fs.readFileSync(new URL(f, dir), 'utf-8'));
+        for (const [k, v] of Object.entries(side.blocks || {})) {
+          total += 1;
+          if (typeof v !== 'string') {
+            failures.push(`${book}/${f} ${JSON.stringify(k)}: not a string`);
+            continue;
+          }
+          checked += 1;
+          for (const p of owner.blockValueProblems(k, v)) failures.push(`${book}/${f} ${p}`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+    // Positive control: a sweep that found no file would pass the line above vacuously.
+    expect(total).toBeGreaterThan(0);
+    expect(checked).toBe(total);
+  });
+
+  it("keyInkLineCount is M2's rule: a spaces-only segment is not a line, an empty one is", () => {
+    expect(owner.keyInkLineCount('Celsius')).toBe(1);
+    expect(owner.keyInkLineCount('pure water|blood')).toBe(2);
+    expect(owner.keyInkLineCount('more is| ')).toBe(1);
+    expect(owner.keyInkLineCount('a||b')).toBe(3);
+    expect(owner.keyInkLineCount(' ')).toBe(1); // nothing but spaces: the whole key is one line
+    expect(owner.keyInkSegments('more is| ')).toEqual(['more is']);
+  });
+
+  it('INVISIBLE_LINE is exported and matches a line that draws nothing, not one that does', () => {
+    expect(owner.INVISIBLE_LINE.test('​­')).toBe(true);
+    expect(owner.INVISIBLE_LINE.test('x​')).toBe(false);
+  });
+
+  it('single owner (D6): figure-config-validate.js keeps no copy of either predicate', () => {
+    const src = fs.readFileSync(
+      new URL('../lib/figure-config-validate.js', import.meta.url),
+      'utf-8'
+    );
+    expect(src).toContain('heldBlockValues'); // control: the right file
+    expect(src).not.toContain('\\p{Cf}'); // INVISIBLE_LINE's literal
+    expect(src).not.toMatch(/\/\^ \+\$\//); // the spaces-only segment test
+  });
+});

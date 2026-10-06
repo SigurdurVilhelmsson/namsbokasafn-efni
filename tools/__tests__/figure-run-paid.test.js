@@ -1449,6 +1449,19 @@ describe('the MT failure modes each leave the figure eligible', () => {
     expect(rec(result, 'FIG_A').reason).toMatch(/k0/);
   });
 
+  // §C140 '6' R-5a (D9) end to end: an MT value carrying an LF is minted with a space instead, and
+  // the run names the key - on the record and in the summary - so an operator sees the change.
+  it('N2: mints an MT line break as a space and names the key on the record and in the summary', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ translate: () => ({ __blocks: { k0: ['IS\nk0'], k1: ['IS k1'] } }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', k1: 'IS k1' });
+    expect(rec(result, 'FIG_A').newlineKeys).toEqual(['k0']);
+    expect(summarise(result)).toContain(
+      '  ⚠️ FIG_A: the MT returned 1 value(s) with a line break (k0) — each was minted with a space'
+    );
+  });
+
   it('buckets a compose refusal as failed-compose and keeps the paid sidecar', async () => {
     const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
     const spawn = fakeSpawn({ compose: () => ({ __error: 'the English-kept blocks are wrong' }) });

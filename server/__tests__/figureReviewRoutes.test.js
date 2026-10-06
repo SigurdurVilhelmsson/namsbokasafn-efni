@@ -749,6 +749,56 @@ describe('POST /figures/:basename/block', () => {
   });
 });
 
+/**
+ * §C140 '6' R-5a (T10b, D7): an LF in a block value is the editor's explicit line break, and the save
+ * route refuses every malformed one with a 400 naming the reason, before any write. The rule's one
+ * owner is tools/lib/figure-text-sidecar.cjs `blockValueProblems` (its own cases are in
+ * tools/__tests__/figure-text-sidecar.test.js); these pin that the ROUTE applies it.
+ * The fixture gains a two-line key, 'QZ a|QZ b', for these cases only.
+ */
+describe('POST /figures/:basename/block — explicit line breaks (R-5a)', () => {
+  const TWO_LINE = 'QZ a|QZ b';
+  beforeEach(() => {
+    writeSidecarFixture({
+      Celsius: 'Selsíus',
+      Boiling: 'Suðumark 373.15 K',
+      [TWO_LINE]: 'QZ a QZ b',
+    });
+  });
+  const rows = () => svc.getDb().prepare('SELECT COUNT(*) c FROM figure_block_edit').get().c;
+
+  it('R1 CONTROL: a two-line value on a two-line key is saved, and read back byte for byte', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: TWO_LINE, isText: 'X\nY' } })
+    );
+    expect(out.status).toBe(200);
+    expect(out.body).toEqual({ ok: true });
+    const after = await invoke(getFiguresH, req());
+    expect(after.body.figures[0].blocks[TWO_LINE]).toBe('X\nY');
+  });
+
+  it('R2: an LF on a single-line key is a 400 naming line-count, and nothing is written', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: 'Celsius', isText: 'Cel\nsíus' } })
+    );
+    expect(out.status).toBe(400);
+    expect(out.body.error).toContain('line-count');
+    expect(rows()).toBe(0);
+  });
+
+  it('R3: a CR (here a CRLF break) is a 400 naming carriage-return, and nothing is written', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: TWO_LINE, isText: 'X\r\nY' } })
+    );
+    expect(out.status).toBe(400);
+    expect(out.body.error).toContain('carriage-return');
+    expect(rows()).toBe(0);
+  });
+});
+
 describe('POST /figures/:basename/state', () => {
   it('approves a figure that has no figure_review row yet', async () => {
     // Day one: the row does not exist, and setState() is an UPDATE. Without the

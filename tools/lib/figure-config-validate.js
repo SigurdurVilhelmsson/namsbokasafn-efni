@@ -50,7 +50,11 @@ import { normkey } from './figure-text-config.js';
 import { DEFAULT_SUFFIX, indexBookSourceBasenames } from '../generate-image-mapping.js';
 import { readMappingOrRefuse, topLevelTranslatedCopies } from './translated-figure-refs.js';
 
-const { sidecarPath } = createRequire(import.meta.url)('./figure-text-sidecar.cjs');
+// §C140 '6' D6: INVISIBLE_LINE and the key's line rule have ONE JS owner, figure-text-sidecar.cjs, which
+// the block-save route and the corpus sweep also read (blockValueProblems).
+const { sidecarPath, INVISIBLE_LINE, keyInkSegments, keyInkLineCount } = createRequire(
+  import.meta.url
+)('./figure-text-sidecar.cjs');
 
 const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPins'];
 // §C140 ㊾ D5(a) — `heldBlockValues` is keyed by basename like TABLES, so it shares their type,
@@ -162,8 +166,6 @@ const MIN_REASON = 40;
  */
 export const HELD_SCRIPT_CHARS = '₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻';
 const SCRIPT_BLOCK = [0x2070, 0x209f]; // Unicode "Superscripts and Subscripts"
-// A line made only of characters that draw nothing on their own (heldvalues.py INVISIBLE_CATEGORIES).
-const INVISIBLE_LINE = /^[\p{Cf}\p{Mn}\p{Me}\p{Cc}]+$/u;
 
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
@@ -426,9 +428,9 @@ export function validateFigureConfig(cfg, corpus) {
       // above. The exact count (the block's visual lines) is compose.py's `line-count` refusal.
       // A key segment of only U+0020 is the next row's indent space (figtext.is_blank_line); the composer
       // folds it into its neighbour, so it is no line a value can fill (FoodLabel `(cid:127) 5% or less| `).
-      const segs = k.split('|');
-      const inkSegs = segs.filter((s) => !(s !== '' && /^ +$/.test(s)));
-      const keyLines = inkSegs.length || segs.length;
+      // The rule is figure-text-sidecar.cjs's keyInkSegments/keyInkLineCount (its one owner, D6).
+      const inkSegs = keyInkSegments(k);
+      const keyLines = keyInkLineCount(k);
       if (lines.length > keyLines) {
         problems.push(
           `heldBlockValues.${b}[${k}] has ${lines.length} lines but its key has ${keyLines} source lines`

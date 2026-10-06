@@ -502,6 +502,9 @@ router.post(
 // =====================================================================
 
 const figureReview = require('../services/figureReviewService');
+// §C140 '6' R-5a: the one owner of what a translated block value may hold (an explicit line
+// break's shape), shared with the CI corpus sweep and the review panel's line rule.
+const { blockValueProblems } = require('../../tools/lib/figure-text-sidecar.cjs');
 
 /**
  * :basename is concatenated into a filename by sidecarPath(), so it must not be
@@ -726,6 +729,15 @@ router.post(
     }
     if (isText.length > 10000) {
       return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+    }
+    // §C140 '6' R-5a ([USER] 2026-10-05): an LF in the value is the editor's explicit line break,
+    // drawn on its own line by the composer. A malformed one (a CR, an empty, edge-spaced or
+    // invisible line, or more lines than the key has source lines - so a single-line key takes no
+    // LF) would be refused at compose; refuse it here instead, by name, before any IO. The rule's
+    // one owner is figure-text-sidecar.cjs; the composer's own copy is figtext.explicit_lines.
+    const problems = blockValueProblems(blockKey, isText);
+    if (problems.length) {
+      return res.status(400).json({ error: `isText cannot be stored — ${problems.join('; ')}` });
     }
     try {
       const ctx = resolveFigureRequest(req);

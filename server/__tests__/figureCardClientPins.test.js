@@ -22,6 +22,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLIENT = path.join(__dirname, '..', 'public', 'js', 'segment-editor.js');
@@ -156,6 +157,56 @@ describe('the decimal suggestion can be applied in one click', () => {
     const captionPart = region.slice(captionStart, mtStart);
     expect(captionPart.length).toBeGreaterThan(0); // control: the slice is non-empty
     expect(captionPart).not.toContain('data-block-apply');
+  });
+});
+
+/**
+ * §C140 '6' R-5a ([USER] 2026-10-05) — a multi-line block is edited in a TEXTAREA, so an editor can
+ * type an explicit line break. An `<input type=text>` DELETES an LF and fuses the words around it
+ * (measured in HeadlessChrome 153: 'minna er\nlágt' -> 'minna erlágt'), so a break typed, pasted or
+ * already stored would be lost on the next save, silently.
+ *
+ * The predicate is `keyInkLineCount(key) >= 2` (D8). Its owner is tools/lib/figure-text-sidecar.cjs,
+ * which the browser cannot require, so the client carries a copy, `figureKeyInkLineCount`; P3 runs
+ * that copy against the owner over every committed block key.
+ */
+describe('a multi-line block is edited in a textarea (R-5a)', () => {
+  it('P1: renderFigureBlock creates a textarea under the ink-line predicate, an input otherwise', () => {
+    const region = figureBlockSource();
+    expect(region).toMatch(/figureKeyInkLineCount\(key\)\s*>=\s*2/);
+    expect(region).toMatch(/createElement\(\s*\w+\s*\?\s*'textarea'\s*:\s*'input'\s*\)/);
+  });
+
+  it('P2 CONTROL: the save sends the field value as it stands — no trim, no replace', () => {
+    const region = figureBlockSource();
+    expect(region).toMatch(/saveFigureBlock\(basename, key, input\.value\)/);
+    expect(region).not.toMatch(/input\.value\s*\.\s*(trim|replace)/);
+  });
+
+  it("P3: the client's figureKeyInkLineCount agrees with the owner on every committed key", () => {
+    const owner = createRequire(import.meta.url)('../../tools/lib/figure-text-sidecar.cjs');
+    const start = src.indexOf('function figureKeyInkLineCount(');
+    expect(start).toBeGreaterThan(-1);
+    const end = src.indexOf('\n  }\n', start);
+    expect(end).toBeGreaterThan(start);
+    const client = new Function(`${src.slice(start, end + 4)}; return figureKeyInkLineCount;`)();
+    const booksRoot = path.join(__dirname, '..', '..', 'books');
+    const keys = ['Celsius', 'pure water|blood', 'more is| ', 'a||b', ' ', '|', 'a| |b|  '];
+    for (const book of fs.readdirSync(booksRoot)) {
+      const dir = path.join(booksRoot, book, 'figure-text');
+      if (!fs.existsSync(dir)) continue;
+      for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.is.json'))) {
+        keys.push(
+          ...Object.keys(JSON.parse(fs.readFileSync(path.join(dir, f), 'utf-8')).blocks || {})
+        );
+      }
+    }
+    expect(keys.length).toBeGreaterThan(1000); // control: the corpus really was read
+    const differ = keys.filter((k) => client(k) !== owner.keyInkLineCount(k));
+    expect(differ).toEqual([]);
+    // control: the predicate separates the one committed '|' key that is a single line
+    expect(client('more is| ')).toBe(1);
+    expect(client('pure water|blood')).toBe(2);
   });
 });
 

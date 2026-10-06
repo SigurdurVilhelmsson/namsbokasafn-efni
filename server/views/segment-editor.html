@@ -383,6 +383,14 @@
         min-width: 10rem;
       }
 
+      /* §C140 '6' R-5a: a multi-line block's field is a textarea, so an editor can type an explicit
+       line break. A textarea does not inherit the page font the way an input is styled here, and
+       its height follows its rows; resizing is vertical only, so the row keeps its layout. */
+      textarea.figure-block-input {
+        font: inherit;
+        resize: vertical;
+      }
+
       /* Unsaved text carried across a rebuild, or typed and not yet saved. The
        whole point of the feature is that this state is VISIBLE — the loss it
        replaces was silent. Colour alone would not carry for a colour-blind

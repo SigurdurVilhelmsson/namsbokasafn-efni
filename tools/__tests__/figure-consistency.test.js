@@ -23,6 +23,17 @@ describe('decimalSeparatorWarnings', () => {
   it('does not flag prose containing a full stop', () => {
     expect(decimalSeparatorWarnings({ k: 'Suðumark vatns.' })).toEqual([]);
   });
+  // §C140 '6' R-5a: an LF is the editor's explicit line break. The suggestion is a WHOLE value an
+  // editor applies in one click, so it must keep every break: a suggestion that joined the lines
+  // would delete the break it was never about.
+  it('D1: suggests the comma line by line and keeps the explicit line break', () => {
+    expect(decimalSeparatorWarnings({ k: 'a 1.5\nb' })).toEqual([
+      { blockKey: 'k', current: 'a 1.5\nb', suggested: 'a 1,5\nb' },
+    ]);
+  });
+  it('D2: an explicit line break alone is no warning — it is not whitespace to normalise', () => {
+    expect(decimalSeparatorWarnings({ k: 'a\nb' })).toEqual([]);
+  });
 });
 
 describe('captionDivergence', () => {
