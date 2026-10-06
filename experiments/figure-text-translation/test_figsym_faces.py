@@ -9,10 +9,14 @@ and the M5/M6 scratch gates are gone for good.
     environment under one COMPOSER_VERSION, so the scratch gates (`M5_Rn`, `M6_KEPT`, `M6_SERIF`, all read from
     os.environ at import) were hardwired away. G1 scans the composer's drawing modules BY AST - code, not comments
     or docstrings - and fails on any environment read of an `M5_`/`M6_` name, whatever `os` is imported as
-    (the scratch wrote `import os as _os`). G0/G0b are its controls: planted sources the scanner MUST flag, and
-    planted look-alikes (a comment, a docstring, an unrelated variable) it must not.
+    (the scratch wrote `import os as _os`), and whether the name is a literal or COMPUTED from a leading literal:
+    the integrate M5 gate read `_os.environ.get('M5_' + r, '1')` inside `_on(r)`, so a scanner that accepts only a
+    constant string sees none of M5. (The first version did exactly that and passed its own controls, which planted
+    only constant-string reads - so G0 now plants that verbatim read, an f-string, `%` and `.format`.) G0/G0b are
+    its controls: planted sources the scanner MUST flag, and planted look-alikes (a comment, a docstring, an
+    unrelated variable, a computed name that does not OPEN on M5_/M6_) it must not.
     CONTROL in G13's sense: it passes on the pre-M6 tree too; its red is the verbatim integrate port, which still
-    carried `M6_KEPT = os.environ.get(...)` and `M6_SERIF = _os.environ.get(...)`.
+    carried `M6_KEPT = os.environ.get(...)`, `M6_SERIF = _os.environ.get(...)` and the M5 `_on(r)` gate.
 
 [T] REAL FIGURES, end to end (the R0 pattern of test_compose_runexact.py): each source resolves through this
     box's sources.local.json, is prepared with figure-prepare.py into a temporary directory and composed with
@@ -78,15 +82,32 @@ def _is_environ(node):
             or (isinstance(node, ast.Name) and node.id == 'environ'))
 
 
+def _literal_prefix(node):
+    """The LEADING literal text of a string expression, or None: a str constant itself; a binary operation's
+    leftmost operand (`'M5_' + r`, `'M6_%s' % r`); an f-string's first part when that part is literal (`f'M5_{r}'`);
+    the format string of `'M5_{}'.format(r)`. A name, a call or an f-string that opens on a field has none."""
+    while isinstance(node, ast.BinOp):
+        node = node.left
+    if isinstance(node, ast.JoinedStr):
+        node = node.values[0] if node.values else None
+    elif isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == 'format':
+        node = node.func.value
+    return node.value if isinstance(node, ast.Constant) and isinstance(node.value, str) else None
+
+
 def _gate_name(node):
-    return node.value if isinstance(node, ast.Constant) and isinstance(node.value, str) and GATE.match(node.value) \
-        else None
+    """The M5_/M6_ name `node` reads - for a COMPUTED name (the integrate M5 gate read `'M5_' + r`), its literal
+    prefix, which is what the flagged row then names - or None."""
+    lit = _literal_prefix(node)
+    return lit if lit is not None and GATE.match(lit) else None
 
 
 def env_gate_reads(source):
     """-> [(line, name)] for every environment READ of an M5_/M6_ name in `source`, keyed on the AST:
     `<x>.environ.get/pop/setdefault('M6_..')`, `<x>.environ['M6_..']`, `<x>.getenv('M6_..')` / `getenv(..)`,
-    and `'M6_..' in <x>.environ`. Comments and string literals elsewhere are not code and are not seen."""
+    and `'M6_..' in <x>.environ` - with the name a literal OR computed from a leading literal (`_literal_prefix`).
+    Comments and string literals elsewhere are not code and are not seen. NOT seen (no instance in any scanned
+    module or in the integrate scratch): a name held in a variable first, or a read through a copy of environ."""
     out = []
     for n in ast.walk(ast.parse(source)):
         if isinstance(n, ast.Call) and n.args:
@@ -120,10 +141,19 @@ PLANTED = '\n'.join((
     "R7 = getenv('M5_R7MODE')",
     "on = 'M5_R3' in environ",
     "t = _os.getenv('M6_TAIL', '')",
+    "def _on(r):",
+    "    return _os.environ.get('M5_' + r, '1') != '0'",
+    "a = os.environ.get(f'M5_{r}', '1')",
+    "b = environ['M6_%s' % r]",
+    "c = getenv('M5_{}'.format(r))",
+    "d = f'M6_{r}' in os.environ",
 ))
 got0 = env_gate_reads(PLANTED)
-check('G0 CONTROL the scanner FLAGS every planted gate read (get, _os alias, subscript, getenv, `in`, os.getenv)',
-      got0 == [(4, 'M6_KEPT'), (5, 'M6_SERIF'), (6, 'M5_R1'), (7, 'M5_R7MODE'), (8, 'M5_R3'), (9, 'M6_TAIL')],
+check('G0 CONTROL the scanner FLAGS every planted gate read (get, _os alias, subscript, getenv, `in`, os.getenv) - '
+      "and a COMPUTED name by its literal prefix: integrate's verbatim M5 gate `'M5_' + r` (line 11), an f-string, "
+      "`%` and `.format`",
+      got0 == [(4, 'M6_KEPT'), (5, 'M6_SERIF'), (6, 'M5_R1'), (7, 'M5_R7MODE'), (8, 'M5_R3'), (9, 'M6_TAIL'),
+               (11, 'M5_'), (12, 'M5_'), (13, 'M6_%s'), (14, 'M5_{}'), (15, 'M6_')],
       repr(got0))
 LOOKALIKE = '\n'.join((
     "import os",
@@ -132,9 +162,13 @@ LOOKALIKE = '\n'.join((
     "p = os.environ.get('FIGTEXT_STIX_FONT')",
     "M6_LOG = []",
     "d = {}.get('M6_KEPT')",
+    "e = os.environ.get(PREFIX + 'KEPT')",
+    "f = os.environ.get(f'{x}M6_')",
+    "g = os.environ.get('FIGTEXT_' + 'M5_X')",
 ))
 got0b = env_gate_reads(LOOKALIKE)
-check('G0b CONTROL the scanner does NOT flag a comment, a docstring, another variable, a non-environ .get',
+check('G0b CONTROL the scanner does NOT flag a comment, a docstring, another variable, a non-environ .get, nor a '
+      'computed name whose LEADING part is not an M5_/M6_ literal (a variable, an f-string field, another literal)',
       got0b == [], repr(got0b))
 for name in SCANNED:
     p = HERE / name
