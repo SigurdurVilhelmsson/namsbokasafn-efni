@@ -173,7 +173,8 @@ check('[a3 CONTROL] width forcing 3 lines there is NAMED on the height axis',
       f"{texts(lay)} {lay['overflow']}")
 # The same text with the down margin widened to 8.0: the clamp interval (16.2) now holds THREE lines at the source
 # pitch (2 * 5.5 + 4.7 = 15.7) while the pad budget (15.53) still refuses three at the lead (16.92). Only on_rows'
-# `n == n_src` keeps a third line off two source rows (down 7.5 .. 9.39 separates it; 0.39, 6.0 and 7.0 do not).
+# `n == n_src` keeps a third line off two source rows. Measured on both arms: down 7.5, 8.0 and 9.3 separate it; 0.39,
+# 7.0 and 7.4 do not, nor does 9.4 (from there the pad budget admits 3 lines at the lead and both arms fit).
 c3b = derived('cell', 0, 160, 5.0, GB_PROJ, up=1.33, down=8.0)
 lay = dec('a' * 60 + ' ' + 'b' * 60 + ' ' + 'c' * 60, c3b, src_cues(5.0, GB_PROJ))
 check('[a3b CONTROL] ... and with a clamp interval that holds 3 lines at the source pitch: still NAMED on height, '
@@ -189,8 +190,8 @@ a, b = dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ)), \
     dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ), **OFF)
 check('[a3c CONTROL] source rows OUTSIDE the clamp interval are not admitted: 1 line, not drawn on the rows, '
       'identical to gates off',
-      len(a['lines']) == 1 and a.get('rows') is not True and same(a, b),
-      f"{texts(a)} lead {a['lead']:.3f} rows {a.get('rows')} | off {texts(b)} lead {b['lead']:.3f}")
+      len(a['lines']) == 1 and a['rows'] is False and same(a, b),
+      f"{texts(a)} lead {a['lead']:.3f} rows {a['rows']} | off {texts(b)} lead {b['lead']:.3f}")
 for lab, c, cu in (
         ('[a4 CONTROL] source pitch == lead: decision identical to gates off',
          derived('cell', 0, 200, 5.0, [P0, P0 - 6.11], 1.33, 0.39), src_cues(5.0, [P0, P0 - 6.11])),
@@ -227,7 +228,7 @@ lay = dec('A-vitamin C-vitamin Kalsium Jarn', c, src_cues(5.0, VC))
 check('[b3 CONTROL] the ruled wording Kalsium restores 4 rows under (E), 0 code', len(lay['lines']) == 4,
       str(texts(lay)))
 
-print('(c) R9: a short token CLOSING a bracket may end a line, and binds backward')
+print('(c) R9: a short token ending in ")" after an earlier "(" may end a line, and binds backward')
 TWO = [25.0, 19.5]
 lay = dec('Skammta 1 bolli (228 g) Fjoldi skammta pakka 2', derived('cell', 0, 70, 5.0, TWO, 10, 10),
           src_cues(5.0, TWO))
