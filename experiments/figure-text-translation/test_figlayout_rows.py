@@ -79,6 +79,9 @@ CONTROLS (G13: pass before and after by design; each names the planted variant t
         it is refused). Red when `_closer` drops its opener test.
 * [c6]  'xx (yy zzzzzzzzzzzzzz)': a LONG word ending in ')' after an opener is no closer, so a line may start with
         it. Red when `_closer` drops its short-token test (`is_symbol`) - R-19 is scoped to a SHORT token.
+* [c7]  'b) natrium og klor (Na)': an enumerator whose only '(' comes AFTER it still binds forward - the opener
+        test reads EARLIER words only (G21 F1 n28). Red when `_closer` scans every word (`self.words` for
+        `self.words[:i]`), which draws 'b)' alone on its line.
 A RULING PROBE, not a control:
 * [b2]  the committed value 'A-vitamin C-vitamin Kalk Jarn': (E) merges the 4th item - 'Kalk Jarn' on one row
         (what [USER] would have to exempt). Red with (E) off.
@@ -298,6 +301,11 @@ check('[c3b CONTROL] an enumerator "a)" with no opener: the min-max cut after it
 lay = dec('xx (yy zzzzzzzzzzzzzz)', derived('cell', 0, 60, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
 check('[c6 CONTROL] a LONG word ending in ")" after an opener is no closer: a line may still start with it',
       texts(lay) == ['xx (yy', 'zzzzzzzzzzzzzz)'], str(texts(lay)))
+# 'b) natrium og klor (Na)' in a 46 pt cell (budget 42), one source line: drawn on 3 lines at 8.25. The enumerator
+# 'b)' has no '(' BEFORE it, so it binds forward ('b) natrium'); the later '(Na)' must not make it a closer.
+lay = dec('b) natrium og klor (Na)', derived('cell', 0, 46, 9.0, [50.0], 20, 20), src_cues(9.0, [50.0]))
+check('[c7 CONTROL] an enumerator "b)" with an opener only AFTER it still binds forward (never alone on its line)',
+      texts(lay) == ['b) natrium', 'og', 'klor (Na)'], str(texts(lay)))
 lay = dec('Seigja aaaa (mPa s)', derived('cell', 0, 40, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
 check('[c4 FIXED POINT] (A) unchanged: a final "s)" never stands alone', texts(lay)[-1] != 's)', str(texts(lay)))
 lay = dec('aaaaaaaaaa (bb g) cccccccccccc', derived('cell', 0, 60, 5.0, TWO, 10, 10), src_cues(5.0, TWO))

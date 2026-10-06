@@ -46,6 +46,11 @@ case D1 (an LF read as a space) closes.
 X5b and CE7 (T10a review, fix 1) also pin T10a's own choices against a mutant each: X5b the open ladder's third
 rung (the floor, named against b_ii and displaced - an undisplaced or b_i floor passed every other check), CE7
 compose's MEAN source pitch (a first-gap pitch passed, because every other planted block has two visual lines).
+X1b, X2b and X6b (review-fix round G21, F1 n29/n31/n34) each kill a mutant that passed every suite: X1b the open
+ladder's FIRST rung (b_i undisplaced before b_ii - visible only where the anchor sits within pad of the free edge;
+mutant: the b_i rung deleted), X2b the guard's zero/negative half (mutant: only `cuts[-1] != W` checked - [3, 0]
+then draws an empty line, [4, -1] raises IndexError), X6b heightFit None on an explicit box and cell (mutant: the
+explicit reset keeps the count search's heightFit).
 NOT PINNED HERE: an LF on an ARC end to end (compose refuses it through the arc path's own explicit_lines call;
 only EL8 pins the helper - planting an arc needs a fitted circle).
 ALSO NOT PINNED HERE: whether a translated value reaches compose.py with its LF - the sidecar route, the editor and the
@@ -216,6 +221,23 @@ L = lay('aa bb cc', open_(0.0, 200.0, 'left'), xcues(explicit=[2, 2]))
 check('X2 explicit counts that do not partition the words raise ValueError',
       'RAISED' in L and L['RAISED'].startswith('ValueError') and 'partition' in L['RAISED'], show(L))
 
+# X1b (G21 F1 n29) - the ladder's FIRST rung, where it is visible: FL 9, anchor 10 (left), within pad of the free
+# edge. b_i = 200 - 10 - 2 = 188, b_ii = (200 - 9) - 4 = 187; 'aa bb' (22.5) fits both. b_i is tried first, so the
+# lines stay UNDISPLACED at x0 10 (budget 188). Taking b_ii first would clamp [10, 32.5] into [FL + 2, FR - 2] =
+# [11, 198]: disp +1, x0 11, budget 187.
+L = lay('aa bb cc', open_(9.0, 200.0, 'left'), xcues(explicit=[2, 1]))
+check("X1b open, both rungs fit and the anchor sits within pad of the free edge: b_i (undisplaced) is taken first - "
+      "disp 0, x0 10, budget 188",
+      'RAISED' not in L and texts_of(L) == ['aa bb', 'cc'] and L['disp'] == 0 and near(L['x0'][0], 10.0)
+      and near(L['x0'][1], 10.0) and near(L.get('budget'), 188.0), show(L) + f" budget {L.get('budget')}")
+
+# X2b (G21 F1 n31) - the other half of the partition guard: counts that SUM to the word count but hold an empty (0)
+# or negative line. [3, 0] and [0, 3] would draw an empty line; [4, -1] would index past the words.
+for _bad in ([3, 0], [0, 3], [2, 0, 1], [4, -1]):
+    L = lay('aa bb cc', open_(0.0, 200.0, 'left'), xcues(n_src=len(_bad), explicit=_bad))
+    check(f'X2b explicit counts {_bad} (a zero or negative line) raise ValueError naming the partition',
+          'RAISED' in L and L['RAISED'].startswith('ValueError') and 'partition' in L['RAISED'], show(L))
+
 # X3 - box, width budget (42.5 - 0) - 2*2 = 38.5. 'aaaa bbbb' is 9 characters: 40.5 at 9, 39.375 at 8.75, 38.25 at
 # 8.5 -> 8.5. (Without the explicit cue the box keeps 2 lines at 9: 'aaaa' / 'bbbb cc' = 31.5.)
 L = lay('aaaa bbbb cc', box(0.0, 42.5, 0.0, 60.0), xcues(explicit=[2, 1]))
@@ -269,6 +291,14 @@ L = lay('aa bb', cell(0.0, 100.0, 0.0, 55.0, 'left'), xcues(n_src=3, explicit=[1
 check('X7 cell: drawn from the first source baseline, then the cell\'s vertical clamp applied (vdisp -3.57)',
       'RAISED' not in L and texts_of(L) == ['aa', 'bb'] and near(L['vdisp'], 53.0 - (50.0 + 0.73 * 9.0))
       and near(L['top'], 50.0 + L['vdisp']) and near(L['lead'], PITCH) and L['step'] == 'explicit', show(L))
+
+# X6b (G21 F1 n34) - an explicit label has NO height budget, so its heightFit is None - on X6's box and X7's cell,
+# where the count search (run first, then replaced by the explicit lines) had set it True.
+_hf = [lay('aa bb', c, cu).get('heightFit', 'absent') for c, cu in (
+    (box(0.0, 100.0, 0.0, 40.0), xcues(explicit=[1, 1])),
+    (cell(0.0, 100.0, 0.0, 55.0, 'left'), xcues(n_src=3, explicit=[1, 1])))]
+check('X6b an explicit box or cell label reports heightFit None (no height budget), not the count search\'s value',
+      _hf == [None, None], f'heightFit box/cell: {_hf}')
 
 # X8 - open, n_src 2 and 2 lines, rows 12.9507 apart against sz0*LEAD 10.998: P1v would redraw on the source rows
 # (lead 12.9507). The explicit pitch here is a deliberately different 7.0, so a P1v that ran would be seen.
