@@ -53,9 +53,6 @@ where it names them (the ungated A2, the threshold-free P1), a one-guard deletio
 * C-10 the DESCENDING-ROWS guard of P1v: FracDistil block 2 with its second source baseline raised to 0.4 * sz0
        below the first (a HAND-BUILT cue; no committed record has rows closer than 0.5 * sz0) keeps the base lead
        and top. P-2 is its positive control: the same block with its real rows does move.
-* C-3  MassSpec block 4, whose source pitch equals sz0 * LEAD: the lead is unchanged. NOT a G13 control - a FIXED
-       POINT: at a zero span error no P1v variant fires, and where one is forced to, the source pitch IS the old
-       lead, so no planted variant can turn it red. It states the invariant; it discriminates nothing.
 * C-4  FoodLabel 'more is| ' with a blank second source line (cues['blank'] = [False, True]): the lead is unchanged.
        The cue shape is the pre-M2 one (n_src 2): after M2 compose folds that line and builds n_src 1, so this pins
        the guard as defence in depth, with hand-built cues.
@@ -65,6 +62,10 @@ where it names them (the ungated A2, the threshold-free P1), a one-guard deletio
 * C-5  HazDiamond's first 'box' block drawn on its source line count: the lead stays sz0 * LEAD and the glyph box
        stays centred in the box (R2 box-vertical; P1v never reaches a box).
 * C-6  FoodLabel 'Cholesterol|Sodium' (block 8, span off by 0.67 pt, below PITCH_SRC_MIN 1.0) keeps its lead.
+A FIXED POINT, not a G13 control (it carries the C- prefix it was ported with):
+* C-3  MassSpec block 4, whose source pitch equals sz0 * LEAD: the lead is unchanged. At a zero span error no P1v
+       variant fires, and where one is forced to, the source pitch IS the old lead, so no planted variant can turn
+       it red. It states the invariant; it discriminates nothing.
 Gate-off controls (spec §2 records that M4's gate-off = base was asserted, never measured; these measure it on
 these records). SKIPPED where the gate constant does not exist; the constant is restored in `finally`:
 * G-1  COLUMN_ALIGN = False: A-1..A-4 return 'center', the base record's own `align`.
