@@ -17,7 +17,7 @@ refusals need: a stroked three-point path, a slanted line, a filled two-point pa
 rotated `cm`. G21 (F3) adds four more generated pages, so MAIN's counts stay as they are: CLIP (paths
 that also set the clip), SCALED (a 0.5 cm and a 9x Tm), EDGE (refusal boundaries, a kerned TJ, a TL that
 differs from the TD's leading) and NEAR (selector pairs differing in one property). Section 13's pins
-each kill a mutant every earlier case survived; the mutants are named in the F3 fixer's report.
+each kill a mutant every earlier case survived; the mutants are named in the commit that added them.
 
 🔴 EVERY "UNMOVED" HERE IS MEASURED BY A SECOND INSTRUMENT. The module re-measures its own output
 (`_verify`), so asserting with its own `inventory` alone would let one bug in that walk hide itself.
