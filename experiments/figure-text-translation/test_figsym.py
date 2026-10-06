@@ -176,6 +176,9 @@ for face in NEW:
     check(f'6d {SUBFAMILY[face]}: a missing face file is REFUSED, naming the path',
           str(absent_dir / FS.FACES[face][0]) in raised, raised[:200])
     check('6d2 ... and the refusal names where THAT face comes from', FS.FACES[face][3] in raised, raised[-200:])
+    check('6d3 ... and its hint names no directory the face is not read from: with $FIGTEXT_STIX_FONT set, a face '
+          'is read beside THAT file only, so the hint names the variable and never "the default directory"',
+          'FIGTEXT_STIX_FONT' in raised and 'default directory' not in raised, raised[-200:])
 del os.environ['FIGTEXT_STIX_FONT']
 FS._reset()
 check('6c3 CONTROL - the four source URLs are distinct, all in the archive directory FONT_SOURCE_URL is in, '

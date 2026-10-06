@@ -123,7 +123,7 @@ def load_face(face):
         from fontTools.ttLib import TTFont
         name, _, sha, url = FACES[face]
         data = _read_pinned(face_path(face), sha, url, f'STIX 1.1.0 face {name}',
-                            'put it beside the Regular file $FIGTEXT_STIX_FONT names, or in the default directory')
+                            'point $FIGTEXT_STIX_FONT at the Regular file in the directory that holds it')
         _FACES_LOADED[face] = (TTFont(io.BytesIO(data)), data)
     return _FACES_LOADED[face]
 
