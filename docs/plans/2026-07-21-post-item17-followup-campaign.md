@@ -4,7 +4,26 @@
 
 ## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]: the PR shape** (one question, batched on the review page or in chat), then **[CODE]: extract the plan text from the scratch commits, replicate it from the text alone (0-byte diff), mutation-test it, then open PR-A.**
+### ⏭ SINGLE NEXT ACTION — **[USER]: review and merge PR-A** (opened 2026-10-06 from `content/c140-figure-review-wording`). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
+
+- ⚖️ **[USER]'s answers, 2026-10-06 afternoon:**
+  - **One PR from this branch.** The 49 verified scratch commits were cherry-picked onto
+    `content/c140-figure-review-wording`, so the PR carries the six-figure wording fix, the ch05 ice
+    pack, the held docs commits and the '6' code. The tree equals the measured scratch tip `9c908aa42`
+    outside `docs/`.
+  - **No plan-text extraction.** A whole-branch adversarial review and mutation test replaced it.
+- 🔎 **The review (0 ISK):**
+  - 6 read-only lenses and 3 mutation testers, each tester in its own worktree, with 2 refuting
+    skeptics per finding. 77 findings, 65 kept, all minor, 0 blocking; the completeness critic
+    found nothing new.
+  - Fixed in 19 appended commits (`ed24393bb`…`9c908aa42`), each group approved on first review.
+    Behaviour fixes include a `heldplan.script_pool` crash, M5 R4 dropping the subscript of
+    *Ka*/*Ksp*, an MT alternative's line break bypassing intake, a CR surviving intake, and an
+    editor's line break dropped silently on a run-exact value.
+  - Re-measured: `npm test` 0 failing files; Python 41/41. The corpus differs from the first
+    measurement in exactly the 9 predicted figures, and only by the ligature style (finding #7).
+  - One finding was against this register's own R-16 decision record. It stated the rejected
+    formula; it was corrected before it was ever pushed.
 
 - ⚖️ **[USER]'s rulings, 2026-10-06 morning:**
   - **R-16 RIDES IN '6'**, as its own task with its own measurement, so editors re-approve figures only once.
@@ -54,8 +73,8 @@
   - **Fonts:** STIXGeneral-Italic, Bold and BoldItalic were re-fetched from the official stipub
     archive, are byte-identical to M6's copies, and are installed hash-pinned in
     `~/.cache/namsbokasafn-figtext/stix-1.1.0/` (SHA256SUMS and PROVENANCE extended). Never committed.
-- **Branch:** `content/c140-figure-review-wording` still has no PR. Its 2026-10-05 docs commits and
-  this note are LOCAL and HELD for the version-6 branch ([USER], 2026-10-05).
+- **Branch:** `content/c140-figure-review-wording` IS the version-6 branch. Its held docs commits ride
+  in PR-A, as [USER] asked on 2026-10-05.
 
 ---
 
