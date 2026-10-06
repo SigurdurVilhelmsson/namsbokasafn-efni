@@ -14,7 +14,10 @@ band beside a positive one, a stroked closed circle under `q cm ... Q`, an arrow
 T* lines and further lines that must not move (FoodLabel's single BT draws circle 5's digit and the
 whole right column through relative moves), and a BT holding a `'` operator. Plus the shapes the
 refusals need: a stroked three-point path, a slanted line, a filled two-point path and a rect under a
-rotated `cm`.
+rotated `cm`. G21 (F3) adds four more generated pages, so MAIN's counts stay as they are: CLIP (paths
+that also set the clip), SCALED (a 0.5 cm and a 9x Tm), EDGE (refusal boundaries, a kerned TJ, a TL that
+differs from the TD's leading) and NEAR (selector pairs differing in one property). Section 13's pins
+each kill a mutant every earlier case survived; the mutants are named in the F3 fixer's report.
 
 🔴 EVERY "UNMOVED" HERE IS MEASURED BY A SECOND INSTRUMENT. The module re-measures its own output
 (`_verify`), so asserting with its own `inventory` alone would let one bug in that walk hide itself.
@@ -133,6 +136,82 @@ SLANT = {'paint': 'stroke', 'colour': ['K', 0, 0, 0, 1], 'bbox': [250, 100, 270,
 FILLINE = {'paint': 'fill', 'colour': ['k', 0, 1, 0, 0], 'bbox': [250, 20, 270, 20]}
 ROT = {'paint': 'fill', 'colour': ['rg', 0.3, 0.3, 0.3], 'bbox': [95, 100, 100, 110]}
 DUPSEL = {'paint': 'fill', 'colour': ['k', 0.9, 0, 0, 0], 'bbox': [10, 10, 30, 30]}
+# G21 F3 #53/#61 M12: a SCALED cm and a SCALED Tm. Every MAIN cm is a pure translation and every MAIN Tm
+# is `1 0 0 1`, so a division by the matrix scale could be deleted unseen. Page = 0.5 * user + (10, 0).
+SCALED = b'''q 0.5 0 0 0.5 10 0 cm
+0.2 0.2 0.2 rg
+100 100 40 20 re f
+0.7 0.1 0.1 rg
+300 100 20 20 re f
+1 0 0 RG
+100 300 m 160 300 l S
+BT
+/F1 2 Tf
+9 0 0 9 60 200 Tm (Mike) Tj
+0 -2 Td (November) Tj
+9 0 0 9 60 140 Tm (Oscar) Tj
+0 -2 Td (Papa) Tj
+ET
+Q
+'''
+SC_RECT = {'paint': 'fill', 'colour': ['rg', 0.2, 0.2, 0.2], 'bbox': [60, 50, 80, 60]}
+SC_BOX = {'paint': 'fill', 'colour': ['rg', 0.7, 0.1, 0.1], 'bbox': [160, 50, 170, 60]}
+SC_LINE = {'paint': 'stroke', 'colour': ['RG', 1, 0, 0], 'bbox': [60, 150, 90, 150]}
+WORDS_SC = {'Mike': (40, 100), 'November': (40, 91), 'Oscar': (40, 70), 'Papa': (40, 61)}
+
+# G21 F3 #61/#54/#62: shapes the refusal boundaries and the text walk need, absent from MAIN.
+# ZERO: a zero-length `m l S`. WGAP: a `w` between the `l` and its `S` (the paint op is not directly
+# after the `l`). FLIP: a rect under a FLIPPED (not rotated) cm. Quebec: a ROTATED Tm. Victor: a TJ with
+# kerning numbers (an int and a real). Romeo..Uniform: a TL that differs from the TD's leading, in its
+# own BT (tl persists across BT, and MAIN's TD left 10).
+EDGE = b'''0 0 0 1 K
+280 30 m 280 30 l S
+250 150 m 270 150 l 2 w S
+q -1 0 0 1 100 0 cm 0.4 0.4 0.4 rg 10 10 5 5 re f Q
+BT /F1 8 Tf 0 1 -1 0 150 150 Tm (Quebec) Tj ET
+BT /F1 8 Tf 1 0 0 1 20 120 Tm [(Vic)-15(to)3.5(r)] TJ 0 -10 Td (Whiskey) Tj ET
+BT /F1 8 Tf
+1 0 0 1 100 180 Tm (Romeo) Tj
+0 -10 TD (Sierra) Tj
+14 TL
+T* (Tango) Tj
+T* (Uniform) Tj
+ET
+'''
+ZERO = {'paint': 'stroke', 'colour': ['K', 0, 0, 0, 1], 'bbox': [280, 30, 280, 30]}
+WGAP = {'paint': 'stroke', 'colour': ['K', 0, 0, 0, 1], 'bbox': [250, 150, 270, 150]}
+FLIP = {'paint': 'fill', 'colour': ['rg', 0.4, 0.4, 0.4], 'bbox': [85, 10, 90, 15]}
+WORDS_TL = {'Romeo': (100, 180), 'Sierra': (100, 170), 'Tango': (100, 156), 'Uniform': (100, 142)}
+
+# G21 F3 #55: pairs that differ in ONE matching property, so a loosened match turns into select-ambiguous:
+# paint only (one k AND one K in force, fill and stroke of one bbox), the colour OPERATOR only (rg vs
+# cs+sc, same operands), a colour operand by 0.05, and a bbox by 0.3 pt. Path index = stream order.
+NEAR = b'''0.1 0.2 0.3 0.4 k
+0.1 0.2 0.3 0.4 K
+10 20 20 10 re f
+10 20 20 10 re S
+0.5 0.5 0.5 rg
+40 20 20 10 re f
+/DeviceRGB cs 0.5 0.5 0.5 sc
+40 20 20 10 re f
+0.2 0.2 0.2 rg
+70 20 20 10 re f
+0.25 0.2 0.2 rg
+70 20 20 10 re f
+0.6 0.6 0.6 rg
+100 20 20 10 re f
+100.3 20 20 10 re f
+'''
+NEAR_SEL = [
+    ('the FILL of a filled+stroked bbox', {'paint': 'fill', 'colour': ['k', 0.1, 0.2, 0.3, 0.4], 'bbox': [10, 20, 30, 30]}),
+    ('the STROKE of it', {'paint': 'stroke', 'colour': ['K', 0.1, 0.2, 0.3, 0.4], 'bbox': [10, 20, 30, 30]}),
+    ('the rg twin', {'paint': 'fill', 'colour': ['rg', 0.5, 0.5, 0.5], 'bbox': [40, 20, 60, 30]}),
+    ('the sc twin', {'paint': 'fill', 'colour': ['sc', 0.5, 0.5, 0.5], 'bbox': [40, 20, 60, 30]}),
+    ('rg 0.2', {'paint': 'fill', 'colour': ['rg', 0.2, 0.2, 0.2], 'bbox': [70, 20, 90, 30]}),
+    ('rg 0.25 (0.05 away)', {'paint': 'fill', 'colour': ['rg', 0.25, 0.2, 0.2], 'bbox': [70, 20, 90, 30]}),
+    ('bbox x 100', {'paint': 'fill', 'colour': ['rg', 0.6, 0.6, 0.6], 'bbox': [100, 20, 120, 30]}),
+    ('bbox x 100.3 (0.3 pt away)', {'paint': 'fill', 'colour': ['rg', 0.6, 0.6, 0.6], 'bbox': [100.3, 20, 120.3, 30]}),
+]
 CLIPPER = {'paint': 'fill', 'colour': ['rg', 1, 0, 0], 'bbox': [10, 10, 60, 60]}       # re W f
 CLIPPER_STAR = {'paint': 'fill', 'colour': ['rg', 0, 1, 0], 'bbox': [10, 150, 30, 170]}  # re W* f
 INSIDE = {'paint': 'fill', 'colour': ['rg', 0, 0, 1], 'bbox': [0, 0, 200, 200]}          # in the clip
@@ -183,6 +262,18 @@ def plumb(pdf_path):
     return {'rects': sorted(rects), 'curves': sorted(curves), 'lines': sorted(lines_), 'words': words}
 
 
+def words_xy(pdf_path):
+    """pdfplumber's words as {text: (x0, y of the box bottom, y up)} - the second instrument for text that
+    can also move VERTICALLY (a T* rewritten with the wrong leading)."""
+    with pdfplumber.open(str(pdf_path)) as pdf:
+        p = pdf.pages[0]
+        return {w['text']: (round(w['x0'], 3), round(p.height - w['bottom'], 3)) for w in p.extract_words()}
+
+
+def near(a, b, tol=1e-3):
+    return all(abs(float(x) - float(y)) <= tol for x, y in zip(a, b))
+
+
 def raises(fn):
     """-> (reason or exception class name, message) or (None, result)."""
     try:
@@ -225,6 +316,9 @@ TD = Path(tempfile.mkdtemp(prefix='t-artworkedits-'))
 MAIN_PDF = synth(TD / 'main.pdf')
 DUP_PDF = synth(TD / 'dup.pdf', DUP)
 CLIP_PDF = synth(TD / 'clip.pdf', CLIP)
+SCALED_PDF = synth(TD / 'scaled.pdf', SCALED)
+EDGE_PDF = synth(TD / 'edge.pdf', EDGE)
+NEAR_PDF = synth(TD / 'near.pdf', NEAR)
 BASE = plumb(MAIN_PDF)
 check('0c PRECONDITION pdfplumber reads the fixture: 3 rects, the circle curve, every word',
       len(BASE['rects']) == 3 and len(BASE['curves']) >= 1
@@ -485,6 +579,9 @@ if AE is not None:
     field('AE-6m14 an empty text', [dict(MT, select=[line('', 30, 80)])], 'bad-field')
     field('AE-6m15 an origin that is not [x, y]', [dict(MT, select=[{'text': 'Bravo', 'origin': [30]}])],
           'bad-field')
+    reason, got = raises(lambda: AE.for_figure({B: [dict(MP, select=[dict(SHAFT, bbox=[5, 0, 5, 10])])]}, B))
+    check('AE-6n2 CONTROL a vertical-line selector (x0 == x1) validates, as the JS validator\'s does',
+          reason is None and len(got) == 1, f'{reason}: {got!r}'[:200])
     reason, got = raises(lambda: AE.for_figure({B: [MP, ME, ML, MT]}, B))
     check('AE-6n CONTROL a well-formed four-op entry validates', reason is None and len(got) == 4,
           f'{reason}: {got!r}'[:200])
@@ -591,6 +688,128 @@ if AE is not None:
           [ln.get('quote') for ln in lines_ if ln['select']['text'] == 'GolfHotel'] == [True], f'{lines_!r}'[:300])
     r = run_py(AE_PATH)
     check('AE-11e no arguments is a usage error, exit 2', refused(r, 2), f'{r.returncode} {r.stderr[-200:]}')
+
+    # ── 13. G21 F3: pins that kill mutants every earlier case survived ────────────────────
+    # 13a (#53, #61 M12). SCALED cm and Tm: each op applies, and the second instrument agrees.
+    P13 = plumb(SCALED_PDF)
+    check('AE-13 PRECONDITION pdfplumber reads SCALED: the two rects, the line and the four words',
+          ('rect', 60.0, 80.0, 50.0, 60.0) in P13['rects'] and ('rect', 160.0, 170.0, 50.0, 60.0) in P13['rects']
+          and (60.0, 90.0, 150.0) in P13['lines']
+          and all(near((P13['words'].get(k, -1),), (x,)) for k, (x, _) in WORDS_SC.items()), f'{P13!r}')
+    p, s = edited([{'op': 'move-edge', 'edge': 'right', 'dx': 4, 'select': [SC_RECT]}], SCALED_PDF)
+    check('AE-13a move-edge under a 0.5-scaled cm: page x1 80 -> 84, still a rect',
+          isinstance(s, list) and ('rect', 60.0, 84.0, 50.0, 60.0) in plumb(p)['rects'], f'{s!r}')
+    p, s = edited([{'op': 'move-paths', 'dx': 10, 'select': [SC_BOX]}], SCALED_PDF)
+    check('AE-13b move-paths under a 0.5-scaled cm: the box moves 10 PAGE pt (160..170 -> 170..180)',
+          isinstance(s, list) and ('rect', 170.0, 180.0, 50.0, 60.0) in plumb(p)['rects'], f'{s!r}')
+    p, s = edited([{'op': 'move-line-end', 'edge': 'right', 'dx': 6, 'select': [SC_LINE]}], SCALED_PDF)
+    check('AE-13c move-line-end under a 0.5-scaled cm: the right end 90 -> 96 page pt',
+          isinstance(s, list) and (60.0, 96.0, 150.0) in plumb(p)['lines'], f'{s!r} {plumb(p)["lines"]!r}')
+    want13 = {k: x for k, (x, _) in WORDS_SC.items()}
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('Mike', 40, 100)]}], SCALED_PDF)
+    w13 = plumb(p)['words'] if isinstance(s, list) else {}
+    check('AE-13d move-text on a 9x Tm line under a 0.5 cm: Mike +5 page pt, the Td line after it unmoved',
+          isinstance(s, list) and all(near((w13.get(k, -1),), (v,)) for k, v in {**want13, 'Mike': 45}.items()),
+          f'{s!r} {w13!r}')
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('November', 40, 91), line('Oscar', 40, 70)]}],
+                  SCALED_PDF)
+    w13 = plumb(p)['words'] if isinstance(s, list) else {}
+    check('AE-13e two consecutive selected lines, the SECOND a Tm whose shift equals the first: both move, '
+          'the Td line after them does not',
+          isinstance(s, list) and all(near((w13.get(k, -1),), (v,)) for k, v in
+                                      {**want13, 'November': 45, 'Oscar': 45}.items()), f'{s!r} {w13!r}')
+
+    # 13b (#61). Refusal boundaries and inputs MAIN lacks.
+    refuses('AE-13f move-line-end landing EXACTLY on the other end (reaching, not crossing)',
+            [{'op': 'move-line-end', 'edge': 'left', 'dx': 6.652, 'select': [SHAFT]}], 'edge-inverts',
+            needle='reaches')
+    refuses('AE-13g move-line-end on a zero-length line', [{'op': 'move-line-end', 'edge': 'left', 'dx': -1,
+                                                             'select': [ZERO]}], 'not-a-line', EDGE_PDF, 'zero length')
+    refuses('AE-13h move-line-end on `m l` whose stroke is not directly after the `l` (a `w` between)',
+            [{'op': 'move-line-end', 'edge': 'left', 'dx': -1, 'select': [WGAP]}], 'not-a-line', EDGE_PDF)
+    refuses('AE-13i move-paths on a rect under a FLIPPED cm (-1 0 0 1)',
+            [{'op': 'move-paths', 'dx': 3, 'select': [FLIP]}], 'not-axis-aligned', EDGE_PDF)
+    refuses('AE-13i2 move-edge on a rect under a FLIPPED cm (-1 0 0 1)',
+            [{'op': 'move-edge', 'edge': 'left', 'dx': -1, 'select': [FLIP]}], 'not-axis-aligned', EDGE_PDF)
+    refuses('AE-13j move-text on a line under a ROTATED Tm',
+            [{'op': 'move-text', 'dx': 3, 'select': [line('Quebec', 150, 150)]}], 'not-axis-aligned', EDGE_PDF)
+
+    # 13c (#54). A TJ with kerning numbers: its text is the strings only, and move-text moves it.
+    _, inv13 = raises(lambda: AE.inventory_report(EDGE_PDF))
+    check('AE-13k --inventory reads the kerned TJ `[(Vic)-15(to)3.5(r)]` as the line text Victor',
+          isinstance(inv13, dict) and {'text': 'Victor', 'origin': [20.0, 120.0]}
+          in [q['select'] for q in inv13.get('lines', [])], f'{inv13!r}'[:400])
+    E0 = words_xy(EDGE_PDF)
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('Victor', 20, 120)]}], EDGE_PDF)
+    e13 = words_xy(p) if isinstance(s, list) else {}
+    check('AE-13l move-text on the kerned TJ line: Victor +5, every other word where it was',
+          isinstance(s, list) and near(e13.get('Victor', (0, 0)), (E0['Victor'][0] + 5, E0['Victor'][1]))
+          and all(near(e13.get(k, (0, 0)), v) for k, v in E0.items() if k != 'Victor'), f'{s!r} {e13!r}')
+
+    # 13d (#62). A TL that differs from the TD's leading: T* lines are where TL puts them.
+    check('AE-13m PRECONDITION pdfplumber puts the T* lines 14 pt apart (TL), not 10 (the TD)',
+          all(near((E0[k][0],), (x,)) for k, (x, _) in WORDS_TL.items())
+          and near((E0['Sierra'][1] - E0['Tango'][1], E0['Tango'][1] - E0['Uniform'][1]), (14, 14)), f'{E0!r}')
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('Tango', 100, 156)]}], EDGE_PDF)
+    e13 = words_xy(p) if isinstance(s, list) else {}
+    check('AE-13n move-text on a T* line after `14 TL`: selected at its TL origin, Tango +5, Uniform unmoved',
+          isinstance(s, list) and near(e13.get('Tango', (0, 0)), (E0['Tango'][0] + 5, E0['Tango'][1]))
+          and all(near(e13.get(k, (0, 0)), v) for k, v in E0.items() if k != 'Tango'), f'{s!r} {e13!r}')
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('Sierra', 100, 170)]}], EDGE_PDF)
+    e13 = words_xy(p) if isinstance(s, list) else {}
+    check('AE-13o the UNSELECTED T* line after a moved one is compensated with the TL leading: no word '
+          'moves vertically (pdfplumber; _verify shares the inventory and cannot see this)',
+          isinstance(s, list) and near(e13.get('Sierra', (0, 0)), (E0['Sierra'][0] + 5, E0['Sierra'][1]))
+          and all(near(e13.get(k, (0, 0)), v) for k, v in E0.items() if k != 'Sierra'), f'{s!r} {e13!r}')
+
+    # 13e (#55). Each selector of a near-identical pair picks exactly its OWN path.
+    with pikepdf.open(str(NEAR_PDF)) as _pdf:
+        _ni = list(pikepdf.parse_content_stream(_pdf.pages[0]))
+    for k, (label, sj) in enumerate(NEAR_SEL):
+        reason, got = raises(lambda: AE.plan(pikepdf, _ni, [{'op': 'move-paths', 'dx': 0.5, 'select': [sj]}],
+                                             'near'))
+        check(f'AE-13p{k} the selector for {label} picks path {k} alone',
+              reason is None and list(got[2]) == [k], f'{reason}: {got if reason else list(got[2])!r}'[:200])
+
+    # 13f (#52). _verify's PATH half can fail: planted rewrite faults, each refused with nothing saved.
+    def planted(label, fault, ops, needle):
+        def faulty(pikepdf_, instr, *a, **kw):
+            return fault(real_rewrite(pikepdf_, instr, *a, **kw))
+        AE.rewrite = faulty
+        try:
+            reason, msg, untouched = refusal(ops)
+        finally:
+            AE.rewrite = real_rewrite
+        check(f'{label} is refused `verify-failed`, nothing saved', reason == 'verify-failed' and needle in msg
+              and untouched, f'{reason}: {msg}'[:300])
+
+    CSI, OP = pikepdf.ContentStreamInstruction, pikepdf.Operator
+
+    def _is(i, op):
+        return not isinstance(i, pikepdf.ContentStreamInlineImage) and str(i.operator) == op
+
+    def nudge_wrap(out):          # the move-paths wrap's cm moves 1 pt too far
+        return [CSI([1, 0, 0, 1, -14, 0], OP('cm')) if _is(i, 'cm') and [str(o) for o in i.operands]
+                == ['1', '0', '0', '1', '-15', '0'] else i for i in out]
+
+    def extra_path(out):          # one painted path more than the original
+        return out + [CSI([0, 0, 1, 1], OP('re')), CSI([], OP('f'))]
+
+    def recolour(out):            # BAND_B's fill colour changes; its geometry does not
+        return [CSI([0.1, 0.5, 0.1, 0.5], OP('k')) if _is(i, 'k') and [str(o) for o in i.operands]
+                == ['0.1', '0.5', '0.1', '0'] else i for i in out]
+
+    def respell(out):             # Echo's string changes; its origin does not
+        return [CSI([pikepdf.String('Ecxo')], OP('Tj')) if _is(i, 'Tj') and bytes(i.operands[0]) == b'Echo'
+                else i for i in out]
+
+    ops13 = [{'op': 'move-paths', 'dx': -15, 'select': [CIRCLE]}]
+    planted('AE-13q a move-paths wrap 1 pt off', nudge_wrap, ops13, 'path 2')
+    planted('AE-13r a rewrite that adds a painted path', extra_path, ops13, 'paths/lines became')
+    planted('AE-13s a rewrite that changes a path\'s colour', recolour, ops13, 'path 1')
+    planted('AE-13t a rewrite that changes a line\'s string', respell, ops13, 'Ecxo')
+    reason, msg, _ = refusal(ops13)
+    check('AE-13u CONTROL the same op with the real rewrite applies', reason is None, f'{reason}: {msg}'[:200])
 
 # ── 9. END TO END through figure-prepare.py ───────────────────────────────────────────
 # A1 of the brief in miniature, on the generated page: the edit reaches runs.json, and prepare.json
