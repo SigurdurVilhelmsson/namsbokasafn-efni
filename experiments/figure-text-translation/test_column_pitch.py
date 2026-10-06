@@ -32,6 +32,10 @@ spec's D-d/D-e tests and the M4 design run - the ungated A2 and the threshold-fr
        L3C7R8 under the ungated A2). Only the same-size rule and the centre veto hold it.
 * C-2  periodic table 'samarium' (block 407, which shares all three edges with 'plutonium') stays CENTRE. It guards
        only a same-size-majority variant.
+* C-7  the CENTRE VETO (R-8b, `c['center'] > 0`), on `column_side` itself: periodic table 'meitnerium' (block 196)
+       has two same-size left-edge siblings and seven centre ones (column L2C7R0) and returns no side. C-1 cannot
+       see the veto alone - under the same-size rule copper has no left/right support to veto - so a variant that
+       drops only the veto passes C-1..C-6 and fails here. SKIPPED where figcontainers has no column_side.
 * C-3  MassSpec block 4, whose source pitch equals sz0 * LEAD: the lead is unchanged.
 * C-4  FoodLabel 'more is| ' with a blank second source line (cues['blank'] = [False, True]): the lead is unchanged.
        The cue shape is the pre-M2 one (n_src 2): after M2 compose folds that line and builds n_src 1, so this pins
@@ -126,6 +130,15 @@ check('P-2 FracDistil small molecules: lead = source pitch',
 for name, bi in (('C-1 periodic copper stays centre', 221), ('C-2 periodic samarium stays centre', 407)):
     side, why = cell_align(PERIODIC, bi)
     check(name, side == 'center', why)
+
+if hasattr(FC, 'column_side'):
+    blocks = blocks_of(PERIODIC)
+    name = ''.join(r['text'] for r in blocks[196])
+    side, why = FC.column_side(196, blocks)
+    check('C-7 periodic meitnerium: a centre coincidence vetoes the left column (R-8b)',
+          name == 'meitnerium' and side is None and why == 'column(L2C7R0)', f'{name!r} {side} {why}')
+else:
+    print('SKIP C-7 (figcontainers has no column_side)')
 
 L, r = lay(MASS, 4, 'aa bb cc')
 check('C-3 MassSpec: source pitch == sz0*LEAD keeps the lead',
