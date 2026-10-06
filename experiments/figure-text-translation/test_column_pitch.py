@@ -53,6 +53,24 @@ where it names them (the ungated A2, the threshold-free P1), a one-guard deletio
 * C-10 the DESCENDING-ROWS guard of P1v: FracDistil block 2 with its second source baseline raised to 0.4 * sz0
        below the first (a HAND-BUILT cue; no committed record has rows closer than 0.5 * sz0) keeps the base lead
        and top. P-2 is its positive control: the same block with its real rows does move.
+* C-11 P1v's HEADLINE condition, `len(lines) == n_src` (spec D-e: a label drawn on n_src lines takes the source
+       pitch; M3's SOURCE_ROWS reuses this eligibility): a label drawn on FEWER lines than its source - the
+       common case of a short translation - keeps lead sz0 * LEAD and the centred top
+       (max(projs) + min(projs)) / 2 + (n - 1) / 2 * lead, on a cell (FoodLabel block 16, 'a b c', 3 of 6 rows)
+       and an open label (FracDistil block 2, 'aa bb', 2 of 5). Its witness deletes the condition (`n_src >= 2`
+       alone), which moves both onto the source pitch (5.5 and 9.209). P-1/P-2 are its positive controls.
+* C-12 ORDER in cell_alignment: the CELL_RATIO margin rule decides BEFORE the column rule. strong block 9 (A-4's
+       block, whose column says left) with HAND-BUILT margins 20 / 0.5 (ratio 40, flush right) aligns RIGHT; its
+       witness hoists the COLUMN_ALIGN block above the ratio test, which returns left. A-4 is its positive control
+       (the real margins, ratio 7.87, reach the column rule).
+* C-13 the STRICT-MAJORITY rule of column_side: a HAND-BUILT five-block page (no fixture holds a tie) - a label
+       with two same-size siblings sharing exactly its left edge and two sharing exactly its right edge
+       (column L2C0R2) - returns no side; with one right sibling removed (L2C0R1) it returns left, the positive
+       control. Its witness lets a tie go left (`c['left'] >= c['right'] and c['left']`). SKIPPED without
+       column_side.
+* C-14 the FIRST-RUN size of column_side: strong 'HClO4' (block 2) is set 9 pt with a 7 pt subscript, and its
+       column of 9 pt formulas holds it left (column L5C0R0). Its witness takes the label's LAST run size, which
+       counts no sibling (L0C0R0). SKIPPED without column_side.
 * C-4  FoodLabel 'more is| ' with a blank second source line (cues['blank'] = [False, True]): the lead is unchanged.
        The cue shape is the pre-M2 one (n_src 2): after M2 compose folds that line and builds n_src 1, so this pins
        the guard as defence in depth, with hand-built cues.
@@ -191,6 +209,45 @@ L, _ = lay(FRAC, 2, P_TEXT[(FRAC, 2)], {'projs': p})
 check('C-10 FracDistil with two source rows 0.4*sz0 apart keeps the base lead and top (P1v needs descending rows)',
       len(L['lines']) == 5 and abs(L['lead'] - r['lead']) < 1e-9 and abs(L['top'] - r['top']) < 1e-9,
       f"lead {L['lead']:.4f}/{r['lead']:.4f} top {L['top']:.4f}/{r['top']:.4f}")
+
+got = []
+for fig, bi, text in ((FOOD, 16, 'a b c'), (FRAC, 2, 'aa bb')):
+    L, r = lay(fig, bi, text)
+    n, lead0, p = len(L['lines']), r['cues']['sz0'] * FL.LEAD, r['cues']['projs']
+    top0 = (max(p) + min(p)) / 2 + (n - 1) / 2 * lead0
+    got.append((fig, bi, n, r['cues']['n_src'], L, lead0, top0))
+check('C-11 a label drawn on fewer lines than its source keeps sz0*LEAD and the centred top (P1v needs n == n_src)',
+      all(n == len(text.split()) < n_src and abs(L['lead'] - lead0) < 1e-9 and abs(L['top'] - top0) < 1e-9
+          for (_, _, n, n_src, L, lead0, top0), text in zip(got, ('a b c', 'aa bb'))),
+      '; '.join(f"{fig.split('_')[-1]} {bi}: n {n}/{n_src} lead {L['lead']:.4f}/{lead0:.4f} top {L['top']:.4f}/{top0:.4f}"
+                for fig, bi, n, n_src, L, lead0, top0 in got))
+
+blocks = blocks_of(STRONG)
+try:
+    side, why = FC.cell_alignment(blocks[9], 20.0, 0.5, 9, blocks)
+except TypeError:                                       # pre-M4: the 3-argument signature
+    side, why = FC.cell_alignment(blocks[9], 20.0, 0.5)
+check('C-12 strong block 9 with margins 20/0.5 (ratio 40) is RIGHT: the margin rule precedes the column rule',
+      side == 'right', why)
+
+if hasattr(FC, 'column_side'):
+    def _run(x, y, adv):
+        return {'text': 'x', 'font': 'F', 'size': 9.0, 'rot': 0.0, 'x': x, 'y': y, 'adv': adv,
+                'fill': ['cmyk', 0.0, 0.0, 0.0, 1.0], 'tm': [9.0, 0.0, 0.0, 9.0, x, y]}
+    # label [100, 130]; left edge 100 shared by [100, 120] and [100, 125]; right edge 130 by [110, 130] and
+    # [105, 130]. Every sibling's centre is >= 2.5 pt off the label's 115, so each shares exactly one edge.
+    page = [[_run(100, 100, 30)], [_run(100, 80, 20)], [_run(100, 60, 25)], [_run(110, 40, 20)], [_run(105, 20, 25)]]
+    tie, lean = FC.column_side(0, page), FC.column_side(0, page[:4])
+    check('C-13 a tie (two same-size left siblings, two right) returns no side; one right fewer returns left',
+          tie == (None, 'column(L2C0R2)') and lean == ('left', 'column(L2C0R1)'), f'tie {tie}, one right fewer {lean}')
+    name = ''.join(r['text'] for r in blocks[2])
+    sizes = [r['size'] for r in blocks[2]]
+    side, why = FC.column_side(2, blocks)
+    check("C-14 strong 'HClO4' (9 pt, 7 pt subscript) is held by its 9 pt column: column_side reads the FIRST run",
+          name == 'HClO4' and sizes[0] != sizes[-1] and side == 'left' and why == 'column(L5C0R0)',
+          f'{name!r} sizes {sizes} {side} {why}')
+else:
+    print('SKIP C-13, C-14 (figcontainers has no column_side)')
 
 L, r = lay(MASS, 4, 'aa bb cc')
 check('C-3 MassSpec: source pitch == sz0*LEAD keeps the lead',

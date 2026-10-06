@@ -28,7 +28,9 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
   sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the
              0.25 grid the grid misses the floor, so floor_eff is appended as the last step. A label the source
              set below the floor is never enlarged and never shrunk.
-  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size. Every fit test uses it. ONE exception, after
+  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size. Every fit test of the count/size search uses
+             it; the cell's vertical clamp (vdisp), which runs after the partition, reads the lead actually drawn.
+             ONE exception to the drawn lead, after
              the partition (§C140 '6' M4, P1v; gates PITCH_SRC, PITCH_SRC_MIN): a non-box label not at step
              iv-gain, drawn on exactly n_src >= 2 lines whose source rows all descend by more than 0.5 * sz0 and
              none of which is blank (optional cues['blank'], one bool per visual line), is drawn on the source's
