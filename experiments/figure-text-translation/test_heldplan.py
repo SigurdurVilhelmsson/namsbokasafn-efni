@@ -73,6 +73,20 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        anchor; buffer draws B3 verbatim and asserts the full extent 101.72..234.21 (disp +1.24, the
        0.51 pt spare). The width is pinned on English source text instead of `Nei`: No bold 9 = 12.00,
        or = 8.00, R or H = 26.00, To bold 7 = 8.55, buffer's line 130.99 before and B3 132.49 after.
+* HP19-HP23 (§C140 '6', M2; spec docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md
+       D-b, ruling R-17) a source line that draws only U+0020 (the next row's indent space) is NO line: on
+       FoodLabel's purple cell (evidence/2026-10-06-c140-v6-m2/foodlabel-purple-runs.json, the real runs and
+       the real container snapshot, still with the pure fake width and has_glyph) [USER]'s ruled one-line
+       bullets plan with line 0 changed (HP19 `• 5% eða minna`, HP20 `• 20% eða` - quoted from the R-15g2
+       ruling / the value sheet, the second exception to D-i's sentinels); a two-line bullet, whose second
+       line would sit on `er lítið`, refuses `line-count` (HP21); a value equal to the ink text refuses
+       `no-change` and is never re-laid in English (HP22 - the unchanged test reads the INK runs, not the
+       visual line with its folded space). HP19-HP22 are red on the pre-M2 planner (it counted 2 visual
+       lines: HP19/HP20/HP22 refused `line-count`, HP21 was ACCEPTED as the collision). HP23 is a CONTROL:
+       an unchanged value on the no-blank `Quick|guide to|% DV` is `no-change` on both sides.
+       NOT PINNED (0 corpus instances, disclosed): heldplan's 'layout' entry carrying the FULL visual line
+       (`vfull`, so the caller's offset sum counts the folded run) - every FoodLabel blank line is the LAST
+       line of its block, so a short entry would change no later offset here.
 """
 import json
 import sys
@@ -90,6 +104,7 @@ import figscripts as FS                         # noqa: E402
 import figlayout as FL                          # noqa: E402
 import heldvalues as HV                         # noqa: E402
 import numloc                                   # noqa: E402
+import blockkey as BK                           # noqa: E402 - HP19-HP23 address FoodLabel blocks by key
 
 GEOMETRY = HERE / 'evidence' / '2026-10-03-c140-held' / 'held-geometry.json'
 GEOM = json.loads(GEOMETRY.read_text(encoding='utf-8'))
@@ -748,6 +763,47 @@ def hp18():
 attempt('HP18', hp18)
 attempt('HP16-pins', hp16_pins)
 attempt('HP16', hp16)
+
+
+# ── HP19-HP23 (§C140 '6', M2) ──────────────────────────────────────────────────────────────────
+# FoodLabel's purple cell: the real runs and container snapshot (evidence/2026-10-06-c140-v6-m2). The two
+# bullets are [USER]'s ruled values (R-15g2 / the value sheet), quoted verbatim - see the docstring.
+print('\nHP19-HP23 a source line of only U+0020 is no line (M2, R-17)')
+FOOD = json.loads((HERE / 'evidence' / '2026-10-06-c140-v6-m2' / 'foodlabel-purple-runs.json')
+                  .read_text(encoding='utf-8'))
+FOOD_F = FOOD['fonts']
+FOOD_BLOCKS = FT.merge_blocks(FT.group(FOOD['runs']))
+FOOD_KEYS = [BK.block_key(b) for b in FOOD_BLOCKS]
+K_FQ, K_F42, K_F44 = 'Quick|guide to|% DV', '(cid:127) 5% or less| ', '(cid:127) 20% or| '
+
+
+def food(key):
+    """(runs, container thunk) of one FoodLabel fixture block, by its block key."""
+    i = FOOD_KEYS.index(key)
+    return FOOD_BLOCKS[i], Thunk(FOOD['containers'][str(i)])
+
+
+def hp19():
+    for tag, key, value in (('HP19', K_F42, '• 5% eða minna'), ('HP20', K_F44, '• 20% eða')):
+        b, th = food(key)
+        e = refused(lambda: plan(b, value, FOOD_F, container=th))
+        p = None if e is not None else plan(b, value, FOOD_F, container=th)
+        check(f"{tag} [USER]'s one-line bullet {value!r} on {key!r} plans with line 0 changed",
+              p is not None and p.changed == [0] and [x[0] for x in p.lines] == ['layout'], why(e))
+    b, th = food(K_F42)
+    e = refused(lambda: plan(b, '• 5% eða\nminna', FOOD_F, container=th))
+    check("HP21 a two-line bullet (its 2nd line would sit on 'er lítið') refuses line-count",
+          e is not None and e.reason == 'line-count', why(e))
+    e = refused(lambda: plan(b, '(cid:127) 5% or less', FOOD_F, container=th))
+    check('HP22 a value equal to the INK text refuses no-change - never re-laid in English',
+          e is not None and e.reason == 'no-change', why(e))
+    b, th = food(K_FQ)
+    e = refused(lambda: plan(b, 'Quick\nguide to\n% DV', FOOD_F, container=th))
+    check('HP23 CONTROL: an unchanged value on the no-blank `Quick|guide to|% DV` is no-change',
+          e is not None and e.reason == 'no-change', why(e))
+
+
+attempt('HP19', hp19)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

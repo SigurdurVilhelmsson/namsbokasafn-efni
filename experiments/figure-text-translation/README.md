@@ -215,6 +215,8 @@ published.jpg ──check.py─────────────────�
 | `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees. ⚠️ **On the DRIVER path since §C140 ⑩** (`figure-run.js` renders artwork twice to judge a soft-mask ring), so it resolves playwright rather than hard-coding a path, and its `<img>` height stays fractional against a ceil()ed viewport — rounding both rescales the picture by 0.14 % and walks a user-unit-keyed measurement off its target |
 | `sources.py` | resolve a figure basename to its authoritative source across the two edition trees |
 | `test_sources.py` | tests that resolver, including a control that reverses the precedence |
+| `test_figtext_blank_lines.py` | pure: a source line that draws only U+0020 (the next row's indent space) is no line of its own - `figtext.visual_lines` folds it, `visual_ink` carries the geometry, and the alignment decision stays on the unfolded lines (§C140 '6', M2) |
+| `test_compose_blank_lines.py` | the same end to end on a planted copy of FoodLabel's purple cell: `more is` drawn as one line at its source origin, and [USER]'s one-line bullets drawn instead of refused (§C140 '6', M2) |
 | `emit-blocks.py` | the MT stage's input — `runs.json` → `out/blocks.json`, marking which blocks to send |
 | `translate-blocks.mjs` | the **paid** MT stage — `out/blocks.json` → `out/translations-api.json`, one request per **distinct block key** (a repeated label is bought once; the multiplicity stays in `blocks.json`, per R-13) |
 | `translations.json` | ⚠️ **placeholder probe text, NOT a translation** |

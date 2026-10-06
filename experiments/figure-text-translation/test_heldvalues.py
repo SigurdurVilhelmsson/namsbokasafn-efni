@@ -35,6 +35,13 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
   no-glyph check passes them, and the label would be erased under a `held` note. A format character
   INSIDE a visible line, and a line of script characters, are the CONTROLS. Kills a value that draws
   nothing.
+  HV8e (§C140 '6' PR-A, a characterisation, CONTROL) U+00A0 NO-BREAK SPACE between visible characters
+  is drawn as written, never refused `invisible-line`: its category is Zs, not one of
+  INVISIBLE_CATEGORIES. It describes today's rule and assumes nothing about which joining character a
+  later value uses. An NBSP at a line's EDGE is a different case - str.strip() removes it, so that line
+  refuses `edge-space`. Its planted mutant: a line holding any Zs character other than U+0020 refused
+  `invisible-line` turns it red (adding 'Zs' to INVISIBLE_CATEGORIES does NOT: the rule needs EVERY
+  character of the line to be invisible, and QZ and X are letters).
 """
 import json
 import sys
@@ -291,6 +298,10 @@ def hv8():
           repr(HV.parse_value('QZ\u200bX')))
     check('HV8d CONTROL a line of script characters only is visible (they decode to digits and signs)',
           HV.parse_value('\u2082\u207b') == [[('2', 'sub'), ('\u2013', 'sup')]], repr(HV.parse_value('\u2082\u207b')))
+    check('HV8e CONTROL (characterisation) U+00A0 between visible characters is drawn as written, not invisible',
+          reason(HV.parse_value, 'QZ\u00a0X') == 'NO-RAISE'
+          and HV.parse_value('QZ\u00a0X') == [[('Q', None), ('Z', None), ('\u00a0', None), ('X', None)]],
+          reason(HV.parse_value, 'QZ\u00a0X'))
 
 
 attempt('HV8', hv8)

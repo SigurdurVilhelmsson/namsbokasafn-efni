@@ -712,6 +712,34 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       null,
       'heldBlockValues.CNX_Other[No] has 2 lines but its key has 1 source lines',
     ],
+    // §C140 '6', M2 (spec docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-b,
+    // ruling R-17): a key segment of only U+0020 is the next row's indent space, which the composer folds
+    // into its neighbour, so it is no line a value can fill. FoodLabel's keys and [USER]'s ruled bullets
+    // (R-15g2 / the value sheet), quoted verbatim. Red before M2: CI passed both, and compose refused them.
+    [
+      "V2 a two-line bullet on a key whose 2nd segment is only a space (compose refuses it 'line-count')",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '• 5% eða\nminna';
+      },
+      null,
+      'heldBlockValues.CNX_Other[(cid:127) 5% or less| ] has 2 lines but its key has 1 source lines',
+    ],
+    [
+      "V3 a value equal to the key's INK segments (compose refuses it 'no-change')",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '(cid:127) 5% or less';
+      },
+      null,
+      'heldBlockValues.CNX_Other[(cid:127) 5% or less| ] equals its key — it draws nothing new',
+    ],
+    [
+      'V5 four lines on a 3-segment key with no blank segment',
+      (c) => {
+        heldOf(c)['4+|To|4–'] = 'QZA\nQZB\nQZC\nQZD';
+      },
+      null,
+      'heldBlockValues.CNX_Other[4+|To|4–] has 4 lines but its key has 3 source lines',
+    ],
     // A skeptic's finding (2026-10-03): U+200B, U+00AD and U+034F are in the pinned faces' cmap, so
     // compose's no-glyph check passes them and the label would be ERASED. heldvalues.py's
     // `invisible-line` is the second implementation. Escapes, never the characters (they are invisible).
@@ -895,6 +923,41 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       'a format character INSIDE a visible line (U+200B between letters)',
       (c) => {
         heldOf(c).No = 'QZ\u200bX';
+      },
+      () => {},
+    ],
+    // §C140 '6', M2 (R-17). All four pass before and after the validator change, so all four are CONTROLS:
+    // V1 passed CI before M2 too (what M2 changes for it is that COMPOSE now draws it, test_compose_blank_
+    // lines.py E4), and V4 is a key with no blank segment. 🔴 The blank predicate has TWO implementations: this file's validator (`/^ +$/`) and
+    // experiments/figure-text-translation/figtext.py's `is_blank_line` (`set(t) == {' '}`). The mirrors pin
+    // the same two edges test_figtext_blank_lines.py pins: U+00A0 is NOT blank (T3b), and a key whose every
+    // segment is blank keeps its segment count (T4b).
+    [
+      "V1 [USER]'s ruled one-line bullets on keys whose 2nd segment is only a space",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '• 5% eða minna';
+        heldOf(c)['(cid:127) 20% or| '] = '• 20% eða';
+      },
+      () => {},
+    ],
+    [
+      'V4 a 3-line value on a 3-segment key with no blank segment',
+      (c) => {
+        heldOf(c)['4+|To|4–'] = '4+\ntil\n4–';
+      },
+      () => {},
+    ],
+    [
+      'mirror of figtext T3b: a key segment of only U+00A0 IS a line (2 lines on QZ|U+00A0)',
+      (c) => {
+        heldOf(c)['QZ|\u00a0'] = 'QZX\nQZQ';
+      },
+      () => {},
+    ],
+    [
+      "mirror of figtext T4b: a key whose every segment is blank keeps its count (1 line on ' ')",
+      (c) => {
+        heldOf(c)[' '] = 'QZX';
       },
       () => {},
     ],
