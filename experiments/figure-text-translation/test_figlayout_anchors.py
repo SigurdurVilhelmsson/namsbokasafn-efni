@@ -21,6 +21,16 @@ golden copy - the mutants are named in the task report):
   C2  no texts cue == the same call with the gates off       (mutant: fall back to the value's words)
   C3  an infeasible anchor set changes neither count nor cut (mutant: an infeasible set drops to the floor)
   C4  a box label already on its source rows is untouched    (mutant: the shrink walk skips the chosen size)
+
+C5 is a CONTROL of a different kind (G16, 2026-10-06): it pins an invariant of M1 itself, so it passes with M1
+and FAILS without it (m1 is absent there; the live anchor is asserted, never assumed). It stands in for a
+refresh that was ruled out, not forgotten. The plan asked M1 to refresh a box/cell height overflow after an M1
+shrink, on the premise that select() can end a height floor-overflow above the floor. It cannot: every branch
+that sets the overflow leaves the size at sizes[-1], and m1_anchor shrinks only to sizes below the chosen one.
+A fuzz of 60,000 decide() calls found 16,899 overflows (0 above the floor) and 502 M1 shrinks (0 with an
+overflow). So overflow['sizePt'] is always the drawn size, and C5 pins that on one case:
+  C5  a box HEIGHT floor-overflow with a live anchor stays at the floor and M1 records no shrink
+      (mutants: a size_steps ladder that stops one step above the floor; m1_anchor recording shrunkFrom always)
 """
 import sys
 from pathlib import Path
@@ -166,6 +176,27 @@ check('C4 CONTROL a box label already on its source rows is untouched (anchored 
                          cues(['Small molecules:', '- Low boiling point'])))
                == strip(run('Litlar sameindir: - Lágt suðumark', box(0, 200, 0, 60),
                             cues(['Small molecules:', '- Low boiling point']), a=False)), 'differs'))
+
+# D7 (G16): 'Kjarni (11 róteindir)' over 'Nucleus|(11 protons)' in a box 57 wide (width budget 53) and 6 high
+# (height budget 2). No count meets height at any size, so width picks 2 lines and the size walks to the floor:
+# step 'floor-overflow', axis 'height', at 7.5. The '(' anchor is live, and the anchored cut 'Kjarni' / '(11
+# róteindir)' (14 ch = 52.5 pt at 7.5) fits the budget at the floor and nowhere above it (54.25 at 7.75). So a
+# height walk that stopped one step early would hand M1 a size it must shrink, and the overflow would then name a
+# size that is not the drawn one. The floor is the literal 7.5 (decide's default), never read from size_steps,
+# so a ladder that stops above the floor cannot move both sides of the comparison.
+D7 = ('Kjarni (11 róteindir)', ['Nucleus', '(11 protons)'])
+
+
+def d7_case():
+    lay = run(D7[0], box(0, 57, 0, 6), cues(D7[1]))
+    ov, m1 = lay['overflow'] or {}, lay.get('m1') or {}
+    got = (T(lay), lay['step'], ov.get('axis'), bool(m1.get('anchors')), lay['size'], ov.get('sizePt'),
+           m1.get('shrunkFrom', 'no m1'))
+    return got == (['Kjarni', '(11 róteindir)'], 'floor-overflow', 'height', True, 7.5, 7.5, None), got
+
+
+check('C5 CONTROL D7 invariant (G16): a box height floor-overflow with a live anchor stays at the floor,'
+      ' its sizePt is the drawn size, and M1 records no shrink', d7_case)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)
