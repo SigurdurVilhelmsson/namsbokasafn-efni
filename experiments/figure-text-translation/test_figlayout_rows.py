@@ -24,13 +24,16 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 ----------------------------------------
 The [... RED] checks. Five are red on the pre-M3 composer - [a1] keeps 2 lines, [a1] drawn on the rows, [c1] the
 cut, [c5], [ac1]; the other three pass there (its 1-line layout fits; its R9 partition is bound too) and each is
-turned red by the planted variant named beside it:
+turned red by the planted variant named beside it. Every CONTROL below passes there too: the pre-M3 layout carries
+no 'rows' key, which they read as not-drawn-on-the-rows (`.get('rows') is not True`), and OFF is {} (see below).
 * [a1]  FoodLabel's green band (cell, 5 pt, two source rows 5.5 apart against a lead of 6.11, margins up 1.33 /
         down 0.39): a label on the source's 2 lines keeps them (the pad budget leaves 7.93 pt, 2 lines at the lead
         need 10.81), at step fit with heightFit True (red when heightFit is tested at the lead only), DRAWN on the
         source rows (lead 5.5, top = the first source baseline 206.12, vdisp 0), its glyph box inside the clamp
-        interval [D + 0.39, U - 1.33] - what is tested is what is drawn. The draw and glyph-box checks go red on
-        the M3 design run's own `nodraw` variant (tested on the rows, drawn at the lead).
+        interval [D + 0.39, U - 1.33] - what is tested is what is drawn - and REPORTED as such (rows True, the
+        only trace of a source-rows admission, heightFit being True there). The draw and glyph-box checks go red on
+        the M3 design run's own `nodraw` variant (tested on the rows, drawn at the lead); the draw check alone goes
+        red when the draw override leaves `rows` False.
 * [c1]  'Skammta 1 bolli (228 g) Fjoldi skammta pakka 2': the cut falls after the closer 'g)', and that R9-bound
         partition is the one drawn (bound True; red when the closer may not end a line).
 * [c5]  'aaaaaaaaaa (bb g) cccccccccccc': no line starts with 'g)' - the min-max cut (after '(bb') is refused.
@@ -60,6 +63,10 @@ CONTROLS (G13: pass before and after by design; each names the planted variant t
 * [a8]  a 1-line source: identical to gates off. Red when `n_src >= 2` admits one line (pitch divisor max(1, ...)).
 * [a9]  margins >= pad: the count fits at the lead, so it stays at the lead (identical to gates off). Red when the
         draw override drops its `glyph_h > hb` condition (drawn on the rows whenever they admit).
+* [a10] source rows 2.0 apart at 5 pt (not more than 0.5 * sz0), in margins whose clamp interval holds them exactly:
+        no rows (rows not True, identical to gates off). Red when the rows eligibility drops its descent clause
+        (`projs[i] - projs[i + 1] > 0.5 * sz0`): 2 lines drawn 2 pt apart in 5 pt glyphs, at step fit. T2's C-11
+        and its descending-row control pin P1v's OWN copy of that clause, not this one.
 * [b1]  rule (E) still merges a lone connective (SciMethod shape). [b3] the ruled wording 'Kalsium' restores 4
         rows under (E), with no code. Rule (E) is unchanged by M3 (spec R-6); b1 is red with (E) off, b3 with
         (E)'s comparison inverted.
@@ -70,6 +77,8 @@ CONTROLS (G13: pass before and after by design; each names the planted variant t
         forward. Red when `_closer` drops endswith(')').
 * [c3b] 'a) bbbbbbbbbb c': an enumerator 'a)' with no opener before it still binds forward (the min-max cut after
         it is refused). Red when `_closer` drops its opener test.
+* [c6]  'xx (yy zzzzzzzzzzzzzz)': a LONG word ending in ')' after an opener is no closer, so a line may start with
+        it. Red when `_closer` drops its short-token test (`is_symbol`) - R-19 is scoped to a SHORT token.
 A RULING PROBE, not a control:
 * [b2]  the committed value 'A-vitamin C-vitamin Kalk Jarn': (E) merges the 4th item - 'Kalk Jarn' on one row
         (what [USER] would have to exempt). Red with (E) off.
@@ -81,11 +90,14 @@ fixtures, which is why [c2b] / [c3b] exist):
 * [c3]  the M3 design run's enumerator case 'a) aaaaaaa bbbbbbb': its min-max cut is after 'aaaaaaa' whatever the
         closer rule says. [c3b] is the discriminating one.
 * [c4]  (A) unchanged, '(mPa s)': its min-max cut leaves '(mPa s)' together with or without (A) and the closer rule.
-Gates-off controls ([a4]-[a9]) compare decide(..., gates on) with decide(..., **OFF), OFF = the three private
+Gates-off controls ([a3c], [a4]-[a10]) compare decide(..., gates on) with decide(..., **OFF), OFF = the three private
 kwargs False - the module under test is its own baseline (a history-based baseline is vacuous at a depth-1 clone).
 On a figlayout without SOURCE_ROWS, OFF is {} and those checks compare the module with itself.
 Each of on_rows' two clauses is pinned alone ([a3b] `n == n_src`, [a3c] the clamp-height test); [a3] drops both.
-NOT pinned: CELL_CLAMP_BUDGET is off and no check turns it on.
+CELL_CLAMP_BUDGET ships off (R-7) and no check turns it on - but the gates-on vs OFF comparisons pin 'ships off':
+flipping the module constant to True reddens [a4], [a5], [a8] and [a10].
+NOT pinned: the rows eligibility's `len(projs) == n_src` - a defensive clause. Every fixture here has one baseline
+per visual line (src_cues sets n_src = len(projs)), as compose's cues do, so dropping it changes nothing measurable.
 """
 import os
 import sys
@@ -155,9 +167,10 @@ check('[a1 RED] a 2-line cell source keeps its 2 lines', len(lay['lines']) == 2,
 check('[a1 RED] ... step fit, nothing named, heightFit True',
       lay['step'] == 'fit' and lay['overflow'] is None and lay['heightFit'] is True,
       f"{lay['step']} {lay['overflow']} {lay['heightFit']}")
-check('[a1 RED] ... drawn ON the source rows: lead 5.5, first baseline 206.12',
-      abs(lay['lead'] - 5.5) < 1e-9 and abs(lay['top'] - P0) < 1e-9 and lay['vdisp'] == 0,
-      f"lead {lay['lead']} top {lay['top']} vdisp {lay['vdisp']}")
+check('[a1 RED] ... drawn ON the source rows: lead 5.5, first baseline 206.12, and reported (rows True)',
+      abs(lay['lead'] - 5.5) < 1e-9 and abs(lay['top'] - P0) < 1e-9 and lay['vdisp'] == 0
+      and lay.get('rows') is True,
+      f"lead {lay['lead']} top {lay['top']} vdisp {lay['vdisp']} rows {lay.get('rows')}")
 g_top = lay['top'] + ASC * lay['size']
 g_bot = lay['top'] - (len(lay['lines']) - 1) * lay['lead'] - DESC * lay['size']
 check('[a1 RED] ... glyph box inside the clamp interval [D+0.39, U-1.33] (what is tested is what is drawn)',
@@ -179,8 +192,9 @@ c3b = derived('cell', 0, 160, 5.0, GB_PROJ, up=1.33, down=8.0)
 lay = dec('a' * 60 + ' ' + 'b' * 60 + ' ' + 'c' * 60, c3b, src_cues(5.0, GB_PROJ))
 check('[a3b CONTROL] ... and with a clamp interval that holds 3 lines at the source pitch: still NAMED on height, '
       'not drawn on the rows (the rows admit n_src lines only)',
-      lay['step'] == 'floor-overflow' and (lay['overflow'] or {}).get('axis') == 'height' and lay['rows'] is False,
-      f"{texts(lay)} {lay['step']} {lay['overflow']} rows {lay['rows']}")
+      lay['step'] == 'floor-overflow' and (lay['overflow'] or {}).get('axis') == 'height'
+      and lay.get('rows') is not True,
+      f"{texts(lay)} {lay['step']} {lay['overflow']} rows {lay.get('rows')}")
 # A container whose recorded margins (2.0) OVER-report its geometry (D/U drawn with margins 0): the clamp interval
 # (10.2 - 2 - 2 = 6.2) no longer holds the source's own rows (5.5 + 4.7 = 10.2). With D/U derived from the source
 # frame this cannot happen (min(pad, m) never removes more than m), which is why only a synthetic margin source
@@ -190,8 +204,8 @@ a, b = dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ)), \
     dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c3c, src_cues(5.0, GB_PROJ), **OFF)
 check('[a3c CONTROL] source rows OUTSIDE the clamp interval are not admitted: 1 line, not drawn on the rows, '
       'identical to gates off',
-      len(a['lines']) == 1 and a['rows'] is False and same(a, b),
-      f"{texts(a)} lead {a['lead']:.3f} rows {a['rows']} | off {texts(b)} lead {b['lead']:.3f}")
+      len(a['lines']) == 1 and a.get('rows') is not True and same(a, b),
+      f"{texts(a)} lead {a['lead']:.3f} rows {a.get('rows')} | off {texts(b)} lead {b['lead']:.3f}")
 for lab, c, cu in (
         ('[a4 CONTROL] source pitch == lead: decision identical to gates off',
          derived('cell', 0, 200, 5.0, [P0, P0 - 6.11], 1.33, 0.39), src_cues(5.0, [P0, P0 - 6.11])),
@@ -213,6 +227,16 @@ for lab, c, cu in (
 a = dec('aaaaaaaaaaaa bbbbbbbbbbbbb', derived('cell', 0, 200, 5.0, GB_PROJ, 3.0, 3.0), src_cues(5.0, GB_PROJ))
 check('[a9 non-vacuity] ... and it is 2 lines (the arm compares 2-line layouts: gates off draws 2 too)',
       len(a['lines']) == 2, str(texts(a)))
+# Source rows only 2.0 apart at 5 pt (not more than 0.5 * sz0 = 2.5) are no rows: P1v's descent clause, which M3's
+# eligibility repeats. In margins of 0.39 the clamp interval (6.7) holds two such rows exactly (2.0 + 4.7), so without
+# the clause they WOULD be admitted - 2 lines drawn 2 pt apart in 5 pt glyphs, overlapping, at step fit.
+c10 = derived('cell', 0, 200, 5.0, [P0, P0 - 2.0], 0.39, 0.39)
+a, b = dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c10, src_cues(5.0, [P0, P0 - 2.0])), \
+    dec('aaaaaaaaaaaa bbbbbbbbbbbbb', c10, src_cues(5.0, [P0, P0 - 2.0]), **OFF)
+check('[a10 CONTROL] source rows that do not descend by more than half a size are no rows: not drawn on them, '
+      'identical to gates off',
+      a.get('rows') is not True and same(a, b),
+      f"{texts(a)} lead {a['lead']:.3f} {a['step']} rows {a.get('rows')} | off {texts(b)} lead {b['lead']:.3f}")
 
 print('(b) rule (E) [USER] 2026-09-15 is UNCHANGED by M3 (its exemption is a ruling, not code)')
 c = derived('box', 0, 70, 8.5, [50.0, 50 - 10.4, 50 - 20.8], 5.0, 5.0)   # SciMethod shape: 3 source lines
@@ -250,6 +274,12 @@ check('[c3 FIXED POINT] an enumerator "a)" with no opener still binds forward', 
 lay = dec('a) bbbbbbbbbb c', derived('cell', 0, 38, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
 check('[c3b CONTROL] an enumerator "a)" with no opener: the min-max cut after it is still refused',
       texts(lay) == ['a) bbbbbbbbbb', 'c'], str(texts(lay)))
+# 'xx (yy zzzzzzzzzzzzzz)' (22 ch) in a 56 pt budget, on the source's 2 lines: the min-max cut is before the LONG
+# word 'zzzzzzzzzzzzzz)' (15 / 37.5). It ends in ')' after an opener but is no short token, so it is no closer and a
+# line may start with it; were it one, the cut would move before '(yy' (5 / 47.5).
+lay = dec('xx (yy zzzzzzzzzzzzzz)', derived('cell', 0, 60, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
+check('[c6 CONTROL] a LONG word ending in ")" after an opener is no closer: a line may still start with it',
+      texts(lay) == ['xx (yy', 'zzzzzzzzzzzzzz)'], str(texts(lay)))
 lay = dec('Seigja aaaa (mPa s)', derived('cell', 0, 40, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
 check('[c4 FIXED POINT] (A) unchanged: a final "s)" never stands alone', texts(lay)[-1] != 's)', str(texts(lay)))
 lay = dec('aaaaaaaaaa (bb g) cccccccccccc', derived('cell', 0, 60, 5.0, TWO, 10, 10), src_cues(5.0, TWO))
