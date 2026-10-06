@@ -59,6 +59,8 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
 * G21 review-fix round (F2): R4b - R4 placing a leading italic must not cost the next stretch its anchor
   (`Ka=1,8×10–5`, red before the fix: `a` absent); R7d - R7 styling an interior base stretch leaves no miss
   for it (`ΔHvap` -> `ΔHgufun`, red before: `H` absent).
+  m5_pins: eight checks, each killing one named mutant that had passed every suite (n40-n43, n48-n50; listed
+  in its docstring).
 """
 import sys
 from pathlib import Path
@@ -947,7 +949,59 @@ def m5_g21():
           m == '.i_____.........' and ms == [], repr((m, ms)))
 
 
-for _f in (m5_c1, m5_r2, m5_c2, m5_r3, m5_c3, m5_r4, m5_c4, m5_r5, m5_r6, m5_c6, m5_r7, m5_c7, m5_g21):
+# SYNTHETIC fixtures for the G21 mutant pins below (round coordinates).
+MASS = [run('mass ', 9.0, 10.0, 50.0, adv=25.0), run('m', 9.0, 35.0, 50.0, adv=7.0, font='I'),
+        run(' in mmol', 9.0, 42.0, 50.0, adv=35.0)]                       # an italic m; plain m only GLUED
+EA = [run('E', 9.0, 10.0, 50.0, adv=6.0), run('a', 7.0, 16.0, 47.0, adv=3.9),
+      run(' er hátt', 9.0, 19.9, 50.0, adv=30.0)]                         # E + a ONE-letter subscript
+ISO = [run('14', 6.0, 10.0, 50.0, adv=6.7), run('C', 12.0, 17.0, 44.0, adv=8.0)]   # small FIRST: isotope prefix
+PATM = [run('P', 9.0, 10.0, 50.0, adv=6.0), run('atm', 7.0, 16.0, 47.0, adv=10.0),
+        run(' gas', 9.0, 26.0, 50.0, adv=16.0)]                           # plain P + subscript atm
+X2 = [run('x', 9.0, 10.0, 50.0, adv=5.0), run('2 +', 7.0, 15.0, 53.0, adv=10.0),
+      run(' y', 9.0, 25.0, 50.0, adv=6.0)]                                # a raised LETTERLESS run with a space
+KCVAP = [run('K', 9.0, 10.0, 50.0, adv=6.0, font='I'), run('c', 9.0, 16.0, 50.0, adv=5.0),
+         run('vap', 7.0, 21.0, 47.0, adv=10.0), run(' z', 9.0, 31.0, 50.0, adv=6.0)]   # italic K opens a MIXED base
+
+
+def m5_pins():
+    """G21 review-fix round (F2 n40-n43, n48-n50): each check kills ONE named mutant that passed every suite.
+    Its red, with the mutant planted from a golden copy (then restored and cmp'd), is in the round's report.
+      R5b-glued   n40 FS4  R5b's `_clean` dropped: a token whose plain twin is only GLUED (mass, mmol) is srcplain
+      R7-min2     n41 FS8  R7's `n - a >= 2` -> `>= 1`: a one-letter subscript subscripts a whole compound
+      R4-edge     n42 FS9  R4's word-left-edge test dropped: `metan-` adds a second `n-` candidate
+      R2-small1st n43 FS2  R2's visual threshold max() -> min(): a small FIRST run (isotope prefix) splits off
+      R6-digit    n48 FS6  R6's 'continued by a letter' dropped: `Trans2` is italicised
+      R7-placed   n49 FS7  R7's `not placed_last` dropped: a second word is subscripted
+      R5-letters  n50 FS14 R5's `_letters(ph)` dropped: a letterless raised `2 +` becomes a phrase and names a miss
+      R7-nobase   n50 FS17 R7's filter keeps a leading `no-base` for a token whose tail it placed"""
+    m, ms = xfer(MASS, 'massi m í mmol')
+    check("R5b-glued an italic m whose only plain twins are glued (mass, mmol) is not srcplain: placed, no miss",
+          m == '......i.......' and ms == [], repr((m, ms)))
+    m, ms = xfer(EA, 'Eagildið er hátt')
+    check('R7-min2 a ONE-letter subscript (E + a) never takes a compound tail: nothing styled, `a` absent',
+          m == '................' and ms == [('a', 'absent')], repr((m, ms)))
+    m, ms = xfer(NPENT, 'metan- og n-pentan')
+    check("R4-edge a word-final `n-` (metan-) is not a left-edge candidate: the real n- is placed italic",
+          m == '..........i.......' and ms == [], repr((m, ms)))
+    ft = [[r['text'] for r in ln] for ln in FT.lines(ISO)]
+    tl = [[r['text'] for r in ln] for ln in FS.token_lines(ISO, M5_FONTS)]
+    check('R2-small1st a 6 pt run then a glued 12 pt run 6 pt lower (FT.lines splits them) are ONE token line: '
+          'the threshold is the LARGER first-run size', ft == [['14'], ['C']] and tl == [['14', 'C']], f'{ft} {tl}')
+    m, ms = xfer(TRANS, 'Trans2 fita 3 g')
+    check('R6-digit an italic prefix continued by a DIGIT (Trans2) is not an R6 compound: unstyled, absent',
+          'i' not in m and ms == [('Trans', 'absent')], repr((m, ms)))
+    m, ms = xfer(PATM, 'ΔPatm og Patmið')
+    check('R7-placed once the fallback placed the tail (ΔPatm), R7 does not also subscript Patmið: partial kept',
+          m == '..___..........' and ms == [('atm', 'partial')], repr((m, ms)))
+    m, ms = xfer(X2, 'x2 + y')
+    check('R5-letters a letterless raised `2 +` is no phrase token: only the `+` word names its no-base',
+          m == '.^....' and ms == [('+', 'no-base')], repr((m, ms)))
+    m, ms = xfer(KCVAP, 'Kcgufun og Kc')
+    check("R7-nobase R7 placed Kcgufun (K italic, gufun subscript): the fallback's leading `no-base` for K is "
+          "dropped", m == 'i._____......' and ms == [], repr((m, ms)))
+
+
+for _f in (m5_c1, m5_r2, m5_c2, m5_r3, m5_c3, m5_r4, m5_c4, m5_r5, m5_r6, m5_c6, m5_r7, m5_c7, m5_g21, m5_pins):
     attempt(_f.__name__, _f)
 
 print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED: ' + ', '.join(fails))
