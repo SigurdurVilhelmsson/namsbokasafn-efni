@@ -2886,10 +2886,11 @@ export function summarise(result) {
     )
   );
   // §C140 '6' R-15a — `figuresWithArtworkEdits`, not `noteEntries`: a prepare fact, and a published
-  // textless recompose is drawn on the edited artwork too.
+  // textless recompose is drawn on the edited artwork too. One line per OP, so the count is ops (every
+  // section counts its lines); the verdict's NOTE counts figures.
   lines.push(
     ...nameList(
-      "figures drawn on artwork edited by artworkEdits ([USER]'s edits)",
+      "edits applied to the artwork by artworkEdits ([USER]'s edits), by figure",
       figuresWithArtworkEdits(result.figures).flatMap((f) =>
         f.artworkEdits.map((e) => `${f.basename}: ${e.op} on ${e.selected} object(s)`)
       )

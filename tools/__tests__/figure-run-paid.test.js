@@ -580,6 +580,14 @@ describe("the composer's notes reach the verdict and the report", () => {
     anchorExcluded: [],
   };
   const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
+  // §C140 '6' (G8) — the three verdict NOTEs T11 added, spelled once so each case below can demand an
+  // EXACT reasons list: a count wired to a sibling's list must change which NOTEs appear.
+  const RELAID_NOTE =
+    "NOTE (not a failure): 1 figure(s) had labels laid out on the source's own row breaks or rows — the report names each";
+  const BELOW_NOTE =
+    'NOTE (not a failure): 1 figure(s) had labels drawn below their source size (R-16) — the report names each';
+  const EXCLUDED_NOTE =
+    "NOTE (not a failure): 1 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each";
 
   it('copies every list from compose.json onto the record, verbatim', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
@@ -660,9 +668,10 @@ describe("the composer's notes reach the verdict and the report", () => {
       ],
       anchorExcluded: [{ key: 'k7', block: 7, changed: false }],
     };
-    const text = summarise(
-      await runFigures(live(booksRoot), { spawn: withNotes(notes), booksRoot })
-    );
+    const result = await runFigures(live(booksRoot), { spawn: withNotes(notes), booksRoot });
+    // relaid and anchorExcluded set, belowSource empty: exactly those two NOTEs, in the verdict's order.
+    expect(result.verdict.reasons).toEqual([RELAID_NOTE, EXCLUDED_NOTE]);
+    const text = summarise(result);
     const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k'));
     expect(lines).toEqual([
       '    FIG_A: "k5" block 5 re-cut at the source\'s row breaks at 9.00 pt',
@@ -670,6 +679,24 @@ describe("the composer's notes reach the verdict and the report", () => {
       '    FIG_A: "k7" block 7 — M1 would have changed nothing',
     ]);
     expect(text).not.toMatch(/undefined/);
+  });
+
+  // §C140 '6' (G8) — EACH COUNT READS ITS OWN LIST. With one list set alone, the verdict carries exactly
+  // that list's NOTE: a count wired to a sibling's list either drops it or adds the sibling's. The NOTES
+  // fixture above cannot tell them apart (all three set on one figure), and the k5/k6/k7 case cannot see
+  // relaid and anchorExcluded swapped (both set there) — only one-list-alone cases see every miswiring.
+  it.each([
+    ['relaid', { key: 'r', block: 1, rule: 'source-rows', sizePt: 5, leadPt: 5.5 }, RELAID_NOTE],
+    ['belowSource', { key: 'b', block: 2, sizePt: 4.5, sourcePt: 5 }, BELOW_NOTE],
+    ['anchorExcluded', { key: 'x', block: 3, changed: true }, EXCLUDED_NOTE],
+  ])('a compose.json carrying only %s gives exactly its own NOTE', async (list, entry, note) => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), {
+      spawn: withNotes({ ...EMPTY, [list]: [entry] }),
+      booksRoot,
+    });
+    expect(rec(result, 'FIG_A').composeNotes[list]).toEqual([entry]); // the premise: the list was read
+    expect(result.verdict).toEqual({ ok: true, reasons: [note] });
   });
 
   // An overflow entry need not carry a word (a line-count overhang names none) or an axis (a
@@ -844,7 +871,7 @@ describe('a figure drawn on artworkEdits-edited artwork reaches the verdict and 
     expect(rec(result, 'FIG_A').artworkEdits).toEqual(EDITS);
     expect(result.verdict).toEqual({ ok: true, reasons: [NOTE] });
     expect(summarise(result)).toContain(
-      "  figures drawn on artwork edited by artworkEdits ([USER]'s edits) (2):\n" +
+      "  edits applied to the artwork by artworkEdits ([USER]'s edits), by figure (2):\n" +
         '    FIG_A: move-edge on 4 object(s)\n' +
         '    FIG_A: move-text on 17 object(s)\n'
     );

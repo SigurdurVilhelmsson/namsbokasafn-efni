@@ -21,17 +21,21 @@ P. PURE, figlayout's two report helpers, on Layout dicts from `decide` itself (t
      label is drawn smaller than its source - the R-16 shrink, never R4's ordinary shrink above the floor.
 E. END TO END through compose.py and figure-compose.py, on the committed fixture prepared into a temporary
    directory with its runs.json and artwork REPLACED (the test_compose_anchors.py pattern): block A, the NaCation
-   plant `Nucleus|(11 protons,|12 neutrons)` at 9 pt (open), and block B, `Mass` at 5 pt inside a planted stroked
-   box too narrow for its value at 5 pt. Every plant is a PRECONDITION measured first.
+   plant `Nucleus|(11 protons,|12 neutrons)` at 9 pt (open), block B, `Mass` at 5 pt inside a planted stroked
+   box too narrow for its value at 5 pt, and block C, `Serving size|per box` at 5 pt on two rows 5.5 apart inside
+   a planted FILLED cell (test_compose_blank_lines.py's fill-rect recipe) cut to FoodLabel's green-band margins
+   (test_figlayout_rows.py [a1]: 1.33 up, 0.39 down), so the label fits only on the source rows (M3). Every plant
+   is a PRECONDITION measured first.
 
 RED-FIRST, on the pre-task tree (figlayout without the helpers, compose.py and figure-compose.py without the
-keys): every P check FAILS (AttributeError: no report_entries / below_source), and so do E1-E4, E6-E10 (no
+keys): every P check FAILS (AttributeError: no report_entries / below_source), and so do E1-E4, E3b, E6-E10 (no
 `relaid` / `belowSource` key, no stdout token or NOTE, nothing copied into compose.json).
 CONTROLS (G13; they pass before and after by design, each reddened by a planted mutant named in the task report):
   E5 (block A is DRAWN on its source rows - the premise that the plant reaches M1; red when compose.py hands no
   `texts` cue at all - figlayout.M1_ANCHORS False stops the file at block A's PRECONDITION instead) and E11 (an
   excluded key draws the base cut - R-20 on the e2e path; red when compose.py hands the texts cue to an excluded
-  key).
+  key), and E12 (compose-report.json carries no scratch `m6Layout` key - its home is `stix.layout`, G8 / T11 D6;
+  red when compose.py's report gains an `m6Layout` key).
 """
 import ast
 import json
@@ -260,8 +264,15 @@ W5 = text_adv(VALUE_B, 5.0)
 BUDGET_B = W5 * 0.92                                          # 4.6 / 5 of the width at 5 pt
 BOX_B = (200.0, 20.0, 200.0 + BUDGET_B + 5.0, 40.0)            # page x0 y0 x1 y1; pad 2 a side + the 1.0 stroke
 SRC_B_X = round((BOX_B[0] + BOX_B[2]) / 2 - fixture_adv(KEY_B, 5.0) / 2, 3)
+# Block C - two 5 pt source rows 5.5 apart (closer than the 6.11 lead) in a FILLED cell whose sides sit at the
+# green band's margins: the two-line glyph box at the lead does not fit, the source rows do (M3, rows True).
+KEY_C, VALUE_C = 'Serving size|per box', 'Skammtastærð í hverjum kassa'
+ROW_C, PITCH_C = 195.0, 5.5
+CELL_C = (150.0 - 0.5, (ROW_C - PITCH_C) - 0.21 * 5.0 - 0.39 - 0.5, 290.0 + 0.5,
+          ROW_C + 0.73 * 5.0 + 1.33 + 0.5)                   # page x0 y0 x1 y1; + MIN_RULE/2, the fill-rect inset
 PLANT = [run('Nucleus', 9.0, 50.0, 150.0), run('(11 protons,', 9.0, 50.0, 139.0),
-         run('12 neutrons)', 9.0, 50.0, 128.0), run(KEY_B, 5.0, SRC_B_X, 28.0)]
+         run('12 neutrons)', 9.0, 50.0, 128.0), run(KEY_B, 5.0, SRC_B_X, 28.0),
+         run('Serving size', 5.0, 160.0, ROW_C), run('per box', 5.0, 160.0, ROW_C - PITCH_C)]
 REASON = 'R-20 test reason: keep the base cut on this label, long enough for the minimum'
 
 TMP = tempfile.TemporaryDirectory(prefix='c140-t11-report-keys-')
@@ -282,6 +293,9 @@ _c.set_source_rgb(0, 0, 0)
 _c.set_line_width(1.0)
 _c.rectangle(BOX_B[0], PAGE_H - BOX_B[3], BOX_B[2] - BOX_B[0], BOX_B[3] - BOX_B[1])
 _c.stroke()
+_c.set_source_rgb(0.86, 0.80, 0.92)                           # light: filled, never stroked, not dark
+_c.rectangle(CELL_C[0], PAGE_H - CELL_C[3], CELL_C[2] - CELL_C[0], CELL_C[3] - CELL_C[1])
+_c.fill()
 surf.finish()
 r = subprocess.run(['pdftocairo', '-png', '-r', '200', '-singlefile', str(pdf), str(out / 'artwork')],
                    capture_output=True, text=True)
@@ -296,10 +310,11 @@ ents = [dict(key=block_key(b), english=block_english(b), lines=block_lines(b), a
              send=FT.sendable(b, block_english(b), fonts)) for b in blocks]
 (out / 'blocks.json').write_text(json.dumps(ents, indent=1, ensure_ascii=False))
 keys = [e['key'] for e in ents]
-precondition('the plant is two send:true blocks, A of three visual lines and B of one',
-             sorted(keys) == sorted([KEY_A, KEY_B]) and all(e['send'] for e in ents)
-             and len(FT.visual_lines(blocks[keys.index(KEY_A)])) == 3, repr(ents))
-BI_A, BI_B = keys.index(KEY_A), keys.index(KEY_B)
+precondition('the plant is three send:true blocks, A of three visual lines, B of one and C of two',
+             sorted(keys) == sorted([KEY_A, KEY_B, KEY_C]) and all(e['send'] for e in ents)
+             and [len(FT.visual_lines(blocks[keys.index(k)])) for k in (KEY_A, KEY_B, KEY_C)] == [3, 1, 2],
+             repr(ents))
+BI_A, BI_B, BI_C = keys.index(KEY_A), keys.index(KEY_B), keys.index(KEY_C)
 
 page = FC.load_page(pdf)
 dark = Image.open(out / 'artwork.png').convert('L')
@@ -335,8 +350,16 @@ precondition(f"block B sits in a BOX and figlayout draws it at 4.5 pt (R-16; bud
              f"cls={cont_b['cls']} L={cont_b.get('L')} R={cont_b.get('R')} size={lay_b['size']} "
              f"overflow={lay_b['overflow']}")
 
+cont_c = FC.container_for(BI_C, blocks, page, dark, PAGE_H)
+lay_c = FL.decide(W(VALUE_C), face_width, cont_c, src_cues(blocks[BI_C], 5.0))
+precondition('block C sits in a CELL and figlayout draws it on the source rows at 5 pt (M3, no M1 anchor)',
+             cont_c['cls'] == 'cell' and lay_c.get('rows') is True and lay_c['m1'] is None
+             and lay_c['size'] == 5.0 and abs(lay_c['lead'] - PITCH_C) < 1e-6 and len(lay_c['lines']) == 2,
+             f"cls={cont_c['cls']} rows={lay_c.get('rows')} m1={lay_c['m1']} size={lay_c['size']} "
+             f"lead={lay_c['lead']} lines={cut(lay_c)}")
+
 tr = Path(TMP.name) / 'tr.json'
-tr.write_text(json.dumps({'blocks': {KEY_A: VALUE_A, KEY_B: VALUE_B}}, ensure_ascii=False))
+tr.write_text(json.dumps({'blocks': {KEY_A: VALUE_A, KEY_B: VALUE_B, KEY_C: VALUE_C}}, ensure_ascii=False))
 
 # E1-E6: compose.py itself, no flag.
 c = subprocess.run([sys.executable, str(COMPOSE), '--translations', str(tr), '--svg'], capture_output=True,
@@ -346,16 +369,21 @@ precondition('compose.py exits 0 and writes its report and SVG',
              c.returncode == 0 and rep is not None and (out / 'translated.svg').exists(), c.stderr[-400:])
 RELAID_A = {'key': KEY_A, 'block': BI_A, 'rule': 'source-breaks', 'sizePt': 9.0, 'shrunkFromPt': None,
             'anchors': 2}
+RELAID_C = {'key': KEY_C, 'block': BI_C, 'rule': 'source-rows', 'sizePt': 5.0, 'leadPt': PITCH_C}
+RELAID = sorted([RELAID_A, RELAID_C], key=lambda e: e['block'])   # draw order = block order
 BELOW_B = {'key': KEY_B, 'block': BI_B, 'sizePt': 4.5, 'sourcePt': 5.0}
-check('E1 compose-report.json `relaid` is exactly block A\'s source-breaks entry (B, one line, has none)',
-      rep.get('relaid') == [RELAID_A], repr(rep.get('relaid')))
+check('E1 compose-report.json `relaid` is exactly block A\'s source-breaks and block C\'s source-rows entry '
+      '(B, one line, has none)', rep.get('relaid') == RELAID, repr(rep.get('relaid')))
 check('E2 compose-report.json `belowSource` is exactly block B, 4.5 pt from 5.0 (A, at 9 pt, has none)',
       rep.get('belowSource') == [BELOW_B], repr(rep.get('belowSource')))
 line_a = [l for l in c.stdout.splitlines() if repr(KEY_A) in l and '->' in l]
 check('E3 the per-label stdout line of block A ends with the rule token `src-breaks`',
       len(line_a) == 1 and line_a[0].endswith(' src-breaks'), repr(line_a))
+line_c = [l for l in c.stdout.splitlines() if repr(KEY_C) in l and '->' in l]
+check('E3b the per-label stdout line of block C ends with the rule token `src-rows` (and only it)',
+      len(line_c) == 1 and line_c[0].endswith('] src-rows'), repr(line_c))
 check('E4 stdout carries both NOTEs, each opening after a blank line (the `!!` parse rule)',
-      "\nNOTE (not a failure): 1 label(s) laid out on the source's own row breaks or rows:" in c.stdout
+      "\nNOTE (not a failure): 2 label(s) laid out on the source's own row breaks or rows:" in c.stdout
       and '\nNOTE (not a failure): 1 label(s) drawn below their source size (R-16):' in c.stdout, c.stdout[-600:])
 got_a = drawn_lines(out / 'translated.svg', 150.0)
 check('E5 CONTROL block A is DRAWN on its source rows (the premise that the plant reaches M1)', got_a == ROWS_A,
@@ -374,7 +402,7 @@ def wrapper(config_doc, tag):
 w, d, rep = wrapper({'anchorExclusions': {}}, 'empty')
 precondition('figure-compose.py composes the plant (exit 0, an outputPath)', w.returncode == 0
              and d.get('outputPath') and 'error' not in d, f'exit {w.returncode}: {d!r} {w.stderr.strip()[-300:]}')
-check('E6 compose.json carries `relaid` exactly as the report', d.get('relaid') == [RELAID_A]
+check('E6 compose.json carries `relaid` exactly as the report', d.get('relaid') == RELAID
       and d.get('relaid') == rep.get('relaid'), repr(d.get('relaid')))
 check('E7 compose.json carries `belowSource` exactly as the report', d.get('belowSource') == [BELOW_B]
       and d.get('belowSource') == rep.get('belowSource'), repr(d.get('belowSource')))
@@ -387,9 +415,13 @@ precondition('figure-compose.py composes with block A excluded (exit 0)', w.retu
              and d.get('outputPath') and 'error' not in d, f'exit {w.returncode}: {d!r} {w.stderr.strip()[-300:]}')
 check('E9 compose.json `anchorExcluded` names block A once, changed True',
       d.get('anchorExcluded') == [{'key': KEY_A, 'block': BI_A, 'changed': True}], repr(d.get('anchorExcluded')))
-check('E10 ... and an excluded key has NO relaid entry (M1 off), while belowSource is unchanged',
-      d.get('relaid') == [] and d.get('belowSource') == [BELOW_B],
+check('E10 ... and an excluded key has NO relaid entry (M1 off), while block C\'s and belowSource are unchanged',
+      d.get('relaid') == [RELAID_C] and d.get('belowSource') == [BELOW_B],
       f"relaid={d.get('relaid')!r} belowSource={d.get('belowSource')!r}")
 got_x = drawn_lines(out / 'translated.svg', 150.0)
 check('E11 CONTROL the excluded key is drawn with the BASE cut', got_x == cut(base_a), f'{got_x} base {cut(base_a)}')
+# G8 / T11 D6: T7 renamed the scratch `m6Layout` to `stix.layout`; the scratch name must never reach a report.
+check('E12 CONTROL compose-report.json carries no `m6Layout` key; its entries live in `stix.layout` (a list)',
+      'm6Layout' not in rep and isinstance(rep.get('stix', {}).get('layout'), list),
+      f"keys={sorted(rep)} stix={sorted(rep.get('stix', {}))}")
 finish()
