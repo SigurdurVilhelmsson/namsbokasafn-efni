@@ -62,6 +62,15 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(doc).toMatch(/COMPOSER_TABLES_PIN/);
   });
 
+  // §C140 '6' M7 — a box that also holds another block's source line is a SHARED box, which
+  // figcontainers lays out on the cell path (cls 'cell', why '+shared'), so heldplan's box-multiline
+  // guard refuses a multi-line value only in an UNSHARED box. The operator-facing contract must say
+  // so, or an operator concludes a value that compose plans and draws can never be applied.
+  it('documents heldBlockValues: box-multiline refuses only an unshared box (M7)', () => {
+    const doc = loadFigureTextConfig()._heldBlockValues;
+    expect(doc).toMatch(/a multi-line block in an unshared box \(a shared box, §C140 '6' M7/);
+  });
+
   // §C140 '6' R-20 — the doc string is where a later operator learns what an exclusion does and how a
   // change to one reaches readers: the ruling, M1 only, every block of the key, the same COMPOSER_VERSION
   // route as heldBlockValues, and no --force recipe.
