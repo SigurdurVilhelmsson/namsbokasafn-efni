@@ -9,10 +9,11 @@ Reads the directory `figure-prepare.py` wrote (`runs.json`, `meta.json`, `blocks
 
     {"outputPath": "<dir>/translated.svg",
      "unformatted": [...], "overflow": [...],
-     "localized": [...], "containerErrors": [...], "held": [...]}  exit 0
+     "localized": [...], "containerErrors": [...], "held": [...],
+     "relaid": [...], "belowSource": [...], "anchorExcluded": [...]}  exit 0
     {"error": "...", "keys": ["<block key>", ...]}  exit 1
 
-Exit 2 is a usage error. The five lists are the composer's NOTES, copied from
+Exit 2 is a usage error. The lists are the composer's NOTES, copied from
 compose-report.json (see `COMPOSE_NOTES`); none of them is a verdict.
 
 🔴 WHY THIS WRAPPER EXISTS: `compose.py` KEEPS THE ENGLISH FOR ANY KEY IT CANNOT MATCH,
@@ -89,9 +90,10 @@ and a key no send:true block carries (a send:false label is never laid out by fi
 could never act). The entry reaches compose.py in `<out>/anchor-exclusions.json`, written on EVERY run -
 `{}` included - after the stale outputs are removed, and `--anchor-exclusions` is always passed. `verify`
 then requires compose-report.json `anchorExcluded` to name every configured key once per block carrying
-it (the held contract's multiset rule), so a composer that ignored the flag cannot pass. `anchorExcluded`
-is NOT one of COMPOSE_NOTES: `changed: false` (an exclusion that no longer changes the cut) is a note on
-compose.py's stdout, never a refusal.
+it (the held contract's multiset rule), so a composer that ignored the flag cannot pass. Once verify has
+accepted it, `anchorExcluded` is copied into compose.json as one of COMPOSE_NOTES (§C140 '6' T11, G8), so the
+driver can name each excluded label; `changed: false` (an exclusion that no longer changes the cut) is a note,
+never a refusal.
 ⚠️ The table sits outside `renderHash`/`composedVersion`, like heldBlockValues: a change reaches a sidecar
 figure's media only at the next COMPOSER_VERSION bump.
 
@@ -163,12 +165,19 @@ REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artw
 #   containerErrors  blocks whose container detection failed, laid out as open (§C140 ③)
 #   held             labels drawn from heldBlockValues ([USER]'s values), {key, block, changed},
 #                    draw order with multiplicity (§C140 ㊾ D5(a))
+#   relaid           labels laid out on the source's own row breaks (M1, rule source-breaks, with shrunkFromPt)
+#                    or drawn on its own rows (M3, rule source-rows) - {key, block, rule, sizePt, ...} (§C140 '6', G8)
+#   belowSource      labels the source set below the 7.5 pt floor, drawn smaller than that size (R-16) -
+#                    {key, block, sizePt, sourcePt} (§C140 '6', G8)
+#   anchorExcluded   labels laid out without M1's cuts by anchorExclusions (R-20) - {key, block, changed};
+#                    verify checks it against blocks.json before it is copied, like `held` (§C140 '6', G8)
 # 🔴 NONE OF THEM IS A VERDICT, SO NONE IS CHECKED HERE. A figure with a note is drawn and every
 # label is in it; `verify` stays the only thing that refuses. `held` is no exception: verify checks
 # it against blocks.json (assertion 2) before it is copied, and `heldErrors` - which IS a verdict -
 # is never a note. A report written by an older composer lacks the lists, and that reads as EMPTY
 # lists - never a refusal, while nothing is configured for the figure (see verify).
-COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held')
+COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held', 'relaid', 'belowSource',
+                 'anchorExcluded')
 
 # Written by this run, and only by this run. Removed before the child starts so their
 # presence afterwards MEANS "this run produced them" rather than "a file with this name is

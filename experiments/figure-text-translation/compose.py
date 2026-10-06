@@ -51,6 +51,13 @@ would have drawn other lines or another size. The file is read only without --co
 malformed or other-figure file raises before anything is drawn (exit 1, no report). With no flag nothing is
 excluded.
 
+§C140 '6' report keys (spec §9.8; controller decision G8): the report NAMES the layout decisions no other list
+shows. `relaid` - a translated label laid out on the source's own row breaks (M1, rule `source-breaks`, with
+`shrunkFromPt` when the anchored cut was drawn smaller: `step` does not change, G10) or drawn on its own rows (M3,
+rule `source-rows`), from figlayout.report_entries; `belowSource` - a translated label the source set below the
+7.5 pt floor and drawn smaller than that source size (R-16), from figlayout.below_source. figure-compose.py copies
+both, with `anchorExcluded`, into compose.json as NOTES (never verdicts).
+
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
 survives re-extraction.
@@ -501,6 +508,13 @@ container_errors = []
 # (figtext.explicit_lines names the reasons) - that label is drawn as if each LF were a space, and figure-compose.py
 # refuses the figure. Neither is one of figure-compose.py's COMPOSE_NOTES.
 explicit_breaks, explicit_errors = [], []
+# §C140 '6' report keys (spec §9.8, G8), additive, draw order WITH multiplicity, translated labels only (a held
+# line is refused rather than shrunk, and a kept, identity or arc label is never laid out by figlayout).
+# `relaid`: {key, block, rule, ...} from figlayout.report_entries - rule `source-breaks` (M1 honoured: sizePt,
+# shrunkFromPt, anchors) and/or `source-rows` (M3 drew it on the source rows: sizePt, leadPt); one label may carry
+# both. `below_source`: {key, block, sizePt, sourcePt} from figlayout.below_source - a label the source set below
+# the floor, drawn smaller than its source size (R-16). Both are figure-compose.py COMPOSE_NOTES: notes, never verdicts.
+relaid, below_source = [], []
 
 # The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
 PAGE = DARK = None
@@ -823,6 +837,11 @@ for BI, b in enumerate(blocks):
                                  [''.join(c for c, _ in l) for l in _m1['lines']]
                                  != [''.join(c for c, _ in l) for l in layout['lines']])
     align, size = layout['align'], layout['size']
+    relaid_here = FL.report_entries(layout)
+    relaid.extend(dict(key=key, block=BI, **e) for e in relaid_here)
+    below = FL.below_source(size, sz0)
+    if below is not None:
+        below_source.append(dict(key=key, block=BI, **below))
     # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
     # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
     draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot, key, BI)
@@ -836,7 +855,10 @@ for BI, b in enumerate(blocks):
             if extra in ov:
                 entry[extra] = ov[extra]
         overflow.append(entry)
-    report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]")
+    # The rule tokens go AFTER the bracket: test_compose_t23.py searches `[(box|cell|open) \S+]` on this line.
+    report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]"
+                  + ''.join({'source-breaks': ' src-breaks', 'source-rows': ' src-rows'}[e['rule']]
+                            for e in relaid_here))
 
 # §C140 ㊾ D5(a): a held value whose key no block carries - renamed or re-extracted - would never be drawn.
 # figure-compose.py's pre-flight refuses this before spawning; a hand-run reaches it here.
@@ -918,6 +940,9 @@ if SVG:
     'heldConfigPath': HELD_CONFIG,
     # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
     'anchorExcluded': anchor_excluded,
+    # §C140 '6' report keys (G8). Additive (see `relaid` / `below_source` above).
+    'relaid': relaid,
+    'belowSource': below_source,
     # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason; '6' M6 adds
     # `layout`, the laid-out segments drawn in a STIX face (see STIX above).
     'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped'], 'layout': STIX['layout']},
@@ -943,6 +968,20 @@ if anchor_excluded:
     for e in anchor_excluded:
         print(f"     {e['key']!r} block {e['block']}: "
               + ('M1 would have cut it differently' if e['changed'] else 'M1 would have changed nothing'))
+# §C140 '6' report keys (G8). Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if relaid:
+    print(f"\nNOTE (not a failure): {len(relaid)} label(s) laid out on the source's own row breaks or rows:")
+    for e in relaid:
+        if e['rule'] == 'source-rows':
+            what = f"on the source rows, lead {e['leadPt']:.2f}pt"
+        else:
+            what = f"on the source's row breaks ({e['anchors']} anchored)" + (
+                '' if e['shrunkFromPt'] is None else f", shrunk from {e['shrunkFromPt']:.2f}pt")
+        print(f"     {e['key']!r} block {e['block']}: {what} at {e['sizePt']:.2f}pt")
+if below_source:
+    print(f"\nNOTE (not a failure): {len(below_source)} label(s) drawn below their source size (R-16):")
+    for e in below_source:
+        print(f"     {e['key']!r} block {e['block']}: {e['sourcePt']}->{e['sizePt']:.2f}pt")
 if held_errors:
     print(f"\n!! {len(held_errors)} heldBlockValues entr(ies) NOT drawn - figure-compose.py refuses this figure:")
     for e in held_errors:

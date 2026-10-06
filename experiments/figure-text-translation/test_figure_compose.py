@@ -90,7 +90,10 @@ K_VERBATIM = 'H2O (g)'
 # Spelled out here rather than read from the wrapper, so a list the wrapper stops copying fails
 # this file instead of silently shrinking the set it is checked against. `held` (§C140 ㊾ D5(a)) is
 # the labels drawn from heldBlockValues; `heldErrors` is NOT a note - verify refuses it (section 12).
-COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held')
+# `relaid`, `belowSource` and `anchorExcluded` are the §C140 '6' report keys (G8, T11): source row breaks /
+# rows, an R-16 shrink below the source size, and an R-20 exclusion.
+COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held', 'relaid', 'belowSource',
+                 'anchorExcluded')
 
 fails = []
 
@@ -347,11 +350,11 @@ with tempfile.TemporaryDirectory() as td:
           '--control run', rep.get('translationsPath') == str(tr)
           and rep.get('control') is False,
           f"{rep.get('translationsPath')!r} control={rep.get('control')!r}")
-    # §C140: compose.json carries the composer's five NOTE lists beside outputPath, so the
+    # §C140: compose.json carries the composer's NOTE lists beside outputPath, so the
     # driver can name them without a second file. Each must be the REPORT'S list, and a report
     # that has none (an older composer's) must read as [] - a note is never a refusal. Section 11
     # carries the non-empty arm, which this fixture cannot produce.
-    check("2h compose.json carries the composer's five note lists, each the report's own "
+    check("2h compose.json carries every one of the composer's note lists, each the report's own "
           "(or [] where the report has none)",
           all(isinstance(d.get(k), list) and d.get(k) == rep.get(k, [])
               for k in COMPOSE_NOTES),
@@ -1042,7 +1045,7 @@ with tempfile.TemporaryDirectory() as td:
 
 
 # ── 11. THE COMPOSER'S NOTES REACH compose.json — THROUGH main(), NOT A HELPER ────────
-# §C140 ② ③ ⑨ ㊾. compose-report.json carries five note lists beside its key sets - `unformatted`,
+# §C140 ② ③ ⑨ ㊾ '6'. compose-report.json carries note lists beside its key sets - `unformatted`,
 # `overflow`, `localized`, `containerErrors`, `held` - and the driver reads compose.json, never the
 # report, so a list the wrapper does not copy is a list nobody sees. Case 2h can only show []
 # (the committed fixture has nothing to style, nothing to overhang, no decimal and a detectable
@@ -1050,7 +1053,7 @@ with tempfile.TemporaryDirectory() as td:
 # report the real `verify` accepts, and `main()` is driven for real - validate, read_report,
 # verify and the compose.json write all run.
 # ⚠️ THROUGH main() ON PURPOSE. A unit test of a payload helper stays green against a main() that
-# writes five hand-built [] lists, and case 2h cannot tell that apart either.
+# writes hand-built [] lists, and case 2h cannot tell that apart either.
 NOTES_PLANTED = {
     'unformatted': [
         {'key': K_OBS, 'token': 'Na3PO4', 'stretch': '3', 'reason': 'absent', 'candidates': 0},
@@ -1068,18 +1071,27 @@ NOTES_PLANTED = {
     # writes the --config - and the planted `missing` leaves it out. 11a is then the copy of a held list
     # verify accepted, never one it would refuse.
     'held': [{'key': K_VERBATIM, 'block': 3, 'changed': [0]}],
+    # §C140 '6' report keys (G8, T11). `relaid` may name one label twice (M1 and M3 on the same block).
+    'relaid': [{'key': K_TEST, 'block': 2, 'rule': 'source-breaks', 'sizePt': 8.75, 'shrunkFromPt': 9.0,
+                'anchors': 1},
+               {'key': K_TEST, 'block': 2, 'rule': 'source-rows', 'sizePt': 8.75, 'leadPt': 11.0}],
+    'belowSource': [{'key': K_HYP, 'block': 1, 'sizePt': 4.5, 'sourcePt': 5.0}],
+    # `verify` checks this list against blocks.json before it is copied (the anchorExclusions contract), so
+    # the planted figure really CONFIGURES the key - main_with_planted_report writes it into the --config.
+    'anchorExcluded': [{'key': K_OBS, 'block': 0, 'changed': True}],
 }
 HELD_PLANTED = {K_VERBATIM: 'QZX'}
+ANCHOR_PLANTED = {K_OBS: 'QZ R-20 planted reason, long enough to clear the forty-character minimum'}
 # Report fields that are NOT notes, planted so 11b can show they stay out of compose.json: `heldErrors` is
 # fatal at verify (never a note), and the two paths are the composer's own bookkeeping.
 REPORT_ONLY = {'heldErrors': [], 'heldValuesPath': '/planted/held-values.json',
                'heldConfigPath': '/planted/figure-text.config.json'}
 
 
-def main_with_planted_report(extra_report, held_values=None):
+def main_with_planted_report(extra_report, held_values=None, anchor=None):
     """Prepare the fixture, plant a verify-clean report carrying `extra_report`, drive main().
-    `held_values` None = no --config (the production route, the committed config); a dict = a --config
-    whose heldBlockValues configures exactly that for this figure.
+    `held_values` / `anchor` both None = no --config (the production route, the committed config); otherwise a
+    --config whose heldBlockValues / anchorExclusions configure exactly those for this figure.
     -> (main's return code, the compose.json it wrote, the prepare result, `handed`): `handed` records
     what main() gave the child - the held-values path and that file's content AT SPAWN TIME - plus
     `out` and `config`."""
@@ -1098,10 +1110,12 @@ def main_with_planted_report(extra_report, held_values=None):
                   'translationsPath': str(tr), 'control': False, **extra_report}
         argv = ['--out', str(out), '--translations', str(tr)]
         handed = {'out': out.resolve(), 'config': None, 'path': None, 'doc': None}
-        if held_values is not None:
+        if held_values is not None or anchor is not None:
             cfg = Path(td) / 'config.json'
-            cfg.write_text(json.dumps({'heldBlockValues': {'CNX_Fixture_Notes': held_values}},
-                                      ensure_ascii=False), encoding='utf-8')
+            doc = {'heldBlockValues': {'CNX_Fixture_Notes': held_values or {}}}
+            if anchor is not None:
+                doc['anchorExclusions'] = {'CNX_Fixture_Notes': anchor}
+            cfg.write_text(json.dumps(doc, ensure_ascii=False), encoding='utf-8')
             handed['config'] = cfg.resolve()
             argv += ['--config', str(cfg)]
 
@@ -1130,12 +1144,12 @@ def main_with_planted_report(extra_report, held_values=None):
 
 
 if _mod is not None:
-    rc, d, prep, handed = main_with_planted_report({**NOTES_PLANTED, **REPORT_ONLY}, HELD_PLANTED)
+    rc, d, prep, handed = main_with_planted_report({**NOTES_PLANTED, **REPORT_ONLY}, HELD_PLANTED, ANCHOR_PLANTED)
     check('11 PRECONDITION the planted report is one verify ACCEPTS - main() exits 0 with an '
           'outputPath, so 11a is about the copy and not a refusal',
           prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
           f'prepare exit {prep.returncode}, main {rc}: {d!r}')
-    check('11a compose.json carries all five note lists VERBATIM - draw order, multiplicity '
+    check('11a compose.json carries every note list VERBATIM - draw order, multiplicity '
           'and every field of every entry',
           all(d.get(k) == NOTES_PLANTED[k] for k in COMPOSE_NOTES),
           repr({k: d.get(k) for k in COMPOSE_NOTES}))
@@ -1760,7 +1774,11 @@ def e0_e3():
                                                             'configPath': str(cfg.resolve()),
                                                             'exclusions': {K_OBS: AREASON}},
               repr(load_json(out / 'anchor-exclusions.json')))
-        check('E0c ... and anchorExcluded is NOT a compose.json note (D4)', 'anchorExcluded' not in d, repr(d))
+        # Re-pinned by §C140 '6' T11 (G8): `anchorExcluded` IS now a compose.json note, copied once verify accepts it
+        # (it was report-only under T4 D4).
+        check('E0c ... and compose.json carries anchorExcluded as a note, the report\'s own list (T11, G8)',
+              d.get('anchorExcluded') == rep.get('anchorExcluded') == [{'key': K_OBS, 'block': bi, 'changed': False}],
+              repr(d))
 
         # E1: a key that matches no block.
         stale = 'QZ no|such label'

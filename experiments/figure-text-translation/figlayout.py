@@ -156,10 +156,21 @@ OUTPUT  Layout dict:
             the height budget is switched off, or the label is drawn on explicit breaks), cls,
             rows (True when the label is DRAWN on the source rows by M3's SOURCE ROWS - lead = the source pitch,
             top = projs[0]; False otherwise, including P1v's redraw)
+
+REPORT (§C140 '6' T11, spec §9.8: nothing read `m1` or `rows`, and an M1 shrink leaves `step` unchanged - G10)
+  report_entries(layout) -> compose.py's `relaid` entries for one drawn label, without key/block: a `source-breaks`
+            entry {'rule', 'sizePt', 'shrunkFromPt', 'anchors'} when M1 was HONOURED (m1 not None and m1['spans']
+            not None - an anchored cut drawn, even one equal to the base cut), shrunkFromPt being m1['shrunkFrom']
+            (None, or the size an M1 shrink started from, so `size < sz0` at an unchanged `step` is named); then a
+            `source-rows` entry {'rule', 'sizePt', 'leadPt'} when rows is True. [] otherwise.
+  below_source(size, sz0, floor=FLOOR) -> compose.py's `belowSource` entry {'sizePt', 'sourcePt'} for a label the
+            source set below the floor (R-16) and drawn smaller than that source size; None otherwise - R4's
+            ordinary shrink above the floor (9 -> 8.75) is not one.
 """
 
 ASC, DESC = 0.73, 0.21
 EPS = 1e-9
+FLOOR = 7.5              # R4's shrink floor: decide's default `floor`, and below_source's threshold (one value)
 STEP = 0.25
 SUB_FLOOR_RATIO = 0.8    # R-16 ([USER] 2026-10-05, amending R4/R5): a label whose source size is below the floor may
                          # shrink to this x sz0; 1.0 = R4 as of 2026-09-13. Read at call time, like the gates below.
@@ -456,7 +467,7 @@ class _Partition:
         return best
 
 
-def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _height=True, _ae=True,
+def decide(words, width, container, cues, floor=FLOOR, pad=2.0, *, _r9=True, _height=True, _ae=True,
            _rows=None, _cclamp=None, _r9close=None):
     """-> Layout dict (see the module docstring). `_r9` / `_height` / `_ae` exist ONLY for the prototype-equivalence
     harness and the RED-first runs; production never passes them. `_rows` / `_cclamp` / `_r9close` (default: the
@@ -806,3 +817,24 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         'widths': widths, 'budget': budget, 'bound': bound, 'heightFit': height_fit, 'cls': cls, 'm1': m1,
         'rows': rows,
     }
+
+
+def report_entries(layout):
+    """-> the `relaid` entries of one decide() Layout dict, without key/block (compose.py adds them; see REPORT).
+    `source-breaks` only when M1 was HONOURED (m1['spans'] not None, T11 D3); `source-rows` when rows is True."""
+    out = []
+    m1 = layout.get('m1')
+    if m1 is not None and m1.get('spans') is not None:
+        out.append({'rule': 'source-breaks', 'sizePt': layout['size'], 'shrunkFromPt': m1.get('shrunkFrom'),
+                    'anchors': len(m1['anchors'])})
+    if layout.get('rows') is True:
+        out.append({'rule': 'source-rows', 'sizePt': layout['size'], 'leadPt': layout['lead']})
+    return out
+
+
+def below_source(size, sz0, floor=FLOOR):
+    """-> {'sizePt', 'sourcePt'} when a label set below the floor at sz0 is DRAWN at `size` < sz0 (R-16's shrink,
+    size_steps' floor_eff), else None. The EPS slack is size_steps' own, so a source at the floor is not below it."""
+    if sz0 < floor - EPS and size < sz0 - EPS:
+        return {'sizePt': size, 'sourcePt': sz0}
+    return None

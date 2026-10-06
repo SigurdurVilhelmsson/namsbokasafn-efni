@@ -1266,7 +1266,10 @@ export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
  * at the floor that overhang their space (③, R5), `localized` English-kept numbers drawn with a
  * decimal comma (⑨), `containerErrors` blocks whose container detection failed (③), `held`
  * labels drawn from `heldBlockValues`, [USER]'s values (㊾ D5(a)), each `{key, block, changed}`
- * in draw order WITH multiplicity.
+ * in draw order WITH multiplicity; and the '6' report keys (G8): `relaid` labels laid out on the
+ * source's own row breaks (M1, `rule: 'source-breaks'`, with `shrunkFromPt`) or rows (M3,
+ * `rule: 'source-rows'`), `belowSource` labels drawn below their source size (R-16), and
+ * `anchorExcluded` labels laid out without M1's cuts by `anchorExclusions` (R-20).
  * `figure-compose.py` copies them out of compose-report.json into compose.json.
  *
  * 🔴 EXPORTED SO A TEST CAN HOLD IT AGAINST `figure-compose.py`'s `COMPOSE_NOTES` tuple: two
@@ -1280,6 +1283,9 @@ export const COMPOSE_NOTE_LISTS = [
   'localized',
   'containerErrors',
   'held',
+  'relaid',
+  'belowSource',
+  'anchorExcluded',
 ];
 
 /**
@@ -1289,7 +1295,10 @@ export const COMPOSE_NOTE_LISTS = [
  *
  * @param {object} composeVerdict the parsed compose.json of a successful compose
  * @returns {{unformatted: object[], overflow: object[], localized: string[],
- *   containerErrors: object[], held: {key: string, block: number, changed: number[]}[]}}
+ *   containerErrors: object[], held: {key: string, block: number, changed: number[]}[],
+ *   relaid: {key: string, block: number, rule: string, sizePt: number}[],
+ *   belowSource: {key: string, block: number, sizePt: number, sourcePt: number}[],
+ *   anchorExcluded: {key: string, block: number, changed: boolean}[]}}
  */
 function composeNotesFrom(composeVerdict) {
   return Object.fromEntries(
@@ -1329,6 +1338,27 @@ function figuresWithHeldValues(figures) {
       (f.outcome === 'translated' || (f.outcome === 'copied-textless' && f.published)) &&
       f.composeNotes &&
       f.composeNotes.held.length > 0
+  );
+}
+
+/**
+ * §C140 '6' R-15a (G8) — the figures that SHIPPED a picture composed from artwork their
+ * `artworkEdits` entry edited ([USER]'s edits; `figure-prepare.py` records them in prepare.json,
+ * copied onto `rec.artworkEdits`). `held`'s stance exactly: `translated`, or a PUBLISHED
+ * `copied-textless` recompose, and only once composed — so a dry run, which composes nothing,
+ * names none although the record carries the edits. The verdict's NOTE and the report's section
+ * both come from here.
+ *
+ * @param {object[]} figures run records
+ * @returns {object[]}
+ */
+function figuresWithArtworkEdits(figures) {
+  return figures.filter(
+    (f) =>
+      (f.outcome === 'translated' || (f.outcome === 'copied-textless' && f.published)) &&
+      f.composeNotes &&
+      Array.isArray(f.artworkEdits) &&
+      f.artworkEdits.length > 0
   );
 }
 
@@ -2038,6 +2068,9 @@ export async function runFigures(args, deps = {}) {
     droppedKeys: [],
     // §C140 '6' R-5a: the MT values whose line break was collapsed to a space at intake.
     newlineKeys: [],
+    // §C140 '6' R-15a: prepare.json `artworkEdits` ({op, selected, objects} per op), [] when the
+    // figure has no entry. prepare.json does not outlive the run, so the record carries it.
+    artworkEdits: [],
     published: null,
     warnings: [],
     // What the composer reported about the figure it DREW (§C140), read from compose.json by
@@ -2232,6 +2265,8 @@ export async function runFigures(args, deps = {}) {
           missingFont: payload.missingFontBlocks,
         };
         rec.warnings = payload.warnings || [];
+        // §C140 '6' R-15a — the edits prepare applied to the STAGED artwork; no key = no entry.
+        rec.artworkEdits = Array.isArray(payload.artworkEdits) ? payload.artworkEdits : [];
         // §C140 ⑦ — what the read layer repaired, or could not, by glyph name.
         rec.glyphs = {
           repaired: payload.glyphRepairs || [],
@@ -2355,6 +2390,10 @@ export async function runFigures(args, deps = {}) {
         localizedFigures: figuresWithComposeNote(selected, 'localized').length,
         containerErrorFigures: figuresWithComposeNote(selected, 'containerErrors').length,
         heldFigures: figuresWithHeldValues(selected).length,
+        relaidFigures: figuresWithComposeNote(selected, 'relaid').length,
+        belowSourceFigures: figuresWithComposeNote(selected, 'belowSource').length,
+        anchorExcludedFigures: figuresWithComposeNote(selected, 'anchorExcluded').length,
+        artworkEditFigures: figuresWithArtworkEdits(selected).length,
         ringGateFailedFigures: selected.filter((r) => r.ringGateFailed).length,
       }),
       tmpRoot,
@@ -2802,6 +2841,57 @@ export function summarise(result) {
       "labels drawn from heldBlockValues ([USER]'s values), by figure",
       figuresWithHeldValues(result.figures).flatMap((f) =>
         f.composeNotes.held.map((h) => `${f.basename}: ${quoted(h.key)} block ${h.block}`)
+      )
+    )
+  );
+  // §C140 '6' (G8) — the layout decisions no other list shows, one line per entry. An M1 shrink
+  // names the size it shrank from (`step` does not change, G10); a rule this driver does not know
+  // prints as its raw string, never as `undefined`.
+  lines.push(
+    ...nameList(
+      "labels laid out on the source's own row breaks or rows, by figure",
+      noteEntries('relaid', (e) => {
+        const head = `${quoted(e.key)} block ${e.block} `;
+        if (e.rule === 'source-breaks') {
+          return (
+            `${head}re-cut at the source's row breaks at ${pt(e.sizePt)} pt` +
+            (e.shrunkFromPt == null ? '' : ` (shrunk from ${pt(e.shrunkFromPt)} pt)`)
+          );
+        }
+        if (e.rule === 'source-rows')
+          return `${head}on the source's own rows, lead ${pt(e.leadPt)} pt`;
+        return `${head}${e.rule}`;
+      })
+    )
+  );
+  lines.push(
+    ...nameList(
+      'labels drawn below their source size (R-16), by figure',
+      noteEntries(
+        'belowSource',
+        (e) =>
+          `${quoted(e.key)} block ${e.block} drawn at ${pt(e.sizePt)} pt, source ${pt(e.sourcePt)} pt`
+      )
+    )
+  );
+  lines.push(
+    ...nameList(
+      "labels laid out without M1's source-anchored cuts (anchorExclusions), by figure",
+      noteEntries(
+        'anchorExcluded',
+        (e) =>
+          `${quoted(e.key)} block ${e.block} — ` +
+          (e.changed ? 'M1 would have cut it differently' : 'M1 would have changed nothing')
+      )
+    )
+  );
+  // §C140 '6' R-15a — `figuresWithArtworkEdits`, not `noteEntries`: a prepare fact, and a published
+  // textless recompose is drawn on the edited artwork too.
+  lines.push(
+    ...nameList(
+      "figures drawn on artwork edited by artworkEdits ([USER]'s edits)",
+      figuresWithArtworkEdits(result.figures).flatMap((f) =>
+        f.artworkEdits.map((e) => `${f.basename}: ${e.op} on ${e.selected} object(s)`)
       )
     )
   );
