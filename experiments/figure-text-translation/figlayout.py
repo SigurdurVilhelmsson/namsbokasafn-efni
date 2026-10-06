@@ -98,6 +98,21 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
              (v)   n_t at floor_eff, displaced minimally, overhanging and NAMED: a word wider than (FR-FL) - 2 pad
                    -> that word; otherwise a line-count overhang -> word None, needPt = the widest drawn line.
 
+  M1         SOURCE-ANCHORED CUTS (§C140 figure review, gated by M1_ANCHORS / M1_ANCHOR_SHRINK / M1_ANCHOR_OVER_R9A).
+             Runs AFTER every rule above has chosen the count and size, and never changes the count. When the chosen
+             n == n_src >= 2 and cues['texts'] (the visual source lines' text) is given, a source row boundary is
+             ANCHORED where a token the MT carries verbatim marks it (source_anchors): a line opening with '(', a list
+             marker or a digit/symbol token, or closing with ')', ':' or ',' - or a line that is one such token - and
+             the token occurs equally often in source and value (matched by ordinal). The partition is then the
+             min-max one with every anchored boundary fixed (R9 / (A) bind only the free cuts, in decide's own order).
+             It is used when it meets the step's width budget at the chosen size; else (M1_ANCHOR_SHRINK) at the
+             largest smaller size >= floor where it does; else the base partition is drawn. A box label is centred
+             for the size actually drawn. No anchor, or an infeasible anchor set, leaves the layout untouched.
+             [USER] rulings 2026-10-05 (campaign register): R-3 = arm B (M1_ANCHOR_SHRINK on); R-4 = yes
+             (M1_ANCHOR_OVER_R9A on - the override binds AT an anchored cut only, never a free one); R-6 - (E)
+             governs the count only: no (E) test is applied to M1's cut. After an M1 shrink `step` keeps its pre-M1
+             value (it names the rule that chose the count) and m1['shrunkFrom'] records the size it shrank from.
+
 OUTPUT  Layout dict:
   lines     [[(ch, style)]] per drawn line          size      the drawn base size (pt)
   align     'left' | 'center' | 'right'             anchor    the UNDISPLACED anchor (along)
@@ -120,6 +135,8 @@ OUTPUT  Layout dict:
             bound (True when the R9-constrained partition fit the step's budget and was therefore taken - it may
             EQUAL the unconstrained one; False when no binding-honouring partition exists, it did not fit, or an
             (A)-only partition was preferred to it),
+            m1 (None, or {'anchors': {boundary: cut}, 'spans', 'bound', 'shrunkFrom'} when an anchor was found;
+            spans None = it could not be honoured and the base partition was drawn),
             heightFit (box/cell: whether the DRAWN line count, size AND lead meet the height budget - for a label
             drawn on the source rows that is the rows' test against the clamp interval, so heightFit can be True
             where the lead-based glyph box exceeds (U-D) - 2 pad, and only `rows` says why; None for open or when
@@ -140,6 +157,14 @@ SOURCE_ROWS = True       # (a) a CELL label on the source's own line count is ad
                          #     rows, and is then DRAWN on them (lead = source pitch, top = first source baseline)
 CELL_CLAMP_BUDGET = False  # (a') a cell's height budget is the vertical clamp's own interval, not (U-D) - 2 pad
 R9_CLOSER = True         # (c) a short token ending in ')' after an earlier '(' on the label ends a line, binds backward
+# M1 (§C140 figure review, row breaks): SOURCE-ANCHORED CUTS. Read at call time, so a test or a combining agent can flip
+# them. M1_ANCHORS False reproduces the base layout exactly (m1_anchor returns before touching anything).
+M1_ANCHORS = True        # at the chosen count n == n_src >= 2, cut where a verbatim token pins a source row boundary
+M1_ANCHOR_SHRINK = True  # ...and when that cut misses the step's width budget at the chosen size, try smaller sizes
+                         # (same count, same budget, down to the floor) before giving up - never a different count
+M1_ANCHOR_OVER_R9A = True  # an anchored cut may fall after a symbol (R9) or before a lone last symbol ((A)): the
+                           # SOURCE breaks there. False drops such anchors instead. [USER] rulings R-3 (arm B, the
+                           # shrink) and R-4 (yes, the override), 2026-10-05.
 
 _STEP_OPEN = ('i', 'ii', 'iii-anchor', 'iii-displaced', 'iv-gain', 'v-overflow')
 
@@ -172,6 +197,134 @@ def is_symbol(w):
     """R9's and A's one notion of a SYMBOL: a word of 1..SHORT_TOKEN characters that is not lowercase alphabetic
     (`A`, `Cu`, `Ar`, `K`, `2`, `H2` are symbols; `af`, `og`, `á`, `í` are words)."""
     return len(w) <= SHORT_TOKEN and not (w.isalpha() and w.islower())
+
+
+# ---- M1: source-anchored cuts -------------------------------------------------------------------------------------
+# A row boundary of the SOURCE is recoverable in the translation only where something the MT carries VERBATIM marks
+# it: a bracket or punctuation edge, a list marker, a digit, a symbol or a formula. Nothing here compares two
+# translated strings (repo rule): the source side is the read-only visual-line text, the target side is the value.
+
+def _m1_norm(t):
+    return t.replace(',', '').replace('.', '')
+
+
+def anchor_kind(t, at_start, whole_line=False):
+    """The verbatim class of a token that opens (at_start) or closes a source line, or None.
+    Opens:  '(' ; a list marker '-', '–', '•', '=', '+', '(cid:' ; a TOKEN (a digit-bearing word, or a symbol).
+    Closes: ')' , ':' , ',' ; a TOKEN only when it is the WHOLE line - a number ending a wrapped prose line is where
+            the wrap fell, not an item boundary (FoodLabel '...based on a 2,000|calorie diet')."""
+    if at_start:
+        if t.startswith('(cid:') or t[0] in '-–•=+':
+            return ('lit', t[0])
+        if t.startswith('('):
+            return ('(',)
+    else:
+        for c in '):,':
+            if t.endswith(c):
+                return (c,)
+        if not whole_line:
+            return None
+    if any(c.isdigit() for c in t) or is_symbol(t):
+        return ('tok', _m1_norm(t))
+    return None
+
+
+def _anchor_match(kind, w):
+    k = kind[0]
+    if k == '(':
+        return w.startswith('(')
+    if k in ('):,'):
+        return w.endswith(k)
+    if k == 'lit':
+        return w.startswith(kind[1])
+    return _m1_norm(w) == kind[1]
+
+
+def source_anchors(src_lines, tgt_words):
+    """{boundary k (between source lines k and k+1): target cut index (the first word of target line k+1)} for each
+    boundary whose opening (tried first) or closing token is verbatim and occurs the SAME number of times in the
+    source and the target - matched by ordinal occurrence. A blank source line pins nothing."""
+    sw = [l.split() for l in src_lines]
+    flat = [w for l in sw for w in l]
+    out, acc = {}, 0
+    for k in range(len(sw) - 1):
+        acc += len(sw[k])
+        if not sw[k] or not sw[k + 1]:
+            continue
+        for at_start, wi in ((True, acc), (False, acc - 1)):
+            kind = anchor_kind(flat[wi], at_start, whole_line=len(sw[k]) == 1)
+            if kind is None:
+                continue
+            so = [i for i, w in enumerate(flat) if _anchor_match(kind, w)]
+            to = [i for i, w in enumerate(tgt_words) if _anchor_match(kind, w)]
+            if len(so) != len(to):
+                continue
+            ti = to[so.index(wi)]
+            out[k] = ti if at_start else ti + 1
+            break
+    return out
+
+
+def _anchored_cut(P, size, n, anc, budget, modes):
+    """The min-max partition into n lines whose boundary k is anc[k] wherever anchored, under the first mode
+    (bound, tail) whose partition meets `budget`; R9 / (A) constrain only the FREE cuts. -> spans or None."""
+    W, INF = P.W, float('inf')
+    fixed = set(anc.values())
+    for bound, tail in modes:
+        best = [[(INF, None)] * (W + 1) for _ in range(n + 1)]
+        best[0][0] = (0.0, None)
+        for m in range(1, n + 1):
+            for j in range(m, W + 1):
+                if (m == n and j != W) or (m < n and (m - 1) in anc and j != anc[m - 1]):
+                    continue
+                bv = (INF, None)
+                for k in range(m - 1, j):
+                    if best[m - 1][k][0] == INF:
+                        continue
+                    if k > 0 and k not in fixed and ((bound and not P.cut_allowed(k)) or (tail and k == W - 1)):
+                        continue
+                    v = max(best[m - 1][k][0], P.wd(k, j, m - 1, size))
+                    if v < bv[0] - 1e-9:      # earliest k wins a near-tie, as in _Partition._row
+                        bv = (v, k)
+                best[m][j] = bv
+        if best[n][W][0] <= budget + EPS:
+            spans, j, m = [], W, n
+            while m > 0:
+                k = best[m][j][1]
+                spans.append((k, j))
+                j, m = k, m - 1
+            return list(reversed(spans)), bound
+    return None
+
+
+def m1_anchor(P, cues, n, s, budget, sizes, modes, lone):
+    """-> (size, spans | None, note | None). The base (count, size) is already chosen; this only re-cuts it, and
+    under M1_ANCHOR_SHRINK may lower the size (never the count). spans None = draw the base partition at `s`."""
+    texts = cues.get('texts')
+    if not M1_ANCHORS or texts is None or n < 2 or n != cues['n_src'] or len(texts) != n:
+        return s, None, None
+    anc = {k: c for k, c in source_anchors(texts, [w for w, _ in P.words]).items() if 0 < c < P.W}
+    if not M1_ANCHOR_OVER_R9A:
+        anc = {k: c for k, c in anc.items() if P.cut_allowed(c) and not (lone and c == P.W - 1)}
+    if not anc:
+        return s, None, None
+    note = {'anchors': {str(k): c for k, c in sorted(anc.items())}, 'shrunkFrom': None, 'spans': None, 'bound': None}
+    for s_try in [s] + ([x for x in sizes if x < s - EPS] if M1_ANCHOR_SHRINK else []):
+        got = _anchored_cut(P, s_try, n, anc, budget, modes)
+        if got is not None:
+            sp, note['bound'] = got
+            note['spans'] = sp
+            if s_try != s:
+                note['shrunkFrom'] = s
+            return s_try, sp, note
+    return s, None, note
+
+
+def _m1_modes(lone, r9):
+    """The final-partition preference order of decide(), as (bound, tail) pairs."""
+    modes = [(True, True), (False, True)] if lone else []
+    modes += [(True, False), (False, False)]
+    return [(b, t) for b, t in modes if r9 or not b]
 
 
 class _Partition:
@@ -456,6 +609,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         if n is None or step != 'fit':
             n, s, step, bud, overflow = select(False)
         assert n is not None, 'unreachable: one word per line fits max(budget, widest word)'
+        s, m1_spans, m1 = m1_anchor(P, cues, n, s, bud, sizes, _m1_modes(lone, _r9), lone)
         if hb is not None:
             height_fit = fits_h(n, s, hb)
         if overflow is not None and overflow['axis'] == 'width' and height_fit is False:
@@ -517,6 +671,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
                     bud = max(b_ii, ww)
                 else:
                     bud = b_ii                 # needPt is filled from the drawn partition below
+        s, m1_spans, m1 = m1_anchor(P, cues, n, s, bud, sizes, _m1_modes(lone, _r9), lone)
         if step == 'iv-gain':
             if grow == 'down':                 # pin the source glyph box's top edge, grow down
                 top = max(projs) + ASC * sz0 - ASC * s
@@ -539,6 +694,8 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     else:
         bound, tail = False, False
     spans = P.cut(s, n, bound=bound, tail=tail)
+    if m1_spans is not None:                  # M1: the source-anchored cut replaces the min-max one
+        spans, bound = m1_spans, m1['bound']
     lines = [P.chars(a, c) for a, c in spans]
     # §C140 M4 (P1v): sz0 * LEAD is a guess at the source's line pitch, centred on its mean baseline. A label drawn
     # on EXACTLY the source's line count is drawn on the source's own rows instead - its first baseline and its mean
@@ -579,6 +736,6 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         'lines': lines, 'size': s, 'align': align, 'anchor': anchor,
         'x0': [x + disp for x in x0], 'top': top, 'lead': lead, 'disp': disp, 'vdisp': vdisp,
         'step': step, 'overflow': overflow,
-        'widths': widths, 'budget': budget, 'bound': bound, 'heightFit': height_fit, 'cls': cls,
+        'widths': widths, 'budget': budget, 'bound': bound, 'heightFit': height_fit, 'cls': cls, 'm1': m1,
         'rows': rows,
     }

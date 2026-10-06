@@ -510,7 +510,7 @@ except ValueError:
     check('unknown container class raises ValueError', True)
 _l = decide('Hvarfefni', box(0, 60, 0, 40), cues())
 check('Layout carries every contract key',
-      all(k in _l for k in ('lines', 'size', 'align', 'anchor', 'x0', 'top', 'lead', 'disp', 'vdisp', 'step', 'overflow')))
+      all(k in _l for k in ('lines', 'size', 'align', 'anchor', 'x0', 'top', 'lead', 'disp', 'vdisp', 'step', 'overflow', 'm1')))
 check('clamp_shift: inside -> 0; too far right -> exact pull-in; wider -> covers',
       FLY.clamp_shift(5, 10, 0, 20) == 0.0 and FLY.clamp_shift(15, 25, 0, 20) == -5 and FLY.clamp_shift(-5, 30, 0, 20) == 0.0)
 

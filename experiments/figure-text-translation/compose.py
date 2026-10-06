@@ -697,6 +697,8 @@ for BI, b in enumerate(blocks):
         font or colour; a script run is chosen only where the source line itself opens with one."""
         return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
+    # M1: the text of each VISUAL source line, so figlayout can pin a cut where the source breaks at a verbatim token.
+    cues['texts'] = [''.join(r['text'] for r in l) for l in vls]
     layout = FL.decide(words, width, container, cues)
     align, size = layout['align'], layout['size']
     # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
