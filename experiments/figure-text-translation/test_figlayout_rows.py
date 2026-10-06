@@ -98,6 +98,24 @@ CELL_CLAMP_BUDGET ships off (R-7) and no check turns it on - but the gates-on vs
 flipping the module constant to True reddens [a4], [a5], [a8] and [a10].
 NOT pinned: the rows eligibility's `len(projs) == n_src` - a defensive clause. Every fixture here has one baseline
 per visual line (src_cues sets n_src = len(projs)), as compose's cues do, so dropping it changes nothing measurable.
+
+(d) THE HEIGHT FIGURES DESCRIBE THE ROWS P1v DRAWS (review-fix round G21 #1, F1 n1, 2026-10-06). P1v (M4) redraws a
+cell label on its source's own rows AFTER the count search measured its height at sz0 * LEAD; when the source pitch
+is WIDER than that lead, the drawn glyph box is (n-1) * (pitch - lead) taller than the one measured. heightFit, a
+height overflow's needPt and a width entry's heightNeedPt are therefore refreshed from the DRAWN lead. Each fixture is
+a derived cell (D/U = the source glyph box widened by its margins), so the drawn rows stay inside the cell (vdisp 0):
+the fix is to the report, never the pixels.
+* [d1 RED] sz0 7.5, pitch 10.665 (lead 9.165), margins 0.5: a HEIGHT floor-overflow names needPt = the drawn glyph
+        box 17.715 (pre-fix: 16.215, at the lead).
+* [d2 RED] sz0 9, pitch 12.5 (lead 10.998), margins 1.5: step fit at the lead (19.458 <= 19.96), drawn 20.96 - so
+        heightFit is False. Nothing is NAMED for it (overflow None, step fit): the rows are the source's own extent
+        inside the cell, which the spec's D-e risk accepts; heightFit is not in the report.
+* [d3 RED] sz0 9, pitch 13.0, margins 0.5, a word wider than the cell: a WIDTH floor-overflow whose glyph box fits at
+        the lead (18.048 <= 18.46) but not as drawn (20.05) carries heightNeedPt 20.05 / heightBudgetPt 18.46 - the
+        R5 rule that a height miss is never left to heightFit alone (pre-fix: no height entry, heightFit True).
+Each also asserts that P1v DID redraw (lead == the source pitch, rows False), so none can pass by not reaching P1v.
+[a1] is the control on the other side: a label M3 draws on its rows (rows True) is never redrawn by P1v (its lead IS
+the source pitch, so P1v's span test is 0) and keeps heightFit True against the clamp interval.
 """
 import os
 import sys
@@ -292,6 +310,46 @@ lay = dec('Skammtastaerd 1 bolli (228 g) Fjoldi skammta i pakkningu 2', c, src_c
 check('[ac1 RED] 2 rows, broken after "(228 g)", step fit',
       texts(lay) == ['Skammtastaerd 1 bolli (228 g)', 'Fjoldi skammta i pakkningu 2'] and lay['step'] == 'fit',
       f"{texts(lay)} {lay['step']} {lay['overflow']}")
+
+print('(d) the height figures describe the rows P1v DRAWS (G21 #1)')
+
+
+def drawn_h(lay):
+    """The glyph box actually drawn: (lines - 1) * the DRAWN lead + (ASC + DESC) * the drawn size."""
+    return (len(lay['lines']) - 1) * lay['lead'] + (ASC + DESC) * lay['size']
+
+
+def p1v_redrew(lay, pitch):
+    return abs(lay['lead'] - pitch) < 1e-9 and lay.get('rows') is False and lay['vdisp'] == 0
+
+
+D1P = [100.0, 100.0 - 10.665]
+D1 = derived('cell', 0, 45, 7.5, D1P, 0.5, 0.5)
+lay = dec('abcdefgh abcdefgh', D1, src_cues(7.5, D1P))
+ov = lay['overflow'] or {}
+check('[d1 RED] a height floor-overflow redrawn by P1v at a wider pitch names the DRAWN glyph box (17.715)',
+      p1v_redrew(lay, 10.665) and lay['step'] == 'floor-overflow' and ov.get('axis') == 'height'
+      and abs(ov.get('needPt', -1) - drawn_h(lay)) < 1e-9 and abs(drawn_h(lay) - 17.715) < 1e-9
+      and lay['heightFit'] is False,
+      f"lead {lay['lead']} rows {lay.get('rows')} {lay['step']} {ov} drawn {drawn_h(lay):.3f} hf {lay['heightFit']}")
+D2P = [100.0, 100.0 - 12.5]
+D2 = derived('cell', 0, 45, 9.0, D2P, 1.5, 1.5)
+lay = dec('abcdefgh abcdefgh', D2, src_cues(9.0, D2P))
+hb2 = (D2['U'] - D2['D']) - 4.0
+check('[d2 RED] a fit label P1v redraws taller than its height budget reports heightFit False (nothing named)',
+      p1v_redrew(lay, 12.5) and lay['step'] == 'fit' and lay['overflow'] is None and lay['heightFit'] is False
+      and drawn_h(lay) > hb2,
+      f"lead {lay['lead']} {lay['step']} {lay['overflow']} hf {lay['heightFit']} drawn {drawn_h(lay):.3f} hb {hb2:.3f}")
+D3P = [100.0, 100.0 - 13.0]
+D3 = derived('cell', 0, 45, 9.0, D3P, 0.5, 0.5)
+lay = dec('abcdefghijklm abcdefghijklm', D3, src_cues(9.0, D3P))
+ov = lay['overflow'] or {}
+hb3 = (D3['U'] - D3['D']) - 4.0
+check('[d3 RED] a width floor-overflow whose DRAWN rows miss height names heightNeedPt 20.05 / heightBudgetPt 18.46',
+      p1v_redrew(lay, 13.0) and ov.get('axis') == 'width' and ov.get('word') == 'abcdefghijklm'
+      and abs(ov.get('heightNeedPt', -1) - drawn_h(lay)) < 1e-9 and abs(drawn_h(lay) - 20.05) < 1e-9
+      and abs(ov.get('heightBudgetPt', -1) - hb3) < 1e-9 and lay['heightFit'] is False,
+      f"lead {lay['lead']} {ov} drawn {drawn_h(lay):.3f} hb {hb3:.3f} hf {lay['heightFit']}")
 
 print('ALL PASS' if not fails else f'{len(fails)} FAILED: ' + ', '.join(fails))
 sys.exit(1 if fails else 0)

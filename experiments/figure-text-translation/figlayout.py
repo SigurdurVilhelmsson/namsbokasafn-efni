@@ -142,8 +142,9 @@ OUTPUT  Layout dict:
                              holds every line to max(budget, widest word), so linePt <= needPt there; only open (v)
                              can draw a line wider than its widest word. A box/cell width entry whose glyph box
                              also misses the height budget adds 'heightNeedPt' and 'heightBudgetPt'.
-              axis 'height'  {'word': None, 'needPt': the glyph-box height, 'budgetPt': the height budget, 'sizePt',
-                             'axis'} (box/cell only).
+              axis 'height'  {'word': None, 'needPt': the DRAWN glyph-box height, 'budgetPt': the height budget,
+                             'sizePt', 'axis'} (box/cell only). 'DRAWN' includes P1v's redraw at the source pitch
+                             (as are heightNeedPt and heightFit, refreshed after it - G21 #1).
   additive, for the report: widths (per drawn line, pt), budget (the width budget the partition was held to),
             bound (True when the R9-constrained partition fit the step's budget and was therefore taken - it may
             EQUAL the unconstrained one; False when no binding-honouring partition exists, it did not fit, or an
@@ -153,7 +154,9 @@ OUTPUT  Layout dict:
             heightFit (box/cell: whether the DRAWN line count, size AND lead meet the height budget - for a label
             drawn on the source rows that is the rows' test against the clamp interval, so heightFit can be True
             where the lead-based glyph box exceeds (U-D) - 2 pad, and only `rows` says why; None for open or when
-            the height budget is switched off, or the label is drawn on explicit breaks), cls,
+            the height budget is switched off, or the label is drawn on explicit breaks. A cell P1v redraws at a
+            source pitch WIDER than the lead can be False at step 'fit' with nothing named: its rows are the
+            source's own extent inside the cell, and spec D-e accepts that P1v does not re-test height), cls,
             rows (True when the label is DRAWN on the source rows by M3's SOURCE ROWS - lead = the source pitch,
             top = projs[0]; False otherwise, including P1v's redraw)
 
@@ -788,7 +791,22 @@ def decide(words, width, container, cues, floor=FLOOR, pad=2.0, *, _r9=True, _he
             and abs((projs[0] - projs[-1]) - (n_src - 1) * lead) > PITCH_SRC_MIN):
         lead = (projs[0] - projs[-1]) / (n_src - 1)
         top = projs[0]
-    widths = [width(lc, s, j) for j, lc in enumerate(lines)]
+        if height_fit is not None:
+            # A cell's height figures were measured at sz0 * LEAD (glyph_h) before this redraw; refresh them from the
+            # rows actually DRAWN (G21 #1). A wider source pitch can turn heightFit False at step 'fit' with nothing
+            # named: the rows are the source's own extent inside the cell (spec D-e accepts P1v's untested height).
+            # A label M3 drew on its rows never gets here: its lead IS the source pitch, so the span test above is 0.
+            drawn_h = (len(lines) - 1) * lead + (ASC + DESC) * s
+            height_fit = drawn_h <= hb + EPS
+            if overflow is not None and overflow['axis'] == 'height':
+                overflow['needPt'] = drawn_h
+            elif overflow is not None and overflow['axis'] == 'width':
+                overflow.pop('heightNeedPt', None)
+                overflow.pop('heightBudgetPt', None)
+                if not height_fit:
+                    overflow['heightNeedPt'] = drawn_h
+                    overflow['heightBudgetPt'] = hb
+    widths =[width(lc, s, j) for j, lc in enumerate(lines)]
     x0 = [{'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align] for w in widths]
     e0, e1 = min(x0), max(a + w for a, w in zip(x0, widths))
 
