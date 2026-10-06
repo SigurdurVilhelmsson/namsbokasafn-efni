@@ -987,6 +987,189 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
   });
 });
 
+// §C140 '6' R-20 — anchorExclusions: {basename: {blockKey: reason}}, the block keys M1 must leave alone.
+// Like heldBlockValues it shares only the type, fold and exactly-one-book loops; its own rules are the
+// entry's shape, a key that can reach M1 ('|'), the Markdown escape, the key being a block key of the
+// figure's committed sidecar (the INVERSE of held's bought-key rule) and the reason. CNX_Other is chem's
+// image in no other table, so every case ADDS the table and its state to Part 1's baseline.
+const ANCHOR_KEY = 'Small contact area,|weakest attraction';
+const anchorCfg = () => ({
+  ...baseCfg(),
+  anchorExclusions: { CNX_Other: { [ANCHOR_KEY]: R } },
+});
+const anchorCorpus = () => ({
+  ...baseCorpus(),
+  anchorState: {
+    CNX_Other: { sidecarKeys: [ANCHOR_KEY, 'Large contact area,|strong attraction'] },
+  },
+});
+const anchorOf = (c) => c.anchorExclusions.CNX_Other;
+
+describe("validateFigureConfig — anchorExclusions (§C140 '6', R-20)", () => {
+  it('a valid anchorExclusions table passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(anchorCfg(), anchorCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'an anchorExclusions table that is not an object',
+      (c) => {
+        c.anchorExclusions = [];
+      },
+      null,
+      /anchorExclusions must be an object/,
+    ],
+    [
+      'an entry that is a string, not an object',
+      (c) => {
+        c.anchorExclusions.CNX_Other = R;
+      },
+      null,
+      /anchorExclusions\.CNX_Other must be a non-empty object of \{blockKey: reason\}/,
+    ],
+    [
+      'an empty entry',
+      (c) => {
+        c.anchorExclusions.CNX_Other = {};
+      },
+      null,
+      /anchorExclusions\.CNX_Other must be a non-empty object/,
+    ],
+    [
+      "a key that is not in the figure's committed sidecar",
+      (c) => {
+        anchorOf(c)['Less surface area,|less attraction'] = R;
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Less surface area,\|less attraction\] is not a block key of figure-text\/CNX_Other\.is\.json/,
+    ],
+    [
+      'a figure with no committed sidecar',
+      () => {},
+      (k) => {
+        k.anchorState.CNX_Other.sidecarKeys = null;
+      },
+      /anchorExclusions\.CNX_Other has no committed sidecar/,
+    ],
+    [
+      "a key without '|' (a one-line label never reaches M1)",
+      (c) => {
+        anchorOf(c)['Hvarfefni'] = R;
+      },
+      (k) => {
+        k.anchorState.CNX_Other.sidecarKeys.push('Hvarfefni');
+      },
+      /anchorExclusions\.CNX_Other\[Hvarfefni\] has no '\|'/,
+    ],
+    [
+      "a key holding the Markdown escape '\\|'",
+      (c) => {
+        delete anchorOf(c)[ANCHOR_KEY];
+        anchorOf(c)['Small contact area,\\|weakest attraction'] = R;
+      },
+      null,
+      /holds '\\\|', a Markdown escape/,
+    ],
+    [
+      'a reason of 40 characters or fewer',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = 'R-20';
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Small contact area,\|weakest attraction\] needs a reason of over 40 characters/,
+    ],
+    [
+      'a reason that is not a string',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = { reason: R };
+      },
+      null,
+      /needs a reason of over 40 characters/,
+    ],
+    [
+      'a basename that is also in keptCopies',
+      (c) => {
+        c.anchorExclusions = { CNX_Kept: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a basename that is also in retiredFigures',
+      (c) => {
+        c.anchorExclusions = { CNX_Ret: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Ret is also in retiredFigures/,
+    ],
+    [
+      "a basename that is in two books' source",
+      () => {},
+      (k) => {
+        k.basenamesByBook.bio.add('CNX_Other');
+      },
+      /anchorExclusions\.CNX_Other names an image in 2 books' source/,
+    ],
+    [
+      'a basename that is in no book',
+      (c) => {
+        c.anchorExclusions = { CNX_Nowhere: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Nowhere names an image in 0 books' source/,
+    ],
+    [
+      'two basenames that fold to the same key',
+      (c) => {
+        c.anchorExclusions.cnx_other = { [ANCHOR_KEY]: R };
+      },
+      null,
+      /anchorExclusions: CNX_Other and cnx_other fold to the same key/,
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = anchorCfg();
+    const k = anchorCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent anchorExclusions table (an absent table is an empty one)',
+      (c) => {
+        delete c.anchorExclusions;
+      },
+    ],
+    [
+      'an empty anchorExclusions table',
+      (c) => {
+        c.anchorExclusions = {};
+      },
+    ],
+    [
+      'a figure that is also pinned (a pinned figure IS composed)',
+      (c) => {
+        c.anchorExclusions = { CNX_Pin: { [ANCHOR_KEY]: R } };
+      },
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg) => {
+    const c = anchorCfg();
+    const k = anchorCorpus();
+    k.anchorState = { CNX_Pin: k.anchorState.CNX_Other };
+    mutateCfg(c);
+    expect(validateFigureConfig(c, k)).toEqual([]);
+  });
+
+  // Part 1's and the held fixtures carry no anchorState: the sidecar rule is skipped, the others are not.
+  it('CONTROL: a corpus with no anchorState at all passes a valid entry and still refuses a short reason', () => {
+    expect(validateFigureConfig(anchorCfg(), baseCorpus())).toEqual([]);
+    const c = anchorCfg();
+    anchorOf(c)[ANCHOR_KEY] = 'R-20';
+    expect(validateFigureConfig(c, baseCorpus()).join('\n')).toMatch(/needs a reason of over 40/);
+  });
+});
+
 // §C140 ㊾ D5(a), a skeptic's finding (2026-10-03). JSON.parse keeps only the LAST of two equal keys,
 // so `validateFigureConfig`, which reads the PARSED object, cannot see a figure's heldBlockValues entry
 // written twice, or a block key repeated inside one: the first value vanishes with no error and its
@@ -1288,6 +1471,44 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
     writeSidecarRaw(root, 'CNX_Svg', JSON.stringify({ version: 1, basename: 'CNX_Svg' }));
     expect(() => buildValidatorCorpus(root, heldTreeCfg)).toThrow(/CNX_Svg\.is\.json.*blocks/);
   });
+
+  // §C140 '6' R-20 — anchorState is each excluded figure's sidecar block keys, read STRICTLY (absent is
+  // null, anything unreadable throws), and the validator names a key the sidecar does not carry.
+  it('reports each excluded figure’s sidecar keys, and the validator names a key the sidecar lacks', () => {
+    const root = heldTree();
+    const k1 = 'Small|one';
+    writeSidecarRaw(
+      root,
+      'CNX_Svg',
+      JSON.stringify({ version: 1, basename: 'CNX_Svg', blocks: { [k1]: 'IS', 'Big|two': 'IS' } })
+    );
+    const cfgA = {
+      anchorExclusions: {
+        CNX_Svg: { [k1]: R, 'Gone|three': R },
+        CNX_Bare: { [k1]: R },
+        CNX_Absent: { [k1]: R },
+      },
+    };
+    const k = buildValidatorCorpus(root, cfgA);
+    expect(k.anchorState).toEqual({
+      CNX_Svg: { sidecarKeys: [k1, 'Big|two'] },
+      CNX_Bare: { sidecarKeys: null },
+    });
+    const named = validateFigureConfig(cfgA, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'anchorExclusions.CNX_Absent names an image',
+      'anchorExclusions.CNX_Bare has no committed',
+      'anchorExclusions.CNX_Svg[Gone|three] is not a',
+    ]);
+  });
+
+  it('refuses an excluded figure’s sidecar it cannot parse instead of reading it as no keys', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    expect(() =>
+      buildValidatorCorpus(root, { anchorExclusions: { CNX_Svg: { 'a|b': R } } })
+    ).toThrow(/CNX_Svg\.is\.json.*not valid JSON/);
+  });
 });
 
 describe('the committed figure config (§C140 ㊵)', () => {
@@ -1349,6 +1570,16 @@ describe('the committed figure config (§C140 ㊵)', () => {
   // `.svg` row and a translated copy, and none of its keys is a bought block. [USER]'s first values
   // were recorded in PR-B's heldBlockValues commit (§C140 ㊾), so an empty table now fails here, as
   // the retired test's does.
+  it('every anchorExclusions figure was examined on the real tree, and each key is in its sidecar', () => {
+    const keys = Object.keys(cfg.anchorExclusions ?? {}).sort();
+    expect(Object.keys(corpus.anchorState).sort()).toEqual(keys);
+    for (const k of keys) {
+      const bought = new Set(corpus.anchorState[k].sidecarKeys ?? []);
+      for (const key of Object.keys(cfg.anchorExclusions[k]))
+        expect(bought.has(key), key).toBe(true);
+    }
+  });
+
   it('every held figure was examined on the real tree, with an .svg row, a copy and no bought key', () => {
     const keys = Object.keys(cfg.heldBlockValues ?? {}).sort();
     expect(keys.length).toBeGreaterThan(0);

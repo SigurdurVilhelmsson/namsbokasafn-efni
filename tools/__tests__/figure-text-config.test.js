@@ -20,9 +20,15 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(Array.isArray(loadFigureTextConfig().editionPrecedence)).toBe(true);
   });
 
-  it('the committed config carries its policy tables as plain objects (keptCopies, heldBlockValues: §C140 ㊾)', () => {
+  it("the committed config carries its policy tables as plain objects (keptCopies, heldBlockValues: §C140 ㊾; anchorExclusions: §C140 '6' R-20)", () => {
     const cfg = loadFigureTextConfig();
-    for (const key of ['retiredFigures', 'keptCopies', 'artworkPins', 'heldBlockValues']) {
+    for (const key of [
+      'retiredFigures',
+      'keptCopies',
+      'artworkPins',
+      'heldBlockValues',
+      'anchorExclusions',
+    ]) {
       const t = cfg[key];
       expect(t !== null && typeof t === 'object' && !Array.isArray(t), key).toBe(true);
     }
@@ -37,6 +43,20 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(typeof doc).toBe('string');
     expect(doc).toContain('docs/handoffs/2026-10-03-step2-value-sheet.md');
     expect(doc).toContain('₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻');
+    expect(doc).toMatch(/next COMPOSER_VERSION bump/);
+    expect(doc).toMatch(/\[USER\] ruling/);
+    expect(doc).not.toMatch(/--force/);
+  });
+
+  // §C140 '6' R-20 — the doc string is where a later operator learns what an exclusion does and how a
+  // change to one reaches readers: the ruling, M1 only, every block of the key, the same COMPOSER_VERSION
+  // route as heldBlockValues, and no --force recipe.
+  it('documents anchorExclusions: R-20, M1 only, the COMPOSER_VERSION route, and no --force recipe', () => {
+    const doc = loadFigureTextConfig()._anchorExclusions;
+    expect(typeof doc).toBe('string');
+    expect(doc).toContain('R-20');
+    expect(doc).toMatch(/turns off M1 and nothing else, for EVERY block that carries that key/);
+    expect(doc).toMatch(/OUTSIDE renderHash and composedVersion/);
     expect(doc).toMatch(/next COMPOSER_VERSION bump/);
     expect(doc).toMatch(/\[USER\] ruling/);
     expect(doc).not.toMatch(/--force/);

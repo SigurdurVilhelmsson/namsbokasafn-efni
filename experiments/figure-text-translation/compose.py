@@ -39,6 +39,18 @@ drawn (exit 1, no report). With no flag nothing is held. BY EYE: `figure-compose
 --translations <file>`, which always passes the flag; a direct run of this file without it draws held
 labels in English, and the report's `heldValuesPath: null` says so.
 
+§C140 '6' M1 and R-20 (design docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md,
+D-a): every translated straight label hands figlayout `cues['texts']`, the text of each VISUAL source line
+(`FT.visual_ink`), so `figlayout.decide` can keep a source row boundary that a verbatim token marks (M1).
+`--anchor-exclusions <file>` names block keys whose label M1 must leave alone - figure-text.config.json
+`anchorExclusions`, which figure-compose.py reads and hands over as `<out>/anchor-exclusions.json`
+(anchorexclusions.py owns the format), exactly as `--held-values` above. An excluded block is laid out with
+no `texts` cue, which is M1 switched off, and every block carrying an excluded key - laid out or not - is
+reported in `anchorExcluded` as `{key, block, changed}`, `changed` True when a second decide WITH the cue
+would have drawn other lines or another size. The file is read only without --control, and a missing,
+malformed or other-figure file raises before anything is drawn (exit 1, no report). With no flag nothing is
+excluded.
+
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
 survives re-extraction.
@@ -56,6 +68,7 @@ import numloc
 import figsym
 import heldplan
 import heldvalues
+import anchorexclusions
 from PIL import Image
 from blockkey import block_key, block_english
 from figcolour import fill_rgb
@@ -93,6 +106,19 @@ if '--held-values' in sys.argv and not CONTROL:
         raise ValueError(f"--held-values {HELD_PATH} was written for {_held['basename']!r}, but this figure's "
                          f"meta.json source names {_stem!r} - another figure's values are never drawn")
     HELD, HELD_CONFIG = _held['values'], _held['configPath']
+
+# §C140 '6' R-20: the block keys M1 must leave alone, {blockKey: reason}, from the file figure-compose.py
+# writes. The same rules as --held-values directly above: not even resolved under --control, every problem
+# raises before anything is drawn, and a file written for another figure is never used.
+ANCHOR_EXCL = {}
+if '--anchor-exclusions' in sys.argv and not CONTROL:
+    _ae_path = Path(sys.argv[sys.argv.index('--anchor-exclusions') + 1]).resolve()
+    _ae = anchorexclusions.read_file(_ae_path)
+    _ae_stem = Path(meta['source']).stem if isinstance(meta.get('source'), str) else None
+    if _ae['basename'] != _ae_stem:
+        raise ValueError(f"--anchor-exclusions {_ae_path} was written for {_ae['basename']!r}, but this figure's "
+                         f"meta.json source names {_ae_stem!r} - another figure's exclusions are never used")
+    ANCHOR_EXCL = _ae['exclusions']
 
 surf = cairo.ImageSurface.create_from_png(str(OUT / 'artwork.png'))
 out = cairo.ImageSurface(cairo.FORMAT_RGB24, surf.get_width(), surf.get_height())
@@ -398,6 +424,11 @@ identity, run_exact, degenerate_kept = [], [], []
 # ALSO in `missing`), `in-translations` (the --translations file has the key too; its translation is drawn)
 # and `no-block` (block None: no block of this figure carries the key). Any entry refuses the figure.
 held, held_errors = [], []
+# §C140 '6' R-20, additive, draw order WITH multiplicity: `{key, block, changed}` for EVERY block whose key
+# --anchor-exclusions names, whatever path draws it - `changed` is False for a block that is not laid out
+# (kept, held, an arc) and, for a laid-out one, whether M1 would have drawn other lines or another size.
+# figure-compose.py compares it against blocks.json's count as a multiset. A note, never a refusal.
+anchor_excluded = []
 # §C140 ②, additive and in draw order WITH multiplicity: every formula stretch a translated label
 # could NOT carry over - `{key, token, stretch, reason, candidates}`, reason in absent / ambiguous /
 # no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
@@ -534,6 +565,10 @@ for BI, b in enumerate(blocks):
     # report. test_blockkey_consumers.py asserts the two agree on a real figure.
     key = block_key(b)
     keys.append(key)
+    excl_entry = None
+    if key in ANCHOR_EXCL:
+        excl_entry = dict(key=key, block=BI, changed=False)
+        anchor_excluded.append(excl_entry)
 
     # KEPT := --control, or no translation, or an empty one, or an IDENTITY reply. Every kept
     # block is drawn run-exact (draw_run_exact); only a genuine translation is laid out.
@@ -698,8 +733,16 @@ for BI, b in enumerate(blocks):
         return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
     # M1: the text of each VISUAL source line, so figlayout can pin a cut where the source breaks at a verbatim token.
-    cues['texts'] = [''.join(r['text'] for r in l) for l in vls]
+    texts = [''.join(r['text'] for r in l) for l in vls]
+    if excl_entry is None:
+        cues['texts'] = texts
     layout = FL.decide(words, width, container, cues)
+    if excl_entry is not None:
+        # R-20: laid out WITHOUT the cue (M1 off). `changed` costs one more pure decide, with it.
+        _m1 = FL.decide(words, width, container, dict(cues, texts=texts))
+        excl_entry['changed'] = (_m1['size'] != layout['size'] or
+                                 [''.join(c for c, _ in l) for l in _m1['lines']]
+                                 != [''.join(c for c, _ in l) for l in layout['lines']])
     align, size = layout['align'], layout['size']
     # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
     # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
@@ -791,6 +834,8 @@ if SVG:
     'heldErrors': held_errors,
     'heldValuesPath': None if HELD_PATH is None else str(HELD_PATH),
     'heldConfigPath': HELD_CONFIG,
+    # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
+    'anchorExcluded': anchor_excluded,
     # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason.
     'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped']},
 }, indent=1, ensure_ascii=False))
@@ -808,6 +853,13 @@ if held:
     print(f"\nNOTE (not a failure): {len(held)} label(s) drawn from heldBlockValues ([USER]'s values):")
     for h in held:
         print(f"     {h['key']!r} block {h['block']}: lines {h['changed']}")
+# §C140 '6' R-20. Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if anchor_excluded:
+    print(f"\nNOTE (not a failure): {len(anchor_excluded)} label(s) laid out WITHOUT M1's source-anchored "
+          f"cuts (anchorExclusions):")
+    for e in anchor_excluded:
+        print(f"     {e['key']!r} block {e['block']}: "
+              + ('M1 would have cut it differently' if e['changed'] else 'M1 would have changed nothing'))
 if held_errors:
     print(f"\n!! {len(held_errors)} heldBlockValues entr(ies) NOT drawn - figure-compose.py refuses this figure:")
     for e in held_errors:

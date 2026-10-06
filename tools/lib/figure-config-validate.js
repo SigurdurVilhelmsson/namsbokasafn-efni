@@ -1,7 +1,8 @@
 /**
- * The figure config's four policy tables and its `heldBlockValues` table, checked against the
- * repo (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec 2026-10-02 D1; `heldBlockValues`,
- * §C140 ㊾, spec 2026-10-02 D5(a)).
+ * The figure config's four policy tables and its two per-block tables, `heldBlockValues` and
+ * `anchorExclusions`, checked against the repo (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec
+ * 2026-10-02 D1; `heldBlockValues`, §C140 ㊾, spec 2026-10-02 D5(a); `anchorExclusions`, §C140 '6',
+ * ruling R-20, spec 2026-10-05 D-a).
  *
  * Run by `npm test` (tools/__tests__/figure-config-validate.test.js), and run LOCALLY before any
  * pin's buy: CI only sees a pin after the money is spent, because a pin lands in the commit that
@@ -23,6 +24,12 @@
  * segment is the next row's indent space, which the composer folds into its neighbour - spec
  * 2026-10-05 D-b, ruling R-17; figtext.is_blank_line is the Python twin of that predicate).
  *
+ * ⚠️ WHAT THIS CANNOT CHECK FOR `anchorExclusions`, AND WHO DOES. Whether a key is a block of the
+ * current read layer, and whether that block is send:true, is `figure-compose.py`'s pre-flight; whether
+ * the exclusion still changes the cut is `compose.py`'s `anchorExcluded[].changed` (a note). Here: the
+ * owner book, the policy overlaps, the entry's shape, a key that can reach M1 at all (it holds '|'), the
+ * Markdown escape, the key being a block key of the figure's committed sidecar, and the reason.
+ *
  * ⚠️ A REPEATED KEY IS INVISIBLE TO `validateFigureConfig`, which reads the PARSED config: JSON.parse
  * keeps only the last of two equal keys. `repeatedKeyProblems` reads the raw text instead; the
  * committed-config test runs both.
@@ -41,7 +48,8 @@ const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPin
 // fold and exactly-one-book loops (same `${name}` template, so Part 1's strings are unchanged).
 // It stays OUT of TABLES: its values are objects, not reason strings, so `reasonOf` and the pin
 // overlap list must never read it (Review Focus 5).
-const KEYED = [...TABLES, 'heldBlockValues'];
+// §C140 '6' R-20 — `anchorExclusions` likewise: keyed by basename, values are {blockKey: reason} objects.
+const KEYED = [...TABLES, 'heldBlockValues', 'anchorExclusions'];
 const PIN_KINDS = new Set(['alias', 'override']);
 const MIN_REASON = 40;
 
@@ -65,8 +73,10 @@ const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArr
  *          retiredState:Object<string,{rows:number, translatedCopies:string[]}>,
  *          keptState:Object<string,{rows:number, translatedCopies:string[]}>,
  *          heldState?:Object<string,{rows:number, translatedCopies:string[], svgRows:number,
- *                                    sidecarKeys:(string[]|null)}>}} corpus
+ *                                    sidecarKeys:(string[]|null)}>,
+ *          anchorState?:Object<string,{sidecarKeys:(string[]|null)}>}} corpus
  *   `heldState` is optional: a corpus without it (Part 1's fixtures) skips the held corpus rules.
+ *   `anchorState` likewise skips the anchorExclusions sidecar rule.
  * @returns {string[]} problems; empty when the config is valid
  */
 export function validateFigureConfig(cfg, corpus) {
@@ -336,6 +346,59 @@ export function validateFigureConfig(cfg, corpus) {
       }
     }
   }
+
+  // §C140 '6' R-20 — anchorExclusions: {basename: {blockKey: reason}}, the block keys whose label M1
+  // (figlayout's source-anchored cuts) must leave alone. Design: docs/superpowers/specs/
+  // 2026-10-05-c140-composer-formatting-class-design.md, D-a. The INVERSE of heldBlockValues' sidecar
+  // rule: an excluded key is a BOUGHT label, so it must be a block key of the figure's committed sidecar.
+  const anchorState = corpus.anchorState; // Part 1's and the held fixtures carry none
+  for (const [b, entry] of Object.entries(tables.anchorExclusions)) {
+    for (const [t, keys] of neverComposed) {
+      if (keys.has(normkey(b))) {
+        problems.push(
+          `anchorExclusions.${b} is also in ${t} (${keys.get(normkey(b))}) — that figure is never composed, so its exclusions never act`
+        );
+      }
+    }
+    if (!isPlainObject(entry) || Object.keys(entry).length === 0) {
+      problems.push(`anchorExclusions.${b} must be a non-empty object of {blockKey: reason}`);
+      continue;
+    }
+    const s = anchorState && anchorState[b];
+    const sidecar = s ? new Set(s.sidecarKeys || []) : null;
+    if (s && s.sidecarKeys === null) {
+      problems.push(
+        `anchorExclusions.${b} has no committed sidecar figure-text/${b}.is.json — an exclusion is for a bought label`
+      );
+    }
+    for (const [k, r] of Object.entries(entry)) {
+      if (k === '') {
+        problems.push(`anchorExclusions.${b}: a block key must be a non-empty string`);
+        continue;
+      }
+      // A one-line key never reaches M1 (it runs only at n == n_src >= 2), so the entry could never act.
+      if (!k.includes('|')) {
+        problems.push(
+          `anchorExclusions.${b}[${k}] has no '|' — a one-line label never reaches M1, so the exclusion never acts`
+        );
+      }
+      if (k.includes('\\|')) {
+        problems.push(
+          `anchorExclusions.${b}: the key ${k} holds '\\|', a Markdown escape — copy the bare '|'`
+        );
+      }
+      if (sidecar && s.sidecarKeys !== null && !sidecar.has(k)) {
+        problems.push(
+          `anchorExclusions.${b}[${k}] is not a block key of figure-text/${b}.is.json — renamed, re-extracted or mistyped`
+        );
+      }
+      if (typeof r !== 'string' || r.trim().length <= MIN_REASON) {
+        problems.push(
+          `anchorExclusions.${b}[${k}] needs a reason of over ${MIN_REASON} characters`
+        );
+      }
+    }
+  }
   return problems;
 }
 
@@ -434,7 +497,7 @@ function sidecarKeysStrict(bookDir, basename) {
   } catch (err) {
     if (err.code === 'ENOENT') return null;
     throw new Error(
-      `${file} cannot be read (${err.code || err.message}); refusing to check heldBlockValues against a sidecar I cannot see`
+      `${file} cannot be read (${err.code || err.message}); refusing to check heldBlockValues or anchorExclusions against a sidecar I cannot see`
     );
   }
   let parsed;
@@ -457,7 +520,8 @@ function sidecarKeysStrict(bookDir, basename) {
  * The corpus the validator needs, read from the repo. No git: this runs in CI.
  * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object,
  *            keptState:Object, heldState:Object<string,{rows:number,
- *            translatedCopies:string[], svgRows:number, sidecarKeys:(string[]|null)}>}}
+ *            translatedCopies:string[], svgRows:number, sidecarKeys:(string[]|null)}>,
+ *            anchorState:Object<string,{sidecarKeys:(string[]|null)}>}}
  */
 export function buildValidatorCorpus(repoRoot, cfg) {
   const booksDir = path.join(repoRoot, 'books');
@@ -503,11 +567,21 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     ).length;
     heldState[k].sidecarKeys = sidecarKeysStrict(bookDir, k);
   }
+  // §C140 '6' R-20 — an excluded figure needs only its sidecar's block keys (read STRICTLY, as for
+  // heldState). A key that is not exactly one book's image gets no state; the exactly-one-book rule
+  // names it.
+  const anchorState = {};
+  for (const k of Object.keys(cfg.anchorExclusions ?? {})) {
+    const owners = Object.keys(basenamesByBook).filter((b) => basenamesByBook[b].has(k));
+    if (owners.length !== 1) continue;
+    anchorState[k] = { sidecarKeys: sidecarKeysStrict(path.join(booksDir, owners[0]), k) };
+  }
   return {
     suffix: DEFAULT_SUFFIX,
     basenamesByBook,
     retiredState: copyState(cfg.retiredFigures),
     keptState: copyState(cfg.keptCopies),
     heldState,
+    anchorState,
   };
 }

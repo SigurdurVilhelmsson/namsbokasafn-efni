@@ -50,6 +50,9 @@ CONTROLS that make the refusals mean anything: a configured value IS drawn, and 
 skeptic's finding, 2026-10-03): a config that REPEATS a key at any depth is refused before the spawn -
 JSON keeps only the last of two equal keys, so an earlier entry or value would vanish silently. F13
 (the same review): a pre-flight refusal in a REUSED --out leaves none of the previous run's outputs.
+
+🔴 SECTION 13 IS anchorExclusions (§C140 '6', ruling R-20): the same pre-flight / hand-off / verify shape
+for the table that turns off M1 for a named block key, read from the ONE parse of the config (figconfig.py).
 """
 import collections
 import json
@@ -1105,8 +1108,9 @@ def main_with_planted_report(extra_report, held_values=None):
         class _Child:
             returncode, stdout, stderr = 0, '', ''
 
-        # The third parameter is DEFAULTED so the same child serves a wrapper that does not pass one.
-        def planted_child(out_dir, _translations, held_path=None):
+        # The third parameter is DEFAULTED so the same child serves a wrapper that does not pass one; the
+        # fourth (§C140 '6' R-20, the anchor-exclusions path) likewise.
+        def planted_child(out_dir, _translations, held_path=None, _anchor_path=None):
             handed['path'] = held_path
             handed['doc'] = load_json(held_path) if held_path else None
             (out_dir / 'compose-report.json').write_text(
@@ -1698,9 +1702,151 @@ def f13():
               and 'matches no block' in err_of(d) and not any(left.values()), f'exit {r.returncode}: {left}')
 
 
+# ── 13. anchorExclusions — the pre-flight, the hand-off, and verify's exclusion contract ────────────────
+# §C140 '6' R-20; design docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md, D-a.
+# figure-compose.py reads `anchorExclusions` from the ONE parse of the config (figconfig.load, shared with
+# heldBlockValues), refuses before anything is spawned or written a key that matches no block or that no
+# send:true block carries, writes <out>/anchor-exclusions.json on EVERY run ({} included), passes
+# --anchor-exclusions always, and `verify` requires compose-report.json `anchorExcluded` to name each
+# configured key once per block carrying it. E0 is the CONTROL that makes the refusals mean anything: a
+# configured send:true key composes, and the fixture's one-line key reports `changed: false` (it never
+# reaches M1) - a note, never a refusal. E5 is F12 re-run after the single-parse refactor, on this table: a
+# CONTROL (G13) - the pre-refactor load_held already refused a repeat at any depth, so it passes before and
+# after; a planted mutant (figconfig.load without the hook) reddens it. E4 and E4e are CONTROLS too.
+# Every arm runs through `attempt`. Reasons are long sentinels (QZ...), over the 40-character minimum.
+AREASON = 'QZ R-20 test reason, long enough to clear the forty-character minimum'
+ANCHOR_TRACES = ('compose-report.json', 'translated.png', 'held-values.json', 'anchor-exclusions.json')
+
+
+def write_anchor_config(path, table):
+    """A --config file whose `anchorExclusions` is `table`, written VERBATIM (any JSON value)."""
+    Path(path).write_text(json.dumps({'anchorExclusions': table}, ensure_ascii=False), encoding='utf-8')
+    return Path(path)
+
+
+def anchor_quiet(out):
+    seen = {n: (out / n).exists() for n in ANCHOR_TRACES}
+    return not any(seen.values()), repr(seen)
+
+
+def anchor_clean(out):
+    for n in ANCHOR_TRACES:
+        (out / n).unlink(missing_ok=True)
+
+
+def e0_e3():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-e'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_E')
+        blocks = load_json(out / 'blocks.json') or []
+        check('13 PRECONDITION prepare produced the fixture directory, the observation key send:true and the '
+              'formula send:false', prep.returncode == 0
+              and sorted((b['key'], b['send']) for b in blocks if b['key'] in (K_OBS, K_VERBATIM))
+              == sorted([(K_OBS, True), (K_VERBATIM, False)]), repr([(b['key'], b['send']) for b in blocks]))
+        tr = write_tr(Path(td) / 'tr-e.json', TR12)
+        bi = [b['key'] for b in blocks].index(K_OBS)
+
+        # E0 CONTROL: a configured send:true key composes; the report names it, changed False.
+        cfg = write_anchor_config(Path(td) / 'ce0.json', {'CNX_Fixture_E': {K_OBS: AREASON}})
+        r = run_wrapper('--out', out, '--translations', tr, '--config', cfg)
+        d = load_json(out / 'compose.json') or {}
+        rep = load_json(out / 'compose-report.json') or {}
+        check('E0 CONTROL a configured send:true key composes, exit 0, and compose-report.json anchorExcluded '
+              'names it once, changed False (a one-line key never reaches M1)', r.returncode == 0
+              and 'error' not in d and rep.get('anchorExcluded') == [{'key': K_OBS, 'block': bi, 'changed': False}],
+              f"exit {r.returncode}: {d!r} anchorExcluded={rep.get('anchorExcluded')!r} :: {r.stderr.strip()[-300:]}")
+        check('E0b ... anchor-exclusions.json carries the basename, the --config path and the entry',
+              load_json(out / 'anchor-exclusions.json') == {'basename': 'CNX_Fixture_E',
+                                                            'configPath': str(cfg.resolve()),
+                                                            'exclusions': {K_OBS: AREASON}},
+              repr(load_json(out / 'anchor-exclusions.json')))
+        check('E0c ... and anchorExcluded is NOT a compose.json note (D4)', 'anchorExcluded' not in d, repr(d))
+
+        # E1: a key that matches no block.
+        stale = 'QZ no|such label'
+        r = run_wrapper('--out', out, '--translations', tr, '--config',
+                        write_anchor_config(Path(td) / 'ce1.json', {'CNX_Fixture_E': {stale: AREASON}}))
+        d = load_json(out / 'compose.json') or {}
+        # The REUSED --out arm (F13's): E0 left its outputs here, and DERIVED_OUTPUTS are removed before the
+        # pre-flight. (translated.png is compose.py's own, not a derived output - F13 does not check it either.)
+        left = {n: (out / n).exists() for n in ('compose-report.json', 'held-values.json', 'translated.svg',
+                                                 'anchor-exclusions.json')}
+        check('E1 a configured key that matches no block is refused (exit 1) and named, before the spawn - and in '
+              "that REUSED --out none of E0's derived outputs is left", refused(r, 1) and d.get('keys') == [stale]
+              and f"anchorExclusions.CNX_Fixture_E[{stale!r}]" in err_of(d) and 'matches no block' in err_of(d)
+              and not any(left.values()), f'exit {r.returncode}: {d!r} {left}')
+
+        # E2: a send:false key (the fixture's formula).
+        anchor_clean(out)
+        r = run_wrapper('--out', out, '--translations', tr, '--config',
+                        write_anchor_config(Path(td) / 'ce2.json', {'CNX_Fixture_E': {K_VERBATIM: AREASON}}))
+        d = load_json(out / 'compose.json') or {}
+        quiet, seen = anchor_quiet(out)
+        check('E2 a configured key that only a send:false block carries is refused before the spawn',
+              refused(r, 1) and d.get('keys') == [K_VERBATIM] and 'send:false' in err_of(d) and quiet,
+              f'exit {r.returncode}: {d!r} {seen}')
+
+        # E3: the production route (no --config) writes the file with {} and passes the flag anyway.
+        anchor_clean(out)
+        r = run_wrapper('--out', out, '--translations', tr)
+        rep = load_json(out / 'compose-report.json') or {}
+        check('E3 with no --config the wrapper reads the COMMITTED config and still writes anchor-exclusions.json, '
+              'exclusions {}; the report carries anchorExcluded []', r.returncode == 0
+              and load_json(out / 'anchor-exclusions.json') == {'basename': 'CNX_Fixture_E',
+                                                                'configPath': str(HERE / 'figure-text.config.json'),
+                                                                'exclusions': {}}
+              and rep.get('anchorExcluded') == [],
+              f"exit {r.returncode}: {load_json(out / 'anchor-exclusions.json')!r} "
+              f"{rep.get('anchorExcluded')!r}")
+        check("E3b anchor-exclusions.json is one of the wrapper's DERIVED_OUTPUTS",
+              'anchor-exclusions.json' in getattr(_mod, 'DERIVED_OUTPUTS', ()), repr(getattr(_mod, 'DERIVED_OUTPUTS', None)))
+
+
+# E4: verify's exclusion contract as units.
+def e4():
+    blocks = [{'key': 'a', 'send': True}, {'key': 'b', 'send': False}]
+    present = _mod.Translations(path='/x.json', keys=frozenset({'a'}), has_state=False)
+    ok, _k, msg = _raises(lambda: _mod.verify({**GOOD, 'anchorExcluded': [{'key': 'a', 'block': 0, 'changed': True}]},
+                                              blocks, present, anchor={'a': AREASON}))
+    check('E4 CONTROL a report naming the configured key once passes', not ok and msg == '', repr(msg))
+    ok, keys, msg = _raises(lambda: _mod.verify({**GOOD, 'anchorExcluded': []}, blocks, present,
+                                                anchor={'a': AREASON}))
+    check('E4b a report that LACKS a configured key is refused, naming it - a composer that ignored the flag',
+          ok and keys == ['a'] and 'anchorExclusions' in msg, f'{keys!r}: {msg}')
+    ok, _k, msg = _raises(lambda: _mod.verify(dict(GOOD), blocks, present, anchor={'a': AREASON}))
+    check('E4c exclusions configured and the report has no `anchorExcluded` list: refused as drift',
+          ok and 'drifted' in msg, repr(msg))
+    ok, keys, msg = _raises(lambda: _mod.verify({**GOOD, 'anchorExcluded': [{'key': 'a', 'block': 0, 'changed': True}]},
+                                                blocks, present))
+    check('E4d NOTHING configured and the report names an excluded label: refused', ok and keys == ['a']
+          and 'anchorExclusions' in msg, f'{keys!r}: {msg}')
+    ok, _k, msg = _raises(lambda: _mod.verify(dict(GOOD), blocks, present))
+    check('E4e CONTROL nothing configured and an older report with no `anchorExcluded`: passes', not ok
+          and msg == '', repr(msg))
+
+
+# E5: F12's repeated key, in THIS table, after the single-parse refactor - refused before the spawn.
+def e5():
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'fig-e5'
+        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_E5')
+        tr = write_tr(Path(td) / 'tr-e5.json', TR12)
+        cfg = Path(td) / 'ce5.json'
+        k = json.dumps(K_OBS)
+        cfg.write_text('{"anchorExclusions": {"CNX_Fixture_E5": {%s: "%s", %s: "%s"}}}' % (k, AREASON, k, AREASON),
+                       encoding='utf-8')
+        r = run_wrapper('--out', out, '--translations', tr, '--config', cfg)
+        d = load_json(out / 'compose.json') or {}
+        quiet, seen = anchor_quiet(out)
+        check('E5 CONTROL an anchorExclusions key repeated inside its entry is refused before the spawn, naming it',
+              prep.returncode == 0 and refused(r, 1) and 'repeats the key' in err_of(d)
+              and repr(K_OBS) in err_of(d) and quiet, f'exit {r.returncode}: {d!r} {seen}')
+
+
 if _mod is not None:
     for _label, _fn in (('F1-F3', f1_f3), ('F4/F10', f4_f10), ('F5/F11', f5_f11), ('F6', f6),
-                        ('F7', f7), ('F8', f8), ('F9', f9), ('F12', f12), ('F13', f13)):
+                        ('F7', f7), ('F8', f8), ('F9', f9), ('F12', f12), ('F13', f13),
+                        ('E0-E3', e0_e3), ('E4', e4), ('E5', e5)):
         attempt(_label, _fn)
 
 
