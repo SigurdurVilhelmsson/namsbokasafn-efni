@@ -681,10 +681,14 @@ for BI, b in enumerate(blocks):
     # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
     # every block that has no such split.
     vls = FT.visual_ink(b)   # geometry from each visual line's ink runs (a folded blank line carries none)
+    # `blank` is read ONLY by figlayout's P1v guard (§C140 '6' M4): a whitespace-only line is not a row. Its
+    # `.strip()` is wider than FT.is_blank_line (U+0020 only) - an NBSP- or U+001F-only line survives M2's fold
+    # and is still `blank` here, which only withholds P1v (the sz0 * LEAD pitch).
     cues = dict(n_src=len(vls), sz0=sz0,
                 starts=[min(FT.along(r) for r in l) for l in vls],
                 ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],
-                projs=[FT.proj(l[0]) for l in vls])
+                projs=[FT.proj(l[0]) for l in vls],
+                blank=[not ''.join(r['text'] for r in l).strip() for l in vls])
 
     def width(chars, size, j):
         """figlayout's ONE width function: output line j is drawn in the font and colour of the FIRST

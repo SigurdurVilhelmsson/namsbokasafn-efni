@@ -74,6 +74,9 @@ FLUSH_TIGHT = 4.75        # single-line open label flush against an obstacle: ti
 FLUSH_RATIO = 20.0        # ... and far / tight >= this
 CELL_RATIO = 20.0         # single-line cell: far / tight source margin >= this -> flush to tight side
 AMBIG = 0.5               # multi-line: two smallest spreads differ by < this -> centre
+COLUMN_ALIGN = True       # §C140 M4 (A2v) gate: a centre-guessed single-line label joins a source text COLUMN
+COLUMN_MIN = 2            # ... of at least this many OTHER blocks
+COLUMN_SIZE_TOL = 0.05    # ... whose sharing line is drawn at the label's size within this (pt)
 
 # --- free-box march --------------------------------------------------------------------------
 MARCH_STEP = 0.25         # pt
@@ -361,13 +364,17 @@ def _ratio(tight, far):
     return far / tight if tight > 0 else float('inf')
 
 
-def cell_alignment(block, left_margin, right_margin):
+def cell_alignment(block, left_margin, right_margin, index=None, blocks=None):
     """R3: a table cell keeps the source alignment.
     multi-line  -> multi_alignment.
     single-line -> the source label's margins INSIDE THE CELL: far/tight >= CELL_RATIO is flush
                    to the tight side (a right-flush 'Molecular mass' against its number), else
-                   centre. The sibling cue is NOT used for cells: glycinemass b13 has a left
-                   sibling coincidence while its source is visibly right-flush."""
+                   the side of a source text COLUMN (column_side, §C140 '6' M4 A2v; only when the
+                   caller passes `index` and `blocks`), else centre. The sibling cue is NOT used
+                   for cells: glycinemass b13 has a left sibling coincidence while its source is
+                   visibly right-flush. The column rule is consulted only AFTER the CELL_RATIO
+                   margin rule, so a source flush to one side of its cell is decided by its margins
+                   first."""
     frames = own_line_frames(block)
     if len(frames) >= 2:
         return multi_alignment(frames)
@@ -376,6 +383,10 @@ def cell_alignment(block, left_margin, right_margin):
     if ratio >= CELL_RATIO:
         side = 'left' if left_margin <= right_margin else 'right'
         return side, f'cell-single-margins(ratio {ratio:.1f})->{side}'
+    if COLUMN_ALIGN and blocks is not None:
+        side, why = column_side(index, blocks)
+        if side is not None:
+            return side, f'cell-single-margins(ratio {ratio:.2f})+{why}->{side}'
     return 'center', f'cell-single-margins(ratio {ratio:.2f})->center'
 
 
@@ -400,6 +411,45 @@ def sibling_cues(index, blocks):
     return tuple(cue)
 
 
+def column_side(index, blocks):
+    """§C140 M4 (A2v): the side of a source text COLUMN this single-line label belongs to, or None.
+
+    A sibling is ANOTHER block of the same rotation, and it is counted per LINE: a line counts for a side only
+    when EXACTLY ONE of its three edges (left / centre / right) coincides with the label's within SIBLING_TOL.
+    A line that coincides on two or three edges has the label's own width and says nothing about alignment
+    (FoodLabel 'nutrients' under 'Footnote'; the periodic table's 'plutonium' under 'samarium').
+    Left and right count only lines drawn at the label's size (COLUMN_SIZE_TOL, first-run size): a text column
+    is a list in one style, while the left/right edges of a cell's symbol, number and mass coincide with a
+    name's by grid accident (periodic tables: 'copper' R8 against C7 when every size counts). A centre
+    coincidence counts at ANY size and VETOES: a name centred over its symbol and mass is centred.
+    -> (side, why) when that side has >= COLUMN_MIN blocks, strictly more than the opposite side, and no
+    block coincides on the centre; (None, why) otherwise."""
+    block = blocks[index]
+    rot = block[0]['rot']
+    s0 = FT.lines(block)[0][0]['size']
+    m0, m1 = source_frame(block)[:2]
+    mc = (m0 + m1) / 2
+    sup = {'left': set(), 'center': set(), 'right': set()}
+    for j, other in enumerate(blocks):
+        if j == index or abs(other[0]['rot'] - rot) > SIBLING_ROT:
+            continue
+        for line in FT.lines(other):
+            a0, a1 = source_frame(line)[:2]
+            hit = [k for k, ok in (('left', abs(a0 - m0) <= SIBLING_TOL),
+                                   ('center', abs((a0 + a1) / 2 - mc) <= SIBLING_TOL),
+                                   ('right', abs(a1 - m1) <= SIBLING_TOL)) if ok]
+            if len(hit) != 1:
+                continue
+            if hit[0] == 'center' or abs(line[0]['size'] - s0) <= COLUMN_SIZE_TOL:
+                sup[hit[0]].add(j)
+    c = {k: len(v) for k, v in sup.items()}
+    why = 'column(L%(left)dC%(center)dR%(right)d)' % c
+    side = 'left' if c['left'] > c['right'] else 'right' if c['right'] > c['left'] else None
+    if side is None or c[side] < COLUMN_MIN or c['center'] > 0:
+        return None, why
+    return side, why
+
+
 def open_alignment(index, blocks, left_clear, right_clear):
     """Alignment of an OPEN label.
     multi-line  -> multi_alignment.
@@ -407,6 +457,7 @@ def open_alignment(index, blocks, left_clear, right_clear):
                    FLUSH_RATIO stays flush to that side and grows away from it;
                    (2) a SIBLING-EDGE cue: exactly the left edge, or exactly the right edge,
                    coincides with another block's;
+                   (2b) a source text COLUMN (column_side, §C140 '6' M4 A2v);
                    (3) centre.
 
     SIBLING_TOL IS MEASURED, NOT CHOSEN. The census's 0.5 re-aligned rxn2 'Reactant'/
@@ -426,6 +477,10 @@ def open_alignment(index, blocks, left_clear, right_clear):
         return 'left', 'single-cue-left-only->left'
     if cue == (False, False, True):
         return 'right', 'single-cue-right-only->right'
+    if COLUMN_ALIGN:
+        side, why = column_side(index, blocks)
+        if side is not None:
+            return side, f'single-{why}->{side}'
     return 'center', 'single-cue(L%dC%dR%d)->center' % tuple(int(c) for c in cue)
 
 
@@ -545,7 +600,8 @@ def _container_for(index, blocks, page, dark, page_h):
         if cls == 'box':
             c['align'], c['align_why'] = 'center', 'box->center (R2)'
         else:
-            c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'])
+            c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'],
+                                                       index, blocks)
         return c
     fb = free_box(index, blocks, dark, page_h)
     align, align_why = open_alignment(index, blocks, fb['free_left_clear'], fb['free_right_clear'])

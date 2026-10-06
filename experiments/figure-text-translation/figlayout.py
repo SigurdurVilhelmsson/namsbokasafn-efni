@@ -28,7 +28,12 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
   sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the
              0.25 grid the grid misses the floor, so floor_eff is appended as the last step. A label the source
              set below the floor is never enlarged and never shrunk.
-  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size.
+  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size. Every fit test uses it. ONE exception, after
+             the partition (§C140 '6' M4, P1v; gates PITCH_SRC, PITCH_SRC_MIN): a non-box label not at step
+             iv-gain, drawn on exactly n_src >= 2 lines whose source rows all descend by more than 0.5 * sz0 and
+             none of which is blank (optional cues['blank'], one bool per visual line), is drawn on the source's
+             own rows - lead (projs[0] - projs[-1]) / (n_src - 1), top projs[0] before any displacement - when
+             sz0 * 1.222 would misplace the span of its outer lines by more than PITCH_SRC_MIN pt.
   partition  for a line count n: the min-max balanced partition (minimise the longest line); n <= number of words.
              Which n is tried in which order is per class, below.
   R9         SYMBOLS ONLY ([USER] ruling 2026-09-14, superseding the literal R9 of the design spec): a SHORT TOKEN is
@@ -82,7 +87,7 @@ OUTPUT  Layout dict:
   align     'left' | 'center' | 'right'             anchor    the UNDISPLACED anchor (along)
   x0        per-line start along, displacement included - compose only draws
   top       baseline of line 0 (normal coordinate), vertical displacement included
-  lead      sz0 * 1.222                             disp / vdisp  horizontal / vertical displacement (pt)
+  lead      sz0 * 1.222, or the source pitch (P1v)  disp / vdisp  horizontal / vertical displacement (pt)
   step      'fit' | 'floor-overflow' (box/cell); 'i' | 'ii' | 'iii-anchor' | 'iii-displaced' | 'iv-gain' |
             'v-overflow' (open)
   overflow  None, or ONE named overhang:
@@ -106,6 +111,8 @@ ASC, DESC = 0.73, 0.21
 EPS = 1e-9
 STEP = 0.25
 LEAD = 1.222
+PITCH_SRC = True          # §C140 M4 (P1v) gate: a label drawn on the source's own line count is drawn on its rows
+PITCH_SRC_MIN = 1.0       # ... when sz0 * LEAD would misplace the outer lines' span by more than this (pt)
 SHORT_TOKEN = 2          # R9: a word of 1..SHORT_TOKEN characters binds to the word after it - unless lowercase alphabetic
 
 _STEP_OPEN = ('i', 'ii', 'iii-anchor', 'iii-displaced', 'iv-gain', 'v-overflow')
@@ -448,6 +455,19 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         bound, tail = False, False
     spans = P.cut(s, n, bound=bound, tail=tail)
     lines = [P.chars(a, c) for a, c in spans]
+    # §C140 M4 (P1v): sz0 * LEAD is a guess at the source's line pitch, centred on its mean baseline. A label drawn
+    # on EXACTLY the source's line count is drawn on the source's own rows instead - its first baseline and its mean
+    # pitch - when the guess misplaces the span by more than PITCH_SRC_MIN (FoodLabel's lower table: 4.89 against
+    # 5.5 at 4 pt; FracDistil: 11.0 against 9.21). Not a box (R2 centres a box's glyph box, pinned by
+    # test_figlayout's box-vertical cases), not (iv)'s pinned growth, not a source with a whitespace-only line
+    # (cues['blank']: that line is not a row - FoodLabel 'more is| ' would land on 'high'), and only when the
+    # source rows descend by more than half a size. The size never feeds the pitch: lead stays a source length.
+    if (PITCH_SRC and cls != 'box' and step != 'iv-gain' and len(lines) == n_src >= 2
+            and not any(cues.get('blank', ()))
+            and all(projs[i] - projs[i + 1] > 0.5 * sz0 for i in range(n_src - 1))
+            and abs((projs[0] - projs[-1]) - (n_src - 1) * lead) > PITCH_SRC_MIN):
+        lead = (projs[0] - projs[-1]) / (n_src - 1)
+        top = projs[0]
     widths = [width(lc, s, j) for j, lc in enumerate(lines)]
     x0 = [{'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align] for w in widths]
     e0, e1 = min(x0), max(a + w for a, w in zip(x0, widths))
