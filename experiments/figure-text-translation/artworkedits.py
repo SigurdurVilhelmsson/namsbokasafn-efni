@@ -79,7 +79,9 @@ LIMITS, STATED:
   - A `'` or `"` operator is not split into its own line by the inventory: it continues the line
     before it (`--inventory` prints such a line with `quote: true`), and any move in its BT refuses.
   - An entry on a figure the driver classifies `copied-photo` or `unreadable-text` is prepared and
-    never recomposed, so it is silently unused.
+    never recomposed, so it is silently unused. So is one on a `copied-textless` figure that embeds a
+    raster (`imageXObjects > 0`, e.g. ibuprofenmass): tools/figure-run.js `isRecomposableTextless`
+    declines it, and CI cannot see that prepare-time fact.
 """
 import argparse
 import json
