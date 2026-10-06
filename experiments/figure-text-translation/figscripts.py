@@ -8,10 +8,13 @@ Evidence (frozen): experiments/figure-text-translation/evidence/2026-09-13-t23/r
 
 THE STYLE OF ONE CHARACTER
 --------------------------
-`None` (plain) or `SourceStyle(ratio, frac, italic)`:
+`None` (plain) or `SourceStyle(ratio, frac, italic, serif)`:
   ratio  = run size / the line's base size,
   frac   = (proj(run) - baseline) / base size, signed, UP along the text normal is positive,
-  italic = figtext.run_face(run, fonts)[1].
+  italic = figtext.run_face(run, fonts)[1],
+  serif  = figsym.verified_face(run, fonts) - the (bold, italic) STIX 1.1.0 General face the source character
+           was drawn in, or None (default) for any other font (§C140 '6' M6 half B, [USER] R-13). It is part of
+           the style, so equal-style segmentation splits a STIX character from a Liberation one.
 A character is STYLED iff its run is a script (the rule below) or italic. The geometry is the
 source run's OWN, never a constant: the 34 bought figures carry two subscript and two
 superscript offset families, one figure holding both superscript ones.
@@ -50,7 +53,7 @@ import collections
 
 import figtext as FT
 
-SourceStyle = collections.namedtuple('SourceStyle', 'ratio frac italic')
+SourceStyle = collections.namedtuple('SourceStyle', 'ratio frac italic serif', defaults=(None,))
 
 SYMBOL_FONT = re.compile(r'stix|symbol|mathematicalpi|mathpi|mt ?extra|cmsy|cmmi', re.I)
 SMALL_RATIO = 0.9          # a run smaller than this fraction of the base is script-sized
@@ -178,6 +181,9 @@ def _larger_scripts(line, scripts, base):
 
 def _analyse(line, fonts):
     """The whole per-line decision, with the runs that looked like larger scripts (for naming)."""
+    # Imported HERE, not at module top: figsym imports _deps (and fontsubset), and heldplan - which imports this
+    # module - is pinned PURE by test_heldplan.py HP0 (no _deps). verified_face reads names only; no font is loaded.
+    import figsym
     nonsym = [r for r in line if not is_symbol_run(r, fonts)]
     base = _size_vote(nonsym)
     if base is None:
@@ -216,7 +222,10 @@ def _analyse(line, fonts):
     styles = []
     for r, s in zip(line, scripts):
         italic = FT.run_face(r, fonts)[1]
-        st = (SourceStyle(round(r['size'] / base, 4), round((FT.proj(r) - baseline) / base, 4), italic)
+        # §C140 '6' M6 half B: a styled character from an eligible STIX 1.1.0 General run remembers its source face,
+        # so compose can draw it serif (compose.serif_face).
+        serif = figsym.verified_face(r, fonts)
+        st = (SourceStyle(round(r['size'] / base, 4), round((FT.proj(r) - baseline) / base, 4), italic, serif)
               if (s or italic) else None)
         styles += [st] * len(r['text'])
     return text, styles, base, False, suspects

@@ -139,12 +139,17 @@ def draw_run_exact(block, key):
     -> True when a pdfminer `(cid:N)` placeholder was removed from any run (the caller names
     the block in `undecodable`).
 
-    §C140 ⑥a: a run whose BaseFont (subset prefix stripped) is exactly `STIXGeneral-Regular`
-    and whose drawn text is entirely in the official STIX 1.1.0 cmap is drawn in FigSym instead
-    of Liberation - `key` names it in STIX['drawn']. A run in that face but outside the cmap, or
-    a run in another STIX face, is named in STIX['skipped'] instead and stays FigIS. A missing
-    or wrong font file raises `figsym.FontUnavailable` out of `figsym.covers()` - uncaught: a
-    figure with an eligible run simply fails to compose rather than silently drawing Liberation.
+    §C140 ⑥a + '6' M6 ([USER] R-12): a run `figsym.verified_face` admits - STIXGeneral-Regular by
+    name, or STIXGeneral-Italic/-Bold/-BoldItalic from a Type 1 font object - whose drawn text is
+    entirely in that face's official STIX 1.1.0 cmap is drawn in FigSym, in that face, instead of
+    Liberation - `key` names it in STIX['drawn']. A WHITESPACE-ONLY run selects a face only when it
+    is Regular (the v3 blank rule: a blank Italic run stays FigIS, a blank Regular one stays FigSym
+    as under ⑥a - no byte churn where there is no ink). A run outside the cmap is named in
+    STIX['skipped'] with reason `cmap`; an inked run in a further face from a non-Type 1 object
+    (TrueType / CID TrueType, never outline-compared, §C140 ㉞) `unverified-object`; any other STIX
+    face (SizeOneSym, a bare STIXGeneral, a blank further-face run) `other-face` - each stays FigIS.
+    A missing or wrong font file raises `figsym.FontUnavailable` out of `figsym.covers_face()` -
+    uncaught: a figure with an eligible run simply fails to compose rather than silently drawing Liberation.
 
     🔴 WHY: `runs.json` already carries what the source drew - a subscript's size and
     baseline, an italic BaseFont, the ten spaces a typist put in an arrow gap, a kerned-back
@@ -167,14 +172,16 @@ def draw_run_exact(block, key):
         bold, italic = FT.run_face(r, meta['fonts'])
         family = None
         base = FS._base_name(r, meta['fonts'])
-        if figsym.eligible_base(base):
-            if figsym.covers(text):               # raises figsym.FontUnavailable when the font is missing/wrong
+        face = figsym.verified_face(r, meta['fonts'])
+        if face is not None and (text.strip() or face == (False, False)):   # v3: a blank Regular run keeps ⑥a's FigSym
+            if figsym.covers_face(text, face):    # raises figsym.FontUnavailable when the font is missing/wrong
                 family = figsym.FAMILY
                 STIX['drawn'].add(key)
             else:
                 STIX['skipped'].append(dict(key=key, reason='cmap'))
         elif base.startswith('STIX'):
-            STIX['skipped'].append(dict(key=key, reason='other-face'))
+            STIX['skipped'].append(dict(key=key, reason='unverified-object' if text.strip() and figsym.eligible_face(base)
+                                        else 'other-face'))
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
         ITEMS.append(dict(path='run-exact', text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
@@ -265,6 +272,9 @@ def lin_advance(text, run, size, st):
     bold = run['font'] in BOLD
     italic = st is not None and st.italic
     px = size * S if st is None else size * st.ratio * S
+    sf = serif_face(text, run, st)
+    if sf is not None:
+        return figsym.advance(text, sf, px / S)
     k = (text, bold, italic, px)
     if k not in _ADV:
         mctx.select_font_face(FAMILY, cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
@@ -272,6 +282,20 @@ def lin_advance(text, run, size, st):
         mctx.set_font_size(px)
         _ADV[k] = mctx.text_extents(text).x_advance / S
     return _ADV[k]
+
+
+def serif_face(text, run, st):
+    """§C140 '6' M6 half B ([USER] R-13): the STIX face (bold, italic) a layout segment is drawn in, or None (FigIS).
+
+    Weight AND slant are the SOURCE face's, `st.serif` - set by figscripts from `figsym.verified_face` on the source
+    run, so only a character that came from a STIX General run eligible there - and never a blank segment - and only
+    when that face's official cmap covers the text. NOT the line run's weight that `setfont_st` uses for FigIS: the
+    item's `bold` is `sf[0]` (draw_layout) and its width `figsym.advance(text, sf)` (lin_advance). `run` is unused
+    here; it keeps the call shape of lin_advance/setfont_st."""
+    if st is None or getattr(st, 'serif', None) is None or not text.strip():
+        return None
+    face = tuple(st.serif)
+    return face if figsym.covers_face(text, face) else None
 
 
 def line_segments(chars):
@@ -305,12 +329,13 @@ def dev(x, y):
     return x * S, (H_PT - y) * S
 
 
-def draw_layout(layout, run_for_line, rot):
+def draw_layout(layout, run_for_line, rot, key, block):
     """Draw a `figlayout.decide` Layout: one ITEMS entry - one <text> - per SEGMENT of each laid-out line.
 
     run_for_line(j) -> the run whose weight and fill output line j is drawn in. The translated path passes
     the first run of VISUAL source line min(j, last) (§C140 ㉑); the held path (§C140 ㊾ D5(a)) passes the
-    first run of the one visual line it lays out. `rot` is the block's rotation in degrees.
+    first run of the one visual line it lays out. `rot` is the block's rotation in degrees. `key` and `block`
+    (the block key and index) only name a segment drawn in a STIX face in STIX['layout'] (§C140 '6' M6 half B).
 
     EXTRACTED VERBATIM from the translated path's draw loop (§C140 ㊾ D5(a)), so a translated label and a
     held one are drawn by ONE implementation: every item keeps path='layout', which svgout draws with
@@ -331,10 +356,13 @@ def draw_layout(layout, run_for_line, rot):
             y = aa * math.sin(rad) + pp * math.cos(rad)
             px, py = dev(x, y)
             setfont_st(fr, size, st)
+            sf = serif_face(t, fr, st)
+            if sf is not None:
+                STIX['layout'].append(dict(key=key, block=block, text=t, face=list(sf)))
             ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
                               rot=rot, size=size if st is None else size * st.ratio,
-                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
-                              rgb=cmyk(fr['fill']), dx=0.0))
+                              bold=(sf[0] if sf else fr['font'] in BOLD), italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0, **(dict(family=figsym.FAMILY) if sf else {})))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
             ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
             ctx.restore()
@@ -448,9 +476,15 @@ localized = []
 # WITH multiplicity - so its length counts blocks with a FigSym run, not runs or <text> items.
 # ⚠️ `stix` is NOT one of figure-compose.py's COMPOSE_NOTES, so the driver's report never shows it;
 # read it from compose-report.json.
-# `other-face` is any BaseFont starting `STIX` that is not eligible (Italic, Bold, SizeOneSym,
-# NonUnicode, ...); the eligible test runs first, so the prefix decides nothing that is drawn.
-STIX = {'drawn': set(), 'skipped': []}
+# `other-face` is any BaseFont starting `STIX` that is not eligible (SizeOneSym, NonUnicode, ...; in a kept
+# block also a blank further-face run); the eligible test runs first, so the prefix decides nothing that is drawn.
+# §C140 '6' M6: a kept INKED run in STIXGeneral-Italic/-Bold/-BoldItalic from a non-Type 1 object is
+# `unverified-object` instead (draw_run_exact). ⚠️ The translated- and held-path checks below still name every
+# non-Regular STIX run `other-face`, although half B may now draw its character in FigSym - read `layout` for that.
+# `layout` (M6 half B, [USER] R-13), draw order WITH multiplicity: `{key, block, text, face}` for every LAYOUT
+# segment drawn in a STIX face - a styled source character from an eligible STIX run (figscripts SourceStyle.serif)
+# in a translated or held label; `face` is [bold, italic].
+STIX = {'drawn': set(), 'skipped': [], 'layout': []}
 # §C140 ③, additive, draw order: every translated label drawn overhanging, NAMED (R5) -
 # `{key, block, word, needPt, budgetPt, sizePt, axis}` plus `linePt` on the width axis. axis 'width':
 # `word` does not fit at the floor (needPt its width; word None for a line-count overhang, needPt the
@@ -531,7 +565,7 @@ def draw_held(BI, b, key):
             off += len(part)
         else:
             _, layout, vl = entry
-            draw_layout(layout, lambda j, r0=inks[li][0]: r0, rot)
+            draw_layout(layout, lambda j, r0=inks[li][0]: r0, rot, key, BI)
             for r in vl:
                 rbase = FS._base_name(r, meta['fonts'])
                 if figsym.eligible_base(rbase):
@@ -757,7 +791,7 @@ for BI, b in enumerate(blocks):
     align, size = layout['align'], layout['size']
     # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
     # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
-    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot)
+    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot, key, BI)
     ov = layout['overflow']
     if ov is not None:
         # The report CONTRACT, copied field by field (figure-compose.py passes it verbatim into
@@ -847,8 +881,9 @@ if SVG:
     'heldConfigPath': HELD_CONFIG,
     # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
     'anchorExcluded': anchor_excluded,
-    # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason.
-    'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped']},
+    # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason; '6' M6 adds
+    # `layout`, the laid-out segments drawn in a STIX face (see STIX above).
+    'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped'], 'layout': STIX['layout']},
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")

@@ -198,8 +198,10 @@ describe('the composer computes no hashes — there is no second implementation'
   // Python implementation of renderHash/composedHash", not "no hashing at all".
   // Each allowlisted file is exempted from exactly what it needs and no more:
   // - figsym.py may use hashlib, at EXACTLY `FIGSYM_SHA256_CALLS` call sites
-  //   (the font in load(), the licence text in metadata_element()), so a new
-  //   hashing site is a conscious change to this number, not a silent one;
+  //   (every STIX font file in _read_pinned(), which load() and §C140 '6'
+  //   M6's load_face() share for all four faces; the licence text in
+  //   metadata_element()), so a new hashing site is a conscious change to
+  //   this number, not a silent one;
   // - test_figsym.py only NAMES 'sha256' in assertion strings — it may say the
   //   word, and must still never import hashlib.
   // Every other .py file still gets the full absence check, and both are

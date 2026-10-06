@@ -122,7 +122,7 @@ SUB_MOL = FS.SourceStyle(0.7778, -0.2222, False)
 SUP_PH = FS.SourceStyle(0.7778, 0.4445, False)
 SUB_BUF = FS.SourceStyle(0.7778, -0.3333, False)
 SUP_BUF = FS.SourceStyle(0.7778, 0.4444, False)
-OX_CHARGE = FS.SourceStyle(1.0, 0.0714, True)
+OX_CHARGE = FS.SourceStyle(1.0, 0.0714, True, (True, True))   # M6: from a Type 1 STIXGeneral-BoldItalic run
 
 fails = []
 REFUSALS = []

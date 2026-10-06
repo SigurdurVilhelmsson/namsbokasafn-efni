@@ -288,7 +288,7 @@ def s5():
                   {'PAGE/R126': 'I', 'PAGE/R124': 'R'})
     text, styles, base, inv = FS.line_styles(real, FONTS)
     check('S5d REAL Manometer Patm resolves to base 9 with atm styled and P italic',
-          inv is False and near(base, 9.0) and styles[0] == ITA
+          inv is False and near(base, 9.0) and tuple(styles[0])[:3] == ITA
           and all(s is not None and near(s[0], 0.75) and near(s[1], -0.2222) for s in styles[1:]),
           f'{base} {inv} {styles}')
     toks, miss = FS.source_tokens(real, FONTS)
@@ -723,7 +723,7 @@ OXST = [run('4', 7.0, 163.07, 66.5133, adv=3.892, font='B'), run('+', 7.0, 166.9
 def styles_of(block, fonts):
     """Every distinct non-None style `source_tokens` emits for the block, as sorted plain tuples."""
     toks, _ = FS.source_tokens(block, fonts)
-    return sorted({tuple(st) for t in toks for st in t['styles'] if st is not None})
+    return sorted({tuple(st)[:3] for t in toks for st in t['styles'] if st is not None})   # M6: serif is checked in HS1-serif
 
 
 def hs1():
@@ -745,6 +745,35 @@ def hs1():
 
 
 attempt('HS1', hs1)
+
+
+def hs1_serif():
+    """§C140 '6' M6 half B: SourceStyle's 4th field `serif` is the source run's STIX face, from
+    figsym.verified_face - set only for a STIXGeneral run whose font object is Type 1 (the outline-verified
+    kind; Regular by name alone). A check on HS_FONTS alone would be vacuous: it carries no subtype, so the
+    fail-safe answer None is all it can show - the Type 1 arm is what can fail."""
+    def serifs(block, fonts):
+        toks, _ = FS.source_tokens(block, fonts)
+        return sorted({getattr(st, 'serif', 'NO-FIELD') for t in toks for st in t['styles'] if st is not None},
+                      key=repr)
+    type1 = dict(HS_FONTS, SBI=dict(HS_FONTS['SBI'], subtype='/Type1'))
+    truetype = dict(HS_FONTS, SBI=dict(HS_FONTS['SBI'], subtype='/TrueType'))
+    check('HS1-serif-a REAL OxStNonmts BoldItalic charges from a Type 1 object carry serif == (True, True)',
+          serifs(OXST, type1) == [(True, True)], repr(serifs(OXST, type1)))
+    check('HS1-serif-b ... with no subtype recorded (HS_FONTS as written) serif is None - the fail-safe',
+          serifs(OXST, HS_FONTS) == [None], repr(serifs(OXST, HS_FONTS)))
+    check('HS1-serif-c ... from a TrueType object serif is None (never outline-compared, §C140 ㉞)',
+          serifs(OXST, truetype) == [None], repr(serifs(OXST, truetype)))
+    lib_fonts = dict(HS_FONTS, I=dict(HS_FONTS['I'], subtype='/Type1'))
+    lib = [run('Radius ', 9.0, 10.0, 50.0, adv=30.0), run('r', 9.0, 40.0, 50.0, adv=3.0, font='I')]
+    check('HS1-serif-d a Liberation italic run (Type 1) is styled italic and carries serif None',
+          serifs(lib, lib_fonts) == [None] and FS.source_tokens(lib, lib_fonts)[0][0]['styles'][0].italic is True,
+          repr(serifs(lib, lib_fonts)))
+    check('HS1-serif-e the field defaults to None, so a 3-argument SourceStyle is still valid',
+          FS.SourceStyle(1.0, 0.0, True).serif is None)
+
+
+attempt('HS1-serif', hs1_serif)
 
 
 def hs2():

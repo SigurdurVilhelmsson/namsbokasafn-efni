@@ -222,6 +222,7 @@ published.jpg ──check.py─────────────────�
 | `test_figlayout_anchors.py` | pure, with a fake width: at the chosen count n == n_src >= 2 a label is cut where a token the MT carried verbatim marks a source row boundary (`(`, a list marker, a digit or symbol token opening a line; `)`, `:` or `,` closing one), matched by ordinal; an anchored cut may override R9 and (A) at that cut only, and may shrink the size but never the count (rulings R-3, R-4, R-6); gate-off, whole-line, no-texts, infeasible-set and already-on-rows controls (§C140 '6', M1) |
 | `test_compose_anchors.py` | end to end on a planted three-line label: compose.py hands figlayout the visual source lines' text, so `Kjarni (11 róteindir, 12 nifteindir)` is drawn on its source rows (with a precondition that the cut differs without it); `--anchor-exclusions` (figure-text.config.json `anchorExclusions`, ruling R-20) draws the base cut and reports `anchorExcluded`, an empty file draws byte for byte as no flag, a file for another figure is refused; plus the stdlib `anchorexclusions.py` and `figconfig.py` (the one config parse) (§C140 '6', M1 + R-20) |
 | `test_figcontainers_sharedbox.py` | pure, on planted pages and blank images: a stroked box that holds another block's source line is a shared box on the cell path, so a heading over its body and three labels side by side draw without overprinting, each centred on its own source centre; `SHARED_BOX_ALIGN` is `'center'` (ruling R-2a), `None` restores R2 and `'source'` hands M4's column rule `index` and `blocks`; a label alone in a box, a neighbour outside it and a neighbour rotated 2 degrees are controls (§C140 '6', M7) |
+| `test_figsym_faces.py` | real figures, end to end (needs the four STIX faces): Systemqw's kept STIX Italic U, q, w and its laid-out q, w are drawn in FigSym italic, one renamed FigSym italic face, while Δ and = stay FigSym normal; HeatMeas's STIX Italic from TrueType objects stays FigIS and is reported `unverified-object`; plus an AST guard that no drawing module reads an `M5_`/`M6_` gate from the environment, with planted controls (§C140 '6', M6, rulings R-12 and R-13) |
 | `emit-blocks.py` | the MT stage's input — `runs.json` → `out/blocks.json`, marking which blocks to send |
 | `translate-blocks.mjs` | the **paid** MT stage — `out/blocks.json` → `out/translations-api.json`, one request per **distinct block key** (a repeated label is bought once; the multiplicity stays in `blocks.json`, per R-13) |
 | `translations.json` | ⚠️ **placeholder probe text, NOT a translation** |
@@ -285,15 +286,19 @@ heal tests are the cheapest detector for this, and `test_figsym.py` is the one f
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
 
-🔴 **The STIX font (§C140 ⑥a) is a local prerequisite too, and it is never committed.** A kept run
-the source drew in `STIXGeneral-Regular` is composed in a renamed subset of the official STIX 1.1.0
-`STIXGeneral-Regular.otf`, read from `$FIGTEXT_STIX_FONT` if it is set, else from
-`~/.cache/namsbokasafn-figtext/stix-1.1.0/STIXGeneral-Regular.otf`. Where to download it and the
-sha256 it must match are in `figsym.py` (`FONT_SOURCE_URL`, `FONT_SHA256`), not restated here.
-Without that exact file, compose **refuses** every figure that has such a run
-(`figsym.FontUnavailable`, which `figure-run.js` reports as `failed-compose`) and composes every
-other figure as before — and `--dry-run` cannot warn you, because it composes nothing.
-`test_figsym.py`'s check 1a fails on a box without the file.
+🔴 **The STIX font (§C140 ⑥a, '6' M6) is a local prerequisite too, and it is never committed.** A kept run
+the source drew in `STIXGeneral-Regular` - or in `STIXGeneral-Italic`, `-Bold` or `-BoldItalic` from a
+Type 1 font object - and a styled character from such a run inside a translated label, are composed in a
+renamed subset of the matching official STIX 1.1.0 face. **Four files, one directory:**
+`STIXGeneral-Regular.otf` is read from `$FIGTEXT_STIX_FONT` if it is set, else from
+`~/.cache/namsbokasafn-figtext/stix-1.1.0/STIXGeneral-Regular.otf`, and `STIXGeneral-Italic.otf`,
+`STIXGeneral-Bold.otf` and `STIXGeneral-BoldItalic.otf` must sit **beside it**, under those names — there
+is no second variable. Where to download each and the sha256 each must match are in `figsym.py`
+(`FACES`, `FONT_SOURCE_URL`), not restated here. Without the exact file a figure needs, compose
+**refuses** that figure (`figsym.FontUnavailable`, which `figure-run.js` reports as `failed-compose`) and
+composes every other figure as before — and `--dry-run` cannot warn you, because it composes nothing.
+`test_figsym.py`'s check 1a fails on a box without the Regular file, and its check 6a on a box without
+any of the other three.
 
 ### The MT stage — it costs money, and `--book` is not optional
 

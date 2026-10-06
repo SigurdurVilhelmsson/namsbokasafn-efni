@@ -320,6 +320,55 @@ check('N4a a textless figure embeds no font and carries no <metadata>',
       font_face_rules(svgE) == [] and 'metadata' not in group_children(svgE),
       repr((font_face_rules(svgE)[:1], group_children(svgE))))
 
+# --- §C140 '6' M6 ([USER] R-12): one FigSym @font-face per STIX face drawn -------------------------------------
+# The N1/N2 shapes for FigSym: an item's (bold, italic) selects its face, each face is its own renamed subset of
+# the official STIX 1.1.0 face of that name, and the licence is still ONE FigSym <metadata> naming every face.
+ITEMS_Y = [item('+', 10.0, 10.0, family=figsym.FAMILY), item('U', 20.0, 20.0, bold=True, family=figsym.FAMILY),
+           item('q', 30.0, 30.0, italic=True, family=figsym.FAMILY),
+           item('w', 40.0, 40.0, bold=True, italic=True, family=figsym.FAMILY)]
+svgY = compose_svg(ITEMS_Y)
+parses(svgY, 'Y0 the four-FigSym-face SVG parses as XML')
+facesY = font_face_rules(svgY)
+check('Y1 one FigSym face per (bold, italic) drawn, in the FigIS order: 400/normal, 700/normal, 400/italic, 700/italic',
+      [(f[0], f[1], f[2]) for f in facesY] == [('FigSym', '400', 'normal'), ('FigSym', '700', 'normal'),
+                                              ('FigSym', '400', 'italic'), ('FigSym', '700', 'italic')],
+      repr([f[:3] for f in facesY]))
+WANT_Y = {('400', 'normal'): ('+', (False, False)), ('700', 'normal'): ('U', (True, False)),
+          ('400', 'italic'): ('q', (False, True)), ('700', 'italic'): ('w', (True, True))}
+for fam, wt, st, b64 in facesY:
+    if (wt, st) not in WANT_Y:
+        continue
+    ch, fkey = WANT_Y[(wt, st)]
+    emb = TTFont(io.BytesIO(base64.b64decode(b64)))
+    off = figsym.load_face(fkey)[0] if hasattr(figsym, 'load_face') else None
+    check(f'Y2 FigSym {wt}/{st}: holds exactly its own item\'s character, names no reserved name or word, and keeps '
+          'name ID 7 verbatim from the official face of that name',
+          off is not None and set(emb.getBestCmap()) - {0x20} <= {ord(ch)} and ord(ch) in emb.getBestCmap()
+          and figsym.name_violations(emb) == []
+          and emb['name'].getDebugName(7) == off['name'].getDebugName(7)
+          and emb['name'].getDebugName(1) == 'FigSym',
+          f"{sorted(chr(c) for c in emb.getBestCmap())} {figsym.name_violations(emb)[:2]}")
+metasY = [(e.text or '') for e in ET.fromstring(svgY.encode('utf-8')).iter() if local(e.tag) == 'metadata']
+check('Y3 exactly ONE <metadata> (FigSym\'s; no FigIS item), naming all four STIX faces it embeds',
+      len(metasY) == 1 and metasY[0].startswith('Font: FigSym is a subset of')
+      and all(f'STIXGeneral-{s}' in metasY[0][:200] for s in ('Regular', 'Bold', 'Italic', 'BoldItalic')),
+      repr([m[:160] for m in metasY]))
+rootY = ET.fromstring(svgY.encode('utf-8'))
+attrsY = [(''.join(e.itertext()), e.get('font-family'), e.get('font-weight'), e.get('font-style'))
+          for e in rootY.iter() if local(e.tag) == 'text']
+check('Y4 each <text> asks for its own face: FigSym, its weight, and italic where it is',
+      attrsY == [('+', 'FigSym', '400', None), ('U', 'FigSym', '700', None), ('q', 'FigSym', '400', 'italic'),
+                 ('w', 'FigSym', '700', 'italic')], repr(attrsY))
+# CONTROL: a figure drawing only Regular FigSym emits exactly today's single 400/normal rule (T2a's shape), and its
+# metadata names Regular alone - the per-face split adds nothing where no new face is drawn.
+svgYc = compose_svg([item('+', 10.0, 10.0, family=figsym.FAMILY)])
+facesYc = font_face_rules(svgYc)
+metasYc = [(e.text or '') for e in ET.fromstring(svgYc.encode('utf-8')).iter() if local(e.tag) == 'metadata']
+check("Y-ctl CONTROL one Regular FigSym item: exactly one FigSym rule, 400/normal, and the metadata names Regular only",
+      [(f[0], f[1], f[2]) for f in facesYc] == [('FigSym', '400', 'normal')] and len(metasYc) == 1
+      and metasYc[0].startswith('Font: FigSym is a subset of STIXGeneral-Regular from'),
+      repr(([f[:3] for f in facesYc], [m[:80] for m in metasYc])))
+
 # Case 4: the figparts.split() contract (last <style>; remainder \n<g …>…</g>\n</svg>\n) still
 # holds with a FigSym face and a <metadata> element present. Imported by path - it lives under
 # evidence/, not on this file's import path.

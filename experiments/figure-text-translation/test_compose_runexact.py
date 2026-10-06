@@ -521,10 +521,11 @@ if _hcl_src is not None:
 # and 30 pt apart (well over the 1.222 x 12 pt leading `figtext.group` joins lines within). KEPT is
 # decided by the translations file alone (compose.py: no value -> kept), so only 'Total' is given one.
 K_S_DRAWN, K_S_CMAP, K_S_ITALIC, K_S_SIZEONE, K_S_MATHPI, K_S_TR = '+=', '+Ɓ', 'x', '[', '±', 'Total'
+K_S_TTIT = 'y'   # M6: STIXGeneral-Italic from a TrueType object - never outline-compared (㉞), stays FigIS
 # U+0181 'Ɓ' is in Liberation Sans and NOT in the official STIX 1.1.0 cmap (measured with fontTools), so the
 # FigIS fallback can really draw it; the '+' beside it is covered, so the run is refused on `all`, not `any`.
 STIX_TR = {K_S_TR: 'Samtals'}
-STIX_KEPT = (K_S_DRAWN, K_S_CMAP, K_S_ITALIC, K_S_SIZEONE, K_S_MATHPI)
+STIX_KEPT = (K_S_DRAWN, K_S_CMAP, K_S_ITALIC, K_S_SIZEONE, K_S_MATHPI, K_S_TTIT)
 STIX_ENV_BEFORE = os.environ.get('FIGTEXT_STIX_FONT')
 
 
@@ -534,8 +535,9 @@ def plant_stix(out_dir):
     for fk, base in (('PAGE/F4', '/ABCDEF+STIXGeneral-Regular'), ('PAGE/F5', '/ABCDEF+STIXGeneral-Italic'),
                      ('PAGE/F6', '/ABCDEF+STIXSizeOneSym-Regular'), ('PAGE/F7', '/XYZABC+MathematicalPi-One')):
         meta['fonts'][fk] = dict(meta['fonts']['PAGE/F1'], base=base)
+    meta['fonts']['PAGE/F8'] = dict(meta['fonts']['PAGE/F1'], base='/ABCDEF+STIXGeneral-Italic', subtype='/TrueType')
     for text, y, fk in ((K_S_DRAWN, 200.0, 'PAGE/F4'), (K_S_CMAP, 170.0, 'PAGE/F4'), (K_S_ITALIC, 140.0, 'PAGE/F5'),
-                        (K_S_SIZEONE, 110.0, 'PAGE/F6'), (K_S_MATHPI, 80.0, 'PAGE/F7'), (K_S_TR, 50.0, 'PAGE/F4')):
+                        (K_S_SIZEONE, 110.0, 'PAGE/F6'), (K_S_MATHPI, 80.0, 'PAGE/F7'), (K_S_TR, 50.0, 'PAGE/F4'), (K_S_TTIT, 230.0, 'PAGE/F8')):
         runs.append(run(text, 170.0, y, font=fk, a=round(0.6 * 12.0 * len(text), 3)))
     (out_dir / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
     (out_dir / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
@@ -547,6 +549,126 @@ def figsym_chars(svg_text):
             for b64 in re.findall(r"@font-face\{font-family:'FigSym';font-weight:400;font-style:normal;"
                                   r"src:url\(data:font/woff2;base64,([^)]+)\)", svg_text)]
 
+
+# ── §C140 '6' M6 ([USER] R-12, R-13): the three further STIX faces, planted, one block per row ────
+# (a) KEPT Bold and BoldItalic runs from Type 1 objects are drawn in FigSym at their own weight and slant.
+# (b) THE BLANK RULE (v3): a whitespace-only run selects a new face only when that face is Regular - a blank
+#     Italic run stays FigIS italic, a blank Regular run stays FigSym as under ⑥a. CONTROL: it holds on the
+#     pre-M6 composer too (nothing selected a new face then); its evidence is the planted v2 mutant
+#     (`text.strip()` alone), which moves the blank Regular run to FigIS and turns M6-b2 red.
+# (c) HALF B: a TRANSLATED label whose source λ is a Type 1 STIXGeneral-Italic run draws its λ segment in
+#     FigSym italic, measured with figsym.advance - the next segment starts exactly that far along - and
+#     compose-report.json's stix.layout names it {key, block, text, face}.
+# (d) The same label from a TrueType object: λ stays FigIS italic, measured by cairo, and names nothing.
+K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT = 'U', 'w', 'x  ', '=  ', 'λ max', 'λ min'
+STIX6_TR = {K6_SERIF: 'λ hámark', K6_TT: 'λ lágmark'}
+
+
+def plant_stix6(out_dir):
+    runs = json.loads((out_dir / 'runs.json').read_text())
+    meta = json.loads((out_dir / 'meta.json').read_text())
+    for fk, base, sub in (('PAGE/G1', '/ABCDEF+STIXGeneral-Regular', '/Type1'),
+                          ('PAGE/G2', '/ABCDEF+STIXGeneral-Bold', '/Type1'),
+                          ('PAGE/G3', '/ABCDEF+STIXGeneral-BoldItalic', '/Type1'),
+                          ('PAGE/G4', '/ABCDEF+STIXGeneral-Italic', '/Type1'),
+                          ('PAGE/G5', '/ABCDEF+STIXGeneral-Italic', '/TrueType')):
+        meta['fonts'][fk] = dict(meta['fonts']['PAGE/F1'], base=base, subtype=sub)
+    a6 = round(0.6 * 12.0, 3)
+    runs += [run(K6_BOLD, 170.0, 200.0, font='PAGE/G2', a=a6), run(K6_BI, 170.0, 170.0, font='PAGE/G3', a=a6),
+             run('x', 170.0, 140.0, font='PAGE/G4', a=a6), run('  ', 170.0 + a6, 140.0, font='PAGE/G4', a=2 * a6),
+             run('=', 170.0, 110.0, font='PAGE/G1', a=a6), run('  ', 170.0 + a6, 110.0, font='PAGE/G1', a=2 * a6),
+             run('λ', 170.0, 80.0, font='PAGE/G4', a=a6), run(' max', 170.0 + a6, 80.0, a=adv(' ma', 12.0) + 6.0),
+             run('λ', 170.0, 50.0, font='PAGE/G5', a=a6), run(' min', 170.0 + a6, 50.0, a=adv(' m', 12.0) + 9.0)]
+    (out_dir / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
+    (out_dir / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
+
+
+# Self-contained: compose_fixture() stops the file on ANY earlier failure, so this section prepares and composes
+# itself and gates its later checks on ITS OWN preconditions only - its verdicts are then visible even when an
+# earlier section is red (as on the pre-M6 composer, where S1-S4 are).
+m6_out, _, m6_blocks, m6_entries, m6_tr = prepare_fixture(TMP.name, 'stix6', plant_stix6, STIX6_TR)
+m6_c = run_compose(m6_out, m6_tr)
+m6_ok = (m6_c.returncode == 0 and (m6_out / 'compose-report.json').exists()
+         and (m6_out / 'translated.svg').exists())
+check('stix6: PRECONDITION compose exits 0 and writes its report + SVG', m6_ok,
+      f'exit {m6_c.returncode}: {m6_c.stderr.strip()[-600:]}')
+if not m6_ok:
+    finish()
+m6_rep = json.loads((m6_out / 'compose-report.json').read_text())
+m6_svg = (m6_out / 'translated.svg').read_text()
+_m6_pre = len(fails)
+m6_keys = collections.Counter(e['key'] for e in m6_entries)
+m6_bi = {e['key']: i for i, e in enumerate(m6_entries)}
+m6_by_key = {e['key']: b for b, e in zip(m6_blocks, m6_entries)}
+check('M6-0 PRECONDITION each M6 plant is its OWN block of the planted runs: (a) one run each, (b) two runs each '
+      '(an inked run, then a whitespace-only one), (c)/(d) two runs each; (a)/(b) kept, (c)/(d) translated',
+      all(m6_keys[k] == 1 for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT))
+      and [len(m6_by_key.get(k, ())) for k in (K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG, K6_SERIF, K6_TT)]
+      == [1, 1, 2, 2, 2, 2]
+      and collections.Counter(m6_rep.get('runExact', [])) >= collections.Counter([K6_BOLD, K6_BI, K6_BLANK_IT,
+                                                                                    K6_BLANK_REG])
+      and K6_SERIF in m6_rep['translated'] and K6_TT in m6_rep['translated'],
+      f"keys={sorted(m6_keys)} runExact={m6_rep.get('runExact')!r} translated={m6_rep.get('translated')!r}")
+if len(fails) > _m6_pre:
+    finish()
+m6_els = elements(m6_svg)
+m6_stix = m6_rep.get('stix', {})
+check('M6-a1 the Type 1 STIXGeneral-Bold kept run is ONE <text> in FigSym 700/normal',
+      len(find(m6_els, K6_BOLD, font_family='FigSym', font_weight='700')) == 1
+      and not find(m6_els, K6_BOLD, font_style='italic'),
+      repr([(t, a.get('font-family'), a.get('font-weight'), a.get('font-style')) for t, a, _ in m6_els if t == K6_BOLD]))
+check('M6-a2 the Type 1 STIXGeneral-BoldItalic kept run is ONE <text> in FigSym 700/italic',
+      len(find(m6_els, K6_BI, font_family='FigSym', font_weight='700', font_style='italic')) == 1,
+      repr([(t, a.get('font-family'), a.get('font-weight'), a.get('font-style')) for t, a, _ in m6_els if t == K6_BI]))
+m6_faces = re.findall(r"@font-face\{font-family:'FigSym';font-weight:(\d+);font-style:(\w+);", m6_svg)
+check('M6-a3 the SVG embeds FigSym 400/normal, 700/normal, 400/italic, 700/italic - one face each, in that order',
+      m6_faces == [('400', 'normal'), ('700', 'normal'), ('400', 'italic'), ('700', 'italic')], repr(m6_faces))
+check('M6-a4 stix.drawn names the four kept blocks with a drawn FigSym run (Bold, BoldItalic, the inked Italic '
+      'x and the Regular =)',
+      m6_stix.get('drawn') == sorted([K6_BOLD, K6_BI, K6_BLANK_IT, K6_BLANK_REG]), repr(m6_stix.get('drawn')))
+blank_it = [(t, a.get('font-family'), a.get('font-style')) for t, a, _ in m6_els
+            if t.strip() == '' and a.get('y') == f'{PAGE_H - 140.0:.3f}']
+blank_reg = [(t, a.get('font-family'), a.get('font-style')) for t, a, _ in m6_els
+             if t.strip() == '' and a.get('y') == f'{PAGE_H - 110.0:.3f}']
+check('M6-b0 PRECONDITION each blank run is drawn as its own whitespace-only <text>',
+      len(blank_it) == 1 and len(blank_reg) == 1, repr((blank_it, blank_reg)))
+check('M6-a5 the inked Type 1 STIXGeneral-Italic x the blank Italic run follows is ONE <text> in FigSym italic',
+      len(find(m6_els, 'x', font_family='FigSym', font_style='italic')) == 1,
+      repr([(t, a.get('font-family'), a.get('font-style')) for t, a, _ in m6_els if t == 'x']))
+check('M6-b1 BLANK RULE (CONTROL): the blank Italic run stays FigIS italic (a blank run selects no new face)',
+      blank_it == [('  ', 'FigIS', 'italic')], repr(blank_it))
+check('M6-b2 BLANK RULE (CONTROL): the blank Regular run stays FigSym, as under ⑥a (v2 moved it to FigIS)',
+      blank_reg == [('  ', 'FigSym', None)], repr(blank_reg))
+# x > 150: the fixture's own labels end by x=146, and one of them shares the 80 pt baseline.
+serif_els = [(t, a) for t, a, _ in m6_els if a.get('y') == f'{PAGE_H - 80.0:.3f}' and float(a['x']) > 150.0]
+tt_els = [(t, a) for t, a, _ in m6_els if a.get('y') == f'{PAGE_H - 50.0:.3f}' and float(a['x']) > 150.0]
+check('M6-c0 PRECONDITION the translated λ labels are drawn as a λ segment then the rest, on the source baseline',
+      [t for t, _ in serif_els][:1] == ['λ'] and ''.join(t for t, _ in serif_els) == STIX6_TR[K6_SERIF]
+      and [t for t, _ in tt_els][:1] == ['λ'] and ''.join(t for t, _ in tt_els) == STIX6_TR[K6_TT],
+      repr(([t for t, _ in serif_els], [t for t, _ in tt_els])))
+if not ([t for t, _ in serif_els][:1] == ['λ'] and len(serif_els) >= 2 and [t for t, _ in tt_els][:1] == ['λ']
+        and len(tt_els) >= 2):
+    finish()
+import figsym as _figsym  # noqa: E402 - the composer's own measure, read here only to compare with
+lam_c, lam_d = serif_els[0][1], tt_els[0][1]
+gap_c = float(serif_els[1][1]['x']) - float(lam_c['x'])
+gap_d = float(tt_els[1][1]['x']) - float(lam_d['x'])
+# getattr: on a composer with no figsym.advance the checks below report red instead of the file crashing.
+_fs_advance = getattr(_figsym, 'advance', lambda *_: float('nan'))
+fs_adv = _fs_advance('λ', (False, True), float(lam_c['font-size']))
+fs_adv_d = _fs_advance('λ', (False, True), float(lam_d['font-size']))
+check('M6-c1 HALF B: the Type 1 Italic λ segment is drawn in FigSym italic',
+      (lam_c.get('font-family'), lam_c.get('font-style')) == ('FigSym', 'italic'), repr(lam_c))
+check('M6-c2 ... and measured with figsym.advance: the next segment starts exactly that far along (0.002 pt)',
+      abs(gap_c - fs_adv) < 0.002, f'gap {gap_c:.4f} vs figsym.advance {fs_adv:.4f}')
+check('M6-c3 stix.layout names it: [{key, block, text λ, face [False, True]}] - and nothing for the TrueType label',
+      m6_stix.get('layout') == [dict(key=K6_SERIF, block=m6_bi[K6_SERIF], text='λ', face=[False, True])],
+      repr(m6_stix.get('layout')))
+check('M6-d1 the TrueType Italic λ stays FigIS italic',
+      (lam_d.get('font-family'), lam_d.get('font-style')) == ('FigIS', 'italic'), repr(lam_d))
+check('M6-d2 CONTROL ... and is NOT measured with figsym.advance (its pen gap differs from it by more than 0.05 pt): '
+      'the M6-c2 equality is a property of half B, not of the two faces',
+      abs(gap_d - fs_adv_d) > 0.05, f'gap {gap_d:.4f} vs figsym.advance {fs_adv_d:.4f}')
 
 _, _, s_blocks, s_entries, s_rep, s_svg = compose_fixture(TMP.name, 'stix', plant_stix, STIX_TR)
 s_keys = collections.Counter(e['key'] for e in s_entries)
@@ -562,20 +684,22 @@ if fails:
     finish()
 s_stix = s_rep.get('stix', {})
 s_els = elements(s_svg)
-check("S1 stix.drawn is EXACTLY the covered STIXGeneral-Regular kept run's key",
-      s_stix.get('drawn') == [K_S_DRAWN], repr(s_stix))
+check("S1 stix.drawn is EXACTLY the covered STIXGeneral-Regular kept run's key AND (M6) the Type 1 STIXGeneral-Italic one",
+      s_stix.get('drawn') == sorted([K_S_DRAWN, K_S_ITALIC]), repr(s_stix))
 check('S2 stix.skipped is EXACTLY: cmap (Regular, a character outside the cmap), other-face (STIXGeneral-Italic '
       'AND STIXSizeOneSym-Regular), translated (a Regular run in a translated block) - and NOTHING for the '
       'MathematicalPi run or the fixture\'s own Helvetica labels',
       collections.Counter((s['key'], s['reason']) for s in s_stix.get('skipped', []))
-      == collections.Counter([(K_S_CMAP, 'cmap'), (K_S_ITALIC, 'other-face'), (K_S_SIZEONE, 'other-face'),
+      == collections.Counter([(K_S_CMAP, 'cmap'), (K_S_SIZEONE, 'other-face'), (K_S_TTIT, 'unverified-object'),
                               (K_S_TR, 'translated')]), repr(s_stix.get('skipped')))
-check('S3 the ONLY <text> drawn in FigSym is the covered run',
-      [t for t, a, _ in s_els if a.get('font-family') == 'FigSym'] == [K_S_DRAWN],
+check('S3 the ONLY <text> drawn in FigSym are the covered Regular run and (M6) the Type 1 Italic run',
+      sorted(t for t, a, _ in s_els if a.get('font-family') == 'FigSym') == sorted([K_S_DRAWN, K_S_ITALIC]),
       repr([(t, a.get('font-family')) for t, a, _ in s_els]))
-check('S4 each other kept plant is ONE <text> drawn in FigIS (the italic one italic)',
+check('S4 each other kept plant is ONE <text> drawn in FigIS; (M6) the Type 1 Italic one is FigSym italic and the '
+      'TrueType Italic one stays FigIS italic',
       all(len(find(s_els, k, font_family='FigIS')) == 1 for k in (K_S_CMAP, K_S_SIZEONE, K_S_MATHPI))
-      and len(find(s_els, K_S_ITALIC, font_family='FigIS', font_style='italic')) == 1,
+      and len(find(s_els, K_S_ITALIC, font_family='FigSym', font_style='italic')) == 1
+      and len(find(s_els, K_S_TTIT, font_family='FigIS', font_style='italic')) == 1,
       repr([(t, a.get('font-family'), a.get('font-style')) for t, a, _ in s_els if t in STIX_KEPT]))
 s_tr_els = [(t, a) for t, a, _ in s_els if 'Samtals' in t]
 check('S5 the translated STIX block draws its VALUE in FigIS, and its English is gone',
@@ -600,8 +724,10 @@ check('S7 CONTROL the planted STIX figure with FIGTEXT_STIX_FONT missing REFUSES
       and 'FontUnavailable' in s_bad.stderr,
       f'exit {s_bad.returncode}; stderr tail: {s_bad.stderr.strip()[-300:]!r}')
 _, _, _, _, n_rep, n_svg = compose_fixture(TMP.name, 'plain-nofont', None, PLAIN_TR, extra_env=S_MISSING)
-check('S8 a figure with NO STIX run composes with the same missing font: report written, stix empty, no FigSym',
-      n_rep.get('stix') == {'drawn': [], 'skipped': []} and 'FigSym' not in n_svg, repr(n_rep.get('stix')))
+check('S8 a figure with NO STIX run composes with the same missing font: report written, stix empty (M6: its '
+      '`layout` list too), no FigSym',
+      n_rep.get('stix') == {'drawn': [], 'skipped': [], 'layout': []} and 'FigSym' not in n_svg,
+      repr(n_rep.get('stix')))
 check('S9 this process\'s own FIGTEXT_STIX_FONT is unchanged (the variable went to children only)',
       os.environ.get('FIGTEXT_STIX_FONT') == STIX_ENV_BEFORE, repr(os.environ.get('FIGTEXT_STIX_FONT')))
 

@@ -105,12 +105,23 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
     # appended AFTER every FigIS rule, and only when some item actually uses it - a figure with
     # no eligible run therefore emits exactly today's rules in today's order (case T1). Imported
     # lazily so a box without the STIX font can still compose figures without STIX (T3).
+    # §C140 '6' M6 ([USER] R-12): ONE FigSym rule per (bold, italic) face some item uses, in the FigIS
+    # order above, each the renamed subset of that official STIX face (figsym.subset_woff2_face) - so a
+    # Regular-only figure still emits exactly one 400/normal rule (test_svgout.py Y-ctl), and the licence
+    # stays ONE FigSym <metadata> naming every face embedded (Y3).
     stix_chars = {c for it in items if it.get('family') == 'FigSym' for c in it['text']}
-    if stix_chars:
+    stix_keys = []
+    for bold, italic in ((False, False), (True, False), (False, True), (True, True)):
+        fchars = {c for it in items if it.get('family') == 'FigSym' and bool(it['bold']) is bold
+                  and bool(it.get('italic')) is italic for c in it['text']}
+        if not fchars:
+            continue
         import figsym
-        b64 = base64.b64encode(figsym.subset_woff2(stix_chars)).decode('ascii')
+        stix_keys.append((bold, italic))
+        b64 = base64.b64encode(figsym.subset_woff2_face(fchars, (bold, italic))).decode('ascii')
         faces.append(
-            f"@font-face{{font-family:'{figsym.FAMILY}';font-weight:400;font-style:normal;"
+            f"@font-face{{font-family:'{figsym.FAMILY}';font-weight:{700 if bold else 400};"
+            f"font-style:{'italic' if italic else 'normal'};"
             f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
         )
 
@@ -131,7 +142,7 @@ def write_svg(artwork_svg, out_path, items, page_h, raster_png=None):
     if figis_keys:
         parts.append(figis.metadata_element(figis_keys))
     if stix_chars:
-        parts.append(figsym.metadata_element())
+        parts.append(figsym.metadata_element(tuple(stix_keys)))
     for it in items:
         # PDF y-up -> SVG y-down. Rotation flips sign with the axis.
         x, y = it['x'] + 0.0, page_h - it['y']
