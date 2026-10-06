@@ -196,7 +196,8 @@ export function verdict(tally, enumeratedCount, extra = {}) {
   // PURPOSE. Same channel and same stance as the NOTE above: a property of figures inside
   // `translated` (for `held`, also a published `copied-textless`), counted over the records.
   // ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
-  // as plain text, an overhang at the 7.5 pt floor (R4/R5), a localised number in the house style
+  // as plain text, an overhang at the shrink floor (figlayout.size_steps; R4/R5 as amended by
+  // R-16), a localised number in the house style
   // (R6), a failed detection laid out as open — so the figure ships, and the report names what to
   // look at. Failing on any of them would be the always-red exit code R9 rejects.
   const composeNotes = [

@@ -26,7 +26,9 @@ line:
     len(lines) == 1 and size == sz0 and overflow is None and step in ACCEPT_STEPS ('i', 'ii', 'fit')
 Displacement is allowed (open step ii, the cell clamp); shrink, wrap and overhang are refused - a held
 value is a ruling measured to fit, and a size change is a fidelity change for [USER] to decide. Exact
-float equality is safe: figlayout.size_steps(sz0)[0] IS sz0. figlayout sets `overflow` on every
+float equality is safe: figlayout.size_steps(sz0)[0] IS sz0. R-16 ([USER] 2026-10-05) lengthens the ladder
+below sz0 for a source under 7.5 pt, but this clause still refuses every shrink, so a held line that fits
+only shrunk is refused as before (test_heldplan HP11c2/HP11c3). figlayout sets `overflow` on every
 'floor-overflow' and never on 'i' / 'ii' / 'fit', so the step and overflow clauses are belts for each
 other; both are kept, as the design says.
 numloc is NEVER applied to a changed line: the value already carries [USER]'s separators, and

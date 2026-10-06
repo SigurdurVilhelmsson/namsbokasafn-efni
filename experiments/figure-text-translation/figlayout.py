@@ -24,10 +24,13 @@ INPUTS
              compose.py builds them on figtext.visual_ink - the visual lines without a folded U+0020-only
              line's runs, so `n_src` is len(figtext.visual_lines) - §C140 ㉑, '6' M2).
 
-RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
-  sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the
-             0.25 grid the grid misses the floor, so floor_eff is appended as the last step. A label the source
-             set below the floor is never enlarged and never shrunk.
+RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E); R-16, [USER] 2026-10-05)
+  sizes      sz0, sz0-0.25, ... down to floor_eff inclusive (EPS slack); when sz0 is off the 0.25 grid, or the
+             floor is, the grid misses floor_eff, so it is appended as the last step. floor_eff is the floor (R4's
+             7.5) for a label the source set at or above it, and SUB_FLOOR_RATIO x sz0 (0.8, unrounded) for one
+             the source set below it (R-16, amending R4 and R5) - so a label is never enlarged, and one set below
+             the floor may shrink to 0.8 x its own size. Every 'floor' below means floor_eff: R5's named overhang
+             (floor-overflow, (v)) is drawn at it.
   lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size. Every fit test of the count/size search uses
              it - and a cell's n_src count is ALSO tested at the source pitch (§C140 '6' M3, SOURCE_ROWS; cell (R3)
              below); the cell's vertical clamp (vdisp), which runs after the partition, reads the lead actually
@@ -148,6 +151,8 @@ OUTPUT  Layout dict:
 ASC, DESC = 0.73, 0.21
 EPS = 1e-9
 STEP = 0.25
+SUB_FLOOR_RATIO = 0.8    # R-16 ([USER] 2026-10-05, amending R4/R5): a label whose source size is below the floor may
+                         # shrink to this x sz0; 1.0 = R4 as of 2026-09-13. Read at call time, like the gates below.
 LEAD = 1.222
 PITCH_SRC = True          # §C140 M4 (P1v) gate: a label drawn on the source's own line count is drawn on its rows
 PITCH_SRC_MIN = 1.0       # ... when sz0 * LEAD would misplace the outer lines' span by more than this (pt)
@@ -178,14 +183,22 @@ def clamp_shift(e0, e1, lo, hi):
 
 
 def size_steps(sz0, floor):
-    """sz0, sz0-0.25, ... down to min(floor, sz0) inclusive. Accumulated exactly as the prototype did.
+    """sz0, sz0-0.25, ... down to floor_eff inclusive. Accumulated exactly as the prototype did.
 
-    The floor itself is ALWAYS the last step: when sz0 is not on the 0.25 pt grid (8.9 -> ... 7.65) the grid
-    never lands on it, and a label that fits at 7.5 would otherwise be reported as overflowing at 7.65."""
-    floor_eff = min(floor, sz0)
+    floor_eff is `floor` (R4's 7.5) when sz0 >= floor (EPS slack), else SUB_FLOOR_RATIO * sz0 (R-16, [USER]
+    2026-10-05: "shrink to 0.8 x source size, only where the source is below 7.5 pt"; amends R4 and R5). The
+    threshold is this `floor` argument, not a second 7.5, and the product is never rounded: the measured arm
+    (r2 of the 2026-10-05 composer design) used the bare product, and font-size is serialised at 3 decimals
+    anyway. SUB_FLOOR_RATIO 1.0 gives [sz0] for every sz0 below the floor, the ladder before R-16.
+
+    floor_eff itself is ALWAYS the last step: when sz0 is not on the 0.25 pt grid (8.9 -> ... 7.65), or floor_eff
+    is not (4.0 -> ... 3.25, then 3.2), the grid never lands on it, and a label that fits there would otherwise be
+    reported as overflowing one grid step above it. The loop and the append share EPS, so the ladder is never
+    empty and always starts at sz0 (never enlarged)."""
+    floor_eff = floor if sz0 >= floor - EPS else SUB_FLOOR_RATIO * sz0
     out = []
     s = sz0
-    while s >= floor_eff - 1e-9:
+    while s >= floor_eff - EPS:
         out.append(s)
         s -= STEP
     if out[-1] > floor_eff + EPS:

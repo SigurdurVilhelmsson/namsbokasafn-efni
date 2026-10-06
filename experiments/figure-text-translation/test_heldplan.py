@@ -49,7 +49,12 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        arm) and (e) a cell wrap to 2 lines at sz0, step 'fit' - only `len(lines) == 1` refuses it;
        (b) an open shrink (step iii-anchor, which the step clause catches too) and (f) a CELL shrink,
        step 'fit' at 8.75 pt - only `size == sz0` refuses it; (c) a 7 pt open label overflowing at its
-       own floor; (d1) a stubbed decide returning 'floor-overflow' with overflow None at sz0 on one line
+       own floor, which is 0.8 x 7.0 since R-16 ([USER] 2026-10-05: a source below 7.5 pt may shrink to
+       0.8 x its size); (c2) an open and (c3) a CELL 7 pt label that fits only BELOW its source size under
+       R-16 - a held value is still never shrunk, and in the cell only `size == sz0` refuses it. Both are
+       red before R-16 in their DETAIL only (they refused at 7.0 then); what makes c3 the size clause's
+       killer is a planted mutant without that clause, which plans it (G13 evidence, in the T8 report);
+       c3-pre is its CONTROL. (d1) a stubbed decide returning 'floor-overflow' with overflow None at sz0 on one line
        - only the step clause; (d2) a stubbed decide returning step 'i' with an overflow - only the
        overflow clause. figlayout sets `overflow` on every 'floor-overflow' and never on 'i'/'ii'/'fit',
        so a stub is the only way to make those two clauses the deciding one (the design keeps them as
@@ -456,12 +461,29 @@ def hp11():
                                                                          'size': 8.75, 'lines': 1}, why(e))
     check('HP11b CONTROL the same container takes a narrower sentinel at source size',
           refused(lambda: plan(one, 'QZXQZ', PF, container=tight)) is None)
-    seven = [run('To', 7.0, 100.0, 100.0, 8.0)]                 # sz0 7 = its own floor; anchor 104
+    seven = [run('To', 7.0, 100.0, 100.0, 8.0)]                 # sz0 7, below R4's floor; anchor 104
     narrow = dict(ROOMY, FL=104.0 - 6.0, FR=104.0 + 6.0, room_up=0.0, room_down=0.0)
+    # R-16: its ladder now runs to 0.8 x 7.0; 'QZXQZX' is 3 x size = 16.8 there, (ii) budget 8 -> still v-overflow.
     e = refused(lambda: plan(seven, 'QZXQZX', PF, container=narrow))
-    check('HP11c a 7 pt open label overflowing at its own floor refuses (v-overflow, 7.0 pt, one line)',
+    check('HP11c a 7 pt open label overflowing at its R-16 floor refuses (v-overflow, 0.8 x 7.0 pt, one line)',
           e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'v-overflow',
-                                                                         'size': 7.0, 'lines': 1}, why(e))
+                                                                         'size': 0.8 * 7.0, 'lines': 1}, why(e))
+    # HP11c2/c3: R-16 lengthens the ladder below sz0, so a held 7 pt line can now FIT shrunk - and must still refuse.
+    # 'QZX' = 1.5 x size: 10.5 at 7.0, 9.75 at 6.5, 9.375 at 6.25; both containers are 13.5 wide -> budget 9.5.
+    mid = dict(ROOMY, FL=104.0 - 6.75, FR=104.0 + 6.75, room_up=0.0, room_down=0.0)
+    e = refused(lambda: plan(seven, 'QZX', PF, container=mid))
+    check('HP11c2 a 7 pt open label that fits only shrunk below its source size (R-16) refuses (iii-anchor, 6.25 pt)',
+          e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'iii-anchor',
+                                                                         'size': 6.25, 'lines': 1}, why(e))
+    mid_cell = {'cls': 'cell', 'why': 'test-cell', 'L': 104.0 - 6.75, 'R': 104.0 + 6.75, 'D': 50.0, 'U': 150.0,
+                'src_left_margin': 5.0, 'src_right_margin': 5.0, 'src_up_margin': 5.0, 'src_down_margin': 5.0,
+                'align': 'center', 'align_why': 'test'}
+    e = refused(lambda: plan(seven, 'QZX', PF, container=mid_cell))
+    check('HP11c3 a 7 pt CELL fit only below its source size (step fit, 6.25 pt, R-16) refuses: only size == sz0',
+          e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'fit',
+                                                                         'size': 6.25, 'lines': 1}, why(e))
+    check('HP11c3-pre CONTROL the same cell takes a narrower held value at source size',
+          refused(lambda: plan(seven, 'QZ', PF, container=mid_cell)) is None)
     check('HP11d-pre CONTROL MattType QZX in the roomy container is planned at 9.0, one line, no overflow',
           refused(lambda: plan(MATT, 'QZX', MATT_F)) is None)
     e = _stubbed(lambda: plan(MATT, 'QZX', MATT_F), {'step': 'floor-overflow'})

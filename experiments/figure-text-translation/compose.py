@@ -20,7 +20,7 @@ with an edited identity label; no switch is needed).
 §C140 ② ③ ⑨ (spec docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md):
 a TRANSLATED straight label is laid out by two pure helpers and drawn here - `figcontainers` says
 what it sits in (box / table cell / open with a free box), `figlayout.decide` chooses its lines,
-size (floor 7.5 pt), anchor and any named overhang, and `figscripts` carries the source's
+size (shrink floor: `figlayout.size_steps`), anchor and any named overhang, and `figscripts` carries the source's
 sub/superscripts and italics onto the value, one <text> per styled segment. Widths are LINEAR
 (hint metrics off). A KEPT label is drawn run-exact with Icelandic number separators (`numloc`),
 except under --control. The report gains `unformatted`, `overflow`, `localized` and

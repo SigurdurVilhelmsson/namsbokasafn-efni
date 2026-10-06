@@ -149,7 +149,8 @@ REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artw
 # The composer's NOTES: lists compose-report.json carries beside its key sets, copied into
 # compose.json on success so the driver can name them without reading a second file.
 #   unformatted      formula formatting a translated label could not carry (§C140 ②)
-#   overflow         a word drawn at the floor that overhangs its space (§C140 ③, R5)
+#   overflow         a word drawn at the floor that overhangs its space (§C140 ③, R5; the floor is
+#                    `figlayout.size_steps`'s - R4's 7.5 pt, or 0.8 x a smaller source size, R-16)
 #   localized        English-kept labels drawn with a decimal comma (§C140 ⑨)
 #   containerErrors  blocks whose container detection failed, laid out as open (§C140 ③)
 #   held             labels drawn from heldBlockValues ([USER]'s values), {key, block, changed},
