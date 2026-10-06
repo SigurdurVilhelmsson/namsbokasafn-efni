@@ -58,6 +58,10 @@ const SIDECAR_VERSION = 1;
  * the media); otherwise bump. ⚠️ A bump's recompose must be bare `--stale` (never `--force`, which
  * hides whether every sidecar went stale) and changes ONE sidecar field, `composedVersion`; a
  * sidecar's `composerVersion` stays the version its `renderHash` was hashed under.
+ * The bump commit also re-pins tools/__tests__/figure-text-config.test.js's COMPOSER_TABLES_PIN for the
+ * new version (§C140 '6' G6): it fingerprints the config tables that change pixels outside renderHash
+ * (figure-text-config.js COMPOSER_PIXEL_TABLES) for the figures with a sidecar, and goes red when one
+ * of them changes without a bump.
  * ⚠️ WHAT A BARE `--stale` REACHES CHANGED WITH ㊴ (#529): it selects a figure with a sidecar file
  * OR an image-mapping row, so it reaches the §C159 textless figures too, and it never buys (a
  * selected figure with no sidecar that classifies `translated` is refused `skipped-unbought`).

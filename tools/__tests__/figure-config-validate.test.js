@@ -1170,6 +1170,348 @@ describe("validateFigureConfig — anchorExclusions (§C140 '6', R-20)", () => {
   });
 });
 
+// §C140 '6' R-15a — artworkEdits: {basename: [op, ...]}, [USER]'s operator-level edits to the STAGED
+// artwork PDF, applied by figure-prepare.py (artworkedits.py). A SECOND implementation of
+// artworkedits.py's `for_figure` shape check (change both or neither; AE-10 pins both to one literal).
+// The corpus rules mirror heldBlockValues' (an edit is drawn only by a recompose): no overlap with
+// retiredFigures, keptCopies or supersededArtwork; an `.svg` mapping row and a translated copy; an
+// artworkPins overlap is allowed; NO bought-key rule. CNX_Other is chem's image in no other table, so
+// every case ADDS the table and its state to Part 1's baseline. Selectors are matched at prepare time,
+// never here.
+const AE_PATH = { paint: 'fill', colour: ['k', 0.2, 0.04, 0.4, 0], bbox: [120, 50, 200, 70] };
+const AE_SHAFT = {
+  paint: 'stroke',
+  colour: ['K', 0.5, 0.1, 1, 0.4],
+  bbox: [220, 120, 226.652, 120],
+};
+const AE_LINE = { text: 'Bravo', origin: [30, 80] };
+const aeOps = () => [
+  { op: 'move-paths', dx: -15, select: [AE_PATH], note: 'a free-text note' },
+  { op: 'move-edge', edge: 'left', to: 110, select: [AE_PATH] },
+  { op: 'move-line-end', edge: 'left', dx: -6, select: [AE_SHAFT] },
+  { op: 'move-text', dx: 5, select: [AE_LINE] },
+];
+const aeCfg = () => ({ ...baseCfg(), artworkEdits: { CNX_Other: aeOps() } });
+const aeCorpus = () => ({
+  ...baseCorpus(),
+  editState: { CNX_Other: { rows: 1, translatedCopies: [`CNX_Other${S}.svg`], svgRows: 1 } },
+});
+const aeOf = (c, i) => c.artworkEdits.CNX_Other[i];
+
+describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
+  it('a valid four-op entry passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(aeCfg(), aeCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'an artworkEdits table that is not an object',
+      (c) => {
+        c.artworkEdits = [];
+      },
+      null,
+      /artworkEdits must be an object/,
+    ],
+    [
+      'an entry that is not a list',
+      (c) => {
+        c.artworkEdits.CNX_Other = aeOf(c, 0);
+      },
+      null,
+      /artworkEdits\.CNX_Other must be a non-empty list of ops/,
+    ],
+    [
+      'an empty entry',
+      (c) => {
+        c.artworkEdits.CNX_Other = [];
+      },
+      null,
+      /artworkEdits\.CNX_Other must be a non-empty list of ops/,
+    ],
+    [
+      'an unknown op',
+      (c) => {
+        aeOf(c, 0).op = 'move-all';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] must be an object whose op is one of move-paths, move-edge, move-text, move-line-end/,
+    ],
+    [
+      'an unknown field',
+      (c) => {
+        aeOf(c, 0).colour = 'red';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] has unknown field\(s\) colour/,
+    ],
+    [
+      'move-line-end with `to` (it takes dx only)',
+      (c) => {
+        aeOf(c, 2).to = 214;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\] has unknown field\(s\) to/,
+    ],
+    [
+      'a missing field',
+      (c) => {
+        delete aeOf(c, 0).dx;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] lacks dx/,
+    ],
+    [
+      'move-line-end without an edge',
+      (c) => {
+        delete aeOf(c, 2).edge;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\] lacks edge/,
+    ],
+    [
+      'a note that is not a string',
+      (c) => {
+        aeOf(c, 0).note = 5;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.note must be a string/,
+    ],
+    [
+      'move-edge with a bad edge',
+      (c) => {
+        aeOf(c, 1).edge = 'top';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.edge must be left or right/,
+    ],
+    [
+      'move-line-end with a bad edge',
+      (c) => {
+        aeOf(c, 2).edge = 'start';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\]\.edge must be left or right/,
+    ],
+    [
+      'move-edge with both to and dx',
+      (c) => {
+        aeOf(c, 1).dx = 1;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\] needs exactly one of to \/ dx/,
+    ],
+    [
+      'move-edge with neither to nor dx',
+      (c) => {
+        delete aeOf(c, 1).to;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\] needs exactly one of to \/ dx/,
+    ],
+    [
+      'a dx that is not a number',
+      (c) => {
+        aeOf(c, 0).dx = '-15';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.dx must be a number/,
+    ],
+    [
+      'a move-line-end dx that is not a number',
+      (c) => {
+        aeOf(c, 2).dx = true;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\]\.dx must be a number/,
+    ],
+    [
+      'an empty select',
+      (c) => {
+        aeOf(c, 0).select = [];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select must be a non-empty list/,
+    ],
+    [
+      'a path selector with the wrong field set',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, text: 'x' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\] must have exactly bbox, colour, paint/,
+    ],
+    [
+      'a path selector whose paint is not fill or stroke',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, paint: 'fill+stroke' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.paint must be fill or stroke/,
+    ],
+    [
+      'a path selector whose colour has no operator',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, colour: [0.2, 0.04, 0.4, 0] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.colour must be \[operator, numbers\.\.\.\]/,
+    ],
+    [
+      'a path selector whose bbox has x0 > x1',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, bbox: [200, 50, 120, 70] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.bbox must be \[x0, y0, x1, y1\] with x0<=x1, y0<=y1/,
+    ],
+    [
+      'a text selector with an empty text',
+      (c) => {
+        aeOf(c, 3).select = [{ ...AE_LINE, text: '' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.select\[0\]\.text must be a non-empty string/,
+    ],
+    [
+      'a text selector whose origin is not [x, y]',
+      (c) => {
+        aeOf(c, 3).select = [{ ...AE_LINE, origin: [30] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.select\[0\]\.origin must be \[x, y\]/,
+    ],
+    [
+      'a basename that is in no book',
+      (c) => {
+        c.artworkEdits = { CNX_Nowhere: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Nowhere names an image in 0 books' source/,
+    ],
+    [
+      "a basename that is in two books' source",
+      () => {},
+      (k) => {
+        k.basenamesByBook.bio.add('CNX_Other');
+      },
+      /artworkEdits\.CNX_Other names an image in 2 books' source/,
+    ],
+    [
+      'two basenames that fold to the same key',
+      (c) => {
+        c.artworkEdits.cnx_other = aeOps();
+      },
+      null,
+      /artworkEdits: CNX_Other and cnx_other fold to the same key/,
+    ],
+    [
+      'a basename that is also in keptCopies',
+      (c) => {
+        c.artworkEdits = { CNX_Kept: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Kept is also in keptCopies \(CNX_Kept\) — that figure is never composed/,
+    ],
+    [
+      'a basename that is also in retiredFigures',
+      (c) => {
+        c.artworkEdits = { CNX_Ret: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Ret is also in retiredFigures/,
+    ],
+    [
+      'a basename that is also in supersededArtwork',
+      (c) => {
+        c.artworkEdits = { CNX_Sup: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Sup is also in supersededArtwork/,
+    ],
+    [
+      'a figure with no image-mapping row naming an .svg',
+      () => {},
+      (k) => {
+        k.editState.CNX_Other.svgRows = 0;
+      },
+      /artworkEdits\.CNX_Other has no image-mapping row naming an \.svg/,
+    ],
+    [
+      'a figure with no translated copy',
+      () => {},
+      (k) => {
+        k.editState.CNX_Other.translatedCopies = [];
+      },
+      /artworkEdits\.CNX_Other has no translated copy at the top of its book's media\//,
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = aeCfg();
+    const k = aeCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent artworkEdits table (an absent table is an empty one)',
+      (c) => {
+        delete c.artworkEdits;
+      },
+    ],
+    [
+      'an empty artworkEdits table',
+      (c) => {
+        c.artworkEdits = {};
+      },
+    ],
+    [
+      'a figure that is also pinned (a pinned figure IS composed; its selectors match the pinned artwork)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+      },
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg) => {
+    const c = aeCfg();
+    const k = aeCorpus();
+    k.editState = { CNX_Pin: k.editState.CNX_Other };
+    mutateCfg(c);
+    expect(validateFigureConfig(c, k)).toEqual([]);
+  });
+
+  // Part 1's and the held fixtures carry no editState: the corpus rules are skipped, the shape rules are not.
+  it('CONTROL: a corpus with no editState at all passes a valid entry and still refuses a bad edge', () => {
+    expect(validateFigureConfig(aeCfg(), baseCorpus())).toEqual([]);
+    const c = aeCfg();
+    aeOf(c, 1).edge = 'top';
+    expect(validateFigureConfig(c, baseCorpus()).join('\n')).toMatch(/edge must be left or right/);
+  });
+
+  // 🔴 THE SAME LITERAL AS experiments/figure-text-translation/test_artworkedits.py (AE-10): the op
+  // table {op: [required, optional]} and the selector field sets. Change both or neither. Imported
+  // lazily so that, before the table existed, only THIS case was red rather than the whole file.
+  it('AE-10: AE_OPS and AE_SELECT_FIELDS are the literal artworkedits.py OPS is pinned to', async () => {
+    const mod = await import('../lib/figure-config-validate.js');
+    const sorted = (a) => [...a].sort();
+    const ops = Object.fromEntries(
+      Object.entries(mod.AE_OPS ?? {}).map(([k, [req, opt]]) => [k, [sorted(req), sorted(opt)]])
+    );
+    expect(ops).toEqual({
+      'move-edge': [
+        ['edge', 'op', 'select'],
+        ['dx', 'note', 'to'],
+      ],
+      'move-line-end': [['dx', 'edge', 'op', 'select'], ['note']],
+      'move-paths': [['dx', 'op', 'select'], ['note']],
+      'move-text': [['dx', 'op', 'select'], ['note']],
+    });
+    expect({
+      path: sorted(mod.AE_SELECT_FIELDS?.path ?? []),
+      line: sorted(mod.AE_SELECT_FIELDS?.line ?? []),
+    }).toEqual({ path: ['bbox', 'colour', 'paint'], line: ['origin', 'text'] });
+  });
+});
+
 // §C140 ㊾ D5(a), a skeptic's finding (2026-10-03). JSON.parse keeps only the LAST of two equal keys,
 // so `validateFigureConfig`, which reads the PARSED object, cannot see a figure's heldBlockValues entry
 // written twice, or a block key repeated inside one: the first value vanishes with no error and its
@@ -1508,6 +1850,31 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
     expect(() =>
       buildValidatorCorpus(root, { anchorExclusions: { CNX_Svg: { 'a|b': R } } })
     ).toThrow(/CNX_Svg\.is\.json.*not valid JSON/);
+  });
+
+  // §C140 '6' R-15a — editState is heldState WITHOUT the sidecar: an edited figure is measured by
+  // copyState plus its `.svg` rows, and its sidecar is never read (an edit is not a label, so a bought
+  // sidecar is fine - FoodLabel's is the point). The unparsable sidecar planted here would throw if it were.
+  it('reports each edited figure’s .svg rows and copies, reads no sidecar, and the validator names each gap', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    const op = [{ op: 'move-paths', dx: 1, select: [AE_PATH] }];
+    const cfgE = {
+      artworkEdits: { CNX_Svg: op, CNX_Png: op, CNX_Bare: op, CNX_Absent: op },
+    };
+    const k = buildValidatorCorpus(root, cfgE);
+    expect(k.editState).toEqual({
+      CNX_Svg: { rows: 1, translatedCopies: [`CNX_Svg${S}.svg`], svgRows: 1 },
+      CNX_Png: { rows: 1, translatedCopies: [`CNX_Png${S}.png`], svgRows: 0 },
+      CNX_Bare: { rows: 0, translatedCopies: [], svgRows: 0 },
+    });
+    const named = validateFigureConfig(cfgE, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'artworkEdits.CNX_Absent names an image',
+      'artworkEdits.CNX_Bare has no image-mapping',
+      'artworkEdits.CNX_Bare has no translated',
+      'artworkEdits.CNX_Png has no image-mapping',
+    ]);
   });
 });
 

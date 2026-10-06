@@ -1,8 +1,9 @@
 /**
- * The figure config's four policy tables and its two per-block tables, `heldBlockValues` and
- * `anchorExclusions`, checked against the repo (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec
- * 2026-10-02 D1; `heldBlockValues`, §C140 ㊾, spec 2026-10-02 D5(a); `anchorExclusions`, §C140 '6',
- * ruling R-20, spec 2026-10-05 D-a).
+ * The figure config's four policy tables, its two per-block tables, `heldBlockValues` and
+ * `anchorExclusions`, and its per-figure artwork-edit table, `artworkEdits`, checked against the repo
+ * (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec 2026-10-02 D1; `heldBlockValues`, §C140 ㊾, spec
+ * 2026-10-02 D5(a); `anchorExclusions`, §C140 '6', ruling R-20, spec 2026-10-05 D-a; `artworkEdits`,
+ * §C140 '6', rulings R-15a/R-15a2).
  *
  * Run by `npm test` (tools/__tests__/figure-config-validate.test.js), and run LOCALLY before any
  * pin's buy: CI only sees a pin after the money is spent, because a pin lands in the commit that
@@ -30,6 +31,14 @@
  * owner book, the policy overlaps, the entry's shape, a key that can reach M1 at all (it holds '|'), the
  * Markdown escape, the key being a block key of the figure's committed sidecar, and the reason.
  *
+ * ⚠️ WHAT THIS CANNOT CHECK FOR `artworkEdits`, AND WHO DOES. A selector picks a painted path or a text
+ * line of the figure's STAGED artwork PDF, which lives outside the repo, so whether each selector
+ * matches exactly one object, and whether the op can apply to it (one `re`, one horizontal stroked
+ * line, an axis-aligned CTM, no inverted edge), is refused by name at PREPARE time by
+ * experiments/figure-text-translation/artworkedits.py, which also re-measures every path and line after
+ * the rewrite. Here: the owner book, the policy overlaps, the `.svg` row, the translated copy, and the
+ * shape of every op and selector (`artworkEditsProblems`, a second implementation of `for_figure`).
+ *
  * ⚠️ A REPEATED KEY IS INVISIBLE TO `validateFigureConfig`, which reads the PARSED config: JSON.parse
  * keeps only the last of two equal keys. `repeatedKeyProblems` reads the raw text instead; the
  * committed-config test runs both.
@@ -49,7 +58,98 @@ const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPin
 // It stays OUT of TABLES: its values are objects, not reason strings, so `reasonOf` and the pin
 // overlap list must never read it (Review Focus 5).
 // §C140 '6' R-20 — `anchorExclusions` likewise: keyed by basename, values are {blockKey: reason} objects.
-const KEYED = [...TABLES, 'heldBlockValues', 'anchorExclusions'];
+const KEYED = [...TABLES, 'heldBlockValues', 'anchorExclusions', 'artworkEdits'];
+// §C140 '6' R-15a — `artworkEdits` is keyed by basename too (same fold / exactly-one-book loops);
+// its per-figure value is a LIST of ops, checked by artworkEditsProblems (a SECOND implementation of
+// experiments/figure-text-translation/artworkedits.py `for_figure` — change both or neither).
+// AE_OPS and AE_SELECT_FIELDS are pinned to one literal here and in test_artworkedits.py (AE-10).
+export const AE_OPS = {
+  'move-paths': [['op', 'dx', 'select'], ['note']],
+  'move-edge': [
+    ['op', 'edge', 'select'],
+    ['note', 'to', 'dx'],
+  ],
+  'move-text': [['op', 'dx', 'select'], ['note']],
+  'move-line-end': [['op', 'edge', 'dx', 'select'], ['note']],
+};
+export const AE_SELECT_FIELDS = { path: ['bbox', 'colour', 'paint'], line: ['origin', 'text'] };
+const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
+
+/** -> problems for the `artworkEdits` table (shape only; selectors are matched at prepare time). */
+export function artworkEditsProblems(table) {
+  const problems = [];
+  for (const [b, entry] of Object.entries(table)) {
+    const where = `artworkEdits.${b}`;
+    if (!Array.isArray(entry) || entry.length === 0) {
+      problems.push(`${where} must be a non-empty list of ops`);
+      continue;
+    }
+    entry.forEach((op, i) => {
+      const w = `${where}[${i}]`;
+      if (!isPlainObject(op) || !Object.hasOwn(AE_OPS, op.op)) {
+        problems.push(
+          `${w} must be an object whose op is one of ${Object.keys(AE_OPS).join(', ')}`
+        );
+        return;
+      }
+      const [req, opt] = AE_OPS[op.op];
+      const extra = Object.keys(op).filter((k) => !req.includes(k) && !opt.includes(k));
+      if (extra.length) problems.push(`${w} has unknown field(s) ${extra.join(', ')}`);
+      const missing = req.filter((k) => !Object.hasOwn(op, k));
+      if (missing.length) problems.push(`${w} lacks ${missing.join(', ')}`);
+      if (Object.hasOwn(op, 'note') && typeof op.note !== 'string')
+        problems.push(`${w}.note must be a string`);
+      if (
+        (op.op === 'move-edge' || op.op === 'move-line-end') &&
+        op.edge !== 'left' &&
+        op.edge !== 'right'
+      )
+        problems.push(`${w}.edge must be left or right`);
+      if (op.op === 'move-edge') {
+        if (Object.hasOwn(op, 'to') === Object.hasOwn(op, 'dx'))
+          problems.push(`${w} needs exactly one of to / dx`);
+        else if (!isNum(op.to ?? op.dx)) problems.push(`${w}.to/dx must be a number`);
+      } else if (!isNum(op.dx)) problems.push(`${w}.dx must be a number`);
+      if (!Array.isArray(op.select) || op.select.length === 0) {
+        problems.push(`${w}.select must be a non-empty list`);
+        return;
+      }
+      const fields = op.op === 'move-text' ? AE_SELECT_FIELDS.line : AE_SELECT_FIELDS.path;
+      op.select.forEach((s, j) => {
+        const ws = `${w}.select[${j}]`;
+        if (!isPlainObject(s) || Object.keys(s).sort().join() !== fields.join()) {
+          problems.push(`${ws} must have exactly ${fields.join(', ')}`);
+          return;
+        }
+        if (op.op === 'move-text') {
+          if (typeof s.text !== 'string' || s.text === '')
+            problems.push(`${ws}.text must be a non-empty string`);
+          if (!Array.isArray(s.origin) || s.origin.length !== 2 || !s.origin.every(isNum))
+            problems.push(`${ws}.origin must be [x, y]`);
+        } else {
+          if (s.paint !== 'fill' && s.paint !== 'stroke')
+            problems.push(`${ws}.paint must be fill or stroke`);
+          if (
+            !Array.isArray(s.colour) ||
+            typeof s.colour[0] !== 'string' ||
+            !s.colour.slice(1).every(isNum)
+          )
+            problems.push(`${ws}.colour must be [operator, numbers...]`);
+          const bb = s.bbox;
+          if (
+            !Array.isArray(bb) ||
+            bb.length !== 4 ||
+            !bb.every(isNum) ||
+            bb[0] > bb[2] ||
+            bb[1] > bb[3]
+          )
+            problems.push(`${ws}.bbox must be [x0, y0, x1, y1] with x0<=x1, y0<=y1`);
+        }
+      });
+    });
+  }
+  return problems;
+}
 const PIN_KINDS = new Set(['alias', 'override']);
 const MIN_REASON = 40;
 
@@ -74,9 +174,11 @@ const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArr
  *          keptState:Object<string,{rows:number, translatedCopies:string[]}>,
  *          heldState?:Object<string,{rows:number, translatedCopies:string[], svgRows:number,
  *                                    sidecarKeys:(string[]|null)}>,
- *          anchorState?:Object<string,{sidecarKeys:(string[]|null)}>}} corpus
+ *          anchorState?:Object<string,{sidecarKeys:(string[]|null)}>,
+ *          editState?:Object<string,{rows:number, translatedCopies:string[], svgRows:number}>}} corpus
  *   `heldState` is optional: a corpus without it (Part 1's fixtures) skips the held corpus rules.
- *   `anchorState` likewise skips the anchorExclusions sidecar rule.
+ *   `anchorState` likewise skips the anchorExclusions sidecar rule, and `editState` the artworkEdits
+ *   row and copy rules.
  * @returns {string[]} problems; empty when the config is valid
  */
 export function validateFigureConfig(cfg, corpus) {
@@ -399,6 +501,32 @@ export function validateFigureConfig(cfg, corpus) {
       }
     }
   }
+  problems.push(...artworkEditsProblems(tables.artworkEdits));
+
+  // §C140 '6' R-15a — artworkEdits' corpus rules, the heldBlockValues ones minus the bought-key rule
+  // (an edit is not a label, so a bought sidecar is fine). An edit is drawn only when the figure is
+  // recomposed, so a retired, kept or superseded figure's edit is dead, and the figure needs the routes
+  // a recompose uses: an image-mapping row naming an `.svg` and a translated copy. A pin is fine (the
+  // pinned figure IS composed; its selectors must then match the pinned artwork, at prepare time).
+  const editState = corpus.editState || {}; // Part 1's, the held and the anchor fixtures carry none
+  for (const b of Object.keys(tables.artworkEdits)) {
+    for (const [t, keys] of neverComposed) {
+      if (keys.has(normkey(b))) {
+        problems.push(
+          `artworkEdits.${b} is also in ${t} (${keys.get(normkey(b))}) — that figure is never composed, so its edits are never drawn`
+        );
+      }
+    }
+    const s = editState[b];
+    if (s && !s.svgRows) {
+      problems.push(
+        `artworkEdits.${b} has no image-mapping row naming an .svg — no run recomposes it`
+      );
+    }
+    if (s && s.translatedCopies.length === 0) {
+      problems.push(`artworkEdits.${b} has no translated copy at the top of its book's media/`);
+    }
+  }
   return problems;
 }
 
@@ -521,7 +649,8 @@ function sidecarKeysStrict(bookDir, basename) {
  * @returns {{suffix:string, basenamesByBook:Object<string,Set<string>>, retiredState:Object,
  *            keptState:Object, heldState:Object<string,{rows:number,
  *            translatedCopies:string[], svgRows:number, sidecarKeys:(string[]|null)}>,
- *            anchorState:Object<string,{sidecarKeys:(string[]|null)}>}}
+ *            anchorState:Object<string,{sidecarKeys:(string[]|null)}>,
+ *            editState:Object<string,{rows:number, translatedCopies:string[], svgRows:number}>}}
  */
 export function buildValidatorCorpus(repoRoot, cfg) {
   const booksDir = path.join(repoRoot, 'books');
@@ -567,6 +696,22 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     ).length;
     heldState[k].sidecarKeys = sidecarKeysStrict(bookDir, k);
   }
+  // §C140 '6' R-15a — an edited figure is measured as a held one is, WITHOUT the sidecar: copyState plus
+  // its rows naming an `.svg`. Its sidecar is never read (an edit is not a label).
+  const svgRowsOf = (k) => {
+    const owner = Object.keys(basenamesByBook).find((b) => basenamesByBook[b].has(k));
+    const rows = readMappingOrRefuse(path.join(booksDir, owner, 'media', 'image-mapping.json'), {
+      allowMissing: true,
+    });
+    return rows.filter(
+      (r) =>
+        r.originalImage === k &&
+        typeof r.outputName === 'string' &&
+        path.extname(r.outputName) === '.svg'
+    ).length;
+  };
+  const editState = copyState(cfg.artworkEdits);
+  for (const k of Object.keys(editState)) editState[k].svgRows = svgRowsOf(k);
   // §C140 '6' R-20 — an excluded figure needs only its sidecar's block keys (read STRICTLY, as for
   // heldState). A key that is not exactly one book's image gets no state; the exactly-one-book rule
   // names it.
@@ -583,5 +728,6 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     keptState: copyState(cfg.keptCopies),
     heldState,
     anchorState,
+    editState,
   };
 }

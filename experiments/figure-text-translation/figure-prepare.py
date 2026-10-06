@@ -2,10 +2,19 @@
 """Turn ONE artwork file into ONE output directory, and say enough about it for the
 classifier to decide what to do with it.
 
-    python3 figure-prepare.py <artwork-path> --basename <b> --out <dir>
+    python3 figure-prepare.py <artwork-path> --basename <b> --out <dir> [--config <path>]
 
-Writes into <dir>: `<b>.pdf` (the staged artwork), `runs.json`, `meta.json`,
-`blocks.json`, `artwork.pdf`, `artwork.png`, `artwork.svg`, and `prepare.json`.
+Writes into <dir>: `<b>.pdf` (the staged artwork, after `artworkEdits`), `runs.json`,
+`meta.json`, `blocks.json`, `artwork.pdf`, `artwork.png`, `artwork.svg`, and `prepare.json`.
+
+`artworkEdits` (§C140 '6' R-15a; artworkedits.py, figure-text.config.json `_artworkEdits`):
+[USER]'s per-figure edit of the staged page is applied right after staging, before any
+child reads it, so every file above derives from the edited page. A figure with no entry
+is not touched, and its prepare.json carries no `artworkEdits` key; one with an entry
+carries the per-op summary. The policy config is read for EVERY figure (figconfig.load),
+so a config that cannot be used - unreadable, or a key repeated at any depth - fails every
+figure's prepare, as it fails every figure's compose. `--config` is for tests: the driver
+(tools/figure-run.js) never passes it, so the shipped config is what runs.
 
 Exit 0 on success INCLUDING zero blocks (a text-less vector is a real corpus state, not a
 failure); 1 on failure, with `{"error": ..., "warnings": []}` in prepare.json; 2 on a
@@ -77,6 +86,7 @@ os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 import pikepdf                                  # noqa: E402  - after the bootstrap
 from _deps import read_content                  # noqa: E402
 import svgfix                                   # noqa: E402
+import artworkedits                             # noqa: E402  - §C140 '6' R-15a
 
 # ⚠️ deliberately NOT `from _deps import OUT`. This tool never reads the shared output
 # directory; it passes FIGTEXT_OUT to its CHILDREN and computes its own paths from
@@ -578,8 +588,9 @@ def glyph_summary(meta):
     return repairs, unrepaired, ambiguous
 
 
-def prepare(artwork, out_dir, basename):
-    """-> the prepare.json payload. Raises PrepareError on a per-figure failure."""
+def prepare(artwork, out_dir, basename, config_path=None):
+    """-> the prepare.json payload. Raises PrepareError on a per-figure failure. `config_path` is the
+    policy config whose `artworkEdits` entry (if any) is applied to the staged PDF; None = the shipped one."""
     # 🔴 A STALE artwork.svg MUST NOT BE ABLE TO SATISFY THE CHECK AT THE END OF THIS
     # FUNCTION. `artwork.svg` has a fixed name, so a driver that reuses a directory - or
     # a retry after a failed run - could otherwise have prepare report success against
@@ -597,6 +608,14 @@ def prepare(artwork, out_dir, basename):
         raise PrepareError(f'artwork not found: {artwork}')
 
     staged = stage_artwork(artwork, out_dir, basename)
+    # §C140 '6' R-15a: [USER]'s per-figure artwork edit, applied to the STAGED copy BEFORE any
+    # child reads it, so runs.json, blocks.json and artwork.pdf/.png/.svg all derive from the edited page.
+    # A figure with no `artworkEdits` entry is not touched (the staged bytes stay what stage_artwork wrote).
+    try:
+        edits = artworkedits.apply_for_figure(
+            staged, basename, artworkedits.CONFIG_PATH if config_path is None else config_path)
+    except artworkedits.ArtworkEditError as exc:
+        raise PrepareError(f'artworkEdits refused: {exc}') from None
     run_child('emit-blocks.py', staged, out_dir)
     # `--svg` is not optional: `artworkSvgPath` must be non-null on success. A prepare
     # that returned 0 with a null svg path would classify as `translated`, the MT would
@@ -621,7 +640,7 @@ def prepare(artwork, out_dir, basename):
 
     glyph_repairs, glyph_unrepaired, glyph_ambiguous = glyph_summary(meta)
 
-    return {
+    payload = {
         'basename': basename,
         # The ORIGINAL artwork, absolute. meta.json's `source` is the staged PDF.
         'source': str(artwork),
@@ -643,6 +662,9 @@ def prepare(artwork, out_dir, basename):
         'warnings': (build_warnings(meta, features) + reference_cost_warnings(svg)
                      + annotation_warnings(out_dir)),
     }
+    if edits is not None:          # absent when no entry: an unedited figure's prepare.json is unchanged
+        payload['artworkEdits'] = edits
+    return payload
 
 
 def parse_args(argv):
@@ -653,6 +675,9 @@ def parse_args(argv):
                         help='the CNXML basename; the sidecar key this figure will get')
     parser.add_argument('--out', required=True,
                         help='this figure\'s own output directory (created if needed)')
+    parser.add_argument('--config', default=None,
+                        help='the policy config whose artworkEdits to read (default: '
+                             'figure-text.config.json beside this file; for tests)')
     # argparse exits 2 on an unknown flag and on a valued flag with no value, which is
     # the required behaviour - `tools/lib/parseArgs.js` silently DROPS unknown flags and
     # must not be imitated here.
@@ -680,7 +705,8 @@ def main(argv):
 
     try:
         payload = prepare(Path(args.artwork).expanduser().resolve(), out_dir,
-                          args.basename)
+                          args.basename,
+                          None if args.config is None else Path(args.config).expanduser().resolve())
     except PrepareError as exc:
         (out_dir / 'prepare.json').write_text(
             json.dumps({'error': str(exc), 'warnings': []}, indent=1,
