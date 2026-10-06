@@ -29,7 +29,9 @@ CE  compose.py end to end on a PLANTED copy of the committed fixture (`fixtures/
       N  `QZ ion NH` + a 7 pt `4` + a raised 7 pt `+`: a stacked charge (the ㉑ shape) - TWO FT.lines in its key, ONE visual
          line, so its `|` is not a row;
       T  `QZ one` / `QZ two` / `QZ three`, baselines 40, 27.0493, 17.0493: THREE visual lines 12.9507 then 10.0
-         apart, so its mean source pitch (11.47535) is not its first gap - the pitch a two-line break is drawn at.
+         apart, so its mean source pitch (11.47535) is not its first gap - the pitch a two-line break is drawn at;
+      A  `QZARC`, five 9 pt glyphs on a real circle (test_compose_runexact.py's arc plant): a TRANSLATED arc with a
+         usable circle (G21 review-fix round, F2 n38).
     The values are probe text (`QZ...`), never translations: `QZA QZB QZC\nQZD` on P is 3 + 1 words where the
     balanced cut of the same four words is 2 + 2, so a composer that ignores the LF is seen.
 FCx figure-compose.py's verify() (loaded through importlib, test_figure_compose.py's pattern).
