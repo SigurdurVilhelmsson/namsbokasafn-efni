@@ -37,7 +37,7 @@ FCx figure-compose.py's verify() (loaded through importlib, test_figure_compose.
 RED-FIRST. On the pre-task tree (no figtext.explicit_lines, compose.py ignoring LF, decide ignoring
 cues['explicit'], verify ignoring explicitBreakErrors) every EL, X, CE and FCx check below FAILS except the
 PRECONDITIONs and the ones labelled CONTROL, which pass on both sides by design (G13; each has a planted mutant in
-the task report): CE2a (the space arm draws the balanced cut - its sha256 is printed, and equal on both trees),
+the task report): CE2a (the space arm draws the balanced cut - its SVG byte length is printed),
 CE4 (a formula keeps its subscript across a break), CE6b (the wrapper passes an honoured break) and FCx2 (verify
 accepts a report whose breaks were all honoured). CE3b is red there for a second reason worth keeping: the
 pre-task composer ran transfer on the LF-bearing value, so the stacked charge's R3 joint match (`NH4 +`) missed
@@ -52,7 +52,6 @@ ALSO NOT PINNED HERE: whether a translated value reaches compose.py with its LF 
 validators are T10b's.
 """
 import ast
-import hashlib
 import json
 import os
 import re
@@ -426,9 +425,9 @@ check('CE1b compose-report.json explicitBreaks names the block, 2 lines at the s
 rc2, rep2, svg2, out2 = compose({})
 precondition('the space-arm compose exits 0', rc2 == 0 and svg2, out2[-400:])
 got2 = P_lines(els_of(svg2))
-check("CE2a CONTROL the same value with a space draws the balanced cut 'QZA QZB' / 'QZC QZD' (sha256 printed for "
-      "the before/after comparison)", [t for _, t in got2] == ['QZA QZB', 'QZC QZD'],
-      f'{rnd(got2)} sha256 {hashlib.sha256(svg2).hexdigest()[:16]}')
+check("CE2a CONTROL the same value with a space draws the balanced cut 'QZA QZB' / 'QZC QZD' (SVG byte length printed "
+      "for the before/after comparison)", [t for _, t in got2] == ['QZA QZB', 'QZC QZD'],
+      f'{rnd(got2)} svg bytes {len(svg2)}')
 check('CE2b the LF arm differs from the space arm', svg1 != svg2, '' if svg1 != svg2 else 'identical SVGs: the LF was ignored')
 
 # CE3 - every refusal end to end: drawn exactly as the same value without its LFs, named, block by block.
