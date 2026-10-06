@@ -70,8 +70,9 @@ SCRIPT CHARACTERS (D-a)
 -----------------------
 heldvalues.parse_value decodes ₂ / ⁰ / ⁻ ... to (base, 'sub' | 'sup'). The base is drawn in the block's
 OWN source style of that kind, never a constant (figscripts' principle): `script_pool` collects every
-distinct SourceStyle in figscripts.source_tokens(block) that figscripts.is_script_style accepts, split by
-the sign of frac, and a kind the value uses must have exactly one. compose then draws such a segment as
+distinct SourceStyle in figscripts.source_tokens(block) that figscripts.is_script_style accepts - distinct by
+GEOMETRY, a STIX face alone never splitting one (script_pool says which face it keeps) - split by the sign of
+frac, and a kind the value uses must have exactly one. compose then draws such a segment as
 the translated path draws a transferred style: size x ratio, baseline shifted size x frac, italic as the
 style says. (figscripts.transfer cannot be reused: it styles 0 characters of MolSpeed1's value, whose
 source token is DIGIT `02` and whose value has a LETTER O.)
@@ -114,14 +115,23 @@ def script_pool(block, fonts):
     """-> {'sub': [SourceStyle], 'sup': [SourceStyle]}: every DISTINCT style figscripts.source_tokens
     emits for `block` that figscripts.is_script_style accepts, split by the sign of frac (down = sub),
     each list sorted. An italic-only style (OxStNonmts' STIX charges, (1.0, 0.0714, italic)) is not a
-    script and never enters it."""
+    script and never enters it.
+
+    DISTINCT means distinct GEOMETRY (ratio, frac, italic): two styles that differ only in `serif` (the
+    STIX face figscripts records, §C140 '6' M6) are ONE script style for pooling - review-fix round G21 #5;
+    pooling them apart made a Liberation `2` and a STIX `+` of one size and rise two `sup` entries (an
+    `ambiguous-source-script` refusal composer 5 never made, or a TypeError sorting None against a tuple).
+    The pooled style keeps a `serif` face only when every source style of that geometry agrees on it (a held
+    mark then draws in that STIX face, as before); when they disagree it is None, and the mark draws FigIS,
+    as every held mark did under composer 5. Sorted on the geometry alone, so None never meets a tuple."""
     tokens, _ = FS.source_tokens(block, fonts)
-    pool = {'sub': set(), 'sup': set()}
+    pool = {'sub': {}, 'sup': {}}
     for t in tokens:
         for st in t['styles']:
             if FS.is_script_style(st):
-                pool['sub' if st.frac < 0 else 'sup'].add(st)
-    return {k: sorted(v) for k, v in pool.items()}
+                pool['sub' if st.frac < 0 else 'sup'].setdefault(tuple(st)[:3], set()).add(st.serif)
+    return {k: [FS.SourceStyle(*g, serif=next(iter(f)) if len(f) == 1 else None) for g, f in sorted(v.items())]
+            for k, v in pool.items()}
 
 
 def _run_styles(vl, fonts):

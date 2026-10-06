@@ -96,9 +96,15 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        visual line with its folded space). HP19-HP22 are red on the pre-M2 planner (it counted 2 visual
        lines: HP19/HP20/HP22 refused `line-count`, HP21 was ACCEPTED as the collision). HP23 is a CONTROL:
        an unchanged value on the no-blank `Quick|guide to|% DV` is `no-change` on both sides.
-       NOT PINNED (0 corpus instances, disclosed): heldplan's 'layout' entry carrying the FULL visual line
-       (`vfull`, so the caller's offset sum counts the folded run) - every FoodLabel blank line is the LAST
-       line of its block, so a short entry would change no later offset here.
+* HP24 (G21 review-fix round, F2 n5) a script style that differs only in its STIX face (`serif`) is ONE pooled
+       style: a Liberation `2` and a STIX `+` of one size and rise pool to one `sup` (red before: a TypeError
+       sorting None against a tuple), and a held ^ mark on it is planned (HP24a/b); two STIX faces pool to one,
+       face None (HP24c, red before: two entries); HP24d is a CONTROL - faces that agree keep that face (its
+       mutant, the face always None, is in the round's report).
+* HP25 (G21, F2 n46; this pins what T1 D4 disclosed as NOT PINNED) a changed line with a folded blank run: its
+       'layout' entry spans the FULL visual line, so the entries partition the block (HP25a planted, HP25c the
+       real FoodLabel bullet - mutant: the entry carries the ink slice), and its cues are the INK runs' - the
+       layout equals the same block without the blank run (HP25b - mutant: cues from the full line pull x0 left).
 """
 import json
 import sys
@@ -858,6 +864,74 @@ def hp19():
 
 
 attempt('HP19', hp19)
+
+
+# ── HP24-HP25 (G21 review-fix round, F2 n5 / n46) ──────────────────────────────────────────────────
+print('\nHP24 a script style that differs only in its STIX face is ONE pooled style (G21 #5)')
+PFS = dict(PF, **{'T/SB': {'base': '/AAAAAA+STIXGeneral-Bold', 'subtype': '/Type1'}})
+SUP_G = FS.SourceStyle(0.7778, 0.4444, False)          # 'Mg2+': the 7 pt charge raised 4 pt on a 9 pt base
+
+
+def mg(font2, fontp):
+    """'Mg2+ ion' with the 2 in `font2` and the + in `fontp`: the same size and rise, possibly another face."""
+    return [run('Mg', 9.0, 100.0, 100.0, 10.0), run('2', 7.0, 110.0, 104.0, 3.9, font=font2),
+            run('+', 7.0, 113.9, 104.0, 4.0, font=fontp), run(' ion', 9.0, 117.9, 100.0, 14.0)]
+
+
+def hp24():
+    lib_stix = mg('T/R', 'T/S')                         # Liberation 2, STIX Regular + (serif None vs (False, False))
+    try:
+        pool = HP.script_pool(lib_stix, PFS)
+    except Exception as exc:                            # noqa: BLE001 - the pre-fix TypeError, named
+        pool = f'{type(exc).__name__}: {exc}'
+    check('HP24a Liberation and STIX Regular superscripts of one geometry pool to ONE style, its face None (the '
+          'faces disagree, so the mark draws FigIS as under composer 5) - never a TypeError',
+          isinstance(pool, dict) and pool == {'sub': [], 'sup': [SUP_G]} and pool['sup'][0].serif is None,
+          repr(pool))
+    e = refused(lambda: plan(lib_stix, 'Mg²⁺ QZ', PFS))
+    ch = [] if e is not None else layout_chars(plan(lib_stix, 'Mg²⁺ QZ', PFS), 0)
+    check('HP24b ... so a held ^ mark on it is planned (not refused ambiguous-source-script:sup), in that style',
+          e is None and [st for c, st in ch if c in '2+'] == [SUP_G, SUP_G], why(e) if e else repr(ch))
+    two_stix = mg('T/S', 'T/SB')                        # STIX Regular and Type 1 STIX Bold: (F, F) vs (T, F)
+    pool = HP.script_pool(two_stix, PFS)
+    check('HP24c two STIX faces of one geometry pool to ONE style, face None', pool == {'sub': [], 'sup': [SUP_G]}
+          and pool['sup'][0].serif is None, repr(pool))
+    agree = mg('T/S', 'T/S')
+    pool = HP.script_pool(agree, PFS)
+    check('HP24d CONTROL faces that AGREE keep that face: one style, serif (False, False) - drawn FigSym as before',
+          pool == {'sub': [], 'sup': [SUP_G._replace(serif=(False, False))]}
+          and pool['sup'][0].serif == (False, False), repr(pool))
+
+
+attempt('HP24', hp24)
+
+print('\nHP25 a changed line with a folded blank run: its entry spans the FULL visual line, its cues the INK (G21 n46)')
+
+
+def hp25():
+    """The two halves n46 named, each killing its mutant: HP2 (`('layout', layout, vl)` - the entry one run short)
+    and HP3 (the cues read from the full line, the blank run's along included). The planted block is one ink line
+    and a lone U+0020 run 12 pt lower and 20 pt to the LEFT (the next row's indent space), which visual_lines folds
+    into line 0."""
+    blk = [run('QZ abc', 9.0, 100.0, 100.0, 27.0), run(' ', 9.0, 80.0, 88.0, 2.5)]
+    check('HP25-pre the plant is TWO FT.lines and ONE visual line (the blank folded)',
+          len(FT.lines(blk)) == 2 and len(FT.visual_lines(blk)) == 1, repr(FT.visual_lines(blk)))
+    p = plan(blk, 'QZX', PF)
+    ink = plan(blk[:1], 'QZX', PF)
+    span = sum(len(x[1]) if x[0] == 'runs' else len(x[2]) for x in p.lines)
+    check('HP25a the plan entries partition the block (their lengths sum to len(block)): the layout entry carries '
+          'the folded blank run', span == len(blk) and [r['text'] for r in p.lines[0][2]] == ['QZ abc', ' '],
+          f'span {span} of {len(blk)}; entry runs {[r["text"] for r in p.lines[0][2]]}')
+    check('HP25b ... and is laid out from its INK runs only: the layout equals the same block without the blank run '
+          '(x0 is not pulled 20 pt left by it)', p.lines[0][1] == ink.lines[0][1],
+          f"x0 {p.lines[0][1]['x0']} vs ink-only {ink.lines[0][1]['x0']}")
+    b, th = food(K_F42)
+    p = plan(b, '• 5% eða minna', FOOD_F, container=th)
+    span = sum(len(x[1]) if x[0] == 'runs' else len(x[2]) for x in p.lines)
+    check('HP25c the real FoodLabel bullet (HP19) partitions its block too', span == len(b), f'{span} of {len(b)}')
+
+
+attempt('HP25', hp25)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)
