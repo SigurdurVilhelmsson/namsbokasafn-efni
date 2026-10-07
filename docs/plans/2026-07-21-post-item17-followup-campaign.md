@@ -2,7 +2,67 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
+## ⏩ RESUME — state as of **2026-10-07 — ✅ '6' PR-A IS MERGED: [PR #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544), `91c85c33f`, all four checks green. ✅ §C199 (a CRITICAL `proxy-addr` advisory) is merged ([PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), `ef97fb704`) and deployed 07:04Z, verified read-only on prod. PR-A itself is NOT deployed. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-06 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 2026-10-06 answers, the build, the review and the PR-B inputs)
+
+### ⏭ SINGLE NEXT ACTION — **[CODE]: PR-B, on the local branch `feat/c140-v6-pr-b`.** This note is that branch's first commit. Following the docs-batching rule it is unpushed, and it lands with PR-B. Work the steps in order; the "how" for each lives in the frozen spec (`2026-10-05-c140-composer-formatting-class-design.md`) §5 and §7, and the "why" in `docs/decisions/2026-10-06-figure-labels-below-floor-shrink-to-0-8.md` for R-16.
+
+- ⏹ **LIVE-RUN HOLD — no chemistry `figure-run` of any kind until PR-B merges.** `main` composes
+  '6' pixels while `COMPOSER_VERSION` still says '5', so any recompose now would be mis-stamped.
+  Textless figures are recomposed on EVERY run, including `--stale`. PR-B's own pass is the only
+  exception, and it runs on PR-B's branch AFTER the bump.
+- **Deploying PR-A is optional and harmless** while R-22 keeps prod figure review closed. Nothing on
+  prod runs the figure tools. A deploy would bring the editor's line-break textarea online early.
+  The demotion count is checked at the deploy that carries the BUMP (step 9).
+- **PR-B, in order (0 ISK throughout):**
+  1. **Inputs [USER] still owes:** wordings for HazDiamond's special-hazard list, aldket and
+     Example2. R-5b ruled "a wording edit", and none has been proposed. Propose and measure them
+     (composed, one change at a time), then put them on a review page.
+  2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
+     FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
+     against U+0020 (spec §7.2).
+  3. **Fill the tables in `figure-text.config.json`:**
+     - `heldBlockValues`: the bullets.
+     - `artworkEdits` for FoodLabel: move the left bands AND the circle column 15 pt left; widen
+       the purple band 10 pt right; lengthen the green arrow with `move-line-end` so it starts
+       next to *Byrjaðu*. Measure the dx; ≈ −6 is the review's estimate, not a measurement. Get the
+       selectors from `artworkedits.py --inventory`.
+     - `anchorExclusions` for PentIso: key `Small contact area,|weakest attraction`. A ready entry
+       is at `~/.cache/namsbokasafn-audit/c140-v6/accept-T4-M1/pentiso-config.json`.
+  4. **Content edits** (value-only, shaped like `e52bde89a`, with a `.bak` first):
+     - FoodLabel: the 7 ruled values (spec §7.1); the R-15w margin wordings (*Byrjaðu hér*,
+       *Athugaðu hitaeiningar*, *Takmarkaðu þessi næringarefni*, *Fáðu nóg af þessum
+       næringarefnum*, *Neðanmálsgrein*); R-15c *Úr fitu 110*; R-10 *Transfita 3 g*.
+     - phscale: R-8d *súr, hlutlaus, basísk*, and *hreint vatn*↵*blóð* as an explicit break
+       (R-5a).
+     - SolTherm1 (R-18): *Varma‐ skipti*, *Varma‐ flutnings‐ vökvi* (U+2010 plus a space);
+       *Útblástursgufa* stays.
+     - The R-5b wordings once ruled.
+     - Recompute `renderHash` under the tree's version with `composerVersion` matching (spec §5).
+  5. **The bump:** `COMPOSER_VERSION` '5' → '6', plus a docstring entry with the '2'–'5' entries
+     naming M1–M7, R-16, artworkEdits, the `\n` route and R-20. Also `COMPOSER_TABLES_PIN`'s '6'
+     entry. Then the LICENSE font sentence, using [USER]'s 2026-10-06 wording verbatim.
+  6. **Preconditions:**
+     - compose the 248 textless figures, base against '6'; exactly 5 should change;
+     - `test_figrings.py`;
+     - the three-engine `browser-sweep.mjs` over every changed figure, with per-face
+       `@font-face` first.
+  7. **The pass:** `node tools/figure-run.js --book efnafraedi-2e --chapter <N> --stale`, one
+     chapter at a time, with `.env` moved aside. Never `--force`; never the autorun script. Then
+     check convergence (spec §5).
+  8. **[USER]'s review page** of every changed figure, sidecar and textless (t23 R1/R11), before the
+     merge.
+  9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
+     `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
+- **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
+  sync, which stays HELD under the ⏹ SYNC PRECONDITIONs.
+- **Off-repo:** `~/.cache/namsbokasafn-audit/c140-v6/` holds the corpus harness
+  (`measure/run.py`, `check.py`, `T12-SUMMARY.md`), the suite runner (`run-py-suites.sh`), the
+  binding settlements (`briefs/CONTROLLER-DECISIONS.md`, G1–G21) and every review record. The
+  scratch branch `scratch/c140v6-impl` is kept as a local ref only.
+
+---
+
+## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 2026-10-07 block above (#544 and #545 are merged); the rest stays current.**
 
 ### ⏭ SINGLE NEXT ACTION — **(✅ [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), §C199, MERGED 2026-10-07 as `ef97fb704` and DEPLOYED 07:04Z, verified read-only) [USER]: review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
 
