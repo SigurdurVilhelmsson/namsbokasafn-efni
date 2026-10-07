@@ -26,6 +26,16 @@
      it is no break device here; that says nothing about step 2's held values, which are never
      wrapped. Arms, control (byte-identical to T12 `prA2`) and lines: off-repo
      `c140-v6/pr-b/step1/MEASUREMENTS.md`. Only step 4's R-5b line waits on these rulings.
+     **[USER] 2026-10-07: R-5d = a5, R-5e = e2 (RULED, into step 4). R-5c = "other", REOPENED** with
+     four notes: widen the box, left-align both columns as the source, and four word fixes
+     (*Heilsufars-* / *hætta*, *3 Mjög mikil hætta*, *2 Ofsafengin efnabreyting*, *Notið ekki vatn*).
+     Measured (round 2 in the same file): the word fixes compose clean. Keeping *Notið ekki vatn*
+     **needs the R-5a `\n` route** (row pairing is not width-bound). Left alignment needs **NEW
+     per-figure code** (prototyped only, in the uncommitted worktree `c140-v6/pr-b/wt-proto`) plus
+     `artworkEdits` (list box +6 pt; optional Reactivity box +27 pt → 9 pt). *Heilsufars-* stays
+     8.5 pt (its fill+stroke rect is not selectable). **Awaiting R-5c2 (a: centred, no code / b /
+     b+: per-figure source-aligned boxes, code in PR-B) and R-5c3 (singular / plural)** on the same
+     page. Remove `wt-proto` once R-5c2 is ruled.
   2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
      FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
      against U+0020 (spec §7.2).
