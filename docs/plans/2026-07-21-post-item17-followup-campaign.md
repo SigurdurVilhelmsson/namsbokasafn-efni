@@ -17,6 +17,15 @@
   1. **Inputs [USER] still owes:** wordings for HazDiamond's special-hazard list, aldket and
      Example2. R-5b ruled "a wording edit", and none has been proposed. Propose and measure them
      (composed, one change at a time), then put them on a review page.
+     **✅ 2026-10-07: measured and on the review page, AWAITING [USER]'s rulings R-5c/R-5d/R-5e**
+     (cards added to https://claude.ai/artifact/T2VLFfbLLFGQPq1fUT68u4, `verdicts` db). Proposals:
+     HazDiamond *Oxunarefni Sýrur Basar Ætandi Ekki vatn Geislavirkt* (both edits needed, each
+     alone measured to fail); aldket *CH3CHO Dæmi um aldehýð etanal (asetaldehýð)* (alt: *Aldehýð
+     etanal*), plus *Keton* → *Ketón*; Example2 *Margfalda með massahlutfalli (g HCl/g lausn)*.
+     ⚠️ **U+00A0 between words binds nothing on the free-cut path** (identical to the control), so
+     it is no break device here; that says nothing about step 2's held values, which are never
+     wrapped. Arms, control (byte-identical to T12 `prA2`) and lines: off-repo
+     `c140-v6/pr-b/step1/MEASUREMENTS.md`. Only step 4's R-5b line waits on these rulings.
   2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
      FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
      against U+0020 (spec §7.2).
