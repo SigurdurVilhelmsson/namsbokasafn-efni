@@ -33,12 +33,23 @@
      **needs the R-5a `\n` route** (row pairing is not width-bound). Left alignment needs **NEW
      per-figure code** (prototyped only, in the uncommitted worktree `c140-v6/pr-b/wt-proto`) plus
      `artworkEdits` (list box +6 pt; optional Reactivity box +27 pt → 9 pt). *Heilsufars-* stays
-     8.5 pt (its fill+stroke rect is not selectable). **Awaiting R-5c2 (a: centred, no code / b /
-     b+: per-figure source-aligned boxes, code in PR-B) and R-5c3 (singular / plural)** on the same
-     page. Remove `wt-proto` once R-5c2 is ruled.
+     8.5 pt (its fill+stroke rect is not selectable). **✅ [USER] 2026-10-07: R-5c2 = (b+), R-5c3 =
+     singular.** Record: `docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md`.
+     That adds step 2a (code) below. Remove `wt-proto` once 2a's acceptance cmp passes.
   2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
      FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
      against U+0020 (spec §7.2).
+  2a. **[CODE] A per-figure "source-aligned boxes" table (R-5c2 = b+), its own reviewed unit.**
+     Shape: `{basename: reason}`, the basename checked as `artworkEdits` checks it (reuse the
+     validator), the reason rule of the policy tables. Hand-off like `anchorExclusions`
+     (stdlib module → `<out>/*.json` → `compose.py` → `container_for`): every `box` block of that
+     figure becomes a source-aligned cell, each named in a new compose-report key; an entry that
+     reaches 0 boxes refuses the figure. Add it to `COMPOSER_PIXEL_TABLES`; check the '5'
+     fingerprint does not move. **Acceptance, red first:** with the entry + step 3's HazDiamond
+     `artworkEdits`, composing the step-4 HazDiamond sidecar is byte-identical to the prototype's
+     `step1/res/q-wide6r27/…/translated.svg`; with the table absent, byte-identical to `ctl`.
+     Then review + mutation, then a corpus control: the delta against T12 `prA2` is HazDiamond
+     only.
   3. **Fill the tables in `figure-text.config.json`:**
      - `heldBlockValues`: the bullets.
      - `artworkEdits` for FoodLabel: move the left bands AND the circle column 15 pt left; widen
@@ -47,6 +58,10 @@
        selectors from `artworkedits.py --inventory`.
      - `anchorExclusions` for PentIso: key `Small contact area,|weakest attraction`. A ready entry
        is at `~/.cache/namsbokasafn-audit/c140-v6/accept-T4-M1/pentiso-config.json`.
+     - `artworkEdits` for HazDiamond (R-5c2): `move-edge` right, dx 6, on the special-hazard list
+       box (inventory path 15, stroke `K 0.57 0.37 0 0`, bbox 66.678 2.878 157.677 79.019) and dx
+       27 on the Reactivity box (path 13); the step-2a table entry. Configs as measured:
+       `step1/cfg/wide6r27.json`.
   4. **Content edits** (value-only, shaped like `e52bde89a`, with a `.bak` first):
      - FoodLabel: the 7 ruled values (spec §7.1); the R-15w margin wordings (*Byrjaðu hér*,
        *Athugaðu hitaeiningar*, *Takmarkaðu þessi næringarefni*, *Fáðu nóg af þessum
@@ -55,13 +70,19 @@
        (R-5a).
      - SolTherm1 (R-18): *Varma‐ skipti*, *Varma‐ flutnings‐ vökvi* (U+2010 plus a space);
        *Útblástursgufa* stays.
-     - The R-5b wordings once ruled.
+     - HazDiamond (R-5c, R-5c2, R-5c3): the list as explicit lines *Oxunarefni*↵*Sýra*↵*Basi*↵
+       *Ætandi*↵*Notið ekki vatn*↵*Geislavirkt*; `Health` → *Heilsufars‐* (U+2010); *3 Mjög
+       mikil hætta*; *2 Ofsafengin efnabreyting* (sidecar as measured: `step1/sidecars/
+       x6-all-singular/` — but with U+2010, not its ASCII hyphen).
+     - aldket (R-5d = a5): *CH3CHO Dæmi um aldehýð etanal (asetaldehýð)*; *Ketón bútanon*.
+     - Example2 (R-5e = e2): *Margfalda með massahlutfalli (g HCl/g lausn)*.
      - Recompute `renderHash` under the tree's version with `composerVersion` matching (spec §5).
   5. **The bump:** `COMPOSER_VERSION` '5' → '6', plus a docstring entry with the '2'–'5' entries
-     naming M1–M7, R-16, artworkEdits, the `\n` route and R-20. Also `COMPOSER_TABLES_PIN`'s '6'
+     naming M1–M7, R-16, artworkEdits, the `\n` route, R-20 and step 2a's table (R-5c2). Also `COMPOSER_TABLES_PIN`'s '6'
      entry. Then the LICENSE font sentence, using [USER]'s 2026-10-06 wording verbatim.
   6. **Preconditions:**
-     - compose the 248 textless figures, base against '6'; exactly 5 should change;
+     - compose the 248 textless figures, base against '6'; exactly 5 should change (step 2a's
+       table does not reach them: re-check, do not assume);
      - `test_figrings.py`;
      - the three-engine `browser-sweep.mjs` over every changed figure, with per-face
        `@font-face` first.
