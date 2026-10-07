@@ -67,6 +67,23 @@ nothing), while the current copy draws English ` 5% or less` / ` 20% or`. It IS 
 (a `heldBlockValues` entry, [USER]'s ruling) is asked on the 2026-10-04 figure-review page.* Element symbols and numbers that the
 composer keeps (`N`, `O`, `CH2`, `P, As`, the pH scale's numbers, …) are correct as they are.
 
+## E. FoodLabel bullets (`heldBlockValues`; added 2026-10-07, PR-B step 2)
+
+[USER] ruled the bullets *"Yes, as June had them"* (2026-10-05) and the two-line shape (R-15g2 = two, 2026-10-06,
+*• 5% eða minna / er lágt*; the *er lágt* row is a separate block). Under R-17 (a spaces-only source line is no
+line) each key below is ONE visual line, so each value is one line.
+
+| # | Figure (chapter) | Exact block key | Drawn today | June copy read (EVIDENCE) | Value from [USER] |
+|---|---|---|---|---|---|
+| E1 | `CNX_Chem_05_02_FoodLabel` (ch05) | `(cid:127) 5% or less\| ` (a bullet glyph, then a spaces-only line) | ` 5% or less` (English) | `•␣5%␣eða␣minna` (`9269fcda8`; ␣ = U+00A0) | • 5% eða minna |
+| E2 | `CNX_Chem_05_02_FoodLabel` (ch05) | `(cid:127) 20% or\| ` (as E1) | ` 20% or` (English) | `•␣20%␣eða` (`9269fcda8`) | • 20% eða |
+
+**The space character, measured (spec §7.2 left it open):** the values are written with **U+0020**. Composed
+2026-10-07 under '6', U+0020 and U+00A0 give a **byte-identical** translated.svg (the held line is split on whitespace
+and redrawn with U+0020), both are held with no `heldErrors`, and `figure-config-validate.js` accepts both. U+0020 keeps
+an invisible character out of the config. Evidence: `~/.cache/namsbokasafn-audit/c140-v6/pr-b/step1/res/bul-sp` and
+`bul-nb`.
+
 ## Reading notes (added 2026-10-03, after [USER] filled the sheet)
 
 - **Status:** every row is answered. Rows with a value are A1–A3, B1–B6 and D1–D4. C1–C3 are answered "keep the

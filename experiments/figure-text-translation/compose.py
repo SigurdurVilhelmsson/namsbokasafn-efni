@@ -630,9 +630,11 @@ def draw_held(BI, b, key):
     if loc:
         localized.append(key)
     held.append(dict(key=key, block=BI, changed=list(plan.changed)))
-    # §C140 '6' R-5c2: recorded only NOW, once the planner has accepted the block and a changed line was laid
-    # out in its container - a refused block is drawn run-exact in English and was never laid out in a box.
-    if box and laid:
+    # §C140 '6' R-5c2: recorded only NOW, once the planner has accepted the block - a refused block is drawn
+    # run-exact in English and was never laid out in a box. `box` is set exactly when the planner reached a
+    # changed line (heldplan asks for the container only past its no-change refusal), so an accepted block
+    # with a box always laid a line out in it.
+    if box:
         note_source_box(key, BI, box[0])
     report.append(f"  HELD   {key!r} block {BI}: lines {list(plan.changed)}  "
                   + ', '.join(f"[{box[0]['cls']} {L['step']}] {L['align']} {L['size']:.2f}pt" for L in laid))
