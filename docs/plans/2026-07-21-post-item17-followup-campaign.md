@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]: merge [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545) (§C199, the security fix) and deploy it, then review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
+### ⏭ SINGLE NEXT ACTION — **[USER]: deploy `main` (✅ [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), §C199, MERGED 2026-10-07 as `ef97fb704`; the proxy-addr fix reaches prod only at `deploy.sh`), then review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
 
 - ⚖️ **[USER]'s answers, 2026-10-06 afternoon:**
   - **One PR from this branch.** The 49 verified scratch commits were cherry-picked onto
@@ -37,8 +37,9 @@
     `npm ls` is clean.
   - source-map-js 1.2.2's new `hasInstallScript` flag was checked against the shipped tarball. No
     install script ships, and the integrity matches.
-  - **Merge #545 before #544, then re-run #544's Security Audit. proxy-addr reaches prod only at the
-    next `deploy.sh`.**
+  - ✅ **#545 MERGED 2026-10-07 (`ef97fb704`). NOT YET DEPLOYED.** A bare re-run of #544's old
+    Security Audit would fail again: it reuses that run's pre-#545 merge commit. This commit's push
+    triggers a fresh run against the new `main`.
   - Not fixable: `sprintf-js` (moderate, every version in range, only via mammoth → argparse).
 
 - ⚖️ **[USER]'s rulings, 2026-10-06 morning:**
