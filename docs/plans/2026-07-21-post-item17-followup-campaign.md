@@ -149,6 +149,30 @@
      check convergence (spec §5).
   8. **[USER]'s review page** of every changed figure, sidecar and textless (t23 R1/R11), before the
      merge.
+     **📤 2026-10-07: PUBLISHED, AWAITING [USER] — https://claude.ai/artifact/YafRzHzHoAF1iU4YMj6fP1**
+     **What it shows.** 126 cards, ordered:
+     - the 7 ruled figures, with each ruling quoted;
+     - the 5 textless figures;
+     - R-16's 6 remaining figures;
+     - the other 108, by chapter.
+
+     Each card shows the new copy as the real `_IS.svg` from the rehearsal, beside the June copy
+     readers see today and the OpenStax source. Opening the page on an iPad is therefore the
+     ruling-4(b) iPad check. 8 figures have no June copy on vefur, and their cards say so. phscale's
+     card carries the *basísk* note as information only.
+
+     **Where the answers go.** Collection `verdicts`, one doc per basename: `{choice: fine |
+     fix-wording | keep-june | other, note, at}`. Nothing is pre-answered: 0 of 126 at hand-off. Read
+     the answers back with `ArtifactData list` (collection `verdicts`, `out_dir`).
+
+     ⏹ **R1/R11: the PR does not merge until [USER] has answered.**
+
+     ▶ **ORDERING, ON PURPOSE: step 8 runs on the REHEARSAL's media, and step 7 (the real pass in the
+     main checkout) follows the verdicts.** Rehearsal and pass are byte-identical by construction, and
+     a `fix-wording` answer is a step-4-style value edit, so doing it this way costs one pass, not two.
+     - Step 7's acceptance: reproduce `step7r/media-run1.sha` exactly, except figures edited after the
+       review. Predict those first from a scratch compose.
+     - Page source: off-repo `c140-v6/pr-b/review/` (`gen.py`, `page.tpl.html`, `site/`).
   9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
      `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
 - **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
