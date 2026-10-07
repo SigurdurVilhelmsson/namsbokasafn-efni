@@ -103,7 +103,24 @@ describe('figure-text-config (§C140 ㊵)', () => {
     expect(doc).not.toMatch(/PROTOTYPE/i);
   });
 
-  // §C140 '6' G6 — THE PIXEL-TABLE PIN. heldBlockValues, artworkEdits and anchorExclusions change a
+  // §C140 '6' R-5c2 — the doc string is where an operator learns what the table does: the ruling and its
+  // record, every box of the figure (lone and shared), the source's alignment, the refusal of an entry that
+  // reaches no box, the COMPOSER_VERSION route, the pin, and no --force recipe.
+  it('documents sourceAlignedBoxes: R-5c2, every box, the inert refusal, the COMPOSER_VERSION route, no --force', () => {
+    const doc = loadFigureTextConfig()._sourceAlignedBoxes;
+    expect(typeof doc).toBe('string');
+    expect(doc).toContain('R-5c2');
+    expect(doc).toContain('docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md');
+    expect(doc).toMatch(/EVERY schematic box of that figure/);
+    expect(doc).toMatch(/reaches no box is refused/);
+    expect(doc).toMatch(/OUTSIDE renderHash and composedVersion/);
+    expect(doc).toMatch(/next COMPOSER_VERSION bump/);
+    expect(doc).toMatch(/COMPOSER_TABLES_PIN/);
+    expect(doc).not.toMatch(/--force/);
+  });
+
+  // §C140 '6' G6 — THE PIXEL-TABLE PIN. heldBlockValues, artworkEdits, anchorExclusions and
+  // sourceAlignedBoxes (R-5c2) change a
   // figure's composed pixels while sitting OUTSIDE renderHash and composedVersion, so nothing marks a
   // figure stale when one of them changes. Their documented route for a figure WITH a sidecar is the
   // next COMPOSER_VERSION bump; this pin is what makes a change that skips that route go red. It
@@ -120,15 +137,22 @@ describe('figure-text-config (§C140 ㊵)', () => {
   const COMPOSER_TABLES_PIN = {
     // '5' (§C140 '6' PR-A, G6): the tables as COMPOSER_VERSION '5' composes them; artworkEdits and
     // anchorExclusions are empty ('44136fa355b3678a' is the digest of {}).
+    // sourceAlignedBoxes (R-5c2) re-pinned here as an EMPTY table added — a legal re-pin (response 2).
     5: {
       heldBlockValues: '8217bf1ea07a317c',
       artworkEdits: '44136fa355b3678a',
       anchorExclusions: '44136fa355b3678a',
+      sourceAlignedBoxes: '44136fa355b3678a',
     },
   };
 
-  it('COMPOSER_PIXEL_TABLES names the three pixel tables', () => {
-    expect(COMPOSER_PIXEL_TABLES).toEqual(['heldBlockValues', 'artworkEdits', 'anchorExclusions']);
+  it('COMPOSER_PIXEL_TABLES names the four pixel tables', () => {
+    expect(COMPOSER_PIXEL_TABLES).toEqual([
+      'heldBlockValues',
+      'artworkEdits',
+      'anchorExclusions',
+      'sourceAlignedBoxes',
+    ]);
   });
 
   it('PIN: the committed pixel tables are the ones pinned for this COMPOSER_VERSION', () => {
@@ -189,6 +213,13 @@ describe('figure-text-config (§C140 ㊵)', () => {
         'anchorExclusions',
         (c) => {
           c.anchorExclusions = { [withSidecar]: { 'a|b': 'QZX reason' } };
+        },
+      ],
+      [
+        'sourceAlignedBoxes: an entry for a sidecar figure',
+        'sourceAlignedBoxes',
+        (c) => {
+          c.sourceAlignedBoxes = { [withSidecar]: 'QZX reason' };
         },
       ],
     ])('a change in %s moves the digest and names its table', (_label, table, mutate) => {

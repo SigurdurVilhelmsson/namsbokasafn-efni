@@ -340,6 +340,10 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
       "NOTE (not a failure): 2 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each",
     ],
     [
+      'sourceAlignedFigures',
+      "NOTE (not a failure): 2 figure(s) had labels laid out in a box with the source's alignment (sourceAlignedBoxes) — the report names each",
+    ],
+    [
       'artworkEditFigures',
       "NOTE (not a failure): 2 figure(s) were drawn on artwork edited by artworkEdits ([USER]'s edits) — the report names each",
     ],

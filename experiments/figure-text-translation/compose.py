@@ -51,6 +51,13 @@ would have drawn other lines or another size. The file is read only without --co
 malformed or other-figure file raises before anything is drawn (exit 1, no report). With no flag nothing is
 excluded.
 
+§C140 '6' R-5c2: `--source-boxes <file>` - figure-text.config.json `sourceAlignedBoxes`, handed over by
+figure-compose.py as `<out>/source-boxes.json` (sourceboxes.py owns the format), exactly as the two flags
+above - lays out every schematic box of THIS figure on the cell path with the source alignment
+(figcontainers' SOURCE BOXES), and names each such block in `sourceAligned` as `{key, block}`. A file whose
+reason is null switches nothing on. The same rules: read only without --control; a missing, malformed or
+other-figure file raises before anything is drawn. With no flag no box is source-aligned.
+
 §C140 '6' report keys (spec §9.8; controller decision G8): the report NAMES the layout decisions no other list
 shows. `relaid` - a translated label laid out on the source's own row breaks (M1, rule `source-breaks`, with
 `shrunkFromPt` when the anchored cut was drawn smaller: `step` does not change, G10) or drawn on its own rows (M3,
@@ -76,6 +83,7 @@ import figsym
 import heldplan
 import heldvalues
 import anchorexclusions
+import sourceboxes
 from PIL import Image
 from blockkey import block_key, block_english
 from figcolour import fill_rgb
@@ -126,6 +134,18 @@ if '--anchor-exclusions' in sys.argv and not CONTROL:
         raise ValueError(f"--anchor-exclusions {_ae_path} was written for {_ae['basename']!r}, but this figure's "
                          f"meta.json source names {_ae_stem!r} - another figure's exclusions are never used")
     ANCHOR_EXCL = _ae['exclusions']
+
+# §C140 '6' R-5c2: is THIS figure in sourceAlignedBoxes? From the file figure-compose.py writes, under the
+# same rules as the two files above. A null reason is off.
+SOURCE_BOXES = False
+if '--source-boxes' in sys.argv and not CONTROL:
+    _sb_path = Path(sys.argv[sys.argv.index('--source-boxes') + 1]).resolve()
+    _sb = sourceboxes.read_file(_sb_path)
+    _sb_stem = Path(meta['source']).stem if isinstance(meta.get('source'), str) else None
+    if _sb['basename'] != _sb_stem:
+        raise ValueError(f"--source-boxes {_sb_path} was written for {_sb['basename']!r}, but this figure's "
+                         f"meta.json source names {_sb_stem!r} - another figure's switch is never used")
+    SOURCE_BOXES = _sb['reason'] is not None
 
 surf = cairo.ImageSurface.create_from_png(str(OUT / 'artwork.png'))
 out = cairo.ImageSurface(cairo.FORMAT_RGB24, surf.get_width(), surf.get_height())
@@ -518,6 +538,13 @@ explicit_breaks, explicit_errors = [], []
 # both. `below_source`: {key, block, sizePt, sourcePt} from figlayout.below_source - a label the source set below
 # the floor, drawn smaller than its source size (R-16). Both are figure-compose.py COMPOSE_NOTES: notes, never verdicts.
 relaid, below_source = [], []
+# §C140 '6' R-5c2: blocks laid out in a SOURCE BOX ({key, block}), once each, in draw order.
+source_aligned = []
+
+
+def note_source_box(key, BI, container):
+    if container['why'].endswith('+source-boxes'):
+        source_aligned.append(dict(key=key, block=BI))
 
 # The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
 PAGE = DARK = None
@@ -564,7 +591,7 @@ def draw_held(BI, b, key):
     def container():
         if not box:
             ensure_page()
-            box.append(FC.container_for(BI, blocks, PAGE, DARK, H_PT))
+            box.append(FC.container_for(BI, blocks, PAGE, DARK, H_PT, source_boxes=SOURCE_BOXES))
         return box[0]
 
     drawn = localise_block(b)
@@ -603,6 +630,10 @@ def draw_held(BI, b, key):
     if loc:
         localized.append(key)
     held.append(dict(key=key, block=BI, changed=list(plan.changed)))
+    # §C140 '6' R-5c2: recorded only NOW, once the planner has accepted the block and a changed line was laid
+    # out in its container - a refused block is drawn run-exact in English and was never laid out in a box.
+    if box and laid:
+        note_source_box(key, BI, box[0])
     report.append(f"  HELD   {key!r} block {BI}: lines {list(plan.changed)}  "
                   + ', '.join(f"[{box[0]['cls']} {L['step']}] {L['align']} {L['size']:.2f}pt" for L in laid))
     return True
@@ -785,7 +816,8 @@ for BI, b in enumerate(blocks):
     # pure figlayout.decide. This file only measures and draws. The page and its raster are read
     # ONCE per figure, and only when a label is actually laid out.
     ensure_page()
-    container = FC.container_for(BI, blocks, PAGE, DARK, H_PT)
+    container = FC.container_for(BI, blocks, PAGE, DARK, H_PT, source_boxes=SOURCE_BOXES)
+    note_source_box(key, BI, container)
     # 🔴 A DETECTION ERROR IS NAMED HERE OR NOWHERE. container_for turns ANY exception into an
     # 'open' container whose `why` is 'error: <Type>', with the source width and no vertical room -
     # and a label that still fits that is laid out with no other trace, even when its block really
@@ -950,6 +982,8 @@ if SVG:
     'heldConfigPath': HELD_CONFIG,
     # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
     'anchorExcluded': anchor_excluded,
+    # §C140 '6' R-5c2. Additive (see `source_aligned` above): [] with no --source-boxes file.
+    'sourceAligned': source_aligned,
     # §C140 '6' report keys (G8). Additive (see `relaid` / `below_source` above).
     'relaid': relaid,
     'belowSource': below_source,
@@ -978,6 +1012,12 @@ if anchor_excluded:
     for e in anchor_excluded:
         print(f"     {e['key']!r} block {e['block']}: "
               + ('M1 would have cut it differently' if e['changed'] else 'M1 would have changed nothing'))
+# §C140 '6' R-5c2. Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if source_aligned:
+    print(f"\nNOTE (not a failure): {len(source_aligned)} label(s) laid out in a box with the SOURCE's "
+          f"alignment (sourceAlignedBoxes):")
+    for e in source_aligned:
+        print(f"     {e['key']!r} block {e['block']}")
 # §C140 '6' report keys (G8). Leading '\n' is load-bearing - see the note above the compose-report.json write.
 if relaid:
     print(f"\nNOTE (not a failure): {len(relaid)} label(s) laid out on the source's own row breaks or rows:")

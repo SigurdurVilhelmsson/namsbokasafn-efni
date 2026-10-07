@@ -1565,6 +1565,151 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
   });
 });
 
+// §C140 '6' R-5c2 — sourceAlignedBoxes: {basename: reason}. Keyed like artworkEdits (type, fold, exactly one
+// book), the policy tables' reason rule, and artworkEdits' corpus rules (never composed; an .svg row and a
+// translated copy). Whether the figure HAS a box is figure-compose.py's verify, at compose time.
+const sbCfg = () => ({ ...baseCfg(), sourceAlignedBoxes: { CNX_Other: R } });
+const sbCorpus = () => ({
+  ...baseCorpus(),
+  boxState: { CNX_Other: { rows: 1, translatedCopies: [`CNX_Other${S}.svg`], svgRows: 1 } },
+});
+
+describe("validateFigureConfig — sourceAlignedBoxes (§C140 '6', R-5c2)", () => {
+  it('a valid entry passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(sbCfg(), sbCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'a table that is not an object',
+      (c) => {
+        c.sourceAlignedBoxes = [];
+      },
+      null,
+      /sourceAlignedBoxes must be an object/,
+    ],
+    [
+      'a null table',
+      (c) => {
+        c.sourceAlignedBoxes = null;
+      },
+      null,
+      /sourceAlignedBoxes must be an object/,
+    ],
+    [
+      'an entry that is not a reason string',
+      (c) => {
+        c.sourceAlignedBoxes.CNX_Other = true;
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Other needs a reason of over 40 characters/,
+    ],
+    [
+      'a reason of 40 characters or fewer',
+      (c) => {
+        c.sourceAlignedBoxes.CNX_Other = 'x'.repeat(40);
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Other needs a reason of over 40 characters/,
+    ],
+    [
+      "a basename that is no book's image",
+      (c) => {
+        c.sourceAlignedBoxes = { CNX_Nowhere: R };
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Nowhere names an image in 0 books/,
+    ],
+    [
+      'two keys that fold together',
+      (c) => {
+        c.sourceAlignedBoxes = { CNX_Other: R, cnx_other: R };
+      },
+      null,
+      /sourceAlignedBoxes: CNX_Other and cnx_other fold to the same key/,
+    ],
+    [
+      'a basename that is also in retiredFigures',
+      (c) => {
+        c.sourceAlignedBoxes = { CNX_Ret: R };
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Ret is also in retiredFigures/,
+    ],
+    [
+      'a basename that is also in keptCopies',
+      (c) => {
+        c.sourceAlignedBoxes = { CNX_Kept: R };
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Kept is also in keptCopies/,
+    ],
+    [
+      'a basename that is also in supersededArtwork',
+      (c) => {
+        c.sourceAlignedBoxes = { CNX_Sup: R };
+      },
+      null,
+      /sourceAlignedBoxes\.CNX_Sup is also in supersededArtwork/,
+    ],
+    [
+      'a figure with no image-mapping row naming an .svg',
+      () => {},
+      (k) => {
+        k.boxState.CNX_Other.svgRows = 0;
+      },
+      /sourceAlignedBoxes\.CNX_Other has no image-mapping row naming an \.svg/,
+    ],
+    [
+      'a figure with no translated copy',
+      () => {},
+      (k) => {
+        k.boxState.CNX_Other.translatedCopies = [];
+      },
+      /sourceAlignedBoxes\.CNX_Other has no translated copy at the top of its book's media\//,
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = sbCfg();
+    const k = sbCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent table (an absent table is an empty one)',
+      (c) => {
+        delete c.sourceAlignedBoxes;
+      },
+    ],
+    [
+      'an empty table',
+      (c) => {
+        c.sourceAlignedBoxes = {};
+      },
+    ],
+    [
+      'a reason of exactly 41 characters (over, not at)',
+      (c) => {
+        c.sourceAlignedBoxes.CNX_Other = 'x'.repeat(41);
+      },
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg) => {
+    const c = sbCfg();
+    mutateCfg(c);
+    expect(validateFigureConfig(c, sbCorpus())).toEqual([]);
+  });
+
+  // Fixtures that predate the table carry no boxState: the corpus rules are skipped, the reason rule is not.
+  it('CONTROL: a corpus with no boxState passes a valid entry and still refuses a short reason', () => {
+    expect(validateFigureConfig(sbCfg(), baseCorpus())).toEqual([]);
+    const c = sbCfg();
+    c.sourceAlignedBoxes.CNX_Other = 'short';
+    expect(validateFigureConfig(c, baseCorpus()).join('\n')).toMatch(/needs a reason of over 40/);
+  });
+});
+
 // §C140 ㊾ D5(a), a skeptic's finding (2026-10-03). JSON.parse keeps only the LAST of two equal keys,
 // so `validateFigureConfig`, which reads the PARSED object, cannot see a figure's heldBlockValues entry
 // written twice, or a block key repeated inside one: the first value vanishes with no error and its
@@ -1927,6 +2072,27 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
       'artworkEdits.CNX_Bare has no image-mapping',
       'artworkEdits.CNX_Bare has no translated',
       'artworkEdits.CNX_Png has no image-mapping',
+    ]);
+  });
+
+  // §C140 '6' R-5c2 — boxState is editState's measurement (copyState plus the .svg rows), read for this table's keys; no
+  // sidecar is read. The unparsable sidecar planted here would throw if it were.
+  it('reports each figure’s .svg rows and copies, reads no sidecar, and the validator names each gap', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    const cfgB = { sourceAlignedBoxes: { CNX_Svg: R, CNX_Png: R, CNX_Bare: R, CNX_Absent: R } };
+    const k = buildValidatorCorpus(root, cfgB);
+    expect(k.boxState).toEqual({
+      CNX_Svg: { rows: 1, translatedCopies: [`CNX_Svg${S}.svg`], svgRows: 1 },
+      CNX_Png: { rows: 1, translatedCopies: [`CNX_Png${S}.png`], svgRows: 0 },
+      CNX_Bare: { rows: 0, translatedCopies: [], svgRows: 0 },
+    });
+    const named = validateFigureConfig(cfgB, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'sourceAlignedBoxes.CNX_Absent names an image',
+      'sourceAlignedBoxes.CNX_Bare has no image-mapping',
+      'sourceAlignedBoxes.CNX_Bare has no translated',
+      'sourceAlignedBoxes.CNX_Png has no image-mapping',
     ]);
   });
 });

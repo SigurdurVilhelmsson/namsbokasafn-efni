@@ -44,7 +44,9 @@ THE GUARDS, IN THIS ORDER - each a HeldRefusal(reason, **detail), fatal for the 
                                Only an UNSHARED box: a box that also holds another block's source
                                line is a shared box, which figcontainers lays out on the cell path
                                (cls 'cell', why '+shared') - that path reads the source baselines, so
-                               it is not refused here (§C140 '6', M7)
+                               it is not refused here (§C140 '6', M7). Nor is a box in a figure in
+                               `sourceAlignedBoxes` (R-5c2): every box there is a cell too (why
+                               '+source-boxes'), read on the same source baselines
   container-error {why}        container detection raised (`why` starts 'error:')
 then for each CHANGED line, in line order:
   opens-styled {line}          the visual line's first run carries a style (a script or italic)

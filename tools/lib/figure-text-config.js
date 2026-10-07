@@ -71,7 +71,12 @@ export function normkey(stem) {
  * tools/__tests__/figure-text-config.test.js's COMPOSER_TABLES_PIN is what makes a change that skips
  * that route go red. A new table of this kind is appended here, in the commit that adds it.
  */
-export const COMPOSER_PIXEL_TABLES = ['heldBlockValues', 'artworkEdits', 'anchorExclusions'];
+export const COMPOSER_PIXEL_TABLES = [
+  'heldBlockValues',
+  'artworkEdits',
+  'anchorExclusions',
+  'sourceAlignedBoxes', // §C140 '6' R-5c2
+];
 
 /** JSON with every object's keys sorted, recursively: the same tables in any key order hash the same. */
 function canonicalJson(v) {

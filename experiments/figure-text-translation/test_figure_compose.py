@@ -91,9 +91,10 @@ K_VERBATIM = 'H2O (g)'
 # this file instead of silently shrinking the set it is checked against. `held` (§C140 ㊾ D5(a)) is
 # the labels drawn from heldBlockValues; `heldErrors` is NOT a note - verify refuses it (section 12).
 # `relaid`, `belowSource` and `anchorExcluded` are the §C140 '6' report keys (G8, T11): source row breaks /
-# rows, an R-16 shrink below the source size, and an R-20 exclusion.
+# rows, an R-16 shrink below the source size, and an R-20 exclusion. `sourceAligned` (R-5c2) is a label laid
+# out in a box with the source's alignment.
 COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held', 'relaid', 'belowSource',
-                 'anchorExcluded')
+                 'anchorExcluded', 'sourceAligned')
 
 fails = []
 
@@ -1079,19 +1080,24 @@ NOTES_PLANTED = {
     # `verify` checks this list against blocks.json before it is copied (the anchorExclusions contract), so
     # the planted figure really CONFIGURES the key - main_with_planted_report writes it into the --config.
     'anchorExcluded': [{'key': K_OBS, 'block': 0, 'changed': True}],
+    # §C140 '6' R-5c2: `verify` refuses a non-empty list unless the figure is configured, so the planted
+    # figure really CONFIGURES sourceAlignedBoxes - main_with_planted_report writes it into the --config.
+    'sourceAligned': [{'key': K_HYP, 'block': 1}],
 }
 HELD_PLANTED = {K_VERBATIM: 'QZX'}
 ANCHOR_PLANTED = {K_OBS: 'QZ R-20 planted reason, long enough to clear the forty-character minimum'}
+SOURCE_PLANTED = 'QZ R-5c2 planted reason, long enough to clear the forty-character minimum'
 # Report fields that are NOT notes, planted so 11b can show they stay out of compose.json: `heldErrors` is
 # fatal at verify (never a note), and the two paths are the composer's own bookkeeping.
 REPORT_ONLY = {'heldErrors': [], 'heldValuesPath': '/planted/held-values.json',
                'heldConfigPath': '/planted/figure-text.config.json'}
 
 
-def main_with_planted_report(extra_report, held_values=None, anchor=None):
+def main_with_planted_report(extra_report, held_values=None, anchor=None, source_boxes=None):
     """Prepare the fixture, plant a verify-clean report carrying `extra_report`, drive main().
-    `held_values` / `anchor` both None = no --config (the production route, the committed config); otherwise a
-    --config whose heldBlockValues / anchorExclusions configure exactly those for this figure.
+    `held_values` / `anchor` / `source_boxes` all None = no --config (the production route, the committed
+    config); otherwise a --config whose heldBlockValues / anchorExclusions / sourceAlignedBoxes configure exactly
+    those for this figure.
     -> (main's return code, the compose.json it wrote, the prepare result, `handed`): `handed` records
     what main() gave the child - the held-values path and that file's content AT SPAWN TIME - plus
     `out` and `config`."""
@@ -1109,12 +1115,14 @@ def main_with_planted_report(extra_report, held_values=None, anchor=None):
                   'translated': [b['key'] for b in blocks if b.get('send')],
                   'translationsPath': str(tr), 'control': False, **extra_report}
         argv = ['--out', str(out), '--translations', str(tr)]
-        handed = {'out': out.resolve(), 'config': None, 'path': None, 'doc': None}
-        if held_values is not None or anchor is not None:
+        handed = {'out': out.resolve(), 'config': None, 'path': None, 'doc': None, 'srcPath': None, 'srcDoc': None}
+        if held_values is not None or anchor is not None or source_boxes is not None:
             cfg = Path(td) / 'config.json'
             doc = {'heldBlockValues': {'CNX_Fixture_Notes': held_values or {}}}
             if anchor is not None:
                 doc['anchorExclusions'] = {'CNX_Fixture_Notes': anchor}
+            if source_boxes is not None:
+                doc['sourceAlignedBoxes'] = {'CNX_Fixture_Notes': source_boxes}
             cfg.write_text(json.dumps(doc, ensure_ascii=False), encoding='utf-8')
             handed['config'] = cfg.resolve()
             argv += ['--config', str(cfg)]
@@ -1123,10 +1131,12 @@ def main_with_planted_report(extra_report, held_values=None, anchor=None):
             returncode, stdout, stderr = 0, '', ''
 
         # The third parameter is DEFAULTED so the same child serves a wrapper that does not pass one; the
-        # fourth (§C140 '6' R-20, the anchor-exclusions path) likewise.
-        def planted_child(out_dir, _translations, held_path=None, _anchor_path=None):
+        # fourth (§C140 '6' R-20, the anchor-exclusions path) and fifth (R-5c2, the source-boxes path) likewise.
+        def planted_child(out_dir, _translations, held_path=None, _anchor_path=None, source_path=None):
             handed['path'] = held_path
             handed['doc'] = load_json(held_path) if held_path else None
+            handed['srcPath'] = source_path
+            handed['srcDoc'] = load_json(source_path) if source_path else None
             (out_dir / 'compose-report.json').write_text(
                 json.dumps(report, ensure_ascii=False), encoding='utf-8')
             (out_dir / 'translated.svg').write_text('<svg/>', encoding='utf-8')
@@ -1144,7 +1154,8 @@ def main_with_planted_report(extra_report, held_values=None, anchor=None):
 
 
 if _mod is not None:
-    rc, d, prep, handed = main_with_planted_report({**NOTES_PLANTED, **REPORT_ONLY}, HELD_PLANTED, ANCHOR_PLANTED)
+    rc, d, prep, handed = main_with_planted_report({**NOTES_PLANTED, **REPORT_ONLY}, HELD_PLANTED, ANCHOR_PLANTED,
+                                                   SOURCE_PLANTED)
     check('11 PRECONDITION the planted report is one verify ACCEPTS - main() exits 0 with an '
           'outputPath, so 11a is about the copy and not a refusal',
           prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
@@ -1163,6 +1174,13 @@ if _mod is not None:
           and handed['doc'] == {'basename': 'CNX_Fixture_Notes', 'configPath': str(handed['config']),
                                 'values': HELD_PLANTED},
           f"path={handed['path']!r} doc={handed['doc']!r}")
+    check("11f main() hands the child <out>/source-boxes.json, already written at spawn time with this figure's "
+          "basename, the --config path and its configured reason (§C140 '6' R-5c2)",
+          handed['srcPath'] is not None
+          and Path(handed['srcPath']).resolve() == handed['out'] / 'source-boxes.json'
+          and handed['srcDoc'] == {'basename': 'CNX_Fixture_Notes', 'configPath': str(handed['config']),
+                                   'reason': SOURCE_PLANTED},
+          f"path={handed['srcPath']!r} doc={handed['srcDoc']!r}")
 
     # THE OLDER COMPOSER. Its report has none of the lists, and that must read as EMPTY lists -
     # never a refusal, because none of them is a verdict - when nothing is configured for the figure.
