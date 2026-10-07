@@ -118,6 +118,32 @@
      - `test_figrings.py`;
      - the three-engine `browser-sweep.mjs` over every changed figure, with per-face
        `@font-face` first.
+     **✅ 2026-10-07, all three done. The pass was REHEARSED with the real driver** in a scratch
+     worktree (`c140-v6/wt-prb`, detached at `a35206114`, no `.env`). Every prediction was written
+     before the first compose and held exactly:
+     - 22/22 units `VERDICT ok`, and MT 0 in every log.
+     - 248 textless figures recomposed (counted from the driver's logs). Exactly the 5 STIX ones
+       change.
+     - 126 media files change (121 sidecar + 5 textless): 0 unpredicted, 0 missing.
+     - All 451 sidecar figures are byte-equal to their predicted source.
+     - 445 sidecars change only `composedVersion`; the step-4 six also change `composedHash`.
+       None carries `state`.
+     - A second full run converges: 451 `skipped-current`, and all 711 `_IS.svg` are
+       byte-identical across the two runs.
+
+     `test_figrings.py` and `test_figsym.py` print ALL PASS.
+
+     The sweep covers the 126 changed figures in Chromium 153, Firefox 155 and WebKit 26.6 (all
+     rendered):
+     - `notext`: 0 flagged in either engine pair.
+     - `nofont`: 126/126 differ in every engine.
+     - Per-face check: 66 figures embed a new STIX face. Stripping only those faces changes 66/66 in
+       every engine, and the determinism control changes 0/66.
+
+     Evidence: off-repo `c140-v6/pr-b/step7r/RESULTS.md` (+ `PREDICTIONS.json`, `media-run1.sha`,
+     which the real step-7 pass must reproduce). Logged, not fixed: phscale *basísk* stays
+     right-anchored at the source *basic*'s right end (406.617), as *basískt* was in '5'. This is
+     pre-existing; the source draws it left at 385.61. It goes on [USER]'s review page.
   7. **The pass:** `node tools/figure-run.js --book efnafraedi-2e --chapter <N> --stale`, one
      chapter at a time, with `.env` moved aside. Never `--force`; never the autorun script. Then
      check convergence (spec §5).
