@@ -35,10 +35,11 @@
      `artworkEdits` (list box +6 pt; optional Reactivity box +27 pt → 9 pt). *Heilsufars-* stays
      8.5 pt (its fill+stroke rect is not selectable). **✅ [USER] 2026-10-07: R-5c2 = (b+), R-5c3 =
      singular.** Record: `docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md`.
-     That adds step 2a (code) below. Remove `wt-proto` once 2a's acceptance cmp passes.
+     That adds step 2a (code) below. (`wt-proto` removed 2026-10-07.)
   2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
      FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
-     against U+0020 (spec §7.2).
+     against U+0020 (spec §7.2). **✅ 2026-10-07 (`7ae43724d`): section E, U+0020** — the two
+     characters compose byte-identically under '6' and the validator accepts both.
   2a. **[CODE] A per-figure "source-aligned boxes" table (R-5c2 = b+), its own reviewed unit.**
      Shape: `{basename: reason}`, the basename checked as `artworkEdits` checks it (reuse the
      validator), the reason rule of the policy tables. Hand-off like `anchorExclusions`
@@ -49,7 +50,12 @@
      `artworkEdits`, composing the step-4 HazDiamond sidecar is byte-identical to the prototype's
      `step1/res/q-wide6r27/…/translated.svg`; with the table absent, byte-identical to `ctl`.
      Then review + mutation, then a corpus control: the delta against T12 `prA2` is HazDiamond
-     only.
+     only. **✅ 2026-10-07, `63cc7a176` + `7ae43724d`:** acceptance cmp ON == prototype, OFF ==
+     ctl (re-run after the review fixes); 451/451 sidecar figures byte-identical to `prA2` with
+     the table empty; review (1 HIGH: `test_figure_compose.py`'s stub — T12-only, outside the
+     suite runner; 6 LOW) fixed red-first; mutation 26/26 meaningful killed, 1 equivalent
+     (the dead guard, removed); 42/42 Python suites + `test_figure_compose.py`; `npm test`
+     green. Evidence: off-repo `c140-v6/pr-b/` (`mutation/`, `step1/res/corpus-ctl`, logs).
   3. **Fill the tables in `figure-text.config.json`:**
      - `heldBlockValues`: the bullets.
      - `artworkEdits` for FoodLabel: move the left bands AND the circle column 15 pt left; widen
