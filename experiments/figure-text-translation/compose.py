@@ -20,7 +20,7 @@ with an edited identity label; no switch is needed).
 §C140 ② ③ ⑨ (spec docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md):
 a TRANSLATED straight label is laid out by two pure helpers and drawn here - `figcontainers` says
 what it sits in (box / table cell / open with a free box), `figlayout.decide` chooses its lines,
-size (floor 7.5 pt), anchor and any named overhang, and `figscripts` carries the source's
+size (shrink floor: `figlayout.size_steps`), anchor and any named overhang, and `figscripts` carries the source's
 sub/superscripts and italics onto the value, one <text> per styled segment. Widths are LINEAR
 (hint metrics off). A KEPT label is drawn run-exact with Icelandic number separators (`numloc`),
 except under --control. The report gains `unformatted`, `overflow`, `localized` and
@@ -39,6 +39,25 @@ drawn (exit 1, no report). With no flag nothing is held. BY EYE: `figure-compose
 --translations <file>`, which always passes the flag; a direct run of this file without it draws held
 labels in English, and the report's `heldValuesPath: null` says so.
 
+§C140 '6' M1 and R-20 (design docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md,
+D-a): every translated straight label hands figlayout `cues['texts']`, the text of each VISUAL source line
+(`FT.visual_ink`), so `figlayout.decide` can keep a source row boundary that a verbatim token marks (M1).
+`--anchor-exclusions <file>` names block keys whose label M1 must leave alone - figure-text.config.json
+`anchorExclusions`, which figure-compose.py reads and hands over as `<out>/anchor-exclusions.json`
+(anchorexclusions.py owns the format), exactly as `--held-values` above. An excluded block is laid out with
+no `texts` cue, which is M1 switched off, and every block carrying an excluded key - laid out or not - is
+reported in `anchorExcluded` as `{key, block, changed}`, `changed` True when a second decide WITH the cue
+would have drawn other lines or another size. The file is read only without --control, and a missing,
+malformed or other-figure file raises before anything is drawn (exit 1, no report). With no flag nothing is
+excluded.
+
+§C140 '6' report keys (spec §9.8; controller decision G8): the report NAMES the layout decisions no other list
+shows. `relaid` - a translated label laid out on the source's own row breaks (M1, rule `source-breaks`, with
+`shrunkFromPt` when the anchored cut was drawn smaller: `step` does not change, G10) or drawn on its own rows (M3,
+rule `source-rows`), from figlayout.report_entries; `belowSource` - a translated label the source set below the
+7.5 pt floor and drawn smaller than that source size (R-16), from figlayout.below_source. figure-compose.py copies
+both, with `anchorExcluded`, into compose.json as NOTES (never verdicts).
+
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
 survives re-extraction.
@@ -56,6 +75,7 @@ import numloc
 import figsym
 import heldplan
 import heldvalues
+import anchorexclusions
 from PIL import Image
 from blockkey import block_key, block_english
 from figcolour import fill_rgb
@@ -94,6 +114,19 @@ if '--held-values' in sys.argv and not CONTROL:
                          f"meta.json source names {_stem!r} - another figure's values are never drawn")
     HELD, HELD_CONFIG = _held['values'], _held['configPath']
 
+# §C140 '6' R-20: the block keys M1 must leave alone, {blockKey: reason}, from the file figure-compose.py
+# writes. The same rules as --held-values directly above: not even resolved under --control, every problem
+# raises before anything is drawn, and a file written for another figure is never used.
+ANCHOR_EXCL = {}
+if '--anchor-exclusions' in sys.argv and not CONTROL:
+    _ae_path = Path(sys.argv[sys.argv.index('--anchor-exclusions') + 1]).resolve()
+    _ae = anchorexclusions.read_file(_ae_path)
+    _ae_stem = Path(meta['source']).stem if isinstance(meta.get('source'), str) else None
+    if _ae['basename'] != _ae_stem:
+        raise ValueError(f"--anchor-exclusions {_ae_path} was written for {_ae['basename']!r}, but this figure's "
+                         f"meta.json source names {_ae_stem!r} - another figure's exclusions are never used")
+    ANCHOR_EXCL = _ae['exclusions']
+
 surf = cairo.ImageSurface.create_from_png(str(OUT / 'artwork.png'))
 out = cairo.ImageSurface(cairo.FORMAT_RGB24, surf.get_width(), surf.get_height())
 ctx = cairo.Context(out)
@@ -113,12 +146,17 @@ def draw_run_exact(block, key):
     -> True when a pdfminer `(cid:N)` placeholder was removed from any run (the caller names
     the block in `undecodable`).
 
-    §C140 ⑥a: a run whose BaseFont (subset prefix stripped) is exactly `STIXGeneral-Regular`
-    and whose drawn text is entirely in the official STIX 1.1.0 cmap is drawn in FigSym instead
-    of Liberation - `key` names it in STIX['drawn']. A run in that face but outside the cmap, or
-    a run in another STIX face, is named in STIX['skipped'] instead and stays FigIS. A missing
-    or wrong font file raises `figsym.FontUnavailable` out of `figsym.covers()` - uncaught: a
-    figure with an eligible run simply fails to compose rather than silently drawing Liberation.
+    §C140 ⑥a + '6' M6 ([USER] R-12): a run `figsym.verified_face` admits - STIXGeneral-Regular by
+    name, or STIXGeneral-Italic/-Bold/-BoldItalic from a Type 1 font object - whose drawn text is
+    entirely in that face's official STIX 1.1.0 cmap is drawn in FigSym, in that face, instead of
+    Liberation - `key` names it in STIX['drawn']. A WHITESPACE-ONLY run selects a face only when it
+    is Regular (the v3 blank rule: a blank Italic run stays FigIS, a blank Regular one stays FigSym
+    as under ⑥a - no byte churn where there is no ink). A run outside the cmap is named in
+    STIX['skipped'] with reason `cmap`; an inked run in a further face from a non-Type 1 object
+    (TrueType / CID TrueType, never outline-compared, §C140 ㉞) `unverified-object`; any other STIX
+    face (SizeOneSym, a bare STIXGeneral, a blank further-face run) `other-face` - each stays FigIS.
+    A missing or wrong font file raises `figsym.FontUnavailable` out of `figsym.covers_face()` -
+    uncaught: a figure with an eligible run simply fails to compose rather than silently drawing Liberation.
 
     🔴 WHY: `runs.json` already carries what the source drew - a subscript's size and
     baseline, an italic BaseFont, the ten spaces a typist put in an arrow gap, a kerned-back
@@ -141,14 +179,16 @@ def draw_run_exact(block, key):
         bold, italic = FT.run_face(r, meta['fonts'])
         family = None
         base = FS._base_name(r, meta['fonts'])
-        if figsym.eligible_base(base):
-            if figsym.covers(text):               # raises figsym.FontUnavailable when the font is missing/wrong
+        face = figsym.verified_face(r, meta['fonts'])
+        if face is not None and (text.strip() or face == (False, False)):   # v3: a blank Regular run keeps ⑥a's FigSym
+            if figsym.covers_face(text, face):    # raises figsym.FontUnavailable when the font is missing/wrong
                 family = figsym.FAMILY
                 STIX['drawn'].add(key)
             else:
                 STIX['skipped'].append(dict(key=key, reason='cmap'))
         elif base.startswith('STIX'):
-            STIX['skipped'].append(dict(key=key, reason='other-face'))
+            STIX['skipped'].append(dict(key=key, reason='unverified-object' if text.strip() and figsym.eligible_face(base)
+                                        else 'other-face'))
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
         ITEMS.append(dict(path='run-exact', text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
@@ -234,11 +274,16 @@ _ADV = {}
 
 
 def lin_advance(text, run, size, st):
-    """The LINEAR advance of ONE drawn segment at its own size and slant (weight from the line's
-    run), memoised: the layout decision asks for the same pieces at many sizes."""
+    """The LINEAR advance of ONE drawn segment at its own size and slant, memoised: the layout decision asks
+    for the same pieces at many sizes. A FigIS segment takes its weight from the line's run (`run`); a segment
+    `serif_face` draws in a STIX face (§C140 '6' M6 half B) is measured in THAT face - the source run's weight
+    and slant, `st.serif` - with figsym.advance (memoised there, not in _ADV), exactly as draw_layout draws it."""
     bold = run['font'] in BOLD
     italic = st is not None and st.italic
     px = size * S if st is None else size * st.ratio * S
+    sf = serif_face(text, run, st)
+    if sf is not None:
+        return figsym.advance(text, sf, px / S)
     k = (text, bold, italic, px)
     if k not in _ADV:
         mctx.select_font_face(FAMILY, cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
@@ -246,6 +291,20 @@ def lin_advance(text, run, size, st):
         mctx.set_font_size(px)
         _ADV[k] = mctx.text_extents(text).x_advance / S
     return _ADV[k]
+
+
+def serif_face(text, run, st):
+    """§C140 '6' M6 half B ([USER] R-13): the STIX face (bold, italic) a layout segment is drawn in, or None (FigIS).
+
+    Weight AND slant are the SOURCE face's, `st.serif` - set by figscripts from `figsym.verified_face` on the source
+    run, so only a character that came from a STIX General run eligible there - and never a blank segment - and only
+    when that face's official cmap covers the text. NOT the line run's weight that `setfont_st` uses for FigIS: the
+    item's `bold` is `sf[0]` (draw_layout) and its width `figsym.advance(text, sf)` (lin_advance). `run` is unused
+    here; it keeps the call shape of lin_advance/setfont_st."""
+    if st is None or getattr(st, 'serif', None) is None or not text.strip():
+        return None
+    face = tuple(st.serif)
+    return face if figsym.covers_face(text, face) else None
 
 
 def line_segments(chars):
@@ -279,12 +338,13 @@ def dev(x, y):
     return x * S, (H_PT - y) * S
 
 
-def draw_layout(layout, run_for_line, rot):
+def draw_layout(layout, run_for_line, rot, key, block):
     """Draw a `figlayout.decide` Layout: one ITEMS entry - one <text> - per SEGMENT of each laid-out line.
 
     run_for_line(j) -> the run whose weight and fill output line j is drawn in. The translated path passes
     the first run of VISUAL source line min(j, last) (§C140 ㉑); the held path (§C140 ㊾ D5(a)) passes the
-    first run of the one visual line it lays out. `rot` is the block's rotation in degrees.
+    first run of the one visual line it lays out. `rot` is the block's rotation in degrees. `key` and `block`
+    (the block key and index) only name a segment drawn in a STIX face in STIX['layout'] (§C140 '6' M6 half B).
 
     EXTRACTED VERBATIM from the translated path's draw loop (§C140 ㊾ D5(a)), so a translated label and a
     held one are drawn by ONE implementation: every item keeps path='layout', which svgout draws with
@@ -305,10 +365,13 @@ def draw_layout(layout, run_for_line, rot):
             y = aa * math.sin(rad) + pp * math.cos(rad)
             px, py = dev(x, y)
             setfont_st(fr, size, st)
+            sf = serif_face(t, fr, st)
+            if sf is not None:
+                STIX['layout'].append(dict(key=key, block=block, text=t, face=list(sf)))
             ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
                               rot=rot, size=size if st is None else size * st.ratio,
-                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
-                              rgb=cmyk(fr['fill']), dx=0.0))
+                              bold=(sf[0] if sf else fr['font'] in BOLD), italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0, **(dict(family=figsym.FAMILY) if sf else {})))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
             ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
             ctx.restore()
@@ -398,6 +461,11 @@ identity, run_exact, degenerate_kept = [], [], []
 # ALSO in `missing`), `in-translations` (the --translations file has the key too; its translation is drawn)
 # and `no-block` (block None: no block of this figure carries the key). Any entry refuses the figure.
 held, held_errors = [], []
+# §C140 '6' R-20, additive, draw order WITH multiplicity: `{key, block, changed}` for EVERY block whose key
+# --anchor-exclusions names, whatever path draws it - `changed` is False for a block that is not laid out
+# (kept, held, an arc) and, for a laid-out one, whether M1 would have drawn other lines or another size.
+# figure-compose.py compares it against blocks.json's count as a multiset. A note, never a refusal.
+anchor_excluded = []
 # §C140 ②, additive and in draw order WITH multiplicity: every formula stretch a translated label
 # could NOT carry over - `{key, token, stretch, reason, candidates}`, reason in absent / ambiguous /
 # no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
@@ -417,9 +485,15 @@ localized = []
 # WITH multiplicity - so its length counts blocks with a FigSym run, not runs or <text> items.
 # ⚠️ `stix` is NOT one of figure-compose.py's COMPOSE_NOTES, so the driver's report never shows it;
 # read it from compose-report.json.
-# `other-face` is any BaseFont starting `STIX` that is not eligible (Italic, Bold, SizeOneSym,
-# NonUnicode, ...); the eligible test runs first, so the prefix decides nothing that is drawn.
-STIX = {'drawn': set(), 'skipped': []}
+# `other-face` is any BaseFont starting `STIX` that is not eligible (SizeOneSym, NonUnicode, ...; in a kept
+# block also a blank further-face run); the eligible test runs first, so the prefix decides nothing that is drawn.
+# §C140 '6' M6: a kept INKED run in STIXGeneral-Italic/-Bold/-BoldItalic from a non-Type 1 object is
+# `unverified-object` instead (draw_run_exact). ⚠️ The translated- and held-path checks below still name every
+# non-Regular STIX run `other-face`, although half B may now draw its character in FigSym - read `layout` for that.
+# `layout` (M6 half B, [USER] R-13), draw order WITH multiplicity: `{key, block, text, face}` for every LAYOUT
+# segment drawn in a STIX face - a styled source character from an eligible STIX run (figscripts SourceStyle.serif)
+# in a translated or held label; `face` is [bold, italic].
+STIX = {'drawn': set(), 'skipped': [], 'layout': []}
 # §C140 ③, additive, draw order: every translated label drawn overhanging, NAMED (R5) -
 # `{key, block, word, needPt, budgetPt, sizePt, axis}` plus `linePt` on the width axis. axis 'width':
 # `word` does not fit at the floor (needPt its width; word None for a line-count overhang, needPt the
@@ -430,6 +504,21 @@ overflow = []
 # §C140 ③, additive, draw order WITH multiplicity: `{key, block, why}` for every translated label
 # whose container detection RAISED (see the comment at the append).
 container_errors = []
+# §C140 '6' R-5a ([USER] 2026-10-05), additive, draw order WITH multiplicity: a translated value carrying an LF
+# (U+000A) is drawn with the editor's own line breaks. `explicit_breaks`: {key, block, lines, pitch} for every block
+# drawn that way; `explicit_errors`: {key, block, reason, line} for one whose breaks could not be honoured
+# (figtext.explicit_lines names the reasons; `run-exact`, line None, is an LF value token-equal to the English, drawn
+# run-exact on the source's rows - G21 #2) - that label is drawn as if each LF were a space, and figure-compose.py
+# refuses the figure. Neither is one of figure-compose.py's COMPOSE_NOTES.
+explicit_breaks, explicit_errors = [], []
+# §C140 '6' report keys (spec §9.8, G8), additive, draw order WITH multiplicity, translated labels only (a held
+# line is refused rather than shrunk, and a kept, identity or arc label is never laid out by figlayout).
+# `relaid`: {key, block, rule, ...} from figlayout.report_entries - rule `source-breaks` (M1 honoured: sizePt,
+# shrunkFromPt, anchors) and/or `source-rows` (M3 drew it on the source rows: sizePt, leadPt); one label may carry
+# both. `below_source`: {key, block, sizePt, sourcePt} from figlayout.below_source - a label the source set below
+# the floor, drawn smaller than its source size (R-16). Both are figure-compose.py COMPOSE_NOTES: notes, never verdicts.
+relaid, below_source = [], []
+
 # The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
 PAGE = DARK = None
 
@@ -489,7 +578,8 @@ def draw_held(BI, b, key):
         return False
     rot = b[0]['rot']
     off, undec, loc, laid = 0, False, False, []
-    for entry in plan.lines:
+    inks = FT.visual_ink(b)   # a changed line is drawn in the font and fill of its first INK run
+    for li, entry in enumerate(plan.lines):
         if entry[0] == 'runs':
             part = entry[1]
             if draw_run_exact(part, key):
@@ -499,7 +589,7 @@ def draw_held(BI, b, key):
             off += len(part)
         else:
             _, layout, vl = entry
-            draw_layout(layout, lambda j, r0=vl[0]: r0, rot)
+            draw_layout(layout, lambda j, r0=inks[li][0]: r0, rot, key, BI)
             for r in vl:
                 rbase = FS._base_name(r, meta['fonts'])
                 if figsym.eligible_base(rbase):
@@ -533,6 +623,10 @@ for BI, b in enumerate(blocks):
     # report. test_blockkey_consumers.py asserts the two agree on a real figure.
     key = block_key(b)
     keys.append(key)
+    excl_entry = None
+    if key in ANCHOR_EXCL:
+        excl_entry = dict(key=key, block=BI, changed=False)
+        anchor_excluded.append(excl_entry)
 
     # KEPT := --control, or no translation, or an empty one, or an IDENTITY reply. Every kept
     # block is drawn run-exact (draw_run_exact); only a genuine translation is laid out.
@@ -573,6 +667,12 @@ for BI, b in enumerate(blocks):
             if FT.is_identity(TR[key], block_english(b), arc):
                 identity.append(key)
                 kept = True
+                # R-5a, review-fix round G21 #2: identity compares TOKENS, and an LF is whitespace to str.split(),
+                # so an editor's break in an otherwise-English value lands here and is drawn on the SOURCE's rows.
+                # It is not honoured, so it is named (`run-exact`) and figure-compose.py refuses the figure -
+                # never dropped in silence. (A legacy list value is never an explicit-break value.)
+                if isinstance(TR[key], str) and '\n' in TR[key]:
+                    explicit_errors.append(dict(key=key, block=BI, reason='run-exact', line=None))
 
     if kept:
         if FT.is_arc(b) and circle is None:
@@ -605,6 +705,10 @@ for BI, b in enumerate(blocks):
         if rbase.startswith('STIX') and not figsym.eligible_base(rbase):
             STIX['skipped'].append(dict(key=key, reason='other-face'))
 
+    if arc:   # R-5a: an arc has no lines, so an LF on one is refused (figtext.explicit_lines)
+        _, explicit_bad = FT.explicit_lines(new, None, None, True)
+        if explicit_bad is not None:
+            explicit_errors.append(dict(key=key, block=BI, reason=explicit_bad[0], line=explicit_bad[1]))
     if arc:
         cx, cy, R = circle
         angs = [math.atan2(y - cy, x - cx) for x, y in pts]
@@ -641,21 +745,38 @@ for BI, b in enumerate(blocks):
 
     # §C140 ②: carry the source's sub/superscripts and italics onto the value. `transfer` reads
     # the RAW value (possibly editor-edited) and never alters it; `words` keys every style by its
-    # offset in that raw string (`re.finditer(r'\S+')` == `str.split()` on every codepoint), so
-    # no whitespace collapse can misalign a style. A word is (text, [SourceStyle|None per char]).
+    # offset in the string it is handed (`re.finditer(r'\S+')` == `str.split()` on every codepoint),
+    # so no whitespace collapse can misalign a style. A word is (text, [SourceStyle|None per char]).
+    # §C140 '6' M5 R3: that string is `raw` with its FS.JOINT positions removed (the hunk below), so
+    # the offsets are into the ELIDED string - which is the drawn text.
     # ⚠️ ONE transfer per VALUE, never one per paragraph. A legacy LIST value (normalise_block_value
-    # still accepts pre-split lines) is joined with ' ' first - a formula token holds no space, so
-    # the join cannot create or break an occurrence. Per-paragraph transfer searched every token in
+    # still accepts pre-split lines) is joined with ' ' first - a word token holds no space, so
+    # the join cannot create or break its occurrence (an M5 R5 phrase token or an R3 joint match
+    # can span a space; exposure 0, as below). Per-paragraph transfer searched every token in
     # every paragraph and named a false `absent` in each paragraph that lacked it. A str value is
     # one paragraph, so for it the join is the value itself.
     # §C140 ③: the layout no longer honours a legacy list's paragraph breaks - figlayout chooses
     # the line count from the SOURCE (n_src). Exposure 0: every committed sidecar value is a str.
-    raw = ' '.join(new)
+    # §C140 '6' R-5a: a str value's LF IS honoured - it is the editor's explicit line break (below).
+    # `transfer` and `words` read each LF as a space: the same length, so every style offset is the
+    # value's own, and a token or an R3 joint match spans a break exactly as it spans a space. The
+    # LF-bearing value and its pre-elision styles are kept for figtext.explicit_lines.
+    raw_lf = ' '.join(new)
+    raw = raw_lf.replace('\n', ' ')
     if tokens:
         fmt, misses = FS.transfer(tokens, raw)
         unformatted.extend(dict(key=key, **m) for m in misses)
+        fmt_lf = fmt
+        # §C140 '6' M5 R3: a value position styled FS.JOINT is the MT wire's own joint space (blockkey
+        # joins an attached FT.lines line with ONE space: `NO2 –`); it is ELIDED from the drawn text.
+        # This is the one place the drawn text differs from the sidecar value - [USER] ruling R-9
+        # (2026-10-05) and docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-f.
+        if any(f is FS.JOINT for f in fmt):
+            keep = [i for i, f in enumerate(fmt) if f is not FS.JOINT]
+            raw = ''.join(raw[i] for i in keep)
+            fmt = [fmt[i] for i in keep]
     else:
-        fmt = [None] * len(raw)
+        fmt = fmt_lf = [None] * len(raw)
     words = FS.words(raw, fmt)
 
     # §C140 ③: WHAT the label is drawn inside - box / table cell / open with a free box - decided
@@ -679,11 +800,16 @@ for BI, b in enumerate(blocks):
     # splits off, so `nitrites (NO2|–` is ONE source line here (n_src 1, its own baseline) while its
     # key, built by blockkey on FT.lines, still reads `nitrites (NO2|–`. Identical to FT.lines on
     # every block that has no such split.
-    vls = FT.visual_lines(b)
+    vls = FT.visual_ink(b)   # geometry from each visual line's ink runs (a folded blank line carries none)
+    # `blank` is read by figlayout in TWO places, both one eligibility: M3's SOURCE_ROWS admission of a cell
+    # (rows_pitch, so a cell's height test and line count) and M4's P1v guard (the sz0 * LEAD pitch) - a
+    # whitespace-only line is not a row. Its `.strip()` is wider than FT.is_blank_line (U+0020 only): an NBSP- or
+    # U+001F-only line survives M2's fold and is still `blank` here, so it withholds BOTH.
     cues = dict(n_src=len(vls), sz0=sz0,
                 starts=[min(FT.along(r) for r in l) for l in vls],
                 ends=[max(FT.along(r) + r['adv'] for r in l) for l in vls],
-                projs=[FT.proj(l[0]) for l in vls])
+                projs=[FT.proj(l[0]) for l in vls],
+                blank=[not ''.join(r['text'] for r in l).strip() for l in vls])
 
     def width(chars, size, j):
         """figlayout's ONE width function: output line j is drawn in the font and colour of the FIRST
@@ -692,11 +818,43 @@ for BI, b in enumerate(blocks):
         font or colour; a script run is chosen only where the source line itself opens with one."""
         return seg_width(chars, vls[min(j, len(vls) - 1)][0], size)
 
+    # M1: the text of each VISUAL source line, so figlayout can pin a cut where the source breaks at a verbatim token.
+    texts = [''.join(r['text'] for r in l) for l in vls]
+    if excl_entry is None:
+        cues['texts'] = texts
+    # §C140 '6' R-5a: the editor's LF breaks. figtext.explicit_lines -> the words per line, or a named refusal
+    # (that label is then laid out as if each LF were a space). Values without an LF return (None, None) and are
+    # laid out byte for byte as before. Honoured lines go to figlayout as cues['explicit'] - OUTSIDE the R-20
+    # exclusion guard above, so an excluded key keeps its break too (figlayout's explicit route sets m1 None).
+    explicit, explicit_bad = FT.explicit_lines(raw_lf, fmt_lf, cues['n_src'], arc, joint=FS.JOINT)
+    if explicit is not None and sum(explicit) != len(words):
+        explicit, explicit_bad = None, ('word-count', None)   # unreachable by construction; never laid out wrong
+    if explicit_bad is not None:
+        explicit_errors.append(dict(key=key, block=BI, reason=explicit_bad[0], line=explicit_bad[1]))
+    if explicit is not None:
+        # Pitch: the block's own mean source pitch. explicit_lines refuses more lines than visual lines, so an
+        # honoured value has 2 <= len(explicit) <= n_v, and the pitch is always the source's own.
+        n_v = len(vls)
+        pitch = (cues['projs'][0] - cues['projs'][-1]) / (n_v - 1)
+        cues['explicit'] = explicit
+        cues['explicit_pitch'] = pitch
+        explicit_breaks.append(dict(key=key, block=BI, lines=len(explicit), pitch=round(pitch, 4)))
     layout = FL.decide(words, width, container, cues)
+    if excl_entry is not None:
+        # R-20: laid out WITHOUT the cue (M1 off). `changed` costs one more pure decide, with it.
+        _m1 = FL.decide(words, width, container, dict(cues, texts=texts))
+        excl_entry['changed'] = (_m1['size'] != layout['size'] or
+                                 [''.join(c for c, _ in l) for l in _m1['lines']]
+                                 != [''.join(c for c, _ in l) for l in layout['lines']])
     align, size = layout['align'], layout['size']
+    relaid_here = FL.report_entries(layout)
+    relaid.extend(dict(key=key, block=BI, **e) for e in relaid_here)
+    below = FL.below_source(size, sz0)
+    if below is not None:
+        below_source.append(dict(key=key, block=BI, **below))
     # Output line j in the font and colour of the first run of VISUAL source line min(j, last) - the
     # same index `width` measured it with (§C140 ㉑; test_compose_visual_lines V7 pins it).
-    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot)
+    draw_layout(layout, lambda j: vls[min(j, len(vls) - 1)][0], rot, key, BI)
     ov = layout['overflow']
     if ov is not None:
         # The report CONTRACT, copied field by field (figure-compose.py passes it verbatim into
@@ -707,7 +865,10 @@ for BI, b in enumerate(blocks):
             if extra in ov:
                 entry[extra] = ov[extra]
         overflow.append(entry)
-    report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]")
+    # The rule tokens go AFTER the bracket: test_compose_t23.py searches `[(box|cell|open) \S+]` on this line.
+    report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]"
+                  + ''.join({'source-breaks': ' src-breaks', 'source-rows': ' src-rows'}[e['rule']]
+                            for e in relaid_here))
 
 # §C140 ㊾ D5(a): a held value whose key no block carries - renamed or re-extracted - would never be drawn.
 # figure-compose.py's pre-flight refuses this before spawning; a hand-run reaches it here.
@@ -782,10 +943,19 @@ if SVG:
     # --held-values file was read: no flag, or --control.
     'held': held,
     'heldErrors': held_errors,
+    # §C140 '6' R-5a. Additive (see `explicit_breaks` above); figure-compose.py refuses on explicitBreakErrors.
+    'explicitBreaks': explicit_breaks,
+    'explicitBreakErrors': explicit_errors,
     'heldValuesPath': None if HELD_PATH is None else str(HELD_PATH),
     'heldConfigPath': HELD_CONFIG,
-    # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason.
-    'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped']},
+    # §C140 '6' R-20. Additive (see `anchor_excluded` above): [] with no --anchor-exclusions file.
+    'anchorExcluded': anchor_excluded,
+    # §C140 '6' report keys (G8). Additive (see `relaid` / `below_source` above).
+    'relaid': relaid,
+    'belowSource': below_source,
+    # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason; '6' M6 adds
+    # `layout`, the laid-out segments drawn in a STIX face (see STIX above).
+    'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped'], 'layout': STIX['layout']},
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")
@@ -801,6 +971,27 @@ if held:
     print(f"\nNOTE (not a failure): {len(held)} label(s) drawn from heldBlockValues ([USER]'s values):")
     for h in held:
         print(f"     {h['key']!r} block {h['block']}: lines {h['changed']}")
+# §C140 '6' R-20. Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if anchor_excluded:
+    print(f"\nNOTE (not a failure): {len(anchor_excluded)} label(s) laid out WITHOUT M1's source-anchored "
+          f"cuts (anchorExclusions):")
+    for e in anchor_excluded:
+        print(f"     {e['key']!r} block {e['block']}: "
+              + ('M1 would have cut it differently' if e['changed'] else 'M1 would have changed nothing'))
+# §C140 '6' report keys (G8). Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if relaid:
+    print(f"\nNOTE (not a failure): {len(relaid)} label(s) laid out on the source's own row breaks or rows:")
+    for e in relaid:
+        if e['rule'] == 'source-rows':
+            what = f"on the source rows, lead {e['leadPt']:.2f}pt"
+        else:
+            what = f"on the source's row breaks ({e['anchors']} anchored)" + (
+                '' if e['shrunkFromPt'] is None else f", shrunk from {e['shrunkFromPt']:.2f}pt")
+        print(f"     {e['key']!r} block {e['block']}: {what} at {e['sizePt']:.2f}pt")
+if below_source:
+    print(f"\nNOTE (not a failure): {len(below_source)} label(s) drawn below their source size (R-16):")
+    for e in below_source:
+        print(f"     {e['key']!r} block {e['block']}: {e['sourcePt']}->{e['sizePt']:.2f}pt")
 if held_errors:
     print(f"\n!! {len(held_errors)} heldBlockValues entr(ies) NOT drawn - figure-compose.py refuses this figure:")
     for e in held_errors:

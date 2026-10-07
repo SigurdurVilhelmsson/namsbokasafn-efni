@@ -585,6 +585,21 @@
     return em;
   }
 
+  /**
+   * How many source lines a block key has: its '|'-segments, not counting a segment of only spaces
+   * (the next row's indent, which the composer folds into its neighbour; ruling R-17). A key whose
+   * segments are all spaces counts its raw segments, so the result is never 0.
+   *
+   * ⚠️ A BROWSER COPY of tools/lib/figure-text-sidecar.cjs `keyInkLineCount`, the rule's one owner,
+   * which a page script cannot require. server/__tests__/figureCardClientPins.test.js runs this
+   * function against the owner over every committed block key, so the two cannot drift silently.
+   */
+  function figureKeyInkLineCount(key) {
+    const segs = String(key).split('|');
+    const ink = segs.filter((s) => !(s !== '' && /^ +$/.test(s)));
+    return ink.length || segs.length;
+  }
+
   function renderFigureBlock(basename, key, text, warnings) {
     const li = document.createElement('li');
     li.className = 'figure-block';
@@ -593,8 +608,19 @@
     label.className = 'figure-block-key';
     label.textContent = key;
 
-    const input = document.createElement('input');
-    input.type = 'text';
+    // §C140 '6' R-5a ([USER] 2026-10-05): a block with two or more source lines is edited in a
+    // TEXTAREA, so an editor can type an explicit line break (an LF), which the composer draws as a
+    // line of its own. An <input type=text> DELETES an LF and fuses the words around it, so a break
+    // typed, pasted or already stored would be lost on the next save. A single-line block keeps the
+    // input: it takes no break (the save route refuses one). The variable keeps its name and every
+    // data-* hook, so the selectors, the draft code and the save path read either element alike.
+    const isMultiline = figureKeyInkLineCount(key) >= 2;
+    const input = document.createElement(isMultiline ? 'textarea' : 'input');
+    if (isMultiline) {
+      input.rows = figureKeyInkLineCount(key);
+    } else {
+      input.type = 'text'; // a textarea's `type` is read-only, and this IIFE is strict
+    }
     input.className = 'figure-block-input';
     input.setAttribute('data-block-input', '');
     input.setAttribute('data-block-key', key);

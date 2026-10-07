@@ -292,9 +292,9 @@ describe('verdict NOTEs the labels a TRANSLATED figure could not decode', () => 
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 // 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER REPORTED ABOUT THE FIGURES IT DREW. `figure-compose.py`
-// copies five lists out of compose-report.json into compose.json; the driver counts the
-// `translated` figures carrying each (for `held`, §C140 ㊾ D5(a), also the PUBLISHED
-// copied-textless ones) and hands the counts to `verdict` through `extra`, the same channel as
+// copies its note lists out of compose-report.json into compose.json; the driver counts the
+// `translated` figures carrying each (for `held`, §C140 ㊾ D5(a), and for prepare.json's
+// `artworkEdits`, §C140 '6', also the PUBLISHED copied-textless ones) and hands the counts to `verdict` through `extra`, the same channel as
 // the undecoded NOTE, because each is a property of a figure INSIDE a bucket.
 // ⚠️ NONE IS FATAL, AND THAT IS PINNED TOGETHER WITH THE MESSAGE. The figure is drawn and every
 // label is in it: a named formula miss draws plain text, an overhang draws at the floor, a
@@ -326,6 +326,23 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
       'heldFigures',
       "NOTE (not a failure): 2 figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each",
     ],
+    // §C140 '6' (G8) — layout decisions and rulings carried out, named; never failures.
+    [
+      'relaidFigures',
+      "NOTE (not a failure): 2 figure(s) had labels laid out on the source's own row breaks or rows — the report names each",
+    ],
+    [
+      'belowSourceFigures',
+      'NOTE (not a failure): 2 figure(s) had labels drawn below their source size (R-16) — the report names each',
+    ],
+    [
+      'anchorExcludedFigures',
+      "NOTE (not a failure): 2 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each",
+    ],
+    [
+      'artworkEditFigures',
+      "NOTE (not a failure): 2 figure(s) were drawn on artwork edited by artworkEdits ([USER]'s edits) — the report names each",
+    ],
   ];
 
   for (const [field, message] of NOTES) {
@@ -336,14 +353,14 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
     });
   }
 
-  // The control for all five: a zero is silence. Without it the tests above pass against a
+  // The control for all of them: a zero is silence. Without it the tests above pass against a
   // verdict that prints these lines on every run.
   it('says nothing when every count is zero', () => {
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 0]));
     expect(verdict(tally(), 3, extra)).toEqual({ ok: true, reasons: [] });
   });
 
-  it('all five at once are five NOTEs in list order, and the run is still ok', () => {
+  it('all of them at once are one NOTE each, in list order, and the run is still ok', () => {
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 2]));
     const v = verdict(tally(), 3, extra);
     expect(v.reasons).toEqual(NOTES.map(([, message]) => message));
@@ -357,7 +374,7 @@ describe('verdict NOTEs what the composer reported about the figures it drew', (
     const extra = Object.fromEntries(NOTES.map(([field]) => [field, 1]));
     const v = verdict(t, 3, extra);
     expect(v.ok).toBe(false);
-    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(5);
+    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(NOTES.length);
   });
 });
 

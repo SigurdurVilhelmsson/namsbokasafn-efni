@@ -72,7 +72,11 @@ def decide(text_or_words, container, cu, floor=7.5, pad=2.0, width=fw, **kw):
 print('sizes and the effective floor')
 check('size steps 9.0 -> 7.5 inclusive', FLY.size_steps(9.0, 7.5) == [9.0, 8.75, 8.5, 8.25, 8.0, 7.75, 7.5],
       str(FLY.size_steps(9.0, 7.5)))
-check('a 7 pt source never enlarged: size steps are [7.0]', FLY.size_steps(7.0, 7.5) == [7.0])
+# R-16 ([USER] 2026-10-05, amending R4): a source below the floor may shrink to SUB_FLOOR_RATIO x sz0 - here 0.8 x 7.0,
+# appended off the grid and unrounded (test_figlayout_subfloor.py owns the rule; this is the re-pin of R4's [7.0]).
+_s = FLY.size_steps(7.0, 7.5)
+check('a 7 pt source never enlarged: the ladder starts at 7.0 and ends at 0.8 x 7.0 (R-16)',
+      _s[0] == 7.0 and max(_s) == 7.0 and _s[-1] == 0.8 * 7.0, str(_s))
 _s = FLY.size_steps(9.0001, 7.5)
 # [F3] 9.0001 - 6 * 0.25 = 7.5001 is 1e-4 above the floor, so the floor itself is appended (8 steps, not 7).
 check('[F3] a 9.0001 pt source steps to 7.5001 and then to the floor 7.5 itself',
@@ -86,10 +90,13 @@ check('[F3] an 8.9 pt source (off the grid) ends 7.65, 7.5',
 _l = decide('aaaaaaa', box(0, 30.4, 0, 100), cues(sz0=8.9))
 check('[F3] an 8.9 pt label that fits only at the floor is drawn at 7.5 with step fit and no overflow',
       _l['size'] == 7.5 and _l['step'] == 'fit' and _l['overflow'] is None, f"{_l['size']} {_l['step']} {_l['overflow']}")
-# 'aaaaaaaaaa' at 7 pt = 35 pt in a box of width budget 36 - 30 (R 34) ... does not fit -> floor-overflow AT 7.0
+# 'aaaaaaaaaa' = 5 x size: 35 at 7.0, 28 at the R-16 floor 0.8 x 7.0 = 5.6; box R 20 -> width budget 16. It fits at no
+# size, so it is drawn at the R-16 floor and named there (R5 at the new floor) - never enlarged, never below 5.6.
 _l = decide('aaaaaaaaaa', box(0, 20, 0, 30), cues(sz0=7.0))
-check('7 pt label that cannot fit is drawn at 7.0 (never enlarged, never below)', _l['size'] == 7.0, str(_l['size']))
-check('... and named as overflow at 7.0', _l['overflow'] is not None and _l['overflow']['sizePt'] == 7.0)
+check('7 pt label that cannot fit is drawn at the R-16 floor 0.8 x 7.0 (never enlarged, never below)',
+      near(_l['size'], 5.6, 1e-9) and _l['step'] == 'floor-overflow', f"{_l['size']} {_l['step']}")
+check('... and named as overflow there (R5)', _l['overflow'] is not None and near(_l['overflow']['sizePt'], 5.6, 1e-9),
+      str(_l['overflow']))
 # 'aaaaaaaaaaaaaaaaaaaa' (20 chars) at 7.5 = 75 pt > 36: shrink stops at the floor
 _l = decide('aaaaaaaaaaaaaaaaaaaa', box(0, 40, 0, 30), cues())
 check('a 9 pt label that cannot fit stops at exactly 7.5', _l['size'] == 7.5, str(_l['size']))
@@ -510,7 +517,7 @@ except ValueError:
     check('unknown container class raises ValueError', True)
 _l = decide('Hvarfefni', box(0, 60, 0, 40), cues())
 check('Layout carries every contract key',
-      all(k in _l for k in ('lines', 'size', 'align', 'anchor', 'x0', 'top', 'lead', 'disp', 'vdisp', 'step', 'overflow')))
+      all(k in _l for k in ('lines', 'size', 'align', 'anchor', 'x0', 'top', 'lead', 'disp', 'vdisp', 'step', 'overflow', 'm1')))
 check('clamp_shift: inside -> 0; too far right -> exact pull-in; wider -> covers',
       FLY.clamp_shift(5, 10, 0, 20) == 0.0 and FLY.clamp_shift(15, 25, 0, 20) == -5 and FLY.clamp_shift(-5, 30, 0, 20) == 0.0)
 

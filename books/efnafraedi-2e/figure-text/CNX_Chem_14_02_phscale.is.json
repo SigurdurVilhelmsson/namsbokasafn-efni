@@ -1,10 +1,10 @@
 {
  "version": 1,
  "basename": "CNX_Chem_14_02_phscale",
- "renderHash": "476a5ef9405fec3d",
- "composedHash": "476a5ef9405fec3d",
+ "renderHash": "7ca910b7c653e37c",
+ "composedHash": "7ca910b7c653e37c",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "5",
  "blocks": {
   "pOH": "pOH",
   "Sample Solution": "Sýnislausn",
@@ -13,7 +13,7 @@
   "neutral": "hlutlaust",
   "basic": "basískt",
   "gastric juice": "magasafi",
-  "bleach": "klór",
+  "bleach": "bleikiklór",
   "lime juice|1 M CH3CO2H (vinegar)|stomach acid": "límónusafi 1 M CH3CO2H (edik) magasýra",
   "wine": "vín",
   "coffee": "kaffi",

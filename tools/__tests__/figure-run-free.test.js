@@ -291,15 +291,98 @@ describe('normaliseTranslations', () => {
     expect(normaliseTranslations(null)).toEqual({
       blocks: {},
       dropped: [],
+      newlines: [],
       alternatives: {},
       mtJoined: null,
     });
     expect(normaliseTranslations({})).toEqual({
       blocks: {},
       dropped: [],
+      newlines: [],
       alternatives: {},
       mtJoined: null,
     });
+  });
+
+  // §C140 '6' R-5a (D9): after T10 an LF in a sidecar value is an editor's explicit line break, an
+  // instruction the composer obeys. Unreviewed MT must never issue one, so intake collapses each
+  // line-break run to one space — and REPORTS the key, like `dropped`, rather than altering it
+  // silently.
+  it('N1: collapses an LF (and a CRLF run) in an MT value to one space, and reports the key', () => {
+    const r = normaliseTranslations({
+      blocks: { K: ['a\nb'], L: ['c'], M: 'd\r\n\ne' },
+    });
+    expect(r.blocks).toEqual({ K: 'a b', L: 'c', M: 'd e' });
+    expect(r.newlines).toEqual(['K', 'M']);
+  });
+
+  it('N1 CONTROL: a value with no line break is untouched and reports nothing', () => {
+    const r = normaliseTranslations({ blocks: { L: ['c d'] } });
+    expect(r.blocks).toEqual({ L: 'c d' });
+    expect(r.newlines).toEqual([]);
+  });
+
+  // G21 #15: a bare CR is a line break too (blockValueProblems refuses any CR), so intake collapses
+  // every CR/LF run alike — the two owners must not disagree on what a CR is.
+  it('N2 (G21 #15): a bare CR, and a CR run before an LF, collapse to one space and are reported', () => {
+    const r = normaliseTranslations({ blocks: { K: ['a\rb'], K2: ['a\r\r\nb'] } });
+    expect(r.blocks).toEqual({ K: 'a b', K2: 'a b' });
+    expect(r.newlines).toEqual(['K', 'K2']);
+  });
+
+  // G21 #13/#19: the per-label wording the panel offers as a one-click 'Nota' is MT too. Its LF
+  // would be saved as an explicit break the editor never saw (the warning shows it via textContent),
+  // so it is collapsed at intake exactly like a value, and its key reported (D9).
+  it("N3 (G21 #13/#19): an alternative's LF-bearing `other` is collapsed and its key reported", () => {
+    const apiJson = {
+      blocks: { A: ['p r'], B: ['x\ny'] },
+      alternatives: {
+        A: { kept: 'joined', other: 'p\nq', reason: 'disagree', mt: 'p r' },
+        B: { kept: 'per-label', reason: 'formula', mt: 'x\ny' },
+      },
+    };
+    const r = normaliseTranslations(apiJson);
+    expect(r.alternatives.A).toEqual({
+      kept: 'joined',
+      other: 'p q',
+      reason: 'disagree',
+      mt: 'p r',
+    });
+    expect(r.alternatives.B).toEqual({ kept: 'per-label', reason: 'formula', mt: 'x y' });
+    // A is reported for its alternative alone; B (value AND alternative collapsed) appears ONCE
+    expect(r.newlines).toEqual(['B', 'A']);
+    // intake builds new objects: the payload it was handed is not mutated
+    expect(apiJson.alternatives.A.other).toBe('p\nq');
+    expect(apiJson.alternatives.B.mt).toBe('x\ny');
+  });
+
+  it('N3 CONTROL: an alternative with no line break, and one with no mt/other, pass through as they were', () => {
+    const r = normaliseTranslations({
+      blocks: { A: ['p r'], B: ['s'] },
+      alternatives: {
+        A: { kept: 'joined', other: 'p q', reason: 'disagree', mt: 'p r' },
+        B: { kept: 'per-label', reason: 'empty' },
+      },
+    });
+    expect(r.alternatives).toEqual({
+      A: { kept: 'joined', other: 'p q', reason: 'disagree', mt: 'p r' },
+      B: { kept: 'per-label', reason: 'empty' },
+    });
+    expect(Object.keys(r.alternatives.B)).toEqual(['kept', 'reason']); // no `mt: undefined` minted
+    expect(r.newlines).toEqual([]);
+  });
+
+  // G21 #14: mtAlternativeWarnings shows the ㉔ fallback note only while `blocks[key] === alt.mt`.
+  // Collapsing the value but not alt.mt broke that fixed point, and the note vanished silently.
+  it('N4 (G21 #14): the ㉔ formula fallback note still fires for a per-label reply that carried an LF', () => {
+    const { mtAlternativeWarnings } = require('../lib/figure-consistency.cjs');
+    const n = normaliseTranslations({
+      blocks: { 'a|b': ['x 1\ny 2'] },
+      alternatives: { 'a|b': { kept: 'per-label', reason: 'formula', mt: 'x 1\ny 2' } },
+    });
+    expect(mtAlternativeWarnings(n.blocks, n.blocks, n.alternatives)).toEqual([
+      { blockKey: 'a|b', current: 'x 1 y 2', reason: 'formula' },
+    ]);
   });
 
   it('carries alternatives and mtJoined through (§C140 ㉔)', () => {

@@ -1,12 +1,12 @@
 {
  "version": 1,
  "basename": "CNX_Chem_10_07_NaClStrctr",
- "renderHash": "68a53345f132e295",
- "composedHash": "68a53345f132e295",
+ "renderHash": "4ff3869458af1651",
+ "composedHash": "4ff3869458af1651",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "5",
  "blocks": {
-  "Face-centered simple cubic structure": "Flötungsmiðjaður einfaldur teningsgrindur"
+  "Face-centered simple cubic structure": "Hliðarsetinn, einfaldur teningur"
  },
  "mtJoined": {
   "status": "single-label",

@@ -2,7 +2,7 @@
 and lay translated text back with the block's own geometry. Pure geometry -
 no assumption that text is centred, and lines are split on the text NORMAL so
 rotated blocks work the same as horizontal ones."""
-import math, json, re
+import math, json, re, unicodedata
 import numloc   # stdlib-only sibling (§C140 ⑨); imports nothing from this experiment
 
 def proj(r):
@@ -72,7 +72,8 @@ def lines(b):
 # 29 in 19 at 0.9; the nearest genuine two-line labels sit 0.806 and 0.837 of a lead apart, the widest
 # charge/superscript split 0.409 (design spec docs/superpowers/specs/2026-10-02-c140-step2-recompose-pass-
 # design.md, D3). `visual_lines` IS instrument A of the frozen
-# evidence/2026-09-15-t23-review-fixes/instruments/code1_exposure.py (`visual_a`), plus the arc carve-out.
+# evidence/2026-09-15-t23-review-fixes/instruments/code1_exposure.py (`visual_a`), plus the arc carve-out
+# and the blank-line fold (§C140 '6', M2: a line of only U+0020 is no line - see `visual_lines`).
 # Re-measure before moving it; do not tune it.
 VISUAL_LEAD_FRACTION = 0.6
 
@@ -90,17 +91,51 @@ def visual_lines(b):
     line, and compose.py reads that line's baseline (`projs`), font and colour from it: on all 21
     measured merges it is the body run, never the script.
 
-    🔴 FOR THE LAYOUT'S OWN LINE COUNT AND SOURCE CUES ONLY - compose.py's `n_src` / `starts` /
-    `ends` / `projs` and its per-line font index, and figcontainers' `own_line_frames` (the block's
-    OWN cell / open alignment). NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
+    A line whose runs draw only U+0020 (`is_blank_line`: the next row's indent space, attached to the
+    block above by group()'s `nl` rule) is no line of its own: it folds into the line before it (the
+    next, when first). Identity when no line is blank or every line is. The fold's geometry-free view is
+    `visual_ink`; the pre-fold lines are `visual_lines_unfolded`.
+
+    🔴 FOR THE LAYOUT'S OWN LINE COUNT AND SOURCE CUES ONLY - compose.py's `n_src` and, through
+    `visual_ink`, its `starts` / `ends` / `projs` and per-line font index; heldplan's `line-count`.
+    figcontainers' `own_line_frames` (the block's OWN cell / open alignment) reads
+    `visual_lines_unfolded`. NEVER the block key: `blockkey.block_lines` stays on `lines`, so no
     bought key, sidecar value or renderHash moves. NEVER another block's frames: `line_frames` (sibling
     cues, free-box obstacles) stays on `lines`, because this rule merges a genuine diagonal kept label
     (CNX_Chem_10_06_CbcCltPckd `C|B|A`: 3 lines -> 2) and would move the frames neighbouring labels align against and avoid in up to 18
     bought figures (measured 2026-10-03, applied to every block: ONE drawn label moves,
     CNX_Chem_17_02_Galvanicel `Flow of cations`, align right -> center)."""
+    return _visual(b)[0]
+
+
+def visual_ink(b):
+    """Per visual line, its runs WITHOUT the blank lines `visual_lines` folded into it - the runs that carry the
+    line's geometry (start, end, baseline, first run). == visual_lines(b) on every block with no blank visual
+    line (all but 3 of 11,200 chemistry blocks, census 2026-10-05: FoodLabel `(cid:127) 5% or less| `,
+    `(cid:127) 20% or| `, `more is| `)."""
+    return _visual(b)[1]
+
+
+def visual_lines_unfolded(b):
+    """The visual lines BEFORE the blank-line fold - what `visual_lines` returned before it. Read ONLY by
+    figcontainers.own_line_frames (the ALIGNMENT decision): a blank line is the next row's indent space, and
+    its left edge is real evidence of the label's text column (FoodLabel: the bullets and `more is` are
+    decided left from it, and drawn at their source x 385.611 / 389.611). Folding it there too moved those 3
+    blocks to the single-line margin rule (right / center / center) - measured, 2026-10-05."""
+    return _visual(b)[2]
+
+
+def is_blank_line(l):
+    """A line whose runs draw only U+0020. NOT `.strip()`: '\\x1f' is a glyph (blockkey.py), and NBSP is not
+    measured blank anywhere in the corpus (all 8 whitespace-only FT.lines are U+0020)."""
+    t = ''.join(r['text'] for r in l)
+    return t != '' and set(t) == {' '}
+
+
+def _visual(b):
     ls = lines(b)
     if is_arc(b) or len(ls) < 2:
-        return ls
+        return ls, ls, ls
     out = [ls[0]]
     for l in ls[1:]:
         p = out[-1]
@@ -109,7 +144,24 @@ def visual_lines(b):
             out[-1] = p + l
         else:
             out.append(l)
-    return out
+    # A BLANK visual line (only U+0020 - the next row's indent space, attached by group()'s `nl` rule to
+    # the block above) is never a line of its own: it folds into the line before it (the next, when first),
+    # keeping the slices consecutive, and carries none of that line's geometry. Identity when no line is
+    # blank, or when every line is.
+    if not any(is_blank_line(l) for l in out) or all(is_blank_line(l) for l in out):
+        return out, out, out
+    vls, ink, lead = [], [], []
+    for l in out:
+        if is_blank_line(l):
+            if vls:
+                vls[-1] = vls[-1] + l
+            else:
+                lead = lead + l
+        else:
+            vls.append(lead + l)
+            ink.append(l)
+            lead = []
+    return vls, ink, out
 
 def alignment(b, measure):
     """'left' | 'center' | 'right', decided from the ORIGINAL line geometry"""
@@ -225,10 +277,75 @@ def normalise_block_value(value, arc):
 
     An ARC block is laid out glyph by glyph along a fitted circle, so it stays a
     single string; a non-arc block becomes a list of lines.
+
+    §C140 '6' R-5a: an LF (U+000A) inside a str value is NOT whitespace to wrap - it is
+    an editor's EXPLICIT line break, which compose.py honours (`explicit_lines`, below)
+    or refuses by name. This function passes it through untouched.
     """
     if arc:
         return value if isinstance(value, str) else ''.join(value)
     return [value] if isinstance(value, str) else list(value)
+
+
+def explicit_lines(raw, fmt, n_src, arc, joint=None):
+    """§C140 '6' R-5a ([USER] 2026-10-05): -> (counts, error) for a translated value `raw` that may carry
+    an editor's explicit line breaks (LF, U+000A). Pure; compose.py is the one caller.
+
+    `fmt` is figscripts.transfer's per-character style list for `raw` with each LF read as a space (the
+    same length, so every offset is the value's own), BEFORE compose elides its JOINT positions; None
+    means no styles. `n_src` is the block's VISUAL source line count (figtext.visual_lines, blank lines
+    folded). `joint` is figscripts.JOINT, passed in because this module may not import figscripts.
+
+      (None, None)            no LF: not an explicit-break value - laid out as before, byte for byte
+      (counts, None)          honoured: the number of words drawn on each line, counted on the string
+                              figscripts.words is run on (JOINT positions elided), so the counts
+                              partition the label's words
+      (None, (reason, line))  refused: the label is drawn as if each LF were a space and figure-compose.py
+                              refuses the figure. `line` is a 0-based line index, or None for a reason
+                              about the whole value. Checked in this order, first refusal wins:
+        'arc'             an arc block is drawn glyph by glyph along a circle and has no lines
+        'empty-line'      a line that is empty or spaces only
+        'edge-space'      a line with leading or trailing whitespace - a CR included ('a\r\nb')
+        'invisible-line'  a line of only format, combining or control characters
+                          (heldvalues.INVISIBLE_CATEGORIES; str.strip() keeps U+200B), which draws nothing -
+                          its SPACES (category Zs) set aside, so `U+200B U+0020 U+200B` is refused too
+                          (review-fix round G21, F2 n3; tools/lib/figure-text-sidecar.cjs judges it alike)
+        'run-exact'       NOT returned here: compose.py names it when an LF value is token-equal to the
+                          English (figtext.is_identity) and so is drawn run-exact on the source's rows
+        'line-count'      more lines than the block has visual source lines: the drawn lines span at
+                          most the source's own lines at its mean pitch, so no height budget is needed
+                          and a one-line block takes no LF
+        'break-at-joint'  the break falls on a position transfer marked JOINT (the MT wire's own joint
+                          space, `NO2 –`), which compose ELIDES; `line` is the line the break would open
+    """
+    if '\n' not in raw:
+        return None, None
+    if arc:
+        return None, ('arc', None)
+    import heldvalues   # function-local: only an LF value reaches it, and heldplan's import set stays pure (HP0)
+    segs = raw.split('\n')
+    for i, sg in enumerate(segs):
+        if not sg.strip():
+            return None, ('empty-line', i)
+        if sg != sg.strip():
+            return None, ('edge-space', i)
+        # Spaces (Zs) are set aside: they draw nothing either, and str.strip() above already refused a line
+        # of nothing but whitespace, so at least one character is judged here.
+        if all(unicodedata.category(c) in heldvalues.INVISIBLE_CATEGORIES
+               for c in sg if unicodedata.category(c) != 'Zs'):
+            return None, ('invisible-line', i)
+    if len(segs) > n_src:
+        return None, ('line-count', None)
+    fmt = [None] * len(raw) if fmt is None else fmt
+    counts, start = [], 0
+    for i, sg in enumerate(segs):
+        end = start + len(sg)
+        if i and joint is not None and fmt[start - 1] is joint:
+            return None, ('break-at-joint', i)
+        drawn = ''.join(c for c, f in zip(sg, fmt[start:end]) if joint is None or f is not joint)
+        counts.append(len(re.findall(r'\S+', drawn)))
+        start = end + 1
+    return counts, None
 
 
 # pdfminer's placeholder for a glyph it could not map to Unicode: `(cid:127)`.

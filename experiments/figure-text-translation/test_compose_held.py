@@ -455,7 +455,7 @@ def ch2():
         check("CH2c ... on To's baseline 59.51 and centred on To's centre 166.94 (0.01)", False, 'no QZQ')
     check('CH2d no `To` is drawn', 'To' not in [e['text'] for e in els])
     check("CH2e the unchanged lines' STIX runs are counted as today (stix identical)",
-          rget(res, 'stix') == NOFLAG['ox']['report']['stix'] and len(rget(res, 'stix')['skipped']) == 2,
+          rget(res, 'stix') == NOFLAG['ox']['report']['stix'] and rget(res, 'stix')['skipped'] == [],   # M6: the BoldItalic +/– are now drawn, not skipped
           f"{rget(res, 'stix')} vs {NOFLAG['ox']['report']['stix']}")
     check('CH2f held = [{key, block 0, changed [1]}]', [(h.get('key'), h.get('block'), h.get('changed'))
           for h in rget(res, 'held') or []] == [(K_OX, 0, [1])], repr(rget(res, 'held')))

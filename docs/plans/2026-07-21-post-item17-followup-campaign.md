@@ -2,7 +2,178 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-10-04, night — ✅ [USER] ANSWERED all 12 re-font questions; the CONTENT COMMIT is on `feat/c140-refont-june-copies` (`c08c07a92`); [PR #538](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/538) awaits [USER]'s merge. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-04 evening block for its SINGLE NEXT ACTION; that block stays current for the measurements, the evidence paths and the traps)
+## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
+
+### ⏭ SINGLE NEXT ACTION — **(✅ [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), §C199, MERGED 2026-10-07 as `ef97fb704` and DEPLOYED 07:04Z, verified read-only) [USER]: review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
+
+- ⚖️ **[USER]'s answers, 2026-10-06 afternoon:**
+  - **One PR from this branch.** The 49 verified scratch commits were cherry-picked onto
+    `content/c140-figure-review-wording`, so the PR carries the six-figure wording fix, the ch05 ice
+    pack, the held docs commits and the '6' code. The tree equals the measured scratch tip `9c908aa42`
+    outside `docs/`.
+  - **No plan-text extraction.** A whole-branch adversarial review and mutation test replaced it.
+- 🔎 **The review (0 ISK):**
+  - 6 read-only lenses and 3 mutation testers, each tester in its own worktree, with 2 refuting
+    skeptics per finding. 77 findings, 65 kept, all minor, 0 blocking; the completeness critic
+    found nothing new.
+  - Fixed in 19 appended commits (`ed24393bb`…`9c908aa42`), each group approved on first review.
+    Behaviour fixes include a `heldplan.script_pool` crash, M5 R4 dropping the subscript of
+    *Ka*/*Ksp*, an MT alternative's line break bypassing intake, a CR surviving intake, and an
+    editor's line break dropped silently on a run-exact value.
+  - Re-measured: `npm test` 0 failing files; Python 41/41. The corpus differs from the first
+    measurement in exactly the 9 predicted figures, and only by the ligature style (finding #7).
+  - One finding was against this register's own R-16 decision record. It stated the rejected
+    formula; it was corrected before it was ever pushed.
+- 🔐 **§C199 (new, 2026-10-06/07) — PR-A's Security Audit is RED from new upstream advisories, not
+  from PR-A** (#544 changes no package file).
+  - root `source-map-js` 1.2.1: high, GHSA-68fv-2mgg-jv7q.
+  - server `proxy-addr` 2.0.7: **CRITICAL**, GHSA-jqcg-44mw-7w3h, IP spoofing through Express's
+    trust-proxy matching. The job dies on the root step, so the server tree's critical was hidden;
+    this is §C197's lesson again.
+  - server `fast-copy` 4.0.3: moderate.
+  - **Fix: [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545)**
+    (`fix/c199-audit-source-map-js-proxy-addr`, from `main`, [USER] approved opening it). It is
+    lockfile-only, with in-range updates to 1.2.2 / 2.0.8 / 4.1.2. Both audits clear at `high`, and
+    `npm ls` is clean.
+  - source-map-js 1.2.2's new `hasInstallScript` flag was checked against the shipped tarball. No
+    install script ships, and the integrity matches.
+  - ✅ **#545 MERGED 2026-10-07 (`ef97fb704`) and DEPLOYED.** Verified read-only on prod: HEAD
+    `ef97fb704` with a clean tree, pulled 07:04:44Z; `server/node_modules/proxy-addr` is 2.0.8; the
+    `ritstjorn` process started 07:04:55Z, after the pull; `/api/health` reports `ok`. #544's fresh CI
+    is green on all four checks, Security Audit included. A bare re-run of #544's old
+    Security Audit would fail again: it reuses that run's pre-#545 merge commit. This commit's push
+    triggers a fresh run against the new `main`.
+  - Not fixable: `sprintf-js` (moderate, every version in range, only via mammoth → argparse).
+
+- ⚖️ **[USER]'s rulings, 2026-10-06 morning:**
+  - **R-16 RIDES IN '6'**, as its own task with its own measurement, so editors re-approve figures only once.
+  - **The LICENSE font sentence is amended verbatim** to *"…a base64 woff2 subset of STIXGeneral-Regular, and of STIXGeneral-Italic, -Bold and -BoldItalic, from STIX Fonts 1.1.0…"*, plus the parallel sentence in `figsym.py`'s provenance note. The LICENSE line lands in **PR-B** with the media; the figsym.py sentence is in PR-A.
+  - R-16 amends [USER]'s 2026-09-13 R4/R5 (the 7.5 pt floor); → [`docs/decisions/2026-10-06-figure-labels-below-floor-shrink-to-0-8.md`](../decisions/2026-10-06-figure-labels-below-floor-shrink-to-0-8.md).
+- **What PR-A is.** Seven mechanisms M1–M7, plus R-16 (0.8 × source size below 7.5 pt), plus
+  `artworkEdits`, plus R-5a's explicit line break (composer, validators, a server 400, an editor
+  textarea, MT intake), plus the '6' report keys.
+  - Every new data table ships **EMPTY**: `artworkEdits`, R-20's `anchorExclusions`, and nothing new
+    in `heldBlockValues`.
+  - **`COMPOSER_VERSION` stays '5'.** The bump, its docstring entry, the restamp, the filled tables,
+    the content edits and the media are **PR-B**, one later merge (spec §5).
+  - A table that changes pixels without a sidecar change reaches media only at a bump. This is now
+    pinned by `COMPOSER_TABLES_PIN` (`tools/__tests__/figure-text-config.test.js`).
+- **Measured at the scratch tip (0 ISK):**
+  - `npm test` has 0 failing files at both ends (7,556 → 7,677 tests).
+  - lint and format:check are clean.
+  - The Python suites are 41/41 (base 29/29), and `test_figrings` and `test_figure_compose` print
+    ALL PASS.
+  - The figure-review E2E is 8/8, including the new line-break case.
+  - **The corpus: 451 sidecar figures + 11 textless composed. 119 differ from published = the
+    predicted 118 (integrate's 117 + R-16's combmap) + the pre-existing brain-ec0b. 0 violations.**
+    Every other figure is byte-equal to its predicted oracle.
+  - R-16 takes overflow from 125 to 23 on its 7 figures; the smallest size drawn is 3.2 pt.
+  - Record: `~/.cache/namsbokasafn-audit/c140-v6/measure/T12-SUMMARY.md` (off-repo).
+- **⏹ LIVE-RUN HOLD between PR-A's merge and PR-B's merge.** No chemistry `figure-run` of any kind
+  in that window. A recompose would draw '6' pixels under a '5' stamp, and textless figures are
+  recomposed on EVERY run, including `--stale`. R-22 already keeps prod figure review closed.
+- **R-17's contract amendment** (a spaces-only source line is no line) supersedes the
+  `heldBlockValues` contract in the frozen `2026-10-03` spec (D-b). That spec is not edited. The
+  live owners, the `_heldBlockValues` README and the docstrings, moved in PR-A's T1.
+- **PR-B inputs, measured or prepared (pointers only):**
+  - R-20 PentIso key `Small contact area,|weakest attraction`. A one-key exclusion composes
+    byte-equal to the published PentIso; the ready config is at `…/c140-v6/accept-T4-M1/pentiso-config.json`.
+  - FoodLabel `artworkEdits` Δleft 15 / Δright 10, and the arrow by the new `move-line-end` op,
+    dx ≈ −6 (recommended; measure in PR-B).
+  - The two bullets via `heldBlockValues`, entered on the value sheet first.
+  - The R-15w wordings, R-15c, R-10, phscale R-8d *súr, hlutlaus, basísk* plus `hreint vatn\nblóð`
+    (R-5a), SolTherm1 R-18, and Systemqw R-14.
+  - **Still open for [USER]:** wordings for HazDiamond's hazard list, aldket and Example2 (R-5b
+    ruled "a wording edit"; nothing has been proposed or measured yet).
+- **Off-repo:**
+  - `~/.cache/namsbokasafn-audit/c140-v6/`: `briefs/` (12 task briefs, the critic, and
+    `CONTROLLER-DECISIONS.md` G1–G20, the binding settlements made during the build); `impl-run*/`
+    and `impl-final/` (every implementer, reviewer and fixer report with verbatim red/green output);
+    `measure/`; `suite-runs/`; `run-py-suites.sh`.
+  - **Fonts:** STIXGeneral-Italic, Bold and BoldItalic were re-fetched from the official stipub
+    archive, are byte-identical to M6's copies, and are installed hash-pinned in
+    `~/.cache/namsbokasafn-figtext/stix-1.1.0/` (SHA256SUMS and PROVENANCE extended). Never committed.
+- **Branch:** `content/c140-figure-review-wording` IS the version-6 branch. Its held docs commits ride
+  in PR-A, as [USER] asked on 2026-10-05.
+
+---
+
+## ⏩ RESUME — state as of **2026-10-05 — 📐 THE COMPOSER FORMATTING-CLASS DESIGN IS WRITTEN AND REVIEWED: [`docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md`](../superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md) (COMPOSER_VERSION '6'). [USER]'s rulings are pending on https://claude.ai/artifact/T2VLFfbLLFGQPq1fUT68u4. Nothing is implemented; the six figures applied on 2026-10-04 and ch05 IcePack (22:20Z block) are unchanged. ⏹ The chemistry sync is still HELD** (supersedes the 22:20Z block for its SINGLE NEXT ACTION; that block stays current for the six applied figures, [USER]'s answers and the FoodLabel diagnosis) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 2026-10-06 block above (PR-A is built and measured); the rest stays current.**
+
+### ⏭ SINGLE NEXT ACTION — **[CODE]: the implementation plan for '6' from the spec + [USER]'s 34 rulings** (the 31 below plus R-15a2/R-15w/R-15g2, all answered 2026-10-06; implement-then-extract, test-first in a scratch worktree; the per-mechanism patches, their red-first tests and the R-15 prototype already exist off-repo). The plan must carry: the `artworkEdits` step ported from the REPO's validator (the scratch tree's differs); `renderHash` not seeing `artworkEdits` (a later edit to an entry triggers no recompose); the editor half of R-5a's explicit line break (the review panel's text field deletes it); and the arrow lengthening, measured before the content run. **[USER]'s R-22 closes prod figure review until '6' deploys** — nothing to do on prod now (0 approvals on 2026-10-05), but no figure review should be invited meanwhile.
+
+- ⚖️ **[USER]'s rulings, 2026-10-05 — ALL 31 ANSWERED** (page `T2VLFfbLLFGQPq1fUT68u4`, `verdicts` collection, read back 31 of 31; exported off-repo `…/c140-composer-design/user-verdicts/`). Labels are the page's option labels; quotes are [USER]'s own notes. **R-22 = close prod figure review until '6' deploys.** Two answers open new design work the spec did not measure: **R-15a** (widen FoodLabel's coloured comment boxes outward so the margin labels fit, wording as the fallback) and **R-15g** (bullet split into three lines). R-8d sets new wording (feminine *súr, hlutlaus, basísk*, to agree with *Sýnislausn*).
+  - **R-22** Close figure review on the live site until version 6 deploys
+  - **R-21** Redraw under version 6 with your 7 ruled values, bullets and R-15 wordings
+  - **R-17** Amend the rule: a spaces-only line is not a line
+  - **R-19** Allow it: a closing 'g)' may end a line
+  - **R-15a** something else — *"If I were doing this manually, I would enlarge the colored boxes so the text fits. They are background for comments on the actual label and there is space to expand the ones on the left to the left, and the one on the right to the right so the text fits properly, without altering the content of the image. If this is either not possible or not viable for coding, I would go with rule on wording."*
+  - **R-15b** Athugaðu orku — *"The comments are general language drawing attention to specific parts of the label. The wording in the label is fixed, but the wording in the comments can be altered without altering the purpose of the image. Even "Athuga orku" would be OK if it fit better (and we don't expand the fields for the comments)."*
+  - **R-15c** Úr fitu 110 beside Hitaeiningar 250
+  - **R-15d** Minnkaðu þessi efni
+  - **R-15e** Fáðu nóg af þessum
+  - **R-15f** Skýringar
+  - **R-15g** something else — *"Splitting it into three lines (5% eða/minna er/lágt)"*
+  - **R-15h** Byrja hér
+  - **R-8e** No
+  - **R-10** Keep the rule; wording stays Transfita 3 g
+  - **R-12** Yes, extend the acceptance to the three faces
+  - **R-13** Include it
+  - **R-14** Redraw under version 6 with fonts and subscript fixes
+  - **R-18** Use June's break points as the wording, with Útblástursgufa
+  - **R-20** Keep the wrap you accepted
+  - **R-5a** Allow an explicit line break in the value
+  - **R-8c** Yes, move them
+  - **R-8d** something else — *"Use feminine for the three labels. Fits with Sýnislausn (feminine): súr, hlutlaus, basísk"*
+  - **R-9** Fix by code
+  - **R-2a** Each label at its own source position, lines centred on it — *"Agree with your recommendation"*
+  - **R-3** Allow shrinking to keep the source rows
+  - **R-4** Yes, at the source's own break only
+  - **R-5b** A wording edit
+  - **R-6a** The rule decides the number of lines only
+  - **R-8a** 1.0 pt
+  - **R-8b** One centred neighbour is enough
+  - **R-16** Yes: shrink to 0.8 × source size, only where the source is below 7.5 pt
+- ⚖️ **[USER]'s answers to the three new cards, 2026-10-06** (read back from the page's `verdicts` collection, 06:57–06:59Z; 34 of 34 answered; exported off-repo `…/c140-composer-design/r15/verdicts-2026-10-06/`):
+  - **R-15a2** Yes: widen the boxes, move the circle column with them, **and lengthen the green arrow** so it starts next to *Byrjaðu* (the arrow edit is not yet drawn; measure it before the content run).
+  - **R-15w** The original wordings: *Byrjaðu hér*, *Athugaðu hitaeiningar*, *Takmarkaðu þessi næringarefni*, *Fáðu nóg af þessum næringarefnum*, *Neðanmálsgrein*. **This supersedes the R-15b/d/e/f/h fallback wordings above**; R-15c (*Úr fitu 110*) and R-10 (*Transfita 3 g*) stand, being inside the table.
+  - **R-15g2** Two lines, like the source: *• 5% eða minna* / *er lágt*, with the purple band widened 10 pt (Δright = 10). **This supersedes R-15g's three-line form**, so FoodLabel needs no explicit `\n`; R-5a's route is still built for phscale.
+- 📐 **2026-10-05 evening — R-15a and R-15g MEASURED (0 ISK):** [`docs/superpowers/specs/2026-10-05-c140-foodlabel-r15-widening-measurement.md`](../superpowers/specs/2026-10-05-c140-foodlabel-r15-widening-measurement.md). Widening is viable: a new per-figure `artworkEdits` step in `figure-prepare.py` (fail-closed PDF content-stream edit, prototyped off-repo and controlled byte-for-byte). It moves the left bands **and the circle column** 15 pt left and the purple band 6–10 pt right; every original wording then fits. The three-line bullet collides with *• 20% eða* at the source pitch, while the source's two-line shape fits once the box is 10 pt wider. An explicit `\n` is deleted by the review panel's text field, so R-5a's route needs an editor half in '6'. **Three new questions are on the rulings page (R-15a2 circles move? · R-15w which wordings? · R-15g2 two or three lines?); the earlier 31 answers were read back intact after the republish.**
+- **What the design is:** seven composer mechanisms (row breaks at source item boundaries; whitespace-only source lines; cell height at the source's own rows + a bracket-closer exception to R9; column alignment + source pitch; formula script transfer; STIX Italic/Bold/BoldItalic faces; boxes holding several labels), each confirmed counterfactually, combined into one tree. **Predicted delta, measured over all 451 chemistry sidecar figures: 117 change** (list `integrate/changed.txt`), **plus 5 of 248 textless figures** (FigSym face swaps only; 6 of 6 textless controls unchanged). Visual grades of all changed figures (Chromium): 80 better, 33 same, 5 mixed, 0 worse. FoodLabel "can it be fixed?": partly — answered in the spec §4 and the page's R-21.
+- **Prod read-only check 2026-10-05:** HEAD `2b262db4f`, `figure_review` 0, `figure_block_edit` 0 (control `registered_books` 6).
+- **Off-repo evidence:** `~/.cache/namsbokasafn-audit/c140-composer-design/` — `finish/` (per-mechanism results, integration, grades, spec draft/reviews, textless census), `m*/final/` (patches + scratch tests), `integrate/` (combined tree, leave-one-out arms, triptychs), `shared-prep/` (all 453 figures prepared, deterministic), `page/` (rulings page source + `cards.json`), `salvage/`.
+- ⚠️ **The first design run (wf `e216e249`) crashed the box (OOM; 7 agents each composing the corpus at once) and returned nothing; it was salvaged from transcripts + scratch, verified, and finished under a memory cap.** The lesson lives in memory (`agent-fanout-memory-budget`), not here.
+- **Corrected in place:** this register's 22:20Z quote of [USER]'s phscale answer was truncated (*"vatn is also on the wrong line"*); it now carries the saved text's ending *"-moved down one"*.
+- **Branch:** `content/c140-figure-review-wording`, still no PR. **The docs commits on it from 2026-10-05 (the spec, the rulings record, and this note) are LOCAL and HELD for the version-6 branch, by [USER]'s instruction of 2026-10-05: do not push them on their own.** The branch's earlier content commits are pushed. The full `npm test` with the failing set diffed against `main` is still owed before a PR.
+- **Dashboard** refreshed to version 66 (2026-10-05 evening snapshot).
+
+---
+
+## ⏩ RESUME — state as of **2026-10-04, 22:20Z — ✅ FIGURE REVIEW, WORDING CLASS: SIX FIGURES CARRY [USER]'s VALUES (0 ISK), committed `e52bde89a` on `content/c140-figure-review-wording` (cut from `origin/main` `2b262db4f`). FoodLabel and the ch05 ice pack wait on [USER]'s answers. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-04 late-night block for its SINGLE NEXT ACTION; that block stays current for prod state and the server-maintenance note)
+
+### ⏭ SINGLE NEXT ACTION — **[USER]: answer the 10 questions on https://claude.ai/artifact/TUtuTf1uqJ8xWEysBETJeX** (6 "does it read right now?" + FoodLabel R1 term, FoodLabel rows, FoodLabel's two bullet labels, ch05 IcePack). Answers are in its `verdicts` collection (`ArtifactData list`). **Then [CODE]:** apply what [USER] ruled for FoodLabel (sidecar values the same way as below; the two bullets, if ruled, as `heldBlockValues` entries, which a sidecar figure only picks up with `--force --figure`, never `--stale`) and for `CNX_Chem_05_02_IcePack`, re-run the read-only prod check, PR as a merge commit. **Then, in order:** the composer plan for the formatting class → step 3 → the sync with both ⏹ SYNC PRECONDITIONs.
+
+- **Applied (sidecar values only, shaped like `applyApprovedFigureEdits`: `composerVersion` '5', `renderHash` recomputed under it, stamps and MT verdicts carried, NO `state` written, so nothing is approved):** saltMass `Element` Þáttur → *Frumefni* (*Samtals* was already in place; the two earlier blocks' "saltMass *Samtals*" / "*Frumefni*" were each half the picture) · ZnSStrctr → *ZnS hliðarsetin grindareining* · NaClStrctr → *Hliðarsetinn, einfaldur teningur* · Icepack (ch11) `INSTANT` and `SINGLE USE ONLY` value = key, i.e. redrawn in English on their arcs (COLD PACK is artwork, never text) · phscale `bleach` → *bleikiklór* · Nitrogen: *Nítrandi bakteríur* on BOTH nitrifying blocks, *Afnítrandi bakteríur*, *loftfirrðar*, *Nitur í andrúmslofti (N2)* (*rótarhnýðum* already matched).
+- **Measured:** dry run before = exactly those 6 `translated`; live `figure-run.js --stale --figure …` per chapter: `MT spawned for 0 figure(s)`, VERDICT ok ×5; second dry run = 6 `skipped-current`, `composedHash === renderHash` on all 6. 14 independent grades (text layer + Chromium/Firefox before vs after): 12 good, the unedited control `CNX_Chem_14_01_HF_img` identical ×2. Evidence off-repo `~/.cache/namsbokasafn-audit/c140-figure-review/` (scouts, logs, verify, page, `sidecar-backup-pre-edit/`).
+- ⚖️ **[USER]'s answers, 2026-10-04 22:14–22:23Z** (saved off-repo `…/c140-figure-review/user-verdicts/`): saltMass, ZnS, NaCl, Icepack **correct**; phscale **problem** — *"(edik) is on the wrong line - moved down one / vatn is also on the wrong line -moved down one"*; Nitrogen **problem** — *"Ion charges are not in superscript"*; FoodLabel R1 **"% af RDS (RDS is ráðlagður dagskammtur)"** (not viðmiðunarneysla); FoodLabel rows **apply**; FoodLabel bullets **yes**; ch05 IcePack **yes** → applied `37681bf72` (0 ISK, converged). [USER] then asked whether FoodLabel's layout can be fixed at all.
+- 🔎 **FoodLabel layout diagnosis (2026-10-04, 3 agents + 3 counterfactual checkers, 0 ISK, evidence `…/c140-figure-review/diagnosis-*` and `foodlabel-diagnosis-scratch.tar.gz`):** a scratch compose of the current sidecar is byte-identical to the published copy (control). Causes, each CONFIRMED by an intervention: ① **sibling-item blocks lose their row breaks** — the flat value is re-broken by a min-max width partition (33 keys in ~23 figures corpus-wide, incl. **both of [USER]'s phscale complaints**: forcing source-boundary breaks draws *límónusafi / 1 M CH3CO2H (edik) / magasýra* and *hreint vatn / blóð*); rule (E) of 2026-09-15 drops FoodLabel's 4th vitamin row; the green-band height budget (pad 2.0 → 7.93 of 11.93 pt) refuses the serving size's own 2 lines · ② a whitespace-only second source line on `(cid:127) 5% or less| `, `(cid:127) 20% or| ` and `more is| ` — **makes [USER]'s ruled bullets UNAPPLIABLE as `heldBlockValues` today** (refused `line-count`; `figure-config-validate.js` would pass the entry in CI) and causes *meira erhátt* · ③ centre alignment guessed where the source is left (Heildarfita starts outside the frame) · ④ **width-bound margin words**: `size_steps(5, 7.5) = [5.0]`, so a 5 pt label never shrinks, and *hitaeiningar* 28.3, *Takmarkaðu* 29.5, *næringarefni* 30.6, *næringarefnum* 36.7, *Neðanmálsgrein* 38.9 pt exceed the 26.5 pt margin slot; *Hitaeiningar 250* and *Hitaeiningar úr fitu 110* overlap by 9 pt — **no composer change fixes these; wording or a (not yet existing) per-figure size override does** · ⑤ line pitch 1.222 × size vs the source's 5.5 pt rows · ⑥ indents cannot be carried by a value (NBSP is split) · ⑦ the ruled `(228 g)` breaks as `(228 / g)` (R9). **Nitrogen is NOT layout:** n_src is 1; the space before the charge in `nítrít (NO2 –` / `nítrat (NO3 –` stops the superscript (a value without it draws correctly), and ammonium stays `no-base` even as `(NH4+)` — a style-transfer defect of its own. **FoodLabel's ruled wording is NOT yet applied** ~~— under the composer route its values carry `\n`, so it lands with that PR's content run~~. ✏️ *Corrected 2026-10-06: the values are FLAT strings with no `\n`. The '6' combined tree puts the serving size, the vitamin rows and the lower table on the source rows from the joined value (measured; spec `2026-10-05-c140-composer-formatting-class-design.md` §7.1). They still land with '6''s content run (PR-B).*
+- **Composer class, logged not fixed:** Nitrogen's Decomposers label now breaks inside its parenthesis; Nitrogen's ion superscripts flat (pre-existing); phscale *hreint / vatn blóð* wrap (pre-existing); **FoodLabel's current layout collides badly** (left column, purple box, vitamin rows) — wording cannot fix it, and the page offers [USER] keeping June as the base.
+- **Found and corrected:** `docs/handoffs/2026-10-03-step2-value-sheet.md` said FoodLabel's June copy has no `5% or less` label; June draws *• 5% eða minna* / *• 20% eða* with U+00A0 between words (a plain-space grep returns nothing). ⚠️ `CNX_Chem_05_02_IcePack` (ch05) has the same four blocks and still says STRAX — asked, not changed.
+- **Branch:** pushed as `origin/content/c140-figure-review-wording`, which it now tracks (it was cut tracking `origin/main`; the first push used an explicit refspec with `-u`). The late-night docs commit was cherry-picked onto it (`7ca10ae47`). **No PR yet**, held for [USER]'s answers.
+- **Gates on the changed tree (local; CI scheduled 0 runs for the branch head, as it runs on PRs and `main`):** figure vitest subset 28 files / 879 tests pass (incl. `figure-media-fonts-corpus`, the `media/` font pin); `test_figrings.py` and `test_figsym.py` ALL PASS. The full `npm test` with the failing set diffed against `main` is still owed before the PR.
+
+---
+
+## ⏩ RESUME — state as of **2026-10-04, late night — ✅ THE RE-FONT IS MERGED AND DEPLOYED: [PR #538](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/538) merged as `2b262db4f` (merge commit; `445ef832e` reachable), deployed 21:22Z (verified read-only). `media/` holds 0 TrueType faces. Next is figure review applying [USER]'s values. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-04 night block for its SINGLE NEXT ACTION; that block and the evening one stay current for [USER]'s answers, the measurements and the traps) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 22:20Z block above (six figures applied; [USER]'s answers on FoodLabel and the ch05 ice pack are next).**
+
+### ⏭ SINGLE NEXT ACTION — **[CODE], in a fresh session: figure review applies [USER]'s wording values** (the 2026-10-04 afternoon block quotes them: ZnSStrctr, NaClStrctr, Icepack, phscale *bleikiklór*, Nitrogen's five terms, saltMass *Samtals*; FoodLabel from the MAST page). The 9 figures [USER] kept are no longer reachable there (no sidecar) and need nothing. **Then, in order:** the composer plan for the formatting class → step 3 (②'s whole-book re-inject and re-render, then `--prune`) → the sync, with both ⏹ SYNC PRECONDITIONs (the redirect rows, and every kept copy's published file `cmp`-equal to its `media/` copy).
+
+- **Prod = `main` = `2b262db4f`.** Verified: `pull --rebase` fast-forward 21:22:28Z, service restart 21:22:50Z, `HEAD` = `origin/main`, 0 dirty paths, `/api/health` ok. Before the merge: 0 `figure_review` and 0 `figure_block_edit` rows, no prod commit touching `figure-text/`. PR #538's five CI checks passed.
+- **Prod server maintenance ([USER] asked 2026-10-04; [CODE] recommended, [USER] decides):** a reboot is pending. libc6 and the kernels 6.8.0-142 and -146 are installed while 6.8.0-139 runs, at 4 weeks of uptime, and 10 packages are upgradable. Recommended: `apt upgrade` and a reboot at a quiet hour, then a read-only health check. **The Ubuntu 26.04 release upgrade is deferred to a planned quiet window** (24.04 is supported until 2029): Node comes from the NodeSource repository, which the release upgrader disables; Python goes from 3.12 to a newer version, which breaks `server/.venv` (the Greynir sidecar's virtualenv). The window needs a Linode snapshot first, NodeSource re-enabled for 26.04, the virtualenv rebuilt, then deploy and health checks.
+
+---
+
+## ⏩ RESUME — state as of **2026-10-04, night — ✅ [USER] ANSWERED all 12 re-font questions; the CONTENT COMMIT is on `feat/c140-refont-june-copies` (`c08c07a92`); [PR #538](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/538) awaits [USER]'s merge. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-04 evening block for its SINGLE NEXT ACTION; that block stays current for the measurements, the evidence paths and the traps) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the block above (#538 merged and deployed).**
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]: merge the re-font PR as a merge commit (never squash: the `keptCopies` reasons cite `445ef832e`), then deploy.** Before the merge [CODE] re-runs the read-only prod check (0 `figure_review` and 0 `figure_block_edit` rows, no prod commit touching `figure-text/`); it was clean at the content commit. The deploy needs no step of its own: `media/` is read by the next render, and nothing published changes until step 3. **Then, in order** (from the 2026-10-04 afternoon block): figure review applies [USER]'s values → the composer plan for the formatting class → step 3 (②'s whole-book re-inject and re-render, then `--prune`) → the sync, with both ⏹ SYNC PRECONDITIONs.
 

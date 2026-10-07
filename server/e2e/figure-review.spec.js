@@ -129,6 +129,33 @@ const PRISTINE = {
 `,
 };
 
+/**
+ * §C140 '6' R-5a — the explicit-line-break case's block. A two-source-line key, so the card must
+ * edit it in a TEXTAREA. It is NOT in the committed fixture: the test writes CHEMWEB_WITH_BREAK
+ * over CHEMWEB's sidecar itself, and afterEach restores PRISTINE, so the committed bytes (and every
+ * other test's view of CHEMWEB) are unchanged.
+ *
+ * ⚠️ WHY THIS MAY SHARE CHEMWEB WITH THE FLAG TEST despite ONE FIGURE PER MUTATING TEST (every
+ * fixture figure already has a mutating test of its own; this one adds no fifth figure). The leak
+ * the rule guards against cannot happen in either direction here:
+ *  - this test's figure_block_edit row is keyed on BREAK_KEY, which exists only while this test's
+ *    own sidecar is on disk. With PRISTINE in place the row is an ORPHAN, which resolveBlocks never
+ *    merges (figureReviewService.test.js 'orphaned block edits'), so no other test can see it;
+ *  - the flag test leaves only a figure_review state and a note, and this test asserts neither.
+ */
+const BREAK_KEY = 'QZ a|QZ b';
+const BREAK_MT = 'QZ a QZ b';
+const CHEMWEB_WITH_BREAK = `{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_ChemWeb",
+ "blocks": {
+  "Chemistry": "Efnafræði",
+  "Biochemistry and molecular biology": "Lífefnafræði og sameindalíffræði",
+  "QZ a|QZ b": "QZ a QZ b"
+ }
+}
+`;
+
 const sidecarFile = (basename) => path.join(FIXTURE_DIR, `${basename}.is.json`);
 
 function writePristineSidecars() {
@@ -505,6 +532,54 @@ test.describe('Figure review card', () => {
 
     await expect(card(page, CHEMWEB).locator('[data-figure-state]')).toHaveText('FLAGGED');
     await expect(card(page, CHEMWEB).locator('[data-figure-note]')).toHaveText(NOTE);
+  });
+
+  /**
+   * §C140 '6' R-5a ([USER] 2026-10-05). Only a browser can show this: an <input type=text> DELETES
+   * an LF and fuses the words around it (measured in HeadlessChrome 153: 'minna er\nlágt' ->
+   * 'minna erlágt'), so a break typed into a multi-line block would be lost on save. The unit pins
+   * (figureCardClientPins.test.js) prove the code CHOOSES a textarea; this proves the break
+   * survives typing, the POST, the re-fetch and the rebuild.
+   */
+  test('a multi-line block is a textarea, and a typed line break survives the save', async ({
+    page,
+  }) => {
+    fs.writeFileSync(sidecarFile(CHEMWEB), CHEMWEB_WITH_BREAK, 'utf-8');
+    await openFixtureModule(page, 'm68664');
+    const field = blockRow(page, CHEMWEB, BREAK_KEY).locator('[data-block-input]');
+
+    await expect(field).toHaveValue(BREAK_MT); // precondition: the planted block is on the card
+    expect(await field.evaluate((el) => el.tagName)).toBe('TEXTAREA');
+    // CONTROL: a single-line block on the same card keeps its input, so the predicate is not
+    // simply "always a textarea".
+    const single = blockRow(page, CHEMWEB, 'Chemistry').locator('[data-block-input]');
+    expect(await single.evaluate((el) => el.tagName)).toBe('INPUT');
+
+    await field.fill('x');
+    await field.press('Enter');
+    await field.pressSequentially('y');
+    await expect(field).toHaveValue('x\ny'); // the typed break is in the field before the save
+
+    // Synchronise on the RE-FETCH (the rebuild), and check the POST was accepted: a refused save
+    // alerts and never re-fetches, and the value below would then be the unsaved typing.
+    const [post] = await Promise.all([
+      page.waitForResponse(
+        (r) => r.url().includes(`/figures/${CHEMWEB}/block`) && r.request().method() === 'POST'
+      ),
+      page.waitForResponse(
+        (r) =>
+          r.url().includes('/m68664/figures') &&
+          r.request().method() === 'GET' &&
+          r.status() === 200
+      ),
+      blockRow(page, CHEMWEB, BREAK_KEY).locator('[data-block-save]').click(),
+    ]);
+    expect(post.status()).toBe(200);
+
+    const after = blockRow(page, CHEMWEB, BREAK_KEY);
+    await expect(after.locator('[data-block-input]')).toHaveValue('x\ny');
+    // The value is the SERVER's, not leftover typing: the block is not marked unsaved.
+    await expect(after).not.toHaveAttribute('data-block-unsaved');
   });
 
   test('a module whose figures have no sidecar shows no cards', async ({ page }) => {

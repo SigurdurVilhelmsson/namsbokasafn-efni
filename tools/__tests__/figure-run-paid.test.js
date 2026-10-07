@@ -517,11 +517,12 @@ describe('a figure whose publish fails is never reported done', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
-// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies five lists
+// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies its note lists
 // out of compose-report.json into compose.json: formula formatting a translated label could not
 // carry, words drawn at the floor that overhang, English-kept numbers given a decimal comma,
-// blocks whose container detection failed, and (§C140 ㊾ D5(a)) labels drawn from
-// heldBlockValues ([USER]'s values). The figure is drawn and published either way — so
+// blocks whose container detection failed, (§C140 ㊾ D5(a)) labels drawn from
+// heldBlockValues ([USER]'s values), and (§C140 '6', G8) labels laid out on the source's row breaks
+// or rows, drawn below their source size (R-16), or excluded from M1 (R-20). The figure is drawn and published either way — so
 // these are NOTEs — but a list the driver never reads is a list nobody sees, and the remedy for
 // most of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the BLOCK KEY.
 // ⚠️ THE FAKE COMPOSE IS THE SEAM, DELIBERATELY. `figure-compose.py`'s own suite
@@ -553,11 +554,42 @@ describe("the composer's notes reach the verdict and the report", () => {
       { key: 'No', block: 11, changed: [0] },
       { key: 'No', block: 13, changed: [0] },
     ],
+    // §C140 '6' (G8) — one label may carry both rules (M1 and M3 on one block).
+    relaid: [
+      {
+        key: 'Serving|Size',
+        block: 4,
+        rule: 'source-breaks',
+        sizePt: 8.75,
+        shrunkFromPt: 9,
+        anchors: 1,
+      },
+      { key: 'Serving|Size', block: 4, rule: 'source-rows', sizePt: 8.75, leadPt: 5.5 },
+    ],
+    belowSource: [{ key: 'Mass', block: 1, sizePt: 4.5, sourcePt: 5 }],
+    anchorExcluded: [{ key: 'Small|contact', block: 4, changed: true }],
   };
-  const EMPTY = { unformatted: [], overflow: [], localized: [], containerErrors: [], held: [] };
+  const EMPTY = {
+    unformatted: [],
+    overflow: [],
+    localized: [],
+    containerErrors: [],
+    held: [],
+    relaid: [],
+    belowSource: [],
+    anchorExcluded: [],
+  };
   const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
+  // §C140 '6' (G8) — the three verdict NOTEs T11 added, spelled once so each case below can demand an
+  // EXACT reasons list: a count wired to a sibling's list must change which NOTEs appear.
+  const RELAID_NOTE =
+    "NOTE (not a failure): 1 figure(s) had labels laid out on the source's own row breaks or rows — the report names each";
+  const BELOW_NOTE =
+    'NOTE (not a failure): 1 figure(s) had labels drawn below their source size (R-16) — the report names each';
+  const EXCLUDED_NOTE =
+    "NOTE (not a failure): 1 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each";
 
-  it('copies the five lists from compose.json onto the record, verbatim', async () => {
+  it('copies every list from compose.json onto the record, verbatim', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
     expect(rec(result, 'FIG_A').outcome).toBe('translated');
@@ -573,6 +605,9 @@ describe("the composer's notes reach the verdict and the report", () => {
       'NOTE (not a failure): 1 figure(s) had English-kept numbers drawn with a decimal comma',
       'NOTE (not a failure): 1 figure(s) had container detection fail — those labels were laid out as open',
       "NOTE (not a failure): 1 figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each",
+      "NOTE (not a failure): 1 figure(s) had labels laid out on the source's own row breaks or rows — the report names each",
+      'NOTE (not a failure): 1 figure(s) had labels drawn below their source size (R-16) — the report names each',
+      "NOTE (not a failure): 1 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each",
     ]);
     expect(result.verdict.ok).toBe(true);
   });
@@ -604,6 +639,64 @@ describe("the composer's notes reach the verdict and the report", () => {
         '    FIG_A: "No" block 11\n' +
         '    FIG_A: "No" block 13\n'
     );
+    // §C140 '6' (G8) — one line per entry, an M1 shrink naming the size it shrank from.
+    expect(text).toContain(
+      "  labels laid out on the source's own row breaks or rows, by figure (2):\n" +
+        '    FIG_A: "Serving|Size" block 4 re-cut at the source\'s row breaks at 8.75 pt (shrunk from 9.00 pt)\n' +
+        '    FIG_A: "Serving|Size" block 4 on the source\'s own rows, lead 5.50 pt\n'
+    );
+    expect(text).toContain(
+      '  labels drawn below their source size (R-16), by figure (1):\n' +
+        '    FIG_A: "Mass" block 1 drawn at 4.50 pt, source 5.00 pt\n'
+    );
+    expect(text).toContain(
+      "  labels laid out without M1's source-anchored cuts (anchorExclusions), by figure (1):\n" +
+        '    FIG_A: "Small|contact" block 4 — M1 would have cut it differently\n'
+    );
+  });
+
+  // §C140 '6' (G8) — a source-breaks entry with no shrink names no size it shrank from, an exclusion
+  // that changes nothing says so, and a rule this driver does not know prints as its raw string,
+  // never as `undefined`.
+  it('prints an unshrunk re-cut, an inert exclusion and an unknown relaid rule without inventing anything', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const notes = {
+      ...EMPTY,
+      relaid: [
+        { key: 'k5', block: 5, rule: 'source-breaks', sizePt: 9, shrunkFromPt: null, anchors: 2 },
+        { key: 'k6', block: 6, rule: 'some-later-rule', sizePt: 9 },
+      ],
+      anchorExcluded: [{ key: 'k7', block: 7, changed: false }],
+    };
+    const result = await runFigures(live(booksRoot), { spawn: withNotes(notes), booksRoot });
+    // relaid and anchorExcluded set, belowSource empty: exactly those two NOTEs, in the verdict's order.
+    expect(result.verdict.reasons).toEqual([RELAID_NOTE, EXCLUDED_NOTE]);
+    const text = summarise(result);
+    const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k'));
+    expect(lines).toEqual([
+      '    FIG_A: "k5" block 5 re-cut at the source\'s row breaks at 9.00 pt',
+      '    FIG_A: "k6" block 6 some-later-rule',
+      '    FIG_A: "k7" block 7 — M1 would have changed nothing',
+    ]);
+    expect(text).not.toMatch(/undefined/);
+  });
+
+  // §C140 '6' (G8) — EACH COUNT READS ITS OWN LIST. With one list set alone, the verdict carries exactly
+  // that list's NOTE: a count wired to a sibling's list either drops it or adds the sibling's. The NOTES
+  // fixture above cannot tell them apart (all three set on one figure), and the k5/k6/k7 case cannot see
+  // relaid and anchorExcluded swapped (both set there) — only one-list-alone cases see every miswiring.
+  it.each([
+    ['relaid', { key: 'r', block: 1, rule: 'source-rows', sizePt: 5, leadPt: 5.5 }, RELAID_NOTE],
+    ['belowSource', { key: 'b', block: 2, sizePt: 4.5, sourcePt: 5 }, BELOW_NOTE],
+    ['anchorExcluded', { key: 'x', block: 3, changed: true }, EXCLUDED_NOTE],
+  ])('a compose.json carrying only %s gives exactly its own NOTE', async (list, entry, note) => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), {
+      spawn: withNotes({ ...EMPTY, [list]: [entry] }),
+      booksRoot,
+    });
+    expect(rec(result, 'FIG_A').composeNotes[list]).toEqual([entry]); // the premise: the list was read
+    expect(result.verdict).toEqual({ ok: true, reasons: [note] });
   });
 
   // An overflow entry need not carry a word (a line-count overhang names none) or an axis (a
@@ -664,15 +757,15 @@ describe("the composer's notes reach the verdict and the report", () => {
   });
 
   // THE CONTROL, AND THE OLDER WRAPPER. A compose.json carrying only `outputPath` — what every
-  // figure-compose.py before §C140 writes — reads as five empty lists: no NOTE, no section.
+  // figure-compose.py before §C140 writes — reads as empty lists: no NOTE, no section.
   // Without it every assertion above passes against a driver that invents notes.
-  it('a compose.json with no lists reads as five empty lists and says nothing', async () => {
+  it('a compose.json with no lists reads as empty lists and says nothing', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
     expect(rec(result, 'FIG_A').composeNotes).toEqual(EMPTY);
     expect(result.verdict).toEqual({ ok: true, reasons: [] });
     expect(summarise(result)).not.toMatch(
-      /decimal comma|overhang|formula formatting|container|heldBlockValues/
+      /decimal comma|overhang|formula formatting|container|heldBlockValues|row breaks|source size|anchorExclusions|artworkEdits/
     );
   });
 
@@ -752,6 +845,92 @@ describe("the composer's notes reach the verdict and the report", () => {
     expect(r.composeNotes.held).toHaveLength(1); // the premise: the list was read
     expect(result.verdict.reasons.filter((x) => x.startsWith('NOTE'))).toEqual([]);
     expect(summarise(result)).not.toMatch(/heldBlockValues/);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 '6' R-15a / G8 — A FIGURE DRAWN ON [USER]'S EDITED ARTWORK IS NAMED. `figure-prepare.py`
+// applies the figure's `artworkEdits` entry to the STAGED artwork and records what it did in
+// prepare.json `artworkEdits` ({op, selected, objects} per op; no key at all for a figure with no
+// entry). prepare.json does not outlive the run, so the driver copies the list onto the record, and
+// the verdict and report name every figure that SHIPPED a picture composed from that artwork —
+// `held`'s stance: translated, or a published copied-textless recompose, and only once composed.
+describe('a figure drawn on artworkEdits-edited artwork reaches the verdict and the report', () => {
+  const EDITS = [
+    { op: 'move-edge', selected: 4, objects: [{ bbox: [1, 2, 3, 4], edge: 'left', to: 244.334 }] },
+    { op: 'move-text', selected: 17, objects: [{ text: 'Start', origin: [1, 2] }] },
+  ];
+  const edited = (extra = {}) => fakeSpawn({ prepare: () => ({ artworkEdits: EDITS, ...extra }) });
+  const NOTE =
+    "NOTE (not a failure): 1 figure(s) were drawn on artwork edited by artworkEdits ([USER]'s edits) — the report names each";
+
+  it('copies prepare.json artworkEdits onto the record, NOTEs it once and names each op', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: edited(), booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(rec(result, 'FIG_A').artworkEdits).toEqual(EDITS);
+    expect(result.verdict).toEqual({ ok: true, reasons: [NOTE] });
+    expect(summarise(result)).toContain(
+      "  edits applied to the artwork by artworkEdits ([USER]'s edits), by figure (2):\n" +
+        '    FIG_A: move-edge on 4 object(s)\n' +
+        '    FIG_A: move-text on 17 object(s)\n'
+    );
+  });
+
+  it('a prepare.json with no artworkEdits key is an empty list and says nothing', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(rec(result, 'FIG_A').artworkEdits).toEqual([]);
+    expect(result.verdict).toEqual({ ok: true, reasons: [] });
+    expect(summarise(result)).not.toMatch(/artworkEdits/);
+  });
+
+  it('a figure whose publish failed shipped no edited artwork: no NOTE, no section', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), {
+      spawn: edited(),
+      booksRoot,
+      publish: refusingPublisher(),
+    });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').artworkEdits).toEqual(EDITS); // the premise: the list was read
+    expect(result.verdict.reasons.filter((r) => r.startsWith('NOTE'))).toEqual([]);
+    expect(summarise(result)).not.toMatch(/artworkEdits/);
+  });
+
+  // A dry run composes nothing, so — like `held` — it names no figure as drawn on edited artwork,
+  // although prepare applied the edit and the record carries it.
+  it('a dry run records the edits and names no figure', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot, { dryRun: true }), {
+      spawn: edited(),
+      booksRoot,
+    });
+    expect(rec(result, 'FIG_A').artworkEdits).toEqual(EDITS);
+    expect(result.verdict.reasons.filter((r) => r.startsWith('NOTE'))).toEqual([]);
+  });
+
+  it('a PUBLISHED copied-textless recompose drawn on edited artwork is named too', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+    });
+    const result = await runFigures(live(booksRoot), {
+      spawn: edited({
+        sendable: 0,
+        imageXObjects: 0,
+        paintOps: 9,
+        __blocks: [{ key: 'kC', english: 'C', lines: ['C'], arc: false, send: false }],
+      }),
+      booksRoot,
+    });
+    const r = rec(result, 'FIG_TEXTLESS');
+    expect(r.outcome).toBe('copied-textless'); // the premise: still a copy, never `translated`
+    expect(r.published).toMatchObject({ outputName: 'FIG_TEXTLESS_IS.svg' });
+    expect(result.verdict).toEqual({ ok: true, reasons: [NOTE] });
+    expect(summarise(result)).toContain('    FIG_TEXTLESS: move-edge on 4 object(s)\n');
   });
 });
 
@@ -1447,6 +1626,19 @@ describe('the MT failure modes each leave the figure eligible', () => {
     expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
     expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
     expect(rec(result, 'FIG_A').reason).toMatch(/k0/);
+  });
+
+  // §C140 '6' R-5a (D9) end to end: an MT value carrying an LF is minted with a space instead, and
+  // the run names the key - on the record and in the summary - so an operator sees the change.
+  it('N2: mints an MT line break as a space and names the key on the record and in the summary', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ translate: () => ({ __blocks: { k0: ['IS\nk0'], k1: ['IS k1'] } }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', k1: 'IS k1' });
+    expect(rec(result, 'FIG_A').newlineKeys).toEqual(['k0']);
+    expect(summarise(result)).toContain(
+      '  ⚠️ FIG_A: the MT returned 1 value(s) with a line break (k0) — each was minted with a space'
+    );
   });
 
   it('buckets a compose refusal as failed-compose and keeps the paid sidecar', async () => {

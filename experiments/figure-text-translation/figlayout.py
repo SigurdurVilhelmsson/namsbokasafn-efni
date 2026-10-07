@@ -21,13 +21,27 @@ INPUTS
              run, which cannot differ on the corpus - 0 of 176 blocks mix bold or fill across lines, r2-build §2).
   container  figcontainers.container_for(...) - 'box' | 'cell' | 'open', in the block's own along/normal frame.
   cues       {'n_src', 'sz0', 'starts', 'ends', 'projs'} per VISUAL source line (adv-based in production;
-             compose.py builds them on figtext.visual_lines - §C140 ㉑).
+             compose.py builds them on figtext.visual_ink - the visual lines without a folded U+0020-only
+             line's runs, so `n_src` is len(figtext.visual_lines) - §C140 ㉑, '6' M2). Optional: 'blank' (M4),
+             'texts' (M1), and 'explicit' + 'explicit_pitch' (R-5a, below).
 
-RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
-  sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the
-             0.25 grid the grid misses the floor, so floor_eff is appended as the last step. A label the source
-             set below the floor is never enlarged and never shrunk.
-  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size.
+RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E); R-16, [USER] 2026-10-05)
+  sizes      sz0, sz0-0.25, ... down to floor_eff inclusive (EPS slack); when sz0 is off the 0.25 grid, or the
+             floor is, the grid misses floor_eff, so it is appended as the last step. floor_eff is the floor (R4's
+             7.5) for a label the source set at or above it, and SUB_FLOOR_RATIO x sz0 (0.8, unrounded) for one
+             the source set below it (R-16, amending R4 and R5) - so a label is never enlarged, and one set below
+             the floor may shrink to 0.8 x its own size. Every 'floor' below means floor_eff: R5's named overhang
+             (floor-overflow, (v)) is drawn at it.
+  lead       sz0 * 1.222 - the SOURCE body size, not the shrunk size. Every fit test of the count/size search uses
+             it - and a cell's n_src count is ALSO tested at the source pitch (§C140 '6' M3, SOURCE_ROWS; cell (R3)
+             below); the cell's vertical clamp (vdisp), which runs after the partition, reads the lead actually
+             drawn. TWO cases where the drawn lead is NOT sz0 * 1.222. (1) A cell admitted on height ONLY at its
+             source rows (M3, cell (R3) below) is drawn on them: lead = the source pitch, top = projs[0]. (2) After
+             the partition (§C140 '6' M4, P1v; gates PITCH_SRC, PITCH_SRC_MIN): a non-box label not at step
+             iv-gain, drawn on exactly n_src >= 2 lines whose source rows all descend by more than 0.5 * sz0 and
+             none of which is blank (optional cues['blank'], one bool per visual line), is drawn on the source's
+             own rows - lead (projs[0] - projs[-1]) / (n_src - 1), top projs[0] before any displacement - when
+             sz0 * 1.222 would misplace the span of its outer lines by more than PITCH_SRC_MIN pt.
   partition  for a line count n: the min-max balanced partition (minimise the longest line); n <= number of words.
              Which n is tried in which order is per class, below.
   R9         SYMBOLS ONLY ([USER] ruling 2026-09-14, superseding the literal R9 of the design spec): a SHORT TOKEN is
@@ -36,15 +50,27 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
              CHOSEN (size, n) and the chosen step's budget: if a partition that never cuts directly after a short
              token fits that budget, use the min-max partition among those; otherwise the unconstrained one.
              Binding never changes the line count, the size or the step.
+             CLOSER exception ([USER] R-19, 2026-10-05, recorded in the campaign register; gate R9_CLOSER): a
+             short token that ends in ')' when some earlier word of the label contains a '(' ('g)' in '(228 g)')
+             binds BACKWARD instead - a line may end directly after it, and no line may start with it. The test is
+             the PRESENCE of an earlier '(', not bracket balance: in '(1) x a)' the 'a)' counts as a closer too.
+             An enumerator 'a)' with no '(' before it is unchanged (it binds forward), and so is (A).
   box  (R2)  align centre on (L+R)/2; width budget (R-L)-2 pad; height budget (U-D)-2 pad: n fits only if
              (n-1) lead + (ASC+DESC) size <= height budget. Vertical: the glyph box centred in the container.
   cell (R3)  align = container['align'] (the source's); anchor = the source anchor for that align; same budgets;
              horizontal displacement = the smallest shift keeping the line extents inside [L+pad, R-pad];
              vertical: source centre, clamped inside [D+min(pad, src_down_margin), U-min(pad, src_up_margin)].
+             SOURCE ROWS (§C140 '6' M3, gate SOURCE_ROWS): a count n == n_src >= 2 also meets the height budget
+             when the source's own rows do - (n-1) pitch + (ASC+DESC) size fits the vertical clamp interval
+             above, where pitch = (projs[0] - projs[-1]) / (n_src - 1) is BELOW the lead and the rows are P1v's
+             eligible ones (every row descends by more than 0.5 * sz0, none blank). A count admitted ONLY that way
+             is drawn on the source rows (lead = pitch, top = projs[0]), so what is tested is what is drawn. Never a
+             box (R2 centres its glyph box), never where the source pitch is the lead or wider. CELL_CLAMP_BUDGET
+             (off, spec R-7) would make the clamp interval every cell count's height budget.
   box/cell   LINE COUNT BEFORE SIZE, as the open path's (iii) before (iv): every count n <= n_src, closest first,
              from sz0 down to floor_eff; only if none fits at the floor, every count n > n_src, closest first,
              each from sz0 down. A (count, size) fits when its partition meets the width budget AND its glyph box
-             meets the height budget.
+             meets the height budget (for a cell, at the lead or on the SOURCE ROWS above).
              HEIGHT met by no (count, size): the count chosen by width alone is kept and shrunk toward the floor
              until its glyph box fits - which never happens above the floor (see the code) - and the overhang of
              the lines actually drawn (after (E)) is NAMED: step 'floor-overflow', axis 'height'.
@@ -76,14 +102,39 @@ RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
              (v)   n_t at floor_eff, displaced minimally, overhanging and NAMED: a word wider than (FR-FL) - 2 pad
                    -> that word; otherwise a line-count overhang -> word None, needPt = the widest drawn line.
 
+  M1         SOURCE-ANCHORED CUTS (§C140 figure review, gated by M1_ANCHORS / M1_ANCHOR_SHRINK / M1_ANCHOR_OVER_R9A).
+             Runs AFTER every rule above has chosen the count and size, and never changes the count. When the chosen
+             n == n_src >= 2 and cues['texts'] (the visual source lines' text) is given, a source row boundary is
+             ANCHORED where a token the MT carries verbatim marks it (source_anchors): a line opening with '(', a list
+             marker or a digit/symbol token, or closing with ')', ':' or ',' - or a line that is one such token - and
+             the token occurs equally often in source and value (matched by ordinal). The partition is then the
+             min-max one with every anchored boundary fixed (R9 / (A) bind only the free cuts, in decide's own order).
+             It is used when it meets the step's width budget at the chosen size; else (M1_ANCHOR_SHRINK) at the
+             largest smaller size >= floor where it does; else the base partition is drawn. A box label is centred
+             for the size actually drawn. No anchor, or an infeasible anchor set, leaves the layout untouched.
+             [USER] rulings 2026-10-05 (campaign register): R-3 = arm B (M1_ANCHOR_SHRINK on); R-4 = yes
+             (M1_ANCHOR_OVER_R9A on - the override binds AT an anchored cut only, never a free one); R-6 - (E)
+             governs the count only: no (E) test is applied to M1's cut. After an M1 shrink `step` keeps its pre-M1
+             value (it names the rule that chose the count) and m1['shrunkFrom'] records the size it shrank from.
+
+  EXPLICIT   §C140 '6' R-5a ([USER] 2026-10-05): cues['explicit'] = the words per line of an editor's LF breaks
+             (figtext.explicit_lines; compose.py passes at most n_src lines), cues['explicit_pitch'] = the source
+             pitch. It REPLACES every rule above except the class's anchor, alignment and cell clamps: the lines are
+             exactly those (no R9, (A), (E) or M1 - m1 None), the size is the largest step at which every line fits
+             (box/cell: the width budget (R-L) - 2 pad; open: b_i undisplaced, else b_ii displaced, at each size),
+             else floor_eff with the widest line named (word None) - step 'explicit' / 'explicit-overflow'. Drawn
+             from projs[0] (a box: its glyph box centred) at the explicit pitch; no height budget (heightFit None),
+             and P1v never redraws them. Counts that do not partition the words raise ValueError.
+
 OUTPUT  Layout dict:
   lines     [[(ch, style)]] per drawn line          size      the drawn base size (pt)
   align     'left' | 'center' | 'right'             anchor    the UNDISPLACED anchor (along)
   x0        per-line start along, displacement included - compose only draws
   top       baseline of line 0 (normal coordinate), vertical displacement included
-  lead      sz0 * 1.222                             disp / vdisp  horizontal / vertical displacement (pt)
+  lead      sz0 * 1.222, or the source pitch (M3's source rows, or P1v), or cues['explicit_pitch'] (R-5a)
+                                                    disp / vdisp  horizontal / vertical displacement (pt)
   step      'fit' | 'floor-overflow' (box/cell); 'i' | 'ii' | 'iii-anchor' | 'iii-displaced' | 'iv-gain' |
-            'v-overflow' (open)
+            'v-overflow' (open); 'explicit' | 'explicit-overflow' (any class, R-5a)
   overflow  None, or ONE named overhang:
               axis 'width'   {'word', 'needPt', 'budgetPt', 'sizePt', 'axis', 'linePt'}: needPt = the named word's
                              width (word None = a line-count overhang, needPt = the widest drawn line); budgetPt =
@@ -91,21 +142,58 @@ OUTPUT  Layout dict:
                              holds every line to max(budget, widest word), so linePt <= needPt there; only open (v)
                              can draw a line wider than its widest word. A box/cell width entry whose glyph box
                              also misses the height budget adds 'heightNeedPt' and 'heightBudgetPt'.
-              axis 'height'  {'word': None, 'needPt': the glyph-box height, 'budgetPt': the height budget, 'sizePt',
-                             'axis'} (box/cell only).
+              axis 'height'  {'word': None, 'needPt': the DRAWN glyph-box height, 'budgetPt': the height budget,
+                             'sizePt', 'axis'} (box/cell only). 'DRAWN' includes P1v's redraw at the source pitch
+                             (as are heightNeedPt and heightFit, refreshed after it - G21 #1).
   additive, for the report: widths (per drawn line, pt), budget (the width budget the partition was held to),
             bound (True when the R9-constrained partition fit the step's budget and was therefore taken - it may
             EQUAL the unconstrained one; False when no binding-honouring partition exists, it did not fit, or an
             (A)-only partition was preferred to it),
-            heightFit (box/cell: whether the DRAWN line
-            count and size meet the height budget; None for open or when the height budget is switched off), cls
+            m1 (None, or {'anchors': {boundary: cut}, 'spans', 'bound', 'shrunkFrom'} when an anchor was found;
+            spans None = it could not be honoured and the base partition was drawn),
+            heightFit (box/cell: whether the DRAWN line count, size AND lead meet the height budget - for a label
+            drawn on the source rows that is the rows' test against the clamp interval, so heightFit can be True
+            where the lead-based glyph box exceeds (U-D) - 2 pad, and only `rows` says why; None for open or when
+            the height budget is switched off, or the label is drawn on explicit breaks. A cell P1v redraws at a
+            source pitch WIDER than the lead can be False at step 'fit' with nothing named: its rows are the
+            source's own extent inside the cell, and spec D-e accepts that P1v does not re-test height), cls,
+            rows (True when the label is DRAWN on the source rows by M3's SOURCE ROWS - lead = the source pitch,
+            top = projs[0]; False otherwise, including P1v's redraw)
+
+REPORT (§C140 '6' T11, spec §9.8: nothing read `m1` or `rows`, and an M1 shrink leaves `step` unchanged - G10)
+  report_entries(layout) -> compose.py's `relaid` entries for one drawn label, without key/block: a `source-breaks`
+            entry {'rule', 'sizePt', 'shrunkFromPt', 'anchors'} when M1 was HONOURED (m1 not None and m1['spans']
+            not None - an anchored cut drawn, even one equal to the base cut), shrunkFromPt being m1['shrunkFrom']
+            (None, or the size an M1 shrink started from, so `size < sz0` at an unchanged `step` is named); then a
+            `source-rows` entry {'rule', 'sizePt', 'leadPt'} when rows is True. [] otherwise.
+  below_source(size, sz0, floor=FLOOR) -> compose.py's `belowSource` entry {'sizePt', 'sourcePt'} for a label the
+            source set below the floor (R-16) and drawn smaller than that source size; None otherwise - R4's
+            ordinary shrink above the floor (9 -> 8.75) is not one.
 """
 
 ASC, DESC = 0.73, 0.21
 EPS = 1e-9
+FLOOR = 7.5              # R4's shrink floor: decide's default `floor`, and below_source's threshold (one value)
 STEP = 0.25
+SUB_FLOOR_RATIO = 0.8    # R-16 ([USER] 2026-10-05, amending R4/R5): a label whose source size is below the floor may
+                         # shrink to this x sz0; 1.0 = R4 as of 2026-09-13. Read at call time, like the gates below.
 LEAD = 1.222
+PITCH_SRC = True          # §C140 M4 (P1v) gate: a label drawn on the source's own line count is drawn on its rows
+PITCH_SRC_MIN = 1.0       # ... when sz0 * LEAD would misplace the outer lines' span by more than this (pt)
 SHORT_TOKEN = 2          # R9: a word of 1..SHORT_TOKEN characters binds to the word after it - unless lowercase alphabetic
+# §C140 M3 gates - each one switch, so a combiner can take them independently.
+SOURCE_ROWS = True       # (a) a CELL label on the source's own line count is admissible on height at the source's own
+                         #     rows, and is then DRAWN on them (lead = source pitch, top = first source baseline)
+CELL_CLAMP_BUDGET = False  # (a') a cell's height budget is the vertical clamp's own interval, not (U-D) - 2 pad
+R9_CLOSER = True         # (c) a short token ending in ')' after an earlier '(' on the label ends a line, binds backward
+# M1 (§C140 figure review, row breaks): SOURCE-ANCHORED CUTS. Read at call time, so a test or a combining agent can flip
+# them. M1_ANCHORS False reproduces the base layout exactly (m1_anchor returns before touching anything).
+M1_ANCHORS = True        # at the chosen count n == n_src >= 2, cut where a verbatim token pins a source row boundary
+M1_ANCHOR_SHRINK = True  # ...and when that cut misses the step's width budget at the chosen size, try smaller sizes
+                         # (same count, same budget, down to the floor) before giving up - never a different count
+M1_ANCHOR_OVER_R9A = True  # an anchored cut may fall after a symbol (R9) or before a lone last symbol ((A)): the
+                           # SOURCE breaks there. False drops such anchors instead. [USER] rulings R-3 (arm B, the
+                           # shrink) and R-4 (yes, the override), 2026-10-05.
 
 _STEP_OPEN = ('i', 'ii', 'iii-anchor', 'iii-displaced', 'iv-gain', 'v-overflow')
 
@@ -119,14 +207,22 @@ def clamp_shift(e0, e1, lo, hi):
 
 
 def size_steps(sz0, floor):
-    """sz0, sz0-0.25, ... down to min(floor, sz0) inclusive. Accumulated exactly as the prototype did.
+    """sz0, sz0-0.25, ... down to floor_eff inclusive. Accumulated exactly as the prototype did.
 
-    The floor itself is ALWAYS the last step: when sz0 is not on the 0.25 pt grid (8.9 -> ... 7.65) the grid
-    never lands on it, and a label that fits at 7.5 would otherwise be reported as overflowing at 7.65."""
-    floor_eff = min(floor, sz0)
+    floor_eff is `floor` (R4's 7.5) when sz0 >= floor (EPS slack), else SUB_FLOOR_RATIO * sz0 (R-16, [USER]
+    2026-10-05: "shrink to 0.8 x source size, only where the source is below 7.5 pt"; amends R4 and R5). The
+    threshold is this `floor` argument, not a second 7.5, and the product is never rounded: the measured arm
+    (r2 of the 2026-10-05 composer design) used the bare product, and font-size is serialised at 3 decimals
+    anyway. SUB_FLOOR_RATIO 1.0 gives [sz0] for every sz0 below the floor, the ladder before R-16.
+
+    floor_eff itself is ALWAYS the last step: when sz0 is not on the 0.25 pt grid (8.9 -> ... 7.65), or floor_eff
+    is not (4.0 -> ... 3.25, then 3.2), the grid never lands on it, and a label that fits there would otherwise be
+    reported as overflowing one grid step above it. The loop and the append share EPS, so the ladder is never
+    empty and always starts at sz0 (never enlarged)."""
+    floor_eff = floor if sz0 >= floor - EPS else SUB_FLOOR_RATIO * sz0
     out = []
     s = sz0
-    while s >= floor_eff - 1e-9:
+    while s >= floor_eff - EPS:
         out.append(s)
         s -= STEP
     if out[-1] > floor_eff + EPS:
@@ -140,11 +236,140 @@ def is_symbol(w):
     return len(w) <= SHORT_TOKEN and not (w.isalpha() and w.islower())
 
 
+# ---- M1: source-anchored cuts -------------------------------------------------------------------------------------
+# A row boundary of the SOURCE is recoverable in the translation only where something the MT carries VERBATIM marks
+# it: a bracket or punctuation edge, a list marker, a digit, a symbol or a formula. Nothing here compares two
+# translated strings (repo rule): the source side is the read-only visual-line text, the target side is the value.
+
+def _m1_norm(t):
+    return t.replace(',', '').replace('.', '')
+
+
+def anchor_kind(t, at_start, whole_line=False):
+    """The verbatim class of a token that opens (at_start) or closes a source line, or None.
+    Opens:  '(' ; a list marker '-', '–', '•', '=', '+', '(cid:' ; a TOKEN (a digit-bearing word, or a symbol).
+    Closes: ')' , ':' , ',' ; a TOKEN only when it is the WHOLE line - a number ending a wrapped prose line is where
+            the wrap fell, not an item boundary (FoodLabel '...based on a 2,000|calorie diet')."""
+    if at_start:
+        if t.startswith('(cid:') or t[0] in '-–•=+':
+            return ('lit', t[0])
+        if t.startswith('('):
+            return ('(',)
+    else:
+        for c in '):,':
+            if t.endswith(c):
+                return (c,)
+        if not whole_line:
+            return None
+    if any(c.isdigit() for c in t) or is_symbol(t):
+        return ('tok', _m1_norm(t))
+    return None
+
+
+def _anchor_match(kind, w):
+    k = kind[0]
+    if k == '(':
+        return w.startswith('(')
+    if k in ('):,'):
+        return w.endswith(k)
+    if k == 'lit':
+        return w.startswith(kind[1])
+    return _m1_norm(w) == kind[1]
+
+
+def source_anchors(src_lines, tgt_words):
+    """{boundary k (between source lines k and k+1): target cut index (the first word of target line k+1)} for each
+    boundary whose opening (tried first) or closing token is verbatim and occurs the SAME number of times in the
+    source and the target - matched by ordinal occurrence. A blank source line pins nothing."""
+    sw = [l.split() for l in src_lines]
+    flat = [w for l in sw for w in l]
+    out, acc = {}, 0
+    for k in range(len(sw) - 1):
+        acc += len(sw[k])
+        if not sw[k] or not sw[k + 1]:
+            continue
+        for at_start, wi in ((True, acc), (False, acc - 1)):
+            kind = anchor_kind(flat[wi], at_start, whole_line=len(sw[k]) == 1)
+            if kind is None:
+                continue
+            so = [i for i, w in enumerate(flat) if _anchor_match(kind, w)]
+            to = [i for i, w in enumerate(tgt_words) if _anchor_match(kind, w)]
+            if len(so) != len(to):
+                continue
+            ti = to[so.index(wi)]
+            out[k] = ti if at_start else ti + 1
+            break
+    return out
+
+
+def _anchored_cut(P, size, n, anc, budget, modes):
+    """The min-max partition into n lines whose boundary k is anc[k] wherever anchored, under the first mode
+    (bound, tail) whose partition meets `budget`; R9 / (A) constrain only the FREE cuts. -> spans or None."""
+    W, INF = P.W, float('inf')
+    fixed = set(anc.values())
+    for bound, tail in modes:
+        best = [[(INF, None)] * (W + 1) for _ in range(n + 1)]
+        best[0][0] = (0.0, None)
+        for m in range(1, n + 1):
+            for j in range(m, W + 1):
+                if (m == n and j != W) or (m < n and (m - 1) in anc and j != anc[m - 1]):
+                    continue
+                bv = (INF, None)
+                for k in range(m - 1, j):
+                    if best[m - 1][k][0] == INF:
+                        continue
+                    if k > 0 and k not in fixed and ((bound and not P.cut_allowed(k)) or (tail and k == W - 1)):
+                        continue
+                    v = max(best[m - 1][k][0], P.wd(k, j, m - 1, size))
+                    if v < bv[0] - 1e-9:      # earliest k wins a near-tie, as in _Partition._row
+                        bv = (v, k)
+                best[m][j] = bv
+        if best[n][W][0] <= budget + EPS:
+            spans, j, m = [], W, n
+            while m > 0:
+                k = best[m][j][1]
+                spans.append((k, j))
+                j, m = k, m - 1
+            return list(reversed(spans)), bound
+    return None
+
+
+def m1_anchor(P, cues, n, s, budget, sizes, modes, lone):
+    """-> (size, spans | None, note | None). The base (count, size) is already chosen; this only re-cuts it, and
+    under M1_ANCHOR_SHRINK may lower the size (never the count). spans None = draw the base partition at `s`."""
+    texts = cues.get('texts')
+    if not M1_ANCHORS or texts is None or n < 2 or n != cues['n_src'] or len(texts) != n:
+        return s, None, None
+    anc = {k: c for k, c in source_anchors(texts, [w for w, _ in P.words]).items() if 0 < c < P.W}
+    if not M1_ANCHOR_OVER_R9A:
+        anc = {k: c for k, c in anc.items() if P.cut_allowed(c) and not (lone and c == P.W - 1)}
+    if not anc:
+        return s, None, None
+    note = {'anchors': {str(k): c for k, c in sorted(anc.items())}, 'shrunkFrom': None, 'spans': None, 'bound': None}
+    for s_try in [s] + ([x for x in sizes if x < s - EPS] if M1_ANCHOR_SHRINK else []):
+        got = _anchored_cut(P, s_try, n, anc, budget, modes)
+        if got is not None:
+            sp, note['bound'] = got
+            note['spans'] = sp
+            if s_try != s:
+                note['shrunkFrom'] = s
+            return s_try, sp, note
+    return s, None, note
+
+
+def _m1_modes(lone, r9):
+    """The final-partition preference order of decide(), as (bound, tail) pairs."""
+    modes = [(True, True), (False, True)] if lone else []
+    modes += [(True, False), (False, False)]
+    return [(b, t) for b, t in modes if r9 or not b]
+
+
 class _Partition:
     """Min-max balanced partitions of `words` into n lines, per size, optionally honouring R9. Rows are computed
     lazily and every width is memoised on (i, j, line index, size) - one decide() call may ask for many sizes."""
 
-    def __init__(self, words, width):
+    def __init__(self, words, width, r9close=False):
+        self.r9close = r9close
         self.words = words
         self.W = len(words)
         self.width = width
@@ -168,10 +393,25 @@ class _Partition:
     def cut_allowed(self, k):
         """R9 ([USER] 2026-09-14, symbols only): a line may not end directly after a word of 1-2 characters,
         UNLESS that word is lowercase alphabetic (`af`, `og`, `á`, `í` may end a line; `A`, `Cu`, `Ar`, `2`, `H2`
-        may not). k is the index of the next line's first word; k == 0 is the start of the text, never a cut."""
+        may not). k is the index of the next line's first word; k == 0 is the start of the text, never a cut.
+        With `r9close` (R9_CLOSER, [USER] R-19, 2026-10-05): a short token ending in ')' when an earlier word
+        contains a '(' (`_closer`; presence, not bracket balance) binds BACKWARD - a cut directly after it is allowed
+        and a cut directly before it is not. An enumerator 'a)' with no earlier '(' is not a closer."""
         if k == 0:
             return True
+        if self.r9close:
+            # §C140 M3 (c): a short token ending in ')' after an earlier '(' ('(228 g)') belongs to what precedes
+            # it: it may end a line, and a line may not START with it. FoodLabel's ruled value broke '(228 | g)'.
+            # An enumerator 'a)' (no opener before it) and A's final lone symbol are untouched.
+            if self._closer(k - 1):
+                return True
+            if k < self.W and self._closer(k):
+                return False
         return not is_symbol(self.words[k - 1][0])
+
+    def _closer(self, i):
+        w = self.words[i][0]
+        return is_symbol(w) and w.endswith(')') and any('(' in v for v, _ in self.words[:i])
 
     def lone_tail(self):
         """(A) True when the LAST word is a symbol (is_symbol) that a cut could leave alone on the last line."""
@@ -230,9 +470,15 @@ class _Partition:
         return best
 
 
-def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _height=True, _ae=True):
+def decide(words, width, container, cues, floor=FLOOR, pad=2.0, *, _r9=True, _height=True, _ae=True,
+           _rows=None, _cclamp=None, _r9close=None):
     """-> Layout dict (see the module docstring). `_r9` / `_height` / `_ae` exist ONLY for the prototype-equivalence
-    harness and the RED-first runs; production never passes them."""
+    harness and the RED-first runs; production never passes them. `_rows` / `_cclamp` / `_r9close` (default: the
+    module gates SOURCE_ROWS / CELL_CLAMP_BUDGET / R9_CLOSER) exist for the §C140 M3 blast harness and the committed
+    gates-off controls (test_figlayout_rows.py); production never passes them either."""
+    _rows = SOURCE_ROWS if _rows is None else _rows
+    _cclamp = CELL_CLAMP_BUDGET if _cclamp is None else _cclamp
+    _r9close = R9_CLOSER if _r9close is None else _r9close
     W = len(words)
     if W == 0:
         raise ValueError('decide: a translated label with no words (compose.py treats an empty value as missing)')
@@ -245,7 +491,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     starts, ends, projs = cues['starts'], cues['ends'], cues['projs']
     lead = sz0 * LEAD
     sizes = size_steps(sz0, floor)
-    P = _Partition(words, width)
+    P = _Partition(words, width, _r9close)
 
     def src_anchor(al):
         if al == 'left':
@@ -260,11 +506,42 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         """Height of the glyph box of n lines drawn at `size` (the lead stays sz0 * LEAD)."""
         return (n - 1) * lead + (ASC + DESC) * size
 
+    # §C140 M3 (a) SOURCE ROWS. sz0 * LEAD is a guess at the source's pitch; where the source set its n_src lines
+    # CLOSER than that (FoodLabel's green band: 5.5 against 6.11 at 5 pt), the guess makes the source's own line
+    # count taller than the source itself, and the height budget refused the count the source uses. A CELL label on
+    # exactly n_src lines is therefore also admissible at the source's own pitch, tested against the interval the
+    # vertical clamp below already places into - and when only that test admits it, it is DRAWN on the source rows,
+    # so what is tested is what is drawn. A pure relaxation: never where the source pitch is wider than the lead,
+    # never a box (R2 centres a box's glyph box), never a source with a whitespace-only visual line or rows that do
+    # not descend by more than half a size (the eligibility of M4's P1v, verbatim). On a real figure the clamp
+    # interval contains the source frame by construction (src margins are measured from it), so the source's own
+    # rows at any size <= sz0 always pass; the test is kept so a fixture or a future margin source cannot slip by.
+    rows_pitch = None
+    if (_rows and cls == 'cell' and n_src >= 2 and len(projs) == n_src
+            and not any(cues.get('blank', ()))
+            and all(projs[i] - projs[i + 1] > 0.5 * sz0 for i in range(n_src - 1))):
+        _p = (projs[0] - projs[-1]) / (n_src - 1)
+        if _p < lead - EPS:
+            rows_pitch = _p
+    hb_clamp = None
+    if cls == 'cell':
+        hb_clamp = ((container['U'] - container['D']) - min(pad, container['src_up_margin'])
+                    - min(pad, container['src_down_margin']))
+
+    def on_rows(n, size):
+        """(a) n lines at `size` are admissible ON THE SOURCE ROWS (see above)."""
+        return (rows_pitch is not None and n == n_src
+                and (n - 1) * rows_pitch + (ASC + DESC) * size <= hb_clamp + EPS)
+
+    def fits_h(n, size, h):
+        """The height test of every box/cell branch: the glyph box at the lead fits `h`, or (a) the source rows do."""
+        return glyph_h(n, size) <= h + EPS or on_rows(n, size)
+
     def choose(size, budget, hb=None, tail=False):
         """The line count closest to the source (tie -> fewer) whose min-max partition fits `budget` and, when
         `hb` is given, whose glyph box fits the height budget; None if no count fits."""
         for n in sorted(range(1, W + 1), key=lambda n: (abs(n - n_src), n)):
-            if hb is not None and (n - 1) * lead + (ASC + DESC) * size > hb + EPS:
+            if hb is not None and not fits_h(n, size, hb):
                 continue
             if P.minmax(size, n, tail=tail) <= budget + EPS:
                 return n
@@ -272,6 +549,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
 
     overflow = None
     height_fit = None
+    rows = False
     use_disp = False
     grow = None
     # (A) is live only for a box/cell label whose last word is a symbol.
@@ -281,6 +559,8 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         L, R, D, U = container['L'], container['R'], container['D'], container['U']
         budget = (R - L) - 2 * pad
         hb = (U - D) - 2 * pad if _height else None
+        if hb is not None and _cclamp and cls == 'cell':   # (a') the clamp's own interval (box: R2, untouched)
+            hb = hb_clamp
         # LINE COUNT BEFORE SIZE, as the open path's (iii) before (iv): every count n <= n_src (closest first) is
         # tried from sz0 down to the floor before any count n > n_src (closest first), each from sz0 down.
         counts = sorted(range(1, W + 1), key=lambda n: (n > n_src, abs(n - n_src), n))
@@ -305,7 +585,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
                 rejected: n-1 would fit at s, and it was tried before n."""
                 for n_try in counts:
                     for s_try in sizes:
-                        if h is not None and glyph_h(n_try, s_try) > h + EPS:
+                        if h is not None and not fits_h(n_try, s_try, h):
                             continue
                         if P.minmax(s_try, n_try, tail=tl) <= budget + EPS:
                             if useless(n_try, s_try):
@@ -337,10 +617,10 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
                     # count), so the overhang stays, measured on the lines actually drawn.
                     for s_try in sizes[sizes.index(s):]:
                         s = s_try
-                        if glyph_h(n, s) <= hb + EPS:
+                        if fits_h(n, s, hb):
                             break
                     n = fewer(n, s)
-                    if glyph_h(n, s) > hb + EPS:
+                    if not fits_h(n, s, hb):
                         st = 'floor-overflow'
                         ov = {'word': None, 'needPt': glyph_h(n, s), 'budgetPt': hb, 'sizePt': s,
                               'axis': 'height'}
@@ -366,8 +646,9 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         if n is None or step != 'fit':
             n, s, step, bud, overflow = select(False)
         assert n is not None, 'unreachable: one word per line fits max(budget, widest word)'
+        s, m1_spans, m1 = m1_anchor(P, cues, n, s, bud, sizes, _m1_modes(lone, _r9), lone)
         if hb is not None:
-            height_fit = glyph_h(n, s) <= hb + EPS
+            height_fit = fits_h(n, s, hb)
         if overflow is not None and overflow['axis'] == 'width' and height_fit is False:
             # Width missed at every size AND the glyph box misses height at the floor: the height overhang is
             # NAMED on the same entry (R5) - heightFit is not in the report, so it must not be the only trace.
@@ -381,6 +662,9 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
             align = container['align']
             anchor = src_anchor(align)
             top = (max(projs) + min(projs)) / 2 + (n - 1) / 2.0 * lead
+            if hb is not None and glyph_h(n, s) > hb + EPS and on_rows(n, s):
+                # (a) admitted ONLY on the source rows: draw it there. Nothing is drawn where it was not measured.
+                lead, top, rows = rows_pitch, max(projs), True
     else:
         FL, FR = container['FL'], container['FR']
         align = container['align']
@@ -424,6 +708,7 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
                     bud = max(b_ii, ww)
                 else:
                     bud = b_ii                 # needPt is filled from the drawn partition below
+        s, m1_spans, m1 = m1_anchor(P, cues, n, s, bud, sizes, _m1_modes(lone, _r9), lone)
         if step == 'iv-gain':
             if grow == 'down':                 # pin the source glyph box's top edge, grow down
                 top = max(projs) + ASC * sz0 - ASC * s
@@ -446,8 +731,82 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     else:
         bound, tail = False, False
     spans = P.cut(s, n, bound=bound, tail=tail)
+    if m1_spans is not None:                  # M1: the source-anchored cut replaces the min-max one
+        spans, bound = m1_spans, m1['bound']
+    explicit = cues.get('explicit')
+    if explicit:
+        # §C140 '6' R-5a ([USER] 2026-10-05): the editor's own LF breaks (compose.py, figtext.explicit_lines). The
+        # line count is len(explicit) - never more than the source's visual lines, which compose guarantees - and
+        # each line keeps its words: no R9, (A), (E) or M1 (m1 None). The size is the largest step at which EVERY
+        # line fits: a box or cell against its TRUE width budget (R - L) - 2 pad, never the widened budget the
+        # count search above may have held (`bud`); an open label tries b_i (undisplaced), then b_ii (displaced),
+        # at each size. Nothing fits: the floor, with the widest line NAMED against that budget. The lines are drawn
+        # from the block's first source baseline (a box: centred) at cues['explicit_pitch'] (the source pitch), so
+        # no height budget applies; P1v never redraws them. The horizontal anchor, alignment and the cell's clamps
+        # are the container's, as for any other label.
+        cuts = [0]
+        for k in explicit:
+            cuts.append(cuts[-1] + k)
+        if cuts[-1] != W or any(k <= 0 for k in explicit):
+            raise ValueError(f'decide: explicit word counts {explicit} do not partition {W} words')
+        spans = list(zip(cuts[:-1], cuts[1:]))
+        n, bound, m1, rows, height_fit = len(spans), False, None, False, None
+
+        def widest(sz):
+            return max(P.wd(a, c, j, sz) for j, (a, c) in enumerate(spans))
+
+        s, overflow, step = None, None, 'explicit'
+        if cls == 'open':
+            for s_try in sizes:
+                if widest(s_try) <= b_i + EPS:
+                    s, use_disp, budget = s_try, False, b_i
+                    break
+                if widest(s_try) <= b_ii + EPS:
+                    s, use_disp, budget = s_try, True, b_ii
+                    break
+            else:
+                use_disp, budget = True, b_ii
+        else:
+            budget = (container['R'] - container['L']) - 2 * pad
+            s = next((s_try for s_try in sizes if widest(s_try) <= budget + EPS), None)
+        if s is None:
+            s, step = sizes[-1], 'explicit-overflow'
+            overflow = {'word': None, 'needPt': widest(s), 'budgetPt': budget, 'sizePt': s, 'axis': 'width'}
+        lead = cues['explicit_pitch']
+        if cls == 'box':
+            top = (container['D'] + container['U']) / 2 + (n - 1) / 2.0 * lead - (ASC - DESC) / 2.0 * s
+        else:
+            top = projs[0]
     lines = [P.chars(a, c) for a, c in spans]
-    widths = [width(lc, s, j) for j, lc in enumerate(lines)]
+    # §C140 M4 (P1v): sz0 * LEAD is a guess at the source's line pitch, centred on its mean baseline. A label drawn
+    # on EXACTLY the source's line count is drawn on the source's own rows instead - its first baseline and its mean
+    # pitch - when the guess misplaces the span by more than PITCH_SRC_MIN (FoodLabel's lower table: 4.89 against
+    # 5.5 at 4 pt; FracDistil: 11.0 against 9.21). Not a box (R2 centres a box's glyph box, pinned by
+    # test_figlayout's box-vertical cases), not (iv)'s pinned growth, not a source with a whitespace-only line
+    # (cues['blank']: that line is not a row - FoodLabel 'more is| ' would land on 'high'), and only when the
+    # source rows descend by more than half a size. The size never feeds the pitch: lead stays a source length.
+    if (PITCH_SRC and not explicit and cls != 'box' and step != 'iv-gain' and len(lines) == n_src >= 2
+            and not any(cues.get('blank', ()))
+            and all(projs[i] - projs[i + 1] > 0.5 * sz0 for i in range(n_src - 1))
+            and abs((projs[0] - projs[-1]) - (n_src - 1) * lead) > PITCH_SRC_MIN):
+        lead = (projs[0] - projs[-1]) / (n_src - 1)
+        top = projs[0]
+        if height_fit is not None:
+            # A cell's height figures were measured at sz0 * LEAD (glyph_h) before this redraw; refresh them from the
+            # rows actually DRAWN (G21 #1). A wider source pitch can turn heightFit False at step 'fit' with nothing
+            # named: the rows are the source's own extent inside the cell (spec D-e accepts P1v's untested height).
+            # A label M3 drew on its rows never gets here: its lead IS the source pitch, so the span test above is 0.
+            drawn_h = (len(lines) - 1) * lead + (ASC + DESC) * s
+            height_fit = drawn_h <= hb + EPS
+            if overflow is not None and overflow['axis'] == 'height':
+                overflow['needPt'] = drawn_h
+            elif overflow is not None and overflow['axis'] == 'width':
+                overflow.pop('heightNeedPt', None)
+                overflow.pop('heightBudgetPt', None)
+                if not height_fit:
+                    overflow['heightNeedPt'] = drawn_h
+                    overflow['heightBudgetPt'] = hb
+    widths =[width(lc, s, j) for j, lc in enumerate(lines)]
     x0 = [{'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align] for w in widths]
     e0, e1 = min(x0), max(a + w for a, w in zip(x0, widths))
 
@@ -473,5 +832,27 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         'lines': lines, 'size': s, 'align': align, 'anchor': anchor,
         'x0': [x + disp for x in x0], 'top': top, 'lead': lead, 'disp': disp, 'vdisp': vdisp,
         'step': step, 'overflow': overflow,
-        'widths': widths, 'budget': budget, 'bound': bound, 'heightFit': height_fit, 'cls': cls,
+        'widths': widths, 'budget': budget, 'bound': bound, 'heightFit': height_fit, 'cls': cls, 'm1': m1,
+        'rows': rows,
     }
+
+
+def report_entries(layout):
+    """-> the `relaid` entries of one decide() Layout dict, without key/block (compose.py adds them; see REPORT).
+    `source-breaks` only when M1 was HONOURED (m1['spans'] not None, T11 D3); `source-rows` when rows is True."""
+    out = []
+    m1 = layout.get('m1')
+    if m1 is not None and m1.get('spans') is not None:
+        out.append({'rule': 'source-breaks', 'sizePt': layout['size'], 'shrunkFromPt': m1.get('shrunkFrom'),
+                    'anchors': len(m1['anchors'])})
+    if layout.get('rows') is True:
+        out.append({'rule': 'source-rows', 'sizePt': layout['size'], 'leadPt': layout['lead']})
+    return out
+
+
+def below_source(size, sz0, floor=FLOOR):
+    """-> {'sizePt', 'sourcePt'} when a label set below the floor at sz0 is DRAWN at `size` < sz0 (R-16's shrink,
+    size_steps' floor_eff), else None. The EPS slack is size_steps' own, so a source at the floor is not below it."""
+    if sz0 < floor - EPS and size < sz0 - EPS:
+        return {'sizePt': size, 'sourcePt': sz0}
+    return None

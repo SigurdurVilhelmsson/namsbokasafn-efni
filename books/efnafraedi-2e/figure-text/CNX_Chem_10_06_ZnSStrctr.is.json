@@ -1,12 +1,12 @@
 {
  "version": 1,
  "basename": "CNX_Chem_10_06_ZnSStrctr",
- "renderHash": "014a8d33c0bee754",
- "composedHash": "014a8d33c0bee754",
+ "renderHash": "f63f649b7bc3c19d",
+ "composedHash": "f63f649b7bc3c19d",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "5",
  "blocks": {
-  "ZnS face-centered unit cell": "Flötungsmiðjuð einingarfruma ZnS"
+  "ZnS face-centered unit cell": "ZnS hliðarsetin grindareining"
  },
  "mtJoined": {
   "status": "single-label",

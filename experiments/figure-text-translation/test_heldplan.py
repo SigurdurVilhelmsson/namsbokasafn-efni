@@ -6,9 +6,10 @@
 Plain checks and a module-level `fails` list, like its siblings - there is no pytest in this tree.
 HP0-HP15, HP17 and HP18 are PURE: real runs from the committed evidence, a fake container (a thunk
 that counts its calls), a fake width (0.5 x size x ratio per character; HP18's own depends on the run's
-weight) and a fake has_glyph. HP16 adds the only non-pure inputs: a test-local cairo width (hint
+weight) and a fake has_glyph. HP16 adds non-pure inputs: a test-local cairo width (hint
 metrics off - compose.lin_advance's measure, copied) and the real figis cmap, against each block's REAL
-committed container. No file IO but one read of evidence/2026-10-03-c140-held/held-geometry.json;
+committed container. HP10c is the other non-pure arm: a REAL figcontainers.container_for (Pillow from
+pylibs), imported lazily so HP0 still sees heldplan's own imports only. No file IO but one read of evidence/2026-10-03-c140-held/held-geometry.json;
 nothing is spawned, nothing is drawn.
 
 Design: docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md, D-a, D-b, D-c,
@@ -38,11 +39,22 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        and an equality check could not tell a drawn slice from a source slice), at the right offsets.
 * HP9  numloc: the localised source form counts as unchanged, and a changed line is never localised.
 * HP10 a box with a multi-line block refuses `box-multiline`; a one-line block in it is accepted.
+       HP10c (§C140 '6', M7; ruling R-2a = C) a box that holds ANOTHER block's source line is a SHARED
+       box, laid out on the cell path (which reads the source baselines), so the same 2-visual-line
+       amide1 block in a planted stroked rect beside amide1 b1 is PLANNED, not refused; its pair, the
+       same rect holding the block alone, is still refused `box-multiline` (a CONTROL). Red before M7
+       (container_for called that box a box). The container is the REAL figcontainers.container_for
+       on a planted page and a blank Pillow image, imported lazily inside the arm as HP16 imports cairo.
 * HP11 the acceptance predicate, ONE KILLER PER CLAUSE: (a) buffer with a long sentinel (the design's
        arm) and (e) a cell wrap to 2 lines at sz0, step 'fit' - only `len(lines) == 1` refuses it;
        (b) an open shrink (step iii-anchor, which the step clause catches too) and (f) a CELL shrink,
        step 'fit' at 8.75 pt - only `size == sz0` refuses it; (c) a 7 pt open label overflowing at its
-       own floor; (d1) a stubbed decide returning 'floor-overflow' with overflow None at sz0 on one line
+       own floor, which is 0.8 x 7.0 since R-16 ([USER] 2026-10-05: a source below 7.5 pt may shrink to
+       0.8 x its size); (c2) an open and (c3) a CELL 7 pt label that fits only BELOW its source size under
+       R-16 - a held value is still never shrunk, and in the cell only `size == sz0` refuses it. Both are
+       red before R-16 in their DETAIL only (they refused at 7.0 then); what makes c3 the size clause's
+       killer is a planted mutant without that clause, which plans it (G13 evidence, in the T8 report);
+       c3-pre is its CONTROL. (d1) a stubbed decide returning 'floor-overflow' with overflow None at sz0 on one line
        - only the step clause; (d2) a stubbed decide returning step 'i' with an overflow - only the
        overflow clause. figlayout sets `overflow` on every 'floor-overflow' and never on 'i'/'ii'/'fit',
        so a stub is the only way to make those two clauses the deciding one (the design keeps them as
@@ -73,6 +85,26 @@ WHAT IS PINNED, AND WHY EACH ONE CAN FAIL
        anchor; buffer draws B3 verbatim and asserts the full extent 101.72..234.21 (disp +1.24, the
        0.51 pt spare). The width is pinned on English source text instead of `Nei`: No bold 9 = 12.00,
        or = 8.00, R or H = 26.00, To bold 7 = 8.55, buffer's line 130.99 before and B3 132.49 after.
+* HP19-HP23 (§C140 '6', M2; spec docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md
+       D-b, ruling R-17) a source line that draws only U+0020 (the next row's indent space) is NO line: on
+       FoodLabel's purple cell (evidence/2026-10-06-c140-v6-m2/foodlabel-purple-runs.json, the real runs and
+       the real container snapshot, still with the pure fake width and has_glyph) [USER]'s ruled one-line
+       bullets plan with line 0 changed (HP19 `• 5% eða minna`, HP20 `• 20% eða` - quoted from the R-15g2
+       ruling / the value sheet, the second exception to D-i's sentinels); a two-line bullet, whose second
+       line would sit on `er lítið`, refuses `line-count` (HP21); a value equal to the ink text refuses
+       `no-change` and is never re-laid in English (HP22 - the unchanged test reads the INK runs, not the
+       visual line with its folded space). HP19-HP22 are red on the pre-M2 planner (it counted 2 visual
+       lines: HP19/HP20/HP22 refused `line-count`, HP21 was ACCEPTED as the collision). HP23 is a CONTROL:
+       an unchanged value on the no-blank `Quick|guide to|% DV` is `no-change` on both sides.
+* HP24 (G21 review-fix round, F2 n5) a script style that differs only in its STIX face (`serif`) is ONE pooled
+       style: a Liberation `2` and a STIX `+` of one size and rise pool to one `sup` (red before: a TypeError
+       sorting None against a tuple), and a held ^ mark on it is planned (HP24a/b); two STIX faces pool to one,
+       face None (HP24c, red before: two entries); HP24d is a CONTROL - faces that agree keep that face (its
+       mutant, the face always None, is in the round's report).
+* HP25 (G21, F2 n46; this pins what T1 D4 disclosed as NOT PINNED) a changed line with a folded blank run: its
+       'layout' entry spans the FULL visual line, so the entries partition the block (HP25a planted, HP25c the
+       real FoodLabel bullet - mutant: the entry carries the ink slice), and its cues are the INK runs' - the
+       layout equals the same block without the blank run (HP25b - mutant: cues from the full line pull x0 left).
 """
 import json
 import sys
@@ -90,6 +122,7 @@ import figscripts as FS                         # noqa: E402
 import figlayout as FL                          # noqa: E402
 import heldvalues as HV                         # noqa: E402
 import numloc                                   # noqa: E402
+import blockkey as BK                           # noqa: E402 - HP19-HP23 address FoodLabel blocks by key
 
 GEOMETRY = HERE / 'evidence' / '2026-10-03-c140-held' / 'held-geometry.json'
 GEOM = json.loads(GEOMETRY.read_text(encoding='utf-8'))
@@ -100,7 +133,7 @@ SUB_MOL = FS.SourceStyle(0.7778, -0.2222, False)
 SUP_PH = FS.SourceStyle(0.7778, 0.4445, False)
 SUB_BUF = FS.SourceStyle(0.7778, -0.3333, False)
 SUP_BUF = FS.SourceStyle(0.7778, 0.4444, False)
-OX_CHARGE = FS.SourceStyle(1.0, 0.0714, True)
+OX_CHARGE = FS.SourceStyle(1.0, 0.0714, True, (True, True))   # M6: from a Type 1 STIXGeneral-BoldItalic run
 
 fails = []
 REFUSALS = []
@@ -387,6 +420,30 @@ def hp10():
           p.changed == [0] and p.lines[0][1]['step'] == 'fit' and p.lines[0][1]['cls'] == 'box')
 
 
+def hp10c():
+    sys.path.insert(0, str(HERE / 'pylibs'))
+    import math
+    from PIL import Image
+    import figcontainers as FC
+    pw, ph = GEOM['figures']['CNX_Chem_20_04_amide1_img']['page']
+    rect = {'object_type': 'rect', 'x0': 50.0, 'y0': 65.0, 'x1': 170.0, 'y1': 110.0, 'stroke': True,
+            'fill': False, 'linewidth': 1.0, 'path': [], 'pts': []}     # holds b0's two lines AND b1's one
+    pg = {'width': pw, 'height': ph, 'bbox': (0.0, 0.0, pw, ph), 'rects': [rect], 'curves': [], 'lines': []}
+    dark = Image.new('L', (math.ceil(pw * FC.S), math.ceil(ph * FC.S)), 255)
+    alone = FC.container_for(0, [AM0], pg, dark, ph)
+    e = refused(lambda: plan(AM0, 'C\nQZX R', AM_F, container=alone))
+    check('HP10c-pre CONTROL the planted rect holding the 2-visual-line block ALONE is a box and refuses '
+          'box-multiline', alone['cls'] == 'box' and e is not None and e.reason == 'box-multiline'
+          and e.detail == {'visual': 2}, f"{alone['cls']} {alone['why']} / {why(e)}")
+    shared = FC.container_for(0, [AM0, AM1], pg, dark, ph)
+    check('HP10c-shape the same rect with b1\'s line inside it is a SHARED box (cell, why ends +shared)',
+          shared['cls'] == 'cell' and shared['why'].endswith('+shared'), f"{shared['cls']} {shared['why']}")
+    th = Thunk(shared)
+    e = refused(lambda: plan(AM0, 'C\nQZX R', AM_F, container=th))
+    check('HP10c a 2-visual-line block in a SHARED box is planned, not refused box-multiline',
+          e is None and th.calls == 1, why(e))
+
+
 def _stubbed(fn, edit):
     """Run fn with figlayout.decide replaced by one that edits the REAL layout; always restored."""
     real = FL.decide
@@ -410,12 +467,29 @@ def hp11():
                                                                          'size': 8.75, 'lines': 1}, why(e))
     check('HP11b CONTROL the same container takes a narrower sentinel at source size',
           refused(lambda: plan(one, 'QZXQZ', PF, container=tight)) is None)
-    seven = [run('To', 7.0, 100.0, 100.0, 8.0)]                 # sz0 7 = its own floor; anchor 104
+    seven = [run('To', 7.0, 100.0, 100.0, 8.0)]                 # sz0 7, below R4's floor; anchor 104
     narrow = dict(ROOMY, FL=104.0 - 6.0, FR=104.0 + 6.0, room_up=0.0, room_down=0.0)
+    # R-16: its ladder now runs to 0.8 x 7.0; 'QZXQZX' is 3 x size = 16.8 there, (ii) budget 8 -> still v-overflow.
     e = refused(lambda: plan(seven, 'QZXQZX', PF, container=narrow))
-    check('HP11c a 7 pt open label overflowing at its own floor refuses (v-overflow, 7.0 pt, one line)',
+    check('HP11c a 7 pt open label overflowing at its R-16 floor refuses (v-overflow, 0.8 x 7.0 pt, one line)',
           e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'v-overflow',
-                                                                         'size': 7.0, 'lines': 1}, why(e))
+                                                                         'size': 0.8 * 7.0, 'lines': 1}, why(e))
+    # HP11c2/c3: R-16 lengthens the ladder below sz0, so a held 7 pt line can now FIT shrunk - and must still refuse.
+    # 'QZX' = 1.5 x size: 10.5 at 7.0, 9.75 at 6.5, 9.375 at 6.25; both containers are 13.5 wide -> budget 9.5.
+    mid = dict(ROOMY, FL=104.0 - 6.75, FR=104.0 + 6.75, room_up=0.0, room_down=0.0)
+    e = refused(lambda: plan(seven, 'QZX', PF, container=mid))
+    check('HP11c2 a 7 pt open label that fits only shrunk below its source size (R-16) refuses (iii-anchor, 6.25 pt)',
+          e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'iii-anchor',
+                                                                         'size': 6.25, 'lines': 1}, why(e))
+    mid_cell = {'cls': 'cell', 'why': 'test-cell', 'L': 104.0 - 6.75, 'R': 104.0 + 6.75, 'D': 50.0, 'U': 150.0,
+                'src_left_margin': 5.0, 'src_right_margin': 5.0, 'src_up_margin': 5.0, 'src_down_margin': 5.0,
+                'align': 'center', 'align_why': 'test'}
+    e = refused(lambda: plan(seven, 'QZX', PF, container=mid_cell))
+    check('HP11c3 a 7 pt CELL fit only below its source size (step fit, 6.25 pt, R-16) refuses: only size == sz0',
+          e is not None and e.reason == 'does-not-fit' and e.detail == {'line': 0, 'step': 'fit',
+                                                                         'size': 6.25, 'lines': 1}, why(e))
+    check('HP11c3-pre CONTROL the same cell takes a narrower held value at source size',
+          refused(lambda: plan(seven, 'QZ', PF, container=mid_cell)) is None)
     check('HP11d-pre CONTROL MattType QZX in the roomy container is planned at 9.0, one line, no overflow',
           refused(lambda: plan(MATT, 'QZX', MATT_F)) is None)
     e = _stubbed(lambda: plan(MATT, 'QZX', MATT_F), {'step': 'floor-overflow'})
@@ -451,6 +525,7 @@ def hp17():
 
 
 attempt('HP10', hp10)
+attempt('HP10c', hp10c)
 attempt('HP11', hp11)
 attempt('HP17', hp17)
 
@@ -748,6 +823,115 @@ def hp18():
 attempt('HP18', hp18)
 attempt('HP16-pins', hp16_pins)
 attempt('HP16', hp16)
+
+
+# ── HP19-HP23 (§C140 '6', M2) ──────────────────────────────────────────────────────────────────
+# FoodLabel's purple cell: the real runs and container snapshot (evidence/2026-10-06-c140-v6-m2). The two
+# bullets are [USER]'s ruled values (R-15g2 / the value sheet), quoted verbatim - see the docstring.
+print('\nHP19-HP23 a source line of only U+0020 is no line (M2, R-17)')
+FOOD = json.loads((HERE / 'evidence' / '2026-10-06-c140-v6-m2' / 'foodlabel-purple-runs.json')
+                  .read_text(encoding='utf-8'))
+FOOD_F = FOOD['fonts']
+FOOD_BLOCKS = FT.merge_blocks(FT.group(FOOD['runs']))
+FOOD_KEYS = [BK.block_key(b) for b in FOOD_BLOCKS]
+K_FQ, K_F42, K_F44 = 'Quick|guide to|% DV', '(cid:127) 5% or less| ', '(cid:127) 20% or| '
+
+
+def food(key):
+    """(runs, container thunk) of one FoodLabel fixture block, by its block key."""
+    i = FOOD_KEYS.index(key)
+    return FOOD_BLOCKS[i], Thunk(FOOD['containers'][str(i)])
+
+
+def hp19():
+    for tag, key, value in (('HP19', K_F42, '• 5% eða minna'), ('HP20', K_F44, '• 20% eða')):
+        b, th = food(key)
+        e = refused(lambda: plan(b, value, FOOD_F, container=th))
+        p = None if e is not None else plan(b, value, FOOD_F, container=th)
+        check(f"{tag} [USER]'s one-line bullet {value!r} on {key!r} plans with line 0 changed",
+              p is not None and p.changed == [0] and [x[0] for x in p.lines] == ['layout'], why(e))
+    b, th = food(K_F42)
+    e = refused(lambda: plan(b, '• 5% eða\nminna', FOOD_F, container=th))
+    check("HP21 a two-line bullet (its 2nd line would sit on 'er lítið') refuses line-count",
+          e is not None and e.reason == 'line-count', why(e))
+    e = refused(lambda: plan(b, '(cid:127) 5% or less', FOOD_F, container=th))
+    check('HP22 a value equal to the INK text refuses no-change - never re-laid in English',
+          e is not None and e.reason == 'no-change', why(e))
+    b, th = food(K_FQ)
+    e = refused(lambda: plan(b, 'Quick\nguide to\n% DV', FOOD_F, container=th))
+    check('HP23 CONTROL: an unchanged value on the no-blank `Quick|guide to|% DV` is no-change',
+          e is not None and e.reason == 'no-change', why(e))
+
+
+attempt('HP19', hp19)
+
+
+# ── HP24-HP25 (G21 review-fix round, F2 n5 / n46) ──────────────────────────────────────────────────
+print('\nHP24 a script style that differs only in its STIX face is ONE pooled style (G21 #5)')
+PFS = dict(PF, **{'T/SB': {'base': '/AAAAAA+STIXGeneral-Bold', 'subtype': '/Type1'}})
+SUP_G = FS.SourceStyle(0.7778, 0.4444, False)          # 'Mg2+': the 7 pt charge raised 4 pt on a 9 pt base
+
+
+def mg(font2, fontp):
+    """'Mg2+ ion' with the 2 in `font2` and the + in `fontp`: the same size and rise, possibly another face."""
+    return [run('Mg', 9.0, 100.0, 100.0, 10.0), run('2', 7.0, 110.0, 104.0, 3.9, font=font2),
+            run('+', 7.0, 113.9, 104.0, 4.0, font=fontp), run(' ion', 9.0, 117.9, 100.0, 14.0)]
+
+
+def hp24():
+    lib_stix = mg('T/R', 'T/S')                         # Liberation 2, STIX Regular + (serif None vs (False, False))
+    try:
+        pool = HP.script_pool(lib_stix, PFS)
+    except Exception as exc:                            # noqa: BLE001 - the pre-fix TypeError, named
+        pool = f'{type(exc).__name__}: {exc}'
+    check('HP24a Liberation and STIX Regular superscripts of one geometry pool to ONE style, its face None (the '
+          'faces disagree, so the mark draws FigIS as under composer 5) - never a TypeError',
+          isinstance(pool, dict) and pool == {'sub': [], 'sup': [SUP_G]} and pool['sup'][0].serif is None,
+          repr(pool))
+    e = refused(lambda: plan(lib_stix, 'Mg²⁺ QZ', PFS))
+    ch = [] if e is not None else layout_chars(plan(lib_stix, 'Mg²⁺ QZ', PFS), 0)
+    check('HP24b ... so a held ^ mark on it is planned (not refused ambiguous-source-script:sup), in that style',
+          e is None and [st for c, st in ch if c in '2+'] == [SUP_G, SUP_G], why(e) if e else repr(ch))
+    two_stix = mg('T/S', 'T/SB')                        # STIX Regular and Type 1 STIX Bold: (F, F) vs (T, F)
+    pool = HP.script_pool(two_stix, PFS)
+    check('HP24c two STIX faces of one geometry pool to ONE style, face None', pool == {'sub': [], 'sup': [SUP_G]}
+          and pool['sup'][0].serif is None, repr(pool))
+    agree = mg('T/S', 'T/S')
+    pool = HP.script_pool(agree, PFS)
+    check('HP24d CONTROL faces that AGREE keep that face: one style, serif (False, False) - drawn FigSym as before',
+          pool == {'sub': [], 'sup': [SUP_G._replace(serif=(False, False))]}
+          and pool['sup'][0].serif == (False, False), repr(pool))
+
+
+attempt('HP24', hp24)
+
+print('\nHP25 a changed line with a folded blank run: its entry spans the FULL visual line, its cues the INK (G21 n46)')
+
+
+def hp25():
+    """The two halves n46 named, each killing its mutant: HP2 (`('layout', layout, vl)` - the entry one run short)
+    and HP3 (the cues read from the full line, the blank run's along included). The planted block is one ink line
+    and a lone U+0020 run 12 pt lower and 20 pt to the LEFT (the next row's indent space), which visual_lines folds
+    into line 0."""
+    blk = [run('QZ abc', 9.0, 100.0, 100.0, 27.0), run(' ', 9.0, 80.0, 88.0, 2.5)]
+    check('HP25-pre the plant is TWO FT.lines and ONE visual line (the blank folded)',
+          len(FT.lines(blk)) == 2 and len(FT.visual_lines(blk)) == 1, repr(FT.visual_lines(blk)))
+    p = plan(blk, 'QZX', PF)
+    ink = plan(blk[:1], 'QZX', PF)
+    span = sum(len(x[1]) if x[0] == 'runs' else len(x[2]) for x in p.lines)
+    check('HP25a the plan entries partition the block (their lengths sum to len(block)): the layout entry carries '
+          'the folded blank run', span == len(blk) and [r['text'] for r in p.lines[0][2]] == ['QZ abc', ' '],
+          f'span {span} of {len(blk)}; entry runs {[r["text"] for r in p.lines[0][2]]}')
+    check('HP25b ... and is laid out from its INK runs only: the layout equals the same block without the blank run '
+          '(x0 is not pulled 20 pt left by it)', p.lines[0][1] == ink.lines[0][1],
+          f"x0 {p.lines[0][1]['x0']} vs ink-only {ink.lines[0][1]['x0']}")
+    b, th = food(K_F42)
+    p = plan(b, '• 5% eða minna', FOOD_F, container=th)
+    span = sum(len(x[1]) if x[0] == 'runs' else len(x[2]) for x in p.lines)
+    check('HP25c the real FoodLabel bullet (HP19) partitions its block too', span == len(b), f'{span} of {len(b)}')
+
+
+attempt('HP25', hp25)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

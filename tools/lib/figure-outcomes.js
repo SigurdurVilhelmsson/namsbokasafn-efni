@@ -123,12 +123,18 @@ export function tallyOutcome(tally, outcome) {
  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
  * @param {{undecodedFigures?: number, undecodedLabels?: number, unformattedFigures?: number,
  *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number,
- *   heldFigures?: number, ringGateFailedFigures?: number}} [extra]
+ *   heldFigures?: number, relaidFigures?: number, belowSourceFigures?: number,
+ *   anchorExcludedFigures?: number, artworkEditFigures?: number,
+ *   ringGateFailedFigures?: number}} [extra]
  *   counted over the records, not derivable from the tally. `unformattedFigures` through
  *   `containerErrorFigures` are `translated` figures whose compose.json carried a non-empty list
  *   of that name (§C140); `heldFigures` are `translated` figures AND published `copied-textless`
  *   ones whose compose.json carried a non-empty `held` list — labels drawn from
- *   `heldBlockValues`, [USER]'s values (§C140 ㊾ D5(a)); `ringGateFailedFigures` are figures
+ *   `heldBlockValues`, [USER]'s values (§C140 ㊾ D5(a)); `relaidFigures`, `belowSourceFigures` and
+ *   `anchorExcludedFigures` are `translated` figures whose compose.json carried a non-empty
+ *   `relaid` / `belowSource` / `anchorExcluded` list (§C140 '6', G8); `artworkEditFigures` are
+ *   figures counted as `heldFigures` are whose prepare.json carried `artworkEdits` (R-15a);
+ *   `ringGateFailedFigures` are figures
  *   whose ring gate could not run (㊼).
  * @returns {{ok: boolean, reasons: string[]}}
  */
@@ -196,7 +202,8 @@ export function verdict(tally, enumeratedCount, extra = {}) {
   // PURPOSE. Same channel and same stance as the NOTE above: a property of figures inside
   // `translated` (for `held`, also a published `copied-textless`), counted over the records.
   // ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
-  // as plain text, an overhang at the 7.5 pt floor (R4/R5), a localised number in the house style
+  // as plain text, an overhang at the shrink floor (figlayout.size_steps; R4/R5 as amended by
+  // R-16), a localised number in the house style
   // (R6), a failed detection laid out as open — so the figure ships, and the report names what to
   // look at. Failing on any of them would be the always-red exit code R9 rejects.
   const composeNotes = [
@@ -227,6 +234,30 @@ export function verdict(tally, enumeratedCount, extra = {}) {
       extra.heldFigures,
       (n) =>
         `${n} figure(s) drew labels from heldBlockValues ([USER]'s values) — the report names each`,
+    ],
+    // §C140 '6' (G8) — NOT fidelity gaps either: layout decisions the '6' composer takes on purpose
+    // (M1's source row breaks and its R-3 shrink, M3's source rows, R-16's shrink below a sub-floor
+    // source size) and rulings carried out (R-20's exclusions, R-15a's artwork edits), named so a
+    // convergence check can read WHY a label changed. Never fatal: every label is drawn.
+    [
+      extra.relaidFigures,
+      (n) =>
+        `${n} figure(s) had labels laid out on the source's own row breaks or rows — the report names each`,
+    ],
+    [
+      extra.belowSourceFigures,
+      (n) =>
+        `${n} figure(s) had labels drawn below their source size (R-16) — the report names each`,
+    ],
+    [
+      extra.anchorExcludedFigures,
+      (n) =>
+        `${n} figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each`,
+    ],
+    [
+      extra.artworkEditFigures,
+      (n) =>
+        `${n} figure(s) were drawn on artwork edited by artworkEdits ([USER]'s edits) — the report names each`,
     ],
   ];
   for (const [count, message] of composeNotes) {

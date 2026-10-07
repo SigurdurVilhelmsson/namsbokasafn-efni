@@ -9,10 +9,11 @@ Reads the directory `figure-prepare.py` wrote (`runs.json`, `meta.json`, `blocks
 
     {"outputPath": "<dir>/translated.svg",
      "unformatted": [...], "overflow": [...],
-     "localized": [...], "containerErrors": [...], "held": [...]}  exit 0
+     "localized": [...], "containerErrors": [...], "held": [...],
+     "relaid": [...], "belowSource": [...], "anchorExcluded": [...]}  exit 0
     {"error": "...", "keys": ["<block key>", ...]}  exit 1
 
-Exit 2 is a usage error. The five lists are the composer's NOTES, copied from
+Exit 2 is a usage error. The lists are the composer's NOTES, copied from
 compose-report.json (see `COMPOSE_NOTES`); none of them is a verdict.
 
 🔴 WHY THIS WRAPPER EXISTS: `compose.py` KEEPS THE ENGLISH FOR ANY KEY IT CANNOT MATCH,
@@ -42,6 +43,15 @@ THE THREE ASSERTIONS, AND WHY THEY ARE DIFFERENT ANCHORS
    What it catches is a STALE OR WRONG-FIGURE `--out`: a directory whose `blocks.json` was
    written for one figure and whose `runs.json` belongs to another. That is exactly the
    failure that had a sidecar asserting another figure's labels.
+1a. EXPLICIT BREAKS (§C140 '6' R-5a, [USER] 2026-10-05). An LF in a translated value is an editor's
+   line break. compose.py draws each line from the block's first source baseline at its mean
+   source pitch (a box: its glyph box centred at that pitch) or, when it cannot (an arc,
+   an empty / edge-space / invisible line, more lines than the block has visual source lines, a
+   break on an R3 joint - figtext.explicit_lines), draws the label as if each LF were a space and
+   names it in `explicitBreakErrors`; a value token-equal to the English (identity) is drawn run-exact
+   on the source's rows and named there too, reason `run-exact` (G21 #2). Any entry refuses the figure, naming key, block and reason:
+   it was drawn without the breaks the editor typed. `explicitBreaks` (the honoured ones) is
+   compose-report.json only - neither list is one of COMPOSE_NOTES.
 2. THE HELD CONTRACT (§C140 ㊾ D5(a)). Any `heldErrors` entry refuses the figure, naming every
    key and reason; then `Counter(report.held keys) == Counter(blocks.json keys this figure's
    heldBlockValues configure)`. The count compose is held to comes from blocks.json, not from
@@ -69,6 +79,24 @@ format), written on EVERY run - `{}` included - after the stale outputs are remo
 `--held-values` is always passed. A value compose refuses (`heldErrors`) refuses the figure in
 assertion 2: readers keep the previous copy, and the fix is one config edit and a 0-ISK rerun.
 `heldvalues` is stdlib only, so this file still imports no pikepdf, cairo, Pillow or `_deps`.
+
+anchorExclusions (§C140 '6', ruling R-20)
+-----------------------------------------
+figure-text.config.json `anchorExclusions`, `{basename: {blockKey: reason}}`, turns off M1 - figlayout's
+source-anchored cuts - for every block carrying that key in that figure (anchorexclusions.py owns the
+format). The config is parsed ONCE per run, by figconfig.load (one repeated-key hook, one wording), and
+both tables are read from that one object. The pre-flight (`load_anchor_exclusions`) refuses, BEFORE
+anything is spawned or written, an entry that cannot be read, a key that matches no block in blocks.json,
+and a key no send:true block carries (a send:false label is never laid out by figlayout, so the exclusion
+could never act). The entry reaches compose.py in `<out>/anchor-exclusions.json`, written on EVERY run -
+`{}` included - after the stale outputs are removed, and `--anchor-exclusions` is always passed. `verify`
+then requires compose-report.json `anchorExcluded` to name every configured key once per block carrying
+it (the held contract's multiset rule), so a composer that ignored the flag cannot pass. Once verify has
+accepted it, `anchorExcluded` is copied into compose.json as one of COMPOSE_NOTES (§C140 '6' T11, G8), so the
+driver can name each excluded label; `changed: false` (an exclusion that no longer changes the cut) is a note,
+never a refusal.
+⚠️ The table sits outside `renderHash`/`composedVersion`, like heldBlockValues: a change reaches a sidecar
+figure's media only at the next COMPOSER_VERSION bump.
 
 🔴 ASSERTION 3 REPORTS WHAT THE FILE SHOWS, NEVER WHAT IT GUESSES WAS BOUGHT. It used to
 say a key on the left "was BOUGHT and came back with no usable translation", and that is
@@ -106,6 +134,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import anchorexclusions     # §C140 '6' R-20; stdlib only, no _deps (its docstring)
+import figconfig            # §C140 '6' G7: the ONE parse of the policy config; stdlib only, no _deps
 import heldvalues           # §C140 ㊾ D5(a); stdlib only, no _deps (its docstring; test_heldvalues HV7)
 
 HERE = Path(__file__).resolve().parent          # never process.cwd() - repo rule
@@ -130,17 +160,25 @@ REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artw
 # The composer's NOTES: lists compose-report.json carries beside its key sets, copied into
 # compose.json on success so the driver can name them without reading a second file.
 #   unformatted      formula formatting a translated label could not carry (§C140 ②)
-#   overflow         a word drawn at the floor that overhangs its space (§C140 ③, R5)
+#   overflow         a word drawn at the floor that overhangs its space (§C140 ③, R5; the floor is
+#                    `figlayout.size_steps`'s - R4's 7.5 pt, or 0.8 x a smaller source size, R-16)
 #   localized        English-kept labels drawn with a decimal comma (§C140 ⑨)
 #   containerErrors  blocks whose container detection failed, laid out as open (§C140 ③)
 #   held             labels drawn from heldBlockValues ([USER]'s values), {key, block, changed},
 #                    draw order with multiplicity (§C140 ㊾ D5(a))
+#   relaid           labels laid out on the source's own row breaks (M1, rule source-breaks, with shrunkFromPt)
+#                    or drawn on its own rows (M3, rule source-rows) - {key, block, rule, sizePt, ...} (§C140 '6', G8)
+#   belowSource      labels the source set below the 7.5 pt floor, drawn smaller than that size (R-16) -
+#                    {key, block, sizePt, sourcePt} (§C140 '6', G8)
+#   anchorExcluded   labels laid out without M1's cuts by anchorExclusions (R-20) - {key, block, changed};
+#                    verify checks it against blocks.json before it is copied, like `held` (§C140 '6', G8)
 # 🔴 NONE OF THEM IS A VERDICT, SO NONE IS CHECKED HERE. A figure with a note is drawn and every
 # label is in it; `verify` stays the only thing that refuses. `held` is no exception: verify checks
 # it against blocks.json (assertion 2) before it is copied, and `heldErrors` - which IS a verdict -
 # is never a note. A report written by an older composer lacks the lists, and that reads as EMPTY
 # lists - never a refusal, while nothing is configured for the figure (see verify).
-COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held')
+COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held', 'relaid', 'belowSource',
+                 'anchorExcluded')
 
 # Written by this run, and only by this run. Removed before the child starts so their
 # presence afterwards MEANS "this run produced them" rather than "a file with this name is
@@ -148,7 +186,9 @@ COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'hel
 # `held-values.json` (§C140 ㊾ D5(a)) is the hand-off compose.py reads: written AFTER this removal,
 # on every run, so it always holds this run's config. The removal comes BEFORE the heldBlockValues
 # pre-flight too, so a refusal leaves none of a previous run's files behind (see compose()).
-DERIVED_OUTPUTS = ('compose.json', 'compose-report.json', 'translated.svg', 'held-values.json')
+# `anchor-exclusions.json` (§C140 '6' R-20) is the same kind of hand-off, written the same way.
+DERIVED_OUTPUTS = ('compose.json', 'compose-report.json', 'translated.svg', 'held-values.json',
+                   'anchor-exclusions.json')
 
 COMPOSE_TIMEOUT_S = 900         # an unattended driver must not wedge on one figure
 
@@ -233,15 +273,10 @@ def validate_inputs(out_dir, translations):
                         and 'state' in payload)
 
 
-def load_held(out_dir, blocks, tr, config_path):
-    """§C140 ㊾ D5(a): the heldBlockValues pre-flight. -> (basename, {blockKey: value}): this
-    figure's entry, every value byte for byte, {} when it has none. Raises ComposeError.
-
-    Runs BEFORE anything is spawned or written. `blocks` is blocks.json, `tr` the `Translations`
-    record, `config_path` the policy config (heldvalues.CONFIG_PATH unless --config). Only THIS
-    figure's entry is parsed (heldvalues.for_figure), so a malformed entry for another figure never
-    refuses this one - the config validator catches that in CI. Every key problem is reported at
-    once, each naming `heldBlockValues.<basename>[<key>]`."""
+def figure_basename(out_dir):
+    """-> this figure's basename: meta.json's `source` stem, the rule the publisher's
+    `basenameFromMeta` applies. It picks the figure's entry in every per-figure table. Raises
+    ComposeError when `source` names no file."""
     meta = json.loads((out_dir / 'meta.json').read_text(encoding='utf-8'))
     source = meta.get('source') if isinstance(meta, dict) else None
     basename = Path(source).stem if isinstance(source, str) else ''
@@ -250,36 +285,31 @@ def load_held(out_dir, blocks, tr, config_path):
             f'meta.json in {out_dir} has no string `source` naming a file (got {source!r}) - '
             f"its stem is this figure's basename, which picks its heldBlockValues entry and which "
             f'the publisher checks; run figure-prepare.py for this figure again')
-    # A REPEATED KEY IS REFUSED, NEVER COLLAPSED (a skeptic's finding, 2026-10-03). json.loads - and
-    # JSON.parse in the validator - keeps only the LAST of two equal keys, so a figure's entry written
-    # twice (say one per value-sheet row), or a block key repeated inside one, silently drops the first
-    # value: that key stays send:false, lands in `missing` where verify expects it, and ships in English
-    # with exit 0. The hook sees every object's keys AFTER decoding, so two spellings of one key (a JSON
-    # escape) collide as JSON itself collides them; `dict(pairs)` keeps json's own last-wins result.
-    # ANY depth, deliberately: like a syntax error, a repeat anywhere is a file JSON cannot read
-    # faithfully, so it refuses every figure - unlike a malformed entry for ANOTHER figure, which
-    # for_figure never reads. Measured on the committed config: 9 objects, no key repeated.
-    repeated = []
+    return basename
 
-    def _note_repeats(pairs):
-        seen = set()
-        for k, _ in pairs:
-            if k in seen:
-                repeated.append(k)
-            seen.add(k)
-        return dict(pairs)
 
+def load_config(config_path):
+    """-> the policy config, parsed ONCE per run by figconfig.load (§C140 '6' G7). Raises ComposeError
+    in figconfig's own words. A REPEATED KEY IS REFUSED at any depth, before any table is read: JSON
+    keeps only the last of two equal keys, so a heldBlockValues entry or value written twice would
+    otherwise drop the first silently - that key stays send:false, lands in `missing` where verify
+    expects it, and ships in English with exit 0 (a skeptic's finding, 2026-10-03; figconfig.py)."""
     try:
-        config = json.loads(Path(config_path).read_text(encoding='utf-8'), object_pairs_hook=_note_repeats)
-    except Exception as exc:                      # noqa: BLE001 - reported, not raised
-        raise ComposeError(
-            f'the policy config {config_path} cannot be read ({type(exc).__name__}: {exc}) - a '
-            f'heldBlockValues table that cannot be read is never read as empty') from exc
-    if repeated:
-        raise ComposeError(
-            f'the policy config {config_path} repeats the key(s) {sorted(set(repeated))!r} - JSON keeps '
-            f'only the last of a repeated key, so an earlier heldBlockValues entry or value would be '
-            f'dropped silently and its label drawn in English; merge them into one')
+        return figconfig.load(config_path)
+    except figconfig.ConfigError as exc:
+        raise ComposeError(str(exc)) from exc
+
+
+def load_held(blocks, tr, config_path, basename, config):
+    """§C140 ㊾ D5(a): the heldBlockValues pre-flight. -> {blockKey: value}: this figure's entry,
+    every value byte for byte, {} when it has none. Raises ComposeError.
+
+    Runs BEFORE anything is spawned or written. `blocks` is blocks.json, `tr` the `Translations`
+    record, `config_path` the policy config (heldvalues.CONFIG_PATH unless --config; named in
+    messages only), `basename` figure_basename's, `config` load_config's parsed object. Only THIS
+    figure's entry is parsed (heldvalues.for_figure), so a malformed entry for another figure never
+    refuses this one - the config validator catches that in CI. Every key problem is reported at
+    once, each naming `heldBlockValues.<basename>[<key>]`."""
     try:
         values = heldvalues.for_figure(heldvalues.load_table(config), basename)
     except heldvalues.HeldValueError as exc:
@@ -307,10 +337,43 @@ def load_held(out_dir, blocks, tr, config_path):
         raise ComposeError(
             'figure-compose.py refuses the heldBlockValues for this figure, before composing '
             'anything: ' + '; '.join(problems), keys=sorted(keys))
-    return basename, values
+    return values
 
 
-def run_compose(out_dir, translations, held_path):
+def load_anchor_exclusions(blocks, config_path, basename, config):
+    """§C140 '6' R-20: the anchorExclusions pre-flight. -> {blockKey: reason}: this figure's entry, {}
+    when it has none. Raises ComposeError. Runs BEFORE anything is spawned or written.
+
+    Only THIS figure's entry is parsed (anchorexclusions.for_figure). A key that matches no block
+    (renamed or re-extracted - the exclusion would never act) and a key no send:true block carries
+    (a send:false label is drawn run-exact or from heldBlockValues, never laid out by figlayout) are
+    refused, every problem at once, each naming `anchorExclusions.<basename>[<key>]`. A key that reaches
+    the layout but changes nothing there is NOT refused here: compose.py names it `changed: false`."""
+    try:
+        excl = anchorexclusions.for_figure(anchorexclusions.load_table(config), basename)
+    except anchorexclusions.AnchorExclusionError as exc:
+        raise ComposeError(f'{config_path}: {exc}') from exc
+    declared = collections.Counter(b['key'] for b in blocks)
+    sendable = {b['key'] for b in blocks if b.get('send')}
+    where = f'{anchorexclusions.TABLE}.{basename}'
+    problems, keys = [], set()
+    for key in excl:
+        if not declared[key]:
+            problems.append(f'{where}[{key!r}] matches no block in blocks.json - renamed or re-extracted, '
+                            f'so the exclusion would never act')
+            keys.add(key)
+        elif key not in sendable:
+            problems.append(f'{where}[{key!r}] is a send:false block in blocks.json - such a label is '
+                            f'never laid out by figlayout, so M1 never reaches it')
+            keys.add(key)
+    if problems:
+        raise ComposeError(
+            'figure-compose.py refuses the anchorExclusions for this figure, before composing '
+            'anything: ' + '; '.join(problems), keys=sorted(keys))
+    return excl
+
+
+def run_compose(out_dir, translations, held_path, anchor_path=None):
     """Spawn compose.py with this figure's own FIGTEXT_OUT. -> the CompletedProcess.
 
     `cwd=HERE` and absolute paths for the same reason figure-prepare.py uses them: the
@@ -320,15 +383,21 @@ def run_compose(out_dir, translations, held_path):
     `--held-values` is ALWAYS passed (§C140 ㊾ D5(a)): `held_path` is the file compose() has just
     written, `{}` values included, so a configured figure is never composed without its values,
     and an unconfigured one draws exactly as with no flag (test_compose_held CH7).
+    `--anchor-exclusions` (§C140 '6' R-20) is passed whenever `anchor_path` is given, and compose()
+    always gives it - `{}` included, which draws byte for byte as with no flag (test_compose_anchors
+    A4). The parameter is optional only so a unit caller (test_figure_compose F11) keeps its shape.
 
     The child's stdout and stderr are passed through rather than swallowed: the block
     report and the ENGLISH KEPT warning are what a human reads, and a driver log that
     hides them is blind for exactly the failure this tool exists to catch."""
     env = dict(os.environ)
     env['FIGTEXT_OUT'] = str(out_dir)
+    argv = [sys.executable, str(HERE / 'compose.py'),
+            '--translations', str(translations), '--held-values', str(held_path)]
+    if anchor_path is not None:
+        argv += ['--anchor-exclusions', str(anchor_path)]
     result = subprocess.run(
-        [sys.executable, str(HERE / 'compose.py'),
-         '--translations', str(translations), '--held-values', str(held_path), '--svg'],
+        argv + ['--svg'],
         capture_output=True, text=True, env=env, cwd=str(HERE),
         timeout=COMPOSE_TIMEOUT_S)
     if result.stdout:
@@ -370,17 +439,22 @@ def read_report(out_dir, child):
     return report
 
 
-def verify(report, blocks, translations, held=None):
-    """The three assertions (blocks; the held contract; money). Raises ComposeError naming the
-    offending keys.
+def verify(report, blocks, translations, held=None, anchor=None):
+    """The three assertions (blocks; the held contract; money), plus explicit breaks (1a, R-5a) and the
+    anchorExclusions contract.
+    Raises ComposeError naming the offending keys.
 
     `translations` is REQUIRED - a default would silently pick one of the two wordings
     below, and picking wrong is the defect this argument exists to close.
 
     `held` is this figure's heldBlockValues entry, {blockKey: value} (§C140 ㊾ D5(a)). Its default is
     {}, which is fail-closed: a caller that forgets it refuses any label compose drew from a held
-    value."""
+    value.
+
+    `anchor` is this figure's anchorExclusions entry, {blockKey: reason} (§C140 '6' R-20). Default {}:
+    a report that names an excluded block while nothing is configured is refused the same way."""
     held = {} if held is None else held
+    anchor = {} if anchor is None else anchor
     drawn = collections.Counter(report['blocks'])
     declared = collections.Counter(b['key'] for b in blocks)
     if drawn != declared:
@@ -391,6 +465,15 @@ def verify(report, blocks, translations, held=None):
             f'drew {sum(drawn.values())}, declared {sum(declared.values())}; '
             f'multiset delta {sorted(delta.items())}',
             keys=sorted(delta))
+
+    # 1a. EXPLICIT BREAKS (§C140 '6' R-5a): a value whose explicit line breaks compose.py could not honour was
+    # drawn WITHOUT them - the layout the reviewer did not ask for. Refused by name, never published.
+    if report.get('explicitBreakErrors'):
+        listed = '; '.join(f"{e.get('key')!r} block {e.get('block')}: {e.get('reason')} (line {e.get('line')})"
+                           for e in report['explicitBreakErrors'])
+        raise ComposeError(f"{len(report['explicitBreakErrors'])} translated value(s) carry line breaks that "
+                           f'were not honoured: {listed}',
+                           keys=sorted({e.get('key') for e in report['explicitBreakErrors']}))
 
     # 2. THE HELD CONTRACT (§C140 ㊾ D5(a)). `heldErrors` is in the trigger so that a report carrying
     # refusals but no `held` list cannot pass when nothing is configured. A refusal raises BEFORE the
@@ -424,6 +507,28 @@ def verify(report, blocks, translations, held=None):
                 f'blocks.json carries {sum(configured.values())} block(s) under the configured '
                 f'key(s) - it ignored --held-values, dropped a twin, or drew a key nobody '
                 f'configured. multiset delta {sorted(delta.items())}',
+                keys=sorted(delta))
+
+    # THE anchorExclusions CONTRACT (§C140 '6' R-20), the held contract's shape: compose names EVERY block
+    # carrying a configured key - laid out or not - so the count it is held to comes from blocks.json, and a
+    # composer that ignored --anchor-exclusions (and so drew M1's cut) cannot grade its own homework.
+    if anchor or report.get('anchorExcluded'):
+        entries = report.get('anchorExcluded')
+        if not isinstance(entries, list) or not all(
+                isinstance(e, dict) and isinstance(e.get('key'), str) for e in entries):
+            raise ComposeError(
+                'compose-report.json has no `anchorExcluded` list of {key, ...} entries, while '
+                'anchorExclusions are configured for this figure or the report names excluded labels - '
+                'compose.py and this wrapper have drifted')
+        drawn_excl = collections.Counter(e['key'] for e in entries)
+        configured_excl = collections.Counter({k: declared[k] for k in anchor if declared[k]})
+        if drawn_excl != configured_excl:
+            delta = (drawn_excl - configured_excl) + (configured_excl - drawn_excl)
+            raise ComposeError(
+                f'compose.py excluded {sum(drawn_excl.values())} label(s) from M1 where blocks.json carries '
+                f'{sum(configured_excl.values())} block(s) under the configured anchorExclusions key(s) - it '
+                f'ignored --anchor-exclusions, dropped a twin, or excluded a key nobody configured. multiset '
+                f'delta {sorted(delta.items())}',
                 keys=sorted(delta))
 
     # 3. MONEY. A held label is subtracted from the send:false keys expected in `missing` - but only
@@ -505,8 +610,9 @@ def compose(out_dir, translations, config_path=heldvalues.CONFIG_PATH):
     """-> (the path to translated.svg, the compose-report.json payload `verify` accepted).
     Raises ComposeError on a per-figure failure.
 
-    blocks.json is read ONCE, right after validate_inputs: the heldBlockValues pre-flight needs it
-    before the spawn, and verify checks the report against the same list after it."""
+    blocks.json is read ONCE, right after validate_inputs: the pre-flights need it before the spawn,
+    and verify checks the report against the same list after it. The policy config is parsed ONCE too
+    (load_config), and both per-figure tables are read from that one object."""
     tr = validate_inputs(out_dir, translations)
     blocks = json.loads((out_dir / 'blocks.json').read_text(encoding='utf-8'))
     # The stale outputs go BEFORE the heldBlockValues pre-flight (a skeptic's finding, 2026-10-03):
@@ -516,13 +622,18 @@ def compose(out_dir, translations, config_path=heldvalues.CONFIG_PATH):
     # test_figure_compose.py F13.
     for name in DERIVED_OUTPUTS:
         (out_dir / name).unlink(missing_ok=True)
-    basename, held = load_held(out_dir, blocks, tr, config_path)
+    basename = figure_basename(out_dir)
+    config = load_config(config_path)
+    held = load_held(blocks, tr, config_path, basename, config)
+    anchor = load_anchor_exclusions(blocks, config_path, basename, config)
     held_path = out_dir / 'held-values.json'
     heldvalues.write_file(held_path, basename, config_path, held)
+    anchor_path = out_dir / 'anchor-exclusions.json'
+    anchorexclusions.write_file(anchor_path, basename, config_path, anchor)
 
-    child = run_compose(out_dir, translations, held_path)
+    child = run_compose(out_dir, translations, held_path, anchor_path)
     report = read_report(out_dir, child)
-    verify(report, blocks, tr, held)
+    verify(report, blocks, tr, held, anchor)
 
     svg = out_dir / 'translated.svg'
     if not svg.is_file() or svg.stat().st_size == 0:
@@ -543,8 +654,8 @@ def parse_args(argv):
     # §C140 ㊾ D5(a): TEST-ONLY. The driver never passes it, so composeFigure's argv - and the paid
     # and free harness pins on it - do not move, and every route reads the committed config.
     parser.add_argument('--config', default=None,
-                        help='the policy config whose heldBlockValues to read (default: '
-                             'figure-text.config.json beside this file; for tests)')
+                        help='the policy config whose heldBlockValues and anchorExclusions to read '
+                             '(default: figure-text.config.json beside this file; for tests)')
     # argparse exits 2 on an unknown flag and on a valued flag with no value, which is the
     # required behaviour - `tools/lib/parseArgs.js` silently DROPS unknown flags, and a
     # misremembered safety flag that is silently dropped is how a rehearsal becomes a

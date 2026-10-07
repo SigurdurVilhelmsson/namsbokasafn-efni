@@ -9,6 +9,7 @@
  * change: the paid driver changes wording only (spec D7). Both copies resolve to the same file,
  * and both fail loudly if it moves.
  */
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -61,4 +62,59 @@ export function loadRetiredFigures(configPath = FIGURE_TEXT_CONFIG) {
  */
 export function normkey(stem) {
   return stem.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+}
+
+/**
+ * §C140 '6' G6 — the config tables that change a figure's COMPOSED PIXELS while sitting outside
+ * `renderHash` and `composedVersion`: nothing marks a figure stale when one of them changes, so their
+ * route to a figure with a sidecar is the next COMPOSER_VERSION bump, and
+ * tools/__tests__/figure-text-config.test.js's COMPOSER_TABLES_PIN is what makes a change that skips
+ * that route go red. A new table of this kind is appended here, in the commit that adds it.
+ */
+export const COMPOSER_PIXEL_TABLES = ['heldBlockValues', 'artworkEdits', 'anchorExclusions'];
+
+/** JSON with every object's keys sorted, recursively: the same tables in any key order hash the same. */
+function canonicalJson(v) {
+  if (Array.isArray(v)) return `[${v.map(canonicalJson).join(',')}]`;
+  if (v !== null && typeof v === 'object') {
+    return `{${Object.keys(v)
+      .sort()
+      .map((k) => `${JSON.stringify(k)}:${canonicalJson(v[k])}`)
+      .join(',')}}`;
+  }
+  return JSON.stringify(v);
+}
+
+const sha16 = (text) =>
+  crypto.createHash('sha256').update(text, 'utf-8').digest('hex').slice(0, 16);
+
+/**
+ * The fingerprint COMPOSER_TABLES_PIN pins: over COMPOSER_PIXEL_TABLES, only the entries whose figure
+ * has a COMMITTED sidecar. A textless figure (no sidecar) is recomposed on every `--stale` run, so its
+ * entry legitimately changes without a bump and is left out. An absent table is `{}`.
+ * @param {object} cfg  the parsed figure config
+ * @param {{hasSidecar:(basename:string)=>boolean}} opts  whether a basename has a committed sidecar;
+ *   required, because the scope is the rule
+ * @returns {{digest:string, tables:Object<string,string>, scoped:Object<string,string[]>}}
+ *   `digest` over all the tables, `tables` one sub-digest each (so a red names the table that moved),
+ *   `scoped` the basenames each table contributed, sorted; every digest is sha256's first 16 hex chars
+ * @throws {Error} without a hasSidecar function, or when a table is present but is not a plain object
+ */
+export function composerTablesFingerprint(cfg, { hasSidecar } = {}) {
+  if (typeof hasSidecar !== 'function') {
+    throw new Error('composerTablesFingerprint needs a hasSidecar(basename) predicate');
+  }
+  const tables = {};
+  const scoped = {};
+  const kept = {};
+  for (const name of COMPOSER_PIXEL_TABLES) {
+    const t = cfg[name] === undefined ? {} : cfg[name];
+    if (t === null || typeof t !== 'object' || Array.isArray(t)) {
+      throw new Error(`${name} must be an object, got ${JSON.stringify(t)}`);
+    }
+    scoped[name] = Object.keys(t).filter(hasSidecar).sort();
+    kept[name] = Object.fromEntries(scoped[name].map((b) => [b, t[b]]));
+    tables[name] = sha16(canonicalJson(kept[name]));
+  }
+  return { digest: sha16(canonicalJson(kept)), tables, scoped };
 }

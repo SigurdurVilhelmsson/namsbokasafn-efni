@@ -303,6 +303,7 @@ def group_lines(els):
 
 def sentinel(els, value):
     """The drawn pieces, per line in x-order, concatenated, reproduce the value's words exactly."""
+    # §C140 '6' M5 R3: compose.py ELIDES a value's FS.JOINT spaces from the drawn text; no fixture here has one.
     lines = group_lines(els)
     texts = [''.join(e['text'] for e in l) for l in lines]
     bad = [t for t in texts if t != ' '.join(t.split()) or not t]

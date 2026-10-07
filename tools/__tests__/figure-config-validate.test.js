@@ -712,6 +712,34 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       null,
       'heldBlockValues.CNX_Other[No] has 2 lines but its key has 1 source lines',
     ],
+    // §C140 '6', M2 (spec docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-b,
+    // ruling R-17): a key segment of only U+0020 is the next row's indent space, which the composer folds
+    // into its neighbour, so it is no line a value can fill. FoodLabel's keys and [USER]'s ruled bullets
+    // (R-15g2 / the value sheet), quoted verbatim. Red before M2: CI passed both, and compose refused them.
+    [
+      "V2 a two-line bullet on a key whose 2nd segment is only a space (compose refuses it 'line-count')",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '• 5% eða\nminna';
+      },
+      null,
+      'heldBlockValues.CNX_Other[(cid:127) 5% or less| ] has 2 lines but its key has 1 source lines',
+    ],
+    [
+      "V3 a value equal to the key's INK segments (compose refuses it 'no-change')",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '(cid:127) 5% or less';
+      },
+      null,
+      'heldBlockValues.CNX_Other[(cid:127) 5% or less| ] equals its key — it draws nothing new',
+    ],
+    [
+      'V5 four lines on a 3-segment key with no blank segment',
+      (c) => {
+        heldOf(c)['4+|To|4–'] = 'QZA\nQZB\nQZC\nQZD';
+      },
+      null,
+      'heldBlockValues.CNX_Other[4+|To|4–] has 4 lines but its key has 3 source lines',
+    ],
     // A skeptic's finding (2026-10-03): U+200B, U+00AD and U+034F are in the pinned faces' cmap, so
     // compose's no-glyph check passes them and the label would be ERASED. heldvalues.py's
     // `invisible-line` is the second implementation. Escapes, never the characters (they are invisible).
@@ -898,6 +926,41 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       },
       () => {},
     ],
+    // §C140 '6', M2 (R-17). All four pass before and after the validator change, so all four are CONTROLS:
+    // V1 passed CI before M2 too (what M2 changes for it is that COMPOSE now draws it, test_compose_blank_
+    // lines.py E4), and V4 is a key with no blank segment. 🔴 The blank predicate has TWO implementations: this file's validator (`/^ +$/`) and
+    // experiments/figure-text-translation/figtext.py's `is_blank_line` (`set(t) == {' '}`). The mirrors pin
+    // the same two edges test_figtext_blank_lines.py pins: U+00A0 is NOT blank (T3b), and a key whose every
+    // segment is blank keeps its segment count (T4b).
+    [
+      "V1 [USER]'s ruled one-line bullets on keys whose 2nd segment is only a space",
+      (c) => {
+        heldOf(c)['(cid:127) 5% or less| '] = '• 5% eða minna';
+        heldOf(c)['(cid:127) 20% or| '] = '• 20% eða';
+      },
+      () => {},
+    ],
+    [
+      'V4 a 3-line value on a 3-segment key with no blank segment',
+      (c) => {
+        heldOf(c)['4+|To|4–'] = '4+\ntil\n4–';
+      },
+      () => {},
+    ],
+    [
+      'mirror of figtext T3b: a key segment of only U+00A0 IS a line (2 lines on QZ|U+00A0)',
+      (c) => {
+        heldOf(c)['QZ|\u00a0'] = 'QZX\nQZQ';
+      },
+      () => {},
+    ],
+    [
+      "mirror of figtext T4b: a key whose every segment is blank keeps its count (1 line on ' ')",
+      (c) => {
+        heldOf(c)[' '] = 'QZX';
+      },
+      () => {},
+    ],
   ])('CONTROL: %s passes', (_label, mutateCfg, mutateCorpus) => {
     const c = heldCfg();
     const k = heldCorpus();
@@ -921,6 +984,584 @@ describe('validateFigureConfig — heldBlockValues (§C140 ㊾ D5(a))', () => {
       0x208b, 0x2070, 0x00b9, 0x00b2, 0x00b3, 0x2074, 0x2075, 0x2076, 0x2077, 0x2078, 0x2079,
       0x207a, 0x207b,
     ]);
+  });
+});
+
+// §C140 '6' R-20 — anchorExclusions: {basename: {blockKey: reason}}, the block keys M1 must leave alone.
+// Like heldBlockValues it shares only the type, fold and exactly-one-book loops; its own rules are the
+// entry's shape, a key that can reach M1 ('|'), the Markdown escape, the key being a block key of the
+// figure's committed sidecar (the INVERSE of held's bought-key rule) and the reason. CNX_Other is chem's
+// image in no other table, so every case ADDS the table and its state to Part 1's baseline.
+const ANCHOR_KEY = 'Small contact area,|weakest attraction';
+const anchorCfg = () => ({
+  ...baseCfg(),
+  anchorExclusions: { CNX_Other: { [ANCHOR_KEY]: R } },
+});
+const anchorCorpus = () => ({
+  ...baseCorpus(),
+  anchorState: {
+    CNX_Other: { sidecarKeys: [ANCHOR_KEY, 'Large contact area,|strong attraction'] },
+  },
+});
+const anchorOf = (c) => c.anchorExclusions.CNX_Other;
+
+describe("validateFigureConfig — anchorExclusions (§C140 '6', R-20)", () => {
+  it('a valid anchorExclusions table passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(anchorCfg(), anchorCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'an anchorExclusions table that is not an object',
+      (c) => {
+        c.anchorExclusions = [];
+      },
+      null,
+      /anchorExclusions must be an object/,
+    ],
+    [
+      'an entry that is a string, not an object',
+      (c) => {
+        c.anchorExclusions.CNX_Other = R;
+      },
+      null,
+      /anchorExclusions\.CNX_Other must be a non-empty object of \{blockKey: reason\}/,
+    ],
+    [
+      'an empty entry',
+      (c) => {
+        c.anchorExclusions.CNX_Other = {};
+      },
+      null,
+      /anchorExclusions\.CNX_Other must be a non-empty object/,
+    ],
+    [
+      "a key that is not in the figure's committed sidecar",
+      (c) => {
+        anchorOf(c)['Less surface area,|less attraction'] = R;
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Less surface area,\|less attraction\] is not a block key of figure-text\/CNX_Other\.is\.json/,
+    ],
+    [
+      'a figure with no committed sidecar',
+      () => {},
+      (k) => {
+        k.anchorState.CNX_Other.sidecarKeys = null;
+      },
+      /anchorExclusions\.CNX_Other has no committed sidecar/,
+    ],
+    [
+      "a key without '|' (a one-line label never reaches M1)",
+      (c) => {
+        anchorOf(c)['Hvarfefni'] = R;
+      },
+      (k) => {
+        k.anchorState.CNX_Other.sidecarKeys.push('Hvarfefni');
+      },
+      /anchorExclusions\.CNX_Other\[Hvarfefni\] has no '\|'/,
+    ],
+    [
+      "a key holding the Markdown escape '\\|'",
+      (c) => {
+        delete anchorOf(c)[ANCHOR_KEY];
+        anchorOf(c)['Small contact area,\\|weakest attraction'] = R;
+      },
+      null,
+      /holds '\\\|', a Markdown escape/,
+    ],
+    [
+      'a reason of 40 characters or fewer',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = 'R-20';
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Small contact area,\|weakest attraction\] needs a reason of over 40 characters/,
+    ],
+    [
+      // G21 F3 #64: the boundary itself ('R-20' above is 4 characters); 41 passes in the CONTROLs below.
+      'a reason of exactly 40 characters',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = 'x'.repeat(40);
+      },
+      null,
+      /anchorExclusions\.CNX_Other\[Small contact area,\|weakest attraction\] needs a reason of over 40 characters/,
+    ],
+    [
+      'a reason that is not a string',
+      (c) => {
+        anchorOf(c)[ANCHOR_KEY] = { reason: R };
+      },
+      null,
+      /needs a reason of over 40 characters/,
+    ],
+    [
+      'a basename that is also in keptCopies',
+      (c) => {
+        c.anchorExclusions = { CNX_Kept: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Kept is also in keptCopies \(CNX_Kept\)/,
+    ],
+    [
+      'a basename that is also in retiredFigures',
+      (c) => {
+        c.anchorExclusions = { CNX_Ret: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Ret is also in retiredFigures/,
+    ],
+    [
+      "a basename that is in two books' source",
+      () => {},
+      (k) => {
+        k.basenamesByBook.bio.add('CNX_Other');
+      },
+      /anchorExclusions\.CNX_Other names an image in 2 books' source/,
+    ],
+    [
+      'a basename that is in no book',
+      (c) => {
+        c.anchorExclusions = { CNX_Nowhere: { [ANCHOR_KEY]: R } };
+      },
+      null,
+      /anchorExclusions\.CNX_Nowhere names an image in 0 books' source/,
+    ],
+    [
+      'two basenames that fold to the same key',
+      (c) => {
+        c.anchorExclusions.cnx_other = { [ANCHOR_KEY]: R };
+      },
+      null,
+      /anchorExclusions: CNX_Other and cnx_other fold to the same key/,
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = anchorCfg();
+    const k = anchorCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent anchorExclusions table (an absent table is an empty one)',
+      (c) => {
+        delete c.anchorExclusions;
+      },
+    ],
+    [
+      'an empty anchorExclusions table',
+      (c) => {
+        c.anchorExclusions = {};
+      },
+    ],
+    [
+      'a figure that is also pinned (a pinned figure IS composed)',
+      (c) => {
+        c.anchorExclusions = { CNX_Pin: { [ANCHOR_KEY]: R } };
+      },
+    ],
+    [
+      'a reason of exactly 41 characters (G21 F3 #64: the floor is OVER 40)',
+      (c) => {
+        c.anchorExclusions = { CNX_Pin: { [ANCHOR_KEY]: 'x'.repeat(41) } };
+      },
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg) => {
+    const c = anchorCfg();
+    const k = anchorCorpus();
+    k.anchorState = { CNX_Pin: k.anchorState.CNX_Other };
+    mutateCfg(c);
+    expect(validateFigureConfig(c, k)).toEqual([]);
+  });
+
+  // Part 1's and the held fixtures carry no anchorState: the sidecar rule is skipped, the others are not.
+  it('CONTROL: a corpus with no anchorState at all passes a valid entry and still refuses a short reason', () => {
+    expect(validateFigureConfig(anchorCfg(), baseCorpus())).toEqual([]);
+    const c = anchorCfg();
+    anchorOf(c)[ANCHOR_KEY] = 'R-20';
+    expect(validateFigureConfig(c, baseCorpus()).join('\n')).toMatch(/needs a reason of over 40/);
+  });
+});
+
+// §C140 '6' R-15a — artworkEdits: {basename: [op, ...]}, [USER]'s operator-level edits to the STAGED
+// artwork PDF, applied by figure-prepare.py (artworkedits.py). A SECOND implementation of
+// artworkedits.py's `for_figure` shape check (change both or neither; AE-10 pins both to one literal).
+// The corpus rules mirror heldBlockValues' (an edit is drawn only by a recompose): no overlap with
+// retiredFigures, keptCopies or supersededArtwork; an `.svg` mapping row and a translated copy; an
+// artworkPins overlap is allowed; NO bought-key rule. CNX_Other is chem's image in no other table, so
+// every case ADDS the table and its state to Part 1's baseline. Selectors are matched at prepare time,
+// never here.
+const AE_PATH = { paint: 'fill', colour: ['k', 0.2, 0.04, 0.4, 0], bbox: [120, 50, 200, 70] };
+const AE_SHAFT = {
+  paint: 'stroke',
+  colour: ['K', 0.5, 0.1, 1, 0.4],
+  bbox: [220, 120, 226.652, 120],
+};
+const AE_LINE = { text: 'Bravo', origin: [30, 80] };
+const aeOps = () => [
+  { op: 'move-paths', dx: -15, select: [AE_PATH], note: 'a free-text note' },
+  { op: 'move-edge', edge: 'left', to: 110, select: [AE_PATH] },
+  { op: 'move-line-end', edge: 'left', dx: -6, select: [AE_SHAFT] },
+  { op: 'move-text', dx: 5, select: [AE_LINE] },
+];
+const aeCfg = () => ({ ...baseCfg(), artworkEdits: { CNX_Other: aeOps() } });
+const aeCorpus = () => ({
+  ...baseCorpus(),
+  editState: { CNX_Other: { rows: 1, translatedCopies: [`CNX_Other${S}.svg`], svgRows: 1 } },
+});
+const aeOf = (c, i) => c.artworkEdits.CNX_Other[i];
+
+describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
+  it('a valid four-op entry passes — the baseline every failing case below differs from by one change', () => {
+    expect(validateFigureConfig(aeCfg(), aeCorpus())).toEqual([]);
+  });
+
+  it.each([
+    [
+      'an artworkEdits table that is not an object',
+      (c) => {
+        c.artworkEdits = [];
+      },
+      null,
+      /artworkEdits must be an object/,
+    ],
+    [
+      'an entry that is not a list',
+      (c) => {
+        c.artworkEdits.CNX_Other = aeOf(c, 0);
+      },
+      null,
+      /artworkEdits\.CNX_Other must be a non-empty list of ops/,
+    ],
+    [
+      'an empty entry',
+      (c) => {
+        c.artworkEdits.CNX_Other = [];
+      },
+      null,
+      /artworkEdits\.CNX_Other must be a non-empty list of ops/,
+    ],
+    [
+      'an unknown op',
+      (c) => {
+        aeOf(c, 0).op = 'move-all';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] must be an object whose op is one of move-paths, move-edge, move-text, move-line-end/,
+    ],
+    [
+      // G21 #58: Object.hasOwn coerces ['move-paths'] to the key 'move-paths'; Python's for_figure refuses
+      // it `unknown-op` (test_artworkedits.py AE-6j2). The two implementations must agree.
+      'an op that is an array holding a valid op name',
+      (c) => {
+        aeOf(c, 0).op = ['move-paths'];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] must be an object whose op is one of move-paths, move-edge, move-text, move-line-end/,
+    ],
+    [
+      'an unknown field',
+      (c) => {
+        aeOf(c, 0).colour = 'red';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] has unknown field\(s\) colour/,
+    ],
+    [
+      'move-line-end with `to` (it takes dx only)',
+      (c) => {
+        aeOf(c, 2).to = 214;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\] has unknown field\(s\) to/,
+    ],
+    [
+      'a missing field',
+      (c) => {
+        delete aeOf(c, 0).dx;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] lacks dx/,
+    ],
+    [
+      'move-line-end without an edge',
+      (c) => {
+        delete aeOf(c, 2).edge;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\] lacks edge/,
+    ],
+    [
+      'a note that is not a string',
+      (c) => {
+        aeOf(c, 0).note = 5;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.note must be a string/,
+    ],
+    [
+      'move-edge with a bad edge',
+      (c) => {
+        aeOf(c, 1).edge = 'top';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.edge must be left or right/,
+    ],
+    [
+      'move-line-end with a bad edge',
+      (c) => {
+        aeOf(c, 2).edge = 'start';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\]\.edge must be left or right/,
+    ],
+    [
+      'move-edge with both to and dx',
+      (c) => {
+        aeOf(c, 1).dx = 1;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\] needs exactly one of to \/ dx/,
+    ],
+    [
+      'move-edge with neither to nor dx',
+      (c) => {
+        delete aeOf(c, 1).to;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\] needs exactly one of to \/ dx/,
+    ],
+    [
+      // G21 F3 #65: the move-edge branch has its OWN numeric check (op.to ?? op.dx); the two cases below
+      // reach it, where the move-paths / move-line-end cases further down reach the other branch.
+      'a move-edge whose to is a string',
+      (c) => {
+        aeOf(c, 1).to = '110';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.to\/dx must be a number/,
+    ],
+    [
+      'a move-edge whose dx is a boolean',
+      (c) => {
+        delete aeOf(c, 1).to;
+        aeOf(c, 1).dx = true;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[1\]\.to\/dx must be a number/,
+    ],
+    [
+      'a dx that is not a number',
+      (c) => {
+        aeOf(c, 0).dx = '-15';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.dx must be a number/,
+    ],
+    [
+      'a move-line-end dx that is not a number',
+      (c) => {
+        aeOf(c, 2).dx = true;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\]\.dx must be a number/,
+    ],
+    [
+      'an empty select',
+      (c) => {
+        aeOf(c, 0).select = [];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select must be a non-empty list/,
+    ],
+    [
+      'a path selector with the wrong field set',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, text: 'x' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\] must have exactly bbox, colour, paint/,
+    ],
+    [
+      'a path selector whose paint is not fill or stroke',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, paint: 'fill+stroke' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.paint must be fill or stroke/,
+    ],
+    [
+      'a path selector whose colour has no operator',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, colour: [0.2, 0.04, 0.4, 0] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.colour must be \[operator, numbers\.\.\.\]/,
+    ],
+    [
+      'a path selector whose bbox has x0 > x1',
+      (c) => {
+        aeOf(c, 0).select = [{ ...AE_PATH, bbox: [200, 50, 120, 70] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\]\.select\[0\]\.bbox must be \[x0, y0, x1, y1\] with x0<=x1, y0<=y1/,
+    ],
+    [
+      'a text selector with an empty text',
+      (c) => {
+        aeOf(c, 3).select = [{ ...AE_LINE, text: '' }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.select\[0\]\.text must be a non-empty string/,
+    ],
+    [
+      'a text selector whose origin is not [x, y]',
+      (c) => {
+        aeOf(c, 3).select = [{ ...AE_LINE, origin: [30] }];
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.select\[0\]\.origin must be \[x, y\]/,
+    ],
+    [
+      'a basename that is in no book',
+      (c) => {
+        c.artworkEdits = { CNX_Nowhere: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Nowhere names an image in 0 books' source/,
+    ],
+    [
+      "a basename that is in two books' source",
+      () => {},
+      (k) => {
+        k.basenamesByBook.bio.add('CNX_Other');
+      },
+      /artworkEdits\.CNX_Other names an image in 2 books' source/,
+    ],
+    [
+      'two basenames that fold to the same key',
+      (c) => {
+        c.artworkEdits.cnx_other = aeOps();
+      },
+      null,
+      /artworkEdits: CNX_Other and cnx_other fold to the same key/,
+    ],
+    [
+      'a basename that is also in keptCopies',
+      (c) => {
+        c.artworkEdits = { CNX_Kept: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Kept is also in keptCopies \(CNX_Kept\) — that figure is never composed/,
+    ],
+    [
+      'a basename that is also in retiredFigures',
+      (c) => {
+        c.artworkEdits = { CNX_Ret: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Ret is also in retiredFigures/,
+    ],
+    [
+      'a basename that is also in supersededArtwork',
+      (c) => {
+        c.artworkEdits = { CNX_Sup: aeOps() };
+      },
+      null,
+      /artworkEdits\.CNX_Sup is also in supersededArtwork/,
+    ],
+    [
+      'a figure with no image-mapping row naming an .svg',
+      () => {},
+      (k) => {
+        k.editState.CNX_Other.svgRows = 0;
+      },
+      /artworkEdits\.CNX_Other has no image-mapping row naming an \.svg/,
+    ],
+    [
+      'a figure with no translated copy',
+      () => {},
+      (k) => {
+        k.editState.CNX_Other.translatedCopies = [];
+      },
+      /artworkEdits\.CNX_Other has no translated copy at the top of its book's media\//,
+    ],
+  ])('refuses %s', (_label, mutateCfg, mutateCorpus, pattern) => {
+    const c = aeCfg();
+    const k = aeCorpus();
+    mutateCfg(c);
+    if (mutateCorpus) mutateCorpus(k);
+    expect(validateFigureConfig(c, k).join('\n')).toMatch(pattern);
+  });
+
+  it.each([
+    [
+      'an absent artworkEdits table (an absent table is an empty one)',
+      (c) => {
+        delete c.artworkEdits;
+      },
+    ],
+    [
+      'an empty artworkEdits table',
+      (c) => {
+        c.artworkEdits = {};
+      },
+    ],
+    [
+      'a figure that is also pinned (a pinned figure IS composed; its selectors match the pinned artwork)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+      },
+    ],
+    [
+      // G21 F3 #57: x0 == x1 is a vertical line, a valid selector (Python's _check_bbox agrees:
+      // test_artworkedits.py AE-6n2). Only x0 > x1 is refused.
+      'a move-paths selector for a vertical line (x0 == x1)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+        c.artworkEdits.CNX_Pin[0].select = [{ ...AE_SHAFT, bbox: [5, 0, 5, 10] }];
+      },
+    ],
+  ])('CONTROL: %s passes', (_label, mutateCfg) => {
+    const c = aeCfg();
+    const k = aeCorpus();
+    k.editState = { CNX_Pin: k.editState.CNX_Other };
+    mutateCfg(c);
+    expect(validateFigureConfig(c, k)).toEqual([]);
+  });
+
+  // Part 1's and the held fixtures carry no editState: the corpus rules are skipped, the shape rules are not.
+  it('CONTROL: a corpus with no editState at all passes a valid entry and still refuses a bad edge', () => {
+    expect(validateFigureConfig(aeCfg(), baseCorpus())).toEqual([]);
+    const c = aeCfg();
+    aeOf(c, 1).edge = 'top';
+    expect(validateFigureConfig(c, baseCorpus()).join('\n')).toMatch(/edge must be left or right/);
+  });
+
+  // 🔴 THE SAME LITERAL AS experiments/figure-text-translation/test_artworkedits.py (AE-10): the op
+  // table {op: [required, optional]} and the selector field sets. Change both or neither. Imported
+  // lazily so that, before the table existed, only THIS case was red rather than the whole file.
+  it('AE-10: AE_OPS and AE_SELECT_FIELDS are the literal artworkedits.py OPS is pinned to', async () => {
+    const mod = await import('../lib/figure-config-validate.js');
+    const sorted = (a) => [...a].sort();
+    const ops = Object.fromEntries(
+      Object.entries(mod.AE_OPS ?? {}).map(([k, [req, opt]]) => [k, [sorted(req), sorted(opt)]])
+    );
+    expect(ops).toEqual({
+      'move-edge': [
+        ['edge', 'op', 'select'],
+        ['dx', 'note', 'to'],
+      ],
+      'move-line-end': [['dx', 'edge', 'op', 'select'], ['note']],
+      'move-paths': [['dx', 'op', 'select'], ['note']],
+      'move-text': [['dx', 'op', 'select'], ['note']],
+    });
+    expect({
+      path: sorted(mod.AE_SELECT_FIELDS?.path ?? []),
+      line: sorted(mod.AE_SELECT_FIELDS?.line ?? []),
+    }).toEqual({ path: ['bbox', 'colour', 'paint'], line: ['origin', 'text'] });
   });
 });
 
@@ -1225,6 +1866,69 @@ describe('buildValidatorCorpus on a throwaway books/ tree (§C140 ㊵, spec D11)
     writeSidecarRaw(root, 'CNX_Svg', JSON.stringify({ version: 1, basename: 'CNX_Svg' }));
     expect(() => buildValidatorCorpus(root, heldTreeCfg)).toThrow(/CNX_Svg\.is\.json.*blocks/);
   });
+
+  // §C140 '6' R-20 — anchorState is each excluded figure's sidecar block keys, read STRICTLY (absent is
+  // null, anything unreadable throws), and the validator names a key the sidecar does not carry.
+  it('reports each excluded figure’s sidecar keys, and the validator names a key the sidecar lacks', () => {
+    const root = heldTree();
+    const k1 = 'Small|one';
+    writeSidecarRaw(
+      root,
+      'CNX_Svg',
+      JSON.stringify({ version: 1, basename: 'CNX_Svg', blocks: { [k1]: 'IS', 'Big|two': 'IS' } })
+    );
+    const cfgA = {
+      anchorExclusions: {
+        CNX_Svg: { [k1]: R, 'Gone|three': R },
+        CNX_Bare: { [k1]: R },
+        CNX_Absent: { [k1]: R },
+      },
+    };
+    const k = buildValidatorCorpus(root, cfgA);
+    expect(k.anchorState).toEqual({
+      CNX_Svg: { sidecarKeys: [k1, 'Big|two'] },
+      CNX_Bare: { sidecarKeys: null },
+    });
+    const named = validateFigureConfig(cfgA, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'anchorExclusions.CNX_Absent names an image',
+      'anchorExclusions.CNX_Bare has no committed',
+      'anchorExclusions.CNX_Svg[Gone|three] is not a',
+    ]);
+  });
+
+  it('refuses an excluded figure’s sidecar it cannot parse instead of reading it as no keys', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    expect(() =>
+      buildValidatorCorpus(root, { anchorExclusions: { CNX_Svg: { 'a|b': R } } })
+    ).toThrow(/CNX_Svg\.is\.json.*not valid JSON/);
+  });
+
+  // §C140 '6' R-15a — editState is heldState WITHOUT the sidecar: an edited figure is measured by
+  // copyState plus its `.svg` rows, and its sidecar is never read (an edit is not a label, so a bought
+  // sidecar is fine - FoodLabel's is the point). The unparsable sidecar planted here would throw if it were.
+  it('reports each edited figure’s .svg rows and copies, reads no sidecar, and the validator names each gap', () => {
+    const root = heldTree();
+    writeSidecarRaw(root, 'CNX_Svg', '{not json');
+    const op = [{ op: 'move-paths', dx: 1, select: [AE_PATH] }];
+    const cfgE = {
+      artworkEdits: { CNX_Svg: op, CNX_Png: op, CNX_Bare: op, CNX_Absent: op },
+    };
+    const k = buildValidatorCorpus(root, cfgE);
+    expect(k.editState).toEqual({
+      CNX_Svg: { rows: 1, translatedCopies: [`CNX_Svg${S}.svg`], svgRows: 1 },
+      CNX_Png: { rows: 1, translatedCopies: [`CNX_Png${S}.png`], svgRows: 0 },
+      CNX_Bare: { rows: 0, translatedCopies: [], svgRows: 0 },
+    });
+    const named = validateFigureConfig(cfgE, k).map((p) => p.split(' ').slice(0, 4).join(' '));
+    expect(named.sort()).toEqual([
+      'artworkEdits.CNX_Absent names an image',
+      'artworkEdits.CNX_Bare has no image-mapping',
+      'artworkEdits.CNX_Bare has no translated',
+      'artworkEdits.CNX_Png has no image-mapping',
+    ]);
+  });
 });
 
 describe('the committed figure config (§C140 ㊵)', () => {
@@ -1286,6 +1990,16 @@ describe('the committed figure config (§C140 ㊵)', () => {
   // `.svg` row and a translated copy, and none of its keys is a bought block. [USER]'s first values
   // were recorded in PR-B's heldBlockValues commit (§C140 ㊾), so an empty table now fails here, as
   // the retired test's does.
+  it('every anchorExclusions figure was examined on the real tree, and each key is in its sidecar', () => {
+    const keys = Object.keys(cfg.anchorExclusions ?? {}).sort();
+    expect(Object.keys(corpus.anchorState).sort()).toEqual(keys);
+    for (const k of keys) {
+      const bought = new Set(corpus.anchorState[k].sidecarKeys ?? []);
+      for (const key of Object.keys(cfg.anchorExclusions[k]))
+        expect(bought.has(key), key).toBe(true);
+    }
+  });
+
   it('every held figure was examined on the real tree, with an .svg row, a copy and no bought key', () => {
     const keys = Object.keys(cfg.heldBlockValues ?? {}).sort();
     expect(keys.length).toBeGreaterThan(0);
