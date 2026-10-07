@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]: review and merge PR-A** (opened 2026-10-06 from `content/c140-figure-review-wording`). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
+### ⏭ SINGLE NEXT ACTION — **[USER]: merge [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545) (§C199, the security fix) and deploy it, then review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
 
 - ⚖️ **[USER]'s answers, 2026-10-06 afternoon:**
   - **One PR from this branch.** The 49 verified scratch commits were cherry-picked onto
@@ -24,6 +24,22 @@
     measurement in exactly the 9 predicted figures, and only by the ligature style (finding #7).
   - One finding was against this register's own R-16 decision record. It stated the rejected
     formula; it was corrected before it was ever pushed.
+- 🔐 **§C199 (new, 2026-10-06/07) — PR-A's Security Audit is RED from new upstream advisories, not
+  from PR-A** (#544 changes no package file).
+  - root `source-map-js` 1.2.1: high, GHSA-68fv-2mgg-jv7q.
+  - server `proxy-addr` 2.0.7: **CRITICAL**, GHSA-jqcg-44mw-7w3h, IP spoofing through Express's
+    trust-proxy matching. The job dies on the root step, so the server tree's critical was hidden;
+    this is §C197's lesson again.
+  - server `fast-copy` 4.0.3: moderate.
+  - **Fix: [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545)**
+    (`fix/c199-audit-source-map-js-proxy-addr`, from `main`, [USER] approved opening it). It is
+    lockfile-only, with in-range updates to 1.2.2 / 2.0.8 / 4.1.2. Both audits clear at `high`, and
+    `npm ls` is clean.
+  - source-map-js 1.2.2's new `hasInstallScript` flag was checked against the shipped tarball. No
+    install script ships, and the integrity matches.
+  - **Merge #545 before #544, then re-run #544's Security Audit. proxy-addr reaches prod only at the
+    next `deploy.sh`.**
+  - Not fixable: `sprintf-js` (moderate, every version in range, only via mammoth → argparse).
 
 - ⚖️ **[USER]'s rulings, 2026-10-06 morning:**
   - **R-16 RIDES IN '6'**, as its own task with its own measurement, so editors re-approve figures only once.
