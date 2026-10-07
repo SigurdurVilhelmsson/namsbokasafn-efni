@@ -93,6 +93,17 @@
      - aldket (R-5d = a5): *CH3CHO Dæmi um aldehýð etanal (asetaldehýð)*; *Ketón bútanon*.
      - Example2 (R-5e = e2): *Margfalda með massahlutfalli (g HCl/g lausn)*.
      - Recompute `renderHash` under the tree's version with `composerVersion` matching (spec §5).
+     **✅ 2026-10-07:** 21 values in 6 sidecars, through the repo's `writeSidecar` and
+     `computeRenderHash` (under '6', `composerVersion` '6'). Stamps and MT fields are carried and no
+     `state` is written. Backups and the edit script: off-repo `c140-v6/pr-b/step4/`. R-15w and R-10
+     were already the committed values. Composed under '6' with the shipped config, all six reports
+     are clean:
+     - aldket and Example2 are byte-identical to step 1's `a5`/`e2` arms.
+     - HazDiamond's text layer equals the `q-wide6r27` prototype except the intended U+2010.
+     - FoodLabel's bullets sit at source x 385.611, and its arrow gap is 2.247 pt.
+     - phscale and SolTherm1 break as ruled.
+
+     `npm test` is green. Nothing is recomposed into `media/`: that is the pass (step 7).
   5. **The bump:** `COMPOSER_VERSION` '5' → '6', plus a docstring entry with the '2'–'5' entries
      naming M1–M7, R-16, artworkEdits, the `\n` route, R-20 and step 2a's table (R-5c2). Also `COMPOSER_TABLES_PIN`'s '6'
      entry. Then the LICENSE font sentence, using [USER]'s 2026-10-06 wording verbatim.
