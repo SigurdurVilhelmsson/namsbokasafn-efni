@@ -68,6 +68,16 @@
        box (inventory path 15, stroke `K 0.57 0.37 0 0`, bbox 66.678 2.878 157.677 79.019) and dx
        27 on the Reactivity box (path 13); the step-2a table entry. Configs as measured:
        `step1/cfg/wide6r27.json`.
+     **✅ 2026-10-07, committed with step 5 (the '5' pin forbids filled tables without the bump).**
+     Every table equals its measured input. **The FoodLabel arrow dx is −6.5, MEASURED** (not the
+     estimated −6): the source's *Start*→tail ink gap is 2.249 pt (same Liberation Sans Bold metrics
+     on both sides), and −6.5 gives 2.247 (−6 gives 2.747). dx 0 reproduces verify.md's corrected
+     8.747, and the dx-0/dx−6.5 SVGs differ in the shaft alone. The shipped config (no `--config`)
+     prepares FoodLabel byte-identical to the measured arm. Corpus control: 448/451 byte-identical
+     to T12 `prA2`, and only the predicted three differ (HazDiamond, FoodLabel, PentIso). PentIso
+     differs from its published media only by the italic *n* that R-20 asked for. A JS control that
+     assumed an empty committed `artworkEdits` was restated as "absent ≡ `{}`" (mutant kills 4/4).
+     Evidence: off-repo `c140-v6/pr-b/step3/MEASUREMENTS.md`.
   4. **Content edits** (value-only, shaped like `e52bde89a`, with a `.bak` first):
      - FoodLabel: the 7 ruled values (spec §7.1); the R-15w margin wordings (*Byrjaðu hér*,
        *Athugaðu hitaeiningar*, *Takmarkaðu þessi næringarefni*, *Fáðu nóg af þessum
@@ -86,6 +96,11 @@
   5. **The bump:** `COMPOSER_VERSION` '5' → '6', plus a docstring entry with the '2'–'5' entries
      naming M1–M7, R-16, artworkEdits, the `\n` route, R-20 and step 2a's table (R-5c2). Also `COMPOSER_TABLES_PIN`'s '6'
      entry. Then the LICENSE font sentence, using [USER]'s 2026-10-06 wording verbatim.
+     **✅ 2026-10-07, one commit with step 3:** the bump, the docstring entry, the '6' pin (every new
+     entry is in scope) and the LICENSE wording. `npm test` is green and eslint is clean. The Python
+     suites: `c140-v6/suite-runs/prb-3-5`. ⚠️ **Step 4's `renderHash` recompute therefore hashes under
+     '6', with `composerVersion` '6'.** `computeRenderHash` does not see `artworkEdits`, so FoodLabel
+     goes stale through the bump and its step-4 value edits, not through the edit itself.
   6. **Preconditions:**
      - compose the 248 textless figures, base against '6'; exactly 5 should change (step 2a's
        table does not reach them: re-check, do not assume);

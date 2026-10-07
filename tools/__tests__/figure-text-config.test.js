@@ -144,6 +144,15 @@ describe('figure-text-config (§C140 ㊵)', () => {
       anchorExclusions: '44136fa355b3678a',
       sourceAlignedBoxes: '44136fa355b3678a',
     },
+    // '6' (§C140 '6' PR-B): the bump that carries the filled tables — FoodLabel's two bullets
+    // (heldBlockValues), FoodLabel's R-15a/R-15a2/R-15g2 and HazDiamond's R-5c2 artworkEdits,
+    // PentIso's R-20 anchorExclusions and HazDiamond's R-5c2 sourceAlignedBoxes.
+    6: {
+      heldBlockValues: '17769c441323814e',
+      artworkEdits: '4294331d109478a6',
+      anchorExclusions: 'f1a929f8f6199a57',
+      sourceAlignedBoxes: '2ca51092578564eb',
+    },
   };
 
   it('COMPOSER_PIXEL_TABLES names the four pixel tables', () => {
@@ -264,12 +273,6 @@ describe('figure-text-config (§C140 ㊵)', () => {
         },
       ],
       [
-        'an absent artworkEdits table (absent is {})',
-        (c) => {
-          delete c.artworkEdits;
-        },
-      ],
-      [
         'the JSON key order of a table and of an entry',
         (c) => {
           c.heldBlockValues = Object.fromEntries(
@@ -283,6 +286,16 @@ describe('figure-text-config (§C140 ㊵)', () => {
       const c = base();
       mutate(c);
       expect(fpOf(c)).toEqual(fp0());
+    });
+
+    // Against `{}`, not against the committed config: this compared with fp0() while the committed
+    // artworkEdits was empty, and went red the day PR-B filled it although absent-is-{} still held.
+    it.each(COMPOSER_PIXEL_TABLES)('CONTROL: an absent %s table fingerprints as {}', (table) => {
+      const absent = base();
+      delete absent[table];
+      const empty = base();
+      empty[table] = {};
+      expect(fpOf(absent)).toEqual(fpOf(empty));
     });
 
     it('refuses to run without a hasSidecar predicate (the scope is not optional)', () => {

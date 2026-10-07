@@ -53,6 +53,23 @@ const SIDECAR_VERSION = 1;
  * compose.py, like numloc's decimal comma it changes no sidecar, and a later change to a value
  * reaches a sidecar figure's media only at the next bump).
  *
+ * '6' (2026-10-07, §C140 '6', the formatting class; spec
+ * docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md). The code merged as
+ * PR-A (#544, 91c85c33f) without a bump; this one covers it and the tables PR-B filled. Seven
+ * mechanisms: M1 (source-anchored row cuts, applied after selection), M2 (a whitespace-only visual
+ * line folds into its neighbour, R-17), M3 (a cell's height budget admits the source's own rows),
+ * M4 (A2v: a single-line label guessed as centred takes its source column's side; P1v: a label
+ * drawn on its source line count takes the source pitch), M5 (seven narrow script-transfer rules),
+ * M6 (STIX Italic, Bold and BoldItalic drawn in their own official faces, as FigSym siblings) and
+ * M7 (a box holding more than one label is laid out as a cell). Also R-16 (a label below the 7.5 pt
+ * floor shrinks to 0.8 × its source size; docs/decisions/2026-10-06-figure-labels-below-floor-
+ * shrink-to-0-8.md), R-5a's explicit `\n` line break in a translated value, and three per-figure
+ * config tables beside `heldBlockValues`: `artworkEdits` (R-15a: edits to the staged artwork PDF,
+ * applied at prepare), `anchorExclusions` (R-20: M1 turned off for named block keys) and
+ * `sourceAlignedBoxes` (R-5c2: a figure's boxes keep the source's alignment;
+ * docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md). PR-B filled them for
+ * FoodLabel, HazDiamond and PentIso, and added FoodLabel's two held bullets.
+ *
  * THE RULE FROM HERE: skip a bump only if no sidecar carries `state` AND prod holds no figure
  * approval up to the deploy that carries the change (editors approve against prod's own checkout of
  * the media); otherwise bump. ⚠️ A bump's recompose must be bare `--stale` (never `--force`, which
@@ -71,7 +88,7 @@ const SIDECAR_VERSION = 1;
  * `node tools/figure-run.js --book <slug> --chapter <N> --stale`, one chapter at a time, never
  * through `scripts/chemistry-autorun-chapter.sh`, which runs the driver without `--stale`.
  */
-const COMPOSER_VERSION = '5';
+const COMPOSER_VERSION = '6';
 
 /**
  * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books
