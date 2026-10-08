@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_10_06_ZnSStrctr",
  "renderHash": "f63f649b7bc3c19d",
  "composedHash": "f63f649b7bc3c19d",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "5",
  "blocks": {
   "ZnS face-centered unit cell": "ZnS hliðarsetin grindareining"

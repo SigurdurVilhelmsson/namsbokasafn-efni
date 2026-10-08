@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_17_08_Daniell",
  "renderHash": "a3e58123c1ad891b",
- "composedHash": "0327b716dd8aa15e",
- "composedVersion": "5",
+ "composedHash": "a3e58123c1ad891b",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Zn anode": "Zn-anóða",

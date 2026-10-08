@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_17_07_NaCl",
  "renderHash": "36c8150d63f67847",
- "composedHash": "f17b2d5263ba6b39",
- "composedVersion": "5",
+ "composedHash": "36c8150d63f67847",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Cathode": "Katóða",

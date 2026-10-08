@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_06_04_eLeveldiag",
  "renderHash": "661d4495d5bf7bc6",
- "composedHash": "bab89d0901ca5fbc",
- "composedVersion": "5",
+ "composedHash": "661d4495d5bf7bc6",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Subshell electron capacity": "Rafeindarýmd undirhvolfs"

@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_08_02_HybrdOrbit",
  "renderHash": "45bba86c56aa4c4c",
- "composedHash": "568201d78c66e896",
- "composedVersion": "5",
+ "composedHash": "45bba86c56aa4c4c",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Arrangement": "Uppröðun",

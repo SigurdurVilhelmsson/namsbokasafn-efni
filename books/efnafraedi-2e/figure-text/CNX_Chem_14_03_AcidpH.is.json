@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_14_03_AcidpH",
  "renderHash": "46711c9c344f2407",
- "composedHash": "368f3e14e156b405",
- "composedVersion": "5",
+ "composedHash": "46711c9c344f2407",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "SiH4": "SiH4",

@@ -1261,19 +1261,19 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
 DEALINGS IN THE FONT SOFTWARE.
 
 </metadata>
-<text x="86.681" y="246.356" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Upphituð</text>
-<text x="86.681" y="257.353" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">hráolía</text>
-<text x="281.621" y="18.840" font-family="FigIS" font-weight="400" font-size="8.500" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Hreinsunarstöðvargas</text>
-<text x="366.637" y="8.597" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Litlar sameindir: - Lágt</text>
-<text x="366.637" y="19.595" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">suðumark - Mjög</text>
-<text x="366.637" y="30.593" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">rokgjarnt - Flæðir</text>
-<text x="366.637" y="41.591" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">auðveldlega - Kviknar</text>
-<text x="366.637" y="52.589" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">auðveldlega í</text>
-<text x="364.801" y="278.085" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Stórar sameindir: - Hátt</text>
-<text x="364.801" y="289.083" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">suðumark - Ekki mjög</text>
-<text x="364.801" y="300.081" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">rokgjarnt - Flæðir ekki</text>
-<text x="364.801" y="311.079" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">auðveldlega - Kviknar</text>
-<text x="364.801" y="322.077" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">ekki auðveldlega í</text>
+<text x="86.681" y="247.251" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Upphituð</text>
+<text x="86.681" y="256.458" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">hráolía</text>
+<text x="287.507" y="18.840" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Hreinsunargas</text>
+<text x="366.637" y="8.597" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Litlar sameindir:</text>
+<text x="366.637" y="19.595" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Lágt suðumark</text>
+<text x="366.637" y="30.593" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Mjög rokgjarnt</text>
+<text x="366.637" y="41.591" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Flæðir auðveldlega</text>
+<text x="366.637" y="52.589" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Kviknar auðveldlega í</text>
+<text x="364.801" y="278.085" font-family="FigIS" font-weight="400" font-size="8.250" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Stórar sameindir:</text>
+<text x="364.801" y="289.083" font-family="FigIS" font-weight="400" font-size="8.250" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Hátt suðumark</text>
+<text x="364.801" y="300.081" font-family="FigIS" font-weight="400" font-size="8.250" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Ekki mjög rokgjarnt</text>
+<text x="364.801" y="311.079" font-family="FigIS" font-weight="400" font-size="8.250" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Flæðir ekki auðveldlega</text>
+<text x="364.801" y="322.077" font-family="FigIS" font-weight="400" font-size="8.250" fill="#211d1d" xml:space="preserve" style="font-kerning:none">- Kviknar ekki auðveldlega í</text>
 <text x="287.509" y="80.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">bensín</text>
 <text x="287.509" y="120.657" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">nafta</text>
 <text x="287.509" y="160.977" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">steinolía</text>

@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_21_06_RadonExpos",
  "renderHash": "9d67bc5d84a7e50d",
- "composedHash": "8458f9be15b27d81",
- "composedVersion": "5",
+ "composedHash": "9d67bc5d84a7e50d",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "radon in": "radon í",

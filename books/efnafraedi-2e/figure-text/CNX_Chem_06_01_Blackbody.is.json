@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_06_01_Blackbody",
  "renderHash": "34bdfb0b4dedede1",
  "composedHash": "34bdfb0b4dedede1",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Wavelength λ (µm)": "Bylgjulengd λ (µm)",

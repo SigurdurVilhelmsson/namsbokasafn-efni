@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_13_00_Blood",
  "renderHash": "708937a8cd86ad3b",
  "composedHash": "708937a8cd86ad3b",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "CO2 + H2O              H2CO3                      HCO3|–": "CO2 + H2O              H2CO3                      HCO3 –"

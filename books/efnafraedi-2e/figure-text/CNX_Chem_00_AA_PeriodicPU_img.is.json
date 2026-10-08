@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_00_AA_PeriodicPU_img",
  "renderHash": "804612cf39df3b79",
- "composedHash": "7a3ddf3d9021552c",
- "composedVersion": "5",
+ "composedHash": "804612cf39df3b79",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Metal": "Málmur",

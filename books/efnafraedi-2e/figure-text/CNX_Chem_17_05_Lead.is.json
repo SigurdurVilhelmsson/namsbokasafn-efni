@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_17_05_Lead",
  "renderHash": "190d96244afc013d",
- "composedHash": "3520915a4db3d1fb",
- "composedVersion": "5",
+ "composedHash": "190d96244afc013d",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Negative|terminal": "Mínusskaut",

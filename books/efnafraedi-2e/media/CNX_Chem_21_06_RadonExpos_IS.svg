@@ -109,8 +109,8 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
 DEALINGS IN THE FONT SOFTWARE.
 
 </metadata>
-<text x="381.262" y="201.758" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon í</text>
-<text x="379.010" y="274.415" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Berggrunni</text>
+<text x="379.010" y="201.758" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon í</text>
+<text x="379.010" y="274.415" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Berggrunnur</text>
 <text x="379.010" y="240.746" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon í</text>
 <text x="379.010" y="251.744" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">brunnvatni</text>
 <text x="379.010" y="335.741" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon í</text>
@@ -119,11 +119,12 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="379.010" y="311.738" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">berggrunnur</text>
 <text x="2.009" y="362.741" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">U-238</text>
 <text x="58.418" y="362.741" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radíum-226</text>
-<text x="142.585" y="362.741" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radíum-222</text>
+<text x="145.081" y="362.741" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon-222</text>
 <text x="379.010" y="212.756" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">jörð</text>
 <text x="258.464" y="62.156" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Alfa-ögn</text>
-<text x="262.478" y="18.824" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Innöndun</text>
-<text x="262.478" y="29.822" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radon-hrörnunarafurða</text>
+<text x="262.478" y="13.323" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Innöndun</text>
+<text x="262.478" y="24.323" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hrörnunarafurða</text>
+<text x="262.478" y="35.323" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">radons</text>
 <text x="239.982" y="87.158" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Geislaskemmdir</text>
 <text x="239.982" y="98.156" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">á</text>
 <text x="239.982" y="109.154" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">DNA</text>

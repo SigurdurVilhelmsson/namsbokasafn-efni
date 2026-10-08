@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_11_04_phasediag",
  "renderHash": "604a13743f27b0cd",
  "composedHash": "604a13743f27b0cd",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Pressure": "Þrýstingur",

@@ -389,11 +389,11 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
 DEALINGS IN THE FONT SOFTWARE.
 
 </metadata>
-<text x="367.524" y="318.995" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmur</text>
-<text x="367.018" y="332.658" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmungur</text>
-<text x="364.771" y="346.472" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmleysingi</text>
+<text x="371.522" y="318.995" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmur</text>
+<text x="371.522" y="332.658" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmungur</text>
+<text x="371.522" y="346.472" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Málmleysingi</text>
 <text x="394.422" y="301.508" font-family="FigIS" font-weight="700" font-size="8.436" fill="#ffffff" xml:space="preserve" style="font-kerning:none">Litakóði</text>
-<text x="427.498" y="318.936" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">Fast efni</text>
+<text x="429.480" y="318.936" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">Fast efni</text>
 <text x="435.993" y="332.604" font-family="FigIS" font-weight="700" font-size="8.500" fill="#175fab" xml:space="preserve" style="font-kerning:none">Vökvi</text>
 <text x="434.582" y="346.272" font-family="FigIS" font-weight="700" font-size="8.500" fill="#87191e" xml:space="preserve">Gas</text>
 <text x="12.167" y="56.559" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">1,008</text>
@@ -457,13 +457,13 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="445.467" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">118</text>
 <text x="448.447" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Uuo</text>
 <text x="450.433" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[294]</text>
-<text x="445.531" y="220.068" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnoktíum</text>
+<text x="446.185" y="220.068" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnoktíum</text>
 <text x="33.054" y="97.268" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">12</text>
 <text x="33.054" y="123.938" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">20</text>
 <text x="33.054" y="150.248" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">38</text>
 <text x="38.270" y="103.799" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Mg</text>
 <text x="37.611" y="109.286" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">24,31</text>
-<text x="33.415" y="113.671" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">magnesíum</text>
+<text x="34.721" y="113.671" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">magnesíum</text>
 <text x="33.054" y="71.207" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">4</text>
 <text x="38.907" y="77.743" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Be</text>
 <text x="37.611" y="83.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">9,012</text>
@@ -485,7 +485,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="84.573" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">22</text>
 <text x="84.573" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">40</text>
 <text x="92.230" y="130.911" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Ti</text>
-<text x="186.377" y="23.502" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Lotukerfi frumefnanna</text>
+<text x="212.131" y="23.502" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Lotukerfið</text>
 <text x="89.353" y="136.365" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">47,87</text>
 <text x="91.717" y="140.846" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">títan</text>
 <text x="91.732" y="157.292" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Zr</text>
@@ -506,7 +506,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="84.573" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">104</text>
 <text x="91.511" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Rf</text>
 <text x="90.049" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[267]</text>
-<text x="83.394" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">rutherfordíum</text>
+<text x="85.795" y="219.665" font-family="FigIS" font-weight="400" font-size="3.200" fill="#231f20" xml:space="preserve" style="font-kerning:none">rutherfordíum</text>
 <text x="110.276" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">23</text>
 <text x="110.276" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">41</text>
 <text x="118.764" y="130.911" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">V</text>
@@ -538,7 +538,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="136.270" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">106</text>
 <text x="142.015" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Sg</text>
 <text x="141.407" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[271]</text>
-<text x="136.850" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">sæborgíum</text>
+<text x="138.115" y="219.665" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">sæborgíum</text>
 <text x="161.891" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">25</text>
 <text x="161.891" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">43</text>
 <text x="167.123" y="130.911" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Mn</text>
@@ -585,7 +585,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="218.222" y="193.687" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">iridíum</text>
 <text x="213.527" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">109</text>
 <text x="219.703" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Mt</text>
-<text x="214.220" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">meitneríum</text>
+<text x="215.470" y="219.665" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">meitneríum</text>
 <text x="218.664" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[276]</text>
 <text x="239.113" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">28</text>
 <text x="239.113" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">46</text>
@@ -602,9 +602,9 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="239.227" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">110</text>
 <text x="245.022" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Ds</text>
 <text x="244.418" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[281]</text>
-<text x="237.751" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">darmstadtíum</text>
+<text x="240.196" y="219.665" font-family="FigIS" font-weight="400" font-size="3.200" fill="#231f20" xml:space="preserve" style="font-kerning:none">darmstadtíum</text>
 <text x="270.563" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Rg</text>
-<text x="265.614" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">röntgeníum</text>
+<text x="266.878" y="219.665" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">röntgeníum</text>
 <text x="270.173" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[282]</text>
 <text x="264.957" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">29</text>
 <text x="264.957" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">47</text>
@@ -621,7 +621,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="265.069" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">111</text>
 <text x="290.911" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">112</text>
 <text x="296.316" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Cn</text>
-<text x="290.589" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">kópernikíum</text>
+<text x="292.631" y="219.665" font-family="FigIS" font-weight="400" font-size="3.250" fill="#231f20" xml:space="preserve" style="font-kerning:none">kópernikíum</text>
 <text x="295.923" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[285]</text>
 <text x="290.799" y="123.936" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">30</text>
 <text x="290.799" y="150.246" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">48</text>
@@ -682,10 +682,10 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="367.251" y="71.207" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">7</text>
 <text x="375.967" y="77.743" font-family="FigIS" font-weight="700" font-size="8.500" fill="#87191e" xml:space="preserve">N</text>
 <text x="372.479" y="83.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">14,01</text>
-<text x="367.726" y="87.895" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">köfnunarefni</text>
+<text x="374.843" y="87.895" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">nitur</text>
 <text x="367.671" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">115</text>
 <text x="371.198" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Uup</text>
-<text x="367.057" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnpentíum</text>
+<text x="369.392" y="219.665" font-family="FigIS" font-weight="400" font-size="3.200" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnpentíum</text>
 <text x="373.175" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[288]</text>
 <text x="367.555" y="150.245" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">51</text>
 <text x="367.555" y="123.935" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">33</text>
@@ -702,7 +702,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="393.094" y="97.268" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">16</text>
 <text x="401.900" y="103.799" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">S</text>
 <text x="398.230" y="109.286" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">32,06</text>
-<text x="393.589" y="113.952" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">brennisteinn</text>
+<text x="395.632" y="113.952" font-family="FigIS" font-weight="400" font-size="3.250" fill="#231f20" xml:space="preserve" style="font-kerning:none">brennisteinn</text>
 <text x="393.094" y="71.207" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">8</text>
 <text x="401.471" y="77.743" font-family="FigIS" font-weight="700" font-size="8.500" fill="#87191e" xml:space="preserve">O</text>
 <text x="398.230" y="83.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">16,00</text>
@@ -711,8 +711,8 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="419.783" y="202.972" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">117</text>
 <text x="399.962" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Lv</text>
 <text x="422.912" y="210.018" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Uus</text>
-<text x="394.040" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">livermoríum</text>
-<text x="419.306" y="219.665" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnseptíum</text>
+<text x="395.346" y="219.665" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">livermoríum</text>
+<text x="421.057" y="219.665" font-family="FigIS" font-weight="400" font-size="3.200" fill="#231f20" xml:space="preserve" style="font-kerning:none">únúnseptíum</text>
 <text x="398.926" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[293]</text>
 <text x="424.676" y="215.420" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[294]</text>
 <text x="393.397" y="150.245" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">52</text>
@@ -774,11 +774,11 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="134.867" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">59</text>
 <text x="141.664" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Pr</text>
 <text x="139.503" y="248.298" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">140,9</text>
-<text x="135.865" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">praseódým</text>
+<text x="136.483" y="252.946" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">praseódým</text>
 <text x="134.867" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">91</text>
 <text x="140.992" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Pa</text>
 <text x="139.503" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">231,0</text>
-<text x="134.753" y="279.327" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">prótaktiníum</text>
+<text x="136.817" y="279.327" font-family="FigIS" font-weight="400" font-size="3.250" fill="#231f20" xml:space="preserve" style="font-kerning:none">prótaktiníum</text>
 <text x="160.614" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">60</text>
 <text x="166.341" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Nd</text>
 <text x="164.393" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">neódým</text>
@@ -790,11 +790,11 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="186.433" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">61</text>
 <text x="191.228" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Pm</text>
 <text x="191.699" y="248.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[145]</text>
-<text x="187.700" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">prómetíum</text>
+<text x="188.297" y="252.946" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">prómetíum</text>
 <text x="186.433" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">93</text>
 <text x="192.092" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Np</text>
 <text x="191.699" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[237]</text>
-<text x="187.807" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">neptúníum</text>
+<text x="188.397" y="278.923" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">neptúníum</text>
 <text x="212.311" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">62</text>
 <text x="216.977" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Sm</text>
 <text x="216.754" y="248.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">150,4</text>
@@ -809,12 +809,12 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="240.423" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">evropíum</text>
 <text x="238.048" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">95</text>
 <text x="242.515" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Am</text>
-<text x="239.426" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">amerikíum</text>
+<text x="240.010" y="278.923" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">amerikíum</text>
 <text x="243.202" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[243]</text>
 <text x="263.889" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">64</text>
 <text x="269.130" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Gd</text>
 <text x="268.257" y="248.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">157,3</text>
-<text x="264.612" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">gadólíníum</text>
+<text x="265.231" y="252.946" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">gadólíníum</text>
 <text x="263.889" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">96</text>
 <text x="268.266" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Cm</text>
 <text x="268.399" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">kúríum</text>
@@ -830,13 +830,13 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="315.268" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">66</text>
 <text x="321.065" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Dy</text>
 <text x="319.766" y="248.227" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">162,5</text>
-<text x="315.683" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">dysprósíum</text>
+<text x="316.975" y="252.946" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">dysprósíum</text>
 <text x="315.268" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">98</text>
 <text x="321.922" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Cf</text>
-<text x="316.238" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">kaliforníum</text>
+<text x="316.850" y="278.923" font-family="FigIS" font-weight="400" font-size="3.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">kaliforníum</text>
 <text x="347.029" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Es</text>
 <text x="320.461" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[251]</text>
-<text x="341.546" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">einsteiníum</text>
+<text x="342.824" y="278.923" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">einsteiníum</text>
 <text x="346.215" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[252]</text>
 <text x="341.110" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">67</text>
 <text x="346.607" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Ho</text>
@@ -853,7 +853,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="371.299" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">erbíum</text>
 <text x="392.511" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">101</text>
 <text x="397.678" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Md</text>
-<text x="391.268" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">mendelevíum</text>
+<text x="393.669" y="278.923" font-family="FigIS" font-weight="400" font-size="3.200" fill="#231f20" xml:space="preserve" style="font-kerning:none">mendelevíum</text>
 <text x="392.511" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">69</text>
 <text x="397.716" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[258]</text>
 <text x="397.460" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Tm</text>
@@ -869,7 +869,7 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="420.688" y="252.946" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">ýtterbíum</text>
 <text x="443.713" y="262.230" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">103</text>
 <text x="450.900" y="269.278" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Lr</text>
-<text x="444.550" y="278.923" font-family="FigIS" font-weight="400" font-size="4.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">lawrensíum</text>
+<text x="445.828" y="278.923" font-family="FigIS" font-weight="400" font-size="3.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">lawrensíum</text>
 <text x="449.217" y="274.679" font-family="FigIS" font-weight="400" font-size="5.000" fill="#231f20" xml:space="preserve">[262]</text>
 <text x="443.713" y="235.848" font-family="FigIS" font-weight="400" font-size="6.000" fill="#231f20" xml:space="preserve">71</text>
 <text x="450.040" y="242.896" font-family="FigIS" font-weight="700" font-size="8.500" fill="#231f20" xml:space="preserve">Lu</text>

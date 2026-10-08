@@ -142,31 +142,31 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="25.684" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">metan</text>
 <text x="29.745" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
 <text x="42.744" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">4</text>
-<text x="154.624" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">etan </text>
-<text x="174.641" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="187.640" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
-<text x="191.533" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="204.532" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
-<text x="162.373" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">eða </text>
-<text x="179.890" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">C</text>
-<text x="186.389" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
-<text x="190.283" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">H</text>
-<text x="196.782" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">6</text>
-<text x="307.419" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">pentan </text>
-<text x="337.447" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="350.446" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
-<text x="354.339" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="367.338" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
-<text x="371.231" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="384.230" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
-<text x="388.123" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="401.122" y="201.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
-<text x="405.015" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
-<text x="418.014" y="200.271" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
-<text x="343.566" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">eða </text>
-<text x="361.082" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">C</text>
-<text x="367.582" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">5</text>
-<text x="371.475" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">H</text>
-<text x="377.974" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">12</text>
+<text x="172.766" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">etan</text>
+<text x="144.231" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="157.230" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
+<text x="161.123" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="174.122" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
+<text x="178.015" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða </text>
+<text x="198.032" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">C</text>
+<text x="204.532" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
+<text x="208.425" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">H</text>
+<text x="214.925" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">6</text>
+<text x="350.900" y="198.271" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">pentan</text>
+<text x="300.085" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="313.084" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
+<text x="316.977" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="329.976" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
+<text x="333.869" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="346.868" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
+<text x="350.762" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="363.761" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
+<text x="367.654" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
+<text x="380.653" y="211.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
+<text x="384.546" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða </text>
+<text x="404.563" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">C</text>
+<text x="411.063" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">5</text>
+<text x="414.956" y="209.269" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">H</text>
+<text x="421.455" y="212.269" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">12</text>
 </g>
 </svg>

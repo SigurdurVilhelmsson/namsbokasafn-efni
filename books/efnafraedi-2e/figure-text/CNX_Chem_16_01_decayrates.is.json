@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_16_01_decayrates",
  "renderHash": "ee15ad0946537caa",
  "composedHash": "ee15ad0946537caa",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Time (days)": "Tími (dagar)",

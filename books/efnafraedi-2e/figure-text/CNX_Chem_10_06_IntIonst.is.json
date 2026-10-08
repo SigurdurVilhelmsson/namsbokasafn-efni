@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_10_06_IntIonst",
  "renderHash": "3a3159ad7400164e",
- "composedHash": "49c56244d3dba8fb",
- "composedVersion": "5",
+ "composedHash": "3a3159ad7400164e",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Cubic hole": "Teningshola",

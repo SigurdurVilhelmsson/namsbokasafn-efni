@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_08_02_sp3Geom",
  "renderHash": "06ddb225f3ed48bd",
- "composedHash": "9b6d48a867b3df89",
- "composedVersion": "5",
+ "composedHash": "06ddb225f3ed48bd",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Gives a tetrahedral|arrangement": "Verður ferflötungslaga",

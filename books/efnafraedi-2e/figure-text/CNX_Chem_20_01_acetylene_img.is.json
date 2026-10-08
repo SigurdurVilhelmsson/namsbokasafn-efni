@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_acetylene_img",
  "renderHash": "b7c76ee010b7579b",
  "composedHash": "b7c76ee010b7579b",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "1,1,2,2-tetrabromoethane": "1,1,2,2-tetrabrómetan"

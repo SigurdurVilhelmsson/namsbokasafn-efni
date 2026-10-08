@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_05_02_HeatMeas",
  "renderHash": "0b40b34b6a7d07fc",
- "composedHash": "f174bd28a0c9593e",
- "composedVersion": "5",
+ "composedHash": "0b40b34b6a7d07fc",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "System": "Kerfi",

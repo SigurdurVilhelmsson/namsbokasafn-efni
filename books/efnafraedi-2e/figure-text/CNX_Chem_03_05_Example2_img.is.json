@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_03_05_Example2_img",
  "renderHash": "242d048327cf9433",
- "composedHash": "adf029023869ef52",
- "composedVersion": "5",
+ "composedHash": "242d048327cf9433",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Mass of|solution (g)": "Massi lausnar (g)",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_05_RadTherapy",
  "renderHash": "00ac619da0bde560",
  "composedHash": "00ac619da0bde560",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Gamma rays": "Gammageislar",

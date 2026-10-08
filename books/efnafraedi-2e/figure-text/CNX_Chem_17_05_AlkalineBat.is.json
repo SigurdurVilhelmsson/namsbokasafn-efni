@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_17_05_AlkalineBat",
  "renderHash": "243359f3130d4743",
- "composedHash": "da1b89ecb8169841",
- "composedVersion": "5",
+ "composedHash": "243359f3130d4743",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Porous separator": "Gropin skilja",

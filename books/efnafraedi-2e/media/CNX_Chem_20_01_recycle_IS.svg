@@ -144,7 +144,7 @@ DEALINGS IN THE FONT SOFTWARE.
 
 </metadata>
 <text x="16.884" y="30.958" font-family="FigIS" font-weight="700" font-size="12.000" fill="#231f20" xml:space="preserve">1</text>
-<text x="54.191" y="30.582" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýetýlen tereftalat (PETE)</text>
+<text x="39.690" y="30.582" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýetýlen tereftalat (PETE)</text>
 <text x="7.786" y="47.796" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve">PETE</text>
 <text x="16.884" y="80.458" font-family="FigIS" font-weight="700" font-size="12.000" fill="#231f20" xml:space="preserve">2</text>
 <text x="7.036" y="97.296" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve">HDPE</text>
@@ -158,13 +158,13 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="13.536" y="295.296" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve">PS</text>
 <text x="16.884" y="327.958" font-family="FigIS" font-weight="700" font-size="12.000" fill="#231f20" xml:space="preserve">7</text>
 <text x="3.789" y="344.796" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">ANNAÐ</text>
-<text x="54.193" y="79.915" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">háþéttni pólýetýlen (HDPE)</text>
-<text x="46.195" y="129.248" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólývínýlklóríð (PVC)</text>
-<text x="50.700" y="178.581" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">lágþéttni pólýetýlen (LDPE)</text>
-<text x="42.196" y="227.914" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýprópýlen (PP)</text>
-<text x="42.192" y="277.247" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýstýren (PS)</text>
-<text x="52.947" y="326.580" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">annað plast (OTHER)</text>
-<text x="194.856" y="30.582" font-family="FigIS" font-weight="400" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">Gosflöskur og ofnheldir matarílát</text>
+<text x="39.690" y="79.915" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">háþéttni pólýetýlen (HDPE)</text>
+<text x="39.690" y="129.248" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólývínýlklóríð (PVC)</text>
+<text x="39.690" y="178.581" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">lágþéttni pólýetýlen (LDPE)</text>
+<text x="39.690" y="227.914" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýprópýlen (PP)</text>
+<text x="39.690" y="277.247" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">pólýstýren (PS)</text>
+<text x="39.690" y="326.580" font-family="FigIS" font-weight="700" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">annað plast (OTHER)</text>
+<text x="194.856" y="30.582" font-family="FigIS" font-weight="400" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">Gosflöskur og ofnheld matarílát</text>
 <text x="194.856" y="79.915" font-family="FigIS" font-weight="400" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">Flöskur undan mjólk og uppþvottalegi</text>
 <text x="194.856" y="129.149" font-family="FigIS" font-weight="400" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">Matarbakkar, plastfilma, flöskur</text>
 <text x="194.856" y="140.144" font-family="FigIS" font-weight="400" font-size="8.998" fill="#231f20" xml:space="preserve" style="font-kerning:none">undan sódavatni og sjampói</text>

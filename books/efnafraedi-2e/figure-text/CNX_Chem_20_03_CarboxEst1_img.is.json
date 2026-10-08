@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_03_CarboxEst1_img",
  "renderHash": "4a6656b3f9f2d2f3",
  "composedHash": "4a6656b3f9f2d2f3",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "OCH3": "OCH3",

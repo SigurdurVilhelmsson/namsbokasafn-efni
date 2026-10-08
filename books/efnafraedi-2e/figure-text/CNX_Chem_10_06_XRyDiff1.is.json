@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_10_06_XRyDiff1",
  "renderHash": "2434f0e7462e10c7",
- "composedHash": "96d5b3cffa68e677",
- "composedVersion": "5",
+ "composedHash": "2434f0e7462e10c7",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Incident|beam": "Aðfallandi geisli",

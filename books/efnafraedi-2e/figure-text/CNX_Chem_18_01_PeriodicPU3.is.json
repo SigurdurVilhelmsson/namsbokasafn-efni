@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_18_01_PeriodicPU3",
  "renderHash": "63e91c4053ce768d",
- "composedHash": "68c309db90214e13",
- "composedVersion": "5",
+ "composedHash": "63e91c4053ce768d",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Representative metals": "Aðalmálmar",

@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_08_02_spGeom",
  "renderHash": "f7500903a4739d86",
- "composedHash": "23e2e1c6de14b750",
- "composedVersion": "5",
+ "composedHash": "f7500903a4739d86",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Hybridization": "Blöndun",

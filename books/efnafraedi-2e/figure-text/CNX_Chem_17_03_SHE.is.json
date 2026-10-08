@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_03_SHE",
  "renderHash": "7a88be05b4d63e90",
  "composedHash": "7a88be05b4d63e90",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "H2(g) at 1 atm": "H2(g) við 1 loftþrýsting",

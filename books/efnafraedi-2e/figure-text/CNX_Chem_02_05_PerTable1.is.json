@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_02_05_PerTable1",
  "renderHash": "bf04b906f9288569",
- "composedHash": "820e67888ea1fe7b",
- "composedVersion": "5",
+ "composedHash": "bf04b906f9288569",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Metal": "Málmur",

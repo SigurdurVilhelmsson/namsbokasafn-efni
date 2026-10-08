@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_10_01_PentIso",
  "renderHash": "5dcc56bdf2fbd143",
- "composedHash": "909540925dd1f0cb",
- "composedVersion": "5",
+ "composedHash": "5dcc56bdf2fbd143",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Large contact area,|strong attraction": "Stór snertiflötur, sterkur aðdráttarkraftur",

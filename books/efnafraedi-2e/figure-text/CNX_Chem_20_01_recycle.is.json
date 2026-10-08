@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_20_01_recycle",
  "renderHash": "cf41831c8e43874f",
- "composedHash": "4d7a5f6694359f88",
- "composedVersion": "5",
+ "composedHash": "cf41831c8e43874f",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "polyethylene terephthalate (PETE)": "pólýetýlen tereftalat (PETE)",

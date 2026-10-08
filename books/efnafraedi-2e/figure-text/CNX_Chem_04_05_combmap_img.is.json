@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_04_05_combmap_img",
  "renderHash": "0322f1565f60abba",
- "composedHash": "78e4ad29f7164213",
- "composedVersion": "5",
+ "composedHash": "0322f1565f60abba",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Mass of|CO2": "Massi CO2",

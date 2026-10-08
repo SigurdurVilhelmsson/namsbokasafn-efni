@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_06_01_emspectrum",
  "renderHash": "e5d2910cc04dd52e",
- "composedHash": "fbf2507934da4542",
- "composedVersion": "5",
+ "composedHash": "e5d2910cc04dd52e",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "AM radio": "AM-útvarp",

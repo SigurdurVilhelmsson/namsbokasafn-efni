@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_06_03_spin",
  "renderHash": "c206cec1b3f517d7",
- "composedHash": "abe46dcfba20be6f",
- "composedVersion": "5",
+ "composedHash": "c206cec1b3f517d7",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Spin +   ,|spin-up": "Spuni + , spuni upp",

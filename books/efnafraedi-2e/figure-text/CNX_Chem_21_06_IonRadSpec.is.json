@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_21_06_IonRadSpec",
  "renderHash": "e89ae18efc3588be",
- "composedHash": "9c867ac155738e0f",
- "composedVersion": "5",
+ "composedHash": "e89ae18efc3588be",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Increasing frequency ν": "Vaxandi tíðni ν",

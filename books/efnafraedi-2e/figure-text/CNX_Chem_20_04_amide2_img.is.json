@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_04_amide2_img",
  "renderHash": "a93d7d12a6dd9cab",
  "composedHash": "a93d7d12a6dd9cab",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "amine": "amín",

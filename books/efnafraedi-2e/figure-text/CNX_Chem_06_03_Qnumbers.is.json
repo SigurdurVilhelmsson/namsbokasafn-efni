@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_06_03_Qnumbers",
  "renderHash": "478f78f0f7e5c85f",
- "composedHash": "a8874dcee26a7f6d",
- "composedVersion": "5",
+ "composedHash": "478f78f0f7e5c85f",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Nucleus": "Kjarni",

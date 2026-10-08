@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_01_bondtype_img",
  "renderHash": "010d181f50ce57db",
  "composedHash": "010d181f50ce57db",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "One σ bond|No π bonds": "Eitt σ-tengi Ekkert π-tengi",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_06_03_elecw",
  "renderHash": "3db2431a8ed44086",
  "composedHash": "3db2431a8ed44086",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Radius r": "Radíus r",

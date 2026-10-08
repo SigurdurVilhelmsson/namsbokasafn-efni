@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_10_06_CrystalSys",
  "renderHash": "0737b84e81a318b5",
- "composedHash": "5cacff0ca231bc5c",
- "composedVersion": "5",
+ "composedHash": "0737b84e81a318b5",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "System/Axes/Angles": "Kerfi/Ásar/Horn",

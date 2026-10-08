@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_09_04_KMT2",
  "renderHash": "2464f6871d7032b3",
- "composedHash": "a53c36d482750427",
- "composedVersion": "5",
+ "composedHash": "2464f6871d7032b3",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "HEAT": "HITI",

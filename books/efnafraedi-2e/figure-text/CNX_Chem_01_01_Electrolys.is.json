@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_01_01_Electrolys",
  "renderHash": "98825085240558fc",
  "composedHash": "98825085240558fc",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Water": "Vatn",

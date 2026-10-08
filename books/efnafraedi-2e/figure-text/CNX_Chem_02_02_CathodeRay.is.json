@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_02_02_CathodeRay",
  "renderHash": "7a92f7d6775bcb22",
- "composedHash": "57fe5da38ef9c1e9",
- "composedVersion": "5",
+ "composedHash": "7a92f7d6775bcb22",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Cathode ray": "Katóðugeisli",

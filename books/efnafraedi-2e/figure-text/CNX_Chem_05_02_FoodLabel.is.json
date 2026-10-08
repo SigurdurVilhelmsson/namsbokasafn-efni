@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_05_02_FoodLabel",
  "renderHash": "1fa531550773a799",
- "composedHash": "ef93fedc29b3dbf9",
- "composedVersion": "5",
+ "composedHash": "1fa531550773a799",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Sample label for|macaroni & cheese": "Sýnishorn af næringaryfirlýsingu fyrir makkarónur og ost",

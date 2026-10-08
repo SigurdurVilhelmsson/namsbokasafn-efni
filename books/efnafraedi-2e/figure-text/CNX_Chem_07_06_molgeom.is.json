@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_07_06_molgeom",
  "renderHash": "7252e167e84a9416",
- "composedHash": "533b47f2fe6d617b",
- "composedVersion": "5",
+ "composedHash": "7252e167e84a9416",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Electron pair|geometries:|0 lone pair": "Lögun\nrafeindasvæða:\n0 ótengt par",

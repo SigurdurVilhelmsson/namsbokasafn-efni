@@ -2,8 +2,8 @@
  "version": 1,
  "basename": "CNX_Chem_03_02_potassium_img-f1d1",
  "renderHash": "9b207e6f049b7d36",
- "composedHash": "e91a5b7f164f8aac",
- "composedVersion": "5",
+ "composedHash": "9b207e6f049b7d36",
+ "composedVersion": "6",
  "composerVersion": "6",
  "blocks": {
   "Moles of|K atoms (mol)": "Mól K atóma (mól)",

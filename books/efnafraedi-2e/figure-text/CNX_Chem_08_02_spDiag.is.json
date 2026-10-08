@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_02_spDiag",
  "renderHash": "42fc4d2c26068d0e",
  "composedHash": "42fc4d2c26068d0e",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Orbitals in an isolated Be atom": "Svigrúm í einangruðu Be-atómi",
