@@ -220,6 +220,17 @@
      - **DNA:** the capital S.
      - **RadonExpos:** *radon-222* corrects OpenStax's own `radium-222`.
 
+     ✅ **Round-2 rehearsal (`step7r2/`, worktree at `8e2e00923`): exact.** The 51 edited figures
+     are byte-equal to their scratch composes. The other 660 `_IS.svg` equal pass 1. 57 sidecars
+     change `composedHash`. 22/22 units ok, MT 0. **Step 7's acceptance target is now
+     `step7r2/media-run1.sha`.**
+     **📤 Round-2 review published, AWAITING [USER]:** same URL, collection **`verdicts-r2`**, 0 of 51
+     at hand-off. Round-1 `verdicts` are untouched.
+     ⚠️ **Re-read the round-1 answers before acting on them; they can change after export.** Between
+     the two reads, [USER] updated Qnumbers from `keep-june` to `fix-wording` *"Aukin orka → Vaxandi
+     orka"*, which matches what was applied. The current export is `review/user-verdicts/`; the first
+     read is `user-verdicts-2026-10-08-first/`.
+
      🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
      - **Alignment:**
        - left-align *Fast efni / Vökvi / Gas* in the 5 periodic tables (00_AA, 01_03, 02_05, 18_01,
