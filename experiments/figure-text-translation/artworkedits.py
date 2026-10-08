@@ -59,7 +59,7 @@ REFUSALS - `ArtworkEditError.reason` is a CONTRACT (figure-prepare.py reports `a
   selection    select-none / select-ambiguous (0 or more than 1 object matches, tolerance 0.01 pt),
                select-overlap (one object selected twice, in one op or across ops)
   the rewrite  not-a-rect, not-a-line, not-horizontal, not-axis-aligned (a rotated, skewed or flipped
-               CTM or text matrix), quote-operator (a `'` or `"` in a BT this edit must rewrite),
+               CTM or text matrix),
                no-positioning-op, edge-inverts (an edge or line end reaching or crossing the other one),
                clip-path (move-paths on a path that also sets the clip: `W`/`W*` before its paint)
   the check    verify-failed
@@ -83,8 +83,9 @@ LIMITS, STATED:
     (`--inventory` on `<out>/<basename>.pdf`), never from the source file.
   - Selectors are absolute page coordinates: a new artwork vintage, or an artworkPins redirect to a
     different file, makes them refuse `select-none`, which fails the figure closed.
-  - A `'` or `"` operator is not split into its own line by the inventory: it continues the line
-    before it (`--inventory` prints such a line with `quote: true`), and any move in its BT refuses.
+  - A `'` or `"` STARTS a line (step 2c, [USER] 2026-10-08): it moves to the next line as T* does, then
+    shows its string. `--inventory` prints it with `quote: true` and its own operator. A rewritten quote
+    line becomes `Td` + `Tj` (a `"` keeps its aw/ac as `Tw` + `Tc` before them).
   - An entry on a figure the driver classifies `copied-photo` or `unreadable-text` is prepared and
     never recomposed, so it is silently unused. So is one on a `copied-textless` figure that embeds a
     raster (`imageXObjects > 0`, e.g. ibuprofenmass): tools/figure-run.js `isRecomposableTextless`
@@ -122,6 +123,7 @@ FILL_COLOUR_OPS = {'k', 'rg', 'g', 'sc', 'scn', 'cs'}
 STROKE_COLOUR_OPS = {'K', 'RG', 'G', 'SC', 'SCN', 'CS'}
 SHOW_OPS = {'Tj', 'TJ', "'", '"'}
 POS_OPS = {'Tm', 'Td', 'TD', 'T*'}
+QUOTE_OPS = {"'", '"'}             # `'` = T* + Tj; `"` = aw Tw + ac Tc + `'` - each STARTS a line (step 2c)
 
 
 class ArtworkEditError(ValueError):
@@ -316,6 +318,14 @@ def inventory(pikepdf, instructions):
             in_bt, tlm, bt_id, line = True, IDENT, bt_id + 1, None
         elif op == 'ET':
             in_bt, line = False, None
+        elif in_bt and op in QUOTE_OPS:
+            # PR-B step 2c: a quote moves to the next line exactly as T* does, then shows its string. Folding
+            # it into the line before (as this walk once did) left every later origin in the BT wrong by
+            # the leading - Nitrogen's label by 33 pt = 3 x TL 11.
+            tlm = _mul((Decimal(1), Decimal(0), Decimal(0), Decimal(1), Decimal(0), -tl), tlm)
+            line = dict(bt=bt_id, pos=i, posop=op, text=_string_text(pikepdf, args[-1]), tlm=tlm, ctm=ctm, tl=tl,
+                        quote=True, origin=_apply(_mul(tlm, ctm), Decimal(0), Decimal(0)))
+            lines.append(line)
         elif in_bt and op in POS_OPS:
             if op == 'Tm':
                 tlm = tuple(_D(x) for x in args)
@@ -335,8 +345,6 @@ def inventory(pikepdf, instructions):
                 line = dict(bt=bt_id, pos=None, posop=None, text='', tlm=tlm, ctm=ctm, tl=tl, quote=False,
                             origin=_apply(_mul(tlm, ctm), Decimal(0), Decimal(0)))
                 lines.append(line)
-            if op in ("'", '"'):
-                line['quote'] = True
             line['text'] += _string_text(pikepdf, args[-1])
     return paths, lines
 
@@ -454,6 +462,7 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
     CSI = pikepdf.ContentStreamInstruction
     new_operands = {}                 # idx -> operands list
     replace_op = {}                   # idx -> (operands, operator) replacing the instruction
+    replace_multi = {}                # idx -> [instructions] replacing it (a rewritten quote, step 2c)
     before, after = {}, {}
     for n, dx in path_dx.items():
         p = paths[n]
@@ -500,8 +509,6 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
         prev_tlm = IDENT
         for n, s in zip(idxs, shifts):
             l = lines[n]
-            if l['quote']:
-                raise ArtworkEditError('quote-operator', f"a ' or \" operator in BT #{bt}, which this edit must rewrite")
             delta = (s[0] - prev[0], s[1] - prev[1])
             # Tm is ABSOLUTE: it needs the line's own shift whenever that is non-zero, whatever came before.
             # Td/TD/T* are RELATIVE: they need the CHANGE of shift from the previous line.
@@ -510,7 +517,8 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
                     raise ArtworkEditError('no-positioning-op', f'line {l["text"]!r} has no positioning operator')
                 _axis(l['ctm'], f'CTM at {l["text"]!r}')
                 ins = instructions[l['pos']]
-                ops_ = [_D(v) for v in ins.operands]
+                # a quote's operands are (aw, ac,) string - not a position; it is rebuilt below instead
+                ops_ = None if l['posop'] in QUOTE_OPS else [_D(v) for v in ins.operands]
                 if l['posop'] == 'Tm':
                     _axis(tuple(ops_), f'Tm at {l["text"]!r}')
                     ops_[4] += s[0] / l['ctm'][0]    # absolute: the line's own shift, in user space
@@ -522,6 +530,14 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
                     dtx, dty = delta[0] / lin[0], delta[1] / lin[3]
                     if l['posop'] == 'T*':
                         replace_op[l['pos']] = ([dtx, -l['tl'] + dty], 'Td')
+                    elif l['posop'] in QUOTE_OPS:
+                        # `'` = T* + Tj, so it becomes `Td` + `Tj` with the T* compensated; `"` first keeps
+                        # its aw/ac as Tw/Tc (they persist, as the `"` set them). The string object is reused.
+                        q = list(ins.operands)
+                        head = ([CSI([q[0]], pikepdf.Operator('Tw')), CSI([q[1]], pikepdf.Operator('Tc'))]
+                                if l['posop'] == '"' else [])
+                        replace_multi[l['pos']] = head + [CSI([dtx, -l['tl'] + dty], pikepdf.Operator('Td')),
+                                                          CSI([q[-1]], pikepdf.Operator('Tj'))]
                     elif l['posop'] == 'TD' and dty != 0:
                         # TD = `-ty TL` + `tx ty Td`. Its new ty would set a new leading, and TL outlives
                         # the BT, so every later T*/'/" the delta walk leaves alone would move. Write a Td
@@ -536,7 +552,9 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
     out = []
     for i, ins in enumerate(instructions):
         out.extend(before.get(i, []))
-        if i in replace_op:
+        if i in replace_multi:
+            out.extend(replace_multi[i])
+        elif i in replace_op:
             operands, opname = replace_op[i]
             out.append(CSI(operands, pikepdf.Operator(opname)))
         elif i in new_operands:

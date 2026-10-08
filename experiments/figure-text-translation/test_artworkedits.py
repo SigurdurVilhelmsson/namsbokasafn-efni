@@ -237,6 +237,20 @@ LATERFORM = b'''BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD (Zulu) Tj ET
 /Fx Do
 '''
 FORM_BODY = b'BT /F1 8 Tf 1 0 0 1 120 100 Tm (Xray) Tj T* (Yoyo) Tj ET'
+# PR-B step 2c ([USER] 2026-10-08, Nitrogen): `'` = T* + Tj and `"` = Tw + Tc + `'` START A LINE. BT 1 mixes
+# quote lines with a Tm and a Td (Nitrogen's shape: a Td line, then a `'`, then relative Tds); BT 2 holds a
+# `"`. pdfminer does not step a `"` to the next line, so BT 2 is witnessed by poppler (pdftotext -bbox).
+QUOTES = b'''BT /F1 8 Tf 12 TL
+1 0 0 1 30 180 Tm (Ant) Tj
+(Bee) '
+(Cat) '
+0 -20 Td (Dog) Tj
+(Elk) '
+ET
+BT /F1 8 Tf 1 0 0 1 150 180 Tm (Fly) Tj 2 1 (Gnu) " (Hen) ' ET
+'''
+WORDS_Q = {'Ant': (30, 180), 'Bee': (30, 168), 'Cat': (30, 156), 'Dog': (30, 136), 'Elk': (30, 124),
+           'Fly': (150, 180), 'Gnu': (150, 168), 'Hen': (150, 156)}
 # ... and the same with NO show after the TD in its own BT (a TD that only positions), so the lost re-assert
 # is visible ONLY at the later `'` / `Do` - every fixture above also shows it at the TD line's own Tj.
 BARE_TD = b'BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD ET\n'
@@ -306,6 +320,17 @@ def words_xy(pdf_path):
         return {w['text']: (round(w['x0'], 3), round(p.height - w['bottom'], 3)) for w in p.extract_words()}
 
 
+def poppler_xy(pdf_path):
+    """The THIRD instrument, for `"`: poppler's words as {text: (xMin, y of the box bottom, y up)}. pdfminer
+    (pdfplumber) runs `"` as Tw + Tc + TJ with no move to the next line; poppler steps it as the spec says."""
+    import re
+    out = subprocess.run(['pdftotext', '-bbox', str(pdf_path), '-'], capture_output=True, text=True).stdout
+    h = float(re.search(r'<page width="[\d.]+" height="([\d.]+)"', out).group(1))
+    return {m.group(5): (round(float(m.group(1)), 3), round(h - float(m.group(4)), 3))
+            for m in re.finditer(r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)</word>',
+                                 out)}
+
+
 def near(a, b, tol=1e-3):
     return all(abs(float(x) - float(y)) <= tol for x, y in zip(a, b))
 
@@ -356,6 +381,7 @@ SCALED_PDF = synth(TD / 'scaled.pdf', SCALED)
 EDGE_PDF = synth(TD / 'edge.pdf', EDGE)
 NEAR_PDF = synth(TD / 'near.pdf', NEAR)
 ANISO_PDF = synth(TD / 'aniso.pdf', ANISO)
+QUOTES_PDF = synth(TD / 'quotes.pdf', QUOTES)
 LATERQ_PDF = synth(TD / 'laterq.pdf', LATERQ)
 LATERQQ_PDF = synth(TD / 'laterqq.pdf', LATERQQ)
 LATERFORM_PDF = synth(TD / 'laterform.pdf', LATERFORM, FORM_BODY)
@@ -548,8 +574,11 @@ if AE is not None:
             [{'op': 'move-edge', 'edge': 'left', 'dx': -1, 'select': [ROT]}], 'not-axis-aligned')
     refuses('AE-6c2 move-paths on a rect under a rotated cm',
             [{'op': 'move-paths', 'dx': -1, 'select': [ROT]}], 'not-axis-aligned')
-    refuses("AE-6d move-text in a BT holding a ' operator",
-            [{'op': 'move-text', 'dx': 1, 'select': [line('GolfHotel', 200, 30)]}], 'quote-operator')
+    # PR-B step 2c: a `'` starts its own line, so the old blanket `quote-operator` refusal is gone.
+    p, s = edited([{'op': 'move-text', 'dx': 1, 'select': [line('Hotel', 200, 20)]}])
+    check("AE-6d move-text on a ' line (MAIN's Hotel) applies: Hotel +1, Golf where it was (step 2c)",
+          isinstance(s, list) and plumb(p)['words'].get('Hotel') == 201.0
+          and plumb(p)['words'].get('Golf') == 200.0, f'{s!r} {plumb(p)["words"] if isinstance(s, list) else ""}')
     refuses('AE-6e move-edge past the other edge',
             [{'op': 'move-edge', 'edge': 'left', 'to': 200, 'select': [BAND_A]}], 'edge-inverts')
     refuses('AE-6f move-edge on a curve (not ONE `re`)',
@@ -707,7 +736,7 @@ if AE is not None:
     paths_ = inv.get('paths', [])
     lines_ = inv.get('lines', [])
     check('AE-11 --inventory exits 0 with every painted path and every text line',
-          r.returncode == 0 and len(paths_) == 9 and len(lines_) == 7, f'{r.returncode} {r.stderr[-300:]}')
+          r.returncode == 0 and len(paths_) == 9 and len(lines_) == 8, f'{r.returncode} {r.stderr[-300:]}')
     sel = [q['select'] for q in paths_ if q.get('select')]
     shaft = [q for q in paths_ if q.get('shape') == 'm l' and q.get('select')
              and q['select']['colour'] == SHAFT['colour']]
@@ -726,8 +755,11 @@ if AE is not None:
     for ln in lines_:
         ok11 = ok11 and set(ln.get('select', {})) == {'text', 'origin'}
     check('AE-11c every printed path selector selects exactly one object on the same PDF', ok11)
-    check("AE-11d the ' line is printed with quote true (a move of it refuses)",
-          [ln.get('quote') for ln in lines_ if ln['select']['text'] == 'GolfHotel'] == [True], f'{lines_!r}'[:300])
+    check("AE-11d the ' starts its own line, printed with positioning `'` and quote true at Hotel's origin (step 2c)",
+          [(ln.get('quote'), ln.get('positioning'), ln['select']['origin']) for ln in lines_
+           if ln['select']['text'] == 'Hotel'] == [(True, "'", [200.0, 20.0])]
+          and [ln['select']['text'] for ln in lines_ if ln['select']['text'] in ('Golf', 'GolfHotel')] == ['Golf'],
+          f'{lines_!r}'[:400])
     r = run_py(AE_PATH)
     check('AE-11e no arguments is a usage error, exit 2', refused(r, 2), f'{r.returncode} {r.stderr[-200:]}')
 
@@ -1015,6 +1047,64 @@ if AE is not None:
     check('AE-14p the summary for a dy op has the dx op\'s shape: text and origin',
           s == [{'op': 'move-text', 'selected': 1, 'objects': [{'text': 'Charlie', 'origin': [42.0, 70.0]}]}],
           f'{s!r}')
+
+    # ── 15. step 2c: `'` and `"` start a line ([USER] 2026-10-08, Nitrogen) ─────────────────
+    # 🔴 The inventory used to fold a quote into the line before it and ignore its T*, so every later
+    # origin in that BT was wrong by the leading (Nitrogen: 33 pt = 3 x TL 11). The first check is that the
+    # inventory now agrees with the RENDERERS, line by line.
+    Q0p, Q0x = words_xy(QUOTES_PDF), poppler_xy(QUOTES_PDF)
+    _, invq = raises(lambda: AE.inventory_report(QUOTES_PDF))
+    got_q = {q['select']['text']: tuple(q['select']['origin']) for q in (invq or {}).get('lines', [])}
+    off_p = {round(WORDS_Q[k][1] - Q0p.get(k, (0, 0))[1], 3) for k in ('Ant', 'Bee', 'Cat', 'Dog', 'Elk')}
+    off_x = {round(WORDS_Q[k][1] - Q0x.get(k, (0, 0))[1], 3) for k in WORDS_Q}
+    check('AE-15 PRECONDITION the renderers agree with the hand-computed origins: pdfplumber on BT 1, poppler on '
+          'every word (one common baseline offset each)',
+          len(off_p) == 1 and len(off_x) == 1 and all(near((Q0x[k][0],), (v[0],)) for k, v in WORDS_Q.items()),
+          f'{Q0p!r} {Q0x!r}')
+    check("AE-15a the inventory has ONE line per Tj/`'`/`\"`, at the renderers' origins (it folded each quote "
+          'into the line before and ignored its T*)', got_q == {k: (float(x), float(y)) for k, (x, y) in WORDS_Q.items()},
+          f'{got_q!r}')
+    check("AE-15b each quote line is printed with its own positioning operator",
+          {q['select']['text']: q['positioning'] for q in (invq or {}).get('lines', []) if q['quote']}
+          == {'Bee': "'", 'Cat': "'", 'Elk': "'", 'Gnu': '"', 'Hen': "'"}, f'{invq!r}'[:400])
+
+    def q_edit(ops):
+        p_, s_ = edited(ops, QUOTES_PDF)
+        ok = isinstance(s_, list)
+        return p_, s_, (words_xy(p_) if ok else {}), (poppler_xy(p_) if ok else {}), (instructions(p_) if ok else [])
+
+    BT1 = {k: v for k, v in Q0p.items() if k in ('Ant', 'Bee', 'Cat', 'Dog', 'Elk')}
+    p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dy': 4, 'select': [line('Cat', 30, 156)]}])
+    check("AE-15c dy on a MIDDLE `'` line: Cat up 4; Dog (a Td after it) and Elk (a `'` after that) unmoved - "
+          'pdfplumber and poppler', isinstance(s, list) and moved_only(BT1, w, {'Cat': (0, 4)})
+          and moved_only(Q0x, x, {'Cat': (0, 4)}), f'{s!r} {w!r} {x!r}')
+    check("AE-15d ... Cat's `'` became `Td 0 -8` + `(Cat) Tj` (T* is 0 -TL; +4 up), and no other quote changed",
+          ('Td', ['0', '-8']) in ins1 and ('Tj', ['Cat']) in ins1 and [op for op, _ in ins1].count("'") == 3,
+          f'{ins1!r}'[:600])
+    p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dx': 5, 'select': [line('Bee', 30, 168)]}])
+    check("AE-15e dx on a `'` line FOLLOWED by a `'` line: only Bee moves (Cat's `'` is compensated as Td -5 -12)",
+          isinstance(s, list) and moved_only(Q0x, x, {'Bee': (5, 0)}) and ('Td', ['-5', '-12']) in ins1,
+          f'{s!r} {x!r} {ins1!r}'[:600])
+    p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dx': 3, 'select': [line('Gnu', 150, 168)]}])
+    check('AE-15f dx on a `"` line: Gnu +3, Fly and Hen unmoved (poppler); its Tw 2 and Tc 1 kept, in order, '
+          'before the Td and the Tj',
+          isinstance(s, list) and moved_only(Q0x, x, {'Gnu': (3, 0)})
+          and any(ins1[k:k + 4] == [('Tw', ['2']), ('Tc', ['1']), ('Td', ['3', '-12']), ('Tj', ['Gnu'])]
+                  for k in range(len(ins1))), f'{s!r} {x!r} {ins1!r}'[:700])
+    p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dy': 4, 'select': [line('Ant', 30, 180), line('Bee', 30, 168),
+                                                                         line('Cat', 30, 156)]}])
+    check("AE-15g the Nitrogen shape: a line and the `'` lines after it moved together - only the first line's "
+          "operator changes; all four quotes in the file are left as they are, and Dog, Elk unmoved",
+          isinstance(s, list) and moved_only(Q0x, x, {'Ant': (0, 4), 'Bee': (0, 4), 'Cat': (0, 4)})
+          and [op for op, _ in ins1].count("'") == 4 and ('Td', ['0', '-24']) in ins1, f'{s!r} {x!r} {ins1!r}'[:600])
+    p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dy': 3, 'select': [line('Dog', 30, 136)]}])
+    check("AE-15h dy on a Td line followed by a `'`: Dog up 3, Elk compensated, every other word unmoved",
+          isinstance(s, list) and moved_only(Q0x, x, {'Dog': (0, 3)}), f'{s!r} {x!r}')
+
+    def unquote_wrong(out):       # the rewritten quote line's Td is lost: Tj alone stays on the old line
+        return [i for i in out if not (_is(i, 'Td') and [str(o) for o in i.operands] == ['0', '-8'])]
+    planted_on("AE-15i a rewritten `'` line that loses its Td (Cat lands on Bee's line)", QUOTES_PDF,
+               [{'op': 'move-text', 'dy': 4, 'select': [line('Cat', 30, 156)]}], unquote_wrong)
 
     # Field-level: move-text takes dx, dy or both; at least one; each a number.
     field('AE-14q move-text with neither dx nor dy', [{'op': 'move-text', 'select': [line('Bravo', 30, 80)]}],

@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **[USER] decide Nitrogen's route.** Step 2b is ✅ (`84528128f`), but `move-text` cannot reach Nitrogen's label: a `'` operator sits in its BT, and the inventory is wrong after one. The choice is **2c** (model `'`/`"`) or **defer to '7'**. The measurement and both routes are under step 2b in the 2026-10-07 block below.
+### ⏭ SINGLE NEXT ACTION — **[CODE] PR-B step 2c, ruled by [USER] 2026-10-08: model `'`/`"` in the `artworkedits` inventory**, then Nitrogen's entry. Step 2b is ✅ (`84528128f`). Measurement and design are under step 2b in the 2026-10-07 block below.
 
 - **Done on the branch (newest first), all `npm test` green:**
   - Round-3 wording, `52df55194`.
@@ -329,6 +329,9 @@
          origins). Rewrite a quote line that needs a move as `Td`+`Tj` (`"`: `Tw Tc Td Tj`). Drop the
          blanket refusal.
        - **Or** defer Nitrogen to '7'; `dy` then has no consumer in PR-B.
+     ⚖️ **[USER] 2026-10-08: route (2c).** Same procedure as 2a/2b. Red first: the inventory's origins
+     must equal pdfplumber's, and poppler's for `"`, which pdfminer does not step. Then review, mutation,
+     the FoodLabel/HazDiamond prepare control, and the floors.
 
      🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
      - **Alignment:**
