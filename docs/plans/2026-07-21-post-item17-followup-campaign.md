@@ -231,6 +231,37 @@
      orka"*, which matches what was applied. The current export is `review/user-verdicts/`; the first
      read is `user-verdicts-2026-10-08-first/`.
 
+     ✅ **Round 2 answered (`verdicts-r2`): fine 40 · fix-wording 8 · other 3.** The 3 "other" are
+     the periodic tables' left alignment, already '7'. Round-1 answers were re-read and are
+     unchanged. **Round 3 `52df55194`:** 7 sidecars, 8 values, scratch-composed clean.
+     ⚖️ **[USER] 2026-10-08, Nitrogen `Atmospheric|nitrogen (N2)`: keep the current form
+     *Nitur í andrúms‐ / lofti (N₂)*, and move the label UP a few points so the top line clears the
+     N₂ molecule — in PR-B.**
+     - Measured: both two-line alternatives also overlap the molecule (`r2/nitro/compare.png`).
+     - A three-line form is refused (`line-count`).
+     - **That makes a new step 2b:**
+  2b. **[CODE] `artworkEdits` `move-text` gains a vertical move (`dy`)**, its own reviewed unit, done
+     the way step 2a was: red-first tests, review, mutation check, a corpus control with the table
+     unchanged (byte-identical), and an `npm test` + Python-suite floor. Design notes:
+     - **Tm** is absolute: add `dy/d` to its `f`.
+     - **Td** is relative: compensate `ty` by the change of shift from the previous line, exactly as
+       `dx` does for `tx`.
+     - **⚠️ TD also SETS THE LEADING `TL`** (TL = −ty). Changing a TD's `ty` moves every later **T\***
+       line in that BT, including unselected ones. The existing `dx` code never met this, because TD's
+       `tx` does not touch TL.
+     - So, after a rewritten TD, re-assert the original leading (`TL` op) or rewrite the affected T\*
+       as `Td 0 −TL`.
+     - `_verify` must check `y` as well as `x`. It already fails closed on any unselected line that
+       moves.
+     - The validator (`tools/lib/figure-config-validate.js` `AE_OPS`) and the `_artworkEdits` README
+       name `dy`. `move-text` then needs `dx` or `dy`; decide whether both may appear, and test both
+       ways.
+
+     Then add a Nitrogen entry: `move-text` with `dy` on the `Atmospheric` and `nitrogen (N2)` lines.
+     Take the selectors from `artworkedits.py --inventory` on its staged PDF. Measure the `dy` (about
+     +8 pt is the estimate from the crop) against the molecule's top edge, with the source's own
+     label-to-artwork gap as the target. Then recompose, re-rehearse, and run step 7.
+
      🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
      - **Alignment:**
        - left-align *Fast efni / Vökvi / Gas* in the 5 periodic tables (00_AA, 01_03, 02_05, 18_01,
