@@ -1,20 +1,20 @@
 {
  "version": 1,
  "basename": "CNX_Chem_02_02_Millikan",
- "renderHash": "6cc7ef1bdc8302bc",
+ "renderHash": "d75fae6ec0e33784",
  "composedHash": "6cc7ef1bdc8302bc",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
   "Oil drop": "Olíudropi",
-  "Charge in|coulombs (C)": "Hleðsla í kúlombum (C)",
+  "Charge in|coulombs (C)": "Hleðsla í\ncoulombum (C)",
   "Oil atomizer": "Olíuúðari",
-  "Oil sprayed|in fine droplets": "Olíu úðað í fína dropa",
-  "X-ray to produce|charge on droplets": "Röntgengeislar til að mynda hleðslu á dropum",
-  "Pinhole": "Nálargat",
-  "Electrically charged|brass plate": "Rafhlaðin messingplata",
-  "Charged oil droplet|under observation": "Stakur hlaðinn olíudropi til athugunar",
-  "Telescopic|eyepiece": "Sjónaukaauggler"
+  "Oil sprayed|in fine droplets": "Olíu úðað\ní fínum dropum",
+  "X-ray to produce|charge on droplets": "Röntgengeislar mynda\nhleðslu á dropana",
+  "Pinhole": "Nálarauga",
+  "Electrically charged|brass plate": "Rafhlaðin\nmessingplata",
+  "Charged oil droplet|under observation": "Hlaðinn olíudropi\ntil athugunar",
+  "Telescopic|eyepiece": "Augngler\nsjónauka"
  },
  "mtAlternatives": {
   "Oil sprayed|in fine droplets": {
