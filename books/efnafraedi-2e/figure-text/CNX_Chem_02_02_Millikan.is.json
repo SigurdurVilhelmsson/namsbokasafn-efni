@@ -1,7 +1,7 @@
 {
  "version": 1,
  "basename": "CNX_Chem_02_02_Millikan",
- "renderHash": "d75fae6ec0e33784",
+ "renderHash": "ca49ced8da2bc2aa",
  "composedHash": "6cc7ef1bdc8302bc",
  "composedVersion": "5",
  "composerVersion": "6",
@@ -10,7 +10,7 @@
   "Charge in|coulombs (C)": "Hleðsla í\ncoulombum (C)",
   "Oil atomizer": "Olíuúðari",
   "Oil sprayed|in fine droplets": "Olíu úðað\ní fínum dropum",
-  "X-ray to produce|charge on droplets": "Röntgengeislar mynda\nhleðslu á dropana",
+  "X-ray to produce|charge on droplets": "Röntgengeislar mynda\nhleðslu á dropunum",
   "Pinhole": "Nálarauga",
   "Electrically charged|brass plate": "Rafhlaðin\nmessingplata",
   "Charged oil droplet|under observation": "Hlaðinn olíudropi\ntil athugunar",

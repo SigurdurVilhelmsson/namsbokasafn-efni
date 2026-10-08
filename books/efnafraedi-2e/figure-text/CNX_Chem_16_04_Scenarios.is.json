@@ -1,7 +1,7 @@
 {
  "version": 1,
  "basename": "CNX_Chem_16_04_Scenarios",
- "renderHash": "bca9a08916a0aff0",
+ "renderHash": "65d35b48f35fd9eb",
  "composedHash": "1236272a9d928b5c",
  "composedVersion": "5",
  "composerVersion": "6",
@@ -15,7 +15,7 @@
   "ΔG < 0 at any temperature": "ΔG < 0 við öll hitastig",
   "Process is spontaneous|at any temperature": "Ferlið er sjálfgengt við öll hitastig",
   "ΔG > 0 at any temperature": "ΔG > 0 við öll hitastig",
-  "Process is nonspontaneous|at any temperature": "Ferlið er ekki sjálfgengt við öll hitastig",
+  "Process is nonspontaneous|at any temperature": "Ferlið er ekki sjálfgengt, sama hvert hitastigið er",
   "ΔG < 0 at low temperature|ΔG > 0 at high temperature|Process is spontaneous|at low temperature": "ΔG < 0 við lágt hitastig ΔG > 0 við hátt hitastig Ferlið er sjálfgengt við lágt hitastig"
  },
  "mtAlternatives": {
