@@ -889,6 +889,14 @@ if AE is not None:
           isinstance(s, list) and moved_only(M0, w, {'Charlie': (0, 6), 'Delta': (0, 6)})
           and [op for op, _ in ins1].count('T*') == 2, f'{s!r} {w!r}')
 
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 6, 'select': [line('Bravo', 30, 80)]}])
+    ins1 = instructions(p) if isinstance(s, list) else []
+    check('AE-14h2 dy on the Td line BEFORE an unselected TD: the TD is compensated (ty -10 -> -16) and so '
+          'ALSO re-asserts the leading; only Bravo moves, Foxtrot included',
+          isinstance(s, list) and moved_only(M0, w, {'Bravo': (0, 6)})
+          and ('Td', ['12', '-16']) in ins1 and ins1[ins1.index(('Td', ['12', '-16'])) + 1] == ('TL', ['10']),
+          f'{s!r} {w!r}')
+
     S0 = words_xy(SCALED_PDF)
     p, s, w = text_edit([{'op': 'move-text', 'dy': 5, 'select': [line('November', 40, 91)]}], SCALED_PDF)
     check('AE-14i dy on a Td line under a 9x Tm and a 0.5 cm: November up 5 PAGE pt, the rest unmoved',
