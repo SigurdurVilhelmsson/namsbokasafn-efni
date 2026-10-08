@@ -224,6 +224,24 @@ ET
 Q
 '''
 WORDS_AN = {'Kappa': (40, 150), 'Lambda': (40, 138)}
+# PR-B step 2b review (capability lens, MEDIUM): a rewritten TD re-asserts the leading, and the ONLY
+# later readers of TL here are a `'` (LATERQ), a `"` (LATERQQ) or text in a form XObject (LATERFORM) -
+# none of which the inventory models as a line, so a dropped re-assert moved text _verify could not see.
+LATERQ = b'''BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD (Zulu) Tj ET
+BT /F1 8 Tf 1 0 0 1 30 100 Tm (Xray) Tj (Yoyo) ' ET
+'''
+LATERQQ = b'''BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD (Zulu) Tj ET
+BT /F1 8 Tf 1 0 0 1 30 100 Tm (Xray) Tj 0 0 (Yoyo) " ET
+'''
+LATERFORM = b'''BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD (Zulu) Tj ET
+/Fx Do
+'''
+FORM_BODY = b'BT /F1 8 Tf 1 0 0 1 120 100 Tm (Xray) Tj T* (Yoyo) Tj ET'
+# ... and the same with NO show after the TD in its own BT (a TD that only positions), so the lost re-assert
+# is visible ONLY at the later `'` / `Do` - every fixture above also shows it at the TD line's own Tj.
+BARE_TD = b'BT /F1 8 Tf 1 0 0 1 30 150 Tm (Yankee) Tj 0 -10 TD ET\n'
+LATERQ_ONLY = BARE_TD + b'BT /F1 8 Tf 1 0 0 1 30 100 Tm (Yoyo) \' ET\n'
+LATERFORM_ONLY = BARE_TD + b'/Fx Do\n'
 CLIPPER = {'paint': 'fill', 'colour': ['rg', 1, 0, 0], 'bbox': [10, 10, 60, 60]}       # re W f
 CLIPPER_STAR = {'paint': 'fill', 'colour': ['rg', 0, 1, 0], 'bbox': [10, 150, 30, 170]}  # re W* f
 INSIDE = {'paint': 'fill', 'colour': ['rg', 0, 0, 1], 'bbox': [0, 0, 200, 200]}          # in the clip
@@ -245,10 +263,16 @@ def _font(pdf):
         Encoding=N('/WinAnsiEncoding')))
 
 
-def synth(dst, content=MAIN):
+def synth(dst, content=MAIN, form=None):
     pdf = pikepdf.new()
     page = pdf.add_blank_page(page_size=(300, 200))
-    page.Resources = pikepdf.Dictionary(Font=pikepdf.Dictionary(F1=_font(pdf)))
+    font = _font(pdf)
+    page.Resources = pikepdf.Dictionary(Font=pikepdf.Dictionary(F1=font))
+    if form is not None:              # one form XObject /Fx whose own stream is `form`, sharing /F1
+        fx = pdf.make_stream(form)
+        fx.Type, fx.Subtype, fx.BBox = N('/XObject'), N('/Form'), [0, 0, 300, 200]
+        fx.Resources = pikepdf.Dictionary(Font=pikepdf.Dictionary(F1=font))
+        page.Resources.XObject = pikepdf.Dictionary(Fx=fx)
     page.Contents = pdf.make_stream(content)
     pdf.save(str(dst), deterministic_id=True)
     return Path(dst)
@@ -332,6 +356,11 @@ SCALED_PDF = synth(TD / 'scaled.pdf', SCALED)
 EDGE_PDF = synth(TD / 'edge.pdf', EDGE)
 NEAR_PDF = synth(TD / 'near.pdf', NEAR)
 ANISO_PDF = synth(TD / 'aniso.pdf', ANISO)
+LATERQ_PDF = synth(TD / 'laterq.pdf', LATERQ)
+LATERQQ_PDF = synth(TD / 'laterqq.pdf', LATERQQ)
+LATERFORM_PDF = synth(TD / 'laterform.pdf', LATERFORM, FORM_BODY)
+LATERQ_ONLY_PDF = synth(TD / 'laterq-only.pdf', LATERQ_ONLY)
+LATERFORM_ONLY_PDF = synth(TD / 'laterform-only.pdf', LATERFORM_ONLY, FORM_BODY)
 BASE = plumb(MAIN_PDF)
 check('0c PRECONDITION pdfplumber reads the fixture: 3 rects, the circle curve, every word',
       len(BASE['rects']) == 3 and len(BASE['curves']) >= 1
@@ -941,6 +970,47 @@ if AE is not None:
     reason, msg, _ = refusal(ops14)
     check('AE-14o CONTROL the same dy op with the real rewrite applies', reason is None, f'{reason}: {msg}'[:200])
 
+    # Review MEDIUM: _verify must see a lost re-assert even when no inventoried line reads TL afterwards.
+    # The check is on the TL IN FORCE at every show operator and every `Do`, old stream vs new.
+    def drop_inserted_tl(out):    # every TL that directly follows a Td is the rewrite's re-assert
+        keep, prev = [], None
+        for i in out:
+            if not (_is(i, 'TL') and prev is not None and _is(prev, 'Td')):
+                keep.append(i)
+            prev = i
+        return keep
+
+    def planted_on(label, src, ops, fault):
+        def faulty(pikepdf_, instr, *a, **kw):
+            return fault(real_rewrite(pikepdf_, instr, *a, **kw))
+        AE.rewrite = faulty
+        try:
+            reason, msg, untouched = refusal(ops, src)
+        finally:
+            AE.rewrite = real_rewrite
+        check(f'{label} is refused `verify-failed`, nothing saved', reason == 'verify-failed' and untouched,
+              f'{reason}: {msg}'[:300])
+        reason, msg, _ = refusal(ops, src)
+        check(f'{label} - CONTROL the real rewrite applies', reason is None, f'{reason}: {msg}'[:200])
+
+    opsZ = [{'op': 'move-text', 'dy': 4, 'select': [line('Zulu', 30, 140)]}]
+    planted_on("AE-14x a lost TL re-assert whose only later reader is a `'` in a later BT", LATERQ_PDF, opsZ,
+               drop_inserted_tl)
+    planted_on('AE-14y a lost TL re-assert whose only later reader is a `"` in a later BT', LATERQQ_PDF, opsZ,
+               drop_inserted_tl)
+    planted_on('AE-14z a lost TL re-assert whose only later reader is a T* inside a form XObject', LATERFORM_PDF,
+               opsZ, drop_inserted_tl)
+    opsY = [{'op': 'move-text', 'dy': 4, 'select': [line('Yankee', 30, 150)]}]   # the bare TD is compensated
+    planted_on("AE-14x3 a lost re-assert after a show-less TD, read ONLY by a later `'`", LATERQ_ONLY_PDF, opsY,
+               drop_inserted_tl)
+    planted_on('AE-14z2 a lost re-assert after a show-less TD, read ONLY by a later form `Do`', LATERFORM_ONLY_PDF,
+               opsY, drop_inserted_tl)
+    QL0 = words_xy(LATERQ_PDF)
+    p, s, w = text_edit(opsZ, LATERQ_PDF)
+    check("AE-14x2 the real rewrite: Zulu up 4, and the later `'` line Yoyo where the source put it "
+          '(pdfplumber witnesses a bare `\'`)', isinstance(s, list) and 'Yoyo' in QL0
+          and moved_only(QL0, w, {'Zulu': (0, 4)}), f'{QL0!r} {w!r}')
+
     p, s = edited([{'op': 'move-text', 'dy': 6, 'select': [line('Charlie', 42, 70)]}])
     check('AE-14p the summary for a dy op has the dx op\'s shape: text and origin',
           s == [{'op': 'move-text', 'selected': 1, 'objects': [{'text': 'Charlie', 'origin': [42.0, 70.0]}]}],
@@ -954,6 +1024,11 @@ if AE is not None:
           'bad-field', 'dy')
     field('AE-14t a dx that is null beside a good dy',
           [{'op': 'move-text', 'dx': None, 'dy': 2, 'select': [line('Bravo', 30, 80)]}], 'bad-field', 'dx')
+    # Seam review LOW-1: Python's json accepts NaN/Infinity and turns 1e400 into inf; the JS twin's isNum
+    # refuses non-finite numbers. They reached apply_to_pdf as a raw ValueError, outside the reason contract.
+    field('AE-14t2 a dy that is infinite (1e400 in JSON)', [dict(MT, dy=float('inf'))], 'bad-field', 'dy')
+    field('AE-14t3 a dx that is NaN', [dict(MT, dx=float('nan'))], 'bad-field', 'dx')
+    field('AE-14t4 a move-paths dx that is -Infinity', [dict(MP, dx=float('-inf'))], 'bad-field', 'dx')
     field('AE-14u dy on move-paths is an unknown field', [dict(MP, dy=2)], 'unknown-field', "'dy'")
     field('AE-14v dy on move-line-end is an unknown field', [dict(ML, dy=2)], 'unknown-field', "'dy'")
     for label, entry in (('dy only', {'op': 'move-text', 'dy': 2, 'select': [line('Bravo', 30, 80)]}),

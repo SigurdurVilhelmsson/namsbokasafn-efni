@@ -66,7 +66,9 @@ REFUSALS - `ArtworkEditError.reason` is a CONTRACT (figure-prepare.py reports `a
 
 FAIL CLOSED, AND VERIFIED: after rewriting, the stream is re-parsed and EVERY painted path and text
 line is compared with the original - the selected ones must have moved exactly as asked and every
-other one must be exactly where it was (`verify-failed` otherwise, and nothing is saved). That check
+other one must be exactly where it was - and the leading (TL) in force at every text-showing operator
+and every `Do` must be unchanged, which is what covers the TL readers the line comparison cannot see
+(a `'`/`"`, and a form XObject's text) (`verify-failed` otherwise, and nothing is saved). That check
 is what proves the Td compensation: FoodLabel's right column is drawn by the same BT as circle 5's
 digit, through relative moves. A figure with no entry is not touched at all: its staged PDF stays the
 bytes stage_artwork wrote, and its prepare.json carries no `artworkEdits` key.
@@ -90,6 +92,7 @@ LIMITS, STATED:
 """
 import argparse
 import json
+import math
 import os
 import sys
 from decimal import Decimal
@@ -133,7 +136,9 @@ def _kind(v):
 
 
 def _num(v):
-    return isinstance(v, (int, float)) and not isinstance(v, bool)
+    # finite, as the JS twin's isNum (Number.isFinite): Python's json accepts NaN/Infinity and reads 1e400 as
+    # inf, which pikepdf cannot write - it would surface as a raw ValueError outside the reason contract.
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
 
 
 def _D(v):
@@ -542,7 +547,36 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
     return out
 
 
-def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_d):
+def _tl_trace(pikepdf, instructions):
+    """-> the leading (TL) in force at every text-showing operator and every `Do`, in stream order. A rewrite
+    may change WHERE a line starts, never the leading anything later steps by: a TD whose ty changes is
+    followed by a TL re-assert, and this is what proves it held. It has to be its own walk, because the
+    readers of TL that matter most here are invisible to `inventory()`: a `'` or `"` continues the line
+    before it (no origin of its own to compare) and a form XObject's text is not inventoried at all, while
+    the form inherits the TL in force at its `Do`."""
+    tl, stack, in_bt, out = Decimal(0), [], False, []
+    for ins in instructions:
+        if isinstance(ins, pikepdf.ContentStreamInlineImage):
+            continue
+        op = str(ins.operator)
+        if op == 'q':
+            stack.append(tl)
+        elif op == 'Q':
+            tl = stack.pop() if stack else tl
+        elif op == 'TL':
+            tl = _D(ins.operands[0])
+        elif op == 'BT':
+            in_bt = True
+        elif op == 'ET':
+            in_bt = False
+        elif in_bt and op == 'TD':
+            tl = -_D(ins.operands[1])
+        elif (in_bt and op in SHOW_OPS) or op == 'Do':
+            out.append(tl)
+    return out
+
+
+def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_d, old_instr=None):
     paths, lines = inventory(pikepdf, new_instr)
     if len(paths) != len(old_paths) or len(lines) != len(old_lines):
         raise ArtworkEditError('verify-failed', f'{len(old_paths)}/{len(old_lines)} paths/lines became {len(paths)}/{len(lines)}')
@@ -561,6 +595,14 @@ def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_d):
         want = (o['origin'][0] + dx, o['origin'][1] + dy)
         if l['text'] != o['text'] or not all(_close(a, b, VERIFY_TOL) for a, b in zip(l['origin'], want)):
             raise ArtworkEditError('verify-failed', f'line {n} {l["text"]!r}: origin {_fmt(l["origin"])} expected {_fmt(want)}')
+    # Last, so a moved LINE is reported by name; this catches the TL readers the line comparison cannot see.
+    if old_instr is not None:
+        old_t, new_t = _tl_trace(pikepdf, old_instr), _tl_trace(pikepdf, new_instr)
+        if old_t != new_t:
+            k = next((i for i, (a, b) in enumerate(zip(old_t, new_t)) if a != b), min(len(old_t), len(new_t)))
+            raise ArtworkEditError('verify-failed', f'the leading (TL) in force at show/Do operator {k} changed: '
+                                                    f'{old_t[k] if k < len(old_t) else None} became '
+                                                    f'{new_t[k] if k < len(new_t) else None}')
 
 
 def apply_to_pdf(pdf_path, ops, where):
@@ -573,7 +615,7 @@ def apply_to_pdf(pdf_path, ops, where):
         instr = list(pikepdf.parse_content_stream(page))
         paths, lines, path_dx, edges, text_d, line_ends, summary = plan(pikepdf, instr, ops, where)
         new = rewrite(pikepdf, instr, paths, lines, path_dx, edges, text_d, line_ends)
-        _verify(pikepdf, paths, lines, new, path_dx, edges, text_d)
+        _verify(pikepdf, paths, lines, new, path_dx, edges, text_d, instr)
         page.Contents = pdf.make_stream(pikepdf.unparse_content_stream(new))
         pdf.save(str(tmp), deterministic_id=True)
     os.replace(tmp, pdf_path)
