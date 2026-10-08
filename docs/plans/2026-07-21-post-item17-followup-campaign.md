@@ -207,6 +207,37 @@
      - **molgeom:** shape names take **Egeom's new terms**, so the two figures agree.
 
      ▶ So **no keep-June move happens**: no keptCopies entry and no sidecar deletion.
+
+     ✅ **Wording round applied, 0 ISK.** Chunk 1 `ea36477d6`: 45 sidecars, 110 values, explicit
+     answers. Chunk 2 `215450bbc`: 6 sidecars, 52 values, June's wording read from the live June copies,
+     since no June sidecars exist. Every edited figure scratch-composes clean under '6', with no new
+     overflow against `prA2`, and the edits cleared 5 overflows. Coverage: 68 non-fine answers = 51
+     edited + 17 '7'. Six interpretations are flagged for [USER] (off-repo `r2/chunk1.json` `flags`):
+     - **Egeom:** a three-line request capped at the source's two lines. The explicit-break contract
+       refuses more lines than the source has.
+     - **Scenarios:** the title wording.
+     - **Electroplate:** the brackets around *(katóða)*.
+     - **DNA:** the capital S.
+     - **RadonExpos:** *radon-222* corrects OpenStax's own `radium-222`.
+
+     🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
+     - **Alignment:**
+       - left-align *Fast efni / Vökvi / Gas* in the 5 periodic tables (00_AA, 01_03, 02_05, 18_01,
+         19_01);
+       - CylRebar left-align;
+       - centre x-axis labels: 12_07 Exercise4a/4b/5a/5b and Rxndiagramex;
+       - Exposure2 x-axis vertical alignment;
+       - arrow labels "Vaxandi…" at top: emspectrum, IonRadSpec;
+       - recycle: *Jógúrtdósir…* on three lines at full size. The source has two lines, so wording
+         cannot do it.
+     - **Kerning / formula:** KDataH2O2 L⁻¹ (bold, minus position); ICETable3 HCO₂⁻ minus; ssigma `*`
+       vs σ; spin x/− and fraction overlap; Oshapes bottom labels (values already equal the source,
+       so the difference is drawing); GalvanCu *e⁻ flæði* missing space.
+     - **Graphics:** Carbon's bracket against its vertical lines.
+     - **"Doesn't match source" — check the artwork edition first:** FillMo; Exercise02 (labels;
+       June correct except a missing *ln*); ICETable5 bottom-row numbers; ICETable3 red *0,534*;
+       ssigma orbital colours; OxStNonmts black bars (textless, in June too); emspectrum
+       *Ultrasound* + image; HPerDcmp `sssss` placeholders.
   9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
      `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
 - **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
