@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **[CODE] PR-B step 2b: `artworkEdits` `move-text` gains a vertical move (`dy`)**, then Nitrogen's entry. The brief and its design notes (⚠️ TD sets the leading) are under step 2b in the 2026-10-07 block below. **Suggested in a fresh session.**
+### ⏭ SINGLE NEXT ACTION — **[USER] decide Nitrogen's route.** Step 2b is ✅ (`84528128f`), but `move-text` cannot reach Nitrogen's label: a `'` operator sits in its BT, and the inventory is wrong after one. The choice is **2c** (model `'`/`"`) or **defer to '7'**. The measurement and both routes are under step 2b in the 2026-10-07 block below.
 
 - **Done on the branch (newest first), all `npm test` green:**
   - Round-3 wording, `52df55194`.
@@ -293,6 +293,42 @@
      Take the selectors from `artworkedits.py --inventory` on its staged PDF. Measure the `dy` (about
      +8 pt is the estimate from the crop) against the molecule's top edge, with the source's own
      label-to-artwork gap as the target. Then recompose, re-rehearse, and run step 7.
+     **✅ 2026-10-08, 2b DONE: `67a52cf70` + `3dd9f64be` + `84528128f`.**
+     - `move-text` takes `dx`, `dy` or both; both may sit in one op, because `select-overlap` stops a
+       line from being in two ops. A TD whose ty changes becomes `Td` + `<its leading> TL`. A dx-only
+       move adds no instruction.
+     - Red-first throughout. Mutation: 20/20 killed in round 1; 6/6 meaningful killed in round 2, plus
+       1 equivalent; JS 3/3. A new anisotropic fixture kills a d-for-a swap that every isotropic
+       fixture passed.
+     - Two reviews (capability + seam): no misplaced line in 12 synthetic cases, checked with two
+       instruments.
+       - MEDIUM, fixed: `_verify` could not see a lost re-assert when only a `'`, a `"` or a form's
+         text read it. It now compares the TL in force at every show/`Do`.
+       - LOW, fixed: non-finite numbers.
+       - LOW, logged for '7': an all-zero move validates and does nothing.
+       - LOW, carried to the Nitrogen commit: that entry re-pins `COMPOSER_TABLES_PIN` '6'.
+     - Control: FoodLabel and HazDiamond prepare identical to pre-2b. All 10 files match; only the
+       trailer's per-write `/ID` differs, as it does between two runs of one tree. A dy positive
+       control moves exactly the selected runs.
+     - Floors: `npm test` green, Python 42/42, figure-*.test.js 832/832.
+     - Evidence: off-repo `c140-v6/pr-b/step2b/`.
+
+     🔴 **THE NITROGEN PREMISE IS FALSE: `move-text` CANNOT REACH THAT LABEL. Measured 2026-10-08.**
+     - Its text is in BT #0, which contains `'` operators. "Atmospheric" + `'`"nitrogen (N" is ONE
+       inventory line. The module refuses any move in such a BT (`quote-operator`).
+     - That refusal is LOAD-BEARING: the inventory ignores each `'`'s implied T*. Every line after a
+       quote in that BT therefore has a WRONG origin. "Atmospheric" is at y 381.342 by the inventory
+       and 348.342 by pdfplumber. The gap is 33 = 3 × TL 11, one per earlier `'`.
+     - No composer-side per-block offset exists to use instead (grep of `figure-compose.py` and the
+       config keys).
+     - Census: 78 of 462 staged PDFs carry `'`/`"`, 77 of them with a sidecar. The inventory feeds only
+       `artworkEdits` and `--inventory`, never `runs.json`, so modelling quotes changes no composed
+       figure without an entry.
+     - **Route, awaiting [USER]:**
+       - **(2c)** Model `'`/`"` as positioning operators (T* semantics, each its own line, correct
+         origins). Rewrite a quote line that needs a move as `Td`+`Tj` (`"`: `Tw Tc Td Tj`). Drop the
+         blanket refusal.
+       - **Or** defer Nitrogen to '7'; `dy` then has no consumer in PR-B.
 
      🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
      - **Alignment:**
