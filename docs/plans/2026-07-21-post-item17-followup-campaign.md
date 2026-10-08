@@ -173,6 +173,33 @@
      - Step 7's acceptance: reproduce `step7r/media-run1.sha` exactly, except figures edited after the
        review. Predict those first from a scratch compose.
      - Page source: off-repo `c140-v6/pr-b/review/` (`gen.py`, `page.tpl.html`, `site/`).
+     **✅ 2026-10-08: [USER] answered all 126 — fine 58 · fix-wording 47 · other 19 · keep-june 2.**
+     Export (verbatim, one JSON per figure + `summary.tsv`): off-repo
+     `c140-v6/pr-b/review/user-verdicts/`. The answers are five kinds of work, not one:
+     - **Explicit value edits** (≈35, step-4 shape). Examples: *Katóna → Katóða*, *Jafnvægisfasti →
+       Jafnvægisstyrkur*. [USER] writes a break as `/`, and a hyphenated break as `-/`.
+     - **"Use wording from June"** (7): eLeveldiag, CrystalSys, HallHerCell, molgeom, HybrdOrbit,
+       combmap, Millikan. Read June's values from git (the June sidecar), not from the SVG text.
+     - **Layout / alignment** (≈12): left-align *Fast efni/Vökvi/Gas* ×5; CylRebar; "center x-axis
+       labels" ×5 (Exercise4a/4b/5a/5b, Rxndiagramex); Exposure2 vertical alignment; arrow-label
+       alignment on emspectrum and IonRadSpec; Carbon's bracket; recycle "three lines, keep size".
+       This is composer or table work, not wording.
+     - **Kerning / formula** (4): KDataH2O2 L⁻¹; ICETable3 HCO₂⁻; ssigma `*`; spin fraction overlap.
+     - **"Doesn't match source"** (≈8): FillMo, Exercise02, Oshapes, ICETable5, ICETable3 red value,
+       OxStNonmts black bars, emspectrum *Ultrasound*, ssigma colours. Several are in June too. Before
+       calling any of them a defect, check the artwork edition the composer used against the page's
+       "source" panel (that panel is the CNXML raster).
+
+     🔎 **Terminology signal — logged, not applied to the text side:**
+     - *forskaut/bakskaut → anóða/katóða* (ch17, 5 figures);
+     - *köfnunarefni → nitur* (5 tables);
+     - *Blöndun*, *ótengd pör*, *sjálfgengt*, *vermis- og óreiðubreytingar*.
+
+     These are house-style questions for the chapter text too. Check `server/lib/houseStyleTerms.js`
+     and the glossary before any text-side change.
+
+     ⏹ **Blocked on [USER]: three ambiguous answers (Qnumbers, HybrdOrbit, molgeom) and the PR-B scope
+     decision.** No sidecar is edited until those are answered.
   9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
      `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
 - **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
