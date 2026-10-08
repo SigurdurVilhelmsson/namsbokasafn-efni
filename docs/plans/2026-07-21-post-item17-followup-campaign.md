@@ -4,27 +4,30 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **Read the 2c review report, then add Nitrogen's entry (dy 6.6) and re-pin '6'.** Paused 2026-10-08 evening for a machine sleep.
+### ⏭ SINGLE NEXT ACTION — **Check the step-7 re-rehearsal (`step7r3/`) against its prediction, then run step 7 for real.**
 
 - ✅ **2b** `84528128f`.
-- ✅ **2c** `7cfe99ff3`, [USER]'s route: `'`/`"` now start their own line.
+- ✅ **2c** `7cfe99ff3` + `2ebb5819b`, [USER]'s route: `'`/`"` now start their own line.
   - Inventory origins agree with pdfplumber on 11672/12604 lines before, 12777/12922 after. Nitrogen: 15/25 → 29/29. No non-quote figure changed.
-  - Mutation 9/9 killed; the FoodLabel/HazDiamond prepare control is identical.
-  - Floors: Python 42/42, figure-*.test.js 832/832.
-  - A capability review of 2c was **in flight at pause** (read-only; a sleep freezes it and it resumes). If it is gone, re-run it. Its brief is the 7 questions on `'`/`"` semantics, operand bytes, `_tl_trace` alignment, selector stability, a corpus spot-check and Nitrogen dy 8 under poppler.
-  - Evidence: off-repo `c140-v6/pr-b/step2c/`.
-- 📐 **Nitrogen dy = 6.6, MEASURED.**
-  - Molecule top is at y 352.50 (from `artwork.png`).
-  - The source's own label-to-artwork gap is 2.40 pt: "Atmospheric" ends at 51.925, the molecule starts at 54.32.
-  - The composed top-line baseline goes 348.34 → 354.94, a gap of 2.44.
-  - The arrowhead's leftmost ink is at x ≥ 78, so the arrow stays clear.
-  - Scratch arms dy 0 / 6.6 / 8: `step1/res/n2-dy*`. Crops: `step2c/nitro/compare3.png`. The ready entry, with selectors (inventory lines 14–17 of BT0), is in `step2c/nitro/cfg-dy6p6.json`.
-- **Then, in order:**
-  1. Add the entry to `figure-text.config.json`.
-  2. Amend the **'6'** `COMPOSER_TABLES_PIN` artworkEdits digest and its comment. '6' is this branch's own unmerged bump and has not composed for real, so this is response 1 in substance. Say so in the commit.
-  3. Run `npm test`.
-  4. Re-rehearse all 22 units in `wt-prb`, after `checkout -f --detach <HEAD>`. Predict first: against `step7r2/media-run1.sha`, only Nitrogen and the 7 round-3 figures change.
-  5. Step 7, then push and open the PR.
+  - Capability review: nothing on well-formed input, and it re-derived the corpus numbers independently.
+  - MEDIUM, fixed: a malformed `'`/`"` that must be rewritten now refuses `malformed-operator`. Corpus exposure was 0: 318 `'`, all well-formed, and no `"`.
+  - LOW, logged:
+    - a pre-2c selector could in theory match another line, though it could never have been applied before 2c;
+    - `_verify` cannot see Tw/Tc, so AE-15f is their only guard.
+  - Mutation: 9/9 and 4/4 killed.
+  - Floors: Python 42/42, `npm test` green.
+- ✅ **Nitrogen** `382e2f78a`.
+  - Entry: `move-text dy 6.6`, MEASURED. The molecule's top is at y 352.50 and the source's own gap is 2.40 pt; 6.6 gives a gap of 2.44, with the arrow clear.
+  - The shipped config composes byte-identical to the measured arm.
+  - '6' `COMPOSER_TABLES_PIN` artworkEdits → `135dc01f4251b654`, amended on this branch's own unmerged bump.
+  - Evidence: `step2c/nitro/`.
+- ⏳ **Re-rehearsal `step7r3/`**: started 2026-10-08 ~21:50Z in `wt-prb`, detached at `382e2f78a`, about an hour.
+  - **PREDICTED** (`PREDICTIONS.json`, written before the run): against `step7r2/media-run1.sha`, exactly 8 `_IS.svg` change, the 7 round-3 figures and Nitrogen.
+  - Each of the 8 must be byte-equal to its scratch compose (`step1/res/r2c3/`, `step1/res/n2-shipped/`).
+  - Also: 22/22 ok, MT 0, and a second pass converges.
+- **Then:**
+  1. Step 7 in the main checkout. Set `.env` aside and run `--stale` per chapter. It must reproduce the step7r3 hashes byte for byte.
+  2. Push and open the PR.
 
 - **Done on the branch (newest first), all `npm test` green:**
   - Round-3 wording, `52df55194`.
