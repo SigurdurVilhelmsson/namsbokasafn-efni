@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **Check the step-7 re-rehearsal (`step7r3/`) against its prediction, then run step 7 for real.**
+### ⏭ SINGLE NEXT ACTION — **Step 7, the real pass in the main checkout. Its target is `step7r3/media-run1.sha`.** ✅ The re-rehearsal held its prediction: exactly the 8 predicted media changed, each byte-equal to its scratch compose, and 703 were unchanged. All 22 units ok with MT 0. Pass 2 converged. Details in `step7r3/RESULTS.md`.
 
 - ✅ **2b** `84528128f`.
 - ✅ **2c** `7cfe99ff3` + `2ebb5819b`, [USER]'s route: `'`/`"` now start their own line.
