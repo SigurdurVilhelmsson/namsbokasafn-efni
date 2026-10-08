@@ -249,6 +249,12 @@ QUOTES = b'''BT /F1 8 Tf 12 TL
 ET
 BT /F1 8 Tf 1 0 0 1 150 180 Tm (Fly) Tj 2 1 (Gnu) " (Hen) ' ET
 '''
+# 2c review MEDIUM: a MALFORMED quote (wrong operand count/type) that the walk must rewrite. Poppler draws
+# nothing for a 2-operand `"` ("Too few args"); rewriting it put the string in Tc and made it VISIBLE.
+BADQ2 = b'BT /F1 8 Tf 12 TL 1 0 0 1 30 180 Tm (Ma) Tj 2 (Mb) " (Mc) \' ET\n'
+BADQ1 = b'BT /F1 8 Tf 12 TL 1 0 0 1 30 180 Tm (Ma) Tj (Mb) " (Mc) \' ET\n'
+BADQ_TYPE = b'BT /F1 8 Tf 12 TL 1 0 0 1 30 180 Tm (Ma) Tj (x) 1 (Mb) " (Mc) \' ET\n'
+BADQ_TICK = b'BT /F1 8 Tf 12 TL 1 0 0 1 30 180 Tm (Ma) Tj 3 (Mb) \' (Mc) \' ET\n'
 WORDS_Q = {'Ant': (30, 180), 'Bee': (30, 168), 'Cat': (30, 156), 'Dog': (30, 136), 'Elk': (30, 124),
            'Fly': (150, 180), 'Gnu': (150, 168), 'Hen': (150, 156)}
 # ... and the same with NO show after the TD in its own BT (a TD that only positions), so the lost re-assert
@@ -382,6 +388,10 @@ EDGE_PDF = synth(TD / 'edge.pdf', EDGE)
 NEAR_PDF = synth(TD / 'near.pdf', NEAR)
 ANISO_PDF = synth(TD / 'aniso.pdf', ANISO)
 QUOTES_PDF = synth(TD / 'quotes.pdf', QUOTES)
+BADQ2_PDF = synth(TD / 'badq2.pdf', BADQ2)
+BADQ1_PDF = synth(TD / 'badq1.pdf', BADQ1)
+BADQ_TYPE_PDF = synth(TD / 'badq-type.pdf', BADQ_TYPE)
+BADQ_TICK_PDF = synth(TD / 'badq-tick.pdf', BADQ_TICK)
 LATERQ_PDF = synth(TD / 'laterq.pdf', LATERQ)
 LATERQQ_PDF = synth(TD / 'laterqq.pdf', LATERQQ)
 LATERFORM_PDF = synth(TD / 'laterform.pdf', LATERFORM, FORM_BODY)
@@ -1100,6 +1110,18 @@ if AE is not None:
     p, s, w, x, ins1 = q_edit([{'op': 'move-text', 'dy': 3, 'select': [line('Dog', 30, 136)]}])
     check("AE-15h dy on a Td line followed by a `'`: Dog up 3, Elk compensated, every other word unmoved",
           isinstance(s, list) and moved_only(Q0x, x, {'Dog': (0, 3)}), f'{s!r} {x!r}')
+
+    MA = [{'op': 'move-text', 'dy': 5, 'select': [line('Ma', 30, 180)]}]
+    refuses('AE-15j a 2-operand `"` the walk must rewrite (was: its string written into Tc, the line made '
+            'visible, _verify passing)', MA, 'malformed-operator', BADQ2_PDF, '"')
+    refuses('AE-15k a 1-operand `"` the walk must rewrite (was: a bare IndexError outside the reason contract)',
+            MA, 'malformed-operator', BADQ1_PDF, '"')
+    refuses('AE-15l2 a 3-operand `"` whose aw is a STRING (right count, wrong type)', MA, 'malformed-operator',
+            BADQ_TYPE_PDF, '"')
+    refuses("AE-15l a 2-operand `'` the walk must rewrite", MA, 'malformed-operator', BADQ_TICK_PDF, "'")
+    p, s = edited([{'op': 'move-text', 'dy': 5, 'select': [line('Mc', 30, 156)]}], BADQ2_PDF)
+    check('AE-15m CONTROL a malformed quote the walk does NOT rewrite (it precedes the moved line) is left '
+          'as it is: the op applies', isinstance(s, list), f'{s!r}'[:200])
 
     def unquote_wrong(out):       # the rewritten quote line's Td is lost: Tj alone stays on the old line
         return [i for i in out if not (_is(i, 'Td') and [str(o) for o in i.operands] == ['0', '-8'])]

@@ -59,7 +59,8 @@ REFUSALS - `ArtworkEditError.reason` is a CONTRACT (figure-prepare.py reports `a
   selection    select-none / select-ambiguous (0 or more than 1 object matches, tolerance 0.01 pt),
                select-overlap (one object selected twice, in one op or across ops)
   the rewrite  not-a-rect, not-a-line, not-horizontal, not-axis-aligned (a rotated, skewed or flipped
-               CTM or text matrix),
+               CTM or text matrix), malformed-operator (a `'` or `"` this edit must rewrite whose operands
+               are not (string) / (aw, ac, string)),
                no-positioning-op, edge-inverts (an edge or line end reaching or crossing the other one),
                clip-path (move-paths on a path that also sets the clip: `W`/`W*` before its paint)
   the check    verify-failed
@@ -534,6 +535,17 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_en
                         # `'` = T* + Tj, so it becomes `Td` + `Tj` with the T* compensated; `"` first keeps
                         # its aw/ac as Tw/Tc (they persist, as the `"` set them). The string object is reused.
                         q = list(ins.operands)
+                        # A rewrite READS the operands, so their shape is checked first: `'` = (string),
+                        # `"` = (aw, ac, string). A renderer draws nothing for a malformed one (poppler: "Too
+                        # few args"); rewriting it would put the string in Tc and make it VISIBLE, which no
+                        # origin comparison can see (2c review). Refuse instead.
+                        want = 1 if l['posop'] == "'" else 3
+                        if (len(q) != want or not isinstance(q[-1], pikepdf.String)
+                                or not all(isinstance(v, (int, float, Decimal)) and not isinstance(v, bool)
+                                           for v in q[:-1])):
+                            raise ArtworkEditError('malformed-operator', f"the {l['posop']} at line {l['text']!r} "
+                                                   f'has {len(q)} operand(s); this rewrite needs '
+                                                   f'{"(string)" if want == 1 else "(aw, ac, string)"}')
                         head = ([CSI([q[0]], pikepdf.Operator('Tw')), CSI([q[1]], pikepdf.Operator('Tc'))]
                                 if l['posop'] == '"' else [])
                         replace_multi[l['pos']] = head + [CSI([dtx, -l['tl'] + dty], pikepdf.Operator('Td')),
@@ -569,9 +581,9 @@ def _tl_trace(pikepdf, instructions):
     """-> the leading (TL) in force at every text-showing operator and every `Do`, in stream order. A rewrite
     may change WHERE a line starts, never the leading anything later steps by: a TD whose ty changes is
     followed by a TL re-assert, and this is what proves it held. It has to be its own walk, because the
-    readers of TL that matter most here are invisible to `inventory()`: a `'` or `"` continues the line
-    before it (no origin of its own to compare) and a form XObject's text is not inventoried at all, while
-    the form inherits the TL in force at its `Do`."""
+    readers of TL that matter most here are invisible to the line comparison: a form XObject's text is not
+    inventoried at all, while the form inherits the TL in force at its `Do`. (A `'`/`"` has its own origin
+    since step 2c; it is still a show op here, so a TL change it would read is caught at it as well.)"""
     tl, stack, in_bt, out = Decimal(0), [], False, []
     for ins in instructions:
         if isinstance(ins, pikepdf.ContentStreamInlineImage):
