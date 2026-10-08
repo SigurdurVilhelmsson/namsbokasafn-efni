@@ -2,7 +2,39 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-10-07 — ✅ '6' PR-A IS MERGED: [PR #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544), `91c85c33f`, all four checks green. ✅ §C199 (a CRITICAL `proxy-addr` advisory) is merged ([PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), `ef97fb704`) and deployed 07:04Z, verified read-only on prod. PR-A itself is NOT deployed. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-06 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 2026-10-06 answers, the build, the review and the PR-B inputs)
+## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
+
+### ⏭ SINGLE NEXT ACTION — **[CODE] PR-B step 2b: `artworkEdits` `move-text` gains a vertical move (`dy`)**, then Nitrogen's entry. The brief and its design notes (⚠️ TD sets the leading) are under step 2b in the 2026-10-07 block below. **Suggested in a fresh session.**
+
+- **Done on the branch (newest first), all `npm test` green:**
+  - Round-3 wording, `52df55194`.
+  - Round-2 wording: `ea36477d6` (45 sidecars) and `215450bbc` (6, June's wording).
+  - Step 6 rehearsal + sweep, `d98542414`.
+  - Step 4 content, `a35206114`.
+  - Steps 3+5 tables + bump, `592227676`.
+  - Step 2a `sourceAlignedBoxes`, `63cc7a176`.
+- **[USER]'s review.** Page https://claude.ai/artifact/YafRzHzHoAF1iU4YMj6fP1:
+  - Round 1, collection `verdicts`: 126/126 answered.
+  - Round 2, collection `verdicts-r2`: 51/51 answered.
+  - ⚠️ Re-read both collections before acting: a round-1 answer changed once after export.
+  - Exports are off-repo, in `c140-v6/pr-b/review/user-verdicts*/`.
+- **After 2b, in order:**
+  1. Add Nitrogen's `move-text dy` entry. Measure `dy` against the molecule's top edge; ~+8 pt is the estimate.
+  2. Scratch-compose Nitrogen.
+  3. Re-rehearse all 22 units in `c140-v6/wt-prb`, after a `checkout -f` to the new HEAD. Predict first:
+     - `step7r2/media-run1.sha` changes only for Nitrogen + the 7 round-3 figures;
+     - those must equal their scratch composes.
+  4. **Step 7, the real pass in the main checkout:** `.env` aside, `--stale` per chapter. It must reproduce the new rehearsal hashes byte for byte.
+  5. Push and open the PR. A round-3 review page is optional: [USER] has seen all but 8 figures.
+- **'7' work is logged, not in PR-B:** the list sits under step 8 in the 2026-10-07 block. It covers alignment ×~12, kerning ×6, Carbon's bracket and 8 source-mismatch checks.
+- 🔎 **Terminology signal for the chapter TEXT, not acted on:**
+  - *anóða/katóða* replacing *forskaut/bakskaut*;
+  - *nitur* replacing *köfnunarefni*;
+  - *Blöndun*, *ótengd pör*, *sjálfgengt*, *vermis-*.
+
+  Check `server/lib/houseStyleTerms.js` and the glossary before any text-side change.
+
+## ⏩ RESUME — state as of **2026-10-07 — ✅ '6' PR-A IS MERGED: [PR #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544), `91c85c33f`, all four checks green. ✅ §C199 (a CRITICAL `proxy-addr` advisory) is merged ([PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), `ef97fb704`) and deployed 07:04Z, verified read-only on prod. PR-A itself is NOT deployed. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-06 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 2026-10-06 answers, the build, the review and the PR-B inputs) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 2026-10-08 block above (PR-B is through its review rounds; step 2b is next); its step list stays the procedure.**
 
 ### ⏭ SINGLE NEXT ACTION — **[CODE]: PR-B, on the local branch `feat/c140-v6-pr-b`.** This note is that branch's first commit. Following the docs-batching rule it is unpushed, and it lands with PR-B. Work the steps in order; the "how" for each lives in the frozen spec (`2026-10-05-c140-composer-formatting-class-design.md`) §5 and §7, and the "why" in `docs/decisions/2026-10-06-figure-labels-below-floor-shrink-to-0-8.md` for R-16.
 
