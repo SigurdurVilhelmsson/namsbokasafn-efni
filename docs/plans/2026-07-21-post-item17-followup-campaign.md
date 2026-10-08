@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **Step 7, the real pass in the main checkout. Its target is `step7r3/media-run1.sha`.** ✅ The re-rehearsal held its prediction: exactly the 8 predicted media changed, each byte-equal to its scratch compose, and 703 were unchanged. All 22 units ok with MT 0. Pass 2 converged. Details in `step7r3/RESULTS.md`.
+### ⏭ SINGLE NEXT ACTION — **Push `feat/c140-v6-pr-b` and open PR-B, with [USER]'s go-ahead.** ✅ **Step 7 done, `2bed4cf92`.** It reproduces the rehearsal byte for byte: 711/711 media, 22/22 ok, MT 0. The diff is 126 `_IS.svg` plus 451 sidecars; the sidecar changes are only `composedVersion` '5'→'6' (451) and `composedHash` (57). Lint and format:check are clean, and `main` has not moved. Off-repo evidence: `step7/`. Readers see nothing until a re-render and [USER]'s sync, which stays HELD.
 
 - ✅ **2b** `84528128f`.
 - ✅ **2c** `7cfe99ff3` + `2ebb5819b`, [USER]'s route: `'`/`"` now start their own line.
