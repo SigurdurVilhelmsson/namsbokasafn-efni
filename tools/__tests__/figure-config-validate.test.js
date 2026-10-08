@@ -1293,6 +1293,58 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
       null,
       /artworkEdits\.CNX_Other\[2\] lacks edge/,
     ],
+    // PR-B step 2b: move-text takes dx, dy or both - at least one, each a number (test_artworkedits.py
+    // AE-14q..v, the same cases).
+    [
+      'move-text with neither dx nor dy',
+      (c) => {
+        delete aeOf(c, 3).dx;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\] needs dx or dy \(or both\)/,
+    ],
+    [
+      'a move-text dy that is a string',
+      (c) => {
+        aeOf(c, 3).dy = '6';
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.dy must be a number/,
+    ],
+    [
+      'a move-text dy that is a boolean',
+      (c) => {
+        delete aeOf(c, 3).dx;
+        aeOf(c, 3).dy = true;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.dy must be a number/,
+    ],
+    [
+      'a move-text dx that is null beside a good dy',
+      (c) => {
+        aeOf(c, 3).dx = null;
+        aeOf(c, 3).dy = 2;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[3\]\.dx must be a number/,
+    ],
+    [
+      'dy on move-paths (move-text only)',
+      (c) => {
+        aeOf(c, 0).dy = 2;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[0\] has unknown field\(s\) dy/,
+    ],
+    [
+      'dy on move-line-end (move-text only)',
+      (c) => {
+        aeOf(c, 2).dy = 2;
+      },
+      null,
+      /artworkEdits\.CNX_Other\[2\] has unknown field\(s\) dy/,
+    ],
     [
       'a note that is not a string',
       (c) => {
@@ -1524,6 +1576,20 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
         c.artworkEdits.CNX_Pin[0].select = [{ ...AE_SHAFT, bbox: [5, 0, 5, 10] }];
       },
     ],
+    [
+      'a move-text with dy only (PR-B step 2b)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+        c.artworkEdits.CNX_Pin[3] = { op: 'move-text', dy: 8, select: [AE_LINE] };
+      },
+    ],
+    [
+      'a move-text with dx and dy in one op (PR-B step 2b)',
+      (c) => {
+        c.artworkEdits = { CNX_Pin: aeOps() };
+        c.artworkEdits.CNX_Pin[3].dy = 8;
+      },
+    ],
   ])('CONTROL: %s passes', (_label, mutateCfg) => {
     const c = aeCfg();
     const k = aeCorpus();
@@ -1556,7 +1622,10 @@ describe("validateFigureConfig — artworkEdits (§C140 '6', R-15a)", () => {
       ],
       'move-line-end': [['dx', 'edge', 'op', 'select'], ['note']],
       'move-paths': [['dx', 'op', 'select'], ['note']],
-      'move-text': [['dx', 'op', 'select'], ['note']],
+      'move-text': [
+        ['op', 'select'],
+        ['dx', 'dy', 'note'],
+      ],
     });
     expect({
       path: sorted(mod.AE_SELECT_FIELDS?.path ?? []),

@@ -83,7 +83,10 @@ export const AE_OPS = {
     ['op', 'edge', 'select'],
     ['note', 'to', 'dx'],
   ],
-  'move-text': [['op', 'dx', 'select'], ['note']],
+  'move-text': [
+    ['op', 'select'],
+    ['note', 'dx', 'dy'],
+  ],
   'move-line-end': [['op', 'edge', 'dx', 'select'], ['note']],
 };
 export const AE_SELECT_FIELDS = { path: ['bbox', 'colour', 'paint'], line: ['origin', 'text'] };
@@ -124,6 +127,13 @@ export function artworkEditsProblems(table) {
         if (Object.hasOwn(op, 'to') === Object.hasOwn(op, 'dx'))
           problems.push(`${w} needs exactly one of to / dx`);
         else if (!isNum(op.to ?? op.dx)) problems.push(`${w}.to/dx must be a number`);
+      } else if (op.op === 'move-text') {
+        // PR-B step 2b: dx, dy or both (one line sits in only one op, so both axes share it).
+        if (!Object.hasOwn(op, 'dx') && !Object.hasOwn(op, 'dy'))
+          problems.push(`${w} needs dx or dy (or both)`);
+        for (const axis of ['dx', 'dy'])
+          if (Object.hasOwn(op, axis) && !isNum(op[axis]))
+            problems.push(`${w}.${axis} must be a number`);
       } else if (!isNum(op.dx)) problems.push(`${w}.dx must be a number`);
       if (!Array.isArray(op.select) || op.select.length === 0) {
         problems.push(`${w}.select must be a non-empty list`);

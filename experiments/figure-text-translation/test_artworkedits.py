@@ -212,6 +212,18 @@ NEAR_SEL = [
     ('bbox x 100', {'paint': 'fill', 'colour': ['rg', 0.6, 0.6, 0.6], 'bbox': [100, 20, 120, 30]}),
     ('bbox x 100.3 (0.3 pt away)', {'paint': 'fill', 'colour': ['rg', 0.6, 0.6, 0.6], 'bbox': [100.3, 20, 120.3, 30]}),
 ]
+# PR-B step 2b: an ANISOTROPIC cm and Tm (x scale != y scale). Every other fixture scales x and y alike,
+# so dividing a y shift by the matrix's x scale (a for d) would pass on all of them. Page = (2x, 0.5y);
+# Kappa's text matrix is 3 0 0 6, so its line matrix under the cm is a = 6, d = 3.
+ANISO = b'''q 2 0 0 0.5 0 0 cm
+BT
+/F1 2 Tf
+3 0 0 6 20 300 Tm (Kappa) Tj
+0 -4 Td (Lambda) Tj
+ET
+Q
+'''
+WORDS_AN = {'Kappa': (40, 150), 'Lambda': (40, 138)}
 CLIPPER = {'paint': 'fill', 'colour': ['rg', 1, 0, 0], 'bbox': [10, 10, 60, 60]}       # re W f
 CLIPPER_STAR = {'paint': 'fill', 'colour': ['rg', 0, 1, 0], 'bbox': [10, 150, 30, 170]}  # re W* f
 INSIDE = {'paint': 'fill', 'colour': ['rg', 0, 0, 1], 'bbox': [0, 0, 200, 200]}          # in the clip
@@ -319,6 +331,7 @@ CLIP_PDF = synth(TD / 'clip.pdf', CLIP)
 SCALED_PDF = synth(TD / 'scaled.pdf', SCALED)
 EDGE_PDF = synth(TD / 'edge.pdf', EDGE)
 NEAR_PDF = synth(TD / 'near.pdf', NEAR)
+ANISO_PDF = synth(TD / 'aniso.pdf', ANISO)
 BASE = plumb(MAIN_PDF)
 check('0c PRECONDITION pdfplumber reads the fixture: 3 rects, the circle curve, every word',
       len(BASE['rects']) == 3 and len(BASE['curves']) >= 1
@@ -648,7 +661,7 @@ if AE is not None:
         'move-edge': (['edge', 'op', 'select'], ['dx', 'note', 'to']),
         'move-line-end': (['dx', 'edge', 'op', 'select'], ['note']),
         'move-paths': (['dx', 'op', 'select'], ['note']),
-        'move-text': (['dx', 'op', 'select'], ['note']),
+        'move-text': (['op', 'select'], ['dx', 'dy', 'note']),
     }
     SELECT_LITERAL = {'path': ['bbox', 'colour', 'paint'], 'line': ['origin', 'text']}
     check('AE-10 OPS is the literal the JS validator\'s AE_OPS is pinned to',
@@ -811,6 +824,136 @@ if AE is not None:
     reason, msg, _ = refusal(ops13)
     check('AE-13u CONTROL the same op with the real rewrite applies', reason is None, f'{reason}: {msg}'[:200])
 
+    # ── 14. move-text dy (PR-B step 2b, [USER]'s Nitrogen ruling 2026-10-08) ──────────────
+    # A vertical move goes through the same Tm/Td/TD/T* operands as dx, on the OTHER axis: Tm's f,
+    # a Td/TD's ty, a T*'s implied -TL. The trap dx never met: TD also SETS the leading (TL = -ty), and
+    # TL persists past the BT, so a TD whose ty changes would move every later T* line - in its BT and
+    # after it - that the delta walk does not rewrite. MAIN's Foxtrot is that line (a T* after Echo's
+    # Td, which a Charlie move leaves unrewritten). Every "unmoved" is measured by pdfplumber (y too).
+    # words_xy reads the BOX BOTTOM (origin minus the descent), so the precondition is the x origins
+    # plus ONE common baseline-to-bottom offset; every later check compares against M0 itself.
+    M0 = words_xy(MAIN_PDF)
+    _off = {round(WORDS0[k][1] - M0.get(k, (0, 0))[1], 3) for k in WORDS0}
+    check('AE-14 PRECONDITION pdfplumber reads MAIN\'s six BT-1 words at their x origins, one common y offset',
+          all(near((M0.get(k, (0, 0))[0],), (v[0],)) for k, v in WORDS0.items()) and len(_off) == 1, f'{M0!r}')
+
+    POSV = ('Tm', 'Td', 'TD', 'T*', 'TL')
+
+    def moved_only(src_xy, got_xy, moves):
+        """Every word in src_xy is where it was, except those in `moves` {word: (dx, dy)}."""
+        return all(near(got_xy.get(k, (-1, -1)), (v[0] + moves.get(k, (0, 0))[0], v[1] + moves.get(k, (0, 0))[1]))
+                   for k, v in src_xy.items())
+
+    def text_edit(ops, src=MAIN_PDF):
+        p_, s_ = edited(ops, src)
+        return p_, s_, (words_xy(p_) if isinstance(s_, list) else {})
+
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 6, 'select': [line('Charlie', 42, 70)]}])
+    check('AE-14a dy on a TD line: Charlie up 6, and NO other word moves - Foxtrot (a later T*, not '
+          'rewritten) included, which a TD whose new ty also set the leading would move',
+          isinstance(s, list) and moved_only(M0, w, {'Charlie': (0, 6)}), f'{s!r} {w!r}')
+    ins0, ins1 = instructions(MAIN_PDF), (instructions(p) if isinstance(s, list) else [])
+    check('AE-14b ... the TD became `12 -4 Td` and ONE `10 TL` (the original leading) was added after it',
+          ('Td', ['12', '-4']) in ins1 and ('TD', ['12', '-10']) not in ins1
+          and [op for op, _ in ins1].count('TL') == [op for op, _ in ins0].count('TL') + 1
+          and ins1[ins1.index(('Td', ['12', '-4'])) + 1] == ('TL', ['10']), f'{ins1!r}'[:600])
+    check('AE-14c ... and the T* after it (Delta) was compensated as `Td 0 -16`',
+          ('Td', ['0', '-16']) in ins1, f'{ins1!r}'[:600])
+
+    p, s = edited([{'op': 'move-text', 'dx': 5, 'select': [line('Charlie', 42, 70)]}])
+    ins1 = instructions(p)
+    check('AE-14d CONTROL a dx-only move of the same TD adds NO instruction and NO TL, and keeps it a TD: '
+          'the dx path is what it was before dy existed (its T* -> Td is AE-4b\'s, unchanged)',
+          len(ins1) == len(ins0) and [op for op, _ in ins1].count('TL') == [op for op, _ in ins0].count('TL')
+          and ('TD', ['17', '-10']) in ins1, f'{[x for x in ins1 if x[0] in POSV]!r}')
+
+    p, s, w = text_edit([{'op': 'move-text', 'dx': 5, 'dy': 6, 'select': [line('Charlie', 42, 70)]}])
+    check('AE-14e dx AND dy in one op: Charlie (47, 76), nothing else moves',
+          isinstance(s, list) and moved_only(M0, w, {'Charlie': (5, 6)}), f'{s!r} {w!r}')
+
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 3, 'select': [line('Alpha', 30, 90)]}])
+    tms = [o for op, o in instructions(p) if op == 'Tm'] if isinstance(s, list) else []
+    check('AE-14f dy on a Tm line: an ABSOLUTE shift of its f (90 -> 93), the next Td compensated',
+          isinstance(s, list) and tms[0][5] == '93' and tms[0][4] == '30'
+          and moved_only(M0, w, {'Alpha': (0, 3)}), f'{tms!r} {w!r}')
+
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 4, 'select': [line('Delta', 42, 60)]}])
+    check('AE-14g dy on a T* line: Delta up 4, Echo (Td) and Foxtrot (T*) unmoved',
+          isinstance(s, list) and moved_only(M0, w, {'Delta': (0, 4)}), f'{s!r} {w!r}')
+
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 6,
+                          'select': [line('Charlie', 42, 70), line('Delta', 42, 60)]}])
+    ins1 = instructions(p) if isinstance(s, list) else []
+    check('AE-14h the TD line AND the T* after it, same dy: the T* is NOT rewritten (no change of shift) '
+          'and lands right only because the leading was re-asserted; Echo, Foxtrot unmoved',
+          isinstance(s, list) and moved_only(M0, w, {'Charlie': (0, 6), 'Delta': (0, 6)})
+          and [op for op, _ in ins1].count('T*') == 2, f'{s!r} {w!r}')
+
+    S0 = words_xy(SCALED_PDF)
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 5, 'select': [line('November', 40, 91)]}], SCALED_PDF)
+    check('AE-14i dy on a Td line under a 9x Tm and a 0.5 cm: November up 5 PAGE pt, the rest unmoved',
+          isinstance(s, list) and moved_only(S0, w, {'November': (0, 5)}), f'{s!r} {w!r}')
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 5, 'select': [line('Mike', 40, 100)]}], SCALED_PDF)
+    check('AE-14j dy on a 9x Tm line under a 0.5 cm: Mike up 5 page pt, the Td line after it unmoved',
+          isinstance(s, list) and moved_only(S0, w, {'Mike': (0, 5)}), f'{s!r} {w!r}')
+
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 4, 'select': [line('Sierra', 100, 170)]}], EDGE_PDF)
+    check('AE-14k dy on a TD line whose BT then sets `14 TL` itself: Sierra up 4, Tango and Uniform '
+          'where the 14 leading put them (the re-assert precedes the explicit TL, and does not clobber it)',
+          isinstance(s, list) and moved_only(E0, w, {'Sierra': (0, 4)}), f'{s!r} {w!r}')
+
+    A0 = words_xy(ANISO_PDF)
+    _aoff = {round(WORDS_AN[k][1] - A0.get(k, (0, 0))[1], 3) for k in WORDS_AN}
+    check('AE-14k2 PRECONDITION pdfplumber reads ANISO: Kappa and Lambda at their x origins, 12 pt apart in y',
+          all(near((A0.get(k, (0, 0))[0],), (v[0],)) for k, v in WORDS_AN.items()) and len(_aoff) == 1, f'{A0!r}')
+    p, s, w = text_edit([{'op': 'move-text', 'dy': 5, 'select': [line('Kappa', 40, 150)]}], ANISO_PDF)
+    check('AE-14k3 dy on a Tm line under an ANISOTROPIC cm: Kappa up 5 page pt (f / d, not / a), Lambda unmoved',
+          isinstance(s, list) and moved_only(A0, w, {'Kappa': (0, 5)}), f'{s!r} {w!r}')
+    p, s, w = text_edit([{'op': 'move-text', 'dx': 4, 'dy': 5, 'select': [line('Lambda', 40, 138)]}], ANISO_PDF)
+    check('AE-14k4 dx and dy on a Td line under an anisotropic Tm and cm: Lambda (+4, +5) page pt, Kappa unmoved',
+          isinstance(s, list) and moved_only(A0, w, {'Lambda': (4, 5)}), f'{s!r} {w!r}')
+
+    refuses('AE-14l dy on a line under a ROTATED Tm',
+            [{'op': 'move-text', 'dy': 3, 'select': [line('Quebec', 150, 150)]}], 'not-axis-aligned', EDGE_PDF)
+
+    # _verify's Y half can fail: planted faults, each refused with nothing saved, plus the control.
+    def drop_tl(out):             # the leading re-assert after the rewritten TD is lost
+        k = next((n for n, i in enumerate(out) if _is(i, 'Td') and [str(o) for o in i.operands] == ['12', '-4']),
+                 None)
+        return out if k is None or not _is(out[k + 1], 'TL') else out[:k + 1] + out[k + 2:]
+
+    def unshift_tm(out):          # Alpha's Tm keeps its original f
+        return [CSI([1, 0, 0, 1, 30, 90], OP('Tm')) if _is(i, 'Tm') and [str(o) for o in i.operands]
+                == ['1', '0', '0', '1', '30', '93'] else i for i in out]
+
+    ops14 = [{'op': 'move-text', 'dy': 6, 'select': [line('Charlie', 42, 70)]}]
+    planted('AE-14m a rewrite that drops the TL re-assert (Foxtrot moves)', drop_tl, ops14, 'Foxtrot')
+    planted('AE-14n a rewrite that leaves a selected Tm line\'s f unshifted', unshift_tm,
+            [{'op': 'move-text', 'dy': 3, 'select': [line('Alpha', 30, 90)]}], 'Alpha')
+    reason, msg, _ = refusal(ops14)
+    check('AE-14o CONTROL the same dy op with the real rewrite applies', reason is None, f'{reason}: {msg}'[:200])
+
+    p, s = edited([{'op': 'move-text', 'dy': 6, 'select': [line('Charlie', 42, 70)]}])
+    check('AE-14p the summary for a dy op has the dx op\'s shape: text and origin',
+          s == [{'op': 'move-text', 'selected': 1, 'objects': [{'text': 'Charlie', 'origin': [42.0, 70.0]}]}],
+          f'{s!r}')
+
+    # Field-level: move-text takes dx, dy or both; at least one; each a number.
+    field('AE-14q move-text with neither dx nor dy', [{'op': 'move-text', 'select': [line('Bravo', 30, 80)]}],
+          'bad-field', 'dx or dy')
+    field('AE-14r a dy that is a string', [dict(MT, dy='6')], 'bad-field', 'dy')
+    field('AE-14s a dy that is a boolean', [{'op': 'move-text', 'dy': True, 'select': [line('Bravo', 30, 80)]}],
+          'bad-field', 'dy')
+    field('AE-14t a dx that is null beside a good dy',
+          [{'op': 'move-text', 'dx': None, 'dy': 2, 'select': [line('Bravo', 30, 80)]}], 'bad-field', 'dx')
+    field('AE-14u dy on move-paths is an unknown field', [dict(MP, dy=2)], 'unknown-field', "'dy'")
+    field('AE-14v dy on move-line-end is an unknown field', [dict(ML, dy=2)], 'unknown-field', "'dy'")
+    for label, entry in (('dy only', {'op': 'move-text', 'dy': 2, 'select': [line('Bravo', 30, 80)]}),
+                         ('dx and dy', dict(MT, dy=2)), ('dx only', MT)):
+        reason, got = raises(lambda: AE.for_figure({B: [entry]}, B))
+        check(f'AE-14w CONTROL a move-text with {label} validates', reason is None and len(got) == 1,
+              f'{reason}: {got!r}'[:200])
+
 # ── 9. END TO END through figure-prepare.py ───────────────────────────────────────────
 # A1 of the brief in miniature, on the generated page: the edit reaches runs.json, and prepare.json
 # carries the summary; a selector 1 pt off fails the figure; no --config reads the SHIPPED config,
@@ -869,6 +1012,18 @@ pj3 = json.loads((E2E / 'rep' / 'prepare.json').read_text()) if (E2E / 'rep' / '
 check('AE-9f a config repeating a key ANYWHERE fails every figure, with or without an entry (G7)',
       refused(r3, 1) and str(pj3.get('error', '')).startswith('artworkEdits refused: config-unusable')
       and 'repeats the key(s)' in str(pj3.get('error', '')), f"{r3.returncode} {pj3!r}"[:300])
+
+# Step 2b end to end: a dy edit reaches runs.json. A run's y is its page-space BASELINE, y UP (the
+# unedited prepare puts Alpha at 90, its Tm f), so a move up by 5 is y + 5 there.
+cfg9g = write_config(E2E / 'cfg-dy.json', {'artworkEdits': {B: [
+    {'op': 'move-text', 'dy': 5, 'select': [line('Charlie', 42, 70)]}]}})
+r4 = run_py(PREPARE, art, '--basename', B, '--out', E2E / 'dy', '--config', cfg9g)
+x4 = runs_xy(E2E / 'dy')
+check('AE-9g a dy edit through prepare: exit 0, runs.json Charlie up 5 (y + 5, y up), every other run '
+      'where the unedited prepare put it',
+      r4.returncode == 0 and bool(x0) and x4.get('Charlie') == (x0['Charlie'][0], x0['Charlie'][1] + 5)
+      and {k: v for k, v in x4.items() if k != 'Charlie'} == {k: v for k, v in x0.items() if k != 'Charlie'},
+      f'{r4.returncode} {r4.stderr[-300:]} {x0!r} {x4!r}')
 
 shutil.rmtree(TD, ignore_errors=True)
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")

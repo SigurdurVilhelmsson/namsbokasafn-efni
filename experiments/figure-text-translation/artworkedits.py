@@ -25,10 +25,15 @@ the RGB an SVG renders them as: the operands are exact, the RGB is a conversion.
         ONE `re` followed directly by its paint op, and it stays an `re`: pdfplumber reports it as
         object_type 'rect', which is the only thing that makes it a table CELL (figcontainers' fill-rect
         branch). A rewrite as a general path would silently turn the label inside it `open`.
-    {"op": "move-text", "dx": <pt>, "select": [<line>, ...]}
-        shift each selected text LINE (the show operators between two positioning operators) by dx.
-        Done through the Tm/Td/TD/T* operands only (`cm` is illegal inside BT/ET); every later line in
-        the same BT is compensated, so an unselected line never moves.
+    {"op": "move-text", "dx": <pt>, "dy": <pt>, "select": [<line>, ...]}
+        shift each selected text LINE (the show operators between two positioning operators) by dx
+        and/or dy - at least one of them, both allowed (one line can sit in only ONE op, so a line that
+        needs both axes needs both in one op). Done through the Tm/Td/TD/T* operands only (`cm` is
+        illegal inside BT/ET); every later line in the same BT is compensated, so an unselected line
+        never moves. A TD also SETS the leading (TL = -ty) and TL outlives the BT, so a TD whose ty
+        changes becomes a Td followed by `<the original leading> TL`: every later T*, ' and " - in this
+        BT or after it - still steps by the leading the source drew it with. A dx-only move never
+        touches a TD's ty, so it adds no instruction.
     {"op": "move-line-end", "edge": "left"|"right", "dx": <pt>, "select": [<path>, ...]}
         move ONE END of each selected straight line by dx: the end at the named PAGE side (min-x or
         max-x, whatever the drawing order). The path must be exactly one `m` and one `l`, painted by a
@@ -101,7 +106,7 @@ VERIFY_TOL = Decimal('0.000001')
 OPS = {
     'move-paths': ({'op', 'dx', 'select'}, {'note'}),
     'move-edge': ({'op', 'edge', 'select'}, {'note', 'to', 'dx'}),
-    'move-text': ({'op', 'dx', 'select'}, {'note'}),
+    'move-text': ({'op', 'select'}, {'note', 'dx', 'dy'}),
     'move-line-end': ({'op', 'edge', 'dx', 'select'}, {'note'}),
 }
 PATH_FIELDS = {'paint', 'colour', 'bbox'}
@@ -185,6 +190,12 @@ def for_figure(table, basename):
                 raise ArtworkEditError('bad-field', f'{w} needs exactly one of to / dx')
             if not _num(op.get('to', op.get('dx'))):
                 raise ArtworkEditError('bad-field', f'{w}.to/dx must be a number')
+        elif name == 'move-text':
+            if 'dx' not in op and 'dy' not in op:
+                raise ArtworkEditError('bad-field', f'{w} needs dx or dy (or both)')
+            for axis in ('dx', 'dy'):
+                if axis in op and not _num(op[axis]):
+                    raise ArtworkEditError('bad-field', f'{w}.{axis} must be a number')
         elif not _num(op['dx']):
             raise ArtworkEditError('bad-field', f'{w}.dx must be a number')
         sel = op['select']
@@ -358,12 +369,12 @@ def _fmt(v):
 
 def plan(pikepdf, instructions, ops, where):
     """-> (paths, lines, path_dx {path index: dx}, edges {path index: (edge, new page coord)},
-    text_dx {line index: dx}, line_ends {path index: (instruction index, new page x)}, summary).
+    text_d {line index: (dx, dy)}, line_ends {path index: (instruction index, new page x)}, summary).
     `edges` holds every moved edge - a rect's AND a line end's - because that is what `_verify` checks;
     `line_ends` says which of them `rewrite` must treat as a line end rather than an `re`. Every selector
     must match exactly one object; no object may be selected twice."""
     paths, lines = inventory(pikepdf, instructions)
-    path_dx, edges, text_dx, line_ends, taken, summary = {}, {}, {}, {}, {}, []
+    path_dx, edges, text_d, line_ends, taken, summary = {}, {}, {}, {}, {}, []
     for k, op in enumerate(ops):
         w = f'{where}[{k}]'
         done = []
@@ -389,7 +400,7 @@ def plan(pikepdf, instructions, ops, where):
                 path_dx[n] = _D(op['dx'])
                 done.append(dict(bbox=_fmt(paths[n]['bbox'])))
             elif op['op'] == 'move-text':
-                text_dx[n] = _D(op['dx'])
+                text_d[n] = (_D(op.get('dx', 0)), _D(op.get('dy', 0)))
                 done.append(dict(text=lines[n]['text'], origin=_fmt(lines[n]['origin'])))
             elif op['op'] == 'move-line-end':
                 p = paths[n]
@@ -428,10 +439,10 @@ def plan(pikepdf, instructions, ops, where):
                 edges[n] = (op['edge'], new)
                 done.append(dict(bbox=_fmt(p['bbox']), edge=op['edge'], to=float(new)))
         summary.append(dict(op=op['op'], selected=len(done), objects=done))
-    return paths, lines, path_dx, edges, text_dx, line_ends, summary
+    return paths, lines, path_dx, edges, text_d, line_ends, summary
 
 
-def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_ends=None):
+def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_ends=None):
     """-> the new instruction list (pikepdf.ContentStreamInstruction / inline images). `line_ends` is
     plan's: an edge listed there is a line end, rewritten as one x operand of its `m` or `l`."""
     line_ends = line_ends or {}
@@ -470,24 +481,26 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_e
             else:
                 x, w = nu, (x + w) - nu          # x was the right edge; x+w the left
         new_operands[i] = [x, y, w, h]
-    # text: per BT, the shift each line carries; compensate at every positioning op whose shift differs
+    # text: per BT, the (dx, dy) shift each line carries; compensate at every positioning op whose shift
+    # differs from the previous line's
+    ZERO = (Decimal(0), Decimal(0))
     by_bt = {}
     for n, l in enumerate(lines):
         by_bt.setdefault(l['bt'], []).append(n)
     for bt, idxs in by_bt.items():
-        shifts = [text_dx.get(n, Decimal(0)) for n in idxs]
-        if not any(shifts):
+        shifts = [text_d.get(n, ZERO) for n in idxs]
+        if not any(any(s) for s in shifts):
             continue
-        prev = Decimal(0)
+        prev = ZERO
         prev_tlm = IDENT
         for n, s in zip(idxs, shifts):
             l = lines[n]
             if l['quote']:
                 raise ArtworkEditError('quote-operator', f"a ' or \" operator in BT #{bt}, which this edit must rewrite")
-            delta = s - prev
+            delta = (s[0] - prev[0], s[1] - prev[1])
             # Tm is ABSOLUTE: it needs the line's own shift whenever that is non-zero, whatever came before.
             # Td/TD/T* are RELATIVE: they need the CHANGE of shift from the previous line.
-            if (s if l['posop'] == 'Tm' else delta) != 0:
+            if any(s if l['posop'] == 'Tm' else delta):
                 if l['pos'] is None:
                     raise ArtworkEditError('no-positioning-op', f'line {l["text"]!r} has no positioning operator')
                 _axis(l['ctm'], f'CTM at {l["text"]!r}')
@@ -495,16 +508,24 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_e
                 ops_ = [_D(v) for v in ins.operands]
                 if l['posop'] == 'Tm':
                     _axis(tuple(ops_), f'Tm at {l["text"]!r}')
-                    ops_[4] += s / l['ctm'][0]       # absolute: the line's own shift, in user space
+                    ops_[4] += s[0] / l['ctm'][0]    # absolute: the line's own shift, in user space
+                    ops_[5] += s[1] / l['ctm'][3]
                     new_operands[l['pos']] = ops_
                 else:
                     lin = _mul(prev_tlm, l['ctm'])
                     _axis(lin, f'text matrix before {l["text"]!r}')
-                    dtx = delta / lin[0]
+                    dtx, dty = delta[0] / lin[0], delta[1] / lin[3]
                     if l['posop'] == 'T*':
-                        replace_op[l['pos']] = ([dtx, -l['tl']], 'Td')
+                        replace_op[l['pos']] = ([dtx, -l['tl'] + dty], 'Td')
+                    elif l['posop'] == 'TD' and dty != 0:
+                        # TD = `-ty TL` + `tx ty Td`. Its new ty would set a new leading, and TL outlives
+                        # the BT, so every later T*/'/" the delta walk leaves alone would move. Write a Td
+                        # and re-assert the leading this TD set (inventory recorded it: l['tl'] = -ty).
+                        replace_op[l['pos']] = ([ops_[0] + dtx, ops_[1] + dty], 'Td')
+                        after.setdefault(l['pos'], []).append(CSI([l['tl']], pikepdf.Operator('TL')))
                     else:
                         ops_[0] += dtx
+                        ops_[1] += dty
                         new_operands[l['pos']] = ops_
             prev, prev_tlm = s, l['tlm']
     out = []
@@ -521,7 +542,7 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_e
     return out
 
 
-def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_dx):
+def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_d):
     paths, lines = inventory(pikepdf, new_instr)
     if len(paths) != len(old_paths) or len(lines) != len(old_lines):
         raise ArtworkEditError('verify-failed', f'{len(old_paths)}/{len(old_lines)} paths/lines became {len(paths)}/{len(lines)}')
@@ -536,7 +557,8 @@ def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_dx):
                 or p['fill'] != o['fill'] or p['stroke'] != o['stroke']:
             raise ArtworkEditError('verify-failed', f'path {n}: bbox {_fmt(p["bbox"])} expected {_fmt(want)}')
     for n, (o, l) in enumerate(zip(old_lines, lines)):
-        want = (o['origin'][0] + text_dx.get(n, Decimal(0)), o['origin'][1])
+        dx, dy = text_d.get(n, (Decimal(0), Decimal(0)))
+        want = (o['origin'][0] + dx, o['origin'][1] + dy)
         if l['text'] != o['text'] or not all(_close(a, b, VERIFY_TOL) for a, b in zip(l['origin'], want)):
             raise ArtworkEditError('verify-failed', f'line {n} {l["text"]!r}: origin {_fmt(l["origin"])} expected {_fmt(want)}')
 
@@ -549,9 +571,9 @@ def apply_to_pdf(pdf_path, ops, where):
     with pikepdf.open(str(pdf_path)) as pdf:
         page = pdf.pages[0]
         instr = list(pikepdf.parse_content_stream(page))
-        paths, lines, path_dx, edges, text_dx, line_ends, summary = plan(pikepdf, instr, ops, where)
-        new = rewrite(pikepdf, instr, paths, lines, path_dx, edges, text_dx, line_ends)
-        _verify(pikepdf, paths, lines, new, path_dx, edges, text_dx)
+        paths, lines, path_dx, edges, text_d, line_ends, summary = plan(pikepdf, instr, ops, where)
+        new = rewrite(pikepdf, instr, paths, lines, path_dx, edges, text_d, line_ends)
+        _verify(pikepdf, paths, lines, new, path_dx, edges, text_d)
         page.Contents = pdf.make_stream(pikepdf.unparse_content_stream(new))
         pdf.save(str(tmp), deterministic_id=True)
     os.replace(tmp, pdf_path)
