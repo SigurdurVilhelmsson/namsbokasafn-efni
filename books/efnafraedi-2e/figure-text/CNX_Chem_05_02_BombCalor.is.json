@@ -1,16 +1,16 @@
 {
  "version": 1,
  "basename": "CNX_Chem_05_02_BombCalor",
- "renderHash": "58a7e2c25a9ebd96",
+ "renderHash": "0036e164df37e0be",
  "composedHash": "58a7e2c25a9ebd96",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
   "O2 inlet": "O2-inntak",
   "Bomb": "Sprengihólkur",
   "Sample cup": "Sýnisbolli",
   "Water": "Vatn",
-  "Precision|thermometer": "Nákvæmnishitamælir",
+  "Precision|thermometer": "Nákvæmur\nhitamælir",
   "Electrodes": "Rafskaut"
  },
  "mtAlternatives": {

@@ -1,19 +1,19 @@
 {
  "version": 1,
  "basename": "CNX_Chem_17_05_AlkalineBat",
- "renderHash": "da1b89ecb8169841",
+ "renderHash": "243359f3130d4743",
  "composedHash": "da1b89ecb8169841",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
-  "Porous separator": "Gropinn skilari",
-  "MnO2 powder mixed|with coal dust (cathode)": "MnO2-duft blandað kolaryki (bakskaut)",
-  "zinc powder with|potassium hydroxide|(anode)": "Sinkduft með kalíumhýdroxíði (forskaut)",
-  "Anode current collector": "Forskautssafnari",
-  "Metal top cover (+)": "Efri málmlok (+)",
-  "steel can, cathode|current collector": "Stálhylki, bakskautssafnari",
+  "Porous separator": "Gropin skilja",
+  "MnO2 powder mixed|with coal dust (cathode)": "MnO2-duft blandað kolaryki (katóða)",
+  "zinc powder with|potassium hydroxide|(anode)": "Sinkduft með kalíumhýdroxíði (anóða)",
+  "Anode current collector": "Anóðusafnari",
+  "Metal top cover (+)": "Efra málmlok (+)",
+  "steel can, cathode|current collector": "Stálhylki, katóðusafnari",
   "Plastic cover": "Plasthlíf",
-  "Metal bottom cover (−)": "Neðri málmlok (−)"
+  "Metal bottom cover (−)": "Neðra málmlok (−)"
  },
  "mtAlternatives": {
   "Porous separator": {

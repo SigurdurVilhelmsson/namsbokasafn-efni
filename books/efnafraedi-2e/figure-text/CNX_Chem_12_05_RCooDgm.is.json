@@ -1,14 +1,14 @@
 {
  "version": 1,
  "basename": "CNX_Chem_12_05_RCooDgm",
- "renderHash": "b71058f90d850bb7",
+ "renderHash": "fcf7daca68f8fc76",
  "composedHash": "b71058f90d850bb7",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
   "Energy": "Orka",
   "Extent of reaction": "Framvinda efnahvarfs",
-  "Transition state": "Umbreytingarástand"
+  "Transition state": "Virkniástand"
  },
  "mtAlternatives": {
   "Extent of reaction": {

@@ -1,10 +1,10 @@
 {
  "version": 1,
  "basename": "CNX_Chem_20_01_recycle",
- "renderHash": "4d7a5f6694359f88",
+ "renderHash": "cf41831c8e43874f",
  "composedHash": "4d7a5f6694359f88",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
   "polyethylene terephthalate (PETE)": "pólýetýlen tereftalat (PETE)",
   "PETE": "PETE",
@@ -17,7 +17,7 @@
   "polypropylene (PP)": "pólýprópýlen (PP)",
   "polystyrene (PS)": "pólýstýren (PS)",
   "any other plastics (OTHER)": "annað plast (OTHER)",
-  "Soda bottles and oven-ready food trays": "Gosflöskur og ofnheldir matarílát",
+  "Soda bottles and oven-ready food trays": "Gosflöskur og ofnheld matarílát",
   "Bottles for milk and dishwashing liquids": "Flöskur undan mjólk og uppþvottalegi",
   "Food trays, plastic wrap, bottles for mineral water|and shampoo": "Matarbakkar, plastfilma, flöskur undan sódavatni og sjampói",
   "Shopping bags and garbage bags": "Innkaupapokar og ruslapokar",

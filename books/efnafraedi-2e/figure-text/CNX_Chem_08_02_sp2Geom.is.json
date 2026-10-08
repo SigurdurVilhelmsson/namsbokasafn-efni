@@ -1,13 +1,13 @@
 {
  "version": 1,
  "basename": "CNX_Chem_08_02_sp2Geom",
- "renderHash": "6791c63faaa04de7",
+ "renderHash": "2f9bbdf245a37dec",
  "composedHash": "6791c63faaa04de7",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
-  "Gives a trigonal|planar arrangement": "Gefur þríhyrningslaga sléttuskipan",
-  "Hybridization": "Blending"
+  "Gives a trigonal|planar arrangement": "Lögun verður þríhyrnd, flöt",
+  "Hybridization": "Blöndun"
  },
  "mtAlternatives": {
   "Gives a trigonal|planar arrangement": {

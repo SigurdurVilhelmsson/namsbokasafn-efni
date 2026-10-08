@@ -1,21 +1,21 @@
 {
  "version": 1,
  "basename": "CNX_Chem_21_06_RadonExpos",
- "renderHash": "8458f9be15b27d81",
+ "renderHash": "9d67bc5d84a7e50d",
  "composedHash": "8458f9be15b27d81",
  "composedVersion": "5",
- "composerVersion": "4",
+ "composerVersion": "6",
  "blocks": {
   "radon in": "radon í",
-  "Bedrock": "Berggrunni",
+  "Bedrock": "Berggrunnur",
   "radon in|well water": "radon í brunnvatni",
   "radon in|ground water": "radon í grunnvatni",
   "Fractured|bedrock": "Sprunginn berggrunnur",
   "radium-226": "radíum-226",
-  "radium-222": "radíum-222",
+  "radium-222": "radon-222",
   "soil": "jörð",
   "Alpha|particle": "Alfa-ögn",
-  "Inhalation of|radon decay|products": "Innöndun radon-hrörnunarafurða",
+  "Inhalation of|radon decay|products": "Innöndun\nhrörnunarafurða\nradons",
   "Radiation|damage|to DNA": "Geislaskemmdir á DNA"
  },
  "mtAlternatives": {
