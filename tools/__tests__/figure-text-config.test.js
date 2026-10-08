@@ -145,11 +145,14 @@ describe('figure-text-config (§C140 ㊵)', () => {
       sourceAlignedBoxes: '44136fa355b3678a',
     },
     // '6' (§C140 '6' PR-B): the bump that carries the filled tables — FoodLabel's two bullets
-    // (heldBlockValues), FoodLabel's R-15a/R-15a2/R-15g2 and HazDiamond's R-5c2 artworkEdits,
-    // PentIso's R-20 anchorExclusions and HazDiamond's R-5c2 sourceAlignedBoxes.
+    // (heldBlockValues), FoodLabel's R-15a/R-15a2/R-15g2, HazDiamond's R-5c2 and Nitrogen's
+    // [USER] 2026-10-08 move-up artworkEdits, PentIso's R-20 anchorExclusions and HazDiamond's
+    // R-5c2 sourceAlignedBoxes. Nitrogen's entry was added to THIS bump's own table before '6'
+    // merged or composed anything for real (PR-B step 7 not yet run) — response 1, not a re-pin of
+    // a version already in use.
     6: {
       heldBlockValues: '17769c441323814e',
-      artworkEdits: '4294331d109478a6',
+      artworkEdits: '135dc01f4251b654',
       anchorExclusions: 'f1a929f8f6199a57',
       sourceAlignedBoxes: '2ca51092578564eb',
     },

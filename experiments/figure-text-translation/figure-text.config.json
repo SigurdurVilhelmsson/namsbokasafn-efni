@@ -276,6 +276,31 @@
           }
         ]
       }
+    ],
+    "CNX_Chem_18_07_Nitrogen": [
+      {
+        "op": "move-text",
+        "dy": 6.6,
+        "select": [
+          {
+            "text": "Atmospheric",
+            "origin": [1.91176, 348.34165]
+          },
+          {
+            "text": "nitrogen (N",
+            "origin": [1.91176, 337.34165]
+          },
+          {
+            "text": "2",
+            "origin": [46.43246, 334.34165]
+          },
+          {
+            "text": ")",
+            "origin": [50.32582, 337.34165]
+          }
+        ],
+        "note": "[USER] 2026-10-08: keep 'Nitur í andrúms‐ / lofti (N₂)' and move the label UP so its top line clears the N2 molecule. dy MEASURED: molecule top y 352.50 (artwork.png); the source's own label-to-artwork gap 2.40 pt (Atmospheric ends 51.925, molecule starts 54.32); 6.6 gives 2.44. The arrowhead stays clear (its leftmost ink x >= 78). Needs step 2c: the label's BT holds a ' operator."
+      }
     ]
   },
   "_artworkEdits": "§C140 '6', rulings R-15a and R-15a2 ([USER] 2026-10-05 and 2026-10-06, recorded in the campaign register) and R-5c2 ([USER] 2026-10-07, record docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md); measurement docs/superpowers/specs/2026-10-05-c140-foodlabel-r15-widening-measurement.md. {basename: [op, ...]}: [USER]'s per-figure, operator-level edits to the STAGED artwork PDF, applied by figure-prepare.py (artworkedits.py) after staging and BEFORE emit-blocks.py, so runs.json, blocks.json and artwork.pdf/.png/.svg all derive from the edited page. Ops: move-paths {dx, select:[path]}; move-edge {edge: left|right, to|dx, select:[path]} (the path must be ONE `re` and stays one, so pdfplumber still sees a rect and the label stays a table cell); move-text {dx and/or dy, select:[line]} (at least one, both allowed in one op; through Tm/Td/TD/T* only; later lines in the same BT are compensated, and a TD whose ty changes is written as a Td plus a `TL` re-asserting the leading it set, because TL outlives the BT); move-line-end {edge: left|right, dx, select:[path]} (one end of a horizontal stroked line drawn as exactly one `m` and one `l`: the end on that page side moves, the other stays). Every op may carry a free-text note. path = {paint: fill|stroke, colour: [the PDF colour operator, operands...], bbox: [x0,y0,x1,y1] incl. control points}; line = {text: the line's string bytes latin-1 decoded, origin: [x,y]}. Coordinates are PDF page space in pt, y UP (not the SVG frame), measured on the STAGED PDF (for .eps/.ai that is ghostscript's output, not the source): print them with `python3 artworkedits.py --inventory <out>/<basename>.pdf`. Every selector must match exactly one object (tolerance 0.01 pt) and no object twice; an unknown field refuses; after the rewrite every path and text line is re-measured and must be where asked, all others unmoved, or prepare fails the figure. Only page 1's own content stream is read, so a path inside a form XObject matches nothing. An entry on a figure classified copied-photo or unreadable-text, or on a copied-textless figure that embeds a raster (imageXObjects > 0, which figure-run.js isRecomposableTextless declines and CI cannot see), is prepared but never recomposed, so it is unused. Entries sit OUTSIDE renderHash and composedVersion, like heldBlockValues: adding or changing one never makes a figure stale. A textless figure (no sidecar) picks it up on its chapter's next --stale run (0 ISK); for a figure with a sidecar the only sanctioned route is the next COMPOSER_VERSION bump, and any other route needs a [USER] ruling before it is run. Either way readers see the change only after a re-render and [USER]'s sync. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image, with an image-mapping row naming an .svg and a translated copy at the top of media/, and in none of retiredFigures, keptCopies or supersededArtwork (an artwork pin is fine: its selectors must then match the pinned artwork); and the shape of every op and selector. CHECKED AT PREPARE by artworkedits.py, which refuses the figure by name: a config that cannot be read or repeats a key, a selector matching nothing or more than one object, an object selected twice, and an op that cannot apply to what it selected.",
