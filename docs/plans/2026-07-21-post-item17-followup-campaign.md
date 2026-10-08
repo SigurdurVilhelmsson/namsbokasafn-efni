@@ -198,8 +198,15 @@
      These are house-style questions for the chapter text too. Check `server/lib/houseStyleTerms.js`
      and the glossary before any text-side change.
 
-     ⏹ **Blocked on [USER]: three ambiguous answers (Qnumbers, HybrdOrbit, molgeom) and the PR-B scope
-     decision.** No sidecar is edited until those are answered.
+     ✅ **[USER] 2026-10-08, answering the three ambiguities and the scope:**
+     - **Scope:** PR-B carries the wording only: the explicit value edits, "wording from June", and the
+       wording parts of mixed "other" answers. Layout/alignment, kerning and "doesn't match source" are
+       logged as '7' work.
+     - **Qnumbers:** keep the '6' picture with June's *Vaxandi orka* as the value.
+     - **HybrdOrbit:** the '6' picture with June's wording, except *Bléndun → Svigrúmablöndun*.
+     - **molgeom:** shape names take **Egeom's new terms**, so the two figures agree.
+
+     ▶ So **no keep-June move happens**: no keptCopies entry and no sidecar deletion.
   9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
      `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
 - **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
