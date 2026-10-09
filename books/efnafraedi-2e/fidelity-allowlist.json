@@ -19,9 +19,17 @@
     {
       "moduleId": "m68710",
       "tag": "emphasis",
+      "diff": -2,
+      "class": "known-loss-deferred",
+      "reason": "two parts, measured per para on 2026-10-09: (1) benign, the empty self-closing <emphasis/> in para fs-idm50940704 (zero content); (2) a real loss, the MT merged the two italic synonyms 'double displacement' and 'double replacement' in para fs-idp140132618169728 into one 'tvöföld skipti'. Was -1 only because §C4's duplicated step-1 <emphasis> (+1) masked the real loss.",
+      "pointer": "campaign register, the 2026-09-26 block's ② batch, §C4 (2026-10-09)"
+    },
+    {
+      "moduleId": "m68747",
+      "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "empty self-closing <emphasis/> in OpenStax source (zero content)"
+      "reason": "empty self-closing <emphasis/> in OpenStax source para fs-idp84255584 (zero content). Masked to 0 until §C16(a) (2026-10-09) stopped the literal-asterisk converter inventing an <emphasis> in 8-4."
     },
     {
       "moduleId": "m68716",
