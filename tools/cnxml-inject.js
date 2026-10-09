@@ -2574,7 +2574,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
-      return buildList(element, getSeg, equations, ctx);
+      return buildList(element, getSeg, equations, ctx, originalCnxml);
     case 'media':
       return buildMedia(element, getSeg);
     default:
@@ -4961,7 +4961,38 @@ function buildEquation(element, equations, originalCnxml) {
 /**
  * Build a list element.
  */
-function buildList(element, getSeg, equations = {}, ctx = null) {
+/**
+ * 🔴 §C185 ⑤ — the non-inline <table> ids that are DIRECT children of each <item>
+ * of source list `listId`, keyed the way extraction names an item: its own id, or
+ * `${listId}-item-${n}` (1-based source position). Extraction leaves such a table
+ * out of the item's segment and flattens it into the section's structure, so
+ * without this buildList cannot know it exists and the section-level copy ships
+ * AFTER the list: m68843's ligand table left its numbered step. The source DOM
+ * is parsed once per module and cached on ctx.
+ * @returns {Map<string, string[]>} item key → table ids, in source order
+ */
+function sourceListItemTables(listId, originalCnxml, ctx) {
+  if (!ctx.sourceDomForLists) {
+    ctx.sourceDomForLists = parseCnxmlFragment(originalCnxml.replace(/^\s*<\?xml[^>]*\?>/, '')).doc;
+  }
+  const out = new Map();
+  const listEl = ctx.sourceDomForLists.getElementById(listId);
+  if (!listEl) return out;
+  const inlineIds = new Set((ctx.inlineTables || []).map((t) => t.tableId));
+  const items = Array.from(listEl.childNodes).filter((n) => n.nodeName === 'item');
+  items.forEach((itemEl, i) => {
+    const tableIds = Array.from(itemEl.childNodes)
+      .filter((n) => n.nodeName === 'table')
+      .map((n) => n.getAttribute('id'))
+      .filter((id) => id && !inlineIds.has(id));
+    if (tableIds.length > 0) {
+      out.set(itemEl.getAttribute('id') || `${listId}-item-${i + 1}`, tableIds);
+    }
+  });
+  return out;
+}
+
+function buildList(element, getSeg, equations = {}, ctx = null, originalCnxml = null) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const listType = element.listType || 'bulleted';
@@ -4995,10 +5026,39 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
       .filter(Boolean)
       .join('\n');
 
+  // §C185 ⑤ — a table that is a direct child of a source <item> is re-emitted in
+  // that item and marked handled, so buildElement skips its section-level copy.
+  const itemTables =
+    element.id && originalCnxml && ctx && ctx.tableNodesById
+      ? sourceListItemTables(element.id, originalCnxml, ctx)
+      : new Map();
+  const buildItemTables = (item) => {
+    const key =
+      item.id ||
+      String(item.segmentId || '')
+        .split(':')
+        .slice(2)
+        .join(':');
+    return (itemTables.get(key) || [])
+      .map((tableId) => {
+        const node = ctx.tableNodesById[tableId];
+        if (!node) {
+          throw new Error(
+            `buildList: no structure node for list-item table id="${tableId}" in list ${element.id} — refusing to drop it.`
+          );
+        }
+        if (ctx.tablesHandledInContainers) ctx.tablesHandledInContainers.add(tableId);
+        return buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
+      })
+      .join('\n');
+  };
+
   for (const item of element.items || []) {
     const itemText = getSeg(item.segmentId);
     const itemIdAttr = item.id ? ` id="${item.id}"` : '';
-    const blockChildXml = buildBlockChildren(item);
+    const blockChildXml = [buildBlockChildren(item), buildItemTables(item)]
+      .filter(Boolean)
+      .join('\n');
 
     if (item.children && item.children.length > 0) {
       // Item has nested lists — build them recursively
@@ -5008,7 +5068,7 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
       lines.push(`<item${itemIdAttr}>${head}`);
       for (const child of item.children) {
         if (child.type === 'list') {
-          lines.push(buildList(child, getSeg, equations, ctx));
+          lines.push(buildList(child, getSeg, equations, ctx, originalCnxml));
         }
       }
       if (blockChildXml) lines.push(blockChildXml);
@@ -5025,7 +5085,9 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
         // Original item content was wrapped in a <para> — preserve that element
         lines.push(`<item${itemIdAttr}>${item.wrapsPara.openTag}${itemText}</para></item>`);
       } else {
-        lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+        // A non-<para> item's only block children are §C185 ⑤ tables.
+        const tail = blockChildXml ? `\n${blockChildXml}` : '';
+        lines.push(`<item${itemIdAttr}>${itemText}${tail}</item>`);
       }
     }
   }
