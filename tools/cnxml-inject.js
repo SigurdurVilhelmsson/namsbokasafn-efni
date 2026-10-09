@@ -3426,7 +3426,8 @@ function applyTableSummary(tableCnxml, element, ctx) {
  * always provides `ctx.tableNodesById` for real production builds. If the map IS present
  * but a specific kept-table id is missing from it (or its translation/serialized block is
  * missing), that is a real production gap and still throws.
- * @param {Set<string>} keptContainerTableIds - OC-B direct-child, non-inline table ids only.
+ * @param {Set<string>} keptContainerTableIds - OC-B kept, non-inline table ids: direct children
+ *   of the container, or (§C185 ⑤) of a note nested in an example.
  */
 function translateKeptContainerTables(
   result,
@@ -4018,6 +4019,20 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       const figId = child.getAttribute('id');
       if (figId) keptFigureIds.add(figId);
     } else if (child.nodeName === 'table') {
+      const tId = child.getAttribute('id');
+      if (tId && !exampleInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
+    }
+  }
+  // 🔴 §C185 ⑤ — a NESTED note is preserved in place here (buildNoteDom returns
+  // null for it), so a table that is its direct child is ours to keep too.
+  // Stripping it shipped the section-level copy instead: m68738's "Answer:"
+  // table moved out of its example to section level, with every count intact.
+  for (const nestedNote of Array.from(exampleEl.getElementsByTagName('note'))) {
+    for (const child of Array.from(nestedNote.childNodes)) {
+      if (child.nodeName !== 'table') continue;
       const tId = child.getAttribute('id');
       if (tId && !exampleInlineTableIds.has(tId)) {
         keptTableIds.add(tId);
