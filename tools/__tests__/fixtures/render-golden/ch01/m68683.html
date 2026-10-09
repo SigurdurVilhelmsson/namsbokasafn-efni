@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.0 Stærðfræðileg meðferð mæliniðurstaðna</title>
+  <title>1.0 Stærðfræðileg meðferð á niðurstöðum mælinga</title>
   <link rel="stylesheet" href="/styles/content.css">
 </head>
 <body>
   <article class="cnx-module introduction" data-module-id="m68683">
     <header>
-      <h1 id="title">Stærðfræðileg meðferð mæliniðurstaðna</h1>
+      <h1 id="title">Stærðfræðileg meðferð á niðurstöðum mælinga</h1>
       <div class="learning-objectives">
         <h2>Námsmarkmið</h2>
         <p>Í lok þessa kafla muntu geta:</p>
@@ -33,9 +33,9 @@
 <section id="fs-idm285086480">
   <h2>Umreikningsstuðlar og víddagreining</h2>
 <p id="fs-idm273312256">Hlutfall tveggja jafngildra stærða sem gefnar eru upp með mismunandi mælieiningum má nota sem <dfn id="term-00003" class="term">umreikningsstuðul fyrir einingar (e. unit conversion factor)</dfn>. Til dæmis eru lengdirnar 2,54 cm og 1 tommur jafngildar (samkvæmt skilgreiningu) og því má leiða út umreikningsstuðul fyrir einingar úr hlutfallinu,</p>
-<div id="fs-idm256748160" class="equation unnumbered"><span class="mathjax-display" data-latex="{\frac{{\text{2,54 cm}}}{{\text{1 in.}}}\, \text{(2,54 cm}=\text{1 in.) or 2,54}\, \frac{{\text{cm}}}{{\text{in.}}}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
+<div id="fs-idm256748160" class="equation unnumbered"><span class="mathjax-display" data-latex="{\frac{{\text{2,54 cm}}}{{\text{1 in.}}}\, \text{(2,54 cm}=\text{1 in.) eða 2,54}\, \frac{{\text{cm}}}{{\text{in.}}}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
 <p id="fs-idm205801120">Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í <a href="#fs-idm222237232">Tafla 1.1</a>.</p>
-<table id="fs-idm222237232" class="top-titled" data-table-number="1.1" data-summary="This table is divided into 3 columns. They are titled length, volume, and mass. The following units are under the length column: 1 meter is equal to 1.0936 yards, 1 inch is equal to 2.54 cm 1 kilometer is equal to 0.62137 miles, 1 mile is equal to 1609.3 meters. The following units are under the volume column: 1 liter is equal to 1.0567 quarts, 1 quart is equal to 0.94635 meters, one cubic foot is equal to 28.317 liters, 1 tablespoon is equal to 14.787 milliliters. The following units are under the mass column: 1 kilogram is equal to 2.2046 pounds, 1 pound is equal to 453.59 grams, 1 avoirdupois ounce is equal to 28.349 grams, 1 troy ounce is equal to 31.103 grams.">
+<table id="fs-idm222237232" class="top-titled" data-table-number="1.1" data-summary="Þessari töflu er skipt í 3 dálka. Þeir heita lengd, rúmmál og massi. Eftirfarandi einingar eru í lengdardálkinum: 1 metri er jafnt og 1,0936 yardar, 1 tommur er jafnt og 2,54 cm, 1 kílómetri er jafnt og 0,62137 mílur, 1 míla er jafnt og 1609,3 metrar. Eftirfarandi einingar eru í rúmmálsdálkinum: 1 lítri er jafnt og 1,0567 kvart, 1 kvart er jafnt og 0,94635 lítrar, einn rúmfet er jafnt og 28,317 lítrar, 1 matskeið er jafnt og 14,787 millilítrar. Eftirfarandi einingar eru í massadálkinum: 1 kílógramm er jafnt og 2,2046 pund, 1 pund er jafnt og 453,59 grömm, 1 avoirdupois únsa er jafnt og 28,349 grömm, 1 troy únsa er jafnt og 31,103 grömm.">
   <caption><span class="table-label">Tafla 1.1</span></caption>
   <thead>
     <tr><th colspan="3" style="text-align: center">Algengir umreikningsstuðlar</th></tr>
@@ -105,7 +105,7 @@
   <p id="fs-idm142282576">og síðan er rúmmálinu breytt úr lítrum í gallon:</p>
   <div id="fs-idm214696672" class="equation unnumbered"><span class="mathjax-display" data-latex="{213\, \sout{\text{L}}\, \times \, \frac{{\text{1,0567}\, \sout{{\text{qt}}}}}{{1\, \sout{\text{L}}}}\, \times \, \frac{{\text{1 gal}}}{{4\, \sout{{\text{qt}}}}}\, =\text{56,3 gal}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
   <p id="fs-idp1583872">Loks,</p>
-  <div id="fs-idm114266320" class="equation unnumbered"><span class="mathjax-display" data-latex="{\text{(average) mileage}=\, \frac{{\text{777 mi}}}{{\text{56,3 gal}}}\, =\text{13,8 miles/gallon}=\text{13,8 mpg}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
+  <div id="fs-idm114266320" class="equation unnumbered"><span class="mathjax-display" data-latex="{\text{(meðal) eldsneytiseyðsla}=\, \frac{{\text{777 mi}}}{{\text{56,3 gal}}}\, =\text{13,8 mílur/gallon}=\text{13,8 mpg}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
   <p id="fs-idm311190128">Einnig væri hægt að setja útreikninginn upp á þann hátt að allir umreikningsstuðlarnir séu notaðir í röð, á eftirfarandi hátt:</p>
   <div id="fs-idm171836160" class="equation unnumbered"><span class="mathjax-display" data-latex="{\frac{{1250\, \sout{{\text{km}}}}}{{213\, \sout{\text{L}}}}\, \times \, \frac{{\text{0,62137 mi}}}{{1\, \sout{{\text{km}}}}}\, \times \, \frac{{1\, \sout{\text{L}}}}{{\text{1,0567}\, \sout{{\text{qt}}}}}\, \times \, \frac{{4\, \sout{{\text{qt}}}}}{{\text{1 gal}}}=\text{13,8 mpg}}"><mjx-container data-latex="">[MATHJAX]</mjx-container><math class="assistive-mathml">[ASSISTIVE-MML]</math></span></div>
   <p id="fs-idm268939440">(b) Með því að nota áður útreiknað rúmmál í gallonum finnum við:</p>
@@ -192,7 +192,7 @@
   "moduleId": "m68683",
   "chapter": 1,
   "section": "1.0",
-  "title": "Stærðfræðileg meðferð mæliniðurstaðna",
+  "title": "Stærðfræðileg meðferð á niðurstöðum mælinga",
   "equations": [
     {
       "id": "fs-idm290867056",
@@ -212,7 +212,7 @@
     },
     {
       "id": "fs-idm256748160",
-      "latex": "{\\frac{{\\text{2,54 cm}}}{{\\text{1 in.}}}\\, \\text{(2,54 cm}=\\text{1 in.) or 2,54}\\, \\frac{{\\text{cm}}}{{\\text{in.}}}}"
+      "latex": "{\\frac{{\\text{2,54 cm}}}{{\\text{1 in.}}}\\, \\text{(2,54 cm}=\\text{1 in.) eða 2,54}\\, \\frac{{\\text{cm}}}{{\\text{in.}}}}"
     },
     {
       "id": "fs-idm153590912",
@@ -260,7 +260,7 @@
     },
     {
       "id": "fs-idm114266320",
-      "latex": "{\\text{(average) mileage}=\\, \\frac{{\\text{777 mi}}}{{\\text{56,3 gal}}}\\, =\\text{13,8 miles/gallon}=\\text{13,8 mpg}}"
+      "latex": "{\\text{(meðal) eldsneytiseyðsla}=\\, \\frac{{\\text{777 mi}}}{{\\text{56,3 gal}}}\\, =\\text{13,8 mílur/gallon}=\\text{13,8 mpg}}"
     },
     {
       "id": "fs-idm171836160",
