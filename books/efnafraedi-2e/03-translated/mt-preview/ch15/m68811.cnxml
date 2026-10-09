@@ -301,7 +301,7 @@
 </section>
 <section id="fs-idp13519952" class="key-equations">
 <title>Lykiljöfnur</title>
-<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<table id="key-equations-table" class="unnumbered unstyled" summary="Tafla með lykiljöfnum"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
 <row><entry><m:math><m:mrow><m:msub><m:mtext>M</m:mtext><m:mi>p</m:mi></m:msub><m:msub><m:mtext>X</m:mtext><m:mi>q</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mi>p</m:mi><m:msup><m:mtext>M</m:mtext><m:mrow><m:mtext>m+</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>q</m:mi><m:msup><m:mtext>X</m:mtext><m:mrow><m:mtext>n−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="4em"/><m:msub><m:mi>K</m:mi><m:mrow><m:mtext>sp</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>M</m:mtext></m:mrow><m:mtext>m+</m:mtext></m:msup><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>p</m:mi></m:msup><m:msup><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>X</m:mtext></m:mrow><m:mrow><m:mtext>n−</m:mtext></m:mrow></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>q</m:mi></m:msup></m:mrow></m:math></entry>
@@ -814,7 +814,7 @@
 <meaning id="fs-idp3052416-meaning">ferli þar sem jónir eru aðskildar með því að nýta mismun á leysni þeirra með tilteknu útfellingarefni</meaning>
 </definition>
 <definition id="fs-idp3053344">
-<term>leysnimargfeldisfasti (<emphasis effect="italics">K</emphasis><sub>sp</sub>) (e. solubility product constant (ksp))</term>
+<term>leysnimargfeldisfasti (<emphasis effect="italics">K</emphasis><sub>sp</sub>) (e. solubility product constant (Ksp))</term>
 <meaning id="fs-idp3053344-meaning">jafnvægisfasti fyrir upplausn jónaefnis</meaning>
 </definition>
 </glossary>

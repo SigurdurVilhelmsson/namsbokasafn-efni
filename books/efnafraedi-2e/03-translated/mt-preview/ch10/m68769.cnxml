@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<title>Fasamyndir</title>
+<title>Fasarit</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68769</md:content-id>
-  <md:title>Fasamyndir</md:title>
+  <md:title>Fasarit</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Útskýrt gerð og notkun dæmigerðrar fasamyndar</item><item>Notað fasamyndir til að bera kennsl á stöðuga fasa við tiltekið hitastig og þrýsting og til að lýsa fasabreytingum sem verða vegna breytinga á þessum eiginleikum</item><item>Lýst yfirkritískum vökvafasa efnis</item></list></md:abstract>
   <md:uuid>23152758-9f27-4c49-91a6-0f989a5d8d7b</md:uuid>
 </metadata>
@@ -77,7 +77,7 @@
 <section id="fs-idp26089360">
 <title>Ofurkritískir vökvar</title>
 <para id="fs-idm114606944">Ef við setjum vatnssýni í lokað ílát við 25 °C, fjarlægjum loftið og látum jafnvægi milli uppgufunar og þéttingar komast á, sitjum við eftir með blöndu af fljótandi vatni og vatnsgufu við 0,03 atm þrýsting. Greinileg mörk sjást á milli þéttari vökvans og gisnarri gassins. Þegar við aukum hitastigið eykst þrýstingur vatnsgufunnar, eins og lýst er með vökva-gas kúrfu í fasariti vatns (<link target-id="CNX_Chem_10_04_H2OPhasDi2"/>), og tveggja fasa jafnvægi fljótandi og loftkenndra fasa helst. Við 374 °C hitastig hefur gufuþrýstingurinn hækkað í 218 atm og öll frekari hækkun á hitastigi veldur því að mörkin milli vökva- og gufufasa hverfa. Allt vatnið í ílátinu er nú til staðar í einum fasa þar sem eðliseiginleikar eru mitt á milli eiginleika loftkennds og fljótandi ástands. Þessi fasi efnis er kallaður <term id="term-00003">ofurkritískur vökvi (e. supercritical fluid)</term> og hitastigið og þrýstingurinn sem þessi fasi er fyrir ofan er <term id="term-00004">kritíski punkturinn (e. critical point)</term> (<link target-id="CNX_Chem_10_04_CritFluid"/>). Fyrir ofan kritískt hitastig sitt er ekki hægt að breyta gasi í vökva, sama hversu miklum þrýstingi er beitt. Þrýstingurinn sem þarf til að breyta gasi í vökva við kritískt hitastig þess er kallaður kritískur þrýstingur. Kritískt hitastig og kritískur þrýstingur nokkurra algengra efna eru gefin upp í eftirfarandi töflu.</para>
-<table id="fs-idm180459824" class="unnumbered" summary="This table contains eight rows and three columns. The first row is a header row, and it labels each column: “Substance,” “Critical Temperature ( K ),” and “Critical Pressure ( a t m ).” Under the “Substance” column are the following: hydrogen, nitrogen, oxygen, carbon dioxide, ammonia, sulfur dioxide, and water. Under the “Critical Temperature ( K )” column are the following: 33.2, 126.0, 154.3, 304.2, 405.5, 430.3, and 647.1. Under the “Critical Pressure ( a t m )” column are the following: 12.8, 33.5, 49.7, 73.0, 111.5, 77.7, and 217.7.">
+<table id="fs-idm180459824" class="unnumbered" summary="Þessi tafla inniheldur átta raðir og þrjá dálka. Fyrsta röðin er haus og hún merkir hvern dálk: „Efni“, „Markhitastig (K)“ og „Markþrýstingur (atm)“. Undir dálkinum „Efni“ er eftirfarandi: vetni, köfnunarefni, súrefni, koldíoxíð, ammóníak, brennisteinsdíoxíð og vatn. Undir dálkinum „Markhitastig (K)“ er eftirfarandi: 33,2, 126,0, 154,3, 304,2, 405,5, 430,3 og 647,1. Undir dálkinum „Markþrýstingur (atm)“ er eftirfarandi: 12,8, 33,5, 49,7, 73,0, 111,5, 77,7 og 217,7.">
 <label/>
 <tgroup cols="3">
 <colspec colnum="1" colname="c1"/>

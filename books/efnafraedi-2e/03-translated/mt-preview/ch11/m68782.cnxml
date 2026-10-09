@@ -44,7 +44,7 @@
 </figure>
 <para id="fs-idp86085408">Fyrir mörg loftkennd uppleyst efni er sambandið milli leysni, <emphasis effect="italics">C</emphasis><sub>g</sub>, og hlutþrýstings, <emphasis effect="italics">P</emphasis><sub>g</sub>, í réttu hlutfalli:</para>
 <equation id="fs-idm57709472" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math></equation>
-<para id="fs-idp72770704">þar sem <emphasis effect="italics">k</emphasis> er hlutfallfasti sem fer eftir eiginleikum loftkennda uppleysta efnisins, eiginleikum leysisins og hitastigi lausnarinnar. Þetta er stærðfræðileg framsetning á <term id="term-00005">lögmáli Henrys (e. henry’s law)</term>: <emphasis effect="italics">Magn kjörgass sem leysist upp í ákveðnu rúmmáli vökva er í beinu hlutfalli við þrýsting gassins.</emphasis></para>
+<para id="fs-idp72770704">þar sem <emphasis effect="italics">k</emphasis> er hlutfallfasti sem fer eftir eiginleikum loftkennda uppleysta efnisins, eiginleikum leysisins og hitastigi lausnarinnar. Þetta er stærðfræðileg framsetning á <term id="term-00005">lögmáli Henrys (e. Henry’s law)</term>: <emphasis effect="italics">Magn kjörgass sem leysist upp í ákveðnu rúmmáli vökva er í beinu hlutfalli við þrýsting gassins.</emphasis></para>
 <example id="fs-idp3359488">
 <para id="fs-idm1765696"><title>Notkun á lögmáli Henrys</title>Við 20 °C er styrkur uppleysts súrefnis í vatni sem er í snertingu við loftkennt súrefni við hlutþrýstinginn 101,3 kPa 1,38 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> mól L<sup>−1</sup>. Notaðu lögmál Henrys til að ákvarða leysni súrefnis þegar hlutþrýstingur þess er 20,7 kPa, sem er nálægt þrýstingi súrefnis í lofthjúpi jarðar.</para>
 <para id="fs-idp69198064"><title>Lausn</title>Samkvæmt lögmáli Henrys, fyrir kjörlausn, er leysni, <emphasis effect="italics">C</emphasis><sub>g</sub>, gass (1,38 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> mól L<sup>−1</sup>, í þessu tilfelli) í beinu hlutfalli við þrýstinginn, <emphasis effect="italics">P</emphasis><sub>g</sub>, óuppleysta gassins fyrir ofan lausnina (101,3 kPa í þessu tilfelli). Þar sem bæði <emphasis effect="italics">C</emphasis><sub>g</sub> og <emphasis effect="italics">P</emphasis><sub>g</sub> eru þekkt er hægt að endurraða þessu sambandi og nota það til að leysa fyrir <emphasis effect="italics">k</emphasis>.</para>
@@ -77,7 +77,7 @@
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_11_03_recompress.jpg"/>
 </media>
 <caption>(a) Kafarar bandaríska sjóhersins gangast undir þjálfun í endurþrýstingsklefa. (b) Kafarar fá súrefnismeðferð í þrýstihylki.</caption></figure></note>
-<para id="fs-idm18427536">Frávik frá <term class="no-emphasis" id="term-00006">lögmáli Henrys (e. henry’s law)</term> sjást þegar efnahvarf á sér stað milli uppleystu lofttegundarinnar og leysiefnisins. Þannig eykst til dæmis leysni ammoníaks í vatni hraðar með auknum þrýstingi en lögmálið spáir fyrir um vegna þess að ammoníak, sem er basi, hvarfast að einhverju leyti við vatn og myndar ammóníumjónir og hýdroxíðjónir.</para>
+<para id="fs-idm18427536">Frávik frá <term class="no-emphasis" id="term-00006">lögmáli Henrys (e. Henry’s law)</term> sjást þegar efnahvarf á sér stað milli uppleystu lofttegundarinnar og leysiefnisins. Þannig eykst til dæmis leysni ammoníaks í vatni hraðar með auknum þrýstingi en lögmálið spáir fyrir um vegna þess að ammoníak, sem er basi, hvarfast að einhverju leyti við vatn og myndar ammóníumjónir og hýdroxíðjónir.</para>
 <media id="fs-idp36245120" class="scaled-down" alt="Þessi hvarfmynd sýnir þrjú H-atóm tengd N-atómi fyrir ofan, neðan og til vinstri við N. Eitt par af punktum er hægra megin við N. Þessu fylgir plús, síðan tvö H-atóm tengd O-atómi til vinstri og neðan við O. Tvö pör af punktum eru á O, annað fyrir ofan og hitt hægra megin við O. Tvöföld ör fylgir, með efri ör sem vísar til hægri og neðri ör sem vísar til vinstri. Hægra megin við tvöföldu örina eru fjögur H-atóm sýnd tengd miðlægu N-atómi. Þessi 5 atóm eru innan sviga með plús í hávísitölu fyrir utan. Plús fylgir, síðan O-atóm tengt með tengi við H-atóm hægra megin við það. O-atómið hefur punktapör fyrir ofan, til vinstri og neðan við atómið. Tengdu O og H eru innan sviga með mínus í hávísitölu fyrir utan.">
 <image mime-type="image/svg+xml" src="../../media/CNX_Chem_11_02_ammonia1_img_IS.svg"/>
 </media>
@@ -140,7 +140,7 @@
 </section>
 <section id="fs-idp44827264" class="key-equations">
 <title>Lykiljafna</title>
-<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<table id="key-equations-table" class="unnumbered unstyled" summary="lykiljöfnutafla"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
 <row><entry><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mtext>g</m:mtext></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:msub><m:mi>P</m:mi><m:mtext>g</m:mtext></m:msub></m:mrow></m:math></entry>
@@ -223,7 +223,7 @@
 </content>
 <glossary>
 <definition id="fs-idp6753792">
-<term>Lögmál Henrys (e. henry’s law)</term>
+<term>Lögmál Henrys (e. Henry’s law)</term>
 <meaning id="fs-idp6753792-meaning">hlutfallslegt samband milli styrks uppleystrar lofttegundar í lausn og hlutþrýstings lofttegundarinnar í snertingu við lausnina</meaning>
 </definition>
 <definition id="fs-idp30466624">

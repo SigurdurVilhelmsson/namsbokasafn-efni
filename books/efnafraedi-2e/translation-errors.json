@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-22T11:28:49.907Z",
+  "generated": "2026-10-09T14:50:57.499Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-22T11:28:49.907Z",
+      "generated": "2026-10-09T14:50:57.499Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 134,
-        "withDiscrepancies": 15,
-        "totalDiscrepancies": 26,
+        "perfect": 133,
+        "withDiscrepancies": 16,
+        "totalDiscrepancies": 28,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 10,
+        "deferredLosses": 12,
         "benignArtifacts": 16,
         "green": true
       },
@@ -24,9 +24,10 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1,
-              "status": "benign",
-              "reason": "empty self-closing <emphasis/> in OpenStax source (zero content)"
+              "diff": -2,
+              "status": "known-loss-deferred",
+              "reason": "two parts, measured per para on 2026-10-09: (1) benign, the empty self-closing <emphasis/> in para fs-idm50940704 (zero content); (2) a real loss, the MT merged the two italic synonyms 'double displacement' and 'double replacement' in para fs-idp140132618169728 into one 'tvöföld skipti'. Was -1 only because §C4's duplicated step-1 <emphasis> (+1) masked the real loss.",
+              "pointer": "campaign register, the 2026-09-26 block's ② batch, §C4 (2026-10-09)"
             }
           ]
         },
@@ -65,6 +66,18 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/> in source (zero content)"
+            }
+          ]
+        },
+        {
+          "moduleId": "m68747",
+          "chapter": "ch08",
+          "discrepancies": [
+            {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "benign",
+              "reason": "empty self-closing <emphasis/> in OpenStax source para fs-idp84255584 (zero content). Masked to 0 until §C16(a) (2026-10-09) stopped the literal-asterisk converter inventing an <emphasis> in 8-4."
             }
           ]
         },

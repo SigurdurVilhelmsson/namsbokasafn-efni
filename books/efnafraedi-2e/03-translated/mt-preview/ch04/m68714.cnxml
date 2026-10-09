@@ -12,7 +12,7 @@
 <section id="fs-idp5731792">
 <title>Takmarkandi hvarfefni</title>
 <para id="fs-idp103911360">Lítum á aðra samlíkingu úr eldhúsinu, gerð grillaðra ostasamloka (<link target-id="CNX_Chem_04_04_sandwich"/>):</para>
-<equation id="fs-idp59817360" class="unnumbered"><m:math><m:mrow><m:mtext>1 slice of cheese</m:mtext><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>2 slices of bread</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>1 sandwich</m:mtext></m:mrow></m:math></equation>
+<equation id="fs-idp59817360" class="unnumbered"><m:math><m:mrow><m:mtext>1 ostsneið</m:mtext><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>2 brauðsneiðar</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>1 sandwich</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp39531056">Efnamagnshlutföll hráefna í þessari uppskrift eru brauðsneiðar og ostsneiðar í hlutfallinu 2:1. Með 28 brauðsneiðum og 11 ostsneiðum er hægt að útbúa 11 samlokur samkvæmt uppskriftinni, þar sem allur osturinn er notaður og sex brauðsneiðar verða afgangs. Í þessu tilviki hefur fjöldi samloka sem hægt er að útbúa verið <emphasis effect="italics">takmarkaður</emphasis> af fjölda ostsneiða og brauðsneiðarnar hafa verið til staðar í <emphasis effect="italics">umframmagni</emphasis>.</para>
 <figure id="CNX_Chem_04_04_sandwich">
 <media id="fs-idm59912944" alt="Þessi mynd sýnir í þremur röðum hráefnin sem þarf til að búa til samloku. Í fyrstu röðinni stendur: „1 samloka = 2 brauðsneiðar + 1 ostsneið.“ Tvær brauðsneiðar og ein ostsneið eru sýndar. Í annarri röðinni stendur: „Til staðar: 28 brauðsneiðar + 11 ostsneiðar.“ Þar eru sýndar 28 brauðsneiðar og 11 ostsneiðar. Í þriðju röðinni stendur: „Við getum búið til: 11 samlokur + 6 brauðsneiðar afgangs.“ 11 samlokur eru sýndar með sex auka brauðsneiðum.">
@@ -100,7 +100,7 @@
 </section>
 <section id="fs-idp36036608" class="key-equations">
 <title>Lykiljöfnur</title>
-<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<table id="key-equations-table" class="unnumbered unstyled" summary="lykiljöfnutafla"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
 <row><entry><m:math><m:mrow><m:mtext>prósentuheimtur</m:mtext><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>raunheimtur</m:mtext></m:mrow><m:mrow><m:mtext>fræðilegar heimtur</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>100</m:mn></m:mrow></m:math></entry>
@@ -230,7 +230,7 @@
 </exercise>
 <exercise id="fs-idm19471568">
 <problem id="fs-idp215625584">
-<para id="fs-idp8946384">Myndir þú samþykkja að kaupa 1 billjón (1.000.000.000.000) gullatóm fyrir 5 dollara? Útskýrðu hvers vegna eða hvers vegna ekki. Finndu núverandi verð á gulli á http://money.cnn.com/data/commodities/ <m:math><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mtext>1 troy ounce</m:mtext><m:mo>=</m:mo><m:mtext>31.1 g</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idp8946384">Myndir þú samþykkja að kaupa 1 billjón (1.000.000.000.000) gullatóm fyrir 5 dollara? Útskýrðu hvers vegna eða hvers vegna ekki. Finndu núverandi verð á gulli á http://money.cnn.com/data/commodities/ <m:math><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mtext>1 troy únsa</m:mtext><m:mo>=</m:mo><m:mtext>31.1 g</m:mtext></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp17552400"><para id="fs-idp8960064">Þetta magn er ekki hægt að vigta á venjulegri vog og er verðlaust.</para>
 </solution>

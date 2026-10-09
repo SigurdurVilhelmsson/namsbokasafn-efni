@@ -13,7 +13,7 @@
 <title>Útreikningur á formlegri hleðslu</title>
 <para id="fs-idm16217792"><term id="term-00001">Formleg hleðsla (e. formal charge)</term> frumeindar í sameind er <emphasis effect="italics">tilgátuleg</emphasis> hleðsla sem frumeindin hefði ef við gætum endurdreift rafeindunum í tengjunum jafnt á milli frumeindanna. Önnur leið til að orða þetta er að formleg hleðsla fæst þegar við tökum fjölda gildisrafeinda hlutlausrar frumeindar, drögum frá rafeindir sem ekki eru í tengi og drögum síðan frá fjölda tengja sem tengjast þeirri frumeind í Lewis-myndinni.</para>
 <para id="fs-idp126842624">Þannig reiknum við formlega hleðslu á eftirfarandi hátt:</para>
-<equation id="fs-idp90018832" class="unnumbered"><m:math><m:mrow><m:mtext>formal charge</m:mtext><m:mo>=</m:mo><m:mtext># valence shell electrons (free atom)</m:mtext><m:mo>−</m:mo><m:mtext># lone pair electrons</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mtext># bonding electrons</m:mtext></m:mrow></m:math>
+<equation id="fs-idp90018832" class="unnumbered"><m:math><m:mrow><m:mtext>formleg hleðsla</m:mtext><m:mo>=</m:mo><m:mtext># gildisrafeinda (frjálst atóm)</m:mtext><m:mo>−</m:mo><m:mtext># rafeinda í stökum rafeindapörum</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mtext># tengirafeinda</m:mtext></m:mrow></m:math>
 </equation>
 <para id="fs-idp88204016">Við getum yfirfarið útreikninga á formlegri hleðslu með því að ákvarða summu formlegra hleðslna fyrir alla myndina. Summa formlegra hleðslna allra frumeinda í sameind verður að vera núll; summa formlegra hleðslna í jón ætti að vera jöfn hleðslu jónarinnar.</para>
 <para id="fs-idp15200480">Við verðum að muna að formleg hleðsla sem reiknuð er fyrir frumeind er ekki <emphasis effect="italics">raunveruleg</emphasis> hleðsla frumeindarinnar í sameindinni. Formleg hleðsla er aðeins gagnleg bókhaldsaðferð; hún gefur ekki til kynna tilvist raunverulegra hleðslna.</para>
@@ -116,10 +116,10 @@
 </section>
 <section id="fs-idp77377632" class="key-equations">
 <title>Lykiljafna</title>
-<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<table id="key-equations-table" class="unnumbered unstyled" summary="lykiljöfnutafla"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry><m:math><m:mrow><m:mtext>formal charge</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext># valence shell electrons (free atom)</m:mtext><m:mspace width="0.1em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mtext># lone pair electrons</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.3em"/><m:mtext># bonding electrons</m:mtext></m:mrow></m:math></entry>
+<row><entry><m:math><m:mrow><m:mtext>formleg hleðsla</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext># gildisrafeinda (frjálst atóm)</m:mtext><m:mspace width="0.1em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mtext># rafeinda í stökum rafeindapörum</m:mtext><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.3em"/><m:mtext># tengirafeinda</m:mtext></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>

@@ -1,506 +1,215 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="468pt" height="149pt" viewBox="0 0 468 149">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="1300" height="413.89" viewBox="0 0 468 149"><style>@font-face{font-family:'FigIS';font-weight:400;font-style:normal;src:url(data:font/woff2;base64,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) format('woff2');}</style><metadata>Font: FigIS is a subset of Liberation Sans 2.1.5 (Regular), renamed as its licence requires.
+Copyright notice (Regular): Digitized data copyright (c) 2010 Google Corporation. 
+Copyright (c) 2012 Red Hat, Inc.
+Trademark notice (Regular): Liberation is a trademark of Red Hat, Inc. registered in U.S. Patent and Trademark Office and certain other jurisdictions.
+The font software is licensed under the SIL Open Font License, Version 1.1. Its licence follows.
+
+Digitized data copyright (c) 2010 Google Corporation
+	with Reserved Font Arimo, Tinos and Cousine.
+Copyright (c) 2012 Red Hat, Inc.
+	with Reserved Font Name Liberation.
+
+This Font Software is licensed under the SIL Open Font License,
+Version 1.1.
+
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+
+PREAMBLE The goals of the Open Font License (OFL) are to stimulate
+worldwide development of collaborative font projects, to support the font
+creation efforts of academic and linguistic communities, and to provide
+a free and open framework in which fonts may be shared and improved in
+partnership with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves.
+The fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works.  The fonts and derivatives,
+however, cannot be released under any other type of license.  The
+requirement for fonts to remain under this license does not apply to
+any document created using the fonts or their derivatives.
+
+ 
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such.
+This may include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components
+as distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting ? in part or in whole ?
+any of the components of the Original Version, by changing formats or
+by porting the Font Software to a new environment.
+
+"Author" refers to any designer, engineer, programmer, technical writer
+or other person who contributed to the Font Software.
+
+
+PERMISSION &amp; CONDITIONS
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,in
+   Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+   redistributed and/or sold with any software, provided that each copy
+   contains the above copyright notice and this license. These can be
+   included either as stand-alone text files, human-readable headers or
+   in the appropriate machine-readable metadata fields within text or
+   binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+   Name(s) unless explicit written permission is granted by the
+   corresponding Copyright Holder. This restriction only applies to the
+   primary font name as presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+   Software shall not be used to promote, endorse or advertise any
+   Modified Version, except to acknowledge the contribution(s) of the
+   Copyright Holder(s) and the Author(s) or with their explicit written
+   permission.
+
+5) The Font Software, modified or unmodified, in part or in whole, must
+   be distributed entirely under this license, and must not be distributed
+   under any other license. The requirement for fonts to remain under
+   this license does not apply to any document created using the Font
+   Software.
+
+
+ 
+TERMINATION
+This license becomes null and void if any of the above conditions are not met.
+
+ 
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT.  IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
+DEALINGS IN THE FONT SOFTWARE.
+
+</metadata>
 <defs>
-<filter id="filter-remove-color-and-invert-alpha" x="0%" y="0%" width="100%" height="100%">
-<feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1 1"/>
-</filter>
-<filter id="filter-0" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-1" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-2" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-1" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-3" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-4" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-2" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-6" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-7" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-3" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-8" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-9" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-4" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-11" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-12" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-5" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-13" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-14" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-6" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-16" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-17" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-7" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-18" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-19" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-8" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-21" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-22" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-9" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-23" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-24" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-10" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-26" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-27" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-11" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-28" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-29" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-12" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-31" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-32" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-13" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-33" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-34" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-14" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-36" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-37" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-15" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-38" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-39" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-16" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-41" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-42" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feBlend in="source" in2="destination" mode="multiply" color-interpolation-filters="sRGB"/>
-</filter>
-<filter id="filter-17" x="0%" y="0%" width="100%" height="100%">
-<feImage xlink:href="#compositing-group-43" result="source" x="0" y="0" width="561.6" height="178.8"/>
-<feImage xlink:href="#compositing-group-44" result="destination" x="0" y="0" width="561.6" height="178.8"/>
-<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
-</filter>
-<clipPath id="clip-0">
-<path clip-rule="nonzero" d="M 0.347656 0.847656 L 6.652344 0.847656 L 6.652344 7.152344 L 0.347656 7.152344 Z M 0.347656 0.847656 "/>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,149)" d="M0 149H468V0H0Z"/>
 </clipPath>
-<clipPath id="clip-1">
-<rect x="0" y="0" width="7" height="8"/>
+<clipPath id="clip_2">
+<path transform="matrix(1,0,0,-1,0,149)" d="M77.3462 95.8462H83.6533V102.154H77.3462Z"/>
 </clipPath>
-<g id="source-5" clip-path="url(#clip-1)">
-<g clip-path="url(#clip-0)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.414062 4 C 7.667969 5.152344 7.199219 6.191406 4.144531 4.648438 C 5.691406 7.699219 4.648438 8.167969 3.5 4.914062 C 2.347656 8.167969 1.308594 7.699219 2.851562 4.648438 C -0.203125 6.191406 -0.667969 5.152344 2.585938 4 C -0.667969 2.847656 -0.203125 1.808594 2.851562 3.351562 C 1.308594 0.300781 2.347656 -0.167969 3.5 3.085938 C 4.648438 -0.167969 5.691406 0.300781 4.144531 3.351562 C 7.199219 1.808594 7.667969 2.847656 4.414062 4 "/>
-</g>
-</g>
-<g id="compositing-group-0" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-0">
-<use xlink:href="#compositing-group-0"/>
-</mask>
-<mask id="mask-1">
-<use xlink:href="#compositing-group-0" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-2">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-1" mask="url(#mask-2)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-5" transform="matrix(1, 0, 0, 1, 77, 46)"/>
-</g>
-</g>
-<g id="compositing-group-2" transform="translate(46.8, 14.9)">
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 280.34375 51.441406 C 280.34375 75.945312 260.476562 95.8125 235.96875 95.8125 C 211.464844 95.8125 191.597656 75.945312 191.597656 51.441406 C 191.597656 26.9375 211.464844 7.070312 235.96875 7.070312 C 260.476562 7.070312 280.34375 26.9375 280.34375 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 266.542969 51.441406 C 266.542969 68.328125 252.855469 82.015625 235.96875 82.015625 C 219.082031 82.015625 205.394531 68.328125 205.394531 51.441406 C 205.394531 34.554688 219.082031 20.863281 235.96875 20.863281 C 252.855469 20.863281 266.542969 34.554688 266.542969 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 253.300781 51.441406 C 253.300781 61.011719 245.542969 68.773438 235.96875 68.773438 C 226.398438 68.773438 218.636719 61.011719 218.636719 51.441406 C 218.636719 41.867188 226.398438 34.109375 235.96875 34.109375 C 245.542969 34.109375 253.300781 41.867188 253.300781 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 123.285156 51.441406 C 123.285156 75.945312 103.421875 95.8125 78.914062 95.8125 C 54.40625 95.8125 34.542969 75.945312 34.542969 51.441406 C 34.542969 26.9375 54.40625 7.070312 78.914062 7.070312 C 103.421875 7.070312 123.285156 26.9375 123.285156 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 109.488281 51.441406 C 109.488281 68.328125 95.800781 82.015625 78.914062 82.015625 C 62.027344 82.015625 48.339844 68.328125 48.339844 51.441406 C 48.339844 34.554688 62.027344 20.863281 78.914062 20.863281 C 95.800781 20.863281 109.488281 34.554688 109.488281 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 96.246094 51.441406 C 96.246094 61.011719 88.488281 68.773438 78.914062 68.773438 C 69.339844 68.773438 61.582031 61.011719 61.582031 51.441406 C 61.582031 41.867188 69.339844 34.109375 78.914062 34.109375 C 88.488281 34.109375 96.246094 41.867188 96.246094 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 435.453125 51.441406 C 435.453125 75.945312 415.589844 95.8125 391.082031 95.8125 C 366.574219 95.8125 346.710938 75.945312 346.710938 51.441406 C 346.710938 26.9375 366.574219 7.070312 391.082031 7.070312 C 415.589844 7.070312 435.453125 26.9375 435.453125 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 421.65625 51.441406 C 421.65625 68.328125 407.96875 82.015625 391.082031 82.015625 C 374.195312 82.015625 360.507812 68.328125 360.507812 51.441406 C 360.507812 34.554688 374.195312 20.863281 391.082031 20.863281 C 407.96875 20.863281 421.65625 34.554688 421.65625 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(54.981995%, 56.295776%, 80.126953%)" fill-opacity="1" d="M 408.414062 51.441406 C 408.414062 61.011719 400.652344 68.773438 391.082031 68.773438 C 381.507812 68.773438 373.75 61.011719 373.75 51.441406 C 373.75 41.867188 381.507812 34.109375 391.082031 34.109375 C 400.652344 34.109375 408.414062 41.867188 408.414062 51.441406 "/>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 83.039062 50 C 83.039062 51.402344 81.902344 52.539062 80.5 52.539062 C 79.097656 52.539062 77.957031 51.402344 77.957031 50 C 77.957031 48.597656 79.097656 47.460938 80.5 47.460938 C 81.902344 47.460938 83.039062 48.597656 83.039062 50 "/>
-</g>
-<g id="compositing-group-3" filter="url(#filter-0)" mask="url(#mask-0)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-4" mask="url(#mask-1)">
-<use xlink:href="#compositing-group-2"/>
-</g>
-<clipPath id="clip-2">
-<path clip-rule="nonzero" d="M 0.222656 0.347656 L 6.527344 0.347656 L 6.527344 6.652344 L 0.222656 6.652344 Z M 0.222656 0.347656 "/>
+<clipPath id="clip_3">
+<path transform="matrix(1,0,0,-1,0,149)" d="M81.2212 97.3462H87.5283V103.654H81.2212Z"/>
 </clipPath>
-<clipPath id="clip-3">
-<rect x="0" y="0" width="7" height="7"/>
+<clipPath id="clip_4">
+<path transform="matrix(1,0,0,-1,0,149)" d="M79.2212 93.7212H85.5283V100.029H79.2212Z"/>
 </clipPath>
-<g id="source-8" clip-path="url(#clip-3)">
-<g clip-path="url(#clip-2)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.289062 3.5 C 7.542969 4.652344 7.074219 5.691406 4.019531 4.148438 C 5.566406 7.199219 4.523438 7.667969 3.375 4.414062 C 2.222656 7.667969 1.183594 7.199219 2.726562 4.148438 C -0.328125 5.691406 -0.792969 4.652344 2.460938 3.5 C -0.792969 2.347656 -0.328125 1.308594 2.726562 2.851562 C 1.183594 -0.199219 2.222656 -0.667969 3.375 2.585938 C 4.523438 -0.667969 5.566406 -0.199219 4.019531 2.851562 C 7.074219 1.308594 7.542969 2.347656 4.289062 3.5 "/>
-</g>
-</g>
-<g id="compositing-group-5" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-3">
-<use xlink:href="#compositing-group-5"/>
-</mask>
-<mask id="mask-4">
-<use xlink:href="#compositing-group-5" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-5">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-6" mask="url(#mask-5)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-8" transform="matrix(1, 0, 0, 1, 81, 45)"/>
-</g>
-</g>
-<g id="compositing-group-7" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-0)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 86.914062 48.5 C 86.914062 49.902344 85.777344 51.039062 84.375 51.039062 C 82.972656 51.039062 81.832031 49.902344 81.832031 48.5 C 81.832031 47.097656 82.972656 45.960938 84.375 45.960938 C 85.777344 45.960938 86.914062 47.097656 86.914062 48.5 "/>
-</g>
-<g id="compositing-group-8" filter="url(#filter-2)" mask="url(#mask-3)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-9" mask="url(#mask-4)">
-<use xlink:href="#compositing-group-7"/>
-</g>
-<clipPath id="clip-4">
-<path clip-rule="nonzero" d="M 0.222656 0.972656 L 6.527344 0.972656 L 6.527344 7.277344 L 0.222656 7.277344 Z M 0.222656 0.972656 "/>
+<clipPath id="clip_5">
+<path transform="matrix(1,0,0,-1,0,149)" d="M244.317 109.444H250.625V115.752H244.317Z"/>
 </clipPath>
-<clipPath id="clip-5">
-<rect x="0" y="0" width="7" height="8"/>
+<clipPath id="clip_6">
+<path transform="matrix(1,0,0,-1,0,149)" d="M248.599 108.205H254.906V114.513H248.599Z"/>
 </clipPath>
-<g id="source-11" clip-path="url(#clip-5)">
-<g clip-path="url(#clip-4)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.289062 4.125 C 7.542969 5.277344 7.074219 6.316406 4.019531 4.773438 C 5.566406 7.824219 4.523438 8.292969 3.375 5.039062 C 2.222656 8.292969 1.183594 7.824219 2.726562 4.773438 C -0.328125 6.316406 -0.792969 5.277344 2.460938 4.125 C -0.792969 2.972656 -0.328125 1.933594 2.726562 3.476562 C 1.183594 0.425781 2.222656 -0.0429688 3.375 3.210938 C 4.523438 -0.0429688 5.566406 0.425781 4.019531 3.476562 C 7.074219 1.933594 7.542969 2.972656 4.289062 4.125 "/>
-</g>
-</g>
-<g id="compositing-group-10" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-6">
-<use xlink:href="#compositing-group-10"/>
-</mask>
-<mask id="mask-7">
-<use xlink:href="#compositing-group-10" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-8">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-11" mask="url(#mask-8)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-11" transform="matrix(1, 0, 0, 1, 79, 48)"/>
-</g>
-</g>
-<g id="compositing-group-12" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-2)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 84.914062 52.125 C 84.914062 53.527344 83.777344 54.664062 82.375 54.664062 C 80.972656 54.664062 79.832031 53.527344 79.832031 52.125 C 79.832031 50.722656 80.972656 49.585938 82.375 49.585938 C 83.777344 49.585938 84.914062 50.722656 84.914062 52.125 "/>
-</g>
-<g id="compositing-group-13" filter="url(#filter-4)" mask="url(#mask-6)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-14" mask="url(#mask-7)">
-<use xlink:href="#compositing-group-12"/>
-</g>
-<clipPath id="clip-6">
-<path clip-rule="nonzero" d="M 0.316406 0.246094 L 6.625 0.246094 L 6.625 6.554688 L 0.316406 6.554688 Z M 0.316406 0.246094 "/>
+<clipPath id="clip_7">
+<path transform="matrix(1,0,0,-1,0,149)" d="M252.091 100.544H258.398V106.852H252.091Z"/>
 </clipPath>
-<clipPath id="clip-7">
-<rect x="0" y="0" width="7" height="7"/>
+<clipPath id="clip_8">
+<path transform="matrix(1,0,0,-1,0,149)" d="M422.425 99.6431H428.732V105.951H422.425Z"/>
 </clipPath>
-<g id="source-14" clip-path="url(#clip-7)">
-<g clip-path="url(#clip-6)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.386719 3.402344 C 7.640625 4.554688 7.171875 5.59375 4.117188 4.050781 C 5.664062 7.101562 4.621094 7.570312 3.46875 4.316406 C 2.320312 7.570312 1.28125 7.101562 2.824219 4.050781 C -0.230469 5.59375 -0.695312 4.554688 2.558594 3.402344 C -0.695312 2.25 -0.230469 1.210938 2.824219 2.753906 C 1.28125 -0.300781 2.320312 -0.765625 3.46875 2.488281 C 4.621094 -0.765625 5.664062 -0.300781 4.117188 2.753906 C 7.171875 1.210938 7.640625 2.25 4.386719 3.402344 "/>
-</g>
-</g>
-<g id="compositing-group-15" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-9">
-<use xlink:href="#compositing-group-15"/>
-</mask>
-<mask id="mask-10">
-<use xlink:href="#compositing-group-15" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-11">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-16" mask="url(#mask-11)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-14" transform="matrix(1, 0, 0, 1, 244, 33)"/>
-</g>
-</g>
-<g id="compositing-group-17" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-4)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 250.011719 36.402344 C 250.011719 37.804688 248.875 38.941406 247.46875 38.941406 C 246.070312 38.941406 244.929688 37.804688 244.929688 36.402344 C 244.929688 35 246.070312 33.859375 247.46875 33.859375 C 248.875 33.859375 250.011719 35 250.011719 36.402344 "/>
-</g>
-<g id="compositing-group-18" filter="url(#filter-6)" mask="url(#mask-9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-19" mask="url(#mask-10)">
-<use xlink:href="#compositing-group-17"/>
-</g>
-<clipPath id="clip-8">
-<path clip-rule="nonzero" d="M 0.597656 0.488281 L 6.90625 0.488281 L 6.90625 6.796875 L 0.597656 6.796875 Z M 0.597656 0.488281 "/>
+<clipPath id="clip_9">
+<path transform="matrix(1,0,0,-1,0,149)" d="M416.05 119.268H422.357V125.576H416.05Z"/>
 </clipPath>
-<clipPath id="clip-9">
-<rect x="0" y="0" width="7" height="7"/>
+<clipPath id="clip_10">
+<path transform="matrix(1,0,0,-1,0,149)" d="M423.425 87.1431H429.732V93.4507H423.425Z"/>
 </clipPath>
-<g id="source-17" clip-path="url(#clip-9)">
-<g clip-path="url(#clip-8)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.667969 3.640625 C 7.921875 4.792969 7.453125 5.832031 4.398438 4.289062 C 5.945312 7.34375 4.902344 7.808594 3.753906 4.554688 C 2.601562 7.808594 1.5625 7.34375 3.105469 4.289062 C 0.0507812 5.832031 -0.414062 4.792969 2.839844 3.640625 C -0.414062 2.488281 0.0507812 1.449219 3.105469 2.992188 C 1.5625 -0.0585938 2.601562 -0.527344 3.753906 2.726562 C 4.902344 -0.527344 5.945312 -0.0585938 4.398438 2.992188 C 7.453125 1.449219 7.921875 2.488281 4.667969 3.640625 "/>
-</g>
-</g>
-<g id="compositing-group-20" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-12">
-<use xlink:href="#compositing-group-20"/>
-</mask>
-<mask id="mask-13">
-<use xlink:href="#compositing-group-20" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-14">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-21" mask="url(#mask-14)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-17" transform="matrix(1, 0, 0, 1, 248, 34)"/>
-</g>
-</g>
-<g id="compositing-group-22" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-6)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 254.292969 37.640625 C 254.292969 39.042969 253.15625 40.183594 251.753906 40.183594 C 250.351562 40.183594 249.210938 39.042969 249.210938 37.640625 C 249.210938 36.238281 250.351562 35.101562 251.753906 35.101562 C 253.15625 35.101562 254.292969 36.238281 254.292969 37.640625 "/>
-</g>
-<g id="compositing-group-23" filter="url(#filter-8)" mask="url(#mask-12)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-24" mask="url(#mask-13)">
-<use xlink:href="#compositing-group-22"/>
-</g>
-<clipPath id="clip-10">
-<path clip-rule="nonzero" d="M 0.0898438 0.148438 L 6.398438 0.148438 L 6.398438 6.457031 L 0.0898438 6.457031 Z M 0.0898438 0.148438 "/>
-</clipPath>
-<clipPath id="clip-11">
-<rect x="0" y="0" width="7" height="7"/>
-</clipPath>
-<g id="source-20" clip-path="url(#clip-11)">
-<g clip-path="url(#clip-10)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.160156 3.300781 C 7.414062 4.453125 6.945312 5.496094 3.890625 3.949219 C 5.4375 7.003906 4.394531 7.46875 3.246094 4.21875 C 2.09375 7.46875 1.054688 7.003906 2.597656 3.949219 C -0.457031 5.496094 -0.921875 4.453125 2.332031 3.300781 C -0.921875 2.152344 -0.457031 1.109375 2.597656 2.65625 C 1.054688 -0.398438 2.09375 -0.863281 3.246094 2.386719 C 4.394531 -0.863281 5.4375 -0.398438 3.890625 2.65625 C 6.945312 1.109375 7.414062 2.152344 4.160156 3.300781 "/>
-</g>
-</g>
-<g id="compositing-group-25" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-15">
-<use xlink:href="#compositing-group-25"/>
-</mask>
-<mask id="mask-16">
-<use xlink:href="#compositing-group-25" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-17">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-26" mask="url(#mask-17)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-20" transform="matrix(1, 0, 0, 1, 252, 42)"/>
-</g>
-</g>
-<g id="compositing-group-27" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-8)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 257.785156 45.300781 C 257.785156 46.707031 256.648438 47.84375 255.246094 47.84375 C 253.84375 47.84375 252.703125 46.707031 252.703125 45.300781 C 252.703125 43.898438 253.84375 42.761719 255.246094 42.761719 C 256.648438 42.761719 257.785156 43.898438 257.785156 45.300781 "/>
-</g>
-<g id="compositing-group-28" filter="url(#filter-10)" mask="url(#mask-15)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-29" mask="url(#mask-16)">
-<use xlink:href="#compositing-group-27"/>
-</g>
-<clipPath id="clip-12">
-<path clip-rule="nonzero" d="M 0.425781 0.0507812 L 6.730469 0.0507812 L 6.730469 6.355469 L 0.425781 6.355469 Z M 0.425781 0.0507812 "/>
-</clipPath>
-<clipPath id="clip-13">
-<rect x="0" y="0" width="7" height="7"/>
-</clipPath>
-<g id="source-23" clip-path="url(#clip-13)">
-<g clip-path="url(#clip-12)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.492188 3.203125 C 7.746094 4.355469 7.277344 5.394531 4.222656 3.851562 C 5.769531 6.902344 4.726562 7.371094 3.578125 4.117188 C 2.429688 7.371094 1.386719 6.902344 2.933594 3.851562 C -0.121094 5.394531 -0.589844 4.355469 2.664062 3.203125 C -0.589844 2.050781 -0.121094 1.011719 2.933594 2.554688 C 1.386719 -0.496094 2.429688 -0.964844 3.578125 2.289062 C 4.726562 -0.964844 5.769531 -0.496094 4.222656 2.554688 C 7.277344 1.011719 7.746094 2.050781 4.492188 3.203125 "/>
-</g>
-</g>
-<g id="compositing-group-30" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-18">
-<use xlink:href="#compositing-group-30"/>
-</mask>
-<mask id="mask-19">
-<use xlink:href="#compositing-group-30" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-20">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-31" mask="url(#mask-20)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-23" transform="matrix(1, 0, 0, 1, 422, 43)"/>
-</g>
-</g>
-<g id="compositing-group-32" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-10)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 428.117188 46.203125 C 428.117188 47.605469 426.980469 48.742188 425.578125 48.742188 C 424.175781 48.742188 423.035156 47.605469 423.035156 46.203125 C 423.035156 44.800781 424.175781 43.660156 425.578125 43.660156 C 426.980469 43.660156 428.117188 44.800781 428.117188 46.203125 "/>
-</g>
-<g id="compositing-group-33" filter="url(#filter-12)" mask="url(#mask-18)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-34" mask="url(#mask-19)">
-<use xlink:href="#compositing-group-32"/>
-</g>
-<clipPath id="clip-14">
-<path clip-rule="nonzero" d="M 0.0507812 0.425781 L 6.355469 0.425781 L 6.355469 6.730469 L 0.0507812 6.730469 Z M 0.0507812 0.425781 "/>
-</clipPath>
-<clipPath id="clip-15">
-<rect x="0" y="0" width="7" height="7"/>
-</clipPath>
-<g id="source-26" clip-path="url(#clip-15)">
-<g clip-path="url(#clip-14)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.117188 3.578125 C 7.371094 4.730469 6.902344 5.769531 3.847656 4.226562 C 5.394531 7.277344 4.351562 7.746094 3.203125 4.492188 C 2.054688 7.746094 1.011719 7.277344 2.558594 4.226562 C -0.496094 5.769531 -0.964844 4.730469 2.289062 3.578125 C -0.964844 2.425781 -0.496094 1.386719 2.558594 2.929688 C 1.011719 -0.121094 2.054688 -0.589844 3.203125 2.664062 C 4.351562 -0.589844 5.394531 -0.121094 3.847656 2.929688 C 6.902344 1.386719 7.371094 2.425781 4.117188 3.578125 "/>
-</g>
-</g>
-<g id="compositing-group-35" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-21">
-<use xlink:href="#compositing-group-35"/>
-</mask>
-<mask id="mask-22">
-<use xlink:href="#compositing-group-35" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-23">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-36" mask="url(#mask-23)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-26" transform="matrix(1, 0, 0, 1, 416, 23)"/>
-</g>
-</g>
-<g id="compositing-group-37" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-12)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 421.742188 26.578125 C 421.742188 27.980469 420.605469 29.117188 419.203125 29.117188 C 417.800781 29.117188 416.660156 27.980469 416.660156 26.578125 C 416.660156 25.175781 417.800781 24.035156 419.203125 24.035156 C 420.605469 24.035156 421.742188 25.175781 421.742188 26.578125 "/>
-</g>
-<g id="compositing-group-38" filter="url(#filter-14)" mask="url(#mask-21)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-39" mask="url(#mask-22)">
-<use xlink:href="#compositing-group-37"/>
-</g>
-<clipPath id="clip-16">
-<path clip-rule="nonzero" d="M 0.425781 0.550781 L 6.730469 0.550781 L 6.730469 6.855469 L 0.425781 6.855469 Z M 0.425781 0.550781 "/>
-</clipPath>
-<clipPath id="clip-17">
-<rect x="0" y="0" width="7" height="7"/>
-</clipPath>
-<g id="source-29" clip-path="url(#clip-17)">
-<g clip-path="url(#clip-16)">
-<path fill-rule="nonzero" fill="rgb(56.864929%, 56.079102%, 56.274414%)" fill-opacity="1" d="M 4.492188 3.703125 C 7.746094 4.855469 7.277344 5.894531 4.222656 4.351562 C 5.769531 7.402344 4.726562 7.871094 3.578125 4.617188 C 2.429688 7.871094 1.386719 7.402344 2.933594 4.351562 C -0.121094 5.894531 -0.589844 4.855469 2.664062 3.703125 C -0.589844 2.550781 -0.121094 1.511719 2.933594 3.054688 C 1.386719 0.00390625 2.429688 -0.464844 3.578125 2.789062 C 4.726562 -0.464844 5.769531 0.00390625 4.222656 3.054688 C 7.277344 1.511719 7.746094 2.550781 4.492188 3.703125 "/>
-</g>
-</g>
-<g id="compositing-group-40" transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-<mask id="mask-24">
-<use xlink:href="#compositing-group-40"/>
-</mask>
-<mask id="mask-25">
-<use xlink:href="#compositing-group-40" filter="url(#filter-remove-color-and-invert-alpha)"/>
-</mask>
-<mask id="mask-26">
-<g transform="translate(46.8, 14.9)">
-<rect x="-46.8" y="-14.9" width="561.6" height="178.8" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-</g>
-</mask>
-<g id="compositing-group-41" mask="url(#mask-26)">
-<g transform="translate(46.8, 14.9)">
-<use xlink:href="#source-29" transform="matrix(1, 0, 0, 1, 423, 55)"/>
-</g>
-</g>
-<g id="compositing-group-42" transform="translate(46.8, 14.9)">
-<g filter="url(#filter-14)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<path fill-rule="nonzero" fill="rgb(13.729858%, 12.159729%, 12.548828%)" fill-opacity="1" d="M 429.117188 58.703125 C 429.117188 60.105469 427.980469 61.242188 426.578125 61.242188 C 425.175781 61.242188 424.035156 60.105469 424.035156 58.703125 C 424.035156 57.300781 425.175781 56.160156 426.578125 56.160156 C 427.980469 56.160156 429.117188 57.300781 429.117188 58.703125 "/>
-</g>
-<g id="compositing-group-43" filter="url(#filter-16)" mask="url(#mask-24)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
-</g>
-<g id="compositing-group-44" mask="url(#mask-25)">
-<use xlink:href="#compositing-group-42"/>
-</g>
 </defs>
-<g filter="url(#filter-16)" transform="translate(-46.8, -14.9)">
-<rect x="0" y="0" width="561.6" height="178.8" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+<g>
+<g inkscape:groupmode="layer" inkscape:label="Illustration">
+<g clip-path="url(#clip_1)">
+<path transform="matrix(1,0,0,-1,280.3418,51.440904)" d="M0 0C0-24.505-19.865-44.373-44.373-44.373-68.878-44.373-88.744-24.505-88.744 0-88.744 24.505-68.878 44.372-44.373 44.372-19.865 44.372 0 24.505 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,266.5449,51.440904)" d="M0 0C0-16.886-13.689-30.576-30.576-30.576-47.461-30.576-61.151-16.886-61.151 0-61.151 16.886-47.461 30.576-30.576 30.576-13.689 30.576 0 16.886 0 0" fill="#ffffff"/>
+<path transform="matrix(1,0,0,-1,253.3027,51.440904)" d="M0 0C0-9.572-7.76-17.333-17.334-17.333-26.906-17.333-34.667-9.572-34.667 0-34.667 9.572-26.906 17.333-17.334 17.333-7.76 17.333 0 9.572 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,123.2866,51.440904)" d="M0 0C0-24.505-19.866-44.373-44.373-44.373-68.879-44.373-88.744-24.505-88.744 0-88.744 24.505-68.879 44.372-44.373 44.372-19.866 44.372 0 24.505 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,109.4888,51.440904)" d="M0 0C0-16.886-13.688-30.576-30.575-30.576-47.461-30.576-61.15-16.886-61.15 0-61.15 16.886-47.461 30.576-30.575 30.576-13.688 30.576 0 16.886 0 0" fill="#ffffff"/>
+<path transform="matrix(1,0,0,-1,96.2466,51.440904)" d="M0 0C0-9.572-7.76-17.333-17.333-17.333-26.905-17.333-34.666-9.572-34.666 0-34.666 9.572-26.905 17.333-17.333 17.333-7.76 17.333 0 9.572 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,435.4531,51.440904)" d="M0 0C0-24.505-19.865-44.373-44.373-44.373-68.879-44.373-88.744-24.505-88.744 0-88.744 24.505-68.879 44.372-44.373 44.372-19.865 44.372 0 24.505 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,421.6562,51.440904)" d="M0 0C0-16.886-13.689-30.576-30.576-30.576-47.461-30.576-61.15-16.886-61.15 0-61.15 16.886-47.461 30.576-30.576 30.576-13.689 30.576 0 16.886 0 0" fill="#ffffff"/>
+<path transform="matrix(1,0,0,-1,408.4141,51.440904)" d="M0 0C0-9.572-7.76-17.333-17.334-17.333-26.906-17.333-34.666-9.572-34.666 0-34.666 9.572-26.906 17.333-17.334 17.333-7.76 17.333 0 9.572 0 0" fill="#8a95c7"/>
+<path transform="matrix(1,0,0,-1,83.04,50)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_2)">
+<path transform="matrix(1,0,0,-1,81.415,50)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
 </g>
-<style>@font-face{font-family:'FigIS';font-weight:400;font-style:normal;src:url(data:font/woff2;base64,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) format('woff2');}</style>
-<g text-rendering="geometricPrecision">
-<text x="59.660" y="117.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Nákvæmt</text>
-<text x="54.900" y="128.126" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">og skilgreint</text>
-<text x="73.415" y="144.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve">(a)</text>
-<text x="216.213" y="117.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Skilgreint,</text>
-<text x="208.213" y="128.126" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">ekki nákvæmt</text>
-<text x="230.474" y="144.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve">(b)</text>
-<text x="361.577" y="117.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">Ekki nákvæmt,</text>
-<text x="364.075" y="128.126" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve" style="font-kerning:none">ekki skilgreint</text>
-<text x="385.841" y="144.128" font-family="FigIS" font-weight="400" font-size="9.000" fill="#211d1d" xml:space="preserve">(c)</text>
+</g>
+<path transform="matrix(1,0,0,-1,86.915,48.5)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_3)">
+<path transform="matrix(1,0,0,-1,85.29,48.5)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,84.915,52.125)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_4)">
+<path transform="matrix(1,0,0,-1,83.29,52.125)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,250.0117,36.4019)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_5)">
+<path transform="matrix(1,0,0,-1,248.3867,36.4019)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,254.293,37.641099)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_6)">
+<path transform="matrix(1,0,0,-1,252.668,37.641099)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,257.7852,45.3022)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_7)">
+<path transform="matrix(1,0,0,-1,256.1602,45.3022)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,428.1191,46.203104)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_8)">
+<path transform="matrix(1,0,0,-1,426.4941,46.203104)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,421.7441,26.578103)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_9)">
+<path transform="matrix(1,0,0,-1,420.1191,26.578103)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+<path transform="matrix(1,0,0,-1,429.1191,58.703104)" d="M0 0C0-1.403-1.137-2.541-2.541-2.541-3.943-2.541-5.082-1.403-5.082 0-5.082 1.403-3.943 2.541-2.541 2.541-1.137 2.541 0 1.403 0 0" fill="#231f20"/>
+<g style="mix-blend-mode:multiply">
+<g clip-path="url(#clip_10)">
+<path transform="matrix(1,0,0,-1,427.4941,58.703104)" d="M0 0C3.252-1.151 2.785-2.192-.27-.647 1.277-3.701 .234-4.167-.916-.915-2.066-4.167-3.107-3.701-1.562-.647-4.617-2.192-5.082-1.151-1.83 0-5.082 1.151-4.617 2.192-1.562 .647-3.107 3.701-2.066 4.167-.916 .915 .234 4.167 1.277 3.701-.27 .647 2.785 2.192 3.252 1.151 0 0" fill="#939598"/>
+</g>
+</g>
+</g>
+</g>
+<g inkscape:groupmode="layer" inkscape:label="Lables">
+<text fill="#221f1f" xml:space="preserve" transform="matrix(1 0 -0 1 0 149)" font-size="9" font-family="FigIS"><tspan y="-4.871599" x="73.4152 76.4122 81.4162 230.47422 233.4712 238.4752 385.84123 388.83824 393.33824">(a)(b)(c)</tspan></text>
+</g>
+<text fill="#221f1f" xml:space="preserve" transform="matrix(1 0 -0 1 0 180)" font-size="9" font-family="FigIS"><tspan y="-62.44409" x="68.65726 75.15526 77.15326 79.646259 82.13925 84.13725">Hitti&#x00f0;</tspan><tspan y="-51.824098" x="54.148714 59.152715 64.156719 66.64972 71.65372 76.657718 81.157718 85.657718 93.658718 101.155719">og&#x00a0;n&#x00e1;kv&#x00e6;mt</tspan><tspan y="-62.44409" x="215.466 221.964 226.968 231.468 235.968 243.96901 251.466 253.959">N&#x00e1;kv&#x00e6;mt,</tspan><tspan y="-51.824098" x="217.21063 222.21463 226.71463 231.21463 233.21263 235.70563 240.70963 242.70763 245.20063 247.69362 249.69162">ekki&#x00a0;hitti&#x00f0;</tspan><tspan y="-62.44409" x="367.5774 374.07539 378.57539 383.57939 386.5764 391.0764 393.07438 395.56739 400.57139 402.56938 405.06239 407.5554 409.55339">Hvorki&#x00a0;hitti&#x00f0;</tspan><tspan y="-51.824098" x="366.32276 371.32676 376.33076 378.82377 383.82777 388.83177 393.33177 397.83177 405.83277 413.32978">n&#x00e9;&#x00a0;n&#x00e1;kv&#x00e6;mt</tspan></text>
 </g>
 </svg>

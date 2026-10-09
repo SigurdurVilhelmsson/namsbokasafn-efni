@@ -3,20 +3,30 @@
   "track": "mt-preview",
   "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed. SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into one directory, so a consumer must read each track's map separately and reconcile them itself; a `to` here can also be superseded at the destination by the reader site's own overlay pruning.",
   "renames": {
-    "chapters/01/1-2-efnishamur-og-flokkun-efnis.html": {
-      "to": "chapters/01/1-2-astandsform-og-flokkun-efnis.html",
+    "chapters/01/1-2-astandsform-og-flokkun-efnis.html": {
+      "to": "chapters/01/1-2-efnishamir-og-flokkun-efnis.html",
       "moduleId": "m68667",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/01/1-5-ovissa-i-maelingum-hittni-og-nakvaemni.html": {
-      "to": "chapters/01/1-5-maeliovissa-nakvaemni-og-genkvaemni.html",
+    "chapters/01/1-2-efnishamur-og-flokkun-efnis.html": {
+      "to": "chapters/01/1-2-efnishamir-og-flokkun-efnis.html",
+      "moduleId": "m68667",
+      "recordedAt": "2026-10-09"
+    },
+    "chapters/01/1-5-maeliovissa-nakvaemni-og-genkvaemni.html": {
+      "to": "chapters/01/1-5-ovissa-i-maelingum-hittni-og-nakvaemni.html",
       "moduleId": "m68690",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
+    },
+    "chapters/01/1-6-staerdfraedileg-medferd-maelinidurstadna.html": {
+      "to": "chapters/01/1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga.html",
+      "moduleId": "m68683",
+      "recordedAt": "2026-10-09"
     },
     "chapters/01/1-6-staerdfraedileg-medferd-nidurstadna-maelinga.html": {
-      "to": "chapters/01/1-6-staerdfraedileg-medferd-maelinidurstadna.html",
+      "to": "chapters/01/1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga.html",
       "moduleId": "m68683",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
     "chapters/02/2-3-bygging-atoms-og-taknmal.html": {
       "to": "chapters/02/2-3-atombygging-og-taknmal.html",
@@ -24,9 +34,14 @@
       "recordedAt": "2026-09-20"
     },
     "chapters/02/2-6-jona-og-sameindaefnasambond.html": {
-      "to": "chapters/02/2-6-jona-og-sameindasambond.html",
+      "to": "chapters/02/2-6-jonaefni-og-sameindaefni.html",
       "moduleId": "m68696",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
+    },
+    "chapters/02/2-6-jona-og-sameindasambond.html": {
+      "to": "chapters/02/2-6-jonaefni-og-sameindaefni.html",
+      "moduleId": "m68696",
+      "recordedAt": "2026-10-09"
     },
     "chapters/02/2-7-nafnakerfi-efna.html": {
       "to": "chapters/02/2-7-nafnakerfi-efnafraedinnar.html",
@@ -38,15 +53,15 @@
       "moduleId": "m68702",
       "recordedAt": "2026-09-17"
     },
-    "chapters/04/4-3-hlutfallaefnafraedi-efnahvarfa.html": {
-      "to": "chapters/04/4-3-efnajofnuhlutfall.html",
+    "chapters/04/4-3-efnajofnuhlutfall.html": {
+      "to": "chapters/04/4-3-hlutfallaefnafraedi-efnahvarfa.html",
       "moduleId": "m68713",
-      "recordedAt": "2026-09-06"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/04/4-5-magnbundin-efnagreining.html": {
-      "to": "chapters/04/4-5-megindleg-efnagreining.html",
+    "chapters/04/4-5-megindleg-efnagreining.html": {
+      "to": "chapters/04/4-5-magnbundin-efnagreining.html",
       "moduleId": "m68716",
-      "recordedAt": "2026-09-06"
+      "recordedAt": "2026-10-09"
     },
     "chapters/05/5-1-grunnatridi-orku.html": {
       "to": "chapters/05/5-1-grundvallaratridi-orku.html",
@@ -58,10 +73,10 @@
       "moduleId": "m68732",
       "recordedAt": "2026-09-19"
     },
-    "chapters/08/8-1-kenning-um-gildistengi.html": {
-      "to": "chapters/08/8-1-gildisrafeindatengjakenningin.html",
+    "chapters/08/8-1-gildisrafeindatengjakenningin.html": {
+      "to": "chapters/08/8-1-kenning-um-gildistengi.html",
       "moduleId": "m68744",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
     "chapters/08/8-2-blendingssvigrum-frumeinda.html": {
       "to": "chapters/08/8-2-blendingssvigrum-atoma.html",
@@ -73,100 +88,105 @@
       "moduleId": "m68746",
       "recordedAt": "2026-09-20"
     },
-    "chapters/08/8-4-sameindasvigrumakenningin.html": {
-      "to": "chapters/08/8-4-sameindasvigrumskenningin.html",
+    "chapters/08/8-4-sameindasvigrumskenningin.html": {
+      "to": "chapters/08/8-4-sameindasvigrumakenningin.html",
       "moduleId": "m68747",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/09/9-2-samband-thrystings-rummals-efnismagns-og-hitastigs.html": {
-      "to": "chapters/09/9-2-samband-thrystings-rummals-magns-og-hitastigs.html",
+    "chapters/09/9-2-samband-thrystings-rummals-magns-og-hitastigs.html": {
+      "to": "chapters/09/9-2-samband-thrystings-rummals-efnismagns-og-hitastigs.html",
       "moduleId": "m68751",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/09/9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og.html": {
-      "to": "chapters/09/9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og.html",
+    "chapters/09/9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og.html": {
+      "to": "chapters/09/9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og.html",
       "moduleId": "m68752",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/09/9-4-utstreymi-og-sveim-gasa.html": {
-      "to": "chapters/09/9-4-utstreymi-og-flaedi-lofttegunda.html",
+    "chapters/09/9-4-utstreymi-og-flaedi-lofttegunda.html": {
+      "to": "chapters/09/9-4-utstreymi-og-sveim-gasa.html",
       "moduleId": "m68754",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/09/9-5-hreyfiorkukenningin.html": {
-      "to": "chapters/09/9-5-hreyfi-sameindakenningin.html",
+    "chapters/09/9-5-hreyfi-sameindakenningin.html": {
+      "to": "chapters/09/9-5-hreyfiorkukenningin.html",
       "moduleId": "m68758",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/09/9-6-fravik-fra-kjorgaseiginleikum.html": {
-      "to": "chapters/09/9-6-hegdun-raungass.html",
+    "chapters/09/9-6-hegdun-raungass.html": {
+      "to": "chapters/09/9-6-fravik-fra-kjorgaseiginleikum.html",
       "moduleId": "m68759",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
     "chapters/10/10-1-addrattarkraftar-milli-sameinda.html": {
-      "to": "chapters/10/10-1-millikraftar.html",
+      "to": "chapters/10/10-1-millisameindakraftar.html",
       "moduleId": "m68761",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/10/10-3-fasabreytingar.html": {
-      "to": "chapters/10/10-3-hamskipti.html",
+    "chapters/10/10-1-millikraftar.html": {
+      "to": "chapters/10/10-1-millisameindakraftar.html",
+      "moduleId": "m68761",
+      "recordedAt": "2026-10-09"
+    },
+    "chapters/10/10-3-hamskipti.html": {
+      "to": "chapters/10/10-3-fasabreytingar.html",
       "moduleId": "m68768",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/10/10-4-fasarit.html": {
-      "to": "chapters/10/10-4-fasamyndir.html",
+    "chapters/10/10-4-fasamyndir.html": {
+      "to": "chapters/10/10-4-fasarit.html",
       "moduleId": "m68769",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
     "chapters/10/10-5-fast-astand-efnis.html": {
-      "to": "chapters/10/10-5-fast-efni.html",
+      "to": "chapters/10/10-5-fastur-efnishamur.html",
       "moduleId": "m68770",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/10/10-5-fastur-efnishamur.html": {
-      "to": "chapters/10/10-5-fast-efni.html",
+    "chapters/10/10-5-fast-efni.html": {
+      "to": "chapters/10/10-5-fastur-efnishamur.html",
       "moduleId": "m68770",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/10/10-6-grindargerdir-i-kristalkenndum-fastefnum.html": {
-      "to": "chapters/10/10-6-grindarformgerdir-i-kristolludum-fostum-efnum.html",
+    "chapters/10/10-6-grindarformgerdir-i-kristolludum-fostum-efnum.html": {
+      "to": "chapters/10/10-6-grindargerdir-i-kristalkenndum-fastefnum.html",
       "moduleId": "m68773",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/11/11-2-rafkleyfar.html": {
-      "to": "chapters/11/11-2-rafleidar.html",
+    "chapters/11/11-2-rafleidar.html": {
+      "to": "chapters/11/11-2-rafkleyfar.html",
       "moduleId": "m68781",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/11/11-4-samthynningareiginleikar.html": {
-      "to": "chapters/11/11-4-sameiginlegir-eiginleikar.html",
+    "chapters/11/11-4-sameiginlegir-eiginleikar.html": {
+      "to": "chapters/11/11-4-samthynningareiginleikar.html",
       "moduleId": "m68783",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/11/11-5-svif.html": {
-      "to": "chapters/11/11-5-kolloidar.html",
+    "chapters/11/11-5-kolloidar.html": {
+      "to": "chapters/11/11-5-svif.html",
       "moduleId": "m68784",
-      "recordedAt": "2026-09-20"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/12/12-1-hvarfhradi-efnahvarfa.html": {
-      "to": "chapters/12/12-1-hradi-efnahvarfa.html",
+    "chapters/12/12-1-hradi-efnahvarfa.html": {
+      "to": "chapters/12/12-1-hvarfhradi-efnahvarfa.html",
       "moduleId": "m68786",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/12/12-2-thaettir-sem-hafa-ahrif-a-hvarfhrada.html": {
-      "to": "chapters/12/12-2-thaettir-sem-hafa-ahrif-a-efnahvarfshrada.html",
+    "chapters/12/12-2-thaettir-sem-hafa-ahrif-a-efnahvarfshrada.html": {
+      "to": "chapters/12/12-2-thaettir-sem-hafa-ahrif-a-hvarfhrada.html",
       "moduleId": "m68787",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/12/12-3-hradajofnur.html": {
       "to": "chapters/12/12-3-hradalogmal.html",
       "moduleId": "m68789",
       "recordedAt": "2026-09-21"
     },
-    "chapters/12/12-4-heildud-hradalogmal.html": {
-      "to": "chapters/12/12-4-heildunarhradalogmal.html",
+    "chapters/12/12-4-heildunarhradalogmal.html": {
+      "to": "chapters/12/12-4-heildud-hradalogmal.html",
       "moduleId": "m68791",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/12/12-6-hvarfgangar-efnahvarfa.html": {
       "to": "chapters/12/12-6-hvarfgangar.html",
@@ -178,15 +198,15 @@
       "moduleId": "m68795",
       "recordedAt": "2026-09-21"
     },
-    "chapters/13/13-3-tilfaersla-jafnvaegis-logmal-le-chteliers.html": {
-      "to": "chapters/13/13-3-jafnvaegisbreytingar-logmal-le-chteliers.html",
+    "chapters/13/13-3-jafnvaegisbreytingar-logmal-le-chteliers.html": {
+      "to": "chapters/13/13-3-tilfaersla-jafnvaegis-logmal-le-chteliers.html",
       "moduleId": "m68799",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/14/14-3-hlutfallslegur-styrkur-syra-og-basa.html": {
-      "to": "chapters/14/14-3-afstaedur-styrkur-syra-og-basa.html",
+    "chapters/14/14-3-afstaedur-styrkur-syra-og-basa.html": {
+      "to": "chapters/14/14-3-hlutfallslegur-styrkur-syra-og-basa.html",
       "moduleId": "m68805",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/14/14-5-fjolroteindasyrur.html": {
       "to": "chapters/14/14-5-fjolvirkar-syrur.html",
@@ -198,50 +218,50 @@
       "moduleId": "m68808",
       "recordedAt": "2026-09-21"
     },
-    "chapters/15/15-3-tengd-jafnvaegi.html": {
-      "to": "chapters/15/15-3-tengt-jafnvaegi.html",
+    "chapters/15/15-3-tengt-jafnvaegi.html": {
+      "to": "chapters/15/15-3-tengd-jafnvaegi.html",
       "moduleId": "m68814",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/16/16-1-sjalfsprotti.html": {
       "to": "chapters/16/16-1-sjalfgengi.html",
       "moduleId": "m68816",
       "recordedAt": "2026-09-21"
     },
-    "chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi.html": {
-      "to": "chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarfraedi.html",
+    "chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarfraedi.html": {
+      "to": "chapters/17/17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi.html",
       "moduleId": "m68821",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/17/17-2-rafefnafrumur.html": {
       "to": "chapters/17/17-2-galvaniker.html",
       "moduleId": "m68822",
       "recordedAt": "2026-09-21"
     },
-    "chapters/17/17-3-raftrods-og-kerspenna.html": {
-      "to": "chapters/17/17-3-rafskauts-og-kerspenna.html",
+    "chapters/17/17-3-rafskauts-og-kerspenna.html": {
+      "to": "chapters/17/17-3-raftrods-og-kerspenna.html",
       "moduleId": "m68823",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda.html": {
-      "to": "chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda.html",
+    "chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda.html": {
+      "to": "chapters/18/18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda.html",
       "moduleId": "m68840",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/18/18-2-tilvist-og-framleidsla-daemigerdra-malma.html": {
       "to": "chapters/18/18-2-tilvist-og-framleidsla-adalflokkamalma.html",
       "moduleId": "m68830",
       "recordedAt": "2026-09-21"
     },
-    "chapters/18/18-3-uppbygging-og-almennir-eiginleikar-halfmalma.html": {
-      "to": "chapters/18/18-3-bygging-og-almennir-eiginleikar-malmunga.html",
+    "chapters/18/18-3-bygging-og-almennir-eiginleikar-malmunga.html": {
+      "to": "chapters/18/18-3-uppbygging-og-almennir-eiginleikar-halfmalma.html",
       "moduleId": "m68831",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
-    "chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og.html": {
-      "to": "chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna.html",
+    "chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna.html": {
+      "to": "chapters/19/19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og.html",
       "moduleId": "m68842",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/19/19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka.html": {
       "to": "chapters/19/19-3-litrofs-og-seguleiginleikar-girdisambanda.html",
@@ -258,15 +278,15 @@
       "moduleId": "m68847",
       "recordedAt": "2026-09-21"
     },
-    "chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html": {
-      "to": "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html",
+    "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html": {
+      "to": "chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html",
       "moduleId": "m68848",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html": {
-      "to": "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-esterar.html",
+      "to": "chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html",
       "moduleId": "m68848",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/21/21-3-geislavirk-hrornun.html": {
       "to": "chapters/21/21-3-geislasundrun.html",
@@ -278,10 +298,10 @@
       "moduleId": "m68856",
       "recordedAt": "2026-09-21"
     },
-    "chapters/21/21-5-notkun-geislasamsaeta.html": {
-      "to": "chapters/21/21-5-notkun-geislasamsaetna.html",
+    "chapters/21/21-5-notkun-geislasamsaetna.html": {
+      "to": "chapters/21/21-5-notkun-geislasamsaeta.html",
       "moduleId": "m68857",
-      "recordedAt": "2026-09-21"
+      "recordedAt": "2026-10-09"
     },
     "chapters/appendices/appendices-11-myndunarfastar-fyrir-flokajonir.html": {
       "to": "chapters/appendices/appendices-11-myndunarfastar-fyrir-samjonir.html",

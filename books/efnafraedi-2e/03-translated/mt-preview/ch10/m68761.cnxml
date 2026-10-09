@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<title>Millikraftar</title>
+<title>Millisameindakraftar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68761</md:content-id>
-  <md:title>Millikraftar</md:title>
+  <md:title>Millisameindakraftar</md:title>
   <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst þeim tegundum millikrafta sem mögulegir eru milli atóma eða sameinda í þéttum efnisstigum (dreifikraftar, tvískautstogkraftar og vetnistengi)</item><item>Greint þær tegundir millikrafta sem tilteknar sameindir verða fyrir á grundvelli byggingar þeirra</item><item>Útskýrt sambandið milli millikrafta sem eru til staðar í efni og hitastigsins sem tengist breytingum á efnisástandi þess</item></list></md:abstract>
   <md:uuid>3bd0cfe0-4bfc-4a11-978a-eeacf9dc5c0b</md:uuid>
 </metadata>
@@ -48,11 +48,11 @@
 </media>
 <caption><emphasis effect="italics">Innri</emphasis> mólekúlkraftar halda sameind heilli. <emphasis effect="italics">Milli</emphasis>mólekúlkraftar halda mörgum sameindum saman og ákvarða marga eiginleika efnis.</caption>
 </figure>
-<para id="fs-idm68677744">Allir aðdráttarkraftar milli hlutlausra atóma og sameinda eru þekktir sem <term id="term-00002">van der Waals-kraftar (e. van der waals forces)</term>, þótt þeir séu yfirleitt óformlega kallaðir millimólekúlaðdráttur. Við munum skoða hinar ýmsu gerðir millimólekúlkrafta í næstu þremur köflum þessarar einingar.</para>
+<para id="fs-idm68677744">Allir aðdráttarkraftar milli hlutlausra atóma og sameinda eru þekktir sem <term id="term-00002">van der Waals-kraftar (e. van der Waals forces)</term>, þótt þeir séu yfirleitt óformlega kallaðir millimólekúlaðdráttur. Við munum skoða hinar ýmsu gerðir millimólekúlkrafta í næstu þremur köflum þessarar einingar.</para>
 </section>
 <section id="fs-idm146733840">
 <title>Dreifikraftar</title>
-<para id="fs-idp26129792">Einn af þremur van der Waals-kröftum er til staðar í öllum þéttum efnum, óháð eðli atóma eða sameinda sem mynda efnið. Þessi aðdráttarkraftur er kallaður <term class="no-emphasis" id="term-00003">London-dreifikraftur (e. london dispersion force)</term> til heiðurs þýsk-bandaríska eðlisfræðingnum Fritz <term class="no-emphasis" id="term-00004">London</term> sem fyrstur útskýrði hann árið 1928. Þessi kraftur er oft einfaldlega kallaður <term id="term-00005">dreifikraftur (e. dispersion force)</term>. Vegna þess að rafeindir atóms eða sameindar eru á stöðugri hreyfingu (eða, með öðrum orðum, staðsetning rafeindarinnar er háð skammtafræðilegum breytileika), getur atóm eða sameind á hvaða augnabliki sem er myndað tímabundið, <term id="term-00006">augnabliks tvískaut (e. instantaneous dipole)</term> ef rafeindir þess dreifast ósamhverft. Tilvist þessa tvískauts getur síðan afmyndað rafeindir nágrannaatóms eða -sameindar og myndað <term id="term-00007">framkallað tvískaut (e. induced dipole)</term>. Þessi tvö hratt sveiflandi, tímabundnu tvískaut leiða þannig til tiltölulega veiks rafstöðuaðdráttar milli efnanna – svokallaðs dreifikrafts eins og sýnt er í <link target-id="CNX_Chem_10_01_DispForces"/>.</para>
+<para id="fs-idp26129792">Einn af þremur van der Waals-kröftum er til staðar í öllum þéttum efnum, óháð eðli atóma eða sameinda sem mynda efnið. Þessi aðdráttarkraftur er kallaður <term class="no-emphasis" id="term-00003">London-dreifikraftur (e. London dispersion force)</term> til heiðurs þýsk-bandaríska eðlisfræðingnum Fritz <term class="no-emphasis" id="term-00004">London</term> sem fyrstur útskýrði hann árið 1928. Þessi kraftur er oft einfaldlega kallaður <term id="term-00005">dreifikraftur (e. dispersion force)</term>. Vegna þess að rafeindir atóms eða sameindar eru á stöðugri hreyfingu (eða, með öðrum orðum, staðsetning rafeindarinnar er háð skammtafræðilegum breytileika), getur atóm eða sameind á hvaða augnabliki sem er myndað tímabundið, <term id="term-00006">augnabliks tvískaut (e. instantaneous dipole)</term> ef rafeindir þess dreifast ósamhverft. Tilvist þessa tvískauts getur síðan afmyndað rafeindir nágrannaatóms eða -sameindar og myndað <term id="term-00007">framkallað tvískaut (e. induced dipole)</term>. Þessi tvö hratt sveiflandi, tímabundnu tvískaut leiða þannig til tiltölulega veiks rafstöðuaðdráttar milli efnanna – svokallaðs dreifikrafts eins og sýnt er í <link target-id="CNX_Chem_10_01_DispForces"/>.</para>
 <figure id="CNX_Chem_10_01_DispForces" class="scaled-down">
 <media id="fs-idp52348576" alt="Sýnd eru tvö pör af sameindum þar sem hvor sameind hefur stærri bláa hlið merkta „delta-merki, mínusmerki“ og minni rauða hlið merkta „delta-merki, plúsmerki“. Í átt að miðju beggja sameinda, en samt á hvorri sinni hlið, er svartur punktur. Milli myndanna tveggja er punktalína merkt „Aðdráttarkraftur“. Á fyrstu myndinni eru rauðu og bláu hliðarnar merktar „Ójöfn dreifing rafeinda“. Fyrir neðan báðar myndirnar eru svigar. Svigarnir eru merktir „Tímabundin tvískaut“.">
 <image mime-type="image/svg+xml" src="../../media/CNX_Chem_10_01_DispForces_IS.svg"/>
@@ -60,7 +60,7 @@
 <caption>Dreifikraftar verða til vegna myndunar tímabundinna tvískauta, eins og hér er sýnt fyrir tvær óskautaðar tvíatóma sameindir.</caption>
 </figure>
 <para id="fs-idm80968928">Dreifikraftar sem myndast milli atóma í mismunandi sameindum geta dregið sameindirnar tvær hvor að annarri. Kraftarnir eru þó tiltölulega veikir og verða aðeins marktækir þegar sameindirnar eru mjög nálægt. Stærri og þyngri atóm og sameindir sýna sterkari dreifikrafta en minni og léttari atóm og sameindir. F<sub>2</sub> og Cl<sub>2</sub> eru gös við stofuhita (sem endurspeglar veikari aðdráttarkrafta); Br<sub>2</sub> er vökvi og I<sub>2</sub> er fast efni (sem endurspeglar sterkari aðdráttarkrafta). Þróun í bræðslu- og suðumörkum halógena sýnir þessi áhrif greinilega, eins og sést í <link target-id="fs-idp55860464"/>.</para>
-<table id="fs-idp55860464" class="top-titled" summary="This table has six rows and five columns. The first row is a header row and it labels each column: “Halogen,” “Molar Mass,” “Atomic Radius,” “Melting Point,” and “Boiling Point.” Under the “Halogen” column are the following: Fluorine, F subscript 2; Chlorine, C l subscript 2; bromine, B r subscript 2; iodine, I subscript 2; astatine, A t subscript 2. Under the “Molar Mass” column are the following: 38 g / mol; 71 g / mol; 160 g / mol; 254 g / mol; 420 g / mol. Under the “Atomic Radius” column are the following: 72 p m; 99 p m; 114 p m; 133 p m; 150 p m. Under the “Melting Point” column are the following: 53 K; 172 K; 266 K; 387 K; and 575 K. Under the “Boiling Point” column are the following: 85 K; 238 K; 332 K; 457 K; and 610 K.">
+<table id="fs-idp55860464" class="top-titled" summary="Þessi tafla hefur sex raðir og fimm dálka. Fyrsta röðin er haus og hún merkir hvern dálk: „Halógen“, „Mólmassi“, „Atómradíus“, „Bræðslumark“ og „Suðumark“. Undir dálkinum „Halógen“ er eftirfarandi: Flúor, F með lækkuðu 2; Klór, C l með lækkuðu 2; bróm, B r með lækkuðu 2; joð, I með lækkuðu 2; astat, A t með lækkuðu 2. Undir dálkinum „Mólmassi“ er eftirfarandi: 38 g/mól; 71 g/mól; 160 g/mól; 254 g/mól; 420 g/mól. Undir dálkinum „Atómradíus“ er eftirfarandi: 72 pm; 99 pm; 114 pm; 133 pm; 150 pm. Undir dálkinum „Bræðslumark“ er eftirfarandi: 53 K; 172 K; 266 K; 387 K; og 575 K. Undir dálkinum „Suðumark“ er eftirfarandi: 85 K; 238 K; 332 K; 457 K; og 610 K.">
 <tgroup cols="5">
 <colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
@@ -420,7 +420,7 @@
 <meaning id="fs-idp128571888-meaning">mælikvarði á getu hleðslu til að afmynda hleðsludreifingu sameindar (rafeindaský)</meaning>
 </definition>
 <definition id="fs-idm134093104">
-<term>van der Waals-kraftur (e. van der waals force)</term>
+<term>van der Waals-kraftur (e. van der Waals force)</term>
 <meaning id="fs-idm134093104-meaning">aðdráttar- eða fráhrindikraftur milli sameinda, þar á meðal tvískaut-tvískaut, tvískaut-örvað tvískaut og London-dreifikraftar; nær ekki yfir krafta vegna samgildra eða jónatengja, eða aðdráttarkrafta milli jóna og sameinda</meaning>
 </definition>
 </glossary>

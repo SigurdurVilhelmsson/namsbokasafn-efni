@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T20:29:08.564Z",
+  "generated": "2026-10-09T14:52:54.814Z",
   "termCount": 763,
   "entries": [
     {
@@ -9,8 +9,8 @@
       "definition": "eiginleiki lausnar sem fer aðeins eftir styrk uppleystrar efnisagna",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp188858528"
     },
     {
@@ -64,8 +64,8 @@
       "definition": "ósamgildur aðdráttarkraftur milli atóma, sameinda og/eða jóna",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idm66585952"
     },
     {
@@ -119,8 +119,8 @@
       "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í mælingunum sem notaðar eru í útreikningnum",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp68905696"
     },
     {
@@ -152,8 +152,8 @@
       "definition": "(einnig, aktínóíðaröð) aktín og frumefnin í annarri röð eða f-blokkinni, sætistölur 89–103",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm98560816"
     },
     {
@@ -163,8 +163,8 @@
       "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp sem er tengdur tveimur vetnisatómum eða vetnisatómi og kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
-      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
+      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
+      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
       "termId": "fs-idp49554496"
     },
     {
@@ -262,8 +262,8 @@
       "definition": "hitastig þar sem rúmmál gass yrði núll samkvæmt lögmáli Charles.",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idp80443824"
     },
     {
@@ -317,8 +317,8 @@
       "definition": "sameindasvigrúm staðsett utan svæðisins milli tveggja kjarna; rafeindir í andbindandi svigrúmi gera sameindina óstöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm143725728"
     },
     {
@@ -378,8 +378,8 @@
     },
     {
       "termIs": "Arrheniusarjöfnun",
-      "termEn": "arrhenius equation",
-      "termFull": "Arrheniusarjöfnun (e. arrhenius equation)",
+      "termEn": "Arrhenius equation",
+      "termFull": "Arrheniusarjöfnun (e. Arrhenius equation)",
       "definition": "stærðfræðilegt samband milli hraðafasta hvarfs, virkjunarorku og hitastigs",
       "chapter": 12,
       "section": "12.5",
@@ -394,14 +394,14 @@
       "definition": "minnsta ögn frumefnis sem getur tekið þátt í efnasambandi",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm8143856"
     },
     {
       "termIs": "Atómkenning Daltons",
-      "termEn": "dalton’s atomic theory",
-      "termFull": "Atómkenning Daltons (e. dalton’s atomic theory)",
+      "termEn": "Dalton’s atomic theory",
+      "termFull": "Atómkenning Daltons (e. Dalton’s atomic theory)",
       "definition": "sett af fullyrðingum sem staðfestu grundvallareiginleika atóma",
       "chapter": 2,
       "section": "2.1",
@@ -444,8 +444,8 @@
     },
     {
       "termIs": "Aufbau-lögmálið",
-      "termEn": "aufbau principle",
-      "termFull": "Aufbau-lögmálið (e. aufbau principle)",
+      "termEn": "Aufbau principle",
+      "termFull": "Aufbau-lögmálið (e. Aufbau principle)",
       "definition": "aðferð þar sem rafeindaskipan frumefna er ákvörðuð með því að „byggja“ þau upp í röð eftir sætistölum, þar sem einni róteind er bætt við kjarnann og einni rafeind við rétt undirhvolf í einu",
       "chapter": 6,
       "section": "6.4",
@@ -460,8 +460,8 @@
       "definition": "hraði efnahvarfs á hverju augnabliki, ákvarðaður af halla snertils við línurit sem sýnir styrk sem fall af tíma",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hraði efnahvarfa",
-      "sectionSlug": "12-1-hradi-efnahvarfa",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp70925872"
     },
     {
@@ -471,8 +471,8 @@
       "definition": "tímabundið tvískaut sem verður til í stutta stund þegar rafeindum atóms eða sameindar er dreift ósamhverft",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idp127211536"
     },
     {
@@ -493,8 +493,8 @@
       "definition": "tímabundinn tvískautur sem myndast þegar rafeindir atóms eða sameindar afmyndast vegna augnablikstvískauts nágrannaatóms eða -sameindar",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idm31438528"
     },
     {
@@ -570,8 +570,8 @@
       "definition": "opið rými í kristal í miðju sex agna sem staðsettar eru á hornum áttflötungs",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idm28944640"
     },
     {
@@ -653,13 +653,13 @@
     },
     {
       "termIs": "basajónunarfasti (Kb)",
-      "termEn": "base ionization constant (kb)",
-      "termFull": "basajónunarfasti (Kb) (e. base ionization constant (kb))",
+      "termEn": "base ionization constant (Kb)",
+      "termFull": "basajónunarfasti (Kb) (e. base ionization constant (Kb))",
       "definition": "jafnvægisfasti fyrir basajónunarhvarf",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Afstæður styrkur sýra og basa",
-      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
+      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
+      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
       "termId": "fs-idp86060672"
     },
     {
@@ -735,8 +735,8 @@
       "definition": "sameindasvigrúm staðsett á milli tveggja kjarna; rafeindir í bindandi svigrúmi gera sameindina stöðuga",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm133686144"
     },
     {
@@ -790,8 +790,8 @@
       "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm5111888"
     },
     {
@@ -823,8 +823,8 @@
       "definition": "rof rauðra blóðkorna vegna uppsöfnunar á of miklu vatni með osmósu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141100816"
     },
     {
@@ -840,8 +840,8 @@
     },
     {
       "termIs": "Born-Haber-hringferli",
-      "termEn": "born-haber cycle",
-      "termFull": "Born-Haber-hringferli (e. born-haber cycle)",
+      "termEn": "Born-Haber cycle",
+      "termFull": "Born-Haber-hringferli (e. Born-Haber cycle)",
       "definition": "efnavarmafræðilegt hringferli sem tengir saman hin ýmsu orkuþrep sem eiga sér stað við myndun jónaefnis í föstu formi úr viðeigandi frumefnum",
       "chapter": 7,
       "section": "7.5",
@@ -867,19 +867,19 @@
       "definition": "efnasamband sem inniheldur bór-súrefnistengi, yfirleitt með knippi eða keðjur sem hluta af efnafræðilegu byggingunni",
       "chapter": 18,
       "section": "18.3",
-      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
-      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
+      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp42336592"
     },
     {
       "termIs": "Bragg-jafna",
-      "termEn": "bragg equation",
-      "termFull": "Bragg-jafna (e. bragg equation)",
+      "termEn": "Bragg equation",
+      "termFull": "Bragg-jafna (e. Bragg equation)",
       "definition": "jafna sem tengir hornin sem röntgengeislar sveigjast á af atómum innan kristals",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp168577936"
     },
     {
@@ -900,14 +900,14 @@
       "definition": "breyting úr föstu formi í fljótandi form",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm69563216"
     },
     {
       "termIs": "Breyting á frjálsri orku Gibbs (G)",
-      "termEn": "gibbs free energy change (g)",
-      "termFull": "Breyting á frjálsri orku Gibbs (G) (e. gibbs free energy change (g))",
+      "termEn": "Gibbs free energy change (G)",
+      "termFull": "Breyting á frjálsri orku Gibbs (G) (e. Gibbs free energy change (G))",
       "definition": "varmafræðilegur eiginleiki skilgreindur út frá vermi og óreiðu kerfis; öll sjálfgeng ferli fela í sér lækkun á G",
       "chapter": 16,
       "section": "16.4",
@@ -922,8 +922,8 @@
       "definition": "þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og vigtun á loftkenndum brunaafurðum þess",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp72814256"
     },
     {
@@ -944,14 +944,14 @@
       "definition": "hitastig þar sem fasti og fljótandi fasi efnis eru í jafnvægi; sjá einnig frostmark",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm143011312"
     },
     {
       "termIs": "Brønsted-Lowry-basi",
-      "termEn": "brønsted-lowry base",
-      "termFull": "Brønsted-Lowry-basi (e. brønsted-lowry base)",
+      "termEn": "Brønsted-Lowry base",
+      "termFull": "Brønsted-Lowry-basi (e. Brønsted-Lowry base)",
       "definition": "róteindaþegi",
       "chapter": 14,
       "section": "14.1",
@@ -961,8 +961,8 @@
     },
     {
       "termIs": "Brønsted-Lowry-sýra",
-      "termEn": "brønsted-lowry acid",
-      "termFull": "Brønsted-Lowry-sýra (e. brønsted-lowry acid)",
+      "termEn": "Brønsted-Lowry acid",
+      "termFull": "Brønsted-Lowry-sýra (e. Brønsted-Lowry acid)",
       "definition": "róteindagjafi",
       "chapter": 14,
       "section": "14.1",
@@ -977,8 +977,8 @@
       "definition": "tæki sem notað er til nákvæmrar afhendingar á breytilegu vökvarúmmáli, svo sem í títrunargreiningu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp237960512"
     },
     {
@@ -1049,8 +1049,8 @@
     },
     {
       "termIs": "Celsíus (°C)",
-      "termEn": "celsius (°c)",
-      "termFull": "Celsíus (°C) (e. celsius (°c))",
+      "termEn": "Celsius (°C)",
+      "termFull": "Celsíus (°C) (e. Celsius (°C))",
       "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða",
       "chapter": 1,
       "section": "1.4",
@@ -1071,13 +1071,13 @@
     },
     {
       "termIs": "Clausius-Clapeyron jafnan",
-      "termEn": "clausius-clapeyron equation",
-      "termFull": "Clausius-Clapeyron jafnan (e. clausius-clapeyron equation)",
+      "termEn": "Clausius-Clapeyron equation",
+      "termFull": "Clausius-Clapeyron jafnan (e. Clausius-Clapeyron equation)",
       "definition": "stærðfræðilegt samband milli hitastigs, gufuþrýstings og gufunarvermis efnis",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idp13200944"
     },
     {
@@ -1087,8 +1087,8 @@
       "definition": "eitt af frumefnunum í flokkum 3–11 með gildisrafeindir á d-svigrúmum",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm163588304"
     },
     {
@@ -1115,8 +1115,8 @@
     },
     {
       "termIs": "Downs-rafgreiningarklefi",
-      "termEn": "downs cell",
-      "termFull": "Downs-rafgreiningarklefi (e. downs cell)",
+      "termEn": "Downs cell",
+      "termFull": "Downs-rafgreiningarklefi (e. Downs cell)",
       "definition": "rafefnafræðilegur klefi sem notaður er við iðnaðarframleiðslu á natríummálmi (og klór) úr bráðnu natríumklóríði",
       "chapter": 18,
       "section": "18.2",
@@ -1142,8 +1142,8 @@
       "definition": "efni sem er til staðar sem tiltölulega stórar fastar eða fljótandi agnir í kollóíði",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm117651760"
     },
     {
@@ -1153,8 +1153,8 @@
       "definition": "(einnig London-dreifikraftur) aðdráttarkraftur milli tveggja ört sveiflukenndra, tímabundinna tvískauta; hefur aðeins þýðingu þegar agnir eru mjög nálægt hvor annarri",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idm16566240"
     },
     {
@@ -1164,8 +1164,8 @@
       "definition": "fast efni, vökvi eða gas þar sem kollóíðögnum er dreift",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm203045728"
     },
     {
@@ -1219,8 +1219,8 @@
       "definition": "hitastig þar sem gufuþrýstingur vökva jafngildir 1 atm (760 torr)",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm205028976"
     },
     {
@@ -1307,8 +1307,8 @@
       "definition": "hreint efni sem hægt er að sundra í tvö eða fleiri frumefni",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm115227296"
     },
     {
@@ -1340,8 +1340,8 @@
       "definition": "allt sem tekur pláss og hefur massa",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm23865104"
     },
     {
@@ -1373,8 +1373,8 @@
       "definition": "jón samsett úr einu atómi",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp136404896"
     },
     {
@@ -1406,8 +1406,8 @@
       "definition": "kristalbygging með rúmfrumugrindareiningu með grindarpunkta aðeins á hornunum",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idm47773456"
     },
     {
@@ -1417,8 +1417,8 @@
       "definition": "(einnig, frumstæð rúmfrumugrindareining) grindareining í einfaldri rúmfrumubyggingu",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp179472016"
     },
     {
@@ -1483,8 +1483,8 @@
       "definition": "(einnig, lausn) samsetning efna með efnasamsetningu sem er einsleit í gegn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm25215648"
     },
     {
@@ -1538,8 +1538,8 @@
       "definition": "mælt rúmmál títrunarlausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp276080304"
     },
     {
@@ -1560,8 +1560,8 @@
       "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengt súrefnisatóm sem er tengt kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
-      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
+      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
+      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
       "termId": "fs-idp49325568"
     },
     {
@@ -1582,8 +1582,8 @@
       "definition": "(einnig, innra hliðarfrumefni) eitt af frumefnunum með sætistölur 58–71 eða 90–103 sem hafa gildisrafeindir á f-svigrúmum; þau eru oft sýnd fyrir neðan lotukerfið",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm214063344"
     },
     {
@@ -1604,14 +1604,14 @@
       "definition": "hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga",
       "termId": "fs-idm207141104"
     },
     {
       "termIs": "Faraday-fasti (F)",
-      "termEn": "faraday’s constant (f)",
-      "termFull": "Faraday-fasti (F) (e. faraday’s constant (f))",
+      "termEn": "Faraday’s constant (F)",
+      "termFull": "Faraday-fasti (F) (e. Faraday’s constant (F))",
       "definition": "hleðsla á 1 móli af rafeindum; F = 96.485 C/mól e−",
       "chapter": 17,
       "section": "17.4",
@@ -1626,8 +1626,8 @@
       "definition": "þrýstings- og hitastigsrit sem sýnir við hvaða aðstæður fasar efnis geta verið til staðar",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasamyndir",
-      "sectionSlug": "10-4-fasamyndir",
+      "sectionTitle": "Fasarit",
+      "sectionSlug": "10-4-fasarit",
       "termId": "fs-idm186055200"
     },
     {
@@ -1637,8 +1637,8 @@
       "definition": "ástönd efnis sem er stíft, hefur ákveðið form og nokkuð fast rúmmál",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm10806528"
     },
     {
@@ -1648,8 +1648,8 @@
       "definition": "ferflötungsrými myndað af fjórum atómum eða jónum í kristal",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idm116347536"
     },
     {
@@ -1670,8 +1670,8 @@
       "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en dregst að segulsviði; það gerist þegar óparaðar rafeindir eru til staðar",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm100788960"
     },
     {
@@ -1681,8 +1681,8 @@
       "definition": "hliðarfrumefni í sjöundu lotu lotukerfisins (fjórða röð d-blokkarinnar), sætistölur 89 og 104–111",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm52768832"
     },
     {
@@ -1692,8 +1692,8 @@
       "definition": "jón samsett úr fleiri en einu atómi",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp93746160"
     },
     {
@@ -1703,8 +1703,8 @@
       "definition": "breyting í kristalbyggingu sem veldur mismunandi eðliseiginleikum fyrir myndaða efnasambandið",
       "chapter": 18,
       "section": "18.3",
-      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
-      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
+      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp20554272"
     },
     {
@@ -1731,13 +1731,13 @@
     },
     {
       "termIs": "flatarmálfyllt rúmfrumuefni (FCC)",
-      "termEn": "face-centered cubic (fcc) solid",
-      "termFull": "flatarmálfyllt rúmfrumuefni (FCC) (e. face-centered cubic (fcc) solid)",
+      "termEn": "face-centered cubic (FCC) solid",
+      "termFull": "flatarmálfyllt rúmfrumuefni (FCC) (e. face-centered cubic (FCC) solid)",
       "definition": "kristalbygging sem samanstendur af rúmfrumugrindareiningu með grindarpunkta á hornum og í miðju hvers flata",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp20057136"
     },
     {
@@ -1747,8 +1747,8 @@
       "definition": "einfaldasta endurtekna eining flatarmálfyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju hvers flata",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp82357824"
     },
     {
@@ -1758,8 +1758,8 @@
       "definition": "kollóíð myndað úr óblandanlegum vökvum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm96998512"
     },
     {
@@ -1769,8 +1769,8 @@
       "definition": "tvígæft efni sem notað er til að koma á stöðugleika í ögnum sumra fleyta",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idp52912"
     },
     {
@@ -1830,8 +1830,8 @@
     },
     {
       "termIs": "Frasch-aðferðin",
-      "termEn": "frasch process",
-      "termFull": "Frasch-aðferðin (e. frasch process)",
+      "termEn": "Frasch process",
+      "termFull": "Frasch-aðferðin (e. Frasch process)",
       "definition": "mikilvæg við námuvinnslu á hreinum brennisteini úr gríðarstórum neðanjarðar námum",
       "chapter": 18,
       "section": "18.10",
@@ -1846,8 +1846,8 @@
       "definition": "hitastig þar sem fasti og fljótandi fasi efnis eru í jafnvægi; sjá einnig bræðslumark",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idp5444368"
     },
     {
@@ -1857,8 +1857,8 @@
       "definition": "lækkun á frostmarki vökva með því að bæta við uppleystu efni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141097600"
     },
     {
@@ -1868,8 +1868,8 @@
       "definition": "(einnig, frostmarkslækkunarfasti) hlutfallfasti í jöfnunni sem tengir frostmarkslækkun við mólalstyrk uppleysts efnis",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141099136"
     },
     {
@@ -1890,20 +1890,9 @@
       "definition": "efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnabreytingu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm6667232"
-    },
-    {
-      "termIs": "frumuskrepp",
-      "termEn": "crenation",
-      "termFull": "frumuskrepp (e. crenation)",
-      "definition": "ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með osmósu",
-      "chapter": 11,
-      "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
-      "termId": "fs-idp141096064"
     },
     {
       "termIs": "fræðilegar heimtur",
@@ -1923,8 +1912,8 @@
       "definition": "hliðarfrumefni í fjórðu lotu lotukerfisins (fyrsta röð d-blokkarinnar), sætistölur 21–29",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm186870544"
     },
     {
@@ -1989,8 +1978,8 @@
       "definition": "hamur þar sem efni hefur hvorki ákveðið rúmmál né lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm37203312"
     },
     {
@@ -2022,8 +2011,8 @@
       "definition": "notkun háorkugeislunar til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsætna",
-      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "sectionTitle": "Notkun geislasamsæta",
+      "sectionSlug": "21-5-notkun-geislasamsaeta",
       "termId": "fs-idp18406528"
     },
     {
@@ -2088,8 +2077,8 @@
       "definition": "(einnig geislavirkur merkir) geislasamsæta sem notuð er til að rekja eða fylgjast með efni með því að fylgjast með geislavirkri losun þess",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsætna",
-      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "sectionTitle": "Notkun geislasamsæta",
+      "sectionSlug": "21-5-notkun-geislasamsaeta",
       "termId": "fs-idp81777184"
     },
     {
@@ -2099,8 +2088,8 @@
       "definition": "kollóíðdreifa vökva í föstu efni",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm167483808"
     },
     {
@@ -2116,8 +2105,8 @@
     },
     {
       "termIs": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
-      "termEn": "valence shell electron-pair repulsion theory (vsepr)",
-      "termFull": "gildisrafeindaparafráhrindingarkenningin (VSEPR) (e. valence shell electron-pair repulsion theory (vsepr))",
+      "termEn": "valence shell electron-pair repulsion theory (VSEPR)",
+      "termFull": "gildisrafeindaparafráhrindingarkenningin (VSEPR) (e. valence shell electron-pair repulsion theory (VSEPR))",
       "definition": "kenning sem notuð er til að spá fyrir um tengihorn í sameind með því að staðsetja svæði með háan rafeindaþéttleika eins langt frá hvort öðru og mögulegt er til að lágmarka rafstöðufráhrindingu",
       "chapter": 7,
       "section": "7.6",
@@ -2144,7 +2133,7 @@
       "chapter": 8,
       "section": "8.1",
       "sectionTitle": "Gildisrafeindatengjakenningin",
-      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-kenning-um-gildistengi",
       "termId": "fs-idp81645184"
     },
     {
@@ -2165,8 +2154,8 @@
       "definition": "stöðugt efnasamband þar sem miðjumálmatómið eða jónin virkar sem Lewis-sýra og þiggur eitt eða fleiri rafeindapör",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm163589328"
     },
     {
@@ -2220,8 +2209,8 @@
       "definition": "efnategund sem er til rannsóknar",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp17888704"
     },
     {
@@ -2231,8 +2220,8 @@
       "definition": "minnsti hluti rúmgrindar sem er endurtekinn í þremur víddum til að mynda alla grindina",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp173597120"
     },
     {
@@ -2275,8 +2264,8 @@
       "definition": "breyting úr vökvafasa í gasfasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm93994416"
     },
     {
@@ -2286,8 +2275,8 @@
       "definition": "(einnig, jafnvægisgufuþrýstingur) þrýstingur sem gufa í jafnvægi við fast efni eða vökva beitir við gefið hitastig",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm195421616"
     },
     {
@@ -2297,14 +2286,14 @@
       "definition": "þrýstingur sem vatnsgufa beitir í jafnvægi við fljótandi vatn í lokuðu íláti við tiltekið hitastig",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp57901520"
     },
     {
       "termIs": "Haber-ferlið",
-      "termEn": "haber process",
-      "termFull": "Haber-ferlið (e. haber process)",
+      "termEn": "Haber process",
+      "termFull": "Haber-ferlið (e. Haber process)",
       "definition": "helsta iðnaðarferlið sem notað er til að framleiða ammoníak úr köfnunarefni og vetni; felur í sér notkun járnhvata og hækkaðs hitastigs og þrýstings",
       "chapter": 18,
       "section": "18.5",
@@ -2319,14 +2308,14 @@
       "definition": "efnasamband sem inniheldur anjón úr flokki 17 með oxunartalið 1− (flúoríð, F−; klóríð, Cl−; brómíð, Br−; og joðíð, I−)",
       "chapter": 18,
       "section": "18.12",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
-      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðalgastegunda",
+      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda",
       "termId": "fs-idm39818672"
     },
     {
       "termIs": "Hall–Héroult-rafgreiningarklefi",
-      "termEn": "hall–héroult cell",
-      "termFull": "Hall–Héroult-rafgreiningarklefi (e. hall–héroult cell)",
+      "termEn": "Hall–Héroult cell",
+      "termFull": "Hall–Héroult-rafgreiningarklefi (e. Hall–Héroult cell)",
       "definition": "rafgreiningartæki sem notað er til að einangra hreinan álmálm úr lausn af súráli í bráðnu krýolíti",
       "chapter": 18,
       "section": "18.2",
@@ -2352,8 +2341,8 @@
       "definition": "himna sem hleypir ákveðnum jónum eða sameindum í gegn",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp11032848"
     },
     {
@@ -2363,8 +2352,8 @@
       "definition": "íhlutur kers sem inniheldur oxunar-afoxunarparið („couple“) eins hvarfefnis",
       "chapter": 17,
       "section": "17.1",
-      "sectionTitle": "Yfirlit yfir oxunar-afoxunarfræði",
-      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarfraedi",
+      "sectionTitle": "Yfirlit yfir oxunar-afoxunarefnafræði",
+      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi",
       "termId": "fs-idp62148528"
     },
     {
@@ -2418,8 +2407,8 @@
       "definition": "af meiri osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141102352"
     },
     {
@@ -2429,8 +2418,8 @@
       "definition": "jafna sem tengir styrk hvarfefnis við liðinn tíma efnahvarfs",
       "chapter": 12,
       "section": "12.4",
-      "sectionTitle": "Heildunarhraðalögmál",
-      "sectionSlug": "12-4-heildunarhradalogmal",
+      "sectionTitle": "Heilduð hraðalögmál",
+      "sectionSlug": "12-4-heildud-hradalogmal",
       "termId": "fs-idm46847680"
     },
     {
@@ -2484,8 +2473,8 @@
       "definition": "tími sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast",
       "chapter": 12,
       "section": "12.4",
-      "sectionTitle": "Heildunarhraðalögmál",
-      "sectionSlug": "12-4-heildunarhradalogmal",
+      "sectionTitle": "Heilduð hraðalögmál",
+      "sectionSlug": "12-4-heildud-hradalogmal",
       "termId": "fs-idm46849712"
     },
     {
@@ -2501,8 +2490,8 @@
     },
     {
       "termIs": "Henderson-Hasselbalch jafnan",
-      "termEn": "henderson-hasselbalch equation",
-      "termFull": "Henderson-Hasselbalch jafnan (e. henderson-hasselbalch equation)",
+      "termEn": "Henderson-Hasselbalch equation",
+      "termFull": "Henderson-Hasselbalch jafnan (e. Henderson-Hasselbalch equation)",
       "definition": "lógaritmísk útgáfa af jónunarfastajöfnu sýru, sem hentar vel til að reikna út sýrustig (pH) stuðpúðalausna",
       "chapter": 14,
       "section": "14.6",
@@ -2561,8 +2550,8 @@
       "definition": "ástandseiginleiki sem táknar hita eða kulda efnis",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga",
       "termId": "fs-idm327357936"
     },
     {
@@ -2682,8 +2671,8 @@
       "definition": "þrýstingur sem einstakt gas í blöndu beitir",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp104769888"
     },
     {
@@ -2693,8 +2682,8 @@
       "definition": "fjöldi atóma sem eru næst tilteknu atómi í kristal eða miðlægu málmatómi í flóka",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp29496752"
     },
     {
@@ -2716,7 +2705,7 @@
       "chapter": 8,
       "section": "8.1",
       "sectionTitle": "Gildisrafeindatengjakenningin",
-      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-kenning-um-gildistengi",
       "termId": "fs-idp123920528"
     },
     {
@@ -2726,8 +2715,8 @@
       "definition": "(einnig, millirými) bil á milli atóma innan kristals",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp33871280"
     },
     {
@@ -2759,8 +2748,8 @@
       "definition": "stærðfræðileg framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða þrýstingi hvarfefnis eða myndefnis á tímaeiningu",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hraði efnahvarfa",
-      "sectionSlug": "12-1-hradi-efnahvarfa",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp193131840"
     },
     {
@@ -2781,8 +2770,8 @@
       "definition": "einsleitt efni sem hefur fasta samsetningu",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm37107584"
     },
     {
@@ -2814,8 +2803,8 @@
       "definition": "kenning sem byggir á einföldum lögmálum og forsendum sem útskýrir á áhrifaríkan hátt hegðun kjörlofttegunda",
       "chapter": 9,
       "section": "9.5",
-      "sectionTitle": "Hreyfi-sameindakenningin",
-      "sectionSlug": "9-5-hreyfi-sameindakenningin",
+      "sectionTitle": "Hreyfiorkukenningin",
+      "sectionSlug": "9-5-hreyfiorkukenningin",
       "termId": "fs-idm198763536"
     },
     {
@@ -2825,8 +2814,8 @@
       "definition": "breyting úr gasfasa beint í fastan fasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm7778192"
     },
     {
@@ -2880,8 +2869,8 @@
       "definition": "mælikvarði á þann hraða sem efnahvarf á sér stað á",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hraði efnahvarfa",
-      "sectionSlug": "12-1-hradi-efnahvarfa",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp172602144"
     },
     {
@@ -2913,8 +2902,8 @@
       "definition": "efni sem eykur hraða efnahvarfs án þess að eyðast sjálft í hvarfinu",
       "chapter": 12,
       "section": "12.2",
-      "sectionTitle": "Þættir sem hafa áhrif á efnahvarfshraða",
-      "sectionSlug": "12-2-thaettir-sem-hafa-ahrif-a-efnahvarfshrada",
+      "sectionTitle": "Þættir sem hafa áhrif á hvarfhraða",
+      "sectionSlug": "12-2-thaettir-sem-hafa-ahrif-a-hvarfhrada",
       "termId": "fs-idp102379584"
     },
     {
@@ -3001,8 +2990,8 @@
       "definition": "(einnig nálameðferð) geislun frá geislavirku efni sem komið er fyrir í líkamanum til að drepa krabbameinsfrumur",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsætna",
-      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "sectionTitle": "Notkun geislasamsæta",
+      "sectionSlug": "21-5-notkun-geislasamsaeta",
       "termId": "fs-idp166135008"
     },
     {
@@ -3018,8 +3007,8 @@
     },
     {
       "termIs": "innri orka (U)",
-      "termEn": "internal energy (u)",
-      "termFull": "innri orka (U) (e. internal energy (u))",
+      "termEn": "internal energy (U)",
+      "termFull": "innri orka (U) (e. internal energy (U))",
       "definition": "heildarsumma allra mögulegra orkutegunda sem eru til staðar í efni eða efnum",
       "chapter": 5,
       "section": "5.3",
@@ -3100,8 +3089,8 @@
       "definition": "rúmmál títrunarlausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur efnajafngilt magn títrunarefnis fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp90910688"
     },
     {
@@ -3133,8 +3122,8 @@
       "definition": "af jöfnum osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141106960"
     },
     {
@@ -3199,8 +3188,8 @@
       "definition": "rafstöðuaðdráttur milli jónar og skautaðrar sameindar",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idp1071840"
     },
     {
@@ -3210,8 +3199,8 @@
       "definition": "efnasamband samsett úr katjónum og anjónum sem sameinast í hlutföllum og gefa rafhlutlaust efni",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp182712496"
     },
     {
@@ -3229,11 +3218,11 @@
       "termIs": "jónapar",
       "termEn": "ion pair",
       "termFull": "jónapar (e. ion pair)",
-      "definition": "leysiefnabundið anjóna-/katjónapar sem haldið er saman af meðalsterkum rafstöðukrafti",
+      "definition": "leyst anjóna-/katjónapar sem haldið er saman með miðlungs rafstöðuaðdráttarkrafti",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141105424"
     },
     {
@@ -3243,8 +3232,8 @@
       "definition": "rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefnasambandi",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp160949776"
     },
     {
@@ -3265,14 +3254,14 @@
       "definition": "fast efni sem samanstendur af jákvæðum og neikvæðum jónum sem haldast saman með sterkum rafstöðu aðdráttarkröftum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm37301360"
     },
     {
       "termIs": "jónmargfeldisfasti vatns (Kw)",
-      "termEn": "ion-product constant for water (kw)",
-      "termFull": "jónmargfeldisfasti vatns (Kw) (e. ion-product constant for water (kw))",
+      "termEn": "ion-product constant for water (Kw)",
+      "termFull": "jónmargfeldisfasti vatns (Kw) (e. ion-product constant for water (Kw))",
       "definition": "jafnvægisfasti fyrir sjálfjónun vatns",
       "chapter": 14,
       "section": "14.1",
@@ -3309,14 +3298,14 @@
       "definition": "hlutfall styrks jónaðrar sýru og upphafsstyrks sýru, gefið upp sem prósentutala",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Afstæður styrkur sýra og basa",
-      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
+      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
+      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
       "termId": "fs-idm94073376"
     },
     {
       "termIs": "júl (J)",
-      "termEn": "joule (j)",
-      "termFull": "júl (J) (e. joule (j))",
+      "termEn": "joule (J)",
+      "termFull": "júl (J) (e. joule (J))",
       "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4,184 J = 1 cal",
       "chapter": 5,
       "section": "5.1",
@@ -3331,8 +3320,8 @@
       "definition": "sú athugun að sýru-basastyrkur uppleystra efna í tilteknum leysi takmarkast við einkennandi sýru- og basaefni leysisins (í vatni, hýdróníum- og hýdroxíðjónir)",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Afstæður styrkur sýra og basa",
-      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
+      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
+      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
       "termId": "fs-idm94080720"
     },
     {
@@ -3364,8 +3353,8 @@
       "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdan hýdroxýlhóp",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
-      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
+      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
+      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
       "termId": "fs-idm3165296"
     },
     {
@@ -3386,8 +3375,8 @@
       "definition": "kolefnisatóm tvítengt súrefnisatómi",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
-      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
+      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
+      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
       "termId": "fs-idp57350832"
     },
     {
@@ -3458,8 +3447,8 @@
     },
     {
       "termIs": "kerspenna (Eker)",
-      "termEn": "cell potential (ecell)",
-      "termFull": "kerspenna (Eker) (e. cell potential (ecell))",
+      "termEn": "cell potential (Ecell)",
+      "termFull": "kerspenna (Eker) (e. cell potential (Ecell))",
       "definition": "spennumunur bakskauts- og forskautshálfkera",
       "chapter": 17,
       "section": "17.2",
@@ -3474,8 +3463,8 @@
       "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tvo kolefnishliðarhópa tengda við sig",
       "chapter": 20,
       "section": "20.3",
-      "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og esterar",
-      "sectionSlug": "20-3-aldehyd-ketonar-karboxylsyrur-og-esterar",
+      "sectionTitle": "Aldehýð, ketón, karboxýlsýrur og estrar",
+      "sectionSlug": "20-3-aldehyd-keton-karboxylsyrur-og-estrar",
       "termId": "fs-idm20899104"
     },
     {
@@ -3628,19 +3617,19 @@
       "definition": "tilbúið gas sem eðliseiginleikum þess er fullkomlega lýst með gaslögmálunum",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm161542192"
     },
     {
       "termIs": "kjörgasfastinn (R)",
-      "termEn": "ideal gas constant (r)",
-      "termFull": "kjörgasfastinn (R) (e. ideal gas constant (r))",
+      "termEn": "ideal gas constant (R)",
+      "termFull": "kjörgasfastinn (R) (e. ideal gas constant (R))",
       "definition": "fasti fenginn úr kjörgasjöfnunni R = 0,08206 L atm mól–1 K–1 eða 8,314 L kPa mól–1 K–1",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm78852976"
     },
     {
@@ -3650,8 +3639,8 @@
       "definition": "samband milli þrýstings, rúmmáls, magns og hitastigs gass við aðstæður sem fengnar eru með samsetningu einföldu gaslögmálanna",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm111878496"
     },
     {
@@ -3727,8 +3716,8 @@
       "definition": "(einnig, kollóíðdreifa) blanda þar sem tiltölulega stórum föstum eða fljótandi ögnum er dreift jafnt um gas, vökva eða fast efni",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm164804608"
     },
     {
@@ -3749,14 +3738,14 @@
       "definition": "fast efni þar sem agnirnar eru raðaðar í ákveðið endurtekið mynstur",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp141680624"
     },
     {
       "termIs": "kristalsgrindarorka (ΔHgrindar)",
-      "termEn": "lattice energy (δhlattice)",
-      "termFull": "kristalsgrindarorka (ΔHgrindar) (e. lattice energy (δhlattice))",
+      "termEn": "lattice energy (ΔHlattice)",
+      "termFull": "kristalsgrindarorka (ΔHgrindar) (e. lattice energy (ΔHlattice))",
       "definition": "orka sem þarf til að aðskilja eitt mól af jónaefni í föstu formi í jónir þess á gasfasa",
       "chapter": 7,
       "section": "7.5",
@@ -3804,8 +3793,8 @@
       "definition": "ástand kerfis þar sem gagnvirk ferli eiga sér stað á jöfnum hraða",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm101715056"
     },
     {
@@ -3848,8 +3837,8 @@
       "definition": "(einnig lantanóíðaröð) lantan og frumefnin í fyrstu röð f-blokkarinnar, sætistölur 57–71",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm108395328"
     },
     {
@@ -3870,8 +3859,8 @@
       "definition": "af minni osmósuþrýstingi",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141103888"
     },
     {
@@ -3898,8 +3887,8 @@
     },
     {
       "termIs": "Lewis-basi",
-      "termEn": "lewis base",
-      "termFull": "Lewis-basi (e. lewis base)",
+      "termEn": "Lewis base",
+      "termFull": "Lewis-basi (e. Lewis base)",
       "definition": "hvaða efni sem er sem getur gefið rafeindapar og myndað samhæft samgilt tengi",
       "chapter": 15,
       "section": "15.2",
@@ -3909,8 +3898,8 @@
     },
     {
       "termIs": "Lewis-bygging",
-      "termEn": "lewis structure",
-      "termFull": "Lewis-bygging (e. lewis structure)",
+      "termEn": "Lewis structure",
+      "termFull": "Lewis-bygging (e. Lewis structure)",
       "definition": "skýringarmynd sem sýnir stök rafeindapör og tengipör rafeinda í sameind eða jón",
       "chapter": 7,
       "section": "7.3",
@@ -3920,8 +3909,8 @@
     },
     {
       "termIs": "Lewis-sýra",
-      "termEn": "lewis acid",
-      "termFull": "Lewis-sýra (e. lewis acid)",
+      "termEn": "Lewis acid",
+      "termFull": "Lewis-sýra (e. Lewis acid)",
       "definition": "hvaða efni sem er sem getur þegið rafeindapar og myndað samhæft samgilt tengi",
       "chapter": 15,
       "section": "15.2",
@@ -3931,8 +3920,8 @@
     },
     {
       "termIs": "Lewis-sýru-basa afleiða",
-      "termEn": "lewis acid-base adduct",
-      "termFull": "Lewis-sýru-basa afleiða (e. lewis acid-base adduct)",
+      "termEn": "Lewis acid-base adduct",
+      "termFull": "Lewis-sýru-basa afleiða (e. Lewis acid-base adduct)",
       "definition": "efnasamband eða jón sem inniheldur samhæft samgilt tengi milli Lewis-sýru og Lewis-basa",
       "chapter": 15,
       "section": "15.2",
@@ -3942,8 +3931,8 @@
     },
     {
       "termIs": "Lewis-sýru-basa efnafræði",
-      "termEn": "lewis acid-base chemistry",
-      "termFull": "Lewis-sýru-basa efnafræði (e. lewis acid-base chemistry)",
+      "termEn": "Lewis acid-base chemistry",
+      "termFull": "Lewis-sýru-basa efnafræði (e. Lewis acid-base chemistry)",
       "definition": "efnahvörf sem fela í sér myndun samhæfðra samgildra tengja",
       "chapter": 15,
       "section": "15.2",
@@ -3953,8 +3942,8 @@
     },
     {
       "termIs": "Lewis-tákn",
-      "termEn": "lewis symbol",
-      "termFull": "Lewis-tákn (e. lewis symbol)",
+      "termEn": "Lewis symbol",
+      "termFull": "Lewis-tákn (e. Lewis symbol)",
       "definition": "tákn fyrir frumefni eða einatóma jón sem notar punkt til að tákna hverja gildisrafeind í frumefninu eða jóninni",
       "chapter": 7,
       "section": "7.3",
@@ -4019,8 +4008,8 @@
     },
     {
       "termIs": "leysnimargfeldisfasti (Ksp)",
-      "termEn": "solubility product constant (ksp)",
-      "termFull": "leysnimargfeldisfasti (Ksp) (e. solubility product constant (ksp))",
+      "termEn": "solubility product constant (Ksp)",
+      "termFull": "leysnimargfeldisfasti (Ksp) (e. solubility product constant (Ksp))",
       "definition": "jafnvægisfasti fyrir upplausn jónaefnis",
       "chapter": 15,
       "section": "15.1",
@@ -4074,8 +4063,8 @@
     },
     {
       "termIs": "Líkan Bohrs af vetnisatróminu",
-      "termEn": "bohr’s model of the hydrogen atom",
-      "termFull": "Líkan Bohrs af vetnisatróminu (e. bohr’s model of the hydrogen atom)",
+      "termEn": "Bohr’s model of the hydrogen atom",
+      "termFull": "Líkan Bohrs af vetnisatróminu (e. Bohr’s model of the hydrogen atom)",
       "definition": "byggingarlíkan þar sem rafeind hreyfist umhverfis kjarnann aðeins á hringlaga brautum, hver með sinn sérstaka leyfilega radíus",
       "chapter": 6,
       "section": "6.2",
@@ -4101,8 +4090,8 @@
       "definition": "aðferð til að sameina atómsvigrými til að búa til sameindasvigrými",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm41528352"
     },
     {
@@ -4118,8 +4107,8 @@
     },
     {
       "termIs": "lítri (L)",
-      "termEn": "liter (l)",
-      "termFull": "lítri (L) (e. liter (l))",
+      "termEn": "liter (L)",
+      "termFull": "lítri (L) (e. liter (L))",
       "definition": "(einnig rúmdesimetri) rúmmálseining; 1 L = 1.000 cm3",
       "chapter": 1,
       "section": "1.4",
@@ -4134,8 +4123,8 @@
       "definition": "endurstefna rafsegulgeislunar sem verður þegar hún lendir á efnislegri hindrun af viðeigandi stærð",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp160423360"
     },
     {
@@ -4222,8 +4211,8 @@
       "definition": "svipað og innri geislameðferð, en efnafræðileg efni frekar en geislavirk efni eru sett inn í líkamann til að drepa krabbameinsfrumur",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsætna",
-      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "sectionTitle": "Notkun geislasamsæta",
+      "sectionSlug": "21-5-notkun-geislasamsaeta",
       "termId": "fs-idp80557904"
     },
     {
@@ -4239,63 +4228,63 @@
     },
     {
       "termIs": "lögmál Amontons",
-      "termEn": "amontons’s law",
-      "termFull": "lögmál Amontons (e. amontons’s law)",
+      "termEn": "Amontons’s law",
+      "termFull": "lögmál Amontons (e. Amontons’s law)",
       "definition": "(einnig lögmál Gay-Lussac) þrýstingur ákveðins mólfjölda gass er í beinu hlutfalli við kelvinhitastig þess þegar rúmmáli er haldið föstu",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idp77543648"
     },
     {
       "termIs": "lögmál Avogadros",
-      "termEn": "avogadro’s law",
-      "termFull": "lögmál Avogadros (e. avogadro’s law)",
+      "termEn": "Avogadro’s law",
+      "termFull": "lögmál Avogadros (e. Avogadro’s law)",
       "definition": "rúmmál gass við fast hitastig og þrýsting er í hlutfalli við fjölda gassameinda",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm85214288"
     },
     {
       "termIs": "lögmál Boyles",
-      "termEn": "boyle’s law",
-      "termFull": "lögmál Boyles (e. boyle’s law)",
+      "termEn": "Boyle’s law",
+      "termFull": "lögmál Boyles (e. Boyle’s law)",
       "definition": "rúmmál ákveðins mólfjölda gass sem haldið er við fast hitastig er í öfugu hlutfalli við þrýstinginn sem það er mælt við",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm51295520"
     },
     {
       "termIs": "lögmál Charles",
-      "termEn": "charles’s law",
-      "termFull": "lögmál Charles (e. charles’s law)",
+      "termEn": "Charles’s law",
+      "termFull": "lögmál Charles (e. Charles’s law)",
       "definition": "rúmmál ákveðins mólfjölda gass er í beinu hlutfalli við kelvinhitastig þess þegar þrýstingi er haldið föstum",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm100735488"
     },
     {
       "termIs": "Lögmál Daltons um hlutþrýsting",
-      "termEn": "dalton’s law of partial pressures",
-      "termFull": "Lögmál Daltons um hlutþrýsting (e. dalton’s law of partial pressures)",
+      "termEn": "Dalton’s law of partial pressures",
+      "termFull": "Lögmál Daltons um hlutþrýsting (e. Dalton’s law of partial pressures)",
       "definition": "heildarþrýstingur blöndu af kjörgösum er jafn summu hlutþrýstings íhlutagasanna",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp142977184"
     },
     {
       "termIs": "Lögmál Henrys",
-      "termEn": "henry’s law",
-      "termFull": "Lögmál Henrys (e. henry’s law)",
+      "termEn": "Henry’s law",
+      "termFull": "Lögmál Henrys (e. Henry’s law)",
       "definition": "hlutfallslegt samband milli styrks uppleystrar lofttegundar í lausn og hlutþrýstings lofttegundarinnar í snertingu við lausnina",
       "chapter": 11,
       "section": "11.3",
@@ -4305,8 +4294,8 @@
     },
     {
       "termIs": "lögmál Hess",
-      "termEn": "hess’s law",
-      "termFull": "lögmál Hess (e. hess’s law)",
+      "termEn": "Hess’s law",
+      "termFull": "lögmál Hess (e. Hess’s law)",
       "definition": "ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisins jöfn summu vermibreytinga skrefanna",
       "chapter": 5,
       "section": "5.3",
@@ -4316,24 +4305,24 @@
     },
     {
       "termIs": "Lögmál Le Châteliers",
-      "termEn": "le châtelier’s principle",
-      "termFull": "Lögmál Le Châteliers (e. le châtelier’s principle)",
+      "termEn": "Le Châtelier’s principle",
+      "termFull": "Lögmál Le Châteliers (e. Le Châtelier’s principle)",
       "definition": "jafnvægi sem verður fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og endurheimtir jafnvægi",
       "chapter": 13,
       "section": "13.3",
-      "sectionTitle": "Jafnvægisbreytingar: Lögmál Le Châteliers",
-      "sectionSlug": "13-3-jafnvaegisbreytingar-logmal-le-chteliers",
+      "sectionTitle": "Tilfærsla jafnvægis: Lögmál Le Châteliers",
+      "sectionSlug": "13-3-tilfaersla-jafnvaegis-logmal-le-chteliers",
       "termId": "fs-idp108249008"
     },
     {
       "termIs": "lögmál Raoults",
-      "termEn": "raoult’s law",
-      "termFull": "lögmál Raoults (e. raoult’s law)",
+      "termEn": "Raoult’s law",
+      "termFull": "lögmál Raoults (e. Raoult’s law)",
       "definition": "sambandið milli gufuþrýstings lausnar og gufuþrýstings og styrks íhluta hennar",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141116656"
     },
     {
@@ -4387,8 +4376,8 @@
       "definition": "þegar efni breytist úr einni gerð í aðra eða breytir um form verður engin greinanleg breyting á heildarmagni efnisins",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idp19511536"
     },
     {
@@ -4398,8 +4387,8 @@
       "definition": "ákvörðun á magni eða styrk efnis í sýni",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp188325600"
     },
     {
@@ -4420,8 +4409,8 @@
       "definition": "hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna",
       "chapter": 4,
       "section": "4.3",
-      "sectionTitle": "Efnajöfnuhlutfall",
-      "sectionSlug": "4-3-efnajofnuhlutfall",
+      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
+      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
       "termId": "fs-idp127461392"
     },
     {
@@ -4431,8 +4420,8 @@
       "definition": "tengsl milli magns hvarfefna og myndefna í efnahvarfi",
       "chapter": 4,
       "section": "4.3",
-      "sectionTitle": "Efnajöfnuhlutfall",
-      "sectionSlug": "4-3-efnajofnuhlutfall",
+      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
+      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
       "termId": "fs-idp127462672"
     },
     {
@@ -4453,8 +4442,8 @@
       "definition": "hiti og þrýstingur þar sem ekki er lengur hægt að þétta gas í vökva",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasamyndir",
-      "sectionSlug": "10-4-fasamyndir",
+      "sectionTitle": "Fasarit",
+      "sectionSlug": "10-4-fasarit",
       "termId": "fs-idm66977664"
     },
     {
@@ -4464,8 +4453,8 @@
       "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp3346000"
     },
     {
@@ -4503,8 +4492,8 @@
     },
     {
       "termIs": "massatala (A)",
-      "termEn": "mass number (a)",
-      "termFull": "massatala (A) (e. mass number (a))",
+      "termEn": "mass number (A)",
+      "termFull": "massatala (A) (e. mass number (A))",
       "definition": "samtala fjölda nifteinda og róteinda í kjarna atóms",
       "chapter": 2,
       "section": "2.3",
@@ -4519,8 +4508,8 @@
       "definition": "grundvallareiginleiki sem gefur til kynna efnismagn",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm23882384"
     },
     {
@@ -4552,8 +4541,8 @@
       "definition": "ferli þar sem hreinn málmur er unninn úr bráðnu málmgrýti",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm246107488"
     },
     {
@@ -4563,8 +4552,8 @@
       "definition": "fast efni sem samanstendur af málmatómum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm21108640"
     },
     {
@@ -4607,8 +4596,8 @@
       "definition": "mælikvarði á meðalhraða fyrir hóp agna, reiknaður sem kvaðratrótin af meðaltali hraðans í öðru veldi",
       "chapter": 9,
       "section": "9.5",
-      "sectionTitle": "Hreyfi-sameindakenningin",
-      "sectionSlug": "9-5-hreyfi-sameindakenningin",
+      "sectionTitle": "Hreyfiorkukenningin",
+      "sectionSlug": "9-5-hreyfiorkukenningin",
       "termId": "fs-idm271276336"
     },
     {
@@ -4618,8 +4607,8 @@
       "definition": "meðalvegalengd sem sameind ferðast á milli árekstra",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og flæði lofttegunda",
-      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
       "termId": "fs-idp132026496"
     },
     {
@@ -4629,8 +4618,8 @@
       "definition": "hraði efnahvarfs reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og tímabilsins sem breytingin á sér stað yfir",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hraði efnahvarfa",
-      "sectionSlug": "12-1-hradi-efnahvarfa",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp11569888"
     },
     {
@@ -4679,13 +4668,13 @@
     },
     {
       "termIs": "miðjufyllt rúmfrumuefni (BCC)",
-      "termEn": "body-centered cubic (bcc) solid",
-      "termFull": "miðjufyllt rúmfrumuefni (BCC) (e. body-centered cubic (bcc) solid)",
+      "termEn": "body-centered cubic (BCC) solid",
+      "termFull": "miðjufyllt rúmfrumuefni (BCC) (e. body-centered cubic (BCC) solid)",
       "definition": "kristalbygging sem hefur rúmfrumugrindareiningu með grindarpunkta á hornum og í miðju frumunnar",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp190835184"
     },
     {
@@ -4695,8 +4684,8 @@
       "definition": "einfaldasta endurtekna eining miðjufyllts rúmfrumukristals; það er teningur sem inniheldur grindarpunkta á hverju horni og í miðju teningsins",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp178458288"
     },
     {
@@ -4717,8 +4706,8 @@
       "definition": "efnasamband myndað úr tveimur eða fleiri mismunandi halógenum",
       "chapter": 18,
       "section": "18.12",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
-      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edallofttegunda",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar eðalgastegunda",
+      "sectionSlug": "18-12-tilvist-framleidsla-og-eiginleikar-edalgastegunda",
       "termId": "fs-idm15345952"
     },
     {
@@ -4745,8 +4734,8 @@
     },
     {
       "termIs": "millilítri (mL)",
-      "termEn": "milliliter (ml)",
-      "termFull": "millilítri (mL) (e. milliliter (ml))",
+      "termEn": "milliliter (mL)",
+      "termFull": "millilítri (mL) (e. milliliter (mL))",
       "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
       "chapter": 1,
       "section": "1.4",
@@ -4761,8 +4750,8 @@
       "definition": "rými milli venjulegra agnastaða í hvaða fylki atóma eða jóna sem er",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm134621184"
     },
     {
@@ -4794,8 +4783,8 @@
       "definition": "samsetning efna með efnasamsetningu sem er breytileg frá einum punkti til annars",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idp85033264"
     },
     {
@@ -4846,22 +4835,22 @@
       "termIs": "mólalstyrkur (m)",
       "termEn": "molality (m)",
       "termFull": "mólalstyrkur (m) (e. molality (m))",
-      "definition": "styrkleikaeining sem er skilgreind sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum",
+      "definition": "styrkleikaeining sem skilgreind er sem hlutfall mólfjölda uppleysts efnis og massa leysisins í kílógrömmum",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141108496"
     },
     {
       "termIs": "mólbrot (X)",
-      "termEn": "mole fraction (x)",
-      "termFull": "mólbrot (X) (e. mole fraction (x))",
+      "termEn": "mole fraction (X)",
+      "termFull": "mólbrot (X) (e. mole fraction (X))",
       "definition": "styrkleikaeining skilgreind sem hlutfall mólmagns íhlutar í blöndu og heildarfjölda móla allra íhluta blöndunnar",
       "chapter": 9,
       "section": "9.3",
-      "sectionTitle": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
-      "sectionSlug": "9-3-efnismagnsfraedi-loftkenndra-efna-blanda-og",
+      "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+      "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp1132336"
     },
     {
@@ -4888,8 +4877,8 @@
     },
     {
       "termIs": "mólstyrkur (M)",
-      "termEn": "molarity (m)",
-      "termFull": "mólstyrkur (M) (e. molarity (m))",
+      "termEn": "molarity (M)",
+      "termFull": "mólstyrkur (M) (e. molarity (M))",
       "definition": "styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn",
       "chapter": 3,
       "section": "3.3",
@@ -4915,8 +4904,8 @@
       "definition": "fast efni á borð við gler sem hefur ekki reglulega endurtekna einingu í þrívíðri byggingu sinni; fast efni en ekki kristall",
       "chapter": 18,
       "section": "18.3",
-      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
-      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
+      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp50657904"
     },
     {
@@ -4926,8 +4915,8 @@
       "definition": "(einnig, ókristallað fast efni) fast efni þar sem agnirnar skortir skipulagða innri byggingu",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm63193280"
     },
     {
@@ -4959,8 +4948,8 @@
       "definition": "tala fengin með talningu eða skilgreiningu",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp17670352"
     },
     {
@@ -4970,14 +4959,14 @@
       "definition": "hversu nálægt mæling er réttu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp330245120"
     },
     {
       "termIs": "Nernst-jafna",
-      "termEn": "nernst equation",
-      "termFull": "Nernst-jafna (e. nernst equation)",
+      "termEn": "Nernst equation",
+      "termFull": "Nernst-jafna (e. Nernst equation)",
       "definition": "lýsir sambandi spennu oxunar-afoxunarkerfis og efnasamsetningar þess",
       "chapter": 17,
       "section": "17.4",
@@ -5042,8 +5031,8 @@
     },
     {
       "termIs": "næringarkaloría (kaloría)",
-      "termEn": "nutritional calorie (calorie)",
-      "termFull": "næringarkaloría (kaloría) (e. nutritional calorie (calorie))",
+      "termEn": "nutritional calorie (Calorie)",
+      "termFull": "næringarkaloría (kaloría) (e. nutritional calorie (Calorie))",
       "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kcal",
       "chapter": 5,
       "section": "5.2",
@@ -5069,8 +5058,8 @@
       "definition": "efni sem leiðir rafmagn án viðnáms",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm24131568"
     },
     {
@@ -5091,25 +5080,25 @@
       "definition": "flæði leysisameinda í gegnum hálfgegndræpa himnu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141112944"
     },
     {
       "termIs": "osmósuþrýstingur (Π)",
-      "termEn": "osmotic pressure (π)",
-      "termFull": "osmósuþrýstingur (Π) (e. osmotic pressure (π))",
-      "definition": "mótþrýstingur sem þarf til að koma í veg fyrir magnflutning leysisameinda í gegnum hálfgegndræpa himnu",
+      "termEn": "osmotic pressure (Π)",
+      "termFull": "osmósuþrýstingur (Π) (e. osmotic pressure (Π))",
+      "definition": "gagnstæður þrýstingur sem þarf til að koma í veg fyrir magnflutning leysisameinda í gegnum hálfgegndræpa himnu",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp141114480"
     },
     {
       "termIs": "Ostwald-ferlið",
-      "termEn": "ostwald process",
-      "termFull": "Ostwald-ferlið (e. ostwald process)",
+      "termEn": "Ostwald process",
+      "termFull": "Ostwald-ferlið (e. Ostwald process)",
       "definition": "iðnaðarferli sem notað er til að breyta ammóníaki í saltpéturssýru",
       "chapter": 18,
       "section": "18.9",
@@ -5157,8 +5146,8 @@
       "definition": "þrígilt efnasamband með sýrueiginleika, en sameindir þess innihalda miðlægt málmleysingjafrumeind sem er tengd einni eða fleiri O-frumeindum, þar sem að minnsta kosti ein þeirra er tengd jónanlegri H-frumeind",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Afstæður styrkur sýra og basa",
-      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
+      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
+      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
       "termId": "fs-idm94074528"
     },
     {
@@ -5201,8 +5190,8 @@
       "definition": "fjölfrumeinda anjón samsett úr miðjuatómi sem er tengt við súrefnisatóm",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp484916992"
     },
     {
@@ -5273,8 +5262,8 @@
     },
     {
       "termIs": "óreiða (S)",
-      "termEn": "entropy (s)",
-      "termFull": "óreiða (S) (e. entropy (s))",
+      "termEn": "entropy (S)",
+      "termFull": "óreiða (S) (e. entropy (S))",
       "definition": "ástandsfall sem er mælikvarði á dreifingu efnis og/eða orku innan kerfis, ákvarðað af fjölda örástanda kerfisins; oft lýst sem mælikvarða á óreglu kerfisins",
       "chapter": 16,
       "section": "16.2",
@@ -5333,8 +5322,8 @@
       "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp96606928"
     },
     {
@@ -5361,8 +5350,8 @@
     },
     {
       "termIs": "paskal (Pa)",
-      "termEn": "pascal (pa)",
-      "termFull": "paskal (Pa) (e. pascal (pa))",
+      "termEn": "pascal (Pa)",
+      "termFull": "paskal (Pa) (e. pascal (Pa))",
       "definition": "SI-eining þrýstings; 1 Pa = 1 N/m2",
       "chapter": 9,
       "section": "9.1",
@@ -5394,8 +5383,8 @@
     },
     {
       "termIs": "Pidgeon-ferlið",
-      "termEn": "pidgeon process",
-      "termFull": "Pidgeon-ferlið (e. pidgeon process)",
+      "termEn": "Pidgeon process",
+      "termFull": "Pidgeon-ferlið (e. Pidgeon process)",
       "definition": "efnaafoxunarferli sem notað er til að framleiða magnesíum með hitahvarfi magnesíumoxíðs við kísil",
       "chapter": 18,
       "section": "18.2",
@@ -5411,7 +5400,7 @@
       "chapter": 8,
       "section": "8.1",
       "sectionTitle": "Gildisrafeindatengjakenningin",
-      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-kenning-um-gildistengi",
       "termId": "fs-idp94790208"
     },
     {
@@ -5421,8 +5410,8 @@
       "definition": "gaskennt ástand efnis sem inniheldur mikinn fjölda rafhlöðinna atóma og/eða sameinda",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm37314320"
     },
     {
@@ -5432,8 +5421,8 @@
       "definition": "hópur sex hliðarfrumefna sem samanstendur af rúþeni, osmíni, ródíni, iridíni, palladíni og platínu sem hafa tilhneigingu til að finnast í sömu steindum og sýna svipaða efnafræðilega eiginleika",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm194011232"
     },
     {
@@ -5526,8 +5515,8 @@
     },
     {
       "termIs": "rafeindarvolt (eV)",
-      "termEn": "electron volt (ev)",
-      "termFull": "rafeindarvolt (eV) (e. electron volt (ev))",
+      "termEn": "electron volt (eV)",
+      "termFull": "rafeindarvolt (eV) (e. electron volt (eV))",
       "definition": "mælieining fyrir kjarnabindingarorku, þar sem 1 eV jafngildir orkumagninu sem fæst við að færa rafeind yfir rafspennumun upp á 1 volt",
       "chapter": 21,
       "section": "21.1",
@@ -5608,8 +5597,8 @@
       "definition": "efni sem myndar jónir þegar það er leyst upp í vatni",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idm10926960"
     },
     {
@@ -5619,8 +5608,8 @@
       "definition": "efni sem myndar ekki jónir þegar það er leyst upp í vatni",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idp10683312"
     },
     {
@@ -5647,13 +5636,13 @@
     },
     {
       "termIs": "rafskautsspenna (EX)",
-      "termEn": "electrode potential (ex)",
-      "termFull": "rafskautsspenna (EX) (e. electrode potential (ex))",
+      "termEn": "electrode potential (EX)",
+      "termFull": "rafskautsspenna (EX) (e. electrode potential (EX))",
       "definition": "spenna kers þar sem viðkomandi hálfker virkar sem bakskaut þegar það er tengt við staðlaða vetnisrafskautið",
       "chapter": 17,
       "section": "17.1",
-      "sectionTitle": "Yfirlit yfir oxunar-afoxunarfræði",
-      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarfraedi",
+      "sectionTitle": "Yfirlit yfir oxunar-afoxunarefnafræði",
+      "sectionSlug": "17-1-yfirlit-yfir-oxunar-afoxunarefnafraedi",
       "termId": "fs-idp85536816"
     },
     {
@@ -5669,8 +5658,8 @@
     },
     {
       "termIs": "regla Hunds",
-      "termEn": "hund’s rule",
-      "termFull": "regla Hunds (e. hund’s rule)",
+      "termEn": "Hund’s rule",
+      "termFull": "regla Hunds (e. Hund’s rule)",
       "definition": "hver braut í undirhvolfi er fyllt með einni rafeind áður en nokkur braut er fyllt með tveimur, og allar rafeindir á stökum brautum hafa sama spuna",
       "chapter": 6,
       "section": "6.4",
@@ -5707,8 +5696,8 @@
       "definition": "eðlisfræðilegt ferli sem fylgir upplausn jónísks efnasambands þar sem jónir efnasambandsins leysast upp og dreifast um lausnina",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idm32680960"
     },
     {
@@ -5735,13 +5724,13 @@
     },
     {
       "termIs": "rúmfrumuleg þéttpökkun (CCP)",
-      "termEn": "cubic closest packing (ccp)",
-      "termFull": "rúmfrumuleg þéttpökkun (CCP) (e. cubic closest packing (ccp))",
+      "termEn": "cubic closest packing (CCP)",
+      "termFull": "rúmfrumuleg þéttpökkun (CCP) (e. cubic closest packing (CCP))",
       "definition": "kristalbygging þar sem lög af þéttpökkuðum atómum eða jónum eru stöfluð sem röð þriggja víxllaga með mismunandi afstæðu (ABC)",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp56136784"
     },
     {
@@ -5762,8 +5751,8 @@
       "definition": "allir punktar innan kristals sem hafa eins umhverfi",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idm12811536"
     },
     {
@@ -5845,13 +5834,13 @@
     },
     {
       "termIs": "röntgenkristallafræði",
-      "termEn": "x-ray crystallography",
-      "termFull": "röntgenkristallafræði (e. x-ray crystallography)",
+      "termEn": "X-ray crystallography",
+      "termFull": "röntgenkristallafræði (e. X-ray crystallography)",
       "definition": "tilraunatækni til að ákvarða fjarlægðir milli atóma í kristal með því að mæla hornin sem röntgengeislar sveigjast á þegar þeir fara í gegnum kristalinn",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idm40748576"
     },
     {
@@ -5861,8 +5850,8 @@
       "definition": "breyting sem veldur því að σp-svigrúm verða óstöðugri en πp-svigrúm vegna blöndunar s- og p-byggðra sameindasvigrúma með svipaða orku.",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idp5821920"
     },
     {
@@ -5905,8 +5894,8 @@
       "definition": "bundið safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm6673632"
     },
     {
@@ -5916,8 +5905,8 @@
       "definition": "fast efni sem samanstendur af hlutlausum sameindum sem haldast saman með aðdráttarkröftum milli sameinda",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp66006736"
     },
     {
@@ -5938,8 +5927,8 @@
       "definition": "(einnig, samgilt efnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp93864192"
     },
     {
@@ -5971,8 +5960,8 @@
       "definition": "rúmsvæði þar sem miklar líkur eru á að finna rafeind í sameind",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm131261760"
     },
     {
@@ -5982,8 +5971,8 @@
       "definition": "líkan sem lýsir hegðun rafeinda sem eru óstaðbundnar um alla sameind með tilliti til samsetningar bylgjufalla atóma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm249965088"
     },
     {
@@ -5993,8 +5982,8 @@
       "definition": "sjónræn framsetning á afstæðum orkustigum sameindasvigrýma",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm132723600"
     },
     {
@@ -6048,8 +6037,8 @@
       "definition": "(einnig, sameindaefnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp184530720"
     },
     {
@@ -6059,8 +6048,8 @@
       "definition": "fast efni þar sem agnirnar haldast saman með samgildum tengjum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp42521392"
     },
     {
@@ -6070,8 +6059,8 @@
       "definition": "aðdráttarkraftur milli kjarna atóma í sameind og rafeindapara milli atómanna",
       "chapter": 2,
       "section": "2.6",
-      "sectionTitle": "Jóna- og sameindasambönd",
-      "sectionSlug": "2-6-jona-og-sameindasambond",
+      "sectionTitle": "Jónaefni og sameindaefni",
+      "sectionSlug": "2-6-jonaefni-og-sameindaefni",
       "termId": "fs-idp97231552"
     },
     {
@@ -6114,8 +6103,8 @@
       "definition": "með sömu kristalbyggingu",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp75734960"
     },
     {
@@ -6158,8 +6147,8 @@
       "definition": "svigrúm sem hafa sömu orku",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm167738656"
     },
     {
@@ -6186,13 +6175,13 @@
     },
     {
       "termIs": "samþjöppunarstuðull (Z)",
-      "termEn": "compressibility factor (z)",
-      "termFull": "samþjöppunarstuðull (Z) (e. compressibility factor (z))",
+      "termEn": "compressibility factor (Z)",
+      "termFull": "samþjöppunarstuðull (Z) (e. compressibility factor (Z))",
       "definition": "hlutfallið milli mælda mólrúmmáls gass og mólrúmmáls þess eins og það er reiknað út frá kjörgasjöfnunni",
       "chapter": 9,
       "section": "9.6",
-      "sectionTitle": "Hegðun raungass",
-      "sectionSlug": "9-6-hegdun-raungass",
+      "sectionTitle": "Frávik frá kjörgaseiginleikum",
+      "sectionSlug": "9-6-fravik-fra-kjorgaseiginleikum",
       "termId": "fs-idp3716528"
     },
     {
@@ -6230,19 +6219,19 @@
     },
     {
       "termIs": "sexstrendingsleg þéttpökkun (HCP)",
-      "termEn": "hexagonal closest packing (hcp)",
-      "termFull": "sexstrendingsleg þéttpökkun (HCP) (e. hexagonal closest packing (hcp))",
+      "termEn": "hexagonal closest packing (HCP)",
+      "termFull": "sexstrendingsleg þéttpökkun (HCP) (e. hexagonal closest packing (HCP))",
       "definition": "kristalbygging þar sem þéttpökkuð lög af atómum eða jónum eru stöfluð sem röð tveggja víxllaga með mismunandi afstæðu (AB)",
       "chapter": 10,
       "section": "10.6",
-      "sectionTitle": "Grindarformgerðir í kristölluðum föstum efnum",
-      "sectionSlug": "10-6-grindarformgerdir-i-kristolludum-fostum-efnum",
+      "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
+      "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp81517488"
     },
     {
       "termIs": "SI-einingar (Alþjóðlega einingakerfið)",
-      "termEn": "si units (international system of units)",
-      "termFull": "SI-einingar (Alþjóðlega einingakerfið) (e. si units (international system of units))",
+      "termEn": "SI units (International System of Units)",
+      "termFull": "SI-einingar (Alþjóðlega einingakerfið) (e. SI units (International System of Units))",
       "definition": "staðlar sem ákveðnir eru með alþjóðasamningi í Alþjóðlega einingakerfinu (Le Système International d’Unités)",
       "chapter": 1,
       "section": "1.4",
@@ -6258,7 +6247,7 @@
       "chapter": 8,
       "section": "8.1",
       "sectionTitle": "Gildisrafeindatengjakenningin",
-      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-kenning-um-gildistengi",
       "termId": "fs-idp36919168"
     },
     {
@@ -6268,8 +6257,8 @@
       "definition": "efnasamband sem inniheldur kísil-súrefnistengi, með silikattetrahedrona tengda í hringi, lög eða þrívíð net, eftir því hvaða önnur frumefni taka þátt í myndun efnasambandanna",
       "chapter": 18,
       "section": "18.3",
-      "sectionTitle": "Bygging og almennir eiginleikar málmunga",
-      "sectionSlug": "18-3-bygging-og-almennir-eiginleikar-malmunga",
+      "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
+      "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp17081184"
     },
     {
@@ -6301,8 +6290,8 @@
       "definition": "safn 17 frumefna, þar á meðal lantaníða, skandíns og yttríns, sem oft koma fyrir saman og hafa svipaða efnafræðilega eiginleika, sem gerir aðskilnað erfiðan",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm42041824"
     },
     {
@@ -6378,8 +6367,8 @@
       "definition": "mælikvarði á getu hleðslu til að afmynda hleðsludreifingu sameindar (rafeindaský)",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idp128571888"
     },
     {
@@ -6405,6 +6394,17 @@
       "termId": "fs-idp79627072"
     },
     {
+      "termIs": "skorpnun",
+      "termEn": "crenation",
+      "termFull": "skorpnun (e. crenation)",
+      "definition": "ferli þar sem líffræðilegar frumur skreppa saman vegna vatnstaps með osmósu",
+      "chapter": 11,
+      "section": "11.4",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
+      "termId": "fs-idp141096064"
+    },
+    {
       "termIs": "skömmtun",
       "termEn": "quantization",
       "termFull": "skömmtun (e. quantization)",
@@ -6423,7 +6423,7 @@
       "chapter": 8,
       "section": "8.1",
       "sectionTitle": "Gildisrafeindatengjakenningin",
-      "sectionSlug": "8-1-gildisrafeindatengjakenningin",
+      "sectionSlug": "8-1-kenning-um-gildistengi",
       "termId": "fs-idp42480608"
     },
     {
@@ -6516,13 +6516,13 @@
     },
     {
       "termIs": "staðalaðstæður hitastigs og þrýstings (STP)",
-      "termEn": "standard conditions of temperature and pressure (stp)",
-      "termFull": "staðalaðstæður hitastigs og þrýstings (STP) (e. standard conditions of temperature and pressure (stp))",
+      "termEn": "standard conditions of temperature and pressure (STP)",
+      "termFull": "staðalaðstæður hitastigs og þrýstings (STP) (e. standard conditions of temperature and pressure (STP))",
       "definition": "273,15 K (0 °C) og 1 atm (101,325 kPa)",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm158190720"
     },
     {
@@ -6538,8 +6538,8 @@
     },
     {
       "termIs": "staðalbreyting á frjálsri orku (ΔG°)",
-      "termEn": "standard free energy change (δg°)",
-      "termFull": "staðalbreyting á frjálsri orku (ΔG°) (e. standard free energy change (δg°))",
+      "termEn": "standard free energy change (ΔG°)",
+      "termFull": "staðalbreyting á frjálsri orku (ΔG°) (e. standard free energy change (ΔG°))",
       "definition": "breyting á frjálsri orku fyrir ferli sem á sér stað við staðlaðar aðstæður (1 bar þrýstingur fyrir lofttegundir, 1 M styrkur fyrir lausnir)",
       "chapter": 16,
       "section": "16.4",
@@ -6565,8 +6565,8 @@
       "definition": "kerspennan þegar öll hvarfefni og myndefni eru í staðalham (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni), venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Rafskauts- og kerspenna",
-      "sectionSlug": "17-3-rafskauts-og-kerspenna",
+      "sectionTitle": "Raftroðs- og kerspenna",
+      "sectionSlug": "17-3-raftrods-og-kerspenna",
       "termId": "fs-idp227872832"
     },
     {
@@ -6576,8 +6576,8 @@
       "definition": "rúmmál 1 móls af gasi við staðalaðstæður (STP), um það bil 22,4 L fyrir lofttegundir sem hegða sér eins og kjörgas",
       "chapter": 9,
       "section": "9.2",
-      "sectionTitle": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
-      "sectionSlug": "9-2-samband-thrystings-rummals-magns-og-hitastigs",
+      "sectionTitle": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið",
+      "sectionSlug": "9-2-samband-thrystings-rummals-efnismagns-og-hitastigs",
       "termId": "fs-idm62647600"
     },
     {
@@ -6604,8 +6604,8 @@
     },
     {
       "termIs": "staðalóreiða (S°)",
-      "termEn": "standard entropy (s°)",
-      "termFull": "staðalóreiða (S°) (e. standard entropy (s°))",
+      "termEn": "standard entropy (S°)",
+      "termFull": "staðalóreiða (S°) (e. standard entropy (S°))",
       "definition": "óreiða fyrir eitt mól af efni við 1 bar þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K",
       "chapter": 16,
       "section": "16.3",
@@ -6615,8 +6615,8 @@
     },
     {
       "termIs": "staðalóreiðubreyting (ΔS°)",
-      "termEn": "standard entropy change (δs°)",
-      "termFull": "staðalóreiðubreyting (ΔS°) (e. standard entropy change (δs°))",
+      "termEn": "standard entropy change (ΔS°)",
+      "termFull": "staðalóreiðubreyting (ΔS°) (e. standard entropy change (ΔS°))",
       "definition": "óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðugildum",
       "chapter": 16,
       "section": "16.3",
@@ -6631,19 +6631,19 @@
       "definition": "skautspenna mæld við staðalaðstæður (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni) venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Rafskauts- og kerspenna",
-      "sectionSlug": "17-3-rafskauts-og-kerspenna",
+      "sectionTitle": "Raftroðs- og kerspenna",
+      "sectionSlug": "17-3-raftrods-og-kerspenna",
       "termId": "fs-idm4867824"
     },
     {
       "termIs": "staðalvetnisskaut (SHE)",
-      "termEn": "standard hydrogen electrode (she)",
-      "termFull": "staðalvetnisskaut (SHE) (e. standard hydrogen electrode (she))",
+      "termEn": "standard hydrogen electrode (SHE)",
+      "termFull": "staðalvetnisskaut (SHE) (e. standard hydrogen electrode (SHE))",
       "definition": "hálfker sem byggir á myndun vetnisjóna, með skilgreinda spennu sem er nákvæmlega 0 V við staðalaðstæður, notað sem almennt viðmið til að mæla skautspennu",
       "chapter": 17,
       "section": "17.3",
-      "sectionTitle": "Rafskauts- og kerspenna",
-      "sectionSlug": "17-3-rafskauts-og-kerspenna",
+      "sectionTitle": "Raftroðs- og kerspenna",
+      "sectionSlug": "17-3-raftrods-og-kerspenna",
       "termId": "fs-idp198657264"
     },
     {
@@ -6664,8 +6664,8 @@
       "definition": "efni úr járni sem er búið til með því að fjarlægja óhreinindi úr járninu og bæta við efnum sem mynda málmblöndur með eiginleika sem henta til sérstakra nota",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm24132624"
     },
     {
@@ -6675,8 +6675,8 @@
       "definition": "efni sem rofnar eða jónast að fullu þegar það er leyst upp í vatni",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idm7742384"
     },
     {
@@ -6752,8 +6752,8 @@
       "definition": "breyting úr vökvafasa í fastan fasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm144682752"
     },
     {
@@ -6862,8 +6862,8 @@
       "definition": "hitastig þar sem gufuþrýstingur vökva jafngildir þrýstingi gassins fyrir ofan hann",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm193814624"
     },
     {
@@ -6873,19 +6873,19 @@
       "definition": "hækkun á suðumarki vökva með því að bæta við uppleystu efni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp188855296"
     },
     {
       "termIs": "suðumarkshækkunarfasti",
       "termEn": "boiling point elevation constant",
       "termFull": "suðumarkshækkunarfasti (e. boiling point elevation constant)",
-      "definition": "hlutfallsfastinn í jöfnunni sem tengir suðumarkshækkun við mólstyrk uppleysts efnis; einnig þekktur sem suðumarksfasti",
+      "definition": "hlutfallsfastinn í jöfnunni sem tengir suðumarkshækkun við mólalstyrk uppleysts efnis; einnig þekktur sem suðumarksfasti",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp188856832"
     },
     {
@@ -6961,8 +6961,8 @@
       "definition": "flutningur atóms eða sameindar frá svæði með tiltölulega háum styrk yfir á svæði með tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til efna á gasfasa, en á við um efni á hvaða fasa sem er)",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og flæði lofttegunda",
-      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
       "termId": "fs-idp133388272"
     },
     {
@@ -6972,8 +6972,8 @@
       "definition": "magn lofttegundar sem sveimar í gegnum tiltekið svæði á tilteknum tíma",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og flæði lofttegunda",
-      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
       "termId": "fs-idp43914864"
     },
     {
@@ -6983,8 +6983,8 @@
       "definition": "misblönduð blanda þar sem tiltölulega stórum íhlutaögnum er dreift tímabundið en þær setjast til með tímanum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm380612256"
     },
     {
@@ -7055,19 +7055,19 @@
     },
     {
       "termIs": "sýrujónunarfasti (Ka)",
-      "termEn": "acid ionization constant (ka)",
-      "termFull": "sýrujónunarfasti (Ka) (e. acid ionization constant (ka))",
+      "termEn": "acid ionization constant (Ka)",
+      "termFull": "sýrujónunarfasti (Ka) (e. acid ionization constant (Ka))",
       "definition": "jafnvægisfasti fyrir sýrujónunarhvarf",
       "chapter": 14,
       "section": "14.3",
-      "sectionTitle": "Afstæður styrkur sýra og basa",
-      "sectionSlug": "14-3-afstaedur-styrkur-syra-og-basa",
+      "sectionTitle": "Hlutfallslegur styrkur sýra og basa",
+      "sectionSlug": "14-3-hlutfallslegur-styrkur-syra-og-basa",
       "termId": "fs-idp86058640"
     },
     {
       "termIs": "sætistala (Z)",
-      "termEn": "atomic number (z)",
-      "termFull": "sætistala (Z) (e. atomic number (z))",
+      "termEn": "atomic number (Z)",
+      "termFull": "sætistala (Z) (e. atomic number (Z))",
       "definition": "fjöldi róteinda í kjarna atóms",
       "chapter": 2,
       "section": "2.3",
@@ -7115,8 +7115,8 @@
       "definition": "kerfi sem einkennist af samtímis myndun tveggja eða fleiri jafnvægishvarfa sem deila einu eða fleiri hvarfefnum eða myndefnum",
       "chapter": 15,
       "section": "15.3",
-      "sectionTitle": "Tengt jafnvægi",
-      "sectionSlug": "15-3-tengt-jafnvaegi",
+      "sectionTitle": "Tengd jafnvægi",
+      "sectionSlug": "15-3-tengd-jafnvaegi",
       "termId": "fs-idp13121024"
     },
     {
@@ -7192,8 +7192,8 @@
       "definition": "fjöldi rafeindapara milli tveggja atóma; hana má finna út frá fjölda tengja í Lewis-mynd eða með mismuninum á fjölda bindandi og andbindandi rafeinda deilt með tveimur",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm57102096"
     },
     {
@@ -7220,8 +7220,8 @@
     },
     {
       "termIs": "tíðniþáttur (A)",
-      "termEn": "frequency factor (a)",
-      "termFull": "tíðniþáttur (A) (e. frequency factor (a))",
+      "termEn": "frequency factor (A)",
+      "termFull": "tíðniþáttur (A) (e. frequency factor (A))",
       "definition": "hlutfallsfasti í Arrheniusarjöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
       "chapter": 12,
       "section": "12.5",
@@ -7236,8 +7236,8 @@
       "definition": "lausn sem inniheldur þekktan styrk efnis sem hvarfast við greiningarefnið í títrunargreiningu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp122976560"
     },
     {
@@ -7258,8 +7258,8 @@
       "definition": "magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar sem þarf til að hvarfast að fullu við greiningarefnið í sýni",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp122977840"
     },
     {
@@ -7280,8 +7280,8 @@
       "definition": "galli sem verður þegar staða sem ætti að innihalda atóm eða jón er tóm",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast efni",
-      "sectionSlug": "10-5-fast-efni",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm37032656"
     },
     {
@@ -7302,8 +7302,8 @@
       "definition": "sameind sem samanstendur af tveimur eins atómum",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm165896720"
     },
     {
@@ -7346,8 +7346,8 @@
       "definition": "sameindir sem búa yfir bæði vatnsfælnum (óskautuðum) og vatnssæknum (skautuðum) hlutum",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm237171488"
     },
     {
@@ -7379,8 +7379,8 @@
       "definition": "aðdráttarkraftur milli tveggja varanlegra tvískauta",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idp127496336"
     },
     {
@@ -7462,13 +7462,13 @@
     },
     {
       "termIs": "Tyndall-áhrif",
-      "termEn": "tyndall effect",
-      "termFull": "Tyndall-áhrif (e. tyndall effect)",
+      "termEn": "Tyndall effect",
+      "termFull": "Tyndall-áhrif (e. Tyndall effect)",
       "definition": "dreifing sýnilegs ljóss með kollóíðdreifu",
       "chapter": 11,
       "section": "11.5",
-      "sectionTitle": "Kollóíðar",
-      "sectionSlug": "11-5-kolloidar",
+      "sectionTitle": "Svif",
+      "sectionSlug": "11-5-svif",
       "termId": "fs-idm171842784"
     },
     {
@@ -7511,8 +7511,8 @@
       "definition": "hlutfall jafngildra stærða gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga",
       "termId": "fs-idm307214528"
     },
     {
@@ -7544,8 +7544,8 @@
       "definition": "augnablikshraði efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)",
       "chapter": 12,
       "section": "12.1",
-      "sectionTitle": "Hraði efnahvarfa",
-      "sectionSlug": "12-1-hradi-efnahvarfa",
+      "sectionTitle": "Hvarfhraði efnahvarfa",
+      "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp24984224"
     },
     {
@@ -7599,8 +7599,8 @@
       "definition": "geislun sem gefin er með tæki utan líkamans",
       "chapter": 21,
       "section": "21.5",
-      "sectionTitle": "Notkun geislasamsætna",
-      "sectionSlug": "21-5-notkun-geislasamsaetna",
+      "sectionTitle": "Notkun geislasamsæta",
+      "sectionSlug": "21-5-notkun-geislasamsaeta",
       "termId": "fs-idp44456896"
     },
     {
@@ -7610,19 +7610,19 @@
       "definition": "flutningur atóma eða sameinda á gasfasa úr íláti út í lofttæmi í gegnum mjög lítil op",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og flæði lofttegunda",
-      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
       "termId": "fs-idp39360864"
     },
     {
       "termIs": "útstreymislögmál Grahams",
-      "termEn": "graham’s law of effusion",
-      "termFull": "útstreymislögmál Grahams (e. graham’s law of effusion)",
+      "termEn": "Graham’s law of effusion",
+      "termFull": "útstreymislögmál Grahams (e. Graham’s law of effusion)",
       "definition": "sveim- og útstreymishraði lofttegunda er í öfugu hlutfalli við kvaðratrót mólmassa þeirra",
       "chapter": 9,
       "section": "9.4",
-      "sectionTitle": "Útstreymi og flæði lofttegunda",
-      "sectionSlug": "9-4-utstreymi-og-flaedi-lofttegunda",
+      "sectionTitle": "Útstreymi og sveim gasa",
+      "sectionSlug": "9-4-utstreymi-og-sveim-gasa",
       "termId": "fs-idp257364480"
     },
     {
@@ -7649,41 +7649,41 @@
     },
     {
       "termIs": "van der Waals-jafna",
-      "termEn": "van der waals equation",
-      "termFull": "van der Waals-jafna (e. van der waals equation)",
+      "termEn": "van der Waals equation",
+      "termFull": "van der Waals-jafna (e. van der Waals equation)",
       "definition": "breytt útgáfa af kjörgasjöfnunni sem inniheldur viðbótarliði til að taka tillit til hegðunar sem víkur frá kjörgashegðun",
       "chapter": 9,
       "section": "9.6",
-      "sectionTitle": "Hegðun raungass",
-      "sectionSlug": "9-6-hegdun-raungass",
+      "sectionTitle": "Frávik frá kjörgaseiginleikum",
+      "sectionSlug": "9-6-fravik-fra-kjorgaseiginleikum",
       "termId": "fs-idm15517248"
     },
     {
       "termIs": "van der Waals-kraftur",
-      "termEn": "van der waals force",
-      "termFull": "van der Waals-kraftur (e. van der waals force)",
+      "termEn": "van der Waals force",
+      "termFull": "van der Waals-kraftur (e. van der Waals force)",
       "definition": "aðdráttar- eða fráhrindikraftur milli sameinda, þar á meðal tvískaut-tvískaut, tvískaut-örvað tvískaut og London-dreifikraftar; nær ekki yfir krafta vegna samgildra eða jónatengja, eða aðdráttarkrafta milli jóna og sameinda",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idm134093104"
     },
     {
       "termIs": "van't Hoff-stuðull (i)",
-      "termEn": "van’t hoff factor (i)",
-      "termFull": "van't Hoff-stuðull (i) (e. van’t hoff factor (i))",
+      "termEn": "van’t Hoff factor (i)",
+      "termFull": "van't Hoff-stuðull (i) (e. van’t Hoff factor (i))",
       "definition": "hlutfall mólfjölda agna í lausn og mólfjölda formúlueininga sem leystar eru upp í lausninni",
       "chapter": 11,
       "section": "11.4",
-      "sectionTitle": "Sameiginlegir eiginleikar",
-      "sectionSlug": "11-4-sameiginlegir-eiginleikar",
+      "sectionTitle": "Samþynningareiginleikar",
+      "sectionSlug": "11-4-samthynningareiginleikar",
       "termId": "fs-idp11034384"
     },
     {
       "termIs": "varmarýmd (C)",
-      "termEn": "heat capacity (c)",
-      "termFull": "varmarýmd (C) (e. heat capacity (c))",
+      "termEn": "heat capacity (C)",
+      "termFull": "varmarýmd (C) (e. heat capacity (C))",
       "definition": "magnháður eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvín)",
       "chapter": 5,
       "section": "5.1",
@@ -7720,8 +7720,8 @@
       "definition": "efni sem jónast aðeins að hluta þegar það er leyst upp í vatni",
       "chapter": 11,
       "section": "11.2",
-      "sectionTitle": "Rafleiðar",
-      "sectionSlug": "11-2-rafleidar",
+      "sectionTitle": "Rafkleyfar",
+      "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idp4277680"
     },
     {
@@ -7764,14 +7764,14 @@
       "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
       "chapter": 1,
       "section": "1.5",
-      "sectionTitle": "Mælióvissa, nákvæmni og genkvæmni",
-      "sectionSlug": "1-5-maeliovissa-nakvaemni-og-genkvaemni",
+      "sectionTitle": "Óvissa í mælingum, hittni og nákvæmni",
+      "sectionSlug": "1-5-ovissa-i-maelingum-hittni-og-nakvaemni",
       "termId": "fs-idp28800512"
     },
     {
       "termIs": "vermi (H)",
-      "termEn": "enthalpy (h)",
-      "termFull": "vermi (H) (e. enthalpy (h))",
+      "termEn": "enthalpy (H)",
+      "termFull": "vermi (H) (e. enthalpy (H))",
       "definition": "summa innri orku kerfis og stærðfræðilegs margfeldis þrýstings þess og rúmmáls",
       "chapter": 5,
       "section": "5.3",
@@ -7781,8 +7781,8 @@
     },
     {
       "termIs": "vermibreyting (ΔH)",
-      "termEn": "enthalpy change (δh)",
-      "termFull": "vermibreyting (ΔH) (e. enthalpy change (δh))",
+      "termEn": "enthalpy change (ΔH)",
+      "termFull": "vermibreyting (ΔH) (e. enthalpy change (ΔH))",
       "definition": "hiti sem losnar eða frásogast af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
       "chapter": 5,
       "section": "5.3",
@@ -7841,8 +7841,8 @@
       "definition": "myndast þegar sérstaklega sterkir tvískautar dragast hvor að öðrum; tengi sem er til staðar þegar vetni er tengt einu af þremur rafneikvæðustu frumefnunum: F, O eða N",
       "chapter": 10,
       "section": "10.1",
-      "sectionTitle": "Millikraftar",
-      "sectionSlug": "10-1-millikraftar",
+      "sectionTitle": "Millisameindakraftar",
+      "sectionSlug": "10-1-millisameindakraftar",
       "termId": "fs-idp18243872"
     },
     {
@@ -7902,8 +7902,8 @@
     },
     {
       "termIs": "virkjunarorka (Ea)",
-      "termEn": "activation energy (ea)",
-      "termFull": "virkjunarorka (Ea) (e. activation energy (ea))",
+      "termEn": "activation energy (Ea)",
+      "termFull": "virkjunarorka (Ea) (e. activation energy (Ea))",
       "definition": "lágmarksorka sem er nauðsynleg til þess að hvarf geti átt sér stað",
       "chapter": 12,
       "section": "12.5",
@@ -7940,8 +7940,8 @@
       "definition": "(einnig, þáttunar- og merkingaraðferð) fjölhæf stærðfræðileg aðferð sem hægt er að beita við útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkur mismunandi stærðir",
       "chapter": 1,
       "section": "1.6",
-      "sectionTitle": "Stærðfræðileg meðferð mæliniðurstaðna",
-      "sectionSlug": "1-6-staerdfraedileg-medferd-maelinidurstadna",
+      "sectionTitle": "Stærðfræðileg meðferð á niðurstöðum mælinga",
+      "sectionSlug": "1-6-staerdfraedileg-medferd-a-nidurstodum-maelinga",
       "termId": "fs-idm216300016"
     },
     {
@@ -7962,8 +7962,8 @@
       "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á endapunktinum mögulega",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp83289888"
     },
     {
@@ -8017,8 +8017,8 @@
       "definition": "ferli þar sem málmur er aðskilinn frá blöndu með því að breyta honum fyrst í leysanlegar jónir, vinna jónirnar og síðan afoxa jónirnar til að fella út hreina málminn",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm281484512"
     },
     {
@@ -8039,8 +8039,8 @@
       "definition": "hamur efnis sem hefur ákveðið rúmmál en óákveðna lögun",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idp9074576"
     },
     {
@@ -8061,8 +8061,8 @@
       "definition": "efni við hita og þrýsting sem er hærri en markpunktur þess; sýnir eiginleika sem eru mitt á milli eiginleika gas- og vökvafasa",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasamyndir",
-      "sectionSlug": "10-4-fasamyndir",
+      "sectionTitle": "Fasarit",
+      "sectionSlug": "10-4-fasarit",
       "termId": "fs-idm208980304"
     },
     {
@@ -8105,8 +8105,8 @@
       "definition": "breyting úr gasfasa í vökvafasa",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm193371200"
     },
     {
@@ -8138,8 +8138,8 @@
       "definition": "hliðarfrumefni í sjöttu lotu lotukerfisins (þriðja röð d-blokkarinnar), sætistölur 57 og 72–79",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm42835168"
     },
     {
@@ -8182,8 +8182,8 @@
       "definition": "hiti og þrýstingur þar sem þrír fasar efnis eru í jafnvægi",
       "chapter": 10,
       "section": "10.4",
-      "sectionTitle": "Fasamyndir",
-      "sectionSlug": "10-4-fasamyndir",
+      "sectionTitle": "Fasarit",
+      "sectionSlug": "10-4-fasarit",
       "termId": "fs-idm153679600"
     },
     {
@@ -8248,8 +8248,8 @@
       "definition": "breyting úr föstu formi beint í gasform",
       "chapter": 10,
       "section": "10.3",
-      "sectionTitle": "Hamskipti",
-      "sectionSlug": "10-3-hamskipti",
+      "sectionTitle": "Fasabreytingar",
+      "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm146567360"
     },
     {
@@ -8259,8 +8259,8 @@
       "definition": "fyrirbæri þar sem efni er ekki segulmagnað sjálft en hrindist frá segulsviði; það gerist þegar aðeins eru til staðar paraðar rafeindir",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm83103936"
     },
     {
@@ -8281,8 +8281,8 @@
       "definition": "kraftur sem þyngdaraflið beitir á hlut",
       "chapter": 1,
       "section": "1.2",
-      "sectionTitle": "Ástandsform og flokkun efnis",
-      "sectionSlug": "1-2-astandsform-og-flokkun-efnis",
+      "sectionTitle": "Efnishamir og flokkun efnis",
+      "sectionSlug": "1-2-efnishamir-og-flokkun-efnis",
       "termId": "fs-idm6297360"
     },
     {
@@ -8292,8 +8292,8 @@
       "definition": "magnbundin efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlisfræðilegu eða efnafræðilegu ferli og síðari massamælingar á greiningarefninu, hvarfafurðinni og/eða sýninu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Megindleg efnagreining",
-      "sectionSlug": "4-5-megindleg-efnagreining",
+      "sectionTitle": "Magnbundin efnagreining",
+      "sectionSlug": "4-5-magnbundin-efnagreining",
       "termId": "fs-idp83288512"
     },
     {
@@ -8325,8 +8325,8 @@
       "definition": "hliðarfrumefni í fimmtu lotu lotukerfisins (önnur röð d-blokkarinnar), sætistölur 39–47",
       "chapter": 19,
       "section": "19.1",
-      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
-      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarfrumefna",
+      "sectionTitle": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra",
+      "sectionSlug": "19-1-tilvist-framleidsla-og-eiginleikar-hlidarmalma-og",
       "termId": "fs-idm163687904"
     },
     {
@@ -8358,8 +8358,8 @@
       "definition": "sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma, þar sem rafeindaþéttleikinn er á gagnstæðum hliðum tengiássins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm100344544"
     },
     {
@@ -8369,8 +8369,8 @@
       "definition": "andbindandi sameindasvigrúm sem myndast við hliðarskarun atómsvigrýma úr fasa, þar sem rafeindaþéttleikinn er báðum megin við tengiásinn og það er núllpunktur milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm18620192"
     },
     {
@@ -8380,8 +8380,8 @@
       "definition": "sameindasvigrúm þar sem rafeindaþéttleikinn er meðfram ás tengisins",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm41960016"
     },
     {
@@ -8391,8 +8391,8 @@
       "definition": "andbindandi sameindasvigrúm sem myndast við skörun atómsvigrúma í andfasa meðfram ás tengisins og myndar nódu milli kjarnanna",
       "chapter": 8,
       "section": "8.4",
-      "sectionTitle": "Sámeindasvigrúmskenningin",
-      "sectionSlug": "8-4-sameindasvigrumskenningin",
+      "sectionTitle": "Sameindasvigrúmakenningin",
+      "sectionSlug": "8-4-sameindasvigrumakenningin",
       "termId": "fs-idm169269152"
     }
   ]

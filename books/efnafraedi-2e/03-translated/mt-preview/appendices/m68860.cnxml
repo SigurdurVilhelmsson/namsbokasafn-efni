@@ -95,7 +95,7 @@
 <section id="fs-idm218270160">
 <title>Notkun logra og veldisvísistalna</title>
 <para id="fs-idm310797664">Tugalogri (log) tölu er veldisvísirinn sem þarf að hefja 10 í til að fá töluna. Til dæmis er tugalogri 100 jafn 2, því það þarf að hefja 10 í annað veldi til að fá 100. Hér á eftir fylgja fleiri dæmi.</para>
-<table id="fs-idm247181504" class="top-titled" summary="A table titled “Logarithms and Exponential Numbers” has three columns titled “Number,” “Number Expressed Exponentially,” and “Common Logarithm.” The number 1000 is expressed exponentially as 10 superscript 3 and has a common logarithm of 3. The number 10 is expressed exponentially as 10 superscript 1 and has a common logarithm of 1. The number 1 is expressed exponentially as 10 superscript 0 and has a common logarithm of 0. The number 0.1 is expressed exponentially as 10 superscript negative 1 and has a common logarithm of negative 1. The number 0.001 is expressed exponentially as 10 superscript negative 3 and has a common logarithm of negative 3.">
+<table id="fs-idm247181504" class="top-titled" summary="Tafla með heitinu „Lograr og veldistölur“ hefur þrjá dálka með heitunum „Tala“, „Tala sett fram með veldi“ og „Almennur logri“. Talan 1000 er sett fram með veldi sem 10 í þriðja veldi og hefur almennan logra upp á 3. Talan 10 er sett fram með veldi sem 10 í fyrsta veldi og hefur almennan logra upp á 1. Talan 1 er sett fram með veldi sem 10 í núllta veldi og hefur almennan logra upp á 0. Talan 0,1 er sett fram með veldi sem 10 í mínus fyrsta veldi og hefur almennan logra upp á mínus 1. Talan 0,001 er sett fram með veldi sem 10 í mínus þriðja veldi og hefur almennan logra upp á mínus 3.">
 <tgroup cols="3">
 <colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
@@ -174,7 +174,7 @@
 <para id="fs-idm78087840">Þegar gildi <emphasis effect="italics">y</emphasis> breytist sem fall af <emphasis effect="italics">x</emphasis> (það er að segja, mismunandi gildi <emphasis effect="italics">x</emphasis> samsvara mismunandi gildum <emphasis effect="italics">y</emphasis>), er hægt að teikna eða skissa línurit yfir þessa breytingu. Hægt er að búa til línuritið með því að nota tiltekin gildi fyrir (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gagnapör.</para>
 <example id="fs-idp9271248">
 <para id="fs-idm111716000"><title>Línurit yfir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis></title></para>
-<table id="fs-idm165592384" class="unnumbered" summary="A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.">
+<table id="fs-idm165592384" class="unnumbered" summary="Tafla hefur tvo dálka merkta x og y. Í fyrstu röð er gildi x 1 og gildi y er 5. Í annarri röð er gildi x 2 og gildi y er 10. Í þriðju röð er gildi x 3 og gildi y er 7. Í fjórðu röð er gildi x 4 og gildi y er 14.">
 <label/>
 <tgroup cols="2">
 <colspec colnum="1" colname="c1"/>
@@ -213,7 +213,7 @@
 <para id="fs-idm164107136">Ef fallið sem lýsir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis> er þekkt er hægt að nota það til að reikna út x,y gagnapör sem síðan er hægt að teikna.</para>
 <example id="fs-idm173153104">
 <para id="fs-idm144872640"><title>Teikna gagnapör</title>Ef við vitum að <emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2, getum við búið til töflu með nokkrum (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gildum og síðan teiknað línuna út frá gögnunum sem sýnd eru hér.</para>
-<table id="fs-idm70341712" class="unnumbered" summary="A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.">
+<table id="fs-idm70341712" class="unnumbered" summary="Tafla hefur tvo dálka: sá fyrri er merktur x og sá síðari er merktur y jafnt og x í öðru veldi plús 2. Í fyrstu röð er gildi x 1 og gildi y jafnt og x í öðru veldi plús 2 er 3. Í annarri röð er gildi x 2 og gildi y jafnt og x í öðru veldi plús 2 er 6. Í þriðju röð er gildi x 3 og gildi y jafnt og x í öðru veldi plús 2 er 11. Í fjórðu röð er gildi x 4 og gildi y jafnt og x í öðru veldi plús 2 er 18.">
 <label/>
 <tgroup cols="2">
 <colspec colnum="1" colname="c1"/>

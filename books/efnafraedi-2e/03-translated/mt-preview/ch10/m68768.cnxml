@@ -1,8 +1,8 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
-<title>Hamskipti</title>
+<title>Fasabreytingar</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68768</md:content-id>
-  <md:title>Hamskipti</md:title>
+  <md:title>Fasabreytingar</md:title>
   <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla getur þú:</para><list id="list-00001"><item>Skilgreint hamskipti og hamskiptahita</item><item>Útskýrt sambandið milli hamskiptahita og aðdráttarkrafta milli sameinda</item><item>Lýst ferlunum sem dæmigerðir hitunar- og kólnunarferlar sýna og reiknað varmastreymi og vermibreytingar sem fylgja þessum ferlum</item></list></md:abstract>
   <md:uuid>3f0fa9fb-278f-4fae-9a77-661bbd8c466a</md:uuid>
 </metadata>
@@ -25,7 +25,7 @@
 </media>
 <para id="fs-idm12378064"><title>Lausn</title>Díetýleter hefur mjög lítið tvískaut og flestir aðdráttarkraftar milli sameinda hans eru London-kraftar. Þótt þessi sameind sé stærst þeirra fjögurra sem um ræðir eru aðdráttarkraftar milli sameinda hennar veikastir og þar af leiðandi sleppa sameindir hennar auðveldast úr vökvanum. Hann hefur einnig hæsta gufuþrýstinginn. Vegna smærri stærðar sinnar sýnir etanól veikari dreifikrafta en díetýleter. Hins vegar getur etanól myndað vetnistengi og sýnir því sterkari heildaraðdráttarkrafta milli sameinda, sem þýðir að færri sameindir sleppa úr vökvanum við tiltekið hitastig og því hefur etanól lægri gufuþrýsting en díetýleter. Vatn er mun minna en hvort tveggja fyrrnefndu efnanna og sýnir veikari dreifikrafta, en víðtæk vetnistengi þess veita sterkari aðdráttarkrafta milli sameinda, færri sameindir sleppa úr vökvanum og lægri gufuþrýsting en fyrir annaðhvort díetýleter eða etanól. Etýlen glýkól hefur tvo −OH hópa, þannig að líkt og vatn sýnir það víðtæk vetnistengi. Það er mun stærra en vatn og upplifir því stærri London-krafta. Heildaraðdráttarkraftar milli sameinda þess eru stærstir þessara fjögurra efna, sem þýðir að uppgufunarhraði þess verður hægastur og þar af leiðandi gufuþrýstingur þess lægstur.</para>
 <para id="fs-idm224164560"><title>Prófaðu þekkingu þína</title>Við 20 °C er gufuþrýstingur nokkurra alkóhóla gefinn í þessari töflu. Útskýrðu þennan gufuþrýsting með tilliti til tegunda og umfangs millikrafta fyrir þessi alkóhól:</para>
-<table id="fs-idm60218336" class="column-header unnumbered" summary="This table has two rows and five columns. The first column is a header column, and it labels each row: “Compound,” and “Vapor Pressure at 25 degrees C.” To the right of the “Compound” column are the following: methanol, C H subscript 3 O H; ethanol, C subscript 2 H subscript 5 O H; propanol C subscript 3 H subscript 7 O H; and butanol C subscript 4 H subscript 9 O H. To the right of the “Vapor Pressure at 25 degrees C” column are the following: 11.9 k P a, 5.95 k P a, 2.67 k P a, and 0.56 k P a."><label/>
+<table id="fs-idm60218336" class="column-header unnumbered" summary="Þessi tafla hefur tvær raðir og fimm dálka. Fyrsti dálkurinn er hausadálkur og hann merkir hverja röð: „Efnasamband“ og „Gufuþrýstingur við 25 gráður C“. Hægra megin við dálkinn „Efnasamband“ er eftirfarandi: metanól, C H með lágstaf 3 O H; etanól, C með lágstaf 2 H með lágstaf 5 O H; própanól C með lágstaf 3 H með lágstaf 7 O H; og bútanól C með lágstaf 4 H með lágstaf 9 O H. Hægra megin við dálkinn „Gufuþrýstingur við 25 gráður C“ er eftirfarandi: 11,9 kPa, 5,95 kPa, 2,67 kPa og 0,56 kPa."><label/>
 <tgroup cols="5"><colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
 <colspec colnum="3" colname="c3"/>
@@ -80,7 +80,7 @@
 <para id="fs-idm95497088">Um það bil 40 kPa (0,4 atm)</para>
 </note>
 </example>
-<para id="fs-idm287754592">Megindlegu sambandi milli gufuþrýstings efnis og hita þess er lýst með <term id="term-00007">Clausius-Clapeyron jöfnunni (e. clausius-clapeyron equation)</term>:</para>
+<para id="fs-idm287754592">Megindlegu sambandi milli gufuþrýstings efnis og hita þess er lýst með <term id="term-00007">Clausius-Clapeyron jöfnunni (e. Clausius-Clapeyron equation)</term>:</para>
 <equation id="fs-idm100818032" class="unnumbered"><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>−</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>vap</m:mtext></m:mrow></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm95462576">þar sem Δ<emphasis effect="italics">H</emphasis><sub>vap</sub> er gufunarvermi vökvans, <emphasis effect="italics">R</emphasis> er gasfastinn og <emphasis effect="italics">A</emphasis> er fasti sem gildi hans fer eftir efnafræðilegu eðli efnisins. Hitastig T verður að vera í kelvinum í þessari jöfnu. Þessari jöfnu er oft endurraðað í logríska mynd til að gefa línulegu jöfnuna:</para>
 <equation id="fs-idm13139376" class="unnumbered"><m:math><m:mrow><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>vap</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>A</m:mi></m:mrow></m:math></equation>
@@ -217,7 +217,7 @@
 </section>
 <section id="fs-idp14058304" class="key-equations">
 <title>Lykiljöfnur</title>
-<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<table id="key-equations-table" class="unnumbered unstyled" summary="lykiljöfnutafla"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
 <row><entry><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>−</m:mo><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>vap</m:mtext></m:mrow></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></entry>
@@ -402,7 +402,7 @@
 <meaning id="fs-idm193814624-meaning">hitastig þar sem gufuþrýstingur vökva jafngildir þrýstingi gassins fyrir ofan hann</meaning>
 </definition>
 <definition id="fs-idp13200944">
-<term>Clausius-Clapeyron jafnan (e. clausius-clapeyron equation)</term>
+<term>Clausius-Clapeyron jafnan (e. Clausius-Clapeyron equation)</term>
 <meaning id="fs-idp13200944-meaning">stærðfræðilegt samband milli hitastigs, gufuþrýstings og gufunarvermis efnis</meaning>
 </definition>
 <definition id="fs-idm193371200">
