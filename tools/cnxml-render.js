@@ -2424,8 +2424,11 @@ function renderItemBody(content, context) {
     rendered = processInlineContent(working, context);
   }
 
+  // A FUNCTION replacement: a string one expands `$&`/`$'`/`` $` ``/`$$` inside
+  // the block's own HTML, so a table summary carrying `$&` came back holding this
+  // placeholder (found by §C126's sentinel once §C185 ⑤ put a table in an item).
   for (const { ph, html } of placeholders) {
-    rendered = rendered.replace(ph, html);
+    rendered = rendered.replace(ph, () => html);
   }
   return rendered;
 }
