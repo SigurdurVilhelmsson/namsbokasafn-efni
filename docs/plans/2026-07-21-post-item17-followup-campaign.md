@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
 
-### ⏭ SINGLE NEXT ACTION — **Push `feat/c140-v6-pr-b` and open PR-B, with [USER]'s go-ahead.** ✅ **Step 7 done, `2bed4cf92`.** It reproduces the rehearsal byte for byte: 711/711 media, 22/22 ok, MT 0. The diff is 126 `_IS.svg` plus 451 sidecars; the sidecar changes are only `composedVersion` '5'→'6' (451) and `composedHash` (57). Lint and format:check are clean, and `main` has not moved. Off-repo evidence: `step7/`. Readers see nothing until a re-render and [USER]'s sync, which stays HELD.
+### ⏭ SINGLE NEXT ACTION — **Watch CI on [PR #546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546) (PR-B), then merge on [USER]'s word.** Pushed 2026-10-09 with [USER]'s go-ahead. ✅ Step 7 is done (`2bed4cf92`): byte-identical to the rehearsal, 711/711 media, 22/22 ok, MT 0. ⏹ Deploy, re-render and the chemistry SYNC stay HELD; the redirect rows are still to be recomputed before any sync. The LIVE-RUN HOLD lifts only when PR-B merges.
 
 - ✅ **2b** `84528128f`.
 - ✅ **2c** `7cfe99ff3` + `2ebb5819b`, [USER]'s route: `'`/`"` now start their own line.
