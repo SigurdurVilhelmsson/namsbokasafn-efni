@@ -1518,10 +1518,20 @@ function reverseInlineMarkup(
   // (underline has no API-safe {{u}} variant, so ++text++ is always the format)
   result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
 
+  // §C16(a): a LITERAL asterisk is not markup. Extraction never emits `*` as
+  // markup, so every `*` in the EN source is literal text (σ*, π*, P*); getSeg
+  // passes their count. When this segment holds no more asterisks than that,
+  // none can be an editor's Ctrl+I, and the asterisk converters stand down —
+  // otherwise 8-4's `(σ, σ*, π, π*)` reads `σ<em>, π, π</em>`. Decided from the
+  // read-only source, never by comparing translated strings.
+  const literalAsterisks =
+    context && Number.isInteger(context.literalAsterisks) ? context.literalAsterisks : 0;
+  const asterisksAreLiteral = (text.match(/\*/g) || []).length <= literalAsterisks;
+
   // BACKWARD COMPAT: Legacy patterns only for non-API segments.
   // API segments use {{i}}/{{b}}/[[sub:]]/[[sup:]] — legacy *text*, ~text~, ^text^
   // would create false-positive markup from translated content (chemical formulas, etc.)
-  if (!hasApiMarkers) {
+  if (!hasApiMarkers && !asterisksAreLiteral) {
     // Convert legacy combined sub/sup + emphasis patterns.
     // Old extraction used ~*t*~ for <sub><emphasis>t</emphasis></sub>.
     // Bold variants first (** before *) to avoid partial matching.
@@ -2154,7 +2164,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       inlineAttrs[segmentId] || null,
       blockEquationIds,
       blockMediaIds,
-      { segmentId, attrMismatches: stats.attrMismatches }
+      {
+        segmentId,
+        attrMismatches: stats.attrMismatches,
+        // §C16(a): literal `*` in the read-only EN source (see reverseInlineMarkup).
+        literalAsterisks: enText ? (enText.match(/\*/g) || []).length : 0,
+      }
     );
   };
 
