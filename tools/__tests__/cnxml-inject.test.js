@@ -2001,8 +2001,8 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     expect(out).toContain('+10e');
   });
 
-  // F3 (Fable): the resolved MATH notation must keep its case — the annotation
-  // lowercases the English prose, but ΔHf° must not become δhf°.
+  // F3 (Fable): the resolved MATH notation must keep its case — ΔHf° must not
+  // become δhf°. (§C191 ①: the prose keeps its case too now.)
   it('preserves the CASE of resolved MATH notation (ΔHf° not δhf°)', () => {
     const en = new Map([['s4', '{{term}}standard enthalpy of formation [[MATH:1]]{{/term}}']]);
     const is = new Map([['s4', '{{term}}staðalmyndunarvermi{{/term}}']]);
@@ -2013,7 +2013,7 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     const out = segments.get('s4');
     expect(out).toContain('ΔHf°'); // notation keeps its case
     expect(out).not.toContain('δhf°'); // not lowercased
-    expect(out).toContain('(e. standard enthalpy of formation'); // prose still lowercased
+    expect(out).toContain('(e. standard enthalpy of formation'); // prose case as written
   });
 });
 
@@ -2030,7 +2030,7 @@ describe('annotateInlineTerms — C2/C3 nested-marker tolerance', () => {
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
     const out = segments.get('s1');
     expect(annotatedCount).toBe(1);
-    expect(out).toBe('Ein [[term:þungt H[[sub:2]]O (e. h2o)|t1]] sameind'); // id t1 untouched
+    expect(out).toBe('Ein [[term:þungt H[[sub:2]]O (e. H2O)|t1]] sameind'); // id t1 untouched; §C191 ① keeps H2O's case
   });
 
   it('(b) mis-pairing probe: EN nested + plain vs IS both-plain — NO wrong annotation', () => {
@@ -2071,36 +2071,36 @@ describe('annotateInlineTerms — C2/C3 nested-marker tolerance', () => {
 describe('stripTermMarkersToText', () => {
   const eqs = { 'math-3': { mathml: '<math><mi>x</mi></math>' } };
   // NB: extraction emits UPPERCASE [[MATH:N]]. drop-other's (?!MATH:) is
-  // case-sensitive, so it preserves [[MATH:N]] and only toLowerCase() (which
-  // runs after drop-other) turns it into [[math:N]] for the resolve step. A
-  // lowercase [[math:N]] passed in directly would be DROPPED — so tests use
-  // uppercase, matching real inputs.
+  // case-sensitive, so it preserves [[MATH:N]] for the resolve step. A lowercase
+  // [[math:N]] passed in directly would be DROPPED — so tests use uppercase,
+  // matching real inputs. §C191 ①: the value is CASE-PRESERVING now; the old
+  // whole-string toLowerCase() flattened names, symbols and Greek in glosses.
 
-  it('strips sub/sup/i/b bracket markers and lowercases (site-A default: no trim)', () => {
-    expect(stripTermMarkersToText('H[[sub:2]]O [[i:Solid]]', eqs)).toBe('h2o solid');
+  it('strips sub/sup/i/b bracket markers and KEEPS case (site-A default: no trim)', () => {
+    expect(stripTermMarkersToText('H[[sub:2]]O [[i:Solid]]', eqs)).toBe('H2O Solid');
   });
-  it('resolves [[MATH:N]] AFTER lowercasing (notation keeps its own content)', () => {
+  it('resolves [[MATH:N]] to its notation', () => {
     expect(stripTermMarkersToText('value [[MATH:3]]', eqs)).toBe('value x');
   });
   it('drops non-MATH placeholders (MEDIA etc.) but keeps resolved MATH', () => {
     expect(stripTermMarkersToText('a [[MEDIA:1]] [[MATH:3]]', eqs)).toBe('a  x');
   });
   it('default does NOT trim (site-A behavior) — padded input keeps edges', () => {
-    expect(stripTermMarkersToText('  Foo  ', eqs)).toBe('  foo  ');
+    expect(stripTermMarkersToText('  Foo  ', eqs)).toBe('  Foo  ');
   });
-  it('with { trim: true } (site-B behavior) trims after strip, before lowercase', () => {
-    expect(stripTermMarkersToText('  Foo  ', eqs, { trim: true })).toBe('foo');
+  it('with { trim: true } (site-B behavior) trims after strip', () => {
+    expect(stripTermMarkersToText('  Foo  ', eqs, { trim: true })).toBe('Foo');
   });
   it('drops an unresolved MATH marker (rare)', () => {
     expect(stripTermMarkersToText('a [[MATH:9]]', eqs)).toBe('a ');
   });
 
   it('stripTermMarkersToText unwraps [[term:|id]]/[[fn:|id]]/[[em:|class]] keeping text', () => {
-    expect(stripTermMarkersToText('[[term:Viscosity|term-1]]', {})).toBe('viscosity');
-    expect(stripTermMarkersToText('[[fn:A note|fs-1]]', {})).toBe('a note');
-    expect(stripTermMarkersToText('[[em:R-O-R|emphasis-one]]', {})).toBe('r-o-r');
-    expect(stripTermMarkersToText('[[u:Key]]', {})).toBe('key');
-    expect(stripTermMarkersToText('[[term:Plain]]', {})).toBe('plain');
+    expect(stripTermMarkersToText('[[term:Viscosity|term-1]]', {})).toBe('Viscosity');
+    expect(stripTermMarkersToText('[[fn:A note|fs-1]]', {})).toBe('A note');
+    expect(stripTermMarkersToText('[[em:R-O-R|emphasis-one]]', {})).toBe('R-O-R');
+    expect(stripTermMarkersToText('[[u:Key]]', {})).toBe('Key');
+    expect(stripTermMarkersToText('[[term:Plain]]', {})).toBe('Plain');
   });
 
   it('stripTermMarkersToText still drops unknown bracket markers wholesale', () => {

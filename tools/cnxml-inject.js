@@ -86,6 +86,7 @@ import {
   isAttributeValueSegmentId,
 } from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
+import { isSentenceInitial, sentenceInitialGlossCase } from './lib/gloss-case.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -844,12 +845,17 @@ function restoreMathBySeparators(isText, enText) {
 }
 
 /**
- * Strip inline API/CNXML markers from an EN term string down to plain,
- * lowercased text for "(e. …)" reference annotations. Resolves [[math:N]] to
- * its visible notation AFTER lowercasing so the notation keeps its case
- * (ΔHf° must not become δhf° — the m68852 invariant). Shared by
- * annotateInlineTerms() and the glossary annotator; single-sourcing this
- * prevents divergent fixes (the m68852 misdiagnosis).
+ * Strip inline API/CNXML markers from an EN term string down to plain text for
+ * "(e. …)" reference annotations, CASE INTACT, and resolve [[MATH:N]] to its
+ * visible notation. Shared by annotateInlineTerms() and the glossary annotator;
+ * single-sourcing this prevents divergent fixes (the m68852 misdiagnosis).
+ *
+ * 🔴 §C191 ① — THIS USED TO LOWERCASE THE WHOLE VALUE, AND THAT WAS THE DEFECT.
+ * Readers saw "(e. aufbau principle)", "(e. hund’s rule)", "(e. ph)" and Δ/Π
+ * folded to δ/π. Measured 2026-10-09: every capitalised glossary term and every
+ * capitalised mid-sentence inline term in chemistry is genuine. The one place a
+ * capital can be an accident — a sentence-initial inline term — is decided by
+ * `sentenceInitialGlossCase` (tools/lib/gloss-case.js) at that call site only.
  *
  * Callers do their own leading pre-strip (e.g. the glossary strips __term__/
  * {{term}} first). `trim` reproduces the glossary site's mid-chain trim; the
@@ -861,17 +867,11 @@ function restoreMathBySeparators(isText, enText) {
  * @returns {string}
  */
 function stripTermMarkersToText(text, equations, { trim = false } = {}) {
-  // 🔴 THE ORDER IS LOAD-BEARING — DO NOT COLLAPSE THIS INTO flattenMarkersToText().
-  // Folding case BEFORE resolving MATH is what lets MathML-derived symbols escape
-  // the fold. Route this through the flattener instead — which resolves MATH first
-  // — and ΔHf° becomes δhf°, ΔGf° becomes δgf°, Eker° becomes eker°. Measured
-  // over the real corpus with real equations maps: 6 inputs, every one a chemistry
-  // symbol, and both call sites WRITE this value into output CNXML as "(e. …)", so
-  // it reaches readers. Δ and δ are different symbols.
-  // Pinned by tools/__tests__/term-text.test.js; proven non-vacuous by mutation.
+  // ⚠️ Still NOT flattenMarkersToText(): that collapses internal whitespace, and
+  // site A (trim: false) is pinned to keep it (term-text.test.js).
   let out = stripInlineMarkers(text);
   if (trim) out = out.trim();
-  return resolveMathPlaceholders(out.toLowerCase(), equations);
+  return resolveMathPlaceholders(out, equations);
 }
 
 /**
@@ -922,26 +922,43 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
     'g'
   );
 
+  // §C191 ①: per-module casing evidence, built once per module on first need —
+  // the module's own glossary terms (its "twins") and its marker-stripped EN text.
+  const caseContexts = new Map();
+  const moduleCaseContext = (segId) => {
+    const mod = String(segId).split(':')[0];
+    if (!caseContexts.has(mod)) {
+      const twins = new Map();
+      const parts = [];
+      for (const [id, text] of enSegments) {
+        if (String(id).split(':')[0] !== mod) continue;
+        parts.push(stripInlineMarkers(text));
+        if (String(id).includes(':glossary-term:')) {
+          const t = stripTermMarkersToText(text, equations, { trim: true });
+          twins.set(t.toLowerCase(), t);
+        }
+      }
+      caseContexts.set(mod, { twins, text: parts.join('\n') });
+    }
+    return caseContexts.get(mod);
+  };
+
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
     if (!enText) continue;
 
-    // Extract EN term texts in order (skip bold markers)
+    // Extract EN term texts in order (skip bold markers), each with whether it
+    // opens a sentence — the one position where its capital may be an accident.
     const enTermTexts = [];
+    const enTermInitial = [];
     let enMatch;
     enMarkerPattern.lastIndex = 0;
     while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
-      if (enMatch[2] !== undefined) {
-        // {{term}}text{{/term}} match
-        enTermTexts.push(enMatch[2]);
-      } else if (enMatch[3] !== undefined) {
-        // __term__ match
-        enTermTexts.push(enMatch[3]);
-      } else if (enMatch[6] !== undefined) {
-        // [[term:text|id]] match — text field only
-        enTermTexts.push(enMatch[6]);
-      }
-      // **bold** or {{b}} — skip
+      const text = enMatch[2] ?? enMatch[3] ?? enMatch[6];
+      // {{term}}text{{/term}} / __term__ / [[term:text|id]]; **bold** or {{b}} — skip
+      if (text === undefined) continue;
+      enTermTexts.push(text);
+      enTermInitial.push(isSentenceInitial(stripInlineMarkers(enText.slice(0, enMatch.index))));
     }
 
     if (enTermTexts.length === 0) continue;
@@ -966,11 +983,18 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
         // overcounted by the fidelity check. Plain text avoids this side-effect and
         // also prevents raw API markers from leaking into IS segments.
         const enTermRaw = enTermTexts[termIndex];
-        const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        let enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        if (enTermInitial[termIndex]) {
+          const ctx = moduleCaseContext(segId);
+          enTerm = sentenceInitialGlossCase(enTerm, {
+            twin: ctx.twins.get(enTerm.trim().toLowerCase()) ?? null,
+            moduleText: ctx.text,
+          });
+        }
         termIndex++;
 
         // Skip if IS and EN terms are the same (case-insensitive)
-        if (inner.toLowerCase() === enTerm) return match;
+        if (inner.toLowerCase() === enTerm.toLowerCase()) return match;
 
         annotatedCount++;
         if (bracketInner !== undefined) {
@@ -2394,7 +2418,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
               .replace(new RegExp(LEGACY_TERM, 'g'), '$1')
               .replace(/<term>([^<]*)<\/term>/g, '$1')
               .trim();
-            if (isTermClean.toLowerCase() !== enTerm) {
+            if (isTermClean.toLowerCase() !== enTerm.toLowerCase()) {
               // Insert annotation before closing </term> if it's a CNXML term element,
               // or append if plain text
               if (annotatedTerm.includes('</term>')) {

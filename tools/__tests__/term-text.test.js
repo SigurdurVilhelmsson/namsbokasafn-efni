@@ -8,10 +8,10 @@
  * (register ⑰). A `[^\]]*` character class cannot find the end of a nested
  * marker; only depth counting can.
  *
- * 🔴 THE SECOND describe BLOCK IS A CHARACTERIZATION GUARD, NOT A NEW FEATURE,
- * AND IT EXISTS BECAUSE THE PLAN'S PROPOSED REWIRE WAS MEASURED TO BREAK IT.
- * `stripTermMarkersToText` lowercases its text and then substitutes MathML —
- * in that ORDER — so MathML-derived text escapes the fold. Routing it through
+ * 🔴 THE THIRD describe BLOCK IS A CHARACTERIZATION GUARD. Until §C191 ①
+ * (2026-10-09) `stripTermMarkersToText` lowercased its text and then substituted
+ * MathML — in that ORDER — so MathML-derived text escaped the fold. It now
+ * folds NOTHING; the guards below pin that no fold creeps back in. History: Routing it through
  * a lib that substitutes MathML first folds the symbols too. Measured over the
  * real corpus with the real per-module equations maps: 6 inputs diverge (1 of
  * 1,406 [[term:]] bodies, 5 of 763 glossary-term segments) and every one
@@ -113,14 +113,14 @@ describe('scanTermMarkers — depth aware', () => {
   });
 });
 
-describe('stripTermMarkersToText — the two live callers must not change', () => {
+describe('stripTermMarkersToText — case-preserving since §C191 ①', () => {
   // Both call sites WRITE this value into output CNXML as "(e. <value>)".
-  // These pin the behaviour the rewire must reproduce exactly.
+  // A sentence-initial inline term is re-cased at its call site, not here.
 
-  it('🔴 keeps MathML-derived symbols UNFOLDED while lowercasing the prose', () => {
+  it('🔴 keeps MathML-derived symbols UNFOLDED, and the prose as written', () => {
     const eq = { 'math-1': { mathml: '<m:mi>ΔHf°</m:mi>' } };
     expect(stripTermMarkersToText('Standard Enthalpy Of Formation [[MATH:1]]', eq)).toBe(
-      'standard enthalpy of formation ΔHf°'
+      'Standard Enthalpy Of Formation ΔHf°'
     );
   });
 
@@ -135,7 +135,7 @@ describe('stripTermMarkersToText — the two live callers must not change', () =
   });
 
   it('does NOT trim when trim is false — site A depends on this', () => {
-    expect(stripTermMarkersToText('  Padded  ', {})).toBe('  padded  ');
+    expect(stripTermMarkersToText('  Padded  ', {})).toBe('  Padded  ');
   });
 
   it('does NOT collapse internal whitespace', () => {
@@ -143,11 +143,12 @@ describe('stripTermMarkersToText — the two live callers must not change', () =
   });
 
   it('trims when asked — site B passes trim: true', () => {
-    expect(stripTermMarkersToText('  Padded  ', {}, { trim: true })).toBe('padded');
+    expect(stripTermMarkersToText('  Padded  ', {}, { trim: true })).toBe('Padded');
   });
 
-  it('CONTROL — ordinary prose IS folded, so the guards above are not vacuous', () => {
-    expect(stripTermMarkersToText('ABC', {})).toBe('abc');
+  it('🔴 a literal Greek capital is not folded either — Π is not π, Δ is not δ', () => {
+    expect(stripTermMarkersToText('osmotic pressure (Π)', {})).toBe('osmotic pressure (Π)');
+    expect(stripTermMarkersToText('Δoct', {})).toBe('Δoct');
   });
 });
 
@@ -161,7 +162,7 @@ describe('the primitives the wrapper composes', () => {
     expect(resolveMathPlaceholders('x [[MATH:4]]', eq)).toBe('x ΔG');
   });
 
-  it('resolveMathPlaceholders also matches the lowercased marker the wrapper produces', () => {
+  it('resolveMathPlaceholders also matches a lowercase marker', () => {
     const eq = { 'math-4': { mathml: '<m:mi>ΔG</m:mi>' } };
     expect(resolveMathPlaceholders('x [[math:4]]', eq)).toBe('x ΔG');
   });
