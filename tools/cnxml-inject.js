@@ -3821,6 +3821,30 @@ function buildExample(element, getSeg, equations, originalCnxml) {
  * Same signature, same behavior, but uses DOM manipulation instead of regex.
  * Comparison-tested against the regex version before deployment.
  */
+/**
+ * 🔴 §C4 — the nested <para> whose text a para's segment actually carries, or null.
+ *
+ * Extraction matches a para non-greedily, so the match stops at the FIRST inner
+ * `</para>`. When the outer para holds nothing of its own (only a <title> and
+ * blocks, e.g. m68710's "Solution" para around a stepwise list), its segment is
+ * the first inner para's text, and that inner para gets no segment. Writing the
+ * segment into the outer para showed it twice and left the inner one in English.
+ * The extract traversal is frozen (seg-ids are the corpus join key), so the text
+ * is written back here. Decided from the read-only source DOM, never from text.
+ * @param {Element} paraEl - the outer para, as parsed from 01-source
+ * @param {Set<string>} segmentedIds - ids that own a segment in this container
+ * @returns {Element|null}
+ */
+function donatedInnerPara(paraEl, segmentedIds) {
+  const inner = paraEl.getElementsByTagName('para')[0];
+  if (!inner || segmentedIds.has(inner.getAttribute('id'))) return null;
+  const OWNLESS = new Set(['title', 'list', 'equation', 'figure', 'table', 'note', 'media']);
+  const hasOwn = Array.from(paraEl.childNodes).some(
+    (c) => (c.nodeType === 3 && c.data.trim()) || (c.nodeType === 1 && !OWNLESS.has(c.nodeName))
+  );
+  return hasOwn ? null : inner;
+}
+
 function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   if (!element.id) {
     return buildGenericElement('example', element, getSeg, equations, originalCnxml);
@@ -3906,6 +3930,16 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   const keptTableIds = new Set();
   const keptContainerTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
+  // §C4 — ids that own a segment anywhere in this example (see donatedInnerPara).
+  const segmentedIds = new Set();
+  (function collect(node) {
+    if (!node || typeof node !== 'object') return;
+    if (node.id && node.segmentId) segmentedIds.add(node.id);
+    for (const v of Object.values(node)) {
+      if (Array.isArray(v)) v.forEach(collect);
+      else if (v && typeof v === 'object') collect(v);
+    }
+  })(element);
 
   for (const child of element.content || []) {
     if (child.type !== 'para' || !child.id || !child.segmentId) continue;
@@ -3992,7 +4026,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         ? ''
         : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
       removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
-      replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
+      const donee = donatedInnerPara(paraEl, segmentedIds);
+      if (donee) {
+        replaceParaContentDom(doc, paraEl, '', titleCnxml);
+        replaceParaContentDom(doc, donee, expandedParaText, '');
+        replacedParaIds.add(donee.getAttribute('id'));
+      } else {
+        replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
+      }
       replacedParaIds.add(child.id);
       isFirstPara = false;
     }
