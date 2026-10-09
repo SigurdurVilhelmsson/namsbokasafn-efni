@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_04_Gouy",
  "renderHash": "6f2135ce9a786a64",
  "composedHash": "6f2135ce9a786a64",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Electromagnets": "Rafseglar",

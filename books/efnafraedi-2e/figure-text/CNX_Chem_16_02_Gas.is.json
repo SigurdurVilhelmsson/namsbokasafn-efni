@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_16_02_Gas",
  "renderHash": "0255b1ee37693352",
  "composedHash": "0255b1ee37693352",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Spontaneous": "Sjálfkrafa",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_03_esterform_img",
  "renderHash": "769b4baf86b01f06",
  "composedHash": "769b4baf86b01f06",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "HOCH2CH3": "HOCH2CH3",

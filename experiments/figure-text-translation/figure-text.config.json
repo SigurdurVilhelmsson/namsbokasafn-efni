@@ -66,6 +66,10 @@
   "_artworkPins": "§C140 ㊵. {basename: {kind, edition, file, reason}}: the ONE file a figure's artwork is taken from. `edition` is a key of this book's trees in sources.local.json; `file` is a path inside that tree, never a stem or a pattern. kind `alias` fills a hole in the delivery, and is refused as pin-conflict once any file matches the basename, exactly or folded. kind `override` deliberately replaces the normal lookup. A missing file is refused as pin-missing, never a fall-back; a malformed entry as pin-invalid; two pins naming one file as pin-conflict. A pin lands in the commit that runs its buy, after tools/lib/figure-config-validate.js passes locally: CI runs only after the money is spent.",
 
   "heldBlockValues": {
+    "CNX_Chem_05_02_FoodLabel": {
+      "(cid:127) 5% or less| ": "• 5% eða minna",
+      "(cid:127) 20% or| ": "• 20% eða"
+    },
     "CNX_Chem_07_04_HNO2_img": { "or": "eða" },
     "CNX_Chem_09_05_MolSpeed1": { "02 at T = 300 K": "O₂ við T = 300 K" },
     "CNX_Chem_14_02_phscale": { "100 or 1": "10⁰ eða 1" },
@@ -74,11 +78,237 @@
     "CNX_Chem_20_04_amide1_img": { "R or H": "R eða H", "C|H or R": "C\nH eða R" }
   },
   "_heldBlockValues": "§C140 ㊾, spec 2026-10-02 D5(a); design docs/superpowers/specs/2026-10-03-c140-step2-part5-heldblockvalues-design.md. {basename: {blockKey: value}}: [USER]'s own wording for a figure label the MT is never sent (a send:false block), drawn by compose.py in place of the source's English. Values come from [USER] only: they are recorded on the value sheet, docs/handoffs/2026-10-03-step2-value-sheet.md, and copied from it by value; they bypass the MT, the glossary, TM and the corpus exports. A value never overrides a translation: a key that is send:true, already a bought block in the figure's sidecar, or also in the figure's translations file is refused. A value's lines are separated by a newline (\\n), never by '|', which is the KEY's notation, and no line may be empty or carry leading or trailing spaces. It must have exactly as many lines as the block has VISUAL source lines (figtext.visual_lines, which can be fewer than the key's '|'-lines: a stacked charge merges into its line, and a source line that draws only spaces (U+0020, the next row's indent space) is no line: it folds into its neighbour - spec docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md D-b, ruling R-17, which supersedes spec 2026-10-03 D-b on this point); value line i replaces visual line i, and a line equal to the source's text is redrawn exactly as the source draws it. Sub- and superscripts are written with these 24 characters only: ₀₁₂₃₄₅₆₇₈₉₊₋⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻. Each is drawn as its digit, + or en dash (U+2013, for ₋ and ⁻) in the block's own source sub- or superscript style, never as that glyph, and a value using a kind the block has no single source style for is refused. A changed line must fit on one line at its source size; it is never shrunk or wrapped. Values sit OUTSIDE renderHash and composedVersion, so adding or changing one never makes a figure stale, and an approval does not certify a held label. A textless figure (no sidecar) is recomposed, values included, on its chapter's next --stale run (0 ISK). For a figure with a sidecar the only sanctioned route for a later value change is the next COMPOSER_VERSION bump; any other route needs a [USER] ruling before it is run. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. Either way readers see the change only after a re-render and [USER]'s sync. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image, with an image-mapping row naming an .svg and a translated copy at the top of media/, and in none of retiredFigures, keptCopies or supersededArtwork (an artwork pin is fine); each value's shape, its script characters, no more lines than its key has segments that are not spaces-only, that it differs from its key, and that no key is a bought sidecar block. CHECKED AT COMPOSE by figure-compose.py and compose.py, which refuse the figure by name before anything publishes: a key that matches no block, a send:true key, a key also in the translations file, a line count that is not the block's visual line count, a script kind with no single source style, a missing glyph, an arc, a multi-line block in an unshared box (a shared box, §C140 '6' M7 - one that also holds another block's source line - is laid out on the cell path, which reads the source baselines, so it is not refused), and a changed line that does not fit at its source size.",
-  "anchorExclusions": {},
+  "anchorExclusions": {
+    "CNX_Chem_10_01_PentIso": {
+      "Small contact area,|weakest attraction": "R-20 ([USER] 2026-10-05): keep the wrap [USER] accepted - 'Wrapping is fine, but n- should be italic.'"
+    }
+  },
   "_anchorExclusions": "§C140 '6', ruling R-20 ([USER] 2026-10-05, recorded in the campaign register); design docs/superpowers/specs/2026-10-05-c140-composer-formatting-class-design.md, D-a. {basename: {blockKey: reason}}: block keys whose translated label M1 (figlayout's source-anchored cuts) must leave alone, so it keeps the wrap the rest of the layout chooses. An entry turns off M1 and nothing else, for EVERY block that carries that key in that figure; a block key has '|' between its source lines, and only such a multi-line key can reach M1. The reason is over 40 characters and cites the ruling. Entries sit OUTSIDE renderHash and composedVersion, like heldBlockValues: adding or changing one never makes a figure stale. A textless figure (no sidecar) picks it up on its chapter's next --stale run (0 ISK); for a figure with a sidecar the only sanctioned route is the next COMPOSER_VERSION bump, and any other route needs a [USER] ruling before it is run. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. Either way readers see the change only after a re-render and [USER]'s sync. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image and in none of retiredFigures, keptCopies or supersededArtwork; each entry is a non-empty object; each key contains '|', holds no Markdown escape '\\|', and is a block key of the figure's committed sidecar; each reason is a string of over 40 characters. CHECKED AT COMPOSE by figure-compose.py, which refuses the figure by name before anything is composed: a key that matches no block, and a key that no send:true block carries. compose.py reports every excluded block in compose-report.json anchorExcluded as {key, block, changed}; changed false means M1 would have drawn it the same way, which is a note, never a refusal.",
 
-  "artworkEdits": {},
-  "_artworkEdits": "§C140 '6', rulings R-15a and R-15a2 ([USER] 2026-10-05 and 2026-10-06, recorded in the campaign register); measurement docs/superpowers/specs/2026-10-05-c140-foodlabel-r15-widening-measurement.md. {basename: [op, ...]}: [USER]'s per-figure, operator-level edits to the STAGED artwork PDF, applied by figure-prepare.py (artworkedits.py) after staging and BEFORE emit-blocks.py, so runs.json, blocks.json and artwork.pdf/.png/.svg all derive from the edited page. Ops: move-paths {dx, select:[path]}; move-edge {edge: left|right, to|dx, select:[path]} (the path must be ONE `re` and stays one, so pdfplumber still sees a rect and the label stays a table cell); move-text {dx, select:[line]} (through Tm/Td/TD/T* only; later lines in the same BT are compensated); move-line-end {edge: left|right, dx, select:[path]} (one end of a horizontal stroked line drawn as exactly one `m` and one `l`: the end on that page side moves, the other stays). Every op may carry a free-text note. path = {paint: fill|stroke, colour: [the PDF colour operator, operands...], bbox: [x0,y0,x1,y1] incl. control points}; line = {text: the line's string bytes latin-1 decoded, origin: [x,y]}. Coordinates are PDF page space in pt, y UP (not the SVG frame), measured on the STAGED PDF (for .eps/.ai that is ghostscript's output, not the source): print them with `python3 artworkedits.py --inventory <out>/<basename>.pdf`. Every selector must match exactly one object (tolerance 0.01 pt) and no object twice; an unknown field refuses; after the rewrite every path and text line is re-measured and must be where asked, all others unmoved, or prepare fails the figure. Only page 1's own content stream is read, so a path inside a form XObject matches nothing. An entry on a figure classified copied-photo or unreadable-text, or on a copied-textless figure that embeds a raster (imageXObjects > 0, which figure-run.js isRecomposableTextless declines and CI cannot see), is prepared but never recomposed, so it is unused. Entries sit OUTSIDE renderHash and composedVersion, like heldBlockValues: adding or changing one never makes a figure stale. A textless figure (no sidecar) picks it up on its chapter's next --stale run (0 ISK); for a figure with a sidecar the only sanctioned route is the next COMPOSER_VERSION bump, and any other route needs a [USER] ruling before it is run. Either way readers see the change only after a re-render and [USER]'s sync. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image, with an image-mapping row naming an .svg and a translated copy at the top of media/, and in none of retiredFigures, keptCopies or supersededArtwork (an artwork pin is fine: its selectors must then match the pinned artwork); and the shape of every op and selector. CHECKED AT PREPARE by artworkedits.py, which refuses the figure by name: a config that cannot be read or repeats a key, a selector matching nothing or more than one object, an object selected twice, and an op that cannot apply to what it selected.",
+  "artworkEdits": {
+    "CNX_Chem_01_03_HazDiamond": [
+      {
+        "op": "move-edge",
+        "edge": "right",
+        "dx": 6,
+        "note": "R-5c2 = (b+) ([USER] 2026-10-07): the special-hazard list box 6 pt right, so the left-aligned explanation column keeps its source x",
+        "select": [
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.57, 0.37, 0.0, 0.0],
+            "bbox": [66.678, 2.878, 157.677, 79.019]
+          }
+        ]
+      },
+      {
+        "op": "move-edge",
+        "edge": "right",
+        "dx": 27,
+        "note": "R-5c2 = (b+): the Reactivity box 27 pt right, so its left-aligned list draws at 9 pt",
+        "select": [
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.57, 0.37, 0.0, 0.0],
+            "bbox": [267.699, 59.174, 403.69, 123.163]
+          }
+        ]
+      }
+    ],
+    "CNX_Chem_05_02_FoodLabel": [
+      {
+        "op": "move-edge",
+        "edge": "left",
+        "to": 244.334,
+        "note": "R-15a/R-15a2 ([USER] 2026-10-05/06): the four left bands to one left edge, 15 pt left of the green band",
+        "select": [
+          {
+            "paint": "fill",
+            "colour": ["k", 0.2, 0.04, 0.4, 0.0],
+            "bbox": [259.334, 198.671, 377.534, 211.596]
+          },
+          {
+            "paint": "fill",
+            "colour": ["k", 0.018, 0.162, 0.18, 0.036],
+            "bbox": [259.398, 141.554, 366.366, 175.264]
+          },
+          {
+            "paint": "fill",
+            "colour": ["k", 0.15, 0.12, 0.0, 0.01],
+            "bbox": [259.398, 128.042, 366.366, 134.82]
+          },
+          {
+            "paint": "fill",
+            "colour": ["k", 0.15, 0.12, 0.0, 0.01],
+            "bbox": [259.648, 84.08, 366.45, 112.642]
+          }
+        ]
+      },
+      {
+        "op": "move-paths",
+        "dx": -15,
+        "note": "R-15a2: circles 1-5 move with their bands",
+        "select": [
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.0, 0.0, 0.0, 1.0],
+            "bbox": [251.2861, 204.1719, 258.2861, 211.1719]
+          },
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.0, 0.0, 0.0, 1.0],
+            "bbox": [251.2861, 186.8276, 258.2861, 193.8276]
+          },
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.0, 0.0, 0.0, 1.0],
+            "bbox": [251.2861, 160.2461, 258.2861, 167.2461]
+          },
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.0, 0.0, 0.0, 1.0],
+            "bbox": [251.2861, 105.6357, 258.2861, 112.6357]
+          },
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.0, 0.0, 0.0, 1.0],
+            "bbox": [251.2861, 77.2178, 258.2861, 84.2178]
+          }
+        ]
+      },
+      {
+        "op": "move-text",
+        "dx": -15,
+        "note": "R-15a2: the circle digits and the five left labels move with their bands",
+        "select": [
+          {
+            "text": "1",
+            "origin": [253.396, 206.1118]
+          },
+          {
+            "text": "2",
+            "origin": [253.396, 188.7671]
+          },
+          {
+            "text": "3",
+            "origin": [253.396, 162.186]
+          },
+          {
+            "text": "4",
+            "origin": [253.396, 107.5752]
+          },
+          {
+            "text": "5",
+            "origin": [253.396, 79.1572]
+          },
+          {
+            "text": "Start",
+            "origin": [260.2866, 206.1118]
+          },
+          {
+            "text": "here",
+            "origin": [260.2866, 200.6118]
+          },
+          {
+            "text": "Check",
+            "origin": [260.2866, 188.7868]
+          },
+          {
+            "text": "Calories",
+            "origin": [260.2866, 183.2868]
+          },
+          {
+            "text": "Limit",
+            "origin": [260.286, 162.0872]
+          },
+          {
+            "text": "these",
+            "origin": [260.286, 156.5872]
+          },
+          {
+            "text": "nutrients",
+            "origin": [260.286, 151.0872]
+          },
+          {
+            "text": "Get",
+            "origin": [260.286, 107.6622]
+          },
+          {
+            "text": "enough",
+            "origin": [260.286, 102.1622]
+          },
+          {
+            "text": "of these",
+            "origin": [260.286, 96.6622]
+          },
+          {
+            "text": "nutrients",
+            "origin": [260.286, 91.1622]
+          },
+          {
+            "text": "Footnote",
+            "origin": [260.286, 79.3672]
+          }
+        ]
+      },
+      {
+        "op": "move-edge",
+        "edge": "right",
+        "dx": 10,
+        "note": "R-15g2 ([USER] 2026-10-06): the purple band 10 pt right, so the two-line bullet keeps its source x",
+        "select": [
+          {
+            "paint": "fill",
+            "colour": ["k", 0.08, 0.16, 0.01, 0.02],
+            "bbox": [348.038, 84.08, 415.535, 181.179]
+          }
+        ]
+      },
+      {
+        "op": "move-line-end",
+        "edge": "left",
+        "dx": -6.5,
+        "note": "R-15a2: the green arrow's tail 6.5 pt left, so it starts next to Byrjaðu at the source's own Start-to-tail ink gap (2.249 pt; measured 2.247)",
+        "select": [
+          {
+            "paint": "stroke",
+            "colour": ["K", 0.5, 0.1, 1.0, 0.4],
+            "bbox": [273.8662, 207.6719, 280.5182, 207.6719]
+          }
+        ]
+      }
+    ],
+    "CNX_Chem_18_07_Nitrogen": [
+      {
+        "op": "move-text",
+        "dy": 6.6,
+        "select": [
+          {
+            "text": "Atmospheric",
+            "origin": [1.91176, 348.34165]
+          },
+          {
+            "text": "nitrogen (N",
+            "origin": [1.91176, 337.34165]
+          },
+          {
+            "text": "2",
+            "origin": [46.43246, 334.34165]
+          },
+          {
+            "text": ")",
+            "origin": [50.32582, 337.34165]
+          }
+        ],
+        "note": "[USER] 2026-10-08: keep 'Nitur í andrúms‐ / lofti (N₂)' and move the label UP so its top line clears the N2 molecule. dy MEASURED: molecule top y 352.50 (artwork.png); the source's own label-to-artwork gap 2.40 pt (Atmospheric ends 51.925, molecule starts 54.32); 6.6 gives 2.44. The arrowhead stays clear (its leftmost ink x >= 78). Needs step 2c: the label's BT holds a ' operator."
+      }
+    ]
+  },
+  "_artworkEdits": "§C140 '6', rulings R-15a and R-15a2 ([USER] 2026-10-05 and 2026-10-06, recorded in the campaign register) and R-5c2 ([USER] 2026-10-07, record docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md); measurement docs/superpowers/specs/2026-10-05-c140-foodlabel-r15-widening-measurement.md. {basename: [op, ...]}: [USER]'s per-figure, operator-level edits to the STAGED artwork PDF, applied by figure-prepare.py (artworkedits.py) after staging and BEFORE emit-blocks.py, so runs.json, blocks.json and artwork.pdf/.png/.svg all derive from the edited page. Ops: move-paths {dx, select:[path]}; move-edge {edge: left|right, to|dx, select:[path]} (the path must be ONE `re` and stays one, so pdfplumber still sees a rect and the label stays a table cell); move-text {dx and/or dy, select:[line]} (at least one, both allowed in one op; through Tm/Td/TD/T* only; later lines in the same BT are compensated, and a TD whose ty changes is written as a Td plus a `TL` re-asserting the leading it set, because TL outlives the BT); move-line-end {edge: left|right, dx, select:[path]} (one end of a horizontal stroked line drawn as exactly one `m` and one `l`: the end on that page side moves, the other stays). Every op may carry a free-text note. path = {paint: fill|stroke, colour: [the PDF colour operator, operands...], bbox: [x0,y0,x1,y1] incl. control points}; line = {text: the line's string bytes latin-1 decoded, origin: [x,y]}. Coordinates are PDF page space in pt, y UP (not the SVG frame), measured on the STAGED PDF (for .eps/.ai that is ghostscript's output, not the source): print them with `python3 artworkedits.py --inventory <out>/<basename>.pdf`. Every selector must match exactly one object (tolerance 0.01 pt) and no object twice; an unknown field refuses; after the rewrite every path and text line is re-measured and must be where asked, all others unmoved, or prepare fails the figure. Only page 1's own content stream is read, so a path inside a form XObject matches nothing. An entry on a figure classified copied-photo or unreadable-text, or on a copied-textless figure that embeds a raster (imageXObjects > 0, which figure-run.js isRecomposableTextless declines and CI cannot see), is prepared but never recomposed, so it is unused. Entries sit OUTSIDE renderHash and composedVersion, like heldBlockValues: adding or changing one never makes a figure stale. A textless figure (no sidecar) picks it up on its chapter's next --stale run (0 ISK); for a figure with a sidecar the only sanctioned route is the next COMPOSER_VERSION bump, and any other route needs a [USER] ruling before it is run. Either way readers see the change only after a re-render and [USER]'s sync. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image, with an image-mapping row naming an .svg and a translated copy at the top of media/, and in none of retiredFigures, keptCopies or supersededArtwork (an artwork pin is fine: its selectors must then match the pinned artwork); and the shape of every op and selector. CHECKED AT PREPARE by artworkedits.py, which refuses the figure by name: a config that cannot be read or repeats a key, a selector matching nothing or more than one object, an object selected twice, and an op that cannot apply to what it selected.",
+
+  "sourceAlignedBoxes": {
+    "CNX_Chem_01_03_HazDiamond": "R-5c2 = (b+) ([USER] 2026-10-07): both columns of every box left-aligned as the source draws them; record docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md"
+  },
+  "_sourceAlignedBoxes": "§C140 '6', ruling R-5c2 ([USER] 2026-10-07); record docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md. {basename: reason}: figures whose schematic boxes keep the SOURCE's alignment. An entry lays out EVERY schematic box of that figure - a box holding one label (R2: centred in the box) and a box several labels share (R-2a: each centred on its own source centre) alike - on the cell path with the source's alignment (R3, figcontainers.cell_alignment); cells and open labels are not touched. It overrides R2 and R-2a for that figure only. The reason is over 40 characters and cites the ruling. An entry is usually paired with artworkEdits that widen a box, because a left-aligned column can need more room than a centred one. Entries sit OUTSIDE renderHash and composedVersion, like heldBlockValues: adding or changing one never makes a figure stale. A textless figure (no sidecar) picks it up on its chapter's next --stale run (0 ISK); for a figure with a sidecar the only sanctioned route is the next COMPOSER_VERSION bump, and any other route needs a [USER] ruling before it is run. Either way readers see the change only after a re-render and [USER]'s sync. That route is ENFORCED by COMPOSER_TABLES_PIN in tools/__tests__/figure-text-config.test.js, which fingerprints this table for the figures with a sidecar, per COMPOSER_VERSION. CHECKED IN CI by tools/lib/figure-config-validate.js: each basename is exactly one book's image, with an image-mapping row naming an .svg and a translated copy at the top of media/, and in none of retiredFigures, keptCopies or supersededArtwork; each reason is a string of over 40 characters. CHECKED AT COMPOSE by figure-compose.py: the entry is read by sourceboxes.py (an entry it cannot read refuses the figure), and an entry that reaches no box is refused - the figure has no schematic box, or every boxed label is kept (none is laid out), and the switch would never act. compose.py reports every source-aligned block in compose-report.json sourceAligned as {key, block}.",
 
   "paperSizes": {
     "Letter": [612.0, 792.0],

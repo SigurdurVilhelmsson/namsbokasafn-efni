@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_02_sugars",
  "renderHash": "f1a419284f76a265",
  "composedHash": "f1a419284f76a265",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "lactose": "mjólkursykur",

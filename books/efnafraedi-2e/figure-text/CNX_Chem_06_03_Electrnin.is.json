@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_06_03_Electrnin",
  "renderHash": "8052b0b99b3d4068",
  "composedHash": "8052b0b99b3d4068",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Electron": "Rafeind",

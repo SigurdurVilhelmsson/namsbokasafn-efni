@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_11_01_solusolv",
  "renderHash": "6c7bec1a05758268",
  "composedHash": "6c7bec1a05758268",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Step 1": "Skref 1",

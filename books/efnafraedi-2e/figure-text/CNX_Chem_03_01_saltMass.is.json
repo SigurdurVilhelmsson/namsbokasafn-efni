@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_03_01_saltMass",
  "renderHash": "500acedc42efb171",
  "composedHash": "500acedc42efb171",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "5",
  "blocks": {
   "Element": "Frumefni",

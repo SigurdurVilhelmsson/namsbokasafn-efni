@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_07_06_NH3",
  "renderHash": "3a89eaf0a251f3d3",
  "composedHash": "3a89eaf0a251f3d3",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Lone pair": "Eindapar"

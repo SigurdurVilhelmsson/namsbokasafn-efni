@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_19_02_ChlorBlue",
  "renderHash": "268c1337de901ac7",
  "composedHash": "268c1337de901ac7",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "COOCH3": "COOCH3",

@@ -72,8 +72,8 @@ by the MIT grant. *(List the TrueType ones with
 
 **Some of those files carry a second third-party face, from STIX Fonts.** Some
 composed `_IS.svg` files under `books/` embed, beside their Liberation Sans
-subsets, a base64 **woff2 subset of STIXGeneral-Regular from STIX Fonts 1.1.0**,
-used to draw symbols the source figure drew in that face. The subset is renamed
+subsets, a base64 **woff2 subset of STIXGeneral-Regular, and of
+STIXGeneral-Italic, -Bold and -BoldItalic, from STIX Fonts 1.1.0**, used to draw symbols the source figure drew in that face. The subset is renamed
 `FigSym`, because the STIX Fonts 1.1.0 licence reserves the font names "STIX
 Fonts" and "TM Math". STIX Fonts 1.1.0 is licensed under the **SIL Open Font
 License 1.1**. Each such SVG carries the font's copyright and trademark notices

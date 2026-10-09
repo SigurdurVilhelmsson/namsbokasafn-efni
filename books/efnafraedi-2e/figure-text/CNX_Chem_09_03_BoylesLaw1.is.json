@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_03_BoylesLaw1",
  "renderHash": "d8944064f40e107e",
  "composedHash": "d8944064f40e107e",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "P (psi)": "P (psi)",

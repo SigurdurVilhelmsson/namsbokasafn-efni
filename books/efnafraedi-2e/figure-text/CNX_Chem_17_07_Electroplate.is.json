@@ -1,14 +1,14 @@
 {
  "version": 1,
  "basename": "CNX_Chem_17_07_Electroplate",
- "renderHash": "bdcab79d7bf4913e",
- "composedHash": "bdcab79d7bf4913e",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "b39aba1a7af80823",
+ "composedHash": "b39aba1a7af80823",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
-  "Spoon|(cathode)": "Skeið (bakskaut)",
-  "silver|(anode)": "Silfur (fórnarskaut)",
-  "Voltage|source": "Spenngjafi",
+  "Spoon|(cathode)": "Skeið (katóða)",
+  "silver|(anode)": "Silfur (anóða)",
+  "Voltage|source": "Spennu‐\ngjafi",
   "AgNO3(aq)": "AgNO3(aq)"
  },
  "mtAlternatives": {

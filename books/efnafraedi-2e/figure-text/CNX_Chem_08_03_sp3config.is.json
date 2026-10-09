@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_08_03_sp3config",
  "renderHash": "62f5cbc1921ad8d0",
  "composedHash": "62f5cbc1921ad8d0",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Orbitals in an isolated C atom": "Svigrúm í einangruðu C-atómi",

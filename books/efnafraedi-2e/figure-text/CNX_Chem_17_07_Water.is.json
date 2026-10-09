@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_07_Water",
  "renderHash": "1b1a3bb4a7267823",
  "composedHash": "1b1a3bb4a7267823",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Voltage|source": "Spennugjafi",

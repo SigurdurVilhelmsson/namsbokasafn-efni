@@ -14,6 +14,12 @@ figlayout.decide() can choose a wrap budget, an anchor and a size:
         '+shared'. SHARED_BOX_ALIGN = None restores R2 for every box. 'center' is [USER]'s ruling
         R-2a = C (2026-10-05; record -> the campaign register, §C140). A box holding one label alone
         keeps R2.
+        SOURCE BOXES (§C140 '6', ruling R-5c2, [USER] 2026-10-07): container_for(..., source_boxes=True)
+        - which compose.py passes only for a figure in figure-text.config.json `sourceAlignedBoxes`
+        (sourceboxes.py) - lays out EVERY box of the figure, lone or shared, on the cell path with the
+        source alignment (cell_alignment, R3); `why` carries '+source-boxes'. It is checked BEFORE the
+        shared test, so it overrides R2 and R-2a for that figure only. Record:
+        docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md.
   cell  a table cell: the label is bounded on all four sides by rule segments that do not form
         one closed path, or it sits on a fill-only rect (a label patch). The source alignment is
         kept (ruling R3).
@@ -617,7 +623,7 @@ def shares_box(index, blocks, L, R, D, U, rot):
     return False
 
 
-def _container_for(index, blocks, page, dark, page_h):
+def _container_for(index, blocks, page, dark, page_h, source_boxes=False):
     block = blocks[index]
     rot = block[0]['rot']
     a0, a1, n0, n1 = source_frame(block)
@@ -630,7 +636,11 @@ def _container_for(index, blocks, page, dark, page_h):
         c = {'cls': cls, 'why': why, 'L': L, 'R': R, 'D': D, 'U': U,
              'src_left_margin': a0 - L, 'src_right_margin': R - a1,
              'src_up_margin': U - n1, 'src_down_margin': n0 - D}
-        if cls == 'box' and SHARED_BOX_ALIGN and shares_box(index, blocks, L, R, D, U, rot):
+        if cls == 'box' and source_boxes:
+            c['cls'], c['why'] = 'cell', why + '+source-boxes'
+            c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'],
+                                                       index, blocks)   # M4's A2v needs index and blocks
+        elif cls == 'box' and SHARED_BOX_ALIGN and shares_box(index, blocks, L, R, D, U, rot):
             c['cls'], c['why'] = 'cell', why + '+shared'
             if SHARED_BOX_ALIGN == 'source':
                 c['align'], c['align_why'] = cell_alignment(block, c['src_left_margin'], c['src_right_margin'],
@@ -667,7 +677,7 @@ def _error_container(index, blocks, exc):
             'align': 'center', 'align_why': 'error->center'}
 
 
-def container_for(index, blocks, page, dark, page_h):
+def container_for(index, blocks, page, dark, page_h, source_boxes=False):
     """The container of blocks[index]. NEVER raises.
 
     index   the block's position in `blocks` (FT.merge_blocks(FT.group(runs))) - used only to
@@ -676,6 +686,7 @@ def container_for(index, blocks, page, dark, page_h):
     page    load_page(artwork.pdf), loaded once per figure
     dark    Pillow 'L' image of artwork.png (200 dpi); dark := L < DARK_LEVEL
     page_h  page height in pt
+    source_boxes  True for a figure in `sourceAlignedBoxes` (R-5c2): a box becomes a source-aligned cell
 
     box / cell: {'cls', 'why', 'L', 'R', 'D', 'U' (inner, in the block's along/normal frame),
                  'src_left_margin', 'src_right_margin', 'src_up_margin', 'src_down_margin',
@@ -687,6 +698,6 @@ def container_for(index, blocks, page, dark, page_h):
     why 'rotated' (its page bbox is inflated, so enclosure means nothing); its free box is
     still measured in its own rotation."""
     try:
-        return _container_for(index, blocks, page, dark, page_h)
+        return _container_for(index, blocks, page, dark, page_h, source_boxes)
     except Exception as exc:          # noqa: BLE001 - never raising IS the contract
         return _error_container(index, blocks, exc)

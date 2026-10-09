@@ -1,9 +1,11 @@
 /**
  * The figure config's four policy tables, its two per-block tables, `heldBlockValues` and
- * `anchorExclusions`, and its per-figure artwork-edit table, `artworkEdits`, checked against the repo
+ * `anchorExclusions`, its per-figure artwork-edit table, `artworkEdits`, and its per-figure
+ * source-aligned-box switch, `sourceAlignedBoxes`, checked against the repo
  * (§C140 ㊵, spec D11; `keptCopies`, §C140 ㊾, spec 2026-10-02 D1; `heldBlockValues`, §C140 ㊾, spec
  * 2026-10-02 D5(a); `anchorExclusions`, §C140 '6', ruling R-20, spec 2026-10-05 D-a; `artworkEdits`,
- * §C140 '6', rulings R-15a/R-15a2).
+ * §C140 '6', rulings R-15a/R-15a2; `sourceAlignedBoxes`, §C140 '6', ruling R-5c2, record
+ * docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md).
  *
  * Run by `npm test` (tools/__tests__/figure-config-validate.test.js), and run LOCALLY before any
  * pin's buy: CI only sees a pin after the money is spent, because a pin lands in the commit that
@@ -62,7 +64,15 @@ const TABLES = ['supersededArtwork', 'retiredFigures', 'keptCopies', 'artworkPin
 // It stays OUT of TABLES: its values are objects, not reason strings, so `reasonOf` and the pin
 // overlap list must never read it (Review Focus 5).
 // §C140 '6' R-20 — `anchorExclusions` likewise: keyed by basename, values are {blockKey: reason} objects.
-const KEYED = [...TABLES, 'heldBlockValues', 'anchorExclusions', 'artworkEdits'];
+// §C140 '6' R-5c2 — `sourceAlignedBoxes` is keyed by basename; its value is a reason string, but it stays OUT
+// of TABLES for the same reason heldBlockValues does: the pin overlap list must never read it.
+const KEYED = [
+  ...TABLES,
+  'heldBlockValues',
+  'anchorExclusions',
+  'artworkEdits',
+  'sourceAlignedBoxes',
+];
 // §C140 '6' R-15a — `artworkEdits` is keyed by basename too (same fold / exactly-one-book loops);
 // its per-figure value is a LIST of ops, checked by artworkEditsProblems (a SECOND implementation of
 // experiments/figure-text-translation/artworkedits.py `for_figure` — change both or neither).
@@ -73,7 +83,10 @@ export const AE_OPS = {
     ['op', 'edge', 'select'],
     ['note', 'to', 'dx'],
   ],
-  'move-text': [['op', 'dx', 'select'], ['note']],
+  'move-text': [
+    ['op', 'select'],
+    ['note', 'dx', 'dy'],
+  ],
   'move-line-end': [['op', 'edge', 'dx', 'select'], ['note']],
 };
 export const AE_SELECT_FIELDS = { path: ['bbox', 'colour', 'paint'], line: ['origin', 'text'] };
@@ -114,6 +127,13 @@ export function artworkEditsProblems(table) {
         if (Object.hasOwn(op, 'to') === Object.hasOwn(op, 'dx'))
           problems.push(`${w} needs exactly one of to / dx`);
         else if (!isNum(op.to ?? op.dx)) problems.push(`${w}.to/dx must be a number`);
+      } else if (op.op === 'move-text') {
+        // PR-B step 2b: dx, dy or both (one line sits in only one op, so both axes share it).
+        if (!Object.hasOwn(op, 'dx') && !Object.hasOwn(op, 'dy'))
+          problems.push(`${w} needs dx or dy (or both)`);
+        for (const axis of ['dx', 'dy'])
+          if (Object.hasOwn(op, axis) && !isNum(op[axis]))
+            problems.push(`${w}.${axis} must be a number`);
       } else if (!isNum(op.dx)) problems.push(`${w}.dx must be a number`);
       if (!Array.isArray(op.select) || op.select.length === 0) {
         problems.push(`${w}.select must be a non-empty list`);
@@ -530,6 +550,36 @@ export function validateFigureConfig(cfg, corpus) {
       problems.push(`artworkEdits.${b} has no translated copy at the top of its book's media/`);
     }
   }
+
+  // §C140 '6' R-5c2 — sourceAlignedBoxes: {basename: reason}. The policy tables' reason rule, and
+  // artworkEdits' corpus rules: the switch acts only when the figure is recomposed, so a retired, kept or
+  // superseded figure's entry is dead, and the figure needs an image-mapping row naming an `.svg` and a
+  // translated copy. Whether the figure HAS a schematic box is figure-compose.py's verify, at compose time
+  // (an entry that reaches no box refuses the figure there).
+  const boxState = corpus.boxState || {}; // fixtures that predate the table carry none
+  for (const [b, r] of Object.entries(tables.sourceAlignedBoxes)) {
+    if (typeof r !== 'string' || r.trim().length <= MIN_REASON) {
+      problems.push(`sourceAlignedBoxes.${b} needs a reason of over ${MIN_REASON} characters`);
+    }
+    for (const [t, keys] of neverComposed) {
+      if (keys.has(normkey(b))) {
+        problems.push(
+          `sourceAlignedBoxes.${b} is also in ${t} (${keys.get(normkey(b))}) — that figure is never composed, so the switch never acts`
+        );
+      }
+    }
+    const s = boxState[b];
+    if (s && !s.svgRows) {
+      problems.push(
+        `sourceAlignedBoxes.${b} has no image-mapping row naming an .svg — no run recomposes it`
+      );
+    }
+    if (s && s.translatedCopies.length === 0) {
+      problems.push(
+        `sourceAlignedBoxes.${b} has no translated copy at the top of its book's media/`
+      );
+    }
+  }
   return problems;
 }
 
@@ -653,7 +703,8 @@ function sidecarKeysStrict(bookDir, basename) {
  *            keptState:Object, heldState:Object<string,{rows:number,
  *            translatedCopies:string[], svgRows:number, sidecarKeys:(string[]|null)}>,
  *            anchorState:Object<string,{sidecarKeys:(string[]|null)}>,
- *            editState:Object<string,{rows:number, translatedCopies:string[], svgRows:number}>}}
+ *            editState:Object<string,{rows:number, translatedCopies:string[], svgRows:number}>,
+ *            boxState:Object<string,{rows:number, translatedCopies:string[], svgRows:number}>}}
  */
 export function buildValidatorCorpus(repoRoot, cfg) {
   const booksDir = path.join(repoRoot, 'books');
@@ -715,6 +766,9 @@ export function buildValidatorCorpus(repoRoot, cfg) {
   };
   const editState = copyState(cfg.artworkEdits);
   for (const k of Object.keys(editState)) editState[k].svgRows = svgRowsOf(k);
+  // §C140 '6' R-5c2 — a source-aligned figure is measured exactly as an edited one is; no sidecar is read.
+  const boxState = copyState(cfg.sourceAlignedBoxes);
+  for (const k of Object.keys(boxState)) boxState[k].svgRows = svgRowsOf(k);
   // §C140 '6' R-20 — an excluded figure needs only its sidecar's block keys (read STRICTLY, as for
   // heldState). A key that is not exactly one book's image gets no state; the exactly-one-book rule
   // names it.
@@ -732,5 +786,6 @@ export function buildValidatorCorpus(repoRoot, cfg) {
     heldState,
     anchorState,
     editState,
+    boxState,
   };
 }

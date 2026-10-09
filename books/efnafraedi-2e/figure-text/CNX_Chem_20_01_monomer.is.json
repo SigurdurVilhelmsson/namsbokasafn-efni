@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_20_01_monomer",
  "renderHash": "9535d8e051166f0f",
  "composedHash": "9535d8e051166f0f",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "ethylene": "etýlen",

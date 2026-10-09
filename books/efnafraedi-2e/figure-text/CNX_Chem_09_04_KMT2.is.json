@@ -1,10 +1,10 @@
 {
  "version": 1,
  "basename": "CNX_Chem_09_04_KMT2",
- "renderHash": "a53c36d482750427",
- "composedHash": "a53c36d482750427",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "2464f6871d7032b3",
+ "composedHash": "2464f6871d7032b3",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
   "HEAT": "HITI",
   "Amonton's law": "Lögmál Amontons",
@@ -13,7 +13,7 @@
   "Volume decreased|Wall area decreased|= Increased pressure": "Rúmmál minnkað Veggsvæði minnkað = Aukinn þrýstingur",
   "Container pressure constant|More gas molecules added|= Increased volume": "Þrýstingur í íláti stöðugur Fleiri gassameindum bætt við = Aukið rúmmál",
   "Temperature increased|Volume constant|= Increased pressure": "Hitastig aukið Rúmmál stöðugt = Aukinn þrýstingur",
-  "Baseline": "Grunnlína",
+  "Baseline": "Viðmið",
   "Volume decreased": "Rúmmál minnkað",
   "Increased gas": "Aukið gas"
  },

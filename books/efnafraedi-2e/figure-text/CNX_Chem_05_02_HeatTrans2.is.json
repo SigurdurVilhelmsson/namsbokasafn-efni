@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_05_02_HeatTrans2",
  "renderHash": "9ab4a60fc42e8ed8",
  "composedHash": "9ab4a60fc42e8ed8",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "M|System": "M kerfi",

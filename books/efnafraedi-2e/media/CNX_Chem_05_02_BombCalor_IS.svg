@@ -114,10 +114,11 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="420.115" y="107.230" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">O</text>
 <text x="427.115" y="109.229" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
 <text x="431.008" y="107.230" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">-inntak</text>
-<text x="418.118" y="129.397" font-family="FigIS" font-weight="400" font-size="7.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">Sprengihólkur</text>
+<text x="419.598" y="129.397" font-family="FigIS" font-weight="400" font-size="7.500" fill="#231f20" xml:space="preserve" style="font-kerning:none">Sprengihólkur</text>
 <text x="420.115" y="148.728" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Sýnisbolli</text>
-<text x="422.691" y="168.061" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Vatn</text>
-<text x="216.262" y="53.311" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Nákvæmnishitamælir</text>
+<text x="420.115" y="168.061" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Vatn</text>
+<text x="231.016" y="47.812" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Nákvæmur</text>
+<text x="231.016" y="58.810" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hitamælir</text>
 <text x="269.516" y="24.143" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Rafskaut</text>
 </g>
 </svg>

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_06_RealGas2",
  "renderHash": "032e6a105b3f2977",
  "composedHash": "032e6a105b3f2977",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Ideal": "Tilvalið",

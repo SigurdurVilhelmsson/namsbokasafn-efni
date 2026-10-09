@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_12_07_HMPShuntPa",
  "renderHash": "aa665c77771dea14",
  "composedHash": "aa665c77771dea14",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Hexokinase": "Hexókínasi",

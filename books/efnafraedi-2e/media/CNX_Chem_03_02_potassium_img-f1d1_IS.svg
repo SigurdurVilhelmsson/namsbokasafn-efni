@@ -118,9 +118,9 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER
 DEALINGS IN THE FONT SOFTWARE.
 
 </metadata>
-<text x="275.229" y="23.341" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Mól K atóma</text>
-<text x="290.241" y="34.339" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">(mól)</text>
-<text x="203.063" y="34.540" font-family="FigIS" font-weight="400" font-size="8.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">Deilið með</text>
+<text x="293.238" y="23.341" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Mól</text>
+<text x="272.232" y="34.339" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">K atóma (mól)</text>
+<text x="204.035" y="34.540" font-family="FigIS" font-weight="400" font-size="8.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">Deila með</text>
 <text x="188.968" y="45.538" font-family="FigIS" font-weight="400" font-size="8.750" fill="#231f20" xml:space="preserve" style="font-kerning:none">mólmassa (g/mól)</text>
 <text x="139.424" y="23.341" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Massi</text>
 <text x="127.666" y="34.339" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">K atóma (g)</text>

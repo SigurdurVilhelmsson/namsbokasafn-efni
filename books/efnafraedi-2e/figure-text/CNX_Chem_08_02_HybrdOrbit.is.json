@@ -1,19 +1,19 @@
 {
  "version": 1,
  "basename": "CNX_Chem_08_02_HybrdOrbit",
- "renderHash": "568201d78c66e896",
- "composedHash": "568201d78c66e896",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "45bba86c56aa4c4c",
+ "composedHash": "45bba86c56aa4c4c",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
-  "Arrangement": "Fyrirkomulag",
-  "Regions of|Electron|Density": "Svæði rafeindaþéttleika",
-  "linear": "línulegt",
-  "trigonal planar": "þríhyrningsflatneskja",
-  "tetrahedral": "ferflötungur",
-  "trigonal|bipyramidal": "tvípýramídi með þríhyrningsgrunnflöt",
-  "octahedral": "áttflötungur",
-  "Hybridization": "Blendingun"
+  "Arrangement": "Uppröðun",
+  "Regions of|Electron|Density": "Fjöldi\nrafeinda‐\nsvæða",
+  "linear": "línuleg",
+  "trigonal planar": "þríhyrnd flöt",
+  "tetrahedral": "ferflötungslaga",
+  "trigonal|bipyramidal": "þríhyrnd\ntvípýramída",
+  "octahedral": "áttflötungslaga",
+  "Hybridization": "Svigrúmablöndun"
  },
  "mtAlternatives": {
   "Regions of|Electron|Density": {

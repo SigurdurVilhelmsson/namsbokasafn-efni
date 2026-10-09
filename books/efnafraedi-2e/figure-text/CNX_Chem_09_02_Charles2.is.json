@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_02_Charles2",
  "renderHash": "da32877292d341ab",
  "composedHash": "da32877292d341ab",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Temperature (K)": "Hiti (K)",

@@ -1,10 +1,10 @@
 {
  "version": 1,
  "basename": "CNX_Chem_18_07_Nitrogen",
- "renderHash": "b759ab8035496ef7",
- "composedHash": "b759ab8035496ef7",
- "composedVersion": "5",
- "composerVersion": "5",
+ "renderHash": "7f7a413e3e94aacf",
+ "composedHash": "7f7a413e3e94aacf",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
   "Decomposers|(aerobic and anaerobic|bacteria and fungi)": "Sundrendur (loftháðar og loftfirrðar bakteríur og sveppir)",
   "Nitrogen-fixing|bacteria in|root nodules": "Niturbindandi bakteríur í rótarhnýðum",
@@ -13,7 +13,7 @@
   "Nitrifying|bacteria": "Nítrandi bakteríur",
   "Denitrifying|bacteria": "Afnítrandi bakteríur",
   "Assimilation": "Upptaka",
-  "Atmospheric|nitrogen (N2)": "Nitur í andrúmslofti (N2)",
+  "Atmospheric|nitrogen (N2)": "Nitur í andrúms‐\nlofti (N2)",
   "ammonium (NH4|+|)": "ammóníum (NH4 + )",
   "nitrites (NO2|–": "nítrít (NO2 –",
   "nitrates (NO3|–": "nítrat (NO3 –"

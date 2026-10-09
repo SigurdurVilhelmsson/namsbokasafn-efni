@@ -122,9 +122,9 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="308.660" y="19.839" font-family="FigIS" font-weight="700" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Sýnislausn</text>
 <text x="27.863" y="46.468" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">10</text>
 <text x="37.873" y="42.468" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve">1</text>
-<text x="24.356" y="68.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">10</text>
-<text x="34.367" y="64.336" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">0</text>
-<text x="38.260" y="68.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða 1</text>
+<text x="27.863" y="68.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">10</text>
+<text x="37.873" y="64.336" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">0</text>
+<text x="41.766" y="68.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða 1</text>
 <text x="27.862" y="90.206" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">10</text>
 <text x="37.873" y="86.207" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve">–1</text>
 <text x="27.863" y="112.076" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">10</text>
@@ -207,27 +207,28 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="185.513" y="46.468" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">15</text>
 <text x="185.513" y="68.337" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">14</text>
 <text x="276.278" y="68.067" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">1 M HCl</text>
-<text x="385.610" y="65.610" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">súrt</text>
-<text x="382.606" y="222.180" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hlutlaust</text>
-<text x="378.105" y="374.430" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">basískt</text>
+<text x="385.610" y="65.610" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">súr</text>
+<text x="385.610" y="222.180" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hlutlaus</text>
+<text x="380.605" y="374.430" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">basísk</text>
 <text x="276.278" y="96.660" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">magasafi</text>
 <text x="276.278" y="343.641" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">bleikiklór</text>
-<text x="276.273" y="108.362" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">límónusafi</text>
+<text x="276.273" y="107.495" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">límónusafi</text>
 <text x="276.273" y="119.360" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">1 M </text>
 <text x="293.776" y="119.360" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CH</text>
 <text x="306.774" y="122.360" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">3</text>
 <text x="310.667" y="119.360" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">CO</text>
 <text x="324.167" y="122.360" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">2</text>
 <text x="328.060" y="119.360" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">H</text>
-<text x="276.273" y="130.358" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">(edik) magasýra</text>
+<text x="334.560" y="119.360" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> (edik)</text>
+<text x="276.273" y="131.224" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">magasýra</text>
 <text x="276.273" y="145.750" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">vín</text>
 <text x="276.273" y="178.528" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">kaffi</text>
 <text x="276.273" y="192.738" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">regnvatn</text>
-<text x="276.273" y="223.135" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hreint</text>
-<text x="276.273" y="234.133" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">vatn blóð</text>
+<text x="276.273" y="222.159" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">hreint vatn</text>
+<text x="276.273" y="235.109" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">blóð</text>
 <text x="276.273" y="248.537" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">sjór</text>
 <text x="276.273" y="257.285" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">matarsódi</text>
-<text x="274.266" y="159.934" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">appelsínusafi</text>
+<text x="276.273" y="159.934" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">appelsínusafi</text>
 <text x="276.273" y="298.846" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">magnesíummjólk</text>
 <text x="276.273" y="327.519" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">heimilisammoníak, </text>
 <text x="353.294" y="327.519" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">NH</text>
@@ -249,9 +250,9 @@ DEALINGS IN THE FONT SOFTWARE.
 <text x="185.505" y="396.392" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">–1</text>
 <text x="27.860" y="374.513" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">10</text>
 <text x="37.873" y="370.516" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve">–14</text>
-<text x="74.012" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">10</text>
-<text x="84.022" y="370.515" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">0</text>
-<text x="87.915" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða 1</text>
+<text x="77.518" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">10</text>
+<text x="87.529" y="370.515" font-family="FigIS" font-weight="400" font-size="7.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">0</text>
+<text x="91.422" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none"> eða 1</text>
 <text x="137.844" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">14</text>
 <text x="190.521" y="374.516" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve">0</text>
 </g>

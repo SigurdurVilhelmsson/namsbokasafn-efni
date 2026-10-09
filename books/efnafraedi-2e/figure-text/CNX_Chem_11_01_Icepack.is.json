@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_11_01_Icepack",
  "renderHash": "ec4a99f323bbde25",
  "composedHash": "ec4a99f323bbde25",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "5",
  "blocks": {
   "INSTANT": "INSTANT",

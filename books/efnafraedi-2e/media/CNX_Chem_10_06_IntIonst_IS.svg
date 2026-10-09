@@ -111,12 +111,12 @@ DEALINGS IN THE FONT SOFTWARE.
 </metadata>
 <text x="351.591" y="126.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Teningshola</text>
 <text x="188.873" y="126.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Áttflötungshola</text>
-<text x="3.505" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 22,5</text>
-<text x="3.505" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">til 41,4% af radíus anjónar</text>
-<text x="160.112" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 41,4</text>
-<text x="160.112" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">til 73,2% af radíus anjónar</text>
-<text x="317.576" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 73,2</text>
-<text x="317.576" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">til 100% af radíus anjónar</text>
-<text x="30.022" y="126.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Fjórflötungshola</text>
+<text x="3.505" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 22,5 til</text>
+<text x="3.505" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">41,4% af radíus anjónar</text>
+<text x="160.112" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 41,4 til</text>
+<text x="160.112" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">73,2% af radíus anjónar</text>
+<text x="317.576" y="142.672" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Radíus katjónar er um 73,2 til</text>
+<text x="317.576" y="153.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">100% af radíus anjónar</text>
+<text x="31.022" y="126.670" font-family="FigIS" font-weight="400" font-size="9.000" fill="#231f20" xml:space="preserve" style="font-kerning:none">Ferflötungshola</text>
 </g>
 </svg>

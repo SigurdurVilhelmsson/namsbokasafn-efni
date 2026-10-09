@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_01_05_SigDigits2_img",
  "renderHash": "2492bd26c4275717",
  "composedHash": "2492bd26c4275717",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "First nonzero figure on the left": "Fyrsti tölustafurinn til vinstri sem er ekki núll",

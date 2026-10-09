@@ -1,19 +1,19 @@
 {
  "version": 1,
  "basename": "CNX_Chem_00_EE_LiqWatAbso",
- "renderHash": "c86ae4873c01c7d0",
- "composedHash": "c86ae4873c01c7d0",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "b431246281c76900",
+ "composedHash": "b431246281c76900",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
   "Wavelength": "Bylgjulengd",
-  "VIS": "VÍS",
-  "Near IR": "Nær-innrautt",
-  "Mid IR": "Mið-innrautt",
-  "Water Full-Range Spectral Absorption Curve": "Frásogskúrfa vatns yfir allt litrófið",
-  "Far IR": "Fjar-innrautt",
+  "VIS": "SÝNIL",
+  "Near IR": "Nær-IR",
+  "Mid IR": "Mið-IR",
+  "Water Full-Range Spectral Absorption Curve": "Ljósgleypnirit vatns",
+  "Far IR": "Fjær-IR",
   "EHF": "EHF",
-  "Absorption (1/m)": "Frásog (1/m)"
+  "Absorption (1/m)": "Gleypni (1/m)"
  },
  "mtAlternatives": {
   "VIS": {

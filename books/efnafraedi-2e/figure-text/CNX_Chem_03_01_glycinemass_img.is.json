@@ -1,15 +1,15 @@
 {
  "version": 1,
  "basename": "CNX_Chem_03_01_glycinemass_img",
- "renderHash": "546180c6df1f577a",
- "composedHash": "546180c6df1f577a",
- "composedVersion": "5",
- "composerVersion": "1",
+ "renderHash": "5f250a8250f3c8ff",
+ "composedHash": "5f250a8250f3c8ff",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
-  "Element": "Þáttur",
+  "Element": "Frumefni",
   "Quantity|(mol element/|mol compound)": "Magn (mól frumefnis/mól efnasambands)",
   "Molar mass|(g/mol element)": "Mólmassi (g/mól frumefnis)",
   "Subtotal|(g/mol compound)": "Samtals (g/mól efnasamband)",
-  "Molecular mass (g/mol compound)": "Mólmassi (g/mól efnasambands)"
+  "Molecular mass (g/mol compound)": "Sameindamassi (g/mól efnasambands)"
  }
 }

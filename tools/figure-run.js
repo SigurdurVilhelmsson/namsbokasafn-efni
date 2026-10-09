@@ -1285,7 +1285,8 @@ export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
  * in draw order WITH multiplicity; and the '6' report keys (G8): `relaid` labels laid out on the
  * source's own row breaks (M1, `rule: 'source-breaks'`, with `shrunkFromPt`) or rows (M3,
  * `rule: 'source-rows'`), `belowSource` labels drawn below their source size (R-16), and
- * `anchorExcluded` labels laid out without M1's cuts by `anchorExclusions` (R-20).
+ * `anchorExcluded` labels laid out without M1's cuts by `anchorExclusions` (R-20), and `sourceAligned`
+ * labels laid out in a box with the source's alignment by `sourceAlignedBoxes` (R-5c2).
  * `figure-compose.py` copies them out of compose-report.json into compose.json.
  *
  * 🔴 EXPORTED SO A TEST CAN HOLD IT AGAINST `figure-compose.py`'s `COMPOSE_NOTES` tuple: two
@@ -1302,6 +1303,7 @@ export const COMPOSE_NOTE_LISTS = [
   'relaid',
   'belowSource',
   'anchorExcluded',
+  'sourceAligned',
 ];
 
 /**
@@ -1314,7 +1316,8 @@ export const COMPOSE_NOTE_LISTS = [
  *   containerErrors: object[], held: {key: string, block: number, changed: number[]}[],
  *   relaid: {key: string, block: number, rule: string, sizePt: number}[],
  *   belowSource: {key: string, block: number, sizePt: number, sourcePt: number}[],
- *   anchorExcluded: {key: string, block: number, changed: boolean}[]}}
+ *   anchorExcluded: {key: string, block: number, changed: boolean}[],
+ *   sourceAligned: {key: string, block: number}[]}}
  */
 function composeNotesFrom(composeVerdict) {
   return Object.fromEntries(
@@ -2409,6 +2412,7 @@ export async function runFigures(args, deps = {}) {
         relaidFigures: figuresWithComposeNote(selected, 'relaid').length,
         belowSourceFigures: figuresWithComposeNote(selected, 'belowSource').length,
         anchorExcludedFigures: figuresWithComposeNote(selected, 'anchorExcluded').length,
+        sourceAlignedFigures: figuresWithComposeNote(selected, 'sourceAligned').length,
         artworkEditFigures: figuresWithArtworkEdits(selected).length,
         ringGateFailedFigures: selected.filter((r) => r.ringGateFailed).length,
       }),
@@ -2899,6 +2903,13 @@ export function summarise(result) {
           `${quoted(e.key)} block ${e.block} — ` +
           (e.changed ? 'M1 would have cut it differently' : 'M1 would have changed nothing')
       )
+    )
+  );
+  // §C140 '6' R-5c2 — one line per label laid out in a source-aligned box.
+  lines.push(
+    ...nameList(
+      "labels laid out in a box with the source's alignment (sourceAlignedBoxes), by figure",
+      noteEntries('sourceAligned', (e) => `${quoted(e.key)} block ${e.block}`)
     )
   );
   // §C140 '6' R-15a — `figuresWithArtworkEdits`, not `noteEntries`: a prepare fact, and a published

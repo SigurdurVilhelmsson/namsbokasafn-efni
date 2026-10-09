@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_10_05_Graphene",
  "renderHash": "8413764fc3015783",
  "composedHash": "8413764fc3015783",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Nanotube": "Nanórör",

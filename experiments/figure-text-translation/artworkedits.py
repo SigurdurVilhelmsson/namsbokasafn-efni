@@ -25,10 +25,15 @@ the RGB an SVG renders them as: the operands are exact, the RGB is a conversion.
         ONE `re` followed directly by its paint op, and it stays an `re`: pdfplumber reports it as
         object_type 'rect', which is the only thing that makes it a table CELL (figcontainers' fill-rect
         branch). A rewrite as a general path would silently turn the label inside it `open`.
-    {"op": "move-text", "dx": <pt>, "select": [<line>, ...]}
-        shift each selected text LINE (the show operators between two positioning operators) by dx.
-        Done through the Tm/Td/TD/T* operands only (`cm` is illegal inside BT/ET); every later line in
-        the same BT is compensated, so an unselected line never moves.
+    {"op": "move-text", "dx": <pt>, "dy": <pt>, "select": [<line>, ...]}
+        shift each selected text LINE (the show operators between two positioning operators) by dx
+        and/or dy - at least one of them, both allowed (one line can sit in only ONE op, so a line that
+        needs both axes needs both in one op). Done through the Tm/Td/TD/T* operands only (`cm` is
+        illegal inside BT/ET); every later line in the same BT is compensated, so an unselected line
+        never moves. A TD also SETS the leading (TL = -ty) and TL outlives the BT, so a TD whose ty
+        changes becomes a Td followed by `<the original leading> TL`: every later T*, ' and " - in this
+        BT or after it - still steps by the leading the source drew it with. A dx-only move never
+        touches a TD's ty, so it adds no instruction.
     {"op": "move-line-end", "edge": "left"|"right", "dx": <pt>, "select": [<path>, ...]}
         move ONE END of each selected straight line by dx: the end at the named PAGE side (min-x or
         max-x, whatever the drawing order). The path must be exactly one `m` and one `l`, painted by a
@@ -54,14 +59,17 @@ REFUSALS - `ArtworkEditError.reason` is a CONTRACT (figure-prepare.py reports `a
   selection    select-none / select-ambiguous (0 or more than 1 object matches, tolerance 0.01 pt),
                select-overlap (one object selected twice, in one op or across ops)
   the rewrite  not-a-rect, not-a-line, not-horizontal, not-axis-aligned (a rotated, skewed or flipped
-               CTM or text matrix), quote-operator (a `'` or `"` in a BT this edit must rewrite),
+               CTM or text matrix), malformed-operator (a `'` or `"` this edit must rewrite whose operands
+               are not (string) / (aw, ac, string)),
                no-positioning-op, edge-inverts (an edge or line end reaching or crossing the other one),
                clip-path (move-paths on a path that also sets the clip: `W`/`W*` before its paint)
   the check    verify-failed
 
 FAIL CLOSED, AND VERIFIED: after rewriting, the stream is re-parsed and EVERY painted path and text
 line is compared with the original - the selected ones must have moved exactly as asked and every
-other one must be exactly where it was (`verify-failed` otherwise, and nothing is saved). That check
+other one must be exactly where it was - and the leading (TL) in force at every text-showing operator
+and every `Do` must be unchanged, which is what covers the TL readers the line comparison cannot see
+(a `'`/`"`, and a form XObject's text) (`verify-failed` otherwise, and nothing is saved). That check
 is what proves the Td compensation: FoodLabel's right column is drawn by the same BT as circle 5's
 digit, through relative moves. A figure with no entry is not touched at all: its staged PDF stays the
 bytes stage_artwork wrote, and its prepare.json carries no `artworkEdits` key.
@@ -76,8 +84,9 @@ LIMITS, STATED:
     (`--inventory` on `<out>/<basename>.pdf`), never from the source file.
   - Selectors are absolute page coordinates: a new artwork vintage, or an artworkPins redirect to a
     different file, makes them refuse `select-none`, which fails the figure closed.
-  - A `'` or `"` operator is not split into its own line by the inventory: it continues the line
-    before it (`--inventory` prints such a line with `quote: true`), and any move in its BT refuses.
+  - A `'` or `"` STARTS a line (step 2c, [USER] 2026-10-08): it moves to the next line as T* does, then
+    shows its string. `--inventory` prints it with `quote: true` and its own operator. A rewritten quote
+    line becomes `Td` + `Tj` (a `"` keeps its aw/ac as `Tw` + `Tc` before them).
   - An entry on a figure the driver classifies `copied-photo` or `unreadable-text` is prepared and
     never recomposed, so it is silently unused. So is one on a `copied-textless` figure that embeds a
     raster (`imageXObjects > 0`, e.g. ibuprofenmass): tools/figure-run.js `isRecomposableTextless`
@@ -85,6 +94,7 @@ LIMITS, STATED:
 """
 import argparse
 import json
+import math
 import os
 import sys
 from decimal import Decimal
@@ -101,7 +111,7 @@ VERIFY_TOL = Decimal('0.000001')
 OPS = {
     'move-paths': ({'op', 'dx', 'select'}, {'note'}),
     'move-edge': ({'op', 'edge', 'select'}, {'note', 'to', 'dx'}),
-    'move-text': ({'op', 'dx', 'select'}, {'note'}),
+    'move-text': ({'op', 'select'}, {'note', 'dx', 'dy'}),
     'move-line-end': ({'op', 'edge', 'dx', 'select'}, {'note'}),
 }
 PATH_FIELDS = {'paint', 'colour', 'bbox'}
@@ -114,6 +124,7 @@ FILL_COLOUR_OPS = {'k', 'rg', 'g', 'sc', 'scn', 'cs'}
 STROKE_COLOUR_OPS = {'K', 'RG', 'G', 'SC', 'SCN', 'CS'}
 SHOW_OPS = {'Tj', 'TJ', "'", '"'}
 POS_OPS = {'Tm', 'Td', 'TD', 'T*'}
+QUOTE_OPS = {"'", '"'}             # `'` = T* + Tj; `"` = aw Tw + ac Tc + `'` - each STARTS a line (step 2c)
 
 
 class ArtworkEditError(ValueError):
@@ -128,7 +139,9 @@ def _kind(v):
 
 
 def _num(v):
-    return isinstance(v, (int, float)) and not isinstance(v, bool)
+    # finite, as the JS twin's isNum (Number.isFinite): Python's json accepts NaN/Infinity and reads 1e400 as
+    # inf, which pikepdf cannot write - it would surface as a raw ValueError outside the reason contract.
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
 
 
 def _D(v):
@@ -185,6 +198,12 @@ def for_figure(table, basename):
                 raise ArtworkEditError('bad-field', f'{w} needs exactly one of to / dx')
             if not _num(op.get('to', op.get('dx'))):
                 raise ArtworkEditError('bad-field', f'{w}.to/dx must be a number')
+        elif name == 'move-text':
+            if 'dx' not in op and 'dy' not in op:
+                raise ArtworkEditError('bad-field', f'{w} needs dx or dy (or both)')
+            for axis in ('dx', 'dy'):
+                if axis in op and not _num(op[axis]):
+                    raise ArtworkEditError('bad-field', f'{w}.{axis} must be a number')
         elif not _num(op['dx']):
             raise ArtworkEditError('bad-field', f'{w}.dx must be a number')
         sel = op['select']
@@ -300,6 +319,14 @@ def inventory(pikepdf, instructions):
             in_bt, tlm, bt_id, line = True, IDENT, bt_id + 1, None
         elif op == 'ET':
             in_bt, line = False, None
+        elif in_bt and op in QUOTE_OPS:
+            # PR-B step 2c: a quote moves to the next line exactly as T* does, then shows its string. Folding
+            # it into the line before (as this walk once did) left every later origin in the BT wrong by
+            # the leading - Nitrogen's label by 33 pt = 3 x TL 11.
+            tlm = _mul((Decimal(1), Decimal(0), Decimal(0), Decimal(1), Decimal(0), -tl), tlm)
+            line = dict(bt=bt_id, pos=i, posop=op, text=_string_text(pikepdf, args[-1]), tlm=tlm, ctm=ctm, tl=tl,
+                        quote=True, origin=_apply(_mul(tlm, ctm), Decimal(0), Decimal(0)))
+            lines.append(line)
         elif in_bt and op in POS_OPS:
             if op == 'Tm':
                 tlm = tuple(_D(x) for x in args)
@@ -319,8 +346,6 @@ def inventory(pikepdf, instructions):
                 line = dict(bt=bt_id, pos=None, posop=None, text='', tlm=tlm, ctm=ctm, tl=tl, quote=False,
                             origin=_apply(_mul(tlm, ctm), Decimal(0), Decimal(0)))
                 lines.append(line)
-            if op in ("'", '"'):
-                line['quote'] = True
             line['text'] += _string_text(pikepdf, args[-1])
     return paths, lines
 
@@ -358,12 +383,12 @@ def _fmt(v):
 
 def plan(pikepdf, instructions, ops, where):
     """-> (paths, lines, path_dx {path index: dx}, edges {path index: (edge, new page coord)},
-    text_dx {line index: dx}, line_ends {path index: (instruction index, new page x)}, summary).
+    text_d {line index: (dx, dy)}, line_ends {path index: (instruction index, new page x)}, summary).
     `edges` holds every moved edge - a rect's AND a line end's - because that is what `_verify` checks;
     `line_ends` says which of them `rewrite` must treat as a line end rather than an `re`. Every selector
     must match exactly one object; no object may be selected twice."""
     paths, lines = inventory(pikepdf, instructions)
-    path_dx, edges, text_dx, line_ends, taken, summary = {}, {}, {}, {}, {}, []
+    path_dx, edges, text_d, line_ends, taken, summary = {}, {}, {}, {}, {}, []
     for k, op in enumerate(ops):
         w = f'{where}[{k}]'
         done = []
@@ -389,7 +414,7 @@ def plan(pikepdf, instructions, ops, where):
                 path_dx[n] = _D(op['dx'])
                 done.append(dict(bbox=_fmt(paths[n]['bbox'])))
             elif op['op'] == 'move-text':
-                text_dx[n] = _D(op['dx'])
+                text_d[n] = (_D(op.get('dx', 0)), _D(op.get('dy', 0)))
                 done.append(dict(text=lines[n]['text'], origin=_fmt(lines[n]['origin'])))
             elif op['op'] == 'move-line-end':
                 p = paths[n]
@@ -428,16 +453,17 @@ def plan(pikepdf, instructions, ops, where):
                 edges[n] = (op['edge'], new)
                 done.append(dict(bbox=_fmt(p['bbox']), edge=op['edge'], to=float(new)))
         summary.append(dict(op=op['op'], selected=len(done), objects=done))
-    return paths, lines, path_dx, edges, text_dx, line_ends, summary
+    return paths, lines, path_dx, edges, text_d, line_ends, summary
 
 
-def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_ends=None):
+def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_d, line_ends=None):
     """-> the new instruction list (pikepdf.ContentStreamInstruction / inline images). `line_ends` is
     plan's: an edge listed there is a line end, rewritten as one x operand of its `m` or `l`."""
     line_ends = line_ends or {}
     CSI = pikepdf.ContentStreamInstruction
     new_operands = {}                 # idx -> operands list
     replace_op = {}                   # idx -> (operands, operator) replacing the instruction
+    replace_multi = {}                # idx -> [instructions] replacing it (a rewritten quote, step 2c)
     before, after = {}, {}
     for n, dx in path_dx.items():
         p = paths[n]
@@ -470,47 +496,77 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_e
             else:
                 x, w = nu, (x + w) - nu          # x was the right edge; x+w the left
         new_operands[i] = [x, y, w, h]
-    # text: per BT, the shift each line carries; compensate at every positioning op whose shift differs
+    # text: per BT, the (dx, dy) shift each line carries; compensate at every positioning op whose shift
+    # differs from the previous line's
+    ZERO = (Decimal(0), Decimal(0))
     by_bt = {}
     for n, l in enumerate(lines):
         by_bt.setdefault(l['bt'], []).append(n)
     for bt, idxs in by_bt.items():
-        shifts = [text_dx.get(n, Decimal(0)) for n in idxs]
-        if not any(shifts):
+        shifts = [text_d.get(n, ZERO) for n in idxs]
+        if not any(any(s) for s in shifts):
             continue
-        prev = Decimal(0)
+        prev = ZERO
         prev_tlm = IDENT
         for n, s in zip(idxs, shifts):
             l = lines[n]
-            if l['quote']:
-                raise ArtworkEditError('quote-operator', f"a ' or \" operator in BT #{bt}, which this edit must rewrite")
-            delta = s - prev
+            delta = (s[0] - prev[0], s[1] - prev[1])
             # Tm is ABSOLUTE: it needs the line's own shift whenever that is non-zero, whatever came before.
             # Td/TD/T* are RELATIVE: they need the CHANGE of shift from the previous line.
-            if (s if l['posop'] == 'Tm' else delta) != 0:
+            if any(s if l['posop'] == 'Tm' else delta):
                 if l['pos'] is None:
                     raise ArtworkEditError('no-positioning-op', f'line {l["text"]!r} has no positioning operator')
                 _axis(l['ctm'], f'CTM at {l["text"]!r}')
                 ins = instructions[l['pos']]
-                ops_ = [_D(v) for v in ins.operands]
+                # a quote's operands are (aw, ac,) string - not a position; it is rebuilt below instead
+                ops_ = None if l['posop'] in QUOTE_OPS else [_D(v) for v in ins.operands]
                 if l['posop'] == 'Tm':
                     _axis(tuple(ops_), f'Tm at {l["text"]!r}')
-                    ops_[4] += s / l['ctm'][0]       # absolute: the line's own shift, in user space
+                    ops_[4] += s[0] / l['ctm'][0]    # absolute: the line's own shift, in user space
+                    ops_[5] += s[1] / l['ctm'][3]
                     new_operands[l['pos']] = ops_
                 else:
                     lin = _mul(prev_tlm, l['ctm'])
                     _axis(lin, f'text matrix before {l["text"]!r}')
-                    dtx = delta / lin[0]
+                    dtx, dty = delta[0] / lin[0], delta[1] / lin[3]
                     if l['posop'] == 'T*':
-                        replace_op[l['pos']] = ([dtx, -l['tl']], 'Td')
+                        replace_op[l['pos']] = ([dtx, -l['tl'] + dty], 'Td')
+                    elif l['posop'] in QUOTE_OPS:
+                        # `'` = T* + Tj, so it becomes `Td` + `Tj` with the T* compensated; `"` first keeps
+                        # its aw/ac as Tw/Tc (they persist, as the `"` set them). The string object is reused.
+                        q = list(ins.operands)
+                        # A rewrite READS the operands, so their shape is checked first: `'` = (string),
+                        # `"` = (aw, ac, string). A renderer draws nothing for a malformed one (poppler: "Too
+                        # few args"); rewriting it would put the string in Tc and make it VISIBLE, which no
+                        # origin comparison can see (2c review). Refuse instead.
+                        want = 1 if l['posop'] == "'" else 3
+                        if (len(q) != want or not isinstance(q[-1], pikepdf.String)
+                                or not all(isinstance(v, (int, float, Decimal)) and not isinstance(v, bool)
+                                           for v in q[:-1])):
+                            raise ArtworkEditError('malformed-operator', f"the {l['posop']} at line {l['text']!r} "
+                                                   f'has {len(q)} operand(s); this rewrite needs '
+                                                   f'{"(string)" if want == 1 else "(aw, ac, string)"}')
+                        head = ([CSI([q[0]], pikepdf.Operator('Tw')), CSI([q[1]], pikepdf.Operator('Tc'))]
+                                if l['posop'] == '"' else [])
+                        replace_multi[l['pos']] = head + [CSI([dtx, -l['tl'] + dty], pikepdf.Operator('Td')),
+                                                          CSI([q[-1]], pikepdf.Operator('Tj'))]
+                    elif l['posop'] == 'TD' and dty != 0:
+                        # TD = `-ty TL` + `tx ty Td`. Its new ty would set a new leading, and TL outlives
+                        # the BT, so every later T*/'/" the delta walk leaves alone would move. Write a Td
+                        # and re-assert the leading this TD set (inventory recorded it: l['tl'] = -ty).
+                        replace_op[l['pos']] = ([ops_[0] + dtx, ops_[1] + dty], 'Td')
+                        after.setdefault(l['pos'], []).append(CSI([l['tl']], pikepdf.Operator('TL')))
                     else:
                         ops_[0] += dtx
+                        ops_[1] += dty
                         new_operands[l['pos']] = ops_
             prev, prev_tlm = s, l['tlm']
     out = []
     for i, ins in enumerate(instructions):
         out.extend(before.get(i, []))
-        if i in replace_op:
+        if i in replace_multi:
+            out.extend(replace_multi[i])
+        elif i in replace_op:
             operands, opname = replace_op[i]
             out.append(CSI(operands, pikepdf.Operator(opname)))
         elif i in new_operands:
@@ -521,7 +577,36 @@ def rewrite(pikepdf, instructions, paths, lines, path_dx, edges, text_dx, line_e
     return out
 
 
-def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_dx):
+def _tl_trace(pikepdf, instructions):
+    """-> the leading (TL) in force at every text-showing operator and every `Do`, in stream order. A rewrite
+    may change WHERE a line starts, never the leading anything later steps by: a TD whose ty changes is
+    followed by a TL re-assert, and this is what proves it held. It has to be its own walk, because the
+    readers of TL that matter most here are invisible to the line comparison: a form XObject's text is not
+    inventoried at all, while the form inherits the TL in force at its `Do`. (A `'`/`"` has its own origin
+    since step 2c; it is still a show op here, so a TL change it would read is caught at it as well.)"""
+    tl, stack, in_bt, out = Decimal(0), [], False, []
+    for ins in instructions:
+        if isinstance(ins, pikepdf.ContentStreamInlineImage):
+            continue
+        op = str(ins.operator)
+        if op == 'q':
+            stack.append(tl)
+        elif op == 'Q':
+            tl = stack.pop() if stack else tl
+        elif op == 'TL':
+            tl = _D(ins.operands[0])
+        elif op == 'BT':
+            in_bt = True
+        elif op == 'ET':
+            in_bt = False
+        elif in_bt and op == 'TD':
+            tl = -_D(ins.operands[1])
+        elif (in_bt and op in SHOW_OPS) or op == 'Do':
+            out.append(tl)
+    return out
+
+
+def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_d, old_instr=None):
     paths, lines = inventory(pikepdf, new_instr)
     if len(paths) != len(old_paths) or len(lines) != len(old_lines):
         raise ArtworkEditError('verify-failed', f'{len(old_paths)}/{len(old_lines)} paths/lines became {len(paths)}/{len(lines)}')
@@ -536,9 +621,18 @@ def _verify(pikepdf, old_paths, old_lines, new_instr, path_dx, edges, text_dx):
                 or p['fill'] != o['fill'] or p['stroke'] != o['stroke']:
             raise ArtworkEditError('verify-failed', f'path {n}: bbox {_fmt(p["bbox"])} expected {_fmt(want)}')
     for n, (o, l) in enumerate(zip(old_lines, lines)):
-        want = (o['origin'][0] + text_dx.get(n, Decimal(0)), o['origin'][1])
+        dx, dy = text_d.get(n, (Decimal(0), Decimal(0)))
+        want = (o['origin'][0] + dx, o['origin'][1] + dy)
         if l['text'] != o['text'] or not all(_close(a, b, VERIFY_TOL) for a, b in zip(l['origin'], want)):
             raise ArtworkEditError('verify-failed', f'line {n} {l["text"]!r}: origin {_fmt(l["origin"])} expected {_fmt(want)}')
+    # Last, so a moved LINE is reported by name; this catches the TL readers the line comparison cannot see.
+    if old_instr is not None:
+        old_t, new_t = _tl_trace(pikepdf, old_instr), _tl_trace(pikepdf, new_instr)
+        if old_t != new_t:
+            k = next((i for i, (a, b) in enumerate(zip(old_t, new_t)) if a != b), min(len(old_t), len(new_t)))
+            raise ArtworkEditError('verify-failed', f'the leading (TL) in force at show/Do operator {k} changed: '
+                                                    f'{old_t[k] if k < len(old_t) else None} became '
+                                                    f'{new_t[k] if k < len(new_t) else None}')
 
 
 def apply_to_pdf(pdf_path, ops, where):
@@ -549,9 +643,9 @@ def apply_to_pdf(pdf_path, ops, where):
     with pikepdf.open(str(pdf_path)) as pdf:
         page = pdf.pages[0]
         instr = list(pikepdf.parse_content_stream(page))
-        paths, lines, path_dx, edges, text_dx, line_ends, summary = plan(pikepdf, instr, ops, where)
-        new = rewrite(pikepdf, instr, paths, lines, path_dx, edges, text_dx, line_ends)
-        _verify(pikepdf, paths, lines, new, path_dx, edges, text_dx)
+        paths, lines, path_dx, edges, text_d, line_ends, summary = plan(pikepdf, instr, ops, where)
+        new = rewrite(pikepdf, instr, paths, lines, path_dx, edges, text_d, line_ends)
+        _verify(pikepdf, paths, lines, new, path_dx, edges, text_d, instr)
         page.Contents = pdf.make_stream(pikepdf.unparse_content_stream(new))
         pdf.save(str(tmp), deterministic_id=True)
     os.replace(tmp, pdf_path)

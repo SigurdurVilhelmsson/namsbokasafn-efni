@@ -18,7 +18,7 @@ beside the NOISE BASELINE: the same metric over every figure that does NOT use t
 (`flag_rule` in the report states the exact rule) - and the contact sheets written under <dir>/sheets/ are what a
 human then looks at: reference | other | difference.
 
-Also: --nofont-of <variant> compares, WITHIN each engine, the full render against the same figure with its @font-face
+Also: --nofont compares, WITHIN each engine, the full render against the same figure with its @font-face
 rules stripped (browser-sweep.mjs --variant nofont). A figure with text whose two renders are identical in some
 engine is drawing its labels in a fallback font there.
 

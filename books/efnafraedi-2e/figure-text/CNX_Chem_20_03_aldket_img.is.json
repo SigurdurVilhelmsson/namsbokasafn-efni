@@ -1,14 +1,14 @@
 {
  "version": 1,
  "basename": "CNX_Chem_20_03_aldket_img",
- "renderHash": "003ca1f41e4fb279",
- "composedHash": "003ca1f41e4fb279",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "ab1b590b13daf6cb",
+ "composedHash": "ab1b590b13daf6cb",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
-  "CH3CHO|An aldehyde|ethanal (acetaldehyde)": "CH3CHO Aldehýð etanal (asetaldehýð)",
+  "CH3CHO|An aldehyde|ethanal (acetaldehyde)": "CH3CHO Dæmi um aldehýð etanal (asetaldehýð)",
   "CH3COCH2CH3": "CH3COCH2CH3",
-  "A ketone|butanone": "Keton bútanon"
+  "A ketone|butanone": "Ketón bútanon"
  },
  "mtAlternatives": {
   "A ketone|butanone": {

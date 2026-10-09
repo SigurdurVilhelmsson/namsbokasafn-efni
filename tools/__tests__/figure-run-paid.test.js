@@ -568,6 +568,8 @@ describe("the composer's notes reach the verdict and the report", () => {
     ],
     belowSource: [{ key: 'Mass', block: 1, sizePt: 4.5, sourcePt: 5 }],
     anchorExcluded: [{ key: 'Small|contact', block: 4, changed: true }],
+    // §C140 '6' R-5c2 — a label laid out in a box with the source's alignment.
+    sourceAligned: [{ key: 'Oxidizer|Acid', block: 8 }],
   };
   const EMPTY = {
     unformatted: [],
@@ -578,6 +580,7 @@ describe("the composer's notes reach the verdict and the report", () => {
     relaid: [],
     belowSource: [],
     anchorExcluded: [],
+    sourceAligned: [],
   };
   const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
   // §C140 '6' (G8) — the three verdict NOTEs T11 added, spelled once so each case below can demand an
@@ -588,6 +591,8 @@ describe("the composer's notes reach the verdict and the report", () => {
     'NOTE (not a failure): 1 figure(s) had labels drawn below their source size (R-16) — the report names each';
   const EXCLUDED_NOTE =
     "NOTE (not a failure): 1 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each";
+  const SOURCE_NOTE =
+    "NOTE (not a failure): 1 figure(s) had labels laid out in a box with the source's alignment (sourceAlignedBoxes) — the report names each";
 
   it('copies every list from compose.json onto the record, verbatim', async () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
@@ -608,6 +613,7 @@ describe("the composer's notes reach the verdict and the report", () => {
       "NOTE (not a failure): 1 figure(s) had labels laid out on the source's own row breaks or rows — the report names each",
       'NOTE (not a failure): 1 figure(s) had labels drawn below their source size (R-16) — the report names each',
       "NOTE (not a failure): 1 figure(s) had labels laid out without M1's source-anchored cuts (anchorExclusions) — the report names each",
+      "NOTE (not a failure): 1 figure(s) had labels laid out in a box with the source's alignment (sourceAlignedBoxes) — the report names each",
     ]);
     expect(result.verdict.ok).toBe(true);
   });
@@ -653,6 +659,11 @@ describe("the composer's notes reach the verdict and the report", () => {
       "  labels laid out without M1's source-anchored cuts (anchorExclusions), by figure (1):\n" +
         '    FIG_A: "Small|contact" block 4 — M1 would have cut it differently\n'
     );
+    // §C140 '6' R-5c2 — one line per source-aligned box.
+    expect(text).toContain(
+      "  labels laid out in a box with the source's alignment (sourceAlignedBoxes), by figure (1):\n" +
+        '    FIG_A: "Oxidizer|Acid" block 8\n'
+    );
   });
 
   // §C140 '6' (G8) — a source-breaks entry with no shrink names no size it shrank from, an exclusion
@@ -689,6 +700,7 @@ describe("the composer's notes reach the verdict and the report", () => {
     ['relaid', { key: 'r', block: 1, rule: 'source-rows', sizePt: 5, leadPt: 5.5 }, RELAID_NOTE],
     ['belowSource', { key: 'b', block: 2, sizePt: 4.5, sourcePt: 5 }, BELOW_NOTE],
     ['anchorExcluded', { key: 'x', block: 3, changed: true }, EXCLUDED_NOTE],
+    ['sourceAligned', { key: 's', block: 4 }, SOURCE_NOTE],
   ])('a compose.json carrying only %s gives exactly its own NOTE', async (list, entry, note) => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     const result = await runFigures(live(booksRoot), {
@@ -765,7 +777,7 @@ describe("the composer's notes reach the verdict and the report", () => {
     expect(rec(result, 'FIG_A').composeNotes).toEqual(EMPTY);
     expect(result.verdict).toEqual({ ok: true, reasons: [] });
     expect(summarise(result)).not.toMatch(
-      /decimal comma|overhang|formula formatting|container|heldBlockValues|row breaks|source size|anchorExclusions|artworkEdits/
+      /decimal comma|overhang|formula formatting|container|heldBlockValues|row breaks|source size|anchorExclusions|artworkEdits|sourceAlignedBoxes/
     );
   });
 

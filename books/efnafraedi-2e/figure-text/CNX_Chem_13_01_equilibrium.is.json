@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_13_01_equilibrium",
  "renderHash": "caeeb12a021f5025",
  "composedHash": "caeeb12a021f5025",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Equilibrium|achieved": "Jafnvægi náð",

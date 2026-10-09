@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_21_04_ControlRod",
  "renderHash": "703c08f8bafa00ed",
  "composedHash": "703c08f8bafa00ed",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Control rods": "Stjórnstangir",

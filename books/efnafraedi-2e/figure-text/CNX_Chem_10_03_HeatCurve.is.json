@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_10_03_HeatCurve",
  "renderHash": "5f38b30d4a36a76d",
  "composedHash": "5f38b30d4a36a76d",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Amount of heat added": "Magn viðbætts hita",

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_19_02_BalEnt",
  "renderHash": "2f290c4bd1160c20",
  "composedHash": "2f290c4bd1160c20",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "NHNH": "NHNH"

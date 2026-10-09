@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_00_EE_WaterpKw_img",
  "renderHash": "271829a00d984a26",
  "composedHash": "271829a00d984a26",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Temperature (°C)": "Hiti (°C)",

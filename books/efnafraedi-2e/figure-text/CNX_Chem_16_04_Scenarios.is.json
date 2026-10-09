@@ -1,22 +1,22 @@
 {
  "version": 1,
  "basename": "CNX_Chem_16_04_Scenarios",
- "renderHash": "1236272a9d928b5c",
- "composedHash": "1236272a9d928b5c",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "65d35b48f35fd9eb",
+ "composedHash": "65d35b48f35fd9eb",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
   "(increase in entropy)": "(aukning á óreiðu)",
   "(decrease in entropy)": "(minnkun á óreiðu)",
   "ΔH > 0|(endothermic)": "ΔH > 0 (innvermið)",
-  "Summary of the Four Scenarios for Enthalpy and Entropy Changes": "Samantekt á fjórum sviðsmyndum fyrir breytingar á entalpíu og óreiðu",
+  "Summary of the Four Scenarios for Enthalpy and Entropy Changes": "Samantekt á fjórum sviðsmyndum fyrir vermis- og óreiðubreytingar",
   "ΔH < 0|(exothermic)": "ΔH < 0 (útvermið)",
-  "ΔG < 0 at high temperature|ΔG > 0 at low temperature|Process is spontaneous|at high temperature": "ΔG < 0 við hátt hitastig ΔG > 0 við lágt hitastig Ferlið er sjálfsprottið við hátt hitastig",
+  "ΔG < 0 at high temperature|ΔG > 0 at low temperature|Process is spontaneous|at high temperature": "ΔG < 0 við hátt hitastig ΔG > 0 við lágt hitastig Ferlið er sjálfgengt við hátt hitastig",
   "ΔG < 0 at any temperature": "ΔG < 0 við öll hitastig",
-  "Process is spontaneous|at any temperature": "Ferlið er sjálfsprottið við öll hitastig",
+  "Process is spontaneous|at any temperature": "Ferlið er sjálfgengt við öll hitastig",
   "ΔG > 0 at any temperature": "ΔG > 0 við öll hitastig",
-  "Process is nonspontaneous|at any temperature": "Ferlið er ekki sjálfsprottið við öll hitastig",
-  "ΔG < 0 at low temperature|ΔG > 0 at high temperature|Process is spontaneous|at low temperature": "ΔG < 0 við lágt hitastig ΔG > 0 við hátt hitastig Ferlið er sjálfsprottið við lágt hitastig"
+  "Process is nonspontaneous|at any temperature": "Ferlið er ekki sjálfgengt, sama hvert hitastigið er",
+  "ΔG < 0 at low temperature|ΔG > 0 at high temperature|Process is spontaneous|at low temperature": "ΔG < 0 við lágt hitastig ΔG > 0 við hátt hitastig Ferlið er sjálfgengt við lágt hitastig"
  },
  "mtAlternatives": {
   "Summary of the Four Scenarios for Enthalpy and Entropy Changes": {

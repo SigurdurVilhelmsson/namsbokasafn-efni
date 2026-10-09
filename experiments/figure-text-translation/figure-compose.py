@@ -10,7 +10,8 @@ Reads the directory `figure-prepare.py` wrote (`runs.json`, `meta.json`, `blocks
     {"outputPath": "<dir>/translated.svg",
      "unformatted": [...], "overflow": [...],
      "localized": [...], "containerErrors": [...], "held": [...],
-     "relaid": [...], "belowSource": [...], "anchorExcluded": [...]}  exit 0
+     "relaid": [...], "belowSource": [...], "anchorExcluded": [...],
+     "sourceAligned": [...]}  exit 0
     {"error": "...", "keys": ["<block key>", ...]}  exit 1
 
 Exit 2 is a usage error. The lists are the composer's NOTES, copied from
@@ -98,6 +99,19 @@ never a refusal.
 ⚠️ The table sits outside `renderHash`/`composedVersion`, like heldBlockValues: a change reaches a sidecar
 figure's media only at the next COMPOSER_VERSION bump.
 
+sourceAlignedBoxes (§C140 '6', ruling R-5c2)
+-------------------------------------------
+figure-text.config.json `sourceAlignedBoxes`, `{basename: reason}`, lays out EVERY schematic box of that
+figure with the source's alignment (sourceboxes.py owns the format; figcontainers' SOURCE BOXES the effect).
+The pre-flight (`load_source_boxes`) parses only this figure's entry, from the same parsed config, before
+anything is spawned or written; whether the figure HAS a box is known only once compose has classified its
+labels, so that check is verify's. The entry reaches compose.py in `<out>/source-boxes.json`, written on
+EVERY run - a null reason included - after the stale outputs are removed, and `--source-boxes` is always
+passed. `verify` then requires compose-report.json `sourceAligned` to be a non-empty list of `{key, block}`
+whose keys blocks.json carries when the figure is configured - an entry that reaches NO box is refused, never
+left inert (the artworkEdits `select-none` stance) - and to name nothing when it is not. It is then copied into
+compose.json as one of COMPOSE_NOTES. The same COMPOSER_VERSION route as the two tables above.
+
 🔴 ASSERTION 3 REPORTS WHAT THE FILE SHOWS, NEVER WHAT IT GUESSES WAS BOUGHT. It used to
 say a key on the left "was BOUGHT and came back with no usable translation", and that is
 false on the case that actually happens: on the driver's recompose path `--translations`
@@ -135,6 +149,7 @@ import sys
 from pathlib import Path
 
 import anchorexclusions     # §C140 '6' R-20; stdlib only, no _deps (its docstring)
+import sourceboxes          # §C140 '6' R-5c2; stdlib only, no _deps (its docstring)
 import figconfig            # §C140 '6' G7: the ONE parse of the policy config; stdlib only, no _deps
 import heldvalues           # §C140 ㊾ D5(a); stdlib only, no _deps (its docstring; test_heldvalues HV7)
 
@@ -172,13 +187,15 @@ REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artw
 #                    {key, block, sizePt, sourcePt} (§C140 '6', G8)
 #   anchorExcluded   labels laid out without M1's cuts by anchorExclusions (R-20) - {key, block, changed};
 #                    verify checks it against blocks.json before it is copied, like `held` (§C140 '6', G8)
+#   sourceAligned    labels laid out in a box with the source's alignment by sourceAlignedBoxes (R-5c2) -
+#                    {key, block}; verify checks it against the entry and blocks.json before it is copied
 # 🔴 NONE OF THEM IS A VERDICT, SO NONE IS CHECKED HERE. A figure with a note is drawn and every
 # label is in it; `verify` stays the only thing that refuses. `held` is no exception: verify checks
 # it against blocks.json (assertion 2) before it is copied, and `heldErrors` - which IS a verdict -
 # is never a note. A report written by an older composer lacks the lists, and that reads as EMPTY
 # lists - never a refusal, while nothing is configured for the figure (see verify).
 COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'held', 'relaid', 'belowSource',
-                 'anchorExcluded')
+                 'anchorExcluded', 'sourceAligned')
 
 # Written by this run, and only by this run. Removed before the child starts so their
 # presence afterwards MEANS "this run produced them" rather than "a file with this name is
@@ -186,9 +203,10 @@ COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors', 'hel
 # `held-values.json` (§C140 ㊾ D5(a)) is the hand-off compose.py reads: written AFTER this removal,
 # on every run, so it always holds this run's config. The removal comes BEFORE the heldBlockValues
 # pre-flight too, so a refusal leaves none of a previous run's files behind (see compose()).
-# `anchor-exclusions.json` (§C140 '6' R-20) is the same kind of hand-off, written the same way.
+# `anchor-exclusions.json` (§C140 '6' R-20) and `source-boxes.json` (R-5c2) are the same kind of hand-off,
+# written the same way.
 DERIVED_OUTPUTS = ('compose.json', 'compose-report.json', 'translated.svg', 'held-values.json',
-                   'anchor-exclusions.json')
+                   'anchor-exclusions.json', 'source-boxes.json')
 
 COMPOSE_TIMEOUT_S = 900         # an unattended driver must not wedge on one figure
 
@@ -373,7 +391,17 @@ def load_anchor_exclusions(blocks, config_path, basename, config):
     return excl
 
 
-def run_compose(out_dir, translations, held_path, anchor_path=None):
+def load_source_boxes(config_path, basename, config):
+    """§C140 '6' R-5c2: the sourceAlignedBoxes pre-flight. -> this figure's reason, or None when it has no
+    entry. Raises ComposeError. Runs BEFORE anything is spawned or written. Only THIS figure's entry is
+    parsed (sourceboxes.for_figure); whether the entry reaches a box is verify's to check."""
+    try:
+        return sourceboxes.for_figure(sourceboxes.load_table(config), basename)
+    except sourceboxes.SourceBoxesError as exc:
+        raise ComposeError(f'{config_path}: {exc}') from exc
+
+
+def run_compose(out_dir, translations, held_path, anchor_path=None, source_path=None):
     """Spawn compose.py with this figure's own FIGTEXT_OUT. -> the CompletedProcess.
 
     `cwd=HERE` and absolute paths for the same reason figure-prepare.py uses them: the
@@ -386,6 +414,8 @@ def run_compose(out_dir, translations, held_path, anchor_path=None):
     `--anchor-exclusions` (§C140 '6' R-20) is passed whenever `anchor_path` is given, and compose()
     always gives it - `{}` included, which draws byte for byte as with no flag (test_compose_anchors
     A4). The parameter is optional only so a unit caller (test_figure_compose F11) keeps its shape.
+    `--source-boxes` (§C140 '6' R-5c2) is passed whenever `source_path` is given, and compose() always gives
+    it - a null reason included, which draws byte for byte as with no flag (test_sourceboxes E2).
 
     The child's stdout and stderr are passed through rather than swallowed: the block
     report and the ENGLISH KEPT warning are what a human reads, and a driver log that
@@ -396,6 +426,8 @@ def run_compose(out_dir, translations, held_path, anchor_path=None):
             '--translations', str(translations), '--held-values', str(held_path)]
     if anchor_path is not None:
         argv += ['--anchor-exclusions', str(anchor_path)]
+    if source_path is not None:
+        argv += ['--source-boxes', str(source_path)]
     result = subprocess.run(
         argv + ['--svg'],
         capture_output=True, text=True, env=env, cwd=str(HERE),
@@ -439,9 +471,9 @@ def read_report(out_dir, child):
     return report
 
 
-def verify(report, blocks, translations, held=None, anchor=None):
-    """The three assertions (blocks; the held contract; money), plus explicit breaks (1a, R-5a) and the
-    anchorExclusions contract.
+def verify(report, blocks, translations, held=None, anchor=None, source_boxes=None):
+    """The three assertions (blocks; the held contract; money), plus explicit breaks (1a, R-5a), the
+    anchorExclusions contract and the sourceAlignedBoxes contract.
     Raises ComposeError naming the offending keys.
 
     `translations` is REQUIRED - a default would silently pick one of the two wordings
@@ -452,7 +484,10 @@ def verify(report, blocks, translations, held=None, anchor=None):
     value.
 
     `anchor` is this figure's anchorExclusions entry, {blockKey: reason} (§C140 '6' R-20). Default {}:
-    a report that names an excluded block while nothing is configured is refused the same way."""
+    a report that names an excluded block while nothing is configured is refused the same way.
+
+    `source_boxes` is this figure's sourceAlignedBoxes reason, or None (§C140 '6' R-5c2). Default None:
+    a report that names a source-aligned box while nothing is configured is refused."""
     held = {} if held is None else held
     anchor = {} if anchor is None else anchor
     drawn = collections.Counter(report['blocks'])
@@ -530,6 +565,33 @@ def verify(report, blocks, translations, held=None, anchor=None):
                 f'ignored --anchor-exclusions, dropped a twin, or excluded a key nobody configured. multiset '
                 f'delta {sorted(delta.items())}',
                 keys=sorted(delta))
+
+    # THE sourceAlignedBoxes CONTRACT (§C140 '6' R-5c2). Configured, the report must name at least one box -
+    # an entry that reaches none is refused, never left inert - and only keys blocks.json carries; not
+    # configured, it must name none (an absent key is a pre-table report, read as none).
+    sa = report.get('sourceAligned', None if source_boxes else [])
+    if not isinstance(sa, list) or not all(
+            isinstance(e, dict) and isinstance(e.get('key'), str) and isinstance(e.get('block'), int)
+            and not isinstance(e.get('block'), bool) for e in sa):     # isinstance(True, int) is True
+        raise ComposeError(
+            'compose-report.json has no `sourceAligned` list of {key, block} entries, while sourceAlignedBoxes '
+            'is configured for this figure or the report names source-aligned boxes - compose.py and this '
+            'wrapper have drifted')
+    if source_boxes and not sa:
+        raise ComposeError(
+            'sourceAlignedBoxes is configured for this figure but compose.py laid out NO label in a box - the '
+            'entry would never act (the figure has no schematic box; or every boxed label is kept - send:false '
+            'with no held value, an identity reply, missing, or an arc - so none is laid out; or compose '
+            'ignored --source-boxes)')
+    if not source_boxes and sa:
+        raise ComposeError(
+            f'compose.py laid out {len(sa)} label(s) in a source-aligned box while sourceAlignedBoxes is not '
+            f'configured for this figure', keys=sorted({e['key'] for e in sa}))
+    unknown = sorted({e['key'] for e in sa} - set(declared))
+    if unknown:
+        raise ComposeError(
+            f'compose-report.json names source-aligned label(s) blocks.json does not carry: {unknown}',
+            keys=unknown)
 
     # 3. MONEY. A held label is subtracted from the send:false keys expected in `missing` - but only
     # once a held label drawn over a send:true block has been refused, in its own words.
@@ -612,7 +674,7 @@ def compose(out_dir, translations, config_path=heldvalues.CONFIG_PATH):
 
     blocks.json is read ONCE, right after validate_inputs: the pre-flights need it before the spawn,
     and verify checks the report against the same list after it. The policy config is parsed ONCE too
-    (load_config), and both per-figure tables are read from that one object."""
+    (load_config), and all three per-figure tables are read from that one object."""
     tr = validate_inputs(out_dir, translations)
     blocks = json.loads((out_dir / 'blocks.json').read_text(encoding='utf-8'))
     # The stale outputs go BEFORE the heldBlockValues pre-flight (a skeptic's finding, 2026-10-03):
@@ -626,14 +688,17 @@ def compose(out_dir, translations, config_path=heldvalues.CONFIG_PATH):
     config = load_config(config_path)
     held = load_held(blocks, tr, config_path, basename, config)
     anchor = load_anchor_exclusions(blocks, config_path, basename, config)
+    source_boxes = load_source_boxes(config_path, basename, config)
     held_path = out_dir / 'held-values.json'
     heldvalues.write_file(held_path, basename, config_path, held)
     anchor_path = out_dir / 'anchor-exclusions.json'
     anchorexclusions.write_file(anchor_path, basename, config_path, anchor)
+    source_path = out_dir / 'source-boxes.json'
+    sourceboxes.write_file(source_path, basename, config_path, source_boxes)
 
-    child = run_compose(out_dir, translations, held_path, anchor_path)
+    child = run_compose(out_dir, translations, held_path, anchor_path, source_path)
     report = read_report(out_dir, child)
-    verify(report, blocks, tr, held, anchor)
+    verify(report, blocks, tr, held, anchor, source_boxes)
 
     svg = out_dir / 'translated.svg'
     if not svg.is_file() or svg.stat().st_size == 0:
@@ -654,7 +719,7 @@ def parse_args(argv):
     # §C140 ㊾ D5(a): TEST-ONLY. The driver never passes it, so composeFigure's argv - and the paid
     # and free harness pins on it - do not move, and every route reads the committed config.
     parser.add_argument('--config', default=None,
-                        help='the policy config whose heldBlockValues and anchorExclusions to read '
+                        help='the policy config whose heldBlockValues, anchorExclusions and sourceAlignedBoxes to read '
                              '(default: figure-text.config.json beside this file; for tests)')
     # argparse exits 2 on an unknown flag and on a valued flag with no value, which is the
     # required behaviour - `tools/lib/parseArgs.js` silently DROPS unknown flags, and a

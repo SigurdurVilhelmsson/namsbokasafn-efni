@@ -2,7 +2,390 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement)
+## ⏩ RESUME — state as of **2026-10-08 — 🛠 '6' PR-B IS BUILT THROUGH ITS REVIEW ROUNDS ON THE LOCAL BRANCH `feat/c140-v6-pr-b` (UNPUSHED): tables, bump, all of [USER]'s wording (3 rounds), rehearsed exact. ONE CODE STEP (2b) STANDS BETWEEN IT AND THE REAL PASS. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence)
+
+### ⏭ SINGLE NEXT ACTION — **Watch CI on [PR #546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546) (PR-B), then merge on [USER]'s word.** Pushed 2026-10-09 with [USER]'s go-ahead. ✅ Step 7 is done (`2bed4cf92`): byte-identical to the rehearsal, 711/711 media, 22/22 ok, MT 0. ⏹ Deploy, re-render and the chemistry SYNC stay HELD; the redirect rows are still to be recomputed before any sync. The LIVE-RUN HOLD lifts only when PR-B merges.
+
+- ✅ **2b** `84528128f`.
+- ✅ **2c** `7cfe99ff3` + `2ebb5819b`, [USER]'s route: `'`/`"` now start their own line.
+  - Inventory origins agree with pdfplumber on 11672/12604 lines before, 12777/12922 after. Nitrogen: 15/25 → 29/29. No non-quote figure changed.
+  - Capability review: nothing on well-formed input, and it re-derived the corpus numbers independently.
+  - MEDIUM, fixed: a malformed `'`/`"` that must be rewritten now refuses `malformed-operator`. Corpus exposure was 0: 318 `'`, all well-formed, and no `"`.
+  - LOW, logged:
+    - a pre-2c selector could in theory match another line, though it could never have been applied before 2c;
+    - `_verify` cannot see Tw/Tc, so AE-15f is their only guard.
+  - Mutation: 9/9 and 4/4 killed.
+  - Floors: Python 42/42, `npm test` green.
+- ✅ **Nitrogen** `382e2f78a`.
+  - Entry: `move-text dy 6.6`, MEASURED. The molecule's top is at y 352.50 and the source's own gap is 2.40 pt; 6.6 gives a gap of 2.44, with the arrow clear.
+  - The shipped config composes byte-identical to the measured arm.
+  - '6' `COMPOSER_TABLES_PIN` artworkEdits → `135dc01f4251b654`, amended on this branch's own unmerged bump.
+  - Evidence: `step2c/nitro/`.
+- ⏳ **Re-rehearsal `step7r3/`**: started 2026-10-08 ~21:50Z in `wt-prb`, detached at `382e2f78a`, about an hour.
+  - **PREDICTED** (`PREDICTIONS.json`, written before the run): against `step7r2/media-run1.sha`, exactly 8 `_IS.svg` change, the 7 round-3 figures and Nitrogen.
+  - Each of the 8 must be byte-equal to its scratch compose (`step1/res/r2c3/`, `step1/res/n2-shipped/`).
+  - Also: 22/22 ok, MT 0, and a second pass converges.
+- **Then:**
+  1. Step 7 in the main checkout. Set `.env` aside and run `--stale` per chapter. It must reproduce the step7r3 hashes byte for byte.
+  2. Push and open the PR.
+
+- **Done on the branch (newest first), all `npm test` green:**
+  - Round-3 wording, `52df55194`.
+  - Round-2 wording: `ea36477d6` (45 sidecars) and `215450bbc` (6, June's wording).
+  - Step 6 rehearsal + sweep, `d98542414`.
+  - Step 4 content, `a35206114`.
+  - Steps 3+5 tables + bump, `592227676`.
+  - Step 2a `sourceAlignedBoxes`, `63cc7a176`.
+- **[USER]'s review.** Page https://claude.ai/artifact/YafRzHzHoAF1iU4YMj6fP1:
+  - Round 1, collection `verdicts`: 126/126 answered.
+  - Round 2, collection `verdicts-r2`: 51/51 answered.
+  - ⚠️ Re-read both collections before acting: a round-1 answer changed once after export.
+  - Exports are off-repo, in `c140-v6/pr-b/review/user-verdicts*/`.
+- **After 2b, in order:**
+  1. Add Nitrogen's `move-text dy` entry. Measure `dy` against the molecule's top edge; ~+8 pt is the estimate.
+  2. Scratch-compose Nitrogen.
+  3. Re-rehearse all 22 units in `c140-v6/wt-prb`, after a `checkout -f` to the new HEAD. Predict first:
+     - `step7r2/media-run1.sha` changes only for Nitrogen + the 7 round-3 figures;
+     - those must equal their scratch composes.
+  4. **Step 7, the real pass in the main checkout:** `.env` aside, `--stale` per chapter. It must reproduce the new rehearsal hashes byte for byte.
+  5. Push and open the PR. A round-3 review page is optional: [USER] has seen all but 8 figures.
+- **'7' work is logged, not in PR-B:** the list sits under step 8 in the 2026-10-07 block. It covers alignment ×~12, kerning ×6, Carbon's bracket and 8 source-mismatch checks.
+- 🔎 **Terminology signal for the chapter TEXT, not acted on:**
+  - *anóða/katóða* replacing *forskaut/bakskaut*;
+  - *nitur* replacing *köfnunarefni*;
+  - *Blöndun*, *ótengd pör*, *sjálfgengt*, *vermis-*.
+
+  Check `server/lib/houseStyleTerms.js` and the glossary before any text-side change.
+
+## ⏩ RESUME — state as of **2026-10-07 — ✅ '6' PR-A IS MERGED: [PR #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544), `91c85c33f`, all four checks green. ✅ §C199 (a CRITICAL `proxy-addr` advisory) is merged ([PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), `ef97fb704`) and deployed 07:04Z, verified read-only on prod. PR-A itself is NOT deployed. ⏹ LIVE-RUN HOLD in force. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-06 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 2026-10-06 answers, the build, the review and the PR-B inputs) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 2026-10-08 block above (PR-B is through its review rounds; step 2b is next); its step list stays the procedure.**
+
+### ⏭ SINGLE NEXT ACTION — **[CODE]: PR-B, on the local branch `feat/c140-v6-pr-b`.** This note is that branch's first commit. Following the docs-batching rule it is unpushed, and it lands with PR-B. Work the steps in order; the "how" for each lives in the frozen spec (`2026-10-05-c140-composer-formatting-class-design.md`) §5 and §7, and the "why" in `docs/decisions/2026-10-06-figure-labels-below-floor-shrink-to-0-8.md` for R-16.
+
+- ⏹ **LIVE-RUN HOLD — no chemistry `figure-run` of any kind until PR-B merges.** `main` composes
+  '6' pixels while `COMPOSER_VERSION` still says '5', so any recompose now would be mis-stamped.
+  Textless figures are recomposed on EVERY run, including `--stale`. PR-B's own pass is the only
+  exception, and it runs on PR-B's branch AFTER the bump.
+- **Deploying PR-A is optional and harmless** while R-22 keeps prod figure review closed. Nothing on
+  prod runs the figure tools. A deploy would bring the editor's line-break textarea online early.
+  The demotion count is checked at the deploy that carries the BUMP (step 9).
+- **PR-B, in order (0 ISK throughout):**
+  1. **Inputs [USER] still owes:** wordings for HazDiamond's special-hazard list, aldket and
+     Example2. R-5b ruled "a wording edit", and none has been proposed. Propose and measure them
+     (composed, one change at a time), then put them on a review page.
+     **✅ 2026-10-07: measured and on the review page, AWAITING [USER]'s rulings R-5c/R-5d/R-5e**
+     (cards added to https://claude.ai/artifact/T2VLFfbLLFGQPq1fUT68u4, `verdicts` db). Proposals:
+     HazDiamond *Oxunarefni Sýrur Basar Ætandi Ekki vatn Geislavirkt* (both edits needed, each
+     alone measured to fail); aldket *CH3CHO Dæmi um aldehýð etanal (asetaldehýð)* (alt: *Aldehýð
+     etanal*), plus *Keton* → *Ketón*; Example2 *Margfalda með massahlutfalli (g HCl/g lausn)*.
+     ⚠️ **U+00A0 between words binds nothing on the free-cut path** (identical to the control), so
+     it is no break device here; that says nothing about step 2's held values, which are never
+     wrapped. Arms, control (byte-identical to T12 `prA2`) and lines: off-repo
+     `c140-v6/pr-b/step1/MEASUREMENTS.md`. Only step 4's R-5b line waits on these rulings.
+     **[USER] 2026-10-07: R-5d = a5, R-5e = e2 (RULED, into step 4). R-5c = "other", REOPENED** with
+     four notes: widen the box, left-align both columns as the source, and four word fixes
+     (*Heilsufars-* / *hætta*, *3 Mjög mikil hætta*, *2 Ofsafengin efnabreyting*, *Notið ekki vatn*).
+     Measured (round 2 in the same file): the word fixes compose clean. Keeping *Notið ekki vatn*
+     **needs the R-5a `\n` route** (row pairing is not width-bound). Left alignment needs **NEW
+     per-figure code** (prototyped only, in the uncommitted worktree `c140-v6/pr-b/wt-proto`) plus
+     `artworkEdits` (list box +6 pt; optional Reactivity box +27 pt → 9 pt). *Heilsufars-* stays
+     8.5 pt (its fill+stroke rect is not selectable). **✅ [USER] 2026-10-07: R-5c2 = (b+), R-5c3 =
+     singular.** Record: `docs/decisions/2026-10-07-hazdiamond-keeps-source-box-alignment.md`.
+     That adds step 2a (code) below. (`wt-proto` removed 2026-10-07.)
+  2. **Value sheet first** (`docs/handoffs/2026-10-03-step2-value-sheet.md`): enter the two
+     FoodLabel bullet rows, *• 5% eða minna* and *• 20% eða*, choosing and measuring U+00A0
+     against U+0020 (spec §7.2). **✅ 2026-10-07 (`7ae43724d`): section E, U+0020** — the two
+     characters compose byte-identically under '6' and the validator accepts both.
+  2a. **[CODE] A per-figure "source-aligned boxes" table (R-5c2 = b+), its own reviewed unit.**
+     Shape: `{basename: reason}`, the basename checked as `artworkEdits` checks it (reuse the
+     validator), the reason rule of the policy tables. Hand-off like `anchorExclusions`
+     (stdlib module → `<out>/*.json` → `compose.py` → `container_for`): every `box` block of that
+     figure becomes a source-aligned cell, each named in a new compose-report key; an entry that
+     reaches 0 boxes refuses the figure. Add it to `COMPOSER_PIXEL_TABLES`; check the '5'
+     fingerprint does not move. **Acceptance, red first:** with the entry + step 3's HazDiamond
+     `artworkEdits`, composing the step-4 HazDiamond sidecar is byte-identical to the prototype's
+     `step1/res/q-wide6r27/…/translated.svg`; with the table absent, byte-identical to `ctl`.
+     Then review + mutation, then a corpus control: the delta against T12 `prA2` is HazDiamond
+     only. **✅ 2026-10-07, `63cc7a176` + `7ae43724d`:** acceptance cmp ON == prototype, OFF ==
+     ctl (re-run after the review fixes); 451/451 sidecar figures byte-identical to `prA2` with
+     the table empty; review (1 HIGH: `test_figure_compose.py`'s stub — T12-only, outside the
+     suite runner; 6 LOW) fixed red-first; mutation 26/26 meaningful killed, 1 equivalent
+     (the dead guard, removed); 42/42 Python suites + `test_figure_compose.py`; `npm test`
+     green. Evidence: off-repo `c140-v6/pr-b/` (`mutation/`, `step1/res/corpus-ctl`, logs).
+  3. **Fill the tables in `figure-text.config.json`:**
+     - `heldBlockValues`: the bullets.
+     - `artworkEdits` for FoodLabel: move the left bands AND the circle column 15 pt left; widen
+       the purple band 10 pt right; lengthen the green arrow with `move-line-end` so it starts
+       next to *Byrjaðu*. Measure the dx; ≈ −6 is the review's estimate, not a measurement. Get the
+       selectors from `artworkedits.py --inventory`.
+     - `anchorExclusions` for PentIso: key `Small contact area,|weakest attraction`. A ready entry
+       is at `~/.cache/namsbokasafn-audit/c140-v6/accept-T4-M1/pentiso-config.json`.
+     - `artworkEdits` for HazDiamond (R-5c2): `move-edge` right, dx 6, on the special-hazard list
+       box (inventory path 15, stroke `K 0.57 0.37 0 0`, bbox 66.678 2.878 157.677 79.019) and dx
+       27 on the Reactivity box (path 13); the step-2a table entry. Configs as measured:
+       `step1/cfg/wide6r27.json`.
+     **✅ 2026-10-07, committed with step 5 (the '5' pin forbids filled tables without the bump).**
+     Every table equals its measured input. **The FoodLabel arrow dx is −6.5, MEASURED** (not the
+     estimated −6): the source's *Start*→tail ink gap is 2.249 pt (same Liberation Sans Bold metrics
+     on both sides), and −6.5 gives 2.247 (−6 gives 2.747). dx 0 reproduces verify.md's corrected
+     8.747, and the dx-0/dx−6.5 SVGs differ in the shaft alone. The shipped config (no `--config`)
+     prepares FoodLabel byte-identical to the measured arm. Corpus control: 448/451 byte-identical
+     to T12 `prA2`, and only the predicted three differ (HazDiamond, FoodLabel, PentIso). PentIso
+     differs from its published media only by the italic *n* that R-20 asked for. A JS control that
+     assumed an empty committed `artworkEdits` was restated as "absent ≡ `{}`" (mutant kills 4/4).
+     Evidence: off-repo `c140-v6/pr-b/step3/MEASUREMENTS.md`.
+  4. **Content edits** (value-only, shaped like `e52bde89a`, with a `.bak` first):
+     - FoodLabel: the 7 ruled values (spec §7.1); the R-15w margin wordings (*Byrjaðu hér*,
+       *Athugaðu hitaeiningar*, *Takmarkaðu þessi næringarefni*, *Fáðu nóg af þessum
+       næringarefnum*, *Neðanmálsgrein*); R-15c *Úr fitu 110*; R-10 *Transfita 3 g*.
+     - phscale: R-8d *súr, hlutlaus, basísk*, and *hreint vatn*↵*blóð* as an explicit break
+       (R-5a).
+     - SolTherm1 (R-18): *Varma‐ skipti*, *Varma‐ flutnings‐ vökvi* (U+2010 plus a space);
+       *Útblástursgufa* stays.
+     - HazDiamond (R-5c, R-5c2, R-5c3): the list as explicit lines *Oxunarefni*↵*Sýra*↵*Basi*↵
+       *Ætandi*↵*Notið ekki vatn*↵*Geislavirkt*; `Health` → *Heilsufars‐* (U+2010); *3 Mjög
+       mikil hætta*; *2 Ofsafengin efnabreyting* (sidecar as measured: `step1/sidecars/
+       x6-all-singular/` — but with U+2010, not its ASCII hyphen).
+     - aldket (R-5d = a5): *CH3CHO Dæmi um aldehýð etanal (asetaldehýð)*; *Ketón bútanon*.
+     - Example2 (R-5e = e2): *Margfalda með massahlutfalli (g HCl/g lausn)*.
+     - Recompute `renderHash` under the tree's version with `composerVersion` matching (spec §5).
+     **✅ 2026-10-07:** 21 values in 6 sidecars, through the repo's `writeSidecar` and
+     `computeRenderHash` (under '6', `composerVersion` '6'). Stamps and MT fields are carried and no
+     `state` is written. Backups and the edit script: off-repo `c140-v6/pr-b/step4/`. R-15w and R-10
+     were already the committed values. Composed under '6' with the shipped config, all six reports
+     are clean:
+     - aldket and Example2 are byte-identical to step 1's `a5`/`e2` arms.
+     - HazDiamond's text layer equals the `q-wide6r27` prototype except the intended U+2010.
+     - FoodLabel's bullets sit at source x 385.611, and its arrow gap is 2.247 pt.
+     - phscale and SolTherm1 break as ruled.
+
+     `npm test` is green. Nothing is recomposed into `media/`: that is the pass (step 7).
+  5. **The bump:** `COMPOSER_VERSION` '5' → '6', plus a docstring entry with the '2'–'5' entries
+     naming M1–M7, R-16, artworkEdits, the `\n` route, R-20 and step 2a's table (R-5c2). Also `COMPOSER_TABLES_PIN`'s '6'
+     entry. Then the LICENSE font sentence, using [USER]'s 2026-10-06 wording verbatim.
+     **✅ 2026-10-07, one commit with step 3:** the bump, the docstring entry, the '6' pin (every new
+     entry is in scope) and the LICENSE wording. `npm test` is green and eslint is clean. The Python
+     suites: `c140-v6/suite-runs/prb-3-5`. ⚠️ **Step 4's `renderHash` recompute therefore hashes under
+     '6', with `composerVersion` '6'.** `computeRenderHash` does not see `artworkEdits`, so FoodLabel
+     goes stale through the bump and its step-4 value edits, not through the edit itself.
+  6. **Preconditions:**
+     - compose the 248 textless figures, base against '6'; exactly 5 should change (step 2a's
+       table does not reach them: re-check, do not assume);
+     - `test_figrings.py`;
+     - the three-engine `browser-sweep.mjs` over every changed figure, with per-face
+       `@font-face` first.
+     **✅ 2026-10-07, all three done. The pass was REHEARSED with the real driver** in a scratch
+     worktree (`c140-v6/wt-prb`, detached at `a35206114`, no `.env`). Every prediction was written
+     before the first compose and held exactly:
+     - 22/22 units `VERDICT ok`, and MT 0 in every log.
+     - 248 textless figures recomposed (counted from the driver's logs). Exactly the 5 STIX ones
+       change.
+     - 126 media files change (121 sidecar + 5 textless): 0 unpredicted, 0 missing.
+     - All 451 sidecar figures are byte-equal to their predicted source.
+     - 445 sidecars change only `composedVersion`; the step-4 six also change `composedHash`.
+       None carries `state`.
+     - A second full run converges: 451 `skipped-current`, and all 711 `_IS.svg` are
+       byte-identical across the two runs.
+
+     `test_figrings.py` and `test_figsym.py` print ALL PASS.
+
+     The sweep covers the 126 changed figures in Chromium 153, Firefox 155 and WebKit 26.6 (all
+     rendered):
+     - `notext`: 0 flagged in either engine pair.
+     - `nofont`: 126/126 differ in every engine.
+     - Per-face check: 66 figures embed a new STIX face. Stripping only those faces changes 66/66 in
+       every engine, and the determinism control changes 0/66.
+
+     Evidence: off-repo `c140-v6/pr-b/step7r/RESULTS.md` (+ `PREDICTIONS.json`, `media-run1.sha`,
+     which the real step-7 pass must reproduce). Logged, not fixed: phscale *basísk* stays
+     right-anchored at the source *basic*'s right end (406.617), as *basískt* was in '5'. This is
+     pre-existing; the source draws it left at 385.61. It goes on [USER]'s review page.
+  7. **The pass:** `node tools/figure-run.js --book efnafraedi-2e --chapter <N> --stale`, one
+     chapter at a time, with `.env` moved aside. Never `--force`; never the autorun script. Then
+     check convergence (spec §5).
+  8. **[USER]'s review page** of every changed figure, sidecar and textless (t23 R1/R11), before the
+     merge.
+     **📤 2026-10-07: PUBLISHED, AWAITING [USER] — https://claude.ai/artifact/YafRzHzHoAF1iU4YMj6fP1**
+     **What it shows.** 126 cards, ordered:
+     - the 7 ruled figures, with each ruling quoted;
+     - the 5 textless figures;
+     - R-16's 6 remaining figures;
+     - the other 108, by chapter.
+
+     Each card shows the new copy as the real `_IS.svg` from the rehearsal, beside the June copy
+     readers see today and the OpenStax source. Opening the page on an iPad is therefore the
+     ruling-4(b) iPad check. 8 figures have no June copy on vefur, and their cards say so. phscale's
+     card carries the *basísk* note as information only.
+
+     **Where the answers go.** Collection `verdicts`, one doc per basename: `{choice: fine |
+     fix-wording | keep-june | other, note, at}`. Nothing is pre-answered: 0 of 126 at hand-off. Read
+     the answers back with `ArtifactData list` (collection `verdicts`, `out_dir`).
+
+     ⏹ **R1/R11: the PR does not merge until [USER] has answered.**
+
+     ▶ **ORDERING, ON PURPOSE: step 8 runs on the REHEARSAL's media, and step 7 (the real pass in the
+     main checkout) follows the verdicts.** Rehearsal and pass are byte-identical by construction, and
+     a `fix-wording` answer is a step-4-style value edit, so doing it this way costs one pass, not two.
+     - Step 7's acceptance: reproduce `step7r/media-run1.sha` exactly, except figures edited after the
+       review. Predict those first from a scratch compose.
+     - Page source: off-repo `c140-v6/pr-b/review/` (`gen.py`, `page.tpl.html`, `site/`).
+     **✅ 2026-10-08: [USER] answered all 126 — fine 58 · fix-wording 47 · other 19 · keep-june 2.**
+     Export (verbatim, one JSON per figure + `summary.tsv`): off-repo
+     `c140-v6/pr-b/review/user-verdicts/`. The answers are five kinds of work, not one:
+     - **Explicit value edits** (≈35, step-4 shape). Examples: *Katóna → Katóða*, *Jafnvægisfasti →
+       Jafnvægisstyrkur*. [USER] writes a break as `/`, and a hyphenated break as `-/`.
+     - **"Use wording from June"** (7): eLeveldiag, CrystalSys, HallHerCell, molgeom, HybrdOrbit,
+       combmap, Millikan. Read June's values from git (the June sidecar), not from the SVG text.
+     - **Layout / alignment** (≈12): left-align *Fast efni/Vökvi/Gas* ×5; CylRebar; "center x-axis
+       labels" ×5 (Exercise4a/4b/5a/5b, Rxndiagramex); Exposure2 vertical alignment; arrow-label
+       alignment on emspectrum and IonRadSpec; Carbon's bracket; recycle "three lines, keep size".
+       This is composer or table work, not wording.
+     - **Kerning / formula** (4): KDataH2O2 L⁻¹; ICETable3 HCO₂⁻; ssigma `*`; spin fraction overlap.
+     - **"Doesn't match source"** (≈8): FillMo, Exercise02, Oshapes, ICETable5, ICETable3 red value,
+       OxStNonmts black bars, emspectrum *Ultrasound*, ssigma colours. Several are in June too. Before
+       calling any of them a defect, check the artwork edition the composer used against the page's
+       "source" panel (that panel is the CNXML raster).
+
+     🔎 **Terminology signal — logged, not applied to the text side:**
+     - *forskaut/bakskaut → anóða/katóða* (ch17, 5 figures);
+     - *köfnunarefni → nitur* (5 tables);
+     - *Blöndun*, *ótengd pör*, *sjálfgengt*, *vermis- og óreiðubreytingar*.
+
+     These are house-style questions for the chapter text too. Check `server/lib/houseStyleTerms.js`
+     and the glossary before any text-side change.
+
+     ✅ **[USER] 2026-10-08, answering the three ambiguities and the scope:**
+     - **Scope:** PR-B carries the wording only: the explicit value edits, "wording from June", and the
+       wording parts of mixed "other" answers. Layout/alignment, kerning and "doesn't match source" are
+       logged as '7' work.
+     - **Qnumbers:** keep the '6' picture with June's *Vaxandi orka* as the value.
+     - **HybrdOrbit:** the '6' picture with June's wording, except *Bléndun → Svigrúmablöndun*.
+     - **molgeom:** shape names take **Egeom's new terms**, so the two figures agree.
+
+     ▶ So **no keep-June move happens**: no keptCopies entry and no sidecar deletion.
+
+     ✅ **Wording round applied, 0 ISK.** Chunk 1 `ea36477d6`: 45 sidecars, 110 values, explicit
+     answers. Chunk 2 `215450bbc`: 6 sidecars, 52 values, June's wording read from the live June copies,
+     since no June sidecars exist. Every edited figure scratch-composes clean under '6', with no new
+     overflow against `prA2`, and the edits cleared 5 overflows. Coverage: 68 non-fine answers = 51
+     edited + 17 '7'. Six interpretations are flagged for [USER] (off-repo `r2/chunk1.json` `flags`):
+     - **Egeom:** a three-line request capped at the source's two lines. The explicit-break contract
+       refuses more lines than the source has.
+     - **Scenarios:** the title wording.
+     - **Electroplate:** the brackets around *(katóða)*.
+     - **DNA:** the capital S.
+     - **RadonExpos:** *radon-222* corrects OpenStax's own `radium-222`.
+
+     ✅ **Round-2 rehearsal (`step7r2/`, worktree at `8e2e00923`): exact.** The 51 edited figures
+     are byte-equal to their scratch composes. The other 660 `_IS.svg` equal pass 1. 57 sidecars
+     change `composedHash`. 22/22 units ok, MT 0. **Step 7's acceptance target is now
+     `step7r2/media-run1.sha`.**
+     **📤 Round-2 review published, AWAITING [USER]:** same URL, collection **`verdicts-r2`**, 0 of 51
+     at hand-off. Round-1 `verdicts` are untouched.
+     ⚠️ **Re-read the round-1 answers before acting on them; they can change after export.** Between
+     the two reads, [USER] updated Qnumbers from `keep-june` to `fix-wording` *"Aukin orka → Vaxandi
+     orka"*, which matches what was applied. The current export is `review/user-verdicts/`; the first
+     read is `user-verdicts-2026-10-08-first/`.
+
+     ✅ **Round 2 answered (`verdicts-r2`): fine 40 · fix-wording 8 · other 3.** The 3 "other" are
+     the periodic tables' left alignment, already '7'. Round-1 answers were re-read and are
+     unchanged. **Round 3 `52df55194`:** 7 sidecars, 8 values, scratch-composed clean.
+     ⚖️ **[USER] 2026-10-08, Nitrogen `Atmospheric|nitrogen (N2)`: keep the current form
+     *Nitur í andrúms‐ / lofti (N₂)*, and move the label UP a few points so the top line clears the
+     N₂ molecule — in PR-B.**
+     - Measured: both two-line alternatives also overlap the molecule (`r2/nitro/compare.png`).
+     - A three-line form is refused (`line-count`).
+     - **That makes a new step 2b:**
+  2b. **[CODE] `artworkEdits` `move-text` gains a vertical move (`dy`)**, its own reviewed unit, done
+     the way step 2a was: red-first tests, review, mutation check, a corpus control with the table
+     unchanged (byte-identical), and an `npm test` + Python-suite floor. Design notes:
+     - **Tm** is absolute: add `dy/d` to its `f`.
+     - **Td** is relative: compensate `ty` by the change of shift from the previous line, exactly as
+       `dx` does for `tx`.
+     - **⚠️ TD also SETS THE LEADING `TL`** (TL = −ty). Changing a TD's `ty` moves every later **T\***
+       line in that BT, including unselected ones. The existing `dx` code never met this, because TD's
+       `tx` does not touch TL.
+     - So, after a rewritten TD, re-assert the original leading (`TL` op) or rewrite the affected T\*
+       as `Td 0 −TL`.
+     - `_verify` must check `y` as well as `x`. It already fails closed on any unselected line that
+       moves.
+     - The validator (`tools/lib/figure-config-validate.js` `AE_OPS`) and the `_artworkEdits` README
+       name `dy`. `move-text` then needs `dx` or `dy`; decide whether both may appear, and test both
+       ways.
+
+     Then add a Nitrogen entry: `move-text` with `dy` on the `Atmospheric` and `nitrogen (N2)` lines.
+     Take the selectors from `artworkedits.py --inventory` on its staged PDF. Measure the `dy` (about
+     +8 pt is the estimate from the crop) against the molecule's top edge, with the source's own
+     label-to-artwork gap as the target. Then recompose, re-rehearse, and run step 7.
+     **✅ 2026-10-08, 2b DONE: `67a52cf70` + `3dd9f64be` + `84528128f`.**
+     - `move-text` takes `dx`, `dy` or both; both may sit in one op, because `select-overlap` stops a
+       line from being in two ops. A TD whose ty changes becomes `Td` + `<its leading> TL`. A dx-only
+       move adds no instruction.
+     - Red-first throughout. Mutation: 20/20 killed in round 1; 6/6 meaningful killed in round 2, plus
+       1 equivalent; JS 3/3. A new anisotropic fixture kills a d-for-a swap that every isotropic
+       fixture passed.
+     - Two reviews (capability + seam): no misplaced line in 12 synthetic cases, checked with two
+       instruments.
+       - MEDIUM, fixed: `_verify` could not see a lost re-assert when only a `'`, a `"` or a form's
+         text read it. It now compares the TL in force at every show/`Do`.
+       - LOW, fixed: non-finite numbers.
+       - LOW, logged for '7': an all-zero move validates and does nothing.
+       - LOW, carried to the Nitrogen commit: that entry re-pins `COMPOSER_TABLES_PIN` '6'.
+     - Control: FoodLabel and HazDiamond prepare identical to pre-2b. All 10 files match; only the
+       trailer's per-write `/ID` differs, as it does between two runs of one tree. A dy positive
+       control moves exactly the selected runs.
+     - Floors: `npm test` green, Python 42/42, figure-*.test.js 832/832.
+     - Evidence: off-repo `c140-v6/pr-b/step2b/`.
+
+     🔴 **THE NITROGEN PREMISE IS FALSE: `move-text` CANNOT REACH THAT LABEL. Measured 2026-10-08.**
+     - Its text is in BT #0, which contains `'` operators. "Atmospheric" + `'`"nitrogen (N" is ONE
+       inventory line. The module refuses any move in such a BT (`quote-operator`).
+     - That refusal is LOAD-BEARING: the inventory ignores each `'`'s implied T*. Every line after a
+       quote in that BT therefore has a WRONG origin. "Atmospheric" is at y 381.342 by the inventory
+       and 348.342 by pdfplumber. The gap is 33 = 3 × TL 11, one per earlier `'`.
+     - No composer-side per-block offset exists to use instead (grep of `figure-compose.py` and the
+       config keys).
+     - Census: 78 of 462 staged PDFs carry `'`/`"`, 77 of them with a sidecar. The inventory feeds only
+       `artworkEdits` and `--inventory`, never `runs.json`, so modelling quotes changes no composed
+       figure without an entry.
+     - **Route, awaiting [USER]:**
+       - **(2c)** Model `'`/`"` as positioning operators (T* semantics, each its own line, correct
+         origins). Rewrite a quote line that needs a move as `Td`+`Tj` (`"`: `Tw Tc Td Tj`). Drop the
+         blanket refusal.
+       - **Or** defer Nitrogen to '7'; `dy` then has no consumer in PR-B.
+     ⚖️ **[USER] 2026-10-08: route (2c).** Same procedure as 2a/2b. Red first: the inventory's origins
+     must equal pdfplumber's, and poppler's for `"`, which pdfminer does not step. Then review, mutation,
+     the FoodLabel/HazDiamond prepare control, and the floors.
+
+     🧭 **'7' — logged from [USER]'s 2026-10-08 answers, NOT in PR-B (composer / table / artwork work):**
+     - **Alignment:**
+       - left-align *Fast efni / Vökvi / Gas* in the 5 periodic tables (00_AA, 01_03, 02_05, 18_01,
+         19_01);
+       - CylRebar left-align;
+       - centre x-axis labels: 12_07 Exercise4a/4b/5a/5b and Rxndiagramex;
+       - Exposure2 x-axis vertical alignment;
+       - arrow labels "Vaxandi…" at top: emspectrum, IonRadSpec;
+       - recycle: *Jógúrtdósir…* on three lines at full size. The source has two lines, so wording
+         cannot do it.
+     - **Kerning / formula:** KDataH2O2 L⁻¹ (bold, minus position); ICETable3 HCO₂⁻ minus; ssigma `*`
+       vs σ; spin x/− and fraction overlap; Oshapes bottom labels (values already equal the source,
+       so the difference is drawing); GalvanCu *e⁻ flæði* missing space.
+     - **Graphics:** Carbon's bracket against its vertical lines.
+     - **"Doesn't match source" — check the artwork edition first:** FillMo; Exercise02 (labels;
+       June correct except a missing *ln*); ICETable5 bottom-row numbers; ICETable3 red *0,534*;
+       ssigma orbital colours; OxStNonmts black bars (textless, in June too); emspectrum
+       *Ultrasound* + image; HPerDcmp `sssss` placeholders.
+  9. **At the deploy that carries the bump:** a read-only prod check (figure approvals,
+     `figure_block_edit` rows, dirty sidecars). Tell [USER] the demotion count first.
+- **Reader delivery is unchanged:** the media reach readers only through re-render plus [USER]'s
+  sync, which stays HELD under the ⏹ SYNC PRECONDITIONs.
+- **Off-repo:** `~/.cache/namsbokasafn-audit/c140-v6/` holds the corpus harness
+  (`measure/run.py`, `check.py`, `T12-SUMMARY.md`), the suite runner (`run-py-suites.sh`), the
+  binding settlements (`briefs/CONTROLLER-DECISIONS.md`, G1–G21) and every review record. The
+  scratch branch `scratch/c140v6-impl` is kept as a local ref only.
+
+---
+
+## ⏩ RESUME — state as of **2026-10-06 — 🛠 '6' PR-A (THE CODE) IS BUILT, REVIEWED AND MEASURED on the LOCAL scratch branch `scratch/c140v6-impl` (tip `d856e73f3`, 30 commits over `103d520db`, never pushed). The corpus delta hit its prediction exactly. The plan text is not yet extracted, and there is no PR. ⏹ The chemistry sync is still HELD** (supersedes the 2026-10-05 block for its SINGLE NEXT ACTION; that block stays current for [USER]'s 34 rulings, the design and the R-15 measurement) — **⚠️ Its SINGLE NEXT ACTION is SUPERSEDED by the 2026-10-07 block above (#544 and #545 are merged); the rest stays current.**
 
 ### ⏭ SINGLE NEXT ACTION — **(✅ [PR #545](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/545), §C199, MERGED 2026-10-07 as `ef97fb704` and DEPLOYED 07:04Z, verified read-only) [USER]: review and merge [PR-A #544](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/544)** (opened 2026-10-06 from `content/c140-figure-review-wording`; re-run its Security Audit after #545). After the merge: the ⏹ LIVE-RUN HOLD below applies, and PR-B (the bump, the content run and the recompose) is next.
 

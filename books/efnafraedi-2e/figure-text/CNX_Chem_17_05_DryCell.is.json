@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_05_DryCell",
  "renderHash": "5de241c721f7b803",
  "composedHash": "5de241c721f7b803",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Carbon rod|(electrode)": "Kolefnisstafur (rafskaut)",

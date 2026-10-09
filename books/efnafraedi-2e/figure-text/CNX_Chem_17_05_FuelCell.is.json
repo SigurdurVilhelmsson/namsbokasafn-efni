@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_17_05_FuelCell",
  "renderHash": "98c908baabc9d52e",
  "composedHash": "98c908baabc9d52e",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Cathode": "Bakskaut",

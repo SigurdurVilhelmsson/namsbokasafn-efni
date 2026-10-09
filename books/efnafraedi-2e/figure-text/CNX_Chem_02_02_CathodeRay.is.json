@@ -1,16 +1,16 @@
 {
  "version": 1,
  "basename": "CNX_Chem_02_02_CathodeRay",
- "renderHash": "57fe5da38ef9c1e9",
- "composedHash": "57fe5da38ef9c1e9",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "7a92f7d6775bcb22",
+ "composedHash": "7a92f7d6775bcb22",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
-  "Cathode ray": "Katódageisli",
+  "Cathode ray": "Katóðugeisli",
   "Charged|plates": "Hlaðnar plötur",
   "Magnets": "Seglar",
   "High|voltage": "Háspenna",
-  "Cathode (–)": "Katóna (–)",
+  "Cathode (–)": "Katóða (–)",
   "Anode (+)": "Anóða (+)",
   "Battery": "Rafhlaða",
   "Scale on|outside|of glass": "Kvarði utan á glerinu"

@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_09_01_Atmosphere",
  "renderHash": "190a0be5880171ba",
  "composedHash": "190a0be5880171ba",
- "composedVersion": "5",
+ "composedVersion": "6",
  "composerVersion": "4",
  "blocks": {
   "Troposphere 0–12 km|(origin of most weather events)": "Veðrahvolf 0–12 km (uppruni flestra veðurfyrirbæra)",

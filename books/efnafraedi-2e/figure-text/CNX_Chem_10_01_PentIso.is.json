@@ -1,17 +1,17 @@
 {
  "version": 1,
  "basename": "CNX_Chem_10_01_PentIso",
- "renderHash": "909540925dd1f0cb",
- "composedHash": "909540925dd1f0cb",
- "composedVersion": "5",
- "composerVersion": "4",
+ "renderHash": "5dcc56bdf2fbd143",
+ "composedHash": "5dcc56bdf2fbd143",
+ "composedVersion": "6",
+ "composerVersion": "6",
  "blocks": {
   "Large contact area,|strong attraction": "Stór snertiflötur, sterkur aðdráttarkraftur",
-  "n-pentane|boiling point: 36 °C": "Suðumark n-pentans: 36 °C",
+  "n-pentane|boiling point: 36 °C": "n-pentan\nsuðumark: 36 °C",
   "Less surface area,|less attraction": "Minni snertiflötur, minni aðdráttarkraftur",
-  "isopentane|boiling point: 27 °C": "Suðumark ísópentans: 27 °C",
+  "isopentane|boiling point: 27 °C": "ísópentan\nsuðumark: 27 °C",
   "Small contact area,|weakest attraction": "Lítill snertiflötur, veikasti aðdráttarkrafturinn",
-  "neopentane|boiling point: 9.5 °C": "Suðumark neópentans: 9,5 °C"
+  "neopentane|boiling point: 9.5 °C": "neópentan\nsuðumark: 9,5 °C"
  },
  "mtAlternatives": {
   "Large contact area,|strong attraction": {
