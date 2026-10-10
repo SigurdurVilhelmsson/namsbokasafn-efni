@@ -16,6 +16,13 @@
 - **The gained terms** sit where the new MT had help: 15 rulings took effect, and 33 key-terms entries now agree with the text. **So "keep the July MT" is not free either.**
 - **Live check.** All 21 live key-terms pages carry the July entries: 269 July-only hits, 0 new-only. The control on the local new pages finds the new words in all 21 chapters.
 - **The July buy had the glossary ON by default.** `api-translate.js` at `7658de896` sent approved terms per chunk. That is consistent with both mechanisms, but it is **observed, not proven**.
+- **NOT covered, and still open from [USER]'s preview notes in the entry below:**
+  - the ch02 section title *Frumeindir…*;
+  - figure labels (fig 2.5, fig 1.16);
+  - the artefacts on 1.26 and in Dæmi 1.7;
+  - the "Markverðir stafir" labels.
+
+  This measurement reads key terms and running text only. The rounding prose shift *námunda → rúnna* is also outside its reach (verb forms). *anode/cathode → forskaut/bakskaut* IS on the page, as a ch17 term, so fig 1.16 resolves through the same ruling.
 - **Next, after [USER] rules:** read the answers with `ArtifactData list` (collections `verdicts`, `chapters`). Rulings become `houseStyleTerms.js` entries. The per-chapter route (ship, repair, keep July, re-buy) is [USER]'s. Push and PR `docs/terminology-consistency` when [USER] says.
 
 ### ⏭ 2026-10-10 — SUPERSEDES THE LINE BELOW FOR WHAT HAPPENS NEXT: **[CODE], new session: the WHOLE-BOOK terminology measurement, old (live, July) MT vs new (2026-09-20+) MT, before any sync.** ⏹ **The chemistry sync is HELD again** on [USER]'s preview finding (the 🔎 2026-10-10 entry under ②, below): the new MT is less consistent in the concept terms a chapter teaches. Method and instruments: the ch01 run in `~/.cache/namsbokasafn-audit/2026-10-10-ch01-term-compare/` (`adherence.py` scores against approved glossary rows and is blind where a row is wrong; `sidebyside.py` reads segments). Per chapter, the old vintage is `df4ec4b99^`-style (the commit before each chapter's re-MT) and the live pages confirm it. **[USER]: "consistent translation of terms being taught in each chapter is vital in a textbook."** The methodology must be documentable for publication (CLAUDE.md § Purpose).
