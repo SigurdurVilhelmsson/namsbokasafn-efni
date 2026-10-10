@@ -89,25 +89,89 @@ def en_pattern(h):
     return re.compile(r'(?<![\w-])' + r'[\s-]+'.join(words) + r'(?:s|es)?(?![\w-])', re.I)
 
 
-def stems(is_head):
-    """Content-word stems of an Icelandic headword. A stem is the word minus its
-    last two letters (min 4); a u-umlaut variant (first a→ö) is also accepted so
-    that stafur/stöfum both match. Inflection that changes the root otherwise
-    (ablaut, i-umlaut) is a documented blind spot."""
-    out = []
-    for w in re.findall(r'\w+', PAREN.sub('', plain(is_head)).lower()):
-        if len(w) <= 2:
+def stem_cut(w):
+    """How much of an Icelandic word must match. Case endings run to 3-4 letters
+    (-unum, -anna, -inni) and long words syncopate (magnbundinn -> magnbundnir), so a
+    long word keeps all but its last 3 letters; short words keep enough to stay specific."""
+    n = len(w)
+    if n <= 3:
+        return w
+    if n <= 5:
+        return w[:n - 1]          # hiti -> hit(a), kerfi -> kerf(is)
+    if n == 6:
+        return w[:4]              # lögmál -> lögm(áli)
+    return w[:n - 3]              # efnasamband -> efnasamb(önd)
+
+
+VOWELS = 'aeiouyáéíóúýöæ'
+# What may follow a word's root in an inflected form: vowels plus the consonants Icelandic
+# case/article endings use (-num, -ins, -anna, -inni, -um, -ar, -ið, -s, -r), and a final
+# -t/-tt for neuter adjectives. A compound continuation (hiti -> hitastig) needs other letters.
+ENDING = re.compile(r'^[' + VOWELS + r'nrsmðj]{0,8}t{0,2}$')
+
+
+def same_letter(a, b):
+    return a == b or {a, b} == {'a', 'ö'}
+
+
+NOM_ENDING = re.compile(r'(?:ur|ir|ar|i|a|u)$')
+
+
+def _prefix(token, p, s_):
+    return len(token) - p >= len(s_) and all(same_letter(a, b) for a, b in zip(token[p:], s_))
+
+
+def word_matches(token, w):
+    """Is `token` a use of the Icelandic word `w`?
+
+    1. INFLECTION: `token` (or, for w of 5+ letters, a suffix of it: the term as a compound's
+       HEAD, sinkkarbónat, staðalkerspennu) starts with w's stem (stem_cut), then the rest of
+       w's root may follow, then only ENDING letters. a<->ö is allowed at any position, since
+       u-umlaut moves the root vowel nearest the ending (efnablanda -> efnablöndu).
+    2. COMPOUND-INITIAL: for w of 6+ letters, `token` starts with w's root minus its case
+       ending (hitastigssvið, eðlismassaeiningu, miðjumálmatómsins).
+    Short words stay strict in both directions: hiti -> hitastig and efni -> frumefni are
+    different words for a reader, and no rule can tell them from compounds.
+
+    Corrected 2026-10-10: the first version took a raw prefix searched anywhere in the text,
+    and swapped only the FIRST a (efnablanda -> efnöblan), so the July text's 'einsleita
+    efnablöndu' read as not using its own key term. [USER] caught it on the review page."""
+    st = stem_cut(w)
+    tail = w[len(st):]
+    starts = range(0, len(token) - len(st) + 1) if len(w) >= 5 else [0]
+    for p in starts:
+        if not _prefix(token, p, st):
             continue
-        st = w[:max(4, len(w) - 2)] if len(w) > 5 else w[:4]
-        out.append({st, st.replace('a', 'ö', 1)})
-    return out
+        rest = token[p + len(st):]
+        k = 0
+        while k < len(rest) and k < len(tail) and same_letter(rest[k], tail[k]):
+            k += 1
+        if ENDING.match(rest[k:]):
+            return True
+    if len(w) >= 6:
+        root = NOM_ENDING.sub('', w)
+        return len(root) >= 5 and len(token) > len(root) and _prefix(token, 0, root)
+    return False
 
 
-def carries(is_text, stem_sets):
-    if not stem_sets:
+def stems(is_head):
+    """Content words of an Icelandic headword, each matched by word_matches. i-umlaut,
+    ablaut and suppletion (tönn/tennur, fótur/fætur) remain blind spots; the inflection
+    audit in the README counts the residue."""
+    return [w for w in re.findall(r'\w+', PAREN.sub('', plain(is_head)).lower()) if len(w) > 2]
+
+
+def word_forms(w):
+    """A neuter adjective in -lt/-nt/-rt is the -d root plus -t (samgilt <- samgild-), so the
+    other genders and cases (samgild, samgildu, samgildra) need the -d form."""
+    return [w, w[:-1] + 'd'] if re.search(r'[lnr]t$', w) else [w]
+
+
+def carries(is_text, words):
+    if not words:
         return False
-    low = plain(is_text).lower()
-    return all(any(s in low for s in alts) for alts in stem_sets)
+    toks = re.findall(r'\w+', plain(is_text).lower())
+    return all(any(word_matches(t, f) for t in toks for f in word_forms(w)) for w in words)
 
 
 def load_vintage(ref, book, ch, mod):
@@ -246,7 +310,41 @@ def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings, common_id
     return {'chapter': ch, 'modules': mods, 'quality': quality, 'newArms': arms, 'terms': rows}
 
 
+# Matcher self-test: (key-terms headword, Icelandic text, expected). The negatives are the
+# point — each is a different word that a looser matcher accepted or nearly accepted.
+SELFTEST = [
+    ('einsleit efnablanda', 'einsleita efnablöndu', True), ('einsleit efnablanda', 'einsleita blöndu', False),
+    ('massatala (A)', 'massatöluna', True), ('efnasamband', 'efnasamböndunum', True),
+    ('magnbundinn eiginleiki', 'magnbundnir eiginleikar', True), ('stafur', 'stöfum', True),
+    ('hitastig', 'hitastigið', True), ('hiti', 'hitastig', False), ('hiti', 'hitanum', True),
+    ('gas', 'gasið', True), ('gas', 'gastegund', False), ('sameind', 'sameiginlegt', False),
+    ('sameind', 'sameindanna', True), ('eiginleiki', 'eiginleikanna', True),
+    ('einsleit efnablanda', 'einsleitt efni', False), ('kerfi', 'kerfisins', True),
+    ('hittni', 'hittnin', True), ('markverðir stafir', 'markverða stafi', True),
+    ('frumeind', 'frumeindir', True), ('atóm', 'atómum', True), ('frumeind', 'frumefni', False),
+    ('varmaorka', 'varmaorku', True), ('lögmál', 'lögmálið', True), ('efni', 'efnum', True),
+    ('efni', 'efnafræði', False), ('hitastig', 'hitastigssvið', True), ('anjón', 'anjónarinnar', True),
+    ('þyngd', 'þyngdarinnar', True), ('eðlismassi', 'eðlismassaeiningu', True), ('efni', 'frumefni', False),
+    ('karbónat', 'sinkkarbónat', True), ('hýdroxíð', 'málmhýdroxíði', True), ('kerspenna', 'staðalkerspennu', True),
+    ('keðjuhvarf', 'kjarnakeðjuhvarfið', True), ('miðjumálmur', 'miðjumálmatómsins', True), ('jón', 'katjón', False),
+    ('samgilt tengi', 'samgildu tengin', True),
+    ('kelvin (K)', 'kelvinkvarða', True),
+]
+
+
+def selftest():
+    bad = [(k, t, e) for k, t, e in SELFTEST if carries(t, stems(k)) != e]
+    for k, t, e in bad:
+        print(f'FAIL {k!r} in {t!r}: expected {e}', file=sys.stderr)
+    print(f'selftest: {len(SELFTEST) - len(bad)}/{len(SELFTEST)} pass', file=sys.stderr)
+    return not bad
+
+
 def main():
+    if '--selftest' in sys.argv:
+        sys.exit(0 if selftest() else 1)
+    if not selftest():
+        sys.exit('matcher self-test failed; refusing to measure')
     ap = argparse.ArgumentParser()
     ap.add_argument('--book', required=True)
     ap.add_argument('--old-ref', required=True)

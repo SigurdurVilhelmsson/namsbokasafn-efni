@@ -8,12 +8,18 @@
 - **Where it lives.** The instrument, its method and its blind spots are in [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md), on branch `docs/terminology-consistency`, cut from `origin/main` `98a5fe2ff` and **unpushed**. The frozen results are in `results/2026-10-10/`. That branch also carries this register's two 2026-10-10 docs commits, cherry-picked off the held content branch.
 - **Taught terms** are each chapter's own OpenStax key-terms list (`glossary-term:<definitionId>` segments). `glossary-unified.json` is not the reference.
 - **Old vintage** = `9a69414d5`, the last commit before 2026-09-01. ch20 is the exception: its old vintage is the 2026-08-12 C56 pilot. **New vintage** = `98a5fe2ff`. Its measured inputs are byte-identical to the content branch's.
-- **Headline, on segment ids present in both vintages:** consistent taught terms **376 → 345 of 607**. That is **98 lost and 67 gained**. **Worse in 14 chapters**: ch01–05, ch07, ch09–15, ch17. **Better in 6**: ch06, ch08, ch16, ch19, ch20, ch21. ch18 is unchanged. The all-segments run (379 → 347 of 610) agrees chapter for chapter.
+- 🔴 **CORRECTED SAME DAY — the first published figures (376 → 345) came from a defective matcher, and [USER] caught it on the review page's first item.** The matcher swapped *a → ö* at the FIRST *a* only (*efnablanda → efnöblan*), so the July text's *einsleita efnablöndu* read as not using its own key term. The error was asymmetric against the July text: 983 near-misses there against 826 in the new. The matcher is now inflection-aware, with a 38-case self-test whose negatives include *einsleita blöndu* and *hiti/hitastig*. The residue is 795 against 745, mostly real differences. Method and blind spots are in the README.
+- **Headline, on segment ids present in both vintages:** consistent taught terms **401 → 365 of 607**. That is **104 lost and 68 gained**.
+  - **Worse in 10 chapters:** ch01, ch02, ch04, ch05, ch07, ch10, ch11, ch13, ch14, ch15.
+  - **Better in 7:** ch03, ch06, ch08, ch16, ch19, ch20, ch21.
+  - **Unchanged in 4:** ch09, ch12, ch17, ch18.
+  - The all-segments run (404 → 366 of 610) agrees chapter for chapter.
 - **The lost terms, by class:**
-  - 66 are **TEXT-DRIFT**: the running text moved, which is the expensive class;
-  - 17 are **KEYTERM-SPLIT**: only the key-terms headword moved, and the chapter text is fine (ch05 *temperature → hiti*, *calorimetry → hitamæling*);
-  - 2 are newly broken rulings. Four rulings are newly broken book-wide: *dimensional analysis*, *molecular compound*, *Lewis structure*, *trigonal planar*.
-- **The gained terms** sit where the new MT had help: 15 rulings took effect, and 33 key-terms entries now agree with the text. **So "keep the July MT" is not free either.**
+  - 69 are **TEXT-DRIFT**: the running text moved, which is the expensive class. [USER]'s example is ch01 *homogeneous mixture*: July 7/7, new 0/7, because the new MT writes *einsleita blöndu* and drops *efna-*;
+  - 19 are **KEYTERM-SPLIT**: only the key-terms headword moved, and the chapter text is fine (ch05 *temperature → hiti*, *calorimetry → hitamæling*);
+  - the rest are smaller classes.
+- **Rulings newly broken:** *dimensional analysis*, *molecular compound*, *Lewis structure*.
+- **The gained terms** sit where the new MT had help: 14 rulings took effect, and 33 key-terms entries now agree with the text. **So "keep the July MT" is not free either.**
 - **Live check.** All 21 live key-terms pages carry the July entries: 269 July-only hits, 0 new-only. The control on the local new pages finds the new words in all 21 chapters.
 - **The July buy had the glossary ON by default.** `api-translate.js` at `7658de896` sent approved terms per chunk. That is consistent with both mechanisms, but it is **observed, not proven**.
 - **NOT covered, and still open from [USER]'s preview notes in the entry below:**

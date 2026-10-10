@@ -24,7 +24,7 @@ commit**, by segment id.
 pages only; the body text was matched for ch01 1.4–1.6 in the preview session. `live_check.py`
 searched the live key-terms page of all 21 chapters for each entry that differs between vintages: **269 old-only hits, 0 new-only**. Its
 control, the same search over the locally rendered new pages, finds new-only hits in all 21
-chapters (3–32 each). → `results/2026-10-10/live-check.txt`.
+chapters (3–32 each). → `results/2026-10-10/live-check.txt`. The live check compares key-terms entry strings only, so the matcher correction below does not touch it.
 
 ## Method
 
@@ -38,7 +38,7 @@ chapters (3–32 each). → `results/2026-10-10/live-check.txt`.
    - **K_v**: the Icelandic headword the chapter's key-terms page gives *t*;
    - **prose**: the segments whose English contains *t*'s headword (word-bounded, plural-tolerant,
      parenthetical stripped), excluding the glossary entries themselves;
-   - **own**: the prose segments whose Icelandic carries K_v (stem match, below);
+   - **own**: the prose segments whose Icelandic carries K_v (inflection-aware match, below);
    - **other**: the prose segments carrying the *other* vintage's K (only when K changed);
    - **defSites**: the Icelandic at *t*'s bold in-text definition, paired positionally with the
      English term marker in the same segment;
@@ -71,12 +71,46 @@ the preview found (*námunda → rúnna*) is outside this instrument's reach, be
 It also surfaced precision's new bold definition, *réttvísi*, and the new section title
 *"Óvissa, nákvæmni og nákvæmni mælinga"* (accuracy and precision both *nákvæmni*).
 
+### The matcher, and its correction (2026-10-10)
+
+`carries()` decides whether an Icelandic segment uses a key-terms entry. Every content word of the
+entry must appear, as one of these:
+- an **inflected form**: the word's stem (all but its last 3 letters for long words), then the
+  rest of its root, then only letters Icelandic endings use (*efnablöndu*, *massatöluna*,
+  *anjónarinnar*);
+- for words of 5+ letters, the term as the **head of a compound** (*sinkkarbónat*,
+  *staðalkerspennu*);
+- for words of 6+ letters, the term as the **first part of a compound** (*hitastigssvið*,
+  *miðjumálmatómsins*).
+
+*a ↔ ö* is accepted at any position (u-umlaut), and *-lt/-nt/-rt* adjectives also match their
+*-d* forms (*samgilt/samgildu*). `measure.py --selftest` holds 38 cases. The negatives are the
+point: *einsleita blöndu*, *hiti/hitastig*, *efni/frumefni*, *sameind/sameiginlegt* and
+*frumeind/frumefni* must not match. A measure run refuses to start if any case fails.
+
+🔴 **The first published run used a cruder matcher, and [USER] caught it on the review page.**
+That matcher took a raw prefix, searched anywhere in the text, and applied its *a → ö* swap to the
+FIRST *a* only. So *efnablanda* became *efnöblan*, and the July text's *einsleita efnablöndu* was
+scored as not using its own key term. (The new MT's *einsleita blöndu*, which drops *efna-*, is a
+real miss.) `audit_inflection.py` measured the damage. It counts misses where every word of the
+entry has a token sharing its first 5 letters: **983 such near-misses in the July text against 826
+in the new**. The error was asymmetric and favoured the new MT. After the correction the counts
+are 795 against 745, and the examples are dominated by real differences (*jónaefnasamband* vs
+*jónaefni*, *Avogadrosartala* vs *Avogadros tala*). The first run's figures are superseded by the
+ones below.
+
 ### Blind spots (state these alongside any number)
 
-- **Stem matcher.** A stem is a word minus its last two letters, minimum four. A u-umlaut variant
-  (first *a → ö*) is also accepted, so *stafur/stöfum* match. Other root-changing inflection
-  (ablaut, i-umlaut) is missed and reads as inconsistency. Short headwords can over-match: *blanda*
-  is inside *efnablanda*.
+- **Short words in compounds.** A word of 3–4 letters must stand alone, inflected. Otherwise
+  *efni* would match *frumefni* and *hiti* would match *hitastig*. The cost is that real uses are
+  missed: *eter* in *díetýleter*, *hol* in *fjórfletningshol*, *vok* in *vokmyndir*,
+  *lengd* in *lengdareiningar*. Three ruling rows (`RULING-BROKEN-BOTH` for *ether*, *hole*,
+  *resonance*) are partly this artefact.
+- **The converse over-match.** A word of 5+ letters matches as a compound head even when the
+  compound is a different concept: *massi* inside *eðlismassi*.
+- **Root changes other than u-umlaut** are missed: i-umlaut, ablaut, suppletion
+  (*tönn/tennur*, *fótur/fætur*). Split spellings are missed too (*nettó jónajafna* vs
+  *nettójónajafna*).
 - **English matching.** The headword pattern sees everyday senses too: *gas* in "gas mileage"
   (*bensín*). Inflected verb forms of a noun headword are not matched: "rounded" does not count
   for *rounding*.
@@ -96,6 +130,7 @@ Files in `results/2026-10-10/`:
 - `classified-all.json`: every segment;
 - `classify-*.txt`: per-chapter class counts;
 - `decomposition-common.txt`: lost and gained terms by class;
+- `audit-inflection.txt`: the matcher's residual near-misses, with examples;
 - `live-check.txt`: the live check and its control.
 
 **Why the headline uses common ids.** The new vintage carries segment classes the July MT never
@@ -105,24 +140,26 @@ beside it. They agree:
 
 | population | consistent taught terms, old → new |
 |---|---|
-| common ids (headline) | **376 → 345 of 607** |
-| all segments | 379 → 347 of 610 |
+| common ids (headline) | **401 → 365 of 607** |
+| all segments | 404 → 366 of 610 |
 
-Every chapter moves the same way in both populations. **14 chapters are worse**: ch01–05, ch07,
-ch09–15, ch17. **6 are better**: ch06, ch08, ch16, ch19, ch20, ch21. ch18 is unchanged.
+Every chapter moves the same way in both populations.
+- **10 chapters are worse**: ch01, ch02, ch04, ch05, ch07, ch10, ch11, ch13, ch14, ch15.
+- **7 are better**: ch03, ch06, ch08, ch16, ch19, ch20, ch21.
+- **4 are unchanged**: ch09, ch12, ch17, ch18.
 
-**The net drop of 31 is 98 terms lost and 67 gained** (common ids). This decomposition was
+**The net drop of 36 is 104 terms lost and 68 gained** (common ids). This decomposition was
 computed from the result file, not by hand:
 
 | | terms | by class |
 |---|---|---|
-| lost (consistent in July, not in the new MT) | 98 | 66 TEXT-DRIFT, 17 KEYTERM-SPLIT, 9 STABLE, 4 KEYTERM-OTHER, 2 RULING-BROKEN-NEW |
-| gained (consistent in the new MT, not in July) | 67 | 33 KEYTERM-FIXED, 15 RULED-APPLIED, 15 TEXT-GAIN, 3 TEXT-RENAMED, 1 STABLE |
+| lost (consistent in July, not in the new MT) | 104 | 69 TEXT-DRIFT, 19 KEYTERM-SPLIT, 9 STABLE, 3 KEYTERM-OTHER, 2 RULING-BROKEN-NEW, 2 RULING-BROKEN-BOTH |
+| gained (consistent in the new MT, not in July) | 68 | 33 KEYTERM-FIXED, 16 TEXT-GAIN, 14 RULED-APPLIED, 5 TEXT-RENAMED |
 
 - A **KEYTERM-SPLIT** loss is one key-terms headword segment that disagrees with a chapter text
   which is itself fine. Repairing it costs one segment.
 - A **TEXT-DRIFT** loss is the running text. That is the expensive class.
-- The **gains** are real and sit where the new MT had help: rulings on the wire (15) and key-terms
+- The **gains** are real and sit where the new MT had help: rulings on the wire (14) and key-terms
   entries the text now matches (33).
 - So "keep the July MT" is not free either. It would undo those gains, including [USER]'s rulings.
 
@@ -130,29 +167,30 @@ Largest net losses by chapter (common ids):
 
 | chapter | glossary arm (new) | consistent old → new | lost / gained |
 |---|---|---|---|
-| ch07 | glossary-only | 28 → 18 of 37 | 12 / 2 |
-| ch04 | **no-glossary** | 22 → 15 of 40 | 10 / 3 |
+| ch07 | glossary-only | 28 → 17 of 37 | 13 / 2 |
+| ch04 | **no-glossary** | 28 → 20 of 40 | 11 / 3 |
+| ch01 | glossary-only | 44 → 36 of 50 | 9 / 1 |
 | ch05 | glossary-only | 19 → 13 of 26 | 7 / 1 |
-| ch02 | glossary-only | 37 → 32 of 49 | 7 / 2 |
-| ch11 | glossary-only | 19 → 14 of 29 | 8 / 3 |
-| ch10 | glossary-only | 23 → 19 of 44 | 9 / 5 |
-| ch15 | glossary-only | 6 → 3 of 11 | 3 / 0 |
+| ch11 | glossary-only | 20 → 14 of 29 | 9 / 3 |
+| ch02 | glossary-only | 40 → 35 of 49 | 8 / 3 |
+| ch10 | glossary-only | 24 → 19 of 44 | 9 / 4 |
+| ch15 | glossary-only | 9 → 5 of 11 | 4 / 0 |
 
-Classes across the book (all segments; the common-id counts are in `classify-common.txt`):
+Classes across the book (common ids; the all-segments counts are in `classify-all.txt`):
 
 | class | count | what it means |
 |---|---|---|
-| STABLE | 319 | no change |
-| LOW-N | 152 | fewer than 3 prose occurrences |
-| TEXT-DRIFT | 85 | the new text is less consistent |
-| KEYTERM-SPLIT | 53 | the new key-terms entry disagrees with the new text, which kept the July word |
-| KEYTERM-FIXED | 42 | the new text agrees with a changed entry better than July did |
-| KEYTERM-OTHER | 40 | the entry changed in some other pattern |
-| TEXT-RENAMED | 25 | a consistent switch to a different word, which needs a ruling, not a repair |
-| TEXT-GAIN | 22 | agreement rose with the entry unchanged |
-| RULED-APPLIED | 19 | the rulings worked as intended (e.g. *radioactive decay → geislasundrun*, *elementary reaction → grunnhvarf*) |
-| RULING-BROKEN-NEW | 4 | the July text followed a ruling and the new text does not: *dimensional analysis*, *molecular compound*, *Lewis structure*, *trigonal planar*. Rulings are read as in force **now**; a ruling made after the September buy (plausibly *dimensional analysis*) is a repair target, not evidence that the buy ignored it |
-| RULING-BROKEN-BOTH | 2 | neither vintage follows the ruling |
+| STABLE | 317 | no change |
+| LOW-N | 155 | fewer than 3 prose occurrences |
+| TEXT-DRIFT | 80 | the new text is less consistent |
+| KEYTERM-SPLIT | 50 | the new key-terms entry disagrees with the new text, which kept the July word |
+| KEYTERM-FIXED | 41 | the new text agrees with a changed entry better than July did |
+| KEYTERM-OTHER | 37 | the entry changed in some other pattern |
+| TEXT-RENAMED | 33 | a consistent switch to a different word, which needs a ruling, not a repair |
+| TEXT-GAIN | 23 | agreement rose with the entry unchanged |
+| RULED-APPLIED | 17 | the rulings worked as intended (e.g. *radioactive decay → geislasundrun*, *elementary reaction → grunnhvarf*) |
+| RULING-BROKEN-BOTH | 7 | neither vintage follows the ruling; partly the short-word blind spot (see above) |
+| RULING-BROKEN-NEW | 3 | the July text followed a ruling and the new text does not: *dimensional analysis*, *molecular compound*, *Lewis structure*. Rulings are read as in force **now**; a ruling made after the September buy (plausibly *dimensional analysis*) is a repair target, not evidence that the buy ignored it |
 
 **Two mechanisms, observed, not proven:**
 - **KEYTERM-SPLIT**: a key-terms headword is a short segment with no sentence around it. With the
@@ -170,5 +208,6 @@ python3 -u experiments/terminology-consistency/measure.py --book efnafraedi-2e \
 python3 experiments/terminology-consistency/classify.py /path/book.json /path/classified.json
 python3 experiments/terminology-consistency/live_check.py /path/classified.json /path/scratch
 python3 experiments/terminology-consistency/live_check.py /path/classified.json /path/scratch --control
+python3 experiments/terminology-consistency/audit_inflection.py old|new   # residual matcher blindness
 ```
 Judge a measure run by its `"complete": true` marker, never by its exit code.
