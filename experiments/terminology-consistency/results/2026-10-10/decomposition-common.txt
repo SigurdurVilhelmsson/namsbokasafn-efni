@@ -1,0 +1,24 @@
+Terms consistent in July but not in the new MT (LOST) and the reverse (GAINED), by class. Population: common segment ids.
+ch01 {'glossary-only': 7} lost 6 {'TEXT-DRIFT': 3, 'STABLE': 1, 'KEYTERM-SPLIT': 2} | gained 3 {'STABLE': 1, 'KEYTERM-FIXED': 1, 'RULED-APPLIED': 1}
+ch02 {'glossary-only': 8} lost 7 {'TEXT-DRIFT': 6, 'STABLE': 1} | gained 2 {'RULED-APPLIED': 1, 'KEYTERM-FIXED': 1}
+ch03 {'no-glossary': 5} lost 1 {'KEYTERM-OTHER': 1} | gained 0 {}
+ch04 {'no-glossary': 6} lost 10 {'STABLE': 1, 'TEXT-DRIFT': 8, 'KEYTERM-SPLIT': 1} | gained 3 {'TEXT-RENAMED': 1, 'KEYTERM-FIXED': 2}
+ch05 {'glossary-only': 4} lost 7 {'TEXT-DRIFT': 3, 'STABLE': 1, 'KEYTERM-SPLIT': 3} | gained 1 {'KEYTERM-FIXED': 1}
+ch06 {'glossary-only': 6} lost 5 {'TEXT-DRIFT': 5} | gained 6 {'KEYTERM-FIXED': 3, 'TEXT-GAIN': 2, 'TEXT-RENAMED': 1}
+ch07 {'glossary-only': 7} lost 12 {'KEYTERM-SPLIT': 4, 'RULING-BROKEN-NEW': 2, 'KEYTERM-OTHER': 2, 'STABLE': 2, 'TEXT-DRIFT': 2} | gained 2 {'KEYTERM-FIXED': 1, 'TEXT-GAIN': 1}
+ch08 {'glossary-only': 5} lost 1 {'TEXT-DRIFT': 1} | gained 8 {'KEYTERM-FIXED': 5, 'RULED-APPLIED': 3}
+ch09 {'glossary-only': 7} lost 2 {'TEXT-DRIFT': 2} | gained 1 {'KEYTERM-FIXED': 1}
+ch10 {'glossary-only': 7} lost 9 {'KEYTERM-SPLIT': 1, 'TEXT-DRIFT': 8} | gained 5 {'KEYTERM-FIXED': 1, 'RULED-APPLIED': 2, 'TEXT-GAIN': 2}
+ch11 {'glossary-only': 6} lost 8 {'TEXT-DRIFT': 6, 'STABLE': 1, 'KEYTERM-SPLIT': 1} | gained 3 {'KEYTERM-FIXED': 1, 'TEXT-GAIN': 2}
+ch12 {'glossary-only': 8} lost 5 {'TEXT-DRIFT': 3, 'STABLE': 1, 'KEYTERM-SPLIT': 1} | gained 4 {'KEYTERM-FIXED': 3, 'RULED-APPLIED': 1}
+ch13 {'glossary-only': 5} lost 1 {'KEYTERM-SPLIT': 1} | gained 0 {}
+ch14 {'glossary-only': 8} lost 3 {'TEXT-DRIFT': 3} | gained 0 {}
+ch15 {'glossary-only': 4} lost 3 {'TEXT-DRIFT': 3} | gained 0 {}
+ch16 {'glossary-only': 5} lost 0 {} | gained 2 {'TEXT-RENAMED': 1, 'KEYTERM-FIXED': 1}
+ch17 {'glossary-only': 8} lost 5 {'TEXT-DRIFT': 3, 'KEYTERM-OTHER': 1, 'KEYTERM-SPLIT': 1} | gained 4 {'KEYTERM-FIXED': 2, 'RULED-APPLIED': 2}
+ch18 {'glossary-only': 13} lost 3 {'TEXT-DRIFT': 3} | gained 3 {'TEXT-GAIN': 1, 'RULED-APPLIED': 1, 'KEYTERM-FIXED': 1}
+ch19 {'glossary-only': 4} lost 2 {'KEYTERM-SPLIT': 1, 'TEXT-DRIFT': 1} | gained 7 {'KEYTERM-FIXED': 6, 'RULED-APPLIED': 1}
+ch20 {'glossary-only': 5} lost 2 {'TEXT-DRIFT': 1, 'KEYTERM-SPLIT': 1} | gained 6 {'TEXT-GAIN': 3, 'KEYTERM-FIXED': 1, 'RULED-APPLIED': 2}
+ch21 {'glossary-only': 7} lost 6 {'TEXT-DRIFT': 5, 'STABLE': 1} | gained 7 {'TEXT-GAIN': 4, 'KEYTERM-FIXED': 2, 'RULED-APPLIED': 1}
+BOOK lost 98 {'TEXT-DRIFT': 66, 'STABLE': 9, 'KEYTERM-SPLIT': 17, 'KEYTERM-OTHER': 4, 'RULING-BROKEN-NEW': 2}
+BOOK gained 67 {'STABLE': 1, 'KEYTERM-FIXED': 33, 'RULED-APPLIED': 15, 'TEXT-RENAMED': 3, 'TEXT-GAIN': 15}
