@@ -54,7 +54,11 @@ const TEST_MODULES = [
   { moduleId: 'm68684', chapter: 'ch02', baseline: 0 },
   { moduleId: 'm68699', chapter: 'ch03', baseline: 0 },
   // Problem modules — must not exceed baseline
-  { moduleId: 'm68710', chapter: 'ch04', baseline: 1 },
+  // §C4 (2026-10-09): was 1, and that 1 was a NET. The donated step-1 text wrote a
+  // duplicate <emphasis> into fs-idp3143536 (+1), masking two emphases the committed MT
+  // lost in fs-idp140132618169728 and fs-idm50940704 (−2). The fix removed the +1, so the
+  // count is now the two real losses, not a regression. compareTagCounts nets per tag.
+  { moduleId: 'm68710', chapter: 'ch04', baseline: 2 },
   { moduleId: 'm68727', chapter: 'ch05', baseline: 16 },
   { moduleId: 'm68739', chapter: 'ch07', baseline: 6 },
   // m68789: re-pointed to fresh single-model extraction (F4 Task 2). Part 1's

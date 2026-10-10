@@ -110,10 +110,14 @@ export function readAlt(alt, getSeg) {
  * REFUSED the module rather than write a raw `[[sub:4]]` onto a published page,
  * which is the correct failure and is how this was caught at all.
  *
- * The scanner deliberately mirrors `unwrapInventedMarkers`' grammar, including
- * its reason for advancing ONE character on a non-opener: the corpus carries
- * literal square brackets abutting real markers (chemistry unit notation), so
- * skipping two would step over a real opener.
+ * The scanner mirrors `unwrapInventedMarkers`' grammar, including its reason
+ * for advancing ONE character on a non-opener: the corpus carries literal square
+ * brackets abutting real markers (chemistry unit notation), so skipping two
+ * would step over a real opener. ⚠️ ONE DELIBERATE DIVERGENCE (②, 2026-10-09):
+ * here a multi-word type such as `[[test tube:tilraunaglas]]` is a marker
+ * (`SPACED_TYPE`); `unwrapInventedMarkers` still ends a type at whitespace, so
+ * the same invented wrap in PROSE is not unwrapped there (logged in the register,
+ * ② bullet of the 2026-09-26 block).
  *
  * @param {string} text
  * @returns {string} the same text with every bracket marker unwrapped
@@ -141,10 +145,18 @@ function unwrapBracketMarkers(text) {
         sep = ']]';
         break;
       }
-      if (s[j] === '[' || s[j] === ']' || /\s/.test(s[j])) break;
+      if (s[j] === '[' || s[j] === ']') break;
+      // ② A space ends the type UNLESS everything so far is a word — the MT's
+      // glossary wrap `[[test tube:tilraunaglas]]` puts the English HEADWORD in
+      // the type slot, spaces and all. The WHOLE spaced type is validated below;
+      // this check only stops the scan early (behaviour-neutral, a bound on work).
+      if (/\s/.test(s[j]) && !SPACED_TYPE.test(`${type}x`)) break;
       type += s[j];
       j++;
     }
+    // A spaced type is a marker only if it is words throughout and ends a word,
+    // and only before `:` — anything else is prose that happens to follow `[[`.
+    if (sep !== null && /\s/.test(type) && (sep !== ':' || !SPACED_TYPE.test(type))) sep = null;
     if (sep === null || type === '') {
       // Not an opener. Advance ONE so the scan re-anchors on an inner `[[`.
       out += s[i];
@@ -197,6 +209,27 @@ function unwrapBracketMarkers(text) {
 const ALT_INLINE_TAG = new RegExp(`</?[a-zA-Z][a-zA-Z0-9]*(?:"[^"]*"|'[^']*'|[^>'"])*>`, 'g');
 
 /**
+ * ② A multi-word type token: letters, spaces, hyphens or apostrophes, starting
+ * AND ending on a letter. Only such a token is a marker, which is what lets
+ * `[[test tube:tilraunaglas]]` unwrap while `[[sjá mynd 3.2: gildi]]`,
+ * `[[hvarf A (aq): x]]` or `[[word :x]]` stay literal prose.
+ */
+const SPACED_TYPE = /^\p{L}[\p{L}'’\- ]*\p{L}$/u;
+
+/**
+ * ② The legacy Markdown sub/superscript pair, `CH~3~` / `e^-^`, unwrapped to
+ * its content. Measured 2026-10-09: 0 occurrences in ANY English segment and 8
+ * in chemistry's Icelandic attribute values (5 alts, 3 table summaries), so the
+ * MT invented every one — the same base-rate argument as the bracket unwrap.
+ * ANCHORED to the shape every instance has — after a letter, digit, `)` or `]`,
+ * a payload of 1–4 digits or signs (`CH~3~`, `Co(OH)~3~`, `[Cu(CN)2]^-^`, `e^-^`) — so
+ * prose the MT could plausibly write, `(~5,~10)` or `x^2·y^2`, stays intact.
+ * A pair may also directly follow a closed pair, `CrO~4~^2-^` — the lookbehind
+ * reads the ORIGINAL string, where the sub's closing `~` precedes the `^`.
+ */
+const LEGACY_SUBSUP = /(?<=[\p{L}\p{N})\]]|[\p{N}+\-−–][~^])([~^])([\p{N}+\-−–]{1,4})\1/gu;
+
+/**
  * Strip every form of markup from an alt value, leaving its visible text.
  *
  * 🔴 §C176 — §C169's UNWRAP WAS CORRECT AND STILL LET THE DEFECT REACH A READER,
@@ -222,7 +255,7 @@ const ALT_INLINE_TAG = new RegExp(`</?[a-zA-Z][a-zA-Z0-9]*(?:"[^"]*"|'[^']*'|[^>
  * @returns {string} the same text with every marker and inline tag unwrapped
  */
 export function stripAltMarkers(text) {
-  return unwrapBracketMarkers(text).replace(ALT_INLINE_TAG, '');
+  return unwrapBracketMarkers(text).replace(ALT_INLINE_TAG, '').replace(LEGACY_SUBSUP, '$2');
 }
 
 /**

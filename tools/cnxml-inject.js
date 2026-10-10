@@ -86,6 +86,7 @@ import {
   isAttributeValueSegmentId,
 } from './lib/alt-segments.js';
 import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
+import { isSentenceInitial, sentenceInitialGlossCase } from './lib/gloss-case.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -844,12 +845,17 @@ function restoreMathBySeparators(isText, enText) {
 }
 
 /**
- * Strip inline API/CNXML markers from an EN term string down to plain,
- * lowercased text for "(e. …)" reference annotations. Resolves [[math:N]] to
- * its visible notation AFTER lowercasing so the notation keeps its case
- * (ΔHf° must not become δhf° — the m68852 invariant). Shared by
- * annotateInlineTerms() and the glossary annotator; single-sourcing this
- * prevents divergent fixes (the m68852 misdiagnosis).
+ * Strip inline API/CNXML markers from an EN term string down to plain text for
+ * "(e. …)" reference annotations, CASE INTACT, and resolve [[MATH:N]] to its
+ * visible notation. Shared by annotateInlineTerms() and the glossary annotator;
+ * single-sourcing this prevents divergent fixes (the m68852 misdiagnosis).
+ *
+ * 🔴 §C191 ① — THIS USED TO LOWERCASE THE WHOLE VALUE, AND THAT WAS THE DEFECT.
+ * Readers saw "(e. aufbau principle)", "(e. hund’s rule)", "(e. ph)" and Δ/Π
+ * folded to δ/π. Measured 2026-10-09: every capitalised glossary term and every
+ * capitalised mid-sentence inline term in chemistry is genuine. The one place a
+ * capital can be an accident — a sentence-initial inline term — is decided by
+ * `sentenceInitialGlossCase` (tools/lib/gloss-case.js) at that call site only.
  *
  * Callers do their own leading pre-strip (e.g. the glossary strips __term__/
  * {{term}} first). `trim` reproduces the glossary site's mid-chain trim; the
@@ -861,17 +867,11 @@ function restoreMathBySeparators(isText, enText) {
  * @returns {string}
  */
 function stripTermMarkersToText(text, equations, { trim = false } = {}) {
-  // 🔴 THE ORDER IS LOAD-BEARING — DO NOT COLLAPSE THIS INTO flattenMarkersToText().
-  // Folding case BEFORE resolving MATH is what lets MathML-derived symbols escape
-  // the fold. Route this through the flattener instead — which resolves MATH first
-  // — and ΔHf° becomes δhf°, ΔGf° becomes δgf°, Eker° becomes eker°. Measured
-  // over the real corpus with real equations maps: 6 inputs, every one a chemistry
-  // symbol, and both call sites WRITE this value into output CNXML as "(e. …)", so
-  // it reaches readers. Δ and δ are different symbols.
-  // Pinned by tools/__tests__/term-text.test.js; proven non-vacuous by mutation.
+  // ⚠️ Still NOT flattenMarkersToText(): that collapses internal whitespace, and
+  // site A (trim: false) is pinned to keep it (term-text.test.js).
   let out = stripInlineMarkers(text);
   if (trim) out = out.trim();
-  return resolveMathPlaceholders(out.toLowerCase(), equations);
+  return resolveMathPlaceholders(out, equations);
 }
 
 /**
@@ -922,26 +922,43 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
     'g'
   );
 
+  // §C191 ①: per-module casing evidence, built once per module on first need —
+  // the module's own glossary terms (its "twins") and its marker-stripped EN text.
+  const caseContexts = new Map();
+  const moduleCaseContext = (segId) => {
+    const mod = String(segId).split(':')[0];
+    if (!caseContexts.has(mod)) {
+      const twins = new Map();
+      const parts = [];
+      for (const [id, text] of enSegments) {
+        if (String(id).split(':')[0] !== mod) continue;
+        parts.push(stripInlineMarkers(text));
+        if (String(id).includes(':glossary-term:')) {
+          const t = stripTermMarkersToText(text, equations, { trim: true });
+          twins.set(t.toLowerCase(), t);
+        }
+      }
+      caseContexts.set(mod, { twins, text: parts.join('\n') });
+    }
+    return caseContexts.get(mod);
+  };
+
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
     if (!enText) continue;
 
-    // Extract EN term texts in order (skip bold markers)
+    // Extract EN term texts in order (skip bold markers), each with whether it
+    // opens a sentence — the one position where its capital may be an accident.
     const enTermTexts = [];
+    const enTermInitial = [];
     let enMatch;
     enMarkerPattern.lastIndex = 0;
     while ((enMatch = enMarkerPattern.exec(enText)) !== null) {
-      if (enMatch[2] !== undefined) {
-        // {{term}}text{{/term}} match
-        enTermTexts.push(enMatch[2]);
-      } else if (enMatch[3] !== undefined) {
-        // __term__ match
-        enTermTexts.push(enMatch[3]);
-      } else if (enMatch[6] !== undefined) {
-        // [[term:text|id]] match — text field only
-        enTermTexts.push(enMatch[6]);
-      }
-      // **bold** or {{b}} — skip
+      const text = enMatch[2] ?? enMatch[3] ?? enMatch[6];
+      // {{term}}text{{/term}} / __term__ / [[term:text|id]]; **bold** or {{b}} — skip
+      if (text === undefined) continue;
+      enTermTexts.push(text);
+      enTermInitial.push(isSentenceInitial(stripInlineMarkers(enText.slice(0, enMatch.index))));
     }
 
     if (enTermTexts.length === 0) continue;
@@ -966,11 +983,18 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
         // overcounted by the fidelity check. Plain text avoids this side-effect and
         // also prevents raw API markers from leaking into IS segments.
         const enTermRaw = enTermTexts[termIndex];
-        const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        let enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        if (enTermInitial[termIndex]) {
+          const ctx = moduleCaseContext(segId);
+          enTerm = sentenceInitialGlossCase(enTerm, {
+            twin: ctx.twins.get(enTerm.trim().toLowerCase()) ?? null,
+            moduleText: ctx.text,
+          });
+        }
         termIndex++;
 
         // Skip if IS and EN terms are the same (case-insensitive)
-        if (inner.toLowerCase() === enTerm) return match;
+        if (inner.toLowerCase() === enTerm.toLowerCase()) return match;
 
         annotatedCount++;
         if (bracketInner !== undefined) {
@@ -1494,10 +1518,20 @@ function reverseInlineMarkup(
   // (underline has no API-safe {{u}} variant, so ++text++ is always the format)
   result = result.replace(/\+\+(.+?)\+\+/g, '<emphasis effect="underline">$1</emphasis>');
 
+  // §C16(a): a LITERAL asterisk is not markup. Extraction never emits `*` as
+  // markup, so every `*` in the EN source is literal text (σ*, π*, P*); getSeg
+  // passes their count. When this segment holds no more asterisks than that,
+  // none can be an editor's Ctrl+I, and the asterisk converters stand down —
+  // otherwise 8-4's `(σ, σ*, π, π*)` reads `σ<em>, π, π</em>`. Decided from the
+  // read-only source, never by comparing translated strings.
+  const literalAsterisks =
+    context && Number.isInteger(context.literalAsterisks) ? context.literalAsterisks : 0;
+  const asterisksAreLiteral = (text.match(/\*/g) || []).length <= literalAsterisks;
+
   // BACKWARD COMPAT: Legacy patterns only for non-API segments.
   // API segments use {{i}}/{{b}}/[[sub:]]/[[sup:]] — legacy *text*, ~text~, ^text^
   // would create false-positive markup from translated content (chemical formulas, etc.)
-  if (!hasApiMarkers) {
+  if (!hasApiMarkers && !asterisksAreLiteral) {
     // Convert legacy combined sub/sup + emphasis patterns.
     // Old extraction used ~*t*~ for <sub><emphasis>t</emphasis></sub>.
     // Bold variants first (** before *) to avoid partial matching.
@@ -2130,7 +2164,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       inlineAttrs[segmentId] || null,
       blockEquationIds,
       blockMediaIds,
-      { segmentId, attrMismatches: stats.attrMismatches }
+      {
+        segmentId,
+        attrMismatches: stats.attrMismatches,
+        // §C16(a): literal `*` in the read-only EN source (see reverseInlineMarkup).
+        literalAsterisks: enText ? (enText.match(/\*/g) || []).length : 0,
+      }
     );
   };
 
@@ -2394,7 +2433,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
               .replace(new RegExp(LEGACY_TERM, 'g'), '$1')
               .replace(/<term>([^<]*)<\/term>/g, '$1')
               .trim();
-            if (isTermClean.toLowerCase() !== enTerm) {
+            if (isTermClean.toLowerCase() !== enTerm.toLowerCase()) {
               // Insert annotation before closing </term> if it's a CNXML term element,
               // or append if plain text
               if (annotatedTerm.includes('</term>')) {
@@ -2535,7 +2574,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
-      return buildList(element, getSeg, equations, ctx);
+      return buildList(element, getSeg, equations, ctx, originalCnxml);
     case 'media':
       return buildMedia(element, getSeg);
     default:
@@ -3387,7 +3426,8 @@ function applyTableSummary(tableCnxml, element, ctx) {
  * always provides `ctx.tableNodesById` for real production builds. If the map IS present
  * but a specific kept-table id is missing from it (or its translation/serialized block is
  * missing), that is a real production gap and still throws.
- * @param {Set<string>} keptContainerTableIds - OC-B direct-child, non-inline table ids only.
+ * @param {Set<string>} keptContainerTableIds - OC-B kept, non-inline table ids: direct children
+ *   of the container, or (§C185 ⑤) of a note nested in an example.
  */
 function translateKeptContainerTables(
   result,
@@ -3781,6 +3821,30 @@ function buildExample(element, getSeg, equations, originalCnxml) {
  * Same signature, same behavior, but uses DOM manipulation instead of regex.
  * Comparison-tested against the regex version before deployment.
  */
+/**
+ * 🔴 §C4 — the nested <para> whose text a para's segment actually carries, or null.
+ *
+ * Extraction matches a para non-greedily, so the match stops at the FIRST inner
+ * `</para>`. When the outer para holds nothing of its own (only a <title> and
+ * blocks, e.g. m68710's "Solution" para around a stepwise list), its segment is
+ * the first inner para's text, and that inner para gets no segment. Writing the
+ * segment into the outer para showed it twice and left the inner one in English.
+ * The extract traversal is frozen (seg-ids are the corpus join key), so the text
+ * is written back here. Decided from the read-only source DOM, never from text.
+ * @param {Element} paraEl - the outer para, as parsed from 01-source
+ * @param {Set<string>} segmentedIds - ids that own a segment in this container
+ * @returns {Element|null}
+ */
+function donatedInnerPara(paraEl, segmentedIds) {
+  const inner = paraEl.getElementsByTagName('para')[0];
+  if (!inner || segmentedIds.has(inner.getAttribute('id'))) return null;
+  const OWNLESS = new Set(['title', 'list', 'equation', 'figure', 'table', 'note', 'media']);
+  const hasOwn = Array.from(paraEl.childNodes).some(
+    (c) => (c.nodeType === 3 && c.data.trim()) || (c.nodeType === 1 && !OWNLESS.has(c.nodeName))
+  );
+  return hasOwn ? null : inner;
+}
+
 function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   if (!element.id) {
     return buildGenericElement('example', element, getSeg, equations, originalCnxml);
@@ -3866,6 +3930,16 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   const keptTableIds = new Set();
   const keptContainerTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
+  // §C4 — ids that own a segment anywhere in this example (see donatedInnerPara).
+  const segmentedIds = new Set();
+  (function collect(node) {
+    if (!node || typeof node !== 'object') return;
+    if (node.id && node.segmentId) segmentedIds.add(node.id);
+    for (const v of Object.values(node)) {
+      if (Array.isArray(v)) v.forEach(collect);
+      else if (v && typeof v === 'object') collect(v);
+    }
+  })(element);
 
   for (const child of element.content || []) {
     if (child.type !== 'para' || !child.id || !child.segmentId) continue;
@@ -3952,7 +4026,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         ? ''
         : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
       removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
-      replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
+      const donee = donatedInnerPara(paraEl, segmentedIds);
+      if (donee) {
+        replaceParaContentDom(doc, paraEl, '', titleCnxml);
+        replaceParaContentDom(doc, donee, expandedParaText, '');
+        replacedParaIds.add(donee.getAttribute('id'));
+      } else {
+        replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
+      }
       replacedParaIds.add(child.id);
       isFirstPara = false;
     }
@@ -3979,6 +4060,20 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       const figId = child.getAttribute('id');
       if (figId) keptFigureIds.add(figId);
     } else if (child.nodeName === 'table') {
+      const tId = child.getAttribute('id');
+      if (tId && !exampleInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
+    }
+  }
+  // 🔴 §C185 ⑤ — a NESTED note is preserved in place here (buildNoteDom returns
+  // null for it), so a table that is its direct child is ours to keep too.
+  // Stripping it shipped the section-level copy instead: m68738's "Answer:"
+  // table moved out of its example to section level, with every count intact.
+  for (const nestedNote of Array.from(exampleEl.getElementsByTagName('note'))) {
+    for (const child of Array.from(nestedNote.childNodes)) {
+      if (child.nodeName !== 'table') continue;
       const tId = child.getAttribute('id');
       if (tId && !exampleInlineTableIds.has(tId)) {
         keptTableIds.add(tId);
@@ -4907,7 +5002,38 @@ function buildEquation(element, equations, originalCnxml) {
 /**
  * Build a list element.
  */
-function buildList(element, getSeg, equations = {}, ctx = null) {
+/**
+ * 🔴 §C185 ⑤ — the non-inline <table> ids that are DIRECT children of each <item>
+ * of source list `listId`, keyed the way extraction names an item: its own id, or
+ * `${listId}-item-${n}` (1-based source position). Extraction leaves such a table
+ * out of the item's segment and flattens it into the section's structure, so
+ * without this buildList cannot know it exists and the section-level copy ships
+ * AFTER the list: m68843's ligand table left its numbered step. The source DOM
+ * is parsed once per module and cached on ctx.
+ * @returns {Map<string, string[]>} item key → table ids, in source order
+ */
+function sourceListItemTables(listId, originalCnxml, ctx) {
+  if (!ctx.sourceDomForLists) {
+    ctx.sourceDomForLists = parseCnxmlFragment(originalCnxml.replace(/^\s*<\?xml[^>]*\?>/, '')).doc;
+  }
+  const out = new Map();
+  const listEl = ctx.sourceDomForLists.getElementById(listId);
+  if (!listEl) return out;
+  const inlineIds = new Set((ctx.inlineTables || []).map((t) => t.tableId));
+  const items = Array.from(listEl.childNodes).filter((n) => n.nodeName === 'item');
+  items.forEach((itemEl, i) => {
+    const tableIds = Array.from(itemEl.childNodes)
+      .filter((n) => n.nodeName === 'table')
+      .map((n) => n.getAttribute('id'))
+      .filter((id) => id && !inlineIds.has(id));
+    if (tableIds.length > 0) {
+      out.set(itemEl.getAttribute('id') || `${listId}-item-${i + 1}`, tableIds);
+    }
+  });
+  return out;
+}
+
+function buildList(element, getSeg, equations = {}, ctx = null, originalCnxml = null) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const listType = element.listType || 'bulleted';
@@ -4941,10 +5067,39 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
       .filter(Boolean)
       .join('\n');
 
+  // §C185 ⑤ — a table that is a direct child of a source <item> is re-emitted in
+  // that item and marked handled, so buildElement skips its section-level copy.
+  const itemTables =
+    element.id && originalCnxml && ctx && ctx.tableNodesById
+      ? sourceListItemTables(element.id, originalCnxml, ctx)
+      : new Map();
+  const buildItemTables = (item) => {
+    const key =
+      item.id ||
+      String(item.segmentId || '')
+        .split(':')
+        .slice(2)
+        .join(':');
+    return (itemTables.get(key) || [])
+      .map((tableId) => {
+        const node = ctx.tableNodesById[tableId];
+        if (!node) {
+          throw new Error(
+            `buildList: no structure node for list-item table id="${tableId}" in list ${element.id} — refusing to drop it.`
+          );
+        }
+        if (ctx.tablesHandledInContainers) ctx.tablesHandledInContainers.add(tableId);
+        return buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
+      })
+      .join('\n');
+  };
+
   for (const item of element.items || []) {
     const itemText = getSeg(item.segmentId);
     const itemIdAttr = item.id ? ` id="${item.id}"` : '';
-    const blockChildXml = buildBlockChildren(item);
+    const blockChildXml = [buildBlockChildren(item), buildItemTables(item)]
+      .filter(Boolean)
+      .join('\n');
 
     if (item.children && item.children.length > 0) {
       // Item has nested lists — build them recursively
@@ -4954,7 +5109,7 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
       lines.push(`<item${itemIdAttr}>${head}`);
       for (const child of item.children) {
         if (child.type === 'list') {
-          lines.push(buildList(child, getSeg, equations, ctx));
+          lines.push(buildList(child, getSeg, equations, ctx, originalCnxml));
         }
       }
       if (blockChildXml) lines.push(blockChildXml);
@@ -4971,7 +5126,9 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
         // Original item content was wrapped in a <para> — preserve that element
         lines.push(`<item${itemIdAttr}>${item.wrapsPara.openTag}${itemText}</para></item>`);
       } else {
-        lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+        // A non-<para> item's only block children are §C185 ⑤ tables.
+        const tail = blockChildXml ? `\n${blockChildXml}` : '';
+        lines.push(`<item${itemIdAttr}>${itemText}${tail}</item>`);
       }
     }
   }

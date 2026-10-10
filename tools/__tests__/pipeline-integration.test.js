@@ -776,7 +776,7 @@ describe('annotateInlineTerms', () => {
   });
 
   it('should annotate multiple terms in one segment', () => {
-    const en = new Map([['seg1', '__Energy__ and __work__ are related.']]);
+    const en = new Map([['seg1', 'Both __energy__ and __work__ are related.']]);
     const is = new Map([['seg1', '__Orka__ og __vinna__ eru skyld.']]);
 
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
@@ -785,7 +785,7 @@ describe('annotateInlineTerms', () => {
   });
 
   it('should only annotate terms, not bold markers', () => {
-    const en = new Map([['seg1', '__Energy__ is **important**. __Work__ too.']]);
+    const en = new Map([['seg1', 'Both __energy__ is **important**, and __work__ too.']]);
     const is = new Map([['seg1', '__Orka__ er **mikilvæg**. __Vinna__ líka.']]);
 
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
@@ -796,7 +796,7 @@ describe('annotateInlineTerms', () => {
   });
 
   it('should handle fewer IS term markers than EN terms', () => {
-    const en = new Map([['seg1', '__Energy__ and __work__ are concepts.']]);
+    const en = new Map([['seg1', 'Both __energy__ and __work__ are concepts.']]);
     const is = new Map([['seg1', '__Orka__ og vinna eru hugtök.']]);
 
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
@@ -813,8 +813,13 @@ describe('annotateInlineTerms', () => {
     expect(annotatedCount).toBe(0);
   });
 
-  it('should lowercase EN terms in annotations', () => {
-    const en = new Map([['seg1', '__Thermochemistry__ is a field.']]);
+  // §C191 ①: a sentence-initial capital is lowercased only on evidence — here the
+  // segment itself uses the word in lowercase. Without evidence the source case is
+  // kept (tools/__tests__/gloss-case.test.js covers both arms).
+  it('should lowercase a sentence-initial EN term when the module uses it in lowercase', () => {
+    const en = new Map([
+      ['seg1', '__Thermochemistry__ is a field. In thermochemistry, heat flows.'],
+    ]);
     const is = new Map([['seg1', '__Varmaefnafræði__ er fræðigrein.']]);
 
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
@@ -835,7 +840,7 @@ describe('annotateInlineTerms', () => {
   // ─── New {{term}} format tests ───────────────────────────────────
 
   it('should annotate {{term}} markers with EN originals', () => {
-    const en = new Map([['seg1', '{{term}}Chemistry{{/term}} is a field.']]);
+    const en = new Map([['seg1', 'The {{term}}chemistry{{/term}} is a field.']]);
     const is = new Map([['seg1', '{{term}}Efnafræði{{/term}} er fræðigrein.']]);
 
     const { segments, annotatedCount } = annotateInlineTerms(is, en);
@@ -854,7 +859,7 @@ describe('annotateInlineTerms', () => {
 
   it('should annotate multiple {{term}} markers', () => {
     const en = new Map([
-      ['seg1', '{{term}}Energy{{/term}} and {{term}}work{{/term}} are related.'],
+      ['seg1', 'Both {{term}}energy{{/term}} and {{term}}work{{/term}} are related.'],
     ]);
     const is = new Map([['seg1', '{{term}}Orka{{/term}} og {{term}}vinna{{/term}} eru skyld.']]);
 

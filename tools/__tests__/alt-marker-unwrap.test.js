@@ -226,3 +226,169 @@ describe('§C176 — the SAME invention, arriving as TAGS because getSeg convert
     expect(stripAltMarkers('C[[sub:4]]H<sub>6</sub>')).toBe('C4H6');
   });
 });
+
+describe('② — the three invented shapes HEAD did not unwrap (legacy sub/sup, whitespace-typed brackets)', () => {
+  /**
+   * Measured 2026-10-09 over every attribute-value segment in chemistry's
+   * committed MT (1,340 alts + table summaries): after HEAD's strip, 9 still
+   * carried markup — 8 legacy `~x~`/`^x^` pairs (5 alts, 3 table summaries) and
+   * one `[[test tube:tilraunaglas]]`, a glossary-wrap whose TYPE holds a space,
+   * which the scanner's type grammar stopped reading at. The same 0-base-rate
+   * argument licenses all three: none occurs in ANY English segment (asserted
+   * below), so on the Icelandic side each is invented by construction.
+   */
+  it('unwraps a legacy tilde subscript — the live m68843 value', () => {
+    expect(stripAltMarkers('tengd CH~3~-hópum')).toBe('tengd CH3-hópum');
+  });
+
+  it('unwraps several tilde pairs in one value', () => {
+    expect(stripAltMarkers('Co(OH)~3~ og Co(OH)~2~')).toBe('Co(OH)3 og Co(OH)2');
+  });
+
+  it('unwraps a legacy caret superscript — the live m68870 value', () => {
+    expect(stripAltMarkers('Co(OH)~3~ + e^-^ → Co(OH)~2~')).toBe('Co(OH)3 + e- → Co(OH)2');
+  });
+
+  it('unwraps a whitespace-typed glossary wrap to its Icelandic side — the live m68832 value', () => {
+    expect(stripAltMarkers('Ljósmynd a sýnir [[test tube:tilraunaglas]] sem inniheldur')).toBe(
+      'Ljósmynd a sýnir tilraunaglas sem inniheldur'
+    );
+  });
+
+  it('leaves a lone approximately-tilde alone — the control for the tilde rule', () => {
+    const prose = 'um ~5 nm og ~10 nm á breidd';
+    expect(stripAltMarkers(prose)).toBe(prose);
+  });
+
+  it('leaves a lone caret and spaced carets alone — the control for the caret rule', () => {
+    expect(stripAltMarkers('x^2')).toBe('x^2');
+    expect(stripAltMarkers('x^2 + y^2')).toBe('x^2 + y^2');
+  });
+
+  it('a pair closes only on its OWN delimiter — `~` never pairs with `^`', () => {
+    expect(stripAltMarkers('a~1^b')).toBe('a~1^b');
+  });
+
+  it('a pair is anchored to formula shape — prose tildes and exponents stay (review, 2026-10-09)', () => {
+    expect(stripAltMarkers('(~5,~10)')).toBe('(~5,~10)');
+    expect(stripAltMarkers('x^2·y^2')).toBe('x^2·y^2');
+    expect(stripAltMarkers('stendur ~2~ ein')).toBe('stendur ~2~ ein');
+    expect(stripAltMarkers('„IE~1~“')).toBe('„IE1“');
+    expect(stripAltMarkers('[Cu(CN)2]^-^ + e-')).toBe('[Cu(CN)2]- + e-');
+    expect(stripAltMarkers('CrO~4~^2-^ og Hg~2~^2+^')).toBe('CrO42- og Hg22+');
+  });
+
+  it('leaves coordination-chemistry square brackets alone — the control for the bracket rule', () => {
+    const prose = 'flétturnar [[Co(NH3)6]Cl3] og [Pt Cl4]: tvær gerðir';
+    expect(stripAltMarkers(prose)).toBe(prose);
+  });
+
+  it('does not treat a spaced run as a marker unless it ends in a colon', () => {
+    // Narrow on purpose: the invented shape is `[[english term:íslenska]]`.
+    expect(stripAltMarkers('a [[two words]] b')).toBe('a [[two words]] b');
+    expect(stripAltMarkers('a [[two words|x]] b')).toBe('a [[two words|x]] b');
+  });
+
+  it('only a WORD may run past a space — a numeric or symbolic run stays literal', () => {
+    expect(stripAltMarkers('[[0.5 M lausn: x]]')).toBe('[[0.5 M lausn: x]]');
+    expect(stripAltMarkers('[[ x: y]]')).toBe('[[ x: y]]');
+  });
+
+  it('a spaced type must be words THROUGHOUT and end on a letter (review, 2026-10-09)', () => {
+    // Each of these was measured to lose its prose before the whole-type check.
+    expect(stripAltMarkers('a [[sjá mynd 3.2: gildi]] b')).toBe('a [[sjá mynd 3.2: gildi]] b');
+    expect(stripAltMarkers('[[hvarf A (aq): x]]')).toBe('[[hvarf A (aq): x]]');
+    expect(stripAltMarkers('[[word :x]]')).toBe('[[word :x]]');
+  });
+});
+
+describe('② BASE RATE — none of the three shapes occurs in ANY English segment', () => {
+  // 🔴 The safety argument for the rules above, ASSERTED. Wider than the §C169
+  // base rate on purpose: `stripMarkupToText` (an alias) also runs over TITLES,
+  // which are prose — and section SLUGS are derived from those titles, so a
+  // change here would rename published pages. Over EVERY book, not a named pair,
+  // so the licence survives §C190 removing organic. The shapes are deliberately
+  // LOOSER than the rules they license: a loose zero is the stronger statement.
+  it('0 legacy sub/sup pairs and 0 whitespace-typed brackets across the EN corpus', () => {
+    const SHAPES = /~[^~\s]{1,20}~|\^[^^\s]{1,20}\^|\[\[[^\][:|]*\s[^\][:|]*:/;
+    let segments = 0;
+    const offenders = [];
+    for (const b of fs.readdirSync(path.join(ROOT, 'books'))) {
+      const root = path.join(ROOT, 'books', b, '02-for-mt');
+      if (!fs.existsSync(root)) continue;
+      for (const ch of fs.readdirSync(root)) {
+        const d = path.join(root, ch);
+        if (!fs.statSync(d).isDirectory()) continue;
+        for (const f of fs.readdirSync(d)) {
+          if (!f.endsWith('-segments.en.md')) continue;
+          const parts = fs.readFileSync(path.join(d, f), 'utf8').split(/<!--\s*SEG:(\S+?)\s*-->/);
+          for (let i = 1; i < parts.length; i += 2) {
+            segments++;
+            if (SHAPES.test(parts[i + 1])) offenders.push(`${b}/${parts[i]}`);
+          }
+        }
+      }
+    }
+    // The COUNT beside the predicate: an empty walk must not read as clean.
+    expect(segments).toBeGreaterThan(20000);
+    expect(offenders).toEqual([]);
+  });
+});
+
+describe('② REACH — the real committed MT, injected in memory, writes no markup into an attribute', () => {
+  // The unit tests prove the function; this proves the inject path applies it to
+  // the six modules where the residue actually lives, with the INPUT residue
+  // counted as the positive control — so a harness that read nothing, or modules
+  // that stopped carrying residue, cannot read as a pass. No tree is written.
+  const SHAPES = {
+    bracket: /\[\[/,
+    tilde: /~[^~\s]{1,20}~/,
+    caret: /\^[^^\s]{1,20}\^/,
+  };
+  // Output side also catches §C176's tag shape, raw or escaped once/twice, so a
+  // reordering inside stripAltMarkers cannot pass here silently.
+  const OUT_RESIDUE = /\[\[|~[^~\s]{1,20}~|\^[^^\s]{1,20}\^|&(?:amp;)*lt;[a-zA-Z/]/;
+  const MODULES = {
+    m68832: 'ch18',
+    m68843: 'ch19',
+    m68849: 'ch20',
+    m68735: 'ch06',
+    m68865: 'appendices',
+    m68870: 'appendices',
+  };
+
+  it('0 residue-bearing alt/summary attributes in the output, from residue-bearing inputs of every class', async () => {
+    const { extractSegments } = await import('../cnxml-extract.js');
+    const { buildCnxml, parseSegments } = await import('../cnxml-inject.js');
+    const { isAttributeValueSegmentId } = await import('../lib/alt-segments.js');
+    const book = path.join(ROOT, 'books', 'efnafraedi-2e');
+    const inputs = { bracket: 0, tilde: 0, caret: 0 };
+    let attrs = 0;
+    const offenders = [];
+    for (const [m, ch] of Object.entries(MODULES)) {
+      const src = fs.readFileSync(path.join(book, '01-source', ch, `${m}.cnxml`), 'utf8');
+      const isPath = path.join(book, '02-mt-output', ch, `${m}-segments.is.md`);
+      const is = parseSegments(fs.readFileSync(isPath, 'utf8'));
+      for (const [id, text] of is) {
+        if (!isAttributeValueSegmentId(id)) continue;
+        for (const [k, re] of Object.entries(SHAPES)) if (re.test(text)) inputs[k]++;
+      }
+      const { structure, equations, inlineAttrs } = extractSegments(src);
+      const out = buildCnxml(structure, is, equations, src, {}, inlineAttrs).cnxml;
+      for (const a of out.match(/\s(?:alt|summary)="[^"]*"/g) || []) {
+        attrs++;
+        if (OUT_RESIDUE.test(a)) offenders.push(`${m} ${a.trim().slice(0, 60)}`);
+      }
+    }
+    // The positive control, per class (measured 2026-10-09: bracket 6 — the
+    // whitespace-typed wrap + 5 `[[sub:N]]` §C169 already cleared — tilde 8,
+    // caret 1). ⚠️ Read from READ-ONLY `02-mt-output`: if a sanctioned hand repair
+    // or re-buy ever empties a class, re-plant its shape into the repaired segment
+    // (cf. mt-output-guards-corpus) — never delete the control.
+    expect(inputs.bracket).toBeGreaterThan(0);
+    expect(inputs.tilde).toBeGreaterThan(0);
+    expect(inputs.caret).toBeGreaterThan(0);
+    expect(attrs).toBeGreaterThan(50);
+    expect(offenders).toEqual([]);
+  }, 60000);
+});
