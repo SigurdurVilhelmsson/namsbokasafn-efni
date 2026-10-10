@@ -94,6 +94,7 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
   <section class="panel" aria-labelledby="howh">
     <h2 id="howh">What to decide</h2>
     <ul>
+      <li>The list opens on the <b>terms that lost consistency</b>. Use “Show” to see the rest, including improvements.</li>
       <li><b>Per chapter</b>, which MT goes forward. The control sits at the top of each chapter.</li>
       <li><b>Per term</b>, which Icelandic word is right: the July word, the new word, or another. A ruling here can become a house-style ruling and reach the next buy.</li>
       <li>This measures <b>consistency, not correctness</b>. A version that is consistently wrong still scores well, so the word choice is yours.</li>
@@ -114,6 +115,7 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
   <div class="bar" role="toolbar" aria-label="Filters">
     <label for="fch">Chapter <select id="fch"><option value="">All</option></select></label>
     <label for="fcl">Show <select id="fcl">
+      <option value="lost">Lost consistency</option>
       <option value="look">Needs a look</option>
       <option value="good">Improvements</option>
       <option value="all">Everything listed</option>
@@ -135,6 +137,7 @@ const CLS = {
   'TEXT-RENAMED': ['Text switched word', 'mid', 'look', 'The new text switched consistently to a different word. Pick the right one.'],
   'KEYTERM-OTHER': ['Key-terms entry changed', 'mid', 'look', 'The key-terms entry changed in a mixed pattern. Read the examples.'],
   'RULING-BROKEN-BOTH': ['Ruling broken (both)', 'mid', 'look', 'Neither version follows your ruling.'],
+  'STABLE': ['Slipped below 80%', 'mid', 'look', 'Same key-terms entry; the text agrees with it a little less and crossed the 80% line.'],
   'KEYTERM-FIXED': ['Better: entry and text agree', 'good', 'good', 'The key-terms entry changed and the new text agrees with it better than July did.'],
   'RULED-APPLIED': ['Ruling applied', 'good', 'good', 'Your ruling reached the new text, as intended.'],
   'TEXT-GAIN': ['Better: text more consistent', 'good', 'good', 'The entry is unchanged and the text uses it more consistently.'],
@@ -153,7 +156,7 @@ function renderSummary() {
     <div><b>${b.old} → ${b.new}</b><span>consistent taught terms, of ${b.of}</span></div>
     <div><b class="delta-bad">${b.lost}</b><span>lost consistency</span></div>
     <div><b class="delta-good">${b.gained}</b><span>gained consistency</span></div>
-    <div><b>${DATA.terms.length}</b><span>terms listed below, of ${b.total}</span></div>`;
+    <div><b>${DATA.terms.filter((t) => t.lost).length}</b><span>shown first: terms that lost consistency</span></div>`;
   $('#refs').textContent = `July = ${DATA.oldRef}, new = ${DATA.newRef} (main). Method, thresholds and blind spots: experiments/terminology-consistency/README.md.`;
 }
 
@@ -236,7 +239,7 @@ function chapDecHtml(c) {
 
 function renderList() {
   const fch = $('#fch').value, fcl = $('#fcl').value, fun = $('#fun').checked, q = $('#fq').value.trim().toLowerCase();
-  const keep = (t) => (!fch || t.ch === fch) && (fcl === 'all' || CLS[t.cls][2] === fcl) && (!fun || !verdicts.has(t.id))
+  const keep = (t) => (!fch || t.ch === fch) && (fcl === 'all' || (fcl === 'lost' ? t.lost : CLS[t.cls][2] === fcl)) && (!fun || !verdicts.has(t.id))
     && (!q || (t.en + ' ' + t.Kold + ' ' + t.Knew).toLowerCase().includes(q));
   const order = Object.keys(CLS);
   const html = [];
@@ -267,7 +270,7 @@ function refreshCards() {
   for (const el of $('#list').querySelectorAll('.card')) {
     const t = DATA.terms.find((x) => x.id === el.dataset.id), v = verdicts.get(t.id);
     el.classList.toggle('answered', !!v);
-    if (v && !el.contains(document.activeElement)) fillCard(el, t);
+    if (!el.contains(document.activeElement)) fillCard(el, t);
   }
 }
 

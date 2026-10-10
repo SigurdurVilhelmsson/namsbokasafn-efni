@@ -41,7 +41,11 @@ def main():
                          'new': c['consistent']['new'][0], 'of': c['consistent']['old'][1],
                          'lost': lost, 'gained': gained, 'counts': dict(cnt), 'n': len(c['terms'])})
         for t in c['terms']:
-            if t['class'] not in SHOW:
+            ok = o_n = None
+            if t['old']['prose'] >= th['MIN_N'] and t['new']['prose'] >= th['MIN_N']:
+                ok = t['old']['own'] / t['old']['prose'] >= th['RULED']
+                o_n = t['new']['own'] / t['new']['prose'] >= th['RULED']
+            if t['class'] not in SHOW and not (ok and not o_n):
                 continue
             ex = lambda v: [{'en': clean(m['en'])[:240], 'is': clean(m['is'])[:240]} for m in t[v]['misses'][:2]]
             terms.append({
@@ -51,7 +55,7 @@ def main():
                 'keep': t.get('oldKeep_new'), 'ruling': t['ruling']['is'] if t.get('ruling') and t['ruling']['exact'] else None,
                 'ruledNew': t.get('ruled_new'),
                 'dOld': [clean(k) for k in t['old']['defSites']], 'dNew': [clean(k) for k in t['new']['defSites']],
-                'exOld': ex('old'), 'exNew': ex('new')})
+                'lost': bool(ok and not o_n), 'exOld': ex('old'), 'exNew': ex('new')})
     data = {'oldRef': r['oldRef'][:9], 'newRef': r['newRef'][:9], 'chapters': chapters, 'terms': terms,
             'book': {'old': sum(c['old'] for c in chapters), 'new': sum(c['new'] for c in chapters),
                      'of': sum(c['of'] for c in chapters), 'lost': sum(c['lost'] for c in chapters),

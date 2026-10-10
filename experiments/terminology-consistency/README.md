@@ -62,8 +62,11 @@ Which Icelandic word is right is a ruling, and the K_old ≠ K_new rows are the 
 Re-run on ch01 before trusting the book. It reproduces the preview finding:
 - accuracy *hittni → nákvæmni*;
 - dimensional analysis *einingagreining → víddagreining*;
-- rounding *sléttun → afrúning*;
 - precision's prose flat at *nákvæmni*.
+
+For rounding it reproduces only the key-terms entry change (*sléttun → afrúning*). The prose shift
+the preview found (*námunda → rúnna*) is outside this instrument's reach, because "rounded" and
+"round" do not match the noun headword *rounding* (see blind spots).
 
 It also surfaced precision's new bold definition, *réttvísi*, and the new section title
 *"Óvissa, nákvæmni og nákvæmni mælinga"* (accuracy and precision both *nákvæmni*).
@@ -148,7 +151,7 @@ Classes across the book (all segments; the common-id counts are in `classify-com
 | TEXT-RENAMED | 25 | a consistent switch to a different word, which needs a ruling, not a repair |
 | TEXT-GAIN | 22 | agreement rose with the entry unchanged |
 | RULED-APPLIED | 19 | the rulings worked as intended (e.g. *radioactive decay → geislasundrun*, *elementary reaction → grunnhvarf*) |
-| RULING-BROKEN-NEW | 4 | the July text followed a ruling and the new text does not: *dimensional analysis*, *molecular compound*, *Lewis structure*, *trigonal planar* |
+| RULING-BROKEN-NEW | 4 | the July text followed a ruling and the new text does not: *dimensional analysis*, *molecular compound*, *Lewis structure*, *trigonal planar*. Rulings are read as in force **now**; a ruling made after the September buy (plausibly *dimensional analysis*) is a repair target, not evidence that the buy ignored it |
 | RULING-BROKEN-BOTH | 2 | neither vintage follows the ruling |
 
 **Two mechanisms, observed, not proven:**
