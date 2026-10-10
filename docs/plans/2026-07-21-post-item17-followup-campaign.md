@@ -57,6 +57,18 @@
 
   Check `server/lib/houseStyleTerms.js` and the glossary before any text-side change.
 
+### 🔎 2026-10-10 — [USER]'s PREVIEW OF THE RE-RENDERED BOOK: THE NEW MT IS LESS CONSISTENT IN KEY TERMS THAN THE LIVE (JULY) MT. Measured on ch01; the rest of the book is not measured yet
+The preview is local vefur, synced from `content/c2-whole-book-reinject` (`48dbbb7a2`). Live 1.4, 1.5 and 1.6 are **machine translation, not faithful**. Live 1.5 is byte-identical in text to the 2026-07-10 render (`485e266c1`), which comes from the March MT bought with the glossary on the wire. The new MT (2026-09-20, `df4ec4b99`) was bought `glossary-only` with a **3-term** subset (enthalpy pair + Celsius), so for every other term it is the model unprompted. Segment by segment, old vs new, each paired with its own EN:
+- **1.5 accuracy:** old *hittni* 8/8; new *nákvæmni* alone 7/8, so accuracy and precision merge. Heading: *Hittni og nákvæmni* → *Nákvæmni og réttvísi* ("justice"). Objective: → *nákvæmni og genkvæmni*.
+- **1.5 rounding:** old *námunda* in 25/28; new *rúnna* in 10 segments.
+- **1.6 dimensional analysis:** old *einingagreining* 7/7 (the approved row); new *víddagreining* 7/7.
+- **1.6 significant figures:** new *markverðar tölur* in 4/6.
+- **1.4 (Measurements):** effectively unchanged. *blokk* → *kubbur* is not a defect.
+- Across all approved terms in the three modules, adherence is 75% old vs 72% new, with 22 terms better and 22 worse. ▶ **The aggregate hides the damage: it sits in a few high-weight concept terms.**
+- ⚠️ **The glossary itself is wrong for one of them: `accuracy → nákvæmni` (approved), the same word as `precision`.** The title [USER] ruled says *hittni*. The adherence instrument therefore scores the new error as "better", so do not judge accuracy/precision with it.
+- [USER]'s other preview notes (not yet measured): ch02 title *Frumeindir…* against approved `atom → atóm` (no title ruling exists for ch02); figure 2.5 mixes *koparfrumeind* and *klóratóm*; figure 1.16 says *forskaut/bakskaut* against the ruled *anóða/katóða*; figure artefacts on 1.26 (stray numbers) and in Dæmi 1.7 (white rectangles, 2 figures); the textless figures in "Markverðir stafir" got new labels, many worse than June.
+- **This bears on the sync:** the preview is the content the sync would ship, and on these terms it is worse than what is live. Evidence (live pages, both MT vintages, `adherence.py`, `sidebyside.py`) is off-repo in `~/.cache/namsbokasafn-audit/2026-10-10-ch01-term-compare/`.
+
 ### ▶ [CODE] in parallel — the 2026-09-26 block's ② code batch, which must land BEFORE [USER]'s whole-book re-render (or the re-render runs twice)
 - ✅ **`stripAltMarkers` widened** on the local branch `fix/c2-alt-markup-residue` (unpushed; it carries this block's two docs commits). Detail on the ② bullet below.
 - ✅ **§C191 ① gloss casing**, same branch (stacked, per [USER] 2026-10-09: hold the branch and add the rest of ② on top, one PR). Detail on the ② bullet below.
