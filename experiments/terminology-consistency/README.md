@@ -13,15 +13,16 @@ Status and decisions live in the active register, never here. This file states t
 
 | | ref | glossary on the paid wire |
 |---|---|---|
-| **old** ("July") | `9a69414d5`, the last `main` commit before 2026-09-01 | **default ON**: `api-translate.js` at the March buy (`7658de896`) sent every approved `glossary-unified.json` term found in the chunk unless `--no-glossary` was passed. Per-run flags were not recorded; the sidecars of that vintage are a 2026-06-30 backfill with no arm. |
-| **new** | `bed24f441` (HEAD of `content/c2-whole-book-reinject`) | per chapter, recorded in `02-mt-output/*-provenance.json`: ch03–ch04 `no-glossary`, every other chapter a small `glossary-only` subset |
+| **old** ("July") | `9a69414d5`, the last `main` commit before 2026-09-01. ⚠️ **ch20's old vintage is August, not July**: the 2026-08-12 C56 pilot re-MT (`c17bb7cfb`), arm unrecorded. A few modules elsewhere date from July re-MTs (2026-07-02, -07-13, -07-14). | **default ON**: `api-translate.js` at the March buy (`7658de896`) sent every approved `glossary-unified.json` term found in the chunk unless `--no-glossary` was passed. Per-run flags were not recorded; the sidecars of that vintage are a 2026-06-30 backfill with no arm. |
+| **new** | `98a5fe2ff` (`origin/main`). The measured inputs (`02-mt-output`, `02-for-mt`, `houseStyleTerms.js`) are byte-identical to the held content branch's `bed24f441`, and the per-term results are identical. | per chapter, recorded in `02-mt-output/*-provenance.json`: ch03–ch04 `no-glossary`, every other chapter a small `glossary-only` subset |
 
 The new vintage includes the 0-ISK hand repairs `f313fee32` and `8271886b0` and the §C183 top-ups.
 Each vintage's Icelandic (`02-mt-output`) is paired with the English (`02-for-mt`) **from the same
 commit**, by segment id.
 
-**The old vintage is what readers see.** `live_check.py` searched the live key-terms page of all
-21 chapters for each entry that differs between vintages: **269 old-only hits, 0 new-only**. Its
+**On the key-terms pages, the old vintage is what readers see.** This was measured on those 21
+pages only; the body text was matched for ch01 1.4–1.6 in the preview session. `live_check.py`
+searched the live key-terms page of all 21 chapters for each entry that differs between vintages: **269 old-only hits, 0 new-only**. Its
 control, the same search over the locally rendered new pages, finds new-only hits in all 21
 chapters (3–32 each). → `results/2026-10-10/live-check.txt`.
 
@@ -87,25 +88,54 @@ It also surfaced precision's new bold definition, *réttvísi*, and the new sect
 
 ## Result of the 2026-10-10 run
 
-`results/2026-10-10/classified.json` (all 763 taught terms, with examples).
+Files in `results/2026-10-10/`:
+- `classified-common.json`, the **headline population**: only segment ids present in both vintages;
+- `classified-all.json`: every segment;
+- `classify-*.txt`: per-chapter class counts;
+- `decomposition-common.txt`: lost and gained terms by class;
+- `live-check.txt`: the live check and its control.
 
-- **Consistent taught terms, book: old 379 → new 347 of 610 eligible.**
-- **Worse in 14 chapters:** ch01–05, ch07, ch09–15, ch17.
-- **Better in 6:** ch06, ch08, ch16, ch19, ch20, ch21.
-- **Same in 1:** ch18.
+**Why the headline uses common ids.** The new vintage carries segment classes the July MT never
+had: figure alts (723 term hits) and table summaries (145). Those are short and context-poor, the
+exact shape that drifts. The common population removes them; the all-segments run is reported
+beside it. They agree:
 
-The per-chapter counts and classes are in the result file. The largest drops:
+| population | consistent taught terms, old → new |
+|---|---|
+| common ids (headline) | **376 → 345 of 607** |
+| all segments | 379 → 347 of 610 |
 
-| chapter | glossary arm (new) | consistent old → new |
+Every chapter moves the same way in both populations. **14 chapters are worse**: ch01–05, ch07,
+ch09–15, ch17. **6 are better**: ch06, ch08, ch16, ch19, ch20, ch21. ch18 is unchanged.
+
+**The net drop of 31 is 98 terms lost and 67 gained** (common ids). This decomposition was
+computed from the result file, not by hand:
+
+| | terms | by class |
 |---|---|---|
-| ch07 | glossary-only | 28 → 19 of 37 |
-| ch02 | glossary-only | 37 → 30 of 49 |
-| ch04 | **no-glossary** | 22 → 15 of 40 |
-| ch05 | glossary-only | 19 → 13 of 26 |
-| ch11 | glossary-only | 20 → 15 of 30 |
-| ch15 | glossary-only | 6 → 3 of 11 |
+| lost (consistent in July, not in the new MT) | 98 | 66 TEXT-DRIFT, 17 KEYTERM-SPLIT, 9 STABLE, 4 KEYTERM-OTHER, 2 RULING-BROKEN-NEW |
+| gained (consistent in the new MT, not in July) | 67 | 33 KEYTERM-FIXED, 15 RULED-APPLIED, 15 TEXT-GAIN, 3 TEXT-RENAMED, 1 STABLE |
 
-Classes across the book:
+- A **KEYTERM-SPLIT** loss is one key-terms headword segment that disagrees with a chapter text
+  which is itself fine. Repairing it costs one segment.
+- A **TEXT-DRIFT** loss is the running text. That is the expensive class.
+- The **gains** are real and sit where the new MT had help: rulings on the wire (15) and key-terms
+  entries the text now matches (33).
+- So "keep the July MT" is not free either. It would undo those gains, including [USER]'s rulings.
+
+Largest net losses by chapter (common ids):
+
+| chapter | glossary arm (new) | consistent old → new | lost / gained |
+|---|---|---|---|
+| ch07 | glossary-only | 28 → 18 of 37 | 12 / 2 |
+| ch04 | **no-glossary** | 22 → 15 of 40 | 10 / 3 |
+| ch05 | glossary-only | 19 → 13 of 26 | 7 / 1 |
+| ch02 | glossary-only | 37 → 32 of 49 | 7 / 2 |
+| ch11 | glossary-only | 19 → 14 of 29 | 8 / 3 |
+| ch10 | glossary-only | 23 → 19 of 44 | 9 / 5 |
+| ch15 | glossary-only | 6 → 3 of 11 | 3 / 0 |
+
+Classes across the book (all segments; the common-id counts are in `classify-common.txt`):
 
 | class | count | what it means |
 |---|---|---|
@@ -133,7 +163,7 @@ Classes across the book:
 
 ```bash
 python3 -u experiments/terminology-consistency/measure.py --book efnafraedi-2e \
-    --old-ref 9a69414d5 --new-ref <ref> --out /path/book.json      # ~1 min, needs git + node
+    --old-ref 9a69414d5 --new-ref <ref> [--common-ids] --out /path/book.json   # ~1 min, needs git + node
 python3 experiments/terminology-consistency/classify.py /path/book.json /path/classified.json
 python3 experiments/terminology-consistency/live_check.py /path/classified.json /path/scratch
 python3 experiments/terminology-consistency/live_check.py /path/classified.json /path/scratch --control
