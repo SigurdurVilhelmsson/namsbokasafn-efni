@@ -1,0 +1,42 @@
+ch01 1-key-terms.html 14808 bytes  old-only 13  new-only 0  both 2
+ch02 2-key-terms.html 20587 bytes  old-only 14  new-only 0  both 3
+ch03 3-key-terms.html 7295 bytes  old-only 5  new-only 0  both 0
+ch04 4-key-terms.html 15569 bytes  old-only 14  new-only 0  both 1
+ch05 5-key-terms.html 24211 bytes  old-only 10  new-only 0  both 0
+ch06 6-key-terms.html 21450 bytes  old-only 13  new-only 0  both 2
+ch07 7-key-terms.html 14110 bytes  old-only 16  new-only 0  both 4
+ch08 8-key-terms.html 10850 bytes  old-only 23  new-only 0  both 0
+ch09 9-key-terms.html 17207 bytes  old-only 6  new-only 0  both 0
+ch10 10-key-terms.html 18141 bytes  old-only 28  new-only 0  both 4
+ch11 11-key-terms.html 12440 bytes  old-only 12  new-only 0  both 1
+ch12 12-key-terms.html 9456 bytes  old-only 9  new-only 0  both 2
+ch13 13-key-terms.html 3429 bytes  old-only 4  new-only 0  both 0
+ch14 14-key-terms.html 9385 bytes  old-only 6  new-only 0  both 1
+ch15 15-key-terms.html 5232 bytes  old-only 5  new-only 0  both 0
+ch16 16-key-terms.html 9203 bytes  old-only 7  new-only 0  both 0
+ch17 17-key-terms.html 20984 bytes  old-only 20  new-only 0  both 0
+ch18 18-key-terms.html 48916 bytes  old-only 5  new-only 0  both 1
+ch19 19-key-terms.html 15517 bytes  old-only 25  new-only 0  both 4
+ch20 20-key-terms.html 7071 bytes  old-only 3  new-only 0  both 0
+ch21 21-key-terms.html 58591 bytes  old-only 31  new-only 0  both 2
+CONTROL ch01 1-key-terms.html 15898 bytes  old-only 0  new-only 12  both 3
+CONTROL ch02 2-key-terms.html 21863 bytes  old-only 0  new-only 15  both 2
+CONTROL ch03 3-key-terms.html 7806 bytes  old-only 0  new-only 4  both 1
+CONTROL ch04 4-key-terms.html 16863 bytes  old-only 0  new-only 15  both 0
+CONTROL ch05 5-key-terms.html 25076 bytes  old-only 0  new-only 9  both 1
+CONTROL ch06 6-key-terms.html 21746 bytes  old-only 0  new-only 14  both 1
+CONTROL ch07 7-key-terms.html 15086 bytes  old-only 0  new-only 16  both 4
+CONTROL ch08 8-key-terms.html 10708 bytes  old-only 0  new-only 22  both 1
+CONTROL ch09 9-key-terms.html 18059 bytes  old-only 0  new-only 6  both 0
+CONTROL ch10 10-key-terms.html 19374 bytes  old-only 0  new-only 31  both 1
+CONTROL ch11 11-key-terms.html 13519 bytes  old-only 0  new-only 10  both 3
+CONTROL ch12 12-key-terms.html 10226 bytes  old-only 0  new-only 9  both 2
+CONTROL ch13 13-key-terms.html 3614 bytes  old-only 0  new-only 4  both 0
+CONTROL ch14 14-key-terms.html 10269 bytes  old-only 0  new-only 7  both 0
+CONTROL ch15 15-key-terms.html 5608 bytes  old-only 0  new-only 5  both 0
+CONTROL ch16 16-key-terms.html 9608 bytes  old-only 0  new-only 6  both 0
+CONTROL ch17 17-key-terms.html 21594 bytes  old-only 0  new-only 16  both 2
+CONTROL ch18 18-key-terms.html 49798 bytes  old-only 0  new-only 6  both 0
+CONTROL ch19 19-key-terms.html 15919 bytes  old-only 1  new-only 26  both 1
+CONTROL ch20 20-key-terms.html 7587 bytes  old-only 0  new-only 3  both 0
+CONTROL ch21 21-key-terms.html 60386 bytes  old-only 0  new-only 32  both 0
