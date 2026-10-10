@@ -320,6 +320,11 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 2. **Translation memory** (tm/) - human-verified EN↔IS parallel corpus
 3. **Localized content** (04-localized-content/, 05-publication/) - adapted for Icelandic students
 
+🔴 **DURABLE — THE PROJECT IS ALSO A RESEARCH EVALUATION OF AI-ASSISTED MACHINE TRANSLATION, ITS COST AND ITS QUALITY.** [USER] 2026-10-10: the results are meant for a final report and/or publication in professional journals. **So every post-processing step applied to MT output must be documented well enough for a reader to reconstruct it:** what was done (hand repair, ruling, glossary arm or subset, re-buy, term substitution, figure recompose), to which scope, why, at what cost in ISK, and with which before/after measurement. Concretely:
+- **Never fix MT output silently.** A hand repair is its own commit, naming its scope and the ruling behind it (the `HAND REPAIR` commits of 2026-09-27 are the shape).
+- **Keep each measurement that motivates or validates a step** (for example an old-vs-new terminology comparison) as a citable artifact with its method and its instrument's known blind spots. Off-repo evidence under `~/.cache/namsbokasafn-audit/` is NOT durable enough for a publication, so promote what a report will cite.
+- **Keep the provenance sidecars truthful** (`02-mt-output/*-provenance.json`: glossary arm, term count, cost). They are the primary data for the cost and quality analysis.
+
 ## Project Context
 
 - **Developer profile:** Chemistry teacher with basic Linux skills, not a professional developer
