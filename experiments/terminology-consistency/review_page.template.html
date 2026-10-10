@@ -96,6 +96,7 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
     <ul>
       <li>The list opens on the <b>terms that lost consistency</b>. Use “Show” to see the rest, including improvements.</li>
       <li><b>Per chapter</b>, which MT goes forward. The control sits at the top of each chapter.</li>
+      <li><b>Where both versions list the same word</b> but the new text strays from it, the choice is whether the text should keep to that word.</li>
       <li><b>Per term</b>, which Icelandic word is right: the July word, the new word, or another. A ruling here can become a house-style ruling and reach the next buy.</li>
       <li>This measures <b>consistency, not correctness</b>. A version that is consistently wrong still scores well, so the word choice is yours.</li>
       <li><b>“Key-terms entry ≠ text”</b> is cheap: one short segment disagrees with a chapter text that is fine. <b>“Text drifted”</b> is the expensive kind.</li>
@@ -184,6 +185,26 @@ function sideHtml(label, K, p, defs, ex) {
     ${ex.length ? `<details><summary>${ex.length} example${ex.length > 1 ? 's' : ''} where the text does not use it</summary><div class="ex">${ex.map((x) => `<div><span class="en">${esc(x.en)}</span><span>${esc(x.is)}</span></div>`).join('')}</div></details>` : ''}</div>`;
 }
 
+// When both versions' key-terms entries are the same word, "July word" and "New word" mean the
+// same thing; the real question is whether the text should keep to that word.
+function choicesHtml(t) {
+  const r = (v, l) => `<label><input type="radio" name="c-${t.id}" value="${v}"> ${l}</label>`;
+  if (t.sameK) {
+    return r('confirm', `Keep this word: <b>${esc(t.Knew)}</b>`)
+      + (t.ruling && t.ruling.toLowerCase() !== t.Knew.toLowerCase() ? r('ruling', `Your ruling: <b>${esc(t.ruling)}</b>`) : '')
+      + r('other', 'Another word') + r('either', 'Variation is fine');
+  }
+  return r('july', 'July word') + r('new', 'New word') + r('other', 'Another word') + r('either', 'Either is fine');
+}
+
+// Answers saved before the same-word choices existed: july/new on a same-word card meant
+// "keep this word", unless a word was typed, which meant "another word".
+function shownChoice(t, v) {
+  if (!v) return null;
+  if (t.sameK && (v.choice === 'july' || v.choice === 'new')) return v.value ? 'other' : 'confirm';
+  return v.choice;
+}
+
 function cardHtml(t) {
   const [lab, sev, , why] = CLS[t.cls];
   const v = verdicts.get(t.id);
@@ -193,12 +214,7 @@ function cardHtml(t) {
     <p class="meta">${esc(why)}</p>
     <div class="pair">${sideHtml('July (live now)', t.Kold, t.po, t.dOld, t.exOld)}${sideHtml('New MT', t.Knew, t.pn, t.dNew, t.exNew)}</div>
     <div class="answer">
-      <div class="choices" role="radiogroup" aria-label="Right word for ${esc(t.en)}">
-        <label><input type="radio" name="c-${t.id}" value="july"> July word</label>
-        <label><input type="radio" name="c-${t.id}" value="new"> New word</label>
-        <label><input type="radio" name="c-${t.id}" value="other"> Another word</label>
-        <label><input type="radio" name="c-${t.id}" value="either"> Either is fine</label>
-      </div>
+      <div class="choices" role="radiogroup" aria-label="Right word for ${esc(t.en)}">${choicesHtml(t)}</div>
       <div class="row"><input type="text" id="v-${t.id}" placeholder="The word, if another" aria-label="Another word for ${esc(t.en)}"></div>
       <textarea id="n-${t.id}" placeholder="Note (optional)" aria-label="Note for ${esc(t.en)}"></textarea>
       <div class="row"><button type="button" data-act="save">Save</button><button type="button" class="ghost" data-act="clear">Remove answer</button><span class="saved" aria-live="polite"></span></div>
@@ -207,19 +223,20 @@ function cardHtml(t) {
 
 function fillCard(el, t) {
   const v = verdicts.get(t.id);
-  for (const r of el.querySelectorAll('input[type=radio]')) r.checked = !!v && v.choice === r.value;
+  const shown = shownChoice(t, v);
+  for (const r of el.querySelectorAll('input[type=radio]')) r.checked = shown === r.value;
   $(`#v-${CSS.escape(t.id)}`, el).value = v?.value || '';
   $(`#n-${CSS.escape(t.id)}`, el).value = v?.note || '';
   el.classList.toggle('answered', !!v);
   $('.saved', el).textContent = v ? 'Saved' : '';
   $('[data-act=save]', el).onclick = async () => {
     const choice = el.querySelector('input[type=radio]:checked')?.value;
-    if (!choice) { $('.saved', el).textContent = 'Pick one of the four choices first.'; return; }
+    if (!choice) { $('.saved', el).textContent = 'Pick one of the choices first.'; return; }
     const value = $(`#v-${CSS.escape(t.id)}`, el).value.trim();
     if (choice === 'other' && !value) { $('.saved', el).textContent = 'Type the word you want.'; return; }
     if (!db) { $('.saved', el).textContent = 'Answers cannot be saved in this view.'; return; }
     try {
-      await db.collection('verdicts').doc(t.id).set({ ch: t.ch, en: t.en, cls: t.cls, Kold: t.Kold, Knew: t.Knew, choice, value, note: $(`#n-${CSS.escape(t.id)}`, el).value.trim(), savedAt: new Date().toISOString() });
+      await db.collection('verdicts').doc(t.id).set({ ch: t.ch, en: t.en, cls: t.cls, Kold: t.Kold, Knew: t.Knew, sameK: t.sameK, ruling: t.ruling || null, choice, value, note: $(`#n-${CSS.escape(t.id)}`, el).value.trim(), savedAt: new Date().toISOString() });
       $('.saved', el).textContent = 'Saved';
     } catch (e) { $('.saved', el).textContent = 'Not saved. Try again.'; }
   };

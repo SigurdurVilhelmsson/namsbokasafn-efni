@@ -55,7 +55,7 @@ def main():
                 'keep': t.get('oldKeep_new'), 'ruling': t['ruling']['is'] if t.get('ruling') and t['ruling']['exact'] else None,
                 'ruledNew': t.get('ruled_new'),
                 'dOld': [clean(k) for k in t['old']['defSites']], 'dNew': [clean(k) for k in t['new']['defSites']],
-                'lost': bool(ok and not o_n), 'exOld': ex('old'), 'exNew': ex('new')})
+                'sameK': not t['renderingChanged'], 'lost': bool(ok and not o_n), 'exOld': ex('old'), 'exNew': ex('new')})
     data = {'oldRef': r['oldRef'][:9], 'newRef': r['newRef'][:9], 'chapters': chapters, 'terms': terms,
             'book': {'old': sum(c['old'] for c in chapters), 'new': sum(c['new'] for c in chapters),
                      'of': sum(c['of'] for c in chapters), 'lost': sum(c['lost'] for c in chapters),
