@@ -155,12 +155,18 @@ def ruling_for(en_norm, rulings):
     return best
 
 
-def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings):
+def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings, common_ids=False):
     mods = sorted({n.split('-segments')[0] for n in git_ls(new_ref, f'books/{book}/02-mt-output/{ch}')
                    if n.endswith('-segments.is.md') and n.startswith('m')})
     data = {}
     for m in mods:
         data[m] = {'old': load_vintage(old_ref, book, ch, m), 'new': load_vintage(new_ref, book, ch, m)}
+
+    # Segment ids present (EN and IS) in BOTH vintages: --common-ids scores only these, so that
+    # segment classes the old vintage never had (alts, exercise alts, table summaries) cannot
+    # move the comparison.
+    for d in data.values():
+        d['common'] = (d['old'][0].keys() & d['old'][1].keys()) & (d['new'][0].keys() & d['new'][1].keys())
 
     # Pairing quality: ids present in EN and IS of one vintage, and ids in only one.
     quality = {}
@@ -196,12 +202,15 @@ def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings):
         for v in ('old', 'new'):
             other = 'new' if v == 'old' else 'old'
             n = own = oth = rul = 0
+            by_type = Counter()
             defs = []
             misses = []
             for m, d in data.items():
                 en, is_ = d[v]
                 for key, etxt in en.items():
                     if key.startswith(('glossary-term:', 'glossary-def:')) or key not in is_:
+                        continue
+                    if common_ids and key not in d['common']:
                         continue
                     itxt = is_[key]
                     # In-text definition sites: an English term span naming t.
@@ -214,6 +223,7 @@ def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings):
                     if not pat or not pat.search(plain(etxt)):
                         continue
                     n += 1
+                    by_type[key.split(':', 1)[0]] += 1
                     c_own = carries(itxt, Kst[v])
                     own += c_own
                     if row['renderingChanged']:
@@ -223,7 +233,7 @@ def measure_chapter(book, ch, old_ref, new_ref, max_examples, rulings):
                     if not c_own and len(misses) < max_examples:
                         misses.append({'seg': f'{m}:{key}', 'en': plain(etxt)[:300], 'is': plain(itxt)[:300]})
             paired = [x for x in defs if x is not None]
-            row[v] = {'prose': n, 'own': own, 'other': oth if row['renderingChanged'] else None,
+            row[v] = {'prose': n, 'proseByType': dict(by_type), 'own': own, 'other': oth if row['renderingChanged'] else None,
                       'ruled': rul if Rst else None,
                       'keyTermRuled': carries(K[v] or '', Rst) if Rst else None,
                       'defSites': Counter(x if x is not None else '<unpaired>' for x in defs),
@@ -243,6 +253,8 @@ def main():
     ap.add_argument('--new-ref', default='HEAD')
     ap.add_argument('--chapters', default='', help='comma list, e.g. ch01,ch02 (default: all chNN)')
     ap.add_argument('--max-examples', type=int, default=3)
+    ap.add_argument('--common-ids', action='store_true',
+                    help='score prose only on segment ids present in both vintages')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     chs = [c for c in a.chapters.split(',') if c] or sorted(
@@ -251,10 +263,10 @@ def main():
     rulings = load_rulings(a.new_ref)
     if not rulings:
         sys.exit('could not load server/lib/houseStyleTerms.js at the new ref')
-    result = {'book': a.book, 'oldRef': resolve(a.old_ref), 'newRef': resolve(a.new_ref), 'rulingCount': len(rulings), 'chapters': []}
+    result = {'book': a.book, 'oldRef': resolve(a.old_ref), 'newRef': resolve(a.new_ref), 'rulingCount': len(rulings), 'commonIds': a.common_ids, 'chapters': []}
     for ch in chs:
         print(f'… {ch}', file=sys.stderr)
-        result['chapters'].append(measure_chapter(a.book, ch, a.old_ref, a.new_ref, a.max_examples, rulings))
+        result['chapters'].append(measure_chapter(a.book, ch, a.old_ref, a.new_ref, a.max_examples, rulings, a.common_ids))
     result['complete'] = True  # terminal marker: judge a run by this, never by the exit code
     with open(a.out, 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=1)
