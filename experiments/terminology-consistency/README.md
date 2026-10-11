@@ -280,3 +280,40 @@ It also holds three checks, reported and never resolved:
 
 Each stage 1 ruling carries the stored word, a `class` (matches-stored, spelling-vs-stored, word-change, tied, unstored) and a `proposedMechanism` (none, preference, entry, replace-entry, concept-model-script, undecided). The script's docstring defines each one. Nothing is applied. A stage 1 target that contradicts a ruling in force exits 1 unless an explicit override names the record that reverses it; *bonding orbital* is the only one. The spelling test is `stage1_page.spelling_only`, imported rather than copied.
 
+
+### The masked reading test, 1.7 (2026-10-11, night)
+
+Pre-registered in `7204d2038`, before the first answer: the pairs, the rule and the scoring
+script. The page's **Reading test** tab shows them one at a time. Answers go to the page's
+`stage1_reading` collection as `{choice: A|B|equal|both_wrong, septGuess: A|B|unsure}`. The
+database never holds a vintage.
+
+- **`masked_test_sample.py`** draws the pairs. Its population is the frozen carry-over
+  classifier's own output (`experiments/mt-vintage-comparison/scripts/carryover/`, run from a
+  scratch copy; the docstring gives the steps). It does not re-implement the English-equality
+  test. Before any exclusion it reproduced both counts the plan's threshold was sized against:
+  **9,048** differing same-key non-cell pairs and **951** June-*frumeind* / September-*atóm* pairs.
+- **Masking is by selection.** A pair is dropped when the two texts make a different term
+  choice: a ruled, verdict, competitor or key-terms word is present in one text and absent from
+  the other (u-umlaut folded, so *efnablanda* takes *efnablöndu*). Two looser predicates were
+  measured first and rejected, because they dropped 89% and 79% of pairs on roots like *eind* and
+  words like *með*. Funnel: 8,205 differ as displayed, **6,084 dropped for a term choice**,
+  **2,121 eligible**. An assertion fails the run if any *frumeind*/*atóm* pair survives.
+- **150 pairs**, seed `20261011`. Chapters get pairs in proportion to the eligible population,
+  and a systematic sample spreads type and length. Identical boilerplate is deduplicated.
+  `results/2026-10-11/masked-test-pairs.json` holds no vintage. The key (which side is June) is
+  off-repo until the answers are frozen, at
+  `~/.cache/namsbokasafn-audit/2026-10-11-masked-test/`. The script regenerates it byte for byte,
+  and its sha256 is in the pairs file. **`masked_test_analyse.py` refuses a key whose sha256
+  differs.**
+- **The rule** (D1, on the page above the first pair): the hybrid only if June wins ≥ 60% of
+  decisive pairs **and** the 95% Wilson lower bound is above 0.5. `--table` prints the minimum
+  wins for each n. **The September guess is asked per pair, not once at the end as the plan's 1.7
+  text says.** A single end-of-test guess is a coin flip and cannot show that the masking failed.
+  If the guesses are right with a Wilson lower bound above 0.5, the result is not used.
+- **Controls run on the analyser before publishing:** a June sweep fires the override, a
+  September sweep does not, all guesses right voids the result, and a tampered key is refused.
+- **Blind spots:** a 3-letter term word inside a compound and other stem changes (i-umlaut) are
+  not caught; other vintage fingerprints may remain (boilerplate wording, punctuation habits).
+  The per-pair guess is the check on all of them. The test measures reading quality where the two
+  texts agree on terms. It says nothing about term quality, which the rulings settle.

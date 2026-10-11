@@ -3,8 +3,9 @@
 chemistry term-ruling set, answers saved as [USER] goes.
 
 This first version carries 1.1 (decided, shown), 1.3 (the 68 gained terms), 1.4 (the 217
-unruled headwords), the three definite rows of 1.5 and 1.8. 1.5's AI pre-screen, 1.6 (prod's
-pending edit rows) and 1.7 (the masked reading test) are added to the same page later.
+unruled headwords), the three definite rows of 1.5, 1.7 (the masked reading test: pairs from
+masked_test_sample.py, rule and arithmetic from masked_test_analyse.py) and 1.8. 1.5's AI
+pre-screen and 1.6 (prod's pending edit rows) are added to the same page later.
 
 Inputs (all paths fixed below, so a re-run is the same command):
   - the cached burden run's undecided set, base `new` (the September text). It is the
@@ -42,6 +43,8 @@ BURDEN = os.path.expanduser('~/.cache/namsbokasafn-audit/2026-10-10-plan-facts/b
 UNDECIDED = os.path.join(HERE, 'results', '2026-10-11', 'undecided-217.json')
 CLASSIFIED = os.path.join(HERE, 'results', '2026-10-10', 'classified-common.json')
 RULINGS = os.path.join(HERE, 'results', '2026-10-11', 'ruling-set-before-stage1.json')
+READING = os.path.join(HERE, 'results', '2026-10-11', 'masked-test-pairs.json')
+READING_CENSUS = os.path.join(HERE, 'results', '2026-10-11', 'masked-test-census.json')
 BOOK = os.path.join(REPO, 'books', 'efnafraedi-2e')
 LOW_N = 3
 ARTICLE = ('ið', 'inn', 'in', 'ins', 'inu', 'inni', 'innar', 'num', 'nir', 'nar', 'na', 'nn', 'ns', 'nu', 'nni', 'ð', 'n')
@@ -49,6 +52,9 @@ ARTICLE = ('ið', 'inn', 'in', 'ins', 'inu', 'inni', 'innar', 'num', 'nir', 'nar
 _spec = importlib.util.spec_from_file_location('measure', os.path.join(HERE, 'measure.py'))
 M = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(M)
+_spec = importlib.util.spec_from_file_location('analyse', os.path.join(HERE, 'masked_test_analyse.py'))
+A = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(A)  # the reading test's rule: the page shows the analyser's own arithmetic
 
 # 1.5: the three wrong-sense rows the plan names. Counts are the 2026-10-10 verifier's FLOORS in
 # the June text (experiments/mt-vintage-comparison/README.md §2); none were censused in September.
@@ -221,6 +227,15 @@ def main():
         ws.append({**{k: v for k, v in w.items() if k not in ('pattern', 'stem')}, 'stem': w['stem'],
                    **september_census(w['pattern'], w['stem'])})
 
+    # 1.7: the pre-registered pairs (masked_test_sample.py). No vintage is in this file.
+    RP, RC = json.load(open(READING)), json.load(open(READING_CENSUS))
+    reading = {'pairs': [{'id': p['pair_id'], 'ch': p['chapter'], 'en': p['en'], 'A': p['A'], 'B': p['B']}
+                         for p in RP['pairs']],
+               'keySha': RP['keySha256'][:12], 'eligible': RC['funnel']['eligible'],
+               'differing': RC['funnel']['differing_as_displayed'],
+               'excluded': RC['funnel']['excluded_term_in_difference'],
+               'minWins': [[n, A.min_wins(n)] for n in (40, 60, 80, 100, 120, 150)]}
+
     counts = defaultdict(int)
     for it in items:
         counts[it['bucket']] += 1
@@ -229,7 +244,7 @@ def main():
                       'conflicts': len(R['conflicts'])},
         'd4': [{'en': r['en'], 'is': r['is'], 'competitor': r['competitor'], 'frozen': r.get('frozenTarget'),
                 'why': r.get('override')} for r in R['rulings'] if r.get('override')],
-        'items': items, 'gainedSame': same_word_gained, 'wrongSense': ws,
+        'items': items, 'gainedSame': same_word_gained, 'wrongSense': ws, 'reading': reading,
         'counts': dict(counts), 'gainedTotal': len(gained),
         'gainedElsewhere': sum(1 for it in items if (it['ch'], it['id'].split('_', 1)[1]) in gained and it['bucket'] != 'gained'), 'total': len(items), 'lowN': sum(u['prose'] < LOW_N for u in U),
         'chapters': sorted({it['ch'] for it in items} | {g['ch'] for g in same_word_gained}),

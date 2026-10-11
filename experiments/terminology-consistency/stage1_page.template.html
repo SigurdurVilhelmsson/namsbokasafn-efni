@@ -89,6 +89,13 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
 .later { display: grid; gap: 6px; }
 .crit { display: grid; gap: 10px; }
 .crit .item { display: grid; gap: 6px; }
+.rnav { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-variant-numeric: tabular-nums; }
+.rcard .src { font-size: 0.95rem; color: var(--muted); overflow-wrap: anywhere; }
+.rcard .ver p { font-size: 1.02rem; line-height: 1.6; overflow-wrap: anywhere; }
+.rcard .ver { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.rcard fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; }
+.rcard fieldset[disabled] { opacity: 0.45; }
+.rcard legend { font-weight: 600; padding: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
@@ -130,6 +137,7 @@ const PARTS = [
   { id: 'defaults', label: 'Defaults' },
   { id: 'gained', label: 'Gained terms' },
   { id: 'wrong', label: 'Wrong-sense rows' },
+  { id: 'reading', label: 'Reading test' },
   { id: 'criterion', label: 'Publication rule' },
   { id: 'decided', label: 'Already decided' },
 ];
@@ -143,6 +151,10 @@ const answers = new Map();
 let meta = {};
 let db = null;
 let part = 'cards';
+const reading = new Map();
+const RP = DATA.reading.pairs;
+let ri = 0;
+let readingLoaded = false;
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const pct = (a) => a && a[1] ? `${a[0]}/${a[1]} (${Math.round(100 * a[0] / a[1])}%)` : '–';
@@ -189,12 +201,13 @@ function renderSummary() {
     <div><b>${done(cards)} / ${cards.length}</b><span>terms ruled</span></div>
     <div><b>${['defaults', 'gained'].filter((k) => meta['confirm_' + k]).length} / 2</b><span>default lists confirmed (${defaults.length} + ${gained.length} terms), ${done(defaults) + done(gained)} changed</span></div>
     <div><b>${done(DATA.wrongSense)} / ${DATA.wrongSense.length}</b><span>wrong-sense rows answered</span></div>
+    <div><b>${reading.size} / ${RP.length}</b><span>reading-test pairs answered</span></div>
     <div><b>${meta.criterion ? 'Answered' : 'Open'}</b><span>publication rule</span></div>`;
   const rs = DATA.rulingSet;
   $('#refs').textContent = `Ruling set in force: ${rs.headwords} English headwords with a target (repository ${rs.head}), ${rs.conflicts} conflicts between sources. Source data: experiments/terminology-consistency/ (stage1_page.py, compile_ruling_set.py).`;
   for (const b of $('#tabs').children) {
     const p = PARTS.find((x) => x.id === b.dataset.part);
-    const n = { cards: cards.length - done(cards), defaults: meta.confirm_defaults ? 0 : defaults.length, gained: meta.confirm_gained ? 0 : gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
+    const n = { cards: cards.length - done(cards), defaults: meta.confirm_defaults ? 0 : defaults.length, gained: meta.confirm_gained ? 0 : gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), reading: RP.length - reading.size, criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
     b.innerHTML = `${esc(p.label)} <span class="n">${n}</span>`;
   }
 }
@@ -312,6 +325,68 @@ function grouped(list, render, empty) {
   return html.join('') || `<p class="empty">${empty}</p>`;
 }
 
+// 1.7: one pair at a time. Which side is June is NOT on this page: the key stays off the
+// repository until the answers are frozen, and only its fingerprint is published.
+function ruleHtml() {
+  const r = DATA.reading, w = Object.fromEntries(r.minWins);
+  return `<div class="panel"><h2>The decision rule, fixed before the first answer</h2><ul>
+    <li>Each pair is one sentence or passage, translated twice by the machine: once in June, once in September. You do not know which is which, and the order changes from pair to pair.</li>
+    <li>Pick the version that reads better as Icelandic for a student, given the English. <b>Equally good</b> and <b>Both wrong</b> count for neither side.</li>
+    <li><b>The base changes from September to the hybrid only if June wins at least 6 of every 10 pairs where you chose a side, and the 95% lower bound for June's share is above one half.</b> With 60 such pairs June needs ${w[60]} wins, with 100 pairs ${w[100]}, with 150 pairs ${w[150]}. Anything less keeps the September base. A small June advantage does not pay for the extra machinery, so the rule leans to September on purpose.</li>
+    <li>After each answer you are asked which version you think was September. If those guesses come out right clearly more often than chance (95% lower bound above one half), the versions were recognisable, and the result is not used.</li>
+    <li>Terminology is kept out of the test: the pairs come from the ${r.eligible.toLocaleString('en')} where both versions make the same term choices. Of ${r.differing.toLocaleString('en')} carried sentences whose two versions differ, ${r.excluded.toLocaleString('en')} were left out because a ruled or key term differed. Your term rulings are applied to whichever base wins.</li>
+  </ul><p class="meta">Pairs and rule committed before the first answer (masked_test_sample.py, masked_test_analyse.py). Key fingerprint ${esc(r.keySha)}…</p></div>`;
+}
+function nextOpen(from) {
+  for (let k = 1; k <= RP.length; k++) { const j = (from + k) % RP.length; if (!reading.has(RP[j].id)) return j; }
+  return -1;
+}
+function readingProgress() {
+  const left = RP.length - reading.size;
+  return left ? `${reading.size} of ${RP.length} answered, ${left} to go.` : `All ${RP.length} answered. Tell Claude in the chat to freeze them.`;
+}
+function renderReading() {
+  const p = RP[ri], v = reading.get(p.id);
+  const q = (name, val, label) => `<label><input type="radio" name="${name}" value="${val}"${v && v[name === 'rq' ? 'choice' : 'septGuess'] === val ? ' checked' : ''}> ${label}</label>`;
+  $('#main').innerHTML = `<section class="part"><div class="parthead"><h2>Reading test (1.7)</h2>
+      <p class="muted">${RP.length} pairs. Short sittings are fine: every answer saves as you go, and you can come back to any pair.</p></div>
+    ${ruleHtml()}
+    <div class="rnav"><b>Pair ${ri + 1} of ${RP.length}</b><span class="meta" id="rprog">${esc(readingProgress())}</span>
+      <button type="button" class="ghost" id="rprev">Previous</button><button type="button" class="ghost" id="rnext">Next</button>
+      <button type="button" class="ghost" id="ropen">Next unanswered</button></div>
+    <article class="card rcard${v ? ' answered' : ''}" id="rcard">
+      <div class="side"><h3>English · chapter ${esc(chNum(p.ch))}</h3><p class="src">${esc(p.en)}</p></div>
+      <div class="pair"><div class="side ver"><h3>A</h3><p>${esc(p.A)}</p></div><div class="side ver"><h3>B</h3><p>${esc(p.B)}</p></div></div>
+      <div class="answer">
+        <fieldset id="rqf"><legend>Which reads better?</legend><div class="choices">
+          ${q('rq', 'A', 'A reads better')}${q('rq', 'B', 'B reads better')}${q('rq', 'equal', 'Equally good')}${q('rq', 'both_wrong', 'Both wrong')}</div></fieldset>
+        <fieldset id="rgf"${v ? '' : ' disabled'}><legend>Which do you think was September?</legend><div class="choices">
+          ${q('rg', 'A', 'A')}${q('rg', 'B', 'B')}${q('rg', 'unsure', 'Can’t tell')}</div></fieldset>
+        <textarea id="rnote" placeholder="Note (optional): what made the difference" aria-label="Note on this pair">${esc(v?.note || '')}</textarea>
+        <div class="row"><button type="button" id="rsave">Save and go to the next</button><span class="saved" id="rmsg" aria-live="polite">${v ? 'Saved' : ''}</span></div>
+      </div></article></section>`;
+  const go = (j) => { if (j >= 0) { ri = j; renderReading(); window.scrollTo({ top: $('.rnav').offsetTop - 80 }); } };
+  $('#rprev').onclick = () => go((ri - 1 + RP.length) % RP.length);
+  $('#rnext').onclick = () => go((ri + 1) % RP.length);
+  $('#ropen').onclick = () => go(nextOpen(ri));
+  for (const r of document.querySelectorAll('input[name=rq]')) r.onchange = () => { $('#rgf').disabled = false; };
+  $('#rsave').onclick = async () => {
+    const msg = $('#rmsg');
+    const say = (t, err) => { msg.textContent = t; msg.classList.toggle('err', !!err); };
+    const choice = document.querySelector('input[name=rq]:checked')?.value;
+    const septGuess = document.querySelector('input[name=rg]:checked')?.value;
+    if (!choice) return say('Pick which reads better first.', true);
+    if (!septGuess) return say('Say which you think was September, or Can’t tell.', true);
+    if (!db) return say('Answers cannot be saved in this view.', true);
+    try {
+      await db.collection('stage1_reading').doc(p.id).set({ choice, septGuess, note: $('#rnote').value.trim(), savedAt: new Date().toISOString() });
+      reading.set(p.id, { choice, septGuess });
+      const j = nextOpen(ri);
+      if (j >= 0) go(j); else { say('Saved. All pairs answered.'); renderSummary(); }
+    } catch (e) { say('Not saved. Try again.', true); }
+  };
+}
+
 function renderPart() {
   $('#filters').hidden = !['cards', 'defaults', 'gained'].includes(part);
   for (const b of $('#tabs').children) b.setAttribute('aria-selected', String(b.dataset.part === part));
@@ -341,6 +416,9 @@ function renderPart() {
         <p class="meta"><b>${esc(w.row)}</b> means ${esc(w.meaning)}. In the June text it caused at least ${esc(w.floor)}. In the September text, ${w.sepTotal} sentences use <i>${esc(w.en)}</i> and ${w.sepRow} of them contain <i>${esc(w.stem)}-</i>: the September MT mostly does not use this row.</p>
         ${exHtml(`of the September text using ${esc(w.stem)}-`, w.exRow)}${exHtml('of how the September text renders it otherwise', w.exOther)}
         ${formHtml(w, 'wrong')}</article>`).join('')}</section>`;
+  } else if (part === 'reading') {
+    renderReading();
+    return;
   } else if (part === 'criterion') {
     const a = meta.criterion || {};
     m.innerHTML = `<section class="part"><div class="parthead"><h2>Publication rule (1.8)</h2>
@@ -371,7 +449,6 @@ function renderPart() {
       <div class="panel later"><h2>Coming next on this page</h2><ul>
         <li><b>1.5</b> The AI pre-screen of the other approved glossary rows. You rule only the flagged ones.</li>
         <li><b>1.6</b> The 38 pending edit rows on the server, from before the clean break: apply or drop each.</li>
-        <li><b>1.7</b> The masked reading test, about 150 pairs. Its decision rule is shown before the first pair.</li>
       </ul></div></section>`;
   }
   wireAll();
@@ -429,6 +506,18 @@ renderPart();
       answers.clear();
       for (const d of snap.docs) if (allIds.has(d.id)) answers.set(d.id, d.data());
       refresh(); setStatus(`${answers.size} answer${answers.size === 1 ? '' : 's'} saved.`);
+    }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
+    const readingIds = new Set(RP.map((p) => p.id));
+    db.collection('stage1_reading').onSnapshot((snap) => {
+      reading.clear();
+      for (const d of snap.docs) if (readingIds.has(d.id)) reading.set(d.id, d.data());
+      renderSummary();
+      const el = document.getElementById('rprog'); if (el) el.textContent = readingProgress();
+      if (!readingLoaded) {
+        readingLoaded = true;
+        if (reading.has(RP[ri].id)) { const j = nextOpen(ri); if (j >= 0) ri = j; }
+        if (part === 'reading') renderReading();
+      }
     }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
     db.collection('stage1_meta').onSnapshot((snap) => {
       meta = {}; for (const d of snap.docs) meta[d.id] = d.data();
