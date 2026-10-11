@@ -9,10 +9,11 @@ three checks a ruling needs before it is applied:
   1. ANSWERS: one row per saved answer (collection `stage1_terms`), every field as saved, plus
      `target`: the word chosen (July entry, September entry, or the typed one); `null` for
      "either is fine", which records that the choice is inflection, not a word.
-  2. UNTOUCHED DEFAULTS: the Defaults and Gained tabs' rows with no saved answer. The page told
-     [USER] that a default needs no action unless they disagree, so these stand as shown, with the
-     page's own default rule (`defaultWord` in stage1_page.template.html) applied here. They are
-     labelled `untouched`, never `answered`.
+  2. NOT REVIEWED: the Defaults and Gained tabs' rows with no saved answer, with the page's own
+     proposed word (`defaultWord` in stage1_page.template.html). The page said a default needs no
+     action unless [USER] disagrees, but an empty row cannot tell "seen and accepted" from "not
+     seen" ([USER], 2026-10-11: only the first tab was gone through). So these are PROPOSALS,
+     labelled `not-reviewed`, and are never treated as answers.
   3. OPEN: wrong-sense rows with no answer, and the publication rule if `stage1_meta/criterion`
      is empty.
 
@@ -100,11 +101,13 @@ def main():
             continue
         untouched.append({'id': i, 'ch': t['ch'], 'en': t['en'], 'Kold': t['Kold'], 'Knew': t['Knew'],
                           'tab': 'gained' if t['bucket'] in ('gained', 'gained-same') else 'defaults',
-                          'bucket': t['bucket'], 'target': default_word(t), 'status': 'untouched'})
+                          'bucket': t['bucket'], 'proposed': default_word(t), 'status': 'not-reviewed'})
     untouched.sort(key=lambda r: r['id'])
     cards_unanswered = sorted(i for i, t in items.items() if t['bucket'] == 'card' and i not in saved)
     open_items = {
         'cardsUnanswered': cards_unanswered,
+        'defaultsNotReviewed': sum(r['tab'] == 'defaults' for r in untouched),
+        'gainedNotReviewed': sum(r['tab'] == 'gained' for r in untouched),
         'wrongSense': [{'id': w['id'], 'en': w['en'], 'row': w['row']} for i, w in ws.items() if i not in saved],
         'publicationRule': 'open' if 'criterion' not in meta else None,
     }
@@ -115,17 +118,17 @@ def main():
     for r in R['rulings']:
         if r['is']:
             ruled[r['enNorm']].add((r['is'], r['kind']))
-    rows = [(r, 'answer') for r in answers if r['id'] in items] + [(r, 'untouched') for r in untouched]
+    rows = [(r, 'answer', r['target']) for r in answers if r['id'] in items] + [(r, 'proposed', r['proposed']) for r in untouched]
     contains = []
-    for r, how in rows:
+    for r, how, word in rows:
         n = norm(r['en'])
         for h, ts in sorted(ruled.items()):
             if h != n and re.search(r'(?<!\w)' + re.escape(h) + r'(?!\w)', n):
                 for is_, kind in sorted(ts):
                     lemma = norm(is_)
-                    contains.append({'id': r['id'], 'en': r['en'], 'how': how, 'target': r['target'],
+                    contains.append({'id': r['id'], 'en': r['en'], 'how': how, 'word': word,
                                      'ruledHeadword': h, 'ruledTarget': is_, 'ruledKind': kind,
-                                     'substringHit': bool(r['target']) and lemma in r['target'].lower()})
+                                     'substringHit': bool(word) and lemma in word.lower()})
     by_en = defaultdict(set)
     for r in answers:
         if r['id'] in items and r['target']:
@@ -150,9 +153,10 @@ def main():
     res = {
         'about': ("[USER]'s stage 1 page answers, frozen (plan 2026-10-10 rev. 5, Stage 1). Written by "
                   'experiments/terminology-consistency/export_stage1_answers.py from a dump of the page\'s '
-                  'database. `answers` were saved by [USER]; `untouched` are default rows with no saved answer, '
-                  'which stand as shown on the page (it said a default needs no action unless you disagree); '
-                  '`open` was not answered. `checks` are reported, never resolved. Nothing here is applied: '
+                  'database. `answers` were saved by [USER]; `untouched` are default and gained rows with no '
+                  'saved answer, which [USER] has NOT reviewed (2026-10-11: only the first tab was gone '
+                  'through), so their `proposed` word is a proposal, not an answer; `open` was not answered. '
+                  '`checks` are reported, never resolved. Nothing here is applied: '
                   'rulings reach houseStyleTerms.js, the concept model and the ruling set only through '
                   'later, separately recorded steps.'),
         'exportedAt': '2026-10-11',
@@ -163,8 +167,8 @@ def main():
             'answers': len(answers),
             'answersByChoice': {c: sum(r['choice'] == c for r in answers) for c in sorted({r['choice'] for r in answers})},
             'answersBySection': {s: sum(r['section'] == s for r in answers) for s in sorted({r['section'] for r in answers})},
-            'untouchedDefaults': sum(r['tab'] == 'defaults' for r in untouched),
-            'untouchedGained': sum(r['tab'] == 'gained' for r in untouched),
+            'defaultsNotReviewed': sum(r['tab'] == 'defaults' for r in untouched),
+            'gainedNotReviewed': sum(r['tab'] == 'gained' for r in untouched),
             'cardsUnanswered': len(cards_unanswered),
             'wrongSenseOpen': len(open_items['wrongSense']),
             'scopeNotBook': sum((r.get('scope') or 'book') != 'book' for r in answers),

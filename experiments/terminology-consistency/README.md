@@ -262,7 +262,7 @@ default are in its docstring. Status lives in the register.
 
 `export_stage1_answers.py <dump-dir> <page.html> <versions.json> <out.json>` turns a dump of the page's database (an `ArtifactData` list with `out_dir`) into `results/2026-10-11/stage1-answers-2026-10-11.json`. That file holds:
 - **`answers`:** each answer as saved, with its db version and `target`, the word chosen;
-- **`untouched`:** the default and gained rows with no answer, which stand as the page showed them;
+- **`untouched`:** the default and gained rows with no answer, labelled `not-reviewed` with the page's `proposed` word. An empty row cannot tell "seen and accepted" from "not seen", and on 2026-10-11 [USER] had gone through only the first tab, so these are never treated as answers;
 - **`open`:** what was not answered.
 
 It also holds three checks, reported and never resolved:
