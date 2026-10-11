@@ -1,0 +1,1362 @@
+[
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68859-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68860-segments.is.md",
+"mt_commit": "e0024f462",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68861-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68862-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68863-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68864-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68865-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68866-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68867-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68868-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68869-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68870-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/appendices/m68871-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch00/m68662-segments.is.md",
+"mt_commit": "05cb1b2b4",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68664-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68667-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68670-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68674-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68683-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch01/m68690-segments.is.md",
+"mt_commit": "c43026f46",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68684-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68685-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68687-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68692-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68693-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68695-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68696-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch02/m68698-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/m68699-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/m68700-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/m68702-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/m68703-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch03/m68704-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68709-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68710-segments.is.md",
+"mt_commit": "0b2defd14",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68713-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68714-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68716-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch04/m68730-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch05/chapter-metadata-segments.is.md",
+"mt_commit": "827424dae",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch05/m68723-segments.is.md",
+"mt_commit": "827424dae",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch05/m68724-segments.is.md",
+"mt_commit": "827424dae",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch05/m68726-segments.is.md",
+"mt_commit": "827424dae",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch05/m68727-segments.is.md",
+"mt_commit": "827424dae",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68728-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68729-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68732-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68733-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68734-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch06/m68735-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68736-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68737-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68738-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68739-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68740-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68741-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch07/m68742-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/m68743-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/m68744-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/m68745-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/m68746-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch08/m68747-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68748-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68750-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68751-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68752-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68754-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68758-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch09/m68759-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68760-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68761-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68764-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68768-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68769-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68770-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch10/m68773-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68776-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68778-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68781-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68782-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68783-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch11/m68784-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68785-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68786-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68787-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68789-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68791-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68793-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68794-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch12/m68795-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/m68796-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/m68797-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/m68798-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/m68799-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch13/m68801-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68802-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68803-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68804-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68805-segments.is.md",
+"mt_commit": "5bbfdbe4f",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68806-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68807-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68808-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch14/m68809-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch15/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch15/m68810-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch15/m68811-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch15/m68813-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch15/m68814-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/m68815-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/m68816-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/m68817-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/m68818-segments.is.md",
+"mt_commit": "0b2defd14",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch16/m68819-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68820-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68821-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68822-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68823-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68824-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68825-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68826-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch17/m68827-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68828-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68829-segments.is.md",
+"mt_commit": "a343dfe40",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68830-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68831-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68832-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68833-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68834-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68835-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68836-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68837-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68838-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68839-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch18/m68840-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch19/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch19/m68841-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch19/m68842-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch19/m68843-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch19/m68844-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/m68845-segments.is.md",
+"mt_commit": "c17bb7cfb",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/m68846-segments.is.md",
+"mt_commit": "c17bb7cfb",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/m68847-segments.is.md",
+"mt_commit": "c17bb7cfb",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/m68848-segments.is.md",
+"mt_commit": "c17bb7cfb",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch20/m68849-segments.is.md",
+"mt_commit": "c17bb7cfb",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/chapter-metadata-segments.is.md",
+"mt_commit": "f594336f2",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": true,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68850-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68851-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68852-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68854-segments.is.md",
+"mt_commit": "de601457d",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68856-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68857-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+},
+{
+"is": "books/efnafraedi-2e/02-mt-output/ch21/m68858-segments.is.md",
+"mt_commit": "7658de896",
+"en_at_mt_ids_match": true,
+"en_now_ids_match": true,
+"en_now_eq_en_mt": false,
+"src": "mt"
+}
+]

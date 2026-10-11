@@ -1,0 +1,141 @@
+{
+ "verdicts": [
+  {
+   "claim": "Segment totals: June 21,536, new 22,876 EN/IS occurrences; 285 duplicate ids in each vintage; per-chapter totals as tabulated",
+   "status": "confirmed",
+   "evidence": "Own parser (seglib_v.py, <!-- SEG:… --> to next marker, stripped) over the 170 EN + 170 IS main files per vintage. The legacy {{SEG:}} split-part files ((b)/(c)/(d)) are byte-identical across vintages and were excluded. June-EN 21,536 = June-IS 21,536; new 22,876 = 22,876. 285 extra occurrences of duplicate ids in each vintage. Per-chapter counts are identical to the investigator's aggregate.json for all 23 chapters in both vintages."
+  },
+  {
+   "claim": "(b) premise wrong for June: every June buy used the March glossary 5db701c92 (617 approved, 6 headwords of 3 characters or fewer: STP, gas, ion, pH, ray, ΔH°; 0 of the 17 wrong-sense headwords)",
+   "status": "confirmed",
+   "evidence": "glossary-unified.json history: 5db701c92 (generated field 2026-03-09T21:15Z, committed 2026-03-11), then no commit until 4fbbfa5ff (08-03). The 08-04 revert 00f171aa9 is md5-identical to 5db701c92. At every June-vintage MT commit (c43026f46, 7658de896, de601457d, 827424dae, 05cb1b2b4, 0b2defd14, e0024f462, a343dfe40, c17bb7cfb), tools/api-translate.js loads glossary-unified.json approved-only and filters per CHUNK by case-insensitive substring. Counts in 5db701c92: 617 approved, 6 short (STP, gas, ion, pH, ray, ΔH°), 0 wrong-sense (exact or case-variant). The wrong-sense list in remove-wrong-sense-headwords.js has 18 entries / 16 unique headwords; '17' is the file's own stale comment. Positive controls: 15 of the 16 are present in 120352b07. Also, the 09-01 ch03 buy eeac7731e, run under the August glossary, carries the §C133 rows (tilbrigði 1, sjálfkvæm- 2, ílend- 1 segments). The 09-06 no-glossary re-buy has 0, and June ch03 and ch20 have 0. Caveat stands: the uncommitted on-disk state at buy time is inferred, not measured.",
+   "correctedValue": "Same conclusion. The glossary was generated 03-09 and committed 03-11. The list has 16 unique headwords, not 17."
+  },
+  {
+   "claim": "Tool-MT commits behind the 170 June files: 155 March, 1 June, 9 July, 5 August",
+   "status": "partly",
+   "evidence": "Method: last commit, among MT-run commits, that touched each IS file, with per-commit fraction of changed segments (is_history.json). Result: March 150 / June 6 / July 9 / August 5. 827424dae (06-25) is not a hand repair: its message says 'Re-translated ch5 (api-translate --chapter 5 --force, ~114k chars)', and 43–100% of segments changed in its 5 ch05 files. The investigator's caveat calls it 'Gate A hand repair'. The glossary conclusion is unaffected: the same March file was in the repo in June.",
+   "correctedValue": "150 March / 6 June (5 ch05 + preface m68662) / 9 July / 5 August"
+  },
+  {
+   "claim": "The contaminated glossary first appears 2026-08-03, was reverted 08-04, and was live only from 08-12 16:00",
+   "status": "refuted",
+   "evidence": "4fbbfa5ff (08-03) is a different producer's export (709 approved). It has only 4 short headwords (STP, gas, ion, ray), 0 wrong-sense headwords and 0 §C133 rows, so it is not contaminated in the short/wrong-sense sense. The first such contamination is 120352b07 (08-12 16:00:04 UTC): 2,119 approved, 167 short, 15 wrong-sense, plus form→tilbrigði, consistent→sjálfkvæmur, established→ílendur and structure→gerð. The ch20 pilot MT ran 13:44–13:57 UTC that day. The conclusion (no June-vintage buy saw it) is unchanged.",
+   "correctedValue": "Short/wrong-sense contamination first appears at 120352b07 (2026-08-12 16:00 UTC). The 08-03 version was a producer swap, reverted 08-04, with no such rows."
+  },
+  {
+   "claim": "Detector T: 1,081 unexplained hits in June (50.2/1000) vs 1,284 in new (56.1/1000); 0/30 true positives in each; detector W 0/30",
+   "status": "unverifiable",
+   "evidence": "These counts depend on the instrument and I did not re-implement the detector. The rate arithmetic is consistent (1081/21536, 1284/22876). The CONCLUSION, that there are no short-headword misfires in June, is confirmed three independent ways: (1) the March glossary composition above; (2) the distinctive wrong-sense targets (lófalæg-, marsnáka-, sprettfiska-, sýrukær, graftar-, gamli stíll, moldvörp-, botnlang-, jaxl, gagnlíkinda-) occur in 0 segments in both vintages. The control fires: arsen 14/24, títan 27/34 and astat 3/8 segments are present where the English names the element. The one new 'víddarmótun' is a legitimate 'amplitude modulation'. (3) An ion→jón probe: segments with a jón- word in IS but no ion word in EN number 112 in June and 122 in new. I read 6+6 of them; all are Icelandic words containing 'jón' (milljón, þjóna, sjón, hliðsjón). Control: 1,403 / 1,453 segments where the English does contain an ion word."
+  },
+  {
+   "claim": "addition→álagning: 66 June segments (26/26 read = wrong sense); 3 in new (ch20)",
+   "status": "confirmed",
+   "evidence": "Regex álagn* on the plain (marker-stripped) IS: June 66, with the same per-chapter split as reported (ch14 20, ch15 9, ch20 9, ch13 6, ch18 6, ch04 4, …); new 3, all ch20. I READ ALL 66. All are 'adding a reagent', 'addition reaction' or 'summing wave functions'; none is a levy or markup sense. In 4 of the 66 the English has 'adding' or 'adduct' rather than 'addition', i.e. chunk-level glossary bleed. LIVE HAZARD not mentioned by the investigator: the current glossary (98a5fe2ff) still carries addition→álagning as approved.",
+   "correctedValue": "66 of 66 read are wrong sense (a linguistic judgement for [USER] to confirm)"
+  },
+  {
+   "claim": "valence→girðitala: 5 June segments, 0 in new; the other girðitala hits are correct 'coordination number'",
+   "status": "refuted",
+   "evidence": "The investigator's stem 'girðital*' misses the inflection girðitölu and the compounds girðitengsl-/girðiteng- ('valence bond theory' rendered as girðitengslakenning). Predicate: IS matches girðit*, EN has \\bvalen…, EN has no 'coordinat'. June: 11 segments in 7 modules (m68737, m68742, m68744×3, m68745, m68747×3, m68829, m68842), all read. New: 0. Control: new has 28 girðit- segments, all in coordination-chemistry contexts. Note: my first tag matched 'covalent' and was fixed to \\bvalen. LIVE HAZARD: valence→girðitala is still approved in 98a5fe2ff.",
+   "correctedValue": "June 11 (7 modules), new 0"
+  },
+  {
+   "claim": "The June text's ONE systematic defect comes from a March glossary row (addition→álagning)",
+   "status": "refuted",
+   "evidence": "At least three March rows cause systematic wrong-sense text in June: addition→álagning 66; valence→girðit- 11; emission→útblástur (the March glossary has emission→ljómun|útblástur, both approved). For the third: of 27 June segments where the EN has emission/emit and the IS has útblást-, all read, 26 are spectral or nuclear senses ('emission spectrum'→útblástursróf, 'positron emission'→jáeindarútblástur, 'gamma emission'→gammaútblástur). 1 is a correct car-exhaust use. New has 3 útblást- hits, all car exhaust, and renders 'emission spectrum' as útgeislunarróf 12 times. The investigator listed emission only as an open question. METHOD CANNOT SUPPORT 'one': only 3 of the ~392 March rows that fire at least 5 times in the reuse set have been sense-checked by either investigator.",
+   "correctedValue": "At least 3 systematic wrong-sense rows; any total is a floor"
+  },
+  {
+   "claim": "Untranslated, hand-verified: June 6 (m68662: 3 bios + 3 section titles); new 8 (m68852×6, m68856×1, m68744×1); all 8 are translated in June",
+   "status": "partly",
+   "evidence": "Predicate: plain EN == plain IS (case-insensitive, whitespace-normalised), ≥3 content words. I read all hits: June 27, new 29. The rest are contributor name + institution list items, kept in both vintages. June real: 7 in m68662, being 4 headings ('About the authors', 'Senior contributing authors', 'Contributing authors', 'Reviewers') and 3 author bios. New: the same 8 segments as reported. Of those 8, 7 have a translated June counterpart; the 8th (m68852:alt:fs-idp74884384-alt) is new-only and has no June segment.",
+   "correctedValue": "June 7; 7 of the 8 new ones are translated in June (the 8th is an alt June lacks)"
+  },
+  {
+   "claim": "detectResidue exact (repo instrument, after allowlist): June 76 / new 97, 'mostly legitimate names and formula cells'",
+   "status": "partly",
+   "evidence": "Ran tools/lib/residue-check.js detectResidue read-only (plain-node import) with each ref's residue-allowlist.json (4 entries). June: 81 exact, 76 after the allowlist, ALL 76 in m68662. This matches c17bb7cfb's own message: '76 exact … all in m68662'. New: 102 exact, 97 after the allowlist (m68662 69, m68866 12, m68852 6, m68798 4, m68865 2, m68863/m68744/m68856/m68858 1 each). Counts confirmed. For June the description is wrong: there are no formula cells, only preface names plus the 7 untranslated headings/bios."
+  },
+  {
+   "claim": "Marker damage (dialect-aware): June 18 segments (0.84/1000) incl. 3 MATH placeholders replaced by text, plus 4 malformed hybrid {{i:…}}; new 27 (1.18/1000), 25 invented sub/sup in alt/table-summary; corpus June EN vs IS i 5,939/5,934, MATH 4,082/4,079",
+   "status": "partly",
+   "evidence": "Own canonicaliser (canon_v.py: legacy→bracket conversion, then a recursive bracket parser; per-segment multiset of marker types, EN vs IS). June: 16 segments with a type delta (0.74/1000), including the 4 hybrids (all in m68799). New: 26 (1.14/1000), 24 of them alt/table-summary. Corpus: new +237 sub, +92 sup, exactly as reported. June i 5,947/5,942 (same −5 delta), MATH 4,080/4,079 (−1, not −3). Of June's 16: 1 is an artifact of my sent-EN anchor (m68823 docref restored by hand repair d440b5b8c); 2 are benign (cm^3^ added); 1 is a synonym collapse (m68710), excluded as they did. That leaves 12: 4 hybrids, MATH→inline formula (m68832), lost (aq) italics (m68716), 2 invented term markers, 4 added italic/sup. Their '3 MATH placeholders replaced by text': only m68832 is MT damage. The 2 in m68823 glossary-terms come from their anchor: the IS '(Ekerfis°)' translates EN@de601457d '(Ecell°)', which 1db4fcf28 later re-extracted into [[MATH:55]] without a re-MT.",
+   "correctedValue": "June 16 incl. 4 hybrids (12 real); new 26; MATH replaced by text: 1"
+  },
+  {
+   "claim": "Greek-letter changes: June 6, new 2",
+   "status": "partly",
+   "evidence": "Per-segment Counter of U+0370–03FF, EN vs IS. June: 10 raw mismatches, 4 real: α→Α and β→Β in m68868, θ→Θ in m68773, α→Α in m68857. Of the other 6, 5 are Σ/Δ that appear identically in the new vintage (EN-side representation) and 1 is a spelled-out 'Gamma'. New: 8 raw, 0–1 real.",
+   "correctedValue": "June 4 real"
+  },
+  {
+   "claim": "Truncation suspects 0/0 and segment-id set delta 0/0",
+   "status": "confirmed",
+   "evidence": "IS shorter than 50% of EN, for EN of at least 80 characters: 0 in June, 0 in new. Planted control: IS cut to 1/3 on 200 long segments fired 200/200. June minimum IS/EN length ratio 0.52, median 0.93. Id sequences: all 170 June IS files equal their sent-EN id sequence. New: 0 EN without IS and 0 IS without EN."
+  },
+  {
+   "claim": "MATH equation identity: 5,639 of 5,639 equations at the June MT commits match the new structure (121 modules)",
+   "status": "confirmed",
+   "evidence": "02-structure/<ch>/<mod>-equations.json at each June file's MT commit vs 98a5fe2ff: 121 modules, 5,639 identical MathML strings, 0 different, 0 June keys missing in new. New has 5 extra keys."
+  },
+  {
+   "claim": "Reuse accounting: identical raw 16,663; dialect-only 1,788; EN unchanged 18,451; markup differs 131; content changed 2,458; new-only 1,836 (1,149 alt, 191 table-summary, 496 cells); June-only 496",
+   "status": "partly",
+   "evidence": "Sent EN = EN at each IS file's last MT-run commit, with the id sequence verified to equal the IS (170/170); output in june_sent_v/. Mine: identical-raw 16,643; dialect-only 1,836; EN-unchanged 18,479 (+28, +0.15%; per-chapter maximum ±6); markup-differs 52; content-changed 2,509; new-only 1,836 = 1,149 + 191 + 496 (exact); June-only 496 (exact). Three causes: (a) ANCHOR: they took EN at the IS file's LAST commit. Where that is a hand repair made after a re-extraction (m68831 via 7439d07e9 after 608546e02; m68823 via d440b5b8c after 1db4fcf28), it picks English the Icelandic never saw: 23 segments differ, and identical-raw slightly overstates reuse. (b) 66 of their 131 'markup-differs' are MATH-only table cells whose equation index moved with the renumbering (e.g. m68683 auto-110 [[MATH:9]]→[[MATH:8]]). These are a different equation, i.e. a content change; their index-blind visible text hides it. (c) I normalise the legacy doc-link forms [x](doc:m…) and [m…#id] as dialect.",
+   "correctedValue": "EN-unchanged 18,479 (80.8%); markup-differs 52; content-changed 2,509"
+  },
+  {
+   "claim": "2,437 table cells would get wrong text if June is reused by segment id; 2,908 of 2,933 renumbered cells can be re-keyed by content (54 modules)",
+   "status": "partly",
+   "evidence": "Same-key, different-content auto-N entry cells: 2,502 in 55 modules (their 2,437 omits the 66 MATH-only cells above). With the 496 new-key cells, 2,998 cells in 73 modules are renumbered. Re-keying by exact canonical EN text among the module's June entry cells: 2,997 of 2,998 match. 2,978 have a single consistent June Icelandic text; only 19 have candidates whose Icelandic disagrees. This answers their pairing open question. I read 15 renumbered pairs (e.g. m68710 auto-78 'hydrobromic acid' vs 'Compound Formula'; m68667 auto-67 'sulfur' vs 'carbon').",
+   "correctedValue": "2,502 wrong cells by id (+496 missing); 2,997/2,998 re-keyable, 19 ambiguous"
+  },
+  {
+   "claim": "1,340 segments (alts + table summaries) need new MT whichever vintage is chosen",
+   "status": "partly",
+   "evidence": "Misleading. The new vintage already holds all 1,340: 1,149 alt + 191 table-summary, 1,339 translated, 1 untranslated alt (m68852). June cannot supply them, but under a June-first plan they come from the new vintage, not from a fresh buy."
+  },
+  {
+   "claim": "Would come back if June is reused: 97 segments (5.26 per 1,000 reusable) — álagning 66, girðitala 5, untranslated 6, markers 15, Greek 5",
+   "status": "partly",
+   "evidence": "Union of hand-verified June defect sets intersected with my EN-unchanged reuse set (18,479). Pairwise overlaps between the sets: 0.",
+   "correctedValue": "125 segments (6.76 per 1,000) = álagning 66 + girðit-valence 11 + emission→útblástur 25 + untranslated 7 + markers 12 + Greek 4. Without the emission row: 100 (5.41/1000). Still a floor (3 of ~392 rows sense-checked)."
+  },
+  {
+   "claim": "1,784 June segments need dialect conversion; 153 carry ≥2 legacy term markers",
+   "status": "partly",
+   "evidence": "Legacy-marker regex on the June IS of reusable segments: 1,842 (1,836 dialect-only + 6 identical-raw); the gap from 1,784 is my normaliser's dialect class. Segments with ≥2 legacy term markers ({{term}} or __x__): 153, exactly as reported.",
+   "correctedValue": "~1,842 (normaliser-dependent); 153 exact"
+  },
+  {
+   "claim": "Legacy dialect in June IS: 5,448 {{x}} halves in 113 of 170 files; [#id] 539; md links 115; __x__ 60; ^x^ 154",
+   "status": "confirmed",
+   "evidence": "Recount over June IS segment text: {{x}} halves 5,442 strict + 6 hybrid {{i:…}} = 5,448; 113 files; [#id] 539; markdown links 115; __x__ 60; ^x^ 154."
+  },
+  {
+   "claim": "84 modules had their English re-extracted on 07-07 after their March Icelandic was bought",
+   "status": "partly",
+   "evidence": "85 files had EN changed by 689ddf3e2 (07-07) after their last MT (81 by 689ddf3e2 alone). Overall, 101 of 170 files' English at the June ref differs from the English at the MT commit (608546e02 also changed 9 ch18 files on 03-23). This confirms the June-ref EN must not be used as the sent EN; the investigator correctly avoided that.",
+   "correctedValue": "85 (101 files have June-ref EN ≠ sent EN)"
+  },
+  {
+   "claim": "March-row targets carried on the common denominator: June 17,608 vs new 15,108 (−14.2%); atom→frumeind 54% vs 5%; stoichiometry→hlutfallaefnafræði 86% vs 5%; percent yield→prósentuheimtur 96% vs 0%",
+   "status": "partly",
+   "evidence": "Predicate: EN headword case-insensitive with optional s/es, word-bounded; IS word-prefix match on the target. Over 392 rows with at least 5 EN segments in the reuse set: June 19,324 vs new 16,641 (−13.9%). Direction and magnitude confirmed; absolute counts are method-dependent. atom→frumeind 55% vs 5% ✓; stoichiometry 86% vs 5% ✓. Percent yield: the 0% is a matcher artifact. With the stem prósentuheimt, June 23/23 (100%) vs new 7/23 (30%); new uses the singular 'prósentuheimt', and otherwise nýtni. Caution: atom had two approved March siblings, and new uses atóm in 62% vs June 14%, so 'carries a March target' is not a quality measure.",
+   "correctedValue": "−13.9% (19,324 → 16,641); percent yield 100% vs 30%"
+  },
+  {
+   "claim": "(a) The September re-MT happened for structural reasons; MT-text classes §C129/§C131/§C133/§C134 and verm-/varm-; §C133 rows existed only in the August glossary",
+   "status": "partly",
+   "evidence": "Confirmed: the decision record docs/decisions/2026-08-30-c82-clean-break-refocus.md says verbatim 'The run's purpose is structural, not qualitative … acceptance criterion is never having to re-run the MT'. Its Alternative 5 (convert legacy markers in place) was rejected for known loss, ambiguous *x*/~x~/^x^, and missing segments. §C133 rows: absent at 5db701c92 and 4fbbfa5ff, present 120352b07→9a69414d5, absent at 98a5fe2ff. Wrong as framed: the MT-text items are defects found in the September buys themselves (e.g. §C133: ch03 bought 09-01 under the August glossary, re-bought 09-06 with --no-glossary). They are not reasons the re-MT was undertaken, and they say nothing against the June text."
+  },
+  {
+   "claim": "Open question: did new ch20's 3 álagningarhvarf come from its 17-term subset or the model?",
+   "status": "unverifiable",
+   "evidence": "The new ch20 provenance records arm glossary-only, termCount 17, and a contentHash, but not the term list, so this cannot be settled read-only. The 98a5fe2ff glossary does contain addition→álagning."
+  }
+ ],
+ "overall": "The other investigator's main conclusions hold, but three of their numbers need correcting.\n\n**What holds**\n- The September re-MT was done for structural reasons.\n- The short-headword misfire premise is false for June. The June buys used the March glossary: 617 approved terms, 6 benign short headwords, 0 wrong-sense headwords.\n- 80.8% of new segments (18,479 of 22,876) have unchanged English and could take June text.\n- About 3,000 table cells must be re-keyed by content, never by id. Of 2,998, 2,997 can be, and only 19 are ambiguous.\n- 1,340 alt and table-summary segments exist only in the new vintage. They are already bought, so they need no new purchase.\n\n**What needs correcting**\n1. \"June's one systematic defect\" is wrong. The March glossary left at least three systematic wrong-sense rows in June:\n   - addition→álagning: 66 segments, all read, all wrong.\n   - valence→girðit-: 11 segments, not 5.\n   - emission→útblástur: 26 segments, in spectra and radioactive-emission contexts.\n   - So the defects that come back on reuse are a FLOOR of 125 segments (6.76 per 1,000 reusable), not 97.\n   - The current glossary at 98a5fe2ff still lists addition→álagning and valence→girðitala as approved. Any future full-glossary MT would bring them back.\n2. Vintage tally: 150 March / 6 June / 9 July / 5 August. Commit 827424dae re-translated ch05 with the tool; it was not a hand repair.\n3. The 08-03 glossary was not contaminated. Contamination first appears at 120352b07, 2026-08-12 16:00 UTC.\n\n**Smaller corrections**\n- Untranslated June segments: 7, not 6.\n- 7 of the 8 untranslated new segments have a translated June counterpart, not all 8.\n- Marker damage: June 16 (12 real), new 26.\n- Greek letters: June 4 real changes, not 6.\n- Same-id table cells with wrong text: 2,502, not 2,437.\n- Their \"markup-differs 131\" includes 66 MATH-only cells where the equation itself changed.\n- Their anchor for the English actually sent creates a few artifacts in m68823 and m68831. It took English at the Icelandic file's last commit, which in those two modules was a hand repair made after a re-extraction.\n- Percent yield is 100% June vs 30% new, not 96% vs 0%.\n\n**Exact matches.** These reproduced exactly:\n- totals per chapter;\n- duplicate ids, 285 in each vintage;\n- new-only and June-only segment counts;\n- MATH equations, 5,639 of 5,639 identical;\n- invented markers in new: +237 sub, +92 sup;\n- residue counts 76 / 97;\n- the legacy-dialect census;\n- the 153 segments with 2 or more legacy term markers.\n\nThe house-term carry drop is −13.9% by my count against their −14.2%.\n\n**Detector T.** Not re-implemented, so its counts are unverifiable. Its conclusion is confirmed by three independent checks: what the March glossary contains, the distinctive wrong-sense words appearing 0 times in both vintages, and an ion/jón probe.\n\n**Corrected per chapter.** Columns: reuse set, content-changed, then June defects that come back.\n\n| Chapter | Reuse | Content-changed | álagning | girðit- | útblástur | Untranslated | Markers | Greek | Back | Per 1,000 |\n|---|---|---|---|---|---|---|---|---|---|---|\n| appendices | 2496 | 216 | 0 | 0 | 2 | 0 | 0 | 2 | 4 | 1.6 |\n| ch00 | 107 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 7 | 65.4 |\n| ch01 | 948 | 97 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1.1 |\n| ch02 | 939 | 384 | 2 | 0 | 0 | 0 | 0 | 0 | 2 | 2.1 |\n| ch03 | 695 | 17 | 2 | 0 | 0 | 0 | 0 | 0 | 2 | 2.9 |\n| ch04 | 884 | 104 | 4 | 0 | 0 | 0 | 2 | 0 | 6 | 6.8 |\n| ch05 | 641 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |\n| ch06 | 693 | 110 | 2 | 0 | 9 | 0 | 1 | 0 | 12 | 17.3 |\n| ch07 | 1084 | 221 | 0 | 2 | 0 | 0 | 0 | 0 | 2 | 1.8 |\n| ch08 | 461 | 90 | 1 | 7 | 0 | 0 | 0 | 0 | 8 | 17.4 |\n| ch09 | 855 | 111 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |\n| ch10 | 872 | 150 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1.1 |\n| ch11 | 661 | 125 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1.5 |\n| ch12 | 777 | 403 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |\n| ch13 | 658 | 22 | 6 | 0 | 0 | 0 | 4 | 0 | 10 | 15.2 |\n| ch14 | 1004 | 1 | 20 | 0 | 0 | 0 | 1 | 0 | 21 | 20.9 |\n| ch15 | 654 | 0 | 9 | 0 | 0 | 0 | 1 | 0 | 10 | 15.3 |\n| ch16 | 640 | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 1.6 |\n| ch17 | 543 | 91 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1.8 |\n| ch18 | 1080 | 37 | 6 | 1 | 2 | 0 | 1 | 0 | 10 | 9.3 |\n| ch19 | 563 | 51 | 2 | 1 | 0 | 0 | 1 | 0 | 4 | 7.1 |\n| ch20 | 494 | 70 | 9 | 0 | 0 | 0 | 0 | 0 | 9 | 18.2 |\n| ch21 | 730 | 121 | 0 | 0 | 13 | 0 | 0 | 1 | 13 | 17.8 |\n\nAll 23 chapters were re-counted. ch14, ch20 and ch01 were compared column by column against the investigator's table.\n\n**Segments read.**\n- All 66 álagning hits.\n- 29 June and 28 new girðit- hits.\n- 27 June and 29 new segments where English and Icelandic are identical.\n- All 16 June marker flags.\n- 18 Greek-letter mismatches.\n- 27 útblástur hits.\n- 15 renumbered table cells.\n- 12 hits from the ion probe.\n\n**Files.** Everything is in /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/verify-defects/:\n- Scripts: seglib_v.py, canon_v.py, load_pairs.py, mt_history.py, build_sent.py, classify.py, markers_v.py, untrans_v.py, perchapter_v.py, rowcarry_v.py, residue_run.mjs.\n- Data: is_history.json, june_lastmt.json, sent_report.json, june_sent_v/ (the reconstructed English sent for June), classes.json, perchapter_v.json, markers_v.json, untrans_v.json, greek_v.json, alagning_hits.json, rowcarry_v.json, gl-*.json (glossary versions).",
+ "gitStatus": "`git -C /home/siggi/dev/repos/namsbokasafn-efni status --porcelain` printed nothing and exited 0, both at the start and at the end of my work. I wrote nothing in the repository: the trees and glossaries were extracted into the scratchpad with `git archive` and `git show`, and `tools/lib/residue-check.js` was only imported read-only from a scratch script. No tests were run, no network was used, and no background processes remain."
+}

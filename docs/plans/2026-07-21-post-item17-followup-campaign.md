@@ -4,6 +4,30 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-10-10 (evening) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **[USER] answered all 104 lost terms (exported `16e18cdd0`; the per-chapter `chapters` collection is EMPTY). ▶ [USER]: decide on the PROPOSAL [`2026-10-10-chemistry-finish-preparation-plan.md`](2026-10-10-chemistry-finish-preparation-plan.md). Its first actions: the exact start date of the follow-on project, and the "now" decisions D1–D4 and D10.** ⏹ The chemistry sync stays HELD.
+- **The proposal in one line.** September MT as the base by default, for structural reasons only. Terminology repairs go into a machine-revised layer: code rules plus a gated AI pass, never in place. ch01–ch02 enter as human text only where their Word review touched them. Then timing capture, a freeze, and editing. A blind reading test with key terms masked can switch the base to a June hybrid, and its threshold is written down beforehand.
+- **The calendar (rev. 4).** The follow-on contract's wording is final, and [USER] puts its start at **late October 2026**. It runs 12 months, every chapter must be reviewed and published by its end, and the final report is due by 1 December 2027. **The freeze therefore lands before the first unit is opened (about S+4–5 weeks), not on the start date.** **Rev. 4 (2026-10-11):** the current grant can pay for preparation until its final report, which [USER] plans within 20–30 days. The follow-on's work plan starts it when the current project ends, so the plan recommends S = the day after that report (plan §1 point 0, D0). From S, preparation is never follow-on paid hours.
+- **Its evidence** is [`experiments/mt-vintage-comparison/`](../../experiments/mt-vintage-comparison/README.md): five investigators, three verifiers and a critic, with corrected values. Rev. 2 folds in a blind Fable 5.1 + Opus 5.5 critique; its §11 says what changed and why.
+- **Prod, read-only, 2026-10-10:**
+  - chemistry `segment_edits`: 151 rows (112 approved, 38 pending, 1 rejected). The latest is from 2026-08-06, and **0 are after 2026-08-30**.
+  - chemistry MT locks: **0** (control: biology 1).
+- **The proposal, its evidence directory and this entry are UNCOMMITTED** on `docs/terminology-consistency`, waiting for [USER]'s go-ahead. The private funding companion is in the git-excluded `docs/grants/`.
+
+#### §C200 (NEW, 2026-10-10) — the TM and corpus treat a module's carried-over MT as human-reviewed
+- **Found by** the plan's Opus critic. **Verified by reading the code.**
+- **The mechanism:**
+  - `applyApprovedEdits` (`server/services/segmentEditorService.js`) writes the module's WHOLE base text into `03-faithful-translation/` (`content: overlay ? winner.edited_content : seg.is`). The first approved edit therefore files every unedited segment as faithful.
+  - `tools/lib/tm-export.cjs` `pairModule` pairs every segment of that file with **no review-status filter**, although the per-segment `-review-status.json` sidecar (`edited` / `accepted` / `carryover`) exists, and `export-corpus` already reads it.
+  - `export-corpus` `computePostEdited` compares faithful text against pure MT (`02-mt-output`).
+- **Today:** carried-over MT can reach the TMX as "human-verified". That is the deliverable-D claim and the ★ asset in CLAUDE.md § Extract-Inject-Render.
+- **Under the proposal's machine-revised layer:** every AI change would also count as a human post-edit.
+- **Fix:** proposal step 4.0, before editors see a revised layer.
+  - The TM and corpus treat only `edited`/`accepted` as human.
+  - The corpus gets `selected` and `revised` tiers.
+  - `postEdited` compares against the text the editor actually saw.
+  - A test pins all of it.
+- **Exposure now:** chemistry's faithful files were moved aside on 2026-08-23 (`c5f4880e`) and every other book is withheld. Re-measure before claiming 0.
+
 ### ⏭ 2026-10-10 (later) — SUPERSEDES THE ENTRY DIRECTLY BELOW: **✅ the whole-book measurement is DONE. ▶ [USER]: rule on the review page, https://claude.ai/artifact/Qm9nbfkNrQGMiznkE4WP6M — a word per changed term, and a decision per chapter.** ⏹ The chemistry sync stays HELD until those decisions are made.
 - **Where it lives.** The instrument, its method and its blind spots are in [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md), on branch `docs/terminology-consistency`, cut from `origin/main` `98a5fe2ff` and **unpushed**. The frozen results are in `results/2026-10-10/`. That branch also carries this register's two 2026-10-10 docs commits, cherry-picked off the held content branch.
 - **Taught terms** are each chapter's own OpenStax key-terms list (`glossary-term:<definitionId>` segments). `glossary-unified.json` is not the reference.

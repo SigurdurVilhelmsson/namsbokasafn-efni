@@ -1,0 +1,1052 @@
+{
+"m68859": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68860": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"42% changed",
+0,
+0
+],
+"m68861": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68862": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"85% changed",
+0,
+0
+],
+"m68863": [
+"2026-03-02",
+"refactor: rename efnafraedi → efnafraedi-2e, remove liffraed",
+"created",
+0,
+0
+],
+"m68864": [
+"2026-03-02",
+"refactor: rename efnafraedi → efnafraedi-2e, remove liffraed",
+"created",
+0,
+0
+],
+"m68865": [
+"2026-03-02",
+"refactor: rename efnafraedi → efnafraedi-2e, remove liffraed",
+"created",
+14,
+0
+],
+"m68866": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"84% changed",
+0,
+0
+],
+"m68867": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"73% changed",
+0,
+0
+],
+"m68868": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"85% changed",
+0,
+0
+],
+"m68869": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"94% changed",
+0,
+0
+],
+"m68870": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"52% changed",
+0,
+0
+],
+"m68871": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"81% changed",
+0,
+0
+],
+"m68662": [
+"2026-06-26",
+"feat(content): translate + publish Chemistry 2e preface (m68",
+"created",
+0,
+0
+],
+"chapter-metadata": [
+"2026-03-29",
+"feat: chapter title pipeline, nested list fix, config docume",
+"created",
+0,
+0
+],
+"m68663": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"55% changed",
+0,
+0
+],
+"m68664": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"83% changed",
+0,
+0
+],
+"m68667": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"58% changed",
+0,
+0
+],
+"m68670": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"67% changed",
+0,
+0
+],
+"m68674": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"44% changed",
+0,
+0
+],
+"m68683": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"72% changed",
+0,
+0
+],
+"m68690": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"60% changed",
+0,
+0
+],
+"m68684": [
+"2026-03-19",
+"fix(inject): equation dedup, footnote regex, math restoratio",
+"45% changed",
+0,
+0
+],
+"m68685": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"47% changed",
+0,
+0
+],
+"m68687": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"68% changed",
+0,
+0
+],
+"m68692": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"49% changed",
+0,
+0
+],
+"m68693": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"62% changed",
+0,
+0
+],
+"m68695": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"52% changed",
+0,
+0
+],
+"m68696": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68698": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"44% changed",
+0,
+0
+],
+"m68699": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"67% changed",
+0,
+0
+],
+"m68700": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"61% changed",
+0,
+0
+],
+"m68702": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"52% changed",
+0,
+0
+],
+"m68703": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"54% changed",
+0,
+0
+],
+"m68704": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68709": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"32% changed",
+0,
+0
+],
+"m68710": [
+"2026-07-02",
+"content(efnafraedi-2e): re-MT + re-inject m68710/m68764/m688",
+"41% changed",
+0,
+0
+],
+"m68713": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"45% changed",
+0,
+0
+],
+"m68714": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"43% changed",
+0,
+0
+],
+"m68716": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"63% changed",
+0,
+0
+],
+"m68730": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68723": [
+"2026-06-25",
+"fix(glossary): repair book-wide term aggregates + ch5 enthal",
+"43% changed",
+0,
+0
+],
+"m68724": [
+"2026-06-25",
+"fix(glossary): repair book-wide term aggregates + ch5 enthal",
+"49% changed",
+0,
+0
+],
+"m68726": [
+"2026-06-25",
+"fix(glossary): repair book-wide term aggregates + ch5 enthal",
+"66% changed",
+0,
+0
+],
+"m68727": [
+"2026-06-25",
+"fix(glossary): repair book-wide term aggregates + ch5 enthal",
+"73% changed",
+0,
+0
+],
+"m68728": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68729": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"57% changed",
+0,
+0
+],
+"m68732": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68733": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"53% changed",
+0,
+0
+],
+"m68734": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"54% changed",
+0,
+0
+],
+"m68735": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"39% changed",
+0,
+0
+],
+"m68736": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68737": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68738": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68739": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"41% changed",
+0,
+0
+],
+"m68740": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68741": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68742": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68743": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68744": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"created",
+0,
+0
+],
+"m68745": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"89% changed",
+0,
+0
+],
+"m68746": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"94% changed",
+0,
+0
+],
+"m68747": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"47% changed",
+0,
+0
+],
+"m68748": [
+"2026-03-19",
+"fix(inject+translate): CNXML fidelity fixes — ch01 7/7 perfe",
+"73% changed",
+0,
+0
+],
+"m68750": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"63% changed",
+0,
+0
+],
+"m68751": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"58% changed",
+0,
+0
+],
+"m68752": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"39% changed",
+0,
+0
+],
+"m68754": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"69% changed",
+0,
+0
+],
+"m68758": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"91% changed",
+0,
+0
+],
+"m68759": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"66% changed",
+0,
+0
+],
+"m68760": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68761": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68764": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"48% changed",
+0,
+0
+],
+"m68768": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"52% changed",
+0,
+0
+],
+"m68769": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"44% changed",
+0,
+0
+],
+"m68770": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"70% changed",
+0,
+0
+],
+"m68773": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68776": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68778": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"63% changed",
+0,
+0
+],
+"m68781": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"53% changed",
+0,
+0
+],
+"m68782": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68783": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"51% changed",
+0,
+0
+],
+"m68784": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68785": [
+"2026-03-19",
+"fix(inject): equation dedup, footnote regex, math restoratio",
+"50% changed",
+0,
+0
+],
+"m68786": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"45% changed",
+0,
+0
+],
+"m68787": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"67% changed",
+0,
+0
+],
+"m68789": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"56% changed",
+0,
+0
+],
+"m68791": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"76% changed",
+0,
+0
+],
+"m68793": [
+"2026-07-13",
+"data(b4): re-MT 8 modules via Málstaður API (bracket markers",
+"66% changed",
+0,
+0
+],
+"m68794": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"50% changed",
+0,
+0
+],
+"m68795": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"37% changed",
+0,
+0
+],
+"m68796": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"43% changed",
+0,
+0
+],
+"m68797": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"79% changed",
+0,
+0
+],
+"m68798": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"90% changed",
+0,
+0
+],
+"m68799": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"60% changed",
+0,
+0
+],
+"m68801": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"51% changed",
+0,
+0
+],
+"m68802": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68803": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68804": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68805": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"58% changed",
+0,
+0
+],
+"m68806": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68807": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68808": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68809": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68810": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68811": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"54% changed",
+0,
+0
+],
+"m68813": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"58% changed",
+0,
+0
+],
+"m68814": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68815": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68816": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68817": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68818": [
+"2026-07-02",
+"content(efnafraedi-2e): re-MT + re-inject m68710/m68764/m688",
+"37% changed",
+0,
+0
+],
+"m68819": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"55% changed",
+1,
+0
+],
+"m68820": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68821": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"48% changed",
+0,
+0
+],
+"m68822": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"51% changed",
+0,
+0
+],
+"m68823": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+2,
+0
+],
+"m68824": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68825": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68826": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"42% changed",
+0,
+0
+],
+"m68827": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68828": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68829": [
+"2026-07-14",
+"data(b4): re-MT 6 term-bearing modules with B4-D11 fix (pair",
+"38% changed",
+0,
+0
+],
+"m68830": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"58% changed",
+0,
+0
+],
+"m68831": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68832": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68833": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68834": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68835": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68836": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68837": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"50% changed",
+0,
+0
+],
+"m68838": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68839": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68840": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68841": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68842": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68843": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68844": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"66% changed",
+0,
+0
+],
+"m68845": [
+"2026-08-12",
+"data(C56): pilot re-extract + re-MT — efnafraedi-2e ch20, ed",
+"38% changed",
+0,
+0
+],
+"m68846": [
+"2026-08-12",
+"data(C56): pilot re-extract + re-MT — efnafraedi-2e ch20, ed",
+"40% changed",
+0,
+0
+],
+"m68847": [
+"2026-08-12",
+"data(C56): pilot re-extract + re-MT — efnafraedi-2e ch20, ed",
+"41% changed",
+0,
+0
+],
+"m68848": [
+"2026-08-12",
+"data(C56): pilot re-extract + re-MT — efnafraedi-2e ch20, ed",
+"60% changed",
+0,
+0
+],
+"m68849": [
+"2026-08-12",
+"data(C56): pilot re-extract + re-MT — efnafraedi-2e ch20, ed",
+"75% changed",
+0,
+0
+],
+"m68850": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68851": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68852": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"41% changed",
+1,
+0
+],
+"m68854": [
+"2026-03-22",
+"feat(pipeline): bracket markers [[i:]] [[link:]] + re-transl",
+"45% changed",
+0,
+0
+],
+"m68856": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68857": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+],
+"m68858": [
+"2026-03-21",
+"feat(pipeline): full-book MT translation + nested list fix +",
+"created",
+0,
+0
+]
+}
