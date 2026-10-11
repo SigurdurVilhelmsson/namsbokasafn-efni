@@ -1,6 +1,6 @@
 # Decision: nine chemistry terminology rulings, and the concept-model changes they require
 
-- **Status:** Accepted
+- **Status:** Accepted — superseded IN PART by `docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md` (`trigonal planar` reverts to the official glossary's `þríhyrningslaga flatt`); every other ruling stands
 - **Ruled by:** [USER], 2026-09-21
 - **Cited by:** the active campaign register (§C170b) and
   `docs/handoffs/2026-09-21-glossary-subset-audit.md`, which raised 18 questions; these nine are answered.

@@ -26,8 +26,10 @@ Recovered from `c5f4880e^` and verified byte-identical to that tree.
 | `ch03/m68699-segments.is.md` | 1,381 | 3 | **no — this is the only copy** |
 | `ch03/m68700-segments.is.md` | 45,029 | 282 | **no — this is the only copy** |
 
-ch02's edits live only in an external docx with track changes, on the [LEAD]'s own machines. There
-are no ch02 faithful files and there never were — that absence is expected, not a gap.
+ch02's review lives only in external Word files, on the [LEAD]'s own machines. ✏️ *Corrected
+2026-10-11: this said "an external docx with track changes". Read on 2026-10-11, the ch02 files carry
+comments and no tracked changes (`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`,
+D10).* There are no ch02 faithful files and there never were — that absence is expected, not a gap.
 
 ## How they are meant to be used
 

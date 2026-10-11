@@ -1,0 +1,434 @@
+{
+ "about": "How each segment whose English says \"trigonal planar\" renders it in the September MT. Class assigned by reading each segment in context, 2026-10-11 (Claude Code), because the adjective þríhyrndur also renders trigonal pyramidal/bipyramidal. adjective = þríhyrndur in any inflection; laga = þríhyrningslaga (flatur: followed by a form of flatur); compound = another þríhyrnings- compound. termOnWire = the buy sent \"trigonal planar\" (then þríhyrnt flatt): ch18 and ch19's main buy per docs/handoffs/2026-09-19-chemistry-autorun-log.md; ch19's table summary came from a no-glossary top-up. Produced by d4b_census.py; see docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md, D4b.",
+ "segments": [
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp215771104",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd og flöt",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp125916256",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndu og flötu",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:alt:fs-idp63301888-alt",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "Þríhyrnd og flöt",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp3259504",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsflatrar",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:item:fs-idp267826096-item-3",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsflöt",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp34925552",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flata",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp211059664",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatar",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp55819408",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flöt",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp55819408",
+   "position": 1,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flöt",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp66198816",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsplan",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:item:fs-idp8766640-item-3",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsplan",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:item:fs-idp18275136-item-3",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsplan",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp66198816",
+   "position": 1,
+   "class": "compound",
+   "rendering": "þríhyrningsplan",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp87297072",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnda slétta",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:alt:fs-idp73717728-alt",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "Þríhyrnd flatneskja",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:para:fs-idp214036816",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndar flatar",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:solution:fs-idp57801216",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndar sléttur",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:solution:fs-idm27861968",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsflötur",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:solution:fs-idp164162368",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd flatarmynd",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:solution:fs-idp61624784",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd og flöt",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch07",
+   "module": "m68742",
+   "id": "m68742:glossary-term:fs-idp36467056-term",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndur planur",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:para:fs-idp31553584",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndri flatneskjulegri",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:alt:fs-idm10342640-alt",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatningsfyrirkomulag",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:caption:CNX_Chem_08_02_sp2Conv-caption",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatnings",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:para:fs-idp13130576",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatningur",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:caption:CNX_Chem_08_02_BH3-caption",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatningsbyggingu",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:caption:CNX_Chem_08_02_HybrdOrbit-caption",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flatarfyrirkomulagi",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:alt:fs-idp61147088-alt",
+   "position": 0,
+   "class": "laga",
+   "rendering": "Þríhyrningslaga flatt",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:para:fs-idp22488768",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flötu",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:solution:fs-idm14765376",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd flatarmynd",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:solution:fs-idp38901616",
+   "position": 0,
+   "class": "compound",
+   "rendering": "Þríhyrningsflatningur",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68745",
+   "id": "m68745:glossary-def:fs-idm48701168-def",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndri uppröðun",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68746",
+   "id": "m68746:para:fs-idp40201472",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga rúmfræði",
+   "termOnWire": false,
+   "flatur": false
+  },
+  {
+   "chapter": "ch08",
+   "module": "m68746",
+   "id": "m68746:para:fs-idp103363168",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd í plani",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch18",
+   "module": "m68831",
+   "id": "m68831:para:fs-idp63064256",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrntum flötum",
+   "termOnWire": true
+  },
+  {
+   "chapter": "ch18",
+   "module": "m68831",
+   "id": "m68831:para:fs-idp29251536",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnda flata",
+   "termOnWire": true
+  },
+  {
+   "chapter": "ch18",
+   "module": "m68831",
+   "id": "m68831:para:fs-idp204424928",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnt flatt",
+   "termOnWire": true
+  },
+  {
+   "chapter": "ch18",
+   "module": "m68832",
+   "id": "m68832:para:fs-idm157413808",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrndri flatri",
+   "termOnWire": true
+  },
+  {
+   "chapter": "ch19",
+   "module": "m68843",
+   "id": "m68843:table-summary:fs-idp162520608-summary",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnd flatarmynd",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch19",
+   "module": "m68843",
+   "id": "m68843:entry:auto-138",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnt flatt",
+   "termOnWire": true
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68846",
+   "id": "m68846:para:fs-idp5664736",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnda flatarmynd",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68848",
+   "id": "m68848:para:fs-idp53896496",
+   "position": 0,
+   "class": "laga",
+   "rendering": "Þríhyrningslaga flata",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68848",
+   "id": "m68848:para:fs-idp17452784",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flöt",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68848",
+   "id": "m68848:caption:CNX_Chem_20_03_COgeom_img-caption",
+   "position": 0,
+   "class": "laga",
+   "rendering": "þríhyrningslaga flöt",
+   "termOnWire": false,
+   "flatur": true
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68848",
+   "id": "m68848:solution:fs-idp41108256",
+   "position": 0,
+   "class": "adjective",
+   "rendering": "þríhyrnt og flatneskjulegt (×2); þríhyrnd og flatneskjuleg",
+   "termOnWire": false
+  },
+  {
+   "chapter": "ch20",
+   "module": "m68849",
+   "id": "m68849:alt:fs-idp91766560-alt",
+   "position": 0,
+   "class": "compound",
+   "rendering": "þríhyrningsflatarmynd",
+   "termOnWire": false
+  }
+ ]
+}

@@ -211,3 +211,39 @@ python3 experiments/terminology-consistency/live_check.py /path/classified.json 
 python3 experiments/terminology-consistency/audit_inflection.py old|new   # residual matcher blindness
 ```
 Judge a measure run by its `"complete": true` marker, never by its exit code.
+
+## D4b: how the September MT renders *trigonal planar* (2026-10-11)
+
+[USER] reversed the 2026-09-21 ruling *þríhyrnt flatt* to the official glossary's *þríhyrningslaga flatt*
+(`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`, D4b). This census sizes the work
+that follows and tests the claim, inherited from the 2026-09-21 record, that the model already
+produces the official form.
+
+- **Instrument:** `d4b_census.py`. It pairs each `02-mt-output` segment with the same commit's
+  `02-for-mt` English by SEG id (a duplicate id by position), keeps the segments whose English says
+  *trigonal planar*, and reports three raw columns: the adjective *þríhyrndur* in any inflection,
+  *þríhyrningslaga*, and other *þríhyrnings-* compounds.
+- **The class is a reading, committed as data:** `results/2026-10-11/d4b-trigonal-planar-reviewed.json`.
+  The raw columns overcount inside segments that also mention *trigonal pyramidal* or *bipyramidal*,
+  which use the same adjective. With `--reviewed`, the script refuses (exit 1) unless the reviewed
+  keys are exactly the population it finds; a one-row deletion was used as the control.
+- **Result** (distinct segments; 46 by position, because two ch07 ids occur twice in their module):
+
+  | | ch07 | ch08 | ch18 | ch19 | ch20 | total |
+  |---|---|---|---|---|---|---|
+  | adjective *þríhyrndur* | 10 | 4 | 4 | 2 | 2 | **22** |
+  | *þríhyrningslaga* | 3 | 8 | 0 | 0 | 3 | **14** (8 followed by a form of *flatur*) |
+  | other *þríhyrnings-* compound | 6 | 1 | 0 | 0 | 1 | **8** |
+
+- **The earlier count was a spelling match.** A literal search for *þríhyrnt* finds 4 of the 22.
+- **The model does not settle the term.** In the buys that did not send it (ch07, ch08, ch20, and
+  ch19's no-glossary table-summary top-up), the 39 segments split 17 adjective, 14 *þríhyrningslaga*
+  and 8 compounds. In the buys that sent *þríhyrnt flatt* (ch18, and ch19's main buy), all 5 came back
+  with the adjective.
+- **Blind spots:** a rendering with none of the three stems is visible only through the reading;
+  positional ids (`entry:auto-N`) renumber when a module gains a segment.
+
+```bash
+python3 -I experiments/terminology-consistency/d4b_census.py --repo . \
+    --reviewed experiments/terminology-consistency/results/2026-10-11/d4b-trigonal-planar-reviewed.json
+```

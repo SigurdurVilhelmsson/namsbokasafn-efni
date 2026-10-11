@@ -1,7 +1,8 @@
-# Chemistry: finishing the MT preparation and handing over to editing — PROPOSAL (2026-10-10; rev. 4, 2026-10-11)
+# Chemistry: finishing the MT preparation and handing over to editing — PLAN (proposed 2026-10-10; rev. 5, 2026-10-11)
 
-> ✏️ **PROPOSAL, awaiting [USER]'s decisions (§8).** This is not status: open work lives in the
-> active register's ⏩ RESUME block.
+> ✏️ **PLAN. [USER] answered its "now" decisions on 2026-10-11** (D0–D4 and D10; record:
+> [`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`](../decisions/2026-10-11-chemistry-finish-preparation-answers.md)).
+> The later decisions in §8 are open. This is not status: open work lives in the active register's ⏩ RESUME block.
 > **Evidence:** [`experiments/mt-vintage-comparison/`](../../experiments/mt-vintage-comparison/README.md)
 > and [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md).
 > **Funding mapping** (which grant pays for which step, and dates) is in a **private companion** in
@@ -14,6 +15,9 @@
 > used until its final report is delivered. The follow-on's own work plan starts its 12 months when the current grant's
 > project ends, so **S should be the day after that report**. That gives one boundary, with preparation before S
 > payable from the current grant (§1 point 0, §5, D0, D11, D13, D14).
+> **Rev. 5 (2026-10-11, same day)** takes in [USER]'s answers: **S = 1 November 2026**, the day after the current grant's final
+> report on 31 October; D1–D3 as recommended; D4 *Lewis-mynd* and *þríhyrningslaga flatt*; D10 yes. Opening the ch01–ch02 Word
+> files, after [USER] had answered, corrected 0.2's premise: they carry comments, not tracked changes (§11).
 
 **[USER]'s question (2026-10-10).** Choose how to finish chemistry's MT preparation. The options:
 1. keep the June MT;
@@ -34,16 +38,17 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
 
 ## 1. The recommendation in brief
 
-0. **The calendar is fixed.** The follow-on project **runs 12 months from its start date S.** [USER] has said it starts later this month (late October 2026).
+0. **The calendar is fixed.** The follow-on project **runs 12 months from its start date S.** **S = 1 November 2026** (D0, answered 2026-10-11).
    - **By its end, every chapter must be reviewed and published,** the speech synthesis finished, and the parallel corpus and terminology collection released (the contract's project description).
    - **The final report is due by 1 December 2027.**
    - **One boundary: the current grant's final report, then S.**
-     - The current grant's terms set its project's end at 30 June 2026. Its fund has told [USER] that what remains of the grant can be used until the final report is delivered, which [USER] plans within 20–30 days.
-     - The follow-on's work plan, part of its contract, starts its 12 months when the current grant's project ends. Its application promises that lemmatization and the proofreading begin only after that. **So S should be the day after that report** (D0).
-     - The two dates [USER] has given, a start later this month and the report within 20–30 days, meet around the turn of the month. A report on 31 October (day 20) puts S on 1 November. If the report needs the full 30 days, S moves to about 11 November, and §5 moves with it.
+     - The current grant's terms set its project's end at 30 June 2026. Its fund has told [USER] that what remains of the grant can be used until the final report is delivered, which [USER] plans for **31 October 2026**.
+     - The follow-on's work plan, part of its contract, starts its 12 months when the current grant's project ends. Its application promises that lemmatization and the proofreading begin only after that. **So S is the day after that report** (D0).
+     - [USER]'s dates (2026-10-11): the report on 31 October, S on 1 November.
+     - *Not asked yet:* if the report slips, does S move with it (what remains of the current grant stays in use until the report, and the follow-on's fund is told the new date), or does S stay on 1 November (the remainder stops on 31 October, and the work that needs the report waits for it)? The plan's default is that S and §5 move; [USER] decides.
      - **Before S, preparation can be paid from what remains of the current grant. From S, it is never follow-on paid hours:** it counts as follow-on in-kind where it fits one of the follow-on's in-kind lines, and is otherwise unfunded (private companion).
      - **Tag both repositories on S.** Both final reports cite that tag for what existed before the follow-on began.
-   - **So the start date is no longer the freeze.** What matters is that the base is ready **before the first unit is opened**. On the project's own schedule (timing capture in months 1–3, editing from month 2), that is **about S+4–5 weeks: around 1 December, or mid-December if S is about 11 November**.
+   - **So the start date is no longer the freeze.** What matters is that the base is ready **before the first unit is opened**. On the project's own schedule (timing capture in months 1–3, editing from month 2), that is **about S+4–5 weeks: around 29 November to 6 December 2026**.
    - **Preparation not finished by S continues in month 1, never as follow-on paid hours.** The exception is terminology harmonisation, which the contract names as part of the follow-on project, so [USER]'s term rulings made after S belong to it.
    - **Editing throughput is now the binding constraint.** All chapters must be finished within the 12 months, which makes D12 (how deeply to review alts and table summaries) urgent.
    - **Cut-down path:** if the AI layer is not checked in time, freeze with the rule layer only. Apply the AI layer later, to units nobody has opened yet, and record it per segment in the editors' baseline.
@@ -66,7 +71,7 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
    When nothing distinguishes the texts, take the one that needs no extra machinery.
 
    **Override, written down before the test is run:** if June reads clearly better in the masked test, use the hybrid instead (June where it carries cleanly, September elsewhere, §5 step 2.1). "Clearly" means June wins about **6 of every 10** decisive pairs, so that the lower 95% bound is above 50%. **This is deliberately asymmetric:** a small advantage does not pay for the carry machinery.
-4. **ch01 and ch02 were professionally reviewed against June, in Word files nobody has opened yet.** Open them first (D10). Only the segments the review actually touched enter as human-reviewed text; the rest go through layers 1–2 like every other chapter.
+4. **ch01 and ch02 were professionally reviewed in Word files, with comments dated September 2025 to March 2026.** The files carry **comments, not tracked changes**, and Track Changes was off, so a direct edit leaves no mark. The text the reviewers started from is not yet identified (the dates suggest an MT older than the June vintage). Only the segments the review actually touched enter as human-reviewed text (D10, answered); a comment alone is not an edit, and the rest go through layers 1–2 like every other chapter. How "touched" is read, and what [USER] is asked next: 0.2.
 5. **Apply [USER]'s rulings before any editor opens a chapter**, in a **machine-revised layer** that never overwrites the API output:
    - deterministic code rules first;
    - then a narrow AI pass (the ruled term plus the agreement it forces), as edit operations a strict code gate accepts or rejects;
@@ -94,12 +99,13 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
 | Re-buy cost (estimate) | about 1,000–2,600 ISK per chapter; about 36,000–46,000 ISK for the whole book |
 | What code alone reaches | key-terms headwords, markup defects, exact swaps. Not agreement after a gender change, and not most multi-word terms. |
 
-**Open.** These need [USER] (§8):
-- the calendar;
-- the scope of the verdicts, and the unruled headwords;
-- reading quality (the masked test);
-- the publication criterion;
-- the research design (§7).
+**Open.** These still need [USER]:
+- the ~131 unruled headwords, ruled as cards on the stage 1 page (1.4; method decided, D3);
+- reading quality (the masked test, 1.7; threshold decided, D1);
+- the publication criterion (D9);
+- the research design (§7, D7).
+
+The calendar (D0) and the scope of the verdicts (D2) were answered on 2026-10-11 (§8).
 
 ## 3. The seven options
 
@@ -151,40 +157,48 @@ the deploy.
 - my build: about 10–14 working sessions;
 - [USER]: about 6–8 hours of decisions and checks, in short sittings.
 
-**Target calendar.** S is the follow-on start date. Recommended: the day after the current grant's final report, so about 1 November, or about 11 November if the report needs the full 30 days. [USER] gives the exact day.
+**Target calendar.** S is the follow-on start date: **1 November 2026**, the day after the current grant's final report on 31 October (D0).
 
 | When | [USER] | Build | Whose hours |
 |---|---|---|---|
-| **Before S** | D1–D4 and D10; accept the plan; **deliver the current grant's final report (it sets S)** | commit the evidence; build the stage 1 page; start 4.0 (per-segment "human"), 1.2 (scope field), 4.2 (re-attach by content) | current grant (what remains of it) |
+| **Before S** (to 31 October) | **deliver the current grant's final report on 31 October (it sets S)**; decide D11 (its buy can be charged only before S); tell both funds the dates (D0). D1–D4 and D10 were answered on 2026-10-11 | commit the evidence; build the stage 1 page, with 0.2 (the reviewers' starting text, the comparison, the count per module) alongside; start 4.0 (per-segment "human"), 1.2 (scope field), 4.2 (re-attach by content); if D11 is yes, confirm the March-glossary mechanism in a scratch copy, then buy by 31 October | current grant (what remains of it) |
 | **S → S+2 weeks** | work through the stage 1 page (term rulings; masked test) | **tag both repositories on S**; **5.2 timing and baseline capture** (follow-on, first task); in parallel, the rule layer, the AI harness and gate, the re-request mode | timing = follow-on; rulings = follow-on terminology work; the rest is preparation: follow-on in-kind where it fits a named in-kind line, otherwise unfunded |
 | **S+2 → S+4 weeks** | check the AI pilot (20, then up to 59 per category) | full AI run; 4.1 loaders; preview re-render and QC; deploy | preparation, as above |
-| **≈ S+4–5 weeks (around 1 December, or mid-December)** | preview; go / no-go | **freeze** (tag + manifest) | preparation, as above |
+| **≈ S+4–5 weeks (around 29 November to 6 December)** | preview; go / no-go | **freeze** (tag + manifest) | preparation, as above |
 | **From then** | editing begins as units open | term propagation and lemma/POS alongside | follow-on |
 
 **Slip rule:** if the AI layer has not passed its check by S+4 weeks, freeze with the rule layer.
 The AI layer then goes only into units nobody has opened yet, recorded in the origin column.
 
 **The funding edge is S**, with S the day after the current grant's final report.
-- **Before S,** preparation can be paid from what remains of the current grant. So front-load the build work. Where the rulings allow, run the paid steps before S, such as D11's MT buy and the AI pilot's API calls: after S, no grant pays API or other non-labour costs.
+- **Before S,** preparation can be paid from what remains of the current grant. So front-load the build work. Where the rulings allow, run the paid steps before S, such as D11's MT buy and the AI pilot's API calls: after S, no grant pays API or other non-labour costs. On the target calendar the stage 1 rulings close after S, so expect the AI layer's API cost to fall after S.
 - **From S,** preparation is follow-on in-kind where it fits a named in-kind line, and otherwise unfunded. It is never follow-on paid hours.
 - **Lemmatization work and the proofreading itself start after S,** at the freeze, as the follow-on application promises.
 - **If the report and S cannot coincide,** no hour may be charged to both grants, and nothing the current grant pays may count as follow-on in-kind (private companion).
 
-### Stage 0: before anything else ([USER])
-- **0.1 D0, answered.** The follow-on contract is read; its wording is final. The project starts later this month. **Still to do:** give the exact start date. The current grant's terms are read too. Its fund has told [USER] that what remains of it can be used until its final report, so the recommended S is the day after that report (§1 point 0).
-- **0.2 D10:** open the ch01–ch02 Word files. For each module, count the segments the tracked changes touched.
+### Stage 0: before anything else ([USER]'s decisions; 0.2's measurement is build work)
+- **0.1 D0, answered 2026-10-11: S = 1 November 2026,** the day after the current grant's final report on 31 October (§1 point 0). The follow-on contract and the current grant's terms are both read.
+- **0.2 D10, answered yes: only the segments the review touched count as human.** The files are one level up from the repository. [USER] answered before anyone had opened them, on the premise that the review was in tracked changes.
+  - **Measured 2026-10-11: they carry no revision marks of any kind** (no insertions, deletions, moves or formatting changes in all 25 files), and Track Changes is off in all of them. 17 carry 323 comments (ch01 192, ch02 131), each file by one author, dated 2025-09-25 → 2026-03-13 (parsed dates; two of ch01's stamps are in US format). The other 8 (ch01's answer key; ch02's 2.7, introduction and end matter) carry no comments, no Word editing-session ids and a 2025-01-24 metadata stamp (created = modified).
+  - **A comment is not an edit.** A commented segment that was not changed still holds the pre-review machine text, and it enters layer 3 only when an editor applies or accepts the change (§4).
+  - So "touched" must be established before 2.2 uses it:
+    - (a) identify the text the reviewers started from (the comment dates suggest an MT older than the June vintage's March 2026 buys; a hypothesis to measure);
+    - (b) compare the Word text with it: a segment whose text differs is a candidate for human text;
+    - (c) count per module, separating changed segments from comment-only ones;
+    - (d) reconcile the changed set with the 137 in-repo human segments (§2, 4.2), by module and by content. Part of ch01's review is already among them: `books/efnafraedi-2e/reference-translations/pre-remt-editorial-2026-08-23/README.md` marks m68663 and m68664 as also covered by the external ch01 Word file;
+    - (e) put the result to [USER]: whether ch01–ch02 then hold any human text, and who applies the comments, under which line (§8, D10 follow-up).
 
 ### Stage 1: close the ruling set (one review page, answers saved as you go)
-- **1.1 The two conflicts with rulings in force:**
-  - Lewis structure: verdict *Lewis-bygging*, ruling *Lewis-mynd*;
-  - trigonal planar: verdict *þríhyrningslaga flatt*, ruling *þríhyrnt flatt*.
+- **1.1 The two conflicts with rulings in force: answered (D4, 2026-10-11).**
+  - *Lewis structure* stays ***Lewis-mynd***. That overrides the ch07 verdict *Lewis-bygging*, which the frozen review-page export still holds, so **whatever compiles the ruling set must apply the override.**
+  - *trigonal planar* becomes ***þríhyrningslaga flatt***, the official glossary's form. That reverses the 2026-09-21 ruling, so its house-style entry is removed (code; the concept model and the export change only after a deploy). Of the 44 September segments whose English says *trigonal planar*, **22 carry the adjective *þríhyrndur*** in some inflection (ch07 10, ch08 4, ch18 4, ch19 2, ch20 2) and **8 another *þríhyrnings-* compound**; a literal search for *þríhyrnt* finds 4 of the 22 (record, D4b). An exact swap is a rule-layer candidate only where 3.1's declension-class gate admits it; the other renderings need rewording (AI layer or editor). No re-buy. The frozen review-page export's card still carries `houseStyleRuling: þríhyrnt flatt`; its `targetIcelandic` is the answer.
 
-  `houseStyleTerms.js` is the owner until it is changed.
-- **1.2 Scope.** Do the verdicts apply book-wide by default, with an exception list?
+  **Where rulings live.** `houseStyleTerms.js` holds only the rulings that differ from the stored lemma. A ruling that keeps the stored lemma has no entry, and the 2026-09-21 test pins it absent: D4b *trigonal planar* (`REVERSED_TO_STORED`) and 2026-09-21's four `ALREADY_CORRECT` words. Of the review page's 102 headwords, 3 have an entry; the rest live in the frozen `verdicts-2026-10-10.json`, with D4's overrides applied over it. Book-scoped rulings (chemistry's `atom → atóm`) live in prod's `book_term_preference`. So the ruling set that stage 1 compiles (Outputs) draws on all of them, and lists entry and no-entry rulings alike, each with its target and its competitor.
+- **1.2 Scope: book-wide by default, with an exception list (D2, answered yes).**
   - Confirmed on the high-volume terms: atom, product, temperature, heat, stoichiometry, tetrahedral, ionic compound, cathode, anode.
-  - **Code before stage 3:** `houseStyleTerms.js` entries carry `{en, is, ruled, why}`. Chapter scope (`group`, `cell`) lives only in prose. Add a test-pinned `chapters`/`exclude` field so the AI gate can enforce it.
+  - **Code before stage 3:** `houseStyleTerms.js` entries carry `{en, is, ruled, why}`. Chapter scope (`group`, `cell`) lives only in prose. Add a test-pinned `chapters`/`exclude` field where every ruling has a row (the ruling-set artifact, or the code that compiles it), so a no-entry ruling can carry a scope too, and the AI gate can enforce it.
 - **1.3 The 68 gained terms** (default: keep).
-- **1.4 The 217 unruled headwords.**
+- **1.4 The 217 unruled headwords (D3, answered yes).**
   - **The ~131 with enough running text are ruled as cards**, because taught-term choice is the teacher's.
   - Only the 64 with under 3 occurrences and the 22 spelling-only pairs get a default: one word per headword, the **book-wide** majority.
 - **1.5 Wrong-sense rows.**
@@ -208,14 +222,16 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 **Outputs:** rulings into `houseStyleTerms.js` (code, so a deploy is needed before the editor's export sees them); concept-model fixes via the prod script; the whole ruling set committed as one dated artifact. Optional: the terminology committee reviews the ruling set before it is applied book-wide.
 
 ### Stage 2: the base (code, 0 ISK)
-- **2.1 The carry tool.** Built only if the 1.7 override fires, or as the fallback for ch01–ch02.
+- **2.1 The carry tool.** Built only if the 1.7 override fires.
   - Starts from the verified prototype.
   - Additions: an untranslated check, exclusion of the 78 `HAND REPAIR` keys, and table cells keyed by content.
   - Writes layer 1s and its manifest, and passes a sentinel test emitted → injected → rendered.
 - **2.2 ch01–ch02.**
-  - The segments the Word review touched become human text (origin `docx-review`), re-attached by content.
+  - The segments whose Word text differs from the reviewers' starting text (0.2) are the candidates for human text (origin `docx-review`), re-attached by content.
+  - A segment already among the 137 in-repo human segments (4.2) enters once, never twice; its origin records both the review and the editor entry.
+  - Comment-only segments keep their layer 1–2 text, and their comments go to the editors as notes. Nothing enters layer 3 from a comment until an editor applies or accepts it.
   - Everything else goes through layers 1–2.
-  - If coverage is low, drop the exception.
+  - What happens to ch01–ch02 if few segments qualify is [USER]'s question (0.2 (e), D13).
 - **2.3 The 8 untranslated September segments.**
   - Re-request them through the API, in a small **new** re-request mode that writes to layer 1s and never over `02-mt-output`. It must be built and tested first: CLAUDE.md warns that unknown flags are silently ignored, and `--top-up` buys only *missing* ids.
   - June's API text is the fallback for the 7 that June translated.
@@ -243,13 +259,13 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 - **3.4 Pilot** on one high-drift chapter, then a second, then the rest. [USER] checks blind, per category, from at least 3 chapters:
   - **20 first.** A category is dropped at any meaning-changing error, or at 2 or more wrong.
   - **Then up to 59 in total** for the categories that survive. A category is kept only if none of the 59 changes meaning and at most 1 is otherwise wrong (that supports an error rate below about 9%).
-- **3.5 What is measured.** `measure.py` before and after is a **ruling-compliance (manipulation) check**, not quality: the pass optimises exactly what it counts, and its matcher favours citation forms over correct inflection. **Quality** is the blind check's error rate per category, plus a second, compound-tolerant matcher, plus the follow-on project's post-editing measurement.
+- **3.5 What is measured.** `measure.py` before and after is a **ruling-compliance (manipulation) check**, not quality: the pass optimises exactly what it counts, and its matcher favours citation forms over correct inflection. Its `load_rulings` reads only `HOUSE_STYLE_TERMS`, so it cannot see a no-entry ruling (D4b among them); the compliance check must read the compiled ruling-set artifact. **Quality** is the blind check's error rate per category, plus a second, compound-tolerant matcher, plus the follow-on project's post-editing measurement.
 
 ### Stage 4: editable and checked
 - **4.0 Make "human" per segment** in the TM and corpus exports (§4). Pin it with a test, before 4.1.
 - **4.1 Classify every `02-mt-output` reader** (§4). Change the editor's loader, the mt-preview publication map and the auto-advance to read layer 2. Load order: human, revised, selected, pure.
 - **4.2 Re-attach by content.** This replaces the id-based script.
-  - Re-enter the 137 human segments; 28 need marker conversion.
+  - Re-enter the 137 human segments, minus any already entered under 2.2; 28 need marker conversion.
   - Supersede the 151 old production rows (register §C114 ①).
 - **4.3 Figures.** Check figure labels against the ruled words, as plain string matches, and send findings to the figure register.
 - **4.4 Before editors open anything:**
@@ -322,21 +338,22 @@ more work on some editors.
 
 ## 8. Decisions for [USER], grouped by when they are needed
 
-**Now (they shape the stage 1 page):**
+**Now (they shape the stage 1 page). Answered by [USER] on 2026-10-11** ([record](../decisions/2026-10-11-chemistry-finish-preparation-answers.md)):
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D0 | The exact start date (S in §5). [USER] has said later this month | **the day after the current grant's final report**: the follow-on's work plan starts it when the current project ends. Record the date once and tell both funds. |
-| D1 | September base by default; switch to the hybrid only if June wins about 6 of 10 decisive pairs in the masked test | yes |
-| D2 | Verdicts apply book-wide, with an exception list carried in a machine-readable scope field | yes |
-| D3 | Rule the ~131 unruled headwords that have enough text as cards; the 64 low-text and 22 spelling-only take the book-wide majority | yes |
-| D4 | Lewis structure and trigonal planar: which word | [USER]'s pick (no recommendation on the words) |
-| D10 | Open the ch01–ch02 Word files; only touched segments count as human | yes, before stage 2 |
+| D0 | The exact start date (S in §5) | **Answered: S = 1 November 2026**, the day after the final report on 31 October. The follow-on's work plan starts it when the current project ends. Record the date once and tell both funds. Open: the slip case (§1 point 0). |
+| D1 | September base by default; switch to the hybrid only if June wins about 6 of 10 decisive pairs in the masked test | **answered yes** |
+| D2 | Verdicts apply book-wide, with an exception list carried in a machine-readable scope field | **answered yes** |
+| D3 | Rule the ~131 unruled headwords that have enough text as cards; the 64 low-text and 22 spelling-only take the book-wide majority | **answered yes** |
+| D4 | Lewis structure and trigonal planar: which word | **Answered:** *Lewis-mynd*; *þríhyrningslaga flatt*, which reverses 2026-09-21 (1.1) |
+| D10 | Open the ch01–ch02 Word files; only touched segments count as human | **answered yes** (before the files were opened). The files hold comments, not tracked changes, so 0.2 establishes "touched" first, and two questions follow (below) |
 
 **Before stages 2–4:**
 
 | # | Decision | Recommendation |
 |---|---|---|
+| D10 follow-up | With no tracked changes: do ch01–ch02 hold any human text beyond the segments 0.2 finds changed, and who applies the reviewers' comments, under which line? | decide once 0.2 has counted; a comment-only segment stays machine text until an editor applies or accepts the change |
 | D5 | Selected text (API runs chosen per segment, no word changed) is its own condition in the paper | yes: "selected MT", with its manifest |
 | D6 | AI pass v1: ruled terms plus forced agreement; mistranslations flagged only | yes |
 | D11 | A controlled glossary test for the paper. 2 modules × {March-glossary arm, no glossary} × 2 runs, run in a scratch copy (`api-translate` has no output-dir and writes into `02-mt-output`). **Reproducing June's arm needs the March glossary *values*.** `--glossary-only` selects headwords from today's export, and `--full-glossary` sends today's 1,748 rows, so the scratch tree must point `api-translate` at the March file. **Confirm that mechanism before buying.** The follow-on project pays no API fees. So **buy it before S** to charge it to the current grant; after S it is unfunded. | yes, about 1,000–2,500 ISK; it answers option 6's hypothesis. It does not change this book's route. |
@@ -350,7 +367,7 @@ more work on some editors.
 | D8 | The only gate on editing is timing and baseline capture | yes |
 | D9 | Publication criterion | as in 1.8 |
 | D12 | Review depth for alts and table summaries (+38.6% English) | **urgent**: decide before editing starts. The contract requires every chapter reviewed and published within the 12 months. |
-| D13 | ch01–ch02's 106 new alt and table-summary segments: who reviews them, when, under which grant | review them in the follow-on period, at the depth D12 sets, because the contract requires every chapter reviewed. They fall outside the 134 units, so they go to a follow-on in-kind line (private companion). |
+| D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **open until 0.2 has counted it.** The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so whatever 0.2 does not establish as reviewed has no editing hours yet. Funding options are in the private companion. |
 | D15 | §C50: the terminology panel's issue volume (2.81 per segment), which blocks U4 | re-measure on layer 2 first; the pass should remove much of it |
 
 ## 9. What this plan cannot see
@@ -358,18 +375,27 @@ more work on some editors.
 - **The terminology instrument's blind spots** (short words inside compounds, some inflections). [USER]'s blind check is the ground truth for the AI pass.
 - **[USER]'s decision time is the critical path.** Every page saves as it goes, so short sittings work. The current grant's final report competes for the same weeks, just before S.
 - **The terminology committee's position on the ruled terms.**
-- **Off-repo inputs:** the Word files. Both grants' terms have been read.
+- **Off-repo inputs:** the Word files (one level up; comments, no tracked changes). Both grants' terms have been read.
 - **Cost truth.** The ISK figures here are estimates; invoices decide.
 
-## 10. Single next action
+## 10. Next action
 
-**[USER]:** two things, in either order:
-- **The exact start date** of the follow-on project. Recommended (D0): the day after the current grant's final report.
-- **The "now" decisions:** answer D1–D4 and D10, or say "accept the recommendations".
+The active register's ⏩ RESUME block owns it. This plan carries no open-work status; [USER]'s decisions are in the linked record.
 
-I then build the stage 1 page (the rulings plus the masked test) in one session. Stage 2–4 code can proceed alongside it.
+## 11. What changed: rev. 5, rev. 4, rev. 3, then the critique (rev. 1 → rev. 2)
 
-## 11. What changed: rev. 4, rev. 3, then the critique (rev. 1 → rev. 2)
+**Rev. 5 (2026-10-11): [USER]'s answers.** Record: [`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`](../decisions/2026-10-11-chemistry-finish-preparation-answers.md).
+- D0: S = 1 November 2026, with the current grant's final report on 31 October. §1 point 0, §5 and 0.1 now carry the dates. The freeze falls around 29 November to 6 December.
+- D1–D3: as recommended.
+- D4: *Lewis-mynd*, overriding the review-page verdict, and *þríhyrningslaga flatt*, reversing the 2026-09-21 ruling (its house-style entry is removed). Production was checked read-only first: the official row is the only other candidate, so no tie arises.
+- D10: yes, answered before the files were opened. **Opening them falsified 0.2's premise:** they carry comments, not tracked changes, so 0.2 now establishes "touched" before 2.2 uses it, and §8 gains a D10 follow-up for [USER]. §1 point 4's "reviewed against June" became a hypothesis, because the comments are dated 2025-09-25 → 2026-03-13. 2.1's "fallback for ch01–ch02" rested on that premise and was removed. 2.2 no longer drops the exception on low coverage; D13 now covers the whole ch01–ch02 remainder and is open until 0.2 has counted.
+- §10 now points at the register, which owns what comes next.
+- **An adversarial review checked rev. 5 before it was committed** (Claude Code subagents, 2026-10-11: four lenses, each finding re-measured by a separate verifier; 27 of 33 findings confirmed). What it changed:
+  - **D4b's exposure was a spelling count.** It counted *þríhyrnt* and missed the same adjective's other forms: 22 segments carry it, not 4 (1.1).
+  - **"The model already produces the official form" was dropped.** In the buys that did not send the term, the adjective is the most frequent rendering. [USER]'s ground, the official glossary, carries D4b alone.
+  - **The comment dates start on 2025-09-25,** not 2025-10-01: two US-format stamps had sorted first as text.
+  - 1.1's "`houseStyleTerms.js` owns every ruled word" was false for no-entry rulings; 1.1, 1.2 and 3.5 now say where rulings live.
+  - §2's open list, the slip rule in §1 point 0 (now a question for [USER]), and §5's "Before S" row (0.2 and D11 added).
 
 **Rev. 4 (2026-10-11): the current grant's terms, and its fund's guidance.**
 - [USER] put the terms beside the other grant documents, outside the repository. They set the project's end at **30 June 2026**, the end of the 2025–2026 school year.
