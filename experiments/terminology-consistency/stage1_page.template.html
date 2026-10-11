@@ -165,7 +165,7 @@ function renderSummary() {
   const done = (ids) => ids.filter((t) => answers.has(t.id)).length;
   $('#big').innerHTML = `
     <div><b>${done(cards)} / ${cards.length}</b><span>terms ruled</span></div>
-    <div><b>${defaults.length + gained.length}</b><span>defaults, ${done(defaults) + done(gained)} changed</span></div>
+    <div><b>${defaults.length + gained.length}</b><span>defaults and gained terms, ${done(defaults) + done(gained)} changed</span></div>
     <div><b>${done(DATA.wrongSense)} / ${DATA.wrongSense.length}</b><span>wrong-sense rows answered</span></div>
     <div><b>${meta.criterion ? 'Answered' : 'Open'}</b><span>publication rule</span></div>`;
   const rs = DATA.rulingSet;

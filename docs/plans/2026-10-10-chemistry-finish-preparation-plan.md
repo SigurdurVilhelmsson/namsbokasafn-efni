@@ -102,7 +102,7 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
 | What code alone reaches | key-terms headwords, markup defects, exact swaps. Not agreement after a gender change, and not most multi-word terms. |
 
 **Open.** These still need [USER]:
-- the ~131 unruled headwords, ruled as cards on the stage 1 page (1.4; method decided, D3);
+- the unruled headwords with enough text, ruled as cards on the stage 1 page (1.4; method decided, D3; measured 2026-10-11: 100 cards);
 - reading quality (the masked test, 1.7; threshold decided, D1);
 - the publication criterion (D9);
 - the research design (§7, D7).
@@ -202,8 +202,9 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
   - **Code before stage 3:** `houseStyleTerms.js` entries carry `{en, is, ruled, why}`. Chapter scope (`group`, `cell`) lives only in prose. Add a test-pinned `chapters`/`exclude` field where every ruling has a row (the ruling-set artifact, or the code that compiles it), so a no-entry ruling can carry a scope too, and the AI gate can enforce it.
 - **1.3 The 68 gained terms** (default: keep).
 - **1.4 The 217 unruled headwords (D3, answered yes).**
-  - **The ~131 with enough running text are ruled as cards**, because taught-term choice is the teacher's.
-  - Only the 64 with under 3 occurrences and the 22 spelling-only pairs get a default: one word per headword, the **book-wide** majority.
+  - **The ones with enough running text are ruled as cards**, because taught-term choice is the teacher's.
+  - Only the low-text and spelling-only headwords get a default: one word per headword, the **book-wide** majority (a tie goes to the September word, D1).
+  - **Measured 2026-10-11 on the stage 1 page** (`experiments/terminology-consistency/stage1_page.py`, which states its bucketing rules): 217 and 64 reproduce exactly. **"22 spelling-only" did not:** it was an agent's count with no script. The written rule (case, hyphens, spaces, markup or a trailing definite article only) gives **16**; an edit-distance rule was rejected because it also swept in real word choices. Assigned in order, each headword to one bucket: 2 already ruled in another chapter (D2), 16 spelling-only, 63 low-text (*periodic law* is both and went to spelling-only first, so 64 − 1), 36 gained (moved to 1.3, default keep), **100 cards**. The "~131" above was 217 − 64 − 22 before the gained ones were separated.
 - **1.5 Wrong-sense rows.**
   - Give the right word for addition, valence and emission.
   - An AI pre-screen of the other ~390 approved rows that fire flags suspects, and [USER] rules only the flagged ones.
@@ -346,7 +347,7 @@ more work on some editors.
 | D0 | The exact start date (S in §5) | **Answered: S = 1 November 2026**, the day after the final report on 31 October. The follow-on's work plan starts it when the current project ends. Record the date once and tell both funds. **Slip case answered:** S moves with the report (§1 point 0). |
 | D1 | September base by default; switch to the hybrid only if June wins about 6 of 10 decisive pairs in the masked test | **answered yes** |
 | D2 | Verdicts apply book-wide, with an exception list carried in a machine-readable scope field | **answered yes** |
-| D3 | Rule the ~131 unruled headwords that have enough text as cards; the 64 low-text and 22 spelling-only take the book-wide majority | **answered yes** |
+| D3 | Rule the ~131 unruled headwords that have enough text as cards; the 64 low-text and 22 spelling-only take the book-wide majority | **answered yes** (measured counts: 100 cards, 63 low-text, 16 spelling-only; see 1.4) |
 | D4 | Lewis structure and trigonal planar: which word | **Answered:** *Lewis-mynd*; *þríhyrningslaga flatt*, which reverses 2026-09-21 (1.1) |
 | D10 | Open the ch01–ch02 Word files; only touched segments count as human | **answered yes** (before the files were opened). The files hold comments, not tracked changes, so 0.2 establishes "touched" first, and two questions follow (below) |
 
@@ -384,6 +385,8 @@ more work on some editors.
 The active register's ⏩ RESUME block owns it. This plan carries no open-work status; [USER]'s decisions are in the linked record.
 
 ## 11. What changed: rev. 5, rev. 4, rev. 3, then the critique (rev. 1 → rev. 2)
+
+**Rev. 5, amended 2026-10-11 (later):** 1.4's counts replaced by the stage 1 page's measured ones (100 cards; 16 spelling-only, not 22; 63 + 1 low-text); the old figures had no script behind the 22.
 
 **Rev. 5 (2026-10-11): [USER]'s answers.** Record: [`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`](../decisions/2026-10-11-chemistry-finish-preparation-answers.md).
 - D0: S = 1 November 2026, with the current grant's final report on 31 October. §1 point 0, §5 and 0.1 now carry the dates. The freeze falls around 29 November to 6 December.
