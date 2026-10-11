@@ -11,7 +11,7 @@
   "dataShaNote": "hash of the DATA in the page passed as <page.html>. The 100 cards were answered on Version 2 (DATA sha256 e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b); the later tabs on Version 4, whose DATA differs only in showing [[MATH:n]] as [formula]. Item ids are identical across versions.",
   "generator": "experiments/terminology-consistency/stage1_page.py"
  },
- "repoHead": "47fa092b7080855ef3fee99c7f51491d972d58e6",
+ "repoHead": "646b10701eb66c6f85b99710fa0c479727f53690",
  "counts": {
   "answers": 153,
   "answersByChoice": {

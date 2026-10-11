@@ -207,7 +207,7 @@ def main():
     json.dump(res, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(json.dumps(res['counts'], ensure_ascii=False))
     print(f"containsRuled {len(contains)} (substring misses {sum(not c['substringHit'] for c in contains)}), "
-          f"sameHeadwordTwoTargets {len(two)}, zero-in-book {sum(c['book'] == 0 for c in counts)} of {len(counts)} -> {out}")
+          f"containsAnswered {len(contains_answered)}, sameHeadwordTwoTargets {len(two)}, zero-in-book {sum(c['book'] == 0 for c in counts)} of {len(counts)} -> {out}")
 
 
 if __name__ == '__main__':
