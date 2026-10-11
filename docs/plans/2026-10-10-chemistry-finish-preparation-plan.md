@@ -18,6 +18,8 @@
 > **Rev. 5 (2026-10-11, same day)** takes in [USER]'s answers: **S = 1 November 2026**, the day after the current grant's final
 > report on 31 October; D1–D3 as recommended; D4 *Lewis-mynd* and *þríhyrningslaga flatt*; D10 yes. Opening the ch01–ch02 Word
 > files, after [USER] had answered, corrected 0.2's premise: they carry comments, not tracked changes (§11).
+> **The same day [USER] answered the follow-ups** (record: [`docs/decisions/2026-10-11-chemistry-finish-prep-follow-up-answers.md`](../decisions/2026-10-11-chemistry-finish-prep-follow-up-answers.md)): ch01–ch02 enter as machine text with their
+> Word review as editor notes; D11 yes; S moves if the report slips; the contract's cost plan is read from the signed version.
 
 **[USER]'s question (2026-10-10).** Choose how to finish chemistry's MT preparation. The options:
 1. keep the June MT;
@@ -45,7 +47,7 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
      - The current grant's terms set its project's end at 30 June 2026. Its fund has told [USER] that what remains of the grant can be used until the final report is delivered, which [USER] plans for **31 October 2026**.
      - The follow-on's work plan, part of its contract, starts its 12 months when the current grant's project ends. Its application promises that lemmatization and the proofreading begin only after that. **So S is the day after that report** (D0).
      - [USER]'s dates (2026-10-11): the report on 31 October, S on 1 November.
-     - *Not asked yet:* if the report slips, does S move with it (what remains of the current grant stays in use until the report, and the follow-on's fund is told the new date), or does S stay on 1 November (the remainder stops on 31 October, and the work that needs the report waits for it)? The plan's default is that S and §5 move; [USER] decides.
+     - **If the report slips, S moves with it, and so does §5** ([USER] 2026-10-11, follow-up record). What remains of the current grant stays in use until the report, and the follow-on's fund is told the new date.
      - **Before S, preparation can be paid from what remains of the current grant. From S, it is never follow-on paid hours:** it counts as follow-on in-kind where it fits one of the follow-on's in-kind lines, and is otherwise unfunded (private companion).
      - **Tag both repositories on S.** Both final reports cite that tag for what existed before the follow-on began.
    - **So the start date is no longer the freeze.** What matters is that the base is ready **before the first unit is opened**. On the project's own schedule (timing capture in months 1–3, editing from month 2), that is **about S+4–5 weeks: around 29 November to 6 December 2026**.
@@ -161,7 +163,7 @@ the deploy.
 
 | When | [USER] | Build | Whose hours |
 |---|---|---|---|
-| **Before S** (to 31 October) | **deliver the current grant's final report on 31 October (it sets S)**; decide D11 (its buy can be charged only before S); tell both funds the dates (D0). D1–D4 and D10 were answered on 2026-10-11 | commit the evidence; build the stage 1 page, with 0.2 (the reviewers' starting text, the comparison, the count per module) alongside; start 4.0 (per-segment "human"), 1.2 (scope field), 4.2 (re-attach by content); if D11 is yes, confirm the March-glossary mechanism in a scratch copy, then buy by 31 October | current grant (what remains of it) |
+| **Before S** (to 31 October) | **deliver the current grant's final report on 31 October (it sets S)**; tell both funds the dates (D0). D1–D4, D10, its follow-up and D11 (yes) were answered on 2026-10-11 | commit the evidence; build the stage 1 page, with 0.2 (the reviewers' starting text, the comparison, the count per module) alongside; start 4.0 (per-segment "human"), 1.2 (scope field), 4.2 (re-attach by content); D11: confirm the March-glossary mechanism in a scratch copy, then buy by 31 October | current grant (what remains of it) |
 | **S → S+2 weeks** | work through the stage 1 page (term rulings; masked test) | **tag both repositories on S**; **5.2 timing and baseline capture** (follow-on, first task); in parallel, the rule layer, the AI harness and gate, the re-request mode | timing = follow-on; rulings = follow-on terminology work; the rest is preparation: follow-on in-kind where it fits a named in-kind line, otherwise unfunded |
 | **S+2 → S+4 weeks** | check the AI pilot (20, then up to 59 per category) | full AI run; 4.1 loaders; preview re-render and QC; deploy | preparation, as above |
 | **≈ S+4–5 weeks (around 29 November to 6 December)** | preview; go / no-go | **freeze** (tag + manifest) | preparation, as above |
@@ -187,7 +189,7 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
     - (c) **scope:** the 8 files without comments carry no review signal at all (ch01's answer key; ch02's 2.7, introduction and end matter), and a comment says only the odd-numbered ch01 exercises were read;
     - (d) **already in the repo:** the reviewer's wording at 4 edit sites in m68664 was re-entered by hand in the editor on 2026-06-16, so it is among the 137 in-repo human segments (4.2);
     - (e) **a bridge to segment ids:** the English source `.docx` matches the starting text paragraph for paragraph, and through it 192 of the 198 changed or commented paragraphs resolve to a current segment.
-  - **So the review exists mainly as suggestions, on a different MT.** A reviewed paragraph cannot simply be re-attached to its September segment as human text: most of its words are the 2025 MT, not the reviewer's. **Recommendation (§8, D10 follow-up):** no segment enters as `docx-review` human text. The 26 changed paragraphs and the 323 comments go to the editors as notes on the matching September segments, through the bridge, and the editors apply them as timed layer-3 edits. The m68664 rows the [LEAD] already re-entered stay among the 137.
+  - **So the review exists mainly as suggestions, on a different MT.** A reviewed paragraph cannot simply be re-attached to its September segment as human text: most of its words are the 2025 MT, not the reviewer's. **Decided ([USER] 2026-10-11, D10 follow-up):** no segment enters as `docx-review` human text. The 26 changed paragraphs and the 323 comments go to the editors as notes on the matching September segments, through the bridge, and the editors apply them as timed layer-3 edits. The m68664 rows the [LEAD] already re-entered stay among the 137.
 
 ### Stage 1: close the ruling set (one review page, answers saved as you go)
 - **1.1 The two conflicts with rulings in force: answered (D4, 2026-10-11).**
@@ -228,9 +230,9 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
   - Additions: an untranslated check, exclusion of the 78 `HAND REPAIR` keys, and table cells keyed by content.
   - Writes layer 1s and its manifest, and passes a sentinel test emitted → injected → rendered.
 - **2.2 ch01–ch02.**
-  - **As recommended (0.2, D10 follow-up):** ch01–ch02 go through layers 1–2 like every other chapter. The review's 26 changed paragraphs and 323 comments are attached to the matching September segments as editor notes, through the English bridge, and nothing enters layer 3 until an editor applies or accepts it.
+  - **Decided (D10 follow-up, [USER] 2026-10-11):** ch01–ch02 go through layers 1–2 like every other chapter. The review's 26 changed paragraphs and 323 comments are attached to the matching September segments as editor notes, through the English bridge, and nothing enters layer 3 until an editor applies or accepts it.
   - The m68664 rows the [LEAD] already re-entered from the review stay among the 137 in-repo human segments (4.2), entered once, never twice.
-  - **If [USER] decides otherwise,** the changed paragraphs are re-attached through the bridge with origin `docx-review`, and the 2025-01-24 MT is recorded as their baseline, so their pure → human distance stays reconstructible (§4).
+  - **How the notes reach the editors** is a small design step: the editor's `segment_discussions` hangs on an edit row (`segment_edit_id`), not on a segment, so a segment-level note needs a schema change or another surface. The bridge is the English source `.docx` (192 of 198 paragraphs map). Built before ch01–ch02 are opened for editing.
 - **2.3 The 8 untranslated September segments.**
   - Re-request them through the API, in a small **new** re-request mode that writes to layer 1s and never over `02-mt-output`. It must be built and tested first: CLAUDE.md warns that unknown flags are silently ignored, and `--top-up` buys only *missing* ids.
   - June's API text is the fallback for the 7 that June translated.
@@ -341,7 +343,7 @@ more work on some editors.
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D0 | The exact start date (S in §5) | **Answered: S = 1 November 2026**, the day after the final report on 31 October. The follow-on's work plan starts it when the current project ends. Record the date once and tell both funds. Open: the slip case (§1 point 0). |
+| D0 | The exact start date (S in §5) | **Answered: S = 1 November 2026**, the day after the final report on 31 October. The follow-on's work plan starts it when the current project ends. Record the date once and tell both funds. **Slip case answered:** S moves with the report (§1 point 0). |
 | D1 | September base by default; switch to the hybrid only if June wins about 6 of 10 decisive pairs in the masked test | **answered yes** |
 | D2 | Verdicts apply book-wide, with an exception list carried in a machine-readable scope field | **answered yes** |
 | D3 | Rule the ~131 unruled headwords that have enough text as cards; the 64 low-text and 22 spelling-only take the book-wide majority | **answered yes** |
@@ -352,10 +354,10 @@ more work on some editors.
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D10 follow-up | The review is 323 comments plus 26 changed ch01 paragraphs, on a 2025-01-24 MT that is neither base (0.2). Does any of it enter as human text, and who applies the comments, under which line? | **no segment enters as `docx-review` human text.** The changed paragraphs and the comments become editor notes on the matching September segments (2.2), and the editors apply them as timed layer-3 edits. ch01–ch02 are then reviewed like every other chapter (D13). |
+| D10 follow-up | The review is 323 comments plus 26 changed ch01 paragraphs, on a 2025-01-24 MT that is neither base (0.2). Does any of it enter as human text, and who applies the comments, under which line? | **Answered ([USER] 2026-10-11): no.** No segment enters as `docx-review` human text. The changed paragraphs and the comments become editor notes on the matching September segments (2.2), and the editors apply them as timed layer-3 edits. Who reviews ch01–ch02, under which line, stays D13. |
 | D5 | Selected text (API runs chosen per segment, no word changed) is its own condition in the paper | yes: "selected MT", with its manifest |
 | D6 | AI pass v1: ruled terms plus forced agreement; mistranslations flagged only | yes |
-| D11 | A controlled glossary test for the paper. 2 modules × {March-glossary arm, no glossary} × 2 runs, run in a scratch copy (`api-translate` has no output-dir and writes into `02-mt-output`). **Reproducing June's arm needs the March glossary *values*.** `--glossary-only` selects headwords from today's export, and `--full-glossary` sends today's 1,748 rows, so the scratch tree must point `api-translate` at the March file. **Confirm that mechanism before buying.** The follow-on project pays no API fees. So **buy it before S** to charge it to the current grant; after S it is unfunded. | yes, about 1,000–2,500 ISK; it answers option 6's hypothesis. It does not change this book's route. |
+| D11 | A controlled glossary test for the paper. 2 modules × {March-glossary arm, no glossary} × 2 runs, run in a scratch copy (`api-translate` has no output-dir and writes into `02-mt-output`). **Reproducing June's arm needs the March glossary *values*.** `--glossary-only` selects headwords from today's export, and `--full-glossary` sends today's 1,748 rows, so the scratch tree must point `api-translate` at the March file. **Confirm that mechanism before buying.** The follow-on project pays no API fees. So **buy it before S** to charge it to the current grant; after S it is unfunded. | **Answered yes ([USER] 2026-10-11).** About 1,000–2,500 ISK; it answers option 6's hypothesis and does not change this book's route. Mechanism check first, then the buy, before S. |
 | D14 | Reader sync. Syncing the prepared MT before any reviewed chapter exists is preparation: the current grant's before S, unfunded after. Once reviewed chapters are in the synced book, publishing it is follow-on work | later, once 1.8 is met; timing follows classroom use (the 2026-09-16 decision). There is no grant date to beat. |
 
 **Before editing:**
@@ -396,6 +398,7 @@ The active register's ⏩ RESUME block owns it. This plan carries no open-work s
   - 1.1's "`houseStyleTerms.js` owns every ruled word" was false for no-entry rulings; 1.1, 1.2 and 3.5 now say where rulings live.
   - §2's open list, the slip rule in §1 point 0 (now a question for [USER]), and §5's "Before S" row (0.2 and D11 added).
 - **0.2 was measured the same day** (a Claude Code workflow, independently re-counted, with the headline numbers reproduced by a committed census script; [`experiments/mt-vintage-comparison/results/2026-10-11/`](../../experiments/mt-vintage-comparison/results/2026-10-11/README.md)). The reviewers started from a 2025-01-24 MT that is neither base; ch02's review is comments only; ch01 changed 26 paragraphs; no comment's proposal is applied. 0.2, 2.2, §1 point 4, the D10 follow-up and D13 now carry that, with a recommendation.
+- **Then [USER] answered the follow-ups, the same day** (record: [`docs/decisions/2026-10-11-chemistry-finish-prep-follow-up-answers.md`](../decisions/2026-10-11-chemistry-finish-prep-follow-up-answers.md)): no ch01–ch02 text enters as human text (the review becomes editor notes); D11 yes; S moves if the report slips; the contract's cost plan is read from the signed version, which [USER] receives after signing.
 
 **Rev. 4 (2026-10-11): the current grant's terms, and its fund's guidance.**
 - [USER] put the terms beside the other grant documents, outside the repository. They set the project's end at **30 June 2026**, the end of the 2025–2026 school year.
