@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Freeze [USER]'s stage 1 page answers into one dated, citable file (plan 2026-10-10 rev. 5, Stage 1).
+
+The page (https://claude.ai/artifact/DgVvKPCVcWMaHsM9NVtF3w) keeps its answers in its own database,
+which is not durable enough to cite. This script reads a dump of that database plus the page's
+embedded DATA, and writes what was answered, what stood as a default, what is still open, and
+three checks a ruling needs before it is applied:
+
+  1. ANSWERS: one row per saved answer (collection `stage1_terms`), every field as saved, plus
+     `target`: the word chosen (July entry, September entry, or the typed one); `null` for
+     "either is fine", which records that the choice is inflection, not a word.
+  2. UNTOUCHED DEFAULTS: the Defaults and Gained tabs' rows with no saved answer. The page told
+     [USER] that a default needs no action unless they disagree, so these stand as shown, with the
+     page's own default rule (`defaultWord` in stage1_page.template.html) applied here. They are
+     labelled `untouched`, never `answered`.
+  3. OPEN: wrong-sense rows with no answer, and the publication rule if `stage1_meta/criterion`
+     is empty.
+
+Checks (reported, never resolved here):
+  - `containsRuled`: an answered or default headword that CONTAINS a headword already ruled
+    (whole words, after stripping parentheticals), with the ruled target and whether that target
+    occurs in the chosen word as a substring. A substring hit is not proof of agreement: `hol`
+    is a substring of `ferflötungshola`, which is another lemma. A human reads this list.
+  - `sameHeadwordTwoTargets`: one English headword answered in two chapters with two targets.
+  - `septemberCounts`: how often the chosen word occurs, as written (lower-cased), in the
+    September text (books/efnafraedi-2e/02-mt-output) of its own chapter and book-wide. This is
+    CLAUDE.md's unprompted control: 0 means the MT never produced that form unprompted. It
+    counts the citation form only, so inflected uses are not counted and a 0 is a floor.
+
+Usage:
+  python3 experiments/terminology-consistency/export_stage1_answers.py <dump-dir> <page.html> <versions.json> <out.json>
+<dump-dir> is an ArtifactData `out_dir` holding stage1_terms/*.json (and stage1_meta/*.json if any);
+<versions.json> maps doc id -> the version the listing reported (the dump files do not carry it).
+"""
+import glob, hashlib, json, os, re, subprocess, sys
+from collections import defaultdict
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+RULINGS = os.path.join(HERE, 'results', '2026-10-11', 'ruling-set-before-stage1.json')
+MT = os.path.join(REPO, 'books', 'efnafraedi-2e', '02-mt-output')
+PAGE_URL = 'https://claude.ai/artifact/DgVvKPCVcWMaHsM9NVtF3w'
+
+
+def norm(en):
+    return re.sub(r'\s+', ' ', re.sub(r'\s*\([^)]*\)', '', en or '')).strip().lower()
+
+
+def page_data(path):
+    h = open(path, encoding='utf-8').read()
+    m = re.search(r'const DATA = (\{.*?\});\n', h, re.S)
+    if not m:
+        sys.exit(f'no DATA block in {path}')
+    raw = m.group(1).replace('<\\/', '</')
+    return json.loads(raw), hashlib.sha256(raw.encode('utf-8')).hexdigest()
+
+
+def default_word(t):
+    """Mirror of defaultWord() in stage1_page.template.html."""
+    if t['bucket'] == 'elsewhere':
+        return t.get('ruledIs')
+    if t['bucket'] in ('gained', 'gained-same'):
+        return t.get('ruledIs') or t['Knew']
+    return t['Kold'] if t.get('maj') == 'july' else t['Knew']
+
+
+def target_of(a):
+    return {'july': a['Kold'], 'new': a['Knew'], 'other': a['value'], 'default': a.get('defaultWord'),
+            'keep': a.get('row')}.get(a['choice'])
+
+
+def main():
+    if len(sys.argv) != 5:
+        sys.exit(__doc__)
+    dump, page, vers_path, out = sys.argv[1:]
+    D, data_sha = page_data(page)
+    versions = json.load(open(vers_path, encoding='utf-8'))
+    saved = {}
+    for f in sorted(glob.glob(os.path.join(dump, 'stage1_terms', '*.json'))):
+        i = os.path.basename(f)[:-5]
+        saved[i] = json.load(open(f, encoding='utf-8'))
+    meta = {os.path.basename(f)[:-5]: json.load(open(f, encoding='utf-8'))
+            for f in glob.glob(os.path.join(dump, 'stage1_meta', '*.json'))}
+    missing_v = sorted(set(saved) - set(versions))
+    if missing_v:
+        sys.exit(f'no version recorded for {missing_v}')
+
+    items = {t['id']: t for t in D['items'] + D['gainedSame']}
+    ws = {w['id']: w for w in D['wrongSense']}
+    unknown = sorted(set(saved) - set(items) - set(ws))
+    if unknown:
+        sys.exit(f'saved answers for ids the page does not carry: {unknown}')
+
+    answers = []
+    for i, a in sorted(saved.items()):
+        answers.append({'id': i, 'version': versions[i], **a, 'target': target_of(a)})
+    untouched = []
+    for i, t in items.items():
+        if t['bucket'] == 'card' or i in saved:
+            continue
+        untouched.append({'id': i, 'ch': t['ch'], 'en': t['en'], 'Kold': t['Kold'], 'Knew': t['Knew'],
+                          'tab': 'gained' if t['bucket'] in ('gained', 'gained-same') else 'defaults',
+                          'bucket': t['bucket'], 'target': default_word(t), 'status': 'untouched'})
+    untouched.sort(key=lambda r: r['id'])
+    cards_unanswered = sorted(i for i, t in items.items() if t['bucket'] == 'card' and i not in saved)
+    open_items = {
+        'cardsUnanswered': cards_unanswered,
+        'wrongSense': [{'id': w['id'], 'en': w['en'], 'row': w['row']} for i, w in ws.items() if i not in saved],
+        'publicationRule': 'open' if 'criterion' not in meta else None,
+    }
+
+    # Checks.
+    R = json.load(open(RULINGS, encoding='utf-8'))
+    ruled = defaultdict(set)
+    for r in R['rulings']:
+        if r['is']:
+            ruled[r['enNorm']].add((r['is'], r['kind']))
+    rows = [(r, 'answer') for r in answers if r['id'] in items] + [(r, 'untouched') for r in untouched]
+    contains = []
+    for r, how in rows:
+        n = norm(r['en'])
+        for h, ts in sorted(ruled.items()):
+            if h != n and re.search(r'(?<!\w)' + re.escape(h) + r'(?!\w)', n):
+                for is_, kind in sorted(ts):
+                    lemma = norm(is_)
+                    contains.append({'id': r['id'], 'en': r['en'], 'how': how, 'target': r['target'],
+                                     'ruledHeadword': h, 'ruledTarget': is_, 'ruledKind': kind,
+                                     'substringHit': bool(r['target']) and lemma in r['target'].lower()})
+    by_en = defaultdict(set)
+    for r in answers:
+        if r['id'] in items and r['target']:
+            by_en[norm(r['en'])].add((r['ch'], r['target']))
+    two = [{'en': k, 'answers': sorted(v)} for k, v in sorted(by_en.items())
+           if len({t.lower() for _, t in v}) > 1]
+
+    text = defaultdict(str)
+    for f in glob.glob(os.path.join(MT, 'ch*', '*.is.md')):
+        text[f.split(os.sep)[-2]] += open(f, encoding='utf-8').read().lower() + '\n'
+    book = '\n'.join(text.values())
+    counts = []
+    for r in answers:
+        if r['id'] not in items or not r['target']:
+            continue
+        w = norm(r['target'])
+        counts.append({'id': r['id'], 'en': r['en'], 'choice': r['choice'], 'target': r['target'],
+                       'chapter': text[r['ch']].count(w), 'book': book.count(w)})
+
+    head = subprocess.run(['git', '-C', REPO, 'rev-parse', 'HEAD'], capture_output=True, text=True,
+                          check=True).stdout.strip()
+    res = {
+        'about': ("[USER]'s stage 1 page answers, frozen (plan 2026-10-10 rev. 5, Stage 1). Written by "
+                  'experiments/terminology-consistency/export_stage1_answers.py from a dump of the page\'s '
+                  'database. `answers` were saved by [USER]; `untouched` are default rows with no saved answer, '
+                  'which stand as shown on the page (it said a default needs no action unless you disagree); '
+                  '`open` was not answered. `checks` are reported, never resolved. Nothing here is applied: '
+                  'rulings reach houseStyleTerms.js, the concept model and the ruling set only through '
+                  'later, separately recorded steps.'),
+        'exportedAt': '2026-10-11',
+        'page': {'url': PAGE_URL, 'collections': ['stage1_terms', 'stage1_meta'],
+                 'dataSha256': data_sha, 'generator': 'experiments/terminology-consistency/stage1_page.py'},
+        'repoHead': head,
+        'counts': {
+            'answers': len(answers),
+            'answersByChoice': {c: sum(r['choice'] == c for r in answers) for c in sorted({r['choice'] for r in answers})},
+            'answersBySection': {s: sum(r['section'] == s for r in answers) for s in sorted({r['section'] for r in answers})},
+            'untouchedDefaults': sum(r['tab'] == 'defaults' for r in untouched),
+            'untouchedGained': sum(r['tab'] == 'gained' for r in untouched),
+            'cardsUnanswered': len(cards_unanswered),
+            'wrongSenseOpen': len(open_items['wrongSense']),
+            'scopeNotBook': sum((r.get('scope') or 'book') != 'book' for r in answers),
+        },
+        'open': open_items,
+        'meta': meta,
+        'checks': {'containsRuled': contains, 'sameHeadwordTwoTargets': two, 'septemberCounts': counts},
+        'answers': answers,
+        'untouched': untouched,
+    }
+    json.dump(res, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(json.dumps(res['counts'], ensure_ascii=False))
+    print(f"containsRuled {len(contains)} (substring misses {sum(not c['substringHit'] for c in contains)}), "
+          f"sameHeadwordTwoTargets {len(two)}, zero-in-book {sum(c['book'] == 0 for c in counts)} of {len(counts)} -> {out}")
+
+
+if __name__ == '__main__':
+    main()

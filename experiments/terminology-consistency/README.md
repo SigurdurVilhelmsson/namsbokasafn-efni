@@ -257,3 +257,17 @@ its target, its competitor and its source. It applies [USER]'s D4 answers over t
 stage 1 review page from that file, `undecided-217.json` and `classified-common.json`. The
 bucketing rules (ruled elsewhere, spelling-only, low text, gained, card) and the book-wide-majority
 default are in its docstring. Status lives in the register.
+
+### The answers, frozen (2026-10-11, evening)
+
+`export_stage1_answers.py <dump-dir> <page.html> <versions.json> <out.json>` turns a dump of the page's database (an `ArtifactData` list with `out_dir`) into `results/2026-10-11/stage1-answers-2026-10-11.json`. That file holds:
+- **`answers`:** each answer as saved, with its db version and `target`, the word chosen;
+- **`untouched`:** the default and gained rows with no answer, which stand as the page showed them;
+- **`open`:** what was not answered.
+
+It also holds three checks, reported and never resolved:
+- **`containsRuled`:** an answered or default headword that contains a ruled headword. A substring hit is not agreement: *hol* is a substring of *ferflötungshola*, which is a different lemma;
+- **`sameHeadwordTwoTargets`:** one headword answered with two different words in two chapters;
+- **`septemberCounts`:** occurrences of the chosen word in the September text. Only the citation form is counted, so the count is a floor.
+
+The page data's hash (`page.dataSha256`) is that of Version 2, which is what [USER] answered. Version 3 changed only the display of formula placeholders: `stage1_page.py` now shows `[formula]` where Version 2 showed the bare placeholder number, as in "(56)".

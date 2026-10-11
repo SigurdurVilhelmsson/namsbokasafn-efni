@@ -63,9 +63,21 @@ WRONG_SENSE = [
 
 
 def clean(s):
-    s = re.sub(r'\[\[(?:sub|sup):([^\]|]*)\]\]', r'\1', s or '')
+    # A formula placeholder has no visible text; shown bare, [[MATH:56]] read as a number "(56)".
+    s = re.sub(r'\[\[MATH:[^\]]*\]\]', '[formula]', s or '')
+    s = re.sub(r'\[\[(?:sub|sup):([^\]|]*)\]\]', r'\1', s)
     s = re.sub(r'\[\[[a-zA-Z]+:([^\]|]*)(?:\|[^\]]*)?\]\]', r'\1', s)
     return re.sub(r'\{\{/?[a-z]+\}\}', '', s).replace('^', '').strip()
+
+
+def en_display(u):
+    """The English headword as shown. The burden run's English carries a formula as its bare
+    placeholder number (`standard electrode potential (56)`); the September entry still holds the
+    marker (`[[MATH:56]]`), so that number is shown as [formula]. Display only: no key uses it."""
+    en = clean(u['en'])
+    for n in re.findall(r'\[\[MATH:(\d+)\]\]', u.get('Knew') or ''):
+        en = re.sub(r'(?<![\w.])' + n + r'(?![\w.])', '[formula]', en)
+    return en
 
 
 def norm_en(en):
@@ -179,7 +191,7 @@ def main():
         maj, mo, mn = majority(u)
         r = ruled.get(n)
         items.append({
-            'id': f"{u['chapter']}_{u['definitionId']}", 'ch': u['chapter'], 'en': clean(u['en']),
+            'id': f"{u['chapter']}_{u['definitionId']}", 'ch': u['chapter'], 'en': en_display(u),
             'Kold': clean(u['Kold']), 'Knew': clean(u['Knew']), 'bucket': bucket,
             'pr': u['prose'], 'o': u['old'], 'n': u['new'], 'b': u['both'], 'x': u['neither'],
             'maj': maj, 'majO': mo, 'majN': mn,
