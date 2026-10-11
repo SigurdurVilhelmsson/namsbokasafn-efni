@@ -1,0 +1,1357 @@
+{
+ "about": "The masked blind reading test (plan step 1.7). English shown, two Icelandic versions in random order. Which is June and which September is in masked-test-key.json, committed only after the answers are frozen; its sha256 is below.",
+ "seed": 20261011,
+ "keySha256": "64a123ca8e9ec2041b0bb6968442e6c59530127f43c37b22567c2df21560df5d",
+ "pairs": [
+  {
+   "pair_id": "p001",
+   "chapter": "ch10",
+   "group": "definition",
+   "length": "medium",
+   "en": "pressure-temperature graph summarizing conditions under which the phases of a substance can exist",
+   "A": "þrýstings-hitastigsrit sem sýnir við hvaða aðstæður fasar efnis geta verið til",
+   "B": "þrýstings- og hitastigsrit sem sýnir við hvaða aðstæður fasar efnis geta verið til staðar"
+  },
+  {
+   "pair_id": "p002",
+   "chapter": "ch12",
+   "group": "caption",
+   "length": "medium",
+   "en": "An agama lizard basks in the sun. As its body warms, the chemical reactions of its metabolism speed up.",
+   "A": "Agama-eðla flatmagar í sólinni. Þegar líkami hennar hitnar hraðar á efnahvörfum efnaskipta hennar.",
+   "B": "Agama-eðla flatmagar í sólinni. Þegar líkami hennar hitnar hraðast efnahvörf efnaskiptanna."
+  },
+  {
+   "pair_id": "p003",
+   "chapter": "ch11",
+   "group": "para",
+   "length": "medium",
+   "en": "Find the boiling point of a solution of 92.1 g of iodine, I2, in 800.0 g of chloroform, CHCl3, assuming that the iodine is nonvolatile and that the solution is ideal.",
+   "A": "Finndu suðumark lausnar með 92,1 g af joði, I2, í 800,0 g af klóróformi, CHCl3, að því gefnu að joðið sé órokgjarnt og lausnin sé kjörlausn.",
+   "B": "Finndu suðumark lausnar af 92,1 g af joði, I2, í 800,0 g af klóróformi, CHCl3, að því gefnu að joðið sé órokgjarnt og að lausnin sé kjörlausn."
+  },
+  {
+   "pair_id": "p004",
+   "chapter": "ch19",
+   "group": "para",
+   "length": "short",
+   "en": "For ions, the s-valence electrons are lost prior to the d or f electrons.",
+   "A": "Fyrir jónir tapast s-gildisrafeindirnar á undan d- eða f-rafeindunum.",
+   "B": "Hjá jónum tapast s-gildisrafeindirnar á undan d- eða f-rafeindunum."
+  },
+  {
+   "pair_id": "p005",
+   "chapter": "ch01",
+   "group": "exercise",
+   "length": "medium",
+   "en": "A very good 197-lb weight lifter lifted 192 kg in a move called the clean and jerk. What was the mass of the weight lifted in pounds?",
+   "A": "Mjög góður 197 punda lyftingamaður lyfti 192 kg í hreyfingu sem kallast jafnhending. Hver var massi þyngdarinnar sem lyft var í pundum?",
+   "B": "Mjög góður 197 punda lyftingamaður lyfti 192 kg í hreyfingu sem kallast jafnhöttun. Hver var massi þyngdarinnar sem lyft var í pundum?"
+  },
+  {
+   "pair_id": "p006",
+   "chapter": "ch13",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Will any of the following increase the percent of ammonia that is converted to the ammonium ion in water?",
+   "A": "Mun eitthvað af eftirfarandi auka það hlutfall ammóníaks sem breytist í ammóníumjón í vatni?",
+   "B": "Mun eitthvað af eftirfarandi auka hlutfall ammóníaks sem breytist í ammóníumjón í vatni?"
+  },
+  {
+   "pair_id": "p007",
+   "chapter": "ch03",
+   "group": "exercise",
+   "length": "medium",
+   "en": "(d) 0.0079 g C7H5SNO3 in one ounce (29.6 mL), the concentration of saccharin in a diet soft drink.",
+   "A": "(d) 0,0079 g C7H5SNO3 í einni únsu (29,6 ml), styrkur sakkaríns í sykurskertum gosdrykk.",
+   "B": "(d) 0,0079 g af C7H5SNO3 í einni únsu (29,6 ml), sem er styrkur sakkaríns í sykurlausum gosdrykk."
+  },
+  {
+   "pair_id": "p008",
+   "chapter": "ch15",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Write the Lewis structures of the reactants and product of each of the following equations, and identify the Lewis acid and the Lewis base in each:",
+   "A": "Skrifaðu Lewis-myndir hvarfefna og myndefna fyrir hverja af eftirfarandi jöfnum og auðkenndu Lewis-sýruna og Lewis-basann í hverri:",
+   "B": "Skrifaðu Lewis myndir hvarfefna og myndefna fyrir hverja af eftirfarandi jöfnum og auðkenndu Lewis-sýruna og Lewis-basann í hverri þeirra:"
+  },
+  {
+   "pair_id": "p009",
+   "chapter": "ch01",
+   "group": "exercise",
+   "length": "short",
+   "en": "A barrel of oil is exactly 42 gal. How many liters of oil are in a barrel?",
+   "A": "Olíutunna er nákvæmlega 42 gallon. Hversu margir lítrar af olíu eru í tunnu?",
+   "B": "Ein olíutunna er nákvæmlega 42 gallon. Hversu margir lítrar af olíu eru í tunnu?"
+  },
+  {
+   "pair_id": "p010",
+   "chapter": "ch08",
+   "group": "exercise",
+   "length": "short",
+   "en": "Analysis of a compound indicates that it contains 77.55% Xe and 22.45% F by mass.",
+   "A": "Greining á efnasambandi bendir til þess að það innihaldi 77,55% Xe og 22,45% F miðað við massa.",
+   "B": "Greining á efnasambandi sýnir að það inniheldur 77,55% Xe og 22,45% F miðað við massa."
+  },
+  {
+   "pair_id": "p011",
+   "chapter": "ch01",
+   "group": "definition",
+   "length": "short",
+   "en": "study of the composition, properties, and interactions of matter",
+   "A": "fræðigrein um samsetningu, eiginleika og víxlverkun efnis",
+   "B": "rannsókn á samsetningu, eiginleikum og víxlverkunum efnis"
+  },
+  {
+   "pair_id": "p012",
+   "chapter": "ch02",
+   "group": "caption",
+   "length": "medium",
+   "en": "Analysis of zirconium in a mass spectrometer produces a mass spectrum with peaks showing the different isotopes of Zr.",
+   "A": "Greining á sirkoni í massagreini framleiðir massaróf með toppum sem sýna mismunandi samsætur Zr.",
+   "B": "Greining á sirkoni í massagreiningartæki gefur massaróf með toppum sem sýna mismunandi samsætur Zr."
+  },
+  {
+   "pair_id": "p013",
+   "chapter": "ch16",
+   "group": "exercise",
+   "length": "long",
+   "en": "As ΔSuniv &lt; 0 at each of these temperatures, melting is not spontaneous at either of them. The given values for entropy and enthalpy are for NaCl at 298 K. It is assumed that these do not change significantly at the higher temperatures used in the problem.",
+   "A": "Þar sem ΔSuniv &lt; 0 við bæði þessi hitastig er bráðnunin ekki sjálfgeng við hvorugt þeirra. Gefin gildi fyrir óreiðu og vermi eru fyrir NaCl við 298 K. Gert er ráð fyrir að þau breytist ekki marktækt við hærra hitastig sem notað er í dæminu.",
+   "B": "Þar sem ΔSuniv < 0 við bæði þessi hitastig er bráðnun ekki sjálfgeng við hvorugt þeirra. Gefin gildi fyrir óreiðu og vermi eru fyrir NaCl við 298 K. Gert er ráð fyrir að þau breytist ekki marktækt við hærra hitastig sem notað er í dæminu."
+  },
+  {
+   "pair_id": "p014",
+   "chapter": "ch11",
+   "group": "para",
+   "length": "long",
+   "en": "A number of natural and synthetic materials exhibit selective permeation, meaning that only molecules or ions of a certain size, shape, polarity, charge, and so forth, are capable of passing through (permeating) the material. Biological cell membranes provide elegant examples of selective permeation in nature, while dialysis tubing used to remove metabolic wastes from blood is a more simplistic technological example. Regardless of how they may be fabricated, these materials are generally referred to as term-00008.",
+   "A": "Fjöldi náttúrulegra og tilbúinna efna sýnir sértækt gegndræpi, sem þýðir að aðeins sameindir eða jónir af ákveðinni stærð, lögun, skautun, hleðslu og svo framvegis geta farið í gegnum (gegnsýrt) efnið. Líffræðilegar frumuhimnur eru glæsileg dæmi um sértækt gegndræpi í náttúrunni, en skilunarhimnur sem notaðar eru til að fjarlægja efnaskiptaúrgang úr blóði eru einfaldara tæknilegt dæmi. Óháð því hvernig þær kunna að vera framleiddar eru þessi efni almennt kölluð term-00008.",
+   "B": "Fjöldi náttúrulegra og tilbúinna efna sýna sértæka gegndræpi, sem þýðir að aðeins sameindir eða jónir af ákveðinni stærð, lögun, skautun, hleðslu og svo framvegis geta farið í gegnum (gegnsýrt) efnið. Líffræðilegar frumuhimnur eru glæsileg dæmi um sértækt gegndræpi í náttúrunni, á meðan skilunarhimnur sem notaðar eru til að fjarlægja efnaskiptaúrgang úr blóði eru einfaldara tæknilegt dæmi. Óháð því hvernig þau kunna að vera framleidd eru þessi efni almennt kölluð term-00008."
+  },
+  {
+   "pair_id": "p015",
+   "chapter": "ch13",
+   "group": "para",
+   "length": "short",
+   "en": "Finally, add the two revised equations:",
+   "A": "Leggið að lokum saman endurskoðuðu jöfnurnar tvær:",
+   "B": "Leggðu að lokum saman endurskoðuðu jöfnurnar tvær:"
+  },
+  {
+   "pair_id": "p016",
+   "chapter": "ch01",
+   "group": "caption",
+   "length": "long",
+   "en": "(a) The relative volumes are shown for cubes of 1 m3, 1 dm3 (1 L), and 1 cm3 (1 mL) (not to scale). (b) The diameter of a dime is compared relative to the edge length of a 1-cm3 (1-mL) cube.",
+   "A": "(a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1 m3, 1 dm3 (1 L) og 1 cm3 (1 mL) (ekki í réttum skala). (b) Þvermál tíeyrings er borið saman við brúnarlengd 1 cm3 (1 mL) tenings.",
+   "B": "(a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1 m3, 1 dm3 (1 L) og 1 cm3 (1 mL) (ekki í réttum skala). (b) Þvermál tíu senta Bandaríkjadalsmyntar er borið saman við brúnlengd 1 cm3 (1 mL) tenings."
+  },
+  {
+   "pair_id": "p017",
+   "chapter": "ch11",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Suppose you are presented with a clear solution of sodium thiosulfate, Na2S2O3. How could you determine whether the solution is unsaturated, saturated, or supersaturated?",
+   "A": "Gerðu ráð fyrir að þú fáir tæra lausn af natríumþíósúlfati, Na2S2O3. Hvernig gætirðu ákvarðað hvort lausnin sé ómettuð, mettuð eða yfirmettuð?",
+   "B": "Segjum að þú fáir tæra lausn af natríumþíósúlfati, Na2S2O3. Hvernig gætirðu ákvarðað hvort lausnin sé ómettuð, mettuð eða yfirmettuð?"
+  },
+  {
+   "pair_id": "p018",
+   "chapter": "ch21",
+   "group": "para",
+   "length": "long",
+   "en": "A tiny piece of paper (produced from formerly living plant matter) taken from the Dead Sea Scrolls has an activity of 10.8 disintegrations per minute per gram of carbon. If the initial C-14 activity was 13.6 disintegrations/min/g of C, estimate the age of the Dead Sea Scrolls.",
+   "A": "Örlítill pappírssnepill (framleiddur úr plöntuefni sem áður var lifandi) tekinn úr Dauðahafshandritunum hefur virkni upp á 10,8 sundranir á mínútu á hvert gramm af kolefni. Ef upphafleg C-14 virkni var 13,6 sundranir/mín/g af C, áætlaðu þá aldur Dauðahafshandritanna.",
+   "B": "Örlítill pappírssnepill (unninn úr plöntuefni sem áður var lifandi) tekinn úr Dauðahafshandritunum hefur virkni upp á 10,8 sundranir á mínútu á hvert gramm af kolefni. Ef upphafleg C-14-virkni var 13,6 sundranir/mín/g af C, áætlaðu þá aldur Dauðahafshandritanna."
+  },
+  {
+   "pair_id": "p019",
+   "chapter": "ch05",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Explain how the heat measured in [ref] differs from the enthalpy change for the exothermic reaction described by the following equation: [formula]",
+   "A": "Útskýrðu hvernig varminn sem mældur er í [ref] er frábrugðinn vermibreytingunni fyrir útvermið efnahvarf sem lýst er með eftirfarandi jöfnu: [formula]",
+   "B": "Útskýrðu hvernig varminn sem mældur er í [ref] er frábrugðinn vermibreytingunni fyrir útverma efnahvarfið sem lýst er með eftirfarandi jöfnu: [formula]"
+  },
+  {
+   "pair_id": "p020",
+   "chapter": "ch02",
+   "group": "para",
+   "length": "short",
+   "en": "(d) lithium",
+   "A": "(d) litíum",
+   "B": "(d) litín"
+  },
+  {
+   "pair_id": "p021",
+   "chapter": "ch08",
+   "group": "definition",
+   "length": "medium",
+   "en": "one of a set of two orbitals with a linear arrangement that results from combining one s and one p orbital",
+   "A": "eitt af tveimur svigrúmum í línulegri uppröðun sem myndast við samruna eins s-svigrúms og eins p-svigrúms",
+   "B": "eitt af tveimur svigrúmum með línulegri fyrirkomulagi sem myndast við samruna eins s- og eins p-svigrúms"
+  },
+  {
+   "pair_id": "p022",
+   "chapter": "ch05",
+   "group": "para",
+   "length": "long",
+   "en": "If we know the mass of a substance and its specific heat, we can determine the amount of heat, q, entering or leaving the substance by measuring the temperature change before and after the heat is gained or lost:",
+   "A": "Ef við þekkjum massa efnis og eðlisvarma þess getum við ákvarðað varmamagnið, q, sem fer inn í eða út úr efninu með því að mæla hitastigsbreytinguna fyrir og eftir að varminn er fenginn eða tapaður:",
+   "B": "Ef við þekkjum massa efnis og eðlisvarma þess getum við ákvarðað magn varma, q, sem fer inn í eða út úr efninu með því að mæla hitastigsbreytinguna áður en varminn er tekinn upp eða losaður:"
+  },
+  {
+   "pair_id": "p023",
+   "chapter": "ch13",
+   "group": "heading",
+   "length": "short",
+   "en": "Evaluating a Reaction Quotient",
+   "A": "Útreikningur á hvarfstuðli",
+   "B": "Mat á hvarfstuðli"
+  },
+  {
+   "pair_id": "p024",
+   "chapter": "ch12",
+   "group": "para",
+   "length": "medium",
+   "en": "Restricting the time and concentrations to those defined by half-life: [formula] and [formula] Substituting these terms into the zero-order integrated rate law yields:",
+   "A": "Með því að takmarka tíma og styrk við það sem skilgreint er með helmingunartíma: [formula] og [formula] Með því að setja þessa liði inn í heildaða hraðalögmál núllta stigs fæst:",
+   "B": "Með því að takmarka tíma og styrk við það sem skilgreint er með helmingunartíma: [formula] og [formula]. Með því að setja þessi hugtök inn í heildað hraðalögmál núllta stigs fæst:"
+  },
+  {
+   "pair_id": "p025",
+   "chapter": "ch01",
+   "group": "para",
+   "length": "short",
+   "en": "The density of the iron is then calculated to be:",
+   "A": "Eðlismassi járnsins er þá reiknaður sem:",
+   "B": "Eðlismassi járnsins er þá reiknaður:"
+  },
+  {
+   "pair_id": "p026",
+   "chapter": "ch13",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Explain why an equilibrium between Br2(l) and Br2(g) would not be established if the container were not a closed vessel shown in [ref].",
+   "A": "Útskýrðu hvers vegna jafnvægi milli Br2(l) og Br2(g) myndi ekki nást ef ílátið væri ekki lokað ílát eins og sýnt er á [ref].",
+   "B": "Útskýrðu hvers vegna jafnvægi milli Br2(l) og Br2(g) myndi ekki nást ef ílátið væri ekki lokað ílát eins og sýnt er í [ref]."
+  },
+  {
+   "pair_id": "p027",
+   "chapter": "ch19",
+   "group": "exercise",
+   "length": "short",
+   "en": "(f) hexaamminecobalt(III) hexacyanochromate(III)",
+   "A": "(f) hexaammínkóbalt(III)hexasýanókrómat(III)",
+   "B": "(f) hexaammínkóbalt(III) hexasýanókrómat(III)"
+  },
+  {
+   "pair_id": "p028",
+   "chapter": "ch17",
+   "group": "para",
+   "length": "long",
+   "en": "These types of fuel cells generally produce voltages of approximately 1.2 V. Compared to an internal combustion engine, the energy efficiency of a fuel cell using the same redox reaction is typically more than double (~20%–25% for an engine versus ~50%–75% for a fuel cell). Hydrogen fuel cells are commonly used on extended space missions, and prototypes for personal vehicles have been developed, though the technology remains relatively immature.",
+   "A": "Þessar gerðir efnarafala framleiða yfirleitt spennu sem er um það bil 1,2 V. Í samanburði við brunahreyfil er orkunýtni efnarafals sem notar sama oxunar-afoxunarhvarf yfirleitt meira en tvöfalt meiri (~20%–25% fyrir hreyfil á móti ~50%–75% fyrir efnarafal). Vetnisrafalar eru almennt notaðir í lengri geimferðum og frumgerðir fyrir einkabíla hafa verið þróaðar, þótt tæknin sé enn tiltölulega óþroskuð.",
+   "B": "Þessar gerðir efnarafala framleiða yfirleitt spennu upp á um það bil 1,2 V. Í samanburði við brunahreyfil er orkunýtni efnarafala sem notar sama oxunar-afoxunarhvarf yfirleitt meira en tvöfalt meiri (~20%–25% fyrir hreyfil á móti ~50%–75% fyrir efnarafala). Vetnisefnarafalar eru almennt notaðir í lengri geimferðum og frumgerðir fyrir einkabifreiðar hafa verið þróaðar, þótt tæknin sé enn tiltölulega vanþróuð."
+  },
+  {
+   "pair_id": "p029",
+   "chapter": "ch01",
+   "group": "para",
+   "length": "medium",
+   "en": "While being driven from Philadelphia to Atlanta, a distance of about 1250 km, a 2014 Lamborghini Aventador Roadster uses 213 L gasoline.",
+   "A": "Á leiðinni frá Fíladelfíu til Atlanta, um 1250 km vegalengd, notar 2014 Lamborghini Aventador Roadster 213 L af bensíni.",
+   "B": "Á leiðinni frá Philadelphia til Atlanta, um 1250 km vegalengd, notar 2014 Lamborghini Aventador Roadster 213 L af bensíni."
+  },
+  {
+   "pair_id": "p030",
+   "chapter": "ch10",
+   "group": "exercise",
+   "length": "medium",
+   "en": "How much heat is required to convert 422 g of liquid H2O at 23.5 °C into steam at 150 °C?",
+   "A": "Hversu mikinn hita þarf til að breyta 422 g af fljótandi H2O við 23,5 °C í gufu við 150 °C?",
+   "B": "Hversu mikinn varma þarf til að breyta 422 g af fljótandi H2O við 23,5 °C í gufu við 150 °C?"
+  },
+  {
+   "pair_id": "p031",
+   "chapter": "ch18",
+   "group": "para",
+   "length": "long",
+   "en": "Zinc oxide, ZnO, was a useful white paint pigment; however, pollutants tend to discolor the compound. The compound is also important in the manufacture of automobile tires and other rubber goods, and in the preparation of medicinal ointments. For example, zinc-oxide-based sunscreens, as shown in [ref], help prevent sunburn. The zinc oxide in these sunscreens is present in the form of very small grains known as nanoparticles. Lead dioxide is a constituent of charged lead storage batteries. Lead(IV) tends to revert to the more stable lead(II) ion by gaining two electrons, so lead dioxide is a powerful oxidizing agent.",
+   "A": "Sinkoxíð, ZnO, var nytsamlegt hvítt málningarlitarefni; mengunarefni hafa þó tilhneigingu til að aflita efnasambandið. Efnasambandið er einnig mikilvægt við framleiðslu á bíldekkjum og öðrum gúmmívörum og við gerð lækningasmyrsla. Til dæmis hjálpa sólarvarnir sem byggjast á sinkoxíði, eins og sýnt er á [ref], að koma í veg fyrir sólbruna. Sinkoxíðið í þessum sólarvörnum er í formi mjög smárra korna sem kallast nanóagnir. Blýdíoxíð er hluti af hlaðnum blýgeymum. Blý(IV) hefur tilhneigingu til að breytast aftur í stöðugri blý(II) jónina með því að taka upp tvær rafeindir, þannig að blýdíoxíð er öflugt oxunarefni.",
+   "B": "Sinkoxíð, ZnO, var nytsamlegt hvítt litarefni í málningu; mengunarefni hafa þó tilhneigingu til að aflita efnasambandið. Efnasambandið er einnig mikilvægt við framleiðslu á bíldekkjum og öðrum gúmmívörum og við gerð lyfjaára. Til dæmis hjálpa sólarvarnir sem byggja á sinkoxíði, eins og sýnt er á [ref], að koma í veg fyrir sólbruna. Sinkoxíðið í þessum sólarvörnum er í formi mjög smárra korna sem kallast nanóagnir. Blýdíoxíð er hluti af hlöðnum blýgeymum. Blý(IV) hefur tilhneigingu til að breytast aftur í stöðugri blý(II)-jónina með því að taka upp tvær rafeindir, þannig að blýdíoxíð er öflugt oxunarefni."
+  },
+  {
+   "pair_id": "p032",
+   "chapter": "ch09",
+   "group": "exercise",
+   "length": "short",
+   "en": "Calculate the density of Freon 12, CF2Cl2, at 30.0 °C and 0.954 atm.",
+   "A": "Reiknaðu eðlismassa Freon 12, CF2Cl2, við 30,0 °C og 0,954 atm.",
+   "B": "Reiknaðu eðlismassa freons 12, CF2Cl2, við 30,0 °C og 0,954 atm."
+  },
+  {
+   "pair_id": "p033",
+   "chapter": "ch13",
+   "group": "caption",
+   "length": "long",
+   "en": "Opening a soft-drink bottle lowers the CO2 pressure above the beverage, shifting the dissolution equilibrium and releasing dissolved CO2 from the beverage. (credit: modification of work by “D Coetzee”/Flickr)",
+   "A": "Þegar gosdrykkjaflaska er opnuð lækkar CO2 þrýstingurinn fyrir ofan drykkinn, sem hliðrar upplausnarjafnvæginu og losar uppleyst CO2 úr drykknum. (Heimild: breyting á verki eftir „D Coetzee“/Flickr)",
+   "B": "Að opna gosflösku lækkar CO2 þrýstinginn fyrir ofan drykkinn, sem hliðrar upplausnarjafnvæginu og losar uppleyst CO2 úr drykknum. (heimild: breyting á verki eftir „D Coetzee“/Flickr)"
+  },
+  {
+   "pair_id": "p034",
+   "chapter": "ch09",
+   "group": "para",
+   "length": "long",
+   "en": "Because equal volumes of H2 and NH3 contain equal numbers of molecules and each three molecules of H2 that react produce two molecules of NH3, the ratio of the volumes of H2 and NH3 will be equal to 3:2. Two volumes of NH3, in this case in units of billion ft3, will be formed from three volumes of H2:",
+   "A": "Þar sem jöfn rúmmál af H2 og NH3 innihalda jafnmargar sameindir og hverjar þrjár sameindir af H2 sem hvarfast mynda tvær sameindir af NH3, verður hlutfall rúmmála H2 og NH3 jafnt og 3:2. Tvö rúmmál af NH3, í þessu tilfelli í einingum milljarða ft3, verða mynduð úr þremur rúmmálum af H2:",
+   "B": "Vegna þess að jöfn rúmmál af H2 og NH3 innihalda jafnmargar sameindir og hverjar þrjár sameindir af H2 sem hvarfast mynda tvær sameindir af NH3, verður hlutfall rúmmála H2 og NH3 jafnt og 3:2. Tvö rúmmál af NH3, í þessu tilfelli í einingum milljarða ft3, myndast úr þremur rúmmálum af H2:"
+  },
+  {
+   "pair_id": "p035",
+   "chapter": "ch02",
+   "group": "exercise",
+   "length": "short",
+   "en": "(a) the ion with a 3+ charge, 28 electrons, and a mass number of 71",
+   "A": "(a) jónin með 3+ hleðslu, 28 rafeindir og massatölu 71",
+   "B": "(a) jónin með hleðsluna 3+, 28 rafeindir og massatöluna 71"
+  },
+  {
+   "pair_id": "p036",
+   "chapter": "ch15",
+   "group": "para",
+   "length": "medium",
+   "en": "Finally, the total mass of [formula] required to provide enough thiosulfate to yield the concentrations cited above can be calculated.",
+   "A": "Að lokum er hægt að reikna heildarmassa [formula] sem þarf til að veita nægilegt þíósúlfat til að gefa þá styrki sem nefndir eru hér að ofan.",
+   "B": "Að lokum er hægt að reikna út heildarmassa [formula] sem þarf til að veita nægilegt þíósúlfat til að gefa styrkinn sem nefndur er hér að ofan."
+  },
+  {
+   "pair_id": "p037",
+   "chapter": "ch10",
+   "group": "para",
+   "length": "short",
+   "en": "At 0.3 kPa: [formula] at −58 °C. At 50 kPa: [formula] at 0 °C, l ⟶ g at 78 °C",
+   "A": "Við 0,3 kPa: [formula] við −58 °C. Við 50 kPa: [formula] við 0 °C, l ⟶ g við 78 °C",
+   "B": "Við 0,3 kPa: [formula] við −58 °C. Við 50 kPa: [formula] við 0 °C, l → g við 78 °C"
+  },
+  {
+   "pair_id": "p038",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "medium",
+   "en": "The Ka for anilinium ion is derived from the Kb for its conjugate base, aniline (see m68867):",
+   "A": "Ka fyrir anilínjónina er leitt af Kb fyrir samoka basa hennar, anilín (sjá m68867):",
+   "B": "Ka fyrir anilínjón er dregið af Kb fyrir samoka basa hennar, anilín (sjá m68867):"
+  },
+  {
+   "pair_id": "p039",
+   "chapter": "ch18",
+   "group": "exercise",
+   "length": "short",
+   "en": "(a) Which has the greatest electronegativity?",
+   "A": "(a) Hvert hefur mesta rafneikvæðni?",
+   "B": "(a) Hvert hefur mestu rafneikvæðnina?"
+  },
+  {
+   "pair_id": "p040",
+   "chapter": "ch19",
+   "group": "para",
+   "length": "long",
+   "en": "Alternatively, these oxides and other oxides (with the metals in different oxidation states) can be produced by heating the corresponding hydroxides, carbonates, or oxalates in an inert atmosphere. Iron(II) oxide can be prepared by heating iron(II) oxalate, and cobalt(II) oxide is produced by heating cobalt(II) hydroxide:",
+   "A": "Að öðrum kosti er hægt að framleiða þessi oxíð og önnur oxíð (með málmana í mismunandi oxunarástandi) með því að hita samsvarandi hýdroxíð, karbónöt eða oxalöt í óvirku andrúmslofti. Járn(II)oxíð er hægt að útbúa með því að hita járn(II)oxalat og kóbalt(II)oxíð er framleitt með því að hita kóbalt(II)hýdroxíð:",
+   "B": "Að öðrum kosti er hægt að framleiða þessi oxíð og önnur oxíð (með málmunum í mismunandi oxunarástöndum) með því að hita samsvarandi hýdroxíð, karbónöt eða oxalöt í óvirku andrúmslofti. Hægt er að búa til járn(II)-oxíð með því að hita járn(II)-oxalat og kóbalt(II)-oxíð er framleitt með því að hita kóbalt(II)-hýdroxíð:"
+  },
+  {
+   "pair_id": "p041",
+   "chapter": "ch14",
+   "group": "exercise",
+   "length": "medium",
+   "en": "What is the ionization constant at 25 °C for the weak acid [formula] the conjugate acid of the weak base (CH3)2NH, Kb = 5.9 [formula] 10−4?",
+   "A": "Hver er jónunarfastinn við 25 °C fyrir veiku sýruna [formula], samoka sýru veika basans (CH3)2NH, Kb = 5,9 [formula] 10−4?",
+   "B": "Hver er jónunarfastinn við 25 °C fyrir veiku sýruna [formula] samoka sýru veika basans (CH3)2NH, Kb = 5,9 [formula] 10−4?"
+  },
+  {
+   "pair_id": "p042",
+   "chapter": "ch03",
+   "group": "exercise",
+   "length": "short",
+   "en": "(a) Lucite (Plexiglas); 59.9% C, 8.06% H, 32.0% O",
+   "A": "(a) Lucite (Plexiglas); 59,9% C, 8,06% H, 32,0% O",
+   "B": "(a) Lúsít (Plexiglas); 59,9% C, 8,06% H, 32,0% O"
+  },
+  {
+   "pair_id": "p043",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "long",
+   "en": "Substituting the equilibrium concentration terms into the Ka expression gives [formula] [formula] The relatively large initial concentration and small equilibrium constant permits the simplifying assumption that x will be much lesser than 0.534, and so the equation becomes [formula] Solving the equation for x yields [formula] [formula] [formula]",
+   "A": "Með því að setja jafnvægisstyrksliðina inn í Ka jöfnuna fæst [formula] [formula] Tiltölulega hár upphafsstyrkur og lítill jafnvægisfasti leyfa þá einföldun að x verði mun minna en 0,534 og því verður jafnan [formula] Með því að leysa jöfnuna fyrir x fæst [formula] [formula] [formula]",
+   "B": "Með því að setja jafnvægisstyrksliðina inn í Ka-segðina fæst [formula] [formula] Tiltölulega hár upphafsstyrkur og lítill jafnvægisfasti leyfa þá einföldunarforsendu að x verði mun minna en 0,534 og því verður jafnan [formula] Með því að leysa jöfnuna fyrir x fæst [formula] [formula] [formula]"
+  },
+  {
+   "pair_id": "p044",
+   "chapter": "ch14",
+   "group": "heading",
+   "length": "short",
+   "en": "Chemistry End of Chapter Exercises",
+   "A": "Efnafræði: Verkefni í lok kafla",
+   "B": "Efnafræði – verkefni í lok kafla"
+  },
+  {
+   "pair_id": "p045",
+   "chapter": "ch14",
+   "group": "exercise",
+   "length": "short",
+   "en": "What are the pH and pOH of a solution of 2.0 M HCl, which ionizes completely?",
+   "A": "Hvert er pH og pOH í 2,0 M HCl lausn sem jónast að fullu?",
+   "B": "Hvert er pH og pOH í 2,0 M HCl lausn, sem jónast að fullu?"
+  },
+  {
+   "pair_id": "p046",
+   "chapter": "ch01",
+   "group": "exercise",
+   "length": "short",
+   "en": "(b) liters in 1 liquid quart",
+   "A": "(b) lítra í 1 vökvakvarti",
+   "B": "(b) lítra í 1 „liquid quart“"
+  },
+  {
+   "pair_id": "p047",
+   "chapter": "ch01",
+   "group": "para",
+   "length": "long",
+   "en": "Everyday measurement units are often defined as fractions or multiples of other units. Milk is commonly packaged in containers of 1 gallon (4 quarts), 1 quart (0.25 gallon), and one pint (0.5 quart). This same approach is used with SI units, but these fractions or multiples are always powers of 10. Fractional or multiple SI units are named using a prefix and the name of the base unit. For example, a length of 1000 meters is also called a kilometer because the prefix kilo means “one thousand,” which in scientific notation is 103 (1 kilometer = 1000 m = 103 m). The prefixes used and the powers to which 10 are raised are listed in [ref].",
+   "A": "Hversdagslegar mælieiningar eru oft skilgreindar sem brot eða margfeldi af öðrum einingum. Mjólk er venjulega pökkuð í ílát sem eru 1 gallon (4 kvart), 1 kvart (0,25 gallon) og eitt pint (0,5 kvart). Sama aðferð er notuð með SI-einingum, en þessi brot eða margfeldi eru alltaf veldi af 10. Brot eða margfeldi SI-eininga eru nefnd með forskeyti og heiti grunneiningarinnar. Til dæmis er lengd upp á 1000 metra einnig kölluð kílómetri vegna þess að forskeytið kíló þýðir „eitt þúsund“, sem á staðalformi er 103 (1 kílómetri = 1000 m = 103 m). Forskeytin sem notuð eru og veldin sem 10 er hafið í eru talin upp í [ref].",
+   "B": "Hversdagslegar mælieiningar eru oft skilgreindar sem brot eða margfeldi af öðrum einingum. Mjólk er venjulega pökkuð í ílát sem rúma 1 gallon (4 kvart), 1 kvart (0,25 gallon) og eitt pint (0,5 kvart). Sama aðferð er notuð með SI-einingum, en þessi brot eða margfeldi eru alltaf tugveldi. Brot eða margfeldi SI-eininga eru nefnd með því að nota forskeyti og heiti grunneiningarinnar. Til dæmis er lengd upp á 1000 metra einnig kölluð kílómetri vegna þess að forskeytið kíló þýðir „eitt þúsund“, sem á staðalformi er 103 (1 kílómetri = 1000 m = 103 m). Forskeytin sem notuð eru og veldin sem 10 er hafið í eru talin upp í [ref]."
+  },
+  {
+   "pair_id": "p048",
+   "chapter": "ch16",
+   "group": "para",
+   "length": "short",
+   "en": "Calculate the change in entropy for the process depicted below.",
+   "A": "Reiknaðu óreiðubreytinguna fyrir ferlið sem sýnt er hér að neðan.",
+   "B": "Reiknaðu út breytinguna á óreiðu fyrir ferlið sem sýnt er hér að neðan."
+  },
+  {
+   "pair_id": "p049",
+   "chapter": "ch09",
+   "group": "exercise",
+   "length": "medium",
+   "en": "If the volume of a fixed amount of a gas is tripled at constant temperature, what happens to the pressure?",
+   "A": "Ef rúmmál á föstu magni af gasi er þrefaldað við fast hitastig, hvað gerist þá við þrýstinginn?",
+   "B": "Ef rúmmál fasts magns af gasi er þrefaldað við fast hitastig, hvað gerist þá við þrýstinginn?"
+  },
+  {
+   "pair_id": "p050",
+   "chapter": "ch13",
+   "group": "exercise",
+   "length": "long",
+   "en": "When a system has reached equilibrium, no further changes in the reactant and product concentrations occur; the forward and reverse reactions continue to proceed, but at equal rates.",
+   "A": "Þegar kerfi hefur náð jafnvægi verða engar frekari breytingar á styrk hvarfefna og myndefna; fram- og bakhvörfin halda áfram að eiga sér stað, en á jöfnum hraða.",
+   "B": "Þegar kerfi hefur náð jafnvægi verða engar frekari breytingar á styrk hvarfefna og myndefna; fram- og afturhvarfin halda áfram að ganga, en á jöfnum hraða."
+  },
+  {
+   "pair_id": "p051",
+   "chapter": "ch17",
+   "group": "para",
+   "length": "short",
+   "en": "Visit this http://openstax.org/l/16batteries to learn more about batteries.",
+   "A": "Farðu á þessa http://openstax.org/l/16batteries til að læra meira um rafhlöður.",
+   "B": "Farðu inn á þessa http://openstax.org/l/16batteries til að læra meira um rafhlöður."
+  },
+  {
+   "pair_id": "p052",
+   "chapter": "ch05",
+   "group": "para",
+   "length": "short",
+   "en": "To answer this question, consider these factors:",
+   "A": "Til að svara þessari spurningu skaltu íhuga þessa þætti:",
+   "B": "Til að svara þessari spurningu þarf að hafa eftirfarandi í huga:"
+  },
+  {
+   "pair_id": "p053",
+   "chapter": "ch04",
+   "group": "exercise",
+   "length": "medium",
+   "en": "(b) Gaseous butane, C4H10, reacts with diatomic oxygen gas to yield gaseous carbon dioxide and water vapor.",
+   "A": "(b) Lofttegundin bútan, C4H10, hvarfast við tvíatóma súrefnisgas og myndar lofttegundina koltvíoxíð og vatnsgufu.",
+   "B": "(b) Bútangas, C4H10, hvarfast við tvíatóma súrefnisgas og myndar koldíoxíðgas og vatnsgufu."
+  },
+  {
+   "pair_id": "p054",
+   "chapter": "ch18",
+   "group": "exercise",
+   "length": "medium",
+   "en": "(a) tellurium dioxide or tellurium(IV) oxide; (b) antimony(III) sulfide; (c) germanium(IV) fluoride; (d) silane or silicon(IV) hydride; (e) germanium(IV) hydride",
+   "A": "(a) tellúrdíoxíð eða tellúr(IV)oxíð; (b) antímon(III)súlfíð; (c) german(IV)flúoríð; (d) sílan eða kísil(IV)hýdríð; (e) german(IV)hýdríð",
+   "B": "(a) tellúrdíoxíð eða tellúr(IV)oxíð; (b) antímon(III)súlfíð; (c) german(IV)flúoríð; (d) silan eða kísil(IV)hýdríð; (e) german(IV)hýdríð"
+  },
+  {
+   "pair_id": "p055",
+   "chapter": "ch04",
+   "group": "exercise",
+   "length": "medium",
+   "en": "What mass of Ca(OH)2 is required to react with the acetic acid in 25.0 mL of a solution having a density of 1.065 g/mL and containing 58.0% acetic acid by mass?",
+   "A": "Hversu mikinn massa af Ca(OH)2 þarf til að hvarfast við ediksýruna í 25,0 ml af lausn með eðlismassann 1,065 g/ml og sem inniheldur 58,0% ediksýru miðað við massa?",
+   "B": "Hversu mikinn massa af Ca(OH)2 þarf til að hvarfast við ediksýruna í 25,0 ml af lausn sem hefur eðlismassa 1,065 g/ml og inniheldur 58,0% ediksýru miðað við massa?"
+  },
+  {
+   "pair_id": "p056",
+   "chapter": "appendices",
+   "group": "para",
+   "length": "long",
+   "en": "Convert all numbers to the same power of 10, add the digit terms of the numbers, and if appropriate, convert the digit term back to a number between 1 and 10 by adjusting the exponential term.",
+   "A": "Breytið öllum tölum í sama veldi af 10, leggið saman tölustafaliðina og ef við á, breytið tölustafaliðnum aftur í tölu á bilinu 1 til 10 með því að breyta veldisliðnum.",
+   "B": "Breytið öllum tölum í sama veldi af 10, leggið saman tölustafaliði talnanna og, ef við á, breytið tölustafaliðnum aftur í tölu á bilinu 1 til 10 með því að breyta veldisliðnum."
+  },
+  {
+   "pair_id": "p057",
+   "chapter": "ch07",
+   "group": "exercise",
+   "length": "long",
+   "en": "Use the http://openstax.org/l/16MolecShape to explore real molecules. On the Real Molecules tab, select H2O. Switch between the “real” and “model” modes. Explain the difference observed.",
+   "A": "Notaðu http://openstax.org/l/16MolecShape til að kanna raunverulegar sameindir. Á flipanum Raunverulegar sameindir skaltu velja H2O. Skiptu á milli „raunverulegs“ og „líkan“-hams. Útskýrðu muninn sem sést.",
+   "B": "Notaðu http://openstax.org/l/16MolecShape til að kanna raunverulegar sameindir. Í flipanum „Raunverulegar sameindir“ (Real Molecules) skaltu velja H2O. Skiptu á milli „raunverulegs“ (real) og „líkan“ (model) ham. Útskýrðu muninn sem sést."
+  },
+  {
+   "pair_id": "p058",
+   "chapter": "ch09",
+   "group": "list",
+   "length": "short",
+   "en": "Non-Ideal Gas Behavior",
+   "A": "Frávik frá hegðun kjörgass",
+   "B": "Ókjörgashegðun"
+  },
+  {
+   "pair_id": "p059",
+   "chapter": "ch21",
+   "group": "list",
+   "length": "short",
+   "en": "List common applications of radioactive isotopes",
+   "A": "Talist upp algeng not geislavirkra samsætna",
+   "B": "Skráð algeng not geislavirkra samsæta"
+  },
+  {
+   "pair_id": "p060",
+   "chapter": "ch10",
+   "group": "para",
+   "length": "long",
+   "en": "term-00006, such as ice, sucrose (table sugar), and iodine, as shown in [ref], are composed of neutral molecules. The strengths of the attractive forces between the units present in different crystals vary widely, as indicated by the melting points of the crystals. Small symmetrical molecules (nonpolar molecules), such as H2, N2, O2, and F2, have weak attractive forces and form molecular solids with very low melting points (below −200 °C). Substances consisting of larger, nonpolar molecules have larger attractive forces and melt at higher temperatures. Molecular solids composed of molecules with permanent dipole moments (polar molecules) melt at still higher temperatures. Examples include ice (melting point, 0 °C) and table sugar (melting point, 185 °C).",
+   "A": "term-00006, eins og ís, súkrósi (borðsykur) og joð, eins og sýnt er á [ref], eru samsett úr hlutlausum sameindum. Styrkur aðdráttarkraftanna milli eininganna sem eru til staðar í mismunandi kristöllum er mjög breytilegur, eins og bræðslumörk kristallanna gefa til kynna. Litlar samhverfar sameindir (óskautaðar sameindir), eins og H2, N2, O2 og F2, hafa veika aðdráttarkrafta og mynda sameindaföst efni með mjög lágt bræðslumark (undir −200 °C). Efni sem samanstanda af stærri, óskautuðum sameindum hafa meiri aðdráttarkrafta og bráðna við hærra hitastig. Sameindaföst efni sem samanstanda af sameindum með varanleg tvískautsvægi (skautaðar sameindir) bráðna við enn hærra hitastig. Dæmi um þetta eru ís (bræðslumark, 0 °C) og borðsykur (bræðslumark, 185 °C).",
+   "B": "term-00006, eins og ís, súkrósi (borðsykur) og joð, eins og sýnt er á [ref], eru samsett úr hlutlausum sameindum. Styrkur aðdráttarkraftanna milli eininganna sem eru til staðar í mismunandi kristöllum er mjög breytilegur, eins og sést á bræðslumarki kristallanna. Litlar samhverfar sameindir (óskautaðar sameindir), eins og H2, N2, O2 og F2, hafa veika aðdráttarkrafta og mynda sameindaföst efni með mjög lágt bræðslumark (undir −200 °C). Efni sem samanstanda af stærri, óskautuðum sameindum hafa meiri aðdráttarkrafta og bráðna við hærra hitastig. Sameindaföst efni sem samanstanda af sameindum með varanleg tvískautsvægi (skautaðar sameindir) bráðna við enn hærra hitastig. Dæmi um þetta eru ís (bræðslumark, 0 °C) og borðsykur (bræðslumark, 185 °C)."
+  },
+  {
+   "pair_id": "p061",
+   "chapter": "ch04",
+   "group": "para",
+   "length": "medium",
+   "en": "6. If necessary, multiply each half-reaction’s coefficients by the smallest possible integers to yield equal numbers of electrons in each.",
+   "A": "6. Ef nauðsyn krefur, margfaldaðu stuðla hvers hálfhvarfs með lægstu mögulegu heiltölum til að fá jafnan fjölda rafeinda í hvoru um sig.",
+   "B": "6. Ef nauðsyn krefur, margfaldaðu stuðla hvers hálfhvarfs með lægstu mögulegu heiltölum til að fá jafnan fjölda rafeinda í hvoru."
+  },
+  {
+   "pair_id": "p062",
+   "chapter": "ch06",
+   "group": "para",
+   "length": "long",
+   "en": "Wavelength and frequency are inversely proportional: As the wavelength increases, the frequency decreases. The inverse proportionality is illustrated in [ref]. This figure also shows the term-00011, the range of all types of electromagnetic radiation. Each of the various colors of visible light has specific frequencies and wavelengths associated with them, and you can see that visible light makes up only a small portion of the electromagnetic spectrum. Because the technologies developed to work in various parts of the electromagnetic spectrum are different, for reasons of convenience and historical legacies, different units are typically used for different parts of the spectrum. For example, radio waves are usually specified as frequencies (typically in units of MHz), while the visible region is usually specified in wavelengths (typically in units of nm or angstroms).",
+   "A": "Bylgjulengd og tíðni eru í öfugu hlutfalli: Eftir því sem bylgjulengdin eykst minnkar tíðnin. Þetta öfuga hlutfall er sýnt á [ref]. Þessi mynd sýnir einnig term-00011, svið allra tegunda rafsegulgeislunar. Hver hinna ýmsu lita sýnilegs ljós hefur sérstaka tíðni og bylgjulengd sem tengist þeim og þú getur séð að sýnilegt ljós er aðeins lítill hluti af rafsegulrófinu. Vegna þess að tæknin sem þróuð hefur verið til að vinna á ýmsum hlutum rafsegulrófsins er mismunandi, eru mismunandi einingar venjulega notaðar fyrir mismunandi hluta rófsins af hentugleika- og sögulegum ástæðum. Til dæmis eru útvarpsbylgjur venjulega tilgreindar sem tíðni (venjulega í einingum MHz), en sýnilega svæðið er venjulega tilgreint í bylgjulengdum (venjulega í einingum nm eða angström).",
+   "B": "Bylgjulengd og tíðni eru í öfugu hlutfalli: Þegar bylgjulengdin eykst minnkar tíðnin. Þetta öfuga hlutfall er sýnt á [ref]. Þessi mynd sýnir einnig term-00011, svið allra tegunda rafsegulgeislunar. Hver hinna ýmsu lita sýnilegs ljóss hefur sérstaka tíðni og bylgjulengd sem tengist þeim og þú getur séð að sýnilegt ljós er aðeins lítill hluti af rafsegulrófinu. Vegna þess að tæknin sem þróuð hefur verið til að vinna á ýmsum hlutum rafsegulrófsins er mismunandi, eru mismunandi einingar venjulega notaðar fyrir mismunandi hluta rófsins af hagkvæmnisástæðum og vegna sögulegrar hefðar. Til dæmis eru útvarpsbylgjur venjulega tilgreindar sem tíðni (oftast í einingum MHz), en sýnilega svæðið er venjulega tilgreint í bylgjulengdum (oftast í einingum nm eða angström)."
+  },
+  {
+   "pair_id": "p063",
+   "chapter": "ch12",
+   "group": "para",
+   "length": "short",
+   "en": "For a second-order reaction, the integrated rate law is written",
+   "A": "Fyrir annars stigs efnahvarf er heildaða hraðalögmálið skrifað",
+   "B": "Fyrir efnahvarf af öðru stigi er heildað hraðalögmál skrifað"
+  },
+  {
+   "pair_id": "p064",
+   "chapter": "ch16",
+   "group": "definition",
+   "length": "short",
+   "en": "process that requires continual input of energy from an external source",
+   "A": "ferli sem krefst stöðugrar orkuinnspýtingar frá utanaðkomandi uppsprettu",
+   "B": "ferli sem krefst stöðugs orkuinnleggs frá utanaðkomandi uppsprettu"
+  },
+  {
+   "pair_id": "p065",
+   "chapter": "ch20",
+   "group": "exercise",
+   "length": "medium",
+   "en": "(a) 2,2-dibromobutane; (b) 2-chloro-2-methylpropane; (c) 2-methylbutane; (d) 1-butyne; (e) 4-fluoro-4-methyl-1-octyne; (f) trans-1-chloropropene; (g) 4-methyl-1-pentene",
+   "A": "(a) 2,2-díbrómóbútan; (b) 2-klór-2-metýlprópan; (c) 2-metýlbútan; (d) 1-bútýn; (e) 4-flúor-4-metýl-1-oktýn; (f) trans-1-klórprópen; (g) 4-metýl-1-penten",
+   "B": "(a) 2,2-díbrómbútan; (b) 2-klór-2-metýlprópan; (c) 2-metýlbútan; (d) 1-bútýn; (e) 4-flúor-4-metýl-1-oktýn; (f) trans-1-klórprópen; (g) 4-metýl-1-penten"
+  },
+  {
+   "pair_id": "p066",
+   "chapter": "ch03",
+   "group": "para",
+   "length": "medium",
+   "en": "What is the empirical formula of a compound if a sample contains 0.130 g of nitrogen and 0.370 g of oxygen?",
+   "A": "Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefni og 0,370 g af súrefni?",
+   "B": "Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af nitri og 0,370 g af súrefni?"
+  },
+  {
+   "pair_id": "p067",
+   "chapter": "ch18",
+   "group": "para",
+   "length": "long",
+   "en": "The chemical industry employs oxygen for oxidizing many substances. A significant amount of oxygen produced commercially is important in the removal of carbon from iron during steel production. Large quantities of pure oxygen are also necessary in metal fabrication and in the cutting and welding of metals with oxyhydrogen and oxyacetylene torches.",
+   "A": "Efnaiðnaðurinn notar súrefni til að oxa mörg efni. Mikið magn af súrefni sem framleitt er í atvinnuskyni er mikilvægt við að fjarlægja kolefni úr járni við stálframleiðslu. Mikið magn af hreinu súrefni er einnig nauðsynlegt við málmsmíði og við skurð og suðu málma með súrefnisvetnis- og súrefnisasetýlenlogsuðu.",
+   "B": "Efnaiðnaðurinn notar súrefni til að oxa mörg efni. Verulegt magn af súrefni sem framleitt er í atvinnuskyni er mikilvægt við að fjarlægja kolefni úr járni við stálframleiðslu. Mikið magn af hreinu súrefni er einnig nauðsynlegt við málmsmíði og við skurð og suðu málma með súrefnis-vetnis- og súrefnis-asetýlen-kyndlum."
+  },
+  {
+   "pair_id": "p068",
+   "chapter": "appendices",
+   "group": "para",
+   "length": "short",
+   "en": "Divide 3.6 [formula] 10–5 by 6.0 [formula] 10−4.",
+   "A": "Deildu 3,6 [formula] 10–5 með 6,0 [formula] 10−4.",
+   "B": "Deilið 3,6 [formula] 10–5 með 6,0 [formula] 10−4."
+  },
+  {
+   "pair_id": "p069",
+   "chapter": "ch06",
+   "group": "para",
+   "length": "long",
+   "en": "This energy difference is positive, indicating a photon enters the system (is absorbed) to excite the electron from the n = 4 orbit up to the n = 6 orbit. The wavelength of a photon with this energy is found by the expression [formula] Rearrangement gives:",
+   "A": "Þessi orkumunur er jákvæður, sem gefur til kynna að ljóseind fari inn í kerfið (sé gleypt) til að örva rafeindina frá n = 4 brautinni upp á n = 6 brautina. Bylgjulengd ljóseindar með þessa orku er fundin með jöfnunni [formula] Með umröðun fæst:",
+   "B": "Þessi orkumunur er jákvæður, sem gefur til kynna að ljóseind fari inn í kerfið (sé gleypt) til að örva rafeindina frá n = 4 brautinni upp á n = 6 brautina. Bylgjulengd ljóseindar með þessa orku er fundin með jöfnunni [formula] Umröðun gefur:"
+  },
+  {
+   "pair_id": "p070",
+   "chapter": "ch08",
+   "group": "para",
+   "length": "long",
+   "en": "While the descriptions of bonding described in this chapter involve many theoretical concepts, they also have many practical, real-world applications. For example, drug design is an important field that uses our understanding of chemical bonding to develop pharmaceuticals. This interdisciplinary area of study uses biology (understanding diseases and how they operate) to identify specific targets, such as a binding site that is involved in a disease pathway. By modeling the structures of the binding site and potential drugs, computational chemists can predict which structures can fit together and how effectively they will bind (see [ref]). Thousands of potential candidates can be narrowed down to a few of the most promising candidates. These candidate molecules are then carefully tested to determine side effects, how effectively they can be transported through the body, and other factors. Dozens of important new pharmaceuticals have been discovered with the aid of computational chemistry, and new research projects are underway.",
+   "A": "Þótt lýsingarnar á tengjum sem fjallað er um í þessum kafla feli í sér mörg fræðileg hugtök, hafa þær einnig mörg hagnýt notagildi í raunveruleikanum. Til dæmis er lyfjahönnun mikilvægt svið sem notar skilning okkar á efnatengjum til að þróa lyf. Þetta þverfaglega fræðasvið notar líffræði (skilning á sjúkdómum og hvernig þeir virka) til að bera kennsl á ákveðin skotmörk, svo sem bindiset sem tekur þátt í sjúkdómsferli. Með því að móta byggingu bindisetisins og hugsanlegra lyfja geta tölvuefnafræðingar spáð fyrir um hvaða byggingar geta passað saman og hversu vel þær bindast (sjá [ref]). Hægt er að fækka þúsundum hugsanlegra kandídata niður í nokkra af þeim efnilegustu. Þessar kandídat-sameindir eru síðan vandlega prófaðar til að ákvarða aukaverkanir, hversu vel þær geta flust um líkamann og aðra þætti. Tugir mikilvægra nýrra lyfja hafa verið uppgötvaðir með hjálp tölvuefnafræði og ný rannsóknarverkefni eru í gangi.",
+   "B": "Þó að lýsingarnar á tengjum sem lýst er í þessum kafla feli í sér mörg fræðileg hugtök, hafa þær einnig mörg hagnýt notagildi í raunveruleikanum. Til dæmis er lyfjahönnun mikilvægt svið sem notar skilning okkar á efnatengjum til að þróa lyf. Þetta þverfaglega rannsóknarsvið notar líffræði (skilning á sjúkdómum og hvernig þeir virka) til að bera kennsl á ákveðin skotmörk, svo sem bindiset sem tekur þátt í sjúkdómsferli. Með því að móta byggingu bindisetisins og hugsanlegra lyfja geta reikniefnafræðingar spáð fyrir um hvaða byggingar geta passað saman og hversu vel þær bindast (sjá [ref]). Hægt er að fækka þúsundum hugsanlegra kandídata niður í nokkra af þeim efnilegustu. Þessar kandídat-sameindir eru síðan vandlega prófaðar til að ákvarða aukaverkanir, hversu vel þær geta flust um líkamann og aðra þætti. Tugir mikilvægra nýrra lyfja hafa verið uppgötvaðir með hjálp reikniefnafræði og ný rannsóknarverkefni eru í gangi."
+  },
+  {
+   "pair_id": "p071",
+   "chapter": "ch10",
+   "group": "exercise",
+   "length": "long",
+   "en": "The hydrogen fluoride molecule, HF, is more polar than a water molecule, H2O (for example, has a greater dipole moment), yet the molar enthalpy of vaporization for liquid hydrogen fluoride is lesser than that for water. Explain.",
+   "A": "Vetnisflúoríðsameindin, HF, er skautaðri en vatnssameind, H2O (hefur til dæmis meira tvískautsvægi), en samt er mólvermi gufunar fyrir fljótandi vetnisflúoríð minna en fyrir vatn. Útskýrið.",
+   "B": "Vetnisflúoríðsameindin, HF, er skautaðri en vatnssameind, H2O (hefur til dæmis stærra tvískautsvægi), en samt er mólgufunarvermi fyrir fljótandi vetnisflúoríð minna en fyrir vatn. Útskýrðu."
+  },
+  {
+   "pair_id": "p072",
+   "chapter": "ch02",
+   "group": "para",
+   "length": "long",
+   "en": "Naturally occurring chlorine consists of 35Cl (mass 34.96885 amu) and 37Cl (mass 36.96590 amu), with an average mass of 35.453 amu. What is the percent composition of Cl in terms of these two isotopes?",
+   "A": "Náttúrulegt klór samanstendur af 35Cl (massi 34,96885 amu) og 37Cl (massi 36,96590 amu), með meðalmassa 35,453 amu. Hver er prósentusamsetning Cl með tilliti til þessara tveggja samsæta?",
+   "B": "Klór sem finnst í náttúrunni samanstendur af 35Cl (massi 34,96885 amu) og 37Cl (massi 36,96590 amu), með meðalmassa 35,453 amu. Hver er prósentusamsetning Cl með tilliti til þessara tveggja samsæta?"
+  },
+  {
+   "pair_id": "p073",
+   "chapter": "ch06",
+   "group": "definition",
+   "length": "medium",
+   "en": "dumbbell-shaped region of space with high electron density, describes orbitals with l = 1",
+   "A": "handlóðslaga rúmsvæði með háum rafeindaþéttleika, lýsir svigrúmum með l = 1",
+   "B": "handlóðalaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með l = 1"
+  },
+  {
+   "pair_id": "p074",
+   "chapter": "ch02",
+   "group": "exercise",
+   "length": "short",
+   "en": "(c) ferric nitrate [Fe(NO3)3]",
+   "A": "(c) járnnítrat [Fe(NO3)3]",
+   "B": "(c) ferríknítrat [Fe(NO3)3]"
+  },
+  {
+   "pair_id": "p075",
+   "chapter": "ch09",
+   "group": "exercise",
+   "length": "long",
+   "en": "A large scuba tank ([ref]) with a volume of 18 L is rated for a pressure of 220 bar. The tank is filled at 20 °C and contains enough air to supply 1860 L of air to a diver at a pressure of 2.37 atm (a depth of 45 feet). Was the tank filled to capacity at 20 °C?",
+   "A": "Stór köfunarkútur ([ref]) með 18 L rúmmáli er metinn fyrir 220 bara þrýsting. Kúturinn er fylltur við 20 °C og inniheldur nóg loft til að sjá kafara fyrir 1860 L af lofti við 2,37 atm þrýsting (45 feta dýpi). Var kúturinn fylltur að hámarki við 20 °C?",
+   "B": "Stór köfunarkútur ([ref]) með 18 L rúmmáli er metinn fyrir 220 bara þrýsting. Kúturinn er fylltur við 20 °C og inniheldur nóg loft til að sjá kafara fyrir 1860 L af lofti við 2,37 atm þrýsting (45 feta dýpi). Var kúturinn fylltur að hámarksgetu við 20 °C?"
+  },
+  {
+   "pair_id": "p076",
+   "chapter": "ch07",
+   "group": "exercise",
+   "length": "short",
+   "en": "Determine the formal charge of each element in the following:",
+   "A": "Ákvarðaðu formlega hleðslu hvers frumefnis í eftirfarandi:",
+   "B": "Ákvarðið formlega hleðslu hvers frumefnis í eftirfarandi:"
+  },
+  {
+   "pair_id": "p077",
+   "chapter": "appendices",
+   "group": "heading",
+   "length": "short",
+   "en": "Multiplying Exponentials",
+   "A": "Margföldun velda",
+   "B": "Margföldun veldisvísatalna"
+  },
+  {
+   "pair_id": "p078",
+   "chapter": "ch09",
+   "group": "para",
+   "length": "long",
+   "en": "Atmospheric pressure is caused by the weight of the column of air molecules in the atmosphere above an object, such as the tanker car. At sea level, this pressure is roughly the same as that exerted by a full-grown African elephant standing on a doormat, or a typical bowling ball resting on your thumbnail. These may seem like huge amounts, and they are, but life on earth has evolved under such atmospheric pressure. If you actually perch a bowling ball on your thumbnail, the pressure experienced is twice the usual pressure, and the sensation is unpleasant.",
+   "A": "Loftþrýstingur stafar af þyngd súlu loftsameinda í lofthjúpnum fyrir ofan hlut, eins og tankvagninn. Við sjávarmál er þessi þrýstingur nokkurn veginn sá sami og fullvaxinn afrískur fíll beitir standandi á dyramottu, eða dæmigerð keilukúla sem hvílir á þumalfingursnöglinni þinni. Þetta kann að virðast vera gríðarlegt magn, og það er það, en líf á jörðinni hefur þróast við slíkan loftþrýsting. Ef þú setur keilukúlu á þumalfingursnaglina þína er þrýstingurinn sem þú finnur fyrir tvöfaldur venjulegur þrýstingur og tilfinningin er óþægileg.",
+   "B": "Loftþrýstingur stafar af þyngd loftsúlunnar af sameindum í lofthjúpnum fyrir ofan hlut, eins og tankvagninn. Við sjávarmál er þessi þrýstingur nokkurn veginn sá sami og fullvaxinn afrískur fíll beitir standandi á dyramottu, eða dæmigerð keilukúla sem hvílir á þumalfingursnöglinni þinni. Þetta kann að virðast vera gríðarlegar stærðir, og það eru þær, en líf á jörðinni hefur þróast við slíkan loftþrýsting. Ef þú í raun og veru setur keilukúlu á þumalfingursnöglina þína er þrýstingurinn sem þú finnur fyrir tvöfaldur venjulegur þrýstingur og tilfinningin er óþægileg."
+  },
+  {
+   "pair_id": "p079",
+   "chapter": "ch03",
+   "group": "para",
+   "length": "long",
+   "en": "The empirical formula for this compound is thus CH2. This may or may not be the compound’s molecular formula as well; however, additional information is needed to make that determination (as discussed later in this section).",
+   "A": "Reynsluformúla þessa efnasambands er því CH2. Þetta gæti verið sameindaformúla efnasambandsins eða ekki; þó þarf frekari upplýsingar til að skera úr um það (eins og fjallað er um síðar í þessum kafla).",
+   "B": "Reynsluformúla þessa efnasambands er því CH2. Þetta gæti verið sameindaformúla efnasambandsins eða ekki; þó þarf frekari upplýsingar til að ákvarða það (eins og fjallað er um síðar í þessum kafla)."
+  },
+  {
+   "pair_id": "p080",
+   "chapter": "ch20",
+   "group": "para",
+   "length": "medium",
+   "en": "Like ammonia, amines are weak bases due to the lone pair of electrons on their nitrogen atoms:",
+   "A": "Líkt og ammoníak eru amín veikir basar vegna rafeindaparsins á nituratómunum:",
+   "B": "Líkt og ammoníak eru amín veikir basar vegna staka rafeindaparsins á nituratómum þeirra:"
+  },
+  {
+   "pair_id": "p081",
+   "chapter": "ch06",
+   "group": "exercise",
+   "length": "medium",
+   "en": "(e) What are the possible l and ml values for an orbital of type (x)? Of type (y)? Of type (z)?",
+   "A": "(e) Hver eru möguleg l og ml gildi fyrir svigrúm af gerð (x)? Af gerð (y)? Af gerð (z)?",
+   "B": "(e) Hver eru möguleg gildi l og ml fyrir svigrúm af gerð (x)? Af gerð (y)? Af gerð (z)?"
+  },
+  {
+   "pair_id": "p082",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "medium",
+   "en": "The ammonium ion is the conjugate acid of the base ammonia, NH3; its acid ionization (or acid hydrolysis) reaction is represented by",
+   "A": "Ammóníumjónin er samoka sýra basans ammóníaks, NH3; sýrujónunarhvarf hennar (eða sýruvatnsrof) er táknað með",
+   "B": "Ammóníumjónin er samoka sýra basans ammóníaks, NH3; sýrujónunarhvarf hennar (eða sýruvatnsrof) er táknað með:"
+  },
+  {
+   "pair_id": "p083",
+   "chapter": "ch07",
+   "group": "list",
+   "length": "medium",
+   "en": "If the Lewis structure must have nonzero formal charges, the arrangement with the smallest nonzero formal charges is preferable.",
+   "A": "Ef Lewis-myndin verður að hafa formlegar hleðslur sem eru ekki núll, er fyrirkomulagið með minnstu formlegu hleðslurnar sem eru ekki núll æskilegra.",
+   "B": "Ef Lewis myndin verður að hafa formlegar hleðslur sem eru ekki núll, er fyrirkomulagið með minnstu formlegu hleðslunum sem eru ekki núll æskilegra."
+  },
+  {
+   "pair_id": "p084",
+   "chapter": "ch12",
+   "group": "exercise",
+   "length": "short",
+   "en": "(b) Increasing the concentration of CO from 0.02 M to 0.06 M.",
+   "A": "(b) Aukning á styrk CO úr 0,02 M í 0,06 M.",
+   "B": "(b) Með því að auka styrk CO úr 0,02 M í 0,06 M."
+  },
+  {
+   "pair_id": "p085",
+   "chapter": "ch15",
+   "group": "exercise",
+   "length": "short",
+   "en": "AgI will precipitate first.",
+   "A": "AgI fellur fyrst út.",
+   "B": "AgI fellur út fyrst."
+  },
+  {
+   "pair_id": "p086",
+   "chapter": "ch18",
+   "group": "exercise",
+   "length": "short",
+   "en": "Why does the reactivity of the alkali metals decrease from cesium to lithium?",
+   "A": "Hvers vegna minnkar hvarfgirni alkalímálma frá sesíum til litíums?",
+   "B": "Af hverju minnkar hvarfgirni alkalímálma frá sesíum til litíums?"
+  },
+  {
+   "pair_id": "p087",
+   "chapter": "ch21",
+   "group": "definition",
+   "length": "medium",
+   "en": "use of high-energy radiation to damage the DNA of cancer cells, which kills them or keeps them from dividing",
+   "A": "notkun háorkugeislunar til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér",
+   "B": "notkun á orkuríkri geislun til að skemma DNA krabbameinsfrumna, sem drepur þær eða kemur í veg fyrir að þær skipti sér"
+  },
+  {
+   "pair_id": "p088",
+   "chapter": "ch03",
+   "group": "heading",
+   "length": "short",
+   "en": "Deriving Empirical Formulas from Percent Composition",
+   "A": "Afleiðsla reynsluformúla út frá massaprósentum",
+   "B": "Afleiðsla reynsluformúla út frá massaprósentu"
+  },
+  {
+   "pair_id": "p089",
+   "chapter": "ch12",
+   "group": "exercise",
+   "length": "long",
+   "en": "The half-life of a reaction of compound A to give compounds D and E is 8.50 min when the initial concentration of A is 0.150 M. How long will it take for the concentration to drop to 0.0300 M if the reaction is (a) first order with respect to A or (b) second order with respect to A?",
+   "A": "Helmingunartími efnahvarfs efnasambandsins A sem gefur efnasamböndin D og E er 8,50 mínútur þegar upphafsstyrkur A er 0,150 M. Hversu langan tíma tekur það fyrir styrkinn að falla niður í 0,0300 M ef efnahvarfið er (a) fyrsta stigs með tilliti til A eða (b) annars stigs með tilliti til A?",
+   "B": "Helmingunartími efnahvarfs efnasambandsins A sem gefur efnasamböndin D og E er 8,50 mín. þegar upphafsstyrkur A er 0,150 M. Hversu langan tíma tekur það fyrir styrkinn að falla niður í 0,0300 M ef efnahvarfið er (a) fyrsta stigs með tilliti til A eða (b) annars stigs með tilliti til A?"
+  },
+  {
+   "pair_id": "p090",
+   "chapter": "ch05",
+   "group": "definition",
+   "length": "short",
+   "en": "total of all possible kinds of energy present in a substance or substances",
+   "A": "heildarsumma allra mögulegra orkutegunda sem eru til staðar í efni eða efnum",
+   "B": "heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum"
+  },
+  {
+   "pair_id": "p091",
+   "chapter": "ch15",
+   "group": "exercise",
+   "length": "long",
+   "en": "Public Health Service standards for drinking water set a maximum of 250 mg/L (2.60 [formula] 10–3 M) of [formula] because of its cathartic action (it is a laxative). Does natural water that is saturated with CaSO4 (“gyp” water) as a result or passing through soil containing gypsum, CaSO4·2H2O, meet these standards? What is the concentration of [formula] in such water?",
+   "A": "Staðlar lýðheilsustofnunar fyrir drykkjarvatn setja hámark 250 mg/L (2,60 [formula] 10–3 M) af [formula] vegna hægðalosandi áhrifa þess. Uppfyllir náttúrulegt vatn sem er mettað af CaSO4 („gipsvatn“) vegna þess að það fer í gegnum jarðveg sem inniheldur gifs, CaSO4·2H2O, þessa staðla? Hver er styrkur [formula] í slíku vatni?",
+   "B": "Staðlar lýðheilsuyfirvalda fyrir drykkjarvatn setja hámark 250 mg/L (2,60 [formula] 10–3 M) af [formula] vegna hægðalosandi áhrifa þess. Uppfyllir náttúrulegt vatn sem er mettað af CaSO4 („gypsvatn“) vegna þess að það fer í gegnum jarðveg sem inniheldur gyps, CaSO4·2H2O, þessa staðla? Hver er styrkur [formula] í slíku vatni?"
+  },
+  {
+   "pair_id": "p092",
+   "chapter": "ch18",
+   "group": "para",
+   "length": "long",
+   "en": "The ready reduction of tin(IV) oxide by the hot coals of a campfire accounts for the knowledge of tin in the ancient world. In the modern process, the roasting of tin ores containing SnO2 removes contaminants such as arsenic and sulfur as volatile oxides. Treatment of the remaining material with hydrochloric acid removes the oxides of other metals. Heating the purified ore with carbon at temperature above 1000 °C produces tin:",
+   "A": "Auðveld afoxun tin(IV)-oxíðs með heitum kolum í varðeldi skýrir þekkingu á tini í fornöld. Í nútímaferlinu eru óhreinindi eins og arsen og brennisteinn fjarlægð sem rokgjörn oxíð með því að brenna tingrýti sem inniheldur SnO2. Meðhöndlun efnisins sem eftir er með saltsýru fjarlægir oxíð annarra málma. Tin er framleitt með því að hita hreinsað grýti með kolefni við hitastig yfir 1000 °C:",
+   "B": "Auðveld afoxun tin(IV)oxíðs með heitum kolum varðelda skýrir þekkingu á tini í fornöld. Í nútímaferlinu fjarlægir brennsla tinmálmgrýtis sem inniheldur SnO2 óhreinindi eins og arsen og brennistein sem rokgjörn oxíð. Meðhöndlun efnisins sem eftir er með saltsýru fjarlægir oxíð annarra málma. Hitun á hreinsuðu málmgrýtinu með kolefni við hitastig yfir 1000 °C framleiðir tin:"
+  },
+  {
+   "pair_id": "p093",
+   "chapter": "ch09",
+   "group": "para",
+   "length": "medium",
+   "en": "Subtracting 273.15 from 239.8 K, we find that the temperature of the boiling ammonia on the Celsius scale is –33.4 °C.",
+   "A": "Með því að draga 273,15 frá 239,8 K finnum við að hitastig sjóðandi ammoníaks á Celsíus-kvarða er –33,4 °C.",
+   "B": "Með því að draga 273,15 frá 239,8 K finnum við að hitastig sjóðandi ammóníaks á Celsíus-kvarða er –33,4 °C."
+  },
+  {
+   "pair_id": "p094",
+   "chapter": "ch09",
+   "group": "para",
+   "length": "long",
+   "en": "Show the calculation supporting the claim that atmospheric pressure near sea level corresponds to the pressure exerted by a column of mercury that is about 760 mm high. The density of mercury = 13.6 g/cm3.",
+   "A": "Sýndu útreikninginn sem styður þá fullyrðingu að loftþrýstingur nálægt sjávarmáli samsvari þrýstingi sem beitt er af kvikasilfurssúlu sem er um 760 mm á hæð. Eðlismassi kvikasilfurs = 13,6 g/cm3.",
+   "B": "Sýndu útreikninginn sem styður þá fullyrðingu að loftþrýstingur nálægt sjávarmáli samsvari þrýstingnum sem kvikasilfurssúla, sem er um 760 mm há, beitir. Eðlismassi kvikasilfurs = 13,6 g/cm3."
+  },
+  {
+   "pair_id": "p095",
+   "chapter": "ch05",
+   "group": "para",
+   "length": "long",
+   "en": "Reactants [formula] and [formula] cancel out product O2; product [formula] cancels reactant [formula] and reactant [formula] is cancelled by products [formula] and OF2. This leaves only reactants ClF(g) and F2(g) and product ClF3(g), which are what we want. Since summing these three modified reactions yields the reaction of interest, summing the three modified ΔH° values will give the desired ΔH°:",
+   "A": "Hvarfefnin [formula] og [formula] stytta út myndefnið O2; myndefnið [formula] styttir út hvarfefnið [formula] og hvarfefnið [formula] er stytt út af myndefnunum [formula] og OF2. Eftir standa aðeins hvarfefnin ClF(g) og F2(g) og myndefnið ClF3(g), sem er það sem við viljum. Þar sem summan af þessum þremur breyttu efnahvörfum gefur efnahvarfið sem um ræðir, mun summan af þremur breyttu ΔH° gildunum gefa hið æskilega ΔH°:",
+   "B": "Hvarfefnin [formula] og [formula] stytta út myndefnið O2; myndefnið [formula] styttir út hvarfefnið [formula] og hvarfefnið [formula] styttist út á móti myndefnunum [formula] og OF2. Eftir standa aðeins hvarfefnin ClF(g) og F2(g) og myndefnið ClF3(g), sem er það sem við vildum fá. Þar sem summan af þessum þremur breyttu efnahvörfum gefur okkur efnahvarfið sem við leitum að, þá gefur summan af þremur breyttu ΔH°-gildunum okkur það ΔH° sem við leitum að:"
+  },
+  {
+   "pair_id": "p096",
+   "chapter": "ch11",
+   "group": "exercise",
+   "length": "short",
+   "en": "Calculate the molality of each of the following solutions:",
+   "A": "Reiknið mólalstyrk hverrar eftirfarandi lausnar:",
+   "B": "Reiknaðu mólalstyrk hverrar af eftirfarandi lausnum:"
+  },
+  {
+   "pair_id": "p097",
+   "chapter": "ch03",
+   "group": "para",
+   "length": "long",
+   "en": "Since the stock solution is being diluted by more than two-fold (volume is increased from 0.85 L to 1.80 L), the diluted solution’s concentration is expected to be less than one-half 5 M. This ballpark estimate will be compared to the calculated result to check for any gross errors in computation (for example, such as an improper substitution of the given quantities). Substituting the given values for the terms on the right side of this equation yields:",
+   "A": "Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L), er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 M. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um stórvægilegar reikningsvillur sé að ræða (til dæmis, eins og rangt innsetningu gefinna stærða). Með því að setja gefin gildi inn fyrir liðina hægra megin í þessari jöfnu fæst:",
+   "B": "Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L), er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 M. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um grófar reikningsvillur sé að ræða (til dæmis, eins og rangt innsetning á gefnum stærðum). Með því að setja gefin gildi inn fyrir liðina hægra megin í þessari jöfnu fæst:"
+  },
+  {
+   "pair_id": "p098",
+   "chapter": "ch13",
+   "group": "para",
+   "length": "medium",
+   "en": "The last two example exercises of this chapter demonstrate the application of this strategy.",
+   "A": "Síðustu tvö dæmin í þessum kafla sýna fram á notkun þessarar aðferðar.",
+   "B": "Síðustu tvö dæmin í þessum kafla sýna notkun þessarar aðferðar."
+  },
+  {
+   "pair_id": "p099",
+   "chapter": "ch09",
+   "group": "exercise",
+   "length": "medium",
+   "en": "A weather balloon contains 8.80 moles of helium at a pressure of 0.992 atm and a temperature of 25 °C at ground level. What is the volume of the balloon under these conditions?",
+   "A": "Veðurathugunarbelgur inniheldur 8,80 mól af helíum við þrýstinginn 0,992 atm og hitastigið 25 °C við jörðu. Hvert er rúmmál belgjarins við þessar aðstæður?",
+   "B": "Veðurathugunarbelgur inniheldur 8,80 mól af helíum við 0,992 atm þrýsting og 25 °C hitastig við jörðu. Hvert er rúmmál belgjarins við þessar aðstæður?"
+  },
+  {
+   "pair_id": "p100",
+   "chapter": "ch06",
+   "group": "exercise",
+   "length": "long",
+   "en": "n determines the general range for the value of energy and the probable distances that the electron can be from the nucleus. l determines the shape of the orbital. m1 determines the orientation of the orbitals of the same l value with respect to one another. ms determines the spin of an electron.",
+   "A": "n ákvarðar almennt svið fyrir orkugildið og líklegar fjarlægðir sem rafeindin getur verið frá kjarnanum. l ákvarðar lögun svigrúmsins. m1 ákvarðar afstöðu svigrúma með sama l-gildi miðað við hvert annað. ms ákvarðar spuna rafeindar.",
+   "B": "n ákvarðar almennt svið fyrir orkugildi og líklegar fjarlægðir sem rafeindin getur verið frá kjarnanum. l ákvarðar lögun svigrúmsins. m1 ákvarðar afstöðu svigrúma með sama l gildi miðað við hvert annað. ms ákvarðar spuna rafeindar."
+  },
+  {
+   "pair_id": "p101",
+   "chapter": "ch18",
+   "group": "caption",
+   "length": "medium",
+   "en": "Dipping a wire into a solution of a sodium salt and then heating the wire causes emission of a bright yellow light, characteristic of sodium.",
+   "A": "Ef vír er dýft í lausn af natríumsalti og síðan hitaður veldur það útblæstri á skærgulu ljósi sem er einkennandi fyrir natríum.",
+   "B": "Þegar vír er dýft í lausn af natríumsalti og síðan hitaður gefur hann frá sér skærgult ljós, sem er einkennandi fyrir natríum."
+  },
+  {
+   "pair_id": "p102",
+   "chapter": "ch01",
+   "group": "exercise",
+   "length": "long",
+   "en": "(b) If the fermentation is carried out in an open container, would you expect the mass of the container and contents after fermentation to be less than, greater than, or the same as the mass of the container and contents before fermentation? Explain.",
+   "A": "(b) Ef gerjunin fer fram í opnu íláti, myndir þú búast við að massi ílátsins og innihaldsins eftir gerjun sé minni en, meiri en eða sá sami og massi ílátsins og innihaldsins fyrir gerjun? Útskýrðu.",
+   "B": "(b) Ef gerjunin fer fram í opnu íláti, myndir þú búast við að massi ílátsins og innihalds eftir gerjun sé minni en, meiri en eða sá sami og massi ílátsins og innihalds fyrir gerjun? Útskýrðu."
+  },
+  {
+   "pair_id": "p103",
+   "chapter": "ch18",
+   "group": "list",
+   "length": "long",
+   "en": "Oxides such as SO2 and N2O5, in which the nonmetal exhibits one of its common oxidation states, are term-00001 and react with water to form acids with no change in oxidation state. The product is an oxyacid. For example: [formula] [formula]",
+   "A": "Oxíð eins og SO2 og N2O5, þar sem málmleysinginn hefur eitt af algengum oxunarástöndum sínum, eru term-00001 og hvarfast við vatn til að mynda sýrur án breytinga á oxunarástandi. Myndefnið er oxósýra. Til dæmis: [formula] [formula]",
+   "B": "Oxíð eins og SO2 og N2O5, þar sem málmleysinginn sýnir eitt af algengum oxunarástöndum sínum, eru term-00001 og hvarfast við vatn til að mynda sýrur án breytinga á oxunarástandi. Myndefnið er oxósýra. Til dæmis: [formula] [formula]"
+  },
+  {
+   "pair_id": "p104",
+   "chapter": "ch20",
+   "group": "caption",
+   "length": "medium",
+   "en": "This condensation reaction forms a dipeptide from two amino acids and leads to the formation of water.",
+   "A": "Þetta þéttingarhvarf myndar tvípeptíð úr tveimur amínósýrum og leiðir til myndunar vatns.",
+   "B": "Þetta þéttihvarf myndar tvípeptíð úr tveimur amínósýrum og leiðir til myndunar vatns."
+  },
+  {
+   "pair_id": "p105",
+   "chapter": "ch19",
+   "group": "definition",
+   "length": "short",
+   "en": "difference in energy between the t2g and eg sets or t and e sets of orbitals",
+   "A": "orkumunur á milli t2g og eg setta eða t og e setta svigrúma",
+   "B": "orkumunur á milli t2g og eg mengja eða t og e mengja svigrúma"
+  },
+  {
+   "pair_id": "p106",
+   "chapter": "ch10",
+   "group": "para",
+   "length": "long",
+   "en": "Using the phase diagram for water, we can determine that the state of water at each temperature and pressure given are as follows: (a) solid; (b) liquid; (c) liquid; (d) gas; (e) solid; (f) gas.",
+   "A": "Með því að nota fasarit fyrir vatn getum við ákvarðað að ástand vatns við hvert uppgefið hitastig og þrýsting sé sem hér segir: (a) fast efni; (b) vökvi; (c) vökvi; (d) gas; (e) fast efni; (f) gas.",
+   "B": "Með því að nota fasaritið fyrir vatn getum við ákvarðað að ástand vatns við hvert gefið hitastig og þrýsting er sem hér segir: (a) fast efni; (b) vökvi; (c) vökvi; (d) gas; (e) fast efni; (f) gas."
+  },
+  {
+   "pair_id": "p107",
+   "chapter": "ch07",
+   "group": "para",
+   "length": "long",
+   "en": "The strong electrostatic attraction between Na+ and Cl– ions holds them tightly together in solid NaCl. It requires 769 kJ of energy to dissociate one mole of solid NaCl into separate gaseous Na+ and Cl– ions:",
+   "A": "Sterkt rafstöðuaðdráttarafl milli Na+ og Cl– jóna heldur þeim þétt saman í föstu NaCl. Það þarf 769 kJ af orku til að aðskilja eitt mól af föstu NaCl í stakar Na+ og Cl– jónir á gasformi:",
+   "B": "Sterkur rafstöðuaðdráttur milli Na+ og Cl– jóna heldur þeim þétt saman í föstu NaCl. Það þarf 769 kJ af orku til að kljúfa eitt mól af föstu NaCl í aðskildar Na+ og Cl– jónir á gasformi:"
+  },
+  {
+   "pair_id": "p108",
+   "chapter": "ch06",
+   "group": "para",
+   "length": "medium",
+   "en": "(a) Na: 1s22s22p63s1. Sodium cation loses one electron, so Na+: 1s22s22p63s1 = Na+: 1s22s22p6.",
+   "A": "(a) Na: 1s22s22p63s1. Natrínkatjón missir eina rafeind, þannig að Na+: 1s22s22p63s1 = Na+: 1s22s22p6.",
+   "B": "(a) Na: 1s22s22p63s1. Natríumkatjón missir eina rafeind, þannig að Na+: 1s22s22p63s1 = Na+: 1s22s22p6."
+  },
+  {
+   "pair_id": "p109",
+   "chapter": "ch13",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Is a system at equilibrium if the rate constants of the forward and reverse reactions are equal?",
+   "A": "Er kerfi í jafnvægi ef hraðafastar fram- og bakhvarfanna eru jafnir?",
+   "B": "Er kerfi í jafnvægi ef hraðafastar fram- og afturhvarfa eru jafnir?"
+  },
+  {
+   "pair_id": "p110",
+   "chapter": "ch17",
+   "group": "heading",
+   "length": "short",
+   "en": "Check Your Learning",
+   "A": "Prófaðu þig",
+   "B": "Prófaðu þekkingu þína"
+  },
+  {
+   "pair_id": "p111",
+   "chapter": "ch11",
+   "group": "list",
+   "length": "medium",
+   "en": "Determine the molality of the ions in the solution from the number of moles of ions and the mass of solvent, in kilograms. Result: 1.2 m",
+   "A": "Ákvarðaðu mólalstyrk jónanna í lausninni út frá fjölda móla af jónum og massa leysisins í kílógrömmum. Niðurstaða: 1,2 m",
+   "B": "Ákvarðið mólalstyrk jónanna í lausninni út frá fjölda móla af jónum og massa leysisins, í kílógrömmum. Niðurstaða: 1,2 m"
+  },
+  {
+   "pair_id": "p112",
+   "chapter": "ch20",
+   "group": "exercise",
+   "length": "short",
+   "en": "The foul odor of rancid butter is caused by butyric acid, CH3CH2CH2CO2H.",
+   "A": "Ódauninn af harðnuðu smjöri stafar af smjörsýru, CH3CH2CH2CO2H.",
+   "B": "Vonda lyktin af súrnuðu smjöri stafar af smjörsýru, CH3CH2CH2CO2H."
+  },
+  {
+   "pair_id": "p113",
+   "chapter": "ch13",
+   "group": "para",
+   "length": "long",
+   "en": "If the system is stressed by adding reactant, either H2 or I2, the resulting increase in concentration causes the rate of the forward reaction to increase, exceeding that of the reverse reaction:",
+   "A": "Ef kerfinu er raskað með því að bæta við hvarfefni, annaðhvort H2 eða I2, veldur aukningin á styrk því að hraði framhvarfsins eykst og verður meiri en hraði bakhvarfsins:",
+   "B": "Ef kerfinu er raskað með því að bæta við hvarfefni, annaðhvort H2 eða I2, veldur styrkaukningin því að hraði framhvarfsins eykst og verður meiri en hraði bakhvarfsins:"
+  },
+  {
+   "pair_id": "p114",
+   "chapter": "ch20",
+   "group": "definition",
+   "length": "long",
+   "en": "shorthand method of drawing organic molecules in which carbon atoms are represented by the ends of lines and bends in between lines, and hydrogen atoms attached to the carbon atoms are not shown (but are understood to be present by the context of the structure)",
+   "A": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisatóm eru táknuð með endum lína og beygjum á milli lína, og vetnisatóm sem eru tengd kolefnisatómum eru ekki sýnd (en er gert ráð fyrir að þau séu til staðar í samhengi við bygginguna)",
+   "B": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisatóm eru táknuð með endum lína og beygjum á milli lína, og vetnisatóm sem eru tengd við kolefnisatómin eru ekki sýnd (en eru gefin í skyn af samhengi byggingarinnar)"
+  },
+  {
+   "pair_id": "p115",
+   "chapter": "ch10",
+   "group": "exercise",
+   "length": "medium",
+   "en": "At 25 °C, how high will water rise in a glass capillary tube with an inner diameter of 0.63 mm? Refer to [ref] for the required information.",
+   "A": "Við 25 °C, hversu hátt mun vatn rísa í hárpípulaga glerröri með 0,63 mm innra þvermáli? Sjá [ref] fyrir nauðsynlegar upplýsingar.",
+   "B": "Við 25 °C, hversu hátt mun vatn rísa í hárpípugleri með 0,63 mm innra þvermáli? Sjá [ref] fyrir nauðsynlegar upplýsingar."
+  },
+  {
+   "pair_id": "p116",
+   "chapter": "ch04",
+   "group": "para",
+   "length": "long",
+   "en": "The physical states of reactants and products in chemical equations very often are indicated with a parenthetical abbreviation following the formulas. Common abbreviations include s for solids, l for liquids, g for gases, and aq for substances dissolved in water (aqueous solutions, as introduced in the preceding chapter). These notations are illustrated in the example equation here:",
+   "A": "Hamur hvarfefna og myndefna í efnajöfnum er mjög oft táknaður með skammstöfun í sviga á eftir formúlunum. Algengar skammstafanir eru s fyrir föst efni (e. solids), l fyrir vökva (e. liquids), g fyrir gös (e. gases) og aq fyrir efni sem eru leyst upp í vatni (vatnslausnir, eins og kynnt var í kaflanum á undan). Þessi tákn eru sýnd í dæminu hér:",
+   "B": "Hamur hvarfefna og myndefna í efnajöfnum er mjög oft táknaður með skammstöfun í sviga á eftir formúlunum. Algengar skammstafanir eru s fyrir föst efni, l fyrir vökva, g fyrir gös og aq fyrir efni sem eru leyst upp í vatni (vatnslausnir, eins og kynnt var í fyrri kafla). Þessi tákn eru sýnd í dæmisjöfnunni hér:"
+  },
+  {
+   "pair_id": "p117",
+   "chapter": "ch05",
+   "group": "heading",
+   "length": "short",
+   "en": "Measuring Heat",
+   "A": "Að mæla varma",
+   "B": "Að mæla hita"
+  },
+  {
+   "pair_id": "p118",
+   "chapter": "ch05",
+   "group": "para",
+   "length": "medium",
+   "en": "Comparing this value with the values in [ref], this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.",
+   "A": "Ef þetta gildi er borið saman við gildin í [ref] samsvarar það eðlisvarma áls, sem bendir til þess að óþekkti málmurinn gæti verið ál.",
+   "B": "Þegar þetta gildi er borið saman við gildin í [ref] sést að það samsvarar eðlisvarma áls, sem bendir til þess að óþekkti málmurinn gæti verið ál."
+  },
+  {
+   "pair_id": "p119",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "long",
+   "en": "(b) The Na+ cation is inert and will not affect the pH of the solution; while the [formula] anion is amphiprotic. The Ka of [formula] is 4.7 [formula] 10−11,and its Kb is [formula]",
+   "A": "(b) Na+ katjónin er óvirk og hefur ekki áhrif á pH lausnarinnar; á meðan [formula] anjónin er amfóprótísk. Ka fyrir [formula] er 4,7 [formula] 10−11, og Kb hennar er [formula]",
+   "B": "(b) Na+ katjónin er óvirk og hefur ekki áhrif á pH lausnarinnar; á meðan [formula] anjónin er amfiprótísk. Ka fyrir [formula] er 4,7 [formula] 10−11, og Kb hennar er [formula]"
+  },
+  {
+   "pair_id": "p120",
+   "chapter": "ch06",
+   "group": "list",
+   "length": "short",
+   "en": "By the end of this section, you will be able to:",
+   "A": "Í lok þessa kafla muntu geta:",
+   "B": "Þegar þessum kafla lýkur muntu geta:"
+  },
+  {
+   "pair_id": "p121",
+   "chapter": "ch03",
+   "group": "exercise",
+   "length": "medium",
+   "en": "An experiment in a general chemistry laboratory calls for a 2.00-M solution of HCl. How many mL of 11.9 M HCl would be required to make 250 mL of 2.00 M HCl?",
+   "A": "Í tilraun á almennri efnafræðitilraunastofu þarf 2,00-M lausn af HCl. Hversu marga ml af 11,9 M HCl þyrfti til að búa til 250 ml af 2,00 M HCl?",
+   "B": "Í tilraun í almennri efnafræði er kallað eftir 2,00-M lausn af HCl. Hversu marga ml af 11,9 M HCl þyrfti til að búa til 250 ml af 2,00 M HCl?"
+  },
+  {
+   "pair_id": "p122",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "long",
+   "en": "As discussed earlier, hydronium and hydroxide ions are present both in pure water and in all aqueous solutions, and their concentrations are inversely proportional as determined by the ion product of water (Kw). The concentrations of these ions in a solution are often critical determinants of the solution’s properties and the chemical behaviors of its other solutes, and specific vocabulary has been developed to describe these concentrations in relative terms. A solution is term-00001 if it contains equal concentrations of hydronium and hydroxide ions; term-00002 if it contains a greater concentration of hydronium ions than hydroxide ions; and term-00003 if it contains a lesser concentration of hydronium ions than hydroxide ions.",
+   "A": "Eins og áður hefur komið fram eru hýdróníum- og hýdroxíðjónir til staðar bæði í hreinu vatni og í öllum vatnslausnum og styrkur þeirra er í öfugu hlutfalli eins og jónafurð vatns (Kw) ákvarðar. Styrkur þessara jóna í lausn er oft afgerandi þáttur í eiginleikum lausnarinnar og efnafræðilegri hegðun annarra uppleystra efna hennar og sérstakur orðaforði hefur verið þróaður til að lýsa þessum styrk í afstæðum skilningi. Lausn er term-00001 ef hún inniheldur jafnan styrk hýdróníum- og hýdroxíðjóna; term-00002 ef hún inniheldur meiri styrk hýdróníumjóna en hýdroxíðjóna; og term-00003 ef hún inniheldur minni styrk hýdróníumjóna en hýdroxíðjóna.",
+   "B": "Eins og áður hefur komið fram eru hýdróníum- og hýdroxíðjónir til staðar bæði í hreinu vatni og í öllum vatnslausnum og styrkur þeirra er í öfugu hlutfalli eins og jónamargfeldi vatns (Kw) ákvarðar. Styrkur þessara jóna í lausn er oft afgerandi fyrir eiginleika lausnarinnar og efnafræðilega hegðun annarra uppleystra efna hennar og sérstakur orðaforði hefur verið þróaður til að lýsa þessum styrk í afstæðum skilningi. Lausn er term-00001 ef hún inniheldur jafnan styrk hýdróníum- og hýdroxíðjóna; term-00002 ef hún inniheldur meiri styrk hýdróníumjóna en hýdroxíðjóna; og term-00003 ef hún inniheldur minni styrk hýdróníumjóna en hýdroxíðjóna."
+  },
+  {
+   "pair_id": "p123",
+   "chapter": "ch21",
+   "group": "exercise",
+   "length": "short",
+   "en": "Write a balanced equation for each of the following nuclear reactions:",
+   "A": "Skrifaðu stillta jöfnu fyrir hvert eftirfarandi kjarnahvarf:",
+   "B": "Skrifaðu stillta jöfnu fyrir hvert eftirfarandi kjarnahvarfa:"
+  },
+  {
+   "pair_id": "p124",
+   "chapter": "ch04",
+   "group": "para",
+   "length": "short",
+   "en": "Complete reaction of the provided chlorine would produce",
+   "A": "Fullkomið hvarf klórsins sem er til staðar myndi framleiða",
+   "B": "Fullkomið hvarf klórsins sem er til staðar myndi framleiða:"
+  },
+  {
+   "pair_id": "p125",
+   "chapter": "ch09",
+   "group": "para",
+   "length": "short",
+   "en": "(c) Explain the reason(s) for the difference.",
+   "A": "(c) Útskýrið ástæðu(r) fyrir mismuninum.",
+   "B": "(c) Útskýrðu ástæðu(r) fyrir mismuninum."
+  },
+  {
+   "pair_id": "p126",
+   "chapter": "ch11",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Assuming ideal solution behavior, what is the freezing point of a solution of 9.04 g of I2 in 75.5 g of benzene?",
+   "A": "Miðað við hegðun kjörlausnar, hvert er frostmark lausnar af 9,04 g af I2 í 75,5 g af benseni?",
+   "B": "Miðað við hegðun kjörlausnar, hvert er frostmark lausnar með 9,04 g af I2 í 75,5 g af benseni?"
+  },
+  {
+   "pair_id": "p127",
+   "chapter": "ch00",
+   "group": "list",
+   "length": "short",
+   "en": "IUPAC data and interactives",
+   "A": "IUPAC-gögn og gagnvirkni",
+   "B": "IUPAC gögn og gagnvirkni"
+  },
+  {
+   "pair_id": "p128",
+   "chapter": "ch09",
+   "group": "caption",
+   "length": "long",
+   "en": "In 1783, the first (a) hydrogen-filled balloon flight, (b) manned hot air balloon flight, and (c) manned hydrogen-filled balloon flight occurred. When the hydrogen-filled balloon depicted in (a) landed, the frightened villagers of Gonesse reportedly destroyed it with pitchforks and knives. The launch of the latter was reportedly viewed by 400,000 people in Paris.",
+   "A": "Árið 1783 fór fram fyrsta (a) flug vetnisfyllts loftbelgs, (b) mannað flug heitloftsbelgs og (c) mannað flug vetnisfyllts loftbelgs. Þegar vetnisfyllti loftbelgurinn sem sýndur er í (a) lenti, er sagt að hræddir þorpsbúar í Gonesse hafi eyðilagt hann með heykvíslum og hnífum. Sjósetningu þess síðarnefnda fylgdust að sögn 400.000 manns með í París.",
+   "B": "Árið 1783 fór fram (a) fyrsta flug vetnisfyllts loftbelgs, (b) fyrsta mannaða flug loftbelgs með heitu lofti og (c) fyrsta mannaða flug vetnisfyllts loftbelgs. Þegar vetnisfyllti loftbelgurinn sem sýndur er í (a) lenti er sagt að hræddir þorpsbúar í Gonesse hafi eyðilagt hann með heykvíslum og hnífum. Sjósetningu þess síðarnefnda fylgdust að sögn 400.000 manns með í París."
+  },
+  {
+   "pair_id": "p129",
+   "chapter": "ch04",
+   "group": "list",
+   "length": "short",
+   "en": "By the end of this section, you will be able to:",
+   "A": "Þegar þú hefur lokið við þennan kafla getur þú:",
+   "B": "Í lok þessa kafla muntu geta:"
+  },
+  {
+   "pair_id": "p130",
+   "chapter": "ch01",
+   "group": "para",
+   "length": "long",
+   "en": "Eleven elements make up about 99% of the earth’s crust and atmosphere ([ref]). Oxygen constitutes nearly one-half and silicon about one-quarter of the total quantity of these elements. A majority of elements on earth are found in chemical combinations with other elements; about one-quarter of the elements are also found in the free state.",
+   "A": "Ellefu frumefni mynda um 99% af jarðskorpunni og lofthjúpi jarðar ([ref]). Súrefni er næstum helmingur og kísill um fjórðungur af heildarmagni þessara frumefna. Meirihluti frumefna á jörðinni finnst í efnasamböndum við önnur frumefni; um fjórðungur frumefnanna finnst einnig í hreinu formi.",
+   "B": "Ellefu frumefni mynda um 99% af jarðskorpunni og lofthjúpnum ([ref]). Súrefni er næstum helmingur og kísill um fjórðungur af heildarmagni þessara frumefna. Meirihluti frumefna á jörðinni finnst í efnasamböndum með öðrum frumefnum; um fjórðungur frumefnanna finnst einnig í hreinu formi."
+  },
+  {
+   "pair_id": "p131",
+   "chapter": "ch18",
+   "group": "para",
+   "length": "long",
+   "en": "The principal use of tin is in the coating of steel to form tin plate-sheet iron, which constitutes the tin in tin cans. Important tin alloys are bronze (Cu and Sn) and solder (Sn and Pb). Lead is important in the lead storage batteries in automobiles.",
+   "A": "Meginnotkun tins er í húðun á stáli til að mynda blikkplötur, sem er tinið í niðursuðudósum. Mikilvægar tinblöndur eru brons (Cu og Sn) og lóðmálmur (Sn og Pb). Blý er mikilvægt í blýgeymum í bifreiðum.",
+   "B": "Meginnotkun tins er í húðun á stáli til að mynda tinhúðað stálplötujárn, sem er tinið í niðursuðudósum. Mikilvægar tinblöndur eru brons (Cu og Sn) og lóðmálmur (Sn og Pb). Blý er mikilvægt í blýgeymum í bifreiðum."
+  },
+  {
+   "pair_id": "p132",
+   "chapter": "ch21",
+   "group": "caption",
+   "length": "long",
+   "en": "Administering thallium-201 to a patient and subsequently performing a stress test offer medical professionals an opportunity to visually analyze heart function and blood flow. (credit: modification of work by “Blue0ctane”/Wikimedia Commons)",
+   "A": "Að gefa sjúklingi þallín-201 og framkvæma síðan álagspróf gefur heilbrigðisstarfsfólki tækifæri til að greina sjónrænt starfsemi hjartans og blóðflæði. (heimild: breyting á verki eftir „Blue0ctane“/Wikimedia Commons)",
+   "B": "Að gefa sjúklingi tallín-201 og framkvæma síðan álagspróf gefur heilbrigðisstarfsfólki tækifæri til að greina sjónrænt starfsemi hjartans og blóðflæði. (Heimild: breyting á verki eftir „Blue0ctane“/Wikimedia Commons)"
+  },
+  {
+   "pair_id": "p133",
+   "chapter": "ch16",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Carbon tetrachloride, an important industrial solvent, is prepared by the chlorination of methane at 850 K. [formula]",
+   "A": "Koltrefjaklóríð, mikilvægur iðnaðarleysir, er framleitt með klórun metans við 850 K. [formula]",
+   "B": "Koltetraklóríð, mikilvægur iðnaðarleysir, er framleitt með klórun metans við 850 K. [formula]"
+  },
+  {
+   "pair_id": "p134",
+   "chapter": "ch11",
+   "group": "exercise",
+   "length": "long",
+   "en": "(a) Determine the molal concentration from the change in boiling point and Kb; determine the moles of solute in the solution from the molal concentration and mass of solvent; determine the molar mass from the number of moles and the mass of solute. (b) 2.1 [formula] 102 g mol−1",
+   "A": "(a) Ákvarðaðu mólalstyrkinn út frá breytingu á suðumarki og Kb; ákvarðaðu mól uppleysta efnisins í lausninni út frá mólalstyrknum og massa leysisins; ákvarðaðu mólmassann út frá fjölda móla og massa uppleysta efnisins. (b) 2,1 [formula] 102 g mól−1",
+   "B": "(a) Ákvarðið mólalstyrkinn út frá breytingu á suðumarki og Kb; ákvarðið mól uppleysts efnis í lausninni út frá mólalstyrk og massa leysis; ákvarðið mólmassann út frá fjölda móla og massa uppleysts efnis. (b) 2,1 [formula] 102 g mól−1"
+  },
+  {
+   "pair_id": "p135",
+   "chapter": "ch10",
+   "group": "heading",
+   "length": "short",
+   "en": "Sublimation and Deposition",
+   "A": "Þurrgufun og þurrfrysting",
+   "B": "Þurrgufun og ísetning"
+  },
+  {
+   "pair_id": "p136",
+   "chapter": "ch12",
+   "group": "para",
+   "length": "long",
+   "en": "The exponential term also describes the effect of temperature on reaction rate. A higher temperature represents a correspondingly greater fraction of molecules possessing sufficient energy (RT) to overcome the activation barrier (Ea), as shown in [ref](b). This yields a greater value for the rate constant and a correspondingly faster reaction rate.",
+   "A": "Veldisvísisliðurinn lýsir einnig áhrifum hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra hlutfall sameinda sem búa yfir nægilegri orku (RT) til að yfirstíga virkjunarþröskuldinn (Ea), eins og sýnt er á [ref](b). Þetta leiðir til hærra gildis fyrir hraðafastann og samsvarandi hraðari hvarfhraða.",
+   "B": "Veldisvísisliðurinn lýsir einnig áhrifum hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra hlutfall sameinda sem búa yfir nægilegri orku (RT) til að yfirstíga virkjunarhindrunina (Ea), eins og sýnt er á [ref](b). Þetta gefur hærra gildi fyrir hraðafastann og samsvarandi hraðari hvarfhraða."
+  },
+  {
+   "pair_id": "p137",
+   "chapter": "ch19",
+   "group": "exercise",
+   "length": "medium",
+   "en": "Al is used because it is the strongest reducing agent and the only option listed that can provide sufficient driving force to convert La(III) into La.",
+   "A": "Al er notað vegna þess að það er sterkasti afoxarinn og eini valkosturinn á listanum sem getur veitt nægjanlegan drifkraft til að breyta La(III) í La.",
+   "B": "Al er notað vegna þess að það er sterkasti afoxarinn og eini kosturinn á listanum sem getur veitt nægjanlegan drifkraft til að breyta La(III) í La."
+  },
+  {
+   "pair_id": "p138",
+   "chapter": "ch12",
+   "group": "exercise",
+   "length": "medium",
+   "en": "The rate constant for the first-order decomposition at 45 °C of dinitrogen pentoxide, N2O5, dissolved in chloroform, CHCl3, is 6.2 [formula] 10−4 min−1. [formula]",
+   "A": "Hraðafastinn fyrir fyrsta stigs niðurbrot tvínituroxíðs, N2O5, uppleysts í klóróformi, CHCl3, við 45 °C er 6,2 [formula] 10−4 mín−1. [formula]",
+   "B": "Hraðafastinn fyrir fyrsta stigs niðurbrot tviniturpentaoxíðs, N2O5, uppleysts í klóróformi, CHCl3, við 45 °C er 6,2 [formula] 10−4 mín−1. [formula]"
+  },
+  {
+   "pair_id": "p139",
+   "chapter": "ch16",
+   "group": "para",
+   "length": "long",
+   "en": "A partial listing of standard entropies is provided in [ref], and additional values are provided in m68865. The example exercises that follow demonstrate the use of S° values in calculating standard entropy changes for physical and chemical processes.",
+   "A": "Listi yfir hluta staðalóreiðugilda er í [ref] og fleiri gildi eru í m68865. Dæmin sem fylgja sýna notkun S°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.",
+   "B": "Listi yfir hluta staðalóreiðugilda er í [ref] og viðbótargildi eru í m68865. Dæmin sem fylgja sýna notkun S°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli."
+  },
+  {
+   "pair_id": "p140",
+   "chapter": "ch02",
+   "group": "heading",
+   "length": "short",
+   "en": "Chemistry End of Chapter Exercises",
+   "A": "Efnafræði – Verkefni í lok kafla",
+   "B": "Efnafræði – verkefni í lok kafla"
+  },
+  {
+   "pair_id": "p141",
+   "chapter": "ch15",
+   "group": "para",
+   "length": "medium",
+   "en": "(b) CaCO3, calcium carbonate, the active ingredient in many over-the-counter chewable antacids",
+   "A": "(b) CaCO3, kalsíumkarbónat, virka efnið í mörgum lausasölu tyggjanlegum sýrubindandi lyfjum",
+   "B": "(b) CaCO3, kalsíumkarbónat, virka innihaldsefnið í mörgum sýrubindandi tuggutöflum sem fást án lyfseðils"
+  },
+  {
+   "pair_id": "p142",
+   "chapter": "ch05",
+   "group": "para",
+   "length": "long",
+   "en": "As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ([ref]). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of term-00011 per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.",
+   "A": "Eftir því sem birgðir jarðefnaeldsneytis minnka og verður kostnaðarsamara að vinna það, er stöðug leit í gangi að nýjum orkugjöfum fyrir framtíðina. Meðal þeirra lífeldsneyta sem lofa mestu góðu eru þau sem unnin eru úr þörungum ([ref]). Þær þörungategundir sem notaðar eru eru óeitraðar, lífbrjótanlegar og meðal hraðvöxnustu lífvera heims. Um 50% af þyngd þörunga er olía, sem auðveldlega má breyta í eldsneyti eins og lífdísil. Þörungar geta gefið af sér 26.000 gallon af term-00011 á hektara – mun meiri orku á flatarmálseiningu en aðrar nytjaplöntur. Sumir þörungastofnar geta dafnað í ísöltu vatni sem ekki er hægt að nota til að rækta aðrar plöntur. Þörungar geta framleitt lífdísil, lífbensín, etanól, bútanól, metan og jafnvel þotueldsneyti.",
+   "B": "Eftir því sem birgðir jarðefnaeldsneytis minnka og verður kostnaðarsamara að vinna það, er stöðugt leitað að nýjum orkugjöfum fyrir framtíðina. Meðal þeirra lífeldsneyta sem lofa mestu góðu eru þau sem unnin eru úr þörungum ([ref]). Þær þörungategundir sem notaðar eru, eru óeitraðar, lífbrjótanlegar og meðal hraðvöxnustu lífvera heims. Um 50% af þyngd þörunga er olía, sem auðveldlega má breyta í eldsneyti eins og lífdísil. Þörungar geta gefið af sér 26.000 gallon af term-00011 á hektara — mun meiri orku á flatareiningu en aðrar nytjaplöntur. Sumir þörungastofnar geta dafnað í ísöltu vatni sem ekki er hægt að nota til ræktunar annarra plantna. Þörungar geta framleitt lífdísil, lífbensín, etanól, bútanól, metan og jafnvel þotueldsneyti."
+  },
+  {
+   "pair_id": "p143",
+   "chapter": "ch04",
+   "group": "exercise",
+   "length": "short",
+   "en": "(b) What mass of I2 is produced?",
+   "A": "(b) Hver er massi I2 sem myndast?",
+   "B": "(b) Hver er massi I2 sem er myndað?"
+  },
+  {
+   "pair_id": "p144",
+   "chapter": "ch18",
+   "group": "para",
+   "length": "medium",
+   "en": "Thus, the oxygen that became carbon dioxide and water by the metabolic processes in plants and animals returns to the atmosphere by photosynthesis.",
+   "A": "Þannig skilar súrefnið, sem varð að koltvíoxíði og vatni með efnaskiptaferlum í plöntum og dýrum, aftur út í andrúmsloftið með ljóstillífun.",
+   "B": "Þannig snýr súrefnið sem varð að koldíoxíði og vatni með efnaskiptaferlum í plöntum og dýrum aftur út í andrúmsloftið með ljóstillífun."
+  },
+  {
+   "pair_id": "p145",
+   "chapter": "ch12",
+   "group": "para",
+   "length": "medium",
+   "en": "The http://openstax.org/l/16enzymes provides an excellent introduction to enzymes for students and teachers.",
+   "A": "http://openstax.org/l/16enzymes býður upp á frábæra kynningu á ensímum fyrir nemendur og kennara.",
+   "B": "http://openstax.org/l/16enzymes býður upp á frábæran inngang að ensímum fyrir nemendur og kennara."
+  },
+  {
+   "pair_id": "p146",
+   "chapter": "ch08",
+   "group": "list",
+   "length": "short",
+   "en": "By the end of this section, you will be able to:",
+   "A": "Þegar þú hefur lokið við þennan kafla munt þú geta:",
+   "B": "Þegar þú hefur lokið við þennan kafla getur þú:"
+  },
+  {
+   "pair_id": "p147",
+   "chapter": "ch11",
+   "group": "definition",
+   "length": "short",
+   "en": "of concentration less than solubility",
+   "A": "af styrk sem er minni en leysni",
+   "B": "með styrk sem er minni en leysni"
+  },
+  {
+   "pair_id": "p148",
+   "chapter": "ch07",
+   "group": "heading",
+   "length": "short",
+   "en": "Determining the Electronic Structures of Cations",
+   "A": "Ákvörðun rafeindaskipanar katjóna",
+   "B": "Að ákvarða rafeindaskipan katjóna"
+  },
+  {
+   "pair_id": "p149",
+   "chapter": "ch12",
+   "group": "list",
+   "length": "short",
+   "en": "By the end of this section, you will be able to:",
+   "A": "Þegar þessum kafla lýkur muntu geta:",
+   "B": "Þegar þú hefur lokið við þennan kafla muntu geta:"
+  },
+  {
+   "pair_id": "p150",
+   "chapter": "ch14",
+   "group": "para",
+   "length": "short",
+   "en": "Compute molar concentrations for the two buffer components:",
+   "A": "Reiknaðu mólstyrk fyrir þessa tvo stuðpúðaþætti:",
+   "B": "Reiknaðu mólstyrk fyrir báða stuðpúðaþættina:"
+  }
+ ]
+}
