@@ -24,6 +24,11 @@ Checks (reported, never resolved here):
     occurs in the chosen word as a substring. A substring hit is not proof of agreement: `hol`
     is a substring of `ferflötungshola`, which is another lemma. A human reads this list.
   - `sameHeadwordTwoTargets`: one English headword answered in two chapters with two targets.
+  - `containsAnswered`: the same containment test as `containsRuled`, but between the page's own
+    answers and confirmed rows (including the wrong-sense rows), which `containsRuled` cannot see
+    because neither side is ruled yet: `electrode potential -> troðspenna` inside `standard
+    electrode potential -> staðalraftroðsspenna` is the shape. Reported where the shorter
+    headword's word is not a substring of the longer one's.
   - `septemberCounts`: how often the chosen word occurs, as written (lower-cased), in the
     September text (books/efnafraedi-2e/02-mt-output) of its own chapter and book-wide. This is
     CLAUDE.md's unprompted control: 0 means the MT never produced that form unprompted. It
@@ -132,6 +137,17 @@ def main():
                     contains.append({'id': r['id'], 'en': r['en'], 'how': how, 'word': word,
                                      'ruledHeadword': h, 'ruledTarget': is_, 'ruledKind': kind,
                                      'substringHit': bool(word) and lemma in word.lower()})
+    own = [(r['id'], r['en'], r['target'], 'answer') for r in answers if r['target']] + \
+          [(r['id'], r['en'], r['proposed'], r['status']) for r in untouched if r['proposed']]
+    contains_answered = []
+    for ia, ea, ta, ha in own:
+        a = norm(ea)
+        for ib, eb, tb, hb in own:
+            b = norm(eb)
+            if a and ia != ib and a != b and re.search(r'(?<!\w)' + re.escape(a) + r'(?!\w)', b) \
+                    and norm(ta) not in tb.lower():
+                contains_answered.append({'shorter': {'id': ia, 'en': ea, 'word': ta, 'how': ha},
+                                          'longer': {'id': ib, 'en': eb, 'word': tb, 'how': hb}})
     by_en = defaultdict(set)
     for r in answers:
         if r['id'] in items and r['target']:
@@ -184,7 +200,7 @@ def main():
         },
         'open': open_items,
         'meta': meta,
-        'checks': {'containsRuled': contains, 'sameHeadwordTwoTargets': two, 'septemberCounts': counts},
+        'checks': {'containsRuled': contains, 'containsAnswered': contains_answered, 'sameHeadwordTwoTargets': two, 'septemberCounts': counts},
         'answers': answers,
         'untouched': untouched,
     }

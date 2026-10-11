@@ -11,7 +11,7 @@
   "dataShaNote": "hash of the DATA in the page passed as <page.html>. The 100 cards were answered on Version 2 (DATA sha256 e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b); the later tabs on Version 4, whose DATA differs only in showing [[MATH:n]] as [formula]. Item ids are identical across versions.",
   "generator": "experiments/terminology-consistency/stage1_page.py"
  },
- "repoHead": "45815b8a4609e163fbffd745650aba5657355975",
+ "repoHead": "47fa092b7080855ef3fee99c7f51491d972d58e6",
  "counts": {
   "answers": 153,
   "answersByChoice": {
@@ -452,6 +452,106 @@
     "ruledTarget": "vetniskolefni",
     "ruledKind": "entry",
     "substringHit": true
+   }
+  ],
+  "containsAnswered": [
+   {
+    "shorter": {
+     "id": "ch08_fs-idm133686144",
+     "en": "bonding orbital",
+     "word": "tengisvigrúm",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch08_fs-idm100344544",
+     "en": "π bonding orbital",
+     "word": "π-tengi svigrúm",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ch08_fs-idm133686144",
+     "en": "bonding orbital",
+     "word": "tengisvigrúm",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch08_fs-idm169269152",
+     "en": "σ* bonding orbital",
+     "word": "σ*-tengi svigrúm",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ch08_fs-idm133686144",
+     "en": "bonding orbital",
+     "word": "tengisvigrúm",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch08_fs-idm18620192",
+     "en": "π* bonding orbital",
+     "word": "π*-tengi svigrúm",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ch08_fs-idm133686144",
+     "en": "bonding orbital",
+     "word": "tengisvigrúm",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch08_fs-idm41960016",
+     "en": "σ bonding orbital",
+     "word": "σ-tengi svigrúm",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ch17_fs-idp85536816",
+     "en": "electrode potential (EX)",
+     "word": "troðspenna (EX)",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch17_fs-idm4867824",
+     "en": "standard electrode potential (56)",
+     "word": "staðalraftroðsspenna ((EX°))",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ws_emission",
+     "en": "emission",
+     "word": "ljómun",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch21_fs-idm24356480",
+     "en": "positron emission",
+     "word": "jáeindaútgeislun",
+     "how": "answer"
+    }
+   },
+   {
+    "shorter": {
+     "id": "ws_emission",
+     "en": "emission",
+     "word": "ljómun",
+     "how": "answer"
+    },
+    "longer": {
+     "id": "ch21_fs-idm27366640",
+     "en": "gamma (γ) emission",
+     "word": "gamma (γ) útgeislun",
+     "how": "answer"
+    }
    }
   ],
   "sameHeadwordTwoTargets": [
