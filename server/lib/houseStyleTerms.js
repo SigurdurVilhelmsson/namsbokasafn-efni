@@ -387,11 +387,20 @@ const HOUSE_STYLE_TERMS = Object.freeze([
 
   // ─────────────────────────────────────────────────────────────────────────
   // 2026-09-21, second batch — the remaining audit questions [USER] answered.
-  // Only TWO of the nine needed an entry; four were already stored correctly
-  // (porous → gropinn, complementary color → fyllingarlitur, square planar →
-  // ferningslaga flatt, decay → sundrun) and three are HELD off the wire
-  // (substituted → committee; fissionable/fissile; radioactive material).
+  // TWO of the nine got an entry; four were already stored correctly (porous →
+  // gropinn, complementary color → fyllingarlitur, square planar → ferningslaga
+  // flatt, decay → sundrun) and three are HELD off the wire (substituted →
+  // committee; fissionable/fissile; radioactive material).
   // Record: docs/decisions/2026-09-21-chemistry-terminology-rulings.md.
+  //
+  // ⚠️ ONLY ONE OF THOSE TWO REMAINS. `trigonal planar → þríhyrnt flatt` was
+  // REVERSED by [USER] on 2026-10-11 to `þríhyrningslaga flatt`, the official
+  // chemistry glossary's form, which is the Íðorðabankinn row it used to beat
+  // (Record: docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md).
+  // A ruling that matches the stored lemma gets NO entry, so the entry was
+  // deleted, and 051 retires its concept on the next boot. Do not re-add it: the
+  // 2026-09-21 test pins the reversal, and §C164's same-domain tie-break keeps a
+  // real-entry test in `bent` (houseStyleTerms2026-09-27.test.js).
   // ─────────────────────────────────────────────────────────────────────────
   Object.freeze({
     en: Object.freeze(['submerged']),
@@ -403,23 +412,6 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       "the book's committed MT and the approved `í kafi` appears ZERO, so the incumbent is the " +
       'untested form. ⚠️ The model also reaches for `dýft í` (14) for "immersed in"; the row ' +
       'overrides that only where the English says "submerged".',
-  }),
-  Object.freeze({
-    en: Object.freeze(['trigonal planar']),
-    is: 'þríhyrnt flatt',
-    ruled: '2026-09-21 [USER]',
-    why:
-      '🔴 THE ONLY ENTRY IN THIS FILE THAT OVERRIDES A FORM THE MODEL ALREADY PRODUCES, AND IT IS ' +
-      'RECORDED THAT WAY ON PURPOSE. The incumbent `þríhyrningslaga flatt` is ALREADY a chemistry ' +
-      'row and the MT writes `þríhyrningslaga` 36 times; the ruled `þríhyrnt flatt` appears 0 ' +
-      "times. That is §C73's second test failing on the RULING rather than on the incumbent — " +
-      '[USER] ruled it deliberately, as with `radioactive decay → geislasundrun` on 2026-09-20. ' +
-      '⚠️ MECHANISM DIFFERS FROM EVERY ENTRY ABOVE: the incumbent is in the SAME domain, so this ' +
-      "does not win by domain priority. It wins by §C164's tie-break in " +
-      '`conceptResolver.resolveCandidates` — among candidates at the best position, if the texts ' +
-      'differ and exactly one is house-style, the house one wins. ⚠️ Reaches ch18/19/20 (14 EN ' +
-      'occurrences) for free; ch07 and ch08 are already bought and hold 43 more, which is an ' +
-      'editor substitution or a re-buy, not something this row repairs.',
   }),
 
   // ───────────────────────────────────────────────────────────────────────
