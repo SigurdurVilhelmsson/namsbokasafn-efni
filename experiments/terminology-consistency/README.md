@@ -306,6 +306,9 @@ database never holds a vintage.
   `~/.cache/namsbokasafn-audit/2026-10-11-masked-test/`. The script regenerates it byte for byte,
   and its sha256 is in the pairs file. **`masked_test_analyse.py` refuses a key whose sha256
   differs.**
+- **Freezing is one command:** `masked_test_analyse.py --answers D` reads the
+  `ArtifactData list collection=stage1_reading out_dir=D` dump directly, so no mapping step is
+  written after the answers exist.
 - **The rule** (D1, on the page above the first pair): the hybrid only if June wins ≥ 60% of
   decisive pairs **and** the 95% Wilson lower bound is above 0.5. `--table` prints the minimum
   wins for each n. **The September guess is asked per pair, not once at the end as the plan's 1.7
@@ -315,5 +318,8 @@ database never holds a vintage.
   September sweep does not, all guesses right voids the result, and a tampered key is refused.
 - **Blind spots:** a 3-letter term word inside a compound and other stem changes (i-umlaut) are
   not caught; other vintage fingerprints may remain (boilerplate wording, punctuation habits).
-  The per-pair guess is the check on all of them. The test measures reading quality where the two
+  The per-pair guess is the check on all of them. **It has a cost:** asking "which was September?"
+  on every pair primes the reader to hunt for vintage while judging quality. The page mitigates
+  this: the guess is disabled until the quality answer is picked. A reader who feels they were
+  "spotting June" is seeing a known effect of the design. The test measures reading quality where the two
   texts agree on terms. It says nothing about term quality, which the rulings settle.

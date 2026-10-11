@@ -22,14 +22,17 @@ THE MASKING CHECK (plan: "if [USER] guesses well above chance, the masking faile
 Inputs:
   --pairs   results/2026-10-11/masked-test-pairs.json (carries the key's sha256)
   --key     masked-test-key.json (off-repo until the answers are frozen; its sha256 must match)
-  --answers the frozen answers: a JSON list of {pair_id, choice: A|B|equal|both_wrong,
-            septGuess: A|B|unsure}, or {"answers": [...]}.
+  --answers the frozen answers: EITHER the page's database dump as it comes, a directory written
+            by `ArtifactData list collection=stage1_reading out_dir=D` (the files are
+            D/stage1_reading/<pair_id>.json; pass D or D/stage1_reading), OR a JSON list of
+            {pair_id, choice: A|B|equal|both_wrong, septGuess: A|B|unsure}, or {"answers": [...]}.
+            Reading the dump directly means no mapping step is written after the answers exist.
 
 Usage:
   python3 experiments/terminology-consistency/masked_test_analyse.py --pairs P --key K --answers A
   python3 experiments/terminology-consistency/masked_test_analyse.py --table   # the rule's arithmetic
 """
-import argparse, hashlib, json, math, sys
+import argparse, glob, hashlib, json, math, os, sys
 
 Z = 1.959964  # two-sided 95%
 SHARE = 0.60
@@ -55,6 +58,19 @@ def min_wins(n):
     return next((k for k in range(n + 1) if fires(k, n)), None)
 
 
+def load_answers(path):
+    if os.path.isdir(path):
+        d = os.path.join(path, 'stage1_reading') if os.path.isdir(os.path.join(path, 'stage1_reading')) else path
+        out = []
+        for f in sorted(glob.glob(os.path.join(d, '*.json'))):
+            doc = json.load(open(f))
+            doc = doc.get('data', doc) if isinstance(doc.get('data'), dict) else doc
+            out.append({**doc, 'pair_id': os.path.splitext(os.path.basename(f))[0]})
+        return out
+    ans = json.load(open(path))
+    return ans['answers'] if isinstance(ans, dict) else ans
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--pairs'); ap.add_argument('--key'); ap.add_argument('--answers')
@@ -74,8 +90,7 @@ def main():
     if sha != pairs['keySha256']:
         sys.exit(f'key sha256 {sha} does not match the committed {pairs["keySha256"]}: refusing')
     key = json.loads(key_bytes)['key']
-    ans = json.load(open(a.answers))
-    ans = ans['answers'] if isinstance(ans, dict) else ans
+    ans = load_answers(a.answers)
     ids = {p['pair_id'] for p in pairs['pairs']}
 
     tally = {'june': 0, 'sept': 0, 'equal': 0, 'both_wrong': 0}
