@@ -273,3 +273,10 @@ It also holds three checks, reported and never resolved:
 `page.dataSha256` is the hash of the page passed in. The final export (all tabs answered, both lists confirmed) used Version 4; the 100 cards were answered on Version 2, whose hash is kept as `page.dataShaNote`. Item ids are the same in every version. Version 3 changed only the display of formula placeholders: `stage1_page.py` now shows `[formula]` where Version 2 showed the bare placeholder number, as in "(56)".
 
 **Chat answers.** `results/2026-10-11/stage1-chat-answers-2026-10-11.json` holds [USER]'s answers to the seven questions the checks raised (2026-10-11, "I agree with your picks"). Each of its 17 rows names the page answer and the word that supersedes it. The compile step reads both files: a row in the chat file wins over the page answer for the same id.
+
+### Stage 1 compiled (2026-10-11, late)
+
+`compile_stage1_rulings.py <out.json>` writes `results/2026-10-11/ruling-set-after-stage1.json`. It reads the before-set (unchanged), the page answers and confirmed defaults, the chat answers, and `prod-term-resolutions-2026-10-11.json`. That last file is what prod's concept model resolves each headword to, read-only, by `server/scripts/read-term-resolutions.js`; the script's header shows how to run it on prod without copying a file there.
+
+Each stage 1 ruling carries the stored word, a `class` (matches-stored, spelling-vs-stored, word-change, tied, unstored) and a `proposedMechanism` (none, preference, entry, replace-entry, concept-model-script, undecided). The script's docstring defines each one. Nothing is applied. A stage 1 target that contradicts a ruling in force exits 1 unless an explicit override names the record that reverses it; *bonding orbital* is the only one. The spelling test is `stage1_page.spelling_only`, imported rather than copied.
+
