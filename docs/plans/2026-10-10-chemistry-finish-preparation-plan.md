@@ -71,7 +71,7 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
    When nothing distinguishes the texts, take the one that needs no extra machinery.
 
    **Override, written down before the test is run:** if June reads clearly better in the masked test, use the hybrid instead (June where it carries cleanly, September elsewhere, §5 step 2.1). "Clearly" means June wins about **6 of every 10** decisive pairs, so that the lower 95% bound is above 50%. **This is deliberately asymmetric:** a small advantage does not pay for the carry machinery.
-4. **ch01 and ch02 were professionally reviewed in Word files, with comments dated September 2025 to March 2026.** The files carry **comments, not tracked changes**, and Track Changes was off, so a direct edit leaves no mark. The text the reviewers started from is not yet identified (the dates suggest an MT older than the June vintage). Only the segments the review actually touched enter as human-reviewed text (D10, answered); a comment alone is not an edit, and the rest go through layers 1–2 like every other chapter. How "touched" is read, and what [USER] is asked next: 0.2.
+4. **ch01 and ch02 were professionally reviewed in Word files, with comments dated September 2025 to March 2026.** The files carry **comments, not tracked changes**, and Track Changes was off. **Measured 2026-10-11 (0.2): the reviewers started from an MT exported on 2025-01-24, which is neither the June nor the September API MT; ch02's review is comments only, and ch01 changed 26 paragraphs (11 in wording).** Only the segments the review actually touched enter as human-reviewed text (D10, answered); a comment alone is not an edit, and the rest go through layers 1–2 like every other chapter. What that leaves, and the recommendation put to [USER]: 0.2 and §8's D10 follow-up.
 5. **Apply [USER]'s rulings before any editor opens a chapter**, in a **machine-revised layer** that never overwrites the API output:
    - deterministic code rules first;
    - then a narrow AI pass (the ruled term plus the agreement it forces), as edit operations a strict code gate accepts or rejects;
@@ -181,12 +181,13 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 - **0.2 D10, answered yes: only the segments the review touched count as human.** The files are one level up from the repository. [USER] answered before anyone had opened them, on the premise that the review was in tracked changes.
   - **Measured 2026-10-11: they carry no revision marks of any kind** (no insertions, deletions, moves or formatting changes in all 25 files), and Track Changes is off in all of them. 17 carry 323 comments (ch01 192, ch02 131), each file by one author, dated 2025-09-25 → 2026-03-13 (parsed dates; two of ch01's stamps are in US format). The other 8 (ch01's answer key; ch02's 2.7, introduction and end matter) carry no comments, no Word editing-session ids and a 2025-01-24 metadata stamp (created = modified).
   - **A comment is not an edit.** A commented segment that was not changed still holds the pre-review machine text, and it enters layer 3 only when an editor applies or accepts the change (§4).
-  - So "touched" must be established before 2.2 uses it:
-    - (a) identify the text the reviewers started from (the comment dates suggest an MT older than the June vintage's March 2026 buys; a hypothesis to measure);
-    - (b) compare the Word text with it: a segment whose text differs is a candidate for human text;
-    - (c) count per module, separating changed segments from comment-only ones;
-    - (d) reconcile the changed set with the 137 in-repo human segments (§2, 4.2), by module and by content. Part of ch01's review is already among them: `books/efnafraedi-2e/reference-translations/pre-remt-editorial-2026-08-23/README.md` marks m68663 and m68664 as also covered by the external ch01 Word file;
-    - (e) put the result to [USER]: whether ch01–ch02 then hold any human text, and who applies the comments, under which line (§8, D10 follow-up).
+  - **"Touched", measured 2026-10-11** (evidence: [`experiments/mt-vintage-comparison/results/2026-10-11/`](../../experiments/mt-vintage-comparison/results/2026-10-11/README.md)):
+    - (a) **the starting text** is 25 MT `.docx` files exported on 2025-01-24, in git history only (`b37ab8cc8`, `9ca3fb2ef`; deleted in `265a2496e`). The 8 files without comments are byte-identical to it. It is a third MT: only about 30% of substantive paragraphs equal the June or September text;
+    - (b) **what changed:** 39 paragraphs, all in ch01. 12 are URLs Word filled in on conversion and 1 is a note to the editors; of the other 26, 15 change only case, punctuation or spacing and 11 change wording. **ch02 has no text changes.** None of the 183 corrections the comments propose is applied in the files;
+    - (c) **scope:** the 8 files without comments carry no review signal at all (ch01's answer key; ch02's 2.7, introduction and end matter), and a comment says only the odd-numbered ch01 exercises were read;
+    - (d) **already in the repo:** the reviewer's wording at 4 edit sites in m68664 was re-entered by hand in the editor on 2026-06-16, so it is among the 137 in-repo human segments (4.2);
+    - (e) **a bridge to segment ids:** the English source `.docx` matches the starting text paragraph for paragraph, and through it 192 of the 198 changed or commented paragraphs resolve to a current segment.
+  - **So the review exists mainly as suggestions, on a different MT.** A reviewed paragraph cannot simply be re-attached to its September segment as human text: most of its words are the 2025 MT, not the reviewer's. **Recommendation (§8, D10 follow-up):** no segment enters as `docx-review` human text. The 26 changed paragraphs and the 323 comments go to the editors as notes on the matching September segments, through the bridge, and the editors apply them as timed layer-3 edits. The m68664 rows the [LEAD] already re-entered stay among the 137.
 
 ### Stage 1: close the ruling set (one review page, answers saved as you go)
 - **1.1 The two conflicts with rulings in force: answered (D4, 2026-10-11).**
@@ -227,11 +228,9 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
   - Additions: an untranslated check, exclusion of the 78 `HAND REPAIR` keys, and table cells keyed by content.
   - Writes layer 1s and its manifest, and passes a sentinel test emitted → injected → rendered.
 - **2.2 ch01–ch02.**
-  - The segments whose Word text differs from the reviewers' starting text (0.2) are the candidates for human text (origin `docx-review`), re-attached by content.
-  - A segment already among the 137 in-repo human segments (4.2) enters once, never twice; its origin records both the review and the editor entry.
-  - Comment-only segments keep their layer 1–2 text, and their comments go to the editors as notes. Nothing enters layer 3 from a comment until an editor applies or accepts it.
-  - Everything else goes through layers 1–2.
-  - What happens to ch01–ch02 if few segments qualify is [USER]'s question (0.2 (e), D13).
+  - **As recommended (0.2, D10 follow-up):** ch01–ch02 go through layers 1–2 like every other chapter. The review's 26 changed paragraphs and 323 comments are attached to the matching September segments as editor notes, through the English bridge, and nothing enters layer 3 until an editor applies or accepts it.
+  - The m68664 rows the [LEAD] already re-entered from the review stay among the 137 in-repo human segments (4.2), entered once, never twice.
+  - **If [USER] decides otherwise,** the changed paragraphs are re-attached through the bridge with origin `docx-review`, and the 2025-01-24 MT is recorded as their baseline, so their pure → human distance stays reconstructible (§4).
 - **2.3 The 8 untranslated September segments.**
   - Re-request them through the API, in a small **new** re-request mode that writes to layer 1s and never over `02-mt-output`. It must be built and tested first: CLAUDE.md warns that unknown flags are silently ignored, and `--top-up` buys only *missing* ids.
   - June's API text is the fallback for the 7 that June translated.
@@ -353,7 +352,7 @@ more work on some editors.
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D10 follow-up | With no tracked changes: do ch01–ch02 hold any human text beyond the segments 0.2 finds changed, and who applies the reviewers' comments, under which line? | decide once 0.2 has counted; a comment-only segment stays machine text until an editor applies or accepts the change |
+| D10 follow-up | The review is 323 comments plus 26 changed ch01 paragraphs, on a 2025-01-24 MT that is neither base (0.2). Does any of it enter as human text, and who applies the comments, under which line? | **no segment enters as `docx-review` human text.** The changed paragraphs and the comments become editor notes on the matching September segments (2.2), and the editors apply them as timed layer-3 edits. ch01–ch02 are then reviewed like every other chapter (D13). |
 | D5 | Selected text (API runs chosen per segment, no word changed) is its own condition in the paper | yes: "selected MT", with its manifest |
 | D6 | AI pass v1: ruled terms plus forced agreement; mistranslations flagged only | yes |
 | D11 | A controlled glossary test for the paper. 2 modules × {March-glossary arm, no glossary} × 2 runs, run in a scratch copy (`api-translate` has no output-dir and writes into `02-mt-output`). **Reproducing June's arm needs the March glossary *values*.** `--glossary-only` selects headwords from today's export, and `--full-glossary` sends today's 1,748 rows, so the scratch tree must point `api-translate` at the March file. **Confirm that mechanism before buying.** The follow-on project pays no API fees. So **buy it before S** to charge it to the current grant; after S it is unfunded. | yes, about 1,000–2,500 ISK; it answers option 6's hypothesis. It does not change this book's route. |
@@ -367,7 +366,7 @@ more work on some editors.
 | D8 | The only gate on editing is timing and baseline capture | yes |
 | D9 | Publication criterion | as in 1.8 |
 | D12 | Review depth for alts and table summaries (+38.6% English) | **urgent**: decide before editing starts. The contract requires every chapter reviewed and published within the 12 months. |
-| D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **open until 0.2 has counted it.** The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so whatever 0.2 does not establish as reviewed has no editing hours yet. Funding options are in the private companion. |
+| D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **0.2 has counted it: under the D10 follow-up's recommendation, that is all of ch01–ch02**, with the comments as notes. The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so this has no editing hours yet. Funding options are in the private companion; [USER] decides. |
 | D15 | §C50: the terminology panel's issue volume (2.81 per segment), which blocks U4 | re-measure on layer 2 first; the pass should remove much of it |
 
 ## 9. What this plan cannot see
@@ -396,6 +395,7 @@ The active register's ⏩ RESUME block owns it. This plan carries no open-work s
   - **The comment dates start on 2025-09-25,** not 2025-10-01: two US-format stamps had sorted first as text.
   - 1.1's "`houseStyleTerms.js` owns every ruled word" was false for no-entry rulings; 1.1, 1.2 and 3.5 now say where rulings live.
   - §2's open list, the slip rule in §1 point 0 (now a question for [USER]), and §5's "Before S" row (0.2 and D11 added).
+- **0.2 was measured the same day** (a Claude Code workflow, independently re-counted, with the headline numbers reproduced by a committed census script; [`experiments/mt-vintage-comparison/results/2026-10-11/`](../../experiments/mt-vintage-comparison/results/2026-10-11/README.md)). The reviewers started from a 2025-01-24 MT that is neither base; ch02's review is comments only; ch01 changed 26 paragraphs; no comment's proposal is applied. 0.2, 2.2, §1 point 4, the D10 follow-up and D13 now carry that, with a recommendation.
 
 **Rev. 4 (2026-10-11): the current grant's terms, and its fund's guidance.**
 - [USER] put the terms beside the other grant documents, outside the repository. They set the project's end at **30 June 2026**, the end of the 2025–2026 school year.

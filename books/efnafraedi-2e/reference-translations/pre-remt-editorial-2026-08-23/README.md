@@ -28,8 +28,11 @@ Recovered from `c5f4880e^` and verified byte-identical to that tree.
 
 ch02's review lives only in external Word files, on the [LEAD]'s own machines. ✏️ *Corrected
 2026-10-11: this said "an external docx with track changes". Read on 2026-10-11, the ch02 files carry
-comments and no tracked changes (`docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`,
-D10).* There are no ch02 faithful files and there never were — that absence is expected, not a gap.
+comments, no tracked changes and no changed text
+(`experiments/mt-vintage-comparison/results/2026-10-11/README.md`).* There are no ch02 faithful files
+with human edits, and there never were — that absence is expected, not a gap. (An automated init,
+`03c14c57c` on 2026-02-16, created 8 that were byte copies of the MT; `41e05481e` deleted them 53
+minutes later.)
 
 ## How they are meant to be used
 
