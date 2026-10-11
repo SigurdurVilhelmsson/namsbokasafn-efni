@@ -1,0 +1,413 @@
+<title>Chemistry Term Rulings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+/* Layout: one reading column; a sticky section bar switches between the stage 1 parts, each part a list whose answer sits beside its evidence. Tokens follow the 2026-10-10 taught-term review page so the two read as one set. */
+:root {
+  --bg: #f4f6f7; --surface: #ffffff; --fg: #18222b; --muted: #5a6672; --line: #d9dfe4;
+  --accent: #1f5f8b; --accent-soft: #e4eff7;
+  --bad: #a3361f; --bad-soft: #fbe9e4; --mid: #8a5a00; --mid-soft: #fbf0d9; --good: #1d7448; --good-soft: #e0f3e8;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11171c; --surface: #19212a; --fg: #e2e8ed; --muted: #97a3ae; --line: #2b3540;
+  --accent: #86b9e0; --accent-soft: #1c2d3c;
+  --bad: #f09a85; --bad-soft: #3a1e17; --mid: #f0c06a; --mid-soft: #392b10; --good: #7fd3a4; --good-soft: #15301f; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #11171c; --surface: #19212a; --fg: #e2e8ed; --muted: #97a3ae; --line: #2b3540;
+  --accent: #86b9e0; --accent-soft: #1c2d3c;
+  --bad: #f09a85; --bad-soft: #3a1e17; --mid: #f0c06a; --mid-soft: #392b10; --good: #7fd3a4; --good-soft: #15301f; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--font-body); }
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 72px; display: grid; gap: 22px; }
+h1 { font: 600 1.9rem/1.2 var(--font-display); margin: 0; text-wrap: balance; }
+h2 { font: 600 1.3rem/1.3 var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 70ch; }
+.muted { color: var(--muted); }
+.lede { display: grid; gap: 10px; }
+.big { display: flex; flex-wrap: wrap; gap: 10px 28px; font-variant-numeric: tabular-nums; }
+.big div { display: grid; }
+.big b { font: 600 1.6rem/1.1 var(--font-display); }
+.big span { color: var(--muted); font-size: 0.85rem; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; }
+.panel ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tabs button { background: transparent; color: var(--fg); border-color: var(--line); }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.tabs .n { font-variant-numeric: tabular-nums; opacity: 0.8; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.filters label { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); font-size: 0.9rem; }
+select, input[type=text], input[type=search], textarea { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; max-width: 100%; }
+textarea { width: 100%; min-height: 2.4em; resize: vertical; }
+button { font: inherit; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--bg); padding: 5px 14px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--accent); }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#status { font-size: 0.88rem; color: var(--muted); }
+#status.err { color: var(--bad); }
+section.part { display: grid; gap: 14px; }
+.parthead { display: grid; gap: 6px; }
+.chap { display: grid; gap: 12px; }
+.chaphead { border-top: 2px solid var(--fg); padding-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.card.answered { border-color: var(--good); }
+.top { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.term { font-weight: 600; font-size: 1.05rem; }
+.pill { font-size: 0.75rem; letter-spacing: 0.03em; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.mid { background: var(--mid-soft); color: var(--mid); }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.rule { background: var(--accent-soft); color: var(--accent); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.side { display: grid; gap: 4px; min-width: 0; }
+.side h3 { margin: 0; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.kw { font: 500 1rem/1.35 var(--font-mono); overflow-wrap: anywhere; }
+.meta { font-size: 0.86rem; color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
+.ex { display: grid; gap: 8px; margin-top: 8px; }
+.ex div { display: grid; gap: 2px; font-size: 0.88rem; min-width: 0; overflow-wrap: anywhere; }
+.ex .en { color: var(--muted); }
+.answer { display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.choices { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.choices label { display: inline-flex; gap: 6px; align-items: center; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.saved { font-size: 0.85rem; color: var(--good); }
+.saved.err { color: var(--bad); }
+.empty { color: var(--muted); padding: 20px 0; }
+.list { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.li { display: grid; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); min-width: 0; }
+.li:last-child { border-bottom: 0; }
+.li.answered { box-shadow: inset 3px 0 0 var(--good); }
+.li .head { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; justify-content: space-between; }
+.li .words { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; min-width: 0; }
+.arrow { color: var(--muted); }
+.def { font: 500 0.95rem/1.35 var(--font-mono); overflow-wrap: anywhere; }
+.def.win { color: var(--good); }
+.later { display: grid; gap: 6px; }
+.crit { display: grid; gap: 10px; }
+.crit .item { display: grid; gap: 6px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="lede">
+    <h1>Chemistry term rulings: stage 1</h1>
+    <p>Close the ruling set before the machine-revised layer is built. Every answer saves to this page as you go, so short sittings work. Where a default is shown, <b>you need to do nothing unless you disagree</b>.</p>
+    <div class="big" id="big"></div>
+    <p class="muted" id="refs"></p>
+  </header>
+
+  <section class="panel" aria-labelledby="howh">
+    <h2 id="howh">How the answers are used</h2>
+    <ul>
+      <li><b>Scope is the whole book by default</b> (your D2). A card has a scope control for a ruling that should hold only in some chapters, or everywhere except some.</li>
+      <li><b>“July word”</b> is the key-terms entry readers see on the live site now. <b>“September word”</b> is the new MT's entry, which is the base text (your D1).</li>
+      <li>Answers are compiled into one dated ruling-set file in the repository, together with the rulings already in force. Nothing reaches the text, the glossary or the editors from this page directly.</li>
+      <li>The counts measure <b>consistency, not correctness</b>. A word used everywhere can still be wrong, so the word is yours to choose.</li>
+    </ul>
+  </section>
+
+  <div class="nav">
+    <div class="tabs" role="tablist" aria-label="Stage 1 parts" id="tabs"></div>
+    <div class="filters" id="filters">
+      <label for="fch">Chapter <select id="fch"><option value="">All</option></select></label>
+      <label for="fun"><input type="checkbox" id="fun"> Unanswered only</label>
+      <label for="fq"><input type="search" id="fq" placeholder="Search a term"></label>
+      <span id="status">Connecting…</span>
+    </div>
+  </div>
+
+  <main id="main"></main>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const PARTS = [
+  { id: 'cards', label: 'Terms to rule' },
+  { id: 'defaults', label: 'Defaults' },
+  { id: 'gained', label: 'Gained terms' },
+  { id: 'wrong', label: 'Wrong-sense rows' },
+  { id: 'criterion', label: 'Publication rule' },
+  { id: 'decided', label: 'Already decided' },
+];
+const CRITERIA = [
+  ['consistency', 'Ruled-term consistency is at least as good as on the live site.'],
+  ['reading', 'The masked reading test shows no loss of reading quality.'],
+  ['qc', 'The free quality checks pass (the source round-trip and the render check against OpenStax).'],
+  ['preview', 'Your preview of the prepared book has no blocking note.'],
+];
+const answers = new Map();
+let meta = {};
+let db = null;
+let part = 'cards';
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pct = (a) => a && a[1] ? `${a[0]}/${a[1]} (${Math.round(100 * a[0] / a[1])}%)` : '–';
+const chNum = (ch) => ch.replace(/^ch0?/, '');
+function setStatus(t, err) { const s = $('#status'); s.textContent = t; s.classList.toggle('err', !!err); }
+
+const byBucket = (b) => DATA.items.filter((t) => t.bucket === b);
+const cards = byBucket('card');
+const defaults = [...byBucket('spelling'), ...byBucket('lown'), ...byBucket('elsewhere')];
+const gained = [...byBucket('gained'), ...DATA.gainedSame];
+const allIds = new Set([...DATA.items.map((t) => t.id), ...DATA.gainedSame.map((t) => t.id), ...DATA.wrongSense.map((w) => w.id)]);
+
+function defaultWord(t) {
+  if (t.bucket === 'elsewhere') return t.ruledIs;
+  if (t.bucket === 'gained' || t.bucket === 'gained-same') return t.ruledIs || t.Knew;
+  return t.maj === 'july' ? t.Kold : t.Knew;
+}
+
+function renderSummary() {
+  const done = (ids) => ids.filter((t) => answers.has(t.id)).length;
+  $('#big').innerHTML = `
+    <div><b>${done(cards)} / ${cards.length}</b><span>terms ruled</span></div>
+    <div><b>${defaults.length + gained.length}</b><span>defaults, ${done(defaults) + done(gained)} changed</span></div>
+    <div><b>${done(DATA.wrongSense)} / ${DATA.wrongSense.length}</b><span>wrong-sense rows answered</span></div>
+    <div><b>${meta.criterion ? 'Answered' : 'Open'}</b><span>publication rule</span></div>`;
+  const rs = DATA.rulingSet;
+  $('#refs').textContent = `Ruling set in force: ${rs.headwords} English headwords with a target (repository ${rs.head}), ${rs.conflicts} conflicts between sources. Source data: experiments/terminology-consistency/ (stage1_page.py, compile_ruling_set.py).`;
+  for (const b of $('#tabs').children) {
+    const p = PARTS.find((x) => x.id === b.dataset.part);
+    const n = { cards: cards.length - done(cards), defaults: defaults.length, gained: gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
+    b.innerHTML = `${esc(p.label)} <span class="n">${n}</span>`;
+  }
+}
+
+// One answer form, used by cards and by the "Change" panel of a default row.
+function formHtml(t, kind) {
+  const r = (v, l) => `<label><input type="radio" name="c-${t.id}" value="${v}"> ${l}</label>`;
+  let choices;
+  if (kind === 'wrong') {
+    choices = r('other', 'The right word is…') + r('remove', 'Remove the row; no glossary word') + r('keep', `Keep <b>${esc(t.row)}</b>`);
+  } else if (kind === 'card') {
+    choices = r('july', `July word: <b>${esc(t.Kold)}</b>`) + r('new', `September word: <b>${esc(t.Knew)}</b>`) + r('other', 'Another word') + r('either', 'Either is fine');
+  } else {
+    choices = r('default', `Keep the default: <b>${esc(defaultWord(t))}</b>`)
+      + (t.Kold && t.Kold !== defaultWord(t) ? r('july', `July word: <b>${esc(t.Kold)}</b>`) : '')
+      + (t.Knew && t.Knew !== defaultWord(t) ? r('new', `September word: <b>${esc(t.Knew)}</b>`) : '')
+      + r('other', 'Another word');
+  }
+  const scope = kind === 'wrong' ? '' : `
+    <div class="choices" role="radiogroup" aria-label="Scope for ${esc(t.en)}">
+      <label><input type="radio" name="s-${t.id}" value="book" checked> Whole book</label>
+      <label><input type="radio" name="s-${t.id}" value="except"> Whole book except chapters…</label>
+      <label><input type="radio" name="s-${t.id}" value="only"> Only in chapters…</label>
+      <input type="text" id="sc-${t.id}" placeholder="e.g. 7, 10" aria-label="Chapters for the scope of ${esc(t.en)}" size="10">
+    </div>`;
+  return `<div class="answer">
+    <div class="choices" role="radiogroup" aria-label="Right word for ${esc(t.en)}">${choices}</div>
+    <div class="row"><input type="text" id="v-${t.id}" placeholder="The word, if another" aria-label="Another word for ${esc(t.en)}"></div>
+    ${scope}
+    <textarea id="n-${t.id}" placeholder="Note (optional)" aria-label="Note for ${esc(t.en)}"></textarea>
+    <div class="row"><button type="button" data-act="save">Save</button><button type="button" class="ghost" data-act="clear">Remove answer</button><span class="saved" aria-live="polite"></span></div>
+  </div>`;
+}
+
+function wireForm(el, t, section) {
+  const id = CSS.escape(t.id);
+  const v = answers.get(t.id);
+  for (const r of el.querySelectorAll(`input[name="c-${id}"]`)) r.checked = v?.choice === r.value;
+  for (const r of el.querySelectorAll(`input[name="s-${id}"]`)) r.checked = (v?.scope || 'book') === r.value;
+  const vi = $(`#v-${id}`, el), ni = $(`#n-${id}`, el), si = $(`#sc-${id}`, el);
+  vi.value = v?.value || ''; ni.value = v?.note || ''; if (si) si.value = v?.chapters || '';
+  const msg = $('.saved', el);
+  const say = (t2, err) => { msg.textContent = t2; msg.classList.toggle('err', !!err); };
+  say(v ? 'Saved' : '');
+  $('[data-act=save]', el).onclick = async () => {
+    const choice = el.querySelector(`input[name="c-${id}"]:checked`)?.value;
+    if (!choice) return say('Pick one of the choices first.', true);
+    const value = vi.value.trim();
+    if (choice === 'other' && !value) return say('Type the word you want.', true);
+    const scope = el.querySelector(`input[name="s-${id}"]:checked`)?.value || 'book';
+    const chapters = si ? si.value.trim() : '';
+    if (scope !== 'book' && !/^\s*\d+(\s*[,;\s]\s*\d+)*\s*$/.test(chapters)) return say('List the chapter numbers, for example 7, 10.', true);
+    if (!db) return say('Answers cannot be saved in this view.', true);
+    try {
+      await db.collection('stage1_terms').doc(t.id).set({
+        section, ch: t.ch || null, en: t.en, Kold: t.Kold ?? null, Knew: t.Knew ?? null, bucket: t.bucket || null,
+        defaultWord: section === 'wrong' ? null : (t.bucket === 'card' ? null : defaultWord(t)), row: t.row || null,
+        choice, value, scope: section === 'wrong' ? null : scope, chapters: scope === 'book' ? '' : chapters,
+        note: ni.value.trim(), savedAt: new Date().toISOString() });
+      say('Saved');
+    } catch (e) { say('Not saved. Try again.', true); }
+  };
+  $('[data-act=clear]', el).onclick = async () => {
+    if (!db) return say('Answers cannot be saved in this view.', true);
+    try { await db.collection('stage1_terms').doc(t.id).delete(); say('Answer removed'); } catch (e) { say('Not removed. Try again.', true); }
+  };
+}
+
+function exHtml(label, ex) {
+  return ex.length ? `<details><summary>${ex.length} example${ex.length > 1 ? 's' : ''} ${label}</summary><div class="ex">${ex.map((x) => `<div><span class="en">${esc(x.en)}</span><span>${esc(x.is)}</span></div>`).join('')}</div></details>` : '';
+}
+
+function cardHtml(t) {
+  const side = (label, K, p, defs, ex, txt) => `<div class="side"><h3>${label}</h3><div class="kw">${esc(K) || '—'}</div>
+    ${p ? `<div class="meta">The ${txt} text agrees with this entry: ${pct(p)}</div>` : ''}
+    ${defs.length ? `<div class="meta">Bold definition in the text: ${defs.map(esc).join(' · ')}</div>` : ''}
+    ${exHtml('where the text does not use it', ex)}</div>`;
+  return `<article class="card" data-id="${esc(t.id)}">
+    <div class="top"><span class="term">${esc(t.en)}</span>
+      <span class="meta">September text: ${t.pr} sentences use the term; ${t.o} carry only the July word, ${t.n} only the September word, ${t.b} both, ${t.x} neither</span></div>
+    <div class="pair">${side('July (live now)', t.Kold, t.po, t.dOld, t.exOld, 'July')}${side('September MT', t.Knew, t.pn, t.dNew, t.exNew, 'September')}</div>
+    ${formHtml(t, 'card')}</article>`;
+}
+
+const REASON = {
+  spelling: (t) => `The two entries differ only in hyphens, spaces, capitals or the definite article. ${t.majO + t.majN ? `Book-wide the text carries the July form alone ${t.majO} times and the September form alone ${t.majN} times.` : 'The text does not tell the two forms apart, so the September form is the default.'}`,
+  lown: (t) => `Under 3 sentences in the September text use this term (${t.pr}). The default is the book-wide majority: July word alone ${t.majO}, September word alone ${t.majN}; a tie goes to the September word.`,
+  elsewhere: (t) => `Already ruled as <b>${esc(t.ruledIs)}</b>${t.ruledIn ? ` in ${esc(t.ruledIn)}` : ''}. Rulings hold book-wide unless you make this chapter an exception.`,
+  gained: (t) => `The September text agrees with its own entry ${pct(t.pn)}; the July text agreed with its entry ${pct(t.po)}. The default keeps the September word.`,
+  'gained-same': (t) => t.ruledIs ? `Already ruled as <b>${esc(t.ruledIs)}</b>, and the September text now follows it: ${pct(t.pn)}, up from ${pct(t.po)}.` : `Same key-terms word in both versions; the September text uses it more consistently: ${pct(t.pn)}, up from ${pct(t.po)}.`,
+};
+const TAG = { spelling: ['Spelling only', 'rule'], lown: ['Little text', 'mid'], elsewhere: ['Ruled elsewhere', 'good'], gained: ['Gained', 'good'], 'gained-same': ['Gained, same word', 'good'] };
+
+function rowHtml(t) {
+  const d = defaultWord(t);
+  const other = t.bucket === 'gained-same' ? '' : `<span class="def${d === t.Kold ? ' win' : ''}">${esc(t.Kold)}</span><span class="arrow">/</span><span class="def${d === t.Knew ? ' win' : ''}">${esc(t.Knew)}</span>`;
+  return `<div class="li" data-id="${esc(t.id)}">
+    <div class="head"><div class="words"><span class="term">${esc(t.en)}</span>${other}${t.bucket === 'gained-same' ? `<span class="def win">${esc(d)}</span>` : ''}</div>
+      <span class="pill ${TAG[t.bucket][1]}">${TAG[t.bucket][0]}</span></div>
+    <p class="meta">${REASON[t.bucket](t)} <span class="cur"></span></p>
+    <details><summary>Change</summary>${formHtml(t, 'row')}</details></div>`;
+}
+
+function matches(t) {
+  const fch = $('#fch').value, fun = $('#fun').checked, q = $('#fq').value.trim().toLowerCase();
+  return (!fch || t.ch === fch) && (!fun || !answers.has(t.id)) && (!q || `${t.en} ${t.Kold || ''} ${t.Knew || ''} ${t.row || ''}`.toLowerCase().includes(q));
+}
+
+function grouped(list, render, empty) {
+  const html = [];
+  for (const ch of DATA.chapters) {
+    const ts = list.filter((t) => t.ch === ch && matches(t));
+    if (ts.length) html.push(`<section class="chap"><div class="chaphead"><h2>Chapter ${chNum(ch)}</h2><span class="meta">${ts.length}</span></div>${render(ts)}</section>`);
+  }
+  return html.join('') || `<p class="empty">${empty}</p>`;
+}
+
+function renderPart() {
+  $('#filters').hidden = !['cards', 'defaults', 'gained'].includes(part);
+  for (const b of $('#tabs').children) b.setAttribute('aria-selected', String(b.dataset.part === part));
+  const m = $('#main');
+  if (part === 'cards') {
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Terms to rule (1.4)</h2>
+      <p class="muted">${cards.length} headwords whose key-terms entry changed between July and September, with enough text to judge (3 or more sentences), that no ruling or review-page answer covers. Sorted within each chapter by how much text uses the term.</p></div>
+      ${grouped([...cards].sort((a, b) => b.pr - a.pr), (ts) => ts.map(cardHtml).join(''), 'No terms match the filters.')}</section>`;
+  } else if (part === 'defaults') {
+    const c = DATA.counts;
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Defaults (1.4)</h2>
+      <p class="muted">${defaults.length} headwords take a default instead of a card: ${c.spelling} that differ only in spelling or form, ${c.lown} with under 3 sentences of text, and ${c.elsewhere} already ruled in another chapter. The default word is in green. Open “Change” only where you disagree.</p></div>
+      ${grouped(defaults, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No defaults match the filters.')}</section>`;
+  } else if (part === 'gained') {
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Gained terms (1.3)</h2>
+      <p class="muted">${DATA.gainedTotal} terms became consistent in the September text that were not in July. ${byBucket('gained').length} changed word and default to the September word; ${DATA.gainedSame.length} kept the same word or follow a ruling already in force. ${DATA.gainedElsewhere} more are listed under Defaults. The review page of 2026-10-10 showed only the terms that lost consistency, so none of these has been seen.</p></div>
+      ${grouped(gained, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No gained terms match the filters.')}</section>`;
+  } else if (part === 'wrong') {
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Wrong-sense glossary rows (1.5)</h2>
+      <p class="muted">Three approved glossary rows translate the right English word in the wrong sense. They are still approved, so they feed the editors' terminology flags. Give the right word. The fix goes into the concept model through a script you run on the server. The AI pre-screen of the other ~390 approved rows comes later on this page.</p></div>
+      ${DATA.wrongSense.map((w) => `<article class="card" data-id="${w.id}">
+        <div class="top"><span class="term">${esc(w.en)}</span><span class="pill bad">Glossary row: ${esc(w.row)}</span></div>
+        <p class="meta"><b>${esc(w.row)}</b> means ${esc(w.meaning)}. In the June text it caused at least ${esc(w.floor)}. In the September text, ${w.sepTotal} sentences use <i>${esc(w.en)}</i> and ${w.sepRow} of them contain <i>${esc(w.stem)}-</i>: the September MT mostly does not use this row.</p>
+        ${exHtml(`of the September text using ${esc(w.stem)}-`, w.exRow)}${exHtml('of how the September text renders it otherwise', w.exOther)}
+        ${formHtml(w, 'wrong')}</article>`).join('')}</section>`;
+  } else if (part === 'criterion') {
+    const a = meta.criterion || {};
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Publication rule (1.8)</h2>
+      <p class="muted">The proposed rule for syncing the prepared chemistry book to readers. Timing still follows classroom use (the 2026-09-16 decision); this rule only says when the text is good enough.</p></div>
+      <div class="panel crit">${CRITERIA.map(([k, l]) => `<div class="item"><label><input type="checkbox" id="cr-${k}"${a[k] !== false ? ' checked' : ''}> ${esc(l)}</label></div>`).join('')}
+        <textarea id="cr-note" placeholder="Changes or additions to the rule (optional)" aria-label="Changes to the publication rule">${esc(a.note || '')}</textarea>
+        <div class="row"><button type="button" id="cr-save">Save the rule</button><span class="saved" id="cr-msg" aria-live="polite">${a.savedAt ? 'Saved' : ''}</span></div></div></section>`;
+    $('#cr-save').onclick = async () => {
+      const msg = $('#cr-msg');
+      if (!db) { msg.textContent = 'Answers cannot be saved in this view.'; return; }
+      const doc = { note: $('#cr-note').value.trim(), savedAt: new Date().toISOString() };
+      for (const [k] of CRITERIA) doc[k] = $(`#cr-${k}`).checked;
+      try { await db.collection('stage1_meta').doc('criterion').set(doc); msg.textContent = 'Saved'; } catch (e) { msg.textContent = 'Not saved. Try again.'; }
+    };
+  } else {
+    const rs = DATA.rulingSet.counts;
+    m.innerHTML = `<section class="part"><div class="parthead"><h2>Already decided</h2>
+      <p class="muted">Shown for reference; nothing to answer here.</p></div>
+      <div class="panel"><h2>Your D4 answers of 11 October (1.1)</h2><ul>
+        ${DATA.d4.map((d) => `<li><b>${esc(d.en)}</b> → <span class="def win">${esc(d.is)}</span>, not ${esc(d.competitor)}.</li>`).join('')}
+      </ul><p class="meta">The frozen review-page export still says <i>Lewis-bygging</i> for Lewis structure; the compiled ruling set applies your answer over it.</p></div>
+      <div class="panel"><h2>The ruling set this page adds to</h2><ul>
+        <li>${rs.entry} house-style rulings in the code that change the stored word.</li>
+        <li>${rs['no-entry']} rulings that keep the stored word (no code entry), and ${rs.held} held off the machine translation without a target.</li>
+        <li>${rs.verdict} answers from the review page of 10 October.</li>
+        <li>${rs['book-preference']} book-wide preference on the server: <i>atom → atóm</i>.</li>
+      </ul></div>
+      <div class="panel later"><h2>Coming next on this page</h2><ul>
+        <li><b>1.5</b> The AI pre-screen of the other approved glossary rows. You rule only the flagged ones.</li>
+        <li><b>1.6</b> The 38 pending edit rows on the server, from before the clean break: apply or drop each.</li>
+        <li><b>1.7</b> The masked reading test, about 150 pairs. Its decision rule is shown before the first pair.</li>
+      </ul></div></section>`;
+  }
+  wireAll();
+}
+
+function wireAll() {
+  for (const el of $('#main').querySelectorAll('[data-id]')) {
+    const id = el.dataset.id;
+    const t = DATA.items.find((x) => x.id === id) || DATA.gainedSame.find((x) => x.id === id) || DATA.wrongSense.find((x) => x.id === id);
+    if (!t) continue;
+    const section = part === 'wrong' ? 'wrong' : part === 'gained' ? 'gained' : part === 'defaults' ? 'defaults' : 'cards';
+    wireForm(el, t, section);
+    markRow(el, t);
+  }
+}
+
+function markRow(el, t) {
+  const v = answers.get(t.id);
+  el.classList.toggle('answered', !!v);
+  const cur = $('.cur', el);
+  if (cur) cur.innerHTML = v ? `<b>Changed:</b> ${esc(v.choice === 'other' ? v.value : v.choice === 'july' ? t.Kold : v.choice === 'new' ? t.Knew : 'keep the default')}${v.scope && v.scope !== 'book' ? ` (${v.scope === 'only' ? 'only in' : 'except'} ch. ${esc(v.chapters)})` : ''}.` : '';
+}
+
+function refresh() {
+  renderSummary();
+  for (const el of $('#main').querySelectorAll('[data-id]')) {
+    const id = el.dataset.id;
+    const t = DATA.items.find((x) => x.id === id) || DATA.gainedSame.find((x) => x.id === id) || DATA.wrongSense.find((x) => x.id === id);
+    if (!t) continue;
+    if (!el.contains(document.activeElement)) wireForm(el, t, part === 'wrong' ? 'wrong' : part);
+    markRow(el, t);
+  }
+}
+
+for (const p of PARTS) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.dataset.part = p.id; b.setAttribute('role', 'tab');
+  b.onclick = () => { part = p.id; try { history.replaceState(null, '', '#' + p.id); } catch (e) {} renderPart(); renderSummary(); };
+  $('#tabs').appendChild(b);
+}
+for (const ch of DATA.chapters) $('#fch').insertAdjacentHTML('beforeend', `<option value="${ch}">Chapter ${chNum(ch)}</option>`);
+for (const id of ['#fch', '#fun']) $(id).addEventListener('change', renderPart);
+$('#fq').addEventListener('input', renderPart);
+const h = (location.hash || '').slice(1);
+if (PARTS.some((p) => p.id === h)) part = h;
+renderSummary();
+renderPart();
+
+(async () => {
+  try {
+    db = window.claude && window.claude.use ? await window.claude.use('db') : null;
+    if (!db) { setStatus('Answers cannot be saved in this view.', true); return; }
+    setStatus('Answers save to this page.');
+    db.collection('stage1_terms').onSnapshot((snap) => {
+      answers.clear();
+      for (const d of snap.docs) if (allIds.has(d.id)) answers.set(d.id, d.data());
+      refresh(); setStatus(`${answers.size} answer${answers.size === 1 ? '' : 's'} saved.`);
+    }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
+    db.collection('stage1_meta').onSnapshot((snap) => {
+      meta = {}; for (const d of snap.docs) meta[d.id] = d.data();
+      renderSummary();
+    }, () => {});
+  } catch (e) { setStatus('Answers cannot be saved in this view.', true); }
+})();
+</script>

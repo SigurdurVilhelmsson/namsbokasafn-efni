@@ -1,0 +1,8 @@
+{
+  "about": "Production sessions.db, read-only over ssh on 2026-10-11 (better-sqlite3, readonly: true). Query: SELECT p.book_id, p.chapter, p.english, p.term_id, t.text, t.lang, t.source, t.concept_id FROM book_term_preference p LEFT JOIN concept_term t ON t.id = p.term_id. registered_books: 1 = efnafraedi-2e, 3 = liffraedi-2e, 155 = edlisfraedi-2e. chapter 0 = book-wide.",
+  "rows": [
+    {"book_id": 1, "book": "efnafraedi-2e", "chapter": 0, "english": "atom", "term_id": 11967, "text": "atóm", "lang": "is", "source": "idordabankinn", "concept_id": 4744},
+    {"book_id": 155, "book": "edlisfraedi-2e", "chapter": 0, "english": "atom", "term_id": 2165, "text": "atóm", "lang": "is", "source": "idordabankinn", "concept_id": 859},
+    {"book_id": 3, "book": "liffraedi-2e", "chapter": 0, "english": "atom", "term_id": 133500, "text": "atóm", "lang": "is", "source": "idordabankinn", "concept_id": 47593}
+  ]
+}

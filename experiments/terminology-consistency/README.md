@@ -247,3 +247,13 @@ produces the official form.
 python3 -I experiments/terminology-consistency/d4b_census.py --repo . \
     --reviewed experiments/terminology-consistency/results/2026-10-11/d4b-trigonal-planar-reviewed.json
 ```
+
+## The stage 1 page (2026-10-11)
+
+`compile_ruling_set.py` compiles every chemistry ruling in force into one dated file
+(`results/2026-10-11/ruling-set-before-stage1.json`): entry and no-entry rulings alike, each with
+its target, its competitor and its source. It applies [USER]'s D4 answers over the frozen
+2026-10-10 verdicts and exits 1 on any conflict between sources. `stage1_page.py` builds the
+stage 1 review page from that file, `undecided-217.json` and `classified-common.json`. The
+bucketing rules (ruled elsewhere, spelling-only, low text, gained, card) and the book-wide-majority
+default are in its docstring. Status lives in the register.
