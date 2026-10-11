@@ -28,8 +28,11 @@ and a `proposedMechanism`, which is a PROPOSAL, never applied here:
   - replace-entry: an entry exists and the ruling reverses it (bonding orbital).
   - concept-model-script: a wrong-sense row (plan 1.5), fixed by a committed script [USER] runs
     on prod, never by an entry; `emission` also needs the tie broken for the ruled word.
-  - undecided: an unstored headword. Whether it gets an entry or is recorded only is [USER]'s
-    question; nothing downstream needs the code entry (the compliance check reads this file).
+  - record-only: an unstored headword. [USER] 2026-10-11 (chat, answer "a"): the ruling lives in
+    this file only, with no entry, so the editors' term flags and the glossary (which also feeds
+    math-label substitution on the render path) do not grow by these headwords. The compliance
+    check and the AI pass read this file, so they still see the ruling. One can still be given an
+    entry later, case by case.
 
 `is` is the target with any [formula] placeholder and a trailing parenthetical removed (a symbol
 such as (Eker) or (n) stays English under the 2026-09-04 short-label ruling); `pageWord` keeps
@@ -54,6 +57,9 @@ ANSWERS = os.path.join(R, 'stage1-answers-2026-10-11.json')
 CHAT = os.path.join(R, 'stage1-chat-answers-2026-10-11.json')
 PROD = os.path.join(R, 'prod-term-resolutions-2026-10-11.json')
 REL = lambda p: os.path.relpath(p, REPO)
+
+UNSTORED = ('record-only', '[USER] 2026-10-11 in chat, answer "a" to: house-style entries for the 155 '
+            'unstored headwords, or record only?')
 
 # A stage 1 ruling that reverses a ruling in force, with the record that says so.
 OVERRIDES = {
@@ -138,7 +144,7 @@ def main():
         elif cls == 'matches-stored':
             mech = 'none'
         elif cls == 'unstored':
-            mech = 'undecided'
+            mech = UNSTORED[0]
         elif cls == 'tied':
             mech = 'preference' if is_.lower() in {t.lower() for t in tied if t} else 'entry'
         else:
@@ -195,6 +201,7 @@ def main():
         'repoHead': head,
         'inputs': {REL(p): sha256(p) for p in (BEFORE, ANSWERS, CHAT, PROD)},
         'storedRead': {'prodHead': P['head'], 'readAt': P['readAt']},
+        'unstoredRuling': {'mechanism': UNSTORED[0], 'record': UNSTORED[1]},
         'counts': {'stage1': len(rows), 'byClass': count('class'), 'byMechanism': count('proposedMechanism'),
                    'inflectionNotes': len(notes), 'before': len(B['rulings'])},
         'conflicts': conflicts,
