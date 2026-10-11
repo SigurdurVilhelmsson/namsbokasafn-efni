@@ -1,5 +1,5 @@
 {
- "about": "[USER]'s stage 1 page answers, frozen (plan 2026-10-10 rev. 5, Stage 1). Written by experiments/terminology-consistency/export_stage1_answers.py from a dump of the page's database. `answers` were saved by [USER]; `untouched` are default and gained rows with no saved answer, which [USER] has NOT reviewed (2026-10-11: only the first tab was gone through), so their `proposed` word is a proposal, not an answer; `open` was not answered. `checks` are reported, never resolved. Nothing here is applied: rulings reach houseStyleTerms.js, the concept model and the ruling set only through later, separately recorded steps.",
+ "about": "[USER]'s stage 1 page answers, frozen (plan 2026-10-10 rev. 5, Stage 1). Written by experiments/terminology-consistency/export_stage1_answers.py from a dump of the page's database. `answers` were saved by [USER]. `untouched` are default and gained rows with no saved answer: `confirmed` when [USER] pressed that tab's \"Confirm this list\" (`meta.confirm_defaults` / `meta.confirm_gained`), so the proposed word stands as ruled; `not-reviewed` otherwise, a proposal and never an answer (2026-10-11: silence is not consent). `open` was not answered. `checks` are reported, never resolved. Nothing here is applied: rulings reach houseStyleTerms.js, the concept model and the ruling set only through later, separately recorded steps.",
  "exportedAt": "2026-10-11",
  "page": {
   "url": "https://claude.ai/artifact/DgVvKPCVcWMaHsM9NVtF3w",
@@ -7,52 +7,60 @@
    "stage1_terms",
    "stage1_meta"
   ],
-  "dataSha256": "e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b",
+  "dataSha256": "1917c50fc906bb1416250777daf5bdd2500a8e6257d4407265efa326c56782c3",
+  "dataShaNote": "hash of the DATA in the page passed as <page.html>. The 100 cards were answered on Version 2 (DATA sha256 e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b); the later tabs on Version 4, whose DATA differs only in showing [[MATH:n]] as [formula]. Item ids are identical across versions.",
   "generator": "experiments/terminology-consistency/stage1_page.py"
  },
- "repoHead": "1e7bb20b0db4aa2bef1d7b161b22d7174e5e0eed",
+ "repoHead": "45815b8a4609e163fbffd745650aba5657355975",
  "counts": {
-  "answers": 100,
+  "answers": 153,
   "answersByChoice": {
    "either": 2,
-   "july": 50,
+   "july": 77,
+   "keep": 1,
    "new": 16,
-   "other": 32
+   "other": 57
   },
   "answersBySection": {
-   "cards": 100
+   "cards": 100,
+   "defaults": 39,
+   "gained": 11,
+   "wrong": 3
   },
-  "defaultsNotReviewed": 81,
-  "gainedNotReviewed": 66,
-  "defaultsConfirmed": 0,
+  "defaultsNotReviewed": 0,
+  "gainedNotReviewed": 0,
+  "defaultsConfirmed": 97,
   "cardsUnanswered": 0,
-  "wrongSenseOpen": 3,
+  "wrongSenseOpen": 0,
   "scopeNotBook": 0
  },
  "open": {
   "cardsUnanswered": [],
-  "defaultsNotReviewed": 81,
-  "gainedNotReviewed": 66,
-  "wrongSense": [
-   {
-    "id": "ws_addition",
-    "en": "addition",
-    "row": "álagning"
-   },
-   {
-    "id": "ws_valence",
-    "en": "valence",
-    "row": "girðitala"
-   },
-   {
-    "id": "ws_emission",
-    "en": "emission",
-    "row": "útblástur"
-   }
-  ],
-  "publicationRule": "open"
+  "defaultsNotReviewed": 0,
+  "gainedNotReviewed": 0,
+  "wrongSense": [],
+  "publicationRule": null
  },
- "meta": {},
+ "meta": {
+  "criterion": {
+   "consistency": true,
+   "note": "",
+   "preview": true,
+   "qc": true,
+   "reading": true,
+   "savedAt": "2026-10-11T17:27:18.938Z"
+  },
+  "confirm_gained": {
+   "changed": 11,
+   "rows": 66,
+   "savedAt": "2026-10-11T17:24:03.372Z"
+  },
+  "confirm_defaults": {
+   "changed": 39,
+   "rows": 81,
+   "savedAt": "2026-10-11T17:11:24.708Z"
+  }
+ },
  "checks": {
   "containsRuled": [
    {
@@ -74,6 +82,66 @@
     "ruledTarget": "varmamælir",
     "ruledKind": "verdict",
     "substringHit": true
+   },
+   {
+    "id": "ch06_fs-idm13416416",
+    "en": "Bohr’s model of the hydrogen atom",
+    "how": "answer",
+    "word": "Líkan Bohrs af vetnisatóminu",
+    "ruledHeadword": "atom",
+    "ruledTarget": "atóm",
+    "ruledKind": "book-preference",
+    "substringHit": true
+   },
+   {
+    "id": "ch06_fs-idm13416416",
+    "en": "Bohr’s model of the hydrogen atom",
+    "how": "answer",
+    "word": "Líkan Bohrs af vetnisatóminu",
+    "ruledHeadword": "atom",
+    "ruledTarget": "atóm",
+    "ruledKind": "verdict",
+    "substringHit": true
+   },
+   {
+    "id": "ch08_fs-idm100344544",
+    "en": "π bonding orbital",
+    "how": "answer",
+    "word": "π-tengi svigrúm",
+    "ruledHeadword": "bonding orbital",
+    "ruledTarget": "bindandi svigrúm",
+    "ruledKind": "entry",
+    "substringHit": false
+   },
+   {
+    "id": "ch08_fs-idm169269152",
+    "en": "σ* bonding orbital",
+    "how": "answer",
+    "word": "σ*-tengi svigrúm",
+    "ruledHeadword": "bonding orbital",
+    "ruledTarget": "bindandi svigrúm",
+    "ruledKind": "entry",
+    "substringHit": false
+   },
+   {
+    "id": "ch08_fs-idm18620192",
+    "en": "π* bonding orbital",
+    "how": "answer",
+    "word": "π*-tengi svigrúm",
+    "ruledHeadword": "bonding orbital",
+    "ruledTarget": "bindandi svigrúm",
+    "ruledKind": "entry",
+    "substringHit": false
+   },
+   {
+    "id": "ch08_fs-idm41960016",
+    "en": "σ bonding orbital",
+    "how": "answer",
+    "word": "σ-tengi svigrúm",
+    "ruledHeadword": "bonding orbital",
+    "ruledTarget": "bindandi svigrúm",
+    "ruledKind": "entry",
+    "substringHit": false
    },
    {
     "id": "ch10_fs-idm116347536",
@@ -133,6 +201,16 @@
     "ruledHeadword": "anode",
     "ruledTarget": "anóða",
     "ruledKind": "verdict",
+    "substringHit": true
+   },
+   {
+    "id": "ch17_fs-idm153779040",
+    "en": "cell potential (Ecell)",
+    "how": "answer",
+    "word": "kerspenna (Eker)",
+    "ruledHeadword": "cell",
+    "ruledTarget": "ker",
+    "ruledKind": "entry",
     "substringHit": true
    },
    {
@@ -226,72 +304,12 @@
     "substringHit": true
    },
    {
-    "id": "ch06_fs-idm13416416",
-    "en": "Bohr’s model of the hydrogen atom",
-    "how": "proposed",
-    "word": "Líkan Bohrs af vetnisatróminu",
-    "ruledHeadword": "atom",
-    "ruledTarget": "atóm",
-    "ruledKind": "book-preference",
-    "substringHit": false
-   },
-   {
-    "id": "ch06_fs-idm13416416",
-    "en": "Bohr’s model of the hydrogen atom",
-    "how": "proposed",
-    "word": "Líkan Bohrs af vetnisatróminu",
-    "ruledHeadword": "atom",
-    "ruledTarget": "atóm",
-    "ruledKind": "verdict",
-    "substringHit": false
-   },
-   {
-    "id": "ch08_fs-idm100344544",
-    "en": "π bonding orbital",
-    "how": "proposed",
-    "word": "π-bindandi svigrúm",
-    "ruledHeadword": "bonding orbital",
-    "ruledTarget": "bindandi svigrúm",
-    "ruledKind": "entry",
-    "substringHit": true
-   },
-   {
     "id": "ch08_fs-idm16838896",
     "en": "sp3d hybrid orbital",
     "how": "proposed",
     "word": "sp3d-blendingssvigrúm",
     "ruledHeadword": "hybrid orbital",
     "ruledTarget": "blendingssvigrúm",
-    "ruledKind": "entry",
-    "substringHit": true
-   },
-   {
-    "id": "ch08_fs-idm169269152",
-    "en": "σ* bonding orbital",
-    "how": "proposed",
-    "word": "σ*-bindandi svigrúm",
-    "ruledHeadword": "bonding orbital",
-    "ruledTarget": "bindandi svigrúm",
-    "ruledKind": "entry",
-    "substringHit": true
-   },
-   {
-    "id": "ch08_fs-idm18620192",
-    "en": "π* bonding orbital",
-    "how": "proposed",
-    "word": "π*-bindandi svigrúm",
-    "ruledHeadword": "bonding orbital",
-    "ruledTarget": "bindandi svigrúm",
-    "ruledKind": "entry",
-    "substringHit": true
-   },
-   {
-    "id": "ch08_fs-idm41960016",
-    "en": "σ bonding orbital",
-    "how": "proposed",
-    "word": "σ-bindandi svigrúm",
-    "ruledHeadword": "bonding orbital",
-    "ruledTarget": "bindandi svigrúm",
     "ruledKind": "entry",
     "substringHit": true
    },
@@ -366,16 +384,6 @@
     "substringHit": true
    },
    {
-    "id": "ch17_fs-idm153779040",
-    "en": "cell potential (Ecell)",
-    "how": "proposed",
-    "word": "kerspenna",
-    "ruledHeadword": "cell",
-    "ruledTarget": "ker",
-    "ruledKind": "entry",
-    "substringHit": true
-   },
-   {
     "id": "ch17_fs-idm159189392",
     "en": "galvanic (voltaic) cell",
     "how": "proposed",
@@ -397,9 +405,9 @@
    },
    {
     "id": "ch17_fs-idp227872832",
-    "en": "standard cell potential 55",
+    "en": "standard cell potential [formula]",
     "how": "proposed",
-    "word": "staðalkerspenna 55",
+    "word": "staðalkerspenna [formula]",
     "ruledHeadword": "cell",
     "ruledTarget": "ker",
     "ruledKind": "entry",
@@ -407,9 +415,9 @@
    },
    {
     "id": "ch17_fs-idp227872832",
-    "en": "standard cell potential 55",
+    "en": "standard cell potential [formula]",
     "how": "proposed",
-    "word": "staðalkerspenna 55",
+    "word": "staðalkerspenna [formula]",
     "ruledHeadword": "cell potential",
     "ruledTarget": "kerspenna",
     "ruledKind": "entry",
@@ -446,7 +454,21 @@
     "substringHit": true
    }
   ],
-  "sameHeadwordTwoTargets": [],
+  "sameHeadwordTwoTargets": [
+   {
+    "en": "degenerate orbitals",
+    "answers": [
+     [
+      "ch06",
+      "Orkujöfn svigrúm"
+     ],
+     [
+      "ch08",
+      "jafnorkusvigrúm"
+     ]
+    ]
+   }
+  ],
   "septemberCounts": [
    {
     "id": "ch01_fs-idm121167952",
@@ -481,6 +503,14 @@
     "book": 5
    },
    {
+    "id": "ch01_fs-idm88320752",
+    "en": "chemical property",
+    "choice": "july",
+    "target": "efnafræðilegur eiginleiki",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch01_fs-idp330245120",
     "en": "accuracy",
     "choice": "july",
@@ -505,6 +535,14 @@
     "book": 8
    },
    {
+    "id": "ch02_fs-idm334010160",
+    "en": "representative element",
+    "choice": "other",
+    "target": "aðalflokkafrumefni",
+    "chapter": 6,
+    "book": 15
+   },
+   {
     "id": "ch02_fs-idm54570400",
     "en": "spatial isomers",
     "choice": "july",
@@ -519,6 +557,14 @@
     "target": "Atómkenning Daltons",
     "chapter": 2,
     "book": 3
+   },
+   {
+    "id": "ch02_fs-idp282226176",
+    "en": "binary compound",
+    "choice": "other",
+    "target": "tvíefni",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch02_fs-idp282291040",
@@ -625,6 +671,38 @@
     "book": 11
    },
    {
+    "id": "ch04_fs-idp64227344",
+    "en": "single-displacement reaction",
+    "choice": "other",
+    "target": "einfalt skiptihvarf",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch04_fs-idp64228624",
+    "en": "soluble",
+    "choice": "july",
+    "target": "auðleystur",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch04_fs-idp83288512",
+    "en": "gravimetric analysis",
+    "choice": "july",
+    "target": "vigtagreining",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch04_fs-idp83289888",
+    "en": "indicator",
+    "choice": "july",
+    "target": "litvísir",
+    "chapter": 0,
+    "book": 3
+   },
+   {
     "id": "ch05_fs-idm56357952",
     "en": "nutritional calorie (Calorie)",
     "choice": "new",
@@ -641,6 +719,14 @@
     "book": 5
    },
    {
+    "id": "ch06_fs-idm13416416",
+    "en": "Bohr’s model of the hydrogen atom",
+    "choice": "other",
+    "target": "Líkan Bohrs af vetnisatóminu",
+    "chapter": 1,
+    "book": 1
+   },
+   {
     "id": "ch06_fs-idm161962320",
     "en": "electron affinity",
     "choice": "new",
@@ -655,6 +741,14 @@
     "target": "nóða",
     "chapter": 0,
     "book": 11
+   },
+   {
+    "id": "ch06_fs-idm442273488",
+    "en": "degenerate orbitals",
+    "choice": "july",
+    "target": "Orkujöfn svigrúm",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch06_fs-idm64841104",
@@ -689,6 +783,14 @@
     "book": 0
    },
    {
+    "id": "ch07_fs-idm113628896",
+    "en": "inert pair effect",
+    "choice": "other",
+    "target": "áhrif óvirkra para",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch07_fs-idm4719424",
     "en": "free radical",
     "choice": "july",
@@ -713,10 +815,34 @@
     "book": 7
    },
    {
+    "id": "ch07_fs-idp27828880",
+    "en": "valence shell electron-pair repulsion theory (VSEPR)",
+    "choice": "july",
+    "target": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idm100344544",
+    "en": "π bonding orbital",
+    "choice": "other",
+    "target": "π-tengi svigrúm",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch08_fs-idm100788960",
     "en": "paramagnetism",
     "choice": "other",
     "target": "meðseglun",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idm133686144",
+    "en": "bonding orbital",
+    "choice": "other",
+    "target": "tengisvigrúm",
     "chapter": 0,
     "book": 0
    },
@@ -737,11 +863,51 @@
     "book": 0
    },
    {
+    "id": "ch08_fs-idm169269152",
+    "en": "σ* bonding orbital",
+    "choice": "other",
+    "target": "σ*-tengi svigrúm",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idm18620192",
+    "en": "π* bonding orbital",
+    "choice": "other",
+    "target": "π*-tengi svigrúm",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch08_fs-idm249965088",
     "en": "molecular orbital theory",
     "choice": "july",
     "target": "sameindasvigrúmakenningin",
     "chapter": 2,
+    "book": 2
+   },
+   {
+    "id": "ch08_fs-idm41528352",
+    "en": "linear combination of atomic orbitals",
+    "choice": "other",
+    "target": "línuleg samþætting atómsvigrúma",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idm41960016",
+    "en": "σ bonding orbital",
+    "choice": "other",
+    "target": "σ-tengi svigrúm",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idm83103936",
+    "en": "diamagnetism",
+    "choice": "july",
+    "target": "mótseglun",
+    "chapter": 0,
     "book": 2
    },
    {
@@ -751,6 +917,30 @@
     "target": "nóða",
     "chapter": 0,
     "book": 11
+   },
+   {
+    "id": "ch08_fs-idp36919168",
+    "en": "sigma bond (σ bond)",
+    "choice": "july",
+    "target": "sigma tengi (σ tengi)",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch08_fs-idp5821920",
+    "en": "s-p mixing",
+    "choice": "july",
+    "target": "s-p blöndun",
+    "chapter": 10,
+    "book": 10
+   },
+   {
+    "id": "ch08_fs-idp94790208",
+    "en": "pi bond (π bond)",
+    "choice": "july",
+    "target": "pí tengi (π tengi)",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch09_fs-idm198763536",
@@ -769,6 +959,14 @@
     "book": 10
    },
    {
+    "id": "ch09_fs-idp257364480",
+    "en": "Graham’s law of effusion",
+    "choice": "july",
+    "target": "Lögmál Grahams um útstreymi",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch09_fs-idp57901520",
     "en": "vapor pressure of water",
     "choice": "july",
@@ -781,6 +979,14 @@
     "en": "tetrahedral hole",
     "choice": "other",
     "target": "ferflötungshola",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idm195421616",
+    "en": "vapor pressure",
+    "choice": "other",
+    "target": "gufunarþrýstingur",
     "chapter": 0,
     "book": 0
    },
@@ -809,6 +1015,14 @@
     "book": 3
    },
    {
+    "id": "ch10_fs-idm31438528",
+    "en": "induced dipole",
+    "choice": "other",
+    "target": "örvuð tvískautun",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch10_fs-idm47773456",
     "en": "simple cubic structure",
     "choice": "july",
@@ -833,6 +1047,22 @@
     "book": 0
    },
    {
+    "id": "ch10_fs-idp127211536",
+    "en": "instantaneous dipole",
+    "choice": "july",
+    "target": "augnablikstvískaut",
+    "chapter": 2,
+    "book": 2
+   },
+   {
+    "id": "ch10_fs-idp128571888",
+    "en": "polarizability",
+    "choice": "july",
+    "target": "skautunarhæfni",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch10_fs-idp141680624",
     "en": "crystalline solid",
     "choice": "july",
@@ -849,6 +1079,54 @@
     "book": 3
    },
    {
+    "id": "ch10_fs-idp190835184",
+    "en": "body-centered cubic (BCC) solid",
+    "choice": "july",
+    "target": "miðlægt teningslaga (BCC) fast efni",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idp20057136",
+    "en": "face-centered cubic (FCC) solid",
+    "choice": "july",
+    "target": "hliðlægt teningslaga (FCC) fast efni",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idp42521392",
+    "en": "covalent network solid",
+    "choice": "other",
+    "target": "samgilt fast netefni",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idp66006736",
+    "en": "molecular solid",
+    "choice": "other",
+    "target": "fast efni úr sameindum",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idp75734960",
+    "en": "isomorphous",
+    "choice": "other",
+    "target": "einslaga",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch10_fs-idp81517488",
+    "en": "hexagonal closest packing (HCP)",
+    "choice": "july",
+    "target": "sexhyrnd þéttpökkun (HCP)",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch11_fs-idm104294208",
     "en": "alloy",
     "choice": "july",
@@ -863,6 +1141,14 @@
     "target": "klofnun",
     "chapter": 0,
     "book": 97
+   },
+   {
+    "id": "ch11_fs-idm55870880",
+    "en": "spontaneous process",
+    "choice": "july",
+    "target": "sjálfgengt ferli",
+    "chapter": 0,
+    "book": 13
    },
    {
     "id": "ch11_fs-idp10683312",
@@ -913,6 +1199,46 @@
     "book": 0
    },
    {
+    "id": "ch14_fs-idp43874496",
+    "en": "Brønsted-Lowry acid",
+    "choice": "july",
+    "target": "Brønsted-Lowry sýra",
+    "chapter": 6,
+    "book": 7
+   },
+   {
+    "id": "ch14_fs-idp67177296",
+    "en": "color-change interval",
+    "choice": "july",
+    "target": "litskiptabil",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch14_fs-idp89677040",
+    "en": "Brønsted-Lowry base",
+    "choice": "july",
+    "target": "Brønsted-Lowry basi",
+    "chapter": 4,
+    "book": 4
+   },
+   {
+    "id": "ch16_fs-idm119807952",
+    "en": "standard free energy change (ΔG°)",
+    "choice": "other",
+    "target": "staðalfríorkubreyting (ΔG°)",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch16_fs-idm119810368",
+    "en": "Gibbs free energy change (G)",
+    "choice": "july",
+    "target": "Breyting á Gibbs fríorku (G)",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch17_fs-idm117181824",
     "en": "electrolytic cell",
     "choice": "july",
@@ -929,12 +1255,28 @@
     "book": 0
    },
    {
+    "id": "ch17_fs-idm153779040",
+    "en": "cell potential (Ecell)",
+    "choice": "july",
+    "target": "kerspenna (Eker)",
+    "chapter": 34,
+    "book": 34
+   },
+   {
     "id": "ch17_fs-idm175851472",
     "en": "dry cell",
     "choice": "other",
     "target": "þurrker",
     "chapter": 6,
     "book": 6
+   },
+   {
+    "id": "ch17_fs-idm19899136",
+    "en": "inert electrode",
+    "choice": "july",
+    "target": "óvirkt raftroð",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch17_fs-idm4867824",
@@ -945,10 +1287,26 @@
     "book": 0
    },
    {
+    "id": "ch17_fs-idp13398640",
+    "en": "active electrode",
+    "choice": "july",
+    "target": "virkt raftroð",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch17_fs-idp84325552",
     "en": "cathodic protection",
     "choice": "july",
     "target": "katóðuvörn",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch17_fs-idp85536816",
+    "en": "electrode potential (EX)",
+    "choice": "other",
+    "target": "troðspenna (EX)",
     "chapter": 0,
     "book": 0
    },
@@ -975,6 +1333,14 @@
     "target": "rúmhverfur",
     "chapter": 1,
     "book": 1
+   },
+   {
+    "id": "ch19_fs-idm163687904",
+    "en": "second transition series",
+    "choice": "july",
+    "target": "önnur hliðarmálmaröðin",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch19_fs-idm186870544",
@@ -1005,6 +1371,14 @@
     "en": "third transition series",
     "choice": "july",
     "target": "þriðja hliðarmálmaröðin",
+    "chapter": 0,
+    "book": 0
+   },
+   {
+    "id": "ch19_fs-idm52768832",
+    "en": "fourth transition series",
+    "choice": "july",
+    "target": "fjórða hliðarmálmaröðin",
     "chapter": 0,
     "book": 0
    },
@@ -1049,6 +1423,14 @@
     "book": 44
    },
    {
+    "id": "ch19_fs-idp63930000",
+    "en": "linkage isomer",
+    "choice": "other",
+    "target": "tengihverfa",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch19_fs-idp64634960",
     "en": "chelate",
     "choice": "july",
@@ -1065,6 +1447,14 @@
     "book": 0
    },
    {
+    "id": "ch19_fs-idp8060128",
+    "en": "monodentate",
+    "choice": "other",
+    "target": "eintennt",
+    "chapter": 0,
+    "book": 0
+   },
+   {
     "id": "ch20_fs-id1170893631592",
     "en": "addition reaction",
     "choice": "july",
@@ -1073,12 +1463,28 @@
     "book": 1
    },
    {
+    "id": "ch20_fs-idp39277120",
+    "en": "skeletal structure",
+    "choice": "other",
+    "target": "grindarmynd",
+    "chapter": 10,
+    "book": 12
+   },
+   {
     "id": "ch21_fs-idm187262736",
     "en": "reactor coolant",
     "choice": "other",
     "target": "kælivökvi kjarnaofns",
     "chapter": 1,
     "book": 1
+   },
+   {
+    "id": "ch21_fs-idm188168144",
+    "en": "transuranium element",
+    "choice": "other",
+    "target": "frumefni handan úrans",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch21_fs-idm204101584",
@@ -1103,6 +1509,14 @@
     "target": "jáeindaútgeislun",
     "chapter": 0,
     "book": 1
+   },
+   {
+    "id": "ch21_fs-idm27366640",
+    "en": "gamma (γ) emission",
+    "choice": "other",
+    "target": "gamma (γ) útgeislun",
+    "chapter": 0,
+    "book": 0
    },
    {
     "id": "ch21_fs-idm27477328",
@@ -1209,6 +1623,14 @@
     "book": 2
    },
    {
+    "id": "ch21_fs-idp72108384",
+    "en": "positron [formula] or [formula]",
+    "choice": "july",
+    "target": "jáeind (+10β eða +10e)",
+    "chapter": 20,
+    "book": 22
+   },
+   {
     "id": "ch21_fs-idp77369424",
     "en": "Geiger counter",
     "choice": "july",
@@ -1312,6 +1734,25 @@
    "target": "efnablanda"
   },
   {
+   "id": "ch01_fs-idm88320752",
+   "version": 1,
+   "Knew": "efnaeiginleiki",
+   "Kold": "efnafræðilegur eiginleiki",
+   "bucket": "lown",
+   "ch": "ch01",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "efnaeiginleiki",
+   "en": "chemical property",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:29:39.574Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "efnafræðilegur eiginleiki"
+  },
+  {
    "id": "ch01_fs-idp330245120",
    "version": 1,
    "Knew": "nákvæmni",
@@ -1369,6 +1810,25 @@
    "target": "námundun"
   },
   {
+   "id": "ch02_fs-idm334010160",
+   "version": 1,
+   "Knew": "aðalfrumefni",
+   "Kold": "höfuðflokkafrumefni",
+   "bucket": "lown",
+   "ch": "ch02",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "aðalfrumefni",
+   "en": "representative element",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:11:11.262Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "aðalflokkafrumefni",
+   "target": "aðalflokkafrumefni"
+  },
+  {
    "id": "ch02_fs-idm54570400",
    "version": 1,
    "Knew": "rúmísómerur",
@@ -1405,6 +1865,25 @@
    "section": "cards",
    "value": "",
    "target": "Atómkenning Daltons"
+  },
+  {
+   "id": "ch02_fs-idp282226176",
+   "version": 1,
+   "Knew": "tvíefnasamband",
+   "Kold": "tvíliða efnasamband",
+   "bucket": "lown",
+   "ch": "ch02",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "tvíefnasamband",
+   "en": "binary compound",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:10:17.659Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "tvíefni",
+   "target": "tvíefni"
   },
   {
    "id": "ch02_fs-idp282291040",
@@ -1654,6 +2133,82 @@
    "target": "greiniefni"
   },
   {
+   "id": "ch04_fs-idp64227344",
+   "version": 1,
+   "Knew": "einföld tilfærsla",
+   "Kold": "einföld skipti",
+   "bucket": "lown",
+   "ch": "ch04",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "einföld tilfærsla",
+   "en": "single-displacement reaction",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:09:25.976Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "einfalt skiptihvarf",
+   "target": "einfalt skiptihvarf"
+  },
+  {
+   "id": "ch04_fs-idp64228624",
+   "version": 1,
+   "Knew": "leysanlegt",
+   "Kold": "auðleystur",
+   "bucket": "gained",
+   "ch": "ch04",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "leysanlegt",
+   "en": "soluble",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:12:24.103Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "",
+   "target": "auðleystur"
+  },
+  {
+   "id": "ch04_fs-idp83288512",
+   "version": 1,
+   "Knew": "þyngdarmælingagreining",
+   "Kold": "vigtagreining",
+   "bucket": "gained",
+   "ch": "ch04",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "þyngdarmælingagreining",
+   "en": "gravimetric analysis",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:13:20.773Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "",
+   "target": "vigtagreining"
+  },
+  {
+   "id": "ch04_fs-idp83289888",
+   "version": 1,
+   "Knew": "vísir",
+   "Kold": "litvísir",
+   "bucket": "lown",
+   "ch": "ch04",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "vísir",
+   "en": "indicator",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:08:21.594Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "litvísir"
+  },
+  {
    "id": "ch05_fs-idm56357952",
    "version": 1,
    "Knew": "næringarkaloría (kaloría)",
@@ -1692,6 +2247,25 @@
    "target": "sprengivarmamælir"
   },
   {
+   "id": "ch06_fs-idm13416416",
+   "version": 1,
+   "Knew": "Líkan Bohrs af vetnisatróminu",
+   "Kold": "Líkan Bohrs af vetnisfrumeindinni",
+   "bucket": "lown",
+   "ch": "ch06",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "Líkan Bohrs af vetnisatróminu",
+   "en": "Bohr’s model of the hydrogen atom",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:06:54.179Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "Líkan Bohrs af vetnisatóminu",
+   "target": "Líkan Bohrs af vetnisatóminu"
+  },
+  {
    "id": "ch06_fs-idm161962320",
    "version": 1,
    "Knew": "rafeindasækni",
@@ -1728,6 +2302,25 @@
    "section": "cards",
    "value": "",
    "target": "nóða"
+  },
+  {
+   "id": "ch06_fs-idm442273488",
+   "version": 1,
+   "Knew": "úrkynjuð svigrúm",
+   "Kold": "Orkujöfn svigrúm",
+   "bucket": "gained",
+   "ch": "ch06",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "úrkynjuð svigrúm",
+   "en": "degenerate orbitals",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:14:11.987Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "",
+   "target": "Orkujöfn svigrúm"
   },
   {
    "id": "ch06_fs-idm64841104",
@@ -1806,6 +2399,25 @@
    "target": "samrafeinda"
   },
   {
+   "id": "ch07_fs-idm113628896",
+   "version": 1,
+   "Knew": "óvirkra para áhrif",
+   "Kold": "Tregrafeindaparsáhrif",
+   "bucket": "lown",
+   "ch": "ch07",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "óvirkra para áhrif",
+   "en": "inert pair effect",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:06:24.943Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "áhrif óvirkra para",
+   "target": "áhrif óvirkra para"
+  },
+  {
    "id": "ch07_fs-idm4719424",
    "version": 1,
    "Knew": "sindurefni",
@@ -1863,6 +2475,25 @@
    "target": "formleg hleðsla"
   },
   {
+   "id": "ch07_fs-idp27828880",
+   "version": 1,
+   "Knew": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
+   "Kold": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)",
+   "bucket": "lown",
+   "ch": "ch07",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
+   "en": "valence shell electron-pair repulsion theory (VSEPR)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:06:06.528Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)"
+  },
+  {
    "id": "ch07_fs-idp35872064",
    "version": 2,
    "Knew": "línuleg",
@@ -1882,6 +2513,25 @@
    "target": null
   },
   {
+   "id": "ch08_fs-idm100344544",
+   "version": 1,
+   "Knew": "π-bindandi svigrúm",
+   "Kold": "π-tengisvigrúm",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "π-bindandi svigrúm",
+   "en": "π bonding orbital",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:04:05.282Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "π-tengi svigrúm",
+   "target": "π-tengi svigrúm"
+  },
+  {
    "id": "ch08_fs-idm100788960",
    "version": 1,
    "Knew": "ferssegulmögnun",
@@ -1899,6 +2549,25 @@
    "section": "cards",
    "value": "meðseglun",
    "target": "meðseglun"
+  },
+  {
+   "id": "ch08_fs-idm133686144",
+   "version": 1,
+   "Knew": "bindandi svigrúm",
+   "Kold": "bindandi svigrúm",
+   "bucket": "gained-same",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "bindandi svigrúm",
+   "en": "bonding orbital",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:17:17.470Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "tengisvigrúm",
+   "target": "tengisvigrúm"
   },
   {
    "id": "ch08_fs-idm165896720",
@@ -1939,6 +2608,44 @@
    "target": "jafnorkusvigrúm"
   },
   {
+   "id": "ch08_fs-idm169269152",
+   "version": 2,
+   "Knew": "σ*-bindandi svigrúm",
+   "Kold": "σ*-andbindandi svigrúm",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "σ*-bindandi svigrúm",
+   "en": "σ* bonding orbital",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:03:05.651Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "σ*-tengi svigrúm",
+   "target": "σ*-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm18620192",
+   "version": 1,
+   "Knew": "π*-bindandi svigrúm",
+   "Kold": "π*-andbindandi svigrúm",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "π*-bindandi svigrúm",
+   "en": "π* bonding orbital",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:03:53.510Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "π*-tengi svigrúm",
+   "target": "π*-tengi svigrúm"
+  },
+  {
    "id": "ch08_fs-idm249965088",
    "version": 1,
    "Knew": "sameindasvigrúmskenningin",
@@ -1958,6 +2665,63 @@
    "target": "sameindasvigrúmakenningin"
   },
   {
+   "id": "ch08_fs-idm41528352",
+   "version": 1,
+   "Knew": "línuleg samantekt atómsvigrýma",
+   "Kold": "línuleg samantekt frumeindasvigrúma",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "línuleg samantekt atómsvigrýma",
+   "en": "linear combination of atomic orbitals",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:04:39.812Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "línuleg samþætting atómsvigrúma",
+   "target": "línuleg samþætting atómsvigrúma"
+  },
+  {
+   "id": "ch08_fs-idm41960016",
+   "version": 1,
+   "Knew": "σ-bindandi svigrúm",
+   "Kold": "σ-tengisvigrúm",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "σ-bindandi svigrúm",
+   "en": "σ bonding orbital",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:03:17.312Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "σ-tengi svigrúm",
+   "target": "σ-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm83103936",
+   "version": 1,
+   "Knew": "þversegulmögnun",
+   "Kold": "mótseglun",
+   "bucket": "lown",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "þversegulmögnun",
+   "en": "diamagnetism",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:05:06.686Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "mótseglun"
+  },
+  {
    "id": "ch08_fs-idp123920528",
    "version": 1,
    "Knew": "hnútur",
@@ -1975,6 +2739,63 @@
    "section": "cards",
    "value": "",
    "target": "nóða"
+  },
+  {
+   "id": "ch08_fs-idp36919168",
+   "version": 1,
+   "Knew": "sigma-tengi (σ-tengi)",
+   "Kold": "sigma tengi (σ tengi)",
+   "bucket": "spelling",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "sigma-tengi (σ-tengi)",
+   "en": "sigma bond (σ bond)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:05:31.262Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "sigma tengi (σ tengi)"
+  },
+  {
+   "id": "ch08_fs-idp5821920",
+   "version": 1,
+   "Knew": "s-p-blöndun",
+   "Kold": "s-p blöndun",
+   "bucket": "spelling",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "s-p-blöndun",
+   "en": "s-p mixing",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:05:20.470Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "s-p blöndun"
+  },
+  {
+   "id": "ch08_fs-idp94790208",
+   "version": 1,
+   "Knew": "pí-tengi (π-tengi)",
+   "Kold": "pí tengi (π tengi)",
+   "bucket": "spelling",
+   "ch": "ch08",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "pí-tengi (π-tengi)",
+   "en": "pi bond (π bond)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:05:49.288Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "pí tengi (π tengi)"
   },
   {
    "id": "ch09_fs-idm198763536",
@@ -2015,6 +2836,25 @@
    "target": "mólhlutfall (X)"
   },
   {
+   "id": "ch09_fs-idp257364480",
+   "version": 1,
+   "Knew": "útstreymislögmál Grahams",
+   "Kold": "Lögmál Grahams um útstreymi",
+   "bucket": "lown",
+   "ch": "ch09",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "útstreymislögmál Grahams",
+   "en": "Graham’s law of effusion",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:00:22.656Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "Lögmál Grahams um útstreymi"
+  },
+  {
    "id": "ch09_fs-idp57901520",
    "version": 1,
    "Knew": "gufuþrýstingur vatns",
@@ -2051,6 +2891,25 @@
    "section": "cards",
    "value": "ferflötungshola",
    "target": "ferflötungshola"
+  },
+  {
+   "id": "ch10_fs-idm195421616",
+   "version": 1,
+   "Knew": "Gufuþrýstingur",
+   "Kold": "gufuþrýstingur",
+   "bucket": "gained-same",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "Gufuþrýstingur",
+   "en": "vapor pressure",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:17:56.388Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "gufunarþrýstingur",
+   "target": "gufunarþrýstingur"
   },
   {
    "id": "ch10_fs-idm205028976",
@@ -2110,6 +2969,25 @@
    "target": "áttflötungshola"
   },
   {
+   "id": "ch10_fs-idm31438528",
+   "version": 1,
+   "Knew": "aukinn tvískautur",
+   "Kold": "aðfengið tvískaut",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "aukinn tvískautur",
+   "en": "induced dipole",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:58:30.340Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "örvuð tvískautun",
+   "target": "örvuð tvískautun"
+  },
+  {
    "id": "ch10_fs-idm47773456",
    "version": 1,
    "Knew": "einföld rúmfrumubygging",
@@ -2167,6 +3045,44 @@
    "target": "hélun"
   },
   {
+   "id": "ch10_fs-idp127211536",
+   "version": 1,
+   "Knew": "augnablikstvískautur",
+   "Kold": "augnablikstvískaut",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "augnablikstvískautur",
+   "en": "instantaneous dipole",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:56:56.548Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "augnablikstvískaut"
+  },
+  {
+   "id": "ch10_fs-idp128571888",
+   "version": 1,
+   "Knew": "skautanleiki",
+   "Kold": "skautunarhæfni",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "skautanleiki",
+   "en": "polarizability",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:56:48.084Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "skautunarhæfni"
+  },
+  {
    "id": "ch10_fs-idp141680624",
    "version": 1,
    "Knew": "kristallað fast efni",
@@ -2205,6 +3121,120 @@
    "target": "beygja"
   },
   {
+   "id": "ch10_fs-idp190835184",
+   "version": 1,
+   "Knew": "miðjufyllt rúmfrumuefni (BCC)",
+   "Kold": "miðlægt teningslaga (BCC) fast efni",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "miðjufyllt rúmfrumuefni (BCC)",
+   "en": "body-centered cubic (BCC) solid",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:56:32.408Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "miðlægt teningslaga (BCC) fast efni"
+  },
+  {
+   "id": "ch10_fs-idp20057136",
+   "version": 1,
+   "Knew": "flatarmálfyllt rúmfrumuefni (FCC)",
+   "Kold": "hliðlægt teningslaga (FCC) fast efni",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "flatarmálfyllt rúmfrumuefni (FCC)",
+   "en": "face-centered cubic (FCC) solid",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:55:35.799Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "hliðlægt teningslaga (FCC) fast efni"
+  },
+  {
+   "id": "ch10_fs-idp42521392",
+   "version": 1,
+   "Knew": "samgilt net fast efni",
+   "Kold": "samgilt netfast efni",
+   "bucket": "spelling",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "samgilt netfast efni",
+   "en": "covalent network solid",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:00:05.386Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "samgilt fast netefni",
+   "target": "samgilt fast netefni"
+  },
+  {
+   "id": "ch10_fs-idp66006736",
+   "version": 1,
+   "Knew": "sameinda fast efni",
+   "Kold": "sameindafast efni",
+   "bucket": "spelling",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "sameindafast efni",
+   "en": "molecular solid",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:59:20.938Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "fast efni úr sameindum",
+   "target": "fast efni úr sameindum"
+  },
+  {
+   "id": "ch10_fs-idp75734960",
+   "version": 1,
+   "Knew": "samkristallað",
+   "Kold": "jafngerður",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "samkristallað",
+   "en": "isomorphous",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:56:15.856Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "einslaga",
+   "target": "einslaga"
+  },
+  {
+   "id": "ch10_fs-idp81517488",
+   "version": 1,
+   "Knew": "sexstrendingsleg þéttpökkun (HCP)",
+   "Kold": "sexhyrnd þéttpökkun (HCP)",
+   "bucket": "lown",
+   "ch": "ch10",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "sexstrendingsleg þéttpökkun (HCP)",
+   "en": "hexagonal closest packing (HCP)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:55:43.712Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "sexhyrnd þéttpökkun (HCP)"
+  },
+  {
    "id": "ch11_fs-idm104294208",
    "version": 1,
    "Knew": "málmblanda",
@@ -2241,6 +3271,25 @@
    "section": "cards",
    "value": "",
    "target": "klofnun"
+  },
+  {
+   "id": "ch11_fs-idm55870880",
+   "version": 1,
+   "Knew": "sjálfkrafa ferli",
+   "Kold": "sjálfgengt ferli",
+   "bucket": "lown",
+   "ch": "ch11",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "sjálfkrafa ferli",
+   "en": "spontaneous process",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:44:31.440Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "sjálfgengt ferli"
   },
   {
    "id": "ch11_fs-idp10683312",
@@ -2376,6 +3425,101 @@
    "target": "tvíhegða"
   },
   {
+   "id": "ch14_fs-idp43874496",
+   "version": 1,
+   "Knew": "Brønsted-Lowry-sýra",
+   "Kold": "Brønsted-Lowry sýra",
+   "bucket": "spelling",
+   "ch": "ch14",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "Brønsted-Lowry-sýra",
+   "en": "Brønsted-Lowry acid",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:43:30.405Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "Brønsted-Lowry sýra"
+  },
+  {
+   "id": "ch14_fs-idp67177296",
+   "version": 1,
+   "Knew": "litabreytingasvið",
+   "Kold": "litskiptabil",
+   "bucket": "lown",
+   "ch": "ch14",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "litabreytingasvið",
+   "en": "color-change interval",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:45:08.193Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "litskiptabil"
+  },
+  {
+   "id": "ch14_fs-idp89677040",
+   "version": 1,
+   "Knew": "Brønsted-Lowry-basi",
+   "Kold": "Brønsted-Lowry basi",
+   "bucket": "spelling",
+   "ch": "ch14",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "Brønsted-Lowry-basi",
+   "en": "Brønsted-Lowry base",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:43:21.618Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "Brønsted-Lowry basi"
+  },
+  {
+   "id": "ch16_fs-idm119807952",
+   "version": 1,
+   "Knew": "staðalbreyting á frjálsri orku (ΔG°)",
+   "Kold": "Stöðluð breyting á frjálsri orku (ΔG°)",
+   "bucket": "gained",
+   "ch": "ch16",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "staðalbreyting á frjálsri orku (ΔG°)",
+   "en": "standard free energy change (ΔG°)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:19:17.402Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "staðalfríorkubreyting (ΔG°)",
+   "target": "staðalfríorkubreyting (ΔG°)"
+  },
+  {
+   "id": "ch16_fs-idm119810368",
+   "version": 1,
+   "Knew": "Breyting á frjálsri orku Gibbs (G)",
+   "Kold": "Breyting á Gibbs fríorku (G)",
+   "bucket": "lown",
+   "ch": "ch16",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "Breyting á frjálsri orku Gibbs (G)",
+   "en": "Gibbs free energy change (G)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:47:45.659Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "Breyting á Gibbs fríorku (G)"
+  },
+  {
    "id": "ch17_fs-idm117181824",
    "version": 1,
    "Knew": "rafgreiningarker",
@@ -2414,6 +3558,25 @@
    "target": "fórnaranóða"
   },
   {
+   "id": "ch17_fs-idm153779040",
+   "version": 1,
+   "Knew": "kerspenna (Eker)",
+   "Kold": "kerspenna (Eker)",
+   "bucket": "gained-same",
+   "ch": "ch17",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "kerspenna",
+   "en": "cell potential (Ecell)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:20:40.522Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "",
+   "target": "kerspenna (Eker)"
+  },
+  {
    "id": "ch17_fs-idm175851472",
    "version": 2,
    "Knew": "Þurrafhlaða",
@@ -2431,6 +3594,25 @@
    "section": "cards",
    "value": "þurrker",
    "target": "þurrker"
+  },
+  {
+   "id": "ch17_fs-idm19899136",
+   "version": 1,
+   "Knew": "óvirkt rafskaut",
+   "Kold": "óvirkt raftroð",
+   "bucket": "lown",
+   "ch": "ch17",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "óvirkt rafskaut",
+   "en": "inert electrode",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:48:51.640Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "óvirkt raftroð"
   },
   {
    "id": "ch17_fs-idm4867824",
@@ -2452,6 +3634,25 @@
    "target": "staðalraftroðsspenna ((EX°))"
   },
   {
+   "id": "ch17_fs-idp13398640",
+   "version": 1,
+   "Knew": "virkt rafskaut",
+   "Kold": "virkt raftroð",
+   "bucket": "lown",
+   "ch": "ch17",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "virkt rafskaut",
+   "en": "active electrode",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:48:45.144Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "virkt raftroð"
+  },
+  {
    "id": "ch17_fs-idp84325552",
    "version": 1,
    "Knew": "bakskautsvörn",
@@ -2469,6 +3670,25 @@
    "section": "cards",
    "value": "",
    "target": "katóðuvörn"
+  },
+  {
+   "id": "ch17_fs-idp85536816",
+   "version": 1,
+   "Knew": "rafskautsspenna (EX)",
+   "Kold": "rafspenna raftroðs (EX)",
+   "bucket": "gained",
+   "ch": "ch17",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "rafskautsspenna (EX)",
+   "en": "electrode potential (EX)",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:20:09.282Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "troðspenna (EX)",
+   "target": "troðspenna (EX)"
   },
   {
    "id": "ch17_fs-idp94537696",
@@ -2526,6 +3746,25 @@
    "section": "cards",
    "value": "rúmhverfur",
    "target": "rúmhverfur"
+  },
+  {
+   "id": "ch19_fs-idm163687904",
+   "version": 1,
+   "Knew": "önnur hliðarfrumefnaröð",
+   "Kold": "önnur hliðarmálmaröðin",
+   "bucket": "lown",
+   "ch": "ch19",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "önnur hliðarfrumefnaröð",
+   "en": "second transition series",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:51:26.726Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "önnur hliðarmálmaröðin"
   },
   {
    "id": "ch19_fs-idm186870544",
@@ -2602,6 +3841,25 @@
    "section": "cards",
    "value": "",
    "target": "þriðja hliðarmálmaröðin"
+  },
+  {
+   "id": "ch19_fs-idm52768832",
+   "version": 1,
+   "Knew": "fjórða hliðarfrumefnaröð",
+   "Kold": "fjórða hliðarmálmaröðin",
+   "bucket": "lown",
+   "ch": "ch19",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "fjórða hliðarfrumefnaröð",
+   "en": "fourth transition series",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:50:46.330Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "fjórða hliðarmálmaröðin"
   },
   {
    "id": "ch19_fs-idm99275552",
@@ -2699,6 +3957,25 @@
    "target": "tengill"
   },
   {
+   "id": "ch19_fs-idp63930000",
+   "version": 1,
+   "Knew": "tengiísómera",
+   "Kold": "tengslaísómera",
+   "bucket": "lown",
+   "ch": "ch19",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "tengiísómera",
+   "en": "linkage isomer",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:51:56.245Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "tengihverfa",
+   "target": "tengihverfa"
+  },
+  {
    "id": "ch19_fs-idp64634960",
    "version": 1,
    "Knew": "kló",
@@ -2737,6 +4014,25 @@
    "target": "tvítenntur tengill"
   },
   {
+   "id": "ch19_fs-idp8060128",
+   "version": 1,
+   "Knew": "eintönna",
+   "Kold": "eintanna",
+   "bucket": "gained",
+   "ch": "ch19",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "eintönna",
+   "en": "monodentate",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:21:09.285Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "eintennt",
+   "target": "eintennt"
+  },
+  {
    "id": "ch20_fs-id1170893631592",
    "version": 1,
    "Knew": "áleggingarhvarf",
@@ -2756,6 +4052,25 @@
    "target": "álagningarhvarf"
   },
   {
+   "id": "ch20_fs-idp39277120",
+   "version": 1,
+   "Knew": "beinagrindarmynd",
+   "Kold": "beinagrindarmynd",
+   "bucket": "gained-same",
+   "ch": "ch20",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "beinagrindarmynd",
+   "en": "skeletal structure",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:22:56.007Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "grindarmynd",
+   "target": "grindarmynd"
+  },
+  {
    "id": "ch21_fs-idm187262736",
    "version": 2,
    "Knew": "kæliefni kjarnaofns",
@@ -2773,6 +4088,25 @@
    "section": "cards",
    "value": "kælivökvi kjarnaofns",
    "target": "kælivökvi kjarnaofns"
+  },
+  {
+   "id": "ch21_fs-idm188168144",
+   "version": 1,
+   "Knew": "þverúran",
+   "Kold": "þverúran",
+   "bucket": "gained-same",
+   "ch": "ch21",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "þverúran",
+   "en": "transuranium element",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T17:24:01.560Z",
+   "scope": "book",
+   "section": "gained",
+   "value": "frumefni handan úrans",
+   "target": "frumefni handan úrans"
   },
   {
    "id": "ch21_fs-idm204101584",
@@ -2830,6 +4164,25 @@
    "section": "cards",
    "value": "jáeindaútgeislun",
    "target": "jáeindaútgeislun"
+  },
+  {
+   "id": "ch21_fs-idm27366640",
+   "version": 1,
+   "Knew": "gamma (γ) losun",
+   "Kold": "gamma (γ) útblástur",
+   "bucket": "lown",
+   "ch": "ch21",
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": "gamma (γ) losun",
+   "en": "gamma (γ) emission",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:52:29.294Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "gamma (γ) útgeislun",
+   "target": "gamma (γ) útgeislun"
   },
   {
    "id": "ch21_fs-idm27477328",
@@ -3079,6 +4432,25 @@
    "target": "beta (β) hrörnun"
   },
   {
+   "id": "ch21_fs-idp72108384",
+   "version": 1,
+   "Knew": "jákvæðiseind [formula] eða [formula]",
+   "Kold": "jáeind (+10β eða +10e)",
+   "bucket": "lown",
+   "ch": "ch21",
+   "chapters": "",
+   "choice": "july",
+   "defaultWord": "jákvæðiseind [formula] eða [formula]",
+   "en": "positron [formula] or [formula]",
+   "note": "",
+   "row": null,
+   "savedAt": "2026-10-11T16:52:10.354Z",
+   "scope": "book",
+   "section": "defaults",
+   "value": "",
+   "target": "jáeind (+10β eða +10e)"
+  },
+  {
    "id": "ch21_fs-idp77369424",
    "version": 1,
    "Knew": "Geiger-nemi",
@@ -3134,6 +4506,63 @@
    "section": "cards",
    "value": "bindiorka á hverja kjarneind",
    "target": "bindiorka á hverja kjarneind"
+  },
+  {
+   "id": "ws_addition",
+   "version": 1,
+   "Knew": null,
+   "Kold": null,
+   "bucket": null,
+   "ch": null,
+   "chapters": "",
+   "choice": "keep",
+   "defaultWord": null,
+   "en": "addition",
+   "note": "",
+   "row": "álagning",
+   "savedAt": "2026-10-11T17:24:33.856Z",
+   "scope": null,
+   "section": "wrong",
+   "value": "",
+   "target": "álagning"
+  },
+  {
+   "id": "ws_emission",
+   "version": 1,
+   "Knew": null,
+   "Kold": null,
+   "bucket": null,
+   "ch": null,
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": null,
+   "en": "emission",
+   "note": "",
+   "row": "útblástur",
+   "savedAt": "2026-10-11T17:26:57.495Z",
+   "scope": null,
+   "section": "wrong",
+   "value": "ljómun",
+   "target": "ljómun"
+  },
+  {
+   "id": "ws_valence",
+   "version": 1,
+   "Knew": null,
+   "Kold": null,
+   "bucket": null,
+   "ch": null,
+   "chapters": "",
+   "choice": "other",
+   "defaultWord": null,
+   "en": "valence",
+   "note": "",
+   "row": "girðitala",
+   "savedAt": "2026-10-11T17:25:42.076Z",
+   "scope": null,
+   "section": "wrong",
+   "value": "gildi",
+   "target": "gildi"
   }
  ],
  "untouched": [
@@ -3146,18 +4575,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "Celsíus",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch01_fs-idm88320752",
-   "ch": "ch01",
-   "en": "chemical property",
-   "Kold": "efnafræðilegur eiginleiki",
-   "Knew": "efnaeiginleiki",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "efnaeiginleiki",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm10811088",
@@ -3168,7 +4586,7 @@
    "tab": "defaults",
    "bucket": "elsewhere",
    "proposed": "alfaeind",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm20590592",
@@ -3179,7 +4597,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "flokkur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm227073184",
@@ -3190,18 +4608,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "lotukerfi",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch02_fs-idm334010160",
-   "ch": "ch02",
-   "en": "representative element",
-   "Kold": "höfuðflokkafrumefni",
-   "Knew": "aðalfrumefni",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "aðalfrumefni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm430389008",
@@ -3212,7 +4619,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "röð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm56716560",
@@ -3223,7 +4630,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "lögmál um föst massahlutföll",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idm64490640",
@@ -3234,7 +4641,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "lotulögmál",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch02_fs-idp184530720",
@@ -3245,18 +4652,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "samgilt efnasamband",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch02_fs-idp282226176",
-   "ch": "ch02",
-   "en": "binary compound",
-   "Kold": "tvíliða efnasamband",
-   "Knew": "tvíefnasamband",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "tvíefnasamband",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch03_fs-idm26667568",
@@ -3267,7 +4663,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "uppleyst efni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch04_fs-idm73913072",
@@ -3278,51 +4674,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "oxunar-afoxunarhvarf",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch04_fs-idp64227344",
-   "ch": "ch04",
-   "en": "single-displacement reaction",
-   "Kold": "einföld skipti",
-   "Knew": "einföld tilfærsla",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "einföld tilfærsla",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch04_fs-idp64228624",
-   "ch": "ch04",
-   "en": "soluble",
-   "Kold": "auðleystur",
-   "Knew": "leysanlegt",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "leysanlegt",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch04_fs-idp83288512",
-   "ch": "ch04",
-   "en": "gravimetric analysis",
-   "Kold": "vigtagreining",
-   "Knew": "þyngdarmælingagreining",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "þyngdarmælingagreining",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch04_fs-idp83289888",
-   "ch": "ch04",
-   "en": "indicator",
-   "Kold": "litvísir",
-   "Knew": "vísir",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "vísir",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch05_fs-idp102379584",
@@ -3333,7 +4685,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "efnavarmafræði",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch05_fs-idp25507984",
@@ -3344,7 +4696,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "júl (J)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch05_fs-idp31727024",
@@ -3355,7 +4707,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "eðlisvarmi (c)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm11590896",
@@ -3366,7 +4718,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "víxlunarmynstur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm120400016",
@@ -3377,18 +4729,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "einsetulögmál Paulis",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch06_fs-idm13416416",
-   "ch": "ch06",
-   "en": "Bohr’s model of the hydrogen atom",
-   "Kold": "Líkan Bohrs af vetnisfrumeindinni",
-   "Knew": "Líkan Bohrs af vetnisatróminu",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "Líkan Bohrs af vetnisatróminu",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm140352128",
@@ -3399,7 +4740,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "aðalskammtatala (n)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm147438368",
@@ -3410,7 +4751,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "atómsvigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm148470816",
@@ -3421,7 +4762,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "undirhvolf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idm176142304",
@@ -3432,18 +4773,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "aukaskammtatala (hverfiþungi) (l)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch06_fs-idm442273488",
-   "ch": "ch06",
-   "en": "degenerate orbitals",
-   "Kold": "Orkujöfn svigrúm",
-   "Knew": "úrkynjuð svigrúm",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "úrkynjuð svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch06_fs-idp97866656",
@@ -3454,18 +4784,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "grunnástand",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch07_fs-idm113628896",
-   "ch": "ch07",
-   "en": "inert pair effect",
-   "Kold": "Tregrafeindaparsáhrif",
-   "Knew": "óvirkra para áhrif",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "óvirkra para áhrif",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch07_fs-idm73604928",
@@ -3476,7 +4795,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "átturegla",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch07_fs-idp12081312",
@@ -3487,18 +4806,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "tvískautsvægi",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch07_fs-idp27828880",
-   "ch": "ch07",
-   "en": "valence shell electron-pair repulsion theory (VSEPR)",
-   "Kold": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)",
-   "Knew": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "gildisrafeindaparafráhrindingarkenningin (VSEPR)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch07_fs-idp87877296",
@@ -3509,29 +4817,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "ofgild sameind",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm100344544",
-   "ch": "ch08",
-   "en": "π bonding orbital",
-   "Kold": "π-tengisvigrúm",
-   "Knew": "π-bindandi svigrúm",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "π-bindandi svigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm133686144",
-   "ch": "ch08",
-   "en": "bonding orbital",
-   "Kold": "bindandi svigrúm",
-   "Knew": "bindandi svigrúm",
-   "tab": "gained",
-   "bucket": "gained-same",
-   "proposed": "bindandi svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idm16838896",
@@ -3542,29 +4828,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "sp3d-blendingssvigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm169269152",
-   "ch": "ch08",
-   "en": "σ* bonding orbital",
-   "Kold": "σ*-andbindandi svigrúm",
-   "Knew": "σ*-bindandi svigrúm",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "σ*-bindandi svigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm18620192",
-   "ch": "ch08",
-   "en": "π* bonding orbital",
-   "Kold": "π*-andbindandi svigrúm",
-   "Knew": "π*-bindandi svigrúm",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "π*-bindandi svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idm29433408",
@@ -3575,29 +4839,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "svigrúmablöndun",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm41528352",
-   "ch": "ch08",
-   "en": "linear combination of atomic orbitals",
-   "Kold": "línuleg samantekt frumeindasvigrúma",
-   "Knew": "línuleg samantekt atómsvigrýma",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "línuleg samantekt atómsvigrýma",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm41960016",
-   "ch": "ch08",
-   "en": "σ bonding orbital",
-   "Kold": "σ-tengisvigrúm",
-   "Knew": "σ-bindandi svigrúm",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "σ-bindandi svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idm47317072",
@@ -3608,7 +4850,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "sp3d2-blendingssvigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idm48701168",
@@ -3619,7 +4861,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "sp2-blendingssvigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idm71427776",
@@ -3630,18 +4872,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "sp-blendingssvigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idm83103936",
-   "ch": "ch08",
-   "en": "diamagnetism",
-   "Kold": "mótseglun",
-   "Knew": "þversegulmögnun",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "þversegulmögnun",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idp102362976",
@@ -3652,29 +4883,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "blendingssvigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idp36919168",
-   "ch": "ch08",
-   "en": "sigma bond (σ bond)",
-   "Kold": "sigma tengi (σ tengi)",
-   "Knew": "sigma-tengi (σ-tengi)",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "sigma-tengi (σ-tengi)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idp5821920",
-   "ch": "ch08",
-   "en": "s-p mixing",
-   "Kold": "s-p blöndun",
-   "Knew": "s-p-blöndun",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "s-p-blöndun",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch08_fs-idp88964992",
@@ -3685,18 +4894,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "sp3-blendingssvigrúm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch08_fs-idp94790208",
-   "ch": "ch08",
-   "en": "pi bond (π bond)",
-   "Kold": "pí tengi (π tengi)",
-   "Knew": "pí-tengi (π-tengi)",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "pí-tengi (π-tengi)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch09_fs-idm111878496",
@@ -3707,7 +4905,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "kjörgaslögmálið",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch09_fs-idm158190720",
@@ -3718,18 +4916,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "staðalaðstæður hitastigs og þrýstings (STP)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch09_fs-idp257364480",
-   "ch": "ch09",
-   "en": "Graham’s law of effusion",
-   "Kold": "Lögmál Grahams um útstreymi",
-   "Knew": "útstreymislögmál Grahams",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "útstreymislögmál Grahams",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idm16566240",
@@ -3740,29 +4927,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "dreifikraftur",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idm195421616",
-   "ch": "ch10",
-   "en": "vapor pressure",
-   "Kold": "gufuþrýstingur",
-   "Knew": "Gufuþrýstingur",
-   "tab": "gained",
-   "bucket": "gained-same",
-   "proposed": "Gufuþrýstingur",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idm31438528",
-   "ch": "ch10",
-   "en": "induced dipole",
-   "Kold": "aðfengið tvískaut",
-   "Knew": "aukinn tvískautur",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "aukinn tvískautur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idm37032656",
@@ -3773,18 +4938,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "tóm",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp127211536",
-   "ch": "ch10",
-   "en": "instantaneous dipole",
-   "Kold": "augnablikstvískaut",
-   "Knew": "augnablikstvískautur",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "augnablikstvískautur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idp127496336",
@@ -3795,18 +4949,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "tvískauts-tvískauts aðdráttarkraftur",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp128571888",
-   "ch": "ch10",
-   "en": "polarizability",
-   "Kold": "skautunarhæfni",
-   "Knew": "skautanleiki",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "skautanleiki",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idp168577936",
@@ -3817,40 +4960,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "Bragg-jafna",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp190835184",
-   "ch": "ch10",
-   "en": "body-centered cubic (BCC) solid",
-   "Kold": "miðlægt teningslaga (BCC) fast efni",
-   "Knew": "miðjufyllt rúmfrumuefni (BCC)",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "miðjufyllt rúmfrumuefni (BCC)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp20057136",
-   "ch": "ch10",
-   "en": "face-centered cubic (FCC) solid",
-   "Kold": "hliðlægt teningslaga (FCC) fast efni",
-   "Knew": "flatarmálfyllt rúmfrumuefni (FCC)",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "flatarmálfyllt rúmfrumuefni (FCC)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp42521392",
-   "ch": "ch10",
-   "en": "covalent network solid",
-   "Kold": "samgilt netfast efni",
-   "Knew": "samgilt net fast efni",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "samgilt netfast efni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idp5444368",
@@ -3861,7 +4971,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "Frostmark",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch10_fs-idp56136784",
@@ -3872,40 +4982,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "teningslaga þéttpökkun (CCP)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp66006736",
-   "ch": "ch10",
-   "en": "molecular solid",
-   "Kold": "sameindafast efni",
-   "Knew": "sameinda fast efni",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "sameindafast efni",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp75734960",
-   "ch": "ch10",
-   "en": "isomorphous",
-   "Kold": "jafngerður",
-   "Knew": "samkristallað",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "samkristallað",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch10_fs-idp81517488",
-   "ch": "ch10",
-   "en": "hexagonal closest packing (HCP)",
-   "Kold": "sexhyrnd þéttpökkun (HCP)",
-   "Knew": "sexstrendingsleg þéttpökkun (HCP)",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "sexstrendingsleg þéttpökkun (HCP)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch11_fs-idm171842784",
@@ -3916,18 +4993,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "Tyndall-hrif",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch11_fs-idm55870880",
-   "ch": "ch11",
-   "en": "spontaneous process",
-   "Kold": "sjálfgengt ferli",
-   "Knew": "sjálfkrafa ferli",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "sjálfkrafa ferli",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch11_fs-idm91470352",
@@ -3938,7 +5004,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "leysing",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch11_fs-idp141112944",
@@ -3949,7 +5015,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "osmósa",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch11_fs-idp141114480",
@@ -3960,7 +5026,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "osmósuþrýstingur (Π)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch11_fs-idp7162656",
@@ -3971,7 +5037,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "örlítið blandanlegur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm101548864",
@@ -3982,7 +5048,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "árekstrakenning",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm206488448",
@@ -3993,7 +5059,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "tíðniþáttur (A)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm215968704",
@@ -4004,7 +5070,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "hraðalögmál",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm2926992",
@@ -4015,7 +5081,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "einsameindahvarf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm333854336",
@@ -4026,7 +5092,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "stig efnahvarfs",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idm355773584",
@@ -4037,7 +5103,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "hvarfrit",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idp131244384",
@@ -4048,7 +5114,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "tvísameindahvarf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idp251542624",
@@ -4059,7 +5125,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "þrísameindahvarf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch12_fs-idp36862592",
@@ -4070,7 +5136,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "grunnhvarf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch14_fs-idm71412016",
@@ -4081,40 +5147,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "Henderson-Hasselbalch jafnan",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch14_fs-idp43874496",
-   "ch": "ch14",
-   "en": "Brønsted-Lowry acid",
-   "Kold": "Brønsted-Lowry sýra",
-   "Knew": "Brønsted-Lowry-sýra",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "Brønsted-Lowry-sýra",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch14_fs-idp67177296",
-   "ch": "ch14",
-   "en": "color-change interval",
-   "Kold": "litskiptabil",
-   "Knew": "litabreytingasvið",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "litabreytingasvið",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch14_fs-idp89677040",
-   "ch": "ch14",
-   "en": "Brønsted-Lowry base",
-   "Kold": "Brønsted-Lowry basi",
-   "Knew": "Brønsted-Lowry-basi",
-   "tab": "defaults",
-   "bucket": "spelling",
-   "proposed": "Brønsted-Lowry-basi",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch15_fs-idm26641568",
@@ -4125,40 +5158,18 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "Lewis-sýru-basa afleiða",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch16_fs-idm119806032",
    "ch": "ch16",
-   "en": "standard free energy of formation 120",
+   "en": "standard free energy of formation [formula]",
    "Kold": "Stöðluð myndunarorka frjáls (ΔGf°)",
-   "Knew": "staðalmyndunarorka 120",
+   "Knew": "staðalmyndunarorka [formula]",
    "tab": "defaults",
    "bucket": "lown",
-   "proposed": "staðalmyndunarorka 120",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch16_fs-idm119807952",
-   "ch": "ch16",
-   "en": "standard free energy change (ΔG°)",
-   "Kold": "Stöðluð breyting á frjálsri orku (ΔG°)",
-   "Knew": "staðalbreyting á frjálsri orku (ΔG°)",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "staðalbreyting á frjálsri orku (ΔG°)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch16_fs-idm119810368",
-   "ch": "ch16",
-   "en": "Gibbs free energy change (G)",
-   "Kold": "Breyting á Gibbs fríorku (G)",
-   "Knew": "Breyting á frjálsri orku Gibbs (G)",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "Breyting á frjálsri orku Gibbs (G)",
-   "status": "not-reviewed"
+   "proposed": "staðalmyndunarorka [formula]",
+   "status": "confirmed"
   },
   {
    "id": "ch16_fs-idm57405936",
@@ -4169,7 +5180,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "sjálfgeng breyting",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch16_fs-idp119850016",
@@ -4180,7 +5191,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "ósjálfgengt ferli",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch16_fs-idp48318480",
@@ -4191,7 +5202,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "afturkræft ferli",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idm118911936",
@@ -4202,7 +5213,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "Litíumjónarafhlaða",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idm139905600",
@@ -4213,18 +5224,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "kerritun (skýringarmynd)",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch17_fs-idm153779040",
-   "ch": "ch17",
-   "en": "cell potential (Ecell)",
-   "Kold": "kerspenna (Eker)",
-   "Knew": "kerspenna (Eker)",
-   "tab": "gained",
-   "bucket": "gained-same",
-   "proposed": "kerspenna",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idm159189392",
@@ -4235,18 +5235,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "galvaníker",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch17_fs-idm19899136",
-   "ch": "ch17",
-   "en": "inert electrode",
-   "Kold": "óvirkt raftroð",
-   "Knew": "óvirkt rafskaut",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "óvirkt rafskaut",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idm210620784",
@@ -4257,7 +5246,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "Alkalínrafhlaða",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idm278014928",
@@ -4268,29 +5257,18 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "einnota rafhlaða",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch17_fs-idp13398640",
-   "ch": "ch17",
-   "en": "active electrode",
-   "Kold": "virkt raftroð",
-   "Knew": "virkt rafskaut",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "virkt rafskaut",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idp227872832",
    "ch": "ch17",
-   "en": "standard cell potential 55",
+   "en": "standard cell potential [formula]",
    "Kold": "staðalkerspenna (Ekerfis°)",
-   "Knew": "staðalkerspenna 55",
+   "Knew": "staðalkerspenna [formula]",
    "tab": "defaults",
    "bucket": "lown",
-   "proposed": "staðalkerspenna 55",
-   "status": "not-reviewed"
+   "proposed": "staðalkerspenna [formula]",
+   "status": "confirmed"
   },
   {
    "id": "ch17_fs-idp55952432",
@@ -4301,18 +5279,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "endurhlaðanleg rafhlaða",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch17_fs-idp85536816",
-   "ch": "ch17",
-   "en": "electrode potential (EX)",
-   "Kold": "rafspenna raftroðs (EX)",
-   "Knew": "rafskautsspenna (EX)",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "rafskautsspenna (EX)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch18_fs-idm2235360",
@@ -4323,7 +5290,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "aðalflokkamálmur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch18_fs-idm60186560",
@@ -4334,7 +5301,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "misvægishvarf",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch18_fs-idp110103392",
@@ -4345,7 +5312,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "aðalflokkafrumefni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch18_fs-idp20554272",
@@ -4356,7 +5323,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "fjölbrigði",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch18_fs-idp50657904",
@@ -4367,7 +5334,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "myndlaus",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm104611088",
@@ -4378,7 +5345,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "t2g svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm108395328",
@@ -4389,7 +5356,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "lantaníðaröð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm148194896",
@@ -4400,7 +5367,7 @@
    "tab": "defaults",
    "bucket": "spelling",
    "proposed": "eg svigrúm",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm163589328",
@@ -4411,18 +5378,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "girðisamband",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch19_fs-idm163687904",
-   "ch": "ch19",
-   "en": "second transition series",
-   "Kold": "önnur hliðarmálmaröðin",
-   "Knew": "önnur hliðarfrumefnaröð",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "önnur hliðarfrumefnaröð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm281484512",
@@ -4433,7 +5389,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "votvinnslumálmfræði",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm31354480",
@@ -4444,18 +5400,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "kristalsviðskenning",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch19_fs-idm52768832",
-   "ch": "ch19",
-   "en": "fourth transition series",
-   "Kold": "fjórða hliðarmálmaröðin",
-   "Knew": "fjórða hliðarfrumefnaröð",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "fjórða hliðarfrumefnaröð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idm98560816",
@@ -4466,7 +5411,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "aktiníðaröð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idp246761680",
@@ -4477,7 +5422,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "girðisamband",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idp51669120",
@@ -4488,7 +5433,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "klótengill",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idp53705200",
@@ -4499,7 +5444,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "miðjumálmur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idp55828544",
@@ -4510,7 +5455,7 @@
    "tab": "defaults",
    "bucket": "elsewhere",
    "proposed": "girðitala",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch19_fs-idp56324672",
@@ -4521,29 +5466,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "girðihvolf",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch19_fs-idp63930000",
-   "ch": "ch19",
-   "en": "linkage isomer",
-   "Kold": "tengslaísómera",
-   "Knew": "tengiísómera",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "tengiísómera",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch19_fs-idp8060128",
-   "ch": "ch19",
-   "en": "monodentate",
-   "Kold": "eintanna",
-   "Knew": "eintönna",
-   "tab": "gained",
-   "bucket": "gained",
-   "proposed": "eintönna",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch20_fs-idm3165296",
@@ -4554,18 +5477,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "karboxýlsýra",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch20_fs-idp39277120",
-   "ch": "ch20",
-   "en": "skeletal structure",
-   "Kold": "beinagrindarmynd",
-   "Knew": "beinagrindarmynd",
-   "tab": "gained",
-   "bucket": "gained-same",
-   "proposed": "beinagrindarmynd",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch20_fs-idp68310656",
@@ -4576,7 +5488,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "hliðarhópur",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch20_fs-idp73021984",
@@ -4587,7 +5499,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "arómatískt vetniskolefni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch20_fs-idp73075792",
@@ -4598,7 +5510,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "mettað vetniskolefni",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idm128080144",
@@ -4609,18 +5521,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "keðjuhvarf",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch21_fs-idm188168144",
-   "ch": "ch21",
-   "en": "transuranium element",
-   "Kold": "þverúran",
-   "Knew": "þverúran",
-   "tab": "gained",
-   "bucket": "gained-same",
-   "proposed": "þverúran",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idm206270992",
@@ -4631,18 +5532,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "hemilstöng",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch21_fs-idm27366640",
-   "ch": "ch21",
-   "en": "gamma (γ) emission",
-   "Kold": "gamma (γ) útblástur",
-   "Knew": "gamma (γ) losun",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "gamma (γ) losun",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idm74066144",
@@ -4653,7 +5543,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "kjarnafrumefnabreyting",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idm80685920",
@@ -4664,7 +5554,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "kjarnategund",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp10803760",
@@ -4675,7 +5565,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "kolefnisaldursgreining",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp165863168",
@@ -4686,7 +5576,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "hlutfallsleg líffræðileg virkni (RBE)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp225092016",
@@ -4697,7 +5587,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "roentgen equivalent man (rem)",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp44456896",
@@ -4708,7 +5598,7 @@
    "tab": "defaults",
    "bucket": "lown",
    "proposed": "ytri geislameðferð",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp55578096",
@@ -4719,7 +5609,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "móðurkjarnategund",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp69591216",
@@ -4730,7 +5620,7 @@
    "tab": "gained",
    "bucket": "gained-same",
    "proposed": "dótturkjarnategund",
-   "status": "not-reviewed"
+   "status": "confirmed"
   },
   {
    "id": "ch21_fs-idp7149200",
@@ -4741,18 +5631,7 @@
    "tab": "gained",
    "bucket": "gained",
    "proposed": "samrunaofn",
-   "status": "not-reviewed"
-  },
-  {
-   "id": "ch21_fs-idp72108384",
-   "ch": "ch21",
-   "en": "positron 51 or 52",
-   "Kold": "jáeind (+10β eða +10e)",
-   "Knew": "jákvæðiseind 51 eða 52",
-   "tab": "defaults",
-   "bucket": "lown",
-   "proposed": "jákvæðiseind 51 eða 52",
-   "status": "not-reviewed"
+   "status": "confirmed"
   }
  ]
 }

@@ -262,7 +262,7 @@ default are in its docstring. Status lives in the register.
 
 `export_stage1_answers.py <dump-dir> <page.html> <versions.json> <out.json>` turns a dump of the page's database (an `ArtifactData` list with `out_dir`) into `results/2026-10-11/stage1-answers-2026-10-11.json`. That file holds:
 - **`answers`:** each answer as saved, with its db version and `target`, the word chosen;
-- **`untouched`:** the default and gained rows with no answer, labelled `not-reviewed` with the page's `proposed` word. An empty row cannot tell "seen and accepted" from "not seen", and on 2026-10-11 [USER] had gone through only the first tab, so these are never treated as answers;
+- **`untouched`:** the default and gained rows with no answer, with the page's `proposed` word. They are `confirmed` only once [USER] pressed that tab's **Confirm this list** (`meta.confirm_defaults`, `meta.confirm_gained`), and `not-reviewed` otherwise. An empty row cannot tell "seen and accepted" from "not seen" (on 2026-10-11 [USER] had at first gone through only the first tab), so a `not-reviewed` row is never treated as an answer;
 - **`open`:** what was not answered.
 
 It also holds three checks, reported and never resolved:
@@ -270,4 +270,4 @@ It also holds three checks, reported and never resolved:
 - **`sameHeadwordTwoTargets`:** one headword answered with two different words in two chapters;
 - **`septemberCounts`:** occurrences of the chosen word in the September text. Only the citation form is counted, so the count is a floor.
 
-The page data's hash (`page.dataSha256`) is that of Version 2, which is what [USER] answered. Version 3 changed only the display of formula placeholders: `stage1_page.py` now shows `[formula]` where Version 2 showed the bare placeholder number, as in "(56)".
+`page.dataSha256` is the hash of the page passed in. The final export (all tabs answered, both lists confirmed) used Version 4; the 100 cards were answered on Version 2, whose hash is kept as `page.dataShaNote`. Item ids are the same in every version. Version 3 changed only the display of formula placeholders: `stage1_page.py` now shows `[formula]` where Version 2 showed the bare placeholder number, as in "(56)".

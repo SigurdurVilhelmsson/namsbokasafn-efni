@@ -42,6 +42,7 @@ REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
 RULINGS = os.path.join(HERE, 'results', '2026-10-11', 'ruling-set-before-stage1.json')
 MT = os.path.join(REPO, 'books', 'efnafraedi-2e', '02-mt-output')
 PAGE_URL = 'https://claude.ai/artifact/DgVvKPCVcWMaHsM9NVtF3w'
+CARDS_PAGE_SHA = 'e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b'  # Version 2's DATA, on which the 100 cards were answered
 
 
 def norm(en):
@@ -155,15 +156,20 @@ def main():
     res = {
         'about': ("[USER]'s stage 1 page answers, frozen (plan 2026-10-10 rev. 5, Stage 1). Written by "
                   'experiments/terminology-consistency/export_stage1_answers.py from a dump of the page\'s '
-                  'database. `answers` were saved by [USER]; `untouched` are default and gained rows with no '
-                  'saved answer, which [USER] has NOT reviewed (2026-10-11: only the first tab was gone '
-                  'through), so their `proposed` word is a proposal, not an answer; `open` was not answered. '
-                  '`checks` are reported, never resolved. Nothing here is applied: '
-                  'rulings reach houseStyleTerms.js, the concept model and the ruling set only through '
-                  'later, separately recorded steps.'),
+                  'database. `answers` were saved by [USER]. `untouched` are default and gained rows with no '
+                  'saved answer: `confirmed` when [USER] pressed that tab\'s "Confirm this list" '
+                  '(`meta.confirm_defaults` / `meta.confirm_gained`), so the proposed word stands as ruled; '
+                  '`not-reviewed` otherwise, a proposal and never an answer (2026-10-11: silence is not '
+                  'consent). `open` was not answered. `checks` are reported, never resolved. Nothing here is '
+                  'applied: rulings reach houseStyleTerms.js, the concept model and the ruling set only '
+                  'through later, separately recorded steps.'),
         'exportedAt': '2026-10-11',
         'page': {'url': PAGE_URL, 'collections': ['stage1_terms', 'stage1_meta'],
-                 'dataSha256': data_sha, 'generator': 'experiments/terminology-consistency/stage1_page.py'},
+                 'dataSha256': data_sha,
+                 'dataShaNote': (f'hash of the DATA in the page passed as <page.html>. The 100 cards were '
+                                 f'answered on Version 2 (DATA sha256 {CARDS_PAGE_SHA}); the later tabs on '
+                                 f'Version 4, whose DATA differs only in showing [[MATH:n]] as [formula]. '
+                                 f'Item ids are identical across versions.'), 'generator': 'experiments/terminology-consistency/stage1_page.py'},
         'repoHead': head,
         'counts': {
             'answers': len(answers),
