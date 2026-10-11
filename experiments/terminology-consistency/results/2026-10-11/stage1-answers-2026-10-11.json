@@ -10,7 +10,7 @@
   "dataSha256": "e810c6766af2a5c5834b2ab39d41ac3d71e6b50c4fbb077c2f66273d1824218b",
   "generator": "experiments/terminology-consistency/stage1_page.py"
  },
- "repoHead": "18ae7f9e9a731250a4e44a12f80d34d5ed38cfb1",
+ "repoHead": "1e7bb20b0db4aa2bef1d7b161b22d7174e5e0eed",
  "counts": {
   "answers": 100,
   "answersByChoice": {
@@ -24,6 +24,7 @@
   },
   "defaultsNotReviewed": 81,
   "gainedNotReviewed": 66,
+  "defaultsConfirmed": 0,
   "cardsUnanswered": 0,
   "wrongSenseOpen": 3,
   "scopeNotBook": 0

@@ -13,7 +13,8 @@ three checks a ruling needs before it is applied:
      proposed word (`defaultWord` in stage1_page.template.html). The page said a default needs no
      action unless [USER] disagrees, but an empty row cannot tell "seen and accepted" from "not
      seen" ([USER], 2026-10-11: only the first tab was gone through). So these are PROPOSALS,
-     labelled `not-reviewed`, and are never treated as answers.
+     labelled `not-reviewed`, and are never treated as answers, until [USER] presses the tab's
+     "Confirm this list" (stage1_meta/confirm_defaults, confirm_gained); then `confirmed`.
   3. OPEN: wrong-sense rows with no answer, and the publication rule if `stage1_meta/criterion`
      is empty.
 
@@ -101,13 +102,14 @@ def main():
             continue
         untouched.append({'id': i, 'ch': t['ch'], 'en': t['en'], 'Kold': t['Kold'], 'Knew': t['Knew'],
                           'tab': 'gained' if t['bucket'] in ('gained', 'gained-same') else 'defaults',
-                          'bucket': t['bucket'], 'proposed': default_word(t), 'status': 'not-reviewed'})
+                          'bucket': t['bucket'], 'proposed': default_word(t),
+                          'status': 'confirmed' if f"confirm_{'gained' if t['bucket'] in ('gained', 'gained-same') else 'defaults'}" in meta else 'not-reviewed'})
     untouched.sort(key=lambda r: r['id'])
     cards_unanswered = sorted(i for i, t in items.items() if t['bucket'] == 'card' and i not in saved)
     open_items = {
         'cardsUnanswered': cards_unanswered,
-        'defaultsNotReviewed': sum(r['tab'] == 'defaults' for r in untouched),
-        'gainedNotReviewed': sum(r['tab'] == 'gained' for r in untouched),
+        'defaultsNotReviewed': sum(r['tab'] == 'defaults' and r['status'] == 'not-reviewed' for r in untouched),
+        'gainedNotReviewed': sum(r['tab'] == 'gained' and r['status'] == 'not-reviewed' for r in untouched),
         'wrongSense': [{'id': w['id'], 'en': w['en'], 'row': w['row']} for i, w in ws.items() if i not in saved],
         'publicationRule': 'open' if 'criterion' not in meta else None,
     }
@@ -167,8 +169,9 @@ def main():
             'answers': len(answers),
             'answersByChoice': {c: sum(r['choice'] == c for r in answers) for c in sorted({r['choice'] for r in answers})},
             'answersBySection': {s: sum(r['section'] == s for r in answers) for s in sorted({r['section'] for r in answers})},
-            'defaultsNotReviewed': sum(r['tab'] == 'defaults' for r in untouched),
-            'gainedNotReviewed': sum(r['tab'] == 'gained' for r in untouched),
+            'defaultsNotReviewed': sum(r['tab'] == 'defaults' and r['status'] == 'not-reviewed' for r in untouched),
+            'gainedNotReviewed': sum(r['tab'] == 'gained' and r['status'] == 'not-reviewed' for r in untouched),
+            'defaultsConfirmed': sum(r['status'] == 'confirmed' for r in untouched),
             'cardsUnanswered': len(cards_unanswered),
             'wrongSenseOpen': len(open_items['wrongSense']),
             'scopeNotBook': sum((r.get('scope') or 'book') != 'book' for r in answers),

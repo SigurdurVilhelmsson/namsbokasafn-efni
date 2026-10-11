@@ -95,7 +95,7 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
 <div class="wrap">
   <header class="lede">
     <h1>Chemistry term rulings: stage 1</h1>
-    <p>Close the ruling set before the machine-revised layer is built. Every answer saves to this page as you go, so short sittings work. Where a default is shown, <b>you need to do nothing unless you disagree</b>.</p>
+    <p>Close the ruling set before the machine-revised layer is built. Every answer saves to this page as you go, so short sittings work. Where a default is shown, change it only if you disagree, then press <b>Confirm this list</b> at the end of the tab, so a list you have not reached yet stays open.</p>
     <div class="big" id="big"></div>
     <p class="muted" id="refs"></p>
   </header>
@@ -161,18 +161,40 @@ function defaultWord(t) {
   return t.maj === 'july' ? t.Kold : t.Knew;
 }
 
+// A default list counts as reviewed only when [USER] confirms it: an unanswered row cannot tell
+// "seen and accepted" from "not reached yet".
+function confirmText(k) {
+  const c = meta['confirm_' + k];
+  return c ? `Confirmed ${c.savedAt.slice(0, 10)}: the words shown stand, except the ones you changed.` : 'Not confirmed yet.';
+}
+function confirmHtml(k, n) {
+  return `<div class="panel crit"><div class="row"><button type="button" id="cf-${k}">Confirm this list</button>
+    <span class="saved" id="cf-msg-${k}" aria-live="polite">${esc(confirmText(k))}</span></div>
+    <p class="muted">Press when you have gone through all ${n}: the words shown then stand, except the ones you changed with “Change”. Clear the filters first, so the whole list has been in view.</p></div>`;
+}
+function wireConfirm(k, list) {
+  $('#cf-' + k).onclick = async () => {
+    const msg = $('#cf-msg-' + k);
+    if (!db) { msg.textContent = 'Answers cannot be saved in this view.'; return; }
+    try {
+      await db.collection('stage1_meta').doc('confirm_' + k).set({ rows: list.length, changed: list.filter((t) => answers.has(t.id)).length, savedAt: new Date().toISOString() });
+      msg.textContent = 'Confirmed.';
+    } catch (e) { msg.textContent = 'Not saved. Try again.'; }
+  };
+}
+
 function renderSummary() {
   const done = (ids) => ids.filter((t) => answers.has(t.id)).length;
   $('#big').innerHTML = `
     <div><b>${done(cards)} / ${cards.length}</b><span>terms ruled</span></div>
-    <div><b>${defaults.length + gained.length}</b><span>defaults and gained terms, ${done(defaults) + done(gained)} changed</span></div>
+    <div><b>${['defaults', 'gained'].filter((k) => meta['confirm_' + k]).length} / 2</b><span>default lists confirmed (${defaults.length} + ${gained.length} terms), ${done(defaults) + done(gained)} changed</span></div>
     <div><b>${done(DATA.wrongSense)} / ${DATA.wrongSense.length}</b><span>wrong-sense rows answered</span></div>
     <div><b>${meta.criterion ? 'Answered' : 'Open'}</b><span>publication rule</span></div>`;
   const rs = DATA.rulingSet;
   $('#refs').textContent = `Ruling set in force: ${rs.headwords} English headwords with a target (repository ${rs.head}), ${rs.conflicts} conflicts between sources. Source data: experiments/terminology-consistency/ (stage1_page.py, compile_ruling_set.py).`;
   for (const b of $('#tabs').children) {
     const p = PARTS.find((x) => x.id === b.dataset.part);
-    const n = { cards: cards.length - done(cards), defaults: defaults.length, gained: gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
+    const n = { cards: cards.length - done(cards), defaults: meta.confirm_defaults ? 0 : defaults.length, gained: meta.confirm_gained ? 0 : gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
     b.innerHTML = `${esc(p.label)} <span class="n">${n}</span>`;
   }
 }
@@ -302,11 +324,15 @@ function renderPart() {
     const c = DATA.counts;
     m.innerHTML = `<section class="part"><div class="parthead"><h2>Defaults (1.4)</h2>
       <p class="muted">${defaults.length} headwords take a default instead of a card: ${c.spelling} that differ only in spelling or form, ${c.lown} with under 3 sentences of text, and ${c.elsewhere} already ruled in another chapter. The default word is in green. Open “Change” only where you disagree.</p></div>
-      ${grouped(defaults, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No defaults match the filters.')}</section>`;
+      ${grouped(defaults, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No defaults match the filters.')}
+      ${confirmHtml('defaults', defaults.length)}</section>`;
+    wireConfirm('defaults', defaults);
   } else if (part === 'gained') {
     m.innerHTML = `<section class="part"><div class="parthead"><h2>Gained terms (1.3)</h2>
       <p class="muted">${DATA.gainedTotal} terms became consistent in the September text that were not in July. ${byBucket('gained').length} changed word and default to the September word; ${DATA.gainedSame.length} kept the same word or follow a ruling already in force. ${DATA.gainedElsewhere} more are listed under Defaults. The review page of 2026-10-10 showed only the terms that lost consistency, so none of these has been seen.</p></div>
-      ${grouped(gained, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No gained terms match the filters.')}</section>`;
+      ${grouped(gained, (ts) => `<div class="list">${ts.map(rowHtml).join('')}</div>`, 'No gained terms match the filters.')}
+      ${confirmHtml('gained', gained.length)}</section>`;
+    wireConfirm('gained', gained);
   } else if (part === 'wrong') {
     m.innerHTML = `<section class="part"><div class="parthead"><h2>Wrong-sense glossary rows (1.5)</h2>
       <p class="muted">Three approved glossary rows translate the right English word in the wrong sense. They are still approved, so they feed the editors' terminology flags. Give the right word. The fix goes into the concept model through a script you run on the server. The AI pre-screen of the other ~390 approved rows comes later on this page.</p></div>
@@ -407,6 +433,7 @@ renderPart();
     db.collection('stage1_meta').onSnapshot((snap) => {
       meta = {}; for (const d of snap.docs) meta[d.id] = d.data();
       renderSummary();
+      for (const k of ['defaults', 'gained']) { const el = document.getElementById('cf-msg-' + k); if (el) el.textContent = confirmText(k); }
     }, () => {});
   } catch (e) { setStatus('Answers cannot be saved in this view.', true); }
 })();
