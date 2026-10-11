@@ -271,3 +271,5 @@ It also holds three checks, reported and never resolved:
 - **`septemberCounts`:** occurrences of the chosen word in the September text. Only the citation form is counted, so the count is a floor.
 
 `page.dataSha256` is the hash of the page passed in. The final export (all tabs answered, both lists confirmed) used Version 4; the 100 cards were answered on Version 2, whose hash is kept as `page.dataShaNote`. Item ids are the same in every version. Version 3 changed only the display of formula placeholders: `stage1_page.py` now shows `[formula]` where Version 2 showed the bare placeholder number, as in "(56)".
+
+**Chat answers.** `results/2026-10-11/stage1-chat-answers-2026-10-11.json` holds [USER]'s answers to the seven questions the checks raised (2026-10-11, "I agree with your picks"). Each of its 17 rows names the page answer and the word that supersedes it. The compile step reads both files: a row in the chat file wins over the page answer for the same id.
