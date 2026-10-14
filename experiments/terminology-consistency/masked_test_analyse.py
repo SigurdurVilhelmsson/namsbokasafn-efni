@@ -19,6 +19,15 @@ THE MASKING CHECK (plan: "if [USER] guesses well above chance, the masking faile
   A per-pair guess gives the check the same power as the main result; one guess at the end
   would be a coin flip either way.
 
+AMENDED 2026-10-14, key-blind, after 30 of 150 answers and before any further one: the term
+mask missed a class (terms and substance names that no ruling covers, plus four ruled terms the
+patterns could not follow; README § 1.7). --exclude FILE names the flagged pairs
+(results/2026-10-11/masked-test-term-flags.json). The quality rule is then applied TWICE, to all
+answered pairs as registered and to the pairs left after exclusion, and the override fires only
+if it fires on BOTH. That is never looser than either reading alone, so it keeps D1's asymmetry
+toward September and does not pick a primary after collection began. The masking check stays
+over every pair, flagged ones included, because a term leak is exactly what it should see.
+
 Inputs:
   --pairs   results/2026-10-11/masked-test-pairs.json (carries the key's sha256)
   --key     masked-test-key.json (off-repo until the answers are frozen; its sha256 must match)
@@ -75,6 +84,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--pairs'); ap.add_argument('--key'); ap.add_argument('--answers')
     ap.add_argument('--table', action='store_true')
+    ap.add_argument('--exclude', help='flag file; the rule must fire with and without these pairs')
     a = ap.parse_args()
     if a.table:
         for n in (20, 40, 60, 80, 100, 120, 150):
@@ -93,7 +103,9 @@ def main():
     ans = load_answers(a.answers)
     ids = {p['pair_id'] for p in pairs['pairs']}
 
+    excl = {f['pair_id'] for f in json.load(open(a.exclude))['flags']} if a.exclude else set()
     tally = {'june': 0, 'sept': 0, 'equal': 0, 'both_wrong': 0}
+    tally_x = dict(tally)
     guess = {'right': 0, 'wrong': 0, 'unsure': 0}
     seen, bad = set(), []
     for r in ans:
@@ -102,10 +114,10 @@ def main():
             bad.append(r); continue
         seen.add(pid)
         june_side = key[pid]['june']
-        if ch in ('A', 'B'):
-            tally['june' if ch == june_side else 'sept'] += 1
-        else:
-            tally[ch] += 1
+        k = ('june' if ch == june_side else 'sept') if ch in ('A', 'B') else ch
+        tally[k] += 1
+        if pid not in excl:
+            tally_x[k] += 1
         if g in ('A', 'B'):
             sept_side = 'B' if june_side == 'A' else 'A'
             guess['right' if g == sept_side else 'wrong'] += 1
@@ -113,6 +125,7 @@ def main():
             guess['unsure'] += 1
 
     n = tally['june'] + tally['sept']
+    nx = tally_x['june'] + tally_x['sept']
     gn = guess['right'] + guess['wrong']
     masking_failed = gn > 0 and wilson_low(guess['right'], gn) > 0.5
     out = {
@@ -121,13 +134,19 @@ def main():
         'juneShare': round(tally['june'] / n, 4) if n else None,
         'juneShareWilsonLow95': round(wilson_low(tally['june'], n), 4) if n else None,
         'minJuneWinsForThisN': min_wins(n) if n else None,
+        **({'excluded': len(excl), 'tallyAfterExclusion': tally_x, 'decisiveAfterExclusion': nx,
+            'juneShareAfterExclusion': round(tally_x['june'] / nx, 4) if nx else None,
+            'juneShareWilsonLow95AfterExclusion': round(wilson_low(tally_x['june'], nx), 4) if nx else None,
+            'minJuneWinsAfterExclusion': min_wins(nx) if nx else None,
+            'firesAll': fires(tally['june'], n), 'firesAfterExclusion': fires(tally_x['june'], nx)}
+           if a.exclude else {}),
         'septGuess': guess, 'guessCorrectShare': round(guess['right'] / gn, 4) if gn else None,
         'guessWilsonLow95': round(wilson_low(guess['right'], gn), 4) if gn else None,
         'maskingFailed': masking_failed,
     }
     if masking_failed:
         out['verdict'] = 'NOT USED: the vintages were recognisable (masking failed). Base stays September by default.'
-    elif fires(tally['june'], n):
+    elif fires(tally['june'], n) and (not a.exclude or fires(tally_x['june'], nx)):
         out['verdict'] = 'OVERRIDE FIRES: June reads clearly better. Base = hybrid (plan step 2.1).'
     else:
         out['verdict'] = 'NO OVERRIDE: base stays the September MT.'

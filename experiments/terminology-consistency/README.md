@@ -323,3 +323,36 @@ database never holds a vintage.
   this: the guess is disabled until the quality answer is picked. A reader who feels they were
   "spotting June" is seeing a known effect of the design. The test measures reading quality where the two
   texts agree on terms. It says nothing about term quality, which the rulings settle.
+
+#### Amendment, 2026-10-14: the term mask missed a class (key-blind, at 30 of 150 answers)
+
+[USER]'s notes on the first 30 pairs showed term choices the mask had not caught (*massagreinir*
+against *massagreiningartæki*; *litíum* against *litín*, the one pair where a vintage was named).
+A side-blind word diff of all 150 pairs found **39 such pairs**, listed with reasons in
+`results/2026-10-11/masked-test-term-flags.json`. **The flags were written from the vintage-blind
+pairs file and the diff only; the key was not opened.** They were committed before any further
+answer, so neither the key nor answers 31–150 shaped them.
+
+- **Two mechanisms.** (1) **34 unruled terms**: substance and element names, and chemistry or
+  maths terms that no ruling, verdict or key-terms source covers, so the mask never had their
+  words (*koltvíoxíð/koldíoxíð*, *natrín/natríum*, *jónafurð/jónamargfeldi*, *setta/mengi*).
+  (2) **4 ruled terms the patterns could not follow**: a 4–5 letter word is matched whole, so
+  *varmi* misses *varma*; *útblástur* misses *útblæstri* because i-umlaut (á→æ) is not folded;
+  and two misspellings of *amfíprótísk* match neither. Plus **1 artefact**: p013 has the escaped
+  entity `&lt;` on one side and in the English, where the other side has `<`.
+- **Not flagged:** general vocabulary, grammar, word order, place and trade names, and the
+  imperative form (singular *-ðu* against plural *-ið*), which differs systematically across
+  several pairs but is a reading matter. The per-pair guess is the check on it.
+- **The rule is applied twice** (`masked_test_analyse.py --exclude <flags>`): to every answered
+  pair as registered, and to the pairs left after exclusion. **The override fires only if it
+  fires on both.** That is never looser than either reading alone, keeps D1's asymmetry toward
+  September, and avoids choosing a new primary after collection began. **Its cost, stated now:**
+  a strong June lead on the clean pairs can still be blocked by losses on the flagged ones (a
+  control with June winning 80 of the 111 clean pairs and none of the flagged ones does not fire).
+  The masking check stays over all pairs, flagged ones included.
+- **Controls run on the amended analyser** with a synthetic key (never the real one): June
+  winning only through flagged pairs fires the registered reading and not the amended one (so no
+  override); June winning everything fires both; the clean-only lead above fires only one.
+- **Of the 30 answered, 5 are flagged**, which leaves about 111 clean pairs if the rest follow.
+  At 100 decisive clean pairs June needs 60 wins. Nothing is re-sampled and nothing on the page
+  changes for the reader.
