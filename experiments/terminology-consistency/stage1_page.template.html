@@ -75,6 +75,9 @@ details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
 .choices label { display: inline-flex; gap: 6px; align-items: center; }
 .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .saved { font-size: 0.85rem; color: var(--good); }
+.ex .diff { display: block; font-size: 0.95rem; line-height: 1.6; overflow-wrap: anywhere; }
+.diff del { background: var(--bad-soft); color: var(--bad); text-decoration: line-through; }
+.diff ins { background: var(--good-soft); color: var(--good); text-decoration: none; }
 .saved.err { color: var(--bad); }
 .empty { color: var(--muted); padding: 20px 0; }
 .list { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
@@ -137,6 +140,7 @@ const PARTS = [
   { id: 'defaults', label: 'Defaults' },
   { id: 'gained', label: 'Gained terms' },
   { id: 'wrong', label: 'Wrong-sense rows' },
+  { id: 'pending', label: 'Pending edits' },
   { id: 'reading', label: 'Reading test' },
   { id: 'criterion', label: 'Publication rule' },
   { id: 'decided', label: 'Already decided' },
@@ -152,6 +156,8 @@ let meta = {};
 let db = null;
 let part = 'cards';
 const reading = new Map();
+const pend = new Map();
+const PE = DATA.pending.rows;
 const RP = DATA.reading.pairs;
 let ri = 0;
 let readingLoaded = false;
@@ -201,13 +207,14 @@ function renderSummary() {
     <div><b>${done(cards)} / ${cards.length}</b><span>terms ruled</span></div>
     <div><b>${['defaults', 'gained'].filter((k) => meta['confirm_' + k]).length} / 2</b><span>default lists confirmed (${defaults.length} + ${gained.length} terms), ${done(defaults) + done(gained)} changed</span></div>
     <div><b>${done(DATA.wrongSense)} / ${DATA.wrongSense.length}</b><span>wrong-sense rows answered</span></div>
+    <div><b>${PE.filter((r) => pend.has(r.id)).length} / ${PE.length}</b><span>pending edits ruled</span></div>
     <div><b>${reading.size} / ${RP.length}</b><span>reading-test pairs answered</span></div>
     <div><b>${meta.criterion ? 'Answered' : 'Open'}</b><span>publication rule</span></div>`;
   const rs = DATA.rulingSet;
   $('#refs').textContent = `Ruling set in force: ${rs.headwords} English headwords with a target (repository ${rs.head}), ${rs.conflicts} conflicts between sources. Source data: experiments/terminology-consistency/ (stage1_page.py, compile_ruling_set.py).`;
   for (const b of $('#tabs').children) {
     const p = PARTS.find((x) => x.id === b.dataset.part);
-    const n = { cards: cards.length - done(cards), defaults: meta.confirm_defaults ? 0 : defaults.length, gained: meta.confirm_gained ? 0 : gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), reading: RP.length - reading.size, criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
+    const n = { cards: cards.length - done(cards), defaults: meta.confirm_defaults ? 0 : defaults.length, gained: meta.confirm_gained ? 0 : gained.length, wrong: DATA.wrongSense.length - done(DATA.wrongSense), pending: PE.filter((r) => !pend.has(r.id)).length, reading: RP.length - reading.size, criterion: meta.criterion ? 0 : 1, decided: DATA.d4.length }[p.id];
     b.innerHTML = `${esc(p.label)} <span class="n">${n}</span>`;
   }
 }
@@ -387,6 +394,53 @@ function renderReading() {
   };
 }
 
+// Word-level diff (LCS over whitespace tokens): deleted words struck, added words marked.
+function wordDiff(a, b) {
+  const x = a.split(/\s+/).filter(Boolean), y = b.split(/\s+/).filter(Boolean);
+  const L = Array.from({ length: x.length + 1 }, () => new Array(y.length + 1).fill(0));
+  for (let i = x.length - 1; i >= 0; i--) for (let j = y.length - 1; j >= 0; j--)
+    L[i][j] = x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const out = [];
+  let i = 0, j = 0;
+  while (i < x.length || j < y.length) {
+    if (i < x.length && j < y.length && x[i] === y[j]) { out.push(esc(x[i])); i++; j++; }
+    else if (i < x.length && (j === y.length || L[i + 1][j] >= L[i][j + 1])) { out.push(`<del>${esc(x[i])}</del>`); i++; }
+    else { out.push(`<ins>${esc(y[j])}</ins>`); j++; }
+  }
+  return out.join(' ');
+}
+
+function renderPending() {
+  const c = DATA.pending.byClass;
+  $('#main').innerHTML = `<section class="part"><div class="parthead"><h2>Pending edits (1.6)</h2>
+      <p class="muted">The server holds ${c.clean + c['base-changed'] + c['already-present']} chemistry edits that nobody approved or rejected, all from before the clean break (read ${esc(DATA.pending.readAt)}). Only these ${PE.length} need you: each was made on exactly the text September has now, so applying it changes only what the editor changed. Struck words are removed, marked words are added.</p></div>
+    <div class="panel"><h2>The other ${c['base-changed'] + c['already-present']}</h2><ul>
+      <li><b>${c['base-changed']}</b> were made on the older machine translation. As you decided on 17 October, they go to the editors as notes on the matching September sentence, like the ch01–ch02 Word review.</li>
+      <li><b>${c['already-present']}</b> are already in September's text word for word. Nothing to do.</li></ul></div>
+    ${PE.map((r) => { const v = pend.get(r.id); return `<article class="card${v ? ' answered' : ''}" data-pid="${r.id}">
+      <div class="top"><span class="term">Chapter ${r.ch} · ${esc(r.segment.split(':').slice(1).join(':'))}</span><span class="pill rule">${esc(r.editor)}, ${esc(r.created)}</span></div>
+      <div class="ex"><div class="en">${esc(r.en)}</div><div class="diff">${wordDiff(r.before, r.after)}</div></div>
+      ${r.note ? `<p class="meta">Editor's note: “${esc(r.note)}”</p>` : ''}
+      <fieldset><legend>Apply or drop?</legend><div class="choices">
+        <label><input type="radio" name="pc-${r.id}" value="apply"${v?.choice === 'apply' ? ' checked' : ''}> Apply the edit</label>
+        <label><input type="radio" name="pc-${r.id}" value="drop"${v?.choice === 'drop' ? ' checked' : ''}> Drop it, keep September's text</label></div></fieldset>
+      <textarea placeholder="Note (optional)" aria-label="Note on this edit">${esc(v?.note || '')}</textarea>
+      <div class="row"><button type="button">Save</button><span class="saved" aria-live="polite">${v ? 'Saved' : ''}</span></div></article>`; }).join('')}</section>`;
+  for (const el of $('#main').querySelectorAll('[data-pid]')) {
+    const id = el.dataset.pid, msg = $('.saved', el);
+    const say = (t, err) => { msg.textContent = t; msg.classList.toggle('err', !!err); };
+    $('button', el).onclick = async () => {
+      const choice = el.querySelector(`input[name="pc-${id}"]:checked`)?.value;
+      if (!choice) return say('Pick apply or drop first.', true);
+      if (!db) return say('Answers cannot be saved in this view.', true);
+      try {
+        await db.collection('stage1_pending').doc(id).set({ choice, note: $('textarea', el).value.trim(), savedAt: new Date().toISOString() });
+        say('Saved'); el.classList.add('answered');
+      } catch (e) { say('Not saved. Try again.', true); }
+    };
+  }
+}
+
 function renderPart() {
   $('#filters').hidden = !['cards', 'defaults', 'gained'].includes(part);
   for (const b of $('#tabs').children) b.setAttribute('aria-selected', String(b.dataset.part === part));
@@ -416,6 +470,9 @@ function renderPart() {
         <p class="meta"><b>${esc(w.row)}</b> means ${esc(w.meaning)}. In the June text it caused at least ${esc(w.floor)}. In the September text, ${w.sepTotal} sentences use <i>${esc(w.en)}</i> and ${w.sepRow} of them contain <i>${esc(w.stem)}-</i>: the September MT mostly does not use this row.</p>
         ${exHtml(`of the September text using ${esc(w.stem)}-`, w.exRow)}${exHtml('of how the September text renders it otherwise', w.exOther)}
         ${formHtml(w, 'wrong')}</article>`).join('')}</section>`;
+  } else if (part === 'pending') {
+    renderPending();
+    return;
   } else if (part === 'reading') {
     renderReading();
     return;
@@ -448,7 +505,6 @@ function renderPart() {
       </ul></div>
       <div class="panel later"><h2>Coming next on this page</h2><ul>
         <li><b>1.5</b> The AI pre-screen of the other approved glossary rows. You rule only the flagged ones.</li>
-        <li><b>1.6</b> The 38 pending edit rows on the server, from before the clean break: apply or drop each.</li>
       </ul></div></section>`;
   }
   wireAll();
@@ -518,6 +574,13 @@ renderPart();
         if (reading.has(RP[ri].id)) { const j = nextOpen(ri); if (j >= 0) ri = j; }
         if (part === 'reading') renderReading();
       }
+    }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
+    const pendIds = new Set(PE.map((r) => r.id));
+    db.collection('stage1_pending').onSnapshot((snap) => {
+      pend.clear();
+      for (const d of snap.docs) if (pendIds.has(d.id)) pend.set(d.id, d.data());
+      renderSummary();
+      if (part === 'pending' && !$('#main').contains(document.activeElement)) renderPending();
     }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
     db.collection('stage1_meta').onSnapshot((snap) => {
       meta = {}; for (const d of snap.docs) meta[d.id] = d.data();
