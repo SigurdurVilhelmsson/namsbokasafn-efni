@@ -369,7 +369,9 @@ substance name into two words, which round 1's substance-name class already cove
 - They are appended to the same flag file as **round 2** (`class: no-word-difference`,
   `round: 2`; the file's `round2` object holds the predicate and `answeredWhenFlagged: 39`). Round
   1's 39 entries and its method are unchanged. The key was not opened.
-- **Effect:** under the dual-reading rule an added flag can only make the override harder to fire.
-  2 of the 9 were answered when flagged (p027, p037); 7 were not.
+- **Effect:** a flag set changes only the second (clean-pairs) reading, and can move it in either
+  direction (removing a September win tilts the clean pairs toward June). The override stays
+  bounded by the registered all-pairs reading, which no flag touches. 2 of the 9 were answered
+  when flagged (p027, p037); 7 were not.
 - **Sampler gap, for any re-use:** `masked_test_sample.py` admitted pairs that differ in no word.
   Its population should require a word difference.

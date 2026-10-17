@@ -257,6 +257,6 @@
   "date": "2026-10-17",
   "answeredWhenFlagged": 39,
   "added": 9,
-  "method": "Key-blind, at 39 of 150 answers, after [USER] noted 'I fail to see a difference' on p037. Predicate, over the vintage-blind pairs file only: the two sides are not byte-equal, but their \\w+ tokens after NFKC and lower-casing are equal, so they differ only in punctuation, case or spacing. Such a pair has no word difference and should not have entered a reading test drawn from pairs that differ in words. The key was not opened. Under the dual-reading rule an added flag can only make the override harder to fire."
+  "method": "Key-blind, at 39 of 150 answers, after [USER] noted 'I fail to see a difference' on p037. Predicate, over the vintage-blind pairs file only: the two sides are not byte-equal, but their \\w+ tokens after NFKC and lower-casing are equal, so they differ only in punctuation, case or spacing. Such a pair has no word difference and should not have entered a reading test drawn from pairs that differ in words. The key was not opened. A flag set changes only the second (clean-pairs) reading, and can move it in either direction; the override stays bounded by the registered all-pairs reading, which no flag touches."
  }
 }
