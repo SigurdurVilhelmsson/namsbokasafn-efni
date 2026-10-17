@@ -109,6 +109,17 @@
   - A test pins all of it.
 - **Exposure now:** chemistry's faithful files were moved aside on 2026-08-23 (`c5f4880e`) and every other book is withheld. Re-measure before claiming 0.
 
+#### §C201 (NEW, 2026-10-17) — vefur's six content requests H1–H6 for the ② re-render: LOGGED, not scoped
+- **Source, and the owner of every number:** `../namsbokasafn-vefur/docs/handoffs/2026-10-16-reader-branches-requests-for-efni.md` on vefur `main` (arrived with vefur PR #271). Its counts were measured on efni `98a5fe2ff` and ② `48dbbb7a2`, and each has a re-measure command there. **Re-measure before acting; do not copy its numbers here.** Relayed by the vefur session 2026-10-17; a peer request, not [USER]'s approval.
+- **H1** `width`/`height` on every content `<img>`, at the size each already displays (no figure changes size; §C162 stands).
+- **H2** chapter-introduction outlines out of page-data `objectives` (and out of "Námsmarkmið"), the PDF test module dropped from ch01's outline, and a test that no introduction carries objectives.
+- **H3** one form each for four repeated things. **Which form wins is a terminology ruling for [USER], not a code choice.**
+- **H4** an Icelandic `aria-label` for the footnote back-link, and a render-time check for Cyrillic look-alike letters.
+- **H5** the module body in a non-landmark wrapper instead of a second `<main>`. 🔴 **Design only. DO NOT MERGE until vefur confirms its H7** (vefur's pager reads the module's `<main>` and must learn the new form first).
+- **H6** answered by pointer: §1.5's *accuracy*/*precision* pair is in the terminology review ([USER] ruled *accuracy → hittni*; see the 2026-10-11 entries above and the stage 1 ruling set). **Not built:** the regression gate it asks for (each term's rendering compared with the last published one, across chapter text, summaries and `glossary.json`).
+- **Timing (vefur's):** H1–H4 ride the ② re-render; H5 waits for H7; nothing here asks for a re-render on its own or changes the chemistry sync hold.
+- **Status:** not scoped. Which of H1–H4 join the ② batch is [USER]'s call.
+
 ### ⏭ 2026-10-10 (later) — SUPERSEDES THE ENTRY DIRECTLY BELOW: **✅ the whole-book measurement is DONE. ▶ [USER]: rule on the review page, https://claude.ai/artifact/Qm9nbfkNrQGMiznkE4WP6M — a word per changed term, and a decision per chapter.** ⏹ The chemistry sync stays HELD until those decisions are made.
 - **Where it lives.** The instrument, its method and its blind spots are in [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md), on branch `docs/terminology-consistency`, cut from `origin/main` `98a5fe2ff` and **unpushed**. The frozen results are in `results/2026-10-10/`. That branch also carries this register's two 2026-10-10 docs commits, cherry-picked off the held content branch.
 - **Taught terms** are each chapter's own OpenStax key-terms list (`glossary-term:<definitionId>` segments). `glossary-unified.json` is not the reference.
