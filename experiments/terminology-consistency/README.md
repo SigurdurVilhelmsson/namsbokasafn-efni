@@ -356,3 +356,20 @@ answer, so neither the key nor answers 31–150 shaped them.
 - **Of the 30 answered, 5 are flagged**, which leaves about 111 clean pairs if the rest follow.
   At 100 decisive clean pairs June needs 60 wins. Nothing is re-sampled and nothing on the page
   changes for the reader.
+
+#### Amendment, 2026-10-17: nine pairs differ in no word (key-blind, at 39 of 150 answers)
+
+On p037 [USER] wrote *"I fail to see a difference"*. Its two sides differ only in the reaction
+arrow (⟶ against →). A census over the vintage-blind pairs file found **9 pairs whose two sides
+are not byte-equal but whose `\w+` tokens (NFKC, lower-cased) are equal**: p027, p037, p041,
+p044, p045, p082, p124, p127, p140. They differ only in punctuation, case or spacing, so they
+should not have entered a test drawn from pairs that differ in words. p027 also splits a
+substance name into two words, which round 1's substance-name class already covers.
+
+- They are appended to the same flag file as **round 2** (`class: no-word-difference`,
+  `round: 2`; the file's `round2` object holds the predicate and `answeredWhenFlagged: 39`). Round
+  1's 39 entries and its method are unchanged. The key was not opened.
+- **Effect:** under the dual-reading rule an added flag can only make the override harder to fire.
+  2 of the 9 were answered when flagged (p027, p037); 7 were not.
+- **Sampler gap, for any re-use:** `masked_test_sample.py` admitted pairs that differ in no word.
+  Its population should require a word difference.

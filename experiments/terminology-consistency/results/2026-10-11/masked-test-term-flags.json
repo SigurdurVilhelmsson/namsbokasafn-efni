@@ -1,7 +1,7 @@
 {
  "method": "Key-blind correction of the 1.7 term mask, made 2026-10-14 after 30 of 150 answers and before any further answer. Written from the vintage-blind pairs file and a side-blind word diff of every pair; the key file was not opened. A pair is flagged when any difference between its two sides is a choice between two renderings of a chemistry or mathematics term, or of a substance or element name (spelling variants included), or is an extraction artefact. Not flagged: general vocabulary, grammar, word order, place and trade names, and the imperative form (singular -ðu vs plural -ið), which differs systematically in several pairs but is a reading matter, not a term.",
  "answeredWhenFlagged": 30,
- "flagged": 39,
+ "flagged": 48,
  "flags": [
   {
    "pair_id": "p012",
@@ -197,6 +197,66 @@
    "pair_id": "p144",
    "class": "unruled-term",
    "reason": "carbon dioxide: koltvíoxíð / koldíoxíð"
+  },
+  {
+   "pair_id": "p027",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "a substance name written as one word on one side and two on the other (also the round-1 substance-name class)"
+  },
+  {
+   "pair_id": "p037",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "reaction arrow glyph only (⟶ against →)"
+  },
+  {
+   "pair_id": "p041",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p044",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p045",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p082",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p124",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p127",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p140",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
   }
- ]
+ ],
+ "round2": {
+  "date": "2026-10-17",
+  "answeredWhenFlagged": 39,
+  "added": 9,
+  "method": "Key-blind, at 39 of 150 answers, after [USER] noted 'I fail to see a difference' on p037. Predicate, over the vintage-blind pairs file only: the two sides are not byte-equal, but their \\w+ tokens after NFKC and lower-casing are equal, so they differ only in punctuation, case or spacing. Such a pair has no word difference and should not have entered a reading test drawn from pairs that differ in words. The key was not opened. Under the dual-reading rule an added flag can only make the override harder to fire."
+ }
 }
