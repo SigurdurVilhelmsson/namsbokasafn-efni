@@ -118,7 +118,17 @@
 - **H5** the module body in a non-landmark wrapper instead of a second `<main>`. 🔴 **Design only. DO NOT MERGE until vefur confirms its H7** (vefur's pager reads the module's `<main>` and must learn the new form first).
 - **H6** answered by pointer: §1.5's *accuracy*/*precision* pair is in the terminology review ([USER] ruled *accuracy → hittni*; see the 2026-10-11 entries above and the stage 1 ruling set). **Not built:** the regression gate it asks for (each term's rendering compared with the last published one, across chapter text, summaries and `glossary.json`).
 - **Timing (vefur's):** H1–H4 ride the ② re-render; H5 waits for H7; nothing here asks for a re-render on its own or changes the chemistry sync hold.
-- **Status:** not scoped. Which of H1–H4 join the ② batch is [USER]'s call.
+- **Status:** ~~not scoped~~ **SCOPED 2026-10-17 by [USER]: all four of H1–H4 join the ② code batch**, built before the whole-book re-render so it runs once. H3's four "which form wins" choices go to [USER] as rulings; [CODE] builds only the mechanism. No branch cut yet. H5 stays design-only until vefur's H7.
+
+#### 1.6 (plan 2026-10-10) — the 38 pending pre-clean-break edit rows: MEASURED and FRAMED, 2026-10-17
+- **Measured read-only on prod** (database opened `readonly`, script sent on stdin): chemistry `segment_edits` is 112 approved / 38 pending / 1 rejected. The 38 sit on **38 distinct segments, none with any other row**; 37 in ch03 `m68700`, 1 in ch01 `m68674`; created 2026-03-06 → 2026-07-04, by 2 editors (names deliberately not recorded here; public repo).
+- **Against the current September MT** (`02-mt-output`):
+  - **5** already equal the editor's text: September's MT produced it. No HAND REPAIR is involved (each text arrived in an MT commit). **Closed as already present.**
+  - **10** have `original_content` equal to September's text, so the edit applies to the text it was made on. **[USER] rules these 10: apply or drop.**
+  - **23** were made on the older MT: their base text has changed (whitespace-normalised, still different; similarity 0.59–0.99).
+- 🔴 **`applyApprovedEdits` never compares `original_content` with the current segment. It writes `edited_content` over whatever is there.** So approving one of the 23 would silently replace September's text with the editor's version of the older MT. Any future re-attach of an edit made on a different base needs that guard first.
+- **Decided ([USER] 2026-10-17): the 23 are treated like the ch01–ch02 Word review (D10 follow-up):** each becomes an editor note on its September segment, through plan 2.2's note mechanism, and nothing enters layer 3 until an editor applies it.
+- **Prod writes stay [USER]'s:** the rulings reach prod through a committed script that [USER] runs (the 1.5 pattern), never by hand.
 
 ### ⏭ 2026-10-10 (later) — SUPERSEDES THE ENTRY DIRECTLY BELOW: **✅ the whole-book measurement is DONE. ▶ [USER]: rule on the review page, https://claude.ai/artifact/Qm9nbfkNrQGMiznkE4WP6M — a word per changed term, and a decision per chapter.** ⏹ The chemistry sync stays HELD until those decisions are made.
 - **Where it lives.** The instrument, its method and its blind spots are in [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md), on branch `docs/terminology-consistency`, cut from `origin/main` `98a5fe2ff` and **unpushed**. The frozen results are in `results/2026-10-10/`. That branch also carries this register's two 2026-10-10 docs commits, cherry-picked off the held content branch.
