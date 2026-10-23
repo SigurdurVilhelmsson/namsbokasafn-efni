@@ -1,0 +1,173 @@
+{
+ "about": "[USER]'s rulings on the 10 clean pending chemistry edits (plan 2026-10-10, item 1.6), frozen from a dump of the stage 1 page database by experiments/terminology-consistency/export_pending_answers.py. A ruling is recorded here; it reaches prod only through a committed script that [USER] runs, and \"apply\" means a status change, never running applyApprovedEdits.",
+ "page": {
+  "url": "https://claude.ai/artifact/DgVvKPCVcWMaHsM9NVtF3w",
+  "collection": "stage1_pending",
+  "version": 6,
+  "builtAt": "526bd4cee",
+  "generator": "experiments/terminology-consistency/stage1_page.py"
+ },
+ "input": {
+  "path": "experiments/terminology-consistency/results/2026-10-17/pending-edits-2026-10-17.json",
+  "sha256": "f3645ea2b6357945237ca3171326220926f6938a96ac8dd005b7789f95cd3a82",
+  "readAt": "2026-10-17T11:04:12.737Z",
+  "repoHead": "7b065a76c7dda841f76918c3b573affd7d34d87e"
+ },
+ "tally": {
+  "apply": 10,
+  "drop": 0
+ },
+ "answers": [
+  {
+   "id": 129,
+   "docId": "e129",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp12657920",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:11.622Z",
+   "version": 1
+  },
+  {
+   "id": 130,
+   "docId": "e130",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp66967088",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:26.800Z",
+   "version": 1
+  },
+  {
+   "id": 132,
+   "docId": "e132",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp17618896",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:30.932Z",
+   "version": 1
+  },
+  {
+   "id": 134,
+   "docId": "e134",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:solution:fs-idp55880896",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:35.989Z",
+   "version": 1
+  },
+  {
+   "id": 136,
+   "docId": "e136",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idm147492048",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:42.700Z",
+   "version": 1
+  },
+  {
+   "id": 137,
+   "docId": "e137",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp75868160",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:46.487Z",
+   "version": 1
+  },
+  {
+   "id": 140,
+   "docId": "e140",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp52331520",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:49.777Z",
+   "version": 1
+  },
+  {
+   "id": 141,
+   "docId": "e141",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp51969104",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:52.628Z",
+   "version": 1
+  },
+  {
+   "id": 150,
+   "docId": "e150",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:problem:fs-idp41417120",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:55.294Z",
+   "version": 1
+  },
+  {
+   "id": 160,
+   "docId": "e160",
+   "chapter": 3,
+   "module": "m68700",
+   "segment": "m68700:solution:fs-idp71749776",
+   "choice": "apply",
+   "note": "",
+   "savedAt": "2026-10-23T14:53:58.897Z",
+   "version": 1
+  }
+ ],
+ "notAsked": {
+  "already-present": {
+   "ids": [
+    152,
+    155,
+    156,
+    157,
+    158
+   ],
+   "n": 5
+  },
+  "base-changed": {
+   "ids": [
+    4,
+    131,
+    133,
+    135,
+    138,
+    139,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    153,
+    154,
+    159,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166
+   ],
+   "n": 23
+  }
+ },
+ "total": 38
+}
