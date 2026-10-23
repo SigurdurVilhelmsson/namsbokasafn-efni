@@ -52,7 +52,7 @@
   - [USER]'s other funding paperwork before S (what the final report needs; telling both funds the dates in writing) → the private companion.
 - **The ch01–ch02 editor notes need a small design step** (plan 2.2): the editor's `segment_discussions` hangs on an edit row (`segment_edit_id`), not on a segment. The bridge is the English source `.docx` (192 of 198 changed or commented paragraphs map). Build it before ch01–ch02 are opened for editing.
 - **Commits, local and unpushed on `docs/terminology-consistency`:**
-  - `c585f5e37`: the proposal, its evidence and §C200, unchanged;
+  - `c585f5e37`: the proposal, its evidence and §C202 (its message says §C200, the number before the 2026-10-23 renumber), unchanged;
   - `0e4d9e313`: the first record, the plan's rev. 5, this entry and the D4b census;
   - `13c3e2cc1`: the `trigonal planar` code change. **From that commit on, the branch is no longer docs-only**: pushing it means a code change and a prod deploy;
   - `68fa70f1a`: the ch01–ch02 Word-review measurement (plan 0.2);
@@ -95,7 +95,8 @@
   - chemistry MT locks: **0** (control: biology 1).
 - **The proposal, its evidence directory and this entry are UNCOMMITTED** on `docs/terminology-consistency`, waiting for [USER]'s go-ahead. The private funding companion is in the git-excluded `docs/grants/`.
 
-#### §C200 (NEW, 2026-10-10) — the TM and corpus treat a module's carried-over MT as human-reviewed
+#### §C202 (NEW, 2026-10-10) — the TM and corpus treat a module's carried-over MT as human-reviewed
+- 🔢 **Renumbered 2026-10-23; it was §C200.** It was written as §C200 on the unpushed branch `docs/terminology-consistency`. The same day the branch merged `main`, PR #555 had taken §C200 on `main` for the Node2Shell entry (below), which code and tests cite. **Read "§C200" as this entry in two immutable places:** the message of `c585f5e37`, and `docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md` (frozen).
 - **Found by** the plan's Opus critic. **Verified by reading the code.**
 - **The mechanism:**
   - `applyApprovedEdits` (`server/services/segmentEditorService.js`) writes the module's WHOLE base text into `03-faithful-translation/` (`content: overlay ? winner.edited_content : seg.is`). The first approved edit therefore files every unedited segment as faithful.
@@ -132,7 +133,7 @@
 - **Prod writes stay [USER]'s:** the rulings reach prod through a committed script that [USER] runs (the 1.5 pattern), never by hand.
 - **✅ ON THE STAGE 1 PAGE (Version 6, 2026-10-17)**, tab *Pending edits*: the 10 clean rows as a word diff, answers in a new `stage1_pending` collection `{choice: apply|drop, note}`. The reading test's pair data is byte-identical to Version 5 (compared against the live page) and its 39 saved answers are intact. **▶ [USER]: rule the 10.** [CODE] after: freeze the answers, then the prod script.
 - ⚠️ **The prod script closes ALL 38, not the 10.** Each row needs a terminal status, or it stays `pending` in the editors' review queue for `m68700` indefinitely: the 10 as ruled; the 5 already present closed with a reviewer note (already in the base); the 23 closed once their conversion to editor notes is recorded.
-- ⚠️ **"Apply" means a status change, never running `applyApprovedEdits` now.** It writes the module's whole base text into `03-faithful-translation/` (§C200), chemistry's faithful tree is retired (#535), and editing stays held until the 2026-09-26 block's ③ fixes land. Where approved rows reach the text is plan stage 2 / 4.2's question; the script only records the ruling.
+- ⚠️ **"Apply" means a status change, never running `applyApprovedEdits` now.** It writes the module's whole base text into `03-faithful-translation/` (§C202), chemistry's faithful tree is retired (#535), and editing stays held until the 2026-09-26 block's ③ fixes land. Where approved rows reach the text is plan stage 2 / 4.2's question; the script only records the ruling.
 
 ### ⏭ 2026-10-10 (later) — SUPERSEDES THE ENTRY DIRECTLY BELOW: **✅ the whole-book measurement is DONE. ▶ [USER]: rule on the review page, https://claude.ai/artifact/Qm9nbfkNrQGMiznkE4WP6M — a word per changed term, and a decision per chapter.** ⏹ The chemistry sync stays HELD until those decisions are made.
 - **Where it lives.** The instrument, its method and its blind spots are in [`experiments/terminology-consistency/`](../../experiments/terminology-consistency/README.md), on branch `docs/terminology-consistency`, cut from `origin/main` `98a5fe2ff` and **unpushed**. The frozen results are in `results/2026-10-10/`. That branch also carries this register's two 2026-10-10 docs commits, cherry-picked off the held content branch.
@@ -239,6 +240,20 @@ The preview is local vefur, synced from `content/c2-whole-book-reinject` (`48dbb
 - ⚠️ **The glossary itself is wrong for one of them: `accuracy → nákvæmni` (approved), the same word as `precision`.** The title [USER] ruled says *hittni*. The adherence instrument therefore scores the new error as "better", so do not judge accuracy/precision with it.
 - [USER]'s other preview notes (not yet measured): ch02 title *Frumeindir…* against approved `atom → atóm` (no title ruling exists for ch02); figure 2.5 mixes *koparfrumeind* and *klóratóm*; figure 1.16 says *forskaut/bakskaut* against the ruled *anóða/katóða*; figure artefacts on 1.26 (stray numbers) and in Dæmi 1.7 (white rectangles, 2 figures); the textless figures in "Markverðir stafir" got new labels, many worse than June.
 - **This bears on the sync:** the preview is the content the sync would ship, and on these terms it is worse than what is live. Evidence (live pages, both MT vintages, `adherence.py`, `sidebyside.py`) is off-repo in `~/.cache/namsbokasafn-audit/2026-10-10-ch01-term-compare/`.
+
+### 🔐 §C200 (new, 2026-10-23) — Node2Shell reached the decoder through the body parsers, and `/downloads` served `sessions.db`. **Independent of the next action above.**
+- **Source:** a security inspection of all [USER]'s repos after the October alerts (PHP2Shell, Node2Shell CVE-2026-111497, the eMudhra CA keys). ritstjorn, the reader and kvenno.app resolve to one host, and both Node services run its `/usr/bin/node`.
+- ✅ **Node on the host to 22.23.4+: done 2026-10-23 by [USER].** The last recorded prod Node was 22.23.3; the fix is 22.23.4.
+- ✅ **[PR #555](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/555) MERGED 2026-10-23 14:45Z (`a4715ca55`)**, `server/` only. ⏳ **It reaches prod only with the next `./scripts/deploy.sh`**; until then prod still inflates compressed bodies and still serves `/downloads`. *(This line said "draft" until the merge.)*
+  - `server/middleware/refuseCompressedBodies.js` answers any `Content-Encoding` but `identity` with 415 before anything reads the body, and both parsers in `server/index.js` get `inflate: false`. Before it, `express.json`/`urlencoded` inflated `br` from anyone, ahead of auth.
+  - The `/downloads` mount is removed. It served all of `pipeline-output/` to any signed-in user, with no role check: `sessions.db` (users, roles, edits, feedback), its backups and the cron logs. Nothing linked to it.
+  - Tests: `refuseCompressedBodies.test.js` (real compressed bytes; an unguarded parser is the control) and `indexBodyHardening.test.js` (wiring, on the source). Both fail with the fix undone.
+- 🔎 **OPEN, same inspection, not in that PR:**
+  - **SA-19** of `docs/audit/security-audit-2026-05-29.md`, open redirect after login: `server/routes/auth.js` accepts `redirect` if it starts with `/` and not `//`, so `/\host` passes and browsers read it as `//host`. Confirmed by reading; not executed.
+  - **SA-01**, attribute-level stored XSS through allowlisted CNXML tags, reaching the preview and the reader; the CSP keeps `'unsafe-inline'`. From the inspection's static reading; not executed.
+  - `ip-address` 10.7.2 → 10.7.4 in `server/` (a moderate ReDoS; `req.ip` comes from nginx, so not attacker-set).
+  - Actions pinned to mutable tags, and `sync-content.yml` interpolating `github.event.inputs.book` into `run:` (writer-only; the workflow has never run).
+  - [USER], on prod: `MS_TENANT_ID` (the code falls back to `common`, which admits any Microsoft account) and `AUTO_CREATE_USERS` (on unless `false`) decide who counts as signed in.
 
 ### ▶ [CODE] in parallel — the 2026-09-26 block's ② code batch, which must land BEFORE [USER]'s whole-book re-render (or the re-render runs twice)
 - ✅ **`stripAltMarkers` widened** on the local branch `fix/c2-alt-markup-residue` (unpushed; it carries this block's two docs commits). Detail on the ② bullet below.
