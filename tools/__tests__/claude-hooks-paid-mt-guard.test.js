@@ -47,6 +47,31 @@ describe('paid-MT guard — commands that must NOT prompt', () => {
   it('stays out of the way of unrelated commands', () => {
     expect(inspect('git status --porcelain')).toBeNull();
   });
+
+  // 2026-10-23: reading the tool's SOURCE prompted as if it were a paid run.
+  // [USER] got repeated cost warnings while sessions and agents only read the
+  // file (git show of an old revision, grep, sed). Nothing ran, nothing was
+  // spent. A false alarm on a read erodes the prompt the same way one on
+  // --dry-run would (see the header), so reads stay silent.
+  it('stays silent when an old revision of the tool is read with git show', () => {
+    expect(
+      inspect('git show 7658de896:tools/api-translate.js > /tmp/x/api-translate-old.js')
+    ).toBeNull();
+  });
+
+  it('stays silent when the tool is grepped', () => {
+    expect(inspect('grep -an "function formatGlossary" tools/api-translate.js')).toBeNull();
+  });
+
+  it('stays silent when the tool is printed or counted', () => {
+    expect(
+      inspect("sed -n '1,40p' tools/api-translate.js && wc -l tools/translate-chapter-titles.js")
+    ).toBeNull();
+  });
+
+  it('stays silent when the tool is printed with no flag at all', () => {
+    expect(inspect('cat tools/api-translate.js | head -40')).toBeNull();
+  });
 });
 
 describe('paid-MT guard — commands that must prompt', () => {
@@ -74,5 +99,61 @@ describe('paid-MT guard — commands that must prompt', () => {
     expect(inspect('node tools/api-translate.js --book efnafraedi-2e --chapter 7')).toMatch(
       /02-for-mt\/ch07/
     );
+  });
+
+  // The narrowing above must not open the paid path. Every shape a real run
+  // takes in this repo's sessions and drivers still prompts.
+  it('prompts on a run after cd', () => {
+    expect(
+      inspect('cd /home/u/repo && node tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run with an environment prefix', () => {
+    expect(
+      inspect('MALSTADUR_API_KEY=k node tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run by absolute path under timeout', () => {
+    expect(
+      inspect(
+        'timeout 600 node /home/u/repo/tools/api-translate.js --book efnafraedi-2e --chapter 7'
+      )
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run with node flags before the path', () => {
+    expect(
+      inspect('node --env-file=.env tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  // 2026-10-23, found while adding the read cases: the free-flag test looked at
+  // the WHOLE command line, so a -n or -h belonging to another program in the
+  // pipeline (tail -n, grep -n, du -h) made a paid run read as a dry run, and
+  // it went through with no prompt. Only the tool's own arguments count.
+  it('prompts on a paid run piped through tail -n', () => {
+    expect(
+      inspect('node tools/api-translate.js --book efnafraedi-2e --chapter 7 2>&1 | tail -n 20')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a paid run followed by a command with -h', () => {
+    expect(
+      inspect('node tools/api-translate.js --book efnafraedi-2e --chapter 7 && du -h books')
+    ).toBeTruthy();
+  });
+
+  it('still stays silent on a dry run piped through tail -n', () => {
+    expect(
+      inspect('node tools/api-translate.js --book efnafraedi-2e --dry-run | tail -n 5')
+    ).toBeNull();
+  });
+
+  it('prompts on a node script that loads the tool, to stay on the safe side', () => {
+    expect(
+      inspect('node -e "import(\'./tools/api-translate.js\').then((m) => m.main())"')
+    ).toBeTruthy();
   });
 });

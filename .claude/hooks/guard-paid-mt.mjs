@@ -35,6 +35,26 @@ import { join, dirname, resolve } from 'node:path';
 const PAID_TOOLS = /tools\/(api-translate|translate-chapter-titles)\.js\b/;
 const FREE_FLAGS = /(^|\s)(--dry-run|-n|--help|-h)(\s|$)/;
 
+/**
+ * A command can only RUN the tool through a JavaScript runtime. Without one it
+ * is a read of the source (git show, grep, sed, cat), which costs nothing.
+ * MEASURED 2026-10-23: such reads prompted as paid runs and [USER] got repeated
+ * cost warnings while nothing was spent. Any runtime word counts, so a
+ * `node -e` that merely loads the tool still prompts: the safe side.
+ */
+const RUNS_JS = /(^|[\s;&|()`])(node|npx|bun|deno)(?=\s|$)/;
+
+/**
+ * The tool's OWN argument list: from its path to the next shell operator.
+ * MEASURED 2026-10-23: matching FREE_FLAGS against the whole command let a -n
+ * or -h from another program in the pipeline (`| tail -n 20`, `&& du -h`)
+ * pass a paid run off as a dry run, with no prompt at all.
+ */
+function toolArgs(command) {
+  const m = command.match(/tools\/(?:api-translate|translate-chapter-titles)\.js\b([^;&|]*)/);
+  return m ? m[1] : '';
+}
+
 const repo = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 
 /**
@@ -131,7 +151,8 @@ const flag = (command, name) => {
 /** @returns {string|null} the reason to ask, or null to stay out of the way. */
 export function inspect(command) {
   if (!PAID_TOOLS.test(command)) return null;
-  if (FREE_FLAGS.test(command)) return null;
+  if (!RUNS_JS.test(command)) return null;
+  if (FREE_FLAGS.test(toolArgs(command))) return null;
 
   const book = flag(command, 'book') || 'efnafraedi-2e';
   const chapter = flag(command, 'chapter');
