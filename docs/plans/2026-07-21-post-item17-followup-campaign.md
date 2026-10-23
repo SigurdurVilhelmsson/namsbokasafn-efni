@@ -57,6 +57,20 @@
 
   Check `server/lib/houseStyleTerms.js` and the glossary before any text-side change.
 
+### 🔐 §C200 (new, 2026-10-23) — Node2Shell reached the decoder through the body parsers, and `/downloads` served `sessions.db`. **Independent of the next action above.**
+- **Source:** a security inspection of all [USER]'s repos after the October alerts (PHP2Shell, Node2Shell CVE-2026-111497, the eMudhra CA keys). ritstjorn, the reader and kvenno.app resolve to one host, and both Node services run its `/usr/bin/node`.
+- ✅ **Node on the host to 22.23.4+: done 2026-10-23 by [USER].** The last recorded prod Node was 22.23.3; the fix is 22.23.4.
+- ⏳ **[PR #555](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/555)**, `server/` only, draft:
+  - `server/middleware/refuseCompressedBodies.js` answers any `Content-Encoding` but `identity` with 415 before anything reads the body, and both parsers in `server/index.js` get `inflate: false`. Before it, `express.json`/`urlencoded` inflated `br` from anyone, ahead of auth.
+  - The `/downloads` mount is removed. It served all of `pipeline-output/` to any signed-in user, with no role check: `sessions.db` (users, roles, edits, feedback), its backups and the cron logs. Nothing linked to it.
+  - Tests: `refuseCompressedBodies.test.js` (real compressed bytes; an unguarded parser is the control) and `indexBodyHardening.test.js` (wiring, on the source). Both fail with the fix undone.
+- 🔎 **OPEN, same inspection, not in that PR:**
+  - **SA-19** of `docs/audit/security-audit-2026-05-29.md`, open redirect after login: `server/routes/auth.js` accepts `redirect` if it starts with `/` and not `//`, so `/\host` passes and browsers read it as `//host`. Confirmed by reading; not executed.
+  - **SA-01**, attribute-level stored XSS through allowlisted CNXML tags, reaching the preview and the reader; the CSP keeps `'unsafe-inline'`. From the inspection's static reading; not executed.
+  - `ip-address` 10.7.2 → 10.7.4 in `server/` (a moderate ReDoS; `req.ip` comes from nginx, so not attacker-set).
+  - Actions pinned to mutable tags, and `sync-content.yml` interpolating `github.event.inputs.book` into `run:` (writer-only; the workflow has never run).
+  - [USER], on prod: `MS_TENANT_ID` (the code falls back to `common`, which admits any Microsoft account) and `AUTO_CREATE_USERS` (on unless `false`) decide who counts as signed in.
+
 ### ▶ [CODE] in parallel — the 2026-09-26 block's ② code batch, which must land BEFORE [USER]'s whole-book re-render (or the re-render runs twice)
 - ✅ **`stripAltMarkers` widened** on the local branch `fix/c2-alt-markup-residue` (unpushed; it carries this block's two docs commits). Detail on the ② bullet below.
 - ✅ **§C191 ① gloss casing**, same branch (stacked, per [USER] 2026-10-09: hold the branch and add the rest of ② on top, one PR). Detail on the ② bullet below.
