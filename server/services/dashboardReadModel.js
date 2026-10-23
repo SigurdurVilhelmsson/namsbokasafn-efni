@@ -19,6 +19,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
+const { faithfulWriteHold } = require('../lib/applyHold');
 
 const DB_PATH = resolveDbPath();
 
@@ -227,7 +228,8 @@ function getReadyToApply() {
        HAVING approvedCount > 0 AND pendingCount = 0
        ORDER BY book, chapter, moduleId`
     )
-    .all();
+    .all()
+    .filter((r) => !faithfulWriteHold(r.book)); // §C203: a held book has nothing ready to apply
 }
 
 // =====================================================================

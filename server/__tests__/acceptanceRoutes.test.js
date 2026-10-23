@@ -15,7 +15,9 @@ const work = mkdtempSync(path.join(tmpdir(), 'acc-routes-'));
 process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
-const BOOK = 'efnafraedi-2e'; // must pass VALID_BOOKS + validateBookChapter
+// Must pass VALID_BOOKS + validateBookChapter, and must NOT be apply-held: chemistry is
+// (register §C203, pinned in applyHold.test.js), and the F2 case below applies for real.
+const BOOK = 'liffraedi-2e';
 const MODULE = 'mACCRT1';
 
 let router;
