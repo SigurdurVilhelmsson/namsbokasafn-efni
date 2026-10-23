@@ -1267,8 +1267,12 @@ router.post(
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
+          // — except under a §C203 hold, where a retry is refused the same way.
           log.error({ err: applyErr }, 'Auto-apply after review failed');
-          applied = { error: applyErr.message, retryable: true };
+          applied =
+            applyErr.code === 'APPLY_HELD'
+              ? { error: applyErr.message, held: true, retryable: false }
+              : { error: applyErr.message, retryable: true };
         }
       }
 
@@ -1658,6 +1662,9 @@ router.post(
         ...result,
       });
     } catch (err) {
+      if (err.code === 'APPLY_HELD') {
+        return res.status(423).json({ error: err.message, held: true }); // §C203
+      }
       log.error({ err }, 'Error applying edits');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
@@ -1735,6 +1742,9 @@ router.post(
         message: 'Edits applied and pipeline started',
       });
     } catch (err) {
+      if (err.code === 'APPLY_HELD') {
+        return res.status(423).json({ error: err.message, held: true }); // §C203
+      }
       log.error({ err }, 'Error in apply-and-render');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
@@ -1830,6 +1840,9 @@ router.post(
       );
       res.json({ success: true, ...result });
     } catch (err) {
+      if (err.code === 'APPLY_HELD') {
+        return res.status(423).json({ error: err.message, held: true }); // §C203
+      }
       log.error({ err }, 'Error restoring version');
       const status = err.message.includes('not found') ? 404 : 500;
       res.status(status).json({ error: err.message });

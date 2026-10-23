@@ -23,6 +23,7 @@ let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const resolveDbPath = require('../lib/dbPath');
 const DB_PATH = resolveDbPath();
 const { isNewer, pickLatest } = require('../lib/editRecency');
+const applyHold = require('../lib/applyHold');
 
 let db;
 function getDb() {
@@ -835,6 +836,9 @@ const MAX_APPLY_RETRIES = 1;
  * @returns {object} { appliedCount, savedPath, segments }
  */
 function applyApprovedEdits(book, chapter, moduleId, options = {}) {
+  // §C203: FIRST, before any read or write. The self-heal below resets applied_at OUTSIDE a
+  // transaction, so a hold checked any later would still leave every edit marked unapplied.
+  applyHold.assertFaithfulWritable(book);
   const appliedBy =
     typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
   const conn = getDb();
@@ -1229,7 +1233,14 @@ function getApplyStatus(book, moduleId, chapter) {
       (counts.applied_count > 0 || accCounts.applied_acceptances > 0);
   }
 
-  return { ...counts, ...accCounts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
+  // §C203: when the book is held, the editor shows this reason and enables no apply button.
+  return {
+    ...counts,
+    ...accCounts,
+    faithful_exists: faithfulExists,
+    can_rebuild: canRebuild,
+    held: applyHold.faithfulWriteHold(book),
+  };
 }
 
 // =====================================================================
