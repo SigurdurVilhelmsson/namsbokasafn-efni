@@ -26,33 +26,277 @@
  * hook asks, and reports what it knows, so the decision is made with the
  * staleness in view rather than after the invoice.
  *
- * `--dry-run` and `--help` cost nothing and pass straight through.
+ * Reads of the tool's source, and calls with a free flag the tool really
+ * implements (`--dry-run`; also `--help` for api-translate), pass straight
+ * through. Everything else that names a paid tool asks — see READ_COMMANDS.
  */
 
 import { readFileSync, statSync, readdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 
-const PAID_TOOLS = /tools\/(api-translate|translate-chapter-titles)\.js\b/;
-const FREE_FLAGS = /(^|\s)(--dry-run|-n|--help|-h)(\s|$)/;
+/** A paid tool, named by its repo path or bare (after `cd tools`). */
+const PAID_TOOL = /(?:^|[\s/'"=:])(api-translate|translate-chapter-titles)\.js\b/;
 
 /**
- * A command can only RUN the tool through a JavaScript runtime. Without one it
- * is a read of the source (git show, grep, sed, cat), which costs nothing.
- * MEASURED 2026-10-23: such reads prompted as paid runs and [USER] got repeated
- * cost warnings while nothing was spent. Any runtime word counts, so a
- * `node -e` that merely loads the tool still prompts: the safe side.
+ * The flags each tool REALLY implements as free. Not one shared list: a flag a
+ * tool does not read is a no-op (CLAUDE.md, "parseArgs SILENTLY DROPS UNKNOWN
+ * FLAGS"), and the run then goes ahead at full strength. api-translate declares
+ * --dry-run/-n in its spec and gets -h/--help from parseArgs' shared option.
+ * translate-chapter-titles does not use parseArgs: it checks
+ * process.argv.includes('--dry-run') and nothing else.
  */
-const RUNS_JS = /(^|[\s;&|()`])(node|npx|bun|deno)(?=\s|$)/;
+const FREE_FLAGS = {
+  'api-translate': new Set(['--dry-run', '-n', '--help', '-h']),
+  'translate-chapter-titles': new Set(['--dry-run']),
+};
 
 /**
- * The tool's OWN argument list: from its path to the next shell operator.
- * MEASURED 2026-10-23: matching FREE_FLAGS against the whole command let a -n
- * or -h from another program in the pipeline (`| tail -n 20`, `&& du -h`)
- * pass a paid run off as a dry run, with no prompt at all.
+ * What the guard counts as a READ: a command that cannot run the tool.
+ *
+ * MEASURED 2026-10-23, twice. First, reads of the tool's source (git show,
+ * grep, sed) prompted as paid runs, and [USER] got repeated cost warnings while
+ * nothing was spent. The fix for that stayed silent unless a runtime word
+ * (node, npx, bun, deno) appeared, and a security review then showed the flaw:
+ * that was a list of the ways to RUN, so every way it left out (/usr/bin/node,
+ * an nvm path, bash -c, tsx) ran with no prompt at all.
+ *
+ * So the guard fails closed. It stays silent only when every command in the
+ * line is on this list of reads, or is the tool itself called with one of its
+ * free flags. Anything else is assumed able to run the tool.
+ *
+ * The threat is an accidental paid run by a session or an agent, not an
+ * adversary. sed and awk therefore count as reads, although each can start a
+ * process (sed's `e`, awk's system()): no accidental read takes that shape.
  */
-function toolArgs(command) {
-  const m = command.match(/tools\/(?:api-translate|translate-chapter-titles)\.js\b([^;&|]*)/);
-  return m ? m[1] : '';
+const READ_COMMANDS = new Set([
+  'cat',
+  'tac',
+  'grep',
+  'egrep',
+  'fgrep',
+  'rg',
+  'ugrep',
+  'sed',
+  'awk',
+  'gawk',
+  'head',
+  'tail',
+  'wc',
+  'less',
+  'more',
+  'diff',
+  'cmp',
+  'comm',
+  'ls',
+  'stat',
+  'file',
+  'du',
+  'md5sum',
+  'sha1sum',
+  'sha256sum',
+  'cut',
+  'sort',
+  'uniq',
+  'tr',
+  'nl',
+  'od',
+  'hexdump',
+  'xxd',
+  'strings',
+  'tee',
+  'basename',
+  'dirname',
+  'realpath',
+  'readlink',
+  'cd',
+  'pushd',
+  'popd',
+  'echo',
+  'printf',
+  'true',
+  'false',
+  'test',
+  '[',
+  ':',
+  'mkdir',
+  'cp',
+  'codegraph',
+]);
+
+/** git subcommands that run nothing. `bisect run`, `-c` and aliases can, so they are left out. */
+const GIT_READS = new Set([
+  'show',
+  'diff',
+  'log',
+  'grep',
+  'blame',
+  'cat-file',
+  'ls-files',
+  'ls-tree',
+  'status',
+  'add',
+  'commit',
+  'restore',
+  'checkout',
+  'stash',
+  'mv',
+  'rm',
+  'rev-parse',
+  'shortlog',
+]);
+
+/** What npx may start without running the tool: a formatter or a linter reads it. */
+const NPX_READS = new Set(['prettier', 'eslint']);
+
+/** Shell words before a command that run nothing themselves. */
+const SHELL_PREFIX = new Set([
+  'if',
+  'then',
+  'else',
+  'elif',
+  'do',
+  'while',
+  'until',
+  'time',
+  '!',
+  '{',
+  '}',
+]);
+
+/** Shell words that close or open a construct and are not a command. */
+const SHELL_STRUCTURE = new Set(['fi', 'done', 'esac', 'for', 'select', 'case']);
+
+/**
+ * Split a command line into simple commands: at unquoted ; & | ( ) and
+ * newlines, and at $( ` <( >( even inside double quotes, because a
+ * substitution runs a command of its own. Quote-aware, so `grep -E 'a|b'`
+ * stays whole, and `2>&1` / `&>` are redirections, not separators.
+ *
+ * It errs towards cutting. A bad cut puts a stray word at the head of a piece,
+ * a stray word is not a read, and that only ever adds a prompt.
+ */
+function commandsIn(line) {
+  const out = [];
+  let cur = '';
+  let quote = null;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    const next = line[i + 1];
+    if (quote === "'") {
+      cur += c;
+      if (c === "'") quote = null;
+      continue;
+    }
+    if (c === '\\') {
+      cur += c + (next ?? '');
+      i += 1;
+      continue;
+    }
+    if (c === '`' || ((c === '$' || c === '<' || c === '>') && next === '(')) {
+      out.push(cur);
+      cur = '';
+      if (c !== '`') i += 1;
+      continue;
+    }
+    if (quote === '"') {
+      cur += c;
+      if (c === '"') quote = null;
+      continue;
+    }
+    if (c === "'" || c === '"') {
+      quote = c;
+      cur += c;
+      continue;
+    }
+    const redirect = c === '&' && (line[i - 1] === '>' || line[i - 1] === '<' || next === '>');
+    if (!redirect && ';&|()\n'.includes(c)) {
+      out.push(cur);
+      cur = '';
+      continue;
+    }
+    cur += c;
+  }
+  out.push(cur);
+  return out.map((s) => s.trim()).filter(Boolean);
+}
+
+/** The words of one simple command, quotes and backslashes removed. */
+function words(piece) {
+  const out = [];
+  let cur = '';
+  let quote = null;
+  let started = false;
+  for (let i = 0; i < piece.length; i++) {
+    const c = piece[i];
+    if (quote) {
+      if (c === quote) quote = null;
+      else cur += c;
+      continue;
+    }
+    if (c === "'" || c === '"') {
+      quote = c;
+      started = true;
+    } else if (c === '\\') {
+      cur += piece[i + 1] ?? '';
+      i += 1;
+      started = true;
+    } else if (/\s/.test(c)) {
+      if (started) out.push(cur);
+      cur = '';
+      started = false;
+    } else {
+      cur += c;
+      started = true;
+    }
+  }
+  if (started) out.push(cur);
+  return out;
+}
+
+function gitIsRead(args) {
+  for (let i = 0; i < args.length; i++) {
+    const a = args[i];
+    if (a === '-C') {
+      i += 1;
+      continue;
+    }
+    if (['--no-pager', '-P', '--paginate', '-p', '--no-optional-locks'].includes(a)) continue;
+    if (a.startsWith('--git-dir=') || a.startsWith('--work-tree=')) continue;
+    // The first other word is the subcommand. `-c` and unknown options land
+    // here too, and fail closed.
+    return GIT_READS.has(a);
+  }
+  return false;
+}
+
+/** Can this simple command run the tool? Fails closed: unknown means yes. */
+function isRead(piece) {
+  const w = words(piece);
+  let i = 0;
+  for (; i < w.length; i++) {
+    if (SHELL_PREFIX.has(w[i])) continue;
+    if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(w[i])) {
+      // A value that names the tool may run it (GIT_PAGER, LESSOPEN).
+      if (PAID_TOOL.test(w[i])) return false;
+      continue;
+    }
+    break;
+  }
+  if (i >= w.length) return true; // only keywords and assignments
+  const cmd = w[i].split('/').pop();
+  const rest = w.slice(i + 1);
+  if (SHELL_STRUCTURE.has(cmd) || READ_COMMANDS.has(cmd)) return true;
+  if (cmd === 'git') return gitIsRead(rest);
+  if (cmd === 'npx') return NPX_READS.has(rest.find((a) => !a.startsWith('-')));
+  return false;
+}
+
+/** Is this simple command the tool itself, called with a flag it implements as free? */
+function isFreeCall(piece) {
+  const m = piece.match(PAID_TOOL);
+  if (!m) return false;
+  const args = words(piece.slice(m.index + m[0].length));
+  return args.some((a) => FREE_FLAGS[m[1]].has(a));
 }
 
 const repo = process.env.CLAUDE_PROJECT_DIR || process.cwd();
@@ -150,9 +394,12 @@ const flag = (command, name) => {
 
 /** @returns {string|null} the reason to ask, or null to stay out of the way. */
 export function inspect(command) {
-  if (!PAID_TOOLS.test(command)) return null;
-  if (!RUNS_JS.test(command)) return null;
-  if (FREE_FLAGS.test(toolArgs(command))) return null;
+  if (!PAID_TOOL.test(command)) return null;
+  // Every simple command must be shown harmless. One that is neither a read
+  // nor a free call of the tool may be a paid run: the tool itself, a copy of
+  // it written earlier in the line, or its source piped into a runtime.
+  const mayPay = commandsIn(command).some((piece) => !isRead(piece) && !isFreeCall(piece));
+  if (!mayPay) return null;
 
   const book = flag(command, 'book') || 'efnafraedi-2e';
   const chapter = flag(command, 'chapter');

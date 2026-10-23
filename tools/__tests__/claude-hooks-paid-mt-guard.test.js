@@ -157,3 +157,140 @@ describe('paid-MT guard — commands that must prompt', () => {
     ).toBeTruthy();
   });
 });
+
+// 2026-10-23, a security review of the read fix above: staying silent unless a
+// runtime WORD appeared was an allowlist of the ways to run the tool, so every
+// way it did not list ran with no prompt (a path-qualified node, bash -c, a
+// runtime it had no name for). The guard now fails closed: it stays silent only
+// when every command in the line is a known read, or is the tool itself called
+// with a flag that tool really implements.
+describe('paid-MT guard — runs it must not miss (fail closed)', () => {
+  it('prompts on a run by a path-qualified node', () => {
+    expect(
+      inspect('/usr/bin/node tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run by an nvm node path', () => {
+    expect(
+      inspect(
+        '/home/u/.nvm/versions/node/v22.12.0/bin/node tools/api-translate.js --book efnafraedi-2e --chapter 7'
+      )
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run inside bash -c', () => {
+    expect(
+      inspect('bash -c "node tools/api-translate.js --book efnafraedi-2e --chapter 7"')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a runtime the guard has no name for', () => {
+    expect(inspect('tsx tools/api-translate.js --book efnafraedi-2e --chapter 7')).toBeTruthy();
+  });
+
+  it('prompts when a dry run is followed by a paid run', () => {
+    expect(
+      inspect(
+        'node tools/api-translate.js --book efnafraedi-2e --dry-run && node tools/api-translate.js --book efnafraedi-2e --chapter 7'
+      )
+    ).toBeTruthy();
+  });
+
+  it('prompts on a run from inside tools/', () => {
+    expect(
+      inspect('cd tools && node api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  it('prompts when a copied revision is run in the same command', () => {
+    expect(
+      inspect(
+        'git show 7658de896:tools/api-translate.js > /tmp/x/old.js && node /tmp/x/old.js --book efnafraedi-2e --chapter 7'
+      )
+    ).toBeTruthy();
+  });
+
+  it('prompts when the source is piped into a runtime', () => {
+    expect(inspect('cat tools/api-translate.js | node --input-type=module')).toBeTruthy();
+  });
+
+  // A substitution runs its own command, inside double quotes too, so the
+  // echo around it is not what decides.
+  it('prompts on a run inside a quoted command substitution', () => {
+    expect(
+      inspect('echo "$(node tools/api-translate.js --book efnafraedi-2e --chapter 7)"')
+    ).toBeTruthy();
+  });
+
+  // Only the tool's own arguments count: nice's -n is not a dry run.
+  it('prompts when a wrapper before the tool has a flag that looks free', () => {
+    expect(
+      inspect('nice -n 10 node tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  // git -p forces the pager, so GIT_PAGER runs even with no terminal attached.
+  it('prompts when an environment value runs the tool', () => {
+    expect(
+      inspect(
+        "GIT_PAGER='node tools/api-translate.js --book efnafraedi-2e --chapter 7' git -p log -1"
+      )
+    ).toBeTruthy();
+  });
+
+  it('prompts on a git subcommand that runs a command', () => {
+    expect(
+      inspect('git bisect run node tools/api-translate.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  // translate-chapter-titles does not use parseArgs. It reads
+  // process.argv.includes('--dry-run') and nothing else, so -n and --help are
+  // ignored and the run is paid. Only a flag the tool implements counts.
+  it('prompts on chapter titles with -n, which that tool ignores', () => {
+    expect(inspect('node tools/translate-chapter-titles.js efnafraedi-2e -n')).toBeTruthy();
+  });
+
+  it('prompts on chapter titles with --help, which that tool ignores', () => {
+    expect(inspect('node tools/translate-chapter-titles.js efnafraedi-2e --help')).toBeTruthy();
+  });
+});
+
+describe('paid-MT guard — reads that stay silent under fail-closed matching', () => {
+  it('stays silent on a grep whose pattern holds a quoted pipe', () => {
+    expect(
+      inspect("grep -nE 'formatGlossary|filterGlossaryForText' tools/api-translate.js")
+    ).toBeNull();
+  });
+
+  it('stays silent on a read with an environment prefix', () => {
+    expect(inspect('LC_ALL=C grep -c fetch tools/api-translate.js')).toBeNull();
+  });
+
+  it('stays silent on a git diff piped to head', () => {
+    expect(inspect('git diff main -- tools/api-translate.js | head -50')).toBeNull();
+  });
+
+  it('stays silent on a read that redirects stderr', () => {
+    expect(inspect('grep -n fetch tools/api-translate.js 2>&1 | head -5')).toBeNull();
+  });
+
+  it('stays silent on a prettier check of the tool', () => {
+    expect(inspect('npx prettier --check tools/api-translate.js')).toBeNull();
+  });
+
+  it('stays silent on a read inside an if', () => {
+    expect(inspect('if grep -q dryRun tools/api-translate.js; then echo found; fi')).toBeNull();
+  });
+
+  it('stays silent on chapter titles with --dry-run, which that tool implements', () => {
+    expect(inspect('node tools/translate-chapter-titles.js efnafraedi-2e --dry-run')).toBeNull();
+  });
+
+  it('stays silent on a dry run under timeout', () => {
+    expect(
+      inspect('timeout 600 node tools/api-translate.js --book efnafraedi-2e --dry-run')
+    ).toBeNull();
+  });
+});
