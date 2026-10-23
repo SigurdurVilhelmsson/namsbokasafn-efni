@@ -257,6 +257,60 @@ describe('paid-MT guard — runs it must not miss (fail closed)', () => {
   });
 });
 
+// 2026-10-23, a second security review: three more ways past the matching.
+describe('paid-MT guard — comments, split names, globs and loaded configs', () => {
+  // A shell comment is not an argument, so a free flag inside one is not free.
+  it('prompts when the only free flag is inside a comment', () => {
+    expect(
+      inspect('node tools/api-translate.js --book efnafraedi-2e --chapter 7 # not a --dry-run')
+    ).toBeTruthy();
+  });
+
+  it('prompts on a tool name split by quotes, which the shell joins', () => {
+    expect(inspect("node tools/api-tr''anslate.js --book efnafraedi-2e --chapter 7")).toBeTruthy();
+  });
+
+  // MEASURED on Node 22: `node dir/tool` runs dir/tool.js. translate-chapter-
+  // titles has no main guard, so the bare path is a paid run.
+  it('prompts on the chapter-titles tool named without .js', () => {
+    expect(inspect('node tools/translate-chapter-titles efnafraedi-2e')).toBeTruthy();
+  });
+
+  it('prompts on a glob the shell expands to the tool', () => {
+    expect(inspect('node tools/api-transl*.js --book efnafraedi-2e --chapter 7')).toBeTruthy();
+  });
+
+  // A config file is loaded as code. The titles tool's top-level code reads
+  // process.argv[2] as the book, which here is a real slug.
+  it('prompts when a linter would load the tool as its config', () => {
+    expect(inspect('npx eslint efnafraedi-2e -c tools/translate-chapter-titles.js')).toBeTruthy();
+  });
+
+  it('stays silent on a read with a comment holding a separator', () => {
+    expect(inspect('grep -n fetch tools/api-translate.js # see the dry-run; then buy')).toBeNull();
+  });
+
+  it('stays silent on a glob read of the tools directory', () => {
+    expect(inspect('wc -l tools/*.js')).toBeNull();
+  });
+
+  it('stays silent on a glob in a directory other than tools/', () => {
+    expect(inspect('node --check tools/lib/*.js')).toBeNull();
+  });
+
+  it('stays silent on a quoted glob, which the shell does not expand', () => {
+    expect(inspect("find . -name '*.js' -newer package.json")).toBeNull();
+  });
+
+  it('stays silent on a vitest filter that names the tool', () => {
+    expect(inspect('npx vitest run api-translate')).toBeNull();
+  });
+
+  it('stays silent on a [[ test of the tool file', () => {
+    expect(inspect('[[ -f tools/api-translate.js ]] && echo present')).toBeNull();
+  });
+});
+
 describe('paid-MT guard — reads that stay silent under fail-closed matching', () => {
   it('stays silent on a grep whose pattern holds a quoted pipe', () => {
     expect(
