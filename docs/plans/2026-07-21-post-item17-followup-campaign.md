@@ -4,6 +4,57 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-10-23 — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] ruled 1.6: all 10 clean pending edits apply (frozen `6ea6aa6e9`). 🔴 NEW §C203 (below): the overwrite the 1.6 script was designed to avoid is ALREADY one click away on prod, for 41 edits made on the old MT in four chemistry modules. ▶ [USER]: three decisions before the 1.6 prod script runs (end of §C203). ▶ [CODE]: the Skerfur development plan; its review of the editorial system is running. ⏰ D11 in its own session before 31 October.** ⏹ The chemistry sync stays HELD.
+- **1.6, prod re-read read-only 2026-10-23 15:53Z:**
+  - all 38 rows are still `pending` and unchanged since the 10-17 freeze (status, sha256 of the trimmed `original_content` and `edited_content`, module, segment);
+  - prod's two MT files are byte-identical to the ones the rows were classified against (git blob ids);
+  - **id 151 does not exist on prod.** The rows are 4, 129–150 and 152–166, so the script lists ids and never a range;
+  - the 37 m68700 rows carry `review_id` 3, and so do all 59 approved m68700 rows. Chemistry's three module reviews (1 m68663, 2 m68664, 3 m68700) are all still `pending`, opened 2026-03-13, 06-16 and 07-04.
+- **1.7: 46 of 150 answered. [USER] keeps all 150.** A key-blind cap at 100 or 75 pairs was offered: on the measured decisive rate (89% of unflagged answers), June would then need about 62% or 67% of unflagged decisive pairs instead of 60%. [USER] declined, so there is no amendment, and the key stays closed.
+- **D11's premise is incomplete (found 2026-10-23; decide in D11's session, before any mechanism check).** The plan names only the March glossary VALUES as what must be reproduced. The SENDING rules changed too:
+  - every June-vintage buy sent BOTH values of each competing approved headword. The March file has 13, `atom → atóm / frumeind` among them;
+  - it matched short headwords as substrings;
+  - today's code omits competing headwords entirely (C18, `a9e334ed3`, 2026-08-04) and word-bounds headwords of 3 characters or fewer (§C116, `462a00a4a`, 2026-08-31).
+
+  **So the March file sent through today's code is not June's arm.**
+- **This branch merged `main` (`f553124a7`):** #555 (§C200), and with it a register renumber: the TM/corpus entry is §C202, no longer §C200.
+
+#### §C203 (NEW, 2026-10-23) — one click rewrites chemistry text with edits made on the OLD MT: `applyApprovedEdits`' self-heal is armed on three modules, and a fourth holds unapplied old-MT approvals
+- **The mechanism** (`server/services/segmentEditorService.js`, read 2026-10-23). Apply runs per module.
+  - When no approved row is unapplied, no active acceptance is unapplied and the module's faithful file is missing, a "self-heal" resets `applied_at` on every approved row (outside any transaction) and re-applies them all.
+  - Otherwise only unapplied winners are overlaid, and an applied winner's segment gets the base text.
+  - It never compares an edit's `original_content` with the current text.
+- **Why it is armed:** in June, approved edits were applied to these modules, writing faithful files. Those files were deleted on 2026-08-23 (`c5f4880ed`; #535 then retired the faithful tree), but the rows kept `applied_at`. The base is now the September MT.
+- **Measured on prod 2026-10-23 16:00Z, read-only,** with `server/scripts/read-apply-exposure.js` (sent on stdin; an independent raw-file probe gave the same counts):
+
+  | Module | Path a click takes | Old-MT edits written | Clean | Already present |
+  |---|---|---|---|---|
+  | m68700 (ch03) | self-heal | 34 | 7 | 4 |
+  | m68667 (ch01) | normal (4 unapplied approvals) | 3 | 1 | 0 |
+  | m68663 (ch01) | self-heal | 2 | 0 | 0 |
+  | m68699 (ch03) | self-heal | 2 | 0 | 0 |
+  | ch05 `chapter-metadata` | normal | 0 | 0 | 1 |
+  | m68664 (ch01) | normal | 0 (its 44 are not written) | 0 | 0 |
+
+  **41 edits made on the old MT are one click from replacing September text.** m68664's 44 are disarmed only by ONE active, unapplied MT acceptance. If that acceptance is superseded before any apply, the self-heal re-arms (a 2026-10-17 off-repo read counted 32 old-MT winners there).
+- **Every such click also writes the WHOLE module into `03-faithful-translation/`** (§C202), plus a review-status sidecar, a whole-book TM regeneration and concordance rows.
+- **What reaches it:**
+  - a head editor's *Vista í skrár* or *Vista + Birta*. Neither asks for confirmation, and on the self-heal modules the panel offers "Skrá vantar — hægt að endurbyggja";
+  - m68667 and ch05's metadata already sit in head editors' my-work list *Samþykkt, bíður birtingar*;
+  - `POST /reviews/:id/complete`, API only. Reviews 1–3 are open, and completing one with nothing pending applies its module;
+  - any editor's MT acceptance, which enables a module's apply buttons.
+
+  **No automatic caller exists:** no cron and no startup path. Readers see a change only after a *Vista + Birta* render AND a manual sync, which is HELD. **Protection today is procedural only:** editing chemistry is held.
+- **Fix options, for the Skerfur plan:**
+  - (a) an apply hold for chemistry in code, until (b) and (c) land (small);
+  - (b) a base-text guard: refuse to overlay an edit whose `original_content` differs from the current text (plan 4.2's territory);
+  - (c) §C202's fix (plan 4.0).
+- **Bearing on 1.6.** The status-only script adds no new overwrite by itself.
+  - Approving the 10 clean rows switches m68700 to the NORMAL path while they are unapplied: a click then writes the 10 on the September text and does not re-apply the 34.
+  - Closing all 38 rows puts m68700 into the my-work *ready* list.
+  - Leaving the 23 `pending` leaves each one approvable in one click, and an approved old-MT edit is then overlaid.
+- **[USER]'s decisions before the 1.6 script runs:** (1) ship the hold (a) first? (2) the status for the 5 already-present rows; (3) the 23 base-changed rows: close now, or keep them `pending` until plan 2.2's notes exist?
+
 ### ⏭ 2026-10-11 — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] answered the plan's "now" decisions** ([record](../decisions/2026-10-11-chemistry-finish-preparation-answers.md)) **and, the same day, its follow-ups** ([record](../decisions/2026-10-11-chemistry-finish-prep-follow-up-answers.md)): **S = 1 November 2026**, the day after the current grant's final report on 31 October (**if the report slips, S moves with it**); D1–D3 as recommended; D4 *Lewis-mynd* and *þríhyrningslaga flatt*; D10 yes, and **no ch01–ch02 text enters as human text** (the Word review becomes editor notes); **D11 yes.** **▶ [USER] has answered every tab of the stage 1 page (first bullet below). ✅ [USER] answered the seven term questions those answers raised (`1a 2a 3a 4a 5b 6a 7a`, third bullet below). ✅ Stage 1 is compiled against prod's stored words (first bullet below). ✅ [USER]: the 155 headwords prod does not store are **recorded only** (no entries). ✅ 1.7, the masked reading test, is on the page (**Reading test** tab, 150 pairs; pre-registered `7204d2038`, page `bafe1e361`, Version 5; see the page bullet below). ▶ [USER]: answer the 150 pairs. ▶ [CODE] next: 1.6, then 1.5's pre-screen, on the same page. When [USER] finishes 1.7: freeze the answers, commit the key, run `masked_test_analyse.py`. Writing the entries, preference rows and concept-model script from the compiled set is a separate later step.** (plan Stage 1; 1.1, 1.2 and 1.4 are decided; [USER]'s rulings on it are the critical path). **⏰ D11 in its own short session before 31 October:** confirm the March-glossary scratch-tree mechanism, then buy; from S on, no grant pays API costs (plan §5, D11). Then 4.0, 1.2's scope field, 4.2, and the ch01–ch02 editor notes (plan 2.2). ⏹ The chemistry sync stays HELD.
 - **🆕 2026-10-11 (late night, later): stage 1 is compiled into `results/2026-10-11/ruling-set-after-stage1.json`** by the new `compile_stage1_rulings.py`. The before-set is read and left unchanged, so `ruling-set-before-stage1.json` stays reproducible. **0 conflicts; 1 ruling in force reversed** (*bonding orbital*, by the chat answer). Control: the same run without that override exits 1 on *bonding orbital*.
   - **The stored words were read from prod, read-only,** through prod's own resolver (`buildScope` + `resolve`, book default), by the new `server/scripts/read-term-resolutions.js`. It was sent on stdin, so prod received no file, and `git status` on prod stayed clean. Prod head `13f9eec97`; two reads 3 minutes apart gave identical results. Saved as the input artifact `prod-term-resolutions-2026-10-11.json`.
@@ -244,7 +295,7 @@ The preview is local vefur, synced from `content/c2-whole-book-reinject` (`48dbb
 ### 🔐 §C200 (new, 2026-10-23) — Node2Shell reached the decoder through the body parsers, and `/downloads` served `sessions.db`. **Independent of the next action above.**
 - **Source:** a security inspection of all [USER]'s repos after the October alerts (PHP2Shell, Node2Shell CVE-2026-111497, the eMudhra CA keys). ritstjorn, the reader and kvenno.app resolve to one host, and both Node services run its `/usr/bin/node`.
 - ✅ **Node on the host to 22.23.4+: done 2026-10-23 by [USER].** The last recorded prod Node was 22.23.3; the fix is 22.23.4.
-- ✅ **[PR #555](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/555) MERGED 2026-10-23 14:45Z (`a4715ca55`)**, `server/` only. ⏳ **It reaches prod only with the next `./scripts/deploy.sh`**; until then prod still inflates compressed bodies and still serves `/downloads`. *(This line said "draft" until the merge.)*
+- ✅ **[PR #555](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/555) MERGED 2026-10-23 14:45Z (`a4715ca55`)**, `server/` only. ✅ **DEPLOYED 2026-10-23**, verified read-only on prod: the reflog shows the pull of `a4715ca55` at 14:59:42Z and `ritstjorn` restarted at 14:59:58Z; Node is v22.23.4 on both `PATH` and `/usr/bin`. *(This line said "draft" until the merge.)*
   - `server/middleware/refuseCompressedBodies.js` answers any `Content-Encoding` but `identity` with 415 before anything reads the body, and both parsers in `server/index.js` get `inflate: false`. Before it, `express.json`/`urlencoded` inflated `br` from anyone, ahead of auth.
   - The `/downloads` mount is removed. It served all of `pipeline-output/` to any signed-in user, with no role check: `sessions.db` (users, roles, edits, feedback), its backups and the cron logs. Nothing linked to it.
   - Tests: `refuseCompressedBodies.test.js` (real compressed bytes; an unguarded parser is the control) and `indexBodyHardening.test.js` (wiring, on the source). Both fail with the fix undone.
