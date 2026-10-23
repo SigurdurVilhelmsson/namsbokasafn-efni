@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-10-23 (evening) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] answered §C203's three questions: ship the hold first; the 5 already-present rows → `superseded`; the 23 base-changed rows → `superseded` now. The hold is PR #556. ▶ [USER]: merge and deploy #556. ▶ [CODE] after that: the 1.6 prod script, test-first (approve 10, supersede 28). 🆕 The Skerfur development plan is PROPOSED: [`2026-10-23-skerfur-development-plan.md`](2026-10-23-skerfur-development-plan.md). Its 11 decisions are open; SD1–SD3 are due before S. ⏰ D11 before 31 October.** ⏹ The chemistry sync stays HELD.
+### ⏭ 2026-10-23 (evening) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] answered §C203's three questions: ship the hold first; the 5 already-present rows → `superseded`; the 23 base-changed rows → `superseded` now. The hold is PR #556. ▶ [USER]: merge and deploy #556. ▶ [CODE] after that: the 1.6 prod script, test-first (approve 10, supersede 28). 🆕 The Skerfur development plan is PROPOSED (rev. 2): [`2026-10-23-skerfur-development-plan.md`](2026-10-23-skerfur-development-plan.md). Its 12 decisions are open; SD1–SD3 and SD10's letters are due before S. ⏰ D11 before 31 October.** ⏹ The chemistry sync stays HELD.
 - **The hold, PR #556** (branch `fix/c203-apply-hold`, `04c2c5def`): `server/lib/applyHold.js` holds `efnafraedi-2e`.
   - `applyApprovedEdits` refuses first, before the self-heal's non-transactional `applied_at` reset.
   - `restoreVersion` refuses the faithful track.
@@ -12,15 +12,23 @@
   - The editor shows the reason and enables neither button, and held books leave my-work's ready list.
   - Save, accept, propagate and the pipeline panel are untouched, because none of them writes faithful files.
   - Lifting it is a code change that names the guard that made it safe. **It protects prod only after merge and deploy.**
-- **The plan's central proposal (SD1):** with the hold deployed, the ③ list splits into an editing gate, an apply gate and a release gate, so editing need not wait for the apply-side fixes. That rewords the 10-10 plan's D8, so it is [USER]'s call.
+- **The plan's central proposal (SD1):** with the hold deployed, the ③ list splits into an editing gate, an apply gate and a release gate, so editing need not wait for the apply-side fixes.
+  - The hold covers only the faithful-file writers. A held-book write guard (plan G1.14) closes the rest: pipeline/publish, figure state, the manual stage advance.
+  - SD1 amends 10-10 4.4, D8, 4.0's order and 4.2's split, so it is [USER]'s call.
 - **The plan's evidence:** a read-only review of the editorial system at `3e70e4303`, by five investigators, each checked by an adversarial verifier. Its raw output quotes private grant documents, so it is kept in the git-excluded `docs/grants/2026-10-23-editorial-system-review/`.
-- **Problems the review found that nothing else records; the plan files each as an item:**
-  - the first apply would publish each editor's username and a timestamp per segment, in the review-status sidecar (G2.4);
-  - per-editor activity tables and timelines reach any signed-in account (G1.4, SD7);
+- **Rev. 2, the same day:**
+  - five critics read rev. 1 (facts, order, research integrity, contract and licences, completeness) and returned 74 findings;
+  - each claim rev. 2 relies on was re-checked against the code first;
+  - what changed is in the plan's §12.
+- **Problems the plan files that no item yet covered** (the organic exposure was logged as procedural in §C190 ③/⑦; the plan makes it code):
+  - the first apply would publish each editor's username and timestamps per segment, in the review-status sidecar (plan G2.3);
+  - per-editor activity tables, timelines and a per-module event list reach any signed-in account (G1.15, SD7);
   - the editor offers organic and the withheld books, with no code guard (G1.13);
-  - the reader drops a module's MT banner as soon as any faithful file exists (G2.6);
-  - B2's tagger and C's speech chain contradict the 2026-08-06 hosted-API decision (SD9);
-  - "21,251" counts ch01–ch02, the appendices and ch00 too (SD5).
+  - the reader drops a module's MT banner as soon as any faithful file exists (G2.5);
+  - the BÍN credit is owed now: the old `/terminology` screen already shows BÍN forms (G1.16);
+  - concordance may already offer old text as "already approved" (G1.18);
+  - B2's tagger, B2a's Nefnir port and C's speech chain contradict the 2026-08-06 hosted-API decision (SD9);
+  - no rights are on file for the releases or the reviewed book: MT provider, Íðorðabankinn, chemistry society, BÍN, IceG2P (SD10, before S).
 
 ### ⏭ 2026-10-23 — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] ruled 1.6: all 10 clean pending edits apply (frozen `6ea6aa6e9`). 🔴 NEW §C203 (below): the overwrite the 1.6 script was designed to avoid is ALREADY one click away on prod, for 41 edits made on the old MT in four chemistry modules. ▶ [USER]: three decisions before the 1.6 prod script runs (end of §C203). ▶ [CODE]: the Skerfur development plan; its review of the editorial system is running. ⏰ D11 in its own session before 31 October.** ⏹ The chemistry sync stays HELD.
 - **1.6, prod re-read read-only 2026-10-23 15:53Z:**
