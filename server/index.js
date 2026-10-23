@@ -56,8 +56,8 @@ const rateLimit = require('express-rate-limit');
 // Authentication & user management
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
-const { requireAuth } = require('./middleware/requireAuth');
 const { createRequestTimer, DEFAULT_SLOW_REQUEST_MS } = require('./middleware/requestTiming');
+const { refuseCompressedBodies } = require('./middleware/refuseCompressedBodies');
 
 // Editorial workflow
 const segmentEditorRoutes = require('./routes/segment-editor');
@@ -233,8 +233,11 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+// A compressed request body is refused before the parsers can inflate it, and
+// the parsers are told not to inflate one either (§C200, Node2Shell).
+app.use(refuseCompressedBodies);
+app.use(express.json({ limit: '1mb', inflate: false }));
+app.use(express.urlencoded({ extended: true, limit: '1mb', inflate: false }));
 
 // ─── API Routes ─────────────────────────────────────────────────────────────
 
@@ -397,10 +400,6 @@ app.get('/api', (req, res) => {
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni',
   });
 });
-
-// Static file serving for downloads (authenticated)
-const downloadsPath = path.join(__dirname, '..', 'pipeline-output');
-app.use('/downloads', requireAuth, express.static(downloadsPath));
 
 // HTML Views (must be after API routes)
 app.use('/', viewRoutes);

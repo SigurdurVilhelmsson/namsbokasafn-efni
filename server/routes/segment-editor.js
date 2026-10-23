@@ -644,11 +644,13 @@ router.get(
  * The figure's TRANSLATED image, so the review card can show the label an
  * editor is correcting the text of. Read chain mirrors the figure list above.
  *
- * 🔴 Deliberately NOT express.static over books/. The precedent at
- * server/index.js (`app.use('/downloads', requireAuth, express.static(...))`)
- * is a FIXED root; books/ is not, so a per-book static mount would put a URL
- * segment into a filesystem path with only the router between it and
- * 01-source/, which is licence-load-bearing and READ-ONLY. Going through
+ * 🔴 Deliberately NOT express.static over books/. A per-book static mount
+ * would put a URL segment into a filesystem path with only the router between
+ * it and 01-source/, which is licence-load-bearing and READ-ONLY. (This used
+ * to cite index.js's `/downloads` mount as a fixed-root precedent; §C200
+ * removed it, because that fixed root was pipeline-output/ and it served
+ * sessions.db to any signed-in user. A fixed root is no safer than what
+ * lives under it.) Going through
  * resolveFigureRequest instead adds NO new traversal surface: it already
  * enforces, in this order, the basename regex (before any I/O), the book
  * lookup, MEMBERSHIP OF THIS MODULE, and the existence of a sidecar.
