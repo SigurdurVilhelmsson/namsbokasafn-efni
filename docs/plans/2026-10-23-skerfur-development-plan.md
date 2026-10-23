@@ -13,7 +13,8 @@
 > each covered one area (editor workflow; B1 measurement; B2/B3 terminology; outputs A, C and D; platform). An
 > adversarial verifier then checked each area, re-running every "X does not exist" claim first. **Rev. 2** takes in a
 > second round: five critics read rev. 1 through one lens each (facts; order; research integrity; contract and licences;
-> completeness), and every claim they made that rev. 2 relies on was re-checked against the code first (§12).
+> completeness). The claims §12 lists were re-checked against the code before rev. 2 relied on them; the others are
+> carried as the critics measured them.
 > Code is cited as `path:line` at `3e70e4303`, or by function name. The raw review stays off the public tree because
 > it quotes private grant documents.
 > **Funding.** Which grant line pays for which item is in a private companion in the git-excluded `docs/grants/`.
@@ -154,7 +155,7 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
 | G1.9 | **If D7 = (b): the control draw.** After G1.13 assigns chapters, draw from a committed seed, stratified by editor and drift tercile. Commit only the hash of the seed and list until editing ends. Define the control condition. Exclude control units from any later AI layer under the slip rule. Say whether pilot units are eligible | A unit's arm cannot be assigned after it opens, and the editor is the largest nuisance factor among three | S |
 | G1.10 | **Deploy the hold (PR #556), then run the 1.6 status script** (approve 10, supersede 28; [USER]'s answers of 2026-10-23) | The script is written test-first once the hold is on `main`, because its `--apply` refuses unless the hold is active | S |
 | G1.11 | **§C53 save gate for the bracket dialect** | Chemistry's MT uses lowercase `[[xref:]]`, `[[link:]]`, `[[docref:]]`, `[[sub:]]`, `[[sup:]]`, `[[i:]]` and `[[term:]]` markers. None is protected (`server/public/js/segment-validation.js`) | S–M |
-| G1.12 | **Duplicate segment ids.** Choose the mechanism in month 1, before the freeze. **(a) Extraction-side:** stop emitting a nested note's para twice and re-extract. Show byte identity for every other module and no auto-N shift, or land before the freeze. **(b) Editor-side:** occurrence-aware DOM ids, save backstop and lookup | 285 ids are duplicated across 83 modules (measured 2026-10-23), and the 83 hold 71% of the text. The duplicates come from extraction: `m68710`'s `fs-idp153308448` occurs once in `01-source` and twice in `02-structure`. Without the fix, the pilot can only use introductions, ch18 and appendices | M |
+| G1.12 | **Duplicate segment ids.** Choose the mechanism in month 1, before the freeze. **(a) Extraction-side:** stop emitting a nested note's para twice and re-extract. This is an extraction cut, so the container rule applies: the cut and its owner move together, and a cut without an owner loses text (CLAUDE.md). **A census comes first, and zero residual is required:** every character the removed emission carries must be owned by another segment. Prove it with a controlled render pair, `01-source` rendered directly against an extract → inject round trip, compared by value. Then show byte identity for every other module and no auto-N shift. It lands before the freeze. **(b) Editor-side:** occurrence-aware DOM ids, save backstop and lookup | 285 ids are duplicated across 83 modules (measured 2026-10-23), and the 83 hold 71% of the text. The duplicates come from extraction: `m68710`'s `fs-idp153308448` occurs once in `01-source` and twice in `02-structure`. Without the fix, the pilot can only use introductions, ch18 and appendices | M |
 | G1.13 | **Scope guards.** Close organic and the withheld books to editor writes (owner: §C190 ③ and ⑦). Turn on assignment enforcement for chemistry, run `backfill-appendix-sections.js` (dry-run first), assign the chapters and finish the A4 walk. Propagation checks the target chapters too | Editors have no book scope. Enforcement is off and fail-open (`userService.js:646`). Propagation checks only the source chapter (`routes/segment-editor.js:1475`) | S |
 | G1.14 | **Held-book write guard.** In applyHold's style, with paired tests: refuse to non-admins, for chemistry, the pipeline inject/render/run routes and *Publish MT preview* while the whole-book re-render and the sync are held; refuse the figure-state route while figure review is closed (R-22); make the manual stage advance admin-only | §1 point 2 | S |
 | G1.15 | **Editor privacy.** Restrict to admin, with no ranking by volume and never any time or distance: `/api/status/dashboard`, `/activity/timeline`, `/analytics` and `/api/activity/section/…`. Put `activity_log` under the retention rule. Check production's nginx access log for the module and telemetry routes. Give the B1 tables no read route | Section 1, point 4. The documented nginx site sets no `access_log` rule, so its defaults (IP and time per request) apply unless production overrides them | S |
@@ -308,7 +309,7 @@ Icelandic, or one of its stored BÍN forms, appears as a whole word.
 - **Two heuristic tools to beat:**
   - `tools/chapter-term-check.js`: plural-tolerant English, Icelandic stems that reach into solid compounds, and the
     rival words the MT used;
-  - `experiments/terminology-consistency/measure.py`, with 38 self-test cases.
+  - `experiments/terminology-consistency/measure.py`, with its self-test cases (`--selftest`).
 
 **Design** (needs SD9):
 - **First, a spike.**
@@ -517,7 +518,8 @@ section view inside the reader registers only on a full page load.
   - It is an npm 10 → 11 lockfile migration plus a native rebuild, on a host shared with the reader and another site.
   - `deploy.sh` refuses to deploy while `.nvmrc` and `/usr/bin/node` disagree.
   - Window: the Christmas break; Easter as the fallback.
-- **Dependencies.** Weekly Dependabot; five bare `>=` overrides; Actions pinned to commit SHAs (§C200's open items).
+- **Dependencies.** Weekly Dependabot; the bare `>=` overrides in both `package.json` files; Actions pinned to commit
+  SHAs (§C200's open items).
 - **Tests.** The full suite takes about 20–25 minutes on the dev box, and each new migration lengthens the fresh-database
   tests. Budget review time for that.
 - **The Greynir sidecar** was ruled for deletion on 2026-08-06 and is still in the tree. Delete it under SD9, which
@@ -651,11 +653,27 @@ The active register's ⏩ RESUME block owns it. This plan carries no open-work s
 
 ## 12. What changed: rev. 1 → rev. 2 (2026-10-23)
 
-Five critics read rev. 1 through one lens each and returned 74 findings, one marked as blocking. Before rev. 2 relied
-on a claim, it was re-checked against the code: the hold's two refusal sites, the pipeline, publication,
-figure-state and stage-advance routes, the activity route, the 2026-07-19 accept-all decision, the sidecar's
-`generated` stamp, the concordance hint, the duplicate-id source, the annex windows and the application's
-obligations. What changed:
+Five critics read rev. 1 through one lens each and returned 74 findings, one marked as blocking.
+
+**Re-checked against the code before rev. 2 relied on them:**
+- the hold's two refusal sites;
+- the pipeline, publication, figure-state and stage-advance routes;
+- the activity route's guard;
+- the 2026-07-19 accept-all decision;
+- the sidecar's `generated` stamp;
+- the concordance hint;
+- the duplicate-id source (`m68710`);
+- the annex windows;
+- the application's obligations;
+- `metadata.json`'s stale claims.
+
+**Carried as the critics measured them:**
+- the 71% text share of the duplicate-id modules;
+- the nginx default logging;
+- the activity route returning whole `activity_log` rows;
+- the Pass 2 history route.
+
+What changed:
 - **The hold's claim is narrowed** to faithful files, and a held-book write guard (G1.14) covers the other writers.
 - **SD1 names everything it amends:** 10-10 4.4, D8, 4.0's order, 4.2's split and the companion's rule.
 - **The editing gate has a hard set and an exit test by value,** plus per-editor and per-module gates. The rest lands
