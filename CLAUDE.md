@@ -275,6 +275,15 @@ endpoints are POST — while letting the top-level GET OAuth return carry the co
 **both** the set- and clear-cookie calls. There is a code comment saying so, and a regression
 guard at `server/__tests__/authCallbackCookie.test.js`.
 
+**⚠️ DURABLE — A SIGNED-IN USER MAY HAVE NO `users` ROW.** Since 2026-10-24 (register, SD2) a
+sign-in that matches no account is a *visit*: a `viewer` session and no row, so sign-ins from the
+shared school tenant (students included) cannot fill the admin page's list. So
+`userService.findByProviderId(req.user.id)` returning `null` is a normal state, not an error. A
+route must answer it (the profile route answers from the token) and must never create a row on a
+visitor's behalf (the notification-preferences route refuses). Which `AUTO_CREATE_USERS` value
+does what is an enforceable value: read `signInPolicy` in `server/services/auth.js` and
+`server/__tests__/visitorSessions.test.js`, never a copy here.
+
 Book-scoped authorization goes through `requireHeadEditor` / `requireHeadEditorFor`.
 
 ## Notes for Code Reviewers
