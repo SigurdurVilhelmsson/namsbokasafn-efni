@@ -15,6 +15,7 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const notifications = require('../services/notifications');
+const userService = require('../services/userService');
 const { requireAuth } = require('../middleware/requireAuth');
 
 /**
@@ -130,6 +131,16 @@ router.get('/preferences', requireAuth, (req, res) => {
  * }
  */
 router.put('/preferences', requireAuth, (req, res) => {
+  // A visitor has no account row (auth.js signInPolicy) and gets no notifications, so
+  // nothing is stored for one: a stored preference would be a record of the visit.
+  if (!userService.findByProviderId(req.user.id)) {
+    return res.status(403).json({
+      error: 'Visitor',
+      message: 'Visitors have no account, so no settings are stored.',
+      visitor: true,
+    });
+  }
+
   const { body } = req;
 
   // Validate structure

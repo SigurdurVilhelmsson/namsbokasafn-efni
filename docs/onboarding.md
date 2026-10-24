@@ -18,6 +18,7 @@ You'll need a school Microsoft account to log in to the translation system. Your
 ### Step 3: Verify Your Profile
 1. Your name should appear in the sidebar
 2. If anything looks wrong, contact the admin
+3. If your profile page (**Um mig**) says **Þú ert gestur** (you are a guest), the system has no account for you yet. You can look around, but not change anything. Send the admin the address that page shows. Once it has been added, sign out and in again: your role applies from your next sign-in.
 
 ## Understanding the Workflow
 
