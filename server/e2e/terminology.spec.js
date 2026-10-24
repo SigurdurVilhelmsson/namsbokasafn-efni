@@ -738,3 +738,90 @@ test.describe('Term usage integration', () => {
     expect(newStats.byStatus.proposed).toBeGreaterThan(baseStats.byStatus.proposed || 0);
   });
 });
+
+// ─── Block 9: the import page says why an upload was refused ───
+
+/**
+ * The page, not the API: fetchJson (public/js/htmlUtils.js) turns a failed response into an
+ * Error whose message is the body's short `error` label, so an alert of err.message alone
+ * reads "Villa: Invalid Upload" and never says what was wrong. The refusals below put the
+ * reason in `message`, and the page must show it. The file input's accept attribute does not
+ * stop a wrong type: the drop zone assigns dropped files to the input unchecked, and
+ * setInputFiles stands in for that here.
+ */
+test.describe('Terminology import page: a refused upload says why', () => {
+  const cleanupIds = [];
+
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/terminology');
+    await page.waitForLoadState('domcontentloaded');
+    await page.locator('button[onclick="showImportModal()"]').click();
+    const bookSelect = page.locator('#import-book-select');
+    await expect(bookSelect.locator('option[value="efnafraedi-2e"]')).toHaveCount(1);
+    await bookSelect.selectOption('efnafraedi-2e');
+    await page.locator('.import-card[onclick="showCsvUpload()"]').click();
+  });
+
+  test.afterEach(async ({ page }) => {
+    for (const id of cleanupIds) {
+      try {
+        await page.request.delete(`${API}/${id}`);
+      } catch {
+        /* best effort */
+      }
+    }
+    cleanupIds.length = 0;
+  });
+
+  /** Choose `file`, press upload, and return the text of the alert the refusal raises. */
+  async function refusalAlert(page, file) {
+    await page.setInputFiles('#import-file', file);
+    const dialog = page.waitForEvent('dialog');
+    await page.locator('#upload-btn').click();
+    const d = await dialog;
+    const text = d.message();
+    await d.dismiss();
+    return text;
+  }
+
+  test('a file of the wrong type: the alert names the types allowed', async ({ page }) => {
+    const text = await refusalAlert(page, {
+      name: 'terms.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from(`english,icelandic\nwrongtype-${uid()},orð\n`),
+    });
+    expect(text).toBe('Villa: Invalid Upload — Only CSV and Excel files are allowed');
+  });
+
+  test('a CSV one byte over 5 MiB: the alert names the limit', async ({ page }) => {
+    const head = `english,icelandic,definition_en\nbig-${uid()},stór,`;
+    const size = 5 * 1024 * 1024 + 1;
+    const buffer = Buffer.from(head + 'x'.repeat(size - Buffer.byteLength(head) - 1) + '\n');
+    expect(buffer.length).toBe(size);
+    const text = await refusalAlert(page, { name: 'big.csv', mimeType: 'text/csv', buffer });
+    expect(text).toBe('Villa: File Too Large — Uploaded file exceeds the size limit (5 MB)');
+  });
+
+  test('a valid CSV, the control: no alert, and the result panel counts it', async ({ page }) => {
+    const english = `pagecontrol-${uid()}`;
+    const alerts = [];
+    page.on('dialog', async (d) => {
+      alerts.push(d.message());
+      await d.dismiss();
+    });
+    await page.setInputFiles('#import-file', {
+      name: 'ok.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\n${english},stjórnhópur\n`),
+    });
+    await page.locator('#upload-btn').click();
+    // The success panel and the alert are the two ends of one try/catch, so once the panel
+    // shows, no alert can follow.
+    await expect(page.locator('#import-result')).toContainText('Bætt við: 1');
+    const found = (await (await page.request.get(`${API}?q=${encodeURIComponent(english)}`)).json())
+      .terms;
+    for (const t of found) if (t.english === english) cleanupIds.push(t.id);
+    expect([alerts, cleanupIds.length]).toEqual([[], 1]);
+  });
+});
