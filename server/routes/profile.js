@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 const { requireAuth } = require('../middleware/requireAuth');
 const userService = require('../services/userService');
+const { ROLES } = require('../constants');
 
 /**
  * GET /api/profile
@@ -17,10 +18,23 @@ const userService = require('../services/userService');
 router.get('/', requireAuth, (req, res) => {
   const user = userService.findByProviderId(req.user.id);
 
-  if (!user) {
+  if (!user && req.user.role !== ROLES.VIEWER) {
+    // Not a visit: a token whose row was deleted after sign-in. Answered as before.
     return res.status(404).json({
       error: 'Not found',
       message: 'User profile not found',
+    });
+  }
+
+  if (!user) {
+    // A visitor: signed in, with no account row (auth.js signInPolicy). The answer comes
+    // from the visitor's own token, and nothing is stored. The page uses it to say how
+    // to join, with the address an admin must add.
+    return res.json({
+      visitor: true,
+      displayName: req.user.name || '',
+      email: req.user.username || '',
+      role: req.user.role,
     });
   }
 

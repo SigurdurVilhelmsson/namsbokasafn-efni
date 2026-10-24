@@ -1858,6 +1858,12 @@
           showToast('Villa við að vista stillingar', 'error');
         }
       } catch (err) {
+        // A visitor has no account, so the server stores nothing (auth.js signInPolicy).
+        if (err.data && err.data.visitor) {
+          closeSettingsModal();
+          showToast('Gestir fá engar tilkynningar og því eru engar stillingar vistaðar.', 'info');
+          return;
+        }
         console.error('Error saving preferences:', err);
         showToast('Villa við að vista stillingar', 'error');
       }

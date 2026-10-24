@@ -594,7 +594,8 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
  * Query params:
  *   - role: Filter by role
  *   - active: Filter by active status (true/false)
- *   - limit: Max results (default 100)
+ *   - limit: Max results. Omitted → every account (the admin page omits it and filters in the
+ *     browser); given but not a positive number → 100
  *   - offset: Pagination offset
  */
 router.get('/users', requireAuth, requireAdmin(), (req, res) => {
@@ -610,7 +611,9 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
     const options = {
       role: req.query.role,
       isActive: req.query.active !== undefined ? req.query.active === 'true' : undefined,
-      limit: parseInt(req.query.limit, 10) || 100,
+      // No limit asked for → every account. The admin page asks with none and filters
+      // in the browser, so a default cut-off hid the oldest accounts: the editors.
+      limit: req.query.limit !== undefined ? parseInt(req.query.limit, 10) || 100 : null,
       offset: parseInt(req.query.offset, 10) || 0,
     };
 

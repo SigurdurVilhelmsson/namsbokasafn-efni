@@ -173,7 +173,15 @@ function getBookAccess(db, userId) {
 }
 
 /**
- * List all users
+ * List users, newest first.
+ *
+ * @param {object} [options]
+ * @param {string} [options.role]
+ * @param {boolean} [options.isActive]
+ * @param {number|null} [options.limit=100] - `null` returns every row. The admin page
+ *   needs that: it filters in the browser, so a cut-off list hides the OLDEST accounts,
+ *   which are the editors (register, SD2, 2026-10-24).
+ * @param {number} [options.offset=0]
  */
 function listUsers(options = {}) {
   if (!isUserTableReady()) return { users: [], total: 0 };
@@ -181,6 +189,7 @@ function listUsers(options = {}) {
   const db = getDb();
   try {
     const { role, isActive, limit = 100, offset = 0 } = options;
+    const rowLimit = limit === null ? -1 : limit; // SQLite: a negative LIMIT means none
 
     let whereClause = '1=1';
     const params = [];
@@ -212,7 +221,7 @@ function listUsers(options = {}) {
       LIMIT ? OFFSET ?
     `
       )
-      .all(...params, limit, offset);
+      .all(...params, rowLimit, offset);
 
     // Add book access to each user
     for (const user of users) {
@@ -438,10 +447,31 @@ function updateLastLogin(id) {
   }
 }
 
+/** A Microsoft Entra object id, which is what Microsoft Graph returns as a user's `id`. */
+const MICROSOFT_OBJECT_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * May a sign-in claim this row because its email matches? Only if no Microsoft account holds the
+ * row yet: an admin-added stub (provider_id NULL) or a GitHub-era row (migration 022 copied the
+ * numeric github_id into provider_id). A row bound to a Microsoft object id belongs to that account.
+ *
+ * Why it matters: a visitor has no row of their own (auth.js signInPolicy), so every visitor
+ * sign-in reaches the email lookup. Without this check, whoever presents a member's address, say
+ * through an address the school reused, takes over the member's row (PR #557 review).
+ *
+ * @param {{provider_id: (string|null)}} row - a users row found by email
+ * @returns {boolean}
+ */
+function isClaimableByEmail(row) {
+  return !row.provider_id || !MICROSOFT_OBJECT_ID.test(String(row.provider_id));
+}
+
 /**
  * Create or update user from OAuth provider (Microsoft Entra ID)
- * If user exists (by provider_id or email), update their info and return.
- * If not, create with viewer role.
+ * If user exists (by provider_id, or by an email whose row no Microsoft account holds yet),
+ * update their info and return it. If the email belongs to a row another Microsoft account
+ * holds, return null rather than rebind that row or insert a second row with the same address
+ * (provider_username is UNIQUE). Otherwise create with viewer role.
  */
 function upsertFromProvider(providerUser, options = {}) {
   if (!isUserTableReady()) return null;
@@ -458,6 +488,7 @@ function upsertFromProvider(providerUser, options = {}) {
 
     if (!existing && email) {
       existing = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+      if (existing && !isClaimableByEmail(existing)) return null;
     }
 
     if (existing) {
@@ -771,6 +802,7 @@ module.exports = {
   findByProviderId,
   findByUsername,
   findByEmail,
+  isClaimableByEmail,
   findById,
   listUsers,
   isUserTableReady,
