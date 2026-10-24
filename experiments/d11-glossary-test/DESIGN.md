@@ -69,6 +69,10 @@ reconciled, and the ranking does not depend on it.
 
 Next in line: ch10 `m68773` (4 terms, about 1.6 times the cost of `m68667`).
 
+**Both modules' old MT came from March buys** (`m68781` at `de601457d`, 22 March; `m68667` at `c43026f46`,
+19 March), before C18 landed (`a9e334ed3`, 4 August). So for these two, June's wire is exactly what the old MT
+was sent. That would not hold for a module from the 12 August pilot, which already ran with C18's omissions.
+
 ## 5. Cost
 
 On the expectation basis (the register's measured billing model: raw characters, less the SEG marker lines and one

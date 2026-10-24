@@ -28,6 +28,11 @@
   - **The lemmatisation trial's public record** (`docs/lemmatisation-trial-record`, `93cd6b15e`). **Held for [USER]'s yes**, because it draws on a private note.
   - **c03, the 1.6 script** (`fix/c03-close-pending-edits`, `e1fd43cbc`): `server/scripts/close-pending-edits.js`. Deploy after #556: it refuses without the hold.
   - **c11, the ruling-store snapshot for the tag** (`feat/c11-ruling-snapshot`, `d4cce4c6a`): `server/scripts/snapshot-ruling-stores.js`, read-only, run over ssh at the tag.
+  - **c09, two of its guards** (`fix/c09-guards-before-editing`, off `main`, not stacked):
+    - G1.19 (`d5cf948b0`): CORS no longer allows credentials. A reader page could act as a signed-in editor, because the reader is same-site with Ritstjóri; checked over HTTP on a scratch boot. The reader's analytics beacon stops counting, which [USER] had ruled to remove.
+    - G1.14 (`c2c21a446`): the held-book write guard. Chemistry's pipeline, its three publish routes and both figure write routes are closed to non-admins (423), and the manual stage advance is admin-only.
+    - Lint, format and the full suite pass on that branch. It merges cleanly with #556 and with this branch, in either order.
+    - Still waiting: G1.15 (editor privacy) on SD7; G1.16 (the BÍN credit) and G2.3 (the sidecar fields) on [USER]'s two choices. G1.11 and G1.13 are not started.
 
 ### ⏭ 2026-10-23 (evening) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR WHAT HAPPENS NEXT: **✅ [USER] answered §C203's three questions: ship the hold first; the 5 already-present rows → `superseded`; the 23 base-changed rows → `superseded` now. The hold is PR #556. ▶ [USER]: merge and deploy #556. ▶ [CODE] after that: the 1.6 prod script, test-first (approve 10, supersede 28). 🆕 The Skerfur development plan is PROPOSED (rev. 2): [`2026-10-23-skerfur-development-plan.md`](2026-10-23-skerfur-development-plan.md). Its 12 decisions are open; SD1–SD3 and SD10's letters are due before S. ⏰ D11 before 31 October.** ⏹ The chemistry sync stays HELD.
 - **The hold, PR #556** (branch `fix/c203-apply-hold`, `04c2c5def`): `server/lib/applyHold.js` holds `efnafraedi-2e`.
