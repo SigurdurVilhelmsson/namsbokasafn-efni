@@ -33,9 +33,9 @@
  * Personas come from the real sign-in code: determineUserRole() on a Microsoft profile, then
  * createToken(), as authenticate() does. A profile with no account row is a visit (SD2, #557).
  *
- * Not pinned, on purpose: a fileFilter refusal reaches the client as a generic 500, because the
- * filter's Error carries no status, so those cases assert only "refused, and nothing kept"; and
- * the 413 message says 10MB on both routes, though terminology's limit is 5 MiB.
+ * Not pinned, on purpose: the 413 message says 10MB on both routes, though terminology's limit
+ * is 5 MiB. A fileFilter refusal is pinned as a 400 labelled 'Invalid Upload' (the label
+ * multer's own 400s get) carrying the filter's own message.
  */
 import {
   mkdtempSync,
@@ -375,9 +375,12 @@ describe('POST /api/books/:bookId/chapters/:chapter/import: disk storage', () =>
         { name: 'notes.txt', bytes: SMALL_MD },
       ],
     });
-    // 500 today, not 400: see the header. What is pinned is the refusal and the clean-up.
-    expect(res.status).toBeGreaterThanOrEqual(400);
-    expect([listing(chapterDir), addedSince(before)]).toEqual([[], []]);
+    expect([res.status, res.json, listing(chapterDir), addedSince(before)]).toEqual([
+      400,
+      { error: 'Invalid Upload', message: 'Only .md files are allowed' },
+      [],
+      [],
+    ]);
   });
 
   // Each guard runs before multer, so a refused request never touches the disk. Were multer
@@ -520,9 +523,11 @@ describe('POST /api/terminology/import/*: memory storage', () => {
       field: 'file',
       files: [{ name: 'terms.txt', bytes: csv(['c557 txt term,orð']) }],
     });
-    // 500 today, not 400: see the header. What is pinned is the refusal.
-    expect(res.status).toBeGreaterThanOrEqual(400);
-    expect(stored('c557 txt ')).toEqual([]);
+    expect([res.status, res.json, stored('c557 txt ')]).toEqual([
+      400,
+      { error: 'Invalid Upload', message: 'Only CSV and Excel files are allowed' },
+      [],
+    ]);
   });
 
   it('refuses a second file with 400, and imports neither', async () => {

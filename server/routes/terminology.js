@@ -30,10 +30,17 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['.csv', '.xlsx', '.xls'];
     const ext = path.extname(file.originalname).toLowerCase();
+    // The status makes the refusal a 400 with this message: without it, the app's error
+    // handler answers a plain Error with a generic 500.
     if (allowedTypes.includes(ext)) {
       cb(null, true);
     } else {
-      cb(new Error('Only CSV and Excel files are allowed'));
+      cb(
+        Object.assign(new Error('Only CSV and Excel files are allowed'), {
+          status: 400,
+          name: 'Invalid Upload',
+        })
+      );
     }
   },
 });

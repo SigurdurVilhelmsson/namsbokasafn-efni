@@ -8,9 +8,10 @@
  * over-size or unexpected-field upload with 500. __tests__/errorHandler.test.js calls it
  * directly, and __tests__/startup.test.js checks that index.js still mounts it, last.
  *
- * Two known gaps were kept as they were, because the move changes no behaviour: the 413 message
- * names 10MB for every route, though terminology's upload limit is 5 MB; and a multer fileFilter
- * refusal is a plain Error with no status, so it reaches the client as a generic 500.
+ * One known gap was kept as it was, because the move changed no behaviour: the 413 message names
+ * 10MB for every route, though terminology's upload limit is 5 MB. A multer fileFilter refusal
+ * reaches the generic branch below; each route's filter gives its Error `status: 400`, so the
+ * client gets a 400 carrying the filter's message rather than a generic 500.
  */
 
 const log = require('../lib/logger');

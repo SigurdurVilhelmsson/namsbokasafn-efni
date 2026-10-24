@@ -40,11 +40,18 @@ const upload = multer({
   dest: uploadDir,
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
   fileFilter: (req, file, cb) => {
-    // Only accept .md files
+    // Only accept .md files. The status makes the refusal a 400 with this message: without
+    // it, the app's error handler answers a plain Error with a generic 500.
     if (file.originalname.endsWith('.md')) {
       cb(null, true);
     } else {
-      cb(new Error('Only .md files are allowed'), false);
+      cb(
+        Object.assign(new Error('Only .md files are allowed'), {
+          status: 400,
+          name: 'Invalid Upload',
+        }),
+        false
+      );
     }
   },
 });
