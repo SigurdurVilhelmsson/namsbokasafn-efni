@@ -46,6 +46,7 @@ failLoudOnMigrationErrors(migrationResult, {
 
 const express = require('express');
 const cors = require('cors');
+const { corsOptions } = require('./lib/corsOptions');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const helmet = require('helmet');
@@ -195,44 +196,9 @@ app.use(cookieParser());
 // Apply general rate limiting to all routes (static assets already served above)
 app.use(generalLimiter);
 
-// CORS configuration - allow requests from web reader (vefur)
-const allowedOrigins = ['https://namsbokasafn.is', 'https://www.namsbokasafn.is'];
-
-// Allow localhost origins only in development
-if (process.env.NODE_ENV !== 'production') {
-  allowedOrigins.push(
-    'http://localhost:5173', // Vite dev server
-    'http://localhost:4173', // Vite preview
-    'http://localhost:3000' // Local dev
-  );
-}
-
-// Add custom origins from environment
-if (process.env.CORS_ORIGIN) {
-  allowedOrigins.push(...process.env.CORS_ORIGIN.split(',').map((o) => o.trim()));
-}
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      // In production, reject requests with no origin (blocks curl, extensions, etc.)
-      if (!origin) {
-        if (process.env.NODE_ENV === 'production') {
-          return callback(null, false);
-        }
-        return callback(null, true);
-      }
-
-      if (allowedOrigins.includes(origin) || /^https:\/\/[\w-]+\.namsbokasafn\.is$/.test(origin)) {
-        callback(null, true);
-      } else {
-        log.warn({ origin }, 'CORS blocked origin');
-        callback(null, false);
-      }
-    },
-    credentials: true,
-  })
-);
+// CORS: the reader's origins may call the API, never with credentials (Skerfur plan G1.19).
+// The reasoning, and the origin rules, live in lib/corsOptions.js.
+app.use(cors(corsOptions({ onBlocked: (origin) => log.warn({ origin }, 'CORS blocked origin') })));
 // A compressed request body is refused before the parsers can inflate it, and
 // the parsers are told not to inflate one either (§C200, Node2Shell).
 app.use(refuseCompressedBodies);
