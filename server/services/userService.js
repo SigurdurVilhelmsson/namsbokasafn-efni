@@ -173,7 +173,15 @@ function getBookAccess(db, userId) {
 }
 
 /**
- * List all users
+ * List users, newest first.
+ *
+ * @param {object} [options]
+ * @param {string} [options.role]
+ * @param {boolean} [options.isActive]
+ * @param {number|null} [options.limit=100] - `null` returns every row. The admin page
+ *   needs that: it filters in the browser, so a cut-off list hides the OLDEST accounts,
+ *   which are the editors (register, SD2, 2026-10-24).
+ * @param {number} [options.offset=0]
  */
 function listUsers(options = {}) {
   if (!isUserTableReady()) return { users: [], total: 0 };
@@ -181,6 +189,7 @@ function listUsers(options = {}) {
   const db = getDb();
   try {
     const { role, isActive, limit = 100, offset = 0 } = options;
+    const rowLimit = limit === null ? -1 : limit; // SQLite: a negative LIMIT means none
 
     let whereClause = '1=1';
     const params = [];
@@ -212,7 +221,7 @@ function listUsers(options = {}) {
       LIMIT ? OFFSET ?
     `
       )
-      .all(...params, limit, offset);
+      .all(...params, rowLimit, offset);
 
     // Add book access to each user
     for (const user of users) {

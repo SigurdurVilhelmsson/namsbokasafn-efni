@@ -610,7 +610,9 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
     const options = {
       role: req.query.role,
       isActive: req.query.active !== undefined ? req.query.active === 'true' : undefined,
-      limit: parseInt(req.query.limit, 10) || 100,
+      // No limit asked for → every account. The admin page asks with none and filters
+      // in the browser, so a default cut-off hid the oldest accounts: the editors.
+      limit: req.query.limit !== undefined ? parseInt(req.query.limit, 10) || 100 : null,
       offset: parseInt(req.query.offset, 10) || 0,
     };
 

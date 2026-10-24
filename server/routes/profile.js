@@ -18,9 +18,14 @@ router.get('/', requireAuth, (req, res) => {
   const user = userService.findByProviderId(req.user.id);
 
   if (!user) {
-    return res.status(404).json({
-      error: 'Not found',
-      message: 'User profile not found',
+    // A visitor: signed in, with no account row (auth.js signInPolicy). The answer comes
+    // from the visitor's own token, and nothing is stored. The page uses it to say how
+    // to join, with the address an admin must add.
+    return res.json({
+      visitor: true,
+      displayName: req.user.name || '',
+      email: req.user.username || '',
+      role: req.user.role,
     });
   }
 

@@ -166,6 +166,21 @@
         }, 3000);
       }
 
+      // A visitor is signed in with no account (auth.js signInPolicy). Say how to join,
+      // showing the exact address an admin must add: that address is what links a
+      // first sign-in to the account the admin created.
+      function showVisitor(data) {
+        els.loading.innerHTML =
+          '<div style="text-align:center;padding:2rem;">' +
+          '<h2 style="margin-bottom:1rem;">Þú ert gestur</h2>' +
+          '<p style="margin-bottom:1rem;">Þú getur skoðað kerfið en ekki breytt neinu. Enginn notendaaðgangur er stofnaður fyrir gesti.</p>' +
+          '<p style="margin-bottom:0.5rem;">Viltu taka þátt sem yfirlesari? Sendu umsjónarmanni verkefnisins netfangið sem þú skráðir þig inn með:</p>' +
+          '<p style="margin-bottom:1.5rem;"><strong id="profile-visitor-email"></strong></p>' +
+          '<a href="/" class="btn btn-secondary">← Til baka</a>' +
+          '</div>';
+        document.getElementById('profile-visitor-email').textContent = data.email || '';
+      }
+
       async function loadProfile() {
         try {
           const res = await fetch('/api/profile');
@@ -178,6 +193,11 @@
           }
 
           const data = await res.json();
+
+          if (data.visitor) {
+            showVisitor(data);
+            return;
+          }
 
           els.name.value = data.displayName || '';
           els.email.value = data.email || '';

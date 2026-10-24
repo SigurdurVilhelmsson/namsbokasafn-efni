@@ -14,13 +14,15 @@
  * Role Mapping:
  * - ADMIN_USERS env var → Admin (matched by email)
  * - Database role → whatever the admin assigned
- * - Auto-created users → Viewer
+ * - No account row → a visitor (a viewer session, no row) unless AUTO_CREATE_USERS
+ *   says otherwise; see signInPolicy
  */
 
 const jwt = require('jsonwebtoken');
 const https = require('https');
 const userService = require('./userService');
 const { ROLES } = require('../constants');
+const log = require('../lib/logger');
 
 // Enforce JWT_SECRET in all environments
 if (!process.env.JWT_SECRET) {
@@ -158,6 +160,38 @@ async function getMicrosoftUser(accessToken) {
   });
 }
 
+const SIGN_IN_POLICIES = { '': 'visitor', true: 'create', false: 'deny' };
+let warnedUnrecognisedPolicy = false;
+
+/**
+ * What a sign-in that matches no account row gets, read from AUTO_CREATE_USERS.
+ *
+ * - unset or empty → 'visitor': a viewer session and NO row, so a visit is not an account.
+ *   [USER] wants anyone in the school tenant able to look around (students included,
+ *   since they cannot change anything), and rows are what the admin page lists
+ *   (register, SD2, 2026-10-24).
+ * - 'true'  → 'create': a viewer row per first sign-in, the behaviour before 2026-10-24.
+ * - 'false' → 'deny': no session.
+ * - anything else → 'deny', failing closed, with one warning in the log.
+ *
+ * @param {string|undefined} value - the raw environment value
+ * @returns {'visitor'|'create'|'deny'}
+ */
+function signInPolicy(value) {
+  const key = String(value ?? '')
+    .trim()
+    .toLowerCase();
+  if (Object.hasOwn(SIGN_IN_POLICIES, key)) return SIGN_IN_POLICIES[key];
+  if (!warnedUnrecognisedPolicy) {
+    warnedUnrecognisedPolicy = true;
+    log.warn(
+      { AUTO_CREATE_USERS: value },
+      'AUTO_CREATE_USERS is not unset, "true" or "false": refusing sign-ins that match no account'
+    );
+  }
+  return 'deny';
+}
+
 /**
  * Determine user role based on in-app user database
  */
@@ -216,8 +250,12 @@ function determineUserRole(msUser) {
       };
     }
 
-    // User not in database — auto-create or deny
-    if (process.env.AUTO_CREATE_USERS !== 'false') {
+    // No account row: a visit, a new row, or a refusal (signInPolicy)
+    const policy = signInPolicy(process.env.AUTO_CREATE_USERS);
+    if (policy === 'visitor') {
+      return { role: ROLES.VIEWER, books: [], source: 'visitor' };
+    }
+    if (policy === 'create') {
       dbUser = userService.upsertFromProvider(msUser, { autoCreate: true });
       if (dbUser) {
         return {
@@ -228,11 +266,7 @@ function determineUserRole(msUser) {
         };
       }
     }
-
-    // If AUTO_CREATE_USERS=false and user not in database, deny access
-    if (process.env.AUTO_CREATE_USERS === 'false') {
-      return null;
-    }
+    return null;
   }
 
   // No database available — deny by default (no legacy fallback like GitHub org/teams)
@@ -344,6 +378,8 @@ module.exports = {
   // Role helpers
   ROLES,
   hasRole,
+  determineUserRole,
+  signInPolicy,
 
   // Configuration
   isConfigured,
