@@ -92,6 +92,8 @@ books/efnafraedi/pipeline-test/
 
 # Test artifacts (created by test suite)
 books/testbook/
+# server/__tests__/multerUploadRoutes.test.js imports into this book; a killed run can leave it
+books/c557-multer-fixture/
 *:Zone.Identifier
 Chemistry2e-WEB.pdf
 Screenshot*.png
