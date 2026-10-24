@@ -82,7 +82,9 @@ router.get('/:bookSlug/:chapterNum', (req, res) => {
 
 // --- POST /:bookSlug/:chapterNum/advance ---
 
-router.post('/:bookSlug/:chapterNum/advance', requireRole(ROLES.EDITOR), (req, res) => {
+// G1.14: admin-only. A manual advance changes what the pipeline believes is done, and
+// chemistry's re-render and sync are held.
+router.post('/:bookSlug/:chapterNum/advance', requireRole(ROLES.ADMIN), (req, res) => {
   try {
     // Acquire lock
     const lockResult = chapterLock.acquireLock(req.lockId, req.user.username);

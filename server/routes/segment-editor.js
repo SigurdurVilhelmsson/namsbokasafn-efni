@@ -77,6 +77,7 @@ const {
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const { VALID_BOOKS } = require('../config');
 const { PASS1_CATEGORIES: VALID_CATEGORIES, VALID_TRACKS } = require('../constants');
+const { figureReviewClosed, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
 
 // ─── Book-ownership resolvers for ID-keyed head-editor endpoints ──────
 // These endpoints are keyed by :editId / :reviewId, not :book, so the owning
@@ -705,6 +706,7 @@ router.post(
   requireAuth,
   validateBookChapter,
   requireBookAccess(),
+  refuseHeldForNonAdmins(figureReviewClosed, (req) => req.params.book, 'figure-review'), // G1.14, R-22
   validateModule,
   (req, res) => {
     const { blockKey, isText } = req.body || {};
@@ -782,6 +784,7 @@ router.post(
   requireAuth,
   validateBookChapter,
   requireBookAccess(),
+  refuseHeldForNonAdmins(figureReviewClosed, (req) => req.params.book, 'figure-review'), // G1.14, R-22
   validateModule,
   (req, res) => {
     const { state, flagKind, note } = req.body || {};
