@@ -184,7 +184,92 @@ describe('a sign-in that matches an account row (unchanged by the policy)', () =
   });
 });
 
+// PR #557 review (security lens, confirmed): a visitor has no row of their own, so EVERY visitor
+// sign-in reaches the email lookup. Unguarded, it rebinds a member's row to whoever presents the
+// member's address (say, a reused address on an account that has visited before). An email match
+// may claim only a row no Microsoft account holds yet: an admin-added stub (provider_id NULL) or a
+// GitHub-era row (a numeric provider_id, which migration 022 copied from github_id).
+describe('an email match claims only a row no Microsoft account holds yet', () => {
+  const MEMBER_OID = '11111111-1111-4111-8111-111111111111';
+  const VISITOR_OID = '22222222-2222-4222-8222-222222222222';
+  const presentsMemberAddress = {
+    id: VISITOR_OID,
+    displayName: 'Gestur',
+    mail: 'anna@skoli.example',
+  };
+
+  function seedBoundMember({ active = true } = {}) {
+    const member = userService.createUser({
+      providerId: MEMBER_OID,
+      providerUsername: 'anna@skoli.example',
+      email: 'anna@skoli.example',
+      role: 'editor',
+    });
+    if (!active) userService.updateUser(member.id, { isActive: false });
+    return member;
+  }
+
+  const boundTo = () =>
+    db.prepare('SELECT provider_id FROM users WHERE email = ?').get('anna@skoli.example')
+      .provider_id;
+
+  it("gives someone presenting a member's address a visit, not the member's role", () => {
+    seedBoundMember();
+    expect(auth.determineUserRole(presentsMemberAddress)).toMatchObject({
+      role: 'viewer',
+      source: 'visitor',
+    });
+  });
+
+  it("leaves the member's row bound to the member", () => {
+    seedBoundMember();
+    auth.determineUserRole(presentsMemberAddress);
+    expect(boundTo()).toBe(MEMBER_OID);
+  });
+
+  it("leaves a deactivated member's row bound to the member", () => {
+    seedBoundMember({ active: false });
+    auth.determineUserRole(presentsMemberAddress);
+    expect(boundTo()).toBe(MEMBER_OID);
+  });
+
+  it('refuses rather than rebinding when AUTO_CREATE_USERS=true', () => {
+    process.env.AUTO_CREATE_USERS = 'true';
+    seedBoundMember();
+    expect(auth.determineUserRole(presentsMemberAddress)).toBeNull();
+  });
+
+  it('leaves the row bound when AUTO_CREATE_USERS=true', () => {
+    process.env.AUTO_CREATE_USERS = 'true';
+    seedBoundMember();
+    auth.determineUserRole(presentsMemberAddress);
+    expect(boundTo()).toBe(MEMBER_OID);
+  });
+
+  it('still links a GitHub-era row (a numeric provider_id) by email', () => {
+    userService.createUser({
+      providerId: '4815162342',
+      providerUsername: 'anna@skoli.example',
+      email: 'anna@skoli.example',
+      role: 'editor',
+    });
+    auth.determineUserRole(presentsMemberAddress);
+    expect(userService.findByProviderId(VISITOR_OID)?.role).toBe('editor');
+  });
+
+  it('upsertFromProvider refuses an address that another Microsoft account holds', () => {
+    seedBoundMember();
+    expect(userService.upsertFromProvider(presentsMemberAddress, { autoCreate: true })).toBeNull();
+  });
+});
+
 describe('GET /api/profile', () => {
+  it('answers a stale non-viewer token with no row as before: 404, not a visit', async () => {
+    const get = handlerOf(require('../routes/profile'), 'get', '/');
+    const { status } = await invoke(get, { user: { ...visitorToken(24), role: 'editor' } });
+    expect(status).toBe(404);
+  });
+
   it('answers a visitor from the token, marked as a visitor', async () => {
     const get = handlerOf(require('../routes/profile'), 'get', '/');
     const { status, body } = await invoke(get, { user: visitorToken(20) });

@@ -447,10 +447,31 @@ function updateLastLogin(id) {
   }
 }
 
+/** A Microsoft Entra object id, which is what Microsoft Graph returns as a user's `id`. */
+const MICROSOFT_OBJECT_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * May a sign-in claim this row because its email matches? Only if no Microsoft account holds the
+ * row yet: an admin-added stub (provider_id NULL) or a GitHub-era row (migration 022 copied the
+ * numeric github_id into provider_id). A row bound to a Microsoft object id belongs to that account.
+ *
+ * Why it matters: a visitor has no row of their own (auth.js signInPolicy), so every visitor
+ * sign-in reaches the email lookup. Without this check, whoever presents a member's address, say
+ * through an address the school reused, takes over the member's row (PR #557 review).
+ *
+ * @param {{provider_id: (string|null)}} row - a users row found by email
+ * @returns {boolean}
+ */
+function isClaimableByEmail(row) {
+  return !row.provider_id || !MICROSOFT_OBJECT_ID.test(String(row.provider_id));
+}
+
 /**
  * Create or update user from OAuth provider (Microsoft Entra ID)
- * If user exists (by provider_id or email), update their info and return.
- * If not, create with viewer role.
+ * If user exists (by provider_id, or by an email whose row no Microsoft account holds yet),
+ * update their info and return it. If the email belongs to a row another Microsoft account
+ * holds, return null rather than rebind that row or insert a second row with the same address
+ * (provider_username is UNIQUE). Otherwise create with viewer role.
  */
 function upsertFromProvider(providerUser, options = {}) {
   if (!isUserTableReady()) return null;
@@ -467,6 +488,7 @@ function upsertFromProvider(providerUser, options = {}) {
 
     if (!existing && email) {
       existing = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+      if (existing && !isClaimableByEmail(existing)) return null;
     }
 
     if (existing) {
@@ -780,6 +802,7 @@ module.exports = {
   findByProviderId,
   findByUsername,
   findByEmail,
+  isClaimableByEmail,
   findById,
   listUsers,
   isUserTableReady,

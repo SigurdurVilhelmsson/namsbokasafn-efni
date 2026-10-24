@@ -219,9 +219,13 @@ function determineUserRole(msUser) {
     // Try to find existing user by provider ID or email
     let dbUser = userService.findByProviderId(msUser.id);
     if (!dbUser && email) {
-      dbUser = userService.findByEmail(email);
-      // If found by email, update their provider_id for future lookups
-      if (dbUser) {
+      // An email match may claim only a row no Microsoft account holds yet (an admin-added stub,
+      // or a GitHub-era row): userService.isClaimableByEmail says why. A row another account
+      // holds stays theirs, and this sign-in goes on as if no row matched.
+      const byEmail = userService.findByEmail(email);
+      if (byEmail && userService.isClaimableByEmail(byEmail)) {
+        dbUser = byEmail;
+        // Bind the row to this account for future lookups
         userService.updateProviderInfo(dbUser.id, msUser.id, email);
       }
     }

@@ -275,14 +275,18 @@ endpoints are POST — while letting the top-level GET OAuth return carry the co
 **both** the set- and clear-cookie calls. There is a code comment saying so, and a regression
 guard at `server/__tests__/authCallbackCookie.test.js`.
 
-**⚠️ DURABLE — A SIGNED-IN USER MAY HAVE NO `users` ROW.** Since 2026-10-24 (register, SD2) a
-sign-in that matches no account is a *visit*: a `viewer` session and no row, so sign-ins from the
-shared school tenant (students included) cannot fill the admin page's list. So
-`userService.findByProviderId(req.user.id)` returning `null` is a normal state, not an error. A
-route must answer it (the profile route answers from the token) and must never create a row on a
-visitor's behalf (the notification-preferences route refuses). Which `AUTO_CREATE_USERS` value
-does what is an enforceable value: read `signInPolicy` in `server/services/auth.js` and
-`server/__tests__/visitorSessions.test.js`, never a copy here.
+**⚠️ DURABLE — A SIGNED-IN USER MAY HAVE NO `users` ROW.** Since 2026-10-24 (PR #557; register,
+SD2) a sign-in that matches no account is a *visit*: a `viewer` session and no row, so sign-ins
+from the shared school tenant (students included) cannot fill the admin page's list. So
+`userService.findByProviderId(req.user.id)` finding no row (it returns `undefined`) is a normal
+state, not an error. A route must answer it (the profile route answers from the token) and must
+never create a row on a visitor's behalf (the notification-preferences route refuses). Which
+`AUTO_CREATE_USERS` value does what is an enforceable value: read `signInPolicy` in
+`server/services/auth.js` and `server/__tests__/visitorSessions.test.js`, never a copy here.
+🔴 **And an email match may claim only a row no Microsoft account holds yet**
+(`userService.isClaimableByEmail`). A visitor has no row of their own, so EVERY visitor sign-in
+reaches the email lookup, and an unguarded one hands a member's row to whoever presents the
+member's address. Found by the PR #557 review, which measured the takeover before the guard existed.
 
 Book-scoped authorization goes through `requireHeadEditor` / `requireHeadEditorFor`.
 

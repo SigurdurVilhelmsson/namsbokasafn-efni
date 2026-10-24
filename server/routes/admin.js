@@ -594,7 +594,8 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
  * Query params:
  *   - role: Filter by role
  *   - active: Filter by active status (true/false)
- *   - limit: Max results (default 100)
+ *   - limit: Max results. Omitted → every account (the admin page omits it and filters in the
+ *     browser); given but not a positive number → 100
  *   - offset: Pagination offset
  */
 router.get('/users', requireAuth, requireAdmin(), (req, res) => {

@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 const { requireAuth } = require('../middleware/requireAuth');
 const userService = require('../services/userService');
+const { ROLES } = require('../constants');
 
 /**
  * GET /api/profile
@@ -16,6 +17,14 @@ const userService = require('../services/userService');
  */
 router.get('/', requireAuth, (req, res) => {
   const user = userService.findByProviderId(req.user.id);
+
+  if (!user && req.user.role !== ROLES.VIEWER) {
+    // Not a visit: a token whose row was deleted after sign-in. Answered as before.
+    return res.status(404).json({
+      error: 'Not found',
+      message: 'User profile not found',
+    });
+  }
 
   if (!user) {
     // A visitor: signed in, with no account row (auth.js signInPolicy). The answer comes
