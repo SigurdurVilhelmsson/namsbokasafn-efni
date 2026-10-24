@@ -33,8 +33,8 @@
  * Personas come from the real sign-in code: determineUserRole() on a Microsoft profile, then
  * createToken(), as authenticate() does. A profile with no account row is a visit (SD2, #557).
  *
- * Not pinned, on purpose: the 413 message says 10MB on both routes, though terminology's limit
- * is 5 MiB. A fileFilter refusal is pinned as a 400 labelled 'Invalid Upload' (the label
+ * Each 413 is pinned with its route's own limit in the message (middleware/upload.js carries it
+ * on the error), and a fileFilter refusal as a 400 labelled 'Invalid Upload' (the label
  * multer's own 400s get) carrying the filter's own message.
  */
 import {
@@ -63,8 +63,8 @@ process.env.ADMIN_USERS = '';
 delete process.env.AUTO_CREATE_USERS; // unset: a sign-in with no account row is a visit
 
 const MiB = 1024 * 1024;
-const BOOKS_LIMIT = 10 * MiB; // routes/books.js, limits.fileSize
-const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, limits.fileSize
+const BOOKS_LIMIT = 10 * MiB; // routes/books.js, createUpload's fileSize
+const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, createUpload's fileSize
 
 // A slug no real book uses (gitignored, like books/testbook/). The import creates its tree;
 // every books case starts without it.
@@ -313,9 +313,9 @@ describe('POST /api/books/:bookId/chapters/:chapter/import: disk storage', () =>
       field: 'files',
       files: [{ name: '1-1.en.md', bytes: patterned(BOOKS_LIMIT + 1) }],
     });
-    expect([res.status, res.json?.error, listing(chapterDir), addedSince(before)]).toEqual([
+    expect([res.status, res.json, listing(chapterDir), addedSince(before)]).toEqual([
       413,
-      'File Too Large',
+      { error: 'File Too Large', message: 'Uploaded file exceeds the size limit (10 MB)' },
       [],
       [],
     ]);
@@ -510,9 +510,9 @@ describe('POST /api/terminology/import/*: memory storage', () => {
       field: 'file',
       files: [{ name: 'big.csv', bytes: csvOfSize('c557 over limit', TERMS_LIMIT + 1).bytes }],
     });
-    expect([res.status, res.json?.error, stored('c557 over limit')]).toEqual([
+    expect([res.status, res.json, stored('c557 over limit')]).toEqual([
       413,
-      'File Too Large',
+      { error: 'File Too Large', message: 'Uploaded file exceeds the size limit (5 MB)' },
       [],
     ]);
   });

@@ -17,6 +17,7 @@ const fs = require('fs');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
+const { createUpload } = require('../middleware/upload');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
 const seed = require('../lib/arnastofnunSeed');
@@ -24,9 +25,9 @@ const termMining = require('../services/termMiningService');
 const activityLog = require('../services/activityLog');
 
 // Configure multer for file uploads
-const upload = multer({
+const upload = createUpload({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileSize: 5 * 1024 * 1024, // 5 MB; createUpload carries it on an over-size error
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['.csv', '.xlsx', '.xls'];
     const ext = path.extname(file.originalname).toLowerCase();
