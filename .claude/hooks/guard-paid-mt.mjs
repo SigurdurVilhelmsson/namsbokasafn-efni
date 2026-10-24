@@ -109,11 +109,14 @@ const FREE_FLAGS = {
  * adversary. sed and awk therefore count as reads, although each can start a
  * process (sed's `e`, awk's system()): no accidental read takes that shape.
  * Out of scope for the same reason: a tool name built from a variable or by
- * `eval`, a name split by quotes inside a nested `bash -c` string, and an
- * alias or function defined earlier in the session. Three security reviews
- * (2026-10-23) found constructed shapes past each version. Every one was
- * closed while it cost a few lines; a shape that needs a real shell parser is
- * left out, and is listed here rather than half-handled.
+ * `eval`, a name split by quotes inside a nested `bash -c` string, an alias or
+ * function defined earlier in the session, options clustered on one flag
+ * before the tool (`node -pe`), code injected through NODE_OPTIONS, and a
+ * POSIX class inside a bracket glob (`[[:alpha:]]`). Four security reviews
+ * (2026-10-23/24) found constructed shapes past each version. The first three
+ * rounds closed every one, because each cost a few lines. From the fourth, a
+ * constructed shape is listed here instead, unless it shows the code
+ * contradicting its own comments.
  */
 const READ_COMMANDS = new Set([
   'cat',
@@ -317,8 +320,9 @@ function tokens(piece) {
 
 /**
  * The words a brace expansion produces: `tools/{a,b}.js` is two words.
- * Comma lists only, nested or not, capped at 64; a sequence `{1..9}` is read
- * as `*`, which can only widen what is matched.
+ * Comma lists, nested or not. A sequence `{1..9}` is read as `*`, and past 64
+ * words a `*` stands for the rest. Both only widen what is matched, because
+ * namesTool glob-tests any expansion that holds a `*`.
  */
 function expandBraces(word, cap = 64) {
   let depth = 0;
@@ -351,7 +355,7 @@ function expandBraces(word, cap = 64) {
       for (const option of options) {
         for (const w of expandBraces(pre + option + post, cap)) {
           out.push(w);
-          if (out.length >= cap) return out;
+          if (out.length >= cap) return [...out, '*'];
         }
       }
       return out;
@@ -421,7 +425,7 @@ function namesTool(piece, inTools = false) {
         TOOL_PATH.test(text) ||
         PAID_TOOL.test(text) ||
         (inTools && BARE_TOOL.test(text)) ||
-        (t.glob && globNamesTool(text))
+        ((t.glob || (t.brace && /[*?[]/.test(text))) && globNamesTool(text))
     )
   );
 }

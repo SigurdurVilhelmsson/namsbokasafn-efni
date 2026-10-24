@@ -388,6 +388,22 @@ describe('paid-MT guard — expansions and option forms', () => {
   it('stays silent on prettier -c, which is prettier --check', () => {
     expect(inspect('npx prettier -c tools/api-translate.js')).toBeNull();
   });
+
+  // 2026-10-24, a fourth review: the comment said a sequence brace "can only
+  // widen what is matched", but the * it becomes was never glob-tested.
+  it('prompts on a sequence brace that spells the tool', () => {
+    expect(
+      inspect('node tools/api-translat{e..e}.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  // And past the 64-word cap the rest were dropped, not assumed to match.
+  it('prompts when the tool is past the brace-expansion cap', () => {
+    const many = Array.from({ length: 70 }, (_, i) => `x${i}`).join(',');
+    expect(
+      inspect(`node {${many},tools/api-translate}.js --book efnafraedi-2e --chapter 7`)
+    ).toBeTruthy();
+  });
 });
 
 describe('paid-MT guard — reads that stay silent under fail-closed matching', () => {
