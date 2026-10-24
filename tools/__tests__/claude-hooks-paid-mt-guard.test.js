@@ -203,6 +203,12 @@ describe('paid-MT guard — runs it must not miss (fail closed)', () => {
     ).toBeTruthy();
   });
 
+  // The shell keeps its directory between calls, so an earlier call's
+  // `cd tools` leaves no trace in this line.
+  it('prompts on a bare name.js with no cd in the line', () => {
+    expect(inspect('node api-translate.js --book efnafraedi-2e --chapter 7')).toBeTruthy();
+  });
+
   it('prompts when a copied revision is run in the same command', () => {
     expect(
       inspect(
@@ -308,6 +314,79 @@ describe('paid-MT guard — comments, split names, globs and loaded configs', ()
 
   it('stays silent on a [[ test of the tool file', () => {
     expect(inspect('[[ -f tools/api-translate.js ]] && echo present')).toBeNull();
+  });
+});
+
+// 2026-10-23, a third security review. These are constructed shapes rather
+// than accidents, but each costs a few lines, so they are closed too.
+describe('paid-MT guard — expansions and option forms', () => {
+  it('prompts on a glob whose directory has a .. in it', () => {
+    expect(
+      inspect('node tools/lib/../api-transl*.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  // In bash a ] right after [ is a member of the set, so [] e] matches e.
+  it('prompts on a bracket glob that opens with ]', () => {
+    expect(inspect('node tools/api-translat[]e].js --book efnafraedi-2e --chapter 7')).toBeTruthy();
+  });
+
+  it('prompts on a brace expansion that spells the tool', () => {
+    expect(
+      inspect('node tools/{api-translate,other}.js --book efnafraedi-2e --chapter 7')
+    ).toBeTruthy();
+  });
+
+  it('prompts on the bare chapter-titles name after cd tools', () => {
+    expect(inspect('cd tools && node translate-chapter-titles efnafraedi-2e')).toBeTruthy();
+  });
+
+  // prettier 2's --plugin-search-dir loads every plugin it finds as code.
+  it('prompts on an npx option outside the read forms', () => {
+    expect(
+      inspect('npx prettier --plugin-search-dir tools --check tools/api-translate.js')
+    ).toBeTruthy();
+  });
+
+  // The -e code runs first; the tool's path and flag after it decide nothing.
+  it('prompts when node -e runs code before a free-looking tool call', () => {
+    expect(
+      inspect(
+        "node -e \"require('child_process').execSync('node tools/translate-chapter-titles.js efnafraedi-2e')\" tools/api-translate.js --dry-run"
+      )
+    ).toBeTruthy();
+  });
+
+  // One tool named, so only the code-option rule can see these.
+  it('prompts when node preloads other code before a dry run', () => {
+    expect(inspect('node -r ./scratch/buy.cjs tools/api-translate.js --dry-run')).toBeTruthy();
+  });
+
+  it('prompts when a shell -c string runs before a dry-run tool path', () => {
+    expect(inspect('bash -c "npm run buy" tools/api-translate.js --dry-run')).toBeTruthy();
+  });
+
+  // Two tools named: -n is free for api-translate, but the one node runs is
+  // translate-chapter-titles, which ignores -n.
+  it('prompts when a free flag would be credited to the wrong tool', () => {
+    expect(
+      inspect(
+        'env X=tools/api-translate.js node tools/translate-chapter-titles.js efnafraedi-2e -n'
+      )
+    ).toBeTruthy();
+  });
+
+  // [[ evaluates -eq operands as arithmetic, and an array subscript there runs
+  // a command substitution even inside single quotes.
+  it('prompts on a [[ arithmetic test that can run a command', () => {
+    expect(
+      inspect("[[ 1 -eq 'a[$(node tools/translate-chapter-titles.js efnafraedi-2e)]' ]]")
+    ).toBeTruthy();
+  });
+
+  // For prettier, -c is --check; for eslint it is --config.
+  it('stays silent on prettier -c, which is prettier --check', () => {
+    expect(inspect('npx prettier -c tools/api-translate.js')).toBeNull();
   });
 });
 

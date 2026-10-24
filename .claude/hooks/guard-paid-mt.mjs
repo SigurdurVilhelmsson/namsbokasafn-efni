@@ -32,7 +32,7 @@
  */
 
 import { readFileSync, statSync, readdirSync } from 'node:fs';
-import { join, dirname, resolve } from 'node:path';
+import { join, dirname, resolve, posix } from 'node:path';
 
 /**
  * A paid tool mentioned anywhere in some text: `<name>.js` after a path or a
@@ -50,11 +50,33 @@ const PAID_TOOL =
 const TOOL_PATH =
   /^(?:.*[/=:])?(api-translate|translate-chapter-titles)\.js$|^(?:.*\/)?tools\/(api-translate|translate-chapter-titles)$/;
 
+/** After `cd tools`, a bare name runs the tool too. */
+const BARE_TOOL = /^(?:\.\/)?(api-translate|translate-chapter-titles)(?:\.js)?$/;
+
+/** Every mention in some text, for counting. */
+const PAID_TOOL_ALL = new RegExp(PAID_TOOL.source, 'g');
+
 const TOOL_NAMES = ['api-translate', 'translate-chapter-titles'];
 
-/** npx options that load a file as code (a config, plugin, parser or formatter). */
-const LOADS_CODE =
-  /^(-c|--config|--plugin|--rulesdir|--resolve-plugins-relative-to|--parser|-f|--format|-r|--require|--loader|--import)(=|$)/;
+/**
+ * The only npx forms that count as reads: the formatter or the linter, with
+ * options from these sets and file paths after them. Anything else fails
+ * closed, so an option that loads a file as code (a config, a plugin or plugin
+ * directory, a parser, a formatter) is never taken for a read. Per tool,
+ * because one letter differs: prettier's -c is --check, eslint's is --config.
+ */
+const NPX_READ_FORMS = {
+  prettier: new Set(['--check', '-c', '--write', '-w', '--list-different', '-l']),
+  eslint: new Set(['--fix', '--quiet', '--cache', '--no-cache']),
+};
+const NPX_OWN_OPTIONS = new Set(['--yes', '-y', '--no']);
+
+/**
+ * Options that make the program run code other than the script named after
+ * them: node's -e/-p/-r/--import/--loader, and a shell's -c.
+ */
+const RUNS_OTHER_CODE =
+  /^(-c|-e|--eval|-p|--print|-r|--require|--import|--loader|--experimental-loader)(=|$)/;
 
 /**
  * The flags each tool REALLY implements as free. Not one shared list: a flag a
@@ -86,6 +108,12 @@ const FREE_FLAGS = {
  * The threat is an accidental paid run by a session or an agent, not an
  * adversary. sed and awk therefore count as reads, although each can start a
  * process (sed's `e`, awk's system()): no accidental read takes that shape.
+ * Out of scope for the same reason: a tool name built from a variable or by
+ * `eval`, a name split by quotes inside a nested `bash -c` string, and an
+ * alias or function defined earlier in the session. Three security reviews
+ * (2026-10-23) found constructed shapes past each version. Every one was
+ * closed while it cost a few lines; a shape that needs a real shell parser is
+ * left out, and is listed here rather than half-handled.
  */
 const READ_COMMANDS = new Set([
   'cat',
@@ -136,7 +164,6 @@ const READ_COMMANDS = new Set([
   'false',
   'test',
   '[',
-  '[[',
   ':',
   'mkdir',
   'cp',
@@ -164,9 +191,6 @@ const GIT_READS = new Set([
   'rev-parse',
   'shortlog',
 ]);
-
-/** What npx may start without running the tool: a formatter or a linter reads it. */
-const NPX_READS = new Set(['prettier', 'eslint']);
 
 /** Shell words before a command that run nothing themselves. */
 const SHELL_PREFIX = new Set([
@@ -249,13 +273,15 @@ function commandsIn(line) {
 
 /**
  * The words of one simple command, quotes and backslashes removed, each with
- * `glob` set when it holds an UNQUOTED * ? or [ (one the shell expands).
- * `find -name '*.js'` passes its pattern on, so a quoted glob is not one.
+ * `glob` set when it holds an UNQUOTED * ? or [, and `brace` when it holds an
+ * unquoted {: the ones the shell expands. `find -name '*.js'` passes its
+ * pattern on, so a quoted glob is not one.
  */
 function tokens(piece) {
   const out = [];
   let cur = '';
   let glob = false;
+  let brace = false;
   let quote = null;
   let started = false;
   for (let i = 0; i < piece.length; i++) {
@@ -273,18 +299,65 @@ function tokens(piece) {
       i += 1;
       started = true;
     } else if (/\s/.test(c)) {
-      if (started) out.push({ text: cur, glob });
+      if (started) out.push({ text: cur, glob, brace });
       cur = '';
       glob = false;
+      brace = false;
       started = false;
     } else {
       if ('*?['.includes(c)) glob = true;
+      if (c === '{') brace = true;
       cur += c;
       started = true;
     }
   }
-  if (started) out.push({ text: cur, glob });
+  if (started) out.push({ text: cur, glob, brace });
   return out;
+}
+
+/**
+ * The words a brace expansion produces: `tools/{a,b}.js` is two words.
+ * Comma lists only, nested or not, capped at 64; a sequence `{1..9}` is read
+ * as `*`, which can only widen what is matched.
+ */
+function expandBraces(word, cap = 64) {
+  let depth = 0;
+  let start = -1;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === '{') {
+      if (depth === 0) start = i;
+      depth += 1;
+    } else if (word[i] === '}' && depth > 0) {
+      depth -= 1;
+      if (depth > 0) continue;
+      const body = word.slice(start + 1, i);
+      const parts = [];
+      let level = 0;
+      let from = 0;
+      for (let j = 0; j < body.length; j++) {
+        if (body[j] === '{') level += 1;
+        else if (body[j] === '}') level -= 1;
+        else if (body[j] === ',' && level === 0) {
+          parts.push(body.slice(from, j));
+          from = j + 1;
+        }
+      }
+      parts.push(body.slice(from));
+      const pre = word.slice(0, start);
+      const post = word.slice(i + 1);
+      if (parts.length === 1 && !body.includes('..')) continue; // `{x}` is literal
+      const options = parts.length > 1 ? parts : ['*'];
+      const out = [];
+      for (const option of options) {
+        for (const w of expandBraces(pre + option + post, cap)) {
+          out.push(w);
+          if (out.length >= cap) return out;
+        }
+      }
+      return out;
+    }
+  }
+  return [word];
 }
 
 const words = (piece) => tokens(piece).map((t) => t.text);
@@ -296,12 +369,20 @@ function segmentGlob(segment) {
     const c = segment[i];
     if (c === '*') re += '[^/]*';
     else if (c === '?') re += '[^/]';
-    else if (c === '[' && segment.indexOf(']', i + 1) > i + 1) {
-      const end = segment.indexOf(']', i + 1);
+    else if (c === '[') {
+      // As in bash, a ] first in the set (after any ! or ^) is a member.
+      let j = i + 1;
+      if (segment[j] === '!' || segment[j] === '^') j += 1;
+      if (segment[j] === ']') j += 1;
+      const end = segment.indexOf(']', j);
+      if (end < 0) {
+        re += '\\[';
+        continue;
+      }
       const body = segment
         .slice(i + 1, end)
-        .replace(/^!/, '^')
-        .replace(/\\/g, '\\\\');
+        .replace(/^[!^]/, '^')
+        .replace(/[\\\]]/g, '\\$&');
       re += `[${body}]`;
       i = end;
     } else re += c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -315,7 +396,7 @@ function segmentGlob(segment) {
  * A glob the guard cannot read is assumed to fit.
  */
 function globNamesTool(word) {
-  const parts = word.split('/');
+  const parts = posix.normalize(word).split('/');
   const base = parts.pop();
   const dir = parts.filter(Boolean).pop();
   try {
@@ -328,12 +409,46 @@ function globNamesTool(word) {
   }
 }
 
-/** Does this simple command name a paid tool, however the shell will spell it? */
-function namesTool(piece) {
+/**
+ * Does this simple command name a paid tool, however the shell will spell it?
+ * `inTools` is true when an earlier piece has done `cd tools`.
+ */
+function namesTool(piece, inTools = false) {
   if (PAID_TOOL.test(piece)) return true;
-  return tokens(piece).some(
-    (t) => TOOL_PATH.test(t.text) || PAID_TOOL.test(t.text) || (t.glob && globNamesTool(t.text))
+  return tokens(piece).some((t) =>
+    (t.brace ? expandBraces(t.text) : [t.text]).some(
+      (text) =>
+        TOOL_PATH.test(text) ||
+        PAID_TOOL.test(text) ||
+        (inTools && BARE_TOOL.test(text)) ||
+        (t.glob && globNamesTool(text))
+    )
   );
+}
+
+/** The command word of a simple command, past shell keywords and assignments. */
+function commandOf(piece) {
+  const w = words(piece);
+  let i = 0;
+  let assignmentNamesTool = false;
+  for (; i < w.length; i++) {
+    if (SHELL_PREFIX.has(w[i])) continue;
+    if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(w[i])) {
+      if (PAID_TOOL.test(w[i])) assignmentNamesTool = true;
+      continue;
+    }
+    break;
+  }
+  const cmd = i < w.length ? w[i].split('/').pop() : null;
+  return { cmd, rest: w.slice(i + 1), assignmentNamesTool };
+}
+
+/** For `cd`/`pushd`: does it move into a directory named tools? null if not a cd. */
+function movesIntoTools(piece) {
+  const { cmd, rest } = commandOf(piece);
+  if (cmd !== 'cd' && cmd !== 'pushd') return null;
+  const target = rest.find((a) => !a.startsWith('-'));
+  return Boolean(target) && posix.basename(posix.normalize(target)) === 'tools';
 }
 
 function gitIsRead(args) {
@@ -354,26 +469,23 @@ function gitIsRead(args) {
 
 /** Can this simple command run the tool? Fails closed: unknown means yes. */
 function isRead(piece) {
-  const w = words(piece);
-  let i = 0;
-  for (; i < w.length; i++) {
-    if (SHELL_PREFIX.has(w[i])) continue;
-    if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(w[i])) {
-      // A value that names the tool may run it (GIT_PAGER, LESSOPEN).
-      if (PAID_TOOL.test(w[i])) return false;
-      continue;
-    }
-    break;
+  const { cmd, rest, assignmentNamesTool } = commandOf(piece);
+  // A value that names the tool may run it (GIT_PAGER, LESSOPEN).
+  if (assignmentNamesTool) return false;
+  if (cmd === null) return true; // only keywords and assignments
+  if (cmd === '[[') {
+    // [[ evaluates -eq/-lt/... operands as arithmetic, and a subscript there
+    // runs a command substitution even inside single quotes.
+    return !/(^|\s)-(eq|ne|lt|le|gt|ge)(\s|$)/.test(piece) && !/\$\(|`/.test(piece);
   }
-  if (i >= w.length) return true; // only keywords and assignments
-  const cmd = w[i].split('/').pop();
-  const rest = w.slice(i + 1);
   if (SHELL_STRUCTURE.has(cmd) || READ_COMMANDS.has(cmd)) return true;
   if (cmd === 'git') return gitIsRead(rest);
   if (cmd === 'npx') {
-    // A config or plugin is loaded as code, so `-c <tool>` runs the tool.
-    if (rest.some((a) => LOADS_CODE.test(a))) return false;
-    return NPX_READS.has(rest.find((a) => !a.startsWith('-')));
+    let j = 0;
+    while (j < rest.length && NPX_OWN_OPTIONS.has(rest[j])) j += 1;
+    if (!Object.hasOwn(NPX_READ_FORMS, rest[j])) return false;
+    const allowed = NPX_READ_FORMS[rest[j]];
+    return rest.slice(j + 1).every((a) => !a.startsWith('-') || allowed.has(a));
   }
   return false;
 }
@@ -381,14 +493,19 @@ function isRead(piece) {
 /**
  * Is this simple command the tool itself, called with a flag it implements as
  * free? Read from the de-quoted words, so the flag must be a word of its own
- * after the tool's path. A glob is never a free call: the shell decides what
- * it names.
+ * after the tool's path. Never free when the shell decides what a word names
+ * (a glob or a brace), when the piece names two tools, or when the program is
+ * told to run other code first (node -e, -r, --import ...; a shell's -c).
  */
-function isFreeCall(piece) {
+function isFreeCall(piece, inTools = false) {
+  if ((piece.match(PAID_TOOL_ALL) || []).length > 1) return false;
   const w = tokens(piece);
-  const k = w.findIndex((t) => !t.glob && TOOL_PATH.test(t.text));
+  const isTool = (t) =>
+    !t.glob && !t.brace && (TOOL_PATH.test(t.text) || (inTools && BARE_TOOL.test(t.text)));
+  const k = w.findIndex(isTool);
   if (k < 0) return false;
-  const m = w[k].text.match(TOOL_PATH);
+  if (w.slice(0, k).some((t) => RUNS_OTHER_CODE.test(t.text))) return false;
+  const m = w[k].text.match(TOOL_PATH) || w[k].text.match(BARE_TOOL);
   const tool = m[1] || m[2];
   return w.slice(k + 1).some((t) => FREE_FLAGS[tool].has(t.text));
 }
@@ -488,12 +605,20 @@ const flag = (command, name) => {
 
 /** @returns {string|null} the reason to ask, or null to stay out of the way. */
 export function inspect(command) {
-  const pieces = commandsIn(command);
-  if (!pieces.some(namesTool)) return null;
+  // Each piece is read in the directory the pieces before it moved into, so a
+  // bare name after `cd tools` counts as the tool.
+  let inTools = false;
+  const pieces = commandsIn(command).map((piece) => {
+    const here = { piece, inTools };
+    const moved = movesIntoTools(piece);
+    if (moved !== null) inTools = moved;
+    return here;
+  });
+  if (!pieces.some((p) => namesTool(p.piece, p.inTools))) return null;
   // Every simple command must be shown harmless. One that is neither a read
   // nor a free call of the tool may be a paid run: the tool itself, a copy of
   // it written earlier in the line, or its source piped into a runtime.
-  const mayPay = pieces.some((piece) => !isRead(piece) && !isFreeCall(piece));
+  const mayPay = pieces.some((p) => !isRead(p.piece) && !isFreeCall(p.piece, p.inTools));
   if (!mayPay) return null;
 
   const book = flag(command, 'book') || 'efnafraedi-2e';
