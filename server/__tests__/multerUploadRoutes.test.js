@@ -452,6 +452,73 @@ describe('POST /api/terminology/import/*: memory storage', () => {
     ]);
   });
 
+  // The CSV route hands the importer a file, not the upload's buffer, so it writes one. Both
+  // places a temp file could land are watched: the old code wrote to /tmp by name. A spy on
+  // mkdtempSync records the directory the route made, so the case can show it watched the place
+  // the route wrote, rather than a name the route has stopped using.
+  const TEMP_DIRS = [...new Set(['/tmp', tmpdir()])];
+  const csvTempFiles = () =>
+    TEMP_DIRS.flatMap((dir) =>
+      readdirSync(dir)
+        .filter((name) => name.startsWith('terminology-import-'))
+        .map((name) => path.join(dir, name))
+    ).sort();
+
+  /** Upload one CSV; report the response, the directories the route made, and what was left. */
+  async function importCsvWatchingTemp(name, bytes) {
+    const before = csvTempFiles();
+    const made = vi.spyOn(fsCjs, 'mkdtempSync');
+    try {
+      const res = await upload('/api/terminology/import/csv', {
+        as: 'headEditor',
+        field: 'file',
+        files: [{ name, bytes }],
+      });
+      const dirs = made.mock.results.map((r) => r.value);
+      const left = csvTempFiles().filter((f) => !before.includes(f));
+      for (const f of left) rmSync(f, { recursive: true, force: true }); // red or green
+      return {
+        res,
+        // Where each directory the route made sits, and whether it outlived the response.
+        made: dirs.map((d) => ({
+          inWatchedDir: TEMP_DIRS.includes(path.dirname(d)),
+          existsAfter: existsSync(d),
+        })),
+        left,
+      };
+    } finally {
+      made.mockRestore();
+    }
+  }
+
+  it('leaves no temp file behind when the CSV import throws', async () => {
+    // An unclosed quote: the parser throws inside the importer, after the temp file is written.
+    const { res, made, left } = await importCsvWatchingTemp(
+      'bad.csv',
+      Buffer.from('english,icelandic\r\n"c557 quote,orð', 'utf8')
+    );
+    expect([res.status, res.json?.error, made, left, stored('c557 quote')]).toEqual([
+      500,
+      'Failed to import CSV',
+      [{ inWatchedDir: true, existsAfter: false }],
+      [],
+      [],
+    ]);
+  });
+
+  it('leaves no temp file behind when the CSV import succeeds (the control)', async () => {
+    const { res, made, left } = await importCsvWatchingTemp(
+      'ok.csv',
+      csv(['c557 tidy term,snyrtilegt'])
+    );
+    expect([res.status, res.json?.added, made, left]).toEqual([
+      200,
+      1,
+      [{ inWatchedDir: true, existsAfter: false }],
+      [],
+    ]);
+  });
+
   it('imports an .xlsx upload: a binary file parses', async () => {
     const XLSX = require('xlsx');
     const workbook = XLSX.utils.book_new();
