@@ -27,7 +27,7 @@
     "license": "CC BY 4.0",
     "workflow": "two-pass-editorial",
     "mtEngine": "Miðeind (malstadur.is)",
-    "catTool": "Matecat"
+    "catTool": "Ritstjóri"
   },
   "publication": {
     "url": "https://namsbokasafn.is",
@@ -43,7 +43,7 @@
   },
   "assets": {
     "faithfulTranslation": true,
-    "humanVerifiedTM": true,
+    "humanVerifiedTM": false,
     "localizationLogs": true,
     "glossary": true
   },
