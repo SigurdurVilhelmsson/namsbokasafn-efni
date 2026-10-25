@@ -511,9 +511,11 @@ const HOUSE_STYLE_TERMS = Object.freeze([
     is: 'einingagreining',
     ruled: '2026-09-27 [USER]',
     why:
-      'Supersedes the physics row víddargreining. ⚠️ The model writes neither form (víddagreining in ' +
-      'the MT): this is a deliberate [USER] ruling of a form the text does not yet use, so editors ' +
-      'introduce it in all 10 segments. It is not a record of MT behaviour.',
+      'Supersedes the physics row víddargreining. ⚠️ The September MT (98a5fe2ff) writes neither ' +
+      'form (víddagreining in all 10 segments): this is a deliberate [USER] ruling of a form that ' +
+      'text does not use, so editors introduce it in all 10. The June MT (9a69414d5) already wrote ' +
+      'it in 9 of 10, having been sent this value by the March glossary. It is not a record of MT ' +
+      'behaviour.',
   }),
   Object.freeze({
     en: Object.freeze(['abundance']),

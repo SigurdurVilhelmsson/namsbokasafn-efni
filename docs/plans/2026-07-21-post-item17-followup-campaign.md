@@ -24,12 +24,12 @@
    - The 2026-10-11 (night) bullet records the page answer "*emission → ljómun* (row *útblástur*)".
    - The chat answers frozen later that day in `stage1-chat-answers-2026-10-11.json` settled it: "the bare wrong-sense row becomes emission = útgeislun, matching gamma (γ) útgeislun and jáeindaútgeislun". The compiled set holds *útgeislun*.
    - The night bullet now carries a ✏️ pointer.
-5. **The `dimensional analysis` comment in `server/lib/houseStyleTerms.js` is true of September only. ▶ fix at source ([CODE]; not edited here).**
+5. **The `dimensional analysis` comment in `server/lib/houseStyleTerms.js` is true of September only. ▶ fix at source ([CODE]; not edited here).** ✏️ *Fixed at source later the same night, in the commit after `3d1023207`: the `why` now names both vintages. Text-only: no code reads `why`, and the one test that touches it checks only its length. It reaches prod only with the branch's next merge and deploy.*
    - Its `why` says: "The model writes neither form (víddagreining in the MT) … editors introduce it in all 10 segments."
    - Re-measured over segments whose English says "dimensional analysis": September (`98a5fe2ff`) *einingagreining* 0 of 10, *víddagreining* 10 of 10; June (`9a69414d5`) *einingagreining* 9 of 10, *víddagreining* 1 of 10.
    - June was sent that value: the March glossary (`7658de896`, 2026-03-21) carried `dimensional analysis → einingagreining`, approved.
    - Fix: reword the comment to name the vintage. It is a comment-only change in `server/`, so it can ride the next code PR.
-6. **D9 (the 1.8 publication criterion): "open" in the plan, "ticked" in the register. ▶ fix at source (plan; not edited here).**
+6. **D9 (the 1.8 publication criterion): "open" in the plan, "ticked" in the register. ▶ fix at source (plan; not edited here).** ✏️ *Fixed at source later the same night, in the commit after `3d1023207`: plan §2's Open list and its D9 row now record 1.7's result and 1.8 as adopted, not met when last measured.*
    - Plan 2026-10-10 §2 "Open" still lists "reading quality (the masked test, 1.7; threshold decided, D1)" and "the publication criterion (D9)". Its "Before editing" table gives D9 as a recommendation ("as in 1.8").
    - The register's 2026-10-11 (night) entry records: "Publication rule (1.8): all four conditions ticked (consistency, QC, preview, reading test), no note." 1.7 ran on 2026-10-25 (no override).
    - The register wins (CLAUDE.md § One source of truth): **the criterion is adopted and not met.** The entry directly below covers the reading leg (recorded only as "no override") and §C206 covers the QC leg. Updating the plan's §2 list and its D9 row is a plan edit, left for [USER]'s word.

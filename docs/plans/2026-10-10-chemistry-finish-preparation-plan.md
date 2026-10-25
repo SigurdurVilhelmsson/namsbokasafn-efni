@@ -103,8 +103,8 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
 
 **Open.** These still need [USER]:
 - the unruled headwords with enough text, ruled as cards on the stage 1 page (1.4; method decided, D3; measured 2026-10-11: 100 cards);
-- reading quality (the masked test, 1.7; threshold decided, D1);
-- the publication criterion (D9);
+- reading quality (the masked test, 1.7; threshold decided, D1); ✏️ *2026-10-25: 1.7 ran, all 150 pairs answered. June 66, September 66 of 132 decisive pairs (the override needed 80, and 56 of 93 without the 48 flagged pairs), so it did not fire: the September MT stays the base. The masking held. Result: `experiments/terminology-consistency/results/2026-10-25/masked-test-result.json`. No document records whether this tie meets 1.8's "no reading-quality regression" leg;*
+- the publication criterion (D9); ✏️ *2026-10-25: adopted on 2026-10-11, when [USER] ticked all four of 1.8's conditions on the stage 1 page (register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25: no rebuilt tree has been measured against it, and the free-check leg is red (register §C206). The register owns its status;*
 - the research design (§7, D7).
 
 The calendar (D0) and the scope of the verdicts (D2) were answered on 2026-10-11 (§8).
@@ -367,7 +367,7 @@ more work on some editors.
 |---|---|---|
 | D7 | Control arm (§7) | lean (b) |
 | D8 | The only gate on editing is timing and baseline capture | yes |
-| D9 | Publication criterion | as in 1.8 |
+| D9 | Publication criterion | as in 1.8. ✏️ *2026-10-25: adopted on 2026-10-11 ([USER] ticked all four conditions on the stage 1 page; register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25 (register §C206 and that day's night entries, which own its status).* |
 | D12 | Review depth for alts and table summaries (+38.6% English) | **urgent**: decide before editing starts. The contract requires every chapter reviewed and published within the 12 months. |
 | D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **0.2 has counted it: under the D10 follow-up's recommendation, that is all of ch01–ch02**, with the comments as notes. The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so this has no editing hours yet. Funding options are in the private companion; [USER] decides. |
 | D15 | §C50: the terminology panel's issue volume (2.81 per segment), which blocks U4 | re-measure on layer 2 first; the pass should remove much of it |
