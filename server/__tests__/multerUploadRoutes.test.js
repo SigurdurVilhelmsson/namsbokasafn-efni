@@ -37,6 +37,7 @@
 import { mkdtempSync, rmSync, readdirSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { createRequire } from 'node:module';
 
@@ -55,6 +56,7 @@ const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, createUpload's fileSize
 // A slug no real book uses, registered in the test's own database so the head editor's book is
 // a real one. Nothing here writes under books/.
 const FIXTURE = 'c557-multer-fixture';
+const FIXTURE_SUBJECT = 'chemistry';
 
 let db;
 let auth;
@@ -110,10 +112,17 @@ beforeAll(async () => {
   const catalogue = db
     .prepare('INSERT INTO openstax_catalogue (slug, title) VALUES (?, ?)')
     .run(`${FIXTURE}-cat`, 'Multer fixture book');
-  db.prepare(
-    `INSERT INTO registered_books (catalogue_id, slug, title_is, registered_by, status)
-     VALUES (?, ?, ?, 'u-test', 'active')`
-  ).run(catalogue.lastInsertRowid, FIXTURE, 'Prófbók fyrir upphal');
+  const book = db
+    .prepare(
+      `INSERT INTO registered_books (catalogue_id, slug, title_is, registered_by, status)
+       VALUES (?, ?, ?, 'u-test', 'active')`
+    )
+    .run(catalogue.lastInsertRowid, FIXTURE, 'Prófbók fyrir upphal');
+  // Its subject, as the admin page maps a registered book: what an import under it is tagged.
+  db.prepare('INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (?, ?)').run(
+    book.lastInsertRowid,
+    FIXTURE_SUBJECT
+  );
   require('../config').refreshValidBooks(db);
 
   personas.headEditor = signIn(member('he', 'head-editor', FIXTURE));
@@ -274,19 +283,91 @@ describe('POST /api/terminology/import/*: memory storage', () => {
     }
   }
 
-  it('leaves no temp file behind when the CSV import throws', async () => {
-    // An unclosed quote: the parser throws inside the importer, after the temp file is written.
-    const { res, made, left } = await importCsvWatchingTemp(
-      'bad.csv',
-      Buffer.from('english,icelandic\r\n"c557 quote,orð', 'utf8')
-    );
-    expect([res.status, res.json?.error, made, left, stored('c557 quote')]).toEqual([
-      500,
-      'Failed to import CSV',
-      [{ inWatchedDir: true, existsAfter: false }],
-      [],
-      [],
-    ]);
+  // A file the parser cannot read is the uploader's to fix: a 400 that says what the parser said
+  // (it was a 500 until 2026-10-25, whose reason the page could not show). Each kind of fault the
+  // parser names is here, one of them under a code without the CSV_ prefix, so a check on the
+  // prefix rather than the parser's error class would miss it. The parser throws inside the
+  // importer, after the temp file is written, so each case also watches the temp file.
+  for (const [fault, text, says] of [
+    ['an unclosed quote', 'english,icelandic\r\n"c21d quote,orð', 'Quote Not Closed'],
+    [
+      'a row with a third field',
+      'english,icelandic\r\nc21d fields,orð,auka\r\n',
+      'Invalid Record Length',
+    ],
+    [
+      'a quote inside a field',
+      'english,icelandic\r\nc21d mid"quote,orð\r\n',
+      'Invalid Opening Quote',
+    ],
+  ]) {
+    it(`refuses a CSV with ${fault} with 400 saying why, and leaves no temp file`, async () => {
+      const { res, made, left } = await importCsvWatchingTemp('bad.csv', Buffer.from(text, 'utf8'));
+      expect([res.status, res.json?.error, made, left, stored('c21d ')]).toEqual([
+        400,
+        'Invalid CSV',
+        [{ inWatchedDir: true, existsAfter: false }],
+        [],
+        [],
+      ]);
+      expect(res.json?.message).toMatch(new RegExp(`^The file could not be read as CSV: ${says}`));
+    });
+  }
+
+  it('answers 500 when the import fails for a reason that is not the file, and leaves no temp file', async () => {
+    const terminologyService = require('../services/terminologyService');
+    // A real non-file failure carries a code (fs: ENOSPC; SQLite: SQLITE_BUSY), so the control
+    // does too: a check on "has a code" instead of the parser's class would answer it 400.
+    const failing = vi.spyOn(terminologyService, 'importFromCSV').mockImplementation(() => {
+      throw Object.assign(new Error('disk full'), { code: 'ENOSPC' });
+    });
+    try {
+      const { res, made, left } = await importCsvWatchingTemp('ok.csv', csv(['c21d disk,orð']));
+      expect([res.status, res.json?.error, made, left]).toEqual([
+        500,
+        'Failed to import CSV',
+        [{ inWatchedDir: true, existsAfter: false }],
+        [],
+      ]);
+    } finally {
+      failing.mockRestore();
+    }
+  });
+
+  it('refuses a glossary upload the parser cannot read with 400 saying why', async () => {
+    const res = await upload(`/api/terminology/import/glossary?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: [
+        {
+          name: 'glossary.csv',
+          bytes: Buffer.from('english,icelandic\r\n"c21d gloss,orð', 'utf8'),
+        },
+      ],
+    });
+    expect([res.status, res.json?.error, stored('c21d gloss')]).toEqual([400, 'Invalid CSV', []]);
+    expect(res.json?.message).toMatch(/^The file could not be read as CSV: Quote Not Closed/);
+  });
+
+  it('answers 500 when the glossary import fails for a reason that is not the file', async () => {
+    const terminologyService = require('../services/terminologyService');
+    const failing = vi.spyOn(terminologyService, 'importGlossaryTerms').mockImplementation(() => {
+      throw Object.assign(new Error('database is locked'), { code: 'SQLITE_BUSY' });
+    });
+    try {
+      const res = await upload(`/api/terminology/import/glossary?bookSlug=${FIXTURE}`, {
+        as: 'headEditor',
+        field: 'file',
+        files: [{ name: 'glossary.csv', bytes: csv(['c21d gloss busy,orð']) }],
+      });
+      expect([res.status, res.json?.error, failing.mock.calls.length]).toEqual([
+        500,
+        'Failed to import glossary',
+        1,
+      ]);
+    } finally {
+      failing.mockRestore();
+    }
   });
 
   it('leaves no temp file behind when the CSV import succeeds (the control)', async () => {
@@ -440,4 +521,211 @@ describe('POST /api/terminology/import/*: memory storage', () => {
       });
     }
   }
+});
+
+/**
+ * The import page sends the book it is importing for as `?bookSlug=` (its book picker). The
+ * glossary route always read it; the CSV and Excel routes read only `subjects`, which the page
+ * never sends, so every page import landed untagged whatever book was chosen (logged
+ * 2026-10-24, fixed 2026-10-25). The book now gives the subject, a book that is not registered is
+ * refused, and an explicit `subjects` list, which API callers send, still decides.
+ */
+describe('POST /api/terminology/import/*: the book the import page picks', () => {
+  const subjectsOf = (english) =>
+    db
+      .prepare(
+        `SELECT ts.subject FROM terminology_translation_subjects ts
+           JOIN terminology_translations t ON t.id = ts.translation_id
+           JOIN terminology_headwords h ON h.id = t.headword_id
+          WHERE h.english = ? ORDER BY ts.subject`
+      )
+      .all(english)
+      .map((r) => r.subject);
+  const translationsOf = (english) =>
+    db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM terminology_translations t
+           JOIN terminology_headwords h ON h.id = t.headword_id WHERE h.english = ?`
+      )
+      .get(english).n;
+  /** The metadata of the newest activity row of `type`, as the route logged it. */
+  const lastImportLog = (type) =>
+    JSON.parse(
+      db
+        .prepare('SELECT metadata FROM activity_log WHERE type = ? ORDER BY id DESC LIMIT 1')
+        .get(type)?.metadata ?? 'null'
+    );
+  const oneCsv = (english) => [
+    { name: 'terms.csv', bytes: Buffer.from(`english,icelandic\r\n${english},bókað\r\n`, 'utf8') },
+  ];
+  function oneXlsx(english) {
+    const XLSX = require('xlsx');
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      workbook,
+      XLSX.utils.aoa_to_sheet([
+        ['English', 'Icelandic'],
+        [english, 'bókað'],
+      ]),
+      'Terms'
+    );
+    return [
+      { name: 'terms.xlsx', bytes: XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' }) },
+    ];
+  }
+
+  it("a CSV imported under a book is tagged with that book's subject", async () => {
+    const res = await upload(`/api/terminology/import/csv?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv booked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d csv booked')]).toEqual([
+      200,
+      1,
+      [FIXTURE_SUBJECT],
+    ]);
+    expect(lastImportLog('import_terminology_csv')).toMatchObject({
+      bookSlug: FIXTURE,
+      subjects: [FIXTURE_SUBJECT],
+      added: 1,
+    });
+  });
+
+  it("an .xlsx imported under a book is tagged with that book's subject", async () => {
+    const res = await upload(`/api/terminology/import/excel?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneXlsx('c21d xlsx booked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d xlsx booked')]).toEqual([
+      200,
+      1,
+      [FIXTURE_SUBJECT],
+    ]);
+    expect(lastImportLog('import_terminology_excel')).toMatchObject({
+      bookSlug: FIXTURE,
+      subjects: [FIXTURE_SUBJECT],
+      added: 1,
+    });
+  });
+
+  it('a CSV imported with no book stays untagged (the control)', async () => {
+    const res = await upload('/api/terminology/import/csv', {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv unbooked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d csv unbooked')]).toEqual([200, 1, []]);
+  });
+
+  it('an explicit subjects list still decides over the book', async () => {
+    const res = await upload(`/api/terminology/import/csv?subjects=physics&bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv explicit'),
+    });
+    expect([res.status, subjectsOf('c21d csv explicit')]).toEqual([200, ['physics']]);
+  });
+
+  // A repeated key reaches the route as a list; a list is not the one comma-separated value the
+  // route documents, so it is refused rather than dropped in favour of the book's subject.
+  for (const route of ['csv', 'excel']) {
+    it(`/import/${route}: refuses a repeated subjects key with 400, and imports nothing`, async () => {
+      const english = `c21d ${route} repeated subjects`;
+      const res = await upload(
+        `/api/terminology/import/${route}?subjects=chemistry&subjects=physics&bookSlug=${FIXTURE}`,
+        {
+          as: 'headEditor',
+          field: 'file',
+          files: route === 'excel' ? oneXlsx(english) : oneCsv(english),
+        }
+      );
+      expect([res.status, res.json?.error, translationsOf(english)]).toEqual([
+        400,
+        'Invalid subjects',
+        0,
+      ]);
+    });
+  }
+
+  for (const route of ['csv', 'excel', 'glossary']) {
+    it(`/import/${route}: refuses a book that is not registered, and imports nothing`, async () => {
+      const english = `c21d ${route} unregistered`;
+      const res = await upload(`/api/terminology/import/${route}?bookSlug=no-such-book`, {
+        as: 'headEditor',
+        field: 'file',
+        files: route === 'excel' ? oneXlsx(english) : oneCsv(english),
+      });
+      expect([res.status, res.json?.error, translationsOf(english)]).toEqual([
+        400,
+        'Invalid book',
+        0,
+      ]);
+    });
+  }
+});
+
+/**
+ * POST /api/terminology/import/existing-glossary builds a path from the body's bookSlug:
+ * books/<bookSlug>/glossary/terminology-en-is.csv. It checked only that the file existed, so a
+ * slug holding `..` reached any terminology-en-is.csv on the machine (logged 2026-10-24). The slug
+ * must now be a registered book, checked before any path is built.
+ */
+describe('POST /api/terminology/import/existing-glossary: the book is checked first', () => {
+  const BOOKS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'books');
+
+  async function postJson(urlPath, body) {
+    const res = await fetch(base + urlPath, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${personas.headEditor.token}`,
+      },
+    });
+    return { status: res.status, json: await res.json().catch(() => null) };
+  }
+  const translationsOf = (english) =>
+    db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM terminology_translations t
+           JOIN terminology_headwords h ON h.id = t.headword_id WHERE h.english = ?`
+      )
+      .get(english).n;
+
+  it('refuses a slug that walks out of books/ to another glossary file, and imports nothing', async () => {
+    // A real file the walk reaches: before the check, the route imported it.
+    const outside = path.join(work, 'outside-books');
+    fsCjs.mkdirSync(path.join(outside, 'glossary'), { recursive: true });
+    fsCjs.writeFileSync(
+      path.join(outside, 'glossary', 'terminology-en-is.csv'),
+      'english,icelandic\nc21d walked out,útrás\n'
+    );
+    const bookSlug = path.relative(BOOKS_DIR, outside);
+    expect(bookSlug.startsWith('..')).toBe(true);
+
+    const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug });
+    expect([res.status, res.json?.error, translationsOf('c21d walked out')]).toEqual([
+      400,
+      'Invalid book',
+      0,
+    ]);
+  });
+
+  for (const [what, bookSlug] of [
+    ['a slug no book has', 'no-such-book'],
+    ['a list, not a slug', [FIXTURE]],
+  ]) {
+    it(`refuses ${what} with 400`, async () => {
+      const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug });
+      expect([res.status, res.json?.error]).toEqual([400, 'Invalid book']);
+    });
+  }
+
+  it('lets a registered book through to the file check (the control)', async () => {
+    // The fixture is registered and has no glossary file: the answer is the file check's.
+    const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug: FIXTURE });
+    expect([res.status, res.json?.error]).toEqual([404, 'Glossary not found']);
+  });
 });

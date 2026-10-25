@@ -11,7 +11,11 @@ const { loginAs } = require('./helpers/auth');
  * These tests directly target three production bugs:
  *   #1 — csv-parse / xlsx packages never installed (import silently failed)
  *   #2 — activityLog.log() used `action` instead of `type` (NOT NULL crash)
- *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global)
+ *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global). That fixed the page
+ *        half only: the CSV and Excel routes still ignored bookSlug until 2026-10-25, when they
+ *        began tagging terms with the book's subject. 'valid CSV with bookSlug creates terms'
+ *        pins it here (the server maps efnafraedi-2e to chemistry at boot), and
+ *        multerUploadRoutes.test.js pins it for Excel and for an unregistered book.
  */
 
 const API = '/api/terminology';
@@ -481,6 +485,10 @@ test.describe('Terminology CSV import', () => {
     const searchBody = await searchRes.json();
     const found = searchBody.terms.find((t) => t.english === `acid-${tag}`);
     expect(found).toBeDefined();
+    // Tagged with the book's subject: until 2026-10-25 the route ignored bookSlug and the
+    // terms landed untagged.
+    const term = (await (await page.request.get(`${API}/${found.id}`)).json()).term;
+    expect(term.translations.map((t) => t.subjects)).toEqual([['chemistry']]);
     // Clean up created terms
     for (const t of searchBody.terms) {
       if (t.english.includes(tag)) cleanupIds.push(t.id);
@@ -801,6 +809,34 @@ test.describe('Terminology import page: a refused upload says why', () => {
     expect(buffer.length).toBe(size);
     const text = await refusalAlert(page, { name: 'big.csv', mimeType: 'text/csv', buffer });
     expect(text).toBe('Villa: File Too Large — Uploaded file exceeds the size limit (5 MB)');
+  });
+
+  test('a CSV the parser cannot read: the alert says so, and why', async ({ page }) => {
+    const text = await refusalAlert(page, {
+      name: 'broken.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\n"unclosed-${uid()},orð\n`),
+    });
+    expect(text).toMatch(
+      /^Villa: Invalid CSV — The file could not be read as CSV: Quote Not Closed: /
+    );
+  });
+
+  test('an error page that is not JSON: the alert says "Villa" once', async ({ page }) => {
+    // What nginx sends for a body over its cap: its own HTML 413, which the server never sees.
+    await page.route('**/api/terminology/import/csv**', (route) =>
+      route.fulfill({
+        status: 413,
+        contentType: 'text/html',
+        body: '<html><body><h1>413 Request Entity Too Large</h1></body></html>',
+      })
+    );
+    const text = await refusalAlert(page, {
+      name: 'terms.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\nnonjson-${uid()},orð\n`),
+    });
+    expect(text).toBe('Villa: Netþjónninn svaraði HTTP 413');
   });
 
   test('a valid CSV, the control: no alert, and the result panel counts it', async ({ page }) => {
