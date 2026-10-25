@@ -34,6 +34,11 @@ function addEdit(segment, original, edited) {
     .run(BOOK, segment, original, edited).lastInsertRowid;
 }
 
+/**
+ * A row as the real freeze wrote it. experiments/terminology-consistency/freeze_pending_edits.py
+ * strips leading and trailing whitespace from both texts before writing, so the frozen copy can
+ * differ from the database by edge whitespace alone (row 138 on production: one trailing space).
+ */
 function frozenRow(id, cls) {
   const r = db.prepare('SELECT * FROM segment_edits WHERE id = ?').get(id);
   return {
@@ -41,8 +46,8 @@ function frozenRow(id, cls) {
     class: cls,
     module: r.module_id,
     segment: r.segment_id,
-    original: r.original_content,
-    edited: r.edited_content,
+    original: r.original_content.trim(),
+    edited: r.edited_content.trim(),
   };
 }
 
@@ -205,6 +210,31 @@ describe('close-pending-edits: refusals', () => {
       ids.clean[1]
     );
     expect(run().ok).toBe(false);
+  });
+
+  // Production's row 138: the database text ends in a space the freeze stripped. That is the
+  // freeze's normalisation, not a change, so the row must not be refused (the case above is the
+  // control: a real change still is).
+  it('does not count edge whitespace the freeze stripped as a change', () => {
+    for (const [col, field] of [
+      ['edited_content', 'edited'],
+      ['original_content', 'original'],
+    ]) {
+      const id = ids.changed[0];
+      const row = input.rows.find((r) => r.id === id);
+      db.prepare(`UPDATE segment_edits SET ${col} = ? WHERE id = ?`).run(` ${row[field]} \n`, id);
+    }
+    const report = run({ write: false });
+    expect([report.ok, report.refused]).toEqual([true, []]);
+  });
+
+  it('still refuses whitespace INSIDE the text, which the freeze kept', () => {
+    const id = ids.changed[0];
+    const row = input.rows.find((r) => r.id === id);
+    const inside = row.edited.replace(' ', '  ');
+    expect(inside).not.toBe(row.edited); // the fixture text has a space to double
+    db.prepare(`UPDATE segment_edits SET edited_content = ? WHERE id = ?`).run(inside, id);
+    expect(run({ write: false }).refused).toEqual([`row ${id} changed since it was frozen`]);
   });
 
   it('refuses when another approved edit sits on a ruled segment', () => {

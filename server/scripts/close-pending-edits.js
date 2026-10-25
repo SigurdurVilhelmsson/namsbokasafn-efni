@@ -128,10 +128,15 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
     }
     if (r.book !== book) refuse(`row ${id} belongs to ${r.book}`);
     if (r.status !== 'pending') refuse(`row ${id} is ${r.status}, not pending`);
+    // The frozen file was written by experiments/terminology-consistency/freeze_pending_edits.py,
+    // which strips leading and trailing whitespace from both texts. Compare the same way, or a
+    // row whose stored text ends in a space reads as changed when nobody touched it (production
+    // row 138, found by the first dry run on 2026-10-25). Whitespace inside the text still counts.
+    const edge = (s) => (s ?? '').trim();
     const same =
       f &&
-      r.original_content === f.original &&
-      r.edited_content === f.edited &&
+      edge(r.original_content) === edge(f.original) &&
+      edge(r.edited_content) === edge(f.edited) &&
       r.segment_id === f.segment &&
       r.module_id === f.module;
     if (f && !same) refuse(`row ${id} changed since it was frozen`);
