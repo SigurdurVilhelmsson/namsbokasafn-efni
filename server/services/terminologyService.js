@@ -1035,24 +1035,33 @@ class InvalidUploadError extends Error {
   }
 }
 
-// The two workbook containers: an .xlsx is a ZIP, an .xls an OLE compound file.
+// Binary workbooks by their first bytes: an .xlsx (or .ods) is a ZIP, an .xls from Excel 5 on
+// an OLE compound file, and an Excel 2-4 .xls opens with a BIFF2-4 BOF record (09 00/02/04).
 const ZIP_SIGNATURE = Buffer.from([0x50, 0x4b, 0x03, 0x04]);
 const OLE_SIGNATURE = Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]);
 
-function isWorkbookBytes(bytes) {
+function hasBinaryWorkbookSignature(bytes) {
   return (
-    Buffer.isBuffer(bytes) &&
-    (bytes.subarray(0, 4).equals(ZIP_SIGNATURE) || bytes.subarray(0, 8).equals(OLE_SIGNATURE))
+    bytes.subarray(0, 4).equals(ZIP_SIGNATURE) ||
+    bytes.subarray(0, 8).equals(OLE_SIGNATURE) ||
+    (bytes.length >= 4 && bytes[0] === 0x09 && [0x00, 0x02, 0x04].includes(bytes[1]))
   );
 }
+
+// Text workbooks Excel also saves as .xls, which xlsx names when it reads them. It names no
+// format for plain text or CSV, which is what tells them apart.
+const TEXT_WORKBOOK_TYPES = new Set(['xlml', 'html']);
 
 /**
  * Import terms from Excel file.
  *
  * Only a workbook is read. xlsx parses plain text and other bytes as a sheet without complaint,
- * and the column fallbacks below would then import its first two columns as terms, so the bytes
- * must carry a workbook signature first. Every way the file cannot be used throws
- * InvalidUploadError.
+ * and the column fallbacks below would then import its first two columns as terms, so the file
+ * must be a binary workbook (by its signature) or a text workbook xlsx recognised (XML
+ * Spreadsheet 2003, an HTML table). Not a workbook, a container xlsx cannot open, a named sheet
+ * the workbook lacks, or no sheets at all throws InvalidUploadError. A sheet xlsx reads as empty
+ * imports 0 rows and answers 200, as an empty CSV does; that includes a sheet whose XML is
+ * damaged inside an intact ZIP, which xlsx reports as an empty sheet.
  */
 async function importFromExcel(fileContent, userId, username, options = {}) {
   let XLSX;
@@ -1065,20 +1074,27 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
   const { subjects = [], sheetName = null } = options;
 
   const bytes = typeof fileContent === 'string' ? fs.readFileSync(fileContent) : fileContent;
-  if (!isWorkbookBytes(bytes)) {
-    throw new InvalidUploadError(
+  const notAWorkbook = () =>
+    new InvalidUploadError(
       'The file is not an Excel workbook (.xlsx or .xls). A .csv file goes through the CSV import.'
     );
-  }
+  if (!Buffer.isBuffer(bytes) || bytes.length === 0) throw notAWorkbook();
 
   let workbook;
   try {
     workbook = XLSX.read(bytes, { type: 'buffer' });
   } catch (err) {
-    throw new InvalidUploadError(`The file could not be read as an Excel workbook: ${err.message}`);
+    // xlsx throws plain strings from some of its parsers, not only Errors.
+    const reason = err instanceof Error ? err.message : String(err);
+    throw new InvalidUploadError(`The file could not be read as an Excel workbook: ${reason}`);
+  }
+  if (!hasBinaryWorkbookSignature(bytes) && !TEXT_WORKBOOK_TYPES.has(workbook.bookType)) {
+    throw notAWorkbook();
   }
 
-  if (sheetName && !workbook.Sheets[sheetName]) {
+  // The sheet list, not a lookup on Sheets: "toString" and other Object.prototype names would
+  // pass a lookup and import nothing with a 200.
+  if (sheetName && !workbook.SheetNames.includes(sheetName)) {
     throw new InvalidUploadError(
       `The workbook has no sheet named "${sheetName}". Its sheets: ${workbook.SheetNames.join(', ')}.`
     );

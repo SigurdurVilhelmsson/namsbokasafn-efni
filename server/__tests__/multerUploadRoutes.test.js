@@ -734,9 +734,10 @@ describe('POST /api/terminology/import/existing-glossary: the book is checked fi
  * POST /api/terminology/import/excel and what it will read. xlsx (SheetJS) throws only for a
  * damaged ZIP: plain text and other bytes "parse" into a sheet, and the importer takes the first
  * two columns as English and Icelandic, so a text file named .xlsx could import nonsense with a
- * 200 (measured 2026-10-25). A damaged workbook and a missing sheet name were 500s. Now the bytes
- * must be a workbook (an .xlsx is a ZIP, an .xls an OLE compound file), and every way the file
- * cannot be used is a 400 that says why.
+ * 200 (measured 2026-10-25). A damaged workbook and a missing sheet name were 500s. Now the file
+ * must be a binary workbook (ZIP, OLE, or an Excel 2-4 BIFF header) or a text workbook xlsx
+ * recognises (XML Spreadsheet 2003, an HTML table), and not a workbook, damaged, a missing sheet
+ * or no sheets is a 400 that says why. A sheet xlsx reads as empty still imports 0 rows (200).
  */
 describe('POST /api/terminology/import/excel: only a workbook is read', () => {
   const XLSX = require('xlsx');
@@ -772,6 +773,25 @@ describe('POST /api/terminology/import/excel: only a workbook is read', () => {
       [{ english: 'c21e xls term', icelandic: 'gamalt snið' }],
     ]);
   });
+
+  // Excel also saves .xls as XML Spreadsheet 2003 or an HTML table, and Excel 2-4 wrote BIFF2-4;
+  // xlsx reads all three, so the check must too (review of this branch, 2026-10-25).
+  // BIFF2 is a single-byte format: xlsx writes "ð" in it as "_", so its case uses ASCII.
+  for (const [format, bookType, icelandic] of [
+    ['XML Spreadsheet 2003', 'xlml', 'snið'],
+    ['an HTML table', 'html', 'snið'],
+    ['Excel 2 (BIFF2)', 'biff2', 'snid'],
+  ]) {
+    it(`imports an .xls saved as ${format}`, async () => {
+      const english = `c21e ${bookType} term`;
+      const res = await sendExcel('terms.xls', workbook(bookType, [[english, icelandic]]));
+      expect([res.status, res.json?.added, stored(english)]).toEqual([
+        200,
+        1,
+        [{ english, icelandic }],
+      ]);
+    });
+  }
 
   it('refuses a text file named .xlsx, which the parser would have read as a sheet', async () => {
     const notes = Buffer.from(
@@ -813,6 +833,47 @@ describe('POST /api/terminology/import/excel: only a workbook is read', () => {
       [],
     ]);
     expect(res.json?.message).toMatch(/^The file could not be read as an Excel workbook: /);
+  });
+
+  it('refuses a sheet name that is an Object.prototype member, as any missing sheet', async () => {
+    const res = await sendExcel(
+      'terms.xlsx',
+      workbook('xlsx', [['c21e proto', 'frumgerð']]),
+      '?sheetName=toString'
+    );
+    expect([res.status, res.json?.error, stored('c21e proto')]).toEqual([
+      400,
+      'Invalid Excel file',
+      [],
+    ]);
+  });
+
+  it("keeps the parser's reason when xlsx throws a string, not an Error", async () => {
+    const read = vi.spyOn(XLSX, 'read').mockImplementation(() => {
+      // eslint-disable-next-line no-throw-literal -- imitates xlsx, which throws plain strings
+      throw 'XLS Xnum Buffer underflow';
+    });
+    try {
+      const res = await sendExcel('terms.xls', workbook('biff8', [['c21e thrown', 'kastað']]));
+      expect([res.status, res.json?.message]).toEqual([
+        400,
+        'The file could not be read as an Excel workbook: XLS Xnum Buffer underflow',
+      ]);
+    } finally {
+      read.mockRestore();
+    }
+  });
+
+  it('refuses a workbook with no sheets with 400', async () => {
+    const read = vi
+      .spyOn(XLSX, 'read')
+      .mockReturnValue({ SheetNames: [], Sheets: {}, bookType: 'xlsx' });
+    try {
+      const res = await sendExcel('terms.xlsx', workbook('xlsx', [['c21e nosheet', 'ekkert']]));
+      expect([res.status, res.json?.message]).toEqual([400, 'The workbook has no sheets.']);
+    } finally {
+      read.mockRestore();
+    }
   });
 
   it('refuses a sheet name the workbook does not have, and names the sheets it has', async () => {

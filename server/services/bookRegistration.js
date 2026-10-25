@@ -33,9 +33,12 @@ const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
  */
 const BOOK_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+/** At most this many characters: a folder name, and far above the longest slug in use (19). */
+const BOOK_SLUG_MAX = 64;
+
 /** @param {unknown} slug @returns {boolean} */
 function isValidBookSlug(slug) {
-  return typeof slug === 'string' && BOOK_SLUG.test(slug);
+  return typeof slug === 'string' && slug.length <= BOOK_SLUG_MAX && BOOK_SLUG.test(slug);
 }
 
 /** A slug registration refuses; a route answers it with a 400. */

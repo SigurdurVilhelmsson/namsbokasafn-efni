@@ -63,6 +63,7 @@ const REFUSED = [
   ['an accented letter', 'efnafræði'],
   ['an empty string', ''],
   ['a list', ['efnafraedi-2e']],
+  ['65 characters, past the limit', 'a'.repeat(65)],
 ];
 
 let bookRegistration;
@@ -120,6 +121,9 @@ afterAll(async () => {
 });
 
 describe('the slug rule', () => {
+  it('accepts 64 characters, the limit', () => {
+    expect(bookRegistration.isValidBookSlug('a'.repeat(64))).toBe(true);
+  });
   for (const slug of IN_USE) {
     it(`accepts ${slug}, a slug in use`, () => {
       expect(bookRegistration.isValidBookSlug(slug)).toBe(true);
