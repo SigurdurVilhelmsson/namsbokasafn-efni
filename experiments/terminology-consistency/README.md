@@ -375,3 +375,22 @@ substance name into two words, which round 1's substance-name class already cove
   when flagged (p027, p037); 7 were not.
 - **Sampler gap, for any re-use:** `masked_test_sample.py` admitted pairs that differ in no word.
   Its population should require a word difference.
+
+#### Result, 2026-10-25: no override; the base stays the September MT
+
+[USER] answered all 150 pairs (last answer 12:55:23Z). The answers were frozen first
+(`results/2026-10-25/masked-test-answers/`, `f4cc44dfc`), then the key was committed
+(`a858bfe71`; its sha256 equals the one recorded at pre-registration), then the analyser ran
+once, with `--exclude` as amended on 2026-10-14. Its output is
+`results/2026-10-25/masked-test-result.json`.
+
+- **All 150 pairs:** June 66, September 66, equal 5, both wrong 13. Of 132 decisive pairs June
+  won exactly half (0.50; Wilson lower bound 0.416); the rule needed 80. Does not fire.
+- **After excluding the 48 flagged pairs:** June 45, September 48, equal 2, both wrong 7. Of 93
+  decisive, June 0.484 (lower bound 0.385); the rule needed 56. Does not fire.
+- **Masking held:** of the 67 pairs where a side was named as September, 31 were right and 36
+  wrong (0.463; lower bound 0.349), and 83 were "can't tell". The result is usable.
+- **Verdict, by the registered rule (D1): no override.** The September MT stays the base. Where
+  the two vintages agree on terms, neither reads better than the other.
+- Worth carrying into editing, though it decides nothing here: **13 of 150 pairs were judged
+  "both wrong"** (7 of the 102 unflagged). [USER]'s 31 notes name the faults.
