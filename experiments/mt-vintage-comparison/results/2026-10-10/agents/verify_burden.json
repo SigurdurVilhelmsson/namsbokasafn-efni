@@ -1,0 +1,149 @@
+{
+ "verdicts": [
+  {
+   "claim": "JUNE base: 607 of 2,724 prose segment-term pairs (22.3%) need a terminology change",
+   "status": "confirmed",
+   "evidence": "My own script (own loader, normaliser, decided-term join and loops; only measure.py's plain/norm_en/en_pattern/stems/carries are shared) gives exactly 607/2724. I compared all 21 chapters cell by cell (504 cells), and 502 agree. A second, list-based parse of the raw files recounts ch09, ch15 and ch16 identically. CAVEAT: the instrument has false positives (claim 17), so this is the measured value, not the true burden.",
+   "correctedValue": "As measured: 607. After removing the matcher/English-sense artefacts I identified by reading (75 pairs at most, at least 68): about 532–539."
+  },
+  {
+   "claim": "NEW base: 995 of 3,092 pairs (32.2%)",
+   "status": "confirmed",
+   "evidence": "Exactly reproduced: 995/3092. Same per-chapter agreement.",
+   "correctedValue": "As measured: 995. After removing the artefacts (77–85 pairs): about 910–918."
+  },
+  {
+   "claim": "HYBRID base: 754 of 3,092 pairs (24.4%)",
+   "status": "confirmed",
+   "evidence": "Exactly reproduced with my own English normaliser for the splice (nested [[x:..|..]] reduced innermost-first, {{x}}..{{/x}}, ++u++, [[BR]], MATH/MEDIA/TABLE replaced by one token, whitespace collapsed). The normaliser gives the same splice: 15,695 / 1,753 / 2,220 of 19,668 keys.",
+   "correctedValue": "As measured: 754. After removing the artefacts (72–80 pairs): about 674–682. The ranking JUNE < HYBRID < NEW does not change."
+  },
+  {
+   "claim": "Unique segments needing at least one change: JUNE 571 / NEW 873 / HYBRID 703",
+   "status": "confirmed",
+   "evidence": "Distinct (module, key) among pairs needing a change: 571/873/703."
+  },
+  {
+   "claim": "Key-terms headwords to fix: JUNE 23 / NEW 64 / HYBRID 23 of 136 (carries-based 22/55/22)",
+   "status": "confirmed",
+   "evidence": "On 135 decided terms I get 23/63/23 (string differs after norm_en) and 22/54/22 (carries fails). The 136th entry is the ch07 'molecular structure' twin (fs-idp108813632). It has no verdict; its Kn 'bygging sameindar' differs from the twin's target 'sameindabygging' and does not carry it. That adds 1 to NEW in both counts, giving 64 and 55."
+  },
+  {
+   "claim": "Pairs by decision source: JUNE 256 verdict + 351 ruling; NEW 933 + 62; HYBRID 399 + 355",
+   "status": "confirmed",
+   "evidence": "Identical. Decided set = 104 verdicts, all joined by (chapter, definitionId), with 0 mismatches between verdict julyEntry/newEntry and the segment K strings, plus 31 exact rulings. Three of the 31 match only after norm_en strips a parenthetical (Celsius (°C), cell potential (Ecell), galvanic (voltaic) cell). Those three carry 46 JUNE pairs, 2 NEW and 46 HYBRID, so a literal reading of 'exactly' gives 561 / 993 / 708."
+  },
+  {
+   "claim": "Common-ids population: JUNE 605/2701, NEW 851/2710, HYBRID 610/2710; unique segments 569/743/573",
+   "status": "confirmed",
+   "evidence": "Identical. HYBRID 610 = 601 pairs on June IS + 9 renumbered entries that fall back to new IS."
+  },
+  {
+   "claim": "HYBRID pairs needing change by IS source: 601 June IS, 153 new IS (128 alts, 17 entries, 8 table summaries)",
+   "status": "confirmed",
+   "evidence": "Identical. The 601 HYBRID June-IS pairs are a strict subset of JUNE's 607. The other 6 JUNE pairs sit on June-only entry ids."
+  },
+  {
+   "claim": "Splice coverage: 15,695 of 19,668 new keys take June IS; 1,753 have no June key (1,113 alt, 472 entry, 168 table-summary) and so 'have no June Icelandic'; 2,220 share an id but differ in EN (2,219 entries, 1 problem)",
+   "status": "partly",
+   "evidence": "Every count reproduces. But June and new each have 3,203 entry ids. The 472 new-only entry ids pair off against 472 June-only entry ids, and all 472 new-only entries have identical normalised English among the same module's June entries. They are moved ids, not missing Icelandic. Only the 1,113 alts and 168 table summaries are genuinely new content.",
+   "correctedValue": "1,281 segments have no June Icelandic (1,113 alts + 168 table summaries). The 472 entries have June Icelandic under different ids."
+  },
+  {
+   "claim": "'Pure JUNE cannot be published as it stands'",
+   "status": "partly",
+   "evidence": "Supported only in the narrow sense that June IS cannot fill the post-clean-break segment set by id. June IS is what readers get today under the old extraction, so 'cannot be published' is a judgement beyond what the count measures. A content-keyed splice would recover the 472 moved entries, plus 1,537 of the 2,219 same-id/different-EN entries (unique content match)."
+  },
+  {
+   "claim": "HYBRID costs 147 pairs more than JUNE, 128 of them figure alts carrying new MT",
+   "status": "partly",
+   "evidence": "754 − 607 = 147 is right. But 147 = 153 new-IS pairs (128 alts, 17 entries, 8 table summaries) − 6 JUNE pairs on June-only entry ids. '128 of them' is 128 of the 153, not of the 147."
+  },
+  {
+   "claim": "On common ids HYBRID 610 vs JUNE 605 checks the splice; 2,219 entry ids exist in both vintages with different EN, so the normalised-EN guard is essential",
+   "status": "confirmed",
+   "evidence": "Both numbers reproduce. The 2,219 is a count of the same entry id holding different normalised English."
+  },
+  {
+   "claim": "Classes: JUNE P138 A194 X275 · NEW P120 A308 X567 · HYBRID P142 A273 X339",
+   "status": "confirmed",
+   "evidence": "With competitors = Kold/Knew of every same-EN entry in any chapter + bold-definition spans from both vintages + exact ruling, my independent classifier gives JUNE 138/194/275 and HYBRID 142/273/339 exactly, and NEW X 567 exactly. NEW P/A comes out 123/305. The 3-pair difference is all ch12 NEW (mine P3 A0, theirs P0 A3), a tie-break on which carried surface form supplies the last two letters. With a narrower competitor set (Kold, Knew, ruling only), X rises to 307/718/381, so X depends heavily on how the competitor set is built.",
+   "correctedValue": "NEW P120–123 / A305–308 depending on the tie-break rule"
+  },
+  {
+   "claim": "Class accuracy from reading: P 6/6, A 3/6, X 25/28 by definition, 22 of 28 X were identifiable-variant swaps",
+   "status": "confirmed",
+   "evidence": "My own stratified sample: 31 segments, seed 20261010, one per term, heat and Lewis excluded. P 6/7 right; #27 m68742 item:fs-idp267826096-item-2 'þrefalt efnatengi' needs restructuring, not a swap. A 4/9 right; 5 of 9 were really parallel: m68847 problem:fs-idp1050336, m68754 para:fs-idp14262464, m68844 para:fs-idm89530000 and m68769 alt:fs-idp24684528-alt rest on inflected, articled or compound definition-site forms; m68781 para:fs-idm4855136 matched fem. 'veik raflausn' while the text has masc. 'raflausnari'. This corroborates 'NEW's A is an upper bound'. X 15/15 by definition: 5 variant swaps, 3 paraphrases, 1 omission (m68710 para:fs-idm52131936 'Krómhvarfið'), 2 outright mistranslations, 1 untranslated alt, 2 borderline (amplitude in its quantum-mechanical sense; 'nafngiftaæfingum'), 1 artefact (hole). The mistranslations: m68773 para:fs-idm42504800 'simple cubic' → 'einfalda rúmmiðjaða' (= body-centred); m68667 para:fs-idp42086864 'heterogeneous mixtures' → 'Mismunandi blöndur'. Their 40 reads used full corpus text, so the 400-char truncation (claim 16) does not affect them."
+  },
+  {
+   "claim": "The 22 reader-identified variants recover JUNE 60/275 (22%), NEW 100/567 (18%), HYBRID 69/339 (20%) of X",
+   "status": "refuted",
+   "evidence": "Their sensitivity.py runs carries() on burden.json's stored isText, which is capped at 400 characters (776 of 2,356 records hit the cap). The same 22 variants on full text recover more. Also, 'heat → hiti' counts the verb 'hita' ('til að hita húsið'). All 8 JUNE heat recoveries are verb uses, where swapping to varmi would be wrong. The conclusion that the variant tail is long still holds.",
+   "correctedValue": "70/275 (25%), 112/567 (20%), 79/339 (23%) on full text"
+  },
+  {
+   "claim": "Matcher over-count: 45/52/51 pairs match only inside a longer headword, of which about 29 per base are artefacts (hole 18–19, resonance 10–11)",
+   "status": "partly",
+   "evidence": "Nested-only 45/52/51 reproduces exactly (hole 18/19/19, resonance 10/11/10). But 'about 29 per base' badly understates the instrument's false positives. Under a compound-tolerant matcher for short (≤5-letter) target words, 73/82/79 needing-change pairs flip. I read them, and read every heat, atom, ether and group pair. (1) heat→varmi: a 5-letter word, where measure.py allows compound-initial matching only from 6 letters. Varmarýmd, varmaflæði, varmamagn and varmaflutningur are all scored as not carrying varmi, and the verb 'to heat' → 'hita' is scored as a needed change. JUNE heat 29 = 26 FP (8 verb, 18 compound) + 3 borderline (heat of combustion → brunavermi), 0 true. NEW heat 65 = 36 true + 25 FP + 4 borderline. HYBRID 30 = JUNE's 29 + 1 true alt. (2) atom→atóm: all 11 NEW pairs are vetnisatóm/súrefnisatóm-type compounds. (3) ether→eter: díetýleter etc., 9/9/10 FP. (4) hole: 23/23/25. (5) group: everyday 'group of atoms' / 'Environmental Working Group', 4/2/4 FP. (6) Small ones: colloid 'svifagnir', 'heildarstig', 'anóðuhálfker'. Resonance is NOT all artefact: 8 JUNE/HYBRID pairs translate the phenomenon 'resonance' as 'vokmynd' (title 'Resonance' → 'Vokmynd'), which is a real swap to [USER]'s 'vok'.",
+   "correctedValue": "Artefact pairs ≈ JUNE 68–75, NEW 77–85, HYBRID 72–80 (2.5–3× the stated 29). As a share of the totals: 11–12% / 8–9% / 10–11%."
+  },
+  {
+   "claim": "SWAP decided on an inflected bold-definition surface form: NEW 118 (34 P, 84 A), JUNE 18, HYBRID 26",
+   "status": "unverifiable",
+   "evidence": "Their 'citation-form lexicon' rule cannot be reproduced exactly. My analogue (SWAP pairs where no carried competitor is a key-terms entry or ruling): NEW 146 (60 P / 86 A), JUNE 23, HYBRID 31. Direction confirmed: NEW far exceeds the other two."
+  },
+  {
+   "claim": "Heaviest terms: JUNE hybridization 65, Lewis structure 64, galvanic cell 32; NEW Lewis structure 130, heat 65, cathode 44, anode 34, molar solubility 32; HYBRID Lewis structure 148, hybridization 65, galvanic cell 32",
+   "status": "partly",
+   "evidence": "Every count reproduces, and my 15-term lists match. But several rows are mostly artefact: JUNE heat 29 has 0 true needs, hole 23 is ≈ all artefact, resonance 19 has ≈9 true; HYBRID heat 30 has 1 true; NEW heat 65 has 36 true. The top term in all three bases, Lewis structure, rests on the unresolved conflict between the verdict 'Lewis-bygging' and the ruling 'Lewis-mynd': all 64 JUNE pairs use Lewis-mynd, and NEW mixes Lewis-mynd/-formúla/-formgerð."
+  },
+  {
+   "claim": "Undecided (c): 217 headwords (64 with <3 prose in NEW); prose JUNE 1576/NEW 1664/HYBRID 1664; if all ruled July 722/1261/794; if all ruled new 903/532/930; 22 differ only at article/hyphen/spelling level",
+   "status": "confirmed",
+   "evidence": "Identical once the ch07 'molecular structure' twin of a decided headword is excluded. Including it gives 218 headwords and 1664/1752/1752 prose."
+  },
+  {
+   "claim": "Lewis structure: Lewis-bygging JUNE 64/77, NEW 130/190, HYBRID 148/190 vs Lewis-mynd 5/77, 89/190, 55/190; trigonal planar: þríhyrningslaga flatt 2/16, 15/18, 4/18 vs þríhyrnt flatt 16/16, 13/18, 17/18",
+   "status": "confirmed",
+   "evidence": "Identical in my rulings-override run. Whole-book totals with rulings overriding the conflicting verdicts: JUNE 562, NEW 952, HYBRID 674."
+  },
+  {
+   "claim": "Zero controls: ch16 0/25 in NEW vs 24/25 in JUNE; ch09 JUNE 0/56 (torr 52/52, rate of diffusion 4/4)",
+   "status": "confirmed",
+   "evidence": "Identical, and the list-based raw parse agrees. That parse sees 58 prose pairs in ch09 June, not 56, because of 2 duplicate markers that dict parsing drops (still 0 needing change)."
+  },
+  {
+   "claim": "Untranslated segments (normalised IS == EN, ≥40 Latin letters): new 13 (ch21 7), June 5; 9 in NEW's X, 2 in HYBRID's",
+   "status": "partly",
+   "evidence": "The count depends on the normaliser: mine gives new 16 / June 7, and plain() gives 15 / 6. Every version includes formula-only solution segments (electron configurations, ionic formulas) that need no translation. Genuinely untranslated prose: new 8 (ch21 ×7, plus ch08 m68744 para:fs-idp92007424, the pi-bond definition), June 0. The '9' and '2' are PAIRS, on 4 and 1 segments.",
+   "correctedValue": "Untranslated prose segments: new 8, June 0. 9 / 2 are pairs (4 / 1 segments)."
+  },
+  {
+   "claim": "66 HYBRID June picks carry MATH/MEDIA/TABLE/xref/docref id sequences that differ from the new EN",
+   "status": "confirmed",
+   "evidence": "66 reproduced."
+  },
+  {
+   "claim": "Renumbered entries re-matchable by content: 1,537 unique, 682 ambiguous of 2,219",
+   "status": "confirmed",
+   "evidence": "Identical: content lookup within each module's June EN."
+  },
+  {
+   "claim": "Validation: prose equals classified-common.json for 135/135 terms in each vintage; own 72/72 (new), 112/112 (June) where target == that vintage's K",
+   "status": "confirmed",
+   "evidence": "Reproduced on common ids against results/2026-10-10/classified-common.json."
+  },
+  {
+   "claim": "Per-chapter figures (pairs, classes, verdict/ruling split, unique segments)",
+   "status": "confirmed",
+   "evidence": "All 21 chapters recounted. 502 of 504 cells equal their perchapter.json; the 2 that differ are ch12 NEW P/A (tie-break). For example ch04 N 87/193 vs J 15/184, ch15 N 54/61 vs J 2/61, ch07 J 125/469, N 230/709, H 216/709. Artefacts concentrate in ch05 (heat), ch10 (hole), ch07 (resonance), ch20 (ether) and ch01 NEW (atom 11 of 55)."
+  },
+  {
+   "claim": "JUNE's ruling-driven pairs are 'the September rulings the new MT already had on the wire'",
+   "status": "unverifiable",
+   "evidence": "The new-vintage provenance sidecars record only arm (glossary-only), termCount and contentHash, with no term list. The outcome is consistent with the claim (NEW carries svigrúmablöndun 75/75 and örástand 25/25) but does not prove it."
+  }
+ ],
+ "overall": "I re-derived every headline number of the burden report with my own code, and the arithmetic holds. The problems are in how far the numbers can be taken: the measuring tool counts too many repairs, and the variant-coverage figures were computed on cut-off text.\n\n**What I did.** Both vintages (refs 9a69414d5 and 98a5fe2ff) were extracted read-only into scratch with `git archive`. I wrote my own loader, splice normaliser, decided-term join, counting, classifier and sampling. Only measure.py's matching functions are shared, as the task requires. Read-only on the repo throughout, with no tests and no network.\n\n**What reproduces exactly:**\n- **Totals:** 607/2724, 995/3092 and 754/3092 pairs; 571/873/703 unique segments; the verdict/ruling splits.\n- **Common ids:** 605/851/610, with 569/743/573 unique segments.\n- **Splice:** 15,695 / 1,753 / 2,220; 66 placeholder-id mismatches; 1,537 / 682 re-matchable entries.\n- **Undecided set:** 217 headwords, 1576/1664/1664 prose, 722/1261/794 if ruled July and 903/532/930 if ruled new; 22 differ only in spelling.\n- **Conflicts:** both term counts (Lewis structure, trigonal planar).\n- **Nested-only:** 45/52/51.\n- **Validation:** 135/135 against the published file.\n- **Per chapter:** 502 of 504 cells. The other 2 are ch12 NEW, where 3 pairs land in P or A depending on a tie-break.\n- **Headword fixes:** 23/64/23 out of 136. The 136th is the ch07 'molecular structure' twin entry; on 135 terms it is 23/63/23.\n\n**Where I disagree:**\n1. **The tool overcounts repairs by roughly 2.5–3 times what the report admits.**\n   - The report puts the artefacts at about 29 pairs per base. I find about 68–75 for JUNE, 77–85 for NEW and 72–80 for HYBRID.\n   - **heat → varmi:** a 5-letter word cannot match as the first part of a compound, so *varmarýmd*, *varmaflæði* and *varmamagn* count as misses. The verb \"to heat\" → *hita* also counts as a needed change. Of JUNE's 29 heat pairs, none is a real need; NEW has 36 real of 65.\n   - **atom → atóm:** all 11 NEW pairs are compounds like *vetnisatóm*.\n   - **ether → eter:** *díetýleter* and similar compounds.\n   - **hole, and everyday \"group\"** add more.\n   - Resonance is not all artefact: 8 JUNE/HYBRID pairs render \"resonance\" as *vokmynd*, which is a real swap.\n   - Corrected central estimates are about 532–539 (JUNE), 910–918 (NEW) and 674–682 (HYBRID). The ranking JUNE < HYBRID < NEW holds.\n2. **Variant coverage is understated.** The 18–22% figures were computed on Icelandic text cut off at 400 characters. On full text they are 25% / 20% / 23%.\n3. **\"1,753 new-only segments have no June Icelandic\" is too strong.** 472 of them are table entries whose content exists in June under a different id. Only 1,281 (1,113 alts + 168 table summaries) are genuinely new.\n4. **\"147 above JUNE, 128 of them alts\" is loose.** 147 is 153 new-IS pairs minus 6 June-only entry pairs, so the 128 alts are 128 of the 153.\n5. **The untranslated count mixes in formulas.** \"13 new / 5 June\" depends on the normaliser and includes solution segments that are only chemical formulas. Genuinely untranslated prose is 8 in new (7 in ch21, plus the pi-bond definition at m68744 para:fs-idp92007424) and 0 in June. The \"9 / 2\" figures are pairs, not segments.\n\n**Reading check.** I read 31 stratified segments, plus every heat, atom, ether and group pair and JUNE's product pairs: about 170 segment-term pairs in all. P was right 6 of 7 times and A 4 of 9; the 5 wrong A's were really parallel swaps, matched against inflected or wrong-gender forms. That agrees with the report's own reading.\n\n**Method limits to carry forward:**\n- A segment counts as fine if the target word appears once in it. Mixed segments go unseen, so the count is not a strict upper bound either.\n- Duplicate segment markers are collapsed when files are parsed. That drops 35 matches per vintage, of which 6 (JUNE) and 9 (NEW) need a change.\n- Three rulings match a headword only after the parenthetical is stripped (galvanic cell, cell potential, Celsius). They carry 46 JUNE/HYBRID pairs.\n- If the rulings override the two conflicting verdicts, the totals become 562 / 952 / 674. Lewis structure alone moves HYBRID by 93.\n\n**Things the count cannot see** (observations, not estimates):\n- m68773 para:fs-idm42504800: \"simple cubic\" became *rúmmiðjaða* (body-centred).\n- m68773 para:fs-idp589840: the cubic unit-cell sentence is garbled.\n- m68667 para:fs-idp42086864: \"heterogeneous mixtures\" became *Mismunandi blöndur*.\n- The new Icelandic contains 42 machine-invented HTML-like tags (*<lágvísir>*, *<subscript>*).\n\nEverything is in /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/verify-burden/:\n- burden_vb.py: the counts\n- splice_vb.py: the splice\n- classes_vb.py: the classes\n- relaxed_vb.py, heat2_vb.py: the artefacts\n- undecided_vb.py, extra_vb.py, unt_vb.py, rawcheck_vb.py: the remaining checks\n- burden_vb.pkl, burden_vb_cls.pkl, burden_vb_rulingwins.pkl: the data",
+ "gitStatus": "`git -C /home/siggi/dev/repos/namsbokasafn-efni status --porcelain` printed nothing (exit 0), so the tree is clean. HEAD is still 0eecf59c8. experiments/terminology-consistency/__pycache__/measure.cpython-314.pyc still has mtime 2026-10-10 13:56:47.513, so my importlib load of measure.py did not rewrite it; all my Python ran with -B and sys.dont_write_bytecode. Both vintages were extracted with `git archive <ref> books/efnafraedi-2e/02-for-mt books/efnafraedi-2e/02-mt-output | tar -x -C <scratch>`, and houseStyleTerms.js was read with `git show 98a5fe2ff:server/lib/houseStyleTerms.js`; it is byte-identical to the working tree. I made no writes under the repository; every file I created is in the scratch directory."
+}

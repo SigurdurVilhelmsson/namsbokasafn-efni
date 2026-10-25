@@ -1,0 +1,686 @@
+[
+ {
+  "chdir": "ch02",
+  "module": "m68692",
+  "key": "para:fs-idm91050016",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:docref-text:0vs1;xref-text:1vs0"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Tákn fyrir nokkur algeng frumefni og frumeindir þeirra eru skráð í [#fs-idm36686800]. Sum tákn eru dregin af almennu heiti frumefnisins; önnur eru skammstafanir á heitinu á öðru tungumáli. Flest tákn hafa einn eða tvo stafi, en þriggja stafa tákn hafa verið notuð til að lýsa sumum frumefnum sem hafa"
+ },
+ {
+  "chdir": "ch03",
+  "module": "m68700",
+  "key": "glossary-term:fs-idp40901280-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "Avogadrosartala (NA)"
+ },
+ {
+  "chdir": "ch03",
+  "module": "m68703",
+  "key": "glossary-term:fs-idm26669728-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "mólstyrkur (M)"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68709",
+  "key": "para:fs-idp47467664",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:term:2vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Í fyrri kafla þessarar bókar var kynnt notkun tákna fyrir frumefni til að tákna stök atóm. Þegar atóm fá á sig eða tapa rafeindum til að mynda jónir, eða sameinast öðrum atómum til að mynda sameindir, er táknum þeirra breytt eða þau sameinuð til að búa til {{term}}efnaformúlur{{/term}} sem tákna þes"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68710",
+  "key": "para:fs-idp140132618169728",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:3vs4"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "{{term}}Útfellingarhvörf{{/term}} er efnahvarf þar sem uppleyst efni hvarfast og mynda eina (eða fleiri) fastar afurðir. Mörg efnahvörf af þessari gerð fela í sér skipti á jónum milli jónaefna í vatnslausn og eru stundum nefnd [[i:tvöföld skipti]] eða [[i:metatesis]] efnahvörf. Þessi efnahvörf eru a"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68716",
+  "key": "problem:fs-idm1068656",
+  "type": "problem",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:1vs2"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "Hver er styrkur Cl[[sup:−]] í 0,25 ml sýni af venjulegu sermi sem krefst 1,46 ml af 8,25 [[MATH:5]] 10[[sup:−4]] {{i}}M{{/i}} Hg(NO[[sub:3]])[[sub:2]](aq) til að ná jafngildispunkti?"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68729",
+  "key": "glossary-term:fs-idp121959824-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "tíðni (ν)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68729",
+  "key": "glossary-term:fs-idp70511136-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "bylgjulengd (λ)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm176142304-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "hliðarskammtatala (l)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idp12032-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "d-svigrúm"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm124229040-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "f-svigrúm"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm166903488-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "segulskammtatala (ml)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm147658080-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "p-svigrúm"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm140352128-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "höfuðskammtatala (n)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm144189680-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "s-svigrúm"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm137493808-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "spunaskammtatala (ms)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "glossary-term:fs-idm163956768-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "bylgjufall (ψ)"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68735",
+  "key": "para:fs-idm1670816",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:term:2vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Frumeindir og jónir sem hafa sömu {{term}}rafeindaskipan{{/term}} eru sagðar vera {{term}}samrafeinda{{/term}}. Dæmi um samrafeinda agnir eru N[[sup:3–]], O[[sup:2–]], F[[sup:–]], Ne, Na[[sup:+]], Mg[[sup:2+]] og Al[[sup:3+]] (1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]). Önnur samrafeindarö"
+ },
+ {
+  "chdir": "ch07",
+  "module": "m68741",
+  "key": "glossary-term:fs-idp29295648-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "grindarorka (ΔHgrind)"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "glossary-term:fs-idm71427776-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sp-blendingurssvigrúm"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "glossary-term:fs-idm48701168-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sup:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sp2-blendingurssvigrúm"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "glossary-term:fs-idp88964992-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sup:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sp3-blendingurssvigrúm"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "glossary-term:fs-idm16838896-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs2;sup:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sp3d-blendingurssvigrúm"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "glossary-term:fs-idm47317072-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs2;sup:0vs2"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sp3d2-blendingurssvigrúm"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68751",
+  "key": "glossary-term:fs-idm78852976-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "kjörgasfastinn (R)"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68752",
+  "key": "glossary-term:fs-idp1132336-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "mólhlutfall (X)"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68758",
+  "key": "glossary-term:fs-idm271276336-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "meðalferningsrótarhraði (urms)"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68783",
+  "key": "glossary-term:fs-idp141108496-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "mólalstyrkur (m)"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68783",
+  "key": "glossary-term:fs-idp141114480-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "osmósuþrýstingur (Π)"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68783",
+  "key": "glossary-term:fs-idp11034384-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "van't Hoff-stuðull (i)"
+ },
+ {
+  "chdir": "ch13",
+  "module": "m68798",
+  "key": "glossary-term:fs-idp63345136-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "jafnvægisfasti (K)"
+ },
+ {
+  "chdir": "ch13",
+  "module": "m68798",
+  "key": "glossary-term:fs-idp74361936-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "hvarfstuðull (Q)"
+ },
+ {
+  "chdir": "ch14",
+  "module": "m68803",
+  "key": "glossary-term:fs-idp9778624-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "jónmargfeldisfasti vatns (Kw)"
+ },
+ {
+  "chdir": "ch14",
+  "module": "m68805",
+  "key": "para:fs-idp42421216",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:7vs6"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "ICE-taflan fyrir þetta kerfi er[[BR]] [[MEDIA:2]][[BR]] Ef jafnvægisstyrkstölunum er stungið inn í jöfnuna fyrir [[i:K]][[sub:a]] fæst[[BR]] [[MATH:57]][[BR]] Ef gert er ráð fyrir að [[i:x]] &lt;&lt; 0,5, er jafnan hér að ofan einfölduð og leyst fyrir [[i:x]] sem gefur[[BR]] [[MATH:58]][[BR]] Þetta "
+ },
+ {
+  "chdir": "ch14",
+  "module": "m68805",
+  "key": "glossary-term:fs-idp86058640-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "sýrujónunarfasti (Ka)"
+ },
+ {
+  "chdir": "ch14",
+  "module": "m68805",
+  "key": "glossary-term:fs-idp86060672-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "basajónunarfasti (Kb)"
+ },
+ {
+  "chdir": "ch15",
+  "module": "m68811",
+  "key": "problem:fs-idp2236688",
+  "type": "problem",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:1vs0"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Kalsíumjónir í blóðvatni manna eru nauðsynlegar fyrir storknun ([[xref:CNX_Chem_15_01_Blood]]). Kalíumoxalat, K[[sub:2]]C[[sub:2]]O[[sub:4]], er notað sem segavarnarlyf þegar blóðsýni er tekið fyrir rannsóknarstofupróf því það fjarlægir kalsíum sem botnfall af CaC[[sub:2]]O[[sub:4]]·H[[sub:2]]O. Nau"
+ },
+ {
+  "chdir": "ch15",
+  "module": "m68811",
+  "key": "glossary-term:fs-idp3053344-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "leysnimargfeldisfasti (Ksp)"
+ },
+ {
+  "chdir": "ch16",
+  "module": "m68817",
+  "key": "glossary-term:fs-idm225836896-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "óreiða (S)"
+ },
+ {
+  "chdir": "ch16",
+  "module": "m68818",
+  "key": "para:fs-idp34700864",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:3vs2"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "[[i:S]][[sub:univ]] > 0, þannig að [[i:bráðnun]] er [[i:sjálfgeng]] við 10,00 °C."
+ },
+ {
+  "chdir": "ch16",
+  "module": "m68819",
+  "key": "glossary-term:fs-idm119810368-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "Breyting á Gibbs fríorku (G)"
+ },
+ {
+  "chdir": "ch16",
+  "module": "m68819",
+  "key": "glossary-term:fs-idm119807952-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Stöðluð breyting á frjálsri orku (ΔG°)"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68821",
+  "key": "glossary-term:fs-idp85536816-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "rafspenna raftroðs (EX)"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68822",
+  "key": "glossary-term:fs-idm153779040-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "kerspenna (Eker)"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68823",
+  "key": "glossary-term:fs-idp227872832-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:MATH:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "staðalkerspenna (Ekerfis°)"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68823",
+  "key": "glossary-term:fs-idm4867824-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:MATH:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "staðalraftroðsspenna ((EX°))"
+ },
+ {
+  "chdir": "ch18",
+  "module": "m68832",
+  "key": "problem:fs-idm142344320",
+  "type": "problem",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:MATH:0vs1;sub:1vs0;sup:1vs0"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "(c) SO[[sub:3]][[sup:2-]]"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68842",
+  "key": "glossary-term:fs-idm163588304-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "d-blokkar frumefni"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68842",
+  "key": "glossary-term:fs-idm214063344-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "f-blokkar frumefni"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68843",
+  "key": "para:fs-idp79204432",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "legacy-residue:^x^"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "{{term}}Tengslísómerur{{/term}} koma fram þegar hnettasambandið inniheldur bindil sem getur tengst miðju hliðarmálmsins í gegnum tvö mismunandi atóm. Til dæmis getur CN-bindillinn tengst í gegnum kolefnisatómið (sýanó) eða í gegnum köfnunarefnisatómið (ísósýanó). Á sama hátt getur SCN^-^ tengst í ge"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68843",
+  "key": "glossary-term:fs-idp15506400-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "cis-afstaða"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68843",
+  "key": "glossary-term:fs-idp75431424-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "trans-afstaða"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68844",
+  "key": "glossary-term:fs-idm99275552-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:sub:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "kristallsviðsklofnun (Δoct)"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68844",
+  "key": "glossary-term:fs-idm148194896-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "eg svigrúm"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68844",
+  "key": "glossary-term:fs-idm104611088-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs2;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "t2g-svigrúm"
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68854",
+  "key": "para:fs-idp76857680",
+  "type": "para",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:docref-text:0vs1"
+  ],
+  "rescued_by_rewrap": false,
+  "june_is": "Þar sem hver kjarnategund hefur ákveðinn fjölda kjarnaagna, sérstakt jafnvægi milli fráhrindikrafta og aðdráttarkrafta og sinn eigin stöðugleika, er helmingunartími geislavirkra kjarnategunda mjög breytilegur. Til dæmis: helmingunartími [[MATH:14]] er 1,9 [[MATH:15]] 10[[sup:19]] ár; [[MATH:16]] er "
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68854",
+  "key": "glossary-term:fs-idp172569488-term",
+  "type": "glossary-term",
+  "class": "1-same-key-same-en",
+  "reasons": [
+   "kind-count-mismatch:i:0vs1;sub:0vs1"
+  ],
+  "rescued_by_rewrap": true,
+  "june_is": "helmingunartími (t1/2)"
+ }
+]

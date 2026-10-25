@@ -1,0 +1,84 @@
+{
+ "marchFile": {
+  "terms": 1117,
+  "approved": 617,
+  "competingHeadwords": 13,
+  "competingSample": [
+   "aggregate: þyrpast saman / þyrping",
+   "atom: atóm / frumeind",
+   "body-centered cubic: miðjusetinn teningur / miðlæg teningslaga",
+   "deposition: hélun / útfelling",
+   "dilute: þunnur / þynna",
+   "emission: ljómun / útblástur",
+   "excess: umfram- / umframmagn",
+   "face-centered cubic: hliðarsetinn teningur / hliðlæg teningslaga",
+   "group: flokkur / hópur",
+   "octahedral: áttflötungslaga / áttflötungur",
+   "resonance: samhrif / vok / vok mynd",
+   "simple cubic: einfaldur teningur / einföld teningslaga",
+   "tetrahedral: ferflötungslaga / ferflötungur"
+  ]
+ },
+ "wholeGlossary": {
+  "today": 590,
+  "june": 617
+ },
+ "modules": [
+  {
+   "module": "ch11/m68781",
+   "chunks": 1,
+   "perChunk": [
+    {
+     "chunk": 1,
+     "chars": 15357,
+     "today": 49,
+     "june": 56,
+     "onlyJune": [
+      "atom → atóm",
+      "atom → frumeind",
+      "dilute → þunnur",
+      "dilute → þynna",
+      "group → flokkur",
+      "group → hópur",
+      "pH → pH"
+     ],
+     "onlyToday": []
+    }
+   ]
+  },
+  {
+   "module": "ch01/m68667",
+   "chunks": 2,
+   "perChunk": [
+    {
+     "chunk": 1,
+     "chars": 24909,
+     "today": 51,
+     "june": 55,
+     "onlyJune": [
+      "atom → atóm",
+      "atom → frumeind",
+      "ion → jón",
+      "pH → pH"
+     ],
+     "onlyToday": []
+    },
+    {
+     "chunk": 2,
+     "chars": 20370,
+     "today": 55,
+     "june": 61,
+     "onlyJune": [
+      "atom → atóm",
+      "atom → frumeind",
+      "emission → ljómun",
+      "emission → útblástur",
+      "ion → jón",
+      "pH → pH"
+     ],
+     "onlyToday": []
+    }
+   ]
+  }
+ ]
+}

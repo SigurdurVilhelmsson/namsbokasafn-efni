@@ -1,0 +1,387 @@
+[
+ {
+  "module": "m68764",
+  "key": "entry:auto-14",
+  "aligned_june_key": "entry:auto-13",
+  "kind": "auto-N positional shift",
+  "new_vis": "water",
+  "june_vis_same_key": "H2O",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-15",
+   "entry:auto-44"
+  ]
+ },
+ {
+  "module": "m68735",
+  "key": "entry:auto-81",
+  "aligned_june_key": "entry:auto-75",
+  "kind": "auto-N positional shift",
+  "new_vis": "589.8",
+  "june_vis_same_key": "12272.9",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-87"
+  ]
+ },
+ {
+  "module": "m68866",
+  "key": "entry:auto-43",
+  "aligned_june_key": "entry:auto-33",
+  "kind": "auto-N positional shift",
+  "new_vis": "4.9 ⟦M⟧ 10−10",
+  "june_vis_same_key": "HSe–",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-54"
+  ]
+ },
+ {
+  "module": "m68741",
+  "key": "entry:auto-47",
+  "aligned_june_key": "entry:auto-46",
+  "kind": "auto-N positional shift",
+  "new_vis": "569",
+  "june_vis_same_key": "N–N",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-48"
+  ]
+ },
+ {
+  "module": "m68752",
+  "key": "entry:auto-139",
+  "aligned_june_key": "entry:auto-135",
+  "kind": "auto-N positional shift",
+  "new_vis": "23",
+  "june_vis_same_key": "6",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-143"
+  ]
+ },
+ {
+  "module": "m68784",
+  "key": "entry:auto-35",
+  "aligned_june_key": "entry:auto-33",
+  "kind": "auto-N positional shift",
+  "new_vis": "liquid",
+  "june_vis_same_key": "emulsion",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-37",
+   "glossary-term:fs-idm96998512-term"
+  ]
+ },
+ {
+  "module": "m68752",
+  "key": "entry:auto-129",
+  "aligned_june_key": "entry:auto-125",
+  "kind": "auto-N positional shift",
+  "new_vis": "50",
+  "june_vis_same_key": "22",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-133"
+  ]
+ },
+ {
+  "module": "m68764",
+  "key": "entry:auto-45",
+  "aligned_june_key": "entry:auto-43",
+  "kind": "auto-N positional shift",
+  "new_vis": "71.99",
+  "june_vis_same_key": "Hg",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-18",
+   "entry:auto-47"
+  ]
+ },
+ {
+  "module": "m68741",
+  "key": "entry:auto-33",
+  "aligned_june_key": "entry:auto-32",
+  "kind": "auto-N positional shift",
+  "new_vis": "235",
+  "june_vis_same_key": "H–N",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-34"
+  ]
+ },
+ {
+  "module": "m68709",
+  "key": "entry:auto-34",
+  "aligned_june_key": "entry:auto-32",
+  "kind": "auto-N positional shift",
+  "new_vis": "O",
+  "june_vis_same_key": "(1 ⟦M⟧ 2) + (2 ⟦M⟧ 1) = 4",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-36"
+  ]
+ },
+ {
+  "module": "m68698",
+  "key": "entry:auto-243",
+  "aligned_june_key": "entry:auto-242",
+  "kind": "auto-N positional shift",
+  "new_vis": "phosphate",
+  "june_vis_same_key": "phosphoric acid",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-244"
+  ]
+ },
+ {
+  "module": "m68783",
+  "key": "entry:auto-241",
+  "aligned_june_key": "entry:auto-226",
+  "kind": "auto-N positional shift",
+  "new_vis": "C12H22O11 (sucrose)",
+  "june_vis_same_key": "MgSO4",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-256"
+  ]
+ },
+ {
+  "module": "m68791",
+  "key": "entry:auto-56",
+  "aligned_june_key": "entry:auto-55",
+  "kind": "auto-N positional shift",
+  "new_vis": "24.00",
+  "june_vis_same_key": "0.0625",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-57"
+  ]
+ },
+ {
+  "module": "m68860",
+  "key": "entry:auto-111",
+  "aligned_june_key": "entry:auto-109",
+  "kind": "auto-N positional shift",
+  "new_vis": "y = x2 + 2",
+  "june_vis_same_key": "3",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-59",
+   "entry:auto-102",
+   "entry:auto-113"
+  ]
+ },
+ {
+  "module": "m68846",
+  "key": "entry:auto-109",
+  "aligned_june_key": "entry:auto-100",
+  "kind": "auto-N positional shift",
+  "new_vis": "tetradecane",
+  "june_vis_same_key": "316.1",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-118"
+  ]
+ },
+ {
+  "module": "m68819",
+  "key": "entry:auto-164",
+  "aligned_june_key": "entry:auto-162",
+  "kind": "auto-N positional shift",
+  "new_vis": "K",
+  "june_vis_same_key": "Composition of an Equilibrium Mixture",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-166"
+  ]
+ },
+ {
+  "module": "m68744",
+  "key": "entry:auto-14",
+  "aligned_june_key": "entry:auto-13",
+  "kind": "auto-N positional shift",
+  "new_vis": "Length (pm)",
+  "june_vis_same_key": "Energy (kJ/mol)",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-15",
+   "entry:auto-18"
+  ]
+ },
+ {
+  "module": "m68752",
+  "key": "entry:auto-131",
+  "aligned_june_key": "entry:auto-127",
+  "kind": "auto-N positional shift",
+  "new_vis": "2",
+  "june_vis_same_key": "60",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-135"
+  ]
+ },
+ {
+  "module": "m68789",
+  "key": "entry:auto-251",
+  "aligned_june_key": "entry:auto-250",
+  "kind": "auto-N positional shift",
+  "new_vis": "0.70",
+  "june_vis_same_key": "Rate (mol L−1 s−1)",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-252",
+   "entry:auto-264",
+   "entry:auto-275"
+  ]
+ },
+ {
+  "module": "m68700",
+  "key": "entry:auto-66",
+  "aligned_june_key": "entry:auto-59",
+  "kind": "auto-N positional shift",
+  "new_vis": "6.022 ⟦M⟧ 1023",
+  "june_vis_same_key": "35.45",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-72",
+   "entry:auto-73"
+  ]
+ },
+ {
+  "module": "m68710",
+  "key": "entry:auto-85",
+  "aligned_june_key": "entry:auto-82",
+  "kind": "auto-N positional shift",
+  "new_vis": "hydroiodic acid",
+  "june_vis_same_key": "HClO4",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-88"
+  ]
+ },
+ {
+  "module": "m68761",
+  "key": "entry:auto-40",
+  "aligned_june_key": "entry:auto-35",
+  "kind": "auto-N positional shift",
+  "new_vis": "53 K",
+  "june_vis_same_key": "172 K",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-45"
+  ]
+ },
+ {
+  "module": "m68741",
+  "key": "entry:auto-185",
+  "aligned_june_key": "entry:auto-184",
+  "kind": "auto-N positional shift",
+  "new_vis": "741",
+  "june_vis_same_key": "⟦M⟧",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-54",
+   "entry:auto-60",
+   "entry:auto-94"
+  ]
+ },
+ {
+  "module": "m68744",
+  "key": "entry:auto-32",
+  "aligned_june_key": "entry:auto-31",
+  "kind": "auto-N positional shift",
+  "new_vis": "101.5",
+  "june_vis_same_key": "391",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-33"
+  ]
+ },
+ {
+  "module": "m68692",
+  "key": "entry:auto-159",
+  "aligned_june_key": "entry:auto-155",
+  "kind": "auto-N positional shift",
+  "new_vis": "4.0026",
+  "june_vis_same_key": "3",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-163",
+   "entry:auto-164",
+   "entry:auto-165"
+  ]
+ },
+ {
+  "module": "m68692",
+  "key": "entry:auto-84",
+  "aligned_june_key": "entry:auto-81",
+  "kind": "auto-N positional shift",
+  "new_vis": "oxygen",
+  "june_vis_same_key": "Co",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-87"
+  ]
+ },
+ {
+  "module": "m68667",
+  "key": "entry:auto-63",
+  "aligned_june_key": "entry:auto-57",
+  "kind": "auto-N positional shift",
+  "new_vis": "0.09",
+  "june_vis_same_key": "0.08",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-69"
+  ]
+ },
+ {
+  "module": "m68692",
+  "key": "entry:auto-31",
+  "aligned_june_key": "entry:auto-30",
+  "kind": "auto-N positional shift",
+  "new_vis": "nucleus",
+  "june_vis_same_key": "0",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-32",
+   "entry:auto-33",
+   "entry:auto-133"
+  ]
+ },
+ {
+  "module": "m68741",
+  "key": "entry:auto-84",
+  "aligned_june_key": "entry:auto-83",
+  "kind": "auto-N positional shift",
+  "new_vis": "N–Cl",
+  "june_vis_same_key": "200",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-67",
+   "entry:auto-85",
+   "entry:auto-133"
+  ]
+ },
+ {
+  "module": "m68750",
+  "key": "entry:auto-32",
+  "aligned_june_key": "entry:auto-30",
+  "kind": "auto-N positional shift",
+  "new_vis": "1 bar = 100,000 Pa (exactly) commonly used in meteorology",
+  "june_vis_same_key": "1000 mbar = 1 bar",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-34"
+  ]
+ },
+ {
+  "module": "m68747",
+  "key": "entry:auto-23",
+  "aligned_june_key": "entry:auto-21",
+  "kind": "auto-N positional shift",
+  "new_vis": "combines atomic orbitals to form molecular orbitals (σ, σ*, π, π*)",
+  "june_vis_same_key": "creates bonding and antibonding interactions based on which orbitals a",
+  "june_same_key_text_found_in_new_at": [
+   "entry:auto-25"
+  ]
+ },
+ {
+  "module": "m68764",
+  "key": "problem:fs-idm164104512",
+  "aligned_june_key": null,
+  "kind": "content-changed",
+  "new_vis": "Although steel is denser than water, a steel needle or paper clip plac",
+  "june_vis_same_key": "Although steel is denser than water, a steel needle or paper clip plac",
+  "june_same_key_text_found_in_new_at": []
+ },
+ {
+  "module": "m68819",
+  "key": "glossary-term:fs-idm119806032-term",
+  "aligned_june_key": null,
+  "kind": "as-translated-differs (IS translates different English)",
+  "new_vis": "standard free energy of formation ⟦M⟧",
+  "june_vis_same_key": "standard free energy of formation (ΔGf°)",
+  "june_same_key_text_found_in_new_at": []
+ },
+ {
+  "module": "m68852",
+  "key": "glossary-term:fs-idp72108384-term",
+  "aligned_june_key": null,
+  "kind": "as-translated-differs (IS translates different English)",
+  "new_vis": "positron ⟦M⟧ or ⟦M⟧",
+  "june_vis_same_key": "positron (+10β or +10e)",
+  "june_same_key_text_found_in_new_at": []
+ }
+]

@@ -333,6 +333,17 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 2. **Translation memory** (tm/) - human-verified EN↔IS parallel corpus
 3. **Localized content** (04-localized-content/, 05-publication/) - adapted for Icelandic students
 
+🔴 **DURABLE — THE PROJECT IS ALSO A RESEARCH EVALUATION OF AI-ASSISTED MACHINE TRANSLATION, ITS COST AND ITS QUALITY.** [USER] 2026-10-10: the results are meant for a final report and/or publication in professional journals. **So every post-processing step applied to MT output must be documented well enough for a reader to reconstruct it:** what was done (hand repair, ruling, glossary arm or subset, re-buy, term substitution, figure recompose), to which scope, why, at what cost in ISK, and with which before/after measurement. Concretely:
+- **Never fix MT output silently.** A hand repair is its own commit, naming its scope and the ruling behind it (the `HAND REPAIR` commits of 2026-09-27 are the shape).
+- **Keep each measurement that motivates or validates a step** (for example an old-vs-new terminology comparison) as a citable artifact with its method and its instrument's known blind spots. Off-repo evidence under `~/.cache/namsbokasafn-audit/` is NOT durable enough for a publication, so promote what a report will cite.
+- **Keep the provenance sidecars truthful** (`02-mt-output/*-provenance.json`: glossary arm, term count, cost). They are the primary data for the cost and quality analysis.
+- 🔴 **Three text layers, and the first is never overwritten** ([USER] 2026-10-10):
+  - **Pure MT**: the Málstaður API output, preserved as received;
+  - **AI-reviewed MT**: an AI pass over that output, kept as its own layer with its prompts, model, date, inputs, outputs and a per-change log;
+  - **human-reviewed text**: the editors' work.
+
+  This refines the 2026-03-29 API-only ruling. **New translations still come only from the API** (a missing segment goes through `api-translate`, never an AI). An AI may revise API output only in its own layer, never in place; preserving the API output is what makes that layer acceptable. The point is a paper that can compare the three conditions. The 2026-09 hand repairs to `02-mt-output` are separate `HAND REPAIR` commits, so the as-received text stays recoverable from git. Where the AI layer lives is a design decision recorded in the active plan.
+
 ## Project Context
 
 - **Developer profile:** Chemistry teacher with basic Linux skills, not a professional developer

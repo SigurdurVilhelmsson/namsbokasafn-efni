@@ -1,0 +1,626 @@
+[
+ {
+  "chdir": "ch01",
+  "module": "m68663",
+  "key": "abstract-item:abstract-item-6",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch01",
+  "module": "m68667",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch01",
+  "module": "m68683",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch01",
+  "module": "m68690",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch02",
+  "module": "m68696",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch04",
+  "module": "chapter-metadata",
+  "key": "title:ch04",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68713",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68716",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch04",
+  "module": "m68730",
+  "key": "abstract-item:abstract-item-5",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "title:auto-1",
+  "commit": "6417625c9",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68734",
+  "key": "title:auto-1",
+  "commit": "6417625c9",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch06",
+  "module": "m68735",
+  "key": "title:auto-1",
+  "commit": "6417625c9",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch07",
+  "module": "chapter-metadata",
+  "key": "title:ch07",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch07",
+  "module": "m68736",
+  "key": "abstract-item:abstract-item-3",
+  "commit": "42536323b",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch07",
+  "module": "m68736",
+  "key": "abstract-item:abstract-item-4",
+  "commit": "42536323b",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch07",
+  "module": "m68739",
+  "key": "title:auto-1",
+  "commit": "42536323b",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch07",
+  "module": "m68740",
+  "key": "title:auto-1",
+  "commit": "42536323b",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68744",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "para:fs-idm25402912",
+  "commit": "8271886b0",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-2",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-3",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-4",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-5",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm108621792",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm179265392",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm167869376",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm112096224",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-19",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-21",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-23",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-26",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-27",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68748",
+  "key": "abstract-item:abstract-item-3",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68748",
+  "key": "abstract-item:abstract-item-4",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68751",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68752",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68754",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68758",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch09",
+  "module": "m68759",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68760",
+  "key": "abstract-item:abstract-item-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68760",
+  "key": "abstract-item:abstract-item-5",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68761",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68768",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68769",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68770",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch10",
+  "module": "m68773",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch11",
+  "module": "chapter-metadata",
+  "key": "title:ch11",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68776",
+  "key": "abstract-item:abstract-item-2",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68781",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68783",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch11",
+  "module": "m68784",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch12",
+  "module": "chapter-metadata",
+  "key": "title:ch12",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch12",
+  "module": "m68785",
+  "key": "abstract-item:abstract-item-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch12",
+  "module": "m68786",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch12",
+  "module": "m68787",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch12",
+  "module": "m68791",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch13",
+  "module": "m68796",
+  "key": "abstract-item:abstract-item-3",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch13",
+  "module": "m68799",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch14",
+  "module": "m68805",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch15",
+  "module": "chapter-metadata",
+  "key": "title:ch15",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch15",
+  "module": "m68814",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68821",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch17",
+  "module": "m68823",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch18",
+  "module": "chapter-metadata",
+  "key": "title:ch18",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch18",
+  "module": "m68828",
+  "key": "abstract-item:abstract-item-3",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch18",
+  "module": "m68828",
+  "key": "abstract-item:abstract-item-12",
+  "commit": "f313fee32",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch18",
+  "module": "m68831",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch18",
+  "module": "m68840",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch19",
+  "module": "m68842",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch20",
+  "module": "m68846",
+  "key": "para:fs-idp51580832",
+  "commit": "8271886b0",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch20",
+  "module": "m68848",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch21",
+  "module": "chapter-metadata",
+  "key": "title:ch21",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68850",
+  "key": "abstract-item:abstract-item-5",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68852",
+  "key": "glossary-def:fs-idm57603984-def",
+  "commit": "8271886b0",
+  "june_is_equals_repair": false,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68852",
+  "key": "glossary-def:fs-idm12021616-def",
+  "commit": "8271886b0",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ },
+ {
+  "chdir": "ch21",
+  "module": "m68857",
+  "key": "title:auto-1",
+  "commit": "f313fee32",
+  "june_is_equals_repair": true,
+  "carried_status": "clean"
+ }
+]

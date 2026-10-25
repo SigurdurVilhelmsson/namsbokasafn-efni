@@ -1,0 +1,317 @@
+<title>Taught-Term Consistency Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+/* Layout: one reading column — summary, per-chapter table, then term cards grouped by chapter, each card's answer beside its evidence */
+:root {
+  --bg: #f4f6f7; --surface: #ffffff; --fg: #18222b; --muted: #5a6672; --line: #d9dfe4;
+  --accent: #1f5f8b; --accent-soft: #e4eff7;
+  --bad: #a3361f; --bad-soft: #fbe9e4; --mid: #8a5a00; --mid-soft: #fbf0d9; --good: #1d7448; --good-soft: #e0f3e8;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11171c; --surface: #19212a; --fg: #e2e8ed; --muted: #97a3ae; --line: #2b3540;
+  --accent: #86b9e0; --accent-soft: #1c2d3c;
+  --bad: #f09a85; --bad-soft: #3a1e17; --mid: #f0c06a; --mid-soft: #392b10; --good: #7fd3a4; --good-soft: #15301f; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #11171c; --surface: #19212a; --fg: #e2e8ed; --muted: #97a3ae; --line: #2b3540;
+  --accent: #86b9e0; --accent-soft: #1c2d3c;
+  --bad: #f09a85; --bad-soft: #3a1e17; --mid: #f0c06a; --mid-soft: #392b10; --good: #7fd3a4; --good-soft: #15301f; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--font-body); }
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 72px; display: grid; gap: 22px; }
+h1 { font: 600 1.9rem/1.2 var(--font-display); margin: 0; text-wrap: balance; }
+h2 { font: 600 1.3rem/1.3 var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 70ch; }
+.muted { color: var(--muted); }
+.lede { display: grid; gap: 10px; }
+.big { display: flex; flex-wrap: wrap; gap: 10px 28px; font-variant-numeric: tabular-nums; }
+.big div { display: grid; }
+.big b { font: 600 1.6rem/1.1 var(--font-display); }
+.big span { color: var(--muted); font-size: 0.85rem; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; }
+.panel ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.tablebox { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tbody tr { cursor: pointer; }
+tbody tr:hover, tbody tr:focus-visible { background: var(--accent-soft); outline: none; }
+td.num { text-align: right; }
+.delta-bad { color: var(--bad); font-weight: 600; }
+.delta-good { color: var(--good); font-weight: 600; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.bar label { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); font-size: 0.9rem; }
+select, input[type=text], input[type=search], textarea { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+textarea { width: 100%; min-height: 2.4em; resize: vertical; }
+button { font: inherit; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--bg); padding: 5px 14px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--accent); }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#status { font-size: 0.88rem; color: var(--muted); }
+#status.err { color: var(--bad); }
+.chap { display: grid; gap: 12px; }
+.chaphead { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; border-top: 2px solid var(--fg); padding-top: 12px; }
+.chapdec { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; gap: 8px; }
+.chapdec .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; }
+.card.answered { border-color: var(--good); }
+.top { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.term { font-weight: 600; font-size: 1.05rem; }
+.pill { font-size: 0.75rem; letter-spacing: 0.03em; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.mid { background: var(--mid-soft); color: var(--mid); }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.rule { background: var(--accent-soft); color: var(--accent); }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.side { display: grid; gap: 4px; min-width: 0; }
+.side h3 { margin: 0; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.kw { font: 500 1rem/1.35 var(--font-mono); overflow-wrap: anywhere; }
+.meta { font-size: 0.86rem; color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
+.ex { display: grid; gap: 8px; margin-top: 8px; }
+.ex div { display: grid; gap: 2px; font-size: 0.88rem; min-width: 0; overflow-wrap: anywhere; }
+.ex .en { color: var(--muted); }
+.answer { display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.choices { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.choices label { display: inline-flex; gap: 6px; align-items: center; }
+.answer .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.saved { font-size: 0.85rem; color: var(--good); }
+.empty { color: var(--muted); padding: 20px 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="lede">
+    <h1>Taught-term consistency: July MT vs the September re-MT</h1>
+    <p>Chemistry, all 21 chapters. A <b>taught term</b> is an entry in the chapter's own key-terms list. A term counts as <b>consistent</b> when at least 80% of the sentences that use it carry the same Icelandic word as the chapter's key-terms entry.</p>
+    <div class="big" id="big"></div>
+    <p class="muted" id="refs"></p>
+  </header>
+
+  <section class="panel" aria-labelledby="howh">
+    <h2 id="howh">What to decide</h2>
+    <ul>
+      <li>The list opens on the <b>terms that lost consistency</b>. Use “Show” to see the rest, including improvements.</li>
+      <li><b>Per chapter</b>, which MT goes forward. The control sits at the top of each chapter.</li>
+      <li><b>Where both versions list the same word</b> but the new text strays from it, the choice is whether the text should keep to that word.</li>
+      <li><b>Per term</b>, which Icelandic word is right: the July word, the new word, or another. A ruling here can become a house-style ruling and reach the next buy.</li>
+      <li>This measures <b>consistency, not correctness</b>. A version that is consistently wrong still scores well, so the word choice is yours.</li>
+      <li><b>“Key-terms entry ≠ text”</b> is cheap: one short segment disagrees with a chapter text that is fine. <b>“Text drifted”</b> is the expensive kind.</li>
+      <li><b>Corrected after your first look:</b> the matcher now recognises inflections such as <i>einsleita efnablöndu</i>. The first version wrongly scored them as not using the term, which made the July text look worse than it is. All numbers on this page come from the corrected run.</li>
+      <li>The live site shows the July key terms in every chapter: 269 July-only hits and 0 new-only hits. The control on our new pages found the new words in all 21 chapters.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="chh" style="display:grid;gap:10px">
+    <h2 id="chh">Chapters</h2>
+    <p class="muted">Consistent taught terms, July → new, on the segments both versions share. Sorted by net loss. Select a row to show only that chapter.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>Chapter</th><th>New MT glossary</th><th class="num">July</th><th class="num">New</th><th class="num">of</th><th class="num">Lost</th><th class="num">Gained</th><th>Your decision</th></tr></thead>
+      <tbody id="chrows"></tbody>
+    </table></div>
+  </section>
+
+  <div class="bar" role="toolbar" aria-label="Filters">
+    <label for="fch">Chapter <select id="fch"><option value="">All</option></select></label>
+    <label for="fcl">Show <select id="fcl">
+      <option value="lost">Lost consistency</option>
+      <option value="look">Needs a look</option>
+      <option value="good">Improvements</option>
+      <option value="all">Everything listed</option>
+    </select></label>
+    <label for="fun"><input type="checkbox" id="fun"> Unanswered only</label>
+    <label for="fq"><input type="search" id="fq" placeholder="Search a term"></label>
+    <span id="status">Connecting…</span>
+  </div>
+
+  <main id="list"></main>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const CLS = {
+  'RULING-BROKEN-NEW': ['Ruling broken (new)', 'bad', 'look', 'You ruled this word. The July text followed the ruling and the new text does not.'],
+  'TEXT-DRIFT': ['Text drifted', 'bad', 'look', 'The new running text stopped using the July word and did not settle on one replacement.'],
+  'KEYTERM-SPLIT': ['Key-terms entry ≠ text', 'mid', 'look', 'The new key-terms entry is a different word, while the new text kept the July word.'],
+  'TEXT-RENAMED': ['Text switched word', 'mid', 'look', 'The new text switched consistently to a different word. Pick the right one.'],
+  'KEYTERM-OTHER': ['Key-terms entry changed', 'mid', 'look', 'The key-terms entry changed in a mixed pattern. Read the examples.'],
+  'RULING-BROKEN-BOTH': ['Ruling broken (both)', 'mid', 'look', 'Neither version follows your ruling.'],
+  'STABLE': ['Slipped below 80%', 'mid', 'look', 'Same key-terms entry; the text agrees with it a little less and crossed the 80% line.'],
+  'KEYTERM-FIXED': ['Better: entry and text agree', 'good', 'good', 'The key-terms entry changed and the new text agrees with it better than July did.'],
+  'RULED-APPLIED': ['Ruling applied', 'good', 'good', 'Your ruling reached the new text, as intended.'],
+  'TEXT-GAIN': ['Better: text more consistent', 'good', 'good', 'The entry is unchanged and the text uses it more consistently.'],
+};
+const DECISIONS = [['', 'Undecided'], ['new', 'Ship the new MT'], ['new-repaired', 'Ship the new MT after term repairs'], ['july', 'Keep the July MT'], ['rebuy', 'Re-buy with a glossary'], ['other', 'Other (see note)']];
+const verdicts = new Map(), chdec = new Map();
+let db = null;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pct = (a) => a[1] ? Math.round(100 * a[0] / a[1]) + '%' : '–';
+function setStatus(t, err) { const s = $('#status'); s.textContent = t; s.classList.toggle('err', !!err); }
+
+function renderSummary() {
+  const b = DATA.book;
+  $('#big').innerHTML = `
+    <div><b>${b.old} → ${b.new}</b><span>consistent taught terms, of ${b.of}</span></div>
+    <div><b class="delta-bad">${b.lost}</b><span>lost consistency</span></div>
+    <div><b class="delta-good">${b.gained}</b><span>gained consistency</span></div>
+    <div><b>${DATA.terms.filter((t) => t.lost).length}</b><span>shown first: terms that lost consistency</span></div>`;
+  $('#refs').textContent = `July = ${DATA.oldRef}, new = ${DATA.newRef} (main). Method, thresholds and blind spots: experiments/terminology-consistency/README.md.`;
+}
+
+function renderChapters() {
+  const rows = [...DATA.chapters].sort((a, b) => (a.new - a.old) - (b.new - b.old));
+  $('#chrows').innerHTML = rows.map((c) => {
+    const d = c.new - c.old, dec = chdec.get(c.ch);
+    const decLabel = dec && dec.decision ? (DECISIONS.find((x) => x[0] === dec.decision) || [, dec.decision])[1] : '–';
+    return `<tr tabindex="0" data-ch="${c.ch}"><td><b>${c.ch}</b></td><td>${esc(c.arm)}</td><td class="num">${c.old}</td>
+      <td class="num ${d < 0 ? 'delta-bad' : d > 0 ? 'delta-good' : ''}">${c.new}</td><td class="num">${c.of}</td>
+      <td class="num">${c.lost}</td><td class="num">${c.gained}</td><td>${esc(decLabel)}</td></tr>`;
+  }).join('');
+  for (const tr of $('#chrows').children) {
+    const go = () => { $('#fch').value = tr.dataset.ch; $('#fcl').value = 'all'; renderList(); $('#list').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    tr.addEventListener('click', go);
+    tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+  }
+}
+
+function sideHtml(label, K, p, defs, ex) {
+  return `<div class="side"><h3>${label}</h3><div class="kw">${esc(K) || '—'}</div>
+    <div class="meta">Text agrees with this entry: ${p[0]}/${p[1]} (${pct(p)})</div>
+    ${defs.length ? `<div class="meta">Bold definition in the text: ${defs.map(esc).join(' · ')}</div>` : ''}
+    ${ex.length ? `<details><summary>${ex.length} example${ex.length > 1 ? 's' : ''} where the text does not use it</summary><div class="ex">${ex.map((x) => `<div><span class="en">${esc(x.en)}</span><span>${esc(x.is)}</span></div>`).join('')}</div></details>` : ''}</div>`;
+}
+
+// When both versions' key-terms entries are the same word, "July word" and "New word" mean the
+// same thing; the real question is whether the text should keep to that word.
+function choicesHtml(t) {
+  const r = (v, l) => `<label><input type="radio" name="c-${t.id}" value="${v}"> ${l}</label>`;
+  if (t.sameK) {
+    return r('confirm', `Keep this word: <b>${esc(t.Knew)}</b>`)
+      + (t.ruling && t.ruling.toLowerCase() !== t.Knew.toLowerCase() ? r('ruling', `Your ruling: <b>${esc(t.ruling)}</b>`) : '')
+      + r('other', 'Another word') + r('either', 'Variation is fine');
+  }
+  return r('july', 'July word') + r('new', 'New word') + r('other', 'Another word') + r('either', 'Either is fine');
+}
+
+// Answers saved before the same-word choices existed: july/new on a same-word card meant
+// "keep this word", unless a word was typed, which meant "another word".
+function shownChoice(t, v) {
+  if (!v) return null;
+  if (t.sameK && (v.choice === 'july' || v.choice === 'new')) return v.value ? 'other' : 'confirm';
+  return v.choice;
+}
+
+function cardHtml(t) {
+  const [lab, sev, , why] = CLS[t.cls];
+  const v = verdicts.get(t.id);
+  return `<article class="card${v ? ' answered' : ''}" data-id="${t.id}">
+    <div class="top"><span class="term">${esc(t.en)}</span><span class="pill ${sev}" title="${esc(why)}">${esc(lab)}</span>
+      ${t.ruling ? `<span class="pill rule">Ruling: ${esc(t.ruling)}</span>` : ''}</div>
+    <p class="meta">${esc(why)}</p>
+    <div class="pair">${sideHtml('July (live now)', t.Kold, t.po, t.dOld, t.exOld)}${sideHtml('New MT', t.Knew, t.pn, t.dNew, t.exNew)}</div>
+    <div class="answer">
+      <div class="choices" role="radiogroup" aria-label="Right word for ${esc(t.en)}">${choicesHtml(t)}</div>
+      <div class="row"><input type="text" id="v-${t.id}" placeholder="The word, if another" aria-label="Another word for ${esc(t.en)}"></div>
+      <textarea id="n-${t.id}" placeholder="Note (optional)" aria-label="Note for ${esc(t.en)}"></textarea>
+      <div class="row"><button type="button" data-act="save">Save</button><button type="button" class="ghost" data-act="clear">Remove answer</button><span class="saved" aria-live="polite"></span></div>
+    </div></article>`;
+}
+
+function fillCard(el, t) {
+  const v = verdicts.get(t.id);
+  const shown = shownChoice(t, v);
+  for (const r of el.querySelectorAll('input[type=radio]')) r.checked = shown === r.value;
+  $(`#v-${CSS.escape(t.id)}`, el).value = v?.value || '';
+  $(`#n-${CSS.escape(t.id)}`, el).value = v?.note || '';
+  el.classList.toggle('answered', !!v);
+  $('.saved', el).textContent = v ? 'Saved' : '';
+  $('[data-act=save]', el).onclick = async () => {
+    const choice = el.querySelector('input[type=radio]:checked')?.value;
+    if (!choice) { $('.saved', el).textContent = 'Pick one of the choices first.'; return; }
+    const value = $(`#v-${CSS.escape(t.id)}`, el).value.trim();
+    if (choice === 'other' && !value) { $('.saved', el).textContent = 'Type the word you want.'; return; }
+    if (!db) { $('.saved', el).textContent = 'Answers cannot be saved in this view.'; return; }
+    try {
+      await db.collection('verdicts').doc(t.id).set({ ch: t.ch, en: t.en, cls: t.cls, Kold: t.Kold, Knew: t.Knew, sameK: t.sameK, ruling: t.ruling || null, choice, value, note: $(`#n-${CSS.escape(t.id)}`, el).value.trim(), savedAt: new Date().toISOString() });
+      $('.saved', el).textContent = 'Saved';
+    } catch (e) { $('.saved', el).textContent = 'Not saved. Try again.'; }
+  };
+  $('[data-act=clear]', el).onclick = async () => {
+    if (!db) return;
+    try { await db.collection('verdicts').doc(t.id).delete(); $('.saved', el).textContent = 'Answer removed'; } catch (e) { $('.saved', el).textContent = 'Not removed. Try again.'; }
+  };
+}
+
+function chapDecHtml(c) {
+  const d = chdec.get(c.ch) || {};
+  return `<div class="chapdec" data-ch="${c.ch}">
+    <div class="row"><label for="d-${c.ch}"><b>Decision for ${c.ch}</b></label>
+      <select id="d-${c.ch}">${DECISIONS.map(([k, l]) => `<option value="${k}"${(d.decision || '') === k ? ' selected' : ''}>${l}</option>`).join('')}</select>
+      <button type="button" data-act="chsave">Save</button><span class="saved" aria-live="polite">${d.decision ? 'Saved' : ''}</span></div>
+    <textarea id="dn-${c.ch}" placeholder="Note for this chapter (optional)" aria-label="Note for ${c.ch}">${esc(d.note || '')}</textarea></div>`;
+}
+
+function renderList() {
+  const fch = $('#fch').value, fcl = $('#fcl').value, fun = $('#fun').checked, q = $('#fq').value.trim().toLowerCase();
+  const keep = (t) => (!fch || t.ch === fch) && (fcl === 'all' || (fcl === 'lost' ? t.lost : CLS[t.cls][2] === fcl)) && (!fun || !verdicts.has(t.id))
+    && (!q || (t.en + ' ' + t.Kold + ' ' + t.Knew).toLowerCase().includes(q));
+  const order = Object.keys(CLS);
+  const html = [];
+  for (const c of DATA.chapters) {
+    if (fch && c.ch !== fch) continue;
+    const ts = DATA.terms.filter((t) => t.ch === c.ch && keep(t)).sort((a, b) => order.indexOf(a.cls) - order.indexOf(b.cls));
+    if (!ts.length && fch !== c.ch) continue;
+    const d = c.new - c.old;
+    html.push(`<section class="chap" id="sec-${c.ch}"><div class="chaphead"><h2>${c.ch}</h2>
+      <span class="meta">Consistent ${c.old} → <span class="${d < 0 ? 'delta-bad' : d > 0 ? 'delta-good' : ''}">${c.new}</span> of ${c.of} · lost ${c.lost}, gained ${c.gained} · new MT glossary: ${esc(c.arm)}</span></div>
+      ${chapDecHtml(c)}${ts.length ? ts.map(cardHtml).join('') : '<p class="empty">No terms match the filters in this chapter.</p>'}</section>`);
+  }
+  $('#list').innerHTML = html.join('') || '<p class="empty">No terms match the filters.</p>';
+  for (const el of $('#list').querySelectorAll('.card')) fillCard(el, DATA.terms.find((t) => t.id === el.dataset.id));
+  for (const el of $('#list').querySelectorAll('.chapdec')) {
+    const ch = el.dataset.ch;
+    $('[data-act=chsave]', el).onclick = async () => {
+      if (!db) { $('.saved', el).textContent = 'Answers cannot be saved in this view.'; return; }
+      try {
+        await db.collection('chapters').doc(ch).set({ decision: $(`#d-${ch}`, el).value, note: $(`#dn-${ch}`, el).value.trim(), savedAt: new Date().toISOString() });
+        $('.saved', el).textContent = 'Saved';
+      } catch (e) { $('.saved', el).textContent = 'Not saved. Try again.'; }
+    };
+  }
+}
+
+function refreshCards() {
+  for (const el of $('#list').querySelectorAll('.card')) {
+    const t = DATA.terms.find((x) => x.id === el.dataset.id), v = verdicts.get(t.id);
+    el.classList.toggle('answered', !!v);
+    if (!el.contains(document.activeElement)) fillCard(el, t);
+  }
+}
+
+renderSummary();
+for (const c of DATA.chapters) $('#fch').insertAdjacentHTML('beforeend', `<option value="${c.ch}">${c.ch}</option>`);
+for (const id of ['#fch', '#fcl', '#fun']) $(id).addEventListener('change', renderList);
+$('#fq').addEventListener('input', renderList);
+renderChapters();
+renderList();
+
+(async () => {
+  try {
+    db = window.claude && window.claude.use ? await window.claude.use('db') : null;
+    if (!db) { setStatus('Answers cannot be saved in this view.', true); return; }
+    setStatus('Answers save to this page.');
+    db.collection('verdicts').onSnapshot((snap) => {
+      verdicts.clear(); for (const d of snap.docs) verdicts.set(d.id, d.data());
+      refreshCards(); setStatus(`${verdicts.size} term answer${verdicts.size === 1 ? '' : 's'} saved.`);
+    }, () => setStatus('Lost the connection to saved answers. Reload the page.', true));
+    db.collection('chapters').onSnapshot((snap) => {
+      chdec.clear(); for (const d of snap.docs) chdec.set(d.id, d.data());
+      renderChapters();
+    }, () => {});
+  } catch (e) { setStatus('Answers cannot be saved in this view.', true); }
+})();
+</script>

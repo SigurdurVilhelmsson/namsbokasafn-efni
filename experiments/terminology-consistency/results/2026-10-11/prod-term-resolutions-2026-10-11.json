@@ -1,0 +1,3802 @@
+{
+ "about": "Production sessions.db, read-only, 2026-10-11, through prod's own conceptResolver (buildScope + resolve, book efnafraedi-2e, chapter 0, the book default the glossary export uses) by server/scripts/read-term-resolutions.js, sent on stdin so prod received no file. `head` is prod's checkout. `queryMap` maps each stage 1 row id (stage1-answers-2026-10-11.json) to the English strings looked up for it: the headword as shown, without parentheticals, and without [formula] or a bare placeholder number. A row's stored word is the first winner among its strings. `tied` means the export drops the headword; `alternatives` lists every Icelandic term on the winning concept.",
+ "book": "efnafraedi-2e",
+ "chapter": 0,
+ "head": "13f9eec97093d92c2dcefd947d1ed4d503ccec14",
+ "readAt": "2026-10-11T17:58:51.594Z",
+ "dbPath": "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db",
+ "queries": [
+  "Bohr’s model of the hydrogen atom",
+  "Bragg equation",
+  "Brønsted-Lowry acid",
+  "Brønsted-Lowry base",
+  "Celsius",
+  "Celsius (°C)",
+  "Dalton’s atomic theory",
+  "Geiger counter",
+  "Gibbs free energy change",
+  "Gibbs free energy change (G)",
+  "Graham’s law of effusion",
+  "Henderson-Hasselbalch equation",
+  "Lewis acid-base adduct",
+  "Pauli exclusion principle",
+  "Tyndall effect",
+  "accuracy",
+  "acid-base reaction",
+  "actinide series",
+  "active electrode",
+  "addition",
+  "addition reaction",
+  "alkaline battery",
+  "alloy",
+  "alpha (α) decay",
+  "alpha decay",
+  "alpha particle",
+  "alpha particle (α particle)",
+  "amorphous",
+  "amphiprotic",
+  "analyte",
+  "aromatic hydrocarbon",
+  "atomic orbital",
+  "basic",
+  "becquerel",
+  "becquerel (Bq)",
+  "beta (β) decay",
+  "beta decay",
+  "bidentate ligand",
+  "bimolecular reaction",
+  "binary acid",
+  "binary compound",
+  "binding energy per nucleon",
+  "body-centered cubic (BCC) solid",
+  "body-centered cubic solid",
+  "bomb calorimeter",
+  "bond energy",
+  "bonding orbital",
+  "carboxylic acid",
+  "cathodic protection",
+  "cell notation",
+  "cell notation (schematic)",
+  "cell potential",
+  "cell potential (Ecell)",
+  "central metal",
+  "chain reaction",
+  "chelate",
+  "chelating ligand",
+  "chemical property",
+  "chemical thermodynamics",
+  "collision theory",
+  "color-change interval",
+  "concentrated",
+  "concentration cell",
+  "control rod",
+  "coordination compound",
+  "coordination number",
+  "coordination sphere",
+  "covalent compound",
+  "covalent network solid",
+  "crystal field splitting",
+  "crystal field splitting (Δoct)",
+  "crystal field theory",
+  "crystalline solid",
+  "cubic closest packing",
+  "cubic closest packing (CCP)",
+  "curie",
+  "curie (Ci)",
+  "daughter nuclide",
+  "degenerate orbitals",
+  "deposition",
+  "diamagnetism",
+  "diffraction",
+  "dipole moment",
+  "dipole-dipole attraction",
+  "dispersion force",
+  "disproportionation reaction",
+  "dissociation",
+  "donor atom",
+  "dry cell",
+  "eg orbitals",
+  "electrode potential",
+  "electrode potential (EX)",
+  "electrolytic cell",
+  "electron affinity",
+  "electron capture",
+  "electron volt",
+  "electron volt (eV)",
+  "elementary reaction",
+  "emission",
+  "excess reactant",
+  "external beam radiation therapy",
+  "face-centered cubic (FCC) solid",
+  "face-centered cubic solid",
+  "first transition series",
+  "formal charge",
+  "fourth transition series",
+  "free radical",
+  "freezing point",
+  "frequency factor",
+  "frequency factor (A)",
+  "fusion reactor",
+  "galvanic (voltaic) cell",
+  "galvanic cell",
+  "gamma (γ) emission",
+  "gamma emission",
+  "geometric isomers",
+  "gravimetric analysis",
+  "ground state",
+  "group",
+  "hexagonal closest packing",
+  "hexagonal closest packing (HCP)",
+  "high-spin complex",
+  "homonuclear diatomic molecule",
+  "hybrid orbital",
+  "hybridization",
+  "hydrometallurgy",
+  "hypervalent molecule",
+  "ideal gas law",
+  "indicator",
+  "induced dipole",
+  "inert electrode",
+  "inert pair effect",
+  "insoluble",
+  "instantaneous dipole",
+  "intensive property",
+  "interference pattern",
+  "intermolecular force",
+  "isoelectronic",
+  "isomers",
+  "isomorphous",
+  "joule",
+  "joule (J)",
+  "kinetic molecular theory",
+  "lanthanide series",
+  "law of constant composition",
+  "law of definite proportions",
+  "law of mass action",
+  "law of multiple proportions",
+  "ligand",
+  "linear",
+  "linear combination of atomic orbitals",
+  "linkage isomer",
+  "lithium ion battery",
+  "macroscopic domain",
+  "mass defect",
+  "microscopic domain",
+  "mixture",
+  "mole fraction",
+  "mole fraction (X)",
+  "molecular orbital theory",
+  "molecular solid",
+  "monodentate",
+  "node",
+  "nonelectrolyte",
+  "nonspontaneous process",
+  "normal boiling point",
+  "nuclear binding energy",
+  "nuclear moderator",
+  "nuclear transmutation",
+  "nucleon",
+  "nuclide",
+  "nutritional calorie",
+  "nutritional calorie (Calorie)",
+  "octahedral hole",
+  "octet rule",
+  "optical isomer",
+  "orbital diagram",
+  "osmosis",
+  "osmotic pressure",
+  "osmotic pressure (Π)",
+  "oxidation-reduction reaction",
+  "paramagnetism",
+  "parent nuclide",
+  "partially miscible",
+  "particle accelerator",
+  "parts per billion",
+  "parts per billion (ppb)",
+  "parts per million",
+  "parts per million (ppm)",
+  "percent composition",
+  "periodic law",
+  "periodic table",
+  "pi bond",
+  "pi bond (π bond)",
+  "polarizability",
+  "polydentate ligand",
+  "polymorph",
+  "positron",
+  "positron [formula] or [formula]",
+  "positron emission",
+  "primary cell",
+  "principal quantum number",
+  "principal quantum number (n)",
+  "radiation absorbed dose",
+  "radiation absorbed dose (rad)",
+  "radioactive decay series",
+  "radioactive tracer",
+  "radiocarbon dating",
+  "radiometric dating",
+  "rate law",
+  "rate-determining step",
+  "reaction diagram",
+  "reaction order",
+  "reaction quotient",
+  "reaction quotient (Q)",
+  "reactor coolant",
+  "relative biological effectiveness",
+  "relative biological effectiveness (RBE)",
+  "representative element",
+  "representative metal",
+  "reversible process",
+  "reversible reaction",
+  "roentgen equivalent man",
+  "roentgen equivalent man (rem)",
+  "rounding",
+  "s-p mixing",
+  "sacrificial anode",
+  "saturated hydrocarbon",
+  "second transition series",
+  "secondary (angular momentum) quantum number (l)",
+  "secondary cell",
+  "secondary quantum number",
+  "series",
+  "sigma bond",
+  "sigma bond (σ bond)",
+  "silicate",
+  "simple cubic structure",
+  "single-displacement reaction",
+  "skeletal structure",
+  "smelting",
+  "soluble",
+  "solute",
+  "solvation",
+  "sp hybrid orbital",
+  "sp2 hybrid orbital",
+  "sp3 hybrid orbital",
+  "sp3d hybrid orbital",
+  "sp3d2 hybrid orbital",
+  "spatial isomers",
+  "specific heat capacity",
+  "specific heat capacity (c)",
+  "spontaneous change",
+  "spontaneous process",
+  "standard cell potential",
+  "standard cell potential [formula]",
+  "standard conditions of temperature and pressure",
+  "standard conditions of temperature and pressure (STP)",
+  "standard electrode potential",
+  "standard electrode potential (56)",
+  "standard free energy change",
+  "standard free energy change (ΔG°)",
+  "standard free energy of formation",
+  "standard free energy of formation [formula]",
+  "standing wave",
+  "stoichiometric factor",
+  "subshell",
+  "substituent",
+  "supercritical fluid",
+  "t2g orbitals",
+  "termolecular reaction",
+  "tetrahedral hole",
+  "third transition series",
+  "transmutation reaction",
+  "transuranium element",
+  "unimolecular reaction",
+  "unit conversion factor",
+  "vacancy",
+  "valence",
+  "valence shell electron-pair repulsion theory",
+  "valence shell electron-pair repulsion theory (VSEPR)",
+  "vapor pressure",
+  "vapor pressure of water",
+  "wave-particle duality",
+  "π bonding orbital",
+  "π* bonding orbital",
+  "σ bonding orbital",
+  "σ* bonding orbital"
+ ],
+ "queryMap": {
+  "ch01_fs-idm121167952": [
+   "microscopic domain"
+  ],
+  "ch01_fs-idm307214528": [
+   "unit conversion factor"
+  ],
+  "ch01_fs-idm41373200": [
+   "macroscopic domain"
+  ],
+  "ch01_fs-idm5111888": [
+   "mixture"
+  ],
+  "ch01_fs-idm88320752": [
+   "chemical property"
+  ],
+  "ch01_fs-idp330245120": [
+   "accuracy"
+  ],
+  "ch01_fs-idp42386976": [
+   "intensive property"
+  ],
+  "ch01_fs-idp68905696": [
+   "rounding"
+  ],
+  "ch02_fs-idm334010160": [
+   "representative element"
+  ],
+  "ch02_fs-idm54570400": [
+   "spatial isomers"
+  ],
+  "ch02_fs-idp110829184": [
+   "Dalton’s atomic theory"
+  ],
+  "ch02_fs-idp282226176": [
+   "binary compound"
+  ],
+  "ch02_fs-idp282291040": [
+   "binary acid"
+  ],
+  "ch02_fs-idp47442976": [
+   "law of multiple proportions"
+  ],
+  "ch02_fs-idp55104": [
+   "isomers"
+  ],
+  "ch02_fs-idp76336256": [
+   "law of definite proportions"
+  ],
+  "ch03_fs-idm26449216": [
+   "concentrated"
+  ],
+  "ch03_fs-idm85251264": [
+   "parts per million",
+   "parts per million (ppm)"
+  ],
+  "ch03_fs-idp23298832": [
+   "parts per billion",
+   "parts per billion (ppb)"
+  ],
+  "ch03_fs-idp78260032": [
+   "percent composition"
+  ],
+  "ch04_fs-idm28944688": [
+   "insoluble"
+  ],
+  "ch04_fs-idm46343008": [
+   "excess reactant"
+  ],
+  "ch04_fs-idm54009824": [
+   "acid-base reaction"
+  ],
+  "ch04_fs-idp127461392": [
+   "stoichiometric factor"
+  ],
+  "ch04_fs-idp17888704": [
+   "analyte"
+  ],
+  "ch04_fs-idp64227344": [
+   "single-displacement reaction"
+  ],
+  "ch04_fs-idp64228624": [
+   "soluble"
+  ],
+  "ch04_fs-idp83288512": [
+   "gravimetric analysis"
+  ],
+  "ch04_fs-idp83289888": [
+   "indicator"
+  ],
+  "ch05_fs-idm56357952": [
+   "nutritional calorie",
+   "nutritional calorie (Calorie)"
+  ],
+  "ch05_fs-idm56360448": [
+   "bomb calorimeter"
+  ],
+  "ch06_fs-idm13416416": [
+   "Bohr’s model of the hydrogen atom"
+  ],
+  "ch06_fs-idm161962320": [
+   "electron affinity"
+  ],
+  "ch06_fs-idm36067216": [
+   "node"
+  ],
+  "ch06_fs-idm442273488": [
+   "degenerate orbitals"
+  ],
+  "ch06_fs-idm64841104": [
+   "standing wave"
+  ],
+  "ch06_fs-idp106317328": [
+   "wave-particle duality"
+  ],
+  "ch06_fs-idp15489472": [
+   "orbital diagram"
+  ],
+  "ch06_fs-idp94243488": [
+   "isoelectronic"
+  ],
+  "ch07_fs-idm113628896": [
+   "inert pair effect"
+  ],
+  "ch07_fs-idm4719424": [
+   "free radical"
+  ],
+  "ch07_fs-idp10319376": [
+   "bond energy"
+  ],
+  "ch07_fs-idp10384768": [
+   "formal charge"
+  ],
+  "ch07_fs-idp27828880": [
+   "valence shell electron-pair repulsion theory",
+   "valence shell electron-pair repulsion theory (VSEPR)"
+  ],
+  "ch07_fs-idp35872064": [
+   "linear"
+  ],
+  "ch08_fs-idm100344544": [
+   "π bonding orbital"
+  ],
+  "ch08_fs-idm100788960": [
+   "paramagnetism"
+  ],
+  "ch08_fs-idm133686144": [
+   "bonding orbital"
+  ],
+  "ch08_fs-idm165896720": [
+   "homonuclear diatomic molecule"
+  ],
+  "ch08_fs-idm167738656": [
+   "degenerate orbitals"
+  ],
+  "ch08_fs-idm169269152": [
+   "σ* bonding orbital"
+  ],
+  "ch08_fs-idm18620192": [
+   "π* bonding orbital"
+  ],
+  "ch08_fs-idm249965088": [
+   "molecular orbital theory"
+  ],
+  "ch08_fs-idm41528352": [
+   "linear combination of atomic orbitals"
+  ],
+  "ch08_fs-idm41960016": [
+   "σ bonding orbital"
+  ],
+  "ch08_fs-idm83103936": [
+   "diamagnetism"
+  ],
+  "ch08_fs-idp123920528": [
+   "node"
+  ],
+  "ch08_fs-idp36919168": [
+   "sigma bond",
+   "sigma bond (σ bond)"
+  ],
+  "ch08_fs-idp5821920": [
+   "s-p mixing"
+  ],
+  "ch08_fs-idp94790208": [
+   "pi bond",
+   "pi bond (π bond)"
+  ],
+  "ch09_fs-idm198763536": [
+   "kinetic molecular theory"
+  ],
+  "ch09_fs-idp1132336": [
+   "mole fraction",
+   "mole fraction (X)"
+  ],
+  "ch09_fs-idp257364480": [
+   "Graham’s law of effusion"
+  ],
+  "ch09_fs-idp57901520": [
+   "vapor pressure of water"
+  ],
+  "ch10_fs-idm116347536": [
+   "tetrahedral hole"
+  ],
+  "ch10_fs-idm195421616": [
+   "vapor pressure"
+  ],
+  "ch10_fs-idm205028976": [
+   "normal boiling point"
+  ],
+  "ch10_fs-idm208980304": [
+   "supercritical fluid"
+  ],
+  "ch10_fs-idm28944640": [
+   "octahedral hole"
+  ],
+  "ch10_fs-idm31438528": [
+   "induced dipole"
+  ],
+  "ch10_fs-idm47773456": [
+   "simple cubic structure"
+  ],
+  "ch10_fs-idm66585952": [
+   "intermolecular force"
+  ],
+  "ch10_fs-idm7778192": [
+   "deposition"
+  ],
+  "ch10_fs-idp127211536": [
+   "instantaneous dipole"
+  ],
+  "ch10_fs-idp128571888": [
+   "polarizability"
+  ],
+  "ch10_fs-idp141680624": [
+   "crystalline solid"
+  ],
+  "ch10_fs-idp160423360": [
+   "diffraction"
+  ],
+  "ch10_fs-idp190835184": [
+   "body-centered cubic (BCC) solid",
+   "body-centered cubic solid"
+  ],
+  "ch10_fs-idp20057136": [
+   "face-centered cubic (FCC) solid",
+   "face-centered cubic solid"
+  ],
+  "ch10_fs-idp42521392": [
+   "covalent network solid"
+  ],
+  "ch10_fs-idp66006736": [
+   "molecular solid"
+  ],
+  "ch10_fs-idp75734960": [
+   "isomorphous"
+  ],
+  "ch10_fs-idp81517488": [
+   "hexagonal closest packing",
+   "hexagonal closest packing (HCP)"
+  ],
+  "ch11_fs-idm104294208": [
+   "alloy"
+  ],
+  "ch11_fs-idm32680960": [
+   "dissociation"
+  ],
+  "ch11_fs-idm55870880": [
+   "spontaneous process"
+  ],
+  "ch11_fs-idp10683312": [
+   "nonelectrolyte"
+  ],
+  "ch12_fs-idp105000160": [
+   "rate-determining step"
+  ],
+  "ch13_fs-idp4379168": [
+   "reversible reaction"
+  ],
+  "ch13_fs-idp74361936": [
+   "reaction quotient",
+   "reaction quotient (Q)"
+  ],
+  "ch13_fs-idp89564720": [
+   "law of mass action"
+  ],
+  "ch14_fs-idm111671584": [
+   "basic"
+  ],
+  "ch14_fs-idp140545888": [
+   "amphiprotic"
+  ],
+  "ch14_fs-idp43874496": [
+   "Brønsted-Lowry acid"
+  ],
+  "ch14_fs-idp67177296": [
+   "color-change interval"
+  ],
+  "ch14_fs-idp89677040": [
+   "Brønsted-Lowry base"
+  ],
+  "ch16_fs-idm119807952": [
+   "standard free energy change",
+   "standard free energy change (ΔG°)"
+  ],
+  "ch16_fs-idm119810368": [
+   "Gibbs free energy change",
+   "Gibbs free energy change (G)"
+  ],
+  "ch17_fs-idm117181824": [
+   "electrolytic cell"
+  ],
+  "ch17_fs-idm153016624": [
+   "sacrificial anode"
+  ],
+  "ch17_fs-idm153779040": [
+   "cell potential",
+   "cell potential (Ecell)"
+  ],
+  "ch17_fs-idm175851472": [
+   "dry cell"
+  ],
+  "ch17_fs-idm19899136": [
+   "inert electrode"
+  ],
+  "ch17_fs-idm4867824": [
+   "standard electrode potential",
+   "standard electrode potential (56)"
+  ],
+  "ch17_fs-idp13398640": [
+   "active electrode"
+  ],
+  "ch17_fs-idp84325552": [
+   "cathodic protection"
+  ],
+  "ch17_fs-idp85536816": [
+   "electrode potential",
+   "electrode potential (EX)"
+  ],
+  "ch17_fs-idp94537696": [
+   "concentration cell"
+  ],
+  "ch18_fs-idp17081184": [
+   "silicate"
+  ],
+  "ch19_fs-idm132411312": [
+   "geometric isomers"
+  ],
+  "ch19_fs-idm163687904": [
+   "second transition series"
+  ],
+  "ch19_fs-idm186870544": [
+   "first transition series"
+  ],
+  "ch19_fs-idm246107488": [
+   "smelting"
+  ],
+  "ch19_fs-idm33844976": [
+   "high-spin complex"
+  ],
+  "ch19_fs-idm42835168": [
+   "third transition series"
+  ],
+  "ch19_fs-idm52768832": [
+   "fourth transition series"
+  ],
+  "ch19_fs-idm99275552": [
+   "crystal field splitting",
+   "crystal field splitting (Δoct)"
+  ],
+  "ch19_fs-idp158869120": [
+   "polydentate ligand"
+  ],
+  "ch19_fs-idp216879616": [
+   "optical isomer"
+  ],
+  "ch19_fs-idp275481408": [
+   "donor atom"
+  ],
+  "ch19_fs-idp279277792": [
+   "ligand"
+  ],
+  "ch19_fs-idp63930000": [
+   "linkage isomer"
+  ],
+  "ch19_fs-idp64634960": [
+   "chelate"
+  ],
+  "ch19_fs-idp65460624": [
+   "bidentate ligand"
+  ],
+  "ch19_fs-idp8060128": [
+   "monodentate"
+  ],
+  "ch20_fs-id1170893631592": [
+   "addition reaction"
+  ],
+  "ch20_fs-idp39277120": [
+   "skeletal structure"
+  ],
+  "ch21_fs-idm187262736": [
+   "reactor coolant"
+  ],
+  "ch21_fs-idm188168144": [
+   "transuranium element"
+  ],
+  "ch21_fs-idm204101584": [
+   "nuclear moderator"
+  ],
+  "ch21_fs-idm223971840": [
+   "transmutation reaction"
+  ],
+  "ch21_fs-idm24356480": [
+   "positron emission"
+  ],
+  "ch21_fs-idm27366640": [
+   "gamma (γ) emission",
+   "gamma emission"
+  ],
+  "ch21_fs-idm27477328": [
+   "nuclear binding energy"
+  ],
+  "ch21_fs-idm27965808": [
+   "alpha (α) decay",
+   "alpha decay"
+  ],
+  "ch21_fs-idm41591488": [
+   "nucleon"
+  ],
+  "ch21_fs-idm49105504": [
+   "mass defect"
+  ],
+  "ch21_fs-idm66620880": [
+   "particle accelerator"
+  ],
+  "ch21_fs-idm684928": [
+   "electron capture"
+  ],
+  "ch21_fs-idm98883968": [
+   "electron volt",
+   "electron volt (eV)"
+  ],
+  "ch21_fs-idp13479088": [
+   "becquerel",
+   "becquerel (Bq)"
+  ],
+  "ch21_fs-idp171940160": [
+   "radiometric dating"
+  ],
+  "ch21_fs-idp172690976": [
+   "radioactive decay series"
+  ],
+  "ch21_fs-idp38524656": [
+   "radiation absorbed dose",
+   "radiation absorbed dose (rad)"
+  ],
+  "ch21_fs-idp40157072": [
+   "curie",
+   "curie (Ci)"
+  ],
+  "ch21_fs-idp69613952": [
+   "beta (β) decay",
+   "beta decay"
+  ],
+  "ch21_fs-idp72108384": [
+   "positron",
+   "positron [formula] or [formula]"
+  ],
+  "ch21_fs-idp77369424": [
+   "Geiger counter"
+  ],
+  "ch21_fs-idp81777184": [
+   "radioactive tracer"
+  ],
+  "ch21_fs-idp85639552": [
+   "binding energy per nucleon"
+  ],
+  "ws_addition": [
+   "addition"
+  ],
+  "ws_emission": [
+   "emission"
+  ],
+  "ws_valence": [
+   "valence"
+  ],
+  "ch01_fs-idm285658848": [
+   "Celsius",
+   "Celsius (°C)"
+  ],
+  "ch02_fs-idm10811088": [
+   "alpha particle",
+   "alpha particle (α particle)"
+  ],
+  "ch02_fs-idm20590592": [
+   "group"
+  ],
+  "ch02_fs-idm227073184": [
+   "periodic table"
+  ],
+  "ch02_fs-idm430389008": [
+   "series"
+  ],
+  "ch02_fs-idm56716560": [
+   "law of constant composition"
+  ],
+  "ch02_fs-idm64490640": [
+   "periodic law"
+  ],
+  "ch02_fs-idp184530720": [
+   "covalent compound"
+  ],
+  "ch03_fs-idm26667568": [
+   "solute"
+  ],
+  "ch04_fs-idm73913072": [
+   "oxidation-reduction reaction"
+  ],
+  "ch05_fs-idp102379584": [
+   "chemical thermodynamics"
+  ],
+  "ch05_fs-idp25507984": [
+   "joule",
+   "joule (J)"
+  ],
+  "ch05_fs-idp31727024": [
+   "specific heat capacity",
+   "specific heat capacity (c)"
+  ],
+  "ch06_fs-idm11590896": [
+   "interference pattern"
+  ],
+  "ch06_fs-idm120400016": [
+   "Pauli exclusion principle"
+  ],
+  "ch06_fs-idm140352128": [
+   "principal quantum number",
+   "principal quantum number (n)"
+  ],
+  "ch06_fs-idm147438368": [
+   "atomic orbital"
+  ],
+  "ch06_fs-idm148470816": [
+   "subshell"
+  ],
+  "ch06_fs-idm176142304": [
+   "secondary (angular momentum) quantum number (l)",
+   "secondary quantum number"
+  ],
+  "ch06_fs-idp97866656": [
+   "ground state"
+  ],
+  "ch07_fs-idm73604928": [
+   "octet rule"
+  ],
+  "ch07_fs-idp12081312": [
+   "dipole moment"
+  ],
+  "ch07_fs-idp87877296": [
+   "hypervalent molecule"
+  ],
+  "ch08_fs-idm16838896": [
+   "sp3d hybrid orbital"
+  ],
+  "ch08_fs-idm29433408": [
+   "hybridization"
+  ],
+  "ch08_fs-idm47317072": [
+   "sp3d2 hybrid orbital"
+  ],
+  "ch08_fs-idm48701168": [
+   "sp2 hybrid orbital"
+  ],
+  "ch08_fs-idm71427776": [
+   "sp hybrid orbital"
+  ],
+  "ch08_fs-idp102362976": [
+   "hybrid orbital"
+  ],
+  "ch08_fs-idp88964992": [
+   "sp3 hybrid orbital"
+  ],
+  "ch09_fs-idm111878496": [
+   "ideal gas law"
+  ],
+  "ch09_fs-idm158190720": [
+   "standard conditions of temperature and pressure",
+   "standard conditions of temperature and pressure (STP)"
+  ],
+  "ch10_fs-idm16566240": [
+   "dispersion force"
+  ],
+  "ch10_fs-idm37032656": [
+   "vacancy"
+  ],
+  "ch10_fs-idp127496336": [
+   "dipole-dipole attraction"
+  ],
+  "ch10_fs-idp168577936": [
+   "Bragg equation"
+  ],
+  "ch10_fs-idp5444368": [
+   "freezing point"
+  ],
+  "ch10_fs-idp56136784": [
+   "cubic closest packing",
+   "cubic closest packing (CCP)"
+  ],
+  "ch11_fs-idm171842784": [
+   "Tyndall effect"
+  ],
+  "ch11_fs-idm91470352": [
+   "solvation"
+  ],
+  "ch11_fs-idp141112944": [
+   "osmosis"
+  ],
+  "ch11_fs-idp141114480": [
+   "osmotic pressure",
+   "osmotic pressure (Π)"
+  ],
+  "ch11_fs-idp7162656": [
+   "partially miscible"
+  ],
+  "ch12_fs-idm101548864": [
+   "collision theory"
+  ],
+  "ch12_fs-idm206488448": [
+   "frequency factor",
+   "frequency factor (A)"
+  ],
+  "ch12_fs-idm215968704": [
+   "rate law"
+  ],
+  "ch12_fs-idm2926992": [
+   "unimolecular reaction"
+  ],
+  "ch12_fs-idm333854336": [
+   "reaction order"
+  ],
+  "ch12_fs-idm355773584": [
+   "reaction diagram"
+  ],
+  "ch12_fs-idp131244384": [
+   "bimolecular reaction"
+  ],
+  "ch12_fs-idp251542624": [
+   "termolecular reaction"
+  ],
+  "ch12_fs-idp36862592": [
+   "elementary reaction"
+  ],
+  "ch14_fs-idm71412016": [
+   "Henderson-Hasselbalch equation"
+  ],
+  "ch15_fs-idm26641568": [
+   "Lewis acid-base adduct"
+  ],
+  "ch16_fs-idm119806032": [
+   "standard free energy of formation",
+   "standard free energy of formation [formula]"
+  ],
+  "ch16_fs-idm57405936": [
+   "spontaneous change"
+  ],
+  "ch16_fs-idp119850016": [
+   "nonspontaneous process"
+  ],
+  "ch16_fs-idp48318480": [
+   "reversible process"
+  ],
+  "ch17_fs-idm118911936": [
+   "lithium ion battery"
+  ],
+  "ch17_fs-idm139905600": [
+   "cell notation",
+   "cell notation (schematic)"
+  ],
+  "ch17_fs-idm159189392": [
+   "galvanic (voltaic) cell",
+   "galvanic cell"
+  ],
+  "ch17_fs-idm210620784": [
+   "alkaline battery"
+  ],
+  "ch17_fs-idm278014928": [
+   "primary cell"
+  ],
+  "ch17_fs-idp227872832": [
+   "standard cell potential",
+   "standard cell potential [formula]"
+  ],
+  "ch17_fs-idp55952432": [
+   "secondary cell"
+  ],
+  "ch18_fs-idm2235360": [
+   "representative metal"
+  ],
+  "ch18_fs-idm60186560": [
+   "disproportionation reaction"
+  ],
+  "ch18_fs-idp110103392": [
+   "representative element"
+  ],
+  "ch18_fs-idp20554272": [
+   "polymorph"
+  ],
+  "ch18_fs-idp50657904": [
+   "amorphous"
+  ],
+  "ch19_fs-idm104611088": [
+   "t2g orbitals"
+  ],
+  "ch19_fs-idm108395328": [
+   "lanthanide series"
+  ],
+  "ch19_fs-idm148194896": [
+   "eg orbitals"
+  ],
+  "ch19_fs-idm163589328": [
+   "coordination compound"
+  ],
+  "ch19_fs-idm281484512": [
+   "hydrometallurgy"
+  ],
+  "ch19_fs-idm31354480": [
+   "crystal field theory"
+  ],
+  "ch19_fs-idm98560816": [
+   "actinide series"
+  ],
+  "ch19_fs-idp246761680": [
+   "coordination compound"
+  ],
+  "ch19_fs-idp51669120": [
+   "chelating ligand"
+  ],
+  "ch19_fs-idp53705200": [
+   "central metal"
+  ],
+  "ch19_fs-idp55828544": [
+   "coordination number"
+  ],
+  "ch19_fs-idp56324672": [
+   "coordination sphere"
+  ],
+  "ch20_fs-idm3165296": [
+   "carboxylic acid"
+  ],
+  "ch20_fs-idp68310656": [
+   "substituent"
+  ],
+  "ch20_fs-idp73021984": [
+   "aromatic hydrocarbon"
+  ],
+  "ch20_fs-idp73075792": [
+   "saturated hydrocarbon"
+  ],
+  "ch21_fs-idm128080144": [
+   "chain reaction"
+  ],
+  "ch21_fs-idm206270992": [
+   "control rod"
+  ],
+  "ch21_fs-idm74066144": [
+   "nuclear transmutation"
+  ],
+  "ch21_fs-idm80685920": [
+   "nuclide"
+  ],
+  "ch21_fs-idp10803760": [
+   "radiocarbon dating"
+  ],
+  "ch21_fs-idp165863168": [
+   "relative biological effectiveness",
+   "relative biological effectiveness (RBE)"
+  ],
+  "ch21_fs-idp225092016": [
+   "roentgen equivalent man",
+   "roentgen equivalent man (rem)"
+  ],
+  "ch21_fs-idp44456896": [
+   "external beam radiation therapy"
+  ],
+  "ch21_fs-idp55578096": [
+   "parent nuclide"
+  ],
+  "ch21_fs-idp69591216": [
+   "daughter nuclide"
+  ],
+  "ch21_fs-idp7149200": [
+   "fusion reactor"
+  ]
+ },
+ "results": {
+  "Bohr’s model of the hydrogen atom": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Bragg equation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Brønsted-Lowry acid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Brønsted-Lowry base": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Celsius": {
+   "winner": {
+    "text": "Celsíus",
+    "conceptId": 70190,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "Celsíus"
+   ]
+  },
+  "Celsius (°C)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Dalton’s atomic theory": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Geiger counter": {
+   "winner": {
+    "text": "Geiger-nemi",
+    "conceptId": 953,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "Geiger-nemi",
+    "Geiger-teljari"
+   ]
+  },
+  "Gibbs free energy change": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Gibbs free energy change (G)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Graham’s law of effusion": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Henderson-Hasselbalch equation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Lewis acid-base adduct": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "Pauli exclusion principle": {
+   "winner": {
+    "text": "einsetulögmál Pauli",
+    "conceptId": 4712,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "einsetulögmál Pauli",
+    "útilokunarlögmál Pauli"
+   ]
+  },
+  "Tyndall effect": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "accuracy": {
+   "winner": {
+    "text": "nákvæmni",
+    "conceptId": 2500,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "nákvæmni"
+   ]
+  },
+  "acid-base reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "actinide series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "active electrode": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "addition": {
+   "winner": {
+    "text": "álagning",
+    "conceptId": 4649,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "álagning"
+   ]
+  },
+  "addition reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "alkaline battery": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "alloy": {
+   "winner": {
+    "text": "melmi",
+    "conceptId": 4938,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "melmi",
+    "málmblanda",
+    "málmblendi"
+   ]
+  },
+  "alpha (α) decay": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "alpha decay": {
+   "winner": {
+    "text": "alfasundrun",
+    "conceptId": 80,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "alfasundrun",
+    "alfahrörnun"
+   ]
+  },
+  "alpha particle": {
+   "winner": {
+    "text": "alfaögn",
+    "conceptId": 81,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "alfaögn",
+    "alfaeind"
+   ]
+  },
+  "alpha particle (α particle)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "amorphous": {
+   "winner": {
+    "text": "myndlaus",
+    "conceptId": 2450,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "myndlaus"
+   ]
+  },
+  "amphiprotic": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "analyte": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "aromatic hydrocarbon": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "atomic orbital": {
+   "winner": {
+    "text": "frumeindasvigrúm",
+    "conceptId": 4746,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "frumeindasvigrúm",
+    "atómsvigrúm"
+   ]
+  },
+  "basic": {
+   "winner": {
+    "text": "basískur",
+    "conceptId": 4657,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "basískur"
+   ]
+  },
+  "becquerel": {
+   "winner": {
+    "text": "bekerel",
+    "conceptId": 228,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "bekerel"
+   ]
+  },
+  "becquerel (Bq)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "beta (β) decay": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "beta decay": {
+   "winner": {
+    "text": "betasundrun",
+    "conceptId": 245,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "betasundrun",
+    "betahrörnun"
+   ]
+  },
+  "bidentate ligand": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "bimolecular reaction": {
+   "winner": {
+    "text": "tvísameinda efnahvarf",
+    "conceptId": 5139,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "tvísameinda efnahvarf"
+   ]
+  },
+  "binary acid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "binary compound": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "binding energy per nucleon": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "body-centered cubic (BCC) solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "body-centered cubic solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "bomb calorimeter": {
+   "winner": {
+    "text": "sprengivarmamælir",
+    "conceptId": 3594,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "sprengivarmamælir",
+    "brennsluvarmamælir"
+   ]
+  },
+  "bond energy": {
+   "winner": {
+    "text": "tengjaorka",
+    "conceptId": 5126,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "tengjaorka",
+    "tengiorka"
+   ]
+  },
+  "bonding orbital": {
+   "winner": {
+    "text": "bindandi svigrúm",
+    "conceptId": 70198,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "bindandi svigrúm"
+   ]
+  },
+  "carboxylic acid": {
+   "winner": {
+    "text": "karboxýlsýra",
+    "conceptId": 70217,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "karboxýlsýra"
+   ]
+  },
+  "cathodic protection": {
+   "winner": {
+    "text": "katóðuvörn",
+    "conceptId": 4858,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "katóðuvörn"
+   ]
+  },
+  "cell notation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "cell notation (schematic)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "cell potential": {
+   "winner": {
+    "text": "kerspenna",
+    "conceptId": 4861,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "kerspenna"
+   ]
+  },
+  "cell potential (Ecell)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "central metal": {
+   "winner": {
+    "text": "miðjumálmur",
+    "conceptId": 70213,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "miðjumálmur"
+   ]
+  },
+  "chain reaction": {
+   "winner": {
+    "text": "keðjuhvarf",
+    "conceptId": 70221,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "keðjuhvarf"
+   ]
+  },
+  "chelate": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": []
+  },
+  "chelating ligand": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "chemical property": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "chemical thermodynamics": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "collision theory": {
+   "winner": {
+    "text": "árekstrakenningin",
+    "conceptId": 4650,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "árekstrakenningin"
+   ]
+  },
+  "color-change interval": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "concentrated": {
+   "winner": {
+    "text": "megn",
+    "conceptId": 2348,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "megn",
+    "sterkur"
+   ]
+  },
+  "concentration cell": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "control rod": {
+   "winner": {
+    "text": "hemilstöng",
+    "conceptId": 1233,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "hemilstöng",
+    "stýristöng"
+   ]
+  },
+  "coordination compound": {
+   "winner": {
+    "text": "girðisamband",
+    "conceptId": 4762,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "girðisamband"
+   ]
+  },
+  "coordination number": {
+   "winner": {
+    "text": "girðitala",
+    "conceptId": 4763,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "girðitala"
+   ]
+  },
+  "coordination sphere": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "covalent compound": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "covalent network solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "crystal field splitting": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "crystal field splitting (Δoct)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "crystal field theory": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "crystalline solid": {
+   "winner": {
+    "text": "kristalkennt fastefni",
+    "conceptId": 4873,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "kristalkennt fastefni"
+   ]
+  },
+  "cubic closest packing": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "cubic closest packing (CCP)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "curie": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "curie (Ci)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "daughter nuclide": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "degenerate orbitals": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "deposition": {
+   "winner": null,
+   "reason": null,
+   "tied": [
+    {
+     "text": "hélun",
+     "conceptId": 4790,
+     "domain": "chemistry"
+    },
+    {
+     "text": "útfelling",
+     "conceptId": 5156,
+     "domain": "chemistry"
+    }
+   ],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "diamagnetism": {
+   "winner": {
+    "text": "mótseglun",
+    "conceptId": 2437,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "mótseglun"
+   ]
+  },
+  "diffraction": {
+   "winner": {
+    "text": "beygja",
+    "conceptId": 246,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "beygja",
+    "bylgjubeygja",
+    "öldubeygja"
+   ]
+  },
+  "dipole moment": {
+   "winner": {
+    "text": "tvípólsvægi",
+    "conceptId": 4087,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "tvípólsvægi",
+    "tvískautsvægi"
+   ]
+  },
+  "dipole-dipole attraction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "dispersion force": {
+   "winner": {
+    "text": "dreifikraftur",
+    "conceptId": 70215,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "dreifikraftur"
+   ]
+  },
+  "disproportionation reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "dissociation": {
+   "winner": {
+    "text": "klofnun",
+    "conceptId": 4872,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "klofnun"
+   ]
+  },
+  "donor atom": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "dry cell": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "eg orbitals": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "electrode potential": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "electrode potential (EX)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "electrolytic cell": {
+   "winner": {
+    "text": "rafker",
+    "conceptId": 5010,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "rafker"
+   ]
+  },
+  "electron affinity": {
+   "winner": {
+    "text": "rafsækni",
+    "conceptId": 5020,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "rafsækni",
+    "rafeindasækni"
+   ]
+  },
+  "electron capture": {
+   "winner": {
+    "text": "rafeindarhremming",
+    "conceptId": 2754,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "rafeindarhremming"
+   ]
+  },
+  "electron volt": {
+   "winner": {
+    "text": "rafeindarvolt",
+    "conceptId": 2755,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "rafeindarvolt"
+   ]
+  },
+  "electron volt (eV)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "elementary reaction": {
+   "winner": {
+    "text": "grunnhvarf",
+    "conceptId": 70210,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "grunnhvarf"
+   ]
+  },
+  "emission": {
+   "winner": null,
+   "reason": null,
+   "tied": [
+    {
+     "text": "ljómun",
+     "conceptId": 4896,
+     "domain": "chemistry"
+    },
+    {
+     "text": "útblástur",
+     "conceptId": 5155,
+     "domain": "chemistry"
+    }
+   ],
+   "outOfScope": 2,
+   "alternatives": []
+  },
+  "excess reactant": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "external beam radiation therapy": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "face-centered cubic (FCC) solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "face-centered cubic solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "first transition series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "formal charge": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "fourth transition series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "free radical": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "freezing point": {
+   "winner": {
+    "text": "frostmark",
+    "conceptId": 4740,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "frostmark"
+   ]
+  },
+  "frequency factor": {
+   "winner": {
+    "text": "tíðnistuðull",
+    "conceptId": 5132,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "tíðnistuðull",
+    "forveldisvísisþáttur",
+    "tíðnifasti"
+   ]
+  },
+  "frequency factor (A)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "fusion reactor": {
+   "winner": {
+    "text": "samrunaofn",
+    "conceptId": 3090,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "samrunaofn"
+   ]
+  },
+  "galvanic (voltaic) cell": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "galvanic cell": {
+   "winner": {
+    "text": "galvaníker",
+    "conceptId": 70205,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "galvaníker"
+   ]
+  },
+  "gamma (γ) emission": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "gamma emission": {
+   "winner": {
+    "text": "gammaútgeislun",
+    "conceptId": 931,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "gammaútgeislun",
+    "gammageislun"
+   ]
+  },
+  "geometric isomers": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "gravimetric analysis": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "ground state": {
+   "winner": {
+    "text": "grunnástand",
+    "conceptId": 4771,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "grunnástand"
+   ]
+  },
+  "group": {
+   "winner": {
+    "text": "flokkur",
+    "conceptId": 70201,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "house-style",
+   "tied": [],
+   "outOfScope": 3,
+   "alternatives": [
+    "flokkur"
+   ]
+  },
+  "hexagonal closest packing": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "hexagonal closest packing (HCP)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "high-spin complex": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "homonuclear diatomic molecule": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "hybrid orbital": {
+   "winner": {
+    "text": "blendingssvigrúm",
+    "conceptId": 70197,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "blendingssvigrúm"
+   ]
+  },
+  "hybridization": {
+   "winner": {
+    "text": "svigrúmablöndun",
+    "conceptId": 70196,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "svigrúmablöndun"
+   ]
+  },
+  "hydrometallurgy": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "hypervalent molecule": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "ideal gas law": {
+   "winner": {
+    "text": "kjörgaslögmálið",
+    "conceptId": 4869,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "kjörgaslögmálið"
+   ]
+  },
+  "indicator": {
+   "winner": {
+    "text": "litvísir",
+    "conceptId": 4891,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 4,
+   "alternatives": [
+    "litvísir",
+    "efnaviti"
+   ]
+  },
+  "induced dipole": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "inert electrode": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "inert pair effect": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "insoluble": {
+   "winner": {
+    "text": "torleystur",
+    "conceptId": 5136,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "torleystur"
+   ]
+  },
+  "instantaneous dipole": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "intensive property": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "interference pattern": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "intermolecular force": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "isoelectronic": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "isomers": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "isomorphous": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "joule": {
+   "winner": {
+    "text": "júl",
+    "conceptId": 1731,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "júl"
+   ]
+  },
+  "joule (J)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "kinetic molecular theory": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "lanthanide series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "law of constant composition": {
+   "winner": {
+    "text": "regla um sömu samsetningu",
+    "conceptId": 2858,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "regla um sömu samsetningu"
+   ]
+  },
+  "law of definite proportions": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "law of mass action": {
+   "winner": {
+    "text": "massavirknilögmálið",
+    "conceptId": 4926,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "massavirknilögmálið"
+   ]
+  },
+  "law of multiple proportions": {
+   "winner": {
+    "text": "regla um heiltöluhlutföll",
+    "conceptId": 2854,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "regla um heiltöluhlutföll"
+   ]
+  },
+  "ligand": {
+   "winner": {
+    "text": "tengill",
+    "conceptId": 5125,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "tengill",
+    "tengihópur"
+   ]
+  },
+  "linear": {
+   "winner": {
+    "text": "línulegur",
+    "conceptId": 4895,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "línulegur"
+   ]
+  },
+  "linear combination of atomic orbitals": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "linkage isomer": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "lithium ion battery": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "macroscopic domain": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "mass defect": {
+   "winner": {
+    "text": "massarýrð",
+    "conceptId": 2307,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "massarýrð"
+   ]
+  },
+  "microscopic domain": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "mixture": {
+   "winner": {
+    "text": "efnablanda",
+    "conceptId": 4690,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "efnablanda"
+   ]
+  },
+  "mole fraction": {
+   "winner": {
+    "text": "mólhlutfall",
+    "conceptId": 4950,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "mólhlutfall"
+   ]
+  },
+  "mole fraction (X)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "molecular orbital theory": {
+   "winner": {
+    "text": "sameindasvigrúmakenningin",
+    "conceptId": 5043,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "sameindasvigrúmakenningin"
+   ]
+  },
+  "molecular solid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "monodentate": {
+   "winner": {
+    "text": "eintenntur",
+    "conceptId": 4715,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "eintenntur"
+   ]
+  },
+  "node": {
+   "winner": {
+    "text": "nóða",
+    "conceptId": 4971,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 6,
+   "alternatives": [
+    "nóða",
+    "hnútur",
+    "núllpunktur"
+   ]
+  },
+  "nonelectrolyte": {
+   "winner": {
+    "text": "órafkleyft efni",
+    "conceptId": 4987,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "órafkleyft efni"
+   ]
+  },
+  "nonspontaneous process": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "normal boiling point": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "nuclear binding energy": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "nuclear moderator": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "nuclear transmutation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "nucleon": {
+   "winner": {
+    "text": "kjarnaeind",
+    "conceptId": 1794,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "kjarnaeind",
+    "kjarneind"
+   ]
+  },
+  "nuclide": {
+   "winner": {
+    "text": "kjarnategund",
+    "conceptId": 1811,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "kjarnategund",
+    "kirni"
+   ]
+  },
+  "nutritional calorie": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "nutritional calorie (Calorie)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "octahedral hole": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "octet rule": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "optical isomer": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "orbital diagram": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "osmosis": {
+   "winner": {
+    "text": "himnuflæði",
+    "conceptId": 4791,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "himnuflæði",
+    "osmósa"
+   ]
+  },
+  "osmotic pressure": {
+   "winner": {
+    "text": "flæðiþrýstingur",
+    "conceptId": 4737,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "flæðiþrýstingur",
+    "osmótískur þrýstingur"
+   ]
+  },
+  "osmotic pressure (Π)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "oxidation-reduction reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "paramagnetism": {
+   "winner": {
+    "text": "meðseglun",
+    "conceptId": 2342,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "meðseglun"
+   ]
+  },
+  "parent nuclide": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "partially miscible": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "particle accelerator": {
+   "winner": {
+    "text": "eindahraðall",
+    "conceptId": 557,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "eindahraðall"
+   ]
+  },
+  "parts per billion": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "parts per billion (ppb)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "parts per million": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "parts per million (ppm)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "percent composition": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "periodic law": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "periodic table": {
+   "winner": {
+    "text": "lotukerfið",
+    "conceptId": 4913,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "lotukerfið"
+   ]
+  },
+  "pi bond": {
+   "winner": {
+    "text": "pí tengi",
+    "conceptId": 4992,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "pí tengi"
+   ]
+  },
+  "pi bond (π bond)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "polarizability": {
+   "winner": {
+    "text": "skautunarhæfni",
+    "conceptId": 5070,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "skautunarhæfni",
+    "skautunarleiki"
+   ]
+  },
+  "polydentate ligand": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "polymorph": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "positron": {
+   "winner": {
+    "text": "jáeind",
+    "conceptId": 4846,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "jáeind"
+   ]
+  },
+  "positron [formula] or [formula]": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "positron emission": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "primary cell": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "principal quantum number": {
+   "winner": {
+    "text": "höfuðskammtatala",
+    "conceptId": 4831,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "höfuðskammtatala",
+    "aðalskammtatala"
+   ]
+  },
+  "principal quantum number (n)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radiation absorbed dose": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radiation absorbed dose (rad)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radioactive decay series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radioactive tracer": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radiocarbon dating": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "radiometric dating": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "rate law": {
+   "winner": {
+    "text": "hraðajafna",
+    "conceptId": 4813,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "hraðajafna",
+    "hraðalögmál"
+   ]
+  },
+  "rate-determining step": {
+   "winner": {
+    "text": "hraðatakmarkandi skref",
+    "conceptId": 4814,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "hraðatakmarkandi skref"
+   ]
+  },
+  "reaction diagram": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "reaction order": {
+   "winner": {
+    "text": "stig efnahvarfs",
+    "conceptId": 70222,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "stig efnahvarfs"
+   ]
+  },
+  "reaction quotient": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "reaction quotient (Q)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "reactor coolant": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "relative biological effectiveness": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "relative biological effectiveness (RBE)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "representative element": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "representative metal": {
+   "winner": {
+    "text": "aðalflokkamálmur",
+    "conceptId": 70209,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "aðalflokkamálmur"
+   ]
+  },
+  "reversible process": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "reversible reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "roentgen equivalent man": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "roentgen equivalent man (rem)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "rounding": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "s-p mixing": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "sacrificial anode": {
+   "winner": {
+    "text": "fórnaranóða",
+    "conceptId": 4738,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "fórnaranóða"
+   ]
+  },
+  "saturated hydrocarbon": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "second transition series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "secondary (angular momentum) quantum number (l)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "secondary cell": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "secondary quantum number": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "series": {
+   "winner": null,
+   "reason": null,
+   "tied": [
+    {
+     "text": "raðtenging",
+     "conceptId": 2730,
+     "domain": "physics"
+    },
+    {
+     "text": "röð",
+     "conceptId": 2977,
+     "domain": "physics"
+    },
+    {
+     "text": "röð",
+     "conceptId": 2978,
+     "domain": "physics"
+    }
+   ],
+   "outOfScope": 5,
+   "alternatives": []
+  },
+  "sigma bond": {
+   "winner": {
+    "text": "sigma tengi",
+    "conceptId": 5059,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "sigma tengi"
+   ]
+  },
+  "sigma bond (σ bond)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "silicate": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": []
+  },
+  "simple cubic structure": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "single-displacement reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "skeletal structure": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "smelting": {
+   "winner": {
+    "text": "málmbræðsla",
+    "conceptId": 2318,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "málmbræðsla"
+   ]
+  },
+  "soluble": {
+   "winner": {
+    "text": "auðleystur",
+    "conceptId": 4647,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 2,
+   "alternatives": [
+    "auðleystur"
+   ]
+  },
+  "solute": {
+   "winner": {
+    "text": "leyst efni",
+    "conceptId": 2065,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "leyst efni"
+   ]
+  },
+  "solvation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "sp hybrid orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "sp2 hybrid orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "sp3 hybrid orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "sp3d hybrid orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "sp3d2 hybrid orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "spatial isomers": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "specific heat capacity": {
+   "winner": {
+    "text": "eðlisvarmi",
+    "conceptId": 4689,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "eðlisvarmi"
+   ]
+  },
+  "specific heat capacity (c)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "spontaneous change": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "spontaneous process": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard cell potential": {
+   "winner": {
+    "text": "staðalíspenna",
+    "conceptId": 5088,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "staðalíspenna"
+   ]
+  },
+  "standard cell potential [formula]": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard conditions of temperature and pressure": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard conditions of temperature and pressure (STP)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard electrode potential": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard electrode potential (56)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard free energy change": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard free energy change (ΔG°)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard free energy of formation": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standard free energy of formation [formula]": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "standing wave": {
+   "winner": {
+    "text": "stæð bylgja",
+    "conceptId": 3790,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "stæð bylgja"
+   ]
+  },
+  "stoichiometric factor": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "subshell": {
+   "winner": {
+    "text": "undirhvolf",
+    "conceptId": 5147,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "undirhvolf"
+   ]
+  },
+  "substituent": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "supercritical fluid": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "t2g orbitals": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "termolecular reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "tetrahedral hole": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "third transition series": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "transmutation reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "transuranium element": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "unimolecular reaction": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": []
+  },
+  "unit conversion factor": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "vacancy": {
+   "winner": {
+    "text": "eyðuveila",
+    "conceptId": 629,
+    "domain": "physics",
+    "position": 2
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": [
+    "eyðuveila",
+    "eyða"
+   ]
+  },
+  "valence": {
+   "winner": {
+    "text": "girðitala",
+    "conceptId": 4764,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "girðitala"
+   ]
+  },
+  "valence shell electron-pair repulsion theory": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "valence shell electron-pair repulsion theory (VSEPR)": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "vapor pressure": {
+   "winner": {
+    "text": "gufunarþrýstingur",
+    "conceptId": 4774,
+    "domain": "chemistry",
+    "position": 1
+   },
+   "reason": "head-form",
+   "tied": [],
+   "outOfScope": 1,
+   "alternatives": [
+    "gufunarþrýstingur",
+    "eimþrýstingur",
+    "gufuþrýstingur"
+   ]
+  },
+  "vapor pressure of water": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "wave-particle duality": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "π bonding orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "π* bonding orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "σ bonding orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  },
+  "σ* bonding orbital": {
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": 0,
+   "alternatives": []
+  }
+ }
+}

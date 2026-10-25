@@ -1,0 +1,7280 @@
+{
+ "about": "Chemistry term-ruling set AFTER the stage 1 page (plan 2026-10-10 rev. 5, Stage 1, Outputs). Compiled by experiments/terminology-consistency/compile_stage1_rulings.py. `before` is the set in force before the page, unchanged; `stage1` is every ruling the page and the chat answers made, each with the word prod stores today, a class and a PROPOSED mechanism. Nothing here is applied: houseStyleTerms.js, book_term_preference and the concept model change only through later, separately recorded steps. `supersededInBefore` names the rulings in `before` that stage 1 reverses.",
+ "compiledAt": "2026-10-11",
+ "repoHead": "b23a1f4df05cf929a4c8a4b2e12af4f7281a2efd",
+ "inputs": {
+  "experiments/terminology-consistency/results/2026-10-11/ruling-set-before-stage1.json": "8459901afe8a21b0ab3b26584b26af0a3da8e32c1fd5a47ed0afef54bf0ed684",
+  "experiments/terminology-consistency/results/2026-10-11/stage1-answers-2026-10-11.json": "84e121e817c16e6409f005d8f90606bf954f894bccde875f6244db3bceaa9469",
+  "experiments/terminology-consistency/results/2026-10-11/stage1-chat-answers-2026-10-11.json": "e7d4c6e33031b180ffc08555e8d069e84cfb4d4bb7321a7295f6b749eeffd53c",
+  "experiments/terminology-consistency/results/2026-10-11/prod-term-resolutions-2026-10-11.json": "154242ef754aea3844ff5a1ee285bbae90e59f02a4c2fc290c338a61f4a13bdb"
+ },
+ "storedRead": {
+  "prodHead": "13f9eec97093d92c2dcefd947d1ed4d503ccec14",
+  "readAt": "2026-10-11T17:58:51.594Z"
+ },
+ "unstoredRuling": {
+  "mechanism": "record-only",
+  "record": "[USER] 2026-10-11 in chat, answer \"a\" to: house-style entries for the 155 unstored headwords, or record only?"
+ },
+ "counts": {
+  "stage1": 248,
+  "byClass": {
+   "matches-stored": 58,
+   "spelling-vs-stored": 5,
+   "tied": 3,
+   "unstored": 155,
+   "word-change": 27
+  },
+  "byMechanism": {
+   "concept-model-script": 2,
+   "entry": 21,
+   "none": 58,
+   "preference": 11,
+   "record-only": 155,
+   "replace-entry": 1
+  },
+  "inflectionNotes": 2,
+  "before": 170
+ },
+ "conflicts": [],
+ "supersededInBefore": [
+  {
+   "enNorm": "bonding orbital",
+   "from": "bindandi svigrúm",
+   "to": "tengisvigrúm",
+   "record": "stage1-chat-answers-2026-10-11.json, question 3 (choice a)"
+  }
+ ],
+ "stage1": [
+  {
+   "id": "ch01_fs-idm121167952",
+   "en": "microscopic domain",
+   "enNorm": "microscopic domain",
+   "ch": "ch01",
+   "is": "smásæja sviðið",
+   "pageWord": "smásæja sviðið",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idm307214528",
+   "en": "unit conversion factor",
+   "enNorm": "unit conversion factor",
+   "ch": "ch01",
+   "is": "breytistuðull eininga",
+   "pageWord": "breytistuðull eininga",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idm41373200",
+   "en": "macroscopic domain",
+   "enNorm": "macroscopic domain",
+   "ch": "ch01",
+   "is": "stórsæja sviðið",
+   "pageWord": "stórsæja sviðið",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idm5111888",
+   "en": "mixture",
+   "enNorm": "mixture",
+   "ch": "ch01",
+   "is": "efnablanda",
+   "pageWord": "efnablanda",
+   "origin": "page-answer",
+   "stored": "efnablanda",
+   "storedTied": [],
+   "storedAlternatives": [
+    "efnablanda"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idm88320752",
+   "en": "chemical property",
+   "enNorm": "chemical property",
+   "ch": "ch01",
+   "is": "efnafræðilegur eiginleiki",
+   "pageWord": "efnafræðilegur eiginleiki",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idp330245120",
+   "en": "accuracy",
+   "enNorm": "accuracy",
+   "ch": "ch01",
+   "is": "hittni",
+   "pageWord": "hittni",
+   "origin": "page-answer",
+   "stored": "nákvæmni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "nákvæmni"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idp42386976",
+   "en": "intensive property",
+   "enNorm": "intensive property",
+   "ch": "ch01",
+   "is": "eðlisbundinn eiginleiki",
+   "pageWord": "eðlisbundinn eiginleiki",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch01_fs-idp68905696",
+   "en": "rounding",
+   "enNorm": "rounding",
+   "ch": "ch01",
+   "is": "námundun",
+   "pageWord": "námundun",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm334010160",
+   "en": "representative element",
+   "enNorm": "representative element",
+   "ch": "ch02",
+   "is": "aðalflokkafrumefni",
+   "pageWord": "aðalflokkafrumefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm54570400",
+   "en": "spatial isomers",
+   "enNorm": "spatial isomers",
+   "ch": "ch02",
+   "is": "rúmhverfur",
+   "pageWord": "rúmhverfur",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp110829184",
+   "en": "Dalton’s atomic theory",
+   "enNorm": "dalton’s atomic theory",
+   "ch": "ch02",
+   "is": "Atómkenning Daltons",
+   "pageWord": "Atómkenning Daltons",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp282226176",
+   "en": "binary compound",
+   "enNorm": "binary compound",
+   "ch": "ch02",
+   "is": "tvíefni",
+   "pageWord": "tvíefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp282291040",
+   "en": "binary acid",
+   "enNorm": "binary acid",
+   "ch": "ch02",
+   "is": "tvígild sýra",
+   "pageWord": "tvígild sýra",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp47442976",
+   "en": "law of multiple proportions",
+   "enNorm": "law of multiple proportions",
+   "ch": "ch02",
+   "is": "lögmálið um heiltöluhlutföll",
+   "pageWord": "lögmálið um heiltöluhlutföll",
+   "origin": "page-answer",
+   "stored": "regla um heiltöluhlutföll",
+   "storedTied": [],
+   "storedAlternatives": [
+    "regla um heiltöluhlutföll"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp55104",
+   "en": "isomers",
+   "enNorm": "isomers",
+   "ch": "ch02",
+   "is": "hverfur",
+   "pageWord": "hverfur",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp76336256",
+   "en": "law of definite proportions",
+   "enNorm": "law of definite proportions",
+   "ch": "ch02",
+   "is": "lögmálið um föst massahlutföll",
+   "pageWord": "lögmálið um föst massahlutföll",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch03_fs-idm26449216",
+   "en": "concentrated",
+   "enNorm": "concentrated",
+   "ch": "ch03",
+   "is": "óþynnt",
+   "pageWord": "óþynnt",
+   "origin": "page-answer",
+   "stored": "megn",
+   "storedTied": [],
+   "storedAlternatives": [
+    "megn",
+    "sterkur"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch03_fs-idm85251264",
+   "en": "parts per million (ppm)",
+   "enNorm": "parts per million",
+   "ch": "ch03",
+   "is": "milljónustu hlutar",
+   "pageWord": "milljónustu hlutar (ppm)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch03_fs-idp23298832",
+   "en": "parts per billion (ppb)",
+   "enNorm": "parts per billion",
+   "ch": "ch03",
+   "is": "milljarðshlutar",
+   "pageWord": "milljarðshlutar (ppb)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch03_fs-idp78260032",
+   "en": "percent composition",
+   "enNorm": "percent composition",
+   "ch": "ch03",
+   "is": "massaprósenta",
+   "pageWord": "massaprósenta",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idm28944688",
+   "en": "insoluble",
+   "enNorm": "insoluble",
+   "ch": "ch04",
+   "is": "torleystur",
+   "pageWord": "torleystur",
+   "origin": "page-answer",
+   "stored": "torleystur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "torleystur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idm46343008",
+   "en": "excess reactant",
+   "enNorm": "excess reactant",
+   "ch": "ch04",
+   "is": "umframmagn hvarfefnis",
+   "pageWord": "umframmagn hvarfefnis",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idm54009824",
+   "en": "acid-base reaction",
+   "enNorm": "acid-base reaction",
+   "ch": "ch04",
+   "is": "sýru-basa efnahvarf",
+   "pageWord": "sýru-basa efnahvarf",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp127461392",
+   "en": "stoichiometric factor",
+   "enNorm": "stoichiometric factor",
+   "ch": "ch04",
+   "is": "hlutfallaþáttur",
+   "pageWord": "hlutfallaþáttur",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp17888704",
+   "en": "analyte",
+   "enNorm": "analyte",
+   "ch": "ch04",
+   "is": "greiniefni",
+   "pageWord": "greiniefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp64227344",
+   "en": "single-displacement reaction",
+   "enNorm": "single-displacement reaction",
+   "ch": "ch04",
+   "is": "einfalt skiptihvarf",
+   "pageWord": "einfalt skiptihvarf",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp64228624",
+   "en": "soluble",
+   "enNorm": "soluble",
+   "ch": "ch04",
+   "is": "auðleystur",
+   "pageWord": "auðleystur",
+   "origin": "page-answer",
+   "stored": "auðleystur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "auðleystur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp83288512",
+   "en": "gravimetric analysis",
+   "enNorm": "gravimetric analysis",
+   "ch": "ch04",
+   "is": "vigtagreining",
+   "pageWord": "vigtagreining",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idp83289888",
+   "en": "indicator",
+   "enNorm": "indicator",
+   "ch": "ch04",
+   "is": "litvísir",
+   "pageWord": "litvísir",
+   "origin": "page-answer",
+   "stored": "litvísir",
+   "storedTied": [],
+   "storedAlternatives": [
+    "litvísir",
+    "efnaviti"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch05_fs-idm56357952",
+   "en": "nutritional calorie (Calorie)",
+   "enNorm": "nutritional calorie",
+   "ch": "ch05",
+   "is": "næringarkaloría",
+   "pageWord": "næringarkaloría (kaloría)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch05_fs-idm56360448",
+   "en": "bomb calorimeter",
+   "enNorm": "bomb calorimeter",
+   "ch": "ch05",
+   "is": "sprengivarmamælir",
+   "pageWord": "sprengivarmamælir",
+   "origin": "page-answer",
+   "stored": "sprengivarmamælir",
+   "storedTied": [],
+   "storedAlternatives": [
+    "sprengivarmamælir",
+    "brennsluvarmamælir"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm13416416",
+   "en": "Bohr’s model of the hydrogen atom",
+   "enNorm": "bohr’s model of the hydrogen atom",
+   "ch": "ch06",
+   "is": "Líkan Bohrs af vetnisatóminu",
+   "pageWord": "Líkan Bohrs af vetnisatóminu",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm161962320",
+   "en": "electron affinity",
+   "enNorm": "electron affinity",
+   "ch": "ch06",
+   "is": "rafeindasækni",
+   "pageWord": "rafeindasækni",
+   "origin": "page-answer",
+   "stored": "rafsækni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "rafsækni",
+    "rafeindasækni"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm36067216",
+   "en": "node",
+   "enNorm": "node",
+   "ch": "ch06",
+   "is": "nóða",
+   "pageWord": "nóða",
+   "origin": "page-answer",
+   "stored": "nóða",
+   "storedTied": [],
+   "storedAlternatives": [
+    "nóða",
+    "hnútur",
+    "núllpunktur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm442273488",
+   "en": "degenerate orbitals",
+   "enNorm": "degenerate orbitals",
+   "ch": "ch06",
+   "is": "orkujöfn svigrúm",
+   "pageWord": "orkujöfn svigrúm",
+   "origin": "chat (question 4)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "Orkujöfn svigrúm"
+  },
+  {
+   "id": "ch06_fs-idm64841104",
+   "en": "standing wave",
+   "enNorm": "standing wave",
+   "ch": "ch06",
+   "is": "staðbylgja",
+   "pageWord": "staðbylgja",
+   "origin": "page-answer",
+   "stored": "stæð bylgja",
+   "storedTied": [],
+   "storedAlternatives": [
+    "stæð bylgja"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idp106317328",
+   "en": "wave-particle duality",
+   "enNorm": "wave-particle duality",
+   "ch": "ch06",
+   "is": "tvíeðli bylgju og eindar",
+   "pageWord": "tvíeðli bylgju og eindar",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idp15489472",
+   "en": "orbital diagram",
+   "enNorm": "orbital diagram",
+   "ch": "ch06",
+   "is": "svigrúmsmynd",
+   "pageWord": "svigrúmsmynd",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idp94243488",
+   "en": "isoelectronic",
+   "enNorm": "isoelectronic",
+   "ch": "ch06",
+   "is": "samrafeinda",
+   "pageWord": "samrafeinda",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idm113628896",
+   "en": "inert pair effect",
+   "enNorm": "inert pair effect",
+   "ch": "ch07",
+   "is": "áhrif óvirkra para",
+   "pageWord": "áhrif óvirkra para",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idm4719424",
+   "en": "free radical",
+   "enNorm": "free radical",
+   "ch": "ch07",
+   "is": "stakeind",
+   "pageWord": "stakeind",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idp10319376",
+   "en": "bond energy",
+   "enNorm": "bond energy",
+   "ch": "ch07",
+   "is": "tengjaorka",
+   "pageWord": "tengjaorka",
+   "origin": "page-answer",
+   "stored": "tengjaorka",
+   "storedTied": [],
+   "storedAlternatives": [
+    "tengjaorka",
+    "tengiorka"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idp10384768",
+   "en": "formal charge",
+   "enNorm": "formal charge",
+   "ch": "ch07",
+   "is": "formleg hleðsla",
+   "pageWord": "formleg hleðsla",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idp27828880",
+   "en": "valence shell electron-pair repulsion theory (VSEPR)",
+   "enNorm": "valence shell electron-pair repulsion theory",
+   "ch": "ch07",
+   "is": "kenningin um fráhrindingu rafeindapara í gildishvolfi",
+   "pageWord": "kenningin um fráhrindingu rafeindapara í gildishvolfi (VSEPR)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm100344544",
+   "en": "π bonding orbital",
+   "enNorm": "π bonding orbital",
+   "ch": "ch08",
+   "is": "π-tengisvigrúm",
+   "pageWord": "π-tengisvigrúm",
+   "origin": "chat (question 3)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "π-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm100788960",
+   "en": "paramagnetism",
+   "enNorm": "paramagnetism",
+   "ch": "ch08",
+   "is": "meðseglun",
+   "pageWord": "meðseglun",
+   "origin": "page-answer",
+   "stored": "meðseglun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "meðseglun"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm133686144",
+   "en": "bonding orbital",
+   "enNorm": "bonding orbital",
+   "ch": "ch08",
+   "is": "tengisvigrúm",
+   "pageWord": "tengisvigrúm",
+   "origin": "chat (question 3)",
+   "stored": "bindandi svigrúm",
+   "storedTied": [],
+   "storedAlternatives": [
+    "bindandi svigrúm"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "replace-entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "tengisvigrúm"
+  },
+  {
+   "id": "ch08_fs-idm165896720",
+   "en": "homonuclear diatomic molecule",
+   "enNorm": "homonuclear diatomic molecule",
+   "ch": "ch08",
+   "is": "tvíatóma sameind sama frumefnis",
+   "pageWord": "tvíatóma sameind sama frumefnis",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm167738656",
+   "en": "degenerate orbitals",
+   "enNorm": "degenerate orbitals",
+   "ch": "ch08",
+   "is": "orkujöfn svigrúm",
+   "pageWord": "orkujöfn svigrúm",
+   "origin": "chat (question 4)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "jafnorkusvigrúm"
+  },
+  {
+   "id": "ch08_fs-idm169269152",
+   "en": "σ* bonding orbital",
+   "enNorm": "σ* bonding orbital",
+   "ch": "ch08",
+   "is": "σ*-andtengisvigrúm",
+   "pageWord": "σ*-andtengisvigrúm",
+   "origin": "chat (question 3)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "σ*-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm18620192",
+   "en": "π* bonding orbital",
+   "enNorm": "π* bonding orbital",
+   "ch": "ch08",
+   "is": "π*-andtengisvigrúm",
+   "pageWord": "π*-andtengisvigrúm",
+   "origin": "chat (question 3)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "π*-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm249965088",
+   "en": "molecular orbital theory",
+   "enNorm": "molecular orbital theory",
+   "ch": "ch08",
+   "is": "sameindasvigrúmakenningin",
+   "pageWord": "sameindasvigrúmakenningin",
+   "origin": "page-answer",
+   "stored": "sameindasvigrúmakenningin",
+   "storedTied": [],
+   "storedAlternatives": [
+    "sameindasvigrúmakenningin"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm41528352",
+   "en": "linear combination of atomic orbitals",
+   "enNorm": "linear combination of atomic orbitals",
+   "ch": "ch08",
+   "is": "línuleg samþætting atómsvigrúma",
+   "pageWord": "línuleg samþætting atómsvigrúma",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm41960016",
+   "en": "σ bonding orbital",
+   "enNorm": "σ bonding orbital",
+   "ch": "ch08",
+   "is": "σ-tengisvigrúm",
+   "pageWord": "σ-tengisvigrúm",
+   "origin": "chat (question 3)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "σ-tengi svigrúm"
+  },
+  {
+   "id": "ch08_fs-idm83103936",
+   "en": "diamagnetism",
+   "enNorm": "diamagnetism",
+   "ch": "ch08",
+   "is": "mótseglun",
+   "pageWord": "mótseglun",
+   "origin": "page-answer",
+   "stored": "mótseglun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "mótseglun"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp123920528",
+   "en": "node",
+   "enNorm": "node",
+   "ch": "ch08",
+   "is": "nóða",
+   "pageWord": "nóða",
+   "origin": "page-answer",
+   "stored": "nóða",
+   "storedTied": [],
+   "storedAlternatives": [
+    "nóða",
+    "hnútur",
+    "núllpunktur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp36919168",
+   "en": "sigma bond (σ bond)",
+   "enNorm": "sigma bond",
+   "ch": "ch08",
+   "is": "sigma tengi",
+   "pageWord": "sigma tengi (σ tengi)",
+   "origin": "page-answer",
+   "stored": "sigma tengi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "sigma tengi"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp5821920",
+   "en": "s-p mixing",
+   "enNorm": "s-p mixing",
+   "ch": "ch08",
+   "is": "s-p blöndun",
+   "pageWord": "s-p blöndun",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp94790208",
+   "en": "pi bond (π bond)",
+   "enNorm": "pi bond",
+   "ch": "ch08",
+   "is": "pí tengi",
+   "pageWord": "pí tengi (π tengi)",
+   "origin": "page-answer",
+   "stored": "pí tengi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "pí tengi"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idm198763536",
+   "en": "kinetic molecular theory",
+   "enNorm": "kinetic molecular theory",
+   "ch": "ch09",
+   "is": "kvikfræði sameinda",
+   "pageWord": "kvikfræði sameinda",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idp1132336",
+   "en": "mole fraction (X)",
+   "enNorm": "mole fraction",
+   "ch": "ch09",
+   "is": "mólhlutfall",
+   "pageWord": "mólhlutfall (X)",
+   "origin": "page-answer",
+   "stored": "mólhlutfall",
+   "storedTied": [],
+   "storedAlternatives": [
+    "mólhlutfall"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idp257364480",
+   "en": "Graham’s law of effusion",
+   "enNorm": "graham’s law of effusion",
+   "ch": "ch09",
+   "is": "Lögmál Grahams um útstreymi",
+   "pageWord": "Lögmál Grahams um útstreymi",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idp57901520",
+   "en": "vapor pressure of water",
+   "enNorm": "vapor pressure of water",
+   "ch": "ch09",
+   "is": "gufunarþrýstingur vatns",
+   "pageWord": "gufunarþrýstingur vatns",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm116347536",
+   "en": "tetrahedral hole",
+   "enNorm": "tetrahedral hole",
+   "ch": "ch10",
+   "is": "ferflötungshol",
+   "pageWord": "ferflötungshol",
+   "origin": "chat (question 2)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "ferflötungshola"
+  },
+  {
+   "id": "ch10_fs-idm195421616",
+   "en": "vapor pressure",
+   "enNorm": "vapor pressure",
+   "ch": "ch10",
+   "is": "gufunarþrýstingur",
+   "pageWord": "gufunarþrýstingur",
+   "origin": "page-answer",
+   "stored": "gufunarþrýstingur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "gufunarþrýstingur",
+    "eimþrýstingur",
+    "gufuþrýstingur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm205028976",
+   "en": "normal boiling point",
+   "enNorm": "normal boiling point",
+   "ch": "ch10",
+   "is": "staðalsuðumark",
+   "pageWord": "staðalsuðumark",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm208980304",
+   "en": "supercritical fluid",
+   "enNorm": "supercritical fluid",
+   "ch": "ch10",
+   "is": "yfirmarksvökvi",
+   "pageWord": "yfirmarksvökvi",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm28944640",
+   "en": "octahedral hole",
+   "enNorm": "octahedral hole",
+   "ch": "ch10",
+   "is": "áttflötungshol",
+   "pageWord": "áttflötungshol",
+   "origin": "chat (question 2)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "áttflötungshola"
+  },
+  {
+   "id": "ch10_fs-idm31438528",
+   "en": "induced dipole",
+   "enNorm": "induced dipole",
+   "ch": "ch10",
+   "is": "örvuð tvískautun",
+   "pageWord": "örvuð tvískautun",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm47773456",
+   "en": "simple cubic structure",
+   "enNorm": "simple cubic structure",
+   "ch": "ch10",
+   "is": "einföld teningslaga bygging",
+   "pageWord": "einföld teningslaga bygging",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm66585952",
+   "en": "intermolecular force",
+   "enNorm": "intermolecular force",
+   "ch": "ch10",
+   "is": "millisameindakraftur",
+   "pageWord": "millisameindakraftur",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm7778192",
+   "en": "deposition",
+   "enNorm": "deposition",
+   "ch": "ch10",
+   "is": "hélun",
+   "pageWord": "hélun",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [
+    "hélun",
+    "útfelling"
+   ],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "tied",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp127211536",
+   "en": "instantaneous dipole",
+   "enNorm": "instantaneous dipole",
+   "ch": "ch10",
+   "is": "augnablikstvískaut",
+   "pageWord": "augnablikstvískaut",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp128571888",
+   "en": "polarizability",
+   "enNorm": "polarizability",
+   "ch": "ch10",
+   "is": "skautunarhæfni",
+   "pageWord": "skautunarhæfni",
+   "origin": "page-answer",
+   "stored": "skautunarhæfni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "skautunarhæfni",
+    "skautunarleiki"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp141680624",
+   "en": "crystalline solid",
+   "enNorm": "crystalline solid",
+   "ch": "ch10",
+   "is": "kristalkennt fastefni",
+   "pageWord": "kristalkennt fastefni",
+   "origin": "page-answer",
+   "stored": "kristalkennt fastefni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "kristalkennt fastefni"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp160423360",
+   "en": "diffraction",
+   "enNorm": "diffraction",
+   "ch": "ch10",
+   "is": "beygja",
+   "pageWord": "beygja",
+   "origin": "page-answer",
+   "stored": "beygja",
+   "storedTied": [],
+   "storedAlternatives": [
+    "beygja",
+    "bylgjubeygja",
+    "öldubeygja"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp190835184",
+   "en": "body-centered cubic (BCC) solid",
+   "enNorm": "body-centered cubic solid",
+   "ch": "ch10",
+   "is": "miðlægt teningslaga (BCC) fast efni",
+   "pageWord": "miðlægt teningslaga (BCC) fast efni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp20057136",
+   "en": "face-centered cubic (FCC) solid",
+   "enNorm": "face-centered cubic solid",
+   "ch": "ch10",
+   "is": "hliðlægt teningslaga (FCC) fast efni",
+   "pageWord": "hliðlægt teningslaga (FCC) fast efni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp42521392",
+   "en": "covalent network solid",
+   "enNorm": "covalent network solid",
+   "ch": "ch10",
+   "is": "samgilt fast netefni",
+   "pageWord": "samgilt fast netefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp66006736",
+   "en": "molecular solid",
+   "enNorm": "molecular solid",
+   "ch": "ch10",
+   "is": "fast efni úr sameindum",
+   "pageWord": "fast efni úr sameindum",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp75734960",
+   "en": "isomorphous",
+   "enNorm": "isomorphous",
+   "ch": "ch10",
+   "is": "einslaga",
+   "pageWord": "einslaga",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp81517488",
+   "en": "hexagonal closest packing (HCP)",
+   "enNorm": "hexagonal closest packing",
+   "ch": "ch10",
+   "is": "sexhyrnd þéttpökkun",
+   "pageWord": "sexhyrnd þéttpökkun (HCP)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idm104294208",
+   "en": "alloy",
+   "enNorm": "alloy",
+   "ch": "ch11",
+   "is": "melmi",
+   "pageWord": "melmi",
+   "origin": "page-answer",
+   "stored": "melmi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "melmi",
+    "málmblanda",
+    "málmblendi"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idm32680960",
+   "en": "dissociation",
+   "enNorm": "dissociation",
+   "ch": "ch11",
+   "is": "klofnun",
+   "pageWord": "klofnun",
+   "origin": "page-answer",
+   "stored": "klofnun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "klofnun"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idm55870880",
+   "en": "spontaneous process",
+   "enNorm": "spontaneous process",
+   "ch": "ch11",
+   "is": "sjálfgengt ferli",
+   "pageWord": "sjálfgengt ferli",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idp10683312",
+   "en": "nonelectrolyte",
+   "enNorm": "nonelectrolyte",
+   "ch": "ch11",
+   "is": "órafkleyft efni",
+   "pageWord": "órafkleyft efni",
+   "origin": "page-answer",
+   "stored": "órafkleyft efni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "órafkleyft efni"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idp105000160",
+   "en": "rate-determining step",
+   "enNorm": "rate-determining step",
+   "ch": "ch12",
+   "is": "hraðatakmarkandi skref",
+   "pageWord": "hraðatakmarkandi skref",
+   "origin": "page-answer",
+   "stored": "hraðatakmarkandi skref",
+   "storedTied": [],
+   "storedAlternatives": [
+    "hraðatakmarkandi skref"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch13_fs-idp4379168",
+   "en": "reversible reaction",
+   "enNorm": "reversible reaction",
+   "ch": "ch13",
+   "is": "afturkræft efnahvarf",
+   "pageWord": "afturkræft efnahvarf",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch13_fs-idp74361936",
+   "en": "reaction quotient (Q)",
+   "enNorm": "reaction quotient",
+   "ch": "ch13",
+   "is": "hvarfstuðull",
+   "pageWord": "hvarfstuðull (Q)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch13_fs-idp89564720",
+   "en": "law of mass action",
+   "enNorm": "law of mass action",
+   "ch": "ch13",
+   "is": "massavirknilögmálið",
+   "pageWord": "massavirknilögmálið",
+   "origin": "page-answer",
+   "stored": "massavirknilögmálið",
+   "storedTied": [],
+   "storedAlternatives": [
+    "massavirknilögmálið"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch14_fs-idp140545888",
+   "en": "amphiprotic",
+   "enNorm": "amphiprotic",
+   "ch": "ch14",
+   "is": "tvíhegða",
+   "pageWord": "tvíhegða",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch14_fs-idp43874496",
+   "en": "Brønsted-Lowry acid",
+   "enNorm": "brønsted-lowry acid",
+   "ch": "ch14",
+   "is": "Brønsted-Lowry sýra",
+   "pageWord": "Brønsted-Lowry sýra",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch14_fs-idp67177296",
+   "en": "color-change interval",
+   "enNorm": "color-change interval",
+   "ch": "ch14",
+   "is": "litskiptabil",
+   "pageWord": "litskiptabil",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch14_fs-idp89677040",
+   "en": "Brønsted-Lowry base",
+   "enNorm": "brønsted-lowry base",
+   "ch": "ch14",
+   "is": "Brønsted-Lowry basi",
+   "pageWord": "Brønsted-Lowry basi",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idm119807952",
+   "en": "standard free energy change (ΔG°)",
+   "enNorm": "standard free energy change",
+   "ch": "ch16",
+   "is": "staðalfríorkubreyting",
+   "pageWord": "staðalfríorkubreyting (ΔG°)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idm119810368",
+   "en": "Gibbs free energy change (G)",
+   "enNorm": "gibbs free energy change",
+   "ch": "ch16",
+   "is": "Breyting á Gibbs fríorku",
+   "pageWord": "Breyting á Gibbs fríorku (G)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm117181824",
+   "en": "electrolytic cell",
+   "enNorm": "electrolytic cell",
+   "ch": "ch17",
+   "is": "rafker",
+   "pageWord": "rafker",
+   "origin": "page-answer",
+   "stored": "rafker",
+   "storedTied": [],
+   "storedAlternatives": [
+    "rafker"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm153016624",
+   "en": "sacrificial anode",
+   "enNorm": "sacrificial anode",
+   "ch": "ch17",
+   "is": "fórnaranóða",
+   "pageWord": "fórnaranóða",
+   "origin": "page-answer",
+   "stored": "fórnaranóða",
+   "storedTied": [],
+   "storedAlternatives": [
+    "fórnaranóða"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm153779040",
+   "en": "cell potential (Ecell)",
+   "enNorm": "cell potential",
+   "ch": "ch17",
+   "is": "kerspenna",
+   "pageWord": "kerspenna (Eker)",
+   "origin": "page-answer",
+   "stored": "kerspenna",
+   "storedTied": [],
+   "storedAlternatives": [
+    "kerspenna"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm175851472",
+   "en": "dry cell",
+   "enNorm": "dry cell",
+   "ch": "ch17",
+   "is": "þurrker",
+   "pageWord": "þurrker",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm19899136",
+   "en": "inert electrode",
+   "enNorm": "inert electrode",
+   "ch": "ch17",
+   "is": "óvirkt raftroð",
+   "pageWord": "óvirkt raftroð",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm4867824",
+   "en": "standard electrode potential (56)",
+   "enNorm": "standard electrode potential",
+   "ch": "ch17",
+   "is": "staðalraftroðsspenna",
+   "pageWord": "staðalraftroðsspenna",
+   "origin": "chat (question 6)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "staðalraftroðsspenna ((EX°))"
+  },
+  {
+   "id": "ch17_fs-idp13398640",
+   "en": "active electrode",
+   "enNorm": "active electrode",
+   "ch": "ch17",
+   "is": "virkt raftroð",
+   "pageWord": "virkt raftroð",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idp84325552",
+   "en": "cathodic protection",
+   "enNorm": "cathodic protection",
+   "ch": "ch17",
+   "is": "katóðuvörn",
+   "pageWord": "katóðuvörn",
+   "origin": "page-answer",
+   "stored": "katóðuvörn",
+   "storedTied": [],
+   "storedAlternatives": [
+    "katóðuvörn"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idp85536816",
+   "en": "electrode potential (EX)",
+   "enNorm": "electrode potential",
+   "ch": "ch17",
+   "is": "raftroðsspenna",
+   "pageWord": "raftroðsspenna (EX)",
+   "origin": "chat (question 6)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "troðspenna (EX)"
+  },
+  {
+   "id": "ch17_fs-idp94537696",
+   "en": "concentration cell",
+   "enNorm": "concentration cell",
+   "ch": "ch17",
+   "is": "styrksker",
+   "pageWord": "styrksker",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch18_fs-idp17081184",
+   "en": "silicate",
+   "enNorm": "silicate",
+   "ch": "ch18",
+   "is": "sílíkat",
+   "pageWord": "sílíkat",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm132411312",
+   "en": "geometric isomers",
+   "enNorm": "geometric isomers",
+   "ch": "ch19",
+   "is": "rúmhverfur",
+   "pageWord": "rúmhverfur",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm163687904",
+   "en": "second transition series",
+   "enNorm": "second transition series",
+   "ch": "ch19",
+   "is": "önnur hliðarmálmaröðin",
+   "pageWord": "önnur hliðarmálmaröðin",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm186870544",
+   "en": "first transition series",
+   "enNorm": "first transition series",
+   "ch": "ch19",
+   "is": "fyrsta hliðarmálmaröðin",
+   "pageWord": "fyrsta hliðarmálmaröðin",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm246107488",
+   "en": "smelting",
+   "enNorm": "smelting",
+   "ch": "ch19",
+   "is": "málmbræðsla",
+   "pageWord": "málmbræðsla",
+   "origin": "page-answer",
+   "stored": "málmbræðsla",
+   "storedTied": [],
+   "storedAlternatives": [
+    "málmbræðsla"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm33844976",
+   "en": "high-spin complex",
+   "enNorm": "high-spin complex",
+   "ch": "ch19",
+   "is": "háspunaflóki",
+   "pageWord": "háspunaflóki",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm42835168",
+   "en": "third transition series",
+   "enNorm": "third transition series",
+   "ch": "ch19",
+   "is": "þriðja hliðarmálmaröðin",
+   "pageWord": "þriðja hliðarmálmaröðin",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm52768832",
+   "en": "fourth transition series",
+   "enNorm": "fourth transition series",
+   "ch": "ch19",
+   "is": "fjórða hliðarmálmaröðin",
+   "pageWord": "fjórða hliðarmálmaröðin",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm99275552",
+   "en": "crystal field splitting (Δoct)",
+   "enNorm": "crystal field splitting",
+   "ch": "ch19",
+   "is": "kristalsviðsklofnun",
+   "pageWord": "kristalsviðsklofnun (Δoct)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp158869120",
+   "en": "polydentate ligand",
+   "enNorm": "polydentate ligand",
+   "ch": "ch19",
+   "is": "fjöltenntur tengill",
+   "pageWord": "fjöltenntur tengill",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp216879616",
+   "en": "optical isomer",
+   "enNorm": "optical isomer",
+   "ch": "ch19",
+   "is": "handhverfa",
+   "pageWord": "handhverfa",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp275481408",
+   "en": "donor atom",
+   "enNorm": "donor atom",
+   "ch": "ch19",
+   "is": "gjafaatóm",
+   "pageWord": "gjafaatóm",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp279277792",
+   "en": "ligand",
+   "enNorm": "ligand",
+   "ch": "ch19",
+   "is": "tengill",
+   "pageWord": "tengill",
+   "origin": "page-answer",
+   "stored": "tengill",
+   "storedTied": [],
+   "storedAlternatives": [
+    "tengill",
+    "tengihópur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp63930000",
+   "en": "linkage isomer",
+   "enNorm": "linkage isomer",
+   "ch": "ch19",
+   "is": "tengihverfa",
+   "pageWord": "tengihverfa",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp64634960",
+   "en": "chelate",
+   "enNorm": "chelate",
+   "ch": "ch19",
+   "is": "klóefni",
+   "pageWord": "klóefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp65460624",
+   "en": "bidentate ligand",
+   "enNorm": "bidentate ligand",
+   "ch": "ch19",
+   "is": "tvítenntur tengill",
+   "pageWord": "tvítenntur tengill",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp8060128",
+   "en": "monodentate",
+   "enNorm": "monodentate",
+   "ch": "ch19",
+   "is": "eintennt",
+   "pageWord": "eintennt",
+   "origin": "page-answer",
+   "stored": "eintenntur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "eintenntur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-id1170893631592",
+   "en": "addition reaction",
+   "enNorm": "addition reaction",
+   "ch": "ch20",
+   "is": "álagningarhvarf",
+   "pageWord": "álagningarhvarf",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-idp39277120",
+   "en": "skeletal structure",
+   "enNorm": "skeletal structure",
+   "ch": "ch20",
+   "is": "grindarmynd",
+   "pageWord": "grindarmynd",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm187262736",
+   "en": "reactor coolant",
+   "enNorm": "reactor coolant",
+   "ch": "ch21",
+   "is": "kælivökvi kjarnaofns",
+   "pageWord": "kælivökvi kjarnaofns",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm188168144",
+   "en": "transuranium element",
+   "enNorm": "transuranium element",
+   "ch": "ch21",
+   "is": "frumefni handan úrans",
+   "pageWord": "frumefni handan úrans",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm204101584",
+   "en": "nuclear moderator",
+   "enNorm": "nuclear moderator",
+   "ch": "ch21",
+   "is": "kjarnahemilefni",
+   "pageWord": "kjarnahemilefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm223971840",
+   "en": "transmutation reaction",
+   "enNorm": "transmutation reaction",
+   "ch": "ch21",
+   "is": "frumefnabreytingarhvarf",
+   "pageWord": "frumefnabreytingarhvarf",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm24356480",
+   "en": "positron emission",
+   "enNorm": "positron emission",
+   "ch": "ch21",
+   "is": "jáeindaútgeislun",
+   "pageWord": "jáeindaútgeislun",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm27366640",
+   "en": "gamma (γ) emission",
+   "enNorm": "gamma emission",
+   "ch": "ch21",
+   "is": "gamma (γ) útgeislun",
+   "pageWord": "gamma (γ) útgeislun",
+   "origin": "page-answer",
+   "stored": "gammaútgeislun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "gammaútgeislun",
+    "gammageislun"
+   ],
+   "storedDomain": "physics",
+   "class": "spelling-vs-stored",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm27477328",
+   "en": "nuclear binding energy",
+   "enNorm": "nuclear binding energy",
+   "ch": "ch21",
+   "is": "kjarnabindiorka",
+   "pageWord": "kjarnabindiorka",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm27965808",
+   "en": "alpha (α) decay",
+   "enNorm": "alpha decay",
+   "ch": "ch21",
+   "is": "alfa (α) sundrun",
+   "pageWord": "alfa (α) sundrun",
+   "origin": "chat (question 1)",
+   "stored": "alfasundrun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "alfasundrun",
+    "alfahrörnun"
+   ],
+   "storedDomain": "physics",
+   "class": "spelling-vs-stored",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "alfa (α) hrörnun"
+  },
+  {
+   "id": "ch21_fs-idm41591488",
+   "en": "nucleon",
+   "enNorm": "nucleon",
+   "ch": "ch21",
+   "is": "kjarneind",
+   "pageWord": "kjarneind",
+   "origin": "page-answer",
+   "stored": "kjarnaeind",
+   "storedTied": [],
+   "storedAlternatives": [
+    "kjarnaeind",
+    "kjarneind"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm49105504",
+   "en": "mass defect",
+   "enNorm": "mass defect",
+   "ch": "ch21",
+   "is": "massarýrð",
+   "pageWord": "massarýrð",
+   "origin": "page-answer",
+   "stored": "massarýrð",
+   "storedTied": [],
+   "storedAlternatives": [
+    "massarýrð"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm66620880",
+   "en": "particle accelerator",
+   "enNorm": "particle accelerator",
+   "ch": "ch21",
+   "is": "eindahraðall",
+   "pageWord": "eindahraðall",
+   "origin": "page-answer",
+   "stored": "eindahraðall",
+   "storedTied": [],
+   "storedAlternatives": [
+    "eindahraðall"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm684928",
+   "en": "electron capture",
+   "enNorm": "electron capture",
+   "ch": "ch21",
+   "is": "rafeindahremming",
+   "pageWord": "rafeindahremming",
+   "origin": "page-answer",
+   "stored": "rafeindarhremming",
+   "storedTied": [],
+   "storedAlternatives": [
+    "rafeindarhremming"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm98883968",
+   "en": "electron volt (eV)",
+   "enNorm": "electron volt",
+   "ch": "ch21",
+   "is": "rafeindavolt",
+   "pageWord": "rafeindavolt (eV)",
+   "origin": "page-answer",
+   "stored": "rafeindarvolt",
+   "storedTied": [],
+   "storedAlternatives": [
+    "rafeindarvolt"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp13479088",
+   "en": "becquerel (Bq)",
+   "enNorm": "becquerel",
+   "ch": "ch21",
+   "is": "becquerel",
+   "pageWord": "becquerel (Bq)",
+   "origin": "page-answer",
+   "stored": "bekerel",
+   "storedTied": [],
+   "storedAlternatives": [
+    "bekerel"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp171940160",
+   "en": "radiometric dating",
+   "enNorm": "radiometric dating",
+   "ch": "ch21",
+   "is": "geislaaldursgreining",
+   "pageWord": "geislaaldursgreining",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp172690976",
+   "en": "radioactive decay series",
+   "enNorm": "radioactive decay series",
+   "ch": "ch21",
+   "is": "geislasundrunarröð",
+   "pageWord": "geislasundrunarröð",
+   "origin": "chat (question 1)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "geislavirk hrörnunarröð"
+  },
+  {
+   "id": "ch21_fs-idp38524656",
+   "en": "radiation absorbed dose (rad)",
+   "enNorm": "radiation absorbed dose",
+   "ch": "ch21",
+   "is": "geislaskammtur",
+   "pageWord": "geislaskammtur (rad)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp40157072",
+   "en": "curie (Ci)",
+   "enNorm": "curie",
+   "ch": "ch21",
+   "is": "curie",
+   "pageWord": "curie (Ci)",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp69613952",
+   "en": "beta (β) decay",
+   "enNorm": "beta decay",
+   "ch": "ch21",
+   "is": "beta (β) sundrun",
+   "pageWord": "beta (β) sundrun",
+   "origin": "chat (question 1)",
+   "stored": "betasundrun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "betasundrun",
+    "betahrörnun"
+   ],
+   "storedDomain": "physics",
+   "class": "spelling-vs-stored",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "beta (β) hrörnun"
+  },
+  {
+   "id": "ch21_fs-idp72108384",
+   "en": "positron [formula] or [formula]",
+   "enNorm": "positron [formula] or [formula]",
+   "ch": "ch21",
+   "is": "jáeind",
+   "pageWord": "jáeind (+10β eða +10e)",
+   "origin": "page-answer",
+   "stored": "jáeind",
+   "storedTied": [],
+   "storedAlternatives": [
+    "jáeind"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp77369424",
+   "en": "Geiger counter",
+   "enNorm": "geiger counter",
+   "ch": "ch21",
+   "is": "Geiger-teljari",
+   "pageWord": "Geiger-teljari",
+   "origin": "page-answer",
+   "stored": "Geiger-nemi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "Geiger-nemi",
+    "Geiger-teljari"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp81777184",
+   "en": "radioactive tracer",
+   "enNorm": "radioactive tracer",
+   "ch": "ch21",
+   "is": "geislavirkt sporefni",
+   "pageWord": "geislavirkt sporefni",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp85639552",
+   "en": "binding energy per nucleon",
+   "enNorm": "binding energy per nucleon",
+   "ch": "ch21",
+   "is": "bindiorka á hverja kjarneind",
+   "pageWord": "bindiorka á hverja kjarneind",
+   "origin": "page-answer",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ws_addition",
+   "en": "addition",
+   "enNorm": "addition",
+   "ch": null,
+   "is": "álagning",
+   "pageWord": "álagning",
+   "origin": "page-answer",
+   "stored": "álagning",
+   "storedTied": [],
+   "storedAlternatives": [
+    "álagning"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "wrongSenseRow": "álagning"
+  },
+  {
+   "id": "ws_emission",
+   "en": "emission",
+   "enNorm": "emission",
+   "ch": null,
+   "is": "útgeislun",
+   "pageWord": "útgeislun",
+   "origin": "chat (question 7)",
+   "stored": null,
+   "storedTied": [
+    "ljómun",
+    "útblástur"
+   ],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "tied",
+   "proposedMechanism": "concept-model-script",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "ljómun",
+   "wrongSenseRow": "útblástur",
+   "mechanismNote": "the stored tie is ljómun / útblástur and the ruling is útgeislun, neither of them: removing the útblástur row alone would leave ljómun winning, so the fix also has to make útgeislun win (a house-style concept wins a real tie at its own position, §C164)"
+  },
+  {
+   "id": "ws_valence",
+   "en": "valence",
+   "enNorm": "valence",
+   "ch": null,
+   "is": "gildi",
+   "pageWord": "gildi",
+   "origin": "page-answer",
+   "stored": "girðitala",
+   "storedTied": [],
+   "storedAlternatives": [
+    "girðitala"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "concept-model-script",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "wrongSenseRow": "girðitala"
+  },
+  {
+   "id": "ch01_fs-idm285658848",
+   "en": "Celsius (°C)",
+   "enNorm": "celsius",
+   "ch": "ch01",
+   "is": "Celsíus",
+   "pageWord": "Celsíus",
+   "origin": "page-default-confirmed",
+   "stored": "Celsíus",
+   "storedTied": [],
+   "storedAlternatives": [
+    "Celsíus"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm10811088",
+   "en": "alpha particle (α particle)",
+   "enNorm": "alpha particle",
+   "ch": "ch02",
+   "is": "alfaeind",
+   "pageWord": "alfaeind",
+   "origin": "page-default-confirmed",
+   "stored": "alfaögn",
+   "storedTied": [],
+   "storedAlternatives": [
+    "alfaögn",
+    "alfaeind"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm20590592",
+   "en": "group",
+   "enNorm": "group",
+   "ch": "ch02",
+   "is": "flokkur",
+   "pageWord": "flokkur",
+   "origin": "page-default-confirmed",
+   "stored": "flokkur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "flokkur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm227073184",
+   "en": "periodic table",
+   "enNorm": "periodic table",
+   "ch": "ch02",
+   "is": "lotukerfi",
+   "pageWord": "lotukerfi",
+   "origin": "page-default-confirmed",
+   "stored": "lotukerfið",
+   "storedTied": [],
+   "storedAlternatives": [
+    "lotukerfið"
+   ],
+   "storedDomain": "chemistry",
+   "class": "spelling-vs-stored",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm430389008",
+   "en": "series",
+   "enNorm": "series",
+   "ch": "ch02",
+   "is": "röð",
+   "pageWord": "röð",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [
+    "raðtenging",
+    "röð",
+    "röð"
+   ],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "tied",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm56716560",
+   "en": "law of constant composition",
+   "enNorm": "law of constant composition",
+   "ch": "ch02",
+   "is": "lögmál um föst massahlutföll",
+   "pageWord": "lögmál um föst massahlutföll",
+   "origin": "page-default-confirmed",
+   "stored": "regla um sömu samsetningu",
+   "storedTied": [],
+   "storedAlternatives": [
+    "regla um sömu samsetningu"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idm64490640",
+   "en": "periodic law",
+   "enNorm": "periodic law",
+   "ch": "ch02",
+   "is": "lotulögmál",
+   "pageWord": "lotulögmál",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch02_fs-idp184530720",
+   "en": "covalent compound",
+   "enNorm": "covalent compound",
+   "ch": "ch02",
+   "is": "samgilt efnasamband",
+   "pageWord": "samgilt efnasamband",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch03_fs-idm26667568",
+   "en": "solute",
+   "enNorm": "solute",
+   "ch": "ch03",
+   "is": "uppleyst efni",
+   "pageWord": "uppleyst efni",
+   "origin": "page-default-confirmed",
+   "stored": "leyst efni",
+   "storedTied": [],
+   "storedAlternatives": [
+    "leyst efni"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch04_fs-idm73913072",
+   "en": "oxidation-reduction reaction",
+   "enNorm": "oxidation-reduction reaction",
+   "ch": "ch04",
+   "is": "oxunar-afoxunarhvarf",
+   "pageWord": "oxunar-afoxunarhvarf",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch05_fs-idp102379584",
+   "en": "chemical thermodynamics",
+   "enNorm": "chemical thermodynamics",
+   "ch": "ch05",
+   "is": "efnavarmafræði",
+   "pageWord": "efnavarmafræði",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch05_fs-idp25507984",
+   "en": "joule (J)",
+   "enNorm": "joule",
+   "ch": "ch05",
+   "is": "júl",
+   "pageWord": "júl (J)",
+   "origin": "page-default-confirmed",
+   "stored": "júl",
+   "storedTied": [],
+   "storedAlternatives": [
+    "júl"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch05_fs-idp31727024",
+   "en": "specific heat capacity (c)",
+   "enNorm": "specific heat capacity",
+   "ch": "ch05",
+   "is": "eðlisvarmi",
+   "pageWord": "eðlisvarmi (c)",
+   "origin": "page-default-confirmed",
+   "stored": "eðlisvarmi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "eðlisvarmi"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm11590896",
+   "en": "interference pattern",
+   "enNorm": "interference pattern",
+   "ch": "ch06",
+   "is": "víxlunarmynstur",
+   "pageWord": "víxlunarmynstur",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm120400016",
+   "en": "Pauli exclusion principle",
+   "enNorm": "pauli exclusion principle",
+   "ch": "ch06",
+   "is": "einsetulögmál Paulis",
+   "pageWord": "einsetulögmál Paulis",
+   "origin": "page-default-confirmed",
+   "stored": "einsetulögmál Pauli",
+   "storedTied": [],
+   "storedAlternatives": [
+    "einsetulögmál Pauli",
+    "útilokunarlögmál Pauli"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm140352128",
+   "en": "principal quantum number (n)",
+   "enNorm": "principal quantum number",
+   "ch": "ch06",
+   "is": "aðalskammtatala",
+   "pageWord": "aðalskammtatala (n)",
+   "origin": "page-default-confirmed",
+   "stored": "höfuðskammtatala",
+   "storedTied": [],
+   "storedAlternatives": [
+    "höfuðskammtatala",
+    "aðalskammtatala"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm147438368",
+   "en": "atomic orbital",
+   "enNorm": "atomic orbital",
+   "ch": "ch06",
+   "is": "atómsvigrúm",
+   "pageWord": "atómsvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": "frumeindasvigrúm",
+   "storedTied": [],
+   "storedAlternatives": [
+    "frumeindasvigrúm",
+    "atómsvigrúm"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm148470816",
+   "en": "subshell",
+   "enNorm": "subshell",
+   "ch": "ch06",
+   "is": "undirhvolf",
+   "pageWord": "undirhvolf",
+   "origin": "page-default-confirmed",
+   "stored": "undirhvolf",
+   "storedTied": [],
+   "storedAlternatives": [
+    "undirhvolf"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idm176142304",
+   "en": "secondary (angular momentum) quantum number (l)",
+   "enNorm": "secondary quantum number",
+   "ch": "ch06",
+   "is": "aukaskammtatala (hverfiþungi)",
+   "pageWord": "aukaskammtatala (hverfiþungi) (l)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch06_fs-idp97866656",
+   "en": "ground state",
+   "enNorm": "ground state",
+   "ch": "ch06",
+   "is": "grunnástand",
+   "pageWord": "grunnástand",
+   "origin": "page-default-confirmed",
+   "stored": "grunnástand",
+   "storedTied": [],
+   "storedAlternatives": [
+    "grunnástand"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idm73604928",
+   "en": "octet rule",
+   "enNorm": "octet rule",
+   "ch": "ch07",
+   "is": "átturegla",
+   "pageWord": "átturegla",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idp12081312",
+   "en": "dipole moment",
+   "enNorm": "dipole moment",
+   "ch": "ch07",
+   "is": "tvískautsvægi",
+   "pageWord": "tvískautsvægi",
+   "origin": "page-default-confirmed",
+   "stored": "tvípólsvægi",
+   "storedTied": [],
+   "storedAlternatives": [
+    "tvípólsvægi",
+    "tvískautsvægi"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch07_fs-idp87877296",
+   "en": "hypervalent molecule",
+   "enNorm": "hypervalent molecule",
+   "ch": "ch07",
+   "is": "ofgild sameind",
+   "pageWord": "ofgild sameind",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm16838896",
+   "en": "sp3d hybrid orbital",
+   "enNorm": "sp3d hybrid orbital",
+   "ch": "ch08",
+   "is": "sp3d-blendingssvigrúm",
+   "pageWord": "sp3d-blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm29433408",
+   "en": "hybridization",
+   "enNorm": "hybridization",
+   "ch": "ch08",
+   "is": "svigrúmablöndun",
+   "pageWord": "svigrúmablöndun",
+   "origin": "page-default-confirmed",
+   "stored": "svigrúmablöndun",
+   "storedTied": [],
+   "storedAlternatives": [
+    "svigrúmablöndun"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm47317072",
+   "en": "sp3d2 hybrid orbital",
+   "enNorm": "sp3d2 hybrid orbital",
+   "ch": "ch08",
+   "is": "sp3d2-blendingssvigrúm",
+   "pageWord": "sp3d2-blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm48701168",
+   "en": "sp2 hybrid orbital",
+   "enNorm": "sp2 hybrid orbital",
+   "ch": "ch08",
+   "is": "sp2-blendingssvigrúm",
+   "pageWord": "sp2-blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idm71427776",
+   "en": "sp hybrid orbital",
+   "enNorm": "sp hybrid orbital",
+   "ch": "ch08",
+   "is": "sp-blendingssvigrúm",
+   "pageWord": "sp-blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp102362976",
+   "en": "hybrid orbital",
+   "enNorm": "hybrid orbital",
+   "ch": "ch08",
+   "is": "blendingssvigrúm",
+   "pageWord": "blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": "blendingssvigrúm",
+   "storedTied": [],
+   "storedAlternatives": [
+    "blendingssvigrúm"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch08_fs-idp88964992",
+   "en": "sp3 hybrid orbital",
+   "enNorm": "sp3 hybrid orbital",
+   "ch": "ch08",
+   "is": "sp3-blendingssvigrúm",
+   "pageWord": "sp3-blendingssvigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idm111878496",
+   "en": "ideal gas law",
+   "enNorm": "ideal gas law",
+   "ch": "ch09",
+   "is": "kjörgaslögmálið",
+   "pageWord": "kjörgaslögmálið",
+   "origin": "page-default-confirmed",
+   "stored": "kjörgaslögmálið",
+   "storedTied": [],
+   "storedAlternatives": [
+    "kjörgaslögmálið"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch09_fs-idm158190720",
+   "en": "standard conditions of temperature and pressure (STP)",
+   "enNorm": "standard conditions of temperature and pressure",
+   "ch": "ch09",
+   "is": "staðalaðstæður hitastigs og þrýstings",
+   "pageWord": "staðalaðstæður hitastigs og þrýstings (STP)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm16566240",
+   "en": "dispersion force",
+   "enNorm": "dispersion force",
+   "ch": "ch10",
+   "is": "dreifikraftur",
+   "pageWord": "dreifikraftur",
+   "origin": "page-default-confirmed",
+   "stored": "dreifikraftur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "dreifikraftur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idm37032656",
+   "en": "vacancy",
+   "enNorm": "vacancy",
+   "ch": "ch10",
+   "is": "tóm",
+   "pageWord": "tóm",
+   "origin": "page-default-confirmed",
+   "stored": "eyðuveila",
+   "storedTied": [],
+   "storedAlternatives": [
+    "eyðuveila",
+    "eyða"
+   ],
+   "storedDomain": "physics",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp127496336",
+   "en": "dipole-dipole attraction",
+   "enNorm": "dipole-dipole attraction",
+   "ch": "ch10",
+   "is": "tvískauts-tvískauts aðdráttarkraftur",
+   "pageWord": "tvískauts-tvískauts aðdráttarkraftur",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp168577936",
+   "en": "Bragg equation",
+   "enNorm": "bragg equation",
+   "ch": "ch10",
+   "is": "Bragg-jafna",
+   "pageWord": "Bragg-jafna",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp5444368",
+   "en": "freezing point",
+   "enNorm": "freezing point",
+   "ch": "ch10",
+   "is": "Frostmark",
+   "pageWord": "Frostmark",
+   "origin": "page-default-confirmed",
+   "stored": "frostmark",
+   "storedTied": [],
+   "storedAlternatives": [
+    "frostmark"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch10_fs-idp56136784",
+   "en": "cubic closest packing (CCP)",
+   "enNorm": "cubic closest packing",
+   "ch": "ch10",
+   "is": "teningslaga þéttpökkun",
+   "pageWord": "teningslaga þéttpökkun (CCP)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idm171842784",
+   "en": "Tyndall effect",
+   "enNorm": "tyndall effect",
+   "ch": "ch11",
+   "is": "Tyndall-hrif",
+   "pageWord": "Tyndall-hrif",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idm91470352",
+   "en": "solvation",
+   "enNorm": "solvation",
+   "ch": "ch11",
+   "is": "leysing",
+   "pageWord": "leysing",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idp141112944",
+   "en": "osmosis",
+   "enNorm": "osmosis",
+   "ch": "ch11",
+   "is": "osmósa",
+   "pageWord": "osmósa",
+   "origin": "page-default-confirmed",
+   "stored": "himnuflæði",
+   "storedTied": [],
+   "storedAlternatives": [
+    "himnuflæði",
+    "osmósa"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idp141114480",
+   "en": "osmotic pressure (Π)",
+   "enNorm": "osmotic pressure",
+   "ch": "ch11",
+   "is": "osmósuþrýstingur",
+   "pageWord": "osmósuþrýstingur (Π)",
+   "origin": "page-default-confirmed",
+   "stored": "flæðiþrýstingur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "flæðiþrýstingur",
+    "osmótískur þrýstingur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch11_fs-idp7162656",
+   "en": "partially miscible",
+   "enNorm": "partially miscible",
+   "ch": "ch11",
+   "is": "örlítið blandanlegur",
+   "pageWord": "örlítið blandanlegur",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm101548864",
+   "en": "collision theory",
+   "enNorm": "collision theory",
+   "ch": "ch12",
+   "is": "árekstrakenning",
+   "pageWord": "árekstrakenning",
+   "origin": "page-default-confirmed",
+   "stored": "árekstrakenningin",
+   "storedTied": [],
+   "storedAlternatives": [
+    "árekstrakenningin"
+   ],
+   "storedDomain": "chemistry",
+   "class": "spelling-vs-stored",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm206488448",
+   "en": "frequency factor (A)",
+   "enNorm": "frequency factor",
+   "ch": "ch12",
+   "is": "tíðniþáttur",
+   "pageWord": "tíðniþáttur (A)",
+   "origin": "page-default-confirmed",
+   "stored": "tíðnistuðull",
+   "storedTied": [],
+   "storedAlternatives": [
+    "tíðnistuðull",
+    "forveldisvísisþáttur",
+    "tíðnifasti"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm215968704",
+   "en": "rate law",
+   "enNorm": "rate law",
+   "ch": "ch12",
+   "is": "hraðalögmál",
+   "pageWord": "hraðalögmál",
+   "origin": "page-default-confirmed",
+   "stored": "hraðajafna",
+   "storedTied": [],
+   "storedAlternatives": [
+    "hraðajafna",
+    "hraðalögmál"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "preference",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm2926992",
+   "en": "unimolecular reaction",
+   "enNorm": "unimolecular reaction",
+   "ch": "ch12",
+   "is": "einsameindahvarf",
+   "pageWord": "einsameindahvarf",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm333854336",
+   "en": "reaction order",
+   "enNorm": "reaction order",
+   "ch": "ch12",
+   "is": "stig efnahvarfs",
+   "pageWord": "stig efnahvarfs",
+   "origin": "page-default-confirmed",
+   "stored": "stig efnahvarfs",
+   "storedTied": [],
+   "storedAlternatives": [
+    "stig efnahvarfs"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idm355773584",
+   "en": "reaction diagram",
+   "enNorm": "reaction diagram",
+   "ch": "ch12",
+   "is": "hvarfrit",
+   "pageWord": "hvarfrit",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idp131244384",
+   "en": "bimolecular reaction",
+   "enNorm": "bimolecular reaction",
+   "ch": "ch12",
+   "is": "tvísameindahvarf",
+   "pageWord": "tvísameindahvarf",
+   "origin": "page-default-confirmed",
+   "stored": "tvísameinda efnahvarf",
+   "storedTied": [],
+   "storedAlternatives": [
+    "tvísameinda efnahvarf"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idp251542624",
+   "en": "termolecular reaction",
+   "enNorm": "termolecular reaction",
+   "ch": "ch12",
+   "is": "þrísameindahvarf",
+   "pageWord": "þrísameindahvarf",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch12_fs-idp36862592",
+   "en": "elementary reaction",
+   "enNorm": "elementary reaction",
+   "ch": "ch12",
+   "is": "grunnhvarf",
+   "pageWord": "grunnhvarf",
+   "origin": "page-default-confirmed",
+   "stored": "grunnhvarf",
+   "storedTied": [],
+   "storedAlternatives": [
+    "grunnhvarf"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch14_fs-idm71412016",
+   "en": "Henderson-Hasselbalch equation",
+   "enNorm": "henderson-hasselbalch equation",
+   "ch": "ch14",
+   "is": "Henderson-Hasselbalch jafnan",
+   "pageWord": "Henderson-Hasselbalch jafnan",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch15_fs-idm26641568",
+   "en": "Lewis acid-base adduct",
+   "enNorm": "lewis acid-base adduct",
+   "ch": "ch15",
+   "is": "Lewis-sýru-basa afleiða",
+   "pageWord": "Lewis-sýru-basa afleiða",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idm119806032",
+   "en": "standard free energy of formation [formula]",
+   "enNorm": "standard free energy of formation [formula]",
+   "ch": "ch16",
+   "is": "staðalmyndunarorka",
+   "pageWord": "staðalmyndunarorka [formula]",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idm57405936",
+   "en": "spontaneous change",
+   "enNorm": "spontaneous change",
+   "ch": "ch16",
+   "is": "sjálfgeng breyting",
+   "pageWord": "sjálfgeng breyting",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idp119850016",
+   "en": "nonspontaneous process",
+   "enNorm": "nonspontaneous process",
+   "ch": "ch16",
+   "is": "ósjálfgengt ferli",
+   "pageWord": "ósjálfgengt ferli",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch16_fs-idp48318480",
+   "en": "reversible process",
+   "enNorm": "reversible process",
+   "ch": "ch16",
+   "is": "afturkræft ferli",
+   "pageWord": "afturkræft ferli",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm118911936",
+   "en": "lithium ion battery",
+   "enNorm": "lithium ion battery",
+   "ch": "ch17",
+   "is": "Litíumjónarafhlaða",
+   "pageWord": "Litíumjónarafhlaða",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm139905600",
+   "en": "cell notation (schematic)",
+   "enNorm": "cell notation",
+   "ch": "ch17",
+   "is": "kerritun",
+   "pageWord": "kerritun (skýringarmynd)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm159189392",
+   "en": "galvanic (voltaic) cell",
+   "enNorm": "galvanic cell",
+   "ch": "ch17",
+   "is": "galvaníker",
+   "pageWord": "galvaníker",
+   "origin": "page-default-confirmed",
+   "stored": "galvaníker",
+   "storedTied": [],
+   "storedAlternatives": [
+    "galvaníker"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm210620784",
+   "en": "alkaline battery",
+   "enNorm": "alkaline battery",
+   "ch": "ch17",
+   "is": "Alkalínrafhlaða",
+   "pageWord": "Alkalínrafhlaða",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idm278014928",
+   "en": "primary cell",
+   "enNorm": "primary cell",
+   "ch": "ch17",
+   "is": "einnota ker",
+   "pageWord": "einnota ker",
+   "origin": "chat (question 5)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "einnota rafhlaða"
+  },
+  {
+   "id": "ch17_fs-idp227872832",
+   "en": "standard cell potential [formula]",
+   "enNorm": "standard cell potential [formula]",
+   "ch": "ch17",
+   "is": "staðalkerspenna",
+   "pageWord": "staðalkerspenna [formula]",
+   "origin": "page-default-confirmed",
+   "stored": "staðalíspenna",
+   "storedTied": [],
+   "storedAlternatives": [
+    "staðalíspenna"
+   ],
+   "storedDomain": "chemistry",
+   "class": "word-change",
+   "proposedMechanism": "entry",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch17_fs-idp55952432",
+   "en": "secondary cell",
+   "enNorm": "secondary cell",
+   "ch": "ch17",
+   "is": "endurhlaðanlegt ker",
+   "pageWord": "endurhlaðanlegt ker",
+   "origin": "chat (question 5)",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]",
+   "pageAnswer": "endurhlaðanleg rafhlaða"
+  },
+  {
+   "id": "ch18_fs-idm2235360",
+   "en": "representative metal",
+   "enNorm": "representative metal",
+   "ch": "ch18",
+   "is": "aðalflokkamálmur",
+   "pageWord": "aðalflokkamálmur",
+   "origin": "page-default-confirmed",
+   "stored": "aðalflokkamálmur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "aðalflokkamálmur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch18_fs-idm60186560",
+   "en": "disproportionation reaction",
+   "enNorm": "disproportionation reaction",
+   "ch": "ch18",
+   "is": "misvægishvarf",
+   "pageWord": "misvægishvarf",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch18_fs-idp110103392",
+   "en": "representative element",
+   "enNorm": "representative element",
+   "ch": "ch18",
+   "is": "aðalflokkafrumefni",
+   "pageWord": "aðalflokkafrumefni",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch18_fs-idp20554272",
+   "en": "polymorph",
+   "enNorm": "polymorph",
+   "ch": "ch18",
+   "is": "fjölbrigði",
+   "pageWord": "fjölbrigði",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch18_fs-idp50657904",
+   "en": "amorphous",
+   "enNorm": "amorphous",
+   "ch": "ch18",
+   "is": "myndlaus",
+   "pageWord": "myndlaus",
+   "origin": "page-default-confirmed",
+   "stored": "myndlaus",
+   "storedTied": [],
+   "storedAlternatives": [
+    "myndlaus"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm104611088",
+   "en": "t2g orbitals",
+   "enNorm": "t2g orbitals",
+   "ch": "ch19",
+   "is": "t2g svigrúm",
+   "pageWord": "t2g svigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm108395328",
+   "en": "lanthanide series",
+   "enNorm": "lanthanide series",
+   "ch": "ch19",
+   "is": "lantaníðaröð",
+   "pageWord": "lantaníðaröð",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm148194896",
+   "en": "eg orbitals",
+   "enNorm": "eg orbitals",
+   "ch": "ch19",
+   "is": "eg svigrúm",
+   "pageWord": "eg svigrúm",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm163589328",
+   "en": "coordination compound",
+   "enNorm": "coordination compound",
+   "ch": "ch19",
+   "is": "girðisamband",
+   "pageWord": "girðisamband",
+   "origin": "page-default-confirmed",
+   "stored": "girðisamband",
+   "storedTied": [],
+   "storedAlternatives": [
+    "girðisamband"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm281484512",
+   "en": "hydrometallurgy",
+   "enNorm": "hydrometallurgy",
+   "ch": "ch19",
+   "is": "votvinnslumálmfræði",
+   "pageWord": "votvinnslumálmfræði",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm31354480",
+   "en": "crystal field theory",
+   "enNorm": "crystal field theory",
+   "ch": "ch19",
+   "is": "kristalsviðskenning",
+   "pageWord": "kristalsviðskenning",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idm98560816",
+   "en": "actinide series",
+   "enNorm": "actinide series",
+   "ch": "ch19",
+   "is": "aktiníðaröð",
+   "pageWord": "aktiníðaröð",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp246761680",
+   "en": "coordination compound",
+   "enNorm": "coordination compound",
+   "ch": "ch19",
+   "is": "girðisamband",
+   "pageWord": "girðisamband",
+   "origin": "page-default-confirmed",
+   "stored": "girðisamband",
+   "storedTied": [],
+   "storedAlternatives": [
+    "girðisamband"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp51669120",
+   "en": "chelating ligand",
+   "enNorm": "chelating ligand",
+   "ch": "ch19",
+   "is": "klótengill",
+   "pageWord": "klótengill",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp53705200",
+   "en": "central metal",
+   "enNorm": "central metal",
+   "ch": "ch19",
+   "is": "miðjumálmur",
+   "pageWord": "miðjumálmur",
+   "origin": "page-default-confirmed",
+   "stored": "miðjumálmur",
+   "storedTied": [],
+   "storedAlternatives": [
+    "miðjumálmur"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp55828544",
+   "en": "coordination number",
+   "enNorm": "coordination number",
+   "ch": "ch19",
+   "is": "girðitala",
+   "pageWord": "girðitala",
+   "origin": "page-default-confirmed",
+   "stored": "girðitala",
+   "storedTied": [],
+   "storedAlternatives": [
+    "girðitala"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch19_fs-idp56324672",
+   "en": "coordination sphere",
+   "enNorm": "coordination sphere",
+   "ch": "ch19",
+   "is": "girðihvolf",
+   "pageWord": "girðihvolf",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-idm3165296",
+   "en": "carboxylic acid",
+   "enNorm": "carboxylic acid",
+   "ch": "ch20",
+   "is": "karboxýlsýra",
+   "pageWord": "karboxýlsýra",
+   "origin": "page-default-confirmed",
+   "stored": "karboxýlsýra",
+   "storedTied": [],
+   "storedAlternatives": [
+    "karboxýlsýra"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-idp68310656",
+   "en": "substituent",
+   "enNorm": "substituent",
+   "ch": "ch20",
+   "is": "hliðarhópur",
+   "pageWord": "hliðarhópur",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-idp73021984",
+   "en": "aromatic hydrocarbon",
+   "enNorm": "aromatic hydrocarbon",
+   "ch": "ch20",
+   "is": "arómatískt vetniskolefni",
+   "pageWord": "arómatískt vetniskolefni",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch20_fs-idp73075792",
+   "en": "saturated hydrocarbon",
+   "enNorm": "saturated hydrocarbon",
+   "ch": "ch20",
+   "is": "mettað vetniskolefni",
+   "pageWord": "mettað vetniskolefni",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm128080144",
+   "en": "chain reaction",
+   "enNorm": "chain reaction",
+   "ch": "ch21",
+   "is": "keðjuhvarf",
+   "pageWord": "keðjuhvarf",
+   "origin": "page-default-confirmed",
+   "stored": "keðjuhvarf",
+   "storedTied": [],
+   "storedAlternatives": [
+    "keðjuhvarf"
+   ],
+   "storedDomain": "chemistry",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm206270992",
+   "en": "control rod",
+   "enNorm": "control rod",
+   "ch": "ch21",
+   "is": "hemilstöng",
+   "pageWord": "hemilstöng",
+   "origin": "page-default-confirmed",
+   "stored": "hemilstöng",
+   "storedTied": [],
+   "storedAlternatives": [
+    "hemilstöng",
+    "stýristöng"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm74066144",
+   "en": "nuclear transmutation",
+   "enNorm": "nuclear transmutation",
+   "ch": "ch21",
+   "is": "kjarnafrumefnabreyting",
+   "pageWord": "kjarnafrumefnabreyting",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idm80685920",
+   "en": "nuclide",
+   "enNorm": "nuclide",
+   "ch": "ch21",
+   "is": "kjarnategund",
+   "pageWord": "kjarnategund",
+   "origin": "page-default-confirmed",
+   "stored": "kjarnategund",
+   "storedTied": [],
+   "storedAlternatives": [
+    "kjarnategund",
+    "kirni"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp10803760",
+   "en": "radiocarbon dating",
+   "enNorm": "radiocarbon dating",
+   "ch": "ch21",
+   "is": "kolefnisaldursgreining",
+   "pageWord": "kolefnisaldursgreining",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp165863168",
+   "en": "relative biological effectiveness (RBE)",
+   "enNorm": "relative biological effectiveness",
+   "ch": "ch21",
+   "is": "hlutfallsleg líffræðileg virkni",
+   "pageWord": "hlutfallsleg líffræðileg virkni (RBE)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp225092016",
+   "en": "roentgen equivalent man (rem)",
+   "enNorm": "roentgen equivalent man",
+   "ch": "ch21",
+   "is": "roentgen equivalent man",
+   "pageWord": "roentgen equivalent man (rem)",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp44456896",
+   "en": "external beam radiation therapy",
+   "enNorm": "external beam radiation therapy",
+   "ch": "ch21",
+   "is": "ytri geislameðferð",
+   "pageWord": "ytri geislameðferð",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp55578096",
+   "en": "parent nuclide",
+   "enNorm": "parent nuclide",
+   "ch": "ch21",
+   "is": "móðurkjarnategund",
+   "pageWord": "móðurkjarnategund",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp69591216",
+   "en": "daughter nuclide",
+   "enNorm": "daughter nuclide",
+   "ch": "ch21",
+   "is": "dótturkjarnategund",
+   "pageWord": "dótturkjarnategund",
+   "origin": "page-default-confirmed",
+   "stored": null,
+   "storedTied": [],
+   "storedAlternatives": [],
+   "storedDomain": null,
+   "class": "unstored",
+   "proposedMechanism": "record-only",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  },
+  {
+   "id": "ch21_fs-idp7149200",
+   "en": "fusion reactor",
+   "enNorm": "fusion reactor",
+   "ch": "ch21",
+   "is": "samrunaofn",
+   "pageWord": "samrunaofn",
+   "origin": "page-default-confirmed",
+   "stored": "samrunaofn",
+   "storedTied": [],
+   "storedAlternatives": [
+    "samrunaofn"
+   ],
+   "storedDomain": "physics",
+   "class": "matches-stored",
+   "proposedMechanism": "none",
+   "scope": {
+    "kind": "book"
+   },
+   "ruled": "2026-10-11 [USER]"
+  }
+ ],
+ "inflectionNotes": [
+  {
+   "id": "ch07_fs-idp35872064",
+   "en": "linear",
+   "ch": "ch07",
+   "note": "Depends on gender",
+   "kind": "inflection-note",
+   "why": "\"either is fine\": the choice is inflection, not a word"
+  },
+  {
+   "id": "ch14_fs-idm111671584",
+   "en": "basic",
+   "ch": "ch14",
+   "note": "Depends on gender",
+   "kind": "inflection-note",
+   "why": "\"either is fine\": the choice is inflection, not a word"
+  }
+ ],
+ "before": [
+  {
+   "en": "Celsius",
+   "enNorm": "celsius",
+   "is": "Celsíus",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-04 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "degree Celsius",
+   "enNorm": "degree celsius",
+   "is": "stig á Celsíus",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-04 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "degree centigrade",
+   "enNorm": "degree centigrade",
+   "is": "stig á Celsíus",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-04 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "resonance",
+   "enNorm": "resonance",
+   "is": "vok",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "resonance structure",
+   "enNorm": "resonance structure",
+   "is": "vokmynd",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "resonance form",
+   "enNorm": "resonance form",
+   "is": "vokmynd",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "resonance hybrid",
+   "enNorm": "resonance hybrid",
+   "is": "vokblendingur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "hybridization",
+   "enNorm": "hybridization",
+   "is": "svigrúmablöndun",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "orbital hybridization",
+   "enNorm": "orbital hybridization",
+   "is": "svigrúmablöndun",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "hybrid orbital",
+   "enNorm": "hybrid orbital",
+   "is": "blendingssvigrúm",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "bonding orbital",
+   "enNorm": "bonding orbital",
+   "is": "bindandi svigrúm",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "Lewis structure",
+   "enNorm": "lewis structure",
+   "is": "Lewis-mynd",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-19 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "torr",
+   "enNorm": "torr",
+   "is": "torr",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "hydroxide",
+   "enNorm": "hydroxide",
+   "is": "hýdroxíð",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "group",
+   "enNorm": "group",
+   "is": "flokkur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "alcohol",
+   "enNorm": "alcohol",
+   "is": "alkóhól",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "carbonate",
+   "enNorm": "carbonate",
+   "is": "karbónat",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "radioactive decay",
+   "enNorm": "radioactive decay",
+   "is": "geislasundrun",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "galvanic cell",
+   "enNorm": "galvanic cell",
+   "is": "galvaníker",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "cell",
+   "enNorm": "cell",
+   "is": "ker",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "cell potential",
+   "enNorm": "cell potential",
+   "is": "kerspenna",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "hole",
+   "enNorm": "hole",
+   "is": "hol",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "representative metal",
+   "enNorm": "representative metal",
+   "is": "aðalflokkamálmur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "elementary reaction",
+   "enNorm": "elementary reaction",
+   "is": "grunnhvarf",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "pOH",
+   "enNorm": "poh",
+   "is": "pOH",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "Lewis",
+   "enNorm": "lewis",
+   "is": "Lewis",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "central metal",
+   "enNorm": "central metal",
+   "is": "miðjumálmur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "ether",
+   "enNorm": "ether",
+   "is": "eter",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "dispersion force",
+   "enNorm": "dispersion force",
+   "is": "dreifikraftur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "microstate",
+   "enNorm": "microstate",
+   "is": "örástand",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "carboxylic acid",
+   "enNorm": "carboxylic acid",
+   "is": "karboxýlsýra",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "ketone",
+   "enNorm": "ketone",
+   "is": "ketón",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "reaction mechanism",
+   "enNorm": "reaction mechanism",
+   "is": "hvarfgangur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "carbonyl group",
+   "enNorm": "carbonyl group",
+   "is": "karbónýlhópur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "chain reaction",
+   "enNorm": "chain reaction",
+   "is": "keðjuhvarf",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "reaction order",
+   "enNorm": "reaction order",
+   "is": "stig efnahvarfs",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-20 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "hydrocarbon",
+   "enNorm": "hydrocarbon",
+   "is": "vetniskolefni",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "laser",
+   "enNorm": "laser",
+   "is": "leysir",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "steam",
+   "enNorm": "steam",
+   "is": "gufa",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "electronegative",
+   "enNorm": "electronegative",
+   "is": "rafneikvæður",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "phase transition",
+   "enNorm": "phase transition",
+   "is": "fasabreyting",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "carbon monoxide",
+   "enNorm": "carbon monoxide",
+   "is": "kolmónoxíð",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "submerged",
+   "enNorm": "submerged",
+   "is": "á kafi",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "line-bond structure",
+   "enNorm": "line-bond structure",
+   "is": "strikamynd",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-23 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "bond angle",
+   "enNorm": "bond angle",
+   "is": "tengihorn",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-23 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "bond length",
+   "enNorm": "bond length",
+   "is": "tengilengd",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-23 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "condensed structure",
+   "enNorm": "condensed structure",
+   "is": "þéttformúla",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-23 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "condensed formula",
+   "enNorm": "condensed formula",
+   "is": "þéttformúla",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-23 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "radius",
+   "enNorm": "radius",
+   "is": "radíus",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "crystalline",
+   "enNorm": "crystalline",
+   "is": "kristalkenndur",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "bent",
+   "enNorm": "bent",
+   "is": "boginn",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "dimensional analysis",
+   "enNorm": "dimensional analysis",
+   "is": "einingagreining",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "abundance",
+   "enNorm": "abundance",
+   "is": "fjöldahlutfall",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "absorption",
+   "enNorm": "absorption",
+   "is": "gleypni",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "general anesthetic",
+   "enNorm": "general anesthetic",
+   "is": "svæfingarlyf",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "molecular compound",
+   "enNorm": "molecular compound",
+   "is": "sameindaefni",
+   "competitor": null,
+   "kind": "entry",
+   "source": "server/lib/houseStyleTerms.js",
+   "ruled": "2026-09-27 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "porous",
+   "enNorm": "porous",
+   "is": "gropinn",
+   "competitor": null,
+   "kind": "no-entry",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "complementary color",
+   "enNorm": "complementary color",
+   "is": "fyllingarlitur",
+   "competitor": null,
+   "kind": "no-entry",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "square planar",
+   "enNorm": "square planar",
+   "is": "ferningslaga flatt",
+   "competitor": null,
+   "kind": "no-entry",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "decay",
+   "enNorm": "decay",
+   "is": "sundrun",
+   "competitor": null,
+   "kind": "no-entry",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "trigonal planar",
+   "enNorm": "trigonal planar",
+   "is": "þríhyrningslaga flatt",
+   "competitor": null,
+   "kind": "no-entry",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (REVERSED_TO_STORED); docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md (D4b)",
+   "ruled": "2026-10-11 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "substituted",
+   "enNorm": "substituted",
+   "is": null,
+   "competitor": null,
+   "kind": "held",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (HELD: off the wire, no target)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "fissionable",
+   "enNorm": "fissionable",
+   "is": null,
+   "competitor": null,
+   "kind": "held",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (HELD: off the wire, no target)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "fissile",
+   "enNorm": "fissile",
+   "is": null,
+   "competitor": null,
+   "kind": "held",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (HELD: off the wire, no target)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "radioactive material",
+   "enNorm": "radioactive material",
+   "is": null,
+   "competitor": null,
+   "kind": "held",
+   "source": "docs/decisions/2026-09-21-chemistry-terminology-rulings.md (HELD: off the wire, no target)",
+   "ruled": "2026-09-21 [USER]",
+   "scope": {
+    "kind": "book"
+   }
+  },
+  {
+   "en": "homogeneous mixture",
+   "enNorm": "homogeneous mixture",
+   "is": "einsleit efnablanda",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm25215648",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "If bold definition is just \"einsleitur\", than that needs to be corrected as the term listed in English is homogeneous mixture."
+  },
+  {
+   "en": "temperature",
+   "enNorm": "temperature",
+   "is": "hitastig",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm327357936",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "atom",
+   "enNorm": "atom",
+   "is": "atóm",
+   "competitor": "frumeind",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm8143856",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "extensive property",
+   "enNorm": "extensive property",
+   "is": "magnbundinn eiginleiki",
+   "competitor": "magnháður eiginleiki",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp102584192",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "law of conservation of matter",
+   "enNorm": "law of conservation of matter",
+   "is": "lögmálið um varðveislu efnis",
+   "competitor": "lögmál um varðveislu efnis",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp19511536",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "precision",
+   "enNorm": "precision",
+   "is": "nákvæmni",
+   "competitor": "verkleg nákvæmni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp28800512",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "significant figures",
+   "enNorm": "significant figures",
+   "is": "markverðir stafir",
+   "competitor": "marktækir stafir",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp3346000",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "chemical change",
+   "enNorm": "chemical change",
+   "is": "efnabreyting",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp392534800",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "heterogeneous mixture",
+   "enNorm": "heterogeneous mixture",
+   "is": "misleit efnablanda",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp85033264",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch01",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "If bold definition is just \"misleitur\", than that needs to be corrected as the term listed in English is heterogeneous mixture."
+  },
+  {
+   "en": "metalloid",
+   "enNorm": "metalloid",
+   "is": "hálfmálmur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idm212688864",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "structural isomer",
+   "enNorm": "structural isomer",
+   "is": "byggingarhverfa",
+   "competitor": "byggingarisómera",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp1084128",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "monatomic ion",
+   "enNorm": "monatomic ion",
+   "is": "einatóma jón",
+   "competitor": "einfrumeinda jón",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp136404896",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "ionic compound",
+   "enNorm": "ionic compound",
+   "is": "jónaefni",
+   "competitor": "jónaefnasamband",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp182712496",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "atomic mass",
+   "enNorm": "atomic mass",
+   "is": "atómmassi",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp230158528",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "nomenclature",
+   "enNorm": "nomenclature",
+   "is": "nafnakerfi",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp282227200",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "polyatomic ion",
+   "enNorm": "polyatomic ion",
+   "is": "fjölatómajón",
+   "competitor": "fjölfrumeinda jón",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93746160",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "molecular compound",
+   "enNorm": "molecular compound",
+   "is": "sameindaefni",
+   "competitor": "sameindaefnasamband",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93864192",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch02",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "half-reaction",
+   "enNorm": "half-reaction",
+   "is": "hálfhvarf",
+   "competitor": "hvarfhelmingur",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm28945840",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "actual yield",
+   "enNorm": "actual yield",
+   "is": "raunheimtur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm47393392",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "titrant",
+   "enNorm": "titrant",
+   "is": "títrantur",
+   "competitor": "títrunarefni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp122976560",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "stoichiometry",
+   "enNorm": "stoichiometry",
+   "is": "hlutfallaefnafræði",
+   "competitor": "magnhlutföll",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp127462672",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "product",
+   "enNorm": "product",
+   "is": "myndefni",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp145224064",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "complete ionic equation",
+   "enNorm": "complete ionic equation",
+   "is": "heildarjónajafna",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp261286592",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "theoretical yield",
+   "enNorm": "theoretical yield",
+   "is": "fræðilegar heimtur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp30967968",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "percent yield",
+   "enNorm": "percent yield",
+   "is": "prósentuheimtur",
+   "competitor": "heimtur í prósentum",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp51447712",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "precipitation reaction",
+   "enNorm": "precipitation reaction",
+   "is": "Útfellingarhvarf",
+   "competitor": "útfeldi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp55089136",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "solubility",
+   "enNorm": "solubility",
+   "is": "leysni",
+   "competitor": "leysanleiki",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp67579088",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "combustion analysis",
+   "enNorm": "combustion analysis",
+   "is": "brunagreining",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp72814256",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch04",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "calorimetry",
+   "enNorm": "calorimetry",
+   "is": "varmamæling",
+   "competitor": "hitamæling",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56358720",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "calorimeter",
+   "enNorm": "calorimeter",
+   "is": "varmamælir",
+   "competitor": "hitamælir",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56359488",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "calorie (cal)",
+   "enNorm": "calorie",
+   "is": "kaloría (cal)",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25499888",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "heat (q)",
+   "enNorm": "heat",
+   "is": "varmi (q)",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25504496",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "temperature",
+   "enNorm": "temperature",
+   "is": "hitastig",
+   "competitor": "hiti",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31728864",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "thermal energy",
+   "enNorm": "thermal energy",
+   "is": "varmaorka",
+   "competitor": "hitaorka",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31730416",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "thermochemistry",
+   "enNorm": "thermochemistry",
+   "is": "varmaefnafræði",
+   "competitor": "efnahvörfunarvarmafræði",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31731568",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch05",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "s orbital",
+   "enNorm": "s orbital",
+   "is": "s-svigrúm",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm144189680",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch06",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "effective nuclear charge",
+   "enNorm": "effective nuclear charge",
+   "is": "virk kjarnhleðsla",
+   "competitor": "virk kjarnahleðsla",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm98337504",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch06",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "d orbital",
+   "enNorm": "d orbital",
+   "is": "d-svigrúm",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp12032",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch06",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "amplitude",
+   "enNorm": "amplitude",
+   "is": "útslag",
+   "competitor": "sveifluvídd",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp173255696",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch06",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "line spectrum",
+   "enNorm": "line spectrum",
+   "is": "línuróf",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp85210368",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch06",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "lone pair",
+   "enNorm": "lone pair",
+   "is": "rafeindapar",
+   "competitor": "stakt rafeindapar",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm44296912",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "Lewis structure",
+   "enNorm": "lewis structure",
+   "is": "Lewis-mynd",
+   "competitor": "Lewis-bygging",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm67089472",
+   "ruled": "2026-10-11 [USER] (D4)",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "",
+   "frozenTarget": "Lewis-bygging",
+   "override": "docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md: D4a: overrides the ch07 review-page verdict Lewis-bygging."
+  },
+  {
+   "en": "triple bond",
+   "enNorm": "triple bond",
+   "is": "þrítengi",
+   "competitor": "þrefalt tengi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm68093504",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "single bond",
+   "enNorm": "single bond",
+   "is": "eintengi",
+   "competitor": "einfalt tengi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp177199648",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "resonance",
+   "enNorm": "resonance",
+   "is": "vok",
+   "competitor": "vokmynd",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp213363824",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "resonance = vok\nresonance structure = vokmynd"
+  },
+  {
+   "en": "electronegativity",
+   "enNorm": "electronegativity",
+   "is": "rafneikvæðni",
+   "competitor": "rafdrægni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp28641840",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "lattice energy (ΔHlattice)",
+   "enNorm": "lattice energy",
+   "is": "grindarorka (ΔHgrind)",
+   "competitor": "kristalsgrindarorka (ΔHgrindar)",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp29295648",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "molecular structure",
+   "enNorm": "molecular structure",
+   "is": "sameindabygging",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp31379776",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "trigonal planar",
+   "enNorm": "trigonal planar",
+   "is": "þríhyrningslaga flatt",
+   "competitor": "þríhyrnt flatt",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp36467056",
+   "ruled": "2026-10-11 [USER] (D4)",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "",
+   "frozenTarget": "þríhyrningslaga flatt",
+   "override": "docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md: D4b: reverses the 2026-09-21 ruling þríhyrnt flatt; official glossary form."
+  },
+  {
+   "en": "Born-Haber cycle",
+   "enNorm": "born-haber cycle",
+   "is": "Born-Haber-hringur",
+   "competitor": "Born-Haber-hringferli",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp39711472",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "tetrahedral",
+   "enNorm": "tetrahedral",
+   "is": "ferflötungur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp51917808",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "bond dipole moment",
+   "enNorm": "bond dipole moment",
+   "is": "tvískautsvægi efnatengis",
+   "competitor": "tvískautsvægi tengis",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp60998304",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "electron-pair geometry",
+   "enNorm": "electron-pair geometry",
+   "is": "rúmfræði rafeindapara",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp86864304",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch07",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "molecular orbital diagram",
+   "enNorm": "molecular orbital diagram",
+   "is": "sameindasvigrúmarit",
+   "competitor": "sameindasvigrúmsmynd",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm132723600",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch08",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "bond order",
+   "enNorm": "bond order",
+   "is": "tengigráða",
+   "competitor": "tengitala",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm57102096",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch08",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "rate of diffusion",
+   "enNorm": "rate of diffusion",
+   "is": "sveimhraði",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch09_fs-idp43914864",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch09",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "dynamic equilibrium",
+   "enNorm": "dynamic equilibrium",
+   "is": "kvikt jafnvægi",
+   "competitor": "Kvikjafnvægi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm101715056",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "phase diagram",
+   "enNorm": "phase diagram",
+   "is": "fasarit",
+   "competitor": "fasa-línurit",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm186055200",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "amorphous solid",
+   "enNorm": "amorphous solid",
+   "is": "myndlaust fastefni",
+   "competitor": "myndlaust fast efni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm63193280",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "critical point",
+   "enNorm": "critical point",
+   "is": "markpunktur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm66977664",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "adhesive force",
+   "enNorm": "adhesive force",
+   "is": "viðloðunarkraftur",
+   "competitor": "aðloðunarkraftur",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm87859280",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "body-centered cubic unit cell",
+   "enNorm": "body-centered cubic unit cell",
+   "is": "miðlæg teningslaga grindareining",
+   "competitor": "miðjufyllt rúmfrumugrindareining",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp178458288",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "simple cubic unit cell",
+   "enNorm": "simple cubic unit cell",
+   "is": "einföld teningslaga grindareining",
+   "competitor": "einföld rúmfrumugrindareining",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp179472016",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "coordination number",
+   "enNorm": "coordination number",
+   "is": "girðitala",
+   "competitor": "hnitsetningartala",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp29496752",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "face-centered cubic unit cell",
+   "enNorm": "face-centered cubic unit cell",
+   "is": "hliðlæg teningslaga grindareining",
+   "competitor": "flatarmálfyllt rúmfrumugrindareining",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp82357824",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch10",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "electrolyte",
+   "enNorm": "electrolyte",
+   "is": "rafkleyfi",
+   "competitor": "raflausn",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm10926960",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "dispersed phase",
+   "enNorm": "dispersed phase",
+   "is": "dreififasi",
+   "competitor": "dreifður fasi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm117651760",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "colloid",
+   "enNorm": "colloid",
+   "is": "svif",
+   "competitor": "kollóíð",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm164804608",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "suspension",
+   "enNorm": "suspension",
+   "is": "sviflausn",
+   "competitor": "lausn",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm380612256",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "strong electrolyte",
+   "enNorm": "strong electrolyte",
+   "is": "sterkur rafkleyfi",
+   "competitor": "sterk raflausn",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm7742384",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "freezing point depression",
+   "enNorm": "freezing point depression",
+   "is": "frostmarkslækkun",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141097600",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "molality (m)",
+   "enNorm": "molality",
+   "is": "mólalstyrkur (m)",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141108496",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "weak electrolyte",
+   "enNorm": "weak electrolyte",
+   "is": "veikur rafkleyfi",
+   "competitor": "veik raflausn",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp4277680",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "supersaturated",
+   "enNorm": "supersaturated",
+   "is": "yfirmettaður",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp69776",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch11",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "Arrhenius equation",
+   "enNorm": "arrhenius equation",
+   "is": "Arrheniusar-jafna",
+   "competitor": "Arrheniusarjöfnun",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm187159584",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "heterogeneous catalyst",
+   "enNorm": "heterogeneous catalyst",
+   "is": "misleitur hvati",
+   "competitor": "mismunandi hvatar",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm228167568",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "integrated rate law",
+   "enNorm": "integrated rate law",
+   "is": "heildað hraðalögmál",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46847680",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "half-life of a reaction (tl/2)",
+   "enNorm": "half-life of a reaction",
+   "is": "helmingunartími efnahvarfs (tl/2)",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46849712",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "rate of reaction",
+   "enNorm": "rate of reaction",
+   "is": "hvarfhraði",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp172602144",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "instantaneous rate",
+   "enNorm": "instantaneous rate",
+   "is": "augnablikshraði",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp70925872",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch12",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "heterogeneous equilibria",
+   "enNorm": "heterogeneous equilibria",
+   "is": "misleitt jafnvægi",
+   "competitor": "mismunandi jafnvægi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch13_fs-idp102632368",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch13",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "amphoteric",
+   "enNorm": "amphoteric",
+   "is": "tvíhegða",
+   "competitor": "amfóterísk",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp12571968",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch14",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "acid-base indicator",
+   "enNorm": "acid-base indicator",
+   "is": "sýru-basa litvísir",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp67176144",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch14",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "buffer capacity",
+   "enNorm": "buffer capacity",
+   "is": "stuðpúðageta",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp88494848",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch14",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "dissociation constant",
+   "enNorm": "dissociation constant",
+   "is": "klofnunarfasti",
+   "competitor": "rofstuðull",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm25500528",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch15",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "complex ion",
+   "enNorm": "complex ion",
+   "is": "flókajón",
+   "competitor": "fléttujón",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm90510160",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch15",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "common ion effect",
+   "enNorm": "common ion effect",
+   "is": "samjónahrif",
+   "competitor": "samjónaáhrif",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3050576",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch15",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "molar solubility",
+   "enNorm": "molar solubility",
+   "is": "mólarleysni",
+   "competitor": "mólleysni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3051616",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch15",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "cathode",
+   "enNorm": "cathode",
+   "is": "katóða",
+   "competitor": "bakskaut",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm120688224",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch17",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "fuel cell",
+   "enNorm": "fuel cell",
+   "is": "efnarafall",
+   "competitor": "Efnarafhlaða",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm127587472",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch17",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "standard hydrogen electrode (SHE)",
+   "enNorm": "standard hydrogen electrode",
+   "is": "staðalvetnisraftroð (SHE)",
+   "competitor": "staðalvetnisskaut (SHE)",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp198657264",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch17",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "anode",
+   "enNorm": "anode",
+   "is": "anóða",
+   "competitor": "forskaut",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp4652784",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch17",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "interhalogen",
+   "enNorm": "interhalogen",
+   "is": "millihalógen",
+   "competitor": "milli-halógen",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idm15345952",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch18",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "chemical reduction",
+   "enNorm": "chemical reduction",
+   "is": "efnafræðileg afoxun",
+   "competitor": "efnaafoxun",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idp238031216",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch18",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "metalloid",
+   "enNorm": "metalloid",
+   "is": "hálfmálmur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idp36212736",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch18",
+   "scope": {
+    "kind": "book"
+   },
+   "note": "This word was correctly used in the June images of the periodic table, but replaced with málmungur in the new images."
+  },
+  {
+   "en": "rare earth element",
+   "enNorm": "rare earth element",
+   "is": "sjaldgæfur jarðmálmur",
+   "competitor": "sjaldgæft jarðfrumefni",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idm42041824",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch19",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "low-spin complex",
+   "enNorm": "low-spin complex",
+   "is": "lágspunaflóki",
+   "competitor": "lágspinnasamstæða",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idp121047712",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch19",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "functional group",
+   "enNorm": "functional group",
+   "is": "virknihópur",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp68092560",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch20",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "substitution reaction",
+   "enNorm": "substitution reaction",
+   "is": "skiptihvarf",
+   "competitor": "skipthvarf",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp79627072",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch20",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "gamma ray",
+   "enNorm": "gamma ray",
+   "is": "gammageisli",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm12021616",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch21",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "critical mass",
+   "enNorm": "critical mass",
+   "is": "markmassi",
+   "competitor": "hleypimassi",
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm1727408",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch21",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "fission",
+   "enNorm": "fission",
+   "is": "kjarnaklofnun",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm195851664",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch21",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "containment system",
+   "enNorm": "containment system",
+   "is": "innilokunarkerfi",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm220735792",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch21",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "alpha particle",
+   "enNorm": "alpha particle",
+   "is": "alfaeind",
+   "competitor": null,
+   "kind": "verdict",
+   "source": "experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm57603984",
+   "ruled": "2026-10-10 [USER]",
+   "ruledIn": "ch21",
+   "scope": {
+    "kind": "book"
+   },
+   "note": ""
+  },
+  {
+   "en": "atom",
+   "enNorm": "atom",
+   "is": "atóm",
+   "competitor": null,
+   "kind": "book-preference",
+   "source": "prod book_term_preference (read 2026-10-11)",
+   "ruled": null,
+   "scope": {
+    "kind": "book"
+   }
+  }
+ ]
+}

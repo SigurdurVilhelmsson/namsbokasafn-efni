@@ -1,0 +1,48 @@
+decided terms 135 Counter({'verdict': 104, 'ruling': 31})
+  decided term with same-chapter twin: ch07 molecular structure fs-idp31379776 verdict
+
+==== population: all
+june    pairs needing change  562 of 2724 (20.6%)  unique segs  525  by source {'verdict': 211, 'ruling': 351}
+new     pairs needing change  952 of 3092 (30.8%)  unique segs  832  by source {'verdict': 890, 'ruling': 62}
+hybrid  pairs needing change  674 of 3092 (21.8%)  unique segs  625  by source {'verdict': 319, 'ruling': 355}
+        hybrid needing change by IS source: Counter({'june': 556, 'new-noJune': 109, 'new-diffEN': 9}) | by seg type of new-IS picks: Counter({'alt': 93, 'entry': 17, 'table-summary': 8})
+
+==== population: common
+june    pairs needing change  560 of 2701 (20.7%)  unique segs  523  by source {'verdict': 209, 'ruling': 351}
+new     pairs needing change  843 of 2710 (31.1%)  unique segs  734  by source {'verdict': 787, 'ruling': 56}
+hybrid  pairs needing change  565 of 2710 (20.8%)  unique segs  527  by source {'verdict': 216, 'ruling': 349}
+        hybrid needing change by IS source: Counter({'june': 556, 'new-diffEN': 9}) | by seg type of new-IS picks: Counter({'entry': 9})
+
+per chapter (all):  pairs needing change / prose
+ch01 J  31/166 (v28 r3) u31 | N  55/178 (v49 r6) u50 | H  35/178 (v32 r3) u35
+ch02 J  34/134 (v19 r15) u27 | N  43/146 (v41 r2) u36 | H  35/146 (v20 r15) u28
+ch03 J   0/  0 (v0 r0) u0 | N   0/  0 (v0 r0) u0 | H   0/  0 (v0 r0) u0
+ch04 J  15/184 (v15 r0) u12 | N  87/193 (v87 r0) u74 | H  15/193 (v15 r0) u12
+ch05 J  39/396 (v37 r2) u38 | N 113/403 (v111 r2) u102 | H  42/403 (v40 r2) u41
+ch06 J   1/ 36 (v1 r0) u1 | N  15/ 38 (v15 r0) u14 | H   2/ 38 (v2 r0) u2
+ch07 J  80/469 (v66 r14) u67 | N 187/709 (v178 r9) u167 | H 136/709 (v122 r14) u121
+ch08 J  82/166 (v3 r79) u75 | N  31/180 (v31 r0) u28 | H  85/180 (v6 r79) u78
+ch09 J   0/ 56 (v0 r0) u0 | N   2/ 60 (v2 r0) u2 | H   0/ 60 (v0 r0) u0
+ch10 J  49/124 (v2 r47) u49 | N  71/128 (v45 r26) u70 | H  53/128 (v4 r49) u53
+ch11 J  17/115 (v17 r0) u17 | N  82/122 (v82 r0) u65 | H  31/122 (v31 r0) u27
+ch12 J  32/133 (v2 r30) u32 | N  24/137 (v22 r2) u24 | H  36/137 (v5 r31) u36
+ch13 J   0/  3 (v0 r0) u0 | N   0/  3 (v0 r0) u0 | H   0/  3 (v0 r0) u0
+ch14 J   5/ 50 (v5 r0) u5 | N  13/ 50 (v13 r0) u13 | H   5/ 50 (v5 r0) u5
+ch15 J   2/ 61 (v2 r0) u2 | N  54/ 61 (v54 r0) u51 | H   2/ 61 (v2 r0) u2
+ch16 J  24/ 25 (v0 r24) u24 | N   0/ 25 (v0 r0) u0 | H  24/ 25 (v0 r24) u24
+ch17 J  46/185 (v3 r43) u45 | N  86/206 (v84 r2) u54 | H  58/206 (v15 r43) u52
+ch18 J  20/148 (v3 r17) u19 | N  17/150 (v15 r2) u17 | H  21/150 (v4 r17) u20
+ch19 J  15/ 26 (v1 r14) u15 | N   5/ 26 (v5 r0) u5 | H  15/ 26 (v1 r14) u15
+ch20 J  23/143 (v0 r23) u23 | N  35/161 (v26 r9) u34 | H  26/161 (v2 r24) u26
+ch21 J  47/104 (v7 r40) u43 | N  32/116 (v30 r2) u26 | H  53/116 (v13 r40) u48
+
+heaviest june: hybridization (ch08) 65, galvanic cell (ch17) 32, radioactive decay (ch21) 30, heat (ch05) 29, elementary reaction (ch12) 25, dispersion force (ch10) 24, microstate (ch16) 24, atom (ch01) 23, hole (ch10) 23, resonance (ch07) 19, representative metal (ch18) 17, trigonal planar (ch07) 16, ether (ch20) 16, group (ch02) 15, central metal (ch19) 14
+
+heaviest new: lewis structure (ch07) 89, heat (ch05) 65, cathode (ch17) 44, anode (ch17) 34, molar solubility (ch15) 32, functional group (ch20) 26, bond order (ch08) 25, electrolyte (ch11) 25, calorimeter (ch05) 23, hole (ch10) 23, product (ch04) 21, molecular structure (ch07) 18, stoichiometry (ch04) 17, colloid (ch11) 17, ionic compound (ch02) 15
+
+heaviest hybrid: hybridization (ch08) 65, lewis structure (ch07) 55, galvanic cell (ch17) 32, heat (ch05) 30, radioactive decay (ch21) 30, atom (ch01) 25, hole (ch10) 25, elementary reaction (ch12) 25, dispersion force (ch10) 24, microstate (ch16) 24, resonance (ch07) 19, trigonal planar (ch07) 17, representative metal (ch18) 17, ether (ch20) 17, group (ch02) 15
+
+key-terms headword fixes:
+  june    string-differs 24 / carries-fails 22 of 135
+  new     string-differs 64 / carries-fails 55 of 135
+  hybrid  string-differs 24 / carries-fails 22 of 135

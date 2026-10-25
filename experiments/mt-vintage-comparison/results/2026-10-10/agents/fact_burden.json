@@ -1,0 +1,400 @@
+{
+ "summary": "**Terminology repair burden per base, measured with measure.py's own matcher.** On common ids, my prose counts equal the published `classified-common.json` for all 135 decided terms in both vintages. Decided terms: 104 verdicts plus 31 house-style rulings that exactly match a key-terms headword.\n\n| base | segment-term pairs needing change | unique segments | key-terms headwords to fix |\n|---|---|---|---|\n| JUNE | **607** of 2,724 (22.3%) | 571 | 23 of 136 |\n| NEW | **995** of 3,092 (32.2%) | 873 | 64 of 136 |\n| HYBRID | **754** of 3,092 (24.4%) | 703 | 23 of 136 |\n\n**The bases need different kinds of repair.**\n- JUNE's 607 is 351 ruling-driven plus 256 verdict-driven. The rulings are the September ones the new MT already had on the wire: hybridization 65, galvanic cell 32, radioactive decay 30, elementary reaction 25, microstate 24.\n- NEW's 995 is 933 verdict-driven plus 62 ruling-driven.\n- HYBRID's 754 is 399 verdict-driven plus 355 ruling-driven.\n- By chapter, NEW is far heavier in ch04 (87 vs 15), ch05, ch11, ch15 (54 vs 2) and ch17. HYBRID is heavier in ch08, ch12, ch16, ch19 and ch21, all ruling-driven. ch07 is heavy in every base.\n\n**Pure JUNE cannot be published as it stands.** 1,753 new-only segments have no June Icelandic (1,113 alts, 168 table summaries, 472 renumbered entries). HYBRID is what \"keep June\" really costs: 147 pairs above JUNE, 128 of them figure alts carrying new MT. On common ids HYBRID is 610 and JUNE 605, which checks the splice. 2,219 table `entry` ids exist in both vintages with different English, so the normalized-English guard is essential.\n\n**Classes** (P = SWAP-PARALLEL, A = SWAP-AGREEMENT, X = ABSENT): JUNE P138 A194 X275 · NEW P120 A308 X567 · HYBRID P142 A273 X339.\n\n**I read 40 segments to check the classes:**\n- **P: 6 of 6 right.**\n- **A: 3 of 6 right.** The other 3 were really parallel. Two rested on inflected bold-definition forms; one matched a variant whose gender differs from the text's form. 118 NEW SWAP classifications rest on such surface forms, so NEW's A is an upper bound and its P a lower bound.\n- **The last-two-letters rule fails** on pairs like *hiti → varmi* (both weak masculine nouns).\n- **X: 25 of 28 correct by the class's own definition.** But **22 of the 28 were swaps with an identifiable variant** (*heat → hiti*, *product → afurð*, *hybridization → blöndun*, *carboxylic acid → karbónsýra*). The rest: 2 untranslated segments, 1 paraphrase, 2 false positives (*eter* inside *metýleterhóp*; everyday \"group\") and 1 borderline case.\n- **The variant tail is long.** The 22 variants I found would recover only 18–22% of X per base, about one variant per term. That is where an AI or a human reader steps in.\n\n**Matcher over-count:** 45 / 52 / 51 pairs match only inside a longer headword. About 29 per base are artefacts: *hole* (18–19) inside octahedral/tetrahedral hole, and *resonance* (10–11) inside *vokmynd*/*vokblendingur*. The rest still need a reader.\n\n**Heaviest terms:**\n- **JUNE:** hybridization 65, Lewis structure 64, galvanic cell 32.\n- **NEW:** Lewis structure 130, heat 65, cathode 44, anode 34, molar solubility 32.\n- **HYBRID:** Lewis structure 148, hybridization 65, galvanic cell 32.\n\n**Undecided (c):** 217 headwords.\n- If every one is ruled July: NEW 1,261 · HYBRID 794 · JUNE 722 pairs.\n- If every one is ruled new: NEW 532 · HYBRID 930 · JUNE 903.\n- 22 differ only in article, hyphen or spelling.\n\n**Two verdicts contradict live rulings in houseStyleTerms.js:**\n- **Lewis structure** (*Lewis-bygging* vs the ruling *Lewis-mynd*): HYBRID 148 vs 55 pairs.\n- **Trigonal planar** (*þríhyrningslaga flatt* vs *þríhyrnt flatt*): HYBRID 4 vs 17.\n\n**Zero controls:** ch16 is 0 in NEW but 24 in JUNE on the same 25 prose occurrences.",
+ "numbers": [
+  {
+   "name": "JUNE: prose segment-term pairs needing a change",
+   "value": "607 of 2724 (22.3%)",
+   "unit": "segment-term pairs",
+   "scope": "book, 21 chapters, decided terms (a)+(b) = 135 headwords; all segments of the June vintage",
+   "method": "prose = en_pattern(norm_en(headword)) on June EN, glossary-term/def excluded; a change is needed when carries(June IS, stems(target)) is false"
+  },
+  {
+   "name": "NEW: prose segment-term pairs needing a change",
+   "value": "995 of 3092 (32.2%)",
+   "unit": "segment-term pairs",
+   "scope": "book, decided terms, all segments of the new vintage",
+   "method": "as above, on the new EN/IS"
+  },
+  {
+   "name": "HYBRID: prose segment-term pairs needing a change",
+   "value": "754 of 3092 (24.4%)",
+   "unit": "segment-term pairs",
+   "scope": "book, decided terms, new segment keys",
+   "method": "IS = June IS when the key exists in June with identical normalized EN (all marker dialects reduced to visible text, placeholders replaced by one token, whitespace collapsed), else new IS"
+  },
+  {
+   "name": "Unique segments needing at least one change",
+   "value": "JUNE 571 / NEW 873 / HYBRID 703",
+   "unit": "segments",
+   "scope": "book, all segments",
+   "method": "distinct (module, key) among the pairs needing a change; class = the worst of the segment's pairs"
+  },
+  {
+   "name": "Key-terms headword fixes",
+   "value": "JUNE 23 / NEW 64 / HYBRID 23 of 136 decided headword entries (carries-based: 22 / 55 / 22)",
+   "unit": "headword segments (glossary-term)",
+   "scope": "book",
+   "method": "norm_en(K_base) != norm_en(target); under HYBRID the June entry is used because the headword EN is identical in both vintages"
+  },
+  {
+   "name": "Pairs by decision source",
+   "value": "JUNE 256 verdict + 351 ruling; NEW 933 + 62; HYBRID 399 + 355",
+   "unit": "segment-term pairs",
+   "scope": "book, all segments",
+   "method": "verdict = the 104 review answers (plus one same-headword duplicate); ruling = exact houseStyleTerms.js matches not in the verdicts"
+  },
+  {
+   "name": "Classes among pairs needing a change",
+   "value": "JUNE P138 A194 X275; NEW P120 A308 X567; HYBRID P142 A273 X339",
+   "unit": "segment-term pairs",
+   "scope": "book, all segments",
+   "method": "competing renderings = key-terms entries (both vintages, any chapter, same EN headword) + bold-definition renderings (both vintages, positional pairing as in measure.py) + exact ruling; P/A decided by the last two letters of the final content word"
+  },
+  {
+   "name": "Common-ids population (headline-comparable)",
+   "value": "JUNE 605 of 2701; NEW 851 of 2710; HYBRID 610 of 2710 pairs; unique segments 569 / 743 / 573",
+   "unit": "segment-term pairs; segments",
+   "scope": "segment ids present in EN and IS of both vintages",
+   "method": "same as above, restricted to common ids"
+  },
+  {
+   "name": "HYBRID pairs needing a change, by Icelandic source",
+   "value": "601 June IS, 153 new IS (128 alts, 17 entries, 8 table summaries)",
+   "unit": "segment-term pairs",
+   "scope": "book",
+   "method": "per-key source chosen by the splice rule"
+  },
+  {
+   "name": "HYBRID splice coverage",
+   "value": "15695 of 19668 new keys take June IS; 1753 have no June key (1113 alt, 472 entry, 168 table-summary); 2220 share an id but have different EN (2219 table entries, 1 problem)",
+   "unit": "segment keys (non-glossary and glossary)",
+   "scope": "book",
+   "method": "key-set comparison plus normalized-EN equality"
+  },
+  {
+   "name": "Class accuracy from reading",
+   "value": "P 6/6; A 3/6; X 25/28 by definition (22 unknown-variant swaps, 2 untranslated, 1 paraphrase, 2 false positives, 1 borderline)",
+   "unit": "segments read (40)",
+   "scope": "stratified: 12 X from the heaviest X terms + 6 P + 6 A (seed 7), plus 16 X uniform over the remaining terms (seed 11); nested-only pairs excluded",
+   "method": "manual reading of EN/IS"
+  },
+  {
+   "name": "X recovered by 22 reader-identified variants",
+   "value": "JUNE 60/275 (22%), NEW 100/567 (18%), HYBRID 69/339 (20%)",
+   "unit": "segment-term pairs",
+   "scope": "book",
+   "method": "carries(IS, stems(variant)) on X records of the variant's own term"
+  },
+  {
+   "name": "Pairs matching only inside a longer headword",
+   "value": "JUNE 45, NEW 52, HYBRID 51 (hole 18-19, resonance 10-11 are matcher artefacts)",
+   "unit": "segment-term pairs",
+   "scope": "book",
+   "method": "every EN match of the term lies inside a match of a longer same-chapter key-terms headword or ruling EN form"
+  },
+  {
+   "name": "SWAP decided on a surface (possibly inflected) bold-definition form",
+   "value": "NEW 118 (34 P, 84 A); JUNE 18; HYBRID 26",
+   "unit": "segment-term pairs",
+   "scope": "book",
+   "method": "matched variant's source is a definition site whose final word is not in the citation-form lexicon"
+  },
+  {
+   "name": "Undecided (c): headwords and burden range",
+   "value": "217 headwords (64 with fewer than 3 prose in NEW); prose pairs JUNE 1576 / NEW 1664 / HYBRID 1664; if all ruled July: 722 / 1261 / 794; if all ruled new: 903 / 532 / 930",
+   "unit": "headwords; segment-term pairs",
+   "scope": "book; K_old != K_new by norm_en, no verdict, no exact ruling; same-chapter duplicate headwords deduped",
+   "method": "carries with each vintage's key-terms entry"
+  },
+  {
+   "name": "Undecided entries differing only at article/hyphen/spelling level",
+   "value": "22 of 217",
+   "unit": "headwords",
+   "scope": "book",
+   "method": "the two entries carry each other"
+  },
+  {
+   "name": "Conflict: Lewis structure under verdict vs ruling target",
+   "value": "Lewis-bygging: JUNE 64/77, NEW 130/190, HYBRID 148/190; Lewis-mynd: 5/77, 89/190, 55/190",
+   "unit": "segment-term pairs / prose pairs",
+   "scope": "ch07",
+   "method": "burden.py re-run with the ruling target"
+  },
+  {
+   "name": "Conflict: trigonal planar under verdict vs ruling target",
+   "value": "þríhyrningslaga flatt: JUNE 2/16, NEW 15/18, HYBRID 4/18; þríhyrnt flatt: 16/16, 13/18, 17/18",
+   "unit": "segment-term pairs / prose pairs",
+   "scope": "ch07",
+   "method": "as above"
+  },
+  {
+   "name": "Untranslated segments (normalized IS == EN, at least 40 Latin letters)",
+   "value": "new 13 (ch21 7, ch07 2, ch19 2, ch06 1, ch08 1); June 5; 9 sit in NEW's X, 2 in HYBRID's",
+   "unit": "segments",
+   "scope": "book",
+   "method": "norm_en_seg equality"
+  },
+  {
+   "name": "HYBRID June picks whose placeholder ids differ from the new EN",
+   "value": "66",
+   "unit": "segments",
+   "scope": "book",
+   "method": "[[MATH|MEDIA|TABLE|xref|docref:...]] sequences compared on the two EN files"
+  },
+  {
+   "name": "Renumbered table entries re-matchable by content",
+   "value": "1537 unique, 682 ambiguous of 2219",
+   "unit": "segments",
+   "scope": "book",
+   "method": "normalized-EN lookup within the same module's June EN"
+  },
+  {
+   "name": "Validation against the published measurement",
+   "value": "prose 135/135 equal in each vintage; own 72/72 (new) and 112/112 (June) where target == that vintage's K",
+   "unit": "terms",
+   "scope": "decided terms, common ids",
+   "method": "compared with experiments/terminology-consistency/results/2026-10-10/classified-common.json"
+  }
+ ],
+ "caveats": [
+  "JUNE base = the June vintage's own segment set (June EN paired with June IS). It does not include the 1,753 new-only segments, so JUNE and NEW totals cover different populations. Compare on common ids, or compare NEW with HYBRID, for like-for-like figures.",
+  "ch20's 'June' vintage is the 2026-08-12 C56 pilot re-MT, not June/July.",
+  "The classes come from a heuristic and should be read through the measured accuracy. SWAP-AGREEMENT was right 3 of 6 times. The last-two-letters rule cannot see gender or declension, so *hiti → varmi* counts as agreement. In 118 NEW SWAP decisions the variant form is an inflected or articled bold-definition surface form. Treat NEW's A as an upper bound and its P as a lower bound.",
+  "ABSENT counts an unlisted variant as 'needs a human reader' by definition. In my 28 reads, 22 were swaps with an identifiable variant, so ABSENT overstates how much needs a human. Those variants form a long tail: the 22 found cover only 18–22% of ABSENT.",
+  "The matcher's blind spots inherited from measure.py: short words (3–4 letters) inside compounds (*hol*, *eter*, *vok*), everyday senses of the English headword (\"group\"), and i-umlaut/ablaut. Of the pairs that match only inside a longer headword (45/52/51), about 29 per base are such artefacts, mainly hole and resonance. I have not subtracted any of them from the totals.",
+  "A pair is (segment, decided term). One segment can need several term fixes. Unique segments are reported separately.",
+  "Same-chapter duplicate headwords (ch07 molecular structure, ch19 coordination compound) are counted once for prose. The second ch07 entry's headword fix uses the verdict target ('same-headword-in-chapter').",
+  "Rulings are matched after measure.py's norm_en, which strips parentheticals: 'Celsius (°C)', 'cell potential (Ecell)' and 'galvanic (voltaic) cell' count as exact. Scope notes in a ruling's `why` (e.g. group is ch02 only) were not machine-applied, but each of these rulings matches a headword in one chapter only.",
+  "Rulings are read at the new ref (98a5fe2ff), as in measure.py. A ruling made after the September buy counts as a repair target, not as evidence that the buy ignored it.",
+  "June pairing inherits measure.py's blind spot: English that changed under a stable id is not detected.",
+  "HYBRID splice hazards that do not affect these counts but would affect a real splice: 66 June picks carry placeholder ids that differ from the new EN. 2,219 positionally renumbered table entries fall back to new IS. 1,537 of them could be re-matched by content, which affects at most 17 pairs here.",
+  "The `-segments(b).en.md` files in 02-for-mt (an older `{{SEG:}}` dialect) were ignored, as measure.py ignores them.",
+  "The read sample used fixed seeds (7 and 11). The judgements are mine (AI) and have not been checked by a human."
+ ],
+ "openQuestions": [
+  "Lewis structure (ch07): [USER]'s verdict says *Lewis-bygging*, but houseStyleTerms.js (the one owner) says *Lewis-mynd*, ruled 2026-09-19. Pairs to fix under the verdict vs the ruling: JUNE 64 vs 5, NEW 130 vs 89, HYBRID 148 vs 55. Either the ruling file or the verdict must change.",
+  "Trigonal planar (ch07): the verdict reverts to *þríhyrningslaga flatt*, but the ruling *þríhyrnt flatt* (2026-09-21) records itself as a deliberate override. Pairs under each: JUNE 2 vs 16, NEW 15 vs 13, HYBRID 4 vs 17.",
+  "Does a verdict made in one chapter carry over to the same headword elsewhere? alpha particle is decided in ch21 (alfaeind) but undecided in ch02; coordination number is decided in ch10 (girðitala) but undecided in ch19.",
+  "22 of the 217 undecided headwords differ only in article, hyphen or spelling (e.g. lotukerfið/lotukerfi, sigma tengi/sigma-tengi). These are headword-only decisions, not text repairs.",
+  "The new MT left 13 segments untranslated (7 in ch21), including m68856 para:fs-idm211204656. Their repair is a full translation, not a term swap.",
+  "Context the orchestrator may not have seen: during this run another session committed 0eecf59c8, which changes CLAUDE.md per [USER] 2026-10-10: three text layers (pure MT kept, AI-reviewed MT as its own layer, human-reviewed text), and the API stays the only translation source. This bears on where repairs may be written."
+ ],
+ "gitStatus": "`git -C /home/siggi/dev/repos/namsbokasafn-efni status --porcelain` printed nothing (exit 0), so the tree is clean. At the start, verdicts-2026-10-10.json was untracked. During my run another session committed it as 16e18cdd0, along with 0eecf59c8 (CLAUDE.md). I verified that the verdicts file I used is byte-identical to the committed blob (sha256 f42c950f…), and its mtime of 15:23:28 is before my first command. experiments/terminology-consistency/__pycache__/measure.cpython-314.pyc still has its 13:56:47 mtime, before my session, so my importlib load did not rewrite it. All later runs used python3 -B. I made no writes under the repository; all files are in my scratch directory.",
+ "perChapter": [
+  {
+   "chapter": "ch01",
+   "values": {
+    "june": "pairs 31/166 (P3 A22 X6; verdict 28 ruling 3; nested-only 0) | unique segs 31 | headword fixes 2/11",
+    "new": "pairs 55/178 (P20 A5 X30; verdict 49 ruling 6; nested-only 0) | unique segs 50 | headword fixes 5/11",
+    "hybrid": "pairs 35/178 (P3 A23 X9; verdict 32 ruling 3; nested-only 0) | unique segs 35 | headword fixes 2/11",
+    "undecided": "8 terms; prose pairs J63/N64/H64; needing change if ruled July J22/N46/H23, if ruled new J17/N14/H17"
+   }
+  },
+  {
+   "chapter": "ch02",
+   "values": {
+    "june": "pairs 34/134 (P16 A0 X18; verdict 19 ruling 15; nested-only 0) | unique segs 27 | headword fixes 3/9",
+    "new": "pairs 43/146 (P0 A0 X43; verdict 41 ruling 2; nested-only 0) | unique segs 36 | headword fixes 4/9",
+    "hybrid": "pairs 35/146 (P15 A0 X20; verdict 20 ruling 15; nested-only 0) | unique segs 28 | headword fixes 3/9",
+    "undecided": "14 terms; prose pairs J87/N94/H94; needing change if ruled July J19/N48/H22, if ruled new J39/N16/H42"
+   }
+  },
+  {
+   "chapter": "ch03",
+   "values": {
+    "june": "no decided terms",
+    "new": "no decided terms",
+    "hybrid": "no decided terms",
+    "undecided": "5 terms; prose pairs J74/N74/H74; needing change if ruled July J27/N57/H27, if ruled new J57/N17/H57"
+   }
+  },
+  {
+   "chapter": "ch04",
+   "values": {
+    "june": "pairs 15/184 (P0 A6 X9; verdict 15 ruling 0; nested-only 0) | unique segs 12 | headword fixes 1/11",
+    "new": "pairs 87/193 (P9 A26 X52; verdict 87 ruling 0; nested-only 0) | unique segs 74 | headword fixes 6/11",
+    "hybrid": "pairs 15/193 (P0 A6 X9; verdict 15 ruling 0; nested-only 0) | unique segs 12 | headword fixes 1/11",
+    "undecided": "9 terms; prose pairs J50/N56/H56; needing change if ruled July J22/N51/H28, if ruled new J29/N20/H33"
+   }
+  },
+  {
+   "chapter": "ch05",
+   "values": {
+    "june": "pairs 39/396 (P4 A0 X35; verdict 37 ruling 2; nested-only 7) | unique segs 38 | headword fixes 1/8",
+    "new": "pairs 113/403 (P4 A3 X106; verdict 111 ruling 2; nested-only 8) | unique segs 102 | headword fixes 6/8",
+    "hybrid": "pairs 42/403 (P4 A1 X37; verdict 40 ruling 2; nested-only 7) | unique segs 41 | headword fixes 1/8",
+    "undecided": "5 terms; prose pairs J27/N28/H28; needing change if ruled July J20/N25/H21, if ruled new J14/N17/H15"
+   }
+  },
+  {
+   "chapter": "ch06",
+   "values": {
+    "june": "pairs 1/36 (P0 A0 X1; verdict 1 ruling 0; nested-only 0) | unique segs 1 | headword fixes 0/5",
+    "new": "pairs 15/38 (P2 A7 X6; verdict 15 ruling 0; nested-only 0) | unique segs 14 | headword fixes 2/5",
+    "hybrid": "pairs 2/38 (P0 A1 X1; verdict 2 ruling 0; nested-only 0) | unique segs 2 | headword fixes 0/5",
+    "undecided": "13 terms; prose pairs J95/N111/H111; needing change if ruled July J44/N88/H55, if ruled new J68/N37/H79"
+   }
+  },
+  {
+   "chapter": "ch07",
+   "values": {
+    "june": "pairs 125/469 (P21 A94 X10; verdict 111 ruling 14; nested-only 10) | unique segs 113 | headword fixes 3/17",
+    "new": "pairs 230/709 (P23 A126 X81; verdict 221 ruling 9; nested-only 11) | unique segs 208 | headword fixes 9/17",
+    "hybrid": "pairs 216/709 (P23 A158 X35; verdict 202 ruling 14; nested-only 10) | unique segs 199 | headword fixes 3/17",
+    "undecided": "8 terms; prose pairs J99/N107/H107; needing change if ruled July J9/N31/H18, if ruled new J20/N6/H14"
+   }
+  },
+  {
+   "chapter": "ch08",
+   "values": {
+    "june": "pairs 82/166 (P0 A44 X38; verdict 3 ruling 79; nested-only 5) | unique segs 75 | headword fixes 2/5",
+    "new": "pairs 31/180 (P0 A13 X18; verdict 31 ruling 0; nested-only 0) | unique segs 28 | headword fixes 2/5",
+    "hybrid": "pairs 85/180 (P0 A44 X41; verdict 6 ruling 79; nested-only 5) | unique segs 78 | headword fixes 2/5",
+    "undecided": "19 terms; prose pairs J66/N74/H74; needing change if ruled July J35/N53/H37, if ruled new J39/N22/H38"
+   }
+  },
+  {
+   "chapter": "ch09",
+   "values": {
+    "june": "pairs 0/56 (control: torr carried in 52/52, rate of diffusion 4/4) | headword fixes 0/2",
+    "new": "pairs 2/60 (P0 A2 X0; verdict 2) | unique segs 2 | headword fixes 0/2",
+    "hybrid": "pairs 0/60 | headword fixes 0/2",
+    "undecided": "6 terms; prose pairs J48/N48/H48; needing change if ruled July J34/N42/H34, if ruled new J14/N10/H14"
+   }
+  },
+  {
+   "chapter": "ch10",
+   "values": {
+    "june": "pairs 49/124 (P15 A0 X34; verdict 2 ruling 47; nested-only 18) | unique segs 49 | headword fixes 2/11",
+    "new": "pairs 71/128 (P11 A9 X51; verdict 45 ruling 26; nested-only 19) | unique segs 70 | headword fixes 8/11",
+    "hybrid": "pairs 53/128 (P15 A2 X36; verdict 4 ruling 49; nested-only 19) | unique segs 53 | headword fixes 2/11",
+    "undecided": "22 terms; prose pairs J161/N172/H172; needing change if ruled July J89/N144/H101, if ruled new J95/N114/H103"
+   }
+  },
+  {
+   "chapter": "ch11",
+   "values": {
+    "june": "pairs 17/115 (P5 A3 X9; verdict 17 ruling 0; nested-only 0) | unique segs 17 | headword fixes 2/9",
+    "new": "pairs 82/122 (P6 A29 X47; verdict 82 ruling 0; nested-only 9) | unique segs 65 | headword fixes 4/9",
+    "hybrid": "pairs 31/122 (P6 A4 X21; verdict 31 ruling 0; nested-only 4) | unique segs 27 | headword fixes 2/9",
+    "undecided": "7 terms; prose pairs J35/N36/H36; needing change if ruled July J14/N32/H16, if ruled new J29/N28/H29"
+   }
+  },
+  {
+   "chapter": "ch12",
+   "values": {
+    "june": "pairs 32/133 (P19 A0 X13; verdict 2 ruling 30; nested-only 1) | unique segs 32 | headword fixes 1/9",
+    "new": "pairs 24/137 (P0 A3 X21; verdict 22 ruling 2; nested-only 1) | unique segs 24 | headword fixes 2/9",
+    "hybrid": "pairs 36/137 (P19 A0 X17; verdict 5 ruling 31; nested-only 1) | unique segs 36 | headword fixes 1/9",
+    "undecided": "8 terms; prose pairs J164/N165/H165; needing change if ruled July J53/N155/H55, if ruled new J95/N7/H94"
+   }
+  },
+  {
+   "chapter": "ch13",
+   "values": {
+    "june": "pairs 0/3 (only 3 prose pairs) | headword fixes 0/1",
+    "new": "pairs 0/3 | headword fixes 1/1",
+    "hybrid": "pairs 0/3 | headword fixes 0/1",
+    "undecided": "3 terms; prose pairs J45/N46/H46; needing change if ruled July J14/N27/H15, if ruled new J31/N31/H31"
+   }
+  },
+  {
+   "chapter": "ch14",
+   "values": {
+    "june": "pairs 5/50 (P0 A4 X1; verdict 5 ruling 0) | unique segs 5 | headword fixes 1/4",
+    "new": "pairs 13/50 (P0 A4 X9; verdict 13 ruling 0) | unique segs 13 | headword fixes 1/4",
+    "hybrid": "pairs 5/50 (P0 A4 X1; verdict 5 ruling 0) | unique segs 5 | headword fixes 1/4",
+    "undecided": "6 terms; prose pairs J82/N84/H84; needing change if ruled July J10/N16/H10, if ruled new J19/N13/H19"
+   }
+  },
+  {
+   "chapter": "ch15",
+   "values": {
+    "june": "pairs 2/61 (P1 A0 X1; verdict 2) | unique segs 2 | headword fixes 0/4",
+    "new": "pairs 54/61 (P30 A0 X24; verdict 54) | unique segs 51 | headword fixes 4/4",
+    "hybrid": "pairs 2/61 (P1 A0 X1; verdict 2) | unique segs 2 | headword fixes 0/4",
+    "undecided": "1 term; prose pairs J2/N2/H2; needing change if ruled July J2/N2/H2, if ruled new J2/N2/H2"
+   }
+  },
+  {
+   "chapter": "ch16",
+   "values": {
+    "june": "pairs 24/25 (P23 A0 X1; ruling 24 = microstate) | unique segs 24 | headword fixes 1/1",
+    "new": "pairs 0/25 (control: microstate carried 25/25) | headword fixes 0/1",
+    "hybrid": "pairs 24/25 (P23 A0 X1; ruling 24) | unique segs 24 | headword fixes 1/1",
+    "undecided": "6 terms; prose pairs J32/N32/H32; needing change if ruled July J25/N27/H25, if ruled new J16/N3/H15"
+   }
+  },
+  {
+   "chapter": "ch17",
+   "values": {
+    "june": "pairs 46/185 (P0 A5 X41; verdict 3 ruling 43; nested-only 0) | unique segs 45 | headword fixes 1/6",
+    "new": "pairs 86/206 (P0 A62 X24; verdict 84 ruling 2; nested-only 4) | unique segs 54 | headword fixes 4/6",
+    "hybrid": "pairs 58/206 (P0 A13 X45; verdict 15 ruling 43; nested-only 1) | unique segs 52 | headword fixes 1/6",
+    "undecided": "15 terms; prose pairs J64/N68/H68; needing change if ruled July J31/N60/H34, if ruled new J51/N26/H52"
+   }
+  },
+  {
+   "chapter": "ch18",
+   "values": {
+    "june": "pairs 20/148 (P3 A0 X17; verdict 3 ruling 17) | unique segs 19 | headword fixes 0/6",
+    "new": "pairs 17/150 (P13 A0 X4; verdict 15 ruling 2) | unique segs 17 | headword fixes 2/6",
+    "hybrid": "pairs 21/150 (P4 A0 X17; verdict 4 ruling 17) | unique segs 20 | headword fixes 0/6",
+    "undecided": "4 terms; prose pairs J18/N18/H18; needing change if ruled July J9/N15/H9, if ruled new J17/N9/H17"
+   }
+  },
+  {
+   "chapter": "ch19",
+   "values": {
+    "june": "pairs 15/26 (P0 A6 X9; verdict 1 ruling 14) | unique segs 15 | headword fixes 1/3",
+    "new": "pairs 5/26 (P0 A0 X5; verdict 5) | unique segs 5 | headword fixes 2/3",
+    "hybrid": "pairs 15/26 (P0 A6 X9; verdict 1 ruling 14) | unique segs 15 | headword fixes 1/3",
+    "undecided": "26 terms; prose pairs J208/N213/H213; needing change if ruled July J153/N193/H158, if ruled new J124/N60/H126"
+   }
+  },
+  {
+   "chapter": "ch20",
+   "values": {
+    "june": "pairs 23/143 (P0 A0 X23; ruling 23) | unique segs 23 | headword fixes 0/7 (June = Aug C56 pilot)",
+    "new": "pairs 35/161 (P0 A19 X16; verdict 26 ruling 9) | unique segs 34 | headword fixes 1/7",
+    "hybrid": "pairs 26/161 (P0 A1 X25; verdict 2 ruling 24) | unique segs 26 | headword fixes 0/7",
+    "undecided": "2 terms; prose pairs J15/N15/H15; needing change if ruled July J12/N13/H12, if ruled new J7/N6/H7"
+   }
+  },
+  {
+   "chapter": "ch21",
+   "values": {
+    "june": "pairs 47/104 (P28 A10 X9; verdict 7 ruling 40; nested-only 4) | unique segs 43 | headword fixes 2/7",
+    "new": "pairs 32/116 (P2 A0 X30; verdict 30 ruling 2) | unique segs 26 | headword fixes 1/7 | 7 untranslated segments",
+    "hybrid": "pairs 53/116 (P29 A10 X14; verdict 13 ruling 40; nested-only 4) | unique segs 48 | headword fixes 2/7",
+    "undecided": "30 terms; prose pairs J141/N157/H157; needing change if ruled July J78/N136/H92, if ruled new J120/N74/H126"
+   }
+  }
+ ],
+ "dataFiles": [
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/burden.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/burden-ruling-alt.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/perchapter.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/nested.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/terms.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/terms-ruling-alt.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/variants.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/corpus.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/summary.md",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/lib.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/load_corpus.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/terms.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/variants.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/burden.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/report.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/heavy.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/nested.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/undecided.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/sensitivity.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/sample.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/sample2.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/census.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/overlap.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/burden/final_agg.py"
+ ]
+}

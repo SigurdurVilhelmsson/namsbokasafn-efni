@@ -1,0 +1,210 @@
+{
+ "about": "Funnel and allocation behind masked-test-pairs.json (plan step 1.7).",
+ "seed": 20261011,
+ "n": 150,
+ "funnel": {
+  "classifier_rows": 22591,
+  "dropped": {
+   "identical as displayed": 6197,
+   "not class 1 (same key, same English)": 4274,
+   "table cell": 2917,
+   "a side untranslated": 23,
+   "HAND REPAIR key": 73,
+   "glossary-term (the headword itself)": 761,
+   "duplicate of an eligible pair (same English and both texts)": 130,
+   "June conversion not clean": 11
+  },
+  "differing_as_displayed": 8205,
+  "excluded_term_in_difference": 6084,
+  "eligible": 2121
+ },
+ "headwords": 779,
+ "distinctiveWords": 1159,
+ "patterns": {
+  "start": 37,
+  "sub": 1096
+ },
+ "topStemsByPairsExcluded": [
+  [
+   "frumeind",
+   941
+  ],
+  [
+   "frumei",
+   941
+  ],
+  [
+   "atóm",
+   914
+  ],
+  [
+   "efnahva",
+   672
+  ],
+  [
+   "efnahvar",
+   672
+  ],
+  [
+   "eind",
+   576
+  ],
+  [
+   "efni",
+   420
+  ],
+  [
+   "mynd",
+   291
+  ],
+  [
+   "hver",
+   227
+  ],
+  [
+   "efnateng",
+   203
+  ],
+  [
+   "annað",
+   202
+  ],
+  [
+   "stig",
+   175
+  ],
+  [
+   "hlut",
+   163
+  ],
+  [
+   "efnafræ",
+   156
+  ],
+  [
+   "sundr",
+   156
+  ],
+  [
+   "jafn",
+   154
+  ],
+  [
+   "efnablan",
+   154
+  ],
+  [
+   "agn",
+   138
+  ],
+  [
+   "verk",
+   137
+  ],
+  [
+   "fræðileg",
+   125
+  ],
+  [
+   "flokk",
+   122
+  ],
+  [
+   "gildi",
+   121
+  ],
+  [
+   "eini",
+   117
+  ],
+  [
+   "svigrúmabland",
+   114
+  ],
+  [
+   "byggi",
+   113
+  ]
+ ],
+ "lengthTertileCuts": [
+  88,
+  179
+ ],
+ "eligibleByChapter": {
+  "appendices": 39,
+  "ch00": 8,
+  "ch01": 147,
+  "ch02": 89,
+  "ch03": 102,
+  "ch04": 104,
+  "ch05": 114,
+  "ch06": 93,
+  "ch07": 73,
+  "ch08": 55,
+  "ch09": 151,
+  "ch10": 114,
+  "ch11": 111,
+  "ch12": 121,
+  "ch13": 120,
+  "ch14": 125,
+  "ch15": 74,
+  "ch16": 64,
+  "ch17": 49,
+  "ch18": 148,
+  "ch19": 70,
+  "ch20": 77,
+  "ch21": 73
+ },
+ "allocationByChapter": {
+  "appendices": 3,
+  "ch00": 1,
+  "ch01": 10,
+  "ch02": 6,
+  "ch03": 7,
+  "ch04": 7,
+  "ch05": 8,
+  "ch06": 7,
+  "ch07": 5,
+  "ch08": 4,
+  "ch09": 11,
+  "ch10": 8,
+  "ch11": 8,
+  "ch12": 9,
+  "ch13": 9,
+  "ch14": 9,
+  "ch15": 5,
+  "ch16": 5,
+  "ch17": 3,
+  "ch18": 10,
+  "ch19": 5,
+  "ch20": 5,
+  "ch21": 5
+ },
+ "eligibleByGroup": {
+  "heading": 130,
+  "para": 871,
+  "list": 144,
+  "exercise": 715,
+  "definition": 131,
+  "caption": 130
+ },
+ "sampleByGroup": {
+  "definition": 10,
+  "caption": 8,
+  "para": 62,
+  "exercise": 51,
+  "heading": 9,
+  "list": 10
+ },
+ "eligibleByLength": {
+  "short": 704,
+  "long": 710,
+  "medium": 707
+ },
+ "sampleByLength": {
+  "medium": 49,
+  "short": 52,
+  "long": 49
+ },
+ "juneIsA": 69
+}
