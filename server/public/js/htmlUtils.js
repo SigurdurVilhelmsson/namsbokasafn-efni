@@ -38,7 +38,10 @@ async function fetchJson(url, options) {
   // 'same-origin' is the right default; explicit callers still win.
   const res = await fetch(url, { credentials: 'same-origin', ...options });
   if (!res.ok) {
-    let msg = 'Villa: HTTP ' + res.status;
+    // No "Villa:" here: callers add their own prefix ("Villa: ", "Mistókst: "), and a bare
+    // display must still read as a sentence. This text shows only when the body is not JSON,
+    // such as nginx's own HTML 413 for an upload over its cap.
+    let msg = 'Netþjónninn svaraði HTTP ' + res.status;
     let data;
     try {
       data = await res.json();

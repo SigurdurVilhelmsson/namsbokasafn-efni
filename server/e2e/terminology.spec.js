@@ -814,6 +814,23 @@ test.describe('Terminology import page: a refused upload says why', () => {
     );
   });
 
+  test('an error page that is not JSON: the alert says "Villa" once', async ({ page }) => {
+    // What nginx sends for a body over its cap: its own HTML 413, which the server never sees.
+    await page.route('**/api/terminology/import/csv**', (route) =>
+      route.fulfill({
+        status: 413,
+        contentType: 'text/html',
+        body: '<html><body><h1>413 Request Entity Too Large</h1></body></html>',
+      })
+    );
+    const text = await refusalAlert(page, {
+      name: 'terms.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\nnonjson-${uid()},orð\n`),
+    });
+    expect(text).toBe('Villa: Netþjónninn svaraði HTTP 413');
+  });
+
   test('a valid CSV, the control: no alert, and the result panel counts it', async ({ page }) => {
     const english = `pagecontrol-${uid()}`;
     const alerts = [];
