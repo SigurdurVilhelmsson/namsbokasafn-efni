@@ -3,8 +3,9 @@
  *
  * multer reports an over-size file as a MulterError carrying a code and a field name, never the
  * limit it enforced, so the app's error handler (middleware/errorHandler.js) cannot say what the
- * limit was. Each upload route has its own: chapter import in books.js takes 10 MB, term import
- * in terminology.js 5 MB. Until 2026-10-24 the handler named "10MB" for both.
+ * limit was. Until 2026-10-24 it named "10MB" for every upload, though term import's limit
+ * (terminology.js) is 5 MB. Term import is the only upload route since chapter import was
+ * retired on 2026-10-25, and it takes one file, so only single() is built here.
  *
  * createUpload() sets multer's limit and the error's from one value, so they cannot drift apart.
  * It refuses to build an upload without a limit: multer's default is no limit at all.
@@ -23,7 +24,7 @@ function isPlainObject(value) {
  * @param {object} options multer's options, plus `fileSize`: the largest file accepted, in bytes.
  *   Do not also pass `limits.fileSize`; `fileSize` is its one source. Any other `limits` must be a
  *   plain object.
- * @returns {{ single(field: string): Function, array(field: string, maxCount: number): Function }}
+ * @returns {{ single(field: string): Function }}
  */
 function createUpload({ fileSize, ...options }) {
   if (!Number.isSafeInteger(fileSize) || fileSize <= 0) {
@@ -50,7 +51,6 @@ function createUpload({ fileSize, ...options }) {
 
   return {
     single: (field) => carryLimit(upload.single(field)),
-    array: (field, maxCount) => carryLimit(upload.array(field, maxCount)),
   };
 }
 

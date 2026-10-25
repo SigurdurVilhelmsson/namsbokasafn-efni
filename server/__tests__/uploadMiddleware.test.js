@@ -27,12 +27,9 @@ describe('createUpload', () => {
     });
   }
 
-  it('builds single() and array() middleware for a positive whole number of bytes (the control)', () => {
+  it('builds single() middleware for a positive whole number of bytes (the control)', () => {
     const upload = createUpload({ storage: multer.memoryStorage(), fileSize: 1024 });
-    expect([typeof upload.single('file'), typeof upload.array('files', 2)]).toEqual([
-      'function',
-      'function',
-    ]);
+    expect(typeof upload.single('file')).toBe('function');
   });
 
   // multer takes a function here too; createUpload would spread it to nothing.

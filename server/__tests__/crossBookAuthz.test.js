@@ -458,23 +458,33 @@ describe('activityLog call-shape sites actually execute end-to-end (G5, Importan
   });
 });
 
-describe('chapter markdown-import is head-editor-of-book scoped (SA-11 rider)', () => {
-  const IMPORT = '/api/books/liffraedi-2e/chapters/1/import';
-  it('plain editor → 403 (was allowed before this change)', async () => {
-    const res = await post(IMPORT, EDITOR, {});
-    expect(res.status).toBe(403);
-  });
-  it('head-editor of another book → 403', async () => {
-    const res = await post(IMPORT, HE_A, {});
-    expect(res.status).toBe(403);
-  });
-  it('owning head-editor clears authz (400 no-files, never 401/403)', async () => {
-    const res = await post(IMPORT, HE_B, {});
-    expect(res.status).toBe(400);
-  });
-  it('admin clears authz (400 no-files)', async () => {
-    const res = await post(IMPORT, ADMIN, {});
-    expect(res.status).toBe(400);
+// Retired 2026-10-25 with the chapter file registry: it could hold one file per type per chapter,
+// so it never represented a chapter's per-section files, and no page called any of these routes.
+// Each must now fall through to the app's 404, even for an admin, who cleared every guard they
+// had. The control is a sibling route on the same router, so the 404s cannot come from a router
+// that is not mounted or a book the fixture lacks.
+describe('chapter import and the chapter file registry are retired (2026-10-25)', () => {
+  const CH = '/api/books/liffraedi-2e/chapters/1';
+  for (const [method, pathname] of [
+    ['POST', `${CH}/import`],
+    ['GET', `${CH}/files`],
+    ['POST', `${CH}/files/scan`],
+    ['DELETE', `${CH}/files`],
+    ['GET', '/api/books/liffraedi-2e/files/summary'],
+  ]) {
+    it(`${method} ${pathname.replace('/api/books/liffraedi-2e', '')} → 404 even for admin`, async () => {
+      const send = {
+        POST: (p) => post(p, ADMIN, {}),
+        GET: (p) => get(p, ADMIN),
+        DELETE: (p) => del(p, ADMIN),
+      };
+      const res = await send[method](pathname);
+      expect(res.status).toBe(404);
+    });
+  }
+  it('the control: a sibling route on the same router still answers the admin with 200', async () => {
+    const res = await get(`${CH}/faithful-count`, ADMIN);
+    expect(res.status).toBe(200);
   });
 });
 
