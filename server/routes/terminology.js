@@ -1090,6 +1090,9 @@ router.post(
     if (!bookSlug) {
       return res.status(400).json({ error: 'Missing bookSlug' });
     }
+    // Before the path is built from it: a slug holding `..` would reach any
+    // terminology-en-is.csv on the machine.
+    if (!VALID_BOOKS.includes(bookSlug)) return res.status(400).json(INVALID_BOOK);
 
     const glossaryPath = path.join(
       __dirname,

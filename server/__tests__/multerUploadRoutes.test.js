@@ -37,6 +37,7 @@
 import { mkdtempSync, rmSync, readdirSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { createRequire } from 'node:module';
 
@@ -553,4 +554,68 @@ describe('POST /api/terminology/import/*: the book the import page picks', () =>
       ]);
     });
   }
+});
+
+/**
+ * POST /api/terminology/import/existing-glossary builds a path from the body's bookSlug:
+ * books/<bookSlug>/glossary/terminology-en-is.csv. It checked only that the file existed, so a
+ * slug holding `..` reached any terminology-en-is.csv on the machine (logged 2026-10-24). The slug
+ * must now be a registered book, checked before any path is built.
+ */
+describe('POST /api/terminology/import/existing-glossary: the book is checked first', () => {
+  const BOOKS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'books');
+
+  async function postJson(urlPath, body) {
+    const res = await fetch(base + urlPath, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${personas.headEditor.token}`,
+      },
+    });
+    return { status: res.status, json: await res.json().catch(() => null) };
+  }
+  const translationsOf = (english) =>
+    db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM terminology_translations t
+           JOIN terminology_headwords h ON h.id = t.headword_id WHERE h.english = ?`
+      )
+      .get(english).n;
+
+  it('refuses a slug that walks out of books/ to another glossary file, and imports nothing', async () => {
+    // A real file the walk reaches: before the check, the route imported it.
+    const outside = path.join(work, 'outside-books');
+    fsCjs.mkdirSync(path.join(outside, 'glossary'), { recursive: true });
+    fsCjs.writeFileSync(
+      path.join(outside, 'glossary', 'terminology-en-is.csv'),
+      'english,icelandic\nc21d walked out,útrás\n'
+    );
+    const bookSlug = path.relative(BOOKS_DIR, outside);
+    expect(bookSlug.startsWith('..')).toBe(true);
+
+    const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug });
+    expect([res.status, res.json?.error, translationsOf('c21d walked out')]).toEqual([
+      400,
+      'Invalid book',
+      0,
+    ]);
+  });
+
+  for (const [what, bookSlug] of [
+    ['a slug no book has', 'no-such-book'],
+    ['a list, not a slug', [FIXTURE]],
+  ]) {
+    it(`refuses ${what} with 400`, async () => {
+      const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug });
+      expect([res.status, res.json?.error]).toEqual([400, 'Invalid book']);
+    });
+  }
+
+  it('lets a registered book through to the file check (the control)', async () => {
+    // The fixture is registered and has no glossary file: the answer is the file check's.
+    const res = await postJson('/api/terminology/import/existing-glossary', { bookSlug: FIXTURE });
+    expect([res.status, res.json?.error]).toEqual([404, 'Glossary not found']);
+  });
 });
