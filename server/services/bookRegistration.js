@@ -26,6 +26,30 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 
 /**
+ * A book slug: lowercase letters and digits in runs joined by single hyphens (efnafraedi-2e).
+ * It becomes directory names under books/ (the book's tree, and its source folder when a
+ * registration fetches the source), so nothing else may reach the filesystem: no `..`, `/`,
+ * `.`, capitals, underscores or accents. Every slug in use already fits (2026-10-25).
+ */
+const BOOK_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+/** @param {unknown} slug @returns {boolean} */
+function isValidBookSlug(slug) {
+  return typeof slug === 'string' && BOOK_SLUG.test(slug);
+}
+
+/** A slug registration refuses; a route answers it with a 400. */
+class InvalidSlugError extends Error {
+  constructor(slug) {
+    super(
+      `Invalid book slug ${JSON.stringify(slug)}: use lowercase letters, digits and single hyphens, ` +
+        'such as efnafraedi-2e.'
+    );
+    this.name = 'InvalidSlugError';
+  }
+}
+
+/**
  * Initialize database connection
  */
 function getDb() {
@@ -100,6 +124,8 @@ async function registerBook(options) {
   if (!catalogueSlug || !slug || !titleIs || !registeredBy) {
     throw new Error('catalogueSlug, slug, titleIs, and registeredBy are required');
   }
+  // Before anything reads or writes a path, or the catalogue: the slug names directories.
+  if (!isValidBookSlug(slug)) throw new InvalidSlugError(slug);
 
   // Validate catalogue entry exists
   const catalogueEntry = openstaxCatalogue.getCatalogueEntry(catalogueSlug);
@@ -1351,6 +1377,8 @@ module.exports = {
   assignLinguisticReviewer,
   assignLocalizer,
   createBookDirectories,
+  isValidBookSlug,
+  InvalidSlugError,
   scanAndUpdateStatus,
   scanStatusDryRun,
   countFaithfulModules,
