@@ -1,0 +1,38 @@
+{
+ "answered": 150,
+ "pairs": 150,
+ "unanswered": 0,
+ "rejectedRows": 0,
+ "tally": {
+  "june": 66,
+  "sept": 66,
+  "equal": 5,
+  "both_wrong": 13
+ },
+ "decisive": 132,
+ "juneShare": 0.5,
+ "juneShareWilsonLow95": 0.4159,
+ "minJuneWinsForThisN": 80,
+ "excluded": 48,
+ "tallyAfterExclusion": {
+  "june": 45,
+  "sept": 48,
+  "equal": 2,
+  "both_wrong": 7
+ },
+ "decisiveAfterExclusion": 93,
+ "juneShareAfterExclusion": 0.4839,
+ "juneShareWilsonLow95AfterExclusion": 0.385,
+ "minJuneWinsAfterExclusion": 56,
+ "firesAll": false,
+ "firesAfterExclusion": false,
+ "septGuess": {
+  "right": 31,
+  "wrong": 36,
+  "unsure": 83
+ },
+ "guessCorrectShare": 0.4627,
+ "guessWilsonLow95": 0.3486,
+ "maskingFailed": false,
+ "verdict": "NO OVERRIDE: base stays the September MT."
+}
