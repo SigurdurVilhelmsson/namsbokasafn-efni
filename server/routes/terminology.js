@@ -853,16 +853,6 @@ const INVALID_BOOK = {
 };
 
 /**
- * The subject tags an upload's new translations get, from its query.
- *
- * The import page sends the book it imports for as `bookSlug`; that book's subject tags the
- * terms, as the glossary import always did. An explicit `subjects` list (API callers) still
- * decides. A `bookSlug` that names no registered book is refused rather than imported untagged.
- *
- * @param {object} query - req.query
- * @returns {{ subjects: string[] } | { refusal: typeof INVALID_BOOK }}
- */
-/**
  * A 400 body when `err` is the CSV parser refusing the upload, else null.
  *
  * A file the parser cannot read is the uploader's to fix, so it is a 400 that repeats the
@@ -880,8 +870,25 @@ function invalidCsv(err) {
   return { error: 'Invalid CSV', message: `The file could not be read as CSV: ${err.message}` };
 }
 
+const INVALID_SUBJECTS = {
+  error: 'Invalid subjects',
+  message: 'Send subjects once, as one comma-separated value.',
+};
+
+/**
+ * The subject tags an upload's new translations get, from its query.
+ *
+ * The import page sends the book it imports for as `bookSlug`; that book's subject tags the
+ * terms, as the glossary import always did. An explicit `subjects` list (API callers) still
+ * decides. A `bookSlug` that names no registered book is refused rather than imported untagged,
+ * and so is a repeated `subjects` key, which reaches here as a list rather than the one value.
+ *
+ * @param {object} query - req.query
+ * @returns {{ subjects: string[] } | { refusal: { error: string, message: string } }}
+ */
 function importSubjects({ subjects, bookSlug }) {
   if (bookSlug !== undefined && !VALID_BOOKS.includes(bookSlug)) return { refusal: INVALID_BOOK };
+  if (subjects !== undefined && typeof subjects !== 'string') return { refusal: INVALID_SUBJECTS };
   if (typeof subjects === 'string' && subjects.trim() !== '') {
     return { subjects: subjects.split(',').map((s) => s.trim()) };
   }
