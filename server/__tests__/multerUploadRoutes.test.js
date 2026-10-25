@@ -55,6 +55,7 @@ const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, createUpload's fileSize
 // A slug no real book uses, registered in the test's own database so the head editor's book is
 // a real one. Nothing here writes under books/.
 const FIXTURE = 'c557-multer-fixture';
+const FIXTURE_SUBJECT = 'chemistry';
 
 let db;
 let auth;
@@ -110,10 +111,17 @@ beforeAll(async () => {
   const catalogue = db
     .prepare('INSERT INTO openstax_catalogue (slug, title) VALUES (?, ?)')
     .run(`${FIXTURE}-cat`, 'Multer fixture book');
-  db.prepare(
-    `INSERT INTO registered_books (catalogue_id, slug, title_is, registered_by, status)
-     VALUES (?, ?, ?, 'u-test', 'active')`
-  ).run(catalogue.lastInsertRowid, FIXTURE, 'Prófbók fyrir upphal');
+  const book = db
+    .prepare(
+      `INSERT INTO registered_books (catalogue_id, slug, title_is, registered_by, status)
+       VALUES (?, ?, ?, 'u-test', 'active')`
+    )
+    .run(catalogue.lastInsertRowid, FIXTURE, 'Prófbók fyrir upphal');
+  // Its subject, as the admin page maps a registered book: what an import under it is tagged.
+  db.prepare('INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (?, ?)').run(
+    book.lastInsertRowid,
+    FIXTURE_SUBJECT
+  );
   require('../config').refreshValidBooks(db);
 
   personas.headEditor = signIn(member('he', 'head-editor', FIXTURE));
@@ -439,5 +447,110 @@ describe('POST /api/terminology/import/*: memory storage', () => {
         expect([res.status, stored(`c557 order ${route}`)]).toEqual([status, []]);
       });
     }
+  }
+});
+
+/**
+ * The import page sends the book it is importing for as `?bookSlug=` (its book picker). The
+ * glossary route always read it; the CSV and Excel routes read only `subjects`, which the page
+ * never sends, so every page import landed untagged whatever book was chosen (logged
+ * 2026-10-24, fixed 2026-10-25). The book now gives the subject, a book that is not registered is
+ * refused, and an explicit `subjects` list, which API callers send, still decides.
+ */
+describe('POST /api/terminology/import/*: the book the import page picks', () => {
+  const subjectsOf = (english) =>
+    db
+      .prepare(
+        `SELECT ts.subject FROM terminology_translation_subjects ts
+           JOIN terminology_translations t ON t.id = ts.translation_id
+           JOIN terminology_headwords h ON h.id = t.headword_id
+          WHERE h.english = ? ORDER BY ts.subject`
+      )
+      .all(english)
+      .map((r) => r.subject);
+  const translationsOf = (english) =>
+    db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM terminology_translations t
+           JOIN terminology_headwords h ON h.id = t.headword_id WHERE h.english = ?`
+      )
+      .get(english).n;
+  const oneCsv = (english) => [
+    { name: 'terms.csv', bytes: Buffer.from(`english,icelandic\r\n${english},bókað\r\n`, 'utf8') },
+  ];
+  function oneXlsx(english) {
+    const XLSX = require('xlsx');
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      workbook,
+      XLSX.utils.aoa_to_sheet([
+        ['English', 'Icelandic'],
+        [english, 'bókað'],
+      ]),
+      'Terms'
+    );
+    return [
+      { name: 'terms.xlsx', bytes: XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' }) },
+    ];
+  }
+
+  it("a CSV imported under a book is tagged with that book's subject", async () => {
+    const res = await upload(`/api/terminology/import/csv?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv booked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d csv booked')]).toEqual([
+      200,
+      1,
+      [FIXTURE_SUBJECT],
+    ]);
+  });
+
+  it("an .xlsx imported under a book is tagged with that book's subject", async () => {
+    const res = await upload(`/api/terminology/import/excel?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneXlsx('c21d xlsx booked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d xlsx booked')]).toEqual([
+      200,
+      1,
+      [FIXTURE_SUBJECT],
+    ]);
+  });
+
+  it('a CSV imported with no book stays untagged (the control)', async () => {
+    const res = await upload('/api/terminology/import/csv', {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv unbooked'),
+    });
+    expect([res.status, res.json?.added, subjectsOf('c21d csv unbooked')]).toEqual([200, 1, []]);
+  });
+
+  it('an explicit subjects list still decides over the book', async () => {
+    const res = await upload(`/api/terminology/import/csv?subjects=physics&bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: oneCsv('c21d csv explicit'),
+    });
+    expect([res.status, subjectsOf('c21d csv explicit')]).toEqual([200, ['physics']]);
+  });
+
+  for (const route of ['csv', 'excel', 'glossary']) {
+    it(`/import/${route}: refuses a book that is not registered, and imports nothing`, async () => {
+      const english = `c21d ${route} unregistered`;
+      const res = await upload(`/api/terminology/import/${route}?bookSlug=no-such-book`, {
+        as: 'headEditor',
+        field: 'file',
+        files: route === 'excel' ? oneXlsx(english) : oneCsv(english),
+      });
+      expect([res.status, res.json?.error, translationsOf(english)]).toEqual([
+        400,
+        'Invalid book',
+        0,
+      ]);
+    });
   }
 });
