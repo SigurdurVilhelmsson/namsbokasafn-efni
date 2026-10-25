@@ -10,6 +10,10 @@
 // same sink). The two controls below are what make a pass mean something: a
 // sink that rejects the recipient must turn the result false, and an
 // unconfigured transport must never open a connection.
+//
+// The sink can announce PIPELINING (2026-10-24, with nodemailer 10.0.13 → 10.2.1):
+// from 10.1.0 nodemailer sends MAIL, RCPT and DATA in one batch when a server
+// announces it, as real submission servers do, so the sink checks both paths.
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 import net from 'net';
@@ -18,17 +22,46 @@ const { sendEmail } = require('../services/notifications');
 
 const SMTP_KEYS = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'SMTP_FROM', 'SMTP_SECURE'];
 
+// Each reply is held this long, so a client that sends its next command without waiting for
+// the reply (PIPELINING) is seen doing so, however TCP happens to split or merge the writes.
+const REPLY_DELAY_MS = 5;
+
 /**
  * Minimal SMTP server: EHLO (AUTH PLAIN, no STARTTLS), AUTH, MAIL, RCPT, DATA, QUIT.
- * @param {{ rejectRcpt?: boolean }} opts
+ *
+ * `pipelining` announces PIPELINING, as a real submission server does; nodemailer 10.1.0 and
+ * later then send MAIL, RCPT and DATA in one batch. `seen.overlapped` counts envelope commands
+ * that arrived while a reply was still owed: never for a client that waits, always for one that
+ * pipelines. DATA after no accepted recipient is refused with 554 (RFC 2920), not opened.
+ * @param {{ rejectRcpt?: boolean, pipelining?: boolean }} opts
  * @returns {Promise<{ port: number, seen: object, close: () => Promise<void> }>}
  */
-function startSink({ rejectRcpt = false } = {}) {
-  const seen = { connections: 0, auth: null, mailFrom: null, rcpt: [], data: null };
+function startSink({ rejectRcpt = false, pipelining = false } = {}) {
+  const seen = {
+    connections: 0,
+    auth: null,
+    mailFrom: null,
+    rcpt: [],
+    data: null,
+    overlapped: 0,
+  };
   const server = net.createServer((sock) => {
     seen.connections += 1;
     let buf = '';
     let inData = false;
+    let accepted = 0;
+    let owed = 0;
+    const reply = (text, end = false) => {
+      owed += 1;
+      setTimeout(() => {
+        owed -= 1;
+        if (!sock.writable) return;
+        if (end) sock.end(text);
+        else sock.write(text);
+      }, REPLY_DELAY_MS);
+    };
+    // A client that resets the connection must not crash the run with an unhandled error.
+    sock.on('error', () => {});
     sock.write('220 sink ESMTP\r\n');
     sock.on('data', (chunk) => {
       buf += chunk.toString('utf8');
@@ -38,31 +71,41 @@ function startSink({ rejectRcpt = false } = {}) {
         seen.data = buf.slice(0, end);
         buf = buf.slice(end + 5);
         inData = false;
-        sock.write('250 OK queued\r\n');
+        reply('250 OK queued\r\n');
       }
       let i;
       while (!inData && (i = buf.indexOf('\r\n')) !== -1) {
         const line = buf.slice(0, i);
         buf = buf.slice(i + 2);
         const cmd = line.toUpperCase();
-        if (cmd.startsWith('EHLO')) sock.write('250-sink\r\n250-AUTH PLAIN\r\n250 8BITMIME\r\n');
-        else if (cmd.startsWith('AUTH PLAIN')) {
+        if (/^(MAIL FROM|RCPT TO|DATA$)/.test(cmd) && owed > 0) seen.overlapped += 1;
+        if (cmd.startsWith('EHLO')) {
+          const ext = pipelining ? '250-PIPELINING\r\n' : '';
+          reply(`250-sink\r\n${ext}250-AUTH PLAIN\r\n250 8BITMIME\r\n`);
+        } else if (cmd.startsWith('AUTH PLAIN')) {
           seen.auth = Buffer.from(line.split(' ')[2] || '', 'base64')
             .toString('utf8')
             .split('\0');
-          sock.write('235 Authentication successful\r\n');
+          reply('235 Authentication successful\r\n');
         } else if (cmd.startsWith('MAIL FROM')) {
           seen.mailFrom = line;
-          sock.write('250 OK\r\n');
+          reply('250 OK\r\n');
         } else if (cmd.startsWith('RCPT TO')) {
           seen.rcpt.push(line);
-          sock.write(rejectRcpt ? '550 no such user\r\n' : '250 OK\r\n');
+          if (!rejectRcpt) accepted += 1;
+          reply(rejectRcpt ? '550 no such user\r\n' : '250 OK\r\n');
         } else if (cmd === 'DATA') {
-          inData = true;
-          sock.write('354 go ahead\r\n');
-        } else if (cmd === 'QUIT') sock.end('221 bye\r\n');
-        else if (cmd === 'RSET' || cmd === 'NOOP') sock.write('250 OK\r\n');
-        else sock.write('502 unknown\r\n');
+          if (accepted === 0) reply('554 no valid recipients\r\n');
+          else {
+            inData = true;
+            reply('354 go ahead\r\n');
+          }
+        } else if (cmd === 'QUIT') reply('221 bye\r\n', true);
+        else if (cmd === 'RSET') {
+          accepted = 0;
+          reply('250 OK\r\n');
+        } else if (cmd === 'NOOP') reply('250 OK\r\n');
+        else reply('502 unknown\r\n');
       }
     });
   });
@@ -139,6 +182,50 @@ describe('sendEmail through a local SMTP sink', () => {
 
   it('carries the html body', () => {
     expect(sink.seen.data).toContain('<p>html body 42</p>');
+  });
+
+  it('waited for each reply, since this sink announces no PIPELINING (the control below)', () => {
+    expect(sink.seen.overlapped).toBe(0);
+  });
+});
+
+// A real submission server announces PIPELINING, and from 10.1.0 nodemailer then sends the
+// envelope in one batch: a different path from the one above, and the one production would take.
+describe('sendEmail through a sink that announces PIPELINING', () => {
+  let sink;
+  let result;
+  beforeAll(async () => {
+    sink = await startSink({ pipelining: true });
+    configureSmtp(sink.port);
+    result = await sendEmail('to@example.test', 'Pipelined 7', '<p>html 7</p>', 'text 7');
+  });
+  afterAll(() => sink.close());
+
+  it('reports the message as sent', () => {
+    expect(result).toBe(true);
+  });
+
+  it('sent the envelope without waiting for each reply: the pipelined path ran', () => {
+    expect(sink.seen.overlapped).toBeGreaterThan(0);
+  });
+
+  it('addresses the one recipient and carries the subject and text', () => {
+    const data = sink.seen.data ?? '';
+    expect([sink.seen.rcpt, /^Subject: Pipelined 7$/m.test(data), data.includes('text 7')]).toEqual(
+      [['RCPT TO:<to@example.test>'], true, true]
+    );
+  });
+
+  it('returns false when the server rejects the recipient in the batch', async () => {
+    const rejecting = await startSink({ pipelining: true, rejectRcpt: true });
+    configureSmtp(rejecting.port);
+    try {
+      const sent = await sendEmail('to@example.test', 's', '<p>h</p>', 't');
+      // overlapped > 0: the refusal came back on the pipelined path, not the old one.
+      expect([sent, rejecting.seen.overlapped > 0]).toEqual([false, true]);
+    } finally {
+      await rejecting.close();
+    }
   });
 });
 
