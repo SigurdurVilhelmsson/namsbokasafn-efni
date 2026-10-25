@@ -803,6 +803,17 @@ test.describe('Terminology import page: a refused upload says why', () => {
     expect(text).toBe('Villa: File Too Large — Uploaded file exceeds the size limit (5 MB)');
   });
 
+  test('a CSV the parser cannot read: the alert says so, and why', async ({ page }) => {
+    const text = await refusalAlert(page, {
+      name: 'broken.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\n"unclosed-${uid()},orð\n`),
+    });
+    expect(text).toMatch(
+      /^Villa: Invalid CSV — The file could not be read as CSV: Quote Not Closed: /
+    );
+  });
+
   test('a valid CSV, the control: no alert, and the result panel counts it', async ({ page }) => {
     const english = `pagecontrol-${uid()}`;
     const alerts = [];

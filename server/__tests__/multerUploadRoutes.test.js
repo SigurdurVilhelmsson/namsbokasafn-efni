@@ -283,19 +283,68 @@ describe('POST /api/terminology/import/*: memory storage', () => {
     }
   }
 
-  it('leaves no temp file behind when the CSV import throws', async () => {
-    // An unclosed quote: the parser throws inside the importer, after the temp file is written.
-    const { res, made, left } = await importCsvWatchingTemp(
-      'bad.csv',
-      Buffer.from('english,icelandic\r\n"c557 quote,orð', 'utf8')
-    );
-    expect([res.status, res.json?.error, made, left, stored('c557 quote')]).toEqual([
-      500,
-      'Failed to import CSV',
-      [{ inWatchedDir: true, existsAfter: false }],
-      [],
-      [],
-    ]);
+  // A file the parser cannot read is the uploader's to fix: a 400 that says what the parser said
+  // (it was a 500 until 2026-10-25, whose reason the page could not show). Each kind of fault the
+  // parser names is here, one of them under a code without the CSV_ prefix, so a check on the
+  // prefix rather than the parser's error class would miss it. The parser throws inside the
+  // importer, after the temp file is written, so each case also watches the temp file.
+  for (const [fault, text, says] of [
+    ['an unclosed quote', 'english,icelandic\r\n"c21d quote,orð', 'Quote Not Closed'],
+    [
+      'a row with a third field',
+      'english,icelandic\r\nc21d fields,orð,auka\r\n',
+      'Invalid Record Length',
+    ],
+    [
+      'a quote inside a field',
+      'english,icelandic\r\nc21d mid"quote,orð\r\n',
+      'Invalid Opening Quote',
+    ],
+  ]) {
+    it(`refuses a CSV with ${fault} with 400 saying why, and leaves no temp file`, async () => {
+      const { res, made, left } = await importCsvWatchingTemp('bad.csv', Buffer.from(text, 'utf8'));
+      expect([res.status, res.json?.error, made, left, stored('c21d ')]).toEqual([
+        400,
+        'Invalid CSV',
+        [{ inWatchedDir: true, existsAfter: false }],
+        [],
+        [],
+      ]);
+      expect(res.json?.message).toMatch(new RegExp(`^The file could not be read as CSV: ${says}`));
+    });
+  }
+
+  it('answers 500 when the import fails for a reason that is not the file, and leaves no temp file', async () => {
+    const terminologyService = require('../services/terminologyService');
+    const failing = vi.spyOn(terminologyService, 'importFromCSV').mockImplementation(() => {
+      throw new Error('disk full');
+    });
+    try {
+      const { res, made, left } = await importCsvWatchingTemp('ok.csv', csv(['c21d disk,orð']));
+      expect([res.status, res.json?.error, made, left]).toEqual([
+        500,
+        'Failed to import CSV',
+        [{ inWatchedDir: true, existsAfter: false }],
+        [],
+      ]);
+    } finally {
+      failing.mockRestore();
+    }
+  });
+
+  it('refuses a glossary upload the parser cannot read with 400 saying why', async () => {
+    const res = await upload(`/api/terminology/import/glossary?bookSlug=${FIXTURE}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: [
+        {
+          name: 'glossary.csv',
+          bytes: Buffer.from('english,icelandic\r\n"c21d gloss,orð', 'utf8'),
+        },
+      ],
+    });
+    expect([res.status, res.json?.error, stored('c21d gloss')]).toEqual([400, 'Invalid CSV', []]);
+    expect(res.json?.message).toMatch(/^The file could not be read as CSV: Quote Not Closed/);
   });
 
   it('leaves no temp file behind when the CSV import succeeds (the control)', async () => {

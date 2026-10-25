@@ -862,6 +862,24 @@ const INVALID_BOOK = {
  * @param {object} query - req.query
  * @returns {{ subjects: string[] } | { refusal: typeof INVALID_BOOK }}
  */
+/**
+ * A 400 body when `err` is the CSV parser refusing the upload, else null.
+ *
+ * A file the parser cannot read is the uploader's to fix, so it is a 400 that repeats the
+ * parser's reason, not a 500 (whose message the error handler withholds). Decided by the
+ * parser's error class: its codes do not share a prefix (INVALID_OPENING_QUOTE has no CSV_).
+ */
+function invalidCsv(err) {
+  let CsvError;
+  try {
+    ({ CsvError } = require('csv-parse/sync'));
+  } catch {
+    return null;
+  }
+  if (!(err instanceof CsvError)) return null;
+  return { error: 'Invalid CSV', message: `The file could not be read as CSV: ${err.message}` };
+}
+
 function importSubjects({ subjects, bookSlug }) {
   if (bookSlug !== undefined && !VALID_BOOKS.includes(bookSlug)) return { refusal: INVALID_BOOK };
   if (typeof subjects === 'string' && subjects.trim() !== '') {
@@ -919,6 +937,8 @@ router.post(
 
       res.json(result);
     } catch (err) {
+      const refusal = invalidCsv(err);
+      if (refusal) return res.status(400).json(refusal);
       log.error({ err }, 'CSV import error');
       res.status(500).json({ error: 'Failed to import CSV', message: err.message });
     } finally {
@@ -987,6 +1007,8 @@ router.post(
 
       res.json(result);
     } catch (err) {
+      const refusal = invalidCsv(err);
+      if (refusal) return res.status(400).json(refusal);
       log.error({ err }, 'Glossary import error');
       res.status(500).json({ error: 'Failed to import glossary', message: err.message });
     }
