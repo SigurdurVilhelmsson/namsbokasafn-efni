@@ -92,13 +92,10 @@ books/efnafraedi/pipeline-test/
 
 # Test artifacts (created by test suite)
 books/testbook/
-# server/__tests__/multerUploadRoutes.test.js imports into this book; a killed run can leave it
-books/c557-multer-fixture/
-# server/__tests__/registerAppendixSections.test.js writes a book and its catalogue file, and
-# booksFilesRoutesAppendices.test.js a scan fixture; a killed run can leave them
+# server/__tests__/registerAppendixSections.test.js writes a book and its catalogue file; a
+# killed run can leave them
 books/c1b-test-book/
 server/data/c1b-test-cat.json
-books/c1c-scan-fixture/
 *:Zone.Identifier
 Chemistry2e-WEB.pdf
 Screenshot*.png

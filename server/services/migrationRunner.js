@@ -81,6 +81,7 @@ function runAllMigrations() {
     require('../migrations/049-register-remaining-books'),
     require('../migrations/050-figure-review'),
     require('../migrations/051-house-style-terms'),
+    require('../migrations/052-retire-chapter-generated-files'),
   ];
 
   let applied = 0;

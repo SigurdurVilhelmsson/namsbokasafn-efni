@@ -76,13 +76,8 @@
 | GET | `/` |
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
-| GET | `/:bookId/chapters/:chapter/files` |
-| POST | `/:bookId/chapters/:chapter/files/scan` |
-| DELETE | `/:bookId/chapters/:chapter/files` |
-| GET | `/:bookId/files/summary` |
 | GET | `/:bookId/download` |
 | GET | `/:book/chapters/:chapter/faithful-count` |
-| POST | `/:bookId/chapters/:chapter/import` |
 
 ## /feedback
 

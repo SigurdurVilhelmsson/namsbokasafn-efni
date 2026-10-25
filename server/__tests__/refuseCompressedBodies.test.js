@@ -115,8 +115,8 @@ describe('refuseCompressedBodies', () => {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Encoding': 'br',
     });
-    // multer routes (books, terminology) parse multipart themselves; the guard
-    // runs before every route, so it covers them too.
+    // the multer route (terminology) parses multipart itself; the guard
+    // runs before every route, so it covers that one too.
     const multipart = await post(app, brotliCompressSync(Buffer.from('--x--')), {
       'Content-Type': 'multipart/form-data; boundary=x',
       'Content-Encoding': 'br',
