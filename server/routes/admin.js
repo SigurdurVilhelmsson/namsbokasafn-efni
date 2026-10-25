@@ -202,6 +202,13 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       message: 'catalogueSlug, slug, and titleIs are required',
     });
   }
+  // Before the duplicate check, which would read a bad slug as "not registered" and go on.
+  if (!bookRegistration.isValidBookSlug(slug)) {
+    return res.status(400).json({
+      error: 'Invalid slug',
+      message: 'Use lowercase letters, digits and single hyphens, such as efnafraedi-2e.',
+    });
+  }
 
   // Idempotency guard: prevent duplicate registration from repeated clicks.
   // Uses the catalogue-independent check — getRegisteredBook's catalogue
@@ -281,6 +288,9 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
 
     res.json(result);
   } catch (err) {
+    if (err instanceof bookRegistration.InvalidSlugError) {
+      return res.status(400).json({ error: 'Invalid slug', message: err.message });
+    }
     log.error({ err }, 'Register book error');
 
     if (err.message.includes('already registered') || err.message.includes('already in use')) {
