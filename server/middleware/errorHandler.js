@@ -8,12 +8,38 @@
  * over-size or unexpected-field upload with 500. __tests__/errorHandler.test.js calls it
  * directly, and __tests__/startup.test.js checks that index.js still mounts it, last.
  *
- * Two known gaps were kept as they were, because the move changes no behaviour: the 413 message
- * names 10MB for every route, though terminology's upload limit is 5 MB; and a multer fileFilter
- * refusal is a plain Error with no status, so it reaches the client as a generic 500.
+ * The 413 names the limit of the route that refused: middleware/upload.js carries it on the
+ * error as `limitBytes`. An error without one gets no number rather than a guessed one. A multer
+ * fileFilter refusal reaches the generic branch below; each route's filter gives its Error
+ * `status: 400`, so the client gets a 400 carrying the filter's message rather than a generic 500.
  */
 
 const log = require('../lib/logger');
+
+const KB = 1024;
+const MB = 1024 * KB;
+
+/**
+ * A byte count written exactly, never rounded: in MB when it is a whole or one-decimal number of
+ * MB, else in KB when it is a whole number of KB, else in bytes. A rounded figure could name a
+ * limit above the real one, and then a file under the stated limit would be refused.
+ */
+function exactSize(bytes) {
+  // A one-decimal number of MB is a multiple of half an MB (10 = 2 x 5, and 5 shares no factor
+  // with 2^20). The tests are integer remainders, exact for every safe integer; a float test
+  // such as Number.isInteger((bytes / MB) * 10) misreads some counts above 2^51.
+  if (bytes % (MB / 2) === 0) return `${bytes / MB} MB`;
+  if (bytes % KB === 0) return `${bytes / KB} KB`;
+  return `${bytes} bytes`;
+}
+
+/** "Uploaded file exceeds the size limit (5 MB)", or no number when the error carries none. */
+function fileTooLargeMessage(limitBytes) {
+  if (!Number.isSafeInteger(limitBytes) || limitBytes <= 0) {
+    return 'Uploaded file exceeds the size limit';
+  }
+  return `Uploaded file exceeds the size limit (${exactSize(limitBytes)})`;
+}
 
 // Error handler (next is required by Express error handler signature)
 function errorHandler(err, req, res, _next) {
@@ -23,7 +49,7 @@ function errorHandler(err, req, res, _next) {
   if (err.code === 'LIMIT_FILE_SIZE') {
     return res.status(413).json({
       error: 'File Too Large',
-      message: 'Uploaded file exceeds size limit (10MB)',
+      message: fileTooLargeMessage(err.limitBytes),
     });
   }
 

@@ -60,11 +60,38 @@ describe('errorHandler', () => {
     });
   });
 
-  it("answers multer's LIMIT_FILE_SIZE with 413", () => {
-    // The message is not pinned: it says 10MB on every route, a known gap (terminology's
-    // limit is 5 MB), and fixing it must not turn this test red.
-    const { status, body } = handle(new MulterError('LIMIT_FILE_SIZE', 'file'));
-    expect([status, body.error]).toEqual([413, 'File Too Large']);
+  it("answers multer's LIMIT_FILE_SIZE with 413, naming the limit the error carries", () => {
+    // middleware/upload.js stamps each route's own limit on the error.
+    const err = Object.assign(new MulterError('LIMIT_FILE_SIZE', 'file'), {
+      limitBytes: 5 * 1024 * 1024,
+    });
+    expect(handle(err)).toEqual({
+      status: 413,
+      body: { error: 'File Too Large', message: 'Uploaded file exceeds the size limit (5 MB)' },
+    });
+  });
+
+  // Each limit is written exactly; none is rounded, so none can read as larger than it is.
+  for (const [limitBytes, shown] of [
+    [10 * 1024 * 1024, '10 MB'],
+    [1.5 * 1024 * 1024, '1.5 MB'],
+    [2.75 * 1024 * 1024, '2816 KB'], // not "2.8 MB", which is above the limit
+    [100 * 1024, '100 KB'],
+    [1_500_000, '1500000 bytes'], // not "1.4 MB", nor a whole number of KB
+    // A float test of "one decimal of MB" reads this as 2147483648.3 MB; it is not.
+    [2 ** 51 + 314573, '2251799813999821 bytes'],
+  ]) {
+    it(`writes a limit of ${limitBytes} bytes as "${shown}"`, () => {
+      const err = Object.assign(new MulterError('LIMIT_FILE_SIZE', 'file'), { limitBytes });
+      expect(handle(err).body.message).toBe(`Uploaded file exceeds the size limit (${shown})`);
+    });
+  }
+
+  it('names no number when the error carries no limit, rather than guess one', () => {
+    expect(handle(new MulterError('LIMIT_FILE_SIZE', 'file'))).toEqual({
+      status: 413,
+      body: { error: 'File Too Large', message: 'Uploaded file exceeds the size limit' },
+    });
   });
 
   it("answers multer's LIMIT_UNEXPECTED_FILE with 400", () => {

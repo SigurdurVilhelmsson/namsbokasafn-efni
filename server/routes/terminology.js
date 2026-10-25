@@ -14,9 +14,11 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
+const { createUpload } = require('../middleware/upload');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
 const seed = require('../lib/arnastofnunSeed');
@@ -24,16 +26,23 @@ const termMining = require('../services/termMiningService');
 const activityLog = require('../services/activityLog');
 
 // Configure multer for file uploads
-const upload = multer({
+const upload = createUpload({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileSize: 5 * 1024 * 1024, // 5 MB; createUpload carries it on an over-size error
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['.csv', '.xlsx', '.xls'];
     const ext = path.extname(file.originalname).toLowerCase();
+    // The status makes the refusal a 400 with this message: without it, the app's error
+    // handler answers a plain Error with a generic 500.
     if (allowedTypes.includes(ext)) {
       cb(null, true);
     } else {
-      cb(new Error('Only CSV and Excel files are allowed'));
+      cb(
+        Object.assign(new Error('Only CSV and Excel files are allowed'), {
+          status: 400,
+          name: 'Invalid Upload',
+        })
+      );
     }
   },
 });
@@ -858,16 +867,19 @@ router.post(
     const { overwrite, subjects: subjectsParam } = req.query;
     const subjects = subjectsParam ? subjectsParam.split(',').map((s) => s.trim()) : [];
 
+    // importFromCSV reads a file (the existing-glossary route passes one from books/), so the
+    // upload is written to a fresh directory only this process can name, and removed whatever
+    // the import does. A fixed name in /tmp could be guessed, and was left behind on a throw.
+    let tempDir;
     try {
-      const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
+      tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'terminology-import-'));
+      const tempPath = path.join(tempDir, 'upload.csv');
       fs.writeFileSync(tempPath, req.file.buffer);
 
       const result = terminology.importFromCSV(tempPath, req.user.id, req.user.name, {
         subjects,
         overwrite: overwrite === 'true',
       });
-
-      fs.unlinkSync(tempPath);
 
       activityLog.log({
         type: 'import_terminology_csv',
@@ -881,6 +893,8 @@ router.post(
     } catch (err) {
       log.error({ err }, 'CSV import error');
       res.status(500).json({ error: 'Failed to import CSV', message: err.message });
+    } finally {
+      if (tempDir) fs.rmSync(tempDir, { recursive: true, force: true });
     }
   }
 );

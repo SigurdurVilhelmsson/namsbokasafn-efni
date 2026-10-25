@@ -33,9 +33,9 @@
  * Personas come from the real sign-in code: determineUserRole() on a Microsoft profile, then
  * createToken(), as authenticate() does. A profile with no account row is a visit (SD2, #557).
  *
- * Not pinned, on purpose: a fileFilter refusal reaches the client as a generic 500, because the
- * filter's Error carries no status, so those cases assert only "refused, and nothing kept"; and
- * the 413 message says 10MB on both routes, though terminology's limit is 5 MiB.
+ * Each 413 is pinned with its route's own limit in the message (middleware/upload.js carries it
+ * on the error), and a fileFilter refusal as a 400 labelled 'Invalid Upload' (the label
+ * multer's own 400s get) carrying the filter's own message.
  */
 import {
   mkdtempSync,
@@ -63,8 +63,8 @@ process.env.ADMIN_USERS = '';
 delete process.env.AUTO_CREATE_USERS; // unset: a sign-in with no account row is a visit
 
 const MiB = 1024 * 1024;
-const BOOKS_LIMIT = 10 * MiB; // routes/books.js, limits.fileSize
-const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, limits.fileSize
+const BOOKS_LIMIT = 10 * MiB; // routes/books.js, createUpload's fileSize
+const TERMS_LIMIT = 5 * MiB; // routes/terminology.js, createUpload's fileSize
 
 // A slug no real book uses (gitignored, like books/testbook/). The import creates its tree;
 // every books case starts without it.
@@ -313,9 +313,9 @@ describe('POST /api/books/:bookId/chapters/:chapter/import: disk storage', () =>
       field: 'files',
       files: [{ name: '1-1.en.md', bytes: patterned(BOOKS_LIMIT + 1) }],
     });
-    expect([res.status, res.json?.error, listing(chapterDir), addedSince(before)]).toEqual([
+    expect([res.status, res.json, listing(chapterDir), addedSince(before)]).toEqual([
       413,
-      'File Too Large',
+      { error: 'File Too Large', message: 'Uploaded file exceeds the size limit (10 MB)' },
       [],
       [],
     ]);
@@ -375,9 +375,12 @@ describe('POST /api/books/:bookId/chapters/:chapter/import: disk storage', () =>
         { name: 'notes.txt', bytes: SMALL_MD },
       ],
     });
-    // 500 today, not 400: see the header. What is pinned is the refusal and the clean-up.
-    expect(res.status).toBeGreaterThanOrEqual(400);
-    expect([listing(chapterDir), addedSince(before)]).toEqual([[], []]);
+    expect([res.status, res.json, listing(chapterDir), addedSince(before)]).toEqual([
+      400,
+      { error: 'Invalid Upload', message: 'Only .md files are allowed' },
+      [],
+      [],
+    ]);
   });
 
   // Each guard runs before multer, so a refused request never touches the disk. Were multer
@@ -449,6 +452,73 @@ describe('POST /api/terminology/import/*: memory storage', () => {
     ]);
   });
 
+  // The CSV route hands the importer a file, not the upload's buffer, so it writes one. Both
+  // places a temp file could land are watched: the old code wrote to /tmp by name. A spy on
+  // mkdtempSync records the directory the route made, so the case can show it watched the place
+  // the route wrote, rather than a name the route has stopped using.
+  const TEMP_DIRS = [...new Set(['/tmp', tmpdir()])];
+  const csvTempFiles = () =>
+    TEMP_DIRS.flatMap((dir) =>
+      readdirSync(dir)
+        .filter((name) => name.startsWith('terminology-import-'))
+        .map((name) => path.join(dir, name))
+    ).sort();
+
+  /** Upload one CSV; report the response, the directories the route made, and what was left. */
+  async function importCsvWatchingTemp(name, bytes) {
+    const before = csvTempFiles();
+    const made = vi.spyOn(fsCjs, 'mkdtempSync');
+    try {
+      const res = await upload('/api/terminology/import/csv', {
+        as: 'headEditor',
+        field: 'file',
+        files: [{ name, bytes }],
+      });
+      const dirs = made.mock.results.map((r) => r.value);
+      const left = csvTempFiles().filter((f) => !before.includes(f));
+      for (const f of left) rmSync(f, { recursive: true, force: true }); // red or green
+      return {
+        res,
+        // Where each directory the route made sits, and whether it outlived the response.
+        made: dirs.map((d) => ({
+          inWatchedDir: TEMP_DIRS.includes(path.dirname(d)),
+          existsAfter: existsSync(d),
+        })),
+        left,
+      };
+    } finally {
+      made.mockRestore();
+    }
+  }
+
+  it('leaves no temp file behind when the CSV import throws', async () => {
+    // An unclosed quote: the parser throws inside the importer, after the temp file is written.
+    const { res, made, left } = await importCsvWatchingTemp(
+      'bad.csv',
+      Buffer.from('english,icelandic\r\n"c557 quote,orð', 'utf8')
+    );
+    expect([res.status, res.json?.error, made, left, stored('c557 quote')]).toEqual([
+      500,
+      'Failed to import CSV',
+      [{ inWatchedDir: true, existsAfter: false }],
+      [],
+      [],
+    ]);
+  });
+
+  it('leaves no temp file behind when the CSV import succeeds (the control)', async () => {
+    const { res, made, left } = await importCsvWatchingTemp(
+      'ok.csv',
+      csv(['c557 tidy term,snyrtilegt'])
+    );
+    expect([res.status, res.json?.added, made, left]).toEqual([
+      200,
+      1,
+      [{ inWatchedDir: true, existsAfter: false }],
+      [],
+    ]);
+  });
+
   it('imports an .xlsx upload: a binary file parses', async () => {
     const XLSX = require('xlsx');
     const workbook = XLSX.utils.book_new();
@@ -507,9 +577,9 @@ describe('POST /api/terminology/import/*: memory storage', () => {
       field: 'file',
       files: [{ name: 'big.csv', bytes: csvOfSize('c557 over limit', TERMS_LIMIT + 1).bytes }],
     });
-    expect([res.status, res.json?.error, stored('c557 over limit')]).toEqual([
+    expect([res.status, res.json, stored('c557 over limit')]).toEqual([
       413,
-      'File Too Large',
+      { error: 'File Too Large', message: 'Uploaded file exceeds the size limit (5 MB)' },
       [],
     ]);
   });
@@ -520,9 +590,11 @@ describe('POST /api/terminology/import/*: memory storage', () => {
       field: 'file',
       files: [{ name: 'terms.txt', bytes: csv(['c557 txt term,orð']) }],
     });
-    // 500 today, not 400: see the header. What is pinned is the refusal.
-    expect(res.status).toBeGreaterThanOrEqual(400);
-    expect(stored('c557 txt ')).toEqual([]);
+    expect([res.status, res.json, stored('c557 txt ')]).toEqual([
+      400,
+      { error: 'Invalid Upload', message: 'Only CSV and Excel files are allowed' },
+      [],
+    ]);
   });
 
   it('refuses a second file with 400, and imports neither', async () => {

@@ -15,10 +15,10 @@ const path = require('path');
 // binds an object, so the pre-8 `archiver('zip', …)` call threw on every request
 // (register §C19). Node 22's require(ESM) support makes this named import work.
 const { ZipArchive } = require('archiver');
-const multer = require('multer');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
+const { createUpload } = require('../middleware/upload');
 const {
   requireEditor,
   requireAdmin,
@@ -36,15 +36,22 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-const upload = multer({
+const upload = createUpload({
   dest: uploadDir,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+  fileSize: 10 * 1024 * 1024, // 10 MB; createUpload carries it on an over-size error
   fileFilter: (req, file, cb) => {
-    // Only accept .md files
+    // Only accept .md files. The status makes the refusal a 400 with this message: without
+    // it, the app's error handler answers a plain Error with a generic 500.
     if (file.originalname.endsWith('.md')) {
       cb(null, true);
     } else {
-      cb(new Error('Only .md files are allowed'), false);
+      cb(
+        Object.assign(new Error('Only .md files are allowed'), {
+          status: 400,
+          name: 'Invalid Upload',
+        }),
+        false
+      );
     }
   },
 });
