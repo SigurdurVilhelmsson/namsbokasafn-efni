@@ -829,3 +829,42 @@ describe('POST /api/terminology/import/excel: only a workbook is read', () => {
     expect(res.json?.message).toBe('The workbook has no sheet named "Terms". Its sheets: Hugtök.');
   });
 });
+
+/**
+ * POST /api/terminology/import/key-terms answered a book that is not registered with a 500
+ * ("Book not found" thrown by the importer; logged 2026-10-25). It is the request's to fix, so it
+ * is now the 400 "Invalid book" the other imports give, checked before the importer runs.
+ */
+describe('POST /api/terminology/import/key-terms: the book is checked first', () => {
+  async function postKeyTerms(bookSlug) {
+    const res = await fetch(`${base}/api/terminology/import/key-terms`, {
+      method: 'POST',
+      body: JSON.stringify({ bookSlug }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${personas.headEditor.token}`,
+      },
+    });
+    return { status: res.status, json: await res.json().catch(() => null) };
+  }
+
+  for (const [what, bookSlug] of [
+    ['a slug no book has', 'no-such-book'],
+    ['a list, not a slug', [FIXTURE]],
+  ]) {
+    it(`refuses ${what} with 400`, async () => {
+      const res = await postKeyTerms(bookSlug);
+      expect([res.status, res.json?.error]).toEqual([400, 'Invalid book']);
+    });
+  }
+
+  it('lets a registered book through to the importer (the control)', async () => {
+    // The fixture has no publication tree, so the importer finds nothing to read.
+    const res = await postKeyTerms(FIXTURE);
+    expect([res.status, res.json?.added, res.json?.message]).toEqual([
+      200,
+      0,
+      'No key-terms files found',
+    ]);
+  });
+});

@@ -1084,6 +1084,9 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
   if (!bookSlug) {
     return res.status(400).json({ error: 'Missing bookSlug' });
   }
+  // The importer throws "Book not found" for an unregistered book, which reached the client as a
+  // 500; the request is what is wrong, so it is the 400 the other imports give.
+  if (!VALID_BOOKS.includes(bookSlug)) return res.status(400).json(INVALID_BOOK);
 
   try {
     const result = terminology.importFromKeyTerms(
