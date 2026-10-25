@@ -11,7 +11,10 @@ const { loginAs } = require('./helpers/auth');
  * These tests directly target three production bugs:
  *   #1 — csv-parse / xlsx packages never installed (import silently failed)
  *   #2 — activityLog.log() used `action` instead of `type` (NOT NULL crash)
- *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global)
+ *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global). That fixed the page
+ *        half only: the CSV and Excel routes still ignored bookSlug until 2026-10-25, when they
+ *        began tagging terms with the book's subject. multerUploadRoutes.test.js pins that
+ *        (this database maps no subject to efnafraedi-2e, the book these tests import under).
  */
 
 const API = '/api/terminology';
