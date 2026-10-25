@@ -729,3 +729,103 @@ describe('POST /api/terminology/import/existing-glossary: the book is checked fi
     expect([res.status, res.json?.error]).toEqual([404, 'Glossary not found']);
   });
 });
+
+/**
+ * POST /api/terminology/import/excel and what it will read. xlsx (SheetJS) throws only for a
+ * damaged ZIP: plain text and other bytes "parse" into a sheet, and the importer takes the first
+ * two columns as English and Icelandic, so a text file named .xlsx could import nonsense with a
+ * 200 (measured 2026-10-25). A damaged workbook and a missing sheet name were 500s. Now the bytes
+ * must be a workbook (an .xlsx is a ZIP, an .xls an OLE compound file), and every way the file
+ * cannot be used is a 400 that says why.
+ */
+describe('POST /api/terminology/import/excel: only a workbook is read', () => {
+  const XLSX = require('xlsx');
+  function workbook(bookType, rows, sheet = 'Terms') {
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.aoa_to_sheet([['English', 'Icelandic'], ...rows]),
+      sheet
+    );
+    return XLSX.write(wb, { type: 'buffer', bookType });
+  }
+  const sendExcel = (name, bytes, query = '') =>
+    upload(`/api/terminology/import/excel${query}`, {
+      as: 'headEditor',
+      field: 'file',
+      files: [{ name, bytes }],
+    });
+  const stored = (prefix) =>
+    db
+      .prepare(
+        `SELECT h.english, t.icelandic FROM terminology_translations t
+           JOIN terminology_headwords h ON h.id = t.headword_id
+          WHERE h.english LIKE ? ORDER BY h.english`
+      )
+      .all(`${prefix}%`);
+
+  it('imports an .xls, the older binary format (the control for the second signature)', async () => {
+    const res = await sendExcel('terms.xls', workbook('biff8', [['c21e xls term', 'gamalt snið']]));
+    expect([res.status, res.json?.added, stored('c21e xls')]).toEqual([
+      200,
+      1,
+      [{ english: 'c21e xls term', icelandic: 'gamalt snið' }],
+    ]);
+  });
+
+  it('refuses a text file named .xlsx, which the parser would have read as a sheet', async () => {
+    const notes = Buffer.from(
+      'c21e dear editor, here are my notes\nc21e first point, second point\n'
+    );
+    const res = await sendExcel('notes.xlsx', notes);
+    expect([res.status, res.json?.error, stored('c21e first')]).toEqual([
+      400,
+      'Invalid Excel file',
+      [],
+    ]);
+    expect(res.json?.message).toMatch(/^The file is not an Excel workbook/);
+  });
+
+  it('refuses a CSV sent to the Excel import, and points to the CSV import', async () => {
+    const res = await sendExcel(
+      'terms.xlsx',
+      Buffer.from('english,icelandic\nc21e csv here,hér\n')
+    );
+    expect([res.status, res.json?.error, stored('c21e csv here')]).toEqual([
+      400,
+      'Invalid Excel file',
+      [],
+    ]);
+    expect(res.json?.message).toContain('CSV import');
+  });
+
+  it('refuses an empty file with 400', async () => {
+    const res = await sendExcel('empty.xlsx', Buffer.alloc(0));
+    expect([res.status, res.json?.error]).toEqual([400, 'Invalid Excel file']);
+  });
+
+  it('refuses a damaged workbook with 400 saying why', async () => {
+    const whole = workbook('xlsx', [['c21e damaged', 'skemmt']]);
+    const res = await sendExcel('damaged.xlsx', whole.subarray(0, Math.floor(whole.length / 2)));
+    expect([res.status, res.json?.error, stored('c21e damaged')]).toEqual([
+      400,
+      'Invalid Excel file',
+      [],
+    ]);
+    expect(res.json?.message).toMatch(/^The file could not be read as an Excel workbook: /);
+  });
+
+  it('refuses a sheet name the workbook does not have, and names the sheets it has', async () => {
+    const res = await sendExcel(
+      'terms.xlsx',
+      workbook('xlsx', [['c21e sheet', 'blað']], 'Hugtök'),
+      '?sheetName=Terms'
+    );
+    expect([res.status, res.json?.error, stored('c21e sheet')]).toEqual([
+      400,
+      'Invalid Excel file',
+      [],
+    ]);
+    expect(res.json?.message).toBe('The workbook has no sheet named "Terms". Its sheets: Hugtök.');
+  });
+});

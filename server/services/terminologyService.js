@@ -1025,7 +1025,34 @@ function importFromCSV(filePath, userId, username, options = {}) {
 }
 
 /**
+ * An upload the importer cannot use as what it claims to be. It is the uploader's to fix, so a
+ * route answers it with a 400 that repeats the message.
+ */
+class InvalidUploadError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'InvalidUploadError';
+  }
+}
+
+// The two workbook containers: an .xlsx is a ZIP, an .xls an OLE compound file.
+const ZIP_SIGNATURE = Buffer.from([0x50, 0x4b, 0x03, 0x04]);
+const OLE_SIGNATURE = Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]);
+
+function isWorkbookBytes(bytes) {
+  return (
+    Buffer.isBuffer(bytes) &&
+    (bytes.subarray(0, 4).equals(ZIP_SIGNATURE) || bytes.subarray(0, 8).equals(OLE_SIGNATURE))
+  );
+}
+
+/**
  * Import terms from Excel file.
+ *
+ * Only a workbook is read. xlsx parses plain text and other bytes as a sheet without complaint,
+ * and the column fallbacks below would then import its first two columns as terms, so the bytes
+ * must carry a workbook signature first. Every way the file cannot be used throws
+ * InvalidUploadError.
  */
 async function importFromExcel(fileContent, userId, username, options = {}) {
   let XLSX;
@@ -1037,14 +1064,28 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
 
   const { subjects = [], sheetName = null } = options;
 
-  const workbook =
-    typeof fileContent === 'string'
-      ? XLSX.readFile(fileContent)
-      : XLSX.read(fileContent, { type: 'buffer' });
+  const bytes = typeof fileContent === 'string' ? fs.readFileSync(fileContent) : fileContent;
+  if (!isWorkbookBytes(bytes)) {
+    throw new InvalidUploadError(
+      'The file is not an Excel workbook (.xlsx or .xls). A .csv file goes through the CSV import.'
+    );
+  }
 
+  let workbook;
+  try {
+    workbook = XLSX.read(bytes, { type: 'buffer' });
+  } catch (err) {
+    throw new InvalidUploadError(`The file could not be read as an Excel workbook: ${err.message}`);
+  }
+
+  if (sheetName && !workbook.Sheets[sheetName]) {
+    throw new InvalidUploadError(
+      `The workbook has no sheet named "${sheetName}". Its sheets: ${workbook.SheetNames.join(', ')}.`
+    );
+  }
   const sheet = sheetName ? workbook.Sheets[sheetName] : workbook.Sheets[workbook.SheetNames[0]];
   if (!sheet) {
-    throw new Error('No sheet found in Excel file');
+    throw new InvalidUploadError('The workbook has no sheets.');
   }
 
   const data = XLSX.utils.sheet_to_json(sheet);
@@ -2311,6 +2352,7 @@ module.exports = {
   // Import
   importFromCSV,
   importFromExcel,
+  InvalidUploadError,
   importFromKeyTerms,
   importGlossaryTerms,
 

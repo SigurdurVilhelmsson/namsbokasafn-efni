@@ -1061,6 +1061,9 @@ router.post(
 
       res.json(result);
     } catch (err) {
+      if (err instanceof terminology.InvalidUploadError) {
+        return res.status(400).json({ error: 'Invalid Excel file', message: err.message });
+      }
       log.error({ err }, 'Excel import error');
       res.status(500).json({ error: 'Failed to import Excel', message: err.message });
     }
