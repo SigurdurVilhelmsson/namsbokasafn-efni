@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-10-26 (afternoon) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN IT IS UNCHANGED: **✅ D11 IS BOUGHT: ALL SIX RUNS PASS, NO RETRIES; FINAL BILL 290,610 UNITS ≈ ISK 2,906. ▶ [CODE]/[USER]: back up the trees in `~/d11-buy-2026-10-26`. ▶ [USER]: decide whether the raw MT is committed, which also settles how `measure.py` reads it. Then the analysis (DESIGN §8).** ⏹ The chemistry sync stays HELD.
+### ⏭ 2026-10-26 (afternoon) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN IT IS UNCHANGED: **✅ D11 IS BOUGHT: ALL SIX RUNS PASS, NO RETRIES; FINAL BILL 290,610 UNITS ≈ ISK 2,906. ✅ The trees are backed up and verified (below). ▶ [USER]: decide whether the raw MT is committed, which also settles how `measure.py` reads it. Then the analysis (DESIGN §8).** ⏹ The chemistry sync stays HELD.
 - **The sitting:** [USER]'s go, then a start at 11:52Z on 2026-10-26, run by [`RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md) from `624963a17` (`main`'s `b019d25f6` plus the register commit; recorded in the buy folder as `REPO_HEAD`).
   - The order was `r1-M`, `r1-S`, `r1-none`, `r2-none`, `r2-S`, `r2-M`. The first sidecar was written at 11:53Z and the last at 12:12Z.
   - Every run printed `READY` and passed the §5 budget check before its buy lines, and every run passed `check-run.mjs`. No request was refused (no 4xx), no budget check said STOP, and no run needed a redo.
@@ -17,7 +17,10 @@
 - **The data:** `~/d11-buy-2026-10-26/<run>/`, six trees (5 MB), each holding the MT files, their sidecars, `check.json` and the logs. It is pure MT as received, after `api-translate`'s deterministic repairs, which are the same in every arm. Never edit it (CLAUDE.md § Purpose).
   - No MT file equals its English, and all twelve outputs are distinct.
   - The real repo was untouched: `git status` clean, and the file listing matched the one taken before the sitting.
-  - ⚠️ **The trees sit on one disk and are not yet backed up.**
+  - ✅ **Backed up and verified, 2026-10-26** (✏️ this line replaced "not yet backed up" the same day):
+    - a Windows-drive copy, on a different filesystem from WSL's disk;
+    - off the machine, a private Linode bucket (not encrypted). This copy was verified by downloading it back.
+    - Both were checked file by file against `d11-buy-2026-10-26.sha256` (162 files; its own sha256 starts `1a7f4a604f5819dd`), which is stored with each copy. Every hash matched, no file was missing or extra, and a deliberately wrong hash was reported as `FAILED`. The originals re-hashed identical.
 
 ### ⏭ 2026-10-26 (midday) — SUPERSEDES THE ENTRIES BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN THEM IS UNCHANGED: **✅ [USER] RULED THAT WED 28 OCT IS A DEADLINE, NOT A START DATE: D11 MAY START ANY DAY UP TO THEN. ✅ The D11 work is merged and deployed: prod at `b019d25f6`, 0/0 against `main`. ▶ [USER]: the go, by [`RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md).** ⏹ The chemistry sync stays HELD.
 - **[USER]'s rulings, 2026-10-26:**
