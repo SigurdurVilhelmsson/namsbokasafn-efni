@@ -21,6 +21,7 @@ import {
   serializeRulingSet,
   slugOf,
   matchability,
+  glossFreeKey,
 } from '../ai-review/compile-ruling-set.js';
 import {
   RULING_SET_SCHEMA,
@@ -257,6 +258,18 @@ describe('rulings', () => {
       r.competitors.some((c) => c.toLowerCase() === r.is.toLowerCase())
     );
     expect(bad).toEqual([]);
+  });
+
+  it('a competitor that is only the target plus a gloss is dropped', () => {
+    expect(ruling(committed(), 'standard electrode potential').competitors).toEqual([]);
+  });
+
+  it('control: a real competitor carrying a gloss stays', () => {
+    expect(ruling(committed(), 'electrode potential').competitors).toEqual(['troðspenna (EX)']);
+  });
+
+  it('glossFreeKey removes nested parentheticals', () => {
+    expect(glossFreeKey('Staðalraftroðsspenna ((EX°))')).toBe('staðalraftroðsspenna');
   });
 
   it('kinds name the base parts a ruling came from', () => {

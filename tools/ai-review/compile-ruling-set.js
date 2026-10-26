@@ -37,7 +37,8 @@ export const RULING_SET_ABOUT =
   'carry, plus each form with its parentheticals removed (case kept). `is` is the recorded ' +
   "target, unchanged. `competitors` are the other renderings the rows name: a before row's " +
   "competitor; a stage1 row's stored word, tied words, stored alternatives and superseded page " +
-  'answer; any superseded target; never the target itself. `kinds` are the before kinds plus ' +
+  'answer; any superseded target; never the target itself (compared with every parenthetical ' +
+  'removed, case ignored). `kinds` are the before kinds plus ' +
   "'stage1'; `sources` cite each row. `scope` is {kind:'book'} with scopeStatus 'default' unless " +
   "the exceptions file names the headword; a 'proposed' width is not ruled, and the gate admits " +
   'no operation for it. `matchable` is false, with codes in unmatchableReason, when the target ' +
@@ -81,6 +82,22 @@ export function bareForm(en) {
     .replace(/\s*\([^)]*\)/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/**
+ * A rendering with every parenthetical removed, nested ones included, whitespace collapsed
+ * and lowercased: the key on which a competitor counts as the target itself. So
+ * `staðalraftroðsspenna ((EX°))` is the target `staðalraftroðsspenna` plus a symbol, not a
+ * competitor, while `troðspenna (EX)` against `raftroðsspenna` stays one.
+ * @param {string} s
+ */
+export function glossFreeKey(s) {
+  let out = String(s);
+  for (let prev = ''; prev !== out;) {
+    prev = out;
+    out = out.replace(/\([^()]*\)/g, ' ');
+  }
+  return out.replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
 // ─── Ids ─────────────────────────────────────────────────────────────────
@@ -451,9 +468,10 @@ export function compileRulingSet(baseInput, exceptionsInput) {
     const is = targeted[0].is;
     const exc = exceptions.get(enNorm);
     const m = matchability(is, enNorm);
+    const isKey = glossFreeKey(is);
     const competitors = uniqueSorted(
       [...rs.flatMap((r) => r.competitors), ...(supersededTargets.get(enNorm) || [])].filter(
-        (c) => isNonEmptyString(c) && c.toLowerCase() !== is.toLowerCase()
+        (c) => isNonEmptyString(c) && glossFreeKey(c) !== isKey
       )
     );
     const ruling = {
