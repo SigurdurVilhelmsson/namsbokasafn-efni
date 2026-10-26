@@ -7,9 +7,13 @@
  * The arm comes from <tree-dir>/ARM, written by prepare-run.sh. For each module it checks:
  * the sidecar's tool, glossary arm, wire, term count and content hash against the arm's
  * expected values; the chunk counts (every chunk carried the glossary for M and S, none did
- * for no glossary: a truncation retry drops the glossary, DESIGN §7); and that the MT file
- * carries the same SEG id SET as the English (a set, never a count: the MT can rewrite an
- * id's digits). It prints the billed units and writes <tree-dir>/check.json.
+ * for no glossary: a truncation retry drops the glossary, DESIGN §7); that no segment was held
+ * back (mismatchCount 0: on an id-reattach mismatch api-translate writes the ENGLISH into the
+ * MT file, and [USER] ruled 2026-10-26 that such a run is redone in a fresh tree); and that the
+ * MT file carries the same SEG id SET as the English (a set, never a count: the MT can rewrite
+ * an id's digits). It prints run.usage, which is NOT the bill (a retried chunk's first attempt
+ * is missing from it; RUNBOOK §5 counts the bill from the logs), and writes
+ * <tree-dir>/check.json.
  *
  * Exit 0 only when every check passes. The exit code starts as a failure and only a
  * reached verdict clears it.
@@ -95,6 +99,8 @@ export function checkModule(tree, arm, mod) {
     g.chunksWithGlossary,
     want.glossaryInEveryChunk ? g.chunksTotal : 0
   );
+  // A held-back segment carries the English source, not MT. A missing key fails too.
+  check('mismatchCount', sidecar.run?.mismatchCount, 0);
 
   const enIds = new Set(parseSegmentsMap(fs.readFileSync(enPath, 'utf8')).keys());
   const isIds = new Set(parseSegmentsMap(fs.readFileSync(isPath, 'utf8')).keys());
@@ -141,7 +147,7 @@ function main() {
       console.log(`  ${c.ok ? 'ok  ' : 'FAIL'} ${m.module} ${c.name}: ${detail}`);
     }
     console.log(
-      `       ${m.module} billed units: ${show(m.usage)} (estimate ${show(m.estimatedIsk)} ISK)`
+      `       ${m.module} run.usage: ${show(m.usage)} (not the bill: RUNBOOK §5 counts it from the logs)`
     );
   }
   console.log(pass ? 'PASS' : 'FAIL');
