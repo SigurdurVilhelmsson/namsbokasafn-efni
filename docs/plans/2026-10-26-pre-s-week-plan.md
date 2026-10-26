@@ -154,7 +154,8 @@ current grant; D5 and D6 yes; A1 reordered; the logs committed
 3. **Two terminology answers** (about 5 minutes; Tuesday). **Unblocks the rulings PR and the rule layer.**
    - *addition → álagning*: does the KEEP cover the reaction sense only, or every sense? If only the reaction sense,
      the bare row is retired and *addition reaction → álagningarhvarf*, already ruled, takes its place (register
-     2026-10-25 (night, later), item 1);
+     2026-10-25 (night, later), item 1). ✏️ *[USER] answered on 2026-10-26: the reaction sense only (register,
+     2026-10-26 (night)). In the AI layer the ruling is sense-scoped instead.*
    - the three entries that differ from the stored word only by the definite article or a gender ending
      (*lotukerfið → lotukerfi*, *árekstrakenningin → árekstrakenning*, *eintenntur → eintennt*): write them as
      entries, or keep them record-only.
