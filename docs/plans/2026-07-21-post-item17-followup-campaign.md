@@ -4,6 +4,29 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-10-26 (midday) — SUPERSEDES THE ENTRIES BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN THEM IS UNCHANGED: **✅ [USER] RULED THAT WED 28 OCT IS A DEADLINE, NOT A START DATE: D11 MAY START ANY DAY UP TO THEN. ✅ The D11 work is merged and deployed: prod at `b019d25f6`, 0/0 against `main`. ▶ [USER]: the go, by [`RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md).** ⏹ The chemistry sync stays HELD.
+- **[USER]'s rulings, 2026-10-26:**
+  - **Wednesday is a deadline.** It was the latest go that leaves time for retries before usage closes on Sat 31 Oct. Starting earlier is allowed, and it adds retry days.
+  - **"Start" means all six runs in one sitting,** as the runbook's mirrored order assumes.
+  - **A held-back segment (`mismatchCount > 0`) means a redo in a fresh tree.** RUNBOOK §4 and §5 carry the rule; `check-run.mjs` enforces it.
+- **Merged and deployed today:**
+  - #568 (`d7ffabb10`): the June-wire mode.
+  - #569 (`9c9853d09`): the runbook and its two scripts.
+  - #570 (`790f6b795`): the bill counted from the logs; held-back segments fail the check; a fail-safe budget gate.
+  - #571 (`9bad1d828`): the register pointer.
+  - #572 (`b019d25f6`): stop and ask on a 4xx at `r1-M`.
+  - Prod pulled `b019d25f6` at 11:39Z and runs it, 0/0 against `main`. The entries below that say "nothing pushed" or "the push and the PR are at [USER]'s word" are discharged.
+- **A go/no-go check on `main` found no blocker:**
+  - `prepare-run.sh` printed `READY` for all three arms.
+  - `check-run.mjs` failed a held-back tree and passed a clean one.
+  - The §5 budget gate ends in STOP when `$D11` is unset or mistyped.
+  - The key is in `.env`, and the real tree was unchanged.
+- ⚠️ **On the day:**
+  - Set `D11` to the buy date (`$HOME/d11-buy-<yyyy-mm-dd>`), not the runbook's `-28`.
+  - Expect the hook's stale-English prompt (RUNBOOK §3).
+  - After the buy, record the start date, the runs, the retries and the final running total here.
+- **Before the analysis, not before the buy:** `experiments/terminology-consistency/measure.py` reads only git commits, while the run trees live outside git. Commit the trees or add an input adapter; whether the raw MT is committed is [USER]'s call (RUNBOOK §6).
+
 ### ⏭ 2026-10-26 (later) — ADDS TO THE ENTRY DIRECTLY BELOW; ITS NEXT ACTION IS UNCHANGED: **✅ [CODE] WROTE D11's BUY RUNBOOK AND REHEARSED IT FOR FREE: [`experiments/d11-glossary-test/RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md). ▶ [USER]: the go, Wed 28 Oct, by that runbook.** ⏹ The chemistry sync stays HELD.
 - **The runbook:** six runs, each in a fresh tree, in the order `r1-M`, `r1-S`, `r1-none`, `r2-none`, `r2-S`, `r2-M`. For each: `prepare-run.sh` (free: the hash gates, then dry runs that check the glossary and wire), two explicit buy lines (the paid-MT guard hook asks once per combined command), then `check-run.mjs` (free: the whole sidecar against the arm's expected values). A failed run is redone in a fresh tree. The cap is kept by RUNBOOK §5's running-total rule, counted from the buy logs' `API usage:` lines; its threshold lives there. The rehearsal (echo API, fake key, 0 ISK) and its negative controls are in its §7.
 
