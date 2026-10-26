@@ -267,10 +267,16 @@ function isHeadOf(word, targetWord) {
  * now the Icelandic side is too. Used where a stricter match REFUSES more: "replace holds
  * the target" (term-target-missing).
  *
- * ⚠️ KNOWN RESIDUE, needs morphology the spec does not provide: a different word whose
- * extra letters all sit in the ending class still passes — `leysni` (solubility) for
- * `leysir`, `rafneikvæðni` for `rafneikvæður`, `kerra` (cart) for `ker`, and the modifier
- * compound `atómmassi` for `atóm` (`massi` is all ending-class letters).
+ * ⚠️ KNOWN RESIDUE, needs morphology the spec does not provide (measured on the 2026-10-11
+ * ruling set's cross-ruling census, review round 1). Two classes pass:
+ *   (a) a different word whose extra letters all sit in the ending class — `leysni`
+ *       (solubility) for `leysir`, `rafneikvæðni` for `rafneikvæður`, `kerra` (cart) for
+ *       `ker`, the modifier compounds `atómmassi` / `fjölatómajón` for `atóm` (`massi`,
+ *       `ajón` are all ending-class letters), `uppleyst` for `leysir`;
+ *   (b) a split whose 3+ letter "modifier" is not the word's real one — `fórnara`+`nóða`
+ *       (really `fórnar`+`anóða`, sacrificial anode) under node, `gjafaa`+`tóm` under
+ *       vacancy, `sveimh`+`raði` (really `hraði`, rate) under `röð`.
+ * Telling these from real inflections and heads needs a lexicon of Icelandic words.
  */
 function carriesTarget(text, target) {
   const targetWords = targetWordsOf(target);
