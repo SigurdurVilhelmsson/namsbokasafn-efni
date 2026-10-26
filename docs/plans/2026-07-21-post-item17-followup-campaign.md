@@ -4,6 +4,44 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-10-26 (afternoon) — SUPERSEDES THE ENTRY DIRECTLY BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN IT IS UNCHANGED: **✅ D11 IS BOUGHT: ALL SIX RUNS PASS, NO RETRIES; FINAL BILL 290,610 UNITS ≈ ISK 2,906. ▶ [CODE]/[USER]: back up the trees in `~/d11-buy-2026-10-26`. ▶ [USER]: decide whether the raw MT is committed, which also settles how `measure.py` reads it. Then the analysis (DESIGN §8).** ⏹ The chemistry sync stays HELD.
+- **The sitting:** [USER]'s go, then a start at 11:52Z on 2026-10-26, run by [`RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md) from `624963a17` (`main`'s `b019d25f6` plus the register commit; recorded in the buy folder as `REPO_HEAD`).
+  - The order was `r1-M`, `r1-S`, `r1-none`, `r2-none`, `r2-S`, `r2-M`. The first sidecar was written at 11:53Z and the last at 12:12Z.
+  - Every run printed `READY` and passed the §5 budget check before its buy lines, and every run passed `check-run.mjs`. No request was refused (no 4xx), no budget check said STOP, and no run needed a redo.
+- **The bill:** each module billed the same units in all six runs, m68781 12,610 and m68667 35,825. That makes 48,435 a run, 290,610 in all, ≈ ISK 2,906 at 0.01 a unit (the invoice rate with VAT; about ISK 2,342 before it).
+  - It is counted from the logs' `API usage:` lines (RUNBOOK §5), against the ISK 5,000 cap.
+  - It falls on the October invoice, due about Mon 2 Nov (the billing check in the 2026-10-25 (late afternoon) entry covers it). If the card has not been charged on 2 Nov, pay by hand that day.
+- **Measured on the way:**
+  - **The glossary is not billed text:** identical units with June's wire, today's wire and no glossary.
+  - **The live API accepted June's wire,** with both values of a contested headword. No M request was refused, and every M chunk recorded the glossary as sent (`termCount` 617, `contentHash f15401b2…`).
+- **The data:** `~/d11-buy-2026-10-26/<run>/`, six trees (5 MB), each holding the MT files, their sidecars, `check.json` and the logs. It is pure MT as received, after `api-translate`'s deterministic repairs, which are the same in every arm. Never edit it (CLAUDE.md § Purpose).
+  - No MT file equals its English, and all twelve outputs are distinct.
+  - The real repo was untouched: `git status` clean, and the file listing matched the one taken before the sitting.
+  - ⚠️ **The trees sit on one disk and are not yet backed up.**
+
+### ⏭ 2026-10-26 (midday) — SUPERSEDES THE ENTRIES BELOW FOR D11's NEXT STEP ONLY; EVERYTHING ELSE IN THEM IS UNCHANGED: **✅ [USER] RULED THAT WED 28 OCT IS A DEADLINE, NOT A START DATE: D11 MAY START ANY DAY UP TO THEN. ✅ The D11 work is merged and deployed: prod at `b019d25f6`, 0/0 against `main`. ▶ [USER]: the go, by [`RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md).** ⏹ The chemistry sync stays HELD.
+- **[USER]'s rulings, 2026-10-26:**
+  - **Wednesday is a deadline.** It was the latest go that leaves time for retries before usage closes on Sat 31 Oct. Starting earlier is allowed, and it adds retry days.
+  - **"Start" means all six runs in one sitting,** as the runbook's mirrored order assumes.
+  - **A held-back segment (`mismatchCount > 0`) means a redo in a fresh tree.** RUNBOOK §4 and §5 carry the rule; `check-run.mjs` enforces it.
+- **Merged and deployed today:**
+  - #568 (`d7ffabb10`): the June-wire mode.
+  - #569 (`9c9853d09`): the runbook and its two scripts.
+  - #570 (`790f6b795`): the bill counted from the logs; held-back segments fail the check; a fail-safe budget gate.
+  - #571 (`9bad1d828`): the register pointer.
+  - #572 (`b019d25f6`): stop and ask on a 4xx at `r1-M`.
+  - Prod pulled `b019d25f6` at 11:39Z and runs it, 0/0 against `main`. The entries below that say "nothing pushed" or "the push and the PR are at [USER]'s word" are discharged.
+- **A go/no-go check on `main` found no blocker:**
+  - `prepare-run.sh` printed `READY` for all three arms.
+  - `check-run.mjs` failed a held-back tree and passed a clean one.
+  - The §5 budget gate ends in STOP when `$D11` is unset or mistyped.
+  - The key is in `.env`, and the real tree was unchanged.
+- ⚠️ **On the day:**
+  - Set `D11` to the buy date (`$HOME/d11-buy-<yyyy-mm-dd>`), not the runbook's `-28`.
+  - Expect the hook's stale-English prompt (RUNBOOK §3).
+  - After the buy, record the start date, the runs, the retries and the final running total here.
+- **Before the analysis, not before the buy:** `experiments/terminology-consistency/measure.py` reads only git commits, while the run trees live outside git. Commit the trees or add an input adapter; whether the raw MT is committed is [USER]'s call (RUNBOOK §6).
+
 ### ⏭ 2026-10-26 (later) — ADDS TO THE ENTRY DIRECTLY BELOW; ITS NEXT ACTION IS UNCHANGED: **✅ [CODE] WROTE D11's BUY RUNBOOK AND REHEARSED IT FOR FREE: [`experiments/d11-glossary-test/RUNBOOK.md`](../../experiments/d11-glossary-test/RUNBOOK.md). ▶ [USER]: the go, Wed 28 Oct, by that runbook.** ⏹ The chemistry sync stays HELD.
 - **The runbook:** six runs, each in a fresh tree, in the order `r1-M`, `r1-S`, `r1-none`, `r2-none`, `r2-S`, `r2-M`. For each: `prepare-run.sh` (free: the hash gates, then dry runs that check the glossary and wire), two explicit buy lines (the paid-MT guard hook asks once per combined command), then `check-run.mjs` (free: the whole sidecar against the arm's expected values). A failed run is redone in a fresh tree. The cap is kept by RUNBOOK §5's running-total rule, counted from the buy logs' `API usage:` lines; its threshold lives there. The rehearsal (echo API, fake key, 0 ISK) and its negative controls are in its §7.
 
