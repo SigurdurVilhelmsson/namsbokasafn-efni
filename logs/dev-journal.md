@@ -510,3 +510,18 @@ embed Liberation 1.07.4, so the next PR re-fonts them under the current rules.
 
 **Lessons:** attribute a regression before reporting it (text layer, then pixels, pre vs post); plant a known defect
 as a positive control for agent graders; a review page needs its own answer boxes (viewer comment mode was not usable).
+
+## 2026-10-26 10:27 - D11 is ready for Wed 28 Oct: runbook merged as #569, free checks done, prod at 9c9853d09
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+9c9853d09 Merge pull request #569 from SigurdurVilhelmsson/docs/d11-buy-runbook
+251e699a3 docs(d11): the buy runbook for Wed 28 Oct, rehearsed free against an echo API
+d7ffabb10 Merge pull request #568 from SigurdurVilhelmsson/feat/d11-june-wire
+
+**Why:** —
+
+---
