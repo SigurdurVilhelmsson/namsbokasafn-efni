@@ -30,6 +30,15 @@ modules' taught terms; segment-level difference rates between runs and between a
 CONTEXT (not pre-registered, labelled as such): the June MT (9a69414d5) and the September MT
 (98a5fe2ff), measured the same way at the same module scope.
 
+ADDED AFTER THE FIRST RUN (2026-10-26; neither touches the primary analysis):
+  * contextCommonIds: each D11 run scored only on segment ids that the June MT also has, like the
+    June/September context pair (which uses measure.py's --common-ids). The first run's context rows
+    counted a different population (18 prose uses of *atom* against the runs' 22). Not pre-registered.
+  * juneOnly: DESIGN §8 pre-registers "the June-only terms are reported separately"; the first run
+    left them out. Per run, the prose uses of each June-only headword in its module, and how many
+    carry each March value. Two-letter values (pH) are outside the matcher (stems() keeps words of 3+
+    letters), so only their prose count is reported.
+
 CONTROLS (--controls): (a) the original git readers, unrestricted, reproduce the 2026-10-10 numbers
 for the nine terms exactly; (b) a tree built from 98a5fe2ff's files scores exactly as 98a5fe2ff does
 through the git readers; (c) a run's scores do not depend on which run it is paired with.
@@ -184,6 +193,60 @@ def seg_diff(readers, ra, rb):
     return {'differ': d, 'segments': n, 'share': round(d / n, 4) if n else None}
 
 
+WIRE_COMPARE = os.path.join(HERE, 'results/2026-10-24/wire-compare.json')
+MARCH_GLOSSARY = os.path.join(REPO, 'tools/__tests__/fixtures/d11-march-glossary-5db701c92/glossary-unified.json')
+
+
+def june_only(readers):
+    """Per module, each June-only headword (wire-compare.json's onlyJune), per run: prose uses in that
+    module and how many carry each of its March values (measure.py's carries/stems)."""
+    wc = json.load(open(WIRE_COMPARE, encoding='utf-8'))
+    march = json.load(open(MARCH_GLOSSARY, encoding='utf-8'))
+    values = {}
+    for t in march['terms']:
+        if t.get('status') == 'approved':
+            values.setdefault(t['english'], []).append(t['icelandic'])
+    out = []
+    for m in wc['modules']:
+        ch, mod = m['module'].split('/')
+        heads = sorted({x.split(' → ')[0] for c in m['perChunk'] for x in c['onlyJune']})
+        for h in heads:
+            pat = M.en_pattern(M.norm_en(h))
+            row = {'module': mod, 'headword': h, 'values': values.get(h, []), 'runs': {}}
+            for r in RUNS:
+                en = M.parse_segments(readers.show(f'tree:{r}', f'books/{BOOK}/02-for-mt/{ch}/{mod}-segments.en.md'))
+                is_ = M.parse_segments(readers.show(f'tree:{r}', f'books/{BOOK}/02-mt-output/{ch}/{mod}-segments.is.md'))
+                n = 0
+                carry = {v: 0 for v in row['values']}
+                for key, etxt in en.items():
+                    if key.startswith(('glossary-term:', 'glossary-def:')) or key not in is_:
+                        continue
+                    if not pat or not pat.search(M.plain(etxt)):
+                        continue
+                    n += 1
+                    for v in row['values']:
+                        st = M.stems(v)
+                        carry[v] += bool(st) and M.carries(is_[key], st)
+                row['runs'][r] = {'prose': n, 'carries': carry}
+            row['scorable'] = {v: bool(M.stems(v)) for v in row['values']}
+            out.append(row)
+    return out
+
+
+def context_common(readers, rulings, keys):
+    """Each run scored on ids the June MT also has (pair JUNE vs the run, --common-ids)."""
+    out = {}
+    for r in RUNS:
+        per = {}
+        for ch in MODULES:
+            res = by_id(M.measure_chapter(BOOK, ch, JUNE, f'tree:{r}', 0, rulings, True))
+            for key in keys:
+                if key in res:
+                    per[key] = vintage_scores(res[key], 'new')
+        out[r] = per
+    return out
+
+
 def controls(readers, rulings_new):
     report = {}
     # (a) the original readers reproduce 2026-10-10 for the nine
@@ -297,7 +360,18 @@ def analyse(readers):
         d = sum(p['differ'] for p in pairs)
         between[f'{a1}_vs_{a2}'] = {'differ': d, 'segments': n, 'share': round(d / n, 4)}
 
+    use(readers)
+    cc = context_common(readers, rulings, keys)
+    cc_runs = {r: run_level([cc[r][k] for k in keys]) for r in RUNS}
+    cc_terms = [{'en': t['en'], **{r: {'own': cc[r][k]['own'], 'prose': cc[r][k]['prose'],
+                                       'share': share(cc[r][k]) and round(share(cc[r][k]), 3)} for r in RUNS}}
+                for t, k in zip(nine, keys)]
+
     return {
+        'contextCommonIds': {'note': 'added after the first run; D11 runs scored on ids the June MT also has, '
+                                     'the same population as the june/september rows; not pre-registered',
+                             'runLevel': cc_runs, 'terms': cc_terms},
+        'juneOnly': june_only(readers),
         'design': 'experiments/d11-glossary-test/DESIGN.md §8',
         'thresholds': {'MIN_N': M_MIN_N, 'RULED': M_RULED},
         'rule': 'an arm effect counts only when the two arms\' run ranges do not overlap (DESIGN §7)',
