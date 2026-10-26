@@ -692,6 +692,24 @@ describe('runBatch — resume', () => {
     expect(entries.find((e) => e.type === 'settle').usd).toBeCloseTo((3 * ACTUAL) / 2, 12);
   });
 
+  it('after a crash between settling and run-end, finishes without settling again', async () => {
+    const dir = tmp();
+    const requests = [req('k0')];
+    const first = await runBatch({
+      ...baseOpts(dir, mockTransport({ pollsUntilEnded: 1 })),
+      requests,
+    });
+    fs.rmSync(path.join(first.runDir, 'run-end.json')); // the crash: settled, no run-end
+    const out = await runBatch({
+      ...baseOpts(dir, mockTransport({ pollsUntilEnded: 1, results: () => [] })),
+      runId: first.runId,
+    });
+    expect(out.status).toBe('complete');
+    const entries = readLedger(path.join(dir, 'ledger.jsonl'));
+    expect(entries.map((e) => e.type)).toEqual(['reserve', 'settle', 'release']);
+    expect(readJsonl(path.join(out.runDir, 'responses.jsonl'))).toHaveLength(1);
+  });
+
   it('refuses to resume when a submit may have happened but recorded no batch id', async () => {
     const dir = tmp();
     const first = mockTransport({ submitError: new Error('socket hang up') });
