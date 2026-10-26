@@ -268,7 +268,10 @@ function validateRequests(requests, run, { batch }) {
   let bytes = 0;
   const out = requests.map((r, i) => {
     if (!isPlainObject(r) || Object.keys(r).some((k) => !REQUEST_KEYS.has(k))) {
-      throw new Error(`harness: requests[${i}] must be { key, body, inputTokensEstimate? }`);
+      throw new Error(
+        `harness: requests[${i}] must be { key, body }` +
+          (batch ? ', with an optional inputTokensEstimate' : '')
+      );
     }
     if (typeof r.key !== 'string' || r.key === '') {
       throw new Error(`harness: requests[${i}].key must be a non-empty string`);
@@ -492,7 +495,8 @@ function emptyCounts(planned) {
 
 /**
  * Run requests one at a time.
- * @param {object} opts see the module docstring; `requests: [{ key, body, inputTokensEstimate? }]`,
+ * @param {object} opts see the module docstring; `requests: [{ key, body }]` (no
+ *   `inputTokensEstimate`: an interactive run counts every request, and refuses one),
  *   `recordsDir`, `use`, `model`, `effort`, `maxTokens`, `prompts`, `rulingSet`, and optionally
  *   `transport`, `keyOptions`, `secrets`, `cap`, `ledgerPath`, `runId`, `now`,
  *   `maxConsecutiveErrors`, `harnessCommit`, `harnessDirty`, `timeout`.
@@ -638,7 +642,9 @@ export async function runInteractive(opts) {
 
 /**
  * Run requests as one Message Batch, or resume the unfinished batch a run directory records.
- * @param {object} opts as `runInteractive`, plus `sleep`, `pollIntervalMs`, `maxPolls`; on
+ * @param {object} opts as `runInteractive`, except that each request may also carry
+ *   `inputTokensEstimate` (batch mode only: used instead of count_tokens, and checked after
+ *   the fact against what each result cost); plus `sleep`, `pollIntervalMs`, `maxPolls`; on
  *   resume (`runId` naming an existing run directory) `requests` may be omitted, and if given
  *   must equal the recorded ones.
  * @returns {Promise<{ runId: string, runDir: string, status: string, counts?: object,
