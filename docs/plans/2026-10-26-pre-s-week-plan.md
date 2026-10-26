@@ -47,11 +47,11 @@
 | 0 | **Extraction check.** Re-extract into a throwaway worktree copy (CLAUDE.md: `cnxml-extract --output-dir` is ignored and writes into the real tree) and compare id **sets** and English **values** with the committed `02-for-mt`. Layer 2 is keyed on segment ids, so a paid run on ids a later re-extraction renumbers is wasted | CLAUDE.md, "re-extract first"; 10-10 §4 provenance | none | no |
 | 1 | **Layer scaffolding:** `02-mt-selected/` (layer 1s) and `02-mt-revised/` (layer 2), per-module provenance (input hash, ruling-set hash, prompt sha256, model id, harness commit; a mismatch refuses the module), a per-change log. Both directories join CLAUDE.md's File Permissions table in the same change | 10-10 §4 | none | no |
 | 2 | **The scope field** (`chapters`/`exclude`) for rulings, with a test. The AI gate's scope check needs it | 10-10 1.2, 3.3; roadmap c19 | none | no |
-| 3 | **Rule layer, minimal:** key-terms headwords; markup normalisation, render-checked first; H3's text substitutions once ruled; computed exact swaps only if time allows. Each operation is logged with its rule id | 10-10 3.1, 2.4; register §C201 H3 | D5, D6; *addition*; H3's four rulings | no |
-| 4 | **AI harness and code gate** in `tools/ai-review/`, written so either transport works (§4), with 10-10 §6's records from the first call | 10-10 3.2, 3.3, §6 | D5, D6; transport; spend cap | no |
-| 5 | **Pilot** on one high-drift chapter, then a second | 10-10 3.4 | the transport and billing ruling; spend cap | yes |
-| 6 | **Full AI run** over the book, prompt frozen and hashed first | 10-10 3.4, amendment A1 (§5) | A1; the transport and billing ruling; spend cap | yes |
-| 7 | **The AI pre-screen of the approved glossary rows that fire**, every call recorded. [USER] rules the flags after S | 10-10 1.5; roadmap c19 | the transport and billing ruling; spend cap | yes |
+| 3 | **Rule layer, minimal:** key-terms headwords; markup normalisation, render-checked first; H3's text substitutions once ruled; computed exact swaps only if time allows. Each operation is logged with its rule id | 10-10 3.1, 2.4; register §C201 H3 | *addition*; H3's four rulings (D5 and D6 answered) | no |
+| 4 | **AI harness and code gate** in `tools/ai-review/`, on the Anthropic API (§4), with 10-10 §6's records from the first call | 10-10 3.2, 3.3, §6 | none (answered 2026-10-26) | no |
+| 5 | **Pilot** on one high-drift chapter, then a second | 10-10 3.4 | the API key (§6, item 1) | yes |
+| 6 | **Full AI run** over the book, prompt frozen and hashed first | 10-10 3.4, amendment A1 (§5) | the API key | yes |
+| 7 | **The AI pre-screen of the approved glossary rows that fire**, every call recorded. [USER] rules the flags after S | 10-10 1.5; roadmap c19 | the API key | yes |
 | 8 | **The re-request mode** (writes layer 1s, never `02-mt-output`), then the re-request of all 8 untranslated September segments. 10-10 2.3 names June's API text as the fallback for 7 of them, but using it needs the marker-dialect conversion the unbuilt carry tool would have done, and re-requesting costs less | 10-10 2.3 | go for the buy | yes (MT) |
 
 **Tier 2: large coding, unfunded after S.** In parallel with Tier 1, highest value first.
@@ -64,7 +64,9 @@
 | 12 | **The reader census** (about 45 files read `02-mt-output`, counted 2026-10-26; re-derive) and the three main readers switched to layer 2 **behind a flag that defaults to layer 1**. The flag turns only after [USER]'s blind check, and then only for the categories that survive it, so a deploy before the check changes nothing editors see | 10-10 4.1; Skerfur G1.8 | window B, if ready |
 | 13 | **Re-attach by content** (the script; its prod run comes after S) | 10-10 4.2 | none now |
 
-**Tier 3: small, if time allows.** §C205's residue opener with its test and base rate; §C201 H1, H2 and H4; the
+**Tier 3: small, if time allows.** Register §C208: 15-3's Check-your-learning answer, a note's bare text, extracted,
+injected and rendered, with its one segment bought alongside item 8; §C205's residue opener with its test and base
+rate; §C201 H1, H2 and H4; the
 duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the ruled words; a draft of SD9's record
 (roadmap c14); vefur's two asks (roadmap p07), if still wanted; the three small fixes (roadmap p08).
 
@@ -98,15 +100,16 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
   and its commit; the exact model id and the date; every request and response as committed JSONL; usage and cost per
   call.
 - **Model:** `claude-opus-5-5` by default. A cheaper model is [USER]'s call.
-- **Transport** (10-10 §6 allows either; the harness supports both):
+- **Transport** (10-10 §6 allows either). ✏️ *[USER] chose the API on 2026-10-26
+  ([record](../decisions/2026-10-26-pre-s-week-ai-layer-answers.md)); the options as they were put:*
   - the Anthropic API: a per-token invoice, the Batch API at half price, and a key [USER] creates. Every parameter
     the model sees is in the project's own records, which makes it **the cleaner record for the paper**;
   - headless Claude Code (`claude -p`) on [USER]'s existing account: no setup and no Batch discount. It runs inside
     Claude Code's own harness, whose system prompt and tool layer the project does not version, so the recorded
     prompt sha256 covers only the project's half. Its cost depends on how that account is billed (§1 point 4).
-- **Where the layer and its logs live** is [USER]'s call (§6, item 2). 10-10 §4 and §6 say layer 2 and every
-  request and response are committed. [USER]'s D11 ruling of 2026-10-26, which is newer, kept that test's raw MT out
-  of the public repository, with verified off-repo copies instead.
+- **Where the layer and its logs live:** committed with the layer, as 10-10 §6 says ([USER], 2026-10-26, same
+  record). D11's raw MT stays off-repo by [USER]'s separate ruling; that was a side test, while layer 2 is the text
+  editors start from.
 - **Cost:** a 0-ISK census and token count first; the pilot measures the real cost per call; the run stops at the
   cap. At the list prices of 2026-10-06, 1,000–3,000 requests on Opus 5.5 at standard rates come to roughly
   USD 35–70, and the glossary pre-screen to roughly USD 10–20. These are estimates; invoices decide.
@@ -124,7 +127,8 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
     Wednesday), then the full run before S.
 
   Either way the acceptance rule is 10-10 3.4's. *Reordered* risks paying for categories the check later drops.
-  *Strict* puts 30 minutes into the report week.
+  *Strict* puts 30 minutes into the report week. ✏️ *[USER] chose **reordered** on 2026-10-26
+  ([record](../decisions/2026-10-26-pre-s-week-ai-layer-answers.md)).*
 - **A2, the calendars** (10-10 §5's table and the Skerfur plan's §7 "Before S" row): the S → S+4 weeks build rows
   (rule layer, AI harness and gate, re-request mode, full AI run) move into the week before S as far as they get.
   Whatever is unfinished at S continues in month 1, as before.
@@ -135,60 +139,80 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
 
 ## 6. [USER]'s involvement, in priority order
 
-Each item says roughly how long it takes, by when, and what it unblocks.
+Each item says roughly how long it takes, by when, and what it unblocks. Items marked **(vefur)** come from vefur's
+session (§7); vefur's plan owns them, and they are ranked here only against efni's.
 
-1. **Send u01 and B1** (about 25 minutes; Tuesday; the register's next action). u01's email asks in writing whether
+✏️ *The decision sitting was answered on 2026-10-26: the API with a key, capped at USD 100; late-October usage on the
+current grant; D5 and D6 yes; A1 reordered; the logs committed
+([record](../decisions/2026-10-26-pre-s-week-ai-layer-answers.md)).*
+
+1. **Create the API key** (about 10 minutes; tonight or Tuesday). An Anthropic Console key with billing set up, saved
+   as `ANTHROPIC_API_KEY` in the repository's git-ignored `.env`, never in chat or a commit. **Unblocks the pilot on
+   Wednesday.**
+2. **Send u01 and B1** (about 25 minutes; Tuesday; the register's next action). u01's email asks in writing whether
    late-October usage invoiced after the report may go on the current grant. Nothing this week waits for the reply.
-2. **The decision sitting** (about 15 minutes; tonight or Tuesday morning). **Unblocks the rule layer, the harness
-   and every paid call:**
-   - the transport and its billing: the API with a key, or `claude -p` on the existing account (and how that
-     account is billed); if a new invoice results, the ruling that late-October usage goes on the current grant;
-   - D5 and D6, yes or no each;
-   - A1, reordered or strict;
-   - whether layer 2 and its request/response logs are committed to the public repository, as 10-10 §4 says, or
-     kept off-repo with verified copies, as for D11;
-   - a spend cap for items 5–7.
-3. **Two terminology answers** (about 5 minutes; Tuesday):
+3. **Two terminology answers** (about 5 minutes; Tuesday). **Unblocks the rulings PR and the rule layer.**
    - *addition → álagning*: does the KEEP cover the reaction sense only, or every sense? If only the reaction sense,
      the bare row is retired and *addition reaction → álagningarhvarf*, already ruled, takes its place (register
      2026-10-25 (night, later), item 1);
    - the three entries that differ from the stored word only by the definite article or a gender ending
      (*lotukerfið → lotukerfi*, *árekstrakenningin → árekstrakenning*, *eintenntur → eintennt*): write them as
      entries, or keep them record-only.
-4. **H3's four rulings** (about 10 minutes; Wednesday): one heading for the worked examples' check-your-learning
+4. **(vefur) D03's data-rule wording and D20 batch 4** (Tuesday). They gate vefur's only pre-S train (S3.3 and its
+   invisible work), whose sessions are funded only before S.
+5. **H3's four rulings** (about 10 minutes; Wednesday): one heading for the worked examples' check-your-learning
    part; *amu* or *ame*; §9.5's two objectives in the supine form the others use; *Talið upp* for *Talist upp*.
    vefur's handoff (`docs/handoffs/2026-10-16-reader-branches-requests-for-efni.md`, H3) has the counts and their
    re-measure commands.
-5. **c09's two choices and SD7** (about 10 minutes; Wednesday): show the BÍN credit or hide the inflected forms
+6. **c09's two choices and SD7** (about 10 minutes; Wednesday): show the BÍN credit or hide the inflected forms
    (G1.16); drop the sidecar's `by`, `at` and `generated`, or cut `generated` to the date (G2.3); SD7 as drafted.
-6. **Go for the re-request buy** (1 minute; Thursday): a few segments through the MT provider.
-7. **Window A** (about 45 minutes; Thursday evening): merge the guards and rulings PRs, deploy, run the preference
+7. **(vefur) The train lock on M4** (a few minutes; this week). Under vefur's D05, no train runs until January once
+   vefur's S4.1 merges to `main`. Choose: accept the lock, keep M4 on a feature branch, or re-rule D05.
+8. **Go for the re-request buy** (1 minute; Thursday): the 8 untranslated September segments, plus 15-3's answer if
+   §C208's fix lands in time (§2, Tier 3).
+9. **Window A** (about 45 minutes; Thursday evening): merge the guards and rulings PRs, deploy, run the preference
    and concept-model scripts on prod, and check the next export.
-8. **Window B** (about 30 minutes; Saturday, or Sunday before the tag): merge the layer tools and data PRs, plus 4.0
-   and 4.1 if they are ready (4.1 with its flag off), then deploy. Without a deploy the content backup strands
-   (CLAUDE.md § Content delivery).
-9. **The rule at S** (1 minute): merge pre-S branches before the tag, or tag their tips.
-10. **The S tags and SD3** (about 10 minutes; Sunday 1 November): approve both tags once the content backup reports
+10. **(vefur) S1.3's real-phone focus-order check, and S0.4** (when convenient). vefur's plan dates S0.4 "before S",
+    but no step waits on it.
+11. **Window B** (about 30 minutes; Saturday, or Sunday before the tag): merge the layer tools and data PRs, plus 4.0
+    and 4.1 if they are ready (4.1 with its flag off), then deploy. Without a deploy the content backup strands
+    (CLAUDE.md § Content delivery).
+12. **The rule at S, and the tag's name** (1 minute): merge pre-S branches before the tag, or tag their tips.
+    Proposed: an annotated tag named `s-2026-11-01` in both repositories, each session tagging its own repository after
+    [USER]'s approval; vefur tags after its train if that ships before S.
+13. **The S tags and SD3** (about 10 minutes; Sunday 1 November): approve both tags once the content backup reports
     nothing unpushed; accept or amend SD3's two counts.
 
 **After S, not blocking this week:** the AI blind check (A1 reordered: about 1–2 hours in month 1); the flagged
-glossary rows; SD1; D7, D12 and D13; SD4–SD8; the preview; D14.
-
-**vefur's asks of [USER]** are ranked in vefur's own status (§7).
+glossary rows; SD1; D7, D12 and D13; SD4–SD8; the preview; D14. For the reader: the front-page wording (before the next
+chemistry sync); the follow-on's credit wording (before the first reviewed publication); the staged-release answer
+(roadmap u07); vefur's later decision sessions.
 
 ## 7. vefur
 
-vefur's plan and status own these; this list only points. ⏳ *vefur's reply to efni's 2026-10-26 message is
-pending; this section is updated from it, re-measured first.*
-- §C207, the written content-deploy procedure. It gates the sync, not this week.
-- G1.19 and vefur's S3.3: Ritstjóri stops allowing credentialed CORS; vefur's page-view beacon
-  (`src/lib/utils/api.ts`) stops counting, and S3.3 removes it under D03. Choose the order.
-- H5 waits for vefur's H7 (register §C201).
-- The Skerfur plan's §5.1, §5.3 and §5.4 for the reader: the front-page claim, the follow-on's credit sentence, and
-  GoatCounter counting client-side navigation.
-- The Check-your-learning answers that show only "Svar:".
-- vefur's two asks of efni (roadmap p07).
-- The S tag on both repositories.
+vefur's plan (`../namsbokasafn-vefur/docs/plans/2026-10-15-reader-v1.1-v1.2-review-plan.md`) and its CLAUDE.md
+status own these; this list only points. From vefur's reply of 2026-10-26, measured on vefur `main` `9c4f96e`. The
+claims efni acts on were re-measured here (✔).
+- **Nothing in vefur's pre-S queue depends on efni, and efni needs nothing from vefur before S.** vefur proposes one
+  more train of fixes and invisible work before its M4, because its D05 allows no train until January once S4.1
+  merges. The proposal is [USER]'s to confirm (§6, items 4, 7 and 10).
+- **§C207, the content-deploy procedure:** vefur can write it before S, with no efni dependency. efni supplies two
+  things at sync time only: the commit to sync (never `main` as it stands, §C204), and the final titles for the
+  redirect rows, including re-pointing vefur's two existing chemistry rows and 15-3's changed slug.
+- **G1.19 and vefur's S3.3:** either order is safe. vefur's only credentialed call to Ritstjóri is the page-view
+  beacon, which D03 ruled out. G1.19 also stops the beacon in the frozen books' old bundles, which S3.3 cannot reach.
+- **H7** is not sent. A narrowed H7 could go now, which changes vefur's plan order ([USER]'s call). It matters only
+  once efni's H5 has a branch.
+- **The Skerfur plan's §5 for the reader:** GoatCounter counting client-side navigation (§5.4) needs no decision and
+  can go before S. The front-page claim needs [USER]'s wording, the follow-on's credit sentence needs the contract's
+  wording, and the chapter hold-back (§C142) needs the staged-release answer.
+- **The "Svar:"-only answers are efni's** (✔ re-measured 2026-10-26). 7-2's table was dropped from its answer by an
+  older inject on `main`'s `03-translated`, and sits inside the answer on the September rebuild branch, so 4.5 fixes
+  it. 15-3's answer text was never extracted: register §C208.
+- **vefur's two asks of efni (roadmap p07)** are still wanted, at low priority: retire
+  `.github/workflows/sync-content.yml`, and add `--book` to the usage examples in `tools/cnxml-render.js`.
+- **At the sync, not this week:** vefur's data-en gate (efni's glossary and index generators do not emit the English
+  term yet), and H1's image dimensions, which vefur's pager needs from its M8 on.
 
 ## 8. Risks and fallbacks
 
