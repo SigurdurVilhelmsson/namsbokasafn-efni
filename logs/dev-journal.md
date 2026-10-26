@@ -540,3 +540,18 @@ c9537f536 docs(register): point the D11 entry at RUNBOOK §5's running-total rul
 **Why:** —
 
 ---
+
+## 2026-10-26 13:10 - D11 bought 26 Oct (six runs PASS, ≈ ISK 2,906), backed up to C: and the Linode bucket, register and roadmap updated, prod at 2cd65bd5e
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+2cd65bd5e Merge pull request #574 from SigurdurVilhelmsson/docs/register-d11-backup
+bf43dedab docs(register): D11's trees are backed up and verified (2026-10-26 afternoon entry)
+346ef5cfd Merge pull request #573 from SigurdurVilhelmsson/docs/register-d11-start-early
+
+**Why:** —
+
+---
