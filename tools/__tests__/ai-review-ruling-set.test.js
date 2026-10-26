@@ -8,7 +8,7 @@
  * everything (or nothing) cannot read as a pass.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -274,6 +274,15 @@ describe('rulings', () => {
 
   it('kinds name the base parts a ruling came from', () => {
     expect(ruling(committed(), 'group').kinds).toEqual(['entry', 'stage1']);
+  });
+
+  it('inflection notes carry the base’s why, unchanged', () => {
+    const base = JSON.parse(fs.readFileSync(path.join(REPO, BASE_REL), 'utf8'));
+    const notes = committed().notes.filter((n) => n.kind === 'inflection-note');
+    expect([notes.length > 0, notes.map((n) => [n.id, n.why])]).toEqual([
+      true,
+      base.inflectionNotes.map((n) => [n.id, n.why]),
+    ]);
   });
 });
 
@@ -558,6 +567,32 @@ describe('loadRulingSet', () => {
     expect(() => validateRulingSet(set)).toThrow(/unmatchableReason/);
   });
 
+  it('refuses a matchable ruling that carries an unmatchableReason', () => {
+    const set = committed();
+    const i = set.rulings.findIndex((r) => r.matchable === true);
+    set.rulings[i].unmatchableReason = 'target-digit';
+    expect(() => validateRulingSet(set)).toThrow(/exactly when matchable is false/);
+  });
+
+  it('refuses an unmatchable ruling whose reason is empty', () => {
+    const set = committed();
+    const i = set.rulings.findIndex((r) => r.matchable === false);
+    set.rulings[i].unmatchableReason = '';
+    expect(() => validateRulingSet(set)).toThrow(/empty unmatchableReason/);
+  });
+
+  it('refuses rulings that are not sorted by id', () => {
+    const set = committed();
+    [set.rulings[0], set.rulings[1]] = [set.rulings[1], set.rulings[0]];
+    expect(() => validateRulingSet(set)).toThrow(/not sorted by id/);
+  });
+
+  it('refuses a headword that is both ruled and excluded', () => {
+    const set = committed();
+    set.excluded.push({ enNorm: set.rulings[0].enNorm, reason: 'held' });
+    expect(() => validateRulingSet(set)).toThrow(/both ruled and excluded/);
+  });
+
   it('refuses a default status on a non-book scope', () => {
     const set = committed();
     const i = set.rulings.findIndex((r) => r.enNorm === 'cell');
@@ -569,13 +604,30 @@ describe('loadRulingSet', () => {
 // ─── CLI ─────────────────────────────────────────────────────────────────
 
 describe('CLI', () => {
-  const run = (args) => spawnSync(process.execPath, [CLI, ...args], { encoding: 'utf8' });
-  const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'ruling-set-'));
+  const run = (args, script = CLI) =>
+    spawnSync(process.execPath, [script, ...args], { encoding: 'utf8' });
+  const made = [];
+  const tmp = () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ruling-set-'));
+    made.push(dir);
+    return dir;
+  };
+  afterAll(() => made.forEach((dir) => fs.rmSync(dir, { recursive: true, force: true })));
 
   it('writes the committed artifact byte for byte', () => {
     const out = path.join(tmp(), 'ruling-set-2026-10-26.json');
     const r = run(['--base', BASE_REL, '--exceptions', EXC_REL, '--out', out]);
     expect([r.status, fs.readFileSync(out, 'utf8') === committedText()]).toEqual([0, true]);
+  });
+
+  it('runs when invoked through a symlink to the script (it does not exit 0 having done nothing)', () => {
+    const dir = tmp();
+    const link = path.join(dir, 'compile.js');
+    fs.symlinkSync(CLI, link);
+    const out = path.join(dir, 'ruling-set-2026-10-26.json');
+    const r = run(['--base', BASE_REL, '--exceptions', EXC_REL, '--out', out], link);
+    const wrote = fs.existsSync(out) && fs.readFileSync(out, 'utf8') === committedText();
+    expect([r.status, wrote]).toEqual([0, true]);
   });
 
   it('refuses an unknown flag and writes nothing', () => {
@@ -585,10 +637,14 @@ describe('CLI', () => {
     expect([r.status, fs.existsSync(out)]).toEqual([1, false]);
   });
 
-  it('refuses to write over its frozen base', () => {
+  it('refuses to write over its frozen base (the dated-name rule stops it first)', () => {
     const before = sha256(fs.readFileSync(path.join(REPO, BASE_REL)));
     const r = run(['--base', BASE_REL, '--exceptions', EXC_REL, '--out', BASE_REL]);
-    expect([r.status, sha256(fs.readFileSync(path.join(REPO, BASE_REL)))]).toEqual([1, before]);
+    expect([
+      r.status,
+      /^compile-ruling-set: --out \S+ is not named ruling-set-YYYY-MM-DD\.json$/m.test(r.stderr),
+      sha256(fs.readFileSync(path.join(REPO, BASE_REL))),
+    ]).toEqual([1, true, before]);
   });
 
   it('refuses an output name that is not a dated ruling set', () => {
@@ -599,5 +655,57 @@ describe('CLI', () => {
 
   it('refuses when a required flag is missing', () => {
     expect(run(['--base', BASE_REL]).status).toBe(1);
+  });
+
+  // The "--out is an input" guard, reached for real: the base here has a DATED name, so the
+  // name rule passes it, and it lives inside the repository, so without the guard the run
+  // would go on to read it and overwrite it. The directory is gitignored by its `.tmp` suffix.
+  describe('--out must not be an input', () => {
+    const FIX = path.join(REPO, `ruling-set-cli-${process.pid}-${crypto.randomUUID()}.tmp`);
+    const FIX_REL = path.relative(REPO, FIX);
+    const BASE_NAME = 'ruling-set-2026-01-01.json';
+    const base = path.join(FIX_REL, BASE_NAME);
+    const exc = path.join(FIX_REL, 'exceptions.json');
+    const baseSha = () => sha256(fs.readFileSync(path.join(FIX, BASE_NAME)));
+    // Anchored on the error line: every error also prints the usage, whose text names the
+    // same rule, so an unanchored match passes on ANY refusal.
+    const GUARD_LINE = /^compile-ruling-set: --out must not be one of the inputs$/m;
+    const refusal = (out) => {
+      const before = baseSha();
+      const r = run(['--base', base, '--exceptions', exc, '--out', out]);
+      return [r.status, GUARD_LINE.test(r.stderr), baseSha() === before];
+    };
+
+    beforeAll(() => {
+      fs.mkdirSync(FIX);
+      fs.symlinkSync('.', path.join(FIX, 'dirlink'));
+      fs.symlinkSync(BASE_NAME, path.join(FIX, 'ruling-set-2026-01-03.json'));
+    });
+    // Fresh inputs for every test, so one test that overwrote the base cannot decide the next.
+    beforeEach(() => {
+      fs.writeFileSync(path.join(FIX, BASE_NAME), baseInput([beforeRow('acid', 'sýra')]).text);
+      fs.writeFileSync(path.join(FIX, 'exceptions.json'), excInput().text);
+    });
+    afterAll(() => fs.rmSync(FIX, { recursive: true, force: true }));
+
+    it('control: the same inputs compile to another dated name through the symlinked directory', () => {
+      const before = baseSha();
+      const out = path.join(FIX_REL, 'dirlink', 'ruling-set-2026-01-02.json');
+      const r = run(['--base', base, '--exceptions', exc, '--out', out]);
+      const wrote = fs.existsSync(path.join(FIX, 'ruling-set-2026-01-02.json'));
+      expect([r.status, wrote, baseSha() === before]).toEqual([0, true, true]);
+    });
+
+    it('refuses an --out that is the same path as an input', () => {
+      expect(refusal(base)).toEqual([1, true, true]);
+    });
+
+    it('refuses an --out that reaches an input through a symlinked directory', () => {
+      expect(refusal(path.join(FIX_REL, 'dirlink', BASE_NAME))).toEqual([1, true, true]);
+    });
+
+    it('refuses an --out that is a symlink to an input', () => {
+      expect(refusal(path.join(FIX_REL, 'ruling-set-2026-01-03.json'))).toEqual([1, true, true]);
+    });
   });
 });

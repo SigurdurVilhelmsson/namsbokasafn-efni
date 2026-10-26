@@ -16,7 +16,8 @@
  * (case-insensitive); a headword both held and ruled; an exception naming no row, or a held
  * one; a supersession that matches nothing; a base row whose scope is not book-wide (a width
  * enters only through the exceptions file, with a status); two enNorms minting one id; an
- * unknown CLI flag.
+ * unknown CLI flag; an --out that is not a dated ruling-set name, or that reaches one of the
+ * inputs by any route (same path, symlinked directory, symlink, hard link).
  */
 
 import fs from 'node:fs';
@@ -539,7 +540,14 @@ export function compileRulingSet(baseInput, exceptionsInput) {
       if (!isPlainObject(n) || !isNonEmptyString(n.id) || typeof n.en !== 'string') {
         throw new Error(`ruling-set: base.inflectionNotes[${i}] needs id and en`);
       }
-      return { kind: 'inflection-note', id: n.id, en: n.en, ch: n.ch ?? null, note: n.note ?? '' };
+      return {
+        kind: 'inflection-note',
+        id: n.id,
+        en: n.en,
+        ch: n.ch ?? null,
+        note: n.note ?? '',
+        why: n.why ?? null,
+      };
     }),
   ];
   const noteKey = (n) => n.enNorm ?? n.id ?? '';
@@ -621,6 +629,38 @@ const USAGE = [
 
 const FLAGS = ['base', 'exceptions', 'out'];
 
+/** `dev:ino` of the file a path reaches (symlinks followed), or null when nothing is there. */
+function fileIdentity(abs) {
+  try {
+    const s = fs.statSync(abs, { bigint: true });
+    return `${s.dev}:${s.ino}`;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Is `outAbs` one of the inputs? By path, and by device and inode, so that a symlinked
+ * directory, a symlink or a hard link cannot pass an input off as a new --out. An --out
+ * that does not exist yet cannot be an input (every input must exist to be read).
+ * @param {string} outAbs
+ * @param {string[]} inputAbs
+ */
+function sameFileAsAnInput(outAbs, inputAbs) {
+  if (inputAbs.includes(outAbs)) return true;
+  const out = fileIdentity(outAbs);
+  return out !== null && inputAbs.some((p) => fileIdentity(p) === out);
+}
+
+/** The real path of an existing file, or the resolved path when it cannot be realpathed. */
+function realpathOrSelf(p) {
+  try {
+    return fs.realpathSync(path.resolve(p));
+  } catch {
+    return path.resolve(p);
+  }
+}
+
 /** Strict: an unknown or repeated flag refuses (tools/lib/parseArgs.js drops them silently). */
 function parseCliArgs(argv) {
   const args = {};
@@ -655,7 +695,7 @@ function main(argv) {
       throw new Error(`--out ${args.out} is not named ruling-set-YYYY-MM-DD.json`);
     }
     const inputAbs = [args.base, args.exceptions].map(resolveRepoPath);
-    if (inputAbs.includes(outAbs)) throw new Error('--out must not be one of the inputs');
+    if (sameFileAsAnInput(outAbs, inputAbs)) throw new Error('--out must not be one of the inputs');
     const { base, exceptions } = readInputs(args.base, args.exceptions);
     const artifact = compileRulingSet(base, exceptions);
     const text = serializeRulingSet(artifact);
@@ -675,6 +715,12 @@ function main(argv) {
   }
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+// Node realpaths the entry module but not argv[1], so both sides are realpathed: run through
+// a symlink, a bare path comparison is false, main() never runs, and the process exits 0
+// having done nothing (its failure default is set inside main()).
+if (
+  process.argv[1] &&
+  realpathOrSelf(process.argv[1]) === realpathOrSelf(fileURLToPath(import.meta.url))
+) {
   main(process.argv.slice(2));
 }

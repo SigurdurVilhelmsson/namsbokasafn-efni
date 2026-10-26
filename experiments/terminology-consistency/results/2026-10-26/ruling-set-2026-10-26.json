@@ -5851,14 +5851,16 @@
       "id": "ch07_fs-idp35872064",
       "en": "linear",
       "ch": "ch07",
-      "note": "Depends on gender"
+      "note": "Depends on gender",
+      "why": "\"either is fine\": the choice is inflection, not a word"
     },
     {
       "kind": "inflection-note",
       "id": "ch14_fs-idm111671584",
       "en": "basic",
       "ch": "ch14",
-      "note": "Depends on gender"
+      "note": "Depends on gender",
+      "why": "\"either is fine\": the choice is inflection, not a word"
     }
   ]
 }
