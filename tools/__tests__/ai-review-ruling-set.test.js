@@ -664,6 +664,7 @@ describe('CLI', () => {
     const FIX = path.join(REPO, `ruling-set-cli-${process.pid}-${crypto.randomUUID()}.tmp`);
     const FIX_REL = path.relative(REPO, FIX);
     const BASE_NAME = 'ruling-set-2026-01-01.json';
+    const HARD_LINK = 'ruling-set-2026-01-04.json';
     const base = path.join(FIX_REL, BASE_NAME);
     const exc = path.join(FIX_REL, 'exceptions.json');
     const baseSha = () => sha256(fs.readFileSync(path.join(FIX, BASE_NAME)));
@@ -683,8 +684,11 @@ describe('CLI', () => {
     });
     // Fresh inputs for every test, so one test that overwrote the base cannot decide the next.
     beforeEach(() => {
+      fs.rmSync(path.join(FIX, BASE_NAME), { force: true });
       fs.writeFileSync(path.join(FIX, BASE_NAME), baseInput([beforeRow('acid', 'sýra')]).text);
       fs.writeFileSync(path.join(FIX, 'exceptions.json'), excInput().text);
+      fs.rmSync(path.join(FIX, HARD_LINK), { force: true });
+      fs.linkSync(path.join(FIX, BASE_NAME), path.join(FIX, HARD_LINK));
     });
     afterAll(() => fs.rmSync(FIX, { recursive: true, force: true }));
 
@@ -706,6 +710,10 @@ describe('CLI', () => {
 
     it('refuses an --out that is a symlink to an input', () => {
       expect(refusal(path.join(FIX_REL, 'ruling-set-2026-01-03.json'))).toEqual([1, true, true]);
+    });
+
+    it('refuses an --out that is a hard link to an input', () => {
+      expect(refusal(path.join(FIX_REL, HARD_LINK))).toEqual([1, true, true]);
     });
   });
 });
