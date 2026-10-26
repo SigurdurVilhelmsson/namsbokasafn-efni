@@ -1,0 +1,5864 @@
+{
+  "schema": "ai-review-ruling-set/1",
+  "about": "The scoped term-ruling set the AI-reviewed layer's gate reads (spec docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit B). Compiled by tools/ai-review/compile-ruling-set.js from `base` (the frozen 2026-10-11 set: its stage1 and before rows) and `exceptions` (scope exceptions to D2's book-wide default). Deterministic: a test recompiles it and requires byte equality, so never edit it by hand. One ruling per enNorm, after the base's supersededInBefore is applied (a superseded target survives only as a competitor). `id` is a slug of enNorm minted here. `en` lists every English form the rows carry, plus each form with its parentheticals removed (case kept). `is` is the recorded target, unchanged. `competitors` are the other renderings the rows name: a before row's competitor; a stage1 row's stored word, tied words, stored alternatives and superseded page answer; any superseded target; never the target itself. `kinds` are the before kinds plus 'stage1'; `sources` cite each row. `scope` is {kind:'book'} with scopeStatus 'default' unless the exceptions file names the headword; a 'proposed' width is not ruled, and the gate admits no operation for it. `matchable` is false, with codes in unmatchableReason, when the target holds a digit, a Greek letter, an uppercase letter after the first letter of a run of letters, an operator or bracket character, an underscore, or a non-ASCII space or control character, or when the enNorm holds a bracketed placeholder such as [formula]. Held rows and rows without a target are listed under `excluded`, never ruled.",
+  "base": {
+    "path": "experiments/terminology-consistency/results/2026-10-11/ruling-set-after-stage1.json",
+    "sha256": "e7294268afc9bf2fe7f41d3b053715a251afb9b27080232f799f36f0601dc6de"
+  },
+  "exceptions": {
+    "path": "experiments/terminology-consistency/results/2026-10-26/scope-exceptions-2026-10-26.json",
+    "sha256": "ad5385955361ade9a5d434b2af1b612af4c28c754e6cd18cce80b1650a040377"
+  },
+  "counts": {
+    "baseRows": {
+      "stage1": 248,
+      "before": 170
+    },
+    "superseded": 1,
+    "enNorms": 391,
+    "rulings": 387,
+    "excluded": 4,
+    "matchable": 362,
+    "unmatchable": 25,
+    "scopeStatus": {
+      "default": 385,
+      "proposed": 2,
+      "ruled": 0
+    },
+    "exceptions": 2
+  },
+  "rulings": [
+    {
+      "id": "absorption",
+      "enNorm": "absorption",
+      "en": ["absorption"],
+      "is": "gleypni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "abundance",
+      "enNorm": "abundance",
+      "en": ["abundance"],
+      "is": "fjöldahlutfall",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "accuracy",
+      "enNorm": "accuracy",
+      "en": ["accuracy"],
+      "is": "hittni",
+      "competitors": ["nákvæmni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idp330245120 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "acid-base-indicator",
+      "enNorm": "acid-base indicator",
+      "en": ["acid-base indicator"],
+      "is": "sýru-basa litvísir",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp67176144 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "acid-base-reaction",
+      "enNorm": "acid-base reaction",
+      "en": ["acid-base reaction"],
+      "is": "sýru-basa efnahvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idm54009824 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "actinide-series",
+      "enNorm": "actinide series",
+      "en": ["actinide series"],
+      "is": "aktiníðaröð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm98560816 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "active-electrode",
+      "enNorm": "active electrode",
+      "en": ["active electrode"],
+      "is": "virkt raftroð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp13398640 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "actual-yield",
+      "enNorm": "actual yield",
+      "en": ["actual yield"],
+      "is": "raunheimtur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm47393392 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "addition",
+      "enNorm": "addition",
+      "en": ["addition"],
+      "is": "álagning",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ws_addition (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "addition-reaction",
+      "enNorm": "addition reaction",
+      "en": ["addition reaction"],
+      "is": "álagningarhvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch20_fs-id1170893631592 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "adhesive-force",
+      "enNorm": "adhesive force",
+      "en": ["adhesive force"],
+      "is": "viðloðunarkraftur",
+      "competitors": ["aðloðunarkraftur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm87859280 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "alcohol",
+      "enNorm": "alcohol",
+      "en": ["alcohol"],
+      "is": "alkóhól",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "alkaline-battery",
+      "enNorm": "alkaline battery",
+      "en": ["alkaline battery"],
+      "is": "Alkalínrafhlaða",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm210620784 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "alloy",
+      "enNorm": "alloy",
+      "en": ["alloy"],
+      "is": "melmi",
+      "competitors": ["málmblanda", "málmblendi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idm104294208 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "alpha-decay",
+      "enNorm": "alpha decay",
+      "en": ["alpha (α) decay", "alpha decay"],
+      "is": "alfa (α) sundrun",
+      "competitors": ["alfa (α) hrörnun", "alfahrörnun", "alfasundrun"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm27965808 (chat (question 1); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-operator-or-bracket"
+    },
+    {
+      "id": "alpha-particle",
+      "enNorm": "alpha particle",
+      "en": ["alpha particle", "alpha particle (α particle)"],
+      "is": "alfaeind",
+      "competitors": ["alfaögn"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1", "verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm57603984 (2026-10-10 [USER])",
+        "stage1 ch02_fs-idm10811088 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "amorphous",
+      "enNorm": "amorphous",
+      "en": ["amorphous"],
+      "is": "myndlaus",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch18_fs-idp50657904 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "amorphous-solid",
+      "enNorm": "amorphous solid",
+      "en": ["amorphous solid"],
+      "is": "myndlaust fastefni",
+      "competitors": ["myndlaust fast efni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm63193280 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "amphiprotic",
+      "enNorm": "amphiprotic",
+      "en": ["amphiprotic"],
+      "is": "tvíhegða",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch14_fs-idp140545888 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "amphoteric",
+      "enNorm": "amphoteric",
+      "en": ["amphoteric"],
+      "is": "tvíhegða",
+      "competitors": ["amfóterísk"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp12571968 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "amplitude",
+      "enNorm": "amplitude",
+      "en": ["amplitude"],
+      "is": "útslag",
+      "competitors": ["sveifluvídd"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp173255696 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "analyte",
+      "enNorm": "analyte",
+      "en": ["analyte"],
+      "is": "greiniefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp17888704 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "anode",
+      "enNorm": "anode",
+      "en": ["anode"],
+      "is": "anóða",
+      "competitors": ["forskaut"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp4652784 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "aromatic-hydrocarbon",
+      "enNorm": "aromatic hydrocarbon",
+      "en": ["aromatic hydrocarbon"],
+      "is": "arómatískt vetniskolefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch20_fs-idp73021984 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "arrhenius-equation",
+      "enNorm": "arrhenius equation",
+      "en": ["Arrhenius equation"],
+      "is": "Arrheniusar-jafna",
+      "competitors": ["Arrheniusarjöfnun"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm187159584 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "atom",
+      "enNorm": "atom",
+      "en": ["atom"],
+      "is": "atóm",
+      "competitors": ["frumeind"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["book-preference", "verdict"],
+      "sources": [
+        "before book-preference: prod book_term_preference (read 2026-10-11) (not ruled)",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm8143856 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "atomic-mass",
+      "enNorm": "atomic mass",
+      "en": ["atomic mass"],
+      "is": "atómmassi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp230158528 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "atomic-orbital",
+      "enNorm": "atomic orbital",
+      "en": ["atomic orbital"],
+      "is": "atómsvigrúm",
+      "competitors": ["frumeindasvigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm147438368 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "becquerel",
+      "enNorm": "becquerel",
+      "en": ["becquerel", "becquerel (Bq)"],
+      "is": "becquerel",
+      "competitors": ["bekerel"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp13479088 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bent",
+      "enNorm": "bent",
+      "en": ["bent"],
+      "is": "boginn",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "beta-decay",
+      "enNorm": "beta decay",
+      "en": ["beta (β) decay", "beta decay"],
+      "is": "beta (β) sundrun",
+      "competitors": ["beta (β) hrörnun", "betahrörnun", "betasundrun"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp69613952 (chat (question 1); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-operator-or-bracket"
+    },
+    {
+      "id": "bidentate-ligand",
+      "enNorm": "bidentate ligand",
+      "en": ["bidentate ligand"],
+      "is": "tvítenntur tengill",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp65460624 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bimolecular-reaction",
+      "enNorm": "bimolecular reaction",
+      "en": ["bimolecular reaction"],
+      "is": "tvísameindahvarf",
+      "competitors": ["tvísameinda efnahvarf"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idp131244384 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "binary-acid",
+      "enNorm": "binary acid",
+      "en": ["binary acid"],
+      "is": "tvígild sýra",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp282291040 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "binary-compound",
+      "enNorm": "binary compound",
+      "en": ["binary compound"],
+      "is": "tvíefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp282226176 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "binding-energy-per-nucleon",
+      "enNorm": "binding energy per nucleon",
+      "en": ["binding energy per nucleon"],
+      "is": "bindiorka á hverja kjarneind",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp85639552 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "body-centered-cubic-solid",
+      "enNorm": "body-centered cubic solid",
+      "en": ["body-centered cubic (BCC) solid", "body-centered cubic solid"],
+      "is": "miðlægt teningslaga (BCC) fast efni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp190835184 (page-answer; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+    },
+    {
+      "id": "body-centered-cubic-unit-cell",
+      "enNorm": "body-centered cubic unit cell",
+      "en": ["body-centered cubic unit cell"],
+      "is": "miðlæg teningslaga grindareining",
+      "competitors": ["miðjufyllt rúmfrumugrindareining"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp178458288 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "bohrs-model-of-the-hydrogen-atom",
+      "enNorm": "bohr’s model of the hydrogen atom",
+      "en": ["Bohr’s model of the hydrogen atom"],
+      "is": "Líkan Bohrs af vetnisatóminu",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm13416416 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bomb-calorimeter",
+      "enNorm": "bomb calorimeter",
+      "en": ["bomb calorimeter"],
+      "is": "sprengivarmamælir",
+      "competitors": ["brennsluvarmamælir"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch05_fs-idm56360448 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bond-angle",
+      "enNorm": "bond angle",
+      "en": ["bond angle"],
+      "is": "tengihorn",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bond-dipole-moment",
+      "enNorm": "bond dipole moment",
+      "en": ["bond dipole moment"],
+      "is": "tvískautsvægi efnatengis",
+      "competitors": ["tvískautsvægi tengis"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp60998304 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "bond-energy",
+      "enNorm": "bond energy",
+      "en": ["bond energy"],
+      "is": "tengjaorka",
+      "competitors": ["tengiorka"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idp10319376 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bond-length",
+      "enNorm": "bond length",
+      "en": ["bond length"],
+      "is": "tengilengd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bond-order",
+      "enNorm": "bond order",
+      "en": ["bond order"],
+      "is": "tengigráða",
+      "competitors": ["tengitala"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm57102096 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "bonding-orbital",
+      "enNorm": "bonding orbital",
+      "en": ["bonding orbital"],
+      "is": "tengisvigrúm",
+      "competitors": ["bindandi svigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm133686144 (chat (question 3); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "born-haber-cycle",
+      "enNorm": "born-haber cycle",
+      "en": ["Born-Haber cycle"],
+      "is": "Born-Haber-hringur",
+      "competitors": ["Born-Haber-hringferli"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp39711472 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "bragg-equation",
+      "enNorm": "bragg equation",
+      "en": ["Bragg equation"],
+      "is": "Bragg-jafna",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp168577936 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bronsted-lowry-acid",
+      "enNorm": "brønsted-lowry acid",
+      "en": ["Brønsted-Lowry acid"],
+      "is": "Brønsted-Lowry sýra",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch14_fs-idp43874496 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "bronsted-lowry-base",
+      "enNorm": "brønsted-lowry base",
+      "en": ["Brønsted-Lowry base"],
+      "is": "Brønsted-Lowry basi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch14_fs-idp89677040 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "buffer-capacity",
+      "enNorm": "buffer capacity",
+      "en": ["buffer capacity"],
+      "is": "stuðpúðageta",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp88494848 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "calorie",
+      "enNorm": "calorie",
+      "en": ["calorie", "calorie (cal)"],
+      "is": "kaloría (cal)",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25499888 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-operator-or-bracket"
+    },
+    {
+      "id": "calorimeter",
+      "enNorm": "calorimeter",
+      "en": ["calorimeter"],
+      "is": "varmamælir",
+      "competitors": ["hitamælir"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56359488 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "calorimetry",
+      "enNorm": "calorimetry",
+      "en": ["calorimetry"],
+      "is": "varmamæling",
+      "competitors": ["hitamæling"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56358720 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "carbon-monoxide",
+      "enNorm": "carbon monoxide",
+      "en": ["carbon monoxide"],
+      "is": "kolmónoxíð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "carbonate",
+      "enNorm": "carbonate",
+      "en": ["carbonate"],
+      "is": "karbónat",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "carbonyl-group",
+      "enNorm": "carbonyl group",
+      "en": ["carbonyl group"],
+      "is": "karbónýlhópur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "carboxylic-acid",
+      "enNorm": "carboxylic acid",
+      "en": ["carboxylic acid"],
+      "is": "karboxýlsýra",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch20_fs-idm3165296 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "cathode",
+      "enNorm": "cathode",
+      "en": ["cathode"],
+      "is": "katóða",
+      "competitors": ["bakskaut"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm120688224 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "cathodic-protection",
+      "enNorm": "cathodic protection",
+      "en": ["cathodic protection"],
+      "is": "katóðuvörn",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp84325552 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "cell",
+      "enNorm": "cell",
+      "en": ["cell"],
+      "is": "ker",
+      "competitors": [],
+      "scope": {
+        "kind": "chapters",
+        "chapters": ["ch17"]
+      },
+      "scopeStatus": "proposed",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "cell-notation",
+      "enNorm": "cell notation",
+      "en": ["cell notation", "cell notation (schematic)"],
+      "is": "kerritun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm139905600 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "cell-potential",
+      "enNorm": "cell potential",
+      "en": ["cell potential", "cell potential (Ecell)"],
+      "is": "kerspenna",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch17_fs-idm153779040 (page-answer; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "celsius",
+      "enNorm": "celsius",
+      "en": ["Celsius", "Celsius (°C)"],
+      "is": "Celsíus",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])",
+        "stage1 ch01_fs-idm285658848 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "central-metal",
+      "enNorm": "central metal",
+      "en": ["central metal"],
+      "is": "miðjumálmur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch19_fs-idp53705200 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "chain-reaction",
+      "enNorm": "chain reaction",
+      "en": ["chain reaction"],
+      "is": "keðjuhvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch21_fs-idm128080144 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "chelate",
+      "enNorm": "chelate",
+      "en": ["chelate"],
+      "is": "klóefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp64634960 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "chelating-ligand",
+      "enNorm": "chelating ligand",
+      "en": ["chelating ligand"],
+      "is": "klótengill",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp51669120 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "chemical-change",
+      "enNorm": "chemical change",
+      "en": ["chemical change"],
+      "is": "efnabreyting",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp392534800 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "chemical-property",
+      "enNorm": "chemical property",
+      "en": ["chemical property"],
+      "is": "efnafræðilegur eiginleiki",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idm88320752 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "chemical-reduction",
+      "enNorm": "chemical reduction",
+      "en": ["chemical reduction"],
+      "is": "efnafræðileg afoxun",
+      "competitors": ["efnaafoxun"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idp238031216 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "chemical-thermodynamics",
+      "enNorm": "chemical thermodynamics",
+      "en": ["chemical thermodynamics"],
+      "is": "efnavarmafræði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch05_fs-idp102379584 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "collision-theory",
+      "enNorm": "collision theory",
+      "en": ["collision theory"],
+      "is": "árekstrakenning",
+      "competitors": ["árekstrakenningin"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idm101548864 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "colloid",
+      "enNorm": "colloid",
+      "en": ["colloid"],
+      "is": "svif",
+      "competitors": ["kollóíð"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm164804608 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "color-change-interval",
+      "enNorm": "color-change interval",
+      "en": ["color-change interval"],
+      "is": "litskiptabil",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch14_fs-idp67177296 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "combustion-analysis",
+      "enNorm": "combustion analysis",
+      "en": ["combustion analysis"],
+      "is": "brunagreining",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp72814256 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "common-ion-effect",
+      "enNorm": "common ion effect",
+      "en": ["common ion effect"],
+      "is": "samjónahrif",
+      "competitors": ["samjónaáhrif"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3050576 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "complementary-color",
+      "enNorm": "complementary color",
+      "en": ["complementary color"],
+      "is": "fyllingarlitur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["no-entry"],
+      "sources": [
+        "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "complete-ionic-equation",
+      "enNorm": "complete ionic equation",
+      "en": ["complete ionic equation"],
+      "is": "heildarjónajafna",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp261286592 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "complex-ion",
+      "enNorm": "complex ion",
+      "en": ["complex ion"],
+      "is": "flókajón",
+      "competitors": ["fléttujón"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm90510160 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "concentrated",
+      "enNorm": "concentrated",
+      "en": ["concentrated"],
+      "is": "óþynnt",
+      "competitors": ["megn", "sterkur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch03_fs-idm26449216 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "concentration-cell",
+      "enNorm": "concentration cell",
+      "en": ["concentration cell"],
+      "is": "styrksker",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp94537696 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "condensed-formula",
+      "enNorm": "condensed formula",
+      "en": ["condensed formula"],
+      "is": "þéttformúla",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "condensed-structure",
+      "enNorm": "condensed structure",
+      "en": ["condensed structure"],
+      "is": "þéttformúla",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "containment-system",
+      "enNorm": "containment system",
+      "en": ["containment system"],
+      "is": "innilokunarkerfi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm220735792 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "control-rod",
+      "enNorm": "control rod",
+      "en": ["control rod"],
+      "is": "hemilstöng",
+      "competitors": ["stýristöng"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm206270992 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "coordination-compound",
+      "enNorm": "coordination compound",
+      "en": ["coordination compound"],
+      "is": "girðisamband",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": [
+        "stage1 ch19_fs-idm163589328 (page-default-confirmed; 2026-10-11 [USER])",
+        "stage1 ch19_fs-idp246761680 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "coordination-number",
+      "enNorm": "coordination number",
+      "en": ["coordination number"],
+      "is": "girðitala",
+      "competitors": ["hnitsetningartala"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1", "verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp29496752 (2026-10-10 [USER])",
+        "stage1 ch19_fs-idp55828544 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "coordination-sphere",
+      "enNorm": "coordination sphere",
+      "en": ["coordination sphere"],
+      "is": "girðihvolf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp56324672 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "covalent-compound",
+      "enNorm": "covalent compound",
+      "en": ["covalent compound"],
+      "is": "samgilt efnasamband",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp184530720 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "covalent-network-solid",
+      "enNorm": "covalent network solid",
+      "en": ["covalent network solid"],
+      "is": "samgilt fast netefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp42521392 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "critical-mass",
+      "enNorm": "critical mass",
+      "en": ["critical mass"],
+      "is": "markmassi",
+      "competitors": ["hleypimassi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm1727408 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "critical-point",
+      "enNorm": "critical point",
+      "en": ["critical point"],
+      "is": "markpunktur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm66977664 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "crystal-field-splitting",
+      "enNorm": "crystal field splitting",
+      "en": ["crystal field splitting", "crystal field splitting (Δoct)"],
+      "is": "kristalsviðsklofnun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm99275552 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "crystal-field-theory",
+      "enNorm": "crystal field theory",
+      "en": ["crystal field theory"],
+      "is": "kristalsviðskenning",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm31354480 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "crystalline",
+      "enNorm": "crystalline",
+      "en": ["crystalline"],
+      "is": "kristalkenndur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "crystalline-solid",
+      "enNorm": "crystalline solid",
+      "en": ["crystalline solid"],
+      "is": "kristalkennt fastefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp141680624 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "cubic-closest-packing",
+      "enNorm": "cubic closest packing",
+      "en": ["cubic closest packing", "cubic closest packing (CCP)"],
+      "is": "teningslaga þéttpökkun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp56136784 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "curie",
+      "enNorm": "curie",
+      "en": ["curie", "curie (Ci)"],
+      "is": "curie",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp40157072 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "d-orbital",
+      "enNorm": "d orbital",
+      "en": ["d orbital"],
+      "is": "d-svigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp12032 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "daltons-atomic-theory",
+      "enNorm": "dalton’s atomic theory",
+      "en": ["Dalton’s atomic theory"],
+      "is": "Atómkenning Daltons",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp110829184 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "daughter-nuclide",
+      "enNorm": "daughter nuclide",
+      "en": ["daughter nuclide"],
+      "is": "dótturkjarnategund",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp69591216 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "decay",
+      "enNorm": "decay",
+      "en": ["decay"],
+      "is": "sundrun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["no-entry"],
+      "sources": [
+        "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "degenerate-orbitals",
+      "enNorm": "degenerate orbitals",
+      "en": ["degenerate orbitals"],
+      "is": "orkujöfn svigrúm",
+      "competitors": ["jafnorkusvigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": [
+        "stage1 ch06_fs-idm442273488 (chat (question 4); 2026-10-11 [USER])",
+        "stage1 ch08_fs-idm167738656 (chat (question 4); 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "degree-celsius",
+      "enNorm": "degree celsius",
+      "en": ["degree Celsius"],
+      "is": "stig á Celsíus",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "degree-centigrade",
+      "enNorm": "degree centigrade",
+      "en": ["degree centigrade"],
+      "is": "stig á Celsíus",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "deposition",
+      "enNorm": "deposition",
+      "en": ["deposition"],
+      "is": "hélun",
+      "competitors": ["útfelling"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm7778192 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "diamagnetism",
+      "enNorm": "diamagnetism",
+      "en": ["diamagnetism"],
+      "is": "mótseglun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm83103936 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "diffraction",
+      "enNorm": "diffraction",
+      "en": ["diffraction"],
+      "is": "beygja",
+      "competitors": ["bylgjubeygja", "öldubeygja"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp160423360 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dimensional-analysis",
+      "enNorm": "dimensional analysis",
+      "en": ["dimensional analysis"],
+      "is": "einingagreining",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dipole-dipole-attraction",
+      "enNorm": "dipole-dipole attraction",
+      "en": ["dipole-dipole attraction"],
+      "is": "tvískauts-tvískauts aðdráttarkraftur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp127496336 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dipole-moment",
+      "enNorm": "dipole moment",
+      "en": ["dipole moment"],
+      "is": "tvískautsvægi",
+      "competitors": ["tvípólsvægi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idp12081312 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dispersed-phase",
+      "enNorm": "dispersed phase",
+      "en": ["dispersed phase"],
+      "is": "dreififasi",
+      "competitors": ["dreifður fasi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm117651760 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "dispersion-force",
+      "enNorm": "dispersion force",
+      "en": ["dispersion force"],
+      "is": "dreifikraftur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch10_fs-idm16566240 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "disproportionation-reaction",
+      "enNorm": "disproportionation reaction",
+      "en": ["disproportionation reaction"],
+      "is": "misvægishvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch18_fs-idm60186560 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dissociation",
+      "enNorm": "dissociation",
+      "en": ["dissociation"],
+      "is": "klofnun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idm32680960 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dissociation-constant",
+      "enNorm": "dissociation constant",
+      "en": ["dissociation constant"],
+      "is": "klofnunarfasti",
+      "competitors": ["rofstuðull"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm25500528 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "donor-atom",
+      "enNorm": "donor atom",
+      "en": ["donor atom"],
+      "is": "gjafaatóm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp275481408 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dry-cell",
+      "enNorm": "dry cell",
+      "en": ["dry cell"],
+      "is": "þurrker",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm175851472 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "dynamic-equilibrium",
+      "enNorm": "dynamic equilibrium",
+      "en": ["dynamic equilibrium"],
+      "is": "kvikt jafnvægi",
+      "competitors": ["Kvikjafnvægi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm101715056 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "effective-nuclear-charge",
+      "enNorm": "effective nuclear charge",
+      "en": ["effective nuclear charge"],
+      "is": "virk kjarnhleðsla",
+      "competitors": ["virk kjarnahleðsla"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm98337504 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "eg-orbitals",
+      "enNorm": "eg orbitals",
+      "en": ["eg orbitals"],
+      "is": "eg svigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm148194896 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electrode-potential",
+      "enNorm": "electrode potential",
+      "en": ["electrode potential", "electrode potential (EX)"],
+      "is": "raftroðsspenna",
+      "competitors": ["troðspenna (EX)"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp85536816 (chat (question 6); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electrolyte",
+      "enNorm": "electrolyte",
+      "en": ["electrolyte"],
+      "is": "rafkleyfi",
+      "competitors": ["raflausn"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm10926960 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "electrolytic-cell",
+      "enNorm": "electrolytic cell",
+      "en": ["electrolytic cell"],
+      "is": "rafker",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm117181824 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electron-affinity",
+      "enNorm": "electron affinity",
+      "en": ["electron affinity"],
+      "is": "rafeindasækni",
+      "competitors": ["rafsækni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm161962320 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electron-capture",
+      "enNorm": "electron capture",
+      "en": ["electron capture"],
+      "is": "rafeindahremming",
+      "competitors": ["rafeindarhremming"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm684928 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electron-pair-geometry",
+      "enNorm": "electron-pair geometry",
+      "en": ["electron-pair geometry"],
+      "is": "rúmfræði rafeindapara",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp86864304 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "electron-volt",
+      "enNorm": "electron volt",
+      "en": ["electron volt", "electron volt (eV)"],
+      "is": "rafeindavolt",
+      "competitors": ["rafeindarvolt"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm98883968 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electronegative",
+      "enNorm": "electronegative",
+      "en": ["electronegative"],
+      "is": "rafneikvæður",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "electronegativity",
+      "enNorm": "electronegativity",
+      "en": ["electronegativity"],
+      "is": "rafneikvæðni",
+      "competitors": ["rafdrægni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp28641840 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "elementary-reaction",
+      "enNorm": "elementary reaction",
+      "en": ["elementary reaction"],
+      "is": "grunnhvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch12_fs-idp36862592 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "emission",
+      "enNorm": "emission",
+      "en": ["emission"],
+      "is": "útgeislun",
+      "competitors": ["ljómun", "útblástur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ws_emission (chat (question 7); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "ether",
+      "enNorm": "ether",
+      "en": ["ether"],
+      "is": "eter",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "excess-reactant",
+      "enNorm": "excess reactant",
+      "en": ["excess reactant"],
+      "is": "umframmagn hvarfefnis",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idm46343008 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "extensive-property",
+      "enNorm": "extensive property",
+      "en": ["extensive property"],
+      "is": "magnbundinn eiginleiki",
+      "competitors": ["magnháður eiginleiki"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp102584192 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "external-beam-radiation-therapy",
+      "enNorm": "external beam radiation therapy",
+      "en": ["external beam radiation therapy"],
+      "is": "ytri geislameðferð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp44456896 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "face-centered-cubic-solid",
+      "enNorm": "face-centered cubic solid",
+      "en": ["face-centered cubic (FCC) solid", "face-centered cubic solid"],
+      "is": "hliðlægt teningslaga (FCC) fast efni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp20057136 (page-answer; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+    },
+    {
+      "id": "face-centered-cubic-unit-cell",
+      "enNorm": "face-centered cubic unit cell",
+      "en": ["face-centered cubic unit cell"],
+      "is": "hliðlæg teningslaga grindareining",
+      "competitors": ["flatarmálfyllt rúmfrumugrindareining"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp82357824 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "first-transition-series",
+      "enNorm": "first transition series",
+      "en": ["first transition series"],
+      "is": "fyrsta hliðarmálmaröðin",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm186870544 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "fission",
+      "enNorm": "fission",
+      "en": ["fission"],
+      "is": "kjarnaklofnun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm195851664 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "formal-charge",
+      "enNorm": "formal charge",
+      "en": ["formal charge"],
+      "is": "formleg hleðsla",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idp10384768 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "fourth-transition-series",
+      "enNorm": "fourth transition series",
+      "en": ["fourth transition series"],
+      "is": "fjórða hliðarmálmaröðin",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm52768832 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "free-radical",
+      "enNorm": "free radical",
+      "en": ["free radical"],
+      "is": "stakeind",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idm4719424 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "freezing-point",
+      "enNorm": "freezing point",
+      "en": ["freezing point"],
+      "is": "Frostmark",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp5444368 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "freezing-point-depression",
+      "enNorm": "freezing point depression",
+      "en": ["freezing point depression"],
+      "is": "frostmarkslækkun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141097600 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "frequency-factor",
+      "enNorm": "frequency factor",
+      "en": ["frequency factor", "frequency factor (A)"],
+      "is": "tíðniþáttur",
+      "competitors": ["forveldisvísisþáttur", "tíðnifasti", "tíðnistuðull"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idm206488448 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "fuel-cell",
+      "enNorm": "fuel cell",
+      "en": ["fuel cell"],
+      "is": "efnarafall",
+      "competitors": ["Efnarafhlaða"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm127587472 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "functional-group",
+      "enNorm": "functional group",
+      "en": ["functional group"],
+      "is": "virknihópur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp68092560 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "fusion-reactor",
+      "enNorm": "fusion reactor",
+      "en": ["fusion reactor"],
+      "is": "samrunaofn",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp7149200 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "galvanic-cell",
+      "enNorm": "galvanic cell",
+      "en": ["galvanic (voltaic) cell", "galvanic cell"],
+      "is": "galvaníker",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch17_fs-idm159189392 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "gamma-emission",
+      "enNorm": "gamma emission",
+      "en": ["gamma (γ) emission", "gamma emission"],
+      "is": "gamma (γ) útgeislun",
+      "competitors": ["gammageislun", "gammaútgeislun"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm27366640 (page-answer; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-operator-or-bracket"
+    },
+    {
+      "id": "gamma-ray",
+      "enNorm": "gamma ray",
+      "en": ["gamma ray"],
+      "is": "gammageisli",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm12021616 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "geiger-counter",
+      "enNorm": "geiger counter",
+      "en": ["Geiger counter"],
+      "is": "Geiger-teljari",
+      "competitors": ["Geiger-nemi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp77369424 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "general-anesthetic",
+      "enNorm": "general anesthetic",
+      "en": ["general anesthetic"],
+      "is": "svæfingarlyf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "geometric-isomers",
+      "enNorm": "geometric isomers",
+      "en": ["geometric isomers"],
+      "is": "rúmhverfur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm132411312 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "gibbs-free-energy-change",
+      "enNorm": "gibbs free energy change",
+      "en": ["Gibbs free energy change", "Gibbs free energy change (G)"],
+      "is": "Breyting á Gibbs fríorku",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idm119810368 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "grahams-law-of-effusion",
+      "enNorm": "graham’s law of effusion",
+      "en": ["Graham’s law of effusion"],
+      "is": "Lögmál Grahams um útstreymi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idp257364480 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "gravimetric-analysis",
+      "enNorm": "gravimetric analysis",
+      "en": ["gravimetric analysis"],
+      "is": "vigtagreining",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp83288512 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "ground-state",
+      "enNorm": "ground state",
+      "en": ["ground state"],
+      "is": "grunnástand",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idp97866656 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "group",
+      "enNorm": "group",
+      "en": ["group"],
+      "is": "flokkur",
+      "competitors": [],
+      "scope": {
+        "kind": "chapters",
+        "chapters": ["ch02"]
+      },
+      "scopeStatus": "proposed",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch02_fs-idm20590592 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "half-life-of-a-reaction",
+      "enNorm": "half-life of a reaction",
+      "en": ["half-life of a reaction", "half-life of a reaction (tl/2)"],
+      "is": "helmingunartími efnahvarfs (tl/2)",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46849712 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-digit, target-operator-or-bracket"
+    },
+    {
+      "id": "half-reaction",
+      "enNorm": "half-reaction",
+      "en": ["half-reaction"],
+      "is": "hálfhvarf",
+      "competitors": ["hvarfhelmingur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm28945840 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heat",
+      "enNorm": "heat",
+      "en": ["heat", "heat (q)"],
+      "is": "varmi (q)",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25504496 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-operator-or-bracket"
+    },
+    {
+      "id": "henderson-hasselbalch-equation",
+      "enNorm": "henderson-hasselbalch equation",
+      "en": ["Henderson-Hasselbalch equation"],
+      "is": "Henderson-Hasselbalch jafnan",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch14_fs-idm71412016 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "heterogeneous-catalyst",
+      "enNorm": "heterogeneous catalyst",
+      "en": ["heterogeneous catalyst"],
+      "is": "misleitur hvati",
+      "competitors": ["mismunandi hvatar"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm228167568 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heterogeneous-equilibria",
+      "enNorm": "heterogeneous equilibria",
+      "en": ["heterogeneous equilibria"],
+      "is": "misleitt jafnvægi",
+      "competitors": ["mismunandi jafnvægi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch13_fs-idp102632368 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heterogeneous-mixture",
+      "enNorm": "heterogeneous mixture",
+      "en": ["heterogeneous mixture"],
+      "is": "misleit efnablanda",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp85033264 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "hexagonal-closest-packing",
+      "enNorm": "hexagonal closest packing",
+      "en": ["hexagonal closest packing", "hexagonal closest packing (HCP)"],
+      "is": "sexhyrnd þéttpökkun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp81517488 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "high-spin-complex",
+      "enNorm": "high-spin complex",
+      "en": ["high-spin complex"],
+      "is": "háspunaflóki",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm33844976 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "hole",
+      "enNorm": "hole",
+      "en": ["hole"],
+      "is": "hol",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "homogeneous-mixture",
+      "enNorm": "homogeneous mixture",
+      "en": ["homogeneous mixture"],
+      "is": "einsleit efnablanda",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm25215648 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "homonuclear-diatomic-molecule",
+      "enNorm": "homonuclear diatomic molecule",
+      "en": ["homonuclear diatomic molecule"],
+      "is": "tvíatóma sameind sama frumefnis",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm165896720 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "hybrid-orbital",
+      "enNorm": "hybrid orbital",
+      "en": ["hybrid orbital"],
+      "is": "blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
+        "stage1 ch08_fs-idp102362976 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "hybridization",
+      "enNorm": "hybridization",
+      "en": ["hybridization"],
+      "is": "svigrúmablöndun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
+        "stage1 ch08_fs-idm29433408 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "hydrocarbon",
+      "enNorm": "hydrocarbon",
+      "en": ["hydrocarbon"],
+      "is": "vetniskolefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "hydrometallurgy",
+      "enNorm": "hydrometallurgy",
+      "en": ["hydrometallurgy"],
+      "is": "votvinnslumálmfræði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm281484512 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "hydroxide",
+      "enNorm": "hydroxide",
+      "en": ["hydroxide"],
+      "is": "hýdroxíð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "hypervalent-molecule",
+      "enNorm": "hypervalent molecule",
+      "en": ["hypervalent molecule"],
+      "is": "ofgild sameind",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idp87877296 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "ideal-gas-law",
+      "enNorm": "ideal gas law",
+      "en": ["ideal gas law"],
+      "is": "kjörgaslögmálið",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idm111878496 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "indicator",
+      "enNorm": "indicator",
+      "en": ["indicator"],
+      "is": "litvísir",
+      "competitors": ["efnaviti"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp83289888 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "induced-dipole",
+      "enNorm": "induced dipole",
+      "en": ["induced dipole"],
+      "is": "örvuð tvískautun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm31438528 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "inert-electrode",
+      "enNorm": "inert electrode",
+      "en": ["inert electrode"],
+      "is": "óvirkt raftroð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm19899136 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "inert-pair-effect",
+      "enNorm": "inert pair effect",
+      "en": ["inert pair effect"],
+      "is": "áhrif óvirkra para",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idm113628896 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "insoluble",
+      "enNorm": "insoluble",
+      "en": ["insoluble"],
+      "is": "torleystur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idm28944688 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "instantaneous-dipole",
+      "enNorm": "instantaneous dipole",
+      "en": ["instantaneous dipole"],
+      "is": "augnablikstvískaut",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp127211536 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "instantaneous-rate",
+      "enNorm": "instantaneous rate",
+      "en": ["instantaneous rate"],
+      "is": "augnablikshraði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp70925872 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "integrated-rate-law",
+      "enNorm": "integrated rate law",
+      "en": ["integrated rate law"],
+      "is": "heildað hraðalögmál",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46847680 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "intensive-property",
+      "enNorm": "intensive property",
+      "en": ["intensive property"],
+      "is": "eðlisbundinn eiginleiki",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idp42386976 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "interference-pattern",
+      "enNorm": "interference pattern",
+      "en": ["interference pattern"],
+      "is": "víxlunarmynstur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm11590896 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "interhalogen",
+      "enNorm": "interhalogen",
+      "en": ["interhalogen"],
+      "is": "millihalógen",
+      "competitors": ["milli-halógen"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idm15345952 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "intermolecular-force",
+      "enNorm": "intermolecular force",
+      "en": ["intermolecular force"],
+      "is": "millisameindakraftur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm66585952 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "ionic-compound",
+      "enNorm": "ionic compound",
+      "en": ["ionic compound"],
+      "is": "jónaefni",
+      "competitors": ["jónaefnasamband"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp182712496 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "isoelectronic",
+      "enNorm": "isoelectronic",
+      "en": ["isoelectronic"],
+      "is": "samrafeinda",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idp94243488 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "isomers",
+      "enNorm": "isomers",
+      "en": ["isomers"],
+      "is": "hverfur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp55104 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "isomorphous",
+      "enNorm": "isomorphous",
+      "en": ["isomorphous"],
+      "is": "einslaga",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp75734960 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "joule",
+      "enNorm": "joule",
+      "en": ["joule", "joule (J)"],
+      "is": "júl",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch05_fs-idp25507984 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "ketone",
+      "enNorm": "ketone",
+      "en": ["ketone"],
+      "is": "ketón",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "kinetic-molecular-theory",
+      "enNorm": "kinetic molecular theory",
+      "en": ["kinetic molecular theory"],
+      "is": "kvikfræði sameinda",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idm198763536 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lanthanide-series",
+      "enNorm": "lanthanide series",
+      "en": ["lanthanide series"],
+      "is": "lantaníðaröð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm108395328 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "laser",
+      "enNorm": "laser",
+      "en": ["laser"],
+      "is": "leysir",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lattice-energy",
+      "enNorm": "lattice energy",
+      "en": ["lattice energy", "lattice energy (ΔHlattice)"],
+      "is": "grindarorka (ΔHgrind)",
+      "competitors": ["kristalsgrindarorka (ΔHgrindar)"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp29295648 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-inner-capital, target-operator-or-bracket"
+    },
+    {
+      "id": "law-of-conservation-of-matter",
+      "enNorm": "law of conservation of matter",
+      "en": ["law of conservation of matter"],
+      "is": "lögmálið um varðveislu efnis",
+      "competitors": ["lögmál um varðveislu efnis"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp19511536 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "law-of-constant-composition",
+      "enNorm": "law of constant composition",
+      "en": ["law of constant composition"],
+      "is": "lögmál um föst massahlutföll",
+      "competitors": ["regla um sömu samsetningu"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idm56716560 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "law-of-definite-proportions",
+      "enNorm": "law of definite proportions",
+      "en": ["law of definite proportions"],
+      "is": "lögmálið um föst massahlutföll",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp76336256 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "law-of-mass-action",
+      "enNorm": "law of mass action",
+      "en": ["law of mass action"],
+      "is": "massavirknilögmálið",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch13_fs-idp89564720 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "law-of-multiple-proportions",
+      "enNorm": "law of multiple proportions",
+      "en": ["law of multiple proportions"],
+      "is": "lögmálið um heiltöluhlutföll",
+      "competitors": ["regla um heiltöluhlutföll"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idp47442976 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lewis",
+      "enNorm": "lewis",
+      "en": ["Lewis"],
+      "is": "Lewis",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lewis-acid-base-adduct",
+      "enNorm": "lewis acid-base adduct",
+      "en": ["Lewis acid-base adduct"],
+      "is": "Lewis-sýru-basa afleiða",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch15_fs-idm26641568 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lewis-structure",
+      "enNorm": "lewis structure",
+      "en": ["Lewis structure"],
+      "is": "Lewis-mynd",
+      "competitors": ["Lewis-bygging"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "verdict"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm67089472 (2026-10-11 [USER] (D4))"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "ligand",
+      "enNorm": "ligand",
+      "en": ["ligand"],
+      "is": "tengill",
+      "competitors": ["tengihópur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp279277792 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "line-bond-structure",
+      "enNorm": "line-bond structure",
+      "en": ["line-bond structure"],
+      "is": "strikamynd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "line-spectrum",
+      "enNorm": "line spectrum",
+      "en": ["line spectrum"],
+      "is": "línuróf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp85210368 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "linear-combination-of-atomic-orbitals",
+      "enNorm": "linear combination of atomic orbitals",
+      "en": ["linear combination of atomic orbitals"],
+      "is": "línuleg samþætting atómsvigrúma",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm41528352 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "linkage-isomer",
+      "enNorm": "linkage isomer",
+      "en": ["linkage isomer"],
+      "is": "tengihverfa",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp63930000 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lithium-ion-battery",
+      "enNorm": "lithium ion battery",
+      "en": ["lithium ion battery"],
+      "is": "Litíumjónarafhlaða",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm118911936 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "lone-pair",
+      "enNorm": "lone pair",
+      "en": ["lone pair"],
+      "is": "rafeindapar",
+      "competitors": ["stakt rafeindapar"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm44296912 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "low-spin-complex",
+      "enNorm": "low-spin complex",
+      "en": ["low-spin complex"],
+      "is": "lágspunaflóki",
+      "competitors": ["lágspinnasamstæða"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idp121047712 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "macroscopic-domain",
+      "enNorm": "macroscopic domain",
+      "en": ["macroscopic domain"],
+      "is": "stórsæja sviðið",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idm41373200 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "mass-defect",
+      "enNorm": "mass defect",
+      "en": ["mass defect"],
+      "is": "massarýrð",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm49105504 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "metalloid",
+      "enNorm": "metalloid",
+      "en": ["metalloid"],
+      "is": "hálfmálmur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idm212688864 (2026-10-10 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idp36212736 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "microscopic-domain",
+      "enNorm": "microscopic domain",
+      "en": ["microscopic domain"],
+      "is": "smásæja sviðið",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idm121167952 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "microstate",
+      "enNorm": "microstate",
+      "en": ["microstate"],
+      "is": "örástand",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "mixture",
+      "enNorm": "mixture",
+      "en": ["mixture"],
+      "is": "efnablanda",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idm5111888 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "molality",
+      "enNorm": "molality",
+      "en": ["molality", "molality (m)"],
+      "is": "mólalstyrkur (m)",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141108496 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-operator-or-bracket"
+    },
+    {
+      "id": "molar-solubility",
+      "enNorm": "molar solubility",
+      "en": ["molar solubility"],
+      "is": "mólarleysni",
+      "competitors": ["mólleysni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3051616 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "mole-fraction",
+      "enNorm": "mole fraction",
+      "en": ["mole fraction", "mole fraction (X)"],
+      "is": "mólhlutfall",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idp1132336 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "molecular-compound",
+      "enNorm": "molecular compound",
+      "en": ["molecular compound"],
+      "is": "sameindaefni",
+      "competitors": ["sameindaefnasamband"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "verdict"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93864192 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "molecular-orbital-diagram",
+      "enNorm": "molecular orbital diagram",
+      "en": ["molecular orbital diagram"],
+      "is": "sameindasvigrúmarit",
+      "competitors": ["sameindasvigrúmsmynd"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm132723600 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "molecular-orbital-theory",
+      "enNorm": "molecular orbital theory",
+      "en": ["molecular orbital theory"],
+      "is": "sameindasvigrúmakenningin",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm249965088 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "molecular-solid",
+      "enNorm": "molecular solid",
+      "en": ["molecular solid"],
+      "is": "fast efni úr sameindum",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp66006736 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "molecular-structure",
+      "enNorm": "molecular structure",
+      "en": ["molecular structure"],
+      "is": "sameindabygging",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp31379776 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "monatomic-ion",
+      "enNorm": "monatomic ion",
+      "en": ["monatomic ion"],
+      "is": "einatóma jón",
+      "competitors": ["einfrumeinda jón"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp136404896 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "monodentate",
+      "enNorm": "monodentate",
+      "en": ["monodentate"],
+      "is": "eintennt",
+      "competitors": ["eintenntur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp8060128 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "node",
+      "enNorm": "node",
+      "en": ["node"],
+      "is": "nóða",
+      "competitors": ["hnútur", "núllpunktur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": [
+        "stage1 ch06_fs-idm36067216 (page-answer; 2026-10-11 [USER])",
+        "stage1 ch08_fs-idp123920528 (page-answer; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "nomenclature",
+      "enNorm": "nomenclature",
+      "en": ["nomenclature"],
+      "is": "nafnakerfi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp282227200 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "nonelectrolyte",
+      "enNorm": "nonelectrolyte",
+      "en": ["nonelectrolyte"],
+      "is": "órafkleyft efni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idp10683312 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nonspontaneous-process",
+      "enNorm": "nonspontaneous process",
+      "en": ["nonspontaneous process"],
+      "is": "ósjálfgengt ferli",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idp119850016 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "normal-boiling-point",
+      "enNorm": "normal boiling point",
+      "en": ["normal boiling point"],
+      "is": "staðalsuðumark",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm205028976 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nuclear-binding-energy",
+      "enNorm": "nuclear binding energy",
+      "en": ["nuclear binding energy"],
+      "is": "kjarnabindiorka",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm27477328 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nuclear-moderator",
+      "enNorm": "nuclear moderator",
+      "en": ["nuclear moderator"],
+      "is": "kjarnahemilefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm204101584 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nuclear-transmutation",
+      "enNorm": "nuclear transmutation",
+      "en": ["nuclear transmutation"],
+      "is": "kjarnafrumefnabreyting",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm74066144 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nucleon",
+      "enNorm": "nucleon",
+      "en": ["nucleon"],
+      "is": "kjarneind",
+      "competitors": ["kjarnaeind"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm41591488 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nuclide",
+      "enNorm": "nuclide",
+      "en": ["nuclide"],
+      "is": "kjarnategund",
+      "competitors": ["kirni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm80685920 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "nutritional-calorie",
+      "enNorm": "nutritional calorie",
+      "en": ["nutritional calorie", "nutritional calorie (Calorie)"],
+      "is": "næringarkaloría",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch05_fs-idm56357952 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "octahedral-hole",
+      "enNorm": "octahedral hole",
+      "en": ["octahedral hole"],
+      "is": "áttflötungshol",
+      "competitors": ["áttflötungshola"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm28944640 (chat (question 2); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "octet-rule",
+      "enNorm": "octet rule",
+      "en": ["octet rule"],
+      "is": "átturegla",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idm73604928 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "optical-isomer",
+      "enNorm": "optical isomer",
+      "en": ["optical isomer"],
+      "is": "handhverfa",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp216879616 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "orbital-diagram",
+      "enNorm": "orbital diagram",
+      "en": ["orbital diagram"],
+      "is": "svigrúmsmynd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idp15489472 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "orbital-hybridization",
+      "enNorm": "orbital hybridization",
+      "en": ["orbital hybridization"],
+      "is": "svigrúmablöndun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "osmosis",
+      "enNorm": "osmosis",
+      "en": ["osmosis"],
+      "is": "osmósa",
+      "competitors": ["himnuflæði"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idp141112944 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "osmotic-pressure",
+      "enNorm": "osmotic pressure",
+      "en": ["osmotic pressure", "osmotic pressure (Π)"],
+      "is": "osmósuþrýstingur",
+      "competitors": ["flæðiþrýstingur", "osmótískur þrýstingur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idp141114480 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "oxidation-reduction-reaction",
+      "enNorm": "oxidation-reduction reaction",
+      "en": ["oxidation-reduction reaction"],
+      "is": "oxunar-afoxunarhvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idm73913072 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "paramagnetism",
+      "enNorm": "paramagnetism",
+      "en": ["paramagnetism"],
+      "is": "meðseglun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm100788960 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "parent-nuclide",
+      "enNorm": "parent nuclide",
+      "en": ["parent nuclide"],
+      "is": "móðurkjarnategund",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp55578096 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "partially-miscible",
+      "enNorm": "partially miscible",
+      "en": ["partially miscible"],
+      "is": "örlítið blandanlegur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idp7162656 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "particle-accelerator",
+      "enNorm": "particle accelerator",
+      "en": ["particle accelerator"],
+      "is": "eindahraðall",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm66620880 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "parts-per-billion",
+      "enNorm": "parts per billion",
+      "en": ["parts per billion", "parts per billion (ppb)"],
+      "is": "milljarðshlutar",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch03_fs-idp23298832 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "parts-per-million",
+      "enNorm": "parts per million",
+      "en": ["parts per million", "parts per million (ppm)"],
+      "is": "milljónustu hlutar",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch03_fs-idm85251264 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "pauli-exclusion-principle",
+      "enNorm": "pauli exclusion principle",
+      "en": ["Pauli exclusion principle"],
+      "is": "einsetulögmál Paulis",
+      "competitors": ["einsetulögmál Pauli", "útilokunarlögmál Pauli"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm120400016 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "percent-composition",
+      "enNorm": "percent composition",
+      "en": ["percent composition"],
+      "is": "massaprósenta",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch03_fs-idp78260032 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "percent-yield",
+      "enNorm": "percent yield",
+      "en": ["percent yield"],
+      "is": "prósentuheimtur",
+      "competitors": ["heimtur í prósentum"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp51447712 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "periodic-law",
+      "enNorm": "periodic law",
+      "en": ["periodic law"],
+      "is": "lotulögmál",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idm64490640 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "periodic-table",
+      "enNorm": "periodic table",
+      "en": ["periodic table"],
+      "is": "lotukerfi",
+      "competitors": ["lotukerfið"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idm227073184 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "phase-diagram",
+      "enNorm": "phase diagram",
+      "en": ["phase diagram"],
+      "is": "fasarit",
+      "competitors": ["fasa-línurit"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm186055200 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "phase-transition",
+      "enNorm": "phase transition",
+      "en": ["phase transition"],
+      "is": "fasabreyting",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "pi-bond",
+      "enNorm": "pi bond",
+      "en": ["pi bond", "pi bond (π bond)"],
+      "is": "pí tengi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idp94790208 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "pi-bonding-orbital",
+      "enNorm": "π bonding orbital",
+      "en": ["π bonding orbital"],
+      "is": "π-tengisvigrúm",
+      "competitors": ["π-tengi svigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm100344544 (chat (question 3); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek"
+    },
+    {
+      "id": "pi-star-bonding-orbital",
+      "enNorm": "π* bonding orbital",
+      "en": ["π* bonding orbital"],
+      "is": "π*-andtengisvigrúm",
+      "competitors": ["π*-tengi svigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm18620192 (chat (question 3); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-operator-or-bracket"
+    },
+    {
+      "id": "poh",
+      "enNorm": "poh",
+      "en": ["pOH"],
+      "is": "pOH",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-inner-capital"
+    },
+    {
+      "id": "polarizability",
+      "enNorm": "polarizability",
+      "en": ["polarizability"],
+      "is": "skautunarhæfni",
+      "competitors": ["skautunarleiki"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idp128571888 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "polyatomic-ion",
+      "enNorm": "polyatomic ion",
+      "en": ["polyatomic ion"],
+      "is": "fjölatómajón",
+      "competitors": ["fjölfrumeinda jón"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93746160 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "polydentate-ligand",
+      "enNorm": "polydentate ligand",
+      "en": ["polydentate ligand"],
+      "is": "fjöltenntur tengill",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idp158869120 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "polymorph",
+      "enNorm": "polymorph",
+      "en": ["polymorph"],
+      "is": "fjölbrigði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch18_fs-idp20554272 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "porous",
+      "enNorm": "porous",
+      "en": ["porous"],
+      "is": "gropinn",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["no-entry"],
+      "sources": [
+        "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "positron-emission",
+      "enNorm": "positron emission",
+      "en": ["positron emission"],
+      "is": "jáeindaútgeislun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm24356480 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "positron-formula-or-formula",
+      "enNorm": "positron [formula] or [formula]",
+      "en": ["positron [formula] or [formula]"],
+      "is": "jáeind",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp72108384 (page-answer; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "enNorm-placeholder"
+    },
+    {
+      "id": "precipitation-reaction",
+      "enNorm": "precipitation reaction",
+      "en": ["precipitation reaction"],
+      "is": "Útfellingarhvarf",
+      "competitors": ["útfeldi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp55089136 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "precision",
+      "enNorm": "precision",
+      "en": ["precision"],
+      "is": "nákvæmni",
+      "competitors": ["verkleg nákvæmni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp28800512 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "primary-cell",
+      "enNorm": "primary cell",
+      "en": ["primary cell"],
+      "is": "einnota ker",
+      "competitors": ["einnota rafhlaða"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm278014928 (chat (question 5); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "principal-quantum-number",
+      "enNorm": "principal quantum number",
+      "en": ["principal quantum number", "principal quantum number (n)"],
+      "is": "aðalskammtatala",
+      "competitors": ["höfuðskammtatala"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm140352128 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "product",
+      "enNorm": "product",
+      "en": ["product"],
+      "is": "myndefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp145224064 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "radiation-absorbed-dose",
+      "enNorm": "radiation absorbed dose",
+      "en": ["radiation absorbed dose", "radiation absorbed dose (rad)"],
+      "is": "geislaskammtur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp38524656 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radioactive-decay",
+      "enNorm": "radioactive decay",
+      "en": ["radioactive decay"],
+      "is": "geislasundrun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radioactive-decay-series",
+      "enNorm": "radioactive decay series",
+      "en": ["radioactive decay series"],
+      "is": "geislasundrunarröð",
+      "competitors": ["geislavirk hrörnunarröð"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp172690976 (chat (question 1); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radioactive-tracer",
+      "enNorm": "radioactive tracer",
+      "en": ["radioactive tracer"],
+      "is": "geislavirkt sporefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp81777184 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radiocarbon-dating",
+      "enNorm": "radiocarbon dating",
+      "en": ["radiocarbon dating"],
+      "is": "kolefnisaldursgreining",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp10803760 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radiometric-dating",
+      "enNorm": "radiometric dating",
+      "en": ["radiometric dating"],
+      "is": "geislaaldursgreining",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp171940160 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "radius",
+      "enNorm": "radius",
+      "en": ["radius"],
+      "is": "radíus",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "rare-earth-element",
+      "enNorm": "rare earth element",
+      "en": ["rare earth element"],
+      "is": "sjaldgæfur jarðmálmur",
+      "competitors": ["sjaldgæft jarðfrumefni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idm42041824 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "rate-determining-step",
+      "enNorm": "rate-determining step",
+      "en": ["rate-determining step"],
+      "is": "hraðatakmarkandi skref",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idp105000160 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "rate-law",
+      "enNorm": "rate law",
+      "en": ["rate law"],
+      "is": "hraðalögmál",
+      "competitors": ["hraðajafna"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idm215968704 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "rate-of-diffusion",
+      "enNorm": "rate of diffusion",
+      "en": ["rate of diffusion"],
+      "is": "sveimhraði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch09_fs-idp43914864 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "rate-of-reaction",
+      "enNorm": "rate of reaction",
+      "en": ["rate of reaction"],
+      "is": "hvarfhraði",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp172602144 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "reaction-diagram",
+      "enNorm": "reaction diagram",
+      "en": ["reaction diagram"],
+      "is": "hvarfrit",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idm355773584 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "reaction-mechanism",
+      "enNorm": "reaction mechanism",
+      "en": ["reaction mechanism"],
+      "is": "hvarfgangur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "reaction-order",
+      "enNorm": "reaction order",
+      "en": ["reaction order"],
+      "is": "stig efnahvarfs",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch12_fs-idm333854336 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "reaction-quotient",
+      "enNorm": "reaction quotient",
+      "en": ["reaction quotient", "reaction quotient (Q)"],
+      "is": "hvarfstuðull",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch13_fs-idp74361936 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "reactor-coolant",
+      "enNorm": "reactor coolant",
+      "en": ["reactor coolant"],
+      "is": "kælivökvi kjarnaofns",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm187262736 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "relative-biological-effectiveness",
+      "enNorm": "relative biological effectiveness",
+      "en": ["relative biological effectiveness", "relative biological effectiveness (RBE)"],
+      "is": "hlutfallsleg líffræðileg virkni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp165863168 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "representative-element",
+      "enNorm": "representative element",
+      "en": ["representative element"],
+      "is": "aðalflokkafrumefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": [
+        "stage1 ch02_fs-idm334010160 (page-answer; 2026-10-11 [USER])",
+        "stage1 ch18_fs-idp110103392 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "representative-metal",
+      "enNorm": "representative metal",
+      "en": ["representative metal"],
+      "is": "aðalflokkamálmur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "stage1"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
+        "stage1 ch18_fs-idm2235360 (page-default-confirmed; 2026-10-11 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "resonance",
+      "enNorm": "resonance",
+      "en": ["resonance"],
+      "is": "vok",
+      "competitors": ["vokmynd"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry", "verdict"],
+      "sources": [
+        "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp213363824 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "resonance-form",
+      "enNorm": "resonance form",
+      "en": ["resonance form"],
+      "is": "vokmynd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "resonance-hybrid",
+      "enNorm": "resonance hybrid",
+      "en": ["resonance hybrid"],
+      "is": "vokblendingur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "resonance-structure",
+      "enNorm": "resonance structure",
+      "en": ["resonance structure"],
+      "is": "vokmynd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "reversible-process",
+      "enNorm": "reversible process",
+      "en": ["reversible process"],
+      "is": "afturkræft ferli",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idp48318480 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "reversible-reaction",
+      "enNorm": "reversible reaction",
+      "en": ["reversible reaction"],
+      "is": "afturkræft efnahvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch13_fs-idp4379168 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "roentgen-equivalent-man",
+      "enNorm": "roentgen equivalent man",
+      "en": ["roentgen equivalent man", "roentgen equivalent man (rem)"],
+      "is": "roentgen equivalent man",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idp225092016 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "rounding",
+      "enNorm": "rounding",
+      "en": ["rounding"],
+      "is": "námundun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idp68905696 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "s-orbital",
+      "enNorm": "s orbital",
+      "en": ["s orbital"],
+      "is": "s-svigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm144189680 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "s-p-mixing",
+      "enNorm": "s-p mixing",
+      "en": ["s-p mixing"],
+      "is": "s-p blöndun",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idp5821920 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "sacrificial-anode",
+      "enNorm": "sacrificial anode",
+      "en": ["sacrificial anode"],
+      "is": "fórnaranóða",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm153016624 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "saturated-hydrocarbon",
+      "enNorm": "saturated hydrocarbon",
+      "en": ["saturated hydrocarbon"],
+      "is": "mettað vetniskolefni",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch20_fs-idp73075792 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "second-transition-series",
+      "enNorm": "second transition series",
+      "en": ["second transition series"],
+      "is": "önnur hliðarmálmaröðin",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm163687904 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "secondary-cell",
+      "enNorm": "secondary cell",
+      "en": ["secondary cell"],
+      "is": "endurhlaðanlegt ker",
+      "competitors": ["endurhlaðanleg rafhlaða"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp55952432 (chat (question 5); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "secondary-quantum-number",
+      "enNorm": "secondary quantum number",
+      "en": ["secondary (angular momentum) quantum number (l)", "secondary quantum number"],
+      "is": "aukaskammtatala (hverfiþungi)",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm176142304 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-operator-or-bracket"
+    },
+    {
+      "id": "series",
+      "enNorm": "series",
+      "en": ["series"],
+      "is": "röð",
+      "competitors": ["raðtenging"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idm430389008 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "sigma-bond",
+      "enNorm": "sigma bond",
+      "en": ["sigma bond", "sigma bond (σ bond)"],
+      "is": "sigma tengi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idp36919168 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "sigma-bonding-orbital",
+      "enNorm": "σ bonding orbital",
+      "en": ["σ bonding orbital"],
+      "is": "σ-tengisvigrúm",
+      "competitors": ["σ-tengi svigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm41960016 (chat (question 3); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek"
+    },
+    {
+      "id": "sigma-star-bonding-orbital",
+      "enNorm": "σ* bonding orbital",
+      "en": ["σ* bonding orbital"],
+      "is": "σ*-andtengisvigrúm",
+      "competitors": ["σ*-tengi svigrúm"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm169269152 (chat (question 3); 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-greek, target-operator-or-bracket"
+    },
+    {
+      "id": "significant-figures",
+      "enNorm": "significant figures",
+      "en": ["significant figures"],
+      "is": "markverðir stafir",
+      "competitors": ["marktækir stafir"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp3346000 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "silicate",
+      "enNorm": "silicate",
+      "en": ["silicate"],
+      "is": "sílíkat",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch18_fs-idp17081184 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "simple-cubic-structure",
+      "enNorm": "simple cubic structure",
+      "en": ["simple cubic structure"],
+      "is": "einföld teningslaga bygging",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm47773456 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "simple-cubic-unit-cell",
+      "enNorm": "simple cubic unit cell",
+      "en": ["simple cubic unit cell"],
+      "is": "einföld teningslaga grindareining",
+      "competitors": ["einföld rúmfrumugrindareining"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp179472016 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "single-bond",
+      "enNorm": "single bond",
+      "en": ["single bond"],
+      "is": "eintengi",
+      "competitors": ["einfalt tengi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp177199648 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "single-displacement-reaction",
+      "enNorm": "single-displacement reaction",
+      "en": ["single-displacement reaction"],
+      "is": "einfalt skiptihvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp64227344 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "skeletal-structure",
+      "enNorm": "skeletal structure",
+      "en": ["skeletal structure"],
+      "is": "grindarmynd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch20_fs-idp39277120 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "smelting",
+      "enNorm": "smelting",
+      "en": ["smelting"],
+      "is": "málmbræðsla",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm246107488 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "solubility",
+      "enNorm": "solubility",
+      "en": ["solubility"],
+      "is": "leysni",
+      "competitors": ["leysanleiki"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp67579088 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "soluble",
+      "enNorm": "soluble",
+      "en": ["soluble"],
+      "is": "auðleystur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp64228624 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "solute",
+      "enNorm": "solute",
+      "en": ["solute"],
+      "is": "uppleyst efni",
+      "competitors": ["leyst efni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch03_fs-idm26667568 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "solvation",
+      "enNorm": "solvation",
+      "en": ["solvation"],
+      "is": "leysing",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idm91470352 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "sp-hybrid-orbital",
+      "enNorm": "sp hybrid orbital",
+      "en": ["sp hybrid orbital"],
+      "is": "sp-blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm71427776 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "sp2-hybrid-orbital",
+      "enNorm": "sp2 hybrid orbital",
+      "en": ["sp2 hybrid orbital"],
+      "is": "sp2-blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm48701168 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-digit"
+    },
+    {
+      "id": "sp3-hybrid-orbital",
+      "enNorm": "sp3 hybrid orbital",
+      "en": ["sp3 hybrid orbital"],
+      "is": "sp3-blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idp88964992 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-digit"
+    },
+    {
+      "id": "sp3d-hybrid-orbital",
+      "enNorm": "sp3d hybrid orbital",
+      "en": ["sp3d hybrid orbital"],
+      "is": "sp3d-blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm16838896 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-digit"
+    },
+    {
+      "id": "sp3d2-hybrid-orbital",
+      "enNorm": "sp3d2 hybrid orbital",
+      "en": ["sp3d2 hybrid orbital"],
+      "is": "sp3d2-blendingssvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch08_fs-idm47317072 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-digit"
+    },
+    {
+      "id": "spatial-isomers",
+      "enNorm": "spatial isomers",
+      "en": ["spatial isomers"],
+      "is": "rúmhverfur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch02_fs-idm54570400 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "specific-heat-capacity",
+      "enNorm": "specific heat capacity",
+      "en": ["specific heat capacity", "specific heat capacity (c)"],
+      "is": "eðlisvarmi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch05_fs-idp31727024 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "spontaneous-change",
+      "enNorm": "spontaneous change",
+      "en": ["spontaneous change"],
+      "is": "sjálfgeng breyting",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idm57405936 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "spontaneous-process",
+      "enNorm": "spontaneous process",
+      "en": ["spontaneous process"],
+      "is": "sjálfgengt ferli",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idm55870880 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "square-planar",
+      "enNorm": "square planar",
+      "en": ["square planar"],
+      "is": "ferningslaga flatt",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["no-entry"],
+      "sources": [
+        "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "standard-cell-potential-formula",
+      "enNorm": "standard cell potential [formula]",
+      "en": ["standard cell potential [formula]"],
+      "is": "staðalkerspenna",
+      "competitors": ["staðalíspenna"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idp227872832 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "enNorm-placeholder"
+    },
+    {
+      "id": "standard-conditions-of-temperature-and-pressure",
+      "enNorm": "standard conditions of temperature and pressure",
+      "en": [
+        "standard conditions of temperature and pressure",
+        "standard conditions of temperature and pressure (STP)"
+      ],
+      "is": "staðalaðstæður hitastigs og þrýstings",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idm158190720 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "standard-electrode-potential",
+      "enNorm": "standard electrode potential",
+      "en": ["standard electrode potential", "standard electrode potential (56)"],
+      "is": "staðalraftroðsspenna",
+      "competitors": ["staðalraftroðsspenna ((EX°))"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch17_fs-idm4867824 (chat (question 6); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "standard-free-energy-change",
+      "enNorm": "standard free energy change",
+      "en": ["standard free energy change", "standard free energy change (ΔG°)"],
+      "is": "staðalfríorkubreyting",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idm119807952 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "standard-free-energy-of-formation-formula",
+      "enNorm": "standard free energy of formation [formula]",
+      "en": ["standard free energy of formation [formula]"],
+      "is": "staðalmyndunarorka",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch16_fs-idm119806032 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "enNorm-placeholder"
+    },
+    {
+      "id": "standard-hydrogen-electrode",
+      "enNorm": "standard hydrogen electrode",
+      "en": ["standard hydrogen electrode", "standard hydrogen electrode (SHE)"],
+      "is": "staðalvetnisraftroð (SHE)",
+      "competitors": ["staðalvetnisskaut (SHE)"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp198657264 (2026-10-10 [USER])"
+      ],
+      "matchable": false,
+      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+    },
+    {
+      "id": "standing-wave",
+      "enNorm": "standing wave",
+      "en": ["standing wave"],
+      "is": "staðbylgja",
+      "competitors": ["stæð bylgja"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm64841104 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "steam",
+      "enNorm": "steam",
+      "en": ["steam"],
+      "is": "gufa",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "stoichiometric-factor",
+      "enNorm": "stoichiometric factor",
+      "en": ["stoichiometric factor"],
+      "is": "hlutfallaþáttur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch04_fs-idp127461392 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "stoichiometry",
+      "enNorm": "stoichiometry",
+      "en": ["stoichiometry"],
+      "is": "hlutfallaefnafræði",
+      "competitors": ["magnhlutföll"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp127462672 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "strong-electrolyte",
+      "enNorm": "strong electrolyte",
+      "en": ["strong electrolyte"],
+      "is": "sterkur rafkleyfi",
+      "competitors": ["sterk raflausn"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm7742384 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "structural-isomer",
+      "enNorm": "structural isomer",
+      "en": ["structural isomer"],
+      "is": "byggingarhverfa",
+      "competitors": ["byggingarisómera"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp1084128 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "submerged",
+      "enNorm": "submerged",
+      "en": ["submerged"],
+      "is": "á kafi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "subshell",
+      "enNorm": "subshell",
+      "en": ["subshell"],
+      "is": "undirhvolf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idm148470816 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "substituent",
+      "enNorm": "substituent",
+      "en": ["substituent"],
+      "is": "hliðarhópur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch20_fs-idp68310656 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "substitution-reaction",
+      "enNorm": "substitution reaction",
+      "en": ["substitution reaction"],
+      "is": "skiptihvarf",
+      "competitors": ["skipthvarf"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp79627072 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "supercritical-fluid",
+      "enNorm": "supercritical fluid",
+      "en": ["supercritical fluid"],
+      "is": "yfirmarksvökvi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm208980304 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "supersaturated",
+      "enNorm": "supersaturated",
+      "en": ["supersaturated"],
+      "is": "yfirmettaður",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp69776 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "suspension",
+      "enNorm": "suspension",
+      "en": ["suspension"],
+      "is": "sviflausn",
+      "competitors": ["lausn"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm380612256 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "t2g-orbitals",
+      "enNorm": "t2g orbitals",
+      "en": ["t2g orbitals"],
+      "is": "t2g svigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm104611088 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": false,
+      "unmatchableReason": "target-digit"
+    },
+    {
+      "id": "temperature",
+      "enNorm": "temperature",
+      "en": ["temperature"],
+      "is": "hitastig",
+      "competitors": ["hiti"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm327357936 (2026-10-10 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31728864 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "termolecular-reaction",
+      "enNorm": "termolecular reaction",
+      "en": ["termolecular reaction"],
+      "is": "þrísameindahvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idp251542624 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "tetrahedral",
+      "enNorm": "tetrahedral",
+      "en": ["tetrahedral"],
+      "is": "ferflötungur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp51917808 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "tetrahedral-hole",
+      "enNorm": "tetrahedral hole",
+      "en": ["tetrahedral hole"],
+      "is": "ferflötungshol",
+      "competitors": ["ferflötungshola"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm116347536 (chat (question 2); 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "theoretical-yield",
+      "enNorm": "theoretical yield",
+      "en": ["theoretical yield"],
+      "is": "fræðilegar heimtur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp30967968 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "thermal-energy",
+      "enNorm": "thermal energy",
+      "en": ["thermal energy"],
+      "is": "varmaorka",
+      "competitors": ["hitaorka"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31730416 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "thermochemistry",
+      "enNorm": "thermochemistry",
+      "en": ["thermochemistry"],
+      "is": "varmaefnafræði",
+      "competitors": ["efnahvörfunarvarmafræði"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31731568 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "third-transition-series",
+      "enNorm": "third transition series",
+      "en": ["third transition series"],
+      "is": "þriðja hliðarmálmaröðin",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch19_fs-idm42835168 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "titrant",
+      "enNorm": "titrant",
+      "en": ["titrant"],
+      "is": "títrantur",
+      "competitors": ["títrunarefni"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp122976560 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "torr",
+      "enNorm": "torr",
+      "en": ["torr"],
+      "is": "torr",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["entry"],
+      "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "transmutation-reaction",
+      "enNorm": "transmutation reaction",
+      "en": ["transmutation reaction"],
+      "is": "frumefnabreytingarhvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm223971840 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "transuranium-element",
+      "enNorm": "transuranium element",
+      "en": ["transuranium element"],
+      "is": "frumefni handan úrans",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch21_fs-idm188168144 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "trigonal-planar",
+      "enNorm": "trigonal planar",
+      "en": ["trigonal planar"],
+      "is": "þríhyrningslaga flatt",
+      "competitors": ["þríhyrnt flatt"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["no-entry", "verdict"],
+      "sources": [
+        "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (REVERSED_TO_STORED); docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md (D4b) (2026-10-11 [USER])",
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp36467056 (2026-10-11 [USER] (D4))"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "triple-bond",
+      "enNorm": "triple bond",
+      "en": ["triple bond"],
+      "is": "þrítengi",
+      "competitors": ["þrefalt tengi"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm68093504 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "tyndall-effect",
+      "enNorm": "tyndall effect",
+      "en": ["Tyndall effect"],
+      "is": "Tyndall-hrif",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch11_fs-idm171842784 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "unimolecular-reaction",
+      "enNorm": "unimolecular reaction",
+      "en": ["unimolecular reaction"],
+      "is": "einsameindahvarf",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch12_fs-idm2926992 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "unit-conversion-factor",
+      "enNorm": "unit conversion factor",
+      "en": ["unit conversion factor"],
+      "is": "breytistuðull eininga",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch01_fs-idm307214528 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "vacancy",
+      "enNorm": "vacancy",
+      "en": ["vacancy"],
+      "is": "tóm",
+      "competitors": ["eyða", "eyðuveila"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm37032656 (page-default-confirmed; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "valence",
+      "enNorm": "valence",
+      "en": ["valence"],
+      "is": "gildi",
+      "competitors": ["girðitala"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ws_valence (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "valence-shell-electron-pair-repulsion-theory",
+      "enNorm": "valence shell electron-pair repulsion theory",
+      "en": [
+        "valence shell electron-pair repulsion theory",
+        "valence shell electron-pair repulsion theory (VSEPR)"
+      ],
+      "is": "kenningin um fráhrindingu rafeindapara í gildishvolfi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch07_fs-idp27828880 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "vapor-pressure",
+      "enNorm": "vapor pressure",
+      "en": ["vapor pressure"],
+      "is": "gufunarþrýstingur",
+      "competitors": ["eimþrýstingur", "gufuþrýstingur"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch10_fs-idm195421616 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "vapor-pressure-of-water",
+      "enNorm": "vapor pressure of water",
+      "en": ["vapor pressure of water"],
+      "is": "gufunarþrýstingur vatns",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch09_fs-idp57901520 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "wave-particle-duality",
+      "enNorm": "wave-particle duality",
+      "en": ["wave-particle duality"],
+      "is": "tvíeðli bylgju og eindar",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["stage1"],
+      "sources": ["stage1 ch06_fs-idp106317328 (page-answer; 2026-10-11 [USER])"],
+      "matchable": true
+    },
+    {
+      "id": "weak-electrolyte",
+      "enNorm": "weak electrolyte",
+      "en": ["weak electrolyte"],
+      "is": "veikur rafkleyfi",
+      "competitors": ["veik raflausn"],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "kinds": ["verdict"],
+      "sources": [
+        "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp4277680 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    }
+  ],
+  "excluded": [
+    {
+      "enNorm": "fissile",
+      "reason": "held"
+    },
+    {
+      "enNorm": "fissionable",
+      "reason": "held"
+    },
+    {
+      "enNorm": "radioactive material",
+      "reason": "held"
+    },
+    {
+      "enNorm": "substituted",
+      "reason": "held"
+    }
+  ],
+  "notes": [
+    {
+      "kind": "limitation",
+      "text": "matchable checks the target's characters and the enNorm's placeholders only. It does not check element-symbol words (the gate's lexicon owns ELEMENT_SYMBOLS) or whether an English form occurs in visible prose; the gate checks both per operation."
+    },
+    {
+      "kind": "scope-exception",
+      "enNorm": "cell",
+      "status": "proposed",
+      "scope": {
+        "kind": "chapters",
+        "chapters": ["ch17"]
+      },
+      "source": "server/lib/houseStyleTerms.js line 210 at commit 6cbd36ed0: the why of the cell entry (lines 206-211), \"SEND IT IN ch17's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
+      "note": "PROPOSED, NOT RULED. ch17 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses: the electrochemical cell also occurs in ch01, ch11, ch18, ch19 and the appendices (spec 2026-10-26, measured inputs), while a biological cell is another sense and ch10's unit cell is a separate term. A raw word-bounded count of cell/cells over the 02-for-mt EN segment files on 2026-10-26 found the word in 21 of 23 chapter directories (ch17 376, ch10 142, ch03 64). That count includes marker payloads such as E[[sub:cell]] and compounds such as unit cell, so it over-counts and does not separate senses."
+    },
+    {
+      "kind": "scope-exception",
+      "enNorm": "group",
+      "status": "proposed",
+      "scope": {
+        "kind": "chapters",
+        "chapters": ["ch02"]
+      },
+      "source": "server/lib/houseStyleTerms.js line 180 at commit 6cbd36ed0: the why of the group entry (lines 176-181), \"SEND IT IN ch02's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
+      "note": "PROPOSED, NOT RULED. ch02 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses. ch06 uses both the periodic-table column ('groups 1 and 2') and the ordinary word ('the group of 3' squares), and ch20's functional group (hópur; carbonyl group has its own row) is a third use. A raw word-bounded count of group/groups over the 02-for-mt EN segment files on 2026-10-26 found the word in 20 of 23 chapter directories (ch20 395, ch19 241, ch02 222, ch18 207, appendices 115, ch06 92). That count includes marker payloads and does not separate senses."
+    },
+    {
+      "kind": "superseded",
+      "enNorm": "bonding orbital",
+      "from": "bindandi svigrúm",
+      "to": "tengisvigrúm",
+      "record": "stage1-chat-answers-2026-10-11.json, question 3 (choice a)"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "calorie",
+      "is": "kaloría (cal)",
+      "withoutGloss": "kaloría"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "half-life of a reaction",
+      "is": "helmingunartími efnahvarfs (tl/2)",
+      "withoutGloss": "helmingunartími efnahvarfs"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "heat",
+      "is": "varmi (q)",
+      "withoutGloss": "varmi"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "lattice energy",
+      "is": "grindarorka (ΔHgrind)",
+      "withoutGloss": "grindarorka"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "molality",
+      "is": "mólalstyrkur (m)",
+      "withoutGloss": "mólalstyrkur"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "secondary quantum number",
+      "is": "aukaskammtatala (hverfiþungi)",
+      "withoutGloss": "aukaskammtatala"
+    },
+    {
+      "kind": "trailing-gloss",
+      "enNorm": "standard hydrogen electrode",
+      "is": "staðalvetnisraftroð (SHE)",
+      "withoutGloss": "staðalvetnisraftroð"
+    },
+    {
+      "kind": "inflection-note",
+      "id": "ch07_fs-idp35872064",
+      "en": "linear",
+      "ch": "ch07",
+      "note": "Depends on gender"
+    },
+    {
+      "kind": "inflection-note",
+      "id": "ch14_fs-idm111671584",
+      "en": "basic",
+      "ch": "ch14",
+      "note": "Depends on gender"
+    }
+  ]
+}

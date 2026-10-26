@@ -1,0 +1,20 @@
+{
+  "about": "Scope exceptions to the book-wide default for chemistry's term rulings. D2 ([USER] 2026-10-11, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43): verdicts apply book-wide by default, and exceptions (the group/cell homograph class) go in a machine-readable, test-pinned scope field that the AI gate enforces. This file is that field's input; tools/ai-review/compile-ruling-set.js reads it, with the frozen 2026-10-11 ruling set, and writes ruling-set-2026-10-26.json. status 'proposed' means the width is NOT ruled: the gate admits no operation for such a ruling until [USER] rules its width (then set status 'ruled', or change the scope, and recompile). Scope shapes: {kind:'book'}, {kind:'chapters', chapters}, {kind:'exclude', chapters}; chapter tokens are the strings chNN or appendices. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "recordedAt": "2026-10-26",
+  "exceptions": [
+    {
+      "enNorm": "group",
+      "scope": { "kind": "chapters", "chapters": ["ch02"] },
+      "status": "proposed",
+      "source": "server/lib/houseStyleTerms.js line 180 at commit 6cbd36ed0: the why of the group entry (lines 176-181), \"SEND IT IN ch02's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
+      "note": "PROPOSED, NOT RULED. ch02 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses. ch06 uses both the periodic-table column ('groups 1 and 2') and the ordinary word ('the group of 3' squares), and ch20's functional group (hópur; carbonyl group has its own row) is a third use. A raw word-bounded count of group/groups over the 02-for-mt EN segment files on 2026-10-26 found the word in 20 of 23 chapter directories (ch20 395, ch19 241, ch02 222, ch18 207, appendices 115, ch06 92). That count includes marker payloads and does not separate senses."
+    },
+    {
+      "enNorm": "cell",
+      "scope": { "kind": "chapters", "chapters": ["ch17"] },
+      "status": "proposed",
+      "source": "server/lib/houseStyleTerms.js line 210 at commit 6cbd36ed0: the why of the cell entry (lines 206-211), \"SEND IT IN ch17's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
+      "note": "PROPOSED, NOT RULED. ch17 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses: the electrochemical cell also occurs in ch01, ch11, ch18, ch19 and the appendices (spec 2026-10-26, measured inputs), while a biological cell is another sense and ch10's unit cell is a separate term. A raw word-bounded count of cell/cells over the 02-for-mt EN segment files on 2026-10-26 found the word in 21 of 23 chapter directories (ch17 376, ch10 142, ch03 64). That count includes marker payloads such as E[[sub:cell]] and compounds such as unit cell, so it over-counts and does not separate senses."
+    }
+  ]
+}
