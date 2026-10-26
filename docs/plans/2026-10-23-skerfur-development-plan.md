@@ -184,7 +184,11 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
   answers 200 even when degraded;
 - a deploy practice for working days (window, tree check, rollback);
 - correcting chemistry's stale `status.json` (register ③) before the held sync, because the reader's titles come from
-  it.
+  it. ✏️ *2026-10-26: that premise is false for the reader. vefur's `scripts/generate-toc.js` (vefur `origin/main`,
+  lines 607–619) takes each chapter's title from its intro page's page-data `chapterTitle` first and reads
+  `status.json` only when that is missing, and all 21 chemistry chapters have an intro page carrying it. So this item
+  does not gate the sync. `status.json` still supplies the editor dashboard's titles (`server/routes/status.js`), so it
+  stays an editor fix.*
 
 ### 3.2 The apply gate: before the hold is lifted
 
