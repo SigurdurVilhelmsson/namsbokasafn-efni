@@ -1,0 +1,2136 @@
+{
+ "trees": "/home/siggi/d11-buy-2026-10-26",
+ "repoHead": "624963a179898ab0965c041da80869cb4e4ac9dc",
+ "controls": {
+  "a_reproduces_oct10": {
+   "all": true,
+   "terms": [
+    {
+     "en": "atom",
+     "oct10": {
+      "old": [
+       22,
+       25
+      ],
+      "new": [
+       16,
+       25
+      ]
+     },
+     "now": {
+      "old": [
+       22,
+       25
+      ],
+      "new": [
+       16,
+       25
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "heterogeneous mixture",
+     "oct10": {
+      "old": [
+       7,
+       7
+      ],
+      "new": [
+       0,
+       7
+      ]
+     },
+     "now": {
+      "old": [
+       7,
+       7
+      ],
+      "new": [
+       0,
+       7
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "homogeneous mixture",
+     "oct10": {
+      "old": [
+       7,
+       7
+      ],
+      "new": [
+       0,
+       7
+      ]
+     },
+     "now": {
+      "old": [
+       7,
+       7
+      ],
+      "new": [
+       0,
+       7
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "law of conservation of matter",
+     "oct10": {
+      "old": [
+       4,
+       4
+      ],
+      "new": [
+       2,
+       4
+      ]
+     },
+     "now": {
+      "old": [
+       4,
+       4
+      ],
+      "new": [
+       2,
+       4
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "dissociation",
+     "oct10": {
+      "old": [
+       6,
+       9
+      ],
+      "new": [
+       0,
+       9
+      ]
+     },
+     "now": {
+      "old": [
+       6,
+       9
+      ],
+      "new": [
+       0,
+       9
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "electrolyte",
+     "oct10": {
+      "old": [
+       21,
+       25
+      ],
+      "new": [
+       6,
+       23
+      ]
+     },
+     "now": {
+      "old": [
+       21,
+       25
+      ],
+      "new": [
+       6,
+       23
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "nonelectrolyte",
+     "oct10": {
+      "old": [
+       8,
+       13
+      ],
+      "new": [
+       0,
+       14
+      ]
+     },
+     "now": {
+      "old": [
+       8,
+       13
+      ],
+      "new": [
+       0,
+       14
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "strong electrolyte",
+     "oct10": {
+      "old": [
+       11,
+       11
+      ],
+      "new": [
+       3,
+       9
+      ]
+     },
+     "now": {
+      "old": [
+       11,
+       11
+      ],
+      "new": [
+       3,
+       9
+      ]
+     },
+     "match": true
+    },
+    {
+     "en": "weak electrolyte",
+     "oct10": {
+      "old": [
+       3,
+       3
+      ],
+      "new": [
+       2,
+       3
+      ]
+     },
+     "now": {
+      "old": [
+       3,
+       3
+      ],
+      "new": [
+       2,
+       3
+      ]
+     },
+     "match": true
+    }
+   ]
+  },
+  "b_tree_equals_git": {
+   "all": true,
+   "terms": 22
+  },
+  "c_pairing_independent": {
+   "all": true,
+   "terms": 22
+  }
+ },
+ "analysis": {
+  "contextCommonIds": {
+   "note": "added after the first run; D11 runs scored on ids the June MT also has, the same population as the june/september rows; not pre-registered",
+   "runLevel": {
+    "r1-M": {
+     "consistent": 8,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 1.0
+    },
+    "r1-S": {
+     "consistent": 7,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 0.972
+    },
+    "r1-none": {
+     "consistent": 6,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 0.812
+    },
+    "r2-none": {
+     "consistent": 6,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 0.847
+    },
+    "r2-S": {
+     "consistent": 7,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 0.938
+    },
+    "r2-M": {
+     "consistent": 8,
+     "eligible": 8,
+     "lowN": 1,
+     "meanShare": 1.0
+    }
+   },
+   "terms": [
+    {
+     "en": "atom",
+     "r1-M": {
+      "own": 18,
+      "prose": 18,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 14,
+      "prose": 18,
+      "share": 0.778
+     },
+     "r1-none": {
+      "own": 9,
+      "prose": 18,
+      "share": 0.5
+     },
+     "r2-none": {
+      "own": 14,
+      "prose": 18,
+      "share": 0.778
+     },
+     "r2-S": {
+      "own": 9,
+      "prose": 18,
+      "share": 0.5
+     },
+     "r2-M": {
+      "own": 18,
+      "prose": 18,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "heterogeneous mixture",
+     "r1-M": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "homogeneous mixture",
+     "r1-M": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 7,
+      "prose": 7,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "law of conservation of matter",
+     "r1-M": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "dissociation",
+     "r1-M": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 1,
+      "prose": 1,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "electrolyte",
+     "r1-M": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 12,
+      "prose": 12,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "nonelectrolyte",
+     "r1-M": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 0,
+      "prose": 4,
+      "share": 0.0
+     },
+     "r2-none": {
+      "own": 0,
+      "prose": 4,
+      "share": 0.0
+     },
+     "r2-S": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 4,
+      "prose": 4,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "strong electrolyte",
+     "r1-M": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 5,
+      "prose": 5,
+      "share": 1.0
+     }
+    },
+    {
+     "en": "weak electrolyte",
+     "r1-M": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     },
+     "r1-S": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     },
+     "r1-none": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     },
+     "r2-none": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     },
+     "r2-S": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     },
+     "r2-M": {
+      "own": 3,
+      "prose": 3,
+      "share": 1.0
+     }
+    }
+   ]
+  },
+  "juneOnly": [
+   {
+    "module": "m68781",
+    "headword": "atom",
+    "values": [
+     "atóm",
+     "frumeind"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 1,
+      "carries": {
+       "atóm": 0,
+       "frumeind": 1
+      }
+     },
+     "r1-S": {
+      "prose": 1,
+      "carries": {
+       "atóm": 1,
+       "frumeind": 0
+      }
+     },
+     "r1-none": {
+      "prose": 1,
+      "carries": {
+       "atóm": 1,
+       "frumeind": 0
+      }
+     },
+     "r2-none": {
+      "prose": 1,
+      "carries": {
+       "atóm": 1,
+       "frumeind": 0
+      }
+     },
+     "r2-S": {
+      "prose": 1,
+      "carries": {
+       "atóm": 1,
+       "frumeind": 0
+      }
+     },
+     "r2-M": {
+      "prose": 1,
+      "carries": {
+       "atóm": 0,
+       "frumeind": 1
+      }
+     }
+    },
+    "scorable": {
+     "atóm": true,
+     "frumeind": true
+    }
+   },
+   {
+    "module": "m68781",
+    "headword": "dilute",
+    "values": [
+     "þunnur",
+     "þynna"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 1,
+       "þynna": 0
+      }
+     },
+     "r1-S": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 1,
+       "þynna": 0
+      }
+     },
+     "r1-none": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 0,
+       "þynna": 0
+      }
+     },
+     "r2-none": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 0,
+       "þynna": 0
+      }
+     },
+     "r2-S": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 1,
+       "þynna": 0
+      }
+     },
+     "r2-M": {
+      "prose": 1,
+      "carries": {
+       "þunnur": 1,
+       "þynna": 0
+      }
+     }
+    },
+    "scorable": {
+     "þunnur": true,
+     "þynna": true
+    }
+   },
+   {
+    "module": "m68781",
+    "headword": "group",
+    "values": [
+     "flokkur",
+     "hópur"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     },
+     "r1-S": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     },
+     "r1-none": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     },
+     "r2-none": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     },
+     "r2-S": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     },
+     "r2-M": {
+      "prose": 0,
+      "carries": {
+       "flokkur": 0,
+       "hópur": 0
+      }
+     }
+    },
+    "scorable": {
+     "flokkur": true,
+     "hópur": true
+    }
+   },
+   {
+    "module": "m68781",
+    "headword": "pH",
+    "values": [
+     "pH"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r1-S": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r1-none": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-none": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-S": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-M": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     }
+    },
+    "scorable": {
+     "pH": false
+    }
+   },
+   {
+    "module": "m68667",
+    "headword": "atom",
+    "values": [
+     "atóm",
+     "frumeind"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 22,
+      "carries": {
+       "atóm": 0,
+       "frumeind": 22
+      }
+     },
+     "r1-S": {
+      "prose": 22,
+      "carries": {
+       "atóm": 16,
+       "frumeind": 0
+      }
+     },
+     "r1-none": {
+      "prose": 22,
+      "carries": {
+       "atóm": 11,
+       "frumeind": 8
+      }
+     },
+     "r2-none": {
+      "prose": 22,
+      "carries": {
+       "atóm": 16,
+       "frumeind": 0
+      }
+     },
+     "r2-S": {
+      "prose": 22,
+      "carries": {
+       "atóm": 11,
+       "frumeind": 8
+      }
+     },
+     "r2-M": {
+      "prose": 22,
+      "carries": {
+       "atóm": 0,
+       "frumeind": 22
+      }
+     }
+    },
+    "scorable": {
+     "atóm": true,
+     "frumeind": true
+    }
+   },
+   {
+    "module": "m68667",
+    "headword": "emission",
+    "values": [
+     "ljómun",
+     "útblástur"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     },
+     "r1-S": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     },
+     "r1-none": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     },
+     "r2-none": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     },
+     "r2-S": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     },
+     "r2-M": {
+      "prose": 1,
+      "carries": {
+       "ljómun": 0,
+       "útblástur": 0
+      }
+     }
+    },
+    "scorable": {
+     "ljómun": true,
+     "útblástur": true
+    }
+   },
+   {
+    "module": "m68667",
+    "headword": "ion",
+    "values": [
+     "jón"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     },
+     "r1-S": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     },
+     "r1-none": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     },
+     "r2-none": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     },
+     "r2-S": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     },
+     "r2-M": {
+      "prose": 1,
+      "carries": {
+       "jón": 0
+      }
+     }
+    },
+    "scorable": {
+     "jón": true
+    }
+   },
+   {
+    "module": "m68667",
+    "headword": "pH",
+    "values": [
+     "pH"
+    ],
+    "runs": {
+     "r1-M": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r1-S": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r1-none": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-none": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-S": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     },
+     "r2-M": {
+      "prose": 0,
+      "carries": {
+       "pH": 0
+      }
+     }
+    },
+    "scorable": {
+     "pH": false
+    }
+   }
+  ],
+  "design": "experiments/d11-glossary-test/DESIGN.md §8",
+  "thresholds": {
+   "MIN_N": 3,
+   "RULED": 0.8
+  },
+  "rule": "an arm effect counts only when the two arms' run ranges do not overlap (DESIGN §7)",
+  "nineTerms": [
+   {
+    "module": "m68667",
+    "definitionId": "fs-idm8143856",
+    "en": "atom",
+    "runs": {
+     "r1-M": {
+      "en": "atom",
+      "K": "frumeind",
+      "prose": 22,
+      "own": 22,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "atom",
+      "K": "atóm",
+      "prose": 22,
+      "own": 16,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 0.727,
+      "consistent": false
+     },
+     "r1-none": {
+      "en": "atom",
+      "K": "atóm",
+      "prose": 22,
+      "own": 11,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 0.5,
+      "consistent": false
+     },
+     "r2-none": {
+      "en": "atom",
+      "K": "atóm",
+      "prose": 22,
+      "own": 16,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 0.727,
+      "consistent": false
+     },
+     "r2-S": {
+      "en": "atom",
+      "K": "atóm",
+      "prose": 22,
+      "own": 11,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 0.5,
+      "consistent": false
+     },
+     "r2-M": {
+      "en": "atom",
+      "K": "frumeind",
+      "prose": 22,
+      "own": 22,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "frumeind",
+     "prose": 18,
+     "own": 17,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 0.944,
+     "consistent": true
+    },
+    "september": {
+     "K": "atóm",
+     "prose": 18,
+     "own": 14,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 0.778,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": "a",
+     "S_vs_none": null,
+     "M_vs_S": "a"
+    }
+   },
+   {
+    "module": "m68667",
+    "definitionId": "fs-idp85033264",
+    "en": "heterogeneous mixture",
+    "runs": {
+     "r1-M": {
+      "en": "heterogeneous mixture",
+      "K": "misleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "heterogeneous mixture",
+      "K": "misleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "heterogeneous mixture",
+      "K": "misleit blanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "heterogeneous mixture",
+      "K": "misleit blanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "heterogeneous mixture",
+      "K": "misleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "heterogeneous mixture",
+      "K": "misleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "misleit efnablanda",
+     "prose": 7,
+     "own": 7,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "misleit efnablanda",
+     "prose": 7,
+     "own": 0,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.0,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68667",
+    "definitionId": "fs-idm25215648",
+    "en": "homogeneous mixture",
+    "runs": {
+     "r1-M": {
+      "en": "homogeneous mixture",
+      "K": "einsleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "homogeneous mixture",
+      "K": "einsleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "homogeneous mixture",
+      "K": "einsleit blanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "homogeneous mixture",
+      "K": "einsleit blanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "homogeneous mixture",
+      "K": "einsleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "homogeneous mixture",
+      "K": "einsleit efnablanda",
+      "prose": 7,
+      "own": 7,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "einsleit efnablanda",
+     "prose": 7,
+     "own": 7,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "einsleit efnablanda",
+     "prose": 7,
+     "own": 0,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.0,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68667",
+    "definitionId": "fs-idp19511536",
+    "en": "law of conservation of matter",
+    "runs": {
+     "r1-M": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "law of conservation of matter",
+      "K": "lögmálið um varðveislu efnis",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "lögmálið um varðveislu efnis",
+     "prose": 4,
+     "own": 4,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "lögmál um varðveislu efnis",
+     "prose": 4,
+     "own": 2,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 0.5,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68781",
+    "definitionId": "fs-idm32680960",
+    "en": "dissociation",
+    "runs": {
+     "r1-M": {
+      "en": "dissociation",
+      "K": "klofnun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     },
+     "r1-S": {
+      "en": "dissociation",
+      "K": "klofnun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     },
+     "r1-none": {
+      "en": "dissociation",
+      "K": "sundrun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     },
+     "r2-none": {
+      "en": "dissociation",
+      "K": "sundrun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     },
+     "r2-S": {
+      "en": "dissociation",
+      "K": "klofnun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     },
+     "r2-M": {
+      "en": "dissociation",
+      "K": "klofnun",
+      "prose": 1,
+      "own": 1,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": null
+     }
+    },
+    "june": {
+     "K": "klofnun",
+     "prose": 1,
+     "own": 0,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.0,
+     "consistent": null
+    },
+    "september": {
+     "K": "rof",
+     "prose": 1,
+     "own": 0,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.0,
+     "consistent": null
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68781",
+    "definitionId": "fs-idm10926960",
+    "en": "electrolyte",
+    "runs": {
+     "r1-M": {
+      "en": "electrolyte",
+      "K": "rafkleyfi",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "electrolyte",
+      "K": "rafkleyfi",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "electrolyte",
+      "K": "raflausn",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "electrolyte",
+      "K": "raflausn",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "electrolyte",
+      "K": "rafkleyfi",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "electrolyte",
+      "K": "rafkleyfi",
+      "prose": 12,
+      "own": 12,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "rafkleyfi",
+     "prose": 12,
+     "own": 12,
+     "defAgree": [
+      0,
+      0
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "raflausn",
+     "prose": 12,
+     "own": 3,
+     "defAgree": [
+      0,
+      0
+     ],
+     "share": 0.25,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68781",
+    "definitionId": "fs-idp10683312",
+    "en": "nonelectrolyte",
+    "runs": {
+     "r1-M": {
+      "en": "nonelectrolyte",
+      "K": "órafkleyft efni",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "nonelectrolyte",
+      "K": "órafkleyft efni",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "nonelectrolyte",
+      "K": "óraflausn",
+      "prose": 4,
+      "own": 0,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 0.0,
+      "consistent": false
+     },
+     "r2-none": {
+      "en": "nonelectrolyte",
+      "K": "óraflausn",
+      "prose": 4,
+      "own": 0,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 0.0,
+      "consistent": false
+     },
+     "r2-S": {
+      "en": "nonelectrolyte",
+      "K": "órafkleyft efni",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "nonelectrolyte",
+      "K": "órafkleyft efni",
+      "prose": 4,
+      "own": 4,
+      "defAgree": [
+       0,
+       0
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "órafkleyft efni",
+     "prose": 4,
+     "own": 4,
+     "defAgree": [
+      0,
+      0
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "raflausnarleysi",
+     "prose": 4,
+     "own": 0,
+     "defAgree": [
+      0,
+      0
+     ],
+     "share": 0.0,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": "a",
+     "S_vs_none": "a",
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68781",
+    "definitionId": "fs-idm7742384",
+    "en": "strong electrolyte",
+    "runs": {
+     "r1-M": {
+      "en": "strong electrolyte",
+      "K": "sterkt rafkleyfi",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "strong electrolyte",
+      "K": "sterkt rafkleyfi",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "strong electrolyte",
+      "K": "sterk raflausn",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "strong electrolyte",
+      "K": "sterk raflausn",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "strong electrolyte",
+      "K": "sterkt rafkleyfi",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "strong electrolyte",
+      "K": "sterkt rafkleyfi",
+      "prose": 5,
+      "own": 5,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "sterkur rafkleyfi",
+     "prose": 5,
+     "own": 5,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "sterk raflausn",
+     "prose": 5,
+     "own": 3,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.6,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   },
+   {
+    "module": "m68781",
+    "definitionId": "fs-idp4277680",
+    "en": "weak electrolyte",
+    "runs": {
+     "r1-M": {
+      "en": "weak electrolyte",
+      "K": "veikt rafkleyfi",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-S": {
+      "en": "weak electrolyte",
+      "K": "veikt rafkleyfi",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r1-none": {
+      "en": "weak electrolyte",
+      "K": "veik raflausn",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-none": {
+      "en": "weak electrolyte",
+      "K": "veik raflausn",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-S": {
+      "en": "weak electrolyte",
+      "K": "veikt rafkleyfi",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     },
+     "r2-M": {
+      "en": "weak electrolyte",
+      "K": "veikt rafkleyfi",
+      "prose": 3,
+      "own": 3,
+      "defAgree": [
+       1,
+       1
+      ],
+      "share": 1.0,
+      "consistent": true
+     }
+    },
+    "june": {
+     "K": "veikur rafkleyfi",
+     "prose": 3,
+     "own": 3,
+     "defAgree": [
+      1,
+      1
+     ],
+     "share": 1.0,
+     "consistent": true
+    },
+    "september": {
+     "K": "veik raflausn",
+     "prose": 3,
+     "own": 2,
+     "defAgree": [
+      0,
+      1
+     ],
+     "share": 0.667,
+     "consistent": false
+    },
+    "effect": {
+     "M_vs_none": null,
+     "S_vs_none": null,
+     "M_vs_S": null
+    }
+   }
+  ],
+  "runLevel": {
+   "r1-M": {
+    "consistent": 8,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 1.0
+   },
+   "r1-S": {
+    "consistent": 7,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.966
+   },
+   "r1-none": {
+    "consistent": 6,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.812
+   },
+   "r2-none": {
+    "consistent": 6,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.841
+   },
+   "r2-S": {
+    "consistent": 7,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.938
+   },
+   "r2-M": {
+    "consistent": 8,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 1.0
+   },
+   "june": {
+    "consistent": 8,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.993
+   },
+   "september": {
+    "consistent": 0,
+    "eligible": 8,
+    "lowN": 1,
+    "meanShare": 0.349
+   }
+  },
+  "headline": {
+   "counts": {
+    "M": [
+     8,
+     8
+    ],
+    "S": [
+     7,
+     7
+    ],
+    "none": [
+     6,
+     6
+    ]
+   },
+   "effect": {
+    "M_vs_none": "a",
+    "S_vs_none": "a",
+    "M_vs_S": "a"
+   }
+  },
+  "secondary": {
+   "allTaughtTerms": {
+    "terms": 22,
+    "runLevel": {
+     "r1-M": {
+      "consistent": 19,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.965
+     },
+     "r1-S": {
+      "consistent": 18,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.955
+     },
+     "r1-none": {
+      "consistent": 17,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.884
+     },
+     "r2-none": {
+      "consistent": 17,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.899
+     },
+     "r2-S": {
+      "consistent": 18,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.941
+     },
+     "r2-M": {
+      "consistent": 19,
+      "eligible": 20,
+      "lowN": 2,
+      "meanShare": 0.964
+     }
+    },
+    "counts": {
+     "M": [
+      19,
+      19
+     ],
+     "S": [
+      18,
+      18
+     ],
+     "none": [
+      17,
+      17
+     ]
+    },
+    "effect": {
+     "M_vs_none": "a",
+     "S_vs_none": "a",
+     "M_vs_S": "a"
+    }
+   },
+   "segmentDifference": {
+    "withinArm": {
+     "M": {
+      "differ": 107,
+      "segments": 273,
+      "share": 0.3919
+     },
+     "S": {
+      "differ": 114,
+      "segments": 273,
+      "share": 0.4176
+     },
+     "none": {
+      "differ": 115,
+      "segments": 273,
+      "share": 0.4212
+     }
+    },
+    "betweenArms": {
+     "M_vs_none": {
+      "differ": 605,
+      "segments": 1092,
+      "share": 0.554
+     },
+     "S_vs_none": {
+      "differ": 590,
+      "segments": 1092,
+      "share": 0.5403
+     },
+     "M_vs_S": {
+      "differ": 457,
+      "segments": 1092,
+      "share": 0.4185
+     }
+    }
+   }
+  },
+  "context": "june/september rows are the committed MT vintages at the same module scope; not pre-registered"
+ },
+ "complete": true
+}
