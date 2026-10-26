@@ -72,6 +72,8 @@ describe('translateModule persists the run record (§C82 prerequisite 2)', () =>
 
     expect(readProvenance(dir, 'm66373').run.glossary).toEqual({
       arm: 'no-glossary',
+      // D11: no glossary was sent, so no sending rule applied.
+      wire: null,
       contentHash: null,
       termCount: null,
       chunksWithGlossary: 0,
