@@ -24,12 +24,14 @@
    - **Nothing reaches readers:** the chemistry sync stays held.
    - **Nothing reaches editors:** the apply hold stays, and layer 2 is data in the repository that no loader reads
      until 10-10 4.1 ships.
-4. **The paid runs are conditional on two answers** (§6, item 1):
-   - the Anthropic account's billing date (roadmap u08);
-   - the written answer on late-October usage invoiced after the final report (in the u01 batch).
-
-   If either answer is no, this week is coding only. The MT provider's side is already answered: October usage is
-   invoiced about 2 November, and [USER] ruled that acceptable (register 2026-10-26 (afternoon)).
+4. **The paid runs are conditional on one ruling by [USER]** (§6, item 2): that late-October Anthropic usage
+   invoiced around 1 November goes on the current grant, as [USER] already ruled for the MT provider's October invoice
+   (register 2026-10-26 (afternoon)). The written confirmation u01's email asks for is sought in parallel, not waited
+   for: it cannot arrive this week.
+   - **The ruling only matters for a new invoice.** If the account Claude Code uses is billed as a flat plan,
+     headless `claude -p` creates no new invoice, and the question disappears. It matters for the API-key route
+     (§4), so the transport and the billing date are one question.
+   - If [USER] rules no, this week is coding only.
 5. **Order by what cannot be recovered.** Code not written before S can still be written after it, unfunded. An API
    call not made before S has no payer. So the critical path is the AI layer's chain (§3), and everything else sits
    below a cut line (§2).
@@ -47,10 +49,10 @@
 | 2 | **The scope field** (`chapters`/`exclude`) for rulings, with a test. The AI gate's scope check needs it | 10-10 1.2, 3.3; roadmap c19 | none | no |
 | 3 | **Rule layer, minimal:** key-terms headwords; markup normalisation, render-checked first; H3's text substitutions once ruled; computed exact swaps only if time allows. Each operation is logged with its rule id | 10-10 3.1, 2.4; register §C201 H3 | D5, D6; *addition*; H3's four rulings | no |
 | 4 | **AI harness and code gate** in `tools/ai-review/`, written so either transport works (§4), with 10-10 §6's records from the first call | 10-10 3.2, 3.3, §6 | D5, D6; transport; spend cap | no |
-| 5 | **Pilot** on one high-drift chapter, then a second | 10-10 3.4 | the billing answers; spend cap | yes |
-| 6 | **Full AI run** over the book, prompt frozen and hashed first | 10-10 3.4, amendment A1 (§5) | A1; the billing answers; spend cap | yes |
-| 7 | **The AI pre-screen of the approved glossary rows that fire**, every call recorded. [USER] rules the flags after S | 10-10 1.5; roadmap c19 | the billing answers; spend cap | yes |
-| 8 | **The re-request mode** (writes layer 1s, never `02-mt-output`), then the re-request of the 8 untranslated September segments. June's API text is the fallback for the 7 June translated | 10-10 2.3 | go for the buy | yes (MT) |
+| 5 | **Pilot** on one high-drift chapter, then a second | 10-10 3.4 | the transport and billing ruling; spend cap | yes |
+| 6 | **Full AI run** over the book, prompt frozen and hashed first | 10-10 3.4, amendment A1 (§5) | A1; the transport and billing ruling; spend cap | yes |
+| 7 | **The AI pre-screen of the approved glossary rows that fire**, every call recorded. [USER] rules the flags after S | 10-10 1.5; roadmap c19 | the transport and billing ruling; spend cap | yes |
+| 8 | **The re-request mode** (writes layer 1s, never `02-mt-output`), then the re-request of all 8 untranslated September segments. 10-10 2.3 names June's API text as the fallback for 7 of them, but using it needs the marker-dialect conversion the unbuilt carry tool would have done, and re-requesting costs less | 10-10 2.3 | go for the buy | yes (MT) |
 
 **Tier 2: large coding, unfunded after S.** In parallel with Tier 1, highest value first.
 
@@ -59,7 +61,7 @@
 | 9 | **Stage 1's rulings into code:** the houseStyleTerms entries (the inflection rule decides three of them), the preference rows and the *valence*/*emission* concept-model change as committed scripts [USER] runs on prod; then deploy → boot → export | 10-10 Stage 1 "Outputs"; roadmap c15 | *addition*; the inflection rule; window A |
 | 10 | **The guards PR:** G1.14 and G1.19 (on `fix/c09-guards-before-editing`, register 2026-10-24 (late night)), then G1.11, G1.13, G1.15, G1.16, G2.3 | Skerfur §7, "Before S"; roadmap c09 | c09's two choices; SD7; window A |
 | 11 | **Per-segment "human"** in the TM, concordance and corpus | 10-10 4.0; Skerfur G2.2 | none |
-| 12 | **The reader census** (about 45 files read `02-mt-output`, counted 2026-10-26; re-derive) and the three main readers switched to layer 2 | 10-10 4.1; Skerfur G1.8 | window B, if ready |
+| 12 | **The reader census** (about 45 files read `02-mt-output`, counted 2026-10-26; re-derive) and the three main readers switched to layer 2 **behind a flag that defaults to layer 1**. The flag turns only after [USER]'s blind check, and then only for the categories that survive it, so a deploy before the check changes nothing editors see | 10-10 4.1; Skerfur G1.8 | window B, if ready |
 | 13 | **Re-attach by content** (the script; its prod run comes after S) | 10-10 4.2 | none now |
 
 **Tier 3: small, if time allows.** §C205's residue opener with its test and base rate; §C201 H1, H2 and H4; the
@@ -77,7 +79,7 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
 | Day | [CODE] | [USER] | Paid calls |
 |---|---|---|---|
 | **Mon 26 Oct** (evening) | step 0; layer scaffolding; the scope field; the harness and gate, test-first on a mocked transport | the decision sitting (§6, item 2) | none |
-| **Tue 27** | the minimal rule layer; the harness's transport (per the answer); a 0-ISK census of the AI scope and a token estimate; the re-request mode and its dry run | u01 with the billing question; the two terminology answers | none |
+| **Tue 27** | the minimal rule layer; the harness's transport (per the answer); a 0-ISK census of the AI scope and a token estimate; the re-request mode and its dry run | u01 and B1; the two terminology answers | none |
 | **Wed 28** | pilot on one chapter, self-check, a second pilot chapter, prompt revision, prompt frozen | strict A1 only: a 20-per-category blind look (about 30 minutes) | pilot |
 | **Thu 29** | the full AI run; the glossary pre-screen; the re-request | **window A:** merge and deploy the guards and rulings PRs; run the two prod scripts | full run |
 | **Fri 30** | gate logs, provenance and layer-2 data committed on a branch, with PRs; Tier 2 | final report | last paid calls by Friday night |
@@ -97,15 +99,20 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
   call.
 - **Model:** `claude-opus-5-5` by default. A cheaper model is [USER]'s call.
 - **Transport** (10-10 §6 allows either; the harness supports both):
-  - the Anthropic API: a per-token invoice, the Batch API at half price, and a key [USER] creates;
-  - headless Claude Code (`claude -p`) on [USER]'s existing account: no setup and no Batch discount. The cost
-    depends on how that account is billed, which is §6's item 1.
+  - the Anthropic API: a per-token invoice, the Batch API at half price, and a key [USER] creates. Every parameter
+    the model sees is in the project's own records, which makes it **the cleaner record for the paper**;
+  - headless Claude Code (`claude -p`) on [USER]'s existing account: no setup and no Batch discount. It runs inside
+    Claude Code's own harness, whose system prompt and tool layer the project does not version, so the recorded
+    prompt sha256 covers only the project's half. Its cost depends on how that account is billed (§1 point 4).
+- **Where the layer and its logs live** is [USER]'s call (§6, item 2). 10-10 §4 and §6 say layer 2 and every
+  request and response are committed. [USER]'s D11 ruling of 2026-10-26, which is newer, kept that test's raw MT out
+  of the public repository, with verified off-repo copies instead.
 - **Cost:** a 0-ISK census and token count first; the pilot measures the real cost per call; the run stops at the
   cap. At the list prices of 2026-10-06, 1,000–3,000 requests on Opus 5.5 at standard rates come to roughly
   USD 35–70, and the glossary pre-screen to roughly USD 10–20. These are estimates; invoices decide.
 - **What [USER]'s blind check decides:** which categories survive, under 10-10 3.4's rule, unchanged. A dropped
   category's operations leave layer 2 by code and stay in the log. Nothing in layer 2 reaches an editor before that
-  check and 4.1.
+  check: 4.1's layer-2 read stays behind its flag until then (§2, item 12).
 - **The slip rule is unchanged:** if the AI layer fails its check, freeze with the rule layer.
 
 ## 5. What this plan amends, if [USER] agrees
@@ -130,11 +137,17 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
 
 Each item says roughly how long it takes, by when, and what it unblocks.
 
-1. **The billing facts, and send u01** (u01's 25 minutes, plus one check; Tuesday). How is the Anthropic account
-   that Claude Code uses billed (a flat plan or per-token usage), and on what date? Is late-October usage invoiced
-   after the report payable from the current grant (u01's email asks)? **Unblocks every paid call** (items 5–7).
-2. **The decision sitting** (about 15 minutes; tonight or Tuesday morning): D5 and D6, yes or no each; A1, reordered
-   or strict; the transport; a spend cap for items 5–7. **Unblocks the rule layer and the harness.**
+1. **Send u01 and B1** (about 25 minutes; Tuesday; the register's next action). u01's email asks in writing whether
+   late-October usage invoiced after the report may go on the current grant. Nothing this week waits for the reply.
+2. **The decision sitting** (about 15 minutes; tonight or Tuesday morning). **Unblocks the rule layer, the harness
+   and every paid call:**
+   - the transport and its billing: the API with a key, or `claude -p` on the existing account (and how that
+     account is billed); if a new invoice results, the ruling that late-October usage goes on the current grant;
+   - D5 and D6, yes or no each;
+   - A1, reordered or strict;
+   - whether layer 2 and its request/response logs are committed to the public repository, as 10-10 §4 says, or
+     kept off-repo with verified copies, as for D11;
+   - a spend cap for items 5–7.
 3. **Two terminology answers** (about 5 minutes; Tuesday):
    - *addition → álagning*: does the KEEP cover the reaction sense only, or every sense? If only the reaction sense,
      the bare row is retired and *addition reaction → álagningarhvarf*, already ruled, takes its place (register
@@ -152,8 +165,8 @@ Each item says roughly how long it takes, by when, and what it unblocks.
 7. **Window A** (about 45 minutes; Thursday evening): merge the guards and rulings PRs, deploy, run the preference
    and concept-model scripts on prod, and check the next export.
 8. **Window B** (about 30 minutes; Saturday, or Sunday before the tag): merge the layer tools and data PRs, plus 4.0
-   and 4.1 if they are ready, then deploy. Without a deploy the content backup strands (CLAUDE.md § Content
-   delivery).
+   and 4.1 if they are ready (4.1 with its flag off), then deploy. Without a deploy the content backup strands
+   (CLAUDE.md § Content delivery).
 9. **The rule at S** (1 minute): merge pre-S branches before the tag, or tag their tips.
 10. **The S tags and SD3** (about 10 minutes; Sunday 1 November): approve both tags once the content backup reports
     nothing unpushed; accept or amend SD3's two counts.
@@ -179,7 +192,7 @@ pending; this section is updated from it, re-measured first.*
 
 ## 8. Risks and fallbacks
 
-- **A billing answer is no:** coding only. The paid items run after S unfunded, or not at all. The rule layer
+- **The billing ruling is no:** coding only. The paid items run after S unfunded, or not at all. The rule layer
   still yields a layer 2.
 - **Step 0 finds drift:** modules whose ids or English changed are left out of the paid run until their MT is
   current. A top-up is an MT call, so it belongs before S too.
@@ -194,7 +207,7 @@ pending; this section is updated from it, re-measured first.*
 
 ## 9. What this plan cannot see
 
-- the billing answers;
+- how the account Claude Code uses is billed, and when;
 - [USER]'s week;
 - the AI pass's real cost per call;
 - how many categories survive the blind check;
