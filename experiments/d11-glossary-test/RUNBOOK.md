@@ -53,8 +53,8 @@ against their pinned hashes. It then dry-runs both modules with the arm's flags 
 wire and `To translate: 1`. It writes the flags into `ARM_FLAGS`, which the buy lines read, so the flags cannot be
 mistyped. **If it says `REFUSED`, do not buy:** read the message; nothing has been spent.
 
-**Step 2, buy (paid; the hook asks before each line).** First run the budget check in §5. Buy only if it prints
-`GO ON`.
+**Step 2, buy (paid; under a Claude session the guard hook asks first).** First run the budget check in §5. Buy
+only if it prints `GO ON`.
 
 ```bash
 cd "$D11/$RUN"
@@ -65,7 +65,16 @@ env -u MALSTADUR_API_KEY node "$REPO/tools/api-translate.js" --book efnafraedi-2
 `env -u` makes sure the key comes from `.env`, not from a fake one left in the shell. `$(cat ARM_FLAGS)` is
 unquoted on purpose: `--full-glossary --june-wire` is two arguments. **Under a Claude session, run the `cd` and
 both buy lines as one command:** the working directory resets between commands, and from the repo root
-`ARM_FLAGS` is not found, so the buy is refused for having no arm (exit 2, nothing spent).
+`ARM_FLAGS` is not found, so the buy is refused for having no arm (exit 2, nothing spent). The hook then asks
+once for the whole command, not once per line.
+
+**Expect the hook's prompt to say `⚠ STALE ENGLISH … Re-extract before buying`, and approve it.** The hook dates
+the *real* repo's `02-for-mt` against the extractor's code. It never looks at this tree, whose English step 1 has
+just re-extracted and checked against the pinned hashes. Measured 2026-10-26 on the exact buy line: the warning
+appears for m68781.
+
+`exit=1` on a buy line means the module was held back (a failure, an id-reattach mismatch, a bracket-marker delta
+or a lost Greek letter; the log's `Held back` line says which). Step 3 decides whether the run must be redone.
 
 **Step 3, check (free):**
 
@@ -89,6 +98,7 @@ For each module's sidecar (`02-mt-output/<ch>/<module>-provenance.json` in the t
 | `run.glossary.contentHash` | `f15401b2…735c` | `9071d852…7252` | `null` |
 | `run.glossary.chunksTotal` | m68781 1, m68667 2 | the same | the same |
 | `run.glossary.chunksWithGlossary` | `= chunksTotal` | `= chunksTotal` | 0 |
+| `run.mismatchCount` | 0 | 0 | 0 |
 
 It also checks that each MT file carries the same SEG id **set** as its English (a set, not a count: the MT can
 rewrite an id's digits). It also prints each module's `run.usage`, but **do not count the bill from it:** when a
@@ -98,8 +108,15 @@ billed. The bill is counted from the logs (§5).
 `chunksWithGlossary` below `chunksTotal` means a chunk came back truncated and was retried without the glossary
 (DESIGN §7). That module is then a no-glossary sample under a glossary label, so the run must be redone.
 
+`mismatchCount` above 0 means a segment was held back: its markers did not line up after the MT, so `api-translate`
+wrote the **English source** into the MT file under that segment's id. The id set still matches, so only this
+field shows it. **[USER] ruled 2026-10-26: such a run is redone in a fresh tree (§5).** It has happened in 4 of
+180 earlier module buys.
+
 ## 5. When a run fails
 
+- **A run has failed when step 3 prints `FAIL`:** a missing file, a wrong sidecar value, a truncated chunk
+  (`chunksWithGlossary`), or a held-back segment (`mismatchCount`; [USER] 2026-10-26).
 - **Do not rerun in the same tree, and do not use `--force` there.** Keep the failed tree: it is evidence, and what
   it bought counts toward the cap.
 - **Redo the whole run in a fresh tree** named `<run>-retry1` (for example `RUN=r1-M-retry1; ARM=M`), steps 1 to 3.
@@ -111,6 +128,7 @@ billed. The bill is counted from the logs (§5).
   3,787 ISK** (5,000 − 1,213). Run this before step 2 of every run, and once more at the end:
 
   ```bash
+  : "${D11:?set D11 to the buy directory first}"
   total=0
   for f in "$D11"/*/logs/buy-*.log; do
     [ -e "$f" ] || continue
@@ -122,9 +140,19 @@ billed. The bill is counted from the logs (§5).
     total=$((total + u))
   done
   isk=$(( (total + 50) / 100 ))
-  echo "API usage so far: $total chars ≈ $isk ISK"
-  [ "$isk" -le 3787 ] && echo "GO ON: room for one more run" || echo "STOP: no room for another run under ISK 5,000; ask [USER]"
+  echo "API usage so far in $D11: $total chars ≈ $isk ISK"
+  if [ ! -d "${D11:-}" ]; then
+    echo "STOP: \$D11 is not an existing directory ('${D11:-}'); set it and run this again"
+  elif [ "$isk" -le 3787 ]; then
+    echo "GO ON: room for one more run"
+  else
+    echo "STOP: no room for another run under ISK 5,000; ask [USER]"
+  fi
   ```
+
+  The first line stops a script or a Claude session when `$D11` is unset. Pasted into a terminal it only prints an
+  error and the following lines still run, so the verdict also checks that `$D11` is an existing directory. That
+  check catches a mistyped path too.
 
   It counts every tree in `$D11`, failed and retried ones included. The `API usage:` figure is the API's billed
   units, and 0.01 ISK a unit is the invoice rate with VAT (kr. 8.06 a thousand before 24% VAT, 9.99 after). The six planned runs come to
@@ -169,7 +197,9 @@ are the echo's text lengths, not Miðeind's.
   hash, and the M arm's flag mistyped as `--june_wire`. That dry run loaded today's 590 rows, which is exactly the
   silent-drop hazard. `check-run.mjs` failed four damaged copies of a passing tree on the right lines: the arm
   relabelled S (wire, term count and hash), one `chunksWithGlossary` lowered by one, one segment deleted from an
-  MT file (the id set), and the `wire` key removed. The untouched tree still passed.
+  MT file (the id set), and the `wire` key removed. The untouched tree still passed. Added the same day: a
+  held-back-shaped tree (one segment's English written back into the MT file, `mismatchCount: 1`) passed the
+  earlier checker and fails the current one, as does a sidecar with no `mismatchCount` key.
 - **The real tree was unchanged:** a path, size and mtime listing of `01-source`, `02-for-mt`, `02-structure`,
   `02-mt-output`, `glossary` and `sessions.db` was identical before and after.
 - **Not exercised: the real key path.** Every rehearsal buy set a fake key. On Wednesday, `env -u` makes
