@@ -555,3 +555,18 @@ bf43dedab docs(register): D11's trees are backed up and verified (2026-10-26 aft
 **Why:** —
 
 ---
+
+## 2026-10-26 13:57 - D11 analysed and merged as #575 (June's wire beats no glossary 8/8 vs 6/8; secondaries not established; September base stands), prod at 6a955f9aa
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+6a955f9aa Merge pull request #575 from SigurdurVilhelmsson/exp/d11-analysis
+79fb7b2a9 docs(register): 2026-10-26 (late afternoon): D11 analysed — June's wire beats no glossary; secondaries not established
+8c46d4729 docs(d11): the pre-registered analysis — M beats no glossary (8/8 vs 6/8); secondaries not established
+
+**Why:** —
+
+---
