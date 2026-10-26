@@ -15,11 +15,13 @@
  *   - the English VISIBLE prose carries one of the ruling's English forms (usesHeadword,
  *     word-bounded; never on raw text, where it fires inside `E[[sub:cell]]`);
  *   - `find` occurs exactly once in the current text, wholly inside one editable span
- *     (tokens.js), starting and ending on a word boundary, overlapping no accepted op;
+ *     (tokens.js), starting and ending on a word boundary AS A READER SEES IT (a label flush
+ *     against a word continues it: tokens.js isWordAligned), overlapping no accepted op;
  *   - no forbidden token in `find` or `replace` (forbiddenTokenReasons);
  *   - size bounds per op and per segment (DEFAULT_LIMITS); `replace` differs from `find`;
- *   - term: `replace` contains the target, `find` does not, and the BARRED words are
- *     unchanged;
+ *   - term: `replace` carries the target as the HEAD of a word (carriesTarget: `anóða` does
+ *     not carry `nóða`), `find` does not already contain its stem (containsTargetStem), and
+ *     the BARRED words are unchanged;
  *   - agreement: an accepted term op of the SAME ruling within agreementWindowWords words,
  *     the same word count, every changed word closed-class on both sides or an ending
  *     change on a shared stem, and no BARRED word on either side;
@@ -29,8 +31,8 @@
  * gateOccurrences decides a duplicated segment id once for all its occurrences.
  */
 
-import { tokenize, editableSpans, markerMultiset, visibleProse } from './tokens.js';
-import { CLOSED_CLASS, BARRED, ELEMENT_SYMBOLS } from './lexicon.js';
+import { tokenize, editableSpans, markerMultiset, visibleProse, isWordAligned } from './tokens.js';
+import { CLOSED_CLASS, BARRED, ELEMENT_SYMBOLS, NEGATING_PREFIXES } from './lexicon.js';
 import { isChapterDir, scopeReasons } from './scope.js';
 import { usesHeadword, stemOf, containsStem, foldUmlaut } from '../lib/chapter-term-check.js';
 import { greekLetters } from '../lib/mt-output-guards.js';
@@ -84,9 +86,10 @@ export const REJECTION_CODES = Object.freeze([
   'forbidden-control', // a C0/C1 control character or DEL
   'forbidden-digit', // any number character, sub/superscript digits included
   'forbidden-greek', // a Greek letter or look-alike
-  'forbidden-invisible', // soft hyphen, zero-width, bidi or other format character
+  'forbidden-invisible', // a format or default-ignorable character, or a blank (U+2800)
   'forbidden-markup', // [ ] | & < > { } _ # \ ` and so the legacy {{ }} and __
   'forbidden-operator', // the operator set, ++ and any math symbol
+  'forbidden-script', // a letter outside the Latin script, or a combining mark
   'forbidden-space', // a non-ASCII space, or a leading, trailing or doubled space
   'inner-capital', // a word with an uppercase letter after its first character
   'marker-multiset-changed', // the operation changed marker syntax
@@ -119,11 +122,16 @@ const NUMBER = /\p{N}/u;
 // operators the spec did not list.
 const OPERATOR = /[=+\u2212\u2013×÷±/%‰°⇌→⟶←↔≤≥≈*^~$·⋅′″]|\p{Sm}/u;
 const NON_ASCII_SPACE = /[\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/u;
-const INVISIBLE = /\p{Cf}/u;
+// Every format character (soft hyphen, zero-width, bidi, BOM), every default-ignorable code
+// point outside Cf (variation selectors, the combining grapheme joiner, the Hangul fillers),
+// and the braille blank, which renders as nothing and is neither.
+const INVISIBLE = /[\p{Cf}\p{Default_Ignorable_Code_Point}\u2800]/u;
 const CONTROL = /\p{Cc}/u;
+// Icelandic is written in the Latin script, and NFC Icelandic needs no combining mark, so a
+// letter of another script (a Cyrillic \u0430 is a homoglyph of a) or a leftover mark is refused.
+const NON_LATIN = /[^\P{L}\p{Script=Latin}]|\p{M}/u;
 const LETTER_RUN = /\p{L}[\p{L}\p{M}]*/gu;
 const UPPER = /[\p{Lu}\p{Lt}]/u;
-const WORD_CHAR = /[\p{L}\p{M}\p{N}]/u;
 
 /**
  * The forbidden-token codes for one `find` or `replace` string (empty when it is clean).
@@ -141,6 +149,7 @@ export function forbiddenTokenReasons(s) {
   }
   if (INVISIBLE.test(s)) reasons.add('forbidden-invisible');
   if (CONTROL.test(s)) reasons.add('forbidden-control');
+  if (NON_LATIN.test(s)) reasons.add('forbidden-script');
   if (s !== s.normalize('NFC')) reasons.add('not-nfc');
   for (const run of s.match(LETTER_RUN) ?? []) {
     const [, ...rest] = [...run];
@@ -179,10 +188,13 @@ function shortWordFound(folded, word) {
 }
 
 /**
- * Does `text` contain the ruled target? Every word of a multi-word target must be present
- * (stem match on folded text, as chapter-term-check does), not only its longest word.
+ * LOOSE: does `text` contain the ruled target's stem anywhere? Every word of a multi-word
+ * target must be present (stem match on folded text, as chapter-term-check does), not only
+ * its longest word. A 4+ letter stem may sit anywhere, prefixes and modifiers included, so
+ * `anóða` contains `nóða`. Used only where a looser match REFUSES more: "find already holds
+ * the target" (term-target-already).
  */
-function hasTarget(text, target) {
+function containsTargetStem(text, target) {
   const folded = foldUmlaut(text.toLowerCase());
   const targetWords = target.toLowerCase().split(/\s+/u).filter(Boolean);
   return (
@@ -192,6 +204,99 @@ function hasTarget(text, target) {
       return stem ? containsStem(folded, stem) : shortWordFound(folded, foldUmlaut(w));
     })
   );
+}
+
+/** A word: letters (and their marks), hyphen-joined parts included (`Lewis-mynd`). */
+const WORD_RUN = /\p{L}[\p{L}\p{M}]*(?:-\p{L}[\p{L}\p{M}]*)*/gu;
+const foldedWords = (s) => (s.match(WORD_RUN) ?? []).map((w) => foldUmlaut(w.toLowerCase()));
+/**
+ * The fewest letters a compound modifier in front of the target may have. Measured on the
+ * 2026-10-11 ruling set and the chemistry IS corpus: a 1–2 letter "modifier" is a fragment
+ * of a different word (`a`+`nóða` is anóða, anode; `s`+`ker` is sker; `a`+`tóm` is atóm),
+ * while real modifiers have 3+ (`raf`, `ein`, `þurr`, `kopar`). Documented over-refusal:
+ * the 2-letter `ál` (álkarbónat).
+ */
+const MIN_MODIFIER_LETTERS = 3;
+
+/**
+ * Is `targetWord` the HEAD of `word`? Both are lowercase and umlaut-folded. `word` must be
+ * `modifier + X`, where:
+ *   - the modifier is empty, or has MIN_MODIFIER_LETTERS letters and is not a negating
+ *     prefix (lexicon NEGATING_PREFIXES: `and`+`tengisvigrúm` is antibonding);
+ *   - X and the target share a prefix at least as long as stemOf's stem (the whole target
+ *     when it is under 4 letters, which has no stem), and BOTH remainders are in the
+ *     ending class — X's is its inflection, the target's is what inflection replaced. The
+ *     second condition is what refuses `varmamælir` (calorimeter) for `varmamæling` and
+ *     `eintengi` for `tengill`: their shared stem is followed by `ng`/`ll`, which no
+ *     inflection removes. A final `-ll` may lose its second l (`tengill` → `tengils`).
+ * The common prefix is measured against the target WORD, not against stemOf's cut, so a
+ * target whose dropped letters lie outside the ending class (`frumeind`, `varmamæling`)
+ * still carries itself.
+ */
+function isHeadOf(word, targetWord) {
+  const W = [...word];
+  const T = [...targetWord];
+  const stem = stemOf(targetWord);
+  const need = stem ? [...stem].length : T.length;
+  // A target word shorter than a modifier may be (`á` in `stig á Celsíus`, `eg` in `eg
+  // svigrúm`) is never a compound head: `skr`+`á` is skrá, `línul`+`eg` is línuleg.
+  const lastStart = T.length < MIN_MODIFIER_LETTERS ? 0 : W.length - need;
+  for (let k = 0; k <= lastStart; k++) {
+    if (k > 0) {
+      const modifier = W.slice(0, k).join('').replace(/-+$/u, '');
+      const letters = (modifier.match(/\p{L}/gu) ?? []).length;
+      if (letters < MIN_MODIFIER_LETTERS || NEGATING_PREFIXES.has(modifier)) continue;
+    }
+    let c = 0;
+    while (k + c < W.length && c < T.length && W[k + c] === T[c]) c++;
+    if (c < need) continue;
+    const wordRest = W.slice(k + c).join('');
+    const targetRest = T.slice(c).join('');
+    if (!ENDING_RE.test(wordRest)) continue;
+    if (ENDING_RE.test(targetRest) || (targetRest === 'l' && targetWord.endsWith('ll'))) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * STRICT: does `text` carry the ruled target as WORDS? Every word of the target must be the
+ * head of some word of `text` (isHeadOf). This is the spec's stem match (stemOf, umlaut-
+ * folded) narrowed to word positions: the English side is word-bounded (usesHeadword), and
+ * now the Icelandic side is too. Used where a stricter match REFUSES more: "replace holds
+ * the target" (term-target-missing).
+ *
+ * ⚠️ KNOWN RESIDUE, needs morphology the spec does not provide: a different word whose
+ * extra letters all sit in the ending class still passes — `leysni` (solubility) for
+ * `leysir`, `rafneikvæðni` for `rafneikvæður`, `kerra` (cart) for `ker`, and the modifier
+ * compound `atómmassi` for `atóm` (`massi` is all ending-class letters).
+ */
+function carriesTarget(text, target) {
+  const targetWords = targetWordsOf(target);
+  if (targetWords === null || targetWords.length === 0) return false;
+  const words = foldedWords(text);
+  return targetWords.every((t) => words.some((w) => isHeadOf(w, t)));
+}
+
+/** Punctuation a target word may carry at its edges: `(hverfiþungi)`. */
+const EDGE_PUNCTUATION = /^[()[\]„“”"'‚‘’«»,.;:!?]+|[()[\]„“”"'‚‘’«»,.;:!?]+$/gu;
+/**
+ * The target's words, lowercase and umlaut-folded, or null when a whitespace token is not
+ * one word once edge punctuation is stripped — a digit or symbol INSIDE a word (`t2g`,
+ * `sp3-…`, `tengisvigrúm-2`). Such a target is matchable:false in Unit B's set; splitting
+ * it on the digit would leave 1-letter "words" that any word ending in that letter carries,
+ * so the matcher fails closed instead of trusting the flag.
+ */
+function targetWordsOf(target) {
+  const out = [];
+  for (const token of target.split(/\s+/u).filter(Boolean)) {
+    const core = token.replace(EDGE_PUNCTUATION, '');
+    const runs = core.match(WORD_RUN) ?? [];
+    if (runs.length !== 1 || runs[0] !== core) return null;
+    out.push(foldUmlaut(core.toLowerCase()));
+  }
+  return out;
 }
 
 const barredWords = (s) =>
@@ -234,12 +339,6 @@ function occurrencesOf(text, find) {
   const at = [];
   for (let i = text.indexOf(find); i !== -1; i = text.indexOf(find, i + 1)) at.push(i);
   return at;
-}
-
-function wordAligned(text, start, end) {
-  const startOk = !WORD_CHAR.test(text[start]) || start === 0 || !WORD_CHAR.test(text[start - 1]);
-  const endOk = !WORD_CHAR.test(text[end - 1]) || end === text.length || !WORD_CHAR.test(text[end]);
-  return startOk && endOk;
 }
 
 /** Words (tokens holding a letter or digit) strictly between two non-overlapping ranges. */
@@ -341,8 +440,10 @@ function checkOp(op, st) {
   else {
     range = { start: at[0], end: at[0] + op.find.length };
     const inOneSpan = editableSpans(text).some((s) => range.start >= s.start && range.end <= s.end);
+    // Alignment is a question about rendered prose, so it is asked only of a find inside
+    // one editable span; any other find is already refused.
     if (!inOneSpan) reasons.push('find-not-editable');
-    if (!wordAligned(text, range.start, range.end)) reasons.push('find-not-word-aligned');
+    else if (!isWordAligned(text, range.start, range.end)) reasons.push('find-not-word-aligned');
     if (applied.some((a) => range.start < a.end && a.start < range.end)) {
       reasons.push('overlaps-accepted-op');
     }
@@ -351,8 +452,9 @@ function checkOp(op, st) {
   // What it may do.
   if (op.category === 'term') {
     if (wellFormed) {
-      if (!hasTarget(op.replace, ruling.is)) reasons.push('term-target-missing');
-      if (hasTarget(op.find, ruling.is)) reasons.push('term-target-already');
+      // The two lean opposite ways on purpose, each toward refusing (see their docs).
+      if (!carriesTarget(op.replace, ruling.is)) reasons.push('term-target-missing');
+      if (containsTargetStem(op.find, ruling.is)) reasons.push('term-target-already');
     }
     if (!sameList(barredWords(op.find), barredWords(op.replace))) reasons.push('barred-word');
   } else {

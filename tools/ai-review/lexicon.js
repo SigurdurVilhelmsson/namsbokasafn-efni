@@ -9,11 +9,13 @@
  * ⚠️ FAIL-SAFE BY OMISSION ONLY WHERE A LIST GRANTS PERMISSION:
  *   - CLOSED_CLASS grants permission (an agreement op may change such a word whole), so a
  *     missing form only causes a refusal. That list is fail-safe.
- *   - BARRED and ELEMENT_SYMBOLS REFUSE, so a missing form lets an operation THROUGH — e.g. a
- *     missing `annan` would let `annar` → `annan` pass as an ending change. Their
- *     completeness is load-bearing, which is why tools/__tests__/ai-review-lexicon.test.js
- *     enumerates every paradigm cell instead of sampling. Extra forms in BARRED are harmless
- *     (they refuse more), so it carries variants and homographs deliberately.
+ *   - BARRED, ELEMENT_SYMBOLS and NEGATING_PREFIXES REFUSE, so a missing form lets an
+ *     operation THROUGH — e.g. a missing `annan` would let `annar` → `annan` pass as an
+ *     ending change, and a missing `hvergi` let a term operation insert "nowhere" (review
+ *     round 1 found it). Their completeness is load-bearing, which is why
+ *     tools/__tests__/ai-review-lexicon.test.js enumerates every paradigm cell instead of
+ *     sampling. Extra forms in BARRED are harmless (they refuse more), so it carries
+ *     variants and homographs deliberately.
  *
  * Icelandic forms are stored lowercase; isClosedClass / isBarred lowercase their argument.
  * Element symbols are matched case-sensitively: `Er` is erbium, `er` is the verb.
@@ -73,7 +75,13 @@ export const CLOSED_CLASS = frozenSet([
 
 // ── BARRED: negations and number words — never changed, never introduced ─────────────────
 
-const NEGATIONS = words('ekki eigi ei aldrei aldregi hvorki né');
+const NEGATIONS = words('ekki eigi ei aldrei aldregi hvorki né hvergi');
+// hvorugur ("neither of two") negates as enginn does.
+const HVORUGUR = words(`
+  hvorugur hvorugan hvorugum hvorugs hvorugir hvoruga hvorugra
+  hvorug hvorugri hvorugrar hvorugar
+  hvorugt hvorugu
+`);
 const ENGINN = words(`
   enginn engan engum einskis engis engir enga engra
   engin engri engrar engar
@@ -110,6 +118,43 @@ const ORDINALS = words(`
   áttundi áttunda áttundu
   níundi níunda níundu
   tíundi tíunda tíundu
+  ellefti ellefta elleftu
+  tólfti tólfta tólftu
+  þrettándi þrettánda þrettándu
+  fjórtándi fjórtánda fjórtándu
+  fimmtándi fimmtánda fimmtándu
+  sextándi sextánda sextándu
+  sautjándi sautjánda sautjándu
+  átjándi átjánda átjándu
+  nítjándi nítjánda nítjándu
+  tuttugasti tuttugasta tuttugustu
+  þrítugasti þrítugasta þrítugustu
+  fertugasti fertugasta fertugustu
+  fimmtugasti fimmtugasta fimmtugustu
+  sextugasti sextugasta sextugustu
+  sjötugasti sjötugasta sjötugustu
+  áttugasti áttugasta áttugustu
+  nítugasti nítugasta nítugustu
+  hundraðasti hundraðasta hundruðustu
+  þúsundasti þúsundasta þúsundustu
+`);
+// Number adverbs, and the collective numerals tvennur/þrennur ("twofold"; neuter tvennt,
+// þrennt "two/three things").
+const NUMBER_ADVERBS = words('tvisvar þrisvar');
+const COLLECTIVES = words(`
+  tvennur tvennan tvennum tvenns tvennir tvenna tvennra
+  tvenn tvennri tvennrar tvennar
+  tvennt tvennu
+  þrennur þrennan þrennum þrenns þrennir þrenna þrennra
+  þrenn þrennri þrennrar þrennar
+  þrennt þrennu
+`);
+// Count and fraction nouns: tugur ("ten"), helmingur, þriðjungur, fjórðungur.
+const COUNT_NOUNS = words(`
+  tugur tug tugi tugar tugir tugum tuga
+  helmingur helming helmingi helmings helmingar helminga helmingum
+  þriðjungur þriðjung þriðjungi þriðjungs þriðjungar þriðjunga þriðjungum
+  fjórðungur fjórðung fjórðungi fjórðungs fjórðungar fjórðunga fjórðungum
 `);
 // annar ("second", also "other"), with its umlaut and stem alternations.
 const ANNAR = words(`
@@ -125,6 +170,7 @@ const QUANTITY = words(`
 
 export const BARRED = frozenSet([
   ...NEGATIONS,
+  ...HVORUGUR,
   ...ENGINN,
   ...EINN,
   ...TVEIR,
@@ -135,7 +181,19 @@ export const BARRED = frozenSet([
   ...ORDINALS,
   ...ANNAR,
   ...QUANTITY,
+  ...NUMBER_ADVERBS,
+  ...COLLECTIVES,
+  ...COUNT_NOUNS,
 ]);
+
+// ── NEGATING_PREFIXES: a target behind one of these, inside a word, is its opposite ─────
+// `andtengisvigrúm` (antibonding) holds `tengisvigrúm` (bonding) after `and-`; `óvirkt`
+// (inert) holds `virkt` (active) after `ó-`. The gate refuses a term operation whose only
+// carrier of the target is such a word. REFUSES, so a missing prefix lets an operation
+// through; ó- and ör- are also under the gate's 3-letter modifier floor and are listed so
+// the list says what it means.
+
+export const NEGATING_PREFIXES = frozenSet(words('ó ör and gagn mis van'));
 
 // ── ELEMENT_SYMBOLS: all 118, matched case-sensitively ──────────────────────────────────
 

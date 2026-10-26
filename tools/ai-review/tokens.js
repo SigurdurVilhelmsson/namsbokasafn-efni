@@ -14,14 +14,16 @@
  * ⚠️ An opener with no matching `]]`, and a `]]` that closes nothing, are reported as
  * `problems`, never guessed around: the gate refuses the whole segment on either.
  *
- * Three projections, all pure:
+ * The projections, all pure:
  *   markerTokens   — every marker's exact text, at every depth;
  *   markerMultiset — the same, with EDITABLE display text masked as `…`, so a label edit the
  *                    gate allows does not read as a marker change while every byte of syntax,
  *                    every `|…` tail and every protected payload is still compared exactly;
  *   editableSpans  — the only places an operation may touch;
  *   visibleProse   — what a reader sees, for the headword check (`usesHeadword` on raw text
- *                    fires inside `E[[sub:cell]]` and inside ids).
+ *                    fires inside `E[[sub:cell]]` and inside ids);
+ *   isWordAligned  — whether a range starts and ends on a word boundary in the RENDERED
+ *                    text, where a label flush against a word continues that word.
  */
 
 /**
@@ -337,4 +339,71 @@ function visibleNodes(nodes) {
  */
 export function visibleProse(text) {
   return visibleNodes(tokenize(text).nodes).replace(/\s+/gu, ' ').trim();
+}
+
+/** Bare markers that render as a break or a space: a word boundary. */
+const BOUNDARY_MARKERS = new Set(['BR', 'SPACE']);
+/** Stand-in for a marker that renders as something opaque (a formula, a figure, a
+ * cross-reference label, an unlabelled link): treated as part of a word, so a find flush
+ * against one is refused rather than guessed about. */
+const OPAQUE = 'X';
+const WORD_CHAR = /[\p{L}\p{M}\p{N}]/u;
+
+/**
+ * The text as a reader sees it, one entry per code point: text-node characters, label
+ * display text and sub/sup payloads at their offsets in `text`; `|…` tails and marker
+ * syntax dropped; BR/SPACE as a space and every other marker as one opaque stand-in
+ * (offset -1). Unlike visibleProse it keeps sub/sup payloads: there the question is what
+ * touches a word, not what the word says.
+ * @returns {Array<{ ch: string, at: number }>}
+ */
+function renderedChars(nodes, out) {
+  for (const n of nodes) {
+    if (n.kind === 'text') {
+      let at = n.start;
+      for (const ch of n.text) {
+        out.push({ ch, at });
+        at += ch.length;
+      }
+    } else if (n.form === 'bare' && BOUNDARY_MARKERS.has(n.type)) {
+      out.push({ ch: ' ', at: -1 });
+    } else if (
+      n.form === 'typed' &&
+      (LABEL_TYPES.has(n.type) || ATTACHED_TYPES.has(n.type)) &&
+      !(TARGET_WITHOUT_TAIL.has(n.type) && !n.tail)
+    ) {
+      renderedChars(n.children, out);
+    } else {
+      out.push({ ch: OPAQUE, at: -1 });
+    }
+  }
+  return out;
+}
+
+/**
+ * Does `text[start, end)` start and end on a word boundary AS A READER SEES THE TEXT?
+ * A label flush against a word renders as one word — `Natríum[[i:atóm]]` reads
+ * "Natríumatóm" — so the raw `[` or `]` beside a range is no boundary, in either
+ * direction: neither `Natríum` nor the payload `atóm` is a whole word there.
+ * Fails closed (false) on a range that is invalid or does not start and end on a
+ * rendered character (i.e. starts or ends in marker syntax or a tail).
+ * @param {string} text
+ * @param {number} start inclusive offset into `text`
+ * @param {number} end exclusive offset into `text`
+ * @returns {boolean}
+ */
+export function isWordAligned(text, start, end) {
+  const s = String(text ?? '');
+  if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end > s.length) {
+    return false;
+  }
+  if (start >= end) return false;
+  const r = renderedChars(tokenize(s).nodes, []);
+  const first = r.findIndex((e) => e.at === start);
+  const last = r.findIndex((e) => e.at >= 0 && e.at <= end - 1 && end - 1 < e.at + e.ch.length);
+  if (first < 0 || last < first) return false;
+  const isWord = (e) => e !== undefined && WORD_CHAR.test(e.ch);
+  const startOk = !isWord(r[first]) || !isWord(r[first - 1]);
+  const endOk = !isWord(r[last]) || !isWord(r[last + 1]);
+  return startOk && endOk;
 }

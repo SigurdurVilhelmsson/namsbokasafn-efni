@@ -16,6 +16,7 @@ import {
   editableSpans,
   visibleProse,
   EDITABLE_LABEL_TYPES,
+  isWordAligned,
 } from '../ai-review/tokens.js';
 import { usesHeadword } from '../lib/chapter-term-check.js';
 
@@ -331,5 +332,80 @@ describe('visibleProse — the projection headword checks read', () => {
   });
   it('turns the bare markers into spaces', () => {
     expect(visibleProse(SPACE_IS)).toBe('Núllta stig');
+  });
+});
+
+// ── Review round 1: word boundaries as a READER sees them ──────────────────────────────
+// A label flush against a word renders as one word (`Natríum[[i:atóm]]` reads
+// "Natríumatóm"), so the raw `[`/`]` beside a find is no word boundary.
+// m68737:para:fs-idm91254256 (ch07), excerpt
+const FLUSH_IS = 'Natríum[[i:atóm]] mynda natríummálm';
+// m68716:para:fs-idp24080800 (ch04), excerpt
+const MILLI_IS = 'jafn fjölda [[i:milli]]móla af uppleystu efni á [[i:milli]]lítra af lausn:';
+// m68727:para:fs-idm20812336 (ch05), excerpt
+const VERMI_IS = 'ákvarða vermi[[i:breytingar]] fyrir efna- eða eðlisfræðileg ferli';
+// m68750:entry:auto-30 (ch09) — a word flush against [[BR]] on both sides
+const TORR_IS = '1 atm = 101.325 Pa = 760 torr[[BR]]loftþrýstingur við sjávarmál er ~1 atm';
+// m68811:solution:fs-idp14217024 (ch15), excerpt — a word flush after a MATH placeholder
+const MATHFLUSH_IS = 'Athugun: [[MATH:109]]óveruleg breyting;[[BR]] (b)';
+// m68861:entry:auto-57 (appendices) — a superscript that begins with a minus sign
+const PERMOL_IS = '= 1,60218 [[MATH:3]] 10[[sup:−19]] J = 23,061 kcal mól[[sup:−1]]';
+
+/** [start, end) of the nth occurrence of `sub` in `text`. */
+const rangeOf = (text, sub, nth = 0) => {
+  let at = -1;
+  for (let k = 0; k <= nth; k++) at = text.indexOf(sub, at + 1);
+  if (at < 0) throw new Error(`fixture: ${sub} #${nth} not in text`);
+  return [at, at + sub.length];
+};
+const aligned = (text, sub, nth = 0) => isWordAligned(text, ...rangeOf(text, sub, nth));
+
+describe('isWordAligned — word boundaries in the text as a reader sees it', () => {
+  it('a word followed by a flush label is not word-aligned (Natríum|[[i:atóm]])', () => {
+    expect(aligned(FLUSH_IS, 'Natríum')).toBe(false);
+  });
+  it('a label payload preceded by a flush word is not word-aligned (Natríum[[i:|atóm]])', () => {
+    expect(aligned(FLUSH_IS, 'atóm')).toBe(false);
+  });
+  it('a word after a flush label is not word-aligned ([[i:milli]]|móla)', () => {
+    expect(aligned(MILLI_IS, 'móla')).toBe(false);
+  });
+  it('a label payload followed by a flush word is not word-aligned ([[i:milli|]]móla)', () => {
+    expect(aligned(MILLI_IS, 'milli')).toBe(false);
+  });
+  it('a word before a flush label is not word-aligned (vermi|[[i:breytingar]])', () => {
+    expect(aligned(VERMI_IS, 'vermi')).toBe(false);
+  });
+  it('a word after a MATH placeholder is not word-aligned (conservative: it renders as a formula)', () => {
+    expect(aligned(MATHFLUSH_IS, 'óveruleg')).toBe(false);
+  });
+  it('a formula before a sub payload is not word-aligned (NO|[[sub:2]])', () => {
+    expect(aligned(CONC_IS, 'NO')).toBe(false);
+  });
+  it.each([
+    ['a spaced word beside a flush label', FLUSH_IS, 'mynda'],
+    ['a spaced word in the same segment', MILLI_IS, 'fjölda'],
+    ['a word before [[BR]] (it renders as a break)', TORR_IS, 'torr'],
+    ['a word after [[BR]]', TORR_IS, 'loftþrýstingur'],
+    ['a word after [[SPACE]]', SPACE_IS, 'Núllta'],
+    ['a word before [[SPACE]]', SPACE_IS, 'stig'],
+    ['a whole link label', LINK_IS, 'gagnvirka hermi'],
+    ['a whole term label', TERM_IS, 'Atóm'],
+    ['a word after a hyphen that follows a label', SP3_IS, 'svigrúms'],
+    ['a word before a superscript that begins with −', PERMOL_IS, 'mól'],
+  ])('%s is word-aligned (control)', (_label, text, sub) => {
+    expect(aligned(text, sub)).toBe(true);
+  });
+  it('a range that starts inside a word is not word-aligned (plain text)', () => {
+    expect(aligned(FLUSH_IS, 'atríum')).toBe(false);
+  });
+  it('a range that ends inside a word is not word-aligned (plain text)', () => {
+    expect(aligned(FLUSH_IS, 'natríum')).toBe(false);
+  });
+  it('a range that starts in marker syntax is refused (fail closed)', () => {
+    expect(isWordAligned(FLUSH_IS, 9, 14)).toBe(false);
+  });
+  it('an invalid range is refused (fail closed)', () => {
+    expect(isWordAligned(FLUSH_IS, 5, 2)).toBe(false);
   });
 });

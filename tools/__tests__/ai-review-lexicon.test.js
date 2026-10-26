@@ -11,6 +11,7 @@ import {
   CLOSED_CLASS,
   BARRED,
   ELEMENT_SYMBOLS,
+  NEGATING_PREFIXES,
   isClosedClass,
   isBarred,
   isElementSymbol,
@@ -94,6 +95,86 @@ const ANNAR = [
   ['annað', 'annað', 'öðru', 'annars', 'önnur', 'önnur', 'öðrum', 'annarra'],
 ];
 
+// ── Added in review round 1: words the first list missed (a term op could insert them) ──
+// hvergi ("nowhere") and hvorugur ("neither of two"), which negate as ekki and enginn do.
+const NEGATIONS_ADDED = ['hvergi'];
+const HVORUGUR = [
+  ['hvorugur', 'hvorugan', 'hvorugum', 'hvorugs', 'hvorugir', 'hvoruga', 'hvorugum', 'hvorugra'],
+  ['hvorug', 'hvoruga', 'hvorugri', 'hvorugrar', 'hvorugar', 'hvorugar', 'hvorugum', 'hvorugra'],
+  ['hvorugt', 'hvorugt', 'hvorugu', 'hvorugs', 'hvorug', 'hvorug', 'hvorugum', 'hvorugra'],
+];
+// Ordinals 11th–20th, the tens, 100th and 1000th: weak forms, as for 1st–10th.
+const ORDINALS_WEAK_ADDED = [
+  ['ellefti', 'ellefta', 'elleftu'],
+  ['tólfti', 'tólfta', 'tólftu'],
+  ['þrettándi', 'þrettánda', 'þrettándu'],
+  ['fjórtándi', 'fjórtánda', 'fjórtándu'],
+  ['fimmtándi', 'fimmtánda', 'fimmtándu'],
+  ['sextándi', 'sextánda', 'sextándu'],
+  ['sautjándi', 'sautjánda', 'sautjándu'],
+  ['átjándi', 'átjánda', 'átjándu'],
+  ['nítjándi', 'nítjánda', 'nítjándu'],
+  ['tuttugasti', 'tuttugasta', 'tuttugustu'],
+  ['þrítugasti', 'þrítugasta', 'þrítugustu'],
+  ['fertugasti', 'fertugasta', 'fertugustu'],
+  ['fimmtugasti', 'fimmtugasta', 'fimmtugustu'],
+  ['sextugasti', 'sextugasta', 'sextugustu'],
+  ['sjötugasti', 'sjötugasta', 'sjötugustu'],
+  ['áttugasti', 'áttugasta', 'áttugustu'],
+  ['nítugasti', 'nítugasta', 'nítugustu'],
+  ['hundraðasti', 'hundraðasta', 'hundruðustu'],
+  ['þúsundasti', 'þúsundasta', 'þúsundustu'],
+];
+// Number adverbs and collective numerals: tvisvar/þrisvar ("twice/three times"), tvennur /
+// þrennur ("twofold"; neuter tvennt, þrennt "two/three things").
+const NUMBER_ADVERBS = ['tvisvar', 'þrisvar'];
+const TVENNUR_THRENNUR = [
+  ['tvennur', 'tvennan', 'tvennum', 'tvenns', 'tvennir', 'tvenna', 'tvennum', 'tvennra'],
+  ['tvenn', 'tvenna', 'tvennri', 'tvennrar', 'tvennar', 'tvennar', 'tvennum', 'tvennra'],
+  ['tvennt', 'tvennt', 'tvennu', 'tvenns', 'tvenn', 'tvenn', 'tvennum', 'tvennra'],
+  ['þrennur', 'þrennan', 'þrennum', 'þrenns', 'þrennir', 'þrenna', 'þrennum', 'þrennra'],
+  ['þrenn', 'þrenna', 'þrennri', 'þrennrar', 'þrennar', 'þrennar', 'þrennum', 'þrennra'],
+  ['þrennt', 'þrennt', 'þrennu', 'þrenns', 'þrenn', 'þrenn', 'þrennum', 'þrennra'],
+];
+// Count and fraction nouns: tugur ("ten"), helmingur, þriðjungur, fjórðungur ("half, third,
+// quarter"). Strong masculine: sg nom acc dat gen, pl nom acc dat gen.
+const COUNT_NOUNS = [
+  ['tugur', 'tug', 'tugi', 'tugar', 'tugir', 'tugi', 'tugum', 'tuga'],
+  [
+    'helmingur',
+    'helming',
+    'helmingi',
+    'helmings',
+    'helmingar',
+    'helminga',
+    'helmingum',
+    'helminga',
+  ],
+  [
+    'þriðjungur',
+    'þriðjung',
+    'þriðjungi',
+    'þriðjungs',
+    'þriðjungar',
+    'þriðjunga',
+    'þriðjungum',
+    'þriðjunga',
+  ],
+  [
+    'fjórðungur',
+    'fjórðung',
+    'fjórðungi',
+    'fjórðungs',
+    'fjórðungar',
+    'fjórðunga',
+    'fjórðungum',
+    'fjórðunga',
+  ],
+];
+// Prefixes that turn a term into its opposite: a target preceded by one of them inside a
+// word is a different word (`andtengisvigrúm` is antibonding, not bonding).
+const NEGATING_PREFIX_LIST = ['ó', 'ör', 'and', 'gagn', 'mis', 'van'];
+
 const ALL_118 = (
   'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge ' +
   'As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm ' +
@@ -157,6 +238,24 @@ describe('BARRED — negations and number words; their completeness is load-bear
   it.each(flat(ANNAR))('bars the annar-paradigm form %s', (w) => {
     expect(BARRED.has(w)).toBe(true);
   });
+  it.each(NEGATIONS_ADDED)('bars the negation %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
+  it.each(flat(HVORUGUR))('bars the hvorugur-paradigm form %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
+  it.each(flat(ORDINALS_WEAK_ADDED))('bars the ordinal form %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
+  it.each(NUMBER_ADVERBS)('bars the number adverb %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
+  it.each(flat(TVENNUR_THRENNUR))('bars the collective-numeral form %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
+  it.each(flat(COUNT_NOUNS))('bars the count/fraction noun form %s (review round 1)', (w) => {
+    expect(BARRED.has(w)).toBe(true);
+  });
   it('bars a sentence-initial form case-insensitively', () => {
     expect(isBarred('Ekki')).toBe(true);
   });
@@ -165,12 +264,29 @@ describe('BARRED — negations and number words; their completeness is load-bear
   });
 });
 
+describe('NEGATING_PREFIXES — prefixes that make a word the opposite of the term it contains', () => {
+  it.each(NEGATING_PREFIX_LIST)('holds the negating prefix %s', (p) => {
+    expect(NEGATING_PREFIXES.has(p)).toBe(true);
+  });
+  it('holds exactly those prefixes', () => {
+    expect([...NEGATING_PREFIXES].sort()).toEqual([...NEGATING_PREFIX_LIST].sort());
+  });
+  it('does not hold an ordinary compound modifier (control)', () => {
+    expect(NEGATING_PREFIXES.has('þurr')).toBe(false);
+  });
+  it('cannot be mutated by a caller', () => {
+    expect(() => NEGATING_PREFIXES.add('raf')).toThrow(TypeError);
+  });
+});
+
 describe('the two Icelandic lists', () => {
   it('share no word — a word cannot be both freely changeable and barred', () => {
     expect([...CLOSED_CLASS].filter((w) => BARRED.has(w))).toEqual([]);
   });
   it('are stored lowercase, so a lookup that lowercases cannot miss', () => {
-    expect([...CLOSED_CLASS, ...BARRED].filter((w) => w !== w.toLowerCase())).toEqual([]);
+    expect(
+      [...CLOSED_CLASS, ...BARRED, ...NEGATING_PREFIXES].filter((w) => w !== w.toLowerCase())
+    ).toEqual([]);
   });
   it('cannot be mutated by a caller', () => {
     expect(() => BARRED.delete('ekki')).toThrow(TypeError);

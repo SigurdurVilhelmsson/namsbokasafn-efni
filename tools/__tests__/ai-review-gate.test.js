@@ -152,6 +152,39 @@ const RULINGS = {
     is: 'varmafræði',
   }),
   acid: ruling({ id: 'acid', enNorm: 'acid', en: ['acid'], is: 'sýra' }),
+  // Added in review round 1. REAL (targets as the 2026-10-11 ruling set carries them):
+  ligand: ruling({ id: 'ligand', enNorm: 'ligand', en: ['ligand'], is: 'tengill' }),
+  calorimetry: ruling({
+    id: 'calorimetry',
+    enNorm: 'calorimetry',
+    en: ['calorimetry'],
+    is: 'varmamæling',
+  }),
+  carbonate: ruling({ id: 'carbonate', enNorm: 'carbonate', en: ['carbonate'], is: 'karbónat' }),
+  'atom-real': ruling({ id: 'atom-real', enNorm: 'atom', en: ['atom'], is: 'atóm' }),
+  'degree-celsius': ruling({
+    id: 'degree-celsius',
+    enNorm: 'degree celsius',
+    en: ['degree celsius'],
+    is: 'stig á Celsíus',
+  }),
+  // HYPOTHETICAL
+  reactant: ruling({ id: 'reactant', enNorm: 'reactant', en: ['reactant'], is: 'upphafsefni' }),
+  // HYPOTHETICAL: a target word in parentheses, the shape of `aukaskammtatala (hverfiþungi)`
+  'paren-target': ruling({
+    id: 'paren-target',
+    enNorm: 'bonding orbital',
+    en: ['bonding orbital'],
+    is: 'tengisvigrúm (tengt)',
+  }),
+  // HYPOTHETICAL and MIS-COMPILED on purpose: a digit inside a target word should have made
+  // it matchable:false; the matcher must still fail closed.
+  'digit-target': ruling({
+    id: 'digit-target',
+    enNorm: 'bonding orbital',
+    en: ['bonding orbital'],
+    is: 'tengisvigrúm-2',
+  }),
 };
 
 // ── Segments (REAL unless marked) ─────────────────────────────────────────────────────
@@ -233,6 +266,38 @@ const DOCREF_IS =
 // m68866:entry:auto-12 (appendices)
 const EM_EN = '[[em:H[[sub:3]]|emphasis-one]]AsO[[sub:4]]';
 
+// Added in review round 1 (REAL, byte for byte):
+// m68843:glossary-def:fs-idp275481408-def (ch19) — `tengli` is the dative of tengill
+const LIGAND_EN =
+  'atom in a ligand with a lone pair of electrons that forms a coordinate covalent bond to a central metal';
+const LIGAND_IS = 'atóm í tengli með stakt rafeindapar sem myndar samgilt girðitengi við miðjumálm';
+// m68843:caption:CNX_Chem_19_02_oct-caption (ch19) — `tengihorn` (bond angle) beside ligands
+const OCT_EN =
+  'Many transition metal complexes adopt octahedral geometries, with six donor atoms forming bond angles of 90° about the central atom with adjacent ligands. Note that only ligands within the coordination sphere affect the geometry around the metal center.';
+const OCT_IS =
+  'Mörg girðisambönd hliðarmálma taka á sig áttflötungslögun, þar sem sex gjafaatóm mynda 90° tengihorn í kringum miðjuatómið með aðlægum tenglum. Athugaðu að aðeins tenglar innan girðihvolfsins hafa áhrif á lögunina í kringum málmmiðjuna.';
+// m68726:abstract-item:abstract-item-1 (ch05)
+const CALOR_EN = 'Explain the technique of calorimetry';
+const CALOR_IS = 'Útskýrt tækni varmamælinga';
+// m68696:para:fs-idp187587072 (ch02)
+const CARB_EN =
+  '(d) Lithium (group 1) is a metal, and carbonate is a polyatomic ion; Li[[sub:2]]CO[[sub:3]] is predicted to be ionic.';
+const CARB_IS =
+  '(d) Litíum (flokkur 1) er málmur og karbónat er fjölatóma jón; gert er ráð fyrir að Li[[sub:2]]CO[[sub:3]] sé jónískt.';
+// m68737:para:fs-idm91254256 (ch07) — `Natríum[[i:atóm]]`: a label flush against a word
+const FLUSH_EN =
+  'Neutral atoms and their associated ions have very different physical and chemical properties. Sodium [[i:atoms]] form sodium metal, a soft, silvery-white metal that burns vigorously in air and reacts explosively with water. Chlorine [[i:atoms]] form chlorine gas, Cl[[sub:2]], a yellow-green gas that is extremely corrosive to most metals and very poisonous to animals and plants. The vigorous reaction between the elements sodium and chlorine forms the white, crystalline compound sodium chloride, common table salt, which contains sodium [[i:cations]] and chloride [[i:anions]] ([[xref:CNX_Chem_07_01_NaClPhotos]]). The compound composed of these ions exhibits properties entirely different from the properties of the elements sodium and chlorine. Chlorine is poisonous, but sodium chloride is essential to life; sodium atoms react vigorously with water, but sodium chloride simply dissolves in water.';
+const FLUSH_IS =
+  'Hlutlaus atóm og jónir þeirra hafa mjög ólíka eðlis- og efnafræðilega eiginleika. Natríum[[i:atóm]] mynda natríummálm, mjúkan, silfurhvítan málm sem brennur kröftuglega í lofti og hvarfast með sprengikrafti við vatn. Klór[[i:atóm]] mynda klórgas, Cl[[sub:2]], gulgrænt gas sem er afar tærandi fyrir flesta málma og mjög eitrað fyrir dýr og plöntur. Hið kröftuga hvarf milli frumefnanna natríums og klórs myndar hvíta, kristallaða efnasambandið natríumklóríð, venjulegt matarsalt, sem inniheldur natríum[[i:katjónir]] og klóríð[[i:anjónir]] ([[xref:CNX_Chem_07_01_NaClPhotos]]). Efnasambandið sem samanstendur af þessum jónum sýnir allt aðra eiginleika en frumefnin natríum og klór. Klór er eitrað en natríumklóríð er lífsnauðsynlegt; natríumatóm hvarfast kröftuglega við vatn en natríumklóríð leysist einfaldlega upp í vatni.';
+// m68724:glossary-def:fs-idp25506160-def (ch05) — a target with a 1-letter word (`á`)
+const CELSIUS_EN =
+  'extensive property of a body of matter that represents the quantity of heat required to increase its temperature by 1 degree Celsius (or 1 kelvin)';
+const CELSIUS_IS =
+  'magnháður eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvín)';
+// m68798:solution:fs-idp11787968 (ch13) — `átt` (direction) is one letter from `átta` (eight)
+const SHIFT_EN = 'The system will shift toward the reactants to reach equilibrium.';
+const SHIFT_IS = 'Kerfið mun færast í átt að hvarfefnunum til að ná jafnvægi.';
+
 // ── Helpers ──────────────────────────────────────────────────────────────────────────────
 
 const emitted = new Set();
@@ -311,6 +376,7 @@ describe('pinned values', () => {
       'forbidden-invisible',
       'forbidden-markup',
       'forbidden-operator',
+      'forbidden-script',
       'forbidden-space',
       'inner-capital',
       'marker-multiset-changed',
@@ -602,6 +668,33 @@ describe('find starts and ends on a word boundary', () => {
     });
     expect(ids(r)).toEqual(['w2']);
   });
+  it('refuses a find that STARTS inside a word (find-not-word-aligned)', () => {
+    const r = gate({
+      ops: [term('w3', 'bonding-orbital', 'indandi svigrúma', 'tengisvigrúma')],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(r.rejected[0].reasons).toEqual(['find-not-word-aligned']);
+  });
+  it('refuses a find that ends where a flush label continues the word as the reader sees it', () => {
+    // `Natríum[[i:atóm]]` renders as one word; the raw `[` beside the find is no boundary.
+    const r = gate({
+      ops: [term('w4', 'atom-real', 'Natríum', 'Natríumatóm')],
+      en: FLUSH_EN,
+      is: FLUSH_IS,
+      chapterDir: 'ch07',
+    });
+    expect(r.rejected[0].reasons).toEqual(['find-not-word-aligned']);
+  });
+  it('accepts a whole spaced word in the same segment (control)', () => {
+    const r = gate({
+      ops: [term('w5', 'atom-real', 'natríums', 'natríumatóms')],
+      en: FLUSH_EN,
+      is: FLUSH_IS,
+      chapterDir: 'ch07',
+    });
+    expect(ids(r)).toEqual(['w5']);
+  });
 });
 
 describe('forbidden tokens, on real text', () => {
@@ -656,6 +749,44 @@ describe('forbidden tokens, on real text', () => {
       chapterDir: 'appendices',
     });
     expect(r.rejected[0].reasons).toContain('inner-capital');
+  });
+});
+
+describe('forbidden tokens in REPLACE only (the find is clean real text)', () => {
+  // Every case above puts the bad token in find. The spec says "in find OR replace".
+  it.each([
+    ['a digit', 'tengisvigrúma 2', 'forbidden-digit'],
+    ['a pipe', 'tengisvigrúma|x', 'forbidden-markup'],
+    ['a Greek letter', 'σ-tengisvigrúma', 'forbidden-greek'],
+    ['a degree sign', 'tengisvigrúma°', 'forbidden-operator'],
+    ['a no-break space', 'tengisvigrúma\u00A0hér', 'forbidden-space'],
+    ['a zero-width space', 'tengisvig\u200Brúma', 'forbidden-invisible'],
+    [
+      'a variation selector (default-ignorable, not Cf)',
+      'tengisvigrúma\uFE0F',
+      'forbidden-invisible',
+    ],
+    ['a Hangul filler (an invisible letter)', 'tengisvigrúma\u3164', 'forbidden-invisible'],
+    ['a braille blank', 'tengisvigrúma \u2800', 'forbidden-invisible'],
+    ['a Cyrillic \u0430 that looks like a', 'tengisvigrúm\u0430', 'forbidden-script'],
+    ['a Cyrillic word', 'tengisvigrúma \u0442\u0435\u0441\u0442', 'forbidden-script'],
+    ['an element symbol', 'tengisvigrúma Og', 'element-symbol'],
+    ['an inner capital', 'tengisVigrúma', 'inner-capital'],
+  ])('refuses %s in replace', (_label, replace, code) => {
+    const r = gate({
+      ops: [term('r1', 'bonding-orbital', 'bindandi svigrúma', replace)],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(r.rejected[0]?.reasons).toContain(code);
+  });
+  it('refuses a digit in replace with that reason alone (the find side is clean)', () => {
+    const r = gate({
+      ops: [term('r2', 'bonding-orbital', 'bindandi svigrúma', 'tengisvigrúma 2')],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(r.rejected[0].reasons).toEqual(['forbidden-digit']);
   });
 });
 
@@ -724,6 +855,35 @@ describe('forbiddenTokenReasons — the character classes', () => {
       expect(forbiddenTokenReasons(s)).toContain('forbidden-invisible');
     }
   );
+  // Review round 1: invisible characters OUTSIDE \p{Cf} (default-ignorable, or blank).
+  it.each([
+    ['variation selector U+FE0F', 'a\uFE0F'],
+    ['combining grapheme joiner U+034F', 'a\u034Fb'],
+    ['Hangul filler U+3164', 'a\u3164b'],
+    ['halfwidth Hangul filler U+FFA0', 'a\uFFA0b'],
+    ['Hangul choseong filler U+115F', 'a\u115Fb'],
+    ['braille blank U+2800', 'a\u2800b'],
+  ])('refuses the invisible %s', (_label, s) => {
+    expect(forbiddenTokenReasons(s)).toContain('forbidden-invisible');
+  });
+  // Review round 1: Icelandic is written in the Latin script, and NFC text needs no
+  // combining mark, so any other letter or a leftover mark is a homoglyph or debris.
+  it.each([
+    ['a Cyrillic \u0430 (U+0430)', 'svigr\u00FAm\u0430'],
+    ['a Cyrillic word', '\u0442\u0435\u0441\u0442'],
+    ['a script capital M (U+2133)', '\u2133'],
+    ['an Armenian letter', 'a\u0561'],
+    ['a combining acute after a letter with no precomposed form', 'x\u0301'],
+  ])('refuses %s (forbidden-script)', (_label, s) => {
+    expect(forbiddenTokenReasons(s)).toContain('forbidden-script');
+  });
+  it('passes every Icelandic letter, both cases (control)', () => {
+    expect(
+      forbiddenTokenReasons(
+        'a\u00E1e\u00E9i\u00EDo\u00F3u\u00FAy\u00FD\u00FE\u00E6\u00F6\u00F0 \u00C1a \u00C9a \u00CDa \u00D3a \u00DAa \u00DDa \u00DEa \u00C6a \u00D6a \u00D0a'
+      )
+    ).toEqual([]);
+  });
   it.each([['a\u0000b'], ['a\u0007b'], ['a\tb'], ['a\nb'], ['a\u007Fb'], ['a\u0085b']])(
     'refuses a control character %j',
     (s) => {
@@ -832,6 +992,182 @@ describe('a term operation introduces the target', () => {
   });
 });
 
+describe('the target is a WORD of replace, not a string inside another word (review round 1)', () => {
+  // The target must be the head of a word: it ends the word, followed only by an
+  // inflectional ending, and whatever precedes it inside the word is a compound modifier
+  // of 3+ letters that is not a negating prefix. A stem found anywhere inside a word let
+  // `anóða` (anode) stand for `nóða` (node) and `andtengisvigrúm` (antibonding) for
+  // `tengisvigrúm` (bonding).
+  const missing = (rulingId, en, is, chapterDir, find, replace) =>
+    gate({ ops: [term('h', rulingId, find, replace)], en, is, chapterDir }).rejected[0]?.reasons;
+
+  it('refuses a different word that ends in the target: node → anóða (anode)', () => {
+    expect(missing('node', DUP_EN, DUP_IS0, 'ch08', 'hnútur', 'anóða')).toEqual([
+      'term-target-missing',
+    ]);
+  });
+  it('accepts the target itself: node → nóða (control)', () => {
+    expect(
+      ids(gate({ ops: [term('h', 'node', 'hnútur', 'nóða')], en: DUP_EN, is: DUP_IS0 }))
+    ).toEqual(['h']);
+  });
+  it.each([['sker'], ['skerið'], ['esker']])(
+    'refuses a 1–2 letter fragment before a short target: cell → %s',
+    (replace) => {
+      expect(
+        missing('cell-ruled', DRYCELL_EN, DRYCELL_IS, 'ch17', 'þurrrafhlöðum', replace)
+      ).toEqual(['term-target-missing']);
+    }
+  );
+  it.each([
+    ['and- (antibonding)', 'andtengisvigrúma'],
+    ['ó- (un-)', 'ótengisvigrúma'],
+  ])('refuses the target behind a negating prefix %s', (_label, replace) => {
+    expect(
+      missing('bonding-orbital', BOND_EN, BOND_IS, 'ch08', 'bindandi svigrúma', replace)
+    ).toEqual(['term-target-missing']);
+  });
+  it.each([
+    [
+      'bonding orbital → tengisvigrúmalausra',
+      'bonding-orbital',
+      BOND_EN,
+      BOND_IS,
+      'ch08',
+      'bindandi svigrúma',
+      'tengisvigrúmalausra',
+    ],
+    [
+      'carbonate → karbónýlhópur (carbonyl group)',
+      'carbonate',
+      CARB_EN,
+      CARB_IS,
+      'ch02',
+      'málmur',
+      'karbónýlhópur',
+    ],
+    [
+      'ligand → tengihorni (bond angle)',
+      'ligand',
+      LIGAND_EN,
+      LIGAND_IS,
+      'ch19',
+      'tengli',
+      'tengihorni',
+    ],
+  ])(
+    'refuses the target used as a MODIFIER, not as the head: %s',
+    (_l, id, en, is, ch, find, replace) => {
+      expect(missing(id, en, is, ch, find, replace)).toEqual(['term-target-missing']);
+    }
+  );
+  it.each([
+    [
+      'calorimetry → varmamælir (calorimeter)',
+      'calorimetry',
+      CALOR_EN,
+      CALOR_IS,
+      'ch05',
+      'tækni',
+      'varmamælir',
+    ],
+    [
+      'ligand → eintengi (single bond)',
+      'ligand',
+      LIGAND_EN,
+      LIGAND_IS,
+      'ch19',
+      'tengli',
+      'eintengi',
+    ],
+  ])(
+    'refuses a word that shares the stem but drops a non-ending part of the target: %s',
+    (_l, id, en, is, ch, find, replace) => {
+      expect(missing(id, en, is, ch, find, replace)).toEqual(['term-target-missing']);
+    }
+  );
+  it.each([
+    [
+      'an inflected form, ligand → tengil',
+      'ligand',
+      LIGAND_EN,
+      LIGAND_IS,
+      'ch19',
+      'tengli',
+      'tengil',
+    ],
+    [
+      'an inflected form, calorimetry → varmamælingu',
+      'calorimetry',
+      CALOR_EN,
+      CALOR_IS,
+      'ch05',
+      'tækni',
+      'varmamælingu',
+    ],
+    [
+      'a compound HEAD after a 3+ letter modifier, carbonate → koparkarbónat',
+      'carbonate',
+      CARB_EN,
+      CARB_IS,
+      'ch02',
+      'málmur',
+      'koparkarbónat',
+    ],
+  ])('accepts %s (control)', (_l, id, en, is, ch, find, replace) => {
+    expect(ids(gate({ ops: [term('h', id, find, replace)], en, is, chapterDir: ch }))).toEqual([
+      'h',
+    ]);
+  });
+  it('documents the over-refusal of a 2-letter modifier: carbonate → álkarbónat', () => {
+    expect(missing('carbonate', CARB_EN, CARB_IS, 'ch02', 'málmur', 'álkarbónat')).toEqual([
+      'term-target-missing',
+    ]);
+  });
+  it('judges "find already holds the target" LOOSELY: tengihorn holds the stem of tengill', () => {
+    // The two checks lean opposite ways on purpose: "already" refuses, so the loose stem
+    // test refuses more; "missing" refuses unless, so the strict word test refuses more.
+    expect(missing('ligand', OCT_EN, OCT_IS, 'ch19', 'tengihorn', 'tengill')).toEqual([
+      'term-target-already',
+    ]);
+  });
+  it('a 1–2 letter target word must stand as its own word: `skrá` does not carry `á`', () => {
+    // A short word as a compound "head" is a fragment: `skr`+`á`, `línul`+`eg`.
+    expect(
+      missing(
+        'degree-celsius',
+        CELSIUS_EN,
+        CELSIUS_IS,
+        'ch05',
+        'gráðu á Celsíus',
+        'stig skrá Celsíus'
+      )
+    ).toEqual(['term-target-missing']);
+  });
+  it('accepts the target with its 1-letter word standing alone (control)', () => {
+    const r = gate({
+      ops: [term('h', 'degree-celsius', 'gráðu á Celsíus', 'stig á Celsíus')],
+      en: CELSIUS_EN,
+      is: CELSIUS_IS,
+      chapterDir: 'ch05',
+    });
+    expect(ids(r)).toEqual(['h']);
+  });
+  it('reads a target word inside parentheses as that word (control)', () => {
+    const r = gate({
+      ops: [term('h', 'paren-target', 'bindandi svigrúma', 'tengisvigrúma (tengt)')],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(ids(r)).toEqual(['h']);
+  });
+  it('fails closed on a target word holding a digit, even if a ruling calls it matchable', () => {
+    expect(
+      missing('digit-target', BOND_EN, BOND_IS, 'ch08', 'bindandi svigrúma', 'tengisvigrúma')
+    ).toEqual(['term-target-missing']);
+  });
+});
+
 describe('barred words', () => {
   it('refuses a term operation that drops a negation (barred-word)', () => {
     const r = gate({
@@ -886,6 +1222,40 @@ describe('barred words', () => {
     });
     expect(reasonsOf(r, 'q2')).toContain('barred-word');
   });
+  it('refuses an agreement that turns átt (direction) into átta (eight): barred in REPLACE only', () => {
+    // `átt` → `átta` is otherwise a valid ending change on a 3-letter stem.
+    const r = gate({
+      ops: [
+        term('a1', 'reactant', 'hvarfefnunum', 'upphafsefnunum'),
+        agr('a2', 'reactant', 'átt', 'átta'),
+      ],
+      en: SHIFT_EN,
+      is: SHIFT_IS,
+      chapterDir: 'ch13',
+    });
+    expect(reasonsOf(r, 'a2')).toEqual(['barred-word']);
+  });
+  it('accepts the term operation beside it (control)', () => {
+    const r = gate({
+      ops: [term('a1', 'reactant', 'hvarfefnunum', 'upphafsefnunum')],
+      en: SHIFT_EN,
+      is: SHIFT_IS,
+      chapterDir: 'ch13',
+    });
+    expect(ids(r)).toEqual(['a1']);
+  });
+  it.each([
+    ['the negation hvergi (nowhere)', 'tengisvigrúma hvergi'],
+    ['the ordinal tólfta (12th)', 'tólfta tengisvigrúma'],
+    ['the fraction helmingi (half)', 'helmingi tengisvigrúma'],
+  ])('refuses a term operation that inserts %s (barred-word)', (_label, replace) => {
+    const r = gate({
+      ops: [term('b3', 'bonding-orbital', 'bindandi svigrúma', replace)],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(r.rejected[0].reasons).toEqual(['barred-word']);
+  });
 });
 
 describe('agreement operations', () => {
@@ -928,6 +1298,13 @@ describe('agreement operations', () => {
   it('do not change capitalisation, even of a closed-class word (agreement-word-changed)', () => {
     const r = at([T_SIM, agr('s8', 'simulator', 'þennan', 'Þetta')]);
     expect(reasonsOf(r, 's8')).toEqual(['agreement-word-changed']);
+  });
+  it.each([
+    ['add a trailing comma', 'þetta,'],
+    ['add a leading quotation mark', '„þetta'],
+  ])('do not %s, even to a closed-class word (agreement-word-changed)', (_label, replace) => {
+    const r = at([T_SIM, agr('s9', 'simulator', 'þennan', replace)]);
+    expect(reasonsOf(r, 's9')).toEqual(['agreement-word-changed']);
   });
   it('need a shared stem: a preposition swap í → á is not an ending (agreement-word-changed)', () => {
     const r = gate({
@@ -985,6 +1362,47 @@ describe('size bounds', () => {
       is: BOND_IS,
     });
     expect(r.rejected[0].reasons).toEqual(['op-too-large']);
+  });
+  // Each bound alone: the case above trips the find character bound first, so it says
+  // nothing about the other three.
+  it('refuses a replace over maxReplaceChars, find and word counts within bounds (op-too-large)', () => {
+    const replace = 'tengisvigrúma rafeindaskýjanna hreyfiorkulögmálanna varmafræðilögmálanna nú';
+    const r = gate({
+      ops: [term('z3', 'bonding-orbital', 'bindandi svigrúma', replace)],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect({
+      chars: [...replace].length > DEFAULT_LIMITS.maxReplaceChars,
+      words: replace.split(' ').length <= DEFAULT_LIMITS.maxReplaceWords,
+      reasons: r.rejected[0]?.reasons,
+    }).toEqual({ chars: true, words: true, reasons: ['op-too-large'] });
+  });
+  it('refuses a find over maxFindWords, within maxFindChars (op-too-large)', () => {
+    const find = 'er kynnt til sögunnar til að útskýra rúmfræði bindandi svigrúma';
+    const r = gate({
+      ops: [term('z4', 'bonding-orbital', find, 'tengisvigrúma')],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect({
+      chars: [...find].length <= DEFAULT_LIMITS.maxFindChars,
+      words: find.split(' ').length > DEFAULT_LIMITS.maxFindWords,
+      reasons: r.rejected[0]?.reasons,
+    }).toEqual({ chars: true, words: true, reasons: ['op-too-large'] });
+  });
+  it('refuses a replace over maxReplaceWords, within maxReplaceChars (op-too-large)', () => {
+    const replace = 'tengisvigrúma sem eru mjög góð og afar vel til fundin';
+    const r = gate({
+      ops: [term('z5', 'bonding-orbital', 'bindandi svigrúma', replace)],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect({
+      chars: [...replace].length <= DEFAULT_LIMITS.maxReplaceChars,
+      words: replace.split(' ').length > DEFAULT_LIMITS.maxReplaceWords,
+      reasons: r.rejected[0]?.reasons,
+    }).toEqual({ chars: true, words: true, reasons: ['op-too-large'] });
   });
   it('refuses an operation past the per-segment op count (segment-op-limit)', () => {
     const r = gate({
@@ -1081,9 +1499,11 @@ describe('gateOccurrences — a duplicated id gets one decision for all its occu
       'þessi lögur er góður og hér eru mörg orð á milli áður en edik kemur',
       'þessi edik er gott og hér eru mörg orð á milli áður en vatn kemur',
     ];
+    // fB wrote `sýrulögur` until review round 1; that holds sýra as a MODIFIER, which no
+    // longer counts as carrying the target, so it now writes a compound whose head is sýra.
     const ops = [
       term('fA', 'acid', 'edik', 'ediksýra'),
-      term('fB', 'acid', 'lögur', 'sýrulögur'),
+      term('fB', 'acid', 'lögur', 'saltsýra'),
       agr('fC', 'acid', 'þessi', 'þetta'),
     ];
     const r = gateAll({ ops, en: 'This acid is strong.', isOccurrences: occ, chapterDir: 'ch14' });
