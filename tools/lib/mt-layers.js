@@ -64,6 +64,25 @@ const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const isNonEmptyString = (v) => typeof v === 'string' && v !== '';
+const hasExactKeys = (obj, keys) =>
+  Object.keys(obj).length === keys.length && keys.every((k) => Object.hasOwn(obj, k));
+const isNullOrNonEmptyString = (v) => v === null || isNonEmptyString(v);
+const isDistinctStrings = (v) =>
+  Array.isArray(v) && v.every(isNonEmptyString) && new Set(v).size === v.length;
+/** `null` or `{path, sha256}` — a ruling-set or prompt reference. */
+const isFileRef = (v) =>
+  v === null ||
+  (isPlainObject(v) &&
+    hasExactKeys(v, ['path', 'sha256']) &&
+    isNonEmptyString(v.path) &&
+    SHA256_RE.test(String(v.sha256)));
+/** `null` or `{name, version}`. */
+const isSdkRef = (v) =>
+  v === null ||
+  (isPlainObject(v) &&
+    hasExactKeys(v, ['name', 'version']) &&
+    isNonEmptyString(v.name) &&
+    isNonEmptyString(v.version));
 const lstatOrNull = (p) => {
   try {
     return fs.lstatSync(p);
@@ -324,9 +343,10 @@ function assertStem(stem) {
 /**
  * The resolved destination, if `filePath` has one of the SAFE SHAPES:
  * `<bookDir>/(02-mt-revised|02-mt-selected)/<chapterDir>/<SAFE_FILENAME_RE>`, written as an
- * absolute, normalised path. Anything else refuses with `unsafe-destination` — including any
- * path under `02-mt-output/` or `01-source/`, a path that escapes or re-enters via `..`, a
- * wrong filename, a malformed chapter directory and another chapter than `chapterDir`.
+ * absolute path exactly equal to its own `path.resolve` form. Anything else refuses with
+ * `unsafe-destination` — including any path under `02-mt-output/` or `01-source/`, a path that
+ * escapes or re-enters via `..`, a trailing slash, a wrong filename, a malformed chapter
+ * directory and another chapter than `chapterDir`.
  * This is a string check; the writer re-checks the real (symlink-resolved) directory.
  *
  * @param {{bookDir: string, chapterDir: string, filePath: string}} args
@@ -339,6 +359,8 @@ export function resolveSafeDestination({ bookDir, chapterDir, filePath }) {
   if (typeof filePath !== 'string' || !path.isAbsolute(filePath))
     throw unsafe('not an absolute path');
   const resolved = path.resolve(filePath);
+  // Exactly the resolved form: no `..`, no `.`, no doubled separator, no trailing slash.
+  if (resolved !== filePath) throw unsafe('not a normalised absolute path');
   const parts = path.relative(book, resolved).split(path.sep);
   if (parts.length !== 3) throw unsafe('not <layer>/<chapter>/<file> inside the book');
   const [layer, chdir, name] = parts;
@@ -347,7 +369,6 @@ export function resolveSafeDestination({ bookDir, chapterDir, filePath }) {
     throw unsafe(`chapter directory is not ${chapterDir}`);
   }
   if (!SAFE_FILENAME_RE.test(name)) throw unsafe('not a layer filename');
-  if (path.normalize(filePath) !== filePath) throw unsafe('not a normalised path');
   return resolved;
 }
 
@@ -419,8 +440,6 @@ function decodeUtf8Exact(buf, file) {
 
 const OVERLAY_KEYS = ['schema', 'module', 'entries'];
 const OVERLAY_ENTRY_KEYS = ['segmentId', 'occurrence', 'text', 'run', 'commit', 'rule', 'gate'];
-const hasExactKeys = (obj, keys) =>
-  Object.keys(obj).length === keys.length && keys.every((k) => Object.hasOwn(obj, k));
 
 /** Apply a validated layer-1s overlay (whole bodies); an entry equal to the base is a no-op. */
 function applyOverlay(parsed, overlay, stem, file) {
@@ -443,6 +462,17 @@ function applyOverlay(parsed, overlay, stem, file) {
       e.occurrence < 0
     ) {
       throw bad(`malformed entry target ${e.segmentId} / ${e.occurrence}`);
+    }
+    // Provenance of the choice: the run it came from, the commit, the selection rule. `gate` is
+    // left to the re-request mode that writes it (not designed yet).
+    if (
+      !isNonEmptyString(e.run) ||
+      !COMMIT_RE.test(String(e.commit)) ||
+      !isNonEmptyString(e.rule)
+    ) {
+      throw bad(
+        `entry ${e.segmentId} / ${e.occurrence}: run and rule must be non-empty strings and commit a full sha`
+      );
     }
     const key = occurrenceKey(e.segmentId, e.occurrence);
     if (!bodies.has(key)) throw bad(`layer 1 has no occurrence ${key}`);
@@ -566,8 +596,56 @@ function changeProblems(c) {
   return problems;
 }
 
+/**
+ * The problems with change `c` as part of unit `stem` under the chapter provenance `rev` (the
+ * writer's `revision` input or a recorded `revision.json`; both carry `runIds`, `model`, `prompt`
+ * and `rulingSet`). An `ai` change needs all three of model, prompt and ruling set: its `rulingId`
+ * must point into a recorded ruling set.
+ */
+function changeInUnitProblems(c, stem, rev) {
+  const problems = changeProblems(c);
+  if (problems.length > 0) return problems;
+  if (c.module !== stem) return [`module ${c.module} is not ${stem}`];
+  if (c.runId !== null && !rev.runIds.includes(c.runId)) {
+    return [`runId ${c.runId} is not in the revision's runIds`];
+  }
+  if (c.source === 'ai' && (rev.model === null || rev.prompt === null || rev.rulingSet === null)) {
+    return ['an ai change needs a model, a prompt and a ruling set in the revision'];
+  }
+  return [];
+}
+
 /** The record with its fields in the spec's order. */
 const canonicalChange = (c) => Object.fromEntries(changeFields(c.source).map((f) => [f, c[f]]));
+
+/** One `<stem>-changes.jsonl`: one canonical JSON object per line, each line ending in `\n`. */
+const serializeChangeLog = (records) => records.map((c) => `${JSON.stringify(c)}\n`).join('');
+
+/** Replay a change log onto a parse, one change at a time: each must find its own `before`. */
+const replayChanges = (parsed, records) =>
+  records.reduce(
+    (p, c) =>
+      applyBodyEdits(p, [
+        { segmentId: c.segmentId, occurrence: c.occurrence, before: c.before, after: c.after },
+      ]),
+    parsed
+  );
+
+/**
+ * Accepted changes per category, keys sorted. Counted in a Map and emitted with
+ * `Object.fromEntries`, which defines OWN properties — so a category named `constructor`,
+ * `toString` or `__proto__` counts as itself instead of colliding with an `Object.prototype` member.
+ */
+function tallyCategories(records) {
+  const counts = new Map();
+  for (const c of records) counts.set(c.category, (counts.get(c.category) ?? 0) + 1);
+  return Object.fromEntries(
+    [...counts].sort(([a], [b]) => {
+      if (a < b) return -1;
+      return a > b ? 1 : 0;
+    })
+  );
+}
 
 /**
  * Build one change record (one line of `<stem>-changes.jsonl`), minting `key`,
@@ -621,38 +699,23 @@ function checkRevisionInput(revision) {
     revision;
   if (!COMMIT_RE.test(String(layer1Commit))) throw bad('layer1Commit is not a full commit sha');
   if (!COMMIT_RE.test(String(harnessCommit))) throw bad('harnessCommit is not a full commit sha');
-  for (const [name, ref] of [
-    ['rulingSet', rulingSet],
-    ['prompt', prompt],
-  ]) {
-    const ok =
-      ref === null ||
-      (isPlainObject(ref) &&
-        hasExactKeys(ref, ['path', 'sha256']) &&
-        isNonEmptyString(ref.path) &&
-        SHA256_RE.test(String(ref.sha256)));
-    if (!ok) throw bad(`${name} must be null or {path, sha256}`);
-  }
-  if (!(model === null || isNonEmptyString(model))) throw bad('model must be null or a string');
-  const sdkOk =
-    sdk === null ||
-    (isPlainObject(sdk) &&
-      hasExactKeys(sdk, ['name', 'version']) &&
-      isNonEmptyString(sdk.name) &&
-      isNonEmptyString(sdk.version));
-  if (!sdkOk) throw bad('sdk must be null or {name, version}');
-  if (!(anthropicVersion === null || isNonEmptyString(anthropicVersion))) {
+  if (!isFileRef(rulingSet)) throw bad('rulingSet must be null or {path, sha256}');
+  if (!isFileRef(prompt)) throw bad('prompt must be null or {path, sha256}');
+  if (!isNullOrNonEmptyString(model)) throw bad('model must be null or a string');
+  if (!isSdkRef(sdk)) throw bad('sdk must be null or {name, version}');
+  if (!isNullOrNonEmptyString(anthropicVersion)) {
     throw bad('anthropicVersion must be null or a string');
   }
-  if (
-    !Array.isArray(runIds) ||
-    !runIds.every(isNonEmptyString) ||
-    new Set(runIds).size !== runIds.length
-  ) {
+  if (!isDistinctStrings(runIds)) {
     throw bad('runIds must be an array of distinct non-empty strings');
   }
   return structuredClone(revision);
 }
+
+/** A file reference rebuilt in its canonical key order, so the bytes written do not depend on
+ * the key order a caller happened to use. */
+const canonicalFileRef = (ref) => (ref === null ? null : { path: ref.path, sha256: ref.sha256 });
+const canonicalSdkRef = (ref) => (ref === null ? null : { name: ref.name, version: ref.version });
 
 /** Validate one unit and build the files it writes. Reads only; writes nothing. */
 function planUnit({ book, chapterDir, unit, rev }) {
@@ -670,47 +733,29 @@ function planUnit({ book, chapterDir, unit, rev }) {
 
   const base = readBase({ bookDir: book, chapterDir, stem });
   const records = changes.map((c, i) => {
-    const problems = changeProblems(c);
-    if (problems.length === 0 && c.module !== stem)
-      problems.push(`module ${c.module} is not ${stem}`);
-    if (problems.length === 0 && c.runId !== null && !rev.runIds.includes(c.runId)) {
-      problems.push(`runId ${c.runId} is not in the revision's runIds`);
-    }
-    if (problems.length === 0 && c.source === 'ai' && (rev.model === null || rev.prompt === null)) {
-      problems.push('an ai change needs a model and a prompt in the revision');
-    }
+    const problems = changeInUnitProblems(c, stem, rev);
     if (problems.length > 0)
       throw refusal('bad-change', `${stem} change ${i}: ${problems.join('; ')}`);
     return canonicalChange(c);
   });
-  // Replay the log onto the base, one change at a time: each must find its own `before`.
-  const replayed = records.reduce(
-    (parsed, c) =>
-      applyBodyEdits(parsed, [
-        { segmentId: c.segmentId, occurrence: c.occurrence, before: c.before, after: c.after },
-      ]),
-    base.parsed
-  );
-  if (replayed.text !== text) {
+  if (replayChanges(base.parsed, records).text !== text) {
     throw refusal('text-not-derived', `${stem}: the text is not the base plus its change log`);
   }
 
-  const byCategory = {};
-  for (const c of records) byCategory[c.category] = (byCategory[c.category] || 0) + 1;
   const revisionJson = {
     schema: REVISED_SCHEMA,
     module: stem,
     chapterDir,
     layer1: { dir: LAYER_DIRS.pure, commit: rev.layer1Commit, sha256: base.layer1Sha256 },
     overlay: base.overlaySha256 === null ? null : { sha256: base.overlaySha256 },
-    rulingSet: rev.rulingSet,
-    prompt: rev.prompt,
+    rulingSet: canonicalFileRef(rev.rulingSet),
+    prompt: canonicalFileRef(rev.prompt),
     model: rev.model,
-    sdk: rev.sdk,
+    sdk: canonicalSdkRef(rev.sdk),
     anthropicVersion: rev.anthropicVersion,
     harnessCommit: rev.harnessCommit,
     runIds: rev.runIds,
-    counts: { accepted: records.length, rejected, byCategory },
+    counts: { accepted: records.length, rejected, byCategory: tallyCategories(records) },
   };
 
   const dir = path.join(book, LAYER_DIRS.revised, chapterDir);
@@ -720,10 +765,7 @@ function planUnit({ book, chapterDir, unit, rev }) {
       filePath: path.join(dir, `${stem}-revision.json`),
       data: `${JSON.stringify(revisionJson, null, 2)}\n`,
     },
-    {
-      filePath: path.join(dir, `${stem}-changes.jsonl`),
-      data: records.map((c) => `${JSON.stringify(c)}\n`).join(''),
-    },
+    { filePath: path.join(dir, `${stem}-changes.jsonl`), data: serializeChangeLog(records) },
   ];
   const links = path.join(book, LAYER_DIRS.pure, chapterDir, `${stem}-segments-links.json`);
   if (lstatOrNull(links)?.isFile()) {
@@ -764,7 +806,12 @@ function writeAtomic(filePath, data) {
  * (empty when nothing changed), plus a byte copy of `<stem>-segments-links.json` where layer 1
  * has one. Everything is validated before the first write; each file is written atomically.
  * Refuses to replace an existing file unless `overwrite` is true (layer 2 is tool-written data,
- * never regenerated); `overwrite` replaces only the files this call writes.
+ * never regenerated); `overwrite` replaces only the files this call writes. Refuses
+ * (`stale-destination`) when layer 2 already holds a `<stem>-segments-links.json` for a unit
+ * whose layer 1 has none, overwrite or not: that copy would survive the write and contradict it,
+ * and this module never deletes a layer file. Every record `changes` holds is checked as
+ * `verifyRevision` checks the written log (an `ai` change needs a model, a prompt and a ruling set
+ * in `revision`), and `counts.byCategory` is written with sorted keys.
  *
  * @param {{bookDir: string, chapterDir: string,
  *   units: Array<{stem: string, text: string, changes?: object[], rejected?: number}>,
@@ -799,6 +846,18 @@ export function writeRevisedChapter({ bookDir, chapterDir, units, revision, over
   for (const f of files)
     resolveSafeDestination({ bookDir: book, chapterDir, filePath: f.filePath });
   assertNoRedirect(book, LAYER_DIRS.revised, chapterDir);
+  // A links copy for a unit whose layer 1 has none would survive this write and contradict it.
+  // Refuse rather than delete: this module never removes a layer file.
+  const planned = new Set(files.map((f) => f.filePath));
+  const stale = expected
+    .map((stem) => path.join(book, LAYER_DIRS.revised, chapterDir, `${stem}-segments-links.json`))
+    .filter((p) => !planned.has(p) && lstatOrNull(p) !== null);
+  if (stale.length > 0) {
+    throw refusal(
+      'stale-destination',
+      `${stale.map((p) => path.relative(book, p)).join(', ')} exist but layer 1 has no links file`
+    );
+  }
   if (!overwrite) {
     const existing = files.filter((f) => lstatOrNull(f.filePath) !== null);
     if (existing.length > 0) {
@@ -819,15 +878,193 @@ export function writeRevisedChapter({ bookDir, chapterDir, units, revision, over
 // ───────────────────────────────────────────────────────────────────────────────────────────
 
 const CURRENT_KEYS = ['rulingSetSha256', 'promptSha256', 'model'];
-const shaOfFileOrNull = (file) =>
-  lstatOrNull(file) === null ? null : sha256(fs.readFileSync(file));
+const readOrNull = (file) => (lstatOrNull(file) === null ? null : fs.readFileSync(file));
+const shaOfFileOrNull = (file) => {
+  const buf = readOrNull(file);
+  return buf === null ? null : sha256(buf);
+};
+
+const REVISION_RECORD_KEYS = [
+  'schema',
+  'module',
+  'chapterDir',
+  'layer1',
+  'overlay',
+  'rulingSet',
+  'prompt',
+  'model',
+  'sdk',
+  'anthropicVersion',
+  'harnessCommit',
+  'runIds',
+  'counts',
+];
+const isCount = (n) => Number.isInteger(n) && n >= 0;
+
+/**
+ * The problems with a recorded `revision.json` (empty = it has the shape the writer writes).
+ * The same field checks `checkRevisionInput` applies on write, applied on read — so a malformed
+ * or missing field is a problem, never silently read as `null`.
+ */
+function revisionRecordProblems(rec, stem, chapterDir) {
+  if (!isPlainObject(rec)) return ['not a JSON object'];
+  const problems = [];
+  const need = (ok, what) => {
+    if (!ok) problems.push(what);
+  };
+  need(hasExactKeys(rec, REVISION_RECORD_KEYS), `keys must be exactly ${REVISION_RECORD_KEYS}`);
+  need(rec.schema === REVISED_SCHEMA, `schema is not ${REVISED_SCHEMA}`);
+  need(rec.module === stem, `module is not ${stem}`);
+  need(rec.chapterDir === chapterDir, `chapterDir is not ${chapterDir}`);
+  const { layer1, overlay, counts } = rec;
+  need(
+    isPlainObject(layer1) &&
+      hasExactKeys(layer1, ['dir', 'commit', 'sha256']) &&
+      layer1.dir === LAYER_DIRS.pure &&
+      COMMIT_RE.test(String(layer1.commit)) &&
+      SHA256_RE.test(String(layer1.sha256)),
+    `layer1 is not {dir: ${LAYER_DIRS.pure}, commit, sha256}`
+  );
+  need(
+    overlay === null ||
+      (isPlainObject(overlay) &&
+        hasExactKeys(overlay, ['sha256']) &&
+        SHA256_RE.test(String(overlay.sha256))),
+    'overlay is not null or {sha256}'
+  );
+  need(isFileRef(rec.rulingSet), 'rulingSet is not null or {path, sha256}');
+  need(isFileRef(rec.prompt), 'prompt is not null or {path, sha256}');
+  need(isNullOrNonEmptyString(rec.model), 'model is not null or a string');
+  need(isSdkRef(rec.sdk), 'sdk is not null or {name, version}');
+  need(isNullOrNonEmptyString(rec.anthropicVersion), 'anthropicVersion is not null or a string');
+  need(COMMIT_RE.test(String(rec.harnessCommit)), 'harnessCommit is not a full commit sha');
+  need(isDistinctStrings(rec.runIds), 'runIds is not an array of distinct non-empty strings');
+  need(
+    isPlainObject(counts) &&
+      hasExactKeys(counts, ['accepted', 'rejected', 'byCategory']) &&
+      isCount(counts.accepted) &&
+      isCount(counts.rejected) &&
+      isPlainObject(counts.byCategory) &&
+      Object.values(counts.byCategory).every((n) => Number.isInteger(n) && n >= 1),
+    'counts is not {accepted, rejected, byCategory} with integer counts'
+  );
+  return problems;
+}
+
+/** Parse a `<stem>-changes.jsonl` and validate every record in its unit; throws on any problem. */
+function readChangeLog(text, stem, rec) {
+  if (text !== '' && !text.endsWith('\n')) throw new Error('the last line has no newline');
+  const lines = text === '' ? [] : text.slice(0, -1).split('\n');
+  const records = lines.map((line, i) => {
+    let c;
+    try {
+      c = JSON.parse(line);
+    } catch (err) {
+      throw new Error(`line ${i + 1} does not parse: ${err.message}`);
+    }
+    const problems = changeInUnitProblems(c, stem, rec);
+    if (problems.length > 0) throw new Error(`line ${i + 1}: ${problems.join('; ')}`);
+    return canonicalChange(c);
+  });
+  if (serializeChangeLog(records) !== text) {
+    throw new Error('the log is not in the form the writer writes (canonical JSON lines)');
+  }
+  return records;
+}
+
+const sortedEntries = (obj) =>
+  JSON.stringify(
+    Object.entries(obj).sort(([a], [b]) => {
+      if (a < b) return -1;
+      return a > b ? 1 : 0;
+    })
+  );
+
+/**
+ * The mismatches between what a unit's layer-2 files say and what they are: the links copy
+ * against the current layer-1 links file, the change log (parse, validation, canonical form),
+ * `counts` against the log, and the revised text against the base with the log replayed onto it.
+ * Called only when the layer-1 and overlay sha256 still match, so a mismatch here is the layer-2
+ * files' own (a hand edit, a damaged or replaced file), not a changed base.
+ */
+function writtenUnitMismatches({ book, chapterDir, stem, rec }) {
+  const dir = path.join(book, LAYER_DIRS.revised, chapterDir);
+  const out = [];
+  const links = {
+    copy: shaOfFileOrNull(path.join(dir, `${stem}-segments-links.json`)),
+    layer1: shaOfFileOrNull(
+      path.join(book, LAYER_DIRS.pure, chapterDir, `${stem}-segments-links.json`)
+    ),
+  };
+  if (links.copy !== links.layer1) {
+    out.push({ field: 'links', recorded: links.copy, current: links.layer1 });
+  }
+
+  const logFile = path.join(dir, `${stem}-changes.jsonl`);
+  let records;
+  try {
+    const buf = readOrNull(logFile);
+    if (buf === null) throw new Error('it does not exist');
+    records = readChangeLog(decodeUtf8Exact(buf, logFile), stem, rec);
+  } catch (err) {
+    return [...out, { field: 'changes', recorded: null, current: null, reason: err.message }];
+  }
+
+  const tally = tallyCategories(records);
+  if (
+    rec.counts.accepted !== records.length ||
+    sortedEntries(rec.counts.byCategory) !== sortedEntries(tally)
+  ) {
+    out.push({
+      field: 'counts',
+      recorded: { accepted: rec.counts.accepted, byCategory: rec.counts.byCategory },
+      current: { accepted: records.length, byCategory: tally },
+    });
+  }
+
+  let expected;
+  try {
+    expected = Buffer.from(
+      replayChanges(readBase({ bookDir: book, chapterDir, stem }).parsed, records).text,
+      'utf8'
+    );
+  } catch (err) {
+    return [
+      ...out,
+      {
+        field: 'changes',
+        recorded: null,
+        current: null,
+        reason: `does not replay: ${err.message}`,
+      },
+    ];
+  }
+  const written = readOrNull(path.join(dir, `${stem}-segments.is.md`));
+  if (written === null || !written.equals(expected)) {
+    out.push({
+      field: 'text',
+      recorded: sha256(expected),
+      current: written === null ? null : sha256(written),
+    });
+  }
+  return out;
+}
 
 /**
  * Compare a unit's `revision.json` with the current inputs and return the mismatches (empty =
- * the revision still stands). Layer-1 and overlay sha256 are read from disk here;
- * `current` supplies `{ rulingSetSha256, promptSha256, model }` (every key present, `null`
- * where not applicable). A missing, unparseable or malformed revision file is itself a mismatch
- * (`field: 'revision'`). A mismatch on any field refuses the module (10-10 §4).
+ * the revision still stands). A mismatch on any field refuses the module (10-10 §4).
+ *
+ * - `revision`: the revision file is missing, does not parse, or does not have exactly the shape
+ *   the writer writes (a malformed field is never read as `null`).
+ * - `layer1.sha256`, `overlay.sha256`: read from disk here. `rulingSet.sha256`, `prompt.sha256`,
+ *   `model`: against `current` (every key present, `null` where not applicable).
+ * - Only when layer 1 and the overlay still match (otherwise the module is refused already, and a
+ *   replay onto a changed base would only add noise): `links` (the copy ≠ the current layer-1
+ *   links file, or one exists without the other), `changes` (`<stem>-changes.jsonl` is missing,
+ *   does not parse, holds a record that would not be accepted on write, or does not replay onto
+ *   the base), `counts` (≠ the log), `text` (`<stem>-segments.is.md` is missing or ≠ the base with
+ *   the log replayed). For `text`, `recorded` is the sha256 the log implies and `current` the
+ *   file's.
  *
  * @param {{bookDir: string, chapterDir: string, stem: string,
  *   current: {rulingSetSha256: string|null, promptSha256: string|null, model: string|null}}} args
@@ -857,15 +1094,11 @@ export function verifyRevision({ bookDir, chapterDir, stem, current }) {
   } catch (err) {
     return broken(`${revFile} does not parse: ${err.message}`);
   }
-  if (
-    !isPlainObject(rec) ||
-    rec.schema !== REVISED_SCHEMA ||
-    rec.module !== stem ||
-    rec.chapterDir !== chapterDir ||
-    !isPlainObject(rec.layer1) ||
-    !SHA256_RE.test(String(rec.layer1.sha256))
-  ) {
-    return broken(`${revFile} is not a ${REVISED_SCHEMA} revision of ${chapterDir}/${stem}`);
+  const problems = revisionRecordProblems(rec, stem, chapterDir);
+  if (problems.length > 0) {
+    return broken(
+      `${revFile} is not a ${REVISED_SCHEMA} revision of ${chapterDir}/${stem}: ${problems.join('; ')}`
+    );
   }
 
   const now = {
@@ -874,14 +1107,25 @@ export function verifyRevision({ bookDir, chapterDir, stem, current }) {
       path.join(book, LAYER_DIRS.selected, chapterDir, `${stem}-selected.json`)
     ),
   };
+  // Every field below has been shape-checked, so `null` here means a recorded `null`.
   const pairs = [
     ['layer1.sha256', rec.layer1.sha256, now.layer1],
-    ['overlay.sha256', rec.overlay?.sha256 ?? null, now.overlay],
-    ['rulingSet.sha256', rec.rulingSet?.sha256 ?? null, current.rulingSetSha256],
-    ['prompt.sha256', rec.prompt?.sha256 ?? null, current.promptSha256],
-    ['model', rec.model ?? null, current.model],
+    ['overlay.sha256', rec.overlay === null ? null : rec.overlay.sha256, now.overlay],
+    [
+      'rulingSet.sha256',
+      rec.rulingSet === null ? null : rec.rulingSet.sha256,
+      current.rulingSetSha256,
+    ],
+    ['prompt.sha256', rec.prompt === null ? null : rec.prompt.sha256, current.promptSha256],
+    ['model', rec.model, current.model],
   ];
-  return pairs
+  const mismatches = pairs
     .filter(([, recorded, cur]) => recorded !== cur)
     .map(([field, recorded, cur]) => ({ field, recorded, current: cur }));
+  const baseChanged = mismatches.some(
+    (m) => m.field === 'layer1.sha256' || m.field === 'overlay.sha256'
+  );
+  return baseChanged
+    ? mismatches
+    : [...mismatches, ...writtenUnitMismatches({ book, chapterDir, stem, rec })];
 }

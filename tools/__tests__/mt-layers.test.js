@@ -8,7 +8,7 @@
  * So the positive control runs on EVERY committed chemistry unit (real files, not fixtures), with
  * a negative control proving the instrument can see whitespace at all.
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -362,6 +362,40 @@ describe('applyBodyEdits', () => {
 });
 
 // ───────────────────────────────────────────────────────────────────────────────────────────
+// buildChangeRecord
+// ───────────────────────────────────────────────────────────────────────────────────────────
+
+describe('buildChangeRecord', () => {
+  const fields = (o = {}) => ({
+    module: 'm100',
+    segmentId: 'm100:para:p1',
+    occurrence: 0,
+    opId: 'op-1',
+    source: 'ai',
+    rulingId: 'atom',
+    category: 'term',
+    find: 'Frumeind',
+    replace: 'Atóm',
+    before: 'Frumeind er lítil.',
+    after: 'Atóm er lítil.',
+    runId: 'run-1',
+    ...o,
+  });
+
+  it('control: a find that occurs once in before builds', () => {
+    expect(codeOf(() => buildChangeRecord(fields()))).toBe('no-throw');
+  });
+  it('a find that occurs twice in before refuses, even when after is the first-occurrence splice', () => {
+    // 'i' is in "Frumeind" and in "lítil"; the after below replaces only the first one.
+    expect(
+      codeOf(() =>
+        buildChangeRecord(fields({ find: 'i', replace: 'e', after: 'Frumeend er lítil.' }))
+      )
+    ).toBe('bad-change');
+  });
+});
+
+// ───────────────────────────────────────────────────────────────────────────────────────────
 // Fixture tree: listChapterUnits / readBase / writeRevisedChapter / verifyRevision
 // ───────────────────────────────────────────────────────────────────────────────────────────
 
@@ -554,6 +588,30 @@ describe('fixture tree', () => {
         'bad-overlay'
       );
     });
+    it('refuses two overlay entries for one occurrence when the first equals the base (no silent no-op + apply)', () => {
+      overlay([entry({ text: 'Frumeind er lítil.' }), entry()]);
+      expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
+        'bad-overlay'
+      );
+    });
+    it('refuses two overlay entries for one occurrence when both differ from the base', () => {
+      overlay([entry(), entry({ text: 'Frumeindin er örsmá.' })]);
+      expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
+        'bad-overlay'
+      );
+    });
+    it.each([
+      ['a commit that is not a full sha', { commit: 'x' }],
+      ['an empty run', { run: '' }],
+      ['a run that is not a string', { run: 7 }],
+      ['an empty rule', { rule: '' }],
+      ['a rule that is not a string', { rule: null }],
+    ])('refuses an overlay entry with %s', (_label, o) => {
+      overlay([entry(o)]);
+      expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
+        'bad-overlay'
+      );
+    });
     it('refuses a layer-1 file whose markers name another module', () => {
       put(out('m200-segments.is.md'), M100);
       expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm200' }))).toBe(
@@ -583,13 +641,25 @@ describe('fixture tree', () => {
         'm200-segments.is.md',
       ]);
     });
-    it('the written segments round-trip through parseLayerFile', () => {
+    it('the written segments parse back to exactly the intended records (key and body)', () => {
       write();
-      const bad = ['m100', 'm200', 'chapter-metadata'].filter((stem) => {
-        const t = fs.readFileSync(rev(`${stem}-segments.is.md`), 'utf8');
-        return serializeLayerFile(parseLayerFile(t)) !== t;
+      const project = (t) => parseLayerFile(t).records.map((r) => [r.key, r.body]);
+      const written = Object.fromEntries(
+        ['m100', 'm200', 'chapter-metadata'].map((stem) => [
+          stem,
+          project(fs.readFileSync(rev(`${stem}-segments.is.md`), 'utf8')),
+        ])
+      );
+      // Spelled out, not derived from the code under test: the accepted edit lands on #1 only.
+      expect(written).toEqual({
+        m100: [
+          ['m100:title:auto-1', 'Titill'],
+          ['m100:para:p1', 'Frumeind er lítil.'],
+          ['m100:para:p1#1', 'Atóm er lítil.'],
+        ],
+        m200: [['m200:para:p1', 'Sameind.']],
+        'chapter-metadata': [['chapter:title:ch01', 'Kafli']],
       });
-      expect(bad).toEqual([]);
     });
     it('writes exactly the unit text', () => {
       write();
@@ -698,6 +768,125 @@ describe('fixture tree', () => {
       units[0] = { ...units[0], changes: [change({ runId: 'run-9' })] };
       expect(codeOf(() => write({ units }))).toBe('bad-change');
     });
+    it('an ai change refuses when the revision records no ruling set (its rulingId would point at nothing)', () => {
+      expect(codeOf(() => write({ revision: { ...REVISION, rulingSet: null } }))).toBe(
+        'bad-change'
+      );
+    });
+    it('control: a rule change needs no ruling set, prompt or model', () => {
+      const ruleChange = buildChangeRecord({
+        ...without(
+          {
+            module: 'm100',
+            segmentId: 'm100:para:p1',
+            occurrence: 1,
+            opId: 'op-1',
+            source: 'rule',
+            rulingId: 'unused',
+            category: 'term',
+            find: 'Frumeind',
+            replace: 'Atóm',
+            before: 'Frumeind er lítil.',
+            after: 'Atóm er lítil.',
+            runId: null,
+          },
+          'rulingId'
+        ),
+        ruleId: 'rule-1',
+      });
+      const units = fullUnits();
+      units[0] = { ...units[0], changes: [ruleChange] };
+      const revision = { ...REVISION, rulingSet: null, prompt: null, model: null };
+      expect(codeOf(() => write({ units, revision }))).toBe('no-throw');
+    });
+    it('a change whose module is another unit refuses', () => {
+      const units = fullUnits();
+      units[0] = { ...units[0], changes: [change({ module: 'm200' })] };
+      expect(codeOf(() => write({ units }))).toBe('bad-change');
+    });
+    it.each(['constructor', '__proto__', 'toString'])(
+      'a category named %s is counted as itself (no inherited Object member)',
+      (category) => {
+        const units = fullUnits();
+        units[0] = { ...units[0], changes: [change({ category })] };
+        write({ units });
+        const { counts } = JSON.parse(fs.readFileSync(rev('m100-revision.json'), 'utf8'));
+        expect(Object.entries(counts.byCategory)).toEqual([[category, 1]]);
+      }
+    );
+    it('byCategory keys are sorted, whatever order the changes came in', () => {
+      const title = buildChangeRecord({
+        module: 'm100',
+        segmentId: 'm100:title:auto-1',
+        occurrence: 0,
+        opId: 'op-2',
+        source: 'ai',
+        rulingId: 'atom',
+        category: 'agreement',
+        find: 'Titill',
+        replace: 'Titillinn',
+        before: 'Titill',
+        after: 'Titillinn',
+        runId: 'run-1',
+      });
+      const units = fullUnits();
+      units[0] = {
+        ...units[0],
+        text: revisedM100.replace('\nTitill\n', '\nTitillinn\n'),
+        changes: [change(), title],
+      };
+      write({ units });
+      const { counts } = JSON.parse(fs.readFileSync(rev('m100-revision.json'), 'utf8'));
+      expect(Object.keys(counts.byCategory)).toEqual(['agreement', 'term']);
+    });
+    it('revision.json bytes do not depend on the key order of the provenance passed in', () => {
+      write();
+      const canonical = fs.readFileSync(rev('m100-revision.json'), 'utf8');
+      fs.rmSync(rev(), { recursive: true });
+      write({
+        revision: {
+          ...REVISION,
+          rulingSet: { sha256: REVISION.rulingSet.sha256, path: REVISION.rulingSet.path },
+          prompt: { sha256: REVISION.prompt.sha256, path: REVISION.prompt.path },
+          sdk: { version: REVISION.sdk.version, name: REVISION.sdk.name },
+        },
+      });
+      expect(fs.readFileSync(rev('m100-revision.json'), 'utf8')).toBe(canonical);
+    });
+    it('a stale links copy (layer 1 no longer has one) refuses an overwrite and is left alone', () => {
+      write();
+      fs.rmSync(out('m100-segments-links.json'));
+      expect([
+        codeOf(() => write({ overwrite: true })),
+        fs.readFileSync(rev('m100-segments-links.json'), 'utf8'),
+      ]).toEqual(['stale-destination', LINKS]);
+    });
+    it('a stray links copy for a unit whose layer 1 has none refuses a first write', () => {
+      put(rev('m200-segments-links.json'), LINKS);
+      expect([codeOf(() => write()), fs.readdirSync(rev())]).toEqual([
+        'stale-destination',
+        ['m200-segments-links.json'],
+      ]);
+    });
+    it('a chapter dir symlinked into 01-source between the first check and mkdir refuses (re-check after mkdir)', () => {
+      const realMkdirSync = fs.mkdirSync;
+      const spy = vi.spyOn(fs, 'mkdirSync').mockImplementation((p, opts) => {
+        if (p === rev()) {
+          realMkdirSync(path.join(book, LAYER_DIRS.revised), { recursive: true });
+          fs.symlinkSync(path.join(book, '01-source', ch), rev());
+        }
+        return realMkdirSync(p, opts);
+      });
+      try {
+        expect([
+          codeOf(() => write()),
+          spy.mock.calls.length,
+          fs.readdirSync(path.join(book, '01-source', ch)),
+        ]).toEqual(['unsafe-destination', 1, ['m100.cnxml']]);
+      } finally {
+        spy.mockRestore();
+      }
+    });
     it('a revision missing a field refuses', () => {
       expect(codeOf(() => write({ revision: without(REVISION, 'model') }))).toBe('bad-revision');
     });
@@ -768,6 +957,7 @@ describe('fixture tree', () => {
       ['a wrong chdir shape (ch001)', '02-mt-revised/ch001/m100-revision.json'],
       ['another chapter than the one being written', '02-mt-revised/ch02/m100-revision.json'],
       ['the layer directory itself', '02-mt-revised/ch01'],
+      ['a safe filename with a trailing slash', '02-mt-revised/ch01/m100-revision.json/'],
     ])('refuses %s', (_label, rel) => {
       expect(dest(rel)).toBe('unsafe-destination');
     });
@@ -838,6 +1028,130 @@ describe('fixture tree', () => {
       const r = JSON.parse(fs.readFileSync(rev('m100-revision.json'), 'utf8'));
       fs.writeFileSync(rev('m100-revision.json'), JSON.stringify({ ...r, schema: 'mt-revised/0' }));
       expect(fields()).toEqual(['revision']);
+    });
+
+    /** Rewrite m100's revision.json through fn (JSON.stringify drops an `undefined` key). */
+    const rewriteRevision = (fn) => {
+      const r = JSON.parse(fs.readFileSync(rev('m100-revision.json'), 'utf8'));
+      fs.writeFileSync(rev('m100-revision.json'), JSON.stringify(fn(r)));
+    };
+
+    it('a malformed recorded rulingSet is a mismatch, never read as null (current null)', () => {
+      write();
+      rewriteRevision((r) => ({ ...r, rulingSet: 'deadbeef' }));
+      expect(fields({ ...current, rulingSetSha256: null })).toEqual(['revision']);
+    });
+    it('a revision file with its model key removed is a mismatch, never read as null (current null)', () => {
+      write();
+      rewriteRevision((r) => ({ ...r, model: undefined }));
+      expect(fields({ ...current, model: null })).toEqual(['revision']);
+    });
+    it.each([
+      ['a prompt without a path', (r) => ({ ...r, prompt: { sha256: HEX64('2') } })],
+      [
+        'a prompt sha256 that is not 64 hex',
+        (r) => ({ ...r, prompt: { ...r.prompt, sha256: 'x' } }),
+      ],
+      ['an overlay that is a string', (r) => ({ ...r, overlay: 'x' })],
+      ['an sdk that is a string', (r) => ({ ...r, sdk: 'x' })],
+      ['an empty model', (r) => ({ ...r, model: '' })],
+      [
+        'a layer1 commit that is not a full sha',
+        (r) => ({ ...r, layer1: { ...r.layer1, commit: 'z' } }),
+      ],
+      [
+        'a layer1 dir other than 02-mt-output',
+        (r) => ({ ...r, layer1: { ...r.layer1, dir: 'x' } }),
+      ],
+      ['a harnessCommit that is a number', (r) => ({ ...r, harnessCommit: 5 })],
+      ['runIds that are not an array', (r) => ({ ...r, runIds: 'run-1' })],
+      ['a negative accepted count', (r) => ({ ...r, counts: { ...r.counts, accepted: -1 } })],
+      [
+        'a byCategory value that is a string',
+        (r) => ({ ...r, counts: { ...r.counts, byCategory: { term: '1' } } }),
+      ],
+      ['an extra top-level key', (r) => ({ ...r, extra: true })],
+    ])('a revision file with %s is a mismatch', (_label, fn) => {
+      write();
+      rewriteRevision(fn);
+      expect(fields()).toEqual(['revision']);
+    });
+
+    it('control: every unit of a written chapter verifies clean', () => {
+      write();
+      const results = ['m100', 'm200', 'chapter-metadata'].map((stem) =>
+        verifyRevision({ bookDir: book, chapterDir: ch, stem, current })
+      );
+      expect(results).toEqual([[], [], []]);
+    });
+    it('a hand edit to the revised text is a mismatch', () => {
+      write();
+      fs.writeFileSync(
+        rev('m100-segments.is.md'),
+        revisedM100.replace('Atóm er lítil.', 'HANDVIRKT er lítil.')
+      );
+      expect(fields()).toEqual(['text']);
+    });
+    it('a deleted revised text is a mismatch', () => {
+      write();
+      fs.rmSync(rev('m100-segments.is.md'));
+      expect(fields()).toEqual(['text']);
+    });
+    it('a changes.jsonl replaced with garbage is a mismatch', () => {
+      write();
+      fs.writeFileSync(rev('m100-changes.jsonl'), 'garbage\n');
+      expect(fields()).toEqual(['changes']);
+    });
+    it('a deleted changes.jsonl is a mismatch', () => {
+      write();
+      fs.rmSync(rev('m100-changes.jsonl'));
+      expect(fields()).toEqual(['changes']);
+    });
+    it('a change line forged with a run the revision does not list is a mismatch', () => {
+      write();
+      const forged = { ...JSON.parse(fs.readFileSync(rev('m100-changes.jsonl'), 'utf8')) };
+      fs.writeFileSync(
+        rev('m100-changes.jsonl'),
+        `${JSON.stringify({ ...forged, runId: 'run-9' })}\n`
+      );
+      expect(fields()).toEqual(['changes']);
+    });
+    it('a change log re-serialised in another form (same records, keys reordered) is a mismatch', () => {
+      write();
+      const line = JSON.parse(fs.readFileSync(rev('m100-changes.jsonl'), 'utf8'));
+      const reordered = Object.fromEntries(Object.entries(line).reverse());
+      fs.writeFileSync(rev('m100-changes.jsonl'), `${JSON.stringify(reordered)}\n`);
+      expect(fields()).toEqual(['changes']);
+    });
+    it('an emptied change log disagrees with both the counts and the text', () => {
+      write();
+      fs.writeFileSync(rev('m100-changes.jsonl'), '');
+      expect(fields()).toEqual(['counts', 'text']);
+    });
+    it('counts that disagree with the log are a mismatch', () => {
+      write();
+      rewriteRevision((r) => ({ ...r, counts: { ...r.counts, accepted: 2 } }));
+      expect(fields()).toEqual(['counts']);
+    });
+    it('a byCategory tally that disagrees with the log is a mismatch', () => {
+      write();
+      rewriteRevision((r) => ({ ...r, counts: { ...r.counts, byCategory: { agreement: 1 } } }));
+      expect(fields()).toEqual(['counts']);
+    });
+    it('a links copy that differs from the current layer-1 links file is a mismatch', () => {
+      write();
+      fs.writeFileSync(out('m100-segments-links.json'), '{"links":["v2"]}\n');
+      expect(fields()).toEqual(['links']);
+    });
+    it('a deleted links copy is a mismatch', () => {
+      write();
+      fs.rmSync(rev('m100-segments-links.json'));
+      expect(fields()).toEqual(['links']);
+    });
+    it('a links copy whose layer-1 original is gone is a mismatch', () => {
+      write();
+      fs.rmSync(out('m100-segments-links.json'));
+      expect(fields()).toEqual(['links']);
     });
     it('refuses a `current` that omits a field', () => {
       write();
