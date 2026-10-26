@@ -525,3 +525,18 @@ d7ffabb10 Merge pull request #568 from SigurdurVilhelmsson/feat/d11-june-wire
 **Why:** —
 
 ---
+
+## 2026-10-26 11:19 - D11 ready for Wed 28 Oct: runbook fixes merged as #570/#571, prod at 9bad1d828
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+9bad1d828 Merge pull request #571 from SigurdurVilhelmsson/docs/register-d11-cap-pointer
+790f6b795 Merge pull request #570 from SigurdurVilhelmsson/docs/d11-runbook-bill-from-logs
+c9537f536 docs(register): point the D11 entry at RUNBOOK §5's running-total rule
+
+**Why:** —
+
+---

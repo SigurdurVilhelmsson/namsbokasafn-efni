@@ -121,6 +121,16 @@ field shows it. **[USER] ruled 2026-10-26: such a run is redone in a fresh tree 
   it bought counts toward the cap.
 - **Redo the whole run in a fresh tree** named `<run>-retry1` (for example `RUN=r1-M-retry1; ARM=M`), steps 1 to 3.
   The retry replaces the failed run in the analysis, and the failed run is reported.
+- **Exception: if every `r1-M` request is refused with a 4xx, stop and ask [USER]; do not redo.** `r1-M` makes the
+  first live requests, so it is the first to meet two things the rehearsal could not: the real key from `.env`, and
+  whether the live API still accepts June's duplicate headwords (the March buys sent them; nothing has since
+  4 August). A refusal looks like `❌ API POST /v1/translate/tasks returned 4…` in both buy logs (for example 401
+  for the key, or 400 for the payload). A 4xx other than 429 is not retried and costs nothing, but a redo in a fresh
+  tree would only repeat it. (A 429 or a 5xx is retried by the client and is not this case.) To check:
+
+  ```bash
+  grep -ah 'returned 4' "$D11/r1-M/logs/buy-"*.log
+  ```
 - **The cap is ISK 5,000, counted from the logs.** Each buy log ends with an `API usage:` line. It comes from the
   API client's own tally of every call, so unlike the sidecar it includes the first attempt of a retried chunk. A
   truncation retry re-sends a chunk once, and only a chunk that carried a glossary, so the most one run can cost is
