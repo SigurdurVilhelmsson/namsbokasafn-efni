@@ -1,5 +1,6 @@
 /**
- * config.js — the AI layer's cap, default records location and API-key source.
+ * config.js — the AI layer's cap, records location (and its safe shapes) and API-key
+ * source.
  *
  * Design: docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit D.
  *
@@ -62,6 +63,77 @@ export function assertBookSlug(slug) {
  */
 export function defaultRecordsDir(slug) {
   return path.join(REPO_ROOT, 'books', assertBookSlug(slug), 'ai-review');
+}
+
+/** The file name of the spend ledger inside a records directory. */
+export const LEDGER_FILE = 'ledger.jsonl';
+
+/**
+ * Admit a records directory only in one of its SAFE shapes, and return it normalised:
+ *   - an ABSOLUTE path (a relative one would resolve against `process.cwd()`, so two
+ *     working directories would write two record trees and keep two ledgers, i.e. two
+ *     caps — the server alone runs with cwd=`server/`);
+ *   - inside the repository, exactly `books/<slug>/ai-review` for a translated book
+ *     (`defaultRecordsDir`). Nothing else in the repository qualifies, so no record or
+ *     ledger can land in a READ-ONLY `01-source/` or `02-mt-output/`, or anywhere else
+ *     in the tree;
+ *   - outside the repository, a directory with no `books` component (a scratch or test
+ *     run), or one whose last `books` component is followed by exactly `<slug>/ai-review`
+ *     — the repo-root test cannot see another checkout's book tree (a sibling worktree,
+ *     the main checkout, a copy), so this rule is what keeps those READ-ONLY too.
+ * The shapes are listed, not the dangers; a path that is none of them refuses.
+ *
+ * @param {unknown} dir
+ * @param {string} [what] name used in the error message
+ * @returns {string} the normalised absolute path
+ */
+export function assertRecordsDir(dir, what = 'recordsDir') {
+  if (typeof dir !== 'string' || dir === '' || !path.isAbsolute(dir)) {
+    throw new Error(
+      `ai-review: ${what} must be an absolute path (a relative one resolves against the ` +
+        `working directory), got ${JSON.stringify(dir)}`
+    );
+  }
+  const resolved = path.resolve(dir);
+  const rel = path.relative(REPO_ROOT, resolved);
+  const outside = rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel);
+  const parts = outside ? resolved.split(path.sep).filter(Boolean) : rel.split(path.sep);
+  const books = outside ? parts.lastIndexOf('books') : 0;
+  if (outside && books === -1) return resolved;
+  const tail = parts.slice(books);
+  if (
+    (!outside && rel === '') ||
+    tail.length !== 3 ||
+    tail[0] !== 'books' ||
+    tail[2] !== 'ai-review'
+  ) {
+    throw new Error(
+      `ai-review: a ${what} ${outside ? 'through a books/ directory' : 'inside the repository'} ` +
+        `must be books/<slug>/ai-review, got ${JSON.stringify(outside ? resolved : rel)}`
+    );
+  }
+  assertBookSlug(tail[1]);
+  return resolved;
+}
+
+/**
+ * Admit a ledger path only as `<a safe records directory>/ledger.jsonl` (absolute).
+ * @param {unknown} ledgerPath
+ * @returns {string} the normalised absolute path
+ */
+export function assertLedgerPath(ledgerPath) {
+  if (typeof ledgerPath !== 'string' || ledgerPath === '' || !path.isAbsolute(ledgerPath)) {
+    throw new Error(
+      `ai-review: ledgerPath must be an absolute path (a relative one would give each ` +
+        `working directory its own cap), got ${JSON.stringify(ledgerPath)}`
+    );
+  }
+  const resolved = path.resolve(ledgerPath);
+  if (path.basename(resolved) !== LEDGER_FILE) {
+    throw new Error(`ai-review: ledgerPath must name a file called ${LEDGER_FILE}`);
+  }
+  assertRecordsDir(path.dirname(resolved), 'ledger directory');
+  return resolved;
 }
 
 /**

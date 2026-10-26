@@ -14,7 +14,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { runInteractive, runBatch, validateRequestBody } from '../ai-review/harness.js';
 import { readLedger, summarizeLedger, reserve, settle } from '../ai-review/ledger.js';
 import { createAnthropicTransport, sdkInfo } from '../ai-review/transport-anthropic.js';
-import { CAP_USD } from '../ai-review/config.js';
+import { CAP_USD, REPO_ROOT } from '../ai-review/config.js';
 
 const MODEL = 'claude-opus-5-5';
 const BOGUS_KEY = 'sk-ant-harness-test-BOGUS-KEY-4d2e8b1c';
@@ -38,8 +38,17 @@ beforeEach(() => {
 });
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
   while (tmpDirs.length) fs.rmSync(tmpDirs.pop(), { recursive: true, force: true });
 });
+
+/** A path the test must clean up whatever happens (a refusal test's red run creates it). */
+function cleanupLater(p) {
+  tmpDirs.push(p);
+  return p;
+}
+
+const unique = () => `${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
 
 function message(overrides = {}) {
   return {
@@ -229,6 +238,64 @@ describe('validateRequestBody', () => {
       ).length
     ).toBeGreaterThan(0);
     expect(validateRequestBody(req('k', { thinking: { type: 'adaptive' } }).body, run)).toEqual([]);
+  });
+  it('refuses disabled thinking, which claude-opus-5-5 rejects with a 400 at every effort', () => {
+    expect(
+      validateRequestBody(req('k', { thinking: { type: 'disabled' } }).body, run).length
+    ).toBeGreaterThan(0);
+  });
+  it('admits a thinking display of summarized or omitted, and refuses any other', () => {
+    for (const display of ['summarized', 'omitted']) {
+      expect(
+        validateRequestBody(req('k', { thinking: { type: 'adaptive', display } }).body, run)
+      ).toEqual([]);
+    }
+    expect(
+      validateRequestBody(
+        req('k', { thinking: { type: 'adaptive', display: 'updates' } }).body,
+        run
+      ).length
+    ).toBeGreaterThan(0);
+  });
+  it('admits a user / assistant / user conversation (control)', () => {
+    const messages = [
+      { role: 'user', content: 'a' },
+      { role: 'assistant', content: [{ type: 'text', text: 'b' }] },
+      { role: 'user', content: [{ type: 'text', text: 'c' }] },
+    ];
+    expect(validateRequestBody(req('k', { messages }).body, run)).toEqual([]);
+  });
+  it.each([
+    ['an empty message object', [{}]],
+    ['a message with no content', [{ role: 'user' }]],
+    ['empty string content', [{ role: 'user', content: '' }]],
+    ['empty array content', [{ role: 'user', content: [] }]],
+    ['numeric content', [{ role: 'user', content: 7 }]],
+    [
+      'a system-role message',
+      [
+        { role: 'system', content: 'x' },
+        { role: 'user', content: 'y' },
+      ],
+    ],
+    ['an unknown role', [{ role: 'tool', content: 'x' }]],
+    ['an extra message field', [{ role: 'user', content: 'x', name: 'n' }]],
+    [
+      'a conversation opening with the assistant',
+      [
+        { role: 'assistant', content: 'x' },
+        { role: 'user', content: 'y' },
+      ],
+    ],
+    [
+      'an assistant-last prefill (a 400 on claude-opus-5-5)',
+      [
+        { role: 'user', content: 'x' },
+        { role: 'assistant', content: '{' },
+      ],
+    ],
+  ])('refuses %s', (_name, messages) => {
+    expect(validateRequestBody(req('k', { messages }).body, run).length).toBeGreaterThan(0);
   });
   it('refuses a body whose model, effort or max_tokens differ from the run', () => {
     expect(validateRequestBody(req('k', { model: 'claude-x' }).body, run).length).toBeGreaterThan(
@@ -480,6 +547,89 @@ describe('the cap', () => {
     expect(t.calls.send).toHaveLength(1);
   });
 
+  it('refuses an inputTokensEstimate in an interactive run, which counts every request', async () => {
+    const dir = tmp();
+    const t = mockTransport();
+    await expect(
+      runInteractive({
+        ...baseOpts(dir, t),
+        requests: [req('k1', {}, { inputTokensEstimate: 0 })],
+      })
+    ).rejects.toThrow(/batch mode only/);
+    expect(Object.values(t.calls).every((c) => c.length === 0)).toBe(true);
+    expect(fs.readdirSync(dir)).toEqual([]);
+  });
+
+  it('stops an interactive run at a response that cost more than its reserved worst case', async () => {
+    const dir = tmp();
+    // count_tokens says 100, the API bills 10,000: the reservation (0.02044) is exceeded.
+    const t = mockTransport({
+      reply: () => message({ usage: { input_tokens: 10_000, output_tokens: 50 } }),
+    });
+    const out = await runInteractive({ ...baseOpts(dir, t), requests: [req('k1'), req('k2')] });
+    expect(out.status).toBe('stopped-over-reservation');
+    expect(t.calls.send).toHaveLength(1);
+    const errors = readJsonl(path.join(out.runDir, 'errors.jsonl'));
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toMatchObject({
+      key: 'k1',
+      stage: 'over_reservation',
+      error: { type: 'over_reservation' },
+    });
+    // the ledger records what was actually spent, not the reservation
+    const s = summarizeLedger(readLedger(path.join(dir, 'ledger.jsonl')));
+    expect(s.settledUsd).toBeCloseTo(10_000 * 4e-6 + 50 * 20e-6, 12);
+    expect(s.openUsd).toBe(0);
+    const end = JSON.parse(fs.readFileSync(path.join(out.runDir, 'run-end.json'), 'utf8'));
+    expect(end.status).toBe('stopped-over-reservation');
+  });
+
+  it('flags a batch whose actual cost exceeded its reservation (an estimate too low)', async () => {
+    const dir = tmp();
+    const big = message({ usage: { input_tokens: 2_000_000, output_tokens: 10 } });
+    const t = mockTransport({
+      results: () => [{ custom_id: 'q000000', result: { type: 'succeeded', message: big } }],
+    });
+    const out = await runBatch({
+      ...baseOpts(dir, t, { cap: 1 }),
+      requests: [req('k0', {}, { inputTokensEstimate: 0 })],
+    });
+    expect(out.status).toBe('complete-over-reservation');
+    const errors = readJsonl(path.join(out.runDir, 'errors.jsonl'));
+    expect(errors).toMatchObject([{ custom_id: 'q000000', key: 'k0', stage: 'over_reservation' }]);
+    const entries = readLedger(path.join(dir, 'ledger.jsonl'));
+    expect(entries.find((e) => e.type === 'settle').usd).toBeCloseTo(
+      (2_000_000 * 4e-6 + 10 * 20e-6) / 2,
+      12
+    );
+    const end = JSON.parse(fs.readFileSync(path.join(out.runDir, 'run-end.json'), 'utf8'));
+    expect(end.status).toBe('complete-over-reservation');
+    // and the over-run is visible to the next reservation: the cap now refuses it
+    const next = await runInteractive({
+      ...baseOpts(dir, mockTransport(), { cap: 1 }),
+      requests: [req('k9')],
+    });
+    expect(next.status).toBe('stopped-at-cap');
+  });
+
+  it('reserves input at the 1-hour cache-write rate when the body can write the cache', async () => {
+    const cached = {
+      system: [{ type: 'text', text: 'rulings', cache_control: { type: 'ephemeral', ttl: '1h' } }],
+    };
+    const dirA = tmp();
+    await runInteractive({ ...baseOpts(dirA, mockTransport()), requests: [req('k0', cached)] });
+    const [ra] = readLedger(path.join(dirA, 'ledger.jsonl'));
+    expect(ra.usd).toBeCloseTo(110 * 8e-6 + 1000 * 20e-6, 12);
+    const dirB = tmp();
+    await runBatch({ ...baseOpts(dirB, mockTransport()), requests: [req('k0', cached)] });
+    const [rb] = readLedger(path.join(dirB, 'ledger.jsonl'));
+    expect(rb.usd).toBeCloseTo((110 * 8e-6 + 1000 * 20e-6) / 2, 12);
+    // control: the same body without cache_control reserves at the plain input rate
+    const dirC = tmp();
+    await runInteractive({ ...baseOpts(dirC, mockTransport()), requests: [req('k0')] });
+    expect(readLedger(path.join(dirC, 'ledger.jsonl'))[0].usd).toBeCloseTo(WORST, 12);
+  });
+
   it('refuses a cap above CAP_USD before any call', async () => {
     const dir = tmp();
     const t = mockTransport();
@@ -518,6 +668,65 @@ describe('refusals before any spend', () => {
     const opts = { ...baseOpts(dir, undefined), keyOptions, requests: [req('k1')] };
     await expect(runInteractive(opts)).rejects.toThrow(/ANTHROPIC_API_KEY/);
     await expect(runBatch(opts)).rejects.toThrow(/ANTHROPIC_API_KEY/);
+    expect(fs.readdirSync(dir)).toEqual([]);
+  });
+
+  it('refuses a relative recordsDir, which would resolve against the working directory', async () => {
+    const rel = `ai-review-relative-${unique()}`;
+    cleanupLater(path.resolve(rel));
+    const t = mockTransport();
+    for (const run of [runInteractive, runBatch]) {
+      await expect(run({ ...baseOpts(rel, t), requests: [req('k1')] })).rejects.toThrow(/absolute/);
+    }
+    expect(Object.values(t.calls).every((c) => c.length === 0)).toBe(true);
+    expect(fs.existsSync(path.resolve(rel))).toBe(false);
+  });
+
+  it('refuses a relative ledgerPath, which would give each working directory its own cap', async () => {
+    const dir = tmp();
+    const rel = `ai-review-relative-${unique()}.jsonl`;
+    cleanupLater(path.resolve(rel));
+    const t = mockTransport();
+    for (const run of [runInteractive, runBatch]) {
+      await expect(
+        run({ ...baseOpts(dir, t, { ledgerPath: rel }), requests: [req('k1')] })
+      ).rejects.toThrow(/absolute/);
+    }
+    expect(fs.readdirSync(dir)).toEqual([]);
+    expect(fs.existsSync(path.resolve(rel))).toBe(false);
+  });
+
+  it('refuses a recordsDir inside a READ-ONLY book directory, writing nothing there', async () => {
+    const dir = cleanupLater(
+      path.join(REPO_ROOT, 'books', 'efnafraedi-2e', '02-mt-output', `zz-harness-probe-${unique()}`)
+    );
+    const t = mockTransport();
+    for (const run of [runInteractive, runBatch]) {
+      await expect(run({ ...baseOpts(dir, t), requests: [req('k1')] })).rejects.toThrow(
+        /books\/<slug>\/ai-review/
+      );
+    }
+    expect(Object.values(t.calls).every((c) => c.length === 0)).toBe(true);
+    expect(fs.existsSync(dir)).toBe(false);
+  });
+
+  it('refuses a ledgerPath inside a READ-ONLY book directory', async () => {
+    const dir = tmp();
+    const ledgerPath = cleanupLater(
+      path.join(
+        REPO_ROOT,
+        'books',
+        'efnafraedi-2e',
+        '01-source',
+        `zz-harness-probe-${unique()}`,
+        'ledger.jsonl'
+      )
+    );
+    cleanupLater(path.dirname(ledgerPath));
+    await expect(
+      runInteractive({ ...baseOpts(dir, mockTransport(), { ledgerPath }), requests: [req('k1')] })
+    ).rejects.toThrow(/books\/<slug>\/ai-review/);
+    expect(fs.existsSync(path.dirname(ledgerPath))).toBe(false);
     expect(fs.readdirSync(dir)).toEqual([]);
   });
 
@@ -624,6 +833,34 @@ describe('runBatch — the flow on a mock transport', () => {
     expect(t.calls.submitBatch).toHaveLength(0);
     expect(fs.existsSync(path.join(out.runDir, 'batch.json'))).toBe(false);
     expect(readLedger(path.join(dir, 'ledger.jsonl'))).toEqual([]);
+  });
+
+  it('keeps the raw batch result of a request that errored or expired', async () => {
+    const dir = tmp();
+    const errored = {
+      type: 'errored',
+      error: { type: 'error', error: { type: 'invalid_request_error', message: 'bad' } },
+    };
+    const expired = { type: 'expired' };
+    const t = mockTransport({
+      results: () => [
+        { custom_id: 'q000000', result: errored },
+        { custom_id: 'q000001', result: expired },
+      ],
+    });
+    const out = await runBatch({ ...baseOpts(dir, t), requests: [req('k0'), req('k1')] });
+    const errors = readJsonl(path.join(out.runDir, 'errors.jsonl'));
+    expect(errors.find((e) => e.custom_id === 'q000000')).toMatchObject({
+      key: 'k0',
+      stage: 'batch_result',
+      error: { type: 'errored', message: 'invalid_request_error: bad' },
+      result: errored,
+    });
+    expect(errors.find((e) => e.custom_id === 'q000001')).toMatchObject({
+      key: 'k1',
+      stage: 'batch_result',
+      result: expired,
+    });
   });
 
   it('records a missing result and an unknown custom_id as errors', async () => {
@@ -781,6 +1018,32 @@ describe('one record shape for both modes', () => {
       expect(keys(ja.counts ?? {})).toEqual(keys(jb.counts ?? {}));
     }
   });
+
+  it('batch and interactive write the same fields in an error record', async () => {
+    const a = await runInteractive({
+      ...baseOpts(
+        tmp(),
+        mockTransport({
+          sendError: () => sdkLikeError({ status: 529, type: 'overloaded_error', message: 'x' }),
+        })
+      ),
+      requests: [req('k0')],
+    });
+    const b = await runBatch({
+      ...baseOpts(
+        tmp(),
+        mockTransport({
+          results: () => [{ custom_id: 'q000000', result: { type: 'canceled' } }],
+        })
+      ),
+      requests: [req('k0')],
+    });
+    const [ea] = readJsonl(path.join(a.runDir, 'errors.jsonl'));
+    const [eb] = readJsonl(path.join(b.runDir, 'errors.jsonl'));
+    expect(Object.keys(ea).sort()).toEqual(Object.keys(eb).sort());
+    expect(ea.result).toBeNull(); // an SDK error is never stored raw (it carries headers)
+    expect(eb.result).toEqual({ type: 'canceled' });
+  });
 });
 
 describe('the live transport through an injected fetch', () => {
@@ -853,6 +1116,113 @@ describe('the live transport through an injected fetch', () => {
     const run = JSON.parse(fs.readFileSync(path.join(a.runDir, 'run.json'), 'utf8'));
     expect(run.anthropicVersion).toBe(api.seen[0].headers.get('anthropic-version'));
     expect(run.sdk).toEqual(sdkInfo());
+  });
+
+  /** A fake API whose message reply echoes the credential headers it was sent. */
+  function echoKeyApi() {
+    const seen = [];
+    const json = (o, status = 200) =>
+      new Response(JSON.stringify(o), { status, headers: { 'content-type': 'application/json' } });
+    const fetch = async (input, init = {}) => {
+      const url = typeof input === 'string' ? input : input.url;
+      const headers = new Headers(init.headers ?? {});
+      seen.push({ url, headers });
+      const { pathname } = new URL(url);
+      if (pathname === '/v1/messages/count_tokens') return json({ input_tokens: 100 });
+      if (pathname === '/v1/messages') {
+        const echoed = `${headers.get('authorization') ?? ''} ${headers.get('x-api-key') ?? ''}`;
+        return json(message({ content: [{ type: 'text', text: `you sent ${echoed}` }] }));
+      }
+      return json({ type: 'error', error: { type: 'not_found_error', message: pathname } }, 404);
+    };
+    const keySent = (key) => seen.some((s) => [...s.headers.values()].some((v) => v.includes(key)));
+    return { fetch, seen, keySent };
+  }
+
+  function envFileWith(key) {
+    const file = path.join(tmp(), 'test.env');
+    fs.writeFileSync(file, `ANTHROPIC_API_KEY=${key}\n`);
+    return file;
+  }
+
+  function assertKeyNowhere(dir, fragment) {
+    for (const f of walk(dir)) {
+      expect(fs.readFileSync(f, 'latin1'), f).not.toContain(fragment);
+    }
+  }
+
+  it('never writes the key the harness resolved from the .env file, even when echoed back', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const dir = tmp();
+    const api = echoKeyApi();
+    vi.stubGlobal('fetch', api.fetch); // the harness builds its own transport on the global fetch
+    const opts = {
+      ...baseOpts(dir, undefined),
+      keyOptions: { env: {}, envFile: envFileWith(BOGUS_KEY) },
+      requests: [req('k0')],
+    };
+    await expect(runInteractive(opts)).rejects.toThrow(/secret/);
+    expect(api.keySent(BOGUS_KEY)).toBe(true); // control: the key really was in play
+    assertKeyNowhere(dir, BOGUS_KEY);
+    // the call was billed, so the ledger settles it even though its record was refused
+    const s = summarizeLedger(readLedger(path.join(dir, 'ledger.jsonl')));
+    expect(s.openUsd).toBe(0);
+    expect(s.settledUsd).toBeCloseTo(ACTUAL, 12);
+  });
+
+  it('never writes ANTHROPIC_API_KEY from the environment, whatever transport echoes it', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', BOGUS_KEY);
+    const dir = tmp();
+    const t = mockTransport({
+      reply: () =>
+        message({ content: [{ type: 'text', text: `echo ${process.env.ANTHROPIC_API_KEY}` }] }),
+    });
+    await expect(runInteractive({ ...baseOpts(dir, t), requests: [req('k0')] })).rejects.toThrow(
+      /secret/
+    );
+    expect(t.calls.send).toHaveLength(1); // control: the echoing reply was produced
+    assertKeyNowhere(dir, BOGUS_KEY);
+  });
+
+  it('never writes the key a caller-built transport resolved for itself', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const dir = tmp();
+    const api = echoKeyApi();
+    const transport = createAnthropicTransport({
+      fetch: api.fetch,
+      keyOptions: { env: {}, envFile: envFileWith(BOGUS_KEY) },
+    });
+    await expect(
+      runInteractive({ ...baseOpts(dir, transport), requests: [req('k0')] })
+    ).rejects.toThrow(/secret/);
+    expect(api.keySent(BOGUS_KEY)).toBe(true);
+    assertKeyNowhere(dir, BOGUS_KEY);
+  });
+
+  it('never writes a key holding a character JSON escapes (an SDK error quotes the key)', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const dir = tmp();
+    const key = 'sk-ant-PROBEKEY-\u0000-abcdef123456';
+    const opts = {
+      ...baseOpts(dir, undefined),
+      keyOptions: { env: {}, envFile: envFileWith(key) },
+      requests: [req('k0')],
+    };
+    await expect(runInteractive(opts)).rejects.toThrow(/secret/);
+    assertKeyNowhere(dir, 'PROBEKEY');
+  });
+
+  it('refuses a resolved key too short for the record guard to find, before writing', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const dir = tmp();
+    const opts = {
+      ...baseOpts(dir, undefined),
+      keyOptions: { env: { ANTHROPIC_API_KEY: 'k-short' }, envFile: path.join(dir, 'none.env') },
+      requests: [req('k0')],
+    };
+    await expect(runInteractive(opts)).rejects.toThrow(/8 characters/);
+    await expect(runBatch(opts)).rejects.toThrow(/8 characters/);
+    expect(fs.readdirSync(dir)).toEqual([]);
   });
 
   it('a batch over the live transport records the same shape as the mock', async () => {

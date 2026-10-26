@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { spawn } from 'node:child_process';
 import { describe, it, expect, afterEach } from 'vitest';
 import {
   readLedger,
@@ -178,5 +179,41 @@ describe('reserve / settle / release', () => {
 
   it('reads an absent ledger as empty', () => {
     expect(readLedger(ledgerPath())).toEqual([]);
+  });
+});
+
+describe('the lock around check-and-append', () => {
+  it('waits for another process holding the lock, then sees what it appended', async () => {
+    const p = ledgerPath();
+    const lock = `${p}.lock`;
+    // Another process takes the lock, then — still holding it — appends a reservation of
+    // USD 0.9 after a pause, and releases the lock. Deterministic by ORDER: the parent
+    // reserves only once the lock exists, so without the lock it would read an empty
+    // ledger and pass the cap check on headroom the other process is about to take.
+    const child = `
+      import fs from 'node:fs';
+      const fd = fs.openSync(${JSON.stringify(lock)}, 'wx');
+      process.stdout.write('locked\\n');
+      const t = Date.now();
+      while (Date.now() - t < 400) {}
+      fs.appendFileSync(${JSON.stringify(p)}, JSON.stringify({
+        type: 'reserve', id: 'res-other', runId: 'other', use: 'glossary-prescreen',
+        usd: 0.9, at: new Date().toISOString(),
+      }) + '\\n');
+      fs.closeSync(fd);
+      fs.rmSync(${JSON.stringify(lock)});
+    `;
+    const proc = spawn(process.execPath, ['--input-type=module', '-e', child]);
+    const exited = new Promise((resolve) => proc.on('close', resolve));
+    await new Promise((resolve, reject) => {
+      proc.stdout.on('data', (d) => String(d).includes('locked') && resolve());
+      proc.on('close', (code) => reject(new Error(`the locking process exited first (${code})`)));
+    });
+    expect(fs.existsSync(lock)).toBe(true);
+
+    expect(() => reserve({ ledgerPath: p, ...base, usd: 0.6, cap: 1 })).toThrow(CapExceededError);
+    expect(await exited).toBe(0);
+    expect(readLedger(p).map((e) => e.id)).toEqual(['res-other']);
+    expect(fs.existsSync(lock)).toBe(false);
   });
 });

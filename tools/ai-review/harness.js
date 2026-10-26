@@ -8,25 +8,43 @@
  * Messages API request. The harness knows nothing about segments beyond that string.
  *
  * Two modes, one record shape (records.js):
- *   - `runInteractive`: per request — count tokens, reserve the worst case, record the
- *     request, send, record the response, settle. An API error releases the reservation
- *     and is recorded; a refusal (`stop_reason: 'refusal'`) is recorded as an outcome and
- *     never retried, on this model or any other. The run STOPS at the first request the
- *     cap refuses.
+ *   - `runInteractive`: per request — count tokens (always: an interactive run takes no
+ *     caller estimate), reserve the worst case, record the request, send, settle, record
+ *     the response. An API error releases the reservation and is recorded; a refusal
+ *     (`stop_reason: 'refusal'`) is recorded as an outcome and never retried, on this
+ *     model or any other. The run STOPS at the first request the cap refuses, and at the
+ *     first response that cost more than the worst case reserved for it
+ *     (`stopped-over-reservation`: the price assumptions behind the cap did not hold).
  *   - `runBatch`: count tokens (or take a supplied estimate), reserve the whole batch's
  *     worst case at the Batch API's half price, record the requests, record a
  *     `submitting` marker, submit, record the batch id BEFORE the first poll, poll, record
  *     each result keyed by custom_id, settle the actual total and release the rest. A run
- *     directory that records an unfinished batch is RESUMED, never resubmitted.
+ *     directory that records an unfinished batch is RESUMED, never resubmitted. A batch in
+ *     which any result cost more than its reserved worst case (an estimate too low) ends
+ *     `complete-over-reservation`, with one `over_reservation` error line per such result;
+ *     the ledger records what was spent, so the cap then counts it.
  *
  * Everything that can be checked without spending is checked before the first call and
- * before anything is written: the run's parameters, every request body (against an
- * allowlist of SAFE shapes — never a list of dangerous ones), the price table, the cap and
- * the API key.
+ * before anything is written: the run's parameters, the records directory and ledger
+ * path (absolute, and in one of their safe shapes — config.js `assertRecordsDir`), every
+ * request body (against an allowlist of SAFE shapes — never a list of dangerous ones),
+ * the price table, the cap and the API key.
+ *
+ * The records never hold the API key: every write is checked against the key the
+ * transport reports (`transport.secrets()`, read at each write, so a key resolved lazily
+ * by a caller-built transport is covered too), `process.env.ANTHROPIC_API_KEY` and any
+ * `secrets` the caller adds.
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { CAP_USD, DEFAULT_POLL_INTERVAL_MS, resolveApiKey } from './config.js';
+import {
+  CAP_USD,
+  DEFAULT_POLL_INTERVAL_MS,
+  LEDGER_FILE,
+  assertRecordsDir,
+  assertLedgerPath,
+  resolveApiKey,
+} from './config.js';
 import { PRICING, ratesFor, worstCasePico, costPico, picoToUsd, usdToPico } from './pricing.js';
 import {
   reserve,
@@ -69,7 +87,13 @@ const REQUEST_KEYS = new Set(['key', 'body', 'inputTokensEstimate']);
 const OUTPUT_CONFIG_KEYS = new Set(['effort', 'format']);
 const FORMAT_KEYS = new Set(['type', 'schema']);
 const THINKING_KEYS = new Set(['type', 'display']);
-const THINKING_TYPES = new Set(['adaptive', 'disabled']);
+/** claude-opus-5-5 rejects `{ type: 'disabled' }` (and a budget) with a 400 at every effort. */
+const THINKING_TYPES = new Set(['adaptive']);
+/** `updates` needs a beta header the harness does not send. */
+const THINKING_DISPLAYS = new Set(['summarized', 'omitted']);
+const MESSAGE_KEYS = new Set(['role', 'content']);
+/** System text goes in the top-level `system` field; no mid-conversation system messages. */
+const MESSAGE_ROLES = new Set(['user', 'assistant']);
 /** Statuses after which no further request in the run can succeed. */
 const STOP_STATUSES = new Set([401, 403]);
 const USE_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -97,6 +121,25 @@ export function validateRequestBody(body, { model, effort, maxTokens }) {
   }
   if (!Array.isArray(body.messages) || body.messages.length === 0) {
     problems.push('messages must be a non-empty array');
+  } else {
+    body.messages.forEach((m, i) => {
+      const ok =
+        isPlainObject(m) &&
+        Object.keys(m).every((k) => MESSAGE_KEYS.has(k)) &&
+        MESSAGE_ROLES.has(m.role) &&
+        ((typeof m.content === 'string' && m.content !== '') ||
+          (Array.isArray(m.content) && m.content.length > 0));
+      if (!ok) {
+        problems.push(
+          `messages[${i}] must be { role: "user" | "assistant", content: a non-empty ` +
+            'string or array }'
+        );
+      }
+    });
+    if (body.messages[0]?.role !== 'user') problems.push('the first message must be the user’s');
+    if (body.messages.at(-1)?.role !== 'user') {
+      problems.push('the last message must be the user’s (an assistant prefill is a 400)');
+    }
   }
   const oc = body.output_config;
   if (!isPlainObject(oc)) {
@@ -123,8 +166,14 @@ export function validateRequestBody(body, { model, effort, maxTokens }) {
     const ok =
       isPlainObject(t) &&
       Object.keys(t).every((k) => THINKING_KEYS.has(k)) &&
-      THINKING_TYPES.has(t.type);
-    if (!ok) problems.push('thinking must be { type: "adaptive" | "disabled" } with no budget');
+      THINKING_TYPES.has(t.type) &&
+      (t.display === undefined || THINKING_DISPLAYS.has(t.display));
+    if (!ok) {
+      problems.push(
+        'thinking must be { type: "adaptive", display?: "summarized" | "omitted" } ' +
+          '(no budget; claude-opus-5-5 cannot disable thinking)'
+      );
+    }
   }
   if (
     body.stop_sequences !== undefined &&
@@ -163,10 +212,24 @@ function assertFileRef(ref, what) {
   return { path: ref.path, sha256: ref.sha256 };
 }
 
-/** Validate the run's own parameters (no I/O). */
+/**
+ * Validate the run's own parameters (no I/O). The records directory and the ledger path
+ * come back normalised; every later step uses those, never the caller's strings.
+ */
 function validateRun(opts) {
-  if (typeof opts.recordsDir !== 'string' || opts.recordsDir === '') {
-    throw new Error('harness: recordsDir is required');
+  const recordsDir = assertRecordsDir(opts.recordsDir);
+  const ledgerPath =
+    opts.ledgerPath === undefined
+      ? path.join(recordsDir, LEDGER_FILE)
+      : assertLedgerPath(opts.ledgerPath);
+  if (
+    opts.secrets !== undefined &&
+    !(
+      Array.isArray(opts.secrets) &&
+      opts.secrets.every((s) => typeof s === 'string' && s.length >= MIN_SECRET_LENGTH)
+    )
+  ) {
+    throw new Error('harness: secrets must be strings of at least 8 characters');
   }
   if (typeof opts.use !== 'string' || !USE_RE.test(opts.use)) {
     throw new Error(`harness: use must be a kebab-case name, got ${JSON.stringify(opts.use)}`);
@@ -190,7 +253,7 @@ function validateRun(opts) {
   if (typeof cap !== 'number' || !Number.isFinite(cap) || cap <= 0 || cap > CAP_USD) {
     throw new Error(`harness: cap must be a positive number no greater than CAP_USD (${CAP_USD})`);
   }
-  return { prompts, rulingSet, cap };
+  return { recordsDir, ledgerPath, prompts, rulingSet, cap };
 }
 
 /** Validate the request list (no I/O). */
@@ -216,6 +279,12 @@ function validateRequests(requests, run, { batch }) {
     if (problems.length) {
       throw new Error(`harness: request ${JSON.stringify(r.key)}: ${problems.join('; ')}`);
     }
+    if (r.inputTokensEstimate !== undefined && !batch) {
+      throw new Error(
+        `harness: request ${JSON.stringify(r.key)}: inputTokensEstimate is accepted in ` +
+          'batch mode only; an interactive run counts every request with count_tokens'
+      );
+    }
     if (
       r.inputTokensEstimate !== undefined &&
       !(Number.isSafeInteger(r.inputTokensEstimate) && r.inputTokensEstimate >= 0)
@@ -231,29 +300,86 @@ function validateRequests(requests, run, { batch }) {
   return out;
 }
 
-/** Transport and the secrets the records must never contain — resolved before any write. */
+/**
+ * The transport, and the secrets the records must never contain — resolved before any
+ * write. `secrets` is a function, read at every write: the caller's `secrets`,
+ * `process.env.ANTHROPIC_API_KEY`, and whatever key the transport reports in use
+ * (`transport.secrets()`). The transport the harness builds itself is handed the key it
+ * resolved, so it reports that key from the start; a caller-built transport that
+ * resolves its key lazily reports it as soon as it has it.
+ */
 function resolveTransport(opts) {
-  const secrets = [...(opts.secrets ?? [])];
+  const fixed = [...(opts.secrets ?? [])];
   const envKey = process.env.ANTHROPIC_API_KEY;
   if (typeof envKey === 'string' && envKey.trim().length >= MIN_SECRET_LENGTH) {
-    secrets.push(envKey.trim());
+    fixed.push(envKey.trim());
   }
-  if (opts.transport) return { transport: opts.transport, secrets };
-  const apiKey = resolveApiKey(opts.keyOptions);
-  if (apiKey.length >= MIN_SECRET_LENGTH) secrets.push(apiKey);
+  let transport = opts.transport;
+  if (!transport) {
+    const apiKey = resolveApiKey(opts.keyOptions);
+    if (apiKey.length < MIN_SECRET_LENGTH) {
+      throw new Error(
+        'harness: the API key is shorter than 8 characters, too short for the record guard ' +
+          'to find reliably; refusing'
+      );
+    }
+    transport = createAnthropicTransport({ apiKey, timeout: opts.timeout });
+  }
+  const reported = () => (typeof transport.secrets === 'function' ? transport.secrets() : []);
+  return { transport, secrets: () => [...fixed, ...reported()] };
+}
+
+/**
+ * Price one message (no I/O): its cost in pico-USD, or null when the price table cannot
+ * price it (an unknown answering model, missing or malformed usage — the caller then
+ * settles the worst case), and its outcome.
+ */
+function priceMessage(message, { batch }) {
+  let pico = null;
+  try {
+    if (isPlainObject(message?.usage)) {
+      pico = costPico({ model: message.model, usage: message.usage, batch });
+    }
+  } catch {
+    pico = null;
+  }
+  const outcome = message?.stop_reason === 'refusal' ? 'refusal' : 'succeeded';
+  return { pico, outcome };
+}
+
+/** The error a response that cost more than its reserved worst case is recorded with. */
+function overReservationError(actualP, reservedP) {
   return {
-    transport: createAnthropicTransport({ apiKey, timeout: opts.timeout }),
-    secrets,
+    name: 'OverReservation',
+    status: null,
+    type: 'over_reservation',
+    message:
+      `the response cost USD ${picoToUsd(actualP)}, more than the worst case of ` +
+      `USD ${picoToUsd(reservedP)} reserved for it: the price assumptions behind the cap ` +
+      'did not hold',
+    requestId: null,
   };
 }
 
 /** Shared per-run context: records, ledger, clock, version capture. */
 function openContext(
   opts,
-  { mode, runId, runDir, transport, secrets, prompts, rulingSet, cap, requestCount, existingRun }
+  {
+    mode,
+    runId,
+    runDir,
+    recordsDir,
+    ledgerPath,
+    transport,
+    secrets,
+    prompts,
+    rulingSet,
+    cap,
+    requestCount,
+    existingRun,
+  }
 ) {
   const now = opts.now ?? (() => new Date());
-  const ledgerPath = opts.ledgerPath ?? path.join(opts.recordsDir, 'ledger.jsonl');
   const writer = createRecordWriter({ dir: runDir, secrets });
   const stamp = () => now().toISOString();
   let run = existingRun;
@@ -272,7 +398,7 @@ function openContext(
       anthropicVersion: transport.anthropicVersion ? transport.anthropicVersion() : null,
       harnessCommit: (opts.harnessCommit ?? gitHarnessCommit)(),
       harnessDirty: (opts.harnessDirty ?? gitHarnessDirty)(),
-      cap: { usd: cap, ledger: path.relative(opts.recordsDir, ledgerPath) },
+      cap: { usd: cap, ledger: path.relative(recordsDir, ledgerPath) },
       pricing: { source: PRICING.source, cachedOn: PRICING.cachedOn },
       startedAt: stamp(),
       requestCount,
@@ -286,12 +412,17 @@ function openContext(
       writer.writeJson(RECORD_FILES.run, run);
     }
   };
-  const recordError = (customId, key, stage, error) =>
+  /**
+   * `result` is the raw batch result for a batch stage (it carries no headers), and null
+   * otherwise: an SDK error is never stored raw, only through describeApiError's whitelist.
+   */
+  const recordError = (customId, key, stage, error, result = null) =>
     writer.appendJsonl(RECORD_FILES.errors, {
       custom_id: customId,
       key,
       stage,
       error,
+      result,
       recordedAt: stamp(),
     });
   const recordRequest = (customId, key, inputTokens, inputTokensSource, worstP, body) =>
@@ -304,17 +435,9 @@ function openContext(
       recordedAt: stamp(),
       body,
     });
-  /** Record one message response; returns its cost in pico-USD, or null when unpriceable. */
-  const recordResponse = (customId, key, message, { batch }) => {
-    let pico = null;
-    try {
-      if (isPlainObject(message?.usage)) {
-        pico = costPico({ model: message.model, usage: message.usage, batch });
-      }
-    } catch {
-      pico = null; // unknown model or malformed usage: the caller settles the worst case
-    }
-    const outcome = message?.stop_reason === 'refusal' ? 'refusal' : 'succeeded';
+  /** Record one message response, priced by `priceMessage`; returns that pricing. */
+  const recordResponse = (customId, key, message, { batch, priced }) => {
+    const { pico, outcome } = priced ?? priceMessage(message, { batch });
     writer.appendJsonl(RECORD_FILES.responses, {
       custom_id: customId,
       key,
@@ -376,7 +499,7 @@ function emptyCounts(planned) {
  * @returns {Promise<{ runId: string, runDir: string, status: string, counts: object, totalUsd: number }>}
  */
 export async function runInteractive(opts) {
-  const { prompts, rulingSet, cap } = validateRun(opts);
+  const { recordsDir, ledgerPath, prompts, rulingSet, cap } = validateRun(opts);
   const run = { model: opts.model, effort: opts.effort, maxTokens: opts.maxTokens };
   const requests = validateRequests(opts.requests, run, { batch: false });
   const maxConsecutive = opts.maxConsecutiveErrors ?? DEFAULT_MAX_CONSECUTIVE_ERRORS;
@@ -384,13 +507,15 @@ export async function runInteractive(opts) {
 
   const now = opts.now ?? (() => new Date());
   const runId = opts.runId ?? mintRunId(now());
-  const runDir = createRunDir(opts.recordsDir, runId);
+  const runDir = createRunDir(recordsDir, runId);
   const ctx = openContext(
     { ...opts, now },
     {
       mode: 'interactive',
       runId,
       runDir,
+      recordsDir,
+      ledgerPath,
       transport,
       secrets,
       prompts,
@@ -411,29 +536,27 @@ export async function runInteractive(opts) {
   };
 
   for (let i = 0; i < requests.length; i++) {
-    const { key, body, inputTokensEstimate } = requests[i];
+    const { key, body } = requests[i];
     const customId = mintCustomId(i);
 
-    let inputTokens = inputTokensEstimate;
-    let inputTokensSource = 'estimate';
-    if (inputTokens === undefined) {
-      try {
-        inputTokens = (await transport.countTokens(body)).input_tokens;
-        inputTokensSource = 'count_tokens';
-        if (!Number.isSafeInteger(inputTokens) || inputTokens < 0) {
-          throw new Error(`count_tokens returned ${JSON.stringify(inputTokens)}`);
-        }
-      } catch (err) {
-        ctx.noteVersion();
-        ctx.recordError(customId, key, 'count_tokens', describeApiError(err));
-        if (failed(err)) {
-          status = 'stopped-on-errors';
-          break;
-        }
-        continue;
+    // Always counted: an interactive run takes no caller estimate (validateRequests).
+    let inputTokens;
+    const inputTokensSource = 'count_tokens';
+    try {
+      inputTokens = (await transport.countTokens(body)).input_tokens;
+      if (!Number.isSafeInteger(inputTokens) || inputTokens < 0) {
+        throw new Error(`count_tokens returned ${JSON.stringify(inputTokens)}`);
       }
+    } catch (err) {
       ctx.noteVersion();
+      ctx.recordError(customId, key, 'count_tokens', describeApiError(err));
+      if (failed(err)) {
+        status = 'stopped-on-errors';
+        break;
+      }
+      continue;
     }
+    ctx.noteVersion();
 
     const worstP = worstCasePico({
       model: opts.model,
@@ -489,8 +612,10 @@ export async function runInteractive(opts) {
     }
     ctx.noteVersion();
     consecutive = 0;
-    const { pico, outcome } = ctx.recordResponse(customId, key, message, { batch: false });
-    const spentP = pico ?? worstP;
+    // Settle BEFORE recording: the call was billed, so the ledger must hold it even if its
+    // record is refused (a record carrying a secret throws and ends the run).
+    const priced = priceMessage(message, { batch: false });
+    const spentP = priced.pico ?? worstP;
     settleAndRelease({
       ledgerPath: ctx.ledgerPath,
       id: reservation.id,
@@ -498,7 +623,13 @@ export async function runInteractive(opts) {
       now,
     });
     totalPico += spentP;
-    counts[outcome]++;
+    ctx.recordResponse(customId, key, message, { batch: false, priced });
+    counts[priced.outcome]++;
+    if (spentP > worstP) {
+      ctx.recordError(customId, key, 'over_reservation', overReservationError(spentP, worstP));
+      status = 'stopped-over-reservation';
+      break;
+    }
   }
 
   ctx.writeRunEnd(status, counts, totalPico, null);
@@ -514,10 +645,9 @@ export async function runInteractive(opts) {
  *   totalUsd?: number, batchId?: string }>}
  */
 export async function runBatch(opts) {
-  const { prompts, rulingSet, cap } = validateRun(opts);
+  const { recordsDir, ledgerPath, prompts, rulingSet, cap } = validateRun(opts);
   const run = { model: opts.model, effort: opts.effort, maxTokens: opts.maxTokens };
-  const resuming =
-    opts.runId !== undefined && fs.existsSync(runDirFor(opts.recordsDir, opts.runId));
+  const resuming = opts.runId !== undefined && fs.existsSync(runDirFor(recordsDir, opts.runId));
   const requests =
     !resuming || opts.requests !== undefined
       ? validateRequests(opts.requests, run, { batch: true })
@@ -525,15 +655,19 @@ export async function runBatch(opts) {
   const { transport, secrets } = resolveTransport(opts);
   const now = opts.now ?? (() => new Date());
   const base = { ...opts, now };
+  const where = { recordsDir, ledgerPath };
 
-  if (resuming) return resumeBatch(base, { transport, secrets, prompts, rulingSet, cap, requests });
+  if (resuming) {
+    return resumeBatch(base, { ...where, transport, secrets, prompts, rulingSet, cap, requests });
+  }
 
   const runId = opts.runId ?? mintRunId(now());
-  const runDir = createRunDir(opts.recordsDir, runId);
+  const runDir = createRunDir(recordsDir, runId);
   const ctx = openContext(base, {
     mode: 'batch',
     runId,
     runDir,
+    ...where,
     transport,
     secrets,
     prompts,
@@ -651,9 +785,12 @@ export async function runBatch(opts) {
   });
 }
 
-async function resumeBatch(opts, { transport, secrets, prompts, rulingSet, cap, requests }) {
+async function resumeBatch(
+  opts,
+  { recordsDir, ledgerPath, transport, secrets, prompts, rulingSet, cap, requests }
+) {
   const runId = opts.runId;
-  const runDir = openRunDir(opts.recordsDir, runId);
+  const runDir = openRunDir(recordsDir, runId);
   const probe = createRecordWriter({ dir: runDir, secrets });
   if (probe.exists(RECORD_FILES.runEnd)) {
     throw new Error(`harness: run ${runId} is finished (run-end.json exists); nothing to resume`);
@@ -702,6 +839,8 @@ async function resumeBatch(opts, { transport, secrets, prompts, rulingSet, cap, 
     mode: 'batch',
     runId,
     runDir,
+    recordsDir,
+    ledgerPath,
     transport,
     secrets,
     prompts,
@@ -749,27 +888,41 @@ async function pollAndCollect(opts, ctx, { runId, runDir, transport, batchId, re
     done.add(customId);
     const line = byId.get(customId);
     if (!line) {
-      ctx.recordError(customId, null, 'unknown_custom_id', {
-        name: 'BatchResult',
-        status: null,
-        type: r?.result?.type ?? null,
-        message: 'a result for a custom_id this run never sent',
-        requestId: null,
-      });
+      ctx.recordError(
+        customId,
+        null,
+        'unknown_custom_id',
+        {
+          name: 'BatchResult',
+          status: null,
+          type: r?.result?.type ?? null,
+          message: 'a result for a custom_id this run never sent',
+          requestId: null,
+        },
+        r?.result ?? null
+      );
       continue;
     }
     if (r?.result?.type === 'succeeded') {
+      // The message plus custom_id IS the batch result: its only other field, result.type,
+      // is 'succeeded' on every line of responses.jsonl.
       ctx.recordResponse(customId, line.key, r.result.message, { batch: true });
     } else {
       const inner = r?.result?.error?.error ?? r?.result?.error ?? null;
-      ctx.recordError(customId, line.key, 'batch_result', {
-        name: 'BatchResult',
-        status: null,
-        type: r?.result?.type ?? null,
-        message:
-          [inner?.type, inner?.message].filter((x) => typeof x === 'string').join(': ') || null,
-        requestId: null,
-      });
+      ctx.recordError(
+        customId,
+        line.key,
+        'batch_result',
+        {
+          name: 'BatchResult',
+          status: null,
+          type: r?.result?.type ?? null,
+          message:
+            [inner?.type, inner?.message].filter((x) => typeof x === 'string').join(': ') || null,
+          requestId: null,
+        },
+        r?.result ?? null
+      );
     }
   }
   for (const l of requestLines) {
@@ -807,6 +960,30 @@ async function pollAndCollect(opts, ctx, { runId, runDir, transport, batchId, re
       now: ctx.now,
     });
   }
+  // A result that cost more than its own reserved worst case means the estimate (or the
+  // price assumptions) did not hold. The money is spent and settled above; the run says
+  // so, once per result (a resumed run does not repeat a line already written).
+  const flagged = new Set(
+    errors.filter((l) => l.stage === 'over_reservation').map((l) => l.custom_id)
+  );
+  let over = false;
+  for (const resp of responses) {
+    if (resp.costUsd === null) continue; // settled at its worst case, so never above it
+    const actual = usdToPico(resp.costUsd);
+    const reserved = usdToPico(byId.get(resp.custom_id).worstCaseUsd);
+    if (actual <= reserved) continue;
+    over = true;
+    if (!flagged.has(resp.custom_id)) {
+      ctx.recordError(
+        resp.custom_id,
+        resp.key,
+        'over_reservation',
+        overReservationError(actual, reserved)
+      );
+    }
+  }
+  if (actualP > usdToPico(state.reservedUsd)) over = true;
+  const status = over ? 'complete-over-reservation' : 'complete';
   const counts = {
     planned: requestLines.length,
     sent: requestLines.length,
@@ -816,6 +993,6 @@ async function pollAndCollect(opts, ctx, { runId, runDir, transport, batchId, re
       .length,
     notSent: 0,
   };
-  ctx.writeRunEnd('complete', counts, actualP, batchId);
-  return { runId, runDir, status: 'complete', counts, totalUsd: picoToUsd(actualP), batchId };
+  ctx.writeRunEnd(status, counts, actualP, batchId);
+  return { runId, runDir, status, counts, totalUsd: picoToUsd(actualP), batchId };
 }

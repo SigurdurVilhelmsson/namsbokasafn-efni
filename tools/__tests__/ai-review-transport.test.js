@@ -98,6 +98,26 @@ describe('createAnthropicTransport', () => {
     }
   });
 
+  it('reports the key it was given as a secret for the record guard', () => {
+    const t = createAnthropicTransport({ apiKey: BOGUS_KEY, fetch: fakeApi().fetch });
+    expect(t.secrets()).toEqual([BOGUS_KEY]);
+  });
+
+  it('reports a key it resolves lazily once it has resolved it, and none before', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ai-review-transport-'));
+    try {
+      const envFile = path.join(dir, 'test.env');
+      fs.writeFileSync(envFile, `ANTHROPIC_API_KEY=${BOGUS_KEY}\n`);
+      const api = fakeApi({ 'POST /v1/messages': () => json(message()) });
+      const t = createAnthropicTransport({ fetch: api.fetch, keyOptions: { env: {}, envFile } });
+      expect(t.secrets()).toEqual([]);
+      await t.send(body);
+      expect(t.secrets()).toEqual([BOGUS_KEY]);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it('sends a message and captures the anthropic-version header actually sent', async () => {
     const api = fakeApi({ 'POST /v1/messages': () => json(message()) });
     const t = createAnthropicTransport({ apiKey: BOGUS_KEY, fetch: api.fetch });

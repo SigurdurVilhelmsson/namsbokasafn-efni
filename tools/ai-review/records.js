@@ -11,14 +11,15 @@
  *   runs/<runId>/requests.jsonl  custom_id, the key it stands for, the full request body
  *   runs/<runId>/responses.jsonl custom_id, key, the raw response, stop_reason, the model
  *                                that answered, usage, cost
- *   runs/<runId>/errors.jsonl    custom_id, key, the stage that failed, whitelisted error
+ *   runs/<runId>/errors.jsonl    custom_id, key, the stage that failed, whitelisted error,
+ *                                and the raw batch result for a batch stage (else null)
  *   runs/<runId>/batch.json      batch mode only: the batch id and its reservation
  *   runs/<runId>/run-end.json    how the run ended
  *
  * 🔴 No API key or header is ever written. Callers never hand headers to a writer, and
  * every writer additionally refuses (throws, writes nothing) any record whose text
- * contains one of the secrets it was given — fail-closed, because these files are
- * committed to a public repository.
+ * contains one of the secrets it was given, raw or in the escaped form JSON writes it in
+ * — fail-closed, because these files are committed to a public repository.
  */
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -112,30 +113,46 @@ export function openRunDir(recordsDir, runId) {
 }
 
 /**
- * Throw if `text` contains any secret. The message names no secret.
+ * Throw if `text` contains any secret, raw or in the escaped form JSON writes it in (a
+ * secret holding `"`, `\` or a control character appears escaped in a serialised
+ * record, so a raw comparison alone would miss it). The message names no secret.
  * @param {string} text
  * @param {string[]} secrets
  * @param {string} where
  */
 export function assertNoSecrets(text, secrets, where) {
   for (const s of secrets) {
-    if (text.includes(s)) {
+    if (text.includes(s) || text.includes(JSON.stringify(s).slice(1, -1))) {
       throw new Error(`records: refusing to write ${where}: it contains a secret`);
     }
   }
 }
 
-/**
- * A writer bound to one directory and a set of secrets it must never write.
- * @param {{ dir: string, secrets?: Array<string|null|undefined> }} args
- */
-export function createRecordWriter({ dir, secrets = [] }) {
-  const guarded = secrets.filter((s) => s !== null && s !== undefined);
+function checkedSecrets(list) {
+  const guarded = (list ?? []).filter((s) => s !== null && s !== undefined);
   for (const s of guarded) {
     if (typeof s !== 'string' || s.length < MIN_SECRET_LENGTH) {
       throw new Error('records: a secret shorter than 8 characters cannot be guarded reliably');
     }
   }
+  return guarded;
+}
+
+/**
+ * A writer bound to one directory and a set of secrets it must never write.
+ * `secrets` is a list, checked once, or a function returning the list, read and checked
+ * at every write (for a key a transport resolves only when its first call needs it).
+ * @param {{ dir: string,
+ *   secrets?: Array<string|null|undefined> | (() => Array<string|null|undefined>) }} args
+ */
+export function createRecordWriter({ dir, secrets = [] }) {
+  const current =
+    typeof secrets === 'function'
+      ? () => checkedSecrets(secrets())
+      : (
+          (fixed) => () =>
+            fixed
+        )(checkedSecrets(secrets));
   const fileOf = (name) => {
     if (typeof name !== 'string' || !RECORD_NAME_RE.test(name)) {
       throw new Error(`records: not a record file name: ${JSON.stringify(name)}`);
@@ -148,7 +165,7 @@ export function createRecordWriter({ dir, secrets = [] }) {
     writeJson(name, obj) {
       const file = fileOf(name);
       const text = JSON.stringify(obj, null, 2) + '\n';
-      assertNoSecrets(text, guarded, name);
+      assertNoSecrets(text, current(), name);
       const tmp = `${file}.tmp-${process.pid}-${crypto.randomBytes(4).toString('hex')}`;
       fs.writeFileSync(tmp, text);
       fs.renameSync(tmp, file);
@@ -157,7 +174,7 @@ export function createRecordWriter({ dir, secrets = [] }) {
     appendJsonl(name, obj) {
       const file = fileOf(name);
       const text = JSON.stringify(obj) + '\n';
-      assertNoSecrets(text, guarded, name);
+      assertNoSecrets(text, current(), name);
       fs.appendFileSync(file, text);
     },
     exists(name) {

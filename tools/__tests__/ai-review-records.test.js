@@ -15,6 +15,7 @@ import {
   openRunDir,
   createRecordWriter,
   harnessCommit,
+  harnessDirty,
 } from '../ai-review/records.js';
 
 const tmpDirs = [];
@@ -116,6 +117,42 @@ describe('createRecordWriter', () => {
     expect(fs.readdirSync(dir)).toEqual(['responses.jsonl']);
   });
 
+  it.each([
+    ['a NUL', 'sk-ant-records-\u0000-escaped-0123'],
+    ['a double quote', 'sk-ant-records-"-escaped-0123'],
+    ['a backslash', 'sk-ant-records-\\-escaped-0123'],
+    ['a C0 control', 'sk-ant-records-\u0001-escaped-0123'],
+  ])(
+    'refuses a secret holding %s, which JSON writes escaped (and writes nothing)',
+    (_name, secret) => {
+      const dir = tmp();
+      const w = createRecordWriter({ dir, secrets: [secret] });
+      expect(() => w.appendJsonl(RECORD_FILES.errors, { message: `boom ${secret}` })).toThrow(
+        /secret/
+      );
+      expect(() => w.writeJson(RECORD_FILES.run, { k: secret })).toThrow(/secret/);
+      expect(fs.readdirSync(dir)).toEqual([]);
+    }
+  );
+
+  it('guards secrets supplied by a function, read at each write', () => {
+    const dir = tmp();
+    const live = [];
+    const w = createRecordWriter({ dir, secrets: () => live });
+    // control: before the secret is known, a record carrying its text is written
+    w.appendJsonl(RECORD_FILES.responses, { echoed: `key ${SECRET}` });
+    live.push(SECRET);
+    expect(() => w.appendJsonl(RECORD_FILES.responses, { echoed: `key ${SECRET}` })).toThrow(
+      /secret/
+    );
+    expect(w.readJsonl(RECORD_FILES.responses)).toHaveLength(1);
+  });
+
+  it('refuses a too-short secret from a function at the write', () => {
+    const w = createRecordWriter({ dir: tmp(), secrets: () => ['abc'] });
+    expect(() => w.appendJsonl(RECORD_FILES.responses, { ok: true })).toThrow(/secret/);
+  });
+
   it('refuses a secret too short to guard reliably', () => {
     expect(() => createRecordWriter({ dir: tmp(), secrets: ['abc'] })).toThrow(/secret/);
   });
@@ -143,5 +180,34 @@ describe('harnessCommit', () => {
       throw new Error('not a git repository');
     };
     expect(harnessCommit({ exec })).toBeNull();
+  });
+});
+
+describe('harnessDirty', () => {
+  it('is true when git reports a change under tools/ai-review', () => {
+    const exec = () => ' M tools/ai-review/harness.js\n';
+    expect(harnessDirty({ exec })).toBe(true);
+  });
+
+  it('is false when git reports nothing (control)', () => {
+    expect(harnessDirty({ exec: () => '' })).toBe(false);
+  });
+
+  it('asks git about tools/ai-review only', () => {
+    let args = null;
+    harnessDirty({
+      exec: (_cmd, a) => {
+        args = a;
+        return '';
+      },
+    });
+    expect(args).toEqual(['status', '--porcelain', '--', 'tools/ai-review']);
+  });
+
+  it('returns null when git fails', () => {
+    const exec = () => {
+      throw new Error('not a git repository');
+    };
+    expect(harnessDirty({ exec })).toBeNull();
   });
 });

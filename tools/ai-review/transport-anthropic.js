@@ -1,5 +1,6 @@
 /**
- * transport-anthropic.js — the live transport: the Anthropic SDK behind five methods.
+ * transport-anthropic.js — the live transport: the Anthropic SDK behind five methods,
+ * plus `secrets()`, the key in use once known, which the harness's record guard reads.
  *
  * Design: docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit D.
  *
@@ -93,6 +94,8 @@ function pickCountable(body) {
 export function createAnthropicTransport({ apiKey, fetch, timeout, keyOptions } = {}) {
   let client = null;
   let anthropicVersion = null;
+  /** The key in use, once known: given, or resolved by the first call that needs it. */
+  let key = apiKey ?? null;
   const baseFetch = fetch ?? ((input, init) => globalThis.fetch(input, init));
   const wrappedFetch = async (input, init) => {
     const source = init?.headers ?? (input instanceof Request ? input.headers : undefined);
@@ -102,8 +105,9 @@ export function createAnthropicTransport({ apiKey, fetch, timeout, keyOptions } 
   };
   const getClient = () => {
     if (!client) {
+      key = key ?? resolveApiKey(keyOptions);
       client = new Anthropic({
-        apiKey: apiKey ?? resolveApiKey(keyOptions),
+        apiKey: key,
         fetch: wrappedFetch,
         maxRetries: 0,
         ...(timeout ? { timeout } : {}),
@@ -143,5 +147,11 @@ export function createAnthropicTransport({ apiKey, fetch, timeout, keyOptions } 
     /** @returns {string|null} the anthropic-version header actually sent, once a call has gone */
     anthropicVersion: () => anthropicVersion,
     sdk: () => sdkInfo(),
+    /**
+     * The strings a record must never contain: the key in use, once known (empty before
+     * a lazily resolved key has been resolved). The harness reads this at every write.
+     * @returns {string[]}
+     */
+    secrets: () => (key ? [key] : []),
   };
 }
