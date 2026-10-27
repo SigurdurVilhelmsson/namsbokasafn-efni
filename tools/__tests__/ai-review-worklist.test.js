@@ -17,9 +17,9 @@
  * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,905 items, 4,926
  * candidate occurrences, 7,276 pairs, 13,551 paired items with no candidate) were measured by
  * an independent recount that does not import worklist.js: pairing by seg-markers.cjs
- * parseSegmentRecords, then the spec's candidate rule over the gate's primitives. Two
- * reviewers' runs of it and this module agree to the unit. The spec's "Measured inputs" line
- * (4,435 occurrences, 6,187 pairs) does not reproduce; the code is what these pins hold.
+ * parseSegmentRecords, then the spec's candidate rule over the gate's primitives. It was run
+ * by the U1 adversarial review and again in its fix round, and agrees with this module to the
+ * unit.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
