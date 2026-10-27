@@ -14,12 +14,14 @@
  * whole-chemistry totals (22,876 IS occurrences, 4,184 identical to EN) by the controller with
  * a separate script of its own.
  *
- * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,905 items, 4,926
- * candidate occurrences, 7,276 pairs, 13,551 paired items with no candidate) were measured by
- * an independent recount that does not import worklist.js: pairing by seg-markers.cjs
- * parseSegmentRecords, then the spec's candidate rule over the gate's primitives. It was run
- * by the U1 adversarial review and again in its fix round, and agrees with this module to the
- * unit.
+ * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,088 items, 4,105
+ * candidate occurrences, 5,613 pairs, 14,368 paired items with no candidate, 0 empty IS bodies)
+ * were measured by an independent recount that imports neither worklist.js nor mt-layers.js nor
+ * chapter-term-check.js: seg-markers.cjs parseSegmentRecords for pairing, its own word regex, its
+ * own phrase precedence and its own target masking, over the gate's two matchers and tokens.js
+ * visibleProse. It agrees with this module to the unit. These numbers include the controller's
+ * two precision rules of 2026-10-27 (phrase precedence; competitors sought outside the target's
+ * words); before them, the U1 review's recount measured 4,905 / 4,926 / 7,276 / 13,551.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
@@ -36,6 +38,7 @@ import {
 } from '../ai-review/worklist.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { carriesTarget, containsTargetStem } from '../ai-review/gate.js';
+import { headwordSpans } from '../lib/chapter-term-check.js';
 import { visibleProse } from '../ai-review/tokens.js';
 import { parseLayerFile, readBase, listChapterUnits, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
 
@@ -115,7 +118,7 @@ const findItem = (list, segmentId) =>
 
 describe('SKIP_REASONS', () => {
   it('is the closed, sorted set the spec names', () => {
-    expect(SKIP_REASONS).toEqual(['identical-to-en', 'no-en', 'no-is']);
+    expect(SKIP_REASONS).toEqual(['empty-is', 'identical-to-en', 'no-en', 'no-is']);
   });
 
   it('is frozen', () => {
@@ -152,7 +155,7 @@ describe('pairUnit', () => {
     const { items, skipped } = pairUnit({ en, is });
     expect([items.length, skipped]).toEqual([
       1,
-      { 'identical-to-en': 0, 'no-en': 0, 'no-is': 0, skippedKeys: [] },
+      { 'empty-is': 0, 'identical-to-en': 0, 'no-en': 0, 'no-is': 0, skippedKeys: [] },
     ]);
   });
 
@@ -167,6 +170,7 @@ describe('pairUnit', () => {
     expect([items.map((i) => i.segmentId), skipped]).toEqual([
       ['m1:para:a'],
       {
+        'empty-is': 0,
         'identical-to-en': 0,
         'no-en': 2,
         'no-is': 0,
@@ -192,6 +196,7 @@ describe('pairUnit', () => {
     expect([items.length, skipped]).toEqual([
       2,
       {
+        'empty-is': 0,
         'identical-to-en': 0,
         'no-en': 0,
         'no-is': 1,
@@ -215,6 +220,7 @@ describe('pairUnit', () => {
     expect([items.map((i) => i.segmentId), skipped]).toEqual([
       ['m1:para:c'],
       {
+        'empty-is': 0,
         'identical-to-en': 2,
         'no-en': 0,
         'no-is': 0,
@@ -582,7 +588,8 @@ describe('offeredRulings', () => {
   it('offers satisfied matching rulings as context once a candidate exists', () => {
     expect(
       offeredRulings({
-        item: item(FUEL_EN, FUEL_IS),
+        // the fuel cell is satisfied; the standalone cell makes the candidate
+        item: item(`${FUEL_EN} The cell runs warm.`, `${FUEL_IS} Kerið hitnar.`),
         rulings: [FUEL_CELL, CELL],
         chapterDir: 'ch17',
       })
@@ -740,6 +747,7 @@ describe('buildWorkList', () => {
 
   it("each unit keeps pairUnit's skipped record", () => {
     expect(list.units[0].skipped).toEqual({
+      'empty-is': 0,
       'identical-to-en': 1,
       'no-en': 1,
       'no-is': 1,
@@ -758,7 +766,7 @@ describe('buildWorkList', () => {
       items: 3,
       candidateOccurrences: 4,
       pairs: 3,
-      skipped: { 'identical-to-en': 1, 'no-en': 1, 'no-is': 1 },
+      skipped: { 'empty-is': 0, 'identical-to-en': 1, 'no-en': 1, 'no-is': 1 },
       noCandidate: 2,
     });
   });
@@ -817,6 +825,134 @@ describe('buildWorkList', () => {
   });
 });
 
+// ── An empty Icelandic body ─────────────────────────────────────────────────────────────
+
+describe('pairUnit: an empty IS body', () => {
+  const en = layer([
+    ['m1:para:a', 'The atom is small.'],
+    ['m1:para:b', 'The atom is large.'],
+  ]);
+  const is = parseLayerFile('<!-- SEG:m1:para:a -->\n\n<!-- SEG:m1:para:b -->\nAtómið er stórt.');
+
+  it('is skipped as empty-is: asking the model about it would be asking it to translate', () => {
+    const { items, skipped } = pairUnit({ en, is });
+    expect([skipped['empty-is'], skipped.skippedKeys]).toEqual([
+      1,
+      [{ key: 'm1:para:a', reason: 'empty-is' }],
+    ]);
+    expect(items.map((i) => i.segmentId)).toEqual(['m1:para:b']);
+  });
+});
+
+// ── Phrase precedence: a longer ruling's phrase governs the words inside it ─────────────
+
+describe('phrase precedence', () => {
+  const POOL = [CELL, FUEL_CELL];
+
+  it('a ruling whose every English match lies inside a longer ruling’s phrase does not match', () => {
+    expect(matchesOccurrence(CELL, { en: FUEL_EN }, POOL)).toBe(false);
+  });
+
+  it('control: the same ruling matches where it also stands alone', () => {
+    expect(matchesOccurrence(CELL, { en: 'A fuel cell feeds a cell.' }, POOL)).toBe(true);
+  });
+
+  it('control: without a pool, matching is plain (no precedence)', () => {
+    expect(matchesOccurrence(CELL, { en: FUEL_EN })).toBe(true);
+  });
+
+  it('the longer ruling itself still matches', () => {
+    expect(matchesOccurrence(FUEL_CELL, { en: FUEL_EN }, POOL)).toBe(true);
+  });
+
+  it('a form equal to the shorter one up to case does not count as longer', () => {
+    const upper = ruling({ id: 'cell-upper', enNorm: 'cell', en: ['Cell'], is: 'ker' });
+    expect(matchesOccurrence(CELL, { en: 'The cell.' }, [CELL, upper])).toBe(true);
+  });
+
+  it('a ruling never shadows itself: its own long form still matches (REAL forms of cell notation)', () => {
+    const NOTATION = SET.byId.get('cell-notation');
+    expect(NOTATION.en).toEqual(['cell notation', 'cell notation (schematic)']);
+    expect(
+      matchesOccurrence(NOTATION, { en: 'Write the cell notation (schematic) for it.' }, [
+        NOTATION,
+        CELL,
+      ])
+    ).toBe(true);
+  });
+
+  it('a longer phrase shadows whatever its own status (an unmatchable or held ruling too)', () => {
+    const unmatchable = { ...FUEL_CELL, id: 'fc2', matchable: false, unmatchableReason: 't' };
+    const held = { ...FUEL_CELL, id: 'fc3', kinds: ['held'] };
+    expect([
+      matchesOccurrence(CELL, { en: FUEL_EN }, [CELL, unmatchable]),
+      matchesOccurrence(CELL, { en: FUEL_EN }, [CELL, held]),
+    ]).toEqual([false, false]);
+  });
+
+  it('reaches the offer: the shadowed ruling is neither a candidate nor context', () => {
+    const offer = (en) =>
+      offeredRulings({
+        item: item(en, 'Í þessum vetnisrafala.'),
+        rulings: POOL,
+        chapterDir: 'ch17',
+      });
+    expect(offer(FUEL_EN)).toEqual({ candidateIds: ['fuel-cell'], rulingIds: ['fuel-cell'] });
+    expect(offer('A fuel cell feeds a cell.')).toEqual({
+      candidateIds: ['cell', 'fuel-cell'],
+      rulingIds: ['cell', 'fuel-cell'],
+    });
+  });
+
+  it('reaches isCandidate through its pool argument', () => {
+    const occ = { en: FUEL_EN, is: 'Í þessum vetnisrafala.' };
+    expect([isCandidate(CELL, occ, 'ch17', POOL), isCandidate(CELL, occ, 'ch17')]).toEqual([
+      false,
+      true,
+    ]);
+  });
+});
+
+// ── A competitor whose stem sits inside the target ──────────────────────────────────────
+
+describe('a self-tripping competitor (REAL: temperature → hitastig, competitor hiti)', () => {
+  const TEMP = SET.byId.get('temperature');
+  const EN = 'Thermal energy, temperature, and heat';
+
+  it('premise: the loose matcher finds the competitor inside the target itself', () => {
+    expect([
+      TEMP.is,
+      TEMP.competitors.includes('hiti'),
+      containsTargetStem(TEMP.is, 'hiti'),
+    ]).toEqual(['hitastig', true, true]);
+  });
+
+  it('a segment carrying only the target is not a candidate (REAL: m68724 title)', () => {
+    expect(isCandidate(TEMP, { en: EN, is: 'Varmaorka, hitastig og varmi' }, 'ch05')).toBe(false);
+  });
+
+  it('control: the competitor standing beside the target makes a candidate', () => {
+    expect(isCandidate(TEMP, { en: EN, is: 'Varmaorka, hitastig og hiti' }, 'ch05')).toBe(true);
+  });
+
+  it('control: an inflected target is masked too (hitastigið)', () => {
+    expect(isCandidate(TEMP, { en: EN, is: 'Hitastigið hækkar' }, 'ch05')).toBe(false);
+  });
+
+  it('control: the target absent is still a candidate', () => {
+    expect(isCandidate(TEMP, { en: EN, is: 'Hitinn hækkar' }, 'ch05')).toBe(true);
+  });
+
+  it('only a word whose HEAD is the target is masked: atóm as a modifier hides no competitor', () => {
+    // atómfrumeindin: atóm is the first part, frumeind the head, so the competitor stays visible
+    expect([
+      carriesTarget('atómfrumeindin', 'atóm'),
+      containsTargetStem('atómfrumeindin', 'atóm'),
+      isCandidate(ATOM, { en: 'The atom', is: 'Atómið og atómfrumeindin' }, 'ch02'),
+    ]).toEqual([false, true, true]);
+  });
+});
+
 // ── Real data, committed ruling set ──────────────────────────────────────────────────────
 
 describe('REAL: the committed ruling set on three captions', () => {
@@ -830,31 +966,46 @@ describe('REAL: the committed ruling set on three captions', () => {
     expect(it0.candidateIds).toContain('atom');
   });
 
-  describe('ch17 m68825 FuelCell caption', () => {
+  describe('ch17 m68825 FuelCell caption ("hydrogen fuel cell" → vetnisefnarafala)', () => {
     const list = buildWorkList({
       chapterDir: 'ch17',
       units: [readUnit('ch17', 'm68825')],
       rulings: SET.rulings,
     });
-    const it0 = findItem(list, 'm68825:caption:CNX_Chem_17_05_FuelCell-caption');
 
-    it('cell is a candidate (by its sense)', () => {
-      expect(it0.candidateIds).toContain('cell');
-    });
-
-    it('fuel cell is satisfied (vetnisefnarafala carries efnarafall), so not a candidate', () => {
-      expect(it0.candidateIds).not.toContain('fuel-cell');
-    });
-
-    it('fuel cell is still offered, as context, beside cell', () => {
-      expect([it0.rulingIds.includes('cell'), it0.rulingIds.includes('fuel-cell')]).toEqual([
-        true,
-        true,
-      ]);
+    it('is not offered at all: every "cell" sits inside "fuel cell", and fuel cell is satisfied', () => {
+      expect(findItem(list, 'm68825:caption:CNX_Chem_17_05_FuelCell-caption')).toBeUndefined();
     });
   });
 
-  it('ch18 m68830 Hall–Héroult caption: cell and electrolytic cell are both offered', () => {
+  describe('ch17 m68825 fs-idm8272528 ("Hydrogen fuel cells" → Vetnisrafalar): the coinage path', () => {
+    const unit = readUnit('ch17', 'm68825');
+    const rec = unit.en.records.find((r) => r.key === 'm68825:para:fs-idm8272528');
+    const list = buildWorkList({ chapterDir: 'ch17', units: [unit], rulings: SET.rulings });
+    const it0 = findItem(list, 'm68825:para:fs-idm8272528');
+
+    it('premise: every "cell" in its English lies inside a "fuel cell(s)"', () => {
+      const prose = visibleProse(rec.body);
+      const cells = headwordSpans('cell', prose);
+      const fuel = headwordSpans('fuel cell', prose);
+      expect(cells.length).toBeGreaterThan(0);
+      expect(cells.every(([s0, e0]) => fuel.some(([fs, fe]) => fs <= s0 && e0 <= fe))).toBe(true);
+    });
+
+    it('withholds cell, so no op on cell can pass the parser (ruling-not-offered)', () => {
+      expect(it0?.rulingIds ?? []).not.toContain('cell');
+    });
+
+    it('control: plain matching (no precedence) would have offered the sensed cell there', () => {
+      const CELL_REAL = SET.byId.get('cell');
+      expect([
+        matchesOccurrence(CELL_REAL, { en: rec.body }),
+        isCandidate(CELL_REAL, { en: rec.body, is: 'x' }, 'ch17'),
+      ]).toEqual([true, true]);
+    });
+  });
+
+  it('ch18 m68830 Hall–Héroult caption: electrolytic cell is offered and the cell inside it is not', () => {
     const list = buildWorkList({
       chapterDir: 'ch18',
       units: [readUnit('ch18', 'm68830')],
@@ -862,7 +1013,7 @@ describe('REAL: the committed ruling set on three captions', () => {
     });
     const it0 = findItem(list, 'm68830:caption:CNX_Chem_18_02_HallHerCell-caption');
     expect([it0.rulingIds.includes('cell'), it0.rulingIds.includes('electrolytic-cell')]).toEqual([
-      true,
+      false,
       true,
     ]);
   });
@@ -891,8 +1042,8 @@ describe('determinism', () => {
 
 describe('whole chemistry (every 02-structure chapter directory)', () => {
   it(
-    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,905 items',
-    { timeout: 30_000 },
+    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,088 items',
+    { timeout: 90_000 },
     () => {
       const chapters = fs
         .readdirSync(path.join(BOOK, '02-structure'))
@@ -902,6 +1053,7 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         chapters: 0,
         occurrences: 0,
         identical: 0,
+        empty: 0,
         noEn: 0,
         noIs: 0,
         candidateOccurrences: 0,
@@ -922,6 +1074,7 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         total.chapters += 1;
         total.occurrences += counts.occurrences;
         total.identical += counts.skipped['identical-to-en'];
+        total.empty += counts.skipped['empty-is'];
         total.noEn += counts.skipped['no-en'];
         total.noIs += counts.skipped['no-is'];
         total.candidateOccurrences += counts.candidateOccurrences;
@@ -941,6 +1094,7 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         chapters: total.chapters,
         occurrences: total.occurrences,
         identical: total.identical,
+        empty: total.empty,
         noEn: total.noEn,
         noIs: total.noIs,
         items: total.items,
@@ -952,12 +1106,13 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         chapters: 23,
         occurrences: 22876,
         identical: 4184,
+        empty: 0,
         noEn: 0,
         noIs: 0,
-        items: 4905,
-        candidateOccurrences: 4926,
-        pairs: 7276,
-        noCandidate: 13551,
+        items: 4088,
+        candidateOccurrences: 4105,
+        pairs: 5613,
+        noCandidate: 14368,
         contextOk: true,
       });
     }

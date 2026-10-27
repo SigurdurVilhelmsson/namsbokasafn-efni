@@ -10,25 +10,35 @@
  * The steps, per unit:
  *   1. pairUnit — pair EN and IS by OCCURRENCE KEY (`segmentId`, then `segmentId#k`), never by
  *      id alone: a duplicated id's occurrences can differ (`[[MATH:20]]` / `[[MATH:21]]` in
- *      m68727). An IS body equal to its EN body is skipped (`identical-to-en`): editing it would
- *      be translating it, which only the MT API may do.
+ *      m68727). An empty IS body (`empty-is`) and an IS body equal to its EN body
+ *      (`identical-to-en`) are skipped: editing either would be translating it, which only the MT
+ *      API may do.
  *   2. For each kept segment, the rulings that are a CANDIDATE for at least one of its
  *      occurrences (isCandidate), and — only when there is one — every eligible ruling that
  *      matches it, satisfied ones included, as context (offeredRulings). A segment with no
  *      candidate is dropped and counted.
  *
  * The selection is deliberately over-inclusive (a sensed ruling is always a candidate, the
- * competitor test is the gate's LOOSE matcher): the model and the gate narrow it.
+ * competitor test is the gate's LOOSE matcher): the model and the gate narrow it. Two rules make it
+ * precise where over-inclusion would mislead rather than merely cost:
+ *   - PHRASE PRECEDENCE: a ruling matches only where some English use of it lies outside every use
+ *     of a LONGER ruling's phrase (`cell` inside `fuel cell`). A longer phrase is a different term,
+ *     and offering the shorter ruling there invites a coined compound the gate cannot refuse
+ *     (measured: `vetnisefnarafala` → `vetniseldsneytiskeri`, and `Vetnisrafalar` → `Vetnisker`).
+ *     Every ruling given shadows, whatever its status, so this can only withhold, never offer.
+ *   - MASKED COMPETITORS: the competitor test runs on the Icelandic with every word headed by the
+ *     target blanked out, because 14 competitors' stems sit inside their own target
+ *     (`hiti` in `hitastig`) and would otherwise flag every segment that is already right.
  */
 
 import { visibleProse } from './tokens.js';
 import { isChapterDir, scopeReasons } from './scope.js';
 import { carriesTarget, containsTargetStem } from './gate.js';
-import { usesHeadword } from '../lib/chapter-term-check.js';
+import { usesHeadword, headwordSpans } from '../lib/chapter-term-check.js';
 import { STEM_RE } from '../lib/mt-layers.js';
 
 /** Why an occurrence is not offered. Closed, sorted. */
-export const SKIP_REASONS = Object.freeze(['identical-to-en', 'no-en', 'no-is']);
+export const SKIP_REASONS = Object.freeze(['empty-is', 'identical-to-en', 'no-en', 'no-is']);
 
 /** Code-unit order: the same on every machine (localeCompare depends on the ICU locale). */
 const byCodeUnit = (a, b) => {
@@ -55,7 +65,7 @@ const emptySkipped = () => ({
 /**
  * @typedef {{ occurrence: number, key: string, en: string, is: string }} Occurrence
  * @typedef {{ segmentId: string, occurrences: Occurrence[] }} PairedItem
- * @typedef {{ 'identical-to-en': number, 'no-en': number, 'no-is': number,
+ * @typedef {{ 'empty-is': number, 'identical-to-en': number, 'no-en': number, 'no-is': number,
  *   skippedKeys: Array<{ key: string, reason: string }> }} Skipped
  */
 
@@ -65,7 +75,7 @@ const emptySkipped = () => ({
  * `items` holds one entry per segment id that kept at least one occurrence, ordered by that
  * id's FIRST occurrence in the IS file (whether or not that occurrence was kept); each item's
  * occurrences ascend. `skippedKeys` lists the IS file's skipped occurrences in its order
- * (`no-en`, `identical-to-en`), then the EN occurrences with no IS partner in the EN file's
+ * (`no-en`, `empty-is`, `identical-to-en`), then the EN occurrences with no IS partner in the EN file's
  * order (`no-is`). Bodies are compared byte for byte, unnormalised.
  *
  * @param {{ en: import('../lib/mt-layers.js').ParsedLayer,
@@ -92,6 +102,7 @@ export function pairUnit({ en, is } = {}) {
       order.push(r.segmentId);
     }
     if (!enByKey.has(r.key)) skip(r.key, 'no-en');
+    else if (r.body === '') skip(r.key, 'empty-is');
     else if (enByKey.get(r.key) === r.body) skip(r.key, 'identical-to-en');
     else {
       kept.get(r.segmentId).push({
@@ -157,42 +168,96 @@ export function isEligible(ruling, chapterDir) {
   );
 }
 
-/** Does `ruling` match English visible prose `prose`? Some form used as a word. */
-const matchesProse = (ruling, prose) =>
-  Array.isArray(ruling?.en) && ruling.en.some((form) => usesHeadword(form, prose));
+const formsOf = (r) =>
+  Array.isArray(r?.en) ? r.en.filter((f) => typeof f === 'string' && f.trim() !== '') : [];
+
+/**
+ * The forms of OTHER rulings in `pool` that are longer phrases containing one of `ruling`'s
+ * forms as a whole word (`fuel cell` for `cell`). Longer means more characters, so a form equal
+ * up to case never counts. A ruling never shadows itself: `cell notation (schematic)` must not
+ * hide the same ruling's own long form.
+ * @param {object} ruling
+ * @param {ReadonlyArray<object>} pool
+ * @returns {string[]}
+ */
+function longerPhrases(ruling, pool) {
+  const mine = formsOf(ruling);
+  const out = new Set();
+  for (const other of pool) {
+    if (other === ruling || other?.id === ruling.id) continue;
+    for (const fL of formsOf(other)) {
+      const contains = mine.some((fR) => [...fL].length > [...fR].length && usesHeadword(fR, fL));
+      if (contains) out.add(fL);
+    }
+  }
+  return [...out].sort(byCodeUnit);
+}
+
+/**
+ * Does `ruling` match English visible prose `prose`? Some form used as a word, at a place no
+ * `longer` phrase covers.
+ */
+const matchesProse = (ruling, prose, longer = []) => {
+  const forms = formsOf(ruling);
+  if (longer.length === 0) return forms.some((form) => usesHeadword(form, prose));
+  const covers = longer.flatMap((fL) => headwordSpans(fL, prose));
+  return forms.some((form) =>
+    headwordSpans(form, prose).some(([s, e]) => !covers.some(([cs, ce]) => cs <= s && e <= ce))
+  );
+};
 
 /**
  * Does some English form of `ruling` occur, as a word, in what a reader sees of `occ.en`
- * (tokens.js visibleProse: not inside `E[[sub:cell]]`, an id or a URL)?
+ * (tokens.js visibleProse: not inside `E[[sub:cell]]`, an id or a URL), outside the phrase of
+ * every longer ruling in `pool` (phrase precedence; with no pool, matching is plain)?
  * @param {object} ruling
  * @param {{ en: string }} occ
+ * @param {ReadonlyArray<object>} [pool] every ruling, for phrase precedence
  * @returns {boolean}
  */
-export function matchesOccurrence(ruling, occ) {
-  return matchesProse(ruling, visibleProse(occ.en));
+export function matchesOccurrence(ruling, occ, pool = []) {
+  return matchesProse(ruling, visibleProse(occ.en), longerPhrases(ruling, pool));
+}
+
+/** A word: letters (and their marks), hyphen-joined parts included — gate.js's WORD_RUN. */
+const WORD_RUN = /\p{L}[\p{L}\p{M}]*(?:-\p{L}[\p{L}\p{M}]*)*/gu;
+
+/** `text` with every word headed by a word of `target` (gate.js carriesTarget) blanked. */
+function maskTargetWords(text, target) {
+  const words = String(target).split(/\s+/u).filter(Boolean);
+  return text.replace(WORD_RUN, (w) =>
+    words.some((tw) => carriesTarget(w, tw)) ? ' '.repeat(w.length) : w
+  );
 }
 
 /**
  * Is a matching ruling a candidate for an occurrence's Icelandic? It has a sense (the model must
  * judge it), or the IS does not carry the target (gate.js carriesTarget, strict), or the IS holds
- * a competitor (gate.js containsTargetStem, loose). Assumes eligibility and a match.
+ * a competitor (gate.js containsTargetStem, loose) OUTSIDE the words that carry the target.
+ * Assumes eligibility and a match.
  */
-const needsReview = (ruling, isText) =>
-  ruling.sense !== null ||
-  !carriesTarget(isText, ruling.is) ||
-  ruling.competitors.some((c) => containsTargetStem(isText, c));
+const needsReview = (ruling, isText) => {
+  if (ruling.sense !== null || !carriesTarget(isText, ruling.is)) return true;
+  if (ruling.competitors.length === 0) return false;
+  const rest = maskTargetWords(isText, ruling.is);
+  return ruling.competitors.some((c) => containsTargetStem(rest, c));
+};
 
 /**
- * Is `ruling` a candidate for `occ` in `chapterDir`: eligible, matching, and in need of review
- * (sensed, target not carried, or a competitor present)? Throws on a malformed `chapterDir`.
+ * Is `ruling` a candidate for `occ` in `chapterDir`: eligible, matching (with phrase precedence
+ * over `pool`), and in need of review (sensed, target not carried, or a competitor present outside
+ * the target's words)? Throws on a malformed `chapterDir`.
  * @param {object} ruling
  * @param {{ en: string, is: string }} occ
  * @param {string} chapterDir
+ * @param {ReadonlyArray<object>} [pool] every ruling, for phrase precedence
  * @returns {boolean}
  */
-export function isCandidate(ruling, occ, chapterDir) {
+export function isCandidate(ruling, occ, chapterDir, pool = []) {
   return (
-    isEligible(ruling, chapterDir) && matchesOccurrence(ruling, occ) && needsReview(ruling, occ.is)
+    isEligible(ruling, chapterDir) &&
+    matchesOccurrence(ruling, occ, pool) &&
+    needsReview(ruling, occ.is)
   );
 }
 
@@ -200,7 +265,7 @@ export function isCandidate(ruling, occ, chapterDir) {
  * The offer for one item, over rulings ALREADY known eligible. Each occurrence's visible prose
  * is computed once. Returns sorted id lists and how many occurrences have a candidate.
  */
-function offerFor(item, eligible) {
+function offerFor(item, eligible, longerById) {
   const candidates = new Set();
   const matching = new Set();
   let candidateOccurrences = 0;
@@ -208,7 +273,7 @@ function offerFor(item, eligible) {
     const prose = visibleProse(occ.en);
     let any = false;
     for (const ruling of eligible) {
-      if (!matchesProse(ruling, prose)) continue;
+      if (!matchesProse(ruling, prose, longerById.get(ruling.id))) continue;
       matching.add(ruling.id);
       if (needsReview(ruling, occ.is)) {
         candidates.add(ruling.id);
@@ -225,6 +290,10 @@ function offerFor(item, eligible) {
   };
 }
 
+/** Each eligible ruling's longer phrases, over the whole pool (phrase precedence). */
+const longerTable = (eligible, pool) =>
+  new Map(eligible.map((r) => [r.id, longerPhrases(r, pool)]));
+
 /**
  * The rulings offered for one item. `candidateIds`: rulings that are a candidate for at least
  * one occurrence. `rulingIds`: every eligible ruling matching at least one occurrence, satisfied
@@ -236,10 +305,8 @@ function offerFor(item, eligible) {
  */
 export function offeredRulings({ item, rulings, chapterDir } = {}) {
   assertChapterDir(chapterDir);
-  const { candidateIds, rulingIds } = offerFor(
-    item,
-    rulings.filter((r) => isEligible(r, chapterDir))
-  );
+  const eligible = rulings.filter((r) => isEligible(r, chapterDir));
+  const { candidateIds, rulingIds } = offerFor(item, eligible, longerTable(eligible, rulings));
   return { candidateIds, rulingIds };
 }
 
@@ -266,6 +333,7 @@ export function buildWorkList({ chapterDir, units, rulings } = {}) {
   if (!Array.isArray(units)) throw new Error('worklist: units must be an array');
   if (!Array.isArray(rulings)) throw new Error('worklist: rulings must be an array');
   const eligible = rulings.filter((r) => isEligible(r, chapterDir));
+  const longerById = longerTable(eligible, rulings);
   const counts = {
     units: units.length,
     occurrences: 0,
@@ -293,7 +361,7 @@ export function buildWorkList({ chapterDir, units, rulings } = {}) {
     for (const r of SKIP_REASONS) counts.skipped[r] += skipped[r];
     const items = [];
     for (const item of paired) {
-      const offer = offerFor(item, eligible);
+      const offer = offerFor(item, eligible, longerById);
       if (offer.candidateIds.length === 0) {
         counts.noCandidate += 1;
         continue;

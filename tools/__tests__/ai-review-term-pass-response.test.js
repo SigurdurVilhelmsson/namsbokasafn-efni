@@ -1087,6 +1087,12 @@ describe('KNOWN GAP (design, not U3): rule 4 cannot see an uncatalogued renderin
   // or design change for the controller to rule on, not a parser change. The `it.fails` below
   // asserts the WANTED behaviour, so it turns red the day such a change lands here and this
   // marker cannot outlive the gap.
+  // ✏️ Ruled 2026-10-27 (controller): closed UPSTREAM, by phrase precedence in the work list
+  // (worklist.js). Every "cell" in that segment lies inside "fuel cell(s)", so `cell` is never
+  // offered there, and an op naming it is refused here as ruling-not-offered. This block still
+  // fakes `presented: ['cell','fuel-cell']`, a request the work list no longer builds, so the
+  // parser-level gap it marks remains true of the parser alone; worklist's test of the same
+  // real segment pins the closure.
   const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
   const ID = 'fs-idm8272528';
   const segmentText = (tree, file) => {

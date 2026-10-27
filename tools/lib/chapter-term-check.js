@@ -49,18 +49,41 @@ export function foldUmlaut(s) {
  * case-sensitive, as on the MT leg (`As` is arsenic, *as* is not); longer ones are
  * case-insensitive and admit a plural `-s`/`-es`.
  */
+/** The one pattern behind usesHeadword and headwordSpans: `{ source, flags }`. */
+function headwordPattern(headword) {
+  const esc = headword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return [...headword].length <= 3
+    ? { source: `(?<![\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, flags: 'u' }
+    : { source: `(?<![\\p{L}\\p{N}])${esc}(?:e?s)?(?![\\p{L}\\p{N}])`, flags: 'iu' };
+}
+
 const wordRe = new Map();
 export function usesHeadword(headword, text) {
   let re = wordRe.get(headword);
   if (!re) {
-    const esc = headword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    re =
-      [...headword].length <= 3
-        ? new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, 'u')
-        : new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?:e?s)?(?![\\p{L}\\p{N}])`, 'iu');
+    const { source, flags } = headwordPattern(headword);
+    re = new RegExp(source, flags);
     wordRe.set(headword, re);
   }
   return re.test(text);
+}
+
+/**
+ * Where usesHeadword fires: every word-bounded use of `headword` in `text`, as
+ * `[start, end)` ranges in order (same pattern, so the two always agree).
+ * @param {string} headword
+ * @param {string} text
+ * @returns {Array<[number, number]>}
+ */
+const spanRe = new Map();
+export function headwordSpans(headword, text) {
+  let re = spanRe.get(headword);
+  if (!re) {
+    const { source, flags } = headwordPattern(headword);
+    re = new RegExp(source, `${flags}g`);
+    spanRe.set(headword, re);
+  }
+  return [...text.matchAll(re)].map((m) => [m.index, m.index + m[0].length]);
 }
 
 /**
