@@ -30,6 +30,7 @@ import {
   removeTempDirs,
   mockTransport,
   scriptedAnswer,
+  messageFor,
   TIO2_ID,
   AL_ID,
 } from './helpers/term-pass-fixture.js';
@@ -499,5 +500,85 @@ describe('a run killed mid-flight stays resumable and applicable', () => {
     await expect(
       main(['resume', '--run', b.results[0].runId], S.deps({ ...extra, transport: t }))
     ).rejects.toThrow(/term-pass\.json/);
+  });
+});
+
+// The runner review (2026-10-27): a chapter whose every response was truncated or refused
+// still ended 'complete', so the next chapter was sent (spend-cap, high); and a run that did
+// not end complete exited 0 like one that did (cli-ops, medium).
+describe('run stops before the next chapter when a chapter answered unusably, and says so in its exit code', () => {
+  function setupTwo() {
+    const fx = makeTempRepo({ chapters: ['ch01', 'ch02'] });
+    const lines = [];
+    const deps = (extra = {}) => ({
+      repoRoot: fx.root,
+      bookDir: fx.book,
+      recordsDir: fx.records,
+      git: makeGit({ cwd: fx.root }),
+      codePaths: ['tools/ai-review/prompts'],
+      stdout: (s) => lines.push(s),
+      now,
+      ...HARNESS,
+      ...extra,
+    });
+    return { fx, lines, deps };
+  }
+  const answering = (stopReason) => {
+    const t = mockTransport();
+    t.send = async (body) => {
+      t.calls.send += 1;
+      return messageFor(scriptedAnswer(body), { stopReason });
+    };
+    return t;
+  };
+  const TWO = ['run', '--chapter', 'ch01', '--chapter', 'ch02', '--mode', 'interactive', '--yes'];
+
+  it('refused answers: ch01 ends complete with no usable response, so ch02 is never sent', async () => {
+    const S = setupTwo();
+    const r = await main(TWO, S.deps({ transport: answering('refusal') }));
+    expect(r.results.map((x) => x.chapterDir)).toEqual(['ch01']);
+    expect(r.results[0].status).toBe('complete');
+    expect(r.results[0].counts.refusal).toBeGreaterThan(0);
+    expect(r.exitCode).toBe(2);
+    const out = S.lines.join('');
+    expect(out).toMatch(/ch01: .*refusal [1-9]/);
+    expect(out).toMatch(/stopping/);
+  });
+
+  it('truncated answers stop the run too, and exit 2', async () => {
+    const S = setupTwo();
+    const r = await main(TWO, S.deps({ transport: answering('max_tokens') }));
+    expect(r.results.map((x) => x.chapterDir)).toEqual(['ch01']);
+    expect(r.exitCode).toBe(2);
+    expect(S.lines.join('')).toMatch(/truncated [1-9]/);
+  });
+
+  it('control: good answers send both chapters and exit 0', async () => {
+    const S = setupTwo();
+    const r = await main(TWO, S.deps({ transport: mockTransport() }));
+    expect(r.results.map((x) => [x.chapterDir, x.status])).toEqual([
+      ['ch01', 'complete'],
+      ['ch02', 'complete'],
+    ]);
+    expect(r.exitCode).toBe(0);
+  });
+
+  it('a batch left pending exits 2 from run and from resume, and 0 once resume completes', async () => {
+    const S = setup();
+    const t = mockTransport({ batchStates: ['in_progress', 'in_progress', 'ended'] });
+    const extra = { transport: t, sleep: async () => {}, pollIntervalMs: 0 };
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'batch', '--yes', '--max-polls', '1'],
+      S.deps(extra)
+    );
+    expect(r.results[0].status).toBe('pending');
+    expect(r.exitCode).toBe(2);
+    const runId = r.results[0].runId;
+    const again = await main(['resume', '--run', runId, '--max-polls', '1'], S.deps(extra));
+    expect(again.status).toBe('pending');
+    expect(again.exitCode).toBe(2);
+    const done = await main(['resume', '--run', runId], S.deps(extra));
+    expect(done.status).toBe('complete');
+    expect(done.exitCode).toBe(0);
   });
 });

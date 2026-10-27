@@ -11,8 +11,13 @@
  *           stops after the preflight and the plan. One harness run per chapter, one at a
  *           time, so only one reservation is ever open (a whole-book batch would exceed the
  *           cap on its reservation alone). Stops at the first chapter that does not end
- *           complete.
- *   resume  Resume a batch run whose polling stopped (`pending`).
+ *           complete, or whose answers are not all usable (truncated, refused, errored or
+ *           missing); each chapter's line prints those counts.
+ *   resume  Resume a batch run whose polling stopped (`pending`). It collects against the
+ *           recorded requests; apply, not resume, refuses results whose inputs changed.
+ *
+ * Exit codes: 0 done; 1 refused or failed (the message says why); 2 run/resume ended
+ * without every chapter complete and fully usable (the printed remedy says what next).
  *   apply   0 ISK. Recorded responses → gate (with the group rule) → change records → a
  *           complete layer-2 chapter. Dry unless --write; --report writes a reviewer's
  *           markdown outside the repository.
@@ -515,6 +520,7 @@ async function cmdRun(ctx, values, deps) {
   }
   let budget = limit ?? Infinity;
   const results = [];
+  let stopped = false;
   for (const chapterDir of chapters) {
     if (budget <= 0) break;
     const plan = plans.get(chapterDir);
@@ -561,21 +567,62 @@ async function cmdRun(ctx, values, deps) {
     };
     const result = mode === 'batch' ? await runBatch(opts) : await runInteractive(opts);
     results.push({ chapterDir, ...result });
-    ctx.out(
-      `${chapterDir}: run ${result.runId} ${result.status}${result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : ''}\n`
-    );
-    if (result.status === 'pending') {
-      ctx.out(`  resume with: node tools/ai-review/term-pass.js resume --run ${result.runId}\n`);
-      break;
-    }
-    if (result.status !== 'complete') {
-      ctx.out('  stopping: later chapters are not sent after a run that did not end complete.\n');
+    if (!judgeRun(ctx, chapterDir, result)) {
+      ctx.out('  stopping: later chapters are not sent.\n');
+      stopped = true;
       break;
     }
   }
   const ledger = summarizeLedger(readLedger(path.join(ctx.recordsDir, 'ledger.jsonl')));
   ctx.out(`ledger: ${JSON.stringify(ledger)}\n`);
-  return { sent: true, layer1Commit, results };
+  return { sent: true, layer1Commit, results, exitCode: stopped ? 2 : 0 };
+}
+
+/** What to do next after a run that did not end complete, by its status. */
+const REMEDY = Object.freeze({
+  pending: (r) => `resume with: node tools/ai-review/term-pass.js resume --run ${r.runId}`,
+  'submit-unknown': () =>
+    'the batch may exist: check the Anthropic Console before anything else; its ' +
+    'reservation stays open in the ledger (batch.json names it)',
+  'submit-failed': () => 'the API refused the batch; its reservation was released',
+  'stopped-at-cap': () => 'the spending cap refused the next reservation (see the ledger line)',
+  'stopped-on-errors': () => "too many API errors (see the run's errors.jsonl)",
+  'stopped-on-truncation': () => 'answers were cut off at max_tokens: raise --max-tokens first',
+  'stopped-over-reservation': () =>
+    'a response cost more than its reserved worst case: the price assumptions did not hold',
+  'complete-over-reservation': () =>
+    'the results are in, but a response cost more than its reserved worst case',
+});
+
+/**
+ * Print one chapter run's line with its response counts, and judge it. A run is good only
+ * when it ended 'complete' AND every request it sent came back usable: a truncated,
+ * refused, errored or missing answer reviews nothing, so the chapters after it are not sent
+ * and the command exits 2 (the runner review, 2026-10-27: such chapters used to read
+ * 'complete' and let a too-small max_tokens spend through the whole book).
+ * @returns {boolean} whether the run is good
+ */
+function judgeRun(ctx, chapterDir, result) {
+  const c = result.counts;
+  const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
+  const tally = c
+    ? ` (usable ${c.succeeded} of ${c.sent} sent; truncated ${c.truncated ?? 0}, ` +
+      `refusal ${c.refusal}, errored ${c.errored}, not sent ${c.notSent})`
+    : '';
+  ctx.out(`${chapterDir}: run ${result.runId} ${result.status}${usd}${tally}\n`);
+  if (result.status !== 'complete') {
+    const remedy = REMEDY[result.status];
+    if (remedy) ctx.out(`  ${remedy(result)}\n`);
+    return false;
+  }
+  if (c && c.succeeded < c.sent) {
+    ctx.out(
+      `  ${c.sent - c.succeeded} of ${c.sent} answers in ${chapterDir} are not usable; ` +
+        "read the run's records first (and raise --max-tokens if any were truncated)\n"
+    );
+    return false;
+  }
+  return true;
 }
 
 async function cmdResume(ctx, values, deps) {
@@ -617,8 +664,8 @@ async function cmdResume(ctx, values, deps) {
     ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
     ...(values['max-polls'] ? { maxPolls: positiveInt(values['max-polls'], 'max-polls') } : {}),
   });
-  ctx.out(`${tp.chapterDir}: run ${runId} ${result.status}\n`);
-  return result;
+  const good = judgeRun(ctx, tp.chapterDir, { ...result, runId });
+  return { ...result, exitCode: good ? 0 : 2 };
 }
 
 async function cmdApply(ctx, values) {
@@ -713,8 +760,9 @@ const isEntry = (() => {
 if (isEntry) {
   process.exitCode = 1;
   main(process.argv.slice(2)).then(
-    () => {
-      process.exitCode = 0;
+    (r) => {
+      // 2: run/resume ended without a complete, fully usable chapter (judgeRun says why).
+      process.exitCode = Number.isInteger(r?.exitCode) ? r.exitCode : 0;
     },
     (err) => {
       process.stderr.write(`term-pass: ${err.message}\n`);

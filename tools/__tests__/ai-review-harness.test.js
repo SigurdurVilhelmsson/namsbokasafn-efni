@@ -1564,3 +1564,64 @@ describe('extraRecords — written with run.json, before anything is spent', () 
     ).toEqual({ a: 1 });
   });
 });
+
+// A response cut off at max_tokens bills the full output limit and carries no usable answer.
+// The runner review (2026-10-27, spend-cap, high) measured every such response counted as
+// 'succeeded', so a too-small max_tokens ran through every chapter reading 'complete'.
+describe('a truncated response is its own outcome', () => {
+  const truncated = () =>
+    message({ stop_reason: 'max_tokens', usage: { input_tokens: 100, output_tokens: 1000 } });
+
+  it('is recorded and counted as truncated, not succeeded (interactive)', async () => {
+    const dir = tmp();
+    const r = await runInteractive({
+      ...baseOpts(dir, mockTransport({ reply: truncated })),
+      requests: [req('k0')],
+    });
+    expect(r.counts).toMatchObject({ sent: 1, succeeded: 0, truncated: 1 });
+    expect(readJsonl(path.join(r.runDir, 'responses.jsonl'))[0].outcome).toBe('truncated');
+  });
+
+  it('is recorded and counted as truncated, not succeeded (batch)', async () => {
+    const dir = tmp();
+    const t = mockTransport({
+      results: () => [
+        { custom_id: 'q000000', result: { type: 'succeeded', message: truncated() } },
+        { custom_id: 'q000001', result: { type: 'succeeded', message: message() } },
+      ],
+    });
+    const r = await runBatch({ ...baseOpts(dir, t), requests: [req('k0'), req('k1')] });
+    expect(r.counts).toMatchObject({ sent: 2, succeeded: 1, truncated: 1 });
+    const outcomes = readJsonl(path.join(r.runDir, 'responses.jsonl')).map((l) => l.outcome);
+    expect(outcomes.sort()).toEqual(['succeeded', 'truncated']);
+  });
+
+  it('control: end_turn is succeeded and counts.truncated is 0', async () => {
+    const dir = tmp();
+    const r = await runInteractive({ ...baseOpts(dir, mockTransport()), requests: [req('k0')] });
+    expect(r.counts).toMatchObject({ succeeded: 1, truncated: 0 });
+  });
+
+  it('stops an interactive run after maxConsecutiveErrors truncations in a row', async () => {
+    const dir = tmp();
+    const t = mockTransport({ reply: truncated });
+    const r = await runInteractive({
+      ...baseOpts(dir, t, { maxConsecutiveErrors: 3 }),
+      requests: [req('k0'), req('k1'), req('k2'), req('k3'), req('k4')],
+    });
+    expect(r.status).toBe('stopped-on-truncation');
+    expect(t.calls.send).toHaveLength(3);
+    expect(r.counts).toMatchObject({ sent: 3, truncated: 3, notSent: 2 });
+  });
+
+  it('control: truncations broken up by good answers do not stop the run', async () => {
+    const dir = tmp();
+    const t = mockTransport({ reply: (_b, i) => (i % 2 === 0 ? truncated() : message()) });
+    const r = await runInteractive({
+      ...baseOpts(dir, t, { maxConsecutiveErrors: 2 }),
+      requests: [req('k0'), req('k1'), req('k2'), req('k3'), req('k4')],
+    });
+    expect(r.status).toBe('complete');
+    expect(r.counts).toMatchObject({ sent: 5, succeeded: 2, truncated: 3 });
+  });
+});

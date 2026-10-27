@@ -12,9 +12,13 @@
  *     caller estimate), reserve the worst case, record the request, send, settle, record
  *     the response. An API error releases the reservation and is recorded; a refusal
  *     (`stop_reason: 'refusal'`) is recorded as an outcome and never retried, on this
- *     model or any other. The run STOPS at the first request the cap refuses, and at the
- *     first response that cost more than the worst case reserved for it
- *     (`stopped-over-reservation`: the price assumptions behind the cap did not hold).
+ *     model or any other; so is a response cut off at the token limit (`stop_reason:
+ *     'max_tokens'`, outcome `truncated`: it bills the whole output limit and answers
+ *     nothing). The run STOPS at the first request the cap refuses, at the first response
+ *     that cost more than the worst case reserved for it (`stopped-over-reservation`: the
+ *     price assumptions behind the cap did not hold), and after `maxConsecutiveErrors`
+ *     truncated responses in a row (`stopped-on-truncation`: max_tokens is too small).
+ *     Both modes count `succeeded`, `refusal` and `truncated` apart.
  *   - `runBatch`: count tokens (or take a supplied estimate), reserve the whole batch's
  *     worst case at the Batch API's half price, record the requests, record a
  *     `submitting` marker, submit, record the batch id BEFORE the first poll, poll, record
@@ -381,7 +385,12 @@ function priceMessage(message, { batch }) {
   } catch {
     pico = null;
   }
-  const outcome = message?.stop_reason === 'refusal' ? 'refusal' : 'succeeded';
+  const outcome =
+    message?.stop_reason === 'refusal'
+      ? 'refusal'
+      : message?.stop_reason === 'max_tokens'
+        ? 'truncated'
+        : 'succeeded';
   return { pico, outcome };
 }
 
@@ -553,7 +562,15 @@ function capError(err) {
 }
 
 function emptyCounts(planned) {
-  return { planned, sent: 0, succeeded: 0, refusal: 0, errored: 0, notSent: planned };
+  return {
+    planned,
+    sent: 0,
+    succeeded: 0,
+    refusal: 0,
+    truncated: 0,
+    errored: 0,
+    notSent: planned,
+  };
 }
 
 /**
@@ -599,6 +616,7 @@ export async function runInteractive(opts) {
   let totalPico = 0;
   let status = 'complete';
   let consecutive = 0;
+  let consecutiveTruncated = 0;
   const failed = (err) => {
     counts.errored++;
     consecutive++;
@@ -698,6 +716,13 @@ export async function runInteractive(opts) {
     if (spentP > worstP) {
       ctx.recordError(customId, key, 'over_reservation', overReservationError(spentP, worstP));
       status = 'stopped-over-reservation';
+      break;
+    }
+    // Each truncated answer bills the whole output limit, so a too-small max_tokens would
+    // otherwise spend through the rest of the chapter for nothing.
+    consecutiveTruncated = priced.outcome === 'truncated' ? consecutiveTruncated + 1 : 0;
+    if (consecutiveTruncated >= maxConsecutive) {
+      status = 'stopped-on-truncation';
       break;
     }
   }
@@ -1073,6 +1098,7 @@ async function pollAndCollect(opts, ctx, { runId, runDir, transport, batchId, re
     sent: requestLines.length,
     succeeded: responses.filter((l) => l.outcome === 'succeeded').length,
     refusal: responses.filter((l) => l.outcome === 'refusal').length,
+    truncated: responses.filter((l) => l.outcome === 'truncated').length,
     errored: errors.filter((l) => l.stage === 'batch_result' || l.stage === 'missing_result')
       .length,
     notSent: 0,
