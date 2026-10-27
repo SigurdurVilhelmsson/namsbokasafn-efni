@@ -71,6 +71,15 @@ export const WITHDRAWING_FLAG_KINDS = Object.freeze([
 /** Rejection reasons the runner adds on its own, as opposed to the gate's. */
 const RUNNER_WITHDRAWALS = new Set([GROUP_INCOMPLETE, FLAGGED_NO_EDIT]);
 
+/**
+ * Whether a parsed answer reviewed its request: it parsed with no request problem AND answered
+ * every segment it was shown. The one definition of "usable", for apply's coverage and for the
+ * CLI's stop rule alike (final review, 2026-10-27: an answer that skipped segments, or answered
+ * none, used to count).
+ * @param {{ problem: string|null, missing: string[] }} parsed parseTermPassResponse's result
+ */
+export const isUsableParse = (parsed) => !parsed.problem && parsed.missing.length === 0;
+
 const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 const byString = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -408,7 +417,9 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
 
   const plannedKeys = runs[0].termPass.plannedRequestKeys;
   const plannedSet = new Set(plannedKeys);
-  const usableKeys = new Set(); // planned requests whose answer parsed with no request problem
+  const usableKeys = new Set(); // planned requests with a usable answer (isUsableParse)
+  const unanswered = new Set(); // presented segment ids no usable answer reviewed
+  const truncatedKeys = new Set(); // requests whose chosen answer was cut off at max_tokens
 
   for (const req of pickResponses(runs)) {
     c.requests += 1;
@@ -437,6 +448,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     const base = { requestKey: req.key, runId: req.runId, module: stem };
 
     if (!req.response) {
+      for (const s of doc.segments) unanswered.add(s.id);
       tally(c.requestProblems, REQUEST_ERROR);
       gateLog.push({
         ...base,
@@ -453,11 +465,15 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
       rulingsById,
     });
     if (parsed.problem) {
+      for (const s of doc.segments) unanswered.add(s.id);
+      if (parsed.problem === 'response-truncated') truncatedKeys.add(req.key);
       tally(c.requestProblems, parsed.problem);
       gateLog.push({ ...base, kind: 'request', problem: parsed.problem });
       continue;
     }
-    usableKeys.add(req.key);
+    // A request whose answer skipped a segment it was shown did not review that segment; its
+    // other segments still go through the gate below.
+    if (isUsableParse(parsed)) usableKeys.add(req.key);
     for (const f of parsed.flags) {
       flags.push({ ...base, ...f });
       tally(c.flagsByKind, f.kind);
@@ -468,6 +484,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     }
     for (const s of parsed.senses) senses.push({ ...base, ...s });
     for (const id of parsed.missing) {
+      unanswered.add(id);
       c.segmentsMissing += 1;
       gateLog.push({ ...base, kind: 'missing', segmentId: id });
     }
@@ -516,17 +533,23 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
       ]);
       // A flag the model raised itself on a ruling, with a "make no edit" kind: that ruling's
       // operations in this segment are withdrawn, whatever the gate would say of them.
+      // A flag naming NO ruling withdraws every ruling's ops in the segment (over-refusal is the
+      // acceptable direction; the model said "no edit here").
       const flagged = new Map();
       for (const f of parsed.flags) {
-        if (
-          f.segmentId === s.id &&
-          !f.opId &&
-          f.rulingId !== null &&
-          WITHDRAWING_FLAG_KINDS.includes(f.kind) &&
-          !flagged.has(f.rulingId)
-        ) {
-          flagged.set(f.rulingId, f.kind);
-        }
+        if (f.segmentId !== s.id || f.opId || !WITHDRAWING_FLAG_KINDS.includes(f.kind)) continue;
+        const rulings = f.rulingId === null ? ops.map((o) => o.rulingId) : [f.rulingId];
+        for (const id of rulings) if (!flagged.has(id)) flagged.set(id, f.kind);
+      }
+      // A second entry for the segment makes the answer ambiguous: its ops were rejected
+      // (response-duplicate-segment) and its flags and senses are not read, so withdraw every
+      // op of the segment rather than apply half an answer.
+      if (
+        parsed.dropped.some(
+          (d) => d.segmentId === s.id && d.reason === 'response-duplicate-segment'
+        )
+      ) {
+        for (const o of ops) preFailed.add(o.rulingId);
       }
       const g = gateWithGroups({ ops, item, chapterDir, rulingsById, preFailed, flagged });
       c.opsProposed += ops.length;
@@ -630,6 +653,8 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     requestsPlanned: plannedKeys.length,
     requestsUsable: plannedKeys.length - requestsMissing.length,
     requestsMissing,
+    requestsTruncated: requestsMissing.filter((k) => truncatedKeys.has(k)).length,
+    segmentsUnanswered: [...unanswered].sort(byString),
     complete: requestsMissing.length === 0,
   };
   const summary = {
@@ -649,6 +674,37 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     coverage,
   };
   return { chapterDir, units, revision, gateLog, flags, senses, counts, coverage, summary, inputs };
+}
+
+/**
+ * Count a finished run's answers that apply could not use (isUsableParse), by reason: no
+ * response, a request problem, or segments left unanswered. The CLI's stop rule calls this
+ * after each chapter, so "usable" means the same before more money is spent as at apply.
+ * @param {{ recordsDir: string, runId: string, rulingsById: Map<string, object> }} args
+ * @returns {{ checked: number, unusable: number, byReason: Record<string, number> }}
+ */
+export function unusableAnswers({ recordsDir, runId, rulingsById }) {
+  const r = loadRunRecords({ recordsDir, runId });
+  const byReason = new Map();
+  let checked = 0;
+  for (const req of pickResponses([r])) {
+    checked += 1;
+    if (!req.response) {
+      tally(byReason, REQUEST_ERROR);
+      continue;
+    }
+    const doc = parseUserMessage(req.body.messages[0].content);
+    const parsed = parseTermPassResponse({
+      message: req.response.response,
+      requestKey: req.key,
+      presented: doc.segments.map((s) => ({ segmentId: s.id, rulingIds: s.rulings })),
+      rulingsById,
+    });
+    if (parsed.problem) tally(byReason, parsed.problem);
+    else if (!isUsableParse(parsed)) tally(byReason, 'segments-unanswered');
+  }
+  const unusable = [...byReason.values()].reduce((n, k) => n + k, 0);
+  return { checked, unusable, byReason: sortedObject(byReason) };
 }
 
 // ── Writing ──────────────────────────────────────────────────────────────────────────────
@@ -733,7 +789,10 @@ const quote = (s) => `> ${String(s).replace(/\n/g, ' ')}`;
 export function coverageLine(coverage) {
   return (
     `coverage: ${coverage.requestsUsable} of ${coverage.requestsPlanned} planned requests usable` +
-    (coverage.complete ? '' : ` (${coverage.requestsMissing.length} not reviewed)`)
+    (coverage.complete
+      ? ''
+      : ` (${coverage.requestsMissing.length} not reviewed; ${coverage.segmentsUnanswered.length} ` +
+        'presented segments unanswered)')
   );
 }
 

@@ -975,3 +975,156 @@ describe('apply withdraws a ruling the model flagged, and one whose op the parse
     expect(tio2Changes(result)).toBe(0);
   });
 });
+
+// The final review of the fixes (2026-10-27): coverage was counted per request, so an answer
+// that skipped segments, or answered none, still counted (two lenses); a chapter with a request
+// never sent passed the stop rule; a "make no edit" flag naming no ruling, or a duplicate entry
+// for a segment, withdrew nothing; and the partial-coverage remedy contradicted the truncation one.
+describe('usable means every presented segment answered, in apply and in run alike', () => {
+  function setupTwo() {
+    const fx = makeTempRepo({ chapters: ['ch01', 'ch02'] });
+    const deps = (extra = {}) => ({
+      repoRoot: fx.root,
+      bookDir: fx.book,
+      recordsDir: fx.records,
+      git: makeGit({ cwd: fx.root }),
+      codePaths: ['tools/ai-review/prompts'],
+      stdout: () => {},
+      now,
+      ...HARNESS,
+      ...extra,
+    });
+    return { fx, deps };
+  }
+  const TWO = ['run', '--chapter', 'ch01', '--chapter', 'ch02', '--mode', 'interactive', '--yes'];
+  const ch02Run = async (answer) => {
+    const S = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport({ answer }) })
+    );
+    return { S, r, runId: r.results[0].runId };
+  };
+
+  it('an answer with no segments reviews nothing: coverage is incomplete and --write refuses', async () => {
+    const { S, runId } = await ch02Run(() => ({ segments: [] }));
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.complete).toBe(false);
+    expect(dry.result.coverage.requestsUsable).toBe(0);
+    expect(dry.result.coverage.segmentsUnanswered.length).toBe(dry.result.counts.segmentsPresented);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps())
+    ).rejects.toThrow(/partial-coverage/);
+  });
+
+  it('an answer that skips one segment leaves its request uncovered, but its other edits still gate', async () => {
+    const skipAl = (body) => {
+      const a = scriptedAnswer(body);
+      return { segments: a.segments.filter((s) => s.id !== AL_ID) };
+    };
+    const { S, runId } = await ch02Run(skipAl);
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.segmentsUnanswered).toEqual([AL_ID]);
+    expect(dry.result.coverage.requestsMissing).toHaveLength(1);
+    expect(dry.result.counts.accepted).toBe(4);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps())
+    ).rejects.toThrow(/partial-coverage/);
+  });
+
+  it('run stops before the next chapter when a chapter answered no segments, and exits 2', async () => {
+    const S = setupTwo();
+    const r = await main(
+      TWO,
+      S.deps({ transport: mockTransport({ answer: () => ({ segments: [] }) }) })
+    );
+    expect(r.results.map((x) => x.chapterDir)).toEqual(['ch01']);
+    expect(r.exitCode).toBe(2);
+  });
+
+  it('run stops before the next chapter when a request was never sent, and exits 2', async () => {
+    const S = setupTwo();
+    const t = mockTransport();
+    const count = t.countTokens;
+    let failed = false;
+    t.countTokens = async (...a) => {
+      if (!failed) {
+        failed = true;
+        throw Object.assign(new Error('overloaded'), { status: 529 });
+      }
+      return count(...a);
+    };
+    const r = await main(TWO, S.deps({ transport: t }));
+    expect(r.results.map((x) => x.chapterDir)).toEqual(['ch01']);
+    expect(r.results[0].status).toBe('complete');
+    expect(r.results[0].counts.notSent).toBe(1);
+    expect(r.exitCode).toBe(2);
+  });
+
+  it('a needs-rewrite flag naming no ruling withdraws every op in its segment', async () => {
+    const withFlag = (kind) => (body) => {
+      const a = scriptedAnswer(body);
+      return {
+        segments: a.segments.map((s) =>
+          s.id === TIO2_ID ? { ...s, flags: [{ kind, ruling: null, note: 'test' }] } : s
+        ),
+      };
+    };
+    const { S, runId } = await ch02Run(withFlag('needs-rewrite'));
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(a.result.counts.accepted).toBe(0);
+    expect(a.result.counts.rejectedByReason['flagged-no-edit']).toBe(4);
+    // control: mistranslation-suspected naming no ruling does not withdraw
+    const c = await ch02Run(withFlag('mistranslation-suspected'));
+    const b = await main(['apply', '--chapter', 'ch02', '--run', c.runId], c.S.deps());
+    expect(b.result.counts.accepted).toBe(4);
+  });
+
+  it('a second entry for a segment withdraws every op of that segment', async () => {
+    const twice = (body) => {
+      const a = scriptedAnswer(body);
+      const tio2 = a.segments.find((s) => s.id === TIO2_ID);
+      if (!tio2) return a;
+      return {
+        segments: [
+          ...a.segments,
+          {
+            id: TIO2_ID,
+            senses: [],
+            ops: [],
+            flags: [{ kind: 'needs-rewrite', ruling: 'atom', note: 'x' }],
+          },
+        ],
+      };
+    };
+    const { S, runId } = await ch02Run(twice);
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    const tio2 = a.result.units.flatMap((u) => u.changes).filter((ch) => ch.segmentId === TIO2_ID);
+    expect(tio2).toHaveLength(0);
+    expect(a.result.counts.accepted).toBe(0);
+  });
+
+  it('the partial-coverage refusal names the remedy for its cause', async () => {
+    const truncFirst = mockTransport();
+    const send = truncFirst.send;
+    truncFirst.send = async (body) => {
+      if (truncFirst.calls.send === 0) {
+        truncFirst.calls.send += 1;
+        return messageFor(scriptedAnswer(body), { stopReason: 'max_tokens' });
+      }
+      return send(body);
+    };
+    const S = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: truncFirst })
+    );
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId, '--write'], S.deps())
+    ).rejects.toThrow(/max-tokens.*apply that run alone/);
+    const { S: S2, runId } = await ch02Run(() => ({ segments: [] }));
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S2.deps())
+    ).rejects.toThrow(/apply the runs together/);
+  });
+});

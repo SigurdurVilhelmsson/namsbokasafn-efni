@@ -69,6 +69,7 @@ import {
   writeApplied,
   renderReport,
   coverageLine,
+  unusableAnswers,
 } from './term-pass-apply.js';
 import {
   makeGit,
@@ -699,7 +700,11 @@ async function cmdRun(ctx, values, deps) {
     };
     const result = mode === 'batch' ? await runBatch(opts) : await runInteractive(opts);
     results.push({ chapterDir, ...result });
-    if (!judgeRun(ctx, chapterDir, result)) {
+    const answers =
+      result.status === 'complete'
+        ? unusableAnswers({ recordsDir: ctx.recordsDir, runId, rulingsById: rulingSet.byId })
+        : null;
+    if (!judgeRun(ctx, chapterDir, result, answers)) {
       ctx.out('  stopping: later chapters are not sent.\n');
       stopped = true;
       break;
@@ -734,7 +739,7 @@ const REMEDY = Object.freeze({
  * 'complete' and let a too-small max_tokens spend through the whole book).
  * @returns {boolean} whether the run is good
  */
-function judgeRun(ctx, chapterDir, result) {
+function judgeRun(ctx, chapterDir, result, answers = null) {
   const c = result.counts;
   const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
   const tally = c
@@ -747,10 +752,21 @@ function judgeRun(ctx, chapterDir, result) {
     if (remedy) ctx.out(`  ${remedy(result)}\n`);
     return false;
   }
-  if (c && c.succeeded < c.sent) {
+  // `planned` too: a request that was never sent (count_tokens failed) reviewed nothing either.
+  const due = c ? Math.max(c.sent, c.planned ?? 0) : 0;
+  if (c && c.succeeded < due) {
     ctx.out(
-      `  ${c.sent - c.succeeded} of ${c.sent} answers in ${chapterDir} are not usable; ` +
-        "read the run's records first (and raise --max-tokens if any were truncated)\n"
+      `  ${due - c.succeeded} of ${due} planned answers in ${chapterDir} are missing or not ` +
+        "usable; read the run's records first (and raise --max-tokens if any were truncated)\n"
+    );
+    return false;
+  }
+  // The same predicate apply uses: an answer that parsed but skipped segments reviewed nothing
+  // for them.
+  if (answers && answers.unusable > 0) {
+    ctx.out(
+      `  ${answers.unusable} of ${answers.checked} answers in ${chapterDir} are not usable by ` +
+        `apply (${JSON.stringify(answers.byReason)}); read the run's records first\n`
     );
     return false;
   }
@@ -796,7 +812,15 @@ async function cmdResume(ctx, values, deps) {
     ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
     ...(values['max-polls'] ? { maxPolls: positiveInt(values['max-polls'], 'max-polls') } : {}),
   });
-  const good = judgeRun(ctx, tp.chapterDir, { ...result, runId });
+  const answers =
+    result.status === 'complete'
+      ? unusableAnswers({
+          recordsDir: ctx.recordsDir,
+          runId,
+          rulingsById: loadInputs(ctx, { 'ruling-set': tp.params.rulingSetPath }).rulingSet.byId,
+        })
+      : null;
+  const good = judgeRun(ctx, tp.chapterDir, { ...result, runId }, answers);
   return { ...result, exitCode: good ? 0 : 2 };
 }
 
@@ -840,7 +864,11 @@ async function cmdApply(ctx, values) {
         `refusing to write layer 2: ${result.coverage.requestsMissing.length} of ` +
           `${result.coverage.requestsPlanned} planned requests have no usable answer ` +
           `(first: ${result.coverage.requestsMissing.slice(0, 3).join(', ')}). ` +
-          'Run the chapter again and apply the runs together.'
+          (result.coverage.requestsTruncated > 0
+            ? `${result.coverage.requestsTruncated} were cut off at max_tokens: raise --max-tokens, ` +
+              're-run the whole chapter, and apply that run alone (runs with different ' +
+              'max_tokens cannot be applied together).'
+            : 'Run the chapter again and apply the runs together.')
       );
     }
     const written = writeApplied({
