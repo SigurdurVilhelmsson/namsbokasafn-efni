@@ -1,0 +1,85 @@
+{
+  "about": "Scope exceptions and senses for chemistry's term rulings. D2 ([USER] 2026-10-11, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43): verdicts apply book-wide by default, and exceptions (the group/cell homograph class) go in a machine-readable, test-pinned field that the AI gate enforces. On 2026-10-26 [USER] pointed out that the AI layer exists to use the surrounding text, so a homograph ruling carries a SENSE rather than a chapter list (register, 2026-10-26 (night)). The model names the sense it judged from the ruling's closed list (`sense`, an id in `otherSenses`, or 'unclear'), and the gate refuses an edit whose declared sense is not the ruled one. `exceptions` holds chapter-bound widths: none today, because the group and cell widths proposed earlier the same day were MT-wire notes, not rulings. Their shapes are {kind:'book'}, {kind:'chapters', chapters} and {kind:'exclude', chapters}, with chapter tokens chNN or appendices, and status 'proposed' means the width is not ruled, so the gate admits no operation. `senses` holds the sense restrictions. status 'ruled' means the restriction itself was ruled (`source` says by whom and where); 'proposed' holds a sense, and the gate then admits no operation. The `gloss` texts were drafted from each source (`glossBy`), and [USER] reviews them together with the pilot's output. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "recordedAt": "2026-10-26",
+  "exceptions": [],
+  "senses": [
+    {
+      "enNorm": "addition",
+      "sense": "addition-reaction",
+      "gloss": "the reaction type: atoms or groups adding across a double or triple bond, as in addition reactions and addition polymers",
+      "otherSenses": [
+        {
+          "id": "adding-something",
+          "gloss": "adding a substance, particle or quantity to something (the addition of HCl to a buffer, the addition of an electron to an atom, the addition of heat)"
+        },
+        { "id": "arithmetic", "gloss": "arithmetic or vector addition" },
+        { "id": "in-addition", "gloss": "the phrase in addition (also, besides)" }
+      ],
+      "status": "ruled",
+      "source": "[USER] in chat, 2026-10-26: \"Álagning applies to the reaction sense.\" Recorded in the register's 2026-10-26 (night) entry.",
+      "glossBy": "Claude, 2026-10-26, from the ruling and the register's wording of it (addition across a multiple bond, addition reactions and addition polymers). [USER] reviews it with the pilot's output."
+    },
+    {
+      "enNorm": "bent",
+      "sense": "molecular-shape",
+      "gloss": "the bent (angular) shape of a molecule or of its electron groups, as in 'the water molecule is bent' or 'bent (109°)'",
+      "otherSenses": [
+        {
+          "id": "physically-bent",
+          "gloss": "an object that is bent or curved (glass tubes bent into shapes, a bent line in a drawing)"
+        }
+      ],
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 502 at commit 6cbd36ed0, the bent entry (ruled 2026-09-27 [USER]), whose why begins \"Molecular geometry.\"",
+      "glossBy": "Claude, 2026-10-26, from that why. [USER] reviews it with the pilot's output."
+    },
+    {
+      "enNorm": "cell",
+      "sense": "electrochemical-cell",
+      "gloss": "an electrochemical cell: a galvanic (voltaic) or electrolytic cell, a fuel cell, dry cell or concentration cell, the cell of a battery, a cell in cell notation or cell potential",
+      "otherSenses": [
+        { "id": "living-cell", "gloss": "a cell of a living organism (red blood cells)" },
+        { "id": "unit-cell", "gloss": "the unit cell of a crystal lattice, a separate term" },
+        {
+          "id": "other-cell",
+          "gloss": "any other cell: a solar (photovoltaic) cell, a cell of a table or grid, a sample cell or other compartment that is not an electrochemical cell"
+        }
+      ],
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js lines 201 and 207 at commit 6cbd36ed0, the galvanic cell and cell entries (both ruled 2026-09-20 [USER]): \"cell in this context is ker\" and \"`cell` means something else wherever biology-adjacent text appears\".",
+      "glossBy": "Claude, 2026-10-26, from those why notes and the compounds counted in the English segments on 2026-10-26 (fuel cell 26, dry cell 15, concentration cell 7; solar cells 5, red blood cell(s) 8 and unit cell(s) 118 are other senses). [USER] reviews it with the pilot's output."
+    },
+    {
+      "enNorm": "group",
+      "sense": "periodic-table-group",
+      "gloss": "a column of the periodic table and its elements (group 1, group 17, groups 1 and 2, main-group elements)",
+      "otherSenses": [
+        {
+          "id": "functional-group",
+          "gloss": "an atom or group of atoms within a molecule: a functional group, alkyl group, carbonyl group, hydroxyl group or other substituent"
+        },
+        {
+          "id": "collection",
+          "gloss": "an ordinary collection of things or people (the group of three squares in a figure, a group of scientists)"
+        }
+      ],
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 177 at commit 6cbd36ed0, the group entry (ruled 2026-09-20 [USER]): \"the PERIODIC-TABLE column … In ch20 the same English word means a functional group … where hópur is right\".",
+      "glossBy": "Claude, 2026-10-26, from that why and the ch06 and ch20 uses named in the withdrawn ch02 width's note. [USER] reviews it with the pilot's output."
+    },
+    {
+      "enNorm": "hole",
+      "sense": "lattice-hole",
+      "gloss": "a hole in a crystal structure: the space between packed atoms or ions (octahedral, tetrahedral and cubic holes)",
+      "otherSenses": [
+        {
+          "id": "opening",
+          "gloss": "an ordinary hole or opening (a hole in a disk, a flask or a plate, the ozone hole)"
+        }
+      ],
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 219 at commit 6cbd36ed0, the hole entry (ruled 2026-09-20 [USER]): \"the vacancies in a close-packed lattice. [USER]: same form singular and plural.\"",
+      "glossBy": "Claude, 2026-10-26, from that why and the English segments (31 hole, 58 holes on 2026-10-26, among them a disk's, a flask's and the ozone hole). [USER] reviews it with the pilot's output."
+    }
+  ]
+}
