@@ -13,6 +13,13 @@
  * the m68727 counts with a script on the seg-markers parser (not mt-layers), and the
  * whole-chemistry totals (22,876 IS occurrences, 4,184 identical to EN) by the controller with
  * a separate script of its own.
+ *
+ * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,905 items, 4,926
+ * candidate occurrences, 7,276 pairs, 13,551 paired items with no candidate) were measured by
+ * an independent recount that does not import worklist.js: pairing by seg-markers.cjs
+ * parseSegmentRecords, then the spec's candidate rule over the gate's primitives. Two
+ * reviewers' runs of it and this module agree to the unit. The spec's "Measured inputs" line
+ * (4,435 occurrences, 6,187 pairs) does not reproduce; the code is what these pins hold.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
@@ -28,6 +35,8 @@ import {
   buildWorkList,
 } from '../ai-review/worklist.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
+import { carriesTarget, containsTargetStem } from '../ai-review/gate.js';
+import { visibleProse } from '../ai-review/tokens.js';
 import { parseLayerFile, readBase, listChapterUnits, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -440,6 +449,44 @@ describe('matchesOccurrence', () => {
   it('does not match a form inside a longer word (atomic)', () => {
     expect(matchesOccurrence(ATOM, { en: 'the atomic mass', is: 'x' })).toBe(false);
   });
+
+  describe('every form in ruling.en matches, not only the first and not only enNorm', () => {
+    const GALVANIC = SET.rulings.find((r) => r.id === 'galvanic-cell');
+
+    it('REAL galvanic-cell has two forms, and the first is not its enNorm', () => {
+      expect([GALVANIC.en, GALVANIC.enNorm]).toEqual([
+        ['galvanic (voltaic) cell', 'galvanic cell'],
+        'galvanic cell',
+      ]);
+    });
+
+    it('matches where only the first form occurs (enNorm does not)', () => {
+      const en = 'A galvanic (voltaic) cell makes electricity';
+      expect(matchesOccurrence(GALVANIC, { en, is: 'x' })).toBe(true);
+    });
+
+    it('matches where only the second form occurs (en[0] does not)', () => {
+      const en = 'A galvanic cell makes electricity';
+      expect(matchesOccurrence(GALVANIC, { en, is: 'x' })).toBe(true);
+    });
+
+    it('control: neither form, no match', () => {
+      expect(matchesOccurrence(GALVANIC, { en: 'A voltaic pile makes electricity', is: 'x' })).toBe(
+        false
+      );
+    });
+
+    it('the second form reaches the offer', () => {
+      const it0 = item(
+        'A galvanic cell makes electricity',
+        'Galvanísk rafhlaða framleiðir rafmagn'
+      );
+      expect(offeredRulings({ item: it0, rulings: [GALVANIC], chapterDir: 'ch17' })).toEqual({
+        candidateIds: ['galvanic-cell'],
+        rulingIds: ['galvanic-cell'],
+      });
+    });
+  });
 });
 
 describe('isCandidate', () => {
@@ -456,6 +503,43 @@ describe('isCandidate', () => {
 
   it('target absent: a candidate', () => {
     expect(isCandidate(ATOM, { en: EN, is: 'Títanið er grátt' }, 'ch02')).toBe(true);
+  });
+
+  describe('the competitor test is the LOOSE matcher (containsTargetStem), not the strict one', () => {
+    const EN2 = 'The atom and its nucleus';
+    const IS2 = 'Atómið og frumeindakjarninn'; // frumeind- is a modifier; the head is kjarni
+
+    it('the fixture separates the two matchers: strict false, loose true, target carried', () => {
+      expect([
+        carriesTarget(IS2, 'frumeind'),
+        containsTargetStem(IS2, 'frumeind'),
+        carriesTarget(IS2, 'atóm'),
+      ]).toEqual([false, true, true]);
+    });
+
+    it('a competitor only the loose matcher finds makes a candidate', () => {
+      expect(isCandidate(ATOM, { en: EN2, is: IS2 }, 'ch02')).toBe(true);
+    });
+
+    it('control: without the competitor, the same carried target is not a candidate', () => {
+      expect(isCandidate(ATOM, { en: EN2, is: 'Atómið og kjarninn' }, 'ch02')).toBe(false);
+    });
+  });
+
+  describe('the candidate test reads the RAW Icelandic, not its visible prose', () => {
+    const IS3 = 'Atómið[[sub:frumeind]]';
+
+    it('the fixture hides the competitor from visible prose', () => {
+      expect(visibleProse(IS3)).toBe('Atómið');
+    });
+
+    it('a competitor inside a subscript payload still makes a candidate', () => {
+      expect(isCandidate(ATOM, { en: 'The atom', is: IS3 }, 'ch02')).toBe(true);
+    });
+
+    it('control: a payload without the competitor is not a candidate', () => {
+      expect(isCandidate(ATOM, { en: 'The atom', is: 'Atómið[[sub:x]]' }, 'ch02')).toBe(false);
+    });
   });
 
   it('a sensed ruling: a candidate even when the target is carried', () => {
@@ -531,6 +615,31 @@ describe('offeredRulings', () => {
     expect(offeredRulings({ item: it2, rulings: [ATOM], chapterDir: 'ch02' })).toEqual({
       candidateIds: ['atom'],
       rulingIds: ['atom'],
+    });
+  });
+
+  describe('context comes from EVERY occurrence, not only those with a candidate', () => {
+    it('a ruling matching only an occurrence without a candidate is still in rulingIds', () => {
+      const it2 = {
+        segmentId: 'm1:para:a',
+        occurrences: [
+          { occurrence: 0, key: 'm1:para:a', en: 'The atom', is: 'Frumeindin' },
+          { occurrence: 1, key: 'm1:para:a#1', en: 'The fuel cell', is: 'Efnarafallinn' },
+        ],
+      };
+      expect(offeredRulings({ item: it2, rulings: [ATOM, FUEL_CELL], chapterDir: 'ch17' })).toEqual(
+        { candidateIds: ['atom'], rulingIds: ['atom', 'fuel-cell'] }
+      );
+    });
+
+    it('control: that occurrence alone has no candidate (fuel cell is satisfied there)', () => {
+      expect(
+        offeredRulings({
+          item: item('The fuel cell', 'Efnarafallinn'),
+          rulings: [ATOM, FUEL_CELL],
+          chapterDir: 'ch17',
+        })
+      ).toEqual({ candidateIds: [], rulingIds: [] });
     });
   });
 
@@ -773,7 +882,7 @@ describe('determinism', () => {
 
 describe('whole chemistry (every 02-structure chapter directory)', () => {
   it(
-    'builds without throwing and sees 22,876 IS occurrences, 4,184 of them identical to EN',
+    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,905 items',
     { timeout: 30_000 },
     () => {
       const chapters = fs
@@ -789,6 +898,7 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         candidateOccurrences: 0,
         items: 0,
         pairs: 0,
+        noCandidate: 0,
         contextOk: true,
       };
       for (const chapterDir of chapters) {
@@ -808,6 +918,7 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         total.candidateOccurrences += counts.candidateOccurrences;
         total.items += counts.items;
         total.pairs += counts.pairs;
+        total.noCandidate += counts.noCandidate;
         for (const it0 of built.flatMap((u) => u.items)) {
           if (
             it0.candidateIds.length === 0 ||
@@ -823,16 +934,22 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         identical: total.identical,
         noEn: total.noEn,
         noIs: total.noIs,
+        items: total.items,
+        candidateOccurrences: total.candidateOccurrences,
+        pairs: total.pairs,
+        noCandidate: total.noCandidate,
         contextOk: total.contextOk,
-        someWork: total.items > 0 && total.candidateOccurrences >= total.items,
       }).toEqual({
         chapters: 23,
         occurrences: 22876,
         identical: 4184,
         noEn: 0,
         noIs: 0,
+        items: 4905,
+        candidateOccurrences: 4926,
+        pairs: 7276,
+        noCandidate: 13551,
         contextOk: true,
-        someWork: true,
       });
     }
   );
