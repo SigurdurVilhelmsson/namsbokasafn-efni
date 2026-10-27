@@ -3,7 +3,7 @@
  * chemistry ch02, a mock transport, then plan → preflight → run → apply (dry, report, write)
  * → verifyRevision. Design: docs/superpowers/specs/2026-10-27-ai-layer-runner-design.md.
  */
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -26,6 +26,8 @@ import {
   REPO,
   RULING_SET_PATH,
   makeTempRepo,
+  makeTempDir,
+  removeTempDirs,
   mockTransport,
   scriptedAnswer,
   TIO2_ID,
@@ -53,7 +55,8 @@ function setup() {
   return { fx, lines, deps };
 }
 
-const scratch = () => fs.mkdtempSync(path.join(os.tmpdir(), 'tp-out-'));
+const scratch = () => makeTempDir('tp-out-');
+afterAll(removeTempDirs);
 
 describe('constants', () => {
   it('pins the book, the model, the effort and the token limits', () => {

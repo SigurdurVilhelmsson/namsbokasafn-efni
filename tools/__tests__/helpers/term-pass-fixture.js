@@ -16,6 +16,17 @@ export const RULING_SET_PATH =
   'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json';
 const REAL_BOOK = path.join(REPO, 'books', 'efnafraedi-2e');
 
+/** Every temp directory this fixture made; `removeTempDirs` deletes them (/tmp is a small tmpfs). */
+const made = [];
+export function makeTempDir(prefix) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), prefix));
+  made.push(dir);
+  return dir;
+}
+export function removeTempDirs() {
+  for (const dir of made.splice(0)) fs.rmSync(dir, { recursive: true, force: true });
+}
+
 const copy = (from, to) => {
   fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.copyFileSync(from, to);
@@ -26,7 +37,7 @@ const copy = (from, to) => {
  * @returns {{ root: string, book: string, records: string, sh: (args: string[]) => string, commit: string }}
  */
 export function makeTempRepo({ chapters = ['ch02'] } = {}) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'tp-repo-'));
+  const root = makeTempDir('tp-repo-');
   const book = path.join(root, 'books', 'efnafraedi-2e');
   for (const ch of chapters) {
     const stems = fs

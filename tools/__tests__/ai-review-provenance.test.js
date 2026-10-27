@@ -3,7 +3,7 @@
  * the run reads, and the files a paid run records are committed and clean.
  * Runs against a throwaway repository in the OS temp directory.
  */
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -36,6 +36,7 @@ beforeAll(() => {
   first = sh(['rev-parse', 'HEAD']);
   git = makeGit({ cwd: repo });
 });
+afterAll(() => fs.rmSync(repo, { recursive: true, force: true }));
 
 describe('gitBlobSha1', () => {
   it('equals git hash-object', () => {

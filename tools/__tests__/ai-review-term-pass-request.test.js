@@ -2,7 +2,7 @@
  * The term pass's request builder: prompt loading, chunking, the user document and the
  * request body (design: docs/superpowers/specs/2026-10-27-ai-layer-runner-design.md, "The glue").
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -39,6 +39,10 @@ const item = (id, en, is, rulingIds = ['atom'], extra = {}) => ({
 });
 const workList = (units) => ({ chapterDir: 'ch02', units, counts: {} });
 const prompt = () => loadPrompt(path.join(REPO, PROMPT_PATH));
+const TEMP = [];
+afterAll(() => {
+  for (const d of TEMP) fs.rmSync(d, { recursive: true, force: true });
+});
 
 describe('constants', () => {
   it('names the use, the user format and the defaults', () => {
@@ -63,6 +67,7 @@ describe('loadPrompt', () => {
 
   it('refuses a file with no schema block, or two', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'tp-prompt-'));
+    TEMP.push(dir);
     const none = path.join(dir, 'none.md');
     fs.writeFileSync(none, '# x\n\n## Response schema\n\nno block\n');
     expect(() => loadPrompt(none)).toThrow(/schema/);
