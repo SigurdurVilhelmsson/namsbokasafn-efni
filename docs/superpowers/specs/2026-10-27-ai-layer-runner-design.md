@@ -5,6 +5,52 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED AGAIN 2026-10-27 (afternoon), after the adversarial review of the built runner** (5 lenses, 37
+> findings, each checked by an independent refuter; work resumed after a machine crash, nothing pushed). Where this
+> block disagrees with the block below or the sections under it, this block wins; the code and its tests win over
+> both.
+>
+> - **`term-pass.json` is written by the harness right after `run.json`** (its `extraRecords` option), before any
+>   count, reservation or send. The CLI used to write it in a `finally`, so a process killed while polling a paid
+>   batch left a run that neither `resume` nor `apply` could use.
+> - **`resume` collects against the recorded `requests.jsonl`; it no longer re-plans.** A HAND REPAIR or a prompt fix
+>   after the buy no longer strands a paid batch: `apply` is the staleness gate. `resume` reads `run.json` (use, mode)
+>   before `term-pass.json`.
+> - **An answer cut off at `max_tokens` has its own outcome, `truncated`,** counted apart from `succeeded`. An
+>   interactive run stops after `maxConsecutiveErrors` truncations in a row (`stopped-on-truncation`). `run` stops
+>   before the next chapter when any answer of a chapter is unusable (truncated, refused, errored or missing), and
+>   `run`/`resume` exit 2 whenever a chapter is not complete and fully usable (0 done, 1 refused or failed).
+> - **`term-pass.json` is schema `ai-review-term-pass/2`:** it adds `plannedRequestKeys`, the chapter's whole plan
+>   recorded before any `--limit`. All runs given to one `apply` must share it. `apply` measures coverage against it (a
+>   planned request counts only with a usable answer), records it in `apply.json` and the report, and `apply --write`
+>   refuses an incomplete chapter. A recorded `--partial` was considered and NOT built: `revision.json`
+>   (`mt-revised/1`, exact keys) has no field that could say a chapter is partial.
+> - **A ruling the model flags in a segment with `needs-rewrite`, `compound-term`, `target-other-sense` or
+>   `sense-unclear` makes no edit there** (reason `flagged-no-edit`, logged as the runner's). `mistranslation-suspected`
+>   does not withdraw. A withdrawn operation also keeps the reason it first failed for, which completes the "root
+>   cause" bullet of the block below.
+> - **The parser (Unit U3; overrides its lists below):** `unclear` is recognised after trimming and lower-casing, on
+>   an operation of any category, and becomes a `sense-unclear` flag; a segment whose senses entry for a ruling is
+>   `unclear` turns that ruling's `term-sense` operations into such flags; a `term-sense` operation with no senses entry
+>   for its ruling is rejected `sense-unjudged`; every flag carries `valid` (its ruling is null or offered there).
+> - **The gate's term branch refuses two more shapes:** `term-op-too-wide` (apart from unchanged words at its start or
+>   end, `replace` has no more words than the target) and `quantifier-agreement` (a gendered number word or quantifier
+>   among the two words before `find`, or among the unchanged words; it over-refuses where genders happen to match).
+>   Known under-refusals, left for a ruling: weak ordinals and collectives, `hvor`/`hver`, and a quantifier inside a
+>   marker. The prompt teaches both rules and that a hyphen is a word boundary.
+> - **The work list reads a hyphen that joins two letters as a space** (`Fuel-cell` matches `fuel cell`), on the
+>   English side only. Unlike the three precision rules in the block below, this one ADDS offers as well as
+>   withholding them. The whole-chemistry totals therefore changed: read them in the pin in
+>   `tools/__tests__/ai-review-worklist.test.js` (independent recount named in its header), not in the figures below.
+>   En dashes are not folded.
+> - **`run` refuses from a linked git worktree** (the cap is per ledger, so it is enforced per main checkout).
+>   **`--out`/`--report` are judged by where the write lands** (real path; no `books` component). **Preflight compares
+>   each chapter's input files with the layer-1 commit in both directions,** so a deleted or an added input refuses.
+> - **Not built, open:** a machine-wide ledger; per-unit coverage in `revision.json`; `apply` letting a later run's
+>   unusable answer replace an earlier usable one; a re-buy guard; a `CODE_PATHS` check on `resume`; fingerprinting
+>   `<stem>-segments-links.json`; the import-closure test's blindness to `createRequire`; the other low findings; and
+>   the refused neuter agreements (`tengd` → `tengt`), deferred to the pilot's measurement.
+
 > **✏️ AMENDED 2026-10-27, the same day, while building the glue (before the branch was pushed).** The sections
 > below stand as first frozen; where they disagree, this block overrides them.
 >
