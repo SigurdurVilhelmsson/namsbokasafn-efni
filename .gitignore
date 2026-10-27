@@ -164,3 +164,10 @@ books/__e2e-fixture__/**/*.locked
 # from destroying the provenance basis. Never commit them.
 books/*/source-updates/*.cnxml
 books/*/source-updates/*-upstream.cnxml
+
+# AI-reviewed layer: crash residue only. The records under books/*/ai-review/ and the layer
+# under books/*/02-mt-revised/ are committed by decision (2026-10-26); a leftover ledger lock
+# or an interrupted atomic write (`<file>.tmp-<pid>-<hex>`) must never be.
+books/*/ai-review/ledger.jsonl.lock
+books/*/ai-review/**/*.tmp-*
+books/*/02-mt-revised/**/.*.tmp-*

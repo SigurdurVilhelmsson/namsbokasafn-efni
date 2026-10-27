@@ -31,6 +31,7 @@ const ruling = (o) => ({
   competitors: [],
   scope: { kind: 'book' },
   scopeStatus: 'default',
+  sense: null,
   kinds: ['entry'],
   sources: ['test'],
   matchable: true,
@@ -55,7 +56,9 @@ const RULINGS = {
     en: ['hybridization'],
     is: 'svigrúmablöndun',
   }),
-  // REAL target and scope as Unit B carries it on 2026-10-26: a PROPOSED width.
+  // REAL target with a PROPOSED ch17 width. Unit B proposed that width on 2026-10-26 and
+  // withdrew it the same day for a sense (below); the width mechanism stays, and is tested
+  // here on the shape it had.
   cell: ruling({
     id: 'cell',
     enNorm: 'cell',
@@ -177,6 +180,57 @@ const RULINGS = {
     en: ['bonding orbital'],
     is: 'tengisvigrúm (tengt)',
   }),
+  // REAL, as Unit B compiles it since 2026-10-26: restricted to one sense of a homograph.
+  bent: ruling({
+    id: 'bent',
+    enNorm: 'bent',
+    en: ['bent'],
+    is: 'boginn',
+    sense: {
+      id: 'molecular-shape',
+      gloss: 'the bent (angular) shape of a molecule or of its electron groups',
+      otherSenses: [{ id: 'physically-bent', gloss: 'an object that is bent or curved' }],
+      status: 'ruled',
+    },
+  }),
+  // HYPOTHETICAL: the same sense held as proposed; a sense on the simulator ruling, to
+  // exercise an agreement op after a term-sense op; a sense key absent; a malformed sense.
+  'bent-proposed': ruling({
+    id: 'bent-proposed',
+    enNorm: 'bent',
+    en: ['bent'],
+    is: 'boginn',
+    sense: {
+      id: 'molecular-shape',
+      gloss: 'the bent shape of a molecule',
+      otherSenses: [{ id: 'physically-bent', gloss: 'an object that is bent' }],
+      status: 'proposed',
+    },
+  }),
+  'simulator-sensed': ruling({
+    id: 'simulator-sensed',
+    enNorm: 'simulator',
+    en: ['simulator'],
+    is: 'hermilíkan',
+    sense: {
+      id: 'software',
+      gloss: 'a computer simulation',
+      otherSenses: [{ id: 'machine', gloss: 'a training machine' }],
+      status: 'ruled',
+    },
+  }),
+  'no-sense-key': (() => {
+    const r = ruling({ id: 'no-sense-key', enNorm: 'node', en: ['node'], is: 'nóða' });
+    delete r.sense;
+    return r;
+  })(),
+  'bad-sense': ruling({
+    id: 'bad-sense',
+    enNorm: 'node',
+    en: ['node'],
+    is: 'nóða',
+    sense: { id: 'x' },
+  }),
   // HYPOTHETICAL and MIS-COMPILED on purpose: a digit inside a target word should have made
   // it matchable:false; the matcher must still fail closed.
   'digit-target': ruling({
@@ -289,6 +343,12 @@ const FLUSH_EN =
   'Neutral atoms and their associated ions have very different physical and chemical properties. Sodium [[i:atoms]] form sodium metal, a soft, silvery-white metal that burns vigorously in air and reacts explosively with water. Chlorine [[i:atoms]] form chlorine gas, Cl[[sub:2]], a yellow-green gas that is extremely corrosive to most metals and very poisonous to animals and plants. The vigorous reaction between the elements sodium and chlorine forms the white, crystalline compound sodium chloride, common table salt, which contains sodium [[i:cations]] and chloride [[i:anions]] ([[xref:CNX_Chem_07_01_NaClPhotos]]). The compound composed of these ions exhibits properties entirely different from the properties of the elements sodium and chlorine. Chlorine is poisonous, but sodium chloride is essential to life; sodium atoms react vigorously with water, but sodium chloride simply dissolves in water.';
 const FLUSH_IS =
   'Hlutlaus atóm og jónir þeirra hafa mjög ólíka eðlis- og efnafræðilega eiginleika. Natríum[[i:atóm]] mynda natríummálm, mjúkan, silfurhvítan málm sem brennur kröftuglega í lofti og hvarfast með sprengikrafti við vatn. Klór[[i:atóm]] mynda klórgas, Cl[[sub:2]], gulgrænt gas sem er afar tærandi fyrir flesta málma og mjög eitrað fyrir dýr og plöntur. Hið kröftuga hvarf milli frumefnanna natríums og klórs myndar hvíta, kristallaða efnasambandið natríumklóríð, venjulegt matarsalt, sem inniheldur natríum[[i:katjónir]] og klóríð[[i:anjónir]] ([[xref:CNX_Chem_07_01_NaClPhotos]]). Efnasambandið sem samanstendur af þessum jónum sýnir allt aðra eiginleika en frumefnin natríum og klór. Klór er eitrað en natríumklóríð er lífsnauðsynlegt; natríumatóm hvarfast kröftuglega við vatn en natríumklóríð leysist einfaldlega upp í vatni.';
+// m68742:problem:fs-idp159838848 (ch07) — "bent" is the molecular shape
+const BENT_EN = 'Explain why the HOH molecule is bent, whereas the HBeH molecule is linear.';
+const BENT_IS = 'Útskýrðu hvers vegna HOH-sameindin er hornlaga, en HBeH-sameindin er línuleg.';
+// m68729:alt:fs-idp131020960-alt (ch06) — "bent" is physical; beygð is right here
+const TUBES_EN = 'This figure shows a colorful neon sign. The tubes are bent into various shapes.';
+const TUBES_IS = 'Þessi mynd sýnir litríkt neonskilti. Rörin eru beygð í ýmis form.';
 // m68724:glossary-def:fs-idp25506160-def (ch05) — a target with a 1-letter word (`á`)
 const CELSIUS_EN =
   'extensive property of a body of matter that represents the quantity of heat required to increase its temperature by 1 degree Celsius (or 1 kelvin)';
@@ -315,6 +375,15 @@ const term = (opId, rulingId, find, replace) => ({
   opId,
   category: 'term',
   rulingId,
+  find,
+  replace,
+  reason: 'test',
+});
+const termSense = (opId, rulingId, sense, find, replace) => ({
+  opId,
+  category: 'term-sense',
+  rulingId,
+  sense,
   find,
   replace,
   reason: 'test',
@@ -395,6 +464,10 @@ describe('pinned values', () => {
       'segment-change-share',
       'segment-malformed',
       'segment-op-limit',
+      'sense-mismatch',
+      'sense-not-applicable',
+      'sense-undeclared',
+      'sense-unruled',
       'term-target-already',
       'term-target-missing',
     ]);
@@ -551,6 +624,131 @@ describe('scope and its status', () => {
   it('an exclude width refuses its listed chapter (scope-excluded)', () => {
     const r = gate({ ops: [{ ...OP, rulingId: 'cell-not-ch17' }], ...ch17 });
     expect(r.rejected[0].reasons).toEqual(['scope-excluded']);
+  });
+});
+
+describe('a ruling restricted to one sense', () => {
+  const at = (ops, seg = { en: BENT_EN, is: BENT_IS, chapterDir: 'ch07' }) => gate({ ops, ...seg });
+  const OK = termSense('b1', 'bent', 'molecular-shape', 'hornlaga', 'bogin');
+
+  it('takes a term-sense op that declares its sense (control)', () => {
+    expect(at([OK]).after).toBe(
+      'Útskýrðu hvers vegna HOH-sameindin er bogin, en HBeH-sameindin er línuleg.'
+    );
+  });
+  it('refuses a plain term op: the sense must be declared (sense-undeclared)', () => {
+    expect(reasonsOf(at([term('b1', 'bent', 'hornlaga', 'bogin')]), 'b1')).toEqual([
+      'sense-undeclared',
+    ]);
+  });
+  it('refuses another sense from the closed list (sense-mismatch)', () => {
+    expect(reasonsOf(at([{ ...OK, sense: 'physically-bent' }]), 'b1')).toEqual(['sense-mismatch']);
+  });
+  it("refuses 'unclear': the runner turns that answer into a flag, never an edit (sense-mismatch)", () => {
+    expect(reasonsOf(at([{ ...OK, sense: 'unclear' }]), 'b1')).toEqual(['sense-mismatch']);
+  });
+  it('refuses a sense id that is on no list (sense-mismatch)', () => {
+    expect(reasonsOf(at([{ ...OK, sense: 'shape' }]), 'b1')).toEqual(['sense-mismatch']);
+  });
+  it('refuses every op while the sense is only proposed (sense-unruled)', () => {
+    expect(reasonsOf(at([{ ...OK, rulingId: 'bent-proposed' }]), 'b1')).toEqual(['sense-unruled']);
+  });
+  it('refuses a term-sense op on a ruling with no sense (sense-not-applicable)', () => {
+    const r = gate({
+      ops: [{ ...T_BOND, category: 'term-sense', sense: 'x' }],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(reasonsOf(r, 't1')).toEqual(['sense-not-applicable']);
+  });
+  it('a term op on a ruling with no sense is untouched by any of this (control)', () => {
+    expect(ids(gate({ ops: [T_BOND], en: BOND_EN, is: BOND_IS }))).toEqual(['t1']);
+  });
+  it('still runs every term check: the target must be in replace (term-target-missing)', () => {
+    expect(reasonsOf(at([{ ...OK, replace: 'sveigð' }]), 'b1')).toEqual(['term-target-missing']);
+  });
+  it('checks the DECLARATION, not the judgement: a wrong declaration on the neon-sign tubes passes', () => {
+    // "The tubes are bent" is physical, and beygð is right there. The gate cannot see that;
+    // the model's sense judgement is measured by the blind check, per category.
+    const r = at([termSense('b2', 'bent', 'molecular-shape', 'beygð', 'bogin')], {
+      en: TUBES_EN,
+      is: TUBES_IS,
+      chapterDir: 'ch06',
+    });
+    expect(ids(r)).toEqual(['b2']);
+  });
+  it('lets an agreement op follow an accepted term-sense op of the same ruling', () => {
+    const r = gate({
+      ops: [
+        termSense('s1', 'simulator-sensed', 'software', 'hermi', 'hermilíkan'),
+        agr('s2', 'simulator-sensed', 'þennan', 'þetta'),
+        agr('s3', 'simulator-sensed', 'gagnvirka', 'gagnvirkt'),
+      ],
+      en: LINK_EN,
+      is: LINK_IS,
+      chapterDir: 'ch01',
+    });
+    expect(ids(r)).toEqual(['s1', 's2', 's3']);
+  });
+  it('runs a term-sense op before an agreement op listed ahead of it', () => {
+    const r = gate({
+      ops: [
+        agr('s2', 'simulator-sensed', 'þennan', 'þetta'),
+        termSense('s1', 'simulator-sensed', 'software', 'hermi', 'hermilíkan'),
+      ],
+      en: LINK_EN,
+      is: LINK_IS,
+      chapterDir: 'ch01',
+    });
+    expect(ids(r)).toEqual(['s1', 's2']);
+  });
+  it('an agreement op on a held sense reports the hold as well as the missing anchor', () => {
+    const r = at([
+      { ...OK, rulingId: 'bent-proposed' },
+      agr('a1', 'bent-proposed', 'línuleg', 'línulegt'),
+    ]);
+    expect(reasonsOf(r, 'a1')).toEqual(['sense-unruled', 'agreement-without-term']);
+  });
+});
+
+describe('the sense field on ops and rulings', () => {
+  it('refuses a term-sense op without a sense (op-invalid)', () => {
+    const r = gate({ ops: [{ ...T_BOND, category: 'term-sense' }], en: BOND_EN, is: BOND_IS });
+    expect(r.rejected[0].reasons).toEqual(['op-invalid']);
+  });
+  it('refuses a term-sense op with an empty sense (op-invalid)', () => {
+    const r = gate({
+      ops: [{ ...T_BOND, category: 'term-sense', sense: '' }],
+      en: BOND_EN,
+      is: BOND_IS,
+    });
+    expect(r.rejected[0].reasons).toEqual(['op-invalid']);
+  });
+  it('refuses a term op that carries a sense string (op-invalid)', () => {
+    const r = gate({ ops: [{ ...T_BOND, sense: 'x' }], en: BOND_EN, is: BOND_IS });
+    expect(r.rejected[0].reasons).toEqual(['op-invalid']);
+  });
+  it('accepts a term op whose sense is null, the shape a schema with a nullable field sends (control)', () => {
+    expect(ids(gate({ ops: [{ ...T_BOND, sense: null }], en: BOND_EN, is: BOND_IS }))).toEqual([
+      't1',
+    ]);
+  });
+  it('refuses a ruling whose sense key is absent, never reading it as null (ruling-invalid)', () => {
+    const r = gate({
+      ops: [term('n1', 'no-sense-key', 'hnútur', 'nóða')],
+      en: DUP_EN,
+      is: DUP_IS0,
+    });
+    expect(reasonsOf(r, 'n1')).toContain('ruling-invalid');
+  });
+  it('refuses a ruling whose sense is malformed (ruling-invalid)', () => {
+    const r = gate({ ops: [term('n1', 'bad-sense', 'hnútur', 'nóða')], en: DUP_EN, is: DUP_IS0 });
+    expect(reasonsOf(r, 'n1')).toContain('ruling-invalid');
+  });
+  it('control: the same op on the well-formed node ruling is accepted', () => {
+    expect(
+      ids(gate({ ops: [term('n1', 'node', 'hnútur', 'nóða')], en: DUP_EN, is: DUP_IS0 }))
+    ).toEqual(['n1']);
   });
 });
 

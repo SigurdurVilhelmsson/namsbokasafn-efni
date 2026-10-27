@@ -5,13 +5,22 @@
  * import from server/.
  *
  * An operation, as the model returns it once the runner has mapped its segment label:
- *   { opId, category: 'term'|'agreement', rulingId, find, replace, reason }
+ *   { opId, category: 'term'|'term-sense'|'agreement', rulingId, sense?, find, replace, reason }
+ * `sense` is the sense the model judged, and only a 'term-sense' op carries one (others leave
+ * it undefined or null). A 'term-sense' op is a term op on a ruling restricted to one sense of
+ * a homograph (Unit B's `sense`); it is its own category so the blind check can keep or drop
+ * these edits on their own (10-10 plan 3.4).
  *
- * gateSegment applies term operations first and agreement operations second, each in input
- * order, each checked against the text AS THE OPERATIONS BEFORE IT LEFT IT. Checks:
+ * gateSegment applies term and term-sense operations first and agreement operations second,
+ * each in input order, each checked against the text AS THE OPERATIONS BEFORE IT LEFT IT.
+ * Checks:
  *   - the op is well-formed and its opId unique in the segment;
  *   - the ruling exists, is well-formed, matchable and not held; its scope admits the
  *     chapter and its width is not merely proposed (scope.js);
+ *   - sense: a ruling with a sense takes edits only as 'term-sense' ops that declare its own
+ *     sense id, and only once that sense is ruled; a 'term-sense' op on a ruling without one
+ *     is refused. The gate checks the DECLARATION, never the judgement — whether the context
+ *     really is that sense is the model's call, measured by the blind check;
  *   - the English VISIBLE prose carries one of the ruling's English forms (usesHeadword,
  *     word-bounded; never on raw text, where it fires inside `E[[sub:cell]]`);
  *   - `find` occurs exactly once in the current text, wholly inside one editable span
@@ -19,10 +28,11 @@
  *     against a word continues it: tokens.js isWordAligned), overlapping no accepted op;
  *   - no forbidden token in `find` or `replace` (forbiddenTokenReasons);
  *   - size bounds per op and per segment (DEFAULT_LIMITS); `replace` differs from `find`;
- *   - term: `replace` carries the target as the HEAD of a word (carriesTarget: `anóða` does
+ *   - term and term-sense: `replace` carries the target as the HEAD of a word (carriesTarget: `anóða` does
  *     not carry `nóða`), `find` does not already contain its stem (containsTargetStem), and
  *     the BARRED words are unchanged;
- *   - agreement: an accepted term op of the SAME ruling within agreementWindowWords words,
+ *   - agreement: an accepted term or term-sense op of the SAME ruling within
+ *     agreementWindowWords words,
  *     the same word count, every changed word closed-class on both sides or an ending
  *     change on a shared stem, and no BARRED word on either side;
  *   - the marker multiset of the segment is unchanged.
@@ -108,6 +118,10 @@ export const REJECTION_CODES = Object.freeze([
   'segment-change-share', // over the per-segment share of changed characters
   'segment-malformed', // the segment's markup is malformed; every op is refused
   'segment-op-limit', // over the per-segment count of accepted ops
+  'sense-mismatch', // a term-sense op declared a sense other than the ruling's own
+  'sense-not-applicable', // a term-sense op on a ruling that has no sense
+  'sense-undeclared', // a term op on a ruling restricted to one sense (use term-sense)
+  'sense-unruled', // the ruling's sense is only proposed
   'term-target-already', // find already contains the target
   'term-target-missing', // replace does not contain the target
 ]);
@@ -356,6 +370,24 @@ function wordsBetween(text, a, b) {
     .filter((t) => /[\p{L}\p{N}]/u.test(t)).length;
 }
 
+// The categories, and the two that are term operations. Every site that branches on a
+// category goes through these, so a new one cannot fall silently into the agreement branch.
+const CATEGORIES = Object.freeze(['term', 'term-sense', 'agreement']);
+const isTermOp = (category) => category === 'term' || category === 'term-sense';
+
+// `sense` must be present: null means "no sense restriction"; absent or malformed is invalid
+// (Unit B's loader refuses both, and the gate does not trust that it ran).
+function senseIsWellFormed(sense) {
+  return (
+    sense === null ||
+    (typeof sense === 'object' &&
+      typeof sense.id === 'string' &&
+      sense.id !== '' &&
+      Array.isArray(sense.otherSenses) &&
+      typeof sense.status === 'string')
+  );
+}
+
 function rulingIsWellFormed(r) {
   return (
     typeof r.is === 'string' &&
@@ -363,8 +395,25 @@ function rulingIsWellFormed(r) {
     Array.isArray(r.en) &&
     r.en.length > 0 &&
     r.en.every((f) => typeof f === 'string' && f.trim() !== '') &&
-    Array.isArray(r.kinds)
+    Array.isArray(r.kinds) &&
+    senseIsWellFormed(r.sense)
   );
+}
+
+/**
+ * The sense reasons for one op on one well-formed ruling. Empty means admitted.
+ * The ruling's status is reported whatever the op's category, so a log shows a held sense
+ * even on an agreement op (which then also lacks its anchor).
+ */
+function senseReasons(op, ruling) {
+  if (ruling.sense === null) return op.category === 'term-sense' ? ['sense-not-applicable'] : [];
+  const reasons = [];
+  if (ruling.sense.status !== 'ruled') reasons.push('sense-unruled');
+  if (op.category === 'term') reasons.push('sense-undeclared');
+  else if (op.category === 'term-sense' && op.sense !== ruling.sense.id) {
+    reasons.push('sense-mismatch');
+  }
+  return reasons;
 }
 
 function opIsWellFormed(op) {
@@ -373,7 +422,10 @@ function opIsWellFormed(op) {
     typeof op === 'object' &&
     typeof op.opId === 'string' &&
     op.opId !== '' &&
-    (op.category === 'term' || op.category === 'agreement') &&
+    CATEGORIES.includes(op.category) &&
+    (op.category === 'term-sense'
+      ? typeof op.sense === 'string' && op.sense !== ''
+      : op.sense === undefined || op.sense === null) &&
     typeof op.rulingId === 'string' &&
     op.rulingId !== '' &&
     typeof op.find === 'string' &&
@@ -421,6 +473,7 @@ function checkOp(op, st) {
     if (ruling.matchable !== true) reasons.push('ruling-unmatchable');
     if (Array.isArray(ruling.kinds) && ruling.kinds.includes('held')) reasons.push('ruling-held');
     reasons.push(...scopeReasons(ruling, st.chapterDir));
+    if (wellFormed) reasons.push(...senseReasons(op, ruling));
     if (wellFormed && !ruling.en.some((form) => usesHeadword(form, st.enVisible))) {
       reasons.push('en-headword-absent');
     }
@@ -456,7 +509,7 @@ function checkOp(op, st) {
   }
 
   // What it may do.
-  if (op.category === 'term') {
+  if (isTermOp(op.category)) {
     if (wellFormed) {
       // The two lean opposite ways on purpose, each toward refusing (see their docs).
       if (!carriesTarget(op.replace, ruling.is)) reasons.push('term-target-missing');
@@ -475,7 +528,7 @@ function checkOp(op, st) {
     ) {
       reasons.push('agreement-word-changed');
     }
-    const anchors = applied.filter((a) => a.category === 'term' && a.rulingId === op.rulingId);
+    const anchors = applied.filter((a) => isTermOp(a.category) && a.rulingId === op.rulingId);
     if (anchors.length === 0) reasons.push('agreement-without-term');
     else if (range && !reasons.includes('overlaps-accepted-op')) {
       const nearest = Math.min(...anchors.map((a) => wordsBetween(text, range, a)));
@@ -564,9 +617,14 @@ export function gateSegment({ ops, en, is, chapterDir, rulingsById, limits } = {
       baseLength: codePoints(is),
     };
     const order = [
-      ...live.filter((e) => e.op.category === 'term'),
+      ...live.filter((e) => isTermOp(e.op.category)),
       ...live.filter((e) => e.op.category === 'agreement'),
     ];
+    // Every well-formed op is in exactly one of the two lists. A category admitted by
+    // opIsWellFormed and placed in neither would vanish with no verdict at all.
+    if (order.length !== live.length) {
+      throw new Error('gateSegment: an op category is in neither the term nor the agreement pass');
+    }
     for (const e of order) {
       const verdict = checkOp(e.op, st);
       if (verdict.reasons.length > 0) {
