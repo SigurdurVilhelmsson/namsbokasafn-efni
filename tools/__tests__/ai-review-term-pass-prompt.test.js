@@ -164,6 +164,17 @@ describe('the term-op rules the gate added on 2026-10-27 are taught', () => {
     expect(t).not.toContain('the segments around a segment are its context');
     expect(t).toContain('not necessarily neighbours');
   });
+  // The final review (2026-10-27): the gate now also reads the word right after the term, and a
+  // part glued to the term no longer takes one of the two places before it.
+  it('teaches the word right after the term and the glued-prefix window, with real examples', () => {
+    // The whole clause: the phrase alone also occurs in the sentence that qualifies it.
+    expect(t).toContain(
+      'one of the two words just before the term, the word right after it, or a word you would keep unchanged'
+    );
+    expect(t).toContain('`I-frumeindirnar tvær`');
+    expect(t).toContain('`þrjár jónanlegar H-frumeindir`');
+    expect(t).toContain('does not count as one of the two');
+  });
   it('a hyphen is a word boundary, so a symbol prefix stays out of find', () => {
     expect(t).toContain('A hyphen is a word boundary');
   });
