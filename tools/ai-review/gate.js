@@ -22,7 +22,9 @@
  *     is refused. The gate checks the DECLARATION, never the judgement — whether the context
  *     really is that sense is the model's call, measured by the blind check;
  *   - the English VISIBLE prose carries one of the ruling's English forms (usesHeadword,
- *     word-bounded; never on raw text, where it fires inside `E[[sub:cell]]`);
+ *     word-bounded; never on raw text, where it fires inside `E[[sub:cell]]`), both sides
+ *     hyphen-folded (tokens.js foldHyphens) as the work list matches them, so `fuel cell` is
+ *     found in `Fuel-cell` and `electron-pair geometry` in "electron pair geometry";
  *   - `find` occurs exactly once in the current text, wholly inside one editable span
  *     (tokens.js), starting and ending on a word boundary AS A READER SEES IT (a label flush
  *     against a word continues it: tokens.js isWordAligned), overlapping no accepted op;
@@ -60,7 +62,14 @@
  * gateOccurrences decides a duplicated segment id once for all its occurrences.
  */
 
-import { tokenize, editableSpans, markerMultiset, visibleProse, isWordAligned } from './tokens.js';
+import {
+  tokenize,
+  editableSpans,
+  markerMultiset,
+  visibleProse,
+  isWordAligned,
+  foldHyphens,
+} from './tokens.js';
 import {
   CLOSED_CLASS,
   BARRED,
@@ -527,7 +536,8 @@ function checkOp(op, st) {
     if (Array.isArray(ruling.kinds) && ruling.kinds.includes('held')) reasons.push('ruling-held');
     reasons.push(...scopeReasons(ruling, st.chapterDir));
     if (wellFormed) reasons.push(...senseReasons(op, ruling));
-    if (wellFormed && !ruling.en.some((form) => usesHeadword(form, st.enVisible))) {
+    // Both sides folded, as the work list reads them: an offer it made must not be refused here.
+    if (wellFormed && !ruling.en.some((form) => usesHeadword(foldHyphens(form), st.enFolded))) {
       reasons.push('en-headword-absent');
     }
   }
@@ -677,7 +687,7 @@ export function gateSegment({ ops, en, is, chapterDir, rulingsById, limits } = {
       limits: resolved,
       lookup: rulingLookup(rulingsById),
       chapterDir,
-      enVisible: visibleProse(en),
+      enFolded: foldHyphens(visibleProse(en)),
       acceptedCount: 0,
       changedChars: 0,
       baseLength: codePoints(is),

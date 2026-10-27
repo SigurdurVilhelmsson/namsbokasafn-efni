@@ -37,7 +37,7 @@
  *     (`hiti` in `hitastig`) and would otherwise flag every segment that is already right.
  */
 
-import { visibleProse } from './tokens.js';
+import { visibleProse, foldHyphens, LETTER_JOINING_HYPHEN } from './tokens.js';
 import { isChapterDir, scopeReasons } from './scope.js';
 import { carriesTarget, containsTargetStem } from './gate.js';
 import { usesHeadword, headwordSpans } from '../lib/chapter-term-check.js';
@@ -174,23 +174,10 @@ export function isEligible(ruling, chapterDir) {
   );
 }
 
-/** A hyphen — ASCII `-`, U+2010 HYPHEN or U+2011 NON-BREAKING HYPHEN — with a letter on each side. */
-const LETTER_JOINING_HYPHEN = /(?<=\p{L})[-\u2010\u2011](?=\p{L})/gu;
-
-/**
- * `text` with every hyphen that joins two letters replaced by a space, so `Fuel-cell` reads as
- * `Fuel cell`. A hyphen beside a digit, a space or an end stays (`carbon-14`, `fuel- cell`), and
- * so does every other dash (`Hall–Héroult`'s en dash, a minus sign, a soft hyphen). Each
- * replaced character is one UTF-16 unit and so is the space, so the result has the same length
- * and a span on it is a span on `text`.
- *
- * All English matching runs on folded text, prose and ruling forms alike: the word boundary
- * treats a hyphen as a break, so without the fold `cell` matches inside `Fuel-cell` while
- * `fuel cell` does not, and the shorter ruling is offered where the longer one governs.
- * @param {string} text
- * @returns {string}
- */
-export const foldHyphens = (text) => text.replace(LETTER_JOINING_HYPHEN, ' ');
+// foldHyphens and LETTER_JOINING_HYPHEN live in tokens.js, so that gate.js (which this module
+// imports) folds with the very same function; they are re-exported here for this module's
+// importers.
+export { foldHyphens, LETTER_JOINING_HYPHEN };
 
 /** A ruling's non-blank English forms, hyphen-folded (foldHyphens) for matching. */
 const formsOf = (r) =>

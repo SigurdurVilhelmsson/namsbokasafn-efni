@@ -414,6 +414,27 @@ const GRAPHENE_EN =
 const GRAPHENE_IS =
   'Þú þekkir kannski síður nýlega uppgötvað form kolefnis: grafen. Grafen var fyrst einangrað árið 2004 með því að nota límband til að fletta þynnri og þynnri lögum af grafíti. Það er í raun eitt lag (eina frumeind á þykkt) af grafíti. Grafen, sem sýnt er í [[xref:CNX_Chem_10_05_Graphene]], er ekki aðeins sterkt og létt, heldur er það einnig frábær leiðari rafmagns og hita. Þessir eiginleikar gætu reynst mjög gagnlegir í margs konar notkun, svo sem í stórbættum tölvukubbum og rafrásum, betri rafhlöðum og sólarsellum og sterkari og léttari byggingarefnum. Nóbelsverðlaunin í eðlisfræði árið 2010 voru veitt Andre [[term:Geim|term-00007]] og Konstantin [[term:Novoselov|term-00008]] fyrir brautryðjendastarf þeirra með grafen.';
 
+// Added for the gate's hyphen fold (REAL, byte for byte; gated against REAL_SET). The work list
+// offers each of these rulings only because it reads a hyphen joining two letters as a space.
+// m68742:problem:fs-idp40736832 (ch07) — the hyphen is in the RULING FORM (`electron-pair
+// geometry`); the prose writes it spaced
+const EPG_EN =
+  'Predict the electron pair geometry and the molecular structure of each of the following molecules or ions:';
+const EPG_IS =
+  'Spáðu fyrir um rafeindapara-lögun og sameindabyggingu hverrar af eftirfarandi sameindum eða jónum:';
+// m68667:para:fs-idm74337664 (ch01) — the hyphen is in the PROSE (`Fuel-cell`); the form is
+// `fuel cell`
+const FUELCELL_EN =
+  'The two gases produced have distinctly different properties. Oxygen is not flammable but is required for combustion of a fuel, and hydrogen is highly flammable and a potent energy source. How might this knowledge be applied in our world? One application involves research into more fuel-efficient transportation. Fuel-cell vehicles (FCV) run on hydrogen instead of gasoline ([[xref:CNX_Chem_01_01_FuelCell]]). They are more efficient than vehicles with internal combustion engines, are nonpolluting, and reduce greenhouse gas emissions, making us less dependent on fossil fuels. FCVs are not yet economically viable, however, and current hydrogen production depends on natural gas. If we can develop a process to economically decompose water, or produce hydrogen in another environmentally sound way, FCVs may be the way of the future.';
+const FUELCELL_IS =
+  'Lofttegundirnar tvær sem myndast hafa greinilega ólíka eiginleika. Súrefni er ekki eldfimt en er nauðsynlegt fyrir bruna eldsneytis og vetni er mjög eldfimt og öflugur orkugjafi. Hvernig mætti nýta þessa þekkingu í okkar heimi? Eitt notkunarsvið felur í sér rannsóknir á sparneytnari samgöngum. Efnarafalafarartæki (FCV) ganga fyrir vetni í stað bensíns ([[xref:CNX_Chem_01_01_FuelCell]]). Þau eru skilvirkari en farartæki með brunahreyflum, eru ekki mengandi og draga úr losun gróðurhúsalofttegunda, sem gerir okkur minna háð jarðefnaeldsneyti. Efnarafalafarartæki eru þó ekki enn fjárhagslega hagkvæm og núverandi vetnisframleiðsla byggir á jarðgasi. Ef við getum þróað ferli til að brjóta vatn niður á hagkvæman hátt, eða framleiða vetni á annan umhverfisvænan hátt, gætu efnarafalafarartæki verið framtíðin.';
+// m68704:abstract-item:abstract-item-1 (ch03) — the hyphens are in the PROSE
+// (`parts-per-million`); the forms are `parts per million` and `parts per million (ppm)`
+const PPM_EN =
+  'Define the concentration units of mass percentage, volume percentage, mass-volume percentage, parts-per-million (ppm), and parts-per-billion (ppb)';
+const PPM_IS =
+  'Skilgreint styrkeiningarnar massaprósentu, rúmmálsprósentu, massa-rúmmálsprósentu, milljónustuhluta (ppm) og milljarðshluta (ppb)';
+
 // ── Helpers ──────────────────────────────────────────────────────────────────────────────
 
 const emitted = new Set();
@@ -842,6 +863,48 @@ describe('the English carries the headword in VISIBLE prose', () => {
       chapterDir: 'ch17',
     });
     expect(ids(r)).toEqual(['e2']);
+  });
+
+  describe('a hyphen joining two letters reads as a space, as in the work list (foldHyphens)', () => {
+    // The work list offers each ruling below only because of the fold; an unfolded English check
+    // refused every op under such an offer (31 candidate pairs over chemistry, 2026-10-27).
+    it('accepts a ruling form written with a hyphen against spaced prose (real ch07 problem)', () => {
+      // `electron-pair geometry` (form) against "electron pair geometry" (prose).
+      const r = gateReal({
+        ops: [term('h1', 'electron-pair-geometry', 'rafeindapara-lögun', 'rúmfræði rafeindapara')],
+        en: EPG_EN,
+        is: EPG_IS,
+      });
+      expect(ids(r)).toEqual(['h1']);
+    });
+    it('refuses the same op once the English lacks the term (control: real ch07, same module)', () => {
+      const r = gateReal({
+        ops: [term('h1', 'electron-pair-geometry', 'rafeindapara-lögun', 'rúmfræði rafeindapara')],
+        en: BENT_EN,
+        is: EPG_IS,
+      });
+      expect(r.rejected[0]?.reasons).toEqual(['en-headword-absent']);
+    });
+    it('finds `fuel cell` in prose that writes `Fuel-cell` (real ch01 para)', () => {
+      // Every op here is refused for other reasons (the segment already carries the target);
+      // the question is only whether the English check sees the term.
+      const r = gateReal({
+        ops: [term('h2', 'fuel-cell', 'efnarafalafarartæki', 'efnarafalsfarartæki')],
+        en: FUELCELL_EN,
+        is: FUELCELL_IS,
+        chapterDir: 'ch01',
+      });
+      expect(r.rejected[0]?.reasons).not.toContain('en-headword-absent');
+    });
+    it('finds `parts per million` in prose that writes `parts-per-million` (real ch03 item)', () => {
+      const r = gateReal({
+        ops: [term('h3', 'parts-per-million', 'milljónustuhluta', 'milljónustu hlutar')],
+        en: PPM_EN,
+        is: PPM_IS,
+        chapterDir: 'ch03',
+      });
+      expect(r.rejected[0]?.reasons).toEqual(['term-target-already']);
+    });
   });
 });
 

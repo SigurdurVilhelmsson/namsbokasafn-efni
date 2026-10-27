@@ -18,6 +18,8 @@ import {
   EDITABLE_LABEL_TYPES,
   isWordAligned,
 } from '../ai-review/tokens.js';
+import * as tokensModule from '../ai-review/tokens.js';
+import * as worklistModule from '../ai-review/worklist.js';
 import { usesHeadword } from '../lib/chapter-term-check.js';
 
 // m68745:caption:CNX_Chem_08_02_sp3Geom-caption (ch08) — `sp3` is [[i:sp]][[sup:3]]
@@ -407,5 +409,23 @@ describe('isWordAligned — word boundaries in the text as a reader sees it', ()
   });
   it('an invalid range is refused (fail closed)', () => {
     expect(isWordAligned(FLUSH_IS, 5, 2)).toBe(false);
+  });
+});
+
+describe('foldHyphens — one hyphen fold for the work list and the gate', () => {
+  // The fold lives here because gate.js and worklist.js both read English through it, and
+  // worklist.js imports gate.js (so gate.js cannot import it from worklist.js). Its behaviour is
+  // pinned in ai-review-worklist.test.js, which imports it from worklist.js.
+  it('tokens.js exports it, and folds a hyphen joining two letters', () => {
+    expect(tokensModule.foldHyphens?.('Fuel-cell vehicles')).toBe('Fuel cell vehicles');
+  });
+  it('worklist.js re-exports the same function, not a copy', () => {
+    expect(worklistModule.foldHyphens).toBe(tokensModule.foldHyphens);
+  });
+  it('worklist.js re-exports the same LETTER_JOINING_HYPHEN', () => {
+    expect({
+      own: tokensModule.LETTER_JOINING_HYPHEN instanceof RegExp,
+      same: worklistModule.LETTER_JOINING_HYPHEN === tokensModule.LETTER_JOINING_HYPHEN,
+    }).toEqual({ own: true, same: true });
   });
 });

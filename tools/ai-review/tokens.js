@@ -22,6 +22,8 @@
  *   editableSpans  — the only places an operation may touch;
  *   visibleProse   — what a reader sees, for the headword check (`usesHeadword` on raw text
  *                    fires inside `E[[sub:cell]]` and inside ids);
+ *   foldHyphens    — a hyphen joining two letters read as a space, for English matching in the
+ *                    work list and the gate alike (`Fuel-cell` is a use of `fuel cell`);
  *   isWordAligned  — whether a range starts and ends on a word boundary in the RENDERED
  *                    text, where a label flush against a word continues that word.
  */
@@ -340,6 +342,27 @@ function visibleNodes(nodes) {
 export function visibleProse(text) {
   return visibleNodes(tokenize(text).nodes).replace(/\s+/gu, ' ').trim();
 }
+
+/** A hyphen — ASCII `-`, U+2010 HYPHEN or U+2011 NON-BREAKING HYPHEN — with a letter on each side. */
+export const LETTER_JOINING_HYPHEN = /(?<=\p{L})[-\u2010\u2011](?=\p{L})/gu;
+
+/**
+ * `text` with every hyphen that joins two letters replaced by a space, so `Fuel-cell` reads as
+ * `Fuel cell`. A hyphen beside a digit, a space or an end stays (`carbon-14`, `fuel- cell`), and
+ * so does every other dash (`Hall–Héroult`'s en dash, a minus sign, a soft hyphen). Each
+ * replaced character is one UTF-16 unit and so is the space, so the result has the same length
+ * and a span on it is a span on `text`.
+ *
+ * All English matching runs on folded text, prose and ruling forms alike, in the work list
+ * (worklist.js, which re-exports this) and in the gate's English check (gate.js) — so the gate
+ * never refuses as `en-headword-absent` an offer the work list made. The word boundary treats a
+ * hyphen as a break, so without the fold `cell` matches inside `Fuel-cell` while `fuel cell`
+ * does not, and the shorter ruling is offered where the longer one governs. It lives here, not
+ * in worklist.js, because worklist.js imports gate.js.
+ * @param {string} text
+ * @returns {string}
+ */
+export const foldHyphens = (text) => text.replace(LETTER_JOINING_HYPHEN, ' ');
 
 /** Bare markers that render as a break or a space: a word boundary. */
 const BOUNDARY_MARKERS = new Set(['BR', 'SPACE']);
