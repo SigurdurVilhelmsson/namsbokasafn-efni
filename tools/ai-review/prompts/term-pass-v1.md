@@ -19,7 +19,8 @@ One JSON document per request (`"format": "term-pass-user/1"`):
   sense, and `senses`, the closed list of senses with a gloss each (the ruled sense first).
 - `segments`: in document order, each with its `id`, the `rulings` that may apply to it, the English (`en`) and
   the Icelandic (`is`). Segments are sentences, paragraphs, captions, list items, table cells or titles of one
-  module, so the segments around a segment are its context.
+  module. Only segments that need a check are sent, so the segments of a request are not necessarily neighbours
+  in the text: judge each segment from its own English and Icelandic.
 
 Both texts may hold inline markers such as `[[term:sameindasambönd|term-00007]]`, `[[i:aq]]`,
 `[[sub:2]]`, `[[MATH:3]]` or `[[xref:CNX_Chem_02_04_TiO2]]`. They are formatting and references. Leave them
@@ -65,7 +66,7 @@ For each ruling listed for a segment, find where the Icelandic renders that ruli
 Some English words have several senses, and a ruling covers only one of them (`cell → ker` covers the
 electrochemical cell, not the unit cell of a crystal). For every such ruling listed for a segment:
 
-- Judge the sense from the segment and its context, and record it in `senses`: the ruled sense id, another id from
+- Judge the sense from the segment's own English, and record it in `senses`: the ruled sense id, another id from
   the ruling's list, or `unclear`. Record one judgement per such ruling, even when you make no edit.
 - An edit under such a ruling is a `term-sense` operation (never `term`), and its `sense` is the ruled sense id.
   Agreement operations stay `agreement`.

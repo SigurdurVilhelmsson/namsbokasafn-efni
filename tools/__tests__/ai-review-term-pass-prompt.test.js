@@ -157,6 +157,13 @@ describe('the term-op rules the gate added on 2026-10-27 are taught', () => {
     }
     expect(t).toContain('`tvær O-frumeindir`');
   });
+  // The Skerfur review (2026-10-27, measured over the 591 planned requests): a request carries
+  // only segments that need a check, and only 40% of consecutive presented pairs are adjacent in
+  // the module, so the prompt must not tell the model that a segment's neighbours are its context.
+  it('does not promise that the segments around a segment are its context', () => {
+    expect(t).not.toContain('the segments around a segment are its context');
+    expect(t).toContain('not necessarily neighbours');
+  });
   it('a hyphen is a word boundary, so a symbol prefix stays out of find', () => {
     expect(t).toContain('A hyphen is a word boundary');
   });
