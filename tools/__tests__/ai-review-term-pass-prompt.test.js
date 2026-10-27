@@ -16,7 +16,7 @@ import {
   rulingForRequest,
 } from '../ai-review/term-pass-request.js';
 import { RESPONSE_SCHEMA, parseTermPassResponse } from '../ai-review/term-pass-response.js';
-import { gateSegment, DEFAULT_LIMITS } from '../ai-review/gate.js';
+import { gateSegment, DEFAULT_LIMITS, REJECTION_CODES } from '../ai-review/gate.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { parseLayerFile } from '../lib/mt-layers.js';
 
@@ -124,6 +124,41 @@ describe('the limits the prompt states are the gate’s', () => {
       `a change of up to ${L.changedShareFloorChars} characters is always allowed`
     );
     expect(t).toContain('a shared stem of at least three letters');
+  });
+});
+
+// The runner review (2026-10-27, prompt-model high + medium): the gate gained two term-op
+// refusals, and a prompt that does not teach them invites edits the gate then throws away
+// (the model was leaving a gendered numeral unchanged: "tvær kolefnisatóm").
+describe('the term-op rules the gate added on 2026-10-27 are taught', () => {
+  // Matched on whitespace-collapsed text: the prompt is wrapped markdown.
+  const t = PROMPT.text.replace(/\s+/g, ' ');
+  it('term-op-too-wide: a term operation changes no more words than the target has', () => {
+    expect(REJECTION_CODES).toContain('term-op-too-wide');
+    expect(t).toContain(
+      'Apart from words it leaves unchanged at its start or end, `replace` has no more words than the target'
+    );
+  });
+  it('quantifier-agreement: a gendered number word or quantifier near the term means no edit', () => {
+    expect(REJECTION_CODES).toContain('quantifier-agreement');
+    expect(t).toContain('one of the two words just before the term');
+    for (const w of [
+      'einn',
+      'tveir',
+      'þrír',
+      'fjórir',
+      'annar',
+      'báðir',
+      'enginn',
+      'hálfur',
+      'hvorugur',
+    ]) {
+      expect(t).toContain(`\`${w}\``);
+    }
+    expect(t).toContain('`tvær O-frumeindir`');
+  });
+  it('a hyphen is a word boundary, so a symbol prefix stays out of find', () => {
+    expect(t).toContain('A hyphen is a word boundary');
   });
 });
 

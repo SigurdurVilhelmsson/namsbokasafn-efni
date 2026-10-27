@@ -34,7 +34,8 @@ For each ruling listed for a segment, find where the Icelandic renders that ruli
 2. **Rendered with another word** (a listed competitor or any other word for the same concept): make a `term`
    operation that replaces just that word with the target, inflected for the same case, number and
    definiteness. If the other word is the head of a compound, keep the first part and swap the head:
-   `Títanfrumeindirnar` → `Títanatómin`.
+   `Títanfrumeindirnar` → `Títanatómin`. A hyphen is a word boundary: in `O-frumeindir` change only
+   `frumeindir`, and keep `O-` out of `find`.
 3. **Agreement the change forces.** If the target differs in gender or inflection from the word it replaces, the
    words that agree with it must change too: articles, demonstratives, adjectives, participles, and pronouns that
    refer to it. Make an `agreement` operation for each, naming the same ruling. An agreement operation changes only
@@ -43,7 +44,11 @@ For each ruling listed for a segment, find where the Icelandic renders that ruli
 4. **If a forced change is farther than that, or needs more than an ending change** (a pronoun in a later clause,
    a rebuilt phrase), make **no** operation for that ruling in that segment, and flag `needs-rewrite`. Code
    withdraws every operation of a ruling in a segment when any one of them fails its checks, so a partial fix never
-   lands. An incomplete fix would leave the sentence ungrammatical.
+   lands. An incomplete fix would leave the sentence ungrammatical. The same holds when one of the two words just
+   before the term, or a word you would keep unchanged inside the operation, is a number word that declines for
+   gender (`einn`, `tveir`, `þrír`, `fjórir`) or a form of `annar`, `báðir`, `enginn`, `hálfur` or `hvorugur`
+   (`tvær O-frumeindir`): such a word never changes, so make no operation for that ruling and flag
+   `needs-rewrite`, even when its form would happen to fit the target.
 5. **The longest matching ruling governs.** When one English phrase matches two rulings (`electrolytic cell` and
    `cell`), apply the longer one (`electrolytic cell → rafker`) and leave the shorter one alone inside it. A
    longer ruling whose target is already in place (`fuel cell → efnarafall`) still governs that phrase: do not
@@ -92,7 +97,10 @@ matched against the text as the operations before it left it. An operation that 
 - At most 6 operations per segment, none overlapping another. Together they change at most half of a segment's
   characters, except that a change of up to 72 characters is always allowed.
 - A `term` or `term-sense` operation: `replace` contains the target as the head of a word (inflected, possibly after
-  a first part of at least three letters), and `find` does not already contain the target.
+  a first part of at least three letters), and `find` does not already contain the target. Apart from words it
+  leaves unchanged at its start or end, `replace` has no more words than the target: make each agreement change
+  its own `agreement` operation. A number word or quantifier of the kind in step 4 among the two words before
+  `find`, or among the words it leaves unchanged, refuses the operation.
 - An `agreement` operation: an accepted `term` or `term-sense` operation of the same ruling in the same segment, at
   most 4 words between them, the same number of words in `find` and `replace`, and each changed word either an
   ending change on a shared stem of at least three letters or a closed-class word on both sides. Negations and
