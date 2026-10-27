@@ -847,10 +847,24 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
 
   it('an atomic-orbital op is not shadowed by atom (atom is not a whole word in it)', () => {
     const find = 'frumeindasvigrúmi';
-    // Discriminating: atom's competitor IS in this find, so a substring test would shadow.
+    // Discriminating for DIRECTION: atom's competitor IS in this find, so a check that let the
+    // shorter ruling shadow the longer would refuse it.
     expect(containsTargetStem(find, SET.byId.get('atom').competitors[0])).toBe(true);
     const orbitalOp = op({ ruling: 'atomic-orbital', find, replace: 'atómsvigrúmi' });
     expect(first(doc(seg('fs-a', { ops: [orbitalOp] })))).toEqual({ reasons: null, kept: 1 });
+  });
+
+  it('nor is an atom op shadowed by atomic-orbital: containment is whole-word, not substring', () => {
+    const find = 'frumeindasvigrúmi';
+    // Discriminating for WHOLE-WORD: `atomic orbital` holds `atom` as a substring, and
+    // atomic-orbital's competitor IS in this find, so a substring containment would refuse it.
+    const orbital = SET.byId.get('atomic-orbital');
+    expect([
+      orbital.en[0].includes('atom'),
+      containsTargetStem(find, orbital.competitors[0]),
+    ]).toEqual([true, true]);
+    const atomOp = op({ ruling: 'atom', find, replace: 'atómsvigrúmi' });
+    expect(first(doc(seg('fs-a', { ops: [atomOp] })))).toEqual({ reasons: null, kept: 1 });
   });
 
   it('a ruling never shadows itself, though its own forms contain each other', () => {
@@ -864,6 +878,21 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
     const presented = [{ segmentId: 'fs-c', rulingIds: ['osmotic-pressure'] }];
     const own = op({ ruling: 'osmotic-pressure', find, replace: 'osmósuþrýstingi' });
     expect(first(doc(seg('fs-c', { ops: [own] })), presented)).toEqual({ reasons: null, kept: 1 });
+  });
+
+  it('HYPOTHETICAL: a different ruling with the SAME English form is not longer, so does not shadow', () => {
+    // No two rulings of the committed set share a form, so this case is synthetic: a second
+    // `cell` ruling invented for the test, saying nothing about what the book should use.
+    const twin = {
+      ...SET.byId.get('fuel-cell'),
+      id: 'cell-twin',
+      enNorm: 'cell twin',
+      en: ['cell'],
+    };
+    const rulingsById = new Map([...SET.byId, [twin.id, twin]]);
+    const presented = [{ segmentId: 'fs-b', rulingIds: ['cell', 'cell-twin'] }];
+    const r = parse(message(doc(seg('fs-b', { ops: [cellOp(COINAGE)] }))), presented, rulingsById);
+    expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
   });
 
   it('every applicable runner reason is reported, sorted', () => {
