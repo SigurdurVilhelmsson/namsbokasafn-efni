@@ -9,8 +9,10 @@
  * held ruling, no proposed width and no proposed sense, so those conditions cannot be reached on
  * it. Segment text marked REAL is copied from the committed chemistry corpus.
  *
- * The m68727 numbers and the whole-chemistry totals were measured independently, with
- * different scripts (the seg-markers parser, not mt-layers), before this module existed.
+ * Both sets of pinned numbers were measured before this module existed, by other instruments:
+ * the m68727 counts with a script on the seg-markers parser (not mt-layers), and the
+ * whole-chemistry totals (22,876 IS occurrences, 4,184 identical to EN) by the controller with
+ * a separate script of its own.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
