@@ -14,7 +14,10 @@
  *           complete, or whose answers are not all usable (truncated, refused, errored or
  *           missing); each chapter's line prints those counts.
  *   resume  Resume a batch run whose polling stopped (`pending`). It collects against the
- *           recorded requests; apply, not resume, refuses results whose inputs changed.
+ *           recorded requests; apply, not resume, refuses results whose inputs changed. On an
+ *           interactive run that was killed before it ended, `resume --yes` closes it as
+ *           `interrupted` (open reservations settled at their worst case), so its answers can
+ *           be applied together with a fresh run of the chapter.
  *
  * Exit codes: 0 done; 1 refused or failed (the message says why); 2 run/resume ended
  * without every chapter complete and fully usable (the printed remedy says what next).
@@ -45,7 +48,7 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { REPO_ROOT, assertBookSlug, CAP_USD } from './config.js';
 import { loadRulingSet } from './ruling-set.js';
-import { runInteractive, runBatch, EFFORTS } from './harness.js';
+import { runInteractive, runBatch, closeInterruptedRun, EFFORTS } from './harness.js';
 import { worstCaseUsd } from './pricing.js';
 import { summarizeLedger, readLedger } from './ledger.js';
 import { mintRunId, runDirFor, createRecordWriter, RECORD_FILES } from './records.js';
@@ -111,7 +114,7 @@ function usage() {
     '  plan    (--chapter chNN ... | --all) [--segments-per-request N] [--char-budget N] [--max-tokens N] [--out FILE]',
     '  run     (--chapter chNN ... | --all) --mode interactive|batch [--effort E] [--max-tokens N]',
     '          [--timeout-ms N] [--layer1-commit REF] [--limit N] [--ruling-set PATH] [--yes]',
-    '  resume  --run RUNID [--max-polls N]',
+    '  resume  --run RUNID [--max-polls N] [--yes]   (--yes closes a killed interactive run)',
     '  apply   --chapter chNN --run RUNID [--run RUNID ...] [--report FILE] [--write] [--overwrite]',
     `The book is ${BOOK}. FILE paths must be absolute, and land (symlinks resolved) outside the repository and outside any books/ directory.`,
   ].join('\n');
@@ -168,7 +171,7 @@ const ALLOWED = {
     'yes',
     'max-polls',
   ],
-  resume: ['run', 'max-polls'],
+  resume: ['run', 'max-polls', 'yes'],
   apply: ['chapter', 'run', 'report', 'write', 'overwrite', 'ruling-set'],
 };
 
@@ -727,6 +730,9 @@ const REMEDY = Object.freeze({
   'stopped-on-truncation': () => 'answers were cut off at max_tokens: raise --max-tokens first',
   'stopped-over-reservation': () =>
     'a response cost more than its reserved worst case: the price assumptions did not hold',
+  interrupted: () =>
+    'the run was interrupted; apply it together with a fresh run of the chapter ' +
+    '(the coverage line shows what is missing)',
   'complete-over-reservation': () =>
     'the results are in, but a response cost more than its reserved worst case',
 });
@@ -782,8 +788,9 @@ async function cmdResume(ctx, values, deps) {
   const r = createRecordWriter({ dir });
   if (!r.exists(RECORD_FILES.run)) throw refusal('bad-flag', `run ${runId} has no run.json`);
   const run = r.readJson(RECORD_FILES.run);
-  if (run.use !== USE || run.mode !== 'batch')
-    throw refusal('bad-flag', `run ${runId} is not a ${USE} batch run`);
+  if (run.use !== USE || !MODES.includes(run.mode))
+    throw refusal('bad-flag', `run ${runId} is not a ${USE} run`);
+  if (run.mode === 'interactive') return closeInteractive(ctx, values, r, run, runId);
   if (!r.exists(TERM_PASS_RECORD)) {
     throw refusal(
       'bad-flag',
@@ -822,6 +829,33 @@ async function cmdResume(ctx, values, deps) {
       : null;
   const good = judgeRun(ctx, tp.chapterDir, { ...result, runId }, answers);
   return { ...result, exitCode: good ? 0 : 2 };
+}
+
+/**
+ * `resume` on an interactive run: close a run that was killed before it ended, so its paid
+ * answers can be applied (together with a fresh run of the chapter) and its open reservation
+ * stops lowering the cap. Asks for --yes because closing a run that a live process is still
+ * running would settle that process's reservation under it.
+ */
+function closeInteractive(ctx, values, r, run, runId) {
+  if (r.exists(RECORD_FILES.runEnd)) {
+    throw refusal('bad-flag', `run ${runId} already ended; there is nothing to resume`);
+  }
+  if (!r.exists(TERM_PASS_RECORD)) {
+    throw refusal('bad-flag', `run ${runId} has no ${TERM_PASS_RECORD}; apply could not use it`);
+  }
+  if (!values.yes) {
+    throw refusal(
+      'bad-flag',
+      `run ${runId} is an interactive run that did not end. resume --run ${runId} --yes closes ` +
+        'it as interrupted, settling its open reservations at their worst case. Make sure no ' +
+        'process is still running it first.'
+    );
+  }
+  const tp = r.readJson(TERM_PASS_RECORD);
+  const result = closeInterruptedRun({ recordsDir: ctx.recordsDir, runId, now: ctx.now });
+  judgeRun(ctx, tp.chapterDir, result);
+  return { ...result, exitCode: 2 };
 }
 
 async function cmdApply(ctx, values) {

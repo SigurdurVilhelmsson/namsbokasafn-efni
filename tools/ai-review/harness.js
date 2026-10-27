@@ -58,6 +58,8 @@ import {
   settleAndRelease,
   releaseAll,
   reservationState,
+  readLedger,
+  summarizeLedger,
   CapExceededError,
 } from './ledger.js';
 import {
@@ -729,6 +731,107 @@ export async function runInteractive(opts) {
 
   ctx.writeRunEnd(status, counts, totalPico, null);
   return { runId, runDir, status, counts, totalUsd: picoToUsd(totalPico) };
+}
+
+/**
+ * Close an INTERACTIVE run that was killed before it wrote run-end.json (a crash, an OOM kill,
+ * Ctrl-C), so its paid answers can be applied and its open reservation stops lowering the cap
+ * (final review, 2026-10-27). Nothing is sent. From what is on disk it:
+ *   - settles every reservation of the run still open in the ledger at its WORST case: the
+ *     request in flight may have been billed, so the cap assumes it was (as a status-less send
+ *     error does);
+ *   - records each request that has neither a response nor an error as an `interrupted` error;
+ *   - writes run-end.json with status `interrupted` and counts derived from the records.
+ * The caller must be sure no process is still running the run (the CLI asks for --yes).
+ * @param {{ recordsDir: string, runId: string, ledgerPath?: string, now?: () => Date,
+ *   secrets?: string[] }} opts
+ * @returns {{ runId: string, runDir: string, status: 'interrupted', counts: object,
+ *   totalUsd: number, settledOpenUsd: number }}
+ */
+export function closeInterruptedRun(opts) {
+  const recordsDir = assertRecordsDir(opts.recordsDir);
+  const ledgerPath =
+    opts.ledgerPath === undefined
+      ? path.join(recordsDir, LEDGER_FILE)
+      : assertLedgerPath(opts.ledgerPath);
+  const now = opts.now ?? (() => new Date());
+  const runId = opts.runId;
+  const runDir = openRunDir(recordsDir, runId);
+  const writer = createRecordWriter({ dir: runDir, secrets: opts.secrets ?? [] });
+  if (!writer.exists(RECORD_FILES.run)) {
+    throw new Error(`harness: run ${runId} has no run.json; refusing`);
+  }
+  if (writer.exists(RECORD_FILES.runEnd)) {
+    throw new Error(`harness: run ${runId} already ended (run-end.json exists); nothing to close`);
+  }
+  const run = writer.readJson(RECORD_FILES.run);
+  if (run.mode !== 'interactive') {
+    throw new Error(`harness: run ${runId} is a ${run.mode} run; resume collects a batch`);
+  }
+
+  // The cap first: settle what is still open, at its worst case.
+  let settledOpenP = 0;
+  for (const [id, r] of summarizeLedger(readLedger(ledgerPath)).reservations) {
+    if (r.runId !== runId || r.settled || r.released || r.openUsd <= 0) continue;
+    settleAndRelease({ ledgerPath, id, actualUsd: r.openUsd, now });
+    settledOpenP += usdToPico(r.openUsd);
+  }
+
+  const requests = writer.readJsonl(RECORD_FILES.requests);
+  const responses = writer.readJsonl(RECORD_FILES.responses);
+  const answered = new Set(responses.map((l) => l.custom_id));
+  const errored = new Set(writer.readJsonl(RECORD_FILES.errors).map((l) => l.custom_id));
+  for (const q of requests) {
+    if (answered.has(q.custom_id) || errored.has(q.custom_id)) continue;
+    writer.appendJsonl(RECORD_FILES.errors, {
+      custom_id: q.custom_id,
+      key: q.key,
+      stage: 'interrupted',
+      error: {
+        name: 'Interrupted',
+        status: null,
+        type: null,
+        message:
+          'the run was interrupted while this request was in flight; settled at its worst case',
+        requestId: null,
+      },
+      result: null,
+      recordedAt: now().toISOString(),
+    });
+  }
+  const errors = writer.readJsonl(RECORD_FILES.errors);
+  const planned = Number.isSafeInteger(run.requestCount) ? run.requestCount : requests.length;
+  const counts = {
+    planned,
+    sent: requests.length,
+    succeeded: responses.filter((l) => l.outcome === 'succeeded').length,
+    refusal: responses.filter((l) => l.outcome === 'refusal').length,
+    truncated: responses.filter((l) => l.outcome === 'truncated').length,
+    errored: errors.filter((l) => ['count_tokens', 'send', 'interrupted'].includes(l.stage)).length,
+    notSent: Math.max(0, planned - requests.length),
+  };
+  let totalP = 0;
+  for (const r of summarizeLedger(readLedger(ledgerPath)).reservations.values()) {
+    if (r.runId === runId) totalP += usdToPico(r.settledUsd);
+  }
+  writer.writeJson(RECORD_FILES.runEnd, {
+    schema: 'ai-review-run-end/1',
+    runId,
+    mode: 'interactive',
+    status: 'interrupted',
+    endedAt: now().toISOString(),
+    counts,
+    totalUsd: picoToUsd(totalP),
+    batchId: null,
+  });
+  return {
+    runId,
+    runDir,
+    status: 'interrupted',
+    counts,
+    totalUsd: picoToUsd(totalP),
+    settledOpenUsd: picoToUsd(settledOpenP),
+  };
 }
 
 /**

@@ -127,7 +127,15 @@ export function loadRunRecords({ recordsDir, runId }) {
   const dir = openRunDir(recordsDir, runId);
   const r = createRecordWriter({ dir });
   if (!r.exists(RECORD_FILES.runEnd)) {
-    throw refusal('run-unfinished', `run ${runId} has no ${RECORD_FILES.runEnd}; resume it first`);
+    const interactive =
+      r.exists(RECORD_FILES.run) && r.readJson(RECORD_FILES.run).mode === 'interactive';
+    throw refusal(
+      'run-unfinished',
+      `run ${runId} has no ${RECORD_FILES.runEnd}; ` +
+        (interactive
+          ? `an interactive run that did not end: resume --run ${runId} --yes closes it`
+          : 'resume it first')
+    );
   }
   if (!r.exists(TERM_PASS_RECORD)) {
     throw refusal('not-a-term-pass-run', `run ${runId} has no ${TERM_PASS_RECORD}`);

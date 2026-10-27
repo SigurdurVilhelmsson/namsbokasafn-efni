@@ -21,7 +21,7 @@ import { listChapterUnits, verifyRevision } from '../lib/mt-layers.js';
 import { makeGit } from '../ai-review/provenance.js';
 import { loadPrompt, PROMPT_PATH } from '../ai-review/term-pass-request.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
-import { readLedger, reserve } from '../ai-review/ledger.js';
+import { readLedger, reserve, summarizeLedger } from '../ai-review/ledger.js';
 import {
   REPO,
   RULING_SET_PATH,
@@ -707,7 +707,7 @@ describe('a run killed mid-flight stays resumable and applicable', () => {
   it('resume checks run.json before term-pass.json, and names a missing term-pass.json', async () => {
     const S = setup();
     const extra = { transport: mockTransport(), sleep: async () => {}, pollIntervalMs: 0 };
-    // an interactive run is not resumable, whatever else is missing
+    // a finished interactive run has nothing to resume, whatever else is missing
     const i = await main(
       ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
       S.deps(extra)
@@ -715,7 +715,7 @@ describe('a run killed mid-flight stays resumable and applicable', () => {
     const iDir = path.join(S.fx.records, 'runs', i.results[0].runId);
     fs.rmSync(path.join(iDir, TERM_PASS_RECORD));
     await expect(main(['resume', '--run', i.results[0].runId], S.deps(extra))).rejects.toThrow(
-      /not a .* batch run/
+      /already ended/
     );
     // a pending batch whose term-pass.json is gone is refused by name
     const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
@@ -1126,5 +1126,76 @@ describe('usable means every presented segment answered, in apply and in run ali
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S2.deps())
     ).rejects.toThrow(/apply the runs together/);
+  });
+});
+
+// The final review (2026-10-27, confirmed high): a killed interactive run stranded its paid
+// answers — apply wanted run-end.json, resume took batch runs only — and kept its in-flight
+// reservation open against the cap.
+describe('resume --yes closes a killed interactive run, so its answers can be applied', () => {
+  /** A complete ch02 interactive run turned into what a kill during its last request leaves. */
+  async function killed(S) {
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    const runId = r.results[0].runId;
+    const dir = path.join(S.fx.records, 'runs', runId);
+    fs.rmSync(path.join(dir, 'run-end.json'));
+    const resp = path.join(dir, 'responses.jsonl');
+    const lines = fs.readFileSync(resp, 'utf8').split('\n').filter(Boolean);
+    fs.writeFileSync(
+      resp,
+      lines
+        .slice(0, -1)
+        .map((l) => `${l}\n`)
+        .join('')
+    );
+    const run = JSON.parse(fs.readFileSync(path.join(dir, 'run.json'), 'utf8'));
+    reserve({
+      ledgerPath: path.join(S.fx.records, 'ledger.jsonl'),
+      runId,
+      use: run.use,
+      usd: 0.3,
+      cap: 100,
+      now,
+    });
+    return { runId, dir };
+  }
+
+  it('apply on an unclosed interactive run says how to close it', async () => {
+    const S = setup();
+    const k = await killed(S);
+    await expect(main(['apply', '--chapter', 'ch02', '--run', k.runId], S.deps())).rejects.toThrow(
+      /resume --run .* --yes/
+    );
+  });
+
+  it('refuses without --yes, and writes nothing', async () => {
+    const S = setup();
+    const k = await killed(S);
+    await expect(main(['resume', '--run', k.runId], S.deps())).rejects.toThrow(/--yes/);
+    expect(fs.existsSync(path.join(k.dir, 'run-end.json'))).toBe(false);
+  });
+
+  it('with --yes: interrupted, exit 2, open money settled; applied with a fresh run the chapter is complete', async () => {
+    const S = setup();
+    const k = await killed(S);
+    const res = await main(['resume', '--run', k.runId, '--yes'], S.deps());
+    expect(res.status).toBe('interrupted');
+    expect(res.exitCode).toBe(2);
+    expect(summarizeLedger(readLedger(path.join(S.fx.records, 'ledger.jsonl'))).openUsd).toBe(0);
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', k.runId], S.deps());
+    expect(dry.result.coverage.requestsMissing).toHaveLength(1);
+    const fresh = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    const w = await main(
+      ['apply', '--chapter', 'ch02', '--run', k.runId, '--run', fresh.results[0].runId, '--write'],
+      S.deps()
+    );
+    expect(w.result.coverage.complete).toBe(true);
+    expect(w.written.layer2.length).toBeGreaterThan(0);
   });
 });

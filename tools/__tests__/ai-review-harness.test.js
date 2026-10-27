@@ -11,7 +11,12 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { runInteractive, runBatch, validateRequestBody } from '../ai-review/harness.js';
+import {
+  runInteractive,
+  runBatch,
+  validateRequestBody,
+  closeInterruptedRun,
+} from '../ai-review/harness.js';
 import { readLedger, summarizeLedger, reserve, settle } from '../ai-review/ledger.js';
 import { createAnthropicTransport, sdkInfo } from '../ai-review/transport-anthropic.js';
 import { CAP_USD, REPO_ROOT } from '../ai-review/config.js';
@@ -1623,5 +1628,79 @@ describe('a truncated response is its own outcome', () => {
     });
     expect(r.status).toBe('complete');
     expect(r.counts).toMatchObject({ sent: 5, succeeded: 2, truncated: 3 });
+  });
+});
+
+// The final review of the fixes (2026-10-27, confirmed high): a killed interactive run left its
+// paid answers unusable (apply wants run-end.json, resume took batch runs only) and the
+// reservation of the request in flight open against the cap for good.
+describe('closeInterruptedRun — an interactive run killed mid-request', () => {
+  /** A finished 3-request interactive run, turned into the state a kill on request 3 leaves. */
+  async function killedRun() {
+    const dir = tmp();
+    const r = await runInteractive({
+      ...baseOpts(dir, mockTransport()),
+      requests: [req('k0'), req('k1'), req('k2')],
+    });
+    const runDir = path.join(dir, 'runs', r.runId);
+    fs.rmSync(path.join(runDir, 'run-end.json'));
+    const resp = path.join(runDir, 'responses.jsonl');
+    const lines = fs.readFileSync(resp, 'utf8').split('\n').filter(Boolean);
+    fs.writeFileSync(
+      resp,
+      lines
+        .slice(0, 2)
+        .map((l) => `${l}\n`)
+        .join('')
+    );
+    const ledgerPath = path.join(dir, 'ledger.jsonl');
+    const inFlight = reserve({
+      ledgerPath,
+      runId: r.runId,
+      use: 'ai-pass',
+      usd: WORST,
+      now: fixedClock(),
+    });
+    return { dir, runId: r.runId, runDir, ledgerPath, inFlight };
+  }
+
+  it('settles the in-flight reservation at its worst case and writes an interrupted run-end', async () => {
+    const k = await killedRun();
+    const out = closeInterruptedRun({ recordsDir: k.dir, runId: k.runId, now: fixedClock() });
+    expect(out.status).toBe('interrupted');
+    const st = summarizeLedger(readLedger(k.ledgerPath)).reservations.get(k.inFlight.id);
+    expect(st.openUsd).toBe(0);
+    expect(st.settledUsd).toBeCloseTo(WORST, 12);
+    const end = JSON.parse(fs.readFileSync(path.join(k.runDir, 'run-end.json'), 'utf8'));
+    expect(end).toMatchObject({ status: 'interrupted', mode: 'interactive' });
+    expect(end.counts).toMatchObject({ planned: 3, sent: 3, succeeded: 2, errored: 1, notSent: 0 });
+    const errs = readJsonl(path.join(k.runDir, 'errors.jsonl')).filter(
+      (e) => e.stage === 'interrupted'
+    );
+    expect(errs.map((e) => e.key)).toEqual(['k2']);
+    expect(summarizeLedger(readLedger(k.ledgerPath)).openUsd).toBe(0);
+  });
+
+  it('refuses a run that already ended, and writes nothing', async () => {
+    const dir = tmp();
+    const r = await runInteractive({ ...baseOpts(dir, mockTransport()), requests: [req('k0')] });
+    const before = fs.readFileSync(path.join(r.runDir, 'run-end.json'), 'utf8');
+    expect(() => closeInterruptedRun({ recordsDir: dir, runId: r.runId })).toThrow(/run-end\.json/);
+    expect(fs.readFileSync(path.join(r.runDir, 'run-end.json'), 'utf8')).toBe(before);
+  });
+
+  it('refuses a batch run (resume collects those)', async () => {
+    const dir = tmp();
+    const t = mockTransport({ pollsUntilEnded: 5 });
+    const r = await runBatch({ ...baseOpts(dir, t), requests: [req('k0')], maxPolls: 1 });
+    expect(r.status).toBe('pending');
+    expect(() => closeInterruptedRun({ recordsDir: dir, runId: r.runId })).toThrow(/batch/);
+    expect(fs.existsSync(path.join(r.runDir, 'run-end.json'))).toBe(false);
+  });
+
+  it('refuses a directory with no run.json', () => {
+    const dir = tmp();
+    fs.mkdirSync(path.join(dir, 'runs', 'r-empty'), { recursive: true });
+    expect(() => closeInterruptedRun({ recordsDir: dir, runId: 'r-empty' })).toThrow(/run\.json/);
   });
 });
