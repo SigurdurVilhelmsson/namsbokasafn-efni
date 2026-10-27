@@ -1890,10 +1890,16 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
       const r = atom('súrefnisfrumeindin', 'súrefnisatómið', { en: NO_EN, is: NO_IS });
       expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
     });
-    it('documents the over-refusal: a find carrying a neighbour that a quantifier follows (real ch07 alt)', () => {
-      // `flúorfrumeind` alone is ambiguous, so find carries `hefur`, and `þrjú` heads the next
-      // noun (`þrjú stök rafeindapör`), not this one.
+    it('reads the word right after the TERM, not after find: a carried neighbour is that word (real ch07 alt)', () => {
+      // `flúorfrumeind` alone is ambiguous, so find carries `hefur`; the word after the term is
+      // `hefur` (checked as part of the shared trailing run), and `þrjú` heads the next noun
+      // (`þrjú stök rafeindapör`). Reading after find refused this correct edit (9 of 12
+      // over-refusals on the fix's own probe set came from this shape).
       const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
+      expect(ids(r)).toEqual(['q']);
+    });
+    it('still refuses a quantifier carried in find right after the term (control, real ch15 alt)', () => {
+      const r = atom('frumeindirnar tvær', 'atómin tvær', { en: I3_EN, is: I3_IS });
       expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
     });
   });

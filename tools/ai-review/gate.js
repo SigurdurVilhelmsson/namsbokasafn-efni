@@ -383,7 +383,8 @@ const wsWords = (s) => s.split(/\s+/u).filter(Boolean);
  * identical words, then the longest common trailing run of what is left, so the two runs
  * never share a word of either side.
  * @returns {{ shared: string[], replaceMiddle: string[] }} `shared` is the words of both
- *   runs (identical on the two sides); `replaceMiddle` is what remains of `replace`.
+ *   runs (identical on the two sides); `trailing` is the trailing run alone; `replaceMiddle` is
+ *   what remains of `replace`.
  */
 function commonRuns(find, replace) {
   const fw = wsWords(find);
@@ -395,6 +396,7 @@ function commonRuns(find, replace) {
   while (trail < room && fw[fw.length - 1 - trail] === rw[rw.length - 1 - trail]) trail++;
   return {
     shared: [...fw.slice(0, lead), ...fw.slice(fw.length - trail)],
+    trailing: fw.slice(fw.length - trail),
     replaceMiddle: rw.slice(lead, rw.length - trail),
   };
 }
@@ -639,8 +641,14 @@ function checkOp(op, st) {
       reasons.push('term-op-too-wide');
     }
     // A gendered quantifier is BARRED, so no agreement op can follow the noun's new gender.
+    // After the term means the word right after the TERM: when find carries an unchanged
+    // trailing word, that word is it (and runs.shared checks it), so the word after find is
+    // two places on and belongs to the next noun (`flúorfrumeind hefur þrjú stök rafeindapör`).
     const beside = range
-      ? [...tokensBeforeFind(text, range.start), ...tokenAfterFind(text, op.find, range.end)]
+      ? [
+          ...tokensBeforeFind(text, range.start),
+          ...(runs.trailing.length === 0 ? tokenAfterFind(text, op.find, range.end) : []),
+        ]
       : [];
     if ([...beside, ...runs.shared].some(isQuantifierToken)) {
       reasons.push('quantifier-agreement');
