@@ -476,15 +476,17 @@ describe('matchesOccurrence', () => {
       );
     });
 
-    it('the second form reaches the offer', () => {
-      const it0 = item(
-        'A galvanic cell makes electricity',
-        'Galvanísk rafhlaða framleiðir rafmagn'
-      );
-      expect(offeredRulings({ item: it0, rulings: [GALVANIC], chapterDir: 'ch17' })).toEqual({
-        candidateIds: ['galvanic-cell'],
-        rulingIds: ['galvanic-cell'],
-      });
+    it('each form alone reaches the offer', () => {
+      const offer = (en) =>
+        offeredRulings({
+          item: item(en, 'Galvanísk rafhlaða framleiðir rafmagn'),
+          rulings: [GALVANIC],
+          chapterDir: 'ch17',
+        }).candidateIds;
+      expect([
+        offer('A galvanic (voltaic) cell makes electricity'),
+        offer('A galvanic cell makes electricity'),
+      ]).toEqual([['galvanic-cell'], ['galvanic-cell']]);
     });
   });
 });
@@ -539,6 +541,13 @@ describe('isCandidate', () => {
 
     it('control: a payload without the competitor is not a candidate', () => {
       expect(isCandidate(ATOM, { en: 'The atom', is: 'Atómið[[sub:x]]' }, 'ch02')).toBe(false);
+    });
+
+    it('the raw reading reaches the offer, with its control', () => {
+      const offer = (is) =>
+        offeredRulings({ item: item('The atom', is), rulings: [ATOM], chapterDir: 'ch02' })
+          .candidateIds;
+      expect([offer(IS3), offer('Atómið[[sub:x]]')]).toEqual([['atom'], []]);
     });
   });
 
