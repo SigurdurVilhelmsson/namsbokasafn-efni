@@ -651,6 +651,26 @@ describe('fixture tree', () => {
           ],
         ]);
       });
+      it('refuses a stale beforeSha256 even on an entry whose text is the body there now', () => {
+        // Layer 1 was hand-repaired to exactly the entry's text after the entry was written:
+        // applying it changes no text, but would credit the repair to this entry's run and rule.
+        overlay([entry({ text: P1_BODY })]);
+        const rightPin = [refusalOf(base), p1Bodies()];
+        overlay([entry({ text: P1_BODY, beforeSha256: sha256('Frumeind er agnarlítil.') })]);
+        expect([rightPin, refusalOf(base)]).toEqual([
+          // control: the same entry with the right pin is accepted, and changes no text
+          [
+            ['no-throw', ''],
+            [P1_BODY, P1_BODY],
+          ],
+          [
+            'bad-overlay',
+            expect.stringContaining(
+              'm100:para:p1: beforeSha256 is not the sha256 of the layer-1 body there now'
+            ),
+          ],
+        ]);
+      });
       it('refuses an entry without beforeSha256', () => {
         overlay([without(entry(), 'beforeSha256')]);
         expect(refusalOf(base)).toEqual([

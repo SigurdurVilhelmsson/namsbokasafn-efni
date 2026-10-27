@@ -465,7 +465,9 @@ const OVERLAY_ENTRY_KEYS = [
  * (64 lowercase hex characters) of the layer-1 body the entry replaces, at that exact occurrence.
  * An entry whose `beforeSha256` differs from the layer-1 body there now refuses (`bad-overlay`,
  * naming the occurrence key): layer 1 changed after the entry was written (a later HAND REPAIR),
- * and applying the entry would undo that change silently.
+ * and applying the entry would undo that change silently, or, where the entry's text equals the
+ * body there now, credit that change to the entry's run and rule. The pin is checked before the
+ * no-op filter, so a no-op entry refuses too.
  */
 function applyOverlay(parsed, overlay, stem, file) {
   const bad = (why) => refusal('bad-overlay', `${file}: ${why}`);
@@ -512,8 +514,8 @@ function applyOverlay(parsed, overlay, stem, file) {
     if (e.beforeSha256 !== sha256(bodies.get(key))) {
       throw bad(
         `${key}: beforeSha256 is not the sha256 of the layer-1 body there now. Layer 1 changed ` +
-          'after this entry was written (a later HAND REPAIR?), and applying it would undo that ' +
-          'change; refusing'
+          'after this entry was written (a later HAND REPAIR?), and applying it would undo or ' +
+          'misattribute that change; refusing'
       );
     }
     const problems = validateBody(e.text);

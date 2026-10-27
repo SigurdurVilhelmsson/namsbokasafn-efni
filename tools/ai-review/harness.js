@@ -385,7 +385,8 @@ function runningCode(opts, transport) {
  * `existingRun`) writes `run.json`; a resume appends `{ resumedAt, sdk, harnessCommit,
  * harnessDirty }` to its `resumes` array (earlier entries kept) and rewrites it, before the
  * caller's first poll. The entry goes into the `run` this context holds, so `noteVersion`'s
- * later rewrite keeps it.
+ * later rewrite keeps it. The entry does not record the anthropic-version header:
+ * `noteVersion` records that once per run, from whichever process first sees it.
  */
 function openContext(
   opts,

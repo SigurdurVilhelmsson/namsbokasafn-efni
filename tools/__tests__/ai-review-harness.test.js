@@ -1082,6 +1082,33 @@ describe('runBatch — a resume records who resumed it (run.json `resumes`)', ()
     ]);
   });
 
+  it('keeps the entry when a later anthropic-version note rewrites run.json', async () => {
+    const dir = tmp();
+    // A first run whose transport reported no version, so run.json records it as null and
+    // the resume's first outgoing request is what notes it (noteVersion rewrites run.json).
+    const first = await runBatch({
+      ...baseOpts(
+        dir,
+        { ...mockTransport({ pollsUntilEnded: Infinity }), anthropicVersion: undefined },
+        { maxPolls: 1, harnessDirty: () => false }
+      ),
+      requests: [req('k0'), req('k1')],
+    });
+    const versionAfterFirst = readRun(first.runDir).anthropicVersion;
+    const t = mockTransport({
+      pollsUntilEnded: 1,
+      sdkVersion: 'mock-resume',
+      results: allSucceeded,
+    });
+    const out = await runBatch(resumeOpts(dir, t, first.runId));
+    const after = readRun(out.runDir);
+    expect([versionAfterFirst, after.anthropicVersion, after.resumes]).toEqual([
+      null, // control: the first run left the version for a later process to note
+      '2026-10-21', // control: the resume noted it, so run.json was rewritten after the entry
+      [FIRST_RESUME],
+    ]);
+  });
+
   it('records sdk null when the resuming transport reports none', async () => {
     const dir = tmp();
     const first = await pendingRun(dir);
@@ -1136,16 +1163,26 @@ describe('runBatch — a resume records who resumed it (run.json `resumes`)', ()
     expect(fs.readFileSync(file).equals(before)).toBe(true);
   });
 
-  it('refuses a run.json whose resumes is not an array, before polling or writing', async () => {
-    const dir = tmp();
-    const first = await pendingRun(dir);
-    const file = path.join(first.runDir, 'run.json');
-    fs.writeFileSync(file, JSON.stringify({ ...readRun(first.runDir), resumes: 'x' }));
-    const before = fs.readFileSync(file);
-    const t = mockTransport({ pollsUntilEnded: 1, sdkVersion: 'mock-resume' });
-    await expect(runBatch(resumeOpts(dir, t, first.runId))).rejects.toThrow(/resumes/);
-    expect([fs.readFileSync(file).equals(before), t.calls.getBatch.length]).toEqual([true, 0]);
-  });
+  it.each([
+    ['a string', 'x'],
+    ['null', null],
+    ['an object', {}],
+    ['a number', 5],
+  ])(
+    'refuses a run.json whose resumes is %s, by name, before polling or writing',
+    async (_label, resumes) => {
+      const dir = tmp();
+      const first = await pendingRun(dir);
+      const file = path.join(first.runDir, 'run.json');
+      fs.writeFileSync(file, JSON.stringify({ ...readRun(first.runDir), resumes }));
+      const before = fs.readFileSync(file);
+      const t = mockTransport({ pollsUntilEnded: 1, sdkVersion: 'mock-resume' });
+      await expect(runBatch(resumeOpts(dir, t, first.runId))).rejects.toThrow(
+        /run\.json's resumes is not an array; refusing/
+      );
+      expect([fs.readFileSync(file).equals(before), t.calls.getBatch.length]).toEqual([true, 0]);
+    }
+  );
 });
 
 describe('one record shape for both modes', () => {
