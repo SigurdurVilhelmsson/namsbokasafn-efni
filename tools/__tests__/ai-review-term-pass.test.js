@@ -32,6 +32,7 @@ import {
   scriptedAnswer,
   messageFor,
   TIO2_ID,
+  TIO2_OPS,
   AL_ID,
 } from './helpers/term-pass-fixture.js';
 
@@ -696,5 +697,54 @@ describe('apply measures coverage against the full plan, and --write refuses a p
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
     ).rejects.toThrow(/mixed-runs/);
+  });
+});
+
+// The same findings at apply level (layer2-integrity: the parser-side pre-fail was unpinned
+// there too): through the CLI, with the real parser, gate and change records.
+describe('apply withdraws a ruling the model flagged, and one whose op the parser converted', () => {
+  const answerWith = (tio2) => (body) => {
+    const a = scriptedAnswer(body);
+    return {
+      segments: a.segments.map((s) => (s.id === TIO2_ID ? { ...s, ...tio2 } : s)),
+    };
+  };
+  async function applyWith(tio2) {
+    const S = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport({ answer: answerWith(tio2) }) })
+    );
+    const a = await main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId], S.deps());
+    return a.result;
+  }
+  const tio2Changes = (result) =>
+    result.units.flatMap((u) => u.changes).filter((ch) => ch.segmentId === TIO2_ID).length;
+
+  for (const kind of ['compound-term', 'needs-rewrite', 'sense-unclear', 'target-other-sense']) {
+    it(`a ${kind} flag on atom withdraws all four atom ops in that segment`, async () => {
+      const result = await applyWith({ flags: [{ kind, ruling: 'atom', note: 'test' }] });
+      expect(result.counts.rejectedByReason['flagged-no-edit']).toBe(4);
+      expect(tio2Changes(result)).toBe(0);
+      const logged = result.gateLog.filter((g) => g.kind === 'op' && g.segmentId === TIO2_ID);
+      expect(logged.every((g) => g.by === 'runner' && g.flag === kind)).toBe(true);
+    });
+  }
+
+  it('control: a mistranslation-suspected flag does not stop the term edits', async () => {
+    const result = await applyWith({
+      flags: [{ kind: 'mistranslation-suspected', ruling: 'atom', note: 'test' }],
+    });
+    expect(result.counts.accepted).toBe(4);
+    expect(tio2Changes(result)).toBeGreaterThan(0);
+  });
+
+  it('an op the parser turns into a sense-unclear flag withdraws its siblings as group-incomplete', async () => {
+    const result = await applyWith({
+      ops: TIO2_OPS.map((o, i) => (i === 0 ? { ...o, sense: 'unclear' } : o)),
+    });
+    expect(result.counts.accepted).toBe(0);
+    expect(result.counts.rejectedByReason['group-incomplete']).toBe(3);
+    expect(tio2Changes(result)).toBe(0);
   });
 });

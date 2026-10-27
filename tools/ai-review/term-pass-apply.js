@@ -55,6 +55,21 @@ export const APPLIED_FILES = Object.freeze({
 /** A request with no usable response (every attempt errored, or none was recorded). */
 export const REQUEST_ERROR = 'request-error';
 export const GROUP_INCOMPLETE = 'group-incomplete';
+/** An op of a ruling the model itself flagged, in that segment, with a "make no edit" kind. */
+export const FLAGGED_NO_EDIT = 'flagged-no-edit';
+/**
+ * The flag kinds the prompt pairs with "make no edit" for that ruling (runner review,
+ * 2026-10-27). mistranslation-suspected is not one: it concerns the sentence, and a term
+ * edit beside it can be legitimate.
+ */
+export const WITHDRAWING_FLAG_KINDS = Object.freeze([
+  'compound-term',
+  'needs-rewrite',
+  'sense-unclear',
+  'target-other-sense',
+]);
+/** Rejection reasons the runner adds on its own, as opposed to the gate's. */
+const RUNNER_WITHDRAWALS = new Set([GROUP_INCOMPLETE, FLAGGED_NO_EDIT]);
 
 const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
@@ -127,8 +142,10 @@ export function loadRunRecords({ recordsDir, runId }) {
  *   chapterDir: string, rulingsById: Map<string, object>, preFailed?: Set<string>, limits?: object }} args
  *   `preFailed`: rulings already failed in this segment before the gate (the parser refused one
  *   of their operations, or turned one into a sense-unclear flag).
+ *   `flagged`: ruling id → flag kind, for rulings the model flagged in this segment with a
+ *   WITHDRAWING_FLAG_KINDS kind; their operations never reach the gate (FLAGGED_NO_EDIT).
  * @returns {{ accepted: object[], occurrences: Array<{ occurrence: number, accepted: object[], after: string }>,
- *   rejected: Array<{ op: object, reasons: string[], perOccurrence?: string[][] }> }}
+ *   rejected: Array<{ op: object, reasons: string[], perOccurrence?: string[][], flag?: string }> }}
  */
 export function gateWithGroups({
   ops,
@@ -136,15 +153,20 @@ export function gateWithGroups({
   chapterDir,
   rulingsById,
   preFailed = new Set(),
+  flagged = new Map(),
   limits,
 }) {
   const multi = item.occurrences.length > 1;
   const withdrawn = new Map();
-  // Each still-rejected op's verdict from the round in which it FIRST failed: that is the root
-  // cause (agreement-too-far, duplicate-divergent). A later round re-gates it without the ops
-  // the group rule withdrew and would report only the consequence (agreement-without-term).
+  // Each rejected op's verdict from the round in which it FIRST failed: that is the root cause
+  // (agreement-too-far, duplicate-divergent, find-not-found). A later round re-gates it without
+  // the ops the group rule withdrew and would report only the consequence. Kept even if the op
+  // passes a later round, because a once-failed ruling stays failed and the op is withdrawn.
   const firstFail = new Map();
-  let live = ops.slice();
+  for (const op of ops) {
+    if (flagged.has(op.rulingId)) withdrawn.set(op, [FLAGGED_NO_EDIT]);
+  }
+  let live = ops.filter((op) => !withdrawn.has(op));
   for (;;) {
     const res = gateOccurrences({
       ops: live,
@@ -156,14 +178,12 @@ export function gateWithGroups({
     });
     const accepted = new Set(res.accepted);
     for (const op of live) {
-      if (accepted.has(op)) {
-        firstFail.delete(op);
-      } else if (!firstFail.has(op)) {
+      if (!accepted.has(op) && !firstFail.has(op)) {
         const per = res.occurrences.map((o) => o.rejected.find((x) => x.op === op)?.reasons ?? []);
         firstFail.set(op, { reasons: [...new Set(per.flat())], per });
       }
     }
-    const failed = new Set(preFailed);
+    const failed = new Set([...preFailed, ...flagged.keys()]);
     for (const op of ops) if (!accepted.has(op)) failed.add(op.rulingId);
     const pull = res.accepted.filter((op) => failed.has(op.rulingId));
     if (pull.length === 0) {
@@ -177,9 +197,21 @@ export function gateWithGroups({
         rejected: ops
           .filter((op) => !accepted.has(op))
           .map((op) => {
-            if (withdrawn.has(op)) return { op, reasons: withdrawn.get(op) };
-            const { reasons, per } = firstFail.get(op);
-            return multi ? { op, reasons, perOccurrence: per } : { op, reasons };
+            const first = firstFail.get(op);
+            if (withdrawn.has(op)) {
+              // The reason it first failed for (if it ever reached the gate), then why the
+              // runner withdrew it.
+              const reasons = [...new Set([...(first?.reasons ?? []), ...withdrawn.get(op)])];
+              return {
+                op,
+                reasons,
+                ...(multi && first ? { perOccurrence: first.per } : {}),
+                ...(flagged.has(op.rulingId) ? { flag: flagged.get(op.rulingId) } : {}),
+              };
+            }
+            return multi
+              ? { op, reasons: first.reasons, perOccurrence: first.per }
+              : { op, reasons: first.reasons };
           }),
       };
     }
@@ -482,7 +514,21 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
         ...parsed.rejected.filter((r) => r.segmentId === s.id).map((r) => r.op.ruling),
         ...parsed.flags.filter((f) => f.segmentId === s.id && f.opId).map((f) => f.rulingId),
       ]);
-      const g = gateWithGroups({ ops, item, chapterDir, rulingsById, preFailed });
+      // A flag the model raised itself on a ruling, with a "make no edit" kind: that ruling's
+      // operations in this segment are withdrawn, whatever the gate would say of them.
+      const flagged = new Map();
+      for (const f of parsed.flags) {
+        if (
+          f.segmentId === s.id &&
+          !f.opId &&
+          f.rulingId !== null &&
+          WITHDRAWING_FLAG_KINDS.includes(f.kind) &&
+          !flagged.has(f.rulingId)
+        ) {
+          flagged.set(f.rulingId, f.kind);
+        }
+      }
+      const g = gateWithGroups({ ops, item, chapterDir, rulingsById, preFailed, flagged });
       c.opsProposed += ops.length;
       for (const op of g.accepted) {
         c.accepted += 1;
@@ -509,8 +555,10 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
           op: r.op,
           verdict: 'rejected',
           reasons: r.reasons,
-          by: r.reasons.includes(GROUP_INCOMPLETE) ? 'runner' : 'gate',
+          // 'runner' only when the runner alone refused it; a gate reason makes it the gate's.
+          by: r.reasons.every((x) => RUNNER_WITHDRAWALS.has(x)) ? 'runner' : 'gate',
           ...(r.perOccurrence ? { perOccurrence: r.perOccurrence } : {}),
+          ...(r.flag ? { flag: r.flag } : {}),
         });
       }
       g.occurrences.forEach((o, k) => {

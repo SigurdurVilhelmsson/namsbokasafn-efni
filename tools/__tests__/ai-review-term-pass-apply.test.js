@@ -4,7 +4,13 @@
  * The full run → apply path is in ai-review-term-pass.test.js.
  */
 import { describe, it, expect } from 'vitest';
-import { gateWithGroups, chainChanges, GROUP_INCOMPLETE } from '../ai-review/term-pass-apply.js';
+import {
+  gateWithGroups,
+  chainChanges,
+  GROUP_INCOMPLETE,
+  FLAGGED_NO_EDIT,
+  WITHDRAWING_FLAG_KINDS,
+} from '../ai-review/term-pass-apply.js';
 import { gateSegment } from '../ai-review/gate.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 
@@ -201,5 +207,68 @@ describe('chainChanges', () => {
         runId: 'r1',
       })
     ).toThrow(/exactly once/);
+  });
+});
+
+// The runner review (2026-10-27, layer2-integrity + prompt-model, both high): a flag the model
+// raised on a ruling (needs-rewrite, compound-term, target-other-sense, sense-unclear) did not
+// stop that ruling's operations in the same segment, although the prompt says those kinds
+// mean "make no edit".
+describe('gateWithGroups — a flagged ruling makes no edit', () => {
+  it('names exactly the four "make no edit" kinds, and not mistranslation-suspected', () => {
+    expect([...WITHDRAWING_FLAG_KINDS]).toEqual([
+      'compound-term',
+      'needs-rewrite',
+      'sense-unclear',
+      'target-other-sense',
+    ]);
+  });
+
+  it('withdraws every operation of the flagged ruling before the gate, as flagged-no-edit', () => {
+    const g = gateWithGroups({
+      ops: [ATOM_TERM()],
+      item: one(ATOM_EN, ATOM_IS),
+      chapterDir: 'ch02',
+      rulingsById: RULINGS,
+      flagged: new Map([['atom', 'needs-rewrite']]),
+    });
+    expect(g.accepted).toEqual([]);
+    expect(g.occurrences[0].after).toBe(ATOM_IS);
+    expect(g.rejected).toEqual([
+      {
+        op: expect.objectContaining({ opId: 'a1' }),
+        reasons: [FLAGGED_NO_EDIT],
+        flag: 'needs-rewrite',
+      },
+    ]);
+  });
+
+  it('control: a flag on another ruling leaves this one to the gate', () => {
+    const g = gateWithGroups({
+      ops: [ATOM_TERM()],
+      item: one(ATOM_EN, ATOM_IS),
+      chapterDir: 'ch02',
+      rulingsById: RULINGS,
+      flagged: new Map([['electrolytic-cell', 'needs-rewrite']]),
+    });
+    expect(g.accepted.map((o) => o.opId)).toEqual(['a1']);
+  });
+});
+
+// layer2-integrity, low: an op that first failed, was accepted in a later round and was then
+// withdrawn lost its root cause, so a duplicate op left no gate reason in the record at all.
+describe('gateWithGroups — a withdrawn op keeps the reason it first failed for', () => {
+  it('a duplicate term op reports find-not-found beside group-incomplete', () => {
+    const g = gateWithGroups({
+      ops: [ATOM_TERM(), op('a1b', 'term', 'atom', 'Frumeindin', 'Atómið')],
+      item: one(ATOM_EN, ATOM_IS),
+      chapterDir: 'ch02',
+      rulingsById: RULINGS,
+    });
+    expect(g.accepted).toEqual([]);
+    const byId = Object.fromEntries(g.rejected.map((r) => [r.op.opId, r.reasons]));
+    expect(byId.a1).toEqual([GROUP_INCOMPLETE]);
+    expect(byId.a1b).toContain('find-not-found');
+    expect(byId.a1b).toContain(GROUP_INCOMPLETE);
   });
 });
