@@ -10,7 +10,7 @@
  */
 import { describe, it, expect } from 'vitest';
 import { loadRulingSet, UNCLEAR_SENSE } from '../ai-review/ruling-set.js';
-import { containsTargetStem } from '../ai-review/gate.js';
+import { carriesTarget, containsTargetStem } from '../ai-review/gate.js';
 import { usesHeadword } from '../lib/chapter-term-check.js';
 import {
   parseTermPassResponse,
@@ -280,8 +280,10 @@ describe('request problems', () => {
     expectProblem(parse('{"segments":[]}'), 'response-invalid');
     expectProblem(parse(message(VALID, { content: 'text' })), 'response-invalid');
     expectProblem(parse(message(VALID, { content: [null] })), 'response-invalid');
+    // Discriminating: an ARRAY holding valid JSON. Without the type check, join('') would turn
+    // it into exactly that JSON and the response would be trusted.
     expectProblem(
-      parse(message(VALID, { content: [{ type: 'text', text: 7 }] })),
+      parse(message(VALID, { content: [{ type: 'text', text: [JSON.stringify(VALID)] }] })),
       'response-invalid'
     );
   });
@@ -384,6 +386,41 @@ describe('request problems', () => {
         })
       );
       expect(parse(message(good)).problem).toBe(null);
+    });
+  });
+
+  describe('a malformed element AFTER a well-formed one is response-invalid too', () => {
+    // Every array element is checked, not only the first: a check of element [0] alone would
+    // trust a malformed second op, flag or sense, and flags and senses reach the record a human
+    // reads without passing any gate.
+    const goodFlag = { kind: 'needs-rewrite', ruling: null, note: 'n' };
+    const goodSense = { ruling: 'cell', sense: 'living-cell' };
+    const cases = {
+      'second op': doc(seg('fs-a', { ops: [op(), op({ category: 'rewrite' })] })),
+      'second flag': doc(
+        seg('fs-a', { flags: [goodFlag, { kind: 'approve-anyway', ruling: null, note: 'n' }] })
+      ),
+      'second sense': doc(
+        seg('fs-b', { senses: [goodSense, { ruling: 'fuel-cell', sense: null }] })
+      ),
+      'second segment': doc(seg('fs-a'), { id: 'fs-b', senses: [], ops: [] }),
+    };
+    for (const [name, bad] of Object.entries(cases)) {
+      it(name, () => expectProblem(parse(message(bad)), 'response-invalid'));
+    }
+
+    it('control: two well-formed elements in every array pass', () => {
+      const good = doc(
+        seg('fs-a', { ops: [op(), op({ find: 'frumeindin' })], flags: [goodFlag, goodFlag] }),
+        seg('fs-b', { senses: [goodSense, { ruling: 'fuel-cell', sense: 'x' }] })
+      );
+      const r = parse(message(good));
+      expect([r.problem, gateOpsOf(r, 'fs-a').length, r.flags.length, r.senses.length]).toEqual([
+        null,
+        2,
+        2,
+        2,
+      ]);
     });
   });
 
@@ -593,6 +630,35 @@ describe('sense-inconsistent', () => {
   it('senses entry `unclear` against a declared sense: rejected', () => {
     const r = run([{ ruling: 'cell', sense: UNCLEAR_SENSE }]);
     expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-inconsistent']);
+  });
+
+  it('only a term-sense op is checked: an agreement op of the same sensed ruling passes beside it', () => {
+    // Discriminating: the agreement op's sense is null, which differs from the senses entry,
+    // so a check run on every category would refuse it.
+    const r = parseDoc(
+      doc(
+        seg('fs-b', {
+          senses: [{ ruling: 'cell', sense: 'electrochemical-cell' }],
+          ops: [
+            cellOp(),
+            cellOp({ category: 'agreement', sense: null, find: 'hún', replace: 'það' }),
+          ],
+        })
+      )
+    );
+    expect([r.rejected, gateOpsOf(r, 'fs-b').map((g) => [g.category, g.sense])]).toEqual([
+      [],
+      [
+        ['term-sense', 'electrochemical-cell'],
+        ['agreement', null],
+      ],
+    ]);
+  });
+
+  it('only a term-sense op is checked: a term op passes beside a senses entry for its ruling', () => {
+    // `atom` has no sense, so the senses entry is invalid; it still never refuses a term op.
+    const r = parseDoc(doc(seg('fs-a', { senses: [{ ruling: 'atom', sense: 'x' }], ops: [op()] })));
+    expect([r.rejected, gateOpsOf(r, 'fs-a').length, r.senses[0].valid]).toEqual([[], 1, false]);
   });
 });
 
@@ -830,6 +896,21 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
     ]);
   });
 
+  it('the guard matches LOOSELY: the longer target as a modifier of `find` shadows too', () => {
+    // The design picks the gate's loose containsTargetStem so the guard refuses more rather
+    // than less. Discriminating: the strict carriesTarget does not see a modifier, so a guard
+    // built on it would let this op through.
+    const find = 'efnarafalsbíllinn';
+    expect([containsTargetStem(find, 'efnarafall'), carriesTarget(find, 'efnarafall')]).toEqual([
+      true,
+      false,
+    ]);
+    expect(first(doc(seg('fs-b', { ops: [cellOp({ find, replace: 'kerbíllinn' })] })))).toEqual({
+      reasons: ['shadowed-by-longer-ruling'],
+      kept: 0,
+    });
+  });
+
   it('the guard applies to an agreement op of the shorter ruling as well', () => {
     const agreement = cellOp({ category: 'agreement', sense: null, ...COINAGE });
     expect(first(doc(seg('fs-b', { ops: [agreement] }))).reasons).toEqual([
@@ -927,17 +1008,32 @@ describe('arguments', () => {
     expect(call({})).not.toThrow();
   });
 
-  it('a caller bug throws TypeError (it fails the run, not one request)', () => {
-    expect(call({ requestKey: '' })).toThrow(TypeError);
-    expect(call({ requestKey: 7 })).toThrow(TypeError);
-    expect(call({ presented: null })).toThrow(TypeError);
-    expect(call({ presented: [{ segmentId: 'fs-a' }] })).toThrow(TypeError);
-    expect(call({ presented: [PRESENTED[0], PRESENTED[0]] })).toThrow(TypeError);
-    expect(call({ presented: [{ segmentId: 'fs-a', rulingIds: ['no-such-ruling'] }] })).toThrow(
-      TypeError
-    );
-    expect(call({ rulingsById: null })).toThrow(TypeError);
-  });
+  // Each case asserts the guard's own message as well as the class: a TypeError alone is also
+  // what an unguarded input raises by accident further on, so the class pins nothing.
+  const cases = [
+    ['an empty requestKey', { requestKey: '' }, /requestKey must be a non-empty string/],
+    ['a non-string requestKey', { requestKey: 7 }, /requestKey must be a non-empty string/],
+    ['presented null', { presented: null }, /presented must be an array/],
+    ['a presented entry with no rulingIds', { presented: [{ segmentId: 'fs-a' }] }, /rulingIds/],
+    ['a segment presented twice', { presented: [PRESENTED[0], PRESENTED[0]] }, /presented twice/],
+    // An op-less answer: with ops, an unknown ruling would also crash later by accident.
+    [
+      'an unknown offered ruling',
+      {
+        message: message(doc(seg('fs-a'))),
+        presented: [{ segmentId: 'fs-a', rulingIds: ['no-such-ruling'] }],
+      },
+      /unknown ruling no-such-ruling/,
+    ],
+    ['rulingsById null', { rulingsById: null }, /rulingsById must be a Map or an object/],
+    ['rulingsById an array', { rulingsById: [] }, /rulingsById must be a Map or an object/],
+  ];
+  for (const [name, args, pattern] of cases) {
+    it(`a caller bug throws TypeError (it fails the run, not one request): ${name}`, () => {
+      expect(call(args)).toThrow(TypeError);
+      expect(call(args)).toThrow(pattern);
+    });
+  }
 
   it('a plain object of rulings is accepted, as the gate accepts one', () => {
     const r = parseTermPassResponse({
