@@ -19,7 +19,10 @@
  *     worst case at the Batch API's half price, record the requests, record a
  *     `submitting` marker, submit, record the batch id BEFORE the first poll, poll, record
  *     each result keyed by custom_id, settle the actual total and release the rest. A run
- *     directory that records an unfinished batch is RESUMED, never resubmitted. A batch in
+ *     directory that records an unfinished batch is RESUMED, never resubmitted, and each
+ *     resume appends `{ resumedAt, sdk, harnessCommit, harnessDirty }` to `run.json`'s
+ *     `resumes` array before its first poll (a first run writes no `resumes` key), so the
+ *     code that finished a batch is on record beside the code that started it. A batch in
  *     which any result cost more than its reserved worst case (an estimate too low) ends
  *     `complete-over-reservation`, with one `over_reservation` error line per such result;
  *     the ledger records what was spent, so the cap then counts it.
@@ -364,7 +367,26 @@ function overReservationError(actualP, reservedP) {
   };
 }
 
-/** Shared per-run context: records, ledger, clock, version capture. */
+/**
+ * Who is running this code: the SDK the transport reports, and the harness commit and
+ * dirty flag (injectable, defaulting to git). One source for a first run's `run.json` and
+ * for each `resumes` entry, so the two are read the same way.
+ */
+function runningCode(opts, transport) {
+  return {
+    sdk: transport.sdk ? transport.sdk() : null,
+    harnessCommit: (opts.harnessCommit ?? gitHarnessCommit)(),
+    harnessDirty: (opts.harnessDirty ?? gitHarnessDirty)(),
+  };
+}
+
+/**
+ * Shared per-run context: records, ledger, clock, version capture. A first run (no
+ * `existingRun`) writes `run.json`; a resume appends `{ resumedAt, sdk, harnessCommit,
+ * harnessDirty }` to its `resumes` array (earlier entries kept) and rewrites it, before the
+ * caller's first poll. The entry goes into the `run` this context holds, so `noteVersion`'s
+ * later rewrite keeps it.
+ */
 function openContext(
   opts,
   {
@@ -387,6 +409,7 @@ function openContext(
   const stamp = () => now().toISOString();
   let run = existingRun;
   if (!run) {
+    const code = runningCode(opts, transport);
     run = {
       schema: 'ai-review-run/1',
       runId,
@@ -397,15 +420,19 @@ function openContext(
       max_tokens: opts.maxTokens,
       prompts,
       rulingSet,
-      sdk: transport.sdk ? transport.sdk() : null,
+      sdk: code.sdk,
       anthropicVersion: transport.anthropicVersion ? transport.anthropicVersion() : null,
-      harnessCommit: (opts.harnessCommit ?? gitHarnessCommit)(),
-      harnessDirty: (opts.harnessDirty ?? gitHarnessDirty)(),
+      harnessCommit: code.harnessCommit,
+      harnessDirty: code.harnessDirty,
       cap: { usd: cap, ledger: path.relative(recordsDir, ledgerPath) },
       pricing: { source: PRICING.source, cachedOn: PRICING.cachedOn },
       startedAt: stamp(),
       requestCount,
     };
+    writer.writeJson(RECORD_FILES.run, run);
+  } else {
+    const entry = { resumedAt: stamp(), ...runningCode(opts, transport) };
+    run = { ...run, resumes: [...(run.resumes ?? []), entry] };
     writer.writeJson(RECORD_FILES.run, run);
   }
   const noteVersion = () => {
@@ -646,7 +673,9 @@ export async function runInteractive(opts) {
  *   `inputTokensEstimate` (batch mode only: used instead of count_tokens, and checked after
  *   the fact against what each result cost); plus `sleep`, `pollIntervalMs`, `maxPolls`; on
  *   resume (`runId` naming an existing run directory) `requests` may be omitted, and if given
- *   must equal the recorded ones.
+ *   must equal the recorded ones. A resume that is not refused appends a `resumes` entry to
+ *   `run.json` before its first poll: `resumedAt` from `now`, `sdk` from the transport, and
+ *   `harnessCommit` / `harnessDirty` from those options (or git), as a first run records them.
  * @returns {Promise<{ runId: string, runDir: string, status: string, counts?: object,
  *   totalUsd?: number, batchId?: string }>}
  */
@@ -826,6 +855,9 @@ async function resumeBatch(
     JSON.stringify(recorded.rulingSet) === JSON.stringify(rulingSet);
   if (!same) {
     throw new Error(`harness: run ${runId}: the resume parameters differ from run.json; refusing`);
+  }
+  if (recorded.resumes !== undefined && !Array.isArray(recorded.resumes)) {
+    throw new Error(`harness: run ${runId}: run.json's resumes is not an array; refusing`);
   }
   if (requests) {
     const lines = probe.readJsonl(RECORD_FILES.requests);

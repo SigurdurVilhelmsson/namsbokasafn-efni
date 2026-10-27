@@ -118,6 +118,7 @@ function mockTransport({
   submitError = null,
   onGetBatch = null,
   resultsThrowAfter = null,
+  sdkVersion = 'mock',
 } = {}) {
   const calls = { send: [], countTokens: [], submitBatch: [], getBatch: [], batchResults: [] };
   let version = null;
@@ -128,7 +129,7 @@ function mockTransport({
   return {
     calls,
     anthropicVersion: () => version,
-    sdk: () => ({ name: '@anthropic-ai/sdk', version: 'mock' }),
+    sdk: () => ({ name: '@anthropic-ai/sdk', version: sdkVersion }),
     async countTokens(body) {
       touch();
       calls.countTokens.push(body);
@@ -988,6 +989,162 @@ describe('runBatch — resume', () => {
     await expect(runBatch({ ...baseOpts(dir, mockTransport()), runId: out.runId })).rejects.toThrow(
       /finished/
     );
+  });
+});
+
+describe('runBatch — a resume records who resumed it (run.json `resumes`)', () => {
+  const SDK = (version) => ({ name: '@anthropic-ai/sdk', version });
+  const readRun = (runDir) => JSON.parse(fs.readFileSync(path.join(runDir, 'run.json'), 'utf8'));
+  const allSucceeded = () =>
+    ['q000000', 'q000001'].map((id) => ({
+      custom_id: id,
+      result: { type: 'succeeded', message: message() },
+    }));
+
+  /** A batch left pending by its first process: sdk 'mock', commit c…, a clean tree. */
+  const pendingRun = (dir) =>
+    runBatch({
+      ...baseOpts(dir, mockTransport({ pollsUntilEnded: Infinity }), {
+        maxPolls: 1,
+        harnessDirty: () => false,
+      }),
+      requests: [req('k0'), req('k1')],
+    });
+
+  /** A resuming process whose every source differs from the first run's. */
+  const resumeOpts = (dir, transport, runId, extra = {}) =>
+    baseOpts(dir, transport, {
+      runId,
+      now: () => new Date('2026-10-28T09:00:00Z'),
+      harnessCommit: () => 'd'.repeat(40),
+      harnessDirty: () => true,
+      ...extra,
+    });
+  const FIRST_RESUME = {
+    resumedAt: '2026-10-28T09:00:00.000Z',
+    sdk: SDK('mock-resume'),
+    harnessCommit: 'd'.repeat(40),
+    harnessDirty: true,
+  };
+
+  it('one resume adds one entry, read from the resuming process’s own sources', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const t = mockTransport({
+      pollsUntilEnded: 1,
+      sdkVersion: 'mock-resume',
+      results: allSucceeded,
+    });
+    const out = await runBatch(resumeOpts(dir, t, first.runId));
+    expect(readRun(out.runDir).resumes).toEqual([FIRST_RESUME]);
+  });
+
+  it('leaves what the first run recorded about itself as it was', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const before = readRun(first.runDir);
+    const t = mockTransport({
+      pollsUntilEnded: 1,
+      sdkVersion: 'mock-resume',
+      results: allSucceeded,
+    });
+    await runBatch(resumeOpts(dir, t, first.runId));
+    const rest = Object.entries(readRun(first.runDir)).filter(([k]) => k !== 'resumes');
+    expect(Object.fromEntries(rest)).toEqual(before);
+  });
+
+  it('a second resume keeps the first entry and adds its own', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const t1 = mockTransport({ pollsUntilEnded: Infinity, sdkVersion: 'mock-resume' });
+    const out1 = await runBatch(resumeOpts(dir, t1, first.runId, { maxPolls: 1 }));
+    expect(out1.status).toBe('pending'); // control: the first resume left the batch unfinished
+    const t2 = mockTransport({
+      pollsUntilEnded: 1,
+      sdkVersion: 'mock-second',
+      results: allSucceeded,
+    });
+    const out2 = await runBatch(
+      resumeOpts(dir, t2, first.runId, {
+        now: () => new Date('2026-10-29T10:30:00Z'),
+        harnessCommit: () => 'e'.repeat(40),
+        harnessDirty: () => false,
+      })
+    );
+    expect(readRun(out2.runDir).resumes).toEqual([
+      FIRST_RESUME,
+      {
+        resumedAt: '2026-10-29T10:30:00.000Z',
+        sdk: SDK('mock-second'),
+        harnessCommit: 'e'.repeat(40),
+        harnessDirty: false,
+      },
+    ]);
+  });
+
+  it('records sdk null when the resuming transport reports none', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const t = { ...mockTransport({ pollsUntilEnded: 1, results: allSucceeded }), sdk: undefined };
+    const out = await runBatch(resumeOpts(dir, t, first.runId));
+    expect(readRun(out.runDir).resumes).toEqual([{ ...FIRST_RESUME, sdk: null }]);
+  });
+
+  it('a first run writes no resumes key (batch finished, batch pending, interactive)', async () => {
+    const clean = { harnessDirty: () => false };
+    const finished = await runBatch({
+      ...baseOpts(tmp(), mockTransport(), clean),
+      requests: [req('k0')],
+    });
+    const pending = await pendingRun(tmp());
+    const interactive = await runInteractive({
+      ...baseOpts(tmp(), mockTransport(), clean),
+      requests: [req('k0')],
+    });
+    expect(
+      [finished, pending, interactive].map((o) => Object.hasOwn(readRun(o.runDir), 'resumes'))
+    ).toEqual([false, false, false]);
+  });
+
+  it('writes the entry before its first poll', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    let seenAtFirstPoll;
+    const t = mockTransport({
+      pollsUntilEnded: 1,
+      sdkVersion: 'mock-resume',
+      results: allSucceeded,
+      onGetBatch: () => {
+        if (seenAtFirstPoll !== undefined) return;
+        seenAtFirstPoll = readRun(first.runDir).resumes ?? null;
+      },
+    });
+    await runBatch(resumeOpts(dir, t, first.runId));
+    expect(seenAtFirstPoll).toEqual([FIRST_RESUME]);
+  });
+
+  it.each([
+    ['its parameters differ from run.json', { effort: 'low' }, /parameters differ/],
+    ['its requests differ from the recorded ones', { requests: [req('k9')] }, /requests differ/],
+  ])('a resume refused because %s writes no entry', async (_label, extra, error) => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const file = path.join(first.runDir, 'run.json');
+    const before = fs.readFileSync(file);
+    const t = mockTransport({ pollsUntilEnded: 1, sdkVersion: 'mock-resume' });
+    await expect(runBatch(resumeOpts(dir, t, first.runId, extra))).rejects.toThrow(error);
+    expect(fs.readFileSync(file).equals(before)).toBe(true);
+  });
+
+  it('refuses a run.json whose resumes is not an array, before polling or writing', async () => {
+    const dir = tmp();
+    const first = await pendingRun(dir);
+    const file = path.join(first.runDir, 'run.json');
+    fs.writeFileSync(file, JSON.stringify({ ...readRun(first.runDir), resumes: 'x' }));
+    const before = fs.readFileSync(file);
+    const t = mockTransport({ pollsUntilEnded: 1, sdkVersion: 'mock-resume' });
+    await expect(runBatch(resumeOpts(dir, t, first.runId))).rejects.toThrow(/resumes/);
+    expect([fs.readFileSync(file).equals(before), t.calls.getBatch.length]).toEqual([true, 0]);
   });
 });
 
