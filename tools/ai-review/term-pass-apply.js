@@ -42,7 +42,8 @@ import {
 } from '../lib/mt-layers.js';
 
 export const TERM_PASS_RECORD = 'term-pass.json';
-export const TERM_PASS_SCHEMA = 'ai-review-term-pass/1';
+/** /2 (2026-10-27) adds `plannedRequestKeys`: the chapter's whole plan, before any --limit. */
+export const TERM_PASS_SCHEMA = 'ai-review-term-pass/2';
 export const APPLY_SCHEMA = 'ai-review-apply/1';
 export const APPLIED_DIR = 'applied';
 export const APPLIED_FILES = Object.freeze({
@@ -268,6 +269,20 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
     if (termPass.layer1Commit !== first.termPass.layer1Commit) {
       throw refusal('mixed-runs', `${where}: layer1Commit differs from run ${first.runId}`);
     }
+    const planned = termPass.plannedRequestKeys;
+    if (
+      !Array.isArray(planned) ||
+      planned.length === 0 ||
+      !planned.every((k) => typeof k === 'string' && k !== '') ||
+      new Set(planned).size !== planned.length ||
+      !(termPass.requestKeys ?? []).every((k) => planned.includes(k))
+    ) {
+      throw refusal('bad-record', `${where}: plannedRequestKeys does not hold its requestKeys`);
+    }
+    // One plan per chapter: coverage is measured against it, so runs must agree on it.
+    if (!sameJson(planned, first.termPass.plannedRequestKeys)) {
+      throw refusal('mixed-runs', `${where}: planned other requests than run ${first.runId}`);
+    }
   }
   const versions = [...new Set(runs.map((r) => r.run.anthropicVersion).filter((v) => v !== null))];
   if (versions.length > 1)
@@ -359,8 +374,15 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     flagsByKind: new Map(),
   };
 
+  const plannedKeys = runs[0].termPass.plannedRequestKeys;
+  const plannedSet = new Set(plannedKeys);
+  const usableKeys = new Set(); // planned requests whose answer parsed with no request problem
+
   for (const req of pickResponses(runs)) {
     c.requests += 1;
+    if (!plannedSet.has(req.key)) {
+      throw refusal('mixed-runs', `request ${req.key} is not in the chapter's recorded plan`);
+    }
     const doc = parseUserMessage(req.body.messages[0].content);
     const stem = doc.module;
     if (doc.chapter !== chapterDir || !req.key.startsWith(`${chapterDir}/${stem}/`)) {
@@ -403,6 +425,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
       gateLog.push({ ...base, kind: 'request', problem: parsed.problem });
       continue;
     }
+    usableKeys.add(req.key);
     for (const f of parsed.flags) {
       flags.push({ ...base, ...f });
       tally(c.flagsByKind, f.kind);
@@ -551,6 +574,16 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     changes: units.reduce((n, u) => n + u.changes.length, 0),
     occurrencesChanged: [...finalByStem.values()].reduce((n, m) => n + m.size, 0),
   };
+  // Coverage against the chapter's WHOLE plan (recorded before any --limit): a request that
+  // was never sent, errored, or came back truncated, refused or unparseable reviewed nothing,
+  // and without this an unreviewed segment reads like one the model saw and left alone.
+  const requestsMissing = plannedKeys.filter((k) => !usableKeys.has(k)).sort(byString);
+  const coverage = {
+    requestsPlanned: plannedKeys.length,
+    requestsUsable: plannedKeys.length - requestsMissing.length,
+    requestsMissing,
+    complete: requestsMissing.length === 0,
+  };
   const summary = {
     schema: APPLY_SCHEMA,
     book: path.basename(bookDir),
@@ -565,8 +598,9 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     applyCommit,
     units: prints,
     counts,
+    coverage,
   };
-  return { chapterDir, units, revision, gateLog, flags, senses, counts, summary, inputs };
+  return { chapterDir, units, revision, gateLog, flags, senses, counts, coverage, summary, inputs };
 }
 
 // ── Writing ──────────────────────────────────────────────────────────────────────────────
@@ -647,6 +681,14 @@ export function writeApplied({ bookDir, chapterDir, result, overwrite = false })
 
 const quote = (s) => `> ${String(s).replace(/\n/g, ' ')}`;
 
+/** One line saying how much of the chapter's plan the runs actually reviewed. */
+export function coverageLine(coverage) {
+  return (
+    `coverage: ${coverage.requestsUsable} of ${coverage.requestsPlanned} planned requests usable` +
+    (coverage.complete ? '' : ` (${coverage.requestsMissing.length} not reviewed)`)
+  );
+}
+
 /**
  * A markdown report of one apply: counts, then every segment with an operation, a flag or a
  * sense judgement, showing English, Icelandic before and after, and each verdict.
@@ -659,6 +701,11 @@ export function renderReport(result) {
     `# Term pass, ${summary.book} ${summary.chapterDir}: dry-run report`,
     '',
     `Runs ${summary.runIds.join(', ')}; model ${summary.model}, effort ${summary.effort}; ruling set ${summary.rulingSet.sha256.slice(0, 12)}; prompt ${summary.prompt.sha256.slice(0, 12)}; layer 1 at ${summary.layer1Commit.slice(0, 12)}.`,
+    '',
+    coverageLine(result.coverage),
+    ...(result.coverage.complete
+      ? []
+      : ['', `Not reviewed: ${result.coverage.requestsMissing.join(', ')}.`]),
     '',
     '| | |',
     '|---|---|',

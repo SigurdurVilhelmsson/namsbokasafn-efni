@@ -21,7 +21,7 @@ import { listChapterUnits, verifyRevision } from '../lib/mt-layers.js';
 import { makeGit } from '../ai-review/provenance.js';
 import { loadPrompt, PROMPT_PATH } from '../ai-review/term-pass-request.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
-import { readLedger } from '../ai-review/ledger.js';
+import { readLedger, reserve } from '../ai-review/ledger.js';
 import {
   REPO,
   RULING_SET_PATH,
@@ -580,5 +580,121 @@ describe('run stops before the next chapter when a chapter answered unusably, an
     const done = await main(['resume', '--run', runId], S.deps(extra));
     expect(done.status).toBe('complete');
     expect(done.exitCode).toBe(0);
+  });
+});
+
+// The runner review (2026-10-27, cli-ops high + provenance-record medium): apply --write
+// minted a complete layer-2 chapter from a run that reviewed nothing (stopped at the cap) or
+// a sliver of the chapter (--limit), and no record said how much was never reviewed — so an
+// unreviewed segment read exactly like one the model saw and left alone.
+describe('apply measures coverage against the full plan, and --write refuses a partial chapter', () => {
+  const coverageOf = (S) => {
+    const out = S.lines.join('');
+    const m = out.match(/coverage: (\d+) of (\d+) planned requests usable/);
+    return m ? [Number(m[1]), Number(m[2])] : null;
+  };
+
+  it('a run stopped at the cap before sending anything covers nothing, and --write refuses', async () => {
+    const S = setup();
+    reserve({
+      ledgerPath: path.join(S.fx.records, 'ledger.jsonl'),
+      runId: 'someone-else',
+      use: 'other-use',
+      usd: 99.999,
+      cap: 100,
+      now,
+    });
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    expect(r.results[0].status).toBe('stopped-at-cap');
+    const runId = r.results[0].runId;
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage).toMatchObject({ requestsUsable: 0, complete: false });
+    expect(dry.result.coverage.requestsPlanned).toBeGreaterThan(0);
+    expect(coverageOf(S)[0]).toBe(0);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps())
+    ).rejects.toThrow(/partial-coverage/);
+    expect(fs.existsSync(path.join(S.fx.book, '02-mt-revised', 'ch02'))).toBe(false);
+  });
+
+  it('a --limit 1 run plans the whole chapter, covers one request, and --write refuses', async () => {
+    const S = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes', '--limit', '1'],
+      S.deps({ transport: mockTransport() })
+    );
+    const runId = r.results[0].runId;
+    const tp = JSON.parse(
+      fs.readFileSync(path.join(S.fx.records, 'runs', runId, TERM_PASS_RECORD), 'utf8')
+    );
+    expect(tp.requestKeys).toHaveLength(1);
+    expect(tp.plannedRequestKeys.length).toBeGreaterThan(1);
+    expect(tp.plannedRequestKeys).toContain(tp.requestKeys[0]);
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.requestsUsable).toBe(1);
+    expect(dry.result.coverage.requestsMissing).toHaveLength(tp.plannedRequestKeys.length - 1);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps())
+    ).rejects.toThrow(/partial-coverage/);
+  });
+
+  it('a truncated answer leaves its request uncovered, and --write refuses', async () => {
+    const S = setup();
+    const t = mockTransport();
+    const send = t.send;
+    t.send = async (body) => {
+      if (t.calls.send === 0) {
+        t.calls.send += 1;
+        return messageFor(scriptedAnswer(body), { stopReason: 'max_tokens' });
+      }
+      return send(body);
+    };
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: t })
+    );
+    const runId = r.results[0].runId;
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.requestsMissing).toHaveLength(1);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps())
+    ).rejects.toThrow(/partial-coverage/);
+  });
+
+  it('control: a full run covers every planned request, writes, and records the coverage', async () => {
+    const S = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    const runId = r.results[0].runId;
+    const w = await main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps());
+    expect(w.result.coverage).toMatchObject({ requestsMissing: [], complete: true });
+    expect(w.result.coverage.requestsUsable).toBe(w.result.coverage.requestsPlanned);
+    const summary = JSON.parse(
+      fs.readFileSync(path.join(S.fx.book, 'ai-review', 'applied', 'ch02', 'apply.json'), 'utf8')
+    );
+    expect(summary.coverage).toEqual(w.result.coverage);
+  });
+
+  it('refuses runs of one chapter that planned different requests', async () => {
+    const S = setup();
+    const run = () =>
+      main(
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        S.deps({ transport: mockTransport() })
+      );
+    const a = (await run()).results[0].runId;
+    const b = (await run()).results[0].runId;
+    const f = path.join(S.fx.records, 'runs', b, TERM_PASS_RECORD);
+    const tp = JSON.parse(fs.readFileSync(f, 'utf8'));
+    tp.plannedRequestKeys = [...tp.plannedRequestKeys, 'ch02/m99999/r999'];
+    fs.writeFileSync(f, JSON.stringify(tp));
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs/);
   });
 });

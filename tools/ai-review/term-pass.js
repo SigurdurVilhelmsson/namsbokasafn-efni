@@ -63,6 +63,7 @@ import {
   applyChapter,
   writeApplied,
   renderReport,
+  coverageLine,
 } from './term-pass-apply.js';
 import {
   makeGit,
@@ -469,6 +470,7 @@ function termPassPayload({
   rulingSet,
   prompt,
   requests,
+  plannedRequests,
   workList,
   limit,
 }) {
@@ -488,6 +490,8 @@ function termPassPayload({
       limit: limit ?? null,
     },
     requestKeys: requests.map((r) => r.key),
+    // The chapter's WHOLE plan, before --limit: apply measures coverage against it.
+    plannedRequestKeys: plannedRequests.map((r) => r.key),
     workListCounts: workList.counts,
   };
 }
@@ -559,6 +563,7 @@ async function cmdRun(ctx, values, deps) {
             rulingSet,
             prompt,
             requests,
+            plannedRequests: plan.requests,
             workList: plan.workList,
             limit,
           }),
@@ -694,11 +699,23 @@ async function cmdApply(ctx, values) {
     applyCommit,
   });
   ctx.out(`${chapterDir}: ${JSON.stringify(result.counts)}\n`);
+  ctx.out(`${coverageLine(result.coverage)}\n`);
   if (report) {
     fs.writeFileSync(report, renderReport(result));
     ctx.out(`wrote ${report}\n`);
   }
   if (values.write) {
+    // A layer-2 chapter must not pass an unreviewed segment off as a reviewed one. (A
+    // recorded --partial would need revision.json to say so; mt-revised/1 has no field for it.)
+    if (!result.coverage.complete) {
+      throw refusal(
+        'partial-coverage',
+        `refusing to write layer 2: ${result.coverage.requestsMissing.length} of ` +
+          `${result.coverage.requestsPlanned} planned requests have no usable answer ` +
+          `(first: ${result.coverage.requestsMissing.slice(0, 3).join(', ')}). ` +
+          'Run the chapter again and apply the runs together.'
+      );
+    }
     const written = writeApplied({
       bookDir: ctx.bookDir,
       chapterDir,
