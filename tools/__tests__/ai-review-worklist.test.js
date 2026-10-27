@@ -500,6 +500,8 @@ describe('buildWorkList', () => {
       ['m1:para:c', '42'], // identical-to-en
       ['m1:para:d', 'The atom once more'], // candidate on #0 and #1
       ['m1:para:d', 'The atom once more'],
+      ['m1:para:g', 'The atom here'], // candidate on #0 only; #1 is satisfied
+      ['m1:para:g', 'The atom here'],
       ['m1:para:f', 'An orphan'], // no-is
     ]),
     is: layer([
@@ -509,6 +511,8 @@ describe('buildWorkList', () => {
       ['m1:para:d', 'Frumeindin enn'],
       ['m1:para:d', 'Frumeindin enn á ný'],
       ['m1:para:e', 'Ekkert enskt'], // no-en
+      ['m1:para:g', 'Frumeindin hér'],
+      ['m1:para:g', 'Atómið hér'],
     ]),
   };
   const unitB = {
@@ -520,8 +524,15 @@ describe('buildWorkList', () => {
 
   it('keeps only items with a candidate, with their offered rulings', () => {
     expect(list.units.map((u) => [u.stem, u.items.map((i) => i.segmentId)])).toEqual([
-      ['m1', ['m1:para:a', 'm1:para:d']],
+      ['m1', ['m1:para:a', 'm1:para:d', 'm1:para:g']],
       ['m2', []],
+    ]);
+  });
+
+  it('an item keeps an occurrence that is not itself a candidate (the gate edits all of them)', () => {
+    expect(list.units[0].items[2].occurrences.map((o) => [o.key, o.is])).toEqual([
+      ['m1:para:g', 'Frumeindin hér'],
+      ['m1:para:g#1', 'Atómið hér'],
     ]);
   });
 
@@ -560,13 +571,13 @@ describe('buildWorkList', () => {
     });
   });
 
-  it('counts: occurrences counts EVERY IS occurrence, skipped ones included', () => {
+  it('counts: every IS occurrence (skipped included); only candidate occurrences as such', () => {
     expect(list.counts).toEqual({
       units: 2,
-      occurrences: 7,
-      items: 2,
-      candidateOccurrences: 3,
-      pairs: 2,
+      occurrences: 9,
+      items: 3,
+      candidateOccurrences: 4,
+      pairs: 3,
       skipped: { 'identical-to-en': 1, 'no-en': 1, 'no-is': 1 },
       noCandidate: 2,
     });
@@ -585,7 +596,7 @@ describe('buildWorkList', () => {
   it('control: the same call with a well-formed chapter directory builds', () => {
     expect(
       buildWorkList({ chapterDir: 'appendices', units: [unitA], rulings: [ATOM] }).counts.items
-    ).toBe(2);
+    ).toBe(3);
   });
 
   it('refuses a unit without a stem', () => {
