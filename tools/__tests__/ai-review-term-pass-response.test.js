@@ -66,6 +66,12 @@ const cellOp = (o = {}) =>
   });
 /** The coinage the gate accepts under `cell` (design, "Measured inputs"). */
 const COINAGE = Object.freeze({ find: 'vetnisefnarafala', replace: 'vetniseldsneytiskeri' });
+/**
+ * A segment's `senses` judging `cell` (by default as the ruled sense). A term-sense op needs
+ * one, or it is `sense-unjudged`; every fixture with a term-sense `cell` op that is meant to
+ * reach the gate carries it.
+ */
+const judged = (sense = 'electrochemical-cell') => [{ ruling: 'cell', sense }];
 const seg = (id, o = {}) => ({ id, senses: [], ops: [], flags: [], ...o });
 const doc = (...segments) => ({ segments });
 
@@ -140,6 +146,7 @@ describe('the closed sets', () => {
         'response-unknown-segment',
         'ruling-not-offered',
         'sense-inconsistent',
+        'sense-unjudged',
         'shadowed-by-longer-ruling',
       ],
       true,
@@ -454,7 +461,7 @@ describe('opId numbering', () => {
   const d = doc(
     seg('fs-a', { ops: [op(), op({ sense: UNCLEAR_SENSE })] }), // op1 kept, op2 → flag
     seg('fs-x', { ops: [op()] }), // op3 unknown segment
-    seg('fs-b', { ops: [op(), cellOp()] }), // op4 not offered, op5 kept
+    seg('fs-b', { senses: judged(), ops: [op(), cellOp()] }), // op4 not offered, op5 kept
     seg('fs-a', { ops: [op()] }) // op6 duplicate entry
   );
   const r = parseDoc(d);
@@ -662,7 +669,7 @@ describe('segments, unknown and duplicate entries, missing', () => {
 
 describe('ruling-not-offered', () => {
   it('an op whose ruling is not in that segment’s rulingIds is rejected', () => {
-    const r = parseDoc(doc(seg('fs-a', { ops: [cellOp()] })));
+    const r = parseDoc(doc(seg('fs-a', { senses: judged(), ops: [cellOp()] })));
     expect([reasonsOf(r, `${KEY}.op1`), gateOpsOf(r, 'fs-a')]).toEqual([
       ['ruling-not-offered'],
       [],
@@ -670,7 +677,7 @@ describe('ruling-not-offered', () => {
   });
 
   it('control: the same op in the segment that offers the ruling reaches segments', () => {
-    const r = parseDoc(doc(seg('fs-b', { ops: [cellOp()] })));
+    const r = parseDoc(doc(seg('fs-b', { senses: judged(), ops: [cellOp()] })));
     expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
   });
 
@@ -698,9 +705,9 @@ describe('sense-inconsistent', () => {
     expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
   });
 
-  it('control: senses has no entry for that ruling', () => {
+  it('no entry for that ruling is not sense-inconsistent (it is sense-unjudged, below)', () => {
     const r = run([{ ruling: 'fuel-cell', sense: 'living-cell' }]);
-    expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-unjudged']);
   });
 
   it('two entries for the ruling, one disagreeing: rejected', () => {
@@ -711,9 +718,12 @@ describe('sense-inconsistent', () => {
     expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-inconsistent']);
   });
 
-  it('senses entry `unclear` against a declared sense: rejected', () => {
+  it('a senses entry `unclear` is not sense-inconsistent: the op becomes a flag (below)', () => {
     const r = run([{ ruling: 'cell', sense: UNCLEAR_SENSE }]);
-    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-inconsistent']);
+    expect([r.rejected, r.flags.map((f) => [f.kind, f.opId])]).toEqual([
+      [],
+      [['sense-unclear', `${KEY}.op1`]],
+    ]);
   });
 
   it('only a term-sense op is checked: an agreement op of the same sensed ruling passes beside it', () => {
@@ -775,6 +785,7 @@ describe("an op declaring sense 'unclear'", () => {
             kind: 'sense-unclear',
             rulingId: 'cell',
             note: 'cannot tell',
+            valid: true,
             opId: `${KEY}.op1`,
             proposed: { find: 'sellunni', replace: 'kerinu' },
           },
@@ -784,7 +795,7 @@ describe("an op declaring sense 'unclear'", () => {
   }
 
   it('control: the same op declaring the ruled sense reaches segments and raises no flag', () => {
-    const r = parseDoc(doc(seg('fs-b', { ops: [cellOp()] })));
+    const r = parseDoc(doc(seg('fs-b', { senses: judged(), ops: [cellOp()] })));
     expect([gateOpsOf(r, 'fs-b').length, r.flags]).toEqual([1, []]);
   });
 
@@ -813,8 +824,282 @@ describe("an op declaring sense 'unclear'", () => {
       doc(seg('fs-a', { flags: [{ kind: 'mistranslation-suspected', ruling: null, note: 'n' }] }))
     );
     expect(r.flags).toEqual([
-      { segmentId: 'fs-a', kind: 'mistranslation-suspected', rulingId: null, note: 'n' },
+      {
+        segmentId: 'fs-a',
+        kind: 'mistranslation-suspected',
+        rulingId: null,
+        note: 'n',
+        valid: true,
+      },
     ]);
+  });
+});
+
+// ── 'unclear', normalised ────────────────────────────────────────────────────────────────
+
+describe("an op's 'unclear' is recognised after trim() and toLowerCase(), in any category", () => {
+  it("MEASURED: 'Unclear' on a term op of an unsensed ruling is a flag, not an applied op", () => {
+    // Before the fix the comparison was exact, so 'Unclear' missed it; a term op's sense is
+    // then nulled and the op reached the gate as if the model had been sure. `atom` has no
+    // sense, so no other check could stop it.
+    expect(SET.byId.get('atom').sense).toBe(null);
+    const r = parseDoc(
+      doc(seg('fs-a', { ops: [op({ sense: 'Unclear', reason: 'cannot tell' })] }))
+    );
+    expect({ segments: [...r.segments], rejected: r.rejected, flags: r.flags }).toEqual({
+      segments: [['fs-a', []]],
+      rejected: [],
+      flags: [
+        {
+          segmentId: 'fs-a',
+          kind: 'sense-unclear',
+          rulingId: 'atom',
+          note: 'cannot tell',
+          valid: true,
+          opId: `${KEY}.op1`,
+          proposed: { find: 'frumeindir', replace: 'atóm' },
+        },
+      ],
+    });
+  });
+
+  for (const category of ['term', 'term-sense', 'agreement']) {
+    for (const sense of ['Unclear', ' unclear ', 'UNCLEAR', '\tUnClEaR\n']) {
+      it(`(${category}, ${JSON.stringify(sense)}) becomes a sense-unclear flag, never a gate op`, () => {
+        const r = parseDoc(
+          doc(seg('fs-b', { senses: judged(), ops: [cellOp({ category, sense })] }))
+        );
+        expect([
+          gateOpsOf(r, 'fs-b'),
+          r.rejected,
+          r.flags.map((f) => [f.kind, f.rulingId, f.opId, f.proposed]),
+        ]).toEqual([
+          [],
+          [],
+          [['sense-unclear', 'cell', `${KEY}.op1`, { find: 'rafhlöðunni', replace: 'kerinu' }]],
+        ]);
+      });
+    }
+  }
+
+  it('control: a sense that merely contains the word is not unclear', () => {
+    // Normalisation is trim + lowercase, never a substring test: these term ops are the
+    // ordinary case, their sense nulled and the op kept.
+    const r = parseDoc(
+      doc(
+        seg('fs-a', {
+          ops: [
+            op({ sense: 'unclearly' }),
+            op({ sense: 'not unclear', find: 'frumeindin', replace: 'atómið' }),
+          ],
+        })
+      )
+    );
+    expect([gateOpsOf(r, 'fs-a').map((g) => g.sense), r.flags]).toEqual([[null, null], []]);
+  });
+});
+
+// ── A senses entry 'unclear' ─────────────────────────────────────────────────────────────
+
+describe("a senses entry 'unclear' turns that ruling's term-sense ops into flags", () => {
+  const agreement = (o = {}) =>
+    cellOp({ category: 'agreement', sense: null, find: 'hún', replace: 'það', ...o });
+
+  it('the term-sense op becomes a sense-unclear flag, not a sense-inconsistent rejection', () => {
+    const r = parseDoc(
+      doc(seg('fs-b', { senses: judged(UNCLEAR_SENSE), ops: [cellOp({ reason: 'cell → ker' })] }))
+    );
+    expect({ segments: [...r.segments], rejected: r.rejected, flags: r.flags }).toEqual({
+      segments: [['fs-b', []]],
+      rejected: [],
+      flags: [
+        {
+          segmentId: 'fs-b',
+          kind: 'sense-unclear',
+          rulingId: 'cell',
+          note: 'cell → ker',
+          valid: true,
+          opId: `${KEY}.op1`,
+          proposed: { find: 'rafhlöðunni', replace: 'kerinu' },
+        },
+      ],
+    });
+  });
+
+  it('the entry is normalised as an op’s sense is (` Unclear `)', () => {
+    const r = parseDoc(doc(seg('fs-b', { senses: judged(' Unclear '), ops: [cellOp()] })));
+    expect([r.rejected, r.flags.map((f) => [f.kind, f.opId])]).toEqual([
+      [],
+      [['sense-unclear', `${KEY}.op1`]],
+    ]);
+  });
+
+  it('every term-sense op of that ruling is converted, each under its own opId', () => {
+    const r = parseDoc(
+      doc(
+        seg('fs-b', {
+          senses: judged(UNCLEAR_SENSE),
+          ops: [cellOp(), cellOp({ find: 'rafhlöðu', replace: 'ker' })],
+        })
+      )
+    );
+    expect([gateOpsOf(r, 'fs-b'), r.flags.map((f) => [f.opId, f.proposed.find])]).toEqual([
+      [],
+      [
+        [`${KEY}.op1`, 'rafhlöðunni'],
+        [`${KEY}.op2`, 'rafhlöðu'],
+      ],
+    ]);
+  });
+
+  it('an agreement op of that ruling stays an op (the apply step’s group rule withdraws it)', () => {
+    const r = parseDoc(
+      doc(seg('fs-b', { senses: judged(UNCLEAR_SENSE), ops: [cellOp(), agreement()] }))
+    );
+    expect([
+      gateOpsOf(r, 'fs-b').map((g) => [g.opId, g.category]),
+      r.rejected,
+      r.flags.map((f) => [f.opId, f.rulingId]),
+    ]).toEqual([[[`${KEY}.op2`, 'agreement']], [], [[`${KEY}.op1`, 'cell']]]);
+  });
+
+  it('two entries for the ruling, one of them unclear: converted', () => {
+    const senses = [
+      { ruling: 'cell', sense: 'electrochemical-cell' },
+      { ruling: 'cell', sense: UNCLEAR_SENSE },
+    ];
+    const r = parseDoc(doc(seg('fs-b', { senses, ops: [cellOp()] })));
+    expect([r.rejected, r.flags.map((f) => f.opId)]).toEqual([[], [`${KEY}.op1`]]);
+  });
+
+  it('control: an unclear entry for ANOTHER ruling converts nothing', () => {
+    const senses = [...judged(), { ruling: 'fuel-cell', sense: UNCLEAR_SENSE }];
+    const r = parseDoc(doc(seg('fs-b', { senses, ops: [cellOp()] })));
+    expect([r.rejected, gateOpsOf(r, 'fs-b').length, r.flags]).toEqual([[], 1, []]);
+  });
+
+  it('converted even when the ruling is not offered (it reaches no gate either way)', () => {
+    const r = parseDoc(doc(seg('fs-a', { senses: judged(UNCLEAR_SENSE), ops: [cellOp()] })));
+    expect([r.rejected, r.flags.map((f) => [f.kind, f.rulingId, f.valid])]).toEqual([
+      [],
+      [['sense-unclear', 'cell', false]],
+    ]);
+  });
+});
+
+// ── sense-unjudged ───────────────────────────────────────────────────────────────────────
+
+describe('sense-unjudged', () => {
+  // The prompt requires one judgement per sensed ruling listed; a term-sense edit whose
+  // ruling the model did not judge in that segment must not land.
+  it('a term-sense op whose ruling has no senses entry in the segment is rejected', () => {
+    const r = parseDoc(doc(seg('fs-b', { ops: [cellOp()] })));
+    expect([reasonsOf(r, `${KEY}.op1`), gateOpsOf(r, 'fs-b')]).toEqual([['sense-unjudged'], []]);
+  });
+
+  it('an entry for another ruling is not a judgement of this one', () => {
+    // Discriminating: a check of "senses is empty" would let this op through.
+    const senses = [{ ruling: 'fuel-cell', sense: 'living-cell' }];
+    const r = parseDoc(doc(seg('fs-b', { senses, ops: [cellOp()] })));
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-unjudged']);
+  });
+
+  it('a judgement given in another segment does not count', () => {
+    // Discriminating: a lookup across the whole response would let this op through.
+    const presented = [
+      { segmentId: 'fs-b', rulingIds: ['cell'] },
+      { segmentId: 'fs-c', rulingIds: ['cell'] },
+    ];
+    const r = parseDoc(
+      doc(seg('fs-b', { ops: [cellOp()] }), seg('fs-c', { senses: judged() })),
+      presented
+    );
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['sense-unjudged']);
+  });
+
+  it('control: the same op with a judgement of its ruling reaches segments', () => {
+    const r = parseDoc(doc(seg('fs-b', { senses: judged(), ops: [cellOp()] })));
+    expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
+  });
+
+  it('control: a term op and an agreement op need no judgement', () => {
+    const r = parseDoc(
+      doc(
+        seg('fs-a', { ops: [op()] }),
+        seg('fs-b', {
+          ops: [cellOp({ category: 'agreement', sense: null, find: 'hún', replace: 'það' })],
+        })
+      )
+    );
+    expect([r.rejected, gateOpsOf(r, 'fs-a').length, gateOpsOf(r, 'fs-b').length]).toEqual([
+      [],
+      1,
+      1,
+    ]);
+  });
+
+  it('every applicable code is reported: not offered and unjudged', () => {
+    const r = parseDoc(doc(seg('fs-a', { ops: [cellOp()] })));
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['ruling-not-offered', 'sense-unjudged']);
+  });
+});
+
+// ── flags[].valid ────────────────────────────────────────────────────────────────────────
+
+describe('every flag carries valid: its ruling is null or offered for that segment', () => {
+  const flagged = (segmentId, ruling) =>
+    parseDoc(doc(seg(segmentId, { flags: [{ kind: 'needs-rewrite', ruling, note: 'n' }] })))
+      .flags[0];
+
+  it('a flag with no ruling is valid', () => {
+    expect(flagged('fs-a', null).valid).toBe(true);
+  });
+
+  it('a flag on a ruling offered for the segment is valid', () => {
+    expect(flagged('fs-b', 'cell').valid).toBe(true);
+  });
+
+  it('a flag on a ruling offered only for ANOTHER segment is invalid', () => {
+    expect(flagged('fs-a', 'cell').valid).toBe(false);
+  });
+
+  it('a flag on an unknown ruling is invalid', () => {
+    expect(flagged('fs-a', 'no-such-ruling').valid).toBe(false);
+  });
+
+  it('a converted op’s flag is judged the same way', () => {
+    const r = parseDoc(
+      doc(
+        seg('fs-a', {
+          ops: [cellOp({ sense: UNCLEAR_SENSE }), op({ sense: UNCLEAR_SENSE })],
+        })
+      )
+    );
+    expect(r.flags.map((f) => [f.rulingId, f.valid])).toEqual([
+      ['cell', false],
+      ['atom', true],
+    ]);
+  });
+
+  it('the shapes are fixed, keys in order: a model flag, then a converted op', () => {
+    const r = parseDoc(
+      doc(
+        seg('fs-b', {
+          ops: [cellOp({ sense: UNCLEAR_SENSE })],
+          flags: [{ kind: 'compound-term', ruling: 'cell', note: 'n' }],
+        })
+      )
+    );
+    expect(r.flags.map((f) => Object.keys(f))).toEqual([
+      ['segmentId', 'kind', 'rulingId', 'note', 'valid'],
+      ['segmentId', 'kind', 'rulingId', 'note', 'valid', 'opId', 'proposed'],
+    ]);
+  });
+
+  it('control: a dropped entry’s flags stay as the model gave them, with no valid', () => {
+    const flags = [{ kind: 'needs-rewrite', ruling: 'cell', note: 'n' }];
+    const r = parseDoc(doc(seg('fs-x', { flags })));
+    expect(r.dropped[0].flags).toEqual(flags);
   });
 });
 
@@ -878,7 +1163,9 @@ describe('sense judgements', () => {
 
 describe('GateOp', () => {
   it('maps the model’s op to the gate’s shape, keys in order', () => {
-    const r = parseDoc(doc(seg('fs-b', { ops: [cellOp({ reason: 'cell → ker' })] })));
+    const r = parseDoc(
+      doc(seg('fs-b', { senses: judged(), ops: [cellOp({ reason: 'cell → ker' })] }))
+    );
     const [g] = gateOpsOf(r, 'fs-b');
     expect([Object.keys(g), g]).toEqual([
       ['opId', 'category', 'rulingId', 'sense', 'find', 'replace', 'reason'],
@@ -912,7 +1199,9 @@ describe('GateOp', () => {
   });
 
   it('control: a term-sense op keeps its declared sense', () => {
-    const r = parseDoc(doc(seg('fs-b', { ops: [cellOp({ sense: 'living-cell' })] })));
+    const r = parseDoc(
+      doc(seg('fs-b', { senses: judged('living-cell'), ops: [cellOp({ sense: 'living-cell' })] }))
+    );
     expect(gateOpsOf(r, 'fs-b')[0].sense).toBe('living-cell');
   });
 
@@ -930,6 +1219,8 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
     const r = parseDoc(d, presented);
     return { reasons: reasonsOf(r, `${KEY}.op1`), kept: [...r.segments.values()].flat().length };
   };
+  /** fs-b answered with `cell` judged as the ruled sense, so a term-sense op is not unjudged. */
+  const cellSeg = (...ops) => seg('fs-b', { senses: judged(), ops });
 
   it('the real rulings are what these cases assume', () => {
     const cell = SET.byId.get('cell');
@@ -948,14 +1239,14 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
   });
 
   it('a cell op whose find holds the fuel-cell target is rejected (the gate would accept it)', () => {
-    expect(first(doc(seg('fs-b', { ops: [cellOp(COINAGE)] })))).toEqual({
+    expect(first(doc(cellSeg(cellOp(COINAGE))))).toEqual({
       reasons: ['shadowed-by-longer-ruling'],
       kept: 0,
     });
   });
 
   it('control: the same op with find `rafhlöðunni` is not shadowed', () => {
-    expect(first(doc(seg('fs-b', { ops: [cellOp({ find: 'rafhlöðunni' })] })))).toEqual({
+    expect(first(doc(cellSeg(cellOp({ find: 'rafhlöðunni' }))))).toEqual({
       reasons: null,
       kept: 1,
     });
@@ -963,7 +1254,7 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
 
   it('control: the coinage is not shadowed when fuel-cell is not offered for the segment', () => {
     const presented = [{ segmentId: 'fs-b', rulingIds: ['cell'] }];
-    expect(first(doc(seg('fs-b', { ops: [cellOp(COINAGE)] })), presented)).toEqual({
+    expect(first(doc(cellSeg(cellOp(COINAGE))), presented)).toEqual({
       reasons: null,
       kept: 1,
     });
@@ -975,9 +1266,7 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
       containsTargetStem(find, 'efnarafall'),
       containsTargetStem(find, 'Efnarafhlaða'),
     ]).toEqual([false, true]);
-    expect(first(doc(seg('fs-b', { ops: [cellOp({ find })] }))).reasons).toEqual([
-      'shadowed-by-longer-ruling',
-    ]);
+    expect(first(doc(cellSeg(cellOp({ find })))).reasons).toEqual(['shadowed-by-longer-ruling']);
   });
 
   it('the guard matches LOOSELY: the longer target as a modifier of `find` shadows too', () => {
@@ -989,7 +1278,7 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
       true,
       false,
     ]);
-    expect(first(doc(seg('fs-b', { ops: [cellOp({ find, replace: 'kerbíllinn' })] })))).toEqual({
+    expect(first(doc(cellSeg(cellOp({ find, replace: 'kerbíllinn' }))))).toEqual({
       reasons: ['shadowed-by-longer-ruling'],
       kept: 0,
     });
@@ -1056,7 +1345,7 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
     };
     const rulingsById = new Map([...SET.byId, [twin.id, twin]]);
     const presented = [{ segmentId: 'fs-b', rulingIds: ['cell', 'cell-twin'] }];
-    const r = parse(message(doc(seg('fs-b', { ops: [cellOp(COINAGE)] }))), presented, rulingsById);
+    const r = parse(message(doc(cellSeg(cellOp(COINAGE)))), presented, rulingsById);
     expect([r.rejected, gateOpsOf(r, 'fs-b').length]).toEqual([[], 1]);
   });
 
@@ -1104,6 +1393,10 @@ describe('KNOWN GAP (design, not U3): rule 4 cannot see an uncatalogued renderin
   };
   const presented = [{ segmentId: ID, rulingIds: ['cell', 'fuel-cell'] }];
   const coinOp = cellOp({ find: 'Vetnisrafalar', replace: 'Vetnisker' });
+  // Since `sense-unjudged` (2026-10-27), a term-sense op with no judgement of its ruling is
+  // refused for THAT reason, so each case below answers with `cell` judged as the ruled sense.
+  // Without it the `it.fails` would keep failing for the wrong reason and stop being a marker.
+  const answer = (o) => doc(seg(ID, { senses: judged(), ops: [o] }));
 
   it('the premise holds on the committed text and ruling set', () => {
     const en = segmentText('02-for-mt', 'm68825-segments.en.md');
@@ -1117,16 +1410,20 @@ describe('KNOWN GAP (design, not U3): rule 4 cannot see an uncatalogued renderin
     }).toEqual({ en: true, is: true, seenByGuard: [false, false], cellCompetitors: [] });
   });
 
+  it('the gap is live at the parser: with its ruling judged, that op is kept today', () => {
+    // What keeps the `it.fails` below meaningful: it fails because the op PASSES, not because
+    // some other check refuses it first.
+    const r = parseDoc(answer(coinOp), presented);
+    expect([reasonsOf(r, `${KEY}.op1`), gateOpsOf(r, ID).length]).toEqual([null, 1]);
+  });
+
   it.fails('WANTED (fails today): a cell op on that rendering is shadowed by fuel-cell', () => {
-    const r = parseDoc(doc(seg(ID, { ops: [coinOp] })), presented);
+    const r = parseDoc(answer(coinOp), presented);
     expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['shadowed-by-longer-ruling']);
   });
 
   it('control: on the same segment, an op whose find holds fuel-cell’s target IS shadowed', () => {
-    const r = parseDoc(
-      doc(seg(ID, { ops: [cellOp({ find: 'efnarafal', replace: 'efnaker' })] })),
-      presented
-    );
+    const r = parseDoc(answer(cellOp({ find: 'efnarafal', replace: 'efnaker' })), presented);
     expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['shadowed-by-longer-ruling']);
   });
 });

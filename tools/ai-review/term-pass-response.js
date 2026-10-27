@@ -18,14 +18,26 @@
  *      recorded in `dropped` — its ops' opIds and its flags and senses as the model gave them —
  *      so an entry with no ops still leaves a trace (a flag raised on a mistyped id would
  *      otherwise vanish, and the result would read as if the model had said nothing);
- *   3. an op declaring sense 'unclear' (any category) becomes a `sense-unclear` flag carrying
- *      its opId and `proposed: { find, replace }`, and never reaches the gate. This is decided
- *      before any runner check, so such an op is flagged even when its ruling was not offered:
- *      it reaches no gate either way, and a human reads the flag;
+ *   3. an op the model could not settle becomes a `sense-unclear` flag carrying its opId and
+ *      `proposed: { find, replace }`, and never reaches the gate: an op of ANY category whose
+ *      own sense is 'unclear', and a 'term-sense' op whose segment has a senses entry
+ *      'unclear' for its ruling (one such entry is enough, beside a definite one too). Both
+ *      compare after trim() and toLowerCase(), so 'Unclear' and ' unclear ' count. An
+ *      agreement or term op of that ruling stays an op: the apply step's group rule withdraws
+ *      it once a converted op's flag (which names the ruling and carries an opId) is there,
+ *      and the gate itself refuses a term op of a sensed ruling. This is decided before any
+ *      runner check, so such an op is flagged even when its ruling was not offered: it reaches
+ *      no gate either way, and a human reads the flag (whose `valid` is then false);
  *   4. otherwise the runner checks run and EVERY applicable code is reported:
- *      ruling-not-offered, sense-inconsistent, shadowed-by-longer-ruling (rule 4 of the design);
+ *      ruling-not-offered, sense-inconsistent, sense-unjudged (a 'term-sense' op whose ruling
+ *      has no senses entry in its segment), shadowed-by-longer-ruling (rule 4 of the design);
  *   5. an op no check refused becomes a GateOp; only a 'term-sense' op keeps its declared
  *      sense, every other category carries `sense: null` whatever the model sent.
+ *
+ * Every flag in `flags`, the model's own and a converted op's, carries `valid`: true iff its
+ * ruling is null or is one of that segment's offered rulingIds. A senses judgement's own
+ * `valid` stays exact: a ' Unclear ' judgement converts the ruling's term-sense ops (step 3)
+ * and is still reported `valid: false`, as a non-canonical answer. Both refuse.
  */
 
 import { usesHeadword } from '../lib/chapter-term-check.js';
@@ -60,6 +72,10 @@ export const RUNNER_REJECTIONS = Object.freeze([
   'response-unknown-segment', // an op of a segment id the request did not present
   'ruling-not-offered', // the op's ruling is not among the segment's offered rulings
   'sense-inconsistent', // a term-sense op's sense differs from the segment's senses entry
+  // A term-sense op whose ruling has no senses entry in its segment. The prompt requires one
+  // judgement per sensed ruling listed, so an edit under a ruled sense without the judgement
+  // that licenses it never lands.
+  'sense-unjudged',
   'shadowed-by-longer-ruling', // find holds the target or a competitor of a longer ruling
 ]);
 
@@ -241,15 +257,39 @@ function isShadowed(op, offeredIds, lookup) {
   });
 }
 
+/**
+ * Does a model-written sense mean UNCLEAR_SENSE? Compared after trim() and toLowerCase(), so
+ * `'Unclear'` and `' unclear '` count: an exact comparison let a term op declaring 'Unclear'
+ * through with its sense nulled, as if the model had been sure. Never a substring test.
+ * @param {unknown} sense an op's `sense` (string or null) or a senses entry's `sense`
+ */
+function isUnclear(sense) {
+  return typeof sense === 'string' && sense.trim().toLowerCase() === UNCLEAR_SENSE;
+}
+
+/**
+ * Is this op, by its own sense or by its segment's judgement of its ruling, one the model could
+ * not settle? Any category whose own sense is unclear; a term-sense op also when ANY of the
+ * segment's senses entries for its ruling is unclear (one unclear entry beside a definite one
+ * still converts). An agreement or term op is never converted by the senses entry: the apply
+ * step's group rule withdraws it once a converted op's flag names the ruling.
+ */
+function isUnsettled(op, entry) {
+  return (
+    isUnclear(op.sense) ||
+    (op.category === 'term-sense' &&
+      entry.senses.some((s) => s.ruling === op.ruling && isUnclear(s.sense)))
+  );
+}
+
 /** The runner codes for one op of a presented segment (sorted, as RUNNER_REJECTIONS is). */
 function runnerReasons(op, entry, offeredIds, lookup) {
   const reasons = [];
   if (!offeredIds.includes(op.ruling)) reasons.push('ruling-not-offered');
-  if (
-    op.category === 'term-sense' &&
-    entry.senses.some((s) => s.ruling === op.ruling && s.sense !== op.sense)
-  ) {
-    reasons.push('sense-inconsistent');
+  if (op.category === 'term-sense') {
+    const judgements = entry.senses.filter((s) => s.ruling === op.ruling);
+    if (judgements.some((s) => s.sense !== op.sense)) reasons.push('sense-inconsistent');
+    if (judgements.length === 0) reasons.push('sense-unjudged');
   }
   if (isShadowed(op, offeredIds, lookup)) reasons.push('shadowed-by-longer-ruling');
   return reasons;
@@ -322,17 +362,19 @@ function checkArgs({ requestKey, presented, rulingsById }) {
  *   segments: Map<string, GateOp[]>,
  *   rejected: Array<{ segmentId: string, opId: string, op: object, reasons: string[] }>,
  *   flags: Array<{ segmentId: string, kind: string, rulingId: string|null, note: string,
- *     opId?: string, proposed?: { find: string, replace: string } }>,
+ *     valid: boolean, opId?: string, proposed?: { find: string, replace: string } }>,
  *   senses: Array<{ segmentId: string, rulingId: string, sense: string, valid: boolean }>,
  *   missing: string[],
  *   dropped: Array<{ segmentId: string, reason: 'response-unknown-segment'|
  *     'response-duplicate-segment', opIds: string[], flags: object[], senses: object[] }>,
  * }} `segments` is keyed in presented order, one entry per presented segment the response
  *   answered (its list possibly empty); `rejected` and `senses` are in response order; `flags`
- *   are in response order, an entry's own flags before its converted 'unclear' ops; `missing`
- *   is in presented order; `dropped` holds every unknown or duplicate entry in response order,
- *   its `flags` and `senses` as the model gave them (schema names, like `rejected[].op`). With
- *   a `problem`, every other field is empty.
+ *   are in response order, an entry's own flags before its converted 'unclear' ops, each with
+ *   keys in the order `segmentId, kind, rulingId, note, valid` and, for a converted op only,
+ *   `opId, proposed` after them; `missing` is in presented order; `dropped` holds every unknown
+ *   or duplicate entry in response order, its `flags` and `senses` as the model gave them
+ *   (schema names, like `rejected[].op`, and no `valid`). With a `problem`, every other field
+ *   is empty.
  * @throws {TypeError} on malformed arguments — a caller bug fails the run, not one request.
  */
 export function parseTermPassResponse({ message, requestKey, presented, rulingsById } = {}) {
@@ -379,6 +421,16 @@ export function parseTermPassResponse({ message, requestKey, presented, rulingsB
 
     const gateOps = [];
     answered.set(segmentId, gateOps);
+    // One constructor for every flag, so the key order is fixed: `valid` iff the flag names no
+    // ruling or one offered for THIS segment (an unknown ruling id is never offered).
+    const flag = (kind, rulingId, note, extra = {}) => ({
+      segmentId,
+      kind,
+      rulingId,
+      note,
+      valid: rulingId === null || offeredIds.includes(rulingId),
+      ...extra,
+    });
     for (const s of entry.senses) {
       result.senses.push({
         segmentId,
@@ -387,20 +439,16 @@ export function parseTermPassResponse({ message, requestKey, presented, rulingsB
         valid: senseIsValid(s, offeredIds, lookup),
       });
     }
-    for (const f of entry.flags) {
-      result.flags.push({ segmentId, kind: f.kind, rulingId: f.ruling, note: f.note });
-    }
+    for (const f of entry.flags) result.flags.push(flag(f.kind, f.ruling, f.note));
     entry.ops.forEach((op, k) => {
       const opId = opIds[k];
-      if (op.sense === UNCLEAR_SENSE) {
-        result.flags.push({
-          segmentId,
-          kind: 'sense-unclear',
-          rulingId: op.ruling,
-          note: op.reason,
-          opId,
-          proposed: { find: op.find, replace: op.replace },
-        });
+      if (isUnsettled(op, entry)) {
+        result.flags.push(
+          flag('sense-unclear', op.ruling, op.reason, {
+            opId,
+            proposed: { find: op.find, replace: op.replace },
+          })
+        );
         return;
       }
       const reasons = runnerReasons(op, entry, offeredIds, lookup);
