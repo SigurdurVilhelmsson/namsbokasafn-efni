@@ -12,9 +12,11 @@ import {
   BARRED,
   ELEMENT_SYMBOLS,
   NEGATING_PREFIXES,
+  GENDERED_QUANTIFIERS,
   isClosedClass,
   isBarred,
   isElementSymbol,
+  isGenderedQuantifier,
 } from '../ai-review/lexicon.js';
 
 // ── Paradigms, written out cell by cell (masc / fem / neut; sg nom acc dat gen; pl …) ──
@@ -171,6 +173,36 @@ const COUNT_NOUNS = [
     'fjórðunga',
   ],
 ];
+// ── The quantity words báðir ("both", plural only) and hálfur ("half", strong forms), which
+// lexicon.js bars as its QUANTITY group. Written out here for GENDERED_QUANTIFIERS.
+const BADIR = [
+  ['báðir', 'báða', 'báðum', 'beggja'],
+  ['báðar', 'báðar', 'báðum', 'beggja'],
+  ['bæði', 'bæði', 'báðum', 'beggja'],
+];
+const HALFUR = [
+  ['hálfur', 'hálfan', 'hálfum', 'hálfs', 'hálfir', 'hálfa', 'hálfum', 'hálfra'],
+  ['hálf', 'hálfa', 'hálfri', 'hálfrar', 'hálfar', 'hálfar', 'hálfum', 'hálfra'],
+  ['hálft', 'hálft', 'hálfu', 'hálfs', 'hálf', 'hálf', 'hálfum', 'hálfra'],
+];
+// Variant forms lexicon.js carries in those same groups beyond the paradigm cells above:
+// einan (acc. masc. of einn, "alone"), engis (gen. of enginn), the colloquial/older öng-
+// forms, and the short datives tveim / þrem and genitive fjögra.
+const GENDERED_VARIANTS = [
+  'einan',
+  'engis',
+  'öngvan',
+  'öngvu',
+  'öngum',
+  'öngva',
+  'öngvir',
+  'öngvar',
+  'öngvum',
+  'tveim',
+  'þrem',
+  'fjögra',
+];
+
 // Prefixes that turn a term into its opposite: a target preceded by one of them inside a
 // word is a different word (`andtengisvigrúm` is antibonding, not bonding).
 const NEGATING_PREFIX_LIST = ['ó', 'ör', 'and', 'gagn', 'mis', 'van'];
@@ -264,6 +296,52 @@ describe('BARRED — negations and number words; their completeness is load-bear
   });
 });
 
+describe('GENDERED_QUANTIFIERS — barred words that agree in gender with their noun', () => {
+  // The gate refuses a term operation beside one of these (quantifier-agreement): the word is
+  // BARRED, so no agreement operation may follow the noun's new gender, and `tvær O-atóm`
+  // (feminine numeral, neuter noun) would land. REFUSES, so a missing form lets that through.
+  const GENDERED = [
+    ...flat(HVORUGUR),
+    ...flat(ENGINN),
+    ...flat(EINN),
+    ...flat(TVEIR),
+    ...flat(THRIR),
+    ...flat(FJORIR),
+    ...flat(ANNAR),
+    ...flat(BADIR),
+    ...flat(HALFUR),
+  ];
+  it.each(GENDERED)('holds the gendered form %s', (w) => {
+    expect(GENDERED_QUANTIFIERS.has(w)).toBe(true);
+  });
+  it.each(GENDERED_VARIANTS)('holds the variant form %s', (w) => {
+    expect(GENDERED_QUANTIFIERS.has(w)).toBe(true);
+  });
+  it('holds exactly those forms — nothing else slipped in', () => {
+    const expected = new Set([...GENDERED, ...GENDERED_VARIANTS]);
+    expect([...GENDERED_QUANTIFIERS].sort()).toEqual([...expected].sort());
+  });
+  it('is a subset of BARRED, so no agreement operation may change one of them', () => {
+    expect([...GENDERED_QUANTIFIERS].filter((w) => !BARRED.has(w))).toEqual([]);
+  });
+  it.each([
+    ['the indeclinable cardinal fimm', 'fimm'],
+    ['the indeclinable cardinal sex', 'sex'],
+    ['the negation ekki', 'ekki'],
+    ['the number noun hundrað', 'hundrað'],
+    ['the count noun helmingur', 'helmingur'],
+    ['the ordinal þriðju (outside the union the gate rule names)', 'þriðju'],
+  ])('leaves out %s (control)', (_label, w) => {
+    expect(isGenderedQuantifier(w)).toBe(false);
+  });
+  it('looks a sentence-initial form up case-insensitively', () => {
+    expect(isGenderedQuantifier('Tvær')).toBe(true);
+  });
+  it('cannot be mutated by a caller', () => {
+    expect(() => GENDERED_QUANTIFIERS.add('fimm')).toThrow(TypeError);
+  });
+});
+
 describe('NEGATING_PREFIXES — prefixes that make a word the opposite of the term it contains', () => {
   it.each(NEGATING_PREFIX_LIST)('holds the negating prefix %s', (p) => {
     expect(NEGATING_PREFIXES.has(p)).toBe(true);
@@ -285,7 +363,9 @@ describe('the two Icelandic lists', () => {
   });
   it('are stored lowercase, so a lookup that lowercases cannot miss', () => {
     expect(
-      [...CLOSED_CLASS, ...BARRED, ...NEGATING_PREFIXES].filter((w) => w !== w.toLowerCase())
+      [...CLOSED_CLASS, ...BARRED, ...NEGATING_PREFIXES, ...GENDERED_QUANTIFIERS].filter(
+        (w) => w !== w.toLowerCase()
+      )
     ).toEqual([]);
   });
   it('cannot be mutated by a caller', () => {

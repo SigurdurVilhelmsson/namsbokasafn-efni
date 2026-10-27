@@ -9,15 +9,17 @@
  * ⚠️ FAIL-SAFE BY OMISSION ONLY WHERE A LIST GRANTS PERMISSION:
  *   - CLOSED_CLASS grants permission (an agreement op may change such a word whole), so a
  *     missing form only causes a refusal. That list is fail-safe.
- *   - BARRED, ELEMENT_SYMBOLS and NEGATING_PREFIXES REFUSE, so a missing form lets an
- *     operation THROUGH — e.g. a missing `annan` would let `annar` → `annan` pass as an
- *     ending change, and a missing `hvergi` let a term operation insert "nowhere" (review
- *     round 1 found it). Their completeness is load-bearing, which is why
+ *   - BARRED, GENDERED_QUANTIFIERS, ELEMENT_SYMBOLS and NEGATING_PREFIXES REFUSE, so a
+ *     missing form lets an operation THROUGH — e.g. a missing `annan` would let `annar` →
+ *     `annan` pass as an ending change, a missing `hvergi` let a term operation insert
+ *     "nowhere" (review round 1 found it), and a missing `tvær` let `tvær O-frumeindir` →
+ *     `tvær O-atóm` land. Their completeness is load-bearing, which is why
  *     tools/__tests__/ai-review-lexicon.test.js enumerates every paradigm cell instead of
  *     sampling. Extra forms in BARRED are harmless (they refuse more), so it carries
  *     variants and homographs deliberately.
  *
- * Icelandic forms are stored lowercase; isClosedClass / isBarred lowercase their argument.
+ * Icelandic forms are stored lowercase; isClosedClass / isBarred / isGenderedQuantifier
+ * lowercase their argument.
  * Element symbols are matched case-sensitively: `Er` is erbium, `er` is the verb.
  */
 
@@ -186,6 +188,29 @@ export const BARRED = frozenSet([
   ...COUNT_NOUNS,
 ]);
 
+// ── GENDERED_QUANTIFIERS: the barred words that agree in gender with their noun ─────────
+// A term operation that changes a noun's gender (frumeind f. → atóm n.) beside one of these
+// leaves it disagreeing (`tvær O-atóm`), and no agreement operation may repair it, because
+// the word is BARRED. The gate refuses such a term operation (quantifier-agreement). This
+// list REFUSES, so a missing form lets an operation through. It is the union of the groups
+// above that decline for gender; the indeclinable cardinals (fimm, sex …), the number and
+// count nouns, the ordinals, the collectives and the number adverbs are left out.
+// ⚠️ KNOWN RESIDUE: the ordinals' weak forms and the collectives DO decline for gender in some
+// cells (þriðju f. / þriðja n. in the oblique cases), so `þriðju kolefnisfrumeindina` →
+// `þriðju kolefnisatómið` still passes; widening this union is a ruling, not a fix made here.
+// hvor / hver (each) decline too but are not BARRED, so an agreement op can repair them.
+
+export const GENDERED_QUANTIFIERS = frozenSet([
+  ...HVORUGUR,
+  ...ENGINN,
+  ...EINN,
+  ...TVEIR,
+  ...THRIR,
+  ...FJORIR,
+  ...ANNAR,
+  ...QUANTITY,
+]);
+
 // ── NEGATING_PREFIXES: a target behind one of these, inside a word, is its opposite ─────
 // `andtengisvigrúm` (antibonding) holds `tengisvigrúm` (bonding) after `and-`; `óvirkt`
 // (inert) holds `virkt` (active) after `ó-`. The gate refuses a term operation whose only
@@ -210,5 +235,7 @@ export const ELEMENT_SYMBOLS = frozenSet(
 export const isClosedClass = (word) => CLOSED_CLASS.has(String(word).toLowerCase());
 /** @param {string} word */
 export const isBarred = (word) => BARRED.has(String(word).toLowerCase());
+/** @param {string} word */
+export const isGenderedQuantifier = (word) => GENDERED_QUANTIFIERS.has(String(word).toLowerCase());
 /** @param {string} word — compared exactly: `Er` is a symbol, `er` is not */
 export const isElementSymbol = (word) => ELEMENT_SYMBOLS.has(String(word));

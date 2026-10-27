@@ -20,10 +20,15 @@ import {
   DEFAULT_LIMITS,
   REJECTION_CODES,
 } from '../ai-review/gate.js';
+import { loadRulingSet } from '../ai-review/ruling-set.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const RULING_SET_2026_10_11 =
   'experiments/terminology-consistency/results/2026-10-11/ruling-set-after-stage1.json';
+// The committed, compiled ruling set the runner gates against (read-only).
+const REAL_SET = loadRulingSet(
+  'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json'
+);
 
 // ── Rulings ──────────────────────────────────────────────────────────────────────────────
 
@@ -358,6 +363,62 @@ const CELSIUS_IS =
 const SHIFT_EN = 'The system will shift toward the reactants to reach equilibrium.';
 const SHIFT_IS = 'Kerfið mun færast í átt að hvarfefnunum til að ná jafnvægi.';
 
+// Added for term-op-too-wide and quantifier-agreement (REAL, byte for byte). These are gated
+// against the committed 2026-10-26 ruling set (REAL_SET below), whose `atom` ruling is
+// frumeind → atóm: a feminine noun replaced by a neuter one, which is what makes a gendered
+// numeral beside it disagree.
+// m68739:alt:fs-idp7083808-alt (ch07)
+const C2H2_EN =
+  'A Lewis structure shows two carbon atoms that are triple bonded together. Each carbon is also single bonded to a hydrogen atom.';
+const C2H2_IS =
+  'Lewis-formúla sýnir tvær kolefnisfrumeindir sem eru þrítengdar saman. Hvor kolefnisfrumeind er einnig eintengd við vetnisfrumeind.';
+// m68740:problem:fs-idp213179184 (ch07) — `tvær O-frumeindir`: a part word glued to the noun
+const HNO3_EN = '(c) nitric acid, HNO[[sub:3]] (N is bonded to an OH group and two O atoms)';
+const HNO3_IS = '(c) saltpéturssýra, HNO[[sub:3]] (N er tengt við OH-hóp og tvær O-frumeindir)';
+// m68739:alt:fs-idp792848-alt (ch07) — `fjórar` three tokens before `flúorfrumeind hefur`
+const BF4_EN =
+  'A Lewis structure shows a boron atom single bonded to four fluorine atoms. Each fluorine atom has three lone pairs of electrons. The structure is surrounded by brackets with a superscripted negative sign.';
+const BF4_IS =
+  'Lewis-formúla sýnir bórfrumeind sem er eintengd við fjórar flúorfrumeindir. Hver flúorfrumeind hefur þrjú stök rafeindapör. Formúlan er umlukin hornklofum með neikvætt formerki í hávísi.';
+// m68740:alt:fs-idp77072272-alt (ch07) — `fimm` (indeclinable) and `einni` (feminine dative)
+const PYRIDINE_EN =
+  'A Lewis structure depicts a hexagonal ring composed of five carbon atoms and one nitrogen atom. Each carbon atom is single bonded to a hydrogen atom.';
+const PYRIDINE_IS =
+  'Lewis-mynd sýnir sexhyrndan hring sem samanstendur af fimm kolefnisfrumeindum og einni köfnunarefnisfrumeind. Hver kolefnisfrumeind er eintengd við vetnisfrumeind.';
+// m68740:alt:fs-idp6338064-alt (ch07) — `sex` (indeclinable)
+const BENZENE_EN =
+  'A Lewis structure shows a hexagonal ring composed of six carbon atoms. They form single bonds to each another and single bonds to one hydrogen atom each.';
+const BENZENE_IS =
+  'Lewis-mynd sýnir sexhyrndan hring sem samanstendur af sex kolefnisfrumeindum. Þær mynda eintengi hver við aðra og eintengi við eina vetnisfrumeind hver.';
+// m68740:para:fs-idp6151664 (ch07) — a sentence-initial `Ein`
+const CO3_EN =
+  'One oxygen atom must have a double bond to carbon to complete the octet on the central atom. All oxygen atoms, however, are equivalent, and the double bond could form from any one of the three atoms. This gives rise to three resonance forms of the carbonate ion. Because we can write three identical resonance structures, we know that the actual arrangement of electrons in the carbonate ion is the average of the three structures. Again, experiments show that all three C–O bonds are exactly the same.';
+const CO3_IS =
+  'Ein súrefnisfrumeind verður að hafa tvítengi við kolefni til að fullgera áttundina á miðjufrumeindinni. Allar súrefnisfrumeindirnar eru þó jafngildar og tvítengið gæti myndast frá hvaða frumeind sem er af þessum þremur. Þetta gefur tilefni til þriggja vokmynda karbónatjónarinnar. Þar sem við getum skrifað þrjár eins vokmyndir vitum við að raunveruleg uppröðun rafeinda í karbónatjóninni er meðaltal þessara þriggja mynda. Aftur sýna tilraunir að öll þrjú C–O tengin eru nákvæmlega eins.';
+// m68740:alt:fs-idp30893072-alt (ch07) — a sentence-initial `Önnur`
+const C3H5_EN =
+  'A Lewis structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets, and there is a superscripted negative sign.';
+const C3H5_IS =
+  'Lewis-mynd sýnir kolefnisfrumeind sem er eintengd við tvær vetnisfrumeindir og aðra kolefnisfrumeind. Önnur kolefnisfrumeindin er eintengd við vetnisfrumeind og þriðju kolefnisfrumeindina. Þriðja kolefnisfrumeindin er eintengd við tvær vetnisfrumeindir. Öll myndin er umkringd hornklofum og er með hávísinn mínus.';
+// m68742:problem:fs-idp49887536 (ch07) — a two-word target (rúmfræði rafeindapara)
+const GEOM_EN = 'Explain the difference between electron-pair geometry and molecular structure.';
+const GEOM_IS = 'Útskýrðu muninn á rafeindapara-lögun og sameindabyggingu.';
+// m68693:caption:CNX_Chem_02_04_TiO2-caption (ch02) — a single-word head swap
+const TIO2_EN =
+  '(a) The white compound titanium dioxide provides effective protection from the sun. (b) A crystal of titanium dioxide, TiO[[sub:2]], contains titanium and oxygen in a ratio of 1 to 2. The titanium atoms are gray and the oxygen atoms are red. (credit a: modification of work by “osseous”/Flickr)';
+const TIO2_IS =
+  '(a) Hvíta efnasambandið títantvíoxíð veitir skilvirka vörn gegn sólinni. (b) Kristall af títantvíoxíði, TiO[[sub:2]], inniheldur títan og súrefni í hlutfallinu 1 á móti 2. Títanfrumeindirnar eru gráar og súrefnisfrumeindirnar eru rauðar. (heimild a: breyting á verki eftir „osseous“/Flickr)';
+// m68813:alt:fs-idp130807344-alt (ch15) — a numeral AFTER its noun: `I-frumeindirnar tvær`
+const I3_EN =
+  'This figure illustrates a chemical reaction using structural formulas. On the left, two I atoms, each with 3 unshared electron pairs, are joined with a single bond. Following a plus sign is another structure which has an I atom with four pairs of electron dots and a superscript negative sign. Following a right pointing arrow is a structure in brackets that has three I atoms connected in a line with single bonds. The two end I atoms have three unshared electron dot pairs and the I atom at the center has two unshared electron pairs. Outside the brackets is a superscript negative sign.';
+const I3_IS =
+  'Þessi mynd sýnir efnahvarf með byggingarformúlum. Vinstra megin eru tvær I-frumeindir, hvor með 3 ódeild rafeindapör, tengdar saman með eintengi. Á eftir plúsmerki er önnur bygging sem hefur I-frumeind með fjórum pörum af rafeindapunktum og hávísi sem er neikvætt tákn. Á eftir hægri ör er bygging innan hornklofa sem hefur þrjár I-frumeindir tengdar í línu með eintengjum. I-frumeindirnar tvær á endunum hafa þrjú ódeild rafeindapunktapör og I-frumeindin í miðjunni hefur tvö ódeild rafeindapör. Fyrir utan hornklofana er hávísir sem er neikvætt tákn.';
+// m68770:para:fs-idp141658128 (ch10) — `(eina frumeind á þykkt)`: punctuation on the token
+const GRAPHENE_EN =
+  'You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in 2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one atom thick) of graphite. Graphene, illustrated in [[xref:CNX_Chem_10_05_Graphene]], is not only strong and lightweight, but it is also an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre [[term:Geim|term-00007]] and Konstantin [[term:Novoselov|term-00008]] for their pioneering work with graphene.';
+const GRAPHENE_IS =
+  'Þú þekkir kannski síður nýlega uppgötvað form kolefnis: grafen. Grafen var fyrst einangrað árið 2004 með því að nota límband til að fletta þynnri og þynnri lögum af grafíti. Það er í raun eitt lag (eina frumeind á þykkt) af grafíti. Grafen, sem sýnt er í [[xref:CNX_Chem_10_05_Graphene]], er ekki aðeins sterkt og létt, heldur er það einnig frábær leiðari rafmagns og hita. Þessir eiginleikar gætu reynst mjög gagnlegir í margs konar notkun, svo sem í stórbættum tölvukubbum og rafrásum, betri rafhlöðum og sólarsellum og sterkari og léttari byggingarefnum. Nóbelsverðlaunin í eðlisfræði árið 2010 voru veitt Andre [[term:Geim|term-00007]] og Konstantin [[term:Novoselov|term-00008]] fyrir brautryðjendastarf þeirra með grafen.';
+
 // ── Helpers ──────────────────────────────────────────────────────────────────────────────
 
 const emitted = new Set();
@@ -396,6 +457,9 @@ const agr = (opId, rulingId, find, replace) => ({
   replace,
   reason: 'test',
 });
+/** Gate one op against the committed 2026-10-26 ruling set (REAL_SET). */
+const gateReal = (args) =>
+  record(gateSegment({ chapterDir: 'ch07', rulingsById: REAL_SET.byId, ...args }));
 const ids = (result) => result.accepted.map((o) => o.opId);
 const reasonsOf = (result, opId) => {
   const hit = result.rejected.find((r) => r.op?.opId === opId);
@@ -454,6 +518,7 @@ describe('pinned values', () => {
       'op-invalid',
       'op-too-large',
       'overlaps-accepted-op',
+      'quantifier-agreement',
       'ruling-held',
       'ruling-invalid',
       'ruling-unknown',
@@ -468,9 +533,13 @@ describe('pinned values', () => {
       'sense-not-applicable',
       'sense-undeclared',
       'sense-unruled',
+      'term-op-too-wide',
       'term-target-already',
       'term-target-missing',
     ]);
+  });
+  it('REJECTION_CODES is in sorted order (checked, not copied)', () => {
+    expect([...REJECTION_CODES].sort()).toEqual([...REJECTION_CODES]);
   });
   it('REJECTION_CODES cannot be mutated', () => {
     expect(Object.isFrozen(REJECTION_CODES)).toBe(true);
@@ -979,8 +1048,10 @@ describe('forbidden tokens in REPLACE only (the find is clean real text)', () =>
     expect(r.rejected[0]?.reasons).toContain(code);
   });
   it('refuses a digit in replace with that reason alone (the find side is clean)', () => {
+    // The digit is glued to the word: `tengisvigrúma 2` would add a word and so also be
+    // term-op-too-wide, and this case is about the digit alone.
     const r = gate({
-      ops: [term('r2', 'bonding-orbital', 'bindandi svigrúma', 'tengisvigrúma 2')],
+      ops: [term('r2', 'bonding-orbital', 'bindandi svigrúma', 'tengisvigrúma2')],
       en: BOND_EN,
       is: BOND_IS,
     });
@@ -1377,11 +1448,13 @@ describe('barred words', () => {
     expect(r.rejected[0].reasons).toEqual(['barred-word']);
   });
   it('accepts a term operation that keeps the negation (control)', () => {
+    // This control kept `enginn` until 2026-10-27; enginn is gendered, so that op now meets
+    // quantifier-agreement (its documented over-refusal, below). `ekki` is not gendered.
     const r = gate({
-      ops: [term('b2', 'current', 'enginn straumur', 'enginn rafstraumur')],
-      en: CURRENT_EN,
-      is: CURRENT_IS,
-      chapterDir: 'ch17',
+      ops: [term('b2', 'dissolution', 'ekki við upplausn', 'ekki við leysingu')],
+      en: HANDBOOK_EN,
+      is: HANDBOOK_IS,
+      chapterDir: 'ch15',
     });
     expect(ids(r)).toEqual(['b2']);
   });
@@ -1410,6 +1483,9 @@ describe('barred words', () => {
     expect(ids(r)).toEqual(['d1', 'd3']);
   });
   it('refuses an agreement operation that changes a number word (barred-word)', () => {
+    // Since 2026-10-27 the anchor q1 is refused too: `fjögur` stands right before `jafngild`
+    // (quantifier-agreement, an over-refusal here: jafngild and samgild are both neuter).
+    // barred-word on q2 does not depend on the anchor, so both verdicts are pinned.
     const r = gate({
       ops: [
         term('q1', 'equivalent', 'jafngild', 'samgild'),
@@ -1418,7 +1494,10 @@ describe('barred words', () => {
       en: SP3_EN,
       is: SP3_IS,
     });
-    expect(reasonsOf(r, 'q2')).toContain('barred-word');
+    expect({ q1: reasonsOf(r, 'q1'), q2: reasonsOf(r, 'q2').includes('barred-word') }).toEqual({
+      q1: ['quantifier-agreement'],
+      q2: true,
+    });
   });
   it('refuses an agreement that turns átt (direction) into átta (eight): barred in REPLACE only', () => {
     // `átt` → `átta` is otherwise a valid ending change on a 3-letter stem.
@@ -1447,12 +1526,192 @@ describe('barred words', () => {
     ['the ordinal tólfta (12th)', 'tólfta tengisvigrúma'],
     ['the fraction helmingi (half)', 'helmingi tengisvigrúma'],
   ])('refuses a term operation that inserts %s (barred-word)', (_label, replace) => {
+    // An inserted word is also a word more than the one-word target, so term-op-too-wide
+    // fires beside it; barred-word must still be named.
     const r = gate({
       ops: [term('b3', 'bonding-orbital', 'bindandi svigrúma', replace)],
       en: BOND_EN,
       is: BOND_IS,
     });
-    expect(r.rejected[0].reasons).toEqual(['barred-word']);
+    expect(r.rejected[0].reasons).toEqual(['barred-word', 'term-op-too-wide']);
+  });
+});
+
+describe('a term operation is no wider than its target (term-op-too-wide)', () => {
+  // REAL rulings from REAL_SET: `atom` → atóm (one word) and `electron-pair-geometry` →
+  // rúmfræði rafeindapara (two words). The agreement rules hold only for ops LABELLED
+  // agreement, so a change folded into a term op escaped them all: the first two cases below
+  // were accepted before this rule existed.
+  const atom = (find, replace, args = {}) =>
+    gateReal({ ops: [term('w', 'atom', find, replace)], en: C2H2_EN, is: C2H2_IS, ...args });
+  const geom = (find, replace) =>
+    gateReal({
+      ops: [term('w', 'electron-pair-geometry', find, replace)],
+      en: GEOM_EN,
+      is: GEOM_IS,
+    });
+
+  it('refuses an agreement folded into a term op (real ch07 alt)', () => {
+    // As an agreement op, eintengd → eintengt is refused (agreement-word-changed).
+    const r = atom(
+      'Hvor kolefnisfrumeind er einnig eintengd',
+      'Hvort kolefnisatóm er einnig eintengt'
+    );
+    expect(r.rejected[0]?.reasons).toEqual(['term-op-too-wide']);
+  });
+  it('refuses a style swap folded in as well (einnig → líka)', () => {
+    const r = atom(
+      'Hvor kolefnisfrumeind er einnig eintengd',
+      'Hvort kolefnisatóm er líka eintengt'
+    );
+    expect(r.rejected[0]?.reasons).toEqual(['term-op-too-wide']);
+  });
+  it('refuses the smallest fold: one word more than a one-word target', () => {
+    const r = atom('Hvor kolefnisfrumeind', 'Hvort kolefnisatóm');
+    expect(r.rejected[0]?.reasons).toEqual(['term-op-too-wide']);
+  });
+  it('accepts the term alone on the same segment (control)', () => {
+    expect(ids(atom('vetnisfrumeind', 'vetnisatóm'))).toEqual(['w']);
+  });
+  it('accepts a single-word head swap (control, real ch02 caption)', () => {
+    const r = atom('Títanfrumeindirnar', 'Títanatómin', {
+      en: TIO2_EN,
+      is: TIO2_IS,
+      chapterDir: 'ch02',
+    });
+    expect(ids(r)).toEqual(['w']);
+  });
+  it('accepts a find extended by an unchanged word AFTER the term (control)', () => {
+    // `flúorfrumeind` alone occurs twice (also inside `flúorfrumeindir`), so the find must
+    // carry a neighbour; the common trailing run strips it.
+    const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
+    expect(ids(r)).toEqual(['w']);
+  });
+  it('accepts a find extended by unchanged words BEFORE the term (control)', () => {
+    expect(ids(geom('muninn á rafeindapara-lögun', 'muninn á rúmfræði rafeindapara'))).toEqual([
+      'w',
+    ]);
+  });
+  it('accepts a multi-word target replacing one word whole (control)', () => {
+    const r = geom('rafeindapara-lögun', 'rúmfræði rafeindapara');
+    expect(r.after).toBe('Útskýrðu muninn á rúmfræði rafeindapara og sameindabyggingu.');
+  });
+  it('refuses one word more than a multi-word target (HYPOTHETICAL op on a real segment)', () => {
+    const r = geom('rafeindapara-lögun', 'rúmfræði allra rafeindapara');
+    expect(r.rejected[0]?.reasons).toEqual(['term-op-too-wide']);
+  });
+  it('counts a word kept on both sides once: the two runs never overlap (HYPOTHETICAL op)', () => {
+    // find `X`, replace `X Y X`: the leading run takes X; a trailing run allowed to reuse
+    // that same X of find would strip the last X of replace too and leave only Y.
+    const r = atom('Títanfrumeindirnar', 'Títanfrumeindirnar Títanatómin Títanfrumeindirnar', {
+      en: TIO2_EN,
+      is: TIO2_IS,
+      chapterDir: 'ch02',
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['term-op-too-wide']);
+  });
+  it('leaves find unconstrained, so a compound collapse stays fixable (control)', () => {
+    // The same op as the size-bounds control `z2`: a three-word find, a one-word replace.
+    const r = gate({
+      ops: [term('z2', 'valence-bond-theory', 'Kenning um gildistengi', 'Gildistengjakenning')],
+      en: TITLE_EN,
+      is: TITLE_IS,
+    });
+    expect(ids(r)).toEqual(['z2']);
+  });
+});
+
+describe('a term operation beside a gendered quantifier (quantifier-agreement)', () => {
+  // A gendered numeral or quantifier is BARRED, so no agreement op may follow the noun's new
+  // gender; a term op beside one lands ungrammatical text. Before this rule all seven
+  // refusing cases below were accepted.
+  const atom = (find, replace, args = {}) =>
+    gateReal({ ops: [term('q', 'atom', find, replace)], en: C2H2_EN, is: C2H2_IS, ...args });
+
+  it('refuses when the token before last is one, the last a part word glued to find (real ch07)', () => {
+    // `og tvær O-frumeindir` → `tvær O-atóm`: a feminine numeral before a neuter noun.
+    const r = atom('frumeindir', 'atóm', { en: HNO3_EN, is: HNO3_IS });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('refuses when the token right before find is one (real ch07 alt)', () => {
+    expect(atom('kolefnisfrumeindir', 'kolefnisatóm').rejected[0]?.reasons).toEqual([
+      'quantifier-agreement',
+    ]);
+  });
+  it('refuses a feminine dative right before find (real ch07 alt: einni)', () => {
+    const r = atom('köfnunarefnisfrumeind', 'köfnunarefnisatóm', {
+      en: PYRIDINE_EN,
+      is: PYRIDINE_IS,
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('refuses one in the common LEADING run of find and replace (real ch07 alt)', () => {
+    expect(atom('tvær kolefnisfrumeindir', 'tvær kolefnisatóm').rejected[0]?.reasons).toEqual([
+      'quantifier-agreement',
+    ]);
+  });
+  it('refuses one in the common TRAILING run: a numeral after its noun (real ch15 alt)', () => {
+    // `I-frumeindirnar tvær` → `I-atómin tvær`; the two tokens before find are `eintengjum.`
+    // and the glued `I-`, so only the trailing run can see it.
+    const r = atom('frumeindirnar tvær', 'atómin tvær', {
+      en: I3_EN,
+      is: I3_IS,
+      chapterDir: 'ch15',
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('lowercases before looking a token up: a sentence-initial Ein (real ch07 para)', () => {
+    const r = atom('súrefnisfrumeind verður', 'súrefnisatóm verður', { en: CO3_EN, is: CO3_IS });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('lowercases a run word as well: a sentence-initial Önnur (real ch07 alt)', () => {
+    const r = atom('Önnur kolefnisfrumeindin', 'Önnur kolefnisatómið', {
+      en: C3H5_EN,
+      is: C3H5_IS,
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('strips edge punctuation from a token: (eina frumeind á þykkt) (real ch10 para)', () => {
+    const r = atom('frumeind á þykkt', 'atóm á þykkt', {
+      en: GRAPHENE_EN,
+      is: GRAPHENE_IS,
+      chapterDir: 'ch10',
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('accepts the same kind of op with no quantifier nearby (control)', () => {
+    expect(ids(atom('vetnisfrumeind', 'vetnisatóm'))).toEqual(['q']);
+  });
+  it('does not look three tokens back (control)', () => {
+    // The positive control is built in: the quantifier IS there, third from find.
+    const before = BF4_IS.slice(0, BF4_IS.indexOf('flúorfrumeind hefur'));
+    const lastThree = before.split(/\s+/u).filter(Boolean).slice(-3);
+    const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
+    expect({ lastThree, accepted: ids(r) }).toEqual({
+      lastThree: ['fjórar', 'flúorfrumeindir.', 'Hver'],
+      accepted: ['q'],
+    });
+  });
+  it.each([
+    ['fimm', PYRIDINE_EN, PYRIDINE_IS],
+    ['sex', BENZENE_EN, BENZENE_IS],
+  ])('does not refuse beside the indeclinable cardinal %s (control)', (word, en, is) => {
+    const r = atom('kolefnisfrumeindum', 'kolefnisatómum', { en, is });
+    expect({ beside: is.includes(`${word} kolefnisfrumeindum`), accepted: ids(r) }).toEqual({
+      beside: true,
+      accepted: ['q'],
+    });
+  });
+  it('documents the over-refusal: it fires where the gender does not change, too', () => {
+    // straumur and rafstraumur are both masculine, so `enginn rafstraumur` agrees; the rule
+    // cannot know the target's gender and refuses anyway. HYPOTHETICAL ruling, real segment.
+    const r = gate({
+      ops: [term('ov', 'current', 'enginn straumur', 'enginn rafstraumur')],
+      en: CURRENT_EN,
+      is: CURRENT_IS,
+      chapterDir: 'ch17',
+    });
+    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
   });
 });
 
@@ -1570,11 +1829,12 @@ describe('size bounds', () => {
       en: BOND_EN,
       is: BOND_IS,
     });
+    // Five replace words against a one-word target: term-op-too-wide fires beside it.
     expect({
       chars: [...replace].length > DEFAULT_LIMITS.maxReplaceChars,
       words: replace.split(' ').length <= DEFAULT_LIMITS.maxReplaceWords,
       reasons: r.rejected[0]?.reasons,
-    }).toEqual({ chars: true, words: true, reasons: ['op-too-large'] });
+    }).toEqual({ chars: true, words: true, reasons: ['op-too-large', 'term-op-too-wide'] });
   });
   it('refuses a find over maxFindWords, within maxFindChars (op-too-large)', () => {
     const find = 'er kynnt til sögunnar til að útskýra rúmfræði bindandi svigrúma';
@@ -1596,11 +1856,12 @@ describe('size bounds', () => {
       en: BOND_EN,
       is: BOND_IS,
     });
+    // Ten replace words against a one-word target: term-op-too-wide fires beside it.
     expect({
       chars: [...replace].length <= DEFAULT_LIMITS.maxReplaceChars,
       words: replace.split(' ').length > DEFAULT_LIMITS.maxReplaceWords,
       reasons: r.rejected[0]?.reasons,
-    }).toEqual({ chars: true, words: true, reasons: ['op-too-large'] });
+    }).toEqual({ chars: true, words: true, reasons: ['op-too-large', 'term-op-too-wide'] });
   });
   it('refuses an operation past the per-segment op count (segment-op-limit)', () => {
     const r = gate({

@@ -31,6 +31,25 @@
  *   - term and term-sense: `replace` carries the target as the HEAD of a word (carriesTarget: `anóða` does
  *     not carry `nóða`), `find` does not already contain its stem (containsTargetStem), and
  *     the BARRED words are unchanged;
+ *   - term and term-sense, no wider than the target (term-op-too-wide): split find and
+ *     replace on whitespace, strip their longest common leading run of identical words and
+ *     then their longest common trailing run (the two never overlap); what remains of
+ *     replace may hold at most as many words as the ruling's target. The agreement rules
+ *     bind only ops LABELLED agreement, so an agreement or a style swap folded into a term
+ *     op (`Hvor kolefnisfrumeind er einnig eintengd` → `Hvort kolefnisatóm er einnig
+ *     eintengt`) would land unchecked. What remains of find is NOT constrained beyond the
+ *     size bounds, so a compound collapse (`Kenning um gildistengi` → `Gildistengjakenning`)
+ *     stays fixable;
+ *   - term and term-sense, no gendered quantifier beside the term (quantifier-agreement):
+ *     neither of the last two whitespace tokens of the current text before find (a part word
+ *     glued to find, `O-` in `tvær O-frumeindir`, is one), nor any word of the two common
+ *     runs, may be a GENDERED_QUANTIFIER (lexicon.js) once its edge punctuation is stripped
+ *     and it is lowercased. Such a word is BARRED, so no agreement op can make it follow the
+ *     noun's new gender, and `tvær O-frumeindir` → `tvær O-atóm` would land. ⚠️ OVER-REFUSES
+ *     by design: the gate knows no genders, so it also fires where the target's gender equals
+ *     the replaced word's (`enginn straumur` → `enginn rafstraumur`, both masculine). ⚠️ Does
+ *     NOT see a quantifier inside a marker token (`[[link:tvær`: the core keeps `link:`) nor a
+ *     word outside the list (lexicon.js says which are left out);
  *   - agreement: an accepted term or term-sense op of the SAME ruling within
  *     agreementWindowWords words,
  *     the same word count, every changed word closed-class on both sides or an ending
@@ -42,7 +61,13 @@
  */
 
 import { tokenize, editableSpans, markerMultiset, visibleProse, isWordAligned } from './tokens.js';
-import { CLOSED_CLASS, BARRED, ELEMENT_SYMBOLS, NEGATING_PREFIXES } from './lexicon.js';
+import {
+  CLOSED_CLASS,
+  BARRED,
+  ELEMENT_SYMBOLS,
+  NEGATING_PREFIXES,
+  isGenderedQuantifier,
+} from './lexicon.js';
 import { isChapterDir, scopeReasons } from './scope.js';
 import { usesHeadword, stemOf, containsStem, foldUmlaut } from '../lib/chapter-term-check.js';
 import { greekLetters } from '../lib/mt-output-guards.js';
@@ -108,6 +133,7 @@ export const REJECTION_CODES = Object.freeze([
   'op-invalid', // malformed operation
   'op-too-large', // over a per-op size bound
   'overlaps-accepted-op', // find overlaps a range an accepted op wrote
+  'quantifier-agreement', // term: a gendered quantifier just before find or kept in the op
   'ruling-held', // the ruling's kinds include 'held'
   'ruling-invalid', // the ruling lacks a target, English forms or kinds
   'ruling-unknown', // no ruling with that id
@@ -122,6 +148,7 @@ export const REJECTION_CODES = Object.freeze([
   'sense-not-applicable', // a term-sense op on a ruling that has no sense
   'sense-undeclared', // a term op on a ruling restricted to one sense (use term-sense)
   'sense-unruled', // the ruling's sense is only proposed
+  'term-op-too-wide', // term: replace changes more words than the ruling's target has
   'term-target-already', // find already contains the target
   'term-target-missing', // replace does not contain the target
 ]);
@@ -331,6 +358,32 @@ function edges(word) {
   return { pre: m[1], core: m[2], post: m[3] };
 }
 
+const wsWords = (s) => s.split(/\s+/u).filter(Boolean);
+
+/**
+ * Compare `find` and `replace` as whitespace words: strip the longest common leading run of
+ * identical words, then the longest common trailing run of what is left, so the two runs
+ * never share a word of either side.
+ * @returns {{ shared: string[], replaceMiddle: string[] }} `shared` is the words of both
+ *   runs (identical on the two sides); `replaceMiddle` is what remains of `replace`.
+ */
+function commonRuns(find, replace) {
+  const fw = wsWords(find);
+  const rw = wsWords(replace);
+  let lead = 0;
+  while (lead < fw.length && lead < rw.length && fw[lead] === rw[lead]) lead++;
+  const room = Math.min(fw.length, rw.length) - lead;
+  let trail = 0;
+  while (trail < room && fw[fw.length - 1 - trail] === rw[rw.length - 1 - trail]) trail++;
+  return {
+    shared: [...fw.slice(0, lead), ...fw.slice(fw.length - trail)],
+    replaceMiddle: rw.slice(lead, rw.length - trail),
+  };
+}
+
+/** Is a whitespace token, edge punctuation stripped (`(eina` → `eina`), a gendered quantifier? */
+const isQuantifierToken = (token) => isGenderedQuantifier(edges(token).core);
+
 function isEndingChange(a, b, minStem) {
   const fa = [...foldAo(a)];
   const fb = [...foldAo(b)];
@@ -516,6 +569,19 @@ function checkOp(op, st) {
       if (containsTargetStem(op.find, ruling.is)) reasons.push('term-target-already');
     }
     if (!sameList(barredWords(op.find), barredWords(op.replace))) reasons.push('barred-word');
+    // Only ops LABELLED agreement meet the agreement rules, so whatever a term op changes
+    // beyond its target escaped them. The find side is left free: a compound collapse
+    // (`Kenning um gildistengi` → `Gildistengjakenning`) must stay fixable.
+    const runs = commonRuns(op.find, op.replace);
+    if (wellFormed && runs.replaceMiddle.length > wordCount(ruling.is)) {
+      reasons.push('term-op-too-wide');
+    }
+    // A gendered quantifier is BARRED, so no agreement op can follow the noun's new gender.
+    // The two tokens before find include a part word glued to it (`tvær O-` + `frumeindir`).
+    const beforeFind = range ? wsWords(text.slice(0, range.start)).slice(-2) : [];
+    if ([...beforeFind, ...runs.shared].some(isQuantifierToken)) {
+      reasons.push('quantifier-agreement');
+    }
   } else {
     if (barredWords(op.find).length > 0 || barredWords(op.replace).length > 0) {
       reasons.push('barred-word');
