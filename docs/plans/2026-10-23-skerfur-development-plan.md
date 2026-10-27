@@ -167,6 +167,12 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
 | G1.21 | **The measured task, stable.** Update the row in place instead of reloading the module; save-and-next (Ctrl+Enter opens the next unhandled row) | Every save and accept reloads the module (4 requests; 6 for a head editor), and the median unit has 122 segments. A later change would be a confound | S–M |
 | G1.22 | **Rewrite the editor guide** | It predates MT acceptance and Ctrl+Shift+Enter, calls saving automatic (it is a local draft), promises a reply thread that does not exist, and points at a page that now redirects | S |
 
+✏️ *2026-10-27, G1.9 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)): the D7 pre-registration is committed and timestamped (pushed, or mirrored to
+OSF/Zenodo) before the full run. It fixes the frame, n, the stratifier, the control condition (layer 1 or 1s, rule
+layer on/off), the estimand, a rule for a run the cap cuts short, the blind-check procedure and a value-and-kill rule.
+The seed comes from a future public randomness beacon, because a committed seed hash alone does not protect inputs
+still being set (review E1).*
+
 **Conditional on SD4 (b), before approvals begin:**
 - a per-book refusal of self-approval (head editors may approve their own edits today, `segmentEditorService.js:404`);
 - approval rights without pipeline or publication rights;
@@ -360,6 +366,9 @@ at least semi-automatically. The proposed reading of the contract:
 
 **Not the 10-10 AI pass.** That pass (layer 2) is a one-off preparation step and a separate research condition. B3 is
 the Ritstjóri feature for decisions made **during** editing.
+✏️ *2026-10-27 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)): B3 claims no hours for the pass or for porting its gate or lexicon; AI-derived forms
+carry the origin `ai-pass` and are excluded from B3's "share written automatically"; B3's evaluation set is post-S
+rulings plus withheld or control rulings. Note the reverse dependency: U4 waits on layer 2 (D15) (review F6, H4).*
 
 **Build order** (the assistant plan's recorded dependencies), months 5–9:
 1. **U1:** capture the Icelandic form actually matched.
@@ -560,6 +569,11 @@ Reconcile the calendar with the annex once its signed version is on file.
 | **Month 10** (Aug) | editing ends | C generation per reviewed chapter | — |
 | **Months 11–12** (Sep–Oct) | none | B1 aggregate reports; B2b's run; releases assembled, deposited and posted; audio for every reviewed chapter; the last sync | the reports; posting |
 | **By 1 Dec 2027** | | | the final report |
+
+✏️ *2026-10-27 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)):*
+- *"Before S" row: the AI layer's one-chapter pilot (current grant).*
+- *"Month 1" row: the full run stays in month 1, after the D7 pre-registration; paid privately by [USER], outside
+  both grants' columns.*
 
 **The month-1 load is the plan's tightest point.** The editing gate and the 10-10 build share the same weeks and the
 same reviewer. If the gate slips past the Christmas break, the pilot moves to January, and the month comes out of the
