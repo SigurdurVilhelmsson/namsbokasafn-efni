@@ -47,6 +47,16 @@ function codeOf(fn) {
   return 'no-throw';
 }
 
+/** Run fn and return [code, message] of the refusal it throws (or ['no-throw', '']). */
+function refusalOf(fn) {
+  try {
+    fn();
+  } catch (err) {
+    return [err.code || 'untyped', err.message];
+  }
+  return ['no-throw', ''];
+}
+
 /** A copy of obj without one key. */
 const without = (obj, key) => Object.fromEntries(Object.entries(obj).filter(([k]) => k !== key));
 
@@ -530,10 +540,13 @@ describe('fixture tree', () => {
         path.join(book, LAYER_DIRS.selected, ch, 'm100-selected.json'),
         JSON.stringify({ schema: 'mt-selected/1', module: 'm100', entries, ...o })
       );
+    /** The layer-1 body of both `m100:para:p1` occurrences in M100. */
+    const P1_BODY = 'Frumeind er lítil.';
     const entry = (o = {}) => ({
       segmentId: 'm100:para:p1',
       occurrence: 0,
       text: 'Frumeindin er smá.',
+      beforeSha256: sha256(P1_BODY),
       run: 'run-0',
       commit: SHA_A,
       rule: 'best-of-3',
@@ -611,6 +624,80 @@ describe('fixture tree', () => {
       expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
         'bad-overlay'
       );
+    });
+
+    describe('an entry pins the layer-1 body it replaces (beforeSha256)', () => {
+      const base = () => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' });
+      const p1Bodies = () =>
+        base()
+          .parsed.records.filter((r) => r.segmentId === 'm100:para:p1')
+          .map((r) => r.body);
+      /** M100 with occurrence 1's body replaced (the file ends in that body plus one space). */
+      const m100WithP1Occurrence1 = (body) => M100.replace(/Frumeind er lítil\. $/, `${body} `);
+
+      it('applies an entry whose beforeSha256 is the sha256 of the body it replaces', () => {
+        overlay([entry({ occurrence: 1 })]);
+        expect(p1Bodies()).toEqual([P1_BODY, 'Frumeindin er smá.']);
+      });
+      it('refuses an entry written before a later HAND REPAIR of layer 1, naming the occurrence', () => {
+        overlay([entry({ occurrence: 1 })]);
+        const whenWritten = refusalOf(base);
+        put(out('m100-segments.is.md'), m100WithP1Occurrence1('Frumeind er agnarlítil.'));
+        expect([whenWritten, refusalOf(base)]).toEqual([
+          ['no-throw', ''], // control: the entry held against the layer 1 it was written for
+          [
+            'bad-overlay',
+            expect.stringContaining('m100:para:p1#1: beforeSha256 is not the sha256 of the'),
+          ],
+        ]);
+      });
+      it('refuses an entry without beforeSha256', () => {
+        overlay([without(entry(), 'beforeSha256')]);
+        expect(refusalOf(base)).toEqual([
+          'bad-overlay',
+          expect.stringMatching(/an entry must have exactly .*beforeSha256/),
+        ]);
+      });
+      it.each([
+        ['the right hash in uppercase', () => sha256(P1_BODY).toUpperCase()],
+        ['63 hex characters', () => sha256(P1_BODY).slice(1)],
+        ['65 hex characters', () => `${sha256(P1_BODY)}0`],
+        ['64 characters with a non-hex one', () => `g${sha256(P1_BODY).slice(1)}`],
+        ['null', () => null],
+        ['a number', () => 7],
+        ['the right hash inside an array', () => [sha256(P1_BODY)]],
+      ])('refuses a beforeSha256 that is %s', (_label, value) => {
+        overlay([entry({ beforeSha256: value() })]);
+        expect(refusalOf(base)).toEqual([
+          'bad-overlay',
+          expect.stringContaining(
+            'entry m100:para:p1 / 0: beforeSha256 must be 64 lowercase hex characters'
+          ),
+        ]);
+      });
+
+      describe('on a duplicated id, against the occurrence the entry names', () => {
+        const BODIES = [P1_BODY, 'Frumeind er örlítil.'];
+        const KEYS = ['m100:para:p1', 'm100:para:p1#1'];
+        beforeEach(() => {
+          put(out('m100-segments.is.md'), m100WithP1Occurrence1(BODIES[1]));
+        });
+
+        it.each([0, 1])('occurrence %i: the hash of its own body applies', (k) => {
+          overlay([entry({ occurrence: k, beforeSha256: sha256(BODIES[k]) })]);
+          expect(p1Bodies()).toEqual(BODIES.map((b, i) => (i === k ? 'Frumeindin er smá.' : b)));
+        });
+        it.each([0, 1])(
+          'occurrence %i: the hash of the other occurrence’s body refuses, naming it',
+          (k) => {
+            overlay([entry({ occurrence: k, beforeSha256: sha256(BODIES[1 - k]) })]);
+            expect(refusalOf(base)).toEqual([
+              'bad-overlay',
+              expect.stringContaining(`${KEYS[k]}: beforeSha256 is not the sha256 of the`),
+            ]);
+          }
+        );
+      });
     });
     it('refuses a layer-1 file whose markers name another module', () => {
       put(out('m200-segments.is.md'), M100);

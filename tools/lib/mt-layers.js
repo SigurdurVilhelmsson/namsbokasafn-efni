@@ -6,7 +6,8 @@
  * 2026-10-10):
  *   - layer 1  `02-mt-output`   pure MT as received (plus its committed hand repairs and
  *                               top-ups). READ ONLY: nothing in this module can write there.
- *   - layer 1s `02-mt-selected` a sparse overlay of whole segment bodies chosen from API runs.
+ *   - layer 1s `02-mt-selected` a sparse overlay of whole segment bodies chosen from API runs,
+ *                               each entry pinned to the layer-1 body it replaces.
  *   - layer 2  `02-mt-revised`  the AI-reviewed text, COMPLETE PER CHAPTER, because
  *                               `cnxml-inject` reads one literal path per module and
  *                               enumerates modules from `02-structure`.
@@ -22,6 +23,12 @@
  * ones: `<bookDir>/(02-mt-revised|02-mt-selected)/<chdir>/<stem>-<kind>`, then once more on
  * the real (symlink-resolved) path. A layer-2 directory never holds `*-provenance.json`
  * (inject's restore policy and several tools glob that name) or `*.log` (gitignored).
+ *
+ * 🔴 AN OVERLAY ENTRY NEVER UNDOES A LATER CHANGE TO LAYER 1. Each layer-1s entry carries
+ * `beforeSha256`, the sha256 of the layer-1 body it replaces at that exact occurrence, and
+ * `readBase` refuses (`bad-overlay`) an entry without it, with a malformed value, or whose value
+ * differs from the layer-1 body there now. So an overlay written before a later HAND REPAIR of
+ * layer 1 refuses instead of silently putting the repaired text back.
  *
  * Occurrence keys come from the shared helper in `seg-markers.cjs` (MIT). No import from
  * `server/` (that would be a new MIT → AGPL edge).
@@ -439,9 +446,27 @@ function decodeUtf8Exact(buf, file) {
 }
 
 const OVERLAY_KEYS = ['schema', 'module', 'entries'];
-const OVERLAY_ENTRY_KEYS = ['segmentId', 'occurrence', 'text', 'run', 'commit', 'rule', 'gate'];
+const OVERLAY_ENTRY_KEYS = [
+  'segmentId',
+  'occurrence',
+  'text',
+  'beforeSha256',
+  'run',
+  'commit',
+  'rule',
+  'gate',
+];
 
-/** Apply a validated layer-1s overlay (whole bodies); an entry equal to the base is a no-op. */
+/**
+ * Validate a layer-1s overlay and apply it (whole bodies); an entry equal to the base is a no-op.
+ *
+ * Format: `{ schema: 'mt-selected/1', module, entries: [{ segmentId, occurrence, text,
+ * beforeSha256, run, commit, rule, gate }] }`, exactly those keys. `beforeSha256` is the sha256
+ * (64 lowercase hex characters) of the layer-1 body the entry replaces, at that exact occurrence.
+ * An entry whose `beforeSha256` differs from the layer-1 body there now refuses (`bad-overlay`,
+ * naming the occurrence key): layer 1 changed after the entry was written (a later HAND REPAIR),
+ * and applying the entry would undo that change silently.
+ */
 function applyOverlay(parsed, overlay, stem, file) {
   const bad = (why) => refusal('bad-overlay', `${file}: ${why}`);
   if (!isPlainObject(overlay) || !hasExactKeys(overlay, OVERLAY_KEYS)) {
@@ -474,10 +499,23 @@ function applyOverlay(parsed, overlay, stem, file) {
         `entry ${e.segmentId} / ${e.occurrence}: run and rule must be non-empty strings and commit a full sha`
       );
     }
+    // A typeof check, not String(): String([hash]) would pass the pattern.
+    if (typeof e.beforeSha256 !== 'string' || !SHA256_RE.test(e.beforeSha256)) {
+      throw bad(
+        `entry ${e.segmentId} / ${e.occurrence}: beforeSha256 must be 64 lowercase hex characters`
+      );
+    }
     const key = occurrenceKey(e.segmentId, e.occurrence);
     if (!bodies.has(key)) throw bad(`layer 1 has no occurrence ${key}`);
     if (seen.has(key)) throw bad(`two entries name ${key}`);
     seen.add(key);
+    if (e.beforeSha256 !== sha256(bodies.get(key))) {
+      throw bad(
+        `${key}: beforeSha256 is not the sha256 of the layer-1 body there now. Layer 1 changed ` +
+          'after this entry was written (a later HAND REPAIR?), and applying it would undo that ' +
+          'change; refusing'
+      );
+    }
     const problems = validateBody(e.text);
     if (problems.length > 0) throw bad(`${key}: ${problems.join(', ')}`);
     return {
@@ -499,6 +537,9 @@ function applyOverlay(parsed, overlay, stem, file) {
  * exists. `parsed.text` is the post-overlay serialisation; `layer1Sha256` is always the raw
  * layer-1 file's. Refuses a file whose markers name another module (`chapter` for
  * `chapter-metadata`), a file with no segments, and a malformed or non-matching overlay.
+ * The overlay is `{ schema: 'mt-selected/1', module, entries: [{ segmentId, occurrence, text,
+ * beforeSha256, run, commit, rule, gate }] }`; an entry whose `beforeSha256` is not the sha256 of
+ * the layer-1 body at its occurrence refuses (`bad-overlay`), as `applyOverlay` describes.
  *
  * @param {{bookDir: string, chapterDir: string, stem: string}} args
  * @returns {{parsed: ParsedLayer, layer1Sha256: string, overlaySha256: string|null}}
