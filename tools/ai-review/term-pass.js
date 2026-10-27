@@ -23,6 +23,9 @@
  *           markdown outside the repository.
  *
  * Preflight (the register's owed items 1, 2 and 4):
+ *   - the repository is the MAIN checkout, never a linked git worktree: the ledger lives in
+ *     the checkout, so the USD 100 cap (config.js CAP_USD) is enforced per main checkout,
+ *     and a linked worktree would bring a ledger, and a cap, of its own;
  *   - the book is the constant BOOK (efnafraedi-2e); there is no flag to change it;
  *   - the prompt, the ruling set and every file of the code (CODE_PATHS) are tracked and
  *     clean, so the commit a record names describes what ran;
@@ -425,10 +428,38 @@ async function cmdPlan(ctx, values) {
   return { rows, totals };
 }
 
+/**
+ * Refuse a paid run from a LINKED git worktree. The ledger the cap is enforced against lives
+ * in the checkout (`<repoRoot>/books/<slug>/ai-review/ledger.jsonl`), so a linked worktree
+ * holds a ledger of its own and with it a USD 100 of its own (the runner review, 2026-10-27).
+ * The cap is therefore enforced per MAIN checkout: a repository whose git dir differs from
+ * its common git dir is a linked worktree, and `run` refuses there. `plan` and `apply` spend
+ * nothing and are not checked.
+ */
+function assertMainCheckout(git) {
+  const [common, own] = git([
+    'rev-parse',
+    '--path-format=absolute',
+    '--git-common-dir',
+    '--absolute-git-dir',
+  ])
+    .split('\n')
+    .map((s) => s.trim());
+  if (!common || !own || fs.realpathSync(common) !== fs.realpathSync(own)) {
+    throw refusal(
+      'linked-worktree',
+      `this checkout is a linked git worktree (git dir ${own}, common git dir ${common}); ` +
+        'it keeps a ledger of its own, so the spending cap would not hold. Run paid passes ' +
+        'from the main checkout.'
+    );
+  }
+}
+
 function preflight(
   ctx,
   { rulingSet, prompt, layer1Ref, chapters, plans, mode, maxTokens, timeoutMs }
 ) {
+  assertMainCheckout(ctx.git);
   const problems = [];
   if (mode === 'interactive' && maxTokens > SDK_NONSTREAMING_MAX_TOKENS && !timeoutMs) {
     problems.push(

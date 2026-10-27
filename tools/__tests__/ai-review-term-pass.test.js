@@ -224,6 +224,90 @@ describe('run preflight', () => {
   });
 });
 
+// The runner review (2026-10-27, spend-cap medium): the ledger lives in the checkout, so a
+// linked git worktree had its own ledger and so its own USD 100. `run` refuses there; plan
+// and apply spend nothing and stay allowed.
+describe('run refuses from a linked git worktree; plan and apply do not', () => {
+  function setupWorktree() {
+    const S = setup();
+    const wt = path.join(makeTempDir('tp-wt-'), 'wt');
+    S.fx.sh(['worktree', 'add', '--detach', '-q', wt, 'HEAD']);
+    const book = path.join(wt, 'books', 'efnafraedi-2e');
+    const wtDeps = (extra = {}) =>
+      S.deps({
+        repoRoot: wt,
+        bookDir: book,
+        recordsDir: path.join(book, 'ai-review'),
+        git: makeGit({ cwd: wt }),
+        ...extra,
+      });
+    const remove = () => {
+      try {
+        S.fx.sh(['worktree', 'remove', '--force', wt]);
+      } catch {
+        // the fixture may already be gone; removeTempDirs deletes the directory anyway
+      }
+    };
+    return { ...S, wt, wtBook: book, wtDeps, remove };
+  }
+
+  it('run --yes from a linked worktree refuses before sending or reserving anything', async () => {
+    const W = setupWorktree();
+    try {
+      const t = mockTransport();
+      await expect(
+        main(
+          ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+          W.wtDeps({ transport: t })
+        )
+      ).rejects.toThrow(/linked-worktree/);
+      expect(t.calls.send + t.calls.countTokens + t.calls.submitBatch).toBe(0);
+      expect(fs.existsSync(path.join(W.wtBook, 'ai-review'))).toBe(false);
+    } finally {
+      W.remove();
+    }
+  });
+
+  it('control: the same run from the main checkout sends and settles in its ledger', async () => {
+    const W = setupWorktree();
+    try {
+      const t = mockTransport();
+      const r = await main(
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        W.deps({ transport: t })
+      );
+      expect(r.results[0].status).toBe('complete');
+      expect(t.calls.send).toBeGreaterThan(0);
+      expect(readLedger(path.join(W.fx.records, 'ledger.jsonl')).length).toBeGreaterThan(0);
+    } finally {
+      W.remove();
+    }
+  });
+
+  it('plan and apply (dry and --write) still work from a linked worktree', async () => {
+    const W = setupWorktree();
+    try {
+      const out = path.join(scratch(), 'plan-wt.json');
+      const p = await main(['plan', '--chapter', 'ch02', '--out', out], W.wtDeps());
+      expect(p.rows[0].estimate.requests).toBeGreaterThan(0);
+      // a run made in the main checkout, its records carried over as a commit would carry them
+      const r = await main(
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        W.deps({ transport: mockTransport() })
+      );
+      const runId = r.results[0].runId;
+      fs.cpSync(W.fx.records, path.join(W.wtBook, 'ai-review'), { recursive: true });
+      const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], W.wtDeps());
+      expect(dry.result.counts.accepted).toBe(4);
+      const w = await main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], W.wtDeps());
+      expect(w.result.coverage.complete).toBe(true);
+      expect(fs.existsSync(path.join(W.wtBook, '02-mt-revised', 'ch02'))).toBe(true);
+    } finally {
+      W.remove();
+    }
+  });
+});
+
 describe('run → apply, interactive', () => {
   let S;
   let runId;
