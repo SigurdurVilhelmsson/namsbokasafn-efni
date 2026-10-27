@@ -43,15 +43,19 @@
  *     size bounds, so a compound collapse (`Kenning um gildistengi` → `Gildistengjakenning`)
  *     stays fixable;
  *   - term and term-sense, no gendered quantifier beside the term (quantifier-agreement):
- *     neither of the last two whitespace tokens of the current text before find (a part word
- *     glued to find, `O-` in `tvær O-frumeindir`, is one), nor any word of the two common
- *     runs, may be a GENDERED_QUANTIFIER (lexicon.js) once its edge punctuation is stripped
- *     and it is lowercased. Such a word is BARRED, so no agreement op can make it follow the
- *     noun's new gender, and `tvær O-frumeindir` → `tvær O-atóm` would land. ⚠️ OVER-REFUSES
- *     by design: the gate knows no genders, so it also fires where the target's gender equals
- *     the replaced word's (`enginn straumur` → `enginn rafstraumur`, both masculine). ⚠️ Does
- *     NOT see a quantifier inside a marker token (`[[link:tvær`: the core keeps `link:`) nor a
- *     word outside the list (lexicon.js says which are left out);
+ *     neither of the two whitespace words of the current text before the whitespace token that
+ *     holds find, nor a part word glued to find inside that token (`H-` in `þrjár jónanlegar
+ *     H-frumeindir`: checked itself, but it takes neither of the two places), nor any word of
+ *     the two common runs, may be a GENDERED_QUANTIFIER (lexicon.js) once its edge punctuation
+ *     is stripped and it is lowercased. Such a word is BARRED, so no agreement op can make it
+ *     follow the noun's new gender, and `tvær O-frumeindir` → `tvær O-atóm` would land.
+ *     ⚠️ OVER-REFUSES by design: the gate knows no genders, so it also fires where the
+ *     target's gender equals the replaced word's (`enginn straumur` → `enginn rafstraumur`,
+ *     both masculine). ⚠️ Does NOT see a quantifier inside a marker token (`[[link:tvær`: the
+ *     core keeps `link:`), a word outside the list (lexicon.js says which are left out), nor
+ *     one three words back: `einni eða fleiri O-frumeindum` and the partitive `Ein af
+ *     tvítengdu súrefnisfrumeindunum` pass (KNOWN UNDER-REFUSALS, pinned in the tests; a wider
+ *     window is a ruling for the project lead);
  *   - agreement: an accepted term or term-sense op of the SAME ruling within
  *     agreementWindowWords words,
  *     the same word count, every changed word closed-class on both sides or an ending
@@ -393,6 +397,24 @@ function commonRuns(find, replace) {
 /** Is a whitespace token, edge punctuation stripped (`(eina` → `eina`), a gendered quantifier? */
 const isQuantifierToken = (token) => isGenderedQuantifier(edges(token).core);
 
+/**
+ * What quantifier-agreement reads before a find starting at `start`: the two whitespace words
+ * before the whitespace token that holds it, and the part of that token glued before find
+ * (`H-` in `H-frumeindir`), when there is one. The glued part is checked itself but takes
+ * neither of the two places: counting it left `þrjár jónanlegar H-frumeindir` with the window
+ * [jónanlegar, H-], and `þrjár jónanleg H-atóm` landed.
+ * @param {string} text the current text
+ * @param {number} start where find starts in it
+ * @returns {string[]}
+ */
+function tokensBeforeFind(text, start) {
+  let tokenStart = start;
+  while (tokenStart > 0 && !/\s/u.test(text[tokenStart - 1])) tokenStart--;
+  const words = wsWords(text.slice(0, tokenStart)).slice(-2);
+  const glued = text.slice(tokenStart, start);
+  return glued === '' ? words : [...words, glued];
+}
+
 function isEndingChange(a, b, minStem) {
   const fa = [...foldAo(a)];
   const fb = [...foldAo(b)];
@@ -587,8 +609,7 @@ function checkOp(op, st) {
       reasons.push('term-op-too-wide');
     }
     // A gendered quantifier is BARRED, so no agreement op can follow the noun's new gender.
-    // The two tokens before find include a part word glued to it (`tvær O-` + `frumeindir`).
-    const beforeFind = range ? wsWords(text.slice(0, range.start)).slice(-2) : [];
+    const beforeFind = range ? tokensBeforeFind(text, range.start) : [];
     if ([...beforeFind, ...runs.shared].some(isQuantifierToken)) {
       reasons.push('quantifier-agreement');
     }

@@ -414,6 +414,25 @@ const GRAPHENE_EN =
 const GRAPHENE_IS =
   'Þú þekkir kannski síður nýlega uppgötvað form kolefnis: grafen. Grafen var fyrst einangrað árið 2004 með því að nota límband til að fletta þynnri og þynnri lögum af grafíti. Það er í raun eitt lag (eina frumeind á þykkt) af grafíti. Grafen, sem sýnt er í [[xref:CNX_Chem_10_05_Graphene]], er ekki aðeins sterkt og létt, heldur er það einnig frábær leiðari rafmagns og hita. Þessir eiginleikar gætu reynst mjög gagnlegir í margs konar notkun, svo sem í stórbættum tölvukubbum og rafrásum, betri rafhlöðum og sólarsellum og sterkari og léttari byggingarefnum. Nóbelsverðlaunin í eðlisfræði árið 2010 voru veitt Andre [[term:Geim|term-00007]] og Konstantin [[term:Novoselov|term-00008]] fyrir brautryðjendastarf þeirra með grafen.';
 
+// Added for the glued part word (REAL, byte for byte; gated against REAL_SET).
+// m68807:para:fs-idm49318672 (ch14) — `þrjár jónanlegar H-frumeindir.`: the quantifier is the
+// second WORD before the noun, and the glued `H-` is no word
+const TRIPROTIC_EN =
+  'A [[term:triprotic acid|term-00004]] is an acid that has three ionizable H atoms. Phosphoric acid is one example:';
+const TRIPROTIC_IS =
+  '[[term:Þrígild sýra|term-00004]] er sýra sem hefur þrjár jónanlegar H-frumeindir. Fosfórsýra er eitt dæmi:';
+// m68805:glossary-def:fs-idm94074528-def (ch14) — `einni eða fleiri O-frumeindum`: the
+// quantifier is the third word back
+const OXYACID_EN =
+  'ternary compound with acidic properties, molecules of which contain a central nonmetallic atom bonded to one or more O atoms, at least one of which is bonded to an ionizable H atom';
+const OXYACID_IS =
+  'þrígilt efnasamband með sýrueiginleika, en sameindir þess innihalda miðlægt málmleysingjafrumeind sem er tengd einni eða fleiri O-frumeindum, þar sem að minnsta kosti ein þeirra er tengd jónanlegri H-frumeind';
+// m68740:alt:fs-idm57805984-alt (ch07) — partitive `Ein af tvítengdu súrefnisfrumeindunum`
+const HCO3_EN =
+  'Two Lewis structures are shown, with a double-headed arrow in between, each surrounded by brackets and a superscripted negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to one of these oxygen atoms, which has three lone pairs of electrons, and double bonded to the other two, which have two lone pairs of electrons. One of the double bonded oxygen atoms also has a single bond to a hydrogen atom. The right structure is the same as the first, but there is only one double bonded oxygen. The oxygen with the single bonded hydrogen now has a single bond to the carbon atom. The lone pairs of electrons have also changed to correspond with the bonds.';
+const HCO3_IS =
+  'Tvær Lewis-myndir eru sýndar, með tvíhöfða ör á milli, hver umkringd hornklofum og með hávísinn mínus. Vinstri myndin sýnir kolefnisfrumeind tengda þremur súrefnisfrumeindum. Hún er eintengd við eina þessara súrefnisfrumeinda, sem hefur þrjú einmana rafeindapör, og tvítengd við hinar tvær, sem hafa tvö einmana rafeindapör. Ein af tvítengdu súrefnisfrumeindunum hefur einnig eintengi við vetnisfrumeind. Hægri myndin er eins og sú fyrsta, en þar er aðeins ein tvítengd súrefnisfrumeind. Súrefnisfrumeindin með eintengdu vetnisfrumeindinni hefur nú eintengi við kolefnisfrumeindina. Einmana rafeindapörin hafa einnig breyst til að samsvara tengjunum.';
+
 // Added for the gate's hyphen fold (REAL, byte for byte; gated against REAL_SET). The work list
 // offers each of these rulings only because it reads a hyphen joining two letters as a space.
 // m68742:problem:fs-idp40736832 (ch07) — the hyphen is in the RULING FORM (`electron-pair
@@ -953,7 +972,9 @@ describe('find lies wholly inside one editable span', () => {
       en: SP3_EN,
       is: SP3_IS,
     });
-    expect(r.rejected[0].reasons).toEqual(['find-not-editable']);
+    // Also quantifier-agreement: `fjögur jafngild [[i:sp]]`, and the marker opener glued to
+    // find takes no place among the two words before it.
+    expect(r.rejected[0].reasons).toEqual(['find-not-editable', 'quantifier-agreement']);
   });
   it('accepts a find inside a link label (control)', () => {
     const r = gate({ ops: [T_SIM], en: LINK_EN, is: LINK_IS, chapterDir: 'ch01' });
@@ -1686,10 +1707,85 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
   const atom = (find, replace, args = {}) =>
     gateReal({ ops: [term('q', 'atom', find, replace)], en: C2H2_EN, is: C2H2_IS, ...args });
 
-  it('refuses when the token before last is one, the last a part word glued to find (real ch07)', () => {
+  it('refuses when the word right before a part word glued to find is one (real ch07)', () => {
     // `og tvær O-frumeindir` → `tvær O-atóm`: a feminine numeral before a neuter noun.
     const r = atom('frumeindir', 'atóm', { en: HNO3_EN, is: HNO3_IS });
     expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  it('gives a glued part word no slot: the quantifier two WORDS before `H-` (real ch14 para)', () => {
+    // `þrjár jónanlegar H-frumeindir.`: counting the glued `H-` as a slot left [jónanlegar, H-],
+    // and the op set step 3 teaches (term plus the adjective's agreement) landed `þrjár
+    // jónanleg H-atóm` (needs þrjú). The two words are counted back from the start of the
+    // whitespace token that holds find, so they are [þrjár, jónanlegar].
+    const r = gateReal({
+      ops: [term('t', 'atom', 'frumeindir.', 'atóm.'), agr('g', 'atom', 'jónanlegar', 'jónanleg')],
+      en: TRIPROTIC_EN,
+      is: TRIPROTIC_IS,
+      chapterDir: 'ch14',
+    });
+    expect({ accepted: ids(r), t: reasonsOf(r, 't'), g: reasonsOf(r, 'g') }).toEqual({
+      accepted: [],
+      t: ['quantifier-agreement'],
+      g: ['agreement-without-term'],
+    });
+  });
+  it('accepts the same op once the quantifier is three words back (control: SYNTHETIC edit of the real ch14 para)', () => {
+    // One word inserted: [mjög, jónanlegar] are the two words, and the glued `H-` is checked
+    // itself but is no quantifier.
+    const is = TRIPROTIC_IS.replace('þrjár jónanlegar', 'þrjár mjög jónanlegar');
+    const r = gateReal({
+      ops: [term('t', 'atom', 'frumeindir.', 'atóm.')],
+      en: TRIPROTIC_EN,
+      is,
+      chapterDir: 'ch14',
+    });
+    expect(ids(r)).toEqual(['t']);
+  });
+  it('still checks the glued part word itself (SYNTHETIC: a quantifier glued to find)', () => {
+    // No real segment glues a quantifier to the noun; the rule keeps checking the glued part as
+    // it did when it took a slot, so `tvær-frumeindir` is refused rather than missed.
+    const is = TRIPROTIC_IS.replace('þrjár jónanlegar H-frumeindir', 'jónanlegar tvær-frumeindir');
+    const r = gateReal({
+      ops: [term('t', 'atom', 'frumeindir.', 'atóm.')],
+      en: TRIPROTIC_EN,
+      is,
+      chapterDir: 'ch14',
+    });
+    expect({ edited: is !== TRIPROTIC_IS, r: r.rejected[0]?.reasons }).toEqual({
+      edited: true,
+      r: ['quantifier-agreement'],
+    });
+  });
+  describe('KNOWN UNDER-REFUSALS, pinned as accepted (the width beyond two words is a ruling for the project lead)', () => {
+    // Each is a real wrong edit the gate lets through today. A later widening of the window
+    // must flip these deliberately, and say so; until then they document what the rule cannot see.
+    it('`einni eða fleiri O-frumeindum`: the quantifier is the third word back (real ch14 glossary-def)', () => {
+      // → `einni eða fleiri O-atómum` (needs einu). Not refused: the window is [eða, fleiri].
+      const r = gateReal({
+        ops: [term('u', 'atom', 'frumeindum', 'atómum')],
+        en: OXYACID_EN,
+        is: OXYACID_IS,
+        chapterDir: 'ch14',
+      });
+      expect({ unique: OXYACID_IS.split('frumeindum').length - 1, accepted: ids(r) }).toEqual({
+        unique: 1,
+        accepted: ['u'],
+      });
+    });
+    it('partitive `Ein af tvítengdu súrefnisfrumeindunum` (real ch07 alt)', () => {
+      // → `Ein af tvítengdu súrefnisatómunum` (needs Eitt). Not refused: the window is [af,
+      // tvítengdu]. The segment's other occurrences (`eina þessara súrefnisfrumeinda`, refused)
+      // rescue it only if the model touches them too.
+      const r = gateReal({
+        ops: [term('u', 'atom', 'súrefnisfrumeindunum', 'súrefnisatómunum')],
+        en: HCO3_EN,
+        is: HCO3_IS,
+      });
+      expect({
+        unique: HCO3_IS.split('súrefnisfrumeindunum').length - 1,
+        accepted: ids(r),
+      }).toEqual({ unique: 1, accepted: ['u'] });
+    });
   });
   it('refuses when the token right before find is one (real ch07 alt)', () => {
     expect(atom('kolefnisfrumeindir', 'kolefnisatóm').rejected[0]?.reasons).toEqual([
@@ -1747,13 +1843,15 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
   it('accepts the same kind of op with no quantifier nearby (control)', () => {
     expect(ids(atom('vetnisfrumeind', 'vetnisatóm'))).toEqual(['q']);
   });
-  it('does not look three tokens back (control)', () => {
-    // The positive control is built in: the quantifier IS there, third from find.
+  it('does not look three words back (control)', () => {
+    // The positive control is built in: the quantifier IS there, third from find. Find starts
+    // its whitespace token (nothing is glued to it), so three tokens back is three WORDS back.
     const before = BF4_IS.slice(0, BF4_IS.indexOf('flúorfrumeind hefur'));
     const lastThree = before.split(/\s+/u).filter(Boolean).slice(-3);
     const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
-    expect({ lastThree, accepted: ids(r) }).toEqual({
+    expect({ lastThree, gluedBefore: /\S$/u.test(before), accepted: ids(r) }).toEqual({
       lastThree: ['fjórar', 'flúorfrumeindir.', 'Hver'],
+      gluedBefore: false,
       accepted: ['q'],
     });
   });
