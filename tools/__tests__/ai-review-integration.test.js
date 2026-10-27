@@ -105,6 +105,7 @@ describe('the sense rulings, as the gate reads them', () => {
     const admitted = declared
       .filter(([r, sense]) => !probe(r, { sense }).includes('sense-mismatch'))
       .map(([r, sense]) => `${r.id}:${sense}`);
+    // 15 pins the committed artifact: 5 x 'unclear' plus 10 other senses. A new sense moves it.
     expect([declared.length, admitted]).toEqual([15, []]);
   });
 
