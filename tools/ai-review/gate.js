@@ -208,7 +208,7 @@ function shortWordFound(folded, word) {
  * `anóða` contains `nóða`. Used only where a looser match REFUSES more: "find already holds
  * the target" (term-target-already).
  */
-function containsTargetStem(text, target) {
+export function containsTargetStem(text, target) {
   const folded = foldUmlaut(text.toLowerCase());
   const targetWords = target.toLowerCase().split(/\s+/u).filter(Boolean);
   return (
@@ -292,7 +292,7 @@ function isHeadOf(word, targetWord) {
  *       vacancy, `sveimh`+`raði` (really `hraði`, rate) under `röð`.
  * Telling these from real inflections and heads needs a lexicon of Icelandic words.
  */
-function carriesTarget(text, target) {
+export function carriesTarget(text, target) {
   const targetWords = targetWordsOf(target);
   if (targetWords === null || targetWords.length === 0) return false;
   const words = foldedWords(text);
