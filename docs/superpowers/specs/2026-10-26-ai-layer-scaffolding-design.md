@@ -5,6 +5,29 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-10-26 (later that night), before the branch was pushed: homographs are restricted by SENSE,
+> not by chapter.** The trigger was [USER]'s point that the AI layer exists to use the surrounding text. The
+> sections below stand as first frozen; this amendment overrides them where they disagree.
+> - **Withdrawn:** Unit B's two proposed widths, `group` → ch02 and `cell` → ch17 (they were MT-wire notes, not
+>   rulings), and the question to [USER] about them. The chapter-scope mechanism stays (the three shapes, the
+>   statuses, `scope.js` and its tests); no ruling uses it today.
+> - **Unit B gains `sense`.** Every ruling carries `null`, or `{ id, gloss, otherSenses: [{id, gloss}], status:
+>   'proposed'|'ruled' }`, compiled from a `senses` list in the same exceptions file. Each entry also records
+>   `source` (who ruled the restriction) and `glossBy` (who drafted the wording), which go to a `sense` note.
+>   `unclear` is reserved for the model's answer. Five rulings carry a sense: `addition` (the reaction; [USER]
+>   2026-10-26), and `bent`, `cell`, `group` and `hole`, each taken from its `houseStyleTerms.js` why. [USER]
+>   reviews the gloss wording together with the pilot's output.
+> - **Unit C gains a third category, `term-sense`**, whose ops carry a `sense`, plus four codes:
+>   `sense-undeclared`, `sense-mismatch`, `sense-not-applicable` and `sense-unruled`. The gate checks the
+>   declared sense, never the judgement; the blind check measures the judgement, scored per category (10-10
+>   plan 3.4).
+> - **For the runner (not built yet):** the request gives each sensed ruling's closed list. A declared `unclear`
+>   becomes a flag record for editors before the gate, so it never appears as a rejection. Where the MT used a
+>   ruled target in a sense the ruling does not cover (*álagning* for adding a substance), the model flags and
+>   never edits (D6).
+> - Code: commits `a185a7717` (Unit B) and `a24475781` (Unit C, plus `tools/__tests__/ai-review-integration.test.js`,
+>   which reads the committed ruling set through the gate).
+
 **Implements:** pre-S plan items 1, 2 and 4 (`docs/plans/2026-10-26-pre-s-week-plan.md`, on branch
 `docs/pre-s-plan-2026-10-26`); 10-10 plan §4, 1.2, 3.2, 3.3 and §6
 (`docs/plans/2026-10-10-chemistry-finish-preparation-plan.md`); [USER]'s answers of 2026-10-26
@@ -110,6 +133,8 @@ incomplete chapter refuses; `verifyRevision` reports each mismatch; the written 
 `parseLayerFile`.
 
 ## Unit B — the scoped ruling set (`tools/ai-review/compile-ruling-set.js`, `tools/ai-review/ruling-set.js`)
+
+✏️ *The two proposed widths below were withdrawn for senses; see the amendment at the top.*
 
 **Input.** `experiments/terminology-consistency/results/2026-10-26/scope-exceptions-2026-10-26.json`:
 `{ about, recordedAt, exceptions: [{ enNorm, scope, status: 'proposed'|'ruled', source, note }] }`.
