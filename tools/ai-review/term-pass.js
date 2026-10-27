@@ -338,12 +338,12 @@ function runParams(values) {
 
 function printPlan(ctx, rows, totals) {
   ctx.out(
-    'chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/no-en/no-is)\n'
+    'chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/empty/no-en/no-is)\n'
   );
   for (const r of rows) {
     const s = r.counts.skipped;
     ctx.out(
-      `${r.chapterDir.padEnd(12)} ${String(r.counts.units).padStart(5)} ${String(r.counts.items).padStart(5)} ${String(r.counts.candidateOccurrences).padStart(5)} ${String(r.counts.pairs).padStart(5)} ${String(r.estimate.requests).padStart(8)} ${String(r.estimate.inputTokensEstimate).padStart(10)} ${String(r.estimate.worstCaseUsd.interactive).padStart(10)} ${String(r.estimate.worstCaseUsd.batch).padStart(12)}  ${s['identical-to-en']}/${s['no-en']}/${s['no-is']}\n`
+      `${r.chapterDir.padEnd(12)} ${String(r.counts.units).padStart(5)} ${String(r.counts.items).padStart(5)} ${String(r.counts.candidateOccurrences).padStart(5)} ${String(r.counts.pairs).padStart(5)} ${String(r.estimate.requests).padStart(8)} ${String(r.estimate.inputTokensEstimate).padStart(10)} ${String(r.estimate.worstCaseUsd.interactive).padStart(10)} ${String(r.estimate.worstCaseUsd.batch).padStart(12)}  ${s['identical-to-en']}/${s['empty-is']}/${s['no-en']}/${s['no-is']}\n`
     );
   }
   ctx.out(

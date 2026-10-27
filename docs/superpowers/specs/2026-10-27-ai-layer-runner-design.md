@@ -23,6 +23,21 @@
 > - **Records default to `<bookDir>/ai-review`**, so an injected book can never write records into the real tree.
 > - **`apply --write` refuses a non-empty `02-mt-revised/<chapterDir>/`** unless `--overwrite`, beside
 >   `writeRevisedChapter`'s own per-file refusal.
+> - **The work list has three more precision rules** (from the U1 and U3 reviews; all withhold, never offer):
+>   - _phrase precedence_: a ruling matches a segment only where some English use of it lies outside every use of a
+>     LONGER ruling's phrase. Rule 4's guard cannot see an uncatalogued rendering of the longer term: the U3 review
+>     measured the real gate accepting `Vetnisrafalar` → `Vetnisker` under `cell` on ch17 text whose every "cell"
+>     is inside "fuel cells". With precedence, `cell` is never offered there, so the op is `ruling-not-offered`.
+>     Every ruling shadows, whatever its status, and never itself;
+>   - _masked competitors_: the competitor test runs with every word headed by the target blanked, because 14
+>     competitors' stems sit inside their own target (`hiti` in `hitastig`) and flagged 581 items that were
+>     already right;
+>   - `empty-is`, a fourth skip reason.
+> - **The census under "Measured inputs" is superseded.** Its 4,435 / 6,187 came from an early probe with another
+>   matcher. The implemented rule, agreed to the unit by an independent recount, gives **4,088 items, 4,105
+>   candidate occurrences and 5,613 segment–ruling pairs**, which `plan --all` chunks into **591 requests** (0 ISK,
+>   2026-10-27). Its worst case is USD 117 in batch for the whole book, with at most USD 10.48 (ch07) reserved at
+>   once.
 
 **Implements:** pre-S plan items 4–6's runner (`docs/plans/2026-10-26-pre-s-week-plan.md`, on branch
 `docs/pre-s-plan-2026-10-26`) on top of the four units of
