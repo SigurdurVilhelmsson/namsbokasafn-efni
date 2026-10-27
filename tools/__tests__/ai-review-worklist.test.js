@@ -14,14 +14,21 @@
  * whole-chemistry totals (22,876 IS occurrences, 4,184 identical to EN) by the controller with
  * a separate script of its own.
  *
- * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,088 items, 4,105
- * candidate occurrences, 5,613 pairs, 14,368 paired items with no candidate, 0 empty IS bodies)
+ * The whole-chemistry WORK-LIST totals for the 2026-10-26 ruling set (4,105 items, 4,122
+ * candidate occurrences, 5,641 pairs, 14,351 paired items with no candidate, 0 empty IS bodies)
  * were measured by an independent recount that imports neither worklist.js nor mt-layers.js nor
  * chapter-term-check.js: seg-markers.cjs parseSegmentRecords for pairing, its own word regex, its
- * own phrase precedence and its own target masking, over the gate's two matchers and tokens.js
- * visibleProse. It agrees with this module to the unit. These numbers include the controller's
- * two precision rules of 2026-10-27 (phrase precedence; competitors sought outside the target's
- * words); before them, the U1 review's recount measured 4,905 / 4,926 / 7,276 / 13,551.
+ * own phrase precedence, its own target masking and its own hyphen fold (a code-point loop, not
+ * foldHyphens' regex), over the gate's two matchers and tokens.js visibleProse. It agrees with
+ * this module to the unit. These numbers include the controller's two precision rules of
+ * 2026-10-27 (phrase precedence; competitors sought outside the target's words) and the hyphen
+ * fold added the same day (a hyphen joining two letters reads as a space, in prose and ruling
+ * forms alike). Before the fold the same recount, unmodified, measured 4,088 / 4,105 / 5,613 /
+ * 14,368: the fold adds 31 segment–ruling pairs and removes 3 (cell, lewis and hybrid orbital,
+ * each inside a hyphen-joined longer phrase); each of the 34 is a phrase the prose writes with a
+ * hyphen (`Fuel-cell`, `ground-state`) or a spaced use of a form written with one
+ * (`electron-pair geometry`). Before the two precision rules, the U1 review's recount measured
+ * 4,905 / 4,926 / 7,276 / 13,551.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
@@ -35,6 +42,7 @@ import {
   isCandidate,
   offeredRulings,
   buildWorkList,
+  foldHyphens,
 } from '../ai-review/worklist.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { carriesTarget, containsTargetStem } from '../ai-review/gate.js';
@@ -913,6 +921,172 @@ describe('phrase precedence', () => {
   });
 });
 
+// ── Hyphen-joined uses: matching reads a hyphen that joins two letters as a space ───────
+
+describe('foldHyphens: a hyphen joining two letters becomes a space, and nothing else changes', () => {
+  it('folds an ASCII hyphen between two letters', () => {
+    expect(foldHyphens('Fuel-cell vehicles')).toBe('Fuel cell vehicles');
+  });
+
+  it('folds U+2010 HYPHEN between two letters', () => {
+    expect(foldHyphens('Fuel\u2010cell')).toBe('Fuel cell');
+  });
+
+  it('folds U+2011 NON-BREAKING HYPHEN between two letters', () => {
+    expect(foldHyphens('Fuel\u2011cell')).toBe('Fuel cell');
+  });
+
+  it('folds every hyphen of a chain, in any script (electron-pair-repulsion, Brønsted-Lowry)', () => {
+    expect([foldHyphens('electron-pair-repulsion'), foldHyphens('Brønsted-Lowry')]).toEqual([
+      'electron pair repulsion',
+      'Brønsted Lowry',
+    ]);
+  });
+
+  it('does not fold a hyphen between a letter and a digit (carbon-14, 2-methyl)', () => {
+    expect([foldHyphens('carbon-14'), foldHyphens('2-methyl')]).toEqual(['carbon-14', '2-methyl']);
+  });
+
+  it('does not fold a hyphen beside a space or at either end (fuel- cell, a -b, -cell, cell-)', () => {
+    expect(['fuel- cell', 'a -b', '-cell', 'cell-'].map(foldHyphens)).toEqual([
+      'fuel- cell',
+      'a -b',
+      '-cell',
+      'cell-',
+    ]);
+  });
+
+  it('does not fold an en dash, a minus sign or a soft hyphen: only the three hyphens', () => {
+    const others = ['Hall\u2013Héroult', 'a\u2212b', 'a\u00ADb'];
+    expect(others.map(foldHyphens)).toEqual(others);
+  });
+
+  it('keeps the length, so a span on the folded text is a span on the original', () => {
+    const s = 'Fuel-cell, Fuel\u2010cell and Fuel\u2011cell';
+    expect(foldHyphens(s).length).toBe(s.length);
+  });
+});
+
+describe('phrase precedence over hyphen-joined uses (cell, fuel cell)', () => {
+  const POOL = [CELL, FUEL_CELL];
+  const HYPHENED = 'Fuel-cell vehicles (FCV) run on hydrogen.';
+
+  it('a longer phrase written with a hyphen shadows the shorter ruling inside it', () => {
+    expect(matchesOccurrence(CELL, { en: HYPHENED }, POOL)).toBe(false);
+  });
+
+  it('control: the shorter ruling still matches where it also stands alone', () => {
+    expect(matchesOccurrence(CELL, { en: 'Fuel-cell vehicles use a cell.' }, POOL)).toBe(true);
+  });
+
+  it('the plain path reads the hyphen as a space too: fuel cell matches "Fuel-cell" with no pool', () => {
+    expect(matchesOccurrence(FUEL_CELL, { en: HYPHENED })).toBe(true);
+  });
+
+  it('control: the precedence path agrees (fuel cell matches "Fuel-cell" with the pool)', () => {
+    expect(matchesOccurrence(FUEL_CELL, { en: HYPHENED }, POOL)).toBe(true);
+  });
+
+  it('U+2010 and U+2011 are read as hyphens on both paths', () => {
+    const u2010 = 'Fuel\u2010cell vehicles';
+    const u2011 = 'Fuel\u2011cell vehicles';
+    expect([
+      matchesOccurrence(CELL, { en: u2010 }, POOL),
+      matchesOccurrence(CELL, { en: u2011 }, POOL),
+      matchesOccurrence(FUEL_CELL, { en: u2010 }),
+      matchesOccurrence(FUEL_CELL, { en: u2011 }),
+    ]).toEqual([false, false, true, true]);
+  });
+
+  it('control: an en dash is not a hyphen, so "Fuel–cell" leaves cell matching and fuel cell not', () => {
+    const dash = 'Fuel\u2013cell vehicles';
+    expect([
+      matchesOccurrence(CELL, { en: dash }, POOL),
+      matchesOccurrence(FUEL_CELL, { en: dash }),
+    ]).toEqual([true, false]);
+  });
+
+  it('reaches the offer: the hyphen-joined longer ruling is offered and the shorter withheld', () => {
+    expect(
+      offeredRulings({
+        item: item(HYPHENED, 'Efnarafalafarartæki ganga fyrir vetni.'),
+        rulings: POOL,
+        chapterDir: 'ch01',
+      })
+    ).toEqual({ candidateIds: ['fuel-cell'], rulingIds: ['fuel-cell'] });
+  });
+
+  it('reaches isCandidate through its pool argument', () => {
+    const occ = { en: HYPHENED, is: 'x' };
+    expect([isCandidate(CELL, occ, 'ch01', POOL), isCandidate(CELL, occ, 'ch01')]).toEqual([
+      false,
+      true,
+    ]);
+  });
+});
+
+describe('a hyphen beside a digit is kept: it neither joins nor splits a phrase', () => {
+  const C14 = ruling({ id: 'carbon-14', enNorm: 'carbon-14', en: ['carbon-14'], is: 'kolefni-14' });
+  const C14_SPACED = ruling({
+    id: 'carbon-14-spaced',
+    enNorm: 'carbon 14',
+    en: ['carbon 14'],
+    is: 'kolefni-14',
+  });
+
+  it('a form with a letter–digit hyphen does not match a spaced use', () => {
+    expect(matchesOccurrence(C14, { en: 'Dating by carbon 14.' })).toBe(false);
+  });
+
+  it('control: the same form matches its hyphenated use', () => {
+    expect(matchesOccurrence(C14, { en: 'Dating by carbon-14.' })).toBe(true);
+  });
+
+  it('a spaced form does not match a letter–digit hyphenated use', () => {
+    expect(matchesOccurrence(C14_SPACED, { en: 'Dating by carbon-14.' })).toBe(false);
+  });
+
+  it('control: the spaced form matches its spaced use', () => {
+    expect(matchesOccurrence(C14_SPACED, { en: 'Dating by carbon 14.' })).toBe(true);
+  });
+});
+
+describe('a ruling form that holds a hyphen (REAL acid-base indicator, beside indicator)', () => {
+  const ABI = SET.byId.get('acid-base-indicator');
+  const IND = SET.byId.get('indicator');
+  const POOL = [IND, ABI];
+
+  it('premise: the committed forms', () => {
+    expect([ABI.en, IND.en]).toEqual([['acid-base indicator'], ['indicator']]);
+  });
+
+  it('matches its hyphenated use', () => {
+    expect(matchesOccurrence(ABI, { en: 'Add an acid-base indicator.' })).toBe(true);
+  });
+
+  it('matches its spaced use', () => {
+    expect(matchesOccurrence(ABI, { en: 'Add an acid base indicator.' })).toBe(true);
+  });
+
+  it('control: it does not match its words apart', () => {
+    expect(matchesOccurrence(ABI, { en: 'An acid, a base and an indicator.' })).toBe(false);
+  });
+
+  it('shadows indicator in its hyphenated use', () => {
+    expect(matchesOccurrence(IND, { en: 'Add an acid-base indicator.' }, POOL)).toBe(false);
+  });
+
+  it('shadows indicator in its spaced use', () => {
+    expect(matchesOccurrence(IND, { en: 'Add an acid base indicator.' }, POOL)).toBe(false);
+  });
+
+  it('control: indicator standing alone still matches', () => {
+    expect(
+      matchesOccurrence(IND, { en: 'Add an acid-base indicator, then another indicator.' }, POOL)
+    ).toBe(true);
+  });
+});
+
 // ── A competitor whose stem sits inside the target ──────────────────────────────────────
 
 describe('a self-tripping competitor (REAL: temperature → hitastig, competitor hiti)', () => {
@@ -1019,6 +1193,79 @@ describe('REAL: the committed ruling set on three captions', () => {
   });
 });
 
+describe('REAL: the committed ruling set on two hyphen-joined phrases', () => {
+  describe('ch01 m68667 fs-idm74337664 ("Fuel-cell vehicles" → Efnarafalafarartæki)', () => {
+    const unit = readUnit('ch01', 'm68667');
+    const rec = unit.en.records.find((r) => r.key === 'm68667:para:fs-idm74337664');
+    const list = buildWorkList({ chapterDir: 'ch01', units: [unit], rulings: SET.rulings });
+    const it0 = findItem(list, 'm68667:para:fs-idm74337664');
+
+    it('premise: its English writes the phrase with a hyphen, and uses "cell" nowhere else', () => {
+      const prose = visibleProse(rec.body);
+      expect([
+        prose.includes('Fuel-cell vehicles'),
+        headwordSpans('cell', prose).length,
+        headwordSpans('fuel cell', prose).length,
+      ]).toEqual([true, 1, 0]);
+    });
+
+    it('offers fuel cell as a candidate', () => {
+      expect(it0?.candidateIds ?? []).toContain('fuel-cell');
+    });
+
+    it('withholds cell, so no op on cell can pass the parser (ruling-not-offered)', () => {
+      expect(it0?.rulingIds ?? []).not.toContain('cell');
+    });
+
+    it('control: emission, which no hyphen touches, is still a candidate', () => {
+      expect(it0?.candidateIds ?? []).toContain('emission');
+    });
+
+    it('control: plain matching (no precedence) would have offered the sensed cell there', () => {
+      const CELL_REAL = SET.byId.get('cell');
+      expect([
+        matchesOccurrence(CELL_REAL, { en: rec.body }),
+        isCandidate(CELL_REAL, { en: rec.body, is: 'x' }, 'ch01'),
+      ]).toEqual([true, true]);
+    });
+  });
+
+  describe('ch08 m68747 fs-idm167869376 ("The Lewis-structure model" → Lewis-myndarlíkanið)', () => {
+    const unit = readUnit('ch08', 'm68747');
+    const rec = unit.en.records.find((r) => r.key === 'm68747:para:fs-idm167869376');
+    const list = buildWorkList({ chapterDir: 'ch08', units: [unit], rulings: SET.rulings });
+    const it0 = findItem(list, 'm68747:para:fs-idm167869376');
+
+    it('premise: the committed set holds lewis and a longer lewis structure that covers it', () => {
+      expect([SET.byId.get('lewis').en, SET.byId.get('lewis-structure').en]).toEqual([
+        ['Lewis'],
+        ['Lewis structure'],
+      ]);
+    });
+
+    it('premise: its English writes the phrase with a hyphen, and uses "Lewis" nowhere else', () => {
+      const prose = visibleProse(rec.body);
+      expect([
+        prose.includes('Lewis-structure model'),
+        headwordSpans('Lewis', prose).length,
+        headwordSpans('Lewis structure', prose).length,
+      ]).toEqual([true, 1, 0]);
+    });
+
+    it('withholds lewis', () => {
+      expect(it0?.rulingIds ?? []).not.toContain('lewis');
+    });
+
+    it('offers lewis structure (its target is a modifier there, so it is not carried)', () => {
+      expect(it0?.candidateIds ?? []).toContain('lewis-structure');
+    });
+
+    it('control: plain matching (no precedence) would have offered lewis there', () => {
+      expect(matchesOccurrence(SET.byId.get('lewis'), { en: rec.body })).toBe(true);
+    });
+  });
+});
+
 // ── Determinism ──────────────────────────────────────────────────────────────────────────
 
 describe('determinism', () => {
@@ -1042,7 +1289,7 @@ describe('determinism', () => {
 
 describe('whole chemistry (every 02-structure chapter directory)', () => {
   it(
-    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,088 items',
+    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,105 items',
     { timeout: 90_000 },
     () => {
       const chapters = fs
@@ -1109,10 +1356,10 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         empty: 0,
         noEn: 0,
         noIs: 0,
-        items: 4088,
-        candidateOccurrences: 4105,
-        pairs: 5613,
-        noCandidate: 14368,
+        items: 4105,
+        candidateOccurrences: 4122,
+        pairs: 5641,
+        noCandidate: 14351,
         contextOk: true,
       });
     }

@@ -26,6 +26,12 @@
  *     and offering the shorter ruling there invites a coined compound the gate cannot refuse
  *     (measured: `vetnisefnarafala` → `vetniseldsneytiskeri`, and `Vetnisrafalar` → `Vetnisker`).
  *     Every ruling given shadows, whatever its status, so this can only withhold, never offer.
+ *     A hyphen joining two letters reads as a space on both sides (foldHyphens), so `Fuel-cell`
+ *     is a use of `fuel cell` and its `cell` is covered (measured: ch01 `Fuel-cell vehicles` →
+ *     `Efnarafalafarartæki` was offered `cell` and not `fuel cell`, and a coined edit landed).
+ *     The fold is part of matching itself, not of shadowing, so unlike shadowing it can also
+ *     offer: `fuel cell` there, and a form written with a hyphen at its spaced use
+ *     (`electron-pair geometry` in "electron pair geometry").
  *   - MASKED COMPETITORS: the competitor test runs on the Icelandic with every word headed by the
  *     target blanked out, because 14 competitors' stems sit inside their own target
  *     (`hiti` in `hitastig`) and would otherwise flag every segment that is already right.
@@ -168,14 +174,39 @@ export function isEligible(ruling, chapterDir) {
   );
 }
 
+/** A hyphen — ASCII `-`, U+2010 HYPHEN or U+2011 NON-BREAKING HYPHEN — with a letter on each side. */
+const LETTER_JOINING_HYPHEN = /(?<=\p{L})[-\u2010\u2011](?=\p{L})/gu;
+
+/**
+ * `text` with every hyphen that joins two letters replaced by a space, so `Fuel-cell` reads as
+ * `Fuel cell`. A hyphen beside a digit, a space or an end stays (`carbon-14`, `fuel- cell`), and
+ * so does every other dash (`Hall–Héroult`'s en dash, a minus sign, a soft hyphen). Each
+ * replaced character is one UTF-16 unit and so is the space, so the result has the same length
+ * and a span on it is a span on `text`.
+ *
+ * All English matching runs on folded text, prose and ruling forms alike: the word boundary
+ * treats a hyphen as a break, so without the fold `cell` matches inside `Fuel-cell` while
+ * `fuel cell` does not, and the shorter ruling is offered where the longer one governs.
+ * @param {string} text
+ * @returns {string}
+ */
+export const foldHyphens = (text) => text.replace(LETTER_JOINING_HYPHEN, ' ');
+
+/** A ruling's non-blank English forms, hyphen-folded (foldHyphens) for matching. */
 const formsOf = (r) =>
-  Array.isArray(r?.en) ? r.en.filter((f) => typeof f === 'string' && f.trim() !== '') : [];
+  Array.isArray(r?.en)
+    ? r.en.filter((f) => typeof f === 'string' && f.trim() !== '').map(foldHyphens)
+    : [];
+
+/** What matching reads of an English body: its visible prose, hyphen-folded. */
+const matchProse = (en) => foldHyphens(visibleProse(en));
 
 /**
  * The forms of OTHER rulings in `pool` that are longer phrases containing one of `ruling`'s
- * forms as a whole word (`fuel cell` for `cell`). Longer means more characters, so a form equal
- * up to case never counts. A ruling never shadows itself: `cell notation (schematic)` must not
- * hide the same ruling's own long form.
+ * forms as a whole word (`fuel cell` for `cell`), compared and returned hyphen-folded
+ * (`acid base indicator` for `indicator`). Longer means more characters (the fold keeps the
+ * length), so a form equal up to case, or up to a hyphen for a space, never counts. A ruling
+ * never shadows itself: `cell notation (schematic)` must not hide the same ruling's own long form.
  * @param {object} ruling
  * @param {ReadonlyArray<object>} pool
  * @returns {string[]}
@@ -194,8 +225,9 @@ function longerPhrases(ruling, pool) {
 }
 
 /**
- * Does `ruling` match English visible prose `prose`? Some form used as a word, at a place no
- * `longer` phrase covers.
+ * Does `ruling` match `prose` (matchProse: visible and hyphen-folded)? Some folded form used as a
+ * word, at a place no `longer` (folded) phrase covers. Plain and precedence matching read the same
+ * folded text, so a ruling that matches plainly is shadowed only by a phrase that really covers it.
  */
 const matchesProse = (ruling, prose, longer = []) => {
   const forms = formsOf(ruling);
@@ -209,14 +241,15 @@ const matchesProse = (ruling, prose, longer = []) => {
 /**
  * Does some English form of `ruling` occur, as a word, in what a reader sees of `occ.en`
  * (tokens.js visibleProse: not inside `E[[sub:cell]]`, an id or a URL), outside the phrase of
- * every longer ruling in `pool` (phrase precedence; with no pool, matching is plain)?
+ * every longer ruling in `pool` (phrase precedence; with no pool, matching is plain)? Both
+ * sides are hyphen-folded (foldHyphens), so `fuel cell` matches `Fuel-cell` and covers its `cell`.
  * @param {object} ruling
  * @param {{ en: string }} occ
  * @param {ReadonlyArray<object>} [pool] every ruling, for phrase precedence
  * @returns {boolean}
  */
 export function matchesOccurrence(ruling, occ, pool = []) {
-  return matchesProse(ruling, visibleProse(occ.en), longerPhrases(ruling, pool));
+  return matchesProse(ruling, matchProse(occ.en), longerPhrases(ruling, pool));
 }
 
 /** A word: letters (and their marks), hyphen-joined parts included — gate.js's WORD_RUN. */
@@ -262,15 +295,15 @@ export function isCandidate(ruling, occ, chapterDir, pool = []) {
 }
 
 /**
- * The offer for one item, over rulings ALREADY known eligible. Each occurrence's visible prose
- * is computed once. Returns sorted id lists and how many occurrences have a candidate.
+ * The offer for one item, over rulings ALREADY known eligible. Each occurrence's matched prose
+ * (matchProse) is computed once. Returns sorted id lists and how many occurrences have a candidate.
  */
 function offerFor(item, eligible, longerById) {
   const candidates = new Set();
   const matching = new Set();
   let candidateOccurrences = 0;
   for (const occ of item.occurrences) {
-    const prose = visibleProse(occ.en);
+    const prose = matchProse(occ.en);
     let any = false;
     for (const ruling of eligible) {
       if (!matchesProse(ruling, prose, longerById.get(ruling.id))) continue;
