@@ -5,6 +5,25 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-10-27, the same day, while building the glue (before the branch was pushed).** The sections
+> below stand as first frozen; where they disagree, this block overrides them.
+>
+> - **A request shows the item's first kept occurrence,** not "the first that is a candidate". The work list keeps
+>   candidacy per item, not per occurrence, and the gate applies every operation to every occurrence anyway.
+> - **A revision's `harnessCommit` is the commit of the code that APPLIED the responses** (the gate and the layer
+>   writer). Each run's own commit stays in its `run.json`, which `runIds` points to.
+> - **The group rule reports the root cause.** A rejected operation carries its reasons from the round in which it
+>   first failed (`agreement-too-far`, `duplicate-divergent`), not the consequence a later round reports once the
+>   group rule has withdrawn its term operation (`agreement-without-term`).
+> - **`run` spends nothing without `--yes`;** without it, it stops after the preflight and the plan.
+> - **`CODE_PATHS` = `tools/ai-review`, `tools/lib`, `tools/api-translate.js`.** A paid run and a layer-2 write refuse
+>   while any of them is untracked or modified. A test pins the list against the CLI's real load closure (static
+>   imports, and `require` inside `.cjs` files). `tools/api-translate.js` is in it because `config.js` imports its
+>   `.env` loader; its lazy, guarded `require` of a server module never runs here, so `server/` is not.
+> - **Records default to `<bookDir>/ai-review`**, so an injected book can never write records into the real tree.
+> - **`apply --write` refuses a non-empty `02-mt-revised/<chapterDir>/`** unless `--overwrite`, beside
+>   `writeRevisedChapter`'s own per-file refusal.
+
 **Implements:** pre-S plan items 4–6's runner (`docs/plans/2026-10-26-pre-s-week-plan.md`, on branch
 `docs/pre-s-plan-2026-10-26`) on top of the four units of
 `docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md` (A layers, B rulings, C gate, D harness), and

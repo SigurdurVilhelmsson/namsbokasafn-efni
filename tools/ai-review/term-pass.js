@@ -1,0 +1,721 @@
+#!/usr/bin/env node
+/**
+ * term-pass.js — the AI-reviewed layer's runner (CLI): work list → requests → harness →
+ * records, and records → gate → layer 2.
+ *
+ * Design: docs/superpowers/specs/2026-10-27-ai-layer-runner-design.md.
+ *
+ *   plan    0 ISK. Work list, requests, per-chapter counts, a token estimate and the
+ *           worst-case reservation each chapter's batch would need.
+ *   run     PAID. Preflight first (nothing is spent or written if it fails); without --yes it
+ *           stops after the preflight and the plan. One harness run per chapter, one at a
+ *           time, so only one reservation is ever open (a whole-book batch would exceed the
+ *           cap on its reservation alone). Stops at the first chapter that does not end
+ *           complete.
+ *   resume  Resume a batch run whose polling stopped (`pending`).
+ *   apply   0 ISK. Recorded responses → gate (with the group rule) → change records → a
+ *           complete layer-2 chapter. Dry unless --write; --report writes a reviewer's
+ *           markdown outside the repository.
+ *
+ * Preflight (the register's owed items 1, 2 and 4):
+ *   - the book is the constant BOOK (efnafraedi-2e); there is no flag to change it;
+ *   - the prompt, the ruling set and every file of the code (CODE_PATHS) are tracked and
+ *     clean, so the commit a record names describes what ran;
+ *   - `--layer1-commit` (default HEAD) is a commit, and every unit's layer-1 file, overlay,
+ *     English file and structure file is byte-identical to its blob there;
+ *   - an interactive `--max-tokens` above SDK_NONSTREAMING_MAX_TOKENS needs `--timeout-ms`
+ *     (the SDK refuses such a non-streaming call locally otherwise).
+ *
+ * Flags are parsed strictly (node:util parseArgs): an unknown flag is an error, never a
+ * silent no-op (CLAUDE.md: tools/lib/parseArgs.js drops unknown flags).
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { parseArgs } from 'node:util';
+import { fileURLToPath } from 'node:url';
+import { REPO_ROOT, assertBookSlug, CAP_USD } from './config.js';
+import { loadRulingSet } from './ruling-set.js';
+import { runInteractive, runBatch, EFFORTS } from './harness.js';
+import { worstCaseUsd } from './pricing.js';
+import { summarizeLedger, readLedger } from './ledger.js';
+import { mintRunId, runDirFor, createRecordWriter, RECORD_FILES } from './records.js';
+import { buildWorkList } from './worklist.js';
+import {
+  USE,
+  USER_FORMAT,
+  PROMPT_PATH,
+  DEFAULT_SEGMENTS_PER_REQUEST,
+  DEFAULT_CHAR_BUDGET,
+  loadPrompt,
+  buildRequests,
+} from './term-pass-request.js';
+import {
+  TERM_PASS_RECORD,
+  TERM_PASS_SCHEMA,
+  readChapterInputs,
+  unitFingerprints,
+  loadRunRecords,
+  applyChapter,
+  writeApplied,
+  renderReport,
+} from './term-pass-apply.js';
+import {
+  makeGit,
+  resolveCommit,
+  cleanTrackedProblems,
+  filesAtCommitProblems,
+} from './provenance.js';
+import { LAYER_DIRS, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
+
+/** The one book this runner processes (the register's owed item 1). */
+export const BOOK = 'efnafraedi-2e';
+export const DEFAULT_RULING_SET =
+  'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json';
+export const DEFAULT_MODEL = 'claude-opus-5-5';
+export const DEFAULT_EFFORT = 'high';
+export const DEFAULT_MAX_TOKENS = 16000;
+/**
+ * The SDK refuses a non-streaming call whose max_tokens implies more than 10 minutes at its
+ * assumed 128,000 tokens an hour (600 × 128000 / 3600 = 21,333.3), unless a timeout is set.
+ */
+export const SDK_NONSTREAMING_MAX_TOKENS = 21333;
+/** Characters per token assumed by `plan`'s estimate (conservative for Icelandic). */
+export const PLAN_CHARS_PER_TOKEN = 3;
+/**
+ * Every repo path whose code decides what a run sends or what apply writes. A paid run and a
+ * layer-2 write refuse while any of them is untracked or modified. Pinned against the real
+ * import closure of this file by a test.
+ */
+export const CODE_PATHS = Object.freeze(['tools/ai-review', 'tools/api-translate.js', 'tools/lib']);
+
+const MODES = ['interactive', 'batch'];
+
+const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
+
+function usage() {
+  return [
+    'usage: node tools/ai-review/term-pass.js <plan|run|resume|apply> [flags]',
+    '  plan    (--chapter chNN ... | --all) [--segments-per-request N] [--char-budget N] [--max-tokens N] [--out FILE]',
+    '  run     (--chapter chNN ... | --all) --mode interactive|batch [--effort E] [--max-tokens N]',
+    '          [--timeout-ms N] [--layer1-commit REF] [--limit N] [--ruling-set PATH] [--yes]',
+    '  resume  --run RUNID [--max-polls N]',
+    '  apply   --chapter chNN --run RUNID [--run RUNID ...] [--report FILE] [--write] [--overwrite]',
+    `The book is ${BOOK}. FILE paths must be absolute and outside the repository.`,
+  ].join('\n');
+}
+
+const OPTIONS = {
+  chapter: { type: 'string', multiple: true },
+  all: { type: 'boolean' },
+  mode: { type: 'string' },
+  effort: { type: 'string' },
+  model: { type: 'string' },
+  'max-tokens': { type: 'string' },
+  'timeout-ms': { type: 'string' },
+  'layer1-commit': { type: 'string' },
+  limit: { type: 'string' },
+  'ruling-set': { type: 'string' },
+  'segments-per-request': { type: 'string' },
+  'char-budget': { type: 'string' },
+  'max-polls': { type: 'string' },
+  run: { type: 'string', multiple: true },
+  out: { type: 'string' },
+  report: { type: 'string' },
+  write: { type: 'boolean' },
+  overwrite: { type: 'boolean' },
+  yes: { type: 'boolean' },
+  help: { type: 'boolean' },
+};
+/** Which flags each subcommand admits; any other refuses (a flag must never be a silent no-op). */
+const ALLOWED = {
+  plan: [
+    'chapter',
+    'all',
+    'segments-per-request',
+    'char-budget',
+    'max-tokens',
+    'model',
+    'effort',
+    'ruling-set',
+    'out',
+  ],
+  run: [
+    'chapter',
+    'all',
+    'mode',
+    'effort',
+    'model',
+    'max-tokens',
+    'timeout-ms',
+    'layer1-commit',
+    'limit',
+    'ruling-set',
+    'segments-per-request',
+    'char-budget',
+    'yes',
+    'max-polls',
+  ],
+  resume: ['run', 'max-polls'],
+  apply: ['chapter', 'run', 'report', 'write', 'overwrite', 'ruling-set'],
+};
+
+function positiveInt(v, name) {
+  if (v === undefined) return undefined;
+  if (!/^[1-9]\d*$/.test(v))
+    throw refusal('bad-flag', `--${name} must be a positive integer, got ${v}`);
+  return Number(v);
+}
+
+function outsideRepo(file, repoRoot, name) {
+  if (typeof file !== 'string' || !path.isAbsolute(file)) {
+    throw refusal('bad-flag', `--${name} must be an absolute path`);
+  }
+  const rel = path.relative(repoRoot, path.resolve(file));
+  if (!(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel))) {
+    throw refusal(
+      'bad-flag',
+      `--${name} must be outside the repository (records and layers are tool-written)`
+    );
+  }
+  return path.resolve(file);
+}
+
+function repoRelativeInput(p, repoRoot, name) {
+  if (
+    typeof p !== 'string' ||
+    p === '' ||
+    path.isAbsolute(p) ||
+    path.normalize(p).startsWith('..')
+  ) {
+    throw refusal('bad-flag', `--${name} must be a repo-relative path`);
+  }
+  if (!fs.existsSync(path.join(repoRoot, p)))
+    throw refusal('bad-flag', `--${name}: ${p} does not exist`);
+  return p.split(path.sep).join('/');
+}
+
+/** The chapters a command names: --all, or --chapter values that exist in 02-structure. */
+export function resolveChapters({ bookDir, chapter, all }) {
+  const structure = path.join(bookDir, '02-structure');
+  const existing = fs
+    .readdirSync(structure)
+    .filter((d) => CHAPTER_DIR_RE.test(d) && fs.statSync(path.join(structure, d)).isDirectory())
+    .sort();
+  if (all && chapter?.length) throw refusal('bad-flag', 'give --all or --chapter, not both');
+  if (all) return existing;
+  if (!chapter?.length) throw refusal('bad-flag', 'name chapters with --chapter chNN (or --all)');
+  for (const c of chapter) {
+    if (!existing.includes(c))
+      throw refusal('bad-flag', `--chapter ${c}: no such chapter in ${BOOK}`);
+  }
+  if (new Set(chapter).size !== chapter.length)
+    throw refusal('bad-flag', 'a --chapter is given twice');
+  return chapter;
+}
+
+/** Work list and requests for one chapter. */
+export function planChapter({
+  bookDir,
+  chapterDir,
+  rulings,
+  rulingsById,
+  prompt,
+  model,
+  effort,
+  maxTokens,
+  segmentsPerRequest,
+  charBudget,
+}) {
+  const inputs = readChapterInputs({ bookDir, chapterDir });
+  const workList = buildWorkList({
+    chapterDir,
+    units: inputs.map((u) => ({ stem: u.stem, en: u.en, is: u.base.parsed })),
+    rulings,
+  });
+  const requests = buildRequests({
+    workList,
+    rulingsById,
+    prompt,
+    model,
+    effort,
+    maxTokens,
+    segmentsPerRequest,
+    charBudget,
+  });
+  return { inputs, workList, requests };
+}
+
+/** A rough token and cost picture for a chapter's requests (an estimate; invoices decide). */
+export function estimateRequests(requests, { model, maxTokens }) {
+  let inputTokens = 0;
+  let worstInteractive = 0;
+  let worstBatch = 0;
+  for (const r of requests) {
+    const chars = r.body.system[0].text.length + r.body.messages[0].content.length;
+    const tokens = Math.ceil(chars / PLAN_CHARS_PER_TOKEN);
+    inputTokens += tokens;
+    worstInteractive += worstCaseUsd({ model, inputTokens: tokens, maxTokens, cacheWrite: true });
+    worstBatch += worstCaseUsd({
+      model,
+      inputTokens: tokens,
+      maxTokens,
+      cacheWrite: true,
+      batch: true,
+    });
+  }
+  return {
+    requests: requests.length,
+    inputTokensEstimate: inputTokens,
+    worstCaseUsd: { interactive: round2(worstInteractive), batch: round2(worstBatch) },
+  };
+}
+
+const round2 = (x) => Math.round(x * 100) / 100;
+
+/** The repo-relative files a chapter's run reads, for the layer-1 commit check. */
+function chapterInputFiles({ bookDir, repoRoot, chapterDir, inputs }) {
+  const rel = (abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+  const files = [];
+  for (const u of inputs) {
+    files.push(rel(path.join(bookDir, LAYER_DIRS.pure, chapterDir, `${u.stem}-segments.is.md`)));
+    files.push(rel(path.join(bookDir, '02-for-mt', chapterDir, `${u.stem}-segments.en.md`)));
+    if (u.stem !== 'chapter-metadata') {
+      files.push(rel(path.join(bookDir, '02-structure', chapterDir, `${u.stem}-structure.json`)));
+    }
+    const overlay = path.join(bookDir, LAYER_DIRS.selected, chapterDir, `${u.stem}-selected.json`);
+    if (fs.existsSync(overlay)) files.push(rel(overlay));
+  }
+  return files;
+}
+
+function contextFrom(deps) {
+  const repoRoot = deps.repoRoot ?? REPO_ROOT;
+  const bookDir = deps.bookDir ?? path.join(repoRoot, 'books', BOOK);
+  if (path.basename(bookDir) !== BOOK)
+    throw refusal('wrong-book', `this runner processes ${BOOK} only`);
+  assertBookSlug(BOOK);
+  return {
+    repoRoot,
+    bookDir,
+    // Records live with the book they describe (for the real book, config.js defaultRecordsDir).
+    recordsDir: deps.recordsDir ?? path.join(bookDir, 'ai-review'),
+    git: deps.git ?? makeGit({ cwd: repoRoot }),
+    now: deps.now ?? (() => new Date()),
+    out: deps.stdout ?? ((s) => process.stdout.write(s)),
+    codePaths: deps.codePaths ?? CODE_PATHS,
+  };
+}
+
+function loadInputs(ctx, values) {
+  const rulingSetPath = repoRelativeInput(
+    values['ruling-set'] ?? DEFAULT_RULING_SET,
+    ctx.repoRoot,
+    'ruling-set'
+  );
+  const rs = loadRulingSet(path.join(ctx.repoRoot, rulingSetPath));
+  const prompt = loadPrompt(path.join(ctx.repoRoot, PROMPT_PATH));
+  return {
+    rulingSet: { path: rulingSetPath, sha256: rs.sha256, byId: rs.byId, rulings: rs.rulings },
+    prompt: { path: PROMPT_PATH, sha256: prompt.sha256, text: prompt.text, schema: prompt.schema },
+  };
+}
+
+function runParams(values) {
+  const model = values.model ?? DEFAULT_MODEL;
+  const effort = values.effort ?? DEFAULT_EFFORT;
+  if (!EFFORTS.includes(effort))
+    throw refusal('bad-flag', `--effort must be one of ${EFFORTS.join(', ')}`);
+  return {
+    model,
+    effort,
+    maxTokens: positiveInt(values['max-tokens'], 'max-tokens') ?? DEFAULT_MAX_TOKENS,
+    segmentsPerRequest:
+      positiveInt(values['segments-per-request'], 'segments-per-request') ??
+      DEFAULT_SEGMENTS_PER_REQUEST,
+    charBudget: positiveInt(values['char-budget'], 'char-budget') ?? DEFAULT_CHAR_BUDGET,
+  };
+}
+
+function printPlan(ctx, rows, totals) {
+  ctx.out(
+    'chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/no-en/no-is)\n'
+  );
+  for (const r of rows) {
+    const s = r.counts.skipped;
+    ctx.out(
+      `${r.chapterDir.padEnd(12)} ${String(r.counts.units).padStart(5)} ${String(r.counts.items).padStart(5)} ${String(r.counts.candidateOccurrences).padStart(5)} ${String(r.counts.pairs).padStart(5)} ${String(r.estimate.requests).padStart(8)} ${String(r.estimate.inputTokensEstimate).padStart(10)} ${String(r.estimate.worstCaseUsd.interactive).padStart(10)} ${String(r.estimate.worstCaseUsd.batch).padStart(12)}  ${s['identical-to-en']}/${s['no-en']}/${s['no-is']}\n`
+    );
+  }
+  ctx.out(
+    `TOTAL        requests ${totals.requests}, input ~${totals.inputTokensEstimate} tokens, worst case USD ${round2(totals.worstInteractive)} interactive / ${round2(totals.worstBatch)} batch (the cap is USD ${CAP_USD}; a batch reserves its whole worst case, so batches run one chapter at a time)\n`
+  );
+}
+
+function planAll(ctx, values) {
+  const { rulingSet, prompt } = loadInputs(ctx, values);
+  const params = runParams(values);
+  const chapters = resolveChapters({
+    bookDir: ctx.bookDir,
+    chapter: values.chapter,
+    all: values.all,
+  });
+  const rows = [];
+  for (const chapterDir of chapters) {
+    const p = planChapter({
+      bookDir: ctx.bookDir,
+      chapterDir,
+      rulings: rulingSet.rulings,
+      rulingsById: rulingSet.byId,
+      prompt,
+      ...params,
+    });
+    rows.push({
+      chapterDir,
+      ...p,
+      counts: p.workList.counts,
+      estimate: estimateRequests(p.requests, params),
+    });
+  }
+  const totals = rows.reduce(
+    (t, r) => ({
+      requests: t.requests + r.estimate.requests,
+      inputTokensEstimate: t.inputTokensEstimate + r.estimate.inputTokensEstimate,
+      worstInteractive: t.worstInteractive + r.estimate.worstCaseUsd.interactive,
+      worstBatch: t.worstBatch + r.estimate.worstCaseUsd.batch,
+    }),
+    { requests: 0, inputTokensEstimate: 0, worstInteractive: 0, worstBatch: 0 }
+  );
+  return { rulingSet, prompt, params, rows, totals };
+}
+
+async function cmdPlan(ctx, values) {
+  const out = values.out ? outsideRepo(values.out, ctx.repoRoot, 'out') : null;
+  const { rulingSet, prompt, params, rows, totals } = planAll(ctx, values);
+  printPlan(ctx, rows, totals);
+  if (out) {
+    fs.writeFileSync(
+      out,
+      `${JSON.stringify(
+        {
+          book: BOOK,
+          rulingSet: { path: rulingSet.path, sha256: rulingSet.sha256 },
+          prompt: { path: prompt.path, sha256: prompt.sha256 },
+          params,
+          chapters: rows.map((r) => ({
+            chapterDir: r.chapterDir,
+            counts: r.counts,
+            estimate: r.estimate,
+            workList: r.workList,
+            requests: r.requests,
+          })),
+          totals,
+        },
+        null,
+        1
+      )}\n`
+    );
+    ctx.out(`wrote ${out}\n`);
+  }
+  return { rows, totals };
+}
+
+function preflight(
+  ctx,
+  { rulingSet, prompt, layer1Ref, chapters, plans, mode, maxTokens, timeoutMs }
+) {
+  const problems = [];
+  if (mode === 'interactive' && maxTokens > SDK_NONSTREAMING_MAX_TOKENS && !timeoutMs) {
+    problems.push(
+      `--max-tokens ${maxTokens} is above ${SDK_NONSTREAMING_MAX_TOKENS}: the SDK refuses such a non-streaming call unless --timeout-ms is given`
+    );
+  }
+  problems.push(...cleanTrackedProblems(ctx.git, [prompt.path, rulingSet.path, ...ctx.codePaths]));
+  const commit = resolveCommit(ctx.git, layer1Ref);
+  for (const chapterDir of chapters) {
+    const files = chapterInputFiles({
+      bookDir: ctx.bookDir,
+      repoRoot: ctx.repoRoot,
+      chapterDir,
+      inputs: plans.get(chapterDir).inputs,
+    });
+    problems.push(
+      ...filesAtCommitProblems({ git: ctx.git, repoRoot: ctx.repoRoot, commit, files })
+    );
+  }
+  if (problems.length)
+    throw refusal(
+      'preflight',
+      `refusing before spending anything:\n  - ${problems.join('\n  - ')}`
+    );
+  return commit;
+}
+
+function writeTermPassRecord(
+  ctx,
+  { runId, chapterDir, layer1Commit, inputs, params, rulingSet, prompt, requests, workList, limit }
+) {
+  const dir = runDirFor(ctx.recordsDir, runId);
+  if (!fs.existsSync(dir)) return false;
+  createRecordWriter({ dir }).writeJson(TERM_PASS_RECORD, {
+    schema: TERM_PASS_SCHEMA,
+    runId,
+    book: BOOK,
+    chapterDir,
+    layer1Commit,
+    units: unitFingerprints(inputs),
+    params: {
+      segmentsPerRequest: params.segmentsPerRequest,
+      charBudget: params.charBudget,
+      userFormat: USER_FORMAT,
+      promptPath: prompt.path,
+      rulingSetPath: rulingSet.path,
+      limit: limit ?? null,
+    },
+    requestKeys: requests.map((r) => r.key),
+    workListCounts: workList.counts,
+  });
+  return true;
+}
+
+async function cmdRun(ctx, values, deps) {
+  const mode = values.mode;
+  if (!MODES.includes(mode)) throw refusal('bad-flag', `--mode must be ${MODES.join(' or ')}`);
+  const timeoutMs = positiveInt(values['timeout-ms'], 'timeout-ms');
+  const limit = positiveInt(values.limit, 'limit');
+  const { rulingSet, prompt, params, rows, totals } = planAll(ctx, values);
+  const plans = new Map(rows.map((r) => [r.chapterDir, r]));
+  const chapters = rows.map((r) => r.chapterDir);
+  printPlan(ctx, rows, totals);
+  const layer1Commit = preflight(ctx, {
+    rulingSet,
+    prompt,
+    layer1Ref: values['layer1-commit'] ?? 'HEAD',
+    chapters,
+    plans,
+    mode,
+    maxTokens: params.maxTokens,
+    timeoutMs,
+  });
+  ctx.out(
+    `preflight passed: layer 1 at ${layer1Commit}; prompt ${prompt.sha256}; ruling set ${rulingSet.sha256}\n`
+  );
+  if (!values.yes) {
+    ctx.out('not sending: add --yes to spend.\n');
+    return { sent: false, layer1Commit };
+  }
+  let budget = limit ?? Infinity;
+  const results = [];
+  for (const chapterDir of chapters) {
+    if (budget <= 0) break;
+    const plan = plans.get(chapterDir);
+    const requests = plan.requests.slice(0, budget);
+    if (requests.length === 0) continue;
+    budget -= requests.length;
+    const runId = mintRunId(ctx.now());
+    const opts = {
+      requests: requests.map((r) => ({ key: r.key, body: r.body })),
+      recordsDir: ctx.recordsDir,
+      use: USE,
+      model: params.model,
+      effort: params.effort,
+      maxTokens: params.maxTokens,
+      prompts: [{ path: prompt.path, sha256: prompt.sha256 }],
+      rulingSet: { path: rulingSet.path, sha256: rulingSet.sha256 },
+      runId,
+      now: ctx.now,
+      ...(deps.transport ? { transport: deps.transport } : {}),
+      ...(deps.keyOptions ? { keyOptions: deps.keyOptions } : {}),
+      ...(deps.harnessCommit ? { harnessCommit: deps.harnessCommit } : {}),
+      ...(deps.harnessDirty ? { harnessDirty: deps.harnessDirty } : {}),
+      ...(deps.sleep ? { sleep: deps.sleep } : {}),
+      ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
+      ...(values['max-polls'] ? { maxPolls: positiveInt(values['max-polls'], 'max-polls') } : {}),
+      ...(timeoutMs ? { timeout: timeoutMs } : {}),
+    };
+    let result;
+    try {
+      result = mode === 'batch' ? await runBatch(opts) : await runInteractive(opts);
+    } finally {
+      writeTermPassRecord(ctx, {
+        runId,
+        chapterDir,
+        layer1Commit,
+        inputs: plan.inputs,
+        params,
+        rulingSet,
+        prompt,
+        requests,
+        workList: plan.workList,
+        limit,
+      });
+    }
+    results.push({ chapterDir, ...result });
+    ctx.out(
+      `${chapterDir}: run ${result.runId} ${result.status}${result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : ''}\n`
+    );
+    if (result.status === 'pending') {
+      ctx.out(`  resume with: node tools/ai-review/term-pass.js resume --run ${result.runId}\n`);
+      break;
+    }
+    if (result.status !== 'complete') {
+      ctx.out('  stopping: later chapters are not sent after a run that did not end complete.\n');
+      break;
+    }
+  }
+  const ledger = summarizeLedger(readLedger(path.join(ctx.recordsDir, 'ledger.jsonl')));
+  ctx.out(`ledger: ${JSON.stringify(ledger)}\n`);
+  return { sent: true, layer1Commit, results };
+}
+
+async function cmdResume(ctx, values, deps) {
+  const ids = values.run ?? [];
+  if (ids.length !== 1) throw refusal('bad-flag', 'resume takes exactly one --run');
+  const runId = ids[0];
+  const dir = runDirFor(ctx.recordsDir, runId);
+  if (!fs.existsSync(dir)) throw refusal('bad-flag', `no run ${runId}`);
+  const r = createRecordWriter({ dir });
+  const run = r.readJson(RECORD_FILES.run);
+  const tp = r.readJson(TERM_PASS_RECORD);
+  if (run.use !== USE || run.mode !== 'batch')
+    throw refusal('bad-flag', `run ${runId} is not a ${USE} batch run`);
+  const { rulingSet, prompt } = loadInputs(ctx, { 'ruling-set': tp.params.rulingSetPath });
+  const plan = planChapter({
+    bookDir: ctx.bookDir,
+    chapterDir: tp.chapterDir,
+    rulings: rulingSet.rulings,
+    rulingsById: rulingSet.byId,
+    prompt,
+    model: run.model,
+    effort: run.effort,
+    maxTokens: run.max_tokens,
+    segmentsPerRequest: tp.params.segmentsPerRequest,
+    charBudget: tp.params.charBudget,
+  });
+  const keys = new Set(tp.requestKeys);
+  const requests = plan.requests
+    .filter((q) => keys.has(q.key))
+    .map((q) => ({ key: q.key, body: q.body }));
+  const result = await runBatch({
+    requests,
+    recordsDir: ctx.recordsDir,
+    use: USE,
+    model: run.model,
+    effort: run.effort,
+    maxTokens: run.max_tokens,
+    prompts: run.prompts,
+    rulingSet: run.rulingSet,
+    runId,
+    now: ctx.now,
+    ...(deps.transport ? { transport: deps.transport } : {}),
+    ...(deps.keyOptions ? { keyOptions: deps.keyOptions } : {}),
+    ...(deps.harnessCommit ? { harnessCommit: deps.harnessCommit } : {}),
+    ...(deps.harnessDirty ? { harnessDirty: deps.harnessDirty } : {}),
+    ...(deps.sleep ? { sleep: deps.sleep } : {}),
+    ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
+    ...(values['max-polls'] ? { maxPolls: positiveInt(values['max-polls'], 'max-polls') } : {}),
+  });
+  ctx.out(`${tp.chapterDir}: run ${runId} ${result.status}\n`);
+  return result;
+}
+
+async function cmdApply(ctx, values) {
+  const chapters = values.chapter ?? [];
+  if (chapters.length !== 1) throw refusal('bad-flag', 'apply takes exactly one --chapter');
+  const [chapterDir] = resolveChapters({ bookDir: ctx.bookDir, chapter: chapters, all: false });
+  const runIds = values.run ?? [];
+  if (runIds.length === 0) throw refusal('bad-flag', 'apply needs at least one --run');
+  if (values.overwrite && !values.write)
+    throw refusal('bad-flag', '--overwrite only goes with --write');
+  const report = values.report ? outsideRepo(values.report, ctx.repoRoot, 'report') : null;
+  const { rulingSet, prompt } = loadInputs(ctx, values);
+  if (values.write) {
+    const problems = cleanTrackedProblems(ctx.git, [prompt.path, rulingSet.path, ...ctx.codePaths]);
+    if (problems.length)
+      throw refusal('preflight', `refusing to write layer 2:\n  - ${problems.join('\n  - ')}`);
+  }
+  const applyCommit = resolveCommit(ctx.git, 'HEAD');
+  const runs = runIds.map((runId) => loadRunRecords({ recordsDir: ctx.recordsDir, runId }));
+  const result = applyChapter({
+    bookDir: ctx.bookDir,
+    chapterDir,
+    rulingSet,
+    prompt,
+    runs,
+    applyCommit,
+  });
+  ctx.out(`${chapterDir}: ${JSON.stringify(result.counts)}\n`);
+  if (report) {
+    fs.writeFileSync(report, renderReport(result));
+    ctx.out(`wrote ${report}\n`);
+  }
+  if (values.write) {
+    const written = writeApplied({
+      bookDir: ctx.bookDir,
+      chapterDir,
+      result,
+      overwrite: Boolean(values.overwrite),
+    });
+    ctx.out(
+      `wrote ${written.layer2.length} layer-2 files and ${written.applied.length} applied records\n`
+    );
+    return { result, written };
+  }
+  ctx.out('dry run: nothing written (add --write after the prompt is frozen).\n');
+  return { result };
+}
+
+/**
+ * Run the CLI.
+ * @param {string[]} argv arguments after the script name
+ * @param {object} [deps] injectable: repoRoot, bookDir, recordsDir, git, now, stdout, codePaths,
+ *   transport, keyOptions, harnessCommit, harnessDirty, sleep, pollIntervalMs
+ */
+export async function main(argv, deps = {}) {
+  const { values, positionals } = parseArgs({
+    args: argv,
+    options: OPTIONS,
+    strict: true,
+    allowPositionals: true,
+  });
+  const [command, ...rest] = positionals;
+  if (values.help || !command) {
+    (deps.stdout ?? ((s) => process.stdout.write(s)))(`${usage()}\n`);
+    return null;
+  }
+  if (rest.length) throw refusal('bad-flag', `unexpected argument ${rest[0]}`);
+  if (!Object.hasOwn(ALLOWED, command))
+    throw refusal('bad-flag', `unknown command ${command}\n${usage()}`);
+  for (const k of Object.keys(values)) {
+    if (!ALLOWED[command].includes(k))
+      throw refusal('bad-flag', `--${k} does not apply to ${command}`);
+  }
+  const ctx = contextFrom(deps);
+  if (command === 'plan') return cmdPlan(ctx, values);
+  if (command === 'run') return cmdRun(ctx, values, deps);
+  if (command === 'resume') return cmdResume(ctx, values, deps);
+  return cmdApply(ctx, values);
+}
+
+const isEntry = (() => {
+  try {
+    return (
+      process.argv[1] !== undefined &&
+      fs.realpathSync(process.argv[1]) === fs.realpathSync(fileURLToPath(import.meta.url))
+    );
+  } catch {
+    return false;
+  }
+})();
+
+if (isEntry) {
+  process.exitCode = 1;
+  main(process.argv.slice(2)).then(
+    () => {
+      process.exitCode = 0;
+    },
+    (err) => {
+      process.stderr.write(`term-pass: ${err.message}\n`);
+      process.exitCode = 1;
+    }
+  );
+}
