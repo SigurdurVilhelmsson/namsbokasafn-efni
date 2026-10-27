@@ -6,8 +6,8 @@
  * (books/efnafraedi-2e/02-mt-output for IS, 02-for-mt for EN); the segment id is given beside
  * each. Rulings are in the shape Unit B compiles. Those marked REAL carry a target from the
  * 2026-10-11 ruling set; those marked HYPOTHETICAL are invented for the test and say nothing
- * about what the book should use. Two fixtures are SYNTHETIC and say so: no real segment
- * reaches those two mechanisms.
+ * about what the book should use. Fixtures marked SYNTHETIC say so where they are used: no
+ * real segment reaches those mechanisms, or the case needs one variable changed beside a real one.
  */
 import { describe, it, expect, afterAll } from 'vitest';
 import fs from 'node:fs';
@@ -413,6 +413,14 @@ const GRAPHENE_EN =
   'You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in 2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one atom thick) of graphite. Graphene, illustrated in [[xref:CNX_Chem_10_05_Graphene]], is not only strong and lightweight, but it is also an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre [[term:Geim|term-00007]] and Konstantin [[term:Novoselov|term-00008]] for their pioneering work with graphene.';
 const GRAPHENE_IS =
   'Þú þekkir kannski síður nýlega uppgötvað form kolefnis: grafen. Grafen var fyrst einangrað árið 2004 með því að nota límband til að fletta þynnri og þynnri lögum af grafíti. Það er í raun eitt lag (eina frumeind á þykkt) af grafíti. Grafen, sem sýnt er í [[xref:CNX_Chem_10_05_Graphene]], er ekki aðeins sterkt og létt, heldur er það einnig frábær leiðari rafmagns og hita. Þessir eiginleikar gætu reynst mjög gagnlegir í margs konar notkun, svo sem í stórbættum tölvukubbum og rafrásum, betri rafhlöðum og sólarsellum og sterkari og léttari byggingarefnum. Nóbelsverðlaunin í eðlisfræði árið 2010 voru veitt Andre [[term:Geim|term-00007]] og Konstantin [[term:Novoselov|term-00008]] fyrir brautryðjendastarf þeirra með grafen.';
+
+// Added for the word after the term (REAL, byte for byte; gated against REAL_SET).
+// m68739:alt:fs-idm60125872-alt (ch07) — `Niturfrumeindin hefur tvö`: the quantifier is the
+// second word after the noun; `súrefnisfrumeindin eitt.`: right after it, for an elided noun
+const NO_EN =
+  'Two Lewis diagrams are shown with the word “gives” in between them. The left diagram, surrounded by brackets and with a superscripted positive sign, shows a nitrogen atom single bonded to an oxygen atom, each with two lone pairs of electrons. The right diagram, surrounded by brackets and with a superscripted positive sign, shows a nitrogen atom double bonded to an oxygen atom. The nitrogen atom has two lone pairs of electrons and the oxygen atom has one.';
+const NO_IS =
+  'Tvær Lewis-byggingar eru sýndar með orðinu „gefur“ á milli þeirra. Vinstri byggingin, umkringd hornklofum og með plúsmerki í hávísun, sýnir niturfrumeind sem er eintengd við súrefnisfrumeind, hvor um sig með tvö einmana rafeindapör. Hægri byggingin, umkringd hornklofum og með plúsmerki í hávísun, sýnir niturfrumeind sem er tvítengd við súrefnisfrumeind. Niturfrumeindin hefur tvö einmana rafeindapör og súrefnisfrumeindin eitt.';
 
 // Added for the glued part word (REAL, byte for byte; gated against REAL_SET).
 // m68807:para:fs-idm49318672 (ch14) — `þrjár jónanlegar H-frumeindir.`: the quantifier is the
@@ -1661,10 +1669,14 @@ describe('a term operation is no wider than its target (term-op-too-wide)', () =
     expect(ids(r)).toEqual(['w']);
   });
   it('accepts a find extended by an unchanged word AFTER the term (control)', () => {
-    // `flúorfrumeind` alone occurs twice (also inside `flúorfrumeindir`), so the find must
-    // carry a neighbour; the common trailing run strips it.
-    const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
-    expect(ids(r)).toEqual(['w']);
+    // `kolefnisfrumeind` alone occurs twice (also inside `kolefnisfrumeindir`), so the find
+    // must carry a neighbour; the common trailing run strips it. (This control used BF4's
+    // `flúorfrumeind hefur` until quantifier-agreement read the word after find: `þrjú`.)
+    const r = atom('kolefnisfrumeind er', 'kolefnisatóm er');
+    expect({ alone: C2H2_IS.split('kolefnisfrumeind').length - 1, accepted: ids(r) }).toEqual({
+      alone: 2,
+      accepted: ['w'],
+    });
   });
   it('accepts a find extended by unchanged words BEFORE the term (control)', () => {
     expect(ids(geom('muninn á rafeindapara-lögun', 'muninn á rúmfræði rafeindapara'))).toEqual([
@@ -1805,14 +1817,85 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
     ]);
   });
   it('refuses one in the common TRAILING run: a numeral after its noun (real ch15 alt)', () => {
-    // `I-frumeindirnar tvær` → `I-atómin tvær`; the two tokens before find are `eintengjum.`
-    // and the glued `I-`, so only the trailing run can see it.
+    // `I-frumeindirnar tvær` → `I-atómin tvær`; the two words before are `með eintengjum.`, the
+    // glued `I-` is no quantifier and the word after find is `á`, so only the trailing run
+    // can see it.
     const r = atom('frumeindirnar tvær', 'atómin tvær', {
       en: I3_EN,
       is: I3_IS,
       chapterDir: 'ch15',
     });
     expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+  });
+  describe('a gendered quantifier as the word right after the term (post-nominal)', () => {
+    // Icelandic puts a numeral after a definite noun (`frumeindirnar tvær`). The minimal op is
+    // the bare noun, which keeps nothing in common with replace and has nothing gendered before
+    // it, so only the word after it shows the disagreement. One word only, and only when no
+    // clause or sentence punctuation ends find's whitespace token: two words also catch
+    // `hefur tvö [rafeindapör]`, a quantifier heading the next noun.
+    const SYN_EN = 'The two atoms are bonded.';
+    const bare = (is, find = 'Frumeindirnar', replace = 'Atómin') =>
+      atom(find, replace, { en: SYN_EN, is });
+
+    it('refuses the bare noun before its numeral (real ch15 alt: `I-frumeindirnar tvær`)', () => {
+      // `frumeindirnar` occurs once, so the model needs no neighbour in find; before this rule
+      // the op was accepted and landed `I-atómin tvær`.
+      const r = atom('frumeindirnar', 'atómin', { en: I3_EN, is: I3_IS, chapterDir: 'ch15' });
+      expect({
+        unique: I3_IS.split('frumeindirnar').length - 1,
+        r: r.rejected[0]?.reasons,
+      }).toEqual({ unique: 1, r: ['quantifier-agreement'] });
+    });
+    it('refuses a numeral right after the noun (SYNTHETIC: `Frumeindirnar tvær eru tengdar.`)', () => {
+      expect(bare('Frumeindirnar tvær eru tengdar.').rejected[0]?.reasons).toEqual([
+        'quantifier-agreement',
+      ]);
+    });
+    it('strips edge punctuation from the word after (SYNTHETIC: `Frumeindirnar (tvær)`)', () => {
+      expect(bare('Frumeindirnar (tvær) eru tengdar.').rejected[0]?.reasons).toEqual([
+        'quantifier-agreement',
+      ]);
+    });
+    it('reads past a closing quote, which is no clause punctuation (SYNTHETIC: `„Frumeindirnar“ tvær`)', () => {
+      // The rest of find's whitespace token (`“`) is not the word after it.
+      expect(bare('„Frumeindirnar“ tvær eru tengdar.').rejected[0]?.reasons).toEqual([
+        'quantifier-agreement',
+      ]);
+    });
+    it('accepts when a comma ends the noun (control, SYNTHETIC: `Frumeindirnar, tvær þeirra`)', () => {
+      expect(ids(bare('Frumeindirnar, tvær þeirra, eru tengdar.'))).toEqual(['q']);
+    });
+    it('accepts a noun ending its sentence before a `Tvær` (control, SYNTHETIC)', () => {
+      const r = bare('Hér eru frumeindirnar. Tvær þeirra eru tengdar.', 'frumeindirnar', 'atómin');
+      expect(ids(r)).toEqual(['q']);
+    });
+    it('accepts it with the full stop inside find (control, SYNTHETIC): find must end in a letter', () => {
+      const r = bare(
+        'Hér eru frumeindirnar. Tvær þeirra eru tengdar.',
+        'frumeindirnar.',
+        'atómin.'
+      );
+      expect(ids(r)).toEqual(['q']);
+    });
+    it('accepts a quantifier two words after (control, real ch07 alt: `Niturfrumeindin hefur tvö`)', () => {
+      const r = atom('Niturfrumeindin', 'Nituratómið', { en: NO_EN, is: NO_IS });
+      expect(ids(r)).toEqual(['q']);
+    });
+    it('accepts a word after that is no gendered quantifier (control, SYNTHETIC: `sex`)', () => {
+      expect(ids(bare('Frumeindirnar sex eru tengdar.'))).toEqual(['q']);
+    });
+    it('documents the over-refusal: a quantifier after the noun that belongs to another (real ch07 alt)', () => {
+      // `súrefnisfrumeindin eitt` elides `rafeindapar` (neuter), so `súrefnisatómið eitt` would
+      // be right; the rule cannot tell and refuses.
+      const r = atom('súrefnisfrumeindin', 'súrefnisatómið', { en: NO_EN, is: NO_IS });
+      expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+    });
+    it('documents the over-refusal: a find carrying a neighbour that a quantifier follows (real ch07 alt)', () => {
+      // `flúorfrumeind` alone is ambiguous, so find carries `hefur`, and `þrjú` heads the next
+      // noun (`þrjú stök rafeindapör`), not this one.
+      const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
+      expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+    });
   });
   it('lowercases before looking a token up: a sentence-initial Ein (real ch07 para)', () => {
     const r = atom('súrefnisfrumeind verður', 'súrefnisatóm verður', { en: CO3_EN, is: CO3_IS });
@@ -1845,12 +1928,21 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
   });
   it('does not look three words back (control)', () => {
     // The positive control is built in: the quantifier IS there, third from find. Find starts
-    // its whitespace token (nothing is glued to it), so three tokens back is three WORDS back.
-    const before = BF4_IS.slice(0, BF4_IS.indexOf('flúorfrumeind hefur'));
+    // its whitespace token (nothing is glued to it), so three tokens back is three WORDS back,
+    // and the word after find (`eintengd`) is no quantifier. (This control used BF4's
+    // `flúorfrumeind hefur` until the word after the term was checked: `þrjú` follows it.)
+    const find = 'kolefnisfrumeind er';
+    const before = PYRIDINE_IS.slice(0, PYRIDINE_IS.indexOf(find));
     const lastThree = before.split(/\s+/u).filter(Boolean).slice(-3);
-    const r = atom('flúorfrumeind hefur', 'flúoratóm hefur', { en: BF4_EN, is: BF4_IS });
-    expect({ lastThree, gluedBefore: /\S$/u.test(before), accepted: ids(r) }).toEqual({
-      lastThree: ['fjórar', 'flúorfrumeindir.', 'Hver'],
+    const r = atom(find, 'kolefnisatóm er', { en: PYRIDINE_EN, is: PYRIDINE_IS });
+    expect({
+      unique: PYRIDINE_IS.split(find).length - 1,
+      lastThree,
+      gluedBefore: /\S$/u.test(before),
+      accepted: ids(r),
+    }).toEqual({
+      unique: 1,
+      lastThree: ['einni', 'köfnunarefnisfrumeind.', 'Hver'],
       gluedBefore: false,
       accepted: ['q'],
     });

@@ -45,17 +45,22 @@
  *   - term and term-sense, no gendered quantifier beside the term (quantifier-agreement):
  *     neither of the two whitespace words of the current text before the whitespace token that
  *     holds find, nor a part word glued to find inside that token (`H-` in `þrjár jónanlegar
- *     H-frumeindir`: checked itself, but it takes neither of the two places), nor any word of
- *     the two common runs, may be a GENDERED_QUANTIFIER (lexicon.js) once its edge punctuation
- *     is stripped and it is lowercased. Such a word is BARRED, so no agreement op can make it
- *     follow the noun's new gender, and `tvær O-frumeindir` → `tvær O-atóm` would land.
- *     ⚠️ OVER-REFUSES by design: the gate knows no genders, so it also fires where the
- *     target's gender equals the replaced word's (`enginn straumur` → `enginn rafstraumur`,
- *     both masculine). ⚠️ Does NOT see a quantifier inside a marker token (`[[link:tvær`: the
- *     core keeps `link:`), a word outside the list (lexicon.js says which are left out), nor
- *     one three words back: `einni eða fleiri O-frumeindum` and the partitive `Ein af
- *     tvítengdu súrefnisfrumeindunum` pass (KNOWN UNDER-REFUSALS, pinned in the tests; a wider
- *     window is a ruling for the project lead);
+ *     H-frumeindir`: checked itself, but it takes neither of the two places), nor the first
+ *     whitespace word after the token that holds find's end when find ends in a letter and no
+ *     `, . ; : ? !` of that token follows find (`I-frumeindirnar tvær`: Icelandic puts a numeral
+ *     after a definite noun; one word only), nor any word of the two common runs, may be a
+ *     GENDERED_QUANTIFIER (lexicon.js) once its edge punctuation is stripped and it is
+ *     lowercased. Such a word is BARRED, so no agreement op can make it follow the noun's new
+ *     gender, and `tvær O-frumeindir` → `tvær O-atóm` would land. ⚠️ OVER-REFUSES by design:
+ *     the gate knows no genders, so it also fires where the target's gender equals the
+ *     replaced word's (`enginn straumur` → `enginn rafstraumur`, both masculine), and after
+ *     the noun where the quantifier belongs to another (`súrefnisfrumeindin eitt` for an
+ *     elided rafeindapar; `flúorfrumeind hefur þrjú stök rafeindapör`, where find had to carry
+ *     `hefur`). ⚠️ Does NOT see a quantifier inside a marker token (`[[link:tvær`: the core
+ *     keeps `link:`), a word outside the list (lexicon.js says which are left out), nor one
+ *     three words back: `einni eða fleiri O-frumeindum` and the partitive `Ein af tvítengdu
+ *     súrefnisfrumeindunum` pass (KNOWN UNDER-REFUSALS, pinned in the tests; a wider window is
+ *     a ruling for the project lead);
  *   - agreement: an accepted term or term-sense op of the SAME ruling within
  *     agreementWindowWords words,
  *     the same word count, every changed word closed-class on both sides or an ending
@@ -146,7 +151,7 @@ export const REJECTION_CODES = Object.freeze([
   'op-invalid', // malformed operation
   'op-too-large', // over a per-op size bound
   'overlaps-accepted-op', // find overlaps a range an accepted op wrote
-  'quantifier-agreement', // term: a gendered quantifier just before find or kept in the op
+  'quantifier-agreement', // term: a gendered quantifier just before/after find or kept in the op
   'ruling-held', // the ruling's kinds include 'held'
   'ruling-invalid', // the ruling lacks a target, English forms or kinds
   'ruling-unknown', // no ruling with that id
@@ -415,6 +420,31 @@ function tokensBeforeFind(text, start) {
   return glued === '' ? words : [...words, glued];
 }
 
+/** Clause or sentence punctuation: a quantifier after it belongs to what follows. */
+const CLAUSE_PUNCTUATION = /[,.;:?!]/u;
+
+/**
+ * What quantifier-agreement reads after a find: the first whitespace word after the
+ * whitespace token that holds find's end, when find ends in a letter and nothing of that
+ * token after find (`.` in `frumeindirnar.`, `,`) is clause or sentence punctuation; otherwise
+ * nothing. Icelandic puts a numeral after a definite noun (`I-frumeindirnar tvær`), where the
+ * bare-noun op shares no run with its replace and has nothing gendered before it. ONE word
+ * only: two also catch a quantifier heading the next noun (`hefur tvö [rafeindapör]`); the
+ * final review of 2026-10-27 measured about 27 more refusals over the offered pairs that way,
+ * for no real catch. The rest of find's own token is not that word: `„frumeindirnar“ tvær`
+ * reads `tvær`, because a closing quote or bracket separates nothing.
+ * @param {string} text the current text
+ * @param {string} find
+ * @param {number} end where find ends in the text
+ * @returns {string[]} zero or one token
+ */
+function tokenAfterFind(text, find, end) {
+  if (!/\p{L}$/u.test(find)) return [];
+  const m = /^(\S*)\s+(\S+)/u.exec(text.slice(end));
+  if (!m || CLAUSE_PUNCTUATION.test(m[1])) return [];
+  return [m[2]];
+}
+
 function isEndingChange(a, b, minStem) {
   const fa = [...foldAo(a)];
   const fb = [...foldAo(b)];
@@ -609,8 +639,10 @@ function checkOp(op, st) {
       reasons.push('term-op-too-wide');
     }
     // A gendered quantifier is BARRED, so no agreement op can follow the noun's new gender.
-    const beforeFind = range ? tokensBeforeFind(text, range.start) : [];
-    if ([...beforeFind, ...runs.shared].some(isQuantifierToken)) {
+    const beside = range
+      ? [...tokensBeforeFind(text, range.start), ...tokenAfterFind(text, op.find, range.end)]
+      : [];
+    if ([...beside, ...runs.shared].some(isQuantifierToken)) {
       reasons.push('quantifier-agreement');
     }
   } else {
