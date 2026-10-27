@@ -13,8 +13,11 @@
  *   1. its opId is `${requestKey}.op${n}`, n counting every op of the response 1-based in
  *      response order, before anything below — so an opId always names the model's own op;
  *   2. an entry for a segment id the request did not present, or a second entry for one it
- *      did, has every op rejected (response-unknown-segment / response-duplicate-segment) and
- *      its flags and sense judgements dropped;
+ *      did, has every op rejected (response-unknown-segment / response-duplicate-segment), and
+ *      its flags and sense judgements are left out of `flags` and `senses`. The entry itself is
+ *      recorded in `dropped` — its ops' opIds and its flags and senses as the model gave them —
+ *      so an entry with no ops still leaves a trace (a flag raised on a mistyped id would
+ *      otherwise vanish, and the result would read as if the model had said nothing);
  *   3. an op declaring sense 'unclear' (any category) becomes a `sense-unclear` flag carrying
  *      its opId and `proposed: { find, replace }`, and never reaches the gate. This is decided
  *      before any runner check, so such an op is flagged even when its ruling was not offered:
@@ -322,10 +325,14 @@ function checkArgs({ requestKey, presented, rulingsById }) {
  *     opId?: string, proposed?: { find: string, replace: string } }>,
  *   senses: Array<{ segmentId: string, rulingId: string, sense: string, valid: boolean }>,
  *   missing: string[],
+ *   dropped: Array<{ segmentId: string, reason: 'response-unknown-segment'|
+ *     'response-duplicate-segment', opIds: string[], flags: object[], senses: object[] }>,
  * }} `segments` is keyed in presented order, one entry per presented segment the response
  *   answered (its list possibly empty); `rejected` and `senses` are in response order; `flags`
  *   are in response order, an entry's own flags before its converted 'unclear' ops; `missing`
- *   is in presented order. With a `problem`, every other field is empty.
+ *   is in presented order; `dropped` holds every unknown or duplicate entry in response order,
+ *   its `flags` and `senses` as the model gave them (schema names, like `rejected[].op`). With
+ *   a `problem`, every other field is empty.
  * @throws {TypeError} on malformed arguments — a caller bug fails the run, not one request.
  */
 export function parseTermPassResponse({ message, requestKey, presented, rulingsById } = {}) {
@@ -337,6 +344,7 @@ export function parseTermPassResponse({ message, requestKey, presented, rulingsB
     flags: [],
     senses: [],
     missing: [],
+    dropped: [],
   };
 
   const { problem, document } = readDocument(message);
@@ -359,6 +367,13 @@ export function parseTermPassResponse({ message, requestKey, presented, rulingsB
       entry.ops.forEach((op, k) =>
         result.rejected.push({ segmentId, opId: opIds[k], op, reasons: [whole] })
       );
+      result.dropped.push({
+        segmentId,
+        reason: whole,
+        opIds,
+        flags: entry.flags,
+        senses: entry.senses,
+      });
       continue;
     }
 

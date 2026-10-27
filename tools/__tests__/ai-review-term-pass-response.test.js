@@ -7,8 +7,12 @@
  * it. The Icelandic in `find`/`replace` is hand-written to exercise one mechanism each (the
  * parser never reads segment text); the coinage `vetnisefnarafala` → `vetniseldsneytiskeri` is
  * the one the design records the gate as ACCEPTING, which only the shadowing guard stops.
+ * The one exception is the KNOWN GAP block, which reads a real ch17 segment from disk.
  */
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadRulingSet, UNCLEAR_SENSE } from '../ai-review/ruling-set.js';
 import { carriesTarget, containsTargetStem } from '../ai-review/gate.js';
 import { usesHeadword } from '../lib/chapter-term-check.js';
@@ -77,7 +81,14 @@ const parseDoc = (d, presented) => parse(message(d), presented);
 const gateOpsOf = (r, id) => r.segments.get(id) ?? [];
 const reasonsOf = (r, opId) => r.rejected.find((x) => x.opId === opId)?.reasons ?? null;
 
-const EMPTY = { segments: new Map(), rejected: [], flags: [], senses: [], missing: [] };
+const EMPTY = {
+  segments: new Map(),
+  rejected: [],
+  flags: [],
+  senses: [],
+  missing: [],
+  dropped: [],
+};
 const expectProblem = (r, problem) => expect(r).toEqual({ problem, ...EMPTY });
 
 const VALID = doc(seg('fs-a', { ops: [op()] }), seg('fs-b'));
@@ -426,8 +437,9 @@ describe('request problems', () => {
 
   it('with a problem, nothing else is trusted: every other field is empty', () => {
     const r = parse(message(VALID, { stop_reason: 'max_tokens' }));
-    expect([r.segments.size, r.rejected, r.flags, r.senses, r.missing]).toEqual([
+    expect([r.segments.size, r.rejected, r.flags, r.senses, r.missing, r.dropped]).toEqual([
       0,
+      [],
       [],
       [],
       [],
@@ -492,20 +504,17 @@ describe('segments, unknown and duplicate entries, missing', () => {
 
   it('an unknown segment entry: its ops rejected, its flags and senses dropped', () => {
     const unknownOp = op();
+    const senses = [{ ruling: 'cell', sense: 'living-cell' }];
+    const flags = [{ kind: 'needs-rewrite', ruling: null, note: 'unknown' }];
     const r = parseDoc(
-      doc(
-        seg('fs-x', {
-          ops: [unknownOp, op({ sense: UNCLEAR_SENSE })],
-          senses: [{ ruling: 'cell', sense: 'living-cell' }],
-          flags: [{ kind: 'needs-rewrite', ruling: null, note: 'unknown' }],
-        })
-      )
+      doc(seg('fs-x', { ops: [unknownOp, op({ sense: UNCLEAR_SENSE })], senses, flags }))
     );
     expect({
       rejected: r.rejected,
       flags: r.flags,
       senses: r.senses,
       keys: [...r.segments.keys()],
+      dropped: r.dropped,
     }).toEqual({
       rejected: [
         {
@@ -524,6 +533,15 @@ describe('segments, unknown and duplicate entries, missing', () => {
       flags: [],
       senses: [],
       keys: [],
+      dropped: [
+        {
+          segmentId: 'fs-x',
+          reason: 'response-unknown-segment',
+          opIds: [`${KEY}.op1`, `${KEY}.op2`],
+          flags,
+          senses,
+        },
+      ],
     });
   });
 
@@ -542,35 +560,101 @@ describe('segments, unknown and duplicate entries, missing', () => {
   it('a duplicate entry: the second entry’s ops rejected and its flags dropped; the first kept', () => {
     const first = op({ find: 'frumeindin', replace: 'atómið' });
     const second = op({ find: 'frumeindir', replace: 'atóm' });
+    const senses = [{ ruling: 'atom', sense: 'x' }];
+    const flags = [{ kind: 'needs-rewrite', ruling: null, note: 'second' }];
     const r = parseDoc(
-      doc(
-        seg('fs-a', { ops: [first] }),
-        seg('fs-a', {
-          ops: [second],
-          senses: [{ ruling: 'atom', sense: 'x' }],
-          flags: [{ kind: 'needs-rewrite', ruling: null, note: 'second' }],
-        })
-      )
+      doc(seg('fs-a', { ops: [first] }), seg('fs-a', { ops: [second], senses, flags }))
     );
     expect({
       kept: gateOpsOf(r, 'fs-a').map((o) => o.find),
       rejected: r.rejected.map((x) => [x.opId, x.op, x.reasons]),
       flags: r.flags,
       senses: r.senses,
+      dropped: r.dropped,
     }).toEqual({
       kept: ['frumeindin'],
       rejected: [[`${KEY}.op2`, second, ['response-duplicate-segment']]],
       flags: [],
       senses: [],
+      dropped: [
+        {
+          segmentId: 'fs-a',
+          reason: 'response-duplicate-segment',
+          opIds: [`${KEY}.op2`],
+          flags,
+          senses,
+        },
+      ],
     });
   });
 
   it('an unknown id answered twice is unknown both times, never duplicate', () => {
     const r = parseDoc(doc(seg('fs-x', { ops: [op()] }), seg('fs-x', { ops: [op()] })));
-    expect(r.rejected.map((x) => x.reasons)).toEqual([
-      ['response-unknown-segment'],
-      ['response-unknown-segment'],
+    expect([r.rejected.map((x) => x.reasons), r.dropped.map((d) => d.reason)]).toEqual([
+      [['response-unknown-segment'], ['response-unknown-segment']],
+      ['response-unknown-segment', 'response-unknown-segment'],
     ]);
+  });
+
+  describe('dropped: an unknown or duplicate entry leaves a trace even with no ops', () => {
+    // Without it, a flag raised on a mistyped id would vanish: no op, so no rejected record,
+    // and the result would read as if the model had said nothing.
+    it('a mistyped id with no ops: its flag and sense judgement are kept in dropped', () => {
+      const flags = [{ kind: 'mistranslation-suspected', ruling: null, note: 'TYPO-ID FLAG' }];
+      const senses = [{ ruling: 'cell', sense: 'living-cell' }];
+      const r = parseDoc(doc(seg('fs-a'), seg('fs-bb', { flags, senses })));
+      expect({
+        rejected: r.rejected,
+        flags: r.flags,
+        senses: r.senses,
+        missing: r.missing,
+        dropped: r.dropped,
+      }).toEqual({
+        rejected: [],
+        flags: [],
+        senses: [],
+        missing: ['fs-b'],
+        dropped: [
+          { segmentId: 'fs-bb', reason: 'response-unknown-segment', opIds: [], flags, senses },
+        ],
+      });
+    });
+
+    it('a duplicate entry with no ops: kept in dropped', () => {
+      const flags = [{ kind: 'needs-rewrite', ruling: null, note: 'DUPLICATE FLAG' }];
+      const r = parseDoc(doc(seg('fs-a'), seg('fs-b'), seg('fs-a', { flags })));
+      expect([r.flags, r.dropped]).toEqual([
+        [],
+        [
+          {
+            segmentId: 'fs-a',
+            reason: 'response-duplicate-segment',
+            opIds: [],
+            flags,
+            senses: [],
+          },
+        ],
+      ]);
+    });
+
+    it('every such entry is recorded, an empty one too, in response order', () => {
+      const r = parseDoc(doc(seg('fs-x'), seg('fs-a'), seg('fs-a'), seg('fs-y')));
+      expect(r.dropped.map((d) => [d.segmentId, d.reason])).toEqual([
+        ['fs-x', 'response-unknown-segment'],
+        ['fs-a', 'response-duplicate-segment'],
+        ['fs-y', 'response-unknown-segment'],
+      ]);
+    });
+
+    it('control: a presented segment answered once is never in dropped', () => {
+      const r = parseDoc(
+        doc(
+          seg('fs-a', { ops: [op()], flags: [{ kind: 'needs-rewrite', ruling: null, note: 'n' }] }),
+          seg('fs-b', { senses: [{ ruling: 'cell', sense: 'living-cell' }] })
+        )
+      );
+      expect([r.dropped, r.flags.length, r.senses.length]).toEqual([[], 1, 1]);
+    });
   });
 });
 
@@ -989,6 +1073,55 @@ describe('shadowed-by-longer-ruling (rule 4), on the real ruling set', () => {
         presented
       ).reasons
     ).toEqual(['ruling-not-offered', 'sense-inconsistent', 'shadowed-by-longer-ruling']);
+  });
+});
+
+// ── KNOWN GAP: a design gap, not a U3 defect ─────────────────────────────────────────────
+
+describe('KNOWN GAP (design, not U3): rule 4 cannot see an uncatalogued rendering of the longer term', () => {
+  // Real ch17 text, m68825 fs-idm8272528: the English says "Hydrogen fuel cells" and the MT
+  // renders it `Vetnisrafalar`, which is neither fuel-cell's target nor its one catalogued
+  // competitor, while `cell` has no competitor at all. Rule 4 as the design writes it refuses
+  // only a find holding one of those, so a cell op `Vetnisrafalar` → `Vetnisker` passes the
+  // parser, and the U3 review measured the real gate ACCEPTING it. The remedy is a ruling-set
+  // or design change for the controller to rule on, not a parser change. The `it.fails` below
+  // asserts the WANTED behaviour, so it turns red the day such a change lands here and this
+  // marker cannot outlive the gap.
+  const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+  const ID = 'fs-idm8272528';
+  const segmentText = (tree, file) => {
+    const lines = fs
+      .readFileSync(path.join(REPO, 'books', 'efnafraedi-2e', tree, 'ch17', file), 'utf8')
+      .split('\n');
+    const at = lines.indexOf(`<!-- SEG:m68825:para:${ID} -->`);
+    return at < 0 ? null : lines[at + 1];
+  };
+  const presented = [{ segmentId: ID, rulingIds: ['cell', 'fuel-cell'] }];
+  const coinOp = cellOp({ find: 'Vetnisrafalar', replace: 'Vetnisker' });
+
+  it('the premise holds on the committed text and ruling set', () => {
+    const en = segmentText('02-for-mt', 'm68825-segments.en.md');
+    const is = segmentText('02-mt-output', 'm68825-segments.is.md');
+    const fuel = SET.byId.get('fuel-cell');
+    expect({
+      en: en?.includes('Hydrogen fuel cells'),
+      is: is?.includes('Vetnisrafalar eru'),
+      seenByGuard: [fuel.is, ...fuel.competitors].map((t) => containsTargetStem(coinOp.find, t)),
+      cellCompetitors: SET.byId.get('cell').competitors,
+    }).toEqual({ en: true, is: true, seenByGuard: [false, false], cellCompetitors: [] });
+  });
+
+  it.fails('WANTED (fails today): a cell op on that rendering is shadowed by fuel-cell', () => {
+    const r = parseDoc(doc(seg(ID, { ops: [coinOp] })), presented);
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['shadowed-by-longer-ruling']);
+  });
+
+  it('control: on the same segment, an op whose find holds fuel-cell’s target IS shadowed', () => {
+    const r = parseDoc(
+      doc(seg(ID, { ops: [cellOp({ find: 'efnarafal', replace: 'efnaker' })] })),
+      presented
+    );
+    expect(reasonsOf(r, `${KEY}.op1`)).toEqual(['shadowed-by-longer-ruling']);
   });
 });
 
