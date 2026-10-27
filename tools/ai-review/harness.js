@@ -256,7 +256,39 @@ function validateRun(opts) {
   if (typeof cap !== 'number' || !Number.isFinite(cap) || cap <= 0 || cap > CAP_USD) {
     throw new Error(`harness: cap must be a positive number no greater than CAP_USD (${CAP_USD})`);
   }
-  return { recordsDir, ledgerPath, prompts, rulingSet, cap };
+  const extraRecords = validateExtraRecords(opts.extraRecords);
+  return { recordsDir, ledgerPath, prompts, rulingSet, cap, extraRecords };
+}
+
+const EXTRA_RECORD_NAME_RE = /^[a-z][a-z0-9-]*\.json$/;
+const HARNESS_RECORD_NAMES = new Set(Object.values(RECORD_FILES));
+
+/**
+ * A caller's own run records, written by `openContext` right after `run.json` and before
+ * any count, reservation or send, so that a process killed mid-run still leaves them (the
+ * term pass's `term-pass.json`, which `resume` and `apply` need). Each is
+ * `{ name: '<kebab>.json', payload: {…} }`; a name may not be one of the harness's own.
+ * @param {unknown} list
+ * @returns {Array<{ name: string, payload: object }>}
+ */
+function validateExtraRecords(list) {
+  if (list === undefined) return [];
+  if (!Array.isArray(list)) throw new Error('harness: extraRecords must be an array');
+  const seen = new Set();
+  return list.map((r, i) => {
+    const what = `harness: extraRecords[${i}]`;
+    if (!isPlainObject(r)) throw new Error(`${what} must be { name, payload }`);
+    if (typeof r.name !== 'string' || !EXTRA_RECORD_NAME_RE.test(r.name)) {
+      throw new Error(`${what}.name must be a kebab-case .json file name`);
+    }
+    if (HARNESS_RECORD_NAMES.has(r.name)) {
+      throw new Error(`${what}.name ${r.name} is one of the harness's own records`);
+    }
+    if (seen.has(r.name)) throw new Error(`${what}.name ${r.name} repeats`);
+    seen.add(r.name);
+    if (!isPlainObject(r.payload)) throw new Error(`${what}.payload must be a plain object`);
+    return { name: r.name, payload: r.payload };
+  });
 }
 
 /** Validate the request list (no I/O). */
@@ -403,6 +435,7 @@ function openContext(
     cap,
     requestCount,
     existingRun,
+    extraRecords = [],
   }
 ) {
   const now = opts.now ?? (() => new Date());
@@ -431,6 +464,8 @@ function openContext(
       requestCount,
     };
     writer.writeJson(RECORD_FILES.run, run);
+    // Before any count, reservation or send: a run killed later still leaves these.
+    for (const r of extraRecords) writer.writeJson(r.name, r.payload);
   } else {
     const entry = { resumedAt: stamp(), ...runningCode(opts, transport) };
     run = { ...run, resumes: [...(run.resumes ?? []), entry] };
@@ -527,11 +562,13 @@ function emptyCounts(planned) {
  *   `inputTokensEstimate`: an interactive run counts every request, and refuses one),
  *   `recordsDir`, `use`, `model`, `effort`, `maxTokens`, `prompts`, `rulingSet`, and optionally
  *   `transport`, `keyOptions`, `secrets`, `cap`, `ledgerPath`, `runId`, `now`,
- *   `maxConsecutiveErrors`, `harnessCommit`, `harnessDirty`, `timeout`.
+ *   `maxConsecutiveErrors`, `harnessCommit`, `harnessDirty`, `timeout`, and `extraRecords`
+ *   (`[{ name, payload }]`, the caller's own records, written right after `run.json` and
+ *   before anything is spent; see `validateExtraRecords`).
  * @returns {Promise<{ runId: string, runDir: string, status: string, counts: object, totalUsd: number }>}
  */
 export async function runInteractive(opts) {
-  const { recordsDir, ledgerPath, prompts, rulingSet, cap } = validateRun(opts);
+  const { recordsDir, ledgerPath, prompts, rulingSet, cap, extraRecords } = validateRun(opts);
   const run = { model: opts.model, effort: opts.effort, maxTokens: opts.maxTokens };
   const requests = validateRequests(opts.requests, run, { batch: false });
   const maxConsecutive = opts.maxConsecutiveErrors ?? DEFAULT_MAX_CONSECUTIVE_ERRORS;
@@ -554,6 +591,7 @@ export async function runInteractive(opts) {
       rulingSet,
       cap,
       requestCount: requests.length,
+      extraRecords,
     }
   );
 
@@ -674,16 +712,22 @@ export async function runInteractive(opts) {
  *   `inputTokensEstimate` (batch mode only: used instead of count_tokens, and checked after
  *   the fact against what each result cost); plus `sleep`, `pollIntervalMs`, `maxPolls`; on
  *   resume (`runId` naming an existing run directory) `requests` may be omitted, and if given
- *   must equal the recorded ones. A resume that is not refused appends a `resumes` entry to
+ *   must equal the recorded ones, and `extraRecords` is refused (they were written when the
+ *   run started). A resume that is not refused appends a `resumes` entry to
  *   `run.json` before its first poll: `resumedAt` from `now`, `sdk` from the transport, and
  *   `harnessCommit` / `harnessDirty` from those options (or git), as a first run records them.
  * @returns {Promise<{ runId: string, runDir: string, status: string, counts?: object,
  *   totalUsd?: number, batchId?: string }>}
  */
 export async function runBatch(opts) {
-  const { recordsDir, ledgerPath, prompts, rulingSet, cap } = validateRun(opts);
+  const { recordsDir, ledgerPath, prompts, rulingSet, cap, extraRecords } = validateRun(opts);
   const run = { model: opts.model, effort: opts.effort, maxTokens: opts.maxTokens };
   const resuming = opts.runId !== undefined && fs.existsSync(runDirFor(recordsDir, opts.runId));
+  if (resuming && opts.extraRecords !== undefined) {
+    throw new Error(
+      'harness: extraRecords are written once, when a run starts; a resume takes none'
+    );
+  }
   const requests =
     !resuming || opts.requests !== undefined
       ? validateRequests(opts.requests, run, { batch: true })
@@ -710,6 +754,7 @@ export async function runBatch(opts) {
     rulingSet,
     cap,
     requestCount: requests.length,
+    extraRecords,
   });
 
   const plan = [];

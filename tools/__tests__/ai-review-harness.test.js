@@ -1434,3 +1434,133 @@ describe('the live transport through an injected fetch', () => {
     expect(r.costUsd).toBeCloseTo(ACTUAL / 2, 12);
   });
 });
+
+// ────────────────────────────────────────────────────────────────────────────
+// extraRecords: a caller's own record (the term pass's term-pass.json) is written right
+// after run.json, before any count, reservation or send. The runner review (2026-10-27)
+// found that the CLI wrote it in a `finally` after the harness returned, so a process
+// killed while polling a paid batch left a run that neither resume nor apply could use.
+
+describe('extraRecords — written with run.json, before anything is spent', () => {
+  const RECORD = 'caller-record.json';
+
+  /** Snapshot, per run directory, whether the caller's record exists and how many ledger lines there are. */
+  function snapshot(dir) {
+    const runs = path.join(dir, 'runs');
+    const ids = fs.existsSync(runs) ? fs.readdirSync(runs) : [];
+    return ids.map((id) => ({
+      record: fs.existsSync(path.join(runs, id, RECORD)),
+      ledger: readLedger(path.join(dir, 'ledger.jsonl')).length,
+    }));
+  }
+
+  /** Wrap every spending call so the first one records what was on disk before it. */
+  function watched(t, dir) {
+    const seen = [];
+    for (const m of ['countTokens', 'send', 'submitBatch']) {
+      const f = t[m].bind(t);
+      t[m] = async (...a) => {
+        seen.push(snapshot(dir));
+        return f(...a);
+      };
+    }
+    return seen;
+  }
+
+  for (const [mode, run] of [
+    ['interactive', runInteractive],
+    ['batch', runBatch],
+  ]) {
+    it(`writes the record before the first transport call and before any reservation (${mode})`, async () => {
+      const dir = tmp();
+      const t = mockTransport();
+      const seen = watched(t, dir);
+      const r = await run({
+        ...baseOpts(dir, t),
+        requests: [req('k0')],
+        extraRecords: [{ name: RECORD, payload: { hello: 'world', n: 1 } }],
+      });
+      expect(r.status).toBe('complete');
+      expect(seen[0]).toEqual([{ record: true, ledger: 0 }]);
+      expect(JSON.parse(fs.readFileSync(path.join(dir, 'runs', r.runId, RECORD), 'utf8'))).toEqual({
+        hello: 'world',
+        n: 1,
+      });
+    });
+  }
+
+  it('control: without extraRecords the run directory holds only the harness records', async () => {
+    const dir = tmp();
+    const r = await runInteractive({ ...baseOpts(dir, mockTransport()), requests: [req('k0')] });
+    expect(fs.readdirSync(path.join(dir, 'runs', r.runId)).sort()).toEqual(
+      ['requests.jsonl', 'responses.jsonl', 'run-end.json', 'run.json'].sort()
+    );
+  });
+
+  it('refuses a malformed list before a run directory exists or a call is made', async () => {
+    const bad = [
+      'caller-record.json',
+      [{ name: 'run.json', payload: {} }],
+      [{ name: 'run-end.json', payload: {} }],
+      [{ name: 'batch.json', payload: {} }],
+      [{ name: 'Caller.json', payload: {} }],
+      [{ name: 'caller.jsonl', payload: {} }],
+      [{ name: '../caller.json', payload: {} }],
+      [
+        { name: RECORD, payload: {} },
+        { name: RECORD, payload: {} },
+      ],
+      [{ name: RECORD, payload: [] }],
+      [{ name: RECORD, payload: null }],
+      [{ name: RECORD }],
+    ];
+    for (const extraRecords of bad) {
+      const dir = tmp();
+      const t = mockTransport();
+      await expect(
+        runInteractive({ ...baseOpts(dir, t), requests: [req('k0')], extraRecords })
+      ).rejects.toThrow(/extraRecords/);
+      expect(fs.existsSync(path.join(dir, 'runs'))).toBe(false);
+      expect(t.calls.countTokens.length + t.calls.send.length).toBe(0);
+    }
+  });
+
+  it('refuses a record that carries a secret, and sends nothing', async () => {
+    const dir = tmp();
+    const t = mockTransport();
+    await expect(
+      runInteractive({
+        ...baseOpts(dir, t, { secrets: [BOGUS_KEY] }),
+        requests: [req('k0')],
+        extraRecords: [{ name: RECORD, payload: { leaked: BOGUS_KEY } }],
+      })
+    ).rejects.toThrow(/contains a secret/);
+    expect(t.calls.countTokens.length + t.calls.send.length).toBe(0);
+    expect(readLedger(path.join(dir, 'ledger.jsonl'))).toEqual([]);
+  });
+
+  it('refuses extraRecords on a batch resume: the records belong to the run’s start', async () => {
+    const dir = tmp();
+    const t = mockTransport({ pollsUntilEnded: 3 });
+    const first = await runBatch({
+      ...baseOpts(dir, t),
+      requests: [req('k0')],
+      maxPolls: 1,
+      extraRecords: [{ name: RECORD, payload: { a: 1 } }],
+    });
+    expect(first.status).toBe('pending');
+    await expect(
+      runBatch({
+        ...baseOpts(dir, t),
+        runId: first.runId,
+        extraRecords: [{ name: RECORD, payload: { a: 2 } }],
+      })
+    ).rejects.toThrow(/extraRecords/);
+    // control: the same resume without the option goes on, and the record is untouched
+    const resumed = await runBatch({ ...baseOpts(dir, t), runId: first.runId });
+    expect(resumed.status).toBe('complete');
+    expect(
+      JSON.parse(fs.readFileSync(path.join(dir, 'runs', first.runId, RECORD), 'utf8'))
+    ).toEqual({ a: 1 });
+  });
+});

@@ -450,13 +450,24 @@ function preflight(
   return commit;
 }
 
-function writeTermPassRecord(
-  ctx,
-  { runId, chapterDir, layer1Commit, inputs, params, rulingSet, prompt, requests, workList, limit }
-) {
-  const dir = runDirFor(ctx.recordsDir, runId);
-  if (!fs.existsSync(dir)) return false;
-  createRecordWriter({ dir }).writeJson(TERM_PASS_RECORD, {
+/**
+ * The run's term-pass.json. Everything in it is known before the first call, so the harness
+ * writes it right after run.json (its `extraRecords` option): a process killed mid-run, even
+ * while polling a paid batch, still leaves the record that resume and apply need.
+ */
+function termPassPayload({
+  runId,
+  chapterDir,
+  layer1Commit,
+  inputs,
+  params,
+  rulingSet,
+  prompt,
+  requests,
+  workList,
+  limit,
+}) {
+  return {
     schema: TERM_PASS_SCHEMA,
     runId,
     book: BOOK,
@@ -473,8 +484,7 @@ function writeTermPassRecord(
     },
     requestKeys: requests.map((r) => r.key),
     workListCounts: workList.counts,
-  });
-  return true;
+  };
 }
 
 async function cmdRun(ctx, values, deps) {
@@ -531,24 +541,25 @@ async function cmdRun(ctx, values, deps) {
       ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
       ...(values['max-polls'] ? { maxPolls: positiveInt(values['max-polls'], 'max-polls') } : {}),
       ...(timeoutMs ? { timeout: timeoutMs } : {}),
+      extraRecords: [
+        {
+          name: TERM_PASS_RECORD,
+          payload: termPassPayload({
+            runId,
+            chapterDir,
+            layer1Commit,
+            inputs: plan.inputs,
+            params,
+            rulingSet,
+            prompt,
+            requests,
+            workList: plan.workList,
+            limit,
+          }),
+        },
+      ],
     };
-    let result;
-    try {
-      result = mode === 'batch' ? await runBatch(opts) : await runInteractive(opts);
-    } finally {
-      writeTermPassRecord(ctx, {
-        runId,
-        chapterDir,
-        layer1Commit,
-        inputs: plan.inputs,
-        params,
-        rulingSet,
-        prompt,
-        requests,
-        workList: plan.workList,
-        limit,
-      });
-    }
+    const result = mode === 'batch' ? await runBatch(opts) : await runInteractive(opts);
     results.push({ chapterDir, ...result });
     ctx.out(
       `${chapterDir}: run ${result.runId} ${result.status}${result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : ''}\n`
@@ -574,29 +585,21 @@ async function cmdResume(ctx, values, deps) {
   const dir = runDirFor(ctx.recordsDir, runId);
   if (!fs.existsSync(dir)) throw refusal('bad-flag', `no run ${runId}`);
   const r = createRecordWriter({ dir });
+  if (!r.exists(RECORD_FILES.run)) throw refusal('bad-flag', `run ${runId} has no run.json`);
   const run = r.readJson(RECORD_FILES.run);
-  const tp = r.readJson(TERM_PASS_RECORD);
   if (run.use !== USE || run.mode !== 'batch')
     throw refusal('bad-flag', `run ${runId} is not a ${USE} batch run`);
-  const { rulingSet, prompt } = loadInputs(ctx, { 'ruling-set': tp.params.rulingSetPath });
-  const plan = planChapter({
-    bookDir: ctx.bookDir,
-    chapterDir: tp.chapterDir,
-    rulings: rulingSet.rulings,
-    rulingsById: rulingSet.byId,
-    prompt,
-    model: run.model,
-    effort: run.effort,
-    maxTokens: run.max_tokens,
-    segmentsPerRequest: tp.params.segmentsPerRequest,
-    charBudget: tp.params.charBudget,
-  });
-  const keys = new Set(tp.requestKeys);
-  const requests = plan.requests
-    .filter((q) => keys.has(q.key))
-    .map((q) => ({ key: q.key, body: q.body }));
+  if (!r.exists(TERM_PASS_RECORD)) {
+    throw refusal(
+      'bad-flag',
+      `run ${runId} has no ${TERM_PASS_RECORD}; apply could not use its results`
+    );
+  }
+  const tp = r.readJson(TERM_PASS_RECORD);
+  // No re-plan: the harness collects against the recorded requests.jsonl. A tree changed
+  // since the buy (a HAND REPAIR, a prompt fix) must not strand a batch already paid for;
+  // apply is the staleness gate, and it refuses results whose inputs moved.
   const result = await runBatch({
-    requests,
     recordsDir: ctx.recordsDir,
     use: USE,
     model: run.model,

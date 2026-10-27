@@ -396,3 +396,108 @@ describe('run → apply, batch', () => {
     expect(a.result.counts.accepted).toBe(4);
   });
 });
+
+// The runner review (2026-10-27) found that term-pass.json was written in a `finally` after
+// the harness returned, so a process killed while polling a paid batch left a run that
+// neither resume nor apply could use; and that resume re-planned the requests from the
+// current tree, so any change after the buy stranded the batch and its reservation.
+describe('a run killed mid-flight stays resumable and applicable', () => {
+  /** Whether each run directory under `records` holds term-pass.json right now. */
+  const termPassOnDisk = (records) => {
+    const runs = path.join(records, 'runs');
+    return (fs.existsSync(runs) ? fs.readdirSync(runs) : []).map((id) =>
+      fs.existsSync(path.join(runs, id, TERM_PASS_RECORD))
+    );
+  };
+
+  it('a batch has term-pass.json on disk while it is still polling', async () => {
+    const S = setup();
+    const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
+    const seen = [];
+    const getBatch = t.getBatch;
+    t.getBatch = async (...a) => {
+      seen.push(termPassOnDisk(S.fx.records));
+      return getBatch(...a);
+    };
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'batch', '--yes'],
+      S.deps({ transport: t, sleep: async () => {}, pollIntervalMs: 0 })
+    );
+    expect(r.results[0].status).toBe('complete');
+    expect(seen[0]).toEqual([true]);
+  });
+
+  it('an interactive run has term-pass.json on disk before its first send', async () => {
+    const S = setup();
+    const t = mockTransport();
+    const seen = [];
+    const send = t.send;
+    t.send = async (...a) => {
+      seen.push(termPassOnDisk(S.fx.records));
+      return send(...a);
+    };
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: t })
+    );
+    expect(r.results[0].status).toBe('complete');
+    expect(seen[0]).toEqual([true]);
+  });
+
+  it('resume collects a bought batch after the tree changed; apply is what refuses stale inputs', async () => {
+    const S = setup();
+    const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
+    const extra = { transport: t, sleep: async () => {}, pollIntervalMs: 0 };
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'batch', '--yes', '--max-polls', '1'],
+      S.deps(extra)
+    );
+    expect(r.results[0].status).toBe('pending');
+    const runId = r.results[0].runId;
+    // A HAND REPAIR to a PRESENTED layer-1 segment (the reviewer's probe p5): it changes
+    // the request body a re-plan would build, so the old resume refused here.
+    const f = path.join(S.fx.book, '02-mt-output', 'ch02', 'm68693-segments.is.md');
+    const keep = fs.readFileSync(f);
+    try {
+      const text = keep.toString('utf8');
+      expect(text).toContain('„osseous“/Flickr)');
+      fs.writeFileSync(f, text.replace('„osseous“/Flickr)', '„osseous“ / Flickr)'));
+      const res = await main(['resume', '--run', runId], S.deps(extra));
+      expect(res.status).toBe('complete');
+      await expect(main(['apply', '--chapter', 'ch02', '--run', runId], S.deps())).rejects.toThrow(
+        /stale-inputs/
+      );
+    } finally {
+      fs.writeFileSync(f, keep);
+    }
+    // control: with the tree restored, the same run applies
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(a.result.counts.accepted).toBe(4);
+  });
+
+  it('resume checks run.json before term-pass.json, and names a missing term-pass.json', async () => {
+    const S = setup();
+    const extra = { transport: mockTransport(), sleep: async () => {}, pollIntervalMs: 0 };
+    // an interactive run is not resumable, whatever else is missing
+    const i = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps(extra)
+    );
+    const iDir = path.join(S.fx.records, 'runs', i.results[0].runId);
+    fs.rmSync(path.join(iDir, TERM_PASS_RECORD));
+    await expect(main(['resume', '--run', i.results[0].runId], S.deps(extra))).rejects.toThrow(
+      /not a .* batch run/
+    );
+    // a pending batch whose term-pass.json is gone is refused by name
+    const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
+    const b = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'batch', '--yes', '--max-polls', '1'],
+      S.deps({ ...extra, transport: t })
+    );
+    const bDir = path.join(S.fx.records, 'runs', b.results[0].runId);
+    fs.rmSync(path.join(bDir, TERM_PASS_RECORD));
+    await expect(
+      main(['resume', '--run', b.results[0].runId], S.deps({ ...extra, transport: t }))
+    ).rejects.toThrow(/term-pass\.json/);
+  });
+});
