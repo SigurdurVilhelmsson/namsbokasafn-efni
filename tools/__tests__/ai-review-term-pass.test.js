@@ -155,6 +155,78 @@ describe('plan', () => {
   });
 });
 
+// The runner review (2026-10-27, cli-ops medium): the outside-the-repository test compared
+// path strings, so a symlink outside the repository that points into it admitted a write into
+// the repository (it overwrote a READ-ONLY layer-1 file), and another checkout's books/ tree
+// was admitted. The guard now judges where the write would land.
+describe('--out and --report are judged by where the write would land', () => {
+  const L1 = ['books', 'efnafraedi-2e', '02-mt-output', 'ch02', 'chapter-metadata-segments.is.md'];
+  const linkTo = (target) => {
+    const link = path.join(scratch(), 'link');
+    fs.symlinkSync(target, link);
+    return link;
+  };
+
+  it('refuses a path through a symlink outside the repository that points into it', async () => {
+    const { deps, fx } = setup();
+    const link = linkTo(fx.root);
+    const layer1 = path.join(fx.root, ...L1);
+    const before = fs.readFileSync(layer1);
+    await expect(
+      main(['plan', '--chapter', 'ch02', '--out', path.join(link, ...L1)], deps())
+    ).rejects.toThrow(/outside the repository/);
+    await expect(
+      main(['plan', '--chapter', 'ch02', '--out', path.join(link, 'new.json')], deps())
+    ).rejects.toThrow(/outside the repository/);
+    expect(fs.readFileSync(layer1).equals(before)).toBe(true);
+    expect(fx.sh(['status', '--porcelain', '--untracked-files=all'])).toBe('');
+  });
+
+  it('refuses a dangling symlink whose target would be created inside the repository', async () => {
+    const { deps, fx } = setup();
+    const leaf = path.join(scratch(), 'leaf.json');
+    fs.symlinkSync(path.join(fx.root, 'planted.json'), leaf);
+    await expect(main(['plan', '--chapter', 'ch02', '--out', leaf], deps())).rejects.toThrow(
+      /resolves to nothing/
+    );
+    expect(fs.existsSync(path.join(fx.root, 'planted.json'))).toBe(false);
+  });
+
+  it('refuses a path into another tree through a books/ directory', async () => {
+    const { deps } = setup();
+    const other = path.join(scratch(), 'other-checkout', 'books', 'efnafraedi-2e', 'ch02');
+    fs.mkdirSync(other, { recursive: true });
+    const out = path.join(other, 'x.json');
+    await expect(main(['plan', '--chapter', 'ch02', '--out', out], deps())).rejects.toThrow(
+      /must not lie in a books\/ directory/
+    );
+    expect(fs.existsSync(out)).toBe(false);
+  });
+
+  it('--report through a symlink into the repository refuses too', async () => {
+    const { deps, fx } = setup();
+    const link = linkTo(fx.root);
+    await expect(
+      main(
+        ['apply', '--chapter', 'ch02', '--run', 'no-such-run', '--report', path.join(link, 'r.md')],
+        deps()
+      )
+    ).rejects.toThrow(/outside the repository/);
+    expect(fs.existsSync(path.join(fx.root, 'r.md'))).toBe(false);
+  });
+
+  it('control: a plain scratch path, and a symlink to another scratch directory, still write', async () => {
+    const { deps } = setup();
+    const plain = path.join(scratch(), 'plan.json');
+    await main(['plan', '--chapter', 'ch02', '--out', plain], deps());
+    expect(JSON.parse(fs.readFileSync(plain, 'utf8')).book).toBe('efnafraedi-2e');
+    const elsewhere = scratch();
+    const link = linkTo(elsewhere);
+    await main(['plan', '--chapter', 'ch02', '--out', path.join(link, 'via-link.json')], deps());
+    expect(fs.existsSync(path.join(elsewhere, 'via-link.json'))).toBe(true);
+  });
+});
+
 describe('run preflight', () => {
   it('refuses an interactive max_tokens the SDK would refuse, before spending', async () => {
     const { deps, fx } = setup();

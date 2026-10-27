@@ -109,7 +109,7 @@ function usage() {
     '          [--timeout-ms N] [--layer1-commit REF] [--limit N] [--ruling-set PATH] [--yes]',
     '  resume  --run RUNID [--max-polls N]',
     '  apply   --chapter chNN --run RUNID [--run RUNID ...] [--report FILE] [--write] [--overwrite]',
-    `The book is ${BOOK}. FILE paths must be absolute and outside the repository.`,
+    `The book is ${BOOK}. FILE paths must be absolute, and land (symlinks resolved) outside the repository and outside any books/ directory.`,
   ].join('\n');
 }
 
@@ -175,18 +175,74 @@ function positiveInt(v, name) {
   return Number(v);
 }
 
+const isInside = (p, root) => {
+  const rel = path.relative(root, p);
+  return !(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel));
+};
+
+/**
+ * Where a write to the absolute path `abs` would land: its deepest EXISTING ancestor resolved
+ * through every symlink (fs.realpathSync), with the rest of the path rebuilt below it. A
+ * component that exists but resolves to nothing (a dangling or looping symlink) refuses,
+ * because a write through a dangling link creates the link's target, wherever that is.
+ */
+function landingPath(abs, name) {
+  const tail = [];
+  let cur = abs;
+  for (;;) {
+    let st;
+    try {
+      st = fs.lstatSync(cur);
+    } catch (err) {
+      if (err.code !== 'ENOENT' && err.code !== 'ENOTDIR') throw err;
+    }
+    if (st) {
+      let real;
+      try {
+        real = fs.realpathSync(cur);
+      } catch {
+        throw refusal(
+          'bad-flag',
+          `--${name} passes through a link that resolves to nothing: ${cur}`
+        );
+      }
+      return path.join(real, ...tail);
+    }
+    const parent = path.dirname(cur);
+    if (parent === cur) return abs;
+    tail.unshift(path.basename(cur));
+    cur = parent;
+  }
+}
+
+/**
+ * Admit a --out/--report FILE only where the write would land outside the repository and
+ * outside any books/ directory, judged by the real path (landingPath), not the path string:
+ * a symlink outside the repository can point into it, and another checkout's book tree is
+ * "outside" this repository yet as READ-ONLY as ours (config.js assertRecordsDir guards the
+ * same shape for records). Returns the landing path, so the write goes exactly where it was
+ * checked.
+ */
 function outsideRepo(file, repoRoot, name) {
   if (typeof file !== 'string' || !path.isAbsolute(file)) {
     throw refusal('bad-flag', `--${name} must be an absolute path`);
   }
-  const rel = path.relative(repoRoot, path.resolve(file));
-  if (!(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel))) {
+  const resolved = path.resolve(file);
+  const landing = landingPath(resolved, name);
+  if (isInside(resolved, repoRoot) || isInside(landing, fs.realpathSync(repoRoot))) {
     throw refusal(
       'bad-flag',
       `--${name} must be outside the repository (records and layers are tool-written)`
     );
   }
-  return path.resolve(file);
+  if ([resolved, landing].some((p) => p.split(path.sep).includes('books'))) {
+    throw refusal(
+      'bad-flag',
+      `--${name} must not lie in a books/ directory (another checkout's book tree is ` +
+        `READ-ONLY too): ${landing}`
+    );
+  }
+  return landing;
 }
 
 function repoRelativeInput(p, repoRoot, name) {
