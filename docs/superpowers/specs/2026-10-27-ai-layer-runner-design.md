@@ -5,6 +5,34 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-10-27 (evening), after a final adversarial review of the afternoon's fixes** (3 lenses, 19
+> findings, each checked by an independent refuter). It overrides the afternoon block where they disagree.
+>
+> - **"Usable" has one definition, `isUsableParse`:** no request problem AND every presented segment answered.
+>   Coverage uses it (an answer that skipped segments, or answered none, used to count), records
+>   `segmentsUnanswered` and `requestsTruncated`, and `run`/`resume` parse each finished chapter's answers with it and
+>   stop on any unusable one. `judgeRun` also compares usable answers with `planned`, so a request that was never sent
+>   stops the run.
+> - **A withdrawing flag naming no ruling withdraws every operation in its segment; so does a second entry for a
+>   segment.** The partial-coverage refusal names the remedy for its cause: after truncation, raise `--max-tokens`,
+>   re-run the whole chapter and apply that run alone (runs with different `max_tokens` cannot be applied together).
+> - **`resume --yes` closes a killed interactive run** (`interrupted`): every open reservation of the run is settled at
+>   its worst case, each request left in flight is recorded as an `interrupted` error, and the run can then be applied
+>   together with a fresh run of the chapter.
+> - **`quantifier-agreement` also reads the word right after the TERM** (the word after `find` only when the term ends
+>   `find`; a carried trailing word is checked as part of the shared run), not after a comma or full stop; and a part
+>   glued to the term (`H-`) takes no place in the two-word look-back. Known under-refusals, pinned by tests and left
+>   for a ruling on width: `einni eða fleiri O-frumeindum`, partitive `Ein af tvítengdu …`.
+> - **The gate's English check folds hyphens as the work list does** (the helper lives in `tokens.js`), so the offers the
+>   fold added are editable.
+> - **The prompt** no longer says a request's segments are each other's context (only segments needing a check are
+>   sent), and teaches the word-after and glued-prefix rules.
+> - **Still open, beyond the afternoon list:** `--limit` exits 0 and prints no line for the chapters it skips; a
+>   stop_reason other than end_turn, refusal or max_tokens still counts as `succeeded` in the harness (the parse check
+>   now catches its effect); `--out`/`--report` through a hard link; the `books` component check refusing an unrelated
+>   path; the 7 of 282 over-refusals of real frumeind→atóm swaps; read-only neighbour segments; an apply filter by unit,
+>   ruling or category (needed for the blind check's per-category drop and for D7).
+
 > **✏️ AMENDED AGAIN 2026-10-27 (afternoon), after the adversarial review of the built runner** (5 lenses, 37
 > findings, each checked by an independent refuter; work resumed after a machine crash, nothing pushed). Where this
 > block disagrees with the block below or the sections under it, this block wins; the code and its tests win over
