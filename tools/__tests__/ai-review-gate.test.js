@@ -395,11 +395,6 @@ const CO3_EN =
   'One oxygen atom must have a double bond to carbon to complete the octet on the central atom. All oxygen atoms, however, are equivalent, and the double bond could form from any one of the three atoms. This gives rise to three resonance forms of the carbonate ion. Because we can write three identical resonance structures, we know that the actual arrangement of electrons in the carbonate ion is the average of the three structures. Again, experiments show that all three C–O bonds are exactly the same.';
 const CO3_IS =
   'Ein súrefnisfrumeind verður að hafa tvítengi við kolefni til að fullgera áttundina á miðjufrumeindinni. Allar súrefnisfrumeindirnar eru þó jafngildar og tvítengið gæti myndast frá hvaða frumeind sem er af þessum þremur. Þetta gefur tilefni til þriggja vokmynda karbónatjónarinnar. Þar sem við getum skrifað þrjár eins vokmyndir vitum við að raunveruleg uppröðun rafeinda í karbónatjóninni er meðaltal þessara þriggja mynda. Aftur sýna tilraunir að öll þrjú C–O tengin eru nákvæmlega eins.';
-// m68740:alt:fs-idp30893072-alt (ch07) — a sentence-initial `Önnur`
-const C3H5_EN =
-  'A Lewis structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets, and there is a superscripted negative sign.';
-const C3H5_IS =
-  'Lewis-mynd sýnir kolefnisfrumeind sem er eintengd við tvær vetnisfrumeindir og aðra kolefnisfrumeind. Önnur kolefnisfrumeindin er eintengd við vetnisfrumeind og þriðju kolefnisfrumeindina. Þriðja kolefnisfrumeindin er eintengd við tvær vetnisfrumeindir. Öll myndin er umkringd hornklofum og er með hávísinn mínus.';
 // m68742:problem:fs-idp49887536 (ch07) — a two-word target (rúmfræði rafeindapara)
 const GEOM_EN = 'Explain the difference between electron-pair geometry and molecular structure.';
 const GEOM_IS = 'Útskýrðu muninn á rafeindapara-lögun og sameindabyggingu.';
@@ -1623,8 +1618,8 @@ describe('a term operation is no wider than its target (term-op-too-wide)', () =
 
 describe('a term operation beside a gendered quantifier (quantifier-agreement)', () => {
   // A gendered numeral or quantifier is BARRED, so no agreement op may follow the noun's new
-  // gender; a term op beside one lands ungrammatical text. Before this rule all seven
-  // refusing cases below were accepted.
+  // gender; a term op beside one lands ungrammatical text. Before this rule every refusing
+  // case below was accepted.
   const atom = (find, replace, args = {}) =>
     gateReal({ ops: [term('q', 'atom', find, replace)], en: C2H2_EN, is: C2H2_IS, ...args });
 
@@ -1664,12 +1659,19 @@ describe('a term operation beside a gendered quantifier (quantifier-agreement)',
     const r = atom('súrefnisfrumeind verður', 'súrefnisatóm verður', { en: CO3_EN, is: CO3_IS });
     expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
   });
-  it('lowercases a run word as well: a sentence-initial Önnur (real ch07 alt)', () => {
-    const r = atom('Önnur kolefnisfrumeindin', 'Önnur kolefnisatómið', {
-      en: C3H5_EN,
-      is: C3H5_IS,
+  it('lowercases a run word as well: Ein kept at the very start of the segment (real ch07 para)', () => {
+    // find starts the segment, so no token precedes it and only the leading run can see Ein.
+    const r = atom('Ein súrefnisfrumeind verður', 'Ein súrefnisatóm verður', {
+      en: CO3_EN,
+      is: CO3_IS,
     });
-    expect(r.rejected[0]?.reasons).toEqual(['quantifier-agreement']);
+    expect({
+      atStart: CO3_IS.startsWith('Ein súrefnisfrumeind verður'),
+      r: r.rejected[0]?.reasons,
+    }).toEqual({
+      atStart: true,
+      r: ['quantifier-agreement'],
+    });
   });
   it('strips edge punctuation from a token: (eina frumeind á þykkt) (real ch10 para)', () => {
     const r = atom('frumeind á þykkt', 'atóm á þykkt', {
