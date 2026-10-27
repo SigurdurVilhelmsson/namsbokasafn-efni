@@ -29,6 +29,7 @@ import {
   normalizeScope,
   validateRulingSet,
   loadRulingSet,
+  UNCLEAR_SENSE,
 } from '../ai-review/ruling-set.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -38,7 +39,6 @@ const EXC_REL =
   'experiments/terminology-consistency/results/2026-10-26/scope-exceptions-2026-10-26.json';
 const OUT_REL = 'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json';
 const CLI = path.join(REPO, 'tools', 'ai-review', 'compile-ruling-set.js');
-const FOR_MT = path.join(REPO, 'books', 'efnafraedi-2e', '02-for-mt');
 
 const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 const committedText = () => fs.readFileSync(path.join(REPO, OUT_REL), 'utf8');
@@ -76,10 +76,22 @@ const baseInput = (before, extra = {}) => ({
     ...extra,
   }),
 });
-const excInput = (exceptions = []) => ({
+const excInput = (exceptions = [], senses = []) => ({
   path: 'synthetic/exceptions.json',
-  text: JSON.stringify({ about: 'synthetic', recordedAt: '2026-10-26', exceptions }),
+  text: JSON.stringify({ about: 'synthetic', recordedAt: '2026-10-26', exceptions, senses }),
 });
+const senseEntry = (enNorm, extra = {}) => ({
+  enNorm,
+  sense: 'the-sense',
+  gloss: 'the ruled sense',
+  otherSenses: [{ id: 'another-sense', gloss: 'another sense' }],
+  status: 'ruled',
+  source: 'synthetic',
+  glossBy: 'synthetic',
+  ...extra,
+});
+const compileWithSense = (entry) =>
+  compileRulingSet(baseInput([beforeRow('acid', 'sýra')]), excInput([], [entry]));
 const exception = (enNorm, scope, status = 'proposed') => ({
   enNorm,
   scope,
@@ -142,53 +154,85 @@ describe('the committed artifact', () => {
 
 // ─── Scope ───────────────────────────────────────────────────────────────
 
+// The group (ch02) and cell (ch17) widths proposed on 2026-10-26 were withdrawn the same day:
+// they were MT-wire notes, not rulings, and [USER] pointed out that the AI layer exists to
+// judge a homograph from its context. Both rulings now carry a SENSE (below). The width
+// mechanism stays, exercised on synthetic input under 'compile refusals'.
 describe('scope', () => {
-  it('group carries its proposed ch02 scope', () => {
-    const r = ruling(committed(), 'group');
-    expect([r.scope, r.scopeStatus]).toEqual([
-      { kind: 'chapters', chapters: ['ch02'] },
-      'proposed',
-    ]);
-  });
-
-  it('cell carries its proposed ch17 scope', () => {
-    const r = ruling(committed(), 'cell');
-    expect([r.scope, r.scopeStatus]).toEqual([
-      { kind: 'chapters', chapters: ['ch17'] },
-      'proposed',
-    ]);
-  });
-
-  it('exactly two rulings have a non-book scope (the test above is not vacuous)', () => {
-    const nonBook = committed().rulings.filter((r) => r.scope.kind !== 'book');
-    expect(nonBook.map((r) => r.enNorm).sort()).toEqual(['cell', 'group']);
-  });
-
-  it('every other ruling is book-wide with the default status', () => {
-    const others = committed().rulings.filter((r) => !['cell', 'group'].includes(r.enNorm));
-    const odd = others.filter((r) => r.scope.kind !== 'book' || r.scopeStatus !== 'default');
-    expect(odd).toEqual([]);
-  });
-
-  it('the book-wide control population is non-empty', () => {
-    const books = committed().rulings.filter((r) => r.scopeStatus === 'default');
-    expect(books.length).toBeGreaterThan(300);
-  });
-
-  it('every chapter token is a real directory under books/efnafraedi-2e/02-for-mt/', () => {
-    const tokens = committed().rulings.flatMap((r) => r.scope.chapters || []);
-    const missing = tokens.filter(
-      (t) => !fs.statSync(path.join(FOR_MT, t), { throwIfNoEntry: false })?.isDirectory()
+  it('no ruling has a chapter width, and none carries a proposed status', () => {
+    const odd = committed().rulings.filter(
+      (r) => r.scope.kind !== 'book' || r.scopeStatus !== 'default'
     );
-    expect([tokens.length, missing]).toEqual([2, []]);
+    expect(odd.map((r) => r.enNorm)).toEqual([]);
   });
 
-  it('records each scope exception with its source in the notes', () => {
-    const notes = committed().notes.filter((n) => n.kind === 'scope-exception');
-    expect(notes.map((n) => [n.enNorm, n.status])).toEqual([
-      ['cell', 'proposed'],
-      ['group', 'proposed'],
+  it('the book-wide population is the whole set, and non-empty', () => {
+    const books = committed().rulings.filter((r) => r.scopeStatus === 'default');
+    expect([books.length, books.length > 300]).toEqual([committed().rulings.length, true]);
+  });
+
+  it('records no scope exception (the file lists none)', () => {
+    expect(committed().notes.filter((n) => n.kind === 'scope-exception')).toEqual([]);
+  });
+});
+
+// ─── Senses ──────────────────────────────────────────────────────────────
+
+describe('senses', () => {
+  const sensed = () => committed().rulings.filter((r) => r.sense !== null);
+
+  it('exactly five rulings carry a sense: the homographs addition, bent, cell, group, hole', () => {
+    expect(sensed().map((r) => r.enNorm)).toEqual(['addition', 'bent', 'cell', 'group', 'hole']);
+  });
+
+  it('every other ruling carries sense null — present, not absent', () => {
+    const rest = committed().rulings.filter((r) => r.sense === null);
+    expect([rest.length > 300, rest.every((r) => 'sense' in r)]).toEqual([true, true]);
+  });
+
+  it('addition is restricted to the reaction sense ([USER] 2026-10-26)', () => {
+    const s = ruling(committed(), 'addition').sense;
+    expect([s.id, s.status, s.otherSenses.map((o) => o.id)]).toEqual([
+      'addition-reaction',
+      'ruled',
+      ['adding-something', 'arithmetic', 'in-addition'],
     ]);
+  });
+
+  it('group is the periodic-table column and cell the electrochemical cell', () => {
+    expect([ruling(committed(), 'group').sense.id, ruling(committed(), 'cell').sense.id]).toEqual([
+      'periodic-table-group',
+      'electrochemical-cell',
+    ]);
+  });
+
+  it('every sense is ruled, so the gate can admit its edits', () => {
+    expect(sensed().filter((r) => r.sense.status !== 'ruled')).toEqual([]);
+  });
+
+  it("every closed list has distinct ids, at least two senses, and never 'unclear'", () => {
+    const bad = sensed().filter((r) => {
+      const ids = [r.sense.id, ...r.sense.otherSenses.map((o) => o.id)];
+      return ids.length < 2 || new Set(ids).size !== ids.length || ids.includes(UNCLEAR_SENSE);
+    });
+    expect(bad).toEqual([]);
+  });
+
+  it('records each sense with its source and who drafted the gloss', () => {
+    const notes = committed().notes.filter((n) => n.kind === 'sense');
+    expect(
+      notes.map((n) => [n.enNorm, n.sense, n.status, n.source.length > 0, n.glossBy.length > 0])
+    ).toEqual([
+      ['addition', 'addition-reaction', 'ruled', true, true],
+      ['bent', 'molecular-shape', 'ruled', true, true],
+      ['cell', 'electrochemical-cell', 'ruled', true, true],
+      ['group', 'periodic-table-group', 'ruled', true, true],
+      ['hole', 'lattice-hole', 'ruled', true, true],
+    ]);
+  });
+
+  it('counts the senses', () => {
+    expect(committed().counts.senses).toEqual({ proposed: 0, ruled: 5 });
   });
 });
 
@@ -474,6 +518,77 @@ describe('compile refusals', () => {
     expect(() => compileRulingSet(baseInput([beforeRow('acid', 'sýra')]), exc)).toThrow(/key/);
   });
 
+  it('control: a sense that matches becomes the ruling’s sense, and a note', () => {
+    const out = compileWithSense(senseEntry('acid'));
+    expect([out.rulings[0].sense, out.notes.find((n) => n.kind === 'sense').source]).toEqual([
+      {
+        id: 'the-sense',
+        gloss: 'the ruled sense',
+        otherSenses: [{ id: 'another-sense', gloss: 'another sense' }],
+        status: 'ruled',
+      },
+      'synthetic',
+    ]);
+  });
+
+  it('control: a ruling the senses do not name gets sense null', () => {
+    const out = compileRulingSet(baseInput([beforeRow('acid', 'sýra')]), excInput());
+    expect(out.rulings[0].sense).toBeNull();
+  });
+
+  it('refuses an exceptions file without a senses list', () => {
+    const exc = {
+      path: 'synthetic/exceptions.json',
+      text: JSON.stringify({ about: 'synthetic', recordedAt: '2026-10-26', exceptions: [] }),
+    };
+    expect(() => compileRulingSet(baseInput([beforeRow('acid', 'sýra')]), exc)).toThrow(
+      /senses must be an array/
+    );
+  });
+
+  it('refuses a sense whose enNorm matches no row', () => {
+    expect(() => compileWithSense(senseEntry('base'))).toThrow(/sense for base matches no row/);
+  });
+
+  it('refuses a sense on a held headword', () => {
+    const exc = excInput([], [senseEntry('fissile')]);
+    expect(() => compileRulingSet(baseInput([beforeRow('fissile', null)]), exc)).toThrow(
+      /held|excluded/
+    );
+  });
+
+  it('refuses two senses for one enNorm', () => {
+    const e = senseEntry('acid');
+    expect(() =>
+      compileRulingSet(baseInput([beforeRow('acid', 'sýra')]), excInput([], [e, e]))
+    ).toThrow(/duplicate sense/);
+  });
+
+  it.each([
+    ['the ruled sense is named unclear', { sense: 'unclear' }, /reserved/],
+    [
+      'another sense is named unclear',
+      { otherSenses: [{ id: 'unclear', gloss: 'x' }] },
+      /reserved/,
+    ],
+    ['a sense id is not a slug', { sense: 'The Sense' }, /bad sense id/],
+    ['two senses share an id', { otherSenses: [{ id: 'the-sense', gloss: 'again' }] }, /distinct/],
+    ['no other sense is listed', { otherSenses: [] }, /at least one other sense/],
+    ['the gloss is empty', { gloss: '' }, /gloss/],
+    ['the gloss is untrimmed', { gloss: ' padded ' }, /gloss/],
+    ['the status is not proposed or ruled', { status: 'default' }, /status/],
+    ['an entry carries an unnamed key', { scope: { kind: 'book' } }, /unexpected key/],
+    [
+      'another sense carries an unnamed key',
+      { otherSenses: [{ id: 'x', gloss: 'x', note: 'n' }] },
+      /unexpected key/,
+    ],
+    ['the source is missing', { source: '' }, /source/],
+    ['glossBy is missing', { glossBy: undefined }, /glossBy/],
+  ])('refuses a sense when %s', (_label, extra, error) => {
+    expect(() => compileWithSense(senseEntry('acid', extra))).toThrow(error);
+  });
+
   it('refuses a supersession whose from matches nothing', () => {
     const base = baseInput([beforeRow('acid', 'sýra')], {
       supersededInBefore: [{ enNorm: 'acid', from: 'súr', to: 'sýra' }],
@@ -596,8 +711,37 @@ describe('loadRulingSet', () => {
   it('refuses a default status on a non-book scope', () => {
     const set = committed();
     const i = set.rulings.findIndex((r) => r.enNorm === 'cell');
+    set.rulings[i].scope = { kind: 'chapters', chapters: ['ch17'] };
     set.rulings[i].scopeStatus = 'default';
     expect(() => validateRulingSet(set)).toThrow(/default/);
+  });
+
+  it('control: the same chapter scope with a ruled status validates', () => {
+    const set = committed();
+    const i = set.rulings.findIndex((r) => r.enNorm === 'cell');
+    set.rulings[i].scope = { kind: 'chapters', chapters: ['ch17'] };
+    set.rulings[i].scopeStatus = 'ruled';
+    expect(() => validateRulingSet(set)).not.toThrow();
+  });
+
+  it('refuses a ruling whose sense key is absent (never read as null)', () => {
+    const set = committed();
+    delete set.rulings[0].sense;
+    expect(() => validateRulingSet(set)).toThrow(/sense must be an object or null/);
+  });
+
+  it('refuses a ruling whose sense is malformed', () => {
+    const set = committed();
+    const i = set.rulings.findIndex((r) => r.enNorm === 'cell');
+    set.rulings[i].sense = { ...set.rulings[i].sense, id: UNCLEAR_SENSE };
+    expect(() => validateRulingSet(set)).toThrow(/reserved/);
+  });
+
+  it('refuses a ruling whose sense status is not proposed or ruled', () => {
+    const set = committed();
+    const i = set.rulings.findIndex((r) => r.enNorm === 'cell');
+    set.rulings[i].sense = { ...set.rulings[i].sense, status: 'maybe' };
+    expect(() => validateRulingSet(set)).toThrow(/sense status/);
   });
 });
 

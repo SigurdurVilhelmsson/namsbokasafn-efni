@@ -11,6 +11,14 @@
  * and a chapter is the STRING `chNN` or `appendices`, never an integer: in older data `0`
  * meant both ch00 and "the whole book". Legacy integers convert on read in the compiler's
  * inputs only (`0` → book, `-1` → appendices, `N` → chNN); the artifact holds strings.
+ *
+ * A ruling may also carry a SENSE (added 2026-10-26, after [USER] pointed out that the AI
+ * layer exists to use the surrounding text): `null`, or
+ *   { id, gloss, otherSenses: [{ id, gloss }, …], status: 'proposed'|'ruled' }
+ * The model names the sense it judged from the closed list — `id`, an id in `otherSenses`, or
+ * UNCLEAR_SENSE — and the gate refuses an edit whose declared sense is not `id`. A homograph
+ * such as `cell` is restricted by sense, not by a chapter list, because a chapter list cannot
+ * separate the senses (the electrochemical cell occurs in six chapter directories).
  */
 
 import fs from 'node:fs';
@@ -30,6 +38,15 @@ export const CHAPTER_TOKEN_RE = /^(ch\d\d|appendices)$/;
 export const RULING_ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 export const SCOPE_STATUSES = Object.freeze(['default', 'proposed', 'ruled']);
+
+/** A sense id: the same slug shape as a ruling id. */
+export const SENSE_ID_RE = RULING_ID_RE;
+
+/** What the model declares when the context does not settle the sense. Never a sense id. */
+export const UNCLEAR_SENSE = 'unclear';
+
+/** 'ruled' admits edits that declare the sense; 'proposed' holds the ruling (the gate refuses). */
+export const SENSE_STATUSES = Object.freeze(['proposed', 'ruled']);
 
 const BOOK = 'book';
 
@@ -134,6 +151,7 @@ const RULING_KEYS = [
   'competitors',
   'scope',
   'scopeStatus',
+  'sense',
   'kinds',
   'sources',
   'matchable',
@@ -143,6 +161,49 @@ const RULING_KEYS = [
 const isNonEmptyString = (v) => typeof v === 'string' && v.length > 0;
 const isStringArray = (v, nonEmpty) =>
   Array.isArray(v) && (!nonEmpty || v.length > 0) && v.every(isNonEmptyString);
+
+/**
+ * Check a sense as the artifact stores it (`null` is the caller's business: it means "no
+ * sense restriction"). Every id is a slug, none is UNCLEAR_SENSE, all are distinct; every
+ * gloss is non-empty and trimmed; at least one other sense is listed, because a closed list
+ * with one member gives the model nothing to judge. Throws on the first problem.
+ * @param {unknown} sense
+ * @param {string} where
+ */
+export function checkSense(sense, where) {
+  if (!isPlainObject(sense))
+    throw new Error(`ruling-set: ${where}: sense must be an object or null`);
+  onlyKeys(sense, ['id', 'gloss', 'otherSenses', 'status'], `${where}: sense`);
+  const ids = [];
+  const checkOne = (s, w) => {
+    if (typeof s.id !== 'string' || !SENSE_ID_RE.test(s.id)) {
+      throw new Error(`ruling-set: ${w}: bad sense id ${JSON.stringify(s.id)}`);
+    }
+    if (s.id === UNCLEAR_SENSE) {
+      throw new Error(`ruling-set: ${w}: '${UNCLEAR_SENSE}' is reserved for the model's answer`);
+    }
+    if (!isNonEmptyString(s.gloss) || s.gloss !== s.gloss.trim()) {
+      throw new Error(`ruling-set: ${w}: a sense needs a trimmed, non-empty gloss`);
+    }
+    ids.push(s.id);
+  };
+  checkOne(sense, `${where}: sense`);
+  if (!Array.isArray(sense.otherSenses) || sense.otherSenses.length === 0) {
+    throw new Error(`ruling-set: ${where}: sense.otherSenses must list at least one other sense`);
+  }
+  sense.otherSenses.forEach((o, i) => {
+    const w = `${where}: sense.otherSenses[${i}]`;
+    if (!isPlainObject(o)) throw new Error(`ruling-set: ${w} is not an object`);
+    onlyKeys(o, ['id', 'gloss'], w);
+    checkOne(o, w);
+  });
+  if (new Set(ids).size !== ids.length) {
+    throw new Error(`ruling-set: ${where}: sense ids must be distinct`);
+  }
+  if (!SENSE_STATUSES.includes(sense.status)) {
+    throw new Error(`ruling-set: ${where}: bad sense status ${JSON.stringify(sense.status)}`);
+  }
+}
 
 function checkRuling(r, where) {
   if (!isPlainObject(r)) throw new Error(`ruling-set: ${where} is not an object`);
@@ -164,6 +225,8 @@ function checkRuling(r, where) {
   if (r.scopeStatus === 'default' && r.scope.kind !== 'book') {
     throw new Error(`ruling-set: ${where}: scopeStatus default needs a book scope`);
   }
+  // Present on every ruling: null for none. An absent key is refused, never read as null.
+  if (r.sense !== null) checkSense(r.sense, where);
   if (!isStringArray(r.kinds, true)) throw new Error(`ruling-set: ${where}: bad kinds`);
   if (!isStringArray(r.sources, true)) throw new Error(`ruling-set: ${where}: bad sources`);
   if (typeof r.matchable !== 'boolean')

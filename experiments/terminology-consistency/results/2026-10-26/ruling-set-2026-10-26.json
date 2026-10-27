@@ -1,13 +1,13 @@
 {
   "schema": "ai-review-ruling-set/1",
-  "about": "The scoped term-ruling set the AI-reviewed layer's gate reads (spec docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit B). Compiled by tools/ai-review/compile-ruling-set.js from `base` (the frozen 2026-10-11 set: its stage1 and before rows) and `exceptions` (scope exceptions to D2's book-wide default). Deterministic: a test recompiles it and requires byte equality, so never edit it by hand. One ruling per enNorm, after the base's supersededInBefore is applied (a superseded target survives only as a competitor). `id` is a slug of enNorm minted here. `en` lists every English form the rows carry, plus each form with its parentheticals removed (case kept). `is` is the recorded target, unchanged. `competitors` are the other renderings the rows name: a before row's competitor; a stage1 row's stored word, tied words, stored alternatives and superseded page answer; any superseded target; never the target itself (compared with every parenthetical removed, case ignored). `kinds` are the before kinds plus 'stage1'; `sources` cite each row. `scope` is {kind:'book'} with scopeStatus 'default' unless the exceptions file names the headword; a 'proposed' width is not ruled, and the gate admits no operation for it. `matchable` is false, with codes in unmatchableReason, when the target holds a digit, a Greek letter, an uppercase letter after the first letter of a run of letters, an operator or bracket character, an underscore, or a non-ASCII space or control character, or when the enNorm holds a bracketed placeholder such as [formula]. Held rows and rows without a target are listed under `excluded`, never ruled.",
+  "about": "The scoped term-ruling set the AI-reviewed layer's gate reads (spec docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit B). Compiled by tools/ai-review/compile-ruling-set.js from `base` (the frozen 2026-10-11 set: its stage1 and before rows) and `exceptions` (scope exceptions to D2's book-wide default). Deterministic: a test recompiles it and requires byte equality, so never edit it by hand. One ruling per enNorm, after the base's supersededInBefore is applied (a superseded target survives only as a competitor). `id` is a slug of enNorm minted here. `en` lists every English form the rows carry, plus each form with its parentheticals removed (case kept). `is` is the recorded target, unchanged. `competitors` are the other renderings the rows name: a before row's competitor; a stage1 row's stored word, tied words, stored alternatives and superseded page answer; any superseded target; never the target itself (compared with every parenthetical removed, case ignored). `kinds` are the before kinds plus 'stage1'; `sources` cite each row. `scope` is {kind:'book'} with scopeStatus 'default' unless the exceptions file names the headword; a 'proposed' width is not ruled, and the gate admits no operation for it. `sense` is null unless the exceptions file restricts the ruling to one sense of a homograph: then {id, gloss, otherSenses, status}, the model names the sense it judged from that closed list or 'unclear', and the gate refuses an edit that does not declare `id` (a 'proposed' sense admits nothing). `matchable` is false, with codes in unmatchableReason, when the target holds a digit, a Greek letter, an uppercase letter after the first letter of a run of letters, an operator or bracket character, an underscore, or a non-ASCII space or control character, or when the enNorm holds a bracketed placeholder such as [formula]. Held rows and rows without a target are listed under `excluded`, never ruled.",
   "base": {
     "path": "experiments/terminology-consistency/results/2026-10-11/ruling-set-after-stage1.json",
     "sha256": "e7294268afc9bf2fe7f41d3b053715a251afb9b27080232f799f36f0601dc6de"
   },
   "exceptions": {
     "path": "experiments/terminology-consistency/results/2026-10-26/scope-exceptions-2026-10-26.json",
-    "sha256": "ad5385955361ade9a5d434b2af1b612af4c28c754e6cd18cce80b1650a040377"
+    "sha256": "237edad93421edc3f9011d34c642aed8955818df89c228c45dc2d46b6b382c9c"
   },
   "counts": {
     "baseRows": {
@@ -21,11 +21,15 @@
     "matchable": 362,
     "unmatchable": 25,
     "scopeStatus": {
-      "default": 385,
-      "proposed": 2,
+      "default": 387,
+      "proposed": 0,
       "ruled": 0
     },
-    "exceptions": 2
+    "exceptions": 0,
+    "senses": {
+      "proposed": 0,
+      "ruled": 5
+    }
   },
   "rulings": [
     {
@@ -38,6 +42,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -52,6 +57,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -66,6 +72,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idp330245120 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -80,6 +87,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp67176144 (2026-10-10 [USER])"
@@ -96,6 +104,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idm54009824 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -110,6 +119,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm98560816 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -124,6 +134,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp13398640 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -138,6 +149,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm47393392 (2026-10-10 [USER])"
@@ -154,6 +166,25 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": {
+        "id": "addition-reaction",
+        "gloss": "the reaction type: atoms or groups adding across a double or triple bond, as in addition reactions and addition polymers",
+        "otherSenses": [
+          {
+            "id": "adding-something",
+            "gloss": "adding a substance, particle or quantity to something (the addition of HCl to a buffer, the addition of an electron to an atom, the addition of heat)"
+          },
+          {
+            "id": "arithmetic",
+            "gloss": "arithmetic or vector addition"
+          },
+          {
+            "id": "in-addition",
+            "gloss": "the phrase in addition (also, besides)"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["stage1"],
       "sources": ["stage1 ws_addition (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -168,6 +199,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch20_fs-id1170893631592 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -182,6 +214,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm87859280 (2026-10-10 [USER])"
@@ -198,6 +231,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -212,6 +246,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm210620784 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -226,6 +261,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idm104294208 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -240,6 +276,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm27965808 (chat (question 1); 2026-10-11 [USER])"],
       "matchable": false,
@@ -255,6 +292,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1", "verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm57603984 (2026-10-10 [USER])",
@@ -272,6 +310,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch18_fs-idp50657904 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -286,6 +325,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm63193280 (2026-10-10 [USER])"
@@ -302,6 +342,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch14_fs-idp140545888 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -316,6 +357,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp12571968 (2026-10-10 [USER])"
@@ -332,6 +374,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp173255696 (2026-10-10 [USER])"
@@ -348,6 +391,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp17888704 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -362,6 +406,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp4652784 (2026-10-10 [USER])"
@@ -378,6 +423,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch20_fs-idp73021984 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -392,6 +438,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm187159584 (2026-10-10 [USER])"
@@ -408,6 +455,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["book-preference", "verdict"],
       "sources": [
         "before book-preference: prod book_term_preference (read 2026-10-11) (not ruled)",
@@ -425,6 +473,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp230158528 (2026-10-10 [USER])"
@@ -441,6 +490,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm147438368 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -455,6 +505,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp13479088 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -469,6 +520,17 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": {
+        "id": "molecular-shape",
+        "gloss": "the bent (angular) shape of a molecule or of its electron groups, as in 'the water molecule is bent' or 'bent (109°)'",
+        "otherSenses": [
+          {
+            "id": "physically-bent",
+            "gloss": "an object that is bent or curved (glass tubes bent into shapes, a bent line in a drawing)"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -483,6 +545,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp69613952 (chat (question 1); 2026-10-11 [USER])"],
       "matchable": false,
@@ -498,6 +561,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp65460624 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -512,6 +576,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idp131244384 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -526,6 +591,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp282291040 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -540,6 +606,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp282226176 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -554,6 +621,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp85639552 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -568,6 +636,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp190835184 (page-answer; 2026-10-11 [USER])"],
       "matchable": false,
@@ -583,6 +652,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp178458288 (2026-10-10 [USER])"
@@ -599,6 +669,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm13416416 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -613,6 +684,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch05_fs-idm56360448 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -627,6 +699,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
       "matchable": true
@@ -641,6 +714,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp60998304 (2026-10-10 [USER])"
@@ -657,6 +731,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idp10319376 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -671,6 +746,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
       "matchable": true
@@ -685,6 +761,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm57102096 (2026-10-10 [USER])"
@@ -701,6 +778,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm133686144 (chat (question 3); 2026-10-11 [USER])"],
       "matchable": true
@@ -715,6 +793,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp39711472 (2026-10-10 [USER])"
@@ -731,6 +810,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp168577936 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -745,6 +825,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch14_fs-idp43874496 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -759,6 +840,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch14_fs-idp89677040 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -773,6 +855,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch14_fs-idp88494848 (2026-10-10 [USER])"
@@ -789,6 +872,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25499888 (2026-10-10 [USER])"
@@ -806,6 +890,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56359488 (2026-10-10 [USER])"
@@ -822,6 +907,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56358720 (2026-10-10 [USER])"
@@ -838,6 +924,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -852,6 +939,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -866,6 +954,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -880,6 +969,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -897,6 +987,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm120688224 (2026-10-10 [USER])"
@@ -913,6 +1004,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp84325552 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -924,10 +1016,28 @@
       "is": "ker",
       "competitors": [],
       "scope": {
-        "kind": "chapters",
-        "chapters": ["ch17"]
+        "kind": "book"
       },
-      "scopeStatus": "proposed",
+      "scopeStatus": "default",
+      "sense": {
+        "id": "electrochemical-cell",
+        "gloss": "an electrochemical cell: a galvanic (voltaic) or electrolytic cell, a fuel cell, dry cell or concentration cell, the cell of a battery, a cell in cell notation or cell potential",
+        "otherSenses": [
+          {
+            "id": "living-cell",
+            "gloss": "a cell of a living organism (red blood cells)"
+          },
+          {
+            "id": "unit-cell",
+            "gloss": "the unit cell of a crystal lattice, a separate term"
+          },
+          {
+            "id": "other-cell",
+            "gloss": "any other cell: a solar (photovoltaic) cell, a cell of a table or grid, a sample cell or other compartment that is not an electrochemical cell"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -942,6 +1052,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm139905600 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -956,6 +1067,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -973,6 +1085,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])",
@@ -990,6 +1103,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -1007,6 +1121,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -1024,6 +1139,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp64634960 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1038,6 +1154,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp51669120 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1052,6 +1169,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp392534800 (2026-10-10 [USER])"
@@ -1068,6 +1186,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idm88320752 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1082,6 +1201,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idp238031216 (2026-10-10 [USER])"
@@ -1098,6 +1218,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch05_fs-idp102379584 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1112,6 +1233,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idm101548864 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1126,6 +1248,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm164804608 (2026-10-10 [USER])"
@@ -1142,6 +1265,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch14_fs-idp67177296 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1156,6 +1280,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp72814256 (2026-10-10 [USER])"
@@ -1172,6 +1297,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3050576 (2026-10-10 [USER])"
@@ -1188,6 +1314,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["no-entry"],
       "sources": [
         "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
@@ -1204,6 +1331,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp261286592 (2026-10-10 [USER])"
@@ -1220,6 +1348,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm90510160 (2026-10-10 [USER])"
@@ -1236,6 +1365,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch03_fs-idm26449216 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1250,6 +1380,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp94537696 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1264,6 +1395,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
       "matchable": true
@@ -1278,6 +1410,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
       "matchable": true
@@ -1292,6 +1425,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm220735792 (2026-10-10 [USER])"
@@ -1308,6 +1442,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm206270992 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1322,6 +1457,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": [
         "stage1 ch19_fs-idm163589328 (page-default-confirmed; 2026-10-11 [USER])",
@@ -1339,6 +1475,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1", "verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp29496752 (2026-10-10 [USER])",
@@ -1356,6 +1493,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp56324672 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1370,6 +1508,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp184530720 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1384,6 +1523,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp42521392 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1398,6 +1538,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm1727408 (2026-10-10 [USER])"
@@ -1414,6 +1555,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm66977664 (2026-10-10 [USER])"
@@ -1430,6 +1572,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm99275552 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1444,6 +1587,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm31354480 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1458,6 +1602,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -1472,6 +1617,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp141680624 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1486,6 +1632,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp56136784 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1500,6 +1647,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp40157072 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1514,6 +1662,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp12032 (2026-10-10 [USER])"
@@ -1530,6 +1679,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp110829184 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1544,6 +1694,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp69591216 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1558,6 +1709,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["no-entry"],
       "sources": [
         "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
@@ -1574,6 +1726,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": [
         "stage1 ch06_fs-idm442273488 (chat (question 4); 2026-10-11 [USER])",
@@ -1591,6 +1744,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])"],
       "matchable": true
@@ -1605,6 +1759,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-04 [USER])"],
       "matchable": true
@@ -1619,6 +1774,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm7778192 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1633,6 +1789,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm83103936 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1647,6 +1804,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp160423360 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1661,6 +1819,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -1675,6 +1834,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp127496336 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1689,6 +1849,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idp12081312 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1703,6 +1864,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm117651760 (2026-10-10 [USER])"
@@ -1719,6 +1881,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -1736,6 +1899,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch18_fs-idm60186560 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1750,6 +1914,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idm32680960 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1764,6 +1929,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm25500528 (2026-10-10 [USER])"
@@ -1780,6 +1946,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp275481408 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1794,6 +1961,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm175851472 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1808,6 +1976,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm101715056 (2026-10-10 [USER])"
@@ -1824,6 +1993,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm98337504 (2026-10-10 [USER])"
@@ -1840,6 +2010,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm148194896 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -1854,6 +2025,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp85536816 (chat (question 6); 2026-10-11 [USER])"],
       "matchable": true
@@ -1868,6 +2040,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm10926960 (2026-10-10 [USER])"
@@ -1884,6 +2057,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm117181824 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1898,6 +2072,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm161962320 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1912,6 +2087,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm684928 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1926,6 +2102,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp86864304 (2026-10-10 [USER])"
@@ -1942,6 +2119,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm98883968 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -1956,6 +2134,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -1970,6 +2149,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp28641840 (2026-10-10 [USER])"
@@ -1986,6 +2166,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -2003,6 +2184,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ws_emission (chat (question 7); 2026-10-11 [USER])"],
       "matchable": true
@@ -2017,6 +2199,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -2031,6 +2214,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idm46343008 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2045,6 +2229,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp102584192 (2026-10-10 [USER])"
@@ -2061,6 +2246,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp44456896 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2075,6 +2261,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp20057136 (page-answer; 2026-10-11 [USER])"],
       "matchable": false,
@@ -2090,6 +2277,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp82357824 (2026-10-10 [USER])"
@@ -2106,6 +2294,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm186870544 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2120,6 +2309,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm195851664 (2026-10-10 [USER])"
@@ -2136,6 +2326,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idp10384768 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2150,6 +2341,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm52768832 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2164,6 +2356,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idm4719424 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2178,6 +2371,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp5444368 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2192,6 +2386,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141097600 (2026-10-10 [USER])"
@@ -2208,6 +2403,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idm206488448 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2222,6 +2418,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idm127587472 (2026-10-10 [USER])"
@@ -2238,6 +2435,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp68092560 (2026-10-10 [USER])"
@@ -2254,6 +2452,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp7149200 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2268,6 +2467,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -2285,6 +2485,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm27366640 (page-answer; 2026-10-11 [USER])"],
       "matchable": false,
@@ -2300,6 +2501,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm12021616 (2026-10-10 [USER])"
@@ -2316,6 +2518,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp77369424 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2330,6 +2533,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -2344,6 +2548,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm132411312 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2358,6 +2563,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idm119810368 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2372,6 +2578,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idp257364480 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2386,6 +2593,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp83288512 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2400,6 +2608,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idp97866656 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2411,10 +2620,24 @@
       "is": "flokkur",
       "competitors": [],
       "scope": {
-        "kind": "chapters",
-        "chapters": ["ch02"]
+        "kind": "book"
       },
-      "scopeStatus": "proposed",
+      "scopeStatus": "default",
+      "sense": {
+        "id": "periodic-table-group",
+        "gloss": "a column of the periodic table and its elements (group 1, group 17, groups 1 and 2, main-group elements)",
+        "otherSenses": [
+          {
+            "id": "functional-group",
+            "gloss": "an atom or group of atoms within a molecule: a functional group, alkyl group, carbonyl group, hydroxyl group or other substituent"
+          },
+          {
+            "id": "collection",
+            "gloss": "an ordinary collection of things or people (the group of three squares in a figure, a group of scientists)"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -2432,6 +2655,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46849712 (2026-10-10 [USER])"
@@ -2449,6 +2673,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idm28945840 (2026-10-10 [USER])"
@@ -2465,6 +2690,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25504496 (2026-10-10 [USER])"
@@ -2482,6 +2708,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch14_fs-idm71412016 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2496,6 +2723,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm228167568 (2026-10-10 [USER])"
@@ -2512,6 +2740,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch13_fs-idp102632368 (2026-10-10 [USER])"
@@ -2528,6 +2757,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp85033264 (2026-10-10 [USER])"
@@ -2544,6 +2774,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp81517488 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2558,6 +2789,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm33844976 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2572,6 +2804,17 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": {
+        "id": "lattice-hole",
+        "gloss": "a hole in a crystal structure: the space between packed atoms or ions (octahedral, tetrahedral and cubic holes)",
+        "otherSenses": [
+          {
+            "id": "opening",
+            "gloss": "an ordinary hole or opening (a hole in a disk, a flask or a plate, the ozone hole)"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -2586,6 +2829,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm25215648 (2026-10-10 [USER])"
@@ -2602,6 +2846,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm165896720 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2616,6 +2861,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
@@ -2633,6 +2879,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
@@ -2650,6 +2897,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -2664,6 +2912,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm281484512 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2678,6 +2927,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -2692,6 +2942,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idp87877296 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2706,6 +2957,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idm111878496 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2720,6 +2972,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp83289888 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2734,6 +2987,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm31438528 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2748,6 +3002,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm19899136 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2762,6 +3017,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idm113628896 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2776,6 +3032,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idm28944688 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2790,6 +3047,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp127211536 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2804,6 +3062,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp70925872 (2026-10-10 [USER])"
@@ -2820,6 +3079,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46847680 (2026-10-10 [USER])"
@@ -2836,6 +3096,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idp42386976 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2850,6 +3111,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm11590896 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2864,6 +3126,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch18_fs-idm15345952 (2026-10-10 [USER])"
@@ -2880,6 +3143,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm66585952 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2894,6 +3158,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp182712496 (2026-10-10 [USER])"
@@ -2910,6 +3175,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idp94243488 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2924,6 +3190,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp55104 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2938,6 +3205,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp75734960 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2952,6 +3220,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch05_fs-idp25507984 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -2966,6 +3235,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -2980,6 +3250,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idm198763536 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -2994,6 +3265,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm108395328 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3008,6 +3280,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -3022,6 +3295,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp29295648 (2026-10-10 [USER])"
@@ -3039,6 +3313,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp19511536 (2026-10-10 [USER])"
@@ -3055,6 +3330,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idm56716560 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3069,6 +3345,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp76336256 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3083,6 +3360,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch13_fs-idp89564720 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3097,6 +3375,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idp47442976 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3111,6 +3390,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -3125,6 +3405,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch15_fs-idm26641568 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3139,6 +3420,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "verdict"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
@@ -3156,6 +3438,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp279277792 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3170,6 +3453,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-23 [USER])"],
       "matchable": true
@@ -3184,6 +3468,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idp85210368 (2026-10-10 [USER])"
@@ -3200,6 +3485,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm41528352 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3214,6 +3500,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp63930000 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3228,6 +3515,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm118911936 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3242,6 +3530,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm44296912 (2026-10-10 [USER])"
@@ -3258,6 +3547,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idp121047712 (2026-10-10 [USER])"
@@ -3274,6 +3564,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idm41373200 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3288,6 +3579,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm49105504 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3302,6 +3594,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idm212688864 (2026-10-10 [USER])",
@@ -3319,6 +3612,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idm121167952 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3333,6 +3627,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -3347,6 +3642,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idm5111888 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3361,6 +3657,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141108496 (2026-10-10 [USER])"
@@ -3378,6 +3675,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idp3051616 (2026-10-10 [USER])"
@@ -3394,6 +3692,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idp1132336 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3408,6 +3707,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "verdict"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])",
@@ -3425,6 +3725,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch08_fs-idm132723600 (2026-10-10 [USER])"
@@ -3441,6 +3742,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm249965088 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3455,6 +3757,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp66006736 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3469,6 +3772,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp31379776 (2026-10-10 [USER])"
@@ -3485,6 +3789,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp136404896 (2026-10-10 [USER])"
@@ -3501,6 +3806,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp8060128 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3515,6 +3821,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": [
         "stage1 ch06_fs-idm36067216 (page-answer; 2026-10-11 [USER])",
@@ -3532,6 +3839,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp282227200 (2026-10-10 [USER])"
@@ -3548,6 +3856,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idp10683312 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3562,6 +3871,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idp119850016 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3576,6 +3886,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm205028976 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3590,6 +3901,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm27477328 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3604,6 +3916,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm204101584 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3618,6 +3931,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm74066144 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3632,6 +3946,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm41591488 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3646,6 +3961,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm80685920 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3660,6 +3976,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch05_fs-idm56357952 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3674,6 +3991,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm28944640 (chat (question 2); 2026-10-11 [USER])"],
       "matchable": true
@@ -3688,6 +4006,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idm73604928 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3702,6 +4021,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp216879616 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3716,6 +4036,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idp15489472 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3730,6 +4051,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
       "matchable": true
@@ -3744,6 +4066,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idp141112944 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3758,6 +4081,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idp141114480 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3772,6 +4096,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idm73913072 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3786,6 +4111,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm100788960 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3800,6 +4126,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp55578096 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3814,6 +4141,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idp7162656 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3828,6 +4156,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm66620880 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3842,6 +4171,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch03_fs-idp23298832 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3856,6 +4186,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch03_fs-idm85251264 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3870,6 +4201,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm120400016 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3884,6 +4216,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch03_fs-idp78260032 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3898,6 +4231,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp51447712 (2026-10-10 [USER])"
@@ -3914,6 +4248,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idm64490640 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3928,6 +4263,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idm227073184 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -3942,6 +4278,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idm186055200 (2026-10-10 [USER])"
@@ -3958,6 +4295,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -3972,6 +4310,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idp94790208 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -3986,6 +4325,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm100344544 (chat (question 3); 2026-10-11 [USER])"],
       "matchable": false,
@@ -4001,6 +4341,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm18620192 (chat (question 3); 2026-10-11 [USER])"],
       "matchable": false,
@@ -4016,6 +4357,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": false,
@@ -4031,6 +4373,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idp128571888 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4045,6 +4388,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93746160 (2026-10-10 [USER])"
@@ -4061,6 +4405,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idp158869120 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4075,6 +4420,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch18_fs-idp20554272 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4089,6 +4435,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["no-entry"],
       "sources": [
         "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
@@ -4105,6 +4452,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm24356480 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4119,6 +4467,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp72108384 (page-answer; 2026-10-11 [USER])"],
       "matchable": false,
@@ -4134,6 +4483,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp55089136 (2026-10-10 [USER])"
@@ -4150,6 +4500,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp28800512 (2026-10-10 [USER])"
@@ -4166,6 +4517,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm278014928 (chat (question 5); 2026-10-11 [USER])"],
       "matchable": true
@@ -4180,6 +4532,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm140352128 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4194,6 +4547,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp145224064 (2026-10-10 [USER])"
@@ -4210,6 +4564,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp38524656 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4224,6 +4579,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -4238,6 +4594,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp172690976 (chat (question 1); 2026-10-11 [USER])"],
       "matchable": true
@@ -4252,6 +4609,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp81777184 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4266,6 +4624,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp10803760 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4280,6 +4639,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp171940160 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4294,6 +4654,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-27 [USER])"],
       "matchable": true
@@ -4308,6 +4669,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch19_fs-idm42041824 (2026-10-10 [USER])"
@@ -4324,6 +4686,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idp105000160 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4338,6 +4701,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idm215968704 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4352,6 +4716,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch09_fs-idp43914864 (2026-10-10 [USER])"
@@ -4368,6 +4733,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idp172602144 (2026-10-10 [USER])"
@@ -4384,6 +4750,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idm355773584 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4398,6 +4765,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -4412,6 +4780,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -4429,6 +4798,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch13_fs-idp74361936 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4443,6 +4813,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm187262736 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4457,6 +4828,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp165863168 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4471,6 +4843,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": [
         "stage1 ch02_fs-idm334010160 (page-answer; 2026-10-11 [USER])",
@@ -4488,6 +4861,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "stage1"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])",
@@ -4505,6 +4879,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry", "verdict"],
       "sources": [
         "before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])",
@@ -4522,6 +4897,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
       "matchable": true
@@ -4536,6 +4912,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
       "matchable": true
@@ -4550,6 +4927,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-19 [USER])"],
       "matchable": true
@@ -4564,6 +4942,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idp48318480 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4578,6 +4957,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch13_fs-idp4379168 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4592,6 +4972,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idp225092016 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4606,6 +4987,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idp68905696 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4620,6 +5002,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch06_fs-idm144189680 (2026-10-10 [USER])"
@@ -4636,6 +5019,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idp5821920 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4650,6 +5034,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm153016624 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4664,6 +5049,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch20_fs-idp73075792 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4678,6 +5064,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm163687904 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4692,6 +5079,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp55952432 (chat (question 5); 2026-10-11 [USER])"],
       "matchable": true
@@ -4706,6 +5094,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm176142304 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -4721,6 +5110,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idm430389008 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4735,6 +5125,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idp36919168 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4749,6 +5140,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm41960016 (chat (question 3); 2026-10-11 [USER])"],
       "matchable": false,
@@ -4764,6 +5156,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm169269152 (chat (question 3); 2026-10-11 [USER])"],
       "matchable": false,
@@ -4779,6 +5172,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idp3346000 (2026-10-10 [USER])"
@@ -4795,6 +5189,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch18_fs-idp17081184 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4809,6 +5204,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm47773456 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4823,6 +5219,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch10_fs-idp179472016 (2026-10-10 [USER])"
@@ -4839,6 +5236,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp177199648 (2026-10-10 [USER])"
@@ -4855,6 +5253,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp64227344 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4869,6 +5268,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch20_fs-idp39277120 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4883,6 +5283,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm246107488 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4897,6 +5298,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp67579088 (2026-10-10 [USER])"
@@ -4913,6 +5315,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp64228624 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -4927,6 +5330,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch03_fs-idm26667568 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4941,6 +5345,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idm91470352 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4955,6 +5360,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm71427776 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -4969,6 +5375,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm48701168 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -4984,6 +5391,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idp88964992 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -4999,6 +5407,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm16838896 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -5014,6 +5423,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch08_fs-idm47317072 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -5029,6 +5439,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch02_fs-idm54570400 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5043,6 +5454,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch05_fs-idp31727024 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5057,6 +5469,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idm57405936 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5071,6 +5484,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idm55870880 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5085,6 +5499,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["no-entry"],
       "sources": [
         "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (ALREADY_CORRECT) (2026-09-21 [USER])"
@@ -5101,6 +5516,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idp227872832 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -5119,6 +5535,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idm158190720 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5133,6 +5550,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch17_fs-idm4867824 (chat (question 6); 2026-10-11 [USER])"],
       "matchable": true
@@ -5147,6 +5565,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idm119807952 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5161,6 +5580,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch16_fs-idm119806032 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -5176,6 +5596,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp198657264 (2026-10-10 [USER])"
@@ -5193,6 +5614,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm64841104 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5207,6 +5629,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -5221,6 +5644,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch04_fs-idp127461392 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5235,6 +5659,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp127462672 (2026-10-10 [USER])"
@@ -5251,6 +5676,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm7742384 (2026-10-10 [USER])"
@@ -5267,6 +5693,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp1084128 (2026-10-10 [USER])"
@@ -5283,6 +5710,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-21 [USER])"],
       "matchable": true
@@ -5297,6 +5725,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idm148470816 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5311,6 +5740,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch20_fs-idp68310656 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5325,6 +5755,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch20_fs-idp79627072 (2026-10-10 [USER])"
@@ -5341,6 +5772,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm208980304 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5355,6 +5787,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp69776 (2026-10-10 [USER])"
@@ -5371,6 +5804,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idm380612256 (2026-10-10 [USER])"
@@ -5387,6 +5821,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm104611088 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": false,
@@ -5402,6 +5837,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch01_fs-idm327357936 (2026-10-10 [USER])",
@@ -5419,6 +5855,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idp251542624 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5433,6 +5870,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp51917808 (2026-10-10 [USER])"
@@ -5449,6 +5887,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm116347536 (chat (question 2); 2026-10-11 [USER])"],
       "matchable": true
@@ -5463,6 +5902,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp30967968 (2026-10-10 [USER])"
@@ -5479,6 +5919,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31730416 (2026-10-10 [USER])"
@@ -5495,6 +5936,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp31731568 (2026-10-10 [USER])"
@@ -5511,6 +5953,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch19_fs-idm42835168 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5525,6 +5968,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp122976560 (2026-10-10 [USER])"
@@ -5541,6 +5985,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["entry"],
       "sources": ["before entry: server/lib/houseStyleTerms.js (2026-09-20 [USER])"],
       "matchable": true
@@ -5555,6 +6000,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm223971840 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5569,6 +6015,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch21_fs-idm188168144 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5583,6 +6030,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["no-entry", "verdict"],
       "sources": [
         "before no-entry: docs/decisions/2026-09-21-chemistry-terminology-rulings.md (REVERSED_TO_STORED); docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md (D4b) (2026-10-11 [USER])",
@@ -5600,6 +6048,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idm68093504 (2026-10-10 [USER])"
@@ -5616,6 +6065,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch11_fs-idm171842784 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5630,6 +6080,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch12_fs-idm2926992 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5644,6 +6095,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch01_fs-idm307214528 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5658,6 +6110,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm37032656 (page-default-confirmed; 2026-10-11 [USER])"],
       "matchable": true
@@ -5672,6 +6125,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ws_valence (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5689,6 +6143,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch07_fs-idp27828880 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5703,6 +6158,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch10_fs-idm195421616 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5717,6 +6173,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch09_fs-idp57901520 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5731,6 +6188,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["stage1"],
       "sources": ["stage1 ch06_fs-idp106317328 (page-answer; 2026-10-11 [USER])"],
       "matchable": true
@@ -5745,6 +6203,7 @@
         "kind": "book"
       },
       "scopeStatus": "default",
+      "sense": null,
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp4277680 (2026-10-10 [USER])"
@@ -5776,26 +6235,44 @@
       "text": "matchable checks the target's characters and the enNorm's placeholders only. It does not check element-symbol words (the gate's lexicon owns ELEMENT_SYMBOLS) or whether an English form occurs in visible prose; the gate checks both per operation."
     },
     {
-      "kind": "scope-exception",
-      "enNorm": "cell",
-      "status": "proposed",
-      "scope": {
-        "kind": "chapters",
-        "chapters": ["ch17"]
-      },
-      "source": "server/lib/houseStyleTerms.js line 210 at commit 6cbd36ed0: the why of the cell entry (lines 206-211), \"SEND IT IN ch17's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
-      "note": "PROPOSED, NOT RULED. ch17 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses: the electrochemical cell also occurs in ch01, ch11, ch18, ch19 and the appendices (spec 2026-10-26, measured inputs), while a biological cell is another sense and ch10's unit cell is a separate term. A raw word-bounded count of cell/cells over the 02-for-mt EN segment files on 2026-10-26 found the word in 21 of 23 chapter directories (ch17 376, ch10 142, ch03 64). That count includes marker payloads such as E[[sub:cell]] and compounds such as unit cell, so it over-counts and does not separate senses."
+      "kind": "sense",
+      "enNorm": "addition",
+      "sense": "addition-reaction",
+      "status": "ruled",
+      "source": "[USER] in chat, 2026-10-26: \"Álagning applies to the reaction sense.\" Recorded in the register's 2026-10-26 (night) entry.",
+      "glossBy": "Claude, 2026-10-26, from the ruling and the register's wording of it (addition across a multiple bond, addition reactions and addition polymers). [USER] reviews it with the pilot's output."
     },
     {
-      "kind": "scope-exception",
+      "kind": "sense",
+      "enNorm": "bent",
+      "sense": "molecular-shape",
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 502 at commit 6cbd36ed0, the bent entry (ruled 2026-09-27 [USER]), whose why begins \"Molecular geometry.\"",
+      "glossBy": "Claude, 2026-10-26, from that why. [USER] reviews it with the pilot's output."
+    },
+    {
+      "kind": "sense",
+      "enNorm": "cell",
+      "sense": "electrochemical-cell",
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js lines 201 and 207 at commit 6cbd36ed0, the galvanic cell and cell entries (both ruled 2026-09-20 [USER]): \"cell in this context is ker\" and \"`cell` means something else wherever biology-adjacent text appears\".",
+      "glossBy": "Claude, 2026-10-26, from those why notes and the compounds counted in the English segments on 2026-10-26 (fuel cell 26, dry cell 15, concentration cell 7; solar cells 5, red blood cell(s) 8 and unit cell(s) 118 are other senses). [USER] reviews it with the pilot's output."
+    },
+    {
+      "kind": "sense",
       "enNorm": "group",
-      "status": "proposed",
-      "scope": {
-        "kind": "chapters",
-        "chapters": ["ch02"]
-      },
-      "source": "server/lib/houseStyleTerms.js line 180 at commit 6cbd36ed0: the why of the group entry (lines 176-181), \"SEND IT IN ch02's SUBSET ONLY\". The class of exception was ruled by D2, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43; the chapter was not.",
-      "note": "PROPOSED, NOT RULED. ch02 is an MT-wire note: it says which chapter's --glossary-only subset carries the row, not where the ruling applies. The width awaits [USER]'s ruling. A chapter list does not separate the senses. ch06 uses both the periodic-table column ('groups 1 and 2') and the ordinary word ('the group of 3' squares), and ch20's functional group (hópur; carbonyl group has its own row) is a third use. A raw word-bounded count of group/groups over the 02-for-mt EN segment files on 2026-10-26 found the word in 20 of 23 chapter directories (ch20 395, ch19 241, ch02 222, ch18 207, appendices 115, ch06 92). That count includes marker payloads and does not separate senses."
+      "sense": "periodic-table-group",
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 177 at commit 6cbd36ed0, the group entry (ruled 2026-09-20 [USER]): \"the PERIODIC-TABLE column … In ch20 the same English word means a functional group … where hópur is right\".",
+      "glossBy": "Claude, 2026-10-26, from that why and the ch06 and ch20 uses named in the withdrawn ch02 width's note. [USER] reviews it with the pilot's output."
+    },
+    {
+      "kind": "sense",
+      "enNorm": "hole",
+      "sense": "lattice-hole",
+      "status": "ruled",
+      "source": "server/lib/houseStyleTerms.js line 219 at commit 6cbd36ed0, the hole entry (ruled 2026-09-20 [USER]): \"the vacancies in a close-packed lattice. [USER]: same form singular and plural.\"",
+      "glossBy": "Claude, 2026-10-26, from that why and the English segments (31 hole, 58 holes on 2026-10-26, among them a disk's, a flask's and the ozone hole). [USER] reviews it with the pilot's output."
     },
     {
       "kind": "superseded",

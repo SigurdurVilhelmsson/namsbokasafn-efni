@@ -6,15 +6,16 @@
  *
  *   node tools/ai-review/compile-ruling-set.js --base <path> --exceptions <path> --out <path>
  *
- * Inputs: the FROZEN 2026-10-11 ruling set (read, never changed) and a scope-exceptions file.
- * Output: one effective ruling per enNorm, with an id, a scope, a scope status and a
- * matchability verdict. `compileRulingSet` is pure and deterministic — no clock, no git HEAD,
+ * Inputs: the FROZEN 2026-10-11 ruling set (read, never changed) and a scope-exceptions file,
+ * which holds chapter widths (`exceptions`) and sense restrictions (`senses`).
+ * Output: one effective ruling per enNorm, with an id, a scope, a scope status, a sense (or
+ * null) and a matchability verdict. `compileRulingSet` is pure and deterministic — no clock, no git HEAD,
  * fixed key order, sorted arrays — so a test can recompile the committed inputs and require
  * byte equality with the committed artifact.
  *
  * Refusals (exit 1, nothing written): two rows of one enNorm with different targets
- * (case-insensitive); a headword both held and ruled; an exception naming no row, or a held
- * one; a supersession that matches nothing; a base row whose scope is not book-wide (a width
+ * (case-insensitive); a headword both held and ruled; an exception or a sense naming no row,
+ * or a held one; a malformed sense (ruling-set.js checkSense); a supersession that matches nothing; a base row whose scope is not book-wide (a width
  * enters only through the exceptions file, with a status); two enNorms minting one id; an
  * unknown CLI flag; an --out that is not a dated ruling-set name, or that reaches one of the
  * inputs by any route (same path, symlinked directory, symlink, hard link).
@@ -25,7 +26,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { greekLetters } from '../lib/mt-output-guards.js';
-import { RULING_SET_SCHEMA, REPO_ROOT, normalizeScope, validateRulingSet } from './ruling-set.js';
+import {
+  RULING_SET_SCHEMA,
+  REPO_ROOT,
+  normalizeScope,
+  validateRulingSet,
+  checkSense,
+} from './ruling-set.js';
 
 export const RULING_SET_ABOUT =
   "The scoped term-ruling set the AI-reviewed layer's gate reads (spec " +
@@ -42,7 +49,11 @@ export const RULING_SET_ABOUT =
   'removed, case ignored). `kinds` are the before kinds plus ' +
   "'stage1'; `sources` cite each row. `scope` is {kind:'book'} with scopeStatus 'default' unless " +
   "the exceptions file names the headword; a 'proposed' width is not ruled, and the gate admits " +
-  'no operation for it. `matchable` is false, with codes in unmatchableReason, when the target ' +
+  'no operation for it. `sense` is null unless the exceptions file restricts the ruling to one ' +
+  'sense of a homograph: then {id, gloss, otherSenses, status}, the model names the sense it ' +
+  "judged from that closed list or 'unclear', and the gate refuses an edit that does not declare " +
+  "`id` (a 'proposed' sense admits nothing). `matchable` is false, with codes in " +
+  'unmatchableReason, when the target ' +
   'holds a digit, a Greek letter, an uppercase letter after the first letter of a run of ' +
   'letters, an operator or bracket character, an underscore, or a non-ASCII space or control ' +
   'character, or when the enNorm holds a bracketed placeholder such as [formula]. Held rows and ' +
@@ -384,9 +395,38 @@ function applySupersession(rows, supersessions) {
   return { kept, notes, supersededTargets, droppedCount: dropped.size };
 }
 
+/**
+ * The `senses` of the exceptions file, by enNorm. Each entry is
+ *   { enNorm, sense, gloss, otherSenses: [{id, gloss}], status, source, glossBy }
+ * and becomes the ruling's `sense` { id, gloss, otherSenses, status } (checked by the
+ * loader's own checkSense, so the compiler and the loader cannot disagree on the shape) plus
+ * a 'sense' note carrying `source` and `glossBy`.
+ */
+function readSenses(entries) {
+  if (!Array.isArray(entries)) throw new Error('ruling-set: senses must be an array');
+  const byEnNorm = new Map();
+  entries.forEach((e, i) => {
+    const where = `senses[${i}]`;
+    if (!isPlainObject(e)) throw new Error(`ruling-set: ${where} is not an object`);
+    onlyKeys(e, ['enNorm', 'sense', 'gloss', 'otherSenses', 'status', 'source', 'glossBy'], where);
+    if (!isNonEmptyString(e.enNorm)) throw new Error(`ruling-set: ${where} needs an enNorm`);
+    if (!isNonEmptyString(e.source)) throw new Error(`ruling-set: ${where} needs a source`);
+    if (!isNonEmptyString(e.glossBy)) throw new Error(`ruling-set: ${where} needs glossBy`);
+    if (byEnNorm.has(e.enNorm)) throw new Error(`ruling-set: duplicate sense for ${e.enNorm}`);
+    const otherSenses = Array.isArray(e.otherSenses)
+      ? // id and gloss first for a fixed key order; extra keys ride along so checkSense refuses them
+        e.otherSenses.map((o) => (isPlainObject(o) ? { id: o.id, gloss: o.gloss, ...o } : o))
+      : e.otherSenses;
+    const sense = { id: e.sense, gloss: e.gloss, otherSenses, status: e.status };
+    checkSense(sense, `${where} (${e.enNorm})`);
+    byEnNorm.set(e.enNorm, { enNorm: e.enNorm, sense, source: e.source, glossBy: e.glossBy });
+  });
+  return byEnNorm;
+}
+
 function readExceptions(file) {
   if (!isPlainObject(file)) throw new Error('ruling-set: exceptions file is not an object');
-  onlyKeys(file, ['about', 'recordedAt', 'exceptions'], 'the exceptions file');
+  onlyKeys(file, ['about', 'recordedAt', 'exceptions', 'senses'], 'the exceptions file');
   if (!isNonEmptyString(file.about)) throw new Error('ruling-set: exceptions file needs about');
   if (typeof file.recordedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(file.recordedAt)) {
     throw new Error('ruling-set: exceptions file needs recordedAt as YYYY-MM-DD');
@@ -414,7 +454,7 @@ function readExceptions(file) {
       note: e.note,
     });
   });
-  return byEnNorm;
+  return { exceptions: byEnNorm, senses: readSenses(file.senses) };
 }
 
 // ─── The compiler ────────────────────────────────────────────────────────
@@ -422,6 +462,7 @@ function readExceptions(file) {
 const NOTE_ORDER = [
   'limitation',
   'scope-exception',
+  'sense',
   'superseded',
   'trailing-gloss',
   'inflection-note',
@@ -438,7 +479,7 @@ export function compileRulingSet(baseInput, exceptionsInput) {
   const { ref: baseRef, json: base } = fileRef(baseInput, 'base');
   const { ref: excRef, json: excFile } = fileRef(exceptionsInput, 'exceptions');
   const rows = readBase(base);
-  const exceptions = readExceptions(excFile);
+  const { exceptions, senses } = readExceptions(excFile);
   const {
     kept,
     notes: supersededNotes,
@@ -483,6 +524,7 @@ export function compileRulingSet(baseInput, exceptionsInput) {
       competitors,
       scope: exc ? exc.scope : { kind: 'book' },
       scopeStatus: exc ? exc.status : 'default',
+      sense: senses.has(enNorm) ? senses.get(enNorm).sense : null,
       kinds: uniqueSorted(rs.map((r) => r.kind)),
       sources: uniqueSorted(rs.map((r) => r.source)),
       matchable: m.matchable,
@@ -504,6 +546,12 @@ export function compileRulingSet(baseInput, exceptionsInput) {
     }
     if (!groups.has(enNorm))
       throw new Error(`ruling-set: the exception for ${enNorm} matches no row`);
+  }
+  for (const enNorm of senses.keys()) {
+    if (excludedNorms.has(enNorm)) {
+      throw new Error(`ruling-set: the sense for ${enNorm} names a held (excluded) headword`);
+    }
+    if (!groups.has(enNorm)) throw new Error(`ruling-set: the sense for ${enNorm} matches no row`);
   }
 
   const seenIds = new Map();
@@ -533,6 +581,14 @@ export function compileRulingSet(baseInput, exceptionsInput) {
       scope: e.scope,
       source: e.source,
       note: e.note,
+    })),
+    ...[...senses.values()].map((s) => ({
+      kind: 'sense',
+      enNorm: s.enNorm,
+      sense: s.sense.id,
+      status: s.sense.status,
+      source: s.source,
+      glossBy: s.glossBy,
     })),
     ...supersededNotes,
     ...trailingGloss,
@@ -576,6 +632,10 @@ export function compileRulingSet(baseInput, exceptionsInput) {
         ruled: count((r) => r.scopeStatus === 'ruled'),
       },
       exceptions: exceptions.size,
+      senses: {
+        proposed: count((r) => r.sense !== null && r.sense.status === 'proposed'),
+        ruled: count((r) => r.sense !== null && r.sense.status === 'ruled'),
+      },
     },
     rulings,
     excluded,
@@ -706,7 +766,8 @@ function main(argv) {
     const c = artifact.counts;
     process.stdout.write(
       `wrote ${args.out}: ${c.rulings} rulings (${c.unmatchable} unmatchable), ${c.excluded} excluded, ` +
-        `${c.scopeStatus.proposed} proposed and ${c.scopeStatus.ruled} ruled scopes\n`
+        `${c.scopeStatus.proposed} proposed and ${c.scopeStatus.ruled} ruled scopes, ` +
+        `${c.senses.ruled} ruled and ${c.senses.proposed} proposed senses\n`
     );
     process.exitCode = 0;
   } catch (e) {
