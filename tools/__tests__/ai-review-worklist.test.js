@@ -362,6 +362,66 @@ describe('isEligible: one test per condition, each with a passing control', () =
   });
 });
 
+describe('isEligible: a malformed ruling is ineligible, as the gate would refuse it', () => {
+  // Each shape is one Unit B's loader refuses and the gate refuses on every op (scope-invalid,
+  // ruling-invalid or ruling-unmatchable), so offering it would spend a request on nothing.
+  const cases = [
+    ['scopeStatus is absent', { scopeStatus: undefined }],
+    ['scopeStatus is not a scope status', { scopeStatus: 'bogus' }],
+    ['the sense lacks its id and otherSenses', { sense: { status: 'ruled' } }],
+    ['the sense key is absent', { sense: undefined }],
+    ['matchable is absent (not false)', { matchable: undefined }],
+    ['an English form is empty', { en: [''] }],
+    ['the target is empty', { is: '' }],
+  ];
+  for (const [what, patch] of cases) {
+    it(`refuses when ${what}`, () => {
+      expect(isEligible({ ...ATOM, ...patch }, 'ch02')).toBe(false);
+    });
+  }
+
+  it('control: the well-formed ruling is eligible', () => {
+    expect(isEligible(ATOM, 'ch02')).toBe(true);
+  });
+
+  it('the refusal reaches the output: an empty English form does not match every segment', () => {
+    // usesHeadword('', s) is true wherever a non-letter meets the end, as after the full stop.
+    const it0 = item('Nothing to rule here.', 'Ekkert hér.');
+    expect([
+      offeredRulings({ item: it0, rulings: [{ ...ATOM, en: [''] }], chapterDir: 'ch02' }),
+      offeredRulings({ item: it0, rulings: [ATOM], chapterDir: 'ch02' }),
+    ]).toEqual([
+      { candidateIds: [], rulingIds: [] },
+      { candidateIds: [], rulingIds: [] },
+    ]);
+  });
+
+  it('control: the same rulings offer for a segment that uses the headword', () => {
+    const it0 = item('The atom', 'Frumeindin');
+    expect(offeredRulings({ item: it0, rulings: [ATOM], chapterDir: 'ch02' })).toEqual({
+      candidateIds: ['atom'],
+      rulingIds: ['atom'],
+    });
+  });
+});
+
+describe('the exported predicates refuse a malformed chapter directory', () => {
+  // Without the refusal, inScope fails closed and a typo reads as "no candidate anywhere".
+  const OCC = { en: 'The atom', is: 'Frumeindin' };
+  for (const bad of ['ch2', 'chapter02', undefined]) {
+    it(`isEligible refuses ${JSON.stringify(bad)}`, () => {
+      expect(() => isEligible(ATOM, bad)).toThrow(/chapterDir/);
+    });
+    it(`isCandidate refuses ${JSON.stringify(bad)}`, () => {
+      expect(() => isCandidate(ATOM, OCC, bad)).toThrow(/chapterDir/);
+    });
+  }
+
+  it('control: both answer for a well-formed chapter directory', () => {
+    expect([isEligible(ATOM, 'ch02'), isCandidate(ATOM, OCC, 'ch02')]).toEqual([true, true]);
+  });
+});
+
 // ── Matching and the candidate predicate ─────────────────────────────────────────────────
 
 describe('matchesOccurrence', () => {
@@ -605,6 +665,37 @@ describe('buildWorkList', () => {
     expect(() =>
       buildWorkList({ chapterDir: 'ch02', units: [{ en: unitA.en, is: unitA.is }], rulings: [] })
     ).toThrow(/stem/);
+  });
+
+  it('refuses a stem that is not a unit stem (mt-layers STEM_RE)', () => {
+    expect(() =>
+      buildWorkList({ chapterDir: 'ch02', units: [{ ...unitA, stem: '../../etc' }], rulings: [] })
+    ).toThrow(/unit stem/);
+  });
+
+  it('control: m999 and chapter-metadata are unit stems (a shape check, not existence)', () => {
+    expect(
+      buildWorkList({
+        chapterDir: 'ch02',
+        units: [
+          { ...unitA, stem: 'm999' },
+          { ...unitB, stem: 'chapter-metadata' },
+        ],
+        rulings: [],
+      }).units.map((u) => u.stem)
+    ).toEqual(['m999', 'chapter-metadata']);
+  });
+
+  it('refuses a stem repeated within the chapter (request keys would collide)', () => {
+    expect(() =>
+      buildWorkList({ chapterDir: 'ch02', units: [unitA, { ...unitB, stem: 'm1' }], rulings: [] })
+    ).toThrow(/repeated/);
+  });
+
+  it('control: distinct stems build', () => {
+    expect(
+      buildWorkList({ chapterDir: 'ch02', units: [unitA, unitB], rulings: [] }).counts.units
+    ).toBe(2);
   });
 });
 

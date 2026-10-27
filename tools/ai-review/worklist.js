@@ -22,9 +22,10 @@
  */
 
 import { visibleProse } from './tokens.js';
-import { inScope, isChapterDir } from './scope.js';
+import { isChapterDir, scopeReasons } from './scope.js';
 import { carriesTarget, containsTargetStem } from './gate.js';
 import { usesHeadword } from '../lib/chapter-term-check.js';
+import { STEM_RE } from '../lib/mt-layers.js';
 
 /** Why an occurrence is not offered. Closed, sorted. */
 export const SKIP_REASONS = Object.freeze(['identical-to-en', 'no-en', 'no-is']);
@@ -112,22 +113,47 @@ export function pairUnit({ en, is } = {}) {
   return { items, skipped };
 }
 
+const isNonBlank = (v) => typeof v === 'string' && v.trim() !== '';
+
 /**
- * May `ruling` act in `chapterDir` at all? `matchable === true`, not `held`, its scope admits
- * the chapter, its width is not merely proposed, and it has no sense or a ruled one. Fails
- * closed on anything malformed.
+ * The gate's well-formedness test for a ruling (gate.js rulingIsWellFormed and
+ * senseIsWellFormed, which it does not export): a target, English forms, kinds, and a sense
+ * that is null or carries an id, otherSenses and a status. A ruling failing it is refused
+ * `ruling-invalid` on every op, so offering it would only spend a request.
+ */
+const isWellFormed = (r) =>
+  isNonBlank(r.is) &&
+  Array.isArray(r.en) &&
+  r.en.length > 0 &&
+  r.en.every(isNonBlank) &&
+  Array.isArray(r.kinds) &&
+  (r.sense === null ||
+    (typeof r.sense === 'object' &&
+      isNonBlank(r.sense.id) &&
+      Array.isArray(r.sense.otherSenses) &&
+      typeof r.sense.status === 'string'));
+
+/**
+ * May `ruling` act in `chapterDir` at all? It is well formed as the gate judges it,
+ * `matchable === true`, not `held`, the gate's scope check passes (scope.js scopeReasons:
+ * a valid scope and scopeStatus, not merely proposed, admitting the chapter), and it has no
+ * sense or a ruled one. Anything the gate would refuse on every op is ineligible, so a ruling
+ * that bypassed Unit B's loader cannot reach the model either. Throws on a malformed
+ * `chapterDir`, which would otherwise read as "eligible nowhere".
  * @param {object} ruling a ruling as Unit B compiles it
  * @param {string} chapterDir
  * @returns {boolean}
  */
 export function isEligible(ruling, chapterDir) {
+  assertChapterDir(chapterDir);
   return (
-    ruling?.matchable === true &&
-    Array.isArray(ruling.kinds) &&
+    ruling !== null &&
+    typeof ruling === 'object' &&
+    isWellFormed(ruling) &&
+    ruling.matchable === true &&
     !ruling.kinds.includes('held') &&
-    inScope(ruling.scope, chapterDir) &&
-    ruling.scopeStatus !== 'proposed' &&
-    (ruling.sense === null || ruling.sense?.status === 'ruled')
+    scopeReasons(ruling, chapterDir).length === 0 &&
+    (ruling.sense === null || ruling.sense.status === 'ruled')
   );
 }
 
@@ -158,7 +184,7 @@ const needsReview = (ruling, isText) =>
 
 /**
  * Is `ruling` a candidate for `occ` in `chapterDir`: eligible, matching, and in need of review
- * (sensed, target not carried, or a competitor present)?
+ * (sensed, target not carried, or a competitor present)? Throws on a malformed `chapterDir`.
  * @param {object} ruling
  * @param {{ en: string, is: string }} occ
  * @param {string} chapterDir
@@ -250,10 +276,18 @@ export function buildWorkList({ chapterDir, units, rulings } = {}) {
     noCandidate: 0,
   };
 
-  const built = units.map((unit) => {
-    if (typeof unit?.stem !== 'string' || unit.stem === '') {
-      throw new Error('worklist: every unit needs a stem');
+  // Stems key the requests and the records downstream (`<chapterDir>/<stem>/…`), so a stem
+  // must be a unit stem and must not repeat.
+  const stems = new Set();
+  for (const unit of units) {
+    if (typeof unit?.stem !== 'string' || !STEM_RE.test(unit.stem)) {
+      throw new Error(`worklist: every unit needs a unit stem, got ${JSON.stringify(unit?.stem)}`);
     }
+    if (stems.has(unit.stem)) throw new Error(`worklist: stem ${unit.stem} is repeated`);
+    stems.add(unit.stem);
+  }
+
+  const built = units.map((unit) => {
     const { items: paired, skipped } = pairUnit({ en: unit.en, is: unit.is });
     counts.occurrences += unit.is.records.length;
     for (const r of SKIP_REASONS) counts.skipped[r] += skipped[r];
