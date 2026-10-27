@@ -29,8 +29,10 @@
  *   - the book is the constant BOOK (efnafraedi-2e); there is no flag to change it;
  *   - the prompt, the ruling set and every file of the code (CODE_PATHS) are tracked and
  *     clean, so the commit a record names describes what ran;
- *   - `--layer1-commit` (default HEAD) is a commit, and every unit's layer-1 file, overlay,
- *     English file and structure file is byte-identical to its blob there;
+ *   - `--layer1-commit` (default HEAD) is a commit; each chapter's input files there (layer
+ *     1, overlays, English, structure: INPUT_SHAPES) are the same SET as in the working tree,
+ *     both ways (an input deleted from or added to the tree refuses), and each is
+ *     byte-identical to its blob there;
  *   - an interactive `--max-tokens` above SDK_NONSTREAMING_MAX_TOKENS needs `--timeout-ms`
  *     (the SDK refuses such a non-streaming call locally otherwise).
  *
@@ -73,6 +75,7 @@ import {
   resolveCommit,
   cleanTrackedProblems,
   filesAtCommitProblems,
+  listingAtCommitProblems,
 } from './provenance.js';
 import { LAYER_DIRS, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
 
@@ -337,9 +340,25 @@ export function estimateRequests(requests, { model, maxTokens }) {
 
 const round2 = (x) => Math.round(x * 100) / 100;
 
+const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+
+/**
+ * The shapes of the input files a chapter's run reads, by directory: what decides the unit
+ * set (listChapterUnits: every `*-structure.json`, plus chapter-metadata when its layer-1
+ * file exists) and what each unit reads (readBase: layer 1 and its overlay; the English).
+ * Preflight compares the chapter's listing of these at the layer-1 commit with the working
+ * tree's, both ways, so the commit a record names holds the same unit set the run read.
+ */
+const INPUT_SHAPES = Object.freeze([
+  { layer: LAYER_DIRS.pure, shape: /^(m\d+|chapter-metadata)-segments\.is\.md$/ },
+  { layer: LAYER_DIRS.selected, shape: /^(m\d+|chapter-metadata)-selected\.json$/ },
+  { layer: '02-for-mt', shape: /^(m\d+|chapter-metadata)-segments\.en\.md$/ },
+  { layer: '02-structure', shape: /-structure\.json$/ },
+]);
+
 /** The repo-relative files a chapter's run reads, for the layer-1 commit check. */
 function chapterInputFiles({ bookDir, repoRoot, chapterDir, inputs }) {
-  const rel = (abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+  const rel = (abs) => repoRel(repoRoot, abs);
   const files = [];
   for (const u of inputs) {
     files.push(rel(path.join(bookDir, LAYER_DIRS.pure, chapterDir, `${u.stem}-segments.is.md`)));
@@ -525,14 +544,35 @@ function preflight(
   problems.push(...cleanTrackedProblems(ctx.git, [prompt.path, rulingSet.path, ...ctx.codePaths]));
   const commit = resolveCommit(ctx.git, layer1Ref);
   for (const chapterDir of chapters) {
-    const files = chapterInputFiles({
+    // The SET first, both ways (a list built from the tree cannot name a deleted input),
+    // then the bytes of every input file on both sides.
+    const listing = listingAtCommitProblems({
+      git: ctx.git,
+      repoRoot: ctx.repoRoot,
+      commit,
+      dirs: INPUT_SHAPES.map(({ layer, shape }) => ({
+        dir: repoRel(ctx.repoRoot, path.join(ctx.bookDir, layer, chapterDir)),
+        shape,
+      })),
+    });
+    problems.push(...listing.problems);
+    const read = chapterInputFiles({
       bookDir: ctx.bookDir,
       repoRoot: ctx.repoRoot,
       chapterDir,
       inputs: plans.get(chapterDir).inputs,
     });
+    for (const f of read) {
+      if (!listing.tree.has(f))
+        problems.push(`${f} is read by the run but no input shape covers it`);
+    }
     problems.push(
-      ...filesAtCommitProblems({ git: ctx.git, repoRoot: ctx.repoRoot, commit, files })
+      ...filesAtCommitProblems({
+        git: ctx.git,
+        repoRoot: ctx.repoRoot,
+        commit,
+        files: listing.common,
+      })
     );
   }
   if (problems.length)

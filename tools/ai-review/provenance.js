@@ -8,6 +8,9 @@
  *   commit. This is what makes `layer1Commit` in a revision TRUE (the register's owed
  *   item 2): the run reads the working tree, and the record names a commit, so the two must
  *   be proven equal, file by file, by git's own blob hash.
+ * - `listingAtCommitProblems`: each input directory holds the same SET of input files at the
+ *   commit as in the working tree, both ways, so no input deleted from (or added to) the tree
+ *   goes unseen by the byte comparison.
  * - `cleanTrackedProblems`: the files a record cites by sha256 (the prompt, the ruling set,
  *   the code) are tracked and unmodified, so the commit the record names describes them.
  *
@@ -125,6 +128,52 @@ export function filesAtCommitProblems({ git, repoRoot, commit, files }) {
     }
   }
   return problems;
+}
+
+/**
+ * Compare the LISTING of each directory at `commit` with the working tree's, in both
+ * directions, over the direct children whose name matches that directory's `shape`: a file
+ * in the commit but missing from the tree, and a file in the tree but not in the commit, are
+ * each a problem. `filesAtCommitProblems` compares bytes but only for the files it is handed;
+ * a list built from the working tree cannot name a file deleted from it, so this is what makes
+ * the commit and the tree hold the same SET of inputs (the runner review, 2026-10-27).
+ * Any directory entry with a matching name counts as present in the tree.
+ * @param {{ git: (args: string[]) => string, repoRoot: string, commit: string,
+ *   dirs: Array<{ dir: string, shape: RegExp }> }} args  `dir` repo-relative; `shape` is
+ *   tested against the base name
+ * @returns {{ problems: string[], common: string[], tree: Set<string> }} `common`: the shaped
+ *   files on both sides (sorted per directory), for a byte comparison; `tree`: every shaped
+ *   file in the working tree
+ */
+export function listingAtCommitProblems({ git, repoRoot, commit, dirs }) {
+  const problems = [];
+  const common = [];
+  const tree = new Set();
+  for (const { dir, shape } of dirs) {
+    const d = assertRepoRelative(dir).replace(/\/+$/, '');
+    const atCommit = new Set(
+      [...lsTreeBlobs(git, commit, d).keys()].filter(
+        (p) => path.posix.dirname(p) === d && shape.test(path.posix.basename(p))
+      )
+    );
+    let names = [];
+    try {
+      names = fs.readdirSync(path.join(repoRoot, d));
+    } catch (err) {
+      if (err.code !== 'ENOENT' && err.code !== 'ENOTDIR') throw err;
+    }
+    const here = new Set(names.filter((n) => shape.test(n)).map((n) => `${d}/${n}`));
+    for (const f of [...atCommit].sort()) {
+      if (here.has(f)) common.push(f);
+      else problems.push(`${f} is in commit ${commit} but missing from the working tree`);
+    }
+    for (const f of [...here].sort()) {
+      tree.add(f);
+      if (!atCommit.has(f))
+        problems.push(`${f} is in the working tree but not in commit ${commit}`);
+    }
+  }
+  return { problems, common, tree };
 }
 
 /**

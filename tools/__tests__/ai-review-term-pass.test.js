@@ -296,6 +296,77 @@ describe('run preflight', () => {
   });
 });
 
+// The runner review (2026-10-27, provenance-record medium): preflight compared only the input
+// files present in the WORKING TREE with their blobs, so an input deleted from the tree, or
+// added to it, went unseen, and a run recorded a layer1Commit whose tree held another unit set
+// (apply at that commit then refused the run's own record as stale-inputs).
+describe('preflight compares the chapter’s input listing with the layer-1 commit, both ways', () => {
+  const preflightOnly = (S) =>
+    main(['run', '--chapter', 'ch02', '--mode', 'batch'], S.deps({ transport: mockTransport() }));
+  const inCh = (S, layer, name) => path.join(S.fx.book, layer, 'ch02', name);
+  const missing = (rel) =>
+    new RegExp(
+      `${rel.replace(/[.]/g, '\\.')} is in commit [0-9a-f]+ but missing from the working tree`
+    );
+
+  it('control: a clean tree passes', async () => {
+    const S = setup();
+    const r = await preflightOnly(S);
+    expect(r.sent).toBe(false);
+    expect(r.layer1Commit).toBe(S.fx.commit);
+  });
+
+  it('refuses a whole module deleted from the tree (structure, layer 1, English)', async () => {
+    const S = setup();
+    fs.rmSync(inCh(S, '02-structure', 'm68693-structure.json'));
+    fs.rmSync(inCh(S, '02-mt-output', 'm68693-segments.is.md'));
+    fs.rmSync(inCh(S, '02-for-mt', 'm68693-segments.en.md'));
+    await expect(preflightOnly(S)).rejects.toThrow(
+      missing('02-mt-output/ch02/m68693-segments.is.md')
+    );
+  });
+
+  it('refuses a deleted chapter-metadata layer-1 file', async () => {
+    const S = setup();
+    fs.rmSync(inCh(S, '02-mt-output', 'chapter-metadata-segments.is.md'));
+    await expect(preflightOnly(S)).rejects.toThrow(
+      missing('02-mt-output/ch02/chapter-metadata-segments.is.md')
+    );
+  });
+
+  it('refuses a structure file deleted on its own', async () => {
+    const S = setup();
+    fs.rmSync(inCh(S, '02-structure', 'm68693-structure.json'));
+    await expect(preflightOnly(S)).rejects.toThrow(
+      missing('02-structure/ch02/m68693-structure.json')
+    );
+  });
+
+  it('refuses an overlay committed at the layer-1 commit but deleted from the tree', async () => {
+    const S = setup();
+    const overlay = inCh(S, '02-mt-selected', 'm68693-selected.json');
+    fs.mkdirSync(path.dirname(overlay), { recursive: true });
+    fs.writeFileSync(overlay, '{}\n');
+    S.fx.sh(['add', '--', overlay]);
+    S.fx.sh(['commit', '-q', '-m', 'an overlay']);
+    fs.rmSync(overlay);
+    await expect(preflightOnly(S)).rejects.toThrow(
+      missing('02-mt-selected/ch02/m68693-selected.json')
+    );
+  });
+
+  it('refuses an extra untracked layer-1 file the commit does not have', async () => {
+    const S = setup();
+    fs.writeFileSync(
+      inCh(S, '02-mt-output', 'm99999-segments.is.md'),
+      '<!-- SEG:m99999:para:x -->\nx\n'
+    );
+    await expect(preflightOnly(S)).rejects.toThrow(
+      /02-mt-output\/ch02\/m99999-segments\.is\.md is in the working tree but not in commit/
+    );
+  });
+});
+
 // The runner review (2026-10-27, spend-cap medium): the ledger lives in the checkout, so a
 // linked git worktree had its own ledger and so its own USD 100. `run` refuses there; plan
 // and apply spend nothing and stay allowed.

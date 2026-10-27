@@ -15,6 +15,7 @@ import {
   lsTreeBlobs,
   cleanTrackedProblems,
   filesAtCommitProblems,
+  listingAtCommitProblems,
 } from '../ai-review/provenance.js';
 
 let repo;
@@ -110,6 +111,61 @@ describe('filesAtCommitProblems', () => {
     ).toThrow(/relative/);
     expect(() =>
       filesAtCommitProblems({ git, repoRoot: repo, commit: first, files: ['../x'] })
+    ).toThrow(/relative/);
+  });
+});
+
+describe('listingAtCommitProblems', () => {
+  const dirs = [{ dir: 'a/b', shape: /^[a-z]+\.md$/ }];
+
+  it('control: an unchanged directory has no problems, and every shaped file is common', () => {
+    const r = listingAtCommitProblems({ git, repoRoot: repo, commit: first, dirs });
+    expect(r.problems).toEqual([]);
+    expect(r.common).toEqual(['a/b/one.md', 'a/b/two.md']);
+  });
+
+  it('names a file deleted from the tree and a file added to it; ignores other shapes and subdirectories', () => {
+    const two = path.join(repo, 'a', 'b', 'two.md');
+    const keep = fs.readFileSync(two);
+    try {
+      fs.rmSync(two);
+      fs.writeFileSync(path.join(repo, 'a', 'b', 'three.md'), 'three');
+      fs.writeFileSync(path.join(repo, 'a', 'b', 'notes.txt'), 'not an input');
+      fs.mkdirSync(path.join(repo, 'a', 'b', 'c'));
+      fs.writeFileSync(path.join(repo, 'a', 'b', 'c', 'deep.md'), 'nested');
+      const r = listingAtCommitProblems({ git, repoRoot: repo, commit: first, dirs });
+      expect(r.problems).toHaveLength(2);
+      expect(r.problems[0]).toMatch(
+        /a\/b\/two\.md is in commit .* but missing from the working tree/
+      );
+      expect(r.problems[1]).toMatch(/a\/b\/three\.md is in the working tree but not in commit/);
+      expect(r.common).toEqual(['a/b/one.md']);
+    } finally {
+      fs.writeFileSync(two, keep);
+      fs.rmSync(path.join(repo, 'a', 'b', 'three.md'));
+      fs.rmSync(path.join(repo, 'a', 'b', 'notes.txt'));
+      fs.rmSync(path.join(repo, 'a', 'b', 'c'), { recursive: true });
+    }
+  });
+
+  it('is empty for a directory neither the commit nor the tree has', () => {
+    const r = listingAtCommitProblems({
+      git,
+      repoRoot: repo,
+      commit: first,
+      dirs: [{ dir: 'nope/x', shape: /./ }],
+    });
+    expect(r).toMatchObject({ problems: [], common: [] });
+  });
+
+  it('refuses an absolute or escaping directory', () => {
+    expect(() =>
+      listingAtCommitProblems({
+        git,
+        repoRoot: repo,
+        commit: first,
+        dirs: [{ dir: '../x', shape: /./ }],
+      })
     ).toThrow(/relative/);
   });
 });
