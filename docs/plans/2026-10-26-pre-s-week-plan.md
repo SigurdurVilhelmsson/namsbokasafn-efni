@@ -24,6 +24,9 @@
    - **Nothing reaches readers:** the chemistry sync stays held.
    - **Nothing reaches editors:** the apply hold stays, and layer 2 is data in the repository that no loader reads
      until 10-10 4.1 ships.
+     ✏️ *2026-10-28: no loader reads layer 2 even after 4.1 ships. Its edits, rule and AI alike, reach editors as
+     suggestions ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+     [rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 4. **The paid runs are conditional on one ruling by [USER]** (§6, item 2): that late-October Anthropic usage
    invoiced around 1 November goes on the current grant, as [USER] already ruled for the MT provider's October invoice
    (register 2026-10-26 (afternoon)). The written confirmation u01's email asks for is sought in parallel, not waited
@@ -61,8 +64,14 @@ thinking included (mean, p95, max), at medium and high effort, plus the truncati
 after the pre-registration and the prompt freeze, before the first unit opens; item 7 (the pre-screen) runs before S
 if built in time, otherwise privately or dropped (open, [USER]).*
 
-✏️ *2026-10-28: the full run uses high effort. The pilot's medium arm is a fallback only, used if high truncates
-or the projected run would cross the cap ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
+✏️ *2026-10-28, reworded the same day: the pilot still measures both medium and high. The full run uses high, and
+medium is its fallback if high truncates or the projected run would cross the cap. Item 6 no longer waits on a
+pre-registration: it follows the prompt freeze, and a unit gets suggestions only if the run and the suggestion view
+existed before it was opened ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
+
+✏️ *2026-10-28, item 3: the rule layer's operations reach editors as suggestions in G1.23's view, never as starting
+text ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)). H3's substitutions, listed in
+item 3, are the exception: they keep their 2026-10-17 route (§6 item 5's note).*
 
 **Tier 2: large coding, unfunded after S.** In parallel with Tier 1, highest value first.
 
@@ -74,6 +83,10 @@ or the projected run would cross the cap ([record](../decisions/2026-10-28-ai-te
 | 12 | **The reader census** (about 45 files read `02-mt-output`, counted 2026-10-26; re-derive) and the three main readers switched to layer 2 **behind a flag that defaults to layer 1**. The flag turns only after [USER]'s blind check, and then only for the categories that survive it, so a deploy before the check changes nothing editors see | 10-10 4.1; Skerfur G1.8 | window B, if ready |
 | 13 | **Re-attach by content** (the script; its prod run comes after S) | 10-10 4.2 | none now |
 
+✏️ *2026-10-28, item 12: **no reader switches to layer 2**, behind a flag or otherwise; layer 2 reaches editors only
+as suggestions. The reader census still matters, because 10-10 4.1, narrowed, makes those readers take layer 1s
+([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
+
 **Tier 3: small, if time allows.** Register §C208: 15-3's Check-your-learning answer, a note's bare text, extracted,
 injected and rendered, with its one segment bought alongside item 8; §C205's residue opener with its test and base
 rate; §C201 H1, H2 and H4; the
@@ -83,6 +96,8 @@ duplicate-id measurement (roadmap c18); 10-10 4.3, figure labels against the rul
 **Out of this week:**
 - B1–B3 (roadmap c12). The measurement protocol and consent text (c13) are design and may be drafted; nothing is built.
 - 10-10 4.5 (the rebuild) and its QC, [USER]'s preview, the 1.8 criterion and the sync. They need the layers first.
+  ✏️ *2026-10-28: "the layers" now means layer 1s. The preview re-renders from 1s (10-10 4.1, narrowed), and layer 2
+  stays out of it until the next chemistry sync decision (register, 2026-10-28).*
 - 10-10 2.2 (the ch01–ch02 notes), unless Tier 2 finishes early.
 - The editing-gate items that wait on SD1 or SD4–SD8, beyond the guards in item 10.
 
@@ -107,6 +122,9 @@ committed.*
   The pass reads the compiled ruling set, record-only rulings included, and the scope field (item 2).
 - **Input:** layer 1/1s with the rule layer applied, and the English from `02-for-mt` at the commit step 0
   confirms.
+  ✏️ *2026-10-28: the AI pass reads layer 1/1s only, with no rule layer applied first; the runner already reads
+  `02-mt-output` with its `02-mt-selected` overlay. Rule edits and AI edits are both suggestions against that same
+  text ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 - **Output:** edit operations `{segment, find, replace, category, ruling_id, reason}` → the code gate (10-10 3.3) →
   layer 2, plus the gate log. Every rejection is logged.
 - **Records, from the first call (10-10 §6):** the prompt files in the repository, with a sha256 per run; the runner
@@ -123,6 +141,9 @@ committed.*
 - **Where the layer and its logs live:** committed with the layer, as 10-10 §6 says ([USER], 2026-10-26, same
   record). D11's raw MT stays off-repo by [USER]'s separate ruling; that was a side test, while layer 2 is the text
   editors start from.
+  ✏️ *2026-10-28: editors now start from pure MT, so layer 2 is no longer "the text editors start from". Its logs are
+  still committed, as the research layer's record
+  ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 - **Cost:** a 0-ISK census and token count first; the pilot measures the real cost per call; the run stops at the
   cap. At the list prices of 2026-10-06, 1,000–3,000 requests on Opus 5.5 at standard rates come to roughly
   USD 35–70, and the glossary pre-screen to roughly USD 10–20. These are estimates; invoices decide.
@@ -132,7 +153,11 @@ committed.*
   ✏️ *2026-10-27: the pilot chapter is excluded from the blind-check sample and the control frame (its output is seen
   first and drives prompt revision; [record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)).*
   ✏️ *2026-10-28: there is no control frame any more. The pilot chapter stays out of the short look's sample.*
+  ✏️ *2026-10-28, added the same day: the check is 3.4's "20 first" stage only, and there is no layer-2 read to keep
+  behind a flag (item 12; 10-10 4.1, narrowed).*
 - **The slip rule is unchanged:** if the AI layer fails its check, freeze with the rule layer.
+  ✏️ *2026-10-28: changed. A category of AI suggestions that fails the short look is not shown, and rule
+  suggestions are unaffected ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 
 ## 5. What this plan amends, if [USER] agrees
 
@@ -186,6 +211,9 @@ current grant; D5 and D6 yes; A1 reordered; the logs committed
    part; *amu* or *ame*; §9.5's two objectives in the supine form the others use; *Talið upp* for *Talist upp*.
    vefur's handoff (`docs/handoffs/2026-10-16-reader-branches-requests-for-efni.md`, H3) has the counts and their
    re-measure commands.
+   ✏️ *2026-10-28: the rule-layer ruling does not change H3's route. H3 keeps the route [USER] scoped on 2026-10-17
+   (register §C201: built in the ② code batch, riding the whole-book re-render), so its fixes still reach readers
+   that way ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 6. **c09's two choices and SD7** (about 10 minutes; Wednesday): show the BÍN credit or hide the inflected forms
    (G1.16); drop the sidecar's `by`, `at` and `generated`, or cut `generated` to the date (G2.3); SD7 as drafted.
 7. **(vefur) The train lock on M4** (a few minutes; this week). Under vefur's D05, no train runs until January once
@@ -199,6 +227,7 @@ current grant; D5 and D6 yes; A1 reordered; the logs committed
 11. **Window B** (about 30 minutes; Saturday, or Sunday before the tag): merge the layer tools and data PRs, plus 4.0
     and 4.1 if they are ready (4.1 with its flag off), then deploy. Without a deploy the content backup strands
     (CLAUDE.md § Content delivery).
+    ✏️ *2026-10-28: there is no flag. 4.1 is narrowed to human, selected, pure.*
 12. **The rule at S, and the tag's name** (1 minute): merge pre-S branches before the tag, or tag their tips.
     Proposed: an annotated tag named `s-2026-11-01` in both repositories, each session tagging its own repository after
     [USER]'s approval; vefur tags after its train if that ships before S.
@@ -210,6 +239,9 @@ glossary rows; SD1; D7, D12 and D13; SD4–SD8; the preview; D14. For the reader
 chemistry sync); the follow-on's credit wording (before the first reviewed publication); the staged-release answer
 (roadmap u07); vefur's later decision sessions.
 ✏️ *2026-10-27: the full run joins month 1 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)).*
+✏️ *2026-10-28: D7 and D12 are answered ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+[answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)); D13 remains. The AI blind check is now the short
+look (3.4's "20 first" stage), before suggestions go live.*
 
 ## 7. vefur
 

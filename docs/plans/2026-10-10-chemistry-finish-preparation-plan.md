@@ -54,6 +54,9 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
    - **Preparation not finished by S continues in month 1, never as follow-on paid hours.** The exception is terminology harmonisation, which the contract names as part of the follow-on project, so [USER]'s term rulings made after S belong to it.
    - **Editing throughput is now the binding constraint.** All chapters must be finished within the 12 months, which makes D12 (how deeply to review alts and table summaries) urgent.
    - **Cut-down path:** if the AI layer is not checked in time, freeze with the rule layer only. Apply the AI layer later, to units nobody has opened yet, and record it per segment in the editors' baseline.
+     ✏️ *2026-10-28: both layers now reach editors only as suggestions, so the cut-down path means rule suggestions
+     only, with AI suggestions added for units nobody has opened yet
+     ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 1. **There is no per-chapter choice to make.** The measurements answer the structural questions:
    - June text can be carried onto the new structure (94% of segments, 0 ISK);
    - both vintages' defects are counted;
@@ -78,6 +81,12 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
    - deterministic code rules first;
    - then a narrow AI pass (the ruled term plus the agreement it forces), as edit operations a strict code gate accepts or rejects;
    - piloted on one chapter and checked blind by [USER].
+
+   ✏️ *2026-10-28: the rulings still reach editors before a chapter opens, but as suggestions in one view, not as
+   starting text, for rule edits and the AI pass's edits alike. The AI pass reads layer 1s with no rule layer applied
+   first, so the order above (rules first, then the AI pass) no longer holds
+   ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+   [rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 6. **Timing capture first, then freeze, then edit.**
    - Timing and baseline capture is the follow-on project's **first task (month 1)**.
    - The freeze (a git tag plus a manifest of the base) lands **before the first unit is opened**.
@@ -132,6 +141,10 @@ CLAUDE.md § Purpose assigns this design decision to the active plan.
 | **2 Machine-revised** | layer 1/1s plus code rules plus AI edit operations | `02-mt-revised/` plus a per-change log and per-module provenance (see below) | rule script, AI runner | touches a human-reviewed segment, or survives a change to its inputs |
 | **3 Human** | per **segment**: an approved edit, or an active acceptance | `segment_edits` / `segment_acceptances` → `03-faithful-translation/` plus its `-review-status.json` sidecar | editors | — |
 
+✏️ *2026-10-28, layer 2: the AI pass computes its edits against 1s, not against rule-applied text, and both kinds of edit
+reach editors only as suggestions ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+[rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
+
 - 🔴 **Layer 3 is per segment, and the code does not treat it that way yet.**
   - The first approved edit in a module writes the module's **whole** base text into `03-faithful-translation/` (`applyApprovedEdits`, `content: overlay ? edited : seg.is`).
   - The TM export pairs every segment of that file (`tm-export.cjs` `pairModule`, no review-status filter).
@@ -143,6 +156,9 @@ CLAUDE.md § Purpose assigns this design decision to the active plan.
   - `postEdited` compares against the text the editor actually saw.
 - **Layer-2 provenance, per module:** the input hash (layer 1/1s), the **ruling-set snapshot hash**, the prompt sha256, the model id and the harness commit. **A mismatch on any of them refuses the module.** That catches both a later `api-translate --force` and a later change of ruling.
 - **Every reader of `02-mt-output` must be classified** as "sees layer 2" or "keeps reading layer 1" before layer 2 ships. There are about 30 such files. The ones that matter most are the editor's loader (`segmentParser.loadModuleForEditing`), the server's mt-preview publication map (`pipelineService` / `publicationService`, `TRACK_SOURCE_DIR`) and the status auto-advance (`segmentEditorService`). `cnxml-inject --source-dir` already reads another layer.
+  ✏️ *2026-10-28: no reader of `02-mt-output` switches to layer 2; G1.23 reads layer 2 only to build suggestions. The
+  two classes become "sees 1s" and "keeps reading layer 1" (4.1, narrowed;
+  [record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 - **Three edit distances fall out of this:**
   - pure → revised: what the machine layer did;
   - revised → human: what the editors did;
@@ -171,6 +187,9 @@ the deploy.
 
 **Slip rule:** if the AI layer has not passed its check by S+4 weeks, freeze with the rule layer.
 The AI layer then goes only into units nobody has opened yet, recorded in the origin column.
+✏️ *2026-10-28: now it reads: show rule suggestions only, and add AI suggestions for units nobody has opened yet. A
+category of AI suggestions that fails the short look is not shown
+([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 
 **The funding edge is S**, with S the day after the current grant's final report.
 - **Before S,** preparation can be paid from what remains of the current grant. So front-load the build work. Where the rulings allow, run the paid steps before S, such as D11's MT buy and the AI pilot's API calls: after S, no grant pays API or other non-labour costs. On the target calendar the stage 1 rulings close after S, so expect the AI layer's API cost to fall after S.
@@ -240,12 +259,18 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
   - **If the 8th (an alt that only September has) comes back untranslated twice, it goes to editors as a flagged untranslated segment.** It never goes through the AI.
   - `--force --module` is not used: it would rewrite the module and revert a `HAND REPAIR`.
 - **2.4 September markup defects:** 42 MT-invented `<lágvísir>`-style tags, and legacy `~x~`/`^x^` in alts and table summaries. Render-check first; if they reach readers, normalise them in the rule layer.
+  ✏️ *2026-10-28: the rule layer's normalisations reach editors as suggestions. Whether the MT preview takes these
+  normalisations stays with the next chemistry sync decision (register, 2026-10-28)
+  ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 
 ### Stage 3: the machine-revised layer
 - **3.1 Rule operations** (deterministic code), each logged with its rule id:
   - key-terms headwords (64 to fix under September) and bold definition terms;
   - markup normalisation;
   - exact swaps, only where competitor and target share a declension class, and computed, never curated.
+
+  ✏️ *2026-10-28: these operations reach editors as suggestions, labelled as rule edits, with accept-all per ruling,
+  and never as starting text ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 - **3.2 AI operations, scope v1:** the ruled term, plus the agreement it forces.
   - Suspected mistranslations are **flagged for editors, never fixed**.
   - Output is edit operations: `{segment, find, replace, category, ruling_id, reason}`.
@@ -270,8 +295,10 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 ### Stage 4: editable and checked
 - **4.0 Make "human" per segment** in the TM and corpus exports (§4). Pin it with a test, before 4.1.
 - **4.1 Classify every `02-mt-output` reader** (§4). Change the editor's loader, the mt-preview publication map and the auto-advance to read layer 2. Load order: human, revised, selected, pure.
-  ✏️ *2026-10-28: not done. The editor's loader and the publication maps stay on pure MT; layer 2 reaches editors
-  only as suggestions (Skerfur plan G1.23) ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
+  ✏️ *2026-10-28, corrected the same day: **narrowed, not dropped.** The load order becomes human, selected (1s),
+  pure: revised (layer 2) leaves it, and layer 2 reaches editors only as suggestions (the follow-on plan's G1.23)
+  ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)). The first wording said 4.1 was not done
+  at all, which would have left layer 1s, where 2.3's re-requested segments are written, with no reader.*
 - **4.2 Re-attach by content.** This replaces the id-based script.
   - Re-enter the 137 human segments, minus any already entered under 2.2; 28 need marker conversion.
   - Supersede the 151 old production rows (register §C114 ①).
@@ -283,6 +310,10 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 - **4.5 Re-inject and re-render the preview from the new layers.**
   - The local `content/c2-whole-book-reinject` branch was built from pure September MT. Its content is superseded; its machinery is reused.
   - QC: the free checks, a marker census and a sentinel. Then [USER]'s preview.
+  - ✏️ *2026-10-28: "the new layers" now means layer 1s. The preview keeps the selected pure MT (4.1, narrowed), and
+    layer 2 stays out of it until the next chemistry sync decision (register, 2026-10-28). Fixes scoped to ride this
+    re-render keep that route: register §C201's H1–H4
+    ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 - **4.6 Reader publication is separate from editing.** [USER] syncs by book when the 1.8 criterion is met. When that happens, and what it counts as, is D14.
 
 ### Stage 5: timing capture, freeze, edit
