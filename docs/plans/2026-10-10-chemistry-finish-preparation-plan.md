@@ -261,11 +261,17 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 - **3.4 Pilot** on one high-drift chapter, then a second, then the rest. [USER] checks blind, per category, from at least 3 chapters: ✏️ *2026-10-26: for this book the order is **pilot, full run before S, blind check after S** ([USER]'s answer, [record](../decisions/2026-10-26-pre-s-week-ai-layer-answers.md); [pre-S plan](2026-10-26-pre-s-week-plan.md) §5 A1). The acceptance rule below is unchanged, and a dropped category's operations leave layer 2 by code.*
   - **20 first.** A category is dropped at any meaning-changing error, or at 2 or more wrong.
   - **Then up to 59 in total** for the categories that survive. A category is kept only if none of the 59 changes meaning and at most 1 is otherwise wrong (that supports an error rate below about 9%).
+  ✏️ *2026-10-28 ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)): only the "20 first" stage
+  applies. It runs on the full run's output after the prompt freeze, never on the pilot chapter, sampled across
+  segment types, before suggestions go live. There is no "up to 59" stage: editors' accept and reject rates per
+  category are the precision measure.*
 - **3.5 What is measured.** `measure.py` before and after is a **ruling-compliance (manipulation) check**, not quality: the pass optimises exactly what it counts, and its matcher favours citation forms over correct inflection. Its `load_rulings` reads only `HOUSE_STYLE_TERMS`, so it cannot see a no-entry ruling (D4b among them); the compliance check must read the compiled ruling-set artifact. **Quality** is the blind check's error rate per category, plus a second, compound-tolerant matcher, plus the follow-on project's post-editing measurement.
 
 ### Stage 4: editable and checked
 - **4.0 Make "human" per segment** in the TM and corpus exports (§4). Pin it with a test, before 4.1.
 - **4.1 Classify every `02-mt-output` reader** (§4). Change the editor's loader, the mt-preview publication map and the auto-advance to read layer 2. Load order: human, revised, selected, pure.
+  ✏️ *2026-10-28: not done. The editor's loader and the publication maps stay on pure MT; layer 2 reaches editors
+  only as suggestions (Skerfur plan G1.23) ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 - **4.2 Re-attach by content.** This replaces the id-based script.
   - Re-enter the 137 human segments, minus any already entered under 2.2; 28 need marker conversion.
   - Supersede the 151 old production rows (register §C114 ①).
@@ -292,6 +298,8 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
   - **term propagation**: single-command replacement across the book, BÍN inflections, BÍN credit (2026-09-06 assistant plan, U1 and U3–U8). Its term-decision writer, U4, is blocked on the §C50 panel-volume ruling, D15.
   - **lemma/POS tagging** as a batch over the logged edits.
 - **5.4 Review depth for alts and table summaries.** They hold 782k and 202k English characters, 38.6% more text than the editing estimate assumed. This is D12, and it is **urgent**: the contract requires every chapter reviewed and published within the 12 months.
+  ✏️ *2026-10-28: decided ([answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)). Table summaries get
+  flag-only review in their own tier; alt texts get full review.*
 - **5.5 Contract obligations to build in early:**
   - every published item connected with the project states the follow-on grant, worded as the contract requires (vefur, on the first reviewed publication; reports; releases);
   - the parallel corpus and the terminology collection are released under **CC BY 4.0**. That keeps BÍN-derived inflected forms out of them: BÍN's licence is ShareAlike, so its forms stay in the editor and never enter `glossary-unified.json` or the release;
@@ -322,6 +330,10 @@ The AI layer then goes only into units nobody has opened yet, recorded in the or
 - **Headless Claude Code** (`claude -p`) is acceptable if the same records are kept. The installed CLI has `--system-prompt-file`, `--tools`, `--json-schema`, `--model`, `--output-format json` and `--no-session-persistence`. The exact invocation is pinned in the runner, not here.
 
 ## 7. A research design question: is there a control arm?
+
+✏️ *2026-10-28: closed with **neither** (a) nor (b). Editors start from pure MT, layer 2 reaches them as
+suggestions, and there is no control arm
+([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 
 If every unit starts from the AI-reviewed layer, the post-editing measurement describes
 *post-editing of AI-reviewed MT*. Edit distance from pure MT stays computable, but "AI review
@@ -371,6 +383,8 @@ more work on some editors.
 | D12 | Review depth for alts and table summaries (+38.6% English) | **urgent**: decide before editing starts. The contract requires every chapter reviewed and published within the 12 months. |
 | D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **0.2 has counted it: under the D10 follow-up's recommendation, that is all of ch01–ch02**, with the comments as notes. The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so this has no editing hours yet. Funding options are in the private companion; [USER] decides. |
 | D15 | §C50: the terminology panel's issue volume (2.81 per segment), which blocks U4 | re-measure on layer 2 first; the pass should remove much of it |
+
+✏️ *2026-10-28, §8: D7 is closed with neither (a) nor (b) (see the note under §7); D12 is decided (see the note at 5.4).*
 
 ## 9. What this plan cannot see
 

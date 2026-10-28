@@ -1,7 +1,7 @@
 # Decision: a one-chapter AI-layer pilot before S on the current grant; the full term-pass run after the D7 pre-registration, paid privately
 
 - **Date:** 2026-10-27
-- **Status:** Accepted
+- **Status:** Partly superseded by `docs/decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md` (decision 2's first condition, the D7 pre-registration, and the consequences that follow from it; its third condition, the run before the first unit opens, relaxed to per-unit eligibility)
 - **Context owners:** [USER] (decided 2026-10-27, after a read-only review of the plan, the AI pass and both grants)
 - **Supersedes:** `docs/decisions/2026-10-26-pre-s-week-ai-layer-answers.md`, in part: its decision **3** ("A1 =
   reordered": the full run before S, the blind check after S), and decision **1** insofar as it had the current grant

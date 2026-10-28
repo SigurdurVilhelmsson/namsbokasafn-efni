@@ -61,6 +61,9 @@ thinking included (mean, p95, max), at medium and high effort, plus the truncati
 after the pre-registration and the prompt freeze, before the first unit opens; item 7 (the pre-screen) runs before S
 if built in time, otherwise privately or dropped (open, [USER]).*
 
+✏️ *2026-10-28: the full run uses high effort. The pilot's medium arm is a fallback only, used if high truncates
+or the projected run would cross the cap ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
+
 **Tier 2: large coding, unfunded after S.** In parallel with Tier 1, highest value first.
 
 | # | Item | Plan ref | Needs from [USER] |
@@ -128,6 +131,7 @@ committed.*
   check: 4.1's layer-2 read stays behind its flag until then (§2, item 12).
   ✏️ *2026-10-27: the pilot chapter is excluded from the blind-check sample and the control frame (its output is seen
   first and drives prompt revision; [record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)).*
+  ✏️ *2026-10-28: there is no control frame any more. The pilot chapter stays out of the short look's sample.*
 - **The slip rule is unchanged:** if the AI layer fails its check, freeze with the rule layer.
 
 ## 5. What this plan amends, if [USER] agrees
@@ -144,6 +148,8 @@ committed.*
   ✏️ *Superseded 2026-10-27: [USER] chose a one-chapter pilot before S and the full run after the D7
   pre-registration, paid privately ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)).
   3.4's strict order is available again; [USER] settles it in the pre-registration.*
+  ✏️ *2026-10-28: there is no pre-registration. The check is 3.4's "20 first" stage, after the full run and before
+  suggestions go live ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 - **A2, the calendars** (10-10 §5's table and the Skerfur plan's §7 "Before S" row): the S → S+4 weeks build rows
   (rule layer, AI harness and gate, re-request mode, full AI run) move into the week before S as far as they get.
   Whatever is unfinished at S continues in month 1, as before.

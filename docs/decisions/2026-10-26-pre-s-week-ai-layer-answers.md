@@ -1,7 +1,7 @@
 # Decision: the AI layer runs before S through the Anthropic API (capped), with D5 and D6 yes, the full run before the blind check, and its logs committed
 
 - **Date:** 2026-10-26
-- **Status:** Partly superseded by `docs/decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md` (its decision 3, A1 reordered; and decision 1 insofar as the current grant paid the full run)
+- **Status:** Partly superseded by `docs/decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md` (its decision 3, A1 reordered; and decision 1 insofar as the current grant paid the full run); and by `docs/decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md` (its premise that layer 2 is the editors' starting text)
 - **Context owners:** [USER] (answers given in chat on 2026-10-26, in reply to four questions the session put)
 - **Supersedes:** none
 - **Related:** `docs/plans/2026-10-26-pre-s-week-plan.md` (§1 point 4, §4, §5 A1, §6 item 2);
