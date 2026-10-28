@@ -25,6 +25,8 @@
  *   --full-glossary     Send the whole approved glossary (the old silent default).
  *                       A live run refuses unless exactly one of these three arms
  *                       is given — see resolveGlossaryArm.
+ *   --june-wire         With --full-glossary only: send it by June's rules (D11). See
+ *                       formatGlossaryJune / filterGlossaryForTextJune.
  *   --rate-delay <ms>   Delay between API calls (default: 500)
  *   -v, --verbose       Detailed progress output
  *   -h, --help          Show this help
@@ -1225,12 +1227,16 @@ export { bookToDomain };
  * of it being silent. onSkipped fires even if this function returns null (the
  * worst case: all approved terms were malformed).
  *
+ * `options.wire === 'june'` (D11, `--june-wire`) formats with June's `formatGlossaryJune`:
+ * every approved row, so neither callback fires. Anything else is today's `formatGlossary`.
+ *
  * @param {string} glossaryDir
  * @param {string} domain
- * @param {{onSkipped?: (dropped: Array<object>) => void,
+ * @param {{wire?: 'today'|'june',
+ *          onSkipped?: (dropped: Array<object>) => void,
  *          onOmitted?: (report: {omitted: Array<object>, competitions: Array<object>, commaLists: Array<object>}) => void}} [options]
  */
-export function loadGlossary(glossaryDir, domain, { onSkipped, onOmitted } = {}) {
+export function loadGlossary(glossaryDir, domain, { onSkipped, onOmitted, wire } = {}) {
   const glossaryPath = path.join(glossaryDir, 'glossary-unified.json');
   if (!fs.existsSync(glossaryPath)) return null;
 
@@ -1239,6 +1245,10 @@ export function loadGlossary(glossaryDir, domain, { onSkipped, onOmitted } = {})
   let glossary;
   try {
     const data = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
+    if (wire === 'june') {
+      glossary = formatGlossaryJune(data.terms || [], { domain, approvedOnly: true });
+      return glossary.terms.length === 0 ? null : glossary;
+    }
     // An inner callback that CANNOT throw, so the caller's callback never
     // runs inside this catch-all. Handing `onSkipped` straight to
     // formatGlossary would mean a throwing caller callback is swallowed and
@@ -1465,6 +1475,9 @@ function parseCliArgs(argv) {
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'glossaryOnly', flags: ['--glossary-only'], type: 'string', default: null },
     { name: 'fullGlossary', flags: ['--full-glossary'], type: 'boolean', default: false },
+    // D11. ⚠️ parseArgs drops an UNDECLARED flag silently, so this line is what stops
+    // `--june-wire` from buying today's wire under the June label (api-translate-june-wire.test.js).
+    { name: 'juneWire', flags: ['--june-wire'], type: 'boolean', default: false },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
     { name: 'maxChunk', flags: ['--max-chunk'], type: 'number', default: DEFAULT_MAX_CHUNK_CHARS },
     { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
@@ -1534,6 +1547,10 @@ Options:
                       tools/compute-glossary-subset.js, then audit it.
   --full-glossary     Send the whole approved glossary, filtered per chunk
                       (what a run with no glossary flag used to do silently)
+  --june-wire         With --full-glossary only, for the D11 test: send the glossary
+                      by the rules the March–June MT was sent with (every approved
+                      row, both values of a contested headword, short headwords as
+                      substrings). Recorded as run.glossary.wire. Not with --top-up.
   --rate-delay <ms>   Delay between API calls (default: 500)
   --update-status     Mark mtOutput stage as complete in pipeline DB
   -v, --verbose       Detailed progress output
@@ -1652,6 +1669,42 @@ export function filterGlossaryForText(glossary, text) {
   return { ...glossary, terms: filtered };
 }
 
+// ─── D11: June's wire (`--june-wire`) ───────────────────────────────
+//
+// 🔴 A RESEARCH INSTRUMENT, NOT A SECOND WAY TO BUY. D11 (experiments/d11-glossary-test/DESIGN.md
+// §3; decision 2026-10-25) tests whether the old chemistry MT's better term consistency was a
+// glossary effect, so it must send what the old MT was actually sent. The glossary VALUES are the
+// March file; the SENDING RULES changed after June: C18 (`a9e334ed3`) omits both values of a
+// contested headword, and §C116 (`462a00a4a`) matches a headword of ≤ 3 characters
+// case-sensitively as a whole word. These two functions are June's rules, copied VERBATIM from
+// `7658de896` (`formatGlossary` in tools/lib/malstadur-api.js and `filterGlossaryForText` here)
+// and renamed. Do not "fix" them: their defects (a wrong-sense substring match, a contradiction
+// on the wire) are what D11 measures. Pinned by tools/__tests__/api-translate-june-wire.test.js.
+
+// ── verbatim from 7658de896:tools/lib/malstadur-api.js (formatGlossary) ──
+export function formatGlossaryJune(terms, { domain = 'chemistry', approvedOnly = true } = {}) {
+  const filtered = approvedOnly ? terms.filter((t) => t.status === 'approved') : terms;
+
+  return {
+    domain,
+    sourceLanguage: 'en',
+    targetLanguage: 'is',
+    terms: filtered.map((t) => ({
+      sourceWord: t.english,
+      targetWord: t.icelandic,
+    })),
+  };
+}
+
+// ── verbatim from 7658de896:tools/api-translate.js (filterGlossaryForText) ──
+export function filterGlossaryForTextJune(glossary, text) {
+  if (!glossary) return null;
+  const lowerText = text.toLowerCase();
+  const filtered = glossary.terms.filter((t) => lowerText.includes(t.sourceWord.toLowerCase()));
+  if (filtered.length === 0) return null;
+  return { ...glossary, terms: filtered };
+}
+
 // ─── Chunk Splitting ────────────────────────────────────────────────
 
 /**
@@ -1717,11 +1770,22 @@ export function splitAtSegBoundaries(text, maxChars) {
  * until 2026-08-16, and the caller's `+= || 0` believed it, persisting the
  * string `"0[object Object]"` into every sidecar. Normalize with `usageUnits()`
  * before doing arithmetic on it.
+ * D11: `opts.wire === 'june'` selects June's per-chunk filter (`filterGlossaryForTextJune`);
+ * anything else is today's. The wire rides in this options argument, never on the glossary
+ * object, which IS the outbound request body (see `formatGlossary`).
  * @returns {{ text: string, usage: object, mismatches: Array, unwrapped: Array, glossarySent: boolean }}
  */
-export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+export async function translateChunk(
+  client,
+  chunkText,
+  glossary,
+  verbose,
+  chunkLabel,
+  { wire } = {}
+) {
   const { wireText, segments } = stripTermFnToPaired(chunkText);
-  const filteredGlossary = filterGlossaryForText(glossary, chunkText);
+  const filterForWire = wire === 'june' ? filterGlossaryForTextJune : filterGlossaryForText;
+  const filteredGlossary = filterForWire(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
   let glossarySent = false;
   if (filteredGlossary) {
@@ -1891,10 +1955,11 @@ export function moduleIdFromOutputPath(outputPath) {
  * @param {object|null} glossary
  * @param {boolean} verbose
  * @param {number} maxChunk
- * @param {{moduleId: string, where: string}} ctx names used in messages
+ * @param {{moduleId: string, where: string, wire?: 'today'|'june'}} ctx names used in messages,
+ *   and the glossary sending rules (D11; omitted = today's)
  */
 export async function translateSegmentText(client, input, glossary, verbose, maxChunk, ctx) {
-  const { moduleId, where } = ctx;
+  const { moduleId, where, wire } = ctx;
 
   // Split if too large for a single API call
   const chunks = splitAtSegBoundaries(input, maxChunk);
@@ -1922,7 +1987,9 @@ export async function translateSegmentText(client, input, glossary, verbose, max
       console.error(`    ${chunkLabel}: ${chunks[i].length} chars, ${segCount} segments`);
     }
 
-    const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
+    const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel, {
+      wire,
+    });
     translatedChunks.push(result.text);
     // usageUnits(), not `|| 0`: the client returns an OBJECT and `0 + {}` is
     // string concatenation, not addition. See run-record.js's usageUnits docs.
@@ -2007,8 +2074,12 @@ export async function translateSegmentText(client, input, glossary, verbose, max
   };
 }
 
-/** The run record for one paid call of `translateSegmentText` over `input`. */
-function runRecordFor(input, r, glossary, glossaryArm) {
+/**
+ * The run record for one paid call of `translateSegmentText` over `input`.
+ * `glossaryWire` defaults to `'today'` when a glossary was sent and is `null` when none was:
+ * with no glossary, no sending rule applied.
+ */
+function runRecordFor(input, r, glossary, glossaryArm, glossaryWire) {
   return buildRunRecord({
     chars: input.length,
     usage: r.usage,
@@ -2018,6 +2089,7 @@ function runRecordFor(input, r, glossary, glossaryArm) {
     bracketDelta: r.bracketDelta,
     unwrapped: r.unwrapped,
     glossaryArm: glossaryArm ?? (glossary ? 'glossary' : 'no-glossary'),
+    glossaryWire: glossary ? (glossaryWire ?? 'today') : null,
     glossaryHash: glossaryContentHash(glossary),
     glossaryTermCount: glossary?.terms?.length ?? null,
     chunksWithGlossary: r.chunksWithGlossary,
@@ -2071,6 +2143,7 @@ function printModuleNotes(moduleId, r) {
  * Translate a single module file via the API.
  * Automatically splits large modules at SEG boundaries to avoid API truncation.
  * Filters glossary to terms in source text. Retries without glossary on truncation.
+ * `glossaryWire: 'june'` (D11, `--june-wire`) filters by June's rules and records it.
  */
 export async function translateModule(
   client,
@@ -2079,16 +2152,17 @@ export async function translateModule(
   glossary,
   verbose,
   maxChunk = DEFAULT_MAX_CHUNK_CHARS,
-  { glossaryArm } = {}
+  { glossaryArm, glossaryWire } = {}
 ) {
   const input = fs.readFileSync(inputPath, 'utf8');
   const moduleId = path.basename(inputPath, '-segments.en.md');
   const r = await translateSegmentText(client, input, glossary, verbose, maxChunk, {
     moduleId,
     where: outputPath,
+    wire: glossaryWire,
   });
   // Built before the write, for the same reason as the values it reads (Finding 1).
-  const run = runRecordFor(input, r, glossary, glossaryArm);
+  const run = runRecordFor(input, r, glossary, glossaryArm, glossaryWire);
 
   // Write output
   const outputDir = path.dirname(outputPath);
@@ -2325,6 +2399,23 @@ async function main() {
     process.exit(2);
   }
 
+  // D11: June's wire changes how the WHOLE glossary is sent, so it means something only with
+  // --full-glossary. Refused on a dry run too: it is a contradiction, not a missing arm.
+  if (args.juneWire && statedArm !== 'glossary') {
+    console.error(
+      'Error: --june-wire needs --full-glossary: it sends the whole approved glossary by the ' +
+        'rules the March–June MT was sent with. Nothing was sent.'
+    );
+    process.exit(1);
+  }
+  // A top-up's run record is carried over from the buy it extends, and topUpModule does not
+  // take the wire, so a June top-up would send June's rows through today's filter.
+  if (args.juneWire && args.topUp) {
+    console.error('Error: --june-wire cannot be used with --top-up. Nothing was sent.');
+    process.exit(1);
+  }
+  const glossaryWire = args.juneWire ? 'june' : 'today';
+
   // Load glossary
   let glossary = null;
   const glossaryOnly = args.glossaryOnly != null ? parseHeadwordList(args.glossaryOnly) : null;
@@ -2337,6 +2428,7 @@ async function main() {
     let skippedCount = 0;
     let omittedCount = 0;
     glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain, {
+      wire: glossaryWire,
       onSkipped: (dropped) => {
         skippedCount = dropped.length;
       },
@@ -2345,6 +2437,13 @@ async function main() {
       },
     });
     console.log(glossaryStatusLine(glossary, skippedCount, omittedCount));
+    console.log(
+      `Glossary wire: ${glossaryWire}` +
+        (glossaryWire === 'june'
+          ? " (D11: June's rules — every approved row, both values of a contested headword, " +
+            'short headwords as case-insensitive substrings)'
+          : '')
+    );
     // A STATED full arm with nothing to send must fail closed, like --glossary-only's
     // missing-headword refusal below — never print "glossary" while sending none.
     if (args.fullGlossary && !glossary) {
@@ -2585,6 +2684,7 @@ async function main() {
         args.maxChunk,
         {
           glossaryArm: glossaryOnly ? 'glossary-only' : undefined,
+          glossaryWire,
         }
       );
       const fixedNote = markersNormalized > 0 ? `, ${markersNormalized} marker(s) un-glued` : '';

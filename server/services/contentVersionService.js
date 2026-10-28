@@ -16,6 +16,7 @@ const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
 const acceptanceService = require('./acceptanceService');
 const resolveDbPath = require('../lib/dbPath');
+const applyHold = require('../lib/applyHold');
 
 const DB_PATH = resolveDbPath();
 
@@ -242,6 +243,9 @@ function getSegmentHistory(book, moduleId, segmentId, track = 'faithful') {
  */
 function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track = 'faithful') {
   const cfg = trackConfig(track); // validate before touching the DB or filesystem
+  // §C203: a held book's faithful file may not be written, and a restore writes it. Checked
+  // before the step-3 snapshot so a refused restore leaves no version row behind either.
+  if (track === 'faithful') applyHold.assertFaithfulWritable(book);
   const actorName =
     restoredBy.username || (restoredBy.userId != null ? String(restoredBy.userId) : 'system');
 

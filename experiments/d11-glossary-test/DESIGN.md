@@ -1,7 +1,10 @@
 # D11: a controlled glossary test (design, 2026-10-24)
 
-> **Pre-registration draft.** Everything here is fixed except the arm in §3, which is [USER]'s decision, due
-> Monday 26 October. Once it is made, this file is frozen and the run follows it. Status and the go live in the
+> **FROZEN 2026-10-25 (pre-registration).** [USER] decided the arms in §3: three arms, June's wire (M) primary, today's
+> wire (S) a pre-registered secondary arm, and no glossary, 2 runs each, up to ISK 5,000. Record:
+> [`docs/decisions/2026-10-25-d11-three-arms-junes-wire-primary.md`](../../docs/decisions/2026-10-25-d11-three-arms-junes-wire-primary.md). The run follows this file.
+> _(Until then it read: "Pre-registration draft. Everything here is fixed except the arm in §3, which is [USER]'s
+> decision, due Monday 26 October. Once it is made, this file is frozen and the run follows it.")_ Status and the go live in the
 > register's newest RESUME, never here.
 
 ## 1. The question
@@ -54,6 +57,10 @@ sends 4 to 7 terms that today's does not, and today's sends none that June's doe
 **Recommendation: M**, because D11 exists to test what the old MT was actually sent. Add S as a third arm if the
 budget allows.
 
+**Decided 2026-10-25 ([USER]):** three arms. **M is the primary arm**; **S is a pre-registered secondary arm**; and no
+glossary is the control; 2 runs each, up to ISK 5,000 ([record](../../docs/decisions/2026-10-25-d11-three-arms-junes-wire-primary.md)). So §2's "{glossary arm, no glossary}"
+reads {M, S, no glossary}.
+
 ## 4. The modules
 
 **Rule:** the two modules with the most taught terms in the TEXT-DRIFT class (the running text moved away from the
@@ -68,6 +75,10 @@ reconciled, and the ranking does not depend on it.
 | ch01 `m68667` (4) | atom, heterogeneous mixture, homogeneous mixture, law of conservation of matter |
 
 Next in line: ch10 `m68773` (4 terms, about 1.6 times the cost of `m68667`).
+
+**Both modules' old MT came from March buys** (`m68781` at `de601457d`, 22 March; `m68667` at `c43026f46`,
+19 March), before C18 landed (`a9e334ed3`, 4 August). So for these two, June's wire is exactly what the old MT
+was sent. That would not hold for a module from the 12 August pilot, which already ran with C18's omissions.
 
 ## 5. Cost
 
@@ -117,6 +128,9 @@ move both slightly.
   compared between arms.
 - **Secondary:** all the two modules' taught terms, and segment-level difference rates between runs and between arms.
 - **The June-only terms** (§3) are reported separately: they are where M and S differ.
+- **Contrasts (pre-registered 2026-10-25, with the arms):** the **primary** contrast is M against no glossary. **Secondary:**
+  S against no glossary, and M against S. M against S differs on only a few terms per chunk, so it is expected to be
+  too small to call against the run-to-run noise; it is reported either way.
 
 ## 9. Funding
 

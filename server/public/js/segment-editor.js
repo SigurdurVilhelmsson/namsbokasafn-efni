@@ -2785,12 +2785,19 @@
       );
 
       const {
+        held,
         unapplied_count,
         unapplied_acceptances,
         total_approved,
         can_rebuild,
         applied_acceptances,
       } = data;
+      if (held) {
+        // §C203: the server refuses to write this book's faithful files; say why, and leave
+        // both buttons disabled (they were disabled above, before the fetch).
+        statusEl.textContent = held;
+        return;
+      }
       const totalUnapplied = (unapplied_count || 0) + (unapplied_acceptances || 0);
 
       if (totalUnapplied > 0) {

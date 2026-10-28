@@ -92,6 +92,10 @@ books/efnafraedi/pipeline-test/
 
 # Test artifacts (created by test suite)
 books/testbook/
+# server/__tests__/registerAppendixSections.test.js writes a book and its catalogue file; a
+# killed run can leave them
+books/c1b-test-book/
+server/data/c1b-test-cat.json
 *:Zone.Identifier
 Chemistry2e-WEB.pdf
 Screenshot*.png
@@ -160,3 +164,10 @@ books/__e2e-fixture__/**/*.locked
 # from destroying the provenance basis. Never commit them.
 books/*/source-updates/*.cnxml
 books/*/source-updates/*-upstream.cnxml
+
+# AI-reviewed layer: crash residue only. The records under books/*/ai-review/ and the layer
+# under books/*/02-mt-revised/ are committed by decision (2026-10-26); a leftover ledger lock
+# or an interrupted atomic write (`<file>.tmp-<pid>-<hex>`) must never be.
+books/*/ai-review/ledger.jsonl.lock
+books/*/ai-review/**/*.tmp-*
+books/*/02-mt-revised/**/.*.tmp-*

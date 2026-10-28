@@ -17,6 +17,7 @@ import {
   stemOf,
   containsStem,
   usesHeadword,
+  headwordSpans,
   glossaryCoverage,
   findSuppressedShortLabels,
   chapterMathTokens,
@@ -369,5 +370,56 @@ describe('the CLI', () => {
   // The mode only merges per-chapter maps that the tests above already exercise.
   it('--book-wide refuses --chapter', () => {
     expect(run('--book', 'efnafraedi-2e', '--book-wide', '--chapter', '5').status).toBe(2);
+  });
+});
+
+describe('headwordSpans — where usesHeadword fires, as [start, end) ranges', () => {
+  it('finds every word-bounded use, plurals included', () => {
+    const t = 'A fuel cell and two fuel cells; a cell.';
+    expect(headwordSpans('cell', t)).toEqual([
+      [7, 11],
+      [25, 30],
+      [34, 38],
+    ]);
+    expect(headwordSpans('cell', t).map(([s, e]) => t.slice(s, e))).toEqual([
+      'cell',
+      'cells',
+      'cell',
+    ]);
+    expect(headwordSpans('fuel cell', t)).toEqual([
+      [2, 11],
+      [20, 30],
+    ]);
+  });
+
+  it('keeps usesHeadword’s word boundaries and case rules', () => {
+    expect(headwordSpans('pound', 'a compound of')).toEqual([]);
+    expect(headwordSpans('As', 'As we saw, As is arsenic; as well')).toEqual([
+      [0, 2],
+      [11, 13],
+    ]);
+    expect(headwordSpans('cell', 'CELLS')).toEqual([[0, 5]]);
+  });
+
+  it('agrees with usesHeadword on every input of its own tests', () => {
+    const cases = [
+      ['pound', 'one pound'],
+      ['pound', 'two pounds'],
+      ['pound', 'a compound of'],
+      ['acid', 'an acidic solution'],
+      ['As', 'As we saw'],
+      ['as', 'As we saw'],
+      ['cell', 'E[[sub:cell]]'],
+      ['meter', 'a calorimeter'],
+    ];
+    for (const [h, t] of cases) {
+      expect(headwordSpans(h, t).length > 0, `${h} in ${t}`).toBe(usesHeadword(h, t));
+    }
+  });
+
+  it('is repeatable: a cached global pattern keeps no position between calls', () => {
+    const t = 'cell cell';
+    expect(headwordSpans('cell', t)).toEqual(headwordSpans('cell', t));
+    expect(usesHeadword('cell', t)).toBe(true);
   });
 });

@@ -8,7 +8,7 @@
 // that could never have parsed.
 import { describe, it, expect, afterEach } from 'vitest';
 import http from 'node:http';
-import { brotliCompressSync, deflateSync, gzipSync } from 'node:zlib';
+import { brotliCompressSync, deflateSync, gzipSync, zstdCompressSync } from 'node:zlib';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const express = require('express');
@@ -79,11 +79,24 @@ describe('refuseCompressedBodies', () => {
     expect(reached.count).toBe(1);
   });
 
+  // body-parser 2.4.0 (taken for two high advisories, PR #557) added zstd decoding, a new
+  // decoder reachable from every request. This control shows the default parser now decodes it,
+  // so the zstd refusals below are the guard's doing and not a coding the parser never knew.
+  it('control: since body-parser 2.4.0 an unguarded default parser decodes zstd too', async () => {
+    const { app, reached } = makeApp({ guarded: false });
+    const res = await post(app, zstdCompressSync(JSON_BODY), {
+      ...JSON_TYPE,
+      'Content-Encoding': 'zstd',
+    });
+    expect([res.status, res.json.body, reached.count]).toEqual([200, { a: 1 }, 1]);
+  });
+
   const compressed = [
     ['br', brotliCompressSync(JSON_BODY)],
     ['BR', brotliCompressSync(JSON_BODY)],
     ['gzip', gzipSync(JSON_BODY)],
     ['deflate', deflateSync(JSON_BODY)],
+    ['zstd', zstdCompressSync(JSON_BODY)],
     ['gzip, br', brotliCompressSync(gzipSync(JSON_BODY))],
   ];
   for (const [encoding, body] of compressed) {
@@ -102,8 +115,8 @@ describe('refuseCompressedBodies', () => {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Encoding': 'br',
     });
-    // multer routes (books, terminology) parse multipart themselves; the guard
-    // runs before every route, so it covers them too.
+    // the multer route (terminology) parses multipart itself; the guard
+    // runs before every route, so it covers that one too.
     const multipart = await post(app, brotliCompressSync(Buffer.from('--x--')), {
       'Content-Type': 'multipart/form-data; boundary=x',
       'Content-Encoding': 'br',
@@ -133,5 +146,14 @@ describe('refuseCompressedBodies', () => {
     expect(res.status).toBe(415);
     expect(res.json.error).toBe('encoding.unsupported');
     expect(reached.count).toBe(0);
+  });
+
+  it('second layer: inflate: false refuses zstd too, without decoding', async () => {
+    const { app, reached } = makeApp({ guarded: true, guard: false });
+    const res = await post(app, zstdCompressSync(JSON_BODY), {
+      ...JSON_TYPE,
+      'Content-Encoding': 'zstd',
+    });
+    expect([res.status, res.json.error, reached.count]).toEqual([415, 'encoding.unsupported', 0]);
   });
 });

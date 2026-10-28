@@ -32,6 +32,26 @@ describe('books router — retired routes', () => {
 
     expect(registeredPaths).not.toContain('/:bookId/chapters/:chapter/import-mt');
   });
+
+  // Retired 2026-10-25 with the chapter file registry (crossBookAuthz.test.js has the 404s).
+  it('chapter import and the chapter file registry routes are retired (not registered)', () => {
+    const router = require('../routes/books');
+    const registered = router.stack
+      .filter((layer) => layer.route)
+      .flatMap((layer) => Object.keys(layer.route.methods).map((m) => `${m} ${layer.route.path}`));
+    const retired = [
+      'post /:bookId/chapters/:chapter/import',
+      'get /:bookId/chapters/:chapter/files',
+      'post /:bookId/chapters/:chapter/files/scan',
+      'delete /:bookId/chapters/:chapter/files',
+      'get /:bookId/files/summary',
+    ];
+    // The control: the router's other routes are still seen, so an empty stack cannot pass.
+    expect([
+      retired.filter((r) => registered.includes(r)),
+      registered.includes('get /:bookId/download'),
+    ]).toEqual([[], true]);
+  });
 });
 
 function invoke(h, req) {

@@ -11,7 +11,11 @@ const { loginAs } = require('./helpers/auth');
  * These tests directly target three production bugs:
  *   #1 — csv-parse / xlsx packages never installed (import silently failed)
  *   #2 — activityLog.log() used `action` instead of `type` (NOT NULL crash)
- *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global)
+ *   #3 — CSV upload UI didn't pass bookSlug (terms imported as global). That fixed the page
+ *        half only: the CSV and Excel routes still ignored bookSlug until 2026-10-25, when they
+ *        began tagging terms with the book's subject. 'valid CSV with bookSlug creates terms'
+ *        pins it here (the server maps efnafraedi-2e to chemistry at boot), and
+ *        multerUploadRoutes.test.js pins it for Excel and for an unregistered book.
  */
 
 const API = '/api/terminology';
@@ -481,6 +485,10 @@ test.describe('Terminology CSV import', () => {
     const searchBody = await searchRes.json();
     const found = searchBody.terms.find((t) => t.english === `acid-${tag}`);
     expect(found).toBeDefined();
+    // Tagged with the book's subject: until 2026-10-25 the route ignored bookSlug and the
+    // terms landed untagged.
+    const term = (await (await page.request.get(`${API}/${found.id}`)).json()).term;
+    expect(term.translations.map((t) => t.subjects)).toEqual([['chemistry']]);
     // Clean up created terms
     for (const t of searchBody.terms) {
       if (t.english.includes(tag)) cleanupIds.push(t.id);
@@ -736,5 +744,120 @@ test.describe('Term usage integration', () => {
     expect(newStats.total).toBe(baseStats.total + 2);
     expect(newStats.byStatus.approved).toBeGreaterThan(baseStats.byStatus.approved || 0);
     expect(newStats.byStatus.proposed).toBeGreaterThan(baseStats.byStatus.proposed || 0);
+  });
+});
+
+// ─── Block 9: the import page says why an upload was refused ───
+
+/**
+ * The page, not the API: fetchJson (public/js/htmlUtils.js) turns a failed response into an
+ * Error whose message is the body's short `error` label, so an alert of err.message alone
+ * reads "Villa: Invalid Upload" and never says what was wrong. The refusals below put the
+ * reason in `message`, and the page must show it. The file input's accept attribute does not
+ * stop a wrong type: the drop zone assigns dropped files to the input unchecked, and
+ * setInputFiles stands in for that here.
+ */
+test.describe('Terminology import page: a refused upload says why', () => {
+  const cleanupIds = [];
+
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/terminology');
+    await page.waitForLoadState('domcontentloaded');
+    await page.locator('button[onclick="showImportModal()"]').click();
+    const bookSelect = page.locator('#import-book-select');
+    await expect(bookSelect.locator('option[value="efnafraedi-2e"]')).toHaveCount(1);
+    await bookSelect.selectOption('efnafraedi-2e');
+    await page.locator('.import-card[onclick="showCsvUpload()"]').click();
+  });
+
+  test.afterEach(async ({ page }) => {
+    for (const id of cleanupIds) {
+      try {
+        await page.request.delete(`${API}/${id}`);
+      } catch {
+        /* best effort */
+      }
+    }
+    cleanupIds.length = 0;
+  });
+
+  /** Choose `file`, press upload, and return the text of the alert the refusal raises. */
+  async function refusalAlert(page, file) {
+    await page.setInputFiles('#import-file', file);
+    const dialog = page.waitForEvent('dialog');
+    await page.locator('#upload-btn').click();
+    const d = await dialog;
+    const text = d.message();
+    await d.dismiss();
+    return text;
+  }
+
+  test('a file of the wrong type: the alert names the types allowed', async ({ page }) => {
+    const text = await refusalAlert(page, {
+      name: 'terms.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from(`english,icelandic\nwrongtype-${uid()},orð\n`),
+    });
+    expect(text).toBe('Villa: Invalid Upload — Only CSV and Excel files are allowed');
+  });
+
+  test('a CSV one byte over 5 MiB: the alert names the limit', async ({ page }) => {
+    const head = `english,icelandic,definition_en\nbig-${uid()},stór,`;
+    const size = 5 * 1024 * 1024 + 1;
+    const buffer = Buffer.from(head + 'x'.repeat(size - Buffer.byteLength(head) - 1) + '\n');
+    expect(buffer.length).toBe(size);
+    const text = await refusalAlert(page, { name: 'big.csv', mimeType: 'text/csv', buffer });
+    expect(text).toBe('Villa: File Too Large — Uploaded file exceeds the size limit (5 MB)');
+  });
+
+  test('a CSV the parser cannot read: the alert says so, and why', async ({ page }) => {
+    const text = await refusalAlert(page, {
+      name: 'broken.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\n"unclosed-${uid()},orð\n`),
+    });
+    expect(text).toMatch(
+      /^Villa: Invalid CSV — The file could not be read as CSV: Quote Not Closed: /
+    );
+  });
+
+  test('an error page that is not JSON: the alert says "Villa" once', async ({ page }) => {
+    // What nginx sends for a body over its cap: its own HTML 413, which the server never sees.
+    await page.route('**/api/terminology/import/csv**', (route) =>
+      route.fulfill({
+        status: 413,
+        contentType: 'text/html',
+        body: '<html><body><h1>413 Request Entity Too Large</h1></body></html>',
+      })
+    );
+    const text = await refusalAlert(page, {
+      name: 'terms.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\nnonjson-${uid()},orð\n`),
+    });
+    expect(text).toBe('Villa: Netþjónninn svaraði HTTP 413');
+  });
+
+  test('a valid CSV, the control: no alert, and the result panel counts it', async ({ page }) => {
+    const english = `pagecontrol-${uid()}`;
+    const alerts = [];
+    page.on('dialog', async (d) => {
+      alerts.push(d.message());
+      await d.dismiss();
+    });
+    await page.setInputFiles('#import-file', {
+      name: 'ok.csv',
+      mimeType: 'text/csv',
+      buffer: Buffer.from(`english,icelandic\n${english},stjórnhópur\n`),
+    });
+    await page.locator('#upload-btn').click();
+    // The success panel and the alert are the two ends of one try/catch, so once the panel
+    // shows, no alert can follow.
+    await expect(page.locator('#import-result')).toContainText('Bætt við: 1');
+    const found = (await (await page.request.get(`${API}?q=${encodeURIComponent(english)}`)).json())
+      .terms;
+    for (const t of found) if (t.english === english) cleanupIds.push(t.id);
+    expect([alerts, cleanupIds.length]).toEqual([[], 1]);
   });
 });
