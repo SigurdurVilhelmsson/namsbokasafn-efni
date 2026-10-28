@@ -177,6 +177,20 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
     *ritstjórn*, like every other book.** Check `02-mt-output/*-provenance.json`
     (`"tool": "api-translate"` vs `"docx-import"`) before asserting how anything was
     translated — segment counts tell you how much, only provenance tells you by whom.
+- **🔴 DURABLE — NOTHING COMMITTED NAMES A GRANT OR FUND.** Plans, decision records, the
+  register, code, comments and commit messages say *"the current grant"* and *"the
+  follow-on grant"*. **Grant amounts (budgets, payments, rates) and hour counts** appear
+  only in the git-excluded `docs/grants/` files; **the research costs of MT and AI steps
+  stay public**, as § Purpose requires. ⚠️ **The one public naming the contract requires is
+  its credit sentence**, on published material: talks, reports, the reader, and release
+  metadata once follow-on-funded material ships there. **The sentence lives in the
+  private funding companion; public plans point to it and never quote it** ([USER]
+  2026-10-28). ⚠️ The follow-on plan's filename carries the programme's name and existing
+  citations use it; that is not a licence to name the funding bodies in prose. *(First
+  stated 2026-10-11, in one parenthetical of that day's chemistry-finish answers record,
+  and not written here until 2026-10-28, after a session told [USER] that quoting the
+  credit in a plan "doesn't conflict" without finding the rule. Frozen records that
+  predate it keep their wording; fix live documents instead.)*
 - **`.claude/*.local.json` is gitignored at repo level** (`.gitignore:106`). Claude
   Code writes credentials into permission-allowlist strings where they don't look
   like secrets — this is exactly how the sister repo published two live Cloudflare
