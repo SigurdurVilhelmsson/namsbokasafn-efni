@@ -300,24 +300,28 @@ describe('pipeline POSTs are book-scoped', () => {
   // Discriminates the resolver from a hardcoded constant (T1 review finding):
   // HE_A succeeds on their OWN book, so the guard must be reading req.body.book —
   // a resolver stuck on 'liffraedi-2e' would 403 here.
-  it('/api/pipeline/inject: head-editor clears authz for their own book (later 400)', async () => {
+  // G1.14: chemistry's pipeline is held for non-admins, so authz clears and the hold answers
+  // 423. That still discriminates: a resolver stuck on 'liffraedi-2e' would 403 first.
+  it('/api/pipeline/inject: head-editor clears authz for their own book (then held, 423)', async () => {
     const res = await post('/api/pipeline/inject', HE_A, {
       book: 'efnafraedi-2e',
       chapter: 9999,
       track: 'faithful',
     });
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(423);
   });
 
   // G3 (whole-branch review): the /inject-only case above wouldn't catch a resolver
   // that special-cased just that one route — repeat the discrimination on /render.
-  it('/api/pipeline/render: head-editor clears authz for their own book (later 400)', async () => {
+  // G1.14: chemistry's pipeline is held for non-admins, so authz clears and the hold answers
+  // 423. That still discriminates: a resolver stuck on 'liffraedi-2e' would 403 first.
+  it('/api/pipeline/render: head-editor clears authz for their own book (then held, 423)', async () => {
     const res = await post('/api/pipeline/render', HE_A, {
       book: 'efnafraedi-2e',
       chapter: 9999,
       track: 'faithful',
     });
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(423);
   });
 });
 

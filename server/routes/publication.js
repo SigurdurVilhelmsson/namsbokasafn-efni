@@ -33,6 +33,7 @@ const { requireHeadEditor } = require('../middleware/requireRole');
 const activityLog = require('../services/activityLog');
 const { VALID_BOOKS } = require('../config');
 const { normalizeChapter, chapterFromDir, compareChapters } = require('../lib/chapterLabel');
+const { pipelineHold, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
 
 // Validation middleware for chapter params
 function validateChapterParams(req, res, next) {
@@ -133,6 +134,7 @@ router.post(
   '/:bookSlug/:chapterNum/mt-preview',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;
@@ -188,6 +190,7 @@ router.post(
   '/:bookSlug/:chapterNum/faithful',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;
@@ -244,6 +247,7 @@ router.post(
   '/:bookSlug/:chapterNum/localized',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;

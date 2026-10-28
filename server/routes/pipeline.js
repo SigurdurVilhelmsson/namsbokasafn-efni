@@ -25,6 +25,7 @@ const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requ
 const { VALID_BOOKS } = require('../config');
 const { VALID_TRACKS, MAX_CHAPTERS } = require('../constants');
 const { normalizeChapter } = require('../lib/chapterLabel');
+const { pipelineHold, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
 
 // All pipeline operations require HEAD_EDITOR
 router.use(requireAuth, requireRole(ROLES.HEAD_EDITOR));
@@ -67,6 +68,7 @@ function validateParams(req, res) {
 router.post(
   '/inject',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);
     if (!params) return;
@@ -118,6 +120,7 @@ router.post(
 router.post(
   '/render',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);
     if (!params) return;
@@ -168,6 +171,7 @@ router.post(
 router.post(
   '/run',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);
     if (!params) return;

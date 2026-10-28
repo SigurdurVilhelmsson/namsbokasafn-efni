@@ -351,7 +351,8 @@ describe('route registration', () => {
 
   it("both write routes' requireBookAccess gate FIRES: viewer -> 403", async () => {
     for (const layer of [postBlockLayer, postStateLayer]) {
-      expect(layer.route.stack).toHaveLength(5);
+      // 6 since G1.14: the held-book guard sits right after requireBookAccess (index 3).
+      expect(layer.route.stack).toHaveLength(6);
       const out = await invoke(layer.route.stack[2].handle, {
         params: { book: BOOK, chapter: '1', moduleId: MODULE },
         user: { id: 'v1', username: 'v', role: 'viewer' },
