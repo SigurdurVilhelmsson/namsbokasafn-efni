@@ -10,6 +10,10 @@
  *   real SDK offline.
  * - A wrapping fetch reads the `anthropic-version` header off each outgoing request and
  *   keeps it for `run.json`. It reads no other header and keeps nothing else.
+ * - A key that is not scoped to a workspace must name one on every request, so a workspace
+ *   id (given, or resolved from the key's own sources) is sent as `anthropic-workspace-id`.
+ *   It is an identifier, not a credential, so `secrets()` does not report it: the record
+ *   guard refuses any write that contains a secret, and the API may echo the id back.
  * - No `fallbacks` parameter is ever added: a refusal comes back as an outcome, so the
  *   model a response names is always the model that answered.
  * - The client is built with `maxRetries: 0`. A POST retried after a lost response can be
@@ -20,7 +24,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import Anthropic from '@anthropic-ai/sdk';
-import { resolveApiKey } from './config.js';
+import { resolveApiKey, resolveWorkspaceId } from './config.js';
 
 const require = createRequire(import.meta.url);
 const READ_RETRIES = 2;
@@ -85,17 +89,21 @@ function pickCountable(body) {
 
 /**
  * Build the live transport.
- * @param {{ apiKey?: string, fetch?: typeof fetch, timeout?: number,
+ * @param {{ apiKey?: string, workspaceId?: string, fetch?: typeof fetch, timeout?: number,
  *   keyOptions?: { env?: object, envFile?: string } }} [opts]
- *   `apiKey` absent → resolved by `resolveApiKey(keyOptions)` when the first call needs it.
+ *   `apiKey` absent → resolved by `resolveApiKey(keyOptions)` when the first call needs it,
+ *   and the workspace id with it by `resolveWorkspaceId(keyOptions)` unless one is given.
+ *   A given `apiKey` reads no source, so the workspace id is then only what is given.
  *   `timeout` (ms) lifts the SDK's local refusal of a non-streaming call whose max_tokens
  *   implies more than 10 minutes.
  */
-export function createAnthropicTransport({ apiKey, fetch, timeout, keyOptions } = {}) {
+export function createAnthropicTransport({ apiKey, workspaceId, fetch, timeout, keyOptions } = {}) {
   let client = null;
   let anthropicVersion = null;
   /** The key in use, once known: given, or resolved by the first call that needs it. */
   let key = apiKey ?? null;
+  /** The workspace the requests name, if any (`anthropic-workspace-id`). */
+  let workspace = workspaceId ?? null;
   const baseFetch = fetch ?? ((input, init) => globalThis.fetch(input, init));
   const wrappedFetch = async (input, init) => {
     const source = init?.headers ?? (input instanceof Request ? input.headers : undefined);
@@ -105,11 +113,15 @@ export function createAnthropicTransport({ apiKey, fetch, timeout, keyOptions } 
   };
   const getClient = () => {
     if (!client) {
-      key = key ?? resolveApiKey(keyOptions);
+      if (!key) {
+        key = resolveApiKey(keyOptions);
+        workspace = workspace ?? resolveWorkspaceId(keyOptions) ?? null;
+      }
       client = new Anthropic({
         apiKey: key,
         fetch: wrappedFetch,
         maxRetries: 0,
+        ...(workspace ? { defaultHeaders: { 'anthropic-workspace-id': workspace } } : {}),
         ...(timeout ? { timeout } : {}),
       });
     }

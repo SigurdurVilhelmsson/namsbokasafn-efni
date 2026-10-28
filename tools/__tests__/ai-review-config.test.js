@@ -13,6 +13,7 @@ import {
   CAP_USD,
   REPO_ROOT,
   resolveApiKey,
+  resolveWorkspaceId,
   defaultRecordsDir,
   assertBookSlug,
   assertRecordsDir,
@@ -184,5 +185,34 @@ describe('resolveApiKey', () => {
     const envFile = path.join(dir, '.env');
     fs.writeFileSync(envFile, 'MALSTADUR_API_KEY=something-else\n');
     expect(() => resolveApiKey({ env: {}, envFile })).toThrow(/ANTHROPIC_API_KEY/);
+  });
+});
+
+describe('resolveWorkspaceId — for a key that is not scoped to a workspace', () => {
+  it('prefers ANTHROPIC_WORKSPACE_ID from the environment', () => {
+    const envFile = path.join(tmp(), '.env');
+    fs.writeFileSync(envFile, 'ANTHROPIC_WORKSPACE_ID=wrkspc_from_file\n');
+    expect(
+      resolveWorkspaceId({ env: { ANTHROPIC_WORKSPACE_ID: 'wrkspc_from_env' }, envFile })
+    ).toBe('wrkspc_from_env');
+  });
+
+  it('falls back to the .env file when the environment has none', () => {
+    const envFile = path.join(tmp(), '.env');
+    fs.writeFileSync(envFile, 'ANTHROPIC_API_KEY=k\nANTHROPIC_WORKSPACE_ID="wrkspc_from_file"\n');
+    expect(resolveWorkspaceId({ env: {}, envFile })).toBe('wrkspc_from_file');
+  });
+
+  it('treats an empty environment value as absent', () => {
+    const envFile = path.join(tmp(), '.env');
+    fs.writeFileSync(envFile, 'ANTHROPIC_WORKSPACE_ID=wrkspc_from_file\n');
+    expect(resolveWorkspaceId({ env: { ANTHROPIC_WORKSPACE_ID: '  ' }, envFile })).toBe(
+      'wrkspc_from_file'
+    );
+  });
+
+  it('is undefined when neither source has one: a workspace-scoped key needs none', () => {
+    const envFile = path.join(tmp(), '.env'); // does not exist
+    expect(resolveWorkspaceId({ env: {}, envFile })).toBeUndefined();
   });
 });
