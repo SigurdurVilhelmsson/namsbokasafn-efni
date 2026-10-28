@@ -1,0 +1,3624 @@
+{
+ "rulings_uncounted": [
+  [
+   [
+    "Celsius"
+   ],
+   "Celsíus",
+   {
+    "june": [
+     4,
+     0,
+     0
+    ],
+    "new": [
+     9,
+     0,
+     0
+    ],
+    "hybrid": [
+     9,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "degree Celsius",
+    "degree centigrade"
+   ],
+   "stig á Celsíus",
+   {
+    "june": [
+     3,
+     3,
+     1
+    ],
+    "new": [
+     3,
+     3,
+     2
+    ],
+    "hybrid": [
+     3,
+     3,
+     1
+    ]
+   }
+  ],
+  [
+   [
+    "resonance"
+   ],
+   "vok",
+   {
+    "june": [
+     27,
+     24,
+     17
+    ],
+    "new": [
+     28,
+     23,
+     14
+    ],
+    "hybrid": [
+     28,
+     25,
+     18
+    ]
+   }
+  ],
+  [
+   [
+    "resonance structure",
+    "resonance form"
+   ],
+   "vokmynd",
+   {
+    "june": [
+     33,
+     14,
+     14
+    ],
+    "new": [
+     33,
+     15,
+     15
+    ],
+    "hybrid": [
+     33,
+     14,
+     14
+    ]
+   }
+  ],
+  [
+   [
+    "resonance hybrid"
+   ],
+   "vokblendingur",
+   {
+    "june": [
+     2,
+     2,
+     2
+    ],
+    "new": [
+     2,
+     2,
+     2
+    ],
+    "hybrid": [
+     2,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   [
+    "hybridization",
+    "orbital hybridization"
+   ],
+   "svigrúmablöndun",
+   {
+    "june": [
+     33,
+     33,
+     33
+    ],
+    "new": [
+     33,
+     2,
+     2
+    ],
+    "hybrid": [
+     33,
+     32,
+     32
+    ]
+   }
+  ],
+  [
+   [
+    "hybrid orbital"
+   ],
+   "blendingssvigrúm",
+   {
+    "june": [
+     3,
+     0,
+     0
+    ],
+    "new": [
+     3,
+     1,
+     1
+    ],
+    "hybrid": [
+     3,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "bonding orbital"
+   ],
+   "bindandi svigrúm",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "Lewis structure"
+   ],
+   "Lewis-mynd",
+   {
+    "june": [
+     72,
+     12,
+     11
+    ],
+    "new": [
+     154,
+     5,
+     4
+    ],
+    "hybrid": [
+     154,
+     16,
+     15
+    ]
+   }
+  ],
+  [
+   [
+    "torr"
+   ],
+   "torr",
+   {
+    "june": [
+     18,
+     0,
+     0
+    ],
+    "new": [
+     18,
+     0,
+     0
+    ],
+    "hybrid": [
+     18,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "hydroxide"
+   ],
+   "hýdroxíð",
+   {
+    "june": [
+     132,
+     0,
+     0
+    ],
+    "new": [
+     137,
+     2,
+     0
+    ],
+    "hybrid": [
+     137,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "group"
+   ],
+   "flokkur",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "alcohol"
+   ],
+   "alkóhól",
+   {
+    "june": [
+     19,
+     4,
+     4
+    ],
+    "new": [
+     21,
+     6,
+     6
+    ],
+    "hybrid": [
+     21,
+     6,
+     6
+    ]
+   }
+  ],
+  [
+   [
+    "carbonate"
+   ],
+   "karbónat",
+   {
+    "june": [
+     76,
+     5,
+     3
+    ],
+    "new": [
+     83,
+     4,
+     2
+    ],
+    "hybrid": [
+     83,
+     5,
+     3
+    ]
+   }
+  ],
+  [
+   [
+    "radioactive decay"
+   ],
+   "geislasundrun",
+   {
+    "june": [
+     6,
+     6,
+     6
+    ],
+    "new": [
+     6,
+     6,
+     6
+    ],
+    "hybrid": [
+     6,
+     6,
+     6
+    ]
+   }
+  ],
+  [
+   [
+    "galvanic cell"
+   ],
+   "galvaníker",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "cell"
+   ],
+   "ker",
+   {
+    "june": [
+     142,
+     121,
+     48
+    ],
+    "new": [
+     152,
+     97,
+     15
+    ],
+    "hybrid": [
+     152,
+     125,
+     49
+    ]
+   }
+  ],
+  [
+   [
+    "cell potential"
+   ],
+   "kerspenna",
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "hole"
+   ],
+   "hol",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "representative metal"
+   ],
+   "aðalflokkamálmur",
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "elementary reaction"
+   ],
+   "grunnhvarf",
+   {
+    "june": [
+     3,
+     3,
+     3
+    ],
+    "new": [
+     3,
+     3,
+     3
+    ],
+    "hybrid": [
+     3,
+     3,
+     3
+    ]
+   }
+  ],
+  [
+   [
+    "pOH"
+   ],
+   "pOH",
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "Lewis"
+   ],
+   "Lewis",
+   {
+    "june": [
+     19,
+     0,
+     0
+    ],
+    "new": [
+     23,
+     0,
+     0
+    ],
+    "hybrid": [
+     23,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "central metal"
+   ],
+   "miðjumálmur",
+   {
+    "june": [
+     1,
+     1,
+     1
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   [
+    "ether"
+   ],
+   "eter",
+   {
+    "june": [
+     8,
+     4,
+     0
+    ],
+    "new": [
+     11,
+     7,
+     0
+    ],
+    "hybrid": [
+     11,
+     7,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "dispersion force"
+   ],
+   "dreifikraftur",
+   {
+    "june": [
+     7,
+     7,
+     7
+    ],
+    "new": [
+     7,
+     5,
+     5
+    ],
+    "hybrid": [
+     7,
+     7,
+     7
+    ]
+   }
+  ],
+  [
+   [
+    "microstate"
+   ],
+   "örástand",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "carboxylic acid"
+   ],
+   "karboxýlsýra",
+   {
+    "june": [
+     2,
+     0,
+     0
+    ],
+    "new": [
+     2,
+     0,
+     0
+    ],
+    "hybrid": [
+     2,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "ketone"
+   ],
+   "ketón",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "reaction mechanism"
+   ],
+   "hvarfgangur",
+   {
+    "june": [
+     2,
+     2,
+     2
+    ],
+    "new": [
+     2,
+     2,
+     2
+    ],
+    "hybrid": [
+     2,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   [
+    "carbonyl group"
+   ],
+   "karbónýlhópur",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "chain reaction"
+   ],
+   "keðjuhvarf",
+   {
+    "june": [
+     1,
+     1,
+     1
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   [
+    "reaction order"
+   ],
+   "stig efnahvarfs",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "hydrocarbon"
+   ],
+   "vetniskolefni",
+   {
+    "june": [
+     54,
+     54,
+     54
+    ],
+    "new": [
+     85,
+     24,
+     24
+    ],
+    "hybrid": [
+     85,
+     58,
+     58
+    ]
+   }
+  ],
+  [
+   [
+    "laser"
+   ],
+   "leysir",
+   {
+    "june": [
+     12,
+     10,
+     6
+    ],
+    "new": [
+     12,
+     4,
+     1
+    ],
+    "hybrid": [
+     12,
+     10,
+     6
+    ]
+   }
+  ],
+  [
+   [
+    "steam"
+   ],
+   "gufa",
+   {
+    "june": [
+     29,
+     4,
+     24
+    ],
+    "new": [
+     34,
+     7,
+     28
+    ],
+    "hybrid": [
+     34,
+     6,
+     27
+    ]
+   }
+  ],
+  [
+   [
+    "electronegative"
+   ],
+   "rafneikvæður",
+   {
+    "june": [
+     40,
+     10,
+     10
+    ],
+    "new": [
+     41,
+     11,
+     12
+    ],
+    "hybrid": [
+     41,
+     11,
+     11
+    ]
+   }
+  ],
+  [
+   [
+    "phase transition"
+   ],
+   "fasabreyting",
+   {
+    "june": [
+     30,
+     14,
+     14
+    ],
+    "new": [
+     30,
+     24,
+     24
+    ],
+    "hybrid": [
+     30,
+     14,
+     14
+    ]
+   }
+  ],
+  [
+   [
+    "carbon monoxide"
+   ],
+   "kolmónoxíð",
+   {
+    "june": [
+     35,
+     3,
+     3
+    ],
+    "new": [
+     38,
+     23,
+     23
+    ],
+    "hybrid": [
+     38,
+     5,
+     5
+    ]
+   }
+  ],
+  [
+   [
+    "submerged"
+   ],
+   "á kafi",
+   {
+    "june": [
+     12,
+     5,
+     5
+    ],
+    "new": [
+     21,
+     7,
+     7
+    ],
+    "hybrid": [
+     21,
+     6,
+     6
+    ]
+   }
+  ],
+  [
+   [
+    "trigonal planar"
+   ],
+   "þríhyrnt flatt",
+   {
+    "june": [
+     20,
+     18,
+     0
+    ],
+    "new": [
+     24,
+     19,
+     2
+    ],
+    "hybrid": [
+     24,
+     22,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "line-bond structure"
+   ],
+   "strikamynd",
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "bond angle"
+   ],
+   "tengihorn",
+   {
+    "june": [
+     13,
+     3,
+     3
+    ],
+    "new": [
+     14,
+     2,
+     2
+    ],
+    "hybrid": [
+     14,
+     3,
+     3
+    ]
+   }
+  ],
+  [
+   [
+    "bond length"
+   ],
+   "tengilengd",
+   {
+    "june": [
+     2,
+     0,
+     0
+    ],
+    "new": [
+     3,
+     1,
+     1
+    ],
+    "hybrid": [
+     3,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "condensed structure",
+    "condensed formula"
+   ],
+   "þéttformúla",
+   {
+    "june": [
+     16,
+     14,
+     14
+    ],
+    "new": [
+     18,
+     12,
+     12
+    ],
+    "hybrid": [
+     18,
+     16,
+     16
+    ]
+   }
+  ],
+  [
+   [
+    "radius"
+   ],
+   "radíus",
+   {
+    "june": [
+     61,
+     3,
+     3
+    ],
+    "new": [
+     70,
+     1,
+     1
+    ],
+    "hybrid": [
+     70,
+     3,
+     3
+    ]
+   }
+  ],
+  [
+   [
+    "crystalline"
+   ],
+   "kristalkenndur",
+   {
+    "june": [
+     47,
+     15,
+     23
+    ],
+    "new": [
+     57,
+     56,
+     56
+    ],
+    "hybrid": [
+     57,
+     25,
+     33
+    ]
+   }
+  ],
+  [
+   [
+    "bent"
+   ],
+   "boginn",
+   {
+    "june": [
+     11,
+     9,
+     9
+    ],
+    "new": [
+     13,
+     3,
+     3
+    ],
+    "hybrid": [
+     13,
+     9,
+     9
+    ]
+   }
+  ],
+  [
+   [
+    "dimensional analysis"
+   ],
+   "einingagreining",
+   {
+    "june": [
+     3,
+     1,
+     1
+    ],
+    "new": [
+     3,
+     3,
+     3
+    ],
+    "hybrid": [
+     3,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   [
+    "abundance"
+   ],
+   "fjöldahlutfall",
+   {
+    "june": [
+     18,
+     18,
+     18
+    ],
+    "new": [
+     20,
+     20,
+     20
+    ],
+    "hybrid": [
+     20,
+     20,
+     20
+    ]
+   }
+  ],
+  [
+   [
+    "absorption"
+   ],
+   "gleypni",
+   {
+    "june": [
+     9,
+     4,
+     4
+    ],
+    "new": [
+     10,
+     5,
+     5
+    ],
+    "hybrid": [
+     10,
+     5,
+     5
+    ]
+   }
+  ],
+  [
+   [
+    "general anesthetic"
+   ],
+   "svæfingarlyf",
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   [
+    "molecular compound"
+   ],
+   "sameindaefni",
+   {
+    "june": [
+     4,
+     2,
+     2
+    ],
+    "new": [
+     4,
+     1,
+     1
+    ],
+    "hybrid": [
+     4,
+     2,
+     2
+    ]
+   }
+  ]
+ ],
+ "verdicts_otherchapters": [
+  [
+   "atom",
+   "atóm",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     1113,
+     958,
+     785
+    ],
+    "new": [
+     1590,
+     689,
+     129
+    ],
+    "hybrid": [
+     1590,
+     1197,
+     825
+    ]
+   }
+  ],
+  [
+   "product",
+   "myndefni",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     330,
+     133,
+     133
+    ],
+    "new": [
+     345,
+     172,
+     172
+    ],
+    "hybrid": [
+     345,
+     138,
+     138
+    ]
+   }
+  ],
+  [
+   "temperature",
+   "hitastig",
+   [
+    "ch01",
+    "ch05"
+   ],
+   {
+    "june": [
+     533,
+     65,
+     65
+    ],
+    "new": [
+     566,
+     107,
+     107
+    ],
+    "hybrid": [
+     566,
+     75,
+     75
+    ]
+   }
+  ],
+  [
+   "heat",
+   "varmi (q)",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     115,
+     44,
+     19
+    ],
+    "new": [
+     125,
+     85,
+     44
+    ],
+    "hybrid": [
+     125,
+     53,
+     22
+    ]
+   }
+  ],
+  [
+   "stoichiometry",
+   "hlutfallaefnafræði",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     55,
+     10,
+     10
+    ],
+    "new": [
+     55,
+     53,
+     53
+    ],
+    "hybrid": [
+     55,
+     10,
+     10
+    ]
+   }
+  ],
+  [
+   "tetrahedral",
+   "ferflötungur",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     45,
+     4,
+     4
+    ],
+    "new": [
+     56,
+     46,
+     46
+    ],
+    "hybrid": [
+     56,
+     14,
+     14
+    ]
+   }
+  ],
+  [
+   "ionic compound",
+   "jónaefni",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     103,
+     11,
+     11
+    ],
+    "new": [
+     104,
+     38,
+     38
+    ],
+    "hybrid": [
+     104,
+     11,
+     11
+    ]
+   }
+  ],
+  [
+   "cathode",
+   "katóða",
+   [
+    "ch17"
+   ],
+   {
+    "june": [
+     15,
+     1,
+     1
+    ],
+    "new": [
+     19,
+     18,
+     18
+    ],
+    "hybrid": [
+     19,
+     4,
+     4
+    ]
+   }
+  ],
+  [
+   "anode",
+   "anóða",
+   [
+    "ch17"
+   ],
+   {
+    "june": [
+     14,
+     2,
+     2
+    ],
+    "new": [
+     18,
+     16,
+     16
+    ],
+    "hybrid": [
+     18,
+     5,
+     5
+    ]
+   }
+  ],
+  [
+   "single bond",
+   "eintengi",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     32,
+     3,
+     3
+    ],
+    "new": [
+     130,
+     11,
+     11
+    ],
+    "hybrid": [
+     130,
+     9,
+     9
+    ]
+   }
+  ],
+  [
+   "electrolyte",
+   "rafkleyfi",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     14,
+     4,
+     4
+    ],
+    "new": [
+     15,
+     15,
+     15
+    ],
+    "hybrid": [
+     15,
+     5,
+     5
+    ]
+   }
+  ],
+  [
+   "atomic mass",
+   "atómmassi",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     21,
+     8,
+     8
+    ],
+    "new": [
+     29,
+     7,
+     7
+    ],
+    "hybrid": [
+     29,
+     11,
+     11
+    ]
+   }
+  ],
+  [
+   "coordination number",
+   "girðitala",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     20,
+     15,
+     15
+    ],
+    "new": [
+     21,
+     2,
+     2
+    ],
+    "hybrid": [
+     21,
+     16,
+     16
+    ]
+   }
+  ],
+  [
+   "titrant",
+   "títrantur",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     17,
+     2,
+     3
+    ],
+    "new": [
+     17,
+     15,
+     17
+    ],
+    "hybrid": [
+     17,
+     2,
+     3
+    ]
+   }
+  ],
+  [
+   "nomenclature",
+   "nafnakerfi",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     13,
+     7,
+     7
+    ],
+    "new": [
+     13,
+     9,
+     9
+    ],
+    "hybrid": [
+     13,
+     7,
+     7
+    ]
+   }
+  ],
+  [
+   "solubility",
+   "leysni",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     158,
+     5,
+     1
+    ],
+    "new": [
+     161,
+     11,
+     7
+    ],
+    "hybrid": [
+     161,
+     5,
+     1
+    ]
+   }
+  ],
+  [
+   "amphoteric",
+   "tvíhegða",
+   [
+    "ch14"
+   ],
+   {
+    "june": [
+     7,
+     7,
+     7
+    ],
+    "new": [
+     7,
+     7,
+     7
+    ],
+    "hybrid": [
+     7,
+     7,
+     7
+    ]
+   }
+  ],
+  [
+   "monatomic ion",
+   "einatóma jón",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     12,
+     9,
+     9
+    ],
+    "new": [
+     12,
+     3,
+     3
+    ],
+    "hybrid": [
+     12,
+     9,
+     9
+    ]
+   }
+  ],
+  [
+   "suspension",
+   "sviflausn",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     6,
+     6,
+     6
+    ],
+    "new": [
+     6,
+     5,
+     5
+    ],
+    "hybrid": [
+     6,
+     6,
+     6
+    ]
+   }
+  ],
+  [
+   "extensive property",
+   "magnbundinn eiginleiki",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     7,
+     2,
+     3
+    ],
+    "new": [
+     7,
+     7,
+     7
+    ],
+    "hybrid": [
+     7,
+     2,
+     3
+    ]
+   }
+  ],
+  [
+   "polyatomic ion",
+   "fjölatómajón",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     9,
+     9,
+     9
+    ],
+    "new": [
+     9,
+     0,
+     9
+    ],
+    "hybrid": [
+     9,
+     9,
+     9
+    ]
+   }
+  ],
+  [
+   "alpha particle",
+   "alfaeind",
+   [
+    "ch21"
+   ],
+   {
+    "june": [
+     4,
+     1,
+     1
+    ],
+    "new": [
+     6,
+     6,
+     6
+    ],
+    "hybrid": [
+     6,
+     3,
+     3
+    ]
+   }
+  ],
+  [
+   "homogeneous mixture",
+   "einsleit efnablanda",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     6,
+     1,
+     1
+    ],
+    "new": [
+     6,
+     6,
+     6
+    ],
+    "hybrid": [
+     6,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "phase diagram",
+   "fasarit",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     4,
+     1,
+     1
+    ],
+    "new": [
+     5,
+     5,
+     5
+    ],
+    "hybrid": [
+     5,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "functional group",
+   "virknihópur",
+   [
+    "ch20"
+   ],
+   {
+    "june": [
+     4,
+     1,
+     1
+    ],
+    "new": [
+     5,
+     5,
+     5
+    ],
+    "hybrid": [
+     5,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "molecular structure",
+   "sameindabygging",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     26,
+     2,
+     2
+    ],
+    "new": [
+     49,
+     4,
+     4
+    ],
+    "hybrid": [
+     49,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "complex ion",
+   "flókajón",
+   [
+    "ch15"
+   ],
+   {
+    "june": [
+     9,
+     0,
+     0
+    ],
+    "new": [
+     9,
+     5,
+     5
+    ],
+    "hybrid": [
+     9,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "chemical change",
+   "efnabreyting",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     28,
+     0,
+     0
+    ],
+    "new": [
+     28,
+     4,
+     4
+    ],
+    "hybrid": [
+     28,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "structural isomer",
+   "byggingarhverfa",
+   [
+    "ch02"
+   ],
+   {
+    "june": [
+     4,
+     0,
+     0
+    ],
+    "new": [
+     5,
+     3,
+     3
+    ],
+    "hybrid": [
+     5,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "half-reaction",
+   "hálfhvarf",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     51,
+     1,
+     0
+    ],
+    "new": [
+     51,
+     3,
+     3
+    ],
+    "hybrid": [
+     51,
+     1,
+     0
+    ]
+   }
+  ],
+  [
+   "precipitation reaction",
+   "Útfellingarhvarf",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     4,
+     3,
+     3
+    ],
+    "new": [
+     4,
+     1,
+     1
+    ],
+    "hybrid": [
+     4,
+     3,
+     3
+    ]
+   }
+  ],
+  [
+   "lone pair",
+   "rafeindapar",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     29,
+     0,
+     0
+    ],
+    "new": [
+     95,
+     4,
+     5
+    ],
+    "hybrid": [
+     95,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "supersaturated",
+   "yfirmettaður",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     3,
+     2,
+     2
+    ],
+    "new": [
+     3,
+     2,
+     2
+    ],
+    "hybrid": [
+     3,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "colloid",
+   "svif",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     2,
+     2,
+     2
+    ],
+    "new": [
+     2,
+     2,
+     2
+    ],
+    "hybrid": [
+     2,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "fuel cell",
+   "efnarafall",
+   [
+    "ch17"
+   ],
+   {
+    "june": [
+     4,
+     2,
+     1
+    ],
+    "new": [
+     5,
+     2,
+     1
+    ],
+    "hybrid": [
+     5,
+     2,
+     1
+    ]
+   }
+  ],
+  [
+   "heterogeneous mixture",
+   "misleit efnablanda",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     3,
+     0,
+     0
+    ],
+    "new": [
+     3,
+     3,
+     3
+    ],
+    "hybrid": [
+     3,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "electronegativity",
+   "rafneikvæðni",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     23,
+     1,
+     1
+    ],
+    "new": [
+     23,
+     2,
+     2
+    ],
+    "hybrid": [
+     23,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "significant figures",
+   "markverðir stafir",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     11,
+     1,
+     1
+    ],
+    "new": [
+     11,
+     1,
+     1
+    ],
+    "hybrid": [
+     11,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "metalloid",
+   "hálfmálmur",
+   [
+    "ch02",
+    "ch18"
+   ],
+   {
+    "june": [
+     3,
+     1,
+     1
+    ],
+    "new": [
+     5,
+     1,
+     1
+    ],
+    "hybrid": [
+     5,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "thermochemistry",
+   "varmaefnafræði",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     11,
+     2,
+     2
+    ],
+    "new": [
+     11,
+     0,
+     0
+    ],
+    "hybrid": [
+     11,
+     2,
+     2
+    ]
+   }
+  ],
+  [
+   "d orbital",
+   "d-svigrúm",
+   [
+    "ch06"
+   ],
+   {
+    "june": [
+     35,
+     1,
+     1
+    ],
+    "new": [
+     36,
+     1,
+     1
+    ],
+    "hybrid": [
+     36,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "weak electrolyte",
+   "veikur rafkleyfi",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     1,
+     1,
+     1
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "rate of reaction",
+   "hvarfhraði",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     2,
+     1,
+     1
+    ],
+    "new": [
+     2,
+     1,
+     1
+    ],
+    "hybrid": [
+     2,
+     1,
+     1
+    ]
+   }
+  ],
+  [
+   "theoretical yield",
+   "fræðilegar heimtur",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "thermal energy",
+   "varmaorka",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     8,
+     0,
+     0
+    ],
+    "new": [
+     8,
+     1,
+     1
+    ],
+    "hybrid": [
+     8,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "amplitude",
+   "útslag",
+   [
+    "ch06"
+   ],
+   {
+    "june": [
+     2,
+     0,
+     0
+    ],
+    "new": [
+     2,
+     1,
+     1
+    ],
+    "hybrid": [
+     2,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "electron-pair geometry",
+   "rúmfræði rafeindapara",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     4,
+     0,
+     0
+    ],
+    "new": [
+     4,
+     1,
+     1
+    ],
+    "hybrid": [
+     4,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "bond order",
+   "tengigráða",
+   [
+    "ch08"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     1,
+     1
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "law of conservation of matter",
+   "lögmálið um varðveislu efnis",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     5,
+     0,
+     0
+    ],
+    "new": [
+     5,
+     0,
+     0
+    ],
+    "hybrid": [
+     5,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "precision",
+   "nákvæmni",
+   [
+    "ch01"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     3,
+     0,
+     0
+    ],
+    "hybrid": [
+     3,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "complete ionic equation",
+   "heildarjónajafna",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "actual yield",
+   "raunheimtur",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "percent yield",
+   "prósentuheimtur",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "combustion analysis",
+   "brunagreining",
+   [
+    "ch04"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "calorie",
+   "kaloría (cal)",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "calorimeter",
+   "varmamælir",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "calorimetry",
+   "varmamæling",
+   [
+    "ch05"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "line spectrum",
+   "línuróf",
+   [
+    "ch06"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "s orbital",
+   "s-svigrúm",
+   [
+    "ch06"
+   ],
+   {
+    "june": [
+     22,
+     0,
+     0
+    ],
+    "new": [
+     22,
+     0,
+     0
+    ],
+    "hybrid": [
+     22,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "effective nuclear charge",
+   "virk kjarnhleðsla",
+   [
+    "ch06"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "triple bond",
+   "þrítengi",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     20,
+     0,
+     0
+    ],
+    "new": [
+     39,
+     0,
+     0
+    ],
+    "hybrid": [
+     39,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "born-haber cycle",
+   "Born-Haber-hringur",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "lattice energy",
+   "grindarorka (ΔHgrind)",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "bond dipole moment",
+   "tvískautsvægi efnatengis",
+   [
+    "ch07"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "molecular orbital diagram",
+   "sameindasvigrúmarit",
+   [
+    "ch08"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "rate of diffusion",
+   "sveimhraði",
+   [
+    "ch09"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "adhesive force",
+   "viðloðunarkraftur",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "dynamic equilibrium",
+   "kvikt jafnvægi",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "critical point",
+   "markpunktur",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "amorphous solid",
+   "myndlaust fastefni",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "body-centered cubic unit cell",
+   "miðlæg teningslaga grindareining",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "face-centered cubic unit cell",
+   "hliðlæg teningslaga grindareining",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "simple cubic unit cell",
+   "einföld teningslaga grindareining",
+   [
+    "ch10"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "strong electrolyte",
+   "sterkur rafkleyfi",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "freezing point depression",
+   "frostmarkslækkun",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "molality",
+   "mólalstyrkur (m)",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "dispersed phase",
+   "dreififasi",
+   [
+    "ch11"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "instantaneous rate",
+   "augnablikshraði",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "half-life of a reaction",
+   "helmingunartími efnahvarfs (tl/2)",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "integrated rate law",
+   "heildað hraðalögmál",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "arrhenius equation",
+   "Arrheniusar-jafna",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     2,
+     0,
+     0
+    ],
+    "new": [
+     2,
+     0,
+     0
+    ],
+    "hybrid": [
+     2,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "heterogeneous catalyst",
+   "misleitur hvati",
+   [
+    "ch12"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "heterogeneous equilibria",
+   "misleitt jafnvægi",
+   [
+    "ch13"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "buffer capacity",
+   "stuðpúðageta",
+   [
+    "ch14"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "acid-base indicator",
+   "sýru-basa litvísir",
+   [
+    "ch14"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "common ion effect",
+   "samjónahrif",
+   [
+    "ch15"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "molar solubility",
+   "mólarleysni",
+   [
+    "ch15"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "dissociation constant",
+   "klofnunarfasti",
+   [
+    "ch15"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "standard hydrogen electrode",
+   "staðalvetnisraftroð (SHE)",
+   [
+    "ch17"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "chemical reduction",
+   "efnafræðileg afoxun",
+   [
+    "ch18"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "interhalogen",
+   "millihalógen",
+   [
+    "ch18"
+   ],
+   {
+    "june": [
+     4,
+     0,
+     0
+    ],
+    "new": [
+     4,
+     0,
+     0
+    ],
+    "hybrid": [
+     4,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "rare earth element",
+   "sjaldgæfur jarðmálmur",
+   [
+    "ch19"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "low-spin complex",
+   "lágspunaflóki",
+   [
+    "ch19"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "substitution reaction",
+   "skiptihvarf",
+   [
+    "ch20"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "gamma ray",
+   "gammageisli",
+   [
+    "ch21"
+   ],
+   {
+    "june": [
+     1,
+     0,
+     0
+    ],
+    "new": [
+     1,
+     0,
+     0
+    ],
+    "hybrid": [
+     1,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "containment system",
+   "innilokunarkerfi",
+   [
+    "ch21"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "critical mass",
+   "markmassi",
+   [
+    "ch21"
+   ],
+   {
+    "june": [
+     0,
+     0,
+     0
+    ],
+    "new": [
+     0,
+     0,
+     0
+    ],
+    "hybrid": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  [
+   "fission",
+   "kjarnaklofnun",
+   [
+    "ch21"
+   ],
+   {
+    "june": [
+     2,
+     0,
+     0
+    ],
+    "new": [
+     2,
+     0,
+     0
+    ],
+    "hybrid": [
+     2,
+     0,
+     0
+    ]
+   }
+  ]
+ ],
+ "tot_rulings_uncounted": {
+  "june|prose": 1033,
+  "june|strict": 429,
+  "june|lenient": 346,
+  "new|prose": 1233,
+  "new|strict": 409,
+  "new|lenient": 307,
+  "hybrid|prose": 1233,
+  "hybrid|strict": 471,
+  "hybrid|lenient": 379
+ },
+ "tot_verdicts_otherchapters": {
+  "june|prose": 2984,
+  "june|strict": 1329,
+  "june|lenient": 1127,
+  "new|prose": 3769,
+  "new|strict": 1383,
+  "new|lenient": 789,
+  "hybrid|prose": 3769,
+  "hybrid|strict": 1624,
+  "hybrid|lenient": 1217
+ },
+ "skipped": [
+  [
+   "molecular compound",
+   "also a ruling"
+  ],
+  [
+   "lewis structure",
+   "also a ruling"
+  ],
+  [
+   "resonance",
+   "also a ruling"
+  ],
+  [
+   "trigonal planar",
+   "also a ruling"
+  ]
+ ],
+ "complete": true
+}

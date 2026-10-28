@@ -324,18 +324,23 @@ describe('getEditorWorkload', () => {
 // =====================================================================
 
 describe('getReadyToApply', () => {
+  // §C203: chemistry (insertEdit's default book) is apply-held, so getReadyToApply omits it
+  // whatever its rows say (pinned in applyHold.test.js). Every case here uses an unheld book:
+  // on chemistry the two "excludes" cases below would pass even with their logic broken.
+  const insertFree = (overrides) => insertEdit(db, { book: 'liffraedi-2e', ...overrides });
+
   it('returns empty when nothing is approved', () => {
-    insertEdit(db, { status: 'pending' });
+    insertFree({ status: 'pending' });
     expect(readModel.getReadyToApply()).toEqual([]);
   });
 
   it('lists modules with approved-but-unapplied edits and no pending', () => {
-    insertEdit(db, {
+    insertFree({
       module_id: 'm00001',
       status: 'approved',
       applied_at: null,
     });
-    insertEdit(db, {
+    insertFree({
       module_id: 'm00001',
       status: 'approved',
       applied_at: null,
@@ -349,8 +354,8 @@ describe('getReadyToApply', () => {
   });
 
   it('excludes modules with any pending edits', () => {
-    insertEdit(db, { module_id: 'm00002', status: 'approved', applied_at: null });
-    insertEdit(db, {
+    insertFree({ module_id: 'm00002', status: 'approved', applied_at: null });
+    insertFree({
       module_id: 'm00002',
       status: 'pending',
       segment_id: 'm00002:para:fs-id002',
@@ -359,7 +364,7 @@ describe('getReadyToApply', () => {
   });
 
   it('excludes modules where every approved edit is already applied', () => {
-    insertEdit(db, {
+    insertFree({
       module_id: 'm00003',
       status: 'approved',
       applied_at: '2026-05-09 10:00:00',

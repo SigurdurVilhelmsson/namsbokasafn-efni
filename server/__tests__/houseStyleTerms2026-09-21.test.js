@@ -3,6 +3,9 @@
 // The six [USER] rulings of 2026-09-21 (glossary-subset audit, questions 1-18;
 // nine were answered, four of those needed no concept-model change).
 // Record: docs/decisions/2026-09-21-chemistry-terminology-rulings.md.
+// ⚠️ `trigonal planar` was REVERSED by [USER] on 2026-10-11 to the stored
+// Íðorðabankinn lemma, so its entry is gone and this file pins the reversal.
+// Record: docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md.
 //
 // 🔴 WHY A TEST AT ALL, when the entries are plain data: migration 051 runs on
 // EVERY server start, and `failLoudOnMigrationErrors` exit(1)s on a collected
@@ -35,6 +38,12 @@ const RULED = [
 const ALREADY_CORRECT = ['porous', 'complementary color', 'square planar', 'decay'];
 /** Ruled-or-discussed 2026-09-21 and deliberately HELD off the wire. */
 const HELD = ['substituted', 'fissionable', 'fissile', 'radioactive material'];
+/**
+ * Ruled 2026-09-21 WITH an entry, then reversed by [USER] on 2026-10-11 to the
+ * stored lemma (`þríhyrningslaga flatt`, the official chemistry glossary's form).
+ * Matching the stored lemma means NO entry, the same rule as ALREADY_CORRECT.
+ */
+const REVERSED_TO_STORED = ['trigonal planar'];
 
 let db;
 beforeEach(() => {
@@ -86,16 +95,20 @@ describe('2026-09-21 house-style rulings', () => {
 
   // ───────────────────────────────────────────────────────────────────────
   // Second batch. `submerged` behaves like the six above (incumbent in
-  // `biology`, so domain priority decides). `trigonal planar` does NOT: its
-  // incumbent is already a CHEMISTRY row, so it can only win by §C164's
-  // same-domain tie-break in conceptResolver.resolveCandidates.
+  // `biology`, so domain priority decides). `trigonal planar` was the one
+  // SAME-domain case: its incumbent is a CHEMISTRY row, so it won only by
+  // §C164's tie-break. [USER] reversed it on 2026-10-11 to that incumbent, so the
+  // tests below pin the REVERSAL: the official row wins on its own, and a
+  // database still holding the old house row (production, until the deploy)
+  // loses it on the next boot. §C164 itself stays pinned by a real entry,
+  // `bent` (houseStyleTerms2026-09-27.test.js), and by conceptResolverResolve.
   //
   // 🔴 THE COMPETITOR MUST BE SEEDED OR THESE ASSERTIONS ARE VACUOUS.
   // freshMigratedDb() has no Íðorðabankinn import, so an "it outranks the
   // incumbent" test against an empty concept table passes with no incumbent
   // present — it would prove only that 051 inserted a row.
   // ───────────────────────────────────────────────────────────────────────
-  describe('trigonal planar wins a SAME-DOMAIN tie (§C164)', () => {
+  describe('second batch, against SEEDED incumbents', () => {
     const seedCompetitor = (english, icelandic, domain = 'chemistry') => {
       const { id } = db
         .prepare(`INSERT INTO concept (domain, collection) VALUES (?, 'IDORD') RETURNING id`)
@@ -113,20 +126,44 @@ describe('2026-09-21 house-style rulings', () => {
     };
 
     it('CONTROL: the seeded competitor really is the incumbent when no house row exists', () => {
-      // Without this the next assertion cannot distinguish "house style won"
+      // Without this the next assertions cannot distinguish "house style won"
       // from "nothing else was ever there".
       seedCompetitor('some unruled term', 'eitthvað annað');
       const r = resolveIn('some unruled term');
       expect(r.winner?.text).toBe('eitthvað annað');
     });
 
-    it('beats the incumbent þríhyrningslaga flatt, and by the house-style rule', () => {
+    it('trigonal planar resolves to the official þríhyrningslaga flatt, with no house row in the race', () => {
       seedCompetitor('trigonal planar', 'þríhyrningslaga flatt');
       const r = resolveIn('trigonal planar');
-      expect(r.winner?.text).toBe('þríhyrnt flatt');
-      // The REASON matters: winning for any other reason would mean the
-      // same-domain case is not actually being exercised.
-      expect(r.reason).toBe('house-style');
+      expect(r.winner?.text).toBe('þríhyrningslaga flatt');
+      // `head-form`, not `house-style`: winning by the tie-break would mean a
+      // house concept is still competing.
+      expect(r.reason).toBe('head-form');
+      expect(houseIcelandicFor('trigonal planar')).toBeUndefined();
+    });
+
+    it("a database that still holds the 2026-09-21 house row loses it on the next boot (production's state until the deploy)", () => {
+      seedCompetitor('trigonal planar', 'þríhyrningslaga flatt');
+      // Re-create the retired concept exactly as 051 wrote it while the entry existed.
+      const { id } = db
+        .prepare(`INSERT INTO concept (domain, collection) VALUES (?, ?) RETURNING id`)
+        .get(HOUSE_STYLE_DOMAIN, HOUSE_STYLE_SOURCE);
+      const ins = db.prepare(
+        `INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,?)`
+      );
+      ins.run(id, 'en', 'trigonal planar', 1, HOUSE_STYLE_SOURCE);
+      ins.run(id, 'is', 'þríhyrnt flatt', 1, HOUSE_STYLE_SOURCE);
+      // CONTROL: before the boot the stale row still wins its tie, so the
+      // assertions after the boot can fail.
+      expect(resolveIn('trigonal planar').winner?.text).toBe('þríhyrnt flatt');
+
+      require('../migrations/051-house-style-terms').up(db); // what every boot runs
+
+      expect(houseIcelandicFor('trigonal planar')).toBeUndefined();
+      const r = resolveIn('trigonal planar');
+      expect(r.winner?.text).toBe('þríhyrningslaga flatt');
+      expect(r.reason).toBe('head-form');
     });
 
     it('submerged beats its biology incumbent too', () => {
@@ -146,13 +183,15 @@ describe('2026-09-21 house-style rulings', () => {
     }
   });
 
-  it('CONTROL: the ALREADY-CORRECT and HELD rulings added no entry either', () => {
+  it('CONTROL: the ALREADY-CORRECT, HELD and REVERSED rulings have no entry', () => {
+    // REVERSED_TO_STORED — ruled with an entry, then reversed to the stored lemma
+    // (2026-10-11), so the entry was removed and must not come back.
     // ALREADY_CORRECT — the stored lemma is what [USER] ruled, so an entry would
     // be a no-op row to maintain. HELD — substituted is with the committee, and
     // fissionable/fissile/radioactive material are deliberately off the wire, so
     // an entry here would be the opposite of the decision.
     const ens = new Set(HOUSE_STYLE_TERMS.flatMap((e) => e.en));
-    for (const en of [...ALREADY_CORRECT, ...HELD]) {
+    for (const en of [...ALREADY_CORRECT, ...HELD, ...REVERSED_TO_STORED]) {
       expect(ens.has(en)).toBe(false);
     }
   });

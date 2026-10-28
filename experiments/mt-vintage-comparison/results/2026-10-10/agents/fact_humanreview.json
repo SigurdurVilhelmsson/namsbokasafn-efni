@@ -1,0 +1,290 @@
+{
+ "summary": "## Part 1: human-reviewed chemistry text in the repo\n\n**Sources.** Four faithful files live in `books/efnafraedi-2e/reference-translations/pre-remt-editorial-2026-08-23/`. I checked them with `cmp`: all 4 are byte-identical to `c5f4880ed^`. `03-faithful-translation/` holds only its README at both refs. The other source is the harvest JSON: 151 `segment_edits` rows, 112 approved and 39 pending. It contains the c79 harvest's 6 chemistry rows. The `editor-edits-ch0{1,3,5}.md` files are renderings of that JSON. **Off-repo and not inspected:** the ch01 and ch02 Word files with track changes. **ch02 has no edits anywhere in git history.** ch01's in-repo edits cover 4 of its 7 modules.\n\n**Which ref.** For all 6 modules, segment ids are identical at every old ref (`3c39e1615` through `9a69414d5`). I read the English at each faithful file's own June commit and paired segments by position. The normalised English for March and for `9a69414d5` agrees (0 differences).\n\n**Result. 137 distinct segments carry human text:**\n- 62 are approved and in the faithful files;\n- 36 are approved but in no faithful file (31 in m68700);\n- 39 have a pending latest row.\n\n**All 137 have an identical normalised English segment in the same module at `98a5fe2ff`.** 136 keep the same id. One moved: m68667 `entry:auto-98` → `auto-104`, and the old id now names \"Sr\". All 368 faithful segment slots also match (344 same id, 24 moved). 18 of the 137 already equal the new MT. **0 segments fail to re-attach by content.**\n\n**What blocks re-application is not content:**\n- **Tooling.** `scripts/reattach-segment-edits.js` matches by id only (lines 8, 83). It would put m68667's edit on \"Sr\". Book-wide, 2,436 of 21,536 old segments keep their id but name different text (53 modules), and 496 ids are gone. Re-attachment has to match by content.\n- **Marker format.** 27 of the 137 human texts carry old-format markers: `{{term}}` 4 pairs, `{{i}}` 6 pairs, `__x__` 8, `++x++` 6, `[#id]` 12. Neither the editor's load-time normalisation nor the save gate converts them. The real save gate passed all 137 texts. As a control, I stripped the `[[MATH:n]]` tokens from the 8 texts that contain math, and the gate blocked all 8. One more segment needs markers the new English gained. So 28 need marker work and 109 can be pasted as they are.\n- **Pending rows.** The 39 pending rows need a ruling. At least one is wrong: the m68664 title edit changes \"Efnafræði\" to \"Eðlisfræði\" (physics instead of chemistry).\n- **Known regression.** m68699 carries the *kalsíuminnihaldand* error logged as §C107.\n- **Old rows on production.** The old rows are still in prod's database and lay themselves over new segments by id (§C114 ①).\n\n**Controls.**\n- Perturbed English (one word changed, or a token appended): 0 of 518 still match.\n- A stricter normaliser that keeps cross-reference targets: 518 of 518 match.\n- Whole book: 21,535 of 21,536 old segments match. The 1,149 alt and 191 table-summary segments added since July match no old segment, which is correct.\n\n## Part 2: readiness for the grant's post-editing measurement\n\n**What is stored per edit** (the `segment_edits` table, `039:61-85`):\n- **`original_content`** is whatever the client sends as `seg.is` (route `:344` and `:423`, client `:1988`). The server never checks it, even though the code comment at `:379` says the save check uses server baselines. When a faithful file exists, that text is the faithful text, not the MT (`segmentParser.js:112-121`).\n- **`edited_content`**, plus a manual `category` that is null in 150 of the 151 harvested rows.\n- **`created_at`** is overwritten on every re-save (`:147`), and a withdrawn edit is deleted (`:109-112`). Intermediate drafts and the time of the first edit are lost.\n\n**Other records:**\n- Acceptances store the accepted text, checked by the server (`acceptanceService.js:90`), with a timestamp.\n- `content_versions` snapshots each file before an apply (`:1021`).\n- `activity_log` keeps one timestamp per save, accept or approve. There is no event for opening a module.\n- **Nothing captures keystrokes, focus, idle or duration, and no code computes edit distance.** I checked for editor analytics against a control.\n\n**Against the grant's metrics:**\n- **Edit distance (characters and words):** computable afterwards, because the MT is in git and the final text is in the faithful files and the database.\n- **Active working time:** not captured, and not recoverable later.\n- **Lemma-based edit classification:** not built.\n- The three-layer rule added to CLAUDE.md today has no counterpart in the database schema.\n\n**Grant counts came from the July layout.** The grant's 134 units are 149 modules minus ch01 (7) and ch02 (8). The new extraction has 22,876 segments.\n\n**If editing resumes today, active-time data and revision history are lost permanently for every unit edited before timing is built.**\n\n**Before editors open a chemistry chapter.** Production already has the new English and MT; I inferred this from git and did not check the server. Still open:\n- the register's ③ gate list;\n- deploying #547 before anyone uses *Vista + Birta*;\n- re-applying the MT locks (runbook 4.4);\n- deciding what happens to the 151 old database rows;\n- the June-versus-new MT decision.",
+ "numbers": [
+  {
+   "name": "reference-translations copies byte-identical to c5f4880ed^",
+   "value": "4 of 4",
+   "scope": "ch01 m68663, m68664; ch03 m68699, m68700",
+   "method": "git show c5f4880ed^:<faithful path> | cmp - <reference copy>",
+   "unit": "files"
+  },
+  {
+   "name": "faithful segment slots",
+   "value": "368 (11+72+3+282; 360 distinct ids, m68700 has 8 duplicated ids)",
+   "scope": "4 faithful files",
+   "method": "permissive SEG parser (same regex as tools/lib/seg-markers.cjs)",
+   "unit": "segments"
+  },
+  {
+   "name": "faithful segments differing from the MT of their time",
+   "value": "62 normalised / 64 raw (2 differ only in [[MATH:n]] numbering)",
+   "scope": "4 faithful files vs 02-mt-output at each file's own commit",
+   "method": "positional pairing (ids identical at every old ref) and normalised string equality; 64 matches the 2026-08-23 corpus export's postEdited count",
+   "unit": "segments"
+  },
+  {
+   "name": "harvest segment_edits rows",
+   "value": "151 (112 approved, 39 pending), 137 distinct segment ids",
+   "scope": "chemistry, prod sessions.db snapshot 2026-08-30",
+   "method": "JSON parse of segment-edits-harvest-2026-08-30.json",
+   "unit": "rows"
+  },
+  {
+   "name": "distinct segments carrying human text",
+   "value": "137 = 62 approved & in faithful + 36 approved & in no faithful file + 39 latest-row pending",
+   "scope": "union of faithful-edited segments and harvest rows, keyed (module, old seg id)",
+   "method": "latest row by created_at; inFA by normalised equality",
+   "unit": "segments"
+  },
+  {
+   "name": "re-attachable by content (identical normalised EN in NEW same module)",
+   "value": "137 of 137 (136 same id, 1 moved: m68667 entry:auto-98 -> auto-104)",
+   "scope": "98a5fe2ff 02-for-mt, 170 module files, legacy '(b)' split files excluded",
+   "method": "marker-dialect-stripping normaliser, placeholders typed and unnumbered",
+   "unit": "segments"
+  },
+  {
+   "name": "not re-attachable by content",
+   "value": "0",
+   "scope": "the 137 human-text segments",
+   "method": "same; positive controls: perturbation 0/518 still match, population 1 of 21,536 old segments unmatched, and 1,340 known-new segments matched 0 old",
+   "unit": "segments"
+  },
+  {
+   "name": "faithful slots re-attachable by content",
+   "value": "368 of 368 (344 same id, 24 moved: m68700 entry:auto-44..67 shifted by +7)",
+   "scope": "all faithful slots incl. unedited",
+   "method": "same normaliser",
+   "unit": "segments"
+  },
+  {
+   "name": "human text already equal to the new MT",
+   "value": "18 of 137",
+   "scope": "content-matched new segment",
+   "method": "normalised equality against 98a5fe2ff 02-mt-output",
+   "unit": "segments"
+  },
+  {
+   "name": "human texts carrying legacy-dialect markers",
+   "value": "27 of 137 ({{term}} 4 pairs, {{i}} 6 pairs, __x__ 8, ++x++ 6, [#id] 12 tokens); 28 need marker work incl. 1 where new EN gained markers; 109 plain paste",
+   "scope": "latest human text per segment",
+   "method": "regex census before/after the editor's own normalizeWraps -> unescapeMtMarkers -> normalizeTermMarkers chain (converted 0)",
+   "unit": "segments"
+  },
+  {
+   "name": "editor save gate on re-applied text",
+   "value": "137 of 137 pass; control: stripping MATH tokens from the 8 math-bearing texts blocked 8 of 8",
+   "scope": "server/public/js/segment-validation.js validateStructure(newEN, newMT, human)",
+   "method": "node require of the real UMD module, read-only",
+   "unit": "segments"
+  },
+  {
+   "name": "book-wide old EN segments with an identical normalised new counterpart",
+   "value": "21,535 of 21,536 (the 1 miss: ch10 m68764 problem lost '(credit: Cory Zanker)')",
+   "scope": "all 170 chemistry module files, 9a69414d5 vs 98a5fe2ff, same module",
+   "method": "same normaliser (incl. legacy {=X=})",
+   "unit": "segments"
+  },
+  {
+   "name": "new segments with no old counterpart",
+   "value": "1,341 = 1,149 alt + 191 table-summary + 1 changed problem (new total 22,876)",
+   "scope": "98a5fe2ff chemistry",
+   "method": "reverse content membership",
+   "unit": "segments"
+  },
+  {
+   "name": "book-wide segment-id stability",
+   "value": "18,604 same id same content; 2,436 same id DIFFERENT content (53 modules); 496 id gone (all 496 contents exist under another id)",
+   "scope": "21,536 old EN segments",
+   "method": "id lookup then normalised equality",
+   "unit": "segments"
+  },
+  {
+   "name": "m68700 approved edits absent from its faithful file",
+   "value": "31 (created 2026-04-01/02; faithful last written 2026-06-13)",
+   "scope": "m68700",
+   "method": "harvest edited_content vs faithful text at same id (faithful == MT there)",
+   "unit": "edits"
+  },
+  {
+   "name": "ch01/ch02 in-repo footprint",
+   "value": "ch01: 4 of 7 modules have edits (52 rows); ch02: 0 of 8 modules, 0 files in all git history",
+   "scope": "efnafraedi-2e",
+   "method": "harvest + all-history faithful path scan",
+   "unit": "modules"
+  },
+  {
+   "name": "harvest rows with an editor category",
+   "value": "1 of 151",
+   "scope": "segment_edits.category",
+   "method": "JSON count",
+   "unit": "rows"
+  },
+  {
+   "name": "chemistry modules in the new tree",
+   "value": "149 (appendices 13, ch00 1, ch01 7, ch02 8, ...); grant's 134 = 149 - 7 - 8",
+   "scope": "98a5fe2ff 02-for-mt",
+   "method": "git ls-tree count of m*-segments.en.md",
+   "unit": "modules"
+  }
+ ],
+ "caveats": [
+  "Matcher blind spots: it strips the inline-marker format and reduces MATH/MEDIA/TABLE placeholders to unnumbered typed tokens and xrefs to a token. A stricter variant that keeps xref/docref targets agreed 518/518. It also unifies quotes and whitespace. Legacy '(b)' split files ({{SEG:}} format, from before 2026-03-02) are excluded.",
+  "'Reviewed segment' means one carrying human text (differs from the MT, or has a harvest row). The 306 unedited faithful slots are unreviewed MT and are not counted as reviewed, though they also match by content.",
+  "Harvest-row English was read at 9a69414d5 rather than at each row's date. This is justified because ids and normalised English are identical across all old refs for these modules (0 normalised differences, March vs 9a69414d5).",
+  "The ch01 and ch02 Word files are off-repo and were not inspected. Whether the ch01 file's edits differ from the 52 in-repo ch01 edits is unknown.",
+  "Production state is inferred from git and the register's 2026-10-09 deploy report (prod at 13f9eec97, whose chemistry 02-for-mt/02-mt-output have no diff against 98a5fe2ff). It was not measured on prod. Prod's sessions.db was not read; the harvest is a 2026-08-30 snapshot.",
+  "The cause of m68700's 31 approved-but-unapplied edits is undetermined: the harvest has no applied_at or reviewed_at. 0 conflicts were measured between harvest and faithful text where both exist. Treat the DB rows as the fuller source.",
+  "The register (lines ~1042 and 1056) still calls the faithful retirement ac1a2f99d 'unpushed'. It is merged into 98a5fe2ff and is an ancestor of prod's 13f9eec97. That makes §C112's move-aside moot for chemistry. I did not fix the register (read-only).",
+  "I did not run inject on re-applied text. Per the inline-markers skill, inject still parses {{term}}, {{fn}} and ++text++ but skips __term__ for API segments, so pasting legacy markers verbatim would bring back mixed formats and drop new term ids.",
+  "By-product, not my task: 21,535 old segments map onto the new segmentation by content, so carrying June MT over is mechanically locatable. But June MT text contains old-format markers, and converting them was not measured here.",
+  "Part 2 says no active-time data exists. The evidence: greps over server/ for keystroke, idle, duration, focus and visibility found only unrelated hits; chapter_locks rows are deleted on release (server/lib/chapterLock.js:41,82,85,108) and are not used by the segment editor; no editor page posts to /api/analytics (control: the same grep finds API_BASE at public/js/segment-editor.js:150); the module GET (routes :263) logs no activity.",
+  "A new durable rule landed in CLAUDE.md during this run (0eecf59c8, three text layers). My Part 2 gap statement about it is read from that commit. The rule says the AI layer's location is a design decision for the active plan, and nothing implements it yet."
+ ],
+ "gitStatus": "`git status --porcelain` printed nothing at finish (exit 0), so the tree is clean. HEAD moved during my run from 25ba7084e to 0eecf59c8 through two commits by another session, neither of them mine. 16e18cdd0 committed the verdicts JSON that was untracked at the start. 0eecf59c8 is a CLAUDE.md change adding the three-text-layer rule. I wrote only under the scratch directory /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/.",
+ "dataFiles": [
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/reattach.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/gate-input.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/deeper.json",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/union.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/permodule.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/summarize.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/population.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/idstability.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/controls.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/gate.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/gate2.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/dialect.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/data/discover.txt",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/segs.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/reattach.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/population.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/idstability.py",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/gate.cjs",
+  "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/humanreview/dialect.cjs"
+ ],
+ "openQuestions": [
+  "What happens to the 39 pending harvest rows: re-apply, re-review, or drop? At least one is wrong (m68664 title -> 'Eðlisfræði í samhengi').",
+  "Are the off-repo ch01/ch02 Word edits a superset of the 52 in-repo ch01 edits? ch02's review exists only there. It needs converting into a form that can be re-attached (by content, like Part 1) before it can enter the system.",
+  "Should re-applied June edits be excluded from, or flagged in, the grant's post-editing statistics? They were made against the June MT, and their working time is unknown.",
+  "Under the 2026-10-10 three-layer rule, where does the AI-reviewed layer live, and what column records which layer (pure MT / AI layer / previous human text) an editor's baseline came from?",
+  "Timing instrumentation must respect the grant's 'aggregate only, never compare editors'. How will per-editor active time be stored or pseudonymised?",
+  "How should the 151 old rows in prod's segment_edits be handled (archive or supersede) before editors open ch01, ch03 or ch05, so they stop overlaying new segments by id (§C114 ①)?"
+ ],
+ "perChapter": [
+  {
+   "chapter": "ch01/m68663",
+   "values": {
+    "faithfulSlots": 11,
+    "editedVsMT": "2/2 (norm/raw)",
+    "harvestRows": "2 approved",
+    "humanTextSegments": 2,
+    "contentMatched": 2,
+    "sameId": 2,
+    "moved": 0,
+    "alreadyEqualsNewMT": 0,
+    "needsMarkerWork": 0,
+    "notReattachable": 0
+   }
+  },
+  {
+   "chapter": "ch01/m68664",
+   "values": {
+    "faithfulSlots": 72,
+    "editedVsMT": "44/44",
+    "harvestRows": "44 approved + 1 pending (title -> 'Eðlisfræði', wrong)",
+    "humanTextSegments": 45,
+    "contentMatched": 45,
+    "sameId": 45,
+    "moved": 0,
+    "alreadyEqualsNewMT": 4,
+    "needsMarkerWork": 16,
+    "notReattachable": 0
+   }
+  },
+  {
+   "chapter": "ch01/m68667",
+   "values": {
+    "faithfulSlots": 0,
+    "harvestRows": "4 approved (in no faithful file)",
+    "humanTextSegments": 4,
+    "contentMatched": 4,
+    "sameId": 3,
+    "moved": "1 (entry:auto-98 -> auto-104; old id now names 'Sr')",
+    "alreadyEqualsNewMT": 1,
+    "needsMarkerWork": 0,
+    "notReattachable": 0
+   }
+  },
+  {
+   "chapter": "ch01/m68674",
+   "values": {
+    "faithfulSlots": 0,
+    "harvestRows": "1 pending",
+    "humanTextSegments": 1,
+    "contentMatched": 1,
+    "sameId": 1,
+    "moved": 0,
+    "alreadyEqualsNewMT": 0,
+    "needsMarkerWork": 1,
+    "notReattachable": 0
+   }
+  },
+  {
+   "chapter": "ch01 other modules (m68670, m68683, m68690)",
+   "values": {
+    "humanTextSegments": 0,
+    "note": "no in-repo edits; covered only by the off-repo ch01 Word file"
+   }
+  },
+  {
+   "chapter": "ch02 (8 modules)",
+   "values": {
+    "humanTextSegments": 0,
+    "note": "no footprint in all git history; review exists only in the off-repo Word file"
+   }
+  },
+  {
+   "chapter": "ch03/m68699",
+   "values": {
+    "faithfulSlots": 3,
+    "editedVsMT": "2/2",
+    "harvestRows": "2 approved",
+    "humanTextSegments": 2,
+    "contentMatched": 2,
+    "sameId": 2,
+    "moved": 0,
+    "alreadyEqualsNewMT": 0,
+    "needsMarkerWork": 0,
+    "notReattachable": 0,
+    "note": "carries the §C107 'kalsíuminnihaldand' regression; fix, do not carry"
+   }
+  },
+  {
+   "chapter": "ch03/m68700",
+   "values": {
+    "faithfulSlots": "282 (274 distinct ids)",
+    "editedVsMT": "14/16",
+    "harvestRows": "59 approved + 37 pending (96 rows)",
+    "humanTextSegments": "82 (14 approved in faithful, 31 approved in no faithful file, 37 pending)",
+    "contentMatched": 82,
+    "sameId": 82,
+    "moved": 0,
+    "alreadyEqualsNewMT": 12,
+    "needsMarkerWork": 11,
+    "notReattachable": 0,
+    "note": "8 duplicated ids persist in the new extraction; 2 harvest rows land on them"
+   }
+  },
+  {
+   "chapter": "ch05/chapter-metadata",
+   "values": {
+    "harvestRows": "1 approved (title Varmefnafræði -> Varmaefnafræði)",
+    "humanTextSegments": 1,
+    "contentMatched": 1,
+    "alreadyEqualsNewMT": 1,
+    "notReattachable": 0
+   }
+  }
+ ]
+}

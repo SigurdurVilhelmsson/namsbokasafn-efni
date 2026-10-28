@@ -2,7 +2,7 @@
 
 Web-based editorial server for the OpenStax translation pipeline. Provides a segment editor for linguistic review (Pass 1), a localization editor (Pass 2), pipeline status tracking, terminology management, user administration, and analytics.
 
-> **For complete API reference:** See [`docs/_generated/routes.md`](../docs/_generated/routes.md) which documents all endpoints across 25 route groups. This README provides setup instructions and a high-level overview.
+> **For complete API reference:** See [`docs/_generated/routes.md`](../docs/_generated/routes.md) which is generated from `server/routes/` and documents every endpoint defined there (`index.js` defines `/api` and `/api/health` itself). This README provides setup instructions and a high-level overview.
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ Server runs at http://localhost:3000
 
 - **Segment editor** — Side-by-side EN/IS segment editor with autosave, conflict detection, and cross-tab guards. Supports both MT output review and manual editing.
 - **Localization editor** — Pass 2 editor for adapting faithful translations: unit conversions, Icelandic context, extended exercises. Full audit trail of changes.
-- **Pipeline management** — Track chapter progress through 8 pipeline stages (extraction through publication). Unified status in SQLite with JSON cache sync.
+- **Pipeline management** — Track chapter progress through the pipeline stages, extraction through publication (the list is `PIPELINE_STAGES` in `constants.js`). Unified status in SQLite with JSON cache sync.
 - **Terminology database** — Searchable EN-IS terminology with dispute resolution workflow and glossary generation.
 - **Multi-book support** — Per-book rendering configuration, access control, and module mapping. Chemistry, Biology, and Microbiology registered.
 - **Admin panel** — User management, book access grants, feedback review, analytics dashboard.
@@ -44,7 +44,9 @@ Server runs at http://localhost:3000
 | `/login` | Microsoft login |
 | `/pipeline/:book/:chapter` | Chapter pipeline detail |
 
-## Route Groups (25)
+## Route Groups
+
+One file per group in `routes/`; `ls routes/` is the list, and `docs/_generated/routes.md` has every endpoint in those files.
 
 | Route | Description |
 |-------|-------------|
@@ -54,11 +56,7 @@ Server runs at http://localhost:3000
 | `auth` | Microsoft Entra ID OAuth flow, JWT sessions |
 | `books` | Book registration and access control |
 | `feedback` | Public feedback submission and review |
-| `images` | Image translation tracking |
-| `issues` | Translation issue tracking and classification |
 | `localization-editor` | Pass 2 localization editing API |
-| `matecat` | Matecat TM project integration |
-| `modules` | OpenStax module metadata |
 | `my-work` | Per-user task dashboard |
 | `notifications` | Email and in-app notifications |
 | `pipeline` | Chapter pipeline detail pages |
@@ -69,10 +67,9 @@ Server runs at http://localhost:3000
 | `segment-editor` | Pass 1 segment editing API |
 | `status` | Pipeline overview pages |
 | `suggestions` | Translation suggestions |
-| `sync` | Content sync to reader repository |
 | `terminology` | Terminology CRUD and dispute resolution |
+| `tm` | Translation memory export (TMX, CSV, JSON) |
 | `views` | HTML page serving |
-| `workflow` | Legacy workflow (redirects to current routes) |
 
 ## Configuration
 
@@ -115,7 +112,7 @@ MATECAT_API_KEY=your_api_key
 ```
 server/
 ├── index.js              # Express 5 entry point, auto-migration
-├── routes/               # 25 route files
+├── routes/               # One file per route group
 │   ├── auth.js           # Microsoft Entra ID OAuth
 │   ├── segment-editor.js # Pass 1 editing API
 │   ├── localization-editor.js # Pass 2 editing API
@@ -123,8 +120,8 @@ server/
 │   ├── pipeline-status.js # Stage transitions
 │   ├── terminology.js    # Term CRUD + disputes
 │   ├── views.js          # HTML page serving
-│   └── ...               # 18 more route files
-├── services/             # 36 service modules
+│   └── ...               # and the rest: ls routes/
+├── services/             # Business logic and DB access
 │   ├── segmentEditorService.js   # Segment CRUD, approved edits
 │   ├── segmentParser.js          # Segment file I/O
 │   ├── pipelineStatusService.js  # Unified pipeline status
@@ -133,21 +130,24 @@ server/
 │   ├── userService.js            # User/role management
 │   ├── auth.js                   # JWT + Microsoft OAuth
 │   ├── migrationRunner.js        # Auto-run DB migrations
-│   └── ...                       # 28 more service files
+│   └── ...                       # and the rest: ls services/
 ├── middleware/
 │   ├── requireAuth.js    # JWT validation
 │   ├── requireRole.js    # Role-based access control
-│   └── validateParams.js # Request parameter validation
-├── views/                # 12 HTML pages
+│   ├── validateParams.js # Request parameter validation
+│   ├── upload.js         # multer, with each route's file-size limit on its 413
+│   ├── errorHandler.js   # The app's last error handler
+│   └── ...               # and the rest: ls middleware/
+├── views/                # HTML pages
 │   ├── segment-editor.html
 │   ├── localization-editor.html
 │   ├── admin.html
 │   ├── status.html
 │   ├── terminology.html
-│   └── ...               # 7 more view files
-├── migrations/           # 22 SQLite migrations (001-022)
+│   └── ...               # and the rest: ls views/
+├── migrations/           # SQLite migrations, run in order on every start
 ├── public/               # Static assets (JS, CSS)
-├── e2e/                  # Playwright E2E tests (96 tests)
+├── e2e/                  # Playwright E2E tests (npm run test:e2e)
 └── data/                 # Book module mappings (JSON)
 ```
 
@@ -197,7 +197,7 @@ Dev dependencies: `@playwright/test` for E2E testing.
 ## Development
 
 ```bash
-# Start with auto-reload (Node 20+)
+# Start with auto-reload (node --watch; the Node version is in the repo root's .nvmrc)
 npm run dev
 
 # Run on custom port
@@ -212,7 +212,7 @@ npm run test:e2e:headed
 
 ## Database
 
-SQLite database at `pipeline-output/sessions.db` (auto-created on first run). Migrations run automatically on server startup via `migrationRunner.js`. Current schema has 22 migrations covering users, sessions, edits, terminology, pipeline status, localization audit trail, and Microsoft auth.
+SQLite database at `pipeline-output/sessions.db` (auto-created on first run). Migrations run automatically on server startup via `migrationRunner.js`. The migrations cover, among other things, users, sessions, edits, terminology, pipeline status, the localization audit trail and Microsoft auth.
 
 ## Related Documentation
 

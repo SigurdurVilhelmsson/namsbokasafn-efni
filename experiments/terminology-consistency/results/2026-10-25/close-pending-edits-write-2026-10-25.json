@@ -1,0 +1,442 @@
+{
+  "what": "Production record of the 1.6 write (plan docs/plans/2026-10-10, item 1.6; register §C203): the project lead's rulings on chemistry's 38 pending pre-clean-break segment edits, recorded by server/scripts/close-pending-edits.js. Approves the 10 ruled 'apply' and supersedes the other 28. Applies nothing: applied_at stays NULL on all 38, and chemistry's apply hold stays in place.",
+  "ran": {
+    "by": "the project lead, on prod, from their own shell",
+    "at_utc": "2026-10-25 10:16:54",
+    "mode": "--write",
+    "reviewer": "the lead's own sign-in: an active admin account, the same reviewer_id as their 113 earlier reviews (name withheld)"
+  },
+  "script": {
+    "path": "server/scripts/close-pending-edits.js",
+    "commit": "e8e9d7d43",
+    "sha256": "da16bebdaa1ca2f1db0d20c152763c685a2b9552a5ea4eed4cc74a39b088c604",
+    "how": "a copy in /tmp on prod, piped to `node -` from server/ with `main();` appended (a piped script has require.main !== module)"
+  },
+  "inputs": {
+    "rulings": {
+      "path": "experiments/terminology-consistency/results/2026-10-23/pending-answers-2026-10-23.json",
+      "sha256": "735d38efd962eb047ae1dd055933e814496e5d9ecd27817baf44357f0a827e7c"
+    },
+    "frozen": {
+      "path": "experiments/terminology-consistency/results/2026-10-17/pending-edits-2026-10-17.json",
+      "sha256": "f3645ea2b6357945237ca3171326220926f6938a96ac8dd005b7789f95cd3a82"
+    },
+    "note": "both hashes measured on the copies prod read and on the committed files; they match"
+  },
+  "prod": {
+    "head": "dc430bb40300e1e26a3f6a8884e59a6cdf2dc147",
+    "checkout_clean": true,
+    "apply_hold_for_efnafraedi_2e": "Vistun í skrár er í bið fyrir efnafræði (§C203): eldri samþykktar breytingar og útgáfur voru gerðar á eldri vélþýðingu og myndu skrifa yfir núverandi texta."
+  },
+  "backups_before_write": {
+    "files": [
+      "pipeline-output/backups/sessions.2026-10-25-100520.db",
+      "pipeline-output/backups/sessions.2026-10-25-101456.db"
+    ],
+    "quick_check": "ok on both"
+  },
+  "segment_edits_efnafraedi_2e": {
+    "before": {
+      "source": "backup sessions.2026-10-25-101456.db, read-only",
+      "approved": 112,
+      "pending": 38,
+      "rejected": 1
+    },
+    "after": {
+      "source": "live sessions.db, read-only, 2026-10-25 10:18Z",
+      "approved": 122,
+      "pending": 0,
+      "superseded": 28,
+      "rejected": 1
+    }
+  },
+  "activity_log": {
+    "rows_before": 332,
+    "rows_after": 342,
+    "new_rows": 10,
+    "type": "segment_edit_approved",
+    "metadata": {
+      "via": "server/scripts/close-pending-edits.js",
+      "ruling": "1.6"
+    },
+    "one_per_approved_edit": true,
+    "chapter_stored_as": "'3.0', as the editor's approve route stores it (activityLog binds the JS number as REAL into a TEXT column; its reader casts)"
+  },
+  "checks": {
+    "every ruled row has the status its set calls for": true,
+    "every ruled row's texts, module and segment equal the freeze (edges trimmed, as the freeze wrote them)": true,
+    "applied_at NULL on all 38": true,
+    "rows reviewed today outside the 38": 0,
+    "reviewer_id on segment_edits equals activity_log user_id": true,
+    "a newly approved row on a segment that already had an approved edit": 0,
+    "the 14 segments in m68700 with two approved edits": "pre-existing: rows 22-39 paired with 69-82, all reviewed 2026-06-12, all applied, each pair's edited text identical. Not touched by this write."
+  },
+  "dry_runs": [
+    {
+      "at_utc": "2026-10-25 00:32",
+      "script": "e1fd43cbc",
+      "ok": false,
+      "refused": [
+        "no user signs in as __dry-run-no-such-reviewer__",
+        "row 138 changed since it was frozen"
+      ],
+      "outcome": "row 138's stored edited text ends in a space that the freeze had stripped; fixed in e8e9d7d43 (compare trimmed, as the freeze did)"
+    },
+    {
+      "at_utc": "2026-10-25 00:36",
+      "script": "e8e9d7d43",
+      "ok": false,
+      "refused": ["no user signs in as __dry-run-no-such-reviewer__"],
+      "outcome": "only the planted placeholder-reviewer refusal; plan as below"
+    }
+  ],
+  "notes": {
+    "apply": "Samþykkt samkvæmt úrskurði verkefnisstjóra (1.6, 2026-10-23)",
+    "already-present": "Leyst úr gildi: breytingin er þegar í septemberþýðingunni (1.6)",
+    "base-changed": "Leyst úr gildi: gerð á eldri vélþýðingu og verður athugasemd til ritstjóra (1.6, liður 2.2)"
+  },
+  "rows": [
+    {
+      "id": 4,
+      "set": "base-changed",
+      "module": "m68674",
+      "segment": "m68674:para:eip-134",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 129,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp12657920",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 130,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp66967088",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 131,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idm4748784",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 132,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp17618896",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 133,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp50213760",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 134,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp55880896",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 135,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idm34170816",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 136,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idm147492048",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 137,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp75868160",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 138,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp73465744",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 139,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp69843232",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 140,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp52331520",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 141,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp51969104",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 142,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp56580096",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 143,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp56656640",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 144,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp51940592",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 145,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp56804752",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 146,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp51218912",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 147,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp50969648",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 148,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp41416736",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 149,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp42865184",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 150,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp41417120",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 152,
+      "set": "already-present",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp42866464",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 153,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp40477552",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 154,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp40492608",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 155,
+      "set": "already-present",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp48697968",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 156,
+      "set": "already-present",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp41325696",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 157,
+      "set": "already-present",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp41326656",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 158,
+      "set": "already-present",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp41347648",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 159,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp71747728",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 160,
+      "set": "apply",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp71749776",
+      "status": "approved",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 161,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idm180787456",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 162,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idm180787072",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 163,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:problem:fs-idp40890784",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 164,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:solution:fs-idp40895008",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 165,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:glossary-def:fs-idp40905984-def",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    },
+    {
+      "id": 166,
+      "set": "base-changed",
+      "module": "m68700",
+      "segment": "m68700:glossary-def:fs-idp40908432-def",
+      "status": "superseded",
+      "reviewed_at": "2026-10-25 10:16:54",
+      "applied_at": null
+    }
+  ]
+}

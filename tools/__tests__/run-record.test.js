@@ -47,6 +47,7 @@ describe('buildRunRecord', () => {
     bracketDelta: { i: -1 },
     unwrapped: [{ type: 'i' }, { type: 'i' }, { type: 'sub' }],
     glossaryArm: 'glossary',
+    glossaryWire: 'today',
     glossaryHash: 'deadbeef',
     glossaryTermCount: 2097,
     chunksWithGlossary: 1,
@@ -76,6 +77,7 @@ describe('buildRunRecord', () => {
   it('records the glossary arm and hash together', () => {
     expect(buildRunRecord(base).glossary).toEqual({
       arm: 'glossary',
+      wire: 'today',
       contentHash: 'deadbeef',
       termCount: 2097,
       chunksWithGlossary: 1,
@@ -109,5 +111,29 @@ describe('buildRunRecord', () => {
   it('is JSON round-trippable', () => {
     const r = buildRunRecord(base);
     expect(JSON.parse(JSON.stringify(r))).toEqual(r);
+  });
+});
+
+describe('buildRunRecord records the glossary wire (D11)', () => {
+  const base = {
+    chars: 10,
+    usage: 10,
+    estimatedIsk: 0.1,
+    markersNormalized: 0,
+    glossaryArm: 'glossary',
+    glossaryHash: 'deadbeef',
+    glossaryTermCount: 617,
+    chunksWithGlossary: 1,
+    chunksTotal: 1,
+  };
+
+  it("records June's wire", () => {
+    expect(buildRunRecord({ ...base, glossaryWire: 'june' }).glossary.wire).toBe('june');
+  });
+
+  it('records null, never a guess, when no wire is given', () => {
+    // The default ('today' when a glossary was sent) is decided by the caller, which knows
+    // whether anything was sent; this function only records what it is told.
+    expect(buildRunRecord(base).glossary.wire).toBeNull();
   });
 });

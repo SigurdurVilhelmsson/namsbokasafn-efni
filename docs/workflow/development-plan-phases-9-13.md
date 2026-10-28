@@ -148,7 +148,7 @@ This matches the practical workflow: review modules individually, then publish t
 
 **Design docs:** `docs/plans/2026-02-16-phase11-status-modernization-design.md`, `docs/plans/2026-02-16-phase11-implementation.md`
 
-**Note on 11.2 (Chapter Files Tracking):** Deferred. The `chapterFilesService.js` file type tracking for structure JSON, translated CNXML, and rendered HTML was not implemented — the filesystem sync in `bookRegistration.js` provides sufficient tracking at the chapter level.
+**Note on 11.2 (Chapter Files Tracking):** Deferred. ✏️ *2026-10-25: moot. The chapter file registry (`chapterFilesService.js`, its routes and the `chapter_generated_files` table) was retired; see the active register's 2026-10-25 entry.* The `chapterFilesService.js` file type tracking for structure JSON, translated CNXML, and rendered HTML was not implemented — the filesystem sync in `bookRegistration.js` provides sufficient tracking at the chapter level.
 
 ---
 

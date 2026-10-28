@@ -104,6 +104,46 @@ describe('Server startup smoke tests', () => {
     });
   });
 
+  describe('the shared error handler is mounted, last (#557 follow-up, 2026-10-24)', () => {
+    // It moved to middleware/errorHandler.js so multerUploadRoutes.test.js can drive the
+    // real one. That test mounts it itself, so only this source check sees index.js's
+    // wiring: without the handler, every multer refusal (413 for size, 400 for an
+    // unexpected file) would reach the client as a 500.
+
+    it('index.js imports it', () => {
+      expect(indexSource).toContain(
+        "const { errorHandler } = require('./middleware/errorHandler');"
+      );
+    });
+
+    // A whole-line comment that mentions app.use( must not move either check, so lines that
+    // begin with //, /* or * are dropped. A line that only opens with an inline block comment
+    // (`/* v8 ignore next */ app.use(…)`) keeps its code: the comment is cut, not the line.
+    // Comments are matched only at a line's start, because a pattern for comments inside code
+    // would read the '/*' of '/api/*path' as a block comment's start. A trailing comment on a
+    // code line is still read, and can only turn the ordering check red.
+    const indexCode = indexSource
+      .split('\n')
+      .map((line) => line.replace(/^\s*\/\*.*?\*\/\s*(?=\S)/, ''))
+      .filter((line) => !/^\s*(\/\/|\/\*|\*)/.test(line))
+      .join('\n');
+
+    it('it is the last app.use in index.js, at any indentation, after the API 404 handler', () => {
+      const mounts = [...indexCode.matchAll(/\bapp\.use\(/g)].map((m) => m.index);
+      const handlerAt = indexCode.indexOf('app.use(errorHandler);');
+      expect([handlerAt > -1, mounts.at(-1) === handlerAt]).toEqual([true, true]);
+    });
+
+    it('index.js defines no other error handler: no four-parameter function at all', () => {
+      // Express treats any four-parameter middleware as an error handler, whatever its
+      // parameters are called, and one mounted above errorHandler would answer first. This
+      // matches arrow, function and async forms, inline or declared by name.
+      const fourParams =
+        /(?:function\b[^(]*\(|\()\s*[\w$]+\s*,\s*[\w$]+\s*,\s*[\w$]+\s*,\s*[\w$]+\s*\)\s*(?:=>|\{)/;
+      expect(indexCode).not.toMatch(fourParams);
+    });
+  });
+
   describe('request-timing middleware is actually mounted (register C23)', () => {
     // A middleware that is written but not mounted is register C22 verbatim:
     // a feature gated on something that never happens, silent for months.

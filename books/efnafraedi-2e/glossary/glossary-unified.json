@@ -1,6 +1,6 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-29T10:00:03.374Z",
+  "generated": "2026-10-25T14:00:03.717Z",
   "book": "efnafraedi-2e",
   "stats": {
     "total": 1748,
@@ -17616,12 +17616,12 @@
     },
     {
       "english": "trigonal planar",
-      "icelandic": "þríhyrnt flatt",
+      "icelandic": "þríhyrningslaga flatt",
       "status": "approved",
-      "reason": "house-style",
+      "reason": "head-form",
       "domain": "chemistry",
       "position": 1,
-      "conceptId": 70230,
+      "conceptId": 5199,
       "alternatives": []
     },
     {

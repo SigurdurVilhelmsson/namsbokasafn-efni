@@ -1,0 +1,906 @@
+{
+ "about": "Masked test key: which side of each pair is the June MT. Written by masked_test_sample.py. Not shown to the reader until the answers are frozen.",
+ "key": {
+  "p001": {
+   "june": "A",
+   "key": "glossary-def:fs-idm186055200-def",
+   "module": "m68769",
+   "type": "glossary-def"
+  },
+  "p002": {
+   "june": "B",
+   "key": "caption:CNX_Chem_12_00_Ectotherm-caption",
+   "module": "m68785",
+   "type": "caption"
+  },
+  "p003": {
+   "june": "A",
+   "key": "para:fs-idm124291232",
+   "module": "m68783",
+   "type": "para"
+  },
+  "p004": {
+   "june": "A",
+   "key": "para:fs-idm265250272",
+   "module": "m68842",
+   "type": "para"
+  },
+  "p005": {
+   "june": "A",
+   "key": "problem:fs-idm335136096",
+   "module": "m68683",
+   "type": "problem"
+  },
+  "p006": {
+   "june": "A",
+   "key": "problem:fs-idp41532304",
+   "module": "m68799",
+   "type": "problem"
+  },
+  "p007": {
+   "june": "B",
+   "key": "problem:fs-idm26437648",
+   "module": "m68703",
+   "type": "problem"
+  },
+  "p008": {
+   "june": "B",
+   "key": "problem:fs-idm77542368",
+   "module": "m68813",
+   "type": "problem"
+  },
+  "p009": {
+   "june": "B",
+   "key": "problem:fs-idp25376512",
+   "module": "m68683",
+   "type": "problem"
+  },
+  "p010": {
+   "june": "B",
+   "key": "problem:fs-idm125977952",
+   "module": "m68745",
+   "type": "problem"
+  },
+  "p011": {
+   "june": "B",
+   "key": "glossary-def:fs-idm42704816-def",
+   "module": "m68664",
+   "type": "glossary-def"
+  },
+  "p012": {
+   "june": "A",
+   "key": "caption:CNX_Chem_02_03_MassSpec-caption",
+   "module": "m68692",
+   "type": "caption"
+  },
+  "p013": {
+   "june": "B",
+   "key": "solution:fs-idp13901792",
+   "module": "m68818",
+   "type": "solution"
+  },
+  "p014": {
+   "june": "B",
+   "key": "para:fs-idm50348928",
+   "module": "m68783",
+   "type": "para"
+  },
+  "p015": {
+   "june": "B",
+   "key": "para:fs-idm372296992",
+   "module": "m68798",
+   "type": "para"
+  },
+  "p016": {
+   "june": "B",
+   "key": "caption:CNX_Chem_01_04_Volume-caption",
+   "module": "m68674",
+   "type": "caption"
+  },
+  "p017": {
+   "june": "A",
+   "key": "problem:fs-idp72058416",
+   "module": "m68782",
+   "type": "problem"
+  },
+  "p018": {
+   "june": "B",
+   "key": "para:fs-idm43395808",
+   "module": "m68854",
+   "type": "para"
+  },
+  "p019": {
+   "june": "A",
+   "key": "problem:fs-idp167492528",
+   "module": "m68727",
+   "type": "problem"
+  },
+  "p020": {
+   "june": "A",
+   "key": "para:fs-idm147211136",
+   "module": "m68695",
+   "type": "para"
+  },
+  "p021": {
+   "june": "B",
+   "key": "glossary-def:fs-idm71427776-def",
+   "module": "m68745",
+   "type": "glossary-def"
+  },
+  "p022": {
+   "june": "B",
+   "key": "para:fs-idp1279024",
+   "module": "m68724",
+   "type": "para"
+  },
+  "p023": {
+   "june": "A",
+   "key": "example-title:fs-idp54423808-title",
+   "module": "m68798",
+   "type": "example-title"
+  },
+  "p024": {
+   "june": "B",
+   "key": "para:fs-idp132272768",
+   "module": "m68791",
+   "type": "para"
+  },
+  "p025": {
+   "june": "A",
+   "key": "para:newness",
+   "module": "m68674",
+   "type": "para"
+  },
+  "p026": {
+   "june": "A",
+   "key": "problem:fs-idp125938384",
+   "module": "m68798",
+   "type": "problem"
+  },
+  "p027": {
+   "june": "B",
+   "key": "problem:fs-idp64176720",
+   "module": "m68843",
+   "type": "problem"
+  },
+  "p028": {
+   "june": "B",
+   "key": "para:fs-idm8272528",
+   "module": "m68825",
+   "type": "para"
+  },
+  "p029": {
+   "june": "B",
+   "key": "para:fs-idm338996800",
+   "module": "m68683",
+   "type": "para"
+  },
+  "p030": {
+   "june": "B",
+   "key": "problem:fs-idm46311104",
+   "module": "m68768",
+   "type": "problem"
+  },
+  "p031": {
+   "june": "B",
+   "key": "para:fs-idm78432624",
+   "module": "m68837",
+   "type": "para"
+  },
+  "p032": {
+   "june": "A",
+   "key": "problem:fs-idp65538752",
+   "module": "m68752",
+   "type": "problem"
+  },
+  "p033": {
+   "june": "A",
+   "key": "caption:CNX_Chem_13_01_SuperSat-caption",
+   "module": "m68799",
+   "type": "caption"
+  },
+  "p034": {
+   "june": "B",
+   "key": "para:fs-idp212669488",
+   "module": "m68752",
+   "type": "para"
+  },
+  "p035": {
+   "june": "A",
+   "key": "problem:fs-idm110862992",
+   "module": "m68692",
+   "type": "problem"
+  },
+  "p036": {
+   "june": "A",
+   "key": "para:fs-idm388155072",
+   "module": "m68814",
+   "type": "para"
+  },
+  "p037": {
+   "june": "A",
+   "key": "para:fs-idm153965536",
+   "module": "m68769",
+   "type": "para"
+  },
+  "p038": {
+   "june": "A",
+   "key": "para:fs-idm45558496",
+   "module": "m68806",
+   "type": "para"
+  },
+  "p039": {
+   "june": "A",
+   "key": "problem:fs-idm20853568",
+   "module": "m68829",
+   "type": "problem"
+  },
+  "p040": {
+   "june": "B",
+   "key": "para:fs-idm63480000",
+   "module": "m68842",
+   "type": "para"
+  },
+  "p041": {
+   "june": "B",
+   "key": "problem:fs-idm38112784",
+   "module": "m68805",
+   "type": "problem"
+  },
+  "p042": {
+   "june": "A",
+   "key": "problem:fs-idm12982896",
+   "module": "m68702",
+   "type": "problem"
+  },
+  "p043": {
+   "june": "B",
+   "key": "para:fs-idm467257104",
+   "module": "m68805",
+   "type": "para"
+  },
+  "p044": {
+   "june": "A",
+   "key": "title:fs-idm45487824-title",
+   "module": "m68807",
+   "type": "title"
+  },
+  "p045": {
+   "june": "B",
+   "key": "problem:fs-idp57446720",
+   "module": "m68804",
+   "type": "problem"
+  },
+  "p046": {
+   "june": "B",
+   "key": "problem:fs-idm84945616",
+   "module": "m68683",
+   "type": "problem"
+  },
+  "p047": {
+   "june": "B",
+   "key": "para:eip-134",
+   "module": "m68674",
+   "type": "para"
+  },
+  "p048": {
+   "june": "A",
+   "key": "para:fs-idm120145792",
+   "module": "m68817",
+   "type": "para"
+  },
+  "p049": {
+   "june": "A",
+   "key": "problem:fs-idm193016160",
+   "module": "m68751",
+   "type": "problem"
+  },
+  "p050": {
+   "june": "B",
+   "key": "solution:fs-idp120287136",
+   "module": "m68797",
+   "type": "solution"
+  },
+  "p051": {
+   "june": "A",
+   "key": "para:fs-idm30434512",
+   "module": "m68825",
+   "type": "para"
+  },
+  "p052": {
+   "june": "A",
+   "key": "para:fs-idp12392592",
+   "module": "m68724",
+   "type": "para"
+  },
+  "p053": {
+   "june": "B",
+   "key": "problem:fs-idp105396032",
+   "module": "m68709",
+   "type": "problem"
+  },
+  "p054": {
+   "june": "B",
+   "key": "solution:fs-idp210135392",
+   "module": "m68831",
+   "type": "solution"
+  },
+  "p055": {
+   "june": "B",
+   "key": "problem:fs-idp222482608",
+   "module": "m68713",
+   "type": "problem"
+  },
+  "p056": {
+   "june": "A",
+   "key": "para:eip-970",
+   "module": "m68860",
+   "type": "para"
+  },
+  "p057": {
+   "june": "B",
+   "key": "problem:fs-idp25136064",
+   "module": "m68742",
+   "type": "problem"
+  },
+  "p058": {
+   "june": "A",
+   "key": "abstract-item:abstract-item-6",
+   "module": "m68748",
+   "type": "abstract-item"
+  },
+  "p059": {
+   "june": "B",
+   "key": "abstract-item:abstract-item-1",
+   "module": "m68857",
+   "type": "abstract-item"
+  },
+  "p060": {
+   "june": "A",
+   "key": "para:fs-idm41841264",
+   "module": "m68770",
+   "type": "para"
+  },
+  "p061": {
+   "june": "A",
+   "key": "para:fs-idm31626864",
+   "module": "m68710",
+   "type": "para"
+  },
+  "p062": {
+   "june": "A",
+   "key": "para:fs-idm80411056",
+   "module": "m68729",
+   "type": "para"
+  },
+  "p063": {
+   "june": "B",
+   "key": "para:fs-idm47025104",
+   "module": "m68791",
+   "type": "para"
+  },
+  "p064": {
+   "june": "A",
+   "key": "glossary-def:fs-idp119850016-def",
+   "module": "m68816",
+   "type": "glossary-def"
+  },
+  "p065": {
+   "june": "B",
+   "key": "solution:fs-idp19284480",
+   "module": "m68846",
+   "type": "solution"
+  },
+  "p066": {
+   "june": "B",
+   "key": "para:fs-idm180356384",
+   "module": "m68702",
+   "type": "para"
+  },
+  "p067": {
+   "june": "B",
+   "key": "para:fs-idp11224512",
+   "module": "m68837",
+   "type": "para"
+  },
+  "p068": {
+   "june": "A",
+   "key": "para:fs-idm118372272",
+   "module": "m68860",
+   "type": "para"
+  },
+  "p069": {
+   "june": "B",
+   "key": "para:fs-idp160141472",
+   "module": "m68732",
+   "type": "para"
+  },
+  "p070": {
+   "june": "A",
+   "key": "para:fs-idp11259136",
+   "module": "m68747",
+   "type": "para"
+  },
+  "p071": {
+   "june": "B",
+   "key": "problem:fs-idm103276128",
+   "module": "m68768",
+   "type": "problem"
+  },
+  "p072": {
+   "june": "B",
+   "key": "para:fs-idm170542656",
+   "module": "m68692",
+   "type": "para"
+  },
+  "p073": {
+   "june": "A",
+   "key": "glossary-def:fs-idm147658080-def",
+   "module": "m68733",
+   "type": "glossary-def"
+  },
+  "p074": {
+   "june": "B",
+   "key": "problem:fs-idp282285904",
+   "module": "m68698",
+   "type": "problem"
+  },
+  "p075": {
+   "june": "B",
+   "key": "problem:fs-idm183236768",
+   "module": "m68751",
+   "type": "problem"
+  },
+  "p076": {
+   "june": "B",
+   "key": "problem:fs-idp134601472",
+   "module": "m68740",
+   "type": "problem"
+  },
+  "p077": {
+   "june": "A",
+   "key": "example-title:fs-idp62666784-title",
+   "module": "m68860",
+   "type": "example-title"
+  },
+  "p078": {
+   "june": "B",
+   "key": "para:fs-idm5227120",
+   "module": "m68750",
+   "type": "para"
+  },
+  "p079": {
+   "june": "A",
+   "key": "para:fs-idm83793840",
+   "module": "m68702",
+   "type": "para"
+  },
+  "p080": {
+   "june": "A",
+   "key": "para:fs-idm25350928",
+   "module": "m68849",
+   "type": "para"
+  },
+  "p081": {
+   "june": "A",
+   "key": "problem:fs-idm63155984",
+   "module": "m68733",
+   "type": "problem"
+  },
+  "p082": {
+   "june": "B",
+   "key": "para:fs-idm240546096",
+   "module": "m68806",
+   "type": "para"
+  },
+  "p083": {
+   "june": "B",
+   "key": "item:fs-idp69636800-item-2",
+   "module": "m68740",
+   "type": "item"
+  },
+  "p084": {
+   "june": "A",
+   "key": "problem:fs-idm178794544",
+   "module": "m68789",
+   "type": "problem"
+  },
+  "p085": {
+   "june": "A",
+   "key": "solution:fs-idp2206912",
+   "module": "m68811",
+   "type": "solution"
+  },
+  "p086": {
+   "june": "A",
+   "key": "problem:fs-idm16110016",
+   "module": "m68829",
+   "type": "problem"
+  },
+  "p087": {
+   "june": "B",
+   "key": "glossary-def:fs-idp18406528-def",
+   "module": "m68857",
+   "type": "glossary-def"
+  },
+  "p088": {
+   "june": "B",
+   "key": "title:fs-idp48607392-title",
+   "module": "m68702",
+   "type": "title"
+  },
+  "p089": {
+   "june": "A",
+   "key": "problem:fs-idm82643728",
+   "module": "m68791",
+   "type": "problem"
+  },
+  "p090": {
+   "june": "B",
+   "key": "glossary-def:fs-idp102386960-def",
+   "module": "m68727",
+   "type": "glossary-def"
+  },
+  "p091": {
+   "june": "A",
+   "key": "problem:fs-idp14846960",
+   "module": "m68811",
+   "type": "problem"
+  },
+  "p092": {
+   "june": "A",
+   "key": "para:fs-idm7467360",
+   "module": "m68830",
+   "type": "para"
+  },
+  "p093": {
+   "june": "A",
+   "key": "para:fs-idm36267744",
+   "module": "m68751",
+   "type": "para"
+  },
+  "p094": {
+   "june": "B",
+   "key": "para:fs-idm124424064",
+   "module": "m68750",
+   "type": "para"
+  },
+  "p095": {
+   "june": "B",
+   "key": "para:fs-idp154356656",
+   "module": "m68727",
+   "type": "para"
+  },
+  "p096": {
+   "june": "A",
+   "key": "problem:fs-idp172277456",
+   "module": "m68783",
+   "type": "problem"
+  },
+  "p097": {
+   "june": "A",
+   "key": "para:fs-idm81759792",
+   "module": "m68703",
+   "type": "para"
+  },
+  "p098": {
+   "june": "B",
+   "key": "para:fs-idm215588032",
+   "module": "m68801",
+   "type": "para"
+  },
+  "p099": {
+   "june": "B",
+   "key": "problem:fs-idp28199904",
+   "module": "m68751",
+   "type": "problem"
+  },
+  "p100": {
+   "june": "A",
+   "key": "solution:fs-idm141689136",
+   "module": "m68733",
+   "type": "solution"
+  },
+  "p101": {
+   "june": "A",
+   "key": "caption:CNX_Chem_18_01_NaFlame-caption",
+   "module": "m68829",
+   "type": "caption"
+  },
+  "p102": {
+   "june": "A",
+   "key": "problem:fs-idp50096",
+   "module": "m68667",
+   "type": "problem"
+  },
+  "p103": {
+   "june": "B",
+   "key": "item:fs-idm120122192-item-1",
+   "module": "m68832",
+   "type": "item"
+  },
+  "p104": {
+   "june": "A",
+   "key": "caption:CNX_Chem_20_04_peptide-caption",
+   "module": "m68849",
+   "type": "caption"
+  },
+  "p105": {
+   "june": "A",
+   "key": "glossary-def:fs-idm99275552-def",
+   "module": "m68844",
+   "type": "glossary-def"
+  },
+  "p106": {
+   "june": "A",
+   "key": "para:fs-idm114532848",
+   "module": "m68769",
+   "type": "para"
+  },
+  "p107": {
+   "june": "B",
+   "key": "para:fs-idm8803008",
+   "module": "m68737",
+   "type": "para"
+  },
+  "p108": {
+   "june": "A",
+   "key": "para:fs-idp106203776",
+   "module": "m68734",
+   "type": "para"
+  },
+  "p109": {
+   "june": "B",
+   "key": "problem:fs-idp280981664",
+   "module": "m68797",
+   "type": "problem"
+  },
+  "p110": {
+   "june": "B",
+   "key": "para-title:fs-idm223950256-title",
+   "module": "m68823",
+   "type": "para-title"
+  },
+  "p111": {
+   "june": "B",
+   "key": "item:fs-idp102978032-item-3",
+   "module": "m68783",
+   "type": "item"
+  },
+  "p112": {
+   "june": "A",
+   "key": "problem:fs-idp60949984",
+   "module": "m68848",
+   "type": "problem"
+  },
+  "p113": {
+   "june": "B",
+   "key": "para:fs-idm213521392",
+   "module": "m68799",
+   "type": "para"
+  },
+  "p114": {
+   "june": "B",
+   "key": "glossary-def:fs-idp39277120-def",
+   "module": "m68846",
+   "type": "glossary-def"
+  },
+  "p115": {
+   "june": "B",
+   "key": "problem:fs-idm237890176",
+   "module": "m68764",
+   "type": "problem"
+  },
+  "p116": {
+   "june": "B",
+   "key": "para:fs-idp46664848",
+   "module": "m68709",
+   "type": "para"
+  },
+  "p117": {
+   "june": "A",
+   "key": "example-title:fs-idp1783792-title",
+   "module": "m68724",
+   "type": "example-title"
+  },
+  "p118": {
+   "june": "B",
+   "key": "para:fs-idm17185344",
+   "module": "m68724",
+   "type": "para"
+  },
+  "p119": {
+   "june": "B",
+   "key": "para:fs-idm168102384",
+   "module": "m68806",
+   "type": "para"
+  },
+  "p120": {
+   "june": "B",
+   "key": "abstract:auto-2",
+   "module": "m68734",
+   "type": "abstract"
+  },
+  "p121": {
+   "june": "A",
+   "key": "problem:fs-idm27363856",
+   "module": "m68703",
+   "type": "problem"
+  },
+  "p122": {
+   "june": "A",
+   "key": "para:fs-idp11137424",
+   "module": "m68804",
+   "type": "para"
+  },
+  "p123": {
+   "june": "B",
+   "key": "problem:fs-idp166353408",
+   "module": "m68852",
+   "type": "problem"
+  },
+  "p124": {
+   "june": "B",
+   "key": "para:fs-idm20022400",
+   "module": "m68714",
+   "type": "para"
+  },
+  "p125": {
+   "june": "B",
+   "key": "para:fs-idm139915872",
+   "module": "m68759",
+   "type": "para"
+  },
+  "p126": {
+   "june": "B",
+   "key": "problem:fs-idp128909216",
+   "module": "m68783",
+   "type": "problem"
+  },
+  "p127": {
+   "june": "A",
+   "key": "item:pref-list-022-item-2",
+   "module": "m68662",
+   "type": "item"
+  },
+  "p128": {
+   "june": "B",
+   "key": "caption:CNX_Chem_09_02_Ballooning-caption",
+   "module": "m68751",
+   "type": "caption"
+  },
+  "p129": {
+   "june": "B",
+   "key": "abstract:auto-2",
+   "module": "m68716",
+   "type": "abstract"
+  },
+  "p130": {
+   "june": "A",
+   "key": "para:fs-idm39281712",
+   "module": "m68667",
+   "type": "para"
+  },
+  "p131": {
+   "june": "A",
+   "key": "para:fs-idp40395408",
+   "module": "m68829",
+   "type": "para"
+  },
+  "p132": {
+   "june": "A",
+   "key": "caption:CNX_Chem_21_05_Thallium-caption",
+   "module": "m68857",
+   "type": "caption"
+  },
+  "p133": {
+   "june": "B",
+   "key": "problem:fs-idm181695632",
+   "module": "m68819",
+   "type": "problem"
+  },
+  "p134": {
+   "june": "B",
+   "key": "solution:fs-idp5558768",
+   "module": "m68783",
+   "type": "solution"
+  },
+  "p135": {
+   "june": "B",
+   "key": "title:fs-idm97104816-title",
+   "module": "m68768",
+   "type": "title"
+  },
+  "p136": {
+   "june": "B",
+   "key": "para:fs-idm494984112",
+   "module": "m68793",
+   "type": "para"
+  },
+  "p137": {
+   "june": "B",
+   "key": "solution:fs-idm151604000",
+   "module": "m68842",
+   "type": "solution"
+  },
+  "p138": {
+   "june": "A",
+   "key": "problem:fs-idm245905952",
+   "module": "m68789",
+   "type": "problem"
+  },
+  "p139": {
+   "june": "A",
+   "key": "para:fs-idp43524064",
+   "module": "m68818",
+   "type": "para"
+  },
+  "p140": {
+   "june": "A",
+   "key": "title:fs-idm78153008-title",
+   "module": "m68693",
+   "type": "title"
+  },
+  "p141": {
+   "june": "B",
+   "key": "para:fs-idp15889200",
+   "module": "m68811",
+   "type": "para"
+  },
+  "p142": {
+   "june": "B",
+   "key": "para:fs-idp90130976",
+   "module": "m68727",
+   "type": "para"
+  },
+  "p143": {
+   "june": "A",
+   "key": "problem:fs-idp4075872",
+   "module": "m68713",
+   "type": "problem"
+  },
+  "p144": {
+   "june": "B",
+   "key": "para:fs-idp139331168",
+   "module": "m68837",
+   "type": "para"
+  },
+  "p145": {
+   "june": "A",
+   "key": "para:fs-idm187403424",
+   "module": "m68795",
+   "type": "para"
+  },
+  "p146": {
+   "june": "B",
+   "key": "abstract:auto-2",
+   "module": "m68745",
+   "type": "abstract"
+  },
+  "p147": {
+   "june": "B",
+   "key": "glossary-def:fs-idm39109968-def",
+   "module": "m68782",
+   "type": "glossary-def"
+  },
+  "p148": {
+   "june": "A",
+   "key": "example-title:fs-idm91310448-title",
+   "module": "m68737",
+   "type": "example-title"
+  },
+  "p149": {
+   "june": "A",
+   "key": "abstract:auto-2",
+   "module": "m68795",
+   "type": "abstract"
+  },
+  "p150": {
+   "june": "B",
+   "key": "para:fs-idm213828416",
+   "module": "m68808",
+   "type": "para"
+  }
+ },
+ "seed": 20261011
+}

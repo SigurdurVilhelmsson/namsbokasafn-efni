@@ -1,0 +1,782 @@
+[
+ {
+  "commit": "8271886b0",
+  "date": "2026-09-28",
+  "subject": "data(mt): HAND REPAIR — four Greek-letter substitutions in bought chemistry (§C191 ②), 0 I",
+  "chdir": "ch08",
+  "module": "m68745",
+  "key": "para:fs-idm25402912",
+  "before": "Við getum notað blendingssvigrúm, sem eru stærðfræðilegar samsetningar sumra eða allra gildisrafeindasvigrúma, til að lýsa rafeindaþéttleika í kringum samgild tengd atóm. Þessi blendingssvigrúm mynda annaðhvort sigma (Δ) tengi sem beinast að öðrum atómum sameindarinnar eða innihalda einmana rafeindapör. Við getum ákvarðað gerð svigrúmablöndunar í kringum miðjuatóm út frá rúmfræði rafeindaþéttleikasvæðanna í kringum það. Tvö slík svæði gefa til kynna [[i:sp]] svigrúmablöndun; þrjú, [[i:sp]][[sup:2]] svigrúmablöndun; fjögur, [[i:sp]][[sup:3]] svigrúmablöndun; fimm, [[i:sp]][[sup:3]][[i:d]] svigrúmablöndun; og sex, [[i:sp]][[sup:3]][[i:d]][[sup:2]] svigrúmablöndun. Pí (Δ) tengi eru mynduð úr óblönduðum atómsvigrúmum ([[i:p]] eða [[i:d]] svigrúmum).",
+  "after": "Við getum notað blendingssvigrúm, sem eru stærðfræðilegar samsetningar sumra eða allra gildisrafeindasvigrúma, til að lýsa rafeindaþéttleika í kringum samgild tengd atóm. Þessi blendingssvigrúm mynda annaðhvort sigma (σ) tengi sem beinast að öðrum atómum sameindarinnar eða innihalda einmana rafeindapör. Við getum ákvarðað gerð svigrúmablöndunar í kringum miðjuatóm út frá rúmfræði rafeindaþéttleikasvæðanna í kringum það. Tvö slík svæði gefa til kynna [[i:sp]] svigrúmablöndun; þrjú, [[i:sp]][[sup:2]] svigrúmablöndun; fjögur, [[i:sp]][[sup:3]] svigrúmablöndun; fimm, [[i:sp]][[sup:3]][[i:d]] svigrúmablöndun; og sex, [[i:sp]][[sup:3]][[i:d]][[sup:2]] svigrúmablöndun. Pí (π) tengi eru mynduð úr óblönduðum atómsvigrúmum ([[i:p]] eða [[i:d]] svigrúmum)."
+ },
+ {
+  "commit": "8271886b0",
+  "date": "2026-09-28",
+  "subject": "data(mt): HAND REPAIR — four Greek-letter substitutions in bought chemistry (§C191 ②), 0 I",
+  "chdir": "ch20",
+  "module": "m68846",
+  "key": "para:fs-idp51580832",
+  "before": "Alkenar eru mun hvarfgjarnari en alkanar vegna þess að [[MATH:2]] einingin er hvarfgjarn virkur hópur. A Β-tengi, sem er veikara tengi, rofnar mun auðveldar en σ-tengi. Þannig gangast alkenar undir einkennandi efnahvarf þar sem Β-tengið er rofið og í staðinn koma tvö σ-tengi. Þetta efnahvarf er kallað [[term:viðbótarhvarf|term-00011]]. Svigrúmablöndun kolefnisatómanna í tvítenginu í alken breytist úr [[i:sp]][[sup:2]] í [[i:sp]][[sup:3]] við viðbótarhvarf. Til dæmis leggjast halógenar við tvítengi í alken í stað þess að skipta út vetni, eins og gerist í alkan:",
+  "after": "Alkenar eru mun hvarfgjarnari en alkanar vegna þess að [[MATH:2]] einingin er hvarfgjarn virkur hópur. π-tengi, sem er veikara tengi, rofnar mun auðveldar en σ-tengi. Þannig gangast alkenar undir einkennandi efnahvarf þar sem π-tengið er rofið og í staðinn koma tvö σ-tengi. Þetta efnahvarf er kallað [[term:viðbótarhvarf|term-00011]]. Svigrúmablöndun kolefnisatómanna í tvítenginu í alken breytist úr [[i:sp]][[sup:2]] í [[i:sp]][[sup:3]] við viðbótarhvarf. Til dæmis leggjast halógenar við tvítengi í alken í stað þess að skipta út vetni, eins og gerist í alkan:"
+ },
+ {
+  "commit": "8271886b0",
+  "date": "2026-09-28",
+  "subject": "data(mt): HAND REPAIR — four Greek-letter substitutions in bought chemistry (§C191 ②), 0 I",
+  "chdir": "ch21",
+  "module": "m68852",
+  "key": "glossary-def:fs-idm57603984-def",
+  "before": "[[b:(Α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir",
+  "after": "[[b:(α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir"
+ },
+ {
+  "commit": "8271886b0",
+  "date": "2026-09-28",
+  "subject": "data(mt): HAND REPAIR — four Greek-letter substitutions in bought chemistry (§C191 ②), 0 I",
+  "chdir": "ch21",
+  "module": "m68852",
+  "key": "glossary-def:fs-idm12021616-def",
+  "before": "[[b:(Γ]] eða [[MATH:50]] stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar",
+  "after": "[[b:(γ]] eða [[MATH:50]] stuttbylgju, orkurík rafsegulgeislun sem sýnir tvíeðli bylgju og eindar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch01",
+  "module": "m68663",
+  "key": "abstract-item:abstract-item-6",
+  "before": "Stærðfræðileg meðferð mæliniðurstaðna",
+  "after": "Stærðfræðileg meðferð á niðurstöðum mælinga"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch01",
+  "module": "m68667",
+  "key": "title:auto-1",
+  "before": "Ástandsform og flokkun efnis",
+  "after": "Efnishamir og flokkun efnis"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch01",
+  "module": "m68683",
+  "key": "title:auto-1",
+  "before": "Stærðfræðileg meðferð mæliniðurstaðna",
+  "after": "Stærðfræðileg meðferð á niðurstöðum mælinga"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch01",
+  "module": "m68690",
+  "key": "title:auto-1",
+  "before": "Mælióvissa, nákvæmni og genkvæmni",
+  "after": "Óvissa í mælingum, hittni og nákvæmni"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch02",
+  "module": "m68696",
+  "key": "title:auto-1",
+  "before": "Jóna- og sameindasambönd",
+  "after": "Jónaefni og sameindaefni"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch04",
+  "module": "chapter-metadata",
+  "key": "title:ch04",
+  "before": "Efnajöfnur og efnahvörf",
+  "after": "Hlutfallaefnafræði efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch04",
+  "module": "m68713",
+  "key": "title:auto-1",
+  "before": "Efnajöfnuhlutfall",
+  "after": "Hlutfallaefnafræði efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch04",
+  "module": "m68716",
+  "key": "title:auto-1",
+  "before": "Megindleg efnagreining",
+  "after": "Magnbundin efnagreining"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch04",
+  "module": "m68730",
+  "key": "abstract-item:abstract-item-5",
+  "before": "Megindleg efnagreining",
+  "after": "Magnbundin efnagreining"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch07",
+  "module": "chapter-metadata",
+  "key": "title:ch07",
+  "before": "Efnahvörf og sameindabygging",
+  "after": "Efnatengi og sameindabygging"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68744",
+  "key": "title:auto-1",
+  "before": "Gildisrafeindatengjakenningin",
+  "after": "Kenning um gildistengi"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "title:auto-1",
+  "before": "Sámeindasvigrúmskenningin",
+  "after": "Sameindasvigrúmakenningin"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-1",
+  "before": "Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sámeindasvigrúm út frá atómsvigrúmum",
+  "after": "Lýst í grófum dráttum grundvallaraðferð skammtafræðinnar við að leiða sameindasvigrúm út frá atómsvigrúmum"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-2",
+  "before": "Lýst eiginleikum bindandi og andbindandi sámeindasvigrúma",
+  "after": "Lýst eiginleikum bindandi og andbindandi sameindasvigrúma"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-3",
+  "before": "Reiknað tengiraðir út frá rafeindaskipan sámeinda",
+  "after": "Reiknað tengiraðir út frá rafeindaskipan sameinda"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-4",
+  "before": "Skrifað rafeindaskipan sámeinda fyrir tvíatóma sámeindir úr fyrstu og annarri lotu",
+  "after": "Skrifað rafeindaskipan sameinda fyrir tvíatóma sameindir úr fyrstu og annarri lotu"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "abstract-item:abstract-item-5",
+  "before": "Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sámeindanna",
+  "after": "Tengt þessar rafeindaskipanir við stöðugleika og seguleiginleika sameindanna"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm108621792",
+  "before": "Fyrir næstum allar samgildar sámeindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sámeindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sámeindin sem við þekkjum, súrefnissámeindin O[[sub:2]], vandamáli hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:",
+  "after": "Fyrir næstum allar samgildar sameindir sem til eru getum við nú teiknað Lewis-mynd, spáð fyrir um rúmfræði rafeindapara, spáð fyrir um rúmfræði sameindar og komist nálægt því að spá fyrir um tengihorn. Hins vegar veldur ein mikilvægasta sameindin sem við þekkjum, súrefnissameindin O[[sub:2]], vandamáli hvað varðar Lewis-mynd hennar. Við myndum skrifa eftirfarandi Lewis-mynd fyrir O[[sub:2]]:"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm179265392",
+  "before": "Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hvert súrefnisatóm hefur átta rafeindir í kringum sig. Þessi mynd er þó í andstöðu við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það saman milli póla segulsins og ögrar þyngdaraflinu, eins og í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður [[term:hjásegulmagn|term-00001]] og kemur fram í sámeindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig útskýrum við þetta misræmi?",
+  "after": "Þessi rafeindabygging fylgir öllum reglum sem gilda um Lewis-kenninguna. Það er O=O tvítengi og hvert súrefnisatóm hefur átta rafeindir í kringum sig. Þessi mynd er þó í andstöðu við segulhegðun súrefnis. Eitt og sér er O[[sub:2]] ekki segulmagnað, en það dregst að segulsviðum. Þegar við hellum fljótandi súrefni fram hjá sterkum segli safnast það saman milli póla segulsins og ögrar þyngdaraflinu, eins og í [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Slíkur aðdráttur að segulsviði er kallaður [[term:hjásegulmagn|term-00001]] og kemur fram í sameindum sem hafa óparaðar rafeindir. Samt sem áður gefur Lewis-mynd O[[sub:2]] til kynna að allar rafeindir séu paraðar. Hvernig útskýrum við þetta misræmi?"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm167869376",
+  "before": "Tilraunir sýna að hver O[[sub:2]] sámeind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja óparaðra rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sámeinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru [[term:mótsegulmögnuð|term-00003]] og hrinda segulsviði veiklega frá sér. Hjásegulmögnuð og mótsegulmögnuð efni virka ekki sem varanlegir seglar. Aðeins í viðurvist ytra segulsviðs sýna þau aðdrátt eða fráhrindingu.",
+  "after": "Tilraunir sýna að hver O[[sub:2]] sameind hefur tvær óparaðar rafeindir. Lewis-myndarlíkanið spáir ekki fyrir um tilvist þessara tveggja óparaðra rafeinda. Ólíkt súrefni minnkar sýndarþyngd flestra sameinda lítillega í óeinsleitu segulsviði. Efni þar sem allar rafeindir eru paraðar eru [[term:mótsegulmögnuð|term-00003]] og hrinda segulsviði veiklega frá sér. Hjásegulmögnuð og mótsegulmögnuð efni virka ekki sem varanlegir seglar. Aðeins í viðurvist ytra segulsviðs sýna þau aðdrátt eða fráhrindingu."
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "para:fs-idm112096224",
+  "before": "Sámeindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissámeindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sámeindum, svo sem brot á áttureglunni og flóknari sámeindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sámeind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sámeindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sámeindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sámeinda.",
+  "after": "Sameindasvigrúmskenningin (MO-kenningin) gefur skýringu á efnatengjum sem tekur tillit til hjásegulmögnunar súrefnissameindarinnar. Hún útskýrir einnig tengin í ýmsum öðrum sameindum, svo sem brot á áttureglunni og flóknari sameindum með flóknari tengjum (utan gildissviðs þessa texta) sem erfitt er að lýsa með Lewis-myndum. Auk þess gefur hún líkan til að lýsa orku rafeinda í sameind og líklegri staðsetningu þessara rafeinda. Ólíkt gildisrafeindatengjakenningunni, sem notar blendingssvigrúm sem eru úthlutuð einu tilteknu atómi, notar MO-kenningin samsetningu atómsvigrúma til að gefa sameindasvigrúm sem eru [[i:óstaðbundin]] yfir alla sameindina frekar en að vera staðbundin á atómum hennar. MO-kenningin hjálpar okkur einnig að skilja hvers vegna sum efni eru rafleiðarar, önnur eru hálfleiðarar og enn önnur eru einangrarar. [[xref:fs-idm162808816]] tekur saman helstu atriði tveggja tengjakenninga sem styðja hvor aðra. Báðar kenningarnar bjóða upp á mismunandi, gagnlegar leiðir til að lýsa byggingu sameinda."
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-19",
+  "before": "Sámeindasvigrúmskenningin",
+  "after": "Sameindasvigrúmskenningin"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-21",
+  "before": "lítur á rafeindir sem óstaðbundnar um alla sámeindina",
+  "after": "lítur á rafeindir sem óstaðbundnar um alla sameindina"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-23",
+  "before": "sameinar atómsvigrúm til að mynda sámeindasvigrúm (σ, σ*, π, π*)",
+  "after": "sameinar atómsvigrúm til að mynda sameindasvigrúm (σ, σ*, π, π*)"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-26",
+  "before": "spáir fyrir um lögun sámeindar út frá fjölda svæða með rafeindaþéttleika",
+  "after": "spáir fyrir um lögun sameindar út frá fjölda svæða með rafeindaþéttleika"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch08",
+  "module": "m68747",
+  "key": "entry:auto-27",
+  "before": "spáir fyrir um fyrirkomulag rafeinda í sámeindum",
+  "after": "spáir fyrir um fyrirkomulag rafeinda í sameindum"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68748",
+  "key": "abstract-item:abstract-item-3",
+  "before": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+  "after": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68748",
+  "key": "abstract-item:abstract-item-4",
+  "before": "Útstreymi og flæði lofttegunda",
+  "after": "Útstreymi og sveim gasa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68751",
+  "key": "title:auto-1",
+  "before": "Samband þrýstings, rúmmáls, magns og hitastigs: Kjörgaslögmálið",
+  "after": "Samband þrýstings, rúmmáls, efnismagns og hitastigs: Kjörgaslögmálið"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68752",
+  "key": "title:auto-1",
+  "before": "Efnismagnsfræði loftkenndra efna, blanda og efnahvarfa",
+  "after": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68754",
+  "key": "title:auto-1",
+  "before": "Útstreymi og flæði lofttegunda",
+  "after": "Útstreymi og sveim gasa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68758",
+  "key": "title:auto-1",
+  "before": "Hreyfi-sameindakenningin",
+  "after": "Hreyfiorkukenningin"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch09",
+  "module": "m68759",
+  "key": "title:auto-1",
+  "before": "Hegðun raungass",
+  "after": "Frávik frá kjörgaseiginleikum"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68760",
+  "key": "abstract-item:abstract-item-1",
+  "before": "Millikraftar",
+  "after": "Millisameindakraftar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68760",
+  "key": "abstract-item:abstract-item-5",
+  "before": "Fast efni",
+  "after": "Fastur efnishamur"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68761",
+  "key": "title:auto-1",
+  "before": "Millikraftar",
+  "after": "Millisameindakraftar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68768",
+  "key": "title:auto-1",
+  "before": "Hamskipti",
+  "after": "Fasabreytingar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68769",
+  "key": "title:auto-1",
+  "before": "Fasamyndir",
+  "after": "Fasarit"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68770",
+  "key": "title:auto-1",
+  "before": "Fast efni",
+  "after": "Fastur efnishamur"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch10",
+  "module": "m68773",
+  "key": "title:auto-1",
+  "before": "Grindarformgerðir í kristölluðum föstum efnum",
+  "after": "Grindargerðir í kristalkenndum fastefnum"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch11",
+  "module": "chapter-metadata",
+  "key": "title:ch11",
+  "before": "Lausnir og kvoðulausnir",
+  "after": "Lausnir og svif"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch11",
+  "module": "m68776",
+  "key": "abstract-item:abstract-item-2",
+  "before": "Rafleiðar",
+  "after": "Rafkleyfar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch11",
+  "module": "m68781",
+  "key": "title:auto-1",
+  "before": "Rafleiðar",
+  "after": "Rafkleyfar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch11",
+  "module": "m68783",
+  "key": "title:auto-1",
+  "before": "Sameiginlegir eiginleikar",
+  "after": "Samþynningareiginleikar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch11",
+  "module": "m68784",
+  "key": "title:auto-1",
+  "before": "Kollóíðar",
+  "after": "Svif"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch12",
+  "module": "chapter-metadata",
+  "key": "title:ch12",
+  "before": "Hreyfifræði",
+  "after": "Hraðafræði"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch12",
+  "module": "m68785",
+  "key": "abstract-item:abstract-item-1",
+  "before": "Hraði efnahvarfa",
+  "after": "Hvarfhraði efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch12",
+  "module": "m68786",
+  "key": "title:auto-1",
+  "before": "Hraði efnahvarfa",
+  "after": "Hvarfhraði efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch12",
+  "module": "m68787",
+  "key": "title:auto-1",
+  "before": "Þættir sem hafa áhrif á efnahvarfshraða",
+  "after": "Þættir sem hafa áhrif á hvarfhraða"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch12",
+  "module": "m68791",
+  "key": "title:auto-1",
+  "before": "Heildunarhraðalögmál",
+  "after": "Heilduð hraðalögmál"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch13",
+  "module": "m68796",
+  "key": "abstract-item:abstract-item-3",
+  "before": "Jafnvægisbreytingar: Lögmál Le Châteliers",
+  "after": "Tilfærsla jafnvægis: Lögmál Le Châteliers"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch13",
+  "module": "m68799",
+  "key": "title:auto-1",
+  "before": "Jafnvægisbreytingar: Lögmál Le Châteliers",
+  "after": "Tilfærsla jafnvægis: Lögmál Le Châteliers"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch14",
+  "module": "m68805",
+  "key": "title:auto-1",
+  "before": "Afstæður styrkur sýra og basa",
+  "after": "Hlutfallslegur styrkur sýra og basa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch15",
+  "module": "chapter-metadata",
+  "key": "title:ch15",
+  "before": "Jafnvægi annarra efnahvarfa",
+  "after": "Jafnvægi annarra flokka efnahvarfa"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch15",
+  "module": "m68814",
+  "key": "title:auto-1",
+  "before": "Tengt jafnvægi",
+  "after": "Tengd jafnvægi"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch17",
+  "module": "m68821",
+  "key": "title:auto-1",
+  "before": "Yfirlit yfir oxunar-afoxunarfræði",
+  "after": "Yfirlit yfir oxunar-afoxunarefnafræði"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch17",
+  "module": "m68823",
+  "key": "title:auto-1",
+  "before": "Rafskauts- og kerspenna",
+  "after": "Raftroðs- og kerspenna"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch18",
+  "module": "chapter-metadata",
+  "key": "title:ch18",
+  "before": "Aðalflokkamálmar, málmungar og málmleysingjar",
+  "after": "Aðalflokkamálmar, hálfmálmar og málmleysingjar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch18",
+  "module": "m68828",
+  "key": "abstract-item:abstract-item-3",
+  "before": "Bygging og almennir eiginleikar málmunga",
+  "after": "Uppbygging og almennir eiginleikar hálfmálma"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch18",
+  "module": "m68828",
+  "key": "abstract-item:abstract-item-12",
+  "before": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
+  "after": "Tilvist, framleiðsla og eiginleikar eðalgastegunda"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch18",
+  "module": "m68831",
+  "key": "title:auto-1",
+  "before": "Bygging og almennir eiginleikar málmunga",
+  "after": "Uppbygging og almennir eiginleikar hálfmálma"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch18",
+  "module": "m68840",
+  "key": "title:auto-1",
+  "before": "Tilvist, framleiðsla og eiginleikar eðallofttegunda",
+  "after": "Tilvist, framleiðsla og eiginleikar eðalgastegunda"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch19",
+  "module": "m68842",
+  "key": "title:auto-1",
+  "before": "Tilvist, framleiðsla og eiginleikar hliðarfrumefna og efnasambanda þeirra",
+  "after": "Tilvist, framleiðsla og eiginleikar hliðarmálma og efnasambanda þeirra"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch20",
+  "module": "m68848",
+  "key": "title:auto-1",
+  "before": "Aldehýð, ketónar, karboxýlsýrur og esterar",
+  "after": "Aldehýð, ketón, karboxýlsýrur og estrar"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch21",
+  "module": "chapter-metadata",
+  "key": "title:ch21",
+  "before": "Kjarnakemía",
+  "after": "Kjarnaefnafræði"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch21",
+  "module": "m68850",
+  "key": "abstract-item:abstract-item-5",
+  "before": "Notkun geislasamsætna",
+  "after": "Notkun geislasamsæta"
+ },
+ {
+  "commit": "f313fee32",
+  "date": "2026-09-27",
+  "subject": "data(mt): HAND REPAIR — chemistry titles ruled 2026-09-27 (§C192) + sámeind → sameind in 8",
+  "chdir": "ch21",
+  "module": "m68857",
+  "key": "title:auto-1",
+  "before": "Notkun geislasamsætna",
+  "after": "Notkun geislasamsæta"
+ },
+ {
+  "commit": "42536323b",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore chemistry ch07 7.3/7.4 titles to the March MT wording ([US",
+  "chdir": "ch07",
+  "module": "m68736",
+  "key": "abstract-item:abstract-item-3",
+  "before": "Lewis-tákn og -formúlur",
+  "after": "Lewis-tákn og Lewis-myndir"
+ },
+ {
+  "commit": "42536323b",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore chemistry ch07 7.3/7.4 titles to the March MT wording ([US",
+  "chdir": "ch07",
+  "module": "m68736",
+  "key": "abstract-item:abstract-item-4",
+  "before": "Formlegar hleðslur og samómun",
+  "after": "Formlegar hleðslur og vokmyndir"
+ },
+ {
+  "commit": "42536323b",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore chemistry ch07 7.3/7.4 titles to the March MT wording ([US",
+  "chdir": "ch07",
+  "module": "m68739",
+  "key": "title:auto-1",
+  "before": "Lewis-tákn og Lewis-formúlur",
+  "after": "Lewis-tákn og Lewis-myndir"
+ },
+ {
+  "commit": "42536323b",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore chemistry ch07 7.3/7.4 titles to the March MT wording ([US",
+  "chdir": "ch07",
+  "module": "m68740",
+  "key": "title:auto-1",
+  "before": "Formlegar hleðslur og vok",
+  "after": "Formlegar hleðslur og vokmyndir"
+ },
+ {
+  "commit": "6417625c9",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore 3 ch06 section titles to the March MT wording ([USER] 2026",
+  "chdir": "ch06",
+  "module": "m68733",
+  "key": "title:auto-1",
+  "before": "Þróun skammtafræðinnar",
+  "after": "Þróun skammtakenningarinnar"
+ },
+ {
+  "commit": "6417625c9",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore 3 ch06 section titles to the March MT wording ([USER] 2026",
+  "chdir": "ch06",
+  "module": "m68734",
+  "key": "title:auto-1",
+  "before": "Rafeindaskipan atóma (rafeindaskipanir)",
+  "after": "Rafeindabygging atóma (rafeindaskipan)"
+ },
+ {
+  "commit": "6417625c9",
+  "date": "2026-09-19",
+  "subject": "data(mt): HAND REPAIR — restore 3 ch06 section titles to the March MT wording ([USER] 2026",
+  "chdir": "ch06",
+  "module": "m68735",
+  "key": "title:auto-1",
+  "before": "Reglubundnar breytingar á eiginleikum frumefna",
+  "after": "Lotubundnar breytingar á eiginleikum frumefna"
+ }
+]

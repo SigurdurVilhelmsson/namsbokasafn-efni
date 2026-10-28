@@ -1,0 +1,262 @@
+{
+ "method": "Key-blind correction of the 1.7 term mask, made 2026-10-14 after 30 of 150 answers and before any further answer. Written from the vintage-blind pairs file and a side-blind word diff of every pair; the key file was not opened. A pair is flagged when any difference between its two sides is a choice between two renderings of a chemistry or mathematics term, or of a substance or element name (spelling variants included), or is an extraction artefact. Not flagged: general vocabulary, grammar, word order, place and trade names, and the imperative form (singular -ðu vs plural -ið), which differs systematically in several pairs but is a reading matter, not a term.",
+ "answeredWhenFlagged": 30,
+ "flagged": 48,
+ "flags": [
+  {
+   "pair_id": "p012",
+   "class": "unruled-term",
+   "reason": "mass spectrometer: massagreinir / massagreiningartæki"
+  },
+  {
+   "pair_id": "p013",
+   "class": "artefact",
+   "reason": "one side and the English carry the escaped entity &lt; where the other side has <; an extraction-vintage difference, not wording"
+  },
+  {
+   "pair_id": "p016",
+   "class": "unruled-term",
+   "reason": "edge length: brúnarlengd / brúnlengd"
+  },
+  {
+   "pair_id": "p020",
+   "class": "unruled-term",
+   "reason": "element name: litíum / litín"
+  },
+  {
+   "pair_id": "p030",
+   "class": "ruled-term-missed",
+   "reason": "heat: hita / varma; the ruled form varmi was matched as a whole substring and missed the inflected varma"
+  },
+  {
+   "pair_id": "p043",
+   "class": "unruled-term",
+   "reason": "Ka expression / simplifying assumption: jafna vs segð, einföldun vs einföldunarforsenda"
+  },
+  {
+   "pair_id": "p047",
+   "class": "unruled-term",
+   "reason": "powers of 10: veldi af 10 / tugveldi"
+  },
+  {
+   "pair_id": "p050",
+   "class": "unruled-term",
+   "reason": "reverse reaction: bakhvarf / afturhvarf"
+  },
+  {
+   "pair_id": "p053",
+   "class": "unruled-term",
+   "reason": "carbon dioxide: koltvíoxíð / koldíoxíð"
+  },
+  {
+   "pair_id": "p054",
+   "class": "unruled-term",
+   "reason": "silane: sílan / silan"
+  },
+  {
+   "pair_id": "p058",
+   "class": "unruled-term",
+   "reason": "non-ideal gas behaviour: frávik frá hegðun kjörgass / ókjörgashegðun"
+  },
+  {
+   "pair_id": "p063",
+   "class": "unruled-term",
+   "reason": "second-order / integrated rate law: annars stigs / af öðru stigi"
+  },
+  {
+   "pair_id": "p065",
+   "class": "unruled-term",
+   "reason": "dibromobutane: díbrómóbútan / díbrómbútan"
+  },
+  {
+   "pair_id": "p066",
+   "class": "unruled-term",
+   "reason": "element name: köfnunarefni / nitur"
+  },
+  {
+   "pair_id": "p067",
+   "class": "unruled-term",
+   "reason": "oxyhydrogen / oxyacetylene torch compounds"
+  },
+  {
+   "pair_id": "p070",
+   "class": "unruled-term",
+   "reason": "computational chemistry: tölvuefnafræði / reikniefnafræði"
+  },
+  {
+   "pair_id": "p071",
+   "class": "unruled-term",
+   "reason": "molar enthalpy of vaporization: mólvermi gufunar / mólgufunarvermi"
+  },
+  {
+   "pair_id": "p073",
+   "class": "unruled-term",
+   "reason": "dumbbell-shaped region of space: handlóðslaga rúmsvæði / handlóðalaga svæði í rúmi"
+  },
+  {
+   "pair_id": "p074",
+   "class": "unruled-term",
+   "reason": "iron nitrate name: járnnítrat / ferríknítrat"
+  },
+  {
+   "pair_id": "p077",
+   "class": "unruled-term",
+   "reason": "exponentials: veldi / veldisvísitölur"
+  },
+  {
+   "pair_id": "p091",
+   "class": "unruled-term",
+   "reason": "gypsum: gips / gyps"
+  },
+  {
+   "pair_id": "p093",
+   "class": "unruled-term",
+   "reason": "ammonia: ammoníak / ammóníak"
+  },
+  {
+   "pair_id": "p101",
+   "class": "ruled-term-missed",
+   "reason": "emission: útblæstri on one side only; the ruled wrong-sense útblástur was matched without folding the á/æ umlaut"
+  },
+  {
+   "pair_id": "p104",
+   "class": "unruled-term",
+   "reason": "condensation reaction: þéttingarhvarf / þéttihvarf"
+  },
+  {
+   "pair_id": "p105",
+   "class": "unruled-term",
+   "reason": "set (mathematics): setta / mengi"
+  },
+  {
+   "pair_id": "p107",
+   "class": "unruled-term",
+   "reason": "electrostatic attraction: rafstöðuaðdráttarafl / rafstöðuaðdráttur"
+  },
+  {
+   "pair_id": "p108",
+   "class": "unruled-term",
+   "reason": "element name: natrín- / natríum-"
+  },
+  {
+   "pair_id": "p109",
+   "class": "unruled-term",
+   "reason": "reverse reaction: bakhvarf / afturhvarf"
+  },
+  {
+   "pair_id": "p115",
+   "class": "unruled-term",
+   "reason": "capillary tube: hárpípulaga glerrör / hárpípugler"
+  },
+  {
+   "pair_id": "p117",
+   "class": "ruled-term-missed",
+   "reason": "heat: varma / hita; same miss as p030"
+  },
+  {
+   "pair_id": "p119",
+   "class": "ruled-term-missed",
+   "reason": "amphiprotic: amfóprótísk / amfiprótísk, two misspellings of the ruled amfíprótísk, so neither matched"
+  },
+  {
+   "pair_id": "p122",
+   "class": "unruled-term",
+   "reason": "ion product: jónafurð / jónamargfeldi"
+  },
+  {
+   "pair_id": "p131",
+   "class": "unruled-term",
+   "reason": "tin plate: blikkplötur / tinhúðað stálplötujárn"
+  },
+  {
+   "pair_id": "p132",
+   "class": "unruled-term",
+   "reason": "element name: þallín / tallín"
+  },
+  {
+   "pair_id": "p133",
+   "class": "unruled-term",
+   "reason": "carbon tetrachloride: koltrefjaklóríð / koltetraklóríð"
+  },
+  {
+   "pair_id": "p135",
+   "class": "unruled-term",
+   "reason": "deposition: þurrfrysting / ísetning"
+  },
+  {
+   "pair_id": "p136",
+   "class": "unruled-term",
+   "reason": "activation barrier: virkjunarþröskuldur / virkjunarhindrun"
+  },
+  {
+   "pair_id": "p138",
+   "class": "unruled-term",
+   "reason": "dinitrogen pentoxide name: tvínituroxíð / tviniturpentaoxíð"
+  },
+  {
+   "pair_id": "p144",
+   "class": "unruled-term",
+   "reason": "carbon dioxide: koltvíoxíð / koldíoxíð"
+  },
+  {
+   "pair_id": "p027",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "a substance name written as one word on one side and two on the other (also the round-1 substance-name class)"
+  },
+  {
+   "pair_id": "p037",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "reaction arrow glyph only (⟶ against →)"
+  },
+  {
+   "pair_id": "p041",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p044",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p045",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p082",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p124",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p127",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  },
+  {
+   "pair_id": "p140",
+   "class": "no-word-difference",
+   "round": 2,
+   "reason": "punctuation, case or spacing only"
+  }
+ ],
+ "round2": {
+  "date": "2026-10-17",
+  "answeredWhenFlagged": 39,
+  "added": 9,
+  "method": "Key-blind, at 39 of 150 answers, after [USER] noted 'I fail to see a difference' on p037. Predicate, over the vintage-blind pairs file only: the two sides are not byte-equal, but their \\w+ tokens after NFKC and lower-casing are equal, so they differ only in punctuation, case or spacing. Such a pair has no word difference and should not have entered a reading test drawn from pairs that differ in words. The key was not opened. A flag set changes only the second (clean-pairs) reading, and can move it in either direction; the override stays bounded by the registered all-pairs reading, which no flag touches."
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "verdicts": [
+  {
+   "claim": "NEW has 22,591 unique segment keys in 170 segment files (149 modules + 21 chapter-metadata) at 98a5fe2ff",
+   "status": "confirmed",
+   "evidence": "I wrote my own SEG parser (regex <!--\\s*SEG:(\\S+?)\\s*-->, first occurrence per key, the same semantics as seg-markers.cjs) and ran it over git show of all 170 *-segments.en.md / .is.md files. The 56 '(b)' split files per ref were excluded. Counts: 149 module files + 21 chapter-metadata files (ch01-ch21), 22,591 unique keys. The EN and IS key sets are identical in every file (0 mismatches)."
+  },
+  {
+   "claim": "June has 21,251 unique keys; the June EN, the as-translated EN and the June IS have identical key sets in every module; NEW = June + 1,149 alt + 191 table-summary",
+   "status": "confirmed",
+   "evidence": "21,251 at 9a69414d5. 'As-translated EN' = the EN at each IS file's last commit on or before the June ref (git log -1). Its key set equals the June EN/IS key set in 170 of 170 files. The per-type counts of the 14 shared types are identical at both refs. NEW minus June is exactly +1,149 alt and +191 table-summary."
+  },
+  {
+   "claim": "The re-extraction is a 1:1 re-keying of June plus new segments. Accounting: 21,251 = 21,248 carried + 3 unrecoverable; the 51 unused June keys are those 3 plus 48 identical-text twins",
+   "status": "confirmed",
+   "evidence": "Recounted from their classification.jsonl: their mapping uses 21,200 distinct June keys, 48 of them twice (none more often), and leaves 51 unused. Note that a strict 1:1 equal-text matching exists. Per module, every normalized-EN text value has at least as many June segments as NEW segments, except for the 3 real changes (multiset test: 3 NEW in excess, 1 June in excess, which is m68764). The 48 reuses are therefore an artifact of their alignment, not of the data. My LCS mapping with nearest-twin fallback needs only 20 reuses. Every choice is text-correct."
+  },
+  {
+   "claim": "Class 1 SAME-KEY-SAME-EN = 18,317",
+   "status": "confirmed",
+   "evidence": "Own normalizer (legacy-to-bracket rewrite with bracket masking, recursive bracket parse, generic MATH/MEDIA/TABLE tokens, self-closing xref/docref become their target, entities decoded, whitespace collapsed). My per-key class labels agree with classification.jsonl on all 22,591 keys (cross-tab is purely diagonal). Comparing with the June-ref EN alone gives 18,319. Requiring the as-translated EN too moves 2 keys to class 2 (m68819 and m68852 glossary terms)."
+  },
+  {
+   "claim": "Class 2 SAME-KEY-EN-CHANGED = 2,438 (2,435 auto-N table-cell shifts recoverable; 3 real changes)",
+   "status": "confirmed",
+   "evidence": "All 2,435 are `entry` cells: 1,709 have a unique equal-text June cell and 726 have 2-27 candidates. I read the 3 real ones. m68764:problem: the June EN had '(credit: Cory Zanker)', which NEW EN drops. m68819 and m68852 glossary terms: June translated the literal text '(ΔGf°)' and '(+10β or +10e)', and NEW EN now has MATH placeholders there. Control: the same equality test rejects exactly these 3 keys (no equal-text June segment anywhere in the module). Example shift that I read: in m68692 the whole table moves by +4 (June auto-132..145 corresponds to NEW auto-136..149)."
+  },
+  {
+   "claim": "Class 3 TEXT-MATCH-OTHER-KEY = 347 (all table entry cells)",
+   "status": "confirmed",
+   "evidence": "Per-key identical with theirs; all 347 are `entry` cells. Requiring the as-translated EN of the source as well changes none (0 disagreements)."
+  },
+  {
+   "claim": "Class 4 NO-JUNE = 1,489 = 1,149 alt + 191 table-summary + 149 entry (multi-match)",
+   "status": "confirmed",
+   "evidence": "Mine: alt 1,149, table-summary 191, entry with more than one equal-text June cell 149. Per-key identical with theirs."
+  },
+  {
+   "claim": "(Implied) every carried key's June source has the same English",
+   "status": "confirmed",
+   "evidence": "For all 21,248 keys they carry, I checked with my normalizer that visible(NEW EN) == visible(June-ref EN at their source) == visible(as-translated EN at their source). Mismatches: 0. Positive control: the same test rejects the 3 known changed keys."
+  },
+  {
+   "claim": "Carriable (extended) = 21,248 (94.1%)",
+   "status": "confirmed",
+   "evidence": "Method-independent count: 21,248 NEW keys (non-alt/summary) have at least one June segment in the same module whose normalized EN is equal at both the June ref and the as-translated commit. 0 alt/summary keys have one. My own mapping (LCS plus nearest-position twin) gives 2,435 class-2 recovered and 149 class-4 aligned, the same as theirs. 21,248 of 22,591 = 94.05%."
+  },
+  {
+   "claim": "Clean = 21,191 (99.73% of carriable); fallbacks = 57 (56 kind-count mismatch, 1 legacy residue)",
+   "status": "confirmed",
+   "evidence": "My converter rewrites legacy syntax to brackets in reverseInlineMarkup's order and with its hasApiMarkers and literal-asterisk gating (NEW EN '*' count passed as literalAsterisks). It fills term/fn ids and em classes by order from NEW EN, and renumbers MATH/MEDIA through the English. My gate: kind multiset equal to NEW EN's, xref/docref/link target multiset equal, no legacy residue, parses. Result: 21,191 clean and 57 fallbacks, and the fallback key set is identical to theirs. Kind deltas of the fallbacks: 27 {i:-1}, 13 {i:-1,sub:-1}, plus small groups; most are glossary terms whose March source EN carried no markup (e.g. 'sp2 hybrid orbital'). My first gate found only 56. The 57th, m68843:para:fs-idp79204432, has June IS 'SCN^-^' beside {{term}}; the injector leaves that literal, and NEW EN has no sup. It appeared only after I added a gated-residue rule, so their residue rule is the better call. Gated vs ungated conversion gives 56 vs 57 fallbacks (only 3 June IS segments carry a gated form beside an API marker), which supports their 'mirrors gating' claim. Method flag: 'visible text unchanged 21,191/21,191' is nearly tautological for a markup-only rewrite. The load-bearing gate is the kind multiset, a count check that cannot see wording, terminology or untranslated text."
+  },
+  {
+   "claim": "Strict classes 1+3: carriable 18,664, clean 18,607, fallback 57",
+   "status": "confirmed",
+   "evidence": "Mine: 18,664 / 18,607 / 57."
+  },
+  {
+   "claim": "Clean segments needing conversion = 1,994 (1,928 legacy rewrite, 66 MATH renumber only); 19,197 need none",
+   "status": "confirmed",
+   "evidence": "1,928 legacy rewrites reproduced exactly. Their 66 MATH-only renumbers are exactly the 66 class-1 entry cells whose MATH numbers differ between NEW EN and June EN; I counted these independently, and 62 of them have different MathML, matching their '62' caveat. My alternative twin choice for shifted cells adds 16 more renumbers (82 in total). Both choices are text-correct; the 1,994 holds for their mapping."
+  },
+  {
+   "claim": "Rule firing counts: {{i}} 905, [#id] 488, {{term}} 487, [t](url) 111, ^x^ 102, __x__ 42, {{fn}} 29, {=x=} 24",
+   "status": "confirmed",
+   "evidence": "The unit is unstated in their report. It is the number of CLEAN carried segments in which the rule fired at least once (recounted from their conv_fired field). Mine: 905, 488, 488 (includes m68843, which they correctly class as a fallback), 111 (92 http + 19 doc:), 104, 42, 29, 24. Counted per occurrence instead: {{i}} 1,888, {{term}} 727, [#id] 537 (my corpus-wide census of June IS {{i}} is 1,889)."
+  },
+  {
+   "claim": "NEW EN prose covered by clean June text: 70.0% (2,317,544 of 3,308,415 chars)",
+   "status": "confirmed",
+   "evidence": "Mine: 2,317,175 of 3,308,044 = 70.0%. The ~370-char difference is a definition detail: my chars() drops a self-closing link entirely, while theirs leaves 1 char (354 segments differ by exactly 1 char)."
+  },
+  {
+   "claim": "Excluding alt + table-summary: 99.7%",
+   "status": "confirmed",
+   "evidence": "Mine 99.72%."
+  },
+  {
+   "claim": "Measured on NEW IS characters: 70.1% (2,143,758 of 3,057,915)",
+   "status": "confirmed",
+   "evidence": "Mine: 2,143,387 of 3,057,542 = 70.1%."
+  },
+  {
+   "claim": "No-June prose: alt 782,081 + table-summary 202,254 = 984,335 chars (29.8%)",
+   "status": "confirmed",
+   "evidence": "Mine is identical: 782,081 + 202,254 = 984,335 = 29.8% of 3,308,044."
+  },
+  {
+   "claim": "Carried text identical to NEW IS: 12,059 segments; 297,863 EN chars (12.9% of clean chars)",
+   "status": "partly",
+   "evidence": "Their aggregate.py builds the NEW IS lookup with a dict comprehension, so the LAST occurrence of a key wins, while their classification and carried text use the FIRST occurrence (seg-markers.cjs semantics). Against the first occurrence, their own carried_is equals NEW IS in 12,117 segments; 58 duplicated keys flip. My own conversion gives 12,117 segments / 299,178 chars identical byte for byte. Visible-text identical: 12,126 / 299,449, so almost none of the difference is markup-only.",
+   "correctedValue": "12,117 segments; ~299,196 EN chars (their data, first occurrence); still 12.9%"
+  },
+  {
+   "claim": "Carried text differing from NEW IS: 2,019,681 EN chars = 87.1% of carriable chars = 61.0% of all NEW EN prose",
+   "status": "confirmed",
+   "evidence": "After the correction above, the differing chars are 2,018,348 (their data) or 2,017,997 (mine); 87.1% and 61.0% hold. Context for the decision: I measured difflib similarity on the word tokens of the visible text. Of the differing chars, 16.7% sit in segments with similarity >=0.95, 69.6% at 0.80-0.95, 12.5% at 0.50-0.80 and 1.2% below 0.50. So 'differ' mostly means moderate rewording between two MT runs, not unrelated text.",
+   "correctedValue": "~2,018,348 EN chars (87.1% / 61.0% unchanged)"
+  },
+  {
+   "claim": "Normalizer positive control: across the 21,251 June keys, the June-ref EN and the as-translated EN differ in raw text on 1,562 keys but in normalized text on only 2 (both real)",
+   "status": "confirmed",
+   "evidence": "My own normalizer gives exactly 1,562 raw differences (in 99 of 170 files) and 2 normalized differences: m68819 and m68852, the glossary terms where literal text became a MATH placeholder."
+  },
+  {
+   "claim": "EN drift since the last bulk-MT commit: 18 keys (14 dialect artifacts in m68865; 4 real: m68819, m68852, 2 in m68823), all excluded by class or by the gate",
+   "status": "confirmed",
+   "evidence": "Own detection: for each IS file, the most recent commit that changed >=30% of its segments (150 files in March, 9 July, 6 June, 5 August). Exactly 18 keys drift: 14 in m68865, plus m68819, m68852 and 2 in m68823. The 14 m68865 cells are clean and correct carries: their June IS was updated after the bulk commit and equals the NEW IS. The 4 real ones are the 2 class-2 glossary terms and the 2 m68823 glossary-term fallbacks (MATH -1)."
+  },
+  {
+   "claim": "Positional term-id segments: 153 (86 verified in order, 31 partly, 36 not decidable); 0 swaps found",
+   "status": "partly",
+   "evidence": "The count of 153 is confirmed. The verified/partly/undecidable split depends on the matcher: my prefix-overlap rule gives 101/34/16 plus 2 suspects. I read both suspects. m68690: June has precision→nákvæmni and accuracy→hittni, which is correct; the NEW IS flips the vocabulary to réttvísi/nákvæmni, so this is a NEW-MT issue, not a June swap. m68856: June has 'klofnanlegt eða kleyft' for 'fissile or fissionable', but its own parenthetical uses kleyft for fissile, and June's published mt-preview CNXML reads 'klofnanlegt (e. fissile)'. This case cannot be classed as swap versus MT inconsistency, and a carry keeps it either way. The '0 swaps' null is supported by a base rate: the NEW MT, whose term markers carry ids, kept the EN term order in 163 of 163 multi-term segments (control: a planted id swap is detected, 0 → 1)."
+  },
+  {
+   "claim": "HAND REPAIR keys in NEW IS: 78 (56 equal June IS; 22 would be reverted by a carry and must be excluded)",
+   "status": "partly",
+   "evidence": "78 confirmed by before/after parses of 6417625c9 (3 keys), 42536323b (4), f313fee32 (67) and 8271886b0 (4); all 78 are still in the NEW IS. Carried text vs ruled text: 57 equal, 21 differ. Their 22 includes m68747:entry:auto-26, where they compared the same-key June cell (a shifted, different cell); the carried text from the correct source equals the ruled text. Of the 21: 9 are 'sámeind→sameind' fixes in 8.4 (m68747), and no carried text contains 'sámeind'. 3 are Greek-letter fixes of NEW-MT defects (m68745 Δ→σ/π, m68846 Β→π, m68852 Α→α) where June already has the correct letter; the repaired defect is absent, but the wording differs (m68852 also differs helíum/helín, which may itself be a terminology question). 9 are title/wording rulings that a carry would genuinely overwrite: m68663 ai-6, m68696 title, m68736 ai-3, m68748 ai-3, m68761 title, m68796 ai-3, the ch18 chapter title, and m68828 ai-3 and ai-12.",
+   "correctedValue": "78 keys: 57 equal / 21 differ; 9 genuine ruling conflicts + 12 NEW-MT-defect fixes the June text does not contain"
+  },
+  {
+   "claim": "Equation stores identical June-ref vs NEW in 121 of 121 modules; as-translated vs June-ref differ in 2",
+   "status": "confirmed",
+   "evidence": "The math-N→MathML dictionaries are equal in 121/121 modules, and the full JSON objects are equal in 121/121 too. The as-translated stores differ from the June ref in 2 modules: m68819 and m68852, both at de601457d."
+  },
+  {
+   "claim": "62 class-1 segments carry a different equation behind the same generic MATH token",
+   "status": "confirmed",
+   "evidence": "66 class-1 entry cells have different MATH numbers; 62 of them point to different MathML."
+  },
+  {
+   "claim": "MathML-resolved variant: class 1 18,255, class 2 recovered 2,496, class 3 406, class 4 aligned 90; same carried (21,248) and clean totals",
+   "status": "confirmed",
+   "evidence": "Own variant, with MATH token = sha1 of the MathML from each vintage's own store: 18,255 / 2,497 (includes the one text-elsewhere key) / 406 / 90; carriable 21,248."
+  },
+  {
+   "claim": "Parser fallback firings 0; a planted unterminated marker raises",
+   "status": "confirmed",
+   "evidence": "My parser has 0 errors on all four corpora, and parse→serialize round-trips byte-exactly on all 22,591 + 21,251 segments per language. A planted unterminated marker raises ParseError."
+  },
+  {
+   "claim": "285 duplicate occurrences appear identically in all 5 corpora, so they change no class",
+   "status": "partly",
+   "evidence": "285 duplicate occurrences sit at the same keys in all 5 corpora (NEW EN, NEW IS, June EN, June IS, as-translated EN). They are not identical: the raw text differs in 71 occurrences in each EN corpus (MATH renumbering) and in 74/75 in the June/NEW IS. After generic normalization the 3 EN corpora agree (0 differences), but 4 June IS and 6 NEW IS occurrences still differ (the MT translated the two copies differently). No class changes, because the first occurrence wins. This first-vs-last inconsistency is, however, what lowered their identical-to-NEW-IS count (see the 12,059 item)."
+  },
+  {
+   "claim": "A candidate re-wrap rule would rescue 41 of the 56 kind-count fallbacks (11 inspected, all correct)",
+   "status": "unverifiable",
+   "evidence": "My implementation of the stated rule (re-insert each missing i/b/sub/sup run whose visible text occurs exactly once in the June IS, then re-gate) rescues 28 of 56; 10 are ineligible and 18 cannot be placed. The count depends on rule details the report does not state, and only 11 of the 41 were inspected. They do not count these as clean either.",
+   "correctedValue": "28 under my reading of the rule"
+  },
+  {
+   "claim": "Per-chapter table (ch00-ch21, appendices): class counts, carried, clean, fallback, char shares (47.7% ch20 to 85.7% ch05, appendices 18.4%, ch00 100%), hand-repair undo",
+   "status": "confirmed",
+   "evidence": "I recounted every chapter, not just three: 23 rows × 20 fields = 460 comparisons, 409 exact. Every class count, carried, clean, fallback, strict count, pctSegmentsClean and pctEnCharsClean_exclAltSummary field is exact in every chapter, including ch01, ch05 and ch20. ch20 needs 0 conversions in both counts; ch20's June IS is already in bracket dialect. The 51 differences: newEnProseChars in 21 chapters (<=0.03%, the self-closing-link definition); cleanEnCharsDifferingFromNewIS (the same cause plus the last-occurrence issue); cleanNeedingConversion in 7 chapters (1-5 each, twin choice); handRepairWouldUndo ch08, 10 vs 11 (the m68747:entry:auto-26 false positive); ch14 pctEnCharsClean 71.2 vs 71.3 (rounding)."
+  },
+  {
+   "claim": "Provenance caveats: the March June-MT sidecars were backfilled without a glossary arm; ch05's June text is a 2026-06-25 api-translate --force re-MT with the approved glossary",
+   "status": "partly",
+   "evidence": "Confirmed that the June-ref provenance sidecars hold only schemaVersion, tool and generatedAt. This is true for the ch05 (06-25) and ch20 (08-12) sidecars as well, not only the March ones. The ch05 '--force with approved glossary' detail cannot be verified from the sidecar, which has no arm field. The IS file's last June commit is 827424dae (2026-06-25, 'fix(glossary): repair book-wide term aggregates + ch5 enthalpy terminology')."
+  }
+ ],
+ "overall": "Carryover's measurement holds up. I wrote a fully independent parser, normalizer, converter and gate. My class labels agree with theirs on all 22,591 keys, with no off-diagonal cell. Carried (21,248), clean (21,191) and fallback (57) reproduce exactly, and the 57 fallbacks are the same keys. The normalizer control (1,562 raw → 2 normalized), the EN-drift control (18), the equation stores (121/121), the no-June prose (984,335 chars) and the char shares (70.0% / 99.7% / 70.1%) also reproduce. All 23 per-chapter rows were recounted: 409 of 460 fields are exact, and every non-exact field is explained. I found no carried source with the wrong English (0 of 21,248; the same test rejects exactly the 3 real changes), no empty June source and no truncation (<0.6× EN length in 5,384 segments of 120+ chars). Each zero has a planted positive control that fires.\n\nThree corrections, none of which changes a headline percentage.\n- (1) Identical-to-NEW-IS is 12,117 segments / ~299,196 chars, not 12,059 / 297,863. Their aggregate compared against the last occurrence of duplicated keys while everything else uses the first. 12.9% identical and 87.1% / 61.0% differing hold.\n- (2) HAND REPAIR conflicts are 21, not 22 (one same-key comparison on a shifted cell). Only 9 of the 21 are wording rulings a carry would genuinely overwrite. The other 12 fix NEW-MT defects (9 'sámeind', 3 Greek letters) that the June text never had.\n- (3) The re-wrap count (41) is not reproducible from the stated rule; mine gives 28.\nSmaller points:\n- The rule counts are per segment.\n- A strict 1:1 equal-text mapping exists, so the 48 twin reuses are an alignment artifact.\n- '0 positional swaps' is supported by a NEW-MT base rate of 0/163 reorders, with one June inconsistency (m68856 fissile/fissionable) that a carry would keep.\n\nWhat the structural gate cannot see, which matters for the decision:\n- (a) 'Differ' mostly means moderate rewording. Of the 2.02M differing EN chars, 16.7% are in segments with token similarity >=0.95, 69.6% at 0.80-0.95, 12.5% at 0.50-0.80 and 1.2% below 0.50.\n- (b) A June carry brings June's terminology back. In ch20, 31 of the 37 clean-carried segments containing 'hydrocarbon' use 'kolvetni' (carbohydrate). The NEW IS uses vetniskolefni in 64 of 65 such segments and kolvetni in 0. Any carry must therefore be followed by applying the term rulings.\n- (c) ch00 would carry 5 preface segments that June left in English (2,072 chars).\n- (d) A 'keep new' path inherits NEW-MT defects seen while sampling: 'Tengifákeppni' (roughly 'linkage oligopoly') for linkage isomers in m68843, and a precision/accuracy vocabulary flip in m68690, where nákvæmni is used for accuracy. There are also 21 MT-invented <lágvísir>/<subscript> tags in 3 alt segments, and 165 ~x~ plus 93 ^x^ legacy-style sub/sup strings in the NEW IS.\n\nData and scripts are in /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/verify-carryover/:\n- my_classes_gated-newen-reuse.jsonl: per-key classes, sources, conversion and identical flags.\n- my_perchapter.json, their_src_mismatch.json (empty list), src_compare.json.\n- norm.py (parser/normalizer/converter), classify3.py, perchapter.py, handrepair_check.py, termorder.py, diffsize.py, controls.py, bulkmt.py, mathres.py, eq_check.py.\n- raw/segfiles.json and raw/astrans.json (the git show caches).",
+ "gitStatus": "git -C /home/siggi/dev/repos/namsbokasafn-efni status --porcelain printed nothing (exit 0), both at the start and at the end of this run. Repository access was read-only (git show, ls-tree and log). All scripts and data were written only under /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/c32360c3-1089-4c20-a265-f77815e24ff3/scratchpad/plan-facts/verify-carryover/."
+}

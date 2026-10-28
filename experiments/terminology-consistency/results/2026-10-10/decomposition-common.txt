@@ -1,0 +1,24 @@
+Terms consistent in July but not in the new MT (LOST) and the reverse (GAINED), by class. Population: common segment ids. Matcher v3 (2026-10-10).
+ch01 {'glossary-only': 7} consistent 44 -> 36 of 50 | lost 9 {'TEXT-DRIFT': 6, 'STABLE': 1, 'KEYTERM-SPLIT': 2} | gained 1 {'RULED-APPLIED': 1}
+ch02 {'glossary-only': 8} consistent 40 -> 35 of 49 | lost 8 {'TEXT-DRIFT': 6, 'RULING-BROKEN-NEW': 1, 'STABLE': 1} | gained 3 {'RULED-APPLIED': 1, 'KEYTERM-FIXED': 2}
+ch03 {'no-glossary': 5} consistent 12 -> 13 of 18 | lost 0 {} | gained 1 {'KEYTERM-FIXED': 1}
+ch04 {'no-glossary': 6} consistent 28 -> 20 of 40 | lost 11 {'TEXT-DRIFT': 8, 'STABLE': 1, 'KEYTERM-SPLIT': 2} | gained 3 {'TEXT-GAIN': 1, 'KEYTERM-FIXED': 2}
+ch05 {'glossary-only': 4} consistent 19 -> 13 of 26 | lost 7 {'TEXT-DRIFT': 3, 'STABLE': 1, 'KEYTERM-SPLIT': 3} | gained 1 {'KEYTERM-FIXED': 1}
+ch06 {'glossary-only': 6} consistent 28 -> 30 of 44 | lost 5 {'TEXT-DRIFT': 5} | gained 7 {'KEYTERM-FIXED': 3, 'TEXT-GAIN': 2, 'TEXT-RENAMED': 2}
+ch07 {'glossary-only': 7} consistent 28 -> 17 of 37 | lost 13 {'KEYTERM-SPLIT': 4, 'RULING-BROKEN-NEW': 1, 'KEYTERM-OTHER': 2, 'STABLE': 2, 'RULING-BROKEN-BOTH': 2, 'TEXT-DRIFT': 2} | gained 2 {'KEYTERM-FIXED': 1, 'TEXT-GAIN': 1}
+ch08 {'glossary-only': 5} consistent 7 -> 12 of 19 | lost 2 {'TEXT-DRIFT': 2} | gained 7 {'RULED-APPLIED': 3, 'KEYTERM-FIXED': 4}
+ch09 {'glossary-only': 7} consistent 19 -> 19 of 25 | lost 1 {'TEXT-DRIFT': 1} | gained 1 {'KEYTERM-FIXED': 1}
+ch10 {'glossary-only': 7} consistent 24 -> 19 of 44 | lost 9 {'KEYTERM-SPLIT': 1, 'TEXT-DRIFT': 8} | gained 4 {'KEYTERM-FIXED': 1, 'RULED-APPLIED': 1, 'TEXT-GAIN': 2}
+ch11 {'glossary-only': 6} consistent 20 -> 14 of 29 | lost 9 {'TEXT-DRIFT': 6, 'STABLE': 1, 'KEYTERM-SPLIT': 2} | gained 3 {'KEYTERM-FIXED': 1, 'TEXT-GAIN': 2}
+ch12 {'glossary-only': 8} consistent 15 -> 15 of 24 | lost 6 {'TEXT-DRIFT': 4, 'STABLE': 1, 'KEYTERM-OTHER': 1} | gained 6 {'TEXT-RENAMED': 2, 'RULED-APPLIED': 2, 'KEYTERM-FIXED': 2}
+ch13 {'glossary-only': 5} consistent 5 -> 4 of 8 | lost 1 {'KEYTERM-SPLIT': 1} | gained 0 {}
+ch14 {'glossary-only': 8} consistent 19 -> 16 of 27 | lost 3 {'TEXT-DRIFT': 3} | gained 0 {}
+ch15 {'glossary-only': 4} consistent 9 -> 5 of 11 | lost 4 {'TEXT-DRIFT': 4} | gained 0 {}
+ch16 {'glossary-only': 5} consistent 6 -> 8 of 8 | lost 0 {} | gained 2 {'TEXT-RENAMED': 1, 'KEYTERM-FIXED': 1}
+ch17 {'glossary-only': 8} consistent 15 -> 15 of 22 | lost 4 {'TEXT-DRIFT': 3, 'KEYTERM-SPLIT': 1} | gained 4 {'KEYTERM-FIXED': 2, 'RULED-APPLIED': 2}
+ch18 {'glossary-only': 13} consistent 21 -> 21 of 29 | lost 3 {'TEXT-DRIFT': 2, 'KEYTERM-SPLIT': 1} | gained 3 {'TEXT-GAIN': 1, 'RULED-APPLIED': 1, 'KEYTERM-FIXED': 1}
+ch19 {'glossary-only': 4} consistent 8 -> 14 of 28 | lost 2 {'KEYTERM-SPLIT': 1, 'TEXT-DRIFT': 1} | gained 8 {'TEXT-GAIN': 1, 'RULED-APPLIED': 1, 'KEYTERM-FIXED': 6}
+ch20 {'glossary-only': 5} consistent 12 -> 15 of 21 | lost 2 {'TEXT-DRIFT': 1, 'KEYTERM-SPLIT': 1} | gained 5 {'TEXT-GAIN': 3, 'KEYTERM-FIXED': 1, 'RULED-APPLIED': 1}
+ch21 {'glossary-only': 7} consistent 22 -> 24 of 48 | lost 5 {'TEXT-DRIFT': 4, 'STABLE': 1} | gained 7 {'TEXT-GAIN': 3, 'KEYTERM-FIXED': 3, 'RULED-APPLIED': 1}
+BOOK lost 104 {'TEXT-DRIFT': 69, 'STABLE': 9, 'KEYTERM-SPLIT': 19, 'RULING-BROKEN-NEW': 2, 'KEYTERM-OTHER': 3, 'RULING-BROKEN-BOTH': 2}
+BOOK gained 68 {'RULED-APPLIED': 14, 'KEYTERM-FIXED': 33, 'TEXT-GAIN': 16, 'TEXT-RENAMED': 5}

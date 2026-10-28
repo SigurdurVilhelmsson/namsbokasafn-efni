@@ -510,3 +510,48 @@ embed Liberation 1.07.4, so the next PR re-fonts them under the current rules.
 
 **Lessons:** attribute a regression before reporting it (text layer, then pixels, pre vs post); plant a known defect
 as a positive control for agent graders; a review page needs its own answer boxes (viewer comment mode was not usable).
+
+## 2026-10-26 10:27 - D11 is ready for Wed 28 Oct: runbook merged as #569, free checks done, prod at 9c9853d09
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+9c9853d09 Merge pull request #569 from SigurdurVilhelmsson/docs/d11-buy-runbook
+251e699a3 docs(d11): the buy runbook for Wed 28 Oct, rehearsed free against an echo API
+d7ffabb10 Merge pull request #568 from SigurdurVilhelmsson/feat/d11-june-wire
+
+**Why:** —
+
+---
+
+## 2026-10-26 11:19 - D11 ready for Wed 28 Oct: runbook fixes merged as #570/#571, prod at 9bad1d828
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+9bad1d828 Merge pull request #571 from SigurdurVilhelmsson/docs/register-d11-cap-pointer
+790f6b795 Merge pull request #570 from SigurdurVilhelmsson/docs/d11-runbook-bill-from-logs
+c9537f536 docs(register): point the D11 entry at RUNBOOK §5's running-total rule
+
+**Why:** —
+
+---
+
+## 2026-10-26 13:10 - D11 bought 26 Oct (six runs PASS, ≈ ISK 2,906), backed up to C: and the Linode bucket, register and roadmap updated, prod at 2cd65bd5e
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+2cd65bd5e Merge pull request #574 from SigurdurVilhelmsson/docs/register-d11-backup
+bf43dedab docs(register): D11's trees are backed up and verified (2026-10-26 afternoon entry)
+346ef5cfd Merge pull request #573 from SigurdurVilhelmsson/docs/register-d11-start-early
+
+**Why:** —
+
+---

@@ -1,0 +1,186 @@
+{
+ "about": "[USER]'s answers in chat (2026-10-11) to the seven questions the stage 1 page's answers raised (register entry 2026-10-11 night; checks in stage1-answers-2026-10-11.json). [USER] wrote: \"I agree with your picks.\" Each row's `ruled` word SUPERSEDES its `pageAnswer`. Not applied: these reach houseStyleTerms.js, the concept model and the ruling set only through the later compile step.",
+ "answeredAt": "2026-10-11",
+ "reply": "I agree with your picks.",
+ "choices": "1a 2a 3a 4a 5b 6a 7a",
+ "questions": [
+  {
+   "q": 1,
+   "term": "decay",
+   "choice": "a",
+   "ruling": "keep decay = sundrun (2026-09-21) and radioactive decay = geislasundrun (entry); the nuclear compounds follow it",
+   "rows": [
+    {
+     "id": "ch21_fs-idm27965808",
+     "ch": "ch21",
+     "en": "alpha (α) decay",
+     "pageAnswer": "alfa (α) hrörnun",
+     "ruled": "alfa (α) sundrun"
+    },
+    {
+     "id": "ch21_fs-idp69613952",
+     "ch": "ch21",
+     "en": "beta (β) decay",
+     "pageAnswer": "beta (β) hrörnun",
+     "ruled": "beta (β) sundrun"
+    },
+    {
+     "id": "ch21_fs-idp172690976",
+     "ch": "ch21",
+     "en": "radioactive decay series",
+     "pageAnswer": "geislavirk hrörnunarröð",
+     "ruled": "geislasundrunarröð"
+    }
+   ],
+   "note": "The table offered 'geislavirk sundrunarröð' as the example; recorded as 'geislasundrunarröð', the form built on the geislasundrun entry and the one the September text has (3 times in ch21)."
+  },
+  {
+   "q": 2,
+   "term": "hole",
+   "choice": "a",
+   "ruling": "keep hole = hol (neuter entry)",
+   "rows": [
+    {
+     "id": "ch10_fs-idm116347536",
+     "ch": "ch10",
+     "en": "tetrahedral hole",
+     "pageAnswer": "ferflötungshola",
+     "ruled": "ferflötungshol"
+    },
+    {
+     "id": "ch10_fs-idm28944640",
+     "ch": "ch10",
+     "en": "octahedral hole",
+     "pageAnswer": "áttflötungshola",
+     "ruled": "áttflötungshol"
+    }
+   ]
+  },
+  {
+   "q": 3,
+   "term": "bonding orbital",
+   "choice": "a",
+   "ruling": "one word throughout; REVERSES the entry bonding orbital = bindandi svigrúm; σ* and π* are antibonding, so and- is kept",
+   "rows": [
+    {
+     "id": "ch08_fs-idm133686144",
+     "ch": "ch08",
+     "en": "bonding orbital",
+     "pageAnswer": "tengisvigrúm",
+     "ruled": "tengisvigrúm"
+    },
+    {
+     "id": "ch08_fs-idm41960016",
+     "ch": "ch08",
+     "en": "σ bonding orbital",
+     "pageAnswer": "σ-tengi svigrúm",
+     "ruled": "σ-tengisvigrúm"
+    },
+    {
+     "id": "ch08_fs-idm100344544",
+     "ch": "ch08",
+     "en": "π bonding orbital",
+     "pageAnswer": "π-tengi svigrúm",
+     "ruled": "π-tengisvigrúm"
+    },
+    {
+     "id": "ch08_fs-idm169269152",
+     "ch": "ch08",
+     "en": "σ* bonding orbital",
+     "pageAnswer": "σ*-tengi svigrúm",
+     "ruled": "σ*-andtengisvigrúm"
+    },
+    {
+     "id": "ch08_fs-idm18620192",
+     "ch": "ch08",
+     "en": "π* bonding orbital",
+     "pageAnswer": "π*-tengi svigrúm",
+     "ruled": "π*-andtengisvigrúm"
+    }
+   ]
+  },
+  {
+   "q": 4,
+   "term": "degenerate orbitals",
+   "choice": "a",
+   "ruling": "one word for both chapters",
+   "rows": [
+    {
+     "id": "ch06_fs-idm442273488",
+     "ch": "ch06",
+     "en": "degenerate orbitals",
+     "pageAnswer": "Orkujöfn svigrúm",
+     "ruled": "orkujöfn svigrúm"
+    },
+    {
+     "id": "ch08_fs-idm167738656",
+     "ch": "ch08",
+     "en": "degenerate orbitals",
+     "pageAnswer": "jafnorkusvigrúm",
+     "ruled": "orkujöfn svigrúm"
+    }
+   ]
+  },
+  {
+   "q": 5,
+   "term": "primary / secondary cell",
+   "choice": "b",
+   "ruling": "cell = ker holds; the confirmed defaults are overridden",
+   "rows": [
+    {
+     "id": "ch17_fs-idm278014928",
+     "ch": "ch17",
+     "en": "primary cell",
+     "pageAnswer": "einnota rafhlaða",
+     "ruled": "einnota ker"
+    },
+    {
+     "id": "ch17_fs-idp55952432",
+     "ch": "ch17",
+     "en": "secondary cell",
+     "pageAnswer": "endurhlaðanleg rafhlaða",
+     "ruled": "endurhlaðanlegt ker"
+    }
+   ]
+  },
+  {
+   "q": 6,
+   "term": "electrode potential",
+   "choice": "a",
+   "ruling": "one stem with the standard form (electrode = raftroð)",
+   "rows": [
+    {
+     "id": "ch17_fs-idp85536816",
+     "ch": "ch17",
+     "en": "electrode potential (EX)",
+     "pageAnswer": "troðspenna (EX)",
+     "ruled": "raftroðsspenna (EX)"
+    },
+    {
+     "id": "ch17_fs-idm4867824",
+     "ch": "ch17",
+     "en": "standard electrode potential (56)",
+     "pageAnswer": "staðalraftroðsspenna ((EX°))",
+     "ruled": "staðalraftroðsspenna"
+    }
+   ],
+   "note": "Also confirms the reading that 'staðalraftroðsspenna' is the word meant (raised 2026-10-11 because it occurs 0 times in the September text). The formula after it is math in the source, so only the word is recorded."
+  },
+  {
+   "q": 7,
+   "term": "emission",
+   "choice": "a",
+   "ruling": "the bare wrong-sense row becomes emission = útgeislun, matching gamma (γ) útgeislun and jáeindaútgeislun",
+   "rows": [
+    {
+     "id": "ws_emission",
+     "ch": null,
+     "en": "emission",
+     "pageAnswer": "ljómun",
+     "ruled": "útgeislun"
+    }
+   ]
+  }
+ ],
+ "notAffected": "cell potential (Ecell) -> kerspenna: the symbol stays English under the 2026-09-04 short-label ruling."
+}

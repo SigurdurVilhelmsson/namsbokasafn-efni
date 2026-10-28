@@ -2216,7 +2216,10 @@
         });
         showImportResult(data);
       } catch (err) {
-        alert('Villa: ' + err.message);
+        // fetchJson's message is the body's short `error` label; an upload refusal puts its
+        // reason (the types allowed, the size limit) in `message`, so show both.
+        const reason = err.data && err.data.message;
+        alert('Villa: ' + (reason && reason !== err.message ? err.message + ' \u2014 ' + reason : err.message));
       }
     }
 

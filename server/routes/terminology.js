@@ -14,26 +14,36 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
+const { createUpload } = require('../middleware/upload');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
+const { VALID_BOOKS } = require('../config');
 const seed = require('../lib/arnastofnunSeed');
 const termMining = require('../services/termMiningService');
 const activityLog = require('../services/activityLog');
 
 // Configure multer for file uploads
-const upload = multer({
+const upload = createUpload({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileSize: 5 * 1024 * 1024, // 5 MB; createUpload carries it on an over-size error
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['.csv', '.xlsx', '.xls'];
     const ext = path.extname(file.originalname).toLowerCase();
+    // The status makes the refusal a 400 with this message: without it, the app's error
+    // handler answers a plain Error with a generic 500.
     if (allowedTypes.includes(ext)) {
       cb(null, true);
     } else {
-      cb(new Error('Only CSV and Excel files are allowed'));
+      cb(
+        Object.assign(new Error('Only CSV and Excel files are allowed'), {
+          status: 400,
+          name: 'Invalid Upload',
+        })
+      );
     }
   },
 });
@@ -837,12 +847,62 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
 // IMPORT
 // ============================================================================
 
+const INVALID_BOOK = {
+  error: 'Invalid book',
+  message: 'The book is not one of the registered books.',
+};
+
+/**
+ * A 400 body when `err` is the CSV parser refusing the upload, else null.
+ *
+ * A file the parser cannot read is the uploader's to fix, so it is a 400 that repeats the
+ * parser's reason, not a 500 (whose message the error handler withholds). Decided by the
+ * parser's error class: its codes do not share a prefix (INVALID_OPENING_QUOTE has no CSV_).
+ */
+function invalidCsv(err) {
+  let CsvError;
+  try {
+    ({ CsvError } = require('csv-parse/sync'));
+  } catch {
+    return null;
+  }
+  if (!(err instanceof CsvError)) return null;
+  return { error: 'Invalid CSV', message: `The file could not be read as CSV: ${err.message}` };
+}
+
+const INVALID_SUBJECTS = {
+  error: 'Invalid subjects',
+  message: 'Send subjects once, as one comma-separated value.',
+};
+
+/**
+ * The subject tags an upload's new translations get, from its query.
+ *
+ * The import page sends the book it imports for as `bookSlug`; that book's subject tags the
+ * terms, as the glossary import always did. An explicit `subjects` list (API callers) still
+ * decides. A `bookSlug` that names no registered book is refused rather than imported untagged,
+ * and so is a repeated `subjects` key, which reaches here as a list rather than the one value.
+ *
+ * @param {object} query - req.query
+ * @returns {{ subjects: string[] } | { refusal: { error: string, message: string } }}
+ */
+function importSubjects({ subjects, bookSlug }) {
+  if (bookSlug !== undefined && !VALID_BOOKS.includes(bookSlug)) return { refusal: INVALID_BOOK };
+  if (subjects !== undefined && typeof subjects !== 'string') return { refusal: INVALID_SUBJECTS };
+  if (typeof subjects === 'string' && subjects.trim() !== '') {
+    return { subjects: subjects.split(',').map((s) => s.trim()) };
+  }
+  const subject = bookSlug ? terminology.getBookSubject(bookSlug) : null;
+  return { subjects: subject ? [subject] : [] };
+}
+
 /**
  * POST /api/terminology/import/csv
  * Import terms from CSV file
  *
  * Query params:
- *   subjects: Comma-separated subject tags (e.g., "chemistry,physics")
+ *   bookSlug: The registered book the terms are for; its subject tags them (the page sends it)
+ *   subjects: Comma-separated subject tags (e.g., "chemistry,physics"); decides over bookSlug
  *   overwrite: Whether to overwrite existing non-approved terms
  */
 router.post(
@@ -855,11 +915,18 @@ router.post(
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const { overwrite, subjects: subjectsParam } = req.query;
-    const subjects = subjectsParam ? subjectsParam.split(',').map((s) => s.trim()) : [];
+    const { overwrite, bookSlug } = req.query;
+    const scope = importSubjects(req.query);
+    if (scope.refusal) return res.status(400).json(scope.refusal);
+    const { subjects } = scope;
 
+    // importFromCSV reads a file (the existing-glossary route passes one from books/), so the
+    // upload is written to a fresh directory only this process can name, and removed whatever
+    // the import does. A fixed name in /tmp could be guessed, and was left behind on a throw.
+    let tempDir;
     try {
-      const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
+      tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'terminology-import-'));
+      const tempPath = path.join(tempDir, 'upload.csv');
       fs.writeFileSync(tempPath, req.file.buffer);
 
       const result = terminology.importFromCSV(tempPath, req.user.id, req.user.name, {
@@ -867,20 +934,22 @@ router.post(
         overwrite: overwrite === 'true',
       });
 
-      fs.unlinkSync(tempPath);
-
       activityLog.log({
         type: 'import_terminology_csv',
         userId: req.user.id,
         username: req.user.username,
         description: `Imported ${result.added} terms from CSV`,
-        metadata: result,
+        metadata: { bookSlug, subjects, ...result },
       });
 
       res.json(result);
     } catch (err) {
+      const refusal = invalidCsv(err);
+      if (refusal) return res.status(400).json(refusal);
       log.error({ err }, 'CSV import error');
       res.status(500).json({ error: 'Failed to import CSV', message: err.message });
+    } finally {
+      if (tempDir) fs.rmSync(tempDir, { recursive: true, force: true });
     }
   }
 );
@@ -906,6 +975,7 @@ router.post(
     if (!bookSlug) {
       return res.status(400).json({ error: 'bookSlug is required' });
     }
+    if (!VALID_BOOKS.includes(bookSlug)) return res.status(400).json(INVALID_BOOK);
 
     const bookSubject = terminology.getBookSubject(bookSlug);
     const subjects = bookSubject ? [bookSubject] : [];
@@ -944,6 +1014,8 @@ router.post(
 
       res.json(result);
     } catch (err) {
+      const refusal = invalidCsv(err);
+      if (refusal) return res.status(400).json(refusal);
       log.error({ err }, 'Glossary import error');
       res.status(500).json({ error: 'Failed to import glossary', message: err.message });
     }
@@ -953,6 +1025,8 @@ router.post(
 /**
  * POST /api/terminology/import/excel
  * Import terms from Excel file
+ *
+ * Query params: bookSlug and subjects, as for /import/csv; sheetName picks a sheet.
  */
 router.post(
   '/import/excel',
@@ -964,8 +1038,10 @@ router.post(
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const { sheetName, subjects: subjectsParam } = req.query;
-    const subjects = subjectsParam ? subjectsParam.split(',').map((s) => s.trim()) : [];
+    const { sheetName, bookSlug } = req.query;
+    const scope = importSubjects(req.query);
+    if (scope.refusal) return res.status(400).json(scope.refusal);
+    const { subjects } = scope;
 
     try {
       const result = await terminology.importFromExcel(
@@ -980,11 +1056,14 @@ router.post(
         userId: req.user.id,
         username: req.user.username,
         description: `Imported ${result.added} terms from Excel`,
-        metadata: result,
+        metadata: { bookSlug, subjects, ...result },
       });
 
       res.json(result);
     } catch (err) {
+      if (err instanceof terminology.InvalidUploadError) {
+        return res.status(400).json({ error: 'Invalid Excel file', message: err.message });
+      }
       log.error({ err }, 'Excel import error');
       res.status(500).json({ error: 'Failed to import Excel', message: err.message });
     }
@@ -1005,6 +1084,9 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
   if (!bookSlug) {
     return res.status(400).json({ error: 'Missing bookSlug' });
   }
+  // The importer throws "Book not found" for an unregistered book, which reached the client as a
+  // 500; the request is what is wrong, so it is the 400 the other imports give.
+  if (!VALID_BOOKS.includes(bookSlug)) return res.status(400).json(INVALID_BOOK);
 
   try {
     const result = terminology.importFromKeyTerms(
@@ -1043,6 +1125,9 @@ router.post(
     if (!bookSlug) {
       return res.status(400).json({ error: 'Missing bookSlug' });
     }
+    // Before the path is built from it: a slug holding `..` would reach any
+    // terminology-en-is.csv on the machine.
+    if (!VALID_BOOKS.includes(bookSlug)) return res.status(400).json(INVALID_BOOK);
 
     const glossaryPath = path.join(
       __dirname,

@@ -113,6 +113,14 @@ function tallyByType(items) {
  *   chunk, and the truncation retry always drops it. Read `chunksWithGlossary`/
  *   `chunksTotal` alongside `arm`, never `arm` alone, to know whether the
  *   glossary was actually used.
+ * @param {'today'|'june'|null} [p.glossaryWire] the SENDING RULES the glossary went out under
+ *   (D11, 2026-10-25): `'today'` = C18's contested-headword omission and §C116's whole-word
+ *   match for short headwords; `'june'` = `--june-wire`, the rules the old MT was sent with
+ *   (every approved row, short headwords as substrings). `arm`, `contentHash` and `termCount`
+ *   cannot record the MATCHING rule, so this field does. Recorded as given, `null` when not
+ *   given; the caller decides the default, because only it knows whether anything was sent.
+ *   ⚠️ A sidecar written before 2026-10-25 has no `wire` key at all: that means "not
+ *   recorded", never "today".
  * @param {string|null} p.glossaryHash glossaryContentHash of the glossary sent
  * @param {number|null} p.glossaryTermCount terms in the unfiltered glossary
  * @param {number} p.chunksWithGlossary chunks whose actual (used) API call carried a glossary
@@ -133,6 +141,7 @@ export function buildRunRecord({
   bracketDelta,
   unwrapped,
   glossaryArm,
+  glossaryWire,
   glossaryHash,
   glossaryTermCount,
   chunksWithGlossary,
@@ -152,6 +161,7 @@ export function buildRunRecord({
     unwrappedByType: tallyByType(unwrapped),
     glossary: {
       arm: glossaryArm,
+      wire: glossaryWire ?? null,
       contentHash: glossaryHash,
       termCount: glossaryTermCount,
       chunksWithGlossary,

@@ -1,0 +1,1457 @@
+{
+ "rows": [
+  {
+   "en": [
+    "cell"
+   ],
+   "is": "ker",
+   "june": {
+    "prose": 142,
+    "strictMiss": 121,
+    "lenientMiss": 48,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 121
+   },
+   "new": {
+    "prose": 152,
+    "strictMiss": 97,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 97
+   },
+   "hybrid": {
+    "prose": 152,
+    "strictMiss": 125,
+    "lenientMiss": 49,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 125
+   }
+  },
+  {
+   "en": [
+    "hybridization",
+    "orbital hybridization"
+   ],
+   "is": "svigrúmablöndun",
+   "june": {
+    "prose": 99,
+    "strictMiss": 98,
+    "lenientMiss": 98,
+    "strictMiss_inBurdenScope": 65,
+    "strictMiss_outsideBurdenScope": 33
+   },
+   "new": {
+    "prose": 108,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "hybrid": {
+    "prose": 108,
+    "strictMiss": 96,
+    "lenientMiss": 96,
+    "strictMiss_inBurdenScope": 64,
+    "strictMiss_outsideBurdenScope": 32
+   }
+  },
+  {
+   "en": [
+    "Lewis structure"
+   ],
+   "is": "Lewis-mynd",
+   "june": {
+    "prose": 149,
+    "strictMiss": 17,
+    "lenientMiss": 16,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 17
+   },
+   "new": {
+    "prose": 344,
+    "strictMiss": 94,
+    "lenientMiss": 92,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 94
+   },
+   "hybrid": {
+    "prose": 344,
+    "strictMiss": 71,
+    "lenientMiss": 70,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 71
+   }
+  },
+  {
+   "en": [
+    "hydrocarbon"
+   ],
+   "is": "vetniskolefni",
+   "june": {
+    "prose": 56,
+    "strictMiss": 56,
+    "lenientMiss": 56,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 54
+   },
+   "new": {
+    "prose": 87,
+    "strictMiss": 26,
+    "lenientMiss": 26,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 24
+   },
+   "hybrid": {
+    "prose": 87,
+    "strictMiss": 60,
+    "lenientMiss": 60,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 58
+   }
+  },
+  {
+   "en": [
+    "resonance"
+   ],
+   "is": "vok",
+   "june": {
+    "prose": 47,
+    "strictMiss": 43,
+    "lenientMiss": 18,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 43
+   },
+   "new": {
+    "prose": 48,
+    "strictMiss": 38,
+    "lenientMiss": 17,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 38
+   },
+   "hybrid": {
+    "prose": 48,
+    "strictMiss": 44,
+    "lenientMiss": 19,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 44
+   }
+  },
+  {
+   "en": [
+    "trigonal planar"
+   ],
+   "is": "þríhyrnt flatt",
+   "june": {
+    "prose": 36,
+    "strictMiss": 34,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 34
+   },
+   "new": {
+    "prose": 42,
+    "strictMiss": 32,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 32
+   },
+   "hybrid": {
+    "prose": 42,
+    "strictMiss": 39,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 39
+   }
+  },
+  {
+   "en": [
+    "crystalline"
+   ],
+   "is": "kristalkenndur",
+   "june": {
+    "prose": 47,
+    "strictMiss": 15,
+    "lenientMiss": 23,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 15
+   },
+   "new": {
+    "prose": 57,
+    "strictMiss": 56,
+    "lenientMiss": 56,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 56
+   },
+   "hybrid": {
+    "prose": 57,
+    "strictMiss": 25,
+    "lenientMiss": 33,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 25
+   }
+  },
+  {
+   "en": [
+    "radioactive decay"
+   ],
+   "is": "geislasundrun",
+   "june": {
+    "prose": 36,
+    "strictMiss": 36,
+    "lenientMiss": 36,
+    "strictMiss_inBurdenScope": 30,
+    "strictMiss_outsideBurdenScope": 6
+   },
+   "new": {
+    "prose": 38,
+    "strictMiss": 7,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 6
+   },
+   "hybrid": {
+    "prose": 38,
+    "strictMiss": 37,
+    "lenientMiss": 37,
+    "strictMiss_inBurdenScope": 31,
+    "strictMiss_outsideBurdenScope": 6
+   }
+  },
+  {
+   "en": [
+    "hole"
+   ],
+   "is": "hol",
+   "june": {
+    "prose": 29,
+    "strictMiss": 23,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 23,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 31,
+    "strictMiss": 23,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 23,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 31,
+    "strictMiss": 25,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 25,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "dispersion force"
+   ],
+   "is": "dreifikraftur",
+   "june": {
+    "prose": 32,
+    "strictMiss": 31,
+    "lenientMiss": 31,
+    "strictMiss_inBurdenScope": 24,
+    "strictMiss_outsideBurdenScope": 7
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 8,
+    "lenientMiss": 8,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 5
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 31,
+    "lenientMiss": 31,
+    "strictMiss_inBurdenScope": 24,
+    "strictMiss_outsideBurdenScope": 7
+   }
+  },
+  {
+   "en": [
+    "galvanic cell"
+   ],
+   "is": "galvaníker",
+   "june": {
+    "prose": 32,
+    "strictMiss": 32,
+    "lenientMiss": 32,
+    "strictMiss_inBurdenScope": 32,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 32,
+    "lenientMiss": 32,
+    "strictMiss_inBurdenScope": 32,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "ether"
+   ],
+   "is": "eter",
+   "june": {
+    "prose": 34,
+    "strictMiss": 20,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 16,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "new": {
+    "prose": 39,
+    "strictMiss": 16,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 9,
+    "strictMiss_outsideBurdenScope": 7
+   },
+   "hybrid": {
+    "prose": 39,
+    "strictMiss": 24,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 17,
+    "strictMiss_outsideBurdenScope": 7
+   }
+  },
+  {
+   "en": [
+    "elementary reaction"
+   ],
+   "is": "grunnhvarf",
+   "june": {
+    "prose": 28,
+    "strictMiss": 28,
+    "lenientMiss": 28,
+    "strictMiss_inBurdenScope": 25,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "new": {
+    "prose": 28,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "hybrid": {
+    "prose": 28,
+    "strictMiss": 28,
+    "lenientMiss": 28,
+    "strictMiss_inBurdenScope": 25,
+    "strictMiss_outsideBurdenScope": 3
+   }
+  },
+  {
+   "en": [
+    "abundance"
+   ],
+   "is": "fjöldahlutfall",
+   "june": {
+    "prose": 18,
+    "strictMiss": 18,
+    "lenientMiss": 18,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 18
+   },
+   "new": {
+    "prose": 20,
+    "strictMiss": 20,
+    "lenientMiss": 20,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 20
+   },
+   "hybrid": {
+    "prose": 20,
+    "strictMiss": 20,
+    "lenientMiss": 20,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 20
+   }
+  },
+  {
+   "en": [
+    "phase transition"
+   ],
+   "is": "fasabreyting",
+   "june": {
+    "prose": 30,
+    "strictMiss": 14,
+    "lenientMiss": 14,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 14
+   },
+   "new": {
+    "prose": 30,
+    "strictMiss": 24,
+    "lenientMiss": 24,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 24
+   },
+   "hybrid": {
+    "prose": 30,
+    "strictMiss": 14,
+    "lenientMiss": 14,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 14
+   }
+  },
+  {
+   "en": [
+    "microstate"
+   ],
+   "is": "örástand",
+   "june": {
+    "prose": 25,
+    "strictMiss": 24,
+    "lenientMiss": 24,
+    "strictMiss_inBurdenScope": 24,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 25,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 25,
+    "strictMiss": 24,
+    "lenientMiss": 24,
+    "strictMiss_inBurdenScope": 24,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "resonance structure",
+    "resonance form"
+   ],
+   "is": "vokmynd",
+   "june": {
+    "prose": 33,
+    "strictMiss": 14,
+    "lenientMiss": 14,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 14
+   },
+   "new": {
+    "prose": 33,
+    "strictMiss": 15,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 15
+   },
+   "hybrid": {
+    "prose": 33,
+    "strictMiss": 14,
+    "lenientMiss": 14,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 14
+   }
+  },
+  {
+   "en": [
+    "condensed structure",
+    "condensed formula"
+   ],
+   "is": "þéttformúla",
+   "june": {
+    "prose": 16,
+    "strictMiss": 14,
+    "lenientMiss": 14,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 14
+   },
+   "new": {
+    "prose": 18,
+    "strictMiss": 12,
+    "lenientMiss": 12,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 12
+   },
+   "hybrid": {
+    "prose": 18,
+    "strictMiss": 16,
+    "lenientMiss": 16,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 16
+   }
+  },
+  {
+   "en": [
+    "representative metal"
+   ],
+   "is": "aðalflokkamálmur",
+   "june": {
+    "prose": 31,
+    "strictMiss": 17,
+    "lenientMiss": 17,
+    "strictMiss_inBurdenScope": 17,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 17,
+    "lenientMiss": 17,
+    "strictMiss_inBurdenScope": 17,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "group"
+   ],
+   "is": "flokkur",
+   "june": {
+    "prose": 27,
+    "strictMiss": 15,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 15,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 15,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 15,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "electronegative"
+   ],
+   "is": "rafneikvæður",
+   "june": {
+    "prose": 40,
+    "strictMiss": 10,
+    "lenientMiss": 10,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 10
+   },
+   "new": {
+    "prose": 41,
+    "strictMiss": 11,
+    "lenientMiss": 12,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 11
+   },
+   "hybrid": {
+    "prose": 41,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 11
+   }
+  },
+  {
+   "en": [
+    "bond angle"
+   ],
+   "is": "tengihorn",
+   "june": {
+    "prose": 29,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 8,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 9,
+    "lenientMiss": 9,
+    "strictMiss_inBurdenScope": 7,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 12,
+    "lenientMiss": 12,
+    "strictMiss_inBurdenScope": 9,
+    "strictMiss_outsideBurdenScope": 3
+   }
+  },
+  {
+   "en": [
+    "central metal"
+   ],
+   "is": "miðjumálmur",
+   "june": {
+    "prose": 19,
+    "strictMiss": 15,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 14,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "new": {
+    "prose": 19,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 19,
+    "strictMiss": 15,
+    "lenientMiss": 15,
+    "strictMiss_inBurdenScope": 14,
+    "strictMiss_outsideBurdenScope": 1
+   }
+  },
+  {
+   "en": [
+    "carbon monoxide"
+   ],
+   "is": "kolmónoxíð",
+   "june": {
+    "prose": 35,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "new": {
+    "prose": 38,
+    "strictMiss": 23,
+    "lenientMiss": 23,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 23
+   },
+   "hybrid": {
+    "prose": 38,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   }
+  },
+  {
+   "en": [
+    "chain reaction"
+   ],
+   "is": "keðjuhvarf",
+   "june": {
+    "prose": 18,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 10,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "new": {
+    "prose": 18,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 18,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 10,
+    "strictMiss_outsideBurdenScope": 1
+   }
+  },
+  {
+   "en": [
+    "laser"
+   ],
+   "is": "leysir",
+   "june": {
+    "prose": 12,
+    "strictMiss": 10,
+    "lenientMiss": 6,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 10
+   },
+   "new": {
+    "prose": 12,
+    "strictMiss": 4,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "hybrid": {
+    "prose": 12,
+    "strictMiss": 10,
+    "lenientMiss": 6,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 10
+   }
+  },
+  {
+   "en": [
+    "cell potential"
+   ],
+   "is": "kerspenna",
+   "june": {
+    "prose": 54,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 11,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 54,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 54,
+    "strictMiss": 11,
+    "lenientMiss": 11,
+    "strictMiss_inBurdenScope": 11,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "hybrid orbital"
+   ],
+   "is": "blendingssvigrúm",
+   "june": {
+    "prose": 51,
+    "strictMiss": 10,
+    "lenientMiss": 10,
+    "strictMiss_inBurdenScope": 10,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 54,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 54,
+    "strictMiss": 10,
+    "lenientMiss": 10,
+    "strictMiss_inBurdenScope": 10,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "bent"
+   ],
+   "is": "boginn",
+   "june": {
+    "prose": 11,
+    "strictMiss": 9,
+    "lenientMiss": 9,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 9
+   },
+   "new": {
+    "prose": 13,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "hybrid": {
+    "prose": 13,
+    "strictMiss": 9,
+    "lenientMiss": 9,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 9
+   }
+  },
+  {
+   "en": [
+    "submerged"
+   ],
+   "is": "á kafi",
+   "june": {
+    "prose": 12,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   },
+   "new": {
+    "prose": 21,
+    "strictMiss": 7,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 7
+   },
+   "hybrid": {
+    "prose": 21,
+    "strictMiss": 6,
+    "lenientMiss": 6,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 6
+   }
+  },
+  {
+   "en": [
+    "steam"
+   ],
+   "is": "gufa",
+   "june": {
+    "prose": 29,
+    "strictMiss": 4,
+    "lenientMiss": 24,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "new": {
+    "prose": 34,
+    "strictMiss": 7,
+    "lenientMiss": 28,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 7
+   },
+   "hybrid": {
+    "prose": 34,
+    "strictMiss": 6,
+    "lenientMiss": 27,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 6
+   }
+  },
+  {
+   "en": [
+    "alcohol"
+   ],
+   "is": "alkóhól",
+   "june": {
+    "prose": 55,
+    "strictMiss": 4,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "new": {
+    "prose": 62,
+    "strictMiss": 6,
+    "lenientMiss": 6,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 6
+   },
+   "hybrid": {
+    "prose": 62,
+    "strictMiss": 6,
+    "lenientMiss": 6,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 6
+   }
+  },
+  {
+   "en": [
+    "carbonate"
+   ],
+   "is": "karbónat",
+   "june": {
+    "prose": 112,
+    "strictMiss": 5,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   },
+   "new": {
+    "prose": 119,
+    "strictMiss": 5,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "hybrid": {
+    "prose": 119,
+    "strictMiss": 5,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   }
+  },
+  {
+   "en": [
+    "carboxylic acid"
+   ],
+   "is": "karboxýlsýra",
+   "june": {
+    "prose": 24,
+    "strictMiss": 7,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 7,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 27,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 27,
+    "strictMiss": 7,
+    "lenientMiss": 7,
+    "strictMiss_inBurdenScope": 7,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "absorption"
+   ],
+   "is": "gleypni",
+   "june": {
+    "prose": 9,
+    "strictMiss": 4,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 4
+   },
+   "new": {
+    "prose": 10,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   },
+   "hybrid": {
+    "prose": 10,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 5
+   }
+  },
+  {
+   "en": [
+    "molecular compound"
+   ],
+   "is": "sameindaefni",
+   "june": {
+    "prose": 16,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "new": {
+    "prose": 17,
+    "strictMiss": 8,
+    "lenientMiss": 8,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 8
+   },
+   "hybrid": {
+    "prose": 17,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   }
+  },
+  {
+   "en": [
+    "resonance hybrid"
+   ],
+   "is": "vokblendingur",
+   "june": {
+    "prose": 5,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "new": {
+    "prose": 5,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "hybrid": {
+    "prose": 5,
+    "strictMiss": 5,
+    "lenientMiss": 5,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 2
+   }
+  },
+  {
+   "en": [
+    "reaction order"
+   ],
+   "is": "stig efnahvarfs",
+   "june": {
+    "prose": 18,
+    "strictMiss": 4,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 4,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 19,
+    "strictMiss": 2,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 19,
+    "strictMiss": 5,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 5,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "dimensional analysis"
+   ],
+   "is": "einingagreining",
+   "june": {
+    "prose": 9,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "new": {
+    "prose": 9,
+    "strictMiss": 9,
+    "lenientMiss": 9,
+    "strictMiss_inBurdenScope": 6,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "hybrid": {
+    "prose": 9,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   }
+  },
+  {
+   "en": [
+    "degree Celsius",
+    "degree centigrade"
+   ],
+   "is": "stig á Celsíus",
+   "june": {
+    "prose": 3,
+    "strictMiss": 3,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "new": {
+    "prose": 3,
+    "strictMiss": 3,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "hybrid": {
+    "prose": 3,
+    "strictMiss": 3,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   }
+  },
+  {
+   "en": [
+    "bond length"
+   ],
+   "is": "tengilengd",
+   "june": {
+    "prose": 11,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 14,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 2,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 14,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "bonding orbital"
+   ],
+   "is": "bindandi svigrúm",
+   "june": {
+    "prose": 18,
+    "strictMiss": 4,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 4,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 19,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 19,
+    "strictMiss": 4,
+    "lenientMiss": 4,
+    "strictMiss_inBurdenScope": 4,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "reaction mechanism"
+   ],
+   "is": "hvarfgangur",
+   "june": {
+    "prose": 20,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "new": {
+    "prose": 21,
+    "strictMiss": 2,
+    "lenientMiss": 2,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "hybrid": {
+    "prose": 21,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 1,
+    "strictMiss_outsideBurdenScope": 2
+   }
+  },
+  {
+   "en": [
+    "radius"
+   ],
+   "is": "radíus",
+   "june": {
+    "prose": 61,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   },
+   "new": {
+    "prose": 70,
+    "strictMiss": 1,
+    "lenientMiss": 1,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 1
+   },
+   "hybrid": {
+    "prose": 70,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 3
+   }
+  },
+  {
+   "en": [
+    "Celsius"
+   ],
+   "is": "Celsíus",
+   "june": {
+    "prose": 19,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 26,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 26,
+    "strictMiss": 3,
+    "lenientMiss": 3,
+    "strictMiss_inBurdenScope": 3,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "hydroxide"
+   ],
+   "is": "hýdroxíð",
+   "june": {
+    "prose": 184,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 189,
+    "strictMiss": 2,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 2
+   },
+   "hybrid": {
+    "prose": 189,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "torr"
+   ],
+   "is": "torr",
+   "june": {
+    "prose": 70,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 74,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 74,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "pOH"
+   ],
+   "is": "pOH",
+   "june": {
+    "prose": 32,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 32,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 32,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "Lewis"
+   ],
+   "is": "Lewis",
+   "june": {
+    "prose": 19,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 23,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 23,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "ketone"
+   ],
+   "is": "ketón",
+   "june": {
+    "prose": 18,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 22,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 22,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "carbonyl group"
+   ],
+   "is": "karbónýlhópur",
+   "june": {
+    "prose": 14,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 16,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 16,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "line-bond structure"
+   ],
+   "is": "strikamynd",
+   "june": {
+    "prose": 0,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 0,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 0,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  },
+  {
+   "en": [
+    "general anesthetic"
+   ],
+   "is": "svæfingarlyf",
+   "june": {
+    "prose": 1,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "new": {
+    "prose": 1,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   },
+   "hybrid": {
+    "prose": 1,
+    "strictMiss": 0,
+    "lenientMiss": 0,
+    "strictMiss_inBurdenScope": 0,
+    "strictMiss_outsideBurdenScope": 0
+   }
+  }
+ ],
+ "totals": {
+  "june|prose": 1975,
+  "june|strictMiss": 820,
+  "june|lenientMiss": 670,
+  "june|strictMiss_inBurdenScope": 351,
+  "june|strictMiss_outsideBurdenScope": 469,
+  "new|prose": 2342,
+  "new|strictMiss": 595,
+  "new|lenientMiss": 435,
+  "new|strictMiss_inBurdenScope": 62,
+  "new|strictMiss_outsideBurdenScope": 533,
+  "hybrid|prose": 2342,
+  "hybrid|strictMiss": 919,
+  "hybrid|lenientMiss": 756,
+  "hybrid|strictMiss_inBurdenScope": 356,
+  "hybrid|strictMiss_outsideBurdenScope": 563
+ },
+ "complete": true
+}

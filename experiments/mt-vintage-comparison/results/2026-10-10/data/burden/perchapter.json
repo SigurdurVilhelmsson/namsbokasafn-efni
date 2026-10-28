@@ -1,0 +1,1241 @@
+{
+ "ch01": {
+  "june": {
+   "prosePairs": 166,
+   "fixPairs": 31,
+   "P": 3,
+   "A": 22,
+   "X": 6,
+   "uniqueSegs": 31,
+   "fixPairsVerdict": 28,
+   "fixPairsRuling": 3,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 11
+  },
+  "new": {
+   "prosePairs": 178,
+   "fixPairs": 55,
+   "P": 20,
+   "A": 5,
+   "X": 30,
+   "uniqueSegs": 50,
+   "fixPairsVerdict": 49,
+   "fixPairsRuling": 6,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 5,
+   "headwordsDecided": 11
+  },
+  "hybrid": {
+   "prosePairs": 178,
+   "fixPairs": 35,
+   "P": 3,
+   "A": 23,
+   "X": 9,
+   "uniqueSegs": 35,
+   "fixPairsVerdict": 32,
+   "fixPairsRuling": 3,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 11
+  },
+  "undecided": {
+   "terms": 8,
+   "june": {
+    "prose": 63,
+    "ifRuledJuly": 22,
+    "ifRuledNew": 17
+   },
+   "new": {
+    "prose": 64,
+    "ifRuledJuly": 46,
+    "ifRuledNew": 14
+   },
+   "hybrid": {
+    "prose": 64,
+    "ifRuledJuly": 23,
+    "ifRuledNew": 17
+   }
+  }
+ },
+ "ch02": {
+  "june": {
+   "prosePairs": 134,
+   "fixPairs": 34,
+   "P": 16,
+   "A": 0,
+   "X": 18,
+   "uniqueSegs": 27,
+   "fixPairsVerdict": 19,
+   "fixPairsRuling": 15,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 3,
+   "headwordsDecided": 9
+  },
+  "new": {
+   "prosePairs": 146,
+   "fixPairs": 43,
+   "P": 0,
+   "A": 0,
+   "X": 43,
+   "uniqueSegs": 36,
+   "fixPairsVerdict": 41,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 4,
+   "headwordsDecided": 9
+  },
+  "hybrid": {
+   "prosePairs": 146,
+   "fixPairs": 35,
+   "P": 15,
+   "A": 0,
+   "X": 20,
+   "uniqueSegs": 28,
+   "fixPairsVerdict": 20,
+   "fixPairsRuling": 15,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 3,
+   "headwordsDecided": 9
+  },
+  "undecided": {
+   "terms": 14,
+   "june": {
+    "prose": 87,
+    "ifRuledJuly": 19,
+    "ifRuledNew": 39
+   },
+   "new": {
+    "prose": 94,
+    "ifRuledJuly": 48,
+    "ifRuledNew": 16
+   },
+   "hybrid": {
+    "prose": 94,
+    "ifRuledJuly": 22,
+    "ifRuledNew": 42
+   }
+  }
+ },
+ "ch03": {
+  "june": {
+   "prosePairs": 0,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 0
+  },
+  "new": {
+   "prosePairs": 0,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 0
+  },
+  "hybrid": {
+   "prosePairs": 0,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 0
+  },
+  "undecided": {
+   "terms": 5,
+   "june": {
+    "prose": 74,
+    "ifRuledJuly": 27,
+    "ifRuledNew": 57
+   },
+   "new": {
+    "prose": 74,
+    "ifRuledJuly": 57,
+    "ifRuledNew": 17
+   },
+   "hybrid": {
+    "prose": 74,
+    "ifRuledJuly": 27,
+    "ifRuledNew": 57
+   }
+  }
+ },
+ "ch04": {
+  "june": {
+   "prosePairs": 184,
+   "fixPairs": 15,
+   "P": 0,
+   "A": 6,
+   "X": 9,
+   "uniqueSegs": 12,
+   "fixPairsVerdict": 15,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 11
+  },
+  "new": {
+   "prosePairs": 193,
+   "fixPairs": 87,
+   "P": 9,
+   "A": 26,
+   "X": 52,
+   "uniqueSegs": 74,
+   "fixPairsVerdict": 87,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 6,
+   "headwordsDecided": 11
+  },
+  "hybrid": {
+   "prosePairs": 193,
+   "fixPairs": 15,
+   "P": 0,
+   "A": 6,
+   "X": 9,
+   "uniqueSegs": 12,
+   "fixPairsVerdict": 15,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 11
+  },
+  "undecided": {
+   "terms": 9,
+   "june": {
+    "prose": 50,
+    "ifRuledJuly": 22,
+    "ifRuledNew": 29
+   },
+   "new": {
+    "prose": 56,
+    "ifRuledJuly": 51,
+    "ifRuledNew": 20
+   },
+   "hybrid": {
+    "prose": 56,
+    "ifRuledJuly": 28,
+    "ifRuledNew": 33
+   }
+  }
+ },
+ "ch05": {
+  "june": {
+   "prosePairs": 396,
+   "fixPairs": 39,
+   "P": 4,
+   "A": 0,
+   "X": 35,
+   "uniqueSegs": 38,
+   "fixPairsVerdict": 37,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 7,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 8
+  },
+  "new": {
+   "prosePairs": 403,
+   "fixPairs": 113,
+   "P": 4,
+   "A": 3,
+   "X": 106,
+   "uniqueSegs": 102,
+   "fixPairsVerdict": 111,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 8,
+   "headwordFixesExact": 6,
+   "headwordsDecided": 8
+  },
+  "hybrid": {
+   "prosePairs": 403,
+   "fixPairs": 42,
+   "P": 4,
+   "A": 1,
+   "X": 37,
+   "uniqueSegs": 41,
+   "fixPairsVerdict": 40,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 7,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 8
+  },
+  "undecided": {
+   "terms": 5,
+   "june": {
+    "prose": 27,
+    "ifRuledJuly": 20,
+    "ifRuledNew": 14
+   },
+   "new": {
+    "prose": 28,
+    "ifRuledJuly": 25,
+    "ifRuledNew": 17
+   },
+   "hybrid": {
+    "prose": 28,
+    "ifRuledJuly": 21,
+    "ifRuledNew": 15
+   }
+  }
+ },
+ "ch06": {
+  "june": {
+   "prosePairs": 36,
+   "fixPairs": 1,
+   "P": 0,
+   "A": 0,
+   "X": 1,
+   "uniqueSegs": 1,
+   "fixPairsVerdict": 1,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 5
+  },
+  "new": {
+   "prosePairs": 38,
+   "fixPairs": 15,
+   "P": 2,
+   "A": 7,
+   "X": 6,
+   "uniqueSegs": 14,
+   "fixPairsVerdict": 15,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 5
+  },
+  "hybrid": {
+   "prosePairs": 38,
+   "fixPairs": 2,
+   "P": 0,
+   "A": 1,
+   "X": 1,
+   "uniqueSegs": 2,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 5
+  },
+  "undecided": {
+   "terms": 13,
+   "june": {
+    "prose": 95,
+    "ifRuledJuly": 44,
+    "ifRuledNew": 68
+   },
+   "new": {
+    "prose": 111,
+    "ifRuledJuly": 88,
+    "ifRuledNew": 37
+   },
+   "hybrid": {
+    "prose": 111,
+    "ifRuledJuly": 55,
+    "ifRuledNew": 79
+   }
+  }
+ },
+ "ch07": {
+  "june": {
+   "prosePairs": 469,
+   "fixPairs": 125,
+   "P": 21,
+   "A": 94,
+   "X": 10,
+   "uniqueSegs": 113,
+   "fixPairsVerdict": 111,
+   "fixPairsRuling": 14,
+   "nestedOnlyPairs": 10,
+   "headwordFixesExact": 3,
+   "headwordsDecided": 17
+  },
+  "new": {
+   "prosePairs": 709,
+   "fixPairs": 230,
+   "P": 23,
+   "A": 126,
+   "X": 81,
+   "uniqueSegs": 208,
+   "fixPairsVerdict": 221,
+   "fixPairsRuling": 9,
+   "nestedOnlyPairs": 11,
+   "headwordFixesExact": 9,
+   "headwordsDecided": 17
+  },
+  "hybrid": {
+   "prosePairs": 709,
+   "fixPairs": 216,
+   "P": 23,
+   "A": 158,
+   "X": 35,
+   "uniqueSegs": 199,
+   "fixPairsVerdict": 202,
+   "fixPairsRuling": 14,
+   "nestedOnlyPairs": 10,
+   "headwordFixesExact": 3,
+   "headwordsDecided": 17
+  },
+  "undecided": {
+   "terms": 8,
+   "june": {
+    "prose": 99,
+    "ifRuledJuly": 9,
+    "ifRuledNew": 20
+   },
+   "new": {
+    "prose": 107,
+    "ifRuledJuly": 31,
+    "ifRuledNew": 6
+   },
+   "hybrid": {
+    "prose": 107,
+    "ifRuledJuly": 18,
+    "ifRuledNew": 14
+   }
+  }
+ },
+ "ch08": {
+  "june": {
+   "prosePairs": 166,
+   "fixPairs": 82,
+   "P": 0,
+   "A": 44,
+   "X": 38,
+   "uniqueSegs": 75,
+   "fixPairsVerdict": 3,
+   "fixPairsRuling": 79,
+   "nestedOnlyPairs": 5,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 5
+  },
+  "new": {
+   "prosePairs": 180,
+   "fixPairs": 31,
+   "P": 0,
+   "A": 13,
+   "X": 18,
+   "uniqueSegs": 28,
+   "fixPairsVerdict": 31,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 5
+  },
+  "hybrid": {
+   "prosePairs": 180,
+   "fixPairs": 85,
+   "P": 0,
+   "A": 44,
+   "X": 41,
+   "uniqueSegs": 78,
+   "fixPairsVerdict": 6,
+   "fixPairsRuling": 79,
+   "nestedOnlyPairs": 5,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 5
+  },
+  "undecided": {
+   "terms": 19,
+   "june": {
+    "prose": 66,
+    "ifRuledJuly": 35,
+    "ifRuledNew": 39
+   },
+   "new": {
+    "prose": 74,
+    "ifRuledJuly": 53,
+    "ifRuledNew": 22
+   },
+   "hybrid": {
+    "prose": 74,
+    "ifRuledJuly": 37,
+    "ifRuledNew": 38
+   }
+  }
+ },
+ "ch09": {
+  "june": {
+   "prosePairs": 56,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 2
+  },
+  "new": {
+   "prosePairs": 60,
+   "fixPairs": 2,
+   "P": 0,
+   "A": 2,
+   "X": 0,
+   "uniqueSegs": 2,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 2
+  },
+  "hybrid": {
+   "prosePairs": 60,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 2
+  },
+  "undecided": {
+   "terms": 6,
+   "june": {
+    "prose": 48,
+    "ifRuledJuly": 34,
+    "ifRuledNew": 14
+   },
+   "new": {
+    "prose": 48,
+    "ifRuledJuly": 42,
+    "ifRuledNew": 10
+   },
+   "hybrid": {
+    "prose": 48,
+    "ifRuledJuly": 34,
+    "ifRuledNew": 14
+   }
+  }
+ },
+ "ch10": {
+  "june": {
+   "prosePairs": 124,
+   "fixPairs": 49,
+   "P": 15,
+   "A": 0,
+   "X": 34,
+   "uniqueSegs": 49,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 47,
+   "nestedOnlyPairs": 18,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 11
+  },
+  "new": {
+   "prosePairs": 128,
+   "fixPairs": 71,
+   "P": 11,
+   "A": 9,
+   "X": 51,
+   "uniqueSegs": 70,
+   "fixPairsVerdict": 45,
+   "fixPairsRuling": 26,
+   "nestedOnlyPairs": 19,
+   "headwordFixesExact": 8,
+   "headwordsDecided": 11
+  },
+  "hybrid": {
+   "prosePairs": 128,
+   "fixPairs": 53,
+   "P": 15,
+   "A": 2,
+   "X": 36,
+   "uniqueSegs": 53,
+   "fixPairsVerdict": 4,
+   "fixPairsRuling": 49,
+   "nestedOnlyPairs": 19,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 11
+  },
+  "undecided": {
+   "terms": 22,
+   "june": {
+    "prose": 161,
+    "ifRuledJuly": 89,
+    "ifRuledNew": 95
+   },
+   "new": {
+    "prose": 172,
+    "ifRuledJuly": 144,
+    "ifRuledNew": 114
+   },
+   "hybrid": {
+    "prose": 172,
+    "ifRuledJuly": 101,
+    "ifRuledNew": 103
+   }
+  }
+ },
+ "ch11": {
+  "june": {
+   "prosePairs": 115,
+   "fixPairs": 17,
+   "P": 5,
+   "A": 3,
+   "X": 9,
+   "uniqueSegs": 17,
+   "fixPairsVerdict": 17,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 9
+  },
+  "new": {
+   "prosePairs": 122,
+   "fixPairs": 82,
+   "P": 6,
+   "A": 29,
+   "X": 47,
+   "uniqueSegs": 65,
+   "fixPairsVerdict": 82,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 9,
+   "headwordFixesExact": 4,
+   "headwordsDecided": 9
+  },
+  "hybrid": {
+   "prosePairs": 122,
+   "fixPairs": 31,
+   "P": 6,
+   "A": 4,
+   "X": 21,
+   "uniqueSegs": 27,
+   "fixPairsVerdict": 31,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 4,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 9
+  },
+  "undecided": {
+   "terms": 7,
+   "june": {
+    "prose": 35,
+    "ifRuledJuly": 14,
+    "ifRuledNew": 29
+   },
+   "new": {
+    "prose": 36,
+    "ifRuledJuly": 32,
+    "ifRuledNew": 28
+   },
+   "hybrid": {
+    "prose": 36,
+    "ifRuledJuly": 16,
+    "ifRuledNew": 29
+   }
+  }
+ },
+ "ch12": {
+  "june": {
+   "prosePairs": 133,
+   "fixPairs": 32,
+   "P": 19,
+   "A": 0,
+   "X": 13,
+   "uniqueSegs": 32,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 30,
+   "nestedOnlyPairs": 1,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 9
+  },
+  "new": {
+   "prosePairs": 137,
+   "fixPairs": 24,
+   "P": 0,
+   "A": 3,
+   "X": 21,
+   "uniqueSegs": 24,
+   "fixPairsVerdict": 22,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 1,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 9
+  },
+  "hybrid": {
+   "prosePairs": 137,
+   "fixPairs": 36,
+   "P": 19,
+   "A": 0,
+   "X": 17,
+   "uniqueSegs": 36,
+   "fixPairsVerdict": 5,
+   "fixPairsRuling": 31,
+   "nestedOnlyPairs": 1,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 9
+  },
+  "undecided": {
+   "terms": 8,
+   "june": {
+    "prose": 164,
+    "ifRuledJuly": 53,
+    "ifRuledNew": 95
+   },
+   "new": {
+    "prose": 165,
+    "ifRuledJuly": 155,
+    "ifRuledNew": 7
+   },
+   "hybrid": {
+    "prose": 165,
+    "ifRuledJuly": 55,
+    "ifRuledNew": 94
+   }
+  }
+ },
+ "ch13": {
+  "june": {
+   "prosePairs": 3,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 1
+  },
+  "new": {
+   "prosePairs": 3,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 1
+  },
+  "hybrid": {
+   "prosePairs": 3,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 1
+  },
+  "undecided": {
+   "terms": 3,
+   "june": {
+    "prose": 45,
+    "ifRuledJuly": 14,
+    "ifRuledNew": 31
+   },
+   "new": {
+    "prose": 46,
+    "ifRuledJuly": 27,
+    "ifRuledNew": 31
+   },
+   "hybrid": {
+    "prose": 46,
+    "ifRuledJuly": 15,
+    "ifRuledNew": 31
+   }
+  }
+ },
+ "ch14": {
+  "june": {
+   "prosePairs": 50,
+   "fixPairs": 5,
+   "P": 0,
+   "A": 4,
+   "X": 1,
+   "uniqueSegs": 5,
+   "fixPairsVerdict": 5,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 4
+  },
+  "new": {
+   "prosePairs": 50,
+   "fixPairs": 13,
+   "P": 0,
+   "A": 4,
+   "X": 9,
+   "uniqueSegs": 13,
+   "fixPairsVerdict": 13,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 4
+  },
+  "hybrid": {
+   "prosePairs": 50,
+   "fixPairs": 5,
+   "P": 0,
+   "A": 4,
+   "X": 1,
+   "uniqueSegs": 5,
+   "fixPairsVerdict": 5,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 4
+  },
+  "undecided": {
+   "terms": 6,
+   "june": {
+    "prose": 82,
+    "ifRuledJuly": 10,
+    "ifRuledNew": 19
+   },
+   "new": {
+    "prose": 84,
+    "ifRuledJuly": 16,
+    "ifRuledNew": 13
+   },
+   "hybrid": {
+    "prose": 84,
+    "ifRuledJuly": 10,
+    "ifRuledNew": 19
+   }
+  }
+ },
+ "ch15": {
+  "june": {
+   "prosePairs": 61,
+   "fixPairs": 2,
+   "P": 1,
+   "A": 0,
+   "X": 1,
+   "uniqueSegs": 2,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 4
+  },
+  "new": {
+   "prosePairs": 61,
+   "fixPairs": 54,
+   "P": 30,
+   "A": 0,
+   "X": 24,
+   "uniqueSegs": 51,
+   "fixPairsVerdict": 54,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 4,
+   "headwordsDecided": 4
+  },
+  "hybrid": {
+   "prosePairs": 61,
+   "fixPairs": 2,
+   "P": 1,
+   "A": 0,
+   "X": 1,
+   "uniqueSegs": 2,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 4
+  },
+  "undecided": {
+   "terms": 1,
+   "june": {
+    "prose": 2,
+    "ifRuledJuly": 2,
+    "ifRuledNew": 2
+   },
+   "new": {
+    "prose": 2,
+    "ifRuledJuly": 2,
+    "ifRuledNew": 2
+   },
+   "hybrid": {
+    "prose": 2,
+    "ifRuledJuly": 2,
+    "ifRuledNew": 2
+   }
+  }
+ },
+ "ch16": {
+  "june": {
+   "prosePairs": 25,
+   "fixPairs": 24,
+   "P": 23,
+   "A": 0,
+   "X": 1,
+   "uniqueSegs": 24,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 24,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 1
+  },
+  "new": {
+   "prosePairs": 25,
+   "fixPairs": 0,
+   "P": 0,
+   "A": 0,
+   "X": 0,
+   "uniqueSegs": 0,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 1
+  },
+  "hybrid": {
+   "prosePairs": 25,
+   "fixPairs": 24,
+   "P": 23,
+   "A": 0,
+   "X": 1,
+   "uniqueSegs": 24,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 24,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 1
+  },
+  "undecided": {
+   "terms": 6,
+   "june": {
+    "prose": 32,
+    "ifRuledJuly": 25,
+    "ifRuledNew": 16
+   },
+   "new": {
+    "prose": 32,
+    "ifRuledJuly": 27,
+    "ifRuledNew": 3
+   },
+   "hybrid": {
+    "prose": 32,
+    "ifRuledJuly": 25,
+    "ifRuledNew": 15
+   }
+  }
+ },
+ "ch17": {
+  "june": {
+   "prosePairs": 185,
+   "fixPairs": 46,
+   "P": 0,
+   "A": 5,
+   "X": 41,
+   "uniqueSegs": 45,
+   "fixPairsVerdict": 3,
+   "fixPairsRuling": 43,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 6
+  },
+  "new": {
+   "prosePairs": 206,
+   "fixPairs": 86,
+   "P": 0,
+   "A": 62,
+   "X": 24,
+   "uniqueSegs": 54,
+   "fixPairsVerdict": 84,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 4,
+   "headwordFixesExact": 4,
+   "headwordsDecided": 6
+  },
+  "hybrid": {
+   "prosePairs": 206,
+   "fixPairs": 58,
+   "P": 0,
+   "A": 13,
+   "X": 45,
+   "uniqueSegs": 52,
+   "fixPairsVerdict": 15,
+   "fixPairsRuling": 43,
+   "nestedOnlyPairs": 1,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 6
+  },
+  "undecided": {
+   "terms": 15,
+   "june": {
+    "prose": 64,
+    "ifRuledJuly": 31,
+    "ifRuledNew": 51
+   },
+   "new": {
+    "prose": 68,
+    "ifRuledJuly": 60,
+    "ifRuledNew": 26
+   },
+   "hybrid": {
+    "prose": 68,
+    "ifRuledJuly": 34,
+    "ifRuledNew": 52
+   }
+  }
+ },
+ "ch18": {
+  "june": {
+   "prosePairs": 148,
+   "fixPairs": 20,
+   "P": 3,
+   "A": 0,
+   "X": 17,
+   "uniqueSegs": 19,
+   "fixPairsVerdict": 3,
+   "fixPairsRuling": 17,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 6
+  },
+  "new": {
+   "prosePairs": 150,
+   "fixPairs": 17,
+   "P": 13,
+   "A": 0,
+   "X": 4,
+   "uniqueSegs": 17,
+   "fixPairsVerdict": 15,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 6
+  },
+  "hybrid": {
+   "prosePairs": 150,
+   "fixPairs": 21,
+   "P": 4,
+   "A": 0,
+   "X": 17,
+   "uniqueSegs": 20,
+   "fixPairsVerdict": 4,
+   "fixPairsRuling": 17,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 6
+  },
+  "undecided": {
+   "terms": 4,
+   "june": {
+    "prose": 18,
+    "ifRuledJuly": 9,
+    "ifRuledNew": 17
+   },
+   "new": {
+    "prose": 18,
+    "ifRuledJuly": 15,
+    "ifRuledNew": 9
+   },
+   "hybrid": {
+    "prose": 18,
+    "ifRuledJuly": 9,
+    "ifRuledNew": 17
+   }
+  }
+ },
+ "ch19": {
+  "june": {
+   "prosePairs": 26,
+   "fixPairs": 15,
+   "P": 0,
+   "A": 6,
+   "X": 9,
+   "uniqueSegs": 15,
+   "fixPairsVerdict": 1,
+   "fixPairsRuling": 14,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 3
+  },
+  "new": {
+   "prosePairs": 26,
+   "fixPairs": 5,
+   "P": 0,
+   "A": 0,
+   "X": 5,
+   "uniqueSegs": 5,
+   "fixPairsVerdict": 5,
+   "fixPairsRuling": 0,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 3
+  },
+  "hybrid": {
+   "prosePairs": 26,
+   "fixPairs": 15,
+   "P": 0,
+   "A": 6,
+   "X": 9,
+   "uniqueSegs": 15,
+   "fixPairsVerdict": 1,
+   "fixPairsRuling": 14,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 3
+  },
+  "undecided": {
+   "terms": 26,
+   "june": {
+    "prose": 208,
+    "ifRuledJuly": 153,
+    "ifRuledNew": 124
+   },
+   "new": {
+    "prose": 213,
+    "ifRuledJuly": 193,
+    "ifRuledNew": 60
+   },
+   "hybrid": {
+    "prose": 213,
+    "ifRuledJuly": 158,
+    "ifRuledNew": 126
+   }
+  }
+ },
+ "ch20": {
+  "june": {
+   "prosePairs": 143,
+   "fixPairs": 23,
+   "P": 0,
+   "A": 0,
+   "X": 23,
+   "uniqueSegs": 23,
+   "fixPairsVerdict": 0,
+   "fixPairsRuling": 23,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 7
+  },
+  "new": {
+   "prosePairs": 161,
+   "fixPairs": 35,
+   "P": 0,
+   "A": 19,
+   "X": 16,
+   "uniqueSegs": 34,
+   "fixPairsVerdict": 26,
+   "fixPairsRuling": 9,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 7
+  },
+  "hybrid": {
+   "prosePairs": 161,
+   "fixPairs": 26,
+   "P": 0,
+   "A": 1,
+   "X": 25,
+   "uniqueSegs": 26,
+   "fixPairsVerdict": 2,
+   "fixPairsRuling": 24,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 0,
+   "headwordsDecided": 7
+  },
+  "undecided": {
+   "terms": 2,
+   "june": {
+    "prose": 15,
+    "ifRuledJuly": 12,
+    "ifRuledNew": 7
+   },
+   "new": {
+    "prose": 15,
+    "ifRuledJuly": 13,
+    "ifRuledNew": 6
+   },
+   "hybrid": {
+    "prose": 15,
+    "ifRuledJuly": 12,
+    "ifRuledNew": 7
+   }
+  }
+ },
+ "ch21": {
+  "june": {
+   "prosePairs": 104,
+   "fixPairs": 47,
+   "P": 28,
+   "A": 10,
+   "X": 9,
+   "uniqueSegs": 43,
+   "fixPairsVerdict": 7,
+   "fixPairsRuling": 40,
+   "nestedOnlyPairs": 4,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 7
+  },
+  "new": {
+   "prosePairs": 116,
+   "fixPairs": 32,
+   "P": 2,
+   "A": 0,
+   "X": 30,
+   "uniqueSegs": 26,
+   "fixPairsVerdict": 30,
+   "fixPairsRuling": 2,
+   "nestedOnlyPairs": 0,
+   "headwordFixesExact": 1,
+   "headwordsDecided": 7
+  },
+  "hybrid": {
+   "prosePairs": 116,
+   "fixPairs": 53,
+   "P": 29,
+   "A": 10,
+   "X": 14,
+   "uniqueSegs": 48,
+   "fixPairsVerdict": 13,
+   "fixPairsRuling": 40,
+   "nestedOnlyPairs": 4,
+   "headwordFixesExact": 2,
+   "headwordsDecided": 7
+  },
+  "undecided": {
+   "terms": 30,
+   "june": {
+    "prose": 141,
+    "ifRuledJuly": 78,
+    "ifRuledNew": 120
+   },
+   "new": {
+    "prose": 157,
+    "ifRuledJuly": 136,
+    "ifRuledNew": 74
+   },
+   "hybrid": {
+    "prose": 157,
+    "ifRuledJuly": 92,
+    "ifRuledNew": 126
+   }
+  }
+ }
+}

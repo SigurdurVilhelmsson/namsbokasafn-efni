@@ -59,6 +59,7 @@ const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const { createRequestTimer, DEFAULT_SLOW_REQUEST_MS } = require('./middleware/requestTiming');
 const { refuseCompressedBodies } = require('./middleware/refuseCompressedBodies');
+const { errorHandler } = require('./middleware/errorHandler');
 
 // Editorial workflow
 const segmentEditorRoutes = require('./routes/segment-editor');
@@ -379,33 +380,9 @@ app.use('/api/*path', (req, res) => {
   });
 });
 
-// Error handler (next is required by Express error handler signature)
-app.use((err, req, res, _next) => {
-  log.error({ err, method: req.method, path: req.path }, 'Unhandled request error');
-
-  // Handle multer errors
-  if (err.code === 'LIMIT_FILE_SIZE') {
-    return res.status(413).json({
-      error: 'File Too Large',
-      message: 'Uploaded file exceeds size limit (10MB)',
-    });
-  }
-
-  if (err.code === 'LIMIT_UNEXPECTED_FILE') {
-    return res.status(400).json({
-      error: 'Invalid Upload',
-      message: 'Unexpected field in upload',
-    });
-  }
-
-  const statusCode = err.status || 500;
-  // Only expose error details for client errors (4xx), never for server errors (5xx)
-  const isClientError = statusCode >= 400 && statusCode < 500;
-  res.status(statusCode).json({
-    error: isClientError ? err.name || 'Error' : 'Internal Server Error',
-    message: isClientError ? err.message || 'An error occurred' : 'An unexpected error occurred',
-  });
-});
+// The last error handler: middleware/errorHandler.js, moved there unchanged so a test can
+// mount the real one (__tests__/multerUploadRoutes.test.js).
+app.use(errorHandler);
 
 // Start server
 const server = app.listen(PORT, HOST, () => {
