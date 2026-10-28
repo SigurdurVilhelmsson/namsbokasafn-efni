@@ -132,6 +132,52 @@ describe('createAnthropicTransport', () => {
     expect(JSON.stringify(r)).not.toContain(BOGUS_KEY);
   });
 
+  it('sends the anthropic-workspace-id header when given a workspace id', async () => {
+    const api = fakeApi({ 'POST /v1/messages': () => json(message()) });
+    const t = createAnthropicTransport({
+      apiKey: BOGUS_KEY,
+      workspaceId: 'wrkspc_transport_test',
+      fetch: api.fetch,
+    });
+    await t.send(body);
+    expect(api.seen[0].headers.get('anthropic-workspace-id')).toBe('wrkspc_transport_test');
+  });
+
+  it('sends no workspace header when none is configured (control)', async () => {
+    const api = fakeApi({ 'POST /v1/messages': () => json(message()) });
+    const t = createAnthropicTransport({ apiKey: BOGUS_KEY, fetch: api.fetch });
+    await t.send(body);
+    expect(api.seen[0].headers.get('anthropic-workspace-id')).toBeNull();
+  });
+
+  it('resolves the workspace id from the same sources as a lazily resolved key', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ai-review-transport-'));
+    try {
+      const envFile = path.join(dir, 'test.env');
+      fs.writeFileSync(
+        envFile,
+        `ANTHROPIC_API_KEY=${BOGUS_KEY}\nANTHROPIC_WORKSPACE_ID=wrkspc_lazy_test\n`
+      );
+      const api = fakeApi({ 'POST /v1/messages': () => json(message()) });
+      const t = createAnthropicTransport({ fetch: api.fetch, keyOptions: { env: {}, envFile } });
+      await t.send(body);
+      expect(api.seen[0].headers.get('anthropic-workspace-id')).toBe('wrkspc_lazy_test');
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('does not report the workspace id as a secret: it is an identifier, not a credential', () => {
+    // The record guard refuses a write that contains a secret, so listing an id the API may
+    // echo back would abort a paid run; the key alone is the credential.
+    const t = createAnthropicTransport({
+      apiKey: BOGUS_KEY,
+      workspaceId: 'wrkspc_transport_test',
+      fetch: fakeApi().fetch,
+    });
+    expect(t.secrets()).toEqual([BOGUS_KEY]);
+  });
+
   it('counts tokens with only the fields the count endpoint accepts', async () => {
     const api = fakeApi({
       'POST /v1/messages/count_tokens': () => json({ input_tokens: 42 }),

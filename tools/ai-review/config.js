@@ -13,6 +13,10 @@
  * git-ignored `.env` (via `loadEnvFile`, the parser `tools/api-translate.js` already
  * uses for the Málstaður key). This module never writes the key anywhere and never
  * puts it in an error message.
+ *
+ * The workspace id (`ANTHROPIC_WORKSPACE_ID`) comes from the same two sources. A key
+ * that is not scoped to a workspace must name one on every request, or the API answers
+ * 400 "This API key is not scoped to a workspace"; a workspace-scoped key needs none.
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -154,4 +158,21 @@ export function resolveApiKey({ env = process.env, envFile = DEFAULT_ENV_FILE } 
     'ai-review: no Anthropic API key. Set ANTHROPIC_API_KEY in the environment, or put ' +
       `ANTHROPIC_API_KEY=… in the git-ignored .env at ${envFile}. Refusing to run without one.`
   );
+}
+
+/**
+ * Resolve the Anthropic workspace id: the environment first, then the `.env` file.
+ * Optional, unlike the key: a workspace-scoped key needs none.
+ *
+ * @param {{ env?: Record<string, string|undefined>, envFile?: string }} [opts]
+ * @returns {string|undefined} the id, or undefined when neither source carries one
+ */
+export function resolveWorkspaceId({ env = process.env, envFile = DEFAULT_ENV_FILE } = {}) {
+  const fromEnv =
+    typeof env.ANTHROPIC_WORKSPACE_ID === 'string' ? env.ANTHROPIC_WORKSPACE_ID.trim() : '';
+  if (fromEnv) return fromEnv;
+  const vars = loadEnvFile(envFile);
+  const fromFile =
+    typeof vars.ANTHROPIC_WORKSPACE_ID === 'string' ? vars.ANTHROPIC_WORKSPACE_ID.trim() : '';
+  return fromFile || undefined;
 }

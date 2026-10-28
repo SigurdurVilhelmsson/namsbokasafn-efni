@@ -51,6 +51,7 @@ import {
   assertRecordsDir,
   assertLedgerPath,
   resolveApiKey,
+  resolveWorkspaceId,
 } from './config.js';
 import { PRICING, ratesFor, worstCasePico, costPico, picoToUsd, usdToPico } from './pricing.js';
 import {
@@ -350,7 +351,9 @@ function validateRequests(requests, run, { batch }) {
  * `process.env.ANTHROPIC_API_KEY`, and whatever key the transport reports in use
  * (`transport.secrets()`). The transport the harness builds itself is handed the key it
  * resolved, so it reports that key from the start; a caller-built transport that
- * resolves its key lazily reports it as soon as it has it.
+ * resolves its key lazily reports it as soon as it has it. The harness-built transport
+ * is also handed the workspace id from the key's sources, for a key that is not scoped to
+ * a workspace; that id is not a secret.
  */
 function resolveTransport(opts) {
   const fixed = [...(opts.secrets ?? [])];
@@ -367,7 +370,11 @@ function resolveTransport(opts) {
           'to find reliably; refusing'
       );
     }
-    transport = createAnthropicTransport({ apiKey, timeout: opts.timeout });
+    transport = createAnthropicTransport({
+      apiKey,
+      workspaceId: resolveWorkspaceId(opts.keyOptions),
+      timeout: opts.timeout,
+    });
   }
   const reported = () => (typeof transport.secrets === 'function' ? transport.secrets() : []);
   return { transport, secrets: () => [...fixed, ...reported()] };

@@ -1317,6 +1317,27 @@ describe('the live transport through an injected fetch', () => {
     expect(run.sdk).toEqual(sdkInfo());
   });
 
+  it('sends the workspace header from the key sources when the harness builds its own transport', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const dir = tmp();
+    const api = fakeApi();
+    vi.stubGlobal('fetch', api.fetch); // the harness builds its own transport on the global fetch
+    const envFile = path.join(tmp(), 'test.env');
+    fs.writeFileSync(
+      envFile,
+      `ANTHROPIC_API_KEY=${BOGUS_KEY}\nANTHROPIC_WORKSPACE_ID=wrkspc_harness_test\n`
+    );
+    const opts = { ...baseOpts(dir, undefined), keyOptions: { env: {}, envFile } };
+    const a = await runInteractive({ ...opts, requests: [req('k0')] });
+    const b = await runBatch({ ...opts, requests: [req('k1')] });
+    expect(a.status).toBe('complete');
+    expect(b.status).toBe('complete');
+    expect(api.seen.length).toBeGreaterThan(0); // control: requests really went out
+    expect(
+      api.seen.every((s) => s.headers.get('anthropic-workspace-id') === 'wrkspc_harness_test')
+    ).toBe(true);
+  });
+
   /** A fake API whose message reply echoes the credential headers it was sent. */
   function echoKeyApi() {
     const seen = [];
