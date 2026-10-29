@@ -1,0 +1,673 @@
+{
+  "sets": {
+    "old": "experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json",
+    "new": "experiments/terminology-consistency/results/2026-10-29/ruling-set-2026-10-29.json"
+  },
+  "chapters": 23,
+  "totals": {
+    "old": {
+      "items": 4105,
+      "pairs": 5641
+    },
+    "new": {
+      "items": 4198,
+      "pairs": 5782
+    }
+  },
+  "changedOffers": [
+    {
+      "id": "heat",
+      "old": 0,
+      "new": 168
+    },
+    {
+      "id": "valence",
+      "old": 136,
+      "new": 24
+    },
+    {
+      "id": "concentrated",
+      "old": 48,
+      "new": 0
+    },
+    {
+      "id": "valence-shell",
+      "old": 0,
+      "new": 37
+    },
+    {
+      "id": "osmotic-pressure",
+      "old": 0,
+      "new": 33
+    },
+    {
+      "id": "valence-bond",
+      "old": 0,
+      "new": 24
+    },
+    {
+      "id": "solute",
+      "old": 30,
+      "new": 11
+    },
+    {
+      "id": "calorie",
+      "old": 0,
+      "new": 17
+    },
+    {
+      "id": "osmosis",
+      "old": 0,
+      "new": 15
+    },
+    {
+      "id": "molality",
+      "old": 0,
+      "new": 10
+    },
+    {
+      "id": "nucleon",
+      "old": 7,
+      "new": 15
+    },
+    {
+      "id": "standing-wave",
+      "old": 13,
+      "new": 5
+    },
+    {
+      "id": "electron-capture",
+      "old": 11,
+      "new": 4
+    },
+    {
+      "id": "beta-decay",
+      "old": 0,
+      "new": 5
+    },
+    {
+      "id": "frequency-factor",
+      "old": 0,
+      "new": 5
+    },
+    {
+      "id": "valence-electron",
+      "old": 0,
+      "new": 5
+    },
+    {
+      "id": "geiger-counter",
+      "old": 5,
+      "new": 1
+    },
+    {
+      "id": "valence-band",
+      "old": 0,
+      "new": 4
+    },
+    {
+      "id": "alpha-decay",
+      "old": 0,
+      "new": 3
+    },
+    {
+      "id": "electron-volt",
+      "old": 6,
+      "new": 3
+    },
+    {
+      "id": "becquerel",
+      "old": 6,
+      "new": 8
+    },
+    {
+      "id": "bimolecular-reaction",
+      "old": 1,
+      "new": 3
+    },
+    {
+      "id": "valence-orbital",
+      "old": 0,
+      "new": 2
+    },
+    {
+      "id": "lattice-energy",
+      "old": 0,
+      "new": 1
+    },
+    {
+      "id": "vacancy",
+      "old": 3,
+      "new": 4
+    }
+  ],
+  "heat": {
+    "segments": 168,
+    "phrases": [
+      {
+        "phrase": "heat",
+        "n": 21
+      },
+      {
+        "phrase": "much heat is",
+        "n": 11
+      },
+      {
+        "phrase": "heat and electricity",
+        "n": 7
+      },
+      {
+        "phrase": "heat produced by",
+        "n": 7
+      },
+      {
+        "phrase": "heat capacity of",
+        "n": 6
+      },
+      {
+        "phrase": "heat the house",
+        "n": 6
+      },
+      {
+        "phrase": "conduct heat and",
+        "n": 5
+      },
+      {
+        "phrase": "heat of combustion",
+        "n": 5
+      },
+      {
+        "phrase": "heat required to",
+        "n": 4
+      },
+      {
+        "phrase": "conducts heat and",
+        "n": 3
+      },
+      {
+        "phrase": "heat capacity",
+        "n": 3
+      },
+      {
+        "phrase": "heat flow in",
+        "n": 3
+      },
+      {
+        "phrase": "all heat transfer",
+        "n": 2
+      },
+      {
+        "phrase": "heat 1 kg",
+        "n": 2
+      },
+      {
+        "phrase": "heat absorbed by",
+        "n": 2
+      },
+      {
+        "phrase": "heat absorbed or",
+        "n": 2
+      },
+      {
+        "phrase": "heat exchanger",
+        "n": 2
+      },
+      {
+        "phrase": "heat one pound",
+        "n": 2
+      },
+      {
+        "phrase": "heat per gram",
+        "n": 2
+      },
+      {
+        "phrase": "heat transfer fluid",
+        "n": 2
+      },
+      {
+        "phrase": "heat will be",
+        "n": 2
+      },
+      {
+        "phrase": "high heat of",
+        "n": 2
+      },
+      {
+        "phrase": "produces heat when",
+        "n": 2
+      },
+      {
+        "phrase": "producing heat inside",
+        "n": 2
+      },
+      {
+        "phrase": "we heat a",
+        "n": 2
+      },
+      {
+        "phrase": "absorb heat when",
+        "n": 1
+      },
+      {
+        "phrase": "absorbed heat and",
+        "n": 1
+      },
+      {
+        "phrase": "absorbing heat from",
+        "n": 1
+      },
+      {
+        "phrase": "added heat acts",
+        "n": 1
+      },
+      {
+        "phrase": "additional heat would",
+        "n": 1
+      },
+      {
+        "phrase": "between heat",
+        "n": 1
+      },
+      {
+        "phrase": "but heat or",
+        "n": 1
+      },
+      {
+        "phrase": "canned heat is",
+        "n": 1
+      },
+      {
+        "phrase": "carries heat from",
+        "n": 1
+      },
+      {
+        "phrase": "compute heat flows",
+        "n": 1
+      },
+      {
+        "phrase": "core heats water",
+        "n": 1
+      },
+      {
+        "phrase": "decay heat produced",
+        "n": 1
+      },
+      {
+        "phrase": "enough heat from",
+        "n": 1
+      },
+      {
+        "phrase": "excess heat away",
+        "n": 1
+      },
+      {
+        "phrase": "generate heat by",
+        "n": 1
+      },
+      {
+        "phrase": "generates heat",
+        "n": 1
+      },
+      {
+        "phrase": "heat a mixture",
+        "n": 1
+      },
+      {
+        "phrase": "heat absorbed cause",
+        "n": 1
+      },
+      {
+        "phrase": "heat added",
+        "n": 1
+      },
+      {
+        "phrase": "heat added can",
+        "n": 1
+      },
+      {
+        "phrase": "heat and",
+        "n": 1
+      },
+      {
+        "phrase": "heat and cool",
+        "n": 1
+      },
+      {
+        "phrase": "heat and forming",
+        "n": 1
+      },
+      {
+        "phrase": "heat and light",
+        "n": 1
+      },
+      {
+        "phrase": "heat and power",
+        "n": 1
+      },
+      {
+        "phrase": "heat and resists",
+        "n": 1
+      },
+      {
+        "phrase": "heat and stirrer",
+        "n": 1
+      },
+      {
+        "phrase": "heat and temperature",
+        "n": 1
+      },
+      {
+        "phrase": "heat are removed",
+        "n": 1
+      },
+      {
+        "phrase": "heat as is",
+        "n": 1
+      },
+      {
+        "phrase": "heat at the",
+        "n": 1
+      },
+      {
+        "phrase": "heat because the",
+        "n": 1
+      },
+      {
+        "phrase": "heat can enter",
+        "n": 1
+      },
+      {
+        "phrase": "heat capacities of",
+        "n": 1
+      },
+      {
+        "phrase": "heat easily decomposes",
+        "n": 1
+      },
+      {
+        "phrase": "heat evenly",
+        "n": 1
+      },
+      {
+        "phrase": "heat exchanger are",
+        "n": 1
+      },
+      {
+        "phrase": "heat flow",
+        "n": 1
+      },
+      {
+        "phrase": "heat flow accompanying",
+        "n": 1
+      },
+      {
+        "phrase": "heat flow occurs",
+        "n": 1
+      },
+      {
+        "phrase": "heat flow out",
+        "n": 1
+      },
+      {
+        "phrase": "heat flow results",
+        "n": 1
+      },
+      {
+        "phrase": "heat for cooking",
+        "n": 1
+      },
+      {
+        "phrase": "heat from a",
+        "n": 1
+      },
+      {
+        "phrase": "heat from the",
+        "n": 1
+      },
+      {
+        "phrase": "heat from this",
+        "n": 1
+      },
+      {
+        "phrase": "heat gets in",
+        "n": 1
+      },
+      {
+        "phrase": "heat has been",
+        "n": 1
+      },
+      {
+        "phrase": "heat ice from",
+        "n": 1
+      },
+      {
+        "phrase": "heat into the",
+        "n": 1
+      },
+      {
+        "phrase": "heat involved in",
+        "n": 1
+      },
+      {
+        "phrase": "heat is an",
+        "n": 1
+      },
+      {
+        "phrase": "heat is exchanged",
+        "n": 1
+      },
+      {
+        "phrase": "heat it from",
+        "n": 1
+      },
+      {
+        "phrase": "heat lamp",
+        "n": 1
+      },
+      {
+        "phrase": "heat loss",
+        "n": 1
+      },
+      {
+        "phrase": "heat may detonate",
+        "n": 1
+      },
+      {
+        "phrase": "heat measured for",
+        "n": 1
+      },
+      {
+        "phrase": "heat necessary to",
+        "n": 1
+      },
+      {
+        "phrase": "heat needed",
+        "n": 1
+      },
+      {
+        "phrase": "heat of formation",
+        "n": 1
+      },
+      {
+        "phrase": "heat of the",
+        "n": 1
+      },
+      {
+        "phrase": "heat or light",
+        "n": 1
+      },
+      {
+        "phrase": "heat plate with",
+        "n": 1
+      },
+      {
+        "phrase": "heat produced can",
+        "n": 1
+      },
+      {
+        "phrase": "heat produced during",
+        "n": 1
+      },
+      {
+        "phrase": "heat produced or",
+        "n": 1
+      },
+      {
+        "phrase": "heat provided by",
+        "n": 1
+      },
+      {
+        "phrase": "heat released in",
+        "n": 1
+      },
+      {
+        "phrase": "heat released or",
+        "n": 1
+      },
+      {
+        "phrase": "heat released when",
+        "n": 1
+      },
+      {
+        "phrase": "heat removed by",
+        "n": 1
+      },
+      {
+        "phrase": "heat required is",
+        "n": 1
+      },
+      {
+        "phrase": "heat some substance",
+        "n": 1
+      },
+      {
+        "phrase": "heat source moves",
+        "n": 1
+      },
+      {
+        "phrase": "heat source that",
+        "n": 1
+      },
+      {
+        "phrase": "heat steam from",
+        "n": 1
+      },
+      {
+        "phrase": "heat the mixture",
+        "n": 1
+      },
+      {
+        "phrase": "heat transfer between",
+        "n": 1
+      },
+      {
+        "phrase": "heat water from",
+        "n": 1
+      },
+      {
+        "phrase": "heater heats the",
+        "n": 1
+      },
+      {
+        "phrase": "heats a mixture",
+        "n": 1
+      },
+      {
+        "phrase": "high heat capacities",
+        "n": 1
+      },
+      {
+        "phrase": "larger heat capacity",
+        "n": 1
+      },
+      {
+        "phrase": "lower heat conductivity",
+        "n": 1
+      },
+      {
+        "phrase": "measuring heat",
+        "n": 1
+      },
+      {
+        "phrase": "molar heats of",
+        "n": 1
+      },
+      {
+        "phrase": "most heat",
+        "n": 1
+      },
+      {
+        "phrase": "much heat",
+        "n": 1
+      },
+      {
+        "phrase": "much heat did",
+        "n": 1
+      },
+      {
+        "phrase": "much heat in",
+        "n": 1
+      },
+      {
+        "phrase": "prevents heat transfer",
+        "n": 1
+      },
+      {
+        "phrase": "produce heat by",
+        "n": 1
+      },
+      {
+        "phrase": "produce heat that",
+        "n": 1
+      },
+      {
+        "phrase": "produces heat more",
+        "n": 1
+      },
+      {
+        "phrase": "radiant heat from",
+        "n": 1
+      },
+      {
+        "phrase": "releases heat",
+        "n": 1
+      },
+      {
+        "phrase": "removes heat from",
+        "n": 1
+      },
+      {
+        "phrase": "she heats the",
+        "n": 1
+      },
+      {
+        "phrase": "spontaneous heat flow",
+        "n": 1
+      },
+      {
+        "phrase": "stored heat to",
+        "n": 1
+      },
+      {
+        "phrase": "supply heat or",
+        "n": 1
+      },
+      {
+        "phrase": "through heat flow",
+        "n": 1
+      },
+      {
+        "phrase": "trapping heat within",
+        "n": 1
+      },
+      {
+        "phrase": "we heat the",
+        "n": 1
+      },
+      {
+        "phrase": "will heat the",
+        "n": 1
+      }
+    ]
+  }
+}
