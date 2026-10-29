@@ -170,6 +170,25 @@ chapter token is a real directory under `books/efnafraedi-2e/02-for-mt/`; `bondi
 `tengisvigrúm`; `held` rows are excluded; at least one `matchable:false` ruling exists and carries a reason; the
 legacy-chapter converter maps 0/−1/N and refuses a string it does not know.
 
+> **✏️ AMENDED 2026-10-29 — a third, optional input: amendments.** [USER]'s decisions on the 35
+> glossary-vs-ruling conflicts (`docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md`) change
+> targets, and the compiler had no input that could. `--amendments <path>` reads
+> `{ about, recordedAt, record, amendments: [ {op:'retarget', enNorm, from, to, decision} | {op:'add', en, is,
+> decision} | {op:'remove', enNorm, from, decision} ] }`, applied after `supersededInBefore`. Why each choice:
+> - **Optional, and absent rather than null when not given**, so the 2026-10-26 artifact still recompiles byte
+>   for byte: its byte test is what proves the change is backward compatible. `RULING_SET_ABOUT` is unchanged;
+>   a second sentence is appended only when amendments are given.
+> - **A retarget or remove names the CURRENT target as `from`** (case-insensitive, as a supersession compares),
+>   so an amendments file written against another set refuses instead of applying blind.
+> - **A retarget's old target survives as a competitor**, like a superseded one, so the pass still recognises
+>   the form it replaces; the existing gloss-free comparison drops it when only a symbol was trimmed.
+> - **A removed headword stays visible**, under `excluded` with reason `removed`, so rulings + excluded still
+>   cover every enNorm.
+> - **One amendment per enNorm**, so the order of the list cannot change the result.
+> Each amendment leaves a note citing the record and the decision, and `counts.amendments` counts each op.
+> Pinned by `tools/__tests__/ai-review-ruling-amendments.test.js` (every refusal with a control; the 35 decisions
+> against `experiments/terminology-consistency/results/2026-10-29/ruling-set-2026-10-29.json`).
+
 ## Unit C — the code gate (`tools/ai-review/{tokens,lexicon,scope,gate}.js`)
 
 10-10 §3.3 applied to every operation. Pure functions; no I/O; no import from `server/`.

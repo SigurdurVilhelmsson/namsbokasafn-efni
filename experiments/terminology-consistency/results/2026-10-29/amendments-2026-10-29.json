@@ -1,0 +1,277 @@
+{
+  "about": "Amendments that carry out docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md, [USER]'s decisions on the 35 headwords where the chemistry glossary and the 2026-10-26 ruling set disagreed. Read by tools/ai-review/compile-ruling-set.js --amendments (readAmendments). Each retarget and remove names the CURRENT target as from, so the compiler refuses if this file meets a set it was not written against. The nine rulings that stand, and isomers, intermolecular force and calorimetry (number is not a conflict, entry rule 3), need no amendment and have none. The two corrections to our copy of the glossary (valence, concentrated) are not made here: they go through the concept model. Entries carrying their own `record` carry out docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md, decided later the same day. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "recordedAt": "2026-10-29",
+  "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
+  "amendments": [
+    {
+      "op": "retarget",
+      "enNorm": "alpha decay",
+      "from": "alfa (α) sundrun",
+      "to": "alfasundrun",
+      "decision": "The glossary wins (18): alpha decay alfasundrun; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "beta decay",
+      "from": "beta (β) sundrun",
+      "to": "betasundrun",
+      "decision": "The glossary wins (18): beta decay betasundrun; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "becquerel",
+      "from": "becquerel",
+      "to": "bekerel",
+      "decision": "The glossary wins (18): becquerel bekerel, the unit; the name Becquerel is not translated (restricted to the unit sense in scope-exceptions-2026-10-29.json)"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "bimolecular reaction",
+      "from": "tvísameindahvarf",
+      "to": "tvísameinda efnahvarf",
+      "decision": "The glossary wins (18): bimolecular reaction tvísameinda efnahvarf"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "calorie",
+      "from": "kaloría (cal)",
+      "to": "kaloría",
+      "decision": "The glossary wins (18): calorie kaloría; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "collision theory",
+      "from": "árekstrakenning",
+      "to": "árekstrakenningin",
+      "decision": "The glossary wins (18): collision theory árekstrakenningin, a deliberate definite form for a specific theory (entry rule 3); spelling confirmed by [USER] in the session 2026-10-29"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "electron capture",
+      "from": "rafeindahremming",
+      "to": "rafeindarhremming",
+      "decision": "The glossary wins (18): electron capture rafeindarhremming"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "electron volt",
+      "from": "rafeindavolt",
+      "to": "rafeindarvolt",
+      "decision": "The glossary wins (18): electron volt rafeindarvolt"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "frequency factor",
+      "from": "tíðniþáttur",
+      "to": "tíðnistuðull",
+      "decision": "The glossary wins (18): frequency factor tíðnistuðull"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "geiger counter",
+      "from": "Geiger-teljari",
+      "to": "Geiger-nemi",
+      "decision": "The glossary wins (18): Geiger counter Geiger-nemi"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "heat",
+      "from": "varmi (q)",
+      "to": "varmi",
+      "decision": "The glossary wins (18): heat varmi; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "lattice energy",
+      "from": "grindarorka (ΔHgrind)",
+      "to": "grindarorka",
+      "decision": "The glossary wins (18): lattice energy grindarorka; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "molality",
+      "from": "mólalstyrkur (m)",
+      "to": "mólalstyrkur",
+      "decision": "The glossary wins (18): molality mólalstyrkur; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "nucleon",
+      "from": "kjarneind",
+      "to": "kjarnaeind",
+      "decision": "The glossary wins (18): nucleon kjarnaeind"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "osmosis",
+      "from": "osmósa",
+      "to": "himnuflæði",
+      "decision": "The glossary wins (18): osmosis himnuflæði"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "osmotic pressure",
+      "from": "osmósuþrýstingur",
+      "to": "flæðiþrýstingur",
+      "decision": "The glossary wins (18): osmotic pressure flæðiþrýstingur"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "solute",
+      "from": "uppleyst efni",
+      "to": "leyst efni",
+      "decision": "The glossary wins (18): solute leyst efni"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "standing wave",
+      "from": "staðbylgja",
+      "to": "stæð bylgja",
+      "decision": "The glossary wins (18): standing wave stæð bylgja"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "periodic table",
+      "from": "lotukerfi",
+      "to": "lotukerfið",
+      "decision": "Both, by grammar (5): periodic table lotukerfið by default, lotukerfi where an editor judges it fits"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "monodentate",
+      "from": "eintennt",
+      "to": "eintenntur",
+      "decision": "Both, by grammar (5): monodentate eintenntur / eintennt, agreeing with its noun; the target is the dictionary form (entry rule 3)"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "vacancy",
+      "from": "tóm",
+      "to": "eyða",
+      "decision": "Other (3): vacancy eyða, the glossary's listed alternative to eyðuveila"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "valence",
+      "from": "gildi",
+      "to": "gildistala",
+      "decision": "Other (3): valence gildistala on its own; lands together with its five compound rulings (Consequences: valence cannot change alone)"
+    },
+    {
+      "op": "add",
+      "en": "valence electron",
+      "is": "gildisrafeind",
+      "decision": "Other (3): valence compound valence electron gildisrafeind (chemistry glossary)"
+    },
+    {
+      "op": "add",
+      "en": "valence bond",
+      "is": "gildistengi",
+      "decision": "Other (3): valence compound valence bond gildistengi (physics glossary)"
+    },
+    {
+      "op": "add",
+      "en": "valence band",
+      "is": "gildisborði",
+      "decision": "Other (3): valence compound valence band gildisborði (physics glossary)"
+    },
+    {
+      "op": "add",
+      "en": "valence shell",
+      "is": "gildishvolf",
+      "decision": "Other (3): valence compound valence shell gildishvolf (as in the VSEPR ruling)"
+    },
+    {
+      "op": "add",
+      "en": "valence orbital",
+      "is": "gildissvigrúm",
+      "decision": "Other (3): valence compound valence orbital gildissvigrúm"
+    },
+    {
+      "op": "remove",
+      "enNorm": "concentrated",
+      "from": "óþynnt",
+      "decision": "Other (3): concentrated has no standalone entry; other uses are translated in context"
+    },
+    {
+      "op": "add",
+      "en": "concentrated acid",
+      "is": "megn sýra",
+      "decision": "Other (3): concentrated acid megn sýra"
+    },
+    {
+      "op": "add",
+      "en": "concentrated base",
+      "is": "megn basi",
+      "decision": "Other (3): concentrated base megn basi"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "body-centered cubic solid",
+      "from": "miðlægt teningslaga (BCC) fast efni",
+      "to": "miðlægt teningslaga fast efni",
+      "decision": "Entry rule 1 applied to five more rulings: body-centered cubic solid",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "face-centered cubic solid",
+      "from": "hliðlægt teningslaga (FCC) fast efni",
+      "to": "hliðlægt teningslaga fast efni",
+      "decision": "Entry rule 1 applied to five more rulings: face-centered cubic solid",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "gamma emission",
+      "from": "gamma (γ) útgeislun",
+      "to": "gammaútgeislun",
+      "decision": "Entry rule 1 applied to five more rulings: gamma emission gammaútgeislun (physics glossary first form)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "half-life of a reaction",
+      "from": "helmingunartími efnahvarfs (tl/2)",
+      "to": "helmingunartími efnahvarfs",
+      "decision": "Entry rule 1 applied to five more rulings: half-life of a reaction",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "standard hydrogen electrode",
+      "from": "staðalvetnisraftroð (SHE)",
+      "to": "staðalvetnisraftroð",
+      "decision": "Entry rule 1 applied to five more rulings: standard hydrogen electrode",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat capacity",
+      "is": "varmarýmd",
+      "decision": "Four heat compounds: heat capacity varmarýmd (chemistry glossary; physics agrees)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat of combustion",
+      "is": "brunavarmi",
+      "decision": "Four heat compounds: heat of combustion brunavarmi (consistency with combustion bruni, over the physics glossary brennsluvarmi)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat transfer",
+      "is": "varmaflutningur",
+      "decision": "Four heat compounds: heat transfer varmaflutningur (physics glossary)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat exchanger",
+      "is": "varmaskiptir",
+      "decision": "Four heat compounds: heat exchanger varmaskiptir (physics glossary)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    }
+  ]
+}
