@@ -10,10 +10,11 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { parseUserMessage, PROMPT_PATH } from '../../ai-review/term-pass-request.js';
+import { DEFAULT_RULING_SET } from '../../ai-review/term-pass.js';
 
 export const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-export const RULING_SET_PATH =
-  'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json';
+/** The set the CLI reads by default, so the fixture cannot fall behind a change of default. */
+export const RULING_SET_PATH = DEFAULT_RULING_SET;
 const REAL_BOOK = path.join(REPO, 'books', 'efnafraedi-2e');
 
 /** Every temp directory this fixture made; `removeTempDirs` deletes them (/tmp is a small tmpfs). */
