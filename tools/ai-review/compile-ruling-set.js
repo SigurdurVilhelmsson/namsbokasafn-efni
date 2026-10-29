@@ -4,10 +4,13 @@
  *
  * Spec: docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, "Unit B".
  *
- *   node tools/ai-review/compile-ruling-set.js --base <path> --exceptions <path> --out <path>
+ *   node tools/ai-review/compile-ruling-set.js --base <path> --exceptions <path>
+ *       [--amendments <path>] --out <path>
  *
- * Inputs: the FROZEN 2026-10-11 ruling set (read, never changed) and a scope-exceptions file,
- * which holds chapter widths (`exceptions`) and sense restrictions (`senses`).
+ * Inputs: the FROZEN 2026-10-11 ruling set (read, never changed), a scope-exceptions file,
+ * which holds chapter widths (`exceptions`) and sense restrictions (`senses`), and optionally
+ * an amendments file, which carries out a dated decision record by retargeting, adding or
+ * removing rulings (readAmendments). Without it the output is byte-identical to before.
  * Output: one effective ruling per enNorm, with an id, a scope, a scope status, a sense (or
  * null) and a matchability verdict. `compileRulingSet` is pure and deterministic — no clock, no git HEAD,
  * fixed key order, sorted arrays — so a test can recompile the committed inputs and require
@@ -58,6 +61,18 @@ export const RULING_SET_ABOUT =
   'letters, an operator or bracket character, an underscore, or a non-ASCII space or control ' +
   'character, or when the enNorm holds a bracketed placeholder such as [formula]. Held rows and ' +
   'rows without a target are listed under `excluded`, never ruled.';
+
+/**
+ * Appended to `about` only when an amendments file is given (so RULING_SET_ABOUT, which an
+ * unamended artifact carries byte for byte, never changes).
+ */
+export const AMENDMENTS_ABOUT =
+  '`amendments` is a dated input that carries out a decision record: it retargets, adds or ' +
+  'removes a ruling, each entry citing the record and the decision. A retarget or a remove ' +
+  "names the current target, so an amendment written against another set refuses; a retarget's " +
+  "old target survives as a competitor and the ruling gains kind 'amendment' and a source; an " +
+  "add mints a book-wide ruling of kind 'amendment'; a removed headword is listed under " +
+  "`excluded` with reason 'removed'. Each amendment also leaves a note.";
 
 /** The --out basename the CLI will write (a dated ruling set, never a frozen input). */
 export const OUT_NAME_RE = /^ruling-set-\d{4}-\d{2}-\d{2}\.json$/;
@@ -247,19 +262,26 @@ function repoRelative(abs) {
 }
 
 /**
- * Read the two inputs as the compiler takes them. Relative paths resolve against the
+ * Read the inputs as the compiler takes them. Relative paths resolve against the
  * repository root; the recorded path is repo-relative and POSIX, so the artifact does not
- * depend on where the repository is checked out.
+ * depend on where the repository is checked out. `amendments` is in the result only when
+ * `amendmentsPath` is given.
  * @param {string} basePath
  * @param {string} exceptionsPath
- * @returns {{ base: {path: string, text: Buffer}, exceptions: {path: string, text: Buffer} }}
+ * @param {string} [amendmentsPath]
+ * @returns {{ base: {path: string, text: Buffer}, exceptions: {path: string, text: Buffer},
+ *   amendments?: {path: string, text: Buffer} }}
  */
-export function readInputs(basePath, exceptionsPath) {
+export function readInputs(basePath, exceptionsPath, amendmentsPath) {
   const read = (p) => {
     const abs = resolveRepoPath(p);
     return { path: repoRelative(abs), text: fs.readFileSync(abs) };
   };
-  return { base: read(basePath), exceptions: read(exceptionsPath) };
+  return {
+    base: read(basePath),
+    exceptions: read(exceptionsPath),
+    ...(amendmentsPath === undefined ? {} : { amendments: read(amendmentsPath) }),
+  };
 }
 
 function fileRef(input, what) {
@@ -353,6 +375,144 @@ function readBase(base) {
   });
   return { stage1, before };
 }
+
+// ─── Amendments ──────────────────────────────────────────────────────────
+
+/** The keys each amendment op carries, `op` first. */
+const AMENDMENT_KEYS = Object.freeze({
+  retarget: ['op', 'enNorm', 'from', 'to', 'decision'],
+  add: ['op', 'en', 'is', 'decision'],
+  remove: ['op', 'enNorm', 'from', 'decision'],
+});
+
+/**
+ * Read an amendments file:
+ *   { about, recordedAt: 'YYYY-MM-DD', record: <path of the decision record>, amendments: [
+ *       { op: 'retarget', enNorm, from, to, decision }
+ *     | { op: 'add', en, is, decision }
+ *     | { op: 'remove', enNorm, from, decision } ] }
+ * `decision` names which of the record's decisions the amendment carries out. At most one
+ * amendment per enNorm, so the order of the list cannot change the result.
+ */
+function readAmendments(file) {
+  if (!isPlainObject(file)) throw new Error('ruling-set: amendments file is not an object');
+  onlyKeys(file, ['about', 'recordedAt', 'record', 'amendments'], 'the amendments file');
+  if (!isNonEmptyString(file.about)) throw new Error('ruling-set: amendments file needs about');
+  if (typeof file.recordedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(file.recordedAt)) {
+    throw new Error('ruling-set: amendments file needs recordedAt as YYYY-MM-DD');
+  }
+  if (!isNonEmptyString(file.record)) throw new Error('ruling-set: amendments file needs a record');
+  if (!Array.isArray(file.amendments)) throw new Error('ruling-set: amendments must be an array');
+  const seen = new Set();
+  const list = file.amendments.map((a, i) => {
+    const where = `amendments[${i}]`;
+    if (!isPlainObject(a)) throw new Error(`ruling-set: ${where} is not an object`);
+    const keys = AMENDMENT_KEYS[a.op];
+    if (!keys) throw new Error(`ruling-set: ${where}: op must be retarget, add or remove`);
+    onlyKeys(a, keys, where);
+    for (const k of keys.slice(1)) {
+      if (!isNonEmptyString(a[k])) throw new Error(`ruling-set: ${where} (${a.op}) needs ${k}`);
+      if (a[k] !== a[k].trim()) throw new Error(`ruling-set: ${where}: ${k} must be trimmed`);
+    }
+    const enNorm = a.op === 'add' ? normEn(a.en) : a.enNorm;
+    if (a.op !== 'add' && normEn(enNorm) !== enNorm) {
+      throw new Error(`ruling-set: ${where}: enNorm ${JSON.stringify(enNorm)} is not normalised`);
+    }
+    if (seen.has(enNorm)) throw new Error(`ruling-set: two amendments of ${enNorm}`);
+    seen.add(enNorm);
+    if (a.op === 'retarget' && a.to.toLowerCase() === a.from.toLowerCase()) {
+      throw new Error(`ruling-set: ${where}: retargeting ${enNorm} to ${a.to} changes nothing`);
+    }
+    return {
+      op: a.op,
+      enNorm,
+      en: a.en ?? null,
+      from: a.from ?? null,
+      to: a.to ?? a.is ?? null,
+      decision: a.decision,
+    };
+  });
+  return { recordedAt: file.recordedAt, record: file.record, list };
+}
+
+/**
+ * Apply the amendments to the rows left after supersession. A retarget or a remove must name
+ * the CURRENT target as `from` (case-insensitive, as a supersession compares), so an
+ * amendment written against an older set refuses instead of applying blind. A retarget's old
+ * target survives as a competitor; a remove leaves the headword listed under `excluded`; an
+ * add refuses a headword that already has rows (retarget it instead).
+ */
+function applyAmendments(kept, amd) {
+  const sourceOf = (a) => `amendment ${amd.recordedAt} ${a.op}: ${amd.record} (${a.decision})`;
+  let rows = kept;
+  const removed = new Set();
+  const oldTargets = new Map(); // enNorm → [targets a retarget replaced]
+  const sources = new Map(); // enNorm → the source a retarget adds
+  for (const a of amd.list) {
+    const mine = rows.filter((r) => r.enNorm === a.enNorm);
+    if (a.op === 'add') {
+      if (mine.length) {
+        throw new Error(
+          `ruling-set: add ${a.enNorm}: the headword already has rows (retarget it instead)`
+        );
+      }
+      rows = [
+        ...rows,
+        {
+          enNorm: a.enNorm,
+          en: a.en,
+          is: a.to,
+          kind: 'amendment',
+          held: false,
+          competitors: [],
+          source: sourceOf(a),
+        },
+      ];
+      continue;
+    }
+    if (!mine.length) throw new Error(`ruling-set: ${a.op} ${a.enNorm} matches no row`);
+    if (mine.some((r) => r.held || r.is === null)) {
+      throw new Error(`ruling-set: ${a.op} ${a.enNorm} names a held (excluded) headword`);
+    }
+    if (!mine.every((r) => r.is.toLowerCase() === a.from.toLowerCase())) {
+      throw new Error(
+        `ruling-set: ${a.op} ${a.enNorm}: ${a.from} is not the target (${uniqueSorted(mine.map((r) => r.is)).join(' | ')})`
+      );
+    }
+    if (a.op === 'remove') {
+      removed.add(a.enNorm);
+      continue;
+    }
+    oldTargets.set(a.enNorm, uniqueSorted(mine.map((r) => r.is)));
+    sources.set(a.enNorm, sourceOf(a));
+    rows = rows.map((r) => (r.enNorm === a.enNorm ? { ...r, is: a.to } : r));
+  }
+  const notes = amd.list.map((a) => ({
+    kind: 'amendment',
+    op: a.op,
+    enNorm: a.enNorm,
+    from: a.from,
+    to: a.op === 'remove' ? null : a.to,
+    record: amd.record,
+    decision: a.decision,
+  }));
+  const count = (op) => amd.list.filter((a) => a.op === op).length;
+  return {
+    rows,
+    removed,
+    oldTargets,
+    sources,
+    notes,
+    counts: { retargeted: count('retarget'), added: count('add'), removed: count('remove') },
+  };
+}
+
+const NO_AMENDMENTS = Object.freeze({
+  removed: new Set(),
+  oldTargets: new Map(),
+  sources: new Map(),
+  notes: [],
+});
 
 /** Drop the before rows each supersession names; refuse one that matches nothing. */
 function applySupersession(rows, supersessions) {
@@ -464,6 +624,7 @@ const NOTE_ORDER = [
   'scope-exception',
   'sense',
   'superseded',
+  'amendment',
   'trailing-gloss',
   'inflection-note',
 ];
@@ -473,19 +634,25 @@ const TRAILING_GLOSS_RE = /\s*\([^()]*\)\s*$/;
  * Compile the scoped ruling set. Pure: no I/O, no clock, no git.
  * @param {{path: string, text: string|Buffer}} baseInput the frozen 2026-10-11 ruling set
  * @param {{path: string, text: string|Buffer}} exceptionsInput the scope-exceptions file
+ * @param {{path: string, text: string|Buffer}} [amendmentsInput] an amendments file (optional:
+ *   without it the artifact carries no `amendments` key and is what it was before amendments existed)
  * @returns {object} the artifact (serialise with serializeRulingSet)
  */
-export function compileRulingSet(baseInput, exceptionsInput) {
+export function compileRulingSet(baseInput, exceptionsInput, amendmentsInput) {
   const { ref: baseRef, json: base } = fileRef(baseInput, 'base');
   const { ref: excRef, json: excFile } = fileRef(exceptionsInput, 'exceptions');
+  const amdIn = amendmentsInput === undefined ? null : fileRef(amendmentsInput, 'amendments');
   const rows = readBase(base);
   const { exceptions, senses } = readExceptions(excFile);
   const {
-    kept,
+    kept: superseded,
     notes: supersededNotes,
     supersededTargets,
     droppedCount,
   } = applySupersession(rows, base.supersededInBefore);
+  const amended = amdIn ? applyAmendments(superseded, readAmendments(amdIn.json)) : null;
+  const kept = amended ? amended.rows : superseded;
+  const amd = amended ?? NO_AMENDMENTS;
 
   const groups = new Map();
   for (const r of kept) groups.set(r.enNorm, [...(groups.get(r.enNorm) || []), r]);
@@ -494,6 +661,10 @@ export function compileRulingSet(baseInput, exceptionsInput) {
   const excluded = [];
   const trailingGloss = [];
   for (const [enNorm, rs] of groups) {
+    if (amd.removed.has(enNorm)) {
+      excluded.push({ enNorm, reason: 'removed' });
+      continue;
+    }
     const targeted = rs.filter((r) => r.is !== null);
     const held = rs.some((r) => r.held);
     if (targeted.length && targeted.length !== rs.length) {
@@ -512,10 +683,13 @@ export function compileRulingSet(baseInput, exceptionsInput) {
     const m = matchability(is, enNorm);
     const isKey = glossFreeKey(is);
     const competitors = uniqueSorted(
-      [...rs.flatMap((r) => r.competitors), ...(supersededTargets.get(enNorm) || [])].filter(
-        (c) => isNonEmptyString(c) && glossFreeKey(c) !== isKey
-      )
+      [
+        ...rs.flatMap((r) => r.competitors),
+        ...(supersededTargets.get(enNorm) || []),
+        ...(amd.oldTargets.get(enNorm) || []),
+      ].filter((c) => isNonEmptyString(c) && glossFreeKey(c) !== isKey)
     );
+    const amendSource = amd.sources.get(enNorm);
     const ruling = {
       id: slugOf(enNorm),
       enNorm,
@@ -525,8 +699,8 @@ export function compileRulingSet(baseInput, exceptionsInput) {
       scope: exc ? exc.scope : { kind: 'book' },
       scopeStatus: exc ? exc.status : 'default',
       sense: senses.has(enNorm) ? senses.get(enNorm).sense : null,
-      kinds: uniqueSorted(rs.map((r) => r.kind)),
-      sources: uniqueSorted(rs.map((r) => r.source)),
+      kinds: uniqueSorted([...rs.map((r) => r.kind), ...(amendSource ? ['amendment'] : [])]),
+      sources: uniqueSorted([...rs.map((r) => r.source), ...(amendSource ? [amendSource] : [])]),
       matchable: m.matchable,
     };
     if (!m.matchable) {
@@ -539,17 +713,22 @@ export function compileRulingSet(baseInput, exceptionsInput) {
     rulings.push(ruling);
   }
 
-  const excludedNorms = new Set(excluded.map((e) => e.enNorm));
+  const excludedNorms = new Map(excluded.map((e) => [e.enNorm, e.reason]));
+  // A removed headword says so; held and no-target keep the wording they always had.
+  const excludedAs = (enNorm) =>
+    excludedNorms.get(enNorm) === 'removed' ? 'removed (excluded)' : 'held (excluded)';
   for (const enNorm of exceptions.keys()) {
     if (excludedNorms.has(enNorm)) {
-      throw new Error(`ruling-set: the exception for ${enNorm} names a held (excluded) headword`);
+      throw new Error(
+        `ruling-set: the exception for ${enNorm} names a ${excludedAs(enNorm)} headword`
+      );
     }
     if (!groups.has(enNorm))
       throw new Error(`ruling-set: the exception for ${enNorm} matches no row`);
   }
   for (const enNorm of senses.keys()) {
     if (excludedNorms.has(enNorm)) {
-      throw new Error(`ruling-set: the sense for ${enNorm} names a held (excluded) headword`);
+      throw new Error(`ruling-set: the sense for ${enNorm} names a ${excludedAs(enNorm)} headword`);
     }
     if (!groups.has(enNorm)) throw new Error(`ruling-set: the sense for ${enNorm} matches no row`);
   }
@@ -591,6 +770,7 @@ export function compileRulingSet(baseInput, exceptionsInput) {
       glossBy: s.glossBy,
     })),
     ...supersededNotes,
+    ...amd.notes,
     ...trailingGloss,
     ...(base.inflectionNotes || []).map((n, i) => {
       if (!isPlainObject(n) || !isNonEmptyString(n.id) || typeof n.en !== 'string') {
@@ -613,11 +793,15 @@ export function compileRulingSet(baseInput, exceptionsInput) {
   );
 
   const count = (pred) => rulings.filter(pred).length;
+  // Key order is part of the bytes: `amendments` sits after `exceptions` and is absent, not
+  // null, when no amendments file was given, so an unamended set is byte-identical to one
+  // compiled before amendments existed.
   return {
     schema: RULING_SET_SCHEMA,
-    about: RULING_SET_ABOUT,
+    about: amended ? `${RULING_SET_ABOUT} ${AMENDMENTS_ABOUT}` : RULING_SET_ABOUT,
     base: baseRef,
     exceptions: excRef,
+    ...(amended ? { amendments: amdIn.ref } : {}),
     counts: {
       baseRows: { stage1: rows.stage1.length, before: rows.before.length },
       superseded: droppedCount,
@@ -636,6 +820,7 @@ export function compileRulingSet(baseInput, exceptionsInput) {
         proposed: count((r) => r.sense !== null && r.sense.status === 'proposed'),
         ruled: count((r) => r.sense !== null && r.sense.status === 'ruled'),
       },
+      ...(amended ? { amendments: amended.counts } : {}),
     },
     rulings,
     excluded,
@@ -682,12 +867,14 @@ export function serializeRulingSet(artifact) {
 // ─── CLI ─────────────────────────────────────────────────────────────────
 
 const USAGE = [
-  'Usage: node tools/ai-review/compile-ruling-set.js --base <path> --exceptions <path> --out <path>',
+  'Usage: node tools/ai-review/compile-ruling-set.js --base <path> --exceptions <path>',
+  '         [--amendments <path>] --out <path>',
   'Relative paths resolve against the repository root. --out must be named',
   'ruling-set-YYYY-MM-DD.json and must not be one of the inputs.',
 ].join('\n');
 
-const FLAGS = ['base', 'exceptions', 'out'];
+const FLAGS = ['base', 'exceptions', 'amendments', 'out'];
+const REQUIRED_FLAGS = ['base', 'exceptions', 'out'];
 
 /** `dev:ino` of the file a path reaches (symlinks followed), or null when nothing is there. */
 function fileIdentity(abs) {
@@ -737,7 +924,7 @@ function parseCliArgs(argv) {
       throw new Error(`--${name} needs a value`);
     args[name] = value;
   }
-  for (const name of FLAGS) if (!args[name]) throw new Error(`--${name} is required`);
+  for (const name of REQUIRED_FLAGS) if (!args[name]) throw new Error(`--${name} is required`);
   return args;
 }
 
@@ -754,10 +941,19 @@ function main(argv) {
     if (!OUT_NAME_RE.test(path.basename(outAbs))) {
       throw new Error(`--out ${args.out} is not named ruling-set-YYYY-MM-DD.json`);
     }
-    const inputAbs = [args.base, args.exceptions].map(resolveRepoPath);
+    const inputAbs = [args.base, args.exceptions, args.amendments]
+      .filter((p) => p !== undefined)
+      .map(resolveRepoPath);
     if (sameFileAsAnInput(outAbs, inputAbs)) throw new Error('--out must not be one of the inputs');
-    const { base, exceptions } = readInputs(args.base, args.exceptions);
-    const artifact = compileRulingSet(base, exceptions);
+    const { base, exceptions, amendments } = readInputs(
+      args.base,
+      args.exceptions,
+      args.amendments
+    );
+    const artifact =
+      amendments === undefined
+        ? compileRulingSet(base, exceptions)
+        : compileRulingSet(base, exceptions, amendments);
     const text = serializeRulingSet(artifact);
     validateRulingSet(JSON.parse(text));
     const tmp = `${outAbs}.tmp-${process.pid}`;

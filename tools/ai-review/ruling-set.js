@@ -263,12 +263,24 @@ export function validateRulingSet(set) {
   }
   onlyKeys(
     set,
-    ['schema', 'about', 'base', 'exceptions', 'counts', 'rulings', 'excluded', 'notes'],
+    [
+      'schema',
+      'about',
+      'base',
+      'exceptions',
+      'amendments',
+      'counts',
+      'rulings',
+      'excluded',
+      'notes',
+    ],
     'the artifact'
   );
   if (!isNonEmptyString(set.about)) throw new Error('ruling-set: about is missing');
   checkFileRef(set.base, 'base');
   checkFileRef(set.exceptions, 'exceptions');
+  // Optional: a set compiled without an amendments file has no such key.
+  if ('amendments' in set) checkFileRef(set.amendments, 'amendments');
   if (!isPlainObject(set.counts)) throw new Error('ruling-set: counts must be an object');
   if (!Array.isArray(set.rulings)) throw new Error('ruling-set: rulings must be an array');
   if (!Array.isArray(set.excluded)) throw new Error('ruling-set: excluded must be an array');
