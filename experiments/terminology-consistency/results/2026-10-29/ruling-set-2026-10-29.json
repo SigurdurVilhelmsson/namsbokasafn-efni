@@ -7,11 +7,11 @@
   },
   "exceptions": {
     "path": "experiments/terminology-consistency/results/2026-10-29/scope-exceptions-2026-10-29.json",
-    "sha256": "d2e3f769c62588c4e8c7c2a12501ef552e441166d84bf329576d776a466de5c7"
+    "sha256": "9fffe884158ec74c00377171b5083420f41c7cb49e98588bb00a553750a37ac0"
   },
   "amendments": {
     "path": "experiments/terminology-consistency/results/2026-10-29/amendments-2026-10-29.json",
-    "sha256": "c20a65cfbbad10d0450ede537f68e5d17ecbef844645f09c7227f08d51e49016"
+    "sha256": "92521abb17d8648917b0352089ddc31c3eda264e0236e9ddf44d089638d41a0f"
   },
   "counts": {
     "baseRows": {
@@ -19,24 +19,24 @@
       "before": 170
     },
     "superseded": 1,
-    "enNorms": 398,
-    "rulings": 393,
+    "enNorms": 402,
+    "rulings": 397,
     "excluded": 5,
-    "matchable": 374,
-    "unmatchable": 19,
+    "matchable": 383,
+    "unmatchable": 14,
     "scopeStatus": {
-      "default": 393,
+      "default": 397,
       "proposed": 0,
       "ruled": 0
     },
     "exceptions": 0,
     "senses": {
       "proposed": 0,
-      "ruled": 6
+      "ruled": 7
     },
     "amendments": {
-      "retargeted": 22,
-      "added": 7,
+      "retargeted": 27,
+      "added": 11,
       "removed": 1
     }
   },
@@ -659,17 +659,19 @@
       "id": "body-centered-cubic-solid",
       "enNorm": "body-centered cubic solid",
       "en": ["body-centered cubic (BCC) solid", "body-centered cubic solid"],
-      "is": "miðlægt teningslaga (BCC) fast efni",
+      "is": "miðlægt teningslaga fast efni",
       "competitors": [],
       "scope": {
         "kind": "book"
       },
       "scopeStatus": "default",
       "sense": null,
-      "kinds": ["stage1"],
-      "sources": ["stage1 ch10_fs-idp190835184 (page-answer; 2026-10-11 [USER])"],
-      "matchable": false,
-      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+      "kinds": ["amendment", "stage1"],
+      "sources": [
+        "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Entry rule 1 applied to five more rulings: body-centered cubic solid)",
+        "stage1 ch10_fs-idp190835184 (page-answer; 2026-10-11 [USER])"
+      ],
+      "matchable": true
     },
     {
       "id": "body-centered-cubic-unit-cell",
@@ -2312,17 +2314,19 @@
       "id": "face-centered-cubic-solid",
       "enNorm": "face-centered cubic solid",
       "en": ["face-centered cubic (FCC) solid", "face-centered cubic solid"],
-      "is": "hliðlægt teningslaga (FCC) fast efni",
+      "is": "hliðlægt teningslaga fast efni",
       "competitors": [],
       "scope": {
         "kind": "book"
       },
       "scopeStatus": "default",
       "sense": null,
-      "kinds": ["stage1"],
-      "sources": ["stage1 ch10_fs-idp20057136 (page-answer; 2026-10-11 [USER])"],
-      "matchable": false,
-      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+      "kinds": ["amendment", "stage1"],
+      "sources": [
+        "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Entry rule 1 applied to five more rulings: face-centered cubic solid)",
+        "stage1 ch10_fs-idp20057136 (page-answer; 2026-10-11 [USER])"
+      ],
+      "matchable": true
     },
     {
       "id": "face-centered-cubic-unit-cell",
@@ -2539,17 +2543,19 @@
       "id": "gamma-emission",
       "enNorm": "gamma emission",
       "en": ["gamma (γ) emission", "gamma emission"],
-      "is": "gamma (γ) útgeislun",
-      "competitors": ["gammageislun", "gammaútgeislun"],
+      "is": "gammaútgeislun",
+      "competitors": ["gamma (γ) útgeislun", "gammageislun"],
       "scope": {
         "kind": "book"
       },
       "scopeStatus": "default",
       "sense": null,
-      "kinds": ["stage1"],
-      "sources": ["stage1 ch21_fs-idm27366640 (page-answer; 2026-10-11 [USER])"],
-      "matchable": false,
-      "unmatchableReason": "target-greek, target-operator-or-bracket"
+      "kinds": ["amendment", "stage1"],
+      "sources": [
+        "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Entry rule 1 applied to five more rulings: gamma emission gammaútgeislun (physics glossary first form))",
+        "stage1 ch21_fs-idm27366640 (page-answer; 2026-10-11 [USER])"
+      ],
+      "matchable": true
     },
     {
       "id": "gamma-ray",
@@ -2712,19 +2718,19 @@
       "id": "half-life-of-a-reaction",
       "enNorm": "half-life of a reaction",
       "en": ["half-life of a reaction", "half-life of a reaction (tl/2)"],
-      "is": "helmingunartími efnahvarfs (tl/2)",
+      "is": "helmingunartími efnahvarfs",
       "competitors": [],
       "scope": {
         "kind": "book"
       },
       "scopeStatus": "default",
       "sense": null,
-      "kinds": ["verdict"],
+      "kinds": ["amendment", "verdict"],
       "sources": [
+        "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Entry rule 1 applied to five more rulings: half-life of a reaction)",
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch12_fs-idm46849712 (2026-10-10 [USER])"
       ],
-      "matchable": false,
-      "unmatchableReason": "target-digit, target-operator-or-bracket"
+      "matchable": true
     },
     {
       "id": "half-reaction",
@@ -2753,11 +2759,89 @@
         "kind": "book"
       },
       "scopeStatus": "default",
-      "sense": null,
+      "sense": {
+        "id": "thermal-energy",
+        "gloss": "heat as a noun: thermal energy transferred between bodies, a quantity of heat (heat flows, heat is absorbed, how much heat)",
+        "otherSenses": [
+          {
+            "id": "verb-to-heat",
+            "gloss": "heat as a verb: to warm or raise the temperature of something (heat the house, heat 1 kg of water, a heater heats)"
+          }
+        ],
+        "status": "ruled"
+      },
       "kinds": ["amendment", "verdict"],
       "sources": [
         "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md (The glossary wins (18): heat varmi; entry rule 1, a symbol or unit is not part of an entry)",
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25504496 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heat-capacity",
+      "enNorm": "heat capacity",
+      "en": ["heat capacity"],
+      "is": "varmarýmd",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "sense": null,
+      "kinds": ["amendment"],
+      "sources": [
+        "amendment 2026-10-29 add: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Four heat compounds: heat capacity varmarýmd (chemistry glossary; physics agrees))"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heat-exchanger",
+      "enNorm": "heat exchanger",
+      "en": ["heat exchanger"],
+      "is": "varmaskiptir",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "sense": null,
+      "kinds": ["amendment"],
+      "sources": [
+        "amendment 2026-10-29 add: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Four heat compounds: heat exchanger varmaskiptir (physics glossary))"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heat-of-combustion",
+      "enNorm": "heat of combustion",
+      "en": ["heat of combustion"],
+      "is": "brunavarmi",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "sense": null,
+      "kinds": ["amendment"],
+      "sources": [
+        "amendment 2026-10-29 add: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Four heat compounds: heat of combustion brunavarmi (consistency with combustion bruni, over the physics glossary brennsluvarmi))"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "heat-transfer",
+      "enNorm": "heat transfer",
+      "en": ["heat transfer"],
+      "is": "varmaflutningur",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "sense": null,
+      "kinds": ["amendment"],
+      "sources": [
+        "amendment 2026-10-29 add: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Four heat compounds: heat transfer varmaflutningur (physics glossary))"
       ],
       "matchable": true
     },
@@ -5671,19 +5755,19 @@
       "id": "standard-hydrogen-electrode",
       "enNorm": "standard hydrogen electrode",
       "en": ["standard hydrogen electrode", "standard hydrogen electrode (SHE)"],
-      "is": "staðalvetnisraftroð (SHE)",
+      "is": "staðalvetnisraftroð",
       "competitors": ["staðalvetnisskaut (SHE)"],
       "scope": {
         "kind": "book"
       },
       "scopeStatus": "default",
       "sense": null,
-      "kinds": ["verdict"],
+      "kinds": ["amendment", "verdict"],
       "sources": [
+        "amendment 2026-10-29 retarget: docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md (Entry rule 1 applied to five more rulings: standard hydrogen electrode)",
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp198657264 (2026-10-10 [USER])"
       ],
-      "matchable": false,
-      "unmatchableReason": "target-inner-capital, target-operator-or-bracket"
+      "matchable": true
     },
     {
       "id": "standing-wave",
@@ -6455,6 +6539,14 @@
     },
     {
       "kind": "sense",
+      "enNorm": "heat",
+      "sense": "thermal-energy",
+      "status": "ruled",
+      "source": "[USER] in the session, 2026-10-29: \"Restrict to noun\". Recorded in docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md.",
+      "glossBy": "Claude, 2026-10-29, from the offer measurement's census of heat in the English (offer-diff-2026-10-29.json). [USER] reviews it with the next pilot's output."
+    },
+    {
+      "kind": "sense",
       "enNorm": "hole",
       "sense": "lattice-hole",
       "status": "ruled",
@@ -6503,6 +6595,15 @@
       "to": "tvísameinda efnahvarf",
       "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
       "decision": "The glossary wins (18): bimolecular reaction tvísameinda efnahvarf"
+    },
+    {
+      "kind": "amendment",
+      "op": "retarget",
+      "enNorm": "body-centered cubic solid",
+      "from": "miðlægt teningslaga (BCC) fast efni",
+      "to": "miðlægt teningslaga fast efni",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Entry rule 1 applied to five more rulings: body-centered cubic solid"
     },
     {
       "kind": "amendment",
@@ -6570,11 +6671,29 @@
     {
       "kind": "amendment",
       "op": "retarget",
+      "enNorm": "face-centered cubic solid",
+      "from": "hliðlægt teningslaga (FCC) fast efni",
+      "to": "hliðlægt teningslaga fast efni",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Entry rule 1 applied to five more rulings: face-centered cubic solid"
+    },
+    {
+      "kind": "amendment",
+      "op": "retarget",
       "enNorm": "frequency factor",
       "from": "tíðniþáttur",
       "to": "tíðnistuðull",
       "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
       "decision": "The glossary wins (18): frequency factor tíðnistuðull"
+    },
+    {
+      "kind": "amendment",
+      "op": "retarget",
+      "enNorm": "gamma emission",
+      "from": "gamma (γ) útgeislun",
+      "to": "gammaútgeislun",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Entry rule 1 applied to five more rulings: gamma emission gammaútgeislun (physics glossary first form)"
     },
     {
       "kind": "amendment",
@@ -6588,11 +6707,56 @@
     {
       "kind": "amendment",
       "op": "retarget",
+      "enNorm": "half-life of a reaction",
+      "from": "helmingunartími efnahvarfs (tl/2)",
+      "to": "helmingunartími efnahvarfs",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Entry rule 1 applied to five more rulings: half-life of a reaction"
+    },
+    {
+      "kind": "amendment",
+      "op": "retarget",
       "enNorm": "heat",
       "from": "varmi (q)",
       "to": "varmi",
       "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
       "decision": "The glossary wins (18): heat varmi; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "kind": "amendment",
+      "op": "add",
+      "enNorm": "heat capacity",
+      "from": null,
+      "to": "varmarýmd",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Four heat compounds: heat capacity varmarýmd (chemistry glossary; physics agrees)"
+    },
+    {
+      "kind": "amendment",
+      "op": "add",
+      "enNorm": "heat exchanger",
+      "from": null,
+      "to": "varmaskiptir",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Four heat compounds: heat exchanger varmaskiptir (physics glossary)"
+    },
+    {
+      "kind": "amendment",
+      "op": "add",
+      "enNorm": "heat of combustion",
+      "from": null,
+      "to": "brunavarmi",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Four heat compounds: heat of combustion brunavarmi (consistency with combustion bruni, over the physics glossary brennsluvarmi)"
+    },
+    {
+      "kind": "amendment",
+      "op": "add",
+      "enNorm": "heat transfer",
+      "from": null,
+      "to": "varmaflutningur",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Four heat compounds: heat transfer varmaflutningur (physics glossary)"
     },
     {
       "kind": "amendment",
@@ -6669,6 +6833,15 @@
     {
       "kind": "amendment",
       "op": "retarget",
+      "enNorm": "standard hydrogen electrode",
+      "from": "staðalvetnisraftroð (SHE)",
+      "to": "staðalvetnisraftroð",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md",
+      "decision": "Entry rule 1 applied to five more rulings: standard hydrogen electrode"
+    },
+    {
+      "kind": "amendment",
+      "op": "retarget",
       "enNorm": "standing wave",
       "from": "staðbylgja",
       "to": "stæð bylgja",
@@ -6740,21 +6913,9 @@
     },
     {
       "kind": "trailing-gloss",
-      "enNorm": "half-life of a reaction",
-      "is": "helmingunartími efnahvarfs (tl/2)",
-      "withoutGloss": "helmingunartími efnahvarfs"
-    },
-    {
-      "kind": "trailing-gloss",
       "enNorm": "secondary quantum number",
       "is": "aukaskammtatala (hverfiþungi)",
       "withoutGloss": "aukaskammtatala"
-    },
-    {
-      "kind": "trailing-gloss",
-      "enNorm": "standard hydrogen electrode",
-      "is": "staðalvetnisraftroð (SHE)",
-      "withoutGloss": "staðalvetnisraftroð"
     },
     {
       "kind": "inflection-note",

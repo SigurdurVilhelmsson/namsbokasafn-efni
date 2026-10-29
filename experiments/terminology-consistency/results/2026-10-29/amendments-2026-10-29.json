@@ -1,5 +1,5 @@
 {
-  "about": "Amendments that carry out docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md, [USER]'s decisions on the 35 headwords where the chemistry glossary and the 2026-10-26 ruling set disagreed. Read by tools/ai-review/compile-ruling-set.js --amendments (readAmendments). Each retarget and remove names the CURRENT target as from, so the compiler refuses if this file meets a set it was not written against. The nine rulings that stand, and isomers, intermolecular force and calorimetry (number is not a conflict, entry rule 3), need no amendment and have none. The two corrections to our copy of the glossary (valence, concentrated) are not made here: they go through the concept model. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "about": "Amendments that carry out docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md, [USER]'s decisions on the 35 headwords where the chemistry glossary and the 2026-10-26 ruling set disagreed. Read by tools/ai-review/compile-ruling-set.js --amendments (readAmendments). Each retarget and remove names the CURRENT target as from, so the compiler refuses if this file meets a set it was not written against. The nine rulings that stand, and isomers, intermolecular force and calorimetry (number is not a conflict, entry rule 3), need no amendment and have none. The two corrections to our copy of the glossary (valence, concentrated) are not made here: they go through the concept model. Entries carrying their own `record` carry out docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md, decided later the same day. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
   "recordedAt": "2026-10-29",
   "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
   "amendments": [
@@ -204,6 +204,74 @@
       "en": "concentrated base",
       "is": "megn basi",
       "decision": "Other (3): concentrated base megn basi"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "body-centered cubic solid",
+      "from": "miðlægt teningslaga (BCC) fast efni",
+      "to": "miðlægt teningslaga fast efni",
+      "decision": "Entry rule 1 applied to five more rulings: body-centered cubic solid",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "face-centered cubic solid",
+      "from": "hliðlægt teningslaga (FCC) fast efni",
+      "to": "hliðlægt teningslaga fast efni",
+      "decision": "Entry rule 1 applied to five more rulings: face-centered cubic solid",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "gamma emission",
+      "from": "gamma (γ) útgeislun",
+      "to": "gammaútgeislun",
+      "decision": "Entry rule 1 applied to five more rulings: gamma emission gammaútgeislun (physics glossary first form)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "half-life of a reaction",
+      "from": "helmingunartími efnahvarfs (tl/2)",
+      "to": "helmingunartími efnahvarfs",
+      "decision": "Entry rule 1 applied to five more rulings: half-life of a reaction",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "retarget",
+      "enNorm": "standard hydrogen electrode",
+      "from": "staðalvetnisraftroð (SHE)",
+      "to": "staðalvetnisraftroð",
+      "decision": "Entry rule 1 applied to five more rulings: standard hydrogen electrode",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat capacity",
+      "is": "varmarýmd",
+      "decision": "Four heat compounds: heat capacity varmarýmd (chemistry glossary; physics agrees)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat of combustion",
+      "is": "brunavarmi",
+      "decision": "Four heat compounds: heat of combustion brunavarmi (consistency with combustion bruni, over the physics glossary brennsluvarmi)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat transfer",
+      "is": "varmaflutningur",
+      "decision": "Four heat compounds: heat transfer varmaflutningur (physics glossary)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
+    },
+    {
+      "op": "add",
+      "en": "heat exchanger",
+      "is": "varmaskiptir",
+      "decision": "Four heat compounds: heat exchanger varmaskiptir (physics glossary)",
+      "record": "docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md"
     }
   ]
 }

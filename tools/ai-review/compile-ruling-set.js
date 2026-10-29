@@ -391,7 +391,8 @@ const AMENDMENT_KEYS = Object.freeze({
  *       { op: 'retarget', enNorm, from, to, decision }
  *     | { op: 'add', en, is, decision }
  *     | { op: 'remove', enNorm, from, decision } ] }
- * `decision` names which of the record's decisions the amendment carries out. At most one
+ * `decision` names which of the record's decisions the amendment carries out; an amendment may
+ * carry its own `record` when it carries out a different record from the file's. At most one
  * amendment per enNorm, so the order of the list cannot change the result.
  */
 function readAmendments(file) {
@@ -409,10 +410,14 @@ function readAmendments(file) {
     if (!isPlainObject(a)) throw new Error(`ruling-set: ${where} is not an object`);
     const keys = AMENDMENT_KEYS[a.op];
     if (!keys) throw new Error(`ruling-set: ${where}: op must be retarget, add or remove`);
-    onlyKeys(a, keys, where);
+    onlyKeys(a, [...keys, 'record'], where);
     for (const k of keys.slice(1)) {
       if (!isNonEmptyString(a[k])) throw new Error(`ruling-set: ${where} (${a.op}) needs ${k}`);
       if (a[k] !== a[k].trim()) throw new Error(`ruling-set: ${where}: ${k} must be trimmed`);
+    }
+    // Optional: the record this amendment carries out, when it is not the file's `record`.
+    if ('record' in a && (!isNonEmptyString(a.record) || a.record !== a.record.trim())) {
+      throw new Error(`ruling-set: ${where}: record must be a trimmed, non-empty path`);
     }
     const enNorm = a.op === 'add' ? normEn(a.en) : a.enNorm;
     if (a.op !== 'add' && normEn(enNorm) !== enNorm) {
@@ -430,6 +435,7 @@ function readAmendments(file) {
       from: a.from ?? null,
       to: a.to ?? a.is ?? null,
       decision: a.decision,
+      record: a.record ?? file.record,
     };
   });
   return { recordedAt: file.recordedAt, record: file.record, list };
@@ -443,7 +449,7 @@ function readAmendments(file) {
  * add refuses a headword that already has rows (retarget it instead).
  */
 function applyAmendments(kept, amd) {
-  const sourceOf = (a) => `amendment ${amd.recordedAt} ${a.op}: ${amd.record} (${a.decision})`;
+  const sourceOf = (a) => `amendment ${amd.recordedAt} ${a.op}: ${a.record} (${a.decision})`;
   let rows = kept;
   const removed = new Set();
   const oldTargets = new Map(); // enNorm → [targets a retarget replaced]
@@ -493,7 +499,7 @@ function applyAmendments(kept, amd) {
     enNorm: a.enNorm,
     from: a.from,
     to: a.op === 'remove' ? null : a.to,
-    record: amd.record,
+    record: a.record,
     decision: a.decision,
   }));
   const count = (op) => amd.list.filter((a) => a.op === op).length;

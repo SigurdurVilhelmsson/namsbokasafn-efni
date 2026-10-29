@@ -1,5 +1,5 @@
 {
-  "about": "Scope exceptions and senses for chemistry's term rulings. D2 ([USER] 2026-10-11, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43): verdicts apply book-wide by default, and exceptions (the group/cell homograph class) go in a machine-readable, test-pinned field that the AI gate enforces. On 2026-10-26 [USER] pointed out that the AI layer exists to use the surrounding text, so a homograph ruling carries a SENSE rather than a chapter list (register, 2026-10-26 (night)). The model names the sense it judged from the ruling's closed list (`sense`, an id in `otherSenses`, or 'unclear'), and the gate refuses an edit whose declared sense is not the ruled one. `exceptions` holds chapter-bound widths: none today, because the group and cell widths proposed earlier the same day were MT-wire notes, not rulings. Their shapes are {kind:'book'}, {kind:'chapters', chapters} and {kind:'exclude', chapters}, with chapter tokens chNN or appendices, and status 'proposed' means the width is not ruled, so the gate admits no operation. `senses` holds the sense restrictions. status 'ruled' means the restriction itself was ruled (`source` says by whom and where); 'proposed' holds a sense, and the gate then admits no operation. The `gloss` texts were drafted from each source (`glossBy`), and [USER] reviews them together with the pilot's output. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile. On 2026-10-29 becquerel gained a sense: [USER] decided becquerel → bekerel for the unit (docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md) and asked in the session the same day that the ruling be restricted to the unit, because the scientist's name Becquerel is not translated and the work list matches English without regard to case.",
+  "about": "Scope exceptions and senses for chemistry's term rulings. D2 ([USER] 2026-10-11, docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md line 43): verdicts apply book-wide by default, and exceptions (the group/cell homograph class) go in a machine-readable, test-pinned field that the AI gate enforces. On 2026-10-26 [USER] pointed out that the AI layer exists to use the surrounding text, so a homograph ruling carries a SENSE rather than a chapter list (register, 2026-10-26 (night)). The model names the sense it judged from the ruling's closed list (`sense`, an id in `otherSenses`, or 'unclear'), and the gate refuses an edit whose declared sense is not the ruled one. `exceptions` holds chapter-bound widths: none today, because the group and cell widths proposed earlier the same day were MT-wire notes, not rulings. Their shapes are {kind:'book'}, {kind:'chapters', chapters} and {kind:'exclude', chapters}, with chapter tokens chNN or appendices, and status 'proposed' means the width is not ruled, so the gate admits no operation. `senses` holds the sense restrictions. status 'ruled' means the restriction itself was ruled (`source` says by whom and where); 'proposed' holds a sense, and the gate then admits no operation. The `gloss` texts were drafted from each source (`glossBy`), and [USER] reviews them together with the pilot's output. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile. On 2026-10-29 becquerel gained a sense: [USER] decided becquerel → bekerel for the unit (docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md) and asked in the session the same day that the ruling be restricted to the unit, because the scientist's name Becquerel is not translated and the work list matches English without regard to case. Later the same day heat gained a sense: [USER] restricted heat → varmi to the noun (docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md).",
   "recordedAt": "2026-10-29",
   "exceptions": [],
   "senses": [
@@ -92,6 +92,20 @@
       "status": "ruled",
       "source": "server/lib/houseStyleTerms.js line 177 at commit 6cbd36ed0, the group entry (ruled 2026-09-20 [USER]): \"the PERIODIC-TABLE column … In ch20 the same English word means a functional group … where hópur is right\".",
       "glossBy": "Claude, 2026-10-26, from that why and the ch06 and ch20 uses named in the withdrawn ch02 width's note. [USER] reviews it with the pilot's output."
+    },
+    {
+      "enNorm": "heat",
+      "sense": "thermal-energy",
+      "gloss": "heat as a noun: thermal energy transferred between bodies, a quantity of heat (heat flows, heat is absorbed, how much heat)",
+      "otherSenses": [
+        {
+          "id": "verb-to-heat",
+          "gloss": "heat as a verb: to warm or raise the temperature of something (heat the house, heat 1 kg of water, a heater heats)"
+        }
+      ],
+      "status": "ruled",
+      "source": "[USER] in the session, 2026-10-29: \"Restrict to noun\". Recorded in docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md.",
+      "glossBy": "Claude, 2026-10-29, from the offer measurement's census of heat in the English (offer-diff-2026-10-29.json). [USER] reviews it with the next pilot's output."
     },
     {
       "enNorm": "hole",

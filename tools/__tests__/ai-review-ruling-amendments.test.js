@@ -34,6 +34,7 @@ const EXC_REL = `${DIR}/2026-10-29/scope-exceptions-2026-10-29.json`;
 const AMD_REL = `${DIR}/2026-10-29/amendments-2026-10-29.json`;
 const OUT_REL = `${DIR}/2026-10-29/ruling-set-2026-10-29.json`;
 const RECORD = 'docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md';
+const RECORD_HEAT = 'docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md';
 const CLI = path.join(REPO, 'tools', 'ai-review', 'compile-ruling-set.js');
 
 const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
@@ -338,6 +339,20 @@ describe('the amendments file', () => {
     );
   });
 
+  it('control: an amendment may cite its own record, which its note and source carry', () => {
+    const out = compileWith([retarget('vacancy', 'tóm', 'eyða', { record: 'synthetic/other.md' })]);
+    expect([
+      out.notes.find((n) => n.kind === 'amendment').record,
+      ruling(out, 'vacancy').sources.some((x) => x.includes('synthetic/other.md')),
+    ]).toEqual(['synthetic/other.md', true]);
+  });
+
+  it('refuses an amendment whose own record is empty', () => {
+    expect(() => compileWith([retarget('vacancy', 'tóm', 'eyða', { record: '' })])).toThrow(
+      /record/
+    );
+  });
+
   it('refuses a file without a record', () => {
     expect(() => compileWith([], { extra: { record: '' } })).toThrow(/record/);
   });
@@ -402,21 +417,21 @@ describe('the committed 2026-10-29 artifact', () => {
     ]);
   });
 
-  it('every amendment cites the 2026-10-29 record', () => {
+  it('every amendment cites one of the two 2026-10-29 records, and both are cited', () => {
     const notes = committed().notes.filter((n) => n.kind === 'amendment');
-    expect([notes.length > 0, notes.every((n) => n.record === RECORD)]).toEqual([true, true]);
+    expect([...new Set(notes.map((n) => n.record))].sort()).toEqual([RECORD, RECORD_HEAT].sort());
   });
 
-  it('counts: 22 retargeted (the 21 in the record’s table plus valence), 7 added, 1 removed', () => {
-    expect(committed().counts.amendments).toEqual({ retargeted: 22, added: 7, removed: 1 });
+  it('counts: 27 retargeted (the conflict record’s 21 plus valence, and five symbol trims), 11 added, 1 removed', () => {
+    expect(committed().counts.amendments).toEqual({ retargeted: 27, added: 11, removed: 1 });
   });
 
-  // Predicted before compiling: +7 added, −1 removed; the six symbol trims leave the
-  // unmatchable list and nothing joins it.
-  it('predicted delta against 2026-10-26: rulings +6, excluded +1, unmatchable −6', () => {
+  // Predicted before compiling: +11 added, −1 removed; the eleven symbol trims (six from the
+  // conflict record, five from the heat record) leave the unmatchable list and nothing joins it.
+  it('predicted delta against 2026-10-26: rulings +10, excluded +1, unmatchable −11', () => {
     const [a, b] = [old().counts, committed().counts];
     expect([b.rulings - a.rulings, b.excluded - a.excluded, b.unmatchable - a.unmatchable]).toEqual(
-      [6, 1, -6]
+      [10, 1, -11]
     );
   });
 
@@ -528,12 +543,36 @@ describe("[USER]'s 35 decisions, against the committed artifact", () => {
     ]);
   });
 
+  it('heat is restricted to the noun sense, ruled', () => {
+    const s = ruling(committed(), 'heat').sense;
+    expect([s.id, s.status, s.otherSenses.map((o) => o.id)]).toEqual([
+      'thermal-energy',
+      'ruled',
+      ['verb-to-heat'],
+    ]);
+  });
+
+  it.each([
+    ['heat capacity', 'varmarýmd'],
+    ['heat of combustion', 'brunavarmi'],
+    ['heat transfer', 'varmaflutningur'],
+    ['heat exchanger', 'varmaskiptir'],
+    ['body-centered cubic solid', 'miðlægt teningslaga fast efni'],
+    ['face-centered cubic solid', 'hliðlægt teningslaga fast efni'],
+    ['gamma emission', 'gammaútgeislun'],
+    ['half-life of a reaction', 'helmingunartími efnahvarfs'],
+    ['standard hydrogen electrode', 'staðalvetnisraftroð'],
+  ])('heat record: %s → %s, matchable', (enNorm, is) => {
+    const r = ruling(committed(), enNorm);
+    expect([r?.is, r?.matchable]).toEqual([is, true]);
+  });
+
   it('the 2026-10-26 senses carry over unchanged', () => {
     const ids = (set) =>
       set.rulings
         .filter((r) => r.sense)
         .map((r) => [r.enNorm, r.sense])
-        .filter(([k]) => k !== 'becquerel');
+        .filter(([k]) => k !== 'becquerel' && k !== 'heat');
     expect(ids(committed())).toEqual(ids(old()));
   });
 });
