@@ -1199,3 +1199,145 @@ describe('resume --yes closes a killed interactive run, so its answers can be ap
     expect(w.written.layer2.length).toBeGreaterThan(0);
   });
 });
+
+// term-pass v2 (2026-10-29): the flat cap of 6 bit through the prompt in the ch10 pilot (the
+// model stopped at 6 and flagged needs-rewrite), so each segment now carries its own budget,
+// gate.js segmentOpBudget, and apply gates under the budget the request recorded. The benzene
+// alt has 7 uses of atom in its English (budget 21) and needs 7 operations: under the flat cap
+// the 7th is refused (segment-op-limit) and the group rule withdraws all seven.
+describe('apply gates each segment under the budget its request carried', () => {
+  const BENZENE_ID = 'm68693:alt:fs-idp26487712-alt';
+  const op = (category, find, replace) => ({
+    category,
+    ruling: 'atom',
+    sense: null,
+    find,
+    replace,
+    reason: 'atom',
+  });
+  const BENZENE_OPS = [
+    op('term', 'milli kolefnisfrumeindanna', 'milli kolefnisatómanna'),
+    op('term', 'Kolefnisfrumeindirnar', 'Kolefnisatómin'),
+    op('term', 'vetnisfrumeindirnar sex', 'vetnisatómin sex'),
+    op('term', 'kolefnisfrumeindunum', 'kolefnisatómunum'),
+    op('term', 'Vetnisfrumeindirnar', 'Vetnisatómin'),
+    op('agreement', 'felldar', 'felld'),
+    op('term', 'yfirborð kolefnisfrumeindanna', 'yfirborð kolefnisatómanna'),
+  ];
+  const answer = (body) => {
+    const a = scriptedAnswer(body);
+    return {
+      segments: a.segments.map((s) => (s.id === BENZENE_ID ? { ...s, ops: BENZENE_OPS } : s)),
+    };
+  };
+  async function runOnce(S) {
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport({ answer }) })
+    );
+    return r.results[0].runId;
+  }
+  const requestsFile = (S, runId) => path.join(S.fx.records, 'runs', runId, 'requests.jsonl');
+  /** Rewrite the user document of the request that shows the benzene alt. */
+  function editBenzeneRequest(S, runId, edit) {
+    const f = requestsFile(S, runId);
+    const lines = fs.readFileSync(f, 'utf8').trim().split('\n').map(JSON.parse);
+    const hit = lines.find((l) => l.body.messages[0].content.includes(BENZENE_ID));
+    hit.body.messages[0].content = edit(hit.body.messages[0].content);
+    fs.writeFileSync(f, lines.map((l) => JSON.stringify(l)).join('\n') + '\n');
+  }
+  const benzeneLog = (result) =>
+    result.gateLog.filter((g) => g.kind === 'op' && g.segmentId === BENZENE_ID);
+
+  it('records the budget in the request, above the flat cap', async () => {
+    const S = setup();
+    const runId = await runOnce(S);
+    const line = fs
+      .readFileSync(requestsFile(S, runId), 'utf8')
+      .trim()
+      .split('\n')
+      .map(JSON.parse)
+      .find((l) => l.body.messages[0].content.includes(BENZENE_ID));
+    const doc = JSON.parse(line.body.messages[0].content);
+    expect(doc.format).toBe('term-pass-user/2');
+    const seg = doc.segments.find((s) => s.id === BENZENE_ID);
+    expect(seg.maxOps).toBeGreaterThanOrEqual(21);
+  });
+
+  it('accepts all seven operations under that budget', async () => {
+    const S = setup();
+    const runId = await runOnce(S);
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    const log = benzeneLog(a.result);
+    expect(log.filter((g) => g.verdict === 'accepted')).toHaveLength(7);
+    expect(log.filter((g) => g.verdict === 'rejected')).toHaveLength(0);
+  });
+
+  it('control: a v1 record of the same run is gated at the flat cap, and the group withdraws', async () => {
+    const S = setup();
+    const runId = await runOnce(S);
+    // Rewrite every request of the run to v1 (no maxOps), and its record's format with it.
+    const f = requestsFile(S, runId);
+    const lines = fs.readFileSync(f, 'utf8').trim().split('\n').map(JSON.parse);
+    for (const l of lines) {
+      const doc = JSON.parse(l.body.messages[0].content);
+      doc.format = 'term-pass-user/1';
+      for (const s of doc.segments) delete s.maxOps;
+      const list = (name) =>
+        `"${name}":[\n${doc[name].map((x) => JSON.stringify(x)).join(',\n')}\n]`;
+      l.body.messages[0].content =
+        `{"format":"term-pass-user/1","chapter":${JSON.stringify(doc.chapter)},"module":${JSON.stringify(doc.module)},\n` +
+        `${list('rulings')},\n${list('segments')}}`;
+    }
+    fs.writeFileSync(f, lines.map((l) => JSON.stringify(l)).join('\n') + '\n');
+    const tpFile = path.join(S.fx.records, 'runs', runId, TERM_PASS_RECORD);
+    const tp = JSON.parse(fs.readFileSync(tpFile, 'utf8'));
+    tp.params.userFormat = 'term-pass-user/1';
+    fs.writeFileSync(tpFile, JSON.stringify(tp));
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    const log = benzeneLog(a.result);
+    expect(log.filter((g) => g.verdict === 'accepted')).toHaveLength(0);
+    expect(log.some((g) => g.reasons.includes('segment-op-limit'))).toBe(true);
+  });
+
+  it('refuses a recorded maxOps that is not the budget recomputed from the request', async () => {
+    const S = setup();
+    const runId = await runOnce(S);
+    editBenzeneRequest(S, runId, (text) => {
+      const doc = JSON.parse(text);
+      const seg = doc.segments.find((s) => s.id === BENZENE_ID);
+      return text.replace(
+        `"id":${JSON.stringify(BENZENE_ID)},"rulings":${JSON.stringify(seg.rulings)},"maxOps":${seg.maxOps},`,
+        `"id":${JSON.stringify(BENZENE_ID)},"rulings":${JSON.stringify(seg.rulings)},"maxOps":${seg.maxOps + 1},`
+      );
+    });
+    await expect(main(['apply', '--chapter', 'ch02', '--run', runId], S.deps())).rejects.toThrow(
+      /stale-budget/
+    );
+  });
+
+  it('refuses a request whose format is not the one its run recorded', async () => {
+    const S = setup();
+    const runId = await runOnce(S);
+    const tpFile = path.join(S.fx.records, 'runs', runId, TERM_PASS_RECORD);
+    const tp = JSON.parse(fs.readFileSync(tpFile, 'utf8'));
+    tp.params.userFormat = 'term-pass-user/1';
+    fs.writeFileSync(tpFile, JSON.stringify(tp));
+    await expect(main(['apply', '--chapter', 'ch02', '--run', runId], S.deps())).rejects.toThrow(
+      /bad-record/
+    );
+  });
+
+  it('refuses runs of one chapter recorded in different user formats', async () => {
+    const S = setup();
+    const a = await runOnce(S);
+    const b = await runOnce(S);
+    const tpFile = path.join(S.fx.records, 'runs', b, TERM_PASS_RECORD);
+    const tp = JSON.parse(fs.readFileSync(tpFile, 'utf8'));
+    tp.params.userFormat = 'term-pass-user/1';
+    fs.writeFileSync(tpFile, JSON.stringify(tp));
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs/);
+  });
+});
