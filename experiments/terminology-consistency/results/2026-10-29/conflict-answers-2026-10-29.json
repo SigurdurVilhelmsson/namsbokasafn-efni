@@ -1,0 +1,330 @@
+{
+ "schema": "glossary-ruling-conflict-answers/1",
+ "about": "[USER]'s decisions on the 35 headwords where the chemistry glossary (glossary-unified.json) and the 2026-10-26 ruling set give different Icelandic. Collected 2026-10-29 on a private review page (Artifact ApMnBC8QLJpyS1MUCetePu, page db collection `conflicts`); each answer is copied verbatim from that store. `clarifications` are [USER]'s follow-up answers in the session the same day, which amend three answers. Evidence, never status: see docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md.",
+ "rulingSet": "experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json",
+ "glossary": "books/efnafraedi-2e/glossary/glossary-unified.json",
+ "answers": {
+  "accuracy--accuracy": {
+   "choice": "ruling",
+   "english": "accuracy",
+   "glossary": "nákvæmni",
+   "note": "Accuracy and consistency cannot be translated with the same word. I prefer \"hittni\" for \"accuracy\" (how well you hit the target) and \"nákvæmni\" for consistency (how consistently you hit the same point, even if it is not on target).",
+   "ruling": "hittni",
+   "savedAt": "2026-10-29T09:58:48.983Z",
+   "via": "card"
+  },
+  "alpha-decay--alpha-decay": {
+   "choice": "glossary",
+   "english": "alpha decay",
+   "glossary": "alfasundrun",
+   "note": "Same as beta decay. If the greek letter is in the source, it should be in the translation, but not in the glossary (except if the english term also has the greek letter).",
+   "ruling": "alfa (α) sundrun",
+   "savedAt": "2026-10-29T10:50:25.718Z",
+   "via": "card"
+  },
+  "alpha-particle--alpha-particle": {
+   "choice": "ruling",
+   "english": "alpha particle",
+   "glossary": "alfaögn",
+   "note": "",
+   "ruling": "alfaeind",
+   "savedAt": "2026-10-29T10:52:07.326Z",
+   "via": "card"
+  },
+  "atomic-orbital--atomic-orbital": {
+   "choice": "ruling",
+   "english": "atomic orbital",
+   "glossary": "frumeindasvigrúm",
+   "note": "",
+   "ruling": "atómsvigrúm",
+   "savedAt": "2026-10-29T10:50:52.334Z",
+   "via": "card"
+  },
+  "becquerel--becquerel": {
+   "choice": "glossary",
+   "english": "becquerel",
+   "glossary": "bekerel",
+   "note": "The name Becquerel (capital B) (Antoine Becquerel) is not translated, but both the physics and biology glossaries translate the unit becquerel (lower-case b) as bekerel. This depends on context.",
+   "ruling": "becquerel",
+   "savedAt": "2026-10-29T10:34:32.654Z",
+   "via": "card"
+  },
+  "beta-decay--beta-decay": {
+   "choice": "glossary",
+   "english": "beta decay",
+   "glossary": "betasundrun",
+   "note": "If the greek letter is in the source, it should be used, but not added in the glossary (same as calorie, molality, heat etc).",
+   "ruling": "beta (β) sundrun",
+   "savedAt": "2026-10-29T10:40:48.918Z",
+   "via": "card"
+  },
+  "bimolecular-reaction--bimolecular-reaction": {
+   "choice": "glossary",
+   "english": "bimolecular reaction",
+   "glossary": "tvísameinda efnahvarf",
+   "note": "Stick with the official chemistry glossary.",
+   "ruling": "tvísameindahvarf",
+   "savedAt": "2026-10-29T10:50:27.031Z",
+   "via": "card"
+  },
+  "bonding-orbital--bonding-orbital": {
+   "choice": "ruling",
+   "english": "bonding orbital",
+   "glossary": "bindandi svigrúm",
+   "note": "Bonding orbital is not in the official Árnastofnun chemistry glossary (at least I cannot find it). Chemical bond is efnatengi, bond is tengi so tengisvigrúm is logical.",
+   "ruling": "tengisvigrúm",
+   "savedAt": "2026-10-29T10:23:24.606Z",
+   "via": "card"
+  },
+  "calorie--calorie": {
+   "choice": "glossary",
+   "english": "calorie",
+   "glossary": "kaloría",
+   "note": "A ruling for \"kaloría (cal)\" for \"calorie (cal)\" is logical in that context, but as a glossary entry, calorie is kaloría. The (cal) is the unit and should follow as such without reference to the glossary, when it is present.",
+   "ruling": "kaloría (cal)",
+   "savedAt": "2026-10-29T10:11:23.071Z",
+   "via": "card"
+  },
+  "calorimetry--calorimetry": {
+   "choice": "both",
+   "english": "calorimetry",
+   "glossary": "varmamælingar",
+   "note": "Varmamæling is the singular (used for a specific measurement) while varmamælingar is the plural and is used both for a number of measurements, AND calorimetry in general.",
+   "ruling": "varmamæling",
+   "savedAt": "2026-10-29T10:00:23.327Z",
+   "via": "card"
+  },
+  "collision-theory--collision-theory": {
+   "choice": "glossary",
+   "english": "collision theory",
+   "glossary": "árekstrakenningin",
+   "note": "Collision theory in this context is a specific theory and should be translated as árekstrarkenningin. This is the same as the periodic table term.",
+   "ruling": "árekstrakenning",
+   "savedAt": "2026-10-29T10:32:18.574Z",
+   "via": "card"
+  },
+  "concentrated--concentrated": {
+   "choice": "other",
+   "english": "concentrated",
+   "glossary": "megn",
+   "note": "Concentrated should not be in the glossary on its own. In the chemistry glossary the term is translated in context:\nConcentrated acid -> megn sýra\nConcentrated base -> megn basi\n\nIn the sample you use, the word is used as a general term and even then, the translation can depend on context. In this case, the translation \"samþjappaður\" is appropriate.",
+   "ruling": "óþynnt",
+   "savedAt": "2026-10-29T10:20:07.936Z",
+   "via": "card"
+  },
+  "dipole-moment--dipole-moment": {
+   "choice": "ruling",
+   "english": "dipole moment",
+   "glossary": "tvípólsvægi",
+   "note": "",
+   "ruling": "tvískautsvægi",
+   "savedAt": "2026-10-29T10:50:59.718Z",
+   "via": "card"
+  },
+  "dissociation-constant--dissociation-constant": {
+   "choice": "ruling",
+   "english": "dissociation constant",
+   "glossary": "klofnunarstuðull",
+   "note": "Constant is usually translated as \"fasti\", so I want to be consistent on that.",
+   "ruling": "klofnunarfasti",
+   "savedAt": "2026-10-29T10:01:10.815Z",
+   "via": "card"
+  },
+  "electron-affinity--electron-affinity": {
+   "choice": "ruling",
+   "english": "electron affinity",
+   "glossary": "rafsækni",
+   "note": "",
+   "ruling": "rafeindasækni",
+   "savedAt": "2026-10-29T10:52:20.886Z",
+   "via": "card"
+  },
+  "electron-capture--electron-capture": {
+   "choice": "glossary",
+   "english": "electron capture",
+   "glossary": "rafeindarhremming",
+   "note": "Rafeindarhremming describes a SINGLE electron being captured. Rafeindahremming describes multiple electrons being captured. This paragraph is talking about a single electron, so rafeindarhremming it is.",
+   "ruling": "rafeindahremming",
+   "savedAt": "2026-10-29T10:25:58.759Z",
+   "via": "card"
+  },
+  "electron-volt--electron-volt": {
+   "choice": "glossary",
+   "english": "electron volt",
+   "glossary": "rafeindarvolt",
+   "note": "Lets stick with the physics glossary.",
+   "ruling": "rafeindavolt",
+   "savedAt": "2026-10-29T10:39:59.166Z",
+   "via": "card"
+  },
+  "frequency-factor--frequency-factor": {
+   "choice": "glossary",
+   "english": "frequency factor",
+   "glossary": "tíðnistuðull",
+   "note": "",
+   "ruling": "tíðniþáttur",
+   "savedAt": "2026-10-29T10:44:12.374Z",
+   "via": "card"
+  },
+  "geiger-counter--Geiger-counter": {
+   "choice": "glossary",
+   "english": "Geiger counter",
+   "glossary": "Geiger-nemi",
+   "note": "",
+   "ruling": "Geiger-teljari",
+   "savedAt": "2026-10-29T10:54:32.702Z",
+   "via": "card"
+  },
+  "heat--heat": {
+   "choice": "glossary",
+   "english": "heat",
+   "glossary": "varmi",
+   "note": "heat is varmi. q in paranthesis is the unit and should not accompany the term in a glossary (see lattice energy, molality, calorie).",
+   "ruling": "varmi (q)",
+   "savedAt": "2026-10-29T10:15:26.711Z",
+   "via": "card"
+  },
+  "intermolecular-force--intermolecular-forces": {
+   "choice": "both",
+   "english": "intermolecular force",
+   "glossary": "millisameindakraftar",
+   "note": "Millisameindakraftur (singular)\nMillisameindakraftar (plural)",
+   "ruling": "millisameindakraftur",
+   "savedAt": "2026-10-29T10:11:56.815Z",
+   "via": "card"
+  },
+  "isomers--isomer": {
+   "choice": "both",
+   "english": "isomers",
+   "glossary": "hverfa",
+   "note": "hverfa is the singular (isomer), while hverfur is the plural (isomers).",
+   "ruling": "hverfur",
+   "savedAt": "2026-10-29T10:01:16.279Z",
+   "via": "card"
+  },
+  "lattice-energy--lattice-energy": {
+   "choice": "glossary",
+   "english": "lattice energy",
+   "glossary": "grindarorka",
+   "note": "Lattice Energy is grindarorka. The unit is in paranthesis and should be treated as a seperate entry and translated when present (see molality and calorie).",
+   "ruling": "grindarorka (ΔHgrind)",
+   "savedAt": "2026-10-29T10:14:11.599Z",
+   "via": "card"
+  },
+  "molality--molality": {
+   "choice": "glossary",
+   "english": "molality",
+   "glossary": "mólalstyrkur",
+   "note": "Molality is mólalstyrkur. The additional (m) refers to the unit and should be present as such when it is in the source, but not as a glossary term. (see calorie)",
+   "ruling": "mólalstyrkur (m)",
+   "savedAt": "2026-10-29T10:13:08.215Z",
+   "via": "card"
+  },
+  "monodentate--monodentate": {
+   "choice": "both",
+   "english": "monodentate",
+   "glossary": "eintenntur",
+   "note": "eintenntur - masculin\neintennt - feminin\n\nDepends on the sex of the noun it accompanies. In your example, tenglar is masculin, plural, but the term applies to them individually, so the correct translation of \"Each of these ligands is monodentate\" is \"Hver þessara tengla er eintenntur\".",
+   "ruling": "eintennt",
+   "savedAt": "2026-10-29T10:47:20.470Z",
+   "via": "card"
+  },
+  "nucleon--nucleon": {
+   "choice": "glossary",
+   "english": "nucleon",
+   "glossary": "kjarnaeind",
+   "note": "",
+   "ruling": "kjarneind",
+   "savedAt": "2026-10-29T10:51:19.470Z",
+   "via": "card"
+  },
+  "osmosis--osmosis": {
+   "choice": "glossary",
+   "english": "osmosis",
+   "glossary": "himnuflæði",
+   "note": "Consistent with osmotic pressure -> flæðiþrýstingur",
+   "ruling": "osmósa",
+   "savedAt": "2026-10-29T10:54:06.501Z",
+   "via": "card"
+  },
+  "osmotic-pressure--osmotic-pressure": {
+   "choice": "glossary",
+   "english": "osmotic pressure",
+   "glossary": "flæðiþrýstingur",
+   "note": "",
+   "ruling": "osmósuþrýstingur",
+   "savedAt": "2026-10-29T10:20:39.311Z",
+   "via": "card"
+  },
+  "periodic-table--periodic-table": {
+   "choice": "both",
+   "english": "periodic table",
+   "glossary": "lotukerfið",
+   "note": "This is a nuance. My linguistic terminology (as a science teacher) doesn't cover it, but The Periodic Table of the Elements would translate as \"Lotukerfið\" (THE periodic table). So, in the context of this book, I would go with \"lotukerfið\" as a general rule and leave the \"lotukerfi\" up to editors when/if that is more appropriate.",
+   "ruling": "lotukerfi",
+   "savedAt": "2026-10-29T10:09:05.007Z",
+   "via": "card"
+  },
+  "polyatomic-ion--polyatomic-ion": {
+   "choice": "ruling",
+   "english": "polyatomic ion",
+   "glossary": "fjölfrumeinda jón",
+   "note": "Fjölatómajón is accepted in the official glossary, so it should be used for consistency (frumeind -> atóm).",
+   "ruling": "fjölatómajón",
+   "savedAt": "2026-10-29T10:54:58.110Z",
+   "via": "card"
+  },
+  "rate-law--rate-law": {
+   "choice": "ruling",
+   "english": "rate law",
+   "glossary": "hraðajafna",
+   "note": "",
+   "ruling": "hraðalögmál",
+   "savedAt": "2026-10-29T10:50:45.262Z",
+   "via": "card"
+  },
+  "solute--solute": {
+   "choice": "glossary",
+   "english": "solute",
+   "glossary": "leyst efni",
+   "note": "Here I'm leaning against my ruling. While the common term for dissolving something is \"leysa upp\", leading to \"uppleyst\", other translations relating to solutes, solutions etc do not use \"upp\".",
+   "ruling": "uppleyst efni",
+   "savedAt": "2026-10-29T10:09:07.911Z",
+   "via": "card"
+  },
+  "standing-wave--standing-wave": {
+   "choice": "glossary",
+   "english": "standing wave",
+   "glossary": "stæð bylgja",
+   "note": "Here, the translated paragraph should read:\nEkki eru allar bylgjur farbylgjur. Stæðar bylgjur (einnig þekktar sem staðbylgjur) haldast innan ákveðins svæðis í rúmi.\n\nThe physics glossary translates it as \"stæðar bylgjur\", so we'll go with that. The geology glossary translates it as \"staðbylgjur\", which would be a common synonym.",
+   "ruling": "staðbylgja",
+   "savedAt": "2026-10-29T10:31:25.414Z",
+   "via": "card"
+  },
+  "vacancy--vacancy": {
+   "choice": "other",
+   "english": "vacancy",
+   "glossary": "eyðuveila",
+   "note": "Lets go with the official physics glossary, but use the accepted alternative \"eyða\" as that is more easily understood by the students than \"eyðuveila\". They most likely wouldn't recognize the word \"veila\".",
+   "ruling": "tóm",
+   "savedAt": "2026-10-29T10:48:58.430Z",
+   "via": "card"
+  },
+  "valence--valence": {
+   "choice": "ruling",
+   "english": "valence",
+   "glossary": "girðitala",
+   "note": "Here I believe the official chemistry glossary is wrong (probably an entry mistake).\n\nGirðitala is the translation of \"coordination number\", which is a completely different concept and is, I believe in the official glossary with the translation \"girðitala\".\n\nValence electron is in the glossary as \"gildisrafeind\".\n\nValence, on its own, usually represents the number of bonds an element can form (based on the number of unpaired valence electrons) and the word we use at my school (a quick web search shows a number of other references) is \"tengigeta\". This is something I need to discuss with the Icelandic Chemical Society.",
+   "ruling": "gildi",
+   "savedAt": "2026-10-29T09:57:00.688Z",
+   "via": "card"
+  }
+ },
+ "clarifications": {
+  "valence": "\"Error on my part. Valence on its own is tengigeta for now. I believe this is an error, as Coordination number has the same translation in the glossary and those two terms are not the same thing. Valence in combination with other words (valence electron, valence shell etc) translates to gildis-\"",
+  "collision-theory": "Spelling: árekstrakenningin (the glossary's, -ra-), not the -rar- written in the card note.",
+  "concentrated": "Drop the standalone ruling; add concentrated acid -> megn sýra and concentrated base -> megn basi; general uses go to editors.",
+  "glossary-copy": "Fix our copy now: valence -> girðitala becomes gildistala (read as a typo); remove the standalone concentrated -> megn; through the concept model; note both for the Icelandic Chemical Society.",
+  "valence-2": "Superseding the first valence clarification the same day: the chemistry glossary's \"girðitala\" for valence is read as a typo for \"gildistala\" (the immunology glossary's term; physics and others give \"gildi\"), and the book uses gildistala for valence on its own. Compounds: valence electron -> gildisrafeind (chemistry glossary), valence bond -> gildistengi and valence band -> gildisborði (physics glossary), valence shell -> gildishvolf, valence orbital -> gildissvigrúm."
+ }
+}
