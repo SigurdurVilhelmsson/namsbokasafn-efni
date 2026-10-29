@@ -16,7 +16,14 @@ import {
   rulingForRequest,
 } from '../ai-review/term-pass-request.js';
 import { RESPONSE_SCHEMA, parseTermPassResponse } from '../ai-review/term-pass-response.js';
-import { gateSegment, DEFAULT_LIMITS, REJECTION_CODES } from '../ai-review/gate.js';
+import crypto from 'node:crypto';
+import {
+  gateSegment,
+  segmentOpBudget,
+  OPS_PER_EN_USE,
+  DEFAULT_LIMITS,
+  REJECTION_CODES,
+} from '../ai-review/gate.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { parseLayerFile } from '../lib/mt-layers.js';
 
@@ -26,6 +33,22 @@ const RULINGS = loadRulingSet(
   'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json'
 );
 const PROMPT = loadPrompt(path.join(REPO, PROMPT_PATH));
+
+describe('the prompt version', () => {
+  it('is version 2', () => {
+    expect(PROMPT_PATH).toBe('tools/ai-review/prompts/term-pass-v2.md');
+    expect(PROMPT.text.split('\n')[0]).toContain('(term-pass, version 2)');
+  });
+
+  // The ch10 pilot's runs (2026-10-28/29) record version 1 by path and sha256; editing it in
+  // place would orphan those records. A new version is a new file.
+  it('keeps version 1 byte for byte as the pilot runs recorded it', () => {
+    const v1 = fs.readFileSync(path.join(REPO, 'tools/ai-review/prompts/term-pass-v1.md'));
+    expect(crypto.createHash('sha256').update(v1).digest('hex')).toBe(
+      '0e33e9d2a7a5a75f7cd9d1e774cb0a5de088853c2169f6011c6e3443b01873e3'
+    );
+  });
+});
 
 /** Every ```json block after "## Examples", in order. */
 function exampleBlocks(text) {
@@ -116,7 +139,13 @@ describe('the limits the prompt states are the gate’s', () => {
     expect(L.agreementMinStemLetters).toBe(3);
     const t = PROMPT.text.replace(/\s+/g, ' ');
     expect(t).toContain(`at most ${L.maxFindWords} words and ${L.maxFindChars} characters each`);
-    expect(t).toContain(`At most ${L.maxAcceptedOpsPerSegment} operations per segment`);
+    // The per-segment budget (gate.js segmentOpBudget): max(6, 3 × uses), stated in words.
+    expect(OPS_PER_EN_USE).toBe(3);
+    expect(t).toContain("At most the segment's `maxOps` operations, none overlapping another");
+    expect(t).toContain("`maxOps` is three for each use of a listed ruling's English term");
+    expect(t).toContain(`never less than ${L.maxAcceptedOpsPerSegment}`);
+    expect(t).toContain('it is a ceiling, not a target');
+    expect(t).not.toContain(`At most ${L.maxAcceptedOpsPerSegment} operations per segment`);
     expect(t).toContain(`lies at most ${L.agreementWindowWords} words from the term change`);
     expect(t).toContain(`at most ${L.agreementWindowWords} words between them`);
     expect(t).toContain("at most half of a segment's characters");
@@ -180,8 +209,41 @@ describe('the term-op rules the gate added on 2026-10-27 are taught', () => {
   });
 });
 
+// The ch10 pilot (2026-10-29), read from the answers: high fixed `millikrafta` and missed the
+// sentence-initial `Millikraftar` (i02); and it changed `(eðlilegur líkamshiti)`, an everyday
+// explanation, which [USER] ruled keeps its everyday words (i04).
+describe('version 2 teaches what the pilot answers lacked', () => {
+  const t = PROMPT.text.replace(/\s+/g, ' ');
+  it('fix every use of the term, a sentence-initial capital included', () => {
+    expect(t).toContain('Fix **every** place the segment renders the term, not only the first.');
+    expect(t).toContain('`Millikraftar`');
+    expect(t).toContain('keep the capital (`Millisameindakraftar`)');
+    expect(t).toContain('The rule on element symbols below still applies.');
+  });
+  it('an everyday explanation in parentheses keeps its everyday words', () => {
+    expect(t).toContain('**An everyday explanation in parentheses keeps its everyday words.**');
+    expect(t).toContain('`(normal body temperature)`');
+    expect(t).toContain('`(eðlilegur líkamshiti)`');
+  });
+  it('describes maxOps among the segment fields', () => {
+    expect(t).toContain('`maxOps` (the most operations it may have; see the rules below)');
+  });
+});
+
 describe('the worked examples', () => {
   const pairs = examples();
+
+  it('are version 2 documents whose maxOps is the budget the code computes', () => {
+    for (const { request } of pairs) {
+      expect(request.format).toBe('term-pass-user/2');
+      const byId = new Map(request.rulings.map((r) => [r.id, r]));
+      for (const s of request.segments) {
+        expect(s.maxOps, s.id).toBe(
+          segmentOpBudget({ en: s.en, rulings: s.rulings.map((id) => byId.get(id)) })
+        );
+      }
+    }
+  });
 
   it('come in four request/answer pairs', () => {
     expect(pairs).toHaveLength(4);
@@ -243,6 +305,7 @@ describe('the worked examples', () => {
           is: s.is,
           chapterDir: request.chapter,
           rulingsById: RULINGS.byId,
+          limits: { maxAcceptedOpsPerSegment: s.maxOps },
         });
         expect(res.rejected, s.id).toEqual([]);
         expect(res.accepted).toHaveLength(ops.length);

@@ -28,7 +28,7 @@ export const USER_FORMAT = 'term-pass-user/2';
 /** Every user-document format the parser reads, oldest first. */
 export const USER_FORMATS = Object.freeze(['term-pass-user/1', USER_FORMAT]);
 /** Repo-relative path of the prompt; records carry it in this form. */
-export const PROMPT_PATH = 'tools/ai-review/prompts/term-pass-v1.md';
+export const PROMPT_PATH = 'tools/ai-review/prompts/term-pass-v2.md';
 export const DEFAULT_SEGMENTS_PER_REQUEST = 8;
 export const DEFAULT_CHAR_BUDGET = 16000;
 

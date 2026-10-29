@@ -51,7 +51,7 @@ describe('constants', () => {
     expect(USE).toBe('term-pass');
     expect(USER_FORMAT).toBe('term-pass-user/2');
     expect(USER_FORMATS).toEqual(['term-pass-user/1', 'term-pass-user/2']);
-    expect(PROMPT_PATH).toBe('tools/ai-review/prompts/term-pass-v1.md');
+    expect(PROMPT_PATH).toBe('tools/ai-review/prompts/term-pass-v2.md');
     expect(DEFAULT_SEGMENTS_PER_REQUEST).toBe(8);
     expect(DEFAULT_CHAR_BUDGET).toBe(16000);
   });
