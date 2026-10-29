@@ -25,13 +25,13 @@ import {
   REJECTION_CODES,
 } from '../ai-review/gate.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
+import { DEFAULT_RULING_SET } from '../ai-review/term-pass.js';
 import { parseLayerFile } from '../lib/mt-layers.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const BOOK = path.join(REPO, 'books', 'efnafraedi-2e');
-const RULINGS = loadRulingSet(
-  'experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json'
-);
+// The set the CLI reads by default, so the examples are checked against what a run would send.
+const RULINGS = loadRulingSet(DEFAULT_RULING_SET);
 const PROMPT = loadPrompt(path.join(REPO, PROMPT_PATH));
 
 describe('the prompt version', () => {
