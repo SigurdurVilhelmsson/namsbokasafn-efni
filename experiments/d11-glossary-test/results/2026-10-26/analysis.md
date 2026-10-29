@@ -201,6 +201,39 @@ The other three nine-terms (law of conservation, strong and weak electrolyte) ha
 - **The March file's wrong rows are part of what was tested** (DESIGN §7): *atom → frumeind* is one, and
   M obeyed it on every occurrence.
 
+## Exploratory, after the analysis: would a fresh run beat the September MT? (not pre-registered)
+
+Asked on 2026-10-26: would a new MT run improve the content before editing? The nine terms cannot answer
+that, because they were chosen *because* the September MT drifted on them, so fresh runs beating September
+there is partly regression to the mean.
+
+The other 13 taught terms of the same two modules were not selected for drifting. Each D11 run and the
+September MT (`98a5fe2ff`) were scored on them through the same adapter and the same segment ids: for each
+run, `measure_chapter` paired `98a5fe2ff` against `tree:<run>` with common ids, scoring both sides. This
+was an ad hoc call, not part of `analyse.py`'s output.
+
+| term | September | r1-M | r1-S | r1-none | r2-none | r2-S | r2-M |
+|---|---|---|---|---|---|---|---|
+| compound | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 |
+| element | 26/26 | 26/26 | 26/26 | 26/26 | 26/26 | 26/26 | 26/26 |
+| gas | 12/20 | 14/20 | 14/20 | 10/20 | 13/20 | 13/20 | 14/20 |
+| ion-dipole attraction (LOW-N) | 2/2 | 2/2 | 0/2 | 2/2 | 1/2 | 1/2 | 0/2 |
+| liquid | 14/16 | 15/16 | 14/16 | 14/16 | 13/16 | 15/16 | 14/16 |
+| mass | 21/24 | 21/24 | 21/24 | 21/24 | 21/24 | 21/24 | 21/24 |
+| matter | 23/25 | 22/25 | 23/25 | 23/25 | 23/25 | 24/25 | 23/25 |
+| mixture | 20/20 | 18/20 | 20/20 | 20/20 | 20/20 | 18/20 | 18/20 |
+| molecule | 18/18 | 18/18 | 18/18 | 18/18 | 18/18 | 18/18 | 18/18 |
+| plasma | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+| pure substance | 8/8 | 8/8 | 8/8 | 8/8 | 8/8 | 8/8 | 8/8 |
+| solid | 14/14 | 14/14 | 14/14 | 14/14 | 14/14 | 14/14 | 14/14 |
+| weight | 4/4 | 4/4 | 4/4 | 4/4 | 4/4 | 4/4 | 4/4 |
+| **consistent / eligible** | **11/12** | **11/12** | **11/12** | **11/12** | **11/12** | **11/12** | **11/12** |
+
+On terms not selected for drifting, the September MT is as consistent as every fresh run, in every arm.
+So the large gap on the nine is specific to where September drifted. This bears on the route question:
+it does not support a book-wide re-buy to improve consistency. The register's 2026-10-26 (evening) entry
+records the assessment.
+
 ## Files and re-running
 
 - `../../analyse.py`: the adapter and the analysis. The pre-registered part was committed as

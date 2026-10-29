@@ -2,6 +2,10 @@
 
 > ✏️ **PLAN, proposed 2026-10-23. None of its decisions (§8) is answered yet.** This is not status: open work and
 > its state live in the active register's ⏩ RESUME block.
+> ✏️ *2026-10-28: no longer true as written, and not since 2026-10-24. SD2 was answered on 2026-10-24 (merged in
+> #557). SD3, SD9 and SD10 carry [USER]'s 2026-10-28 rulings in notes under their tables, and the 10-10 plan's D7 and
+> D12 are answered ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+> [answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)).*
 > **What it covers.** The development work in Ritstjóri (`server/` and the `tools/` it runs) and in the reader
 > (`../namsbokasafn-vefur`) that the follow-on grant ("Skerfur") needs, from **S = 1 November 2026** to the final
 > report, due **1 December 2027**. It expands one line of the chemistry finish-preparation plan
@@ -80,6 +84,7 @@
      - BÍN-derived data, including Nefnir's rules and the forms B3 would write.
 
      → SD10, before S
+     ✏️ *2026-10-28: week 2, not before S (the SD10 note).*
    - **"21,251 parallel units" has two readings** (SD5). Under the strict one, it includes ch01–ch02 (2,391), the
      appendices (2,736) and chapter 0 (107), each needing an edit or an explicit acceptance.
 5. **[USER]'s time is the binding resource.** Every merge, deploy, production write and sync is [USER]'s, alongside
@@ -166,6 +171,40 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
 | G1.20 | **Backups sized for research data,** before editors sign the consent: `sqlite3 .backup` or `VACUUM INTO` instead of `cp` of a live WAL database (`scripts/backup-db.sh:45`); a long-lived tier and versioning for the editorial database. **B1's raw tables live in a separate database file**, outside that tier, so G1.4's deletion promise holds | Today both tiers keep the newest 30 copies, about 7.5 days | S |
 | G1.21 | **The measured task, stable.** Update the row in place instead of reloading the module; save-and-next (Ctrl+Enter opens the next unhandled row) | Every save and accept reloads the module (4 requests; 6 for a head editor), and the median unit has 122 segments. A later change would be a confound | S–M |
 | G1.22 | **Rewrite the editor guide** | It predates MT acceptance and Ctrl+Shift+Enter, calls saving automatic (it is a local draft), promises a reply thread that does not exist, and points at a page that now redirects | S |
+| G1.23 | **AI terminology suggestions in the segment view.** The term pass's gate-accepted edits, shown inline, labelled as AI, for the editor to accept or reject. One pending edit per segment. Keyed on module, segment id and occurrence. Hidden if the segment's text has changed since the run. An accepted suggestion is an assist of its own type in G1.2's event log. A unit gets suggestions only if the run and this view existed before it was opened | The only delivery route for layer 2 ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)). Units opened earlier start on pure MT without suggestions | M |
+
+✏️ *2026-10-27, G1.9 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)): the D7 pre-registration is committed and timestamped (pushed, or mirrored to
+OSF/Zenodo) before the full run. It fixes the frame, n, the stratifier, the control condition (layer 1 or 1s, rule
+layer on/off), the estimand, a rule for a run the cap cuts short, the blind-check procedure and a value-and-kill rule.
+The seed comes from a future public randomness beacon, because a committed seed hash alone does not protect inputs
+still being set (review E1).*
+
+✏️ *2026-10-28, G1.4 ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)): editors start from pure
+MT, so "some units start from AI-revised text" no longer applies. The consent text says instead:*
+- *some segments carry AI terminology suggestions, labelled as AI, made before editing starts;*
+- *each accept or reject is logged with the editor's other events and reported only in aggregate (SD6's cells);*
+- *no editor's text, edits or name goes to the AI provider (the runner reads none).*
+
+*Every editor sees suggestions; only consenting editors' decisions are captured for research. **Separately**, each
+editor's editing agreement carries a licence clause, signed before their first unit: edits and term decisions under
+CC BY 4.0, with credit by name for ritstjórn or yfirlestur. It survives withdrawal from the research
+([answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)).*
+
+✏️ *2026-10-28, G1.4 (added the same day): decisions on rule suggestions are logged the same way, so the consent text
+covers them too ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
+
+✏️ *2026-10-28, G1.8: **shelved** ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)). Editors start
+from pure MT, and layer 2 is not published. Kept on file in case the decision is reversed: the switch would also
+need both track maps, the auto-advance, `module-sections.js` (titles and slugs come only from layer 1 or the
+faithful file) and the `isSource` consumers. Reading layer 1s is **not** shelved: it stays with 10-10 4.1, whose load
+order is narrowed to human, selected, pure (added the same day).*
+
+✏️ *2026-10-28, G1.9: **superseded**. There is no control draw and no pre-registration
+([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)). The note above about the D7
+pre-registration no longer applies.*
+
+✏️ *2026-10-28, G1.23: the rule layer's edits (10-10 3.1) appear in the same view, labelled as rule edits, with
+accept-all per ruling ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 
 **Conditional on SD4 (b), before approvals begin:**
 - a per-book refusal of self-approval (head editors may approve their own edits today, `segmentEditorService.js:404`);
@@ -184,7 +223,11 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
   answers 200 even when degraded;
 - a deploy practice for working days (window, tree check, rollback);
 - correcting chemistry's stale `status.json` (register ③) before the held sync, because the reader's titles come from
-  it.
+  it. ✏️ *2026-10-26: that premise is false for the reader. vefur's `scripts/generate-toc.js` (vefur `origin/main`,
+  lines 607–619) takes each chapter's title from its intro page's page-data `chapterTitle` first and reads
+  `status.json` only when that is missing, and all 21 chemistry chapters have an intro page carrying it. So this item
+  does not gate the sync. `status.json` still supplies the editor dashboard's titles (`server/routes/status.js`), so it
+  stays an editor fix.*
 
 ### 3.2 The apply gate: before the hold is lifted
 
@@ -204,6 +247,9 @@ the current grant before S; after S, in-kind where it fits a line and otherwise 
 | G2.5 | **Module completion rule** (SD8). A module counts as reviewed, publishes to the faithful track and loses its MT banner only when every segment is complete for its class under D12. The chapter's auto-advance uses the same rule | The auto-advance fires after one apply per module (`segmentEditorService.js:1148-1151`) | S–M, plus a reader check |
 | G2.6 | **SA-01 at inject and at render** | An attribute typed after an allowlisted tag name survives inject's escape (`tools/cnxml-inject.js:1815-1849`) and reaches the preview and the reader's `{@html}`. Under the hold, typed text reaches no rendered page for chemistry, so the exposure starts at the lift (G1.13 closes the other books) | M |
 | G2.7 | **Lift the hold:** a code change to `server/lib/applyHold.js` that names the guards making it safe | It was built so that lifting it is deliberate | S |
+
+✏️ *2026-10-28, G2.2 and G3.1–G3.2 ([answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)): table summaries get
+flag-only review and their own tier, and are never marked human-verified. Alt texts are reviewed in full.*
 
 **Before the first reviewed publication** (later than the first apply):
 - **§C105** after §C104: the faithful track's `glossary.json` and `index.json`.
@@ -263,6 +309,10 @@ aggregate reports, which run under the analysis line.
 **What the time figure means depends on D7.** If every unit starts from layer 2 (D7 = a), it measures post-editing of
 machine-revised MT, and effort from a pure-MT start is not measured anywhere. Under (b), the control units give it.
 The final report names the per-segment baseline and the D7 design as a refinement of the application's method.
+✏️ *2026-10-28: D7 is closed without a control arm. Every unit starts from pure MT, so the time figure measures
+post-editing of pure MT with AI and rule suggestions available in units opened after the run and the view existed,
+each accepted suggestion logged as an assist; there is no
+layer-2 start to separate out ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 
 **The protocol (G1.5) fixes, before any data:**
 - **Units and segment classes;** 'complete' per class under D12.
@@ -337,6 +387,16 @@ Icelandic, or one of its stored BÍN forms, appears as a whole word.
   - **Timing:** built and validated in months 3–4, inside the annex window; run over complete units in months 11–12,
     under the analysis line.
 
+✏️ *2026-10-28, B2's spike: the spike has three arms on chemistry compounds:*
+1. *Nefnir without tags;*
+2. *Nefnir with the application's named tagger, in an isolated old-Python environment as an offline batch only;*
+3. *Nefnir with a simpler, maintained tagger.*
+
+*Check first whether the named tagger's MIM-GOLD tags map onto Nefnir's IFD-style tags. Then choose by measured
+lemma accuracy, with the gibberish control kept. The methods section explains the choice: the tagger's own README
+recommends Nefnir plus simpler approaches. The server port of Nefnir keeps its Apache-2.0 notice and is tested
+against the original Python's output; its BÍN-derived rules stay out of git, as above.*
+
 **Done when:**
 - (a) the term check finds ruled terms in inflected and compound forms that today's regex misses, with re-populated
   paradigms as the baseline and a negative control;
@@ -356,6 +416,11 @@ at least semi-automatically. The proposed reading of the contract:
 
 **Not the 10-10 AI pass.** That pass (layer 2) is a one-off preparation step and a separate research condition. B3 is
 the Ritstjóri feature for decisions made **during** editing.
+✏️ *2026-10-27 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)): B3 claims no hours for the pass or for porting its gate or lexicon; AI-derived forms
+carry the origin `ai-pass` and are excluded from B3's "share written automatically"; B3's evaluation set is post-S
+rulings plus withheld or control rulings. Note the reverse dependency: U4 waits on layer 2 (D15) (review F6, H4).*
+✏️ *2026-10-28: with no withholding and no control arm, B3's evaluation set is post-S rulings; the rest of the fence
+stands ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)).*
 
 **Build order** (the assistant plan's recorded dependencies), months 5–9:
 1. **U1:** capture the Icelandic form actually matched.
@@ -407,6 +472,16 @@ can resolve, and flags the rest. It reports both shares per flip. Then an editor
 - Everything is self-hosted, which the application defines as run on the project's own equipment, with no third-party
   service and no per-use cost.
 
+✏️ *2026-10-28: the contract names no speech engine. Regína, IceG2P and a Talrómur voice come from the
+application, and the cost plan names a Piper voice.*
+- ***C.1 adds:** in month 1, before C.4 is designed, contact the other grantee that works on MathCAT for Icelandic
+  (speakable formulas in science textbooks).*
+- ***C.2 becomes a 1–2-session feasibility check by month 3.** It picks the engine: a Piper voice with an
+  IceG2P-to-espeak-ng symbol bridge through Piper's raw-phoneme input, or the ESPnet Talrómur models. It also tests
+  marker stripping and times one section.*
+- ***C.3 adds:** strip every project `[[…]]` marker **by its shape, not from a list of types**, before synthesis.
+  Piper reads `[[ … ]]` as raw phonemes.*
+
 **Exists:** the inputs in §2. Nothing else: no efni code, no reader player (the React player was deleted in the
 SvelteKit migration), and no pronunciation field in the term base (`concept_term` has none).
 
@@ -456,10 +531,24 @@ and credited (both grants, the voice, and the lexicons).
 - every module is live on the reader's faithful track;
 - the last sync is inside month 12.
 
+✏️ *2026-10-28: a dress rehearsal by month 3, timed with lifting the hold, that **stops before the public sync**.
+The first chapter the editors finish goes through approve → apply → inject → render → TMX → corpus export → a
+local reader build. Each step is checked by value:*
+- *the reviewed sentences are present in `/content/<book>/chapters/<NN>/<file>.html`;*
+- *the TMX marks a segment human-verified only where an editor changed or approved it;*
+- *that chapter's B1 rows add up.*
+
+*The public sync stays [USER]'s call, by book and timed with classes.*
+
 **Editing ends with month 10** (the annex). A shortfall projected at the month-6 review gets the documented response:
 - more unpaid editor hours, then priority by classroom use;
 - a notice to the ministry under the contract's doubt clause;
 - never silent editing in months 11–12.
+
+✏️ *2026-10-28: package A is re-sized in month 1, once D12 and D13 are decided, from measured rates only, with no
+AI saving counted. A saving that B1 measures by month 3 reduces the gap then. "Priority by classroom use" may not
+satisfy the contract's rule that every chapter is reviewed and published. If extra unpaid hours and lighter tiers
+cannot cover the gap, the follow-on grant's fund is told in month 1. The figures are in the private companion.*
 
 ### 5.2 The open releases (D): the release gate
 
@@ -479,6 +568,8 @@ and credited (both grants, the voice, and the lexicons).
 | G3.7 | **Deposit:** confirm the route against the contract's annex | [USER] · in-kind · S | No tracked document names it |
 | G3.8 | **The stale claims, before the S tag.** Correct `books/efnafraedi-2e/metadata.json` (`humanVerifiedTM: true`, `catTool: Matecat`). Add a note to `books/efnafraedi-2e/tm/` that the June files are carried-over MT | this plan · prep · S | The S tag would freeze them as "what existed" |
 
+✏️ *2026-10-28, G3.1–G3.2: table summaries keep their own tier and are never marked human-verified; see the 2026-10-28 note under G2.2 ([answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)).*
+
 ### 5.3 Credits
 
 **Both grants are credited everywhere the project publishes:**
@@ -489,6 +580,12 @@ and credited (both grants, the voice, and the lexicons).
 
 The wording is the contract's, which [USER] supplies, and it is in place before the first reviewed publication. Today
 only the reader's front page carries a credit, for the current grant alone (`src/lib/data/about.ts:42`).
+
+✏️ *2026-10-28: the contract's sentence is now on file. It is in the private companion, because this repository
+names no grant or fund. **From S** it goes in everything published *about* the project: talks, reports, articles,
+announcements and the reader's project description. The page footer, `/leyfi`, the print colophon and the release
+metadata carry it **once follow-on-funded material ships there**. Until then those pages are MT made under the
+current grant.*
 
 ### 5.4 Reader statistics
 
@@ -557,6 +654,23 @@ Reconcile the calendar with the annex once its signed version is on file.
 | **Months 11–12** (Sep–Oct) | none | B1 aggregate reports; B2b's run; releases assembled, deposited and posted; audio for every reviewed chapter; the last sync | the reports; posting |
 | **By 1 Dec 2027** | | | the final report |
 
+✏️ *2026-10-27 ([record](../decisions/2026-10-27-ai-layer-pilot-before-s-full-run-after-prereg.md)):*
+- *"Before S" row: the AI layer's one-chapter pilot (current grant).*
+- *"Month 1" row: the full run stays in month 1, after the D7 pre-registration; paid privately by [USER], outside
+  both grants' columns.*
+
+✏️ *2026-10-28, "Month 1" row ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)):*
+- *the full run is no longer "after the D7 pre-registration". It runs after the prompt freeze, at high effort, and
+  is still paid privately;*
+- *then comes the short look: 20 per category, across segment types, never from the pilot chapter. Suggestions go
+  live after it;*
+- *Month 1 drops the control draw, the pre-registration, the apply filter and the loader switch;*
+- *Month 1 adds G1.23, the consent with the licence clause, and contacting the MathCAT grantee.*
+
+✏️ *2026-10-28, "Month 3" row: plus the dress rehearsal (§5.1) and C's feasibility check (§4.4).*
+
+✏️ *2026-10-28, "Before S" row: SD10's letters move to week 2 (the SD10 note).*
+
 **The month-1 load is the plan's tightest point.** The editing gate and the 10-10 build share the same weeks and the
 same reviewer. If the gate slips past the Christmas break, the pilot moves to January, and the month comes out of the
 editing window (§9, risk 1).
@@ -567,6 +681,11 @@ None is answered. Each carries a recommendation, and everything not listed takes
 The 10-10 plan's open decisions D7 (control arm), D12 (review depth for alts and table summaries) and D13 (ch01–ch02)
 gate the editing gate too, in month 1's first week. **D7 also decides what the contract's time figure measures**
 (§4.1). Per-chapter release (§C142) is the register's (§5.1).
+✏️ *2026-10-28: SD2 was answered on 2026-10-24 (merged in #557), and SD3, SD9 and SD10 now carry [USER]'s
+2026-10-28 rulings in notes under their tables. Of the 10-10 decisions, D7 is closed without a control arm and D12 is
+answered
+([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md),
+[answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)); D13 is still open.*
 
 **Now, before S**
 
@@ -575,6 +694,14 @@ gate the editing gate too, in month 1's first week. **D7 also decides what the c
 | SD1 | Adopt the three gates (§1 point 2, §3). That amends four things: 10-10 4.4 (the register's ③ list before editors open anything); D8; 4.0's "before 4.1" (it moves to "before the hold is lifted", which is safe only while the hold stands); and the private companion's "③ before A starts". It also splits 4.2 into supersede and re-attach, both before the affected modules open. 4.0's start moves from before S to after S | **Yes.** With the hold and G1.14, editing need not wait for the apply-side fixes |
 | SD2 | How editors from the other two schools sign in. The contract's metric counts three editors from three schools at the start. **First, read-only:** the app registration's supported account types (the migration checklist says single-tenant; unverified) and production's `MS_TENANT_ID` and `AUTO_CREATE_USERS`. **✏️ Measured 2026-10-24 (register, that day's entry): one tenant, but shared by several schools. A partner from one of the other schools has already signed in, with no invitation.** Then (a) guest accounts in the registering school's tenant, or (b) a multi-tenant registration, which first needs id_token validation (tid, aud, iss), users keyed on the immutable object id, an explicit tenant allowlist and `AUTO_CREATE_USERS=false` | ✏️ **2026-10-24: a school in the shared tenant needs neither (a) nor (b).** (a) remains the route for a school outside it. ~~Ask that school's IT now. Walk one guest sign-in end to end. Set `AUTO_CREATE_USERS=false` once the editors' rows exist~~: sign-in without an account is how recruits get in. What replaces auto-create is [USER]'s call; [CODE]'s recommendation is in the register (2026-10-24). Record the client secret's expiry either way |
 | SD3 | What counts as an "approved term" for the growth metric, and its baseline | **Report two counts:** chemistry headwords with a recorded ruling, and those the committee has confirmed. Snapshot both at the S tag, from every place a ruling lives: production's term tables (a read-only read), `server/lib/houseStyleTerms.js` at the tagged commit, and the compiled stage 1 ruling set, which also holds the record-only headwords. **A ruling dated before S counts in the baseline whether or not it has been applied yet.** *(Amended 2026-10-24 from the plan critique: the 11 October rulings reach production only after S, so a production-only read would count them as Skerfur growth.)* The export cannot serve, because it calls every term approved (`server/lib/resolvedGlossary.js:122`) |
+
+✏️ *2026-10-28, SD2: answered on 2026-10-24 and merged the same day in #557: a sign-in that matches no account is a
+visit, with a viewer session and no `users` row (register, SD2; CLAUDE.md § Auth).*
+
+✏️ *2026-10-28, SD3 (moved here the same day from under the SD9/SD10 table): on the baseline day, also pin one
+consistent copy of production's database. Make it with `sqlite3 … ".backup …"`, not `cp`, and keep it outside both
+backup rotations until the baseline is committed and checked, then delete it, because it holds editors' data. If the
+snapshot tool reaches production late, run it on that copy.*
 
 **Before the editing gate (month 1)**
 
@@ -598,6 +725,18 @@ gate the editing gate too, in month 1's first week. **D7 also decides what the c
 | SD9 | Scope the 2026-08-06 decision ("a hosted API, not a port"; no self-hosted Python) for B2 and C | **Write a decision record with `/decision-record`:** nothing new runs on the production box; B2's lemma index and C's chain run as an offline batch on the project's own equipment (the development box); a port of Nefnir's rules runs in the server only as a fallback, with its rules file outside git. Carry the correction that the 2026-08-12 record's "roughly 3%" belongs to the forms-indexing alternative, not the compounder (`test-results/b4b-matcher-cutover-2026-08.md`, B11.3 and B11.5). Mark the assistant plan's "do not re-litigate" line as superseded, and delete the Greynir sidecar |
 | SD10 | **Ask the rights holders in writing, now:** (a) the MT provider: may its output, and texts post-edited from it, be redistributed under CC BY 4.0? (b) record the AI-pass provider's published terms on outputs; (c) SÁM: Íðorðabankinn's terms for terms and definitions, Nefnir's rules, and BÍN forms written into prose and released in the TMX or corpus; (d) the chemistry society: its glossary's terms and definitions; (e) the IceG2P maintainers: the dictionary and the compound maps | **Yes, before S.** Record each answer under `docs/decisions/`. Nothing is held meanwhile, except that no BÍN-sourced form enters text the backup pushes, and nothing is released, until the relevant answer is in |
 
+✏️ *2026-10-28, SD9: the Greynir sidecar and its editor button are deleted **before the first unit opens**. Grammar help
+stays "if editors ask". If it is built, it arrives through G1.23's view. Before buying any grammar checking, ask the
+MT provider whether its production translation already applies its correction step. A hosted grammar check is used
+only behind a fail-closed marker mask, and only after a blind sample shows its precision is worth its cost.*
+
+✏️ *2026-10-28, SD10: the letters go in **week 2**, not before S; nothing before then waits on the answers. (b) Record the
+AI provider's output terms **in the same commit as the first public AI log**. (c) The SÁM letter gains three
+questions:*
+- *a checker that uses BÍN but emits only yes/no verdicts;*
+- *BÍN-derived forms sent to a commercial AI model;*
+- *a published BÍN-based non-word rate per text layer.*
+
 **Before B3 (month 5) and C (month 7)**
 
 | # | Decision | Recommendation |
@@ -615,6 +754,7 @@ review is the planned check.
    - **A late gate shortens the window.** If the gate slips into January, the window is a month shorter.
    - **The pilot cannot calibrate the rest.** Until G1.12 lands, the eligible modules are introductions, ch18 and
      appendix tables, which hold little of the text.
+   ✏️ *2026-10-28: package A is re-sized in month 1 with no AI saving counted; see the note under §5.1's shortfall paragraph.*
 
    **Response:** measure pooled throughput from month 3, by segment type and never extrapolated from the pilot's
    modules. Then apply the documented response (more unpaid editor hours, then priority by classroom use), and notify

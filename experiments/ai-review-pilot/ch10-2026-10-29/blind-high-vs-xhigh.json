@@ -1,0 +1,190 @@
+{
+ "schema": "ai-review-blind-comparison/1",
+ "about": "[USER]'s blind comparison of the ch10 AI term pass at effort high vs xhigh, 2026-10-29: every segment where the two runs' final text differs (9 of the 345 both answered; the 17 segments xhigh left unanswered in cut-off requests are excluded). A/B assigned at random per item (seed below); the key was not shown until all 9 were saved. Verdicts copied verbatim from the review page's store. Evidence, never status.",
+ "runs": {
+  "high": "20261028T232340Z-32f49732",
+  "xhigh": "20261029T054345Z-d6df8f0d"
+ },
+ "seed": 20261029,
+ "differingTotal": 9,
+ "excludedUnanswered": [
+  "m68769:glossary-def:fs-idm153679600-def",
+  "m68770:abstract-item:abstract-item-1",
+  "m68770:abstract-item:abstract-item-2",
+  "m68770:alt:fs-idp38645936-alt",
+  "m68770:caption:CNX_Chem_10_05_BoronOxide-caption",
+  "m68770:caption:CNX_Chem_10_05_TypesSol-caption",
+  "m68770:para:fs-idm142034528",
+  "m68770:para:fs-idm43294048",
+  "m68770:para:fs-idp94426432",
+  "m68773:alt:fs-idp191262336-alt",
+  "m68773:alt:fs-idp26945552-alt",
+  "m68773:caption:CNX_Chem_10_06_IntIonst-caption",
+  "m68773:caption:CNX_Chem_10_06_TetOctHole-caption",
+  "m68773:example-title:fs-idm32665648-title",
+  "m68773:para:fs-idp1330336",
+  "m68773:para:fs-idp44872240",
+  "m68773:para:fs-idp78541312"
+ ],
+ "tally": {
+  "high": 3,
+  "xhigh": 6
+ },
+ "verdicts": [
+  {
+   "item": "i01",
+   "segment": "m68761:para:fs-idm93742928",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Uses the correct term for isomers and correct gender for \"sýndar\"."
+  },
+  {
+   "item": "i02",
+   "segment": "m68761:para:fs-idm53508384",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": "Version A missed the second occurrance of \"millikraftar\". However, the original MT of \"Efnisstigið\" is weird (state of matter?). Also \"eining\" should be \"kafli\", but that probably falls to human editing (and house rule propagation)."
+  },
+  {
+   "item": "i03",
+   "segment": "m68768:abstract-item:abstract-item-1",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "More accurate."
+  },
+  {
+   "item": "i04",
+   "segment": "m68768:para:fs-idm70086528",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "While B is not wrong, in this case, A (original) is more natural, as the text in paranthesis is not a scientific term, but an explanation that should be in common language."
+  },
+  {
+   "item": "i05",
+   "segment": "m68768:abstract-item:abstract-item-2",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": ""
+  },
+  {
+   "item": "i06",
+   "segment": "m68769:para:fs-idm53315104",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "A",
+   "preferredRun": "high",
+   "note": ""
+  },
+  {
+   "item": "i07",
+   "segment": "m68769:para:fs-idm105011872",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "A",
+   "preferredRun": "high",
+   "note": "Correct terminology."
+  },
+  {
+   "item": "i08",
+   "segment": "m68768:solution:fs-idm51358288",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "B",
+   "preferredRun": "high",
+   "note": "More precise."
+  },
+  {
+   "item": "i09",
+   "segment": "m68770:para:fs-idm62566768",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Correct terminology. B completely skips frumeindir -> atóm, which is the biggest change in the september MT. I do question the translation \"íbótun\". I cannot find it in \"Íðorðabankinn\" at Árnastofnun, so I'm wondering where it comes from."
+  }
+ ],
+ "itemsShown": [
+  {
+   "id": "i01",
+   "kind": "para",
+   "en": "The shapes of molecules also affect the magnitudes of the dispersion forces between them. For example, boiling points for the isomers ⟦n⟧-pentane, isopentane, and neopentane (shown in ⟦CNX_Chem_10_01_PentIso⟧) are 36 °C, 27 °C, and 9.5 °C, respectively. Even though these compounds are composed of molecules with the same chemical formula, C⟦5⟧H⟦12⟧, the difference in boiling points suggests that dispersion forces in the liquid phase are different, being greatest for ⟦n⟧-pentane and least for neopentane. The elongated shape of ⟦n⟧-pentane provides a greater surface area available for contact between molecules, resulting in correspondingly stronger dispersion forces. The more compact shape of isopentane offers a smaller surface area available for intermolecular contact and, therefore, weaker dispersion forces. Neopentane molecules are the most compact of the three, offering the least available surface area for intermolecular contact and, hence, the weakest dispersion forces. This behavior is analogous to the connections that may be formed between strips of VELCRO brand fasteners: the greater the area of the strip’s contact, the stronger the connection.",
+   "before": "Lögun sameinda hefur einnig áhrif á stærð dreifikrafta á milli þeirra. Til dæmis eru suðumörk fyrir ísómerana ⟦n⟧-pentan, ísópentan og neópentan (sýndir í ⟦CNX_Chem_10_01_PentIso⟧) 36 °C, 27 °C og 9,5 °C. Jafnvel þótt þessi efnasambönd séu samsett úr sameindum með sömu efnaformúlu, C⟦5⟧H⟦12⟧, bendir munurinn á suðumörkum til þess að dreifikraftar í vökvafasa séu mismunandi, mestir fyrir ⟦n⟧-pentan og minnstir fyrir neópentan. Ílangt form ⟦n⟧-pentans gefur stærra yfirborðsflatarmál fyrir snertingu milli sameinda, sem leiðir til samsvarandi sterkari dreifikrafta. Fyrirferðarminna form ísópentans býður upp á minna yfirborðsflatarmál fyrir snertingu milli sameinda og þar af leiðandi veikari dreifikrafta. Neópentan-sameindir eru þær fyrirferðarminnstu af þessum þremur, bjóða upp á minnsta tiltæka yfirborðsflatarmálið fyrir snertingu milli sameinda og þar með veikustu dreifikraftana. Þessi hegðun er sambærileg við tengingar sem hægt er að mynda milli VELCRO-franskra rennilása: því meira sem snertiflötur rennilásanna er, því sterkari er tengingin.",
+   "aHtml": "Lögun sameinda hefur einnig áhrif á stærð dreifikrafta á milli þeirra. Til dæmis eru suðumörk fyrir <ins>hverfurnar</ins> ⟦n⟧-pentan, ísópentan og neópentan <ins>(sýndar</ins> í ⟦CNX_Chem_10_01_PentIso⟧) 36 °C, 27 °C og 9,5 °C. Jafnvel þótt þessi efnasambönd séu samsett úr sameindum með sömu efnaformúlu, C⟦5⟧H⟦12⟧, bendir munurinn á suðumörkum til þess að dreifikraftar í vökvafasa séu mismunandi, mestir fyrir ⟦n⟧-pentan og minnstir fyrir neópentan. Ílangt form ⟦n⟧-pentans gefur stærra yfirborðsflatarmál fyrir snertingu milli sameinda, sem leiðir til samsvarandi sterkari dreifikrafta. Fyrirferðarminna form ísópentans býður upp á minna yfirborðsflatarmál fyrir snertingu milli sameinda og þar af leiðandi veikari dreifikrafta. Neópentan-sameindir eru þær fyrirferðarminnstu af þessum þremur, bjóða upp á minnsta tiltæka yfirborðsflatarmálið fyrir snertingu milli sameinda og þar með veikustu dreifikraftana. Þessi hegðun er sambærileg við tengingar sem hægt er að mynda milli VELCRO-franskra rennilása: því meira sem snertiflötur rennilásanna er, því sterkari er tengingin.",
+   "bHtml": null
+  },
+  {
+   "id": "i02",
+   "kind": "para",
+   "en": "The differences in the properties of a solid, liquid, or gas reflect the strengths of the attractive forces between the atoms, molecules, or ions that make up each phase. The phase in which a substance exists depends on the relative extents of its ⟦intermolecular forces⟧ (IMFs) and the kinetic energies (KE) of its molecules. IMFs are the various forces of attraction that may exist between the atoms and molecules of a substance due to electrostatic phenomena, as will be detailed in this module. These forces serve to hold particles close together, whereas the particles’ KE provides the energy required to overcome the attractive forces and thus increase the distance between particles. ⟦CNX_Chem_10_01_KMTPhases1⟧ illustrates how changes in physical state may be induced by changing the temperature, hence, the average KE, of a given substance.",
+   "before": "Munurinn á eiginleikum fasts efnis, vökva eða gass endurspeglar styrk togkraftanna milli atóma, sameinda eða jóna sem mynda hvert efnisstig. Efnisstigið sem efni er í fer eftir hlutfallslegum mæli ⟦millikrafta⟧ (IMFs) þess og hreyfiorku (KE) sameinda þess. Millikraftar eru hinir ýmsu togkraftar sem geta verið til staðar milli atóma og sameinda efnis vegna rafstöðufyrirbæra, eins og nánar verður fjallað um í þessari einingu. Þessir kraftar þjóna því hlutverki að halda ögnum þétt saman, en hreyfiorka agnanna veitir þá orku sem þarf til að yfirstíga togkraftana og auka þannig fjarlægðina milli agna. ⟦CNX_Chem_10_01_KMTPhases1⟧ sýnir hvernig hægt er að framkalla breytingar á efnisástandi með því að breyta hitastigi, og þar með meðalhreyfiorku, tiltekins efnis.",
+   "aHtml": "Munurinn á eiginleikum fasts efnis, vökva eða gass endurspeglar styrk togkraftanna milli atóma, sameinda eða jóna sem mynda hvert efnisstig. Efnisstigið sem efni er í fer eftir hlutfallslegum mæli <ins>⟦millisameindakrafta⟧</ins> (IMFs) þess og hreyfiorku (KE) sameinda þess. Millikraftar eru hinir ýmsu togkraftar sem geta verið til staðar milli atóma og sameinda efnis vegna rafstöðufyrirbæra, eins og nánar verður fjallað um í þessari einingu. Þessir kraftar þjóna því hlutverki að halda ögnum þétt saman, en hreyfiorka agnanna veitir þá orku sem þarf til að yfirstíga togkraftana og auka þannig fjarlægðina milli agna. ⟦CNX_Chem_10_01_KMTPhases1⟧ sýnir hvernig hægt er að framkalla breytingar á efnisástandi með því að breyta hitastigi, og þar með meðalhreyfiorku, tiltekins efnis.",
+   "bHtml": "Munurinn á eiginleikum fasts efnis, vökva eða gass endurspeglar styrk togkraftanna milli atóma, sameinda eða jóna sem mynda hvert efnisstig. Efnisstigið sem efni er í fer eftir hlutfallslegum mæli <ins>⟦millisameindakrafta⟧</ins> (IMFs) þess og hreyfiorku (KE) sameinda þess. <ins>Millisameindakraftar</ins> eru hinir ýmsu togkraftar sem geta verið til staðar milli atóma og sameinda efnis vegna rafstöðufyrirbæra, eins og nánar verður fjallað um í þessari einingu. Þessir kraftar þjóna því hlutverki að halda ögnum þétt saman, en hreyfiorka agnanna veitir þá orku sem þarf til að yfirstíga togkraftana og auka þannig fjarlægðina milli agna. ⟦CNX_Chem_10_01_KMTPhases1⟧ sýnir hvernig hægt er að framkalla breytingar á efnisástandi með því að breyta hitastigi, og þar með meðalhreyfiorku, tiltekins efnis."
+  },
+  {
+   "id": "i03",
+   "kind": "abstract-item",
+   "en": "Define phase transitions and phase transition temperatures",
+   "before": "Skilgreint hamskipti og hamskiptahita",
+   "aHtml": "Skilgreint hamskipti og <ins>hamskiptahitastig</ins>",
+   "bHtml": null
+  },
+  {
+   "id": "i04",
+   "kind": "para",
+   "en": "One way our body is cooled is by evaporation of the water in sweat (⟦CNX_Chem_10_03_Evap⟧). In very hot climates, we can lose as much as 1.5 L of sweat per day. Although sweat is not pure water, we can get an approximate value of the amount of heat removed by evaporation by assuming that it is. How much heat is required to evaporate 1.5 L of water (1.5 kg) at ⟦T⟧ = 37 °C (normal body temperature); Δ⟦H⟧⟦vap⟧ = 43.46 kJ/mol at 37 °C.",
+   "before": "Ein leið til að kæla líkamann er með uppgufun vatnsins í svita (⟦CNX_Chem_10_03_Evap⟧). Í mjög heitu loftslagi getum við misst allt að 1,5 L af svita á dag. Þó að sviti sé ekki hreint vatn getum við fengið nálgunargildi á því magni hita sem fjarlægt er með uppgufun með því að gera ráð fyrir að svo sé. Hversu mikinn hita þarf til að gufa upp 1,5 L af vatni (1,5 kg) við ⟦T⟧ = 37 °C (eðlilegur líkamshiti); Δ⟦H⟧⟦vap⟧ = 43,46 kJ/mól við 37 °C.",
+   "aHtml": null,
+   "bHtml": "Ein leið til að kæla líkamann er með uppgufun vatnsins í svita (⟦CNX_Chem_10_03_Evap⟧). Í mjög heitu loftslagi getum við misst allt að 1,5 L af svita á dag. Þó að sviti sé ekki hreint vatn getum við fengið nálgunargildi á því magni hita sem fjarlægt er með uppgufun með því að gera ráð fyrir að svo sé. Hversu mikinn hita þarf til að gufa upp 1,5 L af vatni (1,5 kg) við ⟦T⟧ = 37 °C <ins>(eðlilegt líkamshitastig);</ins> Δ⟦H⟧⟦vap⟧ = 43,46 kJ/mól við 37 °C."
+  },
+  {
+   "id": "i05",
+   "kind": "abstract-item",
+   "en": "Explain the relation between phase transition temperatures and intermolecular attractive forces",
+   "before": "Útskýrt sambandið milli hamskiptahita og aðdráttarkrafta milli sameinda",
+   "aHtml": "Útskýrt sambandið milli <ins>hamskiptahitastiga</ins> og aðdráttarkrafta milli sameinda",
+   "bHtml": null
+  },
+  {
+   "id": "i06",
+   "kind": "para",
+   "en": "To illustrate the utility of these plots, consider the phase diagram for water shown in ⟦CNX_Chem_10_04_H2OPhasDi2⟧.",
+   "before": "Til að sýna fram á notagildi þessara grafa skulum við skoða fasamynd fyrir vatn sem sýnd er á ⟦CNX_Chem_10_04_H2OPhasDi2⟧.",
+   "aHtml": "Til að sýna fram á notagildi þessara grafa skulum við skoða <ins>fasarit</ins> fyrir vatn sem sýnd er á ⟦CNX_Chem_10_04_H2OPhasDi2⟧.",
+   "bHtml": null
+  },
+  {
+   "id": "i07",
+   "kind": "para",
+   "en": "In the previous module, the variation of a liquid’s equilibrium vapor pressure with temperature was described. Considering the definition of boiling point, plots of vapor pressure versus temperature represent how the boiling point of the liquid varies with pressure. Also described was the use of heating and cooling curves to determine a substance’s melting (or freezing) point. Making such measurements over a wide range of pressures yields data that may be presented graphically as a phase diagram. A ⟦phase diagram⟧ combines plots of pressure versus temperature for the liquid-gas, solid-liquid, and solid-gas phase-transition equilibria of a substance. These diagrams indicate the physical states that exist under specific conditions of pressure and temperature, and also provide the pressure dependence of the phase-transition temperatures (melting points, sublimation points, boiling points). A typical phase diagram for a pure substance is shown in ⟦CNX_Chem_10_04_PhaseDi⟧.",
+   "before": "Í fyrri einingu var lýst breytileika jafnvægisgufuþrýstings vökva með hitastigi. Með hliðsjón af skilgreiningu suðumarks sýna gröf yfir gufuþrýsting á móti hitastigi hvernig suðumark vökvans breytist með þrýstingi. Einnig var lýst notkun hitunar- og kólnunarferla til að ákvarða bræðslumark (eða frostmark) efnis. Með því að gera slíkar mælingar yfir breitt þrýstingssvið fást gögn sem hægt er að setja fram myndrænt sem fasamynd. ⟦Fasamynd⟧ sameinar gröf yfir þrýsting á móti hitastigi fyrir jafnvægi fasaskipta milli vökva og gass, fasts efnis og vökva og fasts efnis og gass fyrir tiltekið efni. Þessar myndir sýna hvaða eðlisástand er til staðar við sérstakar aðstæður þrýstings og hitastigs og gefa einnig upp þrýstingsháð fasaskiptahitastig (bræðslumörk, þurrgufunarmörk, suðumörk). Dæmigerð fasamynd fyrir hreint efni er sýnd á ⟦CNX_Chem_10_04_PhaseDi⟧.",
+   "aHtml": "Í fyrri einingu var lýst breytileika <ins>jafnvægisgufunarþrýstings</ins> vökva með hitastigi. Með hliðsjón af skilgreiningu suðumarks sýna gröf yfir <ins>gufunarþrýsting</ins> á móti hitastigi hvernig suðumark vökvans breytist með þrýstingi. Einnig var lýst notkun hitunar- og kólnunarferla til að ákvarða bræðslumark (eða frostmark) efnis. Með því að gera slíkar mælingar yfir breitt þrýstingssvið fást gögn sem hægt er að setja fram myndrænt sem <ins>fasarit. ⟦Fasarit⟧</ins> sameinar gröf yfir þrýsting á móti hitastigi fyrir jafnvægi fasaskipta milli vökva og gass, fasts efnis og vökva og fasts efnis og gass fyrir tiltekið efni. Þessar myndir sýna hvaða eðlisástand er til staðar við sérstakar aðstæður þrýstings og hitastigs og gefa einnig upp þrýstingsháð fasaskiptahitastig (bræðslumörk, þurrgufunarmörk, suðumörk). <ins>Dæmigert fasarit</ins> fyrir hreint efni er sýnd á ⟦CNX_Chem_10_04_PhaseDi⟧.",
+   "bHtml": null
+  },
+  {
+   "id": "i08",
+   "kind": "solution",
+   "en": "(a) At 5000 feet, the atmospheric pressure is lower than at sea level, and water will therefore boil at a lower temperature. This lower temperature will cause the physical and chemical changes involved in cooking the egg to proceed more slowly, and a longer time is required to fully cook the egg. (b) As long as the air surrounding the body contains less water vapor than the maximum that air can hold at that temperature, perspiration will evaporate, thereby cooling the body by removing the heat of vaporization required to vaporize the water.",
+   "before": "(a) Í 5000 feta hæð er loftþrýstingurinn lægri en við sjávarmál og því sýður vatn við lægra hitastig. Þetta lægra hitastig veldur því að eðlis- og efnafræðilegar breytingar sem verða við suðu eggsins ganga hægar fyrir sig og það tekur lengri tíma að sjóða eggið að fullu. (b) Svo lengi sem loftið í kringum líkamann inniheldur minni vatnsgufu en hámarkið sem loftið getur haldið við það hitastig, mun svitinn gufa upp og kæla þannig líkamann með því að fjarlægja gufunarvarma sem þarf til að gufa upp vatnið.",
+   "aHtml": null,
+   "bHtml": "(a) Í 5000 feta hæð er loftþrýstingurinn lægri en við sjávarmál og því sýður vatn við lægra hitastig. Þetta lægra hitastig veldur því að eðlis- og <ins>efnabreytingar</ins> sem verða við suðu eggsins ganga hægar fyrir sig og það tekur lengri tíma að sjóða eggið að fullu. (b) Svo lengi sem loftið í kringum líkamann inniheldur minni vatnsgufu en hámarkið sem loftið getur haldið við það hitastig, mun svitinn gufa upp og kæla þannig líkamann með því að fjarlægja gufunarvarma sem þarf til að gufa upp vatnið."
+  },
+  {
+   "id": "i09",
+   "kind": "para",
+   "en": "In a crystalline solid, the atoms, ions, or molecules are arranged in a definite repeating pattern, but occasional defects may occur in the pattern. Several types of defects are known, as illustrated in ⟦CNX_Chem_10_05_CrystDfcts⟧. ⟦Vacancies⟧ are defects that occur when positions that should contain atoms or ions are vacant. Less commonly, some atoms or ions in a crystal may occupy positions, called ⟦interstitial sites⟧, located between the regular positions for atoms. Other distortions are found in impure crystals, as, for example, when the cations, anions, or molecules of the impurity are too large to fit into the regular positions without distorting the structure. Trace amounts of impurities are sometimes added to a crystal (a process known as ⟦doping)⟧ in order to create defects in the structure that yield desirable changes in its properties. For example, silicon crystals are doped with varying amounts of different elements to yield suitable electrical properties for their use in the manufacture of semiconductors and computer chips.",
+   "before": "Í kristölluðu föstu efni eru frumeindir, jónir eða sameindir raðaðar í ákveðið endurtekið mynstur, en einstaka gallar geta komið fyrir í mynstrinu. Nokkrar gerðir galla eru þekktar, eins og sýnt er í ⟦CNX_Chem_10_05_CrystDfcts⟧. ⟦Auð sæti⟧ eru gallar sem eiga sér stað þegar stöður sem ættu að innihalda frumeindir eða jónir eru auðar. Sjaldgæfara er að sumar frumeindir eða jónir í kristal geti tekið sér stöðu, sem kallast ⟦milligrindarsæti⟧, staðsettar á milli venjulegra staða fyrir frumeindir. Aðrar brenglanir finnast í óhreinum kristöllum, eins og til dæmis þegar katjónir, anjónir eða sameindir óhreininda eru of stórar til að passa inn í venjulegar stöður án þess að brengla bygginguna. Snefilmagni af óhreinindum er stundum bætt við kristal (ferli sem kallast ⟦íbótun)⟧ til að skapa galla í byggingunni sem leiða til æskilegra breytinga á eiginleikum hans. Til dæmis eru kísilkristallar íbættir með mismunandi magni af mismunandi frumefnum til að ná fram viðeigandi rafeiginleikum fyrir notkun þeirra í framleiðslu á hálfleiðurum og tölvukubbum.",
+   "aHtml": "Í kristölluðu föstu efni eru <ins>atóm,</ins> jónir eða sameindir raðaðar í ákveðið endurtekið mynstur, en einstaka gallar geta komið fyrir í mynstrinu. Nokkrar gerðir galla eru þekktar, eins og sýnt er í ⟦CNX_Chem_10_05_CrystDfcts⟧. ⟦Auð sæti⟧ eru gallar sem eiga sér stað þegar stöður sem ættu að innihalda <ins>atóm</ins> eða jónir eru auðar. Sjaldgæfara er að <ins>sum atóm</ins> eða jónir í kristal geti tekið sér stöðu, sem kallast ⟦milligrindarsæti⟧, staðsettar á milli venjulegra staða fyrir <ins>atóm.</ins> Aðrar brenglanir finnast í óhreinum kristöllum, eins og til dæmis þegar katjónir, anjónir eða sameindir óhreininda eru of stórar til að passa inn í venjulegar stöður án þess að brengla bygginguna. Snefilmagni af óhreinindum er stundum bætt við kristal (ferli sem kallast ⟦íbótun)⟧ til að skapa galla í byggingunni sem leiða til æskilegra breytinga á eiginleikum hans. Til dæmis eru kísilkristallar íbættir með mismunandi magni af mismunandi frumefnum til að ná fram viðeigandi rafeiginleikum fyrir notkun þeirra í framleiðslu á hálfleiðurum og tölvukubbum.",
+   "bHtml": null
+  }
+ ]
+}

@@ -1,5 +1,9 @@
 # D11: the buy runbook (Wed 28 Oct 2026)
 
+> ✏️ **Run on 2026-10-26, ahead of the deadline, with `D11=$HOME/d11-buy-2026-10-26`** (the folder takes the buy
+> day's date, not `-28`). The register's 2026-10-26 entries record the sitting. The analysis is in
+> [`results/2026-10-26/analysis.md`](results/2026-10-26/analysis.md).
+
 The paid part of D11: 3 arms × 2 runs, both modules in every run, up to ISK 5,000. The design is
 [`DESIGN.md`](DESIGN.md); the arms were decided in
 [`docs/decisions/2026-10-25-d11-three-arms-junes-wire-primary.md`](../../docs/decisions/2026-10-25-d11-three-arms-junes-wire-primary.md);

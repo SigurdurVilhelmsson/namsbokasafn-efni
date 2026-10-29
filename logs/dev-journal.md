@@ -555,3 +555,33 @@ bf43dedab docs(register): D11's trees are backed up and verified (2026-10-26 aft
 **Why:** —
 
 ---
+
+## 2026-10-26 13:57 - D11 analysed and merged as #575 (June's wire beats no glossary 8/8 vs 6/8; secondaries not established; September base stands), prod at 6a955f9aa
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+6a955f9aa Merge pull request #575 from SigurdurVilhelmsson/exp/d11-analysis
+79fb7b2a9 docs(register): 2026-10-26 (late afternoon): D11 analysed — June's wire beats no glossary; secondaries not established
+8c46d4729 docs(d11): the pre-registered analysis — M beats no glossary (8/8 vs 6/8); secondaries not established
+
+**Why:** —
+
+---
+
+## 2026-10-26 14:20 - Session wrap-up 26 Oct: D11 complete (bought, analysed, #575 deployed), u01 letters revised with A4 on hold; next action is in the register's 2026-10-26 (evening) entry
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+ce507b295 docs: 2026-10-26 (evening) register entry; D11 runbook pointer; the unselected-terms check
+93b8f7092 docs(journal): snapshot — D11 analysed and merged as #575 (June's wire beats no glossary; September base stands), prod at 6a955f9aa
+6a955f9aa Merge pull request #575 from SigurdurVilhelmsson/exp/d11-analysis
+
+**Why:** A fresh session starts from the register's newest entry, which owns what happens next; no HANDOFF.md, so status has one owner. Private letters stay in git-excluded docs/grants/.
+
+---

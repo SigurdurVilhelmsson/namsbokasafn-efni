@@ -1,0 +1,2305 @@
+{
+ "rulingSet": "experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json",
+ "items": [
+  {
+   "id": "valence",
+   "rulingId": "valence",
+   "english": "valence",
+   "glossaryEnglish": "valence",
+   "glossary": {
+    "is": "girðitala",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "gildi",
+    "competitors": [
+     "girðitala"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ws_valence (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [
+    "coordination number"
+   ],
+   "contexts": [
+    {
+     "segment": "ch06:m68734:caption:CNX_Chem_06_04_Econtable-caption",
+     "en": "This partial periodic table shows electron configurations for the valence subshells of atoms. By “building up” from hydrogen, this table can be used to determine the electron configuration for atoms of most elements in the periodic table. (Electron configurations of the lanthanides and actinides are not accurately predicted by this simple approach. See CNX_Chem_06_04_Ptableconf.)",
+     "enSpans": [
+      [
+       66,
+       73
+      ]
+     ],
+     "is": "Þetta hluta-lotukerfi sýnir rafeindaskipanir fyrir gildisundirhvolf atóma. Með því að „byggja upp“ frá vetni er hægt að nota þessa töflu til að ákvarða rafeindaskipan fyrir atóm flestra frumefna í lotukerfinu. (Rafeindaskipanir lantaníða og aktiníða eru ekki nákvæmlega spáð með þessari einföldu nálgun. Sjá CNX_Chem_06_04_Ptableconf.)"
+    },
+    {
+     "segment": "ch06:m68734:para:fs-idm31105888",
+     "en": "The alkali metal sodium (atomic number 11) has one more electron than the neon atom. This electron must go into the lowest-energy subshell available, the 3s orbital, giving a 1s22s22p63s1 configuration. The electrons occupying the outermost shell orbital(s) (highest value of n) are called valence electrons, and those occupying the inner shell orbitals are called core electrons (CNX_Chem_06_04_Valence). Since the core electron shells correspond to noble gas electron configurations, we can abbreviate electron configurations by writing the noble gas that matches the core electron configuration, along with the valence electrons in a condensed format. For our sodium example, the symbol [Ne] represents core electrons, (1s22s22p6) and our abbreviated or condensed configuration is [Ne]3s1.",
+     "enSpans": [
+      [
+       290,
+       297
+      ],
+      [
+       396,
+       403
+      ],
+      [
+       614,
+       621
+      ]
+     ],
+     "is": "Alkalímálmurinn natríum (sætistala 11) hefur eina rafeind fleiri en neonatóm. Þessi rafeind verður að fara í lægsta orkuundirhvolfið sem er í boði, 3s sviðið, sem gefur 1s22s22p63s1 skipan. Rafeindirnar sem hernema ysta hvolfssviðið (hæsta gildi n) eru kallaðar gildisrafeindir og þær sem hernema innri hvolfssviðin eru kallaðar kjarnarafeindir (CNX_Chem_06_04_Valence). Þar sem kjarnarafeindahvolfin samsvara rafeindaskipanum eðallofttegunda getum við stytt rafeindaskipanir með því að skrifa eðallofttegundina sem samsvarar kjarnarafeindaskipaninni, ásamt gildisrafeindunum á samþjöppuðu formi. Í dæminu okkar um natríum táknar [Ne] kjarnarafeindir, (1s22s22p6) og stytta eða samþjappaða skipanin okkar er [Ne]3s1."
+    },
+    {
+     "segment": "ch06:m68734:para:fs-idp28826352",
+     "en": "Similarly, the abbreviated configuration of lithium can be represented as [He]2s1, where [He] represents the configuration of the helium atom, which is identical to that of the filled inner shell of lithium. Writing the configurations in this way emphasizes the similarity of the configurations of lithium and sodium. Both atoms, which are in the alkali metal family, have only one electron in a valence s subshell outside a filled set of inner shells.",
+     "enSpans": [
+      [
+       396,
+       403
+      ]
+     ],
+     "is": "Á sama hátt má tákna stytta skipan litíums sem [He]2s1, þar sem [He] táknar skipan helíumatómsins, sem er eins og fyllt innra hvolf litíums. Með því að skrifa skipanirnar á þennan hátt er lögð áhersla á líkindi skipana litíums og natríums. Bæði atómin, sem eru í alkalímálmafjölskyldunni, hafa aðeins eina rafeind í gildis-s undirhvolfi utan við fyllt sett af innri hvolfum."
+    }
+   ],
+   "segments": 168
+  },
+  {
+   "id": "accuracy",
+   "rulingId": "accuracy",
+   "english": "accuracy",
+   "glossaryEnglish": "accuracy",
+   "glossary": {
+    "is": "nákvæmni",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "hittni",
+    "competitors": [
+     "nákvæmni"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch01_fs-idp330245120 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [
+    "precision"
+   ],
+   "contexts": [
+    {
+     "segment": "appendices:m68860:para:fs-idm37591248",
+     "en": "A beekeeper reports that he has 525,341 bees. The last three figures of the number are obviously inaccurate, for during the time the keeper was counting the bees, some of them died and others hatched; this makes it quite difficult to determine the exact number of bees. It would have been more reasonable if the beekeeper had reported the number 525,000. In other words, the last three figures are not significant, except to set the position of the decimal point. Their exact values have no useful meaning in this situation. When reporting quantities, use only as many significant figures as the accuracy of the measurement warrants.",
+     "enSpans": [
+      [
+       596,
+       604
+      ]
+     ],
+     "is": "Býflugnabóndi segist eiga 525.341 býflugur. Síðustu þrír tölustafirnir eru augljóslega ónákvæmir, því á meðan bóndinn var að telja býflugurnar drápust sumar þeirra og aðrar klöktust út; þetta gerir það nokkuð erfitt að ákvarða nákvæman fjölda býflugna. Það hefði verið skynsamlegra ef býflugnabóndinn hefði gefið upp töluna 525.000. Með öðrum orðum, síðustu þrír tölustafirnir eru ekki markverðir, nema til að staðsetja kommuna. Nákvæm gildi þeirra hafa enga gagnlega merkingu í þessum aðstæðum. Þegar magn er gefið upp skal aðeins nota jafn marga markverða stafi og nákvæmni mælingarinnar heimilar."
+    },
+    {
+     "segment": "ch00:m68662:para:pref-p-009",
+     "en": "Content revisions for clarity and accuracy. The revision plan varied by chapter based on need. About five chapters were extensively rewritten and another twelve chapters were substantially revised to improve the readability and clarity of the narrative.",
+     "enSpans": [
+      [
+       34,
+       42
+      ]
+     ],
+     "is": "Endurskoðun efnis til að auka skýrleika og nákvæmni. Endurskoðunaráætlunin var mismunandi eftir köflum eftir þörfum. Um fimm kaflar voru mikið endurskrifaðir og aðrir tólf kaflar voru verulega endurskoðaðir til að bæta læsileika og skýrleika frásagnarinnar."
+    },
+    {
+     "segment": "ch00:m68662:para:pref-p-010",
+     "en": "Example and end-of-chapter exercises. The example and end-of-chapter exercises in several chapters were subjected to a rigorous accuracy check and revised to correct any errors, and additional exercises were added to several chapters to more fully support chapter content.",
+     "enSpans": [
+      [
+       128,
+       136
+      ]
+     ],
+     "is": "Dæmi og verkefni í lok kafla. Dæmi og verkefni í lok kafla í nokkrum köflum voru yfirfarin með tilliti til nákvæmni og endurskoðuð til að leiðrétta allar villur, og viðbótarverkefnum var bætt við nokkra kafla til að styðja betur við innihald kaflans."
+    }
+   ],
+   "segments": 19
+  },
+  {
+   "id": "isomers",
+   "rulingId": "isomers",
+   "english": "isomers",
+   "glossaryEnglish": "isomer",
+   "glossary": {
+    "is": "hverfa",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "hverfur",
+    "competitors": [],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch02_fs-idp55104 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "substantive",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch02:m68693:para:fs-idp29766960",
+     "en": "If you predict that another compound with the formula C2H4O2 could exist, then you demonstrated good chemical insight and are correct. Two C atoms, four H atoms, and two O atoms can also be arranged to form a methyl formate, which is used in manufacturing, as an insecticide, and for quick-drying finishes. Methyl formate molecules have one of the oxygen atoms between the two carbon atoms, differing from the arrangement in acetic acid molecules. Acetic acid and methyl formate are examples of isomers—compounds with the same chemical formula but different molecular structures (CNX_Chem_02_04_Isomers). Note that this small difference in the arrangement of the atoms has a major effect on their respective chemical properties. You would certainly not want to use a solution of methyl formate as a substitute for a solution of acetic acid (vinegar) when you make salad dressing.",
+     "enSpans": [
+      [
+       495,
+       502
+      ],
+      [
+       595,
+       602
+      ]
+     ],
+     "is": "Ef þú spáir því að annað efnasamband með formúluna C2H4O2 gæti verið til, þá sýndir þú góða efnafræðilega innsýn og hefur rétt fyrir þér. Tveimur C-atómum, fjórum H-atómum og tveimur O-atómum má einnig raða saman til að mynda metýlformat, sem er notað í framleiðslu, sem skordýraeitur og í fljótþornandi áferðarefni. Sameindir metýlformats hafa eitt súrefnisatómanna á milli kolefnisatómanna tveggja, sem er frábrugðið fyrirkomulaginu í ediksýrusameindum. Ediksýra og metýlformat eru dæmi um ísómerur – efnasambönd með sömu efnaformúlu en mismunandi sameindaformgerðir (CNX_Chem_02_04_Isomers). Athugaðu að þessi litli munur á röðun atómanna hefur mikil áhrif á efnafræðilega eiginleika þeirra. Þú myndir örugglega ekki vilja nota lausn af metýlformati í staðinn fyrir lausn af ediksýru (ediki) þegar þú býrð til salatsósu."
+    },
+    {
+     "segment": "ch02:m68693:caption:CNX_Chem_02_04_Isomers-caption",
+     "en": "Molecules of (a) acetic acid and methyl formate (b) are structural isomers; they have the same formula (C2H4O2) but different structures (and therefore different chemical properties).",
+     "enSpans": [
+      [
+       67,
+       74
+      ]
+     ],
+     "is": "Sameindir (a) ediksýru og (b) metýlformats eru formgerðarísómerur; þær hafa sömu formúlu (C2H4O2) en mismunandi formgerðir (og þar af leiðandi mismunandi efnafræðilega eiginleika)."
+    },
+    {
+     "segment": "ch02:m68693:para:fs-idm177313504",
+     "en": "Many types of isomers exist (CNX_Chem_02_04_Isomers2). Acetic acid and methyl formate are structural isomers, compounds in which the molecules differ in how the atoms are connected to each other. There are also various types of spatial isomers, in which the relative orientations of the atoms in space can be different. For example, the compound carvone (found in caraway seeds, spearmint, and mandarin orange peels) consists of two isomers that are mirror images of each other. S-(+)-carvone smells like caraway, and R-(−)-carvone smells like spearmint.",
+     "enSpans": [
+      [
+       14,
+       21
+      ],
+      [
+       101,
+       108
+      ],
+      [
+       236,
+       243
+      ],
+      [
+       433,
+       440
+      ]
+     ],
+     "is": "Til eru margar gerðir ísómera (CNX_Chem_02_04_Isomers2). Ediksýra og metýlformat eru formgerðarísómerur, efnasambönd þar sem sameindirnar eru ólíkar að því leyti hvernig atómin eru tengd saman. Einnig eru til ýmsar gerðir rúmísómera, þar sem hlutfallsleg afstaða atómanna í rúmi getur verið mismunandi. Til dæmis samanstendur efnasambandið karvón (sem finnst í kúmeni, garðmyntu og mandarínuberki) af tveimur ísómerum sem eru spegilmyndir hvor af annarri. S-(+)-karvón lyktar eins og kúmen og R-(−)-karvón lyktar eins og garðmynta."
+    }
+   ],
+   "segments": 84
+  },
+  {
+   "id": "calorimetry",
+   "rulingId": "calorimetry",
+   "english": "calorimetry",
+   "glossaryEnglish": "calorimetry",
+   "glossary": {
+    "is": "varmamælingar",
+    "alternatives": [
+     "varmamælifræði"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "varmamæling",
+    "competitors": [
+     "hitamæling"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idm56358720 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "substantive",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch05:m68723:abstract-item:abstract-item-2",
+     "en": "Calorimetry",
+     "enSpans": [
+      [
+       0,
+       11
+      ]
+     ],
+     "is": "Varmamælingar"
+    },
+    {
+     "segment": "ch05:m68726:title:auto-1",
+     "en": "Calorimetry",
+     "enSpans": [
+      [
+       0,
+       11
+      ]
+     ],
+     "is": "Varmamælingar"
+    },
+    {
+     "segment": "ch05:m68726:abstract-item:abstract-item-1",
+     "en": "Explain the technique of calorimetry",
+     "enSpans": [
+      [
+       25,
+       36
+      ]
+     ],
+     "is": "Útskýrt tækni varmamælinga"
+    }
+   ],
+   "segments": 16
+  },
+  {
+   "id": "dissociation-constant",
+   "rulingId": "dissociation-constant",
+   "english": "dissociation constant",
+   "glossaryEnglish": "dissociation constant",
+   "glossary": {
+    "is": "klofnunarstuðull",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "klofnunarfasti",
+    "competitors": [
+     "rofstuðull"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch15_fs-idm25500528 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "substantive",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch15:m68813:para:fs-idm80631152",
+     "en": "Alternatively, the reverse reaction (decomposition of the complex ion) can be considered, in which case the equilibrium constant is a dissociation constant ([[i:Kd)|term-00009]]. Per the relation between equilibrium constants for reciprocal reactions described, the dissociation constant is the mathematical inverse of the formation constant, K[[sub:d]] = Kf–1. A tabulation of formation constants is provided in Appendix K.",
+     "enSpans": [
+      [
+       134,
+       155
+      ],
+      [
+       266,
+       287
+      ]
+     ],
+     "is": "Einnig er hægt að skoða öfuga hvarfið (sundrun flóka-jónarinnar), en þá er jafnvægisfastinn sundrunarfasti ([[i:Kd)|term-00009]]. Samkvæmt sambandinu milli jafnvægisfasta fyrir andstæð hvörf sem lýst var, er sundrunarfastinn stærðfræðilegt andhverfa myndunarfastans, K[[sub:d]] = Kf–1. Tafla yfir myndunarfasta er í viðauka K."
+    },
+    {
+     "segment": "ch15:m68813:para:fs-idm14023472",
+     "en": "A Lewis acid is a species that can accept an electron pair, whereas a Lewis base has an electron pair available for donation to a Lewis acid. Complex ions are examples of Lewis acid-base adducts and comprise central metal atoms or ions acting as Lewis acids bonded to molecules or ions called ligands that act as Lewis bases. The equilibrium constant for the reaction between a metal ion and ligands produces a complex ion called a formation constant; for the reverse reaction, it is called a dissociation constant.",
+     "enSpans": [
+      [
+       493,
+       514
+      ]
+     ],
+     "is": "Lewis-sýra er efni sem getur þegið rafeindapar, en Lewis-basi hefur rafeindapar til að gefa Lewis-sýru. Komplexjónir eru dæmi um Lewis-sýru-basa-addukt og samanstanda af miðlægum málmatómum eða jónum sem virka sem Lewis-sýrur, bundnar við sameindir eða jónir sem kallast bindlar og virka sem Lewis-basar. Jafnvægisfastinn fyrir hvarfið milli málmjónar og bindla sem myndar komplexjón er kallaður myndunarfasti; fyrir andstætt hvarf er hann kallaður sundrunarfasti."
+    },
+    {
+     "segment": "ch15:m68813:glossary-term:fs-idm25500528-term",
+     "en": "dissociation constant",
+     "enSpans": [
+      [
+       0,
+       21
+      ]
+     ],
+     "is": "rofstuðull"
+    }
+   ],
+   "segments": 9
+  },
+  {
+   "id": "solute",
+   "rulingId": "solute",
+   "english": "solute",
+   "glossaryEnglish": "solute",
+   "glossary": {
+    "is": "leyst efni",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "uppleyst efni",
+    "competitors": [
+     "leyst efni"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch03_fs-idm26667568 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch03:m68703:para:fs-idm64279024",
+     "en": "A solute is a component of a solution that is typically present at a much lower concentration than the solvent. Solute concentrations are often described with qualitative terms such as dilute (of relatively low concentration) and concentrated (of relatively high concentration).",
+     "enSpans": [
+      [
+       2,
+       8
+      ],
+      [
+       112,
+       118
+      ]
+     ],
+     "is": "Uppleysanlegt efni er efnisþáttur í lausn sem er venjulega til staðar í mun lægri styrk en leysirinn. Styrkur uppleystra efna er oft lýst með eigindlegum hugtökum eins og þynnt (af tiltölulega lágum styrk) og þétt (af tiltölulega háum styrk)."
+    },
+    {
+     "segment": "ch03:m68703:para:fs-idm62212352",
+     "en": "Concentrations may be quantitatively assessed using a wide variety of measurement units, each convenient for particular applications. Molarity ([[i:M)|term-00008]] is a useful concentration unit for many applications in chemistry. Molarity is defined as the number of moles of solute in exactly 1 liter (1 L) of the solution:",
+     "enSpans": [
+      [
+       277,
+       283
+      ]
+     ],
+     "is": "Styrkur má meta megindlega með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not. Mólstyrkur ([[i:M)|term-00008]] er gagnleg styrkleining fyrir mörg not í efnafræði. Mólstyrkur er skilgreindur sem fjöldi móla af uppleystu efni í nákvæmlega 1 lítra (1 L) af lausninni:"
+    },
+    {
+     "segment": "ch03:m68703:para:fs-idm60197152",
+     "en": "Since the molar amount of solute and the volume of solution are both given, the molarity can be calculated using the definition of molarity. Per this definition, the solution volume must be converted from mL to L:",
+     "enSpans": [
+      [
+       26,
+       32
+      ]
+     ],
+     "is": "Þar sem mólmagn uppleysta efnisins og rúmmál lausnarinnar eru bæði gefin er hægt að reikna mólstyrkinn með skilgreiningu á mólstyrk. Samkvæmt þessari skilgreiningu verður að breyta rúmmáli lausnarinnar úr ml í L:"
+    }
+   ],
+   "segments": 149
+  },
+  {
+   "id": "periodic-table",
+   "rulingId": "periodic-table",
+   "english": "periodic table",
+   "glossaryEnglish": "periodic table",
+   "glossary": {
+    "is": "lotukerfið",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "lotukerfi",
+    "competitors": [
+     "lotukerfið"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch02_fs-idm227073184 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "appendices:m68859:title:auto-1",
+     "en": "The Periodic Table",
+     "enSpans": [
+      [
+       4,
+       18
+      ]
+     ],
+     "is": "Lotukerfið"
+    },
+    {
+     "segment": "ch01:m68664:para:fs-idm166065136",
+     "en": "The symbolic domain contains the specialized language used to represent components of the macroscopic and microscopic domains. Chemical symbols (such as those used in the periodic table), chemical formulas, and chemical equations are part of the symbolic domain, as are graphs, drawings, and calculations. These symbols play an important role in chemistry because they help interpret the behavior of the macroscopic domain in terms of the components of the microscopic domain. One of the challenges for students learning chemistry is recognizing that the same symbols can represent different things in the macroscopic and microscopic domains, and one of the features that makes chemistry fascinating is the use of a domain that must be imagined to explain behavior in a domain that can be observed.",
+     "enSpans": [
+      [
+       171,
+       185
+      ]
+     ],
+     "is": "Táknræna sviðið inniheldur sérhæft tungumál sem notað er til að tákna þætti stórsæja og smásæja sviðsins. Efnatákn (eins og þau sem notuð eru í lotukerfinu), efnaformúlur og efnajöfnur eru hluti af táknræna sviðinu, sem og gröf, teikningar og útreikningar. Þessi tákn gegna mikilvægu hlutverki í efnafræði vegna þess að þau hjálpa til við að túlka hegðun stórsæja sviðsins með tilliti til þátta smásæja sviðsins. Ein af áskorunum fyrir nemendur sem læra efnafræði er að gera sér grein fyrir því að sömu táknin geta táknað mismunandi hluti á stórsæja og smásæja sviðinu og einn af þeim eiginleikum sem gerir efnafræði heillandi er notkun sviðs sem verður að ímynda sér til að útskýra hegðun á sviði sem hægt er að fylgjast með."
+    },
+    {
+     "segment": "ch01:m68670:para:fs-idp108454304",
+     "en": "The periodic table is a table of elements that places elements with similar properties close together (CNX_Chem_01_03_PeriodicPU). You will learn more about the periodic table as you continue your study of chemistry.",
+     "enSpans": [
+      [
+       4,
+       18
+      ],
+      [
+       161,
+       175
+      ]
+     ],
+     "is": "Lotukerfið er tafla yfir frumefni sem setur frumefni með svipaða eiginleika nálægt hvort öðru (CNX_Chem_01_03_PeriodicPU). Þú munt læra meira um lotukerfið eftir því sem þú heldur áfram í efnafræðináminu."
+    }
+   ],
+   "segments": 135
+  },
+  {
+   "id": "concentrated",
+   "rulingId": "concentrated",
+   "english": "concentrated",
+   "glossaryEnglish": "concentrated",
+   "glossary": {
+    "is": "megn",
+    "alternatives": [
+     "sterkur"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "óþynnt",
+    "competitors": [
+     "megn",
+     "sterkur"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch03_fs-idm26449216 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch02:m68687:para:fs-idp11423776",
+     "en": "Here is what Rutherford deduced: Because most of the fast-moving α particles passed through the gold atoms undeflected, they must have traveled through essentially empty space inside the atom. Alpha particles are positively charged, so deflections arose when they encountered another positive charge (like charges repel each other). Since like charges repel one another, the few positively charged α particles that changed paths abruptly must have hit, or closely approached, another body that also had a highly concentrated, positive charge. Since the deflections occurred a small fraction of the time, this charge only occupied a small amount of the space in the gold foil. Analyzing a series of such experiments in detail, Rutherford drew two conclusions:",
+     "enSpans": [
+      [
+       512,
+       524
+      ]
+     ],
+     "is": "Þetta er það sem Rutherford ályktaði: Þar sem flestar hraðfara α-agnirnar fóru í gegnum gullatómin án þess að sveigja frá, hlutu þær að hafa farið í gegnum nánast tómt rými inni í atóminu. Alfaagnir eru jákvætt hlaðnar, þannig að sveigjur urðu þegar þær rákust á aðra jákvæða hleðslu (eins hleðslur hrinda hvor annarri frá sér). Þar sem eins hleðslur hrinda hvor annarri frá sér, hlutu þær fáu jákvætt hlaðnu α-agnir sem breyttu skyndilega um stefnu að hafa rekist á, eða komið mjög nálægt, öðrum hlut sem einnig hafði mjög þétta, jákvæða hleðslu. Þar sem sveigjurnar áttu sér stað í litlum hluta tilvika, tók þessi hleðsla aðeins lítið rými í gullþynnunni. Eftir að hafa greint röð slíkra tilrauna í smáatriðum dró Rutherford tvær ályktanir:"
+    },
+    {
+     "segment": "ch02:m68687:para:fs-idp142616272",
+     "en": "This analysis led Rutherford to propose a model in which an atom consists of a very small, positively charged nucleus, in which most of the mass of the atom is concentrated, surrounded by the negatively charged electrons, so that the atom is electrically neutral (CNX_Chem_02_02_GoldFoil3). After many more experiments, Rutherford also discovered that the nuclei of other elements contain the hydrogen nucleus as a “building block,” and he named this more fundamental particle the proton, the positively charged, subatomic particle found in the nucleus. With one addition, which you will learn next, this nuclear model of the atom, proposed over a century ago, is still used today.",
+     "enSpans": [
+      [
+       160,
+       172
+      ]
+     ],
+     "is": "Þessi greining leiddi til þess að Rutherford lagði til líkan þar sem atóm samanstendur af mjög litlum, jákvætt hlöðnum kjarna, þar sem mestur massi atómsins er samþjappaður, umkringdur neikvætt hlöðnum rafeindum, þannig að atómið er rafhlutlaust (CNX_Chem_02_02_GoldFoil3). Eftir margar fleiri tilraunir uppgötvaði Rutherford einnig að kjarnar annarra frumefna innihalda vetniskjarnann sem „byggingareiningu“ og hann nefndi þessa grundvallarögn róteind, jákvætt hlaðna öreind sem finnst í kjarnanum. Með einni viðbót, sem þú munt læra um næst, er þetta kjarnalíkan atómsins, sem lagt var til fyrir meira en öld síðan, enn notað í dag."
+    },
+    {
+     "segment": "ch03:m68703:para:fs-idm64279024",
+     "en": "A solute is a component of a solution that is typically present at a much lower concentration than the solvent. Solute concentrations are often described with qualitative terms such as dilute (of relatively low concentration) and concentrated (of relatively high concentration).",
+     "enSpans": [
+      [
+       230,
+       242
+      ]
+     ],
+     "is": "Uppleysanlegt efni er efnisþáttur í lausn sem er venjulega til staðar í mun lægri styrk en leysirinn. Styrkur uppleystra efna er oft lýst með eigindlegum hugtökum eins og þynnt (af tiltölulega lágum styrk) og þétt (af tiltölulega háum styrk)."
+    }
+   ],
+   "segments": 51
+  },
+  {
+   "id": "osmotic-pressure",
+   "rulingId": "osmotic-pressure",
+   "english": "osmotic pressure",
+   "glossaryEnglish": "osmotic pressure",
+   "glossary": {
+    "is": "flæðiþrýstingur",
+    "alternatives": [
+     "osmótískur þrýstingur"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "osmósuþrýstingur",
+    "competitors": [
+     "flæðiþrýstingur",
+     "osmótískur þrýstingur"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch11_fs-idp141114480 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch11:m68783:abstract-item:abstract-item-2",
+     "en": "Describe the effect of solute concentration on various solution properties (vapor pressure, boiling point, freezing point, and osmotic pressure)",
+     "enSpans": [
+      [
+       127,
+       143
+      ]
+     ],
+     "is": "Lýst áhrifum styrks uppleysts efnis á ýmsa eiginleika lausnar (gufuþrýsting, suðumark, frostmark og osmósuþrýsting)"
+    },
+    {
+     "segment": "ch11:m68783:para:fs-idp74224880",
+     "en": "The properties of a solution are different from those of either the pure solute(s) or solvent. Many solution properties are dependent upon the chemical identity of the solute. Compared to pure water, a solution of hydrogen chloride is more acidic, a solution of ammonia is more basic, a solution of sodium chloride is more dense, and a solution of sucrose is more viscous. There are a few solution properties, however, that depend only upon the total concentration of solute species, regardless of their identities. These colligative properties include vapor pressure lowering, boiling point elevation, freezing point depression, and osmotic pressure. This small set of properties is of central importance to many natural phenomena and technological applications, as will be described in this module.",
+     "enSpans": [
+      [
+       634,
+       650
+      ]
+     ],
+     "is": "Eiginleikar lausnar eru frábrugðnir eiginleikum hreins uppleysts efnis (eða efna) eða leysis. Margir eiginleikar lausnar eru háðir efnafræðilegu auðkenni uppleysta efnisins. Í samanburði við hreint vatn er lausn af vetnisklóríði súrari, lausn af ammóníaki er basískari, lausn af natríumklóríði er eðlisþyngri og lausn af súkrósa er seigari. Það eru þó nokkrir eiginleikar lausna sem eru aðeins háðir heildarstyrk uppleystra efna, óháð auðkenni þeirra. Þessir sameiginlegu eiginleikar fela í sér lækkun gufuþrýstings, hækkun suðumarks, lækkun frostmarks og osmósuþrýsting. Þetta litla safn eiginleika er afar mikilvægt fyrir mörg náttúrufyrirbæri og tæknilega notkun, eins og lýst verður í þessum kafla."
+    },
+    {
+     "segment": "ch11:m68783:title:fs-idp129025744-title",
+     "en": "Osmosis and Osmotic Pressure of Solutions",
+     "enSpans": [
+      [
+       12,
+       28
+      ]
+     ],
+     "is": "Osmósa og osmósuþrýstingur lausna"
+    }
+   ],
+   "segments": 33
+  },
+  {
+   "id": "bonding-orbital",
+   "rulingId": "bonding-orbital",
+   "english": "bonding orbital",
+   "glossaryEnglish": "bonding orbital",
+   "glossary": {
+    "is": "bindandi svigrúm",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "tengisvigrúm",
+    "competitors": [
+     "bindandi svigrúm"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch08_fs-idm133686144 (chat (question 3); 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch08:m68745:para:fs-idp55772464",
+     "en": "The structure of ethane, C2H6, is similar to that of methane in that each carbon in ethane has four neighboring atoms arranged at the corners of a tetrahedron—three hydrogen atoms and one carbon atom (CNX_Chem_08_02_ethane). However, in ethane an sp3 orbital of one carbon atom overlaps end to end with an sp3 orbital of a second carbon atom to form a σ bond between the two carbon atoms. Each of the remaining sp3 hybrid orbitals overlaps with an s orbital of a hydrogen atom to form carbon–hydrogen σ bonds. The structure and overall outline of the bonding orbitals of ethane are shown in CNX_Chem_08_02_ethane. The orientation of the two CH3 groups is not fixed relative to each other. Experimental evidence shows that rotation around σ bonds occurs easily.",
+     "enSpans": [
+      [
+       551,
+       567
+      ]
+     ],
+     "is": "Bygging etans, C2H6, er svipuð og metans að því leyti að hvert kolefni í etani hefur fjögur nágrannaatóm raðað á horn fjórflötungs – þrjú vetnisatóm og eitt kolefnisatóm (CNX_Chem_08_02_ethane). Hins vegar, í etani skarast sp3-svigrúm eins kolefnisatóms enda á enda við sp3-svigrúm annars kolefnisatóms til að mynda σ-tengi milli kolefnisatómanna tveggja. Hvert af hinum sp3-blendingssvigrúmunum skarast við s-svigrúm vetnisatóms til að mynda kolefnis-vetnis σ-tengi. Bygging og heildarútlínur bindandi svigrúma etans eru sýndar á CNX_Chem_08_02_ethane. Afstaða CH3-hópanna tveggja er ekki föst miðað við hvorn annan. Tilraunir sýna að snúningur um σ-tengi á sér auðveldlega stað."
+    },
+    {
+     "segment": "ch08:m68745:para:fs-idp62922832",
+     "en": "To describe the five bonding orbitals in a trigonal bipyramidal arrangement, we must use five of the valence shell atomic orbitals (the s orbital, the three p orbitals, and one of the d orbitals), which gives five [[i:sp3d hybrid orbitals|term-00006]]. With an octahedral arrangement of six hybrid orbitals, we must use six valence shell atomic orbitals (the s orbital, the three p orbitals, and two of the d orbitals in its valence shell), which gives six [[i:sp3d2 hybrid orbitals|term-00007]]. These hybridizations are only possible for atoms that have d orbitals in their valence subshells (that is, not those in the first or second period).",
+     "enSpans": [
+      [
+       21,
+       37
+      ]
+     ],
+     "is": "Til að lýsa fimm bindandi svigrúmum í þríhyrndu tvípýramídafyrirkomulagi verðum við að nota fimm af gildishvolfsatómsvigrúmunum (s-svigrúmið, þrjú p-svigrúmin og eitt af d-svigrúmunum), sem gefur fimm [[i:sp3d-blendingssvigrúm|term-00006]]. Með áttflötungsfyrirkomulagi sex blendingssvigrúma verðum við að nota sex gildishvolfsatómsvigrúm (s-svigrúmið, þrjú p-svigrúmin og tvö af d-svigrúmunum í gildishvolfi þess), sem gefur sex [[i:sp3d2-blendingssvigrúm|term-00007]]. Þessar svigrúmablöndur eru aðeins mögulegar fyrir atóm sem hafa d-svigrúm í gildisundirhvolfum sínum (þ.e.a.s. ekki þau sem eru í fyrsta eða öðru lotubili)."
+    },
+    {
+     "segment": "ch08:m68746:para:fs-idp52367024",
+     "en": "In an ethene molecule, the four hydrogen atoms and the two carbon atoms are all in the same plane. If the two planes of sp2 hybrid orbitals tilted relative to each other, the p orbitals would not be oriented to overlap efficiently to create the π bond. The planar configuration for the ethene molecule occurs because it is the most stable bonding arrangement. This is a significant difference between σ and π bonds; rotation around single (σ) bonds occurs easily because the end-to-end orbital overlap does not depend on the relative orientation of the orbitals on each atom in the bond. In other words, rotation around the internuclear axis does not change the extent to which the σ bonding orbitals overlap because the bonding electron density is symmetric about the axis. Rotation about the internuclear axis is much more difficult for multiple bonds since this would drastically decrease the off-axis overlap of the π bonding orbitals, essentially breaking the π bond.",
+     "enSpans": [
+      [
+       684,
+       700
+      ],
+      [
+       922,
+       938
+      ]
+     ],
+     "is": "Í etensameind eru vetnisatómin fjögur og kolefnisatómin tvö öll í sama plani. Ef plön sp2-blendingssvigrúmanna tveggja halla hvert miðað við annað, myndu p-svigrúmin ekki vera í þeirri stöðu að skarast á skilvirkan hátt til að mynda π-tengið. Planuppsetning etensameindarinnar verður til vegna þess að hún er stöðugasta tengifyrirkomulagið. Þetta er marktækur munur á σ- og π-tengjum; snúningur um eintengi (σ) á sér auðveldlega stað vegna þess að skörun svigrúma enda á enda er ekki háð afstæðri stefnu svigrúmanna á hverju atómi í tenginu. Með öðrum orðum, snúningur um tengiásinn breytir ekki því að hve miklu leyti σ-bindandi svigrúmin skarast vegna þess að rafeindaþéttleiki tengisins er samhverfur um ásinn. Snúningur um tengiásinn er mun erfiðari fyrir margföld tengi þar sem það myndi draga verulega úr skörun π-bindandi svigrúma utan ássins og í raun rjúfa π-tengið."
+    }
+   ],
+   "segments": 25
+  },
+  {
+   "id": "polyatomic-ion",
+   "rulingId": "polyatomic-ion",
+   "english": "polyatomic ion",
+   "glossaryEnglish": "polyatomic ion",
+   "glossary": {
+    "is": "fjölfrumeinda jón",
+    "alternatives": [
+     "fjölatóma jón"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "fjölatómajón",
+    "competitors": [
+     "fjölfrumeinda jón"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch02_fs-idp93746160 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch02:m68696:para:fs-idp9416320",
+     "en": "The ions that we have discussed so far are called monatomic ions, that is, they are ions formed from only one atom. We also find many polyatomic ions. These ions, which act as discrete units, are electrically charged molecules (a group of bonded atoms with an overall charge). Some of the more important polyatomic ions are listed in fs-idp278664880. Oxyanions are polyatomic ions that contain one or more oxygen atoms. At this point in your study of chemistry, you should memorize the names, formulas, and charges of the most common polyatomic ions. Because you will use them repeatedly, they will soon become familiar.",
+     "enSpans": [
+      [
+       134,
+       149
+      ],
+      [
+       304,
+       319
+      ],
+      [
+       365,
+       380
+      ],
+      [
+       534,
+       549
+      ]
+     ],
+     "is": "Jónirnar sem við höfum rætt um hingað til eru kallaðar eineindajónir, það er að segja, þær eru jónir sem myndast úr aðeins einu atómi. Við finnum líka margar fjöleindajónir. Þessar jónir, sem virka sem stakar einingar, eru rafhlöðnar sameindir (flokkur tengdra atóma með heildarhleðslu). Sumar af mikilvægari fjöleindajónunum eru taldar upp í fs-idp278664880. Oxýaniónir eru fjöleindajónir sem innihalda eitt eða fleiri súrefnisatóm. Á þessum tímapunkti í efnafræðináminu ættir þú að leggja á minnið nöfn, formúlur og hleðslur algengustu fjöleindajónanna. Þar sem þú munt nota þær ítrekað munu þær fljótlega verða þér kunnuglegar."
+    },
+    {
+     "segment": "ch02:m68696:para:fs-idp210658336",
+     "en": "Note that there is a system for naming some polyatomic ions; -ate and -ite are suffixes designating polyatomic ions containing more or fewer oxygen atoms. Per- (short for “hyper”) and hypo- (meaning “under”) are prefixes meaning more oxygen atoms than -ate and fewer oxygen atoms than -ite, respectively. For example, perchlorate is 24 chlorate is 25 chlorite is 26 and hypochlorite is ClO−. Unfortunately, the number of oxygen atoms corresponding to a given suffix or prefix is not consistent; for example, nitrate is 27 while sulfate is 28 This will be covered in more detail in the next module on nomenclature.",
+     "enSpans": [
+      [
+       44,
+       59
+      ],
+      [
+       100,
+       115
+      ]
+     ],
+     "is": "Athugið að það er til kerfi til að nefna sumar fjölatóma jónir; -at og -ít eru viðskeyti sem tákna fjölatóma jónir sem innihalda fleiri eða færri súrefnisatóm. Per- (stytting á „hyper“) og hypo- (sem þýðir „undir“) eru forskeyti sem þýða fleiri súrefnisatóm en -at og færri súrefnisatóm en -ít, í sömu röð. Til dæmis er perklórat 24, klórat er 25, klórít er 26 og hýpóklórít er ClO−. Því miður er fjöldi súrefnisatóma sem samsvarar tilteknu viðskeyti eða forskeyti ekki stöðugur; til dæmis er nítrat 27 á meðan súlfat er 28. Þetta verður tekið fyrir nánar í næsta kafla um nafnakerfi."
+    },
+    {
+     "segment": "ch02:m68696:para:fs-idp270413408",
+     "en": "Many ionic compounds contain polyatomic ions (fs-idp278664880) as the cation, the anion, or both. As with simple ionic compounds, these compounds must also be electrically neutral, so their formulas can be predicted by treating the polyatomic ions as discrete units. We use parentheses in a formula to indicate a group of atoms that behave as a unit. For example, the formula for calcium phosphate, one of the minerals in our bones, is Ca3(PO4)2. This formula indicates that there are three calcium ions (Ca2+) for every two phosphate 29 groups. The 30 groups are discrete units, each consisting of one phosphorus atom and four oxygen atoms, and having an overall charge of 3−. The compound is electrically neutral, and its formula shows a total count of three Ca, two P, and eight O atoms.",
+     "enSpans": [
+      [
+       29,
+       44
+      ],
+      [
+       232,
+       247
+      ]
+     ],
+     "is": "Mörg jónaefnasambönd innihalda fjölatóma jónir (fs-idp278664880) sem katjón, anjón eða hvort tveggja. Eins og með einföld jónaefnasambönd verða þessi efnasambönd einnig að vera rafhlutlaus, þannig að hægt er að spá fyrir um formúlur þeirra með því að meðhöndla fjölatóma jónirnar sem aðskildar einingar. Við notum sviga í formúlu til að gefa til kynna hóp atóma sem hegða sér sem eining. Til dæmis er formúlan fyrir kalsíumfosfat, eitt af steinefnunum í beinum okkar, Ca3(PO4)2. Þessi formúla gefur til kynna að það séu þrjár kalsíumjónir (Ca2+) fyrir hverja tvo fosfat 29 flokka. 30 flokkarnir eru aðskildar einingar, hver samanstendur af einu fosfóratómi og fjórum súrefnisatómum og hafa heildarhleðsluna 3−. Efnasambandið er rafhlutlaust og formúla þess sýnir heildarfjölda þriggja Ca, tveggja P og átta O atóma."
+    }
+   ],
+   "segments": 21
+  },
+  {
+   "id": "electron-capture",
+   "rulingId": "electron-capture",
+   "english": "electron capture",
+   "glossaryEnglish": "electron capture",
+   "glossary": {
+    "is": "rafeindarhremming",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "rafeindahremming",
+    "competitors": [
+     "rafeindarhremming"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idm684928 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68854:para:fs-idp123320528",
+     "en": "Electron capture occurs when one of the inner electrons in an atom is captured by the atom’s nucleus. For example, potassium-40 undergoes electron capture:",
+     "enSpans": [
+      [
+       0,
+       16
+      ],
+      [
+       138,
+       154
+      ]
+     ],
+     "is": "Rafeindarhremming á sér stað þegar ein af innri rafeindum atóms er hremmd af kjarna atómsins. Til dæmis gengst kalíum-40 undir rafeindarhremmingu:"
+    },
+    {
+     "segment": "ch21:m68854:para:fs-idm42894208",
+     "en": "Electron capture occurs when an inner shell electron combines with a proton and is converted into a neutron. The loss of an inner shell electron leaves a vacancy that will be filled by one of the outer electrons. As the outer electron drops into the vacancy, it will emit energy. In most cases, the energy emitted will be in the form of an X-ray. Like positron emission, electron capture occurs for “proton-rich” nuclei that lie below the band of stability. Electron capture has the same effect on the nucleus as does positron emission: The atomic number is decreased by one and the mass number does not change. This increases the n:p ratio, and the daughter nuclide lies closer to the band of stability than did the parent nuclide. Whether electron capture or positron emission occurs is difficult to predict. The choice is primarily due to kinetic factors, with the one requiring the smaller activation energy being the one more likely to occur.",
+     "enSpans": [
+      [
+       0,
+       16
+      ],
+      [
+       371,
+       387
+      ],
+      [
+       458,
+       474
+      ],
+      [
+       741,
+       757
+      ]
+     ],
+     "is": "Rafeindarhremming á sér stað þegar rafeind úr innra hveli sameinast róteind og breytist í nifteind. Við tap á rafeind úr innra hveli myndast laust pláss sem ein af ytri rafeindunum fyllir. Þegar ytri rafeindin fellur niður í lausa plássið gefur hún frá sér orku. Í flestum tilfellum er orkan sem gefin er út í formi röntgengeisla. Eins og jákvæðaeindaútsending á rafeindarhremming sér stað fyrir „róteindaríka“ kjarna sem liggja fyrir neðan stöðugleikabeltið. Rafeindarhremming hefur sömu áhrif á kjarnann og jákvæðaeindaútsending: Sætistalan lækkar um einn og massatalan breytist ekki. Þetta eykur n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði. Erfitt er að spá fyrir um hvort rafeindarhremming eða jákvæðaeindaútsending eigi sér stað. Valið er fyrst og fremst vegna hreyfifræðilegra þátta, þar sem sú sem krefst minni virkjunarorku er líklegri til að eiga sér stað."
+    },
+    {
+     "segment": "ch21:m68854:para:fs-idp55701552",
+     "en": "Radioactive dating can also use other radioactive nuclides with longer half-lives to date older events. For example, uranium-238 (which decays in a series of steps into lead-206) can be used for establishing the age of rocks (and the approximate age of the oldest rocks on earth). Since U-238 has a half-life of 4.5 billion years, it takes that amount of time for half of the original U-238 to decay into Pb-206. In a sample of rock that does not contain appreciable amounts of Pb-208, the most abundant isotope of lead, we can assume that lead was not present when the rock was formed. Therefore, by measuring and analyzing the ratio of U-238:Pb-206, we can determine the age of the rock. This assumes that all of the lead-206 present came from the decay of uranium-238. If there is additional lead-206 present, which is indicated by the presence of other lead isotopes in the sample, it is necessary to make an adjustment. Potassium-argon dating uses a similar method. K-40 decays by positron emission and electron capture to form Ar-40 with a half-life of 1.25 billion years. If a rock sample is crushed and the amount of Ar-40 gas that escapes is measured, determination of the Ar-40:K-40 ratio yields the age of the rock. Other methods, such as rubidium-strontium dating (Rb-87 decays into Sr-87 with a half-life of 48.8 billion years), operate on the same principle. To estimate the lower limit for the earth’s age, scientists determine the age of various rocks and minerals, making the assumption that the earth is older than the oldest rocks and minerals in its crust. As of 2014, the oldest known rocks on earth are the Jack Hills zircons from Australia, found by uranium-lead dating to be almost 4.4 billion years old.",
+     "enSpans": [
+      [
+       1008,
+       1024
+      ]
+     ],
+     "is": "Einnig er hægt að nota aðrar geislavirkar kjarnategundir með lengri helmingunartíma til aldursákvörðunar á eldri atburðum. Til dæmis er hægt að nota úran-238 (sem sundrast í nokkrum skrefum yfir í blý-206) til að ákvarða aldur bergs (og áætlaðan aldur elsta bergs á jörðinni). Þar sem helmingunartími U-238 er 4,5 milljarðar ára tekur það þann tíma fyrir helming af upprunalegu U-238 að sundrast yfir í Pb-206. Í bergsýni sem inniheldur ekki umtalsvert magn af Pb-208, algengustu samsætu blýs, getum við gert ráð fyrir að blý hafi ekki verið til staðar þegar bergið myndaðist. Þess vegna getum við, með því að mæla og greina hlutfallið U-238:Pb-206, ákvarðað aldur bergsins. Þetta gerir ráð fyrir að allt Pb-206 sem er til staðar hafi komið frá sundrun úrans-238. Ef viðbótar Pb-206 er til staðar, sem sést á tilvist annarra blýsamsæta í sýninu, er nauðsynlegt að gera leiðréttingu. Kalíum-argon aldursákvörðun notar svipaða aðferð. K-40 sundrast með jáeindageislun og rafeindarhremmingu og myndar Ar-40 með helmingunartíma upp á 1,25 milljarða ára. Ef bergsýni er mulið og magn Ar-40 gass sem sleppur út er mælt, gefur ákvörðun á hlutfallinu Ar-40:K-40 aldur bergsins. Aðrar aðferðir, svo sem rúbidíum-strontíum aldursákvörðun (Rb-87 sundrast yfir í Sr-87 með helmingunartíma upp á 48,8 milljarða ára), byggja á sömu meginreglu. Til að áætla neðri mörk aldurs jarðarinnar ákvarða vísindamenn aldur ýmissa bergtegunda og steinda og gera ráð fyrir að jörðin sé eldri en elstu bergtegundir og steindir í skorpu hennar. Árið 2014 voru elstu þekktu bergtegundir á jörðinni Jack Hills sirkonarnir frá Ástralíu, en aldur þeirra var ákvarðaður með úran-blý aldursákvörðun og reyndist vera tæplega 4,4 milljarðar ára."
+    }
+   ],
+   "segments": 15
+  },
+  {
+   "id": "standing-wave",
+   "rulingId": "standing-wave",
+   "english": "standing wave",
+   "glossaryEnglish": "standing wave",
+   "glossary": {
+    "is": "stæð bylgja",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "staðbylgja",
+    "competitors": [
+     "stæð bylgja"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch06_fs-idm64841104 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch06:m68729:abstract-item:abstract-item-1",
+     "en": "Explain the basic behavior of waves, including travelling waves and standing waves",
+     "enSpans": [
+      [
+       68,
+       82
+      ]
+     ],
+     "is": "Útskýrt grunneiginleika bylgna, þar á meðal farbylgjur og kyrrstæðar bylgjur"
+    },
+    {
+     "segment": "ch06:m68729:para:fs-idm64346880",
+     "en": "Not all waves are travelling waves. Standing waves (also known as stationary waves) remain constrained within some region of space. As we shall see, standing waves play an important role in our understanding of the electronic structure of atoms and molecules. The simplest example of a standing wave is a one-dimensional wave associated with a vibrating string that is held fixed at its two end points. CNX_Chem_06_01_Vibrstring shows the four lowest-energy standing waves (the fundamental wave and the lowest three harmonics) for a vibrating string at a particular amplitude. Although the string's motion lies mostly within a plane, the wave itself is considered to be one dimensional, since it lies along the length of the string. The motion of string segments in a direction perpendicular to the string length generates the waves and so the amplitude of the waves is visible as the maximum displacement of the curves seen in CNX_Chem_06_01_Vibrstring. The key observation from the figure is that only those waves having an integer number, n, of half-wavelengths between the end points can form. A system with fixed end points such as this restricts the number and type of the possible waveforms. This is an example of quantization, in which only discrete values from a more general set of continuous values of some property are observed. Another important observation is that the harmonic waves (those waves displaying more than one-half wavelength) all have one or more points between the two end points that are not in motion. These special points are nodes. The energies of the standing waves with a given amplitude in a vibrating string increase with the number of half-wavelengths n. Since the number of nodes is n – 1, the energy can also be said to depend on the number of nodes, generally increasing as the number of nodes increases.",
+     "enSpans": [
+      [
+       36,
+       50
+      ],
+      [
+       149,
+       163
+      ],
+      [
+       286,
+       299
+      ],
+      [
+       458,
+       472
+      ],
+      [
+       1584,
+       1598
+      ]
+     ],
+     "is": "Ekki eru allar bylgjur farbylgjur. Standandi bylgjur (einnig þekktar sem stöðubylgjur) haldast innan ákveðins svæðis í rúmi. Eins og við munum sjá gegna standandi bylgjur mikilvægu hlutverki í skilningi okkar á rafeindabyggingu atóma og sameinda. Einfaldasta dæmið um standandi bylgju er einvíð bylgja sem tengist titrandi streng sem er festur á báðum endum. CNX_Chem_06_01_Vibrstring sýnir fjórar lægstu orku standandi bylgjur (grunnbylgjuna og þrjá lægstu yfirtónana) fyrir titrandi streng með ákveðinni sveifluvídd. Þrátt fyrir að hreyfing strengsins sé að mestu leyti innan sléttu er bylgjan sjálf talin einvíð þar sem hún liggur eftir lengd strengsins. Hreyfing strengshluta í átt hornrétt á lengd strengsins myndar bylgjurnar og því sést sveifluvídd bylgjanna sem hámarks tilfærsla ferlanna sem sjást í CNX_Chem_06_01_Vibrstring. Lykilathugunin á myndinni er að aðeins þær bylgjur sem hafa heiltölu, n, af hálfum bylgjulengdum milli endapunkta geta myndast. Kerfi með fasta endapunkta eins og þetta takmarkar fjölda og gerð mögulegra bylgjuforma. Þetta er dæmi um skömmtun, þar sem aðeins stök gildi úr almennara mengi samfelldra gilda einhvers eiginleika koma fram. Önnur mikilvæg athugun er sú að yfirtónabylgjurnar (þær bylgjur sem sýna meira en hálfa bylgjulengd) hafa allar einn eða fleiri punkta milli endapunktanna tveggja sem eru ekki á hreyfingu. Þessir sérstöku punktar eru hnútar. Orka standandi bylgna með ákveðinni sveifluvídd í titrandi streng eykst með fjölda hálfra bylgjulengda n. Þar sem fjöldi hnúta er n – 1 má einnig segja að orkan sé háð fjölda hnúta og eykst almennt eftir því sem fjöldi hnúta eykst."
+    },
+    {
+     "segment": "ch06:m68729:caption:CNX_Chem_06_01_Vibrstring-caption",
+     "en": "A vibrating string shows some one-dimensional standing waves. Since the two end points of the string are held fixed, only waves having an integer number of half-wavelengths can form. The points on the string between the end points that are not moving are called the nodes.",
+     "enSpans": [
+      [
+       46,
+       60
+      ]
+     ],
+     "is": "Titrandi strengur sýnir nokkrar einvíddar standbylgjur. Þar sem tveir endapunktar strengsins eru fastir geta aðeins myndast bylgjur með heiltölu margfeldi af hálfri bylgjulengd. Punktarnir á strengnum milli endapunktanna sem hreyfast ekki eru kallaðir hnútar."
+    }
+   ],
+   "segments": 13
+  },
+  {
+   "id": "collision-theory",
+   "rulingId": "collision-theory",
+   "english": "collision theory",
+   "glossaryEnglish": "collision theory",
+   "glossary": {
+    "is": "árekstrakenningin",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "árekstrakenning",
+    "competitors": [
+     "árekstrakenningin"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch12_fs-idm101548864 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch12:m68785:abstract-item:abstract-item-5",
+     "en": "Collision Theory",
+     "enSpans": [
+      [
+       0,
+       16
+      ]
+     ],
+     "is": "Árekstrakenningin"
+    },
+    {
+     "segment": "ch12:m68793:title:auto-1",
+     "en": "Collision Theory",
+     "enSpans": [
+      [
+       0,
+       16
+      ]
+     ],
+     "is": "Árekstrakenningin"
+    },
+    {
+     "segment": "ch12:m68793:abstract-item:abstract-item-1",
+     "en": "Use the postulates of collision theory to explain the effects of physical state, temperature, and concentration on reaction rates",
+     "enSpans": [
+      [
+       22,
+       38
+      ]
+     ],
+     "is": "Notað kenningarsetningar árekstrakenningarinnar til að útskýra áhrif efnisástands, hitastigs og styrks á efnahvarfshraða"
+    }
+   ],
+   "segments": 10
+  },
+  {
+   "id": "becquerel",
+   "rulingId": "becquerel",
+   "english": "becquerel",
+   "glossaryEnglish": "becquerel",
+   "glossary": {
+    "is": "bekerel",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "becquerel",
+    "competitors": [
+     "bekerel"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idp13479088 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68850:para:fs-idp209834320",
+     "en": "This chapter will introduce the topic of nuclear chemistry, which began with the discovery of radioactivity in 1896 by French physicist Antoine Becquerel and has become increasingly important during the twentieth and twenty-first centuries, providing the basis for various technologies related to energy, medicine, geology, and many other areas.",
+     "enSpans": [
+      [
+       144,
+       153
+      ]
+     ],
+     "is": "Í þessum kafla verður fjallað um kjarnaefnafræði, sem hófst með uppgötvun geislavirkni árið 1896 af franska eðlisfræðingnum Antoine Becquerel og hefur orðið sífellt mikilvægari á tuttugustu og tuttugustu og fyrstu öldinni, og myndar grundvöll fyrir ýmsa tækni sem tengist orku, læknisfræði, jarðfræði og mörgum öðrum sviðum."
+    },
+    {
+     "segment": "ch21:m68854:para:fs-idp102942608",
+     "en": "Following the somewhat serendipitous discovery of radioactivity by Becquerel, many prominent scientists began to investigate this new, intriguing phenomenon. Among them were Marie Curie (the first woman to win a Nobel Prize, and the only person to win two Nobel Prizes in different sciences—chemistry and physics), who was the first to coin the term “radioactivity,” and Ernest Rutherford (of gold foil experiment fame), who investigated and named three of the most common types of radiation. During the beginning of the twentieth century, many radioactive substances were discovered, the properties of radiation were investigated and quantified, and a solid understanding of radiation and nuclear decay was developed.",
+     "enSpans": [
+      [
+       67,
+       76
+      ]
+     ],
+     "is": "Eftir að Becquerel uppgötvaði geislavirkni fyrir nokkra heppni hófu margir framúrskarandi vísindamenn að rannsaka þetta nýja og forvitnilega fyrirbæri. Meðal þeirra voru Marie Curie (fyrsta konan til að vinna Nóbelsverðlaun og eina manneskjan til að vinna tvenn Nóbelsverðlaun í ólíkum vísindagreinum – efnafræði og eðlisfræði), sem var fyrst til að nota hugtakið „geislavirkni“, og Ernest Rutherford (frægur fyrir tilraun sína með gullþynnu), sem rannsakaði og nefndi þrjár af algengustu tegundum geislunar. Í upphafi tuttugustu aldar voru mörg geislavirk efni uppgötvuð, eiginleikar geislunar voru rannsakaðir og magngreindir og traustur skilningur á geislun og kjarnasundrun var þróaður."
+    },
+    {
+     "segment": "ch21:m68858:para:fs-idm27725120",
+     "en": "(a) Since 1 Bq = 4 the activity in Becquerel (Bq) is:",
+     "enSpans": [
+      [
+       35,
+       44
+      ]
+     ],
+     "is": "(a) Þar sem 1 Bq = 4 er virknin í bekerel (Bq):"
+    }
+   ],
+   "segments": 8
+  },
+  {
+   "id": "electron-volt",
+   "rulingId": "electron-volt",
+   "english": "electron volt",
+   "glossaryEnglish": "electron volt",
+   "glossary": {
+    "is": "rafeindarvolt",
+    "alternatives": [],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "rafeindavolt",
+    "competitors": [
+     "rafeindarvolt"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idm98883968 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68851:para:fs-idp18183904",
+     "en": "where E is energy, m is mass of the matter being converted, and c is the speed of light in a vacuum. This equation can be used to find the amount of energy that results when matter is converted into energy. Using this mass-energy equivalence equation, the nuclear binding energy of a nucleus may be calculated from its mass defect, as demonstrated in fs-idm18254784. A variety of units are commonly used for nuclear binding energies, including electron volts (eV), with 1 eV equaling the amount of energy necessary to the move the charge of an electron across an electric potential difference of 1 volt, making 1 eV = 1.602 17 10–19 J.",
+     "enSpans": [
+      [
+       444,
+       458
+      ]
+     ],
+     "is": "þar sem E er orka, m er massi efnisins sem er að umbreytast og c er ljóshraði í tómarúmi. Þessa jöfnu má nota til að finna orkumagnið sem myndast þegar efni er breytt í orku. Með því að nota þessa jafngildisjöfnu massa og orku má reikna kjarnabindingsorku kjarna út frá massarýrð hans, eins og sýnt er í fs-idm18254784. Ýmsar einingar eru almennt notaðar fyrir kjarnabindingsorku, þar á meðal rafeindarvolt (eV), þar sem 1 eV jafngildir því orkumagni sem þarf til að færa hleðslu rafeindar yfir rafspennumun upp á 1 volt, sem gerir 1 eV = 1,602 17 10–19 J."
+    },
+    {
+     "segment": "ch21:m68851:glossary-term:fs-idm98883968-term",
+     "en": "electron volt (eV)",
+     "enSpans": [
+      [
+       0,
+       13
+      ]
+     ],
+     "is": "rafeindarvolt (eV)"
+    }
+   ],
+   "segments": 7
+  },
+  {
+   "id": "beta-decay",
+   "rulingId": "beta-decay",
+   "english": "beta decay",
+   "glossaryEnglish": "beta decay",
+   "glossary": {
+    "is": "betasundrun",
+    "alternatives": [
+     "betahrörnun"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "beta (β) sundrun",
+    "competitors": [
+     "beta (β) hrörnun",
+     "betahrörnun",
+     "betasundrun"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idp69613952 (chat (question 1); 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68854:para:fs-idp100287120",
+     "en": "Beta decay, which can be thought of as the conversion of a neutron into a proton and a β particle, is observed in nuclides with a large n:p ratio. The beta particle (electron) emitted is from the atomic nucleus and is not one of the electrons surrounding the nucleus. Such nuclei lie above the band of stability. Emission of an electron does not change the mass number of the nuclide but does increase the number of its protons and decrease the number of its neutrons. Consequently, the n:p ratio is decreased, and the daughter nuclide lies closer to the band of stability than did the parent nuclide.",
+     "enSpans": [
+      [
+       0,
+       10
+      ]
+     ],
+     "is": "Beta-sundrun, sem má hugsa sér sem umbreytingu nifteindar í róteind og β-ögn, sést í kjarnategundum með hátt n:p hlutfall. Beta-ögnin (rafeindin) sem gefin er út kemur frá atómkjarnanum og er ekki ein af rafeindunum sem umlykja kjarnann. Slíkir kjarnar liggja fyrir ofan stöðugleikabeltið. Útsending rafeindar breytir ekki massatölu kjarnategundarinnar en eykur fjölda róteinda hennar og fækkar nifteindum hennar. Þar af leiðandi lækkar n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði."
+    }
+   ],
+   "segments": 5
+  },
+  {
+   "id": "frequency-factor",
+   "rulingId": "frequency-factor",
+   "english": "frequency factor",
+   "glossaryEnglish": "frequency factor",
+   "glossary": {
+    "is": "tíðnistuðull",
+    "alternatives": [
+     "forveldisvísisþáttur",
+     "tíðnifasti"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "tíðniþáttur",
+    "competitors": [
+     "forveldisvísisþáttur",
+     "tíðnifasti",
+     "tíðnistuðull"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch12_fs-idm206488448 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch12:m68793:para:fs-idp69522176",
+     "en": "In this equation, R is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, Ea is the activation energy in joules per mole, e is the constant 2.7183, and A is a constant called the frequency factor, which is related to the frequency of collisions and the orientation of the reacting molecules.",
+     "enSpans": [
+      [
+       223,
+       239
+      ]
+     ],
+     "is": "Í þessari jöfnu er R kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á Kelvin-kvarða, Ea er virkjunarorkan í júlum á mól, e er fastinn 2,7183 og A er fasti sem kallast tíðniþáttur, sem tengist tíðni árekstra og stefnumörkun hvarfefnasameindanna."
+    },
+    {
+     "segment": "ch12:m68793:para:fs-idm378964576",
+     "en": "Postulates of collision theory are nicely accommodated by the Arrhenius equation. The frequency factor, A, reflects how well the reaction conditions favor properly oriented collisions between reactant molecules. An increased probability of effectively oriented collisions results in larger values for A and faster reaction rates.",
+     "enSpans": [
+      [
+       86,
+       102
+      ]
+     ],
+     "is": "Postulöt árekstrakenningarinnar falla vel að Arrheniusar-jöfnunni. Tíðniþátturinn, A, endurspeglar hversu vel hvarfskilyrðin styðja við rétt stefnumótaða árekstra milli hvarfefnasameinda. Aukin líkindi á árangursríkum stefnumótuðum árekstrum leiða til hærri gilda fyrir A og hraðari hvarfhraða."
+    },
+    {
+     "segment": "ch12:m68793:glossary-term:fs-idm206488448-term",
+     "en": "frequency factor (A)",
+     "enSpans": [
+      [
+       0,
+       16
+      ]
+     ],
+     "is": "tíðniþáttur (A)"
+    }
+   ],
+   "segments": 5
+  },
+  {
+   "id": "monodentate",
+   "rulingId": "monodentate",
+   "english": "monodentate",
+   "glossaryEnglish": "monodentate",
+   "glossary": {
+    "is": "eintenntur",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "eintennt",
+    "competitors": [
+     "eintenntur"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch19_fs-idp8060128 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch19:m68843:abstract-item:abstract-item-2",
+     "en": "Describe the structures of complexes containing monodentate and polydentate ligands",
+     "enSpans": [
+      [
+       48,
+       59
+      ]
+     ],
+     "is": "Lýst byggingu flóka sem innihalda eintanna og fjöltanna tengla"
+    },
+    {
+     "segment": "ch19:m68843:para:fs-idp151225552",
+     "en": "The coordination sphere consists of the central metal ion or atom plus its attached ligands. Brackets in a formula enclose the coordination sphere; species outside the brackets are not part of the coordination sphere. The coordination number of the central metal ion or atom is the number of donor atoms bonded to it. The coordination number for the silver ion in [Ag(NH3)2]+ is two (CNX_Chem_19_02_CN). For the copper(II) ion in [CuCl4]2−, the coordination number is four, whereas for the cobalt(II) ion in [Co(H2O)6]2+ the coordination number is six. Each of these ligands is monodentate, from the Greek for “one toothed,” meaning that they connect with the central metal through only one atom. In this case, the number of ligands and the coordination number are equal.",
+     "enSpans": [
+      [
+       578,
+       589
+      ]
+     ],
+     "is": "Girðihvolfið samanstendur af miðjumálmjóninni eða atóminu ásamt tengdum tenglum. Hornklofar í formúlu loka girðihvolfið af; efni utan hornklofanna eru ekki hluti af girðihvolfinu. Girðitala miðjumálmjónarinnar eða atómsins er fjöldi gjafaatóma sem eru tengd við það. Girðitalan fyrir silfurjónina í [Ag(NH3)2]+ er tvö (CNX_Chem_19_02_CN). Fyrir kopar(II)jónina í [CuCl4]2− er girðitalan fjórir, en fyrir kóbalt(II)jónina í [Co(H2O)6]2+ er girðitalan sex. Hver þessara tengla er eintanna, úr grísku fyrir „eina tönn“, sem þýðir að þeir tengjast miðjumálminum aðeins í gegnum eitt atóm. Í þessu tilfelli eru fjöldi tengla og girðitalan jöfn."
+    },
+    {
+     "segment": "ch19:m68843:para:fs-idp106041024",
+     "en": "Polydentate ligands are sometimes identified with prefixes that indicate the number of donor atoms in the ligand. As we have seen, ligands with one donor atom, such as NH3, Cl−, and H2O, are monodentate ligands. Ligands with two donor groups are bidentate ligands. Ethylenediamine, H2NCH2CH2NH2, and the anion of the acid glycine, 2 (CNX_Chem_19_02_Gly) are examples of bidentate ligands. Tridentate ligands, tetradentate ligands, pentadentate ligands, and hexadentate ligands contain three, four, five, and six donor atoms, respectively. The ligand in heme (CNX_Chem_19_02_heme) is a tetradentate ligand.",
+     "enSpans": [
+      [
+       191,
+       202
+      ]
+     ],
+     "is": "Fjöltennta tenglar eru stundum auðkenndir með forskeytum sem gefa til kynna fjölda gjafaatóma í tenglinum. Eins og við höfum séð eru tenglar með eitt gjafaatóm, eins og NH~3~, Cl^-^ og H~2~O, eintannta tenglar. Tenglar með tvo gjafahópa eru tvítennta tenglar. Etýlendíamín, H~2~NCH~2~CH~2~NH~2~, og anjón sýrunnar glýsíns, 2 (CNX_Chem_19_02_Gly) eru dæmi um tvítennta tengla. Þrítennta tenglar, fertennta tenglar, fimmtennta tenglar og sextennta tenglar innihalda þrjú, fjögur, fimm og sex gjafaatóm, í sömu röð. Tengillinn í hem (CNX_Chem_19_02_heme) er fertennta tengill."
+    }
+   ],
+   "segments": 5
+  },
+  {
+   "id": "vacancy",
+   "rulingId": "vacancy",
+   "english": "vacancy",
+   "glossaryEnglish": "vacancy",
+   "glossary": {
+    "is": "eyðuveila",
+    "alternatives": [
+     "eyða"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "tóm",
+    "competitors": [
+     "eyða",
+     "eyðuveila"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch10_fs-idm37032656 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch10:m68770:glossary-term:fs-idm37032656-term",
+     "en": "vacancy",
+     "enSpans": [
+      [
+       0,
+       7
+      ]
+     ],
+     "is": "tóm"
+    },
+    {
+     "segment": "ch19:m68844:para:fs-idm243292976",
+     "en": "A coordination compound of the Cu+ ion has a d10 configuration, and all the e[[sub:g]] orbitals are filled. To excite an electron to a higher level, such as the 4p orbital, photons of very high energy are necessary. This energy corresponds to very short wavelengths in the ultraviolet region of the spectrum. No visible light is absorbed, so the eye sees no change, and the compound appears white or colorless. A solution containing [Cu(CN)2]−, for example, is colorless. On the other hand, octahedral Cu2+ complexes have a vacancy in the e[[sub:g]] orbitals, and electrons can be excited to this level. The wavelength (energy) of the light absorbed corresponds to the visible part of the spectrum, and Cu2+ complexes are almost always colored—blue, blue-green violet, or yellow (CNX_Chem_19_03_Cu). Although CFT successfully describes many properties of coordination complexes, molecular orbital explanations (beyond the introductory scope provided here) are required to understand fully the behavior of coordination complexes.",
+     "enSpans": [
+      [
+       524,
+       531
+      ]
+     ],
+     "is": "Girðisamband Cu+ jónarinnar hefur d10 uppsetningu og öll e[[sub:g]] svigrúmin eru fyllt. Til að örva rafeind á hærra orkustig, eins og 4p svigrúmið, þarf ljóseindir með mjög mikla orku. Þessi orka samsvarar mjög stuttum bylgjulengdum á útfjólubláa svæði litrófsins. Ekkert sýnilegt ljós er gleypt, þannig að augað sér enga breytingu og efnasambandið virðist hvítt eða litlaust. Lausn sem inniheldur [Cu(CN)2]−, til dæmis, er litlaus. Á hinn bóginn hafa áttflötunga Cu2+ sambönd laust pláss í e[[sub:g]] svigrúmunum og hægt er að örva rafeindir á þetta stig. Bylgjulengd (orka) ljóssins sem gleypist samsvarar sýnilega hluta litrófsins og Cu2+ sambönd eru nánast alltaf lituð — blá, blágræn, fjólublá eða gul (CNX_Chem_19_03_Cu). Þrátt fyrir að kristalsviðskenningin lýsi mörgum eiginleikum girðisambanda með góðum árangri, þarf sameindasvigrúmskenningar (sem eru utan inngangsefnisins sem hér er fjallað um) til að skilja hegðun girðisambanda að fullu."
+    },
+    {
+     "segment": "ch21:m68854:para:fs-idm42894208",
+     "en": "Electron capture occurs when an inner shell electron combines with a proton and is converted into a neutron. The loss of an inner shell electron leaves a vacancy that will be filled by one of the outer electrons. As the outer electron drops into the vacancy, it will emit energy. In most cases, the energy emitted will be in the form of an X-ray. Like positron emission, electron capture occurs for “proton-rich” nuclei that lie below the band of stability. Electron capture has the same effect on the nucleus as does positron emission: The atomic number is decreased by one and the mass number does not change. This increases the n:p ratio, and the daughter nuclide lies closer to the band of stability than did the parent nuclide. Whether electron capture or positron emission occurs is difficult to predict. The choice is primarily due to kinetic factors, with the one requiring the smaller activation energy being the one more likely to occur.",
+     "enSpans": [
+      [
+       154,
+       161
+      ],
+      [
+       250,
+       257
+      ]
+     ],
+     "is": "Rafeindarhremming á sér stað þegar rafeind úr innra hveli sameinast róteind og breytist í nifteind. Við tap á rafeind úr innra hveli myndast laust pláss sem ein af ytri rafeindunum fyllir. Þegar ytri rafeindin fellur niður í lausa plássið gefur hún frá sér orku. Í flestum tilfellum er orkan sem gefin er út í formi röntgengeisla. Eins og jákvæðaeindaútsending á rafeindarhremming sér stað fyrir „róteindaríka“ kjarna sem liggja fyrir neðan stöðugleikabeltið. Rafeindarhremming hefur sömu áhrif á kjarnann og jákvæðaeindaútsending: Sætistalan lækkar um einn og massatalan breytist ekki. Þetta eykur n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði. Erfitt er að spá fyrir um hvort rafeindarhremming eða jákvæðaeindaútsending eigi sér stað. Valið er fyrst og fremst vegna hreyfifræðilegra þátta, þar sem sú sem krefst minni virkjunarorku er líklegri til að eiga sér stað."
+    }
+   ],
+   "segments": 4
+  },
+  {
+   "id": "alpha-decay",
+   "rulingId": "alpha-decay",
+   "english": "alpha decay",
+   "glossaryEnglish": "alpha decay",
+   "glossary": {
+    "is": "alfasundrun",
+    "alternatives": [
+     "alfahrörnun"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "alfa (α) sundrun",
+    "competitors": [
+     "alfa (α) hrörnun",
+     "alfahrörnun",
+     "alfasundrun"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idm27965808 (chat (question 1); 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68854:para:fs-idp202270256",
+     "en": "Alpha decay occurs primarily in heavy nuclei (A > 200, Z > 83). Because the loss of an α particle gives a daughter nuclide with a mass number four units smaller and an atomic number two units smaller than those of the parent nuclide, the daughter nuclide has a larger n:p ratio than the parent nuclide. If the parent nuclide undergoing α decay lies below the band of stability (refer to m68851#CNX_Chem_21_01_BandStable), the daughter nuclide will lie closer to the band.",
+     "enSpans": [
+      [
+       0,
+       11
+      ]
+     ],
+     "is": "Alfasundrun á sér aðallega stað í þungum kjörnum (A > 200, Z > 83). Vegna þess að tap á α-ögn gefur dótturkjarnategund með massatölu sem er fjórum einingum minni og sætistölu sem er tveimur einingum minni en móðurkjarnategundarinnar, hefur dótturkjarnategundin hærra n:p hlutfall en móðurkjarnategundin. Ef móðurkjarnategundin sem gengst undir α-sundrun liggur fyrir neðan stöðugleikabeltið (sjá m68851#CNX_Chem_21_01_BandStable), mun dótturkjarnategundin liggja nær beltinu."
+    }
+   ],
+   "segments": 3
+  },
+  {
+   "id": "bimolecular-reaction",
+   "rulingId": "bimolecular-reaction",
+   "english": "bimolecular reaction",
+   "glossaryEnglish": "bimolecular reaction",
+   "glossary": {
+    "is": "tvísameinda efnahvarf",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "tvísameindahvarf",
+    "competitors": [
+     "tvísameinda efnahvarf"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch12_fs-idp131244384 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "deliberate-override",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch12:m68794:para:fs-idp87793216",
+     "en": "A bimolecular reaction involves two reactant entities, for example:",
+     "enSpans": [
+      [
+       2,
+       22
+      ]
+     ],
+     "is": "Tvísameindahvarf felur í sér tvær hvarfefnaeindir, til dæmis:"
+    },
+    {
+     "segment": "ch12:m68794:glossary-term:fs-idp131244384-term",
+     "en": "bimolecular reaction",
+     "enSpans": [
+      [
+       0,
+       20
+      ]
+     ],
+     "is": "tvísameindahvarf"
+    }
+   ],
+   "segments": 3
+  },
+  {
+   "id": "rate-law",
+   "rulingId": "rate-law",
+   "english": "rate law",
+   "glossaryEnglish": "rate law",
+   "glossary": {
+    "is": "hraðajafna",
+    "alternatives": [
+     "hraðalögmál"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "hraðalögmál",
+    "competitors": [
+     "hraðajafna"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch12_fs-idm215968704 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch12:m68785:abstract-item:abstract-item-3",
+     "en": "Rate Laws",
+     "enSpans": [
+      [
+       0,
+       9
+      ]
+     ],
+     "is": "Hraðalögmál"
+    },
+    {
+     "segment": "ch12:m68785:abstract-item:abstract-item-4",
+     "en": "Integrated Rate Laws",
+     "enSpans": [
+      [
+       11,
+       20
+      ]
+     ],
+     "is": "Heilduð hraðalögmál"
+    },
+    {
+     "segment": "ch12:m68789:title:auto-1",
+     "en": "Rate Laws",
+     "enSpans": [
+      [
+       0,
+       9
+      ]
+     ],
+     "is": "Hraðalögmál"
+    }
+   ],
+   "segments": 136
+  },
+  {
+   "id": "atomic-orbital",
+   "rulingId": "atomic-orbital",
+   "english": "atomic orbital",
+   "glossaryEnglish": "atomic orbital",
+   "glossary": {
+    "is": "frumeindasvigrúm",
+    "alternatives": [
+     "atómsvigrúm"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "atómsvigrúm",
+    "competitors": [
+     "frumeindasvigrúm"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch06_fs-idm147438368 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch06:m68733:para:fs-idm12861216",
+     "en": "The principal quantum number is one of three quantum numbers used to characterize an orbital. An atomic orbital is a general region in an atom within which an electron is most probable to reside. The quantum mechanical model specifies the probability of finding an electron in the three-dimensional space around the nucleus and is based on solutions of the Schrödinger equation. In addition, the principal quantum number defines the energy of an electron in a hydrogen or hydrogen-like atom or an ion (an atom or an ion with only one electron) and the general region in which discrete energy levels of electrons in a multi-electron atoms and ions are located.",
+     "enSpans": [
+      [
+       97,
+       111
+      ]
+     ],
+     "is": "Aðalskammtatalan er ein af þremur skammtatölum sem notaðar eru til að lýsa svigrúmi. Atómsvigrúm er almennt svæði í atómi þar sem líklegast er að rafeind sé. Skammtafræðilíkanið tilgreinir líkurnar á að finna rafeind í þrívíðu rúmi í kringum kjarnann og byggir á lausnum Schrödinger-jöfnunnar. Að auki skilgreinir aðalskammtatalan orku rafeindar í vetnis- eða vetnislíku atómi eða jón (atómi eða jón með aðeins eina rafeind) og almenna svæðið þar sem stök orkustig rafeinda í fjölrafeinda atómum og jónum eru staðsett."
+    },
+    {
+     "segment": "ch06:m68733:para:fs-idm136117120",
+     "en": "The other three quantum numbers, n, l, and m[[sub:l]], are properties of specific atomic orbitals that also define in what part of the space an electron is most likely to be located. Orbitals are a result of solving the Schrödinger equation for electrons in atoms. The electron spin is a different kind of property. It is a completely quantum phenomenon with no analogues in the classical realm. In addition, it cannot be derived from solving the Schrödinger equation and is not related to the normal spatial coordinates (such as the Cartesian x, y, and z). Electron spin describes an intrinsic electron \"rotation\" or \"spinning.\" Each electron acts as a tiny magnet or a tiny rotating object with an angular momentum, or as a loop with an electric current, even though this rotation or current cannot be observed in terms of spatial coordinates.",
+     "enSpans": [
+      [
+       82,
+       97
+      ]
+     ],
+     "is": "Hinar þrjár skammtatölurnar, n, l og m[[sub:l]], eru eiginleikar tiltekinna atómsvigrúma sem einnig skilgreina í hvaða hluta rúmsins líklegast er að rafeind sé staðsett. Svigrúm eru afleiðing þess að leysa Schrödinger-jöfnuna fyrir rafeindir í atómum. Spinn rafeindar er annars konar eiginleiki. Það er algjörlega skammtafræðilegt fyrirbæri án hliðstæðu í klassíska heiminum. Auk þess er ekki hægt að leiða hann út með því að leysa Schrödinger-jöfnuna og hann er ekki tengdur venjulegum rúmhnitum (svo sem kartesísku x, y og z). Spinn rafeindar lýsir innri „snúningi“ eða „sveiflu“ rafeindar. Hver rafeind virkar sem örsmár segull eða örsmár snúningur með hverfiþunga, eða sem lykkja með rafstraumi, jafnvel þótt ekki sé hægt að fylgjast með þessum snúningi eða straumi með tilliti til rúmhnita."
+    },
+    {
+     "segment": "ch06:m68733:para:fs-idm82083456",
+     "en": "The magnitude of the overall electron spin can only have one value, and an electron can only “spin” in one of two quantized states. One is termed the α state, with the z component of the spin being in the positive direction of the z axis. This corresponds to the spin quantum number 13 The other is called the β state, with the z component of the spin being negative and 14 Any electron, regardless of the atomic orbital it is located in, can only have one of those two values of the spin quantum number. The energies of electrons having 15 and 16 are different if an external magnetic field is applied.",
+     "enSpans": [
+      [
+       406,
+       420
+      ]
+     ],
+     "is": "Stærð heildarspinns rafeindar getur aðeins haft eitt gildi og rafeind getur aðeins „snúist“ í einu af tveimur skömmtuðum ástöndum. Annað er kallað α-ástönd, þar sem z-þáttur spinnsins er í jákvæðri stefnu z-ássins. Þetta samsvarar spinnskammtatölunni 13 Hitt er kallað β-ástönd, þar sem z-þáttur spinnsins er neikvæður og 14 Sérhver rafeind, óháð því í hvaða atómsvigrúmi hún er staðsett, getur aðeins haft annað hvort þessara tveggja gilda spinnskammtatölunnar. Orka rafeinda með 15 og 16 er mismunandi ef ytra segulsviði er beitt."
+    }
+   ],
+   "segments": 84
+  },
+  {
+   "id": "dipole-moment",
+   "rulingId": "dipole-moment",
+   "english": "dipole moment",
+   "glossaryEnglish": "dipole moment",
+   "glossary": {
+    "is": "tvípólsvægi",
+    "alternatives": [
+     "tvískautsvægi"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "tvískautsvægi",
+    "competitors": [
+     "tvípólsvægi"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch07_fs-idp12081312 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch07:m68742:title:fs-idp149289584-title",
+     "en": "Molecular Polarity and Dipole Moment",
+     "enSpans": [
+      [
+       23,
+       36
+      ]
+     ],
+     "is": "Skautun sameinda og tvískautsvægi"
+    },
+    {
+     "segment": "ch07:m68742:para:fs-idp103820464",
+     "en": "The molecule polarity simulation provides many ways to explore dipole moments of bonds and molecules.",
+     "enSpans": [
+      [
+       63,
+       77
+      ]
+     ],
+     "is": "Hermun á skautun sameinda býður upp á margar leiðir til að kanna tvískautsvægi tengja og sameinda."
+    },
+    {
+     "segment": "ch07:m68742:para:fs-idp60999152",
+     "en": "(a) Molecular dipole moment points immediately between A and C.",
+     "enSpans": [
+      [
+       14,
+       27
+      ]
+     ],
+     "is": "(a) Tvískautsvægi sameindarinnar vísar beint á milli A og C."
+    }
+   ],
+   "segments": 36
+  },
+  {
+   "id": "nucleon",
+   "rulingId": "nucleon",
+   "english": "nucleon",
+   "glossaryEnglish": "nucleon",
+   "glossary": {
+    "is": "kjarnaeind",
+    "alternatives": [
+     "kjarneind"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "kjarneind",
+    "competitors": [
+     "kjarnaeind"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idm41591488 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch21:m68851:para:fs-idm77528832",
+     "en": "Protons and neutrons, collectively called nucleons, are packed together tightly in a nucleus. With a radius of about 10−15 meters, a nucleus is quite small compared to the radius of the entire atom, which is about 10−10 meters. Nuclei are extremely dense compared to bulk matter, averaging 1.8 5 1014 grams per cubic centimeter. For example, water has a density of 1 gram per cubic centimeter, and iridium, one of the densest elements known, has a density of 22.6 g/cm3. If the earth’s density were equal to the average nuclear density, the earth’s radius would be only about 200 meters (earth’s actual radius is approximately 6.4 6 106 meters, 30,000 times larger). fs-idp85198000 demonstrates just how great nuclear densities can be in the natural world.",
+     "enSpans": [
+      [
+       42,
+       50
+      ]
+     ],
+     "is": "Róteindir og nifteindir, sem sameiginlega eru kallaðar kjarnaeindir, pakkast þétt saman í kjarna. Kjarni er fremur lítill, með radíus um 10−15 metra, samanborið við radíus alls atómsins, sem er um 10−10 metrar. Kjarnar eru gríðarlega þéttir miðað við efni í föstu formi, að meðaltali 1,8 5 1014 grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridín, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm3. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 6 106 metrar, 30.000 sinnum stærri). fs-idp85198000 sýnir hversu gríðarlega mikill eðlismassi kjarna getur verið í náttúrunni."
+    },
+    {
+     "segment": "ch21:m68851:para:fs-idp28406768",
+     "en": "However, mass spectrometric measurements reveal that the mass of an 16 atom is 4.0026 amu, less than the combined masses of its six constituent subatomic particles. This difference between the calculated and experimentally measured masses is known as the mass defect of the atom. In the case of helium, the mass defect indicates a “loss” in mass of 4.0331 amu – 4.0026 amu = 0.0305 amu. The loss in mass accompanying the formation of an atom from protons, neutrons, and electrons is due to the conversion of that mass into energy that is evolved as the atom forms. The nuclear binding energy is the energy produced when the atoms’ nucleons are bound together; this is also the energy needed to break a nucleus into its constituent protons and neutrons. In comparison to chemical bond energies, nuclear binding energies are vastly greater, as we will learn in this section. Consequently, the energy changes associated with nuclear reactions are vastly greater than are those for chemical reactions.",
+     "enSpans": [
+      [
+       631,
+       639
+      ]
+     ],
+     "is": "Hins vegar sýna massarófsmælingar að massi 16 atóms er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem það er myndað úr. Þessi munur á útreiknuðum og mældum massa er þekktur sem massarýrð atómsins. Í tilfelli helíns gefur massarýrðin til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun atóms úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar atómið myndast. Kjarnabindingsorka er orkan sem myndast þegar kjarnaeindir atómsins bindast saman; þetta er líka orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir. Í samanburði við efnatengisorku er kjarnabindingsorka gríðarlega miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum."
+    },
+    {
+     "segment": "ch21:m68851:para:fs-idm18227760",
+     "en": "Several observations may be made regarding the relationship between the stability of a nucleus and its structure. Nuclei with even numbers of protons, neutrons, or both are more likely to be stable (see fs-idp70040672). Nuclei with certain numbers of nucleons, known as magic numbers, are stable against nuclear decay. These numbers of protons or neutrons (2, 8, 20, 28, 50, 82, and 126) make complete shells in the nucleus. These are similar in concept to the stable electron shells observed for the noble gases. Nuclei that have magic numbers of both protons and neutrons, such as 23 24 25 and 26 are called “double magic” and are particularly stable. These trends in nuclear stability may be rationalized by considering a quantum mechanical model of nuclear energy states analogous to that used to describe electronic states earlier in this textbook. The details of this model are beyond the scope of this chapter.",
+     "enSpans": [
+      [
+       251,
+       259
+      ]
+     ],
+     "is": "Nokkrar athuganir má gera varðandi sambandið milli stöðugleika kjarna og byggingar hans. Kjarnar með sléttum tölum róteinda, nifteinda eða beggja eru líklegri til að vera stöðugir (sjá fs-idp70040672). Kjarnar með ákveðnum fjölda kjarnaagna, þekktum sem töfratölur, eru stöðugir gegn kjarnasundrun. Þessar tölur róteinda eða nifteinda (2, 8, 20, 28, 50, 82 og 126) mynda fullskipuð hvolf í kjarnanum. Þetta er svipað í hugmyndafræði og stöðug rafeindahvolf sem sjást hjá eðallofttegundum. Kjarnar sem hafa töfratölur bæði róteinda og nifteinda, svo sem 23 24 25 og 26 eru kallaðir „tvítöfrandi“ og eru sérstaklega stöðugir. Þessar tilhneigingar í kjarnastöðugleika má rökstyðja með því að íhuga skammtafræðilegt líkan af orkuástöndum kjarna, hliðstætt því sem notað var til að lýsa rafeindaástöndum fyrr í þessari kennslubók. Smáatriði þessa líkans eru utan gildissviðs þessa kafla."
+    }
+   ],
+   "segments": 32
+  },
+  {
+   "id": "alpha-particle",
+   "rulingId": "alpha-particle",
+   "english": "alpha particle",
+   "glossaryEnglish": "alpha particle",
+   "glossary": {
+    "is": "alfaögn",
+    "alternatives": [
+     "alfaeind"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "alfaeind",
+    "competitors": [
+     "alfaögn"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch21_fs-idm57603984 (2026-10-10 [USER])",
+     "stage1 ch02_fs-idm10811088 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch02:m68687:para:fs-idp53512848",
+     "en": "The next major development in understanding the atom came from Ernest Rutherford, a physicist from New Zealand who largely spent his scientific career in Canada and England. He performed a series of experiments using a beam of high-speed, positively charged alpha particles (α particles) that were produced by the radioactive decay of radium; α particles consist of two protons and two neutrons (you will learn more about radioactive decay in the chapter on nuclear chemistry). Rutherford and his colleagues Hans Geiger (later famous for the Geiger counter) and Ernest Marsden aimed a beam of α particles, the source of which was embedded in a lead block to absorb most of the radiation, at a very thin piece of gold foil and examined the resultant scattering of the α particles using a luminescent screen that glowed briefly where hit by an α particle.",
+     "enSpans": [
+      [
+       258,
+       273
+      ]
+     ],
+     "is": "Næsta stóra framþróun í skilningi á atóminu kom frá Ernest Rutherford, eðlisfræðingi frá Nýja-Sjálandi sem að mestu leyti varði vísindaferli sínum í Kanada og Englandi. Hann framkvæmdi röð tilrauna með geisla af háhraða, jákvætt hlöðnum alfa-ögnum (α-ögnum) sem mynduðust við geislavirka rotnun radíums; α-agnir samanstanda af tveimur róteindum og tveimur nifteindum (þú munt læra meira um geislavirka rotnun í kaflanum um kjarnakemíu). Rutherford og samstarfsmenn hans, Hans Geiger (síðar frægur fyrir Geiger-teljarann) og Ernest Marsden, beindu geisla af α-ögnum, sem uppsprettan var greypt í blýkubb til að gleypa mestan hluta geislunarinnar, að mjög þunnri gullþynnu og skoðuðu dreifingu α-agnanna sem af því leiddi með því að nota ljómandi skjá sem ljómaði stuttlega þar sem α-ögn lenti á honum."
+    },
+    {
+     "segment": "ch02:m68687:para:fs-idp11423776",
+     "en": "Here is what Rutherford deduced: Because most of the fast-moving α particles passed through the gold atoms undeflected, they must have traveled through essentially empty space inside the atom. Alpha particles are positively charged, so deflections arose when they encountered another positive charge (like charges repel each other). Since like charges repel one another, the few positively charged α particles that changed paths abruptly must have hit, or closely approached, another body that also had a highly concentrated, positive charge. Since the deflections occurred a small fraction of the time, this charge only occupied a small amount of the space in the gold foil. Analyzing a series of such experiments in detail, Rutherford drew two conclusions:",
+     "enSpans": [
+      [
+       193,
+       208
+      ]
+     ],
+     "is": "Þetta er það sem Rutherford ályktaði: Þar sem flestar hraðfara α-agnirnar fóru í gegnum gullatómin án þess að sveigja frá, hlutu þær að hafa farið í gegnum nánast tómt rými inni í atóminu. Alfaagnir eru jákvætt hlaðnar, þannig að sveigjur urðu þegar þær rákust á aðra jákvæða hleðslu (eins hleðslur hrinda hvor annarri frá sér). Þar sem eins hleðslur hrinda hvor annarri frá sér, hlutu þær fáu jákvætt hlaðnu α-agnir sem breyttu skyndilega um stefnu að hafa rekist á, eða komið mjög nálægt, öðrum hlut sem einnig hafði mjög þétta, jákvæða hleðslu. Þar sem sveigjurnar áttu sér stað í litlum hluta tilvika, tók þessi hleðsla aðeins lítið rými í gullþynnunni. Eftir að hafa greint röð slíkra tilrauna í smáatriðum dró Rutherford tvær ályktanir:"
+    },
+    {
+     "segment": "ch02:m68687:glossary-term:fs-idm10811088-term",
+     "en": "alpha particle (α particle)",
+     "enSpans": [
+      [
+       0,
+       14
+      ]
+     ],
+     "is": "alfa-ögn (α-ögn)"
+    }
+   ],
+   "segments": 21
+  },
+  {
+   "id": "electron-affinity",
+   "rulingId": "electron-affinity",
+   "english": "electron affinity",
+   "glossaryEnglish": "electron affinity",
+   "glossary": {
+    "is": "rafsækni",
+    "alternatives": [
+     "rafeindasækni"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "rafeindasækni",
+    "competitors": [
+     "rafsækni"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch06_fs-idm161962320 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch06:m68735:abstract-item:abstract-item-1",
+     "en": "Describe and explain the observed trends in atomic size, ionization energy, and electron affinity of the elements",
+     "enSpans": [
+      [
+       80,
+       97
+      ]
+     ],
+     "is": "Lýst og útskýrt þá þróun sem sést í atómstærð, jónunarorku og rafeindasækni frumefna"
+    },
+    {
+     "segment": "ch06:m68735:para:fs-idm62970128",
+     "en": "The electron affinity (EA) is the energy change for the process of adding an electron to a gaseous atom to form an anion (negative ion).",
+     "enSpans": [
+      [
+       4,
+       21
+      ]
+     ],
+     "is": "Rafeindasækni (EA) er orkubreytingin fyrir það ferli að bæta rafeind við gasfasa atóm til að mynda anjón (neikvæða jón)."
+    },
+    {
+     "segment": "ch06:m68735:caption:CNX_Chem_06_05_Elaffin-caption",
+     "en": "This version of the periodic table displays the electron affinity values (in kJ/mol) for selected elements.",
+     "enSpans": [
+      [
+       48,
+       65
+      ]
+     ],
+     "is": "Þessi útgáfa af lotukerfinu sýnir rafeindasæknigildi (í kJ/mól) fyrir valin frumefni."
+    }
+   ],
+   "segments": 16
+  },
+  {
+   "id": "osmosis",
+   "rulingId": "osmosis",
+   "english": "osmosis",
+   "glossaryEnglish": "osmosis",
+   "glossary": {
+    "is": "himnuflæði",
+    "alternatives": [
+     "osmósa"
+    ],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "osmósa",
+    "competitors": [
+     "himnuflæði"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch11_fs-idp141112944 (page-default-confirmed; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch11:m68783:abstract-item:abstract-item-5",
+     "en": "Explain the process of osmosis and describe how it is applied industrially and in nature",
+     "enSpans": [
+      [
+       23,
+       30
+      ]
+     ],
+     "is": "Útskýrt ferli osmósu og lýst hvernig það er hagnýtt í iðnaði og náttúru"
+    },
+    {
+     "segment": "ch11:m68783:title:fs-idp129025744-title",
+     "en": "Osmosis and Osmotic Pressure of Solutions",
+     "enSpans": [
+      [
+       0,
+       7
+      ]
+     ],
+     "is": "Osmósa og osmósuþrýstingur lausna"
+    },
+    {
+     "segment": "ch11:m68783:para:fs-idp858960",
+     "en": "Consider the apparatus illustrated in CNX_Chem_11_04_osmosis, in which samples of pure solvent and a solution are separated by a membrane that only solvent molecules may permeate. Solvent molecules will diffuse across the membrane in both directions. Since the concentration of solvent is greater in the pure solvent than the solution, these molecules will diffuse from the solvent side of the membrane to the solution side at a faster rate than they will in the reverse direction. The result is a net transfer of solvent molecules from the pure solvent to the solution. Diffusion-driven transfer of solvent molecules through a semipermeable membrane is a process known as osmosis.",
+     "enSpans": [
+      [
+       53,
+       60
+      ],
+      [
+       673,
+       680
+      ]
+     ],
+     "is": "Hugleiddu búnaðinn sem sýndur er á CNX_Chem_11_04_osmosis, þar sem sýni af hreinum leysi og lausn eru aðskilin með himnu sem aðeins leysisameindir geta farið í gegnum. Leysisameindir munu flæða yfir himnuna í báðar áttir. Þar sem styrkur leysisins er meiri í hreina leysinum en í lausninni munu þessar sameindir flæða frá leysihlið himnunnar yfir á lausnarhliðina á meiri hraða en í öfuga átt. Niðurstaðan er nettóflutningur leysisameinda frá hreina leysinum yfir í lausnina. Flæðidrifinn flutningur leysisameinda í gegnum hálfgegndræpa himnu er ferli sem kallast osmósa."
+    }
+   ],
+   "segments": 15
+  },
+  {
+   "id": "geiger-counter",
+   "rulingId": "geiger-counter",
+   "english": "Geiger counter",
+   "glossaryEnglish": "Geiger counter",
+   "glossary": {
+    "is": "Geiger-nemi",
+    "alternatives": [
+     "Geiger-teljari"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "Geiger-teljari",
+    "competitors": [
+     "Geiger-nemi"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch21_fs-idp77369424 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "ruling-is-glossary-alternative",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch02:m68687:para:fs-idp53512848",
+     "en": "The next major development in understanding the atom came from Ernest Rutherford, a physicist from New Zealand who largely spent his scientific career in Canada and England. He performed a series of experiments using a beam of high-speed, positively charged alpha particles (α particles) that were produced by the radioactive decay of radium; α particles consist of two protons and two neutrons (you will learn more about radioactive decay in the chapter on nuclear chemistry). Rutherford and his colleagues Hans Geiger (later famous for the Geiger counter) and Ernest Marsden aimed a beam of α particles, the source of which was embedded in a lead block to absorb most of the radiation, at a very thin piece of gold foil and examined the resultant scattering of the α particles using a luminescent screen that glowed briefly where hit by an α particle.",
+     "enSpans": [
+      [
+       542,
+       556
+      ]
+     ],
+     "is": "Næsta stóra framþróun í skilningi á atóminu kom frá Ernest Rutherford, eðlisfræðingi frá Nýja-Sjálandi sem að mestu leyti varði vísindaferli sínum í Kanada og Englandi. Hann framkvæmdi röð tilrauna með geisla af háhraða, jákvætt hlöðnum alfa-ögnum (α-ögnum) sem mynduðust við geislavirka rotnun radíums; α-agnir samanstanda af tveimur róteindum og tveimur nifteindum (þú munt læra meira um geislavirka rotnun í kaflanum um kjarnakemíu). Rutherford og samstarfsmenn hans, Hans Geiger (síðar frægur fyrir Geiger-teljarann) og Ernest Marsden, beindu geisla af α-ögnum, sem uppsprettan var greypt í blýkubb til að gleypa mestan hluta geislunarinnar, að mjög þunnri gullþynnu og skoðuðu dreifingu α-agnanna sem af því leiddi með því að nota ljómandi skjá sem ljómaði stuttlega þar sem α-ögn lenti á honum."
+    },
+    {
+     "segment": "ch21:m68858:para:fs-idm3484976",
+     "en": "Several different devices are used to detect and measure radiation, including Geiger counters, scintillation counters (scintillators), and radiation dosimeters (CNX_Chem_21_06_Monitors). Probably the best-known radiation instrument, the Geiger counter (also called the Geiger-Müller counter) detects and measures radiation. Radiation causes the ionization of the gas in a Geiger-Müller tube. The rate of ionization is proportional to the amount of radiation. A scintillation counter contains a scintillator—a material that emits light (luminesces) when excited by ionizing radiation—and a sensor that converts the light into an electric signal. Radiation dosimeters also measure ionizing radiation and are often used to determine personal radiation exposure. Commonly used types are electronic, film badge, thermoluminescent, and quartz fiber dosimeters.",
+     "enSpans": [
+      [
+       78,
+       93
+      ],
+      [
+       237,
+       251
+      ]
+     ],
+     "is": "Ýmis tæki eru notuð til að greina og mæla geislun, þar á meðal Geiger-nemar, glitnemar (e. scintillators) og geislaskammtamælar (CNX_Chem_21_06_Monitors). Sennilega þekktasta geislunarmælitækið, Geiger-neminn (einnig kallaður Geiger-Müller-nemi), greinir og mælir geislun. Geislun veldur jónun á gasinu í Geiger-Müller-röri. Hraði jónunarinnar er í réttu hlutfalli við magn geislunar. Glitnemi inniheldur glitefni (e.scintillator) — efni sem gefur frá sér ljós (ljómar) þegar það örvast af jónandi geislun — og nema sem breytir ljósinu í rafmerki. Geislaskammtamælar mæla einnig jónandi geislun og eru oft notaðir til að ákvarða persónulega geislunaráhrif. Algengar gerðir eru rafrænir skammtamælar, filmuskammtamælar, hitasveimsskautamælar og kvarsþráðaskammtamælar."
+    },
+    {
+     "segment": "ch21:m68858:caption:CNX_Chem_21_06_Monitors-caption",
+     "en": "Devices such as (a) Geiger counters, (b) scintillators, and (c) dosimeters can be used to measure radiation. (credit c: modification of work by “osaMu”/Wikimedia commons)",
+     "enSpans": [
+      [
+       20,
+       35
+      ]
+     ],
+     "is": "Tæki eins og (a) Geiger-nemar, (b) glitnemar og (c) skammtamælar má nota til að mæla geislun. (heimild c: breyting á verki eftir „osaMu“/Wikimedia commons)"
+    }
+   ],
+   "segments": 6
+  },
+  {
+   "id": "heat",
+   "rulingId": "heat",
+   "english": "heat",
+   "glossaryEnglish": "heat",
+   "glossary": {
+    "is": "varmi",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "varmi (q)",
+    "competitors": [],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25504496 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "minor-form",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch01:m68667:para:fs-idm75785376",
+     "en": "Pure substances that are comprised of two or more elements are called compounds. Compounds may be broken down by chemical changes to yield either elements or other compounds, or both. Mercury(II) oxide, an orange, crystalline solid, can be broken down by heat into the elements mercury and oxygen (CNX_Chem_01_02_decomp). When heated in the absence of air, the compound sucrose is broken down into the element carbon and the compound water. (The initial stage of this process, when the sugar is turning brown, is known as caramelization—this is what imparts the characteristic sweet and nutty flavor to caramel apples, caramelized onions, and caramel). Silver(I) chloride is a white solid that can be broken down into its elements, silver and chlorine, by absorption of light. This property is the basis for the use of this compound in photographic films and photochromic eyeglasses (those with lenses that darken when exposed to light).",
+     "enSpans": [
+      [
+       255,
+       259
+      ]
+     ],
+     "is": "Hrein efni sem samanstanda af tveimur eða fleiri frumefnum eru kölluð efnasambönd. Efnasambönd má brjóta niður með efnabreytingum til að fá annaðhvort frumefni eða önnur efnasambönd, eða hvort tveggja. Kvikasilfurs(II)oxíð, appelsínugult, kristallað fast efni, má brjóta niður með hita í frumefnin kvikasilfur og súrefni (CNX_Chem_01_02_decomp). Þegar efnasambandið súkrósi er hitað án lofts brotnar það niður í frumefnið kolefni og efnasambandið vatn. (Upphafsstig þessa ferlis, þegar sykurinn verður brúnn, er þekkt sem karamellumyndun – það er þetta sem gefur karamellueplum, karamelluðum lauk og karamellu hið einkennandi sæta og hnetukennda bragð). Silfurs(I)klóríð er hvítt fast efni sem má brjóta niður í frumefni sín, silfur og klór, með ljósgleypni. Þessi eiginleiki er grundvöllur notkunar þessa efnasambands í ljósmyndafilmur og ljóslita gleraugu (þau með linsum sem dökkna þegar þau verða fyrir ljósi)."
+    },
+    {
+     "segment": "ch01:m68670:para:fs-idp29966736",
+     "en": "Properties of matter fall into one of two categories. If the property depends on the amount of matter present, it is an extensive property. The mass and volume of a substance are examples of extensive properties; for instance, a gallon of milk has a larger mass than a cup of milk. The value of an extensive property is directly proportional to the amount of matter in question. If the property of a sample of matter does not depend on the amount of matter present, it is an intensive property. Temperature is an example of an intensive property. If the gallon and cup of milk are each at 20 °C (room temperature), when they are combined, the temperature remains at 20 °C. As another example, consider the distinct but related properties of heat and temperature. A drop of hot cooking oil spattered on your arm causes brief, minor discomfort, whereas a pot of hot oil yields severe burns. Both the drop and the pot of oil are at the same temperature (an intensive property), but the pot clearly contains much more heat (extensive property).",
+     "enSpans": [
+      [
+       741,
+       745
+      ],
+      [
+       1014,
+       1018
+      ]
+     ],
+     "is": "Eiginleikar efnis falla í annan af tveimur flokkum. Ef eiginleikinn fer eftir magni efnis sem er til staðar er hann magnbundinn eiginleiki. Massi og rúmmál efnis eru dæmi um magnbundna eiginleika; til dæmis hefur lítri af mjólk meiri massa en bolli af mjólk. Gildi magnbundins eiginleika er í beinu hlutfalli við magn efnisins sem um ræðir. Ef eiginleiki sýnis af efni fer ekki eftir magni efnis sem er til staðar er hann ómagnbundinn eiginleiki. Hitastig er dæmi um ómagnbundinn eiginleika. Ef lítrinn og bollinn af mjólk eru hvor um sig við 20 °C (stofuhita), þegar þeim er blandað saman, helst hitastigið 20 °C. Sem annað dæmi má nefna hina aðskildu en skyldu eiginleika hita og hitastigs. Dropi af heitri matarolíu sem skvettist á handlegginn veldur stuttum, minniháttar óþægindum, en pottur af heitri olíu veldur alvarlegum bruna. Bæði dropinn og potturinn af olíu eru við sama hitastig (ómagnbundinn eiginleiki), en potturinn inniheldur augljóslega miklu meiri hita (magnbundinn eiginleiki)."
+    },
+    {
+     "segment": "ch01:m68670:para:fs-idp147199744",
+     "en": "While many elements differ dramatically in their chemical and physical properties, some elements have similar properties. For example, many elements conduct heat and electricity well, whereas others are poor conductors. These properties can be used to sort the elements into three classes: metals (elements that conduct well), nonmetals (elements that conduct poorly), and metalloids (elements that have intermediate conductivities).",
+     "enSpans": [
+      [
+       157,
+       161
+      ]
+     ],
+     "is": "Þótt mörg frumefni séu mjög ólík í efna- og eðlisfræðilegum eiginleikum sínum hafa sum frumefni svipaða eiginleika. Til dæmis leiða mörg frumefni vel hita og rafmagn, á meðan önnur eru lélegir leiðarar. Hægt er að nota þessa eiginleika til að flokka frumefnin í þrjá flokka: málma (frumefni sem leiða vel), málmleysingja (frumefni sem leiða illa) og hálfmálma (frumefni sem hafa miðlungs leiðni)."
+    }
+   ],
+   "segments": 365
+  },
+  {
+   "id": "lattice-energy",
+   "rulingId": "lattice-energy",
+   "english": "lattice energy",
+   "glossaryEnglish": "lattice energy",
+   "glossary": {
+    "is": "grindarorka",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "grindarorka (ΔHgrind)",
+    "competitors": [
+     "kristalsgrindarorka (ΔHgrindar)"
+    ],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch07_fs-idp29295648 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "minor-form",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch07:m68741:para:fs-idp176876736",
+     "en": "A bond’s strength describes how strongly each atom is joined to another atom, and therefore how much energy is required to break the bond between the two atoms. In this section, you will learn about the bond strength of covalent bonds, and then compare that to the strength of ionic bonds, which is related to the lattice energy of a compound.",
+     "enSpans": [
+      [
+       314,
+       328
+      ]
+     ],
+     "is": "Styrkur tengis lýsir því hversu sterkt hvert atóm er tengt öðru atómi og þar af leiðandi hversu mikla orku þarf til að rjúfa tengið milli atómanna tveggja. Í þessum kafla munt þú læra um tengisstyrk samgildra tengja og bera hann síðan saman við styrk jónatengja, sem er skyldur grindarorku efnasambands."
+    },
+    {
+     "segment": "ch07:m68741:title:fs-idm34679504-title",
+     "en": "Ionic Bond Strength and Lattice Energy",
+     "enSpans": [
+      [
+       24,
+       38
+      ]
+     ],
+     "is": "Styrkur jónatengja og grindarorka"
+    },
+    {
+     "segment": "ch07:m68741:para:fs-idm57606496",
+     "en": "An ionic compound is stable because of the electrostatic attraction between its positive and negative ions. The lattice energy of a compound is a measure of the strength of this attraction. The lattice energy (Δ[[i:Hlattice)|term-00001]] of an ionic compound is defined as the energy required to separate one mole of the solid into its component gaseous ions. For the ionic solid MX, the lattice energy is the enthalpy change of the process:",
+     "enSpans": [
+      [
+       112,
+       126
+      ],
+      [
+       194,
+       208
+      ],
+      [
+       388,
+       402
+      ]
+     ],
+     "is": "Jónaefnasamband er stöðugt vegna rafstöðuaðdráttar milli jákvæðra og neikvæðra jóna þess. Grindarorka efnasambands er mælikvarði á styrk þessa aðdráttar. Grindarorka (Δ[[i:Hgrind)|term-00001]] jónaefnasambands er skilgreind sem orkan sem þarf til að aðskilja eitt mól af föstu efninu í jónir þess á gasformi. Fyrir jóníska fasta efnið MX er grindarorkan vermibreyting ferlisins:"
+    }
+   ],
+   "segments": 33
+  },
+  {
+   "id": "molality",
+   "rulingId": "molality",
+   "english": "molality",
+   "glossaryEnglish": "molality",
+   "glossary": {
+    "is": "mólalstyrkur",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "mólalstyrkur (m)",
+    "competitors": [],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch11_fs-idp141108496 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "minor-form",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch11:m68783:abstract-item:abstract-item-1",
+     "en": "Express concentrations of solution components using mole fraction and molality",
+     "enSpans": [
+      [
+       70,
+       78
+      ]
+     ],
+     "is": "Lýst styrk efnisþátta í lausn með mólbroti og mólalstyrk"
+    },
+    {
+     "segment": "ch11:m68783:title:fs-idp94607584-title",
+     "en": "Mole Fraction and Molality",
+     "enSpans": [
+      [
+       18,
+       26
+      ]
+     ],
+     "is": "Mólbrot og mólalstyrkur"
+    },
+    {
+     "segment": "ch11:m68783:para:fs-idp53552496",
+     "en": "Because solution volumes vary with temperature, molar concentrations will likewise vary. When expressed as molarity, the concentration of a solution with identical numbers of solute and solvent species will be different at different temperatures, due to the contraction/expansion of the solution. More appropriate for calculations involving many colligative properties are mole-based concentration units whose values are not dependent on temperature. Two such units are mole fraction (introduced in the previous chapter on gases) and molality.",
+     "enSpans": [
+      [
+       534,
+       542
+      ]
+     ],
+     "is": "Þar sem rúmmál lausna breytist með hitastigi, breytist mólstyrkur sömuleiðis. Þegar hann er gefinn upp sem mólstyrkur verður styrkur lausnar með sama fjölda uppleystra efna og leysiefna mismunandi við mismunandi hitastig, vegna samdráttar/þenslu lausnarinnar. Hentugri fyrir útreikninga sem fela í sér marga sameiginlega eiginleika eru styrkleikaeiningar byggðar á mólum, en gildi þeirra eru ekki háð hitastigi. Tvær slíkar einingar eru mólbrot (kynnt í fyrri kafla um lofttegundir) og mólalstyrkur."
+    }
+   ],
+   "segments": 33
+  },
+  {
+   "id": "intermolecular-force",
+   "rulingId": "intermolecular-force",
+   "english": "intermolecular force",
+   "glossaryEnglish": "intermolecular forces",
+   "glossary": {
+    "is": "millisameindakraftar",
+    "alternatives": [],
+    "domain": "chemistry"
+   },
+   "ruling": {
+    "is": "millisameindakraftur",
+    "competitors": [],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "stage1 ch10_fs-idm66585952 (page-answer; 2026-10-11 [USER])"
+    ]
+   },
+   "cls": "minor-form",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch10:m68760:abstract-item:abstract-item-1",
+     "en": "Intermolecular Forces",
+     "enSpans": [
+      [
+       0,
+       21
+      ]
+     ],
+     "is": "Millisameindakraftar"
+    },
+    {
+     "segment": "ch10:m68760:para:fs-idp5508192",
+     "en": "Leprosy has been a devastating disease throughout much of human history. Aside from the symptoms and complications of the illness, its social stigma led sufferers to be cast out of communities and isolated in colonies; in some regions this practice lasted well into the twentieth century. At that time, the best potential treatment for leprosy was oil from the chaulmoogra tree, but the oil was extremely thick, causing blisters and making usage painful and ineffective. Healthcare professionals seeking a better application contacted Alice Ball, a young chemist at the University of Hawaii, who had focused her masters thesis on a similar plant. Ball initiated a sequence of procedures (repeated acidification and purification to change the characteristics of the oil and isolate the active substances (esters, discussed later in this text). The \"Ball Method\" as it later came to be called, became the standard treatment for leprosy for decades. In the liquid and solid states, atomic and molecular interactions are of considerable strength and play an important role in determining a number of physical properties of the substance. For example, the thickness, or viscosity, of the chaulmoogra oil was due to its intermolecular forces. In this chapter, the nature of these interactions and their effects on various physical properties of liquid and solid phases will be examined.",
+     "enSpans": [
+      [
+       1214,
+       1235
+      ]
+     ],
+     "is": "Holdsveiki hefur verið skelfilegur sjúkdómur í gegnum stóran hluta mannkynssögunnar. Fyrir utan einkenni og fylgikvilla sjúkdómsins leiddi félagslegur stimpill hans til þess að þolendur voru reknir úr samfélögum og einangraðir í nýlendum; á sumum svæðum viðhélst þessi venja langt fram á tuttugustu öld. Á þeim tíma var besta mögulega meðferðin við holdsveiki olía úr chaulmoogra-trénu, en olían var afar þykk, olli blöðrum og gerði notkun hennar sársaukafulla og árangurslausa. Heilbrigðisstarfsfólk sem leitaði að betri notkun hafði samband við Alice Ball, ungan efnafræðing við Háskólann á Havaí, sem hafði einbeitt sér að svipaðri plöntu í meistararitgerð sinni. Ball hóf röð aðgerða (endurtekin sýring og hreinsun til að breyta eiginleikum olíunnar og einangra virku efnin (estra, sem fjallað er um síðar í þessum texta). „Ball-aðferðin“, eins og hún var síðar kölluður, varð staðlaða meðferðin við holdsveiki í áratugi. Í vökva- og föstu formi eru víxlverkanir atóma og sameinda talsvert sterkar og gegna mikilvægu hlutverki við að ákvarða ýmsa eðliseiginleika efnisins. Til dæmis stafaði þykkt, eða seigja, chaulmoogra-olíunnar af millikröftum hennar. Í þessum kafla verður fjallað um eðli þessara víxlverkana og áhrif þeirra á ýmsa eðliseiginleika vökva- og fastfasa."
+    },
+    {
+     "segment": "ch10:m68761:title:auto-1",
+     "en": "Intermolecular Forces",
+     "enSpans": [
+      [
+       0,
+       21
+      ]
+     ],
+     "is": "Millisameindakraftar"
+    }
+   ],
+   "segments": 29
+  },
+  {
+   "id": "calorie",
+   "rulingId": "calorie",
+   "english": "calorie",
+   "glossaryEnglish": "calorie",
+   "glossary": {
+    "is": "kaloría",
+    "alternatives": [
+     "varmaeining",
+     "verma"
+    ],
+    "domain": "physics"
+   },
+   "ruling": {
+    "is": "kaloría (cal)",
+    "competitors": [],
+    "scope": {
+     "kind": "book"
+    },
+    "sense": null,
+    "sources": [
+     "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch05_fs-idp25499888 (2026-10-10 [USER])"
+    ]
+   },
+   "cls": "minor-form",
+   "collapseWith": [],
+   "contexts": [
+    {
+     "segment": "ch05:m68724:para:fs-idp24669072",
+     "en": "Historically, energy was measured in units of calories (cal). A calorie is the amount of energy required to raise one gram of water by 1 degree C (1 kelvin). However, this quantity depends on the atmospheric pressure and the starting temperature of the water. The ease of measurement of energy changes in calories has meant that the calorie is still frequently used. The Calorie (with a capital C), or large calorie, commonly used in quantifying food energy content, is a kilocalorie. The SI unit of heat, work, and energy is the joule. A joule (J) is defined as the amount of energy used when a force of 1 newton moves an object 1 meter. It is named in honor of the English physicist James Prescott Joule. One joule is equivalent to 1 kg m2/s2, which is also called 1 newton–meter. A kilojoule (kJ) is 1000 joules. To standardize its definition, 1 calorie has been set to equal 4.184 joules.",
+     "enSpans": [
+      [
+       46,
+       54
+      ],
+      [
+       64,
+       71
+      ],
+      [
+       305,
+       313
+      ],
+      [
+       333,
+       340
+      ],
+      [
+       371,
+       378
+      ],
+      [
+       408,
+       415
+      ],
+      [
+       849,
+       856
+      ]
+     ],
+     "is": "Sögulega var orka mæld í einingunni kaloría (cal). Ein kaloría er orkumagnið sem þarf til að hita eitt gramm af vatni um 1 gráðu á Celsíus (1 kelvín). Þetta magn fer þó eftir loftþrýstingi og upphafshita vatnsins. Auðveldir mælingar á orkubreytingum í kaloríum hafa gert það að verkum að kalorían er enn oft notuð. Kalorían (með stóru K), eða stóra kalorían, sem almennt er notuð til að magngreina orkuinnihald matvæla, er kílókaloría. SI-eining varma, vinnu og orku er júl. Eitt júl (J) er skilgreint sem orkumagnið sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra. Það er nefnt til heiðurs enska eðlisfræðingnum James Prescott Joule. Eitt júl jafngildir 1 kg m2/s2, sem einnig er kallað 1 njútonmetri. Eitt kílójúl (kJ) er 1000 júl. Til að staðla skilgreininguna hefur 1 kaloría verið sett jöfn 4,184 júlum."
+    },
+    {
+     "segment": "ch05:m68724:glossary-term:fs-idp25499888-term",
+     "en": "calorie (cal)",
+     "enSpans": [
+      [
+       0,
+       7
+      ]
+     ],
+     "is": "kaloría (cal)"
+    },
+    {
+     "segment": "ch05:m68726:para:eip-514",
+     "en": "For example Carla Prado's team at University of Alberta undertook whole-body calorimetry to understand the energy expenditures of women who had recently given birth. Studies like this help develop better recommendations and regimens for nutrition, exercise, and general wellbeing during this period of significant physiological change. In humans, metabolism is typically measured in Calories per day. A nutritional calorie (Calorie) is the energy unit used to quantify the amount of energy derived from the metabolism of foods; one Calorie is equal to 1000 calories (1 kcal), the amount of energy needed to heat 1 kg of water by 1 °C.",
+     "enSpans": [
+      [
+       383,
+       391
+      ],
+      [
+       415,
+       422
+      ],
+      [
+       424,
+       431
+      ],
+      [
+       532,
+       539
+      ],
+      [
+       557,
+       565
+      ]
+     ],
+     "is": "Til dæmis gerði teymi Cörlu Prado við Albertaháskóla heillíkamsvarmamælingar til að skilja orkunotkun kvenna sem höfðu nýlega fætt barn. Rannsóknir sem þessar hjálpa til við að þróa betri ráðleggingar og áætlanir um næringu, hreyfingu og almenna vellíðan á þessu tímabili verulegra lífeðlisfræðilegra breytinga. Í mönnum eru efnaskipti yfirleitt mæld í hitaeiningum á dag. Næringarhitaeining (Calorie) er orkueining sem notuð er til að magngreina orkuna sem fæst úr efnaskiptum matvæla; ein hitaeining (Calorie) jafngildir 1000 kalóríum (1 kcal), sem er það orkumagn sem þarf til að hita 1 kg af vatni um 1 °C."
+    }
+   ],
+   "segments": 27
+  }
+ ]
+}
