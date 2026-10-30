@@ -279,8 +279,18 @@ export function validateRulingSet(set) {
   if (!isNonEmptyString(set.about)) throw new Error('ruling-set: about is missing');
   checkFileRef(set.base, 'base');
   checkFileRef(set.exceptions, 'exceptions');
-  // Optional: a set compiled without an amendments file has no such key.
-  if ('amendments' in set) checkFileRef(set.amendments, 'amendments');
+  // Optional: a set compiled without an amendments file has no such key. One file is one ref;
+  // several (oldest first) are a list of two or more refs.
+  if ('amendments' in set) {
+    if (Array.isArray(set.amendments)) {
+      if (set.amendments.length < 2) {
+        throw new Error('ruling-set: amendments as a list must name two or more files');
+      }
+      set.amendments.forEach((ref, i) => checkFileRef(ref, `amendments[${i}]`));
+    } else {
+      checkFileRef(set.amendments, 'amendments');
+    }
+  }
   if (!isPlainObject(set.counts)) throw new Error('ruling-set: counts must be an object');
   if (!Array.isArray(set.rulings)) throw new Error('ruling-set: rulings must be an array');
   if (!Array.isArray(set.excluded)) throw new Error('ruling-set: excluded must be an array');
