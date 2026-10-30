@@ -9,7 +9,23 @@ import sys
 from html import escape
 
 OUT_DIR = sys.argv[1]
+LANG = sys.argv[2] if len(sys.argv) > 2 else 'en'
 WARN = []
+SEEN = []
+
+try:
+    from strings_is import IS
+except ImportError:
+    IS = {}
+
+
+def T(s):
+    """Translate a visible string. Code names and paths have no entry and pass through unchanged."""
+    if s not in SEEN:
+        SEEN.append(s)
+    if LANG == 'is':
+        return IS.get(s, s)
+    return s
 
 SANS_W = 0.57   # rough advance per px of font size
 MONO_W = 0.61
@@ -30,6 +46,7 @@ class D:
     # ---- primitives -------------------------------------------------
     def text(self, x, y, s, cls='s', anchor='start', rot=None):
         tr = f' transform="rotate({rot} {x} {y})"' if rot is not None else ''
+        s = T(s)
         self.add(f'<text x="{x}" y="{y}" class="{cls}" text-anchor="{anchor}"{tr}>{escape(s)}</text>')
 
     def box(self, x, y, w, h, kind, title, lines=(), num=None, tag=None, dashed=False):
@@ -41,13 +58,14 @@ class D:
             self.add(f'<circle cx="{x + 18}" cy="{y}" r="10" class="num"/>')
             self.add(f'<text x="{x + 18}" y="{y + 4}" class="numt" text-anchor="middle">{num}</text>')
             ty = y + 30
+        title = T(title)
         if tw(title, 13) > (x + w - tx - 8):
             WARN.append(f'{self.name}: title too wide: {title!r}')
         self.add(f'<text x="{tx}" y="{ty}" class="t">{escape(title)}</text>')
         ly = ty + 19
         for ln in lines:
             mono = ln.startswith('`')
-            s = ln[1:] if mono else ln
+            s = ln[1:] if mono else T(ln)
             cls = 'm' if mono else 's'
             size = 10.5 if mono else 11.5
             if tw(s, size, mono) > w - 20:
@@ -57,6 +75,7 @@ class D:
         if ly - 15 + 10 > y + h:
             WARN.append(f'{self.name}: box overflow: {title!r}')
         if tag:
+            tag = T(tag)
             tww = tw(tag, 9.5) + 14
             self.add(f'<rect x="{x + w - tww - 8}" y="{y + 8}" width="{tww}" height="17" rx="8.5" class="tag"/>')
             self.add(f'<text x="{x + w - tww / 2 - 8}" y="{y + 20}" class="tagt" text-anchor="middle">{escape(tag)}</text>')
@@ -65,9 +84,9 @@ class D:
     def arrow(self, pts, label=None, lx=None, ly=None, anchor='middle', dash=False, cls=''):
         p = ' '.join(f'{a},{b}' for a, b in pts)
         dc = ' dash' if dash else ''
-        self.add(f'<polyline points="{p}" class="ar{dc} {cls}" marker-end="url(#ah-{self.name})"/>')
+        self.add(f'<polyline points="{p}" class="ar{dc} {cls}" marker-end="url(#ah-{self.name}-{LANG})"/>')
         if label:
-            for i, ln in enumerate(label.split('\n')):
+            for i, ln in enumerate(T(label).split('\n')):
                 self.text(lx, ly + i * 14, ln, 'lbl', anchor)
 
     def line(self, pts, cls='ln'):
@@ -87,15 +106,15 @@ class D:
         for kind, name in items:
             self.add(f'<g class="k-{kind}"><rect x="{cx}" y="{y - 10}" width="14" height="14" rx="3" class="bx"/></g>')
             self.text(cx + 20, y + 1, name, 'lg')
-            cx += 20 + tw(name, 11) + 26
+            cx += 20 + tw(T(name), 11) + 26
 
     # ---- output -----------------------------------------------------
     def svg(self, standalone):
-        defs = (f'<defs><marker id="ah-{self.name}" viewBox="0 0 10 10" refX="9" refY="5" '
+        defs = (f'<defs><marker id="ah-{self.name}-{LANG}" viewBox="0 0 10 10" refX="9" refY="5" '
                 f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
                 f'<path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>')
         head = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {self.top} {self.w} {self.h - self.top}" '
-                f'class="wf" role="img" aria-label="{escape(self.label)}">')
+                f'class="wf" role="img" aria-label="{escape(T(self.label))}">')
         body = '\n'.join(self.parts)
         if standalone:
             bg = f'<rect y="{self.top}" width="{self.w}" height="{self.h - self.top}" class="bg"/>'
@@ -154,7 +173,7 @@ def now_overview():
         ('src', 'Split into segments', ['sentences, paragraphs,', 'each with a fixed id']),
         ('mt', 'Machine translation', ['Málstaður API', '(Miðeind)']),
         ('hum', 'Editors review', ['in Ritstjóri, the', 'web-based editor']),
-        ('hum', 'Head editor approves', ['saved as the faithful', 'translation']),
+        ('hum', 'Head editor signs off', ['saved as the faithful', 'translation']),
         ('out', 'Web pages built', ['Icelandic text put', 'back into the book’s', 'structure']),
     ]
     for i, (k, t, ls) in enumerate(specs):
@@ -301,7 +320,7 @@ def plan_overview():
     for i, (k, t, ls, tag) in enumerate(specs):
         d.box(X[i], Y, W, H, k, t, ls, num=i + 1)
         if tag:
-            d.add(f'<g class="k-{k}"><rect x="{X[i] + 12}" y="{Y + H - 26}" width="{tw(tag, 9.5) + 14:.0f}" height="17" rx="8.5" class="tag"/></g>')
+            d.add(f'<g class="k-{k}"><rect x="{X[i] + 12}" y="{Y + H - 26}" width="{tw(T(tag), 9.5) + 14:.0f}" height="17" rx="8.5" class="tag"/></g>')
             d.text(X[i] + 19, Y + H - 14, tag, 'tagt')
     for i in range(5):
         d.arrow([(X[i] + W, Y + 56), (X[i + 1] - 2, Y + 56)])
@@ -459,10 +478,14 @@ def plan_technical():
 os.makedirs(OUT_DIR, exist_ok=True)
 for fn in (now_overview, now_technical, plan_overview, plan_technical):
     dg = fn()
-    with open(os.path.join(OUT_DIR, dg.name + '.inline.svg'), 'w') as f:
+    suffix = '' if LANG == 'en' else '.' + LANG
+    with open(os.path.join(OUT_DIR, dg.name + suffix + '.inline.svg'), 'w') as f:
         f.write(dg.svg(False))
-    with open(os.path.join(OUT_DIR, dg.name + '.svg'), 'w') as f:
+    with open(os.path.join(OUT_DIR, dg.name + suffix + '.svg'), 'w') as f:
         f.write(dg.svg(True))
 for w in WARN:
     print('WARN', w)
+if '--strings' in sys.argv:
+    import json
+    print(json.dumps(SEEN, ensure_ascii=False, indent=0))
 print('done')

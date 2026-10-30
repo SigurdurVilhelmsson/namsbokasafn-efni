@@ -29,7 +29,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 .ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
 .ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
 </style>
-<defs><marker id="ah-now-technical" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<defs><marker id="ah-now-technical-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
 <rect y="0" width="1530" height="1000" class="bg"/>
 <rect x="10" y="38" width="1510" height="174" rx="8" class="band"/>
 <text x="24" y="66" class="hdr" text-anchor="start">MACHINE</text>
@@ -79,11 +79,11 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1532" y="116" class="s">render-oracle-check</text>
 <text x="1532" y="131" class="s">validate · fidelity check</text>
 </g>
-<polyline points="350,110 414,110" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="350,110 414,110" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="383.0" y="102" class="lbl" text-anchor="middle">extract</text>
-<polyline points="626,110 690,110" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="626,110 690,110" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="659.0" y="102" class="lbl" text-anchor="middle">translate</text>
-<polyline points="968,140 904,140" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="968,140 904,140" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="935.0" y="132" class="lbl" text-anchor="middle">terms</text>
 <text x="935.0" y="158" class="lbl" text-anchor="middle">1 arm</text>
 <text x="659.0" y="126" class="lbl" text-anchor="middle">Málstaður</text>
@@ -117,15 +117,15 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1532" y="356" class="s">logged in ledger.jsonl;</text>
 <text x="1532" y="371" class="s">not yet shown to editors</text>
 </g>
-<polyline points="350,350 414,350" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="350,350 414,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="383.0" y="342" class="lbl" text-anchor="middle">edit</text>
-<polyline points="626,350 690,350" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="626,350 690,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="659.0" y="342" class="lbl" text-anchor="middle">save</text>
-<polyline points="902,350 966,350" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="902,350 966,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="935.0" y="342" class="lbl" text-anchor="middle">submit</text>
-<polyline points="732,190 732,244 566,244 566,298" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="732,190 732,244 566,244 566,298" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="574" y="238" class="lbl" text-anchor="start">loadModuleForEditing</text>
-<polyline points="862,300 862,230 1028,230 1028,192" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="862,300 862,230 1028,230 1028,192" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1036" y="224" class="lbl" text-anchor="start">export-terminology</text>
 <g class="k-note"><rect x="416" y="540" width="210" height="130" rx="6" class="bx"/>
 <text x="428" y="562" class="t">Status</text>
@@ -158,18 +158,18 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1532" y="596" class="s">semantic HTML, MathJax</text>
 <text x="1532" y="611" class="s">pre-rendered to SVG</text>
 </g>
-<polyline points="1078,430 1078,538" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1078,430 1078,538" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1070" y="470" class="lbl" text-anchor="end">applyApprovedEdits()</text>
 <text x="1070" y="484" class="lbl" text-anchor="end">Vista í skrár / Vista + Birta</text>
-<polyline points="968,590 904,590" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="968,590 904,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="935.0" y="582" class="lbl" text-anchor="middle">regen</text>
-<polyline points="1178,590 1242,590" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1178,590 1242,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1211.0" y="582" class="lbl" text-anchor="middle">inject</text>
-<polyline points="1454,590 1518,590" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1454,590 1518,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1487.0" y="582" class="lbl" text-anchor="middle">render</text>
-<polyline points="1374,190 1374,538" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1374,190 1374,538" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1382" y="360" class="lbl" text-anchor="start">swap &lt;image src&gt;</text>
-<polyline points="872,60 872,48 1211.0,48 1211.0,520 1284,520 1284,538" class="ar prev" marker-end="url(#ah-now-technical)"/>
+<polyline points="872,60 872,48 1211.0,48 1211.0,520 1284,520 1284,538" class="ar prev" marker-end="url(#ah-now-technical-en)"/>
 <text x="1205.0" y="44" class="lbl" text-anchor="end">mt-preview: inject pure MT, skip review</text>
 <g class="k-src"><rect x="1520" y="780" width="210" height="130" rx="6" class="bx"/>
 <text x="1532" y="802" class="t">git-backup.sh</text>
@@ -194,13 +194,13 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="704" y="821" class="s">MT preview, or faithful</text>
 <text x="704" y="836" class="s">once a module is approved</text>
 </g>
-<polyline points="1625,670 1625,778" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1625,670 1625,778" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1633" y="710" class="lbl" text-anchor="start">on disk</text>
-<polyline points="1520,830 1456,830" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1520,830 1456,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1487.0" y="822" class="lbl" text-anchor="middle">push</text>
-<polyline points="1244,830 1180,830" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="1244,830 1180,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="1211.0" y="822" class="lbl" text-anchor="middle">by hand</text>
-<polyline points="968,830 904,830" class="ar " marker-end="url(#ah-now-technical)"/>
+<polyline points="968,830 904,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
 <text x="935.0" y="822" class="lbl" text-anchor="middle">deploy</text>
 <g class="k-src"><rect x="140" y="965" width="14" height="14" rx="3" class="bx"/></g>
 <text x="160" y="976" class="lg" text-anchor="start">Source / structure</text>

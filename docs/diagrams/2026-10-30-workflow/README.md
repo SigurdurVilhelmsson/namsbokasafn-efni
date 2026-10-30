@@ -4,7 +4,9 @@
 > active register's ⏩ RESUME block. If these pictures disagree with the register or with the code, the register and
 > the code win.
 
-Four diagrams of the textbook translation and editing workflow, for presentations and onboarding:
+Four diagrams of the textbook translation and editing workflow, for presentations and onboarding, each in English
+and Icelandic (`<name>.svg` and `<name>.is.svg`). Spoken notes for each diagram, in both languages, are in
+`talking-points.md`.
 
 | File | Shows |
 |---|---|
@@ -19,6 +21,9 @@ Four diagrams of the textbook translation and editing workflow, for presentation
 and the decision records of 2026-10-26 to 2026-10-28 (suggestions, not starting text). Decisions still open in those
 plans can change the planned diagrams.
 
-**Editing.** The SVGs are generated. Change `build_diagrams.py` and run `python3 build_diagrams.py <out-dir>`; it
-writes a standalone `<name>.svg` (light theme, for slides) and a classed `<name>.inline.svg` (for a themed web page)
-per diagram. Only the standalone files are committed.
+**Editing.** The SVGs are generated. Change `build_diagrams.py` and run `python3 build_diagrams.py <out-dir> en`,
+then again with `is`. Each run writes a standalone SVG (light theme, for slides) and a classed `.inline.svg` (for a
+themed web page) per diagram; only the standalone files are committed. The Icelandic text is in `strings_is.py`, keyed
+by the exact English string. A string with no entry is printed as it is, which is intended for file paths and tool
+names. So when you change an English label, change its key in `strings_is.py` too, or the Icelandic diagram falls
+back to English for that label.

@@ -29,7 +29,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 .ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
 .ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
 </style>
-<defs><marker id="ah-plan-overview" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<defs><marker id="ah-plan-overview-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
 <rect y="96" width="1280" height="784" class="bg"/>
 <g class="k-src"><rect x="30" y="220" width="180" height="122" rx="6" class="bx"/>
 <circle cx="48" cy="220" r="10" class="num"/>
@@ -83,16 +83,16 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1082" y="284" class="s">chapter, MT banner</text>
 <text x="1082" y="299" class="s">removed</text>
 </g>
-<polyline points="210,276 236,276" class="ar " marker-end="url(#ah-plan-overview)"/>
-<polyline points="418,276 444,276" class="ar " marker-end="url(#ah-plan-overview)"/>
-<polyline points="626,276 652,276" class="ar " marker-end="url(#ah-plan-overview)"/>
-<polyline points="834,276 860,276" class="ar " marker-end="url(#ah-plan-overview)"/>
-<polyline points="1042,276 1068,276" class="ar " marker-end="url(#ah-plan-overview)"/>
+<polyline points="210,276 236,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="418,276 444,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="626,276 652,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="834,276 860,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="1042,276 1068,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
 <rect x="636.0" y="190" width="8" height="172" class="gate"/>
 <text x="640" y="180" class="gatet" text-anchor="middle">EDITING GATE</text>
 <rect x="844.0" y="190" width="8" height="172" class="gate"/>
 <text x="848" y="180" class="gatet" text-anchor="middle">APPLY GATE</text>
-<polyline points="328.0,220 328.0,140 1160.0,140 1160.0,218" class="ar " marker-end="url(#ah-plan-overview)"/>
+<polyline points="328.0,220 328.0,140 1160.0,140 1160.0,218" class="ar " marker-end="url(#ah-plan-overview-en)"/>
 <text x="744.0" y="128" class="lbl" text-anchor="middle">The MT preview stays online until a chapter’s review is published.</text>
 <g class="k-term"><rect x="446" y="450" width="180" height="104" rx="6" class="bx"/>
 <text x="458" y="472" class="t">Term tools</text>
@@ -101,7 +101,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="458" y="521" class="s">decision into every</text>
 <text x="458" y="536" class="s">inflected form</text>
 </g>
-<polyline points="536.0,450 536.0,410 694,410 694,344" class="ar " marker-end="url(#ah-plan-overview)"/>
+<polyline points="536.0,450 536.0,410 694,410 694,344" class="ar " marker-end="url(#ah-plan-overview-en)"/>
 <text x="544.0" y="402" class="lbl" text-anchor="start">B2 · B3</text>
 <g class="k-meas"><rect x="654" y="450" width="180" height="104" rx="6" class="bx"/>
 <text x="666" y="472" class="t">Measurement</text>
@@ -109,7 +109,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="666" y="506" class="s">edit distance; reported</text>
 <text x="666" y="521" class="s">only in aggregate</text>
 </g>
-<polyline points="774.0,342 774.0,448" class="ar dash " marker-end="url(#ah-plan-overview)"/>
+<polyline points="774.0,342 774.0,448" class="ar dash " marker-end="url(#ah-plan-overview-en)"/>
 <text x="782.0" y="430" class="lbl" text-anchor="start">B1 records</text>
 <g class="k-out"><rect x="862" y="450" width="180" height="104" rx="6" class="bx"/>
 <text x="874" y="472" class="t">Open releases</text>
@@ -117,7 +117,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="874" y="506" class="s">chemistry term</text>
 <text x="874" y="521" class="s">collection · CC BY 4.0</text>
 </g>
-<polyline points="952.0,342 952.0,448" class="ar " marker-end="url(#ah-plan-overview)"/>
+<polyline points="952.0,342 952.0,448" class="ar " marker-end="url(#ah-plan-overview-en)"/>
 <rect x="930.0" y="388" width="44" height="8" class="gate"/>
 <text x="980.0" y="396" class="gatet" text-anchor="start">RELEASE GATE</text>
 <g class="k-out"><rect x="1070" y="450" width="180" height="104" rx="6" class="bx"/>
@@ -126,7 +126,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1082" y="506" class="s">reviewed chapters,</text>
 <text x="1082" y="521" class="s">self-hosted</text>
 </g>
-<polyline points="1160.0,342 1160.0,448" class="ar " marker-end="url(#ah-plan-overview)"/>
+<polyline points="1160.0,342 1160.0,448" class="ar " marker-end="url(#ah-plan-overview-en)"/>
 <text x="1168.0" y="430" class="lbl" text-anchor="start">C</text>
 <g class="k-note"><rect x="30" y="450" width="388" height="104" rx="6" class="bx"/>
 <text x="42" y="472" class="t">Research comparison</text>

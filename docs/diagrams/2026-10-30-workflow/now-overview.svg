@@ -29,7 +29,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 .ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
 .ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
 </style>
-<defs><marker id="ah-now-overview" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<defs><marker id="ah-now-overview-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
 <rect y="80" width="1280" height="520" class="bg"/>
 <g class="k-src"><rect x="30" y="210" width="180" height="112" rx="6" class="bx"/>
 <circle cx="48" cy="210" r="10" class="num"/>
@@ -62,7 +62,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <g class="k-hum"><rect x="862" y="210" width="180" height="112" rx="6" class="bx"/>
 <circle cx="880" cy="210" r="10" class="num"/>
 <text x="880" y="214" class="numt" text-anchor="middle">5</text>
-<text x="874" y="240" class="t">Head editor approves</text>
+<text x="874" y="240" class="t">Head editor signs off</text>
 <text x="874" y="259" class="s">saved as the faithful</text>
 <text x="874" y="274" class="s">translation</text>
 </g>
@@ -74,12 +74,12 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1082" y="274" class="s">back into the book’s</text>
 <text x="1082" y="289" class="s">structure</text>
 </g>
-<polyline points="210,266 236,266" class="ar " marker-end="url(#ah-now-overview)"/>
-<polyline points="418,266 444,266" class="ar " marker-end="url(#ah-now-overview)"/>
-<polyline points="626,266 652,266" class="ar " marker-end="url(#ah-now-overview)"/>
-<polyline points="834,266 860,266" class="ar " marker-end="url(#ah-now-overview)"/>
-<polyline points="1042,266 1068,266" class="ar " marker-end="url(#ah-now-overview)"/>
-<polyline points="536.0,210 536.0,140 1160.0,140 1160.0,208" class="ar " marker-end="url(#ah-now-overview)"/>
+<polyline points="210,266 236,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="418,266 444,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="626,266 652,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="834,266 860,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="1042,266 1068,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="536.0,210 536.0,140 1160.0,140 1160.0,208" class="ar " marker-end="url(#ah-now-overview-en)"/>
 <text x="848.0" y="112" class="lbl" text-anchor="middle">MT preview goes online straight away, marked “Vélþýðing – ekki yfirfarin”.</text>
 <text x="848.0" y="126" class="lbl" text-anchor="middle">Each module switches to the reviewed text once its review is approved.</text>
 <g class="k-term"><rect x="446" y="430" width="388" height="96" rx="6" class="bx"/>
@@ -87,9 +87,9 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="458" y="471" class="s">approved Icelandic terms, sent with the</text>
 <text x="458" y="486" class="s">MT request and checked in the editor</text>
 </g>
-<polyline points="536.0,430 536.0,324" class="ar " marker-end="url(#ah-now-overview)"/>
+<polyline points="536.0,430 536.0,324" class="ar " marker-end="url(#ah-now-overview-en)"/>
 <text x="544.0" y="380" class="lbl" text-anchor="start">terms</text>
-<polyline points="744.0,430 744.0,324" class="ar " marker-end="url(#ah-now-overview)"/>
+<polyline points="744.0,430 744.0,324" class="ar " marker-end="url(#ah-now-overview-en)"/>
 <text x="752.0" y="380" class="lbl" text-anchor="start">term check</text>
 <g class="k-out"><rect x="862" y="430" width="180" height="96" rx="6" class="bx"/>
 <text x="874" y="452" class="t">Translation memory</text>
@@ -97,7 +97,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="874" y="486" class="s">(TMX), rebuilt after</text>
 <text x="874" y="501" class="s">each approval</text>
 </g>
-<polyline points="952.0,322 952.0,428" class="ar " marker-end="url(#ah-now-overview)"/>
+<polyline points="952.0,322 952.0,428" class="ar " marker-end="url(#ah-now-overview-en)"/>
 <text x="960.0" y="380" class="lbl" text-anchor="start">rebuilt</text>
 <g class="k-out"><rect x="1070" y="430" width="180" height="96" rx="6" class="bx"/>
 <text x="1082" y="452" class="t">namsbokasafn.is</text>
@@ -105,7 +105,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1082" y="486" class="s">updated by a manual</text>
 <text x="1082" y="501" class="s">sync and deploy</text>
 </g>
-<polyline points="1160.0,322 1160.0,428" class="ar " marker-end="url(#ah-now-overview)"/>
+<polyline points="1160.0,322 1160.0,428" class="ar " marker-end="url(#ah-now-overview-en)"/>
 <text x="1168.0" y="380" class="lbl" text-anchor="start">manual sync</text>
 <g class="k-note"><rect x="30" y="430" width="388" height="96" rx="6" class="bx"/>
 <text x="42" y="452" class="t">Who does what</text>

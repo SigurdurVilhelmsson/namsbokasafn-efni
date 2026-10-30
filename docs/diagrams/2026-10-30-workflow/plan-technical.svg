@@ -29,7 +29,7 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 .ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
 .ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
 </style>
-<defs><marker id="ah-plan-technical" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<defs><marker id="ah-plan-technical-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
 <rect y="0" width="1430" height="1110" class="bg"/>
 <text x="140.0" y="36" class="hdr" text-anchor="middle">SOURCE AND MT</text>
 <text x="390.0" y="36" class="hdr" text-anchor="middle">MACHINE LAYERS · PREP</text>
@@ -77,13 +77,13 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="42" y="976" class="s">marker census, sentinel</text>
 <text x="42" y="991" class="s">before any preview ships</text>
 </g>
-<polyline points="90,190 90,238" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="90,190 90,238" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="98" y="220" class="lbl" text-anchor="start">cnxml-extract</text>
-<polyline points="90,360 90,408" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="90,360 90,408" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="98" y="390" class="lbl" text-anchor="start">api-translate</text>
-<polyline points="90,530 90,578" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="90,530 90,578" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="98" y="560" class="lbl" text-anchor="start">select / re-request</text>
-<polyline points="90,700 90,748" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="90,700 90,748" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="98" y="730" class="lbl" text-anchor="start">inject + render</text>
 <g class="k-term"><rect x="290" y="70" width="200" height="120" rx="6" class="bx"/>
 <text x="302" y="92" class="t">Ruling set</text>
@@ -115,15 +115,15 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="302" y="806" class="s">every layer, before the</text>
 <text x="302" y="821" class="s">first unit opens</text>
 </g>
-<polyline points="390,190 390,238" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="390,190 390,238" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="398" y="220" class="lbl" text-anchor="start">rulings</text>
-<polyline points="290,160 272,160 272,440 288,440" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="250,610 282,610 282,500 288,500" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="290,160 272,160 272,440 288,440" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="250,610 282,610 282,500 288,500" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="253" y="628" class="lbl" text-anchor="start">reads</text>
-<polyline points="390,530 390,578" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="390,530 390,578" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="398" y="560" class="lbl" text-anchor="start">accepted ops</text>
-<polyline points="490,300 512,300 512,610 492,610" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="390,700 390,748" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="490,300 512,300 512,610 492,610" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="390,700 390,748" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="398" y="730" class="lbl" text-anchor="start">recorded in</text>
 <g class="k-hum"><rect x="570" y="70" width="230" height="120" rx="6" class="bx"/>
 <text x="582" y="92" class="t">Editors sign in</text>
@@ -161,16 +161,16 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="582" y="976" class="s">≥ 4 lemma-based change types</text>
 <text x="582" y="991" class="s">decision → BÍN forms, book-wide</text>
 </g>
-<polyline points="685,580 685,532" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="685,580 685,532" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="693" y="560" class="lbl" text-anchor="start">saves</text>
-<polyline points="685,410 685,362" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="685,410 685,362" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="693" y="390" class="lbl" text-anchor="start">submits</text>
-<polyline points="685,700 685,748" class="ar dash " marker-end="url(#ah-plan-technical)"/>
+<polyline points="685,700 685,748" class="ar dash " marker-end="url(#ah-plan-technical-en)"/>
 <text x="693" y="730" class="lbl" text-anchor="start">ticks</text>
-<polyline points="490,660 568,660" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="210,700 210,718 600,718 600,702" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="490,660 568,660" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="210,700 210,718 600,718 600,702" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="300" y="714" class="lbl" text-anchor="start">base text</text>
-<polyline points="800,980 824,980 824,640 802,640" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="800,980 824,980 824,640 802,640" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="816" y="810.0" class="lbl" text-anchor="middle" transform="rotate(-90 816 810.0)">propagate decisions</text>
 <g class="k-hum"><rect x="900" y="240" width="210" height="120" rx="6" class="bx"/>
 <text x="912" y="262" class="t">03-faithful-translation/</text>
@@ -202,13 +202,13 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="912" y="976" class="s">formula pronunciation layer</text>
 <text x="912" y="991" class="s">self-hosted audio files</text>
 </g>
-<polyline points="800,300 898,300" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="800,300 898,300" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="806" y="292" class="lbl" text-anchor="start">apply</text>
-<polyline points="1005,360 1005,408" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="1005,530 1005,578" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="1005,700 1005,748" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="1005,360 1005,408" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="1005,530 1005,578" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="1005,700 1005,748" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="1013" y="730" class="lbl" text-anchor="start">deploy</text>
-<polyline points="1005,870 1005,918" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="1005,870 1005,918" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <text x="1013" y="900" class="lbl" text-anchor="start">reviewed chapters</text>
 <g class="k-out"><rect x="1180" y="240" width="220" height="120" rx="6" class="bx"/>
 <text x="1192" y="262" class="t">TMX</text>
@@ -240,8 +240,8 @@ text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#182
 <text x="1192" y="976" class="s">pure MT · AI-revised · human</text>
 <text x="1192" y="991" class="s">with B1 time and distance</text>
 </g>
-<polyline points="1110,300 1178,300" class="ar " marker-end="url(#ah-plan-technical)"/>
-<polyline points="1110,335 1128,335 1128,470 1178,470" class="ar " marker-end="url(#ah-plan-technical)"/>
+<polyline points="1110,300 1178,300" class="ar " marker-end="url(#ah-plan-technical-en)"/>
+<polyline points="1110,335 1128,335 1128,470 1178,470" class="ar " marker-end="url(#ah-plan-technical-en)"/>
 <g class="k-src"><rect x="30" y="1078" width="14" height="14" rx="3" class="bx"/></g>
 <text x="50" y="1089" class="lg" text-anchor="start">Source</text>
 <g class="k-mt"><rect x="113.62" y="1078" width="14" height="14" rx="3" class="bx"/></g>

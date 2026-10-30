@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 1280 784" class="wf" role="img" aria-label="Fyrirhugað vinnuferli: hrein vélþýðing er geymd, vélrænar íðorðatillögur eru undirbúnar, ritstjórar yfirfara eftir ritstjórnarhlið með mælingar í gangi, samþykktir bútar fara um vistunarhlið í yfirfarna bók, og opnar útgáfur fara um útgáfuhlið; hljóð er búið til úr yfirförnum köflum.">
+<style>
+.bg{fill:#f7f9fb}
+text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#18222e}
+.t{font-size:13px;font-weight:650}.s{font-size:11.5px;fill:#465364}
+.m{font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10.5px;fill:#465364}
+.lbl{font-size:11px;fill:#465364;paint-order:stroke;stroke:#f7f9fb;stroke-width:4px;stroke-linejoin:round}
+.hdr{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#465364}
+.lg{font-size:11px;fill:#465364}.ax{font-size:10.5px;fill:#465364}
+.gatet{font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:#b53d22}
+.gater{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#b53d22}
+.numt{font-size:11px;font-weight:700;fill:#ffffff}
+.tagt{font-size:9.5px;font-weight:700;letter-spacing:.04em;fill:#ffffff}
+.bx{stroke-width:1.4}.bx.dash{stroke-dasharray:5 4}
+.ar{fill:none;stroke:#5d6b7c;stroke-width:1.5}.ar.dash{stroke-dasharray:5 4}
+.ahp{fill:#5d6b7c}.ln{fill:none;stroke:#9aa6b4;stroke-width:1;stroke-dasharray:3 3}
+.gate{fill:#f6d9cf;stroke:#c4452a;stroke-width:1.2}
+.band{fill:#eef2f6}.bar{rx:3}
+.k-src .bx{fill:#eceff3;stroke:#8592a2}.k-src .num,.k-src .tag{fill:#6b7787}
+.k-mt .bx{fill:#e1ebfa;stroke:#3a6cb4}.k-mt .num,.k-mt .tag,.k-mt .bar{fill:#3a6cb4}
+.k-ai .bx{fill:#ede5fa;stroke:#7549c0}.k-ai .num,.k-ai .tag,.k-ai .bar{fill:#7549c0}
+.k-hum .bx{fill:#dff2e7;stroke:#2c8656}.k-hum .num,.k-hum .tag,.k-hum .bar{fill:#2c8656}
+.k-out .bx{fill:#fbedd5;stroke:#b0731b}.k-out .num,.k-out .tag,.k-out .bar{fill:#b0731b}
+.k-term .bx{fill:#fae3e9;stroke:#b3426a}.k-term .num,.k-term .tag,.k-term .bar{fill:#b3426a}
+.k-meas .bx{fill:#ddf0f3;stroke:#24828f;stroke-dasharray:5 3}.k-meas .tag,.k-meas .bar{fill:#24828f}
+.k-note .bx{fill:none;stroke:#9aa6b4;stroke-dasharray:4 4}
+.k-warn .bx{fill:none;stroke:#c4452a;stroke-dasharray:4 4}
+.warnt{font-size:10.5px;fill:#b53d22}
+.ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
+.ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
+</style>
+<defs><marker id="ah-plan-overview-is" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<rect y="96" width="1280" height="784" class="bg"/>
+<g class="k-src"><rect x="30" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="48" cy="220" r="10" class="num"/>
+<text x="48" y="224" class="numt" text-anchor="middle">1</text>
+<text x="42" y="250" class="t">Kennslubók OpenStax</text>
+<text x="42" y="269" class="s">enskur frumtexti,</text>
+<text x="42" y="284" class="s">dreginn út á ný</text>
+</g>
+<g class="k-mt"><rect x="238" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="256" cy="220" r="10" class="num"/>
+<text x="256" y="224" class="numt" text-anchor="middle">2</text>
+<text x="250" y="250" class="t">Vélþýðing</text>
+<text x="250" y="269" class="s">geymd nákvæmlega</text>
+<text x="250" y="284" class="s">eins og hún barst</text>
+</g>
+<g class="k-mt"><rect x="250" y="316" width="41" height="17" rx="8.5" class="tag"/></g>
+<text x="257" y="328" class="tagt" text-anchor="start">LAG 1</text>
+<g class="k-ai"><rect x="446" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="464" cy="220" r="10" class="num"/>
+<text x="464" y="224" class="numt" text-anchor="middle">3</text>
+<text x="458" y="250" class="t">Tillögur</text>
+<text x="458" y="269" class="s">íðorðareglur verksins</text>
+<text x="458" y="284" class="s">og þröng yfirferð</text>
+<text x="458" y="299" class="s">gervigreindar á íðorðum</text>
+</g>
+<g class="k-ai"><rect x="458" y="316" width="41" height="17" rx="8.5" class="tag"/></g>
+<text x="465" y="328" class="tagt" text-anchor="start">LAG 2</text>
+<g class="k-hum"><rect x="654" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="672" cy="220" r="10" class="num"/>
+<text x="672" y="224" class="numt" text-anchor="middle">4</text>
+<text x="666" y="250" class="t">Ritstjórar yfirfara</text>
+<text x="666" y="269" class="s">samþykkja eða hafna</text>
+<text x="666" y="284" class="s">hverri tillögu, laga</text>
+<text x="666" y="299" class="s">annað í höndunum</text>
+</g>
+<g class="k-hum"><rect x="862" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="880" cy="220" r="10" class="num"/>
+<text x="880" y="224" class="numt" text-anchor="middle">5</text>
+<text x="874" y="250" class="t">Samþykktur texti</text>
+<text x="874" y="269" class="s">aðeins það sem ritstjóri</text>
+<text x="874" y="284" class="s">breytti eða samþykkti</text>
+<text x="874" y="299" class="s">telst mannlegt</text>
+</g>
+<g class="k-hum"><rect x="874" y="316" width="41" height="17" rx="8.5" class="tag"/></g>
+<text x="881" y="328" class="tagt" text-anchor="start">LAG 3</text>
+<g class="k-out"><rect x="1070" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="1088" cy="220" r="10" class="num"/>
+<text x="1088" y="224" class="numt" text-anchor="middle">6</text>
+<text x="1082" y="250" class="t">Yfirfarin bók</text>
+<text x="1082" y="269" class="s">á vefnum kafla</text>
+<text x="1082" y="284" class="s">fyrir kafla, borði</text>
+<text x="1082" y="299" class="s">vélþýðingar fjarlægður</text>
+</g>
+<polyline points="210,276 236,276" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<polyline points="418,276 444,276" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<polyline points="626,276 652,276" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<polyline points="834,276 860,276" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<polyline points="1042,276 1068,276" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<rect x="636.0" y="190" width="8" height="172" class="gate"/>
+<text x="640" y="180" class="gatet" text-anchor="middle">RITSTJÓRNARHLIÐ</text>
+<rect x="844.0" y="190" width="8" height="172" class="gate"/>
+<text x="848" y="180" class="gatet" text-anchor="middle">VISTUNARHLIÐ</text>
+<polyline points="328.0,220 328.0,140 1160.0,140 1160.0,218" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<text x="744.0" y="128" class="lbl" text-anchor="middle">Vélþýðingin er áfram á vefnum þar til yfirfarinn kafli er birtur.</text>
+<g class="k-term"><rect x="446" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="458" y="472" class="t">Íðorðatól</text>
+<text x="458" y="491" class="s">finna íðorð eftir</text>
+<text x="458" y="506" class="s">nefnimynd og orðflokki;</text>
+<text x="458" y="521" class="s">koma ákvörðun í allar</text>
+<text x="458" y="536" class="s">beygingarmyndir</text>
+</g>
+<polyline points="536.0,450 536.0,410 694,410 694,344" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<text x="544.0" y="402" class="lbl" text-anchor="start">B2 · B3</text>
+<g class="k-meas"><rect x="654" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="666" y="472" class="t">Mælingar</text>
+<text x="666" y="491" class="s">virkur vinnutími og</text>
+<text x="666" y="506" class="s">breytingafjarlægð;</text>
+<text x="666" y="521" class="s">aðeins birt samanlagt</text>
+</g>
+<polyline points="774.0,342 774.0,448" class="ar dash " marker-end="url(#ah-plan-overview-is)"/>
+<text x="782.0" y="430" class="lbl" text-anchor="start">B1 skráir</text>
+<g class="k-out"><rect x="862" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="874" y="472" class="t">Opnar útgáfur</text>
+<text x="874" y="491" class="s">TMX, samhliða málheild,</text>
+<text x="874" y="506" class="s">íðorðasafn</text>
+<text x="874" y="521" class="s">efnafræði · CC BY 4.0</text>
+</g>
+<polyline points="952.0,342 952.0,448" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<rect x="930.0" y="388" width="44" height="8" class="gate"/>
+<text x="980.0" y="396" class="gatet" text-anchor="start">ÚTGÁFUHLIÐ</text>
+<g class="k-out"><rect x="1070" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="1082" y="472" class="t">Hljóð</text>
+<text x="1082" y="491" class="s">talgerving</text>
+<text x="1082" y="506" class="s">yfirfarinna kafla,</text>
+<text x="1082" y="521" class="s">á eigin vélbúnaði</text>
+</g>
+<polyline points="1160.0,342 1160.0,448" class="ar " marker-end="url(#ah-plan-overview-is)"/>
+<text x="1168.0" y="430" class="lbl" text-anchor="start">C</text>
+<g class="k-note"><rect x="30" y="450" width="388" height="104" rx="6" class="bx"/>
+<text x="42" y="472" class="t">Rannsóknarsamanburður</text>
+<text x="42" y="491" class="s">Lög 1, 2 og 3 eru geymd aðskilin svo að grein</text>
+<text x="42" y="506" class="s">geti borið saman hreina vélþýðingu, vélþýðingu</text>
+<text x="42" y="521" class="s">með gervigreindarbreytingum og ritstýrðan texta.</text>
+</g>
+<g class="k-src"><rect x="30" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="50" y="611" class="lg" text-anchor="start">Frumtexti</text>
+<g class="k-mt"><rect x="132.43" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="152.43" y="611" class="lg" text-anchor="start">Vélþýðing</text>
+<g class="k-ai"><rect x="234.86" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="254.86" y="611" class="lg" text-anchor="start">Vélrænar tillögur</text>
+<g class="k-hum"><rect x="387.45" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="407.45" y="611" class="lg" text-anchor="start">Ritstjórn</text>
+<g class="k-meas"><rect x="489.88" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="509.88" y="611" class="lg" text-anchor="start">Mælingar</text>
+<g class="k-term"><rect x="586.04" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="606.04" y="611" class="lg" text-anchor="start">Íðorð</text>
+<g class="k-out"><rect x="663.39" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="683.39" y="611" class="lg" text-anchor="start">Afurðir</text>
+<text x="30" y="652" class="hdr" text-anchor="start">VERKEFNISÁRIÐ</text>
+<text x="160" y="652" class="s" text-anchor="start">S = 1. nóvember 2026 · lokaskýrsla skal berast 1. desember 2027</text>
+<text x="242.0" y="674" class="ax" text-anchor="middle">nóv</text>
+<polyline points="200,680 200,820" class="ln"/>
+<text x="326.0" y="674" class="ax" text-anchor="middle">des</text>
+<polyline points="284,680 284,820" class="ln"/>
+<text x="410.0" y="674" class="ax" text-anchor="middle">jan</text>
+<polyline points="368,680 368,820" class="ln"/>
+<text x="494.0" y="674" class="ax" text-anchor="middle">feb</text>
+<polyline points="452,680 452,820" class="ln"/>
+<text x="578.0" y="674" class="ax" text-anchor="middle">mar</text>
+<polyline points="536,680 536,820" class="ln"/>
+<text x="662.0" y="674" class="ax" text-anchor="middle">apr</text>
+<polyline points="620,680 620,820" class="ln"/>
+<text x="746.0" y="674" class="ax" text-anchor="middle">maí</text>
+<polyline points="704,680 704,820" class="ln"/>
+<text x="830.0" y="674" class="ax" text-anchor="middle">jún</text>
+<polyline points="788,680 788,820" class="ln"/>
+<text x="914.0" y="674" class="ax" text-anchor="middle">júl</text>
+<polyline points="872,680 872,820" class="ln"/>
+<text x="998.0" y="674" class="ax" text-anchor="middle">ágú</text>
+<polyline points="956,680 956,820" class="ln"/>
+<text x="1082.0" y="674" class="ax" text-anchor="middle">sep</text>
+<polyline points="1040,680 1040,820" class="ln"/>
+<text x="1166.0" y="674" class="ax" text-anchor="middle">okt</text>
+<polyline points="1124,680 1124,820" class="ln"/>
+<polyline points="1208,680 1208,820" class="ln"/>
+<text x="190" y="702" class="ax" text-anchor="end">Mælingar (B1)</text>
+<g class="k-meas"><rect x="202" y="692" width="248" height="14" rx="3" class="bar"/></g>
+<text x="190" y="726" class="ax" text-anchor="end">Íðorðagreining (B2)</text>
+<g class="k-term"><rect x="202" y="716" width="332" height="14" rx="3" class="bar"/></g>
+<text x="190" y="750" class="ax" text-anchor="end">Ritstjórn (A)</text>
+<g class="k-hum"><rect x="286" y="740" width="752" height="14" rx="3" class="bar"/></g>
+<text x="190" y="774" class="ax" text-anchor="end">Íðorðadreifing (B3)</text>
+<g class="k-term"><rect x="538" y="764" width="416" height="14" rx="3" class="bar"/></g>
+<text x="190" y="798" class="ax" text-anchor="end">Hljóð (C)</text>
+<g class="k-out"><rect x="706" y="788" width="500" height="14" rx="3" class="bar"/></g>
+<text x="190" y="822" class="ax" text-anchor="end">Opnar útgáfur (D)</text>
+<g class="k-out"><path d="M1200,811 l8,8 l-8,8 l-8,-8 z" class="bar"/></g>
+<text x="1186" y="823" class="ax" text-anchor="end">fyrir lok 12. mánaðar</text>
+<polyline points="279.8,682 279.8,830" class="ms"/>
+<text x="283.8" y="842" class="ax" text-anchor="start">ritstjórnarhlið ≈ 29. nóv–6. des</text>
+<polyline points="452,682 452,830" class="ms"/>
+<text x="456" y="858" class="ax" text-anchor="start">vistunarhlið + generalprufa fyrir 3. mánuð</text>
+<text x="1214" y="674" class="ax" text-anchor="start">→ skýrsla</text>
+</svg>
