@@ -560,7 +560,7 @@ function wordsBetween(text, a, b) {
 // The categories, and the two that are term operations. Every site that branches on a
 // category goes through these, so a new one cannot fall silently into the agreement branch.
 const CATEGORIES = Object.freeze(['term', 'term-sense', 'agreement']);
-const isTermOp = (category) => category === 'term' || category === 'term-sense';
+export const isTermOp = (category) => category === 'term' || category === 'term-sense';
 
 // `sense` must be present: null means "no sense restriction"; absent or malformed is invalid
 // (Unit B's loader refuses both, and the gate does not trust that it ran).
