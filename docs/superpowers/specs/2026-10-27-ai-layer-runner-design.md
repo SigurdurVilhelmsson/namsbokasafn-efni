@@ -5,6 +5,24 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-10-30: the leftover-form check (pilot item i02).** It adds to the 2026-10-29 block, which
+> left the check out.
+>
+> - **What it asks** (`tools/ai-review/leftover-forms.js`): after a ruling's term operations (`term`,
+>   `term-sense`) are accepted in an occurrence, does an old form of that ruling still stand in the gate's
+>   after-text? Old forms are the `stemOf` stems of the ruling's `competitors` and of each accepted term op's
+>   `find` (its longest word). A word carrying the stem of the target's longest word is not a leftover. The
+>   text is `visibleProse`, so marker ids and URLs are not read.
+> - **Flag only** ([USER] 2026-10-29): `apply` runs it after the gate, per occurrence, and it changes no edit,
+>   gate line or model flag; `--write` proceeds with leftovers present. Its rows go to `applied/leftovers.jsonl`,
+>   apart from `flags.jsonl`, which holds only what the model said; `counts.leftovers` counts them, and the
+>   report shows each under its segment as `⚐ leftover`, with the matched words. The summary schema is
+>   `ai-review-apply/2`, so a /1 summary reads as "never checked", not "none found".
+> - **Scope, by the register's predicate:** only rulings with an accepted term op in that occurrence. An old
+>   form of a ruling the model left untouched there is not looked for.
+> - **It cannot reject**, because a stem match also finds ordinary words sharing the stem (a verb beside a noun
+>   ruling, an everyday word). The measured rate and the false-positive classes are in the register.
+
 > **✏️ AMENDED 2026-10-29: term-pass v2, a per-segment operation budget.** It overrides the blocks below where
 > they disagree.
 >
