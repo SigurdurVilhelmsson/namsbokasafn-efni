@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import {
   USE,
   USER_FORMAT,
+  USER_FORMATS,
   PROMPT_PATH,
   DEFAULT_SEGMENTS_PER_REQUEST,
   DEFAULT_CHAR_BUDGET,
@@ -23,6 +24,7 @@ import {
 } from '../ai-review/term-pass-request.js';
 import { validateRequestBody } from '../ai-review/harness.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
+import { segmentOpBudget } from '../ai-review/gate.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const RULINGS = loadRulingSet(
@@ -47,8 +49,9 @@ afterAll(() => {
 describe('constants', () => {
   it('names the use, the user format and the defaults', () => {
     expect(USE).toBe('term-pass');
-    expect(USER_FORMAT).toBe('term-pass-user/1');
-    expect(PROMPT_PATH).toBe('tools/ai-review/prompts/term-pass-v1.md');
+    expect(USER_FORMAT).toBe('term-pass-user/2');
+    expect(USER_FORMATS).toEqual(['term-pass-user/1', 'term-pass-user/2']);
+    expect(PROMPT_PATH).toBe('tools/ai-review/prompts/term-pass-v2.md');
     expect(DEFAULT_SEGMENTS_PER_REQUEST).toBe(8);
     expect(DEFAULT_CHAR_BUDGET).toBe(16000);
   });
@@ -114,7 +117,9 @@ describe('the user document', () => {
     chapterDir: 'ch02',
     stem: 'm68693',
     rulings: [rulingForRequest(RULINGS.byId.get('atom'))],
-    segments: [{ id: 'm68693:para:a', rulings: ['atom'], en: 'An "atom".', is: 'Frumeind.' }],
+    segments: [
+      { id: 'm68693:para:a', rulings: ['atom'], maxOps: 6, en: 'An "atom".', is: 'Frumeind.' },
+    ],
   };
 
   it('is one JSON document that parses back to what was rendered', () => {
@@ -141,6 +146,40 @@ describe('the user document', () => {
     expect(() => parseUserMessage('not json')).toThrow();
     const text = renderUserMessage(doc).replace('"segments":[', '"segmentz":[');
     expect(() => parseUserMessage(text)).toThrow();
+  });
+
+  // term-pass v2: each segment carries its operation budget (gate.js segmentOpBudget).
+  it('refuses a v2 segment without a positive whole maxOps', () => {
+    const v2 = renderUserMessage(doc);
+    expect(() => parseUserMessage(v2.replace('"maxOps":6,', ''))).toThrow(/maxOps/);
+    expect(() => parseUserMessage(v2.replace('"maxOps":6', '"maxOps":0'))).toThrow(/maxOps/);
+    expect(() => parseUserMessage(v2.replace('"maxOps":6', '"maxOps":6.5'))).toThrow(/maxOps/);
+    expect(() => parseUserMessage(v2.replace('"maxOps":6', '"maxOps":"6"'))).toThrow(/maxOps/);
+  });
+
+  it('still reads a v1 document (recorded runs), which has no maxOps', () => {
+    const v1 = renderUserMessage(doc)
+      .replace('term-pass-user/2', 'term-pass-user/1')
+      .replace('"maxOps":6,', '');
+    const parsed = parseUserMessage(v1);
+    expect(parsed.format).toBe('term-pass-user/1');
+    expect(parsed.segments[0]).toEqual({
+      id: 'm68693:para:a',
+      rulings: ['atom'],
+      en: 'An "atom".',
+      is: 'Frumeind.',
+    });
+    expect(() =>
+      parseUserMessage(v1.replace('"rulings":["atom"],', '"rulings":["atom"],"maxOps":6,'))
+    ).toThrow();
+  });
+
+  it('refuses to render a segment without maxOps (the renderer writes v2 only)', () => {
+    const bare = {
+      ...doc,
+      segments: [{ id: 'm68693:para:a', rulings: ['atom'], en: 'x', is: 'y' }],
+    };
+    expect(() => renderUserMessage(bare)).toThrow(/maxOps/);
   });
 });
 
@@ -240,11 +279,36 @@ describe('buildRequests', () => {
     const doc = parseUserMessage(build()[0].body.messages[0].content);
     expect(doc.rulings.map((r) => r.id)).toEqual(['atom', 'cell']);
     expect(doc.segments).toEqual([
-      { id: 'm68693:para:a', rulings: ['atom'], en: 'The atoms.', is: 'Frumeindirnar.' },
-      { id: 'm68693:para:b', rulings: ['cell'], en: 'A cell.', is: 'Klefi.' },
+      {
+        id: 'm68693:para:a',
+        rulings: ['atom'],
+        maxOps: 6,
+        en: 'The atoms.',
+        is: 'Frumeindirnar.',
+      },
+      { id: 'm68693:para:b', rulings: ['cell'], maxOps: 6, en: 'A cell.', is: 'Klefi.' },
     ]);
     expect(doc.chapter).toBe('ch02');
     expect(doc.module).toBe('m68693');
+  });
+
+  it('gives each segment the budget segmentOpBudget computes from its English and rulings', () => {
+    const many = item('m68693:para:m', 'An atom, an atom, an atom and an atom.', 'Frumeind.', [
+      'atom',
+    ]);
+    const reqs = buildRequests({
+      workList: workList([{ stem: 'm68693', items: [many], skipped: {} }]),
+      rulingsById: RULINGS.byId,
+      prompt: prompt(),
+      model: 'claude-opus-5-5',
+      effort: 'high',
+      maxTokens: 16000,
+    });
+    const seg = parseUserMessage(reqs[0].body.messages[0].content).segments[0];
+    expect(seg.maxOps).toBe(12);
+    expect(seg.maxOps).toBe(
+      segmentOpBudget({ en: many.occurrences[0].en, rulings: [RULINGS.byId.get('atom')] })
+    );
   });
 
   it('shows the first occurrence of a duplicated segment id', () => {

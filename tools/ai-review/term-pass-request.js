@@ -7,9 +7,11 @@
  * - The prompt file IS the system prompt, verbatim, and its single fenced `json` block under
  *   `## Response schema` is the structured-output schema. So one file and one sha256 cover
  *   everything fixed that the model sees; the per-request data is the user document.
- * - The user document (`term-pass-user/1`) is JSON, one ruling or segment per line, so the
+ * - The user document (`term-pass-user/2`) is JSON, one ruling or segment per line, so the
  *   apply step can parse the recorded request back and check that what the model saw is
- *   still the current base.
+ *   still the current base. Version 2 gives each segment `maxOps`, its operation budget
+ *   (gate.js segmentOpBudget); version 1, which recorded runs still hold, had a flat cap of 6
+ *   stated in the prompt. The parser reads both; the renderer writes version 2 only.
  * - Chunks never cross a module, hold at most `segmentsPerRequest` segments and at most
  *   `charBudget` characters of English plus Icelandic (an item above the budget goes
  *   alone). A request shows the FIRST occurrence of a duplicated segment id; the gate
@@ -19,11 +21,14 @@
  */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { segmentOpBudget } from './gate.js';
 
 export const USE = 'term-pass';
-export const USER_FORMAT = 'term-pass-user/1';
+export const USER_FORMAT = 'term-pass-user/2';
+/** Every user-document format the parser reads, oldest first. */
+export const USER_FORMATS = Object.freeze(['term-pass-user/1', USER_FORMAT]);
 /** Repo-relative path of the prompt; records carry it in this form. */
-export const PROMPT_PATH = 'tools/ai-review/prompts/term-pass-v1.md';
+export const PROMPT_PATH = 'tools/ai-review/prompts/term-pass-v2.md';
 export const DEFAULT_SEGMENTS_PER_REQUEST = 8;
 export const DEFAULT_CHAR_BUDGET = 16000;
 
@@ -92,13 +97,18 @@ export function rulingForRequest(ruling) {
   return out;
 }
 
+const isBudget = (n) => Number.isSafeInteger(n) && n > 0;
+
 /**
- * The user document of one request: JSON, one ruling or segment per line.
+ * The user document of one request (`term-pass-user/2`): JSON, one ruling or segment per line.
  * @param {{ chapterDir: string, stem: string, rulings: object[],
- *   segments: Array<{ id: string, rulings: string[], en: string, is: string }> }} doc
+ *   segments: Array<{ id: string, rulings: string[], maxOps: number, en: string, is: string }> }} doc
  * @returns {string}
+ * @throws {Error} when a segment has no positive whole `maxOps`
  */
 export function renderUserMessage({ chapterDir, stem, rulings, segments }) {
+  const bad = segments.find((s) => !isBudget(s.maxOps));
+  if (bad) throw new Error(`term-pass: segment ${bad.id} has no positive whole maxOps`);
   const head = `{"format":${JSON.stringify(USER_FORMAT)},"chapter":${JSON.stringify(chapterDir)},"module":${JSON.stringify(stem)},`;
   const list = (name, items) =>
     `"${name}":[\n${items.map((x) => JSON.stringify(x)).join(',\n')}\n]`;
@@ -113,17 +123,19 @@ const sameKeys = (o, keys) =>
 const isStringArray = (v) => Array.isArray(v) && v.every((s) => typeof s === 'string');
 
 /**
- * Parse a user document back (the apply step reads recorded requests this way). Refuses
- * another format and any shape the renderer does not write.
+ * Parse a user document back (the apply step reads recorded requests this way). Reads every
+ * format in USER_FORMATS; refuses another format and any shape its renderer did not write:
+ * a version 2 segment has `maxOps` (a positive whole number), a version 1 segment has none.
  * @param {string} text
  * @returns {{ format: string, chapter: string, module: string, rulings: object[],
- *   segments: Array<{ id: string, rulings: string[], en: string, is: string }> }}
+ *   segments: Array<{ id: string, rulings: string[], maxOps?: number, en: string, is: string }> }}
  */
 export function parseUserMessage(text) {
   const doc = JSON.parse(text);
-  if (!isPlainObject(doc) || doc.format !== USER_FORMAT) {
-    throw new Error(`term-pass: not a ${USER_FORMAT} document (format)`);
+  if (!isPlainObject(doc) || !USER_FORMATS.includes(doc.format)) {
+    throw new Error(`term-pass: not a ${USER_FORMATS.join(' or ')} document (format)`);
   }
+  const v2 = doc.format === USER_FORMAT;
   if (!sameKeys(doc, ['format', 'chapter', 'module', 'rulings', 'segments'])) {
     throw new Error(
       'term-pass: a user document has exactly format, chapter, module, rulings, segments'
@@ -138,14 +150,19 @@ export function parseUserMessage(text) {
   ) {
     throw new Error('term-pass: rulings must be objects with an id');
   }
+  const keys = v2 ? ['id', 'rulings', 'maxOps', 'en', 'is'] : ['id', 'rulings', 'en', 'is'];
   const segOk = (s) =>
-    sameKeys(s, ['id', 'rulings', 'en', 'is']) &&
+    sameKeys(s, keys) &&
     typeof s.id === 'string' &&
     isStringArray(s.rulings) &&
+    (!v2 || isBudget(s.maxOps)) &&
     typeof s.en === 'string' &&
     typeof s.is === 'string';
   if (!Array.isArray(doc.segments) || !doc.segments.every(segOk)) {
-    throw new Error('term-pass: segments must be { id, rulings, en, is }');
+    throw new Error(
+      `term-pass: ${doc.format} segments must be { ${keys.join(', ')} }` +
+        (v2 ? ', maxOps a positive whole number' : '')
+    );
   }
   return doc;
 }
@@ -220,12 +237,17 @@ export function buildRequests({
         if (!r) throw new Error(`term-pass: ruling ${id} is not in the ruling set`);
         return rulingForRequest(r);
       });
-      const segments = chunk.map((it) => ({
-        id: it.segmentId,
-        rulings: sortedUnique(it.rulingIds),
-        en: it.occurrences[0].en,
-        is: it.occurrences[0].is,
-      }));
+      const segments = chunk.map((it) => {
+        const segRulings = sortedUnique(it.rulingIds);
+        const en = it.occurrences[0].en;
+        return {
+          id: it.segmentId,
+          rulings: segRulings,
+          maxOps: segmentOpBudget({ en, rulings: segRulings.map((id) => rulingsById.get(id)) }),
+          en,
+          is: it.occurrences[0].is,
+        };
+      });
       const key = `${chapterDir}/${unit.stem}/${String(n + 1).padStart(KEY_INDEX_WIDTH, '0')}`;
       requests.push({
         key,

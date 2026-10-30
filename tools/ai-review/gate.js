@@ -87,7 +87,13 @@ import {
   isGenderedQuantifier,
 } from './lexicon.js';
 import { isChapterDir, scopeReasons } from './scope.js';
-import { usesHeadword, stemOf, containsStem, foldUmlaut } from '../lib/chapter-term-check.js';
+import {
+  usesHeadword,
+  headwordSpans,
+  stemOf,
+  containsStem,
+  foldUmlaut,
+} from '../lib/chapter-term-check.js';
 import { greekLetters } from '../lib/mt-output-guards.js';
 
 /**
@@ -120,6 +126,71 @@ export const DEFAULT_LIMITS = Object.freeze({
   agreementWindowWords: 4,
   agreementMinStemLetters: 3,
 });
+
+/**
+ * Operations per English use in the per-segment budget (term-pass v2): a term change and up to
+ * two agreements, the same reckoning that makes the flat cap 6 for two uses. Not a key of
+ * DEFAULT_LIMITS: the budget is computed per segment from what the model was shown and passed
+ * to the gate as a `maxAcceptedOpsPerSegment` override.
+ */
+export const OPS_PER_EN_USE = 3;
+
+const isFormList = (en) =>
+  Array.isArray(en) && en.length > 0 && en.every((f) => typeof f === 'string');
+
+/**
+ * How many times the offered rulings' English terms occur in what a reader sees of `en`
+ * (tokens.js visibleProse, hyphen-folded as the work list matches). Computed from the request
+ * alone — the segment's English and the rulings listed for it — so apply can recompute it from
+ * the recorded request. Every listed ruling counts, satisfied ones included: the budget is a
+ * bound, and over-inclusion is intended, because the half-segment share is the stop on a
+ * rewrite. A use inside a LONGER listed ruling's phrase is that ruling's (`cell` in `fuel
+ * cell`), and overlapping uses of one ruling's forms at one place count once.
+ * @param {{ en: string, rulings: ReadonlyArray<{ id: string, en: string[] }> }} args
+ * @returns {number}
+ * @throws {TypeError} on malformed arguments
+ */
+export function countEnUses({ en, rulings } = {}) {
+  if (typeof en !== 'string') throw new TypeError('countEnUses: en must be a string');
+  if (!Array.isArray(rulings) || !rulings.every((x) => x && isFormList(x.en))) {
+    throw new TypeError('countEnUses: rulings must be objects with a non-empty en list');
+  }
+  const prose = foldHyphens(visibleProse(en));
+  const formsOf = (x) => x.en.filter((f) => f.trim() !== '').map(foldHyphens);
+  let uses = 0;
+  for (const ruling of rulings) {
+    const mine = formsOf(ruling);
+    const longer = rulings
+      .filter((o) => o !== ruling && o.id !== ruling.id)
+      .flatMap(formsOf)
+      .filter((fL) => mine.some((f) => [...fL].length > [...f].length && usesHeadword(f, fL)));
+    const covers = longer.flatMap((fL) => headwordSpans(fL, prose));
+    const spans = mine
+      .flatMap((f) => headwordSpans(f, prose))
+      .filter(([s, e]) => !covers.some(([cs, ce]) => cs <= s && e <= ce))
+      .sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    let end = -1;
+    for (const [s, e] of spans) {
+      if (s >= end) uses += 1;
+      end = Math.max(end, e);
+    }
+  }
+  return uses;
+}
+
+/**
+ * The most operations the gate accepts in one segment under term-pass v2:
+ * max(DEFAULT_LIMITS.maxAcceptedOpsPerSegment, OPS_PER_EN_USE × countEnUses). The request shows
+ * it to the model as the segment's `maxOps`; apply recomputes it and refuses a mismatch.
+ * @param {{ en: string, rulings: ReadonlyArray<{ id: string, en: string[] }> }} args
+ * @returns {number}
+ */
+export function segmentOpBudget({ en, rulings } = {}) {
+  return Math.max(
+    DEFAULT_LIMITS.maxAcceptedOpsPerSegment,
+    OPS_PER_EN_USE * countEnUses({ en, rulings })
+  );
+}
 
 /** The closed set of rejection codes, sorted. */
 export const REJECTION_CODES = Object.freeze([

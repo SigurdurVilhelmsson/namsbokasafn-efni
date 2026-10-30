@@ -5,6 +5,35 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-10-29: term-pass v2, a per-segment operation budget.** It overrides the blocks below where
+> they disagree.
+>
+> - **Why:** the flat cap of 6 bit through the PROMPT, not the gate. In the ch10 pilot (runs of 2026-10-28/29)
+>   the model stopped at 6 operations and flagged `needs-rewrite` on 4 / 3 / 2 segments (medium / high / xhigh),
+>   so the gate never logged a `segment-op-limit`. Raising the gate's number alone would have changed nothing.
+>   Every capped segment had 5–12 English uses of its offered rulings.
+> - **The budget** (`gate.js` `segmentOpBudget`, [USER] chose the formula 2026-10-29): max(6, 3 × uses), where
+>   `countEnUses` counts the listed rulings' uses in the visible, hyphen-folded English, from the request alone
+>   (phrase precedence among the listed rulings; overlapping forms of one ruling at one place count once;
+>   satisfied rulings count too, since the budget is a bound). 3 is the flat cap's own reckoning (a term change
+>   and two agreements per use). The half-segment share is unchanged and stays the stop on a rewrite: measured
+>   on the pilot, it leaves room for 6–34 more operations in every capped segment.
+> - **The request** is `term-pass-user/2`: each segment carries `maxOps`. The parser also reads the v1
+>   documents recorded runs hold; the renderer writes v2 only.
+> - **Apply** refuses a request whose format is not its run's recorded `userFormat` (`bad-record`), runs of two
+>   formats together (`mixed-runs`), and a v2 `maxOps` that differs from the budget recomputed now
+>   (`stale-budget`); it passes the budget to the gate as `maxAcceptedOpsPerSegment`. A v1 record keeps the
+>   flat 6.
+> - **The prompt** is `tools/ai-review/prompts/term-pass-v2.md`; v1 stays byte for byte (a test pins its
+>   sha256 to the pilot runs' record). v2 states the budget, says to fix every use of a term including a
+>   sentence-initial capital (pilot item i02), and that an everyday explanation in parentheses keeps its
+>   everyday words ([USER]'s ruling on pilot item i04). Its worked examples are v2 documents whose `maxOps` the
+>   test recomputes. ⚠️ `apply` checks every run against the CURRENT prompt, so the three pilot runs can be
+>   re-applied only from a commit before v2.
+> - **Not in this amendment:** the leftover-form check (an old form left after an accepted fix). [USER]
+>   decided 2026-10-29 that it flags for the editor and never retries or rejects; it is apply-side and does
+>   not change the prompt.
+
 > **✏️ AMENDED 2026-10-27 (evening), after a final adversarial review of the afternoon's fixes** (3 lenses, 19
 > findings, each checked by an independent refuter). It overrides the afternoon block where they disagree.
 >

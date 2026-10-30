@@ -24,10 +24,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { gateOccurrences } from './gate.js';
+import { gateOccurrences, segmentOpBudget } from './gate.js';
 import { parseTermPassResponse } from './term-pass-response.js';
 import { pairUnit } from './worklist.js';
-import { USE, parseUserMessage } from './term-pass-request.js';
+import { USE, USER_FORMATS, parseUserMessage } from './term-pass-request.js';
 import { assertBookSlug } from './config.js';
 import { RECORD_FILES, openRunDir, createRecordWriter } from './records.js';
 import {
@@ -318,6 +318,14 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
     if (termPass.layer1Commit !== first.termPass.layer1Commit) {
       throw refusal('mixed-runs', `${where}: layer1Commit differs from run ${first.runId}`);
     }
+    // The user format decides each segment's operation budget (v1: the flat cap; v2: maxOps),
+    // so runs recorded in two formats would be gated under two rules.
+    if (!USER_FORMATS.includes(termPass.params?.userFormat)) {
+      throw refusal('bad-record', `${where}: unknown user format ${termPass.params?.userFormat}`);
+    }
+    if (termPass.params.userFormat !== first.termPass.params.userFormat) {
+      throw refusal('mixed-runs', `${where}: user format differs from run ${first.runId}`);
+    }
     const planned = termPass.plannedRequestKeys;
     if (
       !Array.isArray(planned) ||
@@ -435,6 +443,12 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
       throw refusal('mixed-runs', `request ${req.key} is not in the chapter's recorded plan`);
     }
     const doc = parseUserMessage(req.body.messages[0].content);
+    if (doc.format !== runs[0].termPass.params.userFormat) {
+      throw refusal(
+        'bad-record',
+        `request ${req.key} is ${doc.format}, its run recorded ${runs[0].termPass.params.userFormat}`
+      );
+    }
     const stem = doc.module;
     if (doc.chapter !== chapterDir || !req.key.startsWith(`${chapterDir}/${stem}/`)) {
       throw refusal('stale-presented', `request ${req.key} is not for ${chapterDir}/${stem}`);
@@ -450,6 +464,24 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
           'stale-presented',
           `request ${req.key}: segment ${s.id} is not what the model saw`
         );
+      }
+      // A v2 budget is recomputed from what the model was shown; a difference means the
+      // counting code changed since the run, and the model was told another number.
+      if (s.maxOps !== undefined) {
+        const listed = s.rulings.map((id) => rulingsById.get(id));
+        if (listed.some((x) => x === undefined)) {
+          throw refusal(
+            'stale-presented',
+            `request ${req.key}: segment ${s.id} lists a ruling not in the ruling set`
+          );
+        }
+        const budget = segmentOpBudget({ en: s.en, rulings: listed });
+        if (s.maxOps !== budget) {
+          throw refusal(
+            'stale-budget',
+            `request ${req.key}: segment ${s.id} was given maxOps ${s.maxOps}, the budget now is ${budget}`
+          );
+        }
       }
     }
     c.segmentsPresented += doc.segments.length;
@@ -559,7 +591,8 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
       ) {
         for (const o of ops) preFailed.add(o.rulingId);
       }
-      const g = gateWithGroups({ ops, item, chapterDir, rulingsById, preFailed, flagged });
+      const limits = s.maxOps === undefined ? undefined : { maxAcceptedOpsPerSegment: s.maxOps };
+      const g = gateWithGroups({ ops, item, chapterDir, rulingsById, preFailed, flagged, limits });
       c.opsProposed += ops.length;
       for (const op of g.accepted) {
         c.accepted += 1;
