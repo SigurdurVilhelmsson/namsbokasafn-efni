@@ -1,0 +1,20 @@
+{
+  "about": "Amendments that carry out docs/decisions/2026-10-30-diffract-verb-and-imf-abbreviation.md, [USER]'s two decisions of 2026-10-30. Applied on top of amendments-2026-10-29.json (give both to tools/ai-review/compile-ruling-set.js, that file first). The verb gets its own ruling, listing the three English forms the word-bounded matcher needs (diffract also reaches diffracts; diffraction, diffractometer and the noun ruling are untouched). The abbreviation becomes three English forms of the existing intermolecular-force ruling: IMF and IMFs both, since a headword of 3 characters or fewer is matched case-sensitively with no plural, and the spaced alt-text form I M F, which also reaches the spaced plural I M F s (ch10 m68770). Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "recordedAt": "2026-10-30",
+  "record": "docs/decisions/2026-10-30-diffract-verb-and-imf-abbreviation.md",
+  "amendments": [
+    {
+      "op": "add",
+      "en": ["diffract", "diffracted", "diffracting"],
+      "is": "beygja",
+      "decision": "Decision 1: the verb and the participle follow the noun, diffract → beygja / beygjast, diffracted → beygður; the target is the infinitive, whose stem beyg- every one of those forms carries"
+    },
+    {
+      "op": "forms",
+      "enNorm": "intermolecular force",
+      "is": "millisameindakraftur",
+      "forms": ["IMF", "IMFs", "I M F"],
+      "decision": "Decision 2: the abbreviation is an English form of the ruling, IMF, IMFs and the spaced alt-text form I M F count as uses of intermolecular force → millisameindakraftur"
+    }
+  ]
+}

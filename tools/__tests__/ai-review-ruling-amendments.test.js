@@ -608,7 +608,9 @@ describe('CLI with --amendments', () => {
     ]);
   });
 
-  it('refuses --amendments given twice', () => {
+  // --amendments may repeat since 2026-10-30, in date order; the same file twice is two files
+  // of one date, which the order check refuses (ai-review-ruling-amendments-forms.test.js).
+  it('refuses the same --amendments file given twice', () => {
     const out = path.join(tmp(), 'ruling-set-2026-10-29.json');
     const r = run([
       '--base',

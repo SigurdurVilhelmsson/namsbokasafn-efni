@@ -189,6 +189,29 @@ legacy-chapter converter maps 0/−1/N and refuses a string it does not know.
 > Pinned by `tools/__tests__/ai-review-ruling-amendments.test.js` (every refusal with a control; the 35 decisions
 > against `experiments/terminology-consistency/results/2026-10-29/ruling-set-2026-10-29.json`).
 
+> **✏️ AMENDED 2026-10-30 — English forms in amendments, and amendments files in order.** [USER]'s two
+> rulings of 2026-10-30 (`docs/decisions/2026-10-30-diffract-verb-and-imf-abbreviation.md`) both need a ruling
+> with more than one English form, and the format could not give one: `add` took a single `en`, and `retarget`
+> changes only the target. The matcher makes extra forms necessary, not cosmetic: `headwordPattern`
+> (`tools/lib/chapter-term-check.js`) is word-bounded, a form over 3 characters admits only a plural `-s`/`-es`
+> (`diffract` reaches `diffracts`, not `diffracted`), and a form of 3 characters or fewer is case-sensitive with
+> no suffix at all (`IMF` does not reach `IMFs`). Three additions:
+> - **`add` may list its English forms** (`en` a string or a list, keyed on the first).
+> - **A new op, `{op:'forms', enNorm, is, forms, decision}`,** adds English forms to an existing ruling. It names
+>   the current target as `is`, for the same reason a retarget names `from`. It refuses a form the ruling already
+>   has, or one belonging to another headword (an add's forms are checked the same way), so two rulings never
+>   claim one English word.
+> - **`--amendments` may repeat, oldest first, one file per date.** Each file applies on top of the last, and
+>   the order is checked before anything is applied. Copying the 2026-10-29 entries forward into a 2026-10-30
+>   file was rejected because every source would then read `amendment 2026-10-30 …` for a 2026-10-29 decision.
+>   An earlier file's remove is final.
+> Everything new is absent unless used: one file stays a single `{path, sha256}` (several are a list), the
+> `forms` count appears only when non-zero, and a third `about` sentence is appended only for a chained file, a
+> `forms` op or a listed add. So the 2026-10-29 artifact still recompiles byte for byte, and that byte test proves
+> the change is backward compatible. Pinned by `tools/__tests__/ai-review-ruling-amendments-forms.test.js`. Its
+> matcher controls include a lone *I*, a partial *I M*, *IMF* against *I M F*, and the corpus's own
+> *diffractometer*.
+
 ## Unit C — the code gate (`tools/ai-review/{tokens,lexicon,scope,gate}.js`)
 
 10-10 §3.3 applied to every operation. Pure functions; no I/O; no import from `server/`.
