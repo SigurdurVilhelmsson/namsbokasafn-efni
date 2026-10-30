@@ -1,0 +1,699 @@
+{
+ "date": "2026-10-30",
+ "rulingSet": "ruling-set-2026-10-26.json",
+ "runs": {
+  "apply-ch10-medium.md": {
+   "hits": [
+    {
+     "segmentId": "m68761:para:fs-idp26129792",
+     "rulingId": "instantaneous-dipole",
+     "forms": [
+      "augnabli"
+     ],
+     "words": [
+      "augnabliki"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm69412784",
+     "rulingId": "phase-transition",
+     "forms": [
+      "fasaumbreytin"
+     ],
+     "words": [
+      "fasaumbreytinga"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm70086528",
+     "rulingId": "temperature",
+     "forms": [
+      "hit"
+     ],
+     "words": [
+      "hita"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idp12376064",
+     "rulingId": "mixture",
+     "forms": [
+      "setj"
+     ],
+     "words": [
+      "setjum"
+     ]
+    },
+    {
+     "segmentId": "m68770:para:fs-idp61138560",
+     "rulingId": "ionic-compound",
+     "forms": [
+      "efnasamband"
+     ],
+     "words": [
+      "efnasambönd"
+     ]
+    },
+    {
+     "segmentId": "m68770:problem:fs-idp27916784",
+     "rulingId": "crystalline-solid",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristöllum"
+     ]
+    },
+    {
+     "segmentId": "m68770:table-summary:fs-idm7525216-summary",
+     "rulingId": "insoluble",
+     "forms": [
+      "eftirfarand"
+     ],
+     "words": [
+      "eftirfarandi"
+     ]
+    },
+    {
+     "segmentId": "m68773:alt:fs-idm94066176-alt",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðj"
+     ],
+     "words": [
+      "rúmmiðjuð"
+     ]
+    },
+    {
+     "segmentId": "m68773:caption:CNX_Chem_10_06_XRyDiff1-caption",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigðrar",
+      "sveigða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm23808480",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "einfald"
+     ],
+     "words": [
+      "einfaldri"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm42504800",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjaða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp100544560",
+     "rulingId": "crystalline",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristallaðra"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp129498528",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðjuð"
+     ],
+     "words": [
+      "rúmmiðjuðum",
+      "rúmmiðjuð",
+      "rúmmiðjuðu"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp173470256",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp178963488",
+     "rulingId": "hexagonal-closest-packing",
+     "forms": [
+      "sexstren"
+     ],
+     "words": [
+      "sexstrendingslega"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp4268832",
+     "rulingId": "cubic-closest-packing",
+     "forms": [
+      "þéttpakk"
+     ],
+     "words": [
+      "þéttpökkun"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp76470512",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjað"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp83773936",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigir"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idm33749072",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp173591264",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigja"
+     ]
+    }
+   ],
+   "pairs": 20,
+   "prototypePairs": 20,
+   "onlyNew": [],
+   "onlyPrototype": []
+  },
+  "apply-ch10-high.md": {
+   "hits": [
+    {
+     "segmentId": "m68761:para:fs-idm53508384",
+     "rulingId": "intermolecular-force",
+     "forms": [
+      "millikraf"
+     ],
+     "words": [
+      "Millikraftar"
+     ]
+    },
+    {
+     "segmentId": "m68761:para:fs-idp26129792",
+     "rulingId": "instantaneous-dipole",
+     "forms": [
+      "augnabli"
+     ],
+     "words": [
+      "augnabliki"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm69412784",
+     "rulingId": "phase-transition",
+     "forms": [
+      "fasaumbreytin"
+     ],
+     "words": [
+      "fasaumbreytinga"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm70086528",
+     "rulingId": "temperature",
+     "forms": [
+      "hit"
+     ],
+     "words": [
+      "hita"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idp12376064",
+     "rulingId": "mixture",
+     "forms": [
+      "setj"
+     ],
+     "words": [
+      "setjum"
+     ]
+    },
+    {
+     "segmentId": "m68770:para:fs-idp156889184",
+     "rulingId": "amorphous-solid",
+     "forms": [
+      "formlaus"
+     ],
+     "words": [
+      "formlaust"
+     ]
+    },
+    {
+     "segmentId": "m68770:para:fs-idp61138560",
+     "rulingId": "ionic-compound",
+     "forms": [
+      "efnasamband"
+     ],
+     "words": [
+      "efnasambönd"
+     ]
+    },
+    {
+     "segmentId": "m68770:problem:fs-idp27916784",
+     "rulingId": "crystalline-solid",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristöllum"
+     ]
+    },
+    {
+     "segmentId": "m68770:table-summary:fs-idm7525216-summary",
+     "rulingId": "insoluble",
+     "forms": [
+      "eftirfarand"
+     ],
+     "words": [
+      "eftirfarandi"
+     ]
+    },
+    {
+     "segmentId": "m68773:alt:fs-idm94066176-alt",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðj"
+     ],
+     "words": [
+      "rúmmiðjuð"
+     ]
+    },
+    {
+     "segmentId": "m68773:caption:CNX_Chem_10_06_XRyDiff1-caption",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigðrar",
+      "sveigða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm23808480",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "einfald"
+     ],
+     "words": [
+      "einfaldri"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm42504800",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjaða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm42504800",
+     "rulingId": "stoichiometry",
+     "forms": [
+      "hlutfall"
+     ],
+     "words": [
+      "hlutfallinu"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp100544560",
+     "rulingId": "crystalline",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristallaðra"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp129498528",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðjuð"
+     ],
+     "words": [
+      "rúmmiðjuðum",
+      "rúmmiðjuð",
+      "rúmmiðjuðu"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp173470256",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp178963488",
+     "rulingId": "hexagonal-closest-packing",
+     "forms": [
+      "sexstren"
+     ],
+     "words": [
+      "sexstrendingslega"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp4268832",
+     "rulingId": "cubic-closest-packing",
+     "forms": [
+      "þéttpakk"
+     ],
+     "words": [
+      "þéttpökkun"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp76470512",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjað"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp83773936",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigir"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idm33749072",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp173591264",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigja"
+     ]
+    }
+   ],
+   "pairs": 23,
+   "prototypePairs": 23,
+   "onlyNew": [],
+   "onlyPrototype": []
+  },
+  "apply-ch10-xhigh.md": {
+   "hits": [
+    {
+     "segmentId": "m68761:para:fs-idp26129792",
+     "rulingId": "instantaneous-dipole",
+     "forms": [
+      "augnabli"
+     ],
+     "words": [
+      "augnabliki"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm10799984",
+     "rulingId": "temperature",
+     "forms": [
+      "mót"
+     ],
+     "words": [
+      "móti"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idm69412784",
+     "rulingId": "phase-transition",
+     "forms": [
+      "fasaumbreytin"
+     ],
+     "words": [
+      "fasaumbreytinga"
+     ]
+    },
+    {
+     "segmentId": "m68768:para:fs-idp12376064",
+     "rulingId": "mixture",
+     "forms": [
+      "setj"
+     ],
+     "words": [
+      "setjum"
+     ]
+    },
+    {
+     "segmentId": "m68770:para:fs-idp156889184",
+     "rulingId": "amorphous-solid",
+     "forms": [
+      "formlaus"
+     ],
+     "words": [
+      "formlaust"
+     ]
+    },
+    {
+     "segmentId": "m68770:para:fs-idp61138560",
+     "rulingId": "ionic-compound",
+     "forms": [
+      "efnasamband"
+     ],
+     "words": [
+      "efnasambönd"
+     ]
+    },
+    {
+     "segmentId": "m68770:problem:fs-idp27916784",
+     "rulingId": "crystalline-solid",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristöllum"
+     ]
+    },
+    {
+     "segmentId": "m68770:table-summary:fs-idm7525216-summary",
+     "rulingId": "insoluble",
+     "forms": [
+      "eftirfarand"
+     ],
+     "words": [
+      "eftirfarandi"
+     ]
+    },
+    {
+     "segmentId": "m68770:table-summary:fs-idp139392608-summary",
+     "rulingId": "soluble",
+     "forms": [
+      "eftirfarand"
+     ],
+     "words": [
+      "eftirfarandi"
+     ]
+    },
+    {
+     "segmentId": "m68773:alt:fs-idm94066176-alt",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðj"
+     ],
+     "words": [
+      "rúmmiðjuð"
+     ]
+    },
+    {
+     "segmentId": "m68773:caption:CNX_Chem_10_06_XRyDiff1-caption",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigðrar",
+      "sveigða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm23808480",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "einfald"
+     ],
+     "words": [
+      "einfaldri"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm42504800",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjaða"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idm42504800",
+     "rulingId": "stoichiometry",
+     "forms": [
+      "hlutfall"
+     ],
+     "words": [
+      "hlutfallinu"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp100544560",
+     "rulingId": "crystalline",
+     "forms": [
+      "kristall"
+     ],
+     "words": [
+      "kristallaðra"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp129498528",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðjuð"
+     ],
+     "words": [
+      "rúmmiðjuðum",
+      "rúmmiðjuð",
+      "rúmmiðjuðu"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp173470256",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp178963488",
+     "rulingId": "hexagonal-closest-packing",
+     "forms": [
+      "sexstren"
+     ],
+     "words": [
+      "sexstrendingslega"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp4268832",
+     "rulingId": "cubic-closest-packing",
+     "forms": [
+      "þéttpakk"
+     ],
+     "words": [
+      "þéttpökkun"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp76470512",
+     "rulingId": "simple-cubic-structure",
+     "forms": [
+      "rúmmiðja"
+     ],
+     "words": [
+      "rúmmiðjað"
+     ]
+    },
+    {
+     "segmentId": "m68773:para:fs-idp83773936",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigir"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idm33749072",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigjast"
+     ]
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp173591264",
+     "rulingId": "diffraction",
+     "forms": [
+      "sveig"
+     ],
+     "words": [
+      "sveigja"
+     ]
+    }
+   ],
+   "pairs": 23,
+   "prototypePairs": 23,
+   "onlyNew": [],
+   "onlyPrototype": []
+  }
+ }
+}

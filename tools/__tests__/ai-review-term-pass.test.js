@@ -556,6 +556,88 @@ describe('run → apply, interactive', () => {
   });
 });
 
+// The leftover-form check (pilot item i02; [USER] 2026-10-29: it flags for the editor, and
+// never retries or rejects). The scripted answer fixes the first `frumeind` in the TiO2 caption
+// and leaves the second, as high effort left `Millikraftar` in the ch10 pilot.
+describe('apply flags an old form left after an accepted fix, and changes nothing else', () => {
+  const PARTIAL_OPS = TIO2_OPS.filter((o) => !/súrefnis|rauð/.test(o.find));
+  const partialAnswer = (body) => {
+    const a = scriptedAnswer(body);
+    for (const seg of a.segments) if (seg.id === TIO2_ID) seg.ops = PARTIAL_OPS;
+    return a;
+  };
+  const runWith = async (S, answer) => {
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      S.deps({ transport: mockTransport({ answer }) })
+    );
+    return r.results[0].runId;
+  };
+  const LEFTOVER = {
+    module: 'm68693',
+    segmentId: TIO2_ID,
+    occurrence: 0,
+    rulingId: 'atom',
+    forms: ['frumei'],
+    words: ['súrefnisfrumeindirnar'],
+  };
+
+  it('control: an answer that fixes every use leaves no leftover, and the summary says it checked', async () => {
+    const S = setup();
+    const runId = await runWith(S, scriptedAnswer);
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(a.result.leftovers).toEqual([]);
+    expect(a.result.counts.leftovers).toBe(0);
+    expect(a.result.summary.schema).toBe('ai-review-apply/2');
+  });
+
+  it('flags the use the answer left, naming the ruling and the word', async () => {
+    const S = setup();
+    const runId = await runWith(S, partialAnswer);
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(a.result.leftovers).toHaveLength(1);
+    expect(a.result.leftovers[0]).toMatchObject({ ...LEFTOVER, runId });
+    expect(a.result.counts.leftovers).toBe(1);
+  });
+
+  it('never withdraws an edit for it: the fix it flags is applied, and no gate line or model flag names it', async () => {
+    const S = setup();
+    const runId = await runWith(S, partialAnswer);
+    const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(a.result.counts.accepted).toBe(PARTIAL_OPS.length);
+    expect(a.result.counts.rejected).toBe(0);
+    expect(a.result.flags.some((f) => f.segmentId === TIO2_ID)).toBe(false);
+    const changed = a.result.units.find((u) => u.stem === 'm68693').text;
+    expect(changed).toContain('Títanatómin eru grá og súrefnisfrumeindirnar eru rauðar.');
+  });
+
+  it('writes the chapter with the leftover present, and records it in leftovers.jsonl and apply.json', async () => {
+    const S = setup();
+    const runId = await runWith(S, partialAnswer);
+    await main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S.deps());
+    const dir = path.join(S.fx.records, 'applied', 'ch02');
+    const rows = fs
+      .readFileSync(path.join(dir, 'leftovers.jsonl'), 'utf8')
+      .trim()
+      .split('\n')
+      .map((l) => JSON.parse(l));
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject(LEFTOVER);
+    const summary = JSON.parse(fs.readFileSync(path.join(dir, 'apply.json'), 'utf8'));
+    expect(summary.counts.leftovers).toBe(1);
+  });
+
+  it('shows the leftover in the reviewer’s report, under its segment', async () => {
+    const S = setup();
+    const runId = await runWith(S, partialAnswer);
+    const out = path.join(scratch(), 'report-leftover.md');
+    await main(['apply', '--chapter', 'ch02', '--run', runId, '--report', out], S.deps());
+    const md = fs.readFileSync(out, 'utf8');
+    const section = md.slice(md.indexOf(`## ${TIO2_ID}`));
+    expect(section).toMatch(/- ⚐ leftover `atom`: súrefnisfrumeindirnar/);
+  });
+});
+
 describe('an answer entry for a segment the request did not show', () => {
   it('is logged as dropped, and its op is rejected, never applied', async () => {
     const S = setup();

@@ -19,6 +19,8 @@
  *   order, so each record's `before` is the previous record's `after`.
  * - Builds every unit of the chapter (zero-change units included), because layer 2 is
  *   complete per chapter (mt-layers.js `writeRevisedChapter`).
+ * - Flags, for the editor, an old form a ruling's accepted fix left standing in the same
+ *   occurrence (leftover-forms.js, `leftovers.jsonl`). Flag only: it changes no edit.
  * - Writes nothing unless asked (`writeApplied`); `renderReport` is a reviewer's markdown.
  */
 import fs from 'node:fs';
@@ -26,6 +28,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { gateOccurrences, segmentOpBudget } from './gate.js';
 import { parseTermPassResponse } from './term-pass-response.js';
+import { leftoverForms } from './leftover-forms.js';
 import { pairUnit } from './worklist.js';
 import { USE, USER_FORMATS, parseUserMessage } from './term-pass-request.js';
 import { assertBookSlug } from './config.js';
@@ -44,13 +47,20 @@ import {
 export const TERM_PASS_RECORD = 'term-pass.json';
 /** /2 (2026-10-27) adds `plannedRequestKeys`: the chapter's whole plan, before any --limit. */
 export const TERM_PASS_SCHEMA = 'ai-review-term-pass/2';
-export const APPLY_SCHEMA = 'ai-review-apply/1';
+/**
+ * /2 (2026-10-30) adds the leftover-form check: `counts.leftovers` and `leftovers.jsonl`. A /1
+ * summary has no count, so "checked, none found" and "never checked" stay distinguishable.
+ */
+export const APPLY_SCHEMA = 'ai-review-apply/2';
 export const APPLIED_DIR = 'applied';
 export const APPLIED_FILES = Object.freeze({
   summary: 'apply.json',
   gate: 'gate.jsonl',
   flags: 'flags.jsonl',
   senses: 'senses.jsonl',
+  // The runner's own flags for the editor (leftover-forms.js), kept apart from flags.jsonl,
+  // which holds only what the model said.
+  leftovers: 'leftovers.jsonl',
 });
 /** A request with no usable response (every attempt errored, or none was recorded). */
 export const REQUEST_ERROR = 'request-error';
@@ -412,6 +422,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
   const gateLog = [];
   const flags = [];
   const senses = [];
+  const leftovers = [];
   const changesByStem = new Map(inputs.map((u) => [u.stem, new Map()])); // stem → key → records
   const finalByStem = new Map(inputs.map((u) => [u.stem, new Map()])); // stem → key → after
   const rejectedByStem = new Map(inputs.map((u) => [u.stem, 0]));
@@ -644,6 +655,16 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
           before: occ.is,
           after: o.after,
         });
+        // Flags only: it reads the gate's result and changes no edit ([USER] 2026-10-29).
+        for (const l of leftoverForms({ after: o.after, accepted: o.accepted, rulingsById })) {
+          leftovers.push({
+            ...base,
+            segmentId: s.id,
+            occurrence: occ.occurrence,
+            key: occ.key,
+            ...l,
+          });
+        }
       });
     }
   }
@@ -685,6 +706,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     flagsByKind: sortedObject(c.flagsByKind),
     changes: units.reduce((n, u) => n + u.changes.length, 0),
     occurrencesChanged: [...finalByStem.values()].reduce((n, m) => n + m.size, 0),
+    leftovers: leftovers.length,
   };
   // Coverage against the chapter's WHOLE plan (recorded before any --limit): a request that
   // was never sent, errored, or came back truncated, refused or unparseable reviewed nothing,
@@ -714,7 +736,19 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     counts,
     coverage,
   };
-  return { chapterDir, units, revision, gateLog, flags, senses, counts, coverage, summary, inputs };
+  return {
+    chapterDir,
+    units,
+    revision,
+    gateLog,
+    flags,
+    senses,
+    leftovers,
+    counts,
+    coverage,
+    summary,
+    inputs,
+  };
 }
 
 /**
@@ -792,6 +826,7 @@ export function writeApplied({ bookDir, chapterDir, result, overwrite = false })
     [APPLIED_FILES.gate, jsonl(result.gateLog)],
     [APPLIED_FILES.flags, jsonl(result.flags)],
     [APPLIED_FILES.senses, jsonl(result.senses)],
+    [APPLIED_FILES.leftovers, jsonl(result.leftovers)],
     [APPLIED_FILES.summary, `${JSON.stringify(result.summary, null, 2)}\n`],
   ].map(([name, data]) => ({ file: path.join(dir, name), data }));
   if (!overwrite) {
@@ -864,12 +899,13 @@ export function renderReport(result) {
   ];
   const bySeg = new Map();
   const touch = (id) => {
-    if (!bySeg.has(id)) bySeg.set(id, { ops: [], flags: [], senses: [] });
+    if (!bySeg.has(id)) bySeg.set(id, { ops: [], flags: [], senses: [], leftovers: [] });
     return bySeg.get(id);
   };
   for (const g of result.gateLog) if (g.kind === 'op') touch(g.segmentId).ops.push(g);
   for (const f of result.flags) touch(f.segmentId).flags.push(f);
   for (const s of result.senses) touch(s.segmentId).senses.push(s);
+  for (const l of result.leftovers) touch(l.segmentId).leftovers.push(l);
   const items = new Map();
   for (const u of result.inputs) for (const it of u.pair.items) items.set(it.segmentId, it);
   const finals = new Map();
@@ -898,6 +934,13 @@ export function renderReport(result) {
     }
     for (const s of seg.senses)
       lines.push(`- sense \`${s.rulingId}\`: ${s.sense}${s.valid ? '' : ' (INVALID)'}`);
+    // ⚐, not the model's ⚑: the runner raised it, and it may be a false positive.
+    for (const l of seg.leftovers) {
+      const occ = l.occurrence === 0 ? '' : ` (occurrence ${l.occurrence})`;
+      lines.push(
+        `- ⚐ leftover \`${l.rulingId}\`: ${l.words.join(', ')}${occ} — old form ${l.forms.map((f) => `${f}-`).join(', ')} still stands after the fix`
+      );
+    }
     lines.push('');
   }
   return `${lines.join('\n')}\n`;
