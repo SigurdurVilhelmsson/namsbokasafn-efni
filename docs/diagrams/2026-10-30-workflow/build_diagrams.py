@@ -208,7 +208,7 @@ def now_overview():
 # 2. NOW - technical
 # =====================================================================
 def now_technical():
-    d = D('now-technical', 1530, 1000,
+    d = D('now-technical', 1760, 1000,
           'Current workflow, technical: files under books/<slug>/ flow from 01-source through cnxml-extract and '
           'api-translate to 02-mt-output, into the Ritstjóri segment editor and sessions.db, are applied to '
           '03-faithful-translation, injected and rendered to 05-publication, pushed by cron and synced by hand to the reader.')
@@ -219,7 +219,7 @@ def now_technical():
     bands = [('MACHINE', 'CLI tools'), ('EDITING', 'Ritstjóri server'), ('BUILD', 'books/<slug>/'),
              ('DELIVERY', 'git + reader')]
     for i, (a, b) in enumerate(bands):
-        d.add(f'<rect x="10" y="{R[i] - 22}" width="1510" height="{H + 44}" rx="8" class="band"/>')
+        d.add(f'<rect x="10" y="{R[i] - 22}" width="1740" height="{H + 44}" rx="8" class="band"/>')
         d.text(24, R[i] + 6, a, 'hdr')
         d.text(24, R[i] + 22, b, 's')
 
