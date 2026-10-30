@@ -1,0 +1,314 @@
+{
+  "sets": {
+    "old": "experiments/terminology-consistency/results/2026-10-29/ruling-set-2026-10-29.json",
+    "new": "experiments/terminology-consistency/results/2026-10-30/ruling-set-2026-10-30.json"
+  },
+  "chapters": 23,
+  "totals": {
+    "old": {
+      "items": 4324,
+      "pairs": 5978
+    },
+    "new": {
+      "items": 4340,
+      "pairs": 6015
+    }
+  },
+  "changedOffers": [
+    {
+      "id": "intermolecular-force",
+      "old": 24,
+      "new": 47
+    },
+    {
+      "id": "diffract",
+      "old": 0,
+      "new": 14
+    }
+  ],
+  "watched": {
+    "intermolecular-force": {
+      "newlyOffered": 23,
+      "isHasOld": 15,
+      "isHasTarget": 0,
+      "formTally": {
+        "I M F": 2,
+        "IMFs": 16,
+        "IMF": 6
+      },
+      "segments": [
+        {
+          "ch": "ch10",
+          "seg": "m68761:alt:fs-idp1251008-alt",
+          "matchedForms": ["I M F"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:para:fs-idm50766656",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:para:fs-idm68544288",
+          "matchedForms": ["IMF"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:para:fs-idm68677744",
+          "matchedForms": ["IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:para:fs-idm91556848",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:para:fs-idp108426992",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:problem:fs-idm44711088",
+          "matchedForms": ["IMF"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:problem:fs-idm50037824",
+          "matchedForms": ["IMF", "IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68761:solution:fs-idp49715040",
+          "matchedForms": ["IMF"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68764:para:fs-idm133174592",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68764:para:fs-idm245342800",
+          "matchedForms": ["IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68764:para:fs-idm45103712",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68764:problem:fs-idm133108016",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68764:problem:fs-idm59094592",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:example-title:fs-idm12389904-title",
+          "matchedForms": ["IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:para:fs-idm12378064",
+          "matchedForms": ["IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:para:fs-idm149114816",
+          "matchedForms": ["IMFs"],
+          "isHasOld": false,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:para:fs-idm224164560",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:para:fs-idm44101792",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:para:fs-idm73489328",
+          "matchedForms": ["IMF"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68768:problem:fs-idm101751728",
+          "matchedForms": ["IMF"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68770:entry:auto-54",
+          "matchedForms": ["IMFs"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68770:table-summary:fs-idp121853232-summary",
+          "matchedForms": ["I M F"],
+          "isHasOld": true,
+          "isHasTarget": false
+        }
+      ]
+    },
+    "diffract": {
+      "newlyOffered": 14,
+      "isHasOld": 14,
+      "isHasTarget": 0,
+      "formTally": {
+        "diffracted": 9,
+        "diffracting": 2,
+        "diffract": 3
+      },
+      "segments": [
+        {
+          "ch": "ch10",
+          "seg": "m68773:alt:fs-idm39196256-alt",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:alt:fs-idp8694464-alt",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:caption:CNX_Chem_10_06_XRyDiff1-caption",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:glossary-def:fs-idm40748576-def",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:glossary-def:fs-idp168577936-def",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:para:fs-idm68901456",
+          "matchedForms": ["diffracting"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:para:fs-idp173470256",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:para:fs-idp184548576",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:para:fs-idp26359616",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:para:fs-idp83773936",
+          "matchedForms": ["diffract"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:problem:fs-idm33749072",
+          "matchedForms": ["diffracted"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:problem:fs-idp173591264",
+          "matchedForms": ["diffract"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:problem:fs-idp191523072",
+          "matchedForms": ["diffracting"],
+          "isHasOld": true,
+          "isHasTarget": false
+        },
+        {
+          "ch": "ch10",
+          "seg": "m68773:problem:fs-idp80463840",
+          "matchedForms": ["diffract"],
+          "isHasOld": true,
+          "isHasTarget": false
+        }
+      ]
+    }
+  }
+}
