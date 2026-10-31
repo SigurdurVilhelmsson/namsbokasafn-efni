@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, existsSync, readdirSync, rmSync, symlinkSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, existsSync, readdirSync, rmSync, symlinkSync, readFileSync, writeFileSync, utimesSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -180,6 +180,82 @@ describe('backup-db.sh off-box upload', () => {
     expect(error.status).toBe(5);
     expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
     rmSync(work, { recursive: true, force: true });
+  });
+});
+
+// A backup that anything opens in WAL mode (an inspection, a restore test) gains
+// `-shm`/`-wal` side files beside it. Pruning used to delete only `sessions.*.db`, so
+// side files outlived their backup: production's backups folder held 94 entries for
+// 30 backups on 2026-10-31. The fix deletes a pruned backup's side files with it, and
+// sweeps side files whose backup is already gone. A KEPT backup's side files must
+// survive: something may still hold that backup open.
+describe('backup-db.sh pruning removes side files with their backup', () => {
+  const MAX_BACKUPS = 30; // backup-db.sh's own value
+  const name = (i) => `sessions.2020-01-01-0000${String(i).padStart(2, '0')}.db`;
+  let work;
+  let backups;
+  let out;
+  const at = (f) => path.join(backups, f);
+
+  beforeAll(() => {
+    work = mkdtempSync(path.join(tmpdir(), 'bkup-prune-'));
+    backups = path.join(work, 'backups');
+    const db = path.join(work, 'sessions.db');
+    makeTestDb(db);
+    mkdirSync(backups);
+    // 31 old backups with distinct, increasing mtimes: pruning orders by `ls -t`, so the
+    // run's own new backup is the newest and the 2 oldest (i = 0, 1) are pruned.
+    // The fixtures need not be SQLite files; the script only lists and deletes them.
+    const base = Date.UTC(2020, 0, 1) / 1000;
+    const touch = (f, i) => {
+      writeFileSync(at(f), 'x');
+      utimesSync(at(f), base + i * 60, base + i * 60);
+    };
+    for (let i = 0; i <= 30; i++) touch(name(i), i);
+    touch(`${name(0)}-shm`, 0); // a pruned backup with both side files
+    touch(`${name(0)}-wal`, 0);
+    touch(`${name(1)}-wal`, 1); // a pruned backup with only one
+    touch(`${name(30)}-shm`, 30); // a kept backup's side files: the control
+    touch(`${name(30)}-wal`, 30);
+    touch('sessions.2019-12-31-235959.db-shm', 0); // left by an earlier prune: no .db
+    touch('sessions.2019-12-31-235959.db-wal', 0);
+    out = execFileSync('bash', [SCRIPT, backups], {
+      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      encoding: 'utf8',
+    });
+  });
+
+  afterAll(() => rmSync(work, { recursive: true, force: true }));
+
+  it('prunes down to MAX_BACKUPS backups (the prune ran)', () => {
+    expect(readdirSync(backups).filter((f) => f.endsWith('.db'))).toHaveLength(MAX_BACKUPS);
+  });
+
+  it('prunes the two oldest backups', () => {
+    expect([name(0), name(1)].filter((f) => existsSync(at(f)))).toEqual([]);
+  });
+
+  it("deletes a pruned backup's -shm and -wal with it", () => {
+    const left = [`${name(0)}-shm`, `${name(0)}-wal`, `${name(1)}-wal`];
+    expect(left.filter((f) => existsSync(at(f)))).toEqual([]);
+  });
+
+  it("keeps a kept backup's -shm and -wal", () => {
+    const kept = [`${name(30)}-shm`, `${name(30)}-wal`];
+    expect(kept.filter((f) => existsSync(at(f)))).toEqual(kept);
+  });
+
+  it('sweeps side files whose backup is already gone', () => {
+    const orphans = ['sessions.2019-12-31-235959.db-shm', 'sessions.2019-12-31-235959.db-wal'];
+    expect(orphans.filter((f) => existsSync(at(f)))).toEqual([]);
+  });
+
+  // The count is what pins the prune's OWN deletion of side files. Without it the
+  // sweep would still remove them (their .db is gone by then), so the test above
+  // passes either way, and only this count moves: 2 orphans, not 2 + 3. Measured by
+  // mutation on 2026-10-31; a sweep without its .db check fails the kept-backup test.
+  it('logs how many orphaned side files the sweep removed', () => {
+    expect(out).toMatch(/Removed 2 orphaned side file\(s\)/);
   });
 });
 
