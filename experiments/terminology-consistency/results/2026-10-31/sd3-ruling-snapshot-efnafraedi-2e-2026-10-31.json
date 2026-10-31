@@ -1,0 +1,1680 @@
+{
+ "about": "Every place a term ruling lives for this book, read at the S tag (Skerfur plan SD3). Read-only.",
+ "takenAt": "2026-10-31T09:20:00.047Z",
+ "repoHead": "62213d382ca8d29628865a72aa9aa4bf966ffb51",
+ "book": "efnafraedi-2e",
+ "domains": [
+  {
+   "domain": "chemistry",
+   "position": 1
+  },
+  {
+   "domain": "physics",
+   "position": 2
+  },
+  {
+   "domain": "biology",
+   "position": 3
+  }
+ ],
+ "stores": {
+  "houseStyle": {
+   "source": "server/lib/houseStyleTerms.js",
+   "domain": "chemistry",
+   "count": 52,
+   "sha256": "1baa8910129e2f75d7c2284b58e43ffb718cd5193cabd349bf235597ee389d5d",
+   "entries": [
+    {
+     "en": [
+      "Celsius"
+     ],
+     "is": "Celsíus",
+     "ruled": "2026-09-04 [USER]"
+    },
+    {
+     "en": [
+      "degree Celsius",
+      "degree centigrade"
+     ],
+     "is": "stig á Celsíus",
+     "ruled": "2026-09-04 [USER]"
+    },
+    {
+     "en": [
+      "resonance"
+     ],
+     "is": "vok",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "resonance structure",
+      "resonance form"
+     ],
+     "is": "vokmynd",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "resonance hybrid"
+     ],
+     "is": "vokblendingur",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "hybridization",
+      "orbital hybridization"
+     ],
+     "is": "svigrúmablöndun",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "hybrid orbital"
+     ],
+     "is": "blendingssvigrúm",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "bonding orbital"
+     ],
+     "is": "bindandi svigrúm",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "Lewis structure"
+     ],
+     "is": "Lewis-mynd",
+     "ruled": "2026-09-19 [USER]"
+    },
+    {
+     "en": [
+      "torr"
+     ],
+     "is": "torr",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "hydroxide"
+     ],
+     "is": "hýdroxíð",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "group"
+     ],
+     "is": "flokkur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "alcohol"
+     ],
+     "is": "alkóhól",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "carbonate"
+     ],
+     "is": "karbónat",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "radioactive decay"
+     ],
+     "is": "geislasundrun",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "galvanic cell"
+     ],
+     "is": "galvaníker",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "cell"
+     ],
+     "is": "ker",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "cell potential"
+     ],
+     "is": "kerspenna",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "hole"
+     ],
+     "is": "hol",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "representative metal"
+     ],
+     "is": "aðalflokkamálmur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "elementary reaction"
+     ],
+     "is": "grunnhvarf",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "pOH"
+     ],
+     "is": "pOH",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "Lewis"
+     ],
+     "is": "Lewis",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "central metal"
+     ],
+     "is": "miðjumálmur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "ether"
+     ],
+     "is": "eter",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "dispersion force"
+     ],
+     "is": "dreifikraftur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "microstate"
+     ],
+     "is": "örástand",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "carboxylic acid"
+     ],
+     "is": "karboxýlsýra",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "ketone"
+     ],
+     "is": "ketón",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "reaction mechanism"
+     ],
+     "is": "hvarfgangur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "carbonyl group"
+     ],
+     "is": "karbónýlhópur",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "chain reaction"
+     ],
+     "is": "keðjuhvarf",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "reaction order"
+     ],
+     "is": "stig efnahvarfs",
+     "ruled": "2026-09-20 [USER]"
+    },
+    {
+     "en": [
+      "hydrocarbon"
+     ],
+     "is": "vetniskolefni",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "laser"
+     ],
+     "is": "leysir",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "steam"
+     ],
+     "is": "gufa",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "electronegative"
+     ],
+     "is": "rafneikvæður",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "phase transition"
+     ],
+     "is": "fasabreyting",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "carbon monoxide"
+     ],
+     "is": "kolmónoxíð",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "submerged"
+     ],
+     "is": "á kafi",
+     "ruled": "2026-09-21 [USER]"
+    },
+    {
+     "en": [
+      "line-bond structure"
+     ],
+     "is": "strikamynd",
+     "ruled": "2026-09-23 [USER]"
+    },
+    {
+     "en": [
+      "bond angle"
+     ],
+     "is": "tengihorn",
+     "ruled": "2026-09-23 [USER]"
+    },
+    {
+     "en": [
+      "bond length"
+     ],
+     "is": "tengilengd",
+     "ruled": "2026-09-23 [USER]"
+    },
+    {
+     "en": [
+      "condensed structure",
+      "condensed formula"
+     ],
+     "is": "þéttformúla",
+     "ruled": "2026-09-23 [USER]"
+    },
+    {
+     "en": [
+      "radius"
+     ],
+     "is": "radíus",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "crystalline"
+     ],
+     "is": "kristalkenndur",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "bent"
+     ],
+     "is": "boginn",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "dimensional analysis"
+     ],
+     "is": "einingagreining",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "abundance"
+     ],
+     "is": "fjöldahlutfall",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "absorption"
+     ],
+     "is": "gleypni",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "general anesthetic"
+     ],
+     "is": "svæfingarlyf",
+     "ruled": "2026-09-27 [USER]"
+    },
+    {
+     "en": [
+      "molecular compound"
+     ],
+     "is": "sameindaefni",
+     "ruled": "2026-09-27 [USER]"
+    }
+   ]
+  },
+  "preferences": {
+   "table": "book_term_preference",
+   "count": 1,
+   "sha256": "35f756376b63ff826c89912d416eaf43793b4363147fb6f2016d8e0da53dbad9",
+   "rows": [
+    {
+     "chapter": 0,
+     "english": "atom",
+     "term": "atóm",
+     "lang": "is",
+     "domain": "chemistry"
+    }
+   ]
+  },
+  "compiled": {
+   "sha256": "e7294268afc9bf2fe7f41d3b053715a251afb9b27080232f799f36f0601dc6de",
+   "compiledAt": "2026-10-11",
+   "repoHead": "b23a1f4df05cf929a4c8a4b2e12af4f7281a2efd",
+   "counts": {
+    "stage1": 248,
+    "byClass": {
+     "matches-stored": 58,
+     "spelling-vs-stored": 5,
+     "tied": 3,
+     "unstored": 155,
+     "word-change": 27
+    },
+    "byMechanism": {
+     "concept-model-script": 2,
+     "entry": 21,
+     "none": 58,
+     "preference": 11,
+     "record-only": 155,
+     "replace-entry": 1
+    },
+    "inflectionNotes": 2,
+    "before": 170
+   },
+   "stage1": 248,
+   "before": 170
+  },
+  "conceptModel": {
+   "domains": [
+    "chemistry",
+    "physics",
+    "biology"
+   ],
+   "concepts": 22903,
+   "termCount": 57515,
+   "sha256": "3f1856c7dcdf7e29e458522e04d6b95409bc53f4fd8a9abf9291f2a4aa7b8f7a",
+   "terms": [
+    {
+     "concept_id": 70188,
+     "lang": "en",
+     "text": "carbohydrate",
+     "rank": 1,
+     "source": "c82-lead-review"
+    },
+    {
+     "concept_id": 70188,
+     "lang": "is",
+     "text": "sykra",
+     "rank": 1,
+     "source": "c82-lead-review"
+    },
+    {
+     "concept_id": 70189,
+     "lang": "en",
+     "text": "carbohydrates",
+     "rank": 1,
+     "source": "c82-lead-review"
+    },
+    {
+     "concept_id": 70189,
+     "lang": "is",
+     "text": "sykrur",
+     "rank": 1,
+     "source": "c82-lead-review"
+    },
+    {
+     "concept_id": 70190,
+     "lang": "en",
+     "text": "Celsius",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70190,
+     "lang": "is",
+     "text": "Celsíus",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70191,
+     "lang": "en",
+     "text": "degree Celsius",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70191,
+     "lang": "en",
+     "text": "degree centigrade",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70191,
+     "lang": "is",
+     "text": "stig á Celsíus",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70192,
+     "lang": "en",
+     "text": "resonance",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70192,
+     "lang": "is",
+     "text": "vok",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70193,
+     "lang": "en",
+     "text": "resonance form",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70193,
+     "lang": "en",
+     "text": "resonance structure",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70193,
+     "lang": "is",
+     "text": "vokmynd",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70194,
+     "lang": "en",
+     "text": "resonance hybrid",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70194,
+     "lang": "is",
+     "text": "vokblendingur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70195,
+     "lang": "en",
+     "text": "Lewis structure",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70195,
+     "lang": "is",
+     "text": "Lewis-mynd",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70196,
+     "lang": "en",
+     "text": "hybridization",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70196,
+     "lang": "en",
+     "text": "orbital hybridization",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70196,
+     "lang": "is",
+     "text": "svigrúmablöndun",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70197,
+     "lang": "en",
+     "text": "hybrid orbital",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70197,
+     "lang": "is",
+     "text": "blendingssvigrúm",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70198,
+     "lang": "en",
+     "text": "bonding orbital",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70198,
+     "lang": "is",
+     "text": "bindandi svigrúm",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70199,
+     "lang": "en",
+     "text": "torr",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70199,
+     "lang": "is",
+     "text": "torr",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70200,
+     "lang": "en",
+     "text": "hydroxide",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70200,
+     "lang": "is",
+     "text": "hýdroxíð",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70201,
+     "lang": "en",
+     "text": "group",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70201,
+     "lang": "is",
+     "text": "flokkur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70202,
+     "lang": "en",
+     "text": "alcohol",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70202,
+     "lang": "is",
+     "text": "alkóhól",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70203,
+     "lang": "en",
+     "text": "carbonate",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70203,
+     "lang": "is",
+     "text": "karbónat",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70204,
+     "lang": "en",
+     "text": "radioactive decay",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70204,
+     "lang": "is",
+     "text": "geislasundrun",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70205,
+     "lang": "en",
+     "text": "galvanic cell",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70205,
+     "lang": "is",
+     "text": "galvaníker",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70206,
+     "lang": "en",
+     "text": "cell",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70206,
+     "lang": "is",
+     "text": "ker",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70207,
+     "lang": "en",
+     "text": "cell potential",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70207,
+     "lang": "is",
+     "text": "kerspenna",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70208,
+     "lang": "en",
+     "text": "hole",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70208,
+     "lang": "is",
+     "text": "hol",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70209,
+     "lang": "en",
+     "text": "representative metal",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70209,
+     "lang": "is",
+     "text": "aðalflokkamálmur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70210,
+     "lang": "en",
+     "text": "elementary reaction",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70210,
+     "lang": "is",
+     "text": "grunnhvarf",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70211,
+     "lang": "en",
+     "text": "pOH",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70211,
+     "lang": "is",
+     "text": "pOH",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70212,
+     "lang": "en",
+     "text": "Lewis",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70212,
+     "lang": "is",
+     "text": "Lewis",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70213,
+     "lang": "en",
+     "text": "central metal",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70213,
+     "lang": "is",
+     "text": "miðjumálmur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70214,
+     "lang": "en",
+     "text": "ether",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70214,
+     "lang": "is",
+     "text": "eter",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70215,
+     "lang": "en",
+     "text": "dispersion force",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70215,
+     "lang": "is",
+     "text": "dreifikraftur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70216,
+     "lang": "en",
+     "text": "microstate",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70216,
+     "lang": "is",
+     "text": "örástand",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70217,
+     "lang": "en",
+     "text": "carboxylic acid",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70217,
+     "lang": "is",
+     "text": "karboxýlsýra",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70218,
+     "lang": "en",
+     "text": "ketone",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70218,
+     "lang": "is",
+     "text": "ketón",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70219,
+     "lang": "en",
+     "text": "reaction mechanism",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70219,
+     "lang": "is",
+     "text": "hvarfgangur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70220,
+     "lang": "en",
+     "text": "carbonyl group",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70220,
+     "lang": "is",
+     "text": "karbónýlhópur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70221,
+     "lang": "en",
+     "text": "chain reaction",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70221,
+     "lang": "is",
+     "text": "keðjuhvarf",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70222,
+     "lang": "en",
+     "text": "reaction order",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70222,
+     "lang": "is",
+     "text": "stig efnahvarfs",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70223,
+     "lang": "en",
+     "text": "hydrocarbon",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70223,
+     "lang": "is",
+     "text": "vetniskolefni",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70224,
+     "lang": "en",
+     "text": "laser",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70224,
+     "lang": "is",
+     "text": "leysir",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70225,
+     "lang": "en",
+     "text": "steam",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70225,
+     "lang": "is",
+     "text": "gufa",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70226,
+     "lang": "en",
+     "text": "electronegative",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70226,
+     "lang": "is",
+     "text": "rafneikvæður",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70227,
+     "lang": "en",
+     "text": "phase transition",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70227,
+     "lang": "is",
+     "text": "fasabreyting",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70228,
+     "lang": "en",
+     "text": "carbon monoxide",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70228,
+     "lang": "is",
+     "text": "kolmónoxíð",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70229,
+     "lang": "en",
+     "text": "submerged",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70229,
+     "lang": "is",
+     "text": "á kafi",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70231,
+     "lang": "en",
+     "text": "line-bond structure",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70231,
+     "lang": "is",
+     "text": "strikamynd",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70232,
+     "lang": "en",
+     "text": "bond angle",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70232,
+     "lang": "is",
+     "text": "tengihorn",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70233,
+     "lang": "en",
+     "text": "bond length",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70233,
+     "lang": "is",
+     "text": "tengilengd",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70234,
+     "lang": "en",
+     "text": "condensed formula",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70234,
+     "lang": "en",
+     "text": "condensed structure",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70234,
+     "lang": "is",
+     "text": "þéttformúla",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70235,
+     "lang": "en",
+     "text": "radius",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70235,
+     "lang": "is",
+     "text": "radíus",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70236,
+     "lang": "en",
+     "text": "crystalline",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70236,
+     "lang": "is",
+     "text": "kristalkenndur",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70237,
+     "lang": "en",
+     "text": "bent",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70237,
+     "lang": "is",
+     "text": "boginn",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70238,
+     "lang": "en",
+     "text": "dimensional analysis",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70238,
+     "lang": "is",
+     "text": "einingagreining",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70239,
+     "lang": "en",
+     "text": "abundance",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70239,
+     "lang": "is",
+     "text": "fjöldahlutfall",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70240,
+     "lang": "en",
+     "text": "absorption",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70240,
+     "lang": "is",
+     "text": "gleypni",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70241,
+     "lang": "en",
+     "text": "general anesthetic",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70241,
+     "lang": "is",
+     "text": "svæfingarlyf",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70242,
+     "lang": "en",
+     "text": "molecular compound",
+     "rank": 1,
+     "source": "house-style"
+    },
+    {
+     "concept_id": 70242,
+     "lang": "is",
+     "text": "sameindaefni",
+     "rank": 1,
+     "source": "house-style"
+    }
+   ],
+   "omitted": {
+    "source": "idordabankinn",
+    "count": 57403,
+    "sha256": "5398b3f86701068fcc724b93bc897d8bc177c83a6f92c3bf2f947e209b21bb60",
+    "note": "sha256 of JSON.stringify(rows), in the full file's order, as the snapshot tool hashes"
+   }
+  }
+ },
+ "derived": {
+  "note": "Under SD3's recommendation. Recompute from `stores` if SD3 is amended.",
+  "rulingHeadwords": {
+   "count": 391,
+   "headwords": [
+    "absorption",
+    "abundance",
+    "accuracy",
+    "acid-base indicator",
+    "acid-base reaction",
+    "actinide series",
+    "active electrode",
+    "actual yield",
+    "addition",
+    "addition reaction",
+    "adhesive force",
+    "alcohol",
+    "alkaline battery",
+    "alloy",
+    "alpha decay",
+    "alpha particle",
+    "amorphous",
+    "amorphous solid",
+    "amphiprotic",
+    "amphoteric",
+    "amplitude",
+    "analyte",
+    "anode",
+    "aromatic hydrocarbon",
+    "arrhenius equation",
+    "atom",
+    "atomic mass",
+    "atomic orbital",
+    "becquerel",
+    "bent",
+    "beta decay",
+    "bidentate ligand",
+    "bimolecular reaction",
+    "binary acid",
+    "binary compound",
+    "binding energy per nucleon",
+    "body-centered cubic solid",
+    "body-centered cubic unit cell",
+    "bohr’s model of the hydrogen atom",
+    "bomb calorimeter",
+    "bond angle",
+    "bond dipole moment",
+    "bond energy",
+    "bond length",
+    "bond order",
+    "bonding orbital",
+    "born-haber cycle",
+    "bragg equation",
+    "brønsted-lowry acid",
+    "brønsted-lowry base",
+    "buffer capacity",
+    "calorie",
+    "calorimeter",
+    "calorimetry",
+    "carbon monoxide",
+    "carbonate",
+    "carbonyl group",
+    "carboxylic acid",
+    "cathode",
+    "cathodic protection",
+    "cell",
+    "cell notation",
+    "cell potential",
+    "celsius",
+    "central metal",
+    "chain reaction",
+    "chelate",
+    "chelating ligand",
+    "chemical change",
+    "chemical property",
+    "chemical reduction",
+    "chemical thermodynamics",
+    "collision theory",
+    "colloid",
+    "color-change interval",
+    "combustion analysis",
+    "common ion effect",
+    "complementary color",
+    "complete ionic equation",
+    "complex ion",
+    "concentrated",
+    "concentration cell",
+    "condensed formula",
+    "condensed structure",
+    "containment system",
+    "control rod",
+    "coordination compound",
+    "coordination number",
+    "coordination sphere",
+    "covalent compound",
+    "covalent network solid",
+    "critical mass",
+    "critical point",
+    "crystal field splitting",
+    "crystal field theory",
+    "crystalline",
+    "crystalline solid",
+    "cubic closest packing",
+    "curie",
+    "d orbital",
+    "dalton’s atomic theory",
+    "daughter nuclide",
+    "decay",
+    "degenerate orbitals",
+    "degree celsius",
+    "degree centigrade",
+    "deposition",
+    "diamagnetism",
+    "diffraction",
+    "dimensional analysis",
+    "dipole moment",
+    "dipole-dipole attraction",
+    "dispersed phase",
+    "dispersion force",
+    "disproportionation reaction",
+    "dissociation",
+    "dissociation constant",
+    "donor atom",
+    "dry cell",
+    "dynamic equilibrium",
+    "effective nuclear charge",
+    "eg orbitals",
+    "electrode potential",
+    "electrolyte",
+    "electrolytic cell",
+    "electron affinity",
+    "electron capture",
+    "electron volt",
+    "electron-pair geometry",
+    "electronegative",
+    "electronegativity",
+    "elementary reaction",
+    "emission",
+    "ether",
+    "excess reactant",
+    "extensive property",
+    "external beam radiation therapy",
+    "face-centered cubic solid",
+    "face-centered cubic unit cell",
+    "first transition series",
+    "fissile",
+    "fission",
+    "fissionable",
+    "formal charge",
+    "fourth transition series",
+    "free radical",
+    "freezing point",
+    "freezing point depression",
+    "frequency factor",
+    "fuel cell",
+    "functional group",
+    "fusion reactor",
+    "galvanic cell",
+    "gamma emission",
+    "gamma ray",
+    "geiger counter",
+    "general anesthetic",
+    "geometric isomers",
+    "gibbs free energy change",
+    "graham’s law of effusion",
+    "gravimetric analysis",
+    "ground state",
+    "group",
+    "half-life of a reaction",
+    "half-reaction",
+    "heat",
+    "henderson-hasselbalch equation",
+    "heterogeneous catalyst",
+    "heterogeneous equilibria",
+    "heterogeneous mixture",
+    "hexagonal closest packing",
+    "high-spin complex",
+    "hole",
+    "homogeneous mixture",
+    "homonuclear diatomic molecule",
+    "hybrid orbital",
+    "hybridization",
+    "hydrocarbon",
+    "hydrometallurgy",
+    "hydroxide",
+    "hypervalent molecule",
+    "ideal gas law",
+    "indicator",
+    "induced dipole",
+    "inert electrode",
+    "inert pair effect",
+    "insoluble",
+    "instantaneous dipole",
+    "instantaneous rate",
+    "integrated rate law",
+    "intensive property",
+    "interference pattern",
+    "interhalogen",
+    "intermolecular force",
+    "ionic compound",
+    "isoelectronic",
+    "isomers",
+    "isomorphous",
+    "joule",
+    "ketone",
+    "kinetic molecular theory",
+    "lanthanide series",
+    "laser",
+    "lattice energy",
+    "law of conservation of matter",
+    "law of constant composition",
+    "law of definite proportions",
+    "law of mass action",
+    "law of multiple proportions",
+    "lewis",
+    "lewis acid-base adduct",
+    "lewis structure",
+    "ligand",
+    "line spectrum",
+    "line-bond structure",
+    "linear combination of atomic orbitals",
+    "linkage isomer",
+    "lithium ion battery",
+    "lone pair",
+    "low-spin complex",
+    "macroscopic domain",
+    "mass defect",
+    "metalloid",
+    "microscopic domain",
+    "microstate",
+    "mixture",
+    "molality",
+    "molar solubility",
+    "mole fraction",
+    "molecular compound",
+    "molecular orbital diagram",
+    "molecular orbital theory",
+    "molecular solid",
+    "molecular structure",
+    "monatomic ion",
+    "monodentate",
+    "node",
+    "nomenclature",
+    "nonelectrolyte",
+    "nonspontaneous process",
+    "normal boiling point",
+    "nuclear binding energy",
+    "nuclear moderator",
+    "nuclear transmutation",
+    "nucleon",
+    "nuclide",
+    "nutritional calorie",
+    "octahedral hole",
+    "octet rule",
+    "optical isomer",
+    "orbital diagram",
+    "orbital hybridization",
+    "osmosis",
+    "osmotic pressure",
+    "oxidation-reduction reaction",
+    "paramagnetism",
+    "parent nuclide",
+    "partially miscible",
+    "particle accelerator",
+    "parts per billion",
+    "parts per million",
+    "pauli exclusion principle",
+    "percent composition",
+    "percent yield",
+    "periodic law",
+    "periodic table",
+    "phase diagram",
+    "phase transition",
+    "pi bond",
+    "poh",
+    "polarizability",
+    "polyatomic ion",
+    "polydentate ligand",
+    "polymorph",
+    "porous",
+    "positron [formula] or [formula]",
+    "positron emission",
+    "precipitation reaction",
+    "precision",
+    "primary cell",
+    "principal quantum number",
+    "product",
+    "radiation absorbed dose",
+    "radioactive decay",
+    "radioactive decay series",
+    "radioactive material",
+    "radioactive tracer",
+    "radiocarbon dating",
+    "radiometric dating",
+    "radius",
+    "rare earth element",
+    "rate law",
+    "rate of diffusion",
+    "rate of reaction",
+    "rate-determining step",
+    "reaction diagram",
+    "reaction mechanism",
+    "reaction order",
+    "reaction quotient",
+    "reactor coolant",
+    "relative biological effectiveness",
+    "representative element",
+    "representative metal",
+    "resonance",
+    "resonance form",
+    "resonance hybrid",
+    "resonance structure",
+    "reversible process",
+    "reversible reaction",
+    "roentgen equivalent man",
+    "rounding",
+    "s orbital",
+    "s-p mixing",
+    "sacrificial anode",
+    "saturated hydrocarbon",
+    "second transition series",
+    "secondary cell",
+    "secondary quantum number",
+    "series",
+    "sigma bond",
+    "significant figures",
+    "silicate",
+    "simple cubic structure",
+    "simple cubic unit cell",
+    "single bond",
+    "single-displacement reaction",
+    "skeletal structure",
+    "smelting",
+    "solubility",
+    "soluble",
+    "solute",
+    "solvation",
+    "sp hybrid orbital",
+    "sp2 hybrid orbital",
+    "sp3 hybrid orbital",
+    "sp3d hybrid orbital",
+    "sp3d2 hybrid orbital",
+    "spatial isomers",
+    "specific heat capacity",
+    "spontaneous change",
+    "spontaneous process",
+    "square planar",
+    "standard cell potential [formula]",
+    "standard conditions of temperature and pressure",
+    "standard electrode potential",
+    "standard free energy change",
+    "standard free energy of formation [formula]",
+    "standard hydrogen electrode",
+    "standing wave",
+    "steam",
+    "stoichiometric factor",
+    "stoichiometry",
+    "strong electrolyte",
+    "structural isomer",
+    "submerged",
+    "subshell",
+    "substituent",
+    "substituted",
+    "substitution reaction",
+    "supercritical fluid",
+    "supersaturated",
+    "suspension",
+    "t2g orbitals",
+    "temperature",
+    "termolecular reaction",
+    "tetrahedral",
+    "tetrahedral hole",
+    "theoretical yield",
+    "thermal energy",
+    "thermochemistry",
+    "third transition series",
+    "titrant",
+    "torr",
+    "transmutation reaction",
+    "transuranium element",
+    "trigonal planar",
+    "triple bond",
+    "tyndall effect",
+    "unimolecular reaction",
+    "unit conversion factor",
+    "vacancy",
+    "valence",
+    "valence shell electron-pair repulsion theory",
+    "vapor pressure",
+    "vapor pressure of water",
+    "wave-particle duality",
+    "weak electrolyte",
+    "π bonding orbital",
+    "π* bonding orbital",
+    "σ bonding orbital",
+    "σ* bonding orbital"
+   ]
+  },
+  "committeeConfirmed": {
+   "count": 0,
+   "note": "No store records a committee confirmation at S."
+  }
+ },
+ "publicCopy": {
+  "note": "Reduced copy of the SD3 baseline snapshot: the Íðorðabankinn concept-term rows are replaced by their count and sha256 ([USER] 2026-10-31; their re-release is unchecked). The full file is kept privately, in three verified copies.",
+  "fullFileSha256": "5ef3cd1e04d01f989027243a4f0330f50c3ea41b433950f4ec36de32af2443d9",
+  "reducedBy": "experiments/terminology-consistency/results/2026-10-31/sd3-baseline-public.mjs"
+ },
+ "sd3": {
+  "rule": "Skerfur plan SD3: a ruling dated before S counts in the baseline whether or not it has been applied yet.",
+  "toolHeadwords": 391,
+  "laterRulingSet": {
+   "path": "experiments/terminology-consistency/results/2026-10-30/ruling-set-2026-10-30.json",
+   "sha256": "f764ffa2395f5a787a3051729c45232a5a7896df6f008a0467a08e2a629dade2",
+   "rulings": 398
+  },
+  "addedHeadwords": {
+   "count": 12,
+   "headwords": [
+    "concentrated acid",
+    "concentrated base",
+    "diffract",
+    "heat capacity",
+    "heat exchanger",
+    "heat of combustion",
+    "heat transfer",
+    "valence band",
+    "valence bond",
+    "valence electron",
+    "valence orbital",
+    "valence shell"
+   ]
+  },
+  "headwordsWithARulingBeforeS": 403,
+  "committeeConfirmed": {
+   "count": 0,
+   "note": "No store records a committee confirmation at S."
+  }
+ }
+}
