@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 1280 784" class="wf" role="img" aria-label="Planned workflow: pure MT is kept, machine-revised term suggestions are prepared, editors review behind an editing gate with measurement on, approved segments pass an apply gate to the reviewed book, and open releases pass a release gate; audio is generated from reviewed chapters.">
+<style>
+.bg{fill:#f7f9fb}
+text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#18222e}
+.t{font-size:13px;font-weight:650}.s{font-size:11.5px;fill:#465364}
+.m{font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10.5px;fill:#465364}
+.lbl{font-size:11px;fill:#465364;paint-order:stroke;stroke:#f7f9fb;stroke-width:4px;stroke-linejoin:round}
+.hdr{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#465364}
+.lg{font-size:11px;fill:#465364}.ax{font-size:10.5px;fill:#465364}
+.gatet{font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:#b53d22}
+.gater{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#b53d22}
+.numt{font-size:11px;font-weight:700;fill:#ffffff}
+.tagt{font-size:9.5px;font-weight:700;letter-spacing:.04em;fill:#ffffff}
+.bx{stroke-width:1.4}.bx.dash{stroke-dasharray:5 4}
+.ar{fill:none;stroke:#5d6b7c;stroke-width:1.5}.ar.dash{stroke-dasharray:5 4}
+.ahp{fill:#5d6b7c}.ln{fill:none;stroke:#9aa6b4;stroke-width:1;stroke-dasharray:3 3}
+.gate{fill:#f6d9cf;stroke:#c4452a;stroke-width:1.2}
+.band{fill:#eef2f6}.bar{rx:3}
+.k-src .bx{fill:#eceff3;stroke:#8592a2}.k-src .num,.k-src .tag{fill:#6b7787}
+.k-mt .bx{fill:#e1ebfa;stroke:#3a6cb4}.k-mt .num,.k-mt .tag,.k-mt .bar{fill:#3a6cb4}
+.k-ai .bx{fill:#ede5fa;stroke:#7549c0}.k-ai .num,.k-ai .tag,.k-ai .bar{fill:#7549c0}
+.k-hum .bx{fill:#dff2e7;stroke:#2c8656}.k-hum .num,.k-hum .tag,.k-hum .bar{fill:#2c8656}
+.k-out .bx{fill:#fbedd5;stroke:#b0731b}.k-out .num,.k-out .tag,.k-out .bar{fill:#b0731b}
+.k-term .bx{fill:#fae3e9;stroke:#b3426a}.k-term .num,.k-term .tag,.k-term .bar{fill:#b3426a}
+.k-meas .bx{fill:#ddf0f3;stroke:#24828f;stroke-dasharray:5 3}.k-meas .tag,.k-meas .bar{fill:#24828f}
+.k-note .bx{fill:none;stroke:#9aa6b4;stroke-dasharray:4 4}
+.k-warn .bx{fill:none;stroke:#c4452a;stroke-dasharray:4 4}
+.warnt{font-size:10.5px;fill:#b53d22}
+.ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
+.ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
+</style>
+<defs><marker id="ah-plan-overview-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<rect y="96" width="1280" height="784" class="bg"/>
+<g class="k-src"><rect x="30" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="48" cy="220" r="10" class="num"/>
+<text x="48" y="224" class="numt" text-anchor="middle">1</text>
+<text x="42" y="250" class="t">OpenStax textbook</text>
+<text x="42" y="269" class="s">English source,</text>
+<text x="42" y="284" class="s">re-extracted</text>
+</g>
+<g class="k-mt"><rect x="238" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="256" cy="220" r="10" class="num"/>
+<text x="256" y="224" class="numt" text-anchor="middle">2</text>
+<text x="250" y="250" class="t">Machine translation</text>
+<text x="250" y="269" class="s">kept exactly as</text>
+<text x="250" y="284" class="s">received</text>
+</g>
+<g class="k-mt"><rect x="250" y="316" width="52" height="17" rx="8.5" class="tag"/></g>
+<text x="257" y="328" class="tagt" text-anchor="start">LAYER 1</text>
+<g class="k-ai"><rect x="446" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="464" cy="220" r="10" class="num"/>
+<text x="464" y="224" class="numt" text-anchor="middle">3</text>
+<text x="458" y="250" class="t">Suggestions</text>
+<text x="458" y="269" class="s">house-style term rules</text>
+<text x="458" y="284" class="s">and a narrow AI pass</text>
+<text x="458" y="299" class="s">on ruled terms</text>
+</g>
+<g class="k-ai"><rect x="458" y="316" width="52" height="17" rx="8.5" class="tag"/></g>
+<text x="465" y="328" class="tagt" text-anchor="start">LAYER 2</text>
+<g class="k-hum"><rect x="654" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="672" cy="220" r="10" class="num"/>
+<text x="672" y="224" class="numt" text-anchor="middle">4</text>
+<text x="666" y="250" class="t">Editors review</text>
+<text x="666" y="269" class="s">accept or reject each</text>
+<text x="666" y="284" class="s">suggestion, edit the</text>
+<text x="666" y="299" class="s">rest by hand</text>
+</g>
+<g class="k-hum"><rect x="862" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="880" cy="220" r="10" class="num"/>
+<text x="880" y="224" class="numt" text-anchor="middle">5</text>
+<text x="874" y="250" class="t">Approved text</text>
+<text x="874" y="269" class="s">only what an editor</text>
+<text x="874" y="284" class="s">changed or accepted</text>
+<text x="874" y="299" class="s">counts as human</text>
+</g>
+<g class="k-hum"><rect x="874" y="316" width="52" height="17" rx="8.5" class="tag"/></g>
+<text x="881" y="328" class="tagt" text-anchor="start">LAYER 3</text>
+<g class="k-out"><rect x="1070" y="220" width="180" height="122" rx="6" class="bx"/>
+<circle cx="1088" cy="220" r="10" class="num"/>
+<text x="1088" y="224" class="numt" text-anchor="middle">6</text>
+<text x="1082" y="250" class="t">Reviewed book</text>
+<text x="1082" y="269" class="s">online chapter by</text>
+<text x="1082" y="284" class="s">chapter, MT banner</text>
+<text x="1082" y="299" class="s">removed</text>
+</g>
+<polyline points="210,276 236,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="418,276 444,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="626,276 652,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="834,276 860,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<polyline points="1042,276 1068,276" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<rect x="636.0" y="190" width="8" height="172" class="gate"/>
+<text x="640" y="180" class="gatet" text-anchor="middle">EDITING GATE</text>
+<rect x="844.0" y="190" width="8" height="172" class="gate"/>
+<text x="848" y="180" class="gatet" text-anchor="middle">APPLY GATE</text>
+<polyline points="328.0,220 328.0,140 1160.0,140 1160.0,218" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<text x="744.0" y="128" class="lbl" text-anchor="middle">The MT preview stays online until a chapter’s review is published.</text>
+<g class="k-term"><rect x="446" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="458" y="472" class="t">Term tools</text>
+<text x="458" y="491" class="s">find terms by lemma</text>
+<text x="458" y="506" class="s">and word class; push a</text>
+<text x="458" y="521" class="s">decision into every</text>
+<text x="458" y="536" class="s">inflected form</text>
+</g>
+<polyline points="536.0,450 536.0,410 694,410 694,344" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<text x="544.0" y="402" class="lbl" text-anchor="start">B2 · B3</text>
+<g class="k-meas"><rect x="654" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="666" y="472" class="t">Measurement</text>
+<text x="666" y="491" class="s">active editing time and</text>
+<text x="666" y="506" class="s">edit distance; reported</text>
+<text x="666" y="521" class="s">only in aggregate</text>
+</g>
+<polyline points="774.0,342 774.0,448" class="ar dash " marker-end="url(#ah-plan-overview-en)"/>
+<text x="782.0" y="430" class="lbl" text-anchor="start">B1 records</text>
+<g class="k-out"><rect x="862" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="874" y="472" class="t">Open releases</text>
+<text x="874" y="491" class="s">TMX, parallel corpus,</text>
+<text x="874" y="506" class="s">chemistry term</text>
+<text x="874" y="521" class="s">collection · CC BY 4.0</text>
+</g>
+<polyline points="952.0,342 952.0,448" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<rect x="930.0" y="388" width="44" height="8" class="gate"/>
+<text x="980.0" y="396" class="gatet" text-anchor="start">RELEASE GATE</text>
+<g class="k-out"><rect x="1070" y="450" width="180" height="104" rx="6" class="bx"/>
+<text x="1082" y="472" class="t">Audio</text>
+<text x="1082" y="491" class="s">speech synthesis of</text>
+<text x="1082" y="506" class="s">reviewed chapters,</text>
+<text x="1082" y="521" class="s">self-hosted</text>
+</g>
+<polyline points="1160.0,342 1160.0,448" class="ar " marker-end="url(#ah-plan-overview-en)"/>
+<text x="1168.0" y="430" class="lbl" text-anchor="start">C</text>
+<g class="k-note"><rect x="30" y="450" width="388" height="104" rx="6" class="bx"/>
+<text x="42" y="472" class="t">Research comparison</text>
+<text x="42" y="491" class="s">Layers 1, 2 and 3 are stored apart, so a paper</text>
+<text x="42" y="506" class="s">can compare pure MT, AI-revised MT and</text>
+<text x="42" y="521" class="s">human-edited text, with cost and editing time.</text>
+</g>
+<g class="k-src"><rect x="30" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="50" y="611" class="lg" text-anchor="start">Source</text>
+<g class="k-mt"><rect x="113.62" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="133.62" y="611" class="lg" text-anchor="start">Machine translation</text>
+<g class="k-ai"><rect x="278.75" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="298.75" y="611" class="lg" text-anchor="start">Machine-revised suggestions</text>
+<g class="k-hum"><rect x="494.03999999999996" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="514.04" y="611" class="lg" text-anchor="start">Human editing</text>
+<g class="k-meas"><rect x="621.55" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="641.55" y="611" class="lg" text-anchor="start">Measurement</text>
+<g class="k-term"><rect x="736.52" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="756.52" y="611" class="lg" text-anchor="start">Terminology</text>
+<g class="k-out"><rect x="851.49" y="600" width="14" height="14" rx="3" class="bx"/></g>
+<text x="871.49" y="611" class="lg" text-anchor="start">Output</text>
+<text x="30" y="652" class="hdr" text-anchor="start">THE PROJECT YEAR</text>
+<text x="160" y="652" class="s" text-anchor="start">S = 1 November 2026 · final report due 1 December 2027</text>
+<text x="242.0" y="674" class="ax" text-anchor="middle">Nov</text>
+<polyline points="200,680 200,820" class="ln"/>
+<text x="326.0" y="674" class="ax" text-anchor="middle">Dec</text>
+<polyline points="284,680 284,820" class="ln"/>
+<text x="410.0" y="674" class="ax" text-anchor="middle">Jan</text>
+<polyline points="368,680 368,820" class="ln"/>
+<text x="494.0" y="674" class="ax" text-anchor="middle">Feb</text>
+<polyline points="452,680 452,820" class="ln"/>
+<text x="578.0" y="674" class="ax" text-anchor="middle">Mar</text>
+<polyline points="536,680 536,820" class="ln"/>
+<text x="662.0" y="674" class="ax" text-anchor="middle">Apr</text>
+<polyline points="620,680 620,820" class="ln"/>
+<text x="746.0" y="674" class="ax" text-anchor="middle">May</text>
+<polyline points="704,680 704,820" class="ln"/>
+<text x="830.0" y="674" class="ax" text-anchor="middle">Jun</text>
+<polyline points="788,680 788,820" class="ln"/>
+<text x="914.0" y="674" class="ax" text-anchor="middle">Jul</text>
+<polyline points="872,680 872,820" class="ln"/>
+<text x="998.0" y="674" class="ax" text-anchor="middle">Aug</text>
+<polyline points="956,680 956,820" class="ln"/>
+<text x="1082.0" y="674" class="ax" text-anchor="middle">Sep</text>
+<polyline points="1040,680 1040,820" class="ln"/>
+<text x="1166.0" y="674" class="ax" text-anchor="middle">Oct</text>
+<polyline points="1124,680 1124,820" class="ln"/>
+<polyline points="1208,680 1208,820" class="ln"/>
+<text x="190" y="702" class="ax" text-anchor="end">Measurement (B1)</text>
+<g class="k-meas"><rect x="202" y="692" width="248" height="14" rx="3" class="bar"/></g>
+<text x="190" y="726" class="ax" text-anchor="end">Term detection (B2)</text>
+<g class="k-term"><rect x="202" y="716" width="332" height="14" rx="3" class="bar"/></g>
+<text x="190" y="750" class="ax" text-anchor="end">Editing (A)</text>
+<g class="k-hum"><rect x="286" y="740" width="752" height="14" rx="3" class="bar"/></g>
+<text x="190" y="774" class="ax" text-anchor="end">Term propagation (B3)</text>
+<g class="k-term"><rect x="538" y="764" width="416" height="14" rx="3" class="bar"/></g>
+<text x="190" y="798" class="ax" text-anchor="end">Audio (C)</text>
+<g class="k-out"><rect x="706" y="788" width="500" height="14" rx="3" class="bar"/></g>
+<text x="190" y="822" class="ax" text-anchor="end">Open releases (D)</text>
+<g class="k-out"><path d="M1200,811 l8,8 l-8,8 l-8,-8 z" class="bar"/></g>
+<text x="1186" y="823" class="ax" text-anchor="end">by the end of month 12</text>
+<polyline points="279.8,682 279.8,830" class="ms"/>
+<text x="283.8" y="842" class="ax" text-anchor="start">editing gate ≈ 29 Nov–6 Dec</text>
+<polyline points="452,682 452,830" class="ms"/>
+<text x="456" y="858" class="ax" text-anchor="start">apply gate + dress rehearsal by month 3</text>
+<text x="1214" y="674" class="ax" text-anchor="start">→ report</text>
+</svg>

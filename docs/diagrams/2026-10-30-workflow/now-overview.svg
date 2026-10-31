@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 80 1280 520" class="wf" role="img" aria-label="Current workflow: OpenStax source is split into segments, machine translated, reviewed by editors, approved by a head editor and rebuilt as web pages; machine translation is published as a preview first.">
+<style>
+.bg{fill:#f7f9fb}
+text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#18222e}
+.t{font-size:13px;font-weight:650}.s{font-size:11.5px;fill:#465364}
+.m{font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10.5px;fill:#465364}
+.lbl{font-size:11px;fill:#465364;paint-order:stroke;stroke:#f7f9fb;stroke-width:4px;stroke-linejoin:round}
+.hdr{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#465364}
+.lg{font-size:11px;fill:#465364}.ax{font-size:10.5px;fill:#465364}
+.gatet{font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:#b53d22}
+.gater{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#b53d22}
+.numt{font-size:11px;font-weight:700;fill:#ffffff}
+.tagt{font-size:9.5px;font-weight:700;letter-spacing:.04em;fill:#ffffff}
+.bx{stroke-width:1.4}.bx.dash{stroke-dasharray:5 4}
+.ar{fill:none;stroke:#5d6b7c;stroke-width:1.5}.ar.dash{stroke-dasharray:5 4}
+.ahp{fill:#5d6b7c}.ln{fill:none;stroke:#9aa6b4;stroke-width:1;stroke-dasharray:3 3}
+.gate{fill:#f6d9cf;stroke:#c4452a;stroke-width:1.2}
+.band{fill:#eef2f6}.bar{rx:3}
+.k-src .bx{fill:#eceff3;stroke:#8592a2}.k-src .num,.k-src .tag{fill:#6b7787}
+.k-mt .bx{fill:#e1ebfa;stroke:#3a6cb4}.k-mt .num,.k-mt .tag,.k-mt .bar{fill:#3a6cb4}
+.k-ai .bx{fill:#ede5fa;stroke:#7549c0}.k-ai .num,.k-ai .tag,.k-ai .bar{fill:#7549c0}
+.k-hum .bx{fill:#dff2e7;stroke:#2c8656}.k-hum .num,.k-hum .tag,.k-hum .bar{fill:#2c8656}
+.k-out .bx{fill:#fbedd5;stroke:#b0731b}.k-out .num,.k-out .tag,.k-out .bar{fill:#b0731b}
+.k-term .bx{fill:#fae3e9;stroke:#b3426a}.k-term .num,.k-term .tag,.k-term .bar{fill:#b3426a}
+.k-meas .bx{fill:#ddf0f3;stroke:#24828f;stroke-dasharray:5 3}.k-meas .tag,.k-meas .bar{fill:#24828f}
+.k-note .bx{fill:none;stroke:#9aa6b4;stroke-dasharray:4 4}
+.k-warn .bx{fill:none;stroke:#c4452a;stroke-dasharray:4 4}
+.warnt{font-size:10.5px;fill:#b53d22}
+.ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
+.ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
+</style>
+<defs><marker id="ah-now-overview-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<rect y="80" width="1280" height="520" class="bg"/>
+<g class="k-src"><rect x="30" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="48" cy="210" r="10" class="num"/>
+<text x="48" y="214" class="numt" text-anchor="middle">1</text>
+<text x="42" y="240" class="t">OpenStax textbook</text>
+<text x="42" y="259" class="s">English source files</text>
+<text x="42" y="274" class="s">(CNXML)</text>
+</g>
+<g class="k-src"><rect x="238" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="256" cy="210" r="10" class="num"/>
+<text x="256" y="214" class="numt" text-anchor="middle">2</text>
+<text x="250" y="240" class="t">Split into segments</text>
+<text x="250" y="259" class="s">sentences, paragraphs,</text>
+<text x="250" y="274" class="s">each with a fixed id</text>
+</g>
+<g class="k-mt"><rect x="446" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="464" cy="210" r="10" class="num"/>
+<text x="464" y="214" class="numt" text-anchor="middle">3</text>
+<text x="458" y="240" class="t">Machine translation</text>
+<text x="458" y="259" class="s">Málstaður API</text>
+<text x="458" y="274" class="s">(Miðeind)</text>
+</g>
+<g class="k-hum"><rect x="654" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="672" cy="210" r="10" class="num"/>
+<text x="672" y="214" class="numt" text-anchor="middle">4</text>
+<text x="666" y="240" class="t">Editors review</text>
+<text x="666" y="259" class="s">in Ritstjóri, the</text>
+<text x="666" y="274" class="s">web-based editor</text>
+</g>
+<g class="k-hum"><rect x="862" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="880" cy="210" r="10" class="num"/>
+<text x="880" y="214" class="numt" text-anchor="middle">5</text>
+<text x="874" y="240" class="t">Head editor signs off</text>
+<text x="874" y="259" class="s">saved as the faithful</text>
+<text x="874" y="274" class="s">translation</text>
+</g>
+<g class="k-out"><rect x="1070" y="210" width="180" height="112" rx="6" class="bx"/>
+<circle cx="1088" cy="210" r="10" class="num"/>
+<text x="1088" y="214" class="numt" text-anchor="middle">6</text>
+<text x="1082" y="240" class="t">Web pages built</text>
+<text x="1082" y="259" class="s">Icelandic text put</text>
+<text x="1082" y="274" class="s">back into the book’s</text>
+<text x="1082" y="289" class="s">structure</text>
+</g>
+<polyline points="210,266 236,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="418,266 444,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="626,266 652,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="834,266 860,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="1042,266 1068,266" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<polyline points="536.0,210 536.0,140 1160.0,140 1160.0,208" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<text x="848.0" y="112" class="lbl" text-anchor="middle">MT preview goes online straight away, marked “Vélþýðing – ekki yfirfarin”.</text>
+<text x="848.0" y="126" class="lbl" text-anchor="middle">Each module switches to the reviewed text once its review is approved.</text>
+<g class="k-term"><rect x="446" y="430" width="388" height="96" rx="6" class="bx"/>
+<text x="458" y="452" class="t">Term base and glossary</text>
+<text x="458" y="471" class="s">approved Icelandic terms, sent with the</text>
+<text x="458" y="486" class="s">MT request and checked in the editor</text>
+</g>
+<polyline points="536.0,430 536.0,324" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<text x="544.0" y="380" class="lbl" text-anchor="start">terms</text>
+<polyline points="744.0,430 744.0,324" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<text x="752.0" y="380" class="lbl" text-anchor="start">term check</text>
+<g class="k-out"><rect x="862" y="430" width="180" height="96" rx="6" class="bx"/>
+<text x="874" y="452" class="t">Translation memory</text>
+<text x="874" y="471" class="s">EN–IS sentence pairs</text>
+<text x="874" y="486" class="s">(TMX), rebuilt after</text>
+<text x="874" y="501" class="s">each approval</text>
+</g>
+<polyline points="952.0,322 952.0,428" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<text x="960.0" y="380" class="lbl" text-anchor="start">rebuilt</text>
+<g class="k-out"><rect x="1070" y="430" width="180" height="96" rx="6" class="bx"/>
+<text x="1082" y="452" class="t">namsbokasafn.is</text>
+<text x="1082" y="471" class="s">the reader website,</text>
+<text x="1082" y="486" class="s">updated by a manual</text>
+<text x="1082" y="501" class="s">sync and deploy</text>
+</g>
+<polyline points="1160.0,322 1160.0,428" class="ar " marker-end="url(#ah-now-overview-en)"/>
+<text x="1168.0" y="380" class="lbl" text-anchor="start">manual sync</text>
+<g class="k-note"><rect x="30" y="430" width="388" height="96" rx="6" class="bx"/>
+<text x="42" y="452" class="t">Who does what</text>
+<text x="42" y="471" class="s">About five editors and a head editor work</text>
+<text x="42" y="486" class="s">in the browser. The project lead runs the</text>
+<text x="42" y="501" class="s">command-line tools, syncs and deploys.</text>
+</g>
+<g class="k-src"><rect x="30" y="570" width="14" height="14" rx="3" class="bx"/></g>
+<text x="50" y="581" class="lg" text-anchor="start">Source / structure</text>
+<g class="k-mt"><rect x="188.85999999999999" y="570" width="14" height="14" rx="3" class="bx"/></g>
+<text x="208.85999999999999" y="581" class="lg" text-anchor="start">Machine translation</text>
+<g class="k-hum"><rect x="353.99" y="570" width="14" height="14" rx="3" class="bx"/></g>
+<text x="373.99" y="581" class="lg" text-anchor="start">Human editing</text>
+<g class="k-term"><rect x="481.5" y="570" width="14" height="14" rx="3" class="bx"/></g>
+<text x="501.5" y="581" class="lg" text-anchor="start">Terminology</text>
+<g class="k-out"><rect x="596.47" y="570" width="14" height="14" rx="3" class="bx"/></g>
+<text x="616.47" y="581" class="lg" text-anchor="start">Published output</text>
+</svg>

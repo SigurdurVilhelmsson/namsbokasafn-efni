@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 1000" class="wf" role="img" aria-label="Current workflow, technical: files under books/&lt;slug&gt;/ flow from 01-source through cnxml-extract and api-translate to 02-mt-output, into the Ritstjóri segment editor and sessions.db, are applied to 03-faithful-translation, injected and rendered to 05-publication, pushed by cron and synced by hand to the reader.">
+<style>
+.bg{fill:#f7f9fb}
+text{font-family:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;fill:#18222e}
+.t{font-size:13px;font-weight:650}.s{font-size:11.5px;fill:#465364}
+.m{font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10.5px;fill:#465364}
+.lbl{font-size:11px;fill:#465364;paint-order:stroke;stroke:#f7f9fb;stroke-width:4px;stroke-linejoin:round}
+.hdr{font-size:11px;font-weight:700;letter-spacing:.08em;fill:#465364}
+.lg{font-size:11px;fill:#465364}.ax{font-size:10.5px;fill:#465364}
+.gatet{font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:#b53d22}
+.gater{font-size:10.5px;font-weight:700;letter-spacing:.06em;fill:#b53d22}
+.numt{font-size:11px;font-weight:700;fill:#ffffff}
+.tagt{font-size:9.5px;font-weight:700;letter-spacing:.04em;fill:#ffffff}
+.bx{stroke-width:1.4}.bx.dash{stroke-dasharray:5 4}
+.ar{fill:none;stroke:#5d6b7c;stroke-width:1.5}.ar.dash{stroke-dasharray:5 4}
+.ahp{fill:#5d6b7c}.ln{fill:none;stroke:#9aa6b4;stroke-width:1;stroke-dasharray:3 3}
+.gate{fill:#f6d9cf;stroke:#c4452a;stroke-width:1.2}
+.band{fill:#eef2f6}.bar{rx:3}
+.k-src .bx{fill:#eceff3;stroke:#8592a2}.k-src .num,.k-src .tag{fill:#6b7787}
+.k-mt .bx{fill:#e1ebfa;stroke:#3a6cb4}.k-mt .num,.k-mt .tag,.k-mt .bar{fill:#3a6cb4}
+.k-ai .bx{fill:#ede5fa;stroke:#7549c0}.k-ai .num,.k-ai .tag,.k-ai .bar{fill:#7549c0}
+.k-hum .bx{fill:#dff2e7;stroke:#2c8656}.k-hum .num,.k-hum .tag,.k-hum .bar{fill:#2c8656}
+.k-out .bx{fill:#fbedd5;stroke:#b0731b}.k-out .num,.k-out .tag,.k-out .bar{fill:#b0731b}
+.k-term .bx{fill:#fae3e9;stroke:#b3426a}.k-term .num,.k-term .tag,.k-term .bar{fill:#b3426a}
+.k-meas .bx{fill:#ddf0f3;stroke:#24828f;stroke-dasharray:5 3}.k-meas .tag,.k-meas .bar{fill:#24828f}
+.k-note .bx{fill:none;stroke:#9aa6b4;stroke-dasharray:4 4}
+.k-warn .bx{fill:none;stroke:#c4452a;stroke-dasharray:4 4}
+.warnt{font-size:10.5px;fill:#b53d22}
+.ar.prev{stroke:#3a6cb4;stroke-dasharray:6 3}
+.ms{fill:none;stroke:#c4452a;stroke-width:1.2;stroke-dasharray:4 3}
+</style>
+<defs><marker id="ah-now-technical-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahp"/></marker></defs>
+<rect y="0" width="1760" height="1000" class="bg"/>
+<rect x="10" y="38" width="1740" height="174" rx="8" class="band"/>
+<text x="24" y="66" class="hdr" text-anchor="start">MACHINE</text>
+<text x="24" y="82" class="s" text-anchor="start">CLI tools</text>
+<rect x="10" y="278" width="1740" height="174" rx="8" class="band"/>
+<text x="24" y="306" class="hdr" text-anchor="start">EDITING</text>
+<text x="24" y="322" class="s" text-anchor="start">Ritstjóri server</text>
+<rect x="10" y="518" width="1740" height="174" rx="8" class="band"/>
+<text x="24" y="546" class="hdr" text-anchor="start">BUILD</text>
+<text x="24" y="562" class="s" text-anchor="start">books/&lt;slug&gt;/</text>
+<rect x="10" y="758" width="1740" height="174" rx="8" class="band"/>
+<text x="24" y="786" class="hdr" text-anchor="start">DELIVERY</text>
+<text x="24" y="802" class="s" text-anchor="start">git + reader</text>
+<g class="k-src"><rect x="140" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="152" y="82" class="t">01-source/</text>
+<text x="152" y="101" class="s">OpenStax CNXML, English</text>
+<text x="152" y="116" class="s">read-only: the licence</text>
+<text x="152" y="131" class="s">copy (CC BY vintage)</text>
+</g>
+<g class="k-src"><rect x="416" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="428" y="82" class="t">02-for-mt/ · 02-structure/</text>
+<text x="428" y="101" class="s">EN segments, SEG-id markers</text>
+<text x="428" y="116" class="m">[[i:…]] [[xref:…]] [[MATH:n]]</text>
+<text x="428" y="131" class="s">structure + equations JSON</text>
+</g>
+<g class="k-mt"><rect x="692" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="704" y="82" class="t">02-mt-output/</text>
+<text x="704" y="101" class="s">pure MT, *.is.md</text>
+<text x="704" y="116" class="s">*-provenance.json: arm,</text>
+<text x="704" y="131" class="s">term count, cost · read-only</text>
+</g>
+<g class="k-term"><rect x="968" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="980" y="82" class="t">glossary-unified.json</text>
+<text x="980" y="101" class="s">exported from the concept</text>
+<text x="980" y="116" class="s">model by the 2-hourly cron</text>
+<text x="980" y="131" class="s">(three write gates)</text>
+</g>
+<g class="k-out"><rect x="1244" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="1256" y="82" class="t">Translated figures</text>
+<text x="1256" y="101" class="s">label text translated into</text>
+<text x="1256" y="116" class="s">new image files in media/</text>
+<text x="1256" y="131" class="m">image-mapping.json</text>
+</g>
+<g class="k-note"><rect x="1520" y="60" width="210" height="130" rx="6" class="bx"/>
+<text x="1532" y="82" class="t">Free checks (0 ISK)</text>
+<text x="1532" y="101" class="s">source-roundtrip-check</text>
+<text x="1532" y="116" class="s">render-oracle-check</text>
+<text x="1532" y="131" class="s">validate · fidelity check</text>
+</g>
+<polyline points="350,110 414,110" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="383.0" y="102" class="lbl" text-anchor="middle">extract</text>
+<polyline points="626,110 690,110" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="659.0" y="102" class="lbl" text-anchor="middle">translate</text>
+<polyline points="968,140 904,140" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="935.0" y="132" class="lbl" text-anchor="middle">terms</text>
+<text x="935.0" y="158" class="lbl" text-anchor="middle">1 arm</text>
+<text x="659.0" y="126" class="lbl" text-anchor="middle">Málstaður</text>
+<g class="k-hum"><rect x="140" y="300" width="210" height="130" rx="6" class="bx"/>
+<text x="152" y="322" class="t">Editors (~5)</text>
+<text x="152" y="341" class="s">Microsoft Entra sign-in</text>
+<text x="152" y="356" class="s">chapter assignments</text>
+<text x="152" y="371" class="s">head editors per book</text>
+</g>
+<g class="k-hum"><rect x="416" y="300" width="210" height="130" rx="6" class="bx"/>
+<text x="428" y="322" class="t">Segment editor  /editor</text>
+<text x="428" y="341" class="s">loads faithful if present,</text>
+<text x="428" y="356" class="s">else pure MT</text>
+<text x="428" y="371" class="s">term check · concordance</text>
+<text x="428" y="386" class="s">Beita víðar propagation</text>
+</g>
+<g class="k-hum"><rect x="692" y="300" width="210" height="130" rx="6" class="bx"/>
+<text x="704" y="322" class="t">sessions.db</text>
+<text x="704" y="341" class="s">segment_edits (before/after)</text>
+<text x="704" y="356" class="s">segment_acceptances</text>
+<text x="704" y="371" class="s">activity_log · concept model</text>
+</g>
+<g class="k-hum"><rect x="968" y="300" width="210" height="130" rx="6" class="bx"/>
+<text x="980" y="322" class="t">Head editor review</text>
+<text x="980" y="341" class="s">approve · reject · discuss</text>
+<text x="980" y="356" class="m">requireHeadEditor</text>
+</g>
+<g class="k-warn"><rect x="1520" y="300" width="210" height="130" rx="6" class="bx dash"/>
+<text x="1532" y="322" class="t">Being built: ai-review/</text>
+<text x="1532" y="341" class="s">rule + AI term-pass runs,</text>
+<text x="1532" y="356" class="s">logged in ledger.jsonl;</text>
+<text x="1532" y="371" class="s">not yet shown to editors</text>
+</g>
+<polyline points="350,350 414,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="383.0" y="342" class="lbl" text-anchor="middle">edit</text>
+<polyline points="626,350 690,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="659.0" y="342" class="lbl" text-anchor="middle">save</text>
+<polyline points="902,350 966,350" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="935.0" y="342" class="lbl" text-anchor="middle">submit</text>
+<polyline points="732,190 732,244 566,244 566,298" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="574" y="238" class="lbl" text-anchor="start">loadModuleForEditing</text>
+<polyline points="862,300 862,230 1028,230 1028,192" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1036" y="224" class="lbl" text-anchor="start">export-terminology</text>
+<g class="k-note"><rect x="416" y="540" width="210" height="130" rx="6" class="bx"/>
+<text x="428" y="562" class="t">Status</text>
+<text x="428" y="581" class="s">status.json + DB stages:</text>
+<text x="428" y="596" class="s">extraction → mtOutput →</text>
+<text x="428" y="611" class="s">review → inject → render</text>
+</g>
+<g class="k-out"><rect x="692" y="540" width="210" height="130" rx="6" class="bx"/>
+<text x="704" y="562" class="t">tm/ · corpus/</text>
+<text x="704" y="581" class="s">generate-tm.js pairs EN+IS</text>
+<text x="704" y="596" class="s">by SEG id (TMX), run by</text>
+<text x="704" y="611" class="s">tmService · export-corpus</text>
+</g>
+<text x="704" y="686" class="warnt" text-anchor="start">counts every faithful segment as human</text>
+<g class="k-hum"><rect x="968" y="540" width="210" height="130" rx="6" class="bx"/>
+<text x="980" y="562" class="t">03-faithful-translation/</text>
+<text x="980" y="581" class="s">reviewed *.is.md</text>
+<text x="980" y="596" class="s">+ -review-status.json</text>
+<text x="980" y="611" class="s">chemistry: held (PR #556)</text>
+</g>
+<text x="980" y="686" class="warnt" text-anchor="start">first approval writes the whole module</text>
+<g class="k-src"><rect x="1244" y="540" width="210" height="130" rx="6" class="bx"/>
+<text x="1256" y="562" class="t">03-translated/</text>
+<text x="1256" y="581" class="s">translated CNXML per</text>
+<text x="1256" y="596" class="s">module, figures swapped in</text>
+</g>
+<g class="k-out"><rect x="1520" y="540" width="210" height="130" rx="6" class="bx"/>
+<text x="1532" y="562" class="t">05-publication/</text>
+<text x="1532" y="581" class="s">mt-preview/ and faithful/</text>
+<text x="1532" y="596" class="s">semantic HTML, MathJax</text>
+<text x="1532" y="611" class="s">pre-rendered to SVG</text>
+</g>
+<polyline points="1078,430 1078,538" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1070" y="470" class="lbl" text-anchor="end">applyApprovedEdits()</text>
+<text x="1070" y="484" class="lbl" text-anchor="end">Vista í skrár / Vista + Birta</text>
+<polyline points="968,590 904,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="935.0" y="582" class="lbl" text-anchor="middle">regen</text>
+<polyline points="1178,590 1242,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1211.0" y="582" class="lbl" text-anchor="middle">inject</text>
+<polyline points="1454,590 1518,590" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1487.0" y="582" class="lbl" text-anchor="middle">render</text>
+<polyline points="1374,190 1374,538" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1382" y="360" class="lbl" text-anchor="start">swap &lt;image src&gt;</text>
+<polyline points="872,60 872,48 1211.0,48 1211.0,520 1284,520 1284,538" class="ar prev" marker-end="url(#ah-now-technical-en)"/>
+<text x="1205.0" y="44" class="lbl" text-anchor="end">mt-preview: inject pure MT, skip review</text>
+<g class="k-src"><rect x="1520" y="780" width="210" height="130" rx="6" class="bx"/>
+<text x="1532" y="802" class="t">git-backup.sh</text>
+<text x="1532" y="821" class="s">cron every 2 h: commits</text>
+<text x="1532" y="836" class="s">books/ and pushes to</text>
+<text x="1532" y="851" class="s">GitHub main</text>
+</g>
+<g class="k-src"><rect x="1244" y="780" width="210" height="130" rx="6" class="bx"/>
+<text x="1256" y="802" class="t">GitHub · efni main</text>
+<text x="1256" y="821" class="s">public repository</text>
+<text x="1256" y="836" class="s">the sync Action has</text>
+<text x="1256" y="851" class="s">never succeeded</text>
+</g>
+<g class="k-out"><rect x="968" y="780" width="210" height="130" rx="6" class="bx"/>
+<text x="980" y="802" class="t">vefur sync-content.js</text>
+<text x="980" y="821" class="s">run by hand</text>
+<text x="980" y="836" class="s">PUBLISHED_BOOKS allowlist</text>
+<text x="980" y="851" class="s">then build + deploy.yml</text>
+</g>
+<g class="k-out"><rect x="692" y="780" width="210" height="130" rx="6" class="bx"/>
+<text x="704" y="802" class="t">namsbokasafn.is</text>
+<text x="704" y="821" class="s">MT preview, or faithful</text>
+<text x="704" y="836" class="s">once a module is approved</text>
+</g>
+<polyline points="1625,670 1625,778" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1633" y="710" class="lbl" text-anchor="start">on disk</text>
+<polyline points="1520,830 1456,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1487.0" y="822" class="lbl" text-anchor="middle">push</text>
+<polyline points="1244,830 1180,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="1211.0" y="822" class="lbl" text-anchor="middle">by hand</text>
+<polyline points="968,830 904,830" class="ar " marker-end="url(#ah-now-technical-en)"/>
+<text x="935.0" y="822" class="lbl" text-anchor="middle">deploy</text>
+<g class="k-src"><rect x="140" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="160" y="976" class="lg" text-anchor="start">Source / structure</text>
+<g class="k-mt"><rect x="298.86" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="318.86" y="976" class="lg" text-anchor="start">Machine translation</text>
+<g class="k-hum"><rect x="463.99" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="483.99" y="976" class="lg" text-anchor="start">Human editing</text>
+<g class="k-term"><rect x="591.5" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="611.5" y="976" class="lg" text-anchor="start">Terminology</text>
+<g class="k-out"><rect x="706.47" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="726.47" y="976" class="lg" text-anchor="start">Published output</text>
+<g class="k-note"><rect x="852.79" y="965" width="14" height="14" rx="3" class="bx"/></g>
+<text x="872.79" y="976" class="lg" text-anchor="start">Note / check</text>
+</svg>
