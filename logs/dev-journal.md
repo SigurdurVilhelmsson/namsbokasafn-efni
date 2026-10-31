@@ -585,3 +585,18 @@ ce507b295 docs: 2026-10-26 (evening) register entry; D11 runbook pointer; the un
 **Why:** A fresh session starts from the register's newest entry, which owns what happens next; no HANDOFF.md, so status has one owner. Private letters stay in git-excluded docs/grants/.
 
 ---
+
+## 2026-10-31 17:01 - Prod deploy at d6db555e1 verified, waiting on the 18:00Z/18:30Z ticks; next is the S tag on 1 Nov and the bonding-orbital house-style fix
+
+**Branch:** docs/register-591-merged
+**Modified:**
+(clean)
+
+**Recent commits:**
+6ea2e1707 docs(register): prod deployed at d6db555e1 (#592 + #590)
+15ac2a7ce docs(register): the crons work after the mode change; PR #592 merged
+9b5d3e0ce docs(register): the c82 database copy on prod is deleted
+
+**Why:** The house-style edit and the two glossary rows must merge after the S tag, or the tagged houseStyleTerms.js differs from the one the SD3 baseline read (register, 2026-10-31 entry, last bullet). The tick results go into that entry's second deploy receipt.
+
+---
