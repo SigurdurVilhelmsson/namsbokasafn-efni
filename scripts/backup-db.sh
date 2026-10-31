@@ -12,7 +12,8 @@
 # The script:
 #   1. Checkpoints the WAL to ensure all data is in the main DB file
 #   2. Copies the DB file with a timestamp
-#   3. Keeps the most recent 30 backups (prunes older ones)
+#   3. Keeps the most recent 30 backups (prunes older ones, with their
+#      -shm/-wal side files, and sweeps side files whose backup is gone)
 #
 
 set -euo pipefail
@@ -46,12 +47,31 @@ cp "$DB_PATH" "$BACKUP_FILE"
 
 echo "Backup created: $BACKUP_FILE ($(du -h "$BACKUP_FILE" | cut -f1))"
 
-# Prune old backups, keeping only the most recent $MAX_BACKUPS
+# Prune old backups, keeping only the most recent $MAX_BACKUPS. A backup that
+# anything has opened in WAL mode (an inspection, a restore test) has -shm/-wal
+# side files beside it; they go with it.
 BACKUP_COUNT=$(ls -1 "$BACKUP_DIR"/sessions.*.db 2>/dev/null | wc -l)
 if [ "$BACKUP_COUNT" -gt "$MAX_BACKUPS" ]; then
   PRUNE_COUNT=$((BACKUP_COUNT - MAX_BACKUPS))
-  ls -1t "$BACKUP_DIR"/sessions.*.db | tail -n "$PRUNE_COUNT" | xargs rm -f
+  ls -1t "$BACKUP_DIR"/sessions.*.db | tail -n "$PRUNE_COUNT" | while IFS= read -r old; do
+    rm -f -- "$old" "$old-shm" "$old-wal"
+  done
   echo "Pruned $PRUNE_COUNT old backup(s), keeping $MAX_BACKUPS"
+fi
+
+# Sweep side files whose backup is already gone (pruning before 2026-10-31 left
+# them behind). Only an orphan goes: a kept backup's side files mean something
+# opened it and may still hold it open. A side file without its .db is unusable.
+ORPHANS=0
+for side in "$BACKUP_DIR"/sessions.*.db-shm "$BACKUP_DIR"/sessions.*.db-wal; do
+  [ -e "$side" ] || continue          # an unmatched glob stays literal
+  if [ ! -e "${side%-*}" ]; then
+    rm -f -- "$side"
+    ORPHANS=$((ORPHANS + 1))
+  fi
+done
+if [ "$ORPHANS" -gt 0 ]; then
+  echo "Removed $ORPHANS orphaned side file(s)"
 fi
 
 # --- Off-box upload (encrypted) -------------------------------------------
