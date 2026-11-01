@@ -1,0 +1,43 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T183602Z-201860ac",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch00",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68662",
+      "layer1Sha256": "dc339c65d892f60195243e8b1e44bbcf0d76265ef9aadc4cbef1b3b7b9992309",
+      "overlaySha256": null,
+      "enSha256": "a884e6bc1ea203e8f2eefe55a51201bd5763cfa57fef884b794ef05b94bed704"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch00/m68662/001"
+  ],
+  "plannedRequestKeys": [
+    "ch00/m68662/001"
+  ],
+  "workListCounts": {
+    "units": 1,
+    "occurrences": 107,
+    "items": 3,
+    "candidateOccurrences": 3,
+    "pairs": 4,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 69,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 35
+  }
+}

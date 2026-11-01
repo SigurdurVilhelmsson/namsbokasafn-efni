@@ -1,0 +1,107 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T195727Z-a4206faa",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch13",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68796",
+      "layer1Sha256": "ca43b1c94f154c78f3d3839ef6064d67571e52a766d30f079e8a938a2cb223eb",
+      "overlaySha256": null,
+      "enSha256": "5f9bac84778b7d121d866d3682d6b44b86c8c4d44e829962ebc16874b1c4efae"
+    },
+    {
+      "stem": "m68797",
+      "layer1Sha256": "834fba02aa03d5e2a10c0f45a6b5658c81da7223519c79b82ad139bd6d7b70cd",
+      "overlaySha256": null,
+      "enSha256": "b15e1048923604224c8e88dcefa1f6c186dad75e6f8c25f5b3734d3f3c665dbe"
+    },
+    {
+      "stem": "m68798",
+      "layer1Sha256": "d0a76b4adc641b16cc6eaca58853600c0ceb904fc4d4940b62c6fe11cbd6dca1",
+      "overlaySha256": null,
+      "enSha256": "1d1dc5579d2345da9bd21bbab2fbbd224a206156b9090f89e625e3755c422846"
+    },
+    {
+      "stem": "m68799",
+      "layer1Sha256": "3900ea99833f6ab90cbcda734228c0a1166a524387b9237d44a2d0f75267da7a",
+      "overlaySha256": null,
+      "enSha256": "1a627c19668c4580587b3ec58673e10db1f6429a29bb3b41eafe2230a64b4250"
+    },
+    {
+      "stem": "m68801",
+      "layer1Sha256": "538638470c4d78efffdbdd580c80160c6901d0b39f69b516604d317d501c9795",
+      "overlaySha256": null,
+      "enSha256": "f4c8f3ba6a9bb6b93774a3152899db19d770947c250db603f1f9701b28fc9240"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "fa00548dc6841f16d6f1fc2e870cf5c501fd48729363121dc68428d3d28dd597",
+      "overlaySha256": null,
+      "enSha256": "2bcf7e7ede76cb6fef30bc1adeb414bcb9645a9294935889513d15715331d6c8"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch13/m68796/001",
+    "ch13/m68797/001",
+    "ch13/m68797/002",
+    "ch13/m68798/001",
+    "ch13/m68798/002",
+    "ch13/m68798/003",
+    "ch13/m68798/004",
+    "ch13/m68798/005",
+    "ch13/m68799/001",
+    "ch13/m68799/002",
+    "ch13/m68799/003",
+    "ch13/m68799/004",
+    "ch13/m68799/005",
+    "ch13/m68801/001",
+    "ch13/m68801/002",
+    "ch13/m68801/003",
+    "ch13/m68801/004",
+    "ch13/m68801/005"
+  ],
+  "plannedRequestKeys": [
+    "ch13/m68796/001",
+    "ch13/m68797/001",
+    "ch13/m68797/002",
+    "ch13/m68798/001",
+    "ch13/m68798/002",
+    "ch13/m68798/003",
+    "ch13/m68798/004",
+    "ch13/m68798/005",
+    "ch13/m68799/001",
+    "ch13/m68799/002",
+    "ch13/m68799/003",
+    "ch13/m68799/004",
+    "ch13/m68799/005",
+    "ch13/m68801/001",
+    "ch13/m68801/002",
+    "ch13/m68801/003",
+    "ch13/m68801/004",
+    "ch13/m68801/005"
+  ],
+  "workListCounts": {
+    "units": 6,
+    "occurrences": 702,
+    "items": 117,
+    "candidateOccurrences": 117,
+    "pairs": 137,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 136,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 440
+  }
+}

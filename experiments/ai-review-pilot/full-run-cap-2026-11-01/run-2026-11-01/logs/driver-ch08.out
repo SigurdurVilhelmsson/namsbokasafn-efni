@@ -1,0 +1,3 @@
+2026-11-01T19:20:13Z STARTING ch08 (max-tokens 64000)
+2026-11-01T19:24:27Z STOPPED after ch08: runner exit 2 with truncated 0 | {"planned": 26, "run": "20261101T192016Z-c3da50df", "usd": 2.8346916, "usable": 26, "sent": 26, "truncated": 0}
+DRIVER_EXIT=2

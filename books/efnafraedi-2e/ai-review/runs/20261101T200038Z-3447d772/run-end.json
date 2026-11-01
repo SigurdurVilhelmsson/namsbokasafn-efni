@@ -1,0 +1,18 @@
+{
+  "schema": "ai-review-run-end/1",
+  "runId": "20261101T200038Z-3447d772",
+  "mode": "batch",
+  "status": "complete",
+  "endedAt": "2026-11-01T20:03:48.147Z",
+  "counts": {
+    "planned": 22,
+    "sent": 22,
+    "succeeded": 22,
+    "refusal": 0,
+    "truncated": 0,
+    "errored": 0,
+    "notSent": 0
+  },
+  "totalUsd": 1.3608072,
+  "batchId": "msgbatch_01PHzVzYe8ct6PXLjP85u9MG"
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T201847Z-738d5a95",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch19",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68841",
+      "layer1Sha256": "ccba4d237d5142d332f564307cf86c7b3ec852a9f7569d5284e4448f337fceea",
+      "overlaySha256": null,
+      "enSha256": "efc5c906b09f1b059423f078369f2483dec95ac5653f3899adec7001ec28e142"
+    },
+    {
+      "stem": "m68842",
+      "layer1Sha256": "bf175119ed3479ca5ac4169dd84330fc52763c35a7c407af4fd88bdfd4ca9fff",
+      "overlaySha256": null,
+      "enSha256": "6d24413456b94a63a1048b1533f0036b01f4dcdcf7495df65977aa4b0811d21f"
+    },
+    {
+      "stem": "m68843",
+      "layer1Sha256": "b20ebaeca7d84b60753cd04b189876867febd20972597710ded9d6ce11ca1120",
+      "overlaySha256": null,
+      "enSha256": "cfce13ad7d42a3b8201827fbb8a944dacda95180339c0fd955bcc7d0a95d3605"
+    },
+    {
+      "stem": "m68844",
+      "layer1Sha256": "f44d8badcd3ad630575120dbc4a38ebe4886ee337a7d6f96dabe46ec5afe4f49",
+      "overlaySha256": null,
+      "enSha256": "544117ec8600f324bb82529c71e17fb51308de761d02681407add02428e46573"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "882e5e09fd3120551ce61cb4dd54d9699982805c773d95dd3eb86026390acb99",
+      "overlaySha256": null,
+      "enSha256": "f32d8224b2ce99dcfc15e9351c012f3521e9d7f66b1f9d171f0256f69616f56c"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch19/m68841/001",
+    "ch19/m68842/001",
+    "ch19/m68842/002",
+    "ch19/m68842/003",
+    "ch19/m68842/004",
+    "ch19/m68842/005",
+    "ch19/m68842/006",
+    "ch19/m68842/007",
+    "ch19/m68842/008",
+    "ch19/m68842/009",
+    "ch19/m68842/010",
+    "ch19/m68842/011",
+    "ch19/m68843/001",
+    "ch19/m68843/002",
+    "ch19/m68843/003",
+    "ch19/m68843/004",
+    "ch19/m68843/005",
+    "ch19/m68843/006",
+    "ch19/m68843/007",
+    "ch19/m68843/008",
+    "ch19/m68843/009",
+    "ch19/m68843/010",
+    "ch19/m68843/011",
+    "ch19/m68844/001",
+    "ch19/m68844/002",
+    "ch19/m68844/003",
+    "ch19/m68844/004",
+    "ch19/m68844/005",
+    "ch19/m68844/006"
+  ],
+  "plannedRequestKeys": [
+    "ch19/m68841/001",
+    "ch19/m68842/001",
+    "ch19/m68842/002",
+    "ch19/m68842/003",
+    "ch19/m68842/004",
+    "ch19/m68842/005",
+    "ch19/m68842/006",
+    "ch19/m68842/007",
+    "ch19/m68842/008",
+    "ch19/m68842/009",
+    "ch19/m68842/010",
+    "ch19/m68842/011",
+    "ch19/m68843/001",
+    "ch19/m68843/002",
+    "ch19/m68843/003",
+    "ch19/m68843/004",
+    "ch19/m68843/005",
+    "ch19/m68843/006",
+    "ch19/m68843/007",
+    "ch19/m68843/008",
+    "ch19/m68843/009",
+    "ch19/m68843/010",
+    "ch19/m68843/011",
+    "ch19/m68844/001",
+    "ch19/m68844/002",
+    "ch19/m68844/003",
+    "ch19/m68844/004",
+    "ch19/m68844/005",
+    "ch19/m68844/006"
+  ],
+  "workListCounts": {
+    "units": 5,
+    "occurrences": 707,
+    "items": 209,
+    "candidateOccurrences": 210,
+    "pairs": 319,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 118,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 372
+  }
+}

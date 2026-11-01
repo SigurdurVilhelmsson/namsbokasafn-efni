@@ -1,0 +1,123 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T194237Z-09b5327e",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch09",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68748",
+      "layer1Sha256": "7f9429b83aaa5425dca87eec5574526d67ba020d44e705c4e0cd7d27128eeb5d",
+      "overlaySha256": null,
+      "enSha256": "2f998fdc3ad3ab29ba7b45b3dcae5dba609bd5ef07555af25ad6cdebfe77ba1c"
+    },
+    {
+      "stem": "m68750",
+      "layer1Sha256": "aa92370ce937a532d78ba6d5adf32070e8c3dc14c52d6114fbb68ab0aaf0efc7",
+      "overlaySha256": null,
+      "enSha256": "5150721f3c40b260714c83a636e4b399ebe995c8b7c055d73be05219d652861e"
+    },
+    {
+      "stem": "m68751",
+      "layer1Sha256": "abb9fb3dfffdfc8e09f09cd929d7cae5b5d27815ad9d00dbbe26929202042715",
+      "overlaySha256": null,
+      "enSha256": "9fc61dced3e67a6e8f6eafa66e9da249a54112c453d524c2a9269771a31e052e"
+    },
+    {
+      "stem": "m68752",
+      "layer1Sha256": "ec0d56cb8bbbf43e0dce4de243a126faaab686a82f074631e0213f0d2d2872ee",
+      "overlaySha256": null,
+      "enSha256": "381c318cb454f7b31b45a4c748da6fc54d5bbaf6b1606c1e9b1678d24c99480b"
+    },
+    {
+      "stem": "m68754",
+      "layer1Sha256": "930a4887a3dc8e09b2b91793f29745ac90cdae5ff73c3fdb0bc74c600a30261b",
+      "overlaySha256": null,
+      "enSha256": "6be331f3664f335250a61f9c5c9ea1ca98da4b607b887faccaf67d07b055c2dc"
+    },
+    {
+      "stem": "m68758",
+      "layer1Sha256": "f81fe9c591d7beaa68713a18c716a4e62619e9ba02b0f88f8984dddcd9c3ed2f",
+      "overlaySha256": null,
+      "enSha256": "a30b184847434897164ce12af7dab5c6a519c6f8ff1990d3f47d17bda52aaa60"
+    },
+    {
+      "stem": "m68759",
+      "layer1Sha256": "7be288a7c3f710f1c5d2e3f08ff9253ef96ab260893a3ac3a27ae249b8bd29b3",
+      "overlaySha256": null,
+      "enSha256": "a706dff3ac23deb13df18c90832977ab929764940de58242664df62076ea6244"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "29ada59fcd42b7b3903d7bc00d2394a3a96da6450ee192122992584822689a8d",
+      "overlaySha256": null,
+      "enSha256": "e465e3b471d0e1447bc0af7924a629a3cbdfc6b2cb683430c44db4bc9c59770a"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch09/m68748/001",
+    "ch09/m68750/001",
+    "ch09/m68751/001",
+    "ch09/m68751/002",
+    "ch09/m68751/003",
+    "ch09/m68751/004",
+    "ch09/m68752/001",
+    "ch09/m68752/002",
+    "ch09/m68752/003",
+    "ch09/m68752/004",
+    "ch09/m68752/005",
+    "ch09/m68752/006",
+    "ch09/m68752/007",
+    "ch09/m68752/008",
+    "ch09/m68754/001",
+    "ch09/m68754/002",
+    "ch09/m68758/001",
+    "ch09/m68758/002",
+    "ch09/m68759/001",
+    "ch09/m68759/002"
+  ],
+  "plannedRequestKeys": [
+    "ch09/m68748/001",
+    "ch09/m68750/001",
+    "ch09/m68751/001",
+    "ch09/m68751/002",
+    "ch09/m68751/003",
+    "ch09/m68751/004",
+    "ch09/m68752/001",
+    "ch09/m68752/002",
+    "ch09/m68752/003",
+    "ch09/m68752/004",
+    "ch09/m68752/005",
+    "ch09/m68752/006",
+    "ch09/m68752/007",
+    "ch09/m68752/008",
+    "ch09/m68754/001",
+    "ch09/m68754/002",
+    "ch09/m68758/001",
+    "ch09/m68758/002",
+    "ch09/m68759/001",
+    "ch09/m68759/002"
+  ],
+  "workListCounts": {
+    "units": 8,
+    "occurrences": 1049,
+    "items": 128,
+    "candidateOccurrences": 128,
+    "pairs": 152,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 107,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 792
+  }
+}

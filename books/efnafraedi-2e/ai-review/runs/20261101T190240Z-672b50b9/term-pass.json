@@ -1,0 +1,119 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T190240Z-672b50b9",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch06",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68728",
+      "layer1Sha256": "86c9ca7bbad78abf1c6dfaca13656fbc4344047b47ec2a4fde1335b0438cf9f1",
+      "overlaySha256": null,
+      "enSha256": "69416a8027c684afd4e89dddc3614c4f037c2011bc23f748dedca782258ec17b"
+    },
+    {
+      "stem": "m68729",
+      "layer1Sha256": "ab2fb988708084eb89e9935dc7edaafddb36e830f1f6368c5b3130858b6589f4",
+      "overlaySha256": null,
+      "enSha256": "19111705ce67f6de219de78e1313a8ada926702de72bd09f16191423bd5f6a04"
+    },
+    {
+      "stem": "m68732",
+      "layer1Sha256": "66048f88f4c9b1a3855ce61a3e5018c38a0fc41257fda9bca22f9557b5298fef",
+      "overlaySha256": null,
+      "enSha256": "728c70e9447cb7db4dbcb8c8fae125935e5dfb8e23975feeb2c4b5acadfbdbae"
+    },
+    {
+      "stem": "m68733",
+      "layer1Sha256": "515ac6df81837ad038aa44af503d0dfbed5a9e91eed6f9732a712e73f3a0abf3",
+      "overlaySha256": null,
+      "enSha256": "8cda85128b825fbc34024014aa0101a3c5843a8384c4ca713434014a29488d2a"
+    },
+    {
+      "stem": "m68734",
+      "layer1Sha256": "3943e2421589f8e6630cf8e11c9573de057206b4dfc374c32dce110a07d8b7e3",
+      "overlaySha256": null,
+      "enSha256": "db07cd4952c4df059ee607b53b0a7d678bf8445bd90184d5f159ff02acf4a57a"
+    },
+    {
+      "stem": "m68735",
+      "layer1Sha256": "7db1a25a56bbc02ac1111782c34f6aa4e5b4e256abd45f83f1e93edab89125b1",
+      "overlaySha256": null,
+      "enSha256": "a5f162f53fdc597f0d1415be7cdb62a9e27a90c5a8f936ba45a4be16240e44cc"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "f8505854e3de4353d0e7a4299c7e1f7f2686d35249cb3b371ef67567de0129b3",
+      "overlaySha256": null,
+      "enSha256": "a3ca97187b228ccd80b795694e8edab84da9327b829023c14099a24d5f75fa13"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch06/m68728/001",
+    "ch06/m68729/001",
+    "ch06/m68729/002",
+    "ch06/m68729/003",
+    "ch06/m68729/004",
+    "ch06/m68729/005",
+    "ch06/m68729/006",
+    "ch06/m68732/001",
+    "ch06/m68732/002",
+    "ch06/m68733/001",
+    "ch06/m68733/002",
+    "ch06/m68733/003",
+    "ch06/m68733/004",
+    "ch06/m68734/001",
+    "ch06/m68734/002",
+    "ch06/m68734/003",
+    "ch06/m68734/004",
+    "ch06/m68735/001",
+    "ch06/m68735/002",
+    "ch06/m68735/003",
+    "ch06/m68735/004"
+  ],
+  "plannedRequestKeys": [
+    "ch06/m68728/001",
+    "ch06/m68729/001",
+    "ch06/m68729/002",
+    "ch06/m68729/003",
+    "ch06/m68729/004",
+    "ch06/m68729/005",
+    "ch06/m68729/006",
+    "ch06/m68732/001",
+    "ch06/m68732/002",
+    "ch06/m68733/001",
+    "ch06/m68733/002",
+    "ch06/m68733/003",
+    "ch06/m68733/004",
+    "ch06/m68734/001",
+    "ch06/m68734/002",
+    "ch06/m68734/003",
+    "ch06/m68734/004",
+    "ch06/m68735/001",
+    "ch06/m68735/002",
+    "ch06/m68735/003",
+    "ch06/m68735/004"
+  ],
+  "workListCounts": {
+    "units": 7,
+    "occurrences": 912,
+    "items": 149,
+    "candidateOccurrences": 149,
+    "pairs": 202,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 187,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 568
+  }
+}

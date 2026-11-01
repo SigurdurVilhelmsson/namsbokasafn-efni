@@ -1,0 +1,9 @@
+chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/empty/no-en/no-is)
+ch07             8   383   387   517       51     479663      36.86        18.43  474/0/0/0
+TOTAL        requests 51, input ~479663 tokens, worst case USD 36.86 interactive / 18.43 batch (the cap is USD 100; a batch reserves its whole worst case, so batches run one chapter at a time)
+preflight passed: layer 1 at 0093d8da4620a2041e583d3f84d39e9b49f055a2; prompt 7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b; ruling set 0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd
+ch07: run 20261101T190553Z-055cca97 complete, USD 5.2050396 (usable 49 of 51 sent; truncated 2, refusal 0, errored 0, not sent 0)
+  2 of 51 planned answers in ch07 are missing or not usable; read the run's records first (and raise --max-tokens if any were truncated)
+  stopping: later chapters are not sent.
+ledger: {"settledUsd":35.9113108,"openUsd":0,"committedUsd":35.9113108,"reservations":{}}
+EXIT=2

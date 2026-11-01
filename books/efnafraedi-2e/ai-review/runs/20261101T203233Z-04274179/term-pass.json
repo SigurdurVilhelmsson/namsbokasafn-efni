@@ -1,0 +1,147 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T203233Z-04274179",
+  "book": "efnafraedi-2e",
+  "chapterDir": "appendices",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68859",
+      "layer1Sha256": "aa1a6ef0c76d600cd045cce3818545dd6976140098862f67b0302061b5c51518",
+      "overlaySha256": null,
+      "enSha256": "41dcb4508bad5e552a8c905b6133b93b5307917baeb4e725f95bd22fa863a6a1"
+    },
+    {
+      "stem": "m68860",
+      "layer1Sha256": "520c8a254cdb7c6cf8de686875122cbef2f85521316579dd80e59df44c94effd",
+      "overlaySha256": null,
+      "enSha256": "51ab28ff5dd630a7b5aaa609b5540a5df68a395ff870292b5187640b0b8abcda"
+    },
+    {
+      "stem": "m68861",
+      "layer1Sha256": "9e54619fe18500645d673bfde296f980f5db57e17bdc2a18252ed39ef6e39be8",
+      "overlaySha256": null,
+      "enSha256": "8751db74b6ddd0e1c1f3b51a247cefab5a00a74ffb5b7f7c08773c8d2b2fa71c"
+    },
+    {
+      "stem": "m68862",
+      "layer1Sha256": "d14557c5644e20e681b18453fc1aa3e1964409fc4e60c18208d75c57788a8eac",
+      "overlaySha256": null,
+      "enSha256": "9884379080b4c86a9634d3dc85709a544379ffebbe44cc7919a8137b4be3a0c2"
+    },
+    {
+      "stem": "m68863",
+      "layer1Sha256": "375de0d24d7b1b584b9e077f691ed3c164073bfba5aed5259acd33ae3b4515b3",
+      "overlaySha256": null,
+      "enSha256": "1031713e4ad93bcd1844bb72ae81dfb0dcb8d06a0ef286eb262aeeb9e8375ca6"
+    },
+    {
+      "stem": "m68864",
+      "layer1Sha256": "461786e6a43870e9f956c38f85cf47b36609cb201d7b74748c2579be4fe6e53d",
+      "overlaySha256": null,
+      "enSha256": "f1663a9e797bdb988004327bc064e146fd106f97400c24797bcf8ae84cc696ec"
+    },
+    {
+      "stem": "m68865",
+      "layer1Sha256": "1226385167beb103d58da42080748e66ea352bf7d54a9ae4fa323b31c446d897",
+      "overlaySha256": null,
+      "enSha256": "6b4d07193a67a187457dc1d8045298d67e4297f5f58721fbee26632fcca5ac42"
+    },
+    {
+      "stem": "m68866",
+      "layer1Sha256": "27fcd2f1d476d4086d208dda924d2f81e2deb505518f73055a34d33d032bd697",
+      "overlaySha256": null,
+      "enSha256": "719c3da638abb1478026aeb8ad9fdacb1a42c4d431b56263d957f9b69dee5909"
+    },
+    {
+      "stem": "m68867",
+      "layer1Sha256": "904a7d7ce0b5ef809d794f2c7c20b50ace09260e327f6cbc18ccc896809c27f2",
+      "overlaySha256": null,
+      "enSha256": "94ef9b338570856fa0a7091e9325d5116a0058b732189bc61528b9b9506c498d"
+    },
+    {
+      "stem": "m68868",
+      "layer1Sha256": "3787dc64aa4b6457366f4835937f5b9ef5da2e530cd91d5c41e5325bda2c8b45",
+      "overlaySha256": null,
+      "enSha256": "d090dba46acd5a4f126b4ed879a2d4f926603823b360ff0648c5142cf1d42dcc"
+    },
+    {
+      "stem": "m68869",
+      "layer1Sha256": "c989bf72c83a682eeb3c056bea94fdf9f72d01bd5a57e08ca8845b85e9c1d68d",
+      "overlaySha256": null,
+      "enSha256": "22ff95aacdb45e6db837d5a1bfae146b0bd91f29f15512e2e2c921a112cc05ba"
+    },
+    {
+      "stem": "m68870",
+      "layer1Sha256": "5fdd5467e7519e14b1f4de3cdd88250f989e804c5b7b9a04d7a4a5ade830af35",
+      "overlaySha256": null,
+      "enSha256": "9ba1fcc810a5e91b10bd18f37f70cc86a2db0d41f8c48ff5d2c78264d91286b3"
+    },
+    {
+      "stem": "m68871",
+      "layer1Sha256": "a79a743fc962e6f2c9803f7c24dce2ad7e38d35abd8dc139f61b92ecc0f1e477",
+      "overlaySha256": null,
+      "enSha256": "21c7c467915d6c9f9c722a70e24f4de1ce7d346c49b36b60f0e753252b91b446"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "appendices/m68859/001",
+    "appendices/m68860/001",
+    "appendices/m68861/001",
+    "appendices/m68862/001",
+    "appendices/m68863/001",
+    "appendices/m68866/001",
+    "appendices/m68866/002",
+    "appendices/m68867/001",
+    "appendices/m68868/001",
+    "appendices/m68868/002",
+    "appendices/m68868/003",
+    "appendices/m68869/001",
+    "appendices/m68870/001",
+    "appendices/m68870/002",
+    "appendices/m68870/003",
+    "appendices/m68871/001",
+    "appendices/m68871/002"
+  ],
+  "plannedRequestKeys": [
+    "appendices/m68859/001",
+    "appendices/m68860/001",
+    "appendices/m68861/001",
+    "appendices/m68862/001",
+    "appendices/m68863/001",
+    "appendices/m68866/001",
+    "appendices/m68866/002",
+    "appendices/m68867/001",
+    "appendices/m68868/001",
+    "appendices/m68868/002",
+    "appendices/m68868/003",
+    "appendices/m68869/001",
+    "appendices/m68870/001",
+    "appendices/m68870/002",
+    "appendices/m68870/003",
+    "appendices/m68871/001",
+    "appendices/m68871/002"
+  ],
+  "workListCounts": {
+    "units": 13,
+    "occurrences": 2795,
+    "items": 48,
+    "candidateOccurrences": 48,
+    "pairs": 66,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 1074,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 1673
+  }
+}
