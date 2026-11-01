@@ -1,0 +1,133 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T185056Z-0d8181af",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch04",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68709",
+      "layer1Sha256": "cb0cda36b04e2741cc719a7917d6162ebd746102ad8444e54cf497bfb0530eaa",
+      "overlaySha256": null,
+      "enSha256": "225c43d6d7e1ddcd61fb48fa03fe68db0697670cf343e7164ec7c6e1c71c877a"
+    },
+    {
+      "stem": "m68710",
+      "layer1Sha256": "4f99843bd640631d5653f9c6bd8de4cb1fd05f0850fa9c201c60ebaa551b18f8",
+      "overlaySha256": null,
+      "enSha256": "96dfff99b957eec90619ae58a27101396f281f7771d1c8a675de8d37962dfba6"
+    },
+    {
+      "stem": "m68713",
+      "layer1Sha256": "26539bec4e82c2bd229faf6a51472301ad5e581d3715bc89ac9611f2ffd3a401",
+      "overlaySha256": null,
+      "enSha256": "9c2ef5187cd36972c12b3cd0c054957c845f102354dfc96f5c17281c62483884"
+    },
+    {
+      "stem": "m68714",
+      "layer1Sha256": "33d7e49392b8a0840df932f6959092e6ea021d428781b472bb3eea1319420a15",
+      "overlaySha256": null,
+      "enSha256": "c418ebf6befeeac453e1850ddf1b8b2d86399f39a33e93cf3bc4e0e826232150"
+    },
+    {
+      "stem": "m68716",
+      "layer1Sha256": "81c63c4159a71ed0ddf7204610b59247e1b5d9e26b89c9ad683dfdc311bcc8a5",
+      "overlaySha256": null,
+      "enSha256": "1ea95b0d3912bff7e681616a603ec6258d9c9d2f54d128307771fcaf61aa922d"
+    },
+    {
+      "stem": "m68730",
+      "layer1Sha256": "342cbd6bb520103fad7bcbbbcbf40e7640e156869bae73080f99e0c9b2f43542",
+      "overlaySha256": null,
+      "enSha256": "2c45990fa7b4df81875c6a5370ae1014eef824e6c578228e27b2ce9b141736ff"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "8761a14c32652934cb8eb9c6396785f74285d96c820c0e5f6c6d3481ee33a8d8",
+      "overlaySha256": null,
+      "enSha256": "1d8ce6360da11d41a1c335cf7c3487978e58adab4ccf0687f6ab1061c036c0f0"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch04/m68709/001",
+    "ch04/m68709/002",
+    "ch04/m68709/003",
+    "ch04/m68709/004",
+    "ch04/m68710/001",
+    "ch04/m68710/002",
+    "ch04/m68710/003",
+    "ch04/m68710/004",
+    "ch04/m68710/005",
+    "ch04/m68710/006",
+    "ch04/m68710/007",
+    "ch04/m68710/008",
+    "ch04/m68710/009",
+    "ch04/m68710/010",
+    "ch04/m68713/001",
+    "ch04/m68713/002",
+    "ch04/m68713/003",
+    "ch04/m68714/001",
+    "ch04/m68714/002",
+    "ch04/m68714/003",
+    "ch04/m68714/004",
+    "ch04/m68716/001",
+    "ch04/m68716/002",
+    "ch04/m68716/003",
+    "ch04/m68716/004",
+    "ch04/m68716/005",
+    "ch04/m68730/001",
+    "ch04/chapter-metadata/001"
+  ],
+  "plannedRequestKeys": [
+    "ch04/m68709/001",
+    "ch04/m68709/002",
+    "ch04/m68709/003",
+    "ch04/m68709/004",
+    "ch04/m68710/001",
+    "ch04/m68710/002",
+    "ch04/m68710/003",
+    "ch04/m68710/004",
+    "ch04/m68710/005",
+    "ch04/m68710/006",
+    "ch04/m68710/007",
+    "ch04/m68710/008",
+    "ch04/m68710/009",
+    "ch04/m68710/010",
+    "ch04/m68713/001",
+    "ch04/m68713/002",
+    "ch04/m68713/003",
+    "ch04/m68714/001",
+    "ch04/m68714/002",
+    "ch04/m68714/003",
+    "ch04/m68714/004",
+    "ch04/m68716/001",
+    "ch04/m68716/002",
+    "ch04/m68716/003",
+    "ch04/m68716/004",
+    "ch04/m68716/005",
+    "ch04/m68730/001",
+    "ch04/chapter-metadata/001"
+  ],
+  "workListCounts": {
+    "units": 7,
+    "occurrences": 1048,
+    "items": 193,
+    "candidateOccurrences": 193,
+    "pairs": 266,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 223,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 623
+  }
+}

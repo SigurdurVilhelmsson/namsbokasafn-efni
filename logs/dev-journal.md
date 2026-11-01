@@ -630,3 +630,18 @@ docs/plans/2026-07-21-post-item17-followup-campaign.md, logs/dev-journal.md, exp
 **Why:** Every gate before the full run is settled and deployed: effort xhigh with high as the fallback (#602, defaults #604), stoichiometry restricted to the subject (#603), the prompt and ruling set frozen and pinned (#605), the cap rule and private November billing (#606), and ch10 left out. The register's newest entry (2026-11-01, ready to run) holds the procedure: one chapter per command in batch, book order, the cap projection after each.
 
 ---
+
+## 2026-11-01 18:32 - Full AI term-pass run ready; #607 merged and deployed; next session starts the run
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+0093d8da4 Merge pull request #607 from SigurdurVilhelmsson/docs/full-run-ready-2026-11-01
+d8976825e docs(register): the full AI term-pass run is ready; ch10 left out; one-command cap check
+425d6b004 Merge pull request #606 from SigurdurVilhelmsson/docs/full-run-cap-rule-and-billing-2026-11-01
+
+**Why:** Production verified read-only at 0093d8da4 (pulled 18:31:52Z, restarted 18:32:06Z, level with main, health ok). The procedure is in the register's newest entry (2026-11-01, ready to run) and the work-state list full-run-2026-11; the run needs [USER]'s go before the first chapter and must finish by 27 November.
+
+---

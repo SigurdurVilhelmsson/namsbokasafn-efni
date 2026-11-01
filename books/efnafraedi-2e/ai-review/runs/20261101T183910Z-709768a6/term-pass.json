@@ -1,0 +1,121 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T183910Z-709768a6",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch01",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68663",
+      "layer1Sha256": "e9d7ae69ea754975b0ecf9bfd68aaface4df6e348a31a644a4ae1efe6fb01c24",
+      "overlaySha256": null,
+      "enSha256": "494cbad0baa576f989a13e064640959aad8cabb308dd711fe3314f6d476781ac"
+    },
+    {
+      "stem": "m68664",
+      "layer1Sha256": "180156b6cfea80f764a11b53ec3497c27cf59d22121cb884f219ae3f0f7e34c9",
+      "overlaySha256": null,
+      "enSha256": "45423d15ef09090dd58ccee520e8192bbcca9fbe969524319e62b223e27262b1"
+    },
+    {
+      "stem": "m68667",
+      "layer1Sha256": "6aaae7518bcce9155c94f8e179ff58969b47733137943a33fd576fe3627c49d5",
+      "overlaySha256": null,
+      "enSha256": "11290fe6d76997fa4b4b29e80ac286fd902fa64675fac62417fe8b0ea0a3bdd3"
+    },
+    {
+      "stem": "m68670",
+      "layer1Sha256": "272ca93e7650896aa763bb97bbf9fa2fb5f608c55558497c1904544a5ef813ce",
+      "overlaySha256": null,
+      "enSha256": "ce6f21462986139a8b91b6077e6a2946eb9e8843e5c76c25d55485c2d65f776e"
+    },
+    {
+      "stem": "m68674",
+      "layer1Sha256": "935d50d7f39d17a53027040c7b74c87757f4b92de670e5fa65521634e6e611e9",
+      "overlaySha256": null,
+      "enSha256": "5bdba45be2b7b070bb43cfd82c9a55b762ab9b8331b79db6de50a9153f047a12"
+    },
+    {
+      "stem": "m68683",
+      "layer1Sha256": "2dde5ebf7c8ce09f6610db4f05a5138718ac70fb10c9e23f83d863c66ebf7940",
+      "overlaySha256": null,
+      "enSha256": "4488a104e201e0d7cd27d9b6bbf63e5abada05c93b0222c7cefb26719166f651"
+    },
+    {
+      "stem": "m68690",
+      "layer1Sha256": "6e0bab7126f5e88816962cf2cb7a162827367d2c6dc8ecd2d5f362c38aaf2abd",
+      "overlaySha256": null,
+      "enSha256": "0f5b4ad36f96ab50a0efd9e9c461217a64206c68ab9290407642d109509b7a97"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "7124defbe9b9f9b2c4195e347d703b9c96a820f2be4a27978d3f093f8aaf99d4",
+      "overlaySha256": null,
+      "enSha256": "4de66937b76011951d3284af0ac13b428e7039d6b628cc6b4172b5e0590c607d"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch01/m68663/001",
+    "ch01/m68664/001",
+    "ch01/m68667/001",
+    "ch01/m68667/002",
+    "ch01/m68667/003",
+    "ch01/m68667/004",
+    "ch01/m68667/005",
+    "ch01/m68670/001",
+    "ch01/m68670/002",
+    "ch01/m68674/001",
+    "ch01/m68683/001",
+    "ch01/m68683/002",
+    "ch01/m68683/003",
+    "ch01/m68683/004",
+    "ch01/m68683/005",
+    "ch01/m68683/006",
+    "ch01/m68690/001",
+    "ch01/m68690/002",
+    "ch01/m68690/003"
+  ],
+  "plannedRequestKeys": [
+    "ch01/m68663/001",
+    "ch01/m68664/001",
+    "ch01/m68667/001",
+    "ch01/m68667/002",
+    "ch01/m68667/003",
+    "ch01/m68667/004",
+    "ch01/m68667/005",
+    "ch01/m68670/001",
+    "ch01/m68670/002",
+    "ch01/m68674/001",
+    "ch01/m68683/001",
+    "ch01/m68683/002",
+    "ch01/m68683/003",
+    "ch01/m68683/004",
+    "ch01/m68683/005",
+    "ch01/m68683/006",
+    "ch01/m68690/001",
+    "ch01/m68690/002",
+    "ch01/m68690/003"
+  ],
+  "workListCounts": {
+    "units": 8,
+    "occurrences": 1111,
+    "items": 129,
+    "candidateOccurrences": 129,
+    "pairs": 166,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 103,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 868
+  }
+}

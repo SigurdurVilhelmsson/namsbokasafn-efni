@@ -1,0 +1,129 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T195316Z-12880055",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch12",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68785",
+      "layer1Sha256": "0d708ad60c6657ab31d20050fcc9f83257f7f24531b1903c876aac523363edbe",
+      "overlaySha256": null,
+      "enSha256": "78342a2b4b9273593d1459c34d0a8fdb562c711a8fcf6c56a43e7202b66a3573"
+    },
+    {
+      "stem": "m68786",
+      "layer1Sha256": "6aa72679f0a37d555f2eb8593705fb259132dbc20ea705ff1bff13d5954115f4",
+      "overlaySha256": null,
+      "enSha256": "0441a41de515eb32dc196481383cadf27aa1f676c9d46e35c5373b3a9b9ce49f"
+    },
+    {
+      "stem": "m68787",
+      "layer1Sha256": "e56c2a8eb9f9a0898494b67612fc7eb32d694b36a65c654026d5ee3abd8dd7e3",
+      "overlaySha256": null,
+      "enSha256": "3419697f8b5582b87e684228beeeead7cfaaf6017347f0897b2ecdc6319f13d6"
+    },
+    {
+      "stem": "m68789",
+      "layer1Sha256": "38fc726b6858bb45fcadf4fe6bfe9019cb1deaf0c34817b314bbc106612314b5",
+      "overlaySha256": null,
+      "enSha256": "831b9a74b2f9939f06c536cbec4e09999a228d95ec9e7b555f5c2181ce40f260"
+    },
+    {
+      "stem": "m68791",
+      "layer1Sha256": "07c0108d42ca7004c6f69c528b28d70bbcac3725e565106788a19cb948f0b0b4",
+      "overlaySha256": null,
+      "enSha256": "8268334f27f4ee9945cb8cbf4c5d93da46407379fedde0f46660cb98716facf4"
+    },
+    {
+      "stem": "m68793",
+      "layer1Sha256": "ce471159227eeb670c2a2ee3a8a8bc50262126d2d1b90cecf31fdee0f15ee0be",
+      "overlaySha256": null,
+      "enSha256": "bddaef1f7847f815d08edf2747e7065c97702d860c81e838eb7be09f507dcd20"
+    },
+    {
+      "stem": "m68794",
+      "layer1Sha256": "4ee9694d8f2957f824124fe553d76c14e3c771db2ad36ae7368edd97eaef4183",
+      "overlaySha256": null,
+      "enSha256": "9bc0de4285100f4a661cf538704cf0d63104e1d104966bb53bbe35965f01cc49"
+    },
+    {
+      "stem": "m68795",
+      "layer1Sha256": "1364c0b4644edf601ac2894b6fff18b69a6fcb7722ead8251e77c3396150b072",
+      "overlaySha256": null,
+      "enSha256": "f563fcd32c3074b2146297b9dd98d255cd68a80ffd5ac21ed7878ea41b47049b"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "b07637cbc431bc5f84662d099baceeded8fba438007d04708f73a1e781fec0f7",
+      "overlaySha256": null,
+      "enSha256": "86f0ae0f0d8fa80e602d2604599a335fc3b777a0bf213c91c89f8ad77223cdba"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch12/m68785/001",
+    "ch12/m68786/001",
+    "ch12/m68786/002",
+    "ch12/m68787/001",
+    "ch12/m68789/001",
+    "ch12/m68789/002",
+    "ch12/m68789/003",
+    "ch12/m68791/001",
+    "ch12/m68791/002",
+    "ch12/m68791/003",
+    "ch12/m68793/001",
+    "ch12/m68793/002",
+    "ch12/m68793/003",
+    "ch12/m68793/004",
+    "ch12/m68794/001",
+    "ch12/m68794/002",
+    "ch12/m68794/003",
+    "ch12/m68795/001",
+    "ch12/m68795/002",
+    "ch12/m68795/003"
+  ],
+  "plannedRequestKeys": [
+    "ch12/m68785/001",
+    "ch12/m68786/001",
+    "ch12/m68786/002",
+    "ch12/m68787/001",
+    "ch12/m68789/001",
+    "ch12/m68789/002",
+    "ch12/m68789/003",
+    "ch12/m68791/001",
+    "ch12/m68791/002",
+    "ch12/m68791/003",
+    "ch12/m68793/001",
+    "ch12/m68793/002",
+    "ch12/m68793/003",
+    "ch12/m68793/004",
+    "ch12/m68794/001",
+    "ch12/m68794/002",
+    "ch12/m68794/003",
+    "ch12/m68795/001",
+    "ch12/m68795/002",
+    "ch12/m68795/003"
+  ],
+  "workListCounts": {
+    "units": 9,
+    "occurrences": 1336,
+    "items": 129,
+    "candidateOccurrences": 129,
+    "pairs": 145,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 147,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 1046
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T192016Z-c3da50df",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch08",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68743",
+      "layer1Sha256": "e4ce07864a97c6740ea3525c39a3c4b724bedd84c79b6d242b0d615f7b89de2d",
+      "overlaySha256": null,
+      "enSha256": "3b95c3dd8b470afbab2ebec95b411754503bc0ad685ba1a4a152ebb8618322f7"
+    },
+    {
+      "stem": "m68744",
+      "layer1Sha256": "dfa9d2f18b68710927aab6556795eb7890cd81b36820e3dbd58215cf77144c41",
+      "overlaySha256": null,
+      "enSha256": "b321f85827f3dbcda4965a3f5cc1ee271370d4782c229edf750fe787cc3f85f2"
+    },
+    {
+      "stem": "m68745",
+      "layer1Sha256": "9efda9b5c817ab9fa048750d1f4a7f9aeae382e7e19085a26737d3164170ab08",
+      "overlaySha256": null,
+      "enSha256": "f531a40cebf7732d785a8c7d887c574a7e18e17f43181cb7057209c1221b492c"
+    },
+    {
+      "stem": "m68746",
+      "layer1Sha256": "209ff000555fe4dd63da500208a8ade0eb6a0d1d247f4e238a686fc887b7e0db",
+      "overlaySha256": null,
+      "enSha256": "0193c904b4d473674d1585642aae6c6221930861241c3dedb38643a0fe5b4dc8"
+    },
+    {
+      "stem": "m68747",
+      "layer1Sha256": "1e811b0fb160261b74283cae42c9ac9b7014505c314f78416e205c41aa622eaf",
+      "overlaySha256": null,
+      "enSha256": "effe5d48c1c04dbeb464e9f4a7c66522feba44a29c99d2f186049c5134449951"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "d58e5814f002592ab76a505e3188c39522060fd7ad7034a17a21f5f10550b4da",
+      "overlaySha256": null,
+      "enSha256": "b227b8e581f24db73ec8b44bb19a017e69f735fe4d102536bcc57b3171455017"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch08/m68743/001",
+    "ch08/m68744/001",
+    "ch08/m68744/002",
+    "ch08/m68744/003",
+    "ch08/m68744/004",
+    "ch08/m68745/001",
+    "ch08/m68745/002",
+    "ch08/m68745/003",
+    "ch08/m68745/004",
+    "ch08/m68745/005",
+    "ch08/m68745/006",
+    "ch08/m68745/007",
+    "ch08/m68746/001",
+    "ch08/m68746/002",
+    "ch08/m68746/003",
+    "ch08/m68747/001",
+    "ch08/m68747/002",
+    "ch08/m68747/003",
+    "ch08/m68747/004",
+    "ch08/m68747/005",
+    "ch08/m68747/006",
+    "ch08/m68747/007",
+    "ch08/m68747/008",
+    "ch08/m68747/009",
+    "ch08/m68747/010",
+    "ch08/m68747/011"
+  ],
+  "plannedRequestKeys": [
+    "ch08/m68743/001",
+    "ch08/m68744/001",
+    "ch08/m68744/002",
+    "ch08/m68744/003",
+    "ch08/m68744/004",
+    "ch08/m68745/001",
+    "ch08/m68745/002",
+    "ch08/m68745/003",
+    "ch08/m68745/004",
+    "ch08/m68745/005",
+    "ch08/m68745/006",
+    "ch08/m68745/007",
+    "ch08/m68746/001",
+    "ch08/m68746/002",
+    "ch08/m68746/003",
+    "ch08/m68747/001",
+    "ch08/m68747/002",
+    "ch08/m68747/003",
+    "ch08/m68747/004",
+    "ch08/m68747/005",
+    "ch08/m68747/006",
+    "ch08/m68747/007",
+    "ch08/m68747/008",
+    "ch08/m68747/009",
+    "ch08/m68747/010",
+    "ch08/m68747/011"
+  ],
+  "workListCounts": {
+    "units": 6,
+    "occurrences": 650,
+    "items": 191,
+    "candidateOccurrences": 194,
+    "pairs": 290,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 98,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 356
+  }
+}

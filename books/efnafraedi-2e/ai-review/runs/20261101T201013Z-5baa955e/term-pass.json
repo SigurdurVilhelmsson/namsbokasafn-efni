@@ -1,0 +1,143 @@
+{
+  "schema": "ai-review-term-pass/2",
+  "runId": "20261101T201013Z-5baa955e",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch17",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68820",
+      "layer1Sha256": "a768a4f68816ae0e21a3d605f7769a70055fd99d09f4f0362f187b1dea025897",
+      "overlaySha256": null,
+      "enSha256": "db6cf36d20e4968dd6f3b3c1b49bdd29e2c9b6064938fc1d1db9c6e3ea5657c6"
+    },
+    {
+      "stem": "m68821",
+      "layer1Sha256": "3de31dbe45f2092d01226aa7bf3a8fa1f00ff7533d5890470b51a8d4df7d996d",
+      "overlaySha256": null,
+      "enSha256": "37200c667bdce9555d5bf6b7a75ca9a47f6bbce7af8355d6a6440756990e5326"
+    },
+    {
+      "stem": "m68822",
+      "layer1Sha256": "0e4f43a1907672be2d3f26c85e9dbf414f43e76610cf11a4761a004aee0bd92b",
+      "overlaySha256": null,
+      "enSha256": "ba5fc660e91cdc5ebdb36a41e71c22da8c1811ed03665023d67681caca8bb804"
+    },
+    {
+      "stem": "m68823",
+      "layer1Sha256": "c6ef38bb3b875626cdd3af4732d17d45259af7cca8157294706ff4b2fab1efef",
+      "overlaySha256": null,
+      "enSha256": "6759368476d313a9eab30390338d6b58e00491350452d331f8ffc6a210ae75ef"
+    },
+    {
+      "stem": "m68824",
+      "layer1Sha256": "b4569cd99e5531e24c8fbfb709f2d06e91f04aaa020ea8e2f901d320779bdbf3",
+      "overlaySha256": null,
+      "enSha256": "d54acb490b8e7d5ff6b89cfb2c223673873f81ede5d8bb84ce0178880f036766"
+    },
+    {
+      "stem": "m68825",
+      "layer1Sha256": "dcc84653d0e627475896ee844b111a045e841fa837aea9a5bfe9db081c1d39cb",
+      "overlaySha256": null,
+      "enSha256": "8083fc9bd8bdd3df9aac2580686b2a76e944c30dc46f556346b836aabc328815"
+    },
+    {
+      "stem": "m68826",
+      "layer1Sha256": "59bf45078c90b38a3383c28cba9aa7f9fcaac0bfb52dfc7f9592abfba7a7b025",
+      "overlaySha256": null,
+      "enSha256": "0baf7e2673645e7b7ceebcef8ab267d7ffb904c6027ca7fab70821ef4e9d75a1"
+    },
+    {
+      "stem": "m68827",
+      "layer1Sha256": "3007296ae676f595e0748e96d1a3b3a6cb942477027ce9c769e1ba102a9bf1c1",
+      "overlaySha256": null,
+      "enSha256": "625457b63190f025168d90bdc4af0562a45795ac73f07dfd36fe2d11fb1298b6"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "9976145273062b6e17c41720d398b775ee079ad8e2dbf2e01bceeaa0f63cb91a",
+      "overlaySha256": null,
+      "enSha256": "9d46c253dee0b6c04c108a54eee5f4ae3297a98e287dce3ebb1a1ad70ef38859"
+    }
+  ],
+  "params": {
+    "segmentsPerRequest": 8,
+    "charBudget": 16000,
+    "userFormat": "term-pass-user/2",
+    "promptPath": "tools/ai-review/prompts/term-pass-v2.md",
+    "rulingSetPath": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "limit": null
+  },
+  "requestKeys": [
+    "ch17/m68821/001",
+    "ch17/m68821/002",
+    "ch17/m68822/001",
+    "ch17/m68822/002",
+    "ch17/m68822/003",
+    "ch17/m68822/004",
+    "ch17/m68822/005",
+    "ch17/m68822/006",
+    "ch17/m68823/001",
+    "ch17/m68823/002",
+    "ch17/m68823/003",
+    "ch17/m68823/004",
+    "ch17/m68824/001",
+    "ch17/m68824/002",
+    "ch17/m68824/003",
+    "ch17/m68825/001",
+    "ch17/m68825/002",
+    "ch17/m68825/003",
+    "ch17/m68825/004",
+    "ch17/m68826/001",
+    "ch17/m68826/002",
+    "ch17/m68826/003",
+    "ch17/m68827/001",
+    "ch17/m68827/002",
+    "ch17/m68827/003",
+    "ch17/m68827/004",
+    "ch17/m68827/005"
+  ],
+  "plannedRequestKeys": [
+    "ch17/m68821/001",
+    "ch17/m68821/002",
+    "ch17/m68822/001",
+    "ch17/m68822/002",
+    "ch17/m68822/003",
+    "ch17/m68822/004",
+    "ch17/m68822/005",
+    "ch17/m68822/006",
+    "ch17/m68823/001",
+    "ch17/m68823/002",
+    "ch17/m68823/003",
+    "ch17/m68823/004",
+    "ch17/m68824/001",
+    "ch17/m68824/002",
+    "ch17/m68824/003",
+    "ch17/m68825/001",
+    "ch17/m68825/002",
+    "ch17/m68825/003",
+    "ch17/m68825/004",
+    "ch17/m68826/001",
+    "ch17/m68826/002",
+    "ch17/m68826/003",
+    "ch17/m68827/001",
+    "ch17/m68827/002",
+    "ch17/m68827/003",
+    "ch17/m68827/004",
+    "ch17/m68827/005"
+  ],
+  "workListCounts": {
+    "units": 9,
+    "occurrences": 670,
+    "items": 193,
+    "candidateOccurrences": 193,
+    "pairs": 333,
+    "skipped": {
+      "empty-is": 0,
+      "identical-to-en": 114,
+      "no-en": 0,
+      "no-is": 0
+    },
+    "noCandidate": 357
+  }
+}
