@@ -1,6 +1,6 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-11-01T08:00:03.287Z",
+  "generated": "2026-11-01T10:00:03.740Z",
   "book": "efnafraedi-2e",
   "stats": {
     "total": 1750,
@@ -796,12 +796,12 @@
     },
     {
       "english": "accuracy",
-      "icelandic": "nákvæmni",
+      "icelandic": "hittni",
       "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2500,
+      "reason": "book-preference",
+      "domain": "biology",
+      "position": 3,
+      "conceptId": 6464,
       "alternatives": []
     },
     {
@@ -1339,14 +1339,14 @@
     },
     {
       "english": "alpha particle",
-      "icelandic": "alfaögn",
+      "icelandic": "alfaeind",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "physics",
       "position": 2,
       "conceptId": 81,
       "alternatives": [
-        "alfaeind"
+        "alfaögn"
       ]
     },
     {
@@ -1981,14 +1981,14 @@
     },
     {
       "english": "atomic orbital",
-      "icelandic": "frumeindasvigrúm",
+      "icelandic": "atómsvigrúm",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4746,
       "alternatives": [
-        "atómsvigrúm"
+        "frumeindasvigrúm"
       ]
     },
     {
@@ -5602,14 +5602,14 @@
     },
     {
       "english": "dipole moment",
-      "icelandic": "tvípólsvægi",
+      "icelandic": "tvískautsvægi",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "physics",
       "position": 2,
       "conceptId": 4087,
       "alternatives": [
-        "tvískautsvægi"
+        "tvípólsvægi"
       ]
     },
     {
@@ -5745,12 +5745,12 @@
     },
     {
       "english": "dissociation constant",
-      "icelandic": "klofnunarstuðull",
+      "icelandic": "klofnunarfasti",
       "status": "approved",
       "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1836,
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70250,
       "alternatives": []
     },
     {
@@ -6258,14 +6258,14 @@
     },
     {
       "english": "electron affinity",
-      "icelandic": "rafsækni",
+      "icelandic": "rafeindasækni",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5020,
       "alternatives": [
-        "rafeindasækni"
+        "rafsækni"
       ]
     },
     {
@@ -13327,14 +13327,14 @@
     },
     {
       "english": "polyatomic ion",
-      "icelandic": "fjölfrumeinda jón",
+      "icelandic": "fjölatóma jón",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4725,
       "alternatives": [
-        "fjölatóma jón"
+        "fjölfrumeinda jón"
       ]
     },
     {
@@ -14301,14 +14301,14 @@
     },
     {
       "english": "rate law",
-      "icelandic": "hraðajafna",
+      "icelandic": "hraðalögmál",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4813,
       "alternatives": [
-        "hraðalögmál"
+        "hraðajafna"
       ]
     },
     {
@@ -17954,14 +17954,14 @@
     },
     {
       "english": "vacancy",
-      "icelandic": "eyðuveila",
+      "icelandic": "eyða",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "book-preference",
       "domain": "physics",
       "position": 2,
       "conceptId": 629,
       "alternatives": [
-        "eyða"
+        "eyðuveila"
       ]
     },
     {

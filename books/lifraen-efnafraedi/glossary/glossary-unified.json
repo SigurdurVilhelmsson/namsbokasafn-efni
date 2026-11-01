@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-11-01T08:00:04.686Z",
+  "generated": "2026-11-01T10:00:05.037Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 289,
-    "approved": 289,
+    "total": 290,
+    "approved": 290,
     "ties": 4,
     "nominalTies": 2,
-    "outOfScopeOnly": 2599,
+    "outOfScopeOnly": 2598,
     "censusStrings": 88676
   },
   "terms": [
@@ -901,6 +901,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4872,
+      "alternatives": []
+    },
+    {
+      "english": "dissociation constant",
+      "icelandic": "klofnunarfasti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70250,
       "alternatives": []
     },
     {
