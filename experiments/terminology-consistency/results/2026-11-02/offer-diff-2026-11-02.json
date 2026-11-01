@@ -1,0 +1,52 @@
+{
+  "sets": {
+    "old": "experiments/terminology-consistency/results/2026-11-01/ruling-set-2026-11-01.json",
+    "new": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json"
+  },
+  "chapters": 23,
+  "totals": {
+    "old": {
+      "items": 4336,
+      "pairs": 6012
+    },
+    "new": {
+      "items": 4338,
+      "pairs": 6016
+    }
+  },
+  "changedOffers": [
+    {
+      "id": "stoichiometry",
+      "old": 74,
+      "new": 78
+    }
+  ],
+  "watched": {
+    "id": "stoichiometry",
+    "old": 74,
+    "new": 78,
+    "newlyOffered": [
+      {
+        "ch": "ch04",
+        "seg": "chapter:title:ch04",
+        "isHasTarget": true
+      },
+      {
+        "ch": "ch04",
+        "seg": "m68713:title:auto-1",
+        "isHasTarget": true
+      },
+      {
+        "ch": "ch09",
+        "seg": "m68748:abstract-item:abstract-item-3",
+        "isHasTarget": true
+      },
+      {
+        "ch": "ch09",
+        "seg": "m68752:title:auto-1",
+        "isHasTarget": true
+      }
+    ],
+    "noLongerOffered": []
+  }
+}

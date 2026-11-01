@@ -1,0 +1,2106 @@
+{
+ "rulingSet": "experiments/terminology-consistency/results/2026-11-01/ruling-set-2026-11-01.json",
+ "sha256": "30155b418b2e4c6ff6912cf62962a32e568e3fd22e7bd97f9de6a544a0890158",
+ "stoichRulings": [
+  {
+   "id": "stoichiometric-factor",
+   "enNorm": "stoichiometric factor",
+   "en": [
+    "stoichiometric factor"
+   ],
+   "is": "hlutfallaþáttur",
+   "competitors": [],
+   "scope": {
+    "kind": "book"
+   },
+   "scopeStatus": "default",
+   "sense": null,
+   "kinds": [
+    "stage1"
+   ],
+   "sources": [
+    "stage1 ch04_fs-idp127461392 (page-answer; 2026-10-11 [USER])"
+   ],
+   "matchable": true
+  },
+  {
+   "id": "stoichiometry",
+   "enNorm": "stoichiometry",
+   "en": [
+    "stoichiometry"
+   ],
+   "is": "hlutfallaefnafræði",
+   "competitors": [
+    "magnhlutföll"
+   ],
+   "scope": {
+    "kind": "book"
+   },
+   "scopeStatus": "default",
+   "sense": null,
+   "kinds": [
+    "verdict"
+   ],
+   "sources": [
+    "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch04_fs-idp127462672 (2026-10-10 [USER])"
+   ],
+   "matchable": true
+  }
+ ],
+ "enRecordHits": 132,
+ "rows": [
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:title:auto-1",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Reaction Stoichiometry",
+   "is": "Hlutfallaefnafræði efnahvarfa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:abstract-item:abstract-item-1",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Explain the concept of stoichiometry as it pertains to chemical reactions",
+   "is": "Útskýrt hugtakið efnajöfnuhlutfall eins og það á við um efnahvörf",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:abstract-item:abstract-item-2",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Use balanced chemical equations to derive stoichiometric factors relating amounts of reactants and products",
+   "is": "Notað stilltar efnajöfnur til að leiða út efnajöfnuhlutfallstuðla sem tengja saman magn hvarfefna og myndefna",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:abstract-item:abstract-item-3",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Perform stoichiometric calculations involving mass, moles, and solution molarity",
+   "is": "Framkvæmt útreikninga á efnajöfnuhlutfalli sem fela í sér massa, mól og mólstyrk lausnar",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp65325120",
+   "words": [
+    "stoichiometry",
+    "stoichiometric"
+   ],
+   "en": "A balanced chemical equation provides a great deal of information in a very succinct format. Chemical formulas provide the identities of the reactants and products involved in the chemical change, allowing classification of the reaction. Coefficients provide the relative numbers of these chemical species, allowing a quantitative assessment of the relationships between the amounts of substances consumed and produced by the reaction. These quantitative relationships are known as the reaction’s [[term:stoichiometry|term-00001]], a term derived from the Greek words [[i:stoicheion]] (meaning “element”) and [[i:metron]] (meaning “measure”). In this module, the use of balanced chemical equations for various stoichiometric applications is explored.",
+   "is": "Stillt efnajafna veitir mikið af upplýsingum á mjög hnitmiðaðan hátt. Efnaformúlur gefa upp auðkenni hvarfefna og myndefna sem taka þátt í efnaskiptunum og gera þannig kleift að flokka hvarfið. Stuðlar gefa upp hlutfallslegan fjölda þessara efnafræðilegu tegunda, sem gerir kleift að meta magnbundin tengsl milli magns efna sem eru notuð og framleidd í hvarfinu. Þessi magnbundnu tengsl eru þekkt sem [[term:efnajöfnuhlutfall|term-00001]] hvarfsins, hugtak sem er dregið af grísku orðunum [[i:stoicheion]] (sem þýðir „frumefni“) og [[i:metron]] (sem þýðir „mælikvarði“). Í þessari einingu er notkun stilltra efnajafna fyrir ýmis efnajöfnuhlutfallskennd notkunarsvið könnuð.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp92593072",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The general approach to using stoichiometric relationships is similar in concept to the way people go about many common activities. Food preparation, for example, offers an appropriate comparison. A recipe for making eight pancakes calls for 1 cup pancake mix, [[MATH:1]] cup milk, and one egg. The “equation” representing the preparation of pancakes per this recipe is",
+   "is": "Almenna aðferðin við að nota efnajöfnuhlutfallstengsl er svipuð í hugmyndinni og hvernig fólk nálgast margar algengar athafnir. Matargerð býður til dæmis upp á viðeigandi samanburð. Uppskrift að átta pönnukökum kallar á 1 bolla af pönnukökumixi, [[MATH:1]] bolla af mjólk og eitt egg. „Jafnan“ sem táknar undirbúning pönnukaka samkvæmt þessari uppskrift er",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp98270672",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Balanced chemical equations are used in much the same fashion to determine the amount of one reactant required to react with a given amount of another reactant, or to yield a given amount of product, and so forth. The coefficients in the balanced equation are used to derive [[term:stoichiometric factors|term-00002]] that permit computation of the desired quantity. To illustrate this idea, consider the production of ammonia by reaction of hydrogen and nitrogen:",
+   "is": "Stilltar efnajöfnur eru notaðar á svipaðan hátt til að ákvarða magn eins hvarfefnis sem þarf til að hvarfast við gefið magn af öðru hvarfefni, eða til að gefa af sér gefið magn af myndefni og svo framvegis. Stuðlarnir í stilltu jöfnunni eru notaðir til að leiða út [[term:efnajöfnuhlutfallstuðla|term-00002]] sem leyfa útreikning á æskilegu magni. Til að útskýra þessa hugmynd skulum við skoða framleiðslu á ammoníaki með hvarfi vetnis og köfnunarefnis:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp124955072",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "This equation shows ammonia molecules are produced from hydrogen molecules in a 2:3 ratio, and stoichiometric factors may be derived using any amount (number) unit:",
+   "is": "Þessi jafna sýnir að ammoníaksameindir eru framleiddar úr vetnissameindum í hlutfallinu 2:3 og hægt er að leiða út efnajöfnuhlutfallstuðla með því að nota hvaða magneiningu (fjölda) sem er:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp56404080",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "These stoichiometric factors can be used to compute the number of ammonia molecules produced from a given number of hydrogen molecules, or the number of hydrogen molecules required to produce a given number of ammonia molecules. Similar factors may be derived for any pair of substances in any chemical equation.",
+   "is": "Hægt er að nota þessa efnajöfnuhlutfallstuðla til að reikna út fjölda ammoníaksameinda sem framleiddar eru úr gefnum fjölda vetnissameinda, eða fjölda vetnissameinda sem þarf til að framleiða gefinn fjölda ammoníaksameinda. Hægt er að leiða út svipaða stuðla fyrir hvaða par efna sem er í hvaða efnajöfnu sem er.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idm34598272",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Referring to the balanced chemical equation, the stoichiometric factor relating the two substances of interest is [[MATH:2]] The molar amount of iodine is derived by multiplying the provided molar amount of aluminum by this factor:",
+   "is": "Með vísan til stilltu efnajöfnunnar er efnajöfnuhlutfallstuðullinn sem tengir efnin tvö sem um ræðir [[MATH:2]] Mólmagn joðs er leitt út með því að margfalda uppgefið mólmagn áls með þessum stuðli:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp83056800",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Using this stoichiometric factor, the provided molar amount of propane, and Avogadro’s number,",
+   "is": "Með því að nota þennan efnajöfnuhlutfallstuðul, uppgefið mólmagn própans og tölu Avogadros,",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp222914448",
+   "words": [
+    "stoichiometry",
+    "stoichiometry"
+   ],
+   "en": "These examples illustrate the ease with which the amounts of substances involved in a chemical reaction of known stoichiometry may be related. Directly measuring numbers of atoms and molecules is, however, not an easy task, and the practical application of stoichiometry requires that we use the more readily measured property of mass.",
+   "is": "Þessi dæmi sýna hversu auðvelt er að tengja saman magn efna sem taka þátt í efnahvarfi með þekktum efnajöfnustuðlum. Það er hins vegar ekki auðvelt verkefni að mæla beint fjölda atóma og sameinda og hagnýt notkun efnajöfnureiknings krefst þess að við notum þann eiginleika sem auðveldara er að mæla, þ.e. massa.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idm3520480",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The approach used previously in [[xref:fs-idp48900096]] and [[xref:fs-idp9124448]] is likewise used here; that is, we must derive an appropriate stoichiometric factor from the balanced chemical equation and use it to relate the amounts of the two substances of interest. In this case, however, masses (not molar amounts) are provided and requested, so additional steps of the sort learned in the previous chapter are required. The calculations required are outlined in this flowchart:",
+   "is": "Aðferðin sem notuð var áður í [[xref:fs-idp48900096]] og [[xref:fs-idp9124448]] er einnig notuð hér; það er að segja, við verðum að leiða út viðeigandi efnajöfnustuðul úr stilltri efnajöfnu og nota hann til að tengja saman magn efnanna tveggja sem um ræðir. Í þessu tilviki eru hins vegar massar (ekki mólmagn) gefnir og um þá beðið, þannig að viðbótarskref af því tagi sem lærð voru í fyrri kafla eru nauðsynleg. Nauðsynlegir útreikningar eru útlistaðir á þessu flæðiriti:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idp90689472",
+   "words": [
+    "stoichiometry",
+    "stoichiometric",
+    "stoichiometry"
+   ],
+   "en": "These examples illustrate just a few instances of reaction stoichiometry calculations. Numerous variations on the beginning and ending computational steps are possible depending upon what particular quantities are provided and sought (volumes, solution concentrations, and so forth). Regardless of the details, all these calculations share a common essential component: the use of stoichiometric factors derived from balanced chemical equations. [[xref:CNX_Chem_04_03_flowchart]] provides a general outline of the various computational steps associated with many reaction stoichiometry calculations.",
+   "is": "Þessi dæmi sýna aðeins nokkur tilvik um útreikninga á efnajöfnustuðlum. Fjölmörg afbrigði af upphafs- og lokaútreikningaskrefum eru möguleg eftir því hvaða tilteknar stærðir eru gefnar og um þær beðið (rúmmál, styrkur lausna og svo framvegis). Burtséð frá smáatriðum eiga allir þessir útreikningar sameiginlegan grundvallarþátt: notkun efnajöfnustuðla sem eru fengnir úr stilltum efnajöfnum. [[xref:CNX_Chem_04_03_flowchart]] gefur almenna yfirlitsmynd af hinum ýmsu útreikningaskrefum sem tengjast mörgum útreikningum á efnajöfnustuðlum.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor",
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:caption:CNX_Chem_04_03_flowchart-caption",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The flowchart depicts the various computational steps involved in most reaction stoichiometry calculations.",
+   "is": "Flæðiritið sýnir hin ýmsu útreikningaskref sem koma við sögu í flestum útreikningum á efnajöfnustuðlum.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:alt:fs-idp53443040-alt",
+   "words": [
+    "Stoichiometric"
+   ],
+   "en": "This flowchart shows 10 rectangles connected by double headed arrows. To the upper left, a rectangle is shaded lavender and is labeled, “Volume of pure substance A.” This rectangle is followed by a horizontal double headed arrow labeled, “Density.” It connects to a second rectangle which is shaded yellow and is labeled, “Mass of A.” This rectangle is followed by a double headed arrow which is labeled, “Molar Mass,” that connects to a third rectangle which is shaded pink and is labeled, “Moles of A.” To the left of this rectangle is a horizontal double headed arrow labeled, “Molarity,” which connects to a lavender rectangle which is labeled, “Volume of solution A.” The pink, “Moles of A,” rectangle is also connected with a double headed arrow below and to the left. This arrow is labeled “Avogadro’s number.” It connects to a green shaded rectangle that is labeled, “Number of particles of A.” To the right of the pink “Moles of A,” rectangle is a horizontal double headed arrow which is labeled, “Stoichiometric factor.” It connects to a second pink rectangle which is labeled, “Moles of B.” A double headed arrow which is labeled, “Molar mass,” extends from the top of this rectangle above and to the right to a yellow shaded rectangle labeled, “Mass of B.” A horizontal double headed arrow which is labeled, “Density” links to a lavender rectangle labeled, “Volume of substance B,” to the right. A horizontal double headed arrow labeled, “Molarity,” extends right to the of the pink “Moles of B” rectangle. This arrow connects to a lavender rectangle that is labeled, “Volume of substance B.” Another double headed arrow extends below and to the right of the pink “Moles of B” rectangle. This arrow is labeled “Avogadro’s number,” and it extends to a green rectangle which is labeled, “Number of particles of B.”",
+   "is": "Þetta flæðirit sýnir 10 rétthyrninga sem tengdir eru með tvíhöfða örvum. Efst til vinstri er rétthyrningur skyggður ljósfjólublár og merktur „Rúmmál hreins efnis A“. Þessum rétthyrningi fylgir lárétt tvíhöfða ör merkt „Eðlismassi“. Hún tengist öðrum rétthyrningi sem er skyggður gulur og merktur „Massi A“. Þessum rétthyrningi fylgir tvíhöfða ör sem er merkt „Mólmassi“ og tengist þriðja rétthyrningnum sem er skyggður bleikur og merktur „Mól af A“. Vinstra megin við þennan rétthyrning er lárétt tvíhöfða ör merkt „Mólstyrkur“ sem tengist ljósfjólubláum rétthyrningi sem er merktur „Rúmmál lausnar A“. Bleiki rétthyrningurinn, „Mól af A“, er einnig tengdur með tvíhöfða ör fyrir neðan og til vinstri. Þessi ör er merkt „Tala Avogadros“. Hún tengist grænum skyggðum rétthyrningi sem er merktur „Fjöldi einda af A“. Hægra megin við bleika rétthyrninginn „Mól af A“ er lárétt tvíhöfða ör sem er merkt „Efnismagnsstuðull“. Hún tengist öðrum bleikum rétthyrningi sem er merktur „Mól af B“. Tvíhöfða ör sem er merkt „Mólmassi“ teygir sig frá toppi þessa rétthyrnings upp og til hægri að gulum skyggðum rétthyrningi merktum „Massi B“. Lárétt tvíhöfða ör sem er merkt „Eðlismassi“ tengist ljósfjólubláum rétthyrningi merktum „Rúmmál efnis B“ til hægri. Lárétt tvíhöfða ör merkt „Mólstyrkur“ teygir sig til hægri frá bleika rétthyrningnum „Mól af B“. Þessi ör tengist ljósfjólubláum rétthyrningi sem er merktur „Rúmmál efnis B“. Önnur tvíhöfða ör teygir sig niður og til hægri frá bleika rétthyrningnum „Mól af B“. Þessi ör er merkt „Tala Avogadros“ og hún teygir sig að grænum rétthyrningi sem er merktur „Fjöldi einda af B“.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:para:fs-idm3728016",
+   "words": [
+    "stoichiometry",
+    "stoichiometric"
+   ],
+   "en": "A balanced chemical equation may be used to describe a reaction’s stoichiometry (the relationships between amounts of reactants and products). Coefficients from the equation are used to derive stoichiometric factors that subsequently may be used for computations relating reactant and product masses, molar amounts, and other quantitative properties.",
+   "is": "Hægt er að nota stillta efnajöfnu til að lýsa efnismagnsfræði hvarfs (tengslum milli magns hvarfefna og myndefna). Stuðlar úr jöfnunni eru notaðir til að leiða út efnismagnsstuðla sem síðan má nota í útreikningum sem tengjast massa, mólmagni og öðrum megindlegum eiginleikum hvarfefna og myndefna.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor",
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:glossary-term:fs-idp127461392-term",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "stoichiometric factor",
+   "is": "magnhlutfallsstuðull",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68713",
+   "key": "m68713:glossary-term:fs-idp127462672-term",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "stoichiometry",
+   "is": "magnhlutföll",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idp24998416",
+   "words": [
+    "stoichiometric",
+    "stoichiometric",
+    "stoichiometric",
+    "stoichiometric"
+   ],
+   "en": "The relative amounts of reactants and products represented in a balanced chemical equation are often referred to as [[i:stoichiometric amounts]]. All the exercises of the preceding module involved stoichiometric amounts of reactants. For example, when calculating the amount of product generated from a given amount of reactant, it was assumed that any other reactants required were available in stoichiometric amounts (or greater). In this module, more realistic situations are considered, in which reactants are not present in stoichiometric amounts.",
+   "is": "Hlutfallslegt magn hvarfefna og myndefna sem sýnt er í stilltri efnajöfnu er oft nefnt [[i:efnamagnshlutföll]]. Allar æfingar í fyrri einingu tóku til efnamagnshlutfalla hvarfefna. Til dæmis, þegar reiknað var magn myndefnis sem myndaðist úr tilteknu magni hvarfefnis, var gert ráð fyrir að öll önnur nauðsynleg hvarfefni væru til staðar í efnamagnshlutföllum (eða meira). Í þessari einingu eru raunhæfari aðstæður skoðaðar, þar sem hvarfefni eru ekki til staðar í efnamagnshlutföllum.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idp39531056",
+   "words": [
+    "Stoichiometric"
+   ],
+   "en": "Stoichiometric amounts of sandwich ingredients for this recipe are bread and cheese slices in a 2:1 ratio. Provided with 28 slices of bread and 11 slices of cheese, one may prepare 11 sandwiches per the provided recipe, using all the provided cheese and having six slices of bread left over. In this scenario, the number of sandwiches prepared has been [[i:limited]] by the number of cheese slices, and the bread slices have been provided in [[i:excess]].",
+   "is": "Efnamagnshlutföll hráefna í þessari uppskrift eru brauðsneiðar og ostsneiðar í hlutfallinu 2:1. Með 28 brauðsneiðum og 11 ostsneiðum er hægt að útbúa 11 samlokur samkvæmt uppskriftinni, þar sem allur osturinn er notaður og sex brauðsneiðar verða afgangs. Í þessu tilviki hefur fjöldi samloka sem hægt er að útbúa verið [[i:takmarkaður]] af fjölda ostsneiða og brauðsneiðarnar hafa verið til staðar í [[i:umframmagni]].",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idp157494624",
+   "words": [
+    "stoichiometric",
+    "stoichiometric",
+    "stoichiometric"
+   ],
+   "en": "The balanced equation shows the hydrogen and chlorine react in a 1:1 stoichiometric ratio. If these reactants are provided in any other amounts, one of the reactants will nearly always be entirely consumed, thus limiting the amount of product that may be generated. This substance is the [[term:limiting reactant|term-00001]], and the other substance is the [[term:excess reactant|term-00002]]. Identifying the limiting and excess reactants for a given situation requires computing the molar amounts of each reactant provided and comparing them to the stoichiometric amounts represented in the balanced chemical equation. For example, imagine combining 3 moles of H[[sub:2]] and 2 moles of Cl[[sub:2]]. This represents a 3:2 (or 1.5:1) ratio of hydrogen to chlorine present for reaction, which is greater than the stoichiometric ratio of 1:1. Hydrogen, therefore, is present in excess, and chlorine is the limiting reactant. Reaction of all the provided chlorine (2 mol) will consume 2 mol of the 3 mol of hydrogen provided, leaving 1 mol of hydrogen unreacted.",
+   "is": "Stillta jafnan sýnir að vetni og klór hvarfast í efnamagnshlutfallinu 1:1. Ef þessi hvarfefni eru til staðar í einhverjum öðrum hlutföllum mun annað hvarfefnið nánast alltaf klárast alveg og takmarka þannig magn myndefnis sem getur myndast. Þetta efni er [[term:takmarkandi hvarfefni|term-00001]] og hitt efnið er [[term:hvarfefni í umframmagni|term-00002]]. Til að bera kennsl á takmarkandi hvarfefni og hvarfefni í umframmagni fyrir tilteknar aðstæður þarf að reikna mólmagn hvers hvarfefnis sem er til staðar og bera það saman við efnamagnshlutföllin sem sýnd eru í stilltu efnajöfnunni. Ímyndum okkur til dæmis að 3 mólum af H[[sub:2]] og 2 mólum af Cl[[sub:2]] sé blandað saman. Þetta táknar hlutfall vetnis og klórs sem er 3:2 (eða 1,5:1) fyrir hvarfið, sem er hærra en efnamagnshlutfallið 1:1. Vetni er því til staðar í umframmagni og klór er takmarkandi hvarfefni. Hvarf alls klórsins sem er til staðar (2 mól) mun eyða 2 mólum af þeim 3 mólum af vetni sem eru til staðar og skilja eftir 1 mól af óhvarfuðu vetni.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idp22005824",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "An alternative approach to identifying the limiting reactant involves comparing the amount of product expected for the complete reaction of each reactant. Each reactant amount is used to separately calculate the amount of product that would be formed per the reaction’s stoichiometry. The reactant yielding the lesser amount of product is the limiting reactant. For the example in the previous paragraph, complete reaction of the hydrogen would yield",
+   "is": "Önnur aðferð til að bera kennsl á takmarkandi hvarfefni felur í sér að bera saman magn myndefnis sem búist er við fyrir fullkomið hvarf hvers hvarfefnis. Magn hvers hvarfefnis er notað til að reikna sérstaklega magn myndefnis sem myndi myndast samkvæmt efnamagnshlutföllum hvarfsins. Hvarfefnið sem gefur minna magn af myndefni er takmarkandi hvarfefni. Í dæminu í fyrri málsgrein myndi fullkomið hvarf vetnisins gefa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:caption:CNX_Chem_04_04_limiting-caption",
+   "words": [],
+   "en": "When H[[sub:2]] and Cl[[sub:2]] are combined in nonstoichiometric amounts, one of these reactants will limit the amount of HCl that can be produced. This illustration shows a reaction in which hydrogen is present in excess and chlorine is the limiting reactant.",
+   "is": "Þegar H[[sub:2]] og Cl[[sub:2]] er blandað saman í ójöfnum efnamagnshlutföllum mun annað þessara hvarfefna takmarka magn HCl sem hægt er að framleiða. Þessi mynd sýnir hvarf þar sem vetni er til staðar í umframmagni og klór er takmarkandi hvarfefni.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idm100978944",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The stoichiometric Si:N[[sub:2]] ratio is:",
+   "is": "Efnismagnshlutfall Si:N[[sub:2]] er:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idm1915936",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Comparing these ratios shows that Si is provided in a less-than-stoichiometric amount, and so is the limiting reactant.",
+   "is": "Samanburður á þessum hlutföllum sýnir að Si er í minna magni en efnismagnshlutfallið segir til um og er því takmarkandi hvarfefnið.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idm22072192",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The amount of product that [[i:may be]] produced by a reaction under specified conditions, as calculated per the stoichiometry of an appropriate balanced chemical equation, is called the [[term:theoretical yield|term-00003]] of the reaction. In practice, the amount of product obtained is called the [[term:actual yield|term-00004]], and it is often less than the theoretical yield for a number of reasons. Some reactions are inherently inefficient, being accompanied by [[i:side reactions]] that generate other products. Others are, by nature, incomplete (consider the partial reactions of weak acids and bases discussed earlier in this chapter). Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield. The extent to which a reaction’s theoretical yield is achieved is commonly expressed as its [[term:percent yield|term-00005]]:",
+   "is": "Magn myndefnis sem [[i:getur]] myndast við efnahvarf við tilteknar aðstæður, eins og reiknað er út samkvæmt efnismagnsfræði viðeigandi stilltrar efnajöfnu, er kallað [[term:fræðileg nýtni|term-00003]] hvarfsins. Í reynd er magn myndefnis sem fæst kallað [[term:raunveruleg nýtni|term-00004]] og er oft minna en fræðileg nýtni af ýmsum ástæðum. Sum efnahvörf eru í eðli sínu óhagkvæm og fylgja þeim [[i:hliðarhvörf]] sem mynda önnur efni. Önnur eru í eðli sínu ófullkomin (hugsið um ófullkomin hvörf veikra sýra og basa sem fjallað var um fyrr í þessum kafla). Sum myndefni er erfitt að safna án þess að eitthvað tapist og því mun ófullkomin endurheimt draga úr raunverulegri nýtni. Að hve miklu leyti fræðilegri nýtni efnahvarfs er náð er almennt gefið upp sem [[term:prósentunýtni|term-00005]] þess:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idp59920960",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Though the definition of atom economy at first glance appears very similar to that for percent yield, be aware that this property represents a difference in the [[i:theoretical]] efficiencies of [[i:different]] chemical processes. The percent yield of a given chemical process, on the other hand, evaluates the efficiency of a process by comparing the yield of product actually obtained to the maximum yield predicted by stoichiometry.",
+   "is": "Þótt skilgreiningin á atómhagkvæmni virðist við fyrstu sýn mjög svipuð skilgreiningunni á prósentunýtni, skal hafa í huga að þessi eiginleiki táknar mun á [[i:fræðilegri]] skilvirkni [[i:ólíkra]] efnaferla. Prósentunýtni tiltekins efnaferlis metur aftur á móti skilvirkni ferlis með því að bera saman nýtni myndefnis sem raunverulega fæst við hámarksnýtni sem spáð er með efnismagnsfræði.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:para:fs-idm5314032",
+   "words": [
+    "stoichiometric",
+    "stoichiometry"
+   ],
+   "en": "When reactions are carried out using less-than-stoichiometric quantities of reactants, the amount of product generated will be determined by the limiting reactant. The amount of product generated by a chemical reaction is its actual yield. This yield is often less than the amount of product predicted by the stoichiometry of the balanced chemical equation representing the reaction (its theoretical yield). The extent to which a reaction generates the theoretical amount of product is expressed as its percent yield.",
+   "is": "Þegar efnahvörf eru framkvæmd með minna en jafngildismagni hvarfefna ræðst magn myndefnisins sem myndast af takmarkandi hvarfefninu. Magn myndefnis sem myndast í efnahvarfi er raunheimt þess. Þessi heimt er oft minni en magn myndefnis sem spáð er fyrir um með jafngildisútreikningum út frá stilltri efnajöfnu sem táknar hvarfið (fræðileg heimt þess). Að hve miklu leyti efnahvarf myndar fræðilegt magn myndefnis er gefið upp sem heimtunarprósenta þess.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:solution:fs-idm48114608",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Convert mass of ethanol to moles of ethanol; relate the moles of ethanol to the moles of ether produced using the stoichiometry of the balanced equation. Convert moles of ether to grams; divide the actual grams of ether (determined through the density) by the theoretical mass to determine the percent yield; 87.6%",
+   "is": "Breytið massa etanóls í mól af etanóli; tengið mól etanóls við mól eters sem myndast með því að nota efnismagnsfræði jöfnunnar. Breytið mólum eters í grömm; deilið raunverulegum grömmum af eter (ákvarðað með eðlismassa) með fræðilegum massa til að ákvarða prósentuheimt; 87,6%",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:glossary-def:fs-idm46343008-def",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "reactant present in an amount greater than required by the reaction stoichiometry",
+   "is": "hvarfefni sem er til staðar í meira magni en efnajafnan segir til um",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:glossary-def:fs-idp182610272-def",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "reactant present in an amount lower than required by the reaction stoichiometry, thus limiting the amount of product generated",
+   "is": "hvarfefni sem er til staðar í minna magni en efnajafnan segir til um og takmarkar því magn myndefnis sem myndast",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68714",
+   "key": "m68714:glossary-def:fs-idp30967968-def",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "amount of product that may be produced from a given amount of reactant(s) according to the reaction stoichiometry",
+   "is": "magn myndefnis sem getur myndast úr tilteknu magni hvarfefna samkvæmt efnajöfnu",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:abstract-item:abstract-item-2",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Perform stoichiometric calculations using typical titration and gravimetric data.",
+   "is": "Framkvæmt efnismagnsútreikninga með dæmigerðum gögnum úr títrun og þyngdarmælingagreiningu.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp43277952",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The described approach to measuring vinegar strength was an early version of the analytical technique known as [[term:titration analysis|term-00002]]. A typical titration analysis involves the use of a [[term:buret|term-00003]] ([[xref:CNX_Chem_04_05_titration]]) to make incremental additions of a solution containing a known concentration of some substance (the [[term:titrant|term-00004]]) to a sample solution containing the substance whose concentration is to be measured (the [[term:analyte|term-00005]]). The titrant and analyte undergo a chemical reaction of known stoichiometry, and so measuring the volume of titrant solution required for complete reaction with the analyte (the [[term:equivalence point|term-00006]] of the titration) allows calculation of the analyte concentration. The equivalence point of a titration may be detected visually if a distinct change in the appearance of the sample solution accompanies the completion of the reaction. The halt of bubble formation in the classic vinegar analysis is one such example, though, more commonly, special dyes called [[term:indicators|term-00007]] are added to the sample solutions to impart a change in color at or very near the equivalence point of the titration. Equivalence points may also be detected by measuring some solution property that changes in a predictable way during the course of the titration. Regardless of the approach taken to detect a titration’s equivalence point, the volume of titrant actually measured is called the [[term:end point|term-00008]]. Properly designed titration methods typically ensure that the difference between the equivalence and end points is negligible. Though any type of chemical reaction may serve as the basis for a titration analysis, the three described in this chapter (precipitation, acid-base, and redox) are most common. Additional details regarding titration analysis are provided in the chapter on acid-base equilibria.",
+   "is": "Aðferðin sem lýst er til að mæla styrk ediks var snemmbúin útgáfa af greiningartækninni sem kallast [[term:títrunargreining|term-00002]]. Dæmigerð títrunargreining felur í sér notkun á [[term:búrettu|term-00003]] ([[xref:CNX_Chem_04_05_titration]]) til að bæta við í litlum skömmtum lausn sem inniheldur þekktan styrk af einhverju efni ([[term:títrantur|term-00004]]) í sýnislausn sem inniheldur efnið sem á að mæla styrkinn á ([[term:greiniefni|term-00005]]). Títranturinn og greiniefnið gangast undir efnahvarf með þekktum efnismagnshlutföllum, og því gerir mæling á rúmmáli títrantslausnar sem þarf til að ljúka hvarfinu við greiniefnið ([[term:jafngildispunktur|term-00006]] títrunarinnar) kleift að reikna út styrk greiniefnisins. Jafngildispunktur títrunar má greina með berum augum ef greinileg breyting á útliti sýnislausnarinnar fylgir lokum hvarfsins. Stöðvun loftbólumyndunar í klassísku ediksgreiningunni er eitt slíkt dæmi, þótt algengara sé að sérstök litarefni, svokallaðir [[term:litavísar|term-00007]], séu bætt við sýnislausnirnar til að valda litabreytingu við eða mjög nálægt jafngildispunkti títrunarinnar. Einnig má greina jafngildispunkta með því að mæla einhvern eiginleika lausnarinnar sem breytist á fyrirsjáanlegan hátt í gegnum títrunina. Óháð því hvaða aðferð er notuð til að greina jafngildispunkt títrunar, er rúmmál títrants sem raunverulega er mælt kallað [[term:endapunktur|term-00008]]. Rétt hannaðar títrunaraðferðir tryggja yfirleitt að munurinn á jafngildis- og endapunkti sé hverfandi. Þótt hvers kyns efnahvarf geti legið til grundvallar títrunargreiningu, eru þau þrjú sem lýst er í þessum kafla (útfelling, sýru-basa og redox) algengust. Nánari upplýsingar um títrunargreiningu er að finna í kaflanum um sýru-basa jafnvægi.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idm12137328",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "As for all reaction stoichiometry calculations, the key issue is the relation between the molar amounts of the chemical species of interest as depicted in the balanced chemical equation. The approach outlined in previous modules of this chapter is followed, with additional considerations required, since the amounts of reactants provided and requested are expressed as solution concentrations.",
+   "is": "Eins og í öllum efnismagnsútreikningum er lykilatriðið sambandið milli mólmagns efnategundanna sem um ræðir eins og sýnt er í stilltri efnajöfnu. Farið er eftir aðferðinni sem lýst er í fyrri einingum þessa kafla, með viðbótarathugunum sem krafist er, þar sem magn hvarfefna sem gefið er upp og beðið er um er gefið upp sem styrkur lausna.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:alt:fs-idm28534832-alt",
+   "words": [
+    "Stoichiometric"
+   ],
+   "en": "This figure shows four rectangles. The first is shaded lavender and is labeled, “Volume of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Molar concentration,” to a second rectangle. This second rectangle is shaded pink and is labeled, “Moles of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Stoichiometric factor,” to a third rectangle which is shaded pink and is labeled, “Moles of H C l.” This rectangle is followed by an arrow labeled, “Solution volume,” which points right to a fourth rectangle. This fourth rectangle is shaded lavender and is labeled, “Concentration of H C l.”",
+   "is": "Þessi mynd sýnir fjóra rétthyrninga. Sá fyrsti er ljósfjólublár og merktur „Rúmmál NaOH“. Á eftir þessum rétthyrningi er ör sem vísar til hægri og er merkt „Mólstyrkur“, að öðrum rétthyrningi. Þessi annar rétthyrningur er bleikur og merktur „Mól af NaOH“. Á eftir þessum rétthyrningi er ör sem vísar til hægri og er merkt „Efnismagnsþáttur“, að þriðja rétthyrningi sem er bleikur og merktur „Mól af HCl“. Á eftir þessum rétthyrningi er ör merkt „Rúmmál lausnar“, sem vísar til hægri að fjórða rétthyrningi. Þessi fjórði rétthyrningur er ljósfjólublár og merktur „Styrkur HCl“.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp27521328",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "A [[term:gravimetric analysis|term-00009]] is one in which a sample is subjected to some treatment that causes a change in the physical state of the analyte that permits its separation from the other components of the sample. Mass measurements of the sample, the isolated analyte, or some other component of the analysis system, used along with the known stoichiometry of the compounds involved, permit calculation of the analyte concentration. Gravimetric methods were the first techniques used for quantitative chemical analysis, and they remain important tools in the modern chemistry laboratory.",
+   "is": "[[term:Þyngdarmælingagreining|term-00009]] er greining þar sem sýni er meðhöndlað á þann hátt að eðlisástand greiniefnisins breytist þannig að hægt sé að skilja það frá öðrum efnum í sýninu. Massamælingar á sýninu, einangraða greiniefninu eða einhverjum öðrum hluta greiningarkerfisins, ásamt þekktu efnismagnshlutfalli efnasambandanna sem koma við sögu, gera kleift að reikna út styrk greiniefnisins. Þyngdarmælingaaðferðir voru fyrstu aðferðirnar sem notaðar voru við megindlega efnagreiningu og eru enn mikilvæg verkfæri á nútíma efnafræðistofum.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp272684448",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The required change of state in a gravimetric analysis may be achieved by various physical and chemical processes. For example, the moisture (water) content of a sample is routinely determined by measuring the mass of a sample before and after it is subjected to a controlled heating process that evaporates the water. Also common are gravimetric techniques in which the analyte is subjected to a precipitation reaction of the sort described earlier in this chapter. The precipitate is typically isolated from the reaction mixture by filtration, carefully dried, and then weighed ([[xref:CNX_Chem_04_05_Filter]]). The mass of the precipitate may then be used, along with relevant stoichiometric relationships, to calculate analyte concentration.",
+   "is": "Nauðsynlegri ástandsbreytingu í þyngdarmælingagreiningu má ná fram með ýmsum eðlis- og efnafræðilegum ferlum. Til dæmis er rakainnihald (vatn) sýnis venjulega ákvarðað með því að mæla massa sýnis fyrir og eftir að það er hitað á stýrðan hátt til að gufa upp vatnið. Einnig eru algengar þyngdarmælingaaðferðir þar sem greiniefnið er látið gangast undir botnfallshvarf af því tagi sem lýst var fyrr í þessum kafla. Botnfallið er venjulega einangrað úr hvarfblöndunni með síun, þurrkað vandlega og síðan vegið ([[xref:CNX_Chem_04_05_Filter]]). Massi botnfallsins má síðan nota, ásamt viðeigandi efnismagnshlutföllum, til að reikna út styrk greiniefnisins.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp87548576",
+   "words": [
+    "stoichiometric",
+    "stoichiometric"
+   ],
+   "en": "The plan for this calculation is similar to others used in stoichiometric calculations, the central step being the connection between the moles of BaSO[[sub:4]] and MgSO[[sub:4]] through their stoichiometric factor. Once the mass of MgSO[[sub:4]] is computed, it may be used along with the mass of the sample mixture to calculate the requested percentage concentration.",
+   "is": "Áætlunin fyrir þennan útreikning er svipuð öðrum sem notaðir eru í efnismagnsútreikningum, þar sem aðalskrefið er tengingin milli móla BaSO[[sub:4]] og MgSO[[sub:4]] í gegnum efnismagnsþátt þeirra. Þegar massi MgSO[[sub:4]] hefur verið reiknaður út má nota hann ásamt massa sýnisblöndunnar til að reikna út umbeðinn prósentustyrk.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:alt:fs-idp125565328-alt",
+   "words": [
+    "Stoichiometric"
+   ],
+   "en": "This figure shows five rectangles. The first is shaded yellow and is labeled “Mass of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” This third rectangle is shaded pink and is labeled, “Moles of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Molar mass,” which points downward to a fourth rectangle. This fourth rectangle is shaded yellow and is labeled, “Mass of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Sample mass,” which points left to a fifth rectangle. This fifth rectangle is shaded lavender and is labeled, “Percent M g S O subscript 4.",
+   "is": "Þessi mynd sýnir fimm rétthyrninga. Sá fyrsti er gulur og merktur „Massi BaSO neðanskrift 4“. Á eftir þessum rétthyrningi er ör sem vísar til hægri að öðrum rétthyrningi. Örin er merkt „Mólmassi“. Annar rétthyrningurinn er bleikur og merktur „Mól af BaSO neðanskrift 4“. Á eftir þessum rétthyrningi er ör sem vísar til hægri að þriðja rétthyrningi. Örin er merkt „Efnismagnsþáttur“. Þessi þriðji rétthyrningur er bleikur og merktur „Mól af MgSO neðanskrift 4“. Á eftir þessum rétthyrningi er ör merkt „Mólmassi“, sem vísar niður á við að fjórða rétthyrningi. Þessi fjórði rétthyrningur er gulur og merktur „Massi MgSO neðanskrift 4“. Á eftir þessum rétthyrningi er ör merkt „Massi sýnis“, sem vísar til vinstri að fimmta rétthyrningi. Þessi fimmti rétthyrningur er ljósfjólublár og merktur „Prósenta MgSO neðanskrift 4“.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp91356704",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as [[term:combustion analysis|term-00010]]. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([[xref:CNX_Chem_04_05_combustion]]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.",
+   "is": "Frumefnasamsetningu kolvetna og skyldra efnasambanda má ákvarða með þyngdarmælingaraðferð sem kallast [[term:brunaefnagreining|term-00010]]. Í brunaefnagreiningu er vegið sýni af efnasambandinu hitað upp í háan hita undir straumi af súrefnisgasi, sem leiðir til fullkomins bruna þess og myndunar á loftkenndum afurðum með þekkta eiginleika. Fullkominn bruni kolvetna, til dæmis, mun skila koltvísýringi og vatni sem einu afurðunum. Loftkenndu brunaafurðirnar eru leiddar í gegnum aðskilin, fyrirfram vegin söfnunartæki sem innihalda efnasambönd sem gleypa sértækt hverja afurð ([[xref:CNX_Chem_04_05_combustion]]). Massaukning hvers tækis samsvarar massa gleypinnar afurðar og má nota í viðeigandi efnajöfnureikningi til að leiða út massa viðkomandi frumefnis.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:alt:fs-idp22371728-alt",
+   "words": [
+    "Stoichiometric",
+    "Stoichiometric"
+   ],
+   "en": "This figure shows two flowcharts. The first row is a single flow chart. In this row, a rectangle at the left is shaded yellow and is labeled, “Mass of C O subscript 2.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of C O subscript 2.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled, “Moles of C.” This rectangle is followed by an arrow labeled “Molar mass” which points right to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of C.” Below, is a second flowchart. It begins with a yellow shaded rectangle on the left which is labeled, “Mass of H subscript 2 O.” This rectangle is followed by an arrow labeled, “Molar mass,” which points right to a second rectangle. The second rectangle is shaded pink and is labeled, “Moles of H subscript 2 O.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled “Moles of H.” This rectangle is followed to the right by an arrow labeled, “Molar mass,” which points to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of H.” An arrow labeled, “Sample mass” points down beneath this rectangle to a green shaded rectangle. This rectangle is labeled, “Percent composition.” An arrow extends beneath the pink rectangle labeled, “Moles of H,” to a green shaded rectangle labeled, “C to H mole ratio.” Beneath this rectangle, an arrow extends to a second green shaded rectangle which is labeled, “Empirical formula.”",
+   "is": "Þessi mynd sýnir tvö flæðirit. Efsta röðin er eitt flæðirit. Í þessari röð er rétthyrningur vinstra megin skyggður gulur og merktur „Massi C O með neðanskrift 2“. Á eftir þessum rétthyrningi er ör sem bendir til hægri að öðrum rétthyrningi. Örin er merkt „Mólmassi“. Annar rétthyrningurinn er skyggður bleikur og merktur „Mól C O með neðanskrift 2“. Á eftir þessum rétthyrningi er ör sem bendir til hægri að þriðja rétthyrningi. Örin er merkt „Efnajöfnunarstuðull“. Þriðji rétthyrningurinn er skyggður bleikur og merktur „Mól C“. Á eftir þessum rétthyrningi er ör merkt „Mólmassi“ sem bendir til hægri að fjórða rétthyrningi. Fjórði rétthyrningurinn er skyggður gulur og merktur „Massi C“. Fyrir neðan er annað flæðirit. Það byrjar með gulum skyggðum rétthyrningi vinstra megin sem er merktur „Massi H með neðanskrift 2 O“. Á eftir þessum rétthyrningi er ör merkt „Mólmassi“ sem bendir til hægri að öðrum rétthyrningi. Annar rétthyrningurinn er skyggður bleikur og merktur „Mól H með neðanskrift 2 O“. Á eftir þessum rétthyrningi er ör sem bendir til hægri að þriðja rétthyrningi. Örin er merkt „Efnajöfnunarstuðull“. Þriðji rétthyrningurinn er skyggður bleikur og merktur „Mól H“. Á eftir þessum rétthyrningi til hægri er ör merkt „Mólmassi“ sem bendir að fjórða rétthyrningi. Fjórði rétthyrningurinn er skyggður gulur og merktur „Massi H“. Ör merkt „Massi sýnis“ bendir niður fyrir neðan þennan rétthyrning að grænum skyggðum rétthyrningi. Þessi rétthyrningur er merktur „Prósentusamsetning“. Ör teygir sig niður fyrir bleika rétthyrninginn merktan „Mól H“ að grænum skyggðum rétthyrningi merktum „Mólhlutfall C á móti H“. Fyrir neðan þennan rétthyrning teygir sig ör að öðrum grænum skyggðum rétthyrningi sem er merktur „Reynsluformúla“.",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:para:fs-idp61279744",
+   "words": [
+    "stoichiometry",
+    "stoichiometry",
+    "stoichiometry"
+   ],
+   "en": "The stoichiometry of chemical reactions may serve as the basis for quantitative chemical analysis methods. Titrations involve measuring the volume of a titrant solution required to completely react with a sample solution. This volume is then used to calculate the concentration of analyte in the sample using the stoichiometry of the titration reaction. Gravimetric analysis involves separating the analyte from the sample by a physical or chemical process, determining its mass, and then calculating its concentration in the sample based on the stoichiometry of the relevant process. Combustion analysis is a gravimetric method used to determine the elemental composition of a compound by collecting and weighing the gaseous products of its combustion.",
+   "is": "Efnajöfnur efnahvarfa geta verið grundvöllur aðferða í megindlegri efnagreiningu. Títranir fela í sér að mæla rúmmál títrunarlausnar sem þarf til að hvarfast að fullu við sýnislausn. Þetta rúmmál er síðan notað til að reikna út styrk greiniefnisins í sýninu með því að nota efnajöfnuna fyrir títrunarhvarfið. Þyngdarmælingagreining felur í sér að aðskilja greiniefnið frá sýninu með eðlisfræðilegu eða efnafræðilegu ferli, ákvarða massa þess og reikna síðan út styrk þess í sýninu út frá efnajöfnu viðkomandi ferlis. Brunagreining er þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með því að safna og vega loftkenndar afurðir bruna þess.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:glossary-def:fs-idp276080304-def",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "measured volume of titrant solution that yields the change in sample solution appearance or other property expected for stoichiometric equivalence (see [[i:equivalence point]])",
+   "is": "mælt rúmmál títrunarlausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við fyrir efnajafngildi (sjá [[i:jafngildispunktur]])",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68716",
+   "key": "m68716:glossary-def:fs-idp90910688-def",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "volume of titrant solution required to react completely with the analyte in a titration analysis; provides a stoichiometric amount of titrant for the sample’s analyte according to the titration reaction",
+   "is": "rúmmál títrunarlausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur efnajafngilt magn títrunarefnis fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68730",
+   "key": "m68730:abstract-item:abstract-item-3",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Reaction Stoichiometry",
+   "is": "Magnhlutföll efnahvarfa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "m68730",
+   "key": "m68730:para:fs-idm17418752",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Solid-fuel rockets are a central feature in the world’s space exploration programs, including the new Space Launch System being developed by the National Aeronautics and Space Administration (NASA) to replace the retired Space Shuttle fleet ([[xref:CNX_Chem_04_00_Rocket]]). The engines of these rockets rely on carefully prepared solid mixtures of chemicals combined in precisely measured amounts. Igniting the mixture initiates a vigorous chemical reaction that rapidly generates large amounts of gaseous products. These gases are ejected from the rocket engine through its nozzle, providing the thrust needed to propel heavy payloads into space. Both the nature of this chemical reaction and the relationships between the amounts of the substances being consumed and produced by the reaction are critically important considerations that determine the success of the technology. This chapter will describe how to symbolize chemical reactions using chemical equations, how to classify some common chemical reactions by identifying patterns of reactivity, and how to determine the quantitative relations between the amounts of substances involved in chemical reactions—that is, the reaction [[i:stoichiometry]].",
+   "is": "Eldflaugar með föstu eldsneyti eru miðlægur þáttur í geimkönnunaráætlunum heimsins, þar á meðal nýja geimskotkerfið (Space Launch System) sem Geimferðastofnun Bandaríkjanna (NASA) er að þróa til að koma í stað geimskutluflotans sem tekinn hefur verið úr notkun ([[xref:CNX_Chem_04_00_Rocket]]). Hreyflar þessara eldflauga reiða sig á vandlega undirbúnar fastar efnablöndur sem blandað er saman í nákvæmlega mældu magni. Þegar kveikt er í blöndunni hefst kröftugt efnahvarf sem myndar hratt mikið magn af loftkenndum afurðum. Þessum lofttegundum er spúið út úr eldflaugahreyflinum í gegnum stút hans, sem veitir þann þrýstikraft sem þarf til að knýja þungan farm út í geim. Bæði eðli þessa efnahvarfs og sambandið milli magns efnanna sem eyðast og myndast í hvarfinu eru afar mikilvægir þættir sem ráða úrslitum um velgengni tækninnar. Í þessum kafla verður lýst hvernig tákna má efnahvörf með efnajöfnum, hvernig flokka má sum algeng efnahvörf með því að bera kennsl á hvarfmynstur og hvernig ákvarða má megindleg tengsl milli magns efna sem taka þátt í efnahvörfum – það er að segja, [[i:magnhlutföll]] efnahvarfa.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch04",
+   "stem": "chapter-metadata",
+   "key": "chapter:title:ch04",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Stoichiometry of Chemical Reactions",
+   "is": "Hlutfallaefnafræði efnahvarfa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idm10084896",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "For the reaction of 0.0500 mol acid (HCl), [[i:q]] = −2.9 kJ. The reactants are provided in stoichiometric amounts (same molar ratio as in the balanced equation), and so the amount of acid may be used to calculate a molar enthalpy change. Since Δ[[i:H]] is an extensive property, it is proportional to the amount of acid neutralized:",
+   "is": "Fyrir hvarf 0,0500 móla af sýru (HCl) er [[i:q]] = −2,9 kJ. Hvarfefnin eru gefin í efnismagnsfræðilegum hlutföllum (sama mólhlutfall og í stilltu jöfnunni) og því má nota magn sýrunnar til að reikna út mólvermisbreytingu. Þar sem Δ[[i:H]] er útþaninn eiginleiki er hann í réttu hlutfalli við magn sýru sem er hlutleyst:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idm14305808",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Be sure to take both stoichiometry and limiting reactants into account when determining the Δ[[i:H]] for a chemical reaction.",
+   "is": "Gættu þess að taka bæði tillit til efnismagnsfræði og takmarkandi hvarfefna þegar þú ákvarðar Δ[[i:H]] fyrir efnahvarf.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idm42247408",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Unlike the previous example exercise, this one does not involve the reaction of stoichiometric amounts of reactants, and so the [[i:limiting reactant]] must be identified (it limits the yield of the reaction and the amount of thermal energy produced or consumed).",
+   "is": "Ólíkt fyrra dæminu felur þetta ekki í sér hvarf efnismagnsfræðilegra magns hvarfefna og því verður að bera kennsl á [[i:takmarkandi hvarfefnið]] (það takmarkar heimtur hvarfsins og magn varmaorku sem myndast eða er neytt).",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idm379230752",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The balanced equation indicates 8 mol KClO[[sub:3]] are required for reaction with 1 mol C[[sub:12]]H[[sub:22]]O[[sub:11]]. Since the provided amount of KClO[[sub:3]] is less than the stoichiometric amount, it is the limiting reactant and may be used to compute the enthalpy change:",
+   "is": "Stillta jafnan sýnir að 8 mól af KClO[[sub:3]] þarf til að hvarfast við 1 mól af C[[sub:12]]H[[sub:22]]O[[sub:11]]. Þar sem uppgefið magn af KClO[[sub:3]] er minna en efnismagnsfræðilega magnið er það takmarkandi hvarfefnið og má nota það til að reikna út vermibreytinguna:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idp120713504",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "We also can use [[term:Hess’s law|term-00014]] to determine the enthalpy change of any reaction if the corresponding enthalpies of formation of the reactants and products are available. The stepwise reactions we consider are: (i) decompositions of the reactants into their component elements (for which the enthalpy changes are proportional to the negative of the enthalpies of formation of the reactants), followed by (ii) re-combinations of the elements to give the products (with the enthalpy changes proportional to the enthalpies of formation of the products). The standard enthalpy change of the overall reaction is therefore equal to: (ii) the sum of the standard enthalpies of formation of all the products plus (i) the sum of the negatives of the standard enthalpies of formation of the reactants. This is usually rearranged slightly to be written as follows, with ∑ representing “the sum of” and [[i:n]] standing for the stoichiometric coefficients:",
+   "is": "Við getum einnig notað [[term:lögmál Hess|term-00014]] til að ákvarða vermibreytingu hvers efnahvarfs ef samsvarandi myndunarvermi hvarfefna og myndefna eru þekkt. Skrefin sem við skoðum eru: (i) sundrun hvarfefna í frumefni sín (þar sem vermibreytingarnar eru í réttu hlutfalli við neikvætt gildi myndunarvermis hvarfefnanna), fylgt eftir af (ii) endursamsetningu frumefnanna til að mynda myndefnin (þar sem vermibreytingarnar eru í réttu hlutfalli við myndunarvermi myndefnanna). Stöðluð vermibreyting heildarhvarfsins er því jöfn: (ii) summu staðlaðra myndunarverma allra myndefna plús (i) summu neikvæðra gilda staðlaðra myndunarverma hvarfefnanna. Þessu er venjulega endurraðað örlítið og skrifað á eftirfarandi hátt, þar sem Σ táknar „summa af“ og [[i:n]] stendur fyrir stuðla efnajöfnunnar:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch05",
+   "stem": "m68727",
+   "key": "m68727:para:fs-idp146120784",
+   "words": [
+    "stoichiometric",
+    "stoichiometric"
+   ],
+   "en": "Note that this result was obtained by (1) multiplying the [[MATH:67]] of each product by its stoichiometric coefficient and summing those values, (2) multiplying the [[MATH:68]] of each reactant by its stoichiometric coefficient and summing those values, and then (3) subtracting the result found in (2) from the result found in (1). This is also the procedure in using the general equation, as shown.",
+   "is": "Taktu eftir að þessi niðurstaða fékkst með því að (1) margfalda [[MATH:67]] hvers myndefnis með stuðli þess í efnajöfnunni og leggja þau gildi saman, (2) margfalda [[MATH:68]] hvers hvarfefnis með stuðli þess í efnajöfnunni og leggja þau gildi saman og síðan (3) draga niðurstöðuna úr (2) frá niðurstöðunni úr (1). Þetta er einnig aðferðin við notkun almennu jöfnunnar, eins og sýnt er.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68748",
+   "key": "m68748:abstract-item:abstract-item-3",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Stoichiometry of Gaseous Substances, Mixtures, and Reactions",
+   "is": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:title:auto-1",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Stoichiometry of Gaseous Substances, Mixtures, and Reactions",
+   "is": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:abstract-item:abstract-item-2",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Perform stoichiometric calculations involving gaseous substances",
+   "is": "Gert efnismagnsfræðilega útreikninga sem fela í sér loftkennd efni",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:para:fs-idm31863392",
+   "words": [
+    "stoichiometry",
+    "stoichiometry",
+    "stoichiometry"
+   ],
+   "en": "As described in an earlier chapter of this text, we can turn to chemical stoichiometry for answers to many of the questions that ask “How much?” The essential property involved in such use of stoichiometry is the amount of substance, typically measured in moles ([[i:n]]). For gases, molar amount can be derived from convenient experimental measurements of pressure, temperature, and volume. Therefore, these measurements are useful in assessing the stoichiometry of pure gases, gas mixtures, and chemical reactions involving gases. This section will not introduce any new material or ideas, but will provide examples of applications and ways to integrate concepts already discussed.",
+   "is": "Eins og lýst er í fyrri kafla þessa texta getum við leitað til efnismagnsfræði til að fá svör við mörgum spurningum sem byrja á „Hversu mikið?“ Nauðsynlegur eiginleiki sem felst í slíkri notkun efnismagnsfræði er efnismagn, venjulega mælt í mólum ([[i:n]]). Fyrir lofttegundir er hægt að leiða mólmagn út frá hentugum tilraunamælingum á þrýstingi, hitastigi og rúmmáli. Þess vegna eru þessar mælingar gagnlegar við mat á efnismagnsfræði hreinna lofttegunda, loftblandna og efnahvarfa sem fela í sér lofttegundir. Þessi kafli mun ekki kynna neitt nýtt efni eða hugmyndir, heldur mun hann veita dæmi um notkun og leiðir til að samþætta hugtök sem þegar hafa verið rædd.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:title:fs-idp132626656-title",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Chemical Stoichiometry and Gases",
+   "is": "Efnajöfnur og lofttegundir",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:para:fs-idp137887648",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Chemical stoichiometry describes the quantitative relationships between reactants and products in chemical reactions.",
+   "is": "Efnajöfnureikningur lýsir magnbundnum tengslum milli hvarfefna og myndefna í efnahvörfum.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:para:fs-idm7424624",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Sometimes we can take advantage of a simplifying feature of the stoichiometry of gases that solids and solutions do not exhibit: All gases that show ideal behavior contain the same number of molecules in the same volume (at the same temperature and pressure). Thus, the ratios of volumes of gases involved in a chemical reaction are given by the coefficients in the equation for the reaction, provided that the gas volumes are measured at the same temperature and pressure.",
+   "is": "Stundum getum við nýtt okkur einföldunareiginleika í efnajöfnureikningi lofttegunda sem föst efni og lausnir sýna ekki: Allar lofttegundir sem sýna kjörhegðun innihalda sama fjölda sameinda í sama rúmmáli (við sama hitastig og þrýsting). Þannig eru hlutföll rúmmála lofttegunda sem taka þátt í efnahvarfi gefin með stuðlum í jöfnunni fyrir hvarfið, að því tilskildu að rúmmál lofttegundanna séu mæld við sama hitastig og þrýsting.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68752",
+   "key": "m68752:para:fs-idp71854032",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The ideal gas law can be used to derive a number of convenient equations relating directly measured quantities to properties of interest for gaseous substances and mixtures. Appropriate rearrangement of the ideal gas equation may be made to permit the calculation of gas densities and molar masses. Dalton’s law of partial pressures may be used to relate measured gas pressures for gaseous mixtures to their compositions. Avogadro’s law may be used in stoichiometric computations for chemical reactions involving gaseous reactants or products.",
+   "is": "Hægt er að nota kjörgaslögmálið til að leiða út ýmsar hentugar jöfnur sem tengja beint mældar stærðir við áhugaverða eiginleika loftkenndra efna og blanda. Hægt er að endurraða kjörgasjöfnunni á viðeigandi hátt til að gera kleift að reikna út eðlismassa og mólmassa lofttegunda. Hægt er að nota Daltons lögmál um hlutþrýsting til að tengja mældan gasþrýsting fyrir loftblöndur við samsetningu þeirra. Hægt er að nota lögmál Avogadros í efnajöfnureikningum fyrir efnahvörf sem fela í sér loftkennd hvarfefni eða myndefni.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch09",
+   "stem": "m68759",
+   "key": "m68759:para:fs-idm10764416",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Thus far, the ideal gas law, [[i:PV = nRT]], has been applied to a variety of different types of problems, ranging from reaction stoichiometry and empirical and molecular formula problems to determining the density and molar mass of a gas. As mentioned in the previous modules of this chapter, however, the behavior of a gas is often non-ideal, meaning that the observed relationships between its pressure, volume, and temperature are not accurately described by the gas laws. In this section, the reasons for these deviations from ideal gas behavior are considered.",
+   "is": "Hingað til hefur kjörgaslögmálið, [[i:PV = nRT]], verið notað við ýmiss konar úrlausnir, allt frá efnajöfnureikningum og úrlausnum á reynsluformúlum og sameindaformúlum til þess að ákvarða eðlismassa og mólmassa gass. Eins og nefnt var í fyrri einingum þessa kafla er hegðun gass þó oft ekki eins og kjörgass, sem þýðir að þau tengsl sem sjást milli þrýstings, rúmmáls og hitastigs eru ekki nákvæmlega í samræmi við gaslögmálin. Í þessum kafla eru ástæðurnar fyrir þessum frávikum frá hegðun kjörgass skoðaðar.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch10",
+   "stem": "m68773",
+   "key": "m68773:example-title:fs-idp118444096-title",
+   "words": [
+    "Stoichiometry"
+   ],
+   "en": "Stoichiometry of Ionic Compounds",
+   "is": "Efnismagnshlutföll jónaefnasambanda",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch10",
+   "stem": "m68773",
+   "key": "m68773:para:fs-idm23769904",
+   "words": [
+    "stoichiometries"
+   ],
+   "en": "Different types of ionic compounds often crystallize in the same structure when the relative sizes of their ions and their stoichiometries (the two principal features that determine structure) are similar.",
+   "is": "Mismunandi gerðir jónaefnasambanda kristallast oft í sömu byggingu þegar hlutfallslegar stærðir jóna þeirra og efnismagnshlutföll (þau tvö meginatriði sem ákvarða byggingu) eru svipuð.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch10",
+   "stem": "m68773",
+   "key": "m68773:para:fs-idm42504800",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "When an ionic compound is composed of cations and anions of similar size in a 1:1 ratio, it typically forms a simple cubic structure. Cesium chloride, CsCl, (illustrated in [[xref:CNX_Chem_10_07_CsClStrctr]]) is an example of this, with Cs[[sup:+]] and Cl[[sup:−]] having radii of 174 pm and 181 pm, respectively. We can think of this as chloride ions forming a simple cubic unit cell, with a cesium ion in the center; or as cesium ions forming a unit cell with a chloride ion in the center; or as simple cubic unit cells formed by Cs[[sup:+]] ions overlapping unit cells formed by Cl[[sup:−]] ions. Cesium ions and chloride ions touch along the body diagonals of the unit cells. One cesium ion and one chloride ion are present per unit cell, giving the 1:1 stoichiometry required by the formula for cesium chloride. Note that there is no lattice point in the center of the cell, and CsCl is not a BCC structure because a cesium ion is not identical to a chloride ion.",
+   "is": "Þegar jónaefni er samsett úr katjónum og anjónum af svipaðri stærð í hlutfallinu 1:1 myndar það yfirleitt einfalda rúmmiðjaða byggingu. Sesínklóríð, CsCl, (sýnt á [[xref:CNX_Chem_10_07_CsClStrctr]]) er dæmi um þetta, þar sem Cs[[sup:+]] og Cl[[sup:−]] hafa geisla sem eru 174 pm og 181 pm. Við getum hugsað okkur þetta sem klóríðjónir sem mynda einfalda rúmmiðjaða grindareiningu með sesínjón í miðjunni; eða sem sesínjónir sem mynda grindareiningu með klóríðjón í miðjunni; eða sem einfaldar rúmmiðjaðar grindareiningar myndaðar af Cs[[sup:+]] jónum sem skarast við grindareiningar myndaðar af Cl[[sup:−]] jónum. Sesínjónir og klóríðjónir snertast eftir hornalínum grindareininganna. Ein sesínjón og ein klóríðjón eru í hverri grindareiningu, sem gefur hlutfallið 1:1 sem formúlan fyrir sesínklóríð krefst. Athugið að það er enginn grindarpunktur í miðju einingarinnar og CsCl er ekki með rúmmiðjaða byggingu (BCC) því sesínjón er ekki eins og klóríðjón.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch10",
+   "stem": "m68773",
+   "key": "m68773:para:fs-idp36716000",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "When an ionic compound is composed of a 1:1 ratio of cations and anions that differ significantly in size, it typically crystallizes with an FCC unit cell, like that shown in [[xref:CNX_Chem_10_07_NaClStrctr]]. Sodium chloride, NaCl, is an example of this, with Na[[sup:+]] and Cl[[sup:−]] having radii of 102 pm and 181 pm, respectively. We can think of this as chloride ions forming an FCC cell, with sodium ions located in the octahedral holes in the middle of the cell edges and in the center of the cell. The sodium and chloride ions touch each other along the cell edges. The unit cell contains four sodium ions and four chloride ions, giving the 1:1 stoichiometry required by the formula, NaCl.",
+   "is": "Þegar jónaefni er samsett úr katjónum og anjónum í hlutfallinu 1:1 sem eru verulega mismunandi að stærð, kristallast það venjulega með flatarmiðjaðri (FCC) grindareiningu, eins og sýnt er á [[xref:CNX_Chem_10_07_NaClStrctr]]. Natríumklóríð, NaCl, er dæmi um þetta, þar sem Na[[sup:+]] og Cl[[sup:−]] hafa geisla sem eru 102 pm og 181 pm. Við getum hugsað okkur þetta sem klóríðjónir sem mynda FCC-einingu, með natríumjónum staðsettum í áttflötungsholunum í miðju brúna einingarinnar og í miðju einingarinnar. Natríum- og klóríðjónirnar snertast eftir brúnum einingarinnar. Grindareiningin inniheldur fjórar natríumjónir og fjórar klóríðjónir, sem gefur hlutfallið 1:1 sem formúlan, NaCl, krefst.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch11",
+   "stem": "m68781",
+   "key": "m68781:para:fs-idm4855136",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "This reaction is essentially 100% complete for HCl (i.e., it is a [[i:strong acid]] and, consequently, a strong electrolyte). Likewise, weak acids and bases that only react partially generate relatively low concentrations of ions when dissolved in water and are classified as weak electrolytes. The reader may wish to review the discussion of strong and weak acids provided in the earlier chapter of this text on reaction classes and stoichiometry.",
+   "is": "Þetta hvarf er í raun 100% fullkomið fyrir HCl (þ.e. það er [[i:sterk sýra]] og þar af leiðandi sterkur raflausnari). Sömuleiðis mynda veikar sýrur og basar sem hvarfast aðeins að hluta til tiltölulega lágan styrk jóna þegar þær eru leystar upp í vatni og eru flokkaðar sem veikir raflausnarar. Lesandinn gæti viljað rifja upp umfjöllunina um sterkar og veikar sýrur sem er að finna í fyrri kafla þessa texta um hvarfflokka og efnajöfnur.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch11",
+   "stem": "m68783",
+   "key": "m68783:para:fs-idp135152880",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Several units commonly used to express the concentrations of solution components were introduced in an earlier chapter of this text, each providing certain benefits for use in different applications. For example, molarity ([[i:M]]) is a convenient unit for use in stoichiometric calculations, since it is defined in terms of the molar amounts of solute species:",
+   "is": "Nokkrar einingar sem almennt eru notaðar til að lýsa styrk efnisþátta í lausn voru kynntar í fyrri kafla þessa texta, en hver þeirra býður upp á ákveðna kosti til notkunar í mismunandi tilgangi. Til dæmis er mólstyrkur ([[i:M]]) hentug eining til notkunar í efnajöfnureikningum, þar sem hann er skilgreindur út frá mólmagni uppleystra efna:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch11",
+   "stem": "m68783",
+   "key": "m68783:problem:fs-idp102655552",
+   "words": [],
+   "en": "Which is/are part of the macroscopic domain of solutions and which is/are part of the microscopic domain: boiling point elevation, Henry’s law, hydrogen bond, ion-dipole attraction, molarity, nonelectrolyte, nonstoichiometric compound, osmosis, solvated ion?",
+   "is": "Hvað af eftirfarandi tilheyrir stórsæja sviði lausna og hvað tilheyrir smásæja sviðinu: suðumarkshækkun, lögmál Henrys, vetnistengi, jóna-tvískautsaðdráttur, mólstyrkur, raflausnarlausn, óstoðmælt efnasamband, osmósa, leyst jón?",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idm26303136",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The rate of a reaction may be expressed as the change in concentration of any reactant or product. For any given reaction, these rate expressions are all related simply to one another according to the reaction stoichiometry. The rate of the general reaction",
+   "is": "Hraða efnahvarfs má lýsa sem breytingu á styrk hvers hvarfefnis eða myndefnis. Fyrir tiltekið efnahvarf eru þessar hraðalýsingar allar einfaldlega tengdar hver annarri samkvæmt efnajöfnunni. Hraða almenna efnahvarfsins",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idm219494144",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "can be expressed in terms of the decrease in the concentration of A or the increase in the concentration of B. These two rate expressions are related by the stoichiometry of the reaction:",
+   "is": "má lýsa með tilliti til minnkunar á styrk A eða aukningar á styrk B. Þessar tvær hraðalýsingar eru tengdar með efnajöfnunni:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idp170662352",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "This may be represented in an abbreviated format by omitting the units of the stoichiometric factor:",
+   "is": "Þetta má tákna á styttan hátt með því að sleppa einingum efnajöfnunarstuðulsins:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idp24387584",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "[[xref:CNX_Chem_12_01_NH3Decomp]] illustrates the change in concentrations over time for the decomposition of ammonia into nitrogen and hydrogen at 1100 °C. Slopes of the tangent lines at [[i:t]] = 500 s show that the instantaneous rates derived from all three species involved in the reaction are related by their stoichiometric factors. The rate of hydrogen production, for example, is observed to be three times greater than that for nitrogen production:",
+   "is": "[[xref:CNX_Chem_12_01_NH3Decomp]] sýnir breytingu á styrk yfir tíma fyrir sundrun ammóníaks í nitur og vetni við 1100 °C. Hallatölur snertla við [[i:t]] = 500 s sýna að augnablikshraðar, fengnir út frá öllum þremur efnum sem taka þátt í hvarfinu, eru tengdir með efnajöfnunarstuðlum sínum. Myndunarhraði vetnis er til dæmis þrisvar sinnum meiri en myndunarhraði niturs:",
+   "skipped": null,
+   "matching": [
+    "stoichiometric-factor"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:caption:CNX_Chem_12_01_NH3Decomp-caption",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Changes in concentrations of the reactant and products for the reaction [[MATH:3]] The rates of change of the three concentrations are related by the reaction stoichiometry, as shown by the different slopes of the tangents at [[i:t]] = 500 s.",
+   "is": "Breytingar á styrk hvarfefnis og myndefna fyrir efnahvarfið [[MATH:3]] Breytingarhraði styrkjanna þriggja er tengdur efnajöfnunni, eins og mismunandi hallatölur snertlanna við [[i:t]] = 500 s sýna.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idm42014656",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Considering the stoichiometry of this homogeneous reaction, the rates for the consumption of reactants and formation of products are:",
+   "is": "Miðað við efnajöfnu þessa einsleita efnahvarfs eru hraðar fyrir eyðslu hvarfefna og myndun myndefna:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idm41764016",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The reaction stoichiometry shows that",
+   "is": "Efnajafnan sýnir að",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:continueon",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Based on the stoichiometry of this reaction as shown above, the rate of water product is therefore",
+   "is": "Byggt á efnajöfnunni fyrir þetta hvarf eins og sýnt er hér að ofan er myndunarhraði vatns því",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68786",
+   "key": "m68786:para:fs-idp145842032",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The rate of a reaction can be expressed either in terms of the decrease in the amount of a reactant or the increase in the amount of a product per unit time. Relations between different rate expressions for a given reaction are derived directly from the stoichiometric coefficients of the equation representing the reaction.",
+   "is": "Hvarfhraða má annaðhvort lýsa með minnkun á magni hvarfefnis eða aukningu á magni myndefnis á tímaeiningu. Tengsl milli mismunandi hraðajafna fyrir tiltekið hvarf eru leidd beint af stuðlum efnajöfnunnar sem lýsir hvarfinu.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68789",
+   "key": "m68789:para:fs-idm656673904",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "where [[i:a]] and [[i:b]] are stoichiometric coefficients. The rate law for this reaction is written as:",
+   "is": "þar sem [[i:a]] og [[i:b]] eru stuðlar efnajöfnunnar. Hraðalögmálið fyrir þetta efnahvarf er skrifað sem:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68789",
+   "key": "m68789:para:fs-idm284144576",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "It is important to note that [[i:rate laws are determined by experiment only and are not reliably predicted by reaction stoichiometry.]]",
+   "is": "Mikilvægt er að hafa í huga að [[i:hraðalögmál eru eingöngu ákvörðuð með tilraunum og er ekki hægt að spá fyrir um þau á áreiðanlegan hátt út frá efnajöfnuhlutfalli hvarfsins.]]",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68789",
+   "key": "m68789:para:fs-idm262547408",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Rate laws ([[i:differential rate laws]]) provide a mathematical description of how changes in the concentration of a substance affect the rate of a chemical reaction. Rate laws are determined experimentally and cannot be predicted by reaction stoichiometry. The order of reaction describes how much a change in the concentration of each substance affects the overall rate, and the overall order of a reaction is the sum of the orders for each substance present in the reaction. Reaction orders are typically first order, second order, or zero order, but fractional and even negative orders are possible.",
+   "is": "Hraðalögmál ([[i:deildunarhraðalögmál]]) gefa stærðfræðilega lýsingu á því hvernig breytingar á styrk efnis hafa áhrif á hraða efnahvarfs. Hraðalögmál eru ákvörðuð með tilraunum og ekki er hægt að spá fyrir um þau út frá efnajöfnuhlutfalli hvarfsins. Stig efnahvarfs lýsir því hversu mikið breyting á styrk hvers efnis hefur áhrif á heildarhraðann og heildarstig efnahvarfs er summa stiga fyrir hvert efni sem er til staðar í hvarfinu. Stig efnahvarfa eru yfirleitt fyrsta stigs, annars stigs eða núllta stigs, en brotastig og jafnvel neikvæð stig eru möguleg.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68794",
+   "key": "m68794:problem:fs-idp72418144",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Based on the data presented, which of these is the rate determining step? Show that the mechanism is consistent with the observed rate law for the reaction and the overall stoichiometry of the reaction.",
+   "is": "Byggt á gögnunum sem gefin eru, hvert þessara er hraðaákvarðandi skrefið? Sýndu að hvarfgangurinn er í samræmi við athugað hraðalögmál fyrir hvarfið og heildarhlutföll hvarfsins.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch12",
+   "stem": "m68794",
+   "key": "m68794:solution:fs-idp77008528",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "(a) Doubling [H[[sub:2]]] doubles the rate. [H[[sub:2]]] must enter the rate law to the first power. Doubling [NO] increases the rate by a factor of 4. [NO] must enter the rate law to the second power. (b) Rate = [[i:k]] [NO][[sup:2]][H[[sub:2]]]; (c) [[i:k]] = 5.0 [[MATH:22]] 10[[sup:3]] mol[[sup:2]] L[[sup:−2]] min[[sup:−1]]; (d) 0.0050 mol/L; (e) Step II is the rate-determining step. If step I gives N[[sub:2]]O[[sub:2]] in adequate amount, steps 1 and 2 combine to give [[MATH:23]] This reaction corresponds to the observed rate law. Combine steps 1 and 2 with step 3, which occurs by supposition in a rapid fashion, to give the appropriate stoichiometry.",
+   "is": "(a) Tvöföldun á [H[[sub:2]]] tvöfaldar hraðann. [H[[sub:2]]] verður að koma fyrir í hraðalögmálinu í fyrsta veldi. Tvöföldun á [NO] eykur hraðann um stuðulinn 4. [NO] verður að koma fyrir í hraðalögmálinu í öðru veldi. (b) Hraði = [[i:k]] [NO][[sup:2]][H[[sub:2]]]; (c) [[i:k]] = 5,0 [[MATH:22]] 10[[sup:3]] mól[[sup:2]] L[[sup:−2]] mín[[sup:−1]]; (d) 0,0050 mól/L; (e) Skref II er hraðaákvarðandi skrefið. Ef skref I gefur N[[sub:2]]O[[sub:2]] í nægilegu magni, sameinast skref 1 og 2 til að gefa [[MATH:23]] Þetta hvarf samsvarar athuguðu hraðalögmáli. Sameinaðu skref 1 og 2 með skrefi 3, sem gerist að því gefnu hratt, til að fá rétt hlutföll.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68797",
+   "key": "m68797:para:fs-idp53505568",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "For this elementary process, rate laws for the forward and reverse reactions may be derived directly from the reaction stoichiometry:",
+   "is": "Fyrir þetta frumferli má leiða hraðalögmál fyrir fram- og afturábakhvörfin beint út frá efnajöfnunni:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68798",
+   "key": "m68798:para:fs-idp11973152",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "the reaction quotient is derived directly from the stoichiometry of the balanced equation as",
+   "is": "er hvarfkvótinn leiddur beint út frá efnismagni stilltrar jöfnu sem",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68798",
+   "key": "m68798:para:fs-idm336251504",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "2. Changing the stoichiometric coefficients in an equation by some factor [[i:x]] results in an exponential change in the equilibrium constant by that same factor:",
+   "is": "2. Að breyta stuðlum efnajöfnu um einhvern þátt [[i:x]] leiðir til veldisbreytingar á jafnvægisfastanum með sama þætti:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68799",
+   "key": "m68799:para:fs-idm191541472",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "and so changes in the partial pressures of any reactant or product are essentially changes in concentrations and thus yield the same effects on equilibria. Aside from adding or removing reactant or product, the pressures (concentrations) of species in a gas-phase equilibrium can also be changed by [[i:changing the volume occupied by the system]]. Since all species of a gas-phase equilibrium occupy the same volume, a given change in volume will cause the same change in concentration for both reactants and products. In order to discern what shift, if any, this type of stress will induce the stoichiometry of the reaction must be considered.",
+   "is": "og því eru breytingar á hlutþrýstingi hvers hvarfefnis eða myndefnis í raun breytingar á styrk og hafa því sömu áhrif á jafnvægi. Fyrir utan að bæta við eða fjarlægja hvarfefni eða myndefni er einnig hægt að breyta þrýstingi (styrk) efna í jafnvægi í gasfasa með því að [[i:breyta rúmmáli kerfisins]]. Þar sem öll efni í jafnvægi í gasfasa taka sama rúmmál mun tiltekin rúmmálsbreyting valda sömu styrkbreytingu fyrir bæði hvarfefni og myndefni. Til að greina hvaða hliðrun, ef einhver, þessi tegund af röskun veldur, verður að taka tillit til efnajöfnunnar.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68799",
+   "key": "m68799:para:fs-idm173238784",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "These results illustrate the relationship between the stoichiometry of a gas-phase equilibrium and the effect of a volume-induced pressure (concentration) change. If the total molar amounts of reactants and products are equal, as in the first example, a change in volume does not shift the equilibrium. If the molar amounts of reactants and products are different, a change in volume will shift the equilibrium in a direction that better “accommodates” the volume change. In the second example, two moles of reactant (NO[[sub:2]]) yield three moles of product (2NO + O[[sub:2]]), and so decreasing the system volume causes the equilibrium to shift left since the reverse reaction produces less gas (2 mol) than the forward reaction (3 mol). Conversely, increasing the volume of this equilibrium system would result in a shift towards products.",
+   "is": "Þessar niðurstöður sýna fram á sambandið milli efnajafnvægis í gasfasa og áhrifa rúmmálsbreytinga sem valda þrýstingsbreytingum (styrkbreytingum). Ef heildarmólmagn hvarfefna og myndefna er jafnt, eins og í fyrra dæminu, veldur rúmmálsbreyting ekki hliðrun á jafnvæginu. Ef mólmagn hvarfefna og myndefna er mismunandi mun rúmmálsbreyting hliðra jafnvæginu í þá átt sem „rúmar“ rúmmálsbreytinguna betur. Í seinna dæminu gefa tvö mól af hvarfefni (NO[[sub:2]]) af sér þrjú mól af myndefni (2NO + O[[sub:2]]), þannig að minnkun á rúmmáli kerfisins veldur því að jafnvægið hliðrast til vinstri þar sem andstæða hvarfið framleiðir minna gas (2 mól) en hvarfið til hægri (3 mól). Aftur á móti myndi aukning á rúmmáli þessa jafnvægiskerfis leiða til hliðrunar í átt að myndefnum.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68799",
+   "key": "m68799:para:fs-idp38799824",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Since this is an elementary reaction, the rates laws for the forward and reverse may be derived directly from the balanced equation’s stoichiometry:",
+   "is": "Þar sem þetta er frumhvarf er hægt að leiða hraðalögmálin fyrir hvarfið til hægri og vinstri beint út frá efnajöfnunni:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68801",
+   "key": "m68801:para:fs-idp292035664",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Many of the useful equilibrium calculations that will be demonstrated here require terms representing changes in reactant and product concentrations. These terms are derived from the stoichiometry of the reaction, as illustrated by decomposition of ammonia:",
+   "is": "Margir af þeim gagnlegu jafnvægisútreikningum sem sýndir verða hér krefjast liða sem tákna breytingar á styrk hvarfefna og myndefna. Þessir liðir eru fengnir úr efnajöfnunni, eins og sýnt er með sundrun ammoníaks:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68801",
+   "key": "m68801:para:fs-idp42253680",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "As shown earlier in this chapter, this equilibrium may be established within a sealed container that initially contains either NH[[sub:3]] only, or a mixture of any two of the three chemical species involved in the equilibrium. Regardless of its initial composition, a reaction mixture will show the same relationships between changes in the concentrations of the three species involved, as dictated by the reaction stoichiometry (see also the related content on expressing reaction rates in the chapter on kinetics). For example, if the nitrogen concentration increases by an amount [[i:x]]:",
+   "is": "Eins og sýnt var fyrr í þessum kafla getur þetta jafnvægi komist á í lokuðu íláti sem inniheldur í upphafi annaðhvort aðeins NH[[sub:3]] eða blöndu af einhverjum tveimur af þeim þremur efnum sem taka þátt í jafnvæginu. Óháð upphaflegri samsetningu mun hvarfblanda sýna sömu tengsl milli breytinga á styrk efnanna þriggja sem taka þátt, eins og efnajafnan segir til um (sjá einnig tengt efni um að tjá hvarfhraða í kaflanum um hvarfhraðafræði). Til dæmis, ef styrkur köfnunarefnis eykst um [[i:x]]:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch13",
+   "stem": "m68801",
+   "key": "m68801:para:fs-idp218682752",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The equilibrium constant for a reaction is calculated from the equilibrium concentrations (or pressures) of its reactants and products. If these concentrations are known, the calculation simply involves their substitution into the K expression, as was illustrated by [[docref:m68798#fs-idp54423808]]. A slightly more challenging example is provided next, in which the reaction stoichiometry is used to derive equilibrium concentrations from the information provided. The basic strategy of this computation is helpful for many types of equilibrium computations and relies on the use of terms for the reactant and product concentrations [[i:initially]] present, for how they [[i:change]] as the reaction proceeds, and for what they are when the system reaches [[i:equilibrium]]. The acronym ICE is commonly used to refer to this mathematical approach, and the concentrations terms are usually gathered in a tabular format called an ICE table.",
+   "is": "Jafnvægisfasti fyrir efnahvarf er reiknaður út frá jafnvægisstyrk (eða -þrýstingi) hvarfefna og myndefna þess. Ef þessi styrkur er þekktur felst útreikningurinn einfaldlega í því að setja hann inn í K-segðina, eins og sýnt var í [[docref:m68798#fs-idp54423808]]. Næst er gefið aðeins flóknara dæmi þar sem efnajafnan er notuð til að leiða út jafnvægisstyrk út frá upplýsingunum sem gefnar eru. Grundvallaraðferðin við þennan útreikning er gagnleg fyrir margar tegundir jafnvægisútreikninga og byggir á notkun liða fyrir styrk hvarfefna og myndefna sem eru til staðar í [[i:upphafi]], hvernig þau [[i:breytast]] eftir því sem efnahvarfið gengur og hver þau eru þegar kerfið nær [[i:jafnvægi]]. Skammstöfunin ICE er almennt notuð til að vísa til þessarar stærðfræðilegu aðferðar og styrkliðunum er venjulega safnað saman í töfluformi sem kallast ICE-tafla.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68805",
+   "key": "m68805:para:fs-idm163389088",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "where the numerator is equivalent to the concentration of the acid's conjugate base (per stoichiometry, [A[[sup:−]]] = [H[[sub:3]]O[[sup:+]]]). Unlike the [[i:K]][[sub:a]] value, the percent ionization of a weak acid varies with the initial concentration of acid, typically decreasing as concentration increases. Equilibrium calculations of the sort described later in this chapter can be used to confirm this behavior.",
+   "is": "þar sem teljarinn jafngildir styrk samoka basa sýrunnar (samkvæmt efnajöfnuhlutfalli, [A[[sup:−]]] = [H[[sub:3]]O[[sup:+]]]). Ólíkt [[i:K]][[sub:a]]-gildinu er jónunarprósenta veikrar sýru breytileg með upphafsstyrk sýrunnar og minnkar venjulega þegar styrkurinn eykst. Hægt er að nota jafnvægisútreikninga af því tagi sem lýst er síðar í þessum kafla til að staðfesta þessa hegðun.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68808",
+   "key": "m68808:para:fs-idm174460304",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The 1:1 stoichiometry of this reaction shows that an excess of hydroxide has been added (greater molar amount than the initially present hydronium ion).",
+   "is": "1:1 efnahlutfall þessa hvarfs sýnir að umframmagni af hýdroxíði hefur verið bætt við (meira mólmagn en af hýdróníumjóninni sem var til staðar í upphafi).",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idm43847120",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "As seen in the chapter on the stoichiometry of chemical reactions, titrations can be used to quantitatively analyze solutions for their acid or base concentrations. In this section, we will explore the underlying chemical equilibria that make acid-base titrimetry a useful analytical technique.",
+   "is": "Eins og sést í kaflanum um efnajöfnur efnahvarfa er hægt að nota títranir til að magngreina lausnir með tilliti til sýru- eða basastyrks þeirra. Í þessum kafla munum við kanna undirliggjandi efnajafnvægi sem gerir sýru-basa títrun að gagnlegri greiningartækni.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idp135875056",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "A [[term:titration curve|term-00001]] is a plot of some solution property versus the amount of added titrant. For acid-base titrations, solution pH is a useful property to monitor because it varies predictably with the solution composition and, therefore, may be used to monitor the titration’s progress and detect its end point. The following example exercise demonstrates the computation of pH for a titration solution after additions of several specified titrant volumes. The first example involves a strong acid titration that requires only stoichiometric calculations to derive the solution pH. The second example addresses a weak acid titration requiring equilibrium calculations.",
+   "is": "[[term:Títrunarferill|term-00001]] er graf sem sýnir einhvern eiginleika lausnar á móti magni títrunarvökva sem bætt er við. Fyrir sýru-basa títranir er pH lausnarinnar gagnlegur eiginleiki til að fylgjast með því hann breytist á fyrirsjáanlegan hátt með samsetningu lausnarinnar og má því nota til að fylgjast með framvindu títrunarinnar og greina jafngildispunkt hennar. Eftirfarandi dæmi sýnir útreikning á pH fyrir títrunarlausn eftir að nokkrum tilteknum rúmmálum af títrunarvökva hefur verið bætt við. Fyrsta dæmið felur í sér títrun á sterkri sýru sem krefst aðeins efnajöfnureikninga til að leiða út pH lausnarinnar. Annað dæmið fjallar um títrun á veikri sýru sem krefst jafnvægisútreikninga.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idm214456576",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "(b) Titrant volume = 12.50 mL. Since the acid sample and the base titrant are both monoprotic and equally concentrated, this titrant addition involves less than a stoichiometric amount of base, and so it is completely consumed by reaction with the excess acid in the sample. The concentration of acid remaining is computed by subtracting the consumed amount from the intial amount and then dividing by the solution volume:",
+   "is": "(b) Rúmmál títrunarvökva = 12,50 ml. Þar sem sýrusýnið og basatítrunarvökvinn eru bæði einróteinda og jafnsterk, felur þessi viðbót títrunarvökva í sér minna en efnajöfnumagn af basa, og því er hann fullnýttur með hvarfi við umfram sýru í sýninu. Styrkur sýru sem eftir er er reiknaður með því að draga notað magn frá upphaflegu magni og deila síðan með rúmmáli lausnarinnar:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idm197032080",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "(c) Titrant volume = 25.00 mL. This titrant addition involves a stoichiometric amount of base (the [[i:equivalence point]]), and so only products of the neutralization reaction are in solution (water and NaCl). Neither the cation nor the anion of this salt undergo acid-base ionization; the only process generating hydronium ions is the autoprotolysis of water. The solution is neutral, having a pH = 7.00.",
+   "is": "(c) Rúmmál títrunarvökva = 25,00 ml. Þessi viðbót títrunarvökva felur í sér efnajöfnumagn af basa ([[i:jafngildispunktur]]), og því eru aðeins afurðir hlutleysingarhvarfsins í lausninni (vatn og NaCl). Hvorki katjón né anjón þessa salts gangast undir sýru-basa jónun; eini ferillinn sem myndar hýdróníumjónir er sjálfsjónun vatns. Lausnin er hlutlaus, með pH = 7,00.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idm15954576",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "(c) Titrant volume = 12.50 mL. This volume represents one-half of the stoichiometric amount of titrant, and so one-half of the acetic acid has been neutralized to yield an equivalent amount of acetate ion. The concentrations of these conjugate acid-base partners, therefore, are equal. A convenient approach to computing the pH is use of the Henderson-Hasselbalch equation:",
+   "is": "(c) Rúmmál títrunarvökva = 12,50 ml. Þetta rúmmál táknar helminginn af efnismagnsfræðilegu magni títrunarvökva og því hefur helmingur ediksýrunnar verið hlutleystur til að mynda jafngilt magn af asetatjón. Styrkur þessara samoka sýru-basa para er því jafn. Þægileg aðferð til að reikna út pH-gildið er að nota Henderson-Hasselbalch jöfnuna:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch14",
+   "stem": "m68809",
+   "key": "m68809:para:fs-idp85997072",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "(d) Titrant volume = 37.50 mL. This volume represents a stoichiometric excess of titrant, and a reaction solution containing both the titration product, acetate ion, and the excess strong titrant. In such solutions, the solution pH is determined primarily by the amount of excess strong base:",
+   "is": "(d) Rúmmál títrunarvökva = 37,50 ml. Þetta rúmmál táknar efnismagnsfræðilegan umframmagn títrunarvökva og hvarflausn sem inniheldur bæði títrunarafurðina, asetatjón, og umframmagn af sterkum títrunarvökva. Í slíkum lausnum ræðst pH-gildi lausnarinnar aðallega af magni umframmagns af sterkum basa:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp15206752",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "According to the stoichiometry of the dissolution equation, the fluoride ion molarity of a CaF[[sub:2]] solution is equal to twice its calcium ion molarity:",
+   "is": "Samkvæmt efnismagnsfræði upplausnarjöfnunnar er mólstyrkur flúoríðjóna í CaF[[sub:2]]-lausn tvöfalt meiri en mólstyrkur kalsíumjóna:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp15515696",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Since the dissolution stoichiometry shows one mole of copper(I) ion and one mole of bromide ion are produced for each moles of Br dissolved, the molar solubility of CuBr is 7.9 [[MATH:9]] 10[[sup:–5]] [[i:M]].",
+   "is": "Þar sem efnismagnsfræði upplausnarinnar sýnir að eitt mól af kopar(I)jón og eitt mól af brómíðjón myndast fyrir hvert mól af Br sem leysist upp, er mólleysi CuBr 7,9 [[MATH:9]] 10[[sup:–5]] [[i:M]].",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp827984",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "As defined in the ICE table, [[i:x]] is the molarity of calcium ion in the saturated solution. The dissolution stoichiometry shows a 1:1 relation between moles of calcium ion in solution and moles of compound dissolved, and so, the molar solubility of Ca(OH)[[sub:2]] is 6.9 [[MATH:14]] 10[[sup:–3]] [[i:M]].",
+   "is": "Eins og skilgreint er í ICE-töflunni er [[i:x]] mólstyrkur kalsíumjóna í mettuðu lausninni. Efnismagnsfræði upplausnarinnar sýnir 1:1 samband milli móla af kalsíumjónum í lausn og móla af uppleystu efnasambandi, og því er mólleysi Ca(OH)[[sub:2]] 6,9 [[MATH:14]] 10[[sup:–3]] [[i:M]].",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp53410000",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The dissolution stoichiometry shows a 1:1 relation between the molar amounts of compound and its two ions, and so both [Pb[[sup:2+]]] and [[MATH:19]] are equal to the molar solubility of PbCrO[[sub:4]]:",
+   "is": "Upplausnarjafnan sýnir 1:1 samband milli mólmagns efnasambandsins og tveggja jóna þess, og því eru bæði [Pb[[sup:2+]]] og [[MATH:19]] jöfn mólleysni PbCrO[[sub:4]]:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp15521184",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The dissolution stoichiometry shows a 1:1 relation between the amount of compound dissolved and the amount of mercury(I) ions, and so the molar solubility of Hg[[sub:2]]Cl[[sub:2]] is equal to the concentration of [[MATH:27]] ions",
+   "is": "Upplausnarjafnan sýnir 1:1 samband milli magns uppleysts efnasambands og magns kvikasilfurs(I)jóna, og því er mólleysni Hg[[sub:2]]Cl[[sub:2]] jafnt styrk [[MATH:27]] jóna",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68811",
+   "key": "m68811:para:fs-idp15393408",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The dissolution stoichiometry shows the molar solubility of Hg[[sub:2]]Cl[[sub:2]] is equal to [[MATH:28]] or 6.5 [[MATH:29]] 10[[sup:–7]] [[i:M]].",
+   "is": "Upplausnarjafnan sýnir að mólleysni Hg[[sub:2]]Cl[[sub:2]] er jafnt [[MATH:28]] eða 6,5 [[MATH:29]] 10[[sup:–7]] [[i:M]].",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch15",
+   "stem": "m68814",
+   "key": "m68814:para:fs-idm378998352",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The stoichiometry of the dissolution equilibrium indicates the same concentration of aqueous silver ion will result, 0.00532 M, and the very large value of [[MATH:9]] ensures that essentially all the dissolved silver ion will be complexed by thiosulfate ion:",
+   "is": "Efnismagnsfræði upplausnarjafnvægisins gefur til kynna að sami styrkur af silfurjón í vatnslausn muni myndast, 0,00532 M, og hið mjög háa gildi [[MATH:9]] tryggir að nánast öll uppleysta silfurjónin verði tvinnefnisbundin af þíósúlfatjón:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch16",
+   "stem": "m68818",
+   "key": "m68818:para:fs-idm44012816",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "where ν represents stoichiometric coefficients in the balanced equation representing the process. For example, Δ[[i:S]]° for the following reaction at room temperature",
+   "is": "þar sem ν táknar efnajöfnustuðla í stilltri jöfnu sem táknar ferlið. Til dæmis, Δ[[i:S]]° fyrir eftirfarandi efnahvarf við stofuhita",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68821",
+   "key": "m68821:para:fs-idm204695200",
+   "words": [
+    "stoichiometry",
+    "stoichiometry"
+   ],
+   "en": "Since reactions involving electron transfer are essential to the topic of electrochemistry, a brief review of redox chemistry is provided here that summarizes and extends the content of an earlier text chapter (see chapter on reaction stoichiometry). Readers wishing additional review are referred to the text chapter on reaction stoichiometry.",
+   "is": "Þar sem hvörf sem fela í sér rafeindaflutning eru nauðsynleg fyrir efni rafefnafræðinnar er hér stutt yfirlit yfir oxunar-afoxunarfræði sem tekur saman og útvíkkar efni fyrri kafla (sjá kafla um efnajöfnur). Lesendum sem vilja frekari yfirferð er bent á kaflann um efnajöfnur.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68821",
+   "key": "m68821:para:fs-idm247937312",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "This reaction satisfies the criterion for redox classification, since the oxidation number for Na is decreased from +1 to 0 (it undergoes [[i:reduction]]) and that for Cl is increased from −1 to 0 (it undergoes [[i:oxidation]]). The equation in this case is easily balanced by inspection, requiring stoichiometric coefficients of 2 for the NaCl and Na:",
+   "is": "Þetta hvarf uppfyllir skilyrði fyrir oxunar-afoxunarflokkun, þar sem oxunartala Na lækkar úr +1 í 0 (það gengst undir [[i:afoxun]]) og oxunartala Cl hækkar úr −1 í 0 (það gengst undir [[i:oxun]]). Í þessu tilfelli er auðvelt að stilla jöfnuna með yfirsýn, sem krefst stuðla 2 fyrir NaCl og Na:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68824",
+   "key": "m68824:para:fs-idp58835888",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Potential is a thermodynamic quantity reflecting the intrinsic driving force of a redox process, and it is directly related to the free energy change and equilibrium constant for the process. For redox processes taking place in electrochemical cells, the maximum (electrical) work done by the system is easily computed from the cell potential and the reaction stoichiometry and is equal to the free energy change for the process. The equilibrium constant for a redox reaction is logarithmically related to the reaction’s cell potential, with larger (more positive) potentials indicating reactions with greater driving force that equilibrate when the reaction has proceeded far towards completion (large value of [[i:K]]). Finally, the potential of a redox process varies with the composition of the reaction mixture, being related to the reactions standard potential and the value of its reaction quotient, [[i:Q]], as described by the Nernst equation.",
+   "is": "Spenna er varmafræðileg stærð sem endurspeglar innri drifkraft oxunar-afoxunarferlis og er í beinum tengslum við breytingu á frjálsri orku og jafnvægisfasta ferlisins. Fyrir oxunar-afoxunarferli sem eiga sér stað í rafefnakerum er auðvelt að reikna út hámarks (raf)vinnu sem kerfið framkvæmir út frá kerspennu og efnajöfnuhlutföllum hvarfsins og er hún jöfn breytingu á frjálsri orku ferlisins. Jafnvægisfasti oxunar-afoxunarhvarfs er í logrítmískum tengslum við kerspennu hvarfsins, þar sem hærri (jákvæðari) spenna gefur til kynna hvörf með meiri drifkrafti sem ná jafnvægi þegar hvarfið er komið langt í átt að fullkomnun (hátt gildi [[i:K]]). Að lokum er spenna oxunar-afoxunarferlis háð samsetningu hvarfblöndunnar og tengist staðalspennu hvarfsins og gildi hvarfstuðuls þess, [[i:Q]], eins og lýst er með Nernst-jöfnunni.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68824",
+   "key": "m68824:problem:fs-idp166722736",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "For each pair of standard cell potential and electron stoichiometry values below, calculate a corresponding standard free energy change (kJ).",
+   "is": "Fyrir hvert par af gildum fyrir staðalkerspennu og efnajöfnuhlutföll rafeinda hér að neðan, reiknaðu út samsvarandi breytingu á staðalfrjálsri orku (kJ).",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68824",
+   "key": "m68824:problem:fs-idp99097696",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "For each pair of standard free energy change and electron stoichiometry values below, calculate a corresponding standard cell potential.",
+   "is": "Fyrir hvert par af gildum fyrir breytingu á staðalfrjálsri orku og efnajöfnuhlutföll rafeinda hér að neðan, reiknaðu út samsvarandi staðalkerspennu.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68825",
+   "key": "m68825:para:fs-idm162456704",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The variable stoichiometry of the cell reaction leads to variation in cell voltages, but for typical conditions, [[i:x]] is usually no more than 0.5 and the cell voltage is approximately 3.7 V. Lithium batteries are popular because they can provide a large amount current, are lighter than comparable batteries of other types, produce a nearly constant voltage as they discharge, and only slowly lose their charge when stored.",
+   "is": "Breytileg efnahlutföll kerhvarfsins leiða til breytileika í kerspennu, en við dæmigerðar aðstæður er [[i:x]] yfirleitt ekki meira en 0,5 og kerspennan er um það bil 3,7 V. Litíumrafhlöður eru vinsælar vegna þess að þær geta veitt mikinn straum, eru léttari en sambærilegar rafhlöður af öðrum gerðum, framleiða nánast stöðuga spennu þegar þær afhlaðast og missa aðeins hægt hleðsluna þegar þær eru geymdar.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68826",
+   "key": "m68826:para:fs-idm55785904",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The stoichiometry of the hydrate varies, as indicated by the use of [[i:x]] in the compound formula. Unlike the patina on copper, the formation of rust does not create a protective layer and so corrosion of the iron continues as the rust flakes off and exposes fresh iron to the atmosphere.",
+   "is": "Efnismagnshlutfall hýdratsins er breytilegt, eins og gefið er til kynna með notkun [[i:x]] í formúlu efnasambandsins. Ólíkt slikjunni á kopar myndar ryð ekki verndandi lag og því heldur tæring járnsins áfram þar sem ryðið flagnar af og afhjúpar nýtt járn fyrir andrúmsloftinu.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:abstract-item:abstract-item-3",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Perform stoichiometric calculations for electrolytic processes",
+   "is": "Framkvæmt efnismagnsútreikninga fyrir rafgreiningarferli",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:caption:CNX_Chem_17_07_Water-caption",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "The electrolysis of water produces stoichiometric amounts of oxygen gas at the anode and hydrogen at the cathode.",
+   "is": "Rafgreining vatns framleiðir efnismagnsfræðilegt magn af súrefnisgasi við anóðuna og vetni við katóðuna.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:para:fs-idm90272368",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "When electrons are transferred during a redox process, the stoichiometry of the reaction may be used to derive the total amount of (electronic) charge involved. For example, the generic reduction process",
+   "is": "Þegar rafeindir flytjast við efnahvarf má nota efnajöfnuna til að leiða út heildarmagn (rafeinda)hleðslu sem um ræðir. Til dæmis, almenna afoxunarferlið",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:para:fs-idm371971168",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "where [[i:F]] is Faraday’s constant, the charge in coulombs for one mole of electrons. If the reaction takes place in an electrochemical cell, the current flow is conveniently measured, and it may be used to assist in stoichiometric calculations related to the cell reaction.",
+   "is": "þar sem [[i:F]] er fasti Faradays, hleðslan í kúlombum fyrir eitt mól af rafeindum. Ef hvarfið á sér stað í rafefnafræðilegu keri er straumflæðið þægilega mælt og það má nota til að aðstoða við efnajöfnureikninga sem tengjast kerhvarfinu.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:para:fs-idm2746496",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The stoichiometry of the chromium(III) reduction process requires three moles of electrons for each mole of chromium(0) produced, and so the total charge required is:",
+   "is": "Efnismagnsfræði afoxunarferlis króms(III) krefst þriggja móla af rafeindum fyrir hvert mól af krómi(0) sem framleitt er, og því er heildarhleðslan sem þarf:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch17",
+   "stem": "m68827",
+   "key": "m68827:para:fs-idm118987184",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Nonspontaneous redox processes may be forced to occur in electrochemical cells by the application of an appropriate potential using an external power source—a process known as electrolysis. Electrolysis is the basis for certain ore refining processes, the industrial production of many chemical commodities, and the electroplating of metal coatings on various products. Measurement of the current flow during electrolysis permits stoichiometric calculations.",
+   "is": "Hægt er að þvinga ósjálfsprottin oxunar-afoxunarferli til að eiga sér stað í rafefnakerum með því að beita viðeigandi spennu með ytri aflgjafa – ferli sem kallast rafgreining. Rafgreining er grundvöllur fyrir ákveðnum málmgrýtisvinnsluferlum, iðnaðarframleiðslu margra efnavara og rafhúðun málmhúða á ýmsar vörur. Mæling á straumflæði við rafgreiningu gerir kleift að gera efnismagnsfræðilega útreikninga.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68829",
+   "key": "m68829:para:fs-idp6930208",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Tin reacts readily with nonmetals and acids to form tin(II) compounds (indicating that it is more easily oxidized than hydrogen) and with nonmetals to form either tin(II) or tin(IV) compounds (shown in [[xref:CNX_Chem_18_01_TinChlorid]]), depending on the stoichiometry and reaction conditions. Lead is less reactive. It is only slightly easier to oxidize than hydrogen, and oxidation normally requires a hot concentrated acid.",
+   "is": "Tin hvarfast auðveldlega við málmleysingja og sýrur og myndar tin(II)-efnasambönd (sem gefur til kynna að það oxast auðveldar en vetni) og við málmleysingja og myndar annaðhvort tin(II)- eða tin(IV)-efnasambönd (sýnt í [[xref:CNX_Chem_18_01_TinChlorid]]), allt eftir efnismagni og hvarfskilyrðum. Blý er minna hvarfgjarnt. Það er aðeins örlítið auðveldara að oxa það en vetni og oxun krefst venjulega heitrar, megnrar sýru.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68831",
+   "key": "m68831:para:fs-idp125396304",
+   "words": [
+    "stoichiometric",
+    "stoichiometry"
+   ],
+   "en": "Arsenic and antimony generally form compounds in which an oxidation state of +3 or +5 is exhibited; however, arsenic can form arsenides with an oxidation state of –3. These elements tarnish only slightly in dry air but readily oxidize when warmed. Antimony reacts readily with stoichiometric amounts of fluorine, chlorine, bromine, or iodine, yielding trihalides or, with excess fluorine or chlorine, forming the pentahalides SbF[[sub:5]] and SbCl[[sub:5]]. Depending on the stoichiometry, it forms antimony(III) sulfide, Sb[[sub:2]]S[[sub:3]], or antimony(V) sulfide, Sb[[sub:2]]S[[sub:5]], when heated with sulfur. As expected, the metallic nature of the element is greater than that of arsenic, which lies immediately above it in group 15.",
+   "is": "Arsen og antimon mynda yfirleitt efnasambönd þar sem oxunartalan +3 eða +5 kemur fram; arsen getur þó myndað arseníð með oxunartöluna –3. Þessi frumefni falla aðeins lítillega á í þurru lofti en oxast auðveldlega við hitun. Antimon hvarfast auðveldlega við efnismagnsfræðileg hlutföll af flúori, klóri, brómi eða joði og myndar þríhalíð eða, með umfram flúori eða klóri, myndar það pentahalíðin SbF[[sub:5]] og SbCl[[sub:5]]. Það fer eftir efnismagnsfræðinni hvort það myndar antimon(III)súlfíð, Sb[[sub:2]]S[[sub:3]], eða antimon(V)súlfíð, Sb[[sub:2]]S[[sub:5]], þegar það er hitað með brennisteini. Eins og við var að búast er málmkenndara eðli frumefnisins meira en arsens, sem er beint fyrir ofan það í flokki 15.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68831",
+   "key": "m68831:para:fs-idp28729488",
+   "words": [
+    "stoichiometric",
+    "stoichiometry"
+   ],
+   "en": "Antimony reacts readily with stoichiometric amounts of fluorine, chlorine, bromine, or iodine, yielding trihalides or, with excess fluorine or chlorine, forming the pentahalides SbF[[sub:5]] and SbCl[[sub:5]]. Depending on the stoichiometry, it forms antimony(III) sulfide, Sb[[sub:2]]S[[sub:3]], or antimony(V) sulfide when heated with sulfur. As expected, the metallic nature of the element is greater than that of arsenic, which lies immediately above it in group 15.",
+   "is": "Antímon hvarfast auðveldlega við efnismagnshlutföll af flúori, klóri, brómi eða joði og myndar þríhalíð eða, með umframmagni af flúori eða klóri, myndar það pentahalíðin SbF[[sub:5]] og SbCl[[sub:5]]. Það myndar antímon(III)súlfíð, Sb[[sub:2]]S[[sub:3]], eða antímon(V)súlfíð þegar það er hitað með brennisteini, allt eftir efnismagnshlutfallinu. Eins og við var að búast er málmkenndur eiginleiki frumefnisins meiri en hjá arseni, sem er beint fyrir ofan það í flokki 15.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68833",
+   "key": "m68833:item:fs-idp73406480-item-2",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "Ammonia can display acidic behavior, although it is a much weaker acid than water. Like other acids, ammonia reacts with metals, although it is so weak that high temperatures are necessary. Hydrogen and (depending on the stoichiometry) amides (salts of [[MATH:7]] imides (salts of NH[[sup:2−]]), or nitrides (salts of N[[sup:3−]]) form.",
+   "is": "Ammoníak getur sýnt súra hegðun, þótt það sé mun veikari sýra en vatn. Eins og aðrar sýrur hvarfast ammoníak við málma, þótt það sé svo veikt að hátt hitastig sé nauðsynlegt. Vetni og (eftir stoðfræði) amíð (sölt af [[MATH:7]]), imíð (sölt af NH[[sup:2−]]) eða nítríð (sölt af N[[sup:3−]]) myndast.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68837",
+   "key": "m68837:para:fs-idp145310240",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "In order to prepare solid sulfite and hydrogen sulfite salts, it is necessary to add a stoichiometric amount of a base to a sulfurous acid solution and then evaporate the water. These salts also form from the reaction of SO[[sub:2]] with oxides and hydroxides. Heating solid sodium hydrogen sulfite forms sodium sulfite, sulfur dioxide, and water:",
+   "is": "Til að útbúa föst súlfít- og vetnissúlfítsölt er nauðsynlegt að bæta efnismagnsfræðilegu magni af basa í brennisteinssýrulausn og gufa síðan vatnið upp. Þessi sölt myndast einnig við hvarf SO[[sub:2]] við oxíð og hýdroxíð. Við hitun á föstu natríumvetnissúlfíti myndast natríumsúlfít, brennisteinsdíoxíð og vatn:",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68839",
+   "key": "m68839:para:fs-idm67915760",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "If a metal can exhibit two oxidation states, it may be necessary to control the stoichiometry in order to obtain the halide with the lower oxidation state. For example, preparation of tin(II) chloride requires a 1:1 ratio of Sn to Cl[[sub:2]], whereas preparation of tin(IV) chloride requires a 1:2 ratio:",
+   "is": "Ef málmur getur haft tvö oxunarstig gæti verið nauðsynlegt að stjórna efnismagni til að fá halíðið með lægra oxunarstigið. Til dæmis krefst framleiðsla á tin(II)klóríði hlutfallsins 1:1 af Sn og Cl[[sub:2]], en framleiðsla á tin(IV)klóríði krefst hlutfallsins 1:2:",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68839",
+   "key": "m68839:para:fs-idm12706304",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "A few halides and many of the other salts of the representative metals are insoluble. It is possible to prepare these insoluble salts by metathesis reactions that occur when solutions of soluble salts are mixed (see [[xref:CNX_Chem_18_11_PercipHgI2]]). Metathesis reactions are examined in the chapter on the stoichiometry of chemical reactions.",
+   "is": "Nokkur halíð og mörg önnur sölt aðalflokkamálma eru óleysanleg. Hægt er að búa til þessi óleysanlegu sölt með gagnskiptahvörfum sem eiga sér stað þegar lausnum af leysanlegum söltum er blandað saman (sjá [[xref:CNX_Chem_18_11_PercipHgI2]]). Gagnskiptahvörf eru skoðuð í kaflanum um efnismagnsfræði efnahvarfa.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  },
+  {
+   "chapterDir": "ch18",
+   "stem": "m68840",
+   "key": "m68840:para:fs-idm82366128",
+   "words": [
+    "stoichiometric"
+   ],
+   "en": "Stable compounds of xenon form when xenon reacts with fluorine. Xenon difluoride, XeF[[sub:2]], forms after heating an excess of xenon gas with fluorine gas and then cooling. The material forms colorless crystals, which are stable at room temperature in a dry atmosphere. Xenon tetrafluoride, XeF[[sub:4]], and xenon hexafluoride, XeF[[sub:6]], are prepared in an analogous manner, with a stoichiometric amount of fluorine and an excess of fluorine, respectively. Compounds with oxygen are prepared by replacing fluorine atoms in the xenon fluorides with oxygen.",
+   "is": "Stöðug efnasambönd xenons myndast þegar xenon hvarfast við flúor. Xenontvíflúoríð, XeF[[sub:2]], myndast eftir að umframmagn af xenongasi er hitað með flúorgasi og síðan kælt. Efnið myndar litlausa kristalla sem eru stöðugir við stofuhita í þurru andrúmslofti. Xenontetraflúoríð, XeF[[sub:4]], og xenonhexaflúoríð, XeF[[sub:6]], eru framleidd á hliðstæðan hátt, með efnismagnsfræðilegu magni af flúori og umframmagni af flúori, í sömu röð. Efnasambönd með súrefni eru framleidd með því að skipta flúoratómum í xenonflúoríðum út fyrir súrefni.",
+   "skipped": null,
+   "matching": [],
+   "stoichEligible": true,
+   "stoichCandidate": false
+  },
+  {
+   "chapterDir": "ch19",
+   "stem": "m68842",
+   "key": "m68842:para:fs-idm231487104",
+   "words": [
+    "stoichiometry"
+   ],
+   "en": "The stoichiometry of the metal halide that results from the reaction of the metal with a halogen is determined by the relative amounts of metal and halogen and by the strength of the halogen as an oxidizing agent. Generally, fluorine forms fluoride-containing metals in their highest oxidation states. The other halogens may not form analogous compounds.",
+   "is": "Efnismagn málmhalíðsins sem myndast við efnahvarf málmsins við halógen ræðst af hlutfallslegu magni málms og halógens og af styrk halógensins sem oxunarefnis. Almennt myndar flúor flúoríðinnihaldandi málma í hæstu oxunarástöndum sínum. Hinir halógenarnir mynda ef til vill ekki samsvarandi efnasambönd.",
+   "skipped": null,
+   "matching": [
+    "stoichiometry"
+   ],
+   "stoichEligible": true,
+   "stoichCandidate": true
+  }
+ ]
+}
