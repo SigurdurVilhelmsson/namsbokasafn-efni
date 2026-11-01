@@ -4,6 +4,20 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (prompt freeze) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #604 MERGED (`2c941e993`). ✅ THE PROMPT AND THE RULING SET ARE FROZEN FOR THE FULL RUN ([record](../decisions/2026-11-01-ai-term-pass-prompt-freeze.md)): prompt v2 and the 2026-11-02 set, pinned by `tools/__tests__/ai-review-frozen-inputs.test.js`, on branch `docs/term-pass-prompt-freeze-2026-11-01`. ▶ NEXT: merge that PR once CI is green. Then, [USER]'s: the 2026-10-28 entry's (e), a rule for a run the cap cuts short, and (f), which subscription period the run draws on. With both answered, the full run can start.**
+- **What is frozen, and where each value is pinned:** the record's table.
+  - The two hashes are pinned only in the new test. The run's parameters are pinned by the tests that define them.
+  - Not frozen: the request-building and gate code, and the layer-1 text. A change to either before the run is a change of condition, to be recorded here.
+- **Evidence (0 USD):** [`experiments/ai-review-pilot/prompt-freeze-2026-11-01/`](../../experiments/ai-review-pilot/prompt-freeze-2026-11-01/), the whole-book `plan` on the frozen inputs:
+  - 622 requests and about 5.97 million input tokens;
+  - a worst case of USD 225.35 as batches, and ch10's USD 19.90 as the largest single-chapter reservation;
+  - a sha256 of every request body.
+
+  `plan` is deterministic, and re-planning ch10 with the re-run's inputs reproduced all 55 of its request bodies. So after the full run, its `requests.jsonl` can be checked against the digests.
+- **The one untested change:** the frozen set adds stoichiometry's sense to the set the ch10 re-run used. Its effect was measured (74 → 78 offers).
+- **For (e):** USD 78.85 was left under the cap after the 2026-11-01 re-run. The largest reservation is USD 19.90, and the expected spend is near USD 44 (the 2026-11-01 effort record).
+- **Not decided:** whether the full run buys ch10, the pilot chapter, again.
+
 ### ⏭ 2026-11-01 (runner defaults) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #603 MERGED (`805e39dd8`) AND DEPLOYED by [USER]. ✅ The runner's defaults are now the full run's: `DEFAULT_EFFORT` `xhigh`, `DEFAULT_MAX_TOKENS` 32000 ([USER]'s go, 2026-11-01), on branch `feat/term-pass-defaults-xhigh-32000`. ▶ NEXT: merge that PR once CI is green. Then the prompt freeze, and the 2026-10-28 entry's (e) and (f).**
 - A run without `--effort` or `--max-tokens` now sends at xhigh with 32,000 output tokens. `--mode` has no default; batch is the full run's mode. This closes the "⚠️ The runner's defaults still say high" item two entries below (effort bullet).
 - ⚠️ **An interactive run on the defaults now refuses at preflight** unless it passes `--timeout-ms`, or `--max-tokens` of 21,333 or less. The reason: 32,000 is above the SDK's non-streaming limit, and the existing guard refuses before anything is sent. Batch is unaffected.
@@ -24,7 +38,7 @@
   - Applying the 2026-11-01 ch10 runs now needs `--ruling-set experiments/terminology-consistency/results/2026-11-01/ruling-set-2026-11-01.json`, because apply refuses a run made with another set.
   - Optional second look for [USER]: "reaction stoichiometry calculations" was sorted both ways (s05 and s06 ratio, s18 subject). The glosses use neither reading, so the model judges it from context.
 - **Still open before the full run:**
-  - the prompt freeze, which this ruling no longer blocks;
+  - the prompt freeze, which this ruling no longer blocks; ✏️ *frozen the same day (the prompt-freeze entry, two above);*
   - the runner defaults (entry below, first bullet);
   - the 2026-10-28 entry's (e) and (f).
 
@@ -38,7 +52,7 @@
   - a sensed ruling is sent for **every** segment it matches (`needsReview` in `tools/ai-review/worklist.js`), so a restriction sends all 78 with both glosses rather than fewer. Prompt v2 then tells the model to judge the sense from the English and edit only the ruled one;
   - a restriction or a changed target is a new ruling: a dated decision record plus an amendments file. The compiler takes one amendments file per date and the 2026-11-01 file is the one the ch10 runs recorded, so the new file is dated 2026-11-02 at the earliest; ✏️ *corrected the same day: a sense needs no amendments file. It goes in the exceptions file's `senses` (entry above).*
   - the census script, its output and the page's builder are off-repo in `~/.cache/namsbokasafn-audit/2026-11-01-stoich-census/` (README inside). Promote them to `experiments/` with the ruling, since the ruling will cite them. ✏️ *Promoted the same day (entry above).*
-- **Still open before the full run:** the prompt freeze (no freeze is recorded yet, and the stoichiometry answer changes the ruling set, so it comes first); the 2026-10-28 entry's (e), a rule for a run the cap cuts short, and (f), which subscription period the November run draws on.
+- **Still open before the full run:** the prompt freeze (no freeze is recorded yet, and the stoichiometry answer changes the ruling set, so it comes first) ✏️ *frozen the same day (the prompt-freeze entry, three above);* the 2026-10-28 entry's (e), a rule for a run the cap cuts short, and (f), which subscription period the November run draws on.
 
 ### ⏭ 2026-11-01 (ch10 re-run) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ THE PAID ch10 RE-RUN RAN, HIGH AND XHIGH, BOTH COMPLETE: every answer usable, USD 7.13 together (first two bullets). ✅ [USER] JUDGED THE 16 FINAL-TEXT DIFFERENCES BLIND: xhigh preferred on 11, high on 5, against 6 of 9 on 2026-10-29, now with nothing excluded (fourth bullet). The run records and the ledger are in `books/efnafraedi-2e/ai-review/` (where the runner writes and `apply` reads them); the blind result and its evidence are in [`experiments/ai-review-pilot/ch10-2026-11-01/`](../../experiments/ai-review-pilot/ch10-2026-11-01/). ▶ NEXT, [USER]'s: the effort for the full run (the evidence favours xhigh); whether *stoichiometry* gets a sense restriction (last bullet). Nothing was applied: layer 2 stays unwritten until the prompt is frozen.**
 - **The runs** ([USER]'s go, 2026-11-01):
