@@ -600,3 +600,18 @@ ce507b295 docs: 2026-10-26 (evening) register entry; D11 runbook pointer; the un
 **Why:** The house-style edit and the two glossary rows must merge after the S tag, or the tagged houseStyleTerms.js differs from the one the SD3 baseline read (register, 2026-10-31 entry, last bullet). The tick results go into that entry's second deploy receipt.
 
 ---
+
+## 2026-11-01 11:28 - Session end 1 November: S tag made, the term rulings live in chemistry, the paid ch10 re-run done and judged blind (xhigh 11 of 16); the next session starts with three decisions
+
+**Branch:** docs/session-wrap-2026-11-01
+**Modified:**
+(clean)
+
+**Recent commits:**
+e06405cc5 Merge pull request #600 from SigurdurVilhelmsson/data/ai-review-ch10-rerun-2026-11-01
+e7e9568e5 data(ai-review): ch10 re-run (high and xhigh, batch) and [USER]'s blind judgement
+e4a55fa3a Merge pull request #599 from SigurdurVilhelmsson/docs/term-prefs-applied-2026-11-01
+
+**Why:** The register's newest entry (2026-11-01, ch10 re-run) owns what happens next; it and the work-state list `next-session-decisions` open with the three decisions only [USER] can make: the full run's effort (xhigh or high), a sense restriction for *stoichiometry*, and whether to run a second chapter.
+
+---
