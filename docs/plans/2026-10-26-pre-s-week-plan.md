@@ -255,7 +255,11 @@ claims efni acts on were re-measured here (✔).
   things at sync time only: the commit to sync (never `main` as it stands, §C204), and the final titles for the
   redirect rows, including re-pointing vefur's two existing chemistry rows and 15-3's changed slug.
 - **G1.19 and vefur's S3.3:** either order is safe. vefur's only credentialed call to Ritstjóri is the page-view
-  beacon, which D03 ruled out. G1.19 also stops the beacon in the frozen books' old bundles, which S3.3 cannot reach.
+  beacon, which D03 ruled out. ✏️ *2026-11-01, corrected: this line said G1.19 also stops the beacon in the frozen
+  books' old bundles, which S3.3 cannot reach. Those bundles never send it. Their 2026-08-19 build has an empty API
+  base, and its beacon function returns before sending. vefur re-measured this on the live site on 2026-10-31,
+  correcting its own reply of 2026-10-26, and both checks were re-run here the same night. G1.19 is still needed
+  for its own reason: a reader page could act as a signed-in editor.*
 - **H7** is not sent. A narrowed H7 could go now, which changes vefur's plan order ([USER]'s call). It matters only
   once efni's H5 has a branch.
 - **The Skerfur plan's §5 for the reader:** GoatCounter counting client-side navigation (§5.4) needs no decision and
