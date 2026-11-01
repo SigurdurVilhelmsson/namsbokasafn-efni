@@ -608,6 +608,28 @@ const HOUSE_STYLE_TERMS = Object.freeze([
     ruled: '2026-10-29 [USER]',
     why: 'About 14 uses in the English. The September MT writes gildissvigrúm- 14 times.',
   }),
+  // ── 2026-10-29 [USER]: two conflict rulings whose Icelandic exists on no concept ──────────
+  // The other rulings of that record that override the glossary select an EXISTING term, so they
+  // are book preferences (server/scripts/set-book-term-preferences.js), not entries here.
+  Object.freeze({
+    en: Object.freeze(['dissociation constant']),
+    is: 'klofnunarfasti',
+    ruled: '2026-10-29 [USER]',
+    why:
+      'The ruling stands over the physics row klofnunarstuðull: constant → fasti across the book ' +
+      '(docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md, entry rule 2). No concept ' +
+      'carries klofnunarfasti. ⚠️ The September MT writes neither form: it writes sundrunarfasti ' +
+      '(8 times), so editors introduce the ruled form.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['heat of combustion']),
+    is: 'brunavarmi',
+    ruled: '2026-10-29 [USER]',
+    why:
+      'Over the physics row brennsluvarmi, for consistency with bruni ' +
+      '(docs/decisions/2026-10-29-heat-compounds-and-symbol-trims.md). No concept carries ' +
+      'brunavarmi. The September MT writes brunavarm- 3 times and brennsluvarm- 0.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */

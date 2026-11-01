@@ -1,7 +1,7 @@
 # Decision: the 35 glossary-vs-ruling conflicts in chemistry are resolved, with three entry rules
 
 - **Date:** 2026-10-29
-- **Status:** Accepted
+- **Status:** Accepted; its *polyatomic ion* row is superseded by `docs/decisions/2026-11-01-polyatomic-ion-two-words.md`
 - **Context owners:** [USER] (every decision); [CODE] (the census, the review page and this record)
 - **Supersedes:** none. It amends targets in `experiments/terminology-consistency/results/2026-10-26/ruling-set-2026-10-26.json`, which is a compiled artifact and is not edited by hand (see Consequences).
 - **Related:** `experiments/terminology-consistency/results/2026-10-29/conflict-answers-2026-10-29.json` (the answers, verbatim); `experiments/terminology-consistency/results/2026-10-29/conflict-items-2026-10-29.json` (what the page showed); `docs/decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md`; `books/efnafraedi-2e/glossary/glossary-unified.json`; the active register.

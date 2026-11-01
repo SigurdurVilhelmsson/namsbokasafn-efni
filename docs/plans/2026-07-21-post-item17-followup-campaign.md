@@ -4,6 +4,43 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (later morning) — ADDS TO THE ENTRY DIRECTLY BELOW; ITS RELEASE STEPS STAND: **🔨 THE REST OF THE 2026-10-29/30 CONFLICT RULINGS ARE BUILT, on `feat/book-term-prefs-2026-11-01`: 8 chemistry book preferences through a new dry-run script, 2 house-style entries (59 → 61), and [USER]'s correction *polyatomic ion → fjölatóma jón* in a new AI ruling set (`ruling-set-2026-11-01.json`). ✅ [USER] scoped it and corrected the ruling (first bullet). ▶ NEXT: CI and [USER]'s merge; deploy, which applies the house style on boot; the script on prod, dry run first and `--apply` on [USER]'s word; the next export, and pull (last bullet). Then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
+- **[USER]'s answers (about 07:15Z):**
+  - *polyatomic ion* is the two-word *fjölatóma jón*. Record: `docs/decisions/2026-11-01-polyatomic-ion-two-words.md`, which supersedes that row of the 2026-10-29 record (whose status line now says so);
+  - the 7 rulings with no head in the concept model stay out (*concentrated acid*, *diffract*, *intermolecular force*, BCC and FCC solid, *half-life of a reaction*, *standard hydrogen electrode*). Adding a glossary row is a new-term decision under §C73;
+  - *calorimetry* gets nothing: *varmamælingar* against *varmamæling* is number, entry rule 3;
+  - a dry-run script, not a boot migration, and the ruling-set correction in the same PR.
+- **The scope, read-only on prod.** All 50 rulings of the 2026-10-29/30 sets were compared with what chemistry resolves:
+  - 32 already match;
+  - 8 differ, and the ruled Icelandic already exists on a concept carrying the English word, so they become preference rows;
+  - 2 differ, and it exists on no concept, so they become house-style entries;
+  - 7 have no head in the concept model;
+  - *calorimetry* differs only in number.
+
+  Prod's `book_term_preference` held one chemistry row, *atom → atóm*.
+- **What the branch changes:**
+  - `server/scripts/set-book-term-preferences.js`, for chemistry book-wide:
+    - the eight: *accuracy → hittni*, *alpha particle → alfaeind*, *atomic orbital → atómsvigrúm*, *dipole moment → tvískautsvægi*, *electron affinity → rafeindasækni*, *rate law → hraðalögmál*, *vacancy → eyða*, *polyatomic ion → fjölatóma jón*;
+    - each entry is keyed on its concept's Íðorðabankinn id, not our local id, which changes on re-import;
+    - it refuses a missing or merged concept, a missing word, or a different existing preference, and one problem writes nothing;
+    - re-running it is safe;
+    - it is a script rather than a migration because the table has no column saying who wrote a row, so a boot migration would overwrite an editor's choice.
+  - `server/lib/houseStyleTerms.js`: *dissociation constant → klofnunarfasti* and *heat of combustion → brunavarmi*.
+  - The AI pass: `experiments/terminology-consistency/results/2026-11-01/amendments-2026-11-01.json` (one retarget) compiles to `ruling-set-2026-11-01.json`, which changes only *polyatomic ion*. `tools/ai-review/term-pass.js` reads it by default. Under the 2026-10-30 set, a sentence already written *fjölatóma jón* was sent for review, where the AI could "correct" it to the withdrawn form; under the new set it is not (pinned by a test).
+  - Tests: `server/__tests__/setBookTermPreferences.test.js` and `tools/__tests__/ai-review-ruling-amendments-2026-11-01.test.js`. Two red checks: `main`'s house-style file fails the 2 house-style tests, and a script without the overwrite guard fails the conflict test.
+- **The MT, for the record** (ruled form / glossary's form now):
+  - *atómsvigrúm* 99 / 0; *tvískautsvægi* 44 / 0; *rafeindasækni* 36 / 0; *hraðalögmál* 164 / 5;
+  - *hittni* 1 / *nákvæmni* 33 (which is also *precision*); *alfaeind* 2 / *alfaögn* 6;
+  - *fjölatóma jón* 24 / *fjölatómajón* 0;
+  - *dissociation constant*: the MT writes *sundrunarfasti* 8 times, neither *klofnunarfasti* nor *klofnunarstuðull*; *brunavarm-* 3 / *brennsluvarm-* 0.
+- **Still outstanding, logged:** the AI pass's ruling set has no plain *antibonding orbital* (the entry below); [USER] scoped this branch's ruling-set change to *polyatomic ion* only.
+- **Release path after merge:**
+  1. Deploy. 051 adds the 2 house-style concepts on boot.
+  2. `node server/scripts/set-book-term-preferences.js` on prod: a dry run, then `--apply` on [USER]'s word.
+  3. The next 2-hourly content tick exports the glossary; then pull.
+
+  A later Íðorðabankinn re-import that removes one of these terms upstream drops its preference and prints that it did; re-run the script then.
+
 ### ⏭ 2026-11-01 (morning) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **🔨 THE FIRST POST-TAG TERM CHANGES ARE BUILT, on `feat/term-sources-2026-11-01`: the house-style file gets *bonding orbital → tengisvigrúm* (replacing *bindandi svigrúm*), a new *antibonding orbital → andtengisvigrúm*, and *valence → gildistala* with its five compounds (52 → 59 entries); the removal script gets the physics-tier *concentrated* headword. ✅ [USER] answered (l) and the PR's scope (first bullet). ▶ NEXT: CI and [USER]'s merge; then deploy, which applies the house style on boot; the removal script on prod, dry run first and `--apply` on [USER]'s word; the next export, and pull (last bullet). After that, the other 2026-10-29/30 conflict rulings in production's per-book term preferences, scoped separately; then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
 - **[USER]'s answers (06:1xZ):**
   - (l) *antibonding*: a house-style row *antibonding orbital → andtengisvigrúm*. The Íðorðabankinn chemistry row for the adjective, *antibonding → andbindandi*, stays.
