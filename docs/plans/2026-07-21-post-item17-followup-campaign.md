@@ -4,7 +4,7 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-11-01 (ruling set) — ADDS TO THE ENTRY DIRECTLY BELOW; ITS NEXT STANDS: **🔨 *antibonding orbital → andtengisvigrúm* IS ADDED TO THE AI PASS'S RULING SET, on `feat/ruling-antibonding-orbital`, so the AI pass and the house-style file (since #595) agree. [USER] asked for it after #596. The add is a second entry in `amendments-2026-11-01.json`, because the compiler takes one amendments file per date; the entry names its own record, `docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md`. The recompiled `ruling-set-2026-11-01.json` gains exactly that one ruling. ▶ NEXT: CI and [USER]'s merge. Nothing to deploy: the AI pass reads the set from the repo.**
+### ⏭ 2026-11-01 (ruling set) — ADDS TO THE 2026-11-01 (later morning) ENTRY; THE (08:00Z) ENTRY'S NEXT STANDS: **🔨 *antibonding orbital → andtengisvigrúm* IS ADDED TO THE AI PASS'S RULING SET, on `feat/ruling-antibonding-orbital`, so the AI pass and the house-style file (since #595) agree. [USER] asked for it after #596. The add is a second entry in `amendments-2026-11-01.json`, because the compiler takes one amendments file per date; the entry names its own record, `docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md`. The recompiled `ruling-set-2026-11-01.json` gains exactly that one ruling. ▶ NEXT: CI and [USER]'s merge. Nothing to deploy: the AI pass reads the set from the repo.**
 - **The ruling:** register item (l), answered by [USER] on 2026-11-01 (the 2026-11-01 (morning) entry below). It completes the 2026-10-11 wording, *σ\*-/π\*-andtengisvigrúm*, already in the set as `sigma-star-bonding-orbital` and `pi-star-bonding-orbital`. The adjective *antibonding → andbindandi* (Íðorðabankinn) is untouched.
 - **The compile:** the same inputs as #596's set, with the amended file:
   - rulings 398 → 399, adds 12 → 13;
@@ -19,6 +19,32 @@
 
   Red check: against `main`'s two files, the 6 new or changed tests fail.
 - **The MT, for the record:** *andbindandi* 39, *andtengi-* 0 (177 segment files), so the pass will offer the ruling on nearly every sentence whose English says *antibonding orbital*: it reviews only where the Icelandic lacks the target.
+
+### ⏭ 2026-11-01 (08:00Z) — ADDS TO THE TWO ENTRIES BELOW; THE FIRST'S NEXT STANDS: **✅ #595 IS LIVE, DOWN TO THE GLOSSARY. [USER]'s 06:50Z deploy put prod at `0dd4565e0`; migration 051 applied the house style (first two bullets); the guarded `--apply` removed exactly the *concentrated* headword (third bullet); and the 08:00Z export wrote chemistry 1,748 → 1,750 terms, the predicted count and the predicted rows (fourth bullet). ✅ #596 is merged (`9eb60fd6c`, 08:01:45Z), held until that export had pushed so it was not stranded. ▶ NEXT: [USER]'s deploy of #596, which prod now lags; then `set-book-term-preferences.js` on prod, dry run first (the entry directly below, last bullet).**
+- **Deploy receipt (read-only on prod):**
+  - prod's reflog shows `pull --rebase origin main: Fast-forward` to `0dd4565e0` at 06:50:08Z (and, earlier, to `248a10b3a`, #594's merge, at 06:26:23Z);
+  - `ritstjorn` started at 06:50:23Z, after the pull;
+  - tree clean, 0/0 against its `origin/main`, no new stash;
+  - `/api/health` ok on every check, 52 migrations.
+- **051, verified read-only on prod (a CommonJS read script, deleted after):**
+  - 59 house-style concepts in the database, for 59 entries in the file;
+  - *bonding orbital* is still concept 70198 (updated in place) and now *tengisvigrúm*, with no house-style *bindandi svigrúm* left;
+  - the seven new entries are concepts 70243–70249;
+  - chemistry resolves *valence → gildistala* by the house-style rule over Íðorðabankinn's *girðitala* (4764). *coordination number → girðitala* and *antibonding → andbindandi* are unchanged.
+- **The *concentrated* removal ([USER]'s word):**
+  - the dry run matched exactly `en_term 5927`, *concentrated* on physics concept 2348 (→ *megn* | *sterkur*); the script's 18 earlier entries were already absent;
+  - `--apply` ran at 06:53:23Z, behind a fresh dry run in the same session that had to match that one row, and reported `DELETED 1 row(s)`;
+  - before and after: `concept_term` 191,781 → 191,780 and English rows 81,309 → 81,308; Icelandic rows (92,318) and concepts (70,248) unchanged. Concept 2348 and its Icelandic rows stay, and chemistry now resolves *concentrated* to nothing;
+  - the deleted row, for an exact restore if ever needed: `{"id":5927,"concept_id":2348,"lang":"en","text":"concentrated","rank":1,"source":"idordabankinn"}`;
+  - no `--force` export was run: removing one row cannot trip the shrink guard.
+- **The 08:00Z export** (`1813028bc`, pushed 08:00:08Z; prod 0 unpushed; health ok):
+  - chemistry 1,748 → 1,750 terms. The row diff against `0dd4565e0` is exactly:
+    - added *antibonding orbital*, *valence orbital*, *valence shell*;
+    - removed *concentrated*;
+    - changed *bonding orbital* (value), *valence* (value, and concept 4764 → 70244), *valence band* and *valence bond* (concept only, same Icelandic);
+  - *valence electron* stays on Íðorðabankinn's concept 4761: the house-style concept 70245 carries the same Icelandic, so the tie changes nothing;
+  - organic 285 → 289, the same house-style heads (its glossary only, which the organic stop allows); physics and biology unchanged.
+- **Logged, with a prediction for #596's apply:** since at least the 06:00Z export (the earliest the log excerpt read shows), chemistry's export has logged `integrity faults: {"preference-not-a-candidate":1}`. It is the census string *Atom*: a preference matches English case-insensitively, while candidate lookup is case-sensitive, and no concept carries capitalised *Atom*. It is harmless (the glossary has no *Atom* row; the *atom* row gives *atóm*). Four of #596's eight English words also appear capitalised in the census (*Accuracy*, *Alpha particle*, *Electron affinity*, *Vacancy*), so after its `--apply` the count should read **5**.
 
 ### ⏭ 2026-11-01 (later morning) — ADDS TO THE ENTRY DIRECTLY BELOW; ITS RELEASE STEPS STAND: **🔨 THE REST OF THE 2026-10-29/30 CONFLICT RULINGS ARE BUILT, on `feat/book-term-prefs-2026-11-01`: 8 chemistry book preferences through a new dry-run script, 2 house-style entries (59 → 61), and [USER]'s correction *polyatomic ion → fjölatóma jón* in a new AI ruling set (`ruling-set-2026-11-01.json`). ✅ [USER] scoped it and corrected the ruling (first bullet). ▶ NEXT: CI and [USER]'s merge; deploy, which applies the house style on boot; the script on prod, dry run first and `--apply` on [USER]'s word; the next export, and pull (last bullet). Then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
 - **[USER]'s answers (about 07:15Z):**
