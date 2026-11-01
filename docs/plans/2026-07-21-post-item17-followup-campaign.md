@@ -4,6 +4,38 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (10:00Z) — ADDS TO THE ENTRIES BELOW AND SUPERSEDES THE (08:00Z) ENTRY'S NEXT: **✅ THE 2026-10-29/30 RULINGS AND THE TWO 2026-11-01 RULINGS ARE LIVE IN CHEMISTRY'S TERM SOURCES:**
+- **#596 deployed at 08:02Z** (051: 61 house-style concepts);
+- **#597 and #598 merged;**
+- **the 8 book preferences applied at 09:50Z**, exactly 8 rows;
+- **prod redeployed at 09:52Z**, ahead of the 10:00Z tick;
+- **the 10:00Z export** wrote the predicted 9 changed rows at 1,750 terms, with the predicted 5 integrity faults.
+
+**🔎 Found: the export's census carries one- and two-word strings only, so *heat of combustion* (three words) never reaches the exported glossary, although editors' checks see it (last bullet). ▶ NEXT: the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
+- **#596's deploy ([USER], read-only check):**
+  - prod's reflog shows `pull --rebase origin main: Fast-forward` to `9eb60fd6c` at 08:02:09Z, and `ritstjorn` started at 08:02:20Z; clean, health ok;
+  - 051: 61 house-style concepts for 61 entries. Chemistry resolves *dissociation constant → klofnunarfasti* and *heat of combustion → brunavarmi*.
+- **Merges:**
+  - #597 merged as `d75024e1c` once all four checks passed;
+  - `main` was then merged into the antibonding branch. Both branches had added a register entry at the top; both were kept, newest first, giving `ccb9cca0e`;
+  - #598 merged as `148c83087` once all four checks passed on that head.
+- **The preferences ([USER]'s word):**
+  - the dry run on prod listed 8 inserts, terms 15994, 204, 11972, 10343, 12577, 12127, 1590 and 11921. These are the same ids read that morning, and the script found them by Íðorðabankinn id;
+  - `--apply` ran at 09:50:07Z, behind a fresh dry run that had to match the same 8 lines, and reported `INSERTED 8 row(s)`;
+  - before and after: preference rows 3 → 11 across all books, and 1 → 9 for chemistry;
+  - rulings resolving to the ruled Icelandic went from 0 to 8 of 8, each with reason `book-preference` and no integrity codes. *atom → atóm* is unchanged.
+- **The redeploy ([USER], 09:52Z):**
+  - #597 and #598 had merged after the 08:02Z pull, and the apply guaranteed the 10:00Z tick a glossary commit. With prod behind `main`, that push would have been rejected;
+  - the pull to `148c83087` ran at 09:52:35Z and `ritstjorn` started at 09:52:47Z; clean, health ok;
+  - ▶ **The safe order is deploy, then apply, then the tick.** Here the apply came first, and the redeploy recovered it eight minutes before the tick.
+- **The 10:00Z export** (`38f574cdd`, pushed 10:00:08Z, prod 0 unpushed):
+  - chemistry stays at 1,750 terms. The row diff against `148c83087` is exactly 9 changed rows, nothing added or removed:
+    - the 8 preferences, with reason `book-preference`. *accuracy* moves from concept 2500 to 6464; the other seven stay on their concept, which now lists the old glossary form as the alternative;
+    - *dissociation constant → klofnunarfasti* (house-style concept 70250; it was physics' *klofnunarstuðull*);
+  - integrity faults (`preference-not-a-candidate`) 1 → 5, as predicted from the five capitalised census strings found beforehand (*Atom*, *Accuracy*, *Alpha particle*, *Electron affinity*, *Vacancy*). It is harmless: no capitalised rows exist;
+  - organic 289 → 290, adding *dissociation constant* only. House style reaches organic's domain chain; the preferences are chemistry's alone.
+- **🔎 The export census has no strings longer than two words.** `server/lib/sourceEnglish.js` emits single words and overlapping word pairs (its header documents the tokenisation), and the committed glossary has 1,260 one-word rows, 490 two-word rows and none longer. So a house-style head of three or more words cannot reach `glossary-unified.json`. The only one is #596's *heat of combustion → brunavarmi*, though the phrase does occur in ch05's segments. Editors' terminology checks are not affected: `findTermsInSegments` matches every English term in the concept model, of any length (`loadEnglishEntries` → `buildTermAutomaton`). Not a defect to fix now. It matters if a consumer of the exported file ever needs multi-word rulings.
+
 ### ⏭ 2026-11-01 (ruling set) — ADDS TO THE 2026-11-01 (later morning) ENTRY; THE (08:00Z) ENTRY'S NEXT STANDS: **🔨 *antibonding orbital → andtengisvigrúm* IS ADDED TO THE AI PASS'S RULING SET, on `feat/ruling-antibonding-orbital`, so the AI pass and the house-style file (since #595) agree. [USER] asked for it after #596. The add is a second entry in `amendments-2026-11-01.json`, because the compiler takes one amendments file per date; the entry names its own record, `docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md`. The recompiled `ruling-set-2026-11-01.json` gains exactly that one ruling. ▶ NEXT: CI and [USER]'s merge. Nothing to deploy: the AI pass reads the set from the repo.**
 - **The ruling:** register item (l), answered by [USER] on 2026-11-01 (the 2026-11-01 (morning) entry below). It completes the 2026-10-11 wording, *σ\*-/π\*-andtengisvigrúm*, already in the set as `sigma-star-bonding-orbital` and `pi-star-bonding-orbital`. The adjective *antibonding → andbindandi* (Íðorðabankinn) is untouched.
 - **The compile:** the same inputs as #596's set, with the amended file:
