@@ -1,7 +1,7 @@
 # Decision: the AI term pass's full run uses xhigh effort, with high as its fallback
 
 - **Date:** 2026-11-01
-- **Status:** Accepted
+- **Status:** Partly superseded by `docs/decisions/2026-11-01-full-run-cap-rule-and-billing.md` (a projected crossing of the cap now pauses the run for [USER]'s choice, with high among the options, instead of falling back to high automatically)
 - **Context owners:** [USER] (ruled 2026-11-01, after the paid ch10 re-run and its blind check)
 - **Supersedes:** `docs/decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md`, in part: its decision **5**
   ("The full run uses `claude-opus-5-5` at high effort. The pilot's medium arm is a fallback …"). The model stands.
