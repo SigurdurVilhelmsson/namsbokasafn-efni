@@ -1,9 +1,12 @@
 /**
- * The 2026-11-01 ruling set: [USER]'s correction of polyatomic ion to the two-word fjölatóma jón
- * (docs/decisions/2026-11-01-polyatomic-ion-two-words.md), carried out by a third, dated amendments
- * file on top of 2026-10-29 and 2026-10-30.
+ * The 2026-11-01 ruling set: [USER]'s two decisions of that day, carried out by a third, dated
+ * amendments file on top of 2026-10-29 and 2026-10-30 — the correction of polyatomic ion to the
+ * two-word fjölatóma jón (docs/decisions/2026-11-01-polyatomic-ion-two-words.md, the file's record)
+ * and antibonding orbital → andtengisvigrúm
+ * (docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md, named by its own entry, since
+ * the compiler takes one amendments file per date).
  *
- * No format change: a plain retarget. So this file pins only the new artifact; the 2026-10-29 and
+ * No format change: a retarget and an add. So this file pins only the new artifact; the 2026-10-29 and
  * 2026-10-30 artifacts stay byte-pinned by their own tests, which is what proves the older sets
  * are untouched.
  */
@@ -33,6 +36,7 @@ const SET30_REL = `${DIR}/2026-10-30/ruling-set-2026-10-30.json`;
 const AMD01_REL = `${DIR}/2026-11-01/amendments-2026-11-01.json`;
 const SET01_REL = `${DIR}/2026-11-01/ruling-set-2026-11-01.json`;
 const RECORD01 = 'docs/decisions/2026-11-01-polyatomic-ion-two-words.md';
+const RECORD01_AB = 'docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md';
 const CLI = path.join(REPO, 'tools', 'ai-review', 'compile-ruling-set.js');
 
 const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
@@ -68,19 +72,79 @@ describe('the committed 2026-11-01 artifact', () => {
     ]);
   });
 
-  it('the 2026-11-01 file carries out only the 2026-11-01 record', () => {
+  it('the 2026-11-01 file carries out only the two 2026-11-01 records, each named once', () => {
     const f = JSON.parse(fs.readFileSync(path.join(REPO, AMD01_REL), 'utf8'));
-    expect([f.record, f.amendments.every((a) => !('record' in a))]).toEqual([RECORD01, true]);
+    const byEntry = f.amendments.map((a) => [a.op, a.record ?? f.record]);
+    expect([f.record, byEntry]).toEqual([
+      RECORD01,
+      [
+        ['retarget', RECORD01],
+        ['add', RECORD01_AB],
+      ],
+    ]);
+    for (const rec of [RECORD01, RECORD01_AB])
+      expect(fs.existsSync(path.join(REPO, rec))).toBe(true);
   });
 
-  // Predicted before compiling: one retarget; no ruling added, removed or made unmatchable
-  // (fjölatóma jón is two plain words with an ASCII space).
-  it('predicted delta against 2026-10-30: rulings 0, excluded 0, unmatchable 0, retargeted +1', () => {
+  // Predicted before compiling: one retarget and one add; nothing removed, nothing made
+  // unmatchable (fjölatóma jón and andtengisvigrúm are plain words, the first with an ASCII space).
+  it('predicted delta against 2026-10-30: rulings +1, excluded 0, unmatchable 0', () => {
     const [a, b] = [set30().counts, set01().counts];
     expect([b.rulings - a.rulings, b.excluded - a.excluded, b.unmatchable - a.unmatchable]).toEqual(
-      [0, 0, 0]
+      [1, 0, 0]
     );
-    expect(b.amendments).toEqual({ retargeted: 28, added: 12, removed: 1, forms: 1 });
+    expect(b.amendments).toEqual({ retargeted: 28, added: 13, removed: 1, forms: 1 });
+  });
+
+  it('the only new headword is antibonding orbital', () => {
+    const before = new Set(set30().rulings.map((r) => r.enNorm));
+    expect(
+      set01()
+        .rulings.filter((r) => !before.has(r.enNorm))
+        .map((r) => r.enNorm)
+    ).toEqual(['antibonding orbital']);
+  });
+
+  it('antibonding orbital → andtengisvigrúm: one English form, no competitor, matchable', () => {
+    const r = ruling(set01(), 'antibonding orbital');
+    expect([r.id, r.en, r.is, r.competitors, r.sense, r.matchable, r.kinds]).toEqual([
+      'antibonding-orbital',
+      ['antibonding orbital'],
+      'andtengisvigrúm',
+      [],
+      null,
+      true,
+      ['amendment'],
+    ]);
+  });
+
+  // The matcher is word-bounded, and no boundary falls between "anti" and "bonding", so the two
+  // orbital rulings must not reach each other's sentences.
+  const offer = (en, is) =>
+    offeredRulings({
+      item: { occurrences: [{ en, is }] },
+      rulings: set01().rulings,
+      chapterDir: 'ch08',
+    });
+
+  it('an antibonding sentence without andtengisvigrúm is sent for review; one with it is not', () => {
+    const en = 'Electrons in an antibonding orbital destabilize the molecule.';
+    const ids = (is) => offer(en, is).candidateIds.includes('antibonding-orbital');
+    expect([
+      ids('Rafeindir í andbindandi svigrúmi gera sameindina óstöðugri.'),
+      ids('Rafeindir í andtengisvigrúmi gera sameindina óstöðugri.'),
+    ]).toEqual([true, false]);
+  });
+
+  it('control: bonding orbital is not offered for "antibonding orbital", nor the reverse', () => {
+    const anti = offer('Electrons in an antibonding orbital.', 'Rafeindir í svigrúmi.').rulingIds;
+    const bond = offer('Electrons in a bonding orbital.', 'Rafeindir í svigrúmi.').rulingIds;
+    expect([
+      anti.includes('bonding-orbital'),
+      anti.includes('antibonding-orbital'),
+      bond.includes('antibonding-orbital'),
+      bond.includes('bonding-orbital'),
+    ]).toEqual([false, true, false, true]);
   });
 
   it('polyatomic ion → fjölatóma jón; the withdrawn fjölatómajón survives as a competitor', () => {

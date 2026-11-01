@@ -4,6 +4,22 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (ruling set) — ADDS TO THE 2026-11-01 (later morning) ENTRY; THE (08:00Z) ENTRY'S NEXT STANDS: **🔨 *antibonding orbital → andtengisvigrúm* IS ADDED TO THE AI PASS'S RULING SET, on `feat/ruling-antibonding-orbital`, so the AI pass and the house-style file (since #595) agree. [USER] asked for it after #596. The add is a second entry in `amendments-2026-11-01.json`, because the compiler takes one amendments file per date; the entry names its own record, `docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md`. The recompiled `ruling-set-2026-11-01.json` gains exactly that one ruling. ▶ NEXT: CI and [USER]'s merge. Nothing to deploy: the AI pass reads the set from the repo.**
+- **The ruling:** register item (l), answered by [USER] on 2026-11-01 (the 2026-11-01 (morning) entry below). It completes the 2026-10-11 wording, *σ\*-/π\*-andtengisvigrúm*, already in the set as `sigma-star-bonding-orbital` and `pi-star-bonding-orbital`. The adjective *antibonding → andbindandi* (Íðorðabankinn) is untouched.
+- **The compile:** the same inputs as #596's set, with the amended file:
+  - rulings 398 → 399, adds 12 → 13;
+  - no ruling changed, removed or made unmatchable;
+  - the new ruling has one English form, no competitor, and is matchable.
+- **Tests:** `tools/__tests__/ai-review-ruling-amendments-2026-11-01.test.js` now pins:
+  - the two records, each named once;
+  - the predicted counts;
+  - the ruling's fields;
+  - that an antibonding sentence without *andtengisvigrúm* is sent for review while one with it is not;
+  - a control that *bonding orbital* and *antibonding orbital* never reach each other's sentences (the matcher is word-bounded, and no boundary falls between *anti* and *bonding*).
+
+  Red check: against `main`'s two files, the 6 new or changed tests fail.
+- **The MT, for the record:** *andbindandi* 39, *andtengi-* 0 (177 segment files), so the pass will offer the ruling on nearly every sentence whose English says *antibonding orbital*: it reviews only where the Icelandic lacks the target.
+
 ### ⏭ 2026-11-01 (08:00Z) — ADDS TO THE TWO ENTRIES BELOW; THE FIRST'S NEXT STANDS: **✅ #595 IS LIVE, DOWN TO THE GLOSSARY. [USER]'s 06:50Z deploy put prod at `0dd4565e0`; migration 051 applied the house style (first two bullets); the guarded `--apply` removed exactly the *concentrated* headword (third bullet); and the 08:00Z export wrote chemistry 1,748 → 1,750 terms, the predicted count and the predicted rows (fourth bullet). ✅ #596 is merged (`9eb60fd6c`, 08:01:45Z), held until that export had pushed so it was not stranded. ▶ NEXT: [USER]'s deploy of #596, which prod now lags; then `set-book-term-preferences.js` on prod, dry run first (the entry directly below, last bullet).**
 - **Deploy receipt (read-only on prod):**
   - prod's reflog shows `pull --rebase origin main: Fast-forward` to `0dd4565e0` at 06:50:08Z (and, earlier, to `248a10b3a`, #594's merge, at 06:26:23Z);
@@ -59,7 +75,7 @@
   - *hittni* 1 / *nákvæmni* 33 (which is also *precision*); *alfaeind* 2 / *alfaögn* 6;
   - *fjölatóma jón* 24 / *fjölatómajón* 0;
   - *dissociation constant*: the MT writes *sundrunarfasti* 8 times, neither *klofnunarfasti* nor *klofnunarstuðull*; *brunavarm-* 3 / *brennsluvarm-* 0.
-- **Still outstanding, logged:** the AI pass's ruling set has no plain *antibonding orbital* (the entry below); [USER] scoped this branch's ruling-set change to *polyatomic ion* only.
+- **Still outstanding, logged:** the AI pass's ruling set has no plain *antibonding orbital* (the entry below); [USER] scoped this branch's ruling-set change to *polyatomic ion* only. ✏️ *Carried by the 2026-11-01 (ruling set) entry above.*
 - **Release path after merge:**
   1. Deploy. 051 adds the 2 house-style concepts on boot.
   2. `node server/scripts/set-book-term-preferences.js` on prod: a dry run, then `--apply` on [USER]'s word.

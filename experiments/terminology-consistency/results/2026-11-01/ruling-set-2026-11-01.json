@@ -20,7 +20,7 @@
     },
     {
       "path": "experiments/terminology-consistency/results/2026-11-01/amendments-2026-11-01.json",
-      "sha256": "b711bc35738c52c1a3dbd16517a380a24d7ac6857861777ca1cfb07de0f78a86"
+      "sha256": "5e0823a1f128a9dadf9c13d53e6fc830a2053eae8cfa1ff8285a1ada0de6ccab"
     }
   ],
   "counts": {
@@ -29,13 +29,13 @@
       "before": 170
     },
     "superseded": 1,
-    "enNorms": 403,
-    "rulings": 398,
+    "enNorms": 404,
+    "rulings": 399,
     "excluded": 5,
-    "matchable": 384,
+    "matchable": 385,
     "unmatchable": 14,
     "scopeStatus": {
-      "default": 398,
+      "default": 399,
       "proposed": 0,
       "ruled": 0
     },
@@ -46,7 +46,7 @@
     },
     "amendments": {
       "retargeted": 28,
-      "added": 12,
+      "added": 13,
       "removed": 1,
       "forms": 1
     }
@@ -432,6 +432,23 @@
       "kinds": ["verdict"],
       "sources": [
         "before verdict: experiments/terminology-consistency/results/2026-10-10/verdicts-2026-10-10.json#ch17_fs-idp4652784 (2026-10-10 [USER])"
+      ],
+      "matchable": true
+    },
+    {
+      "id": "antibonding-orbital",
+      "enNorm": "antibonding orbital",
+      "en": ["antibonding orbital"],
+      "is": "andtengisvigrúm",
+      "competitors": [],
+      "scope": {
+        "kind": "book"
+      },
+      "scopeStatus": "default",
+      "sense": null,
+      "kinds": ["amendment"],
+      "sources": [
+        "amendment 2026-11-01 add: docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md (antibonding orbital is andtengisvigrúm, the pair of bonding orbital → tengisvigrúm (register item (l)))"
       ],
       "matchable": true
     },
@@ -6600,6 +6617,15 @@
       "to": "alfasundrun",
       "record": "docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md",
       "decision": "The glossary wins (18): alpha decay alfasundrun; entry rule 1, a symbol or unit is not part of an entry"
+    },
+    {
+      "kind": "amendment",
+      "op": "add",
+      "enNorm": "antibonding orbital",
+      "from": null,
+      "to": "andtengisvigrúm",
+      "record": "docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md",
+      "decision": "antibonding orbital is andtengisvigrúm, the pair of bonding orbital → tengisvigrúm (register item (l))"
     },
     {
       "kind": "amendment",
