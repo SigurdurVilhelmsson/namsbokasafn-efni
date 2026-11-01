@@ -70,7 +70,8 @@ describe('the ruling itself', () => {
     // ⚠️ The process and the object are deliberately DIFFERENT stems ([USER] 2026-09-19).
     expect(byEn.get('hybridization')).toBe('svigrúmablöndun');
     expect(byEn.get('hybrid orbital')).toBe('blendingssvigrúm');
-    expect(byEn.get('bonding orbital')).toBe('bindandi svigrúm');
+    // Reversed to tengisvigrúm ([USER] 2026-10-11, kept 2026-10-29), applied after the S tag.
+    expect(byEn.get('bonding orbital')).toBe('tengisvigrúm');
   });
 
   it('keeps the NAME and the UNIT PHRASE as separate concepts', () => {

@@ -91,6 +91,14 @@ const REMOVE = Object.freeze([
   { english: 'AM', domain: 'physics' },
   { english: 'OR', domain: 'biology' },
   { english: 'OR', domain: 'physics' },
+  // Third batch, 2026-10-29 [USER] (docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md):
+  // the standalone `concentrated → megn | sterkur` is removed from our copy of the glossary.
+  // It reaches chemistry only from the PHYSICS tier (concept 2348 on production, idordabanki_id
+  // 323173); chemistry has no `concentrated` concept of its own, and anatomy-physiology's is
+  // outside chemistry's domain chain. The compounds [USER] ruled instead (concentrated acid →
+  // megn sýra, concentrated base → megn basi) live in the AI pass's ruling set, not here.
+  // ⚠️ Applied only after the S tag (2026-11-01), which pins the stores the SD3 baseline read.
+  { english: 'concentrated', domain: 'physics' },
 ]);
 
 /**
