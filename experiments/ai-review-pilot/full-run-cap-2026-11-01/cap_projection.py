@@ -19,6 +19,10 @@ Usage (from the repository root):
       [--order ch01,ch02,...] [--done ch01,...] [--ratio-x R]
 --done names chapters the full run has already settled: their cost is in the ledger's settled
 total, so they are dropped from what is left to run.
+--since ISO-TIME does both from the ledger: every run whose first ledger entry is at or after that
+time counts as part of the full run; its chapter (from the run's term-pass.json) is added to
+--done, and the cost ratio becomes those runs' settled total over their reservations (unless
+--ratio-x is also given). A run with an open reservation refuses: settle or resume it first.
 """
 import argparse
 import json
@@ -28,6 +32,7 @@ REPO = pathlib.Path(__file__).resolve().parents[3]
 X_SUMMARY = REPO / 'experiments/ai-review-pilot/prompt-freeze-2026-11-01/plan-summary.json'
 H_SUMMARY = REPO / 'experiments/ai-review-pilot/full-run-cap-2026-11-01/plan-summary-high-16000.json'
 LEDGER = REPO / 'books/efnafraedi-2e/ai-review/ledger.jsonl'
+RUNS = REPO / 'books/efnafraedi-2e/ai-review/runs'
 CAP = 100.0
 # The 2026-11-01 ch10 re-run, one batch run per effort. Its reservations are compared with ch10's
 # worst case in the plan summaries, the same plans every other chapter's reservation is scaled from.
@@ -46,12 +51,28 @@ def ledger():
         if not line:
             continue
         e = json.loads(line)
-        b = sums.setdefault(e['runId'], {'reserve': 0.0, 'settle': 0.0})
-        if e['type'] in b:
-            b[e['type']] += e['usd']
+        b = sums.setdefault(
+            e['runId'], {'reserve': 0.0, 'settle': 0.0, 'release': 0.0, 'first': e.get('at', '')}
+        )
+        b[e['type']] += e['usd']
         if e['type'] == 'settle':
             settled += e['usd']
     return sums, settled
+
+
+def full_run_since(sums, since):
+    """The runs that started at or after `since`: their chapters and their cost ratio."""
+    runs = {r: b for r, b in sums.items() if b['first'] >= since}
+    open_runs = [r for r, b in runs.items() if b['reserve'] - b['settle'] - b['release'] > 1e-9]
+    if open_runs:
+        raise SystemExit(f'runs with open reservations (settle or resume them first): {open_runs}')
+    chapters = {}
+    for r in runs:
+        tp = json.loads((RUNS / r / 'term-pass.json').read_text(encoding='utf-8'))
+        chapters[r] = tp['chapterDir']
+    reserved = sum(b['reserve'] for b in runs.values())
+    ratio = sum(b['settle'] for b in runs.values()) / reserved if reserved else None
+    return chapters, ratio
 
 
 def simulate(order, worst_x, worst_h, f, settled, k, fallback):
@@ -89,6 +110,7 @@ def main():
     ap.add_argument('--order')
     ap.add_argument('--done', default='')
     ap.add_argument('--ratio-x', type=float)
+    ap.add_argument('--since')
     a = ap.parse_args()
     worst_x, worst_h = per_chapter(X_SUMMARY), per_chapter(H_SUMMARY)
     sums, settled = ledger()
@@ -98,9 +120,15 @@ def main():
         'resH': sums[RUN_H]['reserve'] / worst_h['ch10'],
         'ratioH': sums[RUN_H]['settle'] / sums[RUN_H]['reserve'],
     }
+    done = {c for c in a.done.split(',') if c}
+    since_runs = {}
+    if a.since:
+        since_runs, observed = full_run_since(sums, a.since)
+        done |= set(since_runs.values())
+        if observed is not None:
+            f['ratioX'] = observed
     if a.ratio_x is not None:
         f['ratioX'] = a.ratio_x
-    done = {c for c in a.done.split(',') if c}
     order = [c for c in (a.order.split(',') if a.order else list(worst_x)) if c not in done]
     unknown = [c for c in order + sorted(done) if c not in worst_x]
     if unknown:
@@ -117,6 +145,7 @@ def main():
         'headroom': round(CAP - settled, 2),
         'factors': {k: round(v, 4) for k, v in f.items()},
         'chaptersLeft': len(order),
+        **({'since': a.since, 'fullRunRuns': since_runs} if a.since else {}),
         'expectedSpend': round(expected, 2),
         'headroomAfterExpected': round(CAP - settled - expected, 2),
         'firstRefusal': {},

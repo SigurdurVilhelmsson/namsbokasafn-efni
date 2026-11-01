@@ -4,6 +4,35 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (ready to run) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #606 MERGED (`425d6b004`) AND DEPLOYED: production pulled it at 17:48:39Z and restarted at 17:48:52Z, level with `main`, health `ok` (checked read-only). #604 and #605 went out in the pulls before it. ✅ [USER] LEFT ch10 OUT OF THE FULL RUN (2026-11-01). No editors' order is set, so the run goes in book order. ▶ NEXT: THE FULL RUN, in a new session, by the procedure below, on [USER]'s go. It must finish by 27 November, when the key expires.**
+- **Before the first chapter (0 USD):**
+  - run from the main checkout on `main`, clean. The runner refuses a linked worktree, and preflight requires the prompt, the ruling set and the runner's code to be tracked and clean;
+  - `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` must be in the git-ignored `.env`;
+  - `npx vitest run tools/__tests__/ai-review-frozen-inputs.test.js` must pass, which shows the freeze holds;
+  - note the UTC time as `SINCE`.
+- **Each chapter, one per command:**
+  - the order is `ch00`, `ch01` … `ch09`, `ch11` … `ch21`, `appendices` (22 chapters; ch10 left out);
+  - the command is `node tools/ai-review/term-pass.js run --chapter chNN --mode batch --yes`. The defaults are xhigh, 32,000 tokens and the frozen prompt and ruling set;
+  - it polls every minute until the batch ends. If the session dies, `resume --run RUNID` collects the batch.
+- **After each chapter:**
+  - run `python3 -I experiments/ai-review-pilot/full-run-cap-2026-11-01/cap_projection.py --order <the order above> --since $SINCE`;
+  - if `firstRefusal.given.k` is below 1, pause for [USER];
+  - if the cap refuses a chapter (`stopped-at-cap`), that chapter and the rest run with `--effort high --max-tokens 16000`. If one is refused at high too, stop;
+  - record each chapter's run id, cost and the check's `k` here ([record](../decisions/2026-11-01-full-run-cap-rule-and-billing.md)).
+- **The projection without ch10** ([`projection-2026-11-01-without-ch10.json`](../../experiments/ai-review-pilot/full-run-cap-2026-11-01/)):
+  - 22 chapters and 567 requests;
+  - an expected spend of USD 39.3 against USD 78.85 left, leaving USD 39.6;
+  - the cap first refuses a chapter at 1.89× the expected rate, or at 2.0× with the fallback;
+  - the largest reservation is now ch07's.
+- **After the run:**
+  - commit the run records and the ledger, as #600 did;
+  - check each `requests.jsonl` body against the digests in [`plan-summary.json`](../../experiments/ai-review-pilot/prompt-freeze-2026-11-01/) (ch10's 55 are not sent);
+  - run `apply` per chapter, dry first, then `--write` for layer 2;
+  - then the short look (the 2026-10-28 record, decision 4).
+- **Open, not blocking the run:**
+  - what ch10 gets instead: its 2026-11-01 re-run answers, made under the 2026-11-01 ruling set (which `apply` takes only with that set named), or no suggestions;
+  - [USER] to confirm whether the 1 November re-run falls in the November billing period.
+
 ### ⏭ 2026-11-01 (cap rule and billing) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #605 MERGED (`8d8ef46a0`). ✅ [USER] ANSWERED THE 2026-10-28 ENTRY'S (e) AND (f) ([record](../decisions/2026-11-01-full-run-cap-rule-and-billing.md)). (e): the cap stays at USD 100; the full run checks its projected spend after each chapter and pauses if the cap would refuse a later one; if the cap refuses a chapter anyway, that chapter and the rest run at high. This partly supersedes the 2026-11-01 effort record (a projected crossing pauses for [USER] instead of switching to high automatically). (f): [USER] pays the subscription's November period personally, so the full run is private as ruled on 2026-10-27. On branch `docs/full-run-cap-rule-and-billing-2026-11-01`. ▶ NEXT: merge that branch's PR once CI is green. Then, [USER]'s: whether the full run buys ch10 again, and the chapter order (when editors will open units; book order where none is set). Then the full run by the record's procedure, which must finish by 27 November, when the key expires.**
 - **The procedure:** `run --chapter chNN --mode batch --yes`, one chapter at a time, at the frozen inputs and the defaults (xhigh, 32,000 tokens). After each chapter settles, run [`cap_projection.py`](../../experiments/ai-review-pilot/full-run-cap-2026-11-01/) with `--order`, `--done` and the cost ratio observed so far. If `firstRefusal.given.k` falls below 1, pause for [USER] before the next chapter. Record the order and each check here.
 - **Before the run (0 USD, `projection-2026-11-01.json`):**
