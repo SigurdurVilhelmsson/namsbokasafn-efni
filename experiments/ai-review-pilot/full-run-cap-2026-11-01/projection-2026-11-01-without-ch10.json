@@ -1,0 +1,52 @@
+{
+ "cap": 100.0,
+ "settledBefore": 21.15,
+ "headroom": 78.85,
+ "factors": {
+  "resX": 1.0321,
+  "ratioX": 0.1853,
+  "resH": 1.0575,
+  "ratioH": 0.2831
+ },
+ "chaptersLeft": 22,
+ "expectedSpend": 39.29,
+ "headroomAfterExpected": 39.56,
+ "firstRefusal": {
+  "given": {
+   "k": 1.89,
+   "spendAtK": 74.3,
+   "refusedChapter": "ch21",
+   "switchedToHighAt": null
+  },
+  "givenWithHighFallback": {
+   "k": 2.0,
+   "spendAtK": 78.5,
+   "refusedChapter": "appendices",
+   "switchedToHighAt": "ch20"
+  },
+  "largestFirst": {
+   "k": 1.92,
+   "spendAtK": 75.6,
+   "refusedChapter": "ch03",
+   "switchedToHighAt": null
+  },
+  "largestFirstWithHighFallback": {
+   "k": 1.99,
+   "spendAtK": 78.2,
+   "refusedChapter": "ch03",
+   "switchedToHighAt": "ch16"
+  },
+  "smallestFirst": {
+   "k": 1.67,
+   "spendAtK": 65.7,
+   "refusedChapter": "ch07",
+   "switchedToHighAt": null
+  },
+  "smallestFirstWithHighFallback": {
+   "k": 1.92,
+   "spendAtK": 75.6,
+   "refusedChapter": "ch07",
+   "switchedToHighAt": "ch18"
+  }
+ }
+}

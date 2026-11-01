@@ -615,3 +615,18 @@ e4a55fa3a Merge pull request #599 from SigurdurVilhelmsson/docs/term-prefs-appli
 **Why:** The register's newest entry (2026-11-01, ch10 re-run) owns what happens next; it and the work-state list `next-session-decisions` open with the three decisions only [USER] can make: the full run's effort (xhigh or high), a sense restriction for *stoichiometry*, and whether to run a second chapter.
 
 ---
+
+## 2026-11-01 17:55 - Session end 1 November (evening): the full AI term-pass run is ready to start; the next session runs it
+
+**Branch:** docs/full-run-ready-2026-11-01
+**Modified:**
+docs/plans/2026-07-21-post-item17-followup-campaign.md, logs/dev-journal.md, experiments/ai-review-pilot/full-run-cap-2026-11-01/ (README, cap_projection.py --since, projection without ch10)
+
+**Recent commits:**
+425d6b004 Merge pull request #606 from SigurdurVilhelmsson/docs/full-run-cap-rule-and-billing-2026-11-01
+8d8ef46a0 Merge pull request #605 from SigurdurVilhelmsson/docs/term-pass-prompt-freeze-2026-11-01
+2c941e993 Merge pull request #604 from SigurdurVilhelmsson/feat/term-pass-defaults-xhigh-32000
+
+**Why:** Every gate before the full run is settled and deployed: effort xhigh with high as the fallback (#602, defaults #604), stoichiometry restricted to the subject (#603), the prompt and ruling set frozen and pinned (#605), the cap rule and private November billing (#606), and ch10 left out. The register's newest entry (2026-11-01, ready to run) holds the procedure: one chapter per command in batch, book order, the cap projection after each.
+
+---

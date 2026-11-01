@@ -10,6 +10,7 @@ after each chapter. 0 USD and no network.
 | `cap_projection.py` | The projection (model and flags in its docstring). It reads the frozen plan's summary (`../prompt-freeze-2026-11-01/plan-summary.json`), the summary below and the ledger. |
 | `plan-summary-high-16000.json` | `plan --all --effort high --max-tokens 16000` on the frozen inputs, at `8d8ef46a0`, summarised with `../prompt-freeze-2026-11-01/summarize_plan.py`. It is the fallback's worst cases. |
 | `projection-2026-11-01.json` | The projection before the run, all 23 chapters left. |
+| `projection-2026-11-01-without-ch10.json` | The same with ch10 left out ([USER], 2026-11-01), in book order with the appendices last: 22 chapters, expected spend USD 39.29 (USD 39.56 left); the cap first refuses a chapter at 1.89× (2.00× with the high fallback). |
 
 ## The model and its two factors
 
@@ -41,12 +42,17 @@ After each chapter settles:
 
 ```bash
 python3 -I experiments/ai-review-pilot/full-run-cap-2026-11-01/cap_projection.py \
-  --order <the run's chapter order> --done <chapters settled so far> --ratio-x <observed ratio>
+  --order ch00,ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch11,ch12,ch13,ch14,ch15,ch16,ch17,ch18,ch19,ch20,ch21,appendices \
+  --since <the UTC time just before the full run's first chapter>
 ```
 
-The observed ratio is the full run's settled cost over its reservations so far, from the ledger. If
-`firstRefusal.given.k` is below 1, the projection says the cap would refuse a later chapter at the observed rate,
-and the record's rule pauses the run.
+`--since` reads the ledger. Every run that starts at or after that time is part of the full run: its chapter
+counts as done, and the cost ratio becomes those runs' settled cost over their reservations. It refuses while a
+run still has an open reservation. A smoke test with `--since 2026-11-01T10:00:00Z` picked exactly the two ch10
+re-run runs, with the ratio a hand computation gives (0.2209); a time in the future picked none.
+
+If `firstRefusal.given.k` is below 1, the projection says the cap would refuse a later chapter at the observed
+rate, and the record's rule pauses the run.
 
 ## Blind spots
 
