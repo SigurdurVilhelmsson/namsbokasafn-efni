@@ -88,8 +88,8 @@ export const BOOK = 'efnafraedi-2e';
 export const DEFAULT_RULING_SET =
   'experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json';
 export const DEFAULT_MODEL = 'claude-opus-5-5';
-export const DEFAULT_EFFORT = 'high';
-export const DEFAULT_MAX_TOKENS = 16000;
+export const DEFAULT_EFFORT = 'xhigh';
+export const DEFAULT_MAX_TOKENS = 32000;
 /**
  * The SDK refuses a non-streaming call whose max_tokens implies more than 10 minutes at its
  * assumed 128,000 tokens an hour (600 × 128000 / 3600 = 21,333.3), unless a timeout is set.

@@ -37,6 +37,11 @@ import {
 } from './helpers/term-pass-fixture.js';
 
 const HARNESS = { harnessCommit: () => 'a'.repeat(40), harnessDirty: () => false };
+// The default max tokens (32000) is above the SDK's non-streaming limit, so an interactive run
+// on it needs --timeout-ms (its own tests in 'run preflight' say so). The interactive runs below
+// test other things, so they stay under the limit, with the requests and cap reservations they
+// were written against.
+const UNDER_SDK_LIMIT = ['--max-tokens', '16000'];
 let clock = Date.parse('2026-10-27T10:00:00Z');
 const now = () => new Date((clock += 1000));
 
@@ -64,8 +69,8 @@ describe('constants', () => {
   it('pins the book, the model, the effort and the token limits', () => {
     expect(BOOK).toBe('efnafraedi-2e');
     expect(DEFAULT_MODEL).toBe('claude-opus-5-5');
-    expect(DEFAULT_EFFORT).toBe('high');
-    expect(DEFAULT_MAX_TOKENS).toBe(16000);
+    expect(DEFAULT_EFFORT).toBe('xhigh');
+    expect(DEFAULT_MAX_TOKENS).toBe(32000);
     expect(SDK_NONSTREAMING_MAX_TOKENS).toBe(Math.floor((600 * 128000) / 3600));
   });
 
@@ -241,12 +246,36 @@ describe('run preflight', () => {
     expect(fs.existsSync(path.join(fx.records, 'runs'))).toBe(false);
   });
 
+  // The defaults are the full run's (docs/decisions/2026-11-01-ai-term-pass-full-run-at-xhigh.md):
+  // 32000 is above the SDK's non-streaming limit, so an interactive run on them needs --timeout-ms.
+  it('refuses an interactive run on the default max tokens without --timeout-ms, before spending', async () => {
+    const { deps, fx } = setup();
+    const t = mockTransport();
+    await expect(
+      main(['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'], deps({ transport: t }))
+    ).rejects.toThrow(/--max-tokens 32000 is above 21333/);
+    expect(t.calls.send + t.calls.countTokens).toBe(0);
+    expect(fs.existsSync(path.join(fx.records, 'runs'))).toBe(false);
+  });
+
+  it('control: with --timeout-ms that run sends, at the default effort and max tokens', async () => {
+    const { deps, fx } = setup();
+    const r = await main(
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--timeout-ms', '900000', '--yes'],
+      deps({ transport: mockTransport() })
+    );
+    const dir = path.join(fx.records, 'runs', r.results[0].runId);
+    const first = fs.readFileSync(path.join(dir, 'requests.jsonl'), 'utf8').split('\n')[0];
+    const { body } = JSON.parse(first);
+    expect([body.max_tokens, body.output_config.effort]).toEqual([32000, 'xhigh']);
+  });
+
   it('refuses a modified prompt', async () => {
     const { deps, fx } = setup();
     fs.appendFileSync(path.join(fx.root, PROMPT_PATH), '\nextra\n');
     await expect(
       main(
-        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
         deps({ transport: mockTransport() })
       )
     ).rejects.toThrow(/modified/);
@@ -258,7 +287,7 @@ describe('run preflight', () => {
     fs.writeFileSync(f, fs.readFileSync(f, 'utf8').replace('gráar', 'gráir'));
     await expect(
       main(
-        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
         deps({ transport: mockTransport() })
       )
     ).rejects.toThrow(/differs from its blob/);
@@ -286,7 +315,7 @@ describe('run preflight', () => {
     const { deps, fx } = setup();
     const t = mockTransport();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT],
       deps({ transport: t })
     );
     expect(r.sent).toBe(false);
@@ -400,7 +429,7 @@ describe('run refuses from a linked git worktree; plan and apply do not', () => 
       const t = mockTransport();
       await expect(
         main(
-          ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+          ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
           W.wtDeps({ transport: t })
         )
       ).rejects.toThrow(/linked-worktree/);
@@ -416,7 +445,7 @@ describe('run refuses from a linked git worktree; plan and apply do not', () => 
     try {
       const t = mockTransport();
       const r = await main(
-        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
         W.deps({ transport: t })
       );
       expect(r.results[0].status).toBe('complete');
@@ -435,7 +464,7 @@ describe('run refuses from a linked git worktree; plan and apply do not', () => 
       expect(p.rows[0].estimate.requests).toBeGreaterThan(0);
       // a run made in the main checkout, its records carried over as a commit would carry them
       const r = await main(
-        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
         W.deps({ transport: mockTransport() })
       );
       const runId = r.results[0].runId;
@@ -457,7 +486,7 @@ describe('run → apply, interactive', () => {
   beforeAll(async () => {
     S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport() })
     );
     expect(r.results).toHaveLength(1);
@@ -474,7 +503,7 @@ describe('run → apply, interactive', () => {
     );
     const run = JSON.parse(fs.readFileSync(path.join(dir, 'run.json'), 'utf8'));
     expect(run.use).toBe('term-pass');
-    expect(run.effort).toBe('high');
+    expect(run.effort).toBe('xhigh');
     const requests = fs.readFileSync(path.join(dir, 'requests.jsonl'), 'utf8').trim().split('\n');
     expect(requests).toHaveLength(tp.requestKeys.length);
   });
@@ -568,7 +597,7 @@ describe('apply flags an old form left after an accepted fix, and changes nothin
   };
   const runWith = async (S, answer) => {
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport({ answer }) })
     );
     return r.results[0].runId;
@@ -658,7 +687,7 @@ describe('an answer entry for a segment the request did not show', () => {
       return a;
     };
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport({ answer }) })
     );
     const a = await main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId], S.deps());
@@ -748,7 +777,7 @@ describe('a run killed mid-flight stays resumable and applicable', () => {
       return send(...a);
     };
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: t })
     );
     expect(r.results[0].status).toBe('complete');
@@ -791,7 +820,7 @@ describe('a run killed mid-flight stays resumable and applicable', () => {
     const extra = { transport: mockTransport(), sleep: async () => {}, pollIntervalMs: 0 };
     // a finished interactive run has nothing to resume, whatever else is missing
     const i = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps(extra)
     );
     const iDir = path.join(S.fx.records, 'runs', i.results[0].runId);
@@ -841,7 +870,17 @@ describe('run stops before the next chapter when a chapter answered unusably, an
     };
     return t;
   };
-  const TWO = ['run', '--chapter', 'ch01', '--chapter', 'ch02', '--mode', 'interactive', '--yes'];
+  const TWO = [
+    'run',
+    '--chapter',
+    'ch01',
+    '--chapter',
+    'ch02',
+    '--mode',
+    'interactive',
+    ...UNDER_SDK_LIMIT,
+    '--yes',
+  ];
 
   it('refused answers: ch01 ends complete with no usable response, so ch02 is never sent', async () => {
     const S = setupTwo();
@@ -915,7 +954,7 @@ describe('apply measures coverage against the full plan, and --write refuses a p
       now,
     });
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport() })
     );
     expect(r.results[0].status).toBe('stopped-at-cap');
@@ -933,7 +972,17 @@ describe('apply measures coverage against the full plan, and --write refuses a p
   it('a --limit 1 run plans the whole chapter, covers one request, and --write refuses', async () => {
     const S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes', '--limit', '1'],
+      [
+        'run',
+        '--chapter',
+        'ch02',
+        '--mode',
+        'interactive',
+        ...UNDER_SDK_LIMIT,
+        '--yes',
+        '--limit',
+        '1',
+      ],
       S.deps({ transport: mockTransport() })
     );
     const runId = r.results[0].runId;
@@ -963,7 +1012,7 @@ describe('apply measures coverage against the full plan, and --write refuses a p
       return send(body);
     };
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: t })
     );
     const runId = r.results[0].runId;
@@ -977,7 +1026,7 @@ describe('apply measures coverage against the full plan, and --write refuses a p
   it('control: a full run covers every planned request, writes, and records the coverage', async () => {
     const S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport() })
     );
     const runId = r.results[0].runId;
@@ -994,7 +1043,7 @@ describe('apply measures coverage against the full plan, and --write refuses a p
     const S = setup();
     const run = () =>
       main(
-        ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
         S.deps({ transport: mockTransport() })
       );
     const a = (await run()).results[0].runId;
@@ -1021,7 +1070,7 @@ describe('apply withdraws a ruling the model flagged, and one whose op the parse
   async function applyWith(tio2) {
     const S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport({ answer: answerWith(tio2) }) })
     );
     const a = await main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId], S.deps());
@@ -1078,11 +1127,21 @@ describe('usable means every presented segment answered, in apply and in run ali
     });
     return { fx, deps };
   }
-  const TWO = ['run', '--chapter', 'ch01', '--chapter', 'ch02', '--mode', 'interactive', '--yes'];
+  const TWO = [
+    'run',
+    '--chapter',
+    'ch01',
+    '--chapter',
+    'ch02',
+    '--mode',
+    'interactive',
+    ...UNDER_SDK_LIMIT,
+    '--yes',
+  ];
   const ch02Run = async (answer) => {
     const S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport({ answer }) })
     );
     return { S, r, runId: r.results[0].runId };
@@ -1198,7 +1257,7 @@ describe('usable means every presented segment answered, in apply and in run ali
     };
     const S = setup();
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: truncFirst })
     );
     await expect(
@@ -1218,7 +1277,7 @@ describe('resume --yes closes a killed interactive run, so its answers can be ap
   /** A complete ch02 interactive run turned into what a kill during its last request leaves. */
   async function killed(S) {
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport() })
     );
     const runId = r.results[0].runId;
@@ -1270,7 +1329,7 @@ describe('resume --yes closes a killed interactive run, so its answers can be ap
     const dry = await main(['apply', '--chapter', 'ch02', '--run', k.runId], S.deps());
     expect(dry.result.coverage.requestsMissing).toHaveLength(1);
     const fresh = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport() })
     );
     const w = await main(
@@ -1314,7 +1373,7 @@ describe('apply gates each segment under the budget its request carried', () => 
   };
   async function runOnce(S) {
     const r = await main(
-      ['run', '--chapter', 'ch02', '--mode', 'interactive', '--yes'],
+      ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'],
       S.deps({ transport: mockTransport({ answer }) })
     );
     return r.results[0].runId;
