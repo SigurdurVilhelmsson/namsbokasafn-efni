@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-10-25T14:00:03.717Z",
+  "generated": "2026-11-01T08:00:03.287Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1748,
-    "approved": 1748,
+    "total": 1750,
+    "approved": 1750,
     "ties": 333,
-    "nominalTies": 104,
-    "outOfScopeOnly": 1509,
+    "nominalTies": 105,
+    "outOfScopeOnly": 1510,
     "censusStrings": 109321
   },
   "terms": [
@@ -1661,6 +1661,16 @@
       "alternatives": []
     },
     {
+      "english": "antibonding orbital",
+      "icelandic": "andtengisvigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70243,
+      "alternatives": []
+    },
+    {
       "english": "antidote",
       "icelandic": "móteitur",
       "status": "approved",
@@ -2858,7 +2868,7 @@
     },
     {
       "english": "bonding orbital",
-      "icelandic": "bindandi svigrúm",
+      "icelandic": "tengisvigrúm",
       "status": "approved",
       "reason": "head-form",
       "domain": "chemistry",
@@ -4180,18 +4190,6 @@
       "position": 2,
       "conceptId": 1613,
       "alternatives": []
-    },
-    {
-      "english": "concentrated",
-      "icelandic": "megn",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2348,
-      "alternatives": [
-        "sterkur"
-      ]
     },
     {
       "english": "concentrated base",
@@ -17991,12 +17989,12 @@
     },
     {
       "english": "valence",
-      "icelandic": "girðitala",
+      "icelandic": "gildistala",
       "status": "approved",
-      "reason": "head-form",
+      "reason": "house-style",
       "domain": "chemistry",
       "position": 1,
-      "conceptId": 4764,
+      "conceptId": 70244,
       "alternatives": []
     },
     {
@@ -18004,9 +18002,9 @@
       "icelandic": "gildisborði",
       "status": "approved",
       "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1026,
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70247,
       "alternatives": []
     },
     {
@@ -18014,9 +18012,9 @@
       "icelandic": "gildistengi",
       "status": "approved",
       "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1028,
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70246,
       "alternatives": []
     },
     {
@@ -18027,6 +18025,26 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4761,
+      "alternatives": []
+    },
+    {
+      "english": "valence orbital",
+      "icelandic": "gildissvigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70249,
+      "alternatives": []
+    },
+    {
+      "english": "valence shell",
+      "icelandic": "gildishvolf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70248,
       "alternatives": []
     },
     {

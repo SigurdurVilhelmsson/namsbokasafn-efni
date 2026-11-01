@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-28T12:00:04.696Z",
+  "generated": "2026-11-01T08:00:04.686Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 285,
-    "approved": 285,
+    "total": 289,
+    "approved": 289,
     "ties": 4,
-    "nominalTies": 1,
-    "outOfScopeOnly": 2600,
+    "nominalTies": 2,
+    "outOfScopeOnly": 2599,
     "censusStrings": 88676
   },
   "terms": [
@@ -232,6 +232,16 @@
       "alternatives": []
     },
     {
+      "english": "antibonding orbital",
+      "icelandic": "andtengisvigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70243,
+      "alternatives": []
+    },
+    {
       "english": "atom",
       "icelandic": "frumeind",
       "status": "approved",
@@ -379,7 +389,7 @@
     },
     {
       "english": "bonding orbital",
-      "icelandic": "bindandi svigrúm",
+      "icelandic": "tengisvigrúm",
       "status": "approved",
       "reason": "head-form",
       "domain": "chemistry",
@@ -2829,12 +2839,22 @@
     },
     {
       "english": "valence",
-      "icelandic": "girðitala",
+      "icelandic": "gildistala",
+      "status": "approved",
+      "reason": "house-style",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70244,
+      "alternatives": []
+    },
+    {
+      "english": "valence bond",
+      "icelandic": "gildistengi",
       "status": "approved",
       "reason": "head-form",
       "domain": "chemistry",
       "position": 1,
-      "conceptId": 4764,
+      "conceptId": 70246,
       "alternatives": []
     },
     {
@@ -2845,6 +2865,26 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4761,
+      "alternatives": []
+    },
+    {
+      "english": "valence orbital",
+      "icelandic": "gildissvigrúm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70249,
+      "alternatives": []
+    },
+    {
+      "english": "valence shell",
+      "icelandic": "gildishvolf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70248,
       "alternatives": []
     },
     {
